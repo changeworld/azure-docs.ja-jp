@@ -17,7 +17,7 @@
 
 データ ディスクを仮想マシンに接続してアプリケーション データを保存できます。データ ディスクは仮想ハード ディスク (VHD) で、自分のコンピューターでローカルに作成することも、Windows Azure を使ってクラウドに作成することもできます。仮想マシンでデータ ディスクを管理する方法は、オフィス内のサーバーで管理する方法と同じです。
 
-管理ポータルを使用してデータを格納しているデータ ディスクをアップロードして仮想マシンに接続することも、仮想マシンで使用しているのと同じストレージ アカウントから空のディスクを接続することもできます。この記事では、次のプロセスについて説明します。別のストレージ アカウントに存在するディスクを接続するには、Windows Azure PowerShell モジュールで利用できる [Add-AzureDataDisk](http://go.microsoft.com/fwlink/p/?LinkId=391661) コマンドレットを使用します。このモジュールをダウンロードするには、[ダウンロード](http://www.windowsazure.com/en-us/downloads/) ページにアクセスしてください。
+管理ポータルを使用してデータを格納しているデータ ディスクをアップロードして仮想マシンに接続することも、仮想マシンで使用しているのと同じストレージ アカウントから空のディスクを接続することもできます。この記事では、次のプロセスについて説明します。別のストレージ アカウントに存在する空のディスクを接続するには、Windows Azure PowerShell モジュールで利用できる [Add-AzureDataDisk](http://go.microsoft.com/fwlink/p/?LinkId=391661) コマンドレットを使用します。このモジュールをダウンロードするには、[ダウンロード](http://www.windowsazure.com/ja-jp/downloads/) ページにアクセスしてください。
 
 ディスク追加のために仮想マシンが停止することはありません。仮想マシンに接続できるディスクの数は、仮想マシンのサイズに基づいています。仮想マシンとディスク サイズの詳細については、「[Windows Azure の仮想マシンおよびクラウド サービスのサイズ](http://go.microsoft.com/FWLink/p/?LinkID=294683)」を参照してください。
 
@@ -29,7 +29,7 @@
 
 各仮想マシンには、一時的なローカル *リソース ディスク*も接続されています。リソース ディスク上のデータには、再起動を行った場合の持続性がないため、多くの場合は仮想マシン上で実行されているアプリケーションとプロセスが、このディスクを過渡的および一時的なストレージとして使用します。また、オペレーティング システムのページ ファイルやスワップ ファイルを格納する目的でも使用されます。
 
-Windows では、リソース ディスクに **D:** ドライブというラベルが付いています。Linux では通常、リソース ディスクは Windows Azure Linux エージェントによって管理され、**/mnt/resource** (または Ubuntu イメージでは **/mnt**) に自動的にマウントされます。詳細については、[Windows Azure Linux エージェント ユーザー ガイド)](http://www.windowsazure.com/en-us/manage/linux/how-to-guides/linux-agent-guide/)を参照してください。
+Windows では、リソース ディスクに **D:** ドライブというラベルが付いています。Linux では通常、リソース ディスクは Windows Azure Linux エージェントによって管理され、**/mnt/resource** (または Ubuntu イメージでは **/mnt**) に自動的にマウントされます。詳細については、「[Windows Azure Linux Agent User Guide (Windows Azure Linux エージェント ユーザー ガイド)](http://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/linux-agent-guide/)」を参照してください。
 
 データ ディスクの使い方の詳細については、[ディスクとイメージの管理に関するページ](http://go.microsoft.com/fwlink/p/?LinkId=391660)を参照してください。
 
@@ -249,7 +249,6 @@ Windows では、リソース ディスクに **D:** ドライブというラベ
 
 [logon]: ../virtual-machines-log-on-windows-server/
 [logonlinux]: ../virtual-machines-linux-how-to-log-on/
-
 
 
 

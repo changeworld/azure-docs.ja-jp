@@ -15,12 +15,14 @@ Windows Azure テーブル ストレージ サービスは、大量の構造化�
 
 ![Table1][Table1]
 
--   **URL 形式:** 次のアドレス形式を使用してアカウントのテーブルのアドレスを記述します。
-    http://`<ストレージ アカウント>`.table.core.windows.net/`<テーブル>`  
+-   **URL 形式:** 次のアドレス形式を使用してアカウントのテーブルの
+    アドレスを記述します。
+    http://`<storage account>`.table.core.windows.net/`<table>`  
       
-    このアドレスを OData プロトコルで使用して、Azure テーブルを直接アドレス指定できます。詳細については、「[OData.org][]」を参照してください。
+    このアドレスを OData プロトコルで使用して、Azure テーブルを直接
+    アドレス指定できます。詳細については、[OData.org の Web サイト][]を参照してください。
 
--   **ストレージ アカウント:** Windows Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。ストレージ アカウントの容量の詳細については、[Windows Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ](http://msdn.microsoft.com/en-us/library/dn249410.aspx)を参照してください。
+-   **ストレージ アカウント:** Windows Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。ストレージ アカウントの容量の詳細については、「[Windows Azure Storage Scalability and Performance Targets (Windows Azure のストレージの拡張性とパフォーマンスのターゲット)](http://msdn.microsoft.com/ja-jp/library/dn249410.aspx)」を参照してください。
 
 -   **テーブル**: テーブルは、エンティティのコレクションです。テーブルではエンティティにスキーマを設定しないため、1 つのテーブルに異なるプロパティのセットを持つエンティティが含まれている場合があります。ストレージ アカウントが格納できる
 	テーブルの数は、ストレージ アカウントの容量制限によってのみ制限されます。
@@ -33,5 +35,4 @@ Windows Azure テーブル ストレージ サービスは、大量の構造化�
   
   [Table1]: ./media/storage-java-how-to-use-table-storage/table1.png
   [OData.org]: http://www.odata.org/
-
 

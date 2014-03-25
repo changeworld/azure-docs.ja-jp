@@ -4,12 +4,12 @@ Windows Azure でアプリケーションを作成すると、azurewebsites.net 
 
 <div class="dev-callout"> 
 <b>注</b>
-	<p>このタスクの手順は、Windows Azure の Web サイトに適用されます。クラウド サービスについては、「<a href="http://www.windowsazure.com/en-us/develop/net/common-tasks/custom-dns/">Configuring a Custom Domain Name in Windows Azure (Windows Azure でのカスタム ドメイン名の構成)</a>」を参照してください。</p>
+	<p>このタスクの手順は、Windows Azure の Web サイトに適用されます。クラウド サービスについては、「<a href="http://www.windowsazure.com/ja-jp/develop/net/common-tasks/custom-dns/">Configuring a Custom Domain Name in Windows Azure (Windows Azure でのカスタム ドメイン名の構成)</a>」を参照してください。</p>
 </div>
 
 <div class="dev-callout"> 
 <b>注</b>
-<p>このタスクの手順は、Web サイトを共有モードまたは標準モードに構成することを必要とします。サブスクリプションに対して課金される金額が変更される可能性があります。詳細については、「<a href="http://www.windowsazure.com/en-us/pricing/details/web-sites/">Web サイトの料金詳細</a>」を参照してください。</p>
+<p>このタスクの手順は、Web サイトを共有モードまたは標準モードに構成することを必要とします。サブスクリプションに対して課金される金額が変更される可能性があります。詳細については、「<a href="http://www.windowsazure.com/ja-jp/pricing/details/web-sites/">Web サイトの料金詳細</a>」を参照してください。</p>
 </div>
 
 この記事の内容:
@@ -31,8 +31,8 @@ CNAME レコード (またはエイリアス レコード) および A レコー
 CNAME レコードは、**contoso.com** や **www.contoso.com** などの*特定の*ドメインを正規のドメイン名にマップします。この場合、正規のドメイン名は Windows Azure の Web サイトの **&lt;myapp>.azurewebsites.net** ドメイン名です。作成すると、CNAME は **&lt;myapp>.azurewebsites.net** のエイリアスを作成します。CNAME エントリは **&lt;myapp>.azurewebsites.net** サービスの IP アドレスを自動的に解決するため、Web サイトの IP アドレスが変更されても、特別な対応を行う必要はありません。
 
 <div class="dev-callout"> 
-<b>注</b> 
-	<p>いくつかのドメイン レジストラーでは、CNAME レコードを使用する場合にマップすることが許可されるのは、ルート名 (contoso.com など) ではなく、サブドメイン (www.contoso.com など) のみです。CNAME レコードの詳細については、レジストラーが提供するドキュメント、「<a href="http://en.wikipedia.org/wiki/CNAME_record">the Wikipedia entry on CNAME record (CNAME レコードに関するウィキペディア項目)</a>」、または「<a href="http://tools.ietf.org/html/rfc1035">IETF Domain Names - Implementation and Specification (IETF ドメイン名 - 実装と仕様書)</a>」を参照してください。</p>
+<b>メモ</b>
+	<p> いくつかのドメイン レジストラーでは、CNAME レコードを使用する場合にマップすることが許可されるのは、ルート名 (contoso.com など) ではなく、サブドメイン (www.contoso.com など) のみです。CNAME レコードの詳細については、レジストラーが提供するドキュメント、「<a href="http://en.wikipedia.org/wiki/CNAME_record">the Wikipedia entry on CNAME record (CNAME レコードに関するウィキペディア項目)</a>」、または「<a href="http://tools.ietf.org/html/rfc1035">IETF Domain Names - Implementation and Specification (IETF ドメイン名 - 実装と仕様書)</a>」を参照してください。</p>
 </div>
 
 ###A レコード
@@ -67,7 +67,7 @@ Web サイトのカスタム ドメイン名は、Windows Azure の Web サイ�
 
 	<!--![][standardmode4]-->
 
-	**注**<br /> 
+	**メモ**<br />
 	"Web サイト 'Web サイト名' のスケールの構成に失敗しました" というエラーが発生する場合は、詳細ボタンを使用して詳細情報を表示できます。
 	
 
@@ -77,17 +77,17 @@ CNAME レコードを作成するには、レジストラーから提供され�
 
 1. これらの手段のいずれかを使用して、Web サイトに割り当てられた **.azurewebsite.net** ドメイン名を見つけます。
 
-	* [Windows Azure の管理ポータル][portal]にログインし、Web サイトを選択して、**[ダッシュボード]** を選択し、**[概要]** セクションの**[サイトの URL]** エントリを探します。
+	* [Windows Azure の管理ポータル][portal]にログインし、Web サイトを選択して、**[ダッシュボード]** を選択し、**[概要]** セクションの **[サイトの URL]** エントリを探します。
 
-	*[Windows Azure Powershell](http://www.windowsazure.com/en-us/manage/install-and-configure-windows-powershell/) をインストールして構成し、次のコマンドを使用します。
+	* [Windows Azure Powershell](http://www.windowsazure.com/ja-jp/manage/install-and-configure-windows-powershell/) をインストールして構成し、次のコマンドを使用します。
 
 			get-azurewebsite yoursitename | select hostnames
 
-	*[Windows Azure Cross-Platform Command Line Interface (Windows Azure クロス プラットフォーム コマンド ライン インターフェイス)](http://www.windowsazure.com/en-us/manage/install-and-configure-cli/) をインストールして構成し、次のコマンドを使用します。
+	* [Windows Azure Cross-Platform Command Line Interface (Windows Azure クロス プラットフォーム コマンド ライン インターフェイス)](http://www.windowsazure.com/ja-jp/manage/install-and-configure-cli/) をインストールして構成し、次のコマンドを使用します。
 
 			azure site domain list yoursitename
 
-	次の手順で使用するため、この **.azurewebsite.net** を保存します。
+	次のステップで使用するため、この **.azurewebsite.net** という名前を保存します。
 
 3. DNS レジストラーの Web サイトにログオンし、DNS の管理ページに移動します。**[ドメイン名]**、**[DNS]**、**[ネーム サーバー管理]** というラベルが付いたサイトのリンクまたは領域を探します。
 
@@ -113,13 +113,13 @@ CNAME レコードを作成するには、レジストラーから提供され�
 **www.contoso.com** の訪問者が本当のホスト (contoso.azurewebsite.net) を識別することはないため、転送プロセスはエンド ユーザーから見えなくなります。
 
 <div class="dev-callout">
-<b>注</b>
+<b>メモ</b>
 <p>上の例は、<strong>www</strong> サブドメインのトラフィックのみに該当します。CNAME レコードにはワイルドカードを使用できないため、各ドメインおよびサブドメインに 1 つの CNAME を作成する必要があります。サブドメイン (*.contoso.com など) からトラフィックを azurewebsite.net アドレスに転送するには、DNS 設定の <strong>URL リダイレクト</strong> エントリまたは <strong>URL 転送</strong>エントリを構成するか、または A レコードを作成します。</p>
 </div>
 
 <div class="dev-callout"> 
-<b>注</b> 
-<p>CNAME が DNS に反映されるまで多少の時間がかかります。CNAME が反映されるまで、Web サイトに対して CNAME を設定することはできません。<a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> などのサービスを使用すると、CNAME を利用できるかどうかを確認できます。</p> 
+<b>メモ</b> 
+<p>CNAME が DNS に反映されるまで多少の時間がかかります。CNAME が反映されるまで、Web サイトに対して CNAME を設定することはできません。<a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> などのサービスを使用すると、CNAME を利用できるかどうかを確認できます。</p>
 </div>
 
 ###Web サイトへのドメイン名の追加
@@ -128,7 +128,7 @@ CNAME レコードを作成するには、レジストラーから提供され�
 
 **コマンド ライン ツールを使用してドメイン名を追加するには**
 
-[Windows Azure Cross-Platform Command-Line Interface (Windows Azure クロス プラットフォーム コマンド ライン インターフェイス)](http://www.windowsazure.com/en-us/manage/install-and-configure-cli/) をインストールして構成し、次のコマンドを使用します。
+[Windows Azure Cross-Platform Command-Line Interface (Windows Azure クロス プラットフォーム コマンド ライン インターフェイス)](http://www.windowsazure.com/ja-jp/manage/install-and-configure-cli/) をインストールして構成し、次のコマンドを使用します。
 
 	azure site domain add customdomain yoursitename
 
@@ -176,7 +176,7 @@ A レコードを作成するには、まず、Web サイトの IP アドレス�
 
 6. A レコードと CNAME レコードを選択または入力する場所を探します。一覧からレコードの種類を選択するか、詳細設定ページに進まなければならない場合があります。
 
-7. A レコードを作成するには、次の手順を実行します。
+7. A レコードを作成するには、次のステップを実行します。
 
 	1. A レコードを使用するドメインまたはサブドメインを選択または入力します。たとえば、**www.customdomain.com** のエイリアスを作成する場合は **www** を選択します。すべてのサブドメインのワイルドカード エントリを作成する場合は、'__*__' を入力します。これは、**mail.customdomain.com**、**login.customdomain.com**、**www.customdomain.com** などすべてのサブドメインを対象とします。
 
@@ -202,7 +202,7 @@ A レコードを作成するには、まず、Web サイトの IP アドレス�
 7. 次に、**awverify** のエイリアスがある CNAME レコード、および先に取得した **awverify.mysite.azurewebsites.net** の正規のドメインを作成します。
 
 	<div class="dev-callout>
-	<b>注</b>
+	<b>メモ</b>
 	<p>レジストラーで使用される awverify のエイリアスもあれば、awverify.www.customdomainname.com または awverify.customdomainname.com の完全エイリアス ドメイン名を必要とするものもあります。</p>
 	</div>
 
@@ -220,8 +220,8 @@ A レコードを作成するには、まず、Web サイトの IP アドレス�
 	</table>
 
 <div class="dev-callout"> 
-<b>注</b> 
-<p>awverify CNAME が DNS に反映されるまで多少の時間がかかります。awverify CNAME が反映されるまで、Web サイトに対して A レコードで定義されたカスタム ドメイン名を設定することはできません。<a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> などのサービスを使用すると、CNAME を利用できるかどうかを確認できます。</p> 
+<b>メモ</b>
+<p>awverify CNAME が DNS に反映されるまで多少の時間がかかります。awverify CNAME が反映されるまで、Web サイトに対して A レコードで定義されたカスタム ドメイン名を設定することはできません。<a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> などのサービスを使用すると、CNAME を利用できるかどうかを確認できます。</p>
 </div>
 
 ###Web サイトへのドメイン名の追加
@@ -230,7 +230,7 @@ A レコードを作成するには、まず、Web サイトの IP アドレス�
 
 **コマンド ライン ツールを使用してドメイン名を追加するには**
 
-[Windows Azure Cross-Platform Command-Line Interface (Windows Azure クロス プラットフォーム コマンド ライン インターフェイス)](http://www.windowsazure.com/en-us/manage/install-and-configure-cli/) をインストールして構成し、次のコマンドを使用します。
+[Windows Azure Cross-Platform Command-Line Interface (Windows Azure クロス プラットフォーム コマンド ライン インターフェイス)](http://www.windowsazure.com/ja-jp/manage/install-and-configure-cli/) をインストールして構成し、次のコマンドを使用します。
 
 	azure site domain add customdomain yoursitename
 
@@ -261,15 +261,15 @@ A レコードを作成するには、まず、Web サイトの IP アドレス�
 構成が完了したら、カスタム ドメイン名は Web サイトの **[構成]** ページの **[ドメイン名]** セクションに表示されます。
 
 <div class="dev-callout"> 
-<b>注</b> 
-<p>A レコードで定義されたカスタム ドメイン名を Web サイトに追加したら、レジストラーから提供されるツールを使用して awverify CNAME レコードを削除できます。ただし、今後、別の A レコードを追加するには、新しい A レコードで定義された新しいドメイン名を Web サイトに関連付ける前に awverify レコードを再作成する必要があります。</p> 
+<b>メモ</b> 
+<p>A レコードで定義されたカスタム ドメイン名を Web サイトに追加したら、レジストラーから提供されるツールを使用して awverify CNAME レコードを削除できます。ただし、今後、別の A レコードを追加するには、新しい A レコードで定義された新しいドメイン名を Web サイトに関連付ける前に awverify レコードを再作成する必要があります。</p>
 </div>
 
-## 次の手順
+## 次のステップ
 
--   [Web サイトの管理方法](http://www.windowsazure.com/en-us/manage/services/web-sites/how-to-manage-websites/)
+-   [Web サイトの管理方法](http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-manage-websites/)
 
--   [Web サイトの SSL 証明書の構成](http://www.windowsazure.com/en-us/develop/net/common-tasks/enable-ssl-web-site/)
+-   [Web サイトの SSL 証明書の構成](http://www.windowsazure.com/ja-jp/develop/net/common-tasks/enable-ssl-web-site/)
 
 
 <!-- Bookmarks -->
@@ -282,7 +282,7 @@ A レコードを作成するには、まず、Web サイトの IP アドレス�
 
 <!-- Links -->
 
-[PricingDetails]: https://www.windowsazure.com/en-us/pricing/details/
+[PricingDetails]: https://www.windowsazure.com/ja-jp/pricing/details/
 [portal]: http://manage.windowsazure.com
 [digweb]: http://www.digwebinterface.com/
 [cloudservicedns]: ../custom-dns/
@@ -301,5 +301,4 @@ A レコードを作成するには、まず、Web サイトの IP アドレス�
 
 [setcname2]: ./media/custom-dns-web-site/dncmntask-cname-6.png
 [setcname3]: ./media/custom-dns-web-site/dncmntask-cname-7.png
-
 

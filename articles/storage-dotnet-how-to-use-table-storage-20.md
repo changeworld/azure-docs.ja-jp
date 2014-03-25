@@ -5,15 +5,15 @@
 # テーブル ストレージ サービスを使用する方法
 
 <div class="dev-center-tutorial-selector">
-<a href="/en-us/develop/net/how-to-guides/table-services-v17/" title="version 1.7">バージョン 1.7</a>
-<a href="/en-us/develop/net/how-to-guides/table-services/" title="version 2.0" class="current">バージョン 2.0</a>
+<a href="/ja-jp/develop/net/how-to-guides/table-services-v17/" title="バージョン 1.7">バージョン 1.7</a>
+<a href="/ja-jp/develop/net/how-to-guides/table-services/" title="バージョン 2.0" class="current">バージョン 2.0</a> 
 </div>
 
 
 このガイドでは、Windows Azure テーブル ストレージ サービスを使用して
 一般的なシナリオを実行する方法について説明します。サンプルは C\# コードで記述され、Windows Azure .NET 用ストレージ クライアント ライブラリ (バージョン 2.0) を利用しています。紹介するシナリオは、**テーブルの作成と削除**、
 **テーブル エンティティの操作**などです。テーブルの
-詳細については、「[次の手順][]」のセクションを参照してください。
+詳細については、「[次のステップ][]」のセクションを参照してください。
 
 ## 目次
 
@@ -33,7 +33,7 @@
 -   [方法: エンティティ プロパティのサブセットを照会する][]
 -   [方法: エンティティを削除する][]
 -   [方法: テーブルを削除する][]
--   [次の手順][]
+-   [次のステップ][]
 
 [WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
@@ -58,28 +58,28 @@ Windows Azure .NET 用ストレージ クライアント ライブラリでは�
 
 Windows Azure サービス構成で接続文字列を構成するには:
 
-1.  Visual Studio のソリューション エクスプローラーで、Windows Azure 展開プロジェクトの **[ロール]** フォルダー内の Web ロールまたは Worker ロールを右クリックし、**[プロパティ]** をクリックします。
+1. Visual Studio のソリューション エクスプローラーで、Windows Azure 展開プロジェクトの **[ロール]** フォルダー内の Web ロールまたは Worker ロールを右クリックし、**[プロパティ]** をクリックします。
     ![Blob5][Blob5]
 
-2.  **[設定]** タブをクリックし、**[設定の追加]** をクリックします。
+2. **[設定]** タブをクリックし、**[設定の追加]** をクリックします。
     ![Blob6][Blob6]
 
-    新しい **[Setting1]** エントリが設定グリッドに表示されます。
+    新しい [**Setting1**] エントリが設定グリッドに表示されます。
 
-3.  新しい **[Setting1]** エントリの **[種類]** ボックスの一覧で、**[接続文字列]** をクリックします。
+3. 新しい [**Setting1**] エントリの **[種類]** ボックスの一覧で、[**Connection String**] をクリックします。
     ![Blob7][Blob7]
 
-4.  **[Setting1]** エントリの右端にある **[...]** をクリックします。
+4. **[Setting1]** エントリの右端にある **[...]** をクリックします。
     **[ストレージ アカウント接続文字列]** ダイアログ ボックスが開きます。
 
-5.  ストレージ エミュレーター (ローカル コンピューターでシミュレートされた 
+5. ストレージ エミュレーター (ローカル コンピューターでシミュレートされた 
 Windows Azure のストレージ) をターゲットとするか、クラウド内の実際の
 ストレージ アカウントをターゲットとするかを選択します。このガイドに記載されているコードは、どちらのオプションにも対応しています。以前に Windows Azure で作成したストレージ アカウントに 
 BLOB データを格納する場合は、このチュートリアルの前の手順から
 コピーした**プライマリ アクセス キー**の値を入力します。
     ![Blob8][Blob8]
 
-6.  エントリの **[名前]** を **Setting1** から **StorageConnectionString** 
+6. エントリの **[名前]** を **Setting1** から **StorageConnectionString** 
 などの "わかりやすい" 名前に変更します。この接続文字列は、このガイドの後半のコードで参照します。
     ![Blob9][Blob9]
 	
@@ -102,7 +102,7 @@ Windows Azure のクラウド サービスではないアプリケーション (
 <h3>アセンブリの取得</h3>
 NuGet を使用して 'Microsoft.WindowsAzure.Storage.dll' アセンブリを取得できます。**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Windows Azure のストレージのパッケージと依存関係をインストールします。
 
-'Microsoft.WindowsAzure.Storage.dll' は、<a href="http://www.windowsazure.com/en-us/develop/net/#">.NET デベロッパー センター</a>からダウンロードできる Windows Azure SDK for .NET 2.0 にも含まれています。アセンブリは '%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\v2.0\ref\' ディレクトリにインストールされます。
+'Microsoft.WindowsAzure.Storage.dll' は、<a href="http://www.windowsazure.com/ja-jp/develop/net/#">.NET デベロッパー センター</a>からダウンロードできる Windows Azure SDK for .NET 2.0 にも含まれています。アセンブリは、'%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\v2.0\ref\' ディレクトリにインストールされます。
 
 <h3>名前空間宣言</h3>
 プログラムを使用して Windows Azure のストレージにアクセスするすべての C\# ファイルの冒頭部分に、名前空間を宣言する次のコードを追加します。
@@ -116,15 +116,15 @@ NuGet を使用して 'Microsoft.WindowsAzure.Storage.dll' アセンブリを取
 <h3>接続文字列の取得</h3>
 **CloudStorageAccount** 型を使用してストレージ アカウント情報を表すことができます。Windows Azure プロジェクト 
 テンプレートを使用している場合や、
-Microsoft.WindowsAzure.CloudConfigurationManager 名前空間への参照が
-ある場合は、**CloudConfigurationManager** 型を使用して 
-Windows Azure サービス構成からストレージ接続文字列と
+Microsoft.WindowsAzure.CloudConfigurationManager への
+参照がある場合は、**CloudConfigurationManager** 型を
+使用して Windows Azure サービス構成からストレージ接続文字列と
 ストレージ アカウント情報を取得できます。
 
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-作成しているアプリケーションに Microsoft.WindowsAzure.CloudConfigurationManager への参照が含まれておらず、接続文字列が 'web.config' または 'app.config' に格納されている場合は、**ConfigurationManager** を使用して接続文字列を取得できます。System.Configuration.dll への参照をプロジェクトに追加し、対応する名前空間宣言を追加する必要があります。
+作成しているアプリケーションに Microsoft.WindowsAzure.CloudConfigurationManager への参照が含まれておらず、接続文字列が web.config または app.config に格納されている場合は、**ConfigurationManager** を使用して接続文字列を取得できます。System.Configuration.dll への参照をプロジェクトに追加し、対応する名前空間宣言を追加する必要があります。
 
 	using System.Configuration;
 	...
@@ -209,11 +209,11 @@ Windows Azure サービス構成からストレージ接続文字列と
 挿入できます。バッチ操作に関しては、次の
 事項にも留意してください。
 
-1.  更新、削除、および挿入を同じ 1 回のバッチ操作で実行できます。
-2.  1 つのバッチ操作には、最大 100 個のエンティティを含めることができます。
-3.  1 つのバッチ操作に含まれるすべてのエンティティの
+1. 更新、削除、および挿入を同じ 1 回のバッチ操作で実行できます。
+2.1 つのバッチ操作には、最大 100 個のエンティティを含めることができます。
+3.1 つのバッチ操作に含まれるすべてのエンティティの
 パーティション キーが同じである必要があります。
-4.  クエリをバッチ操作として実行することもできますが、バッチ内の唯一の操作である必要があります。
+4. クエリをバッチ操作として実行することもできますが、バッチ内の唯一の操作である必要があります。
 
 <!-- -->
 次のコード例は、2 つのエンティティ オブジェクトを作成して、
@@ -263,7 +263,7 @@ Windows Azure サービス構成からストレージ接続文字列と
     // テーブル クライアントを作成します。
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    //  "people" テーブルを表す CloudTable オブジェクトを作成します。
+    // "people" テーブルを表す CloudTable オブジェクトを作成します。
     CloudTable table = tableClient.GetTableReference("people");
 
     // PartitionKey="Smith" であるすべてのユーザー エンティティの照会操作を作成します。
@@ -276,7 +276,7 @@ Windows Azure サービス構成からストレージ接続文字列と
             entity.Email, entity.PhoneNumber);
     }
 
-<h2><a name="retrieve-range-entities"></a><span class="short-header">一定範囲てのエンティティを取得する</span>方法: パーティション内の一定範囲のエンティティを取得する</h2>
+<h2><a name="retrieve-range-entities"></a><span class="short-header">一定範囲のエンティティを取得する</span>方法: パーティション内の一定範囲のエンティティを取得する</h2>
 
 パーティション内の一部のエンティティのみを照会する場合は、
 パーティション キー フィルターと行キー フィルターを組み合わせて範囲を指定できます。次のコード例は、
@@ -291,7 +291,7 @@ Windows Azure サービス構成からストレージ接続文字列と
     // テーブル クライアントを作成します。
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    //"people" テーブルを表す CloudTable オブジェクトを作成します。
+    // "people" テーブルを表す CloudTable オブジェクトを作成します。
     CloudTable table = tableClient.GetTableReference("people");
 
 	// テーブル クエリを作成します。
@@ -301,7 +301,7 @@ Windows Azure サービス構成からストレージ接続文字列と
             TableOperators.And,
             TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.LessThan, "E")));
 
-    // 結果をループ処理し、エンティティに関する情報を表示します
+    // 結果をループ処理し、エンティティに関する情報を表示します。
     foreach (CustomerEntity entity in table.ExecuteQuery(rangeQuery))
     {
         Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
@@ -323,7 +323,7 @@ Windows Azure サービス構成からストレージ接続文字列と
     // テーブル クライアントを作成します。
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    //  "people" テーブルを表す CloudTable オブジェクトを作成します。
+    // "people" テーブルを表す CloudTable オブジェクトを作成します。
     CloudTable table = tableClient.GetTableReference("people");
 
     // ユーザー エンティティを取得する取得操作を作成します。
@@ -354,10 +354,10 @@ Windows Azure サービス構成からストレージ接続文字列と
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // テーブル クライアントを作成します
-    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+    // テーブル クライアント
+    CloudTableClient tableClient = storageAccount.CreateCloudTableClient(); を作成します。
 
-    //  "people" テーブルを表す CloudTable オブジェクトを作成します。
+    // "people" テーブルを表す CloudTable オブジェクトを作成します。
     CloudTable table = tableClient.GetTableReference("people");
 
     // ユーザー エンティティを取得する取得操作を作成します。
@@ -371,13 +371,13 @@ Windows Azure サービス構成からストレージ接続文字列と
 
     if (updateEntity != null)
 	{
-	   // 電話番号を変更します。
+	   // Change the phone number.
 	   updateEntity.PhoneNumber = "425-555-0105";
 
-	   // InsertOrReplace TableOperation を作成します
+	   // Create the InsertOrReplace TableOperation
 	   TableOperation updateOperation = TableOperation.Replace(updateEntity);
 
-	   // 操作を実行します。
+	   // Execute the operation.
 	   table.Execute(updateOperation);
 
 	   Console.WriteLine("Entity updated.");
@@ -405,7 +405,7 @@ Windows Azure サービス構成からストレージ接続文字列と
     // テーブル クライアントを作成します。
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    //  "people" テーブルを表す CloudTable オブジェクトを作成します。
+    // "people" テーブルを表す CloudTable オブジェクトを作成します。
     CloudTable table = tableClient.GetTableReference("people");
 
     // ユーザー エンティティを取得する取得操作を作成します。
@@ -419,13 +419,13 @@ Windows Azure サービス構成からストレージ接続文字列と
 
     if (updateEntity != null)
 	{
-	   // 電話番号を変更します。
+	   // Change the phone number.
 	   updateEntity.PhoneNumber = "425-555-1234";
 
-	   // InsertOrReplace TableOperation を作成します
+	   // Create the InsertOrReplace TableOperation
 	   TableOperation insertOrReplaceOperation = TableOperation.InsertOrReplace(updateEntity);
 
-	   // 操作を実行します。
+	   // Execute the operation.
 	   table.Execute(insertOrReplaceOperation);
 
 	   Console.WriteLine("Entity was updated.");
@@ -438,8 +438,7 @@ Windows Azure サービス構成からストレージ接続文字列と
 
 テーブル クエリでは、エンティティのすべてのプロパティではなくごくわずかのプロパティだけをエンティティから取得できます。プロジェクションと呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。次のコードのクエリは、
 テーブル内のエンティティの電子メール アドレスだけを
-返します。これは、**DynamicTableEntity** のクエリと **EntityResolver** を
-使用して行われます。プロジェクションの詳細については、この[ブログの記事][]を参照してください。プロジェクションはローカル ストレージ エミュレーターではサポートされていません。したがって、このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。
+返します。これは、**DynamicTableEntity** のクエリと **EntityResolver** を使用して行われます。プロジェクションの詳細については、この[ブログの記事][]を参照してください。プロジェクションはローカル ストレージ エミュレーターではサポートされていません。したがって、このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。
 
     // 接続文字列からストレージ アカウントを取得します
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -448,7 +447,7 @@ Windows Azure サービス構成からストレージ接続文字列と
     // テーブル クライアントを作成します
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    //"people" テーブルを表す CloudTable オブジェクトを作成します。
+    // "people" テーブルを表す CloudTable オブジェクトを作成します。
     CloudTable table = tableClient.GetTableReference("people");
 
     // クエリを定義し、電子メールのプロパティだけを選択します
@@ -474,7 +473,7 @@ Windows Azure サービス構成からストレージ接続文字列と
     // テーブル クライアントを作成します
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    //"people" テーブルを表す CloudTable オブジェクトを作成します。
+    // "people" テーブルを表す CloudTable オブジェクトを作成します。
     CloudTable table = tableClient.GetTableReference("people");
 
     // ユーザー エンティティが必要な取得操作を作成します。
@@ -511,34 +510,34 @@ Windows Azure サービス構成からストレージ接続文字列と
     // テーブル クライアントを作成します。
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    //"people" テーブルを表す CloudTable オブジェクトを作成します。
+    // "people" テーブルを表す CloudTable オブジェクトを作成します。
     CloudTable table = tableClient.GetTableReference("people");
 
     // テーブルが存在する場合は削除します。
     table.DeleteIfExists();
 
-<h2><a name="next-steps"></a><span class="short-header">次の手順</span>次の手順</h2>
+<h2><a name="next-steps"></a><span class="short-header">次のステップ</span>次のステップ</h2>
 
 これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
 <ul>
 <li>利用可能な API の詳細については、BLOB サービスのリファレンス ドキュメントを参照してください。
   <ul>
-    <li><a href="http://msdn.microsoft.com/en-us/library/windowsazure/wa_storage_api_ref_reference_home.aspx">.NET 用ストレージ クライアント ライブラリ リファレンス</a>
+    <li><a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/wa_storage_api_ref_reference_home.aspx">.NET 用ストレージ クライアント ライブラリ リファレンス</a>
     </li>
-    <li><a href="http://msdn.microsoft.com/en-us/library/windowsazure/dd179355">REST API リファレンス</a></li>
+    <li><a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179355">REST API リファレンス</a></li>
   </ul>
 </li>
-<li>Windows Azure のストレージを使用して実行できるさらに高度なタスクについては、「<a href="http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx">Windows Azure のデータの格納とアクセス</a>」を参照してください。</li>
+<li>Windows Azure のストレージを使用して実行できるさらに高度なタスクについては、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx">Windows Azure のデータの格納とアクセス</a>」を参照してください。</li>
 <li>Windows Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
   <ul>
-    <li>非構造化データの格納には、<a href="/en-us/develop/net/how-to-guides/blob-storage/">BLOB ストレージ</a>を使用します。</li>
-    <li>リレーショナル データの格納には、<a href="/en-us/develop/net/how-to-guides/sql-database/">SQL データベース</a>を使用します。</li>
+    <li>非構造化データの格納には、<a href="/ja-jp/develop/net/how-to-guides/blob-storage/">BLOB ストレージ</a>を使用します。</li>
+    <li>リレーショナル データの格納には、<a href="/ja-jp/develop/net/how-to-guides/sql-database/">SQL データベース</a>を使用します。</li>
   </ul>
 </li>
 </ul>
 
-  [次の手順]: #next-steps
+  [次のステップ]: #next-steps
   [テーブル サービスとは]: #what-is
   [概念]: #concepts
   [Windows Azure のストレージ アカウントの作成]: #create-account
@@ -557,8 +556,8 @@ Windows Azure サービス構成からストレージ接続文字列と
   [方法: エンティティ プロパティのサブセットを照会する]: #query-entity-properties
   [方法: エンティティを削除する]: #delete-entity
   [方法: テーブルを削除する]: #delete-table
-  [Windows Azure SDK for .NET をダウンロードしてインストールする]: /en-us/develop/net/
-  [Visual Studio で Windows Azure プロジェクトを作成する]: http://msdn.microsoft.com/en-us/library/windowsazure/ee405487.aspx
+  [Windows Azure SDK for .NET をダウンロードしてインストールする]: /ja-jp/develop/net/
+  [Visual Studio で Windows Azure プロジェクトを作成する]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405487.aspx
   
   [Blob5]: ./media/storage-dotnet-how-to-use-table-storage-20/blob5.png
   [Blob6]: ./media/storage-dotnet-how-to-use-table-storage-20/blob6.png
@@ -567,11 +566,10 @@ Windows Azure サービス構成からストレージ接続文字列と
   [Blob9]: ./media/storage-dotnet-how-to-use-table-storage-20/blob9.png
   
   [ブログの投稿]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
-  [Windows Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+  [Windows Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [Windows Azure のストレージ チーム ブログ (このページは英語の場合があります)]: http://blogs.msdn.com/b/windowsazurestorage/
-  [接続文字列の構成]: http://msdn.microsoft.com/en-us/library/windowsazure/ee758697.aspx
+  [接続文字列の構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758697.aspx
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
-
 

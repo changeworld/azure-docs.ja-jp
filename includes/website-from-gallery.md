@@ -12,7 +12,7 @@
 ![WordPress ブログ][13]
 
 <div class="dev-callout"><strong>注</strong>
-<p>このチュートリアルを完了するには、Windows Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、<a href="http://www.windowsazure.com/en-us/develop/php/tutorials/create-a-windows-azure-account/" target="_blank">Windows Azure アカウントの作成に関するページ</a>を参照してください。</p>
+<p>このチュートリアルを完了するには、Windows Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/develop/php/tutorials/create-a-windows-azure-account/" target="_blank">Windows Azure アカウントの作成に関するページ</a>を参照してください。</p>
 </div>
 <br />
 
@@ -56,7 +56,7 @@
 
 2. **[ダッシュボード]** 管理ページで、下にスクロールして **[サイトの URL]** の下の左側にあるリンクをクリックし、サイトのウェルカム ページを開きます。
 
-	![サイトの URL][11] 
+	![サイトの URL][11]
 
 3. WordPress に必要となる適切な構成情報を入力し、**[WordPress のインストール]** をクリックして構成を完了し、Web サイトのログイン ページを開きます。
 

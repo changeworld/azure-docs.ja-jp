@@ -1,95 +1,94 @@
 <a id="what-are-service-bus-queues"></a>
-##What are Service Bus Queues?
+##サービス バス キューとは
 
-Service Bus Queues support a **brokered messaging communication**
-model. When using queues, components of a distributed application do not
-communicate directly with each other, they instead exchange messages via
-a queue, which acts as an intermediary. A message producer (sender)
-hands off a message to the queue and then continues its processing.
-Asynchronously, a message consumer (receiver) pulls the message from the
-queue and processes it. The producer does not have to wait for a reply
-from the consumer in order to continue to process and send further
-messages. Queues offer **First In, First Out (FIFO)** message delivery
-to one or more competing consumers. That is, messages are typically
-received and processed by the receivers in the order in which they were
-added to the queue, and each message is received and processed by only
-one message consumer.
+サービス バス キューは、**メッセージ通信仲介**モデルをサポートしています。キューを使用すると、分散アプリケーションのコンポーネントが互いに
+直接通信することがなくなり、仲介者の役割を果たすキューを介して
+メッセージをやり取りすることになります。メッセージ プロデューサー (送信者) は
+キューにメッセージを送信した後で、それまでの処理を引き続き実行します。
+メッセージ コンシューマー (受信者) は、キューからメッセージを非同期に
+受信して処理します。メッセージ プロデューサーは、それ以降のメッセージの
+処理と送信を続ける場合、メッセージ コンシューマーからの応答を
+待つ必要がありません。キューでは、コンシューマーが競合している場合のメッセージ配信に
+**先入先出法 (FIFO)** を使用します。つまり、通常はキューに追加された
+順番にメッセージが受信され、処理されます。このとき、メッセージを受信
+および処理できるメッセージ コンシューマーは、メッセージ 1 件につき
+1 つだけです。
 
 ![QueueConcepts](./media/howto-service-bus-queues/sb-queues-08.png)
 
-Service Bus queues are a general-purpose technology that can be used for
-a wide variety of scenarios:
+サービス バス キューは汎用テクノロジであり、幅広いシナリオで
+使用できます。
 
--   Communication between web and worker roles in a multi-tier Windows
-    Azure application
--   Communication between on-premises apps and Windows Azure hosted apps
-    in a hybrid solution
--   Communication between components of a distributed application
-    running on-premises in different organizations or departments of an
-    organization
+-   多層 Windows Azure アプリケーションでの Web ロールと Worker ロールとの
+    間の通信
+-   ハイブリッド ソリューションでの内部設置型アプリケーションと Windows Azure によって
+    ホストされるアプリケーションとの間の通信
+-   複数の組織で実行される分散アプリケーションまたは 1 つの組織内の
+    異なる部署で実行される分散アプリケーションのコンポーネント間の
+    通信
 
-Using queues can enable you to scale out your applications better, and
-enable more resiliency to your architecture.
+キューを使用すると、アプリケーションのスケール アウト性および
+アーキテクチャの復元性を有効にできます。
 
 <a id="create-a-service-namespace"></a>
-<h2>Create a Service Namespace</h2>
+<h2>サービス名前空間の作成</h2>
 
-To begin using Service Bus queues in Windows Azure, you must first
-create a service namespace. A service namespace provides a scoping
-container for addressing Service Bus resources within your application.
+Windows Azure のサービス バス キューを使用するには、最初にサービス
+名前空間を作成する必要があります。サービス名前空間は、アプリケーション内で
+サービス バス リソースをアドレス指定するためのスコープ コンテナーを提供します。
 
-To create a service namespace:
+サービス名前空間を作成するには:
 
-1.  Log on to the [Windows Azure Management Portal][].
+1. [Windows Azure の管理ポータル][]にログオンします。
 
-2.  In the left navigation pane of the Management Portal, click
-    **Service Bus**.
+2. 管理ポータルの左のナビゲーション ウィンドウで、
+**[サービス バス]** をクリックします。
 
-3.  In the lower pane of the Management Portal, click **Create**.   
+3. 管理ポータルの下のウィンドウの **[作成]** をクリックします。
 	![](./media/howto-service-bus-queues/sb-queues-03.png)
 
-4.  In the **Add a new namespace** dialog, enter a namespace name.
-    The system immediately checks to see if the name is available.   
+4. **[新しい名前空間を追加する]** ダイアログで、名前空間の名前を入力します。
+    その名前が使用できるかどうかがすぐに自動で確認されます。
 	![](./media/howto-service-bus-queues/sb-queues-04.png)
 
-5.  After making sure the namespace name is available, choose the
-    country or region in which your namespace should be hosted (make
-    sure you use the same country/region in which you are deploying your
-    compute resources).
+5. 入力した名前が利用できることを確認できたら、名前空間を
+    ホストする国またはリージョンを選択します (コンピューティング 
+    リソースを展開する国またはリージョンと同じ国またはリージョンを
+    必ず使用してください)。
 
-	IMPORTANT: Pick the **same region** that you intend to choose for
-    deploying your application. This will give you the best performance.
+	重要: アプリケーションを展開する予定の国またはリージョンと**同じ国/リージョン**
+    を選択してください。そうすることで、パフォーマンスが最高になります。
 
-6. 	Click the check mark. The system now creates your service
-    namespace and enables it. You might have to wait several minutes as
-    the system provisions resources for your account.
+6.	チェック マークをクリックします。これで、システムによってサービス名前空間が
+    作成および有効化されます。システムがアカウントのリソースを準備し
+    終わるまでに、数分間かかる場合があります。
 
 	![](./media/howto-service-bus-queues/getting-started-multi-tier-27.png)
 
-The namespace you created will then appear in the Management Portal and
-takes a moment to activate. Wait until the status is **Active** before
-continuing.
+作成した名前空間が管理ポータルに表示され、アクティブになります。これには
+少し時間がかかります。ステータスが **[アクティブ]** になるのを待ってから、
+次に進みます。
 
 <a id="obtain-default-credentials"></a>
-<h2>Obtain the Default Management Credentials for the Namespace</h2>
+<h2>名前空間の既定の管理資格情報の取得</h2>
 
-In order to perform management operations, such as creating a queue, on
-the new namespace, you must obtain the management credentials for the
-namespace.
+新しく作成した名前空間に対してキューの作成などの管理操作を実行するには、
+名前空間の管理資格情報を取得する必要があります。
 
-1.  In the left navigation pane, click the **Service Bus** node, to
-    display the list of available namespaces:   
+1. 左側のナビゲーション ウィンドウで **[サービス バス]** ノードをクリック
+    して、利用可能な名前空間の一覧を表示します。
 	![](./media/howto-service-bus-queues/sb-queues-13.png)
 
-2.  Select the namespace you just created from the list shown:   
+2. 表示された一覧から先ほど作成した名前空間を選択します。
 	![](./media/howto-service-bus-queues/sb-queues-09.png)
 
-3.  Click **Connection Information**.   
+3. **[接続情報]** をクリックします。
 	![](./media/howto-service-bus-queues/sb-queues-06.png)
 
-4.  In the **Access connection information** dialog, find the **Default Issuer** and **Default Key** entries. Make a note of these values, as you will use this information below to perform operations with the namespace.
+4. **[接続情報へのアクセス]** ダイアログで、**[既定の発行者]** と **[既定のキー]** のエントリを探します。その値を書き留めておきます。この情報は、この後に名前空間に対して操作を実行するときに使用します。
 
-  [Windows Azure Management Portal]: http://manage.windowsazure.com
-  [Windows Azure Management Portal]: http://manage.windowsazure.com
+  [Windows Azure の管理ポータル]: http://manage.windowsazure.com
+  [Windows Azure の管理ポータル]: http://manage.windowsazure.com
+
 
 

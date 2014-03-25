@@ -1,6 +1,6 @@
 ## <a name="what-is"> </a>キュー ストレージとは
 
-Windows Azure キュー ストレージは、HTTP または HTTP を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。ストレージ アカウントが 2012 年 6 月 8 日以降に作成されている場合、合計容量は 200 TB となり、ストレージ アカウントがそれよりも前の日付で作成されている場合、合計容量は 100 TB となります。ストレージ アカウントの容量の詳細については、[Windows Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ](http://msdn.microsoft.com/en-us/library/dn249410.aspx)を参照してください。
+Windows Azure キュー ストレージは、HTTP または HTTP を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。ストレージ アカウントが 2012 年 6 月 8 日以降に作成されている場合、合計容量は 200 TB となり、ストレージ アカウントがそれよりも前の日付で作成されている場合、合計容量は 100 TB となります。ストレージ アカウントの容量の詳細については、「[Windows Azure Storage Scalability and Performance Targets (Windows Azure のストレージの拡張性とパフォーマンスのターゲット)](http://msdn.microsoft.com/ja-jp/library/dn249410.aspx)」を参照してください。
 
 キュー ストレージの一般的な用途には、次のようなものがあります。
 
@@ -15,17 +15,16 @@ Windows Azure キュー ストレージは、HTTP または HTTP を使用した
 
 
 - **URL 形式:** キューは、次の URL 形式を使用してアドレス指定できます。
-	http://`<ストレージ アカウント>`.queue.core.windows.net/`<キュー>`
+	http://`<storage account>`.queue.core.windows.net/`<queue>` 
       
 次の URL を使用すると、図のいずれかのキューをアドレス指定できます。
 	http://myaccount.queue.core.windows.net/imagesToDownload
 
--**ストレージ アカウント:** Windows Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。ストレージ アカウントの容量の詳細については、[Windows Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ](http://msdn.microsoft.com/en-us/library/dn249410.aspx)を参照してください。
+-**ストレージ アカウント:** Windows Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。ストレージ アカウントの容量の詳細については、「[Windows Azure Storage Scalability and Performance Targets (Windows Azure のストレージの拡張性とパフォーマンスのターゲット)](http://msdn.microsoft.com/ja-jp/library/dn249410.aspx)」を参照してください。
 
 - **キュー:** キューは、メッセージのセットを格納します。すべてのメッセージはキューに格納されている必要があります。
 
 - **メッセージ:** 形式を問わず、メッセージのサイズは最大で 64 KB です。
-
 
 
 

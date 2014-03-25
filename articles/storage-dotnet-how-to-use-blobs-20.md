@@ -4,12 +4,12 @@
 #.NET での Windows Azure BLOB ストレージ サービスの使用方法
 
 <div class="dev-center-tutorial-selector">
-<a href="/en-us/develop/net/how-to-guides/blob-storage-v17/" title="version 1.7">バージョン 1.7</a>
-<a href="/en-us/develop/net/how-to-guides/blob-storage/" title="version 2.0" class="current">バージョン 2.0</a>
+<a href="/ja-jp/develop/net/how-to-guides/blob-storage-v17/" title="バージョン 1.7">バージョン 1.7</a>
+<a href="/ja-jp/develop/net/how-to-guides/blob-storage/" title="バージョン 2.0" class="current">バージョン 2.0</a>
 </div>
 
 
-このガイドでは、Windows Azure BLOB ストレージ サービスを使用して一般的なシナリオを実行する方法のデモンストレーションを行います。サンプルは C\# で記述され、Windows Azure .NET 用ストレージ クライアント ライブラリ (バージョン 2.0) を利用しています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。BLOB の詳細については、「[次の手順][]」のセクションを参照してください。
+このガイドでは、Windows Azure BLOB ストレージ サービスを使用して一般的なシナリオを実行する方法のデモンストレーションを行います。サンプルは C\# で記述され、Windows Azure .NET 用ストレージ クライアント ライブラリ (バージョン 2.0) を利用しています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。BLOB の詳細については、「[次のステップ][]」のセクションを参照してください。
 
 ##目次
 
@@ -23,7 +23,7 @@
 -   [方法: コンテナー内の BLOB を一覧表示する][]
 -   [方法: BLOB をダウンロードする][]
 -   [方法: BLOB を削除する][]
--   [次の手順][]
+-   [次のステップ][]
 
 [WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
@@ -32,7 +32,9 @@
 
 ##<a name="setup-connection-string"></a><span  class="short-header">接続文字列の設定</span>ストレージ接続文字列の設定
 
-Windows Azure .NET 用ストレージ クライアント ライブラリでは、ストレージ接続文字列を使用して、ストレージ サービスにアクセスするためのエンドポイントおよび資格情報を構成できます。ストレージ接続文字列は、コード内にハードコーディングするのではなく、構成ファイルの中で指定します。
+Windows Azure .NET 用ストレージ クライアント ライブラリでは、ストレージ接続文字列を
+使用して、ストレージ サービスにアクセスするためのエンドポイント
+および資格情報を構成できます。ストレージ接続文字列は、コード内にハードコーディングするのではなく、構成ファイルの中で指定します。
 
 - Windows Azure のクラウド サービスを使用するときには、Windows Azure サービス構成システム ('*.csdef' ファイルおよび '*.cscfg' ファイル) を使用して接続文字列を格納することをお勧めします。
 - Windows Azure の Web サイトまたは Windows Azure の仮想マシンを使用する場合や、Windows Azure の外部で実行される .NET アプリケーションを作成する場合は、.NET 構成システム ('web.config' ファイル、'app.config' ファイルなど) を使用して接続文字列を格納することをお勧めします。
@@ -41,38 +43,34 @@ Windows Azure .NET 用ストレージ クライアント ライブラリでは�
 
 ### クラウド サービスを使用する場合の接続文字列の構成
 
-サービス構成メカニズムは、Windows Azure のクラウド サービスのプロジェクトに
-特有のものであり、これを使用すると、アプリケーションを再展開
-することなく Windows Azure の管理ポータルから構成設定を動的に変更
-できます。
+サービス構成メカニズムは、Windows Azure のクラウド サービスのプロジェクトに特有のものであり、これを使用すると、アプリケーションを再展開することなく Windows Azure の管理ポータルから構成設定を動的に変更できます。
 
 Windows Azure サービス構成で接続文字列を構成するには:
 
-1.  Visual Studio のソリューション エクスプローラーで、Windows Azure 
+1. Visual Studio のソリューション エクスプローラーで、Windows Azure 
 展開プロジェクトの **[ロール]** フォルダー内の Web ロールまたは 
 Worker ロールを右クリックし、**[プロパティ]** をクリックします。
     ![Visual Studio で、クラウド サービス ロールのプロパティを選択します。][Blob5]
 
-2.  **[設定]** タブをクリックし、**[設定の追加]** をクリックします。
+2. **[設定]** タブをクリックし、**[設定の追加]** をクリックします。
     ![Visual Studio でのクラウド サービス設定の追加][Blob6]
 
     新しい **[Setting1]** エントリが設定グリッドに表示されます。
 
-3.  新しい **[Setting1]** エントリの **[種類]** ボックスの一覧で、
-**[接続文字列]** をクリックします。
+3. 新しい **[Setting1]** エントリの **[種類]** ボックスの一覧で、**[接続文字列]** をクリックします。
     ![Blob7][Blob7]
 
-4.   **[Setting1]** エントリの右端にある **[...]** をクリックします。
+4. **[Setting1]** エントリの右端にある **[...]** をクリックします。
     **[ストレージ アカウント接続文字列]** ダイアログ ボックスが開きます。
 
-5.  ストレージ エミュレーター (ローカル コンピューターでシミュレートされた 
+5. ストレージ エミュレーター (ローカル コンピューターでシミュレートされた 
 Windows Azure のストレージ) をターゲットとするか、クラウド内の
-ストレージ アカウントをターゲットとするかを選択します。このガイドに記載されているコードは、どちらのオプションにも対応しています。以前に Windows Azure で作成したストレージ アカウントに BLOB 
-データを格納する場合は、このチュートリアルの前の手順からコピーした
- **プライマリ アクセス キー**の値を入力します。
+ストレージ アカウントをターゲットとするかを選択します。このガイドに記載されているコードは、どちらのオプションにも対応しています。以前に Windows Azure で作成したストレージ アカウントに 
+BLOB データを格納する場合は、このチュートリアルの前の手順から
+コピーした**プライマリ アクセス キー**の値を入力します。
     ![Blob8][Blob8]
 
-6.  エントリの **[名前]** を **Setting1** から **StorageConnectionString** 
+6. エントリの **[名前]** を **Setting1** から **StorageConnectionString** 
 などのわかりやすい名前に変更します。この接続文字列は、このガイドの後半のコードで参照します。
     ![Blob9][Blob9]
 	
@@ -95,7 +93,7 @@ Windows Azure のクラウド サービスではないアプリケーション (
 ###アセンブリの取得
 NuGet を使用して 'Microsoft.WindowsAzure.Storage.dll' アセンブリを取得できます。**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Windows Azure のストレージのパッケージと依存関係をインストールします。
 
-'Microsoft.WindowsAzure.Storage.dll' は、<a href="http://www.windowsazure.com/en-us/develop/net/#">.NET デベロッパー センター</a>からダウンロードできる Windows Azure SDK for .NET 2.0 にも含まれています。アセンブリは '%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\v2.0\ref\' ディレクトリにインストールされます。
+'Microsoft.WindowsAzure.Storage.dll' は、<a href="http://www.windowsazure.com/ja-jp/develop/net/#">.NET デベロッパー センター</a>からダウンロードできる Windows Azure SDK for .NET 2.0 にも含まれています。アセンブリは、'%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\v2.0\ref\' ディレクトリにインストールされます。
 
 ###名前空間宣言
 プログラムを使用して Windows Azure のストレージにアクセスするすべての C\# ファイルの冒頭部分に、次の名前空間宣言を追加します。
@@ -117,7 +115,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager への
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-作成しているアプリケーションに Microsoft.WindowsAzure.CloudConfigurationManager への参照が含まれておらず、接続文字列が 'web.config' または 'app.config' に格納されている場合は、**ConfigurationManager** を使用して接続文字列を取得できます。System.Configuration.dll への参照をプロジェクトに追加し、対応する名前空間宣言を追加する必要があります。
+作成しているアプリケーションに Microsoft.WindowsAzure.CloudConfigurationManager への参照が含まれておらず、接続文字列が web.config または app.config に格納されている場合は、**ConfigurationManager** を使用して接続文字列を取得できます。System.Configuration.dll への参照をプロジェクトに追加し、対応する名前空間宣言を追加する必要があります。
 
 	using System.Configuration;
 	...
@@ -193,7 +191,9 @@ Windows Azure BLOB ストレージでは、ブロック BLOB とページ BLOB �
 
 ##<a name="list-blob"> </a><span  class="short-header">コンテナー内の BLOB を一覧表示する</span>方法: コンテナー内の BLOB を一覧表示する
 
-コンテナー内の BLOB を一覧表示するには、まず、コンテナーの参照を取得します。次に、コンテナーの **ListBlobs** メソッドを使って、その中の BLOB やディレクトリを取得します。返される **IListBlobItem** のプロパティやメソッドにアクセスするには、**CloudBlockBlob**、**CloudPageBlob**、**CloudBlobDirectory** のいずれかのオブジェクトにキャストする必要があります。型がわからない場合は、型チェックを使うとどれにキャストすればよいかがわかります。次のコードは、
+コンテナー内の BLOB を一覧表示するには、まず、コンテナーの参照を取得します。次に、コンテナーの **ListBlobs** メソッドを使って、その中の BLOB やディレクトリを取得します。返された **IListBlobItem** の豊富なプロパティとメソッドの
+セットにアクセスするには、**CloudBlockBlob**、
+**CloudPageBlob**、または **CloudBlobDirectory** オブジェクトにキャストする必要があります。型がわからない場合は、型チェックを使うとどれにキャストすればよいかがわかります。次のコードは、
 'photos' コンテナー内の各アイテムの URI を取得して出力する方法を
 示しています。
 
@@ -255,8 +255,7 @@ Windows Azure BLOB ストレージでは、ブロック BLOB とページ BLOB �
 	Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 
 
-必要に応じて、**ListBlobs** メソッドの **UseFlatBlobListing** パラメーターを 
-**true** に
+必要に応じて、**ListBlobs** メソッドの **UseFlatBlobListing** パラメーターを **true** に
 設定することもできます。そうすると、ディレクトリに関係なく、すべての BLOB が **CloudBlockBlob** として返されるようになります。この場合、**ListBlobs** の呼び出しは次のようになります。
 
     // コンテナー内の項目をループ処理して、長さと URI を出力します。
@@ -315,7 +314,7 @@ BLOB をダウンロードするには、まず BLOB の参照を取得し、次
     // 前に作成したコンテナーへの参照を取得します。
     CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-	// "myblob.txt-" という名前の BLOB への参照を取得します
+	// "myblob.txt" という名前の BLOB への参照を取得します
 	CloudBlockBlob blockBlob2 = container.GetBlockBlobReference("myblob.txt");
 
 	string text;
@@ -339,33 +338,33 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその **
     // 前に作成したコンテナーへの参照を取得します。
     CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-    // "myblob.txt-" という名前の BLOB への参照を取得します。
+    // "myblob.txt" という名前の BLOB への参照を取得します。
     CloudBlockBlob blockBlob = container.GetBlockBlobReference("myblob.txt");
 
     // BLOB を削除します。
     blockBlob.Delete(); 
 
-## <a name="next-steps"></a><span  class="short-header">次の手順</span>次の手順
+## <a name="next-steps"></a><span  class="short-header">次のステップ</span>次のステップ
 
 これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 <ul>
 <li>利用可能な API の詳細については、BLOB サービスのリファレンス ドキュメントを参照してください。
   <ul>
-    <li><a href="http://msdn.microsoft.com/en-us/library/windowsazure/wa_storage_api_ref_reference_home.aspx">.NET 用ストレージ クライアント ライブラリ リファレンス</a>
+    <li><a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/wa_storage_api_ref_reference_home.aspx">.NET 用ストレージ クライアント ライブラリ リファレンス</a>
     </li>
-    <li><a href="http://msdn.microsoft.com/en-us/library/windowsazure/dd179355">REST API リファレンス</a></li>
+    <li><a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179355">REST API リファレンス</a></li>
   </ul>
 </li>
-<li>Windows Azure のストレージを使用して実行できるさらに高度なタスクについては、「<a href="http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx">Windows Azure のデータの格納とアクセス</a>」を参照してください。</li>
+<li>Windows Azure のストレージを使用して実行できるさらに高度なタスクについては、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx">Windows Azure のデータの格納とアクセス</a>」を参照してください。</li>
 <li>Windows Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
   <ul>
-    <li>構造化データの格納には、<a href="/en-us/develop/net/how-to-guides/table-services/">テーブル ストレージ</a>を使用します。</li>
-    <li>リレーショナル データの格納には、<a href="/en-us/develop/net/how-to-guides/sql-database/">SQL データベース</a>を使用します。</li>
+    <li>構造化データの格納には、<a href="/ja-jp/develop/net/how-to-guides/table-services/">テーブル ストレージ</a>を使用します。</li>
+    <li>リレーショナル データの格納には、<a href="/ja-jp/develop/net/how-to-guides/sql-database/">SQL データベース</a>を使用します。</li>
   </ul>
 </li>
 </ul>
 
-  [次の手順]: #next-steps
+  [次のステップ]: #next-steps
   [BLOB ストレージとは]: #what-is
   [概念]: #concepts
   [Windows Azure のストレージ アカウントの作成]: #create-account
@@ -382,13 +381,12 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその **
   [Blob8]: ./media/storage-dotnet-how-to-use-blobs-20/blob8.png
   [Blob9]: ./media/storage-dotnet-how-to-use-blobs-20/blob9.png
   
-  [Windows Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+  [Windows Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [Windows Azure のストレージ チーム ブログ (このページは英語の場合があります)]: http://blogs.msdn.com/b/windowsazurestorage/
-  [接続文字列の構成]: http://msdn.microsoft.com/en-us/library/windowsazure/ee758697.aspx
-  [.NET クライアント ライブラリ リファレンス]: http://msdn.microsoft.com/en-us/library/windowsazure/wl_svchosting_mref_reference_home
-  [REST API リファレンス]: http://msdn.microsoft.com/en-us/library/windowsazure/dd179355
+  [接続文字列の構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758697.aspx
+  [.NET クライアント ライブラリ リファレンス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/wl_svchosting_mref_reference_home
+  [REST API リファレンス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179355
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
-
 

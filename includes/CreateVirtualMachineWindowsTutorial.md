@@ -21,7 +21,7 @@ Windows Azure の仮想マシンは、制御と管理が可能なクラウド上
 イメージから仮想マシンを作成するときは、次の選択肢があります。
 
 - Windows Azure の管理ポータルにあるプラットフォーム イメージを使って仮想マシンを作成します。
-- イメージを格納した .vhd ファイルを作成し、Windows Azure にアップロードした後、そのイメージを使って仮想マシンを作成します。手順については、「[Creating and Uploading a Virtual Hard Disk that Contains the Windows Server Operating System (Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード)](/en-us/manage/windows/common-tasks/upload-a-vhd/)」を参照してください。
+- イメージを格納した .vhd ファイルを作成し、Windows Azure にアップロードした後、そのイメージを使って仮想マシンを作成します。詳細については、「[Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](/ja-jp/manage/windows/common-tasks/upload-a-vhd/)」を参照してください。
 
 各仮想マシンは、その仮想マシンだけがクラウド サービス内に配置されているか、他の仮想マシンと共にグループ化されクラウド サービス内に配置されています。同じクラウド サービス内に複数の仮想マシンを配置すると、仮想マシン間の相互通信、仮想マシン間でのネットワーク トラフィックの負荷分散、仮想マシンの高可用性を有効にできます。クラウド サービスと仮想マシンの詳細については、[Windows Azure 入門](http://go.microsoft.com/fwlink/p/?LinkId=311926)に関するページの「実行モデル」のセクションを参照してください。
 
@@ -30,7 +30,7 @@ Windows Azure の仮想マシンは、制御と管理が可能なクラウド上
 このチュートリアルでは、管理ポータルの **[ギャラリーから]** を使用してカスタム仮想マシンを作成する方法について説明します。この方法には、仮想マシンを作成するときに必要に応じて仮想マシンの接続リソース、DNS 名、ネットワーク接続を定義できるため、**[簡易作成]** を使用する場合よりも数多くのオプションが用意されています。
 
 
-1. Windows Azure [管理ポータル](http://manage.windowsazure.com)にサインインします。
+1. Windows Azure の[管理ポータル](http://manage.windowsazure.com)にサインインします。
 
 2. コマンド バーで、**[新規]** をクリックします。
 
@@ -58,9 +58,9 @@ Windows Azure の仮想マシンは、制御と管理が可能なクラウド上
 
 14. **[可用性セット]** では、このチュートリアルの目的に合わせて、既定の設定である **[なし]** を使用します。矢印をクリックして続行します。
 
-15.  **[VM エージェント]** では、VM エージェントをインストールするかどうかを決定します。このエージェントには、仮想マシンの操作に役立つ拡張機能をインストールするための環境が用意されています。詳細については、[拡張機能の使用に関するページ](http://go.microsoft.com/FWLink/p/?LinkID=394093)を参照してください。**重要**: VM エージェントは、仮想マシンを作成するときにのみインストールできます。
+15. **[VM エージェント]** では、VM エージェントをインストールするかどうかを決定します。このエージェントには、仮想マシンの操作に役立つ拡張機能をインストールするための環境が用意されています。詳細については、[拡張機能の使用に関するページ](http://go.microsoft.com/FWLink/p/?LinkID=394093)を参照してください。**重要**: VM エージェントは、仮想マシンを作成するときにのみインストールできます。
  
-16. **[エンドポイント]** で、リモート デスクトップや Windows PowerShell リモート処理などを使用した仮想マシンへの接続を許可するために作成される新しいエンドポイントを確認します。ここでエンドポイントを追加したり、後でエンドポイントを作成することもできます。後でエンドポイントを作成する手順については、「[How to Set Up Communication with a Virtual Machine (仮想マシンとの通信をセットアップする方法)](http://www.windowsazure.com/en-us/manage/linux/how-to-guides/setup-endpoints/)」を参照してください。
+16. **[エンドポイント]** で、リモート デスクトップや Windows PowerShell リモート処理などを使用した仮想マシンへの接続を許可するために作成される新しいエンドポイントを確認します。ここでエンドポイントを追加したり、後でエンドポイントを作成することもできます。後でエンドポイントを作成する手順については、「[How to Set Up Communication with a Virtual Machine (仮想マシンとの通信をセットアップする方法)](http://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/setup-endpoints/)」を参照してください。
 
 17. チェック マークをクリックして、仮想マシンを作成します。
     
@@ -71,7 +71,7 @@ Windows Azure の仮想マシンは、制御と管理が可能なクラウド上
 
 作成した仮想マシンにログオンして、仮想マシンの設定と、仮想マシン上で実行されるアプリケーションの両方を管理できます。
 
-1. Windows Azure [管理ポータル](http://manage.windowsazure.com)にサインインします。
+1. Windows Azure の[管理ポータル](http://manage.windowsazure.com)にサインインします。
 
 2. **[仮想マシン]** をクリックし、**[MyTestVM1]** 仮想マシンを選択します。
 
@@ -95,7 +95,7 @@ Windows Azure の仮想マシンは、制御と管理が可能なクラウド上
 
 アプリケーションによってはデータの保存が必要になる場合があります。その場合は、仮想マシンにデータ ディスクを接続します。最も簡単な方法は、仮想マシンに空のデータ ディスクを接続することです。
 
-1. Windows Azure [管理ポータル](http://manage.windowsazure.com)にサインインします。
+1. Windows Azure の[管理ポータル](http://manage.windowsazure.com)にサインインします。
 
 2. **[仮想マシン]** をクリックし、**[MyTestVM1]** 仮想マシンを選択します。
 
@@ -138,18 +138,17 @@ Windows Azure の仮想マシンは、制御と管理が可能なクラウド上
 	![初期化の成功](./media/CreateVirtualMachineWindowsTutorial/initializesuccess.png)
 
 
-##次の手順
+##次のステップ
 
 Windows Azure での Windows 仮想マシンの構成に関する詳細については、次の記事を参照してください。
 
--[How to Connect Virtual Machines in a Cloud Service (クラウド サービス内の仮想マシンを接続する方法)](http://www.windowsazure.com/en-us/documentation/articles/cloud-services-connect-virtual-machine/)
+-[How to Connect Virtual Machines in a Cloud Service (クラウド サービス内の仮想マシンを接続する方法)](http://www.windowsazure.com/ja-jp/documentation/articles/cloud-services-connect-virtual-machine/)
 
--[Manage the Availability of Virtual Machines (仮想マシンの可用性管理)](http://www.windowsazure.com/en-us/documentation/articles/manage-availability-virtual-machines/)
+-[Manage the Availability of Virtual Machines (仮想マシンの可用性管理)](http://www.windowsazure.com/ja-jp/documentation/articles/manage-availability-virtual-machines/)
 
 [Windows Azure での仮想マシンについて]: #virtualmachine
 [仮想マシンの作成方法]: #custommachine
 [仮想マシンを作成後、ログオンする方法]: #logon
 [新しい仮想マシンにデータ ディスクを接続する方法]: #attachdisk
 [仮想マシン間の通信をセットアップする方法]: #endpoints
-
 

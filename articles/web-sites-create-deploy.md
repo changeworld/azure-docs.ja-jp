@@ -1,21 +1,21 @@
-<properties linkid="manage-services-how-to-create-websites" urlDisplayName="作成方法" pageTitle="Web サイトの作成方法 - Windows Azure サービス管理" metaKeywords="Azure Web サイトの作成, Azure Web サイトの削除" description="Windows Azure の管理ポータルを使用して Web サイトを作成する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="Web サイトの作成/展開方法" authors=""  solutions="" writer="timamm" manager="" editor=""  />
+<properties linkid="manage-services-how-to-create-websites" urlDisplayName="作成方法" pageTitle="Web サイトの作成方法 - Windows Azure サービス管理" metaKeywords="Azure の Web サイトの作成, Azure の Web サイトの削除" description="Windows Azure の管理ポータルを使用して Web サイトを作成する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="Web サイトの作成/展開方法" authors=""  solutions="" writer="timamm" manager="" editor=""  />
 
 #Web サイトの作成方法
 
 このトピックでは、管理ポータルを使用してギャラリーから Web サイトを作成する方法について説明します。
 
-作成した Windows Azure の Web サイトにコンテンツを展開する方法については、「[Windows Azure Web Sites (Windows Azure の Web サイト)](/en-us/documentation/services/web-sites/)」の「**Deploy (展開)**」を参照してください。
+作成した Windows Azure の Web サイトにコンテンツを展開する方法については、「[Windows Azure Web Sites (Windows Azure の Web サイト)](/ja-jp/documentation/services/web-sites/)」の「**Deploy (展開)**」を参照してください。
 
 ## 目次##
 
 - [方法: 管理ポータルの使用による Web サイトの作成](#createawebsiteportal)
 - [方法: ギャラリーからの Web サイトの作成](#howtocreatefromgallery)
 - [方法: Web サイトの削除](#deleteawebsite)
-- [次の手順](#nextsteps)
+- [次のステップ](#nextsteps)
 
 ##<a name="createawebsiteportal"></a>方法: 管理ポータルの使用による Web サイトの作成
 
-Windows Azure で Web サイトを作成するには、次の手順に従います。
+Windows Azure で Web サイトを作成するには、次のステップに従います。
 	
 1. [Windows Azure の管理ポータル](http://manage.windowsazure.com/)にログインします。
 
@@ -23,7 +23,7 @@ Windows Azure で Web サイトを作成するには、次の手順に従いま�
 
 3. **[Web サイト]** アイコン、**[簡易作成]** アイコンの順にクリックし、URL の値を入力して、ページの右下にある **[Web サイトの作成]** チェック マークをクリックします。
 
-4. Web サイトが作成されると、**"Web サイト <*サイト名*> の作成に成功しました"** というテキストが表示されます。ポータル ページの下部にある **[参照]** をクリックすると、Web サイトを参照できます。
+4. Web サイトが作成されると、"Web サイト **<*web site name*> の作成に成功しました**" というテキストが表示されます。ポータル ページの下部にある **[参照]** をクリックすると、Web サイトを参照できます。
 
 5. ポータルで、Web サイトの一覧に表示されている Web サイトの名前をクリックして、Web サイトの **[クイック スタート]** 管理ページを開きます。
 
@@ -62,8 +62,7 @@ Windows Azure で Web サイトを作成するには、次の手順に従いま�
 ##<a name="deleteawebsite"></a>方法: Web サイトの削除
 Web サイトは、Windows Azure の管理ポータルの **[削除]** アイコンを使用して削除します。**[削除]** アイコンは、Windows Azure ポータル (**[Web サイト]** をクリックして Web サイトをすべて表示したとき) と各 Web サイトの管理ページの下部に表示されます。
 
-##<a name="nextsteps"></a>次の手順
+##<a name="nextsteps"></a>次のステップ
 
-詳細については、「[Windows Azure Web Sites (Windows Azure の Web サイト)](/en-us/documentation/services/web-sites/)」を参照してください。
-
+詳細については、「[Windows Azure Web Sites (Windows Azure の Web サイト)](/ja-jp/documentation/services/web-sites/)」を参照してください。
 
