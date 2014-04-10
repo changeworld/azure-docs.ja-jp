@@ -1,16 +1,16 @@
 
 
-1. 管理ポータルで、**[データ]** タブをクリックし、**Registrations** テーブルをクリックします。
+1. In the Management Portal, click the **Data** tab and then click the **Registrations** table. 
 
 	![][3]
 
-2. **[Registrations]** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。
+2. In **Registrations**, click the **Script** tab and select **Insert**.
    
 	![][4]
 
-	**Registrations** テーブルで挿入が発生したときに呼び出される関数が表示されます。
+	This displays the function that is invoked when an insert occurs in the **Registrations** table.
 
-3. insert 関数を次のコードに置き換え、**[保存]** をクリックします。
+3. Replace the insert function with the following code, and then click **Save**:
 
 		function insert(item, user, request) {
 			var registrationTable = tables.getTable('Registrations');
@@ -26,9 +26,8 @@
     	    }
 	    }
 
-   これにより、新しいテーブルに登録情報を格納する新しい挿入スクリプトが登録されます。
+   This registers a new insert script, which stores the registration information in the new table.
 
 <!-- images-->
 [3]: ./media/mobile-services-update-registrations-script/mobile-portal-data-tables-registrations.png
 [4]: ./media/mobile-services-update-registrations-script/mobile-insert-script-registrations.png
-

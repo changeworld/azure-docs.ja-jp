@@ -1,86 +1,86 @@
-<properties linkid="develop-python-web-app-with-django-mac" UrlDisplayName="Django を使用した Web" pageTitle="Mac で Django を使用した Python Web アプリケーション - Windows Azure チュートリアル" MetaKeywords="" description="Linux 仮想マシンを使用して Windows Azure で Django ベースの Web サイトをホストする方法について説明するチュートリアルです。" metaCanonical="" services="virtual-machines" documentationCenter="Python" title="Django Hello World Web アプリケーション (mac-linux)" authors=""  solutions="" writer="" manager="" editor=""  />
+<properties linkid="develop-python-web-app-with-django-mac" urlDisplayName="Web with Django" pageTitle="Python web app with Django on Mac - Azure tutorial" metaKeywords="" description="A tutorial that shows how to host a Django-based web site on Azure using a Linux virtual machine." metaCanonical="" services="virtual-machines" documentationCenter="Python" title="Django Hello World Web Application (mac-linux)" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-# Django Hello World Web アプリケーション (mac-linux)
+# Django Hello World Web Application (mac-linux)
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/develop/python/tutorials/web-app-with-django/" Title="Windows">Windows</a><a href="/en-us/develop/python/tutorials/django-hello-world-(maclinux)/" Title="Mac/Linux" class="current">Mac/Linux</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/develop/python/tutorials/web-app-with-django/" title="Windows">Windows</a><a href="/en-us/develop/python/tutorials/django-hello-world-(maclinux)/" title="Mac/Linux" class="current">Mac/Linux</a></div>
 
-このチュートリアルでは、Linux 仮想マシンを使用して Windows Azure で
-Django ベースの Web サイトをホストする方法について説明します。このチュートリアルは、Windows Azure を使用した経験がない読者を対象に作成されています。このチュートリアルを完了すると、クラウドで動作する Django ベースのアプリケーションが完成します。
+This tutorial describes how to host a Django-based web site on Windows 
+Azure using a Linux virtual machine. This tutorial assumes you have no prior experience using Azure. Upon completing this guide, you will have a Django-based application up and running in the cloud.
 
-学習内容: 
+You will learn how to:
 
-* Django をホストするように Windows Azure の仮想マシンを設定します。このチュートリアルでは **Linux** でこの設定を行う方法を説明しますが、Windows Azure でホストされている Windows Server VM でも基本的な手順は同じです。
-* 新しい Django アプリケーションを Linux から作成します。
+* Setup an Azure virtual machine to host Django. While this tutorial explains how to accomplish this under **Linux**, the same could also be done with a Windows Server VM hosted in Azure. 
+* Create a new Django application from Linux.
 
-このチュートリアルを実行して、単純な Hello World Web アプリケーションを
-作成します。このアプリケーションは Windows Azure の仮想マシンでホストされます。
+By following this tutorial, you will build a simple Hello World web
+application. The application will be hosted in an Azure virtual machine.
 
-完成したアプリケーションのスクリーンショットは次のようになります。
+A screenshot of the completed application is below:
 
-![Windows Azure で Hello World ページを表示するブラウザー ウィンドウ](./media/virtual-machines-python-django-web-app-linux/mac-linux-django-helloworld-browser.png)
+![A browser window displaying the hello world page on Azure](./media/virtual-machines-python-django-web-app-linux/mac-linux-django-helloworld-browser.png)
 
 [WACOM.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
 
-## Django をホストする Windows Azure の仮想マシンの作成と構成
+## Creating and configuring an Azure virtual machine to host Django
 
-1.[ここ][portal-vm]に記載されている手順に従って、*Ubuntu Server 12.04* ディストリビューションの Windows Azure の仮想マシンを作成します。
+1. Follow the instructions given [here][portal-vm] to create an Azure virtual machine of the *Ubuntu Server 12.04* distribution.
 
-  **注:** 仮想マシンの*作成だけ*を行う必要があります。「*仮想マシンを作成後、ログオンする方法*」というセクションの前まで学習してください。
+  **Note:** you *only* need to create the virtual machine. Stop at the section titled *How to log on to the virtual machine after you create it*.
 
-1.Windows Azure で、ポート **80** トラフィックを Web から仮想マシン上のポート **80** に転送します。
-	* Windows Azure ポータルで新しく作成した仮想マシンに移動し、*[エンドポイント]* タブをクリックします。
-	* 画面の下部にある *[エンドポイントの追加]* ボタンをクリックします。
-	![エンドポイントの追加](./media/virtual-machines-python-django-web-app-linux/mac-linux-django-helloworld-add-endpoint.png)
-	* *TCP* プロトコルの*パブリック ポート 80* を*プライベート ポート 80* として開きます。
+1. Instruct Azure to direct port **80** traffic from the web to port **80** on the virtual machine:
+	* Navigate to your newly created virtual machine in the Azure Portal and click the *ENDPOINTS* tab.
+	* Click *ADD ENDPOINT* button at the bottom of the screen.
+	![add endpoint](./media/virtual-machines-python-django-web-app-linux/mac-linux-django-helloworld-add-endpoint.png)
+	* Open up the *TCP* protocol's *PUBLIC PORT 80* as *PRIVATE PORT 80*.
 	![port80](./media/virtual-machines-python-django-web-app-linux/mac-linux-django-helloworld-port80.png)
 
-## <a id="setup"> </a>開発環境の設定
+## <a id="setup"> </a>Setting up the development environment
 
-**注:** Python をインストールする場合またはクライアント ライブラリを使用する場合は、「[Python Installation Guide (Python インストール ガイド)](../python-how-to-install/)」を参照してください。
+**Note:** If you need to install Python or would like to use the Client Libraries, please see the [Python Installation Guide](../python-how-to-install/).
 
-Ubuntu Linux VM はプレインストールされている Python 2.7 に付属していますが、Apache または Django はインストールされません。VM に接続し、Apache および Django をインストールするには、次の手順に従います。
+The Ubuntu Linux VM already comes with Python 2.7 pre-installed, but it doesn't have Apache or django installed.  Follow these steps to connect to your VM and install Apache and django.
 
-1.新しい**ターミナル** ウィンドウを起動します。
+1.  Launch a new **Terminal** window.
     
-1.次のコマンドを入力して、Windows Azure VM に接続します。
+1.  Enter the following command to connect to the Azure VM.
 
 		$ ssh yourusername@yourVmUrl
 
-1.次のコマンドを入力して、Django をインストールします。
+1.  Enter the following commands to install django:
 
 		$ sudo apt-get install python-setuptools
 		$ sudo easy_install django
 
-1.次のコマンドを入力して、Apache と mod-wsgi をインストールします。
+1.  Enter the following command to install Apache with mod-wsgi:
 
 		$ sudo apt-get install apache2 libapache2-mod-wsgi
 
 
-## 新しい Django アプリケーションの作成
+## Creating a new Django application
 
-1.上のセクションで使用した**ターミナル** ウィンドウを開き、SSH キーを使用して仮想マシンにログインします。
+1.  Open the **Terminal** window you used in the previous section to ssh into your VM.
     
-1.次のコマンドを入力して、新しい Django プロジェクトを作成します。
+1.  Enter the following commands to create a new Django project:
 
-    ![django-admin コマンドの結果](./media/virtual-machines-python-django-web-app-linux/mac-linux-django-helloworld-dir.png)
+    ![The result of the django-admin command](./media/virtual-machines-python-django-web-app-linux/mac-linux-django-helloworld-dir.png)
 
-    **django-admin.py** スクリプトによって、Django ベースの Web サイトの基本的な構造が生成されます。
-    -   **manage.py** を使用すると、Django ベースの Web サイトに対するホスティングの開始や停止を実行できます。
-    -   **helloworld\settings.py** には、アプリケーションの Django 設定が含まれます。
-    -   **helloworld\urls.py** には、各 URL とそのビューとの間のマッピング コードが含まれています。
+    The **django-admin.py** script generates a basic structure for Django-based web sites:
+    -   **manage.py** helps you to start hosting and stop hosting your Django-based web site
+    -   **helloworld\settings.py** contains Django settings for your application.
+    -   **helloworld\urls.py** contains the mapping code between each url and its view.
 
-1.*django\helloworld* のサブディレクトリ *helloworld* に、**views.py** という名前の新しいファイルを作成します。このファイルは **urls.py** と兄弟関係にあります。このファイルには、"Hello World" ページをレンダリングするビューが含まれます。エディターを起動し、以下のコードを入力します。
+1.  Create a new file named **views.py** in the *helloworld* subdirectory of *django\helloworld*, as a sibling of **urls.py**. This will contain the view that renders the "hello world" page. Start your editor and enter the following:
 		
 		from django.http import HttpResponse
 		def hello(request):
     		html = "<html><body>Hello World!</body></html>"
     		return HttpResponse(html)
 
-1.次に、**urls.py** ファイルの内容を次のコードに置き換えます。
+1.  Now replace the contents of the **urls.py** file with the following:
 
 		from django.conf.urls.defaults import patterns, include, url
 		from helloworld.views import hello
@@ -89,9 +89,9 @@ Ubuntu Linux VM はプレインストールされている Python 2.7 に付属�
 		)
 
 
-## Django Web サイトのデプロイと実行
+## Deploying and running your Django web site
 
-1.Apache 構成ファイル **/etc/apache2/httpd.conf** を編集し、以下のコードを追加します。*username* は、VM の作成時に指定したユーザー名に置き換えてください。
+1.  Edit the apache configuration file **/etc/apache2/httpd.conf** and add the following, replacing *username* with the user name that you specified during the creation of the VM:
 
 		WSGIScriptAlias / /home/*username*/django/helloworld/helloworld/wsgi.py
 		WSGIPythonPath /home/*username*/django/helloworld
@@ -103,19 +103,18 @@ Ubuntu Linux VM はプレインストールされている Python 2.7 に付属�
 		</Files>
 		</Directory>
 
-1.次のコマンドで Apache を再起動します。
+1.  Restart apache with the following command:
 
-$ sudo apachectl restart
+        $ sudo apachectl restart
 
-1.最後に、ブラウザーで Web ページを読み込みます。
+1.  Finally, load the web page in your browser:
 
-	![Windows Azure で Hello World ページを表示するブラウザー ウィンドウ](./media/virtual-machines-python-django-web-app-linux/mac-linux-django-helloworld-browser.png)
+	![A browser window displaying the hello world page on Azure](./media/virtual-machines-python-django-web-app-linux/mac-linux-django-helloworld-browser.png)
 
 
-## Windows Azure の仮想マシンのシャットダウン
+## Shutting down your Azure virtual machine
 
-このチュートリアルが終了したら、新しく作成した Windows Azure の仮想マシンをシャットダウンまたは削除して、他のチュートリアル用にリソースを解放し、Windows Azure に対する利用料金の発生を回避します。
+When you're done with this tutorial, shutdown and/or remove your newly created Azure virtual machine to free up resources for other tutorials and avoid incurring Azure usage charges.
 
 
 [portal-vm]: /en-us/manage/linux/tutorials/virtual-machine-from-gallery/
-

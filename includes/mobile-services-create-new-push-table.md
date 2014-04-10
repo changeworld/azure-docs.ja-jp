@@ -1,22 +1,21 @@
 
-1. [Windows Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
+1. Log into the [Azure Management Portal], click **Mobile Services**, and then click your app.
 
 	![](./media/mobile-services-create-new-push-table/mobile-services-selection.png)
 
-2. **[データ]** タブをクリックし、**[作成]** をクリックします。
+2. Click the **Data** tab, and then click **Create**.
 
 	![](./media/mobile-services-create-new-push-table/mobile-create-table.png)
 
-	**[新しいテーブルの作成]** ダイアログ ボックスが表示されます。
+	This displays the **Create new table** dialog.
 
-3. すべてのアクセス許可について既定の **[アプリケーション キーを持つユーザー]** 設定をそのままにし、**[テーブル名]** に「Registrations」と入力してチェック ボタンをクリックします。
+3. Keeping the default **Anybody with the application key** setting for all permissions, type _Registrations_ in **Table name**, and then click the check button.
 
 	![](./media/mobile-services-create-new-push-table/mobile-create-registrations-table.png)
 
-  **Registrations** テーブルが作成されます。このテーブルには、プッシュ通知を送信するために使用されるチャネル URI が格納されます。
+  This creates the **Registrations** table, which stores the channel URIs used to send push notifications.
 
-次に、プッシュ通知を有効にするようにアプリケーションを変更します。
+Next, you will modify the your app to enable push notifications.
 
 <!-- URLs -->
-[Windows Azure の管理ポータル]: https://manage.windowsazure.com/
-
+[Azure Management Portal]: https://manage.windowsazure.com/

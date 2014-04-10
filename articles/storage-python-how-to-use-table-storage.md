@@ -1,73 +1,73 @@
-<properties linkid="develop-python-table-service" UrlDisplayName="テーブル サービス" pageTitle="テーブル ストレージの使用方法 (Python) - Windows Azure の機能ガイド" MetaKeywords="Azure テーブル Python, テーブルの作成 Azure, テーブルの削除 Azure, テーブルの挿入 Azure, テーブルの照会 Azure" description="Python からテーブル サービスを使用して、テーブルを作成および削除する方法、テーブルのエンティティを挿入、削除、照会する方法について説明します。" metaCanonical="" services="storage" documentationCenter="Python" title="Python からテーブル ストレージ サービスを使用する方法" authors=""  solutions="" writer="" manager="" editor=""  />
+<properties linkid="develop-python-table-service" urlDisplayName="Table Service" pageTitle="How to use table storage (Python) | Microsoft Azure" metaKeywords="Azure table Python, creating table Azure, deleting table Azure, inserting table Azure, querying table Azure" description="Learn how to use the Table service from Python to create and delete a table, and insert, delete, and query the table." metaCanonical="" services="storage" documentationCenter="Python" title="How to Use the Table Storage Service from Python" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-# Python からテーブル ストレージ サービスを使用する方法
-このガイドでは、Windows Azure テーブル ストレージ サービスを使用して一般的な
-シナリオを実行する方法について説明します。サンプルは Python API を使用して記述されて
-います。紹介するシナリオは、**テーブルの作成と削除、テーブルの
-エンティティの挿入とクエリ実行**などです。テーブルの
-詳細については、「[次のステップ][]」のセクションを参照してください。
+# How to Use the Table Storage Service from Python
+This guide shows you how to perform common scenarios using the Windows
+Azure Table storage service. The samples are written written using the
+Python API. The scenarios covered include **creating and deleting a
+table, inserting and querying entities in a table**. For more
+information on tables, see the [Next Steps][] section.
 
-## 目次
+## Table of Contents
 
-[テーブル サービスとは][]   
- [概念][]   
- [Windows Azure ストレージ アカウントの作成][]   
- [テーブルの作成方法][]   
- [エンティティをテーブルに追加する方法][]   
- [エンティティを更新する方法][]   
- [エンティティのグループを変更する方法][]   
- [エンティティを照会する方法][]   
- [エンティティのセットを照会する方法][]   
- [エンティティ プロパティのサブセットを照会する方法][]   
- [エンティティを削除する方法][]   
- [テーブルを削除する方法][]   
- [次のステップ][]   
+[What is the Table Service?][]   
+ [Concepts][]   
+ [Create an Azure Storage Account][]   
+ [How To: Create a Table][]   
+ [How To: Add an Entity to a Table][]   
+ [How To: Update an Entity][]   
+ [How To: Change a Group of Entities][]   
+ [How To: Query for an Entity][]   
+ [How To: Query a Set of Entities][]   
+ [How To: Query a Subset of Entity Properties][]   
+ [How To: Delete an Entity][]   
+ [How To: Delete a Table][]   
+ [Next Steps][]
 
 [WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
-## <a name="create-account"> </a>Windows Azure ストレージ アカウントの作成
+## <a name="create-account"> </a>Create an Azure Storage Account
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-**注:** Python またはクライアント ライブラリをインストールする場合は、「[Python Installation Guide (Python インストール ガイド)](../python-how-to-install/)」を参照してください。
+**Note:** If you need to install Python or the Client Libraries, please see the [Python Installation Guide](../python-how-to-install/).
 
 
-## <a name="create-table"> </a>テーブルの作成方法
+## <a name="create-table"> </a>How to Create a Table
 
-**TableService** オブジェクトを使用して、テーブル サービスを操作できます。次の
-コードでは、**TableService** オブジェクトを作成します。プログラムを使用して
-Windows Azure のストレージにアクセスするすべての Python ファイルの先頭付近に、次のコードを追加します。
+The **TableService** object lets you work with table services. The
+following code creates a **TableService** object. Add the following near
+the top of any Python file in which you wish to programmatically access Azure Storage:
 
 	from azure.storage import *
 
-次のコードは、ストレージ アカウントの名前とアカウント キーを使用して、**TableService** オブジェクトを作成します。"myaccount" と "mykey" の部分は、実際のアカウントとキーに置き換えます。
+The following code creates a **TableService** object using the storage account name and account key.  Replace 'myaccount' and 'mykey' with the real account and key.
 
 	table_service = TableService(account_name='myaccount', account_key='mykey')
 
 	table_service.create_table('tasktable')
 
-## <a name="add-entity"> </a>エンティティをテーブルに追加する方法
+## <a name="add-entity"> </a>How to Add an Entity to a Table
 
-エンティティを追加するには、最初に、エンティティのプロパティ名と
-値を定義するディクショナリを作成します。すべてのエンティティについて、
-**PartitionKey** と **RowKey** を指定する必要があることに注意してください。これらはエンティティの
-一意の識別子であり、他のエンティティのプロパティよりはるかに高速に
-照会できる値です。システムでは **PartitionKey** が
-使用されて多くのストレージ ノードにテーブルのエンティティが自動的に配布されます。
-**PartitionKey** が同じエンティティは同じノードで格納されています。**RowKey** は、
-エンティティが属するパーティション内のエンティティの一意の ID
-です。
+To add an entity, first create a dictionary that defines your entity
+property names and values. Note that for every entity you must
+specify a **PartitionKey** and **RowKey**. These are the unique
+identifiers of your entities, and are values that can be queried much
+faster than your other properties. The system uses **PartitionKey** to
+automatically distribute the table entities over many storage nodes.
+Entities with the same **PartitionKey** are stored on the same node. The
+**RowKey** is the unique ID of the entity within the partition it
+belongs to.
 
-エンティティをテーブルに追加するには、ディクショナリ
-オブジェクトを **insert\_entity** メソッドに渡します。
+To add an entity to your table, pass a dictionary object
+to the **insert\_entity** method.
 
 	task = {'PartitionKey': 'tasksSeattle', 'RowKey': '1', 'description' : 'Take out the trash', 'priority' : 200}
 	table_service.insert_entity('tasktable', task)
 
-**Entity** クラスのインスタンスを **insert\_entity** メソッドに渡すこともできます。
+You can also pass an instance of the **Entity** class to the **insert\_entity** method.
 
 	task = Entity()
 	task.PartitionKey = 'tasksSeattle'
@@ -76,18 +76,18 @@ Windows Azure のストレージにアクセスするすべての Python ファ�
 	task.priority = 100
 	table_service.insert_entity('tasktable', task)
 
-## <a name="update-entity"> </a>エンティティを更新する方法
+## <a name="update-entity"> </a>How to Update an Entity
 
-次のコードは、既存のエンティティの以前のバージョンを更新された
-バージョンに置き換える方法を示しています。
+This code shows how to replace the old version of an existing entity
+with an updated version.
 
 	task = {'description' : 'Take out the garbage', 'priority' : 250}
 	table_service.update_entity('tasktable', 'tasksSeattle', '1', task)
 
-更新されるエンティティが存在しない場合、更新操作は失敗します。
-既に存在しているかどうかに関係なく
-エンティティを格納するには、**insert\_or\_replace_entity** を使用します。
-次の例では、最初の呼び出しで既存のエンティティを置き換えます。2 番目の呼び出しでは、指定された **PartitionKey** と **RowKey** を持つエンティティがテーブル内に存在しないため、新しいエンティティが挿入されます。
+If the entity that is being updated does not exist, then the update
+operation will fail. If you want to store an entity
+regardless of whether it already existed before, use **insert\_or\_replace_entity**. 
+In the following example, the first call will replace the existing entity. The second call will insert a new entity, since no entity with the specified **PartitionKey** and **RowKey** exists in the table.
 
 	task = {'description' : 'Take out the garbage again', 'priority' : 250}
 	table_service.insert_or_replace_entity('tasktable', 'tasksSeattle', '1', task)
@@ -95,13 +95,13 @@ Windows Azure のストレージにアクセスするすべての Python ファ�
 	task = {'description' : 'Buy detergent', 'priority' : 300}
 	table_service.insert_or_replace_entity('tasktable', 'tasksSeattle', '3', task)
 
-## <a name="change-entities"> </a>エンティティのグループを変更する方法
+## <a name="change-entities"> </a>How to Change a Group of Entities
 
-状況によって、複数の操作をバッチとして送信し、サーバーによる
-アトミック処理を行うことが合理的である場合があります。これを実現するには、
-**TableService** の **begin\_batch** メソッドを使用した後、一連の操作を
-通常どおり呼び出します。バッチを送信するときは、
-**commit\_batch** を呼び出します。バッチでエンティティを変更するには、すべてのエンティティが同じパーティションに含まれている必要があります。次の例では、2 つのエンティティをバッチでまとめて追加します。
+Sometimes it makes sense to submit multiple operations together in a
+batch to ensure atomic processing by the server. To accomplish that, you
+use the **begin\_batch** method on **TableService** and then call the
+series of operations as usual. When you do want to submit the
+batch, you call **commit\_batch**. Note that all entities must be in the same partition in order to be changed as a batch. The example below adds two entities together in a batch.
 
 	task10 = {'PartitionKey': 'tasksSeattle', 'RowKey': '10', 'description' : 'Go grocery shopping', 'priority' : 400}
 	task11 = {'PartitionKey': 'tasksSeattle', 'RowKey': '11', 'description' : 'Clean the bathroom', 'priority' : 100}
@@ -110,75 +110,75 @@ Windows Azure のストレージにアクセスするすべての Python ファ�
 	table_service.insert_entity('tasktable', task11)
 	table_service.commit_batch()
 
-## <a name="query-for-entity"> </a>エンティティを照会する方法
+## <a name="query-for-entity"> </a>How to Query for an Entity
 
-テーブル内のエンティティを照会するには、**get\_entity** メソッドを
-使用して、**PartitionKey** と **RowKey** を渡します。
+To query an entity in a table, use the **get\_entity** method, by
+passing the **PartitionKey** and **RowKey**.
 
 	task = table_service.get_entity('tasktable', 'tasksSeattle', '1')
 	print(task.description)
 	print(task.priority)
 
-## <a name="query-set-entities"> </a>エンティティのセットを照会する方法
+## <a name="query-set-entities"> </a>How to Query a Set of Entities
 
-次の例では、**PartitionKey** に基づいて、Seattle 内のすべてのタスクを検索します。
+This example finds all tasks in Seattle based on the **PartitionKey**.
 
 	tasks = table_service.query_entities('tasktable', "PartitionKey eq 'tasksSeattle'")
 	for task in tasks:
 		print(task.description)
 		print(task.priority)
 
-## <a name="query-entity-properties"> </a>エンティティ プロパティのサブセットを照会する方法
+## <a name="query-entity-properties"> </a>How to Query a Subset of Entity Properties
 
-テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。
-*プロジェクション*と呼ばれるこの方法では、帯域幅の使用が削減され、クエリの
-パフォーマンスが向上します。特に、大きなエンティティがある場合に役立ちます。**select**
-パラメーターを使用して、クライアントに提供するプロパティの名前を
-渡します。
+A query to a table can retrieve just a few properties from an entity.
+This technique, called *projection*, reduces bandwidth and can improve
+query performance, especially for large entities. Use the **select**
+parameter and pass the names of the properties you would like to bring over
+to the client.
 
-次のコードのクエリは、テーブル内のエンティティの**説明**だけを
-返します。
+The query in the following code only returns the **Descriptions** of
+entities in the table.
 
-*次のスニペットはクラウド ストレージ サービスに対してのみ機能します。
-これはストレージ エミュレーターではサポートされていません。*
+*Please note that the following snippet only works against the cloud
+storage service, this not supported by the Storage
+Emulator.*
 
 	tasks = table_service.query_entities('tasktable', "PartitionKey eq 'tasksSeattle'", 'description')
 	for task in tasks:
 		print(task.description)
 
-## <a name="delete-entity"> </a>エンティティを削除する方法
+## <a name="delete-entity"> </a>How to Delete an Entity
 
-パーティション キーと行キーを使用してエンティティを削除できます。
+You can delete an entity using its partition and row key.
 
 	table_service.delete_entity('tasktable', 'tasksSeattle', '1')
 
-## <a name="delete-table"> </a>テーブルを削除する方法
+## <a name="delete-table"> </a>How to Delete a Table
 
-次のコードは、ストレージ アカウントからテーブルを削除します。
+The following code deletes a table from a storage account.
 
 	table_service.delete_table('tasktable')
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"> </a>Next Steps
 
-これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクを
-実行する方法については、次のリンク先を参照してください。
+Now that you have learned the basics of table storage, follow these links
+to learn how to do more complex storage tasks.
 
--   MSDN リファレンス: [Windows Azure のデータの格納とアクセス][]
--   [Windows Azure ストレージ チーム ブログ][] (このページは英語の場合があります)
+-   See the MSDN Reference: [Storing and Accessing Data in Azure][]
+-   [Visit the Azure Storage Team Blog][]
 
-  [次のステップ]: #next-steps
-[テーブル サービスとは]: #what-is
-[概念]: #concepts
-[Windows Azure ストレージ アカウントの作成]: #create-account
-[テーブルの作成方法]: #create-table
-[エンティティをテーブルに追加する方法]: #add-entity
-[エンティティを更新する方法]: #update-entity
-[エンティティのグループを変更する方法]: #change-entities
-[エンティティを照会する方法]: #query-for-entity
-[エンティティのセットを照会する方法]: #query-set-entities
-[エンティティ プロパティのサブセットを照会する方法]: #query-entity-properties
-[エンティティを削除する方法]: #delete-entity
-[テーブルを削除する方法]: #delete-table
-[Windows Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
-[Windows Azure ストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/ (このページは英語の場合があります)
-
+  [Next Steps]: #next-steps
+  [What is the Table Service?]: #what-is
+  [Concepts]: #concepts
+  [Create an Azure Storage Account]: #create-account
+  [How To: Create a Table]: #create-table
+  [How To: Add an Entity to a Table]: #add-entity
+  [How To: Update an Entity]: #update-entity
+  [How To: Change a Group of Entities]: #change-entities
+  [How To: Query for an Entity]: #query-for-entity
+  [How To: Query a Set of Entities]: #query-set-entities
+  [How To: Query a Subset of Entity Properties]: #query-entity-properties
+  [How To: Delete an Entity]: #delete-entity
+  [How To: Delete a Table]: #delete-table
+  [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+  [Visit the Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/

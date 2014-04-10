@@ -1,46 +1,46 @@
-<properties linkid="develop-python-service-bus-queues" UrlDisplayName="サービス バス キュー" pageTitle="サービス バス キューの使用方法 (Python) - Windows Azure" MetaKeywords="Azure サービス バス キュー, Azure キュー, Azure メッセージング, Azure キュー Python" description="Windows Azure でのサービス バス キューの使用方法について説明します。コード サンプルは Python で記述されています。" metaCanonical="" services="service-bus" documentationCenter="Python" title="サービス バス キューの使用方法" authors=""  solutions="" writer="" manager="" editor=""  />
+<properties linkid="develop-python-service-bus-queues" urlDisplayName="Service Bus Queues" pageTitle="How to use Service Bus queues (Python) - Azure" metaKeywords="Azure Service Bus queues, Azure queues, Azure messaging, Azure queues Python" description="Learn how to use Service Bus queues in Azure. Code samples written in Python." metaCanonical="" services="service-bus" documentationCenter="Python" title="How to Use Service Bus Queues" authors="" solutions="" manager="" editor="" />
 
 
 
 
-# サービス バス キューの使用方法
-このガイドでは、サービス バス キューの使用方法について説明します。サンプルは Python で
-記述され、Python Azure モジュールを利用しています。紹介する
-シナリオは、**キューの作成、メッセージの送受信**、および**キューの削除**
-です。キューの詳細については、「[次のステップ][]」を参照してください。
+# How to Use Service Bus Queues
+This guide will show you how to use Service Bus queues. The samples are
+written in Python and use the Python Azure module. The scenarios
+covered include **creating queues, sending and receiving messages**, and
+**deleting queues**. For more information on queues, see the [Next Steps][] section.
 
-## 目次
+## Table of Contents
 
--   [サービス バス キューとは][]
--   [サービス名前空間の作成][]
--   [名前空間の既定の管理資格情報の取得][]
--   [キューの作成方法][]
--   [メッセージをキューに送信する方法][]
--   [キューからメッセージを受信する方法][]
--   [アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法][]
--   [次のステップ][]
+-   [What are Service Bus Queues?][]
+-   [Create a Service Namespace][]
+-   [Obtain the Default Management Credentials for the Namespace][]
+-   [How to: Create a Queue][]
+-   [How to: Send Messages to a Queue][]
+-   [How to: Receive Messages from a Queue][]
+-   [How to: Handle Application Crashes and Unreadable Messages][]
+-   [Next Steps][]
 
 [WACOM.INCLUDE [howto-service-bus-queues](../includes/howto-service-bus-queues.md)]
 
-**注:** Python またはクライアント ライブラリをインストールする場合は、「[Python Installation Guide (Python インストール ガイド)](../python-how-to-install/)」を参照してください。
+**Note:** If you need to install Python or the Client Libraries, please see the [Python Installation Guide](../python-how-to-install/).
 
 
-## <a name="create-queue"> </a>キューの作成方法
+## <a name="create-queue"> </a>How to Create a Queue
 
-**ServiceBusService** オブジェクトを使用して、キューを操作できます。プログラムを使用して Windows Azure のサービス バス にアクセスするすべての Python ファイルの先頭付近に、次のコードを追加します。
+The **ServiceBusService** object lets you work with queues. Add the following near the top of any Python file in which you wish to programmatically access Azure Service Bus:
 
 	from azure.servicebus import *
 
-次のコードでは、**ServiceBusService** オブジェクトを作成します。"mynamespace"、"mykey"、"myissuer" の部分は、実際の名前空間、キー、発行者に置き換えます。
+The following code creates a **ServiceBusService** object. Replace 'mynamespace', 'mykey' and 'myissuer' with the real namespace, key and issuer.
 
 	bus_service = ServiceBusService(service_namespace='mynamespace', account_key='mykey', issuer='myissuer')
 	
 	bus_service.create_queue('taskqueue')
 
-**create_queue** は追加のオプションもサポートしています。
-これにより、メッセージの有効期間や最大キュー サイズなどの既定のキューの
-設定をオーバーライドできます。次の例では、キューの最大サイズを 5 GB に、
-メッセージの既定の有効期間を 1 分に設定する方法を示しています。
+**create_queue** also supports additional options, which
+allow you to override default queue settings such as message time to
+live or maximum queue size. The following example shows setting the
+maximum queue size to 5GB a time to live of 1 minute:
 
 	queue_options = Queue()
 	queue_options.max_size_in_megabytes = '5120'
@@ -48,109 +48,110 @@
 
 	bus_service.create_queue('taskqueue', queue_options)
 
-## <a name="send-messages"> </a>メッセージをキューに送信する方法
+## <a name="send-messages"> </a>How to Send Messages to a Queue
 
-メッセージをサービス バス キューに送信するには、アプリケーションで 
-**ServiceBusService** オブジェクトの **send\_queue\_message** メソッドを呼び出します。
+To send a message to a Service Bus queue, your application will call the
+**send\_queue\_message** method on the **ServiceBusService** object.
 
-次の例では、**send\_queue\_message** *を使用して、"taskqueue"* と
-いう名前のキューにテスト メッセージを送信する方法を示しています。
+The following example demonstrates how to send a test message to the
+queue named *taskqueue using* **send\_queue\_message**:
 
 	msg = Message('Test Message')
 	bus_service.send_queue_message('taskqueue', msg)
 
-サービス バス キューでは、最大 256 KB までのメッセージをサポートしています (標準と
-カスタムのアプリケーション プロパティが含まれるヘッダーは、64 KB が最大
-サイズです)。キューで保持されるメッセージ数には上限が
-ありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには
-上限があります。このキューのサイズはキューの作成時に定義します。
-上限は 5 GB です。
+Service Bus queues support a maximum message size of 256 KB (the header,
+which includes the standard and custom application properties, can have
+a maximum size of 64 KB). There is no limit on the number of messages
+held in a queue but there is a cap on the total size of the messages
+held by a queue. This queue size is defined at creation time, with an
+upper limit of 5 GB.
 
-## <a name="receive-messages"> </a>キューからメッセージを受信する方法
+## <a name="receive-messages"> </a>How to Receive Messages from a Queue
 
-キューからメッセージを受信するには、**ServiceBusService** オブジェクトの
- **receive\_queue\_message** メソッドを使用します。
+Messages are received from a queue using the **receive\_queue\_message**
+method on the **ServiceBusService** object:
 
 	msg = bus_service.receive_queue_message('taskqueue')
 	print(msg.body)
 
-メッセージは
-読み取られるときにキューから削除されますが、省略可能な **peek\_lock** パラメーター
-を **True** に設定することによって、キューからメッセージを削除せずに、
-メッセージを読み取って (ピークして) ロックすることができます。
+Messages are
+deleted from the queue as they are read; however, you can read (peek)
+and lock the message without deleting it from the queue by setting the
+optional parameter **peek\_lock** to **True**.
 
-受信操作の中で行われるメッセージの読み取りと削除の既定の動作は、
-最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを
-処理しないことを許容できるシナリオに最適です。このことを理解するために、コンシューマーが受信要求を
-発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えて
-みましょう。サービス バスはメッセージを読み取り済みとしてマークするため、アプリケーションが
-再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていた
-メッセージは見落とされることになります。
+The default behavior of reading and deleting the message as part of the
+receive operation is the simplest model, and works best for scenarios in
+which an application can tolerate not processing a message in the event
+of a failure. To understand this, consider a scenario in which the
+consumer issues the receive request and then crashes before processing
+it. Because Service Bus will have marked the message as being consumed,
+then when the application restarts and begins consuming messages again,
+it will have missed the message that was consumed prior to the crash.
 
 
-**peek\_lock** パラメーターが **True** に設定されている場合、受信処理
-が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに
-対応することができます。サービス バスは要求を受け取ると、
-次に読み取られるメッセージを検索して、他のコンシューマーが受信できないよう
-ロックしてから、アプリケーションにメッセージを返します。
-アプリケーションがメッセージの処理を終えた後 (または後で処理するために
-確実に保存した後)、**Message** オブジェクトの **delete** メソッドを
-呼び出して受信処理の第 2 段階を完了します。**delete** メソッドによって、
-メッセージが読み取り中としてマークされ、キューから削除されます。
+If the **peek\_lock** parameter is set to **True**, the receive becomes
+a two stage operation, which makes it possible to support applications
+that cannot tolerate missing messages. When Service Bus receives a
+request, it finds the next message to be consumed, locks it to prevent
+other consumers receiving it, and then returns it to the application.
+After the application finishes processing the message (or stores it
+reliably for future processing), it completes the second stage of the
+receive process by calling the **delete** method on the **Message** object. The **delete** method will
+mark the message as being consumed and remove it from the queue.
 
 	msg = bus_service.receive_queue_message('taskqueue', peek_lock=True)
 	print(msg.body)
 
 	msg.delete()
 
-## <a name="handle-crashes"> </a>アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法
+## <a name="handle-crashes"> </a>How to Handle Application Crashes and Unreadable Messages
 
-サービス バスには、アプリケーションにエラーが発生した場合や、メッセージの
-処理に問題がある場合に復旧を支援する機能が備わっています。受信
-側のアプリケーションが何かの理由によってメッセージを処理できない場合には、
-**Message** オブジェクト
-の **unlock** メソッドを呼び出すことができます。このメソッドが呼び出されると、サービス バスに
-よってキュー内のメッセージのロックが解除され、メッセージが再度受信できる
-状態に変わります。メッセージを受信するアプリケーションは、以前と同じものでも、
-別のものでもかまいません。
+Service Bus provides functionality to help you gracefully recover from
+errors in your application or difficulties processing a message. If a
+receiver application is unable to process the message for some reason,
+then it can call the **unlock** method on the
+**Message** object. This will cause Service Bus to unlock the
+message within the queue and make it available to be received again,
+either by the same consuming application or by another consuming
+application.
 
-キュー内でロックされているメッセージにはタイムアウトも設定されています。
-アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前に
-アプリケーションがメッセージの処理に失敗した場合には、メッセージの
-ロックが自動的に解除され、再度受信できる状態に変わります。
+There is also a timeout associated with a message locked within the
+queue, and if the application fails to process the message before the
+lock timeout expires (e.g., if the application crashes), then Service
+Bus will unlock the message automatically and make it available to be
+received again.
 
-メッセージが処理された後、**delete** メソッドが呼び出される前に
-アプリケーションがクラッシュした場合は、アプリケーションが再起動する際に
-メッセージが再配信されます。一般的に、
-この動作は **"1 回以上の処理"** と呼ばれます。つまり、すべてのメッセージ
-が 1 回以上処理されますが、特定の状況では、同じメッセージが
-再配信される可能性があります。重複処理が許されないシナリオの場合、重複メッセージの
-配信を扱うロジックをアプリケーションに追加する
-必要があります。通常、この問題はメッセージ
-の **MessageId** プロパティを使用して対処します。このプロパティは配信が試行
-された後も同じ値を保持します。
+In the event that the application crashes after processing the message
+but before the **delete** method is called, then the message will
+be redelivered to the application when it restarts. This is often called
+**At Least Once Processing**, that is, each message will be processed at
+least once but in certain situations the same message may be
+redelivered. If the scenario cannot tolerate duplicate processing, then
+application developers should add additional logic to their application
+to handle duplicate message delivery. This is often achieved using the
+**MessageId** property of the message, which will remain constant across
+delivery attempts.
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"> </a>Next Steps
 
-これで、サービス バス キューの基本を学習できました。さらに詳細な情報が必要な
-場合は、次のリンク先を参照してください。
+Now that you have learned the basics of Service Bus queues, follow these
+links to learn more.
 
--   MSDN リファレンス: [サービス バス キュー、トピックおよびサブスクリプション][]
+-   See the MSDN Reference: [Queues, Topics, and Subscriptions.][]
 
-  [次のステップ]: #next-steps
-[サービス バス キューとは]: #what-are-service-bus-queues
-[サービス名前空間の作成]: #create-a-service-namespace
-[名前空間の既定の管理資格情報の取得]: #obtain-default-credentials
-[キューの作成方法]: #create-queue
-[メッセージをキューに送信する方法]: #send-messages
-[キューからメッセージを受信する方法]: #receive-messages
-[アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法]: #handle-crashes
-[キューの概念]: ../../../DevCenter/dotNet/Media/sb-queues-08.png
-  [Windows Azure の管理ポータル]: http://manage.windowsazure.com
+  [Next Steps]: #next-steps
+  [What are Service Bus Queues?]: #what-are-service-bus-queues
+  [Create a Service Namespace]: #create-a-service-namespace
+  [Obtain the Default Management Credentials for the Namespace]: #obtain-default-credentials
+  [How to: Create a Queue]: #create-queue
+  [How to: Send Messages to a Queue]: #send-messages
+  [How to: Receive Messages from a Queue]: #receive-messages
+  [How to: Handle Application Crashes and Unreadable Messages]: #handle-crashes
+  [Queue Concepts]: ../../../DevCenter/dotNet/Media/sb-queues-08.png
+  [Azure Management Portal]: http://manage.windowsazure.com
   
   
   
   
   
-  [サービス バス キュー、トピックおよびサブスクリプション]: http://msdn.microsoft.com/en-us/library/windowsazure/hh367516.aspx
-
+  [Queues, Topics, and Subscriptions.]: http://msdn.microsoft.com/en-us/library/windowsazure/hh367516.aspx

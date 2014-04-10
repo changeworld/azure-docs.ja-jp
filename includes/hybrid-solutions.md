@@ -1,102 +1,101 @@
-#Windows Azure のサービス バス
+#Azure Service Bus
 
-クラウドで実行されるソフトウェアも、内部設置型のソフトウェアも、一般的には他のソフトウェアと対話する必要があります。この必要性に広範に対応するために、Windows Azure には サービス バスが用意されています。この記事ではこのテクノロジを中心に、その内容とそれを使用する理由について説明します。
+Whether software runs in the cloud or on premises, it often needs to interact with other software. To provide a broadly useful way to do this, Azure offers Service Bus. This article takes a look at this technology, describing what it is and why you might want to use it.
 
-##目次
-- [サービス バスの基礎](#fundamentals)
-- [キュー](#queues)
-- [トピック](#topics)
-- [リレー](#relays)
+##Table of Contents      
+- [Service Bus Fundamentals](#fundamentals)
+- [Queues](#queues)
+- [Topics](#topics)
+- [Relays](#relays)
 
 
-## <a name="fundamentals"></a>サービス バスの基礎
-状況が異なれば、求められる通信のスタイルも異なります。アプリケーションが単純なキューを介してメッセージを送受信する方法が最適なソリューションであることもあります。逆に、通常のキューでは不十分で、発行とサブスクライブのメカニズムを備えたキューを使用する方が適していることもあります。場合によっては、アプリケーション間の接続のみが必要で、キューは不必要なこともあります。サービス バスはこれらの 3 つのオプションすべてを提供し、アプリケーションがさまざまな方法で対話できるようにします。
+## <a name="fundamentals"></a>Service Bus Fundamentals
+Different situations call for different styles of communication. Sometimes, letting applications send and receive messages through a simple queue is the best solution. In other situations, an ordinary queue isn't enough; a queue with a publish-and-subscribe mechanism is better. And in some cases, all that's really needed is a connection between applications-queues aren't required. Service Bus provides all three options, letting your applications interact in several different ways.
 
-サービス バスは、サービスが複数のユーザーによって共有されるマルチテナント クラウド サービスです。各ユーザー (たとえば、アプリケーション開発者) は、*名前空間*を作成し、その名前空間内で必要な通信メカニズムを定義します。[図 1](#Fig1) に、このしくみを示します。
+Service Bus is a multi-tenant cloud service, which means that the service is shared by multiple users. Each user, such as an application developer, creates a *namespace*, then defines the communication mechanisms she needs within that namespace. [Figure 1](#Fig1) shows how this looks.
 
-<a name="Fig1"></a>![Windows Azure のサービス バスの図][svc-bus]
+<a name="Fig1"></a>![Diagram of Azure Service Bus][svc-bus]
  
-**図 1: サービス バスは、クラウドを介してアプリケーションを接続するためのマルチテナント サービスを提供する**
+**Figure 1: Service Bus provides a multi-tenant service for connecting applications through the cloud.**
 
-名前空間内では、3 つの異なる通信メカニズムの 1 つまたは複数のインスタンスを使用して、それぞれ異なる方法でアプリケーションを接続できます。選択肢は以下のとおりです。
+Within a namespace, you can use one or more instances of three different communication mechanisms, each of which connects applications in a different way. The choices are:
 
-- *キュー*: 一方向の通信を提供します。それぞれのキューは、送信されたメッセージが受信されるまでメッセージを格納する仲介者 (*ブローカー*とも呼ばれます) として動作します。
-- *トピック*: *サブスクリプション*を使用して一方向の通信を提供します。キューと同様、トピックはブローカーとして動作しますが、サブスクリプションは特定の条件に一致するメッセージのみを認識します。
-- *リレー*: 双方向の通信を提供します。キューやトピックと異なり、リレーはブローカーではなく、転送中のメッセージを格納しません。送信先のアプリケーションにメッセージを渡すのみです。
+- *Queues*, which allow one-directional communication. Each queue acts as an intermediary (sometimes called a *broker*) that stores sent messages until they are received.
+- *Topics*, which provide one-directional communication using *subscriptions*. Like a queue, a topic acts as a broker, but it allows each subscription to see only messages that match specific criteria.
+- *Relays*, which provide bi-directional communication. Unlike queues and topics, a relay doesn't store in-flight messages-it's not a broker. Instead, it just passes them on to the destination application.
 
-作成したキュー、トピック、またはリレーには名前を付けます。名前空間に付けた名前とこの名前の組み合わせが、オブジェクトの一意の識別子となります。この名前を サービス バスに通知すると、アプリケーションは、キュー、トピック、またはリレーを使用して通信を行うことができます。
+When you create a queue, topic, or relay, you give it a name. Combined with whatever you called your namespace, this name creates a unique identifier for the object. Applications can provide this name to Service Bus, then use that queue, topic, or relay to communicate with one another. 
 
-これらのいずれかのオブジェクトを使用するために、Windows アプリケーションは Windows Communication Foundation (WCF) を使用できます。キューとトピックに対しては、Windows アプリケーションは、サービス バスによって定義されたメッセージング API を使用することもできます。キューとトピックは、HTTP を介してアクセスすることもできます。Microsoft では、非 Windows アプリケーションからこれらを簡単に利用できるように、Java、Node.js、およびその他の言語向けの SDK を提供しています。
+To use any of these objects, Windows applications can use Windows Communication Foundation (WCF). For queues and topics, Windows applications can also use a Service Bus-defined Messaging API. Queues and topics can be accessed via HTTP as well, and to make them easier to use from non-Windows applications, Microsoft provides SDKs for Java, Node.js, and other languages.
 
-サービス バス自体はクラウド (つまり、Microsoft の Windows Azure データセンター) で実行されますが、サービス バスを使用するアプリケーションはどのような場所でも実行できることを理解しておいてください。サービス バスを使用すると、たとえば、Windows Azure 上で実行されているアプリケーションや、自社のデータセンター内で実行されているアプリケーションを接続できます。Windows Azure または他のクラウド プラットフォーム上で実行されているアプリケーションを、内部設置型アプリケーション、タブレット、または携帯電話と接続することもできます。さらに、家電製品、センサーなどのデバイスを中央アプリケーションに接続したり、デバイスを相互接続したりできます。サービス バスは、あらゆる場所から利用できる、クラウドを使った汎用通信メカニズムです。サービス バスの利用方法は、アプリケーションで何を行う必要があるかによって決まります。
+It's important to understand that even though Service Bus itself runs in the cloud (that is, in Microsoft's Azure datacenters), applications that use it can run anywhere. You can use Service Bus to connect applications running on Azure, for example, or applications running inside your own datacenter. You can also use it to connect an application running on Azure or another cloud platform with an on-premises application or with tablets and phones. It's even possible to connect household appliances, sensors, and other devices to a central application or to one other. Service Bus is a generic communication mechanism in the cloud that's accessible from pretty much anywhere. How you use it depends on what your applications need to do.
 
 
-## <a name="queues"></a>キュー
+## <a name="queues"></a>Queues
 
-サービス バス キューを使用して 2 つのアプリケーションを接続するとします。[図 2](#Fig2) に、この状況を示します。
+Suppose you decide to connect two applications using a Service Bus queue. [Figure 2](#Fig2) illustrates this situation.
 
-<a name="Fig2"></a>![サービス バス キューの図][queues]
+<a name="Fig2"></a>![Diagram of Service Bus Queues][queues]
  
-**図 2: サービス バス キューは一方向の非同期キューを提供する**
+**Figure 2: Service Bus queues provide one-way asynchronous queuing.**
 
-この場合のプロセスは単純です。送信者がメッセージを サービス バス キューに送信すると、受信者が後でそのメッセージを取得します。[図 2](#Fig2) に示すように、キューの受信者は 1 つのみです。また、複数のアプリケーションが同じキューから読み取ることもできます。後者のケースでは、通常、各メッセージは 1 つの受信者によって読み取られます。つまり、キューはマルチキャスト サービスを提供しません。
+The process is simple: A sender sends a message to a Service Bus queue, and a receiver picks up that message at some later time. A queue can have just a single receiver, as [Figure 2](#Fig2) shows, or multiple applications can read from the same queue. In the latter situation, each message is typically read by just one receiver-queues don't provide a multi-cast service.
 
-それぞれのメッセージは、2 つの部分から構成されます。つまり、それぞれがキーと値のペアであるプロパティのセットと、バイナリ メッセージ本文です。これらの使用方法は、アプリケーションの目的によって決まります。たとえば、最近の売り上げに関するメッセージを送信するアプリケーションでは、*Seller="Ava"*、*Amount=10000* などのプロパティが含まれます。メッセージ本文には、たとえば営業部の署名済みの契約書のスキャン画像を含めることが考えられます。画像がない場合はメッセージ本文が空になります。
+Each message has two parts: a set of properties, each a key/value pair, and a binary message body. How they're used depends on what an application is trying to do. For example, an application sending a message about a recent sale might include the properties *Seller="Ava"* and *Amount=10000*. The message body might contain a scanned image of the sale's signed contract or, if there isn't one, just remain empty.
 
-受信者は、2 つの異なる方法で サービス バス キューからメッセージを読み取ることができます。1 つのオプションは ReceiveAndDelete です。このオプションでは、メッセージをキューから取り出した直後に削除します。この方法は単純ですが、メッセージを処理する前に受信者がクラッシュした場合はメッセージが失われます。メッセージはキューから削除されているため、他の受信者がメッセージにアクセスすることもできません。
+A receiver can read a message from a Service Bus queue in two different ways. The first option, called ReceiveAndDelete, removes a message from the queue and immediately deletes it. This is simple, but if the receiver crashes before it finishes processing the message, the message will be lost. Because it's been removed from the queue, no other receiver can access it. 
 
-もう 1 つのオプションである PeekLock は、この問題に対処できます。ReceiveAndDelete と同様、PeekLock 読み取りを実行すると、メッセージがキューから削除されます。ただし、実際に削除する前に、メッセージをロックして他の受信者が認識できないようにして、次の 3 つのイベントのいずれかの発生を待ちます。
+The second option, PeekLock, is meant to help with this problem. Like ReceiveAndDelete, a PeekLock read removes a message from the queue. It doesn't delete the message, however. Instead, it locks the message, making it invisible to other receivers, then waits for one of three events:
 
-- 受信者がメッセージを正常に処理し、Complete を呼び出すと、キューのメッセージが削除されます。
-- 受信者がメッセージを正常に処理できないと判断すると、Abandon を呼び出します。すると、キューのメッセージのロックが解除され、他の受信者がメッセージを取得できるようになります。
-- 受信者が一定の時間内 (構成可能、既定では 60 秒) にどちらも呼び出さなかった場合、その受信者は失敗したと見なされます。その場合、その受信者が Abandon を呼び出した場合と同様に処理され、他の受信者がメッセージを取得できるようになります。
+- If the receiver processes the message successfully, it calls Complete, and the queue deletes the message. 
+- If the receiver decides that it can't process the message successfully, it calls Abandon. The queue then removes the lock from the message and makes it available to other receivers.
+- If the receiver calls neither of these within a configurable period of time (by default, 60 seconds), the queue assumes the receiver has failed. In this case, it behaves as if the receiver had called Abandon, making the message available to other receivers.
 
-ここで考えられるのは、同じメッセージが 2 回、2 つの異なる受信者に配信される可能性があることです。そのため、サービス バス キューを使用するアプリケーションでは、この問題に対処する必要があります。重複の検出を容易にするために、各メッセージは一意の MessageID プロパティを持ちます。このプロパティは、メッセージがキューから何回読み取られようとも、既定で同じ値に保持されます。
+Notice what can happen here: The same message might be delivered twice, perhaps to two different receivers. Applications using Service Bus queues must be prepared for this. To make duplicate detection easier, each message has a unique MessageID property that by default stays the same no matter how many times the message is read from a queue. 
 
-キューは、さまざまな状況で利用できます。同時に実行されていないアプリケーション間でも相互に通信することができます。これは、バッチおよびモバイル アプリケーションで特に便利な機能です。受信者が複数のキューでは、送信されたメッセージが受信者に分散されるため、自動負荷分散も実現されます。
+Queues are useful in quite a few situations. They let applications communicate even when both aren't running at the same time, something that's especially handy with batch and mobile applications. A queue with multiple receivers also provides automatic load balancing, since sent messages are spread across these receivers.
 
 
-## <a name="topics"></a>トピック
+## <a name="topics"></a>Topics
 
-キューは、便利ではありますが、常に適切なソリューションとは限りません。サービス バス トピックの方が適切な場合もあります。[図 3](#Fig3) に、その理由を示します。
+Useful as they are, queues aren't always the right solution. Sometimes, Service Bus topics are better. [Figure 3](#Fig3) illustrates this idea.
 
-<a name="Fig3"></a>![サービス バス トピックとサブスクリプションの図][topics-subs]
+<a name="Fig3"></a>![Diagram of Service Bus Topics and Subscriptions][topics-subs]
  
-**図 3: サブスクライブ アプリケーションが指定するフィルターに基づき、サービス バス トピックに送信された一部またはすべてのメッセージを受信できる**
+**Figure 3: Based on the filter a subscribing application specifies, it can receive some or all of the messages sent to a Service Bus topic.**
 
-トピックは、多くの点でキューに似ています。送信者は、キューに送信する場合と同じ方法でメッセージをトピックに送信します。これらのメッセージは、キューの場合と同じに見えます。大きな違いは、トピックでは、受信側アプリケーションごとに*フィルター*を定義することで独自のサブスクリプションを作成できる点です。サブスクライバーは、そのフィルターに一致するメッセージのみを識別します。[図 3](#Fig3) に、1 つの送信者と、3 つのサブスクライバーを持つトピックの例を示します。各サブスクライバーにはそれぞれ独自のフィルターが設定されています。
+A topic is similar in many ways to a queue. Senders submit messages to a topic in the same way that they submit messages to a queue, and those messages look the same as with queues. The big difference is that topics let each receiving application create its own subscription by defining a *filter*. A subscriber will then see only the messages that match that filter. For example, [Figure 3](#Fig3) shows a sender and a topic with three subscribers, each with its own filter:
 
-- サブスクライバー 1 は、*Seller="Ava"* というプロパティを含むメッセージのみを受信します。
-- サブスクライバー 2 は、*Seller="Ruby"* というプロパティを含むか、*Amount* プロパティの値が 100,000 を超えるメッセージを受信します。Ruby はセールス マネージャーであるため、自分の売り上げと、担当者を問わずすべての大きな売り上げを確認することを目的としています。
-- サブスクライバー 3 のフィルターは *True* に設定されています。これは、すべてのメッセージを受信することを表します。このアプリケーションは、たとえば監査証跡を維持する目的で使用されることが考えられるため、すべてのメッセージを認識する必要があります。
+- Subscriber 1 receives only messages that contain the property *Seller="Ava"*.
+- Subscriber 2 receives messages that contain the property *Seller="Ruby"* and/or contain an *Amount* property whose value is greater than 100,000. Perhaps Ruby is the sales manager, and so she wants to see both her own sales and all big sales regardless of who makes them.
+- Subscriber 3 has set its filter to *True*, which means that it receives all messages. This application might be responsible for maintaining an audit trail, for example, and so it needs to see everything.
 
-キューの場合と同様、トピックのサブスクライバーは、ReceiveAndDelete または PeekLock を使用してメッセージを読み取ることができます。ただし、キューとは異なり、1 つのトピックに送信された 1 つのメッセージを複数のサブスクライバーで受信できます。この手法は一般的に*発行とサブスクライブ*と呼ばれ、同じメッセージを複数のアプリケーションで利用する可能性がある場合に便利です。適切なフィルターを定義することで、各サブスクライバーは、メッセージ ストリームの中で認識する必要がある部分のみを利用できます。
+As with queues, subscribers to a topic can read messages using either ReceiveAndDelete or PeekLock. Unlike queues, however, a single message sent to a topic can be received by multiple subscribers. This approach, commonly called *publish and subscribe*, is useful whenever multiple applications might be interested in the same messages. By defining the right filter, each subscriber can tap into just the part of the message stream that it needs to see.
 
 
-## <a name="relays"></a>リレー
+## <a name="relays"></a>Relays
 
-キューとトピックは、どちらもブローカーを介して一方向の非同期通信を提供します。トラフィックは一方向に流れ、送信者と受信者の間に直接的な接続はありません。しかし、それが適切でない状況もあります。アプリケーションが送受信を行う必要がある場合や、アプリケーション間の直接リンクが必要な場合、中間にメッセージを格納する場所は必要ありません。このような問題に対応するために、サービス バスにはリレーが用意されています。[図 4](#Fig4) を参照してください。
+Both queues and topics provide one-way asynchronous communication through a broker. Traffic flows in just one direction, and there's no direct connection between senders and receivers. But what if you don't want this? Suppose your applications need to both send and receive, or perhaps you want a direct link between them"you don't need a place to store messages in between. To address problems like this, Service Bus provides relays, as [Figure 4](#Fig4) shows.
 
-<a name="Fig4"></a>![サービス バス リレーの図][relay]
+<a name="Fig4"></a>![Diagram of Service Bus Relay][relay]
  
-**図 4: サービス バス リレーはアプリケーション間の同期双方向通信を提供する**
+**Figure 4: Service Bus relay provides synchronous, two-way communication between applications.**
 
-リレーに関する素朴な疑問は、なぜリレーを使用するのか、ということでしょう。キューが不要な場合でも、アプリケーションが直接対話するのではなくクラウド サービス経由で通信を行うのはなぜでしょうか。それは、直接的な通信が思いのほか難しいためです。
+The obvious question to ask about relays is this: Why would I use one? Even if I don't need queues, why make applications communicate via a cloud service rather than just interact directly? The answer is that talking directly can be harder than you might think.
 
-たとえば、会社の別々のデータセンター内で実行されている 2 つの内部設置型アプリケーションを接続するとします。どちらのアプリケーションもファイアウォールの背後に配置され、それぞれのデータセンターでネットワーク アドレス変換 (NAT) が使用されているとします。ファイアウォールにより、特定のポート以外のポートの着信データはすべてブロックされます。また、NAT が使用されているということは、それぞれのアプリケーションが実行されているコンピューターに固定 IP アドレスが割り当てられていないことを意味します。特別な手段がなければ、2 つのアプリケーションをパブリックなインターネット経由で接続することは困難です。
+Suppose you want to connect two on-premises applications, both running inside corporate datacenters. Each of these applications sits behind a firewall, and each datacenter probably uses network address translation (NAT). The firewall blocks incoming data on all but a few ports, and NAT implies that the machine each application is running on probably doesn't have a fixed IP address. Without some extra help, connecting these applications over the public Internet is problematic.
 
-サービス バス リレーは、この問題を解決するのに役立ちます。リレーを介して双方向の通信を行うために、それぞれのアプリケーションは サービス バスとの間で送信 TCP 接続を確立し、接続を開いたまま保持します。2 つのアプリケーション間のすべての通信はこの接続を介して行われます。それぞれの接続はデータセンター内から確立されているため、ファイアウォールは、新しいポートを開くことなく、各アプリケーションへの着信トラフィック (リレーを介して送信されたデータ) を許可します。この方法では、各アプリケーションは通信において一貫したエンドポイントを持つため、NAT の問題にも対処できます。リレーを介してデータを交換することで、アプリケーションは、それ以外の方法では通信を困難にする問題を回避できます。
+A Service Bus relay provides this help. To communicate bi-directionally through a relay, each application establishes an outbound TCP connection with Service Bus, then keeps it open. All communication between the two applications will travel over these connections. Because each connection was established from inside the datacenter, the firewall will allow incoming traffic to each application"data sent through the relay"without opening new ports. This approach also gets around the NAT problem, because each application has a consistent endpoint throughout the communication. By exchanging data through the relay, the applications can avoid the problems that would otherwise make communication difficult. 
 
-サービス バス リレーを使用する場合、アプリケーションは Windows Communication Foundation (WCF) に依存します。サービス バスには WCF バインディングが用意されているため、Windows アプリケーションは容易にリレー経由で対話できます。通常、WCF を既に使用しているアプリケーションでは、これらのバインディングのいずれかを指定するだけで、リレーを介して他のアプリケーションと通信を行うことができます。非 Windows アプリケーションからリレーを使用することもできますが、キューやトピックとは異なり、プログラム上の工夫が必要になります。標準ライブラリは用意されていません。
+To use Service Bus relays, applications rely on Windows Communication Foundation (WCF). Service Bus provides WCF bindings that make it straightforward for Windows applications to interact via relays. Applications that already use WCF can typically just specify one of these bindings, then talk to each other through a relay. Unlike queues and topics, however, using relays from non-Windows applications, while possible, requires some programming effort; no standard libraries are provided.
 
-キューやトピックとは異なり、アプリケーションは明示的にリレーを作成しません。リレーは、メッセージを受信する側のアプリケーションが サービス バスとの間に TCP 接続を確立したときに自動的に作成されます。接続がドロップされると、リレーは削除されます。特定のリスナーによって作成されたリレーをアプリケーションが検出できるようにレジストリが用意されており、特定のリレーを名前で見つけることができます。
+Unlike queues and topics, applications don't explicitly create relays. Instead, when an application that wishes to receive messages establishes a TCP connection with Service Bus, a relay is created automatically. When the connection is dropped, the relay is deleted. To let an application find the relay created by a specific listener, Service Bus provides a registry that allows locating a specific relay by name.
 
-リレーは、直接的な通信が必要な場合に適したソリューションです。たとえば、内部設置型データセンターで実行される航空券予約システムがあるとします。このシステムには、たとえばチェックイン受付機、モバイル デバイス、その他のコンピューターからアクセスできる必要があります。これらのすべてのシステムで実行されているアプリケーションが、クラウド上の サービス バス リレーを使用して、実行中は常時通信することができます。
+Relays are the right solution when you need direct communication. Think about an airline reservation system running in an on-premises datacenter, for example, that must be accessed from check-in kiosks, mobile devices, and other computers. Applications running on all of these systems could rely on Service Bus relays in the cloud to communicate, wherever they might be running.
 
-完結したソリューションの構築において、アプリケーションの接続は不可欠な要素ですが、この問題を完全に解消することは困難です。サービス バスは、アプリケーションの接続を実現するクラウド ベースのテクノロジ (キュー、トピック、およびリレー) を提供し、この必須の機能をより簡単に、より広範に利用できるようにすることを目的としています。
+Connecting applications has always been part of building complete solutions, and it's hard to see this problem ever going away. By providing cloud-based technologies for doing this"queues, topics, and relays"Service Bus aims at making this essential function easier and more broadly available.
 
 [svc-bus]: ./media/hybrid-solutions/SvcBus_01_architecture.png
 [queues]: ./media/hybrid-solutions/SvcBus_02_queues.png
 [topics-subs]: ./media/hybrid-solutions/SvcBus_03_topicsandsubscriptions.png
 [relay]: ./media/hybrid-solutions/SvcBus_04_relay.png
-

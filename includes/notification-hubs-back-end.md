@@ -1,30 +1,30 @@
 
-このセクションでは、通知を送信するための 2 つの方法について説明します。
+This section shows how to send notifications in two different ways:
 
-- [コンソール アプリケーションの使用]
-- [モバイル サービスの使用]
+- [From a console app]
+- [From Mobile Services]
 
-どちらのバックエンドも、Windows ストア デバイスと iOS デバイスの両方に通知を送信します。[通知ハブ REST インターフェイス]を使用することで、バックエンドから通知を送信できます。
+Both backends send notifications to both Windows Store and iOS devices. You can send notifications from any backend using the [Notification Hubs REST interface]. 
 
-<h3><a name="console"></a>C# のコンソール アプリケーションを使用して通知を送信するには</h3>
+<h3><a name="console"></a>To send notifications from a console app in C#</h3>
 
-「[Get started with Notification Hubs (通知ハブの使用)][get-started]」を実行したときにコンソール アプリケーションを作成した場合は、ステップ 1. ～ 3. はスキップします。
+Skip steps 1-3 if you created a console app when you completed [Get started with Notification Hubs][get-started].
 
-1. Visual Studio で、Visual C# の新しいコンソール アプリケーションを作成します。
+1. In Visual Studio create a new Visual C# console application: 
 
    	![][13]
 
-2. Visual Studio のメイン メニューで、**[ツール]**、**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックし、コンソール ウィンドウで次のコマンドを入力して、**Enter** キーを押します。
+2. In the Visual Studio main menu, click **Tools**, **Library Package Manager**, and **Package Manager Console**, then in the console window type the following and press **Enter**:
 
         Install-Package WindowsAzure.ServiceBus
  	
-	これにより、<a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet パッケージ</a>を使用して Windows Azure のサービス バス SDK へ参照が追加されます。
+	This adds a reference to the Azure Service Bus SDK by using the <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet package</a>. 
 
-3. Program.cs ファイルを開き、次の "using" ステートメントを追加します。
+3. Open the file Program.cs and add the following `using` statement:
 
         using Microsoft.ServiceBus.Notifications;
 
-4. "Program" クラス内で、次のメソッドを追加するか、既にメソッドが指定されている場合は置き換えます。
+4. In the `Program` class, add the following method, or replace it if it already exists:
 
         private static async void SendNotificationAsync()
         {
@@ -72,38 +72,38 @@
             }
 		 }
 
-	このコードにより、文字列配列内の 6 つのタグそれぞれに対応した通知が、Windows ストア デバイス、Windows Phone デバイス、iOS デバイスに送信されます。タグを使用することで、デバイスは登録されているカテゴリに関する通知のみを確実に受信できます。
+	This code sends notifications for each of the six tags in the string array to Windows Store, Windows Phone and iOS devices. The use of tags makes sure that devices receive notifications only for the registered categories.
 	
-	<div class="dev-callout"><strong>注</strong>
-		<p>このバックエンド コードは、Windows ストア クライアント、Windows Phone クライアント、iOS クライアントをサポートします。send メソッドは、通知ハブが特定のクライアント プラットフォームに対してまだ構成されていない場合、エラー応答を返します。</p>
+	<div class="dev-callout"><strong>Note</strong> 
+		<p>This backend code supports Windows Store, Windows Phone and iOS clients. Send methods return an error response when the notification hub hasn't yet been configured for a particular client platform. </p>
 	</div>
 
-6. 上のコードで、"<hub name>" と "<connection string with full access>" のプレースホルダーを、通知ハブの名前と既に取得してある *DefaultFullSharedAccessSignature* の接続文字列に置き換えます。
+6. In the above code, replace the `<hub name>` and `<connection string with full access>` placeholders with your notification hub name and the connection string for *DefaultFullSharedAccessSignature* that you obtained earlier.
 
-7. **Main** メソッド内に、次の行を追加します。
+7. Add the following lines in the **Main** method:
 
          SendNotificationAsync();
 		 Console.ReadLine();
 
-これで、「[アプリケーションを実行して通知を生成する]」の手順を実行できます。
+You can now proceed to [Run the app and generate notifications].
 
-###<a name="mobile-services"></a>モバイル サービスを使用して通知を送信するには
+###<a name="mobile-services"></a>To send notifications from Mobile Services
 
-モバイル サービスを使用して通知を送信するには、次のステップを実行します。
+To send a notification using a Mobile Service do the following:
 
-0.チュートリアル「[Get started with Mobile Services (モバイル サービスの使用)]」を実行して、モバイル サービスを作成します。
+0. Complete the tutorial [Get started with Mobile Services] to create your mobile service.
 
-1. [Windows Azure の管理ポータル]にログオンし、[モバイル サービス] をクリックして、目的のモバイル サービスをクリックします。
+1. Log on to the [Azure Management Portal], click Mobile Services, then click your mobile service.
 
-2. **[スケジューラ]** タブをクリックし、**[作成]** をクリックします。
+2. Click the **Scheduler** tab, then click **Create**.
 
    	![][15]
 
-3. **[新しいジョブの作成]** で、ジョブの名前を入力し、**[要求時]** をクリックします。次にチェック マークをクリックして、これらの設定を受け入れます。
+3. In **Create new job**, type a name, select **On demand**, and then click the check to accept.
 
    	![][16]
 
-4. ジョブが作成されたら、ジョブ名をクリックし、**[スクリプト]** タブで、スケジュールされたジョブの関数内に次のスクリプトを挿入します。
+4. After the job is created, click the job name and then in the **Script** tab insert the following script inside the scheduled job function: 
 
 	    var azure = require('azure');
 	    var notificationHubService = azure.createNotificationHubService(
@@ -127,11 +127,11 @@
 		        }, sendComplete);
 		    }
 
-	このコードにより、文字列配列内の 6 つのタグそれぞれに対応した通知が、Windows ストア デバイス、Windows Phone デバイス、iOS デバイスに送信されます。タグを使用することで、デバイスは登録されているカテゴリに関する通知のみを確実に受信できます。
+	This code sends notifications for each of the six tags in the string array to Windows Store, Windows Phone and iOS devices. The use of tags makes sure that devices receive notifications only for the registered categories.
 
-6. 上のコードで、"<hub name>" と "<connection string with full access>" のプレースホルダーを、通知ハブの名前と既に取得してある *DefaultFullSharedAccessSignature* の接続文字列に置き換えます。
+6. In the above code, replace the `<hub name>` and `<connection string with full access>` placeholders with your notification hub name and the connection string for *DefaultFullSharedAccessSignature* that you obtained earlier.
 
-7. スケジュールされたジョブの関数の後に次のヘルパー関数を追加し、**[保存]** をクリックします。
+7. Add the following helper function after the scheduled job function, then click **Save**.: 
 	
         function sendComplete(error) {
  		   if (error) {
@@ -142,16 +142,16 @@
 	        }
 	    }
 	
-	<div class="dev-callout"><strong>注</strong>
-		<p>このコードは、Windows ストア クライアント、Windows Phone クライアント、iOS クライアントをサポートします。send メソッドは、特定のプラットフォームに対して登録が存在しない場合、エラー応答を返します。これを回避するには、テンプレート登録を使用して、1 つの通知を複数のプラットフォームに送信することを考慮してください。例については、「<a href="/ja-jp/manage/services/notification-hubs/breaking-news-localized-dotnet/">Use Notification Hubs to broadcast localized breaking news (通知ハブを使用してローカライズされたニュース速報をブロードキャストする)</a>」を参照してください。</p>
+	<div class="dev-callout"><strong>Note</strong> 
+		<p>This code supports Windows Store, Windows Phone and iOS clients. Send methods return an error response when a registration doesn't exist for a particular platform. To avoid this, consider using template registrations to send a single notification to multiple platforms. For an example, see <a href="/en-us/manage/services/notification-hubs/breaking-news-localized-dotnet/">Use Notification Hubs to broadcast localized breaking news</a>. </p>
 	</div>
 
-これで、「[アプリケーションを実行して通知を生成する]」の手順を実行できます。
+You can now proceed to [Run the app and generate notifications].
 
 <!-- Anchors -->
-[コンソール アプリケーションの使用]: #console
-[モバイル サービスの使用]: #mobile-services
-[アプリケーションを実行して通知を生成する]: #test-app
+[From a console app]: #console
+[From Mobile Services]: #mobile-services
+[Run the app and generate notifications]: #test-app
 
 <!-- Images. -->
 [13]: ./media/notification-hubs-back-end/notification-hub-create-console-app.png
@@ -160,12 +160,11 @@
 [16]: ./media/notification-hubs-back-end/notification-hub-scheduler2.png
 
 <!-- URLs. -->
-[get-started (作業を開始する)]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Use Notification Hubs to send notifications to users (通知ハブを使用したユーザーへの通知の送信)]: ../notificationhubs/tutorial-notify-users-mobileservices.md
-[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
-[Windows Azure の管理ポータル]: https://manage.windowsazure.com/
-[wns オブジェクトに関するページ]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store (方法: Windows Azure 通知ハブ (Windows ストア アプリ))]: http://msdn.microsoft.com/ja-jp/library/jj927172.aspx
-[通知ハブの REST API]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn223264.aspx
-
+[get-started]: /en-us/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Use Notification Hubs to send notifications to users]: ../notificationhubs/tutorial-notify-users-mobileservices.md
+[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started/#create-new-service
+[Azure Management Portal]: https://manage.windowsazure.com/
+[wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+[Notification Hubs Guidance]: http://msdn.microsoft.com/en-us/library/jj927170.aspx
+[Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/en-us/library/jj927172.aspx
+[Notification Hubs REST interface]: http://msdn.microsoft.com/en-us/library/windowsazure/dn223264.aspx

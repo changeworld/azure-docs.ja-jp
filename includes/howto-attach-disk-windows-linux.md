@@ -1,254 +1,259 @@
-#データ ディスクを仮想マシンに接続する方法
+#How to Attach a Data Disk to a Virtual Machine
 
 
 
 
-- [概念](#concepts)
-- [方法: 既存のディスクの接続](#attachexisting)
-- [方法: 空のディスクの接続](#attachempty)
-- [方法: Windows Server 2008 R2 での新しいデータ ディスクの初期化](#initializeinWS)
-- [方法: Linux での新しいデータ ディスクの初期化](#initializeinlinux)
+- [Concepts](#concepts)
+- [How to: Attach an existing disk](#attachexisting)
+- [How to: Attach an empty disk](#attachempty)
+- [How to: Initialize a new data disk in Windows Server 2008 R2](#initializeinWS)
+- [How to: Initialize a new data disk in Linux](#initializeinlinux)
 
 
 
-##<a id="concepts"></a>概念
+##<a id="concepts"></a>Concepts
 
 
 
-データ ディスクを仮想マシンに接続してアプリケーション データを保存できます。データ ディスクは仮想ハード ディスク (VHD) で、自分のコンピューターでローカルに作成することも、Windows Azure を使ってクラウドに作成することもできます。仮想マシンでデータ ディスクを管理する方法は、オフィス内のサーバーで管理する方法と同じです。
+You can attach a data disk to a virtual machine to store application data. A data disk is a virtual hard disk (VHD) that you can create either locally with your own computer or in the cloud with Azure. You manage data disks in the virtual machine the same way you do on a server in your office.
 
-管理ポータルを使用してデータを格納しているデータ ディスクをアップロードして仮想マシンに接続することも、仮想マシンで使用しているのと同じストレージ アカウントから空のディスクを接続することもできます。この記事では、次のプロセスについて説明します。別のストレージ アカウントに存在する空のディスクを接続するには、Windows Azure PowerShell モジュールで利用できる [Add-AzureDataDisk](http://go.microsoft.com/fwlink/p/?LinkId=391661) コマンドレットを使用します。このモジュールをダウンロードするには、[ダウンロード](http://www.windowsazure.com/ja-jp/downloads/) ページにアクセスしてください。
+You can use the Management Portal to upload and attach a data disk that contains data to the virtual machine, as well as add an empty disk from the same storage account used by the virtual machine. This article describes these processes. To attach an empty disk located in a different storage account, use the [Add-AzureDataDisk](http://go.microsoft.com/fwlink/p/?LinkId=391661) cmdlet, available in the Azure PowerShell module. To download the module, see the [Downloads](http://www.windowsazure.com/en-us/downloads/) page.
 
-ディスク追加のために仮想マシンが停止することはありません。仮想マシンに接続できるディスクの数は、仮想マシンのサイズに基づいています。仮想マシンとディスク サイズの詳細については、「[Windows Azure の仮想マシンおよびクラウド サービスのサイズ](http://go.microsoft.com/FWLink/p/?LinkID=294683)」を参照してください。
+The virtual machine is not stopped to add the disk. The number of disks that you can attach to a virtual machine is based on the size of the virtual machine. For information about virtual machine and disk sizes, see [Virtual Machine Sizes for Azure](http://go.microsoft.com/FWLink/p/?LinkID=294683).
 
 > [WACOM.NOTE] 
-> Windows Azure のストレージでは最大 1 TB の BLOB がサポートされています。これは、最大仮想サイズが 999 GB の VHD に対応します。ただし、Hyper-V を使用して新しい VHD を作成する場合は、指定するサイズは仮想サイズを表します。Windows Azure で VHD を使用するには、999 GB 以下のサイズを指定してください。
+> Azure storage supports blobs up to 1 TB in size, which accommodates a VHD with a maximum virtual size of 999 GB. However, if you use Hyper-V to create a new VHD, the size you specify represents the virtual size. To use the VHD in Azure, specify a size no larger than 999 GB.
 
-**データ ディスクとリソース ディスク**
-データ ディスクは Windows Azure のストレージ内に存在し、ファイルとアプリケーション データの永続的なストレージとして使用できます。
+**Data Disk vs. Resource Disk**  
+Data disks reside on Azure Storage and can be used for persistent storage of files and application data.
 
-各仮想マシンには、一時的なローカル *リソース ディスク*も接続されています。リソース ディスク上のデータには、再起動を行った場合の持続性がないため、多くの場合は仮想マシン上で実行されているアプリケーションとプロセスが、このディスクを過渡的および一時的なストレージとして使用します。また、オペレーティング システムのページ ファイルやスワップ ファイルを格納する目的でも使用されます。
+Each virtual machine also has a temporary, local *resource disk* attached. Because data on a resource disk may not be durable across reboots, it is often used by applications and processes running in the virtual machine for transient and temporary storage of data. It is also used to store page or swap files for the operating system.
 
-Windows では、リソース ディスクに **D:** ドライブというラベルが付いています。Linux では通常、リソース ディスクは Windows Azure Linux エージェントによって管理され、**/mnt/resource** (または Ubuntu イメージでは **/mnt**) に自動的にマウントされます。詳細については、「[Windows Azure Linux Agent User Guide (Windows Azure Linux エージェント ユーザー ガイド)](http://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/linux-agent-guide/)」を参照してください。
+On Windows, the resource disk is labeled as the **D:** drive.  On Linux, the resource disk is typically managed by the Azure Linux Agent and automatically mounted to **/mnt/resource** (or **/mnt** on Ubuntu images). Please see the [Azure Linux Agent User Guide](http://www.windowsazure.com/en-us/manage/linux/how-to-guides/linux-agent-guide/) for more information.
 
-データ ディスクの使い方の詳細については、[ディスクとイメージの管理に関するページ](http://go.microsoft.com/fwlink/p/?LinkId=391660)を参照してください。
+For more information about using data disks, see [Manage disks and images](http://msdn.microsoft.com/en-us/library/windowsazure/jj672979.aspx).
 
-##<a id="attachexisting"></a>方法: 既存のディスクの接続
-
-
-1. まだサインインしていない場合は、[Windows Azure の管理ポータル](http://manage.windowsazure.com)にサインインします。
-
-2. **[仮想マシン]** をクリックし、ディスクの接続先の仮想マシンを選択します。
-
-3. コマンド バーで **[接続]** をクリックし、**[ディスクの接続]** を選択します。
+##<a id="attachexisting"></a>How to: Attach an existing disk
 
 
-	![データ ディスクの接続](./media/howto-attach-disk-window-linux/AttachExistingDiskWindows.png)
+1. If you have not already done so, sign in to the [Azure Management Portal](http://manage.windowsazure.com).
 
-	**[ディスクの接続]** ダイアログ ボックスが表示されます。
+2. Click **Virtual Machines**, and then select the virtual machine to which you want to attach the disk.
+
+3. On the command bar, click **Attach**, and then select **Attach Disk**.
+
+
+	![Attach data disk](./media/howto-attach-disk-window-linux/AttachExistingDiskWindows.png)
+
+	The **Attach Disk** dialog box appears.
 
 
 
-	![データ ディスク詳細の入力](./media/howto-attach-disk-window-linux/AttachExistingDisk.png)
+	![Enter data disk details](./media/howto-attach-disk-window-linux/AttachExistingDisk.png)
 
-3. 仮想マシンに接続するデータ ディスクを選択します。
-4. チェック マークをクリックして、仮想マシンにデータ ディスクを接続します。
+3. Select the data disk that you want to attach to the virtual machine.
+4. Click the check mark to attach the data disk to the virtual machine.
   
  
-	データ ディスクが仮想マシンのダッシュボードに表示されます。
+	You will now see the data disk listed on the dashboard of the virtual machine.
 
 
-	![データ ディスクの接続に成功](./media/howto-attach-disk-window-linux/AttachSuccess.png)
+	![Data disk successfully attached](./media/howto-attach-disk-window-linux/AttachSuccess.png)
 
-##<a id="attachempty"></a>方法: 空のディスクの接続
+##<a id="attachempty"></a>How to: Attach an empty disk
 
-空のディスクとして使用するために .vhd ファイルを作成してアップロードした後、そのディスクを仮想マシンに接続できます。.vhd ファイルをストレージ アカウントにアップロードするには、[Add-AzureVhd](http://go.microsoft.com/FWLink/p/?LinkID=391684) コマンドレットを使用します。
+After you have created and uploaded a .vhd file to use as an empty disk, you can attach it to a virtual machine. Use the [Add-AzureVhd](http://go.microsoft.com/FWLink/p/?LinkID=391684) cmdlet to upload the .vhd file to the storage account.  
 
-1. **[仮想マシン]** をクリックし、データ ディスクの接続先の仮想マシンを選択します。
-
-
-
-2. コマンド バーで **[接続]** をクリックし、**[空のディスクの接続]** を選択します。
-
-
-	![空のディスクの接続](./media/howto-attach-disk-window-linux/AttachDiskWindows.png)
+1. Click **Virtual Machines**, and then select the virtual machine to which you want to attach the data disk.
 
 
 
-	**[空のディスクの接続]** ダイアログ ボックスが表示されます。
+2. On the command bar, click **Attach**, and then select **Attach Empty Disk**.
+
+
+	![Attach an empty disk](./media/howto-attach-disk-window-linux/AttachDiskWindows.png)
 
 
 
-	![新しい空のディスクの接続](./media/howto-attach-disk-window-linux/AttachNewDiskWindows.png)
+	The **Attach Empty Disk** dialog box appears.
+
+
+
+	![Attach a new empty disk](./media/howto-attach-disk-window-linux/AttachNewDiskWindows.png)
 
  
-3. **[ファイル名]** ボックスで、自動的に生成された名前を受け入れるか、保存する VHD ファイルに使用する名前を入力します。VHD ファイルから作成されたデータ ディスクでは必ず、自動的に生成された名前が使用されます。
+3. In **File Name**, either accept the automatically generated name or enter a name that you want to use for the VHD file that is stored. The data disk that is created from the VHD file will always use the automatically generated name.
 
 
 
-4. **[サイズ]** ボックスに、データ ディスクのサイズを入力します。
+4. In **Size**, enter the size of the data disk. 
 
 
 
-5. チェック マークをクリックして、空のデータ ディスクを接続します。
+5. Click the check mark to attach the empty data disk.
 
-	データ ディスクが仮想マシンのダッシュボードに表示されます。
+	You will now see the data disk listed on the dashboard of the virtual machine.
 
 
-	![空のデータ ディスクの接続に成功](./media/howto-attach-disk-window-linux/AttachEmptySuccess.png)
+	![Empty data disk successfully attached](./media/howto-attach-disk-window-linux/AttachEmptySuccess.png)
 
 
 > [WACOM.NOTE] 
-> データ ディスクを追加した後、仮想マシンがストレージとしてそのディスクを使用できるように、仮想マシンにログオンしてディスクを初期化する必要があります。
+> After you add a data disk, you'll need to log on to the virtual machine and initialize the disk so the virtual machine can use the disk for storage.
 
 
 
-##<a id="initializeinWS"></a>方法: Windows Server での新しいデータ ディスクの初期化
+##<a id="initializeinWS"></a>How to: Initialize a new data disk in Windows Server
 
-1. 「[Windows Server を実行する仮想マシンにログオンする方法][logon]」に示された手順に従って仮想マシンに接続します。
-
-
-
-2. マシンにログオンしたら、左側のウィンドウで**サーバー マネージャー**を開き、**[ストレージ]** を展開して、**[ディスクの管理]** をクリックします。
+1. Connect to the virtual machine by using the steps listed in [How to log on to a virtual machine running Windows Server][logon].
 
 
 
-	![サーバー マネージャーを開く](./media/howto-attach-disk-window-linux/ServerManager.png)
+2. After you log on, open **Server Manager**, in the left pane, expand **Storage**, and then click **Disk Management**.
 
 
 
-3. **[ディスク 2]** を右クリックして、**[ディスクの初期化]** をクリックします。
+	![Open Server Manager](./media/howto-attach-disk-window-linux/ServerManager.png)
 
 
 
-	![ディスクの初期化](./media/howto-attach-disk-window-linux/InitializeDisk.png)
-
-4. **[OK]** をクリックして初期化処理を開始します。
+3. Right-click **Disk 2**, and then click **Initialize Disk**.
 
 
 
-5. ディスク 2 のスペース割り当て領域を右クリックして、**[新しいシンプル ボリューム]** をクリックし、既定値を使ってウィザードを終了します。
+	![Initialize the disk](./media/howto-attach-disk-window-linux/InitializeDisk.png)
+
+4. Click **OK** to start the initialization process.
+
+
+
+5. Right-click the space allocation area for Disk 2, click **New Simple Volume**, and then finish the wizard with the default values.
  
 
-	![ボリュームの初期化](./media/howto-attach-disk-window-linux/InitializeDiskVolume.png)
+	![Initialize the volume](./media/howto-attach-disk-window-linux/InitializeDiskVolume.png)
 
 
 
-	これでディスクがオンラインになり、新しいドライブ文字が使用できるようになりました。
+	The disk is now online and ready to use with a new drive letter.
 
 
 
-	![ボリュームの初期化に成功](./media/howto-attach-disk-window-linux/InitializeSuccess.png)
+	![Volume successfully initialized](./media/howto-attach-disk-window-linux/InitializeSuccess.png)
 
 
 
 
-##<a id="initializeinlinux"></a>方法: Linux での新しいデータ ディスクの初期化
+##<a id="initializeinlinux"></a>How to: Initialize a new data disk in Linux
 
 
 
-1. 「[Linux を実行する仮想マシンにログオンする方法][logonlinux]」に示された手順に従って仮想マシンに接続します。
+1. Connect to the virtual machine by using the steps listed in [How to log on to a virtual machine running Linux][logonlinux].
 
 
 
-2. SSH のウィンドウで、次のコマンドを入力し、仮想マシンを管理するために作成したアカウントのパスワードを入力します。
+2. In the SSH window, type the following command, and then enter the password for the account that you created to manage the virtual machine:
 
 	`sudo grep SCSI /var/log/messages`
 
-	表示されたメッセージで、最後に追加されたデータ ディスクの識別子を確認できます。
+	You can find the identifier of the last data disk that was added in the messages that are displayed.
 
 
 
-	![ディスク メッセージに取得](./media/howto-attach-disk-window-linux/DiskMessages.png)
+	![Get the disk messages](./media/howto-attach-disk-window-linux/DiskMessages.png)
 
 
 
-3. SSH のウィンドウで、次のコマンドを入力して新しいデバイスを作成し、アカウントのパスワードを入力します。
+3. In the SSH window, type the following command to create a new device, and then enter the account password:
 
 	`sudo fdisk /dev/sdc`
 
+	>[WACOM.NOTE] In this example you may need to use `sudo -i` on some distributions if /sbin or /usr/sbin are not in your `$PATH`.
 
 
-4. 「**n**」を入力すると、新しいパーティションが作成されます。
+4. Type **n** to create a new partition.
 
 
-	![新しいデバイスの作成](./media/howto-attach-disk-window-linux/DiskPartition.png)
+	![Create new device](./media/howto-attach-disk-window-linux/DiskPartition.png)
 
-5. パーティションをプライマリ パーティションにするには「**p**」を、最初のパーティションにするには「**1**」を、シリンダーの既定値をそのまま使用するには Enter キーを押します。
-
-
-	![パーティションの作成](./media/howto-attach-disk-window-linux/DiskCylinder.png)
+5. Type **p** to make the partition the primary partition, type **1** to make it the first partition, and then type enter to accept the default value for the cylinder.
 
 
-
-6. 「**p**」を入力すると、パーティション分割されたディスクに関する詳細情報が表示されます。
-
-
-	![ディスク情報の表示](./media/howto-attach-disk-window-linux/DiskInfo.png)
+	![Create partition](./media/howto-attach-disk-window-linux/DiskCylinder.png)
 
 
 
-7. 「**w**」と入力すると、ディスクの設定が書き込まれます。
+6. Type **p** to see the details about the disk that is being partitioned.
 
 
-	![ディスクの変更の書き込み](./media/howto-attach-disk-window-linux/DiskWrite.png)
+	![List disk information](./media/howto-attach-disk-window-linux/DiskInfo.png)
 
-8. 新しいパーティションにファイル システムを作成する必要があります。次のコマンドを入力してファイル システムを作成し、アカウントのパスワードを入力します。
+
+
+7. Type **w** to write the settings for the disk.
+
+
+	![Write the disk changes](./media/howto-attach-disk-window-linux/DiskWrite.png)
+
+8. You must create the file system on the new partition. As an example, type the following command to create the file system, and then enter the account password:
 
 	`sudo mkfs -t ext4 /dev/sdc1`
 
+	![Create file system](./media/howto-attach-disk-window-linux/DiskFileSystem.png)
 
-	![ファイル システムの作成](./media/howto-attach-disk-window-linux/DiskFileSystem.png)
-
-9. 次のコマンドを入力してドライブをマウントするディレクトリを作成し、アカウントのパスワードを入力します。
-
-	`sudo mkdir /mnt/datadrive`
+	>[WACOM.NOTE] Note that on SUSE Linux Enterprise 11 systems provide only read-only access for ext4 file systems.  For these systems it is recommended to format the new file system as ext3 rather than ext4.
 
 
+9. Next you must have a directory available to mount the new file system. As an example, type the following command to make a new directory for mounting the drive, and then enter the account password:
 
-10. 次のコマンドを入力してドライブをマウントします。
-
-	`sudo mount /dev/sdc1 /mnt/datadrive`
-
-	これで、データ ディスクを **/mnt/datadrive** として使用する準備ができました。
+	`sudo mkdir /datadrive`
 
 
+10. Type the following command to mount the drive:
 
-11. 新しいドライブを /etc/fstab に追加します。
+	`sudo mount /dev/sdc1 /datadrive`
 
-	再起動後にドライブを自動的に再マウントするために、そのドライブを /etc/fstab ファイルに追加する必要があります。また、ドライブを参照する際に、デバイス名 (つまり /dev/sdc1) だけではなく、UUID (汎用一意識別子) を /etc/fstab で使用することもお勧めします。新しいドライブの UUID を確認するには、**blkid** ユーティリティを次のように使用します。
+	The data disk is now ready to use as **/datadrive**.
+
+
+11. Add the new drive to /etc/fstab:
+
+	To ensure the drive is re-mounted automatically after a reboot it must be added to the /etc/fstab file. In addition, it is highly recommended that the UUID (Universally Unique IDentifier) is used in /etc/fstab to refer to the drive rather than just the device name (i.e. /dev/sdc1). To find the UUID of the new drive you can use the **blkid** utility:
 	
-	`sudo -i blkid`
+		`sudo -i blkid`
 
-	次のような出力が表示されます。
+	The output will look similar to the following:
 
 		`/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"`
 		`/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"`
 		`/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"`
 
-	>[WACOM.NOTE] blkid では、すべての場合で sudo アクセスは必要ありませんが、/sbin または /usr/sbin が "$PATH" にない場合は、一部のディストリビューションで "sudo -i" を使用した方が簡単に実行できる可能性があります。
+	>[WACOM.NOTE] blkid may not require sudo access in all cases, however, it may be easier to run with `sudo -i` on some distributions if /sbin or /usr/sbin are not in your `$PATH`.
 
-	**注意事項:** /etc/fstab ファイルを不適切に編集すると、システムが起動できなくなる可能性があります。編集方法がはっきりわからない場合は、このファイルを適切に編集する方法について、ディストリビューションのドキュメントを参照してください。編集する前に、/etc/fstab ファイルのバックアップを作成することもお勧めします。
+	**Caution:** Improperly editing the /etc/fstab file could result in an unbootable system. If unsure, please refer to the distribution's documentation for information on how to properly edit this file. It is also recommended that a backup of the /etc/fstab file is created before editing.
 
-	テキスト エディターを使用して、/etc/fstab ファイルの最後の部分に新しいファイル システムに関する情報を入力します。この例では、前の手順で作成した新しい **/dev/sdc1** デバイスに対して UUID 値を使用し、マウント ポイントとして **/mnt/datadrive** を使用します。
+	Using a text editor, enter the information about the new file system at the end of the /etc/fstab file.  In this example we will use the UUID value for the new **/dev/sdc1** device that was created in the previous steps, and the mountpoint **/datadrive**:
 
-	`UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e    /mnt/datadrive    ext4    defaults    1    1`
+		`UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2`
 
-	追加のデータ ドライブやパーティションを作成する場合、それらも /etc/fstab に入力する必要があります。
+	Or, on systems based on SUSE Linux you may need to use a slightly different format:
 
-	これで、ファイル システムが正しくマウントされるかどうかをテストできます。そのためには、ファイル システムをマウント解除してから、再度マウントします。つまり、前の手順で作成したサンプルのマウント ポイント "/mnt/datadrive" を使用します。
+		`/dev/disk/by-uuid/33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /   ext3   defaults   1   2`
 
-		`sudo umount /mnt/datadrive`
-		`sudo mount /mnt/datadrive`
+	If additional data drives or partitions are created you will need to enter them into /etc/fstab separately as well.
 
-	2 番目のコマンドでエラーが発生した場合、/etc/fstab ファイルの構文が正しいかどうかを確認してください。
+	You can now test that the file system is mounted properly by simply unmounting and then re-mounting the file system, i.e. using the example mount point `/datadrive` created in the earlier steps: 
+
+		`sudo umount /datadrive`
+		`sudo mount /datadrive`
+
+	If the second command produces an error, check the /etc/fstab file for correct syntax.
 
 
+	>[WACOM.NOTE] Subsequently removing a data disk without editing fstab could cause the VM to fail to boot. If this is a common occurrence, then most distributions provide either the `nofail` and/or `nobootwait` fstab options that will allow a system to boot even if the disk is not present. Please consult your distribution's documentation for more information on these parameters.
 
 
 
 [logon]: ../virtual-machines-log-on-windows-server/
 [logonlinux]: ../virtual-machines-linux-how-to-log-on/
-
 
 

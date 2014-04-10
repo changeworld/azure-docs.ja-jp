@@ -1,242 +1,212 @@
-<properties linkid="develop-net-tutorials-multi-tier-web-site-1-overview" urlDisplayName="ステップ 1: 概要" pageTitle="多層 ASP.NET MVC 4 Web サイトのチュートリアル - ステップ 1: 概要" metaKeywords="Windows Azure チュートリアル, 電子メール リスト サービス アプリケーション, 電子メール サービス アーキテクチャ, Azure チュートリアルの概要" description="5 つのパートから成る多層 Web サイトのチュートリアルについて説明します。" metaCanonical="" services="cloud-services,storage" documentationCenter=".NET" title="キュー" authors=""  solutions="" writer="tdykstra" manager="wpickett" editor="mollybos"  />
+<properties linkid="develop-net-tutorials-multi-tier-web-site-1-overview" urlDisplayName="Step 1: Overview" pageTitle="ASP.NET Multi-tier Web Application with Azure - Step 1: Overview" metaKeywords="Azure tutorial, email list service app, email service architecture, Azure tutorial overview, Azure multi-tier, Azure storage, Azure blobs, Azure tables, Azure queues" description="Learn about the five-part multi-tier Azure web application tutorial." metaCanonical="" services="cloud-services,storage" documentationCenter=".NET" title="Multi-tier ASP.NET MVC Web Site Tutorial - Step 1: Overview" authors="tdykstra,riande" solutions="" manager="wpickett" editor="mollybos" />
 
+# ASP.NET Multi-Tier Web Application Using Azure Storage Tables, Queues, and Blobs - 1 of 5
 
+This tutorial series shows how to create a multi-tier ASP.NET MVC web application that uses Azure Storage tables, queues, and blobs, and how to deploy the application to an Azure Cloud Service. The tutorials assume that you have no prior experience using Azure. On completing the series, you'll know how to build a resilient and scalable data-driven web application and deploy it to the cloud.
 
-<div>
-<div class="left-nav">
-<div class="static-nav">
-<ul>
-<li class="menu-nodejs-compute"><a href="/en-us/develop/net/compute/">コンピューティング</a></li>
-<li class="menu-nodejs-data"><a href="/en-us/develop/net/data/">データ サービス</a></li>
-<li class="menu-nodejs-appservices"><a href="/en-us/develop/net/app-services/">アプリケーション サービス</a></li>
-</ul>
-<ul class="links">
-<li class="forum"><a href="/en-us/support/forums/">フォーラム</a></li>
-</ul>
-<ul>
-<li>シリーズの内容</li>
-<li><strong>1. 概要</strong></li>
-<li><a href="./cloud-services-dotnet-multi-tier-app-storage-2-download-run/">2. ダウンロードと実行</a></li>
-<li><a href="./cloud-services-dotnet-multi-tier-app-storage-3-web-role/">3. Web ロール</a></li>
-<li><a href="./cloud-services-dotnet-multi-tier-app-storage-4-worker-role-a/">4. Worker ロール A</a></li>
-<li><a href="./cloud-services-dotnet-multi-tier-app-storage-5-worker-role-b/">5. Worker ロール B</a></li>
-</ul>
-</div>
-<div class="floating-nav jump-to">
-<ul>
-<li>ページ (ジャンプ先):</li>
-</ul>
-</div>
-</div>
-</div>
+This content is available as a free e-book in the 
+[TechNet E-Book Gallery](http://social.technet.microsoft.com/wiki/contents/articles/11608.e-book-gallery-for-microsoft-technologies.aspx#ASPNETMultiTierWindowsAzureApplicationUsingStorageTablesQueuesandBlobs).
 
-# ストレージ テーブル、キュー、および BLOB を使用する .NET 多層アプリケーション (1/5)
+<h2><a name="whatyoulllearn"></a><span class="short-header">What You'll Learn</span>What You'll Learn</h2>
 
-このチュートリアル シリーズでは、Windows Azure のストレージ テーブル、キュー、および BLOB を使用する多層 ASP.NET MVC 4 Web アプリケーションを作成する方法、およびそのアプリケーションを Windows Azure のクラウド サービスに展開する方法を説明します。これらのチュートリアルは、Windows Azure を初めて使用するユーザーを対象としています。すべてのチュートリアルを完了すると、弾力性と拡張性に優れたデータ主導型の Web アプリケーションを構築し、クラウドに展開できるようになります。
+In this tutorial series you'll learn the following:
 
-この内容は、[TechNet の電子書籍ギャラリー
-](http://social.technet.microsoft.com/wiki/contents/articles/11608.e-book-gallery-for-microsoft-technologies.aspx#ASPNETMultiTierWindowsAzureApplicationUsingStorageTablesQueuesandBlobs)で無料の電子書籍としても入手できます。
+* How to enable your machine for Azure development by installing the Azure SDK.
+* How to create a Visual Studio cloud project with an ASP.NET MVC web role and two worker roles.
+* How to publish the cloud project to an Azure Cloud Service.
+* How to publish the MVC project to an Azure Web Site if you prefer, and still use the worker roles in a Cloud Service.
+* How to use the Azure Queue storage service for communication between tiers or between worker roles.
+* How to use the Azure Table storage service as a highly scalable data store for structured, non-relational data.
+* How to use the Azure Blob service to store files in the cloud.
+* How to view and edit Azure tables, queues, and blobs by using Visual Studio or Azure Storage Explorer.
+* How to use SendGrid to send emails.
+* How to configure tracing and view trace data.
+* How to scale an application by increasing the number of worker role instances.
 
-<h2><a name="whatyoulllearn"></a><span class="short-header">学習する内容</span>学習する内容</h2>
+<h2><a name="frontendoverview"></a><span class="short-header">Front-end overview</span>Front-end overview</h2>
 
-このチュートリアル シリーズで学習する内容は次のとおりです。
+The application that you'll build is an email list service. The front-end of the multi-tier application includes web pages that administrators of the service use to manage email lists.
 
-* Windows Azure SDK をインストールして、Windows Azure 向け開発用にコンピューターを準備する方法
-* MVC 4 の Web ロール (1 つ) と Worker ロール (2 つ) を使用して、Visual Studio クラウド プロジェクトを作成する方法
-* 作成したクラウド プロジェクトを Windows Azure のクラウド サービスに発行する方法
-* 必要であれば MVC 4 プロジェクトを Windows Azure の Web サイトに発行し、Worker ロールはクラウド サービスで実行する方法
-* Windows Azure キュー ストレージ サービスを使用して、複数の階層間または Worker ロール間でやり取りする方法
-* 拡張性に優れたデータ ストアとして Windows Azure テーブル ストレージ サービスを使用し、構造化された非リレーショナル データを格納する方法
-* Windows Azure BLOB サービスを使用して、ファイルをクラウドに格納する方法
-* Visual Studio または Azure ストレージ エクスプローラーを使用して、Windows Azure のテーブル、キュー、BLOB を表示および編集する方法
-* SendGrid を使用して電子メールを送信する方法
-* トレース機能を構成し、トレース データを表示する方法
-* Worker ロール インスタンスの数を増やすことによって、アプリケーションの規模を拡張する方法
+![Mailing List Index Page][mtas-mailing-list-index-page]
 
-<h2><a name="frontendoverview"></a><span class="short-header">フロントエンドの概要</span>Front-end overview</h2>
+![Subscriber Index Page][mtas-subscribers-index-page]
 
-ここで構築するアプリケーションは電子メール リスト サービスです。この多層アプリケーションのフロントエンドは、サービスの管理者が電子メール リストを管理するための Web ページで構成されます。
+There is also a set of pages that administrators use to create messages to be sent to an email list.
 
-![メーリング リストのインデックス ページ][mtas-mailing-list-index-page]
+![Message Index Page][mtas-message-index-page]
 
-![登録者のインデックス ページ][mtas-subscribers-index-page]
+![Message Create Page][mtas-message-create-page]
 
-管理者がメーリング リストへ送信するメッセージを作成するためのページもあります。
+Clients of the service are companies that give their customers an opportunity to sign up for a mailing list on the client web site. For example, an administrator sets up a list for Contoso University History Department announcements. When a student interested in History Department announcements clicks a link on the Contoso University web site, Contoso University makes a web service call to the Azure Email Service application. The service method causes an email to be sent to the customer. That email contains a hyperlink, and when the recipient clicks the link, a page welcoming the customer to the History Department Announcements list is displayed.
 
-![メッセージのインデックス ページ][mtas-message-index-page]
+![Confirmation email][mtas-subscribe-email]
 
-![メッセージ作成ページ][mtas-message-create-page]
+![Welcome to list page][mtas-subscribe-confirmation-page]
 
-このサービスは、自社の Web サイト上で顧客がメーリング リストに配信登録できるようにします。たとえば、Contoso 大学史学部のお知らせをメール配信するとしましょう。管理者はそのためのリストを設定します。史学部のお知らせを購読したいと思った学生が Contoso 大学の Web サイトでリンクをクリックすると、Windows Azure 電子メール サービス アプリケーションが呼び出され、その学生に電子メールが送信されます。ここで送信される電子メールにはハイパーリンクが含まれています。メールを受け取った学生がこのリンクをクリックすると、史学部お知らせリストのウェルカム ページが表示されます。
+Every email sent by the service (except the subscribe confirmation) includes a hyperlink that can be used to unsubscribe. If a recipient clicks the link, a web page asks for confirmation of intent to unsubscribe. 
 
-![確認用メール][mtas-subscribe-email]
+![Confirm unsubscribe page][mtas-unsubscribe-query-page]
 
-![リストのウェルカム ページ][mtas-subscribe-confirmation-page]
+If the recipient clicks the **Confirm** button, a page is displayed confirming that the person has been removed from the list.
 
-このサービスで送信されるすべての電子メール (登録確認用メールを除く) には、登録を解除するためのハイパーリンクが含まれています。メール受信者がこのリンクをクリックすると、登録を解除するかどうかを確認する Web ページが表示されます。
+![Unsubscribe confirmed page][mtas-unsubscribe-confirmation-page]
 
-![登録解除の確認ページ][mtas-unsubscribe-query-page]
 
-メール受信者が **[確認]** ボタンをクリックすると、そのユーザーがリストから削除されたことを知らせるページが表示されます。
 
-![登録解除完了のお知らせページ][mtas-unsubscribe-confirmation-page]
 
+<h2><a name="whyanemaillistapp"></a><span class="short-header">Tutorials</span>Tutorials in the Series</h2>
 
+Here is a list of the tutorials with a summary of their contents:
 
+1. **Introduction to the Azure Email Service application** (this tutorial). An overview of the application and its architecture.
+2. [Configuring and Deploying the Azure Email Service application][tut2]. How to download the sample application, configure it, test it locally, deploy it, and test it in the cloud.  
+3. [Building the web role for the Azure Email Service application][tut3]. How to build the MVC 4 components of the application and test them locally.
+4. [Building worker role A (email scheduler) for the Azure Email Service application][tut4]. How to build the back-end component that creates queue work items for sending emails, and test it locally.
+5. [Building worker role B (email sender) for the Azure Email Service application][tut5]. How to build the back-end component that processes queue work items for sending emails, and test it locally.
 
-<h2><a name="whyanemaillistapp"></a><span class="short-header">チュートリアル</span>このシリーズのチュートリアル</h2>
+If you just want to download the application and try it out, all you need is the first two tutorials.  If you want to see all the steps that go into building an application like this from scratch, go through the last three tutorials after you go through the first two.
 
-ここで実施するチュートリアルとその内容は次のとおりです。
 
-1. **Windows Azure 電子メール サービス アプリケーションの概要** (このチュートリアル): ここで作成するアプリケーションとそのアーキテクチャを紹介します。
-2. [Configuring and Deploying the Windows Azure Email Service application (Windows Azure 電子メール サービス アプリケーションの構成と展開)][tut2]: サンプル アプリケーションをダウンロードして構成し、ローカルでテストする方法、およびクラウドに展開してテストする方法を説明します。
-3. [Building the web role for the Windows Azure Email Service application (Windows Azure 電子メール サービス アプリケーションで使用する Web ロールの作成)][tut3]: このアプリケーションの MVC 4 コンポーネントを作成し、それらをローカルでテストする方法を説明します。
-4. [Building worker role A (email scheduler) for the Windows Azure Email Service application (Windows Azure 電子メール サービス アプリケーションで使用する Worker ロール A (電子メール スケジューラ) の作成)][tut4]: 電子メール送信に必要なキュー作業項目を作成するバックエンド コンポーネントを構築し、それをローカルでテストする方法を説明します。
-5. [Building worker role B (email sender) for the Windows Azure Email Service application (Windows Azure 電子メール サービス アプリケーションで使用する Worker ロール B (電子メール送信) の作成)][tut5]: 電子メール送信に必要なキュー作業項目を処理するバックエンド コンポーネントを構築し、それをローカルでテストする方法を説明します。
 
-このアプリケーションをダウンロードして、実際に使ってみたい場合は、最初の 2 つのチュートリアルを実行してください。このようなアプリケーションを新しく作成するための手順をすべて参照したい場合は、最初の 2 つのチュートリアルを実行した後、後半 3 つのチュートリアルを実行してください。
+<h2><a name="whyanemaillistapp"></a><span class="short-header">Why This App</span>Why an Email List Service Application</h2>
 
+We chose an email list service for this sample application because it is the kind of application that needs to be resilient and scalable, two features that make it especially appropriate for Azure.  
 
+### Resilient 
 
-<h2><a name="whyanemaillistapp"></a><span class="short-header">このアプリケーションを選んだ理由</span>電子メール リスト サービス アプリケーションを選んだ理由</h2>
+If a server fails while sending out emails to a large list, you want to be able to spin up a new server easily and quickly, and you want the application to pick up where it left off without losing or duplicating any emails. An Azure Cloud Service web or worker role instance (a virtual machine) is automatically replaced if it fails. And Azure Storage queues and tables provide a means to implement server-to-server communication that can survive a failure without losing work.
 
-今回、サンプル アプリケーションとして電子メール リスト サービスを選んだのは、優れた耐障害性と拡張性が求められ、Windows Azure に特に適しているアプリケーションだからです。
+### Scalable
 
-### 耐障害性
+An email service also must be able to handle spikes in workload, since sometimes you are sending emails to small lists and sometimes to very large lists.  In many hosting environments, you have to purchase and maintain sufficient hardware to handle the spikes in workload, and you're paying for all that capacity 100% of the time although you might only use it 5% of the time.  With Azure, you pay only for the amount of computing power that you actually need for only as long as you need it.  To scale up for a large mailing, you just change a configuration setting to increase the number of servers you have available to process the workload, and this can be done programmatically.  For example, you could configure the application so that if the number of work items waiting in the queue exceeds a certain number, Azure automatically spins up additional instances of the worker role that processes those work items.
 
-多数の登録者へメール送信している間にサーバーが故障した場合、新しいサーバーをすばやく準備して処理を再開し、一部の登録者に電子メールが届かなかったり、同じ電子メールが重複して届かないようにしなければなりません。Windows Azure クラウド サービスでは、Web ロール インスタンスまたはワーカー ロール インスタンス (仮想マシン) が故障した場合、それらが自動的に置き換えられます。また、Windows Azure のストレージ キューとテーブルを使用してサーバー間通信を実装すれば、障害が発生しても適切に処理を継続できます。
 
-### 拡張性
 
-電子メール サービスは処理量の急増にも対応できなければなりません。メールの配信登録者が少ない場合もあれば、急に増える場合もあります。多くのホスティング環境の場合、処理量の急増に対応するには追加のハードウェアを購入して管理する必要があります。その上、利用時間が全体の 5% であっても、常に全容量分のコストを支払わなければなりません。Windows Azure では、実際に必要なコンピューティング能力に対して、必要な期間だけ料金を支払います。登録者が増加して拡張が必要になったら、増加した処理量に合わせてサーバーの数を増やすだけです。この構成変更はプログラムで行えます。たとえば、キューで待機している作業項目が一定数を超えた場合、新しい Worker ロール インスタンスを自動的に作成し、それらの作業項目を処理するようにアプリケーションを構成できます。
 
+<h2><a name="backendoverview"></a><span class="short-header">Back-end overview</span>Back-end overview</h2>
 
+The front-end stores email lists and messages to be sent to them in Azure tables. When an administrator schedules a message to be sent, a table row containing the scheduled date and other data such as the subject line is added to the `message` table. A worker role periodically scans the `message` table looking for messages that need to be sent (we'll call this worker role A). 
 
+When worker role A finds a message needing to be sent, it does the following tasks:
 
-<h2><a name="backendoverview"></a><span class="short-header">バックエンドの概要</span>バックエンドの概要</h2>
+* Gets all the email addresses in the destination email list.
+* Puts the information needed to send each email in the `message` table.
+* Creates a queue work item for each email that needs to be sent. 
 
-フロントエンドは、電子メール リストとそれらのリストに送信するメッセージを Windows Azure のテーブルに格納します。管理者がメッセージの送信スケジュールを設定すると、送信予定日とその他のデータ (件名など) を含むテーブル行が `message` テーブルに追加されます。Worker ロールは `message` テーブルを定期的にスキャンし、送信する必要があるメッセージを探します (これを Worker ロール A と呼びます)。
+A second worker role (worker role B) polls the queue for work items. When worker role B finds a work item, it processes the item by sending the email, and then it deletes the work item from the queue. The following diagram shows these relationships.
 
-要送信メッセージが見つかった場合、ワーカー ロール A は次のタスクを実行します。
+![Email message processing][mtas-worker-roles-a-and-b]
 
-* すべての電子メール アドレスをメール送信先リストに取り込む。
-* 各電子メールの送信に必要な情報を `message` テーブルに追加する。
-* 送信する各電子メールのキュー作業項目を作成する。
+No emails are missed if worker role B goes down and has to be restarted, because a queue work item for an email isn't deleted until after the email has been sent. The back-end also implements table processing that prevents multiple emails from getting sent in case worker role A goes down and has to be restarted. In that case, multiple queue work items might be generated for a given destination email address. But for each destination email address, a row in the `message` table tracks whether the email has been sent. Depending on the timing of the restart and email processing, worker A uses this row to avoid creating a second queue work item, or worker B uses this row to avoid sending a second email.
 
-別の Worker ロール (Worker ロール B) が作業項目のキューをポーリングします。ワーカー ロール B が作業項目を見つけると、電子メールを送信し、その作業項目をキューから削除します。次の図はこれらの関連性を示しています。
+![Preventing duplicate emails][mtas-message-processing]
 
-![電子メール メッセージの処理][mtas-worker-roles-a-and-b]
+Worker role B also polls a subscription queue for work items put there by the Web API service method for new subscriptions. When it finds one, it sends the confirmation email. 
 
-Worker ロール B が停止して再起動する必要がある場合でも、電子メールの不達は発生しません。電子メールが送信されない限り、その電子メールのキュー作業項目は削除されないためです。ワーカー ロール A が停止して再起動した場合、同じ電子メールが複数送信されないようにするためのテーブル処理もバックエンドで実装します。この場合、1 つのメール送信先アドレスについて、複数のキュー作業項目が生成される可能性があります。これを防ぐため、各メール送信先アドレスについて、電子メールの送信/未送信状況が `message` テーブルの行に記録されます。この行を参照することにより、再起動のタイミングと電子メールの処理状況に応じて、キュー作業項目が重複して作成されないようにしたり (ワーカー A)、同じ電子メールが重複して送信されないようにします (ワーカー B)。
+![Subscription queue message processing][mtas-subscribe-diagram]
 
-![重複する電子メールの送信を防ぐ][mtas-message-processing]
 
-Worker ロール B は、Web API サービス メソッドによって追加された作業項目の配信登録キューもポーリングし、新規登録がないかどうかをチェックします。新規登録が見つかった場合は、確認用の電子メールを送信します。
 
-![配信登録キュー メッセージの処理][mtas-subscribe-diagram]
 
 
+<h2><a name="tables"></a><span class="short-header">Tables</span>Azure Tables</h2>
 
+The Azure Email Service application stores data in Azure Storage tables. Azure tables are a NoSQL data store, not a relational database like [Azure SQL Database](http://msdn.microsoft.com/en-us/library/windowsazure/ee336279.aspx). That makes them a good choice when efficiency and scalability are more important than data normalization and relational integrity. For example, in this application, one worker role creates a row every time a queue work item is created, and another one retrieves and updates a row every time an email is sent, which might become a performance bottleneck if a relational database were used. Additionally,  Azure tables are cheaper than Azure SQL.  For more information about Azure tables, see the resources that are listed at the end of [the last tutorial in this series][tut5].
 
+The following sections describe the contents of the Azure tables that are used by the Azure Email Service application. For a diagram that shows the tables and their relationships, see the [Azure Email Service data diagram](#datadiagram) later in this page.
 
-<h2><a name="tables"></a><span class="short-header">テーブル</span>Windows Azure のテーブル</h2>
+### mailinglist table ###
 
-Windows Azure 電子メール サービス アプリケーションは、データを Windows Azure のストレージ テーブルに保存します。Windows Azure のテーブルは NoSQL データ ストアです。[Windows Azure SQL データベース](http://msdn.microsoft.com/en-us/library/windowsazure/ee336279.aspx)のようなリレーショナル データベースではありません。したがって、データの正規化やリレーショナル整合性より、効率性と拡張性が重要な場合に適しています。たとえばこのアプリケーションでは、キュー作業項目が作成されるたびに、ワーカー ロールが行を作成します。また、電子メールが送信されるたびに、別のワーカー ロールが行を取得して更新します。リレーショナル データベースを使用した場合、このような処理はパフォーマンスのボトルネックになる可能性があります。さらに、Windows Azure のテーブルは Windows Azure SQL より安価です。Windows Azure のテーブルの詳細については、[このシリーズの最終チュートリアル][tut5]の末尾で紹介されている関連情報を参照してください。
+The `mailinglist` table stores information about mailing lists and the subscribers to mailing lists. (The Azure table naming convention best practice is to use all lower-case letters.) Administrators use web pages to create and edit mailing lists, and clients and subscribers use a set of web pages and a service method to subscribe and unsubscribe. 
 
-この後のセクションでは、Windows Azure 電子メール サービス アプリケーションで使用する Windows Azure のテーブルの内容について説明します。これらのテーブルと相互の関連性を示す図は、このページ後半の「[Windows Azure 電子メール サービスのデータ図](#datadiagram)」に記載されています。
+In NoSQL tables, different rows can have different schemas, and this flexibility is commonly used to make one table store data that would require multiple tables in a relational database. For example, to store mailing list data in SQL Database you could use three tables: a `mailinglist` table that stores information about the list, a `subscriber` table that stores information about subscribers, and a `mailinglistsubscriber` table that associates mailing lists with subscribers and vice versa. In the NoSQL table in this application, all of those functions are rolled into one table named `mailinglist`. 
 
-### mailinglist テーブル###
+In an Azure table, every row has a *partition key* and a *row key* that uniquely identifies the row. The partition key divides the table up logically into partitions. Within a partition, the row key uniquely identifies a row. There are no secondary indexes; therefore to make sure that the application will be scalable, it is important to design your tables so that you can always specify partition key and row key values in the Where clause of queries.
 
-`mailinglist` テーブルには、メーリング リストおよびメーリング リスト登録者に関する情報が格納されます (慣例として、Windows Azure のテーブル名ではすべて小文字を使用します)。管理者は Web ページを使用して、メーリング リストを作成および編集します。顧客や登録者は、一連の Web ページとサービス メソッドを使用して登録と登録解除を行います。
+The partition key for the `mailinglist` table is the name of the mailing list. 
 
-NoSQL テーブルでは、行ごとにそれぞれ異なるスキーマを設定できます。この柔軟性により、リレーショナル データベースであれば複数のテーブルが必要になる場合でも、1 つの NoSQL にデータを格納できます。たとえば、メーリング リストのデータを SQL データベースに保存する場合、3 つのテーブル (メーリング リストに関する情報を格納する `mailinglist` テーブル、登録者に関する情報を格納する `subscriber` テーブル、メーリング リストと登録者とを関連付ける `mailinglistsubscriber` テーブル) を使用します。このアプリケーションでは、`mailinglist` という名前の 1 つの NoSQL テーブルにこれらすべての情報を格納します。
+The row key for the `mailinglist` table can be one of two things:  the constant "mailinglist" or the email address of the subscriber. Rows that have row key "mailinglist" include information about the mailing list. Rows that have the email address as the row key have information about the subscribers to the list.
 
-Windows Azure のテーブルでは、行ごとに "*パーティション キー*" が割り当てられ、さらに各行を一意に識別する "*行キー*" が割り当てられます。パーティション キーは、テーブルを論理的に複数のパーティションに分割します。1 つのパーティション内では、行キーによって各行が一意に識別されます。補助的なインデックスはありません。したがって、アプリケーションの拡張性を高めるには、クエリの Where 句で常にパーティション キーと行キーの値を指定できるようにテーブルを設計することが重要です。
+In other words, rows with row key "mailinglist" are equivalent to a `mailinglist` table in a relational database. Rows with row key = email address are equivalent to a `subscriber` table and a `mailinglistsubscriber` association table in a relational database.
 
-`mailinglist` テーブルのパーティション キーはメーリング リストの名前です。
+Making one table serve multiple purposes in this way facilitates better performance. In a relational database three tables would have to be read, and three sets of rows would have to be sorted and matched up against each other, which takes time. Here just one table is read and its rows are automatically returned in partition key and row key order.
 
-`mailinglist` テーブルの行キーは、定数 "mailinglist"、または登録者の電子メール アドレスになります。行キーが "mailinglist" である行には、そのメーリング リストに関する情報が格納されます。行キーが電子メール アドレスである行には、そのリストの登録者に関する情報が格納されます。
-
-つまり、行キーが "mailinglist" である行は、リレーショナル データベースの `mailinglist` テーブルに該当します。行キー = 電子メール アドレスである行は、リレーショナル データベースの `subscriber` テーブルおよび `mailinglistsubscriber` 関連テーブルに該当します。
-
-このように、1 つのテーブルを複数の目的で使用することでパフォーマンスが向上します。リレーショナル データベースでは、3 つのテーブルを読み取り、3 つの行セットを並べ替えて互いに照合しなければならないので、時間がかかります。ここでは、1 つのテーブルのみを読み取り、パーティション キー、行キーの順序でテーブル内の行が自動的に返されます。
-
-次の表は、メーリング リスト情報を格納する行 (行キー = "MailingList") のプロパティを示しています。
+The following grid shows row properties for the rows that contain mailing list information (row key = "MailingList").
 
 <table border="1">
 
 <tr bgcolor="lightgray">
-<th>プロパティ</th>
-<th>データ型</th>
-<th>説明</th>
+<th>Property</th>
+<th>Data Type</th>
+<th>Description</th>
 </tr>
 
 <tr>
 <td>PartitionKey</td>
 <td>String</td>
-<td>ListName: メーリング リストの一意の識別子 (contoso1 など)。通常、このテーブルは、特定のメーリング リストのすべての情報を取得するときに使用されます。したがって、リスト名を使用することでテーブルを効率的に分割できます。</td>
+<td>ListName:  A unique identifier for the mailing list, for example: contoso1. The typical use for the table is to retrieve all information for a specific mailing list, so using the list name is an efficient way to partition the table.</td>
 </tr>
 
 <tr>
 <td>RowKey</td>
 <td>String</td>
-<td>定数 "mailinglist"。</td>
+<td>The constant "mailinglist".</td>
 </tr>
 
 <tr>
 <td>Description</td>
 <td>String</td>
-<td>メーリング リストの説明。例: "Contoso 大学史学部のお知らせ"</td>
+<td>Description of the mailing List, for example: "Contoso University History Department announcements".</td>
 </tr>
 
 <tr>
 <td>FromEmailAddress</td>
 <td>String</td>
-<td>このリストに送信する電子メールの "差出人" アドレス。例: donotreply@contoso.edu</td>
+<td>The "From" email address in the emails sent to this list, for example: donotreply@contoso.edu.</td>
 </tr>
 
 </table>
 
-次の表は、このリストの登録者情報が格納される行 (行キー = 電子メール アドレス) のプロパティを示しています。
+The following grid shows row properties for the rows that contain subscriber information for the list (row key = email address).
 
 <table border="1">
 
 <tr bgcolor="lightgray">
-<th>プロパティ</th>
-<th>データ型</th>
-<th>説明</th>
+<th>Property</th>
+<th>Data Type</th>
+<th>Description</th>
 </tr>
 
 <tr>
 <td>PartitionKey</td>
 <td>String</td>
-<td>ListName: メーリング リストの名前 (一意の識別子)。例: contoso1</td>
+<td>ListName:  The name (unique identifier) of the mailing list, for example: contoso1.</td>
 </tr>
 
 <tr>
 <td>RowKey</td>
 <td>String</td>
-<td>EmailAddress: 登録者の電子メール アドレス。例: student1@contoso.edu</td>
+<td>EmailAddress:  The subscriber email address, for example: student1@contoso.edu.</td>
 </tr>
 
 <tr>
 <td>SubscriberGUID</td>
 <td>String</td>
-<td>電子メール アドレスがリストに追加された時点で生成されます。登録リンクと登録解除リンクで使用し、他の人の電子メール アドレスが登録または登録解除されないようにします。 
+<td>Generated when the email address is added to a list. Used in subscribe and unsubscribe links so that it's difficult to subscribe or unsubscribe someone else's email address. 
 <br/><br/>
-登録用 Web ページと登録解除用 Web ページの一部の照会では、PartitionKey とこのプロパティのみが指定されます。RowKey を使用しないでパーティションを照会すると、メーリング リストのサイズが大きくなるほど照会時間が長くなるので、このアプリケーションの拡張性が制限されます。拡張性を高めるには、RowKey プロパティが SubscriberGUID であるルックアップ行を追加する方法があります。たとえば、各電子メール アドレスについて、1 つの行の RowKey を "email:student1@domain.com" に設定します。さらに、同じ登録者の別の行の RowKey を "guid:6f32b03b-90ed-41a9-b8ac-c1310c67b66a" に設定します。同一パーティション内の複数行に対するアトミック バッチ トランザクションはコーディングが容易なので、このしくみはすぐに実装できます。このサンプル アプリケーションの次期リリースには反映させる予定です。詳細については、「<a href="http://msdn.microsoft.com/en-us/library/windowsazure/hh508997.aspx">Real World: Designing a Scalable Partitioning Strategy for Windows Azure Table Storage (リアル ワールド: Windows Azure テーブル ストレージ用の拡張性が高いパーティション分割方法の設計)</a>」を参照してください。
+Some queries for the Subscribe and Unsubscribe web pages specify only the PartitionKey and this property. Querying a partition without using the RowKey limits the scalability of the application, because queries will take longer as mailing list sizes increase. An option for improving scalability is to add lookup rows that have the SubscriberGUID in the RowKey property. For example, for each email address one row could have "email:student1@domain.com" in the RowKey and another row for the same subscriber could have "guid:6f32b03b-90ed-41a9-b8ac-c1310c67b66a" in the RowKey. This is simple to implement because atomic batch transactions on rows within a partition are easy to code. We hope to implement this in the next release of the sample application. For more information, see <a href="http://msdn.microsoft.com/en-us/library/windowsazure/hh508997.aspx">Real World: Designing a Scalable Partitioning Strategy for Azure Table Storage</a>
 </td>
 </tr>
 
 <tr>
 <td>Verified</td>
 <td>Boolean</td>
-<td>新規登録者に対して対象行が最初に作成されたとき、このプロパティには false が設定されます。確認電子メールを受け取った新規登録者が "確認用" ハイパーリンクをクリックすると、この値が true に変わります。メーリング リストにメッセージを送信する際、いずれかの登録者の Verified 値が false の場合、その登録者には電子メールが送信されません。</td>
+<td>When the row is initially created for a new subscriber, the value is false. It changes to true only after the new subscriber clicks the Confirm hyperlink in the welcome email or an administrator sets it to true. If a message is sent to a list while the Verified value for one of its subscribers is false, no email is sent to that subscriber.</td>
 </tr>
 
 </table>
 
-次に、このテーブルに格納されるデータの例を示します。
+The following list shows an example of what data in the table might look like.
 
 <table border="1">
 <tr>
@@ -250,8 +220,8 @@ Windows Azure のテーブルでは、行ごとに "*パーティション キ�
 </tr>
 
 <tr>
-<th align="right" bgcolor="lightgray">説明</th>
-<td>Contoso 大学史学部のお知らせ</td>
+<th align="right" bgcolor="lightgray">Description</th>
+<td>Contoso University History Department announcements</td>
 </tr>
 
 <tr>
@@ -328,8 +298,8 @@ Windows Azure のテーブルでは、行ごとに "*パーティション キ�
 </tr>
 
 <tr>
-<th align="right" bgcolor="lightgray">説明</th>
-<td>Fabrikam エンジニアの求人</td>
+<th align="right" bgcolor="lightgray">Description</th>
+<td>Fabrikam Engineering job postings</td>
 </tr>
 
 <tr>
@@ -365,148 +335,148 @@ Windows Azure のテーブルでは、行ごとに "*パーティション キ�
 
 </table>
 
-### message テーブル###
+### message table ###
 
-`message` テーブルには、メーリング リストへ送信されるメッセージに関する情報が格納されます。管理者は Web ページを使用して、このテーブルの行を作成および編集します。また、各電子メールに関する情報を Worker ロール A から Worker ロール B へ渡すときも、このテーブルを使用します。
+The `message` table stores information about messages that are scheduled to be sent to a mailing list. Administrators create and edit rows in this table using web pages, and the worker roles use it to pass information about each email from worker role A to worker role B.
 
-message テーブルのパーティション キーは電子メールの送信予定日 (yyyy-mm-dd 形式) です。これにより、message テーブルに対して最も頻繁に実行されるクエリ (`ScheduledDate` が今日以前の行を選択) 用にテーブルが最適化されます。ただし、Windows Azure のストレージ テーブルの最大スループットは 500 エントリ/秒なので、パフォーマンスが低下する可能性があります。このアプリケーションでは、送信する電子メールごとに `message` テーブル行の書き込み、行の読み取り、行の削除を行います。したがって、処理量の増加に合わせて追加する Worker ロールの数にかかわらず、1 日に送信する 1,000,000 通の電子メールを処理するには最短でおよそ 2 時間かかります。
+The partition key for the message table is the date the email is scheduled to be sent, in yyyy-mm-dd format. This optimizes the table for the query that is executed most often against this table, which selects rows that have `ScheduledDate` of today or earlier. However, it does creates a potential performance bottleneck, because Azure Storage tables have a maximum throughput of 500 entities per second for a partition.  For each email to be sent, the application writes a `message` table row, reads a row, and deletes a row. Therefore the shortest possible time for processing 1,000,000 emails scheduled for a single day is almost two hours, regardless of how many worker roles are added in order to handle increased loads. 
 
-`message` テーブルの行キーは、次の 2 つのうちいずれかの値になります。1 つは、定数 "message" + メッセージの一意キー (`MessageRef`)。もう1 つは、`MessageRef` 値 + 登録者の電子メール アドレスです。行キーが "message" で始まる行には、メッセージに関する情報 (送信先のメーリング リスト、送信予定日など) が格納されます。行キーが `MessageRef` と電子メール アドレスである行には、その電子メール アドレスにメールを送信する際に必要となるすべての情報が格納されます。
+The row key for the `message` table can be one of two things:  the constant "message" plus a unique key for the message called the `MessageRef`, or the `MessageRef` value plus the email address of the subscriber. Rows that have row key that begins with "message" include information about the message, such as the mailing list to send it to and when it should be sent. Rows that have the `MessageRef` and email address as the row key have all of the information needed to send an email to that email address.
 
-行キーが "message" で始まる行は、リレーショナル データベースの `message` テーブルに該当します。行キー = `MessageRef` + 電子メール アドレスである行は、リレーショナル データベースでは、`mailinglist`、`message`、`subscriber` の情報を含む結合クエリ ビューに該当します。
+In relational database terms, rows with row key that begins with "message" are equivalent to a `message` table. Rows with row key = `MessageRef` plus email address are equivalent to a join query view that contains `mailinglist`, `message`, and `subscriber` information. 
 
-次の表は、`message` テーブルで、メッセージ自体に関する情報が格納される行のプロパティを示しています。
+The following grid shows row properties for the `message` table rows that have information about the message itself.
 
 <table border="1">
 
 <tr bgcolor="lightgray">
-<th>プロパティ</th>
-<th>データ型</th>
-<th>説明</th>
+<th>Property</th>
+<th>Data Type</th>
+<th>Description</th>
 </tr>
 
 <tr>
 <td>PartitionKey</td>
 <td>String</td>
-<td>メッセージの送信予定日 (yyyy-mm-dd 型式)。</td>
+<td>The date the message is scheduled to be sent, in yyyy-mm-dd format.</td>
 </tr>
 
 <tr>
 <td>RowKey</td>
 <td>String</td>
-<td>定数 "message" + <code>MessageRef</code> 値。<code>MessageRef</code> は、この行を作成する際、<code>DateTime.Now</code> から <code>Ticks</code> 値を取得することによって生成される一意の値です。<br/><br/>注: マルチスレッド、マルチインスタンスの大規模アプリケーションは、Ticks の使用に伴う重複 RowKey 例外を処理できるようにする必要があります。Ticks 値は一意とは限りません。</td>
+<td>The constant "message" concatenated with the <code>MessageRef</code> value. The <code>MessageRef</code> is a unique value created by getting the <code>Ticks</code> value from <code>DateTime.Now</code> when the row is created. <br/><br/>Note: High volume multi-threaded, multi-instance applications should be prepared to handle duplicate RowKey exceptions when using Ticks. Ticks are not guaranteed to be unique.</td>
 </tr>
 
 <tr>
 <td>ScheduledDate</td>
 <td>Date</td>
-<td>メッセージの送信予定日 (<code>PartitionKey</code> と同じですが、Date 型式になります)。</td>
+<td>The date the message is scheduled to be sent. (Same as <code>PartitionKey</code> but in Date format.)</td>
 </tr>
 
 <tr>
 <td>SubjectLine</td>
 <td>String</td>
-<td>電子メールの件名。</td>
+<td>The subject line of the email.</td>
 </tr>
 
 <tr>
 <td>ListName</td>
 <td>String</td>
-<td>このメッセージの送信先リスト。</td>
+<td>The list that this message is to be sent to.</td>
 </tr>
 
 <tr>
 <td>Status</td>
 <td>String</td>
 <td><ul>
-<li>"Pending" -- ワーカー ロール A は、メール送信をスケジュール設定するキュー メッセージをまだ作成していません。</li>
-<li>"Queuing" -- ワーカー ロール A は、メール送信をスケジュール設定するキュー メッセージの作成を開始しました。</li>
-<li>"Processing" -- ワーカー ロール A は、リスト内のすべての電子メール キュー作業項目を作成しました。ただし、まだ送信されていない電子メールもあります。</li>
-<li>"Completed" -- ワーカー ロール B は、すべてのキュー作業項目の処理を完了しました (すべての電子メールが送信されました)。この後で説明するように、完了した行は <code>messagearchive</code> テーブルに格納されます。次期リリースでは、このプロパティが <code>enum</code> になる予定です。</li></ul></td>
+<li>"Pending" -- Worker role A has not yet started to create queue messages to schedule emails.</li>
+<li>"Queuing" -- Worker role A has started to create queue messages to schedule emails.</li>
+<li>"Processing" -- Worker role A has created queue work items for all emails in the list, but not all emails have been sent yet.</li>
+<li>"Completed" -- Worker role B has finished processing all queue work items (all emails have been sent). Completed rows are archived in the <code>messagearchive</code> table, as explained later. We hope to make this property an <code>enum</code>  in the next release.</li></ul></td>
 </tr>
 
 </table>
 
-Worker ロール A は、リストへ送信する電子メールのキュー メッセージを作成する際、`message` テーブルに電子メール行を作成します。Worker ロール B はその電子メールを送信し、該当する電子メール行を `messagearchive` テーブルへ移動します。さらに、`EmailSent` プロパティを `true` に変更します。ステータスが "Processing" であるすべての電子メール行がアーカイブされると、Worker ロール A はステータスを "Completed" に設定し、その `message` 行を `messagearchive` テーブルへ移動します。
+When worker role A creates a queue message for an email to be sent to a list, it creates an email row in the `message` table. When worker role B sends the email, it moves the email row to the `messagearchive` table and updates the `EmailSent` property to `true`. When all of the email rows for a message in Processing status have been archived, worker role A sets the status to Completed and moves the `message` row to the `messagearchive` table.
 
-次の表は、`message` テーブルの電子メール行のプロパティを示しています。
+The following grid shows row properties for the email rows in the `message` table.  
 
 <table border="1">
 
 <tr bgcolor="lightgray">
-<th>プロパティ</th>
-<th>データ型</th>
-<th>説明</th>
+<th>Property</th>
+<th>Data Type</th>
+<th>Description</th>
 </tr>
 
 <tr>
 <td>PartitionKey</td>
 <td>String</td>
-<td>メッセージの送信予定日 (yyyy-mm-dd 型式)。</td>
+<td>The date the message is scheduled to be sent, in yyyy-mm-dd format.</td>
 </tr>
 
 <tr>
 <td>RowKey</td>
 <td>String</td>
-<td> <code>MessageRef</code> 値、および <code>mailinglist</code> テーブルの <code>subscriber</code> 行に指定されている送信先電子メール アドレス。
+<td>The <code>MessageRef</code> value and the destination email address from the <code>subscriber</code> row of the <code>mailinglist</code> table.
 </td>
 </tr>
 
 <tr>
 <td>MessageRef</td>
 <td>Long</td>
-<td><code>RowKey</code> の <code>MessageRef</code> 要素と同じ。</td>
+<td>Same as the <code>MessageRef</code> component of the <code>RowKey</code>.</td>
 </tr>
 
 <tr>
 <td>ScheduledDate</td>
 <td>Date</td>
-<td><code>message</code> テーブルの <code>message</code> 行に指定されている送信予定日 (<code>PartitionKey</code> と同じですが、Date 型式になります)。</td>
+<td>The scheduled date from the <code>message</code> row of the <code>message</code> table. (Same as <code>PartitionKey</code> but in Date format.)</td>
 </tr>
 
 <tr>
 <td>SubjectLine</td>
 <td>String</td>
-<td><code>message</code> テーブルの <code>message</code> 行で指定されている電子メールの件名。</td>
+<td>The email subject line from the <code>message</code> row of the <code>message</code> table.</td>
 </tr>
 
 <tr>
 <td>ListName</td>
 <td>String</td>
-<td><code>mailinglist</code> テーブルで設定されているメーリング リスト名。</td>
+<td>The mailing list name from the <code>mailinglist</code> table.</td>
 </tr>
 
 <tr>
 <td>From EmailAddress</td>
 <td>String</td>
-<td><code>mailinglist</code> テーブルの <code>mailinglist</code> 行で指定されている "差出人" 電子メール アドレス。</td>
+<td>The "from" email address from the <code>mailinglist</code> row of the <code>mailinglist</code> table.</td>
 </tr>
 
 <tr>
 <td>EmailAddress</td>
 <td>String</td>
-<td><code>mailinglist</code> テーブルの <code>subscriber</code> 行で指定されている電子メール アドレス。</td>
+<td>The email address from the <code>subscriber</code> row of the <code>mailinglist</code> table.</td>
 </tr>
 
 <tr>
 <td>SubscriberGUID</td>
 <td>String</td>
-<td><code>mailinglist</code> テーブルの <code>subscriber</code> 行で指定されている登録者 GUID。</td>
+<td>The subscriber GUID from the <code>subscriber</code> row of the <code>mailinglist</code> table.</td>
 </tr>
 
 <tr>
 <td>EmailSent</td>
 <td>Boolean</td>
-<td>false = 電子メールは未送信。true = 電子メールは既に送信されています。</td>
+<td>False means the email has not been sent yet; true means the email has been sent.</td>
 </tr>
 
 </table>
 
-これらの行では一部のデータが重複しています。通常、リレーショナル データベースではデータの重複を避けますが、この場合は重複データのデメリットを差し引いても、処理効率と拡張性の高さに大きなメリットがあります。これらの各行には電子メールに必要なすべてのデータが格納されるので、Worker ロール B がキューから作業項目を取得したとき、1 つの行を読み取るだけで電子メールを送信できます。
+There is redundant data in these rows, which you would typically avoid in a relational database. But in this case you are trading some of the disadvantages of redundant data for the benefit of greater processing efficiency and scalability.  Because all of the data needed for an email is present in one of these rows, worker role B only needs to read one row in order to send an email when it pulls a work item off the queue.
 
-では、電子メールの本文はどこから取得するのでしょうか。これらの行には、電子メールの本文を含むファイルの BLOB 参照がありません。この値は `MessageRef` 値から派生します。たとえば、`MessageRef` が "634852858215726983" である場合、BLOB には "634852858215726983.htm" および "634852858215726983.txt" という名前が付けられます。
+You might wonder where the body of the email comes from. These rows don't have blob references for the files that contain the body of the email, because that value is derived from the `MessageRef` value. For example, if the `MessageRef` is 634852858215726983, the blobs are named 634852858215726983.htm and 634852858215726983.txt.
 
-次に、このテーブルに格納されるデータの例を示します。
+The following list shows an example of what data in the table might look like.
 
 <table border="1">
 
@@ -532,7 +502,7 @@ Worker ロール A は、リストへ送信する電子メールのキュー メ
 
 <tr>
 <th align="right" bgcolor="lightgray">SubjectLine</th>
-<td>新しい講義</td>
+<td>New lecture series</td>
 </tr>
 
 <tr>
@@ -573,7 +543,7 @@ Worker ロール A は、リストへ送信する電子メールのキュー メ
 
 <tr>
 <th align="right" bgcolor="lightgray">SubjectLine</th>
-<td>新しい講義</td>
+<td>New lecture series</td>
 </tr>
 
 <tr>
@@ -629,7 +599,7 @@ Worker ロール A は、リストへ送信する電子メールのキュー メ
 
 <tr>
 <th align="right" bgcolor="lightgray">SubjectLine</th>
-<td>新しい講義</td>
+<td>New lecture series</td>
 </tr>
 
 <tr>
@@ -686,7 +656,7 @@ Worker ロール A は、リストへ送信する電子メールのキュー メ
 
 <tr>
 <th align="right" bgcolor="lightgray">SubjectLine</th>
-<td>新しい求人</td>
+<td>New job postings</td>
 </tr>
 
 <tr>
@@ -704,197 +674,198 @@ Worker ロール A は、リストへ送信する電子メールのキュー メ
 <br/>
 <br/>
 
-### messagearchive テーブル###
+### messagearchive table ###
 
-特に `PartitionKey` と `RowKey` 以外のフィールドを検索する場合、クエリの実行を効率化する 1 つの選択肢としてテーブルのサイズを制限する方法があります。Worker ロール A のクエリで、特定のメッセージがすべての登録者へメール送信されたかどうかをチェックするには、`message` テーブルで `EmailSent` = false である電子メール行を探す必要があります。`EmailSent` 値は PartitionKey または RowKey で指定されないので、電子メール行が多数あるメッセージでは効率的なクエリといえません。そこで、このアプリケーションでは、電子メールが送信された時点でその電子メール行を `messagearchive` テーブルへ移動します。これで、message テーブルの `PartitionKey` と `RowKey` を照会すれば、そのメッセージがすべての登録者に配信されているかどうかをチェックできます。message テーブルに電子メール行が見つかった場合は未送信のメッセージがあることを意味しており、そのメッセージを `Complete` に指定することはできません。
+One strategy for making sure that queries execute efficiently, especially if you have to search on fields other than `PartitionKey` and `RowKey`, is to limit the size of the table. The query in worker role A that checks to see if all emails have been sent for a message needs to find email rows in the `message` table that have `EmailSent` = false. The `EmailSent` value is not in the PartitionKey or RowKey, so this would not be an efficient query for a message with a large number of email rows. Therefore, the application moves email rows to the `messagearchive` table as the emails are sent. As a result, the query to check if all emails for a message have been sent only has to query the message table on `PartitionKey` and `RowKey` because if it finds any email rows for a message at all, that means there are unsent messages and the message can't be marked `Complete`. 
 
-`messagearchive` テーブルを構成する行のスキーマは、`message` テーブルの行と同じです。このアーカイブ データの利用目的に応じて、各行に格納するプロパティの数を減らしたり、一定期間経過した行を削除したりすることで、そのサイズとコストを制限できます。
+The schema of rows in the `messagearchive` table is identical to that of the `message` table. Depending on what you want to do with this archival data, you could limit its size and expense by reducing the number of properties stored for each row, and by deleting rows older than a certain age.
 
 
 
-<h2><a name="queues"></a><span class="short-header">キュー</span>Windows Azure のキュー</h2>
+<h2><a name="queues"></a><span class="short-header">Queues</span>Azure Queues</h2>
 
-Windows Azure のキューは、この多層アプリケーションの階層間でのやり取り、およびバックエンド層における Worker ロール間のやり取りを支援します。
-アプリケーションの拡張性を高めるため、ワーカー ロール A とワーカー ロール B はキューを使用して互いにコミュニケーションをとります。Worker ロール A は、各電子メールについて message テーブルに行を作成できます。Worker ロール B は、message テーブルをスキャンして、未送信の電子メールを表している行を探します。ただし、Worker ロール B の新しいインスタンスを追加して作業を分散することはできません。ワーカー ロール A とワーカー ロール B 間の作業調整にテーブル行を使用する場合、問題は、必ず 1 つのワーカー ロール インスタンスがテーブル行を取得して処理するとは限らないことです。これを保証するのがキューです。ワーカー ロール インスタンスがキューから作業項目を取り出したとき、キュー サービスは、他のワーカー ロール インスタンスが同じ作業項目を取り出せないようにします。Windows Azure のキューに備わっているこの排他的リース機能により、Worker ロールの複数のインスタンス間でワークロードを共有できます。
+Azure queues facilitate communication between tiers of this multi-tier application, and between worker roles in the back-end tier. 
+Queues are used to communicate between worker role A and worker role B in order to make the application scalable. Worker role A could create a row in the Message table for each email, and worker role B could scan the table for rows representing emails that haven't been sent, but you wouldn't be able to add additional instances of worker role B in order to divide up the work. The problem with using table rows to coordinate the work between worker role A and worker role B is that you have no way of ensuring that only one worker role instance will pick up any given table row for processing. Queues give you that assurance. When a worker role instance pulls a work item off a queue, the queue service makes sure that no other worker role instance can pull the same work item. This exclusive lease feature of Azure queues facilitates sharing a workload among multiple instances of a worker role.
 
-Windows Azure にはサービス バス キュー サービスも用意されています。Windows Azure のストレージのキューとサービス バスのキューの詳細については、[このシリーズの最終チュートリアル][tut5]の末尾で紹介されている関連情報を参照してください。
+Azure also provides the Service Bus queue service. For more information about Azure Storage queues and Service Bus queues, see the resources that are listed at the end of [the last tutorial in this series][tut5].
 
-Windows Azure 電子メール サービス アプリケーションでは、`AzureMailQueue` と `AzureMailSubscribeQueue` という 2 つのキューを使用します。
+The Azure Email Service application uses two queues, named `AzureMailQueue` and `AzureMailSubscribeQueue`.
 
 ### AzureMailQueue ###
 
-`AzureMailQueue` キューは、メーリング リストへの電子メール送信を調整します。Worker ロール A は、送信する各電子メールの作業項目をこのキューに追加します。Worker ロール B は、このキューから作業項目を取り出して電子メールを送信します。
+The `AzureMailQueue` queue coordinates the sending of emails to email lists.  Worker role A places a work item on the queue for each email to be sent, and worker role B pulls a work item from the queue and sends the email. 
 
-キュー作業項目は、メッセージの送信予定日 (`message` テーブルのパーティション キー)、`MessageRef` 値と `EmailAddress` 値 (`message` テーブルの行キー)、および "Worker ロールが停止し、再起動後に作成された作業項目かどうか" を示すフラグで構成されたコンマ区切り文字列です。たとえば次のようになります。
+A queue work item contains a comma-delimited string that consists of the scheduled date of the message (partition key to the `message` table) and the `MessageRef` and `EmailAddress` values (row key to the `message` table) values, plus a flag indicating whether the item is created after the worker role went down and restarted, for example:
 
       2012-10-15,634852858215726983,student1@contoso.edu,0
 
-Worker ロール B はこれらの値を使用して、電子メール送信に必要なすべての情報が格納されている行を `message` テーブルで探します。再起動フラグが "再起動" を示している場合、Worker ロール B は、電子メールがまだ送信されていないことを確認した上でメッセージを送信します。
+Worker role B uses these values to look up the row in the `message` table that contains all of the information needed to send the email. If the restart flag indicates a restart, worker B makes sure the email has not already been sent before sending it.
 
-トラフィックが急増したときは、ワーカー ロール B のインスタンスを複数生成し、それぞれ独立してキューから作業項目を取り出せるようにクラウド サービスを再構成できます。
+When traffic spikes, the Cloud Service can be reconfigured so that multiple instances of worker role B are instantiated, and each of them can independently pull work items off the queue.
 
 ### AzureMailSubscribeQueue ###
 
-`AzureMailSubscribeQueue` キューは登録確認メールの送信を調整します。サービス メソッドが呼び出されると、そのサービス メソッドは AzureMailSubscribeQueue キューに作業項目を追加します。Worker ロール B は、このキューから作業項目を取り出し、登録確認メールを送信します。
+The `AzureMailSubscribeQueue` queue coordinates the sending of subscription confirmation emails.  In response to a service method call, the service method places a work item on the queue.  Worker role B pulls the work item from the queue and sends the subscription confirmation email. 
 
-キュー作業項目には登録者 GUID が含まれます。この値は電子メール アドレスと登録先リストを一意に識別します。これらは、ワーカー ロール B が確認メールを送信する際に必要な情報です。前述のように、`PartitionKey` および `RowKey` でないフィールドを照会する必要があるため、効率的ではありません。このアプリケーションの拡張性を高めるには、`mailinglist` テーブルの構成を変更し、`RowKey` に登録者 GUID を追加する必要があります。
-
-
-
-
-<h2><a name="datadiagram"></a><span class="short-header">データ図</span>Windows Azure 電子メール サービスのデータ図</h2>
-
-次の図は、このアプリケーションで使用するテーブルとキュー、およびこれらの関連性を示しています。
-
-   ![Windows Azure 電子メール サービス アプリケーションのデータ図][mtas-datadiagram]
+A queue work item contains the subscriber GUID.  This value uniquely identifies an email address and the list to subscribe it to, which is all that worker role B needs to send a confirmation email. As explained earlier, this requires a query on a field that is not in the `PartitionKey` or `RowKey`, which is inefficient. To make the application more scalable, the `mailinglist` table would have to be restructured to include the subscriber GUID in the `RowKey`.
 
 
 
 
+<h2><a name="datadiagram"></a><span class="short-header">Data diagram</span>Azure Email Service data diagram</h2>
 
-<h2><a name="blobs"></a><span class="short-header">BLOB</span>Windows Azure の BLOB</h2>
+The following diagram shows the tables and queues and their relationships.
 
-BLOB は "Binary Large OBject (バイナリ ラージ オブジェクト)" の略です。Windows Azure BLOB サービスは、ファイルをクラウドにアップロードして保存するための手段を提供します。Windows Azure の BLOB の詳細については、[このシリーズの最終チュートリアル][tut5]の末尾で紹介されている関連情報を参照してください。
-
-Windows Azure メール サービス管理者は、電子メールの本文を *.htm* ファイル (HTML 形式) と *.txt* ファイル (プレーンテキスト形式) に保存します。電子メールの送信スケジュールを設定する際、管理者はこれらのファイルを **Create Message** Web ページにアップロードします。この Web ページの ASP.NET MVC コントローラーは、アップロードされたファイルを Windows Azure BLOB に格納します。
-
-ファイルがフォルダーに保存されるように、BLOB は BLOB コンテナーに格納されます。Windows Azure 電子メール サービス アプリケーションでは、**azuremailblobcontainer** という BLOB コンテナーを 1 つだけ使用します。このコンテナーに格納された BLOB の名前を生成するには、MessageRef 値にファイル拡張子を付加します。たとえば、
-634852858215726983.htm や 634852858215726983.txt となります。
-
-HTML メッセージとプレーンテキスト メッセージはどちらも文字列なので、BLOB ではなく、`Message` テーブルの string 型プロパティに電子メール本文を格納するようアプリケーションを設計することも可能でした。ただし、テーブル行のプロパティはサイズが 64 K に制限されています。BLOB を使用すれば、メール本文のこのサイズ制限を避けることができます (64 K はプロパティの最大合計サイズです。エンコードのオーバーヘッドがあるので、実際にプロパティに格納できる最大文字列サイズは 48 K 程度になります)。
+   ![Data diagram for Azure Email Service application][mtas-datadiagram]
 
 
 
 
-<h2><a name="wawsvswacs"></a><span class="short-header">クラウド サービス vs. Web サイト</span>Windows Azure のクラウド サービス vs. Windows Azure の Web サイト</h2>
 
-Windows Azure 電子メール サービスをダウンロードした時点では、フロントエンドとバックエンドがすべて 1 つの Windows Azure クラウド サービスで動作するように構成されています。
+<h2><a name="blobs"></a><span class="short-header">Blobs</span>Azure Blobs</h2>
 
-![アプリケーション アーキテクチャの概要][mtas-architecture-overview]
+Blobs are "binary large objects." The Azure Blob service provides a means for uploading and storing files in the cloud. For more information about Azure blobs, see the resources that are listed at the end of [the last tutorial in this series][tut5].
 
-別のアーキテクチャとして、フロントエンドを Windows Azure の Web サイトで実行することもできます。
+Azure Mail Service administrators put the body of an email in HTML form in an *.htm* file and in plain text in a *.txt* file. When they schedule an email, they upload these files in the **Create Message** web page, and the ASP.NET MVC controller for the page stores the uploaded file in an Azure blob.
 
-![別のアプリケーション アーキテクチャ][mtas-alternative-architecture]
+Blobs are stored in blob containers, much like files are stored in folders. The Azure Mail Service application uses a single blob container, named **azuremailblobcontainer**.  The name of the blobs in the container is derived by concatenating the MessageRef value with the file extension, for example: 
+634852858215726983.htm and 634852858215726983.txt.
 
-すべてのコンポーネントをクラウド サービスに配置するのであれば、構成と展開は非常にシンプルです。アプリケーションの ASP.NET MVC フロントエンドを Windows Azure の Web サイトに配置する場合、展開は 2 つになります。1 つは Windows Azure の Web サイト、もう 1 つは Windows Azure クラウド サービスです。さらに、Windows Azure のクラウド サービスの Web ロールには次の機能が備わっているのに対し、Windows Azure の Web サイトではこれらの機能を使用できません。
-
-- カスタム証明書とワイルドカード証明書をサポート。
-- IIS 構成を詳細に制御できる。多くの IIS 機能は Windows Azure の Web サイトで使用できません。Windows Azure の Web ロールを使用すれば、[AppCmd](http://www.iis.net/learn/get-started/getting-started-with-iis/getting-started-with-appcmdexe "appCmd") プログラムを実行して IIS 設定を変更するスタートアップ コマンドを定義できます。これらの設定は *Web.config* ファイルでは構成できません。詳細については、「[Windows Azure の IIS コンポーネントを構成する](http://msdn.microsoft.com/en-us/library/windowsazure/gg433059.aspx)」および「[Web ロールのアクセスから特定の IP アドレスをブロックする](http://msdn.microsoft.com/en-us/library/windowsazure/jj154098.aspx)」を参照してください。
-- [オートスケーリング アプリケーション ブロック][autoscalingappblock]を使用して、Web アプリケーションを自動的にスケーリング。
-- 管理者特権でスタートアップ スクリプトを実行して、アプリケーションのインストール、レジストリ設定の変更、パフォーマンス カウンターのインストールなどを行える。
-- [Windows Azure Connect](http://msdn.microsoft.com/en-us/library/windowsazure/gg433122.aspx) および [Windows Azure の仮想ネットワーク](http://msdn.microsoft.com/en-us/library/windowsazure/jj156007.aspx)で使用するネットワーク分離。
-- リモート デスクトップからアクセスして、デバッグや高度な診断を行う。
-- [VIP スワップ](http://msdn.microsoft.com/en-us/library/windowsazure/ee517253.aspx "VIP swap")を使用したローリング アップグレード。この機能は、ステージング環境と運用環境のコンテンツを切り替えます。
-
-同じ容量でも、クラウド サービスで実行する Web ロールより Windows Azure の Web サイトの方が安価なので、コスト面では代替アーキテクチャの方が有利といえます。シリーズの後半のチュートリアルでは、これら 2 つのアーキテクチャの違いについて詳しく説明します。
-
-Windows Azure の Web サイトと Windows Azure のクラウド サービスの違いの詳細については、「[Windows Azure Execution Models (Windows Azure 実行モデル)](http://www.windowsazure.com/en-us/manage/windows/fundamentals/compute/)」を参照してください。
+Since both HTML and plain text messages are essentially strings, we could have designed the application to store the email message body in string properties in the `Message` table instead of in blobs. However, there is a 64K limit on the size of a property in a table row, so using a blob avoids that limitation on email body size. (64K is the maximum total size of the property; after allowing for encoding overhead, the maximum string size you can store in a property is actually closer to 48k.)
 
 
 
 
-<h2><a name="cost"></a><span class="short-header">料金</span>料金</h2>
+<h2><a name="wawsvswacs"></a><span class="short-header">Cloud Service vs. Web Site</span>Azure Cloud Service versus Azure Web Site</h2>
 
-ここでは、サンプル アプリケーションを Windows Azure で実行する際の料金について簡単に説明します。なお、紹介するのは、このチュートリアルが公開された 2012 年 12 月時点での料金です。ビジネス戦略などを決定する前に、次の Web ページで最新の料金を確認してください。
+When you download the Azure Email Service, it is configured so that the front-end and back-end all run in a single Azure Cloud Service.
 
-* [Windows Azure 料金計算ツール](http://www.windowsazure.com/en-us/pricing/calculator/)
-* [SendGrid Windows Azure](http://www.windowsazure.com/en-us/store/service/?id=f131eadb-7aa3-401a-a2fb-1c7e71f45c3c)
+![Application architecture overview][mtas-architecture-overview]
 
-どのくらいの料金がかかるかは、管理する Web ロールと Worker ロールのインスタンス数によって異なります。[Azure クラウド サービス 99.95% サービス レベル アグリーメント (SLA)](https://www.windowsazure.com/en-us/support/legal/sla/ "SLA") の保証条件として、各ロールについて複数のインスタンスを展開する必要があります。ロール インスタンスを 2 つ以上実行しなければならないのは、オペレーティング システムをアップグレードするため、アプリケーションを実行する仮想マシンが月に 2 回ほど再起動されるためです (OS の更新の詳細については、「[Role Instance Restarts Due to OS Upgrades (OS のアップグレードに伴うロール インスタンスの再起動)](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)」を参照してください)。
+An alternative architecture is to run the front-end in an Azure Web Site. 
 
-このサンプルの場合、2 つの Worker ロールによって実行される作業は時間的制約が厳しくないので、99.5% SLA は必要ありません。したがって、処理量に対応できるのであれば、各ワーカー ロールのインスタンスは 1 つだけでかまいません。一方、Web ロール インスタンスには時間的制約があります。ユーザーが利用する Web サイトは中断が許されません。したがって、運用アプリケーションでは Web ロール インスタンスを 2 つ以上実行する必要があります。
+![Alternative application architecture][mtas-alternative-architecture]
 
-次の表は、最小限の処理量を想定し、Windows Azure 電子メール サービス サンプル アプリケーションを既定のアーキテクチャで実行した場合の料金を示しています。これらの料金は、サイズ XS の共有仮想マシンを使用することを前提としています。Visual Studio クラウド プロジェクトを作成する際の既定の仮想マシン サイズは "S" です。S サイズの場合、XS サイズのおよそ 5 倍の料金がかかります。
+Keeping all components in a cloud service simplifies configuration and deployment. If you create the application with the ASP.NET MVC front end in an Azure Web Site, you will have two deployments, one to the Azure Web Site and one to the Azure Cloud Service. In addition, Azure Cloud Service web roles provide the following features that are unavailable in Azure Web Sites:
+
+- Support for custom and wildcard certificates.
+- Full control over how IIS is configured. Many IIS features cannot be enabled on Azure Web sites. With Azure web roles, you can define a startup command that runs the [AppCmd](http://www.iis.net/learn/get-started/getting-started-with-iis/getting-started-with-appcmdexe "appCmd")  program to modify IIS settings that cannot be configured in your *Web.config* file. For more information, see [How to Configure IIS Components in Azure](http://msdn.microsoft.com/en-us/library/windowsazure/gg433059.aspx)  and  [How to Block Specific IP Addresses from Accessing a Web Role
+](http://msdn.microsoft.com/en-us/library/windowsazure/jj154098.aspx).
+- Support for automatically scaling your web application by using the [Autoscaling Application Block][autoscalingappblock].
+- The ability to run elevated startup scripts to install applications, modify registry settings, install performance counters, etc.
+- Network isolation for use with [Azure Connect](http://msdn.microsoft.com/en-us/library/windowsazure/gg433122.aspx) and [Azure Virtual Network](http://msdn.microsoft.com/en-us/library/windowsazure/jj156007.aspx).
+- Remote desktop access for debugging and advanced diagnostics.
+- Rolling upgrades with [Virtual IP Swap](http://msdn.microsoft.com/en-us/library/windowsazure/ee517253.aspx "VIP swap"). This feature swaps the content of your staging and production deployments. 
+
+The alternative architecture might offer some cost benefits, because an Azure Web Site might be less expensive for similar capacity compared to a web role running in a Cloud Service. Later tutorials in the series explain implementation details that differ between the two architectures.
+
+For more information about how to choose between Azure Web Sites and Azure Cloud Services, see [Azure Execution Models](http://www.windowsazure.com/en-us/manage/windows/fundamentals/compute/).
+
+
+
+
+<h2><a name="cost"></a><span class="short-header">Cost</span>Cost</h2>
+
+This section provides a brief overview of costs for running the sample application in Azure, given rates in effect when the tutorial was published in December of 2012. Before making any business decisions based on costs, be sure to check current rates on the following web pages:
+
+* [Azure Pricing Calculator](http://www.windowsazure.com/en-us/pricing/calculator/)
+* [SendGrid Azure](http://sendgrid.com/windowsazure.html)
+
+Costs are affected by the number of web and worker role instances you decide to maintain. In order to qualify for the [Azure Cloud Service 99.95% Service Level Agreement (SLA)](https://www.windowsazure.com/en-us/support/legal/sla/ "SLA"), you must deploy two or more instances of each role. One of the reasons you must run at least two role instances is because the virtual machines that run your application are restarted approximately twice per month for operating system upgrades. (For more information on OS Updates, see [Role Instance Restarts Due to OS Upgrades](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx).) 
+
+The work performed by the two worker roles in this sample is not time critical and so does not need the 99.5% SLA. Therefore, running a single instance of each worker role is feasible so long as one instance can keep up with the work load. The  web role instance is time sensitive, that is, users expect the web site to not have any down time, so a production application should have at least two instances of the web role.
+
+The following table shows the costs for the default architecture for the Azure Email Service sample application assuming a minimal workload. The costs shown are based on using an extra small (shared) virtual machine size. The default virtual machine size when you create a Visual Studio cloud project is small, which is about six times more expensive than the extra small size.
   
 <table border="1">
 
 <tr bgcolor="lightgray">
-<th>コンポーネントまたはサービス</th>
-<th>料金</th>
-<th>コスト/月</th>
+<th>Component or Service</th>
+<th>Rate</th>
+<th>Cost per month</th>
 </tr>
 
 <tr>
-<td>Web ロール</td>
-<td>2 インスタンス - $.02/時間 (XS インスタンス)</td>
+<td>Web role</td>
+<td>2 instances at $.02/hour for extra small instances</td>
 <td>$29.00</td>
 </tr>
 
 <tr>
-<td>ワーカー ロール A (電子メールの送信スケジュールを設定)</td>
-<td>1 インスタンス - $.02/時間 (XS インスタンス)</td>
+<td>Worker role A (schedules emails to be sent)</td>
+<td>1 instance at $.02/hour for an extra small instance</td>
 <td>$14.50
 </td>
 </tr>
 
 <tr>
-<td>ワーカー ロール B (電子メールの送信)</td>
-<td>1 インスタンス - $.02/時間 (XS インスタンス)</td>
+<td>Worker role B (sends emails)</td>
+<td>1 instance at $.02/hour for an extra small instance</td>
 <td>$14.50</td>
 </tr>
 
 <tr>
-<td>Windows Azure のストレージ トランザクション</td>
-<td>月あたり 100 万トランザクション - $0.10/百万 (各クエリーはトランザクションとしてカウントされます。ワーカーロール A はテーブルに対して継続的にクエリを実行し、送信するメッセージを指定します。このアプリケーションは診断データを Windows Azure のストレージに書き込むように構成されており、それぞれの書き込みがトランザクションとなります)。</td>
+<td>Azure storage transactions</td>
+<td>1 million transactions per month at $0.10/million (Each query counts as a transaction; worker role A continuously queries tables for messages that need to be sent. The application is also configured to write diagnostic data to Azure Storage, and each time it does that is a transaction.)</td>
 <td>$0.10</td>
 </tr>
 
 <tr>
-<td>Windows Azure ローカル冗長ストレージ</td>
-<td>25 GB で $2.33 (アプリケーション テーブルと診断データのストレージを含みます)</td>
+<td>Azure locally redundant storage</td>
+<td>$2.33 for 25 GB (Includes storage for application tables and diagnostic data.)</td>
 <td>$2.33</td>
 </tr>
 
 <tr>
-<td>帯域幅</td>
-<td>5 GB まで無料</td>
-<td>無料</td>
+<td>Bandwidth</td>
+<td>5 GB egress is free</td>
+<td>Free</td>
 </tr>
 
 <tr>
 <td>SendGrid</td>
-<td>Windows Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で送信できます</td>
-<td>無料</td>
+<td>Azure customers can send 25,000 emails per month for free</td>
+<td>Free</td>
 </tr>
 
 <tr>
-<td colspan="2">合計</td>
+<td colspan="2">Total</td>
 <td>$60.43</td>
 </tr>
 
 </table>
 
-上記の表からわかるように、合計料金の大部分はロール インスタンスが占めています。ロール インスタンスは停止している場合でも料金が発生します。料金がかからないようにするには、ロール インスタンスを削除しなければなりません。コストを節約するには、ワーカー ロール A とワーカー ロール B のすべてのコードを 1 つのワーカー ロールに移動する方法があります。このチュートリアルでは、スケールアウトを容易にするため、意図的に 2 つのワーカー ロール インスタンスを実装しています。ワーカー ロール B が行う作業は Windows Azure キュー サービスによって調整されます。つまり、ロール インスタンスの数を増やすことでワーカー ロール B をスケールアウトできます (処理量が増えたときはワーカー ロール B が制約要因となります)。ワーカー ロール A が実行する作業はキューによって調整されません。したがって、ワーカー ロール A については複数のインスタンスを実行できません。2 つのワーカー ロールを組み合わせてスケールアウトする場合は、ワーカー ロール A のタスクが必ず 1 つのインスタンスで実行されるようなしくみを実装する必要があります (この機能は [CloudFx](http://nuget.org/packages/Microsoft.Experience.CloudFx "CloudFX") に備わっています。[WorkerRole.cs サンプル](http://code.msdn.microsoft.com/windowsazure/CloudFx-Samples-60c3a852/sourcecode?fileId=57087&pathId=528472169)を参照してください)。
+As you can see, role instances are a major component of the overall cost. Role instances incur a cost even if they are stopped; you must delete a role instance to not incur any charges. One cost saving approach would be to move all the code from worker role A and worker role B into one worker role. For these tutorials we deliberately chose to implement two worker instances in order to simplify scale out. The work that worker role B does is coordinated by the Azure Queue service, which means that you can scale out worker role B simply by increasing the number of role instances. (Worker role B is the limiting factor for high load conditions.) The work performed by worker role A is not coordinated by queues, therefore you cannot run multiple instances of worker role A. If the two worker roles were combined and you wanted to enable scale out, you would need to implement a mechanism for ensuring that worker role A tasks run in only one instance. (One such mechanism is provided by [CloudFx](http://nuget.org/packages/Microsoft.Experience.CloudFx "CloudFX"). See the [WorkerRole.cs sample](http://code.msdn.microsoft.com/windowsazure/CloudFx-Samples-60c3a852/sourcecode?fileId=57087&pathId=528472169).)
 
-これら 2 つの Worker ロールのすべてのコードを Web ロールへ移動し、すべての処理を Web ロールで実行する方法もあります。ただし、ASP.NET ではバックグラウンド タスク実行できないので、このアーキテクチャの拡張性が損なわれてしまいます。詳細については、「[The Dangers of Implementing Recurring Background Tasks In ASP.NET (繰り返し実行されるバックグラウンド タスクを ASP.NET に実装する危険性)](http://haacked.com/archive/2011/10/16/the-dangers-of-implementing-recurring-background-tasks-in-asp-net.aspx)」を参照してください。また、「[How to Combine a Worker and Web Role in Windows Azure (Windows Azure の Worker ロールと Web ロールを結合する方法)](http://www.31a2ba2a-b718-11dc-8314-0800200c9a66.com/2010/12/how-to-combine-worker-and-web-role-in.html)」および「[Combining Multiple Azure Worker Roles into an Azure Web Role (複数の Azure Worker ロールを 1 つの Azure Web ロールに集約)](http://www.31a2ba2a-b718-11dc-8314-0800200c9a66.com/2012/02/combining-multiple-azure-worker-roles.html)」も参照してください。
-
-
-コストを削減するには、[オートスケーリング アプリケーション ブロック][autoscalingappblock]を使用する方法もあります。この場合、指定した期間内のみ Worker ロールが自動的に展開され、作業が完了した時点で削除されます。オートスケーリングの詳細については、[このシリーズの最終チュートリアル][tut5]の末尾で紹介されている関連情報を参照してください。
-
-将来、Windows Azure に再起動の通知機能が追加される予定です。その場合、再起動の間だけ Web ロール インスタンスを追加できます。99.95 SLA の対象にはなりませんが、再起動中も Web アプリケーションを実行しつつ、料金をほぼ半分に減らすことができます。
+It is also possible to move all of the code from the two worker roles into the web role so that everything runs in the web role. However, performing background tasks in ASP.NET is not supported or considered robust, and this architecture would complicate scalability. For more information see [The Dangers of Implementing Recurring Background Tasks In ASP.NET](http://haacked.com/archive/2011/10/16/the-dangers-of-implementing-recurring-background-tasks-in-asp-net.aspx). See also [How to Combine a Worker and Web Role in Azure](http://www.31a2ba2a-b718-11dc-8314-0800200c9a66.com/2010/12/how-to-combine-worker-and-web-role-in.html) and [Combining Multiple Azure Worker Roles into an Azure Web Role](http://www.31a2ba2a-b718-11dc-8314-0800200c9a66.com/2012/02/combining-multiple-azure-worker-roles.html).
 
 
-<h2><a name="auth"></a><span class="short-header">認証と承認</span>認証と承認</h2>
+Another architecture alternative that would reduce cost is to use the [Autoscaling Application Block][autoscalingappblock] to automatically deploy worker roles only during scheduled periods, and delete them when work is completed. For more information on autoscaling, see the links at the end of [the last tutorial in this series][tut5].
 
-ASP.NET Web API サービス メソッドなど、ASP.NET MVC Web フロントエンドの ASP.NET メンバーシップ システムのように、運用アプリケーションに認証と承認メカニズムを実装します。Web API サービス メソッドをセキュリティで保護するには、その他の方法 (共有鍵など) もあります。設定と展開を容易にするため、サンプル アプリケーションには認証と承認機能が実装されていません (IP 制限を実装し、クラウドに展開したアプリケーションを未許可のユーザーが使用できないようにする方法は、本シリーズの 2 番目のチュートリアルで説明されています)。
-
-ASP.NET MVC Web プロジェクトに認証と承認を実装する方法については、次の関連サイトを参照してください。
-
-* [Authentication and Authorization in ASP.NET Web API (ASP.NET Web API の認証と承認)](http://www.asp.net/web-api/overview/security/authentication-and-authorization/authentication-and-authorization-in-aspnet-web-api)
-* [Music Store Part 7: Membership and Authorization (音楽ストア パート 7: メンバーシップと承認)](http://www.asp.net/mvc/tutorials/mvc-music-store/mvc-music-store-part-7)
-
-**注**: 共有シークレットを使用して Web API サービス メソッドを保護するしくみを追加する予定でしたが、初回リリースに間に合いませんでした。そのため、3 番目のチュートリアルでは、登録プロセス用の Web API コントローラーを構築する方法が説明されていません。このチュートリアルの次期バージョンでは安全な登録プロセスの実装方法を紹介できるよう、現在準備を進めています。それまでは、管理者 Web ページを使用して電子メール アドレスをリストに登録することで、アプリケーションをテストできます。
+Azure in the future might provide a notification mechanism for scheduled reboots, which would allow you to only spin up an extra web role instance for the reboot time window. You wouldn't qualify for the 99.95 SLA, but you could reduce your costs by almost half and ensure your web application remains available during the reboot interval.
 
 
+<h2><a name="auth"></a><span class="short-header">Authentication and Authorization</span>Authentication and Authorization</h2>
+
+In a production application you would implement an authentication and authorization mechanism like the ASP.NET membership system for the ASP.NET MVC web front-end, including the ASP.NET Web API service method. There are also other options, such as using a shared secret, for securing the Web API service method. Authentication and authorization functionality has been omitted from the sample application to keep it simple to set up and deploy. (The second tutorial in the series shows how to implement IP restrictions so that unauthorized persons can't use the application when you deploy it to the cloud.) 
+
+For more information about how to implement authentication and authorization in an ASP.NET MVC web project, see the following resources:
+
+* [Authentication and Authorization in ASP.NET Web API](http://www.asp.net/web-api/overview/security/authentication-and-authorization/authentication-and-authorization-in-aspnet-web-api)
+* [Music Store Part 7: Membership and Authorization](http://www.asp.net/mvc/tutorials/mvc-music-store/mvc-music-store-part-7)
+
+**Note**: We planned to include a mechanism for securing the Web API service method by using a shared secret, but that was not completed in time for the initial release. Therefore the third tutorial does not show how to build the Web API controller for the subscription process. We hope to include instructions for implementing a secure subscription process in the next version of this tutorial. Until then, you can test the application by using the administrator web pages to subscribe email addresses to lists.
 
 
-<h2><a name="nextsteps"></a><span class="short-header">次の手順</span>次の手順</h2>
 
-[次のチュートリアル][tut2]では、サンプル プロジェクトをダウンロードして開発環境を構成し、それぞれの環境に合わせてプロジェクトを構成します。さらに、構成したプロジェクトをローカルおよびクラウドでテストします。この後のチュートリアルでは、プロジェクトを新しく構築する方法を学習します。
 
-Windows Azure のストレージのテーブル、キュー、BLOB に関する参考情報は、[このシリーズの最終チュートリアル][tut5]の末尾に記載されています。
+<h2><a name="nextsteps"></a><span class="short-header">Next steps</span>Next steps</h2>
 
-<div><a href="/en-us/develop/net/tutorials/multi-tier-web-site/2-download-and-run/" class="site-arrowboxcta download-cta">チュートリアル 2</a></div>
+In the [next tutorial][tut2], you'll download the sample project, configure your development environment, configure the project for your environment, and test the project locally and in the cloud.  In the following tutorials you'll see how to build the project from scratch.
+
+For links to additional resources for working with Azure Storage tables, queues, and blobs, see the end of [the last tutorial in this series][tut5].
+
+<div><a href="/en-us/develop/net/tutorials/multi-tier-web-site/2-download-and-run/" class="site-arrowboxcta download-cta">Tutorial 2</a></div>
 
 [tut2]: /en-us/develop/net/tutorials/multi-tier-web-site/2-download-and-run/
 [tut3]: /en-us/develop/net/tutorials/multi-tier-web-site/3-web-role/
@@ -919,6 +890,4 @@ Windows Azure のストレージのテーブル、キュー、BLOB に関する�
 [mtas-subscribe-email]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-overview/mtas-subscribe-email.png
 [mtas-subscribe-diagram]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-overview/mtas-subscribe-diagram.png
 [mtas-datadiagram]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-overview/mtas-datadiagram.png
-
-
 

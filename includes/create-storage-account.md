@@ -1,25 +1,33 @@
-ストレージ操作を行うには、Windows Azure のストレージ アカウントが必要です。ストレージ アカウントを作成するには、次のステップを実行します ([REST API を使用して]ストレージ アカウントを作成することもできます)。
+To use storage operations, you need an Azure storage account. You 
+can create a storage account by following these steps. (You can also
+create a storage account [using the REST API].)
 
-1. [Windows Azure の管理ポータル]にログインします。
+1.  Log into the [Azure Management Portal].
 
-2. ナビゲーション ウィンドウの下部にある **[+新規]** をクリックします。
+2.  At the bottom of the navigation pane, click **NEW**.
 
-	![[+ 新規]][plus-new]
+	![+new][plus-new]
 
-3. **[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
+3.  Click **DATA SERVICES**, then **STORAGE**, and then click **QUICK CREATE**.
 
-	![[簡易作成] ダイアログ][quick-create-storage]
+	![Quick create dialog][quick-create-storage]
 
-4. [URL] で、ストレージ アカウントの URI で使用するサブドメイン名を入力します。文字数は 3 ～ 24 文字で、アルファベット小文字と数字を使用できます。この名前は、対応するサブスクリプションの BLOB リソース、キュー リソース、またはテーブル リソースのアドレス指定に使用される URL のホスト名になります。
+4.  In URL, type a subdomain name to use in the URI for the
+    storage account. The entry can contain from 3-24 lowercase letters
+    and numbers. This value becomes the host name within the URI that is
+    used to address Blob, Queue, or Table resources for the
+    subscription.
 
-5. ストレージの配置先となるリージョンまたはアフィニティ グループを選択します。Windows Azure アプリケーションからストレージを使用する場合は、アプリケーションを展開するリージョンと同じリージョンを選択します。
+5.  Choose a Region/Affinity Group in which to locate the
+    storage. If you will be using storage from your Azure
+    application, select the same region where you will deploy your
+    application.
 
-6. 必要に応じて、Geo レプリケーションを有効にできます。
+6. Optionally, you can enable geo-replication.
 
-6. **[ストレージ アカウントの作成]** をクリックします。
+6.  Click **CREATE STORAGE ACCOUNT**.
 
-[メンバーシップ API を使用する]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh264518.aspx
-[Windows Azure の管理ポータル]: http://manage.windowsazure.com
+[using the REST API]: http://msdn.microsoft.com/en-us/library/windowsazure/hh264518.aspx
+[Azure Management Portal]: http://manage.windowsazure.com
 [plus-new]: ./media/create-storage-account/plus-new.png
 [quick-create-storage]: ./media/create-storage-account/quick-storage-2.png
-

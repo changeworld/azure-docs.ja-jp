@@ -1,41 +1,41 @@
-アプリケーション データを新しいモバイル サービスに格納できるようにするには、最初に新しいテーブルを関連付けられた SQL データベース インスタンスに作成する必要があります。
+To be able to store app data in the new mobile service, you must first create a new table in the associated SQL Database instance.
 
-1. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
+1. In the Management Portal, click **Mobile Services**, and then click the mobile service that you just created.
 
-2. **[データ]** タブをクリックし、**[作成]** をクリックします。
+2. Click the **Data** tab, then click **+Create**.
 	
    	![mobile-data-tab-empty](./media/mobile-services-create-new-service-data-2/mobile-data-tab-empty.png)
 
-   	**[新しいテーブルの作成]** ダイアログ ボックスが表示されます。
+   	This displays the **Create new table** dialog.
 
-3. **[テーブル名]** に「TodoItem」と入力し、チェック ボタンをクリックします。
+3. In **Table name** type _TodoItem_, then click the check button.
 
  	![mobile-create-todoitem-table](./media/mobile-services-create-new-service-data-2/mobile-create-todoitem-table.png)
 
-  これにより、既定のアクセス許可が設定された新しいストレージ テーブル **TodoItem** が作成されます。これは、アプリケーションと共に配布されるアプリケーション キーを使用してだれもがテーブル内のデータにアクセスし、変更を加えることができることを表します。
+  This creates a new storage table **TodoItem** with the default permissions set. This means that anyone with the application key, which is distributed with your app, can access and change data in the table. 
 
 > [WACOM.NOTE] 
-> モバイル サービスのクイック スタートでも同じテーブル名が使用されています。ただし、それぞれのテーブルは、特定のモバイル サービスに固有のスキーマ内で作成されています。これには、複数のモバイル サービスで同じデータベースを使用した場合にデータの競合を回避する目的があります。
+> The same table name is used in Mobile Services quickstart. However, each table is created in a schema that is specific to a given mobile service. This is to prevent data collisions when multiple mobile services use the same database.
 
-4. 新しい **TodoItem** テーブルをクリックし、データ行がないことを確認します。
+4. Click the new **TodoItem** table and verify that there are no data rows.
 
-5. **[列]** タブをクリックします。次の既定の列が自動的に作成されていることを確認します。
+5. Click the **Columns** tab. Verify that the following default columns are automatically created for you: 
 	
 	<table border="1" cellpadding="10">
  	<tr>
- 	<th>列名</th>
- 	<th>種類</th>
- 	<th>インデックス</th>
+ 	<th>Column Name</th>
+ 	<th>Type</th>
+ 	<th>Index</th>
  	</tr>
  	<tr>
  	<td>id</td>
  	<td>string</td>
- 	<td>インデックス設定済み</td>
+ 	<td>Indexed</td>
  	</tr>
  	<tr>
  	<td>__createdAt</td>
  	<td>date</td>
- 	<td>インデックス設定済み</td>
+ 	<td>Indexed</td>
  	</tr>
  	<tr>
  	<td>__updatedAt</td>
@@ -50,12 +50,11 @@
  	</table> 	
 		
 
-  	これは、モバイル サービスのテーブルの最小要件です。
+  	This is the minimum requirement for a table in Mobile Services. 
 
-    <div class="dev-callout"><b>注</b>
-	<p>モバイル サービスで動的スキーマを有効にすると、挿入操作または更新操作によって JSON オブジェクトがモバイル サービスに送信されるときに新しい列が自動的に作成されます。</p>
+    <div class="dev-callout"><b>Note</b>
+	<p>When dynamic schema is enabled on your mobile service, new columns are created automatically when JSON objects are sent to the mobile service by an insert or update operation.</p>
     </div>
 
-これで、新しいモバイル サービスをアプリケーションのデータ ストレージとして使用する準備が整いました。
-
+You are now ready to use the new mobile service as data storage for the app.
 

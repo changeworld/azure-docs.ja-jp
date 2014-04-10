@@ -1,204 +1,204 @@
-﻿<properties linkid="manage-services-cross-premises-connectivity" urlDisplayName="クロスプレミス接続" pageTitle="クロスプレミス接続用の仮想ネットワークの作成 - Windows Azure" metaKeywords="" description="クロスプレミス接続が可能な Windows Azure の仮想ネットワークを作成する方法について説明します。" metaCanonical="" services="virtual-network" documentationCenter="" title="サイト間クロスプレミス接続用の仮想ネットワークの作成" authors=""  solutions="" writer="" manager="" editor=""  />
+<properties linkid="manage-services-cross-premises-connectivity" urlDisplayName="Cross-premises Connectivity" pageTitle="Create a cross-premises virtual network - Azure" metaKeywords="" description="Learn how to create an Azure Virtual Network with cross-premises connectivity." metaCanonical="" services="virtual-network" documentationCenter="" title="Create a Virtual Network for Site-to-Site Cross-Premises Connectivity" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-<h1 id="vnettut1">サイト間クロスプレミス接続用の仮想ネットワークの作成</h1>
+<h1 id="vnettut1">Create a Virtual Network for Site-to-Site Cross-Premises Connectivity</h1>
 
-このチュートリアルでは、クロスプレミス仮想ネットワークを作成する手順について説明します。作成する接続の種類はサイト間接続です。証明書と VPN クライアントを使用してポイント対サイト VPN を作成する場合は、「[管理ポータル ウィザードを使用したポイント対サイト VPN の構成](http://go.microsoft.com/fwlink/?LinkId=296653)」を参照してください。
+This tutorial walks you through the steps to create a cross-premises virtual network. The type of connection we will create is a site-to-site connection. If you want to create a point-to-site VPN by using certificates and a VPN client, see [Configure a Point-to-Site VPN in the Management Portal](http://go.microsoft.com/fwlink/?LinkId=296653).
 
-このチュートリアルは、Windows Azure を使用した経験がない読者を対象に作成されています。目的は、読者がサイト間仮想ネットワークの作成に必要な手順を習得できるようにすることです。仮想ネットワークのデザイン シナリオや詳細情報については、「[仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)」を参照してください。
+This tutorial assumes you have no prior experience using Azure. It's meant to help you become familiar with the steps required to create a site-to-site virtual network. If you're looking for design scenarios and advanced information about Virtual Network, see the [Azure Virtual Network Overview](http://msdn.microsoft.com/en-us/library/windowsazure/jj156007.aspx).
 
-このチュートリアルを完了すると、Windows Azure サービスと仮想マシンを展開できる仮想ネットワークが作成され、会社のネットワークと直接通信できます。
+After completing this tutorial, you will have a virtual network where you can deploy your Azure services and virtual machines, which can then communicate directly with your company's network.
 
-仮想マシンを追加し、内部設置型の Active Directory を Windows Azure の仮想ネットワークに拡張する方法については、次のページを参照してください。
+For information about adding a virtual machine and extending your on-premises Active Directory to Azure Virtual Network, see the following:
 
--  [カスタム仮想マシンを作成する方法](http://go.microsoft.com/fwlink/?LinkID=294356)
+-  [How to Custom Create a Virtual Machine](http://go.microsoft.com/fwlink/?LinkID=294356)
 
--  [Windows Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](http://go.microsoft.com/fwlink/?LinkId=299877)
+-  [Install a Replica Active Directory Domain Controller in Azure Virtual Network](http://go.microsoft.com/fwlink/?LinkId=299877)
 
-AD DS を Windows Azure の仮想マシンに展開する方法に関するガイダンスについては、「[Windows Azure の仮想マシンでの Windows Server Active Directory の展開ガイドライン](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090.aspx)」を参照してください。
+For guidelines about deploying AD DS on Azure Virtual Machines, see [Guidelines for Deploying Windows Server Active Directory on Azure Virtual Machines](http://msdn.microsoft.com/en-us/library/windowsazure/jj156090.aspx).
 
-仮想ネットワーク構成のその他の手順と設定については、「[Windows Azure の仮想ネットワークの構成タスク](http://go.microsoft.com/fwlink/?LinkId=296652)」を参照してください。
+For additional Virtual Network configuration procedures and settings, see [Azure Virtual Network Configuration Tasks](http://go.microsoft.com/fwlink/?LinkId=296652).
 
-##  目標
+##  Objectives
 
-このチュートリアルでは、次の事項について説明します。
+In this tutorial you will learn:
 
--  Windows Azure サービスを追加できる基本的な Windows Azure の仮想ネットワークを設定する方法
+-  How to setup a basic Azure virtual network to which you can add Azure services.
 
--  会社のネットワークと通信するように仮想ネットワークを構成する方法
+-  How to configure the virtual network to communicate with your company's network.
 
-##  前提条件
+##  Prerequisites
 
--  少なくとも 1 つのサブスクリプションが有効でアクティブな Windows Live アカウント。
+-  Windows Live account with at least one valid, active subscription.
 
--  仮想ネットワークおよびサブネットに使用されるアドレス空間 (CIDR 表記)。
+-  Address space (in CIDR notation) to be used for the virtual network and subnets.
 
--  DNS サーバーの名前と IP アドレス (内部設置型の DNS サーバーを名前解決に使用する場合)。
+-  The name and IP address of your DNS server (if you want to use your on-premises DNS server for name resolution).
 
--  パブリック IPv4 アドレスを持つ VPN デバイス。このウィザードを完了するには、IP アドレスが必要です。VPN デバイスは NAT の背後に配置することはできず、最低のデバイス標準を満たしている必要があります。詳細については、「[仮想ネットワークに使用する VPN デバイスについて](http://go.microsoft.com/fwlink/?LinkID=248098)」を参照してください。
+-  A VPN device with a public IPv4 address. You'll need the IP address in order to complete the wizard. The VPN device cannot be located behind a NAT and must meet the minimum device standards. See [About VPN Devices for Virtual Network](http://go.microsoft.com/fwlink/?LinkID=248098) for more information. 
 
-	注: VPN ソリューションの一部として RRAS を使用できます。ただし、このチュートリアルでは RRAS の構成手順については説明しません。
+	Note: You can use RRAS as part of your VPN solution. However, this tutorial doesn't walk you through the RRAS configuration steps. 
 
-	RRAS の構成情報については、「[ルーティングとリモート アクセス サービス用テンプレート](http://msdn.microsoft.com/library/windowsazure/dn133801.aspx)」を参照してください。
+	For RRAS configuration information, see [Routing and Remote Access Service templates](http://msdn.microsoft.com/library/windowsazure/dn133801.aspx). 
 
--  ルーターの構成経験、または構成時に補助する人。
+-  Experience with configuring a router or someone that can help you with this step.
 
--  ローカル ネットワーク (内部設置型のネットワーク) のアドレス空間。
+-  The address space for your local network (on-premise network).
 
 
-## 手順概要
+## High-Level Steps
 
-1.	[仮想ネットワークの作成](#CreateVN)
+1.	[Create a Virtual Network](#CreateVN)
 
-2.	[ゲートウェイの起動とネットワーク管理者用の情報の収集](#StartGateway)
+2.	[Start the gateway and gather information for your network administrator](#StartGateway)
 
-3. [VPN デバイスの構成](#ConfigVPN)
+3.  [Configure your VPN device](#ConfigVPN)
 
-##  <a name="CreateVN">仮想ネットワークの作成</a>
+##  <a name="CreateVN">Create a Virtual Network</a>
 
-**会社のネットワークに接続する仮想ネットワークを作成するには: **
+**To create a virtual network that connects to your company's network:**
 
-1.	[Windows Azure の管理ポータル](http://manage.windowsazure.com/)にログインします。
+1.	Log in to the [Azure Management Portal](http://manage.windowsazure.com/).
 
-2.	画面の左下隅で **[新規]** をクリックします。ナビゲーション ウィンドウで、**[ネットワーク]**、**[仮想ネットワーク]** の順にクリックします。**[カスタム作成]** をクリックして、構成ウィザードを開始します。
+2.	In the lower left-hand corner of the screen, click **New**. In the navigation pane, click **Networks**, and then click **Virtual Network**. Click **Custom Create** to begin the configuration wizard. 
 
 	![](./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVnet_01_OpenVirtualNetworkWizard.png)
 
-3.	**[仮想ネットワークの詳細]** ページで、次の情報を入力し、右下にある次へ進む矢印をクリックします。詳細ページの設定の詳細については、「[管理ポータルでの仮想ネットワークの構成について](http://go.microsoft.com/fwlink/?LinkID=248092)」の「**[仮想ネットワークの詳細]**」セクションを参照してください。
+3.	On the **Virtual Network Details** page, enter the following information, and then click the next arrow on the lower right. For more information about the settings on the details page, see the **Virtual Network Details** section in [About Configuring a Virtual Network using the Management Portal](http://go.microsoft.com/fwlink/?LinkID=248092).
 
--  **[名前]:** 仮想ネットワークの名前を指定します。「*YourVirtualNetwork*」と入力します。
+-  **NAME:** Name your virtual network. Type *YourVirtualNetwork*.
 
--  **[アフィニティ グループ]:** ドロップダウン リストから **[新しいアフィニティ グループの作成]** を選択します。アフィニティ グループでは、Windows Azure サービスを同じデータ センターに物理的にグループ化してパフォーマンスを向上させます。1 つのアフィニティ グループに割り当てることができる仮想ネットワークは 1 つのみです。
+-  **AFFINITY GROUP:** From the drop-down list, select **Create a new affinity group**. Affinity groups are a way to physically group Azure services together at the same data center to increase performance. Only one virtual network can be assigned an affinity group.
 
--  **[リージョン]:** ドロップダウン リストからリージョンを選択します。仮想ネットワークは、指定したリージョンにあるデータ センターに作成されます。
+-  **REGION:** From the drop-down list, select the desired region. Your virtual network will be created at a datacenter located in the specified region.
 
--  **[アフィニティ グループ名]:** 新しいアフィニティ グループの名前を指定します。「*YourAffinityGroup*」と入力します。
+-  **AFFINITY GROUP NAME:** Name the new affinity group. Type *YourAffinityGroup*.
 
 	![](./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVnet_02_VirtualNetworkDetails.png)
 
-4.	**[DNS サーバーおよび VPN 接続]** ページで、次の情報を入力し、右下にある次へ進む矢印をクリックします。
+4.	On the **DNS Servers and VPN Connectivity** page, enter the following information, and then click the forward arrow on the lower right. 
 
 	<div class="dev-callout"> 
-	<b>注</b>
-	<p>このページでは、**Point-To-Site** 構成と **Site-To-Site** 構成の両方を同時に選択できます。このチュートリアルでは、**[サイト間]** 構成だけを選択します。このページの設定の詳細については、「<a href="http://go.microsoft.com/fwlink/?LinkID=248092">管理ポータルでの仮想ネットワークの構成について</a>」の **[DNS サーバーおよび VPN 接続]** ページを参照してください。</p>
+	<b>Note</b> 
+	<p>It's possible to select both **Point-To-Site** and **Site-To-Site** configurations on this page concurrently. For the purposes of this tutorial, we will select to configure only **Site-To-Site**. For more information about the settings on this page, see the **DNS Servers and VPN Connectivity** page in <a href="http://go.microsoft.com/fwlink/?LinkID=248092">About Configuring a Virtual Network using the Management Portal</a>.</p> 
 	</div>
 
--  **[DNS サーバー]:** 名前解決に使用する DNS サーバー名と IP アドレスを入力します。通常、これは内部設置型の名前解決に使用する DNS サーバーです。この設定で、DNS サーバーは作成されません。名前に「*YourDNS*」、IP アドレスに「*10.1.0.4*」と入力します。
--  **[ポイント対サイト VPN の構成]:** このフィールドの値を空にします。
--  **[サイト対サイト VPN の構成]:** チェックボックスをオンにします。
--  **[ローカル ネットワーク]**: ドロップダウン リストから **[新しいローカル ネットワークを指定する]** を選択します。
+-  **DNS SERVERS:** Enter the DNS server name and IP address that you want to use for name resolution. Typically this would be a DNS server that you use for on-premises name resolution. This setting does not create a DNS server. Type *YourDNS* for the name and *10.1.0.4* for the IP address.
+-  **Configure Point-To-Site VPN:** Leave this field blank. 
+-  **Configure Site-To-Site VPN:** Select checkbox.
+-  **LOCAL NETWORK:** Select **Specify a New Local Network** from the drop-down list.
  
 	![](./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVNet_03_DNSServersandVPNConnectivity.png)
 
-5.	**[サイト間接続]** ページで、次の情報を入力し、ページの右下にあるチェックマークをクリックにします。このページの設定の詳細については、「[管理ポータルでの仮想ネットワークの構成について](http://go.microsoft.com/fwlink/?LinkID=248092)」の **[サイト間接続]** ページ セクションを参照してください。
+5.	On the **Site-To-Site Connectivity** page, enter the  information below, and then click the checkmark in the lower right of the page. For more information about the settings on this page, see the **Site-to-Site Connectivity** page section in [About Configuring a Virtual Network using the Management Portal](http://go.microsoft.com/fwlink/?LinkID=248092). 
 
--  **[名前]:** 「*YourCorpHQ*」と入力します。
+-  **NAME:** Type *YourCorpHQ*.
 
--  **[VPN デバイスの IP アドレス]:** VPN デバイスのパブリック IP アドレスを入力します。この情報がない場合は、ウィザードの次の手順に進む前にそれを取得する必要があります。VPN デバイスは NAT の背後に配置することはできません。VPN デバイスの詳細については、「[仮想ネットワークに使用する VPN デバイスについて](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156075.aspx)」を参照してください。
+-  **VPN DEVICE IP ADDRESS:** Enter the public IP address of your VPN device. If you don't have this information, you'll need to obtain it before moving forward with the next steps in the wizard. Note that your VPN device cannot be behind a NAT. For more information about VPN devices, see [About VPN Devices for Virtual Network](http://msdn.microsoft.com/en-us/library/windowsazure/jj156075.aspx).
 
--  **[アドレス空間]:** 「*10.1.0.0/16*」と入力します。
--  **[アドレス空間の追加]:** このチュートリアルでは、追加のアドレス空間は必要ありません。
+-  **ADDRESS SPACE:** Type *10.1.0.0/16*.
+-  **Add address space:** This tutorial does not require additional address space.
 
 	![](./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVnet_04_SitetoSite.png)
 
-6. **[仮想ネットワーク アドレス空間]** ページで、次の情報を入力し、右下にあるチェックマークをクリックしてネットワークを構成します。
+6.  On the **Virtual Network Address Spaces** page, enter the  information below, and then click the checkmark on the lower right to configure your network. 
 
-	アドレス空間は、RFC 1918 で定義されたプライベート アドレスの範囲 (CIDR 表記では 10.0.0.0/8、172.16.0.0/12、または 192.168.0.0/16) 内にあることが必要です。このページの設定の詳細については、「[管理ポータルでの仮想ネットワークの構成について](http://go.microsoft.com/fwlink/?LinkID=248092)」の「**[仮想ネットワーク アドレス空間] ページ**」を参照してください。
+	Address space must be a private address range, specified in CIDR notation 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16 (as specified by RFC 1918). For more information about the settings on this page, see **Virtual Network Address Spaces page** in [About Configuring a Virtual Network using the Management Portal](http://go.microsoft.com/fwlink/?LinkID=248092).
 
--  **[アドレス空間]:** 右上隅にある **[CIDR]** をクリックし、次の情報を入力します。
-	-  **[開始 IP]:** 10.4.0.0
-	-  **[CIDR]:** /16
--  **[サブネットの追加]:** 次の情報を入力します。
-	-  **[Subnet-1]** を「*FrontEndSubnet*」に変更して、開始 IP を「*10.4.2.0/24*」に設定し、**[サブネットの追加]** をクリックします。
-	-  ****サブネット「*BackEndSubnet*」を開始 IP「*10.4.3.0/24*」で追加します。
-	-  ****サブネット「*ADDNSSubnet*」を開始 IP「*10.4.4.0/24*」で追加します。
-	-  ****ゲートウェイ サブネットを開始 IP「*10.4.1.0/24*」で追加します。
-	-  3 つのサブネットと 1 つのゲートウェイ サブネットが作成されたことを**確認**し、右下にあるチェックマークをクリックして仮想ネットワークを作成します。
+-  **Address Space:** Click **CIDR** in the upper right corner, then enter the following:
+	-  **Starting IP:** 10.4.0.0
+	-  **CIDR:** /16
+-  **Add subnet:** Enter the following:
+	-  **Rename Subnet-1** to *FrontEndSubnet* with the Starting IP *10.4.2.0/24*, and then click **add subnet**.
+	-  **add a subnet** called *BackEndSubnet* with the starting IP *10.4.3.0/24*.
+	-  **add a subnet** called *ADDNSSubnet* with the starting IP *10.4.4.0/24*.
+	-  **Add gateway subnet**  with the starting IP *10.4.1.0/24*.
+	-  **Verify** that you now have three subnets and a gateway subnet created, and then click the checkmark on the lower right to create your virtual network.
 
 	![](./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVnet_05_VirtualNetworkAddressSpaces.png)
 
-7.	チェックマークをクリックすると、仮想ネットワークの作成が開始されます。仮想ネットワークが作成されると、管理ポータルのネットワーク ページの [状態] に [作成済み] と表示されます。
+7.	After clicking the checkmark, your virtual network will begin to create. When your virtual network has been created, you will see Created listed under Status on the networks page in the Management Portal. 
 
 	![](./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVNet_06_VirtualNetworkCreatedStatus.png)
 
-##  <a name="StartGateway">ゲートウェイの起動</a>
+##  <a name="StartGateway">Start the Gateway</a>
 
-Windows Azure の仮想ネットワークを作成した後、サイト間 VPN を作成するために、次の手順で仮想ネットワーク ゲートウェイを構成します。この手順では、最小要件を満たす VPN デバイスが必要です。VPN デバイスとデバイスの構成の詳細については、「[仮想ネットワークに使用する VPN デバイスについて](http://go.microsoft.com/fwlink/?LinkID=248098)」を参照してください。
+After creating your Azure Virtual Network, use the following procedure to configure the virtual network gateway in order to create your site-to-site VPN. This procedure requires that you have a VPN device that meets the minimum requirements. For more information about VPN devices and device configuration, see [About VPN Devices for Virtual Network](http://go.microsoft.com/fwlink/?LinkID=248098).
 
-**ゲートウェイを起動するには: **
+**To start the gateway:**
 
-1.	仮想ネットワークが作成されると、仮想ネットワークの状態として **[ネットワーク]** ページに **[作成済み]** と表示されます。
+1.	When your virtual network has been created, the **networks** page will show **Created** as the status for your virtual network.
 
-	**[名前]** 列で **[YourVirtualNetwork]** をクリックして、ダッシュボードを開きます。
+	In the **NAME** column, click **YourVirtualNetwork** to open the dashboard.
  
 	![](./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVNet_07_ClickYourVirtualNetwork.png)
 
-2.	ページの上部にある **[ダッシュボード]** をクリックします。[ダッシュボード] ページで、ページの下部にある **[ゲートウェイの作成]** をクリックします。作成するゲートウェイの種類として、**[動的ルーティング]** または **[静的ルーティング]** を選択します。
+2.	Click **DASHBOARD** at the top of the page. On the Dashboard page, on the bottom of the page, click **CREATE GATEWAY**. Select either **Dynamic Routing** or **Static Routing** for the type of Gateway that you want to create. 
 
-	この仮想ネットワークを、サイト間接続だけでなくポイント対サイト接続にも使用する場合は、ゲートウェイの種類として [動的ルーティング] を選択する必要があります。ゲートウェイを作成する前に、VPN デバイスが作成するゲートウェイをサポートすることを確認してください。「[仮想ネットワークに使用する VPN デバイスについて](http://go.microsoft.com/fwlink/?LinkID=248098)」を参照してください。ゲートウェイを作成するかどうかを確認するように求められたら、**[はい]** をクリックします。
+	Note that if you want to use this virtual network for point-to-site connections in addition to site-to-site, you must select Dynamic Routing as the gateway type. Before creating the gateway, verify that your VPN device will support the gateway type that you want to create. See [About VPN Devices for Virtual Network](http://go.microsoft.com/fwlink/?LinkID=248098). When the system prompts you to confirm that you want the gateway created, click **YES**.
 
 	![](./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVnet_08_CreateGateway.png)
 
-3.	ゲートウェイの作成が開始されると、ゲートウェイが開始されたことを知らせるメッセージが表示されます。
+3.	When the gateway creation starts, you will see a message letting you know that the gateway has been started.
 
-	ゲートウェイの作成には最大 15 分かかる場合があります。
+	It may take up to 15 minutes for the gateway to be created.
 
-4.	ゲートウェイの作成後、VPN デバイスの構成で使用する以下の情報を収集する必要があります。
+4.	After the gateway has been created, you'll need to gather the following information that will be used to configure the VPN device. 
 
--  ゲートウェイ IP アドレス
--  共有キー
--  VPN デバイス構成スクリプトのテンプレート
+-  Gateway IP address
+-  Shared key
+-  VPN device configuration script template
 
-	次の手順では、このプロセスについて説明します。
+	The next steps walk you through this process.
 
-5.	ゲートウェイ IP アドレスを見つけるには – ゲートウェイ IP アドレスは、仮想ネットワークの **[ダッシュボード]** ページにあります。
+5.	To locate the Gateway IP Address - The Gateway IP address is located on the virtual network **DASHBOARD** page. 
 
 	![](./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVnet_09_GatewayIP.png)
 
-6.	共有キーを取得するには – 共有キーは、仮想ネットワークの **[ダッシュボード]** ページにあります。画面の下部にある [キーの管理] をクリックし、ダイアログ ボックスに表示されたキーをコピーします。
+6.	To acquire the Shared Key - The shared key is located on the virtual network **DASHBOARD** page. Click Manage Key at the bottom of the screen, and then copy the key displayed in the dialog box. 
 
 	![](./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVNet_10_ManageSharedKey.png)
 
-7.	VPN デバイス構成スクリプトのテンプレートをダウンロードします。ダッシュボードで **[VPN デバイス スクリプトのダウンロード]** をクリックします。
+7.	Download the VPN device configuration script template. On the dashboard, click **Download VPN Device Script**.
 
-8.	**[VPN デバイス構成スクリプトのダウンロード]** ダイアログ ボックスで、会社の VPN デバイスのベンダー、プラットフォーム、オペレーティング システムを選択します。チェックマークをクリックして、ファイルを保存します。
+8.	On the **Download a VPN Device Configuration Script** dialog box, select the vendor, platform, and operating system for your company's VPN device. Click the checkmark button and save the file. 
 
 	![](./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVnet_11_DownloadVPNDeviceScript.png)
 
-使用する VPN デバイスがドロップダウン リストに表示されない場合、その他のスクリプト テンプレートについては、MSDN ライブラリの「[仮想ネットワークに使用する VPN デバイスについて](http://go.microsoft.com/fwlink/?LinkID=248098)」を参照してください。
+If you don't see your VPN device in the drop-down list, see [About VPN Devices for Virtual Network](http://go.microsoft.com/fwlink/?LinkID=248098) in the MSDN library for additional script templates.
 
 
-##  <a name="ConfigVPN">VPN デバイスの構成 (ネットワーク管理者)</a>
+##  <a name="ConfigVPN">Configure the VPN Device (Network Administrator)</a>
 
-VPN デバイスごとに異なるため、ここでは大まかな手順を示します。この手順はネットワーク管理者が行う必要があります。
+Because each VPN device is different, this is only a high-level procedure. This procedure should be done by your network administrator.
 
-管理ポータルまたは「[仮想ネットワークに使用する VPN デバイスについて](http://go.microsoft.com/fwlink/?LinkId=248098)」から VPN 構成スクリプトを入手できます。これには、使用するルーティング構成と互換性のあるルーティングの種類とデバイスに関する説明も含まれます。
+You can get the VPN configuration script from the Management Portal or from the [About VPN Devices for Virtual Network](http://go.microsoft.com/fwlink/?LinkId=248098), which also explains routing types and the devices that are compatible with the routing configuration that you select to use.
 
-仮想ネットワーク ゲートウェイの構成の詳細については、「[管理ポータルでの仮想ネットワーク ゲートウェイの構成](http://go.microsoft.com/fwlink/?LinkId=299878)」と VPN デバイスのドキュメントを参照してください。
+For additional information about configuring a virtual network gateway, see [Configure the Virtual Network Gateway in the Management Portal](http://go.microsoft.com/fwlink/?LinkId=299878) and consult your VPN device documentation.
 
-次の前提条件はこの手順で必要になります。
+This procedure assumes the following:
 
--  VPN デバイスを構成する人は、選択されたデバイスの構成について詳しく知っている。仮想ネットワークと互換性があるデバイスの数と各デバイス ファミリに固有の構成の数が多いので、以下の手順ではデバイス構成について細かく説明しません。そのため、デバイスを構成する人はデバイスとその構成について詳しいことが重要です。
+-  The person configuring the VPN device is proficient at configuring the device that has been selected. Due to the number of devices that are compatible with virtual network and the configurations that are specific to each device family, these steps do not walk through device configuration at a granular level. Therefore, it's important that the person configuring the device is familiar with the device and its configuration settings. 
 
--  選択したデバイスは、仮想ネットワークと互換性がある。デバイスの互換性については、[ここ](http://go.microsoft.com/fwlink/?LinkID=248098)で確認してください。
+-  The device that you have selected to use is compatible with virtual network. Check [here](http://go.microsoft.com/fwlink/?LinkID=248098) for device compatibility.
 
 
-**VPN デバイスを構成するには: **
+**To configure the VPN device:**
 
-1.	VPN 構成スクリプトを変更します。次の項目を構成します。
+1.	Modify the VPN configuration script. You will configure the following:
 
-	a.	セキュリティ ポリシー
+	a.	Security policies
 
-	b.	受信トンネル
+	b.	Incoming tunnel
 
-	c.	送信トンネル
+	c.	Outgoing tunnel
 
-2.	変更した VPN 構成スクリプトを実行して VPN デバイスを構成します。
+2.	Run the modified VPN configuration script to configure your VPN device.
 
-3.	次のいずれかのコマンドを実行して接続をテストします。
+3.	Test your connection by running one of the following commands:
 
 	<table border="1">
 	<tr>
@@ -210,7 +210,7 @@ VPN デバイスごとに異なるため、ここでは大まかな手順を示�
 	</tr>
 	
 	<tr>
-	<td><b>メイン モード SA の確認</b></td>
+	<td><b>Check main mode SAs</b></td>
 	<td><FONT FACE="courier" SIZE="-1">show crypto isakmp sa</FONT></td>
 	<td><FONT FACE="courier" SIZE="-1">show crypto isakmp sa</FONT></td>
 	<td><FONT FACE="courier" SIZE="-1">get ike cookie</FONT></td>
@@ -218,7 +218,7 @@ VPN デバイスごとに異なるため、ここでは大まかな手順を示�
 	</tr>
 	
 	<tr>
-	<td><b>クイック モード SA の確認</b></td>
+	<td><b>Check quick mode SAs</b></td>
 	<td><FONT FACE="courier" SIZE="-1">show crypto ipsec sa</FONT></td>
 	<td><FONT FACE="courier" SIZE="-1">show crypto ipsec sa</FONT></td>
 	<td><FONT FACE="courier" SIZE="-1">get sa</FONT></td>
@@ -227,29 +227,28 @@ VPN デバイスごとに異なるため、ここでは大まかな手順を示�
 	</table>
 
 
-##  次のステップ
-内部設置型の Active Directory を、ここで作成した仮想ネットワークに拡張するには、次に示しているチュートリアルに進みます。
+##  Next Steps
+In order to extend your on-premises Active Directory to the virtual network you just created, continue with the following tutorials:
 
--  [カスタム仮想マシンを作成する方法](http://go.microsoft.com/fwlink/?LinkID=294356)
+-  [How to Custom Create a Virtual Machine](http://go.microsoft.com/fwlink/?LinkID=294356)
 
--  [Windows Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](http://go.microsoft.com/fwlink/?LinkId=299877)
+-  [Install a Replica Active Directory Domain Controller in Azure Virtual Network](http://go.microsoft.com/fwlink/?LinkId=299877)
 
-構成をバックアップしたりテンプレートとして使用したりするために、仮想ネットワークの設定をネットワーク構成ファイルにエクスポートする場合は、「[ネットワーク構成ファイルへの仮想ネットワーク設定のエクスポート](http://go.microsoft.com/fwlink/?LinkID=299880)」を参照してください。
+If you want to export your virtual network settings to a network configuration file in order to back up your configuration or to use it as a template, see [Export Virtual Network Settings to a Network Configuration File](http://go.microsoft.com/fwlink/?LinkID=299880).
 
-## 関連項目
+## See Also
 
--  [Windows Azure の仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)
+-  [Azure virtual network](http://msdn.microsoft.com/en-us/library/windowsazure/jj156007.aspx)
 
--  [仮想ネットワーク FAQ](http://msdn.microsoft.com/library/windowsazure/dn133803.aspx)
+-  [Virtual Network FAQ](http://msdn.microsoft.com/library/windowsazure/dn133803.aspx)
 
--  [ネットワーク構成ファイルを使用した仮想ネットワークの構成](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156097.aspx)
+-  [Configuring a Virtual Network Using Network Configuration Files](http://msdn.microsoft.com/en-us/library/windowsazure/jj156097.aspx)
 
--  [Add a Virtual Machine to a Virtual Network (仮想ネットワークへの仮想マシンの追加)](http://www.windowsazure.com/ja-jp/manage/services/networking/add-a-vm-to-a-virtual-network/)
+-  [Add a Virtual Machine to a Virtual Network](http://www.windowsazure.com/en-us/manage/services/networking/add-a-vm-to-a-virtual-network/)
 
--  [仮想ネットワークの VPN デバイスについて](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156075.aspx)
+-  [About VPN Devices for Virtual Network](http://msdn.microsoft.com/en-us/library/windowsazure/jj156075.aspx)
 
--  [名前解決](http://go.microsoft.com/fwlink/?LinkId=248097)
-
+-  [Azure Name Resolution Overview](http://go.microsoft.com/fwlink/?LinkId=248097)
 
 
 

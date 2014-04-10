@@ -1,66 +1,66 @@
-# サービス バスでの AMQP 1.0 サポート
+# AMQP 1.0 support in Service Bus
 
 
-> Windows Azure のサービス バスと Windows Server のサービス バス (サービス バス 1.1) では、Advanced Message Queueing Protocol (AMQP) 1.0 をサポートしています。AMQP を使用すると、オープンな標準プロトコルを使用したクロス プラットフォームのハイブリッド アプリケーションをビルドできます。異なる言語とフレームワークを使用して作成され、異なるオペレーティング システムで実行可能であるコンポーネントを使用して、アプリケーションを構築できます。これらのコンポーネントはすべてサービス バスに接続でき、構造化されたビジネス メッセージを効率よく完全な忠実度でシームレスに交換できます。
+>Both Azure Service Bus and Service Bus for Windows Server (Service Bus 1.1) support the Advanced Message Queueing Protocol (AMQP) 1.0. AMQP enables you to build cross-platform, hybrid applications using an open standard protocol. You can construct applications using components that are built using different languages and frameworks, and running on different operating systems. All these components can connect to Service Bus and seamlessly exchange structured business messages efficiently and at full fidelity.
 
-## 概要: AMQP 1.0 の紹介とその重要な理由
+## Introduction: What is AMQP 1.0 and why is it important?
 
-これまで、メッセージ指向のミドルウェア製品では、クライアント アプリケーションとブローカーの間の通信に独自プロトコルが使用されてきました。つまり、特定のベンダーのメッセージング ブローカーを選択すると、そのベンダーのライブラリを使用してクライアント アプリケーションをそのブローカーに接続する必要があります。この結果、アプリケーションを別の製品に移植するには、接続するすべてのアプリケーションを再記述する必要があるため、そのベンダーへのロックインの度合いが高くなります。
+Traditionally, message-oriented middleware products have used proprietary protocols for communication between client applications and brokers. This means that once you've selected a particular vendor's messaging broker, you must use that vendor's libraries to connect your client applications to that broker. This results in a degree of "lock-in" to that vendor, since porting an application to a different product requires re-coding all the connected applications. 
 
-さらに、異なるベンダーのメッセージング ブローカーを接続するのは面倒であり、通常は、システム間でメッセージを移動し、独自のメッセージ形式間で変換を行うためにアプリケーション レベルのブリッジが必要になります。これは頻繁に見られる要件です。たとえば、以前の異種システムに新しい統合インターフェイスを提供した場合や、合併後に IT システムを統合した場合などです。
+Furthermore, connecting messaging brokers from different vendors is tricky and typically requires application-level bridging to move messages from one system to another, and to translate between their proprietary message formats. This is a common requirement; for example, when providing a new unified interface to older disparate systems, or integrating IT systems following a merger.
 
-ソフトウェア業界は動きの速いビジネスです。新しいプログラミング言語やアプリケーション フレームワークが、ときには困惑するほどのペースで生み出されます。同様に、IT システムの要件は時間の経過と共に進化しているため、開発者は最新の言語とフレームワークを活用しようとします。また、選択したメッセージング ベンダーがプラットフォームをサポートしていないこともあります。独自のプロトコルのため、他のベンダーが新しいプラットフォームのライブラリを提供することはできません。したがって、ゲートウェイ、ブリッジ、およびその他のアプローチを構築することに限定されます。
+The software industry is a fast-moving business; new programming languages and application frameworks are invented at a sometimes bewildering pace. Similarly, the requirements of IT systems evolve over time and developers want to take advantage of the latest languages and frameworks. However, sometimes the selected messaging vendor does not support these platforms. Because the protocols are proprietary, it's not possible for others to provide libraries for these new platforms. Therefore, you are restricted to building gateways, bridges and other approaches.
 
-AMQP (Advanced Message Queuing Protocol) 1.0 は、このような問題に促されて開発されました。ほとんどの金融サービス企業と同じようにメッセージ指向ミドルウェアのヘビー ユーザーである JP Morgan Chase で生み出されました。目的はシンプルです。つまり、さまざまな言語、フレームワーク、およびオペレーティング システムを使用して構築されたコンポーネント (すべて広範なサプライヤーの最良のコンポーネントを使用) を使用してメッセージ ベースのアプリケーションを作成できるようにする、オープン標準メッセージング プロトコルを作ることです。
+The development of AMQP (Advanced Message Queuing Protocol) 1.0 was motivated by these issues. It originated at JP Morgan Chase, who, like most financial services firms, are heavy users of message-oriented middleware. The goal was simple: to create an open-standard messaging protocol that makes it possible to build message-based applications using components built using different languages, frameworks, and operating systems, all using best-of-breed components from a range of suppliers.
 
-## AMQP 1.0 の技術的な特徴
+## AMQP 1.0 technical features
 
-AMQP 1.0 は、堅牢なクロス プラットフォーム メッセージング アプリケーションを作成するために使用できる、効率的で信頼性の高い回線レベルのメッセージング プロトコルです。このプロトコルには、安全で信頼性の高い効率的なメッセージ転送を二者間で行うメカニズムを定義するという、シンプルな目的があります。メッセージ自体は、異種混在の送信者と受信者が構造化されたビジネス メッセージを完全な忠実度で交換でき、移植できるデータ表現を使用してエンコード化されます。最も重要な特徴の概要を次に示します。
+AMQP 1.0 is an efficient, reliable, wire-level messaging protocol that you can use to build robust, cross-platform, messaging applications. The protocol has a simple goal: to define the mechanics of the secure, reliable, and efficient transfer of messages between two parties. The messages themselves are encoded using a portable data representation that enables heterogeneous senders and receivers to exchange structured business messages at full fidelity. The following is a summary of the most important features:
 
-*    **効率性**: AMQP 1.0 は、プロトコル命令とそれを介して転送されるビジネス メッセージにバイナリ エンコードを使用する、接続指向のプロトコルです。高度なフロー制御スキームが組み込まれており、ネットワークと接続コンポーネントの利用率が最大限に高められます。そのため、このプロトコルは効率性、柔軟性、相互運用性のバランスを取るように設計されました。
-*    **信頼性**: AMQP 1.0 プロトコルを使用すると、ファイア アンド フォーゲット配信から、厳密に 1 回限り承認される信頼性の高い配信まで、さまざまな信頼性保証でメッセージを交換できます。
-*    **柔軟性**: AMQP 1.0 は、さまざまなテクノロジのサポートに使用できる柔軟なプロトコルです。同じプロトコルをクライアント間通信、クライアント/ブローカー間通信、およびブローカー間通信に使用できます。
-*    **ブローカー モデルに依存しない**: AMQP 1.0 仕様には、ブローカーにより使用されるメッセージング モデルの要件がありません。これは、既存のメッセージング ブローカーに AMQP 1.0 のサポートを簡単に追加できることを意味します。
+*    **Efficient**: AMQP 1.0 is a connection-oriented protocol that uses a binary encoding for the protocol instructions and the business messages transferred over it. It incorporates sophisticated flow-control schemes to maximize the utilization of the network and the connected components. That said, the protocol was designed to strike a balance between efficiency, flexibility and interoperability.
+*    **Reliable**: The AMQP 1.0 protocol allows messages to be exchanged with a range of reliability guarantees, from fire-and-forget to reliable, exactly-once acknowledged delivery.
+*    **Flexible**: AMQP 1.0 is a flexible protocol that can be used to support different topologies. The same protocol can be used for client-to-client, client-to-broker, and broker-to-broker communications.
+*    **Broker-model independent**: The AMQP 1.0 specification does not make any requirements on the messaging model used by a broker. This means that it's possible to easily add AMQP 1.0 support to existing messaging brokers.
 
-## AMQP 1.0 は "標準" である
+## AMQP 1.0 is a Standard (with a capital 'S')
 
-AMQP 1.0 は、2008 年以降、20 社を超える企業 (テクノロジ サプライヤーとエンド ユーザー企業の両方) で構成される中核的なグループにより開発されています。その間、ユーザー企業は実際のビジネス要件を提供し、テクノロジ ベンダーはそれらの要件に合わせてプロトコルを進化させてきました。プロセス全般にわたり、ベンダーはワークショップに参加し、実装間の相互運用性を検証するために協力してきました。
+AMQP 1.0 has been in development since 2008 by a core group of more than 20 companies, both technology suppliers and end-user firms. During that time, user firms have contributed their real-world business requirements and the technology vendors have evolved the protocol to meet those requirements. Throughout the process, vendors have participated in workshops in which they collaborated to validate the interoperability between their implementations.
 
-2011 年 10 月、開発作業は構造化情報標準促進協会 (OASIS) 内の専門委員会に移され、2012 年 10 月に OASIS AMQP 1.0 Standard がリリースされました。この標準の開発中、次の企業が専門委員会に参加しました。
+In October 2011, the development work transitioned to a technical committee within the Organization for the Advancement of Structured Information Standards (OASIS) and the OASIS AMQP 1.0 Standard was released in October 2012. The following firms participated in the technical committee during the development of the standard:
 
-*    **テクノロジ ベンダー**: Axway Software、Huawei Technologies、IIT Software、INETCO Systems、Kaazing、Microsoft、Mitre Corporation、Primeton Technologies、Progress Software、Red Hat、SITA、Software AG、Solace Systems、VMware、WSO2、Zenika。
-*    **ユーザー企業**: Bank of America、Credit Suisse、Deutsche Boerse、Goldman Sachs、JPMorgan Chase。
+*    **Technology vendors**: Axway Software, Huawei Technologies, IIT Software, INETCO Systems, Kaazing, Microsoft, Mitre Corporation, Primeton Technologies, Progress Software, Red Hat, SITA, Software AG, Solace Systems, VMware, WSO2, Zenika.
+*    **User firms**: Bank of America, Credit Suisse, Deutsche Boerse, Goldman Sachs, JPMorgan Chase.
 
-オープン標準の利点としては、次のような点がよく挙げられます。
+Some of the commonly cited benefits of open standards include:
 
-*    ベンダー ロックインの可能性が下がる
-*    相互運用性
-*    ライブラリとツールを広範に利用できる
-*    陳腐化を予防できる
-*    知識が豊富なスタッフを利用できる
-*    リスクが低く扱いやすい
+*    Less chance of vendor lock-in
+*    Interoperability
+*    Broad availability of libraries and tooling
+*    Protection against obsolescence
+*    Availability of knowledgeable staff
+*    Lower and manageable risk
 
-## AMQP 1.0 とサービス バス
+## AMQP 1.0 and Service Bus
 
-AMQP 1.0 の追加により、サービス バスの仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) をさまざまなプラットフォームから効率的なバイナリ プロトコルを使って利用できるようになります。さらに、さまざまな言語、フレームワーク、およびオペレーティング システムを使って作成されたコンポーネントで構成されたアプリケーションを作成できます。
+The addition of AMQP 1.0 means that you can now leverage the queuing and publish/subscribe brokered messaging features of Service Bus from a range of platforms using an efficient binary protocol. Furthermore, you can build applications comprised of components built using a mix of languages, frameworks and operating systems.
 
-次の図は、標準の Java Message Service (JMS) API を使用して記述された Linux で実行される Java クライアントと、Windows で実行される .NET クライアントが、AMQP 1.0 を使用してサービス バス経由でメッセージを交換する、サンプルの展開を示しています。
+The diagram below illustrates an example deployment in which Java clients running on Linux, written using the standard Java Message Service (JMS) API, and .NET clients running on Windows, exchange messages via Service Bus using AMQP 1.0.
 
 ![][0]
 
-**図 1: サービス バスと AMQP 1.0 を使用したクロス プラットフォーム メッセージングを示すサンプルの展開シナリオ**
+**Figure 1: Example deployment scenario showing cross-platform messaging using Service Bus and AMQP 1.0**
 
-現時点では、次のクライアント ライブラリが サービス バスで機能することがわかっています。
+At this time the following client libraries are known to work with Service Bus:
 
 <table>
   <tr>
-    <th>言語</th>
-    <th>ライブラリ</th>
+    <th>Language</th>
+    <th>Library</th>
   </tr>
   <tr>
     <td>Java</td>
-    <td>Apache Qpid Java Message Service (JMS) クライアント<br/>
-        IIT Software SwiftMQ Java クライアント</td>
+    <td>Apache Qpid Java Message Service (JMS) client<br/>
+        IIT Software SwiftMQ Java client</td>
   </tr>
   <tr>
     <td>C</td>
@@ -78,22 +78,21 @@ AMQP 1.0 の追加により、サービス バスの仲介型メッセージン�
 </table>
 
 
-**図 2: AMQP 1.0 クライアント ライブラリの表**
+**Figure 2: Table of AMQP 1.0 client libraries**
 
-サービス バスからライブラリを取得して使用する方法の詳細については、「サービス バス AMQP: 開発者ガイド」を参照してください。詳細については、以下の「参照」セクションをご覧ください。
+For more information about how to obtain and use these libraries with Service Bus, see the Service Bus AMQP Developer's Guide. See the "References" section below for further information.
 
-## まとめ
+## Summary
 
-*    AMQP 1.0 は、クロス プラットフォームのハイブリッド アプリケーションをビルドするために使用できる、信頼性の高いオープンなメッセージング プロトコルです。AMQP 1.0 は OASIS の標準です。
-*    AMQP 1.0 サポートは、Windows Azure のサービス バスと Windows Server のサービス バス (サービス バス 1.1) で利用できるようになりました。料金は、既存のプロトコルと同じです。
+*    AMQP 1.0 is an open, reliable messaging protocol that you can use to build cross-platform, hybrid applications. AMQP 1.0 is an OASIS standard.
+*    AMQP 1.0 support is now available in Azure Service Bus and Service Bus for Windows Server (Service Bus 1.1). Pricing is the same as for the existing protocols.
 
-## 参照
+## References
 
-*    [.NET サービス バス API で AMQP 1.0 を使用する方法](http://aka.ms/lym3vk)
-*    [サービス バスと AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ](http://aka.ms/ll1fm3)
-*    [サービス バス AMQP 1.0: 開発者ガイド](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj841071.aspx)
-*    [OASIS Advanced Message Queuing Protocol (AMQP) バージョン 1.0 の仕様](http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)
+*    [How to use AMQP 1.0 with the Service Bus .NET API](http://aka.ms/lym3vk)
+*    [How to use the Java Message Service (JMS) API with Service Bus & AMQP 1.0](http://aka.ms/ll1fm3)
+*    [Service Bus AMQP 1.0 Developer's Guide](http://msdn.microsoft.com/en-us/library/windowsazure/jj841071.aspx)
+*    [OASIS Advanced Message Queuing Protocol (AMQP) Version 1.0 specification](http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)
 
 [0]: ./media/service-bus-amqp-overview/Example1.png
-
 

@@ -1,16 +1,15 @@
 
-   * 資格情報を入力して Windows Azure アカウントにサインインします。
+   * Sign in to the Azure account by entering your credentials.
 
-     これはすばやく簡単に実行できる方法ですが、この方法を使用した場合、**[サーバー エクスプローラー]** ウィンドウで Windows Azure SQL データベースやモバイル サービスを確認することができません。
+     This method is quicker and easier, but if you use this method you won't be able to see Azure SQL Database or Mobile Services in the **Server Explorer** window.
 
-     **サーバー エクスプローラー**で、**[Windows Azure への接続]** をクリックします。または、**Windows Azure** ノードを右クリックし、コンテキスト メニューの **[Windows Azure への接続]** をクリックします。
+     In **Server Explorer**, click the **Connect to Azure** button. An alternative is to right-click the **Azure** node, and then click **Connect to Azure** in the context menu.
 
-   * アカウントへのアクセスを可能にする管理証明書をインストールします。
+   * Install a management certificate that enables access to your account.
 
-     **サーバー エクスプローラー**で、**Windows Azure** ノードを右クリックし、コンテキスト メニューの **[サブスクリプションの管理]** をクリックします。**[Windows Azure サブスクリプションの管理]** ダイアログ ボックスで、**[証明書]** タブをクリックし、**[インポート]** をクリックします。操作手順に従い、Windows Azure アカウント用のサブスクリプション ファイル (*.publishsettings* ファイル) をダウンロードしてインポートします。
+     In **Server Explorer**, right-click the **Azure** node, and then click **Manage Subscriptions** in the context menu. In the **Manage Azure Subscriptions** dialog box, click the **Certificates** tab, and then click **Import**. Follow the directions to download and then import a subscription file (also called a *.publishsettings* file) for your Azure account.
 
-     <div class="dev-callout"><strong>セキュリティ上の注意: </strong>
-     <p>サブスクリプション ファイルをソース コード ディレクトリの外にあるフォルダー (Downloads フォルダーなど) にダウンロードし、インポートが完了したらそのファイルを削除します。これは、悪意のあるユーザーがサブスクリプション ファイルへのアクセス許可を取得すると、Windows Azure サービスを編集、作成、削除できるためです。</p></div>
+     <div class="dev-callout"><strong>Security Note:</strong>
+     <p>Download the subscription file to a folder outside your source code directories (for example, in the Downloads folder), and then delete it once the import has completed. A malicious user who gains access to the subscription file can edit, create, and delete your Azure services.</p></div>
 
-	詳細については、「[アカウント、サブスクリプション、管理ロールの管理](http://go.microsoft.com/fwlink/?LinkId=324796)」を参照してください。
-
+	For more information, see [How to Connect to Azure from Visual Studio](http://go.microsoft.com/fwlink/?LinkId=324796).

@@ -1,7 +1,5 @@
 
 > [WACOM.NOTE]
-> このチュートリアルを完了するには、Windows Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、[Windows Azure の無料評価版サイト](http://www.windowsazure.com/ja-jp/pricing/free-trial)を参照してください。
-
-
+> To complete this tutorial, you need an Azure account. You can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](http://www.windowsazure.com/en-us/pricing/free-trial).
 
 

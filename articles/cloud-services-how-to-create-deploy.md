@@ -1,163 +1,161 @@
-<properties linkid="manage-services-how-to-create-and-deploy-a-cloud-service" urlDisplayName="作成して展開する方法" pageTitle="クラウド サービスを作成して展開する方法 - Windows Azure" metaKeywords="Azure クラウド サービスの作成, クラウド サービスの削除" description="Windows Azure の簡易作成の方法によりクラウド サービスを作成して展開する方法について説明します。" metaCanonical="" services="cloud-services" documentationCenter="" title="クラウド サービスを作成して展開する方法" authors=""  solutions="" writer="ryanwi" manager="" editor=""  />
+<properties linkid="manage-services-how-to-create-and-deploy-a-cloud-service" urlDisplayName="How to create and deploy" pageTitle="How to create and deploy a cloud service - Azure" metaKeywords="Azure creating cloud service, deleting cloud service" description="Learn how to create and deploy a cloud service using the Quick Create method in Azure." metaCanonical="" services="cloud-services" documentationCenter="" title="How to Create and Deploy a Cloud Service" authors="ryanwi" solutions="" manager="" editor="" />
 
 
 
 
 
-#クラウド サービスを作成して展開する方法
+#How to Create and Deploy a Cloud Service
 
 [WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
 
-Windows Azure の管理ポータルには、クラウド サービスを作成して展開する方法が 2 つ用意されています (**[簡易作成]** と **[カスタム作成]**)。
+The Azure Management Portal provides two ways for you to create and deploy a cloud service: **Quick Create** and **Custom Create**. 
 
-このトピックでは、簡易作成の方法を使って新しいクラウド サービスを作成し、その後、**[アップロード]** を使用して Windows Azure にクラウド サービス パッケージをアップロードして展開する方法について説明します。この方法を使うと、Windows Azure の管理ポータルに、必要な事項をすべて完了するのに便利なリンクが操作の進行につれて表示されます。クラウド サービスの作成時に展開する準備が整っている場合は、**[カスタム作成]** を使用して作成と展開を同時に実行できます。
+This topic explains how to use the Quick Create method to create a new cloud service and then use **Upload** to upload and deploy a cloud service package in Azure. When you use this method, the Azure Management Portal makes available convenient links for completing all requirements as you go. If you're ready to deploy your cloud service when you create it, you can do both at the same time using **Custom Create**. 
 
-**注:**   Windows Team Foundation Service (TFS) からクラウド サービスを発行する予定の場合は、[簡易作成] を使用した後、**[クイック スタート]** またはダッシュボードから TFS 発行を設定する必要があります。詳細については、[Team Foundation Service Preview を使用した Windows Azure への継続的な配信に関するページ][TFSTutorialForCloudService]を参照するか、**[クイック スタート]** ページのヘルプを参照してください。
+**Note**   If you plan to publish your cloud service from Windows Team Foundation Services (TFS), use Quick Create, and then set up TFS publishing from **Quick Start** or the dashboard. For more information, see [Continuous Delivery to Azure by Using Team Foundation Service Preview][TFSTutorialForCloudService], or see help for the **Quick Start** page.
 
-##目次##
+##Table of Contents##
 
-* [概念](#concepts)
-* [アプリケーションの準備](#prepare)
-* [開始する前に](#begin)
-* [方法: 簡易作成によるクラウド サービスの作成](#quick)
-* [方法: クラウド サービスの証明書のアップロード](#uploadcertificate)
-* [方法: クラウド サービスの展開](#deploy)
-
-
-<h2><a id="concepts"></a>概念</h2>
-Windows Azure のクラウド サービスとしてアプリケーションを展開するには、3 つのコンポーネントが必要です。
-
->- **サービス定義ファイル**   クラウド サービス定義ファイル (.csdef) は、ロールの数も含めて、サービス モデルを定義します。
-
->- **サービス構成ファイル**   クラウド サービス構成ファイル (.cscfg) は、ロール インスタンスの数も含めて、クラウド サービスおよび個々のロールの構成設定を指定します。
-
->- **サービス パッケージ**   サービス パッケージ (.cspkg) は、アプリケーション コードとサービス定義ファイルを含みます。
-
-<h2><a id="prepare"></a>アプリケーションの準備</h2>
-クラウド サービスを展開する前に、アプリケーション コードとクラウド サービス構成ファイル (.cscfg) からクラウド サービス パッケージ (.cspkg) を作成する必要があります。各クラウド サービス パッケージは、アプリケーション ファイルと構成を含みます。サービス構成ファイルは構成設定を指定します。
-
-Windows Azure SDK には、こういった必須の展開ファイルを準備するためのツールが用意されています。SDK は、[Windows Azure のダウンロード](http://www.windowsazure.com/en-us/develop/downloads/) ページからアプリケーション コードの開発に使用する言語でインストールできます。
-
-クラウド サービスに慣れていない場合は、[Windows Azure Code Samples](http://code.msdn.microsoft.com/windowsazure/) からサンプルのクラウド サービス パッケージ (.cspkg) とクラウド サービス構成ファイル (.cscfg) をダウンロードして利用することができます。
-
-サービス パッケージをエクスポートする前に、以下の 3 つのクラウド サービス機能について特別な構成が必要です。
-
-- データ暗号化のために Secure Sockets Layer (SSL) を使用するクラウド サービスを展開する場合は、アプリケーションを SSL 用に構成します。詳細については、「[HTTPS エンドポイントでの SSL 証明書の構成](http://msdn.microsoft.com/en-us/library/windowsazure/ff795779.aspx)」を参照してください。
-
-- ロール インスタンスに対するリモート デスクトップ接続を構成する場合は、ロールをリモート デスクトップ用に構成します。リモート アクセス用のサービス定義ファイルを準備する方法の詳細については、「[Overview of Setting Up a Remote Desktop Connection for a Role (ロールのリモート デスクトップ接続をセットアップする手順の概要)](http://msdn.microsoft.com/en-us/library/windowsazure/gg433010.aspx)」を参照してください。
-
-- クラウド サービスの詳細監視を構成する場合は、クラウド サービスの Windows Azure 診断を有効にします。*最小監視* (既定の監視レベル) では、ロール インスタンス (仮想マシン) のホスト オペレーティング システムから収集したパフォーマンス カウンターが使用されます。"詳細監視*は、ロール インスタンス内のパフォーマンス データに基づいて追加のメトリックを収集して、アプリケーション処理時に発生する問題を詳しく分析できます。Windows Azure 診断を有効にする方法については、「[Enabling Diagnostics in Windows Azure (Windows Azure における診断の有効化)](http://www.windowsazure.com/en-us/develop/net/common-tasks/diagnostics/)」を参照してください。
+* [Concepts](#concepts)
+* [Prepare your app](#prepare)
+* [Before you begin](#begin)
+* [How to: Create a cloud service using Quick Create](#quick)
+* [How to: Upload a certificate for a cloud service](#uploadcertificate)
+* [How to: Deploy a cloud service](#deploy)
 
 
-<h2><a id="begin"></a>開始する前に</h2>
+<h2><a id="concepts"></a>Concepts</h2>
+Three components are required in order to deploy an application as a cloud service in Azure:
 
-- Windows Azure SDK をまだインストールしていない場合は、**[Azure SDK のインストール]** をクリックして [Windows Azure のダウンロード ページ](http://www.windowsazure.com/en-us/develop/downloads/)を開き、アプリケーション コードの開発に使用する言語用の SDK をダウンロードします (これは後でも実行する機会があります)。
+>- **service definition file**   The cloud service definition file (.csdef) defines the service model, including the number of roles.
 
-- 証明書を必要とするロール インスタンスがある場合は、証明書を作成します。クラウド サービスには、秘密キーのある .pfx ファイルが必要です。証明書は、クラウド サービスを作成して展開するときに、Windows Azure にアップロードできます。証明書の作成方法の詳細については、「[HTTPS エンドポイントでの SSL 証明書の構成](http://msdn.microsoft.com/en-us/library/windowsazure/ff795779.aspx)」を参照してください。
+>- **service configuration file**   The cloud service configuration file (.cscfg) provides configuration settings for the cloud service and individual roles, including the number of role instances.
 
-- クラウド サービスをアフィニティ グループに展開する予定である場合は、アフィニティ グループを作成します。アフィニティ グループを使用すると、自分のクラウド サービスおよびその他の Windows Azure サービスをリージョンの同じ場所に展開することができます。アフィニティ グループは、管理ポータルの **[ネットワーク]** 領域の **[アフィニティ グループ]** ページで作成できます。詳細については、**[アフィニティ グループ]** ページのヘルプを参照してください。
+>- **service package**   The service package (.cspkg) contains the application code and the service definition file.
+
+<h2><a id="prepare"></a>Prepare your app</h2>
+Before you can deploy a cloud service, you must create the cloud service package (.cspkg) from your application code and a cloud service configuration file (.cscfg). Each cloud service package contains application files and configurations. The service configuration file provides the configuration settings.
+
+The Azure SDK provides tools for preparing these required deployment files. You can install the SDK from the [Azure Downloads](http://www.windowsazure.com/en-us/develop/downloads/) page, in the language in which you prefer to develop your application code.
+
+If you're new to cloud services, you can download a sample cloud service package (.cspkg) and service configuration file (.cscfg) to work with from the [Azure Code Samples](http://code.msdn.microsoft.com/windowsazure/). 
+
+Three cloud service features require special configurations before you export a service package:
+
+- If you want to deploy a cloud service that uses Secure Sockets Layer (SSL) for data encryption, configure your application for SSL. For more information, see [How to Configure an SSL Certificate on an HTTPS Endpoint](http://msdn.microsoft.com/en-us/library/windowsazure/ff795779.aspx).
+
+- If you want to configure Remote Desktop connections to role instances, configure the roles for Remote Desktop. For more information about preparing the service definition file for remote access, see [Overview of Setting Up a Remote Desktop Connection for a Role](http://msdn.microsoft.com/en-us/library/windowsazure/gg433010.aspx).
+
+- If you want to configure verbose monitoring for your cloud service, enable Azure Diagnostics for the cloud service. *Minimal monitoring* (the default monitoring level) uses performance counters gathered from the host operating systems for role instances (virtual machines). "Verbose monitoring* gathers additional metrics based on performance data within the role instances to enable closer analysis of issues that occur during application processing. To find out how to enable Azure Diagnostics, see [Enabling Diagnostics in Azure](http://www.windowsazure.com/en-us/develop/net/common-tasks/diagnostics/).
 
 
-<h2><a id="quick"></a>方法: 簡易作成によるクラウド サービスの作成</h2>
+<h2><a id="begin"></a>Before you begin</h2>
 
-1. [管理ポータル](http://manage.windowsazure.com/)で、**[新規]**、**[クラウド サービス]**、**[簡易作成]** の順にクリックします。
+- If you haven't installed the Azure SDK, click **Install Azure SDK** to open the [Azure Downloads page](http://www.windowsazure.com/en-us/develop/downloads/), and then download the SDK for the language in which you prefer to develop your code. (You'll have an opportunity to do this later.)
+
+- If any role instances require a certificate, create the certificates. Cloud services require a .pfx file with a private key. You can upload the certificates to Azure as you create and deploy the cloud service. For information about creating certificates, see [How to Configure an SSL Certificate on an HTTPS Endpoint](http://msdn.microsoft.com/en-us/library/windowsazure/ff795779.aspx).
+
+- If you plan to deploy the cloud service to an affinity group, create the affinity group. You can use an affinity group to deploy your cloud service and other Azure services to the same location in a region. You can create the affinity group in the **Networks** area of the Management Portal, on the **Affinity Groups** page. For more information, see help for the **Affinity Groups** page.
+
+
+<h2><a id="quick"></a>How to: Create a cloud service using Quick Create</h2>
+
+1. In the [Management Portal](http://manage.windowsazure.com/), click **New**, click **Cloud Service**, and then click **Quick Create**.
 
 	![CloudServices_QuickCreate](./media/cloud-services-how-to-create-deploy/CloudServices_QuickCreate.png)
 
-2. **[URL]** ボックスに、運用展開のクラウド サービスにアクセスするパブリック URL で使用するサブドメイン名を入力します。運用展開の URL 形式は、http://*myURL*.cloudapp.net です。
+2. In **URL**, enter a subdomain name to use in the public URL for accessing your cloud service in production deployments. The URL format for production deployments is: http://*myURL*.cloudapp.net.
 
-3. **[リージョン/アフィニティ グループ]** で、クラウド サービスを展開するリージョンまたはアフィニティ グループを選択します。リージョン内の他の Windows Azure のサービスと同じ場所にクラウド サービスを展開する場合は、アフィニティ グループを選択します。
+3. In **Region/Affinity Group**, select the geographic region or affinity group to deploy the cloud service to. Select an affinity group if you want to deploy your cloud service to the same location as other Azure services within a region.
 
 	> [WACOM.NOTE]
-	> アフィニティ グループを作成するには、管理ポータルの **[ネットワーク]** 領域を開き、**[アフィニティ グループ]** をクリックして、**[新しいアフィニティ グループの作成]** または **[作成]** をクリックします。以前の Windows Azure の管理ポータルで作成したアフィニティ グループを使用できます。また、Windows Azure サービス管理 API を使用してアフィニティ グループを作成し管理することもできます。詳細については、「[アフィニティ グループに対する操作](http://msdn.microsoft.com/en-us/library/windowsazure/ee460798.aspx)」を参照してください。
+	> To create an affinity group, open the **Networks** area of the Management Portal, click **Affinity Groups**, and then click either **Create a new affinity group** or **Create**. You can use affinity groups that you created in the earlier Azure Management Portal. And you can create and manage affinity groups using the Azure Service Management API. For more information, see [Operations on Affinity Groups](http://msdn.microsoft.com/en-us/library/windowsazure/ee460798.aspx).
 
-4. **[クラウド サービスを作成する]** をクリックします。
+4. Click **Create Cloud Service**.
 
-	処理の状態はウィンドウの下部にあるメッセージ領域で監視できます。
+	You can monitor the status of the process in the message area at the bottom of the window.
 
-	**[クラウド サービス]** 領域が開き、新しいクラウド サービスが表示されます。状態が [作成済み] に変わると、クラウド サービスの作成が正常に完了しています。
+	The **Cloud Services** area opens, with the new cloud service displayed. When the status changes to Created, cloud service creation has completed successfully.
 
 	![CloudServices_CloudServicesPage](./media/cloud-services-how-to-create-deploy/CloudServices_CloudServicesPage.png)
 
-	Secure Sockets Layer (SSL) によるデータ暗号化のために証明書を必要とするロールがクラウド サービスにあり、証明書がまだ Windows Azure にアップロードされていない場合は、クラウド サービスを展開する前に証明書をアップロードする必要があります。証明書をアップロードすると、ロール インスタンスで実行されているどの Windows アプリケーションも証明書にアクセスできるようになります。
+	If any roles in the cloud service require a certificate for Secure Sockets Layer (SSL) data encryption, and the certificate has not been uploaded to Azure, you must upload the certificate before you deploy the cloud service. After you upload a certificate, any Windows applications that are running in the role instances can access the certificate.
 
 
-<h2><a id="uploadcertificate"></a>方法: クラウド サービスの証明書のアップロード</h2>
+<h2><a id="uploadcertificate"></a>How to: Upload a certificate for a cloud service</h2>
 
-1. [管理ポータル](http://manage.windowsazure.com/)で、**[クラウド サービス]** をクリックします。目的のクラウド サービスの名前をクリックして、ダッシュボードを開きます。
+1. In the [Management Portal](http://manage.windowsazure.com/), click **Cloud Services**. Then click the name of the cloud service to open the dashboard.
 
 	![CloudServices_EmptyDashboard](./media/cloud-services-how-to-create-deploy/CloudServices_EmptyDashboard.png)
 
 
-2. **[証明書]** をクリックします。下図のような **[証明書]** ページが開きます。
+2. Click **Certificates** to open the **Certificates** page, shown below.
 
 	![CloudServices_CertificatesPage](./media/cloud-services-how-to-create-deploy/CloudServices_CertificatesPage.png)
 
-3. **[新しい証明書の追加]** または **[アップロード]** をクリックします。
- **[証明書の追加]** が開きます。
+3. Click either **Add new certificate** or **Upload**.
+ **Add a Certificate** opens.
 
 	![CloudServices_AddaCertificate](./media/cloud-services-how-to-create-deploy/CloudServices_AddaCertificate.png)
 
-4. **[証明書ファイル]** で、**[参照]** を使って、使用する証明書 (.pfx ファイル) を選択します。
+4. In **Certificate file**, use **Browse** to select the certificate (.pfx file) to use.
 
-5. **[パスワード]** ボックスに、証明書の秘密キーを入力します。
+5. In **Password**, enter the private key for the certificate.
 
-6. [OK] (チェックマーク) をクリックします。
+6. Click OK (checkmark).
 
-	アップロードの進捗状況は下図のメッセージ領域で監視できます。アップロードが完了すると、証明書がテーブルに追加されます。メッセージ領域で、下向き矢印をクリックしてメッセージを閉じるか、[X] をクリックしてメッセージを削除します。
+	You can watch the progress of the upload in the message area, shown below. When the upload completes, the certificate is added to the table. In the message area, click the down arrow to close the message, or click X to remove the message.
 
 	![CloudServices_CertificateProgress](./media/cloud-services-how-to-create-deploy/CloudServices_CertificateProgress.png)
 
-	クラウド サービスの展開は、ダッシュボードまたは **[クイック スタート]** から実行できます。
+	You can deploy your cloud service from the dashboard or from **Quick Start**.
 
-<h2><a id="deploy"></a>方法: クラウド サービスの展開</h2>
+<h2><a id="deploy"></a>How to: Deploy a cloud service</h2>
 
-1. [管理ポータル](http://manage.windowsazure.com/)で、**[クラウド サービス]** をクリックします。目的のクラウド サービスの名前をクリックして、ダッシュボードを開きます。
+1. In the [Management Portal](http://manage.windowsazure.com/), click **Cloud Services**. Then click the name of the cloud service to open the dashboard.
 
-2. **[クイック スタート]** (**[ダッシュボード]** の左側にあるアイコン) をクリックして、下図のような **[クイック スタート]** ページを開きます (クラウド サービスは、ダッシュボードの **[アップロード]** を使用して展開することもできます)。
+2. Click **Quick Start** (the icon to the left of **Dashboard**) to open the **Quick Start** page, shown below. (You can also deploy your cloud service by using **Upload** on the dashboard.)
 
 	![CloudServices_QuickStartPage](./media/cloud-services-how-to-create-deploy/CloudServices_QuickStartPage.png)
 
-3. Windows Azure SDK をまだインストールしていない場合は、**[Azure SDK のインストール]** をクリックして [Windows Azure のダウンロード ページ](http://www.windowsazure.com/en-us/develop/downloads/)を開き、アプリケーション コードの開発に使用する言語用の SDK をダウンロードします。
+3. If you haven't installed the Azure SDK, click **Install Azure SD**K to open the [Azure Downloads page](http://www.windowsazure.com/en-us/develop/downloads/), and then download the SDK for the language in which you prefer to develop your code.
 
-	ダウンロード ページでは、Node.js や Java、PHP などの言語で Web アプリケーションを開発するためのクライアント ライブラリやソース コードをインストールして、拡張性の高い Windows Azure クラウド サービスとして展開することもできます。
+	On the downloads page, you can also install client libraries and source code for developing web apps in Node.js, Java, PHP, and other languages, which you can deploy as scalable Azure cloud services.
 
 	> [WACOM.NOTE]
-	>以前に作成したクラウド サービス (旧称は*ホステッド サービス*) の場合、仮想マシン (ロール インスタンス) のゲスト オペレーティング システムが、インストールする Windows Azure SDK バージョンと互換性があることを確認する必要があります。詳細については、「[Windows Azure SDK .NET リリース ノート](http://msdn.microsoft.com/en-us/library/windowsazure/hh552718.aspx)」を参照してください。
+	> For cloud services created earlier (known earlier as *hosted services*), you'll need to make sure the guest operating systems on the virtual machines (role instances) are compatible with the Azure SDK version you install.  For more information, see the [Azure SDK release notes](http://msdn.microsoft.com/en-us/library/windowsazure/hh552718.aspx).
 
-4. **[新規運用環境の展開]** または **[新規ステージング環境の展開]** をクリックします。
+4. Click either **New Production Deployment** or **New Staging Deployment**. 
 
-	運用環境に展開する前に Windows Azure でクラウド サービスをテストする場合は、ステージング環境に展開することができます。ステージング環境の場合、URL ではクラウド サービスのグローバル一意識別子 (GUID) によってクラウド サービスが識別されます (*GUID*.cloudapp.net)。運用環境の場合、もっとわかりやすい割り当てた DNS プレフィックスが使用されます (たとえば、*myservice*.cloudapp.net)。ステージング環境のクラウド サービスを運用環境に昇格する準備ができたら、**[スワップ]** を使用してクライアントのリクエストをその展開にリダイレクトします。
+	If you'd like to test your cloud service in Azure before deploying it to production, you can deploy to staging. In the staging environment, the cloud service's globally unique identifier (GUID) identifies the cloud service in URLs (*GUID*.cloudapp.net). In the production environment, the friendlier DNS prefix that you assign is used (for example, *myservice*.cloudapp.net). When you're ready to promote your staged cloud service to production, use **Swap** to redirect client requests to that deployment.
 
-	展開環境を選択すると、**[パッケージのアップロード]** が開きます。
+	When you select a deployment environment, **Upload a Package** opens.
 
 	![CloudServices_UploadaPackage](./media/cloud-services-how-to-create-deploy/CloudServices_UploadaPackage.png)
  
-5. **[展開名]** ボックスに、新しい展開の名前を入力します (たとえば、MyCloudServicev1)。
+5. In **Deployment name**, enter a name for the new deployment - for example, MyCloudServicev1.
 
-6. **[パッケージ]** で、**[参照]** を使って、使用するサービス パッケージ ファイル (.cspkg) を選択します。
+6. In **Package**, use **Browse** to select the service package file (.cspkg) to use.
 
-7. **[構成]** で、**[参照]** を使って、使用するサービス構成ファイル (.cscfg) を選択します。
+7. In **Configuration**, use **Browse** to select the service configure file (.cscfg) to use.
 
-8. クラウド サービスにインスタンスが 1 つしかないロールがある場合は、**[1 つ以上のロールに単一のインスタンスが含まれている場合でも展開する]** チェック ボックスをオンにして、展開を有効にして続行します。
+8. If the cloud service will include any roles with only one instance, select the **Deploy even if one or more roles contain a single instance** check box to enable the deployment to proceed.
 
- Windows Azure でクラウド サービスの保守中およびサービス更新中に 99.95% のアクセスを保証できるのは、あらゆるロールに少なくとも 2 つのインスタンスがある場合だけです。必要な場合、クラウド サービスを展開した後に、**[スケール]** ページで、ロール インスタンスを追加できます。詳細については、「[サービス レベル アグリーメント](http://www.windowsazure.com/en-us/support/legal/sla/)」を参照してください。
+ Azure can only guarantee 99.95 percent access to the cloud service during maintenance and service updates if every role has at least two instances. If needed, you can add additional role instances on the **Scale** page after you deploy the cloud service. For more information, see [Service Level Agreements](http://www.windowsazure.com/en-us/support/legal/sla/).
 
-9. [OK] (チェックマーク) をクリックして、クラウド サービスの展開を開始します。
+9. Click OK (checkmark) to begin the cloud service deployment.
 
-	展開の状態は、メッセージ領域で監視できます。下向き矢印をクリックすると、メッセージが表示されなくなります。
+	You can monitor the status of the deployment in the message area. Click the down arrow to hide the message.
 
 	![CloudServices_UploadProgress](./media/cloud-services-how-to-create-deploy/CloudServices_UploadProgress.png)
 
-###展開が正常に完了したことを確認するには###
+###To verify that your deployment completed successfully###
 
-1. **[ダッシュボード]** をクリックします。
+1. Click **Dashboard**.
 
-2. **[概要]** で、サイト URL をクリックして、Web ブラウザーでクラウド サービスを開きます。
+2. Under **quick glance**, click the site URL to open your cloud service in a web browser.
 
 [TFSTutorialForCloudService]: http://go.microsoft.com/fwlink/?LinkID=251796&clcid=0x409
 
 	![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy/CloudServices_QuickGlance.png)
-
-
 

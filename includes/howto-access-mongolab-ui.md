@@ -1,22 +1,22 @@
-MongoLab データベースのプロビジョニング後いつでも、そのデータベースを管理するために MongoLab Web UI にアクセスできます。Windows Azure の管理ポータルをとおして、便利なシングル サインオン (SSO) アクセスを利用できます。
+At any time after provisioning a MongoLab database, you can access the MongoLab web UI for managing that database. We offer convenient single-sign-on (SSO) access through the Azure Management Portal.
 
-MongoLab UI を使用すると、ドキュメントの挿入とクエリ実行、データベース統計の取得、使用可能なデータベース コマンドの実行など、ほとんどのデータベース タスクを実行できます。MongoLab UI の詳細については、[サポート ページ](http://support.mongolab.com)と[ブログ](http://blog.mongolab.com)を参照してください。
+You can use the MongoLab UI to perform most database tasks, such as inserting and querying for documents, obtaining database statistics, and running useful database commands. To learn more about the MongoLab UI, visit our [support page](http://support.mongolab.com) and our [blog](http://blog.mongolab.com).
 
-MongoLab UI にアクセスするには、以下の手順を実行します。
+To access the MongoLab UI, do the following:
 
-1. **[アドオン]** を選択します。
+1. Select **Add-ons**.  
 ![AddonsButton][button-addons]
-1. アドオンの一覧で MongoLab サービスを見つけます。
+1. Locate your MongoLab service in your list of add-ons.  
 ![MongolabEntry][entry-mongolabaddon]
-1. アドオンの名前をクリックして、アドオン ページに移動します。
-1. **[管理]** をクリックします。
+1. Cick the name of your add-on to reach the add-on page.
+1. Click **Manage**.  
 ![ManageButton][button-manage]  
-新しいブラウザー タブが開き、MongoLab データベースのホーム ページが表示されます。![DbHome][screen-dblanding]
+A new browser tab opens, displaying the MongoLab database home page:  
+![DbHome][screen-dblanding]
 
-ここでは、特定のコレクションを選択し、個々のドキュメントにドリルダウンできます。完了したらログアウトします。
+From here you can select a specific collection and drill down to individual documents. Log out when you are finished.
 
 [entry-mongolabaddon]: ./media/howto-access-mongolab-ui/entry-mongolabaddon.png
 [button-manage]: ./media/howto-access-mongolab-ui/button-manage.png
 [button-addons]: ./media/howto-access-mongolab-ui/button-addons.png
 [screen-dblanding]: ./media/howto-access-mongolab-ui/screen-mongolab_dblanding.png
-

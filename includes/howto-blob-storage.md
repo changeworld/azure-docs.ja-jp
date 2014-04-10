@@ -1,41 +1,53 @@
-## <a name="what-is"> </a>BLOB ストレージとは
+## <a name="what-is"> </a>What is Blob Storage
 
-Windows Azure BLOB ストレージは、HTTP または HTTP を使用して世界中のどこからでもアクセスできる大量の構造化されていないデータを格納するためのサービスです。1 つの BLOB に数百 GB のデータを格納でき、また、ストレージ アカウントが 2012 年 6 月 8 日以降に作成されている場合、1 つのストレージ アカウントには最大 200 TB の BLOB を格納できます。ストレージ アカウントがそれよりも前の日付で作成されている場合は、最大 100 TB の BLOB を格納できます。ストレージ アカウントの容量の詳細については、「[Windows Azure Storage Scalability and Performance Targets (Windows Azure のストレージの拡張性とパフォーマンスのターゲット)](http://msdn.microsoft.com/ja-jp/library/dn249410.aspx)」を参照してください。
+Azure Blob storage is a service for storing large amounts of
+unstructured data that can be accessed from anywhere in the world via
+HTTP or HTTPS. A single blob can be hundreds of gigabytes in size, and a
+single storage account can contain up to 200TB of blobs if it was created on June 8th, 2012, or later; storage accounts created prior to that date can contain up to 100TB of blobs. See [Azure Storage Scalability and Performance Targets](http://msdn.microsoft.com/en-us/library/dn249410.aspx) for details about storage account capacity.
 
-BLOB ストレージの一般的な用途には、次のようなものがあります。
+Common uses of Blob storage include:
 
--   画像またはドキュメントをブラウザーに直接配信する
--   分散アクセス用にファイルを格納する
--   ビデオおよびオーディオをストリーミング配信する
--   セキュリティで保護されたバックアップおよび障害復旧を実行する
--   内部設置型サービスまたは Windows Azure ホステッド サービスで分析するデータを格納する
+-   Serving images or documents directly to a browser
+-   Storing files for distributed access
+-   Streaming video and audio
+-   Performing secure backup and disaster recovery
+-   Storing data for analysis by an on-premises or Azure-hosted
+    service
 
-BLOB ストレージを使用すると、データを一般に公開することも、内部アプリケーション ストレージ用にプライベートに公開することもできます。
+You can use Blob storage to expose data publicly to the world or
+privately for internal application storage.
 
-## <a name="concepts"> </a>概念
+## <a name="concepts"> </a>Concepts
 
-BLOB サービスには、次のコンポーネントが含まれます。
+The Blob service contains the following components:
 
-![BLOB1][Blob1]
+![Blob1][Blob1]
 
--   **ストレージ アカウント:** Windows Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。ストレージ アカウントの容量の詳細については、「[Windows Azure Storage Scalability and Performance Targets (Windows Azure のストレージの拡張性とパフォーマンスのターゲット)](http://msdn.microsoft.com/ja-jp/library/dn249410.aspx)」を参照してください。
+-   **Storage Account:** All access to Azure Storage is done
+    through a storage account. See [Azure Storage Scalability and Performance Targets](http://msdn.microsoft.com/en-us/library/dn249410.aspx) for details about storage account capacity.
 
--   **コンテナー:** コンテナーは、BLOB のセットをグループ化します。
-    すべての BLOB はコンテナーに格納されている必要があります。1 つのアカウントに格納できるコンテナーの数は無制限です。また、1 つのコンテナーに保存できる BLOB の数も無制限です。
+-   **Container:** A container provides a grouping of a set of blobs.
+    All blobs must be in a container. An account can contain an
+    unlimited number of containers. A container can store an unlimited
+    number of blobs.
 
--   **BLOB:** 任意の種類およびサイズのファイルです。Windows Azure のストレージ サービスに格納できる BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。
-    ほとんどのファイルはブロック BLOB です。1 つのブロック BLOB には、最大で 200 GB までのデータを格納できます。このチュートリアルでは、ブロック BLOB を使用します。もう 1 つの種類の BLOB であるページ BLOB には、最大 1 TB までのデータを格納できます。ファイルのバイト数の範囲が頻繁に変更される場合には、こちらの方が効率的です。BLOB の詳細については、「[ブロック BLOB およびページ BLOB について][]」を参照してください。
+-   **Blob:** A file of any type and size. There are two types of blobs
+    that can be stored in Azure Storage: block and page blobs.
+    Most files are block blobs. A single block blob can be up to 200GB
+    in size. This tutorial uses block blobs. Page blobs, another blob
+    type, can be up to 1TB in size, and are more efficient when ranges
+    of bytes in a file are modified frequently. For more information
+    about blobs, see [Understanding Block Blobs and Page Blobs][].
 
--   **URL 形式:** BLOB は、次の URL 形式を使用してアドレスを指定し、
-    アクセスできます。  
+-   **URL format:** Blobs are addressable using the following URL
+    format:   
     http://`<storage
     account>`.blob.core.windows.net/`<container>`/`<blob>`  
       
-    次の例の URL を使用すると、上の図のいずれかの BLOB をアドレス指定
-    できます。  
+    The following example URL could be used to address one of the blobs in the
+    diagram above:  
     `http://sally.blob.core.windows.net/movies/MOV1.AVI`
 
 
-  [ブロック BLOB およびページ BLOB について]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee691964.aspx
+  [Understanding Block Blobs and Page Blobs]: http://msdn.microsoft.com/en-us/library/windowsazure/ee691964.aspx
 [Blob1]: ./media/howto-blob-storage/blob1.jpg
-

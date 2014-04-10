@@ -1,19 +1,20 @@
-<h2><a name="setupdevenv"></a><span class="short-header">環境の設定</span>開発環境を設定する</h2>
+<h2><a name="setupdevenv"></a><span class="short-header">Set up environment</span>Set up the development environment</h2>
 
-最初に、Windows Azure SDK for .NET をインストールして、開発環境を設定します。
+To start, set up your development environment by installing the Azure SDK for .NET.
 
-1. SDK をインストールするには、次のリンクをクリックします。このチュートリアルには、Visual Studio 2012 が必要です。Visual Studio をまだインストールしていない場合は、SDK と共に Visual Studio Express for Web がインストールされます。<br/>
-- [Windows Azure SDK for Visual Studio 2012][]
+1. To install the SDK, click the link below. This tutorial requires Visual Studio 2012. If you don't have Visual Studio installed, Visual Studio Express for Web will be installed along with the SDK.
 
-	**注:** マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から 30 分以上) かかる場合があります。
+	- [Azure SDK for Visual Studio 2012][]
 
-2. インストール プログラムの実行または保存を求めるメッセージが表示されたら、**[実行]** をクリックします。<br/>
-3. Web Platform Installer のウィンドウで、**[インストール]** をクリックし、インストールの手順を進めます。<br/>
+	**Note:** Depending on how many of the SDK dependencies you already have on your machine, installing the SDK could take a long time, from several minutes to a half hour or more.
 
-	![Web プラットフォーム インストーラー - Windows Azure SDK for .NET][WebPIAzureSdk]<br/>
+2. When you are prompted to run or save the installation executable, click **Run**.
 
-インストールが完了すると、開発に必要なツールがすべて揃います。
+3. In the Web Platform Installer window, click **Install** and proceed with the installation.
 
-[Windows Azure SDK for Visual Studio 2012]: http://go.microsoft.com/fwlink/?LinkID=324323
+	![Web Platform Installer - Azure SDK for .NET][WebPIAzureSdk]
+
+When the installation is complete, you have everything necessary to start developing.
+
+[Azure SDK for Visual Studio 2012]: http://go.microsoft.com/fwlink/?LinkID=324323
 [WebPIAzureSdk]: ./media/install-sdk-2012-only/WebPI46-2012.png
-

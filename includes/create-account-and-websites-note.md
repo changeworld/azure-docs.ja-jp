@@ -1,4 +1,3 @@
 
 > [WACOM.NOTE]
-> このチュートリアルを完了するには、Windows Azure アカウントが必要です。<a href="/ja-jp/pricing/member-offers/msdn-benefits-details/" target="_blank">MSDN サブスクライバーの特典を有効にする</a>か、<a href="/ja-jp/pricing/free-trial/" target="_blank">無料評価版にサインアップ</a>してください。
-
+> To complete this tutorial, you need an Azure account. You can <a href="/en-us/pricing/member-offers/msdn-benefits-details/" target="_blank">activate your MSDN subscriber benefits</a> or <a href="/en-us/pricing/free-trial/" target="_blank">sign up for a free trial</a>.

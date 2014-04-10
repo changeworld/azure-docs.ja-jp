@@ -1,72 +1,73 @@
-ギャラリーには、Microsoft、サード パーティ企業、およびオープン ソース ソフトウェア活動によって開発された多種多様な人気の Web アプリケーションが用意されています。ギャラリーから作成した Web アプリケーションは、Windows Azure の管理ポータルへの接続に使用するブラウザー以外に、他のソフトウェアをインストールする必要はありません。
+The gallery makes available a wide range of popular web applications developed by Microsoft, third party companies, and open source software initiatives. Web applications created from the gallery do not require installation of any software other than the browser used to connect to the Azure Management Portal. 
 
-このチュートリアルでは、次のことについて説明します。
+In this tutorial, you'll learn:
 
-- ギャラリーから新しいサイトを作成する方法。
+- How to create a new site through the gallery.
 
-- Web Azure のポータルを使用してサイトを展開する方法。
+- How to deploy the site through the Azure Portal.
  
-既定のテンプレートを使用する WordPress ブログを構築します。次の図に、完成したアプリケーションを示します。
+You'll build a WordPress blog that uses a default template. The following illustration shows the completed application:
 
 
-![WordPress ブログ][13]
+![Wordpress blog][13]
 
-<div class="dev-callout"><strong>注</strong>
-<p>このチュートリアルを完了するには、Windows Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/develop/php/tutorials/create-a-windows-azure-account/" target="_blank">Windows Azure アカウントの作成に関するページ</a>を参照してください。</p>
+<div class="dev-callout"><strong>Note</strong>
+<p>To complete this tutorial, you need an Azure account. You can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/develop/php/tutorials/create-a-windows-azure-account/" target="_blank">Create an Azure account</a>.</p>
 </div>
 <br />
 
-## ポータルでの Web サイトの作成
+## Create a web site in the portal
 
-1. [Windows Azure の管理ポータル](http://manage.windowsazure.com)にログインします。
+1. Login to the [Azure Management Portal](http://manage.windowsazure.com).
 
-2. ダッシュボードの左下にある **[新規]** アイコンをクリックします。
+2. Click the **New** icon on the bottom left of the dashboard.
 	
-	![新規作成][5]
+	![Create New][5]
 
-3. **[Web サイト]** アイコンをクリックし、**[ギャラリーから]** をクリックします。
+3. Click the **Web Site** icon, and click **From Gallery**.
 	
-	![ギャラリーから作成][6]
+	![Create From Gallery][6]
 
-4. 一覧から [WordPress] アイコンを見つけてクリックし、**[次へ]** をクリックします。
+4. Locate and click the WordPress icon in list, and then click **Next**.
 	
-	![WordPress リスト][7]
+	![WordPress from list][7]
 
-5. **[アプリケーションの構成]** ページで、すべてのフィールドの値を入力または選択します。
+5. On the **Configure Your App** page, enter or select values for all fields:
 	
-- 好みの URL 名を入力します	
-- **[データベース]** フィールドの **[新しい MySQL データベースを作成します]** は選択された状態にしておきます。
-- 最も近いリージョンを選択します
+- Enter a URL name of your choice	
+- Leave **Create a new MySQL database** selected in the **Database** field
+- Select the region closest to you
 
-	![アプリケーションの構成][8]
+	![configure your app][8]
 
-6. そして、**[次へ]** をクリックします。
+6. Then click **Next**.
 
-7. **[新しいデータベースを作成する]** ページでは、新しい MySQL データベースの名前を指定するか、既定の名前を使用できます。ホスティング場所としては最も近いリージョンを選択します。画面の下部にあるボックスを選択し、ホストされている MySQL データベースの ClearDB の使用条件に同意します。次に、チェックをクリックして、サイトの作成を完了します。
+7. On the **Create New Database** page, you can specify a name for your new MySQL database or use the default name. Select the region closest to you as the hosting location. Select the box at the bottom of the screen to agree to ClearDB's usage terms for your hosted MySQL database. Then click the check to complete the site creation. 
 	
-	![データベースの作成][9]
+	![create database][9]
 
-**[完了]** をクリックすると、Windows Azure によって構築操作と展開操作が開始されます。Web サイトの構築と展開が実行されている間、操作の状態が [Web サイト] ページの下部に表示されます。すべての操作が完了すると、サイトの展開に成功したという状態メッセージが表示されます。
+After you click **Complete** Azure will initiate build and deploy operations. While the web site is being built and deployed the status of these operations is displayed at the bottom of the Web Sites page. After all operations are performed,  A final status message when the site has been successfully deployed.
 
-## WordPress サイトの起動と管理
+## Launch and manage your WordPress site
 
-1. **[Web サイト]** ページで新しいサイトをクリックして、サイトのダッシュボードを開きます。
+1. Click on your new site from the **Web Sites** page to open the dashboard for the site.
 
-	![ダッシュボードの起動][10]
+	![launch dashboard][10]
 
-2. **[ダッシュボード]** 管理ページで、下にスクロールして **[サイトの URL]** の下の左側にあるリンクをクリックし、サイトのウェルカム ページを開きます。
+2. On the **Dashboard** management page, scroll down and click the link on the left under **Site Url** to open the site's welcome page.
 
-	![サイトの URL][11]
+	![site URL][11] 
 
-3. WordPress に必要となる適切な構成情報を入力し、**[WordPress のインストール]** をクリックして構成を完了し、Web サイトのログイン ページを開きます。
+3. Enter appropriate configuration information required by WordPress and click **Install WordPress** to finalize configuration and open the web site's login page.
 
-	![WordPress へのログイン][12]
+	![login to WordPress][12]
 
-4. **[ようこそ]** ページで指定したユーザー名とパスワードを入力して、新しい WordPress Web サイトにログインします。
+4. Login to the new WordPress web site by entering the username and password that you specified on the **Welcome** page.
 
-5. 新しい WordPress サイトは次のサイトのようになります。
+5. You'll have a new WordPress site that looks similar to the site below.  
 
-	![WordPress サイト][13]
+	![your WordPress site][13]
+
 
 
 
@@ -81,7 +82,6 @@
 [11]: ./media/website-from-gallery/wordpressgallery-07.png
 [12]: ./media/website-from-gallery/wordpressgallery-08.png
 [13]: ./media/website-from-gallery/wordpressgallery-09.png
-
 
 
 

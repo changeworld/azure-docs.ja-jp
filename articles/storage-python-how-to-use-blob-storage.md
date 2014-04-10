@@ -1,115 +1,115 @@
-<properties linkid="develop-python-blob-service" UrlDisplayName="BLOB サービス" pageTitle="BLOB ストレージの使用方法 (Python) - Windows Azure の機能ガイド" services=”Storage” MetaKeywords="Azure BLOB サービス Python, Azure BLOB Python" description="Windows Azure BLOB サービスを使用して、BLOB のアップロード、一覧表示、ダウンロード、および削除を実行する方法を説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Python から BLOB サービスを使用する方法"/>
+<properties linkid="develop-python-blob-service" urlDisplayName="Blob Service" pageTitle="How to use blob storage (Python) | Microsoft Azure" metaKeywords="Azure blob service Python, Azure blobs Python" description="Learn how to use the Azure Blob service to upload, list, download, and delete blobs." metaCanonical="" disqusComments="1" umbracoNaviHide="0" services="storage" documentationCenter="Python" title="How to use the Blob service from Python" authors="" videoId="" scriptId="" />
 
-# Python から BLOB ストレージ サービスを使用する方法
-このガイドでは、Windows Azure BLOB ストレージ サービスを使用して
-一般的なシナリオを実行する方法について説明します。サンプルは Python API を使用して
-記述されています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、
-**ダウンロード**、および**削除**です。BLOB の詳細については、
-「[次のステップ][]」のセクションを参照してください。
+# How to Use the Blob Storage Service from Python
+This guide will show you how to perform common scenarios using the
+Azure Blob storage service. The samples are written using the
+Python API. The scenarios covered include **uploading**, **listing**,
+**downloading**, and **deleting** blobs. For more information on blobs,
+see the [Next Steps][] section.
 
-## 目次
+## Table of Contents
 
-[BLOB ストレージとは][]
- [概念][]
- [Windows Azure ストレージ アカウントの作成][]
- [コンテナーを作成する方法][]
- [コンテナーに BLOB をアップロードする方法][]
- [コンテナー内の BLOB を一覧表示する方法][]
- [BLOB をダウンロードする方法][]
- [BLOB を削除する方法][]
- [サイズが大きい BLOB のダウンロードとアップロードの方法][]
- [次のステップ][]
+[What is Blob Storage?][]   
+ [Concepts][]   
+ [Create an Azure Storage Account][]   
+ [How To: Create a Container][]   
+ [How To: Upload a Blob into a Container][]   
+ [How To: List the Blobs in a Container][]   
+ [How To: Download Blobs][]   
+ [How To: Delete a Blob][]   
+ [How To: Upload and Download Large Blobs][]   
+ [Next Steps][]
 
 [WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
-## <a name="create-account"> </a>Windows Azure ストレージ アカウントの作成
+## <a name="create-account"> </a>Create an Azure Storage Account
 
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## <a name="create-container"> </a>コンテナーを作成する方法
+## <a name="create-container"> </a>How to: Create a Container
 
-**注:** Python またはクライアント ライブラリをインストールする場合は、「[Python Installation Guide (Python インストール ガイド)](../python-how-to-install/)」を参照してください。
+**Note:** If you need to install Python or the Client Libraries, please see the [Python Installation Guide](../python-how-to-install/).
 
 
-**BlobService** オブジェクトを使用して、コンテナーおよび BLOB を操作できます。次の
-コードでは、**BlobService** オブジェクトを作成します。プログラムを使用して
-Windows Azure のストレージにアクセスするすべての Python ファイルの先頭付近に、次のコードを追加します。
+The **BlobService** object lets you work with containers and blobs. The
+following code creates a **BlobService** object. Add the following near
+the top of any Python file in which you wish to programmatically access Azure Storage:
 
 	from azure.storage import *
 
-次のコードは、ストレージ アカウントの名前とアカウント キーを使用して、**BlobService** オブジェクトを作成します。"myaccount" と "mykey" の部分は、実際のアカウントとキーに置き換えます。
+The following code creates a **BlobService** object using the storage account name and account key.  Replace 'myaccount' and 'mykey' with the real account and key.
 
 	blob_service = BlobService(account_name='myaccount', account_key='mykey')
 
-ストレージの BLOB はすべてコンテナー内に格納されます。コンテナーが存在しない場合は、**BlobService** オブジェクトを使用してコンテナーを作成できます。
+All storage blobs reside in a container. You can use a **BlobService** object to create the container if it doesn't exist:
 
 	blob_service.create_container('mycontainer')
 
-既定では、新しいコンテナーはプライベートなので、このコンテナーから BLOB をダウンロードするにはストレージ アクセス キーを指定する必要があります (前と同じ方法で)。コンテナー内のファイルをすべてのユーザーが利用できるようにする場合は、次のコードを使用して、コンテナーを作成しパブリック アクセス レベルを渡します。
+By default, the new container is private, so you must specify your storage access key (as you did above) to download blobs from this container. If you want to make the files within the container available to everyone, you can create the container and pass the public access level using the following code:
 
 	blob_service.create_container('mycontainer', x_ms_blob_public_access='container') 
 
-または、次のコードを使用してコンテナーを作成した後で、コンテナーを変更することもできます。
+Alternatively, you can modify a container after you have created it using the following code:
 
 	blob_service.set_container_acl('mycontainer', x_ms_blob_public_access='container')
 
-この変更後、パブリック コンテナー内の BLOB は、インターネットに
-接続しているすべてのユーザーが表示できますが、変更または削除できるのは、このコンテナーの作成と変更を行ったユーザーだけです。
+After this change, anyone on the Internet can see blobs in a public
+container, but only you can modify or delete them.
 
-## <a name="upload-blob"> </a>コンテナーに BLOB をアップロードする方法
+## <a name="upload-blob"> </a>How to: Upload a Blob into a Container
 
-BLOB にファイルをアップロードするには、**put_blob**
-メソッドを使用して BLOB を作成し、ファイル ストリームを BLOB の内容として使用します。
-最初に **task1.txt** というファイル (任意の内容で問題ありません)
-を作成し、そのファイルを Python ファイルと同じディレクトリに保存します。
+To upload a file to a blob, use the **put_blob** method
+to create the blob, using a file stream as the contents of the blob.
+First, create a file called **task1.txt** (arbitrary content is fine)
+and store it in the same directory as your Python file.
 
 	myblob = open(r'task1.txt', 'r').read()
 	blob_service.put_blob('mycontainer', 'myblob', myblob, x_ms_blob_type='BlockBlob')
 
-## <a name="list-blob"> </a>コンテナー内の BLOB を一覧表示する方法
+## <a name="list-blob"> </a>How to: List the Blobs in a Container
 
-コンテナー内の BLOB を一覧表示するには、**list_blobs** メソッドを
-**for** ループで使用して、コンテナー内の各 BLOB の名前を表示します。次の
-コードでは、コンテナー内の各 BLOB の**名前**と **URL** をコンソールに
-出力しています。
+To list the blobs in a container, use the **list_blobs** method with a
+**for** loop to display the name of each blob in the container. The
+following code outputs the **name** and **url** of each blob in a container to the
+console.
 
 	blobs = blob_service.list_blobs('mycontainer')
 	for blob in blobs:
 		print(blob.name)
 		print(blob.url)
 
-## <a name="download-blobs"> </a>BLOB をダウンロードする方法
+## <a name="download-blobs"> </a>How to: Download Blobs
 
-BLOB をダウンロードするには、**get_blob** メソッドを使用して、
-ローカル ファイルに保存できるストリーム オブジェクトに BLOB の内容
-を転送します。
+To download blobs, use the **get_blob** method to transfer the
+blob contents to a stream object that you can then persist to a local
+file.
 
 	blob = blob_service.get_blob('mycontainer', 'myblob')
 	with open(r'out-task1.txt', 'w') as f:
 		f.write(blob)
 
-## <a name="delete-blobs"> </a>BLOB を削除する方法
+## <a name="delete-blobs"> </a>How to: Delete a Blob
 
-最後に、BLOB を削除するには、**delete_blob** を呼び出します。
+Finally, to delete a blob, call **delete_blob**.
 
 	blob_service.delete_blob('mycontainer', 'myblob') 
 
-## <a name="large-blobs"> </a>サイズが大きい BLOB のダウンロードとアップロードの方法
+## <a name="large-blobs"> </a>How to: Upload and Download Large Blobs
 
-ブロック BLOB の最大サイズは 200 GB です。64 MB 以下の BLOB の場合、前に説明したように、**put\_blob** や **get\_blob** を 1 回呼び出して、BLOB のアップロードやダウンロードを実行できます。64 MB を超える BLOB の場合、4 MB 以下のブロックで BLOB のアップロードやダウンロードを実行する必要があります。
+The maximum size for a block blob is 200 GB.  For blobs smaller than 64 MB, the blob can be uploaded or downloaded using a single call to **put\_blob** or **get\_blob**, as shown previously.  For blobs larger than 64 MB, the blob needs to be uploaded or downloaded in blocks of 4 MB or smaller.
 
-次のコードは、任意のサイズのブロック BLOB のアップロードやダウンロードを行う関数の例を示しています。
+The following code shows examples of functions to upload or download block blobs of any size.
 
-import base64
+    import base64
 
-chunk_size = 4 * 1024 * 1024
+    chunk_size = 4 * 1024 * 1024
 
-def upload(blob_service, container_name, blob_name, file_path):
+    def upload(blob_service, container_name, blob_name, file_path):
         blob_service.create_container(container_name, None, None, False)
         blob_service.put_blob(container_name, blob_name, '', 'BlockBlob')
 
-block_ids = []
-index = 0
+        block_ids = []
+        index = 0
         with open(file_path, 'rb') as f:
             while True:
                 data = f.read(chunk_size)
@@ -122,13 +122,13 @@ index = 0
                 else:
                     break
 
-blob_service.put_block_list(container_name, blob_name, block_ids)
+        blob_service.put_block_list(container_name, blob_name, block_ids)
 
-def download(blob_service, container_name, blob_name, file_path):
+    def download(blob_service, container_name, blob_name, file_path):
         props = blob_service.get_blob_properties(container_name, blob_name)
         blob_size = int(props['content-length'])
 
-index = 0
+        index = 0
         with open(file_path, 'wb') as f:
             while index < blob_size:
                 chunk_range = 'bytes={}-{}'.format(index, index + chunk_size - 1)
@@ -142,25 +142,25 @@ index = 0
                 else:
                     break
 
-200 GB を超える BLOB が必要な場合は、ブロック BLOB ではなくページ BLOB を使用できます。ページ BLOB の最大サイズは 1 TB で、ページは 512 バイトのページ境界に合わせて整理されます。ページ BLOB を作成するには **put\_blob** を、ページ BLOB に書き出すには **put\_page** を、ページ BLOB から読み取るには **get\_blob** を使用します。
+If you need blobs larger than 200 GB, you can use a page blob instead of a block blob.  The maximum size of a page blob is 1 TB, with pages that align to 512-byte page boundaries.  Use **put\_blob** to create a page blob, **put\_page** to write to it, and **get\_blob** to read from it.
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"> </a>Next Steps
 
-これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを
-実行する方法については、次のリンク先を参照してください。
+Now that you’ve learned the basics of blob storage, follow these links
+to learn how to do more complex storage tasks.
 
--   MSDN リファレンス: [Windows Azure のデータの格納とアクセス][]
--   [Windows Azure ストレージ チーム ブログ][] (このページは英語の場合があります)
+-   See the MSDN Reference: [Storing and Accessing Data in Azure][]
+-   Visit the [Azure Storage Team Blog][]
 
-  [次のステップ]: #next-steps
-[BLOB ストレージとは]: #what-is
-[概念]: #concepts
-[Windows Azure ストレージ アカウントの作成]: #create-account
-[コンテナーを作成する方法]: #create-container
-[コンテナーに BLOB をアップロードする方法]: #upload-blob
-[コンテナー内の BLOB を一覧表示する方法]: #list-blob
-[BLOB をダウンロードする方法]: #download-blobs
-[BLOB を削除する方法]: #delete-blobs
-[サイズが大きい BLOB のダウンロードとアップロードの方法]: #large-blobs
-[Windows Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
-  [Windows Azure ストレージ チーム ブログ (このページは英語の場合があります)]: http://blogs.msdn.com/b/windowsazurestorage/
+  [Next Steps]: #next-steps
+  [What is Blob Storage?]: #what-is
+  [Concepts]: #concepts
+  [Create an Azure Storage Account]: #create-account
+  [How To: Create a Container]: #create-container
+  [How To: Upload a Blob into a Container]: #upload-blob
+  [How To: List the Blobs in a Container]: #list-blob
+  [How To: Download Blobs]: #download-blobs
+  [How To: Delete a Blob]: #delete-blobs
+  [How To: Upload and Download Large Blobs]: #large-blobs
+  [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+  [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/

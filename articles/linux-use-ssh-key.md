@@ -1,111 +1,127 @@
-<properties linkid="article" urlDisplayName="SSH の使用" pageTitle="SSH を使用した Windows Azure の Linux 仮想マシンへの接続" metaKeywords="Azure SSH キー Linux, Linux vm SSH" description="Windows Azure 上の Linux 仮想マシンで SSH キーを生成して使用する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Windows Azure 上の Linux における SSH の使用方法" authors=""  solutions="" writer="" manager="" editor=""  />
+<properties linkid="article" urlDisplayName="Use SSH" pageTitle="Use SSH to connect to Linux virtual machines in Azure" metaKeywords="Azure SSH keys Linux, Linux vm SSH" description="Learn how to generate and use SSH keys with a Linux virtual machine on Azure." metaCanonical="" services="virtual-machines" documentationCenter="" title="How to Use SSH with Linux on Azure" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-#Windows Azure 上の Linux における SSH の使用方法
+#How to Use SSH with Linux on Azure
 
-このトピックでは、Windows Azure と互換性のある SSH キーを生成する手順について説明します。
+This topic describes the steps to generate SSH keys compatible with Azure.
 
-Windows Azure の管理ポータルの現在のバージョンでは、X509 証明書にカプセル化された SSH 公開キーだけを受け付けます。以下に示す、Windows Azure で SSH キーを生成および使用する手順に従ってください。
+The current version of the Azure Management Portal only accepts SSH public keys that are encapsulated in an X509 certificate. Follow the steps below to generate and use SSH keys with Azure.
 
-## Linux 上で OpenSSL を入手する##
-Linux マシンで openssl を入手するには、使っている Linux ディストリビューションでネイティブのパッケージ管理ソリューションを使用します。
+## Generate Windows Azure Compatible Keys in Linux ##
 
-*  Redhat/CentOS: `yum install openssl`
-*  Debian: `apt-get install openssl`
-*  Ubuntu: `apt-get install openssl`
+1. Install the `openssl` utility if needed:
 
-## Linux で Windows Azure 互換のキーを生成する##
+	**CentOS / Oracle Linux**
 
-1. 'openssl' を使用して、2048 ビットの RSA 公開キーと秘密キーで X509 証明書を作成します。'openssl' からの質問に答えてください (回答しなくてもかまいません)。これらのフィールドの内容はプラットフォームでは使用されません。
+		`sudo yum install openssl`
+
+	**Ubuntu**
+
+		`sudo apt-get install openssl`
+
+	**SLES & openSUSE**
+
+		`sudo zypper install openssl`
+
+
+2. Use `openssl` to generate an X509 certificate with a 2048-bit RSA keypair. Please answer the few questions that the `openssl` prompts for (or you may leave them blank). The content in these fields is not used by the platform:
 
 			openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout myPrivateKey.key -out myCert.pem
-2.	公開キーのアクセス許可を変更して安全を確保します。
+
+3.	Change the permissions on the private key to secure it.
 
 			chmod 600 myPrivateKey.key
-3.	Linux 仮想マシンの作成中に 'myCert.pem' をアップロードします。プロビジョニング中に、仮想マシン内の指定されたユーザーの 'authorized_keys' ファイルにこの証明書の公開キーが自動的にインストールされます。
+4.	Upload the `myCert.pem` while creating the Linux virtual machine. The provisioning process will automatically install the public key in this certificate into the `authorized_keys` file for the specified user in the virtual machine.
 
-4.	API を直接使用し、管理ポータルを使用しない場合は、次のコマンドを使用して 'myCert.pem' を 'myCert.cer' (DER エンコードされた X509 証明書) に変換します。
+5.	If you are going to use the API directly, and not use the Management Portal, convert the `myCert.pem` to `myCert.cer` (DER encoded X509 certificate) using the following command:
 
 			openssl  x509 -outform der -in myCert.pem -out myCert.cer
 
-## Linux から Windows Azure の仮想マシンに接続する##
-どの Linux 仮想マシンも、特定のポートで SSH がプロビジョニングされており、それは標準ポートと異なる可能性があります。そのため、以下の手順を実行します。
 
-1.	管理ポータルで、Linux 仮想マシンに接続するときに使用するポートを確認します。
-2.	'ssh' を使用して Linux 仮想マシンに接続します。最初にログインすると、ホストの公開キーの指紋に同意するように求められます。
+## Generate a Key from an Existing OpenSSH Compatible Key
+The previous example describes how to create a new key for use with Windows Azure. In some cases users may already have an existing OpenSSH compatible public & private key pair and wish to use the same keys with Windows Azure.
+
+OpenSSH private keys are directly readable by the `openssl` utility. The following command will take an existing SSH private key (id_rsa in the example below) and create the `.pem` public key that is needed for Windows Azure:
+
+	# openssl req -x509 -key ~/.ssh/id_rsa -nodes -days 365 -newkey rsa:2048 -out myCert.pem
+
+The **myCert.pem** file is the public key that may then be used to provision a Linux virtual machine on Windows Azure. During provisioning the `.pem` file will be translated into an `openssh` compatible public key and placed in `~/.ssh/authorized_keys`.
+
+
+## Connect to an Windows Azure Virtual Machine from Linux
+Every Linux virtual machine is provisioned with SSH in a particular port that may be different from the standard port used so you 
+
+1.	Find the port you will use to connect to the Linux virtual machine from the Management Portal.
+2.	Connect to the Linux virtual machine using `ssh`. You will be prompted to accept the fingerprint of the host's public key the first time you log in.
 
 		ssh -i  myPrivateKey.key -p <port> username@servicename.cloudapp.net
-3.	(省略可能) openssh クライアントが '-i' オプションを使用しないで自動的に 'myPrivateKey.key' を選択できるように、'myPrivateKey.key' を '~/.ssh/id_rsa' にコピーできます。
+3.	(Optional) You may copy `myPrivateKey.key` to `~/.ssh/id_rsa` so that your openssh client can automatically pick this up without the use of the `-i` option.
 
-## Windows 上で OpenSSL を入手する##
-### msysgit を使用する###
+## Get OpenSSL on Windows ##
+### Use msysgit ###
 
-1.	次の場所から msysgit をダウンロードしてインストールします: [http://msysgit.github.com/](http://msysgit.github.com/)
-2.	インストールしたディレクトリ (例: c:\msysgit\msys.exe) から 'msys' を実行します。	「cd bin」と入力して、'bin' ディレクトリに移動します。
+1.	Download and install msysgit from the following location: [http://msysgit.github.com/](http://msysgit.github.com/)
+2.	Run `msys` from the installed directory (example: c:\msysgit\msys.exe)
+3.	Change to the `bin` directory by typing in `cd bin`
 
-###Windows 用の GitHub を使用する###
+###Use GitHub for Windows###
 
-1.	次の場所から Windows 用の GitHub をダウンロードしてインストールします: [http://windows.github.com/](http://windows.github.com/)
-2.	[スタート] メニューをクリックし、[すべてのプログラム]、[GitHub] の順にクリックして、Git シェルを実行します。
+1.	Download and install GitHub for Windows from the following location: [http://windows.github.com/](http://windows.github.com/)
+2.	Run Git Shell from the Start Menu > All Programs > GitHub, Inc
 
-###cygwin を使用する###
+###Use cygwin###
 
-1.	次の場所から Cygwin をダウンロードしてインストールします: [http://cygwin.com/](http://cygwin.com/)
-2.	OpenSSL パッケージとその依存パッケージがすべてインストールされていることを確認します。
-3.	'cygwin' を実行します。
+1.	Download and install Cygwin from the following location: [http://cygwin.com/](http://cygwin.com/)
+2.	Ensure that the OpenSSL package and all of its dependencies are installed.
+3.	Run `cygwin`
 
-## Windows 上で秘密キーを作成する##
+## Create a Private Key on Windows ##
 
-1.	上記の手順のどれかを実行して、'openssl.exe' を実行できるようにします。
-2.	次のコマンドを入力します。
+1.	Follow one of the set of instructions above to be able to run `openssl.exe`
+2.	Type in the following command:
 
 		openssl.exe req -x509 -nodes -days 365 -newkey rsa:2048 -keyout myPrivateKey.key -out myCert.pem
 
-3.	画面は次のようになります。
+3.	Your screen should look like the following:
 
 	![linuxwelcomegit](./media/linux-use-ssh-key/linuxwelcomegit.png)
 
-4.	画面に表示されるメッセージに従って、設定します。
-5.	ファイルが 2 つ作成されます ('myPrivateKey.key' および 'myCert.pem')。
-6.	API を直接使用し、管理ポータルを使用しない場合は、次のコマンドを使用して 'myCert.pem' を 'myCert.cer' (DER エンコードされた X509 証明書) に変換します。
+4.	Answer the questions that are asked.
+5.	It would have created two files: `myPrivateKey.key` and `myCert.pem`.
+6.	If you are going to use the API directly, and not use the Management Portal, convert the `myCert.pem` to `myCert.cer` (DER encoded X509 certificate) using the following command:
 
 		openssl.exe  x509 -outform der -in myCert.pem -out myCert.cer
 
-## Putty 用の PPK を作成する##
+## Create a PPK for Putty ##
 
-1.	次の場所から puttygen をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
-2.	'puttygen.exe' を実行します。
-3.	[File] の [Load a Private Key] をクリックします。
-4.	'myPrivateKey.key' という名前の秘密キー ファイルを見つけます。ファイル フィルターを **[All Files (\*.*)]** に変更する必要があります。
-5.	**[開く]** をクリックします。次のような画面が表示されます。
+1.	Download and install puttygen from the following location: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+2.	Run `puttygen.exe`
+3.	Click the menu: File > Load a Private Key
+4.	Find your private key, which we named `myPrivateKey.key`. You will need to change the file filter to show **All Files (\*.*)**
+5.	Click **Open**. You will receive a prompt which should look like this:
 
 	![linuxgoodforeignkey](./media/linux-use-ssh-key/linuxgoodforeignkey.png)
 
-6.	**[OK]** をクリックします。
-7.	下図でハイライト表示されている **[Save Private Key]** をクリックします。
+6.	Click **OK**.
+7.	Click **Save Private Key**, which is highlighted in the screenshot below:
 
-	![linuxputtyprivatekey](./media/linux-use-ssh-key/linuxputtyprivatekey.png)
+	![linuxputtyprivatekey](./media/linux-use-ssh-key/linuxputtygenprivatekey.png)
 
-8.	ファイルを PPK として保存します。
+8.	Save the file as a PPK.
 
-## Putty を使用して Linux 仮想マシンに接続する##
+## Use Putty to Connect to a Linux Machine ##
 
-1.	次の場所から putty をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
-2.	putty.exe を実行します。
-3.	ホスト名として、管理ポータルの IP を入力します。
+1.	Download and install putty from the following location: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+2.	Run putty.exe
+3.	Fill in the host name using the IP from the Management Portal.
 
 	![linuxputtyconfig](./media/linux-use-ssh-key/linuxputtyconfig.png)
 
-4.	**[Open]** をクリックする前に、[Connection]、[SSH]、[Auth] タブの順にクリックして、自分のキーを選択します。入力するフィールドについては、下図を参照してください。
+4.	Before selecting **Open**, click the Connection > SSH > Auth tab to choose your key. See the screenshot below for the field to fill in.
 
 	![linuxputtyprivatekey](./media/linux-use-ssh-key/linuxputtyprivatekey.png)
 
-5.	**[Open]** をクリックして、仮想マシンに接続します。
-
-
-
-
-
+5.	Click **Open** to connect to your virtual machine.

@@ -1,44 +1,44 @@
 <properties writer="kathydav" editor="tysonn" manager="jeffreyg" /> 
 
-**注:** この記事では、仮想ネットワークに接続されていない仮想マシンを作成します。仮想マシンが仮想ネットワークを使用して、ホスト名を使用した直接接続またはクロスプレミス接続の設定ができるようにするには、代わりに **[ギャラリーから]** 作成する方法を使用し、仮想マシンの作成時に仮想ネットワークを指定する必要があります。仮想ネットワークの詳細については、「[仮想ネットワーク](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
+**Note**: This article creates a virtual machine that is not connected to a virtual network. If you want your virtual machine to use a virtual network so you can connect to your virtual machines directly by hostname or set up 
+cross-premises connections, use the **From Gallery** method instead and specify the virtual network when you create the virtual machine. For more information about virtual networks, see [Azure Virtual Network Overview](http://go.microsoft.com/fwlink/p/?LinkID=294063).
 
 
-仮想マシンを作成するには、次のステップに従います。
+Follow these steps to create a virtual machine:
 
-1. Windows Azure アカウントを使用して、[Windows Azure の管理ポータル](http://manage.windowsazure.com)にログインします。
+1. Login to the [Azure Management Portal](http://manage.windowsazure.com) using your Azure account.
 
-2. 管理ポータルで、Web ページの左下にある **[+ 新規]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
-	![新しい仮想マシンの作成][Image1]
+2. In the Management Portal, at the bottom left of the web page, click **+New**, click **Virtual Machine**, and then click **From Gallery**.
+	![Create a New Virtual Machine][Image1]
 
-3. Windows Server 2008 R2 SP1 仮想マシン イメージを選択し、ページの右下にある次へ進む矢印をクリックします。
+3. Select a Windows Server 2008 R2 SP1 virtual machine image, and then click the next arrow at the bottom right of the page.
 	
-4. **[仮想マシンの構成]** ページで、次の情報を指定します。
+4. On the **Virtual machine configuration** page, provide the following information:
 
-- **「testwinvm」など、**仮想マシン名を入力します。
-- **[新しいユーザー名]** ボックスに、「Administrator」と入力します。
-- **[新しいパスワード]** ボックスに、[強力なパスワード](http://msdn.microsoft.com/ja-jp/library/ms161962.aspx)を入力します。
-- **[パスワードの確認]** ボックスに、パスワードを再度入力します。
-- **[サイズ]** ドロップダウン リストで、適切なサイズを選択します。
+- Provide a **Virtual Machine Name**, such as "testwinvm".
+- In the **New User Name** box, type "Administrator".
+- In the **New Password** box, type a [strong password](http://msdn.microsoft.com/en-us/library/ms161962.aspx).
+- In the **Confirm Password** box, retype the password.
+- Select the appropriate **Size** from the drop down list.
 
-	矢印をクリックして次へ進みます。
+	Click the next arrow to continue.
 
 
-5. **[仮想マシン モード]** ページで、次の情報を指定します。
+5. On the **Virtual machine mode** page, provide the following information:
 
-- **[スタンドアロンの仮想マシン]** をクリックします。
-- **[DNS 名]** ボックスに、**testwinvm.cloudapp.net** の形式で有効なサブドメインを入力します。
-- **[リージョン/アフィニティ グループ/仮想ネットワーク]** ボックスで、この仮想イメージをホストするリージョンを選択します。
+- Select **Standalone Virtual Machine**.
+- In the **DNS Name** box, type a valid sub-domain in the format **testwinvm.cloudapp.net**
+- In the **Region/Affinity Group/Virtual Network** box, select a region where this virtual image will be hosted.
 
-   矢印をクリックして次へ進みます。
+   Click the next arrow to continue.
 
 	
-6. **[仮想マシン オプション]** ページの **[可用性セット]** ボックスの一覧で **[(なし)]** を選択します。チェック マークをクリックして続行します。
+6. On the **Virtual machine options** page, select **(none)** in the **Availability Set** box. Click the check mark to continue.
 	
 
-7. Windows Azure によって仮想マシンの準備が行われるまで待ちます。
+7. Wait while Azure prepares your virtual machine.
 
 
 [Image1]: ./media/create-and-configure-windows-server-2008-vm-in-portal/CreateWinVM.png
-
 
 

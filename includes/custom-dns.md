@@ -1,67 +1,67 @@
-# Windows Azure のクラウド サービスのカスタム ドメイン名の構成
+# Configuring a custom domain name for an Azure cloud service
 
-Windows Azure でアプリケーションを作成すると、cloudapp.net ドメイン上にサブドメインが提供されるため、ユーザーは http://&lt;*myapp*>.cloudapp.net のような URL を使用してアプリケーションにアクセスできるようになります。ただし、contoso.com のような独自のドメイン名を使用してアプリケーションを公開することもできます。
-
-> [WACOM.NOTE] 
-> このタスクの手順は、Windows Azure のクラウド サービスに適用されます。ストレージ アカウントについては、[Configuring a Custom Domain Name for a Windows Azure Storage Account (Windows Azure のストレージ アカウントのカスタム ドメイン名の構成)](../storage-custom-domain-name/) を参照してください。Web サイトについては、「[Configuring a Custom Domain Name for a Windows Azure Web Site (Windows Azure の Web サイトのカスタム ドメイン名の構成)](../web-sites-custom-domain-name/)」を参照してください。
-
-この記事の内容:
-
--   [CNAME レコードと A レコードについて](#access-app)
--   [カスタム ドメインの CNAME レコードの追加](#add-cname)
--   [カスタム ドメインの A レコードの追加](#add-aname)
-
-<h2><a name="access-app"></a>CNAME レコードと A レコードについて</h2>
-
-CNAME レコード (またはエイリアス レコード) および A レコードはどちらもドメイン名を特定のサーバー (この場合、またはサービス) に関連付けることができますが、機能は異なります。また、A レコードを Windows Azure のクラウド サービスで使用する場合は、どちらを使用するかを決定する前に具体的な考慮事項を検討する必要があります。
-
-###CNAME レコードまたはエイリアス レコード
-
-CNAME レコードは、**contoso.com** や **www.contoso.com** などの*特定の*ドメインを正規のドメイン名にマップします。この場合、正規のドメイン名は Windows Azure ホステッド アプリケーションの **&lt;myapp>.cloudapp.net** ドメイン名です。作成すると、CNAME は **&lt;myapp>.cloudapp.net** のエイリアスを作成します。CNAME エントリは **&lt;myapp>.cloudapp.net** サービスの IP アドレスを自動的に解決するため、クラウド サービスの IP アドレスが変更されても、特別な対応を行う必要はありません。
+When you create an application in Azure, Azure provides a subdomain on the cloudapp.net domain so your users can access your application on a URL like http://&lt;*myapp*>.cloudapp.net. However, you can also expose your application on your own domain name, such as contoso.com.
 
 > [WACOM.NOTE] 
-> いくつかのドメイン レジストラーでは、CNAME レコードを使用する場合にマップすることが許可されるのは、ルート名 (contoso.com など) ではなく、サブドメイン (www.contoso.com など) のみです。CNAME レコードの詳細については、レジストラーが提供するドキュメント、「<a href="http://en.wikipedia.org/wiki/CNAME_record">the Wikipedia entry on CNAME record (CNAME レコードに関するウィキペディア項目)</a>」、または「<a href="http://tools.ietf.org/html/rfc1035">IETF Domain Names - Implementation and Specification (IETF ドメイン名 - 実装と仕様書)</a>」を参照してください。
+> The procedures in this task apply to Azure Cloud Services. For storage accounts, see [Configuring a Custom Domain Name for an Azure Storage Account](../storage-custom-domain-name/). For Web Sites, see [Configuring a Custom Domain Name for an Azure Web Site](../web-sites-custom-domain-name/).
 
-###A レコード
+In this article:
 
-A レコードは、ドメイン (**contoso.com**、**www.contoso.com** など) *またはワイルドカード ドメイン* (**\*.contoso.com** など) を IP アドレスにマップします。Windows Azure のクラウド サービスの場合は、サービスの仮想 IP です。CNAME レコードと比較したときの A レコードの主な利点は、ワイルドカードを使用する 1 つのエントリを使用することができて (***.contoso.com** など)、複数のサブドメイン (**mail.contoso.com**、**login.contoso.com**、**www.contso.com** など) の要求を処理できることです。
+-   [Understanding CNAME and A records](#access-app)
+-   [Add a CNAME record for your custom domain](#add-cname)
+-   [Add an A record for your custom domain](#add-aname)
+
+<h2><a name="access-app"></a>Understand CNAME and A records</h2>
+
+CNAME (or alias records) and A records both allow you to associate a domain name with a specific server (or service in this case,) however they work differently. There are also some specific considerations when using A records with Azure Cloud services that you should consider before deciding which to use.
+
+###CNAME or Alias record
+
+A CNAME record maps a *specific* domain, such as **contoso.com** or **www.contoso.com**, to a canonical domain name. In this case, the canonical domain name is the **&lt;myapp>.cloudapp.net** domain name of your Azure hosted application. Once created, the CNAME creates an alias for the **&lt;myapp>.cloudapp.net**. The CNAME entry will resolve to the IP address of your **&lt;myapp>.cloudapp.net** service automatically, so if the IP address of the cloud service changes, you do not have to take any action.
+
+> [WACOM.NOTE] 
+> Some domain registrars only allow you to map subdomains when using a CNAME record, such as www.contoso.com, and not root names, such as contoso.com. For more information on CNAME records, see the documentation provided by your registrar, <a href="http://en.wikipedia.org/wiki/CNAME_record">the Wikipedia entry on CNAME record</a>, or the <a href="http://tools.ietf.org/html/rfc1035">IETF Domain Names - Implementation and Specification</a> document.
+
+###A record
+
+An A record maps a domain, such as **contoso.com** or **www.contoso.com**, *or a wildcard domain* such as **\*.contoso.com**, to an IP address. In the case of an Azure Cloud Service, the virtual IP of the service. So the main benefit of an A record over a CNAME record is that you can have one entry that uses a wildcard, such as ***.contoso.com**, which would handle requests for multiple sub-domains such as **mail.contoso.com**, **login.contoso.com**, or **www.contso.com**.
 
 > [WACOM.NOTE]
-> A レコードは静的 IP にマップされるため、変更をクラウド サービスの IP アドレスに自動的に解決することはできません。クラウド サービスによって使用される IP アドレスは、空のスロット (運用またはステージング) に初めて展開したときに割り当てられます。スロットの展開を削除すると、IP アドレスは Windows Azure によって解放され、そのスロットへの今後の展開は新しい IP アドレスに与えられます。
+> Since an A record is mapped to a static IP address, it cannot automatically resolve changes to the IP address of your Cloud Service. The IP address used by your Cloud Service is allocated the first time you deploy to an empty slot (either production or staging.) If you delete the deployment for the slot, the IP address is released by Azure and any future deployments to the slot may be given a new IP address.
 > 
-> 利便性を高めるために、ステージングと運用の展開間のスワッピングまたは既存の展開のインプレース アップグレードを実行する場合、所定の展開スロット (運用またはステージング) の IP アドレスが保持されます。これらの操作の実行の詳細については、「[How to manage cloud services (クラウド サービスの管理方法)](../cloud-services-how-to-manage/)」を参照してください。
+> Conveniently, the IP address of a given deployment slot (production or staging) is persisted when swapping between staging and production deployments or performing an in-place upgrade of an existing deployment. For more information on performing these actions, see [How to manage cloud services](../cloud-services-how-to-manage/).
 
 
-<h2><a name="add-cname"></a>カスタム ドメインの CNAME レコードの追加</h2>
+<h2><a name="add-cname"></a>Add a CNAME record for your custom domain</h2>
 
-CNAME レコードを作成するには、レジストラーから提供されるツールを使用して、カスタム ドメイン用の DNS テーブルに新しいエントリを追加する必要があります。それぞれのレジストラーでは CNAME レコードを指定するための同様の (多少異なる) 手段が用意されていますが、その概念は同じです。
+To create a CNAME record, you must add a new entry in the DNS table for your custom domain by using the tools provided by your registrar. Each registrar has a similar but slightly different method of specifying a CNAME record, but the concepts are the same.
 
-1. これらの手段のいずれかを使用して、クラウド サービスに割り当てられた **.cloudapp.net** ドメイン名を見つけます。
+1. Use one of these methods to find the **.cloudapp.net** domain name assigned to your cloud service.
 
-  * [Windows Azure の管理ポータル]にログインし、クラウド サービスを選択して、**[ダッシュボード]** を選択し、**[概要]** セクションの **[サイトの URL]** エントリを探します。
+  * Login to the [Azure Management Portal], select your cloud service, select **Dashboard**, and then find the **Site URL** entry in the **quick glance** section.
 
-  		  ![サイトの URL を表示する [概要] セクション][csurl]
+  		  ![quick glance section showing the site URL][csurl]
 
-  * [Windows Azure Powershell](../install-configure-powershell/) をインストールして構成し、次のコマンドを使用します。
+  * Install and configure [Azure Powershell](../install-configure-powershell/), and then use the following command:
 
     Get-AzureDeployment -ServiceName yourservicename | Select Url
 
-  CNAME レコードを作成する場合に必要になるため、いずれかの方法で返された URL で使用されているドメイン名を保存します。
+  Save the domain name used in the URL returned by either method, as you will need it when creating a CNAME record.
 
-1. DNS レジストラーの Web サイトにログオンし、DNS の管理ページに移動します。**[ドメイン名]**、**[DNS]**、**[ネーム サーバー管理]** というラベルが付いたサイトのリンクまたは領域を探します。
+1.  Log on to your DNS registrar's web site and go to the page for managing DNS. Look for links or areas of the site labeled as **Domain Name**, **DNS**, or **Name Server Management**.
 
-2. ここで CNAME レコードを選択または入力する場所を探します。一覧からレコードの種類を選択するか、詳細設定ページに進まなければならない場合があります。**CNAME**、**エイリアス**、または **サブドメイン**という単語を探します。
+2.  Now find where you can select or enter CNAME's. You may have to select the record type from a drop down, or go to an advanced settings page. You should look for the words **CNAME**, **Alias**, or **Subdomains**.
 
-3. また、**www.customdomain.com** のエイリアスを作成する場合は、CNAME のドメインまたはサブドメイン エイリアス (**www** など) を指定する必要があります。ルート ドメインのエイリアスを作成する場合は、レジストラーの DNS ツールに '**@**' シンボルとして示される場合があります。
+3.  You must also provide the domain or subdomain alias for the CNAME, such as **www** if you want to create an alias for **www.customdomain.com**. If you want to create an alias for the root domain, it may be listed as the '**@**' symbol in your registrar's DNS tools.
 
-4. 次に、正規のホスト名 (ここではアプリケーションの **cloudapp.net** ドメイン) を指定します。
+4. Then, you must provide a canonical host name, which is your application's **cloudapp.net** domain in this case.
 
-たとえば、次の CNAME レコードでは、すべてのトラフィックが **www.contoso.com** から、展開されたアプリケーションのカスタム DNS 名である **contoso.cloudapp.net** に転送されます。
+For example, the following CNAME record forwards all traffic from **www.contoso.com** to **contoso.cloudapp.net**, the custom domain name of your deployed application:
 
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 <tr>
-<td><strong>エイリアス/ホスト名/サブドメイン</strong></td>
-<td><strong>正規のドメイン</strong></td>
+<td><strong>Alias/Host name/Subdomain</strong></td>
+<td><strong>Canonical domain</strong></td>
 </tr>
 <tr>
 <td>www</td>
@@ -69,46 +69,48 @@ CNAME レコードを作成するには、レジストラーから提供され�
 </tr>
 </table>
 
-**www.contoso.com** の訪問者が本当のホスト (contoso.cloudapp.net) を識別することはないため、転送プロセスはエンド ユーザーから見えなくなります。
+A visitor of **www.contoso.com** will never see the true host
+(contoso.cloudapp.net), so the forwarding process is invisible to the
+end user.
 
 > [WACOM.NOTE]
-> 上の例は、<strong>www</strong> サブドメインのトラフィックのみに該当します。CNAME レコードにはワイルドカードを使用できないため、各ドメインおよびサブドメインに 1 つの CNAME を作成する必要があります。サブドメイン (*.contoso.com など) からトラフィックを cloudapp.net アドレスに転送するには、DNS 設定の <strong>URL リダイレクト</strong> エントリまたは <strong>URL 転送</strong>エントリを構成するか、または A レコードを作成します。
+> The example above only applies to traffic at the <strong>www</strong> subdomain. Since you cannot use wildcards with CNAME records, you must create one CNAME for each domain/subdomain. If you want to direct  traffic from subdomains, such as *.contoso.com, to your cloudapp.net address, you can configure a <strong>URL Redirect</strong> or <strong>URL Forward</strong> entry in your DNS settings, or create an A record.
 
 
-<h2><a name="add-aname"></a>カスタム ドメインの A レコードの追加</h2>
+<h2><a name="add-aname"></a>Add an A record for your custom domain</h2>
 
-A レコードを作成するには、まず、クラウド サービスの仮想 IP アドレスを見つける必要があります。次に、レジストラーから提供されるツールを使用して、カスタム ドメイン用の DNS テーブルに新しいエントリを追加します。それぞれのレジストラーでは A レコードを指定するための同様の (多少異なる) 手段が用意されていますが、その概念は同じです。
+To create an A record, you must first find the virtual IP address of your cloud service. Then add a new entry in the DNS table for your custom domain by using the tools provided by your registrar. Each registrar has a similar but slightly different method of specifying an A record, but the concepts are the same.
 
-1. 次の手段のいずれかを使用して、クラウド サービスの IP アドレスを取得します。
+1. Use one of the following methods to get the IP address of your cloud service.
 
-  * [Windows Azure の管理ポータル]にログインし、クラウド サービスを選択し、**[ダッシュボード]** を選択して、**[概要]** セクションの **[パブリック仮想 IP (VIP) アドレス]** エントリを見つけます。
+  * login to the [Azure Management Portal], select your cloud service, select **Dashboard**, and then find the **Public Virtual IP (VIP) address** entry in the **quick glance** section.
 
-   		 ![VIP を表示する [概要] セクション][vip]
+   		 ![quick glance section showing the VIP][vip]
 
-  * [Windows Azure Powershell](../install-configure-powershell/) をインストールして構成し、次のコマンドを使用します。
+  * Install and configure [Azure Powershell](../install-configure-powershell/), and then use the following command:
 
       get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip
 
-    複数のエンドポイントがクラウド サービスに関連付けられている場合は、IP アドレスを含んだ複数の行を受け取りますが、すべての行に同じアドレスが表示されます。
+    If you have multiple endpoints associated with your cloud service, you will receive multiple lines containing the IP address, but all should display the same address.
 
-  A レコードを作成する場合に必要になるため、IP アドレスを保存します。
+  Save the IP address, as you will need it when creating an A record.
 
-1. DNS レジストラーの Web サイトにログオンし、DNS の管理ページに移動します。**[ドメイン名]**、**[DNS]**、**[ネーム サーバー管理]** というラベルが付いたサイトのリンクまたは領域を探します。
+1.  Log on to your DNS registrar's web site and go to the page for managing DNS. Look for links or areas of the site labeled as **Domain Name**, **DNS**, or **Name Server Management**.
 
-2. ここで A レコードを選択または入力する場所を探します。一覧からレコードの種類を選択するか、詳細設定ページに進まなければならない場合があります。
+2.  Now find where you can select or enter A record's. You may have to select the record type from a drop down, or go to an advanced settings page.
 
-3. この A レコードを使用するドメインまたはサブドメインを選択または入力します。たとえば、**www.customdomain.com** のエイリアスを作成する場合は **www** を選択します。すべてのサブドメインのワイルドカード エントリを作成する場合は、'__*__' を入力します。これは、**mail.customdomain.com**、**login.customdomain.com**、**www.customdomain.com** などすべてのサブドメインを対象とします。
+3. Select or enter the domain or subdomain that will use this A record. For example, select **www** if you want to create an alias for **www.customdomain.com**. If you want to create a wildcard entry for all subdomains, enter '__*__'. This will cover all sub-domains such as **mail.customdomain.com**, **login.customdomain.com**, and **www.customdomain.com**.
 
-  ルート ドメインに A レコードを作成する場合は、レジストラーの DNS ツールに '**@**' シンボルとして示される場合があります。
+  If you want to create an A record for the root domain, it may be listed as the '**@**' symbol in your registrar's DNS tools.
 
-4. 表示されたフィールドのクラウド サービスの IP アドレスを入力します。これによって、A レコードで使用されるドメイン エントリがクラウド サービスの展開の IP アドレスに関連付けられます。
+4. Enter the IP address of your cloud service in the provided field. This associates the domain entry used in the A record with the IP address of your cloud service deployment.
 
-たとえば、次の A レコードでは、すべてのトラフィックが **contoso.com** から、展開されたアプリケーションの IP アドレス名である **137.135.70.239** に転送されます。
+For example, the following A record forwards all traffic from **contoso.com** to **137.135.70.239**, the IP address of your deployed application:
 
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 <tr>
-<td><strong>ホスト名/サブドメイン</strong></td>
-<td><strong>IP アドレス</strong></td>
+<td><strong>Host name/Subdomain</strong></td>
+<td><strong>IP address</strong></td>
 </tr>
 <tr>
 <td>@</td>
@@ -116,21 +118,20 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 </tr>
 </table>
 
-この例では、ルート ドメインの A レコードを作成する方法を示します。すべてのサブドメインを対象とするワイルドカードを作成する場合は、サブドメインとして '__*__' を入力します。
+This example demonstrates creating an A record for the root domain. If you wish to create a wildcard entry to cover all subdomains, you would enter '__*__' as the subdomain.
 
-## 次のステップ
+## Next steps
 
--   [クラウド サービスの管理方法](../cloud-services-how-to-manage/)
--   [CDN コンテンツをカスタム ドメインにマッピングする方法][]
+-   [How to Manage Cloud Services](../cloud-services-how-to-manage/)
+-   [How to Map CDN Content to a Custom Domain][]
 
-  [アプリケーションをカスタム ドメイン上で公開する]: #access-app
-  [カスタム ドメインの CNAME レコードの追加]: #add-cname
-  [データをカスタム ドメイン上で公開する]: #access-data
-  [VIP スワップ]: http://msdn.microsoft.com/ja-jp/library/ee517253.aspx
-   [サブドメインをストレージ アカウントに関連付ける CNAME レコードを作成する]: #create-cname
-  [Windows Azure の管理ポータル]: https://manage.windowsazure.com
-  [カスタム ドメインの検証のダイアログ ボックス]: http://i.msdn.microsoft.com/dynimg/IC544437.jpg
-  [CDN コンテンツをカスタム ドメインにマッピングする方法]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg680307.aspx
+  [Expose Your Application on a Custom Domain]: #access-app
+  [Add a CNAME Record for Your Custom Domain]: #add-cname
+  [Expose Your Data on a Custom Domain]: #access-data
+  [VIP swaps]: http://msdn.microsoft.com/en-us/library/ee517253.aspx
+  [Create a CNAME record that associates the subdomain with the storage account]: #create-cname
+  [Azure Management Portal]: https://manage.windowsazure.com
+  [Validate Custom Domain dialog box]: http://i.msdn.microsoft.com/dynimg/IC544437.jpg
+  [How to Map CDN Content to a Custom Domain]: http://msdn.microsoft.com/en-us/library/windowsazure/gg680307.aspx
   [vip]: ./media/custom-dns/csvip.png
   [csurl]: ./media/custom-dns/csurl.png
-

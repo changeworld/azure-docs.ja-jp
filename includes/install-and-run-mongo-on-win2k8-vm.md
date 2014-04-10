@@ -1,30 +1,30 @@
-次のステップに従って、MongoDB を Windows Server 2008 R2 が実行されている仮想マシンにインストールして実行します。
+Follow these steps to install and run MongoDB on a virtual machine running Windows Server 2008 R2.
 
 <div class="dev-callout">
-<b>警告</b>
-<p>認証、IP アドレス バインドなどの MongoDB セキュリティ機能は既定では有効になっていません。MongoDB を運用環境に展開する前に、セキュリティ機能を有効にすることをお勧めします。詳細については、「<a href="http://www.mongodb.org/display/DOCS/Security+and+Authentication">Security and Authentication (セキュリティと認証)</a>」を参照してください。</p>
+<b>Warning</b>
+<p>MongoDB security features, such as authentication and IP address binding, are not enabled by default. Security features should be enabled before deploying MongoDB to a production environment.  See <a href="http://www.mongodb.org/display/DOCS/Security+and+Authentication">Security and Authentication</a> for more information.</p>
 </div>
 
-1. リモート デスクトップを使用して仮想マシンに接続したら、**[スタート]** メニューから Internet Explorer を開きます。
-2. 右上にある **[ツール]** を選択します。**[インターネット オプション]** で、**[セキュリティ]** タブ、**[信頼済みサイト]** アイコンの順に選択し、**[サイト]** をクリックします。信頼済みサイトの一覧に *http://\*.mongodb.org* を追加します。
-3. [MongoDB のダウンロード ページ] [MongoDownloads]にアクセスします。
-4. **[Production Release (Recommended)]** セクションで最新のリリースを見つけ、[Windows 64-bit] 列の ***[2008+]** リンクをクリックします。**[Save As]** をクリックして、zip ファイルをデスクトップに保存します。
-5. zip ファイルを右クリックし、**[すべて展開]** をクリックします。「C:\」を指定し、**[展開]** をクリックします。ファイルが展開されたら、インストール フォルダーの名前をシンプルな名前に変更すると便利です。たとえば、"MongoDB" という名前を使用します。
-6. MongoDB データとログ ディレクトリを、上記の手順で作成したデータ ディスク (ドライブ **F:** など) に作成します。**[スタート]** で **[コマンド プロンプト]** を選択し、コマンド プロンプト ウィンドウを開きます。次のように入力します。
+1. After you've connected to the virtual machine using Remote Desktop, open Internet Explorer from the **Start** menu.
+2. Select the **Tools** button in the upper right corner.  In **Internet Options**, select the **Security** tab, and then select the **Trusted Sites** icon, and finally click the **Sites** button. Add *http://\*.mongodb.org* to the list of trusted sites.
+3. Go to [Downloads- MongoDB] [MongoDownloads].
+4. Find the most recent release in the **Production Release (Recommended)** section and click the ***2008+** link in the Windows 64-bit column.  Click **Save As** and save the zip file to the desktop.
+5. Right-click on the zip file and select **Extract All...**  Specify "C:\" and click **Extract**.  After the files have been extracted, you may wish to rename the install folder to something simpler.  "MongoDB", for example.
+6. Create MongoDB data and log directories in the data disk (drive **F:**, for example) you created in the steps above. From **Start**, select **Command Prompt** to open a command prompt window.  Enter:
 
 		C:\> F:
 		F:\> mkdir \MongoData
 		F:\> mkdir \MongoLogs
 
-7. データベースを実行するには、次を実行します。
+7. To run the database, run: 
 
 		F:\> C:
 		C:\> cd \MongoDB\bin
 		C:\my_mongo_dir\bin> mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
 
-	mongod.exe サーバーがジャーナル ファイルを開始して事前に割り当てると、すべてのログ メッセージが *F:\MongoLogs\mongolog.log* ファイルにダイレクトされます。MongoDB がジャーナル ファイルを事前に割り当てて、接続のリッスンを開始するには、数分かかる場合があります。
+	All log messages will be directed to the *F:\MongoLogs\mongolog.log* file as mongod.exe server starts and preallocates journal files. It may take several minutes for MongoDB to preallocate the journal files and start listening for connections.
 
-8. MongoDB 管理シェルを開始するには、**[スタート]** から他のコマンド ウィンドウを開き、次のように入力します。
+8. To start the MongoDB administrative shell, open another command window from **Start** and enter the following:
 
 		C:\> cd \my_mongo_dir\bin  
 		C:\my_mongo_dir\bin> mongo  
@@ -39,48 +39,48 @@
 		...  
 		> help  
 
-	データベースは挿入によって作成されます。
-9. (省略可能) mongod.exe は、Windows サービスとしてインストールおよび実行できます。mongod.exe をサービスとしてインストールするには、コマンド プロンプトから次のコマンドを実行します。
+	The database is created by the insert.
+9. (Optional) mongod.exe has support for installing and running as a Windows service. To install mongod.exe as a service, run the following from the command prompt:
 
 		C:\mongodb\bin>mongod --logpath "c:\mongodb\logs\logfile.log" --logappend --dbpath "c:\data" --install 
 
-	これにより、"Mongo DB" という名前で、説明に "Mongo DB" が指定されたサービスが作成されます。実行中のサービスには出力を表示するコマンド ウィンドウがないので、**--logpath** オプションを使用して、ログ ファイルを指定する必要があります。**--logpath** オプションを指定すると、サービスを再起動することで、既存のログ ファイルに出力が追加されるようになります。**--dbpath** オプションは、データ ディレクトリの場所を指定します。サービス関連のコマンド ライン オプションの詳細については、「Install MongoDB on Windows (Windows への MongoDB のインストール)」の「[MongoDB as a Windows Service (Windows サービスとしての MongoDB)] [MongoWindowsSvcOptions]」セクションを参照してください。
-10. これで MongoDB がインストールされました。この MongoDB は現在実行されています。次は MongoDB にリモート接続するために、Windows ファイアウォールのポートを開く必要があります。**[スタート]** メニューから、**[管理ツール]**、**[セキュリティが強化された Windows ファイアウォール]** の順に選択します。
+	This creates a service named "Mongo DB" with a description of "Mongo DB". The **--logpath** option must be used to specify a log file, since the running service will not have a command window to display output.  The **--logpath** option specifies that a restart of the service will cause output to append to the existing log file.  The **--dbpath** option specifies the location of the data directory. For more service-related command line options, see [Service-related command line options] [MongoWindowsSvcOptions].
+10. Now that MongoDB is installed and running you must open a port in Windows Firewall in order to remotely connect to MongoDB.  From the **Start** menu, select **Administrator Tools** and then **Windows Firewall with Advanced Security**. 
 
-11. 左側のウィンドウで、**[受信の規則]** を選択します。右側の **[操作]** ウィンドウで、**[新しい規則]** を選択します。
+11. In the left pane, select **Inbound Rules**.  In the **Actions** pane on the right, select **New Rule...**.
 	
-	![Windows ファイアウォール][Image1]
+	![Windows Firewall][Image1]
 
-	**新規の受信の規則ウイザード**で、**[ポート]** を選択し、**[次へ]** をクリックします。
+	In the **New Inbound Rule Wizard**, select **Port** and then click **Next**.
 	
-	![Windows ファイアウォール][Image2]
+	![Windows Firewall][Image2]
 
-	**[TCP]**、**[特定のローカル ポート]** の順に選択します。ポートとして「27107」 (MongoDB がリッスンするポート) を指定し、**[次へ]** をクリックします。
+	Select **TCP** and then **Specific local ports**.  Specify a port of "27107" (the port MongoDB listens on) and click **Next**.
 
-	![Windows ファイアウォール][Image3]
+	![Windows Firewall][Image3]
 
-	**[接続を許可する]** を選択し、**[次へ]** をクリックします。
+	Select **Allow the connection** and click **Next**.
 
-	![Windows ファイアウォール][Image4]
+	![Windows Firewall][Image4]
 
-	もう一度 **[次へ]** をクリックします。
+	Click **Next** again.
 	
-	![Windows ファイアウォール][Image5]
+	![Windows Firewall][Image5]
 
-	規則の名前 ("MongoPort" など) を指定し、**[完了]** をクリックします。
+	Specify a name for the rule, such as "MongoPort", and click **Finish**.
 
-	![Windows ファイアウォール][Image6]
+	![Windows Firewall][Image6]
 	
-12. MongoDB をインストールしたら、MongoDB にリモートでアクセスできるように、エンドポイントを構成する必要があります。管理ポータルで、**[仮想マシン]**、新しい仮想マシンの名前、**[エンドポイント]** の順にクリックします。
+12. Once MongoDB is installed you must configure an endpoint so that MongoDB can be accessed remotely. In the Management Portal, click **Virtual Machines**, then click the name of your new virtual machine, then click **Endpoints**.
 
-	![エンドポイント][Image7]
-13. ページの下部にある **[エンドポイントの追加]** をクリックします。**[エンドポイントの追加]** を選択し、**[次へ]** をクリックします。
+	![Endpoints][Image7]
+13. Click **Add Endpoint** at the bottom of the page. Select **Add Endpoint** and click **Next**.
 	
-	![エンドポイント][Image8]
+	![Endpoints][Image8]
 
-14. エンドポイントを追加します。名前に「Mongo」、プロトコルに **[TCP]** を指定し、**[パブリック ポート]** と **[プライベート ポート]** の両方に「27017」を指定します。これにより、MongoDB へのリモート アクセスが可能になります。
+14. Add an endpoint with name "Mongo", protocol **TCP**, and both **Public** and **Private** ports set to "27017". This will allow MongoDB to be accessed remotely.
 
-	![エンドポイント][Image9]
+	![Endpoints][Image9]
 
 [MongoDownloads]: http://www.mongodb.org/downloads
 
@@ -96,4 +96,3 @@
 [Image7]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint.png
 [Image8]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint2.png
 [Image9]: ./media/install-and-run-mongo-on-win2k8-vm/WinVmAddEndpoint3.png
-

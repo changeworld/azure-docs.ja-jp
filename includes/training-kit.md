@@ -1,7 +1,6 @@
 <div>
-<h1>Windows Azure トレーニング キット</h1>
-<p>Windows Azure トレーニング キットには、Windows Azure の使用方法を学習するのに役立つ総合的な一連のテクニカル コンテンツが含まれています。また、このキットは、Windows Azure 用のアプリケーションの開発における各側面に関するハンズオン ラボ、プレゼンテーション、デモ、およびコード サンプルを備えています。トレーニング キットのリソースは、独習する場合も、人に教える場合も使用できます。</p>
-<p><a href="http://go.microsoft.com/fwlink/p/?LinkId=331133" class="solution-cta-link light-font arrowbtn green">ダウンロード</a></p>
-<p>GitHub (<a href="http://windowsazure-trainingkit.github.io/">http://windowsazure-trainingkit.github.io/</a>) でトレーニング キットの詳細を確認することもできます。</p>
+<h1>Azure Training Kit</h1>
+<p>The Azure Training Kit includes a comprehensive set of technical content designed to help you learn how to use Azure. The kit includes hands-on labs, presentations, demos, and code samples for every aspect of developing applications for Azure. You can use the resources in the training kit to teach yourself or train others.</p>
+<p><a href="http://go.microsoft.com/fwlink/p/?LinkId=331133" class="solution-cta-link light-font arrowbtn green">download</a></p>
+<p>You can also explore the training kit on GitHub at <a href="http://windowsazure-trainingkit.github.io/">http://windowsazure-trainingkit.github.io/</a>.</p>
 </div>
-

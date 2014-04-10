@@ -1,155 +1,156 @@
-﻿<properties linkid="manage-services-add-a-vm-to-a-virtual-network" urlDisplayName="仮想ネットワークへの VM の追加" pageTitle="仮想ネットワークへの仮想マシンの追加 - Windows Azure" metaKeywords="" description="ストレージ アカウントおよび Windows Azure の仮想ネットワークに追加する仮想マシン (VM) を作成する手順について説明するチュートリアルです。" metaCanonical="" services="virtual-machines,virtual-network" documentationCenter="" title="仮想ネットワークへの仮想マシンの追加" authors=""  solutions="" writer="" manager="" editor=""  />
+<properties linkid="manage-services-add-a-vm-to-a-virtual-network" urlDisplayName="Add a VM to virtual network" pageTitle="Add a virtual machine to a virtual network - Azure" metaKeywords="" description="A tutorial that teaches you how to create a storage account and virtual machine (VM) that you add to an Azure virtual network." metaCanonical="" services="virtual-machines,virtual-network" documentationCenter="" title="Add a Virtual Machine to a Virtual Network" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-<h1 id="vnet3">仮想ネットワークへの仮想マシンの追加</h1>
+
+<h1 id="vnet3">Add a Virtual Machine to a Virtual Network</h1>
 
 <!--SOMEWHERE IN THIS TUTORIAL I NEED TO XREF TO THE OTHER VMACHINE TUTORIAL -->
 
-このチュートリアルでは、Windows Azure のストレージ アカウントおよび[仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)に追加する仮想マシン (VM) を作成する手順について詳しく説明します。
+This tutorial walks you through the steps to create an Azure storage account and virtual machine (VM) that you add to a [virtual network](http://msdn.microsoft.com/en-us/library/windowsazure/jj156007.aspx).
 
-このチュートリアルは、Windows Azure を使用した経験がない読者を対象に作成されています。
+This tutorial assumes you have no prior experience using Azure.
 
 <div class="dev-callout"> 
-<b>重要</b>
+<b>Important</b>
 
-<p>新しい Active Directory フォレストをインストールするために VM を作成する場合は、「<a href="../active-directory-forest/">Windows Azure での新しい Active Directory フォレストのインストール</a>」の手順に従ってください。</p>
+<p>If you plan on creating a VM in order to install a new Active Directory forest, follow the instructions in <a href="../active-directory-forest/">Install a new Active Directory forest in Azure</a>.</p>
 </div>
 
 
-## 目標##
+## Objectives ##
 
-このチュートリアルでは、次の事項について説明します。
+In this tutorial you will learn:
 
--  <a href="#CreateStorageAcct">ストレージ アカウントの作成方法</a>
+-  <a href="#CreateStorageAcct">How to create a storage account</a>
 
--  <a href="#CreateVM">仮想マシンを作成して仮想ネットワークに展開する方法</a>
+-  <a href="#CreateVM">How to create a virtual machine and deploy it to a virtual network</a>
 
-## 前提条件##
+## Prerequisites ##
 
--  次のチュートリアルのいずれかを完了します。
+-  Complete one of the following tutorials: 
 
-	-  [Windows Azure での仮想ネットワークの作成](/ja-jp/manage/services/networking/create-a-virtual-network/)
+	-  [Create a Virtual Network in Azure](/en-us/manage/services/networking/create-a-virtual-network/)
 
-		-または-
-	-  [クロスプレミス接続用の仮想ネットワークの作成](/ja-jp/manage/services/networking/cross-premises-connectivity/)
+		-OR- 
+	-  [Create a Virtual Network for cross-premises connectivity](/en-us/manage/services/networking/cross-premises-connectivity/)
 
--  少なくとも 1 つのサブスクリプションが有効でアクティブな Windows Live アカウント。	
+-  Windows Live account with at least one valid, active subscription.	
 
--  [「Windows Azure での仮想ネットワークの作成](/ja-jp/manage/services/networking/create-a-virtual-network/)」または「[クロスプレミス接続用の仮想ネットワークの作成](/ja-jp/manage/services/networking/cross-premises-connectivity/)」で設定した次の名前。
+-  Names of the following from [Create a Virtual Network in Azure](/en-us/manage/services/networking/create-a-virtual-network/) or [Create a Virtual Network for cross-premises connectivity](/en-us/manage/services/networking/cross-premises-connectivity/):
 
-	-	仮想ネットワークに割り当てたアフィニティ グループ
+	-	Affinity group you assigned your virtual network.
 
-	-	仮想ネットワークの名前
+	-	Name of your virtual network.
 
-	-   サブネットの名前
+	-   Names of your subnet(s).
 
-## <a name="CreateStorageAcct">ストレージ アカウントの作成</a> ##
+## <a name="CreateStorageAcct">Create Storage Account</a> ##
 
-1.	[Windows Azure の管理ポータル](http://manage.windowsazure.com/)で仮想ネットワークを作成した後、画面の左下隅にある **[新規]** をクリックします。
+1.	After you have created your virtual network in the [Azure Management Portal](http://manage.windowsazure.com/), on the lower left-hand corner of the screen, click **New**.
 
 	![NewStorAcct](./media/virtual-networks-add-virtual-machine/VNTut3_01_NewStorageAccount.png)
 
-2.	ナビゲーション ウィンドウで、**[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
+2.	In the navigation pane, click **DATA SERVICES**, **STORAGE**, and then **QUICK CREATE**.
 
 	![QuickCreate](./media/virtual-networks-add-virtual-machine/VNTut3_02_StorageAcct_QuickCreate.png)
 
-3.	次の情報を入力し、画面の右下にあるチェック マークをクリックします。
+3.	Enter the following information, and then click the check mark on the bottom right of the screen.
 
--  **[URL]:** *自分のストレージ アカウント名*を入力します。
+-  **URL:** Type *yourstorage*.
 
--  **[リージョン/アフィニティ グループ]:** ドロップダウン リストで、**自分のアフィニティ グループ**を選択します。
+-  **REGION/AFFINITY GROUP:** From the drop-down list, select **YourAffinityGroup**.
 
--  **[Geo レプリケーションの有効化]:** このチェック ボックスはオンのままにしておきます。
+-  **ENABLE GEO-REPLICATION:** Leave this box checked.
  
 	![CreateNewAcct](./media/virtual-networks-add-virtual-machine/VNTut3_03_CreateNewStorageAccount.png)
 
-4.	処理が完了すると、**[ストレージ]** ページの **[状態]** 列に **[オンライン]** と表示されます。
+4.	On the **Storage** page, the **STATUS** column will display **Online** when the process is complete.
  
 	![NewStorAcctCreated](./media/virtual-networks-add-virtual-machine/VNTut3_04_NewStorageAcctCreated.png)
 
 
-## <a name="CreateVM">仮想マシンを作成して仮想ネットワークに展開</a> ##
-**仮想マシンを作成して仮想ネットワークに展開するには**
+## <a name="CreateVM">Create Virtual Machine and Deploy to Virtual Network</a> ##
+**To create a virtual machine and deploy to a virtual network:**
 
-1.	ストレージ アカウントを作成した後、画面の左下隅にある **[新規]** をクリックします。
+1.	After you have created your storage account, on the lower left-hand corner of the screen, click **New**.
 
 	![NewVM](./media/virtual-networks-add-virtual-machine/VNTut3_05_NewVM.png)
 
 
-2.	ナビゲーション ウィンドウで、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
+2.	In the navigation pane, click **COMPUTE**, **VIRTUAL MACHINE**, and then click **FROM GALLERY**.
  
 	![FromGallery](./media/virtual-networks-add-virtual-machine/VNTut3_06_VM_FromGallery.png)
 
 
-3.	**[VM OS の選択]** 画面で、**[Windows Server 2008 R2 SP1, October 2012]** (または利用できる最新のバージョン) を選択し、次へ進む矢印をクリックします。
+3.	On the **VM OS Selection** screen, select **Windows Server 2008 R2 SP1, October 2012** (or the most recent version available), and then click the next arrow.
  
 	![VMOS](./media/virtual-networks-add-virtual-machine/VNTut3_07_VMOSSelect_Win2008R2.png)
 
 
-4.	**[仮想マシンの構成]** 画面で、次の情報を入力して、次へ進む矢印をクリックします。
+4.	On the **Virtual machine configuration** screen, enter the following information, and then click the next arrow. 
 	<!-- SHOULD WE TELL USERS TO WRITE DOWN USER NAME AND PASS?? -->
 
-	**ヒント:** 新しい仮想マシンにログインするときに使用する資格情報であるため、ユーザー名とパスワードは書き留めてください。
+	**Tip:** Write down the user name and password because these are the credentials you will use to log in to your new virtual machine.
 
--  **[仮想マシン名]: ** *自分の仮想マシン名*を入力します。
+-  **VIRTUAL MACHINE NAME:** Type *YourVMachine*.
 
--  **[新しいユーザー名]:** 読み取り専用です。
+-  **NEW USER NAME:** Read-only.
 
--  **[新しいパスワード]:** 強力なパスワードを入力します。
+-  **NEW PASSWORD:** Enter a strong password.
 
--  **[パスワードの確認]:** パスワードを再入力します。
+-  **CONFIRM PASSWORD:** Re-enter password.
 
--  **[サイズ]:** **[S]** を選択します。
+-  **SIZE:** Select **Small**.
  
 	![VMConfig](./media/virtual-networks-add-virtual-machine/VNTut3_08_VMConfig.png)
 
-5.	**[仮想マシン モード]** 画面で、次の情報を入力して、次へ進む矢印をクリックします。
+5.	On the **Virtual machine mode** screen, enter the following information, and then click the next arrow.
 
--  **[スタンドアロンの仮想マシン]:** このオプションは選択したままにしておきます。
+-  **Standalone Virtual Machine:** Leave this option selected.
 
--  **[DNS 名]: ** *自分のクラウド アプリケーションの DNS 名*を入力します。
+-  **DNS NAME:** Type *yourcloudapplication*.
 
--  **[ストレージ アカウント]: ** **自分のストレージ アカウント**を選択します。
+-  **STORAGE ACCOUNT:** Select **yourstorage**.
 
--  **[リージョン/アフィニティ グループ/仮想ネットワーク]:** ドロップダウン リストで、**自分の仮想ネットワーク**を選択します。
+-  **REGION/AFFINITY GROUP/VIRTUAL NETWORK:** From the drop-down list, select **YourVirtualNetwork**.
  
 	![VMMode](./media/virtual-networks-add-virtual-machine/VNTut3_09_VMMode.png)
 
-6.	**[仮想マシンのオプション]** 画面で、次の情報を入力して、チェック マーク ボタンをクリックします。これで仮想マシンが作成されます。新しいマシンが作成されるまで最大 10 分かかることがあります。
+6.	On the **Virtual machine options** screen, enter the following information, and then click the check mark button. Your virtual machine will now be created. It can take up to 10 minutes for the new machine to be created.
 	<!-- CONFIRM HOW LONG IT CAN TAKE ON AVG FOR VMACHINE TO BE CREATED -->
 
--  **[可用性セット]:** **[なし]** を選択します。
+-  **AVAILABILITY SET:** Select **none**.
 
--  **[仮想ネットワーク サブネット]:** **[FrontEndSubnet]** を選択します。
+-  **VIRTUAL NETWORK SUBNETS:** Select **FrontEndSubnet**.
 	
 	<div class="dev-callout"> 
-	<b>注</b>
+	<b>NOTE</b> 
 
-	<p>少なくとも 1 つサブネットを選択する必要があります。ゲートウェイ サブネットは選択しないでください。</p>
+	<p>You should select at least one subnet and DO NOT select the gateway subnet.</p>
 	</div> 
  
 	![VMOptions](./media/virtual-networks-add-virtual-machine/VNTut3_10_VMOptions.png)
 
-7.	仮想マシンを作成すると、仮想マシン画面の **[状態]** 列に **[実行中]** と表示されます。
+7.	When your virtual machine has been created, on the virtual machines screen, the **STATUS** will be **Running**.
  
 	![VMInstances](./media/virtual-networks-add-virtual-machine/VNTut3_11_VMInstances.png)
 
 
-8.	ナビゲーション ウィンドウで **[すべてのアイテム]** をクリックします。作成したオブジェクトがすべて現在の状態と共に表示されます。
+8.	In the navigation pane, click **ALL ITEMS**. All your objects you've created will be displayed with their current status.
  
 	![AllTab](./media/virtual-networks-add-virtual-machine/VNTut3_12_AllTab.png)
 
-## 次のステップ ##
-作成したばかりの VM の内部設置型 Active Directory ドメインに追加のドメイン コントローラーをインストールするには、「[Windows Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](/ja-jp/manage/services/networking/replica-domain-controller/)」を参照してください。
+## Next Steps ##
+To install an additional domain controller for your on-premises Active Directory domain on the VM you just created, see [Install a Replica Active Directory Domain Controller in Azure Virtual Network](/en-us/manage/services/networking/replica-domain-controller/).
 
-## 関連項目
+## See Also
 
--  [Windows Azure の仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)
+-  [Azure Virtual Network](http://msdn.microsoft.com/en-us/library/windowsazure/jj156007.aspx)
 
--  [ネットワーク構成ファイルを使用した仮想ネットワークの構成](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156097.aspx)
+-  [Configuring a Virtual Network Using Network Configuration Files](http://msdn.microsoft.com/en-us/library/windowsazure/jj156097.aspx)
 
 <!-- LINKS -->
 

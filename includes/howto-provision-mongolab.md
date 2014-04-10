@@ -1,29 +1,29 @@
-Windows Azure ストアでは、Azure にホストされ、完全に管理された MongoDB データベースにサブスクライブできます。これを行うには、次のステップに従います。
+You can subscribe to an Azure-hosted, fully-managed MongoDB database in the Azure Store. To do so, follow these steps:
 
-1. Windows Azure の管理ポータルにログインします。
-1. **[新規]** をクリックします。
-![新規][button-new]
-1. **[ストア]** を選択します。
-![ストア][button-store]
-1. [MongoLab] を選択します。**[アプリケーション サービス]** カテゴリだけでなく、**[すべて]** の下にもあります。
+1. Log into the Azure Management Portal.
+1. Click **New**.  
+![New][button-new]
+1. Select **Store**.  
+![Store][button-store]
+1. Select MongoLab. You can find us in the **App Services** category, as well as under **All**.  
 ![MongoLab][entry-mongolab]
-1. **[次へ]** をクリックします。
-![次へ][button-next]  
-  MongoLab ストア エントリが表示されます。
+1. Click **Next**.  
+![Next][button-next]  
+  The MongoLab store entry displays.  
 ![NewMongoLab][screen-newmongolab]
-1. 必要な **[サブスクリプション]** オプションを選択します。
-1. **[名前]** にデータベースの名前を入力します。名前には、英数字、ダッシュ、ドット、アンダースコアのみ使用できます。MongoLab では、この名前を一意にする必要もあるため、名前が使用されている場合は要求を再送信するよう求められることがあります。
-1. 目的の **[リージョン]** を選択します。
-1. **[次へ]** をクリックします。
-![次へ][button-next]
-1. ストアの購入情報を確認し、**[購入]** をクリックして確認します。
-![次へ][button-purchase]  
-1. ツール バーの進捗状況ボタンにプロビジョニングの状態が表示されます。
+1. Select your desired **Subscription** option.
+1. Enter a **Name** for your database. Your name can only contain alphanumeric characters, dashes, dots, and underscores. MongoLab also requires that this name be unique, so you may be asked to re-submit your request if the name is taken.
+1. Select your desired **Region**.
+1. Click **Next**.  
+![Next][button-next]
+1. Review your store purchase information, and then click **Purchase** to confirm.  
+![Next][button-purchase]  
+1. The toolbar progress button provides your provisioning status.  
 ![ProgressButton][button-progress]  
-プロビジョニングが完了すると、成功メッセージが表示されます。
+A success message displays when provisioning completes.  
 ![SuccessMessage][message-success]
 
-ご利用ありがとうございます。MongoLab により、選択した Windows Azure のリージョンで MongoDB データベースがプロビジョニングされました。管理 UI と 24 時間 365 日のサポートをご利用いただけます。
+Congratulations! MongoLab has just provisioned a MongoDB database in the Azure region you selected. You now have access to our management UI and 24/7 support.
 
 [button-new]: ./media/howto-provision-mongolab/button-new.png
 [button-store]: ./media/howto-provision-mongolab/button-store.png
@@ -33,4 +33,3 @@ Windows Azure ストアでは、Azure にホストされ、完全に管理され
 [entry-mongolab]: ./media/howto-provision-mongolab/entry-mongolab.png 
 [screen-newmongolab]: ./media/howto-provision-mongolab/screen-newmongolab.png 
 [message-success]: ./media/howto-provision-mongolab/message-provisionsuccess.png
-

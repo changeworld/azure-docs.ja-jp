@@ -1,3 +1,2 @@
 > [WACOM.NOTE]
-> .publishsettings ファイルには、Windows Azure のサブスクリプションとサービスの管理に使用される資格情報 (デコード済み) が保存されています。このファイルのセキュリティに関するベスト プラクティスは、このファイルをソース ディレクトリの外 (Libraries\Documents フォルダーなど) に一時的に保存し、インポートが完了したらそのファイルを削除することです。悪意のあるユーザーが .publishsettings ファイルへのアクセス許可を取得すると、Windows Azure サービスを編集、作成、削除できるためです。
-
+> The .publishsettings file contains your  credentials (unencoded) that are used to administer your Azure subscriptions and services. The security best practice for this file is to store it temporarily outside your source directories (for example in the Libraries\Documents folder), and then  delete it once the import has completed. A malicious user who gains access to the .publishsettings file can edit, create, and delete your Azure services.

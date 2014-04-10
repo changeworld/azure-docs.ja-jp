@@ -1,124 +1,123 @@
-# Windows Azure ID
+# Azure Identity
 
-ID の管理は、パブリック クラウドにおいても内部設置型の場合と同様に重要です。管理を行いやすくするため、Windows Azure では、さまざまなクラウド ID テクノロジがサポートされています。次のようなテクノロジがあります。
+Managing identity is just as important in the public cloud is it is on premises. To help with this, Azure supports several different cloud identity technologies. They include these:
 
-- Windows Azure の仮想マシンで作成された仮想マシンを使用して、クラウドで Windows Server Active Directory (一般には単に AD と呼ばれます) を実行できます。このアプローチは、Windows Azure を使用して内部設置型データセンターをクラウドに拡張する場合に効果的です。
+- You can run Windows Server Active Directory (commonly called just AD) in the cloud using virtual machines created with Azure Virtual Machines. This approach makes sense when you're using Azure to extend your on-premises datacenter into the cloud.
 
-- Windows Azure Active Directory を使用すると、ユーザーがサービスとしてのソフトウェア (SaaS) アプリケーションへのシングル サインオンを利用できるようになります。たとえば、Microsoft Office 365 ではこのテクノロジが使用されており、Windows Azure やその他のクラウド プラットフォームで実行されるアプリケーションでも使用できます。
+- You can use Azure Active Directory to give your users single sign-on to Software as a Service (SaaS) applications. Microsoft's Office 365 uses this technology, for example, and applications running on Azure or other cloud platforms can also use it.
 
-- クラウドまたは内部設置型で実行されるアプリケーションでは、Windows Azure Active Directory のアクセス制御を使用することで、ユーザーが Facebook、Google、マイクロソフト、および他の ID プロバイダーの ID を使用してログインできるようにすることができます。
-
-
-この記事では、これらの 3 つのオプションすべてについて説明します。
-
-## 目次
-
-- [VM での Windows Server Active Directory の実行](#adinvm)
-
-- [Windows Azure Active Directory の使用](#ad)
-
-- [Windows Azure Active Directory のアクセス制御の使用](#ac)
+- Applications running in the cloud or on-premises can use Azure Active Directory Access Control to let users log in using identities from Facebook, Google, Microsoft, and other identity providers.
 
 
-## <a name="adinvm"></a>VM での Windows Server Active Directory の実行
+This article describes all three of these options.
 
-Windows Azure VM での Windows Server AD の実行は、内部設置型での実行とかなり似ています。[図 1](#fig1) は、その典型的な例を示しています。
+## Table of Contents
 
-![仮想マシン内の Windows Azure Active Directory](./media/identity/identity_01_ADinVM.png)
+- [Running Windows Server Active Directory in VMs](#adinvm)
 
+- [Using Azure Active Directory](#ad)
 
-<a name="Fig1"></a>図 1: Windows Server Active Directory は、Windows Azure の仮想ネットワークを使用する組織の内部設置型データセンターに接続された Windows Azure VM で実行できる
-
-ここに示す例では、Windows Server AD が、Windows Azure の仮想マシン (プラットフォームの IaaS テクノロジ) を使用して作成された VM で実行されています。これらの VM と他のいくつかの VM は、Windows Azure の仮想ネットワークを使用する内部設置型データセンターに接続された仮想ネットワーク (VNET) にグループ化されています。VNET は、仮想プライベート ネットワーク (VPN) 接続経由で内部設置型ネットワークとやり取りするクラウド VM のグループを形成します。こうすることで、これらの Windows Azure VM が、内部設置型データセンターにとって別のサブセットと同じように見なされます。図が示すように、これらの VM のうち 2 つは Windows Server AD ドメイン コントローラーを実行しています。VNET 内の他の VM は、SharePoint などのアプリケーションを実行したり、開発やテストなど、他の何らかの方法で使用されることがあります。内部設置型データセンターでは、2 つの Windows Server AD ドメイン コントローラーも実行されています。
-
-クラウドのドメイン コントローラーと内部設置型で実行されているドメイン コントローラーを接続する複数のオプションが用意されています。次のようなオプションがあります。
-
-- すべてのドメイン コントローラーを 1 つの Active Directory ドメインの一部とする。
-
-- 同じフォレストの一部である内部設置型とクラウドに別箇の AD ドメインを作成する。
-
-- クラウドと内部設置型に別箇の AD フォレストを作成した後、クロスフォレスト信頼または Windows Server Active Directory フェデレーション サービス (AD FS) (Windows Azure の VM でも実行可能) を使用してフォレストを接続する。
-
-どれを選択した場合も、管理者は、内部設置型ユーザーからの認証要求が、必要なときだけクラウドのドメイン コントローラーに送信されるようにする必要があります。クラウドへのリンクが内部設置型ネットワークより低速なことが多いためです。クラウドと内部設置型のドメイン コントローラーを接続する際に考慮すべき別の要素は、レプリケーションにより生成されるトラフィックです。クラウドのドメイン コントローラーは、通常独自の AD サイトにあるため、管理者はレプリケーションの頻度をスケジュールできます。Windows Azure では、Windows Azure データセンターから送信されるトラフィック (到着するバイトではなく) に課金されるため、管理者によるレプリケーションの選択に影響を与える可能性があります。さらに、Windows Azure では独自のドメイン ネーム システム (DNS) がサポートされますが、このサービスには Active Directory に必要な機能 (動的 DNS や SRV レコードなど) がない点に注目することも重要です。このため、Windows Azure で Windows Server AD を実行するには、クラウドで独自の DNS サーバーをセットアップする必要があります。
-
-Windows Azure VM で Windows Server AD を実行することは、いくつかの状況で効果的です。次に例をいくつか示します。
-
-- Windows Azure の仮想マシンを独自のデータセンターの拡張として使用している場合、ローカルのドメイン コントローラーが Windows 統合認証や LDAP クエリなどを処理する必要があるアプリケーションをクラウドで実行することがあります。たとえば、SharePoint は Active Directory と頻繁にやり取りするため、内部設置型ディレクトリを使用して Windows Azure で SharePoint ファームを実行することはできますが、クラウドでドメイン コントローラーをセットアップするとパフォーマンスが大幅に向上します (これは必ずしも必須ではない点を理解することは重要ですが、内部設置型ドメイン コントローラーだけを使用して多数のアプリケーションをクラウドで正常に実行できます)。
-
-- 遠隔地の支社には、独自のドメイン コントローラーを実行するリソースが足りないとします。今、ユーザーが地球の反対側にあるドメイン コントローラーで認証を行う必要がありますが、ログインが低速です。近くにあるマイクロソフトのデータセンターにある Windows Azure で Active Directory を実行すると、支社のサーバーを増やさなくてもログインを高速化できます。
-
-- 障害復旧に Windows Azure を使用している組織は、アクティブな VM の小規模なセット (ドメイン コントローラーなど) をクラウドに保持していることがあります。その場合、必要に応じてこのサイトを拡張し、他の場所で障害が発生したときに引き継ぎを行う準備を整えることができます。
-
-他の可能性もあります。たとえば、クラウドの Windows Server AD を内部設置型データセンターに接続する必要がないとします。特定のユーザー セットにサービスを提供する SharePoint ファームを実行する場合 (たとえば、すべてのユーザーがクラウド ベースの ID だけを使用してログインする場合など)、Windows Azure にスタンドアロン フォレストを作成できます。このテクノロジの利用方法は、目標が何であるかによって決まります (Windows Azure で Windows Server AD を使用する方法の詳細については、[ここを参照](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090.aspx)してください)。
-
-## <a name="ad"></a>Windows Azure Active Directory の使用
-
-SaaS アプリケーションが一般的になるにつれて、素朴な疑問が生まれます。このようなクラウド ベースのアプリケーションではどの種類のディレクトリ サービスを使用すべきでしょうか。この疑問に対するマイクロソフトの答えは、Windows Azure Active Directory です。
-
-このディレクトリ サービスをクラウドで使用するには、主な 2 つのオプションがあります。
-
-- SaaS アプリケーションだけを使用する個人と組織は、唯一のディレクトリ サービスとして Windows Azure Active Directory に依存することができます。
-
-- Windows Server Active Directory を実行する組織は、内部設置型ディレクトリを Windows Azure Active Directory に接続した後、それを使用して SaaS アプリケーションへのシングル サインオンをユーザーに提供できます。
+- [Using Azure Active Directory Access Control](#ac)
 
 
-[図 2](#fig2) は、2 つのうちの最初のオプション (Windows Azure Active Directory だけが必要) を示しています。
+## <a name="adinvm"></a>Running Windows Server Active Directory in VMs
 
-![仮想マシン内の Windows Azure Active Directory](./media/identity/identity_02_AD.png)
+Running Windows Server AD in Azure VMs is much like running it on premises. [Figure 1](#fig1) shows a typical example of how this looks.
 
-<a name="fig2"></a>図 2: Windows Azure Active Directory を使用すると、組織のユーザーが SaaS アプリケーション (Office 365 など) へのシングル サインオンを利用できるようになる
+![Azure Active Directory in Virtual Machine](./media/identity/identity_01_ADinVM.png)
 
-図が示すように、Windows Azure AD はマルチテナント サービスです。つまり、多くの組織を同時にサポートし、各組織のユーザーに関するディレクトリ情報を格納できます。この例では、組織 A のユーザーが SaaS アプリケーションにアクセスしようとしています。このアプリケーションは、Office 365 の一部 (SharePoint Online など) である場合も、それ以外のアプリケーションの場合もあります (マイクロソフト以外のアプリケーションでもこのテクノロジを使用できます)。Windows Azure AD では SAML 2.0 プロトコルがサポートされるため、アプリケーションに必要なのはこの業界標準を使用してやり取りできることだけです (実際、Windows Azure AD を使用するアプリケーションは、Windows Azure データセンターだけではなくどのデータセンターでも実行できます)。
 
-ユーザーが SaaS アプリケーションにアクセスした時点でプロセスが開始されます (ステップ 1)。このアプリケーションを使用するには、ユーザーが Windows Azure AD により発行されたトークンを提示する必要があります。
+<a name="Fig1"></a>Figure 1: Windows Server Active Directory can run in Azure VMs connected to an organization's on-premises datacenter using Azure Virtual Network.
 
-このトークンには、ユーザーを識別する情報が含まれており、Windows Azure AD によりデジタル署名されています。トークンを入手するには、ユーザー名とパスワードを指定することにより、ユーザーが Windows Azure AD で自分自身を認証します (ステップ 2)。その後、Windows Azure AD により必要なトークンが返されます (ステップ 3)。
+In the example shown here, Windows Server AD is running in VMs created using Azure Virtual Machines, the platform's IaaS technology. These VMs and a few others are grouped into a virtual network (VNET) connected to an on-premises datacenter using Azure Virtual Network. The VNET carves out a group of cloud VMs that interact with the on-premises network via a virtual private network (VPN) connection. Doing this lets these Azure VMs look like just another subnet to the on-premises datacenter. As the figure shows, two of those VMs are running Windows Server AD domain controllers. The other VMs in the VNET might be running applications, such as SharePoint, or being used in some other way, such as for development and testing. The on-premises datacenter is also running two Windows Server AD domain controllers.
 
-次に、このトークンが SaaS アプリケーションに送信され (ステップ 4)、トークンの署名が検証されてその内容が使用されます (ステップ 5)。通常、アプリケーションはトークンに含まれる ID 情報を使用して、ユーザーがアクセスできる情報を決定しますが、他の方法を使用することもあります。
+There are several options for connecting the domain controllers in the cloud with those running on premises. They include these:
 
-アプリケーションが、トークンに含まれている情報以外にユーザーの情報を必要とする場合、Windows Azure AD Graph API を使用して Windows Azure AD から直接要求できます (ステップ 6)。初期バージョンの Windows Azure AD では、ディレクトリ スキーマがかなりシンプルです。ユーザーとグループ、およびそれらの間の関係だけが含まれています。アプリケーションは、この情報を使用して、ユーザー間の関係を知ることができます。たとえば、ユーザーがあるデータ チャンクへのアクセスを許可されているかどうかを判断するために、ユーザーのマネージャーがだれであるかをアプリケーションが知る必要があるとします。これは、Graph API をとおして Windows Azure AD にクエリを実行することで知ることができます。
+- Make all of them part of a single Active Directory domain.
 
-Graph API は、通常の RESTful プロトコルを使用するため、モバイル デバイスを含むほとんどのクライアントから簡単に使用することができます。この API では、OData により定義された拡張 (より簡単な方法でクライアントがデータにアクセスできるようにするクエリ言語などが追加されます) もサポートされます (OData の詳細については、[Introducing OData (OData の概要)](http://download.microsoft.com/download/E/5/A/E5A59052-EE48-4D64-897B-5F7C608165B8/IntroducingOData.pdf) を参照してください)。 Graph API を使用すると、ユーザー間の関係について知ることができ、アプリケーションは特定の組織の Windows Azure AD スキーマに埋め込まれたソーシャル グラフを認識することができます (Graph API と呼ばれるのはこのためです)。Windows Azure AD で Graph API 要求を認証するため、アプリケーションは OAuth 2.0 を使用します。
+- Create separate AD domains on-premises and in the cloud that are part of the same forest.
 
-組織が Windows Server Active Directory を使用しておらず (内部設置型のサーバーやドメインがない)、Windows Azure AD を使用するクラウド アプリケーションのみに依存している場合、このクラウド ディレクトリだけを使用すると、その会社のユーザーがすべてのアプリケーションでシングル サインオンを利用できるようになります。このシナリオは日々一般的になっていますが、ほとんどの組織は依然として Windows Server Active Directory で作成された内部設置型ドメインを使用しています。[図 3](#fig3) が示すように、Windows Azure AD にはこの場合に役立つ重要な役割もあります。
+- Create separate AD forests in the cloud and on-premises, then connect the forests using cross-forest trusts or Windows Server Active Directory Federation Services (AD FS), which can also run in VMs on Azure.
 
-![仮想マシン内の Windows Azure Active Directory](./media/identity/identity_03_AD.png)
-<a id="fig3"></a>図 3: 組織は、Windows Server Active Directory と Windows Azure Active Directory をフェデレーションして、ユーザーが SaaS アプリケーションにシングル サインオンを利用できるようにすることができる
+Whatever choice is made, an administrator should make sure that authentication requests from on-premises users go to cloud domain controllers only when necessary, since the link to the cloud is likely to be slower than on-premises networks. Another factor to consider in connecting cloud and on-premises domain controllers is the traffic generated by replication. Domain controllers in the cloud are typically in their own AD site, which allows an administrator to schedule how often replication is done. Azure charges for traffic sent out of an Azure datacenter, although not for bytes sent in, which might affect the administrator's replication choices. It's also worth pointing out that while Azure does provide its own Domain Name System (DNS) support, this service is missing features required by Active Directory (such as support for Dynamic DNS and SRV records). Because of this, running Windows Server AD on Azure requires setting up your own DNS servers in the cloud.
 
-このシナリオでは、組織 B のユーザーが SaaS アプリケーションにアクセスしようとしています。アクセスする前に、組織のディレクトリ管理者は、AD FS を使用して Windows Azure AD とのフェデレーション関係を確立する必要があります。さらに、管理者は組織の内部設置型 Windows Server AD と Windows Azure AD の間にデータ同期を構成する必要もあります。これにより、ユーザーとグループの情報が、内部設置型ディレクトリから Windows Azure AD に自動的にコピーされます。これにより実現することに注目してみましょう。実際には、組織は内部設置型ディレクトリをクラウドに拡張しようとしています。Windows Server AD と Windows Azure AD をこの方法で結合すると、組織は、単一のエンティティとして管理できるディレクトリ サービスを手に入れることができますが、引き続き内部設置型とクラウドの両方を使用し続けることができます。
+Running Windows Server AD in Azure VMs can make sense in several different situations. Here are some examples:
 
-Windows Azure AD を使用するには、まずユーザーが自身の内部設置型 Active Directory ドメインに通常どおりログインします (ステップ 1)。SaaS アプリケーションにアクセスしようとすると (ステップ 2)、フェデレーション処理の結果、Windows Azure AD によりこのアプリケーションのトークンが発行されます (ステップ 3) (フェデレーションのしくみの詳細については、[Claims-Based Identity for Windows: Technologies and Scenarios (クレーム ベースの ID: テクノロジとシナリオ) に関するドキュメント](http://www.davidchappell.com/writing/white_papers/Claims-Based_Identity_for_Windows_v3.0--Chappell.docx)を参照してください)。前述のとおり、このトークンにはユーザーを識別する情報が含まれており、Windows Azure AD によりデジタル署名されています。次に、このトークンが SaaS アプリケーションに送信され (ステップ 4)、トークンの署名が検証されてその内容が使用されます (ステップ 5)。前のシナリオと同様、SaaS アプリケーションは必要に応じて Graph API を使用してこのユーザーに関する詳細を知ることができます (ステップ 6)。
+- If you're using Azure Virtual Machines as an extension of your own datacenter, you might run applications in the cloud that need local domain controllers to handle things such as Windows Integrated Authentication requests or LDAP queries. SharePoint, for example, interacts frequently with Active Directory, and so while it's possible to run a SharePoint farm on Azure using an on-premises directory, setting up domain controllers in the cloud will significantly improve performance. (It's important to realize that this isn't necessarily required, however; plenty of applications can run successfully in the cloud using only on-premises domain controllers.)
 
-現在のところ、内部設置型 Windows Server AD を Windows Azure AD に完全に置き換えることはできません。既に説明したとおり、クラウド ディレクトリのスキーマの方がかなりシンプルであり、グループ ポリシー、マシンに関する情報の格納機能、LDAP のサポートなどもありません (実際、ユーザーが Windows Azure AD 以外を使用してログインできるように Windows マシンを構成することはできません。これは、サポートされるシナリオではありません)。むしろ、Windows Azure AD の当初の目標は、エンタープライズ ユーザーが別個のログインを維持しなくてもクラウドのアプリケーションにアクセスできるようにすることと、内部設置型ディレクトリ管理者が、内部設置型ディレクトリと組織が使用する各 SaaS アプリケーションを手動で同期しなくてもよいようにすることです。しかし、時間の経過と共に、このクラウド ディレクトリ サービスが広範なシナリオに対応することが期待されます。
+- Suppose a faraway branch office lacks the resources to run its own domain controllers. Today, its users must authenticate to domain controllers on the other side of the world - logins are slow. Running Active Directory on Azure in a closer Microsoft datacenter can speed this up without requiring more servers in the branch office.
 
-## <a name="ac"></a>Windows Azure Active Directory のアクセス制御の使用
+- An organization that uses Azure for disaster recovery might maintain a small set of active VMs in the cloud, including a domain controller. It can then be prepared to expand this site as needed to take over for failures elsewhere.
 
-クラウド ベースの ID テクノロジを使用すると、さまざまな問題を解決できます。たとえば、Windows Azure Active Directory を使用すると、組織のユーザーが複数の SaaS アプリケーションへのシングル サインオンを利用できるようになります。しかし、クラウドの ID テクノロジは他の方法でも使用できます。
+There are also other possibilities. For example, you're not required to connect Windows Server AD in the cloud to an on-premises datacenter. If you wanted to run a SharePoint farm that served a particular set of users, for instance, all of whom would log in solely with cloud-based identities, you might create a standalone forest on Azure. How you use this technology depends on what your goals are. (For more detailed guidance on using Windows Server AD with Azure, [see here](http://msdn.microsoft.com/en-us/library/windowsazure/jj156090.aspx).)
 
-たとえば、アプリケーションで、ユーザーが複数の *ID プロバイダー (IdP)* により発行されたトークンを使用してログインすると仮定します。現在、Facebook、Google、マイクロソフトなど、さまざまな ID プロバイダーが存在しており、多くの場合、ユーザーはアプリケーションでこれらの ID のいずれかを使用してサインインできます。既に存在する ID を使用できるのであれば、アプリケーションでユーザーとパスワードのリストを独自に維持する必要はありません。既存の ID を受け入れると、ユーザーにとっては覚えるユーザー名とパスワードが 1 つ減り、アプリケーションの作成者にとってはユーザー名とパスワードのリストを独自に維持する必要がなくなるため、物事がシンプルになります。
+## <a name="ad"></a>Using Azure Active Directory
 
-しかし、どの ID プロバイダーも何らかのトークンを発行していますが、それらのトークンは標準ではありません。各 IdP が独自の形式を使用しています。さらに、それらのトークンに含まれる情報も標準ではありません。Facebook、Google、マイクロソフトなどによって発行されたトークンを受け入れようとするアプリケーションは、そのような異なる各形式に対応する独自のコードを記述するという課題に直面します。
+As SaaS applications become more and more common, they raise an obvious question: What kind of directory service should these cloud-based applications use? Microsoft's answer to that question is Azure Active Directory.
 
-しかし、これを回避する方法があります。代わりに、共通の ID 情報表記法による、単一のトークン形式を生成できる中間機能を作成することができます。このアプローチにより、1 種類のトークンだけに対応するだけで済み、アプリケーションを作成する開発者の業務がシンプルになります。Windows Azure Active Directory のアクセス制御はまさにこの役割を果たし、クラウド内で多様なトークンを処理するための中間機能を提供します。[図 4](#fig4) は、このしくみを示しています。
+There are two main options for using this directory service in the cloud:
 
-![仮想マシン内の Windows Azure Active Directory](./media/identity/identity_04_IdentityProviders.png) 
-<a id="fig4"></a>図 4: Windows Azure Active Directory のアクセス制御は、さまざまな ID プロバイダーによって発行された ID トークンをアプリケーションが簡単に受け入れられるようにする
+- Individuals and organizations that use only SaaS applications can rely on Azure Active Directory as their sole directory service.
 
-ユーザーがブラウザーからこのアプリケーションにアクセスしようとした時点でプロセスが開始されます。アプリケーションはそのユーザーが選択した (かつアプリケーションも信頼する) IdP にユーザーをリダイレクトします。ユーザー名とパスワードの入力などによって、ユーザーがこの IdP で認証されると (ステップ 1)、IdP はそのユーザーに関する情報が入ったトークンを返します (ステップ 2)。
+- Organizations that run Windows Server Active Directory can connect their on-premises directory to Azure Active Directory, then use it to give their users single sign-on to SaaS applications.
 
-図が示すように、アクセス制御では、Google、Yahoo、Facebook、マイクロソフト (旧 Windows Live ID)、OpenID プロバイダーによって作成されたアカウントなど、さまざまなクラウド ベースの IdP がサポートされます。さらに、Windows Azure Active Directory を使用して作成された ID や、AD FS、Windows Server Active Directory とのフェデレーションをとおして作成された ID もサポートされます。目標は、IdP によりクラウドで発行されたか内部設置型で発行されたかにかかわらず、現在最もよく使用されている ID に対応することです。
 
-ユーザーが選択した IdP による IdP トークンがユーザーのブラウザーにあれば、このトークンがアクセス制御に送信されます (ステップ 3)。アクセス制御はそのトークンを検証し、それが確かに対象の IdP によって発行されたものであることを確認した後、このアプリケーションに対して定義されているルールに従って新しいトークンを作成します。Windows Azure Active Directory と同様、アクセス制御はマルチテナント サービスですが、テナントは顧客組織ではなくアプリケーションです。図が示すように、各アプリケーションは独自の名前空間を取得し、認証などに関するさまざまなルールを定義できます。
+[Figure 2](#fig2) illustrates the first of these two options, where Azure Active Directory is all that's required.
 
-これらのルールを使用すると、各アプリケーションの管理者は、さまざまな IdP から発行されたトークンをアクセス制御トークンに変換するための方法を定義できます。たとえば、ユーザー名を表記する形式が IdP によって異なる場合、アクセス制御ルールを使用してこれらすべてを共通のユーザー名形式に変換できます。次にアクセス制御はこの新しいトークンをブラウザーに返し (ステップ 4)、ブラウザーがそれをアプリケーションに送信します (ステップ 5)。アプリケーションはこのアクセス制御トークンを受け取ると、このトークンが確かにアクセス制御によって発行されたものであることを確認した後、トークンに格納されている情報を適用します (ステップ 6)。
+![Azure Active Directory in Virtual Machine](./media/identity/identity_02_AD.png)
 
-このプロセスは少し複雑に見えますが、実はアプリケーションの作成者の負担を大幅に軽減します。アプリケーションは、さまざまな情報が入った多様なトークンを扱うのではなく、使い慣れた情報を含むトークンを 1 つだけ受信することにより、複数の ID プロバイダーから発行された各種の ID を受け入れることができます。さらに、信頼するさまざまな IdP をアプリケーションごとに設定しなくても、これらの信頼関係がアクセス制御によって維持されるので、アプリケーションはそれを信頼するだけです。
+<a name="fig2"></a>Figure 2: Azure Active Directory gives an organization's users single sign-on to SaaS applications, including Office 365.
 
-アクセス制御は決して、Windows に拘束されているわけではなく、Google および Facebook の ID だけを受け入れる Linux アプリケーションでも同様に利用できます。アクセス制御は Windows Azure Active Directory ファミリの一部ですが、前のセクションで説明したものとは完全に別のサービスと考えることができます。どちらのテクノロジも ID を扱いますが、まったく異なる問題に対処します (ただし、マイクロソフトではこれら 2 つのテクノロジがある時点で統合される予定であると発表しています)。
+As the figure shows, Azure AD is a multi-tenant service. This means that it can simultaneously support many different organizations, storing directory information about users at each of them. In this example, a user at organization A is trying to access a SaaS application. This application might be part of Office 365, such as SharePoint Online, or it might be something else - non-Microsoft applications can also use this technology. Because Azure AD supports the SAML 2.0 protocol, all that's required from an application is the ability to interact using this industry standard. (In fact, applications that use Azure AD can run in any datacenter, not just an Azure datacenter.)
 
-ID の処理は、ほとんどすべてのアプリケーションにとって重要な機能です。アクセス制御の目的は、多様な ID プロバイダーによって発行された ID を受け入れる、アプリケーションを開発者がより簡単に作成できるようにすることです。マイクロソフトはこのサービスをクラウドに実装することにより、あらゆるプラットフォーム上で実行される任意のアプリケーションから、このサービスを利用できるようにしています。
+The process begins when the user accesses a SaaS application (step 1). To use this application, the user must present a token issued by Azure AD.
 
-##著者について
+This token contains information that identifies the user, and it's digitally signed by Azure AD. To get the token, the user authenticates himself to Azure AD by providing a username and password (step 2). Azure AD then returns the token he needs (step 3).
 
-David Chappell は、カリフォルニア州サンフランシスコに拠点を置く Chappell & Associates [www.davidchappell.com](http://www.davidchappell.com) の社長です。講演、執筆、コンサルティングを通じて、
+This token is then sent to the SaaS application (step 4), which validates the token's signature and uses its contents (step 5). Typically, the application will use the identity information the token contains to decide what information the user is allowed to access and perhaps in other ways.
 
+If the application needs more information about the user than what's contained in the token, it can request this directly from Azure AD using the Azure AD Graph API (step 6). In the initial version of Azure AD, the directory schema is quite simple: It contains just users and groups and relationships among them. Applications can use this information to learn about connections between users. For example, suppose an application needs to know who this user's manager is to decide whether he's allowed access to some chunk of data. It can learn this by querying Azure AD through the Graph API.
+
+The Graph API uses an ordinary RESTful protocol, which makes it straightforward to use from most clients, including mobile devices. The API also supports the extensions defined by OData, adding things such as a query language to let clients access data in more useful ways. (For more on OData, see [Introducing OData](http://download.microsoft.com/download/E/5/A/E5A59052-EE48-4D64-897B-5F7C608165B8/IntroducingOData.pdf).) Because the Graph API can be used to learn about relationships between users, it lets applications understand the social graph that's embedded in the Azure AD schema for a particular organization (which is why it's called the Graph API). And to authenticate itself to Azure AD for Graph API requests, an application uses OAuth 2.0.
+
+If an organization doesn't use Windows Server Active Directory - it has no on-premises servers or domains - and relies solely on cloud applications that use Azure AD, using just this cloud directory would give the firm's users single sign-on to all of them. Yet while this scenario gets more common every day, most organizations still use on-premises domains created with Windows Server Active Directory. Azure AD has a useful role to play here as well, as [Figure 3](#fig3) shows.
+
+![Azure Active Directory in Virtual Machine](./media/identity/identity_03_AD.png)
+<a id="fig3"></a>Figure 3: An organization can federate Windows Server Active Directory with Azure Active Directory to give its users single sign-on to SaaS applications.
+
+In this scenario, a user at organization B wishes to access a SaaS application. Before she does this, the organization's directory administrators must establish a federation relationship with Azure AD using AD FS, as the figure shows. Those admins must also configure data synchronization between the organization's on-premises Windows Server AD and Azure AD. This automatically copies user and group information from the on-premises directory to Azure AD. Notice what this allows: In effect, the organization is extending its on-premises directory into the cloud. Combining Windows Server AD and Azure AD in this way gives the organization a directory service that can be managed as a single entity, while still having a footprint both on-premises and in the cloud.
+
+To use Azure AD, the user first logs in to her on-premises Active Directory domain as usual (step 1). When she tries to access the SaaS application (step 2), the federation process results in Azure AD issuing her a token for this application (step 3). (For more on how federation works, see [Claims-Based Identity for Windows: Technologies and Scenarios](http://www.davidchappell.com/writing/white_papers/Claims-Based_Identity_for_Windows_v3.0--Chappell.docx).) As before, this token contains information that identifies the user, and it's digitally signed by Azure AD. This token is then sent to the SaaS application (step 4), which validates the token's signature and uses its contents (step 5). And is in the previous scenario, the SaaS application can use the Graph API to learn more about this user if necessary (step 6).
+
+Today, Azure AD isn't a complete replacement for on-premises Windows Server AD. As already mentioned, the cloud directory has a much simpler schema, and it's also missing things such as group policy, the ability to store information about machines, and support for LDAP. (In fact, a Windows machine can't be configured to let users log in to it using nothing but Azure AD - this isn't a supported scenario.) Instead, the initial goals of Azure AD include letting enterprise users access applications in the cloud without maintaining a separate login and freeing on-premises directory administrators from manually synchronizing their on-premises directory with every SaaS application their organization uses. Over time, however, expect this cloud directory service to address a wider range of scenarios.
+
+## <a name="ac"></a>Using Azure Active Directory Access Control
+
+Cloud-based identity technologies can be used to solve a variety of problems. Azure Active Directory can give an organization's users single sign-on to multiple SaaS applications, for example. But identity technologies in the cloud can also be used in other ways.
+
+Suppose, for instance, that an application wishes to let its users log in using tokens issued by multiple *identity providers (IdPs)*. Lots of different identity providers exist today, including Facebook, Google, Microsoft, and others, and applications frequently let users sign in using one of these identities. Why should an application bother to maintain its own list of users and passwords when it can instead rely on identities that already exist? Accepting existing identities makes life simpler both for users, who have one less username and password to remember, and for the people who create the application, who no longer need to maintain their own lists of usernames and passwords.
+
+But while every identity provider issues some kind of token, those tokens aren't standard - each IdP has its own format. Furthermore, the information in those tokens also isn't standard. An application that wishes to accept tokens issued by, say, Facebook, Google, and Microsoft is faced with the challenge of writing unique code to handle each of these different formats.
+
+But why do this? Why not instead create an intermediary that can generate a single token format with a common representation of identity information? This approach would make life simpler for the developers who create applications, since they now need to handle only one kind of token. Azure Active Directory Access Control does exactly this, providing an intermediary in the cloud for working with diverse tokens. [Figure 4](#fig4) shows how it works
+
+![Azure Active Directory in Virtual Machine](./media/identity/identity_04_IdentityProviders.png) 
+<a id="fig4"></a>Figure 4: Azure Active Directory Access Control makes it easier for applications to accept identity tokens issued by different identity providers.
+
+The process begins when a user attempts to access the application from a browser. The application redirects her to an IdP of her choice (and that the application also trusts). She authenticates herself to this IdP, such as by entering a username and password (step 1), and the IdP returns a token containing information about her (step 2).
+
+As the figure shows, Access Control supports a range of different cloud-based IdPs, including accounts created by Google, Yahoo, Facebook, Microsoft (formerly known as Windows Live ID), and any OpenID provider. It also supports identifies created using Azure Active Directory and, through federation with AD FS, Windows Server Active Directory. The goal is to cover the most commonly used identities today, whether they're issued by IdPs in the cloud or on-premises.
+
+Once the user's browser has an IdP token from her chosen IdP, it sends this token to Access Control (step 3). Access Control validates the token, making sure that it really was issued by this IdP, then creates a new token according to the rules that have been defined for this application. Like Azure Active Directory, Access Control is a multi-tenant service, but the tenants are applications rather than customer organizations. Each application can get its own namespace, as the figure shows, and can define various rules about authorization and more.
+
+These rules let each application's administrator define how tokens from various IdPs should be transformed into an Access Control token. For example, if different IdPs use different types for representing usernames, Access Control rules can transform all of these into a common username type. Access Control then sends this new token back to the browser (step 4), which submits it to the application (step 5). Once it has the Access Control token, the application verifies that this token really was issued by Access Control, then uses the information it contains (step 6).
+
+While this process might seem a little complicated, it actually makes life significantly simpler for the creator of the application. Rather than handle diverse tokens containing different information, the application can accept identities issued by multiple identity providers while still receiving only a single token with familiar information. Also, rather than require each application to be configured to trust various IdPs, these trust relationships are instead maintained by Access Control - an application need only trust it.
+
+It's worth pointing out that nothing about Access Control is tied to Windows - it could just as well be used by a Linux application that accepted only Google and Facebook identities. And even though Access Control is part of the Azure Active Directory family, you can think of it as an entirely distinct service from what was described in the previous section. While both technologies work with identity, they address quite different problems (although Microsoft has said that it expects to integrate the two at some point).
+
+Working with identity is important in nearly every application. The goal of Access Control is to make it easier for developers to create applications that accept identities from diverse identity providers. By putting this service in the cloud, Microsoft has made it available to any application running on any platform.
+
+##About the Author
+
+David Chappell is Principal of Chappell & Associates [www.davidchappell.com](http://www.davidchappell.com) in San Francisco, California. Through his speaking, writing, and consulting,

@@ -1,112 +1,113 @@
-﻿<properties linkid="manage-services-create-a-virtual-network" urlDisplayName="仮想ネットワークの作成" pageTitle="仮想ネットワークの作成 - Windows Azure サービス管理" metaKeywords="" description="Windows Azure の仮想ネットワークの作成方法について説明します。" metaCanonical="" services="virtual-machines,virtual-network" documentationCenter="" title="Windows Azure での仮想ネットワークの作成" authors=""  solutions="" writer="" manager="" editor=""  />
+<properties linkid="manage-services-create-a-virtual-network" urlDisplayName="Create a virtual network" pageTitle="Create a virtual network - Azure service management" metaKeywords="" description="Learn how to create an Azure Virtual Network." metaCanonical="" services="virtual-machines,virtual-network" documentationCenter="" title="Create a Virtual Network in Azure" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-<h1 id="vnettut1">Windows Azure での仮想ネットワークの作成</h1>
 
-このチュートリアルでは、Windows Azure の管理ポータルを使用して基本的な Windows Azure の仮想ネットワークを作成する手順について説明します。Windows Azure の仮想ネットワークの詳細については、「[仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)」を参照してください。
+<h1 id="vnettut1">Create a Virtual Network in Azure</h1>
 
-このチュートリアルは、Windows Azure を使用した経験がない読者を対象に作成されています。目的は、読者が仮想ネットワークの作成に必要な手順を習得できるようにすることです。仮想ネットワークのデザイン シナリオや詳細情報については、「[仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)」を参照してください。
+This tutorial walks you through the steps to create a basic Azure Virtual Network using the Azure Management Portal. For more information about Azure Virtual Network, see [Azure Virtual Network Overview](http://msdn.microsoft.com/en-us/library/windowsazure/jj156007.aspx). 
 
-このチュートリアルを完了すると、Windows Azure のサービスと仮想マシンを展開できる仮想ネットワークが作成されます。
+This tutorial assumes you have no prior experience using Azure. It is meant to help you become familiar with the steps required to create a virtual network. If you are looking for design scenarios and advanced information about Virtual Network, see the [Azure Virtual Network Overview](http://msdn.microsoft.com/en-us/library/windowsazure/jj156007.aspx).
+
+After completing this tutorial, you will have a virtual network to which you can deploy your Azure services and virtual machines. 
 
 <div class="dev-callout"> 
-<b>メモ</b>
-<p>このチュートリアルでは、クロスプレミス構成を作成する手順については説明しません。サイト間クロスプレミス接続 (社内の Active Directory または SharePoint への接続) が可能な仮想ネットワークの作成手順を説明するチュートリアルについては、「<a href="/ja-jp/manage/services/networking/cross-premises-connectivity/">Create a Virtual Network for Site-to-Site Cross-Premises Connectivity (サイト間クロスプレミス接続用の仮想ネットワークの作成)</a>」を参照してください。</p>
+<b>Note</b> 
+<p>This tutorial does not walk you through creating a cross-premises configuration. For a tutorial that walks you through creating a virtual network with site-to-site cross-premises connectivity (i.e., connecting to Active Directory or SharePoint located at your company), see <a href="/en-us/manage/services/networking/cross-premises-connectivity/">Create a Virtual Network for Cross-Premises Connectivity</a>.</p> 
 </div>
 
-仮想ネットワーク構成のその他の手順と設定については、「[Windows Azure の仮想ネットワークの構成タスク](http://go.microsoft.com/fwlink/?LinkId=296652)」を参照してください。
+For additional Virtual Network configuration procedures and settings, see [Azure Virtual Network Configuration Tasks](http://go.microsoft.com/fwlink/?LinkId=296652).
 
-AD DS を Windows Azure の仮想マシンに展開する方法に関するガイダンスについては、「[Windows Azure の仮想マシンでの Windows Server Active Directory の展開ガイドライン](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090.aspx)」を参照してください。
+For guidelines about deploying AD DS on Azure Virtual Machines, see [Guidelines for Deploying Windows Server Active Directory on Azure Virtual Machines](http://msdn.microsoft.com/en-us/library/windowsazure/jj156090.aspx).
 
-##  目標
+##  Objectives
 
-このチュートリアルでは、次の事項について説明します。
+In this tutorial you will learn:
 
-*  Windows Azure のクラウド サービスおよび仮想マシンを追加できる基本的な Windows Azure の仮想ネットワークを設定する方法。
+*  How to setup a basic Azure virtual network to which you can add Azure Cloud Services and virtual machines.
 
-##  前提条件
+##  Prerequisites
 
-*  少なくとも 1 つのサブスクリプションが有効でアクティブな Windows Live アカウント。
+*  Windows Live account with at least one valid, active subscription.
 
-##  仮想ネットワークの作成
+##  Create a Virtual Network
 
-**クラウド専用の仮想ネットワークを作成するには: **
+**To create a cloud-only virtual network:**
 
-1.	[Windows Azure の管理ポータル](http://manage.windowsazure.com/)にログインします。
+1.	Log in to the [Azure Management Portal](http://manage.windowsazure.com/).
 
-2. 画面の左下隅で **[新規]** をクリックします。ナビゲーション ウィンドウで、**[ネットワーク]**、**[仮想ネットワーク]** の順にクリックします。**[カスタム作成]** をクリックして、構成ウィザードを開始します。
+2. In the lower left-hand corner of the screen, click **New**. In the navigation pane, click **Networks**, and then click **Virtual Network**. Click **Custom Create** to begin the configuration wizard.
 
 	![][Image1]
 
-3. **[仮想ネットワークの詳細]** ページで、次の情報を入力し、右下にある次へ進む矢印をクリックします。詳細ページの設定の詳細については、「<a href="http://go.microsoft.com/fwlink/?LinkID=248092">管理ポータルでの仮想ネットワークの構成について</a>」の「**[仮想ネットワークの詳細]** ページ」を参照してください。
+3. On the **Virtual Network Details** page, enter the following information, and then click the next arrow on the lower right. For more information about the settings on the details page, see **Virtual Network Details** page section in <a href="http://go.microsoft.com/fwlink/?LinkID=248092">About Configuring a Virtual Network using the Management Portal</a>.
 
-- **[名前] -** 仮想ネットワークの名前を指定します。「*YourVirtualNetwork*」と入力します。
+- **Name -** Name your virtual network. Type *YourVirtualNetwork*.
 
-- **[アフィニティ グループ] -** ドロップダウン リストから **[新しいアフィニティ グループの作成]** を選択します。アフィニティ グループでは、Windows Azure サービスを同じデータ センターに物理的にグループ化してパフォーマンスを向上させます。1 つのアフィニティ グループに割り当てることができる仮想ネットワークは 1 つのみです。
+- **Affinity Group -** From the drop-down list, select **Create a new affinity group**. Affinity groups are a way to physically group Azure services together at the same data center to increase performance. Only one virtual network can be assigned an affinity group.
 
-- **[リージョン] -** ドロップダウン リストからリージョンを選択します。仮想ネットワークは、指定したリージョンにあるデータ センターに作成されます。
+- **Region -** From the drop-down list, select the desired region. Your virtual network will be created at a datacenter located in the specified region.
 
-- **[アフィニティ グループ名] -** 新しいアフィニティ グループの名前を指定します。「*YourAffinityGroup*」と入力します。
+- **Affinity Group Name -** Name the new affinity group. Type *YourAffinityGroup*.
 
 	![][Image2]
 
-4. **[DNS サーバーおよび VPN 接続]** ページで、次の情報を入力し、右下にある次へ進む矢印をクリックします。このページの設定の詳細については、「<a href="http://go.microsoft.com/fwlink/?LinkID=248092">管理ポータルでの仮想ネットワークの構成について</a>」の「**[DNS サーバーおよび VPN 接続]** ページ」を参照してください。
+4. On the **DNS Servers and VPN Connectivity** page, enter the following information, and then click the next arrow on the lower right. For more information about the settings on this page, see **DNS Servers and VPN Connectivity** page in <a href="http://go.microsoft.com/fwlink/?LinkID=248092">About Configuring a Virtual Network using the Management Portal</a>.
 
-	- **[DNS サーバー] (省略可能) -** 使用する DNS サーバー名と IP アドレスを入力します。この設定では DNS サーバーは作成されず、既存の DNS サーバーが参照されます。
+	- **DNS Servers-Optional -** Enter the DNS server name and IP address that you want to use. This setting does not create a DNS server, it refers to an already existing DNS server.
 
 		<div class="dev-callout"> 
-		<b>メモ</b>
-		<p>パブリック DNS サービスを使用する場合は、該当する情報をこの画面で入力できます。それ以外の場合は、名前解決には既定で Windows Azure サービスが使用されます。詳細については、<a href="http://go.microsoft.com/fwlink/?linkid=248097">Windows Azure の名前解決の概要に関するページ</a>を参照してください。</p>
+		<b>Note</b> 
+		<p>If you want to use a public DNS service, you can enter that information on this screen. Otherwise, name resolution will default to the Azure service. For more information, see <a href="http://go.microsoft.com/fwlink/?linkid=248097">Azure Name Resolution Overview</a></p> 
 		</div>
 
-	- **ポイント対サイト接続またはサイト間接続のチェック ボックスをオンにしないでください**。このチュートリアルで作成する仮想ネットワークは、クロスプレミス接続用にデザインされていません。
+	- **Do not select the checkbox for point-to-site or site to site connectivity**. The virtual network we are creating in this tutorial is not designed for cross-premises connectivity.
 
 	![][Image3]
 
-5.	**[仮想ネットワーク アドレス空間]** ページで、次の情報を入力し、右下にあるチェックマークをクリックしてネットワークを構成します。アドレス空間は、RFC 1918 で定義されたプライベート アドレスの範囲 (CIDR 表記では 10.0.0.0/8、172.16.0.0/12、または 192.168.0.0/16) 内にあることが必要です。このページの設定の詳細については、「<a href="http://go.microsoft.com/fwlink/?LinkID=248092">管理ポータルでの仮想ネットワークの構成について</a>」の「**[仮想ネットワーク アドレス空間]** ページ」を参照してください。
+5.	On the **Virtual Network Address Spaces** page, enter the following information and then click the checkmark on the lower right to configure your network. Address space must be a private address range, specified in CIDR notation 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16 (as specified by RFC 1918). For more information about the settings on this page, see **Virtual Network Address Spaces** page in <a href="http://go.microsoft.com/fwlink/?LinkID=248092">About Configuring a Virtual Network using the Management Portal</a>.
 
-	- **[アドレス空間]:** 右上隅にある [CIDR] をクリックし、次の情報を入力します。
+	- **Address Space:** Click CIDR in the upper right corner, then enter the following:
 
-		- **[開始 IP]:** 10.4.0.0
+		- **Starting IP:** 10.4.0.0
 
-		- **[CIDR]:** /16
+		- **CIDR:** /16
 
-	- **[サブネットの追加]:** 次の情報を入力します。
+	- **Add subnet:** Enter the following:
 
-		- **[Subnet-1]** を「*FrontEndSubnet*」に変更して、開始 IP を「*10.4.2.0/24*」に設定し、**[サブネットの追加]** をクリックします。
+		- **Rename Subnet-1** to *FrontEndSubnet* with the Starting IP *10.4.2.0/24*, and then click **add subnet**.
 
-		- **サブネット**「*BackEndSubnet*」を開始 IP「*10.4.3.0/24*」で作成します。
+		- **Create a subnet** called *BackEndSubnet* with the Starting IP *10.4.3.0/24*.
 
-		- 2 つのサブネットが作成されたことを確認し、右下にあるチェックマークをクリックして仮想ネットワークを作成します。
+		- Verify that you now have two subnets created and then click the checkmark on the lower right to create your virtual network.
 
 	![][Image4]
 
-6. チェックマークをクリックすると、仮想ネットワークの作成が開始されます。仮想ネットワークが作成されると、管理ポータルのネットワーク ページの **[状態]** に **[作成済み]** と表示されます。
+6. After clicking the checkmark, your virtual network will begin to create. When your virtual network has been created, you will see **Created** listed under **Status** on the networks page in the Management Portal. 
 
 	![][Image5]
 
-7.	仮想ネットワークが作成されたら、次のチュートリアルに進むことができます。
+7.	Once your virtual network has been created, you can continue with the following tutorials:
 
-	- <a href="/ja-jp/manage/services/networking/add-a-vm-to-a-virtual-network/">Add a Virtual Machine to a Virtual Network (仮想ネットワークへの仮想マシンの追加)</a> – この基本的なチュートリアルを使用して、仮想マシンを仮想ネットワークにインストールします。
+	- <a href="/en-us/manage/services/networking/add-a-vm-to-a-virtual-network/">Add a Virtual Machine to a Virtual Network</a> - Use this basic tutorial to install a virtual machine to your virtual network.
 
-	- 仮想マシンとインストール オプションの詳細については、「<a href="/ja-jp/manage/windows/how-to-guides/custom-create-a-vm/">How to Create a Custom Virtual Machine (カスタム仮想マシンの作成方法)</a>」および「<a href="/ja-jp/manage/windows/">Windows Azure の仮想マシン</a>」を参照してください。
+	- For more information about virtual machines and installation options, see <a href="/en-us/manage/windows/how-to-guides/custom-create-a-vm/">How to Create a Custom Virtual Machine</a> and <a href="/en-us/manage/windows/">Azure Virtual Machines</a>.
 
-	- <a href="/ja-jp/manage/services/networking/active-directory-forest/">Install a new Active Directory forest in Windows Azure (Windows Azure での新しい Active Directory フォレストのインストール)</a> - このチュートリアルでは、他のネットワークに接続せずに新しい Active Directory フォレストをインストールします。このチュートリアルでは、新しいフォレストのインストール用に仮想マシン (VM) を作成する具体的な手順について説明します。このチュートリアルに進む場合は、管理ポータルを使用して VM を作成しないでください。
+	- <a href="/en-us/manage/services/networking/active-directory-forest/">Install a new Active Directory forest in Azure</a> - Use this tutorial to install a new Active Directory forest without connectivity to any other network. The tutorial will explain the specific steps required to create a virtual machine (VM) for a new forest installation. If you plan to use this tutorial, do not create any VMs by using the Management Portal.
 
-## 関連項目
+## See Also
 
--  [仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)
+-  [Azure Virtual Network Overview](http://msdn.microsoft.com/en-us/library/windowsazure/jj156007.aspx)
 
--  [Windows Azure の仮想ネットワーク FAQ](http://go.microsoft.com/fwlink/?LinkId=296650)
+-  [Azure Virtual Network FAQ](http://go.microsoft.com/fwlink/?LinkId=296650)
 
--  [Windows Azure の仮想ネットワークの構成タスク](http://go.microsoft.com/fwlink/?LinkId=296652)
+-  [Azure Virtual Network Configuration Tasks](http://go.microsoft.com/fwlink/?LinkId=296652)
 
--  [ネットワーク構成ファイルを使用した仮想ネットワークの構成](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156097.aspx)
+-  [Configuring a Virtual Network Using Network Configuration Files](http://msdn.microsoft.com/en-us/library/windowsazure/jj156097.aspx)
 
--  [名前解決](http://go.microsoft.com/fwlink/?LinkId=248097)
+-  [Azure Name Resolution Overview](http://go.microsoft.com/fwlink/?LinkId=248097)
 
 
 [Image1]: ./media/create-virtual-network/createVNet_01_OpenVirtualNetworkWizard.png
@@ -114,5 +115,4 @@ AD DS を Windows Azure の仮想マシンに展開する方法に関するガ�
 [Image3]: ./media/create-virtual-network/createVNet_03_DNSServersandVPNConnectivity.png
 [Image4]: ./media/create-virtual-network/createVNet_04_VirtualNetworkAddressSpaces.png
 [Image5]: ./media/create-virtual-network/createVNet_05_VirtualNetworkCreatedStatus.png
-
 

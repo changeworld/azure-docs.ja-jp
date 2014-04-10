@@ -1,361 +1,361 @@
-﻿<properties linkid="manage-windows-commontask-install-sql-server" urlDisplayName="SQL Server のインストール" pageTitle="Windows Azure での SQL Server 仮想マシンのプロビジョニング " metaKeywords="SQL Server を作成する Azure チュートリアル, SQL Server vm, SQL Server の構成" description="Windows Azure の仮想マシンで SQL Server を作成して構成する方法を学習するチュートリアルです。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Windows Azure での SQL Server 仮想マシンのプロビジョニング" authors=""  solutions="" writer="selcint" manager="clairt" editor="tyson"  />
+<properties linkid="manage-windows-commontask-install-sql-server" urlDisplayName="Install SQL Server" pageTitle="Provision a SQL Server virtual machine in Azure " metaKeywords="Azure tutorial creating SQL Server, SQL Server vm, configuring SQL Server" description="A tutorial that teaches you how to create and configure a SQL Server virtual machine on Azure." metaCanonical="" services="virtual-machines" documentationCenter="" title="Provisioning a SQL Server Virtual Machine on Azure" authors="selcint" solutions="" manager="clairt" editor="tyson" />
 
 
 
 
 
-# Windows Azure での SQL Server 仮想マシンのプロビジョニング#
+# Provisioning a SQL Server Virtual Machine on Azure #
 
-Windows Azure の仮想マシン イメージ ギャラリーには、Microsoft SQL Server を含むイメージがいくつか用意されています。ギャラリーからいずれかの仮想マシン イメージを選択すると、わずか数クリックで、Windows Azure 環境への仮想マシンのプロビジョニングを行うことができます。
+The Azure virtual machine gallery includes several images that contain Microsoft SQL Server. You can select one of the virtual machine images from the gallery and with a few clicks you can provision the virtual machine to your Azure environment.
 
-このチュートリアルでは、次のことについて説明します。
+In this tutorial, you will:
 
-* [Windows Azure の管理ポータルに接続し、ギャラリーから仮想マシンのプロビジョニングを行う](#Provision)
-* [リモート デスクトップを使用して仮想マシンを開き、セットアップを完了する](#RemoteDesktop)
-* [別のコンピューターにある SQL Server Management Studio を使用して仮想マシンに接続するための構成手順を完了する](#SSMS)
-* [次の手順](#Optional)
+* [Connect to the Azure management portal and provision a virtual machine from the gallery](#Provision)
+* [Open the virtual machine using Remote Desktop and complete setup](#RemoteDesktop)
+* [Complete configuration steps to connect to the virtual machine using SQL Server Management Studio on another computer](#SSMS)
+* [Next steps](#Optional)
 
-##<a id="Provision">Windows Azure の管理ポータルに接続し、ギャラリーから仮想マシンのプロビジョニングを行う</a>
+##<a id="Provision">Connect to the Azure management portal and provision a virtual machine from the gallery</a>
 
-1. アカウントを使用して [Windows Azure の管理ポータル](http://manage.windowsazure.com)にログインします。Windows Azure アカウントをお持ちでない場合は、[Windows Azure の無料評価版](http://www.windowsazure.com/ja-jp/pricing/free-trial/)にアクセスしてください。
+1. Log in to the [Azure Management Portal](http://manage.windowsazure.com) using your account. If you do not have an Azure account, visit [Azure free trial](http://www.windowsazure.com/en-us/pricing/free-trial/).
 
-2. Windows Azure の管理ポータルで、Web ページの左下にある **[+ 新規]** をクリックし、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
+2. On the Azure Management Portal, at the bottom left of the web page, click **+NEW**, click **COMPUTE**, click **VIRTUAL MACHINE**, and then click **FROM GALLERY**.
 
-3. **[仮想マシンの作成]** ページで、SQL Server を含む仮想マシン イメージを選択し、ページの右下にある次へ進む矢印をクリックします。Windows Azure でサポートされる SQL Server イメージの最新情報については、「[Windows Azure の仮想マシンにおける SQL Server](http://go.microsoft.com/fwlink/p/?LinkId=294719)」ドキュメント セットの「[Windows Azure の仮想マシンにおける SQL Server の概要](http://go.microsoft.com/fwlink/p/?LinkId=294720)」トピックを参照してください。
+3. On the **Create a Virtual Machine** page, select a virtual machine image containing SQL Server, and then click the next arrow at the bottom right of the page. For the most up-to-date information on the supported SQL Server images on Azure, see [Getting Started with SQL Server in Azure Virtual Machines](http://go.microsoft.com/fwlink/p/?LinkId=294720) topic in the [SQL Server in Azure Virtual Machines](http://go.microsoft.com/fwlink/p/?LinkId=294719) documentation set. 
 
-    >[WACOM.NOTE] プレビュー期間に使用できたプラットフォーム イメージの SQL Server 2012 評価エディションを使用して仮想マシンを作成した場合、それをギャラリーにある時間課金エディション イメージのにアップグレードすることはできません。次の 2 つのオプションのいずれかを選択できます。
-    > - ギャラリーにある時間課金エディションの SQL Server を使用して新しい仮想マシンを作成し、「[Windows Azure の仮想マシン間でデータ ディスクを使用して SQL Server のデータベース ファイルとスキーマを移行する方法](http://go.microsoft.com/fwlink/p/?LinkId=294738)」の手順に従って、データベース ファイルをこの新しい仮想マシンに移行します。**または**、
+    >[WACOM.NOTE] If you have a virtual machine created by using the platform image SQL Server 2012 Evaluation edition that was available during the Preview period, you cannot upgrade it to a per-hour paid edition image in the gallery. You can choose one of the following two options:
+    > - You can create a new virtual machine by using the per-hour paid SQL Server edition from the gallery and migrate your database files to this new virtual machine by following the steps at [How to migrate SQL Server database files and schema between virtual machines in Azure using data disks](http://go.microsoft.com/fwlink/p/?LinkId=294738). **Or**,
 
-    > -「[SQL Server 2012 の別のエディションへのアップグレード (セットアップ)](http://msdn.microsoft.com/library/cc707783.aspx)」の手順に従って、「[Windows Azure でのソフトウェア アシュアランスによるライセンス モビリティ](http://www.windowsazure.com/ja-jp/pricing/license-mobility/)」の合意に基づいて、SQL Server 2012 評価エディションの既存のインスタンスを異なるエディションの SQL Server 2012 にアップグレードします。SQL Server のライセンス コピーを購入する方法については、[SQL Server の購入方法に関するページ](http://www.microsoft.com/ja-jp/sqlserver/get-sql-server/how-to-buy.aspx)を参照してください。
+    > - You can upgrade an existing instance of SQL Server 2012 Evaluation edition to a different edition of SQL Server 2012 under the [License Mobility through Software Assurance on Azure](http://www.windowsazure.com/en-us/pricing/license-mobility/) agreement by following the steps at [Upgrade to a Different Edition of SQL Server 2012](http://msdn.microsoft.com/library/cc707783.aspx). For information on how to purchase the licensed copy of SQL Server, see [How to Buy SQL Server](http://www.microsoft.com/en-us/sqlserver/get-sql-server/how-to-buy.aspx).
 
     
 
-4. **[仮想マシンの構成]** ページで、次の情報を指定します。
-	- **[仮想マシン名]** に入力します。
-	- **[新しいユーザー名]** ボックスに、VM ローカル管理者アカウントの一意のユーザー名を入力します。
-	- **[新しいパスワード]** ボックスに、強力なパスワードを入力します。詳細については、「[強力なパスワード](http://msdn.microsoft.com/library/ms161962.aspx)」を参照してください。
-	- **[パスワードの確認]** ボックスに、パスワードを再度入力します。
-	- **[サイズ]** ボックスの一覧で、適切なサイズを選択します。
+4. On the **Virtual Machine Configuration** page, provide the following information:
+	- Provide a **VIRTUAL MACHINE NAME**.
+	- In the **NEW USER NAME** box, type unique user name for the VM local administrator account.
+	- In the **NEW PASSWORD** box, type a strong password. For more information, see [Strong Passwords](http://msdn.microsoft.com/library/ms161962.aspx).
+	- In the **CONFIRM PASSWORD** box, retype the password.
+	- Select the appropriate **SIZE** from the drop down list. 
 
-	>[WACOM.NOTE] 仮想マシンのサイズは、プロビジョニングで指定します。
- 	>- 運用環境のワークロードで推奨される最小サイズは M です。
-    >- SQL Server Enterprise Edition の使用時に推奨される仮想マシンの最小サイズは L です。
-    >- SQL Server Enterprise Edition を使用する場合は、L またはそれ以上を選択してください。
-   	>- データ ウェアハウジング向け SQL Server 2012 Enterprise イメージを使用する場合は、A6 を選択してください。
-   	>- データ ウェアハウジング向け SQL Server 2014 Evaluation イメージを使用する場合は、A7 を選択してください。
-   	>- 選択したサイズにより、構成できるデータ ディスクの数が制限されます。使用可能な仮想マシンのサイズと仮想マシンに接続できるデータ ディスクの数に関する最新情報については、「[仮想マシン](http://go.microsoft.com/fwlink/p/?LinkId=294819)」を参照してください。
+	>[WACOM.NOTE] The size of the virtual machine is specified during provisioning:
+ 	>- Medium is the smallest size recommended for production workloads. 
+    >- The minimum recommended size for a virtual machine is Large when using SQL Server Enterprise Edition.
+    >- Select Large or higher when using SQL Server Enterprise Edition. 
+   	>- Select A6 when using SQL Server 2012 Enterprise for Data Warehousing image. 
+   	>- Select A7 when using SQL Server 2014 Evaluation for Data Warehousing image. 
+   	>- The size selected limits the number of data disks you can configure. For most up-to-date information on available virtual machine sizes and the number of data disks that you can attach to a virtual machine, see [Virtual Machine Sizes for Azure](http://go.microsoft.com/fwlink/p/?LinkId=294819).
 
-	右下にある次へ進む矢印をクリックして続行します。
+	Click the next arrow on the bottom right to continue.
 
-	![VM 構成](./media/virtual-machines-provision-sql-server/4VM-Config.png)
+	![VM Configuration](./media/virtual-machines-provision-sql-server/4VM-Config.png)
 
 
 
-5. **[仮想マシン モード]** ページで、次の情報を指定します。
-	- **[スタンドアロンの仮想マシン]** をクリックします。
-	- **[DNS 名] **ボックスに、目的の DNS 名の最初の部分を入力すると、**TESTNAME.cloudapp.net** という形式の完全な名前を指定できます。
-	- **[リージョン/アフィニティ グループ/仮想ネットワーク]** ボックスで、この仮想イメージをホストするリージョンを選択します。
+5. On the **Virtual machine mode** page, provide the following information:
+	- Select **Standalone Virtual Machine**.
+	- In the **DNS NAME** box, provide the first portion of a DNS name of your choice, so that it completes a name in the format **TESTNAME.cloudapp.net** 
+	- In the **REGION/AFFINITY GROUP/VIRTUAL NETWORK** box, select a region where this virtual image will be hosted.
 
-	矢印をクリックして次へ進みます。
+	Click the next arrow to continue.
 
-	![VM モード][Image5]
+	![VM Mode][Image5]
 
-6. **[仮想マシンのオプション]** ページで、次の情報を指定します。
-	- **[可用性セット]** ボックスの一覧の **[(なし)]** を選択します。
-	- 法律条項を読み、同意します。
+6. On the **Virtual machine options** page:
+	- In the **AVAILABILITY SET** box, select **(none)**. 
+	- Read and accept the legal terms.
 
-	![VM オプション][Image6]
+	![VM Options][Image6]
 
-7. 続行するには、右下隅にあるチェック マークをクリックします。
+7. Click the check mark in the bottom right corner to continue.
 
-8. Windows Azure によって仮想マシンの準備が行われるまで待ちます。仮想マシンの状態は次のように進行します。
+8. Wait while Azure prepares your virtual machine. Expect the virtual machine status to proceed through:
 
-	- 開始中 (プロビジョニング)
-	- 停止済み
-	- 開始中 (プロビジョニング)
-	- 実行中 (プロビジョニング)
-	- 実行中
+	- Starting (Provisioning)
+	- Stopped
+	- Starting (Provisioning)
+	- Running (Provisioning)
+	- Running
 	
 
-##<a id="RemoteDesktop">リモート デスクトップを使用して仮想マシンを開き、セットアップを完了する</a>
+##<a id="RemoteDesktop">Open the virtual machine using Remote Desktop and complete setup</a>
 
-1. プロビジョニングが完了したら、仮想マシンの名前をクリックして [ダッシュボード] ページに移動します。ページの下部にある **[接続]** をクリックします。
+1. When provisioning completes, click on the name of your virtual machine to go to the DASHBOARD page. At the bottom of the page, click **Connect**.
 
-	![[ダッシュボード] ページの選択][Image5b]
-2. Windows リモート デスクトップ プログラム (`%windir%\system32\mstsc.exe`) を使用して rpd ファイルを開くことを選択します。
-
-	
-3. **[Windows セキュリティ]** ダイアログ ボックスで、先ほど指定したローカル管理者アカウントのパスワードを入力します (仮想マシンの資格情報を確認するように求められることがあります)。
-
-4. この仮想マシンに初めてログオンした場合は、デスクトップのセットアップや Windows の更新プログラムの適用、Windows の初期構成タスク (sysprep) の完了など複数のプロセスが必要になる場合があります。Windows sysprep の完了後、SQL Server セットアップによって構成タスクが完了されます。これらのタスクにより、完了までに多少の遅延が生じることがあります。SQL Server のセットアップが完了するまでは、`SELECT @@SERVERNAME` から正しい名前が返されないことがあります。
-
-Windows リモート デスクトップで仮想マシンに接続したら、仮想マシンは他のコンピューターと同様に使用できます。SQL Server Management Studio (仮想マシン上で実行) を使用して、通常どおりに SQL Server の既定インスタンスに接続します。
-
-##<a id="SSMS">別のコンピューターにある SQL Server Management Studio を使用して仮想マシンに接続するための構成手順を完了する</a>
-
-インターネットから SQL Server インスタンスに接続するには、次のタスクを完了している必要があります。詳細については、この後のセクションで説明します。
-
-- [仮想マシン用の TCP エンドポイントを作成する](#Endpoint)
-- [Windows ファイアウォールで TCP ポートを開く](#FW)
-- [TCP プロトコルでリッスンするように SQL Server を構成する](#TCP)
-- [混合モード認証用に SQL Server を構成する](#Mixed)
-- [SQL Server 認証ログインを作成する](#Logins)
-- [仮想マシンの DNS 名を特定する](#DNS)
-- [別のコンピューターからデータベース エンジンに接続する](#cde)
-- [アプリケーションからデータベース エンジンに接続する](#cdea)
-
-次の図は、接続パスの概要を示したものです。
-
-![SQL Server 仮想マシンに接続する][Image8b]
-
-###<a id="Endpoint">仮想マシン用の TCP エンドポイントを作成する</a>
-
-仮想マシンには、着信する TCP 通信をリッスンするエンドポイントが必要です。この Windows Azure 構成手順により、仮想マシンからアクセスできる TCP ポートに、着信する TCP ポート トラフィックが送信されます。
-
-1. Windows Azure の管理ポータルで、**[仮想マシン]** をクリックします。
+	![Select Dashboard Page][Image5b]
+2. Choose to open the rpd file using the Windows Remote Desktop program (`%windir%\system32\mstsc.exe`).
 
 	
-2. 新しく作成した仮想マシンをクリックします。仮想マシンに関する情報が表示されます。
+3. At the **Windows Security** dialog box, provide the password for the local administrator account that you specified in an earlier step. (You might be asked to verify the credentials of the virtual machine.)
+
+4. The first time you log on to this virtual machine, several processes may need to complete, including setup of your desktop, Windows updates, and completion of the Windows initial configuration tasks (sysprep). After Windows sysprep completes, SQL Server setup  completes configuration tasks. These tasks make cause a short delay while they complete. `SELECT @@SERVERNAME` may not return the correct name until SQL Server setup completes.
+
+Once you are connected to the virtual machine with Windows Remote Desktop, the virtual machine works much like any other computer. Connect to the default instance of SQL Server with SQL Server Management Studio (running on the virtual machine) in the normal way. 
+
+##<a id="SSMS">Complete Configuration steps to connect to the virtual machine Using SQL Server Management Studio on another computer</a>
+
+Before you can connect to the instance of SQL Server from the internet, you must complete the following tasks as described in the sections that follow:
+
+- [Create a TCP endpoint for the virtual machine](#Endpoint)
+- [Open TCP ports in the Windows firewall](#FW)
+- [Configure SQL Server to listen on the TCP protocol](#TCP)
+- [Configure SQL Server for mixed mode authentication](#Mixed)
+- [Create SQL Server authentication logins](#Logins)
+- [Determine the DNS name of the virtual machine](#DNS)
+- [Connect to the Database Engine from another computer](#cde)
+- [Connecting to the Database Engine from your application] (#cdea)
+
+The connection path is summarized by the following diagram:
+
+![Connecting to a SQL Server virtual machine][Image8b]
+
+###<a id="Endpoint">Create a TCP endpoint for the virtual machine</a>
+
+The virtual machine must have an endpoint to listen for incoming TCP communication. This Azure configuration step, directs incoming TCP port traffic to a TCP port that is accessible to the virtual machine.
+
+1. On the Azure Management Portal, click on **VIRTUAL MACHINES**.
+
+	
+2. Click on your newly created virtual machine. Information about your virtual machine is presented.
 	
 
-3. ページの最上部近くにある **[エンドポイント]** を選択し、ページの下部にある **[エンドポイントの追加]** をクリックします。
+3. Near the top of the page, select the **ENDPOINTS** page, and then at the bottom of the page, click **ADD ENDPOINT**.
 
-	![[エンドポイントの追加] をクリックする][Image28]
+	![Click ADD ENDPOINT][Image28]
 
-4. **[仮想マシンにエンドポイントを追加します]** ページで、**[エンドポイントの追加]** をクリックし、次へ進む矢印をクリックして続行します。
+4. On the **Add Endpoint to Virtual Machine** page, click **Add Endpoint**, and then click the Next arrow to continue.
 
-	![[エンドポイントの追加] をクリックする][Image29]
+	![Click Add endpoint][Image29]
 
-5. **[エンドポイントの詳細を指定します]** ページで、次の情報を指定します。
+5. On the **Specify the details of the endpoint** page, provide the following information.
 
-	- **[名前]** ボックスに、エンドポイントの名前を指定します。
-	- **[プロトコル]** ボックスの一覧の **[TCP]** を選択します。**[プライベート ポート]** ボックスに、SQL Server の既定のリスニング ポートである「**1433**」と入力することもできます。同様に、**[パブリック ポート]** ボックスに「**57500**」と入力することもできます。多くの組織は、悪意のある攻撃を避けるために異なるポート番号を選択することに注意してください。
-
-
-	![エンドポイント画面][Image30]
-
-6. チェック マークをクリックして続行します。エンドポイントが作成されます。
-
-	![エンドポイントが追加された VM][Image31]
-
-###<a id="FW">データベース エンジンの既定のインスタンス用に Windows ファイアウォールで TCP ポートを開く</a>
-
-1. Windows リモート デスクトップを介して仮想マシンに接続します。ログインしたら、[スタート] ボタンをクリックし、**[ファイル名を指定して実行]** をクリックします。次に、「**WF.msc**」と入力して **[OK]** をクリックします。
-
-	![ファイアウォール プログラムを開始する][Image12]
-2. **[セキュリティが強化された Windows ファイアウォール]** の左ペインで、**[受信の規則]** を右クリックし、[操作] ペインの **[新しい規則]** をクリックします。
-
-	![新しい規則][Image13]
-
-3. **[規則の種類]** ダイアログ ボックスで、**[ポート]** を選択して **[次へ]** をクリックします。
-
-4. **[プロトコルおよびポート]** ダイアログ ボックスで、**[TCP]** を選択します。**[特定のローカル ポート]** を選択し、データベース エンジン インスタンスのポート番号を入力します (既定のインスタンスの場合は「**1433**」を指定し、エンドポイントの手順でプライベート ポートに別のポート番号を指定した場合はその番号を指定します)。
-
-	![TCP ポート 1433][Image14]
-
-5. **[次へ]** をクリックします。
-
-6. **[操作]** ダイアログ ボックスで、**[接続を許可する]** を選択し、**[次へ]** をクリックします。
-
-	**セキュリティに関する注意:** **[セキュリティで保護されている場合のみ接続を許可する]** を選択すると、セキュリティが追加されます。お使いの環境で追加のセキュリティ オプションを構成する場合はこのオプションを選択してください。
-
-	![接続を許可する][Image15]
-
-7. **[プロファイル]** ダイアログ ボックスで、**[パブリック]** をオンにし、**[次へ]** をクリックします。
-
-    **セキュリティに関する注意:** **[パブリック]** をオンにすると、インターネット経由のアクセスが許可されます。可能であれば、できるだけ制限の厳しいプロファイルを選択してください。
-
-	![パブリック プロファイル][Image16]
-
-8. **[名前]** ダイアログ ボックスで、この規則の名前と説明を入力し、**[完了]** をクリックします。
-
-	![規則の名前][Image17]
-
-必要に応じて他のコンポーネント用に追加のポートを開きます。詳細については、「[SQL Server のアクセスを許可するための Windows ファイアウォールの構成](http://msdn.microsoft.com/ja-jp/library/cc646023.aspx)」を参照してください。
+	- In the **NAME** box, provide a name for the endpoint.
+	- In the **PROTOCOL** box, select **TCP**. You may type SQL Server's default listening port **1433** in the **Private Port** box. Similarly, you may type **57500** in the **PUBLIC PORT** box. Note that many organizations select different port numbers to avoid malicious security attacks.
 
 
-###<a id="TCP">TCP プロトコルでリッスンするように SQL Server を構成する</a>
+	![Endpoint screen][Image30]
 
-1. リモート デスクトップを使用して仮想マシンに接続している状態で、[スタート] メニューの **[すべてのプログラム]** をクリックし、**[Microsoft SQL Server** *バージョン*]、**[構成ツール]**、**[SQL Server 構成マネージャー]** の順にクリックします。
+6. Click the check mark to continue. The endpoint is created.
+
+	![VM with Endpoint][Image31]
+
+###<a id="FW">Open TCP ports in the Windows firewall for the default instance of the Database Engine</a>
+
+1. Connect to the virtual machine via Windows Remote Desktop. Once logged in, on the Start menu, click **Run**, type **WF.msc**, and then click **OK**.
+
+	![Start the Firewall Program][Image12]
+2. In the **Windows Firewall with Advanced Security**, in the left pane, right-click **Inbound Rules**, and then click **New Rule** in the action pane.
+
+	![New Rule][Image13]
+
+3. In the **Rule Type** dialog box, select **Port**, and then click **Next**.
+
+4. In the **Protocol and Ports** dialog box, select **TCP**. Select **Specific local ports**, and then type the port number of the instance of the Database Engine (**1433** for the default instance or your choice for the private port in the endpoint step). 
+
+	![TCP Port 1433][Image14]
+
+5. Click **Next**.
+
+6. In the **Action** dialog box, select **Allow the connection**, and then click **Next**.
+
+	**Security Note:** Selecting **Allow the connection if it is secure** can provide additional security. Select this option if you want to configure additional security options in your environment.
+
+	![Allow Connections][Image15]
+
+7. In the **Profile** dialog box, select **Public**, and then click **Next**. 
+
+    **Security Note:**  Selecting **Public** allows access over the internet. Whenever possible, select a more restrictive profile.
+
+	![Public Profile][Image16]
+
+8. In the **Name** dialog box, type a name and description for this rule, and then click **Finish**.
+
+	![Rule Name][Image17]
+
+Open additional ports for other components as needed. For more information, see [Configuring the Windows Firewall to Allow SQL Server Access](http://msdn.microsoft.com/en-us/library/cc646023.aspx).
+
+
+###<a id="TCP">Configure SQL Server to listen on the TCP protocol</a>
+
+1. While connected to the virtual machine by using Remote Desktop, on the Start menu, click **All Programs**, click **Microsoft SQL Server** *version*, click **Configuration Tools**, and then click **SQL Server Configuration Manager**.
 	
-	![SSCM を開く][Image9]
+	![Open SSCM][Image9]
 
-2. SQL Server 構成マネージャーのコンソール ペインで、**[SQL Server ネットワークの構成]** を展開します。
+2. In SQL Server Configuration Manager, in the console pane, expand **SQL Server Network Configuration**.
 
-3. コンソール ペインで **[_インスタンス名_ のプロトコル]** をクリックします (既定のインスタンスでは、**[MSSQLSERVER のプロトコル]** です)。
+3. In the console pane, click **Protocols for _instance name_**. (The default instance is **Protocols for MSSQLSERVER**.)
 
-4. 詳細ウィンドウで、[TCP] を右クリックします。ギャラリー イメージの場合、その状態は既定で [有効] です。カスタム イメージの場合、**[有効化]** をクリックします (状態が [無効] の場合)。
+4. In the details pane, right-click TCP, it should be Enabled for the gallery images by default. For your custom images, click **Enable** (if its status is Disabled.)
 
-	![TCP を有効にする][Image10]
+	![Enable TCP][Image10]
 
-5. コンソール ペインで、**[SQL Server のサービス]** をクリックします (データベース エンジンの再起動は次の手順が完了するまで延期されることがあります)。
+5. In the console pane, click **SQL Server Services**. (Restarting the Database Engine can be postponed until completion of the next step.)
 
-6. 詳細ペインで **[SQL Server (_インスタンス名_)]** (既定のインスタンスでは **[SQL Server (MSSQLSERVER)]**) を右クリックして、**[再起動]** をクリックします。これにより、SQL Server のインスタンスが停止し、再起動されます。
+6. In the details pane, right-click **SQL Server (_instance name_)** (the default instance is **SQL Server (MSSQLSERVER)**), and then click **Restart**, to stop and restart the instance of SQL Server. 
 
-	![データベース エンジンの再起動][Image11]
+	![Restart Database Engine][Image11]
 
-7. SQL Server 構成マネージャーを閉じます。
+7. Close SQL Server Configuration Manager.
 
-SQL Server データベース エンジン用のプロトコルを有効にする方法の詳細については、「[サーバー ネットワーク プロトコルの有効化または無効化](http://msdn.microsoft.com/ja-jp/library/ms191294.aspx)」を参照してください。
+For more information about enabling protocols for the SQL Server Database Engine, see [Enable or Disable a Server Network Protocol](http://msdn.microsoft.com/en-us/library/ms191294.aspx).
 
-###<a id="Mixed">混合モード認証用に SQL Server を構成する</a>
+###<a id="Mixed">Configure SQL Server for mixed mode authentication</a>
 
-ドメイン環境がない場合、SQL Server データベース エンジンで Windows 認証を使用することはできません。別のコンピューターからデータベース エンジンに接続するには、混合モード認証用に SQL Server を構成します。混合モード認証では、SQL Server 認証と Windows 認証の両方が許可されます (Windows Azure の仮想ネットワークを構成した場合は、混合モード認証の構成が不要である可能性があります)。詳細については、「[Windows Azure の仮想マシンにおける SQL Server](http://go.microsoft.com/fwlink/?LinkId=294719)」ドキュメント セットの「[Windows Azure の仮想マシンにおける SQL Server の接続に関する考慮事項](http://go.microsoft.com/fwlink/?LinkId=294723)」トピックを参照してください。
+The SQL Server Database Engine cannot use Windows Authentication without domain environment. To connect to the Database Engine from another computer, configure SQL Server for mixed mode authentication. Mixed mode authentication allows both SQL Server Authentication and Windows Authentication. (Configuring mixed mode authentication might not be necessary if you have configured an Azure Virtual Network. For more information, see [Connectivity Considerations for SQL Server in Azure Virtual Machines](http://go.microsoft.com/fwlink/?LinkId=294723) topic in the [SQL Server in Azure Virtual Machines](http://go.microsoft.com/fwlink/?LinkId=294719) documentation set.
 
-1. リモート デスクトップを使用して仮想マシンに接続している状態で、[スタート] メニューの **[すべてのプログラム]** をクリックし、**[Microsoft SQL Server _バージョン_]**、**[SQL Server Management Studio]** の順にクリックします。
+1. While connected to the virtual machine by using Remote Desktop, on the Start menu, click **All Programs**, click **Microsoft SQL Server _version_**, and then click **SQL Server Management Studio**. 
 
-	![SSMS を起動する][Image18]
+	![Start SSMS][Image18]
 
-	初めて Management Studio を開く場合は、ユーザーの Management Studio 環境の作成が必要になります。これには数分かかることがあります。
+	The first time you open Management Studio it must create the users Management Studio environment. This may take a few moments.
 
-2. Management Studio が開くと、**[サーバーへの接続]** ダイアログ ボックスが表示されます。**[サーバー名]** ボックスに、オブジェクト エクスプローラーを使用してデータベース エンジンに接続する仮想マシンの名前を入力します (**[サーバー名]** として、仮想マシン名の代わりに **[(ローカル)]** または単一のピリオドを指定することもできます)。**[Windows 認証]** を選択し、**[ユーザー名]** ボックスの **[_VM 名_\_ローカル管理者_]** はそのままにしておきます。**[接続]** をクリックします。
+2. When opening, Management Studio presents the **Connect to Server** dialog box. In the **Server name** box, type the name of the virtual machine to connect to the Database Engine  with the Object Explorer. (Instead of the virtual machine name you can also use **(local)** or a single period as the **Server name**. Select **Windows Authentication**, and leave **_your_VM_name_\your_local_administrator** in the **User name** box. Click **Connect**.
 
-	![サーバーに接続する][Image19]
+	![Connect to Server][Image19]
 
-3. SQL Server Management Studio のオブジェクト エクスプローラーで、SQL Server のインスタンス名 (仮想マシン名) を右クリックし、**[プロパティ]** をクリックします。
+3. In SQL Server Management Studio Object Explorer, right-click the name of the instance of SQL Server (the virtual machine name), and then click **Properties**.
 
-	![サーバー プロパティ][Image20]
+	![Server Properties][Image20]
 
-4. **[セキュリティ]** ページの **[サーバー認証]** で、**[SQL Server 認証モードと Windows 認証モード]** を選択し、**[OK]** をクリックします。
+4. On the **Security** page, under **Server authentication**, select **SQL Server and Windows Authentication mode**, and then click **OK**.
 
-	![認証モードを選択する][Image21]
+	![Select Authentication Mode][Image21]
 
-5. [SQL Server Management Studio] ダイアログ ボックスで、SQL Server の再起動が必要であるというメッセージに対して **[OK]** をクリックします。
+5. In the SQL Server Management Studio dialog box, click **OK** to acknowledge the requirement to restart SQL Server.
 
-6. オブジェクト エクスプローラーでサーバーを右クリックし、**[再起動]** をクリックします (実行中であれば、SQL Server エージェントも再起動する必要があります)。
+6. In Object Explorer, right-click your server, and then click **Restart**. (If SQL Server Agent is running, it must also be restarted.)
 
-	![再起動][Image22]
+	![Restart][Image22]
 
-7. [SQL Server Management Studio] ダイアログ ボックスで、SQL Server の再起動に同意を求めるメッセージに対して **[はい]** をクリックします。
+7. In the SQL Server Management Studio dialog box, click **Yes** to agree that you want to restart SQL Server.
 
-###<a id="Logins">SQL Server 認証ログインを作成する</a>
+###<a id="Logins">Create SQL Server authentication logins</a>
 
-別のコンピューターからデータベース エンジンに接続するには、1 つ以上の SQL Server 認証ログインを作成する必要があります。
+To connect to the Database Engine from another computer, you must create at least one SQL Server authentication login.
 
-1. SQL Server Management Studio のオブジェクト エクスプローラーで、新しいログインを作成するサーバー インスタンスのフォルダーを展開します。
+1. In SQL Server Management Studio Object Explorer, expand the folder of the server instance in which you want to create the new login.
 
-2. **[セキュリティ]** フォルダーを右クリックし、**[新規作成]** をポイントして、**[ログイン]** を選択します。
+2. Right-click the **Security** folder, point to **New**, and select **Login...**.
 
-	![新しいログイン][Image23]
+	![New Login][Image23]
 
-3. **[ログイン - 新規作成]** ダイアログ ボックスの **[全般]** ページで、新しいユーザーの名前を **[ログイン名]** ボックスに入力します。
+3. In the **Login - New** dialog box, on the **General** page, enter the name of the new user in the **Login name** box.
 
-4. **[SQL Server 認証]** を選択します。
+4. Select **SQL Server authentication**.
 
-5. **[パスワード]** ボックスに、新しいユーザーのパスワードを入力します。**[パスワードの確認]** ボックスに、パスワードを再度入力します。
+5. In the **Password** box, enter a password for the new user. Enter that password again into the **Confirm Password** box.
 
-6. パスワードの強制と複雑さに関するパスワード ポリシー オプションを適用するには、**[パスワード ポリシーを適用する]** (推奨) をオンにします。[SQL Server 認証] が選択されている場合、これは既定のオプションです。
+6. To enforce password policy options for complexity and enforcement, select **Enforce password policy** (recommended). This is a default option when SQL Server authentication is selected.
 
-7. 失効に関するパスワード ポリシー オプションを適用するには、**[パスワードの期限を適用する]** (推奨) をオンにします。このチェック ボックスをオンにする場合は、[パスワード ポリシーを適用する] がオンになっている必要があります。[SQL Server 認証] が選択されている場合、これは既定のオプションです。
+7. To enforce password policy options for expiration, select **Enforce password expiration** (recommended). Enforce password policy must be selected to enable this checkbox. This is a default option when SQL Server authentication is selected.
 
-8. ログインの初回使用後に新しいパスワードの作成をユーザーに強制するには、**[ユーザーは次回ログイン時にパスワードを変更する]** をオンにします (このログインが別のユーザー用の場合は、このチェック ボックスをオンにすることをお勧めします。ログインが自分用の場合は、オンにしないでください)。このチェック ボックスをオンにする場合は、[パスワードの期限を適用する] がオンになっている必要があります。[SQL Server 認証] が選択されている場合、これは既定のオプションです。
+8. To force the user to create a new password after the first time the login is used, select **User must change password at next login** (Recommended if this login is for someone else to use. If the login is for your own use, do not select this option.) Enforce password expiration must be selected to enable this checkbox. This is a default option when SQL Server authentication is selected. 
 
-9. **[既定のデータベース]** ボックスの一覧から、ログインの既定のデータベースを選択します。このオプションの既定値は **master** です。ユーザー データベースをまだ作成していない場合は、**master** のままにしておきます。
+9. From the **Default database** list, select a default database for the login. **master** is the default for this option. If you have not yet created a user database, leave this set to **master**.
 
-10. **[既定の言語]** の値は、**[<既定>]** のままにしておきます。
+10. In the **Default language** list, leave **default** as the value.
     
-	![ログインのプロパティ][Image24]
+	![Login Properties][Image24]
 
-11. これが初めて作成するログインである場合は、このログインを SQL Server 管理者専用に使用することが考えられます。その場合は、**[サーバー ロール]** ページで、**[sysadmin]** をオンにします。
+11. If this is the first login you are creating, you may want to designate this login as a SQL Server administrator. If so, on the **Server Roles** page, check **sysadmin**. 
 
-	**セキュリティに関する注意:** sysadmin 固定サーバー ロールのメンバーには、データベース エンジンに対する完全な制御権が与えられています。このロールのメンバーは、適切なユーザーのみに限定してください。
+	**Security Note:** Members of the sysadmin fixed server role have complete control of the Database Engine. You should carefully restrict membership in this role.
 
 	![sysadmin][Image25]
 
-12. [OK] をクリックします。
+12. Click OK.
 
-SQL Server のログインの詳細については、「[ログインの作成](http://msdn.microsoft.com/ja-jp/library/aa337562.aspx)」を参照してください。
+For more information about SQL Server logins, see [Create a Login](http://msdn.microsoft.com/en-us/library/aa337562.aspx).
 
 
 
-###<a id="DNS">仮想マシンの DNS 名を特定する</a>
+###<a id="DNS">Determine the DNS name of the virtual machine</a>
 
-別のコンピューターから SQL Server データベース エンジンに接続するには、仮想マシンのドメイン ネーム システム (DNS) 名が必要になります (これは、仮想マシンを識別するためにインターネットで使用される名前です。IP アドレスを使用することもできますが、Windows Azure で冗長化またはメンテナンスのためにリソースが移動された場合、IP アドレスは変わる可能性があります。DNS 名は、新しい IP アドレスにリダイレクトできるため、安定しています)。
+To connect to the SQL Server Database Engine from another computer, you must know the Domain Name System (DNS) name of the virtual machine. (This is the name the internet uses to identify the virtual machine. You can use the IP address, but the IP address might change when Azure moves resources for redundancy or maintenance. The DNS name will be stable because it can be redirected to a new IP address.)  
 
-1. Windows Azure の管理ポータルで (または前の手順から)、**[仮想マシン]** を選択します。
+1. In the Azure Management Portal (or from the previous step), select **VIRTUAL MACHINES**. 
 
-2. **[仮想マシン インスタンス]** ページの **[DNS 名]** 列で、**http://** から始まる仮想マシンの DNS 名を探してコピーします (名前全体がユーザー インターフェイスに表示されないことがありますが、右クリックしてコピーすることができます)。
+2. On the **VIRTUAL MACHINE INSTANCES** page, in the **DNS NAME** column, find and copy the DNS name for the virtual machine which appears preceded by **http://**. (The user interface might not display the entire name, but you can right-click on it, and select copy.)
 
-	![DNS 名][Image32]
+	![DNS Name][Image32]
 
-### <a id="cde">別のコンピューターからデータベース エンジンに接続する</a>
+### <a id="cde">Connect to the Database Engine from another computer</a>
  
-1. インターネットに接続されたコンピューターで、SQL Server Management Studio を開きます。
+1. On a computer connected to the internet, open SQL Server Management Studio.
 
-2. **[サーバーへの接続]** または **[データベース エンジンへの接続]** ダイアログ ボックスで、**[サーバー名]** ボックスに、先のタスクで決定した仮想マシンの DNS 名とパブリック エンドポイントのポート番号を *DNS 名,ポート番号* という形式で入力します (例: **tutorialtestVM.cloudapp.net,57500**)。
+2. In the **Connect to Server** or **Connect to Database Engine** dialog box, in the **Server name** box, enter the DNS name of the virtual machine (determined in the previous task) and a public endpoint port number in the format of *DNSName,portnumber* such as **tutorialtestVM.cloudapp.net,57500**.
 
-3. **[認証]** ボックスで、**[SQL Server 認証]** を選択します。
+3. In the **Authentication** box, select **SQL Server Authentication**.
 
-4. **[ログイン]** ボックスに、前のタスクで作成したログインの名前を入力します。
+4. In the **Login** box, type the name of a login that you created in an earlier task.
 
-5. **[パスワード]** ボックスに、前のタスクで作成したログインのパスワードを入力します。
+5. In the **Password** box, type the password of the login that you create in an earlier task.
 
-6. **[接続]** をクリックします。
+6. Click **Connect**.
 
-	![SSMS を使用した接続][Image33]
+	![Connect using SSMS][Image33]
 
-### <a id="cdea"> アプリケーションからデータベース エンジンに接続する</a>
+### <a id="cdea"> Connecting to the Database Engine from your application</a>
 
-Windows Azure の仮想マシンで実行されている SQL Server のインスタンスに Management Studio から接続できる場合は、次のような接続文字列を使用して接続できます。
+If you can connect to an instance of SQL Server running on an Azure virtual machine by using Management Studio, you should be able to connect by using a connection string similar to the following.
 
 	connectionString="Server=<DNS_Name>;Integrated Security=false;User ID=<login_name>;Password=<your_password>;"providerName="System.Data.SqlClient"
 
-詳細については、「[How to Troubleshoot Connecting to the SQL Server Database Engine (SQL Server データベース エンジンへの接続に関するトラブルシューティングの方法)](http://social.technet.microsoft.com/wiki/contents/articles/how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx)」を参照してください。
+For more information, see [How to Troubleshoot Connecting to the SQL Server Database Engine](http://social.technet.microsoft.com/wiki/contents/articles/how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx).
 
-##<a id="Optional">次の手順</a>
-プラットフォーム イメージを使用して Windows Azure に SQL Server 仮想マシンを作成し、構成する方法を見てきました。SQL Server を Windows Azure の仮想マシンで使用するときは、ライブラリの「[Windows Azure の仮想マシンにおける SQL Server](http://go.microsoft.com/fwlink/p/?LinkId=294719)」ドキュメント セットで説明されている詳細なガイダンスに従うことをお勧めします。このドキュメント セットには、詳細なガイダンスを説明した一連の記事とチュートリアルが含まれます。このシリーズに含まれるセクションは次のとおりです。
+##<a id="Optional">Next Steps</a>
+You've seen how to create and configure a SQL Server on an Azure virtual machine using the platform image. When using SQL Server in Azure Virtual Machines, we recommend that you follow the detailed guidance given in the [SQL Server in Azure Virtual Machines](http://go.microsoft.com/fwlink/p/?LinkId=294719) documentation in the library. This documentation set includes a series of articles and tutorials that provide detailed guidance. The series includes the following sections:
 
-[Windows Azure の仮想マシンにおける SQL Server](http://go.microsoft.com/fwlink/p/?LinkId=294719)
+[SQL Server in Azure Virtual Machines](http://go.microsoft.com/fwlink/p/?LinkId=294719)
 
-[Windows Azure の仮想マシンでの SQL Server の概要](http://go.microsoft.com/fwlink/p/?LinkId=294720)
+[Getting Started with SQL Server in Azure Virtual Machines](http://go.microsoft.com/fwlink/p/?LinkId=294720)
 
-[Windows Azure の仮想マシンに SQL Server を移行するための準備](http://go.microsoft.com/fwlink/p/?LinkId=294721)
+[Getting Ready to Migrate to SQL Server in Azure Virtual Machines](http://go.microsoft.com/fwlink/p/?LinkId=294721)
 
-- Windows Azure の仮想マシン間でデータ ディスクを使用して SQL Server のデータベース ファイルとスキーマを移行する方法
+- How to migrate SQL Server database files and schema between virtual machines in Azure using data disks
 
-[Windows Azure の仮想マシンへの SQL Server の展開](http://go.microsoft.com/fwlink/p/?LinkId=294722)
+[SQL Server Deployment in Azure Virtual Machines](http://go.microsoft.com/fwlink/p/?LinkId=294722)
 
-- CSUpload を使用してデータ ディスク内の SQL Server データ ファイルおよびセットアップ ファイルをオンプレミスから Windows Azure にコピーする方法
-- Hyper-V を使用してベースとなる仮想マシンをオンプレミスで作成する方法
-- 既にあるオンプレミスの SQL Server を使用して Windows Azure に SQL Server の仮想マシンを作成する方法
-- 既にあるオンプレミスの SQL Server 仮想マシンを使用して Windows Azure に SQL Server の仮想マシンを作成する方法
-- PowerShell を使用して Windows Azure に SQL Server 仮想マシンを設定する方法
-- 接続されたデータ ディスクを使用してデータベース ファイルを格納する方法
+- How to copy SQL Server data and setup files in a data disk from on-premises to Azure using CSUpload
+- How to create a base virtual machine on-premises using Hyper-V
+- How to create a SQL Server virtual machine in Azure using the existing on-premises SQL Server disk
+- How to create a SQL Server virtual machine in Azure using the existing on-premises SQL Server virtual machine 
+- How to use PowerShell to set up a SQL Server virtual machine in Azure 
+- How to Use Attached Data Disk to Store Database Files
 
-[Windows Azure の仮想マシンにおける SQL Server の接続に関する考慮事項](http://go.microsoft.com/fwlink/p/?LinkId=294723)
+[Connectivity Considerations for SQL Server in Azure Virtual Machines](http://go.microsoft.com/fwlink/p/?LinkId=294723)
 
-- チュートリアル: 同一クラウド サービス内の SQL Server に接続する方法
-- チュートリアル: 異なるクラウド サービス内の SQL Server に接続する方法
-- チュートリアル: ASP.NET アプリケーションを Windows Azure 内の SQL Server に仮想ネットワークを介して接続する方法
+- Tutorial: Connect to SQL Server in the same cloud service 
+- Tutorial: Connect to SQL Server in a different cloud service 
+- Tutorial: Connect ASP.NET application to SQL Server in Azure via Virtual Network 
 
-[ホワイト ペーパー: Windows Azure の仮想マシンにおける SQL Server のパフォーマンス ガイダンス](http://msdn.microsoft.com/library/windowsazure/dn248436.aspx)
+[White paper: Performance Guidance for SQL Server in Azure Virtual Machines](http://msdn.microsoft.com/library/windowsazure/dn248436.aspx)
 
-[Windows Azure の仮想マシンにおける SQL Server のパフォーマンスに関する考慮事項](http://go.microsoft.com/fwlink/?LinkId=294724)
+[Performance Considerations for SQL Server in Azure Virtual Machines](http://go.microsoft.com/fwlink/?LinkId=294724)
 
-[Windows Azure の仮想マシンにおける SQL Server のセキュリティに関する考慮事項](http://go.microsoft.com/fwlink/p/?LinkId=294725)
+[Security Considerations for SQL Server in Azure Virtual Machines](http://go.microsoft.com/fwlink/p/?LinkId=294725)
 
-[Windows Azure の仮想マシンで実行される SQL Server のトラブルシューティングと監視](http://go.microsoft.com/fwlink/p/?LinkId=294726)
+[Troubleshooting and Monitoring for SQL Server in Azure Virtual Machines](http://go.microsoft.com/fwlink/p/?LinkId=294726)
 
-[Windows Azure の仮想マシン内の SQL Server の高可用性と災害復旧](http://go.microsoft.com/fwlink/p/?LinkId=294727)
+[High Availability and Disaster Recovery for SQL Server in Azure Virtual Machines](http://go.microsoft.com/fwlink/p/?LinkId=294727)
 
-- チュートリアル: Windows Azure AlwaysOn 可用性グループ (GUI)
-- チュートリアル: Windows Azure AlwaysOn 可用性グループ (PowerShell)
-- チュートリアル: ハイブリッド IT AlwaysOn 可用性グループ
-- チュートリアル: Windows Azure における高可用性のためのデータベース ミラーリング
-- チュートリアル: Windows Azure における障害復旧のためのデータベース ミラーリング
-- チュートリアル: ハイブリッド IT における障害復旧のためのデータベース ミラーリング
-- チュートリアル: ハイブリッド IT における障害復旧のためのログ配布
+- Tutorial: AlwaysOn Availability Groups in Azure (GUI)
+- Tutorial: AlwaysOn Availability Groups in Azure (PowerShell)
+- Tutorial: AlwaysOn Availability Groups in Hybrid IT
+- Tutorial: Database Mirroring for High Availability in Azure
+- Tutorial: Database Mirroring for Disaster Recovery in Azure
+- Tutorial: Database Mirroring for Disaster Recovery in Hybrid IT 
+- Tutorial: Log Shipping for Disaster Recovery in Hybrid IT 
 
-[Windows Azure の仮想マシンにおける SQL Server のバックアップと復元](http://go.microsoft.com/fwlink/p/?LinkId=294728)
+[Backup and Restore for SQL Server in Azure Virtual Machines](http://go.microsoft.com/fwlink/p/?LinkId=294728)
 
-[Windows Azure の仮想マシンでの SQL Server Business Intelligence](http://go.microsoft.com/fwlink/p/?LinkId=294729)
+[SQL Server Business Intelligence in Azure Virtual Machines](http://go.microsoft.com/fwlink/p/?LinkId=294729)
 
-- SQL Server BI と SharePoint 2010 を実行する Windows Azure VM を PowerShell を使用して作成する
-- SQL Server BI と SharePoint 2013 を実行する Windows Azure VM を PowerShell を使用して作成する
-- ネイティブ モードのレポート サーバーを実行する Windows Azure VM を PowerShell を使用して作成する
-- [ホワイト ペーパー: Windows Azure の仮想マシンでの SQL Server Business Intelligence の展開](http://msdn.microsoft.com/library/windowsazure/dn321998.aspx)
+- Use PowerShell to Create an Azure VM With SQL Server BI and SharePoint 2010
+- Use PowerShell to Create an Azure VM With SQL Server BI and SharePoint 2013
+- Use PowerShell to Create an Azure VM With a Native Mode Report Server
+- [White paper: Deploy SQL Server Business Intelligence in Azure Virtual Machines](http://msdn.microsoft.com/library/windowsazure/dn321998.aspx)
 
-[Windows Azure の仮想マシンにおける SQL Server データ ウェアハウス](http://msdn.microsoft.com/library/windowsazure/dn387396.aspx)
+[SQL Server Data Warehousing in Azure Virtual Machines](http://msdn.microsoft.com/library/windowsazure/dn387396.aspx)
 
 
 
@@ -387,4 +387,3 @@ Windows Azure の仮想マシンで実行されている SQL Server のインス
 [Image31]: ./media/virtual-machines-provision-sql-server/31VM-Connect.png
 [Image32]: ./media/virtual-machines-provision-sql-server/32DNS-Name.png
 [Image33]: ./media/virtual-machines-provision-sql-server/33Connect-SSMS.png
-

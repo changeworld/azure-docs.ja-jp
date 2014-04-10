@@ -1,4 +1,4 @@
-1. **channels** テーブルの insert.js ファイルで、次のコード行を探し、コメント アウトするかファイルから削除して、変更内容を保存します。
+1. In the insert.js file for the **channels** table, locate the following lines of code, comment them out or remove them from the file, then save your changes.
 
 		sendNotifications(item.channelUri);
 
@@ -13,9 +13,9 @@
 		    });
 		}
 		
-	insert.js ファイルに対する変更内容を保存すると、新しいバージョンのスクリプトがモバイル サービスにアップロードされます。
+	When you save changes to the insert.js file, a new version of the script is uploaded to your mobile service.
 
-2. サーバー エクスプローラーで、TodoItem テーブルを展開し、insert.js ファイルを開きます。現在の insert 関数を次のコードに置き換えて、変更内容を保存します。
+2. In Server Explorer, expand the TodoItem table, open the insert.js file and replace the current insert function with the following code, then save your changes: 
 
 		function insert(item, user, request) {
 			request.execute({
@@ -43,5 +43,4 @@
 			}
 		}
 		
-	次に、新しい TodoItem を挿入するときに、プッシュ通知をすべての登録デバイスに送信します。
-
+	Now, when you insert a new TodoItem, a push notification is sent to all registered devices.

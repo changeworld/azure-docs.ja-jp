@@ -1,125 +1,159 @@
-# Windows Azure 用 CDN の使用
+# Using CDN for Azure
 
-Windows Azure のコンテンツ配信ネットワーク (CDN) は、米国、欧州、アジア、オーストラリア、および南米にある物理ノードで、コンピューティング インスタンスの BLOB と静的コンテンツをキャッシュすることで、高帯域幅コンテンツを配信するグローバル ソリューションを開発者に提供します。現在の CDN ノードの場所の一覧については、[Windows Azure CDN ノードの場所に関するページ]を参照してください。
+The Azure Content Delivery Network (CDN) offers developers a
+global solution for delivering high-bandwidth content by caching blobs
+and static content of compute instances at physical nodes in the United
+States, Europe, Asia, Australia and South America. For a current list of
+CDN node locations, see [Azure CDN Node Locations].
 
-このタスクの手順は次のとおりです。
+This task includes the following steps:
 
-* [ステップ 1: ストレージ アカウントを作成する](#Step1)
-* [ステップ 2: ストレージ アカウントに対する新しい CDN エンドポイントを作成する](#Step2)
-* [ステップ 3: CDN コンテンツにアクセスする](#Step3)
-* [ステップ 4: CDN コンテンツを削除する](#Step4)
+* [Step 1: Create a storage account](#Step1)
+* [Step 2: Create a new CDN endpoint for your storage account](#Step2)
+* [Step 3: Access your CDN content](#Step3)
+* [Step 4: Delete your CDN content](#Step4)
 
-CDN を使用して Windows Azure データをキャッシュすることには、次のような利点があります。
+The benefits of using CDN to cache Azure data include:
 
--   コンテンツ ソースから遠く離れた場所にいる、コンテンツの読み込みに数多くの "インターネット トリップ" が必要なアプリケーションを使用するエンド ユーザーに対する、パフォーマンスとユーザー エクスペリエンスの向上
--   製品発表イベントの開始時のような、瞬間的高負荷を処理しやすくする大規模な配信スケール
+-   Better performance and user experience for end users who are far from a content source, and are using applications where many 'internet trips' are required to load content
+-   Large distributed scale to better handle instantaneous high load, say, at the start of an event such as a product launch
 
-既存の CDN の顧客は、[Windows Azure の管理ポータル]で Windows Azure CDN を使用できます。CDN はサブスクリプションのアドオン機能であり、別の[お支払いプラン]があります。
+Existing CDN customers can now use the Azure CDN in the [Azure Management Portal]. The CDN is an add-on feature to your subscription and has a separate [billing plan].
 
 <a id="Step1"> </a>
-<h2>ステップ 1: ストレージ アカウントを作成する</h2>
+<h2>Step 1: Create a storage account</h2>
 
-Windows Azure サブスクリプションの新しいストレージ アカウントを作成するには、次のステップに従います。ストレージ アカウントを使用すると、Windows Azure のストレージ サービスにアクセスできます。ストレージ アカウントは、BLOB サービス、キュー サービス、およびテーブル サービスという Windows Azure の各ストレージ サービス コンポーネントへのアクセスに使用する最高レベルの名前空間です。Windows Azure のストレージ サービスの詳細については、「[Windows Azure のストレージ サービスの使用]」を参照してください。
+Use the following procedure to create a new storage account for a
+Azure subscription. A storage account gives access to Windows
+Azure storage services. The storage account represents the highest level
+of the namespace for accessing each of the Azure storage service
+components: Blob services, Queue services, and Table services. For more
+information about the Azure storage services, see [Using the
+Azure Storage Services].
 
-ストレージ アカウントを作成するには、関連付けられているサブスクリプションのサービス管理者または共同管理者であることが必要です。
+To create a storage account, you must be either the service
+administrator or a co-administrator for the associated subscription.
 
 <div class="dev-callout">
-<strong>注</strong>
-<p>Windows Azure サービス管理 API を使用してこの操作を実行する方法については、<a href="http://msdn.microsoft.com//library/windowsazure/hh264518.aspx">ストレージ アカウントの作成に関する</a>リファレンス トピックを参照してください。</p>
+<strong>Note</strong>
+<p>For information about performing this operation by using the
+Azure Service Management API, see the <a href="http://msdn.microsoft.com/en-us/library/windowsazure/hh264518.aspx">Create Storage Account</a> reference topic.</p>
 </div>
 
-**Windows Azure サブスクリプションのストレージ アカウントを作成するには**
+**To create a storage account for an Azure subscription**
 
-1. [Windows Azure の管理ポータル]にログインします。
-2. 左下隅で **[新規]** をクリックし、**[ストレージ]** をクリックします。
-3. **[簡易作成]** をクリックします。
+1.  Log into the [Azure Management Portal].
+2.  In the lower left corner, click **New**, and then click **Storage**.
+3.  Click **Quick Create**.
 
-    **[ストレージ アカウントの作成]** ダイアログ ボックスが表示されます。
+    The **Create Storage Account** dialog appears.
 
-    ![ストレージ アカウントの作成][create-new-storage-account]
+    ![Create Storage Account][create-new-storage-account]
 
-4. **[URL]** フィールドにサブドメイン名を入力します。文字数は 3 ～ 24 文字とし、アルファベット小文字と数字を使用できます。
+4. In the **URL** field, type a subdomain name. This entry can contain from 3-24 lowercase letters and numbers.
 
-    この名前は、対応するサブスクリプションの BLOB リソース、キュー リソース、またはテーブル リソースのアドレス指定に使用される URL のホスト名になります。BLOB サービスでコンテナー リソースをアドレス指定するには、次の形式の URI を使用します。*&lt;StorageAccountLabel&gt;* は、**[URL を入力してください]** に入力した値を表します。
+    This value becomes the host name within the URI that is used to
+    address Blob, Queue, or Table resources for the subscription. To
+    address a container resource in the Blob service, you would use a
+    URI in the following format, where *&lt;StorageAccountLabel&gt;* refers
+    to the value you typed in **Enter a URL**:
 
     http://*&lt;StorageAcountLabel&gt;*.blob.core.windows.net/*&lt;mycontainer&gt;*
 
-    **重要:** この URL は、ストレージ アカウントの URI のサブドメインとなるため、Windows Azure のすべてのホステッド サービスで一意である必要があります。
+    **Important:** The URL label forms the subdomain of the storage
+    account URI and must be unique among all hosted services in Windows
+    Azure.
 
-	この値は、このストレージ アカウントの名前として、ポータルやプログラムでこのアカウントにアクセスするときにも使用されます。
+	This value is also used as the name of this storage account in the portal, or when accessing this account programmatically.
 
-5. **[リージョン/アフィニティ グループ]** ボックスの一覧で、ストレージ アカウントの場所を選択します。または、アフィニティ グループを使用します。アフィニティ グループを作成する手順については、[Windows Azure でアフィニティ グループを作成する方法に関するページ]を参照してください。
-6. **[サブスクリプション]** ボックスの一覧で、ストレージ アカウントを使用するサブスクリプションを選択します。
-7. **[ストレージ アカウントの作成]** をクリックします。ストレージ アカウントを作成するプロセスは、完了までに数分かかる場合があります。
-8. ストレージ アカウントが正常に作成されたことを確認するには、アカウントが **[ストレージ]** の一覧に表示され、状態が **[オンライン]** になっていることを確かめます。
+5.  From the **Region/Affinity Group** drop-down list, select a geographic location for the storage account. Alternatively, use an affinity group. For instructions on creating an affinity group, see [How to Create an Affinity Group in Azure].
+6. From the **Subscription** drop-down list, select the subscription that the storage account will be used with.
+7.  Click **Create Storage Account**. The process of creating the storage account might take several minutes to complete.
+8.  To verify that the storage account was created successfully, verify that the account appears in the items listed for **Storage** with a status of **Online**.
 
 <a id="Step2"> </a>
-<h2>ステップ 2: ストレージ アカウントに対する新しい CDN エンドポイントを作成する</h2>
+<h2>Step 2: Create a new CDN endpoint for your storage account</h2>
 
-ストレージ アカウントまたはホステッド サービスへの CDN アクセスを有効にすると、パブリックにアクセスできるオブジェクトは CDN エッジ キャッシュの対象になります。CDN で現在キャッシュされているオブジェクトを変更する場合、キャッシュされたコンテンツの有効期限終了時に CDN によりそのコンテンツが更新されるまでは、CDN を通じて新しいコンテンツを使用することはできません。
+Once you enable CDN access to a storage account or hosted service, all
+publicly available objects are eligible for CDN edge caching. If you
+modify an object that is currently cached in the CDN, the new content
+will not be available via the CDN until the CDN refreshes its content
+when the cached content time-to-live period expires.
 
-**ストレージ アカウントに対する新しい CDN エンドポイントを作成するには**
+**To create a new CDN endpoint for your storage account**
 
-1. [Windows Azure の管理ポータル]のナビゲーション ウィンドウで、**[CDN]** をクリックします。
+1. In the [Azure Management Portal], in the navigation pane, click **CDN**.
 
-2. リボンで、**[新規]** をクリックします。**[新規]** ダイアログで、**[アプリケーション サービス]**、**[CDN]**、**[簡易作成]** の順に選択します。
+2. On the ribbon, click **New**. In the **New** dialog, select **App Services**, then **CDN**, then **Quick Create**.
 
-3. **[元のドメイン]** ボックスで、前のセクションで作成したストレージ アカウントを、利用可能なストレージ アカウントの一覧から選択します。
+3. In the **Origin Domain** dropdown, select the storage account you created in the previous section from the list of your available storage accounts. 
 
-4. **[作成]** ボタンをクリックして、新しいエンドポイントを作成します。
+4. Click the **Create** button to create the new endpoint.
 
-5. エンドポイントが作成されると、サブスクリプションのエンドポイントの一覧に表示されます。一覧には、キャッシュされたコンテンツへのアクセスに使用する URL と元のドメインが表示されます。
+5. Once the endpoint is created, it appears in a list of endpoints for the subscription. The list view shows the URL to use to access cached content, as well as the origin domain. 
 
-	元のドメインは、CDN がコンテンツをキャッシュする場所です。元のドメインは、ストレージ アカウントまたはクラウド サービスのどちらかになります。この例では、ストレージ アカウントが使用されます。ストレージ コンテンツは、指定したキャッシュ制御の設定またはキャッシュ ネットワークの既定のヒューリスティックに従って末端サーバーにキャッシュされます。詳細については、「[BLOB コンテンツの有効期限を管理する方法](http://msdn.microsoft.com/ja-jp/library/gg680306.aspx)」を参照してください。
+	The origin domain is the location from which the CDN caches
+    content. The origin domain can be either a storage account or a cloud service; a storage account is used for the purposes of this example. Storage content is cached to edge servers according either to a cache-control setting that you specify, or to the default heuristics of the caching network. See [How to Manage Expiration of Blob Content](http://msdn.microsoft.com/en-us/library/gg680306.aspx) for more information. 
 
 
     <div class="dev-callout">
-    <strong>メモ</strong>
-    <p>エンドポイントのために作成された構成は、すぐには使用できません。CDN ネットワークを通じて伝播する登録などのために最大 60 分かかります。CDN ドメイン名を直ちに使用しようとするユーザーは、CDN を経由してコンテンツを取得できるようになるまでは状態コード 400 (正しくない要求) を受け取る場合があります。</p>
+    <strong>Note</strong>
+    <p>The configuration created for the endpoint will not
+    immediately be available; it can take up to 60 minutes for the
+    registration to propagate through the CDN network. Users who try to
+    use the CDN domain name immediately may receive status code 400
+    (Bad Request) until the content is available via the CDN.</p>
     </div>
 
 <a id="Step3"> </a>
-<h2>ステップ 3: CDN コンテンツにアクセスする</h2> 
+<h2>Step 3: Access CDN content</h2> 
 
-CDN にキャッシュされたコンテンツにアクセスするには、ポータルで提供される CDN URL を使用します。キャッシュされた BLOB のアドレスは、次のようになります。
+To access cached content on the CDN, use the CDN URL provided in the portal. The address for a cached blob will be similar to the following:
 
 http://<*CDNNamespace*\>.vo.msecnd.net/<*myPublicContainer*\>/<*BlobName*\>
 
 <a id="Step4"> </a>
-<h2>ステップ 4: CDN からコンテンツを削除する</h2>
+<h2>Step 4: Remove content from the CDN</h2>
 
-Windows Azure のコンテンツ配信ネットワーク (CDN) にオブジェクトをキャッシュする必要がなくなった場合は、次のいずれかの手順を実行できます。
+If you no longer wish to cache an object in the Azure Content
+Delivery Network (CDN), you can take one of the following steps:
 
--   Windows Azure BLOB の場合は、パブリック コンテナーから BLOB を削除できます。
--   コンテナーをパブリックではなくプライベートに設定できます。詳細については、「[コンテナーと BLOB へのアクセスの制限](http://msdn.microsoft.com/ja-jp/library/dd179354.aspx」を参照してください。
--   管理ポータルを使用して CDN エンドポイントを無効化または削除できます。
--   オブジェクトの要求に応答しなくなるようにホステッド サービスを変更できます。
+-   For an Azure blob, you can delete the blob from the public
+    container.
+-   You can make the container private instead of public. See [Restrict Access to Containers and Blobs](http://msdn.microsoft.com/en-us/library/dd179354.aspx) for more information.
+-   You can disable or delete the CDN endpoint using the Management
+    Portal.
+-   You can modify your hosted service to no longer respond to requests for the
+    object.
 
-CDN に既にキャッシュされているオブジェクトは、オブジェクトの有効期限が切れるまでキャッシュに残ったままとなります。有効期限が切れると、CDN エンドポイントがまだ有効で、オブジェクトがまだ匿名アクセス可能かどうかが CDN によって確認されます。CDN エンドポイントが無効になり、オブジェクトに匿名でアクセスできなくなった場合、オブジェクトはキャッシュされなくなります。
+An object already cached in the CDN will remain cached until the
+time-to-live period for the object expires. When the time-to-live period
+expires, the CDN will check to see whether the CDN endpoint is still
+valid and the object still anonymously accessible. If it is not, then
+the object will no longer be cached.
 
-現時点では、Windows Azure CDN で使用できる明示的な "パージ" ツールはありません。
+No explicit "purge" tool is currently available for the Azure
+CDN.
 
-## その他のリソース
+## Additional resources
 
--   [Windows Azure でアフィニティ グループを作成する方法]
--   [方法: Windows Azure サブスクリプションのストレージ アカウントを管理する]
--   [サービス管理 API について]
--   [CDN コンテンツをカスタム ドメインにマッピングする方法]
+-   [How to Create an Affinity Group in Azure]
+-   [How to: Manage Storage Accounts for an Azure Subscription]
+-   [About the Service Management API]
+-   [How to Map CDN Content to a Custom Domain]
 
-  [ストレージ アカウントの作成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh264518.aspx
-  [Windows Azure CDN ノードの場所]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg680302.aspx
-  [Windows Azure の管理ポータル]: https://manage.windowsazure.com/
-  [お支払いプラン]: /ja-jp/pricing/calculator/?scenario=full
-  [Windows Azure のストレージ サービスの使用]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee924681.aspx
-  [カスタム サブドメイン名を登録して Windows Azure の BLOB にアクセスする方法]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee795179.aspx
-  [Windows Azure でアフィニティ グループを作成する方法]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh531560.aspx
-  [Windows Azure CDN の概要]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff919703.aspx
-  [方法: Windows Azure サブスクリプションのストレージ アカウントを管理する]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh531567.aspx
-  [サービス管理 API について]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee460807.aspx
-  [CDN コンテンツをカスタム ドメインにマッピングする方法]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg680307.aspx
+  [Create Storage Account]: http://msdn.microsoft.com/en-us/library/windowsazure/hh264518.aspx
+  [Azure CDN Node Locations]: http://msdn.microsoft.com/en-us/library/windowsazure/gg680302.aspx
+  [Azure Management Portal]: https://manage.windowsazure.com/
+  [billing plan]: /en-us/pricing/calculator/?scenario=full
+  [Using the Azure Storage Services]: http://msdn.microsoft.com/en-us/library/windowsazure/ee924681.aspx
+  [How to Register a Custom Subdomain Name for Accessing Blobs in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/ee795179.aspx
+  [How to Create an Affinity Group in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/hh531560.aspx
+  [Overview of the Azure CDN]: http://msdn.microsoft.com/en-us/library/windowsazure/ff919703.aspx
+  [How to: Manage Storage Accounts for an Azure Subscription]: http://msdn.microsoft.com/en-us/library/windowsazure/hh531567.aspx
+  [About the Service Management API]: http://msdn.microsoft.com/en-us/library/windowsazure/ee460807.aspx
+  [How to Map CDN Content to a Custom Domain]: http://msdn.microsoft.com/en-us/library/windowsazure/gg680307.aspx
 
 
 [create-new-storage-account]: ./media/cdn/CDN_CreateNewStorageAcct.png
 [Previous Management Portal]: ../../Shared/Media/previous-portal.png
-
-

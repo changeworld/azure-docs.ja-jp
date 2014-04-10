@@ -1,56 +1,56 @@
-最初の手順は、チュートリアル用に新しいアカウントを作成することです。このチュートリアルに最適な無料のサンドボックス プランを使用できます。
+Your first step is to create a new account to use for the tutorial. You can use the FREE Sandbox plan, it's perfect for this tutorial.
 
-### Pusher アカウントにサインアップするには
+### To sign up for a Pusher account
 
-1. [Windows Azure の管理ポータル][]にログインします。
+1. Log in to the [Azure Management Portal][].
 
-2. 管理ポータルの下のウィンドウの **[新規]** をクリックします。
+2. In the lower pane of the management portal, click **New**.
 
 	![command-bar-new][command-bar-new]
 
-3. **[ストア]** をクリックします。
+3. Click **Store**.
 
 	![pusher-store][pusher-store]
 
-4. **[サービスの選択]** ダイアログで **[Pusher]** を選択し、右矢印をクリックします。
+4. In the **Choose an Add-on** dialog, select **Pusher** and click the right arrow.
 
-5. **[個人用サービス]** ダイアログで、サインアップする **Pusher** プランを選択します。
+5. In the **Personalize Add-on** dialog select the **Pusher** plan you want to sign up for.
 
-6. Windows Azure 設定で **Pusher** サービスを特定する名前を入力するか、**Pusher** の既定値を使用します。名前は 1 ～ 100 文字にする必要があります。また、名前に含めることができるのは英数字、ダッシュ、ピリオド、およびアンダースコアのみです。名前は、Windows Azure ストアのサブスクライブ項目の一覧で一意になっている必要があります。
+6. Enter a name to identify your **Pusher** service in your Azure settings, or use the default value of **Pusher**. Names must be between 1 and 100 characters in length and contain only alphanumeric characters, dashes, dots, and underscores. The name must be unique in your list of subscribed Azure Store Items.
 
 	![store-screen-1][store-screen-1]
 
-8. リージョンの値を選択します (たとえば [米国西部])。
+8. Choose a value for the region; for example, West US. 
 
-9. 右矢印をクリックします。
+9. Click the right arrow.
 
-10. **[購入の確認]** タブで、プランと料金情報および法律条項を確認します。条項に同意したら、チェックマークをクリックします。チェック マークをクリックすると、Pusher アカウントのプロビジョニング プロセスが開始されます。
+10. On the **Review Purchase** tab, review the plan and pricing information, and review the legal terms. If you agree to the terms, click the check mark. After you click the check mark, your Pusher account will begin the provisioning process. 
 
 	![store-screen-2][store-screen-2]
 
-11. 購入を確認したら、アドオン ダッシュボードにリダイレクトされ、"**Pusher を購入しています**" というメッセージが表示されます。
+11. After confirming your purchase you are redirected to the add-ons dashboard and you will see the message **Purchasing Pusher**.
 
 	![store-screen-3][store-screen-3]
 
-Pusher アカウントが直ちにプロビジョニングされ、"**アドオン Pusher の購入が完了しました**" というメッセージが表示されます。アカウントが作成され、Pusher サービスを使用する準備ができました。
+Your Pusher account is provisioned immediately and you will see the message **Successfully purchased Add-On Pusher**. Your account has been created and you are now ready to use the Pusher service.
 
-サブスクリプション プランを変更するか、Pusher 連絡先設定を表示するには、Pusher サービスの名前をクリックし、Pusher アドオン ダッシュボードを開きます。
+To modify your subscription plan or see the Pusher contact settings, click the name of your Pusher service to open the Pusher add-ons dashboard.
 
 ![pusher-add-on-dashboard][pusher-add-on-dashboard]
 	
-Pusher を使用する場合、Pusher アプリケーション接続の設定を指定する必要があります。
+When using Pusher you will need to supply your Pusher app connection settings.
 
-### Pusher 接続の設定を見つけるには###
+### To find your Pusher connection settings ###
 
-1. **[接続文字列]** をクリックします。
+1. Click **Connection Info**.
 
 	![pusher-connection-info-button][pusher-connection-info-button]
 
-2. *[接続文字列]* ダイアログに、アプリケーション ID、キー、およびシークレットが表示されます。この値は後で必要になります。後で使用できるようにコピーしておいてください。
+2. In the *Connection info* dialog you will see your app ID, key and secret. You will use these values later in the tutorial so copy them for late use.
 
 	![pusher-connection-info][pusher-connection-info]
 
-Pusher の概要については、「[Understanding Pusher (Pusher について)」][]を参照してください。
+For more information on getting started with Pusher, see [Understanding Pusher][].
 
 <!--images-->
 
@@ -65,7 +65,6 @@ Pusher の概要については、「[Understanding Pusher (Pusher について)
 
 <!--Links-->
 
-[Windows Azure の管理ポータル]: https://manage.windowsazure.com
-[Understanding Pusher (Pusher について)]: http://pusher.com/docs
-
+[Azure Management Portal]: https://manage.windowsazure.com
+[Understanding Pusher]: http://pusher.com/docs
 

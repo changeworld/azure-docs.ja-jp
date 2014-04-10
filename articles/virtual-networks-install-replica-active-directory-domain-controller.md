@@ -1,252 +1,252 @@
-﻿<properties linkid="manage-services-networking-replica-domain-controller" urlDisplayName="レプリカ ドメイン コントローラー" pageTitle="Windows Azure でのレプリカ ドメイン コントローラーのインストール" metaKeywords="" description="このチュートリアルでは、Windows Azure の仮想マシンに会社の Active Directory フォレストからドメイン コントローラーをインストールする手順について説明します。" metaCanonical="" services="virtual-network" documentationCenter="" title="Windows Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール" authors=""  solutions="" writer="" manager="" editor=""  />
+<properties linkid="manage-services-networking-replica-domain-controller" urlDisplayName="Replica domain controller" pageTitle="Install a replica domain controller in Azure" metaKeywords="" description="A tutorial that teaches you how to install a domain controller from your Corp Active Directory forest on your Azure virtual machine." metaCanonical="" services="virtual-network" documentationCenter="" title="Install a Replica Active Directory Domain Controller in Azure Virtual Networks" authors="" solutions="" manager="" editor="" />
 
 
 
 
-#Windows Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール
+#Install a Replica Active Directory Domain Controller in Azure Virtual Networks
 
-このチュートリアルでは、[Windows Azure の仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx) 上の仮想マシン (VM) に会社の Active Directory フォレストから追加のドメイン コントローラーをインストールする手順について詳しく説明します。このチュートリアルでは、VM の仮想ネットワークが会社のネットワークに接続されます。Windows Azure の仮想ネットワークに Active Directory ドメイン サービス (AD DS) をインストールする方法に関する概念的なガイダンスについては、「[Windows Azure の仮想マシンでの Windows Server Active Directory の展開ガイドライン](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090.aspx)」を参照してください。
+This tutorial walks you through the steps to install an additional domain controller from your Corp Active Directory forest on a virtual machine (VM) on [Azure Virtual Network](http://msdn.microsoft.com/en-us/library/windowsazure/jj156007.aspx). In this tutorial, the virtual network for the VM is connected to the network at your company. For conceptual guidance about installing Active Directory Domain Services (AD DS) on Azure Virtual Network, see [Guidelines for Deploying Windows Server Active Directory on Azure Virtual Machines](http://msdn.microsoft.com/en-us/library/windowsazure/jj156090.aspx).
 
-##目次##
+##Table of Contents##
 
-* [前提条件](#Prerequisites)
-* [ステップ 1: YourPrimaryDC の静的 IP アドレスを確認する](#verifystaticip)
-* [ステップ 2: 会社のフォレストをインストールする](#installforest)
-* [ステップ 3: サブネットとサイトを作成する](#subnets)
-* [ステップ 4: 追加のドメイン コントローラーを CloudSite にインストールする](#cloudsite)
-* [ステップ 5: インストールを検証する](#validate)
-* [ステップ 6: 起動時にドメインに参加させる仮想マシンをプロビジョニングする](#provisionvm)
-* [ステップ 7: ドメイン コントローラーをバックアップする](#backup)
-* [ステップ 8: 認証と権限承認をテストする](#test)
+* [Prerequisites](#Prerequisites)
+* [Step 1: Verify static IP address for YourPrimaryDC](#verifystaticip)
+* [Step 2: Install Corp forest](#installforest)
+* [Step 3: Create subnets and sites](#subnets)
+* [Step 4: Install an additional domain controller in the CloudSite](#cloudsite)
+* [Step 5: Validate the installation](#validate)
+* [Step 6: Provisioning a Virtual Machine that is Domain Joined on Boot](#provisionvm)
+* [Step 7: Backup the domain controller](#backup)
+* [Step 8: Test authentication and authorization](#test)
 
 
-<h2><a id="Prerequisites"></a>前提条件</h2>
+<h2><a id="Prerequisites"></a>Prerequisites</h2>
 
--	Windows Azure の仮想ネットワークと会社のネットワークとの間で構成された[クロスプレミス接続用に仮想ネットワークを作成する](http://www.windowsazure.com/ja-jp/manage/services/networking/cross-premises-connectivity/)。
--	仮想ネットワークにクラウド サービスを作成する。
--	仮想ネットワーク内のクラウド サービスに 2 つの VM を展開する (VM を配置するサブネットを指定)。詳細については、「[仮想ネットワークへの仮想マシンの追加](http://www.windowsazure.com/ja-jp/manage/services/networking/add-a-vm-to-a-virtual-network/)」を参照してください。いずれかの VM は、2 つのデータ ディスクを接続するために、そのサイズが L 以上であることが必要です。データ ディスクには次の情報が保存される必要があります。
-	- Active Directory のデータベースとログ。
-	- システム状態のバックアップ。
--	1 つの会社のネットワークと 2 つの VM (YourPrimaryDC と FileServer)。
--	ドメイン ネーム システム (DNS) インフラストラクチャ。外部ユーザーの名前を Active Directory 内のアカウントに解決する必要がある場合に展開する必要があります。この場合、ドメイン コントローラーに DNS サーバーをインストールする前に、DNS ゾーン委任を作成する必要があります。Active Directory ドメイン サービス インストール ウィザードを使用してもこの委任を作成できます。DNS ゾーン委任の作成方法の詳細については、「[ゾーンの委任を作成する](http://technet.microsoft.com/ja-jp/library/cc753500.aspx)」を参照してください
--	Windows Azure VM にインストールする DC で、DNS クライアント リゾルバーの設定を次のように構成する。
-	- 優先 DNS サーバー: 内部設置型の DNS サーバー
-	- 代替 DNS サーバー: ループ バック アドレス、または可能であれば、同じ仮想ネットワークにある DC 上で実行されている別の DNS サーバー。
+-	[Create a Virtual Network for Cross-Premises Connectivity](http://www.windowsazure.com/en-us/manage/services/networking/cross-premises-connectivity/) configured between Azure Virtual network and Corp network.
+-	Create a cloud service in the virtual network.
+-	Deploy two VMs in the Cloud Service that are part of the virtual network (specify the subnet where you want to place the VM). For more information, see [Add a Virtual Machine to a Virtual Network](http://www.windowsazure.com/en-us/manage/services/networking/add-a-vm-to-a-virtual-network/). One VM must be size L or greater in order to attach two data disks to it. The data disks are needed to store:
+	- The Active Directory database and logs.
+	- System state backups.
+-	A Corp network with two VMs (YourPrimaryDC and FileServer).
+-	Domain Name System (DNS) infrastructure deployed if you need to have external users resolve names for accounts in Active Directory. In this case, you should create a DNS zone delegation before you install DNS server on the domain controller, or allow the Active Directory Domain Services Installation Wizard create the delegation. For more information about creating a DNS zone delegation, see [Create a Zone Delegation](http://technet.microsoft.com/en-us/library/cc753500.aspx).
+-	On the DC that you install on an Azure VM, configure DNS client resolver settings as follows:
+	- Preferred DNS server: on-premises DNS server 
+	- Alternate DNS server: loopback address or, if possible, another DNS server running on a DC on the same virtual network.
 
 <div class="dev-callout"> 
-<b>メモ</b>
-<p>独自の DNS インフラストラクチャを用意して Windows Azure の仮想ネットワーク上の AD DS をサポートする必要があります。このリリースの Windows Azure で提供される DNS インフラストラクチャは、AD DS に必要ないくつかの機能 (SRV リソース レコードの動的登録など) をサポートしていません。</p>
+<b>Note</b>
+<p>You need to provide your own DNS infrastructure to support AD DS on Azure Virtual Network. The Azure-provided DNS infrastructure for this release does not support some features that AD DS requires, such as dynamic SRV resource record registration. </p>
 </div>
 
 <div class="dev-callout"> 
-<b>メモ</b>
-<p>「<a href="/ja-jp/manage/services/networking/active-directory-forest/">Windows Azure での新しい Active Directory フォレストのインストール</a>」の手順を完了していれば、このチュートリアルを開始する前に、Windows Azure の仮想ネットワーク上のドメイン コントローラーから AD DS を削除することが必要になる場合があります。AD DS の削除方法の詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/cc771844(v=WS.10).aspx">ドメインから Windows Server 2008 ドメイン コントローラーを削除する</a>」を参照してください。</p>
+<b>Note</b>
+<p>If you already completed the steps in <a href="/en-us/manage/services/networking/active-directory-forest/">Install a new Active Directory forest in Azure</a>, you might need to remove AD DS from the domain controller on the Azure virtual network before you begin this tutorial. For more information about how to remove AD DS, see <a href="http://technet.microsoft.com/en-us/library/cc771844(v=WS.10).aspx">Removing a Domain Controller from a Domain</a>.</p>
 </div>
 
 
-<h2><a id="verifystaticip"></a>ステップ 1: YourPrimaryDC の静的 IP アドレスを確認する</h2>
+<h2><a id="verifystaticip"></a>Step 1: Verify static IP address for YourPrimaryDC</h2>
 
-1. 会社のネットワーク上の YourPrimaryDC にログオンします。
+1. Log on to YourPrimaryDC on the Corp network.
 
-2. サーバー マネージャーで [ネットワーク接続の表示] をクリックします。
+2. In Server Manager, click View Network Connections.
 
-3. ローカル エリア ネットワーク接続を右クリックし、[プロパティ] をクリックします。
+3. Right-click the local area network connection and click Properties.
 
-4. [インターネット プロトコル バージョン 4 (TCP/IPv4)] をクリックし、[プロパティ] をクリックします。
+4. Click Internet Protocol Version 4 (TCP/IPv4) and click Properties.
 
-5. サーバーに静的 IP アドレスが割り当てられていることを確認します。
+5. Verify that the server is assigned a static IP address. 
 
 	![VerifystaticIPaddressyourPrimaryDC1](./media/virtual-networks-install-replica-active-directory-domain-controller/VerifystaticIP.png)
 
 
-<h2><a id="installforest"></a>ステップ 2: 会社のフォレストをインストールする</h2>
+<h2><a id="installforest"></a>Step 2: Install Corp forest</h2>
 
-1. VM の RDP セッションで、**[スタート]** ボタンをクリックし、「**dcpromo**」と入力して、Enter キーを押します。
+1. In the RDP session for the VM, click **Start**, type **dcpromo**, and press ENTER.
 
 	![InstallCorpForest1](./media/virtual-networks-install-replica-active-directory-domain-controller/InstallCorpForest1.png)
 
 
-2. [ようこそ] ページで **[次へ]** をクリックします。
+2. On the Welcome page, click **Next**.
 
 	![InstallCorpForest2](./media/virtual-networks-install-replica-active-directory-domain-controller/InstallCorpForest2.png)
 
 
 
-3. [オペレーティング システムの互換性] ページで **[次へ]** をクリックします。
+3. On the Operating System Compatibility page, click **Next**.
 
 	![InstallCorpForest3](./media/virtual-networks-install-replica-active-directory-domain-controller/InstallCorpForest3.png)
 
-4. [展開構成の選択] ページで、**[新しいフォレストに新しいドメインを作成する]** をクリックし、**[次へ]** をクリックします。
+4. On the Choose a Deployment Configuration page, click **Create a new domain in a new forest**, and click **Next**. 
 
 	![InstallCorpForest4](./media/virtual-networks-install-replica-active-directory-domain-controller/InstallCorpForest4.png)
 
 
-5. [フォレスト ルート ドメイン名] ページで、フォレスト ルート ドメインの完全修飾ドメイン名 (FQDN) として「**corp.contoso.com**」と入力し、**[次へ]** をクリックします。
+5. On the Name the Forest Root Domain page, type **corp.contoso.com** the fully qualified domain name (FQDN) of the forest root domain and click **Next**. 
 
 	![InstallCorpForest5](./media/virtual-networks-install-replica-active-directory-domain-controller/InstallCorpForest5.png)
 
 
-6. [フォレストの機能レベルの設定] ページで、**[Windows Server 2008 R2]** をクリックし、**[次へ]** をクリックします。
+6. On the Set Forest Functional level page, click **Windows Server 2008 R2** and then click **Next**.
 
 	![InstallCorpForest6](./media/virtual-networks-install-replica-active-directory-domain-controller/InstallCorpForest6.png)
 
-7. [追加のドメイン コントローラー オプション] ページで、**[DNS サーバー]** をクリックし、**[次へ]** をクリックします。
+7. On the Additional Domain Controller Options page, click **DNS server** and click **Next**.
 
 	![InstallCorpForest7](./media/virtual-networks-install-replica-active-directory-domain-controller/InstallCorpForest7.png)
 
-8. DNS 委任に関する次の警告が表示された場合は、**[はい]** をクリックします。
+8. If the following DNS delegation warning appears, click **Yes**.
 
 	![InstallCorpForest8](./media/virtual-networks-install-replica-active-directory-domain-controller/InstallCorpForest8.png)
 
 
-9. [Active Directory データベース、ログ ファイル、および SYSVOL の場所] ページで、ファイルの場所を入力または選択し、**[次へ]** をクリックします。
+9. On the Location for Active Directory database, log files and SYSVOL page, type or select the location for the files and click **Next**.
 
 	![InstallCorpForest9](./media/virtual-networks-install-replica-active-directory-domain-controller/InstallCorpForest9.png)
 
 
-10. [ディレクトリ サービス復元モード Administrator パスワード] ページで、DSRM パスワードを入力し、確認用にもう一度入力して、**[次へ]** をクリックします。
+10. On the Directory Services Restore Administrator page, type and confirm the DSRM password and click **Next**.
 
 	![InstallCorpForest10](./media/virtual-networks-install-replica-active-directory-domain-controller/InstallCorpForest10.png)
 
 
-11. [概要] ページで、指定内容を確認し、**[次へ]** をクリックします。
+11. On the Summary page, confirm your selections and click **Next**. 
 
 	![InstallCorpForest11](./media/virtual-networks-install-replica-active-directory-domain-controller/InstallCorpForest11.png)
 
-12. Active Directory インストール ウィザードの処理が完了したら、**[完了]** をクリックし、**[今すぐ再起動する]** をクリックしてインストールを完了します。
+12. After the Active Directory Installation Wizard finishes, click **Finish** and then click **Restart Now** to complete the installation. 
 
 	![InstallCorpForest12](./media/virtual-networks-install-replica-active-directory-domain-controller/InstallCorpForest12.png)
 
 
 
-<h2><a id="subnets"></a>ステップ 3: サブネットとサイトを作成する</h2>
+<h2><a id="subnets"></a>Step 3: Create subnets and sites</h2>
 
-1. YourPrimaryDC で、[スタート] ボタンをクリックし、[管理ツール]、[Active Directory サイトとサービス] の順にクリックします。
-2. **[サイト]** をクリックし、**[サブネット]** を右クリックして、**[新しいサブネット]** をクリックします。
+1. On YourPrimaryDC, click Start, click Administrative Tools and then click Active Directory Sites and Services.
+2. Click **Sites**, right-click **Subnets**, and then click **New Subnet**.
 
 	![CreateSubnetsandSites1](./media/virtual-networks-install-replica-active-directory-domain-controller/CreateSubnetsandSites1.png)
 
-3. **[プレフィックス]** に「**10.1.0.0/24**」と入力し、**Default-First-Site-Name** サイト オブジェクトを選択して、**[OK]** をクリックします。
+3. In **Prefix::**, type **10.1.0.0/24**, select the **Default-First-Site-Name** site object and click **OK**.
 
 	![CreateSubnetsandSites2](./media/virtual-networks-install-replica-active-directory-domain-controller/CreateSubnetsandSites2.png)
 
-4. **[サイト]** を右クリックし、**[新しいサイト]** をクリックします。
+4. Right-click **Sites** and click **New Site**.
 
 	![CreateSubnetsandSites3](./media/virtual-networks-install-replica-active-directory-domain-controller/CreateSubnetsandSites3.png)
 
 
-5. [名前] に「**CloudSite**」と入力し、**DEFAULTIPSITELINK** を選択して、**[OK]** をクリックします。
+5. In Name, type **CloudSite**, select **DEFAULTIPSITELINK** and click **OK**. 
 
 	![CreateSubnetsandSites4](./media/virtual-networks-install-replica-active-directory-domain-controller/CreateSubnetsandSites4.png)
 
 
-6. **[OK]** をクリックして、サイトが作成されたことを確認します。
+6. Click **OK** to confirm the site was created. 
 
 	![CreateSubnetsandSites5](./media/virtual-networks-install-replica-active-directory-domain-controller/CreateSubnetsandSites5.png)
 
-7. **[サブネット]** を右クリックし、**[新しいサブネット]** をクリックします。
+7. Right-click **Subnets**, and then click **New Subnet**.
 
 	![CreateSubnetsandSites6](./media/virtual-networks-install-replica-active-directory-domain-controller/CreateSubnetsandSites6.png)
 
-8. **[プレフィックス]** に「**10.4.2.0/24**」と入力し、**CloudSite** サイト オブジェクトを選択し、**[OK]** をクリックします。
+8. In **Prefix::**, type **10.4.2.0/24**, select the **CloudSite** site object and click **OK**.
 
 	![CreateSubnetsandSites7](./media/virtual-networks-install-replica-active-directory-domain-controller/CreateSubnetsandSites7.png)
 
 
-<h2><a id="cloudsite"></a>ステップ 4: 追加のドメイン コントローラーを CloudSite にインストールする</h2>
+<h2><a id="cloudsite"></a>Step 4: Install an additional domain controller in the CloudSite</h2>
 
-1. YourVMachine にログオンし、**[スタート]** ボタンをクリックし、「**dcpromo**」と入力して、Enter キーを押します。
+1. Log on to YourVMachine, click **Start**, type **dcpromo**, and press ENTER.
 
 	![AddDC1](./media/virtual-networks-install-replica-active-directory-domain-controller/AddDC1.png)
 
-2. [ようこそ] ページで **[次へ]** をクリックします。
+2. On the Welcome page, click **Next**.
 
 	![AddDC2](./media/virtual-networks-install-replica-active-directory-domain-controller/AddDC2.png)
 
 
-3. [オペレーティング システムの互換性] ページで **[次へ]** をクリックします。
+3. On the Operating System Compatibility page, click **Next**.
 
 	![AddDC3](./media/virtual-networks-install-replica-active-directory-domain-controller/AddDC3.png)
 
-4. [展開構成の選択] ページで、**[既存のフォレスト]**、**[既存のドメインにドメイン コントローラーを追加する]**、**[次へ]** の順にクリックします。
+4. On Choose a Deployment Configuration page, click **Existing forest**, click **Add a domain controller to an existing domain**, and click **Next**.
 
 	![AddDC4](./media/virtual-networks-install-replica-active-directory-domain-controller/AddDC4.png)
 
 
-5. [ネットワーク資格情報] ページで、ドメイン コントローラーを **corp.contoso.com** ドメインにインストールし、Domain Admins グループのメンバーの資格情報 (または corp\administrator 資格情報) を入力します。
+5. On the Network Credentials page, make sure you are installing the domain controller in **corp.contoso.com** domain and type credentials of a member of the Domain Admins group (or use corp\administrator credentials). 
 
 	![AddDC5](./media/virtual-networks-install-replica-active-directory-domain-controller/AddDC5.png)
 
 
-6. [ドメインの選択] ページで **[次へ]** をクリックします。
+6. On the Select a Domain page, click **Next**. 
 
 	![AddDC6](./media/virtual-networks-install-replica-active-directory-domain-controller/AddDC6.png)
 
 
-7. [サイトの選択] ページで、CloudSite が選択されていることを確認し、**[次へ]** をクリックします。
+7. On the Select a Site page, make sure that CloudSite is selected and click **Next**.
 
 	![AddDC7](./media/virtual-networks-install-replica-active-directory-domain-controller/AddDC7.png)
 
-8. [追加のドメイン コントローラー オプション] ページで **[次へ]** をクリックします。
+8. On the Additional Domain Controller Options page, click **Next**. 
 
 	![AddDC8](./media/virtual-networks-install-replica-active-directory-domain-controller/AddDC8.png)
 
 
-9. 静的 IP 割り当ての警告画面で、**[はい、このコンピューターでは、DHCP サーバーによって自動的に割り当てられた IP アドレスを使用します (推奨しません)。]** をクリックします。
+9. On the Static IP assignment warning, click **Yes, the computer will use an IP address automatically assigned by a DHCP server (not recommended)**
 
-	**重要**
+	**Important** 
 
-	Windows Azure の仮想ネットワークの IP アドレスは動的ですが、そのリース期間は VM の存続期間です。したがって、仮想ネットワークにインストールするドメイン コントローラーに静的 IP アドレスを設定する必要はありません。VM に静的 IP アドレスを設定すると、通信障害の原因になります。
+	Although the IP address on the Azure Virtual Network is dynamic, its lease lasts for the duration of the VM. Therefore, you do not need to set a static IP address on the domain controller that you install on the virtual network. Setting a static IP address in the VM will cause communication failures.
 
 
 	![AddDC9](./media/virtual-networks-install-replica-active-directory-domain-controller/AddDC9.png)
 
-10. DNS 委任に関する警告画面が表示されたら、**[はい]** をクリックします。
+10. When prompted about the DNS delegation warning, click **Yes**.
 
 	![AddDC10](./media/virtual-networks-install-replica-active-directory-domain-controller/AddDC10.png)
 
 
-11. [Active Directory データベース、ログ ファイル、および SYSVOL の場所] ページで、[参照] をクリックし、データ ディスク上の Active Directory ファイルの場所を入力または選択して、**[次へ]** をクリックします。
+11. On the Location for Active Directory database, log files and SYSVOL page, click Browse and type or select a location on the data disk for the Active Directory files and click **Next**. 
 
 	![AddDC11](./media/virtual-networks-install-replica-active-directory-domain-controller/AddDC11.png)
 
-12. [ディレクトリ サービス復元モード Administrator パスワード] ページで、DSRM パスワードを入力し、確認用にもう一度入力して、**[次へ]** をクリックします。
+12. On the Directory Services Restore Administrator page, type and confirm the DSRM password and click **Next**.
 
 	![AddDC12](./media/virtual-networks-install-replica-active-directory-domain-controller/AddDC12.png)
 
-13. [概要] ページで **[次へ]** をクリックします。
+13. On the Summary page, click **Next**.
 
 	![AddDC13](./media/virtual-networks-install-replica-active-directory-domain-controller/AddDC13.png)
 
-14. Active Directory インストール ウィザードの処理が完了したら、**[完了]** をクリックし、**[今すぐ再起動する]** をクリックしてインストールを完了します。
+14. After the Active Directory Installation Wizard finishes, click **Finish** and then click **Restart Now** to complete the installation. 
 
 	![AddDC14](./media/virtual-networks-install-replica-active-directory-domain-controller/AddDC14.png)
 
 
-<h2><a id="validate"></a>ステップ 5: インストールを検証する</h2>
+<h2><a id="validate"></a>Step 5: Validate the installation</h2>
 
-1. VM に再接続します。
+1. Reconnect to the VM.
 
-2. **[スタート]** ボタンをクリックし、**[コマンド プロンプト]** を右クリックして、**[管理者として実行]** をクリックします。
+2. Click **Start**, right-click **Command Prompt** and click **Run as Administrator**. 
 
-3. 次のコマンドを入力し、Enter キーを押します: 'Dcdiag /c /v'
+3. Type the following command and press ENTER:  'Dcdiag /c /v'
 
-4. テストが正常に実行されることを確認します。
+4. Verify that the tests ran successfully. 
 
-ドメイン コントローラーを構成したら、次の Windows PowerShell コマンドレットを実行して、追加の仮想マシンをプロビジョニングし、プロビジョニング後に自動的にドメインに参加させるようにします。VM の DNS クライアント リゾルバーの設定は、VM のプロビジョニング時に構成する必要があります。ドメイン名、VM 名などを正しい名前に置き換えます。
+After the DC is configured, run the following Windows PowerShell cmdlet to provision additional virtual machines and have them automatically join the domain when they are provisioned. The DNS client resolver settings for the VMs must be configured when the VMs are provisioned. Substitute the correct names for your domain, VM name, and so on. 
 
-Windows PowerShell の使い方の詳細については、「[Windows Azure PowerShell](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156055.aspx)」および「[Windows Azure Management Cmdlets (Windows Azure 管理コマンドレット)](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841)」を参照してください。
+For more information about using Windows PowerShell, see [Getting Started with Azure PowerShell](http://msdn.microsoft.com/en-us/library/windowsazure/jj156055.aspx) and [Azure Management Cmdlets](http://msdn.microsoft.com/en-us/library/windowsazure/jj152841).
 
 
-<h2><a id="provisionvm"></a>ステップ 6: 起動時にドメインに参加させる仮想マシンをプロビジョニングする</h2>
+<h2><a id="provisionvm"></a>Step 6: Provisioning a Virtual Machine that is Domain Joined on Boot</h2>
 
-1. 最初の起動時にドメインに参加させる仮想マシンを追加作成するには、Windows Azure PowerShell ISE を開き、次のスクリプトを貼り付けて、プレースホルダーを実際の値に置き換えて実行します。
+1. To create an additional virtual machine that is domain-joined when it first boots, open Azure PowerShell ISE, paste the following script, replace the placeholders with your own values and run it. 
 
-	ドメイン コントローラーの内部 IP アドレスを確認するには、ドメイン コントローラーが実行されている仮想ネットワークの名前をクリックします。
+	To determine the Internal IP address of the domain controller, click the name of virtual network where it is running. 
 
-	次の例では、ドメイン コントローラーの内部 IP アドレスは 10.4.3.1 です。Add-AzureProvisioningConfig には、-MachineObjectOU パラメーターも指定できます。このパラメーターを指定する (Active Directory での完全識別名が必要) と、そのコンテナー内のすべての仮想マシンにグループ ポリシー設定を指定できます。
+	In the following example, the Internal IP address of the domain controller is 10.4.3.1.The Add-AzureProvisioningConfig also takes a -MachineObjectOU parameter which if specified (requires the full distinguished name in Active Directory) allows for setting Group Policy settings on all of the virtual machines in that container.
 
-	仮想マシンをプロビジョニングした後、administrator@corp.contoso.com などのユーザー プリンシパル名 (UPN) 形式でドメイン アカウントを指定してログオンします。
+	After the virtual machines are provisioned, log on by specifying a domain account using User Principal Name (UPN) format, such as administrator@corp.contoso.com. 
 
 		#Deploy a new VM and join it to the domain
 		#-------------------------------------------
@@ -270,40 +270,39 @@ Windows PowerShell の使い方の詳細については、「[Windows Azure Powe
 		New-AzureVM -ServiceName $service -AffinityGroup $AG -VMs $MyVM1 -DnsSettings $myDNS -VNetName $vnet
 		
 
-<h2><a id="backup"></a>ステップ 7: ドメイン コントローラーをバックアップする</h2>
+<h2><a id="backup"></a>Step 7: Backup the domain controller</h2>
 
 
-1. YourVMachine に接続します。
+1. Connect to YourVMachine.
 
-2. **[スタート]** ボタンをクリックし、**[サーバー マネージャー]**、**[機能の追加]**、**[Windows Server バックアップの機能]** の順にクリックします。指示に従って操作し、Windows Server バックアップをインストールします。
+2. Click **Start**, Click **Server Manager**, click **Add Features**, and then select **Windows Server Backup Features**. Follow the instructions to install Windows Server Backup.
 
-3. **[スタート]** ボタンをクリックし、**[Windows Server バックアップ]**、**[バックアップ (1 回限り)]** の順にクリックします。
+3. Click **Start**, Click **Windows Server Backup**, click **Backup once**.
  
-4. **[別のオプション]** をクリックし、**[次へ]** をクリックします。
+4. Click **Different options** and click **Next**.
 
-5. **[フル サーバー]** をクリックし、**[次へ]** をクリックします。
+5. Click **Full Server** and click **Next**.
 
-6. **[ローカル ドライブ]** をクリックし、**[次へ]** をクリックします。
+6. Click **Local drives** and click **Next**.
 
-7. オペレーティング システムまたは Active Directory データベースをホストしていない宛先ドライブを選択し、[次へ] をクリックします。
+7. Select the destination drive that does not host the operating system files or the Active Directory database, and click Next.
 
 	![BackupDC](./media/virtual-networks-install-replica-active-directory-domain-controller/BackupDC.png)
 
 
-8. 選択したバックアップ設定を確認し、**[バックアップ]** をクリックします。
+8. Confirm the backup settings you selected and then click **Backup**.
 
-<h2><a id="test"></a>ステップ 8: 認証と権限承認をテストする</h2>
+<h2><a id="test"></a>Step 8: Test authentication and authorization</h2>
 
-1. 認証と権限承認をテストするために、Active Directory でドメイン ユーザー アカウントを作成します。
-各サイトのクライアント VM にログオンし、VM 上に共有フォルダーを作成します。
+1. In order to test authentication and authorization, create a domain user account in Active Directory. 
+Log on to the client VM in each site and create a shared folder on the VM
 
-2. さまざまなアカウント、グループ、アクセス許可を使用して共有フォルダーへのアクセスをテストします。
+2. Test access to the shared folder using different accounts and groups and permissions. 
 
-##関連項目
+## See Also
 
--  [Windows Azure の仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)
+-  [Azure Virtual Network](http://msdn.microsoft.com/en-us/library/windowsazure/jj156007.aspx)
 
--  [Windows Azure PowerShell](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156055.aspx)
+-  [Azure PowerShell](http://msdn.microsoft.com/en-us/library/windowsazure/jj156055.aspx)
 
--  [Windows Azure 管理コマンドレット](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841)
-
+-  [Azure Management Cmdlets](http://msdn.microsoft.com/en-us/library/windowsazure/jj152841)

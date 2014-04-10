@@ -1,36 +1,35 @@
-最初に、Visual Studio 2013 でプッシュ通知の追加ウィザードを使用して、アプリケーションを Windows ストアに登録します。次に、プッシュ通知を有効にするようにモバイル サービスを構成し、デバイス チャネルを登録するためのコードをアプリケーションに追加します。
+First, you use the Add Push Notification wizard in Visual Studio 2013 to register your app with the Windows Store, configure your mobile service to enable push notifications, and add code to your app to register a device channel.
 
-0.この操作をまだ行っていない場合は、「[Import your publishsettings file in Visual Studio 2013 (Visual Studio 2013 での publishsettings ファイルのインポート)]」の手順を実行して、Visual Studio に publishersettings ファイルをインポートします。
+0. If you haven't already done so, follow the steps in [Import your publishsettings file in Visual Studio 2013] to import your publisher.settings file into Visual Studio. 
 
-	既に Visual Studio を使用して Windows Azure サブスクリプションでモバイル サービスを作成または管理している場合は、この操作を行う必要はありません。
+	You do not need to do this if you have already used Visual Studio to create or manage mobile services in your Azure subscription.
 
-1. Visual Studio 2013 で、ソリューション エクスプローラーを開き、プロジェクトを右クリックして、**[追加]**、**[プッシュ通知]** の順にクリックします。
+1. In Visual Studio 2013, open Solution Explorer, right-click the project, click **Add** then **Push Notification...**. 
 
 	![mobile-add-push-notifications-vs2013](../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013.png)
 
-	これにより、プッシュ通知の追加ウィザードが開始されます。
+	This starts the Add Push Notification Wizard.
 
-2. **[次へ]** をクリックし、Windows ストア アカウントにサインインします。次に、**[新しいアプリケーション名の予約]** に名前を指定し、**[予約]** をクリックします。
+2. Click **Next**, sign in to your Windows Store account, then supply a name in **Reserve a new name** and click **Reserve**.
 
 	![mobile-add-push-notifications-vs2013-2](../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013-2.png) 
 
-	これで、新しいアプリケーションの登録が作成されます。
+	This create a new app registration.
 
-3. **[アプリケーション名]** の一覧で新しい登録をクリックし、**[次へ]** をクリックします。
+3. Click the new registration in the **App Name** list, then click **Next**.
 
 	![mobile-add-push-notifications-vs2013-3](../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013-3.png)
 
-4. **[サービスの選択]** ダイアログ ボックスで、「[モバイル サービスの使用]」または「[モバイル サービスでのデータの使用]」の最後に作成したモバイル サービスの名前をクリックし、**[次へ]**、**[完了]** の順にクリックします。
+4. In the **Select a service** dialog, click the name of the mobile service that you created when you completed either [Get started with Mobile Services] or [Get started with data], then click **Next** and **Finish**. 
 
 	
-	モバイル サービスが更新され、アプリケーションのパッケージ SID とクライアント シークレットが登録され、新しい **channels** テーブルが作成されます。これで、Windows プッシュ通知サービス (WNS) を使用するようにモバイル サービスが構成され、アプリケーションにプッシュ通知を送信することができます。
+	The mobile service is updated to register your app package SID and client secret and a new **channels** table is created. Mobile Services is now configured to work with Windows Push Notification Services (WNS) to be able to send notifications to your app.   
 
-	<div class="dev-callout"><b>注</b>
-		<p>モバイル サービスに接続するようにアプリケーションがまだ構成されていない場合は、「<strong>データの使用</strong>」で説明しているタスクと同じ構成タスクがウィザードによって実行されます。</p>
+	<div class="dev-callout"><b>Note</b>
+		<p>When your app isn't already configured to connect to the mobile service, the wizard also completes the same configuration tasks demonstrated in <strong>Get started with data</strong>.</p>
 	</div>
 
 <!-- URLs. -->
-[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/
-[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet/
-[Import your publishsettings file in Visual Studio 2013 (Visual Studio 2013 での publishsettings ファイルのインポート)]: /ja-jp/documentation/articles/mobile-services-windows-how-to-import-publishsettings/
-
+[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started/
+[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-dotnet/
+[Import your publishsettings file in Visual Studio 2013]: /en-us/documentation/articles/mobile-services-windows-how-to-import-publishsettings/

@@ -1,37 +1,36 @@
 <properties writer="kathydav" editor="tysonn" manager="jeffreyg" /> 
 
-#仮想マシンの簡易作成方法
+#How to Quickly Create a Virtual Machine
 
-**簡易作成**方法を使って、管理ポータルで仮想マシンをすばやく作成します。このマシンを作成すると、1 つのダイアログ ボックスを使用して構成の詳細を提供できます。
+You use the **Quick Create** method to quickly create a virtual machine in the Management Portal. When you create this machine, you use one dialog box to provide the configuration details.
 
-**注:** この記事では、仮想ネットワークに接続されていない仮想マシンを作成します。仮想マシンが仮想ネットワークを使用する場合、仮想マシンの作成時に**[ギャラリーから]** の方法を使用して、仮想ネットワークを指定します。仮想ネットワークの詳細については、「[仮想ネットワーク](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
+**Note**: This article creates a virtual machine that is not connected to a virtual network. If you want your virtual machine to use a virtual network, use the **From Gallery** method instead and specify the virtual network when you create the virtual machine. For more information about virtual networks, see [Azure Virtual Network Overview](http://go.microsoft.com/fwlink/p/?LinkID=294063).
 
-1. [Windows Azure の管理ポータル](http://manage.windowsazure.com)にサインインします。
+1. Sign in to the [Azure Management Portal](http://manage.windowsazure.com).
 
-2. コマンド バーで、**[新規]** をクリックします。
+2. On the command bar, click **New**.
 
-	![新しい仮想マシンの作成](./media/howto-quick-create-vm/create.png)
+	![Create a new virtual machine](./media/howto-quick-create-vm/create.png)
 
-3. **[仮想マシン]**、**[簡易作成]** の順にクリックします。
+3. Click **Virtual Machines**, and then click **Quick Create**.
 
-	![新しい仮想マシンの簡易作成](./media/howto-quick-create-vm/createquick.png)
+	![Quick Create a new virtual machine](./media/howto-quick-create-vm/createquick.png)
 
-	**[新しい仮想マシンを作成する]** ダイアログ ボックスが表示されます。
+	The **Create a New Virtual Machine** dialog box appears.
 
-4. 新しい仮想マシンの次の詳細情報を入力します。
+4. Type the following information for the new virtual machine:
 
-	- **DNS 名** - 作成された仮想マシンとその仮想マシンが含まれるクラウド サービスの両方で使用される名前。
-	- **イメージ** - 仮想マシンの作成に使用されるプラットフォーム イメージ。
-	- **ユーザー名** - 仮想マシンの管理に使用するアカウントの名前。
-	- **アカウントのパスワード** - アカウントの強力パスワードを入力および確認入力。
-	- **場所** - 仮想マシンが属するリージョン。
+	- **DNS Name** - the name that is used for both the virtual machine that is created and the cloud service that contains the virtual machine.
+	- **Image** - the platform image that is used to create the virtual machine. 
+	- **User Name** - the name of the account that you want to use to manage the virtual machine.
+	- **Account Password** - type and confirm a strong password for the account.
+	- **Location** - the region that contains the virtual machine. 
 
-5. チェック マークをクリックして、仮想マシンを作成します。
+5. Click the check mark to create the virtual machine.
 
-	**注:** ストレージ アカウントが自動的に作成され、この仮想マシンが追加されます。
+	**Note:** A storage account is automatically created to contain this virtual machine.   
 
-	新しい仮想マシンが **[仮想マシン]** ページに表示されます。
+	You will see the new virtual machine listed in on the **Virtual Machines** page.
 
-	![仮想マシンの作成に成功](./media/howto-quick-create-vm/vmsuccesswindows.png)
-
+	![Virtual machine creation success](./media/howto-quick-create-vm/vmsuccesswindows.png)
 

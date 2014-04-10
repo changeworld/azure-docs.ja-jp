@@ -1,163 +1,162 @@
-﻿<properties linkid="manage-windows-common-task-upload-vhd" urlDisplayName="VHD のアップロード" pageTitle="Windows Server VHD の作成と Windows Azure へのアップロード" metaKeywords="Azure VHD, VHD のアップロード" description="Windows Server オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成して Windows Azure にアップロードする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード" authors=""  solutions="" writer="kathydav" manager="jeffreyg" editor="tysonn"  />
+<properties linkid="manage-windows-common-task-upload-vhd" urlDisplayName="Upload a VHD" pageTitle="Create and upload a Windows Server VHD to Azure" metaKeywords="Azure VHD, uploading VHD" description="Learn how to create and upload a virtual hard disk (VHD) in Azure that has the Windows Server operating system." metaCanonical="" services="virtual-machines" documentationCenter="" title="Creating and Uploading a Virtual Hard Disk that Contains the Windows Server Operating System" authors="kathydav" solutions="" manager="jeffreyg" editor="tysonn" />
 
 
 
 
 
-#Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード#
+#Creating and Uploading a Virtual Hard Disk that Contains the Windows Server Operating System #
 
-Windows Azure の仮想マシンでは、仮想マシンの作成時に選択したオペレーティング システムが実行されます。Windows Azure は、仮想マシンのオペレーティング システムを VHD 形式 (.vhd ファイル) で仮想ハード ディスクに格納します。複製用に準備されたオペレーティング システムの VHD はイメージと呼ばれます。この記事では、インストールおよび一般化したオペレーティング システムの .vhd ファイルをアップロードすることで、独自のイメージを作成する方法について説明します。Windows Azure でのディスクとイメージの詳細については、「[ディスクおよびイメージの管理](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj672979.aspx)」を参照してください。
+A virtual machine in Azure runs the operating system that you choose when you create the virtual machine. Azure stores a virtual machine's operating system in a virtual hard disk in VHD format (a .vhd file). A VHD of an operating system that has been prepared for duplication is called an image. This article shows you how to create your own image by uploading a .vhd file with an operating system you've installed and generalized. For more information about disks and images in Azure, see [Manage Disks and Images](http://msdn.microsoft.com/en-us/library/windowsazure/jj672979.aspx).
 
-**注**: 仮想マシンを作成するときに、オペレーティング システムの設定をカスタマイズして、アプリケーションを実行しやすくできます。設定した構成は、その仮想マシンのディスクに格納されます。詳細については、「[カスタム仮想マシンを作成する方法](/ja-jp/manage/windows/how-to-guides/custom-create-a-vm/)」を参照してください。
+**Note**: When you create a virtual machine, you can customize the operating system settings to facilitate running your application. The configuration that you set is stored on disk for that virtual machine. For instructions, see [How to Create a Custom Virtual Machine](/en-us/manage/windows/how-to-guides/custom-create-a-vm/).
 
-##前提条件##
-この記事では、次の項目があることを前提としています。
+##Prerequisites##
+This article assumes that you have the following items:
 
-**管理証明書** - VHD をアップロードするサブスクリプションの管理証明書を作成し、その証明書を .cer ファイルにエクスポートした。証明書の作成方法の詳細については、「[Windows Azure の管理証明書の作成とアップロード](http://msdn.microsoft.com/ja-jp/library/windowsazure/gg551722.aspx)」を参照してください。
+**A management certificate** - You have created a management certificate for the subscription for which you want to upload a VHD, and exported the certificate to a .cer file. For more information about creating certificates, see [Create a Management Certificate for Azure](http://msdn.microsoft.com/en-us/library/windowsazure/gg551722.aspx). 
 
-**.vhd ファイルに格納された、サポートされている Windows オペレーティング システム** - サポートされている Windows Server オペレーティング システムを仮想ハード ディスクにインストールした。.vhd ファイルを作成するツールはいくつかあります。Hyper-V などの仮想化ソリューションを使用して .vhd ファイルを作成し、オペレーティング システムをインストールすることができます。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/ja-jp/library/hh846766.aspx)」を参照してください。
+**A supported Windows operating system stored in a .vhd file** - You have installed a supported Windows Server operating system to a virtual hard disk. Multiple tools exist to create .vhd files. You can use a virtualization solutions such as Hyper-V to create the .vhd file and install the operating system. For instructions, see [Install the Hyper-V Role and Configure a Virtual Machine](http://technet.microsoft.com/en-us/library/hh846766.aspx).
 
-**重要**: 新しい VHDX 形式は、Windows Azure ではサポートされていません。Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
+**Important**: The newer VHDX format is not supported in Azure. You can convert the disk to VHD format using Hyper-V Manager or the convert-vhd cmdlet.     
  
-- **Windows Server オペレーティング システムのメディア。**このタスクでは、Windows Server オペレーティング システムを格納した .iso ファイルが必要です。次の Windows Server のバージョンがサポートされています。
+- **Window Server operating system media.** This task requires an .iso file that contains the Windows Server operating system. The following Windows Server versions are supported:
 <P>
   <TABLE BORDER="1" WIDTH="600">
   <TR BGCOLOR="#E9E7E7">
     <TH>OS</TH>
     <TH>SKU</TH>
     <TH>Service Pack</TH>
-    <TH>アーキテクチャ</TH>
+    <TH>Architecture</TH>
   </TR>
   <TR>
     <TD>Windows Server 2012</TD>
-    <TD>すべてのエディション</TD>
-    <TD>該当なし</TD>
+    <TD>All editions</TD>
+    <TD>N/A</TD>
     <TD>x64</TD>
   </TR>
   <TR>
     <TD>Windows Server 2008 R2</TD>
-    <TD>すべてのエディション</TD>
+    <TD>All editions</TD>
     <TD>SP1</TD>
     <TD>x64</TD>
   </TR>
   </TABLE>
 </P>
 
-- Windows Azure PowerShell モジュールの一部である [Add-AzureVHD](http://msdn.microsoft.com/ja-jp/library/windowsazure/dn205185.aspx) コマンドレット。このモジュールをダウンロードするには、[Windows Azure のダウンロード ページ](/ja-jp/develop/downloads/)にアクセスしてください。
+- The [Add-AzureVHD](http://msdn.microsoft.com/en-us/library/windowsazure/dn205185.aspx) cmdlet, which is part of the Azure PowerShell module. To download the module, see [Azure Downloads](/en-us/develop/downloads/).
 
 
-このタスクの手順は次のとおりです。
+This task includes the following steps:
 
-- [ステップ 1: アップロードするイメージを準備する] []
-- [ステップ 2: Windows Azure にストレージ アカウントを作成する] []
-- [ステップ 3: Windows Azure への接続を準備する] []
-- [ステップ 4: .vhd ファイルをアップロードする] []
+- [Step 1: Prepare the image to be uploaded] []
+- [Step 2: Create a storage account in Azure] []
+- [Step 3: Prepare the connection to Azure] []
+- [Step 4: Upload the .vhd file] []
 
-## <a id="prepimage"> </a>ステップ 1: アップロードするイメージを準備する##
+## <a id="prepimage"> </a>Step 1: Prepare the image to be uploaded ##
 
-イメージを Windows Azure にアップロードする前に、Sysprep コマンドを使用してイメージを一般化する必要があります。Sysprep の使い方の詳細については、「[Sysprep の使用方法: 紹介](http://technet.microsoft.com/ja-jp/library/bb457073.aspx)」を参照してください。
+Before the image can be uploaded to Azure, it must be generalized by using the Sysprep command. For more information about using Sysprep, see [How to Use Sysprep: An Introduction](http://technet.microsoft.com/en-us/library/bb457073.aspx).
 
-作成した仮想マシンで、以下の手順を完了します。
+In the virtual machine that you just created, complete the following procedure:
 
-1. オペレーティング システムにログインします。
+1. Log in to the operating system.
 
-2. 管理者としてコマンド プロンプト ウィンドウを開きます。ディレクトリを **%windir%\system32\sysprep** に変更し、`sysprep.exe` を実行します。
+2. Open a Command Prompt window as an administrator. Change the directory to **%windir%\system32\sysprep**, and then run `sysprep.exe`.
 
-	![コマンド プロンプト ウィンドウを開く](./media/virtual-machines-create-upload-vhd-windows-server/sysprepcommand.png)
+	![Open Command Prompt window](./media/virtual-machines-create-upload-vhd-windows-server/sysprepcommand.png)
 
-3.	**[システム準備ツール]** ダイアログ ボックスが表示されます。
+3.	The **System Preparation Tool** dialog box appears.
 
-	![Sysprep の開始](./media/virtual-machines-create-upload-vhd-windows-server/sysprepgeneral.png)
+	![Start Sysprep](./media/virtual-machines-create-upload-vhd-windows-server/sysprepgeneral.png)
 
-4. **[システム クリーンアップ アクション]** で **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、**[一般化する]** チェック ボックスがオンになっていることを確認します。
+4. In **System Cleanup Action**, select **Enter System Out-of-Box Experience (OOBE)** and make sure that **Generalize** is checked.
 
-5. **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
+5. In **Shutdown Options**, select **Shutdown**.
 
-6. **[OK]** をクリックします。
+6. Click **OK**.
 
 
-## <a id="createstorage"> </a>ステップ 2: Windows Azure にストレージ アカウントを作成する##
+## <a id="createstorage"> </a>Step 2: Create a storage account in Azure ##
 
-ストレージ アカウントは、ストレージ サービスにアクセスするための最高レベルの名前空間を表し、Windows Azure サブスクリプションに関連付けられています。仮想マシンの作成に使用できる .vhd ファイルを Windows Azure にアップロードするには、Windows Azure のストレージ アカウントが必要です。Windows Azure の管理ポータルを使用して、ストレージ アカウントを作成できます。
+A storage account represents the highest level of the namespace for accessing the storage services and is associated with your Azure subscription. You need a storage account in Azure to upload a .vhd file to Azure that can be used for creating a virtual machine. You can use the Azure Management Portal to create a storage account.
 
-1. Windows Azure の管理ポータルにサインインします。
+1. Sign in to the Azure Management Portal.
 
-2. コマンド バーで、**[新規]** をクリックします。
+2. On the command bar, click **New**.
 
-3. **[ストレージ アカウント]**、**[簡易作成]** の順にクリックします。
+3. Click **Storage Account**, and then click **Quick Create**.
 
-	![ストレージ アカウントの簡易作成](./media/virtual-machines-create-upload-vhd-windows-server/Storage-quick-create.png)
+	![Quick create a storage account](./media/virtual-machines-create-upload-vhd-windows-server/Storage-quick-create.png)
 
-4. 次のようにフィールドを指定します。
+4. Fill out the fields as follows:
 
-	![ストレージ アカウントの詳細の入力](./media/virtual-machines-create-upload-vhd-windows-server/Storage-create-account.png)
+	![Enter storage account details](./media/virtual-machines-create-upload-vhd-windows-server/Storage-create-account.png)
 
-- **[URL]** で、ストレージ アカウントの URL で使用するサブドメイン名を入力します。文字数は 3 ～ 24 文字で、アルファベット小文字と数字を使用できます。この名前は、対応するサブスクリプションの BLOB リソース、キュー リソース、またはテーブル リソースのアドレス指定に使用される URL のホスト名になります。
+- Under **URL**, type a subdomain name to use in the URL for the storage account. The entry can contain from 3-24 lowercase letters and numbers. This name becomes the host name within the URL that is used to address Blob, Queue, or Table resources for the subscription.
 	
-- ストレージ アカウントの場所またはアフィニティ グループを選択します。アフィニティ グループを指定することで、ストレージと同じデータ センターにクラウド サービスを配置できます。
+- Choose the location or affinity group for the storage account. By specifying an affinity group, you can co-locate your cloud services in the same data center with your storage.
  
-- ストレージ アカウントの Geo レプリケーションを使用するかどうかを決定します。Geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で対処できない大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーすることができます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、Geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。
+- Decide whether to use geo-replication for the storage account. Geo-replication is turned on by default. This option replicates your data to a secondary location, at no cost to you, so that your storage fails over to a secondary location if a major failure occurs that can't be handled in the primary location. The secondary location is assigned automatically, and can't be changed. If legal requirements or organizational policy requires tighter control over the location of your cloud-based storage, you can turn off geo-replication. However, be aware that if you later turn on geo-replication, you will be charged a one-time data transfer fee to replicate your existing data to the secondary location. Storage services without geo-replication are offered at a discount.
 
-5. **[ストレージ アカウントの作成]** をクリックします。
+5. Click **Create Storage Account**.
 
-	作成したアカウントが **[ストレージ アカウント]** に表示されます。
+	The account now appears under **Storage Accounts**.
 
-	![ストレージ アカウントの作成に成功](./media/virtual-machines-create-upload-vhd-windows-server/Storagenewaccount.png)
+	![Storage account successfully created](./media/virtual-machines-create-upload-vhd-windows-server/Storagenewaccount.png)
 
 
-## <a id="PrepAzure"> </a>ステップ 3: Windows Azure への接続を準備する##
+## <a id="PrepAzure"> </a>Step 3: Prepare the connection to Azure ##
 
-.vhd ファイルをアップロードする前に、コンピューターと Windows Azure のサブスクリプションの間で、セキュリティで保護された接続を確立する必要があります。
+Before you can upload a .vhd file, you need to establish a secure connection between your computer and your subscription in Azure. 
 
-1. Windows Azure PowerShell ウィンドウを開きます。
+1. Open an Azure PowerShell window.
 
-2. 次のコマンドを入力します。
+2. Type: 
 
 	`Get-AzurePublishSettingsFile`
 
-	このコマンドは、ブラウザー ウィンドウを開き、Windows Azure サブスクリプションの情報と証明書が含まれている .publishsettings ファイルを自動的にダウンロードします。
+	This command opens a browser window and automatically downloads a .publishsettings file that contains information and a certificate for your Azure subscription. 
 
-3. publishsettings ファイルを保存します。
+3. Save the .publishsettings file. 
 
-4. 次のコマンドを入力します。
+4. Type:
 
 	`Import-AzurePublishSettingsFile <PathToFile>`
 
-	ここで、'<PathToFile>' は .publishsettings ファイルへの完全なパスです。
+	Where `<PathToFile>` is the full path to the .publishsettings file. 
 
-	詳細については、[Windows Azure のコマンドレットの使用に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554332.aspx)を参照してください。
+	For more information, see [Get Started with Azure Cmdlets](http://msdn.microsoft.com/en-us/library/windowsazure/jj554332.aspx) 
 
 
-## <a id="upload"> </a>ステップ 4: .vhd ファイルをアップロードする##
+## <a id="upload"> </a>Step 4: Upload the .vhd file ##
 
-.vhd ファイルをアップロードするときは、BLOB ストレージ内であればどこにでも .vhd ファイルを置くことができます。以下のコマンドの例では、**BlobStorageURL** はステップ 2 で作成したストレージ アカウントの URL であり、**YourImagesFolder** は BLOB ストレージ内でイメージを格納するコンテナーです。**VHDName** は、仮想ハード ディスクを識別するために管理ポータルに表示されるラベルです。**PathToVHDFile** は、.vhd ファイルの完全なパスとファイル名です。
+When you upload the .vhd file, you can place the .vhd file anywhere within your blob storage. In the following command examples, **BlobStorageURL** is the URL for the storage account that you created in Step 2, **YourImagesFolder** is the container within blob storage where you want to store your images. **VHDName** is the label that appears in the Management Portal to identify the virtual hard disk. **PathToVHDFile** is the full path and name of the .vhd file. 
 
-1. 前の手順で使用した Windows Azure PowerShell ウィンドウで、次のように入力します。
+1. From the Azure PowerShell window you used in the previous step, type:
 
 	`Add-AzureVhd -Destination <BlobStorageURL>/<YourImagesFolder>/<VHDName> -LocalFilePath <PathToVHDFile>`
 
-	詳細については、[Add-AzureVhd に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/dn205185.aspx)を参照してください。
+	For more information, see [Add-AzureVhd](http://msdn.microsoft.com/en-us/library/windowsazure/dn205185.aspx).
 
-##カスタム イメージの一覧にイメージを追加する##
-.vhd をアップロードしたら、サブスクリプションに関連付けられたカスタム イメージの一覧に、その .vhd をイメージとして追加します。
+##Add the Image to Your List of Custom Images ##
+After you upload the .vhd, you add it as an image to the list of custom images associated with your subscription.
 
-1. 管理ポータルで、**[すべてのアイテム]** の **[仮想マシン]** をクリックします。
+1. From the Management Portal, under **All Items**, click **Virtual Machines**.
 
-2. [仮想マシン] で、**[イメージ]**、**[作成]** の順にクリックします。
+2. Under Virtual Machines, click **Images**, and then click **Create**.
 
-3. **[VHD からのイメージの作成]** で、アップロードした .vhd の名前と URL を指定します。
+3. In **Create an image from a VHD**, specify a name and the URL to the .vhd that you uploaded.
 
-4. **[この VHD に関連付けられた仮想マシンで Sysprep を実行しました]** をクリックして、ステップ 2. でオペレーティング システムを一般化したことを確認し、**[OK]** をクリックします。
+4. Check **I have run Sysprep on the virtual machine associated with this VHD** to acknowledge that you generalized the operating system in Step 2, and then click **OK**. 
 
 
-## 次の手順##
-一覧でイメージが利用できるようになったら、そのイメージを使用して仮想マシンを作成できます。手順については、「[Windows Server を実行する仮想マシンの作成](../virtual-machines-windows-tutorial/)」を参照してください。
+## Next Steps ##
+After the image is available in your list, you can use it to create virtual machines. For instructions, see [Create a Virtual Machine Running Windows Server](../virtual-machines-windows-tutorial/).
 
-[ステップ 1: アップロードするイメージを準備する]: #prepimage
-[ステップ 2: Windows Azure にストレージ アカウントを作成する]: #createstorage
-[ステップ 3: Windows Azure への接続を準備する]: #prepAzure
-[ステップ 4: .vhd ファイルをアップロードする]: #upload
-
+[Step 1: Prepare the image to be uploaded]: #prepimage
+[Step 2: Create a storage account in Azure]: #createstorage
+[Step 3: Prepare the connection to Azure]: #prepAzure
+[Step 4: Upload the .vhd file]: #upload
 
 
 

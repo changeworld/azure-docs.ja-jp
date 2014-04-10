@@ -1,130 +1,130 @@
-<properties linkid="manage-services-recovery-configure-backup-vault" urlDisplayName="バックアップ資格情報コンテナーの構成" pageTitle="Windows Server のバックアップをすばやく簡単に行うための Windows Azure 復旧サービスの構成" metaKeywords="障害復旧" description="このチュートリアルを使用し、Microsoft の Windows Azure クラウド ソリューションのバックアップ サービスを使って、Windows Server をクラウドにバックアップする方法について学習します。" metaCanonical="" services="recovery-services" documentationCenter="" title="Windows Server のバックアップをすばやく簡単に行うための Windows Azure のバックアップの構成" authors=""  solutions="" writer="starra" manager="cynthn" editor="tysonn"  />
+<properties linkid="manage-services-recovery-configure-backup-vault" urlDisplayName="Configure a Backup Vault" pageTitle="Configure Azure Recovery Services to quickly and easily back-up Windows Server" metaKeywords="disaster recovery" description="Use this tutorial to learn how to use the Backup service in Microsoft's Azure cloud offering to back up Windows Server to the cloud." metaCanonical="" services="recovery-services" documentationCenter="" title="Configure Azure Backup to quickly and easily back-up Windows Server" authors="starra" solutions="" manager="cynthn" editor="tysonn" />
 
 
 
-<h1><a id="configure-a-backup-vault-tutorial"></a>Windows Server のバックアップをすばやく簡単に行うための Windows Azure のバックアップの構成</h1>
+<h1><a id="configure-a-backup-vault-tutorial"></a>Configure Azure Backup to quickly and easily back-up Windows Server</h1>
 <div class="dev-callout"> 
-<strong>注</strong>
+<strong>Note</strong>
  
-<p>このチュートリアルを実行するには、Windows Azure アカウントで Windows Azure のバックアップ機能を有効にする必要があります。</p>
+<p>To complete this tutorial, you need an Azure account that has the Azure Backup feature enabled.</p>
 <ul> 
-<li>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="/en-us/pricing/free-trial/">Windows Azure の無料評価版サイト</a>を参照してください。</li>
+<li>If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="/en-us/pricing/free-trial/">Azure Free Trial</a>.</li> 
  
-<li>所有しているアカウントで Windows Azure のバックアップ プレビューを有効にする必要がある場合は、「<a href="/en-us/develop/net/tutorials/create-a-windows-azure-account/#enable" target="_blank">Windows Azure アカウントを作成してプレビュー機能を有効にする</a>」を参照してください。</li>
+<li>If you have an existing account but need to enable the Azure Backup preview, see <a href="/en-us/develop/net/tutorials/create-a-windows-azure-account/#enable" target="_blank">Enable Azure preview features</a>.</li>
 </ul>
  
-<p>バックアップ プレビュー プログラムへの参加を要求した後、自分の状態がアクティブになるのを待ちます。マイクロソフトはすべてのユーザーを自動的に承認しているため、承認に時間はかかりません。</p>
+<p>After you request to join the Backup preview program wait for your status to become active. We are automatically approving all customers so this will not take a long time to occur.</p> 
 </div>
   
 
-Windows Azure に Windows Server のファイルとデータをバックアップするには、データを保存するリージョンにバックアップ資格情報コンテナーを作成する必要があります。このチュートリアルでは、バックアップの保存に使用する資格情報コンテナーの作成、資格情報コンテナーへの証明書のアップロード、バックアップ エージェントのインストール、および管理ポータルで使用できるバックアップ管理タスクの概要について説明します。
+To backup files and data from your Windows Server to Azure, you must create a backup vault in the geographic region where you want to store the data. This tutorial will walk you through the creation of the vault you will use to store backups, the uploading of a certificate to the vault, the installation of a backup agent, and an overview of the backup management tasks available through the management portal.
 
 <div class="dev-callout"> 
-<strong>開始する前に</strong>
-<p>このチュートリアルを完了するには、サーバーをバック
-アップ資格情報コンテナーに登録するための X.509 v3 証明書が必要です。この証明書はキー長が 2048 ビット以上で、ローカル コンピューターの Personal 証明書ストアに存在します。サーバーに証明書がインストールされている場合、そのサーバーには証明書の秘密キーが含まれています。Windows Azure の管理ポータルに証明書をアップロードするには、公開キーを .cer 形式ファイルとしてエクスポートする必要があります。</p>
+<strong>Before you begin</strong> 
+<p>To successfully complete this tutorial you must have 
+an X.509 v3 certificate to register your servers with backup vaults.  The certificate must have a key length of at least 2048 bits and should reside in the Personal certificate store of your Local Computer. When the certificate is installed on your server, it should contain the private key of the certificate. To upload to the certificate to the Azure Management Portal, you must export the public key as a .cer format file.</p> 
 
-<p>次のいずれかを使用できます。</p>
+<p>You can either use:</p> 
 <ul>
-<li>makecert ツールを使用して作成された独自の自己署名証明書。</li>
+<li>Your own self-signed certificate created using makecert tool, OR</li> 
 
-<li>Microsoft が信頼する証明機関 (CA) によって発行された任意の有効な SSL 証明書。このルート証明書は Microsoft ルート証明書プログラムを介して配布されます。このプログラムの詳細については、「<a href="http://go.microsoft.com/fwlink/p/?LinkId=294666">Windows ルート証明書プログラムのメンバー</a>」を参照してください。</li>
+<li>Any valid SSL certificate issued by a Certificate Authority (CA) that is trusted by Microsoft and whose root certificates are distributed via the Microsoft Root Certificate Program. For more information about this program see <a href="http://go.microsoft.com/fwlink/p/?LinkId=294666">Windows Root Certificate Program members</a>.</li>
 </ul> 
 
-<p>証明書では次の点を確認する必要があります。</p>
+<p>Some other attributes which you need to ensure on the certificates are:</p> 
 
 <ul>
-<li>有効な ClientAuthentication EKU があること</li>
+<li>Has a valid ClientAuthentication EKU</li>
 
-<li>現在有効であること (有効期間内にあり、3 年を超えていない)</li>
+<li>Is currently valid with a validity period that does not exceed 3 years</li>  
 </ul>
 
-<p>独自の自己署名証明書を使用するには、次の手順に従います。</p>
+<p>To use your own self-signed certificate, follow these steps: </p>
 <ol>
-<li><a href="http://go.microsoft.com/fwlink/p/?LinkID=294662">証明書作成ツール (MakeCert.exe)</a> をダウンロードします。</li>
+<li>Download the <a href="http://go.microsoft.com/fwlink/p/?LinkID=294662">Certificate Creation tool (MakeCert.exe)</a>.</li>  
 
 
-<li>管理者特権でコマンド プロンプト (cmd.exe) を開き、次のコマンドを実行します。<i>CertificateName</i> は証明書の名前に置き換え、-e の後に実際の有効期限を指定します。
+<li>Open Command Prompt (cmd.exe) with Administrator privileges and run the following command, replacing <i>CertificateName</i> with the name of your certificate and specifying the actual expiration date of your certificate after -e: 
 <code>
 makecert.exe -r -pe -n CN=CertificateName -ss my -sr localmachine -eku 1.3.6.1.5.5.7.3.2 -len 2048 -e 01/01/2016 CertificateName.cer</code></li>
 </ol>
 <p>
-証明書の作成に使用したものとは違うサーバーを登録する場合は、.pfx ファイル (秘密キーが含まれます) をエクスポートし、そのファイルをもう一方のサーバーにコピーして、Personal 証明書ストアにインポートします。
+If you will be registering a different server than the one you used to make the certificate, you need to export the .pfx file (that contains the private key), copy it to the other server and import it to that server's Personal certificate store. 
 </p>
 <p>
-資格情報コンテナー証明書のアップロード処理の詳しい手順と、.pfx ファイルのエクスポートとインポートの詳細については、「<a href="http://go.microsoft.com/fwlink/p/?LinkID=294662">コンテナーの証明書の管理</a>」を参照してください。</p>
+For step-by-step instructions on the vault certificate upload process and more information on exporting and importing .pfx files, see <a href="http://go.microsoft.com/fwlink/p/?LinkID=294662">Manage vault certificates</a>.</p> 
 </div>
 
-<h2><a id="create"></a>バックアップ コンテナーの作成</h2>
+<h2><a id="create"></a>Create a backup vault</h2>
 
-1. [管理ポータル](https://manage.windowsazure.com)にサインインします。
+1. Sign in to the [Management Portal](https://manage.windowsazure.com).
 
 	[WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
 
-2. **[復旧サービス]**、**[新規作成]** の順にクリックし、**[バックアップ資格情報コンテナー]** をポイントして、**[簡易作成]** をクリックします。
+2. Click **Recovery Services**, then click **Create New**,  point to **Backup Vault**, and then click **Quick Create**.
 
-	![新しいバックアップ コンテナー][new-backup-vault]
+	![New backup vault][new-backup-vault]
 
-3. **[名前]** ボックスに、バックアップ資格情報コンテナーを識別する表示名を入力します。
+3. In **Name**, enter a friendly name to identify the backup vault.
 
-4. **[リージョン]** ボックスで、バックアップ資格情報コンテナーのリージョンを選択します。
+4. In **Region**, select the geographic region for the backup vault.  
 
-5. **[サブスクリプション]** ボックスに、バックアップ資格情報コンテナーを使用する Windows Azure サブスクリプションを入力します。
+5. In **Subscription**, enter the Azure subscription that you want to use the backup vault with. 
 
 
-6. **[バックアップ資格情報コンテナーの作成]** をクリックします。
+6. Click **Create Backup vault**.
 
-	バックアップ資格情報コンテナーが作成されるまで時間がかかることがあります。状態を確認するには、ポータルの下部にある通知を監視します。バックアップ資格情報コンテナーが作成されたら、コンテナーが正常に作成されたことを示すメッセージが表示され、復旧サービスのリソースに **[オンライン]** として表示されます。
+	It can take a while for the backup vault to be created. To check the status, you can monitor the notifications at the bottom of the portal. After the backup vault has been created, a message will tell you that the vault has been successfully created and it will be listed in the resources for Recovery Services as **Online**. 
 
-	![バックアップ コンテナーの作成][backup-vault-create]
+	![Backup vault creation][backup-vault-create]
 
-<h2><a id="upload"></a>証明書のアップロード</h2>
-1. [管理ポータル](https://manage.windowsazure.com)にサインインします。
+<h2><a id="upload"></a>Upload a certificate</h2>
+1. Sign in to the [Management Portal](https://manage.windowsazure.com).
 
-2. **[復旧サービス]**、証明書によって識別されるバックアップ資格情報コンテナーの名前、**[証明書の管理]** の順にクリックします。
+2. Click **Recovery Services**, then click the name of backup vault that will be identified by the certificate and then click **Manage certificate**.
 	
-	![証明書の管理][manage-cert]
+	![Manage certificate][manage-cert]
 
-3. **[証明書の管理]** ダイアログで [コンピューターの参照] をクリックし、バックアップ資格情報コンテナーで使用する .cer ファイルを特定します。
-<h2><a id="download"></a>バックアップ エージェントのダウンロードとインストール</h2>
-1. [管理ポータル](https://manage.windowsazure.com)にサインインします。
+3. In the **Manage Certificate** dialog click Browse Your Computer to locate the .cer file to use with this backup vault.
+<h2><a id="download"></a>Download and install a backup agent</h2>
+1. Sign in to the [Management Portal](https://manage.windowsazure.com).
 
-2. **[復旧サービス]** をクリックし、バックアップ資格情報コンテナーの名前をクリックして、資格情報コンテナー ダッシュボードを表示します。
+2. Click **Recovery Services**, then click the name of backup vault to view the vault dashboard.
 
-3.  **[エージェントのインストール]** をクリックします。
+3. Click **Install Agent** 
 	
-	![エージェントのインストール][install-agent]
-4. ダウンロードするエージェントを選択できるダイアログが表示されます。
-	* Windows Server 2012 および System Center 2012 SP1 - Data Protection Manager のエージェント
-	* Windows Server 2012 Essentials 用エージェント
-5. 適切なエージェントを選択します。エージェント ソフトウェアをダウンロードする Microsoft ダウンロード センターにリダイレクトされます。詳細情報
+	![Install Agent][install-agent]
+4. You will be presented with a dialog where you can choose which agent to download:
+	* Agent for Windows Server 2012 and System Center 2012 SP1 - Data Protection Manager
+	* Agent for Windows Server 2012 Essentials
+5. Select the appropriate agent. You will be redirected to the Microsoft Download Center to download the agent software. For more information see:
 
-	* [Windows Server 2012 および System Center 2012 SP1 - Data Protection Manager の Windows Azure のバックアップ エージェントのインストール](http://technet.microsoft.com/en-us/library/hh831761.aspx#BKMK_installagent)
-	* [Windows Server 2012 Essentials の Windows Azure のバックアップ エージェントのインストール](http://technet.microsoft.com/en-us/library/jj884318.aspx)
+	* [Install Azure Backup Agent for Windows Server 2012 and System Center 2012 SP1 - Data Protection Manager](http://technet.microsoft.com/en-us/library/hh831761.aspx#BKMK_installagent)
+	* [Install Azure Backup Agent for Windows Server 2012 Essentials](http://technet.microsoft.com/en-us/library/jj884318.aspx)
 
-エージェントがインストールされたら、適切なローカル管理インターフェイス (Microsoft 管理コンソール スナップイン、System Center Data Protection Manager コンソール、Windows Server Essentials ダッシュボードなど) を使用して、サーバーのバックアップ ポリシーを構成できます。
+Once the agent is installed you can use the appropriate local management interface (such as the Microsoft Management Console snap-in, System Center Data Protection Manager Console, or Windows Server Essentials Dashboard) to configure the backup policy for the server.  
 
-<h2><a id="manage"></a>バックアップ コンテナーとサーバーの管理</h2>
-1. [管理ポータル](https://manage.windowsazure.com)にサインインします。
+<h2><a id="manage"></a>Manage backup vaults and servers</h2>
+1. Sign in to the [Management Portal](https://manage.windowsazure.com).
 
-2. **[復旧サービス]** をクリックし、バックアップ資格情報コンテナーの名前をクリックして、資格情報コンテナー ダッシュボードを表示します。ここでは、次のタスクを実行できます。
-	* **証明書の管理**。以前にアップロードされた証明書の更新に使用されます。
-	* **削除**。現在のバックアップ コンテナーを削除します。バックアップ コンテナーがもう使用されていない場合は、そのコンテナーを削除してストレージ領域を解放できます。**[削除]** は、登録されているサーバーすべてが資格情報コンテナーから削除された場合にのみ有効になります。
+2. Click **Recovery Services**, then click the name of backup vault to view the vault dashboard. From here you can perform the following tasks:
+	* **Manage certificate**. Used to update the certificate previously uploaded.
+	* **Delete**. Deletes the current backup vault. If a backup vault is no longer being used, you can delete it to free up storage space. **Delete** is only enabled after all registered servers have been deleted from the vault. 
 
-3. **[保護された項目]** をクリックして、サーバーからバックアップされた項目を表示します。この一覧は、情報の提供のみを目的としています。
-![保護された項目][protected-itmes]
+3. Click **Protected Items** to view the items that have been backed up from the servers. This list is for information purposes only.  
+![Protected Items][protected-itmes]
 
-4. **[サーバー]** をクリックして、この資格情報コンテナーに登録されたサーバーの名前を表示します。ここでは、次のタスクを実行できます。
-	* **再登録を許可**。サーバーに対してこのオプションが選択されている場合、エージェントで登録ウィザードを使用して、サーバーをバックアップ コンテナーにもう一度登録できます。証明書でエラーが発生したとき、またはサーバーを再構築する必要があった場合などに、再登録が必要になる可能性があります。再登録を行えるのは、サーバー名ごとに 1 回だけです。
-	* **削除**。バックアップ コンテナーからサーバーを削除します。サーバーに関連付けられている保存されたデータすべてがすぐに削除されます。
+4. Click **Servers** to view the names of the servers that are register to this vault. From here you can perform the following tasks:
+	* **Allow Re-register**. When this option is selected for a server you can use the Registration Wizard in the agent to register the server with the backup vault a second time. You might need to re-register due to an error in the certificate or if a server had to be rebuilt. Re-registration is allowed only once per server name.
+	* **Delete**. Deletes a server from the backup vault. All of the stored data associated with the server is deleted immediately.
 
-		![削除されたサーバー][deleted-server]
+		![Deleted Server][deleted-server]
 
-<h2><a id="next"></a>次の手順</h2>
+<h2><a id="next"></a>Next steps</h2>
 
-- Windows Azure のバックアップの詳細については、「[Windows Azure のバックアップの概要](http://go.microsoft.com/fwlink/p/?LinkId=222425)」を参照してください。
+- To learn more about Azure Backup, see [Azure Backup Overview](http://go.microsoft.com/fwlink/p/?LinkId=222425). 
 
-- [Windows Azure のバックアップ フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
+- Visit the [Azure Backup Forum](http://go.microsoft.com/fwlink/p/?LinkId=290933).
 
 [new-backup-vault]: ./media/backup-configure-vault/RS_howtobackup1.png
 [backup-vault-create]: ./media/backup-configure-vault/RS_howtobackup2.png
@@ -132,5 +132,3 @@ makecert.exe -r -pe -n CN=CertificateName -ss my -sr localmachine -eku 1.3.6.1.5
 [install-agent]: ./media/backup-configure-vault/RS_howtodownload1.png
 [deleted-server]: ./media/backup-configure-vault/RS_deletedserver.png
 [protected-itmes]: ./media/backup-configure-vault/RS_protecteditems.png
-
-

@@ -1,47 +1,48 @@
-<properties linkid="dev-net-commons-tasks-enable-ssl" urlDisplayName="SSL を有効にする" pageTitle="クラウド サービス向けの SSL の構成 - Windows Azure" metaKeywords="Azure SSL, Azure HTTPS, Windows Azure SSL, Windows Azure HTTPS, .NET Azure SSL, .NET Azure HTTPS, C# Azure SSL, C# Azure HTTPS, VB Azure SSL, VB Azure HTTPS" description="Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。" metaCanonical="" services="cloud-services" documentationCenter=".NET" title="Windows Azure でアプリケーションの SSL を構成する" authors=""  solutions="" writer="" manager="jeffreyg" editor="mollybos"  />
+<properties linkid="dev-net-commons-tasks-enable-ssl" urlDisplayName="Enable SSL" pageTitle="Configure SSL for a cloud service - Azure" metaKeywords="Azure SSL, Azure HTTPS, Azure SSL, Azure HTTPS, .NET Azure SSL, .NET Azure HTTPS, C# Azure SSL, C# Azure HTTPS, VB Azure SSL, VB Azure HTTPS" description="Learn how to specify an HTTPS endpoint for a web role and how to upload an SSL certificate to secure your application." metaCanonical="" services="cloud-services" documentationCenter=".NET" title="Configuring SSL for an application in Azure" authors="" solutions="" manager="jeffreyg" editor="mollybos" />
 
 
 
 
-# Windows Azure でアプリケーションの SSL を構成する
+# Configuring SSL for an application in Azure
 
-Secure Socket Layer (SSL) の暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法です。この一般的なタスクでは、Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。
+Secure Socket Layer (SSL) encryption is the most commonly used method of securing data sent across the internet. This common task discusses how to specify an HTTPS endpoint for a web role and how to upload an SSL certificate to secure your application.
 
-<div class="dev-callout">注
-<p>このタスクの手順は、Windows Azure のクラウド サービスに適用されます。Web サイトについては、「<a href="../web-sites-configure-ssl-certificate/">Configuring an SSL certificate for a Windows Azure web site (Windows Azure の Web サイトの SSL 証明書の構成)</a>」を参照してください。</p>
+<div class="dev-callout">Note
+<p>The procedures in this task apply to Azure Cloud Services; for Web Sites, see <a href="../web-sites-configure-ssl-certificate/">Configuring an SSL certificate for an Azure web site</a>.</p>
 </div>
 
-このタスクの手順は次のとおりです。
+This task includes the following steps:
 
--   [手順 1: SSL 証明書を取得する][]
--   [手順 2: サービス定義ファイルとサービス構成ファイルを変更する][]
--   [手順 3: 展開パッケージと証明書をアップロードする][]
--   [手順 4: HTTPS を使用してロール インスタンスに接続する][]
+-   [Step 1: Get an SSL certificate][]
+-   [Step 2: Modify the service definition and configuration files][]
+-   [Step 3: Upload the deployment package and certificate][]
+-   [Step 4: Connect to the role instance by using HTTPS][]
 
-このタスクでは、運用環境の展開を使用します。ステージング環境の展開を使用する場合に関する情報については、このトピックの最後で紹介します。
+This task will use a production deployment; information on using a staging deployment is provided at the end of this topic.
 
-<h2><a name="step1"> </a><span class="short-header">SSL 証明書の取得</span>手順 1: SSL 証明書を取得する</h2>
+<h2><a name="step1"> </a><span class="short-header">Get an SSL cert</span>Step 1: Get an SSL certificate</h2>
 
-アプリケーションの SSL を構成するには、最初に、セキュリティ保護のための証明書を発行する信頼されたサード パーティである、証明機関 (CA) によって署名された SSL 証明書を取得する必要があります。まだ SSL 証明書がない場合は、SSL 証明書を販売する会社から取得する必要があります。
+To configure SSL for an application, you first need to get an SSL certificate that has been signed by a Certificate Authority (CA), a trusted third-party who issues certificates for this purpose. If you do not already have one, you will need to obtain one from a company that sells SSL certificates.
 
-証明書は、Windows Azure における SSL 証明書の次の要件を満たす必要があります。
+The certificate must meet the following requirements for SSL certificates in Azure:
 
--   証明書は秘密キーを含む必要があります。
--   証明書はキー交換のために作成され、Personal Information Exchange (.pfx) ファイルにエクスポートできる必要があります。
--   証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。証明機関 (CA) から cloudapp.net ドメインの SSL 証明書を取得することはできません。サービスにアクセスするときに使用するカスタム ドメイン名を取得する必要があります。CA に証明書を要求するときは、証明書の件名がアプリケーションにアクセスするために使用するカスタム ドメイン名と一致している必要があります。たとえば、カスタム ドメイン名が **contoso.com** である場合は、**.contoso.com** または **www.contoso.com** の証明書を CA に要求します。
--   証明書では、2048 ビット以上の暗号化を使用する必要があります。
+-   The certificate must contain a private key.
+-   The certificate must be created for key exchange, exportable to a Personal Information Exchange (.pfx) file.
+-   The certificate's subject name must match the domain used to access the cloud service. You cannot obtain an SSL certificate from a certificate authority (CA) for the cloudapp.net domain. You must acquire a custom domain name to use when access your service. When you request a certificate from a CA the certificate's subject name must match the custom domain name used to access your application. For example, if your custom domain name is **contoso.com** you would request a certificate from your CA for ***.contoso.com** or **www.contoso.com**.
+-   The certificate must use a minimum of 2048-bit encryption.
 
-テスト目的で、自己署名証明書を作成して使用できます。自己署名証明書は CA を通じて認証されないため、cloudapp.net ドメインを Web サイト URL として使用できます。たとえば、下のタスクでは自己署名証明書を使用しますが、証明書で使用される共通名 (CN) は **sslexample.cloudapp.net** です。IIS マネージャーを使用して自己署名証明書を作成する方法の詳細については、「[Windows Azure のサービス証明書を作成する][]」を参照してください。
+For test purposes, you can create and use a self-signed certificate. A self-signed certificate is not authenticated through a CA and can use the cloudapp.net domain as the web site URL. For example, the task below uses a self-signed certificate in which  the common name (CN) used in the certificate is **sslexample.cloudapp.net**. For details about how to create a self-signed certificate using IIS Manager, See [How to create a certificate for a role][].
 
-次に、この証明書に関する情報を、サービス定義ファイルおよびサービス構成ファイルに含める必要があります。
+Next, you must include information about the certificate in your service definition and service configuration files.
 
-<h2><a name="step2"> </a><span class="short-header">サービス/構成ファイルの変更</span>手順 2: サービス定義ファイルとサービス構成ファイルを変更する</h2>
+<h2><a name="step2"> </a><span class="short-header">Modify svc / config files</span>Step 2: Modify the service definition and configuration files</h2>
 
-アプリケーションは、証明書を使用するように構成する必要があります。また、HTTPS エンドポイントを追加する必要があります。その結果として、サービス定義ファイルおよびサービス構成ファイルを更新する必要があります。
+Your application must be configured to use the certificate, and an HTTPS endpoint must be added. As a result, the service definition and service configuration files need to be updated.
 
-1.  お使いの開発環境で、サービス定義ファイル (CSDEF) を開き、
-    **WebRole** セクション内に **Certificates** セクションを追加し、
-    証明書に関する次の情報を含めます。
+1.  In your development environment, open the service definition file
+    (CSDEF), add a **Certificates** section within the **WebRole**
+    section, and include the following information about the
+    certificate:
 
         <WebRole name="CertificateTesting" vmsize="Small">
         ...
@@ -53,10 +54,10 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
         ...
         </WebRole>
 
-    **Certificates** セクションでは、証明書の名前、場所、およびこの証明書があるストアの名前を定義します。CA (証明機関) ストアにこの証明書を保存することを選択しましたが、その他のオプションを選択することもできます。詳細については、「[サービスと証明書の関連付け][]」を参照してください。
+    The **Certificates** section defines the name of our certificate, its location, and the name of the store where it is located. We have chosen to store the certificate in the CA (Certificate Authority)tore, but you can choose other options as well. See [How to associate a certificate with a service][] for more information.
 
-2.  サービス定義ファイルで、**エンドポイント** セクション内に
-    **InputEndpoint** 要素を追加し、HTTPS を有効にします。
+2.  In your service definition file, add an **InputEndpoint** element
+    within the **Endpoints** section to enable HTTPS:
 
         <WebRole name="CertificateTesting" vmsize="Small">
         ...
@@ -67,9 +68,9 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
         ...
         </WebRole>
 
-3.  サービス定義ファイルで、**Sites** セクション内に **Binding**
-    要素を追加します。これにより、HTTPS バインドが追加され、
-    エンドポイントがサイトにマップされます。
+3.  In your service definition file, add a **Binding** element within
+    the **Sites** section. This adds an HTTPS binding to map the
+    endpoint to your site:
 
         <WebRole name="CertificateTesting" vmsize="Small">
         ...
@@ -83,12 +84,13 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
         ...
         </WebRole>
 
-    サービス定義ファイルに対して必要な変更はすべて完了しましたが、
-    サービス構成ファイルに証明書の情報を追加する必要もあります。
+    All of the required changes to the service definition file have been
+    completed, but you still need to add the certificate information to
+    the service configuration file.
 
-4.  サービス構成ファイル (CSCFG) である ServiceConfiguration.Cloud.cscfg で、**ロール** セクション内に
-    **Certificates** セクションを追加し、次に示す拇印値のサンプルを
-    証明書の拇印値に置き換えます。
+4.  In your service configuration file (CSCFG), ServiceConfiguration.Cloud.cscfg, add a **Certificates**
+    section within the **Role** section, replacing the sample thumbprint
+    value shown below with that of your certificate:
 
         <Role name="Deployment">
         ...
@@ -100,78 +102,76 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
         ...
         </Role>
 
-(上記の例では、サムプリント アルゴリズムに **sha1** を使用しています。証明書のサムプリント アルゴリズムに適切な値を指定してください。)
+(The example above uses **sha1** for the thumbprint algorithm. Specify the appropriate value for your certificate's thumbprint algorithm.)
 
-サービス定義ファイルとサービス構成ファイルが更新されたので、
-Windows Azure にアップロードするために展開をパッケージ化します。**cspack** を
-使用している場合は、**/generateConfigurationFile** フラグ
-をしないようにしてください。このフラグによって、先ほど挿入した
-証明書情報が上書きされるためです。
+Now that the service definition and service configuration files have
+been updated, package your deployment for uploading to Azure. If
+you are using **cspack**, ensure that you don't use the
+**/generateConfigurationFile** flag, as that will overwrite the
+certificate information you just inserted.
 
-<h2><a name="step3"> </a><span class="short-header">Windows Azure へのアップロード</span>手順 3: 展開パッケージと証明書をアップロードする</h2>
+<h2><a name="step3"> </a><span class="short-header">Upload to Azure</span>Step 3: Upload the deployment package and certificate</h2>
 
-展開パッケージがこの証明書を使用するように更新され、HTTPS エンドポイント
-が追加されました。これで、管理ポータルを使用して 
-Windows Azure にパッケージと証明書をアップロードできるようになりました。
+Your deployment package has been updated to use the certificate, and an
+HTTPS endpoint has been added. Now you can upload the package and
+certificate to Azure with the Management Portal.
 
-1. [Windows Azure の管理ポータル][]にログインします。
-2. **[新規]**、**[クラウド サービス]**、**[カスタム作成]** の順にクリックします。
-3. **[クラウド サービスを作成する]** ダイアログで、URL、リージョン/アフィニティ グループ、およびサブスクリプションの値を入力します。**[今すぐクラウド サービス パッケージを展開します]** チェック ボックスがオンになっていることを確認し、**[次へ]** をクリックします。
-3. **[クラウド サービスの発行]** ダイアログで、クラウド サービスに必要な情報を入力し、環境で **[運用]** をクリックして、**[今すぐ証明書を追加]** チェック ボックスがオンになっていることを確認します (いずれかのロールに単一のインスタンスが含まれている場合は、**[1 つ以上のロールに単一のインスタンスが含まれている場合でも展開する]** チェック ボックスがオンになっていることを確認してください)。
+1. Log into the [Azure Management Portal][]. 
+2. Click **New**, click **Cloud Service**, and then click **Custom Create**.
+3. In the **Create a cloud service** dialog, enter values for the URL, region/affinity group, and subscription. Ensure **Deploy a cloud service package now** is checked, and click the **Next** button.
+3. In the **Publish your cloud service** dialog, enter the required information for your cloud service, select **Production** for the environment, and ensure **Add certificates now** is checked. (If any of your roles contain a single instance, ensure **Deploy even if one or more roles contain a single instance** is checked.) 
 
-    ![クラウド サービスの発行][0]
+    ![Publish your cloud service][0]
 
-4.  **[次へ]** をクリックします。
-5.  **[証明書の追加]** ダイアログで、SSL 証明書 .pfx ファイルの場所
-    と証明書のパスワードを入力し、**[証明書のアタッチ]** を
-    クリックします。
+4.  Click the **Next** button.
+5.  In the **Add Certificate** dialog, enter the location for the SSL
+    certificate .pfx file, the password for the certificate, and click
+    **attach certificate**.  
 
-    ![証明書の追加][1]
+    ![Add certificate][1]
 
-6.  証明書が **[アタッチされた証明書]** セクションに表示されていることを確認します。
+6.  Ensure your certificate is listed in the **Attached Certificates** section.
 
-    ![アタッチされた証明書][4]
+    ![Attached certificates][4]
 
-7.  **[完了]** をクリックしてクラウド サービスを作成します。展開の状態が **[準備完了]** になったら、次の手順に進むことができます。
+7.  Click the **Complete** button to create your cloud service. When the deployment has reached the **Ready** status, you can proceed to the next steps.
 
-<h2><a name="step4"> </a><span class="short-header">HTTPS を使用した接続</span>手順 4: HTTPS を使用してロール インスタンスに接続する</h2>
+<h2><a name="step4"> </a><span class="short-header">Connect using HTTPS</span>Step 4: Connect to the role instance by using HTTPS</h2>
 
-Windows Azure で展開を実行できるようになったため、HTTPS を使用して
-接続できます。
+Now that your deployment is up and running in Azure, you can
+connect to it using HTTPS.
 
-1.  管理ポータルで展開を選択し、**[サイトの URL]** の下にあるリンクをクリックします。
+1.  In the Management Portal, select your deployment, then click the link under **Site URL**.
 
-    ![サイトの URL の確認][2]
+    ![Determine site URL][2]
 
-2.  Web ブラウザーで、**http** ではなく **https** を使用するようにリンクを修正し、ページにアクセスします。
+2.  In your web browser, modify the link to use **https** instead of **http**, and then visit the page.
 
-    **注:** 自己署名証明書を使用している場合は、自己署名証明書に
-    関連付けられている HTTPS エンドポイントを参照すると、ブラウザーで
-    証明書エラーが表示されます。信頼された
-    証明機関によって署名された証明書を使用することにより、この問題は解消されます。それまでの間、このエラーは無視してかまいません (また、信頼された証明書機関のユーザーの証明書ストアに自己署名証明書を追加する方法もあります)。
+    **Note:** If you are using a self-signed certificate, when you
+    browse to an HTTPS endpoint that's associated with the self-signed
+    certificate you will see a certificate error in the browser. Using a
+    certificate signed by a trusted certification authority will eliminate this problem; in the meantime, you can ignore the error. (Another option is to add the self-signed certificate to the user's trusted certificate authority certificate store.)
 
-    ![SSL のサンプル Web サイト][3]
+    ![SSL example web site][3]
 
-運用環境の展開ではなくステージング環境の展開に SSL を使用する場合は、最初に、ステージング環境の展開に使用されている URL を確認する必要があります。証明書または証明書情報を含めずに、ステージング環境にクラウド サービスを展開してください。展開すると、管理ポータルの **[サイトの URL]** に表示される、GUID ベースの URL を確認できます。GUID ベースの URL (**32818777-6e77-4ced-a8fc-57609d404462.cloudapp.net** など) と同じ共通名 (CN) で証明書を作成し、その証明書をステージングされたクラウド サービスに管理ポータルを使用して追加します。CSDEF ファイルと CSCFG ファイルに証明書情報を追加し、アプリケーションの再パッケージ化を実行して、新しいパッケージと CSCFG ファイルを使用するようステージング展開を更新します。
+If you want to use SSL for a staging deployment instead of a production deployment, you'll first need to determine the URL used for the staging deployment. Deploy your cloud service to the staging environment without including a certificate or any certificate information. Once deployed, you can determine the GUID-based URL, which is listed in the management portal's **Site URL** field. Create a certificate with the common name (CN) equal to the GUID-based URL (for example, **32818777-6e77-4ced-a8fc-57609d404462.cloudapp.net**), use the management portal to add the certificate to your staged cloud service, add the certificate information to your CSDEF and CSCFG files, repackage your application, and update your staged deployment to use the new package and CSCFG file.
 
-<h2><a name="additional_resources"> </a><span class="short-header">その他のリソース</span>その他のリソース</h2>
+<h2><a name="additional_resources"> </a><span class="short-header">Additional Resources</span>Additional Resources</h2>
 
-* [証明書をサービスに関連付ける方法][]
+* [How to associate a certificate with a service][]
 
-* [HTTPS エンドポイント上での SSL 証明書の構成方法][]
+* [How to configure an SSL certificate on an HTTPS endpoint][]
 
-  [手順 1: SSL 証明書を取得する]: #step1
-  [手順 2: サービス定義ファイルとサービス構成ファイルを変更する]: #step2
-  [手順 3: 展開パッケージと証明書をアップロードする]: #step3
-  [手順 4: HTTPS を使用してロール インスタンスに接続する]: #step4
-  [Windows Azure のサービス証明書を作成する]: http://msdn.microsoft.com/en-us/library/windowsazure/gg432987.aspx
-  [証明書をサービスに関連付ける方法]: http://msdn.microsoft.com/en-us/library/windowsazure/gg465718.aspx
-  [Windows Azure の管理ポータル]: http://manage.windowsazure.com
+  [Step 1: Get an SSL certificate]: #step1
+  [Step 2: Modify the service definition and configuration files]: #step2
+  [Step 3: Upload the deployment package and certificate]: #step3
+  [Step 4: Connect to the role instance by using HTTPS]: #step4
+  [How to create a certificate for a role]: http://msdn.microsoft.com/en-us/library/windowsazure/gg432987.aspx
+  [How to associate a certificate with a service]: http://msdn.microsoft.com/en-us/library/windowsazure/gg465718.aspx
+  [Azure Management Portal]: http://manage.windowsazure.com
   [0]: ./media/cloud-services-dotnet-configure-ssl-certificate/CreateCloudService.png
   [1]: ./media/cloud-services-dotnet-configure-ssl-certificate/AddCertificate.png
   [2]: ./media/cloud-services-dotnet-configure-ssl-certificate/CopyURL.png
   [3]: ./media/cloud-services-dotnet-configure-ssl-certificate/SSLCloudService.png
   [4]: ./media/cloud-services-dotnet-configure-ssl-certificate/AddCertificateComplete.png  
-  [HTTPS エンドポイントでの SSL 証明書の構成]: http://msdn.microsoft.com/en-us/library/windowsazure/ff795779.aspx
-
-
+  [How to configure an SSL certificate on an HTTPS endpoint]: http://msdn.microsoft.com/en-us/library/windowsazure/ff795779.aspx

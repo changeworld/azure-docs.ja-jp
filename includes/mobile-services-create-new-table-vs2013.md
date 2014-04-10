@@ -1,20 +1,19 @@
 
 
-新しいモバイル サービスにデータを格納できるようにするには、サービスに新しいストレージ テーブルを作成する必要があります。以下の手順は、Visual Studio 2013 を使用してモバイル サービスに新しいテーブルを作成する方法を示しています。テーブルを作成した後で、モバイル サービスを使用してローカル コレクションの代わりに Windows Azure に項目を格納するようにアプリケーションを更新します。
+Before you can store data in your new mobile service, you must create a new storage table in the service. These steps show how to use Visual Studio 2013 to create a new table in the mobile service. Then you update the app to use Mobile Services to store items in Azure instead of in the local collection.
 
 
-1. サーバー エクスプローラーで、**[Windows Azure のモバイル サービス]** を展開し、モバイル サービスを右クリックして、**[テーブルの作成]** をクリックします。次に、**[テーブル名]** に「TodoItem」と入力します。
+1. In Server Explorer, expand **Azure Mobile Services**, right-click your mobile service, click **Create Table**, then type `TodoItem` in **Table Name**.
 
-	![VS 2013 でのテーブルの作成](./media/mobile-services-create-new-table-vs2013/mobile-create-table-vs2013.png)
+	![create table in VS 2013](./media/mobile-services-create-new-table-vs2013/mobile-create-table-vs2013.png)
 
-2. **[詳細]** を展開し、テーブル操作のアクセス許可が既定の **[アプリケーション キーを持つユーザー]** に設定されていることを確認して、**[作成]** をクリックします。
+2. Expand **Advanced**, verify that the table operation permissions default to **Anybody with the Application Key**, then click **Create**. 
 
-	![VS 2013 でのテーブルの作成 (パート 2)](./media/mobile-services-create-new-table-vs2013/mobile-create-table-vs2013-2.png)
+	![create table in VS 2013 part 2](./media/mobile-services-create-new-table-vs2013/mobile-create-table-vs2013-2.png)
 
-	これにより、サーバー上に TodoItem テーブルが作成されます。アプリケーション キーを持っているユーザーは、最初に認証されなくても、このテーブル内のデータにアクセスし、変更を加えることができます。
+	This creates the TodoItem table on the server, where anyone that has the application key can access and change data in the table without having to first be authenticated. 
 
-	<div class="dev-callout"><strong>注</strong><p>アプリケーション キーはアプリケーションと共に配布されます。このキーはセキュリティの保護がない状態で配布されるため、セキュリティ トークンとして扱うことはできません。モバイル サービスのデータへのアクセスを保護するには、アクセスする前にユーザーを認証する必要があります。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193161.aspx">権限</a>」を参照してください。</p></div>
-
+	<div class="dev-callout"><strong>Note</strong><p>The application key is distributed with the application. Because this key is not securely distributed, it cannot be considered a security token. To secure access to your mobile service data, you must instead authenticate users before accessing. For more information, see <a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj193161.aspx">Permissions</a>.</p></div>
 
 
 

@@ -1,71 +1,71 @@
 <properties writer="kathydav" editor="tysonn" manager="jeffreyg" /> 
 
-**重要**: 仮想マシンが仮想ネットワークを使用する場合、仮想マシンの作成時に仮想ネットワークを指定する必要があります。仮想マシンが仮想ネットワークに接続するように設定できるのは、仮想マシンの作成時に限られています。仮想ネットワークの詳細については、「[仮想ネットワーク](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
+**Important**: If you want your virtual machine to use a virtual network, make sure you specify the virtual network when you create the virtual machine. A virtual machine can be configured to join a virtual network only when you create the virtual machine. For more information about virtual networks, see [Azure Virtual Network Overview](http://go.microsoft.com/fwlink/p/?LinkID=294063).
 
 
-1. Windows Azure アカウントを使用して、[Windows Azure の管理ポータル][AzurePreviewPortal]にログインします。
+1. Login to the [Azure Management Portal][AzurePreviewPortal] using your Azure account.
 
-2. 管理ポータルで、Web ページの左下にある **[+ 新規]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
+2. In the Management Portal, at the bottom left of the web page, click **+New**, click **Virtual Machine**, and then click **From Gallery**.
 
-	![新しい仮想マシンの作成][Image1]
+	![Create a New Virtual Machine][Image1]
 
-3. **[プラットフォーム イメージ]** から OpenSUSE 仮想マシン イメージを選択し、ページの右下にある、次へ進む矢印をクリックします。
+3. Select an OpenSUSE virtual machine image from **Platform Images**, and then click the next arrow at the bottom right of the page.
 
 
-4. **[仮想マシンの構成]** ページで、次の情報を指定します。
+4. On the **Virtual machine configuration** page, provide the following information:
 
-	- 「testlinuxvm」など、**[仮想マシン名]** を入力します。
-	- 「newuser」など、**[新しいユーザー名]** を指定します。この名前が Sudoers リスト ファイルに追加されます。
-	- **[新しいパスワード]** ボックスに、[強力なパスワード](http://msdn.microsoft.com/ja-jp/library/ms161962.aspx)を入力します。
-	- **[パスワードの確認]** ボックスに、パスワードを再度入力します。
-	- **[サイズ]** ドロップダウン リストで、適切なサイズを選択します。
+	- Provide a **Virtual Machine Name**, such as "testlinuxvm".
+	- Specify a **New User Name**, such as "newuser", which will be added to the Sudoers list file.
+	- In the **New Password** box, type a [strong password](http://msdn.microsoft.com/en-us/library/ms161962.aspx).
+	- In the **Confirm Password** box, retype the password.
+	- Select the appropriate **Size** from the drop down list.
 
-	矢印をクリックして次へ進みます。
+	Click the next arrow to continue.
 
-5. **[仮想マシン モード]** ページで、次の情報を指定します。
-	- **[スタンドアロンの仮想マシン]** をクリックします。
-	- **[DNS 名]** ボックスに、有効な DNS アドレスを入力します。たとえば、「testlinuxvm」と入力します。
-	- **[リージョン/アフィニティ グループ/仮想ネットワーク]** ボックスで、この仮想イメージをホストするリージョンを選択します。
+5. On the **Virtual machine mode** page, provide the following information:
+	- Select **Standalone Virtual Machine**.
+	- In the **DNS Name** box, type a valid DNS address.  For example, "testlinuxvm".
+	- In the **Region/Affinity Group/Virtual Network** box, select a region where this virtual image will be hosted.
 
-   矢印をクリックして次へ進みます。
+   Click the next arrow to continue.
 	
-6. **[仮想マシン オプション]** ページの **[可用性セット]** ボックスの一覧で **[(なし)]** を選択します。チェック マークをクリックして続行します。
+6. On the **Virtual machine options** page, select **(none)** in the **Availability Set** box. Click the check mark to continue.
 	
-7. Windows Azure によって仮想マシンの準備が行われるまで待ちます。
+7. Wait while Azure prepares your virtual machine.
 
-##エンドポイントの構成
-仮想マシンを作成したら、リモート接続用のエンドポイントを構成します。
+##Configure Endpoints
+Once the virtual machine is created you must configure endpoints in order to remotely connect.
 
-1. 管理ポータルで、**[仮想マシン]**、新しい仮想マシンの名前、**[エンドポイント]** の順にクリックします。
+1. In the Management Portal, click **Virtual Machines**, then click the name of your new virtual machine, then click **Endpoints**.
 
-2. ページの最下部にある **[エンドポイント]** をクリックし、**パブリック ポート**が 22 になるように SSH エンドポイントを編集します。
+2. Click **Edit Endpoint** at the bottom of the page, and edit the SSH endpoint so that its **Public Port** is 22.
 
-##仮想マシンへの接続
-仮想マシンをプロビジョニングしてエンドポイントを構成したら、SSH または PuTTY を使用して接続します。
+##Connect to the Virtual Machine
+When the virtual machine has been provisioned and the endpoints configured you can connect to it using SSH or PuTTY.
 
-###SSH を使用した接続
-Linux コンピューターを使用している場合、SSH を使用して VM に接続します。コマンド プロンプトで、次のコマンドを実行します。
+###Connecting Using SSH
+If you are using a linux computer, connect to the VM using SSH.  At the command prompt, run:
 
 	$ ssh newuser@testlinuxvm.cloudapp.net -o ServerAliveInterval=180
 
-ユーザーのパスワードを入力します。
+Enter the user's password.
 
-###PuTTY を使用した接続
-Windows コンピューターを使用している場合、PuTTY を使用して VM に接続します。PuTTY は、[PuTTY のダウンロード ページ][PuTTYDownLoad]からダウンロードできます。
+###Connecting using PuTTY
+If you are using a Windows computer, connect to the VM using PuTTY. PuTTY can be downloaded from the [PuTTY Download Page][PuTTYDownLoad]. 
 
-1. **putty.exe** を、コンピューター上のディレクトリにダウンロードします。コマンド プロンプトを開き、フォルダーに移動して、**putty.exe** を実行します。
+1. Download and save **putty.exe** to a directory on your computer. Open a command prompt, navigate to that folder, and execute **putty.exe**.
 
-2. **[ホスト名]** に「testlinuxvm.cloudapp.net」と入力し、**[ポート]** に「22」と入力します。
-![PuTTY の画面][Image6]
+2. Enter "testlinuxvm.cloudapp.net" for the **Host Name** and "22" for the **Port**.
+![PuTTY Screen][Image6]  
 
-##仮想マシンの更新 (オプション)
-1. 仮想マシンに接続したら、必要に応じてシステムの更新と更新プログラムをインストールします。次のコマンドを実行します。
+##Update the Virtual Machine (optional)
+1. Once you've connected to the virtual machine, you can optionally install system updates and patches. Run:
 
 	`$ sudo zypper update`
 
-2. **[ソフトウェア]**、**[オンライン更新]** を順に選択します。更新の一覧が表示されます。**[同意する]** を選択し、現在システムで利用可能なすべての新しい更新プログラム (オプションのプログラムを除く) をインストールして適用します。
+2. Select **Software** then **Online Update**.  A list of updates is displayed.  Select **Accept** to start the installation and apply all new patches (except the optional ones) that are currently available for your system. 
 
-3. インストールが完了したら、**[完了]** を選択します。これでシステムが最新の状態になりました。
+3. After installation is complete, select **Finish**.  Your system is now up to date.
 
 [PuTTYDownload]: http://www.puttyssh.org/download.html
 [AzurePreviewPortal]: http://manage.windowsazure.com
@@ -76,4 +76,3 @@ Windows コンピューターを使用している場合、PuTTY を使用して
 
 
 [Image6]: ./media/create-and-configure-opensuse-vm-in-portal/putty.png
-

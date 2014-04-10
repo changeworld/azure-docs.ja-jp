@@ -1,57 +1,57 @@
-<properties linkid="develop-python-service-management" UrlDisplayName="サービス管理" pageTitle="サービス管理 API の使用方法 (Python) - 機能ガイド" MetaKeywords="" description="Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。" metaCanonical="" services="cloud-services" documentationCenter="Python" title="Python からサービス管理を使用する方法" authors=""  solutions="" writer="" manager="" editor=""  />
+<properties linkid="develop-python-service-management" urlDisplayName="Service Management" pageTitle="How to use the service management API (Python) - feature guide" metaKeywords="" description="Learn how to programmatically perform common service management tasks from Python." metaCanonical="" services="cloud-services" documentationCenter="Python" title="How to use Service Management from Python" authors="" solutions="" manager="" editor="" />
 
 
 
 
-# Python からサービス管理を使用する方法
+# How to use Service Management from Python
 
-このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。[Windows Azure SDK for Python][download-SDK-Python] の **ServiceManagementService** クラスは、[管理ポータル][management-portal]で使用できるサービス管理関連の機能 (**クラウド サービス、デプロイ、データ管理サービス、仮想マシン、およびアフィニティ グループの作成、更新、削除**など) へのプログラムによるアクセスをサポートしています。この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
+This guide will show you how to programmatically perform common service management tasks from Python. The **ServiceManagementService** class in the [Azure SDK for Python][download-SDK-Python] supports programmatic access to much of the service management-related functionality that is available in the [management portal][management-portal] (such as **creating, updating, and deleting cloud services, deployments, data management services, virtual machines and affinity groups**). This functionality can be useful in building applications that need programmatic access to service management. 
 
-## 目次
+## Table of Contents
 
-* [サービス管理とは][]
-* [概念][]
-* [サービス管理に接続する方法][]
-* [利用可能な場所を列挙する方法][]
-* [クラウド サービスを作成する方法][]
-* [クラウド サービスを削除する方法][]
-* [デプロイを作成する方法][]
-* [デプロイを更新する方法][]
-* [ステージング環境と運用環境の間でデプロイを移動する方法][]
-* [デプロイを削除する方法][]
-* [ストレージ サービスを作成する方法][]
-* [ストレージ サービスを削除する方法][]
-* [アフィニティ グループを作成する方法][]
-* [アフィニティ グループを削除する方法][]
-* [利用可能なオペレーティング システムを列挙する方法][]
-* [オペレーティング システム イメージを作成する方法][]
-* [オペレーティング システム イメージを削除する方法][]
-* [仮想マシンを作成する方法][]
-* [仮想マシンを削除する方法][]
-* [次のステップ][]
+* [What is Service Management][]
+* [Concepts][]
+* [How to: Connect to service management][]
+* [How to: List available locations][]
+* [How to: Create a cloud service][]
+* [How to: Delete a cloud service][]
+* [How to: Create a deployment][]
+* [How to: Update a deployment][]
+* [How to: Move deployments between staging and production][]
+* [How to: Delete a deployment][]
+* [How to: Create a storage service][]
+* [How to: Delete a storage service][]
+* [How to: Create an affinity group][]
+* [How to: Delete an affinity group][]
+* [How to: List available operating systems][]
+* [How to: Create an operating system image][]
+* [How to: Delete an operating system image][]
+* [How to: Create a virtual machine][]
+* [How to: Delete a virtual machine][]
+* [Next Steps][]
 
-## <a name="WhatIs"> </a>サービス管理とは
-サービス管理 API を使用すると、[管理ポータル][management-portal]を通じて使用できるサービス管理機能の多くにプログラムでアクセスできます。Windows Azure SDK for Python を使用すると、クラウド サービス、ストレージ アカウント、アフィニティ グループを管理できます。
+## <a name="WhatIs"> </a>What is Service Management
+The Service Management API provides programmatic access to much of the service management functionality available through the [management portal][management-portal]. The Azure SDK for Python allows you to manage your cloud services, storage accounts, and affinity groups.
 
-サービス管理 API を使用するには、[Windows Azure アカウントを作成する](http://www.windowsazure.com/en-us/pricing/free-trial/)必要があります。
+To use the Service Management API, you will need to [create an Azure account](http://www.windowsazure.com/en-us/pricing/free-trial/). 
 
-## <a name="Concepts"> </a>概念
-Windows Azure SDK for Python は、REST API である [Windows Azure サービス管理 API][svc-mgmt-rest-api] をラップします。すべての API 操作は SSL 上で実行され、X.509 v3 証明書を使用して相互認証されます。管理サービスへのアクセスは、Windows Azure で実行されているサービス内から行うことも、HTTPS 要求の送信と HTTPS 応答の受信の機能を持つ任意のアプリケーションからインターネット上で直接行うこともできます。
+## <a name="Concepts"> </a>Concepts
+The Azure SDK for Python wraps the [Azure Service Management API][svc-mgmt-rest-api], which is a REST API. All API operations are performed over SSL and mutually authenticated using X.509 v3 certificates. The management service may be accessed from within a service running in Azure, or directly over the Internet from any application that can send an HTTPS request and receive an HTTPS response.
 
-## <a name="Connect"> </a>サービス管理に接続する方法
-サービス管理エンドポイントに接続するには、Windows Azure サブスクリプション ID および有効な管理証明書が必要です。サブスクリプション ID は[管理ポータル][management-portal]から入手できます。
+## <a name="Connect"> </a>How to: Connect to service management
+To connect to the Service Management endpoint, you need your Azure subscription ID and a valid management certificate. You can obtain your subscription ID through the [management portal][management-portal].
 
-### Windows での管理証明書
+### Management certificates on Windows
 
-"makecert.exe" を使用して、マシン上で自己署名管理証明書を作成できます。**管理者**として **Visual Studio コマンド プロンプト**を開き、次のコマンドを使用します。ここで、*AzureCertificate* は、使用する証明書の名前に置き換えます。
+You can create a self-signed management certificate on your machine using `makecert.exe`.  Open a **Visual Studio command prompt** as an **administrator** and use the following command, replacing *AzureCertificate* with the certificate name you would like to use.
 
-makecert -sky exchange -r -n "CN=AzureCertificate" -pe -a sha1 -len 2048 -ss My "AzureCertificate.cer"
+    makecert -sky exchange -r -n "CN=AzureCertificate" -pe -a sha1 -len 2048 -ss My "AzureCertificate.cer"
 
-このコマンドにより ".cer" ファイルが作成され、**個人用**証明書ストアにインストールされます。詳細については、「[Windows Azure の管理証明書の作成とアップロード](http://msdn.microsoft.com/en-us/library/windowsazure/gg551722.aspx)」を参照してください。
+The command will create the `.cer` file, and install it in the **Personal** certificate store. For more details, see [Create and Upload a Management Certificate for Azure](http://msdn.microsoft.com/en-us/library/windowsazure/gg551722.aspx).
 
-証明書を作成した後、[管理ポータル][management-portal]の [設定] タブで [アップロード] をクリックして、".cer" ファイルを Windows Azure にアップロードする必要があります。
+After you have created the certificate, you will need to upload the `.cer` file to Azure via the "Upload" action of the "Settings" tab of the [management portal][management-portal].
 
-サブスクリプション ID を取得し、証明書を作成して、".cer" ファイルを Windows Azure にアップロードした後、サブスクリプション ID と**個人用**証明書ストア内の証明書の場所を **ServiceManagementService** に渡すことで、Windows Azure 管理エンドポイントに接続できます (ここでも、*AzureCertificate* は証明書の名前に置き換えます)。
+After you have obtained your subscription ID, created a certificate, and uploaded the `.cer` file to Azure, you can connect to the Azure management endpoint by passing the subscription id and the location of the certificate in your **Personal** certificate store to **ServiceManagementService** (again, replace *AzureCertificate* with the name of your certificate):
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -61,22 +61,22 @@ makecert -sky exchange -r -n "CN=AzureCertificate" -pe -a sha1 -len 2048 -ss My 
 
 	sms = ServiceManagementService(subscription_id, certificate_path)
 
-この例では、"sms" は **ServiceManagementService** オブジェクトです。**ServiceManagementService** クラスは、Windows Azure サービスを管理するときに使用する主要なクラスです。
+In the example above, `sms` is a **ServiceManagementService** object. The **ServiceManagementService** class is the primary class used to manage Azure services. 
 
-### Mac または Linux での管理証明書
-[OpenSSL](http://www.openssl.org/) を使用して管理証明書を作成できます。実際は 2 つの証明書を作成する必要があります。1 つはサーバー用 (".cer" ファイル)、もう 1 つはクライアント用 (".pem" ファイル) です。".pem" ファイルを作成するには、次のコマンドを実行します。
+### Management certificates on Mac/Linux
+You can use [OpenSSL](http://www.openssl.org/) to create your management certificate.  You actually need to create two certificates, one for the server (a `.cer` file) and one for the client (a `.pem` file). To create the `.pem` file, execute this:
 
 	`openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem`
 
-".cer" 証明書を作成するには、次のコマンドを実行します。
+To create the `.cer` certificate, execute this:
 
 	`openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer`
 
-Windows Azure 証明書の詳細については、「[Windows Azure の証明書の管理](http://msdn.microsoft.com/en-us/library/windowsazure/gg981929.aspx)」を参照してください。OpenSSL のパラメーターの詳細については、[http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html) にあるドキュメントを参照してください。
+For more information about Azure certificates, see [Managing Certificates in Azure](http://msdn.microsoft.com/en-us/library/windowsazure/gg981929.aspx). For a complete description of OpenSSL parameters, see the documentation at [http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html).
 
-これらのファイルを作成した後、[管理ポータル][management-portal]の [設定] タブで [アップロード] をクリックして、".cer" ファイルを Windows Azure にアップロードする必要があります。また、".pem" ファイルを保存した場所を書き留めておいてください。
+After you have created these files, you will need to upload the `.cer` file to Azure via the "Upload" action of the "Settings" tab of the [management portal][management-portal], and you will need to make note of where you saved the `.pem` file.
 
-サブスクリプション ID を取得し、証明書を作成して、".cer" ファイルを Windows Azure にアップロードした後、サブスクリプション ID と ".pem" ファイルへのパスを **ServiceManagementService** に渡すことで、Windows Azure 管理エンドポイントに接続できます。
+After you have obtained your subscription ID, created a certificate, and uploaded the `.cer` file to Azure, you can connect to the Azure management endpoint by passing the subscription id and the path to the `.pem` file to **ServiceManagementService**:
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -86,11 +86,11 @@ Windows Azure 証明書の詳細については、「[Windows Azure の証明書
 	
 	sms = ServiceManagementService(subscription_id, certificate_path)
 
-この例では、"sms" は **ServiceManagementService** オブジェクトです。**ServiceManagementService** クラスは、Windows Azure サービスを管理するときに使用する主要なクラスです。
+In the example above, `sms` is a **ServiceManagementService** object. The **ServiceManagementService** class is the primary class used to manage Azure services. 
 
-## <a name="ListAvailableLocations"> </a>利用可能な場所を列挙する方法
+## <a name="ListAvailableLocations"> </a>How to: List available locations
 
-ホスティング サービスに利用できる場所を列挙するには、**list\_locations** メソッドを使用します。
+To list the locations that are available for hosting services, use the **list\_locations** method:
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -101,20 +101,20 @@ Windows Azure 証明書の詳細については、「[Windows Azure の証明書
 	for location in result:
 		print(location.name)
 
-クラウド サービス、ストレージ サービス、またはアフィニティ グループを作成するときは、有効な場所を指定する必要があります。**list\_locations** メソッドでは常に、現在利用可能な場所の最新のリストが返されます。この記事の執筆時点で利用可能な場所は次のとおりです。
+When you create a cloud service, storage service, or affinity group, you will need to provide a valid location. The **list\_locations** method will always return an up-to-date list of the currently available locations. As of this writing, the available locations are:
 
-- 西ヨーロッパ
-- 東南アジア
-- 東アジア
-- 米国中北部
-- 北ヨーロッパ
-- 米国中南部
-- 米国西部
-- 米国東部
+- West Europe 
+- Southeast Asia 
+- East Asia 
+- North Central US 
+- North Europe 
+- South Central US 
+- West US 
+- East US
 
-## <a name="CreateCloudService"> </a>クラウド サービスを作成する方法
+## <a name="CreateCloudService"> </a>How to: Create a cloud service
 
-アプリケーションを作成して、それを Windows Azure で実行するときは、そのコードと構成を併せて Windows Azure [クラウド サービス]と呼びます (以前にリリースした Windows Azure では*ホステッド サービス*と呼ばれていました)。**create\_hosted\_service** メソッドを使用して、新しいホステッド サービスを作成できます。そのためには、このメソッドに、ホステッド サービス名 (Windows Azure 上で一意の名前)、ラベル (Base64 に自動的にエンコードされます)、説明、場所を渡します。サービスの場所の代わりにアフィニティ グループを指定できます。
+When you create an application and run it in Azure, the code and configuration together are called an Azure [cloud service] (known as a *hosted service* in earlier Azure releases). The **create\_hosted\_service** method allows you to create a new hosted service by providing a hosted service name (which must be unique in Azure), a label (automatically encoded to base64), a description and a location. You can specify an affinity group instead of a location for your service. 
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -126,10 +126,10 @@ Windows Azure 証明書の詳細については、「[Windows Azure の証明書
 	desc = 'my hosted service'
 	location = 'West US'
 
-	# 場所またはアフィニティ グループを設定できます。
+	# You can either set the location or an affinity_group
 	sms.create_hosted_service(name, label, desc, location)
 
-**list\_hosted\_services** メソッドを使用して、サブスクリプションのすべてのホステッド サービスを列挙できます。
+You can list all the hosted services for your subscription with the **list\_hosted\_services** method:
 
 	result = sms.list_hosted_services()
 
@@ -140,7 +140,7 @@ Windows Azure 証明書の詳細については、「[Windows Azure の証明書
 		print('Location: ' + hosted_service.hosted_service_properties.location)
 		print('')
 
-特定のホステッド サービスに関する情報を取得する場合は、ホステッド サービス名を **get\_hosted\_service\_properties** メソッドに渡します。
+If you want to get information about a particular hosted service, you can do so by passing the hosted service name to the **get\_hosted\_service\_properties** method:
 
 	hosted_service = sms.get_hosted_service_properties('myhostedservice')
 
@@ -149,28 +149,28 @@ Windows Azure 証明書の詳細については、「[Windows Azure の証明書
 	print('Affinity group: ' + hosted_service.hosted_service_properties.affinity_group)
 	print('Location: ' + hosted_service.hosted_service_properties.location)
 			
-クラウド サービスを作成した後、**create\_deployment** メソッドを使用してコードをサービスにデプロイできます。
+After you have created a cloud service, you can deploy your code to the service with the **create\_deployment** method.
 
-## <a name="DeleteCloudService"> </a>クラウド サービスを削除する方法
+## <a name="DeleteCloudService"> </a>How to: Delete a cloud service
 
-クラウド サービスを削除するには、そのサービス名を **delete\_hosted\_service** メソッドに渡します。
+You can delete a cloud service by passing the service name to the **delete\_hosted\_service** method:
 
 	sms.delete_hosted_service('myhostedservice')
 
-サービスを削除する前に、そのサービスのすべてのデプロイを最初に削除する必要があることに注意してください (詳細については「[デプロイを削除する方法](#DeleteDeployment)」を参照)。
+Note that before you can delete a service, all deployments for the the service must first be deleted. (See [How to: Delete a deployment](#DeleteDeployment) for details.)
 
-## <a name="CreateDeployment"> </a>デプロイを作成する方法
+## <a name="CreateDeployment"> </a>How to: Create a deployment
 
-**create\_deployment** メソッドでは、ステージング環境または運用環境に新しい[サービス パッケージ]をアップロードし、新しいデプロイを作成します。このメソッドのパラメーターは次のとおりです。
+The **create\_deployment** method uploads a new [service package] and creates a new deployment in the staging or production environment. The parameters for this method are as follows:
 
-* **name**: ホステッド サービスの名前。
-* **deployment\_name**: デプロイの名前。
-* **slot**: ステージング スロット ("staging") または運用スロット ("production") を示す文字列。
-* **package_url**: デプロイ パッケージ (.cspgk ファイル) の URL。パッケージ ファイルは、パッケージのアップロード先のホステッド サービスと同じサブスクリプションの Windows Azure BLOB ストレージ アカウントに保存する必要があります。デプロイ パッケージを作成するには、[Windows Azure PowerShell コマンドレット]または [cspack コマンド ライン ツール]を使用します。
-* **configuration**: Base 64 にエンコードされたサービス構成ファイル (.cscfg ファイル)。
-* **label**: ホステッド サービス名のラベル (Base64 に自動的にエンコードされます)。
+* **name**: The name of the hosted service.
+* **deployment\_name**: The name of the deployment.
+* **slot**: A string indicating the `staging` or `production` slot.
+* **package_url**: The URL for the deployment package (a .cspgk file). The package file must be stored in an Azure Blob Storage account under the same subscription as the hosted service to which the package is being uploaded. You can create a deployment package with the [Azure PowerShell cmdlets], or with the [cspack commandline tool].
+* **configuration**: The service configuration file (.cscfg file) encoded to base64.
+* **label**: The label for the hosted service name (automatically encoded to base64).
 
-次の例では、"myhostedservice" という名前のホステッド サービスの新しいデプロイ "v1" を作成します。
+The following example creates a new deployment `v1` for a hosted service called `myhostedservice`:
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -190,9 +190,9 @@ Windows Azure 証明書の詳細については、「[Windows Azure の証明書
 	operation_result = sms.get_operation_status(result.request_id)
 	print('Operation status: ' + operation_result.status)
 
-上の例では、**create\_deployment** 処理のステータスを取得するために、**create\_deployment** によって返された結果を **get\_operation\_status** メソッドに渡していることに注意してください。
+Note in the example above that the status of the **create\_deployment** operation can be retrieved by passing the result returned by **create\_deployment** to the **get\_operation\_status** method.
 
-デプロイのプロパティにアクセスするには、**get\_deployment\_by\_slot** メソッドまたは **get\_deployment\_by\_name** メソッドを使用します。次の例では、デプロイ スロットを指定してデプロイを取得します。この例では、デプロイのすべてのインスタンスの反復処理もしています。
+You can access deployment properties with the **get\_deployment\_by\_slot** or **get\_deployment\_by\_name** methods. The following example retrieves a deployment by specifying the deployment slot. The example also iterates through all the instances for the deployment:
 
 	result = sms.get_deployment_by_slot('myhostedservice', 'production')
 
@@ -206,11 +206,11 @@ Windows Azure 証明書の詳細については、「[Windows Azure の証明書
 		print('Instance status: ' + instance.instance_status)
 		print('Instance size: ' + instance.instance_size)
 
-## <a name="UpdateDeployment"> </a>デプロイを更新する方法
+## <a name="UpdateDeployment"> </a>How to: Update a deployment
 
-デプロイは **change\_deployment\_configuration** メソッドまたは **update\_deployment\_status** メソッドを使用して更新できます。
+A deployment can be updated by using the **change\_deployment\_configuration** method or the **update\_deployment\_status** method.
 
-**change\_deployment\_configuration** メソッドを使用して、新しいサービス構成 (".cscfg") ファイルをアップロードできます。これにより、複数のサービス設定のいずれか (デプロイ内のインスタンスの数など) が変更されます。詳細については、「[Windows Azure サービスの構成スキーマ]」を参照してください。次の例では、新しいサービス構成ファイルをアップロードする方法を示しています。
+The **change\_deployment\_configuration** method allows you to upload a new service configuration (`.cscfg`) file, which will change any of several service settings (including the number of instances in a deployment). For more information, see [Azure Service Configuration Schema (.cscfg)]. The following example demonstrates how to upload a new service configuration file:
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -228,9 +228,9 @@ Windows Azure 証明書の詳細については、「[Windows Azure の証明書
 	print('Operation status: ' + operation_result.status)
 
 
-上の例では、**change\_deployment\_configuration** 処理のステータスを取得するために、**change\_deployment\_configuration** によって返された結果を **get\_operation\_status** メソッドに渡していることに注意してください。
+Note in the example above that the status of the **change\_deployment\_configuration** operation can be retrieved by passing the result returned by **change\_deployment\_configuration** to the **get\_operation\_status** method.
 
-**update\_deployment\_status** メソッドを使用して、デプロイのステータスを RUNNING または SUSPENDED に設定できます。次の例では、"myhostedservice" というホステッド サービスの "v1" という名前のデプロイについて、そのステータスを RUNNING に設定する方法を示しています。
+The **update\_deployment\_status** method allows you to set a deployment status to RUNNING or SUSPENDED. The following example demonstrates how to set the status to RUNNING for a deployment named `v1` of a hosted service called `myhostedservice`:
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -242,11 +242,11 @@ Windows Azure 証明書の詳細については、「[Windows Azure の証明書
 
 	result = update_deployment_status(name, deployment_name, 'Running')
 
-## <a name="MoveDeployments"> </a>ステージング環境と運用環境の間でデプロイを移動する方法
+## <a name="MoveDeployments"> </a>How to: Move deployments between staging and production
 
-Windows Azure には、ステージングと運用という 2 つのデプロイ環境が用意されています。通常は、サービスをステージング環境にデプロイしてテストし、その後で運用環境にデプロイします。ステージング環境のサービスを運用環境へ昇格する場合、サービスを再デプロイする必要はありません。デプロイをスワップすることで運用環境へ昇格できます。デプロイのスワップの詳細については、「[Windows Azure サービスのデプロイ]」を参照してください。
+Azure provides two deployment environments: staging and production. Typically a service is deployed to the staging environment to test it before deploying the service to the production environment. When it is time to promote the service in staging to the production environment, you can do so without redeploying the service. This can be done by swapping the deployments. (For more information on swapping deployments, see [Deploying an Azure Service].)
 
-次の例では、**swap\_deployment** メソッドを使用して 2 つのデプロイ (デプロイ名は "v1" と "v2") を切り替える方法を示しています。この例では、**swap\_deployment** の呼び出し前、デプロイ "v1" は運用スロットに、"v2" はステージング スロットにあります。**swap\_deployment** を呼び出した後は、"v2" が運用スロット、"v1" がステージング スロットに配置されます。
+The following example shows how to use the **swap\_deployment** method to swap two deployments (with deployment names `v1` and `v2`). In the example, prior to calling **swap\_deployment**, deployment `v1` is in the production slot and deployment `v2` is in the staging slot. After calling **swap\_deployment**, `v2` is in production and `v1` is in staging.  
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -255,9 +255,9 @@ Windows Azure には、ステージングと運用という 2 つのデプロイ
 
 	result = sms.swap_deployment('myhostedservice', 'v1', 'v2')
 
-## <a name="DeleteDeployment"> </a>デプロイを削除する方法
+## <a name="DeleteDeployment"> </a>How to: Delete a deployment
 
-デプロイを削除するには、**delete\_deployment** メソッドを使用します。次の例では、"v1" という名前のデプロイを削除する方法を示しています。
+To delete a deployment, use the **delete\_deployment** method. The following example shows how to delete a deployment named `v1`.
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -266,9 +266,9 @@ Windows Azure には、ステージングと運用という 2 つのデプロイ
 
 	sms.delete_deployment('myhostedservice', 'v1')
 
-## <a name="CreateStorageService"> </a>ストレージ サービスを作成する方法
+## <a name="CreateStorageService"> </a>How to: Create a storage service
 
-[ストレージ サービス]を使用すると、Windows Azure の [BLOB][azure-blobs]、[テーブル][azure-tables]、および[キュー][azure-queues]にアクセスできます。ストレージ サービスを作成するには、サービスの名前 (Windows Azure 内で一意の 3 〜 24 文字の小文字)、説明、ラベル (最大 100 文字、Base64 に自動的にエンコードされます)、場所 (またはアフィニティ グループ) が必要です。次の例では、場所を指定してストレージ サービスを作成する方法を示しています。アフィニティ グループを使用する場合は、まずアフィニティ グループを作成し (「[アフィニティ グループを作成する方法](#CreateAffinityGroup)」を参照)、**affinity\_group** パラメーターでアフィニティ グループを設定する必要があります。
+A [storage service] gives you access to Azure [Blobs][azure-blobs], [Tables][azure-tables], and [Queues][azure-queues]. To create a storage service, you need a name for the service (between 3 and 24 lowercase characters and unique within Azure), a description, a label (up to 100 characters, automatically encoded to base64), and either a location or an affinity group. The following example shows how to create a storage service by specifying a location. If you want to use an affinity group, you have to create an affinity group first (see [How to: Create an affinity group](#CreateAffinityGroup)) and set it with the **affinity\_group** parameter.
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -285,9 +285,9 @@ Windows Azure には、ステージングと運用という 2 つのデプロイ
 	operation_result = sms.get_operation_status(result.request_id)
 	print('Operation status: ' + operation_result.status)
 
-上の例では、**create\_storage\_account** 処理のステータスを取得するため、**create\_storage\_account** から返された結果を **get\_operation\_status** メソッドに渡しています。
+Note in the example above that the status of the **create\_storage\_account** operation can be retrieved by passing the result returned by **create\_storage\_account** to the **get\_operation\_status** method.  
 
-ストレージ アカウントとそのプロパティを列挙するには、**list\_storage\_accounts** メソッドを使用します。
+You can list your storage accounts and their properties with the **list\_storage\_accounts** method:
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -301,9 +301,9 @@ Windows Azure には、ステージングと運用という 2 つのデプロイ
 		print('Location: ' + account.storage_service_properties.location)
 		print('')
 
-## <a name="DeleteStorageService"> </a>ストレージ サービスを削除する方法
+## <a name="DeleteStorageService"> </a>How to: Delete a storage service
 
-ストレージ サービスを削除するには、そのサービス名を **delete\_storage\_account** メソッドに渡します。ストレージ サービスを削除すると、サービスに格納されているすべてのデータ (BLOB、テーブル、およびキュー) が削除されます。
+You can delete a storage service by passing the storage service name to the **delete\_storage\_account** method. Deleting a storage service will delete all data stored in the service (blobs, tables and queues).
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -312,11 +312,11 @@ Windows Azure には、ステージングと運用という 2 つのデプロイ
 
 	sms.delete_storage_account('mystorageaccount')
 
-## <a name="CreateAffinityGroup"> </a>アフィニティ グループを作成する方法
+## <a name="CreateAffinityGroup"> </a>How to: Create an affinity group
 
-アフィニティ グループは Azure サービスの論理グループであり、Windows Azure で最適なパフォーマンスを得られるようにサービスを配置するために使用されます。たとえば、アフィニティ グループを "米国西部" という場所に作成し、そのアフィニティ グループ内に[クラウド サービス](#CreateCloudService)を作成できます。その後、同じアフィニティ グループ内にストレージ サービスを作成した場合、Windows Azure では、そのサービスは "米国西部" 場所に配置され、同じアフィニティ グループ内のクラウド サービスと連携して最高レベルのパフォーマンスが得られるように、データ センター内で最適化されます。
+An affinity group is a logical grouping of Azure services that tells Azure to locate the services for optimized performance. For example, you might create an affinity group in the "West US" location, then create a [cloud service](#CreateCloudService) in that affinity group. If you then create a storage service in the same affinity group, Azure knows to put it in the "West US" location and optimize within the data center for the best performance with the cloud services in the same affinity group.
 
-アフィニティ グループを作成するには、グループの名前、ラベル (Base64 に自動的にエンコードされます)、場所が必要です。必要に応じて説明を指定できます。
+To create an affinity group, you need a name, label (automatically encoded to base64), and location. You can optionally provide a description:
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -330,9 +330,9 @@ Windows Azure には、ステージングと運用という 2 つのデプロイ
 
 	sms.create_affinity_group(name, label, location, desc)
 
-アフィニティ グループの作成後、[ストレージ サービスを作成する](#CreateStorageService)ときは、場所ではなくグループを指定できます。
+After you have created an affinity group, you can specify the group (instead of a location) when [creating a storage service](#CreateStorageService).
 
-アフィニティ グループを列挙し、そのプロパティを調べるには、**list\_affinity\_groups** メソッドを呼び出します。
+You can list affinity groups and inspect their properties by calling the **list\_affinity\_groups** method:
 
 	result = sms.list_affinity_groups()
 
@@ -342,9 +342,9 @@ Windows Azure には、ステージングと運用という 2 つのデプロイ
 		print('Location: ' + group.location)
 		print('')
 
-## <a name="DeleteAffinityGroup"> </a>アフィニティ グループを削除する方法
+## <a name="DeleteAffinityGroup"> </a>How to: Delete an affinity group
 	
-アフィニティ グループを削除するには、そのグループ名を **delete\_affinity\_group** メソッドに渡します。アフィニティ グループを削除する前に、アフィニティ グループとサービス (削除するアフィニティ グループを使用するサービス) との関連付けを解除する必要があることに注意してください。
+You can delete an affinity group by passing the group name to the **delete\_affinity\_group** method. Note that before you can delete an affinity group, the affinity group must be disassociated from any services (or services that use the affinity group must be deleted).
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -353,9 +353,9 @@ Windows Azure には、ステージングと運用という 2 つのデプロイ
 
 	sms.delete_affinity_group('myAffinityGroup')
 
-## <a name="ListOperatingSystems"> </a>利用可能なオペレーティング システムを列挙する方法
+## <a name="ListOperatingSystems"> </a>How to: List available operating systems
 
-ホスティング サービスに利用できるオペレーティング システムを列挙するには、**list\_operating\_systems** メソッドを使用します。
+To list the operating systems that are available for hosting services, use the **list\_operating\_systems** method:
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -369,7 +369,7 @@ Windows Azure には、ステージングと運用という 2 つのデプロイ
 		print('Family: ' + os.family_label)
 		print('Active: ' + str(os.is_active))
 
-または、**list\_operating\_system\_families** メソッドを使用することもできます。このメソッドでは、オペレーティング システムがファミリにグループ化されます。
+Alternatively, you can use the **list\_operating\_system\_families** method, which groups the operating systems by family:
 
 	result = sms.list_operating_system_families()
 
@@ -381,9 +381,9 @@ Windows Azure には、ステージングと運用という 2 つのデプロイ
 				print('Version: ' + os.version)
 		print('')
 
-## <a name="CreateVMImage"> </a>オペレーティング システム イメージを作成する方法
+## <a name="CreateVMImage"> </a>How to: Create an operating system image
 
-オペレーティング システム イメージをイメージ リポジトリに追加するには、**add\_os\_image** メソッドを使用します。
+To add an operating system image to the image repository, use the **add\_os\_image** method:
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -400,7 +400,7 @@ Windows Azure には、ステージングと運用という 2 つのデプロイ
 	operation_result = sms.get_operation_status(result.request_id)
 	print('Operation status: ' + operation_result.status)
 
-利用できるオペレーティング システム イメージを列挙するには、**list\_os\_images** メソッドを使用します。このメソッドでは、すべてのプラットフォーム イメージとユーザー イメージが対象となります。
+To list the operating system images that are available, use the **list\_os\_images** method. This includes all platform images and user images:
 
 	result = sms.list_os_images()
 
@@ -415,9 +415,9 @@ Windows Azure には、ステージングと運用という 2 つのデプロイ
 		print('Media link: ' + image.media_link)
 		print('')
 
-## <a name="DeleteVMImage"> </a>オペレーティング システム イメージを削除する方法
+## <a name="DeleteVMImage"> </a>How to: Delete an operating system image
 
-ユーザー イメージを削除するには、**delete\_os\_image** メソッドを使用します。
+To delete a user image, use the **delete\_os\_image** method:
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -429,9 +429,9 @@ Windows Azure には、ステージングと運用という 2 つのデプロイ
 	operation_result = sms.get_operation_status(result.request_id)
 	print('Operation status: ' + operation_result.status)
 
-## <a name="CreateVM"> </a>仮想マシンを作成する方法
+## <a name="CreateVM"> </a>How to: Create a virtual machine
 
-仮想マシンを作成するには、最初に[クラウド サービス](#CreateCloudService)を作成する必要があります。その後で、**create\_virtual\_machine\_deployment** メソッドを使用して、仮想マシンのデプロイを作成します。
+To create a virtual machine, you first need to create a [cloud service](#CreateCloudService).  Then create the virtual machine deployment using the **create\_virtual\_machine\_deployment** method:
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -441,20 +441,20 @@ Windows Azure には、ステージングと運用という 2 つのデプロイ
 	name = 'myvm'
 	location = 'West US'
 
-	# 場所またはアフィニティ グループを設定できます。
+	# You can either set the location or an affinity_group
 	sms.create_hosted_service(service_name=name,
 		label=name,
 		location=location)
 
-	# list_os_images によって返される OS イメージの名前
+	# Name of an os image as returned by list_os_images
 	image_name = 'OpenLogic__OpenLogic-CentOS-62-20120531-en-us-30GB.vhd'
 
-	# VM ディスクの作成先となるストレージ アカウントの
-	# コンテナー/BLOB
+	# Destination storage account container/blob where the VM disk
+	# will be created
 	media_link = 'url_to_target_storage_blob_for_vm_hd'
 
-	# Linux VM の構成。Windows VM に対しては、代わりに WindowsConfigurationSet
-	# を使用できます。
+	# Linux VM configuration, you can use WindowsConfigurationSet
+	# for a Windows VM instead
 	linux_config = LinuxConfigurationSet('myhostname', 'myuser', 'mypassword', True)
 
 	os_hd = OSVirtualHardDisk(image_name, media_link)
@@ -468,9 +468,9 @@ Windows Azure には、ステージングと運用という 2 つのデプロイ
 		os_virtual_hard_disk=os_hd,
 		role_size='Small')
 
-## <a name="DeleteVM"> </a>仮想マシンを削除する方法
+## <a name="DeleteVM"> </a>How to: Delete a virtual machine
 
-仮想マシンを削除するには、最初に **delete\_deployment** メソッドを使用してデプロイを削除します。
+To delete a virtual machine, you first delete the deployment using the **delete\_deployment** method:
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -480,52 +480,51 @@ Windows Azure には、ステージングと運用という 2 つのデプロイ
 	sms.delete_deployment(service_name='myvm',
 		deployment_name='myvm')
 
-その後で、**delete\_hosted\_service** メソッドを使用して、クラウド サービスを削除することができます。
+The cloud service can then be deleted using the **delete\_hosted\_service** method:
 
 	sms.delete_hosted_service(service_name='myvm')
 
-## <a name="NextSteps"> </a>次のステップ
+## <a name="NextSteps"> </a>Next Steps
 
-これで、サービス管理の基本を学習できました。さらに複雑なタスクを実行するには、次のリンク先を参照してください。
+Now that you've learned the basics of service management, follow these links to do more complex tasks.
 
--   MSDN リファレンス: [クラウド サービス][]
--   MSDN リファレンス: [仮想マシン][]
+-   See the MSDN Reference: [Cloud Services][]
+-   See the MSDN Reference: [Virtual Machines][]
 
-[サービス管理とは]: #WhatIs
-[概念]: #Concepts
-[サービス管理に接続する方法]: #Connect
-[利用可能な場所を列挙する方法]: #ListAvailableLocations
-[クラウド サービスを作成する方法]: #CreateCloudService
-[クラウド サービスを削除する方法]: #DeleteCloudService
-[デプロイを作成する方法]: #CreateDeployment
-[デプロイを更新する方法]: #UpdateDeployment
-[ステージング環境と運用環境の間でデプロイを移動する方法]: #MoveDeployments
-[デプロイを削除する方法]: #DeleteDeployment
-[ストレージ サービスを作成する方法]: #CreateStorageService
-[ストレージ サービスを削除する方法]: #DeleteStorageService
-[アフィニティ グループを作成する方法]: #CreateAffinityGroup
-[アフィニティ グループを削除する方法]: #DeleteAffinityGroup
-[利用可能なオペレーティング システムを列挙する方法]: #ListOperatingSystems
-[オペレーティング システム イメージを作成する方法]: #CreateVMImage
-[オペレーティング システム イメージを削除する方法]: #DeleteVMImage
-[仮想マシンを作成する方法]: #CreateVM
-[仮想マシンを削除する方法]: #DeleteVM
-[次のステップ]: #NextSteps
+[What is Service Management]: #WhatIs
+[Concepts]: #Concepts
+[How to: Connect to service management]: #Connect
+[How to: List available locations]: #ListAvailableLocations
+[How to: Create a cloud service]: #CreateCloudService
+[How to: Delete a cloud service]: #DeleteCloudService
+[How to: Create a deployment]: #CreateDeployment
+[How to: Update a deployment]: #UpdateDeployment
+[How to: Move deployments between staging and production]: #MoveDeployments
+[How to: Delete a deployment]: #DeleteDeployment
+[How to: Create a storage service]: #CreateStorageService
+[How to: Delete a storage service]: #DeleteStorageService
+[How to: Create an affinity group]: #CreateAffinityGroup
+[How to: Delete an affinity group]: #DeleteAffinityGroup
+[How to: List available operating systems]: #ListOperatingSystems
+[How to: Create an operating system image]: #CreateVMImage
+[How to: Delete an operating system image]: #DeleteVMImage
+[How to: Create a virtual machine]: #CreateVM
+[How to: Delete a virtual machine]: #DeleteVM
+[Next Steps]: #NextSteps
 [management-portal]: https://manage.windowsazure.com/
 [svc-mgmt-rest-api]: http://msdn.microsoft.com/en-us/library/windowsazure/ee460799.aspx
 
 
 [download-SDK-Python]: https://www.windowsazure.com/en-us/develop/python/common-tasks/install-python/
-[クラウド サービス]:http://windowsazure.com/en-us/documentation/articles/cloud-services-what-is
-[サービス パッケージ]: http://msdn.microsoft.com/en-us/library/windowsazure/jj155995.aspx
-[Windows Azure PowerShell コマンドレット]: https://www.windowsazure.com/en-us/develop/php/how-to-guides/powershell-cmdlets/
-[CSPack コマンド ライン ツール]: http://msdn.microsoft.com/en-us/library/windowsazure/gg432988.aspx
-[Windows Azure サービスのデプロイに関するページ]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433027.aspx
-[ストレージ サービス]: https://www.windowsazure.com/en-us/manage/services/storage/what-is-a-storage-account/
+[cloud service]:http://windowsazure.com/en-us/documentation/articles/cloud-services-what-is
+[service package]: http://msdn.microsoft.com/en-us/library/windowsazure/jj155995.aspx
+[Azure PowerShell cmdlets]: https://www.windowsazure.com/en-us/develop/php/how-to-guides/powershell-cmdlets/
+[cspack commandline tool]: http://msdn.microsoft.com/en-us/library/windowsazure/gg432988.aspx
+[Deploying an Azure Service]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433027.aspx
+[storage service]: https://www.windowsazure.com/en-us/manage/services/storage/what-is-a-storage-account/
 [azure-blobs]: https://www.windowsazure.com/en-us/develop/python/how-to-guides/blob-service/
 [azure-tables]: https://www.windowsazure.com/en-us/develop/python/how-to-guides/table-service/
 [azure-queues]: https://www.windowsazure.com/en-us/develop/python/how-to-guides/queue-service/
-[Windows Azure サービスの構成スキーマ (.cscfg ファイル)]: http://msdn.microsoft.com/en-us/library/windowsazure/ee758710.aspx
-[クラウド サービス]: http://msdn.microsoft.com/en-us/library/windowsazure/jj155995.aspx
-[仮想マシン]: http://msdn.microsoft.com/en-us/library/windowsazure/jj156003.aspx
-
+[Azure Service Configuration Schema (.cscfg)]: http://msdn.microsoft.com/en-us/library/windowsazure/ee758710.aspx
+[Cloud Services]: http://msdn.microsoft.com/en-us/library/windowsazure/jj155995.aspx
+[Virtual Machines]: http://msdn.microsoft.com/en-us/library/windowsazure/jj156003.aspx

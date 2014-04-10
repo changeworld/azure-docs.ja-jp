@@ -1,69 +1,61 @@
-<properties writer="kathydav" editor="tysonn" manager="jeffreyg" /> 
+<properties authors="kathydav" editor="tysonn" manager="donaldg" /> 
 
 
-#クラウド サービス内の仮想マシンを相互に接続する方法
-
-
-
-仮想マシンを作成すると、そのマシンを含めるクラウド サービスが自動的に作成されます。同じクラウド サービス内に複数の仮想マシンを作成すると、仮想マシン間の相互通信、仮想マシン間での負荷分散、仮想マシンの高可用性を有効にできます。
-
-仮想マシンの負荷分散の詳細については、「[仮想マシンの負荷分散][Load balancing virtual machines]」を参照してください。アプリケーションの可用性管理の詳細については、「[仮想マシンの可用性管理][Manage the availability of virtual machines]」を参照してください。
-
-
-まず、新しいクラウド サービスで仮想マシンを作成する必要があります。その後、そのクラウド サービスの最初の仮想マシンに追加の仮想マシンを接続できます。
+#How to Connect Virtual Machines in a Cloud Service
 
 
 
-1. 「Create a virtual machine using the steps in [カスタム仮想マシンを作成する方法][How to create a custom virtual machine]」に示された手順に従って仮想マシンを作成します。
+When you create a virtual machine, a cloud service is automatically created to contain the machine. You can create multiple virtual machines under the same cloud service to enable the virtual machines to communicate with each other, to load-balance between virtual machines, and to maintain high availability of the machines. 
+
+For more information about load-balancing virtual machines, see [Load balancing virtual machines](../load-balancing-vms/). For more information about managing the availability of your application, see [Manage the availability of virtual machines](../manage-vm-availability/). 
 
 
-2. 最初のカスタム仮想マシンを作成したら、[管理ポータル](http://manage.windowsazure.com) コマンド バーで、**[新規]** をクリックします。
+First, you'll need to create a virtual machine with a new cloud service, and then you can connect additional virtual machines to the first virtual machine under the same cloud service. 
 
 
-	![新しい仮想マシンの作成](./media/howto-connect-vm-cloud-service/Create.png)
 
-3. **[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
+1. Create a virtual machine using the steps in [How to create a custom virtual machine](../howto-custom-create-vm/).
+
+
+2. After you create the first custom virtual machine, on the [Management Portal](http://manage.windowsazure.com) command bar, click **New**.
+
+
+	![Create a new virtual machine](./media/howto-connect-vm-cloud-service/Create.png)
+
+3. Click **Virtual Machine**, and then click **From Gallery**.
 
 	
-	![カスタム仮想マシンの作成](./media/howto-connect-vm-cloud-service/CreateNew.png)
+	![Create a custom virtual machine](./media/howto-connect-vm-cloud-service/CreateNew.png)
 
-	**[仮想マシンのオペレーティング システムの選択]** ダイアログ ボックスが表示されます。
-
-
-4. **[イメージの選択]** ページからイメージを選択し、矢印をクリックして続行します。
+	The **Select the virtual machine operating system** dialog box appears. 
 
 
-	最初に **[仮想マシンの構成]** ページが表示されます。
+4. From the **Choose an image** page, select an image, and then click the arrow to continue.
 
 
-5. **[仮想マシン名]** ボックスに、仮想マシンに使用する名前を入力します。
-
-6. **[サイズ]** で、仮想マシンに使用するサイズを選択します。選択するサイズは、アプリケーションが必要とするコア数に応じて変わります。
-
-7. **[新しいユーザー名]** に、サーバーの管理に使用する管理アカウントの名前を入力します。
+	The first **Virtual machine configuration** page appears.
 
 
-8. **[新しいパスワード]** に、管理アカウントの強力なパスワードを入力します。**[パスワードの確認]** に、パスワードを再度入力します。
+5. In **Virtual Machine Name**, type the name that you want to use for the virtual machine.
+
+6. In **Size**, select the size that you want to use for the virtual machine. The size that you select depends on the number of cores that are needed for your application.
+
+7. In **New User Name**, type a name for the administrative account that you want to use to manage the server.
 
 
-9. Linux オペレーティング システムが実行されている仮想マシンについては、SSH キーでマシンを保護するように選択できます。
+8. In **New Password**, type a strong password for the administrative account. In **Confirm Password**, retype the password.
 
 
-10. **[クラウド サービス]** で、新しい仮想マシンを含めるクラウド サービスを選択します。
-
-11. **[リージョン/アフィニティ グループ/仮想ネットワーク]** で、仮想マシンを含めるリージョンを選択します。
-
-12. **[ストレージ アカウント]** で、.vhd ファイルを保存するストレージ アカウントを選択します。または、フィールドの値を既定のままにして、ストレージ アカウントを自動的に作成することもできます。自動的に作成されるストレージ アカウントは 1 つだけです。この設定で作成する他のすべての仮想マシンがこのストレージ アカウントに配置されます。ストレージ アカウントは 20 個に制限されています。
+9. For a virtual machine running the Linux operating system, you can select to secure the machine with an SSH Key.
 
 
-13. 可用性セットを使用するには、最初の仮想マシンを作成したときに作成された可用性セットを選択します。
+10. In **Cloud Service**, select the cloud service that will contain the new virtual machine.
 
-14. 既定のエンドポイントの構成を確認し、必要に応じて変更します。
-
-15. チェック マークをクリックして、接続された仮想マシンを作成します。
+11. In **Storage Account**, select a storage account to store the .vhd file, or leave the field set at the default to create the storage account automatically. Only one storage account is automatically created. All other virtual machines that you create with this setting are located in this storage account. You are limited to 20 storage accounts.
 
 
-[How to create a custom virtual machine]: http://windowsazure.com/ja-jp/documentation/articles/virtual-machines-create-custom/
-[Load balancing virtual machines]: http://windowsazure.com/ja-jp/documentation/articles/load-balance-virtual-machines/
-[Manage the availability of virtual machines]: http://windowsazure.com/ja-jp/documentation/articles/virtual-machines-manage-availability/
+12. To use an availability set, select the one was created when you created the first virtual machine.
 
+13. Review the default endpoint configuration, and modify if necessary. 
+
+14. Click the check mark to create the connected virtual machine.

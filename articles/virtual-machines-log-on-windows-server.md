@@ -1,34 +1,33 @@
-﻿<properties linkid="manage-windows-howto-logon" urlDisplayName="VM へのログオン" pageTitle="Windows Server を実行する仮想マシンへのログオン" metaKeywords="Azure VM へのログオン, VM ポータル" description="Windows Server 2008 R2 を実行する仮想マシンに Windows Azure の管理ポータルを使用してログオンする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Windows Server が実行されている仮想マシンにログオンする方法" authors=""  solutions="" writer="kathydav" manager="jeffreyg" editor="tysonn"  />
+<properties linkid="manage-windows-howto-logon" urlDisplayName="Log on to a VM" pageTitle="Log on to a virtual machine running Windows Server" metaKeywords="Azure logging on vm, vm portal" description="Learn how to log on to a virtual machine running Windows Server 2008 R2 by using the Azure Management Portal." metaCanonical="" services="virtual-machines" documentationCenter="" title="How to Log on to a Virtual Machine Running Windows Server" authors="kathydav" solutions="" manager="jeffreyg" editor="tysonn" />
 
 
 
 
-#Windows Server が実行されている仮想マシンにログオンする方法#
+#How to Log on to a Virtual Machine Running Windows Server#
 
-Windows Server オペレーティング システムが実行されている仮想マシンについては、管理ポータルの [接続] ボタンを使用して、リモート デスクトップ接続を開始します。
+For a virtual machine that is running the Windows Server operating system, you use the Connect button in the Management Portal to start a Remote Desktop Connection. 
 
-1. まだサインインしていない場合は、[Windows Azure の管理ポータル](http://manage.windowsazure.com)にサインインします。
+1. If you have not already done so, sign in to the [Azure Management Portal](http://manage.windowsazure.com).
 
-2. **[仮想マシン]** をクリックし、適切な仮想マシンを選択します。
+2. Click **Virtual Machines**, and then select the appropriate virtual machine.
 
-3. コマンド バーで、**[接続]** をクリックします。
+3. On the command bar, click **Connect**.
 
-	![仮想マシンへのログオン](./media/virtual-machines-log-on-windows-server/connectwindows.png)
+	![Log on to the virtual machine](./media/virtual-machines-log-on-windows-server/connectwindows.png)
 
-4. **[開く]** をクリックして、仮想マシン用に自動的に作成されたリモート デスクトップ プロトコル ファイルを使用します。
+4. Click **Open** to use the remote desktop protocol file that was automatically created for the virtual machine.
 	
-5. **[接続]** をクリックして接続処理を続行します。
+5. Click **Connect** to proceed with the connection process.
 
-	![接続の続行](./media/virtual-machines-log-on-windows-server/connectpublisher.png)
+	![Continue with connecting](./media/virtual-machines-log-on-windows-server/connectpublisher.png)
 
-6. 仮想マシンで管理アカウントのユーザー名とパスワードを入力して、**[OK]** をクリックします。
+6. Type the user name and password of the administrative account on the virtual machine, and then click **OK**.
 	
 	
-7. **[はい]** をクリックして、目的の仮想マシンであることを確認します。
+7. Click **Yes** to verify the identity of the virtual machine.
 
-	![目的の仮想マシンであることを確認](./media/virtual-machines-log-on-windows-server/connectverify.png)
+	![Verify the identity of the machine](./media/virtual-machines-log-on-windows-server/connectverify.png)
 
-	これで、仮想マシンを他のサーバーとまったく同様に扱うことができます。
-
+	You can now work with the virtual machine just as you would with any other server.
 
 
