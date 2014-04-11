@@ -1,67 +1,68 @@
-<properties linkid="manage-services-how-to-create-websites" urlDisplayName="How to create" pageTitle="How to create web sites - Azure service management" metaKeywords="Azure creating web site, Azure deleting website" description="Learn how to create a web site using the Azure Management Portal." metaCanonical="" services="web-sites" documentationCenter="" title="How to Create and Deploy a Web Site" authors="timamm" solutions="" manager="" editor="" />
+<properties linkid="manage-services-how-to-create-websites" urlDisplayName="作成方法" pageTitle="Web サイトの作成方法 - Windows Azure サービス管理" metaKeywords="Azure の Web サイトの作成, Azure の Web サイトの削除" description="Windows Azure の管理ポータルを使用して Web サイトを作成する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="Web サイトの作成/展開方法" authors=""  solutions="" writer="timamm" manager="" editor=""  />
 
-#How to Create a Web Site
+#Web サイトの作成方法
 
-This topic shows how to create a web site from the gallery or by using the management portal.
+このトピックでは、管理ポータルを使用してギャラリーから Web サイトを作成する方法について説明します。
 
-For information about how to deploy your content to an Azure Web Site that you have created, see the **Deploy** section in [Azure Web Sites](/en-us/documentation/services/web-sites/).
+作成した Windows Azure の Web サイトにコンテンツを展開する方法については、「[Windows Azure Web Sites (Windows Azure の Web サイト)](/ja-jp/documentation/services/web-sites/)」の「**Deploy (展開)**」を参照してください。
 
-## Table of Contents ##
+## 目次##
 
-- [How to: Create a Web Site Using the Management Portal](#createawebsiteportal)
-- [How to: Create a Web Site from the Gallery](#howtocreatefromgallery)
-- [How to: Delete a Web Site](#deleteawebsite)
-- [Next Steps](#nextsteps)
+- [方法: 管理ポータルの使用による Web サイトの作成](#createawebsiteportal)
+- [方法: ギャラリーからの Web サイトの作成](#howtocreatefromgallery)
+- [方法: Web サイトの削除](#deleteawebsite)
+- [次のステップ](#nextsteps)
 
-##<a name="createawebsiteportal"></a>How to: Create a Web Site Using the Management Portal
+##<a name="createawebsiteportal"></a>方法: 管理ポータルの使用による Web サイトの作成
 
-Follow these steps to create a web site in Azure.
+Windows Azure で Web サイトを作成するには、次のステップに従います。
 	
-1. Login to the [Azure Management Portal](http://manage.windowsazure.com/).
+1. [Windows Azure の管理ポータル](http://manage.windowsazure.com/)にログインします。
 
-2. Click the **Create New** icon on the bottom left of the Management Portal.
+2. 管理ポータルの左下にある **[新規作成]** アイコンをクリックします。
 
-3. Click the **Web Site** icon, click the **Quick Create** icon, enter a value for URL and then click the check mark next to **Create Web Site** on the bottom right corner of the page.
+3. **[Web サイト]** アイコン、**[簡易作成]** アイコンの順にクリックし、URL の値を入力して、ページの右下にある **[Web サイトの作成]** チェック マークをクリックします。
 
-4. When the web site has been created, you will see the text **Creating web site <*web site name*>  succeeded**. You can browse to the web site by clicking **Browse** at the bottom of the portal page.
+4. Web サイトが作成されると、"Web サイト **<*web site name*> の作成に成功しました**" というテキストが表示されます。ポータル ページの下部にある **[参照]** をクリックすると、Web サイトを参照できます。
 
-5. In the portal, click the name of the web site displayed in the list of web sites to open the web site's **Quick Start** management page.
+5. ポータルで、Web サイトの一覧に表示されている Web サイトの名前をクリックして、Web サイトの **[クイック スタート]** 管理ページを開きます。
 
-6. On the **Quick Start** page, you are provided with options to get web site development tools, set up publishing for your web site, or set up deployment from a source control provider like TFS or Git. FTP publishing is set up by default for web sites and the FTP Host name is displayed in the **Quick Glance** section of the **Dashboard** page under **FTP Host Name**. Before publishing with FTP or Git, choose the option to **Reset deployment credentials** on the **Dashboard** page so that you can authenticate against the FTP Host or the Git Repository when deploying content to your web site.
+6. **[クイック スタート]** ページには、Web サイト開発ツールの入手、Web サイトの発行の設定、TFS や Git のようなソース管理プロバイダーからの展開の設定を行うためのオプションがあります。FTP 発行は Web サイトに対して既定で設定されており、**[ダッシュボード]** ページの **[概要]** セクションの **[FTP ホスト名]** に FTP ホスト名が表示されます。FTP または Git を使って発行する前に、**[ダッシュボード]** ページで **[展開資格情報のリセット]** を選択して、Web サイトにコンテンツを展開するときに FTP ホストまたは Git リポジトリに対して認証できるようにします。
 
-7. The **Configure** management page exposes settings for your web site in the following categories:
+7. **[構成]** 管理ページでは、次のカテゴリについて Web サイトの設定が表示されます。
 
- - **General**: Set the version of .NET framework or PHP required by your web application. For sites in Standard mode, the **Platform** option lets you choose either a 32-bit or 64-bit environment.
+ - **[全般]**: Web アプリケーションに必要な .NET Framework または PHP のバージョンを設定します。標準モードのサイトでは、**[プラットフォーム]** オプションで 32 ビットまたは 64 ビット環境を選択できます。
 
-- **Certificates**: In Standard mode, you can upload SSL certificates for custom domains. 
+- **[証明書]**: 標準モードでは、カスタム ドメインの SSL 証明書をアップロードできます。
 
-- **Domain Names**: In Shared and Standard modes, you can view and manage custom domain names for your web site.
+- **[ドメイン名]**: 共有モードと標準モードでは、Web サイトのカスタム ドメイン名を表示し管理できます。
 
-- **SSL Bindings**: In Standard mode, you can assign SSL certificates to your custom domain names using either IP-based or SNI-based SSL.
+- **[SSL バインド]**: 標準モードでは、IP ベースまたは SNI ベースの SSL を使用してカスタム ドメイン名に SSL 証明書を割り当てることができます。
 
- - **Deployments**: When you set up deployment from source control, you can configure your deployments here.
+ - **[展開]**: ソース管理からの展開を設定すると、ここで展開を構成できます。
 
- - **Application Diagnostics**:  Set options for gathering diagnostic traces from a web application that has been instrumented with traces. 
+ - **[アプリケーション診断]**: トレースを使ってインストルメント化された Web アプリケーションから診断トレースを収集するためのオプションを設定します。
 
-- **Site Diagnostics**: Set logging options for gathering diagnostic information for your web site. Options include Web Server Logging, Detailed Error Messages, and Failed Request Tracing.
+- **[サイト診断]**: Web サイトの診断情報を収集するためのログ記録オプションを設定します。オプションには、[Web サーバーのログ記録]、[詳細なエラー メッセージ]、[失敗した要求トレース] があります。
 
-- **Monitoring**: For web sites in Standard mode, you can use this feature to test the availability of HTTP or HTTPS endpoints. 
+- **[監視]**: 標準モードの Web サイトでは、この機能を使用して HTTP または HTTPS エンドポイントの可用性をテストすることができます。
 
-- **App Settings**: Specify name/value pairs that will be loaded by your web application on start up. For .NET sites, these settings will be injected into your .NET configuration **AppSettings** at runtime, overriding existing settings. For PHP and Node sites these settings will be available as environment variables at runtime.
+- **[アプリケーション設定]**: 開始時に Web アプリケーションに読み込まれる名前と値のペアを指定します。.NET サイトの場合、実行時にこれらの設定が .NET 構成 **AppSettings** に挿入され、既存の設定がオーバーライドされます。PHP サイトおよび Node サイトの場合、実行時にこれらの設定が環境変数として使用できるようになります。
 
- - **Connection Strings**: View and edit connection strings. For .NET sites, these connection strings will be injected into your .NET configuration **connectionStrings** settings at runtime, overriding existing entries where the key equals the linked database name. For PHP and Node sites, these settings will be available as environment variables at runtime.
+ - **[接続文字列]**: 接続文字列を表示して編集します。.NET サイトの場合、実行時にこれらの接続文字列が .NET 構成 **connectionStrings** 設定に挿入され、リンクされたデータベース名とキーが等しい既存のエントリがオーバーライドされます。PHP サイトおよび Node サイトの場合、実行時にこれらの設定が環境変数として使用できるようになります。
 
- - **Default Documents**: A web site's default document is the page that is displayed by default when a user navigates to a web site. Add your web application's default document to this list if it is not already present.  Your web site's default document should be at the top of the list.
+ - **[既定のドキュメント]**: Web サイトの既定のドキュメントとは、ユーザーが Web サイトに移動したときに既定で表示されるページです。Web アプリケーションの既定のドキュメントがこの一覧になければ追加します。Web サイトの既定のドキュメントは、一覧の先頭に位置している必要があります。
 
-- **Handler Mappings**: Specify script processors that will handle requests for specific file extensions like *.php.
+- **[ハンドラー マッピング]**: *.php などの特定のファイル拡張子に対する要求を処理するスクリプト プロセッサを指定します。
 
-##<a name="howtocreatefromgallery"></a>How to: Create a Web Site from the Gallery
+##<a name="howtocreatefromgallery"></a>方法: ギャラリーからの Web サイトの作成
 
 [WACOM.INCLUDE [website-from-gallery](../includes/website-from-gallery.md)]
 
-##<a name="deleteawebsite"></a>How to: Delete a Web Site
-Web sites are deleted using the **Delete** icon in the Azure Management Portal. The **Delete** icon is available in the Azure Portal when you click **Web Sites** to list all of your web sites and at the bottom of each of the web site management pages.
+##<a name="deleteawebsite"></a>方法: Web サイトの削除
+Web サイトは、Windows Azure の管理ポータルの **[削除]** アイコンを使用して削除します。**[削除]** アイコンは、Windows Azure ポータル (**[Web サイト]** をクリックして Web サイトをすべて表示したとき) と各 Web サイトの管理ページの下部に表示されます。
 
-##<a name="nextsteps"></a>Next Steps
+##<a name="nextsteps"></a>次のステップ
 
-For more information, see [Azure Web Sites](/en-us/documentation/services/web-sites/).
+詳細については、「[Windows Azure Web Sites (Windows Azure の Web サイト)](/ja-jp/documentation/services/web-sites/)」を参照してください。
+

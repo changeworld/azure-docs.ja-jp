@@ -1,46 +1,46 @@
-<properties linkid="develop-mobile-how-to-guides-register-for-facebook-authentication" urlDisplayName="Register for Facebook Authentication" pageTitle="Register for Facebook authentication - Mobile Services" metaKeywords="Azure Facebook, Azure Facebook, Azure authenticate Mobile Services" description="Learn how to use Facebook authentication in your Azure Mobile Services app." metaCanonical="" services="" documentationCenter="" title="Register your apps for Facebook authentication with Mobile Services" authors="glenga" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-how-to-guides-register-for-facebook-authentication" urlDisplayName="Facebook 認証用の登録" pageTitle="Facebook 認証用の登録 - モバイル サービス" metaKeywords="Windows Azure Facebook, Azure Facebook, モバイル サービス Azure 認証" description="Windows Azure モバイル サービス アプリケーションで Facebook 認証を使用する方法について説明します。" metaCanonical="" services="" documentationCenter="" title="モバイル サービスでの Facebook 認証用のアプリケーションの登録" authors=""  solutions="" writer="glenga" manager="" editor=""  />
 
-# Register your apps for Facebook authentication with Mobile Services
+# モバイル サービスでの Facebook 認証用のアプリケーションの登録
 
-This topic shows you how to register your apps to be able to use Facebook to authenticate with Azure Mobile Services. 
+このトピックでは、Facebook を使用して Windows Azure モバイル サービスで認証できるようにアプリケーションを登録する方法について説明します。
 
-<div class="dev-callout"><b>Note</b>
-<p>To complete the procedure in this topic, you must have a Facebook account that has a verified email address and a mobile phone number. To create a new Facebook account, go to <a href="http://go.microsoft.com/fwlink/p/?LinkId=268285" target="_blank">facebook.com</a>.</p>
+<div class="dev-callout"><b>メモ</b>
+<p>このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Facebook アカウントおよび携帯電話番号が必要になります。新しい Facebook アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268285" target="_blank">facebook.com</a> にアクセスしてください。</p>
 </div> 
 
-1. Navigate to the <a href="http://go.microsoft.com/fwlink/p/?LinkId=268286" target="_blank">Facebook Developers</a> web site and sign-in with your Facebook account credentials.
+1. <a href="http://go.microsoft.com/fwlink/p/?LinkId=268286" target="_blank">Facebook Developers</a> の Web サイトに移動し、Facebook アカウントの資格情報でサインインします。
 
-2. (Optional) If you have not already registered, click **Apps** then click **Register as a Developer**, accept the policy and follow the registration steps. 
+2. (省略可能) まだ登録していない場合は、**[Apps]**、**[Register as a Developer]** の順にクリックし、ポリシーに同意して、登録手順に従います。
 
    	![][0]
 
-3. Click **Apps**, then click **Create a New App**.
+3. **[Apps]** をクリックし、**[Create a New App]** をクリックします。
 
    	![][1]
 
-4. Choose a unique name for your app, select **Apps for Pages**, click **Create App** and complete the challenge question.
+4. アプリケーションの一意の名前を選択し、**[Apps for Pages]** を選択して **[Create App]** をクリックし、登録時の質問に回答します。
 
    	![][2]
 
-	This registers the app with Facebook 
+	これでアプリケーションが Facebook に登録されます。
 
-5. Click **Settings**, type the domain of your mobile service in **App Domains**, then click **Add Platform** and select **Website**.
+5. **[Settings]** をクリックして、**[App Domains]** にモバイル サービスのドメインを入力し、**[Add Platform]** をクリックして **[Website]** を選択します。
 
    	![][3]
 
-6. Type the URL of your mobile service in **Site URL**, then click **Save Changes**.
+6. **[Site URL]** にモバイル サービスの URL を入力し、**[Save Changes]** をクリックします。
 
 	![][4]
 
-7. Click **Show**, provide your password if requested, then make a note of the values of **App ID** and **App Secret**. 
+7. **[Show]** をクリックし、入力を求められたらパスワードを入力し、**[App ID]** と **[App Secret]** の値を書き留めておきます。
 
    	![][5]
 
-    <div class="dev-callout"><b>Security Note</b>
-	<p>The app secret is an important security credential. Do not share this secret with anyone or distribute it with your app.</p>
+    <div class="dev-callout"><b>セキュリティに関する注意</b>
+	<p>アプリケーション シークレットは、重要なセキュリティ資格情報です。このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。</p>
     </div>
 
-You are now ready to use a Facebook login for authentication in your app by providing the App ID and App Secret values to Mobile Services.  
+これで、App ID と App Secret の値をモバイル サービスに渡すことにより、Facebook ログインを使用してアプリケーションで認証を使用する準備ができました。
 
 <!-- Anchors. -->
 
@@ -54,5 +54,7 @@ You are now ready to use a Facebook login for authentication in your app by prov
 
 <!-- URLs. -->
 [Facebook Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268286
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Azure Management Portal]: https://manage.windowsazure.com/
+[認証の使用]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
+[Windows Azure の管理ポータル]: https://manage.windowsazure.com/
+
+

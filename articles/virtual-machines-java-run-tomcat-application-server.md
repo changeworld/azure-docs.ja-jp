@@ -1,130 +1,130 @@
-<properties linkid="dev-java-vm-application-server" urlDisplayName="Tomcat on Virtual Machine" pageTitle="Tomcat on a virtual machine - Azure tutorial" metaKeywords="Azure vm, creating vm Tomcat, configuring vm Tomcat" description="Learn how to create a Windows Virtual machine and configure the machine to run a Apache Tomcat application server." metaCanonical="" services="virtual-machines" documentationCenter="Java" title="How to run a Java application server on a virtual machine" authors="waltpo" solutions="" manager="" editor="" />
+﻿<properties linkid="dev-java-vm-application-server" urlDisplayName="仮想マシンで Tomcat を実行する" pageTitle="仮想マシンで Tomcat を実行する - Windows Azure チュートリアル" metaKeywords="Azure vm, Tomcat の vm を作成する, Tomcat の vm を構成する" description="Windows 仮想マシンを作成し、Apache Tomcat アプリケーション サーバーを実行できるように仮想マシンを構成する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="Java" title="Java アプリケーション サーバーを仮想マシンで実行する方法" authors=""  solutions="" writer="waltpo" manager="" editor=""  />
 
 
 
-# How to run a Java application server on a virtual machine
+#Java アプリケーション サーバーを仮想マシンで実行する方法
 
-With Azure, you can use a virtual machine to provide server capabilities. As an example, a virtual machine running on Azure can be configured to host a Java application server, such as Apache Tomcat. On completing this guide, you will have an understanding of how to create a virtual machine running on Azure and configure it to run a Java application server.
+Windows Azure では、仮想マシンを使用してサーバー機能を実現することができます。たとえば、Apache Tomcat などの Java アプリケーション サーバーをホストできるように、Windows Azure で実行する仮想マシンを構成することができます。このガイドを完了すると、Windows Azure で実行する仮想マシンを作成して、Java アプリケーション サーバーを実行するように構成する方法を理解できます。
 
-You will learn:
+学習内容: 
 
-* How to create a virtual machine that has a JDK already installed.
-* How to remotely log in to your virtual machine.
-* How to install a Java application server on your virtual machine.
-* How to create an endpoint for your virtual machine.
-* How to open a port in the firewall for your application server.
+*JDK インストール済みの仮想マシンを作成する方法
+*仮想マシンにリモート ログインする方法
+*仮想マシンに Java アプリケーション サーバーをインストールする方法
+*仮想マシンのエンドポイントを作成する方法
+*ファイアウォールでアプリケーション サーバー用にポートを開く方法
 
-For purposes of this tutorial, an Apache Tomcat application server will be installed on a virtual machine. The completed installation will result in a Tomcat installation such as the following.
+このチュートリアルでは、Apache Tomcat アプリケーション サーバーを仮想マシンにインストールします。インストールが完了した Tomcat の外観は次のようになります。
 
-![Virtual machine running Apache Tomcat][virtual_machine_tomcat]
+![仮想マシンで実行されている Apache Tomcat][virtual_machine_tomcat]
 
 [WACOM.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
 
-## To create a virtual machine
+##仮想マシンを作成するには
 
-1. Log in to the [Azure Management Portal](https://manage.windowsazure.com).
-2. Click **New**, click **Compute**, click **Virtual machine**, and then click **From Gallery**.
-3. In the **Virtual machine image select** dialog, select **JDK 7 Windows Server 2012**.
-Note that **JDK 6 Windows Server 2012** is available in case you have legacy applications that are not yet ready to run in JDK 7.
-4. Click **Next**.
-5. In the <strong>Virtual machine configuration</strong> dialog:
-    1. Specify a name for the virtual machine.
-    2. Specify the size to use for the virtual machine.
-    3. Enter a name for the administrator in the **User Name** field. Remember this name and the password you will enter next, you will use them when you remotely log in to the virtual machine.
-    4. Enter a password in the **New password** field, and re-enter it in the **Confirm** field. This is the Administrator account password.
-    5. Click **Next**.
-6. In the next <strong>Virtual machine configuration</strong> dialog:
-    1. For **Cloud service**, use the default **Create a new cloud service**.
-    2. The value for **Cloud service DNS name** must be unique across cloudapp.net. If needed, modify this value so that Azure indicates it is unique.
-    2. Specify a region, affinity group, or virtual network. For purposes of this tutorial, specify a region such as **West US**.
-    2. For **Storage Account**, select **Use an automatically generated storage account**.
-    3. For **Availability Set**, select **(None)**.
-    4. Click **Next**.
-7. In the final <strong>Virtual machine configuration</strong> dialog:
-    1. Accept the default endpoint entries.
-    2. Click **Complete**.
+1. [Windows Azure の管理ポータル](https://manage.windowsazure.com) にログインします。
+2. **[新規]**、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** をクリックします。
+3. **[仮想マシン イメージの選択]** ダイアログで、**[JDK 7 (プレビュー) Windows Server 2012]** を選択します。
+**[JDK 6 (プレビュー) Windows Server 2012]** は、JDK 7 を実行する準備ができていないレガシ アプリケーションがある場合に表示されることに注意してください。
+4. **[次へ]** をクリックします。
+5. <strong>[仮想マシンの構成]</strong> ダイアログで次の作業を行います。
+    1. 仮想マシンの名前を指定します。
+    2. 仮想マシンに使用するサイズを指定します。
+    3. **[ユーザー名]** フィールドに、管理者の名前を入力します。この名前と次に入力するパスワードは忘れないでください。仮想マシンにリモート ログインするときに使用します。
+    4. **[新しいパスワード]** フィールドにパスワードを入力し、**[確認]** フィールドに再びパスワードを入力します。これは、Administrator アカウントのパスワードです。
+    5. **[次へ]** をクリックします。
+6. 次の <strong>[仮想マシンの構成]</strong> ダイアログで次の作業を行います。
+    1. **[クラウド サービス]** には、既定の **[新しいクラウド サービスの作成]** を使用します。
+    2. **[クラウド サービス DNS 名]** の値は cloudapp.net 全体で一意であることが必要です。一意であることを示す表示になるように、必要に応じてこの値を修正してください。
+    2. リージョン、アフィニティ グループ、または仮想ネットワークを指定します。このチュートリアルでは、**[米国西部]** などのリージョンを指定します。
+    2. **[ストレージ アカウント]** で、**[自動的に生成されたストレージ アカウントを使用]** を選択します。
+    3. **[可用性セット]** は、**[(なし)]** を選択します。
+    4. **[次へ]** をクリックします。
+7. 最後の <strong>[仮想マシンの構成]</strong> ダイアログで次の作業を行います。
+    1. 既定のエンドポイント エントリをそのまま使用します。
+    2. **[完了]** をクリックします。
 
-## To remotely log in to your virtual machine
+##仮想マシンにリモート ログインするには
 
-1. Log on to the [Management Portal](https://manage.windowsazure.com).
-2. Click **Virtual machines**.
-3. Click the name of the virtual machine that you want to log in to.
-4. Click **Connect**.
-5. Respond to the prompts as needed to connect to the virtual machine. When prompted for the administrator name and password, use the values that you provided when you created the virtual machine.
+1. [管理ポータル](https://manage.windowsazure.com) にログオンします。
+2. **[仮想マシン]** をクリックします。
+3. ログインする仮想マシンの名前をクリックします。
+4. **[接続]** をクリックします。
+5. 表示される画面で必要に応じて入力して、仮想マシンに接続します。管理者名とパスワードの入力画面が表示されたら、仮想マシンの作成時に指定した値を使用します。
 
-## To install a Java application server on your virtual machine
+##仮想マシンに Java アプリケーション サーバーをインストールするには
 
-You can copy a Java application server to your virtual machine, or install a Java application server through an installer. 
+Java アプリケーション サーバーを仮想マシンにコピーすることも、インストーラーを使用して Java アプリケーション サーバーをインストールすることもできます。
 
-For purposes of this tutorial, Tomcat will be installed.
+このチュートリアルでは、Tomcat をインストールします。
 
-1. While logged on to your virtual machine, open a browser session to <http://tomcat.apache.org/download-70.cgi>.
-2. Double-click the link for **32-bit/64-bit Windows Service Installer**. Using this technique, Tomcat will be installed as a Windows service.
-3. When prompted, choose to run the installer.
-4. Within the **Apache Tomcat Setup** wizard, follow the prompts to install Tomcat. For purposes of this tutorial, accepting the defaults is fine. When you reach the **Completing the Apache Tomcat Setup Wizard** dialog, you can optionally check **Run Apache Tomcat**, to have Tomcat started now. Click **Finish** to complete the Tomcat setup process.
+1. 仮想マシンへのログオン状態のまま、<http://tomcat.apache.org/download-70.cgi> のブラウザー セッションを開きます。
+2. **32 ビット/64 ビット Windows サービスのインストーラー**のリンクをダブルクリックします。この場合、Tomcat は Windows サービスとしてインストールされます。
+3. 確認メッセージが表示されたら、インストーラーを実行します。
+4. **Apache Tomcat Setup** ウィザードの指示に従って、Tomcat をインストールします。このチュートリアルでは、既定値のまま進めて問題ありません。**[Completing the Apache Tomcat Setup Wizard]** ダイアログが表示されたら、必要に応じて **[Run Apache Tomcat]** チェック ボックスをオンにすることにより、Tomcat を起動することができます。**[Finish]** をクリックして Tomcat のセットアップ プロセスを完了します。
 
-## To start Tomcat
-If you did not choose to run Tomcat in the **Completing the Apache Tomcat Setup Wizard** dialog, start it by opening a command prompt on your virtual machine and running **net start Tomcat7**.
+##Tomcat を開始するには
+**[Completing the Apache Tomcat Setup Wizard]** ダイアログで Tomcat を実行するように選択しなかった場合、仮想マシンのコマンド プロンプトを開き、**net start Tomcat7** を実行することによって Tomcat を開始することができます。
 
-You should now see Tomcat running if you run the virtual machine's browser and open <http://localhost:8080>.
+仮想マシンのブラウザーを実行し、<http://localhost:8080> を開くと、Tomcat が実行されていることを確認できます。
 
-To see Tomcat running from external machines, you'll need to create an endpoint and open a port.
+Tomcat が実行されていることを外部コンピューターから確認するには、エンドポイントを作成してポートを開く必要があります。
 
-## To create an endpoint for your virtual machine
-1. Log in to the [Management Portal](https://manage.windowsazure.com).
-2. Click **Virtual machines**.
-3. Click the name of the virtual machine that is running your Java application server.
-4. Click **Endpoints**.
-5. Click **Add**.
-6. In the **Add endpoint** dialog, ensure **Add standalone endpoint** is checked and then click **Next**.
-7. In the <strong>New endpoint details</strong> dialog:
-    1. Specify a name for the endpoint; for example, **HttpIn**.
-    2. Specify **TCP** for the protocol.
-    3. Specify **80** for the public port.
-    4. Specify **8080** for the private port.
-    5. Click the **Complete** button to close the dialog. Your endpoint will now be created.
+##仮想マシンのエンドポイントを作成するには
+1. [管理ポータル](https://manage.windowsazure.com) にログインします。
+2. **[仮想マシン]** をクリックします。
+3. Java アプリケーション サーバーを実行している仮想マシンの名前をクリックします。
+4. **[エンドポイント]** をクリックします。
+5. **[追加]** をクリックします。
+6. **[エンドポイントの追加]** ダイアログで、**[スタンドアロン エンドポイントの追加]** チェック ボックスがオンになっていることを確認し、**[次へ]** をクリックします。
+7. <strong>[エンドポイントの詳細を指定します]</strong> ダイアログで、次の操作を行います。
+    1. エンドポイントの [名前] (**HttpIn** など) を指定します。
+    2. プロトコルに **TCP** を指定します。
+    3. [パブリック ポート] に **80** を指定します。
+    4. [プライベート ポート] に **8080** を指定します。
+    5. **[完了]** ボタンをクリックしてダイアログを閉じます。これでエンドポイントが作成されます。
 
-## To open a port in the firewall for your virtual machine
-1. Log in to your virtual machine.
-2. Click **Windows Start**.
-3. Click **Control Panel**.
-4. Click **System and Security**, click **Windows Firewall**, and then click **Advanced Settings**.
-5. Click **Inbound Rules** and then click **New Rule**.
+##ファイアウォールで仮想マシン用にポートを開くには
+1. 仮想マシンにログインします。
+2. **Windows の [スタート]** をクリックします。
+3. **[コントロール パネル]** をクリックします。
+4. **[システムとセキュリティ]**、**[Windows ファイアウォール]**、**[詳細設定]** の順にクリックします。
+5. **[受信の規則]**、**[新しい規則]** の順にクリックします。
 
- ![New inbound rule][NewIBRule]
+ ![新しい受信の規則][NewIBRule]
 
-6. For the new rule, select **Port** for the **Rule type** and then click **Next**.
+6. 新しい規則として、**[規則の種類]** の **[ポート]** をクリックし、**[次へ]** をクリックします。
 
- ![New inbound rule port][NewRulePort]
+ ![新しい受信の規則のポート][NewRulePort]
 
-7. Select **TCP** for the protocol and specify **8080** for the port, and then click **Next**.
+7. プロトコルとして **[TCP]** を選択し、ポートに **8080** を指定して、**[次へ]** をクリックします。
 
- ![New inbound rule ][NewRuleProtocol]
+ ![新しい受信の規則][NewRuleProtocol]
 
-8. Choose **Allow the connection** and then click **Next**.
+8. **[接続を許可する]** を選択し、**[次へ]** をクリックします。
 
- ![New inbound rule action][NewRuleAction]
+ ![新しい受信の規則の操作][NewRuleAction]
 
-9. Ensure **Domain**, **Private**, and **Public** are checked for the profile and then click **Next**.
+9. **[ドメイン]**、**[プライベート]**、および **[パブリック]** の各チェック ボックスがオンになっていることを確認し、**[次へ]** をクリックします。
 
- ![New inbound rule profile][NewRuleProfile]
+ ![新しい受信の規則のプロファイル][NewRuleProfile]
 
-10. Specify a name for the rule, such as **HttpIn** (the rule name is not required to match the endpoint name, however), and then click **Finish**.  
+10. **HttpIn** など、規則の名前を指定し (ただし、規則の名前がエンドポイント名と一致する必要はありません)、**[完了]** をクリックします。
 
- ![New inbound rule name][NewRuleName]
+ ![新しい受信の規則の名前][NewRuleName]
 
-At this point, your Tomcat web site should now be viewable from an external browser, using a URL of the form **http://*your\_DNS\_name*.cloudapp.net**, where ***your\_DNS\_name*** is the DNS name you specified when you created the virtual machine.
+これで、外部のブラウザーから Tomcat の Web サイトを表示できるようになります。これには、**http://*your\_DNS\_name*.cloudapp.net** という形式の URL を使用します (***your\_DNS\_name*** は、仮想マシンの作成時に指定した DNS 名)。
 
-## Application lifecycle considerations
-* You could create your own application web archive (WAR) and add it to the **webapps** folder. For example, create a basic Java Service Page (JSP) dynamic web project and export it as a WAR file, copy the WAR to the Apache Tomcat **webapps** folder on the virtual machine, then run it in a browser.
-* By default when the Tomcat service is installed, it will be set to start manually. You can switch it to start automatically by using the Services snap-in. Start the Services snap-in by clicking **Windows Start**, **Administrative Tools**, and then **Services**. To set Tomcat to start automatically, double-click the **Apache Tomcat** service in the Services snap-in and set **Startup type** to **Automatic**, as shown in the following.
+##アプリケーションのライフサイクルについて
+*独自のアプリケーションの Web アーカイブ (WAR) を作成し、**webapps** フォルダーに追加することもできます。たとえば、Java Service Page (JSP) で基本的な動的 Web プロジェクトを作成して WAR ファイルとしてエクスポートし、仮想マシン上の Apache Tomcat **webapps** フォルダーに WAR をコピーして、ブラウザーで実行することができます。
+*既定では、Tomcat サービスがインストールされると、手動で開始する設定が適用されます。この設定は、サービス スナップインを使用して、自動的に開始する設定に変更することができます。サービス スナップインを起動するには、**Windows の [スタート]**、**[管理ツール]**、**[サービス]** の順にクリックします。Tomcat を自動的に開始するように設定するには、サービス スナップインで **Apache Tomcat** サービスをダブルクリックし、次に示すように、**[スタートアップの種類]** を **[自動]** に設定します。
 
-    ![Setting a service to start automatically][service_automatic_startup]
+    ![サービスが自動的に起動するように設定する][service_automatic_startup]
 
-    The benefit of having Tomcat start automatically is it will start again if the virtual machine is rebooted (for example, after software updates that require a reboot are installed).
+    自動的に開始する設定の利点は、仮想マシンが再起動された場合 (再起動を伴うソフトウェア更新プログラムのインストール後など) に、Tomcat を再開できる点です。
 
-## Next steps
-* Learn about other services, such as Azure Storage, service bus, SQL Database, and more that you may want to include with your Java applications, by viewing the information available at <http://www.windowsazure.com/en-us/develop/java/>.
+##次のステップ
+*Windows Azure のストレージ、サービス バス、SQL データベースなど、Java アプリケーションに含めることのできる他のサービスについて確認してください。詳細については、<http://www.windowsazure.com/ja-jp/develop/java/> を参照してください。
 
 [virtual_machine_tomcat]: ./media/virtual-machines-java-run-tomcat-application-server/WA_VirtualMachineRunningApacheTomcat.png
 
@@ -144,3 +144,4 @@ At this point, your Tomcat web site should now be viewable from an external brow
 [NewRuleAction]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleAction.png
 [NewRuleName]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleName.png
 [NewRuleProfile]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleProfile.png
+

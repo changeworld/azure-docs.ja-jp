@@ -1,222 +1,222 @@
-#How to use the Azure Command-Line Tools for Mac and Linux
+#Mac および Linux 用 Windows Azure コマンド ライン ツールの使用方法
 
-This guide describes how to use the Azure Command-Line Tools for Mac and Linux to create and manage services in Azure. The scenarios covered include **installing the tools**, **importing your publishing settings**, **creating and managing Azure Web Sites**, and **creating and managing Azure Virtual Machines**. For comprehensive reference documentation, see [Azure command-line tool for Mac and Linux Documentation][reference-docs]. 
+このガイドでは、Mac および Linux 用 Windows Azure コマンド ライン ツールを使用して Windows Azure のサービスを作成および管理する方法について説明します。ここでは、**ツールのインストール**、**発行の設定のインポート**、**Windows Azure の Web サイトの作成および管理**、**Windows Azure の仮想マシンの作成および管理**の各シナリオについて説明します。包括的なリファレンス ドキュメントについては、[Mac および Linux 用 Windows Azure コマンド ライン ツールに関するページ][reference-docs]を参照してください。
 
-##Table of contents
-* [What are the Azure Command-Line Tools for Mac and Linux](#Overview)
-* [How to install the Azure Command-Line Tools for Mac and Linux](#Download)
-* [How to create an Azure account](#CreateAccount)
-* [How to download and import publish settings](#Account)
-* [How to create and manage an Azure Web Site](#WebSites)
-* [How to create and manage an Azure Virtual Machine](#VMs)
+##目次
+* [Mac および Linux 用 Windows Azure コマンド ライン ツールについて](#Overview)
+* [Mac および Linux 用 Windows Azure コマンド ライン ツールのインストール方法](#Download)
+* [Windows Azure アカウントの作成方法](#CreateAccount)
+* [発行の設定をダウンロードおよびインポートする方法](#Account)
+* [Windows Azure の Web サイトを作成および管理する方法](#WebSites)
+* [Windows Azure の仮想マシンを作成および管理する方法](#VMs)
 
 
-<h2><a id="Overview"></a>What are the Azure Command-Line Tools for Mac and Linux</h2>
+<h2><a id="Overview"></a>Mac および Linux 用 Windows Azure コマンド ライン ツールについて</h2>
 
-The Azure Command-Line Tools for Mac and Linux are a set of command-line tools for deploying and managing Azure services.
+Mac および Linux 用 Windows Azure コマンド ライン ツールは、Windows Azure サービスを展開および管理するためのコマンド ライン ツールのセットです。
  
-The supported tasks include the following:
+次のようなタスクがサポートされます。
 
-* Import publishing settings.
-* Create and manage Azure Web Sites.
-* Create and manage Azure Virtual Machines.
+* 発行の設定をインポートする。
+* Windows Azure の Web サイトの作成および管理。
+*Windows Azure の仮想マシンの作成および管理。
 
-For a complete list of supported commands, type `azure -help` at the command line after installing the tools, or see the [reference documentation][reference-docs].
+サポートされているコマンドの完全な一覧については、ツールをインストールした後コマンド ラインで「azure -help」と入力するか、または[リファレンス ドキュメント][reference-docs]を参照してください。
 
-<h2><a id="Download">How to install the Azure Command-Line Tools for Mac and Linux</a></h2>
+<h2><a id="Download">Mac および Linux 用 Windows Azure コマンド ライン ツールのインストール方法</a></h2>
 
-The following list contains information for installing the command-line tools, depending on your operating system:
+次の説明に従って、お使いのオペレーティング システムに対応するコマンド ライン ツールをインストールしてください。
 
-* **Mac**: Download the [Azure SDK Installer][mac-installer]. Open the downloaded .pkg file and complete the installation steps as you are prompted.
+* **Mac**: [Windows Azure SDK インストーラー][mac-installer]をダウンロードします。ダウンロードした .pkg ファイルを開き、指示に従ってインストール手順を実行します。
 
-* **Linux**: Install the latest version of [Node.js][nodejs-org] (see [Install Node.js via Package Manager][install-node-linux]), then run the following command:
+* **Linux**: 最新バージョンの [Node.js][nodejs-org] をインストールし ([パッケージ マネージャーを使った Node.js のインストールに関するページ][install-node-linux]を参照)、次のコマンドを実行します。
 
 		npm install azure-cli -g
 
-	**Note**: You may need to run this command with elevated privileges:
+	**メモ**: 昇格した特権で次のコマンドを実行することが必要になる場合があります。
 
 		sudo npm install azure-cli -g
 
-* **Windows**: Run the Winows installer (.msi file), which is available here: [Azure Command Line Tools][windows-installer].
+* **Windows**: ここ [Windows Azure のコマンド ライン ツール][windows-installer]で入手できる Windows インストーラー (.msi ファイル) を実行します。
 
 
-To test the installation, type `azure` at the command prompt. If the installation was successful, you will see a list of all the available `azure` commands.
+インストールをテストするには、コマンド プロンプトで「azure」と入力します。インストールが正常に完了している場合は、使用可能なすべての azure コマンドの一覧が表示されます。
 
-<h2><a id="CreateAccount"></a>How to create an Azure account</h2>
+<h2><a id="CreateAccount"></a>Windows Azure アカウントの作成方法</h2>
 
-To use the Azure Command-Line Tools for Mac and Linux, you will need an Azure account.
+Mac および Linux 用 Windows Azure コマンド ライン ツールを使用するには、Windows Azure アカウントが必要です。
 
-Open a web browser and browse to [http://www.windowsazure.com][windowsazuredotcom] and click **free trial** in the upper right corner.
+Web ブラウザーを開き、[http://www.windowsazure.com][windowsazuredotcom] にアクセスします。右上隅に表示された **[無料評価版]** をクリックします。
 
-![Azure Web Site][Azure Web Site]
+![Windows Azure の Web サイト][Windows Azure Web Site]
 
-Follow the instructions for creating an account.
+指示に従ってアカウントの作成手順を実行します。
 
-<h2><a id="Account"></a>How to download and import publish settings</h2>
+<h2><a id="Account"></a>発行の設定をダウンロードおよびインポートする方法</h2>
 
-To get started, you need to first download and import your publish settings. This will allow you to use the tools to create and manage Azure Services. To download your publish settings, use the `account download` command:
+最初に、発行の設定をダウンロードしてインポートする必要があります。これにより、Azure サービスを作成および管理するためのツールを使用できるようになります。発行の設定をダウンロードするには、次のように account download コマンドを使用します。
 
 	azure account download
 
-This will open your default browser and prompt you to sign in to the Management Portal. After signing in, your `.publishsettings` file will be downloaded. Make note of where this file is saved.
+既定のブラウザーが開き、管理ポータルにサインインするよう促されます。サインインすると、.publishsettings ファイルがダウンロードされます。ファイルを保存した場所をメモしておきます。
 
-Next, import the `.publishsettings` file by running the following command, replacing `{path to .publishsettings file}` with the path to your `.publishsettings` file:
+続いて、次のコマンドを実行して .publishsettings ファイルをインポートします。ここで、{path to .publishsettings file} には、.publishsettings ファイルのパスを指定してください。
 
 	azure account import {path to .publishsettings file}
 
-You can remove all of the information stored by the <code>import</code> command by using the <code>account clear</code> command:
+<code>account clear</code> コマンドを使用すると、<code>import</code> コマンドによって格納されたすべての情報を削除できます。
 
 	azure account clear
 
-To see a list of options for `account` commands, use the `-help` option:
+account コマンドのオプションの一覧を表示するには、-help オプションを使用します。
 
 	azure account -help
 
-After importing your publish settings, you should delete the `.publishsettings` file for security reasons.
+発行設定をインポートした後は、セキュリティ上の理由から、.publishsettings ファイルを削除する必要があります。
 
 <div class="dev-callout"> 
-<b>Note</b> 
-<p>When you import publish settings, credentials for accessing your Azure subscription are stored inside your <code>user</code> folder. Your <code>user</code> folder is protected by your operating system. However, it is recommended that you take additional steps to encrypt your <code>user</code> folder. You can do so in the following ways:</p>
+<b>メモ</b> 
+<p>発行の設定をインポートすると、Windows Azure サブスクリプションにアクセスするための資格情報が <code>user</code> フォルダーに格納されます。<code>user</code> フォルダーはオペレーティング システムによって保護されていますが、追加の作業を行って <code>user</code> フォルダーを暗号化することをお勧めします。そのためには、次の操作を行います。</p>
 
 <ul>
-<li>On Windows, modify the folder properties or use BitLocker.</li>
-<li>On Mac, turn on FileVault for the folder.</li>
-<li>On Ubuntu, use the Encrypted Home directory feature. Other Linux distributions offer equivalent features.</li>
+<li>Windows の場合、フォルダー プロパティを変更するか、または BitLocker を使用します。</li>
+<li>Mac の場合、フォルダーに対して FileVault を有効にします。</li>
+<li>Ubuntu の場合、Encrypted Home ディレクトリ機能を使用します。その他の Linux ディストリビューションにも同等の機能が用意されています。</li>
 </ul>
 
 </div>
 
-You are now ready to being creating and managing Azure Web Sites and Azure Virtual Machines.  
+これで、Windows Azure の Web サイトおよび Windows Azure の仮想マシンを作成および管理する準備が整いました。
 
-<h2><a id="WebSites"></a>How to create and manage an Azure Web Site</h2>
+<h2><a id="WebSites"></a>Windows Azure の Web サイトを作成および管理する方法</h2>
 
-###Create a Web Site
+###Web サイトの作成
 
-To create an Azure web site, first create an empty directory called `MySite` and browse into that directory.
+Windows Azure の Web サイトを作成するには、最初に MySite という空のディレクトリを作成し、そのディレクトリを参照します。
 
-Then, run the following command:
+次に、次のコマンドを実行します。
 
 	azure site create MySite --git
 
-The output from this command will contain the default URL for the newly created web site. The `--git` option allows you to use git to publish to your web site by creating git repositories in both your local application directory and in your web site's data center. Note that if your local folder is already a git repository, the command will add a new remote to the existing repository, pointing to the repository in your web site's data center.
+このコマンドの出力には、新しく作成された Web サイトの既定 URL が含まれています。--git オプションを指定すると、git を使用し、ローカル アプリケーション ディレクトリと Web サイトのデータ センターの両方に git リポジトリを作成することによって Web サイトに発行できます。ローカル フォルダーが既に git リポジトリである場合、このコマンドを実行すると新しいリモートが既存のリポジトリに追加され、Web サイトのデータ センター内のリポジトリが指定されます。
 
-Note that you can execute the `azure site create` command with any of the following options:
+azure site create コマンドは、次のいずれかのオプションと組み合わせて実行できます。
 
-* `--location [location name]`. This option allows you to specify the location of the data center in which your web site is created (e.g. "West US"). If you omit this option, you will be promted to choose a location.
-* `--hostname [custom host name]`. This option allows you to specify a custom hostname for your web site.
+* `--location [location name]`.このオプションを使用すると、Web サイトを作成するデータ センターの場所を指定できます (たとえば、"米国西部")。このオプションを省略した場合、場所を選択するよう促されます。
+* `--hostname [custom host name]`.このオプションを使用すると、Web サイトのカスタム ホスト名を指定できます。
 
-You can then add content to your web site directory. Use the regular git flow (`git add`, `git commit`) to commit your content. Use the following git command to push your web site content to Azure: 
+次に、Web サイト ディレクトリにコンテンツを追加します。通常の git フロー (git add、git commit) を使用してコンテンツをコミットします。次の git コマンドを使用して、Web サイトのコンテンツを Windows Azure にプッシュします。
 
 	git push azure master
 
-###Set up publishing from GitHub
+###GitHub からの発行の設定
 
-To set up continuous publishing from a GitHub repository, use the `--GitHub` option when creating a site:
+GitHub リポジトリからの継続的な発行を設定するには、サイトの作成時に --GitHub オプションを使用します。
 
 	auzre site create MySite --github --githubusername username --githubpassword password --githubrepository githubuser/reponame
 
-If you have a local clone of a GitHub repository or if you have a repository with a single remote reference to a GitHub repository, this command will automatically publish code in the GitHub repository to your site. From then on, any changes pushed to the GitHub repository will automatically be published to your site.
+GitHub リポジトリのローカル クローンがある場合や、GitHub リポジトリへの単一のリモート参照を含むリポジトリがある場合、このコマンドを実行すると GitHub リポジトリ内のコードがサイトに自動的に発行されます。それ以降、GitHub リポジトリにプッシュされたすべての変更がサイトに自動的に発行されます。
 
-When you set up publishing from GitHub, the default branch used is the master branch. To specify a different branch, execute the following command from your local repository:
+GitHub からの発行を設定すると、master 分岐が既定の分岐として使用されます。別の分岐を指定するには、ローカル リポジトリから次のコマンドを実行します。
 
 	azure site repository <branch name>
 
-###Configure app settings
+###アプリケーションの設定の構成
 
-App settings are key-value pairs that are available to your application at runtime. When set for an Azure Web Site, app setting values will override settings with the same key that are defined in your site's Web.config file. For Node.js and PHP applications, app settings are available as environment variables. The following example shows you how to set a key-value pair:
+アプリケーション設定は、実行時にアプリケーションで使用できるキーと値のペアです。Windows Azure の Web サイトに設定すると、アプリケーションの設定の値により、サイトの Web.config ファイルで定義されたのと同じキーで設定が上書きされます。Node.js アプリケーションと PHP アプリケーションの場合、アプリケーション設定を環境変数として使用できます。次の例は、キーと値のペアを設定する方法を示しています。
 
-	azure site config add <key>=<value> 
+	azure site config add <key>=<value>
 
-To see a list of all key/value pairs, use the following:
+すべてのキー/値ペアの一覧を参照するには、次のコマンドを使用します。
 
 	azure site config list 
 
-Or if you know the key and want to see the value, you can use:
+または、キーがわかっていて、値を参照する場合は、次のコマンドを使用できます。
 
 	azure site config get <key> 
 
-If you want to change the value of an existing key you must first clear the existing key and then re-add it. The clear command is:
+既存のキーの値を変更する場合は、まず既存のキーをクリアして再度追加します。クリア コマンドは次のとおりです。
 
 	azure site config clear <key> 
 
-###List and show sites
+###サイトの一覧表示と表示
 
-To list your web sites, use the following command:
+Web サイトの一覧を表示するには、次のコマンドを使用します。
 
 	azure site list
 
-To get detailed information about a site, use the `site show` command. The following example shows details for `MySite`:
+サイトに関する詳細な情報を取得するには、site show コマンドを使用します。次の例は、MySite に関する詳細な情報を表示します。
 
 	azure site show MySite
 
-###Stop, start, or restart a site
+###サイトの停止、開始、または再起動
 
-You can stop, start, or restart a site with the `site stop`, `site start`, or `site restart` commands:
+サイトを停止、開始、再起動するには、site stop、site start、site restart の各コマンドを使用します。
 
 	azure site stop MySite
 	azure site start MySite
 	azure site restart MySite
 
-###Delete a site
+###サイトの削除
 
-Finally, you can delete a site with the `site delete` command:
+最後に、サイトを削除するには、site delete コマンドを使用します。
 
 	azure site delete MySite
 
-Note that if you are running any of above commands from inside the folder where you ran `site create`, you do not need to specify the site name `MySite` as the last parameter.
+上記のコマンドを site create を実行したフォルダー内で実行する場合は、サイト名 MySite を最終パラメーターとして指定する必要はありません。
 
-To see a complete list of `site` commands, use the `-help` option:
+site コマンドの完全な一覧を表示するには、-help オプションを使用します。
 
 	azure site -help 
 
-<h2><a id="VMs"></a>How to create and manage an Azure Virtual Machine</h2>
+<h2><a id="VMs"></a>Windows Azure の仮想マシンを作成および管理する方法</h2>
 
-an Azure Virtual Machine is created from a virtual machine image (a .vhd file) that you provide or that is available in the Image Gallery. To see images that are available, use the `vm image list` command:
+Windows Azure の仮想マシンを作成するには、自分で用意した仮想マシン イメージ (.vhd ファイル) やイメージ ギャラリーから入手した仮想マシン イメージを使用します。利用可能なイメージを表示するには、vm image list コマンドを使用します。
 
 	azure vm image list
 
-You can provision and start a virtual machine from one of the available images with the `vm create` command. The following example shows how to create a Linux virtual machine (called `myVM`) from an image in the Image Gallery (CentOS 6.2). The root user name and password for the virtual machine are `myusername` and `Mypassw0rd` respectively. (Note that the `--location` parameter specifies the data center in which the virtual machine is created. If you omit the `--location` parameter, you will be prompted to choose a location.)
+vm create コマンドを使用すると、使用可能なイメージの 1 つから仮想マシンをプロビジョニングおよび起動できます。次の例に、イメージ ギャラリー内のイメージ (CentOS 6.2) から Linux 仮想マシン (myVM) を作成する方法を示します。仮想マシンのルート ユーザー名とパスワードは、それぞれ myusername と Mypassw0rd です (--location パラメーターは、仮想マシンが作成されるデータ センターを指定します。--location パラメーターを省略した場合、場所の選択を求められます)。
 
 	azure vm create myVM OpenLogic__OpenLogic-CentOS-62-20120509-en-us-30GB.vhd myusername --location "West US"
 
-You may consider passing the `--ssh` flag (Linux) or `--rdp` flag (Windows) to `vm create` to enable remote connections to the newly-created virtual machine.
+--ssh フラグ (Linux) または --rdp フラグ (Windows) を vm create に渡すと、新しく作成された仮想マシンへのリモート接続が有効になります。
 
-If you would rather provision a virtual machine from a custom image, you can create an image from a .vhd file with the `vm image create` command, then use the `vm create` command to provision the virtual machine. The following example shows how to create a Linux image (called `myImage`) from a local .vhd file. (The `--location` parameter specifies the data in which the image is stored.)
+仮想マシンをカスタム イメージからプロビジョニングする場合は、vm image create コマンドを使用して .vhd ファイルからイメージを作成し、vm create コマンドを使用して仮想マシンをプロビジョニングします。次の例に、ローカル .vhd ファイルから Linux イメージ (myImage) を作成する方法を示します (--location パラメーターは、イメージが格納されるデータを指定します)。
 
 	azure vm image create myImage /path/to/myImage.vhd --os linux --location "West US"
 
-Instead of creating an image from a local .vhd, you can create an image from a .vhd stored in Azure Blob Storage. You can do this with the `blob-url` parameter:
+イメージをローカル .vhd から作成する代わりに、Windows Azure BLOB ストレージに格納されている .vhd からイメージを作成できます。そのためには、blob-url パラメーターを使用します。
 
 	azure vm image create myImage --blob-url <url to .vhd in Blob Storage> --os linux
 
-After creating an image, you can provision a virtual machine from the image by using `vm create`. The command below creates a virtual machine called `myVM` from the image created above (`myImage`).
+イメージを作成した後は、vm create を使用して、イメージから仮想マシンをプロビジョニングできます。次のコマンドは、上の手順で作成したイメージ (myImage) から仮想マシン myVM を作成します。
 
 	azure vm create myVM myImage myusername --location "West US"
 
-After you have provisioned a virtual machine, you may want to create endpoints to allow remote access to your virtual machine (for example). The following example uses the `vm create endpoint` command to open external port 22 and local port 22 on `myVM`:
+仮想マシンをプロビジョニングした後は、たとえば、エンドポイントを作成して、仮想マシンにリモート アクセスできるようにすることができます。次の例では、vm create endpoint コマンドを使用して、myVM の外部ポート 22 とローカル ポート 22 を開いています。
 
 	azure vm endpoint create myVM 22 22
 
-You can get detailed information about a virtual machine (including IP address, DNS name, and endpoint information) with the `vm show` command:
+仮想マシンに関する詳細な情報 (IP アドレス、DNS 名、エンドポイント情報) を取得するには、vm show コマンドを使用します。
 
 	azure vm show myVM
 
-To shutdown, start, or restart the virtual machine, use one of the following commands:
+仮想マシンをシャットダウン、起動、または再起動するには、次のいずれかのコマンドを使用します。
 
 	azure vm shutdown myVM
 	azure vm start myVM
 	azure vm restart myVM
 
-And finally, to delete the VM, use the `vm delete` command:
+最後に、VM を削除するには、vm delete コマンドを使用します。
 
 	azure vm delete myVM
 
-For a complete list of commands for creating and managing virtual machines, use the `-h` option:
+仮想マシンを作成および管理するためのコマンドの一覧を表示するには、-h オプションを使用します。
 
 	azure vm -h
 
 <!-- IMAGES -->
-[Azure Web Site]: ./media/crossplat-cmd-tools/freetrial.png
+[Windows Azure Web Site]: ./media/crossplat-cmd-tools/freetrial.png
 
 <!-- LINKS -->
 [nodejs-org]: http://nodejs.org/
@@ -225,4 +225,5 @@ For a complete list of commands for creating and managing virtual machines, use 
 [windows-installer]: http://go.microsoft.com/fwlink/?LinkID=275464
 [reference-docs]: http://go.microsoft.com/fwlink/?LinkId=252246
 [windowsazuredotcom]: http://www.windowsazure.com
+
 

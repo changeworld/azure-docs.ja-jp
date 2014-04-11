@@ -1,29 +1,29 @@
-A new insert script is registered that generates an SAS when a new Todo item is inserted.
+新しい Todo 項目が挿入された場合に SAS を生成する、新しい挿入スクリプトが登録されます。
 
-0. If you haven't yet created your storage account, see [How To Create a Storage Account].
+0.まだストレージ アカウントを作成していない場合には、「[How To Create a Storage Account (ストレージ アカウントの作成方法)]」を参照してください。
 
-1. In the Management Portal, click **Storage**, click the storage account, then click **Manage Keys**. 
+1. 管理ポータルで、**[ストレージ]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
 
-  	![](./media/mobile-services-configure-blob-storage/mobile-blob-storage-account.png)
+  	![][0]
 
-2. Make a note of the **Storage Account Name** and **Access Key**.
+2. **ストレージ アカウント名**と**アクセス キー**をメモします。
 
-   	![](./media/mobile-services-configure-blob-storage/mobile-blob-storage-account-keys.png)
+   	![][1]
 
-3. In your mobile service, click the **Configure** tab, scroll down to **App settings** and enter a **Name** and **Value** pair for each of the following that you obtained from the storage account, then click **Save**.
+3. モバイル サービスで、**[構成]** タブをクリックし、**[アプリケーション設定]** まで下へスクロールします。次に、ストレージ アカウントから取得した次の項目の名前と値をそれぞれ **[名前]** と **[値]** に入力して、**[保存]** をクリックします。
 
 	+ `STORAGE_ACCOUNT_NAME`
 	+ `STORAGE_ACCOUNT_ACCESS_KEY`
 
-	![](./media/mobile-services-configure-blob-storage/mobile-blob-storage-app-settings.png)
+	![][10]
 
-	The storage account access key is stored encrypted in app settings. You can access this key from any server script at runtime. For more information, see [App settings].
+	ストレージ アカウントのアクセス キーは暗号化された状態でアプリケーション設定に保存されます。このキーには、実行時にどのサーバー スクリプトからでもアクセスできます。詳細については、「[アプリ設定]」を参照してください。
 
-4. Click the **Data** tab and then click the **TodoItem** table. 
+4. **[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
-   	![](./media/mobile-services-configure-blob-storage/mobile-portal-data-tables.png)
+   	![][3]
 
-5.  In **todoitem**, click the **Script** tab and select **Insert**, replace the insert function with the following code, then click **Save**:
+5. **todoitem** で、**[スクリプト]** タブをクリックし、**[挿入]** を選択します。insert 関数を次のコードに置き換え、**[保存]** をクリックします。
 
 		var azure = require('azure');
 		var qs = require('querystring');
@@ -78,19 +78,31 @@ A new insert script is registered that generates an SAS when a new Todo item is 
 		    }
 		}
 
- 	![](./media/mobile-services-configure-blob-storage/mobile-insert-script-blob.png)
+ 	![][4]
 
-   	This replaces the function that is invoked when an insert occurs in the TodoItem table with a new script. This new script generates a new SAS for the insert, which is valid for 5 minutes, and assigns the value of the generated SAS to the `sasQueryString` property of the returned item. The `imageUri` property is also set to the resource path of the new BLOB to enable image display during binding in the client UI.
+   	この操作により、TodoItem テーブルで挿入が発生したときに呼び出される関数が、新しいスクリプトに置き換わります。この新しいスクリプトは、挿入のための新しい SAS を生成し (5 分間有効)、生成された SAS の値を返された項目の "sasQueryString" プロパティに割り当てます。"imageUri" プロパティに新しい BLOB のリソース パスが設定され、クライント UI でのバインド中にイメージを表示できるようになります。
 
-	>[WACOM.NOTE] This code creates an SAS for an individual BLOB. If you need to upload multiple blobs to a container using the same SAS, you can instead call the <a href="http://go.microsoft.com/fwlink/?LinkId=390455" target="_blank">generateSharedAccessSignature method</a> with an empty blob resource name, like this: 
+	>[WACOM.NOTE] このコードでは、個々 の BLOB に対して SAS が作成されます。同じ SAS を使用してコンテナーに複数の BLOB をアップロードする場合は、代わりに、空の BLOB リソース名を使って <a href="http://go.microsoft.com/fwlink/?LinkId=390455" target="_blank">generateSharedAccessSignature メソッド</a>を呼び出すことができます。次に例を示します。
 	<pre><code>blobService.generateSharedAccessSignature(containerName, '', sharedAccessPolicy);</code></pre>
 
-Next, you will update the quickstart app to add image upload functionality by using the SAS generated on insert.
+次に、挿入時に生成される SAS を使用してイメージ アップロード機能を追加する、クイック スタート アプリケーションを更新します。
  
 <!-- Anchors. -->
 
 <!-- Images. -->
+[0]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-account.png
+[1]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-account-keys.png
+
+[3]: ./media/mobile-services-configure-blob-storage/mobile-portal-data-tables.png
+[4]: ./media/mobile-services-configure-blob-storage/mobile-insert-script-blob.png
+
+
+
+
+
+[10]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-app-settings.png
 
 <!-- URLs. -->
-[How To Create a Storage Account]: /en-us/manage/services/storage/how-to-create-a-storage-account
-[App settings]: http://msdn.microsoft.com/en-us/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+[How To Create a Storage Account (ストレージ アカウントの作成方法)]: /ja-jp/manage/services/storage/how-to-create-a-storage-account
+[アプリ設定]: http://msdn.microsoft.com/ja-jp/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+

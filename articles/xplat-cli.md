@@ -1,50 +1,58 @@
-<properties linkid="script-xplat-intro" urlDisplayName="Azure Cross-Platform Command-Line Interface" pageTitle="The Azure Cross-Platform Command-Line Interface" title="The Azure Cross-Platform Command-Line Interface" metaKeywords="Azure cross-platform command-line interface, Azure command-line, azure command-line, azure cli" description="Install and configure the Azure Cross-Platform Command-Line Interface to manage Azure Services" metaCanonical="http://www.windowsazure.com/en-us/script/xplat-cli-intro" umbracoNaviHide="0" disqusComments="1" editor="mollybos" manager="paulettm" documentationCenter="" solutions="" authors="larryfr" services="" />
+<properties linkid="script-xplat-intro" urlDisplayName="Windows Azure クロスプラットフォーム コマンド ライン インターフェイス" pageTitle="Windows Azure クロスプラットフォーム コマンド ライン インターフェイス" title="Windows Azure クロスプラットフォーム コマンド ライン インターフェイス" metaKeywords="windows azure cross-platform command-line interface, windows azure command-line, azure command-line, azure cli" description="Windows Azure サービスを管理するための Windows Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成" metaCanonical="http://www.windowsazure.com/en-us/script/xplat-cli-intro" umbracoNaviHide="0" disqusComments="1" writer="larryfr" editor="mollybos" manager="paulettm" documentationCenter="" solutions="" authors="" services="" />
 
-#Install and Configure the Azure Cross-Platform Command-Line Interface
+#Windows Azure クロス プラットフォーム コマンド ライン インターフェイスのインストールと構成
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/manage/install-and-configure-windows-powershell/" title="PowerShell">PowerShell</a><a href="/en-us/manage/install-and-configure-cli/" title="Cross-Platform CLI" class="current">Cross-Platform CLI</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/manage/install-and-configure-windows-powershell/" title="PowerShell">PowerShell</a><a href="/en-us/manage/install-and-configure-cli/" title="クロス プラットフォーム CLI" class="current">クロス プラットフォーム CLI</a></div>
 
-The Azure Cross-Platform Command-Line Interface (xplat-cli) provides a set of open source, cross-platform commands for working with the Azure Platform. The xplat-cli provides much of the same functionality found in the Azure Management Portal, such as the ability to manage web sites, virtual machines, mobile services, SQL Database and other services provided by the Azure platform.
+Windows Azure クロス プラットフォーム コマンド ライン インターフェイス (xplat-cli) は、Windows Azure のプラットフォームを使用するための、オープン ソースのクロス プラットフォーム コマンドのセットです。xplat-cli で使用できる機能の多くは、Web サイトの管理、仮想マシン、モバイル サービス、SQL データベース、Windows Azure のプラットフォームの他のサービスなど、Windows Azure の管理ポータルで使用できるものと同じです。
 
-The xplat-cli is written in JavaScript, and requires Node.js. It is implemented using the Azure SDK for Node.js, and released under an Apache 2.0 license. The project repository is located at [https://github.com/WindowsAzure/azure-sdk-tools-xplat](https://github.com/WindowsAzure/azure-sdk-tools-xplat).
+xplat-cli は JavaScript で記述されており、Node.js が必要です。Windows Azure SDK for Node.js を使用して実装されており、Apache 2.0 ライセンスに基づいてリリースされています。プロジェクト リポジトリは、[https://github.com/WindowsAzure/azure-sdk-tools-xplat](https://github.com/WindowsAzure/azure-sdk-tools-xplat) にあります。
 
-This document describes how to install and configure the Azure Cross-Platform Command-Line Interface, as well as how to use it to perform basic tasks with the Azure platform.
+このドキュメントでは、Windows Azure クロス プラットフォーム コマンド ライン インターフェイスのインストール方法、およびこれを使用して Windows Azure のプラットフォームで基本的なタスクを実行する方法を説明します。
 
-##In this document
+##このドキュメントの内容
 
-* [How to install the Azure Cross-Platform Command-Line Interface](#install)
-* [How to connect to your Azure subscription](#configure)
-* [How to use the Azure Cross-Platform Command-Line Interface](#use)
-* [How to script the Azure Cross-Platform Command-Line Interface](#script)
-* [Additional resources](#additional-resources)
+* [Windows Azure クロス プラットフォーム コマンド ライン インターフェイスをインストールする方法](#install)
+* [Windows Azure サブスクリプションに接続する方法](#configure)
+* [Windows Azure クロス プラットフォーム コマンド ライン インターフェイスを使用する方法](#use)
+* [Windows Azure クロス プラットフォーム コマンド ライン インターフェイスでスクリプトを使用する方法](#script)
+* [その他のリソース](#additional-resources)
 
-<h2><a id="install"></a>How to install the Azure Cross-Platform Command-Line Interface</h2>
+<h2><a id="install"></a>Windows Azure クロス プラットフォーム コマンド ライン インターフェイスをインストールする方法</h2>
 
-There are two ways to install the xplat-cli; using installer packages for Windows and OS X, or if Node.js is installed on your system, the **npm** command.
+xplat-cli のインストール方法は 2 つあります。Windows および OS X のインストーラー パッケージを使用する方法と、**npm** コマンドを使用する方法 (Node.js をインストール済みの場合) です。
 
-For Linux systems, you must have Node.js installed and either use **npm** to install the xplat-cli as described below, or build it from source. The source is available at [http://go.microsoft.com/fwlink/?linkid=253472&clcid=0x409](http://go.microsoft.com/fwlink/?linkid=253472&clcid=0x409). For more information on on building from source, see the INSTALL file included in the archive.
+Xamarin ツールには、クロス プラットフォーム アプリケーションを開発するための Visual Studio 統合と Xamarin Studio、スタンドアロン IDE がサポートされています。Linux システムの場合、Node.js をインストールして、以下の手順に従って **npm** を使用して xplat-cli をインストールするか、ソースから構築します。ソースは、[http://go.microsoft.com/fwlink/?linkid=253472&clcid=0x409](http://go.microsoft.com/fwlink/?linkid=253472&clcid=0x409) にあります。ソースからの構築の詳細については、アーカイブにある INSTALL ファイルを参照してください。
 
-Once the xplat-cli has been installed, you will be able to use the **azure** command from your command-line interface (Bash, Terminal, Command prompt) to access the xplat-cli commands.
+xplat-cli をインストールしたら、コマンド ライン インターフェイス (Bash、Terminal、Command プロンプト) から **azure** コマンドを使用して、xplat-cli コマンドにアクセスできます。
 
-###Using an installer
+###インストーラーの使用
 
-The following installer packages are available:
+次のインストーラー パッケージを使用できます。
 
-* [Windows installer][windows-installer]
+* [Windows インストーラー][windows-installer]
 
-* [OS X installer][mac-installer]
+* [OS X インストーラー][mac-installer]
 
-###Using npm
+<div class="dev-callout">
+<b>メモ</b>
+<p>インストーラー パッケージには Node.js も含まれています。システムで他のバージョンの Node.js が利用できない場合は、このバージョンの Node.js が xplat-cli によって使用されます。これらのパッケージによってインストールされる Node.js のバージョンが、システムにインストール済みの Node.js のバージョンと競合しないようにしてください。</p>
+</div>
 
-If Node.js is installed on your system, use the following command to install the xplat-cli:
+###npm の使用
 
-	npm install azure-cli -g
+Node.js がインストールされているシステムの場合は、次のコマンドを使用して xplat-cli をインストールします。
 
->[WACOM.NOTE] You may need to use `sudo` to successfully run the __npm__ command.
+	npm install azure-cli
 
-This will install the xplat-cli and required dependencies. At the end of the installation, you should see something similar to the following:
+<div class="dev-callout">
+<b>メモ</b>
+<p><b>npm</b> コマンドを実行するには、<b>sudo</b> の使用が必要になる場合があります。</p>
+</div>
 
-	azure-cli@0.8.0 ..\node_modules\azure-cli
+これにより、xplat-cli および必要な依存関係がインストールされます。インストールの最後に、次のような情報が表示されます。
+
+	azure-cli@0.7.0 ..\node_modules\azure-cli
 	|-- easy-table@0.0.1
 	|-- eyes@0.1.8
 	|-- xmlbuilder@0.4.2
@@ -62,95 +70,50 @@ This will install the xplat-cli and required dependencies. At the end of the ins
 	|-- kuduscript@0.1.2 (commander@1.1.1, streamline@0.4.11)
 	|-- azure@0.7.13 (dateformat@1.0.2-1.2.3, envconf@0.0.4, mpns@2.0.1, mime@1.2.10, validator@1.4.0, xml2js@0.2.8, wns@0.5.3, request@2.25.0)
 
-> [WACOM.NOTE] Node.js can be installed from <a href="http://nodejs.org/">http://nodejs.org/</a>.
+<div class="dev-callout">
+<b>メモ</b>
+<p>Node.js は <a href="http://nodejs.org/">http://nodejs.org/</a> からインストールできます。</p>
+</div>
 
-<h2><a id="Configure"></a>How to connect to your Azure subscription</h2>
+<h2><a id="Configure"></a>Windows Azure サブスクリプションに接続する方法</h2>
 
-While some commands provided by the xplat-cli will work without an Azure subscription, most commands require a subscription. To configure the xplat-cli to work with your subscription you can either:
+xplat-cli の一部のコマンドは Windows Azure サブスクリプションがなくても機能しますが、多くのコマンドにはサブスクリプションが必要です。Windows Azure サブスクリプションを使用するように plat-cli を構成するには、発行設定ファイルをダウンロードしてインストールする必要があります。このファイルには、Windows Azure サブスクリプションへの管理要求を認証するために使用される管理証明書とサブスクリプション ID が含まれています。
 
-* Download and use a publish settings file.
+アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Windows Azure の無料評価版サイト][free-trial]を参照してください。
 
-OR
-
-* Log in to Azure using an organizational account. When you log in, Azure Active Directory is used to authenticate the credentials.
-
-To help you choose the authentication method that's appropriate for your needs, consider the following:
-
-*  The log in method can make it easier to manage access to subscription, but may disrupt automation, as the credentials may time out and require you to log in again.
-
-	> [WACOM.NOTE] The login method only works with organizational account.  An organizational account is a user that is managed by your organization, and defined in your organizations Azure Active Directory tenant. If you do not currently have an organizational account, and are using a Microsoft account to log in to your Azure subscription, you can easily create one using the following steps.
-	> 
-	> 1. Login to the [Azure Management Portal][portal], and click on **Active Directory**.
-	> 
-	> 2. If no directory exists, select **Create your directory** and provide the requested information.
-	> 
-	> 3. Select your directory and add a new user. This new user is an organizational account.
-	> 
-	>     During the creation of the user, you will be supplied with both an e-mail address for the user and a temporary password. Save this  information as it is used in another step.
-	> 
-	> 4. From the management portal, select **Settings** and then select **Administrators**. Select **Add**, and add the new user as a co-administrator. This allows the organizational account to manage your Azure subscription.
-	> 
-	> 5. Finally, log out of the Azure portal and then log back in using the new organizational account. If this is the first time logging in with this account, you will be prompted to change the password.
-	>
-	>For more information on organizational account with Microsoft Azure, see [Sign up for Microsoft Azure as an Organization][signuporg].
-
-*  The publish settings file method installs a certificate that allows you to perform management tasks for as long as the subscription and the certificate are valid. This method makes it easier to use automation for long-running tasks. After you download and import the information, you don't need to provide it again. However, this method makes it harder to manage access to a subscription as anyone with access to the certificate can manage the subscription.
-
-For more information about authentication and subscription management, see ["What's the difference between account-based authentication and certificate-based authentication"][authandsub].
-
-If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial][free-trial].
-
-###Use the log in method
-
-To log in using an organizational account, use the following command:
-
-	azure login [username] [password]
-
-> [WACOM.NOTE] If this is the first time you have logged in with these credentials, you will receive a prompt asking you to verify that you wish to cache an authentication token. This prompt will also occur if you have previously used the `azure logout` command described below. To bypass this prompt for automation scenarios, use the `-q` parameter with the `azure login` command.
-
-> [WACOM.NOTE] When you authenticate with an organizational account, the information for accessing your Azure subscription is stored in a `.azure` directory located in your `user` directory. Your `user` directory is protected by your operating system; however, it is recommended that you take additional steps to encrypt your `user` directory. You can do so in the following ways:
-
-To log out, use the following command:
-
-	azure logout [username]
-
-> [WACOM.NOTE] If the subscriptions associated with the account were only authenticated with Active Directory, logging out will delete the subscription information from the local profile. However, if the a publish settings file has also been imported for the subscriptions, logging out will only delete the Active Directory related information from the local profile.
-
-> [WACOM.NOTE] The following commands will not function correctly when authenticating using an account:
-> 
-> * `azure vm`
-> * `azure network`
-> * `azure mobile`
-> 
-> If you need to work with these commands, use a publish settings file to authenticate to Azure as described in the following section.
-
-###Use the publish settings file method
-
-To download the publish settings for your account, use the following command:
+アカウントの発行設定をダウンロードするには、次のコマンドを使用します。
 
 	azure account download
 
-This will open your default browser and prompt you to sign in to the Azure Management Portal. After signing in, a `.publishsettings` file will be downloaded. Make note of where this file is saved.
+既定のブラウザーが開き、Windows Azure の管理ポータルにサインインするよう促されます。サインインすると、.publishsettings ファイルがダウンロードされます。ファイルを保存した場所をメモしておきます。
 
-> [WACOM.NOTE] If your account is associated with multiple Azure Active Directory tenants, you may be prompted to select which Active Directory you wish to download a publish settings file for.
-> 
-> Once selected using the download page, or by visiting the Azure Management portal, the selected Active Directory becomes the default used by the portal and download page. Once a default has been established, you will see the text '__click here to return to the selection page__' at the top of the download page. Use the provided link to return to the selection page.
+<div class="dev-callout">
+<b>メモ</b>
+<p>アカウントが複数の Windows Azure Active Directory (AD) テナントに関連付けられている場合は、発行の設定ファイルのダウンロード対象となる AD を選択するよう促されることがあります。</p>
+<p>ダウンロード ページを使用するか、Windows Azure の管理ポータルにアクセスして選択を行った後、選択した AD は、ポータルおよびダウンロード ページによって使用される既定になります。既定を確定した後、"<b>click here to return to the selection page (選択ページに戻るにはここをクリックしてください)</b>" というテキストが、ダウンロード ページの上部に表示されます。選択されたページに戻るには、用意されているリンクを使用します。</p>
+</div>
 
-Next, import the `.publishsettings` file by running the following command, replacing `[path to .publishsettings file]` with the path to your `.publishsettings` file:
+その後、次のコマンドを実行して ".publishsettings" ファイルをインポートします。ここで、"{path to .publishsettings file}" には、".publishsettings" ファイルのパスを指定してください。
 
-	azure account import [path to .publishsettings file]
+	azure account import {path to .publishsettings file}
 
-> [WACOM.NOTE] When you import publish settings, the information for accessing your Azure subscription is stored in a `.azure` directory located in your `user` directory. Your `user` directory is protected by your operating system; however, it is recommended that you take additional steps to encrypt your `user` directory. You can do so in the following ways:
->
-> * On Windows, modify the directory properties or use BitLocker.
-> * On Mac, turn on FileVault for the directory.
-> * On Ubuntu, use the Encrypted Home directory feature. Other Linux distributions offer equivalent features.
+<div class="dev-callout">
+<b>メモ</b>
+<p>発行設定をインポートすると、Windows Azure サブスクリプションにアクセスするための情報が、<code>user</code> ディレクトリの <code>.azure</code> ディレクトリに格納されます。<code>user</code> ディレクトリはシステムによって保護されますが、追加の作業を行って <code>user</code> ディレクトリを暗号化することをお勧めします。そのためには、次の操作を行います。</p>
 
-After importing your publish settings, you should delete the `.publishsettings` file, as it is no longer required by the Command-Line Tools and presents a security risk as it can be used to gain access to your subscription.
+<ul>
+<li>Windows の場合、ディレクトリ プロパティを変更するか、または BitLocker を使用します。</li>
+<li>Mac の場合、ディレクトリに対して FileVault を有効にします。</li>
+<li>Ubuntu の場合、Encrypted Home ディレクトリ機能を使用します。その他の Linux ディストリビューションにも同等の機能が用意されています。</li>
+</ul>
 
-###Multiple subscriptions
+</div>
 
-If you have multiple Azure subscriptions, logging in will grant access to all subscriptions associated with your credentials. If using a publish settings file, the `.publishsettings` file will contain information for all subscriptions. With either method, one subscription will be selected as the default subscription used by the xplat-cli when performing operations. You can view the subscriptions, as well as which one is the default, but using the `azure account list` command. This command will return information similar to the following:
+発行設定をインポートしたら、".publishsettings" ファイルを削除します。このファイルはコマンド ライン ツールでは不要であり、第三者によってサブスクリプションヘのアクセスに使用されるセキュリティ上のリスクがあるためです。
+
+###複数のサブスクリプション
+
+複数の Windows Azure サブスクリプションがある場合、".publishsettings" ファイルには全サブスクリプションの情報が含まれます。"azure account import" コマンドを使用してファイルをインポートすると、操作の実行時に xplat-cli によって使用される既定のサブスクリプションとして 1 つのサブスクリプションが選択されます。"azure account list" コマンドを使用すると、すべてのサブスクリプションおよび既定のサブスクリプションを表示できます。このコマンドでは、次のような情報が返されます。
 
 	info:    Executing command account list
 	data:    Name              Id                                    Current
@@ -158,19 +121,22 @@ If you have multiple Azure subscriptions, logging in will grant access to all su
 	data:    Azure-sub-1       ####################################  true
 	data:    Azure-sub-2       ####################################  false
 
-In the above list, the **Current** column indicates the current default subscription as Azure-sub-1. To change the default subscription, use the `azure account select` command, and specify the subscription that you wish to be the default. For example:
+上のリストでは、**Current** 列に現在の既定のサブスクリプションとして Azure-sub-1 が表示されています。既定のサブスクリプションを変更するには、"azure account set" コマンドを使用して、既定にするサブスクリプションを指定します。たとえば、
 
-	azure account select Azure-sub-2
+	azure account set Azure-sub-2
 
-This will change the default subscription to Azure-sub-2. 
+この結果、既定のサブスクリプショは Azure-sub-2 に変更されます。
 
-> [WACOM.NOTE] Changing the default subscription takes effect immediately, and is a global change; new xplat-commands, whether ran from the same command-line instance or a different instance, will use the new default subscription.
+<div class="dev-callout">
+<b>メモ</b>
+<p>既定のサブスクリプションの変更はすぐに有効になり、グローバル設定です。新しい xplat-cli コマンドの実行には、同じコマンドライン インスタンスからでも別のインスタンスからでも、この新しい既定のサブスクリプションが使用されます。</p>
+</div>
 
-If you wish to use a non-default subscription with the xplat-cli, but don't want to change the current default, you can use the `--subscription` option and provide the name of the subscription you wish to use for the operation.
+xplat-cli で、既定のサブスクリプションを変更せずに既定ではないサブスクリプションを使用する場合は、"--subscription" オプションを使用して、その操作に使用するサブスクリプションの名前を指定します。
 
-<h2><a id="use"></a>How use the Azure Cross-Platform Command-Line Interface</h2>
+<h2><a id="use"></a>Windows Azure クロス プラットフォーム コマンド ライン インターフェイスを使用する方法</h2>
 
-The xplat-cli is accessed using the `azure` command. To see a list of commands available, use the `azure` command with no parameters. You should see help information similar to the following:
+xplat-cli には "azure" コマンドを使用してアクセスします。使用できるコマンドのリストを表示するには、"azure" コマンドをパラメーターなしで使用します。次のようなヘルプ情報が表示されます。
 
 	info:             _    _____   _ ___ ___
 	info:            /_\  |_  / | | | _ \ __|
@@ -181,7 +147,7 @@ The xplat-cli is accessed using the `azure` command. To see a list of commands a
 	info:
 	info:    Windows Azure: Microsoft's Cloud Platform
 	info:
-	info:    Tool version 0.8.0
+	info:    Tool version 0.7.0
 	help:
 	help:    Display help for a given command
 	help:      help [options] [command]
@@ -206,19 +172,19 @@ The xplat-cli is accessed using the `azure` command. To see a list of commands a
 	help:      -h, --help     output usage information
 	help:      -v, --version  output the application version
 
-The top level commands listed above contain commands for working with a specific area of Azure. For example, the `azure account` command contains commands that relate to your Azure subscription, such as the `download` and `import` settings used previously.
+ここに表示されているトップ レベルのコマンドには、Windows Azure の特定の領域で機能するコマンドが含まれています。たとえば、"azure account" コマンドには、以前使用した "download" や "import" 設定など、Windows Azure サブスクリプションに関連するコマンドが含まれています。
 
-Most commands are formatted as `azure <command> <operation> [parameters]` and perform an operation on a service or object such as your account configuration. Other commands provide sub-commands and follow the format `azure <command> <subcommand> <operation> [parameters]`. The following are example commands that work with your account configuration:
+ほとんどのコマンドは "azure <command> <operation> [parameters]" という形式で、サービスやアカウント構成などのオブジェクトに対する操作を行います。その他のコマンドにはサブコマンドがあり、"azure <command> <subcommand> <operation> [parameters]" という形式で指定します。次のコマンド例は、アカウント構成に対する操作です。
 
-* To view subscriptions that you have imported, use:
+* インポート済みのサブスクリプションを表示する。
 
 		azure account list
 
-* If you have imported subscriptions, use the following to set one as default:
+* 複数のサブスクリプションをインポート済みで、1 つのサブスクリプションを既定に設定する。
 
 		azure account set <subscription>
 
-The `--help` or `-h` parameter can be used to view help for specific commands. Alternately, The `azure help [command] [options]` format can also be used to return the same information. For example, the following commands all return the same information:
+"--help" または "-h" パラメーターを使用すると特定のコマンドに対するヘルプを表示できます。または、"azure help [command] [options]" の形式で指定しても、同じ情報が返されます。たとえば、次のコマンドでは、すべて同じ情報が返されます。
 
 	azure account set --help
 
@@ -226,89 +192,68 @@ The `--help` or `-h` parameter can be used to view help for specific commands. A
 
 	azure help account set
 
-When in doubt about the parameters needed by a command, refer to help using `--help`, `-h` or `azure help [command]`.
+コマンドに必要なパラメーターがわからない場合は "--help"、"-h"、または "azure help [command]" を使用してヘルプを参照してください。
 
-###Setting the configuration mode
+###サービスの操作
 
-The xplat-cli allows you to perform management operations on individual _resources_, which are user-managed entities such as a database server, database, or web site. This is the default mode of operation for the xplat-cli, and is referred to as **Azure Service Management**. However, when you have a complex solution that consists of multiple resources, it is useful to be able to manage the entire solution as a single unit.
+xplat-cli を使用すると、Windows Azure サービスを簡単に管理できます。この例では、xplat-cli を使用して Windows Azure の Web サイトを管理する方法を説明します。
 
-To support managing a group of resources as a single logical unit, or _resource group_, we have introduced a preview of the **Resource Manager** as a new way of managing Azure resources. 
-
->[WACOM.NOTE] The Resource Manager is currently in preview, and does not provide the same  level of management capabilities as Azure Service Management.
-
-To support the new Resource Manager, the xplat-cli allows you to switch between these management 'modes' using the `azure config mode` command.
-
-The xplat-cli defaults to Azure Service Management mode. To switch to Resource Manager mode, use the following to enable command:
-
-	azure config mode arm
-
-To change back to Azure service management mode, use the following command:
-
-	azure config mode asm 
-
->[WACOM.NOTE] The Resource Manager mode and Azure Service Management mode are mutually exclusive. That is, resources created in one mode cannot be managed from the other mode.
-
-For more information on working with the Resource Manager using the xplat-cli, see [Using the Azure Cross-Platform Command-Line Interface with the Resource Manager][xplatarm].
-
-###Working with services in Azure service management mode
-
-The xplat-cli allows you to easily manage Azure services. In this example, you will learn how to use the xplat-cli to manage an Azure Web Site.
-
-1. Use the following command to create a new Azure Web Site. Replace **mywebsite** with a unique name.
+1. 新しい Windows Azure の Web サイトを作成するには、次のコマンドを使用します。**mywebsite** は、一意の名前に置き換えてください。
 
 		azure site create mywebsite
 
-	You will be prompted to specify the region that the web site will be created in. Select a region that is geographically near you. After this command completes, the web site will be available at http://mywebsite.azurewebsites.net (replace **mywebsite** with the name you specified.)
+	Web サイトが作成される場所を指定するように求められます。地理的に近いリージョンを選択します。次のコマンドを実行すると、Web サイトが http://mywebsite.azurewebsites.net で使用できるようになります (**mywebsite** は、作成時に指定した名前に置き換えます)。
 
-	> [WACOM.NOTE] If you use Git for project source control, you can specify the `--git` parameter to create a Git repository on Azure for this web site. This will also initialize a Git repository in the directory from which the command was ran if one does not already exist. It will also create a Git remote named __azure__, which can be used to push deployments to the Azure Web Site using the `git push azure master` command.
+	<div class="dev-callout">
+	<b>メモ</b>
+	<p>プロジェクト ソース管理に Git を使用する場合、<code>--git</code> パラメーターを指定して、この Web サイト用の Git リポジトリを Windows Azure に作成します。Git リポジトリがないディレクトリからこのコマンドを実行した場合、Git リポジトリの再初期化も行われます。また、<b>azure</b> という名前の Git リモートも作成されます。これは、<code>git push azure master</code> コマンドを使用して Windows Azure の Web サイトに展開をプッシュするために使用できます。</p>
+	</div>
 
-	> [WACOM.NOTE] If you receive an error that 'site' is not an azure command, the xplat-cli is most likely in resource group mode. To change back to resource mode, use the `azure config mode asm` command.
-
-2. Use the following command to list web sites for your subscription:
+2. サブスクリプションのすべての Web サイトを表示するには、次のコマンドを使用します。
 
 		azure site list
 
-	The list should contain the site created in the previous step.
+	このリストには、前の手順で作成したサイトが含まれます。
 
-2. Use the following command to stop the web site. Replace **mywebsite** with the site name.
+2. Web サイトを停止するには次のコマンドを使用します。**mywebsite** は、サイト名に置き換えてください。
 
 		azure site stop mywebsite
 
-	After the command completes, you can refresh the browser to verify that the site has been stopped.
+	コマンドが完了したら、ブラウザーを更新するとサイトが停止したことを確認できます。
 
-3. Use the following command to start the web site. Replace **mywebsite** with the site name.
+3. Web サイトを開始するには次のコマンドを使用します。**mywebsite** は、サイト名に置き換えてください。
 
 		azure site start mywebsite
 
-	After the command completes, you can refresh the browser to verify that the site has been started.
+	コマンドが完了したら、ブラウザーを更新するとサイトが開始したことを確認できます。
 
-4. Use the following command to delete the web site. Replace **mywebsite** with the site name.
+4. Web サイトを削除するには次のコマンドを使用します。**mywebsite** は、サイト名に置き換えてください。
 
 		azure site delete mywebsite
 
-	After the command completes, use the `azure site list` command to verify that the web site no longer exists.
+	コマンドが完了したら、"azure site list" コマンドを使用して、Web サイトが削除されていることを確認します。
 
-<h2><a id="script"></a>How to script the Azure Cross-Platform Command-Line Interface</h2>
+<h2><a id="script"></a>Windows Azure クロス プラットフォーム コマンド ライン インターフェイスでスクリプトを使用する方法</h2>
 
-While you can use the xplat-cli to manually issue commands, you can also create complex automation workflows by leveraging the capabilities of your command-line interpreter and other command-line utilities available on your system. For example, the following command will stop all running Azure Web Sites:
+xplat-cli を使用して手動でコマンドを発行できますが、お使いのシステムで使用できるコマンド ライン インタープリターやその他のコマンド ライン ユーティリティの機能を利用して、複雑な自動化ワークフローを作成することもできます。たとえば、次のコマンドはすべての Windows Azure の Web サイトを停止します。
 
 	azure site list | grep 'Running' | awk '{system("azure site stop "$2)}'
 
-This example pipes a list of web sites to the `grep` command, which inspects each line for the string 'Running'. Any lines that match are then piped to the `awk` command, which calls `azure site stop` and uses the second column passed to it (the running site name) as the site name to stop.
+この例では、"grep" コマンドに Web サイトのリストをパイプして、文字列 "Running" について各行を調べています。一致した行は "awk" コマンドにパイプされます。"azure site stop" が呼び出され、渡された 2 番目の列 (実行中のサイト名) が、停止するサイト名に使用されます。
 
-While this demonstrates how you can chain commands together, you can also create more elaborate scripts using the scripting features provided by your command-line interpreter. Different command-line interpreters have different scripting features and syntax. Bash is probably the most widely used command-line interpreter for UNIX-based systems, including Linux and OS X.
+これは、コマンドの連結方法を示した例ですが、コマンド ライン インタープリターのスクリプト機能を使用して、さらに複雑なスクリプトを作成することもできます。コマンドライン インタープリターの種類ごとに、スクリプト機能や構文が異なります。Linux および OS X を含め、UNIX ベースのシステム用には Bash が最も広く使用されているコマンド ライン インタープリターでしょう。
 
-For information on scripting with Bash, see the [Advanced Bash-Scripting Guide][advanced-bash].
+Bash でのスクリプトの作成方法については、「[Advanced Bash-Scripting Guide][advanced-bash]」を参照してください。
 
-For more general information on scripting OS X or Linux-based systems, see [Shell script][script].
+OS X または Linux ベース システムのスクリプトの作成の全般的な情報については、「[Shell script][script]」を参照してください。
 
-For information on scripting Windows-based systems using batch files, see [Command-line reference A-Z][batch].
+バッチ ファイルを使用した Windows ベース システムのスクリプトについては、[「Command-line reference A-Z」][batch]を参照してください。
 
-### Understanding results
+### 結果について
 
-When creating scripts, you often need to capture the output of a command and either pass this to another command or perform an operation on the output such as checking for a specific value. The xplat-cli generates output to STDOUT and STDERR. Each line is prefixed by the strings `info:` for informational status messages, or `data:` for data returned about a service; however, you can instruct the xplat-cli to return more verbose information by using the `--verbose` or `-v` parameter. This will return additional information prefixed by the string `verbose:`.
+スクリプトの作成時、コマンド出力をキャプチャしたり、出力を別のコマンドに渡したり、出力に特別な操作 (特定の値の確認など) を実行したりすることがあります。xplat-cli は出力を STDOUT および STDERR に生成します。各行にはプレフィックスとして、情報ステータス メッセージの場合は文字列 "info:" が、サービスに関して返されるデータの場合は "data:" がそれぞれ付加されますが、"--verbose" または "-v" パラメーターを使用すると、詳細情報を取得できます。これらのパラメーターで返される追加の情報には、文字列 "verbose:" がプレフィックスとして付加されます。
 
-For example, the following output is returned from the `azure site list` command:
+たとえば、次の出力は "azure site list" コマンドで返された情報です。
 
 	info:    Executing command site list
 	+ Enumerating sites
@@ -317,7 +262,7 @@ For example, the following output is returned from the `azure site list` command
 	data:    myawesomesite  Running  Free  myawesomesite.azurewebsites.net
 	info:    site list command OK
 
-If the `--verbose` or `-v` parameter is specified, information similar to the following is returned:
+"--verbose" または "-v" パラメーターを指定すると、次のような情報が返されます。
 
 	info:    Executing command site list
 	verbose: Subscription ####################################
@@ -354,48 +299,50 @@ If the `--verbose` or `-v` parameter is specified, information similar to the fo
 	data:    myawesomesite  Running  Free  myawesomesite.azurewebsites.net
 	info:    site list command OK
 
-Note that the `verbose:` information appears to be JSON formatted data. You can use the `--json` parameter to return the information in JSON format if you are working with utilities that natively understand JSON, such as [jsawk](https://github.com/micha/jsawk) or [jq](http://stedolan.github.io/jq/). For example:
+"verbose:" の情報は、JSON 形式のデータです。jsawk や jq など、JSON をネイティブで認識するユーティリティを使用している場合は、"--json" パラメーターを使用して、[jsawk](https://github.com/micha/jsawk) または [jq](http://stedolan.github.io/jq/) のように、情報を JSON 形式で取得できます。たとえば、
 
 	azure site list --json | jsawk -n 'out(this.Name)' | xargs -L 1 azure site delete -q 
 
-The command above retrieves a list of web sites as JSON, then uses jsawk to retrieve the site names, and finally uses xargs to run a site delete command for each site, passing the site name as a parameter.
+このコマンドは Web サイトのリストを JSON として取得してから jsawk を使用してサイト名を取得し、最後に xargs を使用して、各サイトの削除コマンドを実行します。このサイト名はパラメーターとして渡されています。
 
->[WACOM.NOTE] The `--json` parameter blocks the generation of status or data information (strings prefixed by `info:` and `data:`). For example, if the `--json` parameter is used with the `azure site create`, no output is returned as this command does not return any data other than `info:`.
+<div class="dev-callout">
+<b>メモ</b>
+<p><code>--json</code> パラメーターは、ステータスの生成またはデータ情報をブロックします (プレフィックス <code>info:</code> および <code>data:</code> がある文字列)。たとえば、<code>--json</code> パラメーターを <code>azure site create</code> コマンドで使用した場合、返される出力はありません。このコマンドでは <code>info:</code> 以外のデータを返さないためです。</p>
+</div>
 
-###Working with errors
+###エラーの操作
 
-While the xplat-cli does log error information to STDERR, additional information on errors may also be logged to an **azure.err** file in the directory that the script was ran from. If information is logged to this file, the following will be written to STDOUT:
+xplat-cli では、エラー情報を STDERR にログ出力しますが、エラーに関する追加情報が、スクリプトを実行したディレクトリにある **azure.err** ファイルに記録されます。このファイルに情報が記録された場合、次のような文字列が STDOUT に書き込まれます。
 
 	info:    Error information has been recorded to azure.err
 
-###Exit status
+### 終了ステータス
 
-Some of the xplat-cli commands do not return a non-zero exit status if required parameters are missing. Instead, they will prompt for user input. For example, when using the `azure site create` command to create a new web site, if no site name or `--location` parameter are specified you will be prompted to supply these values.
+必須パラメーターが不足している場合、一部の xplat-cli コマンドは 0 以外の終了ステータスを返しません。代わりに、ユーザーの入力が要求されます。たとえば、Web サイトを新規作成する "azure site create" コマンドを使用したとき、名前または "--location" パラメーターがない場合は、これらの値を指定するように求められます。
 
-If you are writing a script that relies on the exit status, please verify that the xplat-cli commands you are using do not prompt for user input.
+終了ステータスに依存するスクリプトを作成する場合は、使用する xplat-cli コマンドがユーザー入力を求めないことを確認してください。
 
-<h2><a id="additional-resources"></a>Additional resources</h2>
+<h2><a id="additional-resources"></a>その他のリソース</h2>
 
-* For more information on the xplat-cli, to download source code, report problems, or contribute to the project, visit the [GitHub repository for the Azure Cross-Platform Command-Line Interface](https://github.com/WindowsAzure/azure-sdk-tools-xplat).
+* ソース コードのダウンロード、問題の報告、プロジェクトへの協力など、xplat-cli の詳細については、「[Windows Azure クロス プラットフォーム コマンド ライン インターフェイスの GitHub リポジトリ](https://github.com/WindowsAzure/azure-sdk-tools-xplat)」を参照してください。
 
-* If you encounter problems using the xplat-cli, or Azure, visit the [Azure Forums](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home).
+* xplat-cli または Windows Azure の使用で問題が発生した場合は、[Windows Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home)にアクセスしてください。
 
-* For more information on Azure, see [http://www.windowsazure.com/](http://www.windowsazure.com).
+* Windows Azure の詳細については、[http://www.windowsazure.com/](http://www.windowsazure.com) を参照してください。
 
 
 
 
 [mac-installer]: http://go.microsoft.com/fwlink/?LinkId=252249
 [windows-installer]: http://go.microsoft.com/fwlink/?LinkID=275464&clcid=0x409
-[authandsub]: http://msdn.microsoft.com/en-us/library/windowsazure/hh531793.aspx#BKMK_AccountVCert
 
-[Azure Web Site]: ../media/freetrial.png
-[select a preview feature]: ../media/antares-iaas-preview-02.png
-[select subscription]: ../media/antares-iaas-preview-03.png
-[free-trial]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A7171371E
+
+[Windows Azure の Web サイト]: ../media/freetrial.png
+[プレビュー機能を選択する]: ../media/antares-iaas-preview-02.png
+[サブスクリプションを選択する]: ../media/antares-iaas-preview-03.png
+[無料評価版]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A7171371E
 [advanced-bash]: http://tldp.org/LDP/abs/html/
-[script]: http://en.wikipedia.org/wiki/Shell_script
-[batch]: http://technet.microsoft.com/en-us/library/bb490890.aspx
-[xplatarm]: /en-us/documentation/articles/xplat-cli-azure-resource-manager/
-[portal]: https://manage.windowsazure.com
-[signuporg]: http://www.windowsazure.com/en-us/documentation/articles/sign-up-organization/
+[script (スクリプト)]: http://en.wikipedia.org/wiki/Shell_script
+[batch (バッチ)]: http://technet.microsoft.com/en-us/library/bb490890.aspx
+
+

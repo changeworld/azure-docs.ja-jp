@@ -1,66 +1,67 @@
-<properties authors="kathydav" editor="tysonn" manager="jeffreyg" />
+<properties writer="kathydav" editor="tysonn" manager="jeffreyg" />
 
-#How to Create a Custom Virtual Machine
+#カスタム仮想マシンの作成方法
 
-Creating a custom virtual machine allows you to choose options that aren't available if you use the **Quick Create** method. These options include connecting to a virtual network, to an existing cloud service, and to an availability set.
+カスタム仮想マシンの作成では、**[簡易作成]** の方法では利用できないオプションを選択できます。これらのオプションには、仮想ネットワークへの接続、既存のクラウド サービスへの接続、可用性セットへの接続などがあります。
 
-Each virtual machine is associated with a cloud service, either by itself or with other virtual machines in the same cloud service. A common reason for placing more than one virtual machine in the same cloud service is to provide load balancing for the application. If your application needs only one virtual machine, or you're creating the first virtual machine, you will create the cloud service when you create the virtual machine. Otherwise, you will add the new virtual machine to an existing cloud service.
+各仮想マシンは、その仮想マシンだけがクラウド サービスに関連付けられているか、同じクラウド サービス内にある他の仮想マシンと共にクラウド サービスに関連付けられています。同じクラウド サービス内に複数の仮想マシンを配置する一般的な理由として、アプリケーションで負荷分散を実現することが挙げられます。アプリケーションで必要となる仮想マシンが 1 つだけである場合や、最初の仮想マシンを作成する場合は、仮想マシンを作成するときに、クラウド サービスを作成します。それ以外の場合は、既存のクラウド サービスに新しい仮想マシンを追加します。
 
-**Important**: If you want your virtual machine to use a virtual network so you can connect to it directly by hostname or set up cross-premises connections, make sure you specify the virtual network when you create the virtual machine. A virtual machine can be configured to join a virtual network only when you create the virtual machine. For more information about virtual networks, see [Azure Virtual Network Overview](http://go.microsoft.com/fwlink/p/?LinkID=294063).
+**重要**: 仮想マシンが仮想ネットワークを使用して、ホスト名を使用した直接接続またはクロスプレミス接続の設定ができるようにするには、仮想マシンの作成時に必ず仮想ネットワークを指定する必要があります。仮想マシンが仮想ネットワークに接続するように設定できるのは、仮想マシンの作成時に限られています。仮想ネットワークの詳細については、「[仮想ネットワーク](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
 
-1. Sign in to the [Azure Management Portal](http://manage.windowsazure.com).
+1. [Windows Azure の管理ポータル](http://manage.windowsazure.com)にサインインします。
 
-2. On the command bar, click **New**.
+2. コマンド バーで、**[新規]** をクリックします。
 
-3. Click **Compute**, click **Virtual Machine**, and then click **From Gallery**.
+3. **[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
-4. From **Platform Images**, select a platform image that you want to use, and then click the arrow to continue.
+4. **[プラットフォーム イメージ]** から使用するプラットフォーム イメージを選択し、矢印をクリックして続行します。
 	
-5.  If multiple versions of the image are available, in **Version Release Date**, pick the version you want to use.
+5. 複数のバージョンのイメージが利用できる場合、**[バージョンのリリース日]** で、使用するバージョンを選択します。
 
-6. In **Virtual Machine Name**, type the name that you want to use for the virtual machine.
+6. **[仮想マシン名]** ボックスに、仮想マシンに使用する名前を入力します。
 
-7. In **Size**, select the size that you want to use for the virtual machine. The size that you select depends on the number of cores that are needed for your application.
+7. **[サイズ]** で、仮想マシンに使用するサイズを選択します。選択するサイズは、アプリケーションが必要とするコア数に応じて変わります。
 
-8. In **New User Name**, type a name for the administrative account that you want to use to manage the server. 
+8. **[新しいユーザー名]** に、サーバーの管理に使用する管理アカウントの名前を入力します。
 
-9. In **New Password**, type a strong password to use for the administrative account on the virtual machine. In **Confirm Password**, retype the same password.
+9. **[新しいパスワード]** に、仮想マシンの管理アカウントに使用する強力なパスワードを入力します。**[パスワードの確認]** に、同じパスワードを再度入力します。
 
-10. Click the arrow to continue.
+10. 矢印をクリックして続行します。
 
-11. In **Cloud Service**, do one of the following:
+11. **[クラウド サービス]** で、次のいずれかを実行します。
 	
-- If this is the first or only virtual machine in the cloud service, select **Create a New Cloud Service**. Then, in **Cloud Service DNS Name**, type a name that uses between 3 and 24 lowercase letters and numbers. This name becomes part of the URI that is used to contact the virtual machine through the cloud service.
-- If this virtual machine is being added to a cloud service, select it in the list.
+- 作成している仮想マシンがクラウド サービス内の最初の仮想マシンまたは唯一の仮想マシンである場合は、**[新しいクラウド サービスの作成]** を選択します。次に、**[クラウド サービス DNS 名]** に DNS 名を入力します。DNS 名の長さは 3 ～ 24 文字で、小文字と数字を使用できます。この名前は、クラウド サービスを介して仮想マシンにアクセスするときに使用する URI の一部になります。
+- この仮想マシンをクラウド サービスに追加する場合は、一覧からそのクラウド サービスを選択します。
 
-	**Note**: For more information about placing virtual machines in the same cloud service, see [How to connect virtual machines in a cloud service](http://www.windowsazure.com/en-us/manage/windows/how-to-guides/connect-to-a-cloud-service/).
+	**注**: 同じクラウド サービス内に仮想マシンを配置する方法の詳細については、「[How to connect virtual machines in a cloud service (クラウド サービス内の仮想マシンを相互に接続する方法)](http://www.windowsazure.com/ja-jp/manage/windows/how-to-guides/connect-to-a-cloud-service/)」を参照してください。
 
-12. In **Region/Affinity Group/Virtual Network**, select region, affinity group, or virtual network that you want to use for the virtual machine. For more information about affinity groups, see [About Affinity Groups for Virtual Network][].
+12. **[リージョン/アフィニティ グループ/仮想ネットワーク]** で、仮想マシンに使用するリージョン、アフィニティ グループ、または仮想ネットワークを選択します。アフィニティ グループの詳細については、[仮想ネットワークのアフィニティ グループに関するページ][]を参照してください。
 
-13. In **Storage Account**, select an existing storage account for the VHD file, or use an automatically generated storage account. Only one storage account per region is automatically created. All other virtual machines that you create with this setting are located in this storage account. You are limited to 20 storage accounts.
+13. **[ストレージ アカウント]** で、VHD ファイルに既存のストレージ アカウントを選択します。または自動的に作成されたストレージ アカウントを使用します。自動的に作成されるストレージ アカウントはリージョンあたり 1 つだけです。この設定で作成する他のすべての仮想マシンがこのストレージ アカウントに配置されます。ストレージ アカウントは 20 個に制限されています。
 
-14. If you want the virtual machine to belong to an availability set, in **Availability Set**, select **Create availability set** or add it to an existing availability set. 
+14. 仮想マシンを可用性セットに追加する場合、**[可用性セット]** で **[可用性セットの作成]** を選択するか、仮想マシンを既存の可用性セットに追加します。
 
-	**Note**: Virtual machine that are members of an availability set are deployed to different fault domains. Placing multiple virtual machines in an availability set helps ensure that your application is available during network failures, local disk hardware failures, and any planned downtime.
+	**注**: 仮想マシンが可用性セットのメンバーである場合、その仮想マシンは別の障害ドメインに展開されます。可用性セットに複数の仮想マシンがあると、ネットワークやローカル ハード ディスクで問題が発生した場合、または予定されたシステム停止時にもアプリケーションを使用できます。
 
-15.  Under **VM Agent**, decide whether to install the VM Agent. This agent provides the environment for you to install extensions that can help you interact with the virtual machine. For details, see [Using Extensions](http://go.microsoft.com/FWLink/p/?LinkID=390493).
-	  
+15. **[VM エージェント]** では、VM エージェントをインストールするかどうかを決定します。このエージェントには、仮想マシンの操作に役立つ拡張機能をインストールするための環境が用意されています。詳細については、[拡張機能の使用に関するページ](http://go.microsoft.com/FWLink/p/?LinkID=394093)を参照してください。
+	**重要**: VM エージェントは、仮想マシンを作成するときにのみインストールできます。
 
-16.  Under **Endpoints**, review the new endpoints that will be created to allow connections to the virtual machine, such through Remote Desktop or a Secure Shell (SSH) client. You also can add endpoints now, or create them later. For instructions on creating them later, see [How to Set Up Communication with a Virtual Machine](http://www.windowsazure.com/en-us/manage/linux/how-to-guides/setup-endpoints/). 
-
-
-17. Click the arrow to create the virtual machine.
+15. **[エンドポイント]** で、リモート デスクトップや Secure Shell (SSH) クライアントなどを使用した仮想マシンへの接続を許可するために作成される新しいエンドポイントを確認します。ここでエンドポイントを追加したり、後でエンドポイントを作成することもできます。後でエンドポイントを作成する手順については、「[How to Set Up Communication with a Virtual Machine (仮想マシンとの通信をセットアップする方法)](http://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/setup-endpoints/)」を参照してください。
 
 
-	![Custom virtual machine creation successful](./media/howto-custom-create-vm/VMSuccessWindows.png)
+16. 矢印をクリックして、仮想マシンを作成します。
 
 
-[Create a Virtual Machine into a Virtual Network]: /en-us/manage/services/networking/add-a-vm-to-a-virtual-network/
+	![カスタム仮想マシンの作成に成功](./media/howto-custom-create-vm/VMSuccessWindows.png)
 
-[About Affinity Groups for Virtual Network]: http://msdn.microsoft.com/en-us/library/windowsazure/
 
-[Create a new virtual machine]: ./media/howto-custom-create-vm/Create.png
+[Add a Virtual Machine to a Virtual Network (仮想ネットワークに仮想マシンを追加する)]: /ja-jp/manage/services/networking/add-a-vm-to-a-virtual-network/
 
-[Create a new custom virtual machine]: ./media/howto-custom-create-vm/CreateNew.png
+[About Affinity Groups for Virtual Network (仮想ネットワークのアフィニティ グループについて)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/
+
+[新しい仮想マシンの作成]: ./media/howto-custom-create-vm/Create.png
+
+[新しいカスタム仮想マシンの作成]: ./media/howto-custom-create-vm/CreateNew.png
+
 
 

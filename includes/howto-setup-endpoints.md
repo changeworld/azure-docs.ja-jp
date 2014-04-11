@@ -1,74 +1,75 @@
 <properties writer="kathydav" editor="tysonn" manager="jeffreyg" />
 
-#How to Set Up Endpoints to a Virtual Machine
+#仮想マシンに対してエンドポイントを設定する方法
 
-**Note**: If you want to connect to your virtual machines directly by hostname or set up cross-premises connections, see [Azure Virtual Network Overview](http://go.microsoft.com/fwlink/p/?LinkID=294063).
+**メモ**: 仮想マシンをホスト名によって直接接続する、またはクロスプレミス接続を設定する場合、「[仮想ネットワーク](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
 
-All virtual machines that you create in Azure can automatically communicate using a private network channel with other virtual machines in the same cloud service or virtual network. However, other resources on the Internet or other virtual networks require endpoints to handle the inbound network traffic to the virtual machine. 
+同じクラウド サービスまたは仮想ネットワーク内であれば、Windows Azure で作成したすべての仮想マシンが、プライベート ネットワーク チャネルを使用して他の仮想マシンと自動的に通信できます。ただし、インターネットまたは他の仮想ネットワークにあるリソースと通信するには、仮想マシンへの着信ネットワーク トラフィックを処理するエンドポイントが必要になります。
 
-When you create a virtual machine in the Management Portal, you can create these endpoints, such as for Remote Desktop, Windows PowerShell Remoting, or Secure Shell (SSH). After you create the virtual machine, you can create additional endpoints as needed. You also can manage incoming traffic to the public port by configuring rules for the network access control list (ACL) of the endpoint. This article shows you how to do both of those tasks.
+管理ポータルで仮想マシンを作成するとき、リモート デスクトップ、Windows PowerShell リモート処理、Secure Shell (SSH) などに関して、これらのエンドポイントを作成できます。仮想マシンを作成した後、必要に応じて、追加のエンドポイントを作成できます。また、エンドポイントのネットワーク アクセス制御リスト (ACL) 用にルールを構成し、パブリック ポートの着信トラフィックを管理することもできます。この記事では、これら両方の操作方法について説明します。
 
-Each endpoint has a public port and a private port:
+各エンドポイントには、パブリック ポートとプライベート ポートがあります。
 
-- The private port is used internally by the virtual machine to listen for traffic on that endpoint.
+- プライベート ポートは、エンドポイントでのトラフィックをリッスンするために、仮想マシンによって内部的に使用されます。
 
-- The public port is used by the Azure load balancer to communicate with the virtual machine from external resources. After you create an endpoint, you can use the network access control list (ACL) to define rules that help isolate and control the incoming traffic on the public port. For more information, see [About Network Access Control Lists](http://go.microsoft.com/fwlink/p/?LinkId=303816).
+- パブリック ポートは、外部リソースから仮想マシンと通信するときに、Windows Azure ロード バランサーによって使用されます。エンドポイントを作成した後、ネットワーク アクセス制御リスト (ACL) を使用して、パブリック ポートでの着信トラフィックの分類と制御に役立つルールを定義できます。詳細については、「[ネットワーク アクセス制御リスト (ACL) について](http://go.microsoft.com/fwlink/p/?LinkId=303816)」を参照してください。
 
-Default values for the ports and protocol for these endpoints are provided when the endpoints are created through the Management Portal. For all other endpoints, you specify the ports and protocol when you create the endpoint. Resources can connect to an endpoint by using either the TCP or UDP protocol. The TCP protocol includes HTTP and HTTPS communication.  
+これらのエンドポイントのポートとプロトコルの既定値は、管理ポータルを使用してエンドポイントを作成するときに提供されます。他のすべてのエンドポイントについては、エンドポイントの作成時にユーザーがポートとプロトコルを指定します。リソースをエンドポイントに接続するには、TCP または UDP プロトコルを使用します。TCP プロトコルには HTTP および HTTPS 通信が含まれます。
 
-**Important**: Firewall configuration is done automatically for ports associated with Remote Desktop and Secure Shell (SSH), and in most cases for Windows PowerShell Remoting. For ports specified for all other endpoints, no configuration is done automatically to the firewall in the guest operating system. When you create an endpoint, you'll need to configure the appropriate ports in the firewall to allow the traffic you intend to route through the endpoint.
+**重要**: ファイアウォールの構成は、リモート デスクトップと Secure Shell (SSH) に関連付けられているポートに対しては自動的に行われます。Windows PowerShell リモート処理についても、ほとんどの場合は自動的に行われます。他のすべてのエンドポイントに対して指定されているポートについては、ゲスト オペレーティング システムのファイアウォールは自動的には構成されません。エンドポイントを作成するときに、ファイアウォールに適切なポートを構成し、エンドポイントを経由してルーティングするトラフィックを許可する必要があります。
 
-###Create an Endpoint###
+###エンドポイントの作成###
 
-1. If you have not already done so, sign in to the [Azure Management Portal](http://manage.windowsazure.com).
+1 .まだサインインしていない場合は、[Windows Azure の管理ポータル](http://manage.windowsazure.com)にサインインします。
 
-2. Click **Virtual Machines**, and then select the virtual machine that you want to configure.
+2. **[仮想マシン]** をクリックし、構成する仮想マシンを選択します。
 
-3. Click **Endpoints**. The Endpoints page lists all endpoints for the virtual machine.
+3. **[エンドポイント]** をクリックします。[エンドポイント] ページに仮想マシンのすべてのエンドポイントが示されます。
 
-	![Endpoints](./media/howto-setup-endpoints/endpointswindows.png)
+	![エンドポイント](./media/howto-setup-endpoints/endpointswindows.png)
 
-4.	Click **Add**.
+4.	**[追加]** をクリックします。
 
-	The **Add Endpoint** dialog box appears. Choose whether to add the endpoint to a load-balanced set and then click the arrow to continue.
+	**[エンドポイントの追加]** ダイアログ ボックスが表示されます。負荷分散セットにエンドポイントを追加するかどうかを選択し、矢印をクリックして続行します。
 	
-6. In **Name**, type a name for the endpoint.
+6. **[名前]** ボックスに、エンドポイントの名前を入力します。
 
-7. In protocol, specify either **TCP** or **UDP**.
+7. [プロトコル] で **[TCP]** または **[UDP]** のどちらかを指定します。
 
-8. In **Public Port** and **Private Port**, type port numbers that you want to use. These port numbers can be different. The public port is the entry point for communication from outside of Azure and is used by the Azure load balancer. You can use the private port and firewall rules on the virtual machine to redirect traffic in a way that is appropriate for your application.
+8. **[パブリック ポート]** と **[プライベート ポート]** の各ボックスに、使用するポート番号を入力します。このポート番号は別の番号でもかまいません。パブリック ポートは、Windows Azure 外部からの通信の入り口であり、Windows Azure ロード バランサーによって使用されます。仮想マシンのプライベート ポートとファイアウォール ルールを使って、アプリケーションに適した方法でトラフィックをリダイレクトすることができます。
 
-9. Click **Create a load-balancing set** if this endpoint will be the first one in a load-balanced set. Then, on the **Configure the load-balanced set** page, specify a name, protocol, and probe details. Load-balanced sets require a probe so the health of the set can be monitored. For more information, see [Load Balancing Virtual Machines](http://www.windowsazure.com/en-us/manage/windows/common-tasks/how-to-load-balance-virtual-machines/).  
+9. エンドポイントが負荷分散セットの最初のエンドポイントである場合、**[負荷分散セットの作成]** をクリックします。次に、**[負荷分散セットの構成]** ページで、名前、プロトコル、プローブの詳細を指定します。負荷分散セットでは、セットの状態を監視できるようにプローブが必要になります。詳細については、「[Load Balancing Virtual Machines (仮想マシンの負荷分散)](http://www.windowsazure.com/ja-jp/manage/windows/common-tasks/how-to-load-balance-virtual-machines/)」を参照してください。
 
-10.	Click the check mark to create the endpoint.
+10.	チェック マークをクリックしてエンドポイントを作成します。
 
-	You will now see the endpoint listed on the **Endpoints** page.
+	これで、**[エンドポイント]** ページにエンドポイントが表示されます。
 
-	![Endpoint creation successful](./media/howto-setup-endpoints/endpointwindowsnew.png)
+	![エンドポイントの作成に成功](./media/howto-setup-endpoints/endpointwindowsnew.png)
 
-###Manage the ACL on an Endpoint###
+###エンドポイントの ACL の管理###
 
-Follow these steps to add, modify, or remove an ACL on an endpoint.
+エンドポイントの ACL を追加、変更、削除するには、次のステップに従います。
 
-**Note**: If the endpoint is part of a load-balanced set, any changes you make to the ACL on an endpoint are applied to all endpoints in the set.
+**メモ**: エンドポイントが負荷分散セットの一部である場合、エンドポイントの ACL に対して行った変更はそのセット内のすべてのエンドポイントに適用されます。
 
-1. If you have not already done so, sign in to the [Azure Management Portal](http://manage.windowsazure.com).
+1. まだサインインしていない場合は、[Windows Azure の管理ポータル](http://manage.windowsazure.com)にサインインします。
 
-2. Click **Virtual Machines**, and then select the virtual machine that you want to configure.
+2. **[仮想マシン]** をクリックし、構成する仮想マシンを選択します。
 
-3. Click **Endpoints**. The Endpoints page lists all endpoints for the virtual machine.
+3. **[エンドポイント]** をクリックします。[エンドポイント] ページに仮想マシンのすべてのエンドポイントが示されます。
 
-    ![ACL list](./media/howto-setup-endpoints/EndpointsShowsDefaultEndpointsForVM.PNG)
+    ![ACL の一覧](./media/howto-setup-endpoints/EndpointsShowsDefaultEndpointsForVM.PNG)
 
-4. Select the appropriate endpoint from the list. 
+4. 一覧から適切なエンドポイントを選択します。
 
-5. Click **Manage ACL**.
+5. **[ACL の管理]** をクリックします。
 
-    The **Specify ACL details** dialog box appears.
+    **[ACL の詳細の指定]** ダイアログ ボックスが表示されます。
 
-    ![Specify ACL details](./media/howto-setup-endpoints/EndpointACLdetails.PNG)
+    ![ACL の詳細の指定](./media/howto-setup-endpoints/EndpointACLdetails.PNG)
 
-6. Use rows in the list to add, delete, or edit rules for an ACL. The Remote Subnet value corresponds to the IP address range that you can either allow or deny as a rule. The rules are evaluated in order starting with the first rule and ending with the last rule. This means that rules should be listed from least restrictive to most restrictive. For examples and more information, see [About Network Access Control Lists](http://go.microsoft.com/fwlink/p/?LinkId=303816).
+6. 一覧の行を使用して、ACL のルールの追加、削除、編集を行います。[リモート サブネット] の値は、ルールで許可または拒否できる IP アドレス範囲に対応します。ルールの評価は、一覧の最初に示されているルールから開始され、最後に示されているルールで終了します。つまり、一覧には、制限の最も少ないルールから制限の最も多いルールの順に設定する必要があります。例と詳細については、「[ネットワーク アクセス制御リスト (ACL) について](http://go.microsoft.com/fwlink/p/?LinkId=303816)」を参照してください。
+
 
 
 

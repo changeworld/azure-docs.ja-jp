@@ -1,85 +1,86 @@
 
-1. To escalate privileges, run:
+1. 権限をエスカレートするには、次のように実行します。
 
 		sudo -s
 	
-	Enter your password.
+	パスワードを入力します。
 
-2. Run the following command to install MySQL Community Server edition:
+2. 次のコマンドを実行し、MySQL Community Server エディションをインストールします。
 
 		# zypper install mysql-community-server
 
-	Wait while MySQL downloads and installs.
-3. To set MySQL to start when the system boots, execute the following command:
+	MySQL がダウンロードおよびインストールされるまで待ちます。
+3. システムの起動時に MySQL が開始するように設定するには、次のコマンドを実行します。
 
 		# insserv mysql
-4. Now you can manually start the MySQL daemon (mysqld) with the following command:
+4. これで、次のコマンドで MySQL デーモン (mysqld) を手動で開始できます。
 
 		# rcmysql start
 
-	To check the status of the MySQL daemon, run:
+	MySQL デーモンの状態を確認するには、次を実行します。
 
 		# rcmysql status
 
-	If you want to stop the MySQL daemon, run:
+	MySQL デーモンを停止する必要がある場合は、次を実行します。
 
 		# rcmysql stop
 
-5. Warning! After installation, the MySQL root password is empty by default.  It's recommended that you run **mysql\_secure\_installation**, a script that helps secure MySQL. When running **mysql\_secure\_installation**, you will be prompted to change the MySQL root password, remove anonymous user accounts, disable remote root logins, remove test databases, and reload the privileges table. It is recommended that you answer yes to all of these options and change the root password. Run the following command to execute the script:
+5. 警告! インストール後、既定では MySQL ルート パスワードは空になっています。そこで、MySQL の保護に役立つスクリプト、**mysql\_secure\_installation** を実行することをお勧めします。**mysql\_secure\_installation** を実行すると、MySQL ルート パスワードの変更、匿名のユーザー アカウントの削除、リモート ルート ログインの無効化、テスト データベースの削除、および権限テーブルの再読み込みを行うように求められます。これらのオプションすべてに対して "はい” と答えて、ルート パスワードを変更することをお勧めします。次のコマンドを実行して、スクリプトを実行します。
 
 		$ mysql_secure_installation
 
-6. After you run, you can login to MySQL:
+6. 実行後、MySQL にログインできます。
 
 		$ mysql -u root -p
 
-	Enter the MySQL root password (which you changed in the previous step) and you'll be presented with a prompt where you can issue SQL statements to interact with the database.
+	先ほど変更した MySQL ルート パスワードを入力すると、データベースを操作するための SQL ステートメントを実行できるプロンプトが表示されます。
 
-7. To create a new MySQL user, run the following at the **mysql>** prompt:
+7. 新しい MySQL ユーザーを作成するには、**mysql>** プロンプトで次のコマンドを実行します。
 
 		mysql> CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 
-	Note, the semi-colons (;) at the end of the lines are crucial for ending the commands.
+	行末のセミコロン (;) は、コマンドの終わりを示すために必要です。
 
-8. To create a database and grant the `mysqluser` user permissions on it, issue the following commands:
+8. データベースを作成し、このデータベースに対するアクセス許可を "mysqluser" ユーザーに付与するには、次のコマンドを実行します。
 
 		mysql> CREATE DATABASE testdatabase;
 		mysql> GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 
-	Note that database user names and passwords are only used by scripts connecting to the database.  Database user account names do not necessarily represent actual user accounts on the system.
+	データベースのユーザー名とパスワードは、データベースに接続するスクリプトのみが使用します。データベース ユーザー アカウントは、システム上の実際のユーザー アカウントを表しているとは限りません。
 
-9. To login from another computer, execute the following:
+9. 別のコンピューターにログインするには、次のコマンドを実行します。
 
 		mysql> GRANT ALL ON testdatabase.* TO 'mysqluser'@'<ip-address>' IDENTIFIED BY 'password';
 
-	where `ip-address` is the IP address of the computer from which you will connect to MySQL.
+	"ip-address" は、MySQL への接続元コンピューターの IP アドレスです。
 	
-10. To exit the MySQL database administration utility, issue the following command:
+10. MySQL データベース管理ユーティリティを終了するには、次のコマンドを実行します。
 
 		quit
 
-11. Once MySQL is installed you must configure an endpoint so that MySQL can be accessed remotely. Log in to the [Azure Management Portal][AzurePreviewPortal]. In the Azure portal, click **Virtual Machines**, then click the name of your new VM, then click **Endpoints**.
+11. MySQL をインストールしたら、MySQL にリモートでアクセスできるように、エンドポイントを構成する必要があります。[Windows Azure の管理ポータル][AzurePreviewPortal]にログインします。Windows Azure ポータルで、**[仮想マシン]**、新しい VM の名前、**[エンドポイント]** の順にクリックします。
 
-	![Endpoints][Image7]
+	![エンドポイント][Image7]
 
-12. Click **Add Endpoint** at the bottom of the page.
-	![Endpoints][Image8]
+12. ページの下部にある **[エンドポイントの追加]** をクリックします。
+	![エンドポイント][Image8]
 
-13. Add an endpoint with name "MySQL", protocol **TCP**, and both **Public** and **Private** ports set to "3306". This will allow MySQL to be accessed remotely.
-	![Endpoints][Image9]
+13. エンドポイントを追加します。名前に「MySQL」、プロトコルに **[TCP]** を指定し、**[パブリック ポート]** と **[プライベート ポート]** の両方に「3306」を指定します。これにより、MySQL へのリモート アクセスが可能になります。
+	![エンドポイント][Image9]
 
-14. To remotely connect to MySQL running on your OpenSUSE virtual machine in Azure, run the following command on your local computer:
+14. Windows Azure の OpenSUSE 仮想マシンで実行されている MySQL にリモート接続するには、ローカル コンピューターで次のコマンドを実行します。
 
 		mysql -u mysqluser -p -h <yourservicename>.cloudapp.net
 
-	For example, using the virual machine we created in this tutorial, the command would be:
+	たとえば、このチュートリアルで作成した仮想マシンを使用する場合、コマンドは次のようになります。
 
 		mysql -u mysqluser -p -h testlinuxvm.cloudapp.net
 
-15. You've successfully configured MySQL, created a database, and a new user.  For more information on MySQL, see the [MySQL Documentation][MySQLDocs].	
+15. これで MySQL を適切に構成し、データベースと新しいユーザーを作成できました。MySQL の詳細については、[MySQL のドキュメント][MySQLDocs]を参照してください。	
 
 [MySQLDocs]: http://dev.mysql.com/doc/
 [AzurePreviewPortal]: http://manage.windowsazure.com
 [Image7]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpoint.png
 [Image8]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpoint2.png
 [Image9]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpointMySQL.png
+

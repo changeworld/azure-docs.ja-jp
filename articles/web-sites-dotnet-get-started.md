@@ -1,241 +1,210 @@
-<properties linkid="develop-net-tutorials-get-started-vs2013" urlDisplayName="Get started with Azure for ASP.NET" pageTitle="Get started with Azure for ASP.NET" metaKeywords="" description="This tutorial shows you how to create an ASP.NET web project in Visual Studio 2013 and deploy it to an Azure Web Site. In less than 15 minutes you'll have an app up and running in the cloud." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Get started with Azure and ASP.NET" authors="tdykstra"  solutions="" manager="wpickett" editor="mollybos"  />
+<properties linkid="develop-net-tutorials-get-started-vs2013" urlDisplayName="Windows Azure を使ってみる" pageTitle="Windows Azure for .NET を使ってみる" metaKeywords="" description="このチュートリアルでは、Visual Studio 2013 を使用して ASP.NET Web サイトを Windows Azure に展開する方法を紹介します。15 分未満でアプリケーションをクラウドで稼働状態にすることができます。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Windows Azure と ASP.NET を使ってみる" authors=""  solutions="" writer="tdykstra" manager="wpickett" editor="mollybos"  />
 
 
-# Get started with Azure and ASP.NET
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/develop/net/tutorials/get-started/" title="Visual Studio 2013" class="current">Visual Studio 2013</a><a href="/en-us/develop/net/tutorials/get-started-vs2012/" title="Visual Studio 2012">Visual Studio 2012</a></div>
 
-This tutorial shows how to create an ASP.NET web application and deploy it to an Azure Web Site by using Visual Studio 2013 or Visual Studio 2013 for Web Express. The tutorial assumes that you have no prior experience using Azure or ASP.NET. On completing the tutorial, you'll have a simple web application up and running in the cloud.
 
-You can open an Azure account for free, and if you don't already have Visual Studio 2013, the SDK automatically installs Visual Studio 2013 for Web Express. So you can start developing for Azure entirely for free.
+# Windows Azure と ASP.NET を使ってみる
+
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/develop/net/tutorials/get-started/" title="Visual Studio 2013" class="current">Visual Studio 2013</a><a href="/ja-jp/develop/net/tutorials/get-started-vs2012/" title="Visual Studio 2012">Visual Studio 2012</a></div>
+
+このチュートリアルでは、Visual Studio 2013 または Visual Studio 2013 for Web Express の Web の発行ウィザードを使用して、ASP.NET Web アプリケーションを Windows Azure の Web サイトに展開する方法を示します。(Visual Studio 2012 を使用する場合は、[このチュートリアルの前のバージョン](/ja-jp/develop/net/tutorials/get-started-vs2012/) を参照してください。)
+
+Windows Azure アカウントは無料で開くことができます。また、まだ Visual Studio 2013 を持っていない場合は、SDK によって Visual Studio 2013 for Web Express が自動的にインストールされます。これで、Windows Azure 向けの開発を完全に無料で始めることができます。
+
+このチュートリアルは、Windows Azure を使用した経験がない読者を対象に作成されています。このチュートリアルでは、クラウドで動作する単純な Web アプリケーションを作成します。
  
-You'll learn:
+学習内容: 
 
-* How to enable your machine for Azure development by installing the Azure SDK.
-* How to create a Visual Studio ASP.NET web project and deploy it to an Azure Web Site.
-* How to make a change to the project and redeploy.
+* Windows Azure SDK をインストールして、Windows Azure 向け開発用にコンピューターを準備する方法
+* Visual Studio の ASP.NET MVC 5 プロジェクトを作成して Windows Azure の Web サイトに発行する方法
 
-The following illustration shows the completed application:
+次の図に、完成したアプリケーションを示します。
 
-![Web site home page](./media/web-sites-dotnet-get-started-vs2013/deployedandazure.png)
+![Web サイトのホーム ページ](./media/web-sites-dotnet-get-started-vs2013/GS13homepage.png)
 
->[WACOM.NOTE] To complete this tutorial, you need an Azure account. If you don't have an account, you can <a href="/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">activate your MSDN subscriber benefits</a> or <a href="/en-us/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">sign up for a free trial</a>.
+<div class="dev-callout"><strong>注</strong><p>このチュートリアルを完了するには、Windows Azure アカウントが必要です。アカウントを持っていない場合は、<a href="/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">MSDN サブスクライバーの特典を有効にする</a>か、<a href="/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">無料評価版にサインアップ</a>してください。</p></div>
  
-### Tutorial segments
+### チュートリアル セグメント
 
-* [Set up the development environment](#set-up-the-development-environment)
-* [Create an ASP.NET web project in Visual Studio](#create-an-asp.net-web-project)
-* [Deploy the application to Azure](#deploy-the-application-to-azure)
-* [Make a change and redeploy](#make-a-change-and-redeploy)
-* [Next steps](#next-steps)
+1. [開発環境を設定する](#setupdevenv)
+3. [ASP.NET MVC 5 アプリケーションを作成する](#createapp)
+4. [Windows Azure にアプリケーションを展開する](#deploytowindowsazure)
+5. [次のステップ](#nextsteps)
 
 [WACOM.INCLUDE [install-sdk-2013-only](../includes/install-sdk-2013-only.md)]
 
 
-## Create an ASP.NET web application
+<h2><a name="createapp"></a><span class="short-header">アプリケーションの作成</span>ASP.NET MVC 5 アプリケーションを作成する</h2>
 
-Your first step is to create a web application project. Visual Studio will automatically create the Azure Web Site that you'll deploy your project to later. 
+最初の手順では、Windows Azure に発行する Visual Studio Web アプリケーション プロジェクトを作成します。
 
-1. Open Visual Studio 2013 or Visual Studio 2013 Express for Web.
+### プロジェクトを作成する
 
-2. From the **File** menu, click **New Project**.
+1. Visual Studio 2013 または Visual Studio 2013 Express for Web を開きます。
 
-	![New Project in File menu](./media/web-sites-dotnet-get-started-vs2013/gs13newproj.png)
+2. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
 
-3. In the **New Project** dialog box, expand **C#** or **Visual Basic** and select **Web** under **Installed Templates**, and then select **ASP.NET Web Application**.
+	![[ファイル] メニューの [新しいプロジェクト]](./media/web-sites-dotnet-get-started-vs2013/gs13newproj.png)
 
-3. Make sure that **.NET Framework 4.5** is selected as the target framework.
+3. **[新しいプロジェクト]** ダイアログ ボックスで、**[インストールされているテンプレート]** の下にある **C#** を展開して **[Web]** を選択し、**[ASP.NET Web アプリケーション]** を選択します。
 
-4. Name the application **MyExample** and click **OK**.
+3. ターゲット フレームワークとして **.NET Framework 4.5** が選択されていることを確認します。
 
-	![New Project dialog box](./media/web-sites-dotnet-get-started-vs2013/GS13newprojdb.png)
+4. アプリケーションに「**MyExample**」という名前を付けて、**[OK]** をクリックします。
 
-5. In the **New ASP.NET Project** dialog box, select the **MVC** or the **Web Forms** template, and then click **Change Authentication**.
+	![[新しいプロジェクト] ダイアログ ボックス](./media/web-sites-dotnet-get-started-vs2013/GS13newprojdb.png)
 
-	[MVC and Web Forms](http://www.asp.net/get-started/websites) are ASP.NET frameworks for creating web sites. If you have no preference and plan to do other Azure tutorials, MVC is a good choice because there are more Azure tutorials that use MVC.
+5. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[MVC]** テンプレートを選択し、**[認証の変更]** をクリックします。
 
-	![New ASP.NET Project dialog box](./media/web-sites-dotnet-get-started-vs2013/GS13changeauth.png)
+	![[新しい ASP.NET プロジェクト] ダイアログ ボックス](./media/web-sites-dotnet-get-started-vs2013/GS13changeauth.png)
 
-6. In the **Change Authentication** dialog box, click **No Authentication**, and then click **OK**.
+6. **[認証の変更]** ダイアログ ボックスで、**[認証なし]** をクリックし、**[OK]** をクリックします。
 
-	![No Authentication](./media/web-sites-dotnet-get-started-vs2013/GS13noauth.png)
+	![[認証なし]](./media/web-sites-dotnet-get-started-vs2013/GS13noauth.png)
 
-	The sample application you're creating won't have features that require users to log in. The [Next Steps](#next-steps) section at the end of the tutorial links to a tutorial that implements authentication and authorization.
+	作成中のサンプル アプリケーションには、ユーザーのログインが必要な機能は実装されません。認証と承認の機能を実装する方法については、このチュートリアルの最後にある「[次のステップ](#nextsteps)」セクションを参照してください。
 
-5. Under **Azure** in the dialog box, leave the check box selected and the drop-down box set to **Web Site**. 
+5. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで **[OK]** をクリックします。
 
-	The check box caption might be **Host in the cloud** or **Create remote resources**. In either case the effect is the same. 
+	![[新しい ASP.NET プロジェクト] ダイアログ ボックス](./media/web-sites-dotnet-get-started-vs2013/GS13newaspnetprojdb.png)
 
-	These settings specify that Visual Studio will create an Azure Web Site for your web project. You'll deploy the web project to the newly created web site. (As an alternative you can change the drop-down box selection in order to have Visual Studio create an Azure Virtual Machine running IIS, but this tutorial doesn't detail the steps for that option.)
+### ローカルでアプリケーションを実行する
 
-5. In the **New ASP.NET Project** dialog box, click **OK**.
+1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
 
-	![New ASP.NET Project dialog box](./media/web-sites-dotnet-get-started-vs2013/GS13newaspnetprojdb.png)
+	アプリケーションのホーム ページが既定のブラウザーに表示されます。
 
-	The screenshot shows the MVC template selected; if you chose Web Forms, **Web Forms** is selected. 
+	![ローカルで動作中の Web サイト](./media/web-sites-dotnet-get-started-vs2013/GS13homepage.png)
 
-5. If you haven't already signed in to Azure, Visual Studio prompts you to do so. Click **Sign In**.
+	URL `http://localhost` は、ローカル コンピューターで実行中であることを示しています。既定では、IIS Express で実行されます。これは、Web アプリケーションの開発での使用を想定した、IIS の軽量バージョンです。
 
-	![Sign in to Azure](./media/web-sites-dotnet-get-started-vs2013/signin.png)
+	これで、Windows Azure に展開できる単純なアプリケーションを作成するために必要な操作が完了しました。
 
-6. Enter the ID and password of the account that you use to manage your Azure subscription.
 
-	![Sign in to Azure](./media/web-sites-dotnet-get-started-vs2013/signindb.png)
 
-	When you're signed in, the **Configure Azure Site Settings** dialog box asks you what resources you want to create.
 
-	![Signed in to Azure](./media/web-sites-dotnet-get-started-vs2013/configuresitesettings.png)
+<h2><a name="deploytowindowsazure"></a><span class="short-header">アプリケーションの展開</span>Windows Azure にアプリケーションを展開する</h2>
 
-3. Visual Studio provides a default **Site name**, which Azure will use as the prefix for your application's URL. If you prefer, enter a different site name.
+1. ブラウザーを閉じます。
 
-	The complete URL will consist of what you enter here plus the domain that you see next to the text box. For example, if the site name is `MyExample6442`, the URL will be `MyExample6442.azurewebsites.net`. If someone else has already used the URL you entered, you'll see a red exclamation mark to the right instead of a green check mark, and you'll need to enter a different value.
+5. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
 
-4. In the **Region** drop-down list, choose the location that is closest to you.
+	![プロジェクトのコンテキスト メニューの [発行]](./media/web-sites-dotnet-get-started-vs2013/GS13publish.png)
 
-	This setting specifies which Azure data center your web site will run in. 
+	**Web の発行**ウィザードが開きます。
 
-5. Leave the database fields unchanged.
+6. **Web の発行**ウィザードの **[プロファイル]** タブで、**[インポート]** をクリックします。
 
-	For this tutorial you aren't using a database. The [Next Steps](#next-steps) section at the end of the tutorial links to a tutorial that shows you how to use a database.
+	![発行設定のインポート](./media/web-sites-dotnet-get-started-vs2013/ImportPublishSettings.png)
 
-6. Click **OK**.
+	**[発行プロファイルのインポート]** ダイアログ ボックスが表示されます。
 
-	In a few seconds, Visual Studio creates the web project in the folder you specified, and it creates the web site in the Azure region you specified.  
+5. 次のいずれかの方法で、Visual Studio から Windows Azure アカウントへの接続を有効にします。
 
-	The **Solution Explorer** window shows the files and folders in the new project. (The screenshot is for a Web Forms project; an MVC project has different folders and files.)
+	***[サインイン]** をクリックし、Windows Azure アカウントの資格情報を入力します。
 
-	![Solution Explorer](./media/web-sites-dotnet-get-started-vs2013/solutionexplorer.png)
+		これはすばやく簡単に実行できる方法ですが、この方法を使用した場合、**[サーバー エクスプローラー]** ウィンドウで Windows Azure SQL データベースやモバイル サービスを確認することができません。
 
-	The **Web Publish Activity** window shows that the site has been created.
+	* アカウントへのアクセスを可能にする管理証明書をインストールするには、**[サブスクリプションの管理]** をクリックします。
 
-	![Web site created](./media/web-sites-dotnet-get-started-vs2013/GS13sitecreated1.png)
+		**[Windows Azure サブスクリプションの管理]** ダイアログ ボックスで、**[証明書]** タブをクリックし、**[インポート]** をクリックします。操作手順に従い、Windows Azure アカウント用のサブスクリプション ファイル (*.publishsettings* ファイル) をダウンロードしてインポートします。
 
+		> [WACOM.NOTE] サブスクリプション ファイルをソース コード ディレクトリの外にあるフォルダー (Downloads フォルダーなど) にダウンロードし、インポートが完了したらそのファイルを削除します。これは、悪意のあるユーザーがサブスクリプション ファイルへのアクセス許可を取得すると、Windows Azure サービスを編集、作成、削除できるためです。
 
-## Deploy the application to Azure
+		詳細については、「[アカウント、サブスクリプション、管理者ロールを管理する](http://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert)」を参照してください。
 
-7. In the **Web Publish Activity** window, click **Publish MyExample to this site now**.
+2. **[発行の設定のインポート]** ダイアログ ボックスで、**[Windows Azure の Web サイトからインポート]**、**[新規]** の順にクリックします。
 
-	![Web site created](./media/web-sites-dotnet-get-started-vs2013/GS13sitecreated.png)
+	![新しいサイトの追加](./media/web-sites-dotnet-get-started-vs2013/GS13NewSite.png)
 
-	In a few seconds the **Publish Web** wizard appears. The wizard creates a new *publish profile* that contains settings such as the web site URL that Visual Studio needs in order to deploy your project to Azure. The profile is automatically saved so that later when you make changes to the project you can easily redeploy the project to the same site.
+3. **[Windows Azure でのサイトの作成]** ダイアログ ボックスで、アプリケーションの一意の URL として使用する文字列を **[サイト名]** ボックスに入力します。
 
-8. In the **Connection** tab of the **Publish Web** wizard, click **Validate Connection** to make sure that Visual Studio can connect to Azure in order to deploy the web project.
+	ここに入力した文字列と、このテキスト ボックスの右側に表示されている文字列を組み合わせたものが実際の URL になります。入力した URL が既に使用されている場合は、右側に緑色のチェック マークではなく赤色の感嘆符が表示されます。そのため、別の値を入力する必要があります。
 
-	![Validate connection](./media/web-sites-dotnet-get-started-vs2013/GS13ValidateConnection.png)
+4. **[場所]** ドロップダウン リストで、現在の所在地に最も近い場所を選択します。
 
-	When the connection has been validated, a green check mark is shown next to the **Validate Connection** button. 
+	この設定によって、使用する Web サイトが実行されるデータ センターが指定されます。
 
-9. Click **Next**.
+5. データベース フィールドは変更せずそのままにします。
 
-	![Successfully validated connection](./media/web-sites-dotnet-get-started-vs2013/GS13ValidateConnectionSuccess.png)
+	このチュートリアルでは、データベースは使用しません。このチュートリアルの最後にある「[次のステップ](#nextsteps)」セクションには、データベースの使用方法を示したチュートリアルへのリンクがあります。
 
-10. In the **Settings** tab, click **Next**.
+6. **[作成]** をクリックします。<br/>
 
-	![Settings tab](./media/web-sites-dotnet-get-started-vs2013/GS13SettingsTab.png)
+	![新しい Web サイトの作成](./media/web-sites-dotnet-get-started-vs2013/GS13createsite.png)
 
-	You can accept the default settings on this tab.  You're deploying a Release build and you don't need to delete files at the destination server, precompile the application, or exclude files in the App_Data folder.   The [Next Steps](#next-steps) section at the end of the tutorial links to a tutorial that deploys a Debug build and shows how to run Visual Studio in debug mode remotely.
+	数秒で Web サイトが作成されます。**[発行の設定のインポート]** ダイアログ ボックスに戻ったら、ドロップダウン リストで新しいサイトが選択されています。
 
-11. In the **Preview** tab, click **Start Preview**.
+6. **[OK]** をクリックします。
 
-	![StartPreview button in the Preview tab](./media/web-sites-dotnet-get-started-vs2013/GS13Preview.png)
+	![作成された Web サイト](./media/web-sites-dotnet-get-started-vs2013/GS13sitecreated.png)
 
-	The tab displays a list of the files that will be copied to the server. Displaying the preview isn't required to publish the application but is a useful function to be aware of.
+8. **Web の発行**ウィザードの **[接続]** タブで、**[接続の検証]** をクリックし、設定が正しいことを確認します。
 
-12. Click **Publish**.
+	![接続の検証](./media/web-sites-dotnet-get-started-vs2013/GS13ValidateConnection.png)
 
-	![StartPreview file output](./media/web-sites-dotnet-get-started-vs2013/GS13previewoutput.png)
+	接続が検証されると、**[接続の検証]** ボタンの横に緑色のチェック マークが表示されます。
 
-	Visual Studio begins the process of copying the files to the Azure server.
+9. **[次へ]** をクリックします。
 
-	The **Output** and **Web Publish Activity** windows show what deployment actions were taken and report successful completion of the deployment.
+	![検証が成功した接続](./media/web-sites-dotnet-get-started-vs2013/GS13ValidateConnectionSuccess.png)
 
-	![Output window reporting successful deployment](./media/web-sites-dotnet-get-started-vs2013/PublishOutput.png)
+10. **[設定]** タブの **[次へ]** をクリックします。
 
-	Upon successful deployment, the default browser automatically opens to the URL of the deployed web site, and
-	the application that you created is now running in the cloud. The URL in the browser address bar shows that the site is being loaded from the Internet.
+	![[設定] タブ](./media/web-sites-dotnet-get-started-vs2013/GS13SettingsTab.png)
 
-	![Web site running in Azure](./media/web-sites-dotnet-get-started-vs2013/GS13deployedsite.png)
+	このタブでは、既定の設定をそのまま使用できます。リリース ビルド構成を展開しているため、展開先サーバーでファイルを削除したり、アプリケーションをプリコンパイルしたり、App_Data フォルダーでファイルを除外したりする必要はありません。
 
-13. Close the browser.
+11. **[プレビュー]** タブで、**[プレビューの開始]** をクリックします。
 
-## Make a change and redeploy
+	![[プレビュー] タブの [プレビューの開始] ボタン](./media/web-sites-dotnet-get-started-vs2013/GS13Preview.png)
 
-In this optional section of the tutorial, you change the web project, run the project locally on your development computer to verify the change, and then deploy the change to Azure.
+	このタブに、サーバーにコピーされるファイルの一覧が表示されます。プレビューの表示は、アプリケーションの発行に必要ではありませんが、知っておくと便利な機能です。
 
-2. If you created an MVC project, open the *Views/Home/Index.cshtml* or *.vbhtml* file in **Solution Explorer**, change the **h1** heading from "ASP.NET" to "ASP.NET and Azure", and save the file. 
+12. **[発行]** をクリックします。
 
-	![MVC index.cshtml](./media/web-sites-dotnet-get-started-vs2013/index.png)
+	![StartPreview ファイルの出力](./media/web-sites-dotnet-get-started-vs2013/GS13previewoutput.png)
 
-	![MVC h1 change](./media/web-sites-dotnet-get-started-vs2013/mvcandazure.png)
+	Windows Azure サーバーにファイルをコピーする処理が開始されます。
 
-1. If you created a Web Forms project, open the *Default.aspx* file in **Solution Explorer**, change the **h1** heading from "ASP.NET" to "ASP.NET and Azure", and save the file.
+13. **出力**ウィンドウでは、実行された展開操作が表示され、展開が問題なく完了したことが報告されます。
 
-	![Web Forms default.aspx](./media/web-sites-dotnet-get-started-vs2013/default.png)
+	![展開が正常に完了したことを示す出力ウィンドウ](./media/web-sites-dotnet-get-started-vs2013/PublishOutput.png)
 
-	![Web Forms h1 change](./media/web-sites-dotnet-get-started-vs2013/wfandazure.png)
+14. 展開が成功すると、自動的に既定のブラウザーが開き、展開先の Web サイトの URL にアクセスします。
 
-1. Press CTRL+F5 to test your change by running the site on your local computer.
+	これで、作成したアプリケーションはクラウドで実行されています。
 
-	![Web site running locally](./media/web-sites-dotnet-get-started-vs2013/localandazure.png)
+	![Windows Azure で実行されている Web サイト](./media/web-sites-dotnet-get-started-vs2013/GS13deployedsite.png)
 
-	The `http://localhost` URL shows that it's running on your local computer. By default it's running in IIS Express, which is a lightweight version of IIS designed for use during web application development.
+<h2><a name="nextsteps"></a><span class="short-header">次のステップ</span>次のステップ</h2>
 
+このチュートリアルでは、Windows Azure の Web サイトに単純な Web アプリケーションを展開する方法について説明しました。サイトを管理、拡張、およびトラブルシューティングする方法、データベース、認証、および承認機能を追加する方法、アプリケーションを Windows Azure の Web サイトではなく Windows Azure のクラウド サービスで実行するかどうかを決定する方法を示すその他のリソースを利用できます。
 
-1. Close the browser.
+<h3>Web サイトの管理方法</h3>
+[Windows Azure の管理ポータル][Portal]は、すべての Windows Azure サービスを管理および監視できる Web インターフェイスです。
 
-1. In **Solution Explorer**, right-click the project, and choose **Publish**.
+新しい Web サイト、クラウド サービス、仮想マシン、データベースなどを作成できます。ギャラリーからは、オープン ソース アプリケーションを作成できます。作成したサービスの管理もできます。たとえば、次のスクリーン ショットは、管理ポータルの **[ダッシュボード]** タブにある Windows Azure の Web サイトの **[停止]**、**[再起動]**、および **[削除]** ボタンを示しています。**[ダッシュボード]** には、使用された CPU 時間、要求の数、入出力データ、発生した可能性のあるエラーなどのパフォーマンス統計も表示されます。
 
-	![Chooose Publish](./media/web-sites-dotnet-get-started-vs2013/choosepublish.png)
+![管理ポータルの [ダッシュボード] タブ](./media/web-sites-dotnet-get-started-vs2013/MPStopStartDelete.png)
 
-	The Preview tab of the **Publish Web** wizard appears. If you needed to change any publish settings you could choose a different tab, but now all you want to do is redeploy with the same settings.
+その他多数のサイトの設定は **[構成]** タブで変更できます。詳細については、「[Web サイトの管理方法](/ja-jp/manage/services/web-sites/how-to-manage-websites/)」を参照してください。
 
-2. In the **Publish Web** wizard, click **Publish**.
+Web サイトの管理機能の一部は、Visual Studio の**サーバー エクスプローラー**から実行することもできます。**サーバー エクスプローラー**で実行できる操作については、「[Visual Studio での Windows Azure の Web サイトのトラブルシューティング](/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)」を参照してください。
 
-	![Click Publish](./media/web-sites-dotnet-get-started-vs2013/clickpublish.png)
 
-	Visual Studio deploys the project to Azure and opens the site in the default browser.
+<h3>Web サイトの規模変更方法</h3>
+サイトがパブリックの場合、トラフィックが増えると応答時間が遅くなることがあります。これを改善するために、管理ポータルの **[スケール]** タブでサーバー リソースを追加できます。詳細については、「[Web サイトの規模変更方法](/ja-jp/manage/services/web-sites/how-to-scale-websites/)」を参照してください。(サーバー リソースを追加して Web サイトの規模を変更することは無料ではありません。)
 
-	![Changed site deployed](./media/web-sites-dotnet-get-started-vs2013/deployedandazure.png)
+<h3>Web サイトのトラブルシューティングの方法</h3>
+トラブルシューティングのためにトレースまたはログの出力を参照することもできます。Visual Studio には、リアルタイムで生成される Windows Azure ログの表示を容易にする組み込みツールが用意されています。Windows Azure では、リモートでデバッグ モードを使用して実行することもできます。詳細については、「[Visual Studio での Windows Azure の Web サイトのトラブルシューティング](/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)」を参照してください。
 
-An even quicker way to redeploy when you don't need to change publish settings is to use the **Web One Click Publish** tool bar.
+<h3>データベースと承認の機能を追加する方法</h3>
+ほとんどの運用環境の Web サイトでは、データベースを使用し、一部のサイトの機能を特定の許可されたユーザーだけに制限します。データベース アクセス、認証、および承認の基本的な処理方法を示すチュートリアルについては、「[メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC アプリケーションを Windows Azure の Web サイトに展開する](/ja-jp/develop/net/tutorials/web-site-with-sql-database/)」を参照してください。
 
-![Web One Click Publish Toolbar](./media/web-sites-dotnet-get-started-vs2013/weboneclickpublish.png)
+<h3>アプリケーションをクラウド サービスで実行するかどうかを決定する方法</h3>
+一部のシナリオでは、Windows Azure の Web サイトではなく、Windows Azure のクラウド サービスでアプリケーションを実行することもできます。詳細については、「[Windows Azure 実行モデル](/ja-jp/develop/net/fundamentals/compute/)」と「[Windows Azure の Web サイト、クラウド サービス、仮想マシン: いつ、どれを使用するか](http://www.windowsazure.com/ja-jp/manage/services/web-sites/choose-web-app-service/)」を参照してください。多層 ASP.NET Web アプリケーションを作成してクラウド サービスに展開する方法を説明したチュートリアルについては、「[ストレージ テーブル、キュー、および BLOB を使用する .NET 多層アプリケーション](/ja-jp/develop/net/tutorials/multi-tier-web-site/1-overview/)」を参照してください。
 
-The toolbar is not enabled by default; you enable it in the **View - Toolbars** menu. You can use it to select a profile, click a button to publish, or click a button to open the **Publish Web** wizard. 
+[ポータル]: http://manage.windowsazure.com
 
-## Next steps
-
-In this tutorial you've seen how to create a simple web application and deploy it to an Azure Web Site. Here are some related topics and resources for learning more about them:
-
-* Other ways to deploy a web project
-* How to manage, scale, and troubleshoot a site
-* How to add database and authorization functionality
-* How to choose between Web Sites, Cloud Services, and VMs for web applications
-
-### Other ways to deploy a web project
-
-In this tutorial you saw the quickest way to create a site and deploy it all in one operation. For an overview of other ways to deploy, by using Visual Studio or by [automating deployment](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery) from a [source control system](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control), see [How to Deploy an Azure Web Site](/en-us/documentation/articles/web-sites-deploy/"). 
-
-One way to automate deployment is to do it by using Windows PowerShell scripts. Visual Studio and Azure simplify that task by generating PowerShell scripts that you can use to perform the same deployment operations that you do in Visual Studio. For more information, see [Automate Everything (Building Real-World Cloud Apps with Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything).
-
-### How to manage a web site
-
-The [Azure Management Portal](en-us/services/management-portal/) is a web interface that enables you to manage and monitor your Azure services, such as web sites, cloud services, virtual machines, databases, and more. To see what you can do in the portal, go to [https://manage.windowsazure.com](), and sign in with the user name and password for your account that has administration rights to your Azure subscription. For more information, see [How to Manage Web Sites](/en-us/manage/services/web-sites/how-to-manage-websites/).
-
-You can also do some web site management functions right from **Server Explorer** in Visual Studio. For information about what you can do in **Server Explorer**, see [Troubleshooting Azure Web Sites in Visual Studio](/en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/).
-
-### How to scale a web site
-
-When your site is public and it starts to get more traffic, response times might slow down. To remedy that, you can easily add server resources in the **Scale** tab of the management portal. For more information, see [How to Scale a Web Site](/en-us/manage/services/web-sites/how-to-scale-websites/). (Adding server resources to scale a web site is not free.)
-
-### How to troubleshoot a web site
-
-You might want to look at trace or log output for help with troubleshooting. Visual Studio provides built-in tooling to make it easy to view Azure logs as they are generated in real time. You can also run in debug mode remotely in Azure. For more information, see [Troubleshooting Azure Web Sites in Visual Studio](/en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/).
-
-### How to add database and authorization functionality
-
-Most production web sites use a database and restrict some site functions to certain authorized users. For a tutorial that shows how to get started with database access, authentication, and authorization, see [Deploy a Secure ASP.NET MVC app with Membership, OAuth, and SQL Database to an Azure Web Site](/en-us/develop/net/tutorials/web-site-with-sql-database/).
-
-### How to decide if your application should run in a Cloud Service
-
-In Azure you can run web applications in Web Sites as shown in this tutorial, or in Cloud Services or Virtual Machines. For more information, see [Azure Execution Models](/en-us/develop/net/fundamentals/compute/) and [Azure Web Sites, Cloud Services, and VMs: When to use which?](/en-us/manage/services/web-sites/choose-web-app-service/).

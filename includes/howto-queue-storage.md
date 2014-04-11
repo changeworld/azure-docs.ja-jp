@@ -1,34 +1,30 @@
-## <a name="what-is"> </a>What is Queue Storage?
+## <a name="what-is"> </a>キュー ストレージとは
 
-Azure Queue storage is a service for storing large numbers of
-messages that can be accessed from anywhere in the world via
-authenticated calls using HTTP or HTTPS. A single queue message can be
-up to 64 KB in size, and a queue can contain millions of messages, up to the
-total capacity limit of a storage account. For storage accounts created after June 8th, 2012, total capacity is 200TB; for storage accounts created prior to that date, total capacity is 100TB. See [Azure Storage Scalability and Performance Targets](http://msdn.microsoft.com/en-us/library/dn249410.aspx) for details about storage account capacity.
+Windows Azure キュー ストレージは、HTTP または HTTP を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。ストレージ アカウントが 2012 年 6 月 8 日以降に作成されている場合、合計容量は 200 TB となり、ストレージ アカウントがそれよりも前の日付で作成されている場合、合計容量は 100 TB となります。ストレージ アカウントの容量の詳細については、「[Windows Azure Storage Scalability and Performance Targets (Windows Azure のストレージの拡張性とパフォーマンスのターゲット)](http://msdn.microsoft.com/ja-jp/library/dn249410.aspx)」を参照してください。
 
-Common uses of Queue storage include:
+キュー ストレージの一般的な用途には、次のようなものがあります。
 
--   <span>Creating a backlog of work to process asynchronously</span>
--   Passing messages from an Azure Web role to an Azure
-    Worker role
+-   <span>非同期に処理する作業のバックログを作成する</span>
+-   Windows Azure Web ロールから Windows Azure Worker ロールにメッセージを渡す
 
-## <a name="concepts"> </a>Concepts
+## <a name="concepts"> </a>概念
 
-The Queue service contains the following components:
+キュー サービスには、次のコンポーネントが含まれます。
 
 ![Queue1](./media/howto-queue-storage/queue1.png)
 
 
-- **URL format:** Queues are addressable using the following URL format:   
+- **URL 形式:** キューは、次の URL 形式を使用してアドレス指定できます。
 	http://`<storage account>`.queue.core.windows.net/`<queue>` 
       
-The following URL addresses one of the queues in the diagram:  
+次の URL を使用すると、図のいずれかのキューをアドレス指定できます。
 	http://myaccount.queue.core.windows.net/imagesToDownload
 
--**Storage Account:** All access to Azure Storage is done through a storage account. See [Azure Storage Scalability and Performance Targets](http://msdn.microsoft.com/en-us/library/dn249410.aspx) for details about storage account capacity.
+-**ストレージ アカウント:** Windows Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。ストレージ アカウントの容量の詳細については、「[Windows Azure Storage Scalability and Performance Targets (Windows Azure のストレージの拡張性とパフォーマンスのターゲット)](http://msdn.microsoft.com/ja-jp/library/dn249410.aspx)」を参照してください。
 
-- **Queue:** A queue contains a set of messages. All messages must be in a queue.
+- **キュー:** キューは、メッセージのセットを格納します。すべてのメッセージはキューに格納されている必要があります。
 
-- **Message:** A message, in any format, of up to 64KB.
+- **メッセージ:** 形式を問わず、メッセージのサイズは最大で 64 KB です。
+
 
 

@@ -1,10 +1,10 @@
-<properties pageTitle="Get Started with Mobile Services for Windows Store apps | Mobile Dev Center" metaKeywords="" description="Follow this tutorial to get started using Azure Mobile Services for Windows Store development in C# or JavaScript. " metaCanonical="" services="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="" editor="" />
+<properties pageTitle="Windows ストア アプリ向けモバイル サービスの使用 | モバイル デベロッパー センター" metaKeywords="" description="このチュートリアルでは、C# または JavaScript で Windows ストア用の開発を行う場合に Windows Azure のモバイル サービスを使用する方法を示します。" metaCanonical="" services="" documentationCenter="Mobile" title="モバイル サービスの使用" authors=""  solutions="" writer="glenga" manager="" editor=""  />
 
 
-# <a name="getting-started"> </a>Get started with Mobile Services
+# <a name="getting-started"> </a>モバイル サービスの使用
 
 <div class="dev-center-tutorial-selector sublanding">
-	<a href="/en-us/documentation/articles/mobile-services-windows-store-get-started" title="Windows Store" class="current">Windows Store</a>
+	<a href="/en-us/documentation/articles/mobile-services-windows-store-get-started" title="Windows ストア" class="current">Windows ストア</a>
 	<a href="/en-us/documentation/articles/mobile-services-windows-phone-get-started" title="Windows Phone">Windows Phone</a>
 	<a href="/en-us/documentation/articles/mobile-services-ios-get-started" title="iOS">iOS</a>
 	<a href="/en-us/documentation/articles/mobile-services-android-get-started" title="Android">Android</a>
@@ -16,100 +16,98 @@
 </div>
 
 <div class="dev-center-tutorial-subselector">
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/" title=".NET backend">.NET backend</a> | 
-	<a href="/en-us/documentation/articles/mobile-services-windows-store-get-started/"  title="JavaScript backend" class="current">JavaScript backend</a>
+	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/" title=".NET バックエンド">.NET バックエンド</a> |
+	<a href="/en-us/documentation/articles/mobile-services-windows-store-get-started/"  title="JavaScript backend" class="current">JavaScript バックエンド</a>
 </div>
 
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
-<p>This tutorial shows you how to add a cloud-based backend service to a Windows Store app using Azure Mobile Services.</p>
-<p>If you prefer to watch a video, the clip to the right follows the same steps as this tutorial. In the video, Scott Guthrie provides an introduction to Mobile Services and walks through creating your first mobile service and connecting to it from a Windows Store app.</p>
+<p>このチュートリアルでは、Windows Azure のモバイル サービスを使用して Windows ストア アプリにクラウドベースのバックエンド サービスを追加する方法を示します。</p>
+<p>右側のクリップを見ると、このチュートリアルと同じ手順をビデオで確認できます。このビデオでは Scott Guthrie がモバイル サービスを紹介し、初めてのモバイル サービスを作成して Windows ストア アプリから接続する方法を説明しています。</p>
 </div>
-<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Introduction-to-Windows-Azure-Mobile-Services" target="_blank" class="label">watch the tutorial</a> <a style="background-image: url('/media/devcenter/mobile/videos/get-started-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Introduction-to-Windows-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">Play Video</span></a> <span class="time">10:08</span></div>
+<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Introduction-to-Windows-Azure-Mobile-Services" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/devcenter/mobile/videos/get-started-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Introduction-to-Windows-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">10:08</span></div>
 </div>
 
-In this tutorial, you will create both a new mobile service and a simple _To do list_ app that stores app data in the new mobile service. The mobile service that you will create uses JavaScript for server-side business logic. To create a mobile service that lets you write your server-side business logic in the supported .NET languages using Visual Studio, see the .NET backend version of this topic.
+このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリ データを保存する簡単な _To do list_ アプリの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために JavaScript を使用します。Visual Studio を使用してサポートされる .NET 言語でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[.NET バックエンド バージョン]」を参照してください。
 
-A screenshot from the completed app is below:
+完成したアプリケーションのスクリーンショットは次のようになります。
 
 ![][0]
 
-Completing this tutorial is a prerequisite for all other Mobile Services tutorials for Windows Store apps. 
+このチュートリアルを完了することは、Windows ストア アプリの他のすべてのモバイル サービス チュートリアルの前提条件です。
 
->[WACOM.NOTE] To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F).
+>[WACOM.NOTE] このチュートリアルを完了するには、Windows Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Windows Azure の無料評価版サイト](http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F)を参照してください。
 
->This tutorial requires Visual Studio 2013. To connect a Windows Store app using Visual Studio 2012, follow the steps in the topic [Get started with data in Mobile Services using Visual Studio 2012](/en-us/develop/mobile/tutorials/get-started-with-data-dotnet-vs2012/).
+>このチュートリアルには、Visual Studio 2013 が必要です。Visual Studio 2012 を使用して Windows ストア アプリに接続するには、「[Visual Studio 2012 を使用したモバイル サービスでのデータの使用](/en-us/develop/mobile/tutorials/get-started-with-data-dotnet-vs2012/)」の手順に従ってください。
 
-## Create a new mobile service
+## 新しいモバイル サービスを作成する
 
 [WACOM.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
 
-## Create a new Windows Store app
+## 新しい Windows ストア アプリを作成する
 
-Once you have created your mobile service, you can follow an easy quickstart in the Management Portal to either create a new app or modify an existing app to connect to your mobile service. 
+モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、新しいアプリケーションを作成するか、既存のアプリケーションを変更してモバイル サービスに接続することができます。
 
-In this section you will create a new Windows Store app that is connected to your mobile service.
+ここでは、モバイル サービスに接続された新しい Windows ストア アプリを作成します。
 
-1.  In the Management Portal, click **Mobile Services**, and then click the mobile service that you just created.
+1.  管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
    
-2. In the quickstart tab, click **Windows** under **Choose platform** and expand **Create a new Windows Store app**.
+2. [クイック スタート] タブの **[プラットフォームの選択]** で **[Windows]** を選択し、**[新しい Windows ストア アプリを作成する]** を展開します。
 
    	![][6]
 
-   	This displays the three easy steps to create a Windows Store app connected to your mobile service.
+   	これにより、モバイル サービスに接続された Windows ストア アプリを作成するための簡単な 3 つの手順が表示されます。
 
   	![][7]
 
-3. If you haven't already done so, download and install [Visual Studio 2013 Express for Windows] on your local computer or virtual machine.
+3. まだインストールしていない場合は、[Visual Studio 2013 Express for Windows] をダウンロードし、ローカル コンピューターまたは仮想マシンにインストールします。
 
-4. Click **Create TodoItem table** to create a table to store app data.
+4. **[TodoItem テーブルを作成する]** をクリックして、アプリケーション データを格納するテーブルを作成します。
 
-5. Under **Download and run your app**, select a language for your app, then click **Download**. 
+5. **[アプリケーションをダウンロードして実行する]** で、アプリケーションの言語を選択し、**[ダウンロード]** をクリックします。
 
-  	This downloads the project for the sample _To do list_ application that is connected to your mobile service. Save the compressed project file to your local computer, and make a note of where you save it.
+  	これにより、モバイル サービスに接続されている _To do list_ サンプル アプリケーションのプロジェクトがダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
-## Run your Windows app
+## Windows アプリケーションを実行する
 
-The final stage of this tutorial is to build and run your new app.
+このチュートリアルの最後に、新しいアプリケーションをビルドして実行します。
 
-1. Browse to the location where you saved the compressed project files, expand the files on your computer, and open the solution file in Visual Studio 2013 Express for Windows.
+1. 圧縮されたプロジェクト ファイルの保存場所を参照し、ファイルをコンピューター上に展開して、Visual Studio 2013 Express for Windows でソリューション ファイルを開きます。
 
-2. Press the **F5** key to rebuild the project and start the app.
+2. **F5** キーを押してプロジェクトをリビルドし、アプリケーションを開始します。
 
-3. In the app, type meaningful text, such as _Complete the tutorial_, in **Insert a TodoItem**, and then click **Save**.
+3. アプリケーションで、**[Insert a TodoItem]** ボックスに意味のあるテキスト (たとえば、「_Complete the tutorial_」) を入力し、**[Save]** をクリックします。
 
    	![][10]
 
-   	This sends a POST request to the new mobile service hosted in Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile service, and the data is displayed in the second column in the app.
+   	これにより、Windows Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目はモバイル サービスによって返され、データはアプリケーションの 2 番目の列に表示されます。
+	>[WACOM.NOTE]モバイル サービスにアクセスして MainPage.xaml.cs ファイル (C#/XAML プロジェクト) または default.js ファイル (JavaScript/HTML プロジェクト) にあるデータを照会および挿入するコードを確認できます。
 
-	>[WACOM.NOTE]You can review the code that accesses your mobile service to query and insert data, which is found in either the MainPage.xaml.cs file (C#/XAML project) or the default.js (JavaScript/HTML project) file.
-
-4. Back in the Management Portal, click the **Data** tab and then click the **TodoItems** table.
+4. 管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
 
    	![][11]
 
-   	This lets you browse the data inserted by the app into the table.
+   	これで、アプリケーションによってテーブルに挿入されたデータを参照できます。
 
    	![][12]
 
-## Next Steps
-Now that you have completed the quickstart, learn how to perform additional important tasks in Mobile Services: 
+## 次の手順
+クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。
 
-* **Get started with data** ( [C#][Get started with data] / [JavaScript][Get started with data JS] )
-  <br/>Learn more about storing and querying data using Mobile Services.
+* **データの使用** ( [C#][データの使用] / [JavaScript][データの使用 (JS)] )
+  <br/>データの使用モバイル サービスを使用してデータの格納およびクエリを実行する方法について説明します。
 
-* **Get started with authentication** ( [C#][Get started with authentication] / [JavaScript][Get started with authentication JS] )
-  <br/>Learn how to authenticate users of your app with an identity provider.
+* **認証の使用** ( [C#][認証の使用] / [JavaScript][認証の使用 (JS)] )
+  <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* **Get started with push notifications** ( [C#][Get started with push notifications] / [JavaScript][Get started with push notifications JS] )
-  <br/>Learn how to send a very basic push notification to your app.
-
+* **プッシュ通知の使用** ( [C#][プッシュ通知の使用] / [JavaScript][プッシュ通知の使用 (JS)] )
+  <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 <!-- Anchors. -->
-[Getting started with Mobile Services]:#getting-started
-[Create a new mobile service]:#create-new-service
-[Define the mobile service instance]:#define-mobile-service-instance
-[Next Steps]:#next-steps
+[モバイル サービスの使用]:#getting-started
+[新しいモバイル サービスを作成する]:#create-new-service
+[モバイル サービス インスタンスの定義]:#define-mobile-service-instance
+[次の手順]:#next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-windows-store-get-started/mobile-quickstart-completed.png
@@ -124,15 +122,17 @@ Now that you have completed the quickstart, learn how to perform additional impo
 
 
 <!-- URLs. -->
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-dotnet
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-dotnet
-[Get started with data JS]: /en-us/develop/mobile/tutorials/get-started-with-data-js
-[Get started with authentication JS]: /en-us/develop/mobile/tutorials/get-started-with-users-js
-[Get started with push notifications JS]: /en-us/develop/mobile/tutorials/get-started-with-push-js
+[データの使用]: /en-us/develop/mobile/tutorials/get-started-with-data-dotnet
+[認証の使用]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet
+[プッシュ通知の使用]: /en-us/develop/mobile/tutorials/get-started-with-push-dotnet
+[データの使用 (JS)]: /en-us/develop/mobile/tutorials/get-started-with-data-js
+[認証の使用 (JS)]: /en-us/develop/mobile/tutorials/get-started-with-users-js
+[プッシュ通知の使用 (JS)]: /en-us/develop/mobile/tutorials/get-started-with-push-js
 [Visual Studio 2013 Express for Windows]: http://go.microsoft.com/fwlink/?LinkId=257546
-[Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[JavaScript and HTML]: mobile-services-win8-javascript/
-[Management Portal]: https://manage.windowsazure.com/
-[.NET backend version]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-get-started
-[Get started with data in Mobile Services using Visual Studio 2012]: /en-us/documentation/articles/mobile-services-windows-store-dotnet-get-started-data-vs2012
+[モバイル サービス SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
+[JavaScript と HTML]: mobile-services-win8-javascript/
+[管理ポータル]: https://manage.windowsazure.com/
+[.NET バックエンド バージョン]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-get-started
+[Visual Studio 2012 を使用したモバイル サービスでのデータの使用]: /en-us/documentation/articles/mobile-services-windows-store-dotnet-get-started-data-vs2012
+
+

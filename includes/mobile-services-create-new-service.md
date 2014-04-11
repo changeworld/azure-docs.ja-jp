@@ -1,41 +1,42 @@
 
 
-Follow these steps to create a new mobile service.
+新しいモバイル サービスを作成するには、次のステップに従います。
 
-1.	Log into the [Management Portal]. 
+1.	[管理ポータル]にログインします。
 
-2.	At the bottom of the navigation pane, click **+NEW**.
+2.	ナビゲーション ウィンドウの下部にある **[新規]** をクリックします。
 
 	![](./media/mobile-services-create-new-service/plus-new.png)
 
-3.	Expand **Compute** and **Mobile Service**, then click **Create**.
+3.	**[コンピューティング]**、**[モバイル サービス]** の順に展開し、**[作成]** をクリックします。
 
 	![](./media/mobile-services-create-new-service/mobile-create.png)
 
-	This displays the **New Mobile Service** dialog.
+	**[新しいモバイル サービス]** ダイアログ ボックスが表示されます。
 
-4.	In the **Create a mobile service** page, select **Create a free 20 MB SQL Database**, select **Node.js** runtime, then type a subdomain name for the new mobile service in the **URL** textbox and wait for name verification. Once name verification completes, click the right arrow button to go to the next page.	
+4.	**[モバイル サービスの作成]** ページで、**[無料の 20 MB SQL データベースの作成]** を選択し、**[Node.js]** ランタイムを選択してから、**[URL]** ボックスに新しいモバイル サービスのサブドメイン名を入力して、名前が確認されるまで待ちます。名前の確認が完了したら、右矢印ボタンをクリックして次のページに進みます。	
 
 	![](./media/mobile-services-create-new-service/mobile-create-page1.png)
 
-   	This displays the **Specify database settings** page.
+   	**[データベースの設定の指定]** ページが表示されます。
 
 	<div class="dev-callout"> 
-	<b>Note</b> 
-	<p>As part of this tutorial, you create a new SQL Database instance and server. You can reuse this new database and administer it as you would any other SQL Database instance. If you already have a database in the same region as the new mobile service, you can instead choose <strong>Use existing Database</strong> and then select that database. The use of a database in a different region is not recommended because of additional bandwidth costs and higher latencies.</p></div>	
+	<b>注</b>
+	<p>このチュートリアルの一環として、新しい SQL データベース インスタンスと SQL データベース サーバーを作成します。この新しいデータベースは、再利用したり、その他の SQL データベース インスタンスと同様に管理したりすることができます。新しいモバイル サービスと同じリージョンにデータベースを既に所有している場合は、代わりに <strong>[既存のデータベースを使用する]</strong> を選択してそのデータベースを選択できます。別のリージョンにあるデータベースを使用することは、帯域幅コストと待機時間が増加するため、お勧めしません。</p></div>	
 
-6.	In **Name**, type the name of the new database, then type **Login name**, which is the administrator login name for the new SQL Database server, type and confirm the password, and click the check button to complete the process.
+6.	**[名前]** ボックスに新しいデータベースの名前を入力し、**[ログイン名]** ボックスに、新しい SQL データベース サーバーの管理者ログイン名を入力します。パスワードを入力および確認入力し、チェック ボタンをクリックして処理を完了します。
 
 	![](./media/mobile-services-create-new-service/mobile-create-page2.png)
 
 	<div class="dev-callout"> 
-	<b>Note</b> 
-	<p>When the password that you supply does not meet the minimum requirements or when there is a mismatch, a warning is displayed. <br/>We recommend that you make a note of the administrator login name and password that you specify; you will need this information to reuse the SQL Database instance or the server in the future.</p> 
+	<b>注</b>
+	<p>指定したパスワードが最小要件を満たしていない場合や不一致が発生している場合は、警告が表示されます。<br/>指定した管理者ログイン名とパスワードを書き留めておくことをお勧めします。この情報は、今後 SQL データベース インスタンスまたはサーバーを再利用する際に必要になります。</p>
 	</div>
 
-You have now created a new mobile service that can be used by your mobile apps.
+これで、モバイル アプリケーションで使用できる新しいモバイル サービスが作成されました。
 
 
 
 <!-- URLs. -->
-[Management Portal]: https://manage.windowsazure.com/
+[管理ポータル]: https://manage.windowsazure.com/
+

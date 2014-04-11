@@ -1,51 +1,51 @@
 
-Follow these steps to attach a data disk:
+データ ディスクを接続するには、次のステップに従います。
 
-1. In the [Azure Management Portal][AzurePreviewPortal], click **Virtual Machines** and then select the virtual machine you just created (**testwinvm**).
+1. [Windows Azure の管理ポータル][AzurePreviewPortal]で、**[仮想マシン]** をクリックし、先ほど作成した仮想マシン (**testwinvm**) を選択します。
 
-2. On the command bar click **Attach** and then click **Attach Empty Disk**.
+2. コマンド バーで、**[ディスクの接続]**、**[空のディスクの接続]** の順にクリックします。
 	
-	The **Attach empty disk to virtual machine** dialog box appears.
+	**[仮想マシンへの空のディスクの接続]** ダイアログ ボックスが表示されます。
 
 
-3. The **Virtual Machine Name**, **Storage Location**, and **File Name** are already defined for you. All you have to do is enter the size that you want for the disk. Type **5** in the **Size** field.
+3. **[仮想マシン名]**、**[ストレージの場所]**、**[ファイル名]** の値は既に定義されています。必要なのは、ディスクのサイズを入力することだけです。**[サイズ]** ボックスに「**5**」と入力します。
 
-	![Attach Empty Disk][Image2]
+	![空のディスクの接続][Image2]
 
-	**Note:** All disks are created from a VHD file in Azure storage. You can provide a name for the VHD file that you add to storage, but Azure generates the name of the disk automatically.
+	**注:** ディスクはすべて、VHD ファイルから Windows Azure のストレージに作成されます。ストレージに追加する VHD ファイルの名前は指定できますが、ディスクの名前は Windows Azure によって自動的に生成されます。
 
-4. Click the check mark to attach the data disk to the virtual machine.
+4. チェック マークをクリックして、仮想マシンにデータ ディスクを接続します。
 
-5. Click the name of the virtual machine to display the dashboard; this lets you verify that the data disk was successfully attached to the virtual machine.
+5. 仮想マシンの名前をクリックしてダッシュボードを表示します。こうすることでデータ ディスクが仮想マシンに正しく接続されたか確認することができます。
 
-	The number of disks is now 2 for the virtual machine. The disk that you attached is listed in the Disks table.
+	現在の仮想マシンのディスク数は 2 です。接続したディスクは、[ディスク] テーブルに表示されます。
 
-	![Attach Empty Disk][Image3]
+	![空のディスクの接続][Image3]
 
-	After you attach the data disk to the virtual machine, the disk is offline and not initialized. You have to log on to the virtual machine and initialize the disk before you can use it to store data.
+	仮想マシンにデータ ディスクを接続した後も、ディスクはオフラインで初期化されていません。データ ディスクを使ってデータを保存する前に、仮想マシンにログオンして、ディスクを初期化する必要があります。
 
-##Connect to the Virtual Machine Using Remote Desktop and Complete Setup
-1. After the virtual machine is provisioned, on the Management Portal, click **Virtual Machines**, and then click your new virtual machine. Information about your virtual machine is presented.	
+##リモート デスクトップを使用して仮想マシンに接続し、セットアップを完了する
+1. 仮想マシンをプロビジョニングしたら、管理ポータルで **[仮想マシン]** をクリックした後、新しく作成した仮想マシンをクリックします。仮想マシンに関する情報が表示されます。	
 
-2. At the bottom of the page, click **Connect**. Open the .rpd file using the Windows Remote Desktop program (*%windir%\system32\mstsc.exe*).	
+2. ページの下部にある **[接続]** をクリックします。Windows リモート デスクトップ プログラム (*%windir%\system32\mstsc.exe*) を使用して rpd ファイルを開くことを選択します。	
 
-3. At the **Windows Security** dialog box, provide the password for the **Administrator** account. (You might be asked to verify the credentials of the virtual machine.) The first time you log on to this virtual machine, several processes may need to complete, including setup of your desktop, Windows updates, and completion of the Windows initial configuration tasks. Once you are connected to the virtual machine with Windows Remote Desktop, the virtual machine works like any other computer.
+3. **[Windows セキュリティ]** ダイアログ ボックスで、**Administrator** アカウントのパスワードを入力します (仮想マシンの資格情報を確認するように求められることがあります)。この仮想マシンに初めてログオンした場合は、デスクトップのセットアップや Windows の更新プログラムの適用、Windows の初期構成タスクの完了など複数のプロセスが必要になる場合があります。Windows リモート デスクトップで仮想マシンに接続したら、仮想マシンは他のコンピューターと同様に使用できます。
 
-4. After you log on to the virtual machine, open **Server Manager**. In the left pane, expand **Storage**, and then click **Disk Management**.
+4. 仮想マシンにログオンした後、**サーバー マネージャー**を開きます。左のウィンドウで **[ストレージ]** を展開し、**[ディスクの管理]** をクリックします。
 
-	![Server Manager][Image4]
+	![サーバー マネージャー][Image4]
 
-5. The **Initalize Disk** window appears.  Click **OK**.
+5. **[ディスクの初期化]** ウィンドウが表示されます。**[OK]** をクリックします。
 
-	![Initialize Disk][Image5.0]
+	![ディスクの初期化][Image5.0]
 
-6. Right-click the space allocation area for Disk 2, click **New Simple Volume**, and then finish the wizard with the default values.
+6. ディスク 2 のスペース割り当て領域を右クリックして、**[新しいシンプル ボリューム]** をクリックし、既定値を使ってウィザードを終了します。
 
-	![New Simple Volume][Image6]
+	![新しいシンプル ボリューム][Image6]
 
-	The disk is now online and ready to use with a new drive letter.
+	これでディスクがオンラインになり、新しいドライブ文字が使用できるようになりました。
 
-	![Initialize Success][Image7]
+	![初期化の成功][Image7]
 
 
 [AzurePreviewPortal]: http://manage.windowsazure.com
@@ -57,3 +57,5 @@ Follow these steps to attach a data disk:
 
 [Image6]: ./media/attach-data-disk-windows-server-2008-vm-in-portal/initializediskvolume.png
 [Image7]: ./media/attach-data-disk-windows-server-2008-vm-in-portal/initializesuccess.png
+
+

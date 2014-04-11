@@ -1,238 +1,216 @@
-#Create a Virtual Machine Running Linux 
+#Linux を実行する仮想マシンの作成
 
-Creating a virtual machine that is running the Linux operating system is easy when you use the Image Gallery in the Azure Management Portal. This guide assumes that you have no prior experience using Azure. You can create a virtual machine running the Linux operating system in the cloud that you can access and customize.
+Windows Azure の管理ポータルのイメージ ギャラリーを使用すると、Linux オペレーティング システムを実行する仮想マシンの作成は簡単です。このガイドは、Windows Azure を初めて使用するユーザーを対象としています。Linux オペレーティング システムを実行する仮想マシンをクラウドに作成し、その仮想マシンにアクセスしてカスタマイズできます。
 
-You will learn:
+学習内容:
 
-- [About virtual machines in Azure] []
-- [How to create the virtual machine] []
-- [How to log on to the virtual machine after you create it] []
-- [How to attach a data disk to the new virtual machine] []
+- [Windows Azure での仮想マシンについて] []
+- [仮想マシンの作成方法] []
+- [仮想マシンを作成後、ログオンする方法] []
+- [新しい仮想マシンにデータ ディスクを接続する方法] []
 
-**Note**: This tutorial creates a virtual machine that is not connected to a virtual network. If you want a virtual machine to use a virtual network, you must specify the virtual network when you create the virtual machine. For more information about virtual networks, see [Azure Virtual Network Overview](http://go.microsoft.com/fwlink/p/?LinkID=294063).
+**注:**: このチュートリアルでは、仮想ネットワークに接続されていない仮想マシンを作成します。仮想マシンが仮想ネットワークを使用する場合、仮想マシンの作成時に仮想ネットワークを指定する必要があります。仮想ネットワークの詳細については、「[仮想ネットワーク](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
 
-## <a id="virtualmachine"> </a>About virtual machines in Azure ##
+## <a id="virtualmachine"> </a>Windows Azure での仮想マシンについて##
 
-A virtual machine in Azure is a server in the cloud that you can control and manage. After you create a virtual machine in Azure, you can delete and recreate it whenever you need to, and you can access the virtual machine just as you do with a server in your office. Virtual hard disk (VHD) files are used to create a virtual machine. The following types of VHDs are used for a virtual machine:
+Windows Azure の仮想マシンは、制御と管理が可能なクラウド上のサーバーです。Windows Azure 上に仮想マシンを作成した後、仮想マシンは必要に応じていつでも削除と再作成が可能で、社内のサーバーとまったく同様にアクセスできます。仮想マシンの作成には、仮想ハード ディスク (VHD) ファイルが使用されます。仮想マシンには、次の種類の VHD が使用されます。
 
-- **Image** - A VHD that is used as a template to create a new virtual machine. An image is a template because it doesn't have specific settings like a running virtual machine, such as the computer name and user account settings. If you create a virtual machine using an image, an operating system disk is automatically created for the new virtual machine.
-- **Disk** - A disk is a VHD that you can boot and mount as a running version of an operating system. After an image is provisioned, it becomes a disk. A disk is always created when you use an image to create a virtual machine. Any VHD that is attached to virtualized hardware and that is running as part of a service is a disk
+- **イメージ** - 新しい仮想マシンを作成するテンプレートとして使用される VHD。イメージがテンプレートなのは、実行中の仮想マシンとは違って、コンピューター名やユーザー アカウント設定のような具体的な設定がなされていないためです。イメージを使って仮想マシンを作成した場合、新しい仮想マシン用のオペレーティング システム ディスクが自動的に作成されます。
+- **ディスク** - ディスクは、起動してオペレーティング システムの実行中バージョンとしてマウントできる VHD です。イメージは、プロビジョニングするとディスクになります。イメージを使って仮想マシンを作成すると、ディスクが常に作成されます。仮想ハードウェアに接続され、サービスの一部として実行されている VHD はディスクです。
 
-The following options are available for using images to create a virtual machine:
+イメージを使用して仮想マシンを作成するためには、次の選択肢があります。
 
-- Create a virtual machine by using an image that is provided in the Image Gallery of the Azure Management Portal.
-- Create and upload a .vhd file that contains an image to Azure, and then create a virtual machine using the image. For more information about creating and uploading a custom image, see [Creating and Uploading a Virtual Hard Disk that Contains the Linux Operating System](/en-us/manage/linux/common-tasks/upload-a-vhd/).
+- Windows Azure の管理ポータルのイメージ ギャラリーに用意されているイメージを使って仮想マシンを作成します。
+- イメージを格納した .vhd ファイルを作成し、それを Windows Azure にアップロードして、そのイメージを使って仮想マシンを作成します。カスタム イメージの作成とアップロードの詳細については、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](/ja-jp/manage/linux/common-tasks/upload-a-vhd/)」を参照してください。
 
-Each virtual machine resides in a cloud service, either by itself, or grouped with other virtual machines. You can place virtual machines in the same cloud service to enable the virtual machines to communicate with each other, to load-balance network traffic among virtual machines, and to maintain high availability of the machines. For more information about cloud services and virtual machines, see the "Execution Models" section in [Introducing Azure](http://go.microsoft.com/fwlink/p/?LinkId=311926).
+各仮想マシンは、その仮想マシンだけがクラウド サービス内に配置されているか、他の仮想マシンと共にグループ化されクラウド サービス内に配置されています。同じクラウド サービス内に複数の仮想マシンを配置すると、仮想マシン間の相互通信、仮想マシン間でのネットワーク トラフィックの負荷分散、仮想マシンの高可用性を有効にできます。クラウド サービスと仮想マシンの詳細については、[Windows Azure 入門](http://go.microsoft.com/fwlink/p/?LinkId=311926)に関するページの「実行モデル」のセクションを参照してください。
 
-## <a id="custommachine"> </a>How to create the virtual machine ##
+## <a id="custommachine"> </a>仮想マシンの作成方法##
 
-You use the **From Gallery** method to create a custom virtual machine in the Management Portal. This method provides more options for configuring the virtual machine when you create it, such as the connected resources, the DNS name, and the network connectivity if needed.
+**[ギャラリーから]** の方法を使って管理ポータルでカスタム仮想マシンを作成します。この方法には、仮想マシンを作成するときに必要に応じて仮想マシンのサイズ、接続リソース、DNS 名、ネットワーク接続を定義できる、より多くのオプションが用意されています。
 
-1. Sign in to the Azure [Management Portal](http://manage.windowsazure.com).
-On the command bar, click **New**.
+1. Windows Azure の[管理ポータル](http://manage.windowsazure.com)にサインインします。
+コマンド バーで、**[新規]** をクリックします。
 
-2. Click **Virtual Machine**, and then click **From Gallery**.
+2. **[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
-3. From **Choose an Image**, select an image from one of the lists. (The available images may differ depending on the subscription you're using.) Click the arrow to continue.
+3. **[イメージの選択]** から、一覧にあるいずれかのイメージを選択します (利用できるイメージは使用しているサブスクリプションによって異なる場合があります)。矢印をクリックして続行します。
 
-4. If multiple versions of the image are available, in **Version Release Date**, pick the version you want to use.
+4. 複数のバージョンのイメージが利用できる場合、**[バージョンのリリース日]** で、使用するバージョンを選択します。
 
-5. In **Virtual Machine Name**, type the name that you want to use. For this virtual machine, type **MyTestVM1**.
+5. **[仮想マシン名]** に、使用する名前を入力します。この仮想マシンの場合は、「**MyTestVM1**」と入力します。
 
-6. In **Size**, select the size that you want to use for the virtual machine. The size that you choose depends on the number of cores that are needed for your application.  For this virtual machine, choose the smallest available size.
+6. **[サイズ]** で、仮想マシンに使用するサイズを選択します。選択するサイズは、アプリケーションが必要とするコア数に応じて変わります。この仮想マシンの場合は、利用可能な最小サイズを選択します。
 
-7. In **New User Name**, type the name of the account that you will use to administer the virtual machine. You cannot use root for the user name. For this virtual machine, type **NewUser1**.
+7. **[新しいユーザー名]** に、仮想マシンの管理に使用するアカウントの名前を入力します。ユーザー名に root を使用することはできません。この仮想マシンの場合は、「**NewUser1**」と入力します。
 
-8. Under Authentication, check **Provide a Password**. Then, provide the required information and click the arrow to continue.
+8. [認証] で、**[パスワードの指定]** をオンにします。次に、必要な情報を入力し、矢印をクリックして続行します。
 
-9. You can place virtual machines together in the cloud service, but for this tutorial, you're only creating a single virtual machine. To do this, select **Create a new cloud service**.
+9. クラウド サービスに複数の仮想マシンをまとめて配置することもできますが、このチュートリアルでは仮想マシンを 1 台だけ作成します。そのためには、**[新しいクラウド サービスの作成]** を選択します。
 
-10. In **Cloud Service DNS Name**, type a name that uses between 3 and 24 lowercase letters and numbers. This name becomes part of the URI that is used to contact the virtual machine through the cloud service. For this virtual machine, type **MyService1**.
+10. **[クラウド サービス DNS 名]** に DNS 名を入力します。DNS 名の長さは 3 ～ 24 文字で、小文字と数字を使用できます。この名前は、クラウド サービスを介して仮想マシンにアクセスするときに使用する URI の一部になります。この仮想マシンの場合は、「**MyService1**」と入力します。
 
-11. In **Region/Affinity Group/Virtual Network**, select where you want to locate the virtual machine.
+11. **[リージョン]/[アフィニティ グループ]/[仮想ネットワーク]** で、仮想マシンを含める場所を選択します。
 
-12. You can select a storage account where the VHD file is stored. For this tutorial, accept the default setting of **Use an Automatically Generated Storage Account**.
+12. VHD ファイルが保存されているストレージ アカウントを選択できます。このチュートリアルでは、既定の **[自動的に生成されたストレージ アカウントを使用]** をそのまま使用します。
 
-13. Under **Availability Set**, for the purposes of this tutorial use the default setting of **None**. Click the check mark to create the virtual machine, and then click the arrow to continue.
+13. **[可用性セット]** では、このチュートリアルの目的に合わせて、既定の設定である **[なし]** を使用します。チェック マークをクリックして仮想マシンを作成し、矢印をクリックして続行します。
 
-14.  Under **VM Agent**, decide whether to install the VM Agent. This agent provides the environment for you to install extensions that can help you interact with the virtual machine. For details, see [Using Extensions](http://go.microsoft.com/FWLink/p/?LinkID=390493). 
+14. **[VM エージェント]** では、VM エージェントをインストールするかどうかを決定します。このエージェントには、仮想マシンの操作に役立つ拡張機能をインストールするための環境が用意されています。詳細については、[拡張機能の使用に関するページ](http://go.microsoft.com/FWLink/p/?LinkID=394093)を参照してください。**重要**: VM エージェントは、仮想マシンを作成するときにのみインストールできます。
 
-15. Under **Endpoints**, review the endpoint that's automatically created to allow Secure Shell (SSH) connections to the virtual machine. (Endpoints allow resources on the Internet or other virtual networks to communicate with a virtual machine.) You can add more endpoints now, or create them later. For instructions on creating them later, see [How to Set Up Communication with a Virtual Machine](http://www.windowsazure.com/en-us/manage/linux/how-to-guides/setup-endpoints/).
+15. **[エンドポイント]** で、仮想マシンへの Secure Shell (SSH) 接続を許可する目的で自動的に作成される新しいエンドポイントを確認します (エンドポイントを使用すると、インターネットや他の仮想ネットワークにあるリソースは仮想マシンと通信することができます)。ここでエンドポイントを追加したり、後でエンドポイントを作成することもできます。後でエンドポイントを作成する手順については、「[How to Set Up Communication with a Virtual Machine (仮想マシンとの通信をセットアップする方法)](http://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/setup-endpoints/)」を参照してください。
   
-After the virtual machine and cloud service are created, the Management Portal lists the new virtual machine under **Virtual Machines** and lists the cloud service under **Cloud Services**. Both the virtual machine and the cloud service are started automatically.
+仮想マシンとクラウド サービスが作成されると、管理ポータルでは、**[仮想マシン]** の下に新しい仮想マシンが表示され、**[クラウド サービス]** の下にクラウド サービスが表示されます。仮想マシンとクラウド サービスはどちらも自動的に開始されます。
 
-## <a id="logon"> </a>How to log on to the virtual machine after you create it ##
+## <a id="logon"> </a>仮想マシンを作成後、ログオンする方法##
 
-To manage the settings of the virtual machine and the applications that run on the machine, you can use an SSH client. To do this, you must install an SSH client on your computer that you want to use to access the virtual machine. There are many SSH client programs that you can choose from. The following are possible choices:
+仮想マシンとそのマシン上で実行されるアプリケーションの設定を管理するには、SSH クライアントを使用できます。そのためには、仮想マシンへのアクセスに使用するコンピューターに SSH クライアントをインストールする必要があります。SSH クライアント プログラムの選択肢は多数あります。たとえば、次のプログラムを選択できます。
 
-- If you are using a computer that is running a Windows operating system, you might want to use an SSH client such as PuTTY. For more information, see [PuTTY Download](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
-- If you are using a computer that is running a Linux operating system, you might want to use an SSH client such as OpenSSH. For more information, see [OpenSSH](http://www.openssh.org/).
+- Windows オペレーティング システムが実行されているコンピューターを使用している場合は、PuTTY などの SSH クライアントを使用できます。詳細については、[PuTTY のダウンロード ページ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)を参照してください。
+- Linux オペレーティング システムが実行されているコンピューターを使用している場合は、OpenSSH などの SSH クライアントを使用できます。詳細については、「[OpenSSH (英語)](http://www.openssh.org/)」を参照してください。
 
-This tutorial shows you how to use the PuTTY program to access the virtual machine.
+このチュートリアルでは、PuTTY プログラムを使用して仮想マシンにアクセスする手順を示します。
 
-1. Find the **Host Name** and **Port information** from the Management Portal. You can find the information that you need from the dashboard of the virtual machine. Click the virtual machine name and look for the **SSH Details** in the **Quick Glance** section of the dashboard.
+1. 管理ポータルで**ホスト名**と**ポート情報**を検索します。仮想マシンのダッシュボードから必要な情報を見つけることができます。仮想マシン名をクリックし、ダッシュボードの **[概要]** セクションで **[SSH の詳細]** を探します。
 
-	![Find SSH details](./media/CreateVirtualMachineLinuxTutorial/SSHdetails.png)
+	![SSH の詳細の検索](./media/CreateVirtualMachineLinuxTutorial/SSHdetails.png)
 
-2. Open the PuTTY program.
+2. PuTTY プログラムを開きます。
 
-3. Enter the **Host Name** and the **Port information** that you collected from the dashboard, and then click **Open**.
+3. ダッシュボードから収集した**ホスト名**と**ポート情報**を入力し、**[開く]** をクリックします。
 
-	![Enter the host name and port information](./media/CreateVirtualMachineLinuxTutorial/putty.png)
+	![ホスト名とポート情報を入力します。](./media/CreateVirtualMachineLinuxTutorial/putty.png)
 
-4. Log on to the virtual machine using the NewUser1 account that you specified when the machine was created.
+4. マシンの作成時に指定した NewUser1 アカウントを使用して仮想マシンにログオンします。
 
-	![Log on to the new virtual machine](./media/CreateVirtualMachineLinuxTutorial/sshlogin.png)
+	![新しい仮想マシンへのログオン](./media/CreateVirtualMachineLinuxTutorial/sshlogin.png)
 
-	You can now work with the virtual machine just as you would with any other server.
-
-
-## <a id="attachdisk"> </a>How to attach a data disk to the new virtual machine ##
-
-Your application may need to store data. To set this up, you attach a data disk to the virtual machine that you previously created. The easiest way to do this is to attach an empty data disk to the machine.
-
-**Note: Data Disk vs. Resource Disk**  
-Data Disks reside on Azure Storage and can be used for persistent storage of files and application data.
-
-Each virtual machine created also has a temporary local *Resource Disk* attached. Because data on a resource disk may not be durable across reboots, it is often used by applications and processes running in the virtual machine for transient and temporary storage of data. It is also used to store page or swap files for the operating system.
-
-On Linux, the Resource Disk is typically managed by the Azure Linux Agent and automatically mounted to **/mnt/resource** (or **/mnt** on Ubuntu images). Please see the [Azure Linux Agent User Guide](http://www.windowsazure.com/en-us/manage/linux/how-to-guides/linux-agent-guide/) for more information.
+	これで、仮想マシンを他のサーバーとまったく同様に扱うことができます。
 
 
-1. If you have not already done so, sign in to the Azure Management Portal.
+## <a id="attachdisk"> </a>新しい仮想マシンにデータ ディスクを接続する方法##
 
-2. Click **Virtual Machines**, and then select the **MyTestVM1** virtual machine that you previously created.
+アプリケーションによってはデータの保存が必要になる場合があります。そのためには、前の手順で作成した仮想マシンにデータ ディスクを接続します。最も簡単な方法は、仮想マシンに空のデータ ディスクを接続することです。
 
-3. On the command bar, click **Attach**, and then click **Attach Empty Disk**.
+**メモ: データ ディスクとリソース ディスク**
+データ ディスクは Windows Azure のストレージ内に存在し、ファイルとアプリケーション データの永続的なストレージとして使用できます。
+
+作成した各仮想マシンには、一時的なローカル *リソース ディスク*も接続されています。リソース ディスク上のデータには、再起動を行った場合の持続性がないため、多くの場合は仮想マシン上で実行されているアプリケーションとプロセスが、このディスクを過渡的および一時的なストレージとして使用します。また、オペレーティング システムのページ ファイルやスワップ ファイルを格納する目的でも使用されます。
+
+Linux では通常、リソース ディスクは Windows Azure Linux エージェントによって管理され、**/mnt/resource** (または Ubuntu イメージでは **/mnt**) に自動的にマウントされます。詳細については、「[Windows Azure Linux Agent User Guide (Windows Azure Linux エージェント ユーザー ガイド)](http://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/linux-agent-guide/)」を参照してください。
+
+
+1. まだサインインしていない場合は、Windows Azure の管理ポータルにサインインします。
+
+2. **[仮想マシン]** をクリックし、前の手順で作成した **MyTestVM1** 仮想マシンを選択します。
+
+3. コマンド バーで、**[ディスクの接続]**、**[空のディスクの接続]** の順にクリックします。
 	
-	The **Attach Empty Disk** dialog box appears.
+	**[空のディスクの接続]** ダイアログ ボックスが表示されます。
 
-	![Define disk details](./media/CreateVirtualMachineLinuxTutorial/attachnewdisklinux.png)
+	![ディスクの詳細の定義](./media/CreateVirtualMachineLinuxTutorial/attachnewdisklinux.png)
 
-4. The **Virtual Machine Name**, **Storage Location**, and **File Name** are already defined for you. All you have to do is enter the size that you want for the disk. Type **5** in the **Size** field.
+4. **[仮想マシン名]**、**[ストレージの場所]**、**[ファイル名]** の値は既に定義されています。必要なのは、ディスクのサイズを入力することだけです。**[サイズ]** ボックスに「**5**」と入力します。
 
-	**Note:** All disks are created from a VHD file in Azure storage. You can provide a name for the VHD file that is added to storage, but the name of the disk is automatically generated.
+	**注:** ディスクはすべて、VHD ファイルから Windows Azure のストレージに作成されます。ストレージに追加する VHD ファイルの名前は指定できますが、ディスクの名前は自動的に生成されます。
 
-5. Click the check mark to attach the data disk to the virtual machine.
+5. チェック マークをクリックして、仮想マシンにデータ ディスクを接続します。
 
-6. You can verify that the data disk is successfully attached to the virtual machine by looking at the dashboard. Click the name of the virtual machine to display the dashboard.
+6. ダッシュボードを表示すると、データ ディスクが仮想マシンに正しく接続されたかを確認できます仮想マシンの名前をクリックすると、ダッシュボードが表示されます。
 
-	The number of disks is now 2 for the virtual machine and the disk that you attached is listed in the **Disks** table.
+	仮想マシンに接続されているディスクの数が現在 "2" であることがわかります。**[ディスク]** ボックスの一覧には、接続されているディスクが表示されています。
 
-	![Attach disk success](./media/CreateVirtualMachineLinuxTutorial/attachemptysuccess.png)
+	![正しく接続されたディスク](./media/CreateVirtualMachineLinuxTutorial/attachemptysuccess.png)
 
+仮想マシンに接続したばかりのデータ ディスクはオフラインで、追加後も初期化されません。データ ディスクを使用してデータを保存するには、仮想マシンにログオンし、ディスクを初期化する必要があります。
 
-The data disk that you just attached to the virtual machine is offline and not initialized after you add it. You must log on to the machine and initialize the disk to use it for storing data.
+1. 上にリストされた「**仮想マシンを作成後、ログオンする方法**」の手順を使用して仮想マシンに接続します。
 
-1. Connect to the virtual machine by using the steps listed above in **How to log on to the virtual machine after you create it**.
-
-
-2. In the SSH window, type the following command, and then enter the account password:
+2. SSH のウィンドウで、次のコマンドを入力し、アカウントのパスワードとして「**MyPassword1**」と入力します。
 
 	`sudo grep SCSI /var/log/messages`
 
-	You can find the identifier of the last data disk that was added in the messages that are displayed.
+	表示されたメッセージで、最後に追加されたデータ ディスクの識別子を確認できます。
 
-	![Identify disk](./media/CreateVirtualMachineLinuxTutorial/diskmessages.png)
+	![ディスクの識別](./media/CreateVirtualMachineLinuxTutorial/diskmessages.png)
 
-
-3. In the SSH window, type the following command to create a new device, and then enter the account password:
+3. SSH のウィンドウで、次のコマンドを入力して新しいデバイスを作成し、アカウントのパスワードとして「**MyPassword1**」と入力します。
 
 	`sudo fdisk /dev/sdc`
 
-	>[WACOM.NOTE] In this example you may need to use `sudo -i` on some distributions if /sbin or /usr/sbin are not in your `$PATH`.
+4. 「**n**」を入力すると、新しいパーティションが作成されます。
 
+	![新しいデバイスの作成](./media/CreateVirtualMachineLinuxTutorial/diskpartition.png)
 
-4. Type **n** to create a new partition.
+5. パーティションをプライマリ パーティションにするには「**p**」を、最初のパーティションにするには「**1**」を、シリンダーの既定値をそのまま使用するには Enter キーを押します。
 
-	![Create new device](./media/CreateVirtualMachineLinuxTutorial/diskpartition.png)
+	![パーティションの作成](./media/CreateVirtualMachineLinuxTutorial/diskcylinder.png)
 
+6. 「**p**」を入力すると、パーティション分割されたディスクに関する詳細情報が表示されます。
 
-5. Type **p** to make the partition the primary partition, type **1** to make it the first partition, and then type enter to accept the default value for the cylinder.
+	![ディスク情報の表示](./media/CreateVirtualMachineLinuxTutorial/diskinfo.png)
 
-	![Create partition](./media/CreateVirtualMachineLinuxTutorial/diskcylinder.png)
+7. 「**w**」と入力すると、ディスクの設定が書き込まれます。
 
+	![ディスクの変更の書き込み](./media/CreateVirtualMachineLinuxTutorial/diskwrite.png)
 
-6. Type **p** to see the details about the disk that is being partitioned.
-
-	![List disk information](./media/CreateVirtualMachineLinuxTutorial/diskinfo.png)
-
-
-7. Type **w** to write the settings for the disk.
-
-	![Write the disk changes](./media/CreateVirtualMachineLinuxTutorial/diskwrite.png)
-
-
-8. You must create the file system on the new partition. As an example, type the following command to create the file system, and then enter the account password:
+8. 新しいパーティションにファイル システムを作成する必要があります。次のコマンドを入力してファイル システムを作成し、アカウントのパスワードとして「MyPassword1」と入力します。
 
 	`sudo mkfs -t ext4 /dev/sdc1`
 
-	![Create file system](./media/CreateVirtualMachineLinuxTutorial/diskfilesystem.png)
+	![ファイル システムの作成](./media/CreateVirtualMachineLinuxTutorial/diskfilesystem.png)
 
-	>[WACOM.NOTE] Note that on SUSE Linux Enterprise 11 systems provide only read-only access for ext4 file systems.  For these systems it is recommended to format the new file system as ext3 rather than ext4.
+9. 次のコマンドを入力してドライブのマウント先のディレクトリを作成し、アカウントのパスワードとして「**MyPassword1**」と入力します。
 
+	`sudo mkdir /mnt/datadrive`
 
-9. Next you must have a directory available to mount the new file system. As an example, type the following command to make a new directory for mounting the drive, and then enter the account password:
+10. 次のコマンドを入力してドライブをマウントします。
 
-	`sudo mkdir /datadrive`
+	`sudo mount /dev/sdc1 /mnt/datadrive`
 
+	これで、データ ディスクを **/mnt/datadrive** として使用する準備ができました。
 
-10. Type the following command to mount the drive:
+11. 新しいドライブを /etc/fstab に追加します。
 
-	`sudo mount /dev/sdc1 /datadrive`
-
-	The data disk is now ready to use as **/datadrive**.
-
-
-11. Add the new drive to /etc/fstab:
-
-	To ensure the drive is re-mounted automatically after a reboot it must be added to the /etc/fstab file. In addition, it is highly recommended that the UUID (Universally Unique IDentifier) is used in /etc/fstab to refer to the drive rather than just the device name (i.e. /dev/sdc1). To find the UUID of the new drive you can use the **blkid** utility:
+	再起動後にドライブを自動的に再マウントするために、そのドライブを /etc/fstab ファイルに追加する必要があります。また、ドライブを参照する際に、デバイス名 (つまり /dev/sdc1) だけではなく、UUID (汎用一意識別子) を /etc/fstab で使用することもお勧めします。新しいドライブの UUID を確認するには、**blkid** ユーティリティを次のように使用します。
 	
-		`sudo -i blkid`
+	`sudo -i blkid`
 
-	The output will look similar to the following:
+	次のような出力が表示されます。
 
 		`/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"`
 		`/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"`
 		`/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"`
 
-	>[WACOM.NOTE] blkid may not require sudo access in all cases, however, it may be easier to run with `sudo -i` on some distributions if /sbin or /usr/sbin are not in your `$PATH`.
+	**メモ:** blkid では、どの場合でも sudo アクセスは必要ありませんが、/sbin または /usr/sbin が "$PATH" にない場合は、一部のディストリビューションで "sudo -i" を使用した方が簡単に実行できる可能性があります。
 
-	**Caution:** Improperly editing the /etc/fstab file could result in an unbootable system. If unsure, please refer to the distribution's documentation for information on how to properly edit this file. It is also recommended that a backup of the /etc/fstab file is created before editing.
+	**注意事項:** /etc/fstab ファイルを不適切に編集すると、システムが起動できなくなる可能性があります。編集方法がはっきりわからない場合は、このファイルを適切に編集する方法について、ディストリビューションのドキュメントを参照してください。編集する前に、/etc/fstab ファイルのバックアップを作成することもお勧めします。
 
-	Using a text editor, enter the information about the new file system at the end of the /etc/fstab file.  In this example we will use the UUID value for the new **/dev/sdc1** device that was created in the previous steps, and the mountpoint **/datadrive**:
+	テキスト エディターを使用して、/etc/fstab ファイルの最後の部分に新しいファイル システムに関する情報を入力します。この例では、前の手順で作成した新しい **/dev/sdc1** デバイスに対して UUID 値を使用し、マウント ポイントとして **/mnt/datadrive** を使用します。
 
-		`UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2`
+	`UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e    /mnt/datadrive    ext4    defaults    1    1`
 
-	Or, on systems based on SUSE Linux you may need to use a slightly different format:
+	追加のデータ ドライブやパーティションを作成する場合、それらも /etc/fstab に入力する必要があります。
 
-		`/dev/disk/by-uuid/33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /   ext3   defaults   1   2`
+	これで、ファイル システムが正しくマウントされるかどうかをテストできます。そのためには、ファイル システムをマウント解除してから、再度マウントします。つまり、前の手順で作成したサンプルのマウント ポイント "/mnt/datadrive" を使用します。
 
-	If additional data drives or partitions are created you will need to enter them into /etc/fstab separately as well.
+		`sudo umount /mnt/datadrive`
+		`sudo mount /mnt/datadrive`
 
-	You can now test that the file system is mounted properly by simply unmounting and then re-mounting the file system, i.e. using the example mount point `/datadrive` created in the earlier steps: 
+	2 番目のコマンドでエラーが発生した場合、/etc/fstab ファイルの構文が正しいかどうかを確認してください。
 
-		`sudo umount /datadrive`
-		`sudo mount /datadrive`
+##次のステップ
 
-	If the second command produces an error, check the /etc/fstab file for correct syntax.
+Windows Azure 上の Linux の詳細については、次の記事を参照してください。
 
+- [Windows Azure での Linux 入門](http://www.windowsazure.com/ja-jp/documentation/articles/introduction-linux/)
 
-	>[WACOM.NOTE] Subsequently removing a data disk without editing fstab could cause the VM to fail to boot. If this is a common occurrence, then most distributions provide either the `nofail` and/or `nobootwait` fstab options that will allow a system to boot even if the disk is not present. Please consult your distribution's documentation for more information on these parameters.
-
-
-##Next Steps 
-
-To learn more about Linux on Azure, see the following articles:
-
-- [Introduction to Linux on Azure](http://www.windowsazure.com/en-us/documentation/articles/introduction-linux/)
-
-- [How to use the Azure Command-Line Tools for Mac and Linux](http://www.windowsazure.com/en-us/documentation/articles/xplat-cli/)
+- [Mac および Linux 用 Windows Azure コマンド ライン ツールの使用方法](http://www.windowsazure.com/ja-jp/documentation/articles/xplat-cli/)
 
 
-[Next Steps]: #next
-[About virtual machines in Azure]: #virtualmachine
-[How to create the virtual machine]: #custommachine
-[How to log on to the virtual machine after you create it]: #logon
-[How to attach a data disk to the new virtual machine]: #attachdisk
+[次のステップ]: #next
+[Windows Azure での仮想マシンについて]: #virtualmachine
+[仮想マシンの作成方法]: #custommachine
+[仮想マシンを作成後、ログオンする方法]: #logon
+[新しい仮想マシンにデータ ディスクを接続する方法]: #attachdisk
+

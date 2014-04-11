@@ -1,11 +1,11 @@
-Follow these steps to install and run MongoDB on a virtual machine running CentOS Linux.
+次のステップに従って、MongoDB を CentOS Linux が実行されている仮想マシンにインストールして実行します。
 
 <div class="dev-callout">
-<b>Warning</b>
-<p>MongoDB security features, such as authentication and IP address binding, are not enabled by default. Security features should be enabled before deploying MongoDB to a production environment.  See <a href="http://www.mongodb.org/display/DOCS/Security+and+Authentication">Security and Authentication</a> for more information.</p>
+<b>警告</b>
+<p>認証、IP アドレス バインドなどの MongoDB セキュリティ機能は既定では有効になっていません。MongoDB を運用環境に展開する前に、セキュリティ機能を有効にすることをお勧めします。詳細については、「<a href="http://www.mongodb.org/display/DOCS/Security+and+Authentication">Security and Authentication (セキュリティと認証)</a>」を参照してください。</p>
 </div>
 
-1. Configure the Package Management System (YUM) so that you can install MongoDB. Create a */etc/yum.repos.d/10gen.repo* file to hold information about your repository and add the following:
+1. MongoDB をインストールできるようにパッケージ管理システム (YUM) を構成します。*/etc/yum.repos.d/10gen.repo* ファイルを作成し、リポジトリの情報を保存して、以下を追加します。
 
 		[10gen]
 		name=10gen Repository
@@ -13,29 +13,29 @@ Follow these steps to install and run MongoDB on a virtual machine running CentO
 		gpgcheck=0
 		enabled=1
 
-2. Save the repo file and then run the following command to update the local package database:
+2. repo ファイルを保存し、次のコマンドを実行して、ローカル パッケージ データベースを更新します。
 
 		$ sudo yum update
-3. To install the package, run the following command to install the latest stable version of MongoDB and the associated tools:
+3. パッケージをインストールするには、次のコマンドを実行し、MongoDB の最新の安定バージョンと関連ツールをインストールします。
 
 		$ sudo yum install mongo-10gen mongo-10gen-server
 
-	Wait while MongoDB downloads and installs.
+	MongoDB がダウンロードおよびインストールされるまで待ちます。
 
-4. Create a data directory. By default MongoDB stores data in the */data/db* directory, but you must create that directory. To create it, run:
+4. データ ディレクトリを作成します。MongoDB では */data/db* ディレクトリにデータが保存されるように既定で設定されていますが、このディレクトリは作成する必要があります。作成するには、次のように実行します。
 
 		$ sudo mkdir -p /mnt/datadrive/data
 		$ sudo chown `id -u` /mnt/datadrive/data
 
-	For more information on installing MongoDB on Linux, see [Quickstart Unix][QuickstartUnix].
+	Linux への MongoDB のインストールの詳細については、「[Install MongoDB on Linux (Linux への MongoDB のインストール)][QuickstartUnix]」を参照してください。
 
-5. To start the database, run:
+5. データベースを開始するには、次を実行します。
 
 		$ mongod --dbpath /mnt/datadrive/data --logpath /mnt/datadrive/data/mongod.log
 
-	All log messages will be directed to the */mnt/datadrive/data/mongod.log* file as MongoDB server starts and preallocates journal files. It may take several minutes for MongoDB to preallocate the journal files and start listening for connections.
+	MongoDB サーバーがジャーナル ファイルを開始して事前に割り当てると、すべてのログ メッセージが */mnt/datadrive/data/mongod.log* ファイルにダイレクトされます。MongoDB がジャーナル ファイルを事前に割り当てて、接続のリッスンを開始するには、数分かかる場合があります。
 
-6. To start the MongoDB administrative shell, open a separate SSH or PuTTY window and run:
+6. MongoDB 管理シェルを開始するには、個別の SSH または PuTTY ウィンドウを開いて実行します。
 
 		$ mongo
 		> db.foo.save ( { a:1 } )
@@ -47,19 +47,19 @@ Follow these steps to install and run MongoDB on a virtual machine running CentO
 		...  
 		> help  
 
-	The database is created by the insert.
+	データベースは挿入によって作成されます。
 
-7. Once MongoDB is installed you must configure an endpoint so that MongoDB can be accessed remotely. In the Management Portal, click **Virtual Machines**, then click the name of your new virtual machine, then click **Endpoints**.
+7. MongoDB をインストールしたら、MongoDB にリモートでアクセスできるように、エンドポイントを構成する必要があります。管理ポータルで、**[仮想マシン]**、新しい仮想マシンの名前、**[エンドポイント]** の順にクリックします。
 	
-	![Endpoints][Image7]
+	![エンドポイント][Image7]
 
-8. Click **Add Endpoint** at the bottom of the page.
+8. ページの下部にある **[エンドポイントの追加]** をクリックします。
 	
-	![Endpoints][Image8]
+	![エンドポイント][Image8]
 
-9. Add an endpoint with name "Mongo", protocol **TCP**, and both **Public** and **Private** ports set to "27017". This will allow MongoDB to be accessed remotely.
+9. エンドポイントを追加します。名前に「Mongo」、プロトコルに **[TCP]** を指定し、**[パブリック ポート]** と **[プライベート ポート]** の両方に「27017」を指定します。これにより、MongoDB へのリモート アクセスが可能になります。
 	
-	![Endpoints][Image9]
+	![エンドポイント][Image9]
 
 
 [QuickStartUnix]: http://www.mongodb.org/display/DOCS/Quickstart+Unix
@@ -68,3 +68,4 @@ Follow these steps to install and run MongoDB on a virtual machine running CentO
 [Image7]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint.png
 [Image8]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint2.png
 [Image9]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint3.png
+

@@ -1,93 +1,94 @@
 <properties writer="josephd" editor="tysonn" manager="dongill" />
 
-#Load Balancing Virtual Machines#
+#仮想マシンの負荷分散#
 
-All virtual machines that you create in Azure can automatically communicate using a private network channel with other virtual machines in the same cloud service or virtual network. All other inbound communication, such as traffic initiated from Internet hosts or virtual machines in other cloud services or virtual networks, requires an endpoint.
+同じクラウド サービスまたは仮想ネットワーク内であれば、Windows Azure で作成したすべての仮想マシンが、プライベート ネットワーク チャネルを使用して他の仮想マシンと自動的に通信できます。インターネット ホストや他のクラウド サービスまたは仮想ネットワークの仮想マシンからのトラフィックなど、他のすべての受信通信にはエンドポイントが必要です。
 
-Endpoints can be used for different purposes. The default use and configuration of endpoints on a virtual machine that you create with the Azure Management Portal are for the Remote Desktop Protocol (RDP) and remote Windows PowerShell session traffic. These endpoints allow you to remotely administer the virtual machine over the Internet. 
+エンドポイントは、さまざまな目的で使用できます。Windows Azure の管理ポータルを使用して作成した仮想マシンのエンドポイントは、既定で、リモート デスクトップ プロトコル (RDP) とリモート Windows PowerShell セッションのトラフィック用に使用および構成されます。これらのエンドポイントを使用して、インターネット上で仮想マシンをリモートで管理することができます。
 
-Another use of endpoints is the configuration of the Azure Load Balancer to distribute a specific type of traffic between multiple virtual machines or services. For example, you can spread the load of web request traffic across multiple web servers or web roles.
+エンドポイントのもう 1 つの使用方法は、Windows Azure ロード バランサーを構成して、複数の仮想マシンまたはサービス間で特定の種類のトラフィックを分散することです。たとえば、複数の Web サーバーまたは Web ロール間で Web 要求のトラフィックの負荷を分散できます。
 
-Each endpoint defined for a virtual machine is assigned a public and private port, either TCP or UDP. Internet hosts send their incoming traffic to the public IP address of the cloud service and a public port. Virtual machines and services within the cloud service listen on their private IP address and private port. The Load Balancer maps the public IP address and port number of incoming traffic to the private IP address and port number of the virtual machine and vice versa for the response traffic from the virtual machine.
+仮想マシンに定義された各エンドポイントには、パブリック ポートとプライベート ポート (TCP または UDP) が割り当てられています。インターネット ホストは、着信トラフィックをクラウド サービスまたはパブリック ポートのパブリック IP アドレスに送信します。クラウド サービス内の仮想マシンとサービスは、プライベート IP アドレスとプライベート ポートでリッスンします。ロード バランサーは、着信トラフィックのパブリック IP アドレスとポート番号を仮想マシンのプライベート IP アドレスとポート番号にマップし、仮想マシンからの応答トラフィックはその逆にマップします。
 
-When you configure load balancing of traffic among multiple virtual machines or services, Azure provides random distribution of the incoming traffic.
+複数の仮想マシンまたはサービス間のトラフィックの負荷分散を構成すると、Windows Azure は着信トラフィックをランダムに配分します。
 
-For a cloud service that contains instances of web roles or worker roles, you can define a public endpoint in the service definition. For a cloud service that contains virtual machines, you can add an endpoint to a virtual machine when you create it or you can add the endpoint later. 
+クラウド サービスに Web ロールまたは Worker ロールのインスタンスが含まれる場合、サービス定義でパブリック エンドポイントを定義できます。クラウド サービスに仮想マシンが含まれる場合、仮想マシンを作成するときにエンドポイントを追加するか、またはエンドポイントを後で追加できます。
 
-The following figure shows a load-balanced endpoint for standard (unencrypted) web traffic that is shared among three virtual machines for the public and private TCP port of 80. These three virtual machines are in a load-balanced set.
+次の図は、標準の (暗号化されていない) Web トラフィック用の負荷分散されたエンドポイントを示しています。このエンドポイントは、パブリックとプライベートの TCP ポートが 80 である 3 台の仮想マシン間で共有されています。この 3 台の仮想マシンは、1 つの負荷分散セット内にあります。
 
 ![loadbalancing](./media/load-balancing-vms/LoadBalancing.png)
 
-When Internet clients send web page requests to the public IP address of the cloud service and TCP port 80, the Load Balancer performs a random balancing of those requests between the three virtual machines in the load-balanced set.
+複数のインターネット クライアントがクラウド サービスのパブリック IP アドレスと TCP ポート 80 に Web ページ要求を送信すると、ロード バランサーはこの負荷分散セット内の 3 台の仮想マシン間でこれらの要求をランダムに負荷分散します。
 
-To create a load-balanced set of Azure virtual machines, use the following steps:
+Windows Azure の仮想マシンの負荷分散セットを作成するには、次のステップを実行します。
 
 
-- [Step 1: Create the first virtual machine] []
-- [Step 2: Create additional virtual machines in the same cloud service] []
-- [Step 3: Create a load balanced set with the first virtual machine] []
-- [Step 4: Add virtual machines to the load-balanced set] []
+- [ステップ 1: 最初の仮想マシンを作成する] []
+- [ステップ 2: 同じクラウド サービスに配置される追加の仮想マシンを作成する] []
+- [ステップ 3: 最初の仮想マシンを使用して負荷分散セットを作成する] []
+- [ステップ 4: 負荷分散セットに仮想マシンを追加する] []
 
-## <a id="firstmachine"> </a>Step 1: Create the first virtual machine ##
+## <a id="firstmachine"> </a>ステップ 1: 最初の仮想マシンを作成する##
 
-If you have not already done so, sign in to the [Azure Management Portal](http://manage.windowsazure.com). You can create the first virtual machine using either the From Gallery or the Quick Create method. 
+まだサインインしていない場合は、[Windows Azure の管理ポータル](http://manage.windowsazure.com)にサインインします。最初の仮想マシンは、[ギャラリーから] または [簡易作成] の方法で作成できます。
 
-- **From Gallery** - The **From Gallery** method allows you to create endpoints when you create the virtual machine, and it allows you to specify a name for the cloud service that is created when you create the virtual machine. For instructions, see [Create a Virtual Machine Running Linux] or [Create a Virtual Machine Running Windows Server].
+- **[ギャラリーから]** - **[ギャラリーから]** の方法を使用すると、仮想マシンを作成するときにエンドポイントを作成できます。また、仮想マシンの作成時に作成されるクラウド サービスの名前を指定することもできます。手順については、「[Create a Virtual Machine Running Linux (Linux を実行する仮想マシンの作成)]」または「[Create a Virtual Machine Running Windows Server (Windows Server を実行する仮想マシンの作成)]」を参照してください。
 
-- **Quick Create** - Create a virtual machine by choosing an image from the Image Gallery and providing basic information. When you use this method, you will need to add the endpoint after you create the virtual machine. This method also creates a cloud service using a default name. For more information, see [How to quickly create a virtual machine] []. 
+- **[簡易作成]** - イメージ ギャラリーからイメージを選択し、基本情報を指定して、仮想マシンを作成します。この方法を使用するときは、仮想マシンを作成した後でエンドポイントを追加する必要があります。この方法では、既定の名前を使用してクラウド サービスも作成されます。詳細については、「[How to quickly create a virtual machine (仮想マシンをすばやく作成する方法)] []」を参照してください。
 
-**Note**: After the virtual machine is created with Quick Create, the Cloud Services page of the Management Portal lists the name of the new cloud service as well as other information about the service.
+**注**: 簡易作成を使用して仮想マシンが作成されると、管理ポータルの [クラウド サービス] ページに新しいクラウド サービスの名前とサービスに関するその他の情報が表示されます。
 
-## <a id="addmachines"> </a>Step 2: Create additional virtual machines in the same cloud service ##
+## <a id="addmachines"> </a>ステップ 2: 同じクラウド サービスに配置される追加の仮想マシンを作成する##
 
-Create your additional virtual machines in the same cloud service as the first virtual machine using the From Gallery method.
+[ギャラリーから] の方法を使用して、最初の仮想マシンと同じクラウド サービスに追加の仮想マシンを作成します。
 
-## <a id="loadbalance"> </a>Step 3: Create a load balanced set with the first virtual machine ##
+## <a id="loadbalance"> </a>ステップ 3: 最初の仮想マシンを使用して負荷分散セットを作成する##
 
-1. In the Azure Management Portal, click **Virtual Machines**, and then click the name of the first virtual machine.
+1. Windows Azure の管理ポータルで、**[仮想マシン]** をクリックし、最初の仮想マシンの名前をクリックします。
 	
-2. Click **Endpoints**, and then click **Add**.
+2. **[エンドポイント]** をクリックし、**[追加]** をクリックします。
 
-3. On the Add an endpoint to a virtual machine page, click the right arrow.
+3. [仮想マシンにエンドポイントを追加します] ページで、右矢印をクリックします。
 	
-4. On the Specify the details of the endpoint page:
+4. [エンドポイントの詳細を指定します] ページで、次のように指定します。
 
-	- In **Name**, type a name for the endpoint or select from the list of predefined endpoints for common protocols.
-	- In **Protocol**, select the protocol required by the type of endpoint, either TCP or UDP, as needed.
-	- In **Public Port** and **Private Port**, type the port numbers that you want the virtual machine to use, as needed. You can use the private port and firewall rules on the virtual machine to redirect traffic in a way that is appropriate for your application. The private port can be the same as the public port. For example, for an endpoint for web (HTTP) traffic, you could assign port 80 to both the public and private port.
+	- **[名前]** にエンドポイントの名前を入力するか、一般的なプロトコル用にあらかじめ定義されているエンドポイントの一覧から選択します。
+	- **[プロトコル]** で、エンドポイントの種類に応じて必要となるプロトコル (TCP または UDP) を選択します (必要な場合)。
+	- **[パブリック ポート]** と **[プライベート ポート]** に、仮想マシンが使用するポート番号を入力します (必要な場合)。仮想マシンのプライベート ポートとファイアウォール ルールを使って、アプリケーションに適した方法でトラフィックをリダイレクトすることができます。プライベート ポートはパブリック ポートと同じにできます。たとえば、Web (HTTP) トラフィック用のエンドポイントの場合、パブリック ポートとプライベート ポートの両方にポート 80 を割り当てることができます。
 
-5. Select **Create a load-balanced set**, and then click the right arrow. 
+5. **[負荷分散セットの作成]** を選択し、右矢印をクリックします。
 
-6. On the Configure the load-balanced set page, type a name for the load-balanced set and then assign the values for probe behavior of the Azure Load Balancer. The Load Balancer uses probes to determine if the virtual machines in the load-balanced set are available to receive incoming traffic.
+6. [負荷分散セットの構成] ページで、負荷分散セットの名前を入力し、Windows Azure ロード バランサーのプローブ動作の値を割り当てます。ロード バランサーはプローブを使用して、負荷分散セット内の仮想マシンが着信トラフィックを受信できるかどうかを判断します。
 
-7. Click the check mark to create the load-balanced endpoint. You will see **Yes** in the **Load-balanced set name** column of the **Endpoints** page for the virtual machine.
+7. チェック マークをクリックして、負荷分散されたエンドポイントを作成します。仮想マシンの **[エンドポイント]** ページの **[負荷分散セット名]** 列に **[はい]** が表示されます。
 
 
-## <a id="addtoset"> </a>Step 4: Add virtual machines to the load-balanced set ##
-After you create the load-balanced set, add the other virtual machines to it. For each virtual machine in the same cloud service:
+## <a id="addtoset"> </a>ステップ 4: 負荷分散セットに仮想マシンを追加する##
+負荷分散セットを作成したら、そのセットに他の仮想マシンを追加します。同じクラウド サービス内の各仮想マシンで、次のステップを実行します。
 
-1. In the Management Portal, click **Virtual Machines**, click the name of the virtual machine, click **Endpoints**, and then click **Add**.
+1. 管理ポータルで、**[仮想マシン]**、仮想マシンの名前、**[エンドポイント]**、**[追加]** の順にクリックします。
 	
-2. On the Add an endpoint to a virtual machine page, click **Add endpoint to an existing load-balanced set**, select the name of the load-balanced set, and then click the right arrow.
+2. [仮想マシンにエンドポイントを追加します] ページで、**[既存の負荷分散セットにエンドポイントを追加する]** をクリックし、負荷分散セットの名前を選択して、右矢印をクリックします。
 	
-3. On the Specify the details of the endpoint page, type a name for the endpoint, and then click the check mark.
+3. [エンドポイントの詳細を指定します] ページで、エンドポイントの名前を入力し、チェック マークをクリックします。
 
-[Step 1: Create the first virtual machine]: #firstmachine
-[Step 2: Create additional virtual machines in the same cloud service]: #addmachines
-[Step 3: Create a load balanced set with the first virtual machine]: #loadbalance
-[Step 4: Add virtual machines to the load-balanced set]: #addtoset
+[ステップ 1: 最初の仮想マシンを作成する]: #firstmachine
+[ステップ 2: 同じクラウド サービスに配置される追加の仮想マシンを作成する]: #addmachines
+[ステップ 3: 最初の仮想マシンを使用して負荷分散セットを作成する]: #loadbalance
+[ステップ 4: 負荷分散セットに仮想マシンを追加する]: #addtoset
 
 
 <!-- LINKS -->
 
-[Create a Virtual Machine Running Linux]: ../virtual-machines-linux-tutorial
+[Linux を実行する仮想マシンの作成]: ../virtual-machines-linux-tutorial
 
-[Create a Virtual Machine Running Windows Server]: ../virtual-machines-windows-tutorial
+[Windows Server を実行する仮想マシンの作成]: ../virtual-machines-windows-tutorial
 
-[How to quickly create a virtual machine]: ../virtual-machines-quick-create
+[仮想マシンをすばやく作成する方法]: ../virtual-machines-quick-create
 
-[How to connect virtual machines in a cloud service]: ../virtual-machines-connect-cloud-service
+[クラウド サービス内の仮想マシンを接続する方法]: ../virtual-machines-connect-cloud-service
 
-[Get Started with Azure PowerShell]:http://msdn.microsoft.com/en-us/library/jj156055.aspx
+[Windows Azure PowerShell]:http://msdn.microsoft.com/ja-jp/library/jj156055.aspx
 
-[Azure Virtual Network Overview]: http://go.microsoft.com/fwlink/p/?LinkID=294063
+[Windows Azure の仮想ネットワークの概要]: http://go.microsoft.com/fwlink/p/?LinkID=294063
+

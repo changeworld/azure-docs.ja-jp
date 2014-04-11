@@ -1,85 +1,86 @@
-#How to Create a MySQL Database in Azure
+#Windows Azure で MySQL データベースを作成する方法
 
-This guide will show you how to use [ClearDB] to create a MySQL database from the [Azure Store] and  how to create a MySQL database as a linked resource when you create a [Azure Web Site][waws] . [ClearDB] is a fault-tolerant database-as-a-service provider that allows you to run and manage MySQL databases in Azure datacenters and connect to them from any application.  
+このガイドでは、[ClearDB] を使用して [Windows Azure ストア]から MySQL データベースを作成する方法と、[Windows Azure の Web サイト][waws]を作成するときに MySQL データベースをリンク済みリソースとして作成する方法について説明します。[ClearDB] は、サービスとしてのフォルト トレラント データベース プロバイダーであり、Windows Azure データセンターで MySQL データベースを実行および管理し、どのアプリケーションからもデータベースに接続できるようにしています。
 
-##Table of Contents
-* [How to: Create a MySQL database from the Azure Store](#CreateFromStore)
-* [How to: Create a MySQL database as a linked resource for Azure Web Site](#CreateForWebSite)
+##目次
+* [方法: Windows Azure ストアからの MySQL データベースの作成](#CreateFromStore)
+* [方法: Windows Azure の Web サイトのリンク済みリソースとしての MySQL データベースの作成](#CreateForWebSite)
 
 <div class="dev-callout"> 
-<b>Note</b> 
-<p>When you create a MySQL database as part of the Web Site creation process, you can only create a free database. Creating a MySQL database from the Azure Store allows you to create a free database or choose from paid options.</p> 
+<b>メモ</b> 
+<p>MySQL データベースを Web サイト作成プロセスの一部として作成するときは、無料データベースを作成するだけでかまいません。Windows Azure ストアから MySQL データベースを作成すると、無料データベースを作成するか、有料オプションから選択することができます。</p>
 </div>
 
-<h2><a id="CreateFromStore"></a>How to: Create a MySQL database from the Azure Store</h2>
+<h2><a id="CreateFromStore"></a>方法: Windows Azure ストアからの MySQL データベースの作成</h2>
 
-To create a MySQL database from the [Azure Store], do the following:
+[Windows Azure ストア]から MySQL データベースを作成するには、以下の手順を実行します。
 
-1. Log in to the [Azure Management Portal][portal].
-2. Click **+NEW** at the bottom of the page, then select **STORE**.
+1. [Windows Azure の管理ポータル][portal]にログインします。
+2. ページの下部にある **[+新規]** をクリックし、**[ストア]** を選択します。
 
-	![Select add-on from store](./media/create-mysql-db/select-store.png)
+	![ストアからアドオンを選択](./media/create-mysql-db/select-store.png)
 
-3. Select **ClearDB MySQL Database**, then click the arrow at the bottom of the frame.
+3. **[ClearDB MySQL データベース]** を選択し、フレームの下部にある矢印をクリックします。
 
-	![Select ClearDB MySQL Database](./media/create-mysql-db/select-cleardb-mysql.png)
+	![ClearDB MySQL データベースの作成](./media/create-mysql-db/select-cleardb-mysql.png)
 
-4. Select a plan, enter a database name, and select a region, then click the arrow at the bottom of the frame.
+4. プランを選択してデータベース名を入力し、リージョンを選択してフレームの下部にある矢印をクリックします。
 
-	![Purchase MySQL database from store](./media/create-mysql-db/purchase-mysql.png)
+	![ストアから MySQL データベースを購入](./media/create-mysql-db/purchase-mysql.png)
 
-5. Click the checkmark to complete your purchase.
+5. チェックマークをクリックして購入を完了します。
 
-	![Review and complete your purchase](./media/create-mysql-db/complete-mysql-purchase.png)
+	![購入を確認して完了](./media/create-mysql-db/complete-mysql-purchase.png)
 
-6. After your database has been created, you can manage it from the **ADD-ONS** tab in the management portal.
+6. データベースが作成されたら、管理ポータルの **[アドオン]** タブから管理できます。
 
-	![Manage MySQL database in Azure portal](./media/create-mysql-db/manage-mysql-add-on.png)
+	![Windows Azure ポータルで MySQL データベースを管理](./media/create-mysql-db/manage-mysql-add-on.png)
 
-7. You can get the database connection information by clicking on **CONNECTION INFO** at the bottom of the page (shown above).
+7. ページの下部にある **[接続文字列]** をクリックして、データベース接続情報を取得できます (上図を参照)。
 
-	![MySql connection information](./media/create-mysql-db/mysql-conn-info.png) 
+	![MySql の接続情報](./media/create-mysql-db/mysql-conn-info.png)
 
 
-<h2><a id="CreateForWebSite"></a>How to: Create a MySQL database as a linked resource for Azure Web Site</h2>
+<h2><a id="CreateForWebSite"></a>方法: Windows Azure の Web サイトのリンク済みリソースとしての MySQL データベースの作成</h2>
 
-To create a MySQL database as a linked resource when you create a [Azure Web Site][waws], do the following:
+[Windows Azure の Web サイト][waws]を作成するときに MySQL データベースをリンク済みリソースとして作成するには、以下の手順を実行します。
 
-1. Log in to the [Azure Management Portal][portal].
-2. Click **+NEW** at the bottom of the page, then select **COMPUTE**, **WEB SITE**, and **CREATE WITH DATABASE**.
+1. [Windows Azure の管理ポータル][portal]にログインします。
+2. ページの下部にある **[+新規]** をクリックし、**[コンピューティング]**、**[Web サイト]**、**[データベースとともに作成]** の順に選択します。
 
-	![Create website with database](./media/create-mysql-db/custom_create.png)
+	![データベースを使用する Web サイトの作成](./media/create-mysql-db/custom_create.png)
 
-3. Provide a **URL** for your web site, select the **REGION** for your site, and choose **Create a new MySQL database** from the **DATABASE** dropdown. Optionally, you can replace the default name for the connection string. Click the arrow at the bottom of the page.
+3. Web サイトの **URL** を指定して、サイトの**リージョン**を選択し、**[データベース]** ドロップダウン リストから **[新しい MySQL データベースを作成します]** を選択します。オプションで、接続文字列の既定の名前を置き換えることができます。ページの下部にある矢印をクリックします。
 
-	![Provide website details](./media/create-mysql-db/provide-website-details.png) 
+	![Web サイトの詳細の指定](./media/create-mysql-db/provide-website-details.png)
 
-4. Provide a database **NAME**, select the **REGION** for your database (this should be same as the region for your web site), agree to ClearDB's legal terms, and click the checkmark at the bottom of the frame.
+4. データベースの**名前**を指定してデータベースの**リージョン**を選択し (これは Web サイトのリージョンと同じにしてください)、ClearDB の法律条項に同意して、フレームの下部にあるチェックマークをクリックします。
 
-	![Provide MySQL details](./media/create-mysql-db/provide-mysql-details.png)
+	![MySQL の詳細の指定](./media/create-mysql-db/provide-mysql-details.png)
 
-5. After your web site has been created, click on the name of your site to go to your site's dashboard.
+5. Web サイトが作成されたら、サイトの名前をクリックしてサイトのダッシュボードに移動します。
 
-	![Go to web site dashboard](./media/create-mysql-db/go-to-website-dashboard.png)
+	![Web サイトのダッシュボードに移動](./media/create-mysql-db/go-to-website-dashboard.png)
 
-6. Click on **CONFIGURE**.
+6. **[構成]** をクリックします。
 
-	![Go to configure tab](./media/create-mysql-db/go-to-configure-tab.png)
+	![[構成] タブに移動](./media/create-mysql-db/go-to-configure-tab.png)
 
-7. Scroll down to the **connection strings** section and click **Show Connection Strings**. 
+7. **[接続文字列]** セクションまで下方向へスクロールし、**[接続文字列の表示]** をクリックします。
 
-	![Show connection string](./media/create-mysql-db/show-conn-string.png)
+	![接続文字列の表示](./media/create-mysql-db/show-conn-string.png)
 
-8. Copy the connection string for use in your application.
+8. アプリケーションで使用する接続文字列をコピーします。
 
-	![Shown connection string](./media/create-mysql-db/shown-conn-string.png)
+	![表示された接続文字列](./media/create-mysql-db/shown-conn-string.png)
 
 <div class="dev-callout"> 
-<b>Note</b> 
-<p>Connection strings are accessible to your web site application by connection string name. In .NET applications, connection strings are availble in the <b>connectionStrings</b> object. In other programming languages, connection strings are accessible as environment variables. For more information, see <a href="/en-us/manage/services/web-sites/how-to-configure-websites/">How to Configure Web Sites</a>.</p> 
+<b>メモ</b> 
+<p>接続文字列には、Web サイト アプリケーションから接続文字列名によりアクセスできます。.NET アプリケーションでは、接続文字列は <b>connectionStrings</b> オブジェクトにあります。他のプログラミング言語では、接続文字列には環境変数としてアクセスできます。詳細については、「<a href="/ja-jp/manage/services/web-sites/how-to-configure-websites/">Web サイトの構成方法</a>」を参照してください。</p>
 </div>
 
 [ClearDB]: http://www.cleardb.com/
-[waws]: /en-us/manage/services/web-sites/
-[Azure Store]: /en-us/store/overview/
-[portal]: http://manage.windowsazure.com
+[waws]: /ja-jp/manage/services/web-sites/
+[Windows Azure ストア]: /ja-jp/store/overview/
+[ポータル]: http://manage.windowsazure.com
+

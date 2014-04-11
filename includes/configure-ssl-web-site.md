@@ -1,72 +1,71 @@
-#Enable HTTPS for an Azure web site
+#Windows Azure の Web サイトでの HTTPS の有効化
 
-When someone visits your web site using HTTPS, the communication between the web site and the browser is secured using Secure Socket Layer (SSL) encryption. This is the most commonly used method of securing data sent across the internet, and assures visitors that their transactions with your site are secure. This article discusses how to enable HTTPS for an Azure Web Site. 
+訪問者が HTTPS を使用して Web サイトにアクセスしてきた場合は、Web サイトとブラウザーの間の通信は Secure Socket Layer (SSL) 暗号化を使用してセキュリティで保護されます。この SSL 暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法で、またサイトの訪問者に対し、そのサイト上でのトランザクションの安全性を保証します。この記事では、Windows Azure の Web サイトに対して SSL を有効にする方法を説明します。
 
-> [WACOM.NOTE] In order to enable HTTPS for custom domain names, you must configure your web sites for standard mode. This may incur additional costs if you are currently using free or shared mode. For more information on shared and standard mode pricing, see [Pricing Details][pricing].
+> [WACOM.NOTE]カスタム ドメイン名に対して SSL を有効にするには、標準モードで Web サイトを構成する必要があります。現在無料モードまたは共有モードを使用している場合、このモードで構成を行うと追加料金が発生する場合があります。共有モードと標準モードの料金の詳細については、「[料金の詳細][pricing]」を参照してください。
 
-<a href="bkmk_azurewebsites"></a><h2>The \*.azurewebsites.net domain</h2>
+<a href="bkmk_azurewebsites"></a><h2>\*.azurewebsites.net ドメイン</h2>
 
-If you are not planning on using a custom domain name, but are instead planning on using the \*.azurewebsites.net domain assigned to your web site by Azure (for example, contoso.azurewebsites.net,) then your site is already secured by a certificate provided by Microsoft. You can use **https://mywebsite.azurewebsites.net** to access your site securely.
+カスタム ドメイン名を使用する計画がなく、代わりに Windows Azure によってサイトに割り当てられた \*.azurewebsites.net ドメイン (たとえば、contoso.azurewebsites.net) を使用することを計画している場合は、サイトは既に、Microsoft から提供される証明書によってセキュリティで保護されています。**https://mywebsite.azurewebsites.net** を使用して Web サイトに安全にアクセスすることができます。
 
-The rest of this document provides details on enabling HTTPS for custom domain names, such as **contoso.com**, **www.contoso.com**, or **\*.contoso.com**
+このドキュメントの残りの部分では、**contoso.com**、**www.contoso.com**、または **\*.contoso.com** のようなカスタム ドメイン名に対して HTTPS を有効にする方法を詳細に説明します。
 
-<a href="bkmk_domainname"></a><h2>Custom domain names</h2>
+<a href="bkmk_domainname"></a><h2>カスタム ドメイン名</h2>
 
-To enable HTTPS for a custom domain name, such as **contoso.com**, you must register a custom domain name with a domain name registrar. For more information on how to configure the domain name of an Azure Web Site, see [Configuring a custom domain name for an Azure Web Site](/en-us/develop/net/common-tasks/custom-dns-web-site/). Once you have registered a custom domain name and configured your web site to respond to the custom name, you must request an SSL certificate for the domain. 
+**contoso.com** のようなカスタム ドメイン名に対して HTTPS を有効にするには、ドメイン名レジストラーにカスタム ドメイン名を登録する必要があります。Windows Azure の Web サイトに対応するカスタム ドメイン名を構成する方法の詳細については、Windows Azure の Web サイトに対応するカスタム ドメイン名の構成に関するページ (/ja-jp/develop/net/common-tasks/custom-dns-web-site/) を参照してください。カスタム ドメイン名を登録し、そのカスタム名に応答するように Web サイトを構成した後、そのドメインに対応する SSL 証明書を要求する必要があります。
 
-Registering a domain name also enables you to create subdomains such as **www.contoso.com** or **mail.contoso.com**. Before requesting an SSL certificate you must first determine which domain names will be secured by the certificate. This will determine what type of certificate you must obtain. If you just need to secure a single domain name such as **contoso.com** or **www.contoso.com** a basic certificate will probably be sufficient. If you need to secure multiple domain names, such as **contoso.com**, **www.contoso.com**, and **mail.contoso.com**, then a wildcard certificate, or a certificate with Subject Alternate Name (subjectAltName, SAN) will be required.
+また、ドメイン名を登録した後は、**www.contoso.com** や **mail.contoso.com** のようなサブドメインを作成することもできます。SSL 証明書を要求する前に、その証明書により、どのドメイン名をセキュリティで保護するかを最初に決定する必要があります。この結果、どのような種類の証明書を取得する必要があるかが決まります。**contoso.com** または **www.contoso.com** のように、ただ 1 つのドメイン名を保護する必要がある場合は、通常は基本的な証明書で十分です。**contoso.com**、**www.contoso.com**、および **mail.contoso.com** のように複数のドメイン名を保護する必要がある場合は、ワイルドカード証明書、つまりサブジェクト代替名 (subjectAltName、SAN) を使用した証明書が必要になります。
 
-> [WACOM.NOTE] Most browsers will display a warning if the domain name specified in the certificate does not match the domain name that was entered in the browser. For example, if the certificate only lists www.contoso.com, but login.contoso.com is the domain name used to access the site in Internet Explorer, you will receive a warning that "The security certificate presented by this website was issued for a different website's address."
+> [WACOM.NOTE] 証明書で指定されているドメイン名が、ブラウザーに入力されたドメイン名と一致しない場合、ほとんどのブラウザーでは警告が表示されます。たとえば、証明書には www.contoso.com のみが示されており、Internet Explorer でサイトにアクセスするときに使用されたドメイン名が login.contoso.com である場合、"この Web サイトで提示されたセキュリティ証明書は、別の Web サイトのアドレス用に発行されたものです。" という警告が表示されます。
 
-**Basic certificates** are certificates where the Common Name (CN) of the certificate is set to the specific domain or subdomain that clients will use to visit the site. For example, **www.contoso.com**. These certificates only secure the single domain name specified by the CN.
+**基本証明書**は、証明書の共通名 (CN) が、サイトにアクセスするときにクライアントが使用する特定のドメインやサブドメインに設定されている証明書です。たとえば、**www.contoso.com** となります。これらの証明書は、CN で指定された 1 つのドメイン名のみをセキュリティで保護します。
 
-**Wildcard certificates** are certificates where the CN of the certificate contains a wildcard '\*' at the subdomain level. This allows the certificate to match a single level of subdomains for a given domain. For example, a wildcard certificate for **\*.contoso.com** would be valid for **www.contoso.com**, **payment.contoso.com**, and **login.contoso.com**. It would not be valid for **test.login.contoso.com**, as this adds an extra subdomain level. It would also not be valid for **contoso.com**, as this is the root domain level and not a subdomain.
+**ワイルドカード証明書**は、証明書の共通名 (CN) のサブドメイン レベルにワイルドカード文字 \* が含まれている証明書です。ワイルドカード文字により、この証明書では、特定のドメインについてサブドメインの単一レベルとの照合ができます。たとえば、**\*.contoso.com** に対応するワイルドカード証明書は、**www.contoso.com**、**payment.contoso.com**、**login.contoso.com** に対して有効です。ただし **test.login.contoso.com** に対しては有効ではありません。このドメインには、追加のサブドメイン レベルが含まれているためです。また **contoso.com** に対しても有効ではありません。これはルート ドメイン レベルであり、サブドメインではないためです。
 
-A wildcard certificate is what Microsoft provides for the \*.azurewebsites.net domain name automatically created for your web site.
+ワイルドカード証明書は、Web サイトに対して自動的に作成される \*.azurewebsites.net というドメイン名を対象にして Microsoft から提供されます。
 
-**subjectAltName** is an certificate extension that allows various values, or Subject Alternate Names, to be associated with a certificate. For the purpose of SSL certificates, this allows you to add additional DNS names that the certificate will be valid against. For example, a certificate using subjectAltName may have a CN of **contoso.com**, but may also have alternate names of **www.contoso.com**, **payment.contoso.com**, **test.login.contoso.com**, and even **fabrikam.com**. Such a certificate would be valid for all domain names specified in the Common Name and subjectAltName.
+**subjectAltName** は、さまざまな値 (サブジェクト代替名) を証明書に関連付けることができる証明書拡張です。SSL 証明書の場合、この証明書拡張を使用すると、証明書が有効となる DNS 名を追加することができます。たとえば、subjectAltName を使用する証明書には **contoso.com** という CN を含めることができ、さらに **www.contoso.com**、**payment.contoso.com**、**test.login.contoso.com** という代替名 (**fabrikam.com** も可能) も含めることができます。このような証明書は、共通名や subjectAltName に指定されているすべてのドメイン名に対して有効です。
 
-It is possible for a certificate to provide support for both wildcards and subjectAltName.
+証明書では、ワイルドカードと subjectAltName の両方をサポートすることができます。
 
-<a href="bkmk_getcert"></a><h2>Get a certificate</h2>
+<a href="bkmk_getcert"></a><h2>証明書の取得</h2>
 
-SSL certificates used with Azure Web Sites must be signed by a Certificate Authority (CA), a trusted third-party who issues certificates for this purpose. If you do not already have one, you will need to obtain one from a company that sells SSL certificates. For a list of Certificate Authorities, see [Windows and Windows Phone 8 SSL Root Certificate Program (Members CAs)][cas] on the Microsoft TechNet Wiki.
+Windows Azure の Web サイトで使用する SSL 証明書は、この目的で証明書を発行する、信頼されたサード パーティである証明機関 (CA) によって署名されている必要があります。まだ SSL 証明書がない場合は、SSL 証明書を販売する会社から取得する必要があります。証明機関の一覧については、Microsoft TechNet Wiki の [Windows および Windows Phone 8 SSL ルート証明書プログラム (メンバー CA) に関するページ][cas]を参照してください。
 
-The certificate must meet the following requirements for SSL certificates in Azure:
+証明書は、Windows Azure における SSL 証明書の次の要件を満たす必要があります。
 
-* The certificate must contain a private key.
+* 証明書は秘密キーを含む必要があります。
 
-* The certificate must be created for key exchange, exportable to a Personal Information Exchange (.pfx) file.
+* 証明書はキー交換のために作成され、Personal Information Exchange (.pfx) ファイルにエクスポートできる必要があります。
 
-* The certificate's subject name must match the domain used to access the web site. If you need to serve multiple domains with this certificate, you will need to use a wildcard value or specify subjectAltName values as discussed previously.
+* 証明書の件名は Web サイトへのアクセスに使用されるドメインと一致する必要があります。この証明書で複数のドメインを扱う場合は、前に説明したように、ワイルドカードの値を使用するか、subjectAltName の値を指定する必要があります。
 
-	* For information on configuring a custom domain name for an Azure Web Site, see [Configuring a custom domain name for an Azure Web Site][customdomain].
+	* Windows Azure の Web サイトのカスタム ドメイン名の構成の詳細については、「[Windows Azure の Web サイトのカスタム ドメイン名の構成に関するページ][customdomain]を参照してください。
 	
-	> [WACOM.NOTE] Do not attempt to obtain or generate a certificate for the azurewebsites.net domain.
+	> [WACOM.NOTE] azurewebsites.net ドメインに対応する証明書の取得や生成を試みないでください。
 
-* The certificate should use a minimum of 2048-bit encryption.
+* 証明書では、2,048 ビット以上の暗号化を使用する必要があります。
 
-> [WACOM.NOTE] Certificates issued from private CA servers are not supported by Azure Web Sites.
+> [WACOM.NOTE] プライベート CA サーバーから発行された証明書は、Windows Azure の Web サイトではサポートされていません。
 
-To get an SSL certificate from a Certificate Authority you must generate a Certificate Signing Request (CSR), which is sent to the CA. The CA will then return a certificate that is used to complete the CSR. Two common ways to generate a CSR are by using the certmgr.exe or [OpenSSL][openssl] applications. Certmgr.exe is only available on Windows, while OpenSSL is available for most platforms. The steps for using both of these utilities are below.
+証明機関 (CA) から SSL 証明書を取得するには、CA に送信される証明書署名要求 (CSR) を生成する必要があります。その後 CA は、CSR を完了するために使用する証明書を返します。CSR を生成する一般的な 2 つの方法は、certmgr.exe または [OpenSSL][openssl] アプリケーションを使用することです。Certmgr.exe は Windows のみで使用でき、OpenSSL はほとんどのプラットフォームで使用できます。この 2 つのユーティリティを使用する手順は次のとおりです。
 
-You may also need to obtain **intermediate certificates** (also known as chain certificates), if these are used by your CA. The use of intermediate certificates is considered more secure than 'unchained certificates', so it is common for a CA to use them. Intermediate certificates are often provided as a separate download from the CAs web site. The steps in this article provide steps on how to ensure that any intermediate certificates are merged with the certificate uploaded to your Azure web site. 
+CA が **中間証明書** (チェーン証明書とも呼びます) を使用している場合は、中間証明書も取得する必要があります。中間証明書を使用すると、"チェーンされていない証明書" を使用する場合よりセキュリティが強化されると見なされるため、CA で一般的に使用されています。中間証明書は、多くの場合、CA の Web サイトから個別にダウンロードする形で提供されています。この記事では、Windows Azure の Web サイトにアップロードする証明書に対して任意の中間証明書が確実にマージされるようにする手順について説明します。
 
-> [WACOM.NOTE] When following either series of steps, you will be prompted to enter a **Common Name**. If you will be obtaining a wildcard certificate for use with multiple domains (www.contoso.com, sales.contoso.com,) then this value should be \*.domainname (for example, \*.contoso.com). If you will be obtaining a certificate for a single domain name, this value must be the exact value that users will enter in the browser to visit your web site. For example, www.contoso.com.
+> [WACOM.NOTE] どちらの手順でも、**共通名**の入力が必要です。複数のドメイン (www.contoso.com、sales.contoso.com) で使用するためのワイルドカード証明書を取得する場合、この値を \*.domainname (たとえば \*.contoso.com) とする必要があります。1 つのドメイン名に対応した証明書を取得する場合、この値は、Web サイトを参照するときにユーザーがブラウザーに入力する値と完全に一致する値にする必要があります。たとえば、www.contoso.com となります。
 >
-> If you need to support both a wildcard name like \*.contoso.com and a root domain name like contoso.com, you can use a wildcard Subject Alternative Name (SAN) certificate. For an example of creating a certificate request that uses the SubjectAltName extensions, see [SubjectAltName certificate](#bkmk_subjectaltname).
-> 
-> For more information on how to configure the domain name of an Azure Web Site, see <a href="/en-us/develop/net/common-tasks/custom-dns-web-site/">Configuring a custom domain name for an Azure Web Site</a>.
+> ワイルドカード名 (\*.contoso.com など) とルート ドメイン名 (contoso.com など) の両方をサポートする必要がある場合、ワイルドカードを含んだサブジェクト代替名 (SAN) 証明書を使用できます。SubjectAltName 拡張機能を使用する証明書要求の作成例については、「[SubjectAltName 証明書](#bkmk_subjectaltname)」を参照してください。
+> > Windows Azure の Web サイトのカスタム ドメイン名の構成方法の詳細については、<a href="/ja-jp/develop/net/common-tasks/custom-dns-web-site/">Windows Azure の Web サイトのカスタム ドメイン名の構成に関するページ</a>を参照してください。
 
-###Get a certificate using Certreq.exe (Windows only)
+###Certreq.exe を使用した証明書の取得 （Windows のみ）
 
-Certreq.exe is Windows utility for creating certificate requests. It has been part of the base Windows installation since Windows XP/Windows Server 2000, so should be available on recent Windows systems. Use the following steps to obtain an SSL certificate using certreq.exe.
+Certreq.exe は、証明書の要求を作成するための Windows ユーティリティです。Windows XP または Windows Server 2000 以降の Windows 基本インストールの一部であり、最近の Windows システムで使用できます。Certreq.exe を使用して SSL 証明書を取得するには、次のステップを使用します。
 
-If you wish to create a self-signed certificate for testing, see the [Self-signed Certificates](#bkmk_selfsigned) section of this document.
+テスト用の自己署名証明書を作成する場合は、このドキュメントの[自己署名証明書](#bkmk_selfsigned)のセクションを参照してください。
 
-If you wish to use the IIS Manager to create a certificate request, see the [Get a certificate using IIS Manager](#bkmk_iismgr) section.
+IIS マネージャーを使用して証明書の要求を作成する場合は、[IIS マネージャーを使用した証明書の取得](#bkmk_iismgr)のセクションを参照してください。
 
-1. Open **Notepad** and create a new document that contains the following. Replace **mysite.com** on the Subject line with the custom domain name of your web site. For example, Subject = "CN=www.contoso.com".
+1. **メモ帳**を開き、次の内容を含む新しい文書を作成します。Subject 行の **mysite.com** を、Web サイトに対応するカスタム ドメイン名で置き換えます。たとえば、Subject = "CN=www.contoso.com" と記述します。
 
 		[NewRequest]
 		Subject = "CN=mysite.com"
@@ -82,79 +81,79 @@ If you wish to use the IIS Manager to create a certificate request, see the [Get
 		[EnhancedKeyUsageExtension]
 		OID=1.3.6.1.5.5.7.3.1
 
-	For more information on the options specified above, as well as other available options, see the [Certreq reference documentationn](http://technet.microsoft.com/library/cc725793.aspx).
+	上記で指定したオプションの詳細、および他の使用可能なオプションについては、[Certreq リファレンス ドキュメントに関するページ](http://technet.microsoft.com/library/cc725793.aspx).を参照してください。
 
-2. Save the text file as **myrequest.txt**.
+2. テキスト ファイル **myrequest.txt** という名前で保存します。
 
-3. From the **Start Screen** or **Start Menu**, run **cmd.exe**.
+3. **スタート画面**または **[スタート] メニュー**で、**cmd.exe** を実行します。
 
-4. From the command prompt, use the following command to create the certificate request file:
+4. コマンド プロンプトで次のコマンドを使用して、証明書要求ファイルを作成します。
 
 		certreq -new \path\to\myrequest.txt \path\to\create\myrequest.csr
 
-	Specify the path to the **myrequest.txt** file created in step 1, and the path to use when creating the **myrequest.csr** file.
+	ステップ 1 で作成した **myrequest.txt** ファイルに対応するパスと、**myrequest.csr** ファイルを作成するときに使用するパスを指定します。
 
-5. Submit the **myrequest.csr** to a Certificate Authority to obtain an SSL certificate. This may involve uploading the file, or opening the file in Notepad and pasting the contents directly into a web form.
+5. SSL 証明書を取得するために、**myrequest.csr** を証明機関に送信します。この送信には、ファイルをアップロードすること、またはメモ帳でファイルを開き、Web フォームに内容を貼り付ける作業が含まれる可能性があります。
 
-	For a list of Certificate Authorities, see [Windows and Windows Phone 8 SSL Root Certificate Program (Members CAs)][cas] on the Microsoft TechNet Wiki.
+	証明機関の一覧については、Microsoft TechNet Wiki の [Windows および Windows Phone 8 SSL ルート証明書プログラム (メンバー CA) に関するページ][cas]を参照してください。
 
-6. Once the Certificate Authority has provided you with a certificate (.CER) file, save this file to the computer used to generate the request, and then use the following command to accept the request and complete the certificate generation process.
+6. 証明機関から証明書 (.CER) ファイルが提供された後、要求を生成したときに使用しコンピューターにこのファイルを保存してから、次のコマンドを使用して要求を受け入れ、証明書の生成プロセスを完了します。
 
 		certreq -accept -user mycert.cer
 
-	In this case, the **mycert.cer** certificate received from the Certificate Authority will be used to complete the signature of the certificate. No file will be created; instead, the certificate will be stored in the Windows certificate store.
+	この例では、証明機関から受け取った **mycert.cer** 証明書を使用して、証明書の署名を完了します。ファイルは作成されません。代わりに、証明書が Windows 証明書ストアに格納されます。
 
-6. If your CA uses intermediate certificates, you must install these certificates before exporting the certificate in the next steps. Usually these certificates are provided as a separate download from your CA, and are provided in several formats for different web server types. Select the version that is provided for Microsoft IIS.
+6. CA が中間証明書を使用している場合、次のステップで証明書をエクスポートする前に、それらの中間証明書をインストールする必要があります。通常、これらの証明書は CA から個別のダウンロードとして提供されており、Web サーバーの種類に応じていくつかの形式で提供されています。Microsoft IIS 用に提供されているバージョンを選択します。
 
-	Once you have downloaded the certificate, right click on it in explorer and select **Install certificate**. Use the default values in the **Certificate Import Wizard**, and continue selecting **Next** until the import has completed.
+	証明書をダウンロードした後、エクスプローラーで証明書を右クリックし、**[証明書のインストール]** をクリックします。**証明書のインポート ウィザード**で既定値を使用し、インポートが完了するまで、**[次]**  のクリックを続けます。
 
-7. To export the certificate from the certificate store, run **certmgr.msc** from the **Start Screen** or **Start Menu**. When **Certificate Manager** appears, expand the **Personal** folder, and then select **Certificates**. In the **Issued To** field, look for an entry with the custom domain name you requested a certificate for. In the **Issued By** field, it should list the Certificate Authority you used for this certificate.
+7. 証明書ストアから証明書をエクスポートするには、**スタート画面**または **[スタート] メニュー**から **certmgr.msc** を実行します。**証明書マネージャー**が表示された時点で、**[個人用]** フォルダーを展開し、**[証明書]** をクリックします。**[発行先]** フィールドで、証明書を要求したカスタム ドメイン名に対応するエントリを見つけます。**[発行者]** フィールドに、この証明書に関して使用した証明機関が表示されます。
 
-	![insert image of cert manager here][certmgr]
+	![証明書マネージャーに関するイメージをここに挿入します][certmgr]
 
-9. Right click the certificate and select **All Tasks**, and then select **Export**. In the **Certificate Export Wizard**, click **Next** and then select **Yes, export the private key**. Click **Next**.
+9. 証明書を右クリックし、**[すべてのタスク]** をクリックしてから **[エクスポート]** をクリックします。**証明書のエクスポート ウィザード**で、**[次へ]** をクリックしてから **[はい、秘密キーをエクスポートします]** をクリックします。**[次へ]** をクリックします。
 
-	![Export the private key][certwiz1]
+	![秘密キーをエクスポートします][certwiz1]
 
-10. Select **Personal Information Exchange - PKCS #12**, **Include all certificates in the certificate chain**, and **Export all extended properties**. Click **Next**.
+10. **[個人情報の交換 - PKCS #12]**、**[証明書チェーン内にすべての証明書を含める]**、および **[すべての拡張プロパティをエクスポートする]** を選択します。**[次へ]** をクリックします。
 
-	![include all certs and extended properties][certwiz2]
+	![すべての証明書と拡張プロパティを含める][certwiz2]
 
-11. Select **Password**, and then enter and confirm the password. Click **Next**.
+11. **[パスワード]** をクリックし、パスワードの入力と確認入力を行います。**[次へ]** をクリックします。
 
-	![specify a password][certwiz3]
+	![パスワードの指定][certwiz3]
 
-12. Provide a path and filename that will contain the exported certificate. The filename should have an extension of **.pfx**. Click **Next** to complete the process.
+12. エクスポートした証明書を格納するファイル名とパスを指定します。ファイル名には、**.pfx** という拡張子を付ける必要があります。**[次へ]** をクリックしてプロセスを完了します。
 
-	![provide a file path][certwiz4]
+	![ファイル パスを指定する][certwiz4]
 
-You can now upload the exported PFX file to your Azure Web Site.
+ここで、エクスポートした PFX ファイルを Windows Azure の Web サイトにアップロードすることができます。
 
-###Get a certificate using OpenSSL
+###OpenSSL を使用した証明書の取得
 
-1. Generate a private key and Certificate Signing Request by using the following from a command-line, bash or terminal session:
+1. コマンド ライン、bash、またはターミナル セッションから次を入力し、秘密キーと証明書署名要求を生成します:
 
 		openssl req -new -nodes -keyout myserver.key -out server.csr -newkey rsa:2048
 
-2. When prompted, enter the appropriate information. For example:
+2. メッセージが表示されたら、適切な情報を入力します。たとえば、
 
  		Country Name (2 letter code) 
         State or Province Name (full name) []: Washington
         Locality Name (eg, city) []: Redmond
         Organization Name (eg, company) []: Microsoft
-        Organizational Unit Name (eg, section) []: Azure
+        Organizational Unit Name (eg, section) []: Windows Azure
         Common Name (eg, YOUR name) []: www.microsoft.com
         Email Address []:
 
-		Please enter the following 'extra' attributes to be sent with your certificate request
+		証明書の要求を送信するために、次の "追加" 属性を入力してください。
 
-       	A challenge password []: 
+       	A challenge password []:
 
-	Once this process completes, you should have two files; **myserver.key** and **server.csr**. The **server.csr** contains the Certificate Signing Request.
+	この処理を完了すると、**myserver.key** および **server.csr** の 2 つのファイルが生成されます。**server.csr** には、証明書署名要求が含まれます。
 
-3. Submit your CSR to a Certificate Authority to obtain an SSL certificate. For a list of Certificate Authorities, see [Windows and Windows Phone 8 SSL Root Certificate Program (Members CAs)][cas] on the Microsoft TechNet Wiki.
+3. SSL 証明書を取得するために、CSR を証明機関に送信します。証明機関の一覧については、Microsoft TechNet Wiki の [Windows および Windows Phone 8 SSL ルート証明書プログラム (メンバー CA)][cas] に関するページを参照してください。
 
-4. Once you have obtained a certificate from a CA, save it to a file named **myserver.crt**. If your CA provided the certificate in a text format, simply paste the certificate text into the **myserver.crt** file. The file contents should be similar to the following when viewed in a text editor:
+4. CA からの証明書を入手した場合、**myserver.crt** という名前のファイルに保存します。CA がテキスト形式の証明書を提供した場合、**myserver.crt** ファイルに証明書のテキストを貼り付けるだけです。ファイルの内容をテキスト エディターで表示すると、次のようになります。
 
 		-----BEGIN CERTIFICATE-----
 		MIIDJDCCAgwCCQCpCY4o1LBQuzANBgkqhkiG9w0BAQUFADBUMQswCQYDVQQGEwJV
@@ -176,95 +175,94 @@ You can now upload the exported PFX file to your Azure Web Site.
 		A9PdUQIhK9bdaFicXPBYZ6AgNVuGtfwyuS5V6ucm7RE6+qf+QjXNFg==
 		-----END CERTIFICATE-----
 
-	Save the file.
+	ファイルを保存します。
 
-5. From the command-line, Bash or terminal session, use the following command to convert the **myserver.key** and **myserver.crt** into **myserver.pfx**, which is the format required by Azure Web Sites:
+5. コマンド ライン、bash、またはターミナル セッションから、次のコマンドを使用して **myserver.key** および **myserver.crt** を Windows Azure の Web サイトが必要とする形式である **myserver.pfx** に変換します。
 
 		openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
-	When prompted, enter a password to secure the .pfx file.
+	メッセージが表示されたら、パスワードを入力して .pfx ファイルをセキュリティ保護します。
 
 	<div class="dev-callout"> 
-	<b>Note</b>
-	<p>If your CA uses intermediate certificates, you must install these certificates before exporting the certificate in the next step. Usually these certificates are provided as a separate download from your CA, and are provided in several formats for different web server types. Select the version that is provided as a PEM file (.pem file extension.)</p>
-	<p>The follow command demonstrates how to create a .pfx file that includes intermediate certificates, which are contained in the <b>intermediate-cets.pem</b> file:</p>
+	<b>メモ</b>
+	<p>CA が中間証明書を使用する場合、次のステップで証明書をエクスポートする前に、それらの中間証明書をインストールする必要があります。通常、これらの証明書は CA から個別のダウンロードとして提供されており、Web サーバーの種類に応じていくつかの形式で提供されています。PEM ファイル (ファイル拡張子は .pem) の形で提供されているバージョンを選択します。</p>
+	<p>次のコマンドは、intermediate-cets.pem ファイルに格納されている中間証明書を含む .pfx ファイルを作成する方法を示しています。<b></b> file:</p>
 	<pre><code>
 	openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt -certfile intermediate-cets.pem
 	</code></pre>
 	</div>
 
-	After running this command, you should have a **myserver.pfx** file suitable for use with Azure Web Sites.
+	このコマンドを実行すると、Windows Azure の Web サイトでの使用に適した **myserver.pfx** ファイルが生成されます。
 
-<a href="bkmk_standardmode"></a><h2>Configure standard mode</h2>
+<a href="bkmk_standardmode"></a><h2>標準モードの構成</h2>
 
-Enabling HTTPS for a custom domain is only available for the standard mode of Azure web sites. Use the following steps to switch to standard mode.
+カスタム ドメインに対して HTTPS を有効にできるのは、Windows Azure の Web サイトで標準モードを使用している場合のみです。標準モードに切り替えるには、次のステップを使用します。
 
-> [WACOM.NOTE] Before switching a web site from the free web site mode to the standard web site mode, you should remove spending caps in place for your Web Site subscription, otherwise you risk your site becoming unavailable if you reach your caps before the billing period ends. For more information on shared and standard mode pricing, see [Pricing Details][pricing].
+> [WACOM.NOTE] Web サイトを無料 Web サイト モードから標準モードに切り替える前に、Web サイト サブスクリプションに設定されている使用制限を解除する必要があります。この作業を実行しないと、請求期間が終了する前に制限に到達した場合に、サイトが使用できなくなるおそれがあります。共有モードと標準モードの料金の詳細については、「[料金の詳細][pricing]」を参照してください。
 
-1. In your browser, open the [Management Portal][portal].
+1. ブラウザーで、[管理ポータル][portal]を開きます。
 
-2. In the **Web Sites** tab, click the name of your web site.
+2. **[Web サイト]** タブで、Web サイトの名前をクリックします。
 
-	![selecting a web site][website]
+	![Web サイトの選択][website]
 
-3. Click the **SCALE** tab.
+3. **[規模の設定]** タブをクリックします。
 
-	![The scale tab][scale]
+	![スケール タブ][scale]
 
-4. In the **general** section, set the web site mode by clicking **STANDARD**.
+4. **[全般]** セクションで、**[標準]** をクリックして Web サイト モードを設定します。
 
-	![standard mode selected][standard]
+	![標準モードの選択済み][standard]
 
-5. Click **Save**. When prompted, click **Yes**.
+5. **[保存]** をクリックします。メッセージが表示されたら、**[はい]** をクリックします。
 
-	> [WACOM.NOTE] If you receive a "Configuring scale for web site '&lt;site name&gt;' failed" error you can use the details button to get more information. You may receive a "Not enough available standard instance servers to satisfy this request." error. If you receive this error, please contact [Azure support](http://www.windowsazure.com/en-us/support/options/).
+	> [WACOM.NOTE] "Web サイト '&lt;サイト名&gt;' のスケールの構成に失敗しました" エラーが発生する場合は、詳細ボタンを使用して詳細情報を表示できます。"この要求を満たす、利用可能な標準インスタンス サーバーが足りません。" というエラーが発生する場合があります。このエラーが発生した場合は、[Windows Azure サポート](http://www.windowsazure.com/ja-jp/support/options/)にお問い合わせください。
 
-<a href="bkmk_configuressl"></a><h2>Configure SSL</h2>
+<a href="bkmk_configuressl"></a><h2>SSL の構成</h2>
 
-Before performing the steps in this section, you must have associated a custom domain name with your Azure Web Site. For more information, see [Configuring a custom domain name for an Azure Web Site][customdomain].
+このセクションの手順を実行する前に、Windows Azure の Web サイトにカスタム ドメイン名が関連付けられている必要があります。詳細については、[Windows Azure の Web サイトのカスタム ドメイン名の構成に関するページ][customdomain]を参照してください。
 
-1. In your browser, open the [Azure Management Portal][portal].
+1. ブラウザーで、[Windows Azure の管理ポータル][portal]を開きます。
 
-2. In the **Web Sites** tab, click the name of your site and then select the **CONFIGURE** tab.
+2. **[Web サイト]** タブ上で、サイトの名前をクリックし、**[構成]** タブをクリックします。
 
-	![the configure tab][configure]
+	![構成タブ][configure]
 
-3. In the **certificates** section, click **upload a certificate**
+3. **[証明書]** セクションで、**[証明書をアップロードします]** をクリックします。
 
-	![upload a certificate][uploadcert]
+	![証明書をアップロードします][uploadcert]
 
-4. Using the **Upload a certificate** dialog, select the .pfx certificate file created earlier using the IIS Manager or OpenSSL. Specify the password, if any, that was used to secure the .pfx file. Finally, click the **check** to upload the certificate.
+4. **[証明書をアップロードします]** ダイアログを使用して、IIS マネージャーまたは OpenSSL によって既に作成されている .pfx 証明書ファイルを選択します。.pfx ファイルをセキュリティ保護するために使用されたパスワードをある場合、それを指定します。最後に、**[チェック]** をクリックして証明書をアップロードします。
 
-	![upload certificate dialog][uploadcertdlg]
+	![証明書のアップロード ダイアログ ボックス][uploadcertdlg]
 
-5. In the **ssl bindings** section of the **CONFIGURE** tab, use the dropdowns to select the domain name to secure with SSL, and the certificate to use. You may also select whether to use [Server Name Indication][sni] (SNI) or IP based SSL.
+5. **[構成]** タブの **[SSL のバインディング]** のセクションで、ドロップダウン リストから SSL でセキュリティ保護するドメイン名、および使用する証明書を選択します。さらに、[[Server Name Indication]][sni] (SNI)、または IP ベースの SSL のどちらを使用するかを選択できます。
 
-	![ssl bindings][sslbindings]
+	![SSL のバインディング][sslbindings]
 	
-	* IP based SSL associates a certificate with a domain name by mapping the dedicated public IP address of the server to the domain name. This requires each domain name (contoso.com, fabricam.com, etc.) associated with your service to have a dedicated IP address. This is the traditional method of associating SSL certificates with a web server.
+	* IP ベースの SSL は、サーバーの専用パブリック IP アドレスをドメイン名にマッピングすることによって、証明書をドメイン名に関連付けします。これは、サービスに関連付けられている各ドメイン名 (contoso.com、fabricam.com など) の専用の IP アドレスが必要となります。これは SSL 証明書と Web サーバーを関連付ける従来の方式です。
 
-	* SNI based SSL is an extension to SSL and [Transport Layer Security][tls] (TLS) that allows multiple domains to share the same IP address, with separate security certificates for each domain. Most modern browsers (including Internet Explorer, Chrome, Firefox and Opera) support SNI, however older browsers may not support SNI. For more information on SNI, see the [Server Name Indication][sni] article on Wikipedia.
+	* SNI ベースの SSL は、SSL と[トランスポート層セキュリティ][tls] (TLS) の拡張です。TLS では、複数のドメインが同じ IP アドレスを共有し、各ドメインが独自のセキュリティ証明書を持つことができます。最新のブラウザー (Internet Explorer、Chrome、Firefox、および Opera を含む) のほとんどが SNI をサポートしていますが、古いブラウザーには、SNI をサポートしていないものもあります。SNI の詳細については、Wikipedia の [Server name Indication][sni] の記事を参照してください。
 
-6. Click **Save** to save the changes and enable SSL.
+6. 変更を保存して SSL を有効にするには、**[保存]** をクリックします。
 
-> [WACOM.NOTE] If you selected **IP based SSL** and your custom domain is configured using an A record, you must perform the following additional steps:
->
-> 1. After you have configured an IP based SSL binding, a dedicated IP address is assigned to your web site. You can find this IP address on the **Dashboard** page of your web site, in the **quick glance** section. It will be listed as **Virtual IP Address**:
+> [WACOM.NOTE] **IP ベースの SSL** を選択し、カスタム ドメインが A レコードを使用して構成されている場合、次の追加の手順を実行する必要があります。>
+> 1. IP ベースの SSL バインドを構成すると、専用の IP アドレスが Web サイトに割り当てられます。この IP アドレスは、Web サイトの **[ダッシュボード]** ページの **[概要]** セクションで確認できます。このアドレスは、**仮想 IP アドレス**として示されます。
 >    
->     ![Virtual IP address](./media/configure-ssl-web-site/staticip.png)
+>     ![仮想 IP アドレス](./media/configure-ssl-web-site/staticip.png)
 >    
->     Note that this IP address will be different than the virtual IP address used previously to configure the A record for your domain. If you are configured to use SNI based SSL, or are not configured to use SSL, no address will be listed for this entry.
+>     この IP アドレスは、ドメイン用の A レコードを構成するために以前使用した仮想 IP アドレスとは異なります。SNI ベースの SSL を使用するように構成する場合、または SSL を使用するように構成しない場合は、このエントリに対してアドレスは表示されません。
 >
-> 2. Using the tools provided by your domain name registrar, modify the A record for your custom domain name to point to the IP address from the previous step.
+> 2. ドメイン名レジストラーから提供されるツールを使用して、前の手順の IP アドレスを指定するようにカスタム ドメイン名用の A レコードを変更します。
 
 
-At this point, you should be able to visit your web site using HTTPS to verify that the certificate has been configured correctly.
+ここで、証明書が正しく構成されていることを確認するために、HTTPS を使用して Web サイトを参照することができます。
 
-<a href="bkmk_subjectaltname"></a><h2>SubjectAltName certificates (Optional)</h2>
+<a href="bkmk_subjectaltname"></a><h2>SubjectAltName 証明書 (省略可能)</h2>
 
-OpenSSL can be used to create a certificate request that uses the SubjectAltName extension to support multiple domain names with a single certificate, however it requires a configuration file. The following steps walk through creating a configuration file, and then using it to request a certificate.
+OpenSSL を使用して、1 つの証明書で複数のドメイン名をサポートするために SubjectAltName 拡張機能を使用する証明書要求を作成できます。ただし、その場合は構成ファイルが必要になります。次のステップでは、構成ファイルの作成と構成ファイルを使用した証明書の要求について説明します。
 
-1. Create a new file named __sancert.cnf__ and use the following as the contents of the file:
+1. __sancert.cnf__ という名前の新しいファイルを作成し、このファイルの内容として次のコードを使用します。
  
 		# -------------- BEGIN custom sancert.cnf -----
 		HOME = .
@@ -292,32 +290,32 @@ OpenSSL can be used to create a certificate request that uses the SubjectAltName
 		subjectAltName=DNS:ftp.mydomain.com,DNS:blog.mydomain.com,DNS:*.mydomain.com
 		# -------------- END custom sancert.cnf -----
 
-	Note the line that begins with 'subjectAltName'. Replace the domain names currently listed with domain names you wish to support in addition to the common name. For example:
+	"subjectAltName" で始まる行に注意してください。現在示されているドメイン名は、共通名に加えてサポートする必要があるドメイン名に置き換えてください。たとえば、
 
 		subjectAltName=DNS:sales.contoso.com,DNS:support.contoso.com,DNS:fabrikam.com
 
-	You do not need to change the commonName_default field, as you will be prompted to enter your common name in one of the following steps.
+	commonName_default フィールドを変更する必要はありません。次のステップのいずれかで、共通名を入力するように求められるためです。
 
-2. Save the __sancert.cnf__ file.
+2. __sancert.cnf__ ファイルを保存します。
 
-1. Generate a private key and Certificate Signing Request by using the sancert.cnf configuration file. From a bash or terminal session, use the following command:
+1. sancert.cnf 構成ファイルを使用して、秘密キーと証明書署名要求を生成します。bash またはターミナル セッションから、次のコマンドを使用します。
 
 		openssl req -new -nodes -keyout myserver.key -out server.csr -newkey rsa:2048 -config sancert.cnf
 
-2. When prompted, enter the appropriate information. For example:
+2. メッセージが表示されたら、適切な情報を入力します。たとえば、
 
  		Country Name (2 letter code) []: US
         State or Province Name (full name) []: Washington
         Locality Name (eg, city) []: Redmond
-        Organizational Unit Name (eg, section) []: Azure
+        Organizational Unit Name (eg, section) []: Windows Azure
         Your common name (eg, domain name) []: www.microsoft.com
  
 
-	Once this process completes, you should have two files; **myserver.key** and **server.csr**. The **server.csr** contains the Certificate Signing Request.
+	この処理を完了すると、**myserver.key** および **server.csr** の 2 つのファイルが生成されます。**server.csr** には、証明書署名要求が含まれます。
 
-3. Submit your CSR to a Certificate Authority to obtain an SSL certificate. For a list of Certificate Authorities, see [Windows and Windows Phone 8 SSL Root Certificate Program (Members CAs)][cas] on the Microsoft TechNet Wiki.
+3. SSL 証明書を取得するために、CSR を証明機関に送信します。証明機関の一覧については、Microsoft TechNet Wiki の [Windows および Windows Phone 8 SSL ルート証明書プログラム (メンバー CA) に関するページ][cas]を参照してください。
 
-4. Once you have obtained a certificate from a CA, save it to a file named **myserver.crt**. If your CA provided the certificate in a text format, simply paste the certificate text into the **myserver.crt** file. The file contents should be similar to the following when viewed in a text editor:
+4. CA からの証明書を入手した場合、**myserver.crt** という名前のファイルに保存します。CA がテキスト形式の証明書を提供した場合、**myserver.crt** ファイルに証明書のテキストを貼り付けるだけです。ファイルの内容をテキスト エディターで表示すると、次のようになります。
 
 		-----BEGIN CERTIFICATE-----
 		MIIDJDCCAgwCCQCpCY4o1LBQuzANBgkqhkiG9w0BAQUFADBUMQswCQYDVQQGEwJV
@@ -339,83 +337,83 @@ OpenSSL can be used to create a certificate request that uses the SubjectAltName
 		A9PdUQIhK9bdaFicXPBYZ6AgNVuGtfwyuS5V6ucm7RE6+qf+QjXNFg==
 		-----END CERTIFICATE-----
 
-	Save the file.
+	ファイルを保存します。
 
-5. From the command-line, Bash or terminal session, use the following command to convert the **myserver.key** and **myserver.crt** into **myserver.pfx**, which is the format required by Azure Web Sites:
+5. コマンド ライン、bash、またはターミナル セッションから、次のコマンドを使用して **myserver.key** および **myserver.crt** を Windows Azure の Web サイトが必要とする形式である **myserver.pfx** に変換します。
 
 		openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
-	When prompted, enter a password to secure the .pfx file.
+	メッセージが表示されたら、パスワードを入力して .pfx ファイルをセキュリティ保護します。
 
 	<div class="dev-callout"> 
-	<b>Note</b>
-	<p>If your CA uses intermediate certificates, you must install these certificates before exporting the certificate in the next step. Usually these certificates are provided as a separate download from your CA, and are provided in several formats for different web server types. Select the version that is provided as a PEM file (.pem file extension.)</p>
-	<p>The follow command demonstrates how to create a .pfx file that includes intermediate certificates, which are contained in the <b>intermediate-cets.pem</b> file:</p>
+	<b>メモ</b>
+	<p>CA が中間証明書を使用する場合、次のステップで証明書をエクスポートする前に、それらの中間証明書をインストールする必要があります。通常、これらの証明書は CA から個別のダウンロードとして提供されており、Web サーバーの種類に応じていくつかの形式で提供されています。PEM ファイル (ファイル拡張子は .pem) の形で提供されているバージョンを選択します。</p>
+	<p>次のコマンドは、<b>intermediate-cets.pem</b> ファイルに格納されている中間証明書を含む .pfx ファイルを作成する方法を示しています。</p>
 	<pre><code>
 	openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt -certfile intermediate-cets.pem
 	</code></pre>
 	</div>
 
-	After running this command, you should have a **myserver.pfx** file suitable for use with Azure Web Sites.
+	このコマンドを実行すると、Windows Azure の Web サイトでの使用に適した **myserver.pfx** ファイルが生成されます。
 
-##<a name="bkmk_iismgr"></a>Get a certificate using the IIS Manager (Optional)
+##<a name="bkmk_iismgr"></a>IIS マネージャーを使用した証明書の取得 (省略可能)
 
-If you are familiar with IIS Manager, you can use it to generate a certificate that can be used with Azure Web Sites.
+IIS マネージャーに慣れている場合は、IIS マネージャーを使用して、Windows Azure の Web サイトで使用できる証明書を生成することができます。
 
-1. Generate a Certificate Signing Request (CSR) with IIS Manager to send to the Certificate Authority. For more information on generating a CSR, see [Request an Internet Server Certificate (IIS 7)][iiscsr].
+1. IIS マネージャーで、証明機関に送信する証明書の署名要求 (CSR: Certificate Signing Request) を生成します。CSR 生成の詳細については、「[インターネット サーバー証明書を要求する (IIS 7)][iiscsr]」を参照してください。
 
-2. Submit your CSR to a Certificate Authority to obtain an SSL certificate. For a list of Certificate Authorities, see [Windows and Windows Phone 8 SSL Root Certificate Program (Members CAs)][cas] on the Microsoft TechNet Wiki.
+2. SSL 証明書を取得するために、CSR を証明機関に送信します。証明機関の一覧については、Microsoft TechNet Wiki の [Windows および Windows Phone 8 SSL ルート証明書プログラム (メンバー CA) に関するページ][cas]を参照してください。
 
-3. Complete the CSR with the certificate provided by the Certificate Authority vendor. For more information on completing the CSR, see [Install an Internet Server Certificate (IIS 7)][installcertiis].
+3. 証明機関ベンダーにより提供された証明書で CSR を完了します。CSR の完了手順については、「[インターネット サーバー証明書をインストールする (IIS 7)][installcertiis]」を参照してください。
 
-4. If your CA uses intermediate certificates, you must install these certificates before exporting the certificate in the next step. Usually these certificates are provided as a separate download from your CA, and are provided in several formats for different web server types. Select the version that is provided for Microsoft IIS.
+4. CA が中間証明書を使用する場合、次のステップで証明書をエクスポートする前に、それらの中間証明書をインストールする必要があります。通常、これらの証明書は CA から個別のダウンロードとして提供されており、Web サーバーの種類に応じていくつかの形式で提供されています。Microsoft IIS 用に提供されているバージョンを選択します。
 
-	Once you have downloaded the certificate, right click on it in explorer and select **Install certificate**. Use the default values in the **Certificate Import Wizard**, and continue selecting **Next** until the import has completed.
+	証明書をダウンロードした後、エクスプローラーで証明書を右クリックし、**[証明書のインストール]** をクリックします。**証明書のインポート ウィザード**で既定値を使用し、インポートが完了するまで、**[次]**  のクリックを続けます。
 
-4. Export the certificate from IIS Manager For more information on exporting the certificate, see [Export a Server Certificate (IIS 7)][exportcertiis]. The exported file will be used in later steps to upload to Azure for use with your Azure Web Site.
+4. IIS マネージャから証明書をエクスポートします。証明書のエクスポートの詳細については、「[サーバー証明書をエクスポートする (IIS 7)][exportcertiis]」を参照してください。エクスポートしたファイルは、Windows Azure の Web サイトで使用するために、後の手順で Windows Azure にアップロードする場合に使用されます。
 
 	<div class="dev-callout"> 
-	<b>Note</b>
-	<p>During the export process, be sure to select the option <strong>Yes, export the private key</strong>. This will include the private key in the exported certificate.</p>
+	<b>メモ</b>
+	<p>エクスポート プロセスでは、オプション [はい、秘密キーをエクスポートします]<strong></strong> を必ず選択してください。これにより、エクスポートされる証明書に秘密キーが含まれます。</p>
 	</div>
 
 	<div class="dev-callout"> 
-	<b>Note</b>
-	<p>During the export process, be sure to select the option <strong>include all certs in the certification path</strong> and and <strong>Export all extended properties</strong>. This will include any intermediate certificates in the exported certificate.</p>
+	<b>メモ</b>
+	<p>エクスポート プロセスでは、オプション [証明のパスにあるすべての証明書を含める]<strong></strong> と [すべての拡張プロパティをエクスポートする]<strong></strong> を必ず選択してください。これにより、エクスポートされる証明書にすべての中間証明書が含まれます。</p>
 	</div>
 
-<a href="bkmk_selfsigned"></a><h2>Self-signed certificates (Optional)</h2>
+<a href="bkmk_selfsigned"></a><h2>自己署名証明書 (省略可能)</h2>
 
-In some cases you may wish to obtain a certificate for testing, and delay purchasing one from a trusted CA until you go into production. Self-signed certificates can fill this gap. A self-signed certificate is a certificate you create and sign as if you were a Certificate Authority. While this certificate can be used to secure a web site, most browsers will return errors when visiting the site as the certificate was not signed by a trusted CA. Some browsers may even refuse to allow you to view the site.
+テスト用の証明書を取得し、信頼された CA からの証明書の実際の購入は、運用開始時に行いたい場合もあります。この場合、自己署名証明書が有効です。自己署名証明書では、自身が証明機関 (CA) となり、証明書を作成および署名できます。この証明書は Web サイトのセキュリティ保護として使用できますが、証明書に信頼された CA の署名がないため、ほとんどのブラウザーはサイトの参照時にエラーを返します。ブラウザーによっては、サイトの表示を拒否することもあります。
 
-While there are multiple ways to create a self-signed certificate, this article only provides information on using **makecert** and **OpenSSL**.
+自己署名証明書を作成する方法は複数ありますが、この記事では **makecert** および **OpenSSL** の使用に関する情報だけを扱います。
 
-###Create a self-signed certificate using makecert
+###自己署名証明書の作成makecert
 
-You can create a test certificate from a Windows system that has Visual Studio installed by performing the following steps:
+Visual Studio がインストールされている Windows システムからテスト証明書を作成する手順は次のとおりです:
 
-1. From the **Start Menu** or **Start Screen**, search for **Developer Command Prompt**. Finally, right-click **Developer Command Prompt** and select **Run As Administrator**.
+1. **[スタート] メニュー**または**スタート画面**で、「**開発者コマンド プロンプト**」を検索します。最後に、**[開発者コマンド プロンプト]** を右クリックし、**[管理者として実行]** をクリックします。
 
-	If you receive a User Account Control dialog, select **Yes** to continue.
+	[ユーザー アカウント制御] ダイアログ ボックスが表示された場合、**[はい]** をクリックして続行します。
 
-2. From the Developer Command Prompt, use the following command to create a new self-signed certificate. You must substitute **serverdnsname** with the DNS of your web site.
+2. [開発者のコマンド プロンプト] で、新しい自己署名証明書を作成するために次のコマンドを使用します。**serverdnsname** は、Web サイトの DNS に必ず置き換えてください。
 
 		makecert -r -pe -b 01/01/2013 -e 01/01/2014 -eku 1.3.6.1.5.5.7.3.1 -ss My -n CN=serverdnsname -sky exchange -sp "Microsoft RSA SChannel Cryptographic Provider" -sy 12 -len 2048
 
-	This command will create a certificate that is good between the dates of 01/01/2013 and 01/01/2014, and will store the location in the CurrentUser certificate store.
+	このコマンドが作成する証明書は、2013 年 1 月 1 日から 2014 年 1 月 1 日まで有効で、CurrentUser の証明書ストア内の位置に格納されます。
 
-3. From the **Start Menu** or **Start Screen**, search for **Windows PowerShell** and start this application.
+3. **[スタート] メニュー**または**スタート画面**で、「**Windows PowerShell**」を検索し、このアプリケーションを開始します。
 
-4. From the Windows PowerShell prompt, use the following commands to export the certificate created previously:
+4. Windows PowerShell プロンプトで、以前に作成された証明書をエクスポートするために、次のコマンドを使用します:
 
 		$mypwd = ConvertTo-SecureString -String "password" -Force -AsPlainText
 		get-childitem cert:\currentuser\my -dnsname serverdnsname | export-pfxcertificate -filepath file-to-export-to.pfx -password $mypwd
 
-	This stores the specified password as a secure string in $mypwd, then finds the certificate by using the DNS name specified by the **dnsname** parameter, and exports to the file specified by the **filepath** parameter. The secure string containing the password is used to secure the exported file.
+	これは $mypwd にセキュリティ保護された文字列として指定したパスワードを格納し、**dnsname** パラメーターによって指定された DNS 名を使用して証明書を検索し、**filepath** パラメーターに指定されたファイルにエクスポートします。パスワードを含むセキュリティ保護された文字列は、エクスポートしたファイルをセキュリティ保護するために使用されます。
 
-###Create a self-signed certificate using OpenSSL
+###自己署名証明書の作成OpenSSL
 
-1. Create a new document named **serverauth.cnf**, using the following as the contents of this file:
+1. **serverauth.cnf** という名前の新しいドキュメントを作成し、このファイルの内容として次を使用します:
 
         [ req ]
         default_bits           = 2048
@@ -449,27 +447,27 @@ You can create a test certificate from a Windows system that has Visual Studio i
          keyUsage=nonRepudiation, digitalSignature, keyEncipherment
          extendedKeyUsage = serverAuth
 
-	This specifies the configuration settings required to produce an SSL certificate that can be used by Azure Web Sites.
+	これは、Windows Azure の Web サイトで使用できる SSL 証明書の生成に必要な構成設定を指定します。
 
-2. Generate a new self-signed certificate by using the following from a command-line, bash or terminal session:
+2. コマンド ライン、bash、またはターミナル セッションから次を入力し、新しい自己署名証明書を生成します:
 
 		openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout myserver.key -out myserver.crt -config serverauth.cnf
 
-	This creates a new certificate using the configuration settings specified in the **serverauth.cnf** file.
+	これは **serverauth.cnf** ファイルで指定された構成設定を使用して、新しい証明書を作成します。
 
-3. To export the certificate to a .PFX file that can be uploaded to an Azure Web Site, use the following command:
+3. Windows Azure の Web サイトにアップロードできる .PFX に証明書をエクスポートするには、次のコマンドを使用します:
 
 		openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
-	When prompted, enter a password to secure the .pfx file.
+	メッセージが表示されたら、パスワードを入力して .pfx ファイルをセキュリティ保護します。
 
-	The **myserver.pfx** produced by this command can be used to secure your Azure Web Site for testing purposes.
+	このコマンドによって作成された **myserver.pfx** は、Windows Azure の Web サイトをテスト目的でセキュリティ保護するために使用できます。
 
-[customdomain]: /en-us/develop/net/common-tasks/custom-dns-web-site/
-[iiscsr]: http://technet.microsoft.com/en-us/library/cc732906(WS.10).aspx
+[customdomain]: /ja-jp/develop/net/common-tasks/custom-dns-web-site/
+[iiscsr]: http://technet.microsoft.com/ja-jp/library/cc732906(WS.10).aspx
 [cas]: http://go.microsoft.com/fwlink/?LinkID=269988
-[installcertiis]: http://technet.microsoft.com/en-us/library/cc771816(WS.10).aspx
-[exportcertiis]: http://technet.microsoft.com/en-us/library/cc731386(WS.10).aspx
+[installcertiis]: http://technet.microsoft.com/ja-jp/library/cc771816(WS.10).aspx
+[exportcertiis]: http://technet.microsoft.com/ja-jp/library/cc731386(WS.10).aspx
 [openssl]: http://www.openssl.org/
 [portal]: https://manage.windowsazure.com/
 [tls]: http://en.wikipedia.org/wiki/Transport_Layer_Security
@@ -477,7 +475,7 @@ You can create a test certificate from a Windows system that has Visual Studio i
 [website]: ./media/configure-ssl-web-site/sslwebsite.png
 [scale]: ./media/configure-ssl-web-site/sslscale.png
 [standard]: ./media/configure-ssl-web-site/sslreserved.png
-[pricing]: https://www.windowsazure.com/en-us/pricing/details/
+[pricing]: https://www.windowsazure.com/ja-jp/pricing/details/
 [configure]: ./media/configure-ssl-web-site/sslconfig.png
 [uploadcert]: ./media/configure-ssl-web-site/ssluploadcert.png
 [uploadcertdlg]: ./media/configure-ssl-web-site/ssluploaddlg.png
@@ -488,3 +486,5 @@ You can create a test certificate from a Windows system that has Visual Studio i
 [certwiz2]: ./media/configure-ssl-web-site/waws-certwiz2.png
 [certwiz3]: ./media/configure-ssl-web-site/waws-certwiz3.png
 [certwiz4]: ./media/configure-ssl-web-site/waws-certwiz4.png
+
+

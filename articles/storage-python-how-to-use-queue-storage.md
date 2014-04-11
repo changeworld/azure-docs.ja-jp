@@ -1,81 +1,81 @@
-<properties linkid="develop-python-queue-service" urlDisplayName="Queue Service" pageTitle="How to use the queue service (Python) | Microsoft Azure" metaKeywords="Azure Queue Service messaging Python" description="Learn how to use the Azure Queue service to create and delete queues, and insert, get, and delete messages. Samples written in Python." metaCanonical="" services="storage" documentationCenter="Python" title="How to Use the Queue Storage Service from Python" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-python-queue-service" UrlDisplayName="キュー サービス" pageTitle="キュー サービスの使用方法 (Python) - Windows Azure" MetaKeywords="Windows Azure キュー サービス メッセージング Python" description="Windows Azure キュー サービスを使用して、キューを作成および削除する方法、メッセージを挿入、取得、削除する方法について説明します。コード サンプルは PHP で記述されています。" metaCanonical="" services="storage" documentationCenter="Python" title="Python からキュー ストレージ サービスを使用する方法" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
-# How to Use the Queue Storage Service from Python
-This guide shows you how to perform common scenarios using the Windows
-Azure Queue storage service. The samples are written using the Python
-API. The scenarios covered include **inserting**, **peeking**,
-**getting**, and **deleting** queue messages, as well as **creating and
-deleting queues**. For more information on queues, refer to the [Next Steps][] section.
+# Python からキュー ストレージ サービスを使用する方法
+このガイドでは、Windows Azure キュー ストレージ サービスを使用して一般的な
+シナリオを実行する方法について説明します。サンプルは Python API を使用して記述されて
+います。キュー メッセージの**挿入**、**ピーク**、**取得**、
+および**削除**と、**キューの作成および削除**の各シナリオについて
+説明します。キューの詳細については、「[次のステップ][]」のセクションを参照してください。
 
-## Table of Contents
+## 目次
 
-[What is Queue Storage?][]   
- [Concepts][]   
- [Create an Azure Storage Account][]   
- [How To: Create a Queue][]   
- [How To: Insert a Message into a Queue][]   
- [How To: Peek at the Next Message][]   
- [How To: Dequeue the Next Message][]   
- [How To: Change the Contents of a Queued Message][]   
- [How To: Additional Options for Dequeuing Messages][]   
- [How To: Get the Queue Length][]   
- [How To: Delete a Queue][]   
- [Next Steps][]
+[キュー ストレージとは][]   
+ [概念][]   
+ [Windows Azure ストレージ アカウントの作成][]   
+ [キューの作成方法][]   
+ [メッセージをキューに挿入する方法][]   
+ [次のメッセージをピークする方法][]   
+ [次のメッセージをデキューする方法][]   
+ [キューに配置されたメッセージの内容を変更する方法][]   
+ [メッセージをデキューするための追加オプションの使用方法][]   
+ [キューの長さを取得する方法][]   
+ [キューを削除する方法][]   
+ [次のステップ][]
 
 [WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
-## <a name="create-account"> </a>Create an Azure Storage Account
+## <a name="create-account"> </a>Windows Azure ストレージ アカウントの作成
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 
-**Note:** If you need to install Python or the Client Libraries, please see the [Python Installation Guide](../python-how-to-install/).
+**注:** Python またはクライアント ライブラリをインストールする場合は、「[Python Installation Guide (Python インストール ガイド)](../python-how-to-install/)」を参照してください。
 
-## <a name="create-queue"> </a>How To: Create a Queue
+## <a name="create-queue"> </a>キューの作成方法
 
-The **QueueService** object lets you work with queues. The following code creates a **QueueService** object. Add the following near the top of any Python file in which you wish to programmatically access Azure Storage:
+**QueueService** オブジェクトを使用して、キューを操作できます。次のコードでは、**QueueService** オブジェクトを作成します。プログラムを使用して Windows Azure のストレージにアクセスするすべての Python ファイルの先頭付近に、次のコードを追加します。
 
 	from azure.storage import *
 
-The following code creates a **QueueService** object using the storage account name and account key. Replace 'myaccount' and 'mykey' with the real account and key.
+次のコードは、ストレージ アカウントの名前とアカウント キーを使用して、**QueueService** オブジェクトを作成します。"myaccount" と "mykey" の部分は、実際のアカウントとキーに置き換えます。
 
 	queue_service = QueueService(account_name='myaccount', account_key='mykey')
 
 	queue_service.create_queue('taskqueue')
 
 
-## <a name="insert-message"> </a>How To: Insert a Message into a Queue
+## <a name="insert-message"> </a>メッセージをキューに挿入する方法
 
-To insert a message into a queue, use the **put\_message** method to
-create a new message and add it to the queue.
+キューにメッセージを挿入するには、**put\_message** メソッドを使用し、
+新しいメッセージを作成してキューに追加します。
 
 	queue_service.put_message('taskqueue', 'Hello World')
 
 
-## <a name="peek-message"> </a>How To: Peek at the Next Message
+## <a name="peek-message"> </a>次のメッセージをピークする方法
 
-You can peek at the message in the front of a queue without removing it
-from the queue by calling the **peek\_messages** method. By default,
-**peek\_messages** peeks at a single message.
+**peek\_messages** メソッドを呼び出すと、キューの先頭にあるメッセージを
+キューから削除せずにピークできます。既定では、
+**peek\_messages** は 1 つのメッセージを対象としてピークします。
 
 	messages = queue_service.peek_messages('taskqueue')
 	for message in messages:
 		print(message.message_text)
 
 
-## <a name="get-message"> </a>How To: Dequeue the Next Message
+## <a name="get-message"> </a>次のメッセージをデキューする方法
 
-Your code removes a message from a queue in two steps. When you call
-**get\_messages**, you get the next message in a queue by default. A
-message returned from **get\_messages** becomes invisible to any other
-code reading messages from this queue. By default, this message stays
-invisible for 30 seconds. To finish removing the message from the queue,
-you must also call **delete\_message**. This two-step process of removing
-a message assures that when your code fails to process a message due to
-hardware or software failure, another instance of your code can get the
-same message and try again. Your code calls **delete\_message** right
-after the message has been processed.
+コードでは、2 つの手順でキューからメッセージを削除します。**get\_messages** を
+呼び出すと、既定では、キュー内の次のメッセージを取得します。**get\_messages** から
+返されたメッセージは、このキューからメッセージを読み取る他のコードから
+参照できなくなります。既定では、このメッセージを
+参照できない状態は 30 秒間続きます。また、キューからのメッセージの削除を完了するには、
+**delete\_message** を呼び出す必要があります。2 段階の手順でメッセージを削除する
+この方法では、ハードウェアまたはソフトウェアの問題が原因でコードによる
+メッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを
+取得し、もう一度処理することができます。コードでは、メッセージが処理された直後に
+**delete\_message** を呼び出します。
 
 	messages = queue_service.get_messages('taskqueue')
 	for message in messages:
@@ -83,69 +83,70 @@ after the message has been processed.
 		queue_service.delete_message('taskqueue', message.message_id, message.pop_receipt)
 
 
-## <a name="change-contents"> </a>How To: Change the Contents of a Queued Message
+## <a name="change-contents"> </a>キューに配置されたメッセージの内容を変更する方法
 
-You can change the contents of a message in-place in the queue. If the
-message represents a work task, you could use this feature to update the
-status of the work task. The code below uses the **update\_message**
-method to update a message.
+キュー内のメッセージの内容をインプレースで変更できます。メッセージが
+作業タスクを表している場合は、この機能を使用して、作業タスクの状態を
+更新できます。次のコードでは、**update\_message** メソッドを
+使用してメッセージを更新します。
 
 	messages = queue_service.get_messages('taskqueue')
 	for message in messages:
 		queue_service.update_message('taskqueue', message.message_id, 'Hello World Again', message.pop_receipt, 0)
 
-## <a name="advanced-get"> </a>How To: Additional Options for Dequeuing Messages
+## <a name="advanced-get"> </a>メッセージをデキューするための追加オプションの使用方法
 
-There are two ways you can customize message retrieval from a queue.
-First, you can get a batch of messages (up to 32). Second, you can set a
-longer or shorter invisibility timeout, allowing your code more or less
-time to fully process each message. The following code example uses the
-**get\_messages** method to get 16 messages in one call. Then it processes
-each message using a for loop. It also sets the invisibility timeout to
-five minutes for each message.
+キューからのメッセージの取得をカスタマイズする方法は 2 つあります。
+1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。2 つ目の方法では、
+コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を
+長くまたは短くすることができます。次のコード例では、**get\_messages**
+メソッドを使用して、1 回の呼び出しで 16 個のメッセージを取得します。その後、for ループを
+使用して、各メッセージを処理します。また、各メッセージの非表示タイムアウトを
+5 分に設定します。
 
 	messages = queue_service.get_messages('taskqueue', numofmessages=16, visibilitytimeout=5*60)
 	for message in messages:
 		print(message.message_text)
 		queue_service.delete_message('taskqueue', message.message_id, message.pop_receipt)
 
-## <a name="get-queue-length"> </a>How To: Get the Queue Length
+## <a name="get-queue-length"> </a>キューの長さを取得する方法
 
-You can get an estimate of the number of messages in a queue. The
-**get\_queue\_metadata** method asks the queue service to return metadata
-about the queue, and the **x-ms-approximate-messages-count** should be used as the index into the returned dictionary to find the count.
-The result is only approximate because messages can be added or removed after the
-queue service responds to your request.
+キュー内のメッセージの概数を取得できます。**get\_queue\_metadata**
+メソッドでは、キューのメタデータを返すようにキュー サービスに要求します。また、
+**x-ms-approximate-messages-count** は、カウントを検索するために返されるディクショナリに対するインデックスとして使用する必要があります。
+キュー サービスが要求に応答した後にメッセージが追加または削除される可能性があるため、
+この結果は概数にすぎません。
 
 	queue_metadata = queue_service.get_queue_metadata('taskqueue')
 	count = queue_metadata['x-ms-approximate-messages-count']
 
-## <a name="delete-queue"> </a>How To: Delete a Queue
+## <a name="delete-queue"> </a>キューを削除する方法
 
-To delete a queue and all the messages contained in it, call the
-**delete\_queue** method.
+キューおよびキューに含まれているすべてのメッセージを削除するには、
+**delete\_queue** メソッドを呼び出します。
 
 	queue_service.delete_queue('taskqueue')
 
-## <a name="next-steps"> </a>Next Steps
+## <a name="next-steps"> </a>次のステップ
 
-Now that you have learned the basics of queue storage, follow these links
-to learn how to do more complex storage tasks.
+これで、キュー ストレージの基本を学習できました。さらに複雑なストレージ
+タスクを実行する方法については、次のリンク先を参照してください。
 
--   See the MSDN Reference: [Storing and Accessing Data in Azure][]
--   Visit the [Azure Storage Team Blog][]
+-   MSDN リファレンス: [Windows Azure のデータの格納とアクセス][]
+-   [Windows Azure ストレージ チーム ブログ][] (このページは英語の場合があります)
 
-  [Next Steps]: #next-steps
-  [What is Queue Storage?]: #what-is
-  [Concepts]: #concepts
-  [Create an Azure Storage Account]: #create-account
-  [How To: Create a Queue]: #create-queue
-  [How To: Insert a Message into a Queue]: #insert-message
-  [How To: Peek at the Next Message]: #peek-message
-  [How To: Dequeue the Next Message]: #get-message
-  [How To: Change the Contents of a Queued Message]: #change-contents
-  [How To: Additional Options for Dequeuing Messages]: #advanced-get
-  [How To: Get the Queue Length]: #get-queue-length
-  [How To: Delete a Queue]: #delete-queue
-  [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
-  [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
+  [次のステップ]: #next-steps
+[キュー ストレージとは]: #what-is
+[概念]: #concepts
+[Windows Azure ストレージ アカウントの作成]: #create-account
+[キューの作成方法]: #create-queue
+[メッセージをキューに挿入する方法]: #insert-message
+[次のメッセージをピークする方法]: #peek-message
+[次のメッセージをデキューする方法]: #get-message
+[キューに配置されたメッセージの内容を変更する方法]: #change-contents
+[メッセージをデキューするための追加オプションの使用方法]: #advanced-get
+[キューの長さを取得する方法]: #get-queue-length
+[キューを削除する方法]: #delete-queue
+[Windows Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+[Windows Azure ストレージ チーム ブログ (このページは英語の場合があります)]: http://blogs.msdn.com/b/windowsazurestorage/
+

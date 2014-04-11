@@ -1,56 +1,38 @@
-## <a name="what-is"> </a>What is the Table Service
+## <a name="what-is"> </a>テーブル サービスとは
 
-The Azure Table storage service stores large amounts of
-structured data. The service is a NoSQL datastore which accepts
-authenticated calls from inside and outside the Azure cloud. Azure
-tables are ideal for storing structured, non-relational data. Common
-uses of the Table service include:
+Windows Azure テーブル ストレージ サービスは、大量の構造化データを格納します。このサービスは、Windows Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。Windows Azure テーブルは、構造化された非リレーショナル データを格納するのに最適です。テーブル サービスの一般的な使用法を次に示します。
 
--   Storing TBs of structured data capable of serving web scale
-    applications
--   Storing datasets that don't require complex joins, foreign keys, or
-    stored procedures and can be denormalized for fast access
--   Quickly querying data using a clustered index
--   Accessing data using the OData protocol and LINQ queries with WCF
-    Data Service .NET Libraries
+-   Web スケール アプリケーションにサービスを提供できる数テラバイトの構造化データを格納する
+-   複雑な結合、外部キー、またはストアド プロシージャを必要とせず、高速アクセスのために非正規化できるデータセットを格納する
+-   クラスター化インデックスを使用して高速なデータのクエリを実行する
+-   OData プロトコルおよび LINQ クエリを WCF Data Service .NET ライブラリと共に使用してデータにアクセスする
 
-You can use the Table service to store and query huge sets of
-structured, non-relational data, and your tables will scale as demand
-increases.
+テーブル サービスを使用すると、構造化された非リレーショナル データの大量のセットを格納および照会できます。テーブルは、必要に応じて拡張できます。
 
-## <a name="concepts"> </a>Concepts
+## <a name="concepts"> </a>概念
 
-The Table service contains the following components:
+テーブル サービスには、次のコンポーネントが含まれます。
 
 ![Table1][Table1]
 
--   **URL format:** Code addresses tables in an account using this
-    address format:   
+-   **URL 形式:** 次のアドレス形式を使用してアカウントのテーブルの
+    アドレスを記述します。
     http://`<storage account>`.table.core.windows.net/`<table>`  
       
-    You can address Azure tables directly using this address with the
-    OData protocol. For more information, see [OData.org][]
+    このアドレスを OData プロトコルで使用して、Azure テーブルを直接
+    アドレス指定できます。詳細については、[OData.org の Web サイト][]を参照してください。
 
--   **Storage Account:** All access to Azure Storage is done
-    through a storage account. See [Azure Storage Scalability and Performance Targets](http://msdn.microsoft.com/en-us/library/dn249410.aspx) for details about storage account capacity.
+-   **ストレージ アカウント:** Windows Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。ストレージ アカウントの容量の詳細については、「[Windows Azure Storage Scalability and Performance Targets (Windows Azure のストレージの拡張性とパフォーマンスのターゲット)](http://msdn.microsoft.com/ja-jp/library/dn249410.aspx)」を参照してください。
 
--   **Table**: A table is a collection of entities. Tables don't enforce
-    a schema on entities, which means a single table can contain
-    entities that have different sets of properties. The number of tables that a 
-	storage account can contain is limited only by the 
-    storage account capacity limit.
+-   **テーブル**: テーブルは、エンティティのコレクションです。テーブルではエンティティにスキーマを設定しないため、1 つのテーブルに異なるプロパティのセットを持つエンティティが含まれている場合があります。ストレージ アカウントが格納できる
+	テーブルの数は、ストレージ アカウントの容量制限によってのみ制限されます。
 
--   **Entity**: An entity is a set of properties, similar to a database
-    row. An entity can be up to 1MB in size.
+-   **エンティティ**: エンティティは、プロパティのセットで、データベースの行に似ています。エンティティの最大サイズは 1 MB です。
 
--   **Properties**: A property is a name-value pair. Each entity can
-    include up to 252 properties to store data. Each entity also has 3
-    system properties that specify a partition key, a row key, and a
-    timestamp. Entities with the same partition key can be queried more
-    quickly, and inserted/updated in atomic operations. An entity's row
-    key is its unique identifier within a partition.
+-   **プロパティ**: プロパティは、名前と値のペアです。それぞれのエンティティは、データを格納するために最大で 252 個のプロパティを含むことができます。さらに、それぞれのエンティティは、パーティション キー、行キー、およびタイムスタンプを指定する、3 つのシステム プロパティを持ちます。同じパーティション キーを持つエンティティは、アトミック操作でより迅速な照会と挿入/更新が可能です。エンティティの行キーは、パーティション内の一意の識別子です。
 
 
   
   [Table1]: ./media/storage-java-how-to-use-table-storage/table1.png
   [OData.org]: http://www.odata.org/
+

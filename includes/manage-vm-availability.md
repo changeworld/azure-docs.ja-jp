@@ -1,178 +1,179 @@
 <properties writer="kathydav" editor="tysonn" manager="jeffreyg" /> 
 
-#Manage the Availability of Virtual Machines#
+#仮想マシンの可用性管理#
 
-To help ensure the availability of your application, we strongly recommend using multiple virtual machines that provide redundancy. To provide redundancy, configure more than one virtual machine to perform the same function or role. This redundancy is required to receive a guaranteed level of service. Also be sure to consider dependencies. For example, if virtual machine "IIS1" depends on services provided by virtual machine "SQL1," redundancy for virtual machine "SQL1" is provided by "SQL2" to help avoid service interruptions. For more information about service level agreements,  see the "Cloud Services, Virtual Machines and Virtual Network" section in [Service Level Agreements](http://www.windowsazure.com/en-us/support/legal/sla/).
+アプリケーションの可用性を確保するために、冗長性を実現する複数の仮想マシンの使用を強くお勧めします。冗長性を実現するには、同じ機能やロールを実行するように複数の仮想マシンを構成します。このような冗長性は、保証されたレベルのサービスを受けるために必要になります。また、依存関係を必ず考慮してください。たとえば、仮想マシン "IIS1" が仮想マシン "SQL1" によって提供されるサービスに依存する場合、サービスの中断を回避するために、仮想マシン "SQL1" の冗長性が "SQL2" によって実現されます。サービス レベル アグリーメントの詳細については、「[Service Level Agreements (サービス レベル アグリーメント)](http://www.windowsazure.com/ja-jp/support/legal/sla/)」の「Cloud Services, Virtual Machines and Virtual Network (クラウド サービス、仮想マシン、仮想ネットワーク)」のセクションを参照してください。
 
-This approach can help ensure that your application is available during local network failures, local disk hardware failures, and any planned downtime that the platform may require.
+複数の仮想マシンを使用する方法によって、ローカル ネットワークの障害時やローカル ハード ディスクの障害時、予定されたプラットフォーム停止時にもアプリケーションを確実に使用できるようになります。
 
-You manage the availability of an application that uses multiple virtual machines by adding the virtual machines to an availability set. Availability sets are directly related to fault domains and update domains. A fault domain in Azure is defined by avoiding single points of failure, like the network switch or power unit of a rack of servers. In fact, a fault domain is closely equivalent to a rack of physical servers.  When multiple virtual machines are connected in a cloud service, an availability set places the virtual machines in different fault domains. The following diagram shows two availability sets with two virtual machines in each set.
+複数の仮想マシンが使用されているアプリケーションの可用性を管理するには、その仮想マシンを可用性セットに追加します。可用性セットは、障害ドメインと更新ドメインに直接関連します。Windows Azure の障害ドメインは、サーバー ラックのネットワーク スイッチ、電源装置などの単一障害点を避けることで定義されます。実際、障害ドメインは物理サーバーのラックに相当します。複数の仮想マシンがクラウド サービスで接続されている場合は、可用性セットを使用して、さまざまな障害ドメインに仮想マシンを配置することができます。次の図に、2 つの可用性セットを示します。この各セットには 2 台の仮想マシンが含まれます。
 
-![Update domains](./media/manage-vm-availability/UpdateDomains.png)
+![更新ドメイン](./media/manage-vm-availability/UpdateDomains.png)
 
-Azure periodically updates the operating system that hosts the instances of an application. A virtual machine is shut down when an update is applied. An update domain is used to ensure that not all of the virtual machine instances are updated at the same time. When you assign multiple virtual machines to an availability set, Azure ensures that the machines are assigned to different update domains. The previous diagram shows two virtual machines running Internet Information Services (IIS) in separate update domains and two virtual machines running SQL Server also in separate update domains.
+Windows Azure では、アプリケーションのインスタンスをホストするオペレーティング システムが定期的に更新されます。更新が適用されると、仮想マシンがシャットダウンします。更新ドメインを使用すると、すべての仮想マシン インスタンスが同時に更新されることがなくなります。複数の仮想マシンを可用性セットに割り当てると、その仮想マシンはさまざまな更新ドメインに確実に割り当てられます。前の図は、インターネット インフォメーション サービス (IIS) が実行されている 2 台の仮想マシンがそれぞれ個別の更新ドメインに含まれることを示しています。また、SQL Server が実行されている 2 台の仮想マシンも個別の更新ドメインに含まれます。
 
-You should use a combination of availability sets and load-balancing endpoints to help ensure that your application is always available and running efficiently. For more information about using load-balanced endpoints, see [Load Balancing Virtual Machines] [].
+アプリケーションが常に利用できるように、また効率的に実行されるように、可用性セットと負荷分散エンドポイントを組み合わせて使用することをお勧めします。負荷分散されたエンドポイントの使用方法の詳細については、「[Load Balancing Virtual Machines (仮想マシンの負荷分散)][]」を参照してください。
 
-This task includes the following steps:
+このタスクの手順は次のとおりです。
 
-- [Step 1: Create a virtual machine and an availability set] []
-- [Step 2: Add a virtual machine to the cloud service and assign it to the availability set during the creation process] []
-- [Step 3: (Optional) Create an availability set for previously created virtual machines] []
-- [Step 4: (Optional) Add a previously created virtual machine to an availability set] []
+- [ステップ 1. 仮想マシンと可用性セットを作成する] []
+- [ステップ 2. 仮想マシンの作成プロセス中にそのマシンをクラウド サービスに追加し、可用性セットに割り当てる] []
+- [ステップ 3. (省略可能) 前に作成された仮想マシンに対して可用性セットを作成する] []
+- [ステップ 4. (省略可能) 前に作成された仮想マシンを可用性セットに追加する] []
 
-## <a id="createset"> </a>Step 1: Create a virtual machine and an availability set ##
+## <a id="createset"> </a>ステップ 1. 仮想マシンと可用性セットを作成する##
 
-To create an availability set that contains virtual machines, you can create the first virtual machine and the availability set at the same time, and then you can add virtual machines to the availability set as you create them. You can also create virtual machines, create an availability set, and then add all of the machines to the set.
+仮想マシンが含まれる可用性セットを作成するには、最初の仮想マシンと可用性セットを同時に作成し、追加の仮想マシンを作成するときに、そのマシンを可用性セットに追加します。また、仮想マシンを作成してから、可用性セットを作成し、すべてのマシンをセットに追加することもできます。
 
-**To create a virtual machine and availability set**
+**仮想マシンと可用性セットを作成するには**
 
-1. If you have not already done so, sign in to the Azure Management Portal.
+1. まだサインインしていない場合は、Windows Azure の管理ポータルにサインインします。
 
-2. On the command bar, click **New**.
+2. コマンド バーで、**[新規]** をクリックします。
 
-	![Create a virtual machine](./media/manage-vm-availability/Create.png)
+	![仮想マシンの作成](./media/manage-vm-availability/Create.png)
 
-3. Click **Virtual Machine**, and then click **From Gallery**.
+3. **[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
 
-	The **Select the virtual machine operating system** dialog box appears. 
+	**[仮想マシンのオペレーティング システムの選択]** ダイアログ ボックスが表示されます。
 	
-4. From **Platform Images**, select an image and then click the arrow to continue.
+4. **[プラットフォーム イメージ]** からイメージを選択し、矢印をクリックして続行します。
 
-	The **Virtual machine configuration** dialog box appears.
+	**[仮想マシンの構成]** ダイアログ ボックスが表示されます。
 
-5. In **Virtual Machine Name**, type the name that you want to use for the virtual machine.
+5. **[仮想マシン名]** ボックスに、仮想マシンに使用する名前を入力します。
 
-6. In **New User Name**, type a name for the administrative account that you want to use to manage the server. 
+6. **[新しいユーザー名]** に、サーバーの管理に使用する管理アカウントの名前を入力します。
 
-7. In **New Password**, type a strong password for the administrative account. In **Confirm Password**, retype the password that you previously entered.
+7. **[新しいパスワード]** に、管理アカウントの強力なパスワードを入力します。**[パスワードの確認]** ボックスに、入力したパスワードをもう一度入力します。
 
-8. In **Size**, select the size that you want to use for the virtual machine. The size that you select depends on the number of cores that are needed for your application.
+8. **[サイズ]** で、仮想マシンに使用するサイズを選択します。選択するサイズは、アプリケーションが必要とするコア数に応じて変わります。
 
-9. Click the arrow to continue.
+9. 矢印をクリックして続行します。
 
-	The **Virtual machine mode** dialog box appears.
+	**[仮想マシン モード]** ダイアログ ボックスが表示されます。
 	
-10. Choose **Stand-alone virtual machine**.
+10. **[スタンドアロンの仮想マシン]** を選択します。
 
-11.	In **DNS Name**, type a name for the cloud service that is created for the machine. The name can contain from 3 through 24 lowercase letters and numbers.
+11.	**[DNS 名]** ボックスに、マシン用に作成されるクラウド サービスの名前を入力します。名前は 3 ～ 24 文字で、アルファベット小文字と数字を使用できます。
 
-12.	In **Storage Account**, select a storage account where the .vhd file is stored, or you can select to have a storage account automatically created. Only one storage account per region is automatically created. All other virtual machines that you create with this setting are located in this storage account. You are limited to 20 storage accounts.
+12.	**[ストレージ アカウント]** ボックスで、.vhd ファイルを保存するストレージ アカウントを選択します。ストレージ アカウントが自動的に作成されるように指定することもできます。自動的に作成されるストレージ アカウントはリージョンあたり 1 つだけです。この設定で作成する他のすべての仮想マシンがこのストレージ アカウントに配置されます。ストレージ アカウントは 20 個に制限されています。
 
-13.	In **Region/Affinity Group/Virtual Network**, select region, affinity group, or virtual network that you want to contain the virtual machine. For more information about affinity groups, see [About Affinity Groups for Virtual Network] [].
+13.	**[リージョン/アフィニティ グループ/仮想ネットワーク]** で、仮想マシンを含めるリージョン、アフィニティ グループ、または仮想ネットワークを選択します。アフィニティ グループの詳細については、「[About Affinity Groups for Virtual Network」(仮想ネットワークのアフィニティ グループについて)][]」を参照してください。
 
-14. Click the arrow to continue.
+14. 矢印をクリックして続行します。
 
-	The **Virtual machine options** dialog box appears.
+	**[仮想マシンのオプション]** ダイアログ ボックスが表示されます。
 
-15. In **Availability Set**, select **Create availability set**.
+15. **[可用性セット]** ボックスで、**[可用性セットの作成]** を選択します。
  
-16. In **Availability Set Name**, enter the name for the availability set.
+16. **[可用性セット名]** ボックスに、可用性セットの名前を入力します。
 
-17.	Click the arrow to create the virtual machine and the availability set.
+17.	矢印をクリックして、仮想マシンと可用性セットを作成します。
 
-	From the dashboard of the new virtual machine, you can click **Configure** and see that the virtual machine is a member of the new availability set.
+	新しい仮想マシンのダッシュボードで **[構成]** をクリックすると、仮想マシンが新しい可用性セットのメンバーであることを確認できます。
 
-## <a id="addmachine"> </a>Step 2: Add a virtual machine to the cloud service and assign it to the availability set during the creation process ##
+## <a id="addmachine"> </a>ステップ 2. 仮想マシンの作成プロセス中にそのマシンをクラウド サービスに追加し、可用性セットに割り当てる##
 
-The previous step showed you how to create a virtual machine and availability set at the same time. You can now create a new virtual machine, connect it to the cloud service of the first virtual machine, and then add it to the availability set that you previously created.
+前の手順では、仮想マシンと可用性セットを同時に作成する方法を紹介しました。ここでは、新しい仮想マシンを作成し、その仮想マシンを最初の仮想マシンのクラウド サービスに接続してから、前に作成した可用性セットに追加します。
 
-**To connect a new virtual machine and add it to the availability set**
+**新しい仮想マシンを接続し、そのマシンを可用性セットに追加するには**
 
-1. If you have not already done so, sign in to the Azure Management Portal.
+1. まだサインインしていない場合は、Windows Azure の管理ポータルにサインインします。
 
-2. On the command bar, click **New**.
+2. コマンド バーで、**[新規]** をクリックします。
 
-	![Create a virtual machine](./media/manage-vm-availability/Create.png)
+	![仮想マシンの作成](./media/manage-vm-availability/Create.png)
 
-3. Click **Virtual Machine**, and then click **From Gallery**.
+3. **[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
-	![Create from gallery](./media/manage-vm-availability/CreateNew.png)
+	![ギャラリーから作成](./media/manage-vm-availability/CreateNew.png)
 
-	The **Select the virtual machine operating system** dialog box appears. You can now select an image from the Image Gallery.
-
-	
-4. Click **Platform Images**, select the platform image that you want to use, and then click the arrow to continue.
-
-	The **Virtual machine configuration** dialog box appears.
-
-5. In **Virtual Machine Name**, type the name that you want to use for the virtual machine.
-
-6. 6.In **New User Name**, type a name for the administrative account that you want to use to manage the server. 
-
-7. In **New Password**, type a strong password for the administrative account on the virtual machine. In **Confirm Password**, retype the password.
-
-8. In **Size**, select the size that you want to use for the virtual machine. The size that you select depends on the number of cores that are needed for your application.
-
-9. For a virtual machine running the Linux operating system, you can select to secure the machine with an SSH Key.
-
-10.	Click the arrow to continue.
-
-	The **Virtual machine mode** dialog box appears.
+	**[仮想マシンのオペレーティング システムの選択]** ダイアログ ボックスが表示されます。これでイメージ ギャラリーからイメージを選択できます。
 
 	
-11. Select **Connect to existing Virtual Machine** to create a new virtual machine that will be connected with the first virtual machine in the availability set.  Select the cloud service that contains the virtual machine in the availability set.
+4. **[プラットフォーム イメージ]** をクリックし、使用するプラットフォーム イメージを選択し、矢印をクリックして続行します。
 
-12. In **Storage Account**, select a storage account where the VHD file is stored.
+	**[仮想マシンの構成]** ダイアログ ボックスが表示されます。
 
-13. In **Region/Affinity Group/Virtual Network**, select region that you want to contain the virtual machine.
+5. **[仮想マシン名]** ボックスに、仮想マシンに使用する名前を入力します。
 
-14. Click the arrow to continue.
+6. **[新しいユーザー名]** に、サーバーの管理に使用する管理アカウントの名前を入力します。
 
-	The **Virtual machine options** dialog box appears.
+7. **[新しいパスワード]** ボックスに、仮想マシンの管理アカウントの強力なパスワードを入力します。**[パスワードの確認]** ボックスに、パスワードを再度入力します。
 
-15. Select the availability set that was created when you created the first virtual machine.
+8. **[サイズ]** で、仮想マシンに使用するサイズを選択します。選択するサイズは、アプリケーションが必要とするコア数に応じて変わります。
 
-16. Click the check mark to create the connected virtual machine and add it to the availability set.
+9. Linux オペレーティング システムが実行されている仮想マシンについては、SSH キーでマシンを保護するように選択できます。
 
-	From the dashboard of the new virtual machine, you can click **Configure** and see that the virtual machine is a member of the new availability set.
+10.	矢印をクリックして続行します。
 
-## <a id="previousmachine"> </a>Step 3: (Optional) Create an availability set for previously created virtual machines ##
+	**[仮想マシン モード]** ダイアログ ボックスが表示されます。
 
-You can create an availability set and add a virtual machine to it after you create the machine. After you create a virtual machine, you can configure the size of the machine and whether it is a member of an availability set.
+	
+11. **[既存の仮想マシンに接続します]** を選択し、可用性セットの最初の仮想マシンに接続する新しい仮想マシンを作成します。可用性セットの仮想マシンを含めるクラウド サービスを選択します。
 
-**To create a new availability set**
+12. **[ストレージ アカウント]** ボックスで、VHD ファイルを保存するストレージ アカウントを選択します。
 
-1. If you have not already done so, sign in to the Azure Management Portal.
+13. **[リージョン/アフィニティ グループ/仮想ネットワーク]** で、仮想マシンを含めるリージョンを選択します。
 
-2. Click **Virtual Machines**, and then select the virtual machine that you want to configure.
+14. 矢印をクリックして続行します。
 
-3. Click **Configure**.
+	**[仮想マシンのオプション]** ダイアログ ボックスが表示されます。
 
-4. In the **Availability Set** section, select **Create Availability Set**, and then enter a name for the set.
+15. 最初の仮想マシンを作成したときに作成された可用性セットを選択します。
 
+16. チェック マークをクリックして接続された仮想マシンを作成し、そのマシンを可用性セットに追加します。
 
-5. Click **Save**.
+	新しい仮想マシンのダッシュボードで **[構成]** をクリックすると、仮想マシンが新しい可用性セットのメンバーであることを確認できます。
 
-	**Note:** This might result in the virtual machine being restarted to finalize the membership in the availability set. 
+## <a id="previousmachine"> </a>ステップ 3. (省略可能) 前に作成された仮想マシンに対して可用性セットを作成する##
 
-## <a id="existingset"> </a>Step 4: (Optional) Add a previously created virtual machine to an availability set ##
+仮想マシンを作成した後に可用性セットを作成し、そのマシンを追加できます。マシンのサイズと、そのマシンが可用性セットのメンバーかどうかは、仮想マシンの作成後に構成できます。
 
-You can easily add an existing virtual machine to an availability set that was previously created. To add a virtual machine to an availability set, it must connected to the same cloud service as the other virtual machines in the set. For more information about connecting virtual machines, see [How to Connect Virtual Machines in a Cloud Service] [].
+**新しい可用性セットを作成するには**
 
-**To add an existing virtual machine to an availability set**
+1. まだサインインしていない場合は、Windows Azure の管理ポータルにサインインします。
 
-1. If you have not already done so, sign in to the Azure Management Portal.
+2. **[仮想マシン]** をクリックし、構成する仮想マシンを選択します。
 
-2. Click **Virtual Machines**, and then select the virtual machine that you want to add to the availability set.
+3. **[構成]** をクリックします。
 
-3. Click **Configure**.
-
-4. In the **Availability Set** section, select the availability set that you previously created.
-
-5. Click **Save**. 
-
-	**Note:** This might result in the virtual machine being restarted to finalize the membership in the availability set.
+4. **[可用性セット]** セクションで **[可用性セットの作成]** を選択し、セットの名前を入力します。
 
 
-[Step 1: Create a virtual machine and an availability set]: #createset
-[Step 2: Add a virtual machine to the cloud service and assign it to the availability set during the creation process]: #addmachine
-[Step 3: (Optional) Create an availability set for previously created virtual machines]: #previousmachine
-[Step 4: (Optional) Add a previously created virtual machine to an availability set]: #existingset
+5. **[保存]** をクリックします。
+
+	**注:** 可用性セットのメンバーシップの最終処理のために、仮想マシンが再起動される場合があります。
+
+## <a id="existingset"> </a>ステップ 4. (省略可能) 前に作成された仮想マシンを可用性セットに追加する##
+
+前に作成された可用性セットへの既存の仮想マシンの追加は簡単に行うことができます。仮想マシンを可用性セットに追加するには、その仮想マシンをセット内の他の仮想マシンと同じクラウド サービスに接続する必要があります。接続された仮想マシンの詳細については、「[How to Connect Virtual Machines in a Cloud Service (クラウド サービス内の仮想マシンを接続する方法)][]」を参照してください。
+
+**既存の仮想マシンを可用性セットに追加するには**
+
+1. まだサインインしていない場合は、Windows Azure の管理ポータルにサインインします。
+
+2. **[仮想マシン]** をクリックし、可用性セットに追加する仮想マシンを選択します。
+
+3. **[構成]** をクリックします。
+
+4. **[可用性セット]** セクションで、前に作成した可用性セットを選択します。
+
+5. **[保存]** をクリックします。
+
+	**注:** 可用性セットのメンバーシップの最終処理のために、仮想マシンが再起動される場合があります。
+
+
+[ステップ 1. 仮想マシンと可用性セットを作成する]: #createset
+[ステップ 2. 仮想マシンの作成プロセス中にそのマシンをクラウド サービスに追加し、可用性セットに割り当てる]: #addmachine
+[ステップ 3. (省略可能) 前に作成された仮想マシンに対して可用性セットを作成する]: #previousmachine
+[ステップ 4. (省略可能) 前に作成された仮想マシンを可用性セットに追加する]: #existingset
 
 
 <!-- LINKS -->
-[Load Balancing Virtual Machines]: ../load-balance-virtual-machines
-[About Affinity Groups for Virtual Network]: http://msdn.microsoft.com/library/windowsazure/jj156085.aspx
-[How to connect virtual machines in a cloud service]: ../virtual-machines-connect-cloud-service
+[Load Balancing Virtual Machines (仮想マシンの負荷分散)]: ../load-balance-virtual-machines
+[About Affinity Groups for Virtual Network (仮想ネットワークのアフィニティ グループについて)]: http://msdn.microsoft.com/library/windowsazure/jj156085.aspx
+[How to connect virtual machines in a cloud service (クラウド サービス内の仮想マシンを接続する方法)]: ../virtual-machines-connect-cloud-service
+

@@ -2,105 +2,106 @@
 
 
 
-#How to Detach a Data Disk from a Virtual Machine 
+#データ ディスクを仮想マシンから切断する方法
 
 #
 
-- [Concepts](#concepts)
-- [How to: Find the disks that are attached to a virtual machine](#finddisks)
-- [How to: Detach a data disk](#detachdisk)
+- [概念](#concepts)
+- [方法: 仮想マシンに接続されているディスクを検索する](#finddisks)
+- [方法: データ ディスクを切断する](#detachdisk)
 
 
 
-## <a id="concepts"> </a>Concepts ##
+## <a id="concepts"> </a>概念##
 
 
 
-A virtual machine in Azure uses different types of disks, such as an operating system disk, a local temporary disk, and optional data disks. You can attach a data disk to a virtual machine to store application data. A data disk is a virtual hard disk (VHD) that you can create either locally with your own computer or in the cloud with Azure.
+Windows Azure の仮想マシンでは、オペレーティング システム ディスク、ローカル一時ディスク、オプションのデータ ディスクなど、さまざまな種類のディスクが使用されています。データ ディスクを仮想マシンに接続してアプリケーション データを保存できます。データ ディスクは仮想ハード ディスク (VHD) で、自分のコンピューターでローカルに作成することも、Windows Azure を使ってクラウドに作成することもできます。
 
-You can attach and detach data disks any time you want, but you are limited in the number of disks that you can attach to a virtual machine based on the size of the machine.
+データ ディスクはいつでも好きなときに接続および切断できますが、仮想マシンに接続できるディスクの数に制限されています。この数はマシンのサイズに基づきます。
 
-When you no longer need a data disk that is attached to a virtual machine, you can easily detach it. This process does not delete the disk from storage. If you want to use the existing data on the disk again, you can easily attach the disk again to the same virtual machine, or attach it to a new virtual machine.  
+仮想マシンに接続されたデータ ディスクが不要になった場合、そのディスクは簡単に切断できます。このプロセスはストレージからディスクを削除しません。ディスクの既存のデータを再度使用する場合は、同じ仮想マシンに簡単にディスクを再度接続することも、新しい仮想マシンに簡単にディスクを接続することもできます。
 
-For more information about using data disks, see [Manage disks and images] [].
-
-
-
-## <a id="finddisks"> </a>How to: Find disks attached to a virtual machine ##
+データ ディスクの使い方の詳細については、[ディスクとイメージの管理に関するページ] []を参照してください。
 
 
 
-You can find the disks that are attached to a virtual machine by using either the dashboard or the Disks page of Virtual Machines.
+## <a id="finddisks"> </a>方法: 仮想マシンに接続されているディスクを検索する##
 
 
 
-###Use the dashboard to find information about attached disks###
+仮想マシンに接続されているディスクを見つけるには、ダッシュボードまたは仮想マシンの [ディスク] ページを使用します。
 
 
 
-1. If you have not already done so, sign in to the Azure [Management Portal](http://manage.windowsazure.com).
+###ダッシュボードを使用して接続ディスクに関する情報を検索###
 
 
 
-2. Click **Virtual Machines**, and then select the appropriate virtual machine.
+1. まだサインインしていない場合は、Windows Azure の[管理ポータル](http://manage.windowsazure.com)にサインインします。
 
 
 
-3. Click **Dashboard**. On the dashboard for the virtual machine, you can find the number of attached disks and the names of the disks. The following example shows one data disk attached to a virtual machine:
+2. **[仮想マシン]** をクリックし、適切な仮想マシンを選択します。
+
+
+
+3. **[ダッシュボード]** をクリックします。仮想マシンのダッシュボードでは、接続されているディスクの数とディスクの名前を確認できます。次の例は、仮想マシンに接続されている 1 つのデータ ディスクを示しています。
 
 		
-	![Find data disk](./media/howto-detach-disk-windows-linux/FindDataDisks.png)	
+	![データ ディスクの検索](./media/howto-detach-disk-windows-linux/FindDataDisks.png)	
 	
 	
-**Note:** At least one disk is attached to all virtual machines. Each virtual machine has an operating system disk attached that you cannot detach without deleting the virtual machine. The local temporary disk is not listed in the disks section because it is not persistent.
+**注:** すべての仮想マシンに少なくとも 1 つのディスクが接続されています。各仮想マシンにオペレーティング システム ディスクが接続されており、このディスクは仮想マシンを削除しない限り切断できません。ローカル一時ディスクは永続的ではないので、ディスク セクションに表示されません。
 
 
 
-###Use the Disks page of Virtual Machines to find information about attached disks###
+###仮想マシンの [ディスク] ページを使用して接続ディスクに関する情報を検索###
 
 
 
-1. If you have not already done so, sign in to the Azure [Management Portal](http://manage.windowsazure.com).
+1. まだサインインしていない場合は、Windows Azure の[管理ポータル](http://manage.windowsazure.com)にサインインします。
 
 
 
-2. Click **Virtual Machines**, and then click **Disks**. This page shows a list of all disks that are available to use with virtual machines and the disks that are being used by virtual machines. The list is a combination of operating system disks and data disks. To differentiate between the two types of disks that are attached to the virtual machine, use the dashboard.
+2. **[仮想マシン]**、**[ディスク]** の順にクリックします。このページには、仮想マシンで使用できるすべてのディスクと、仮想マシンで使用されているディスクの一覧が表示されます。この一覧は、オペレーティング システム ディスクとデータ ディスクの組み合わせです。仮想マシンに接続されている 2 種類のディスクを区別するには、ダッシュボードを使用します。
 
 
 
-	**Note:** When you attach a new data disk to a virtual machine, you can assign a name to the .vhd file that is used for the disk, but Azure assigns the name of the disk. The name consists of the cloud service name, the virtual machine name, and a numeric identifier.
+	**注:** 新しいデータ ディスクを仮想マシンに接続するときに、ディスクに使用する VHD ファイルの名前を割り当てできますが、ディスクの名前は Windows Azure が指定します。この名前はクラウド サービス名、仮想マシン名、および数値識別子で構成されます。
 
 
 
-## <a id="detachdisk"> </a>How to: Detach a data disk ##
+## <a id="detachdisk"> </a>方法: データ ディスクを切断する##
 
-After you find the name of the disk that you want to detach, you can complete the following steps to detach the disk from the virtual machine.
-
-
-
-1. If you have not already done so, sign in to the Azure Management Portal.
+切断するディスクの名前を見つけたら、次のステップを実行して、仮想マシンからディスクを切断できます。
 
 
 
-2. Click **Virtual Machines**, select the virtual machine that has the data disk you want to detach, and then click **Detach The Disk**.
+1. まだサインインしていない場合は、Windows Azure の管理ポータルにサインインします。
+
+
+
+2. **[仮想マシン]** をクリックし、切断するデータ ディスクのある仮想マシンを選択して、**[ディスクの切断]** をクリックします。
 
 	
 
 
-3. Select the data disk, and then click the check mark to detach it.
+3. データ ディスクを選択し、チェック マークをクリックして切断します。
 
 
-	![Detach disk details](./media/howto-detach-disk-windows-linux/DetachDiskDetails.png)
+	![ディスク切断の詳細](./media/howto-detach-disk-windows-linux/DetachDiskDetails.png)
 
-	The disk remains in storage but is no longer attached to a virtual machine.
-
-
-You can now attach the disk again to the same virtual machine or to a new machine. For instructions, see [How to Attach a Data Disk to a Virtual Machine] [attachdisk].
+	ディスクはストレージに残りますが、仮想マシンからは切断されています。
 
 
+これで、このディスクを同じ仮想マシンに再接続することも、新しいマシンに接続することもできます。手順については、「[How to Attach a Data Disk to a Virtual Machine (データ ディスクを仮想マシンに追加する方法)] [attachdisk]」を参照してください。
 
 
 
-[attachdisk]:/en-us/manage/windows/how-to-guides/attach-a-disk/
 
-[Manage disks and images]:http://go.microsoft.com/fwlink/p/?LinkId=263439
+
+[attachdisk]:/ja-jp/manage/windows/how-to-guides/attach-a-disk/
+
+[Manage disks and images (ディスクとイメージの管理)]:http://go.microsoft.com/fwlink/p/?LinkId=263439
+

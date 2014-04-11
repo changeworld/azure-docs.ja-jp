@@ -1,15 +1,16 @@
-##Azure Plugin for Eclipse with Java (by Microsoft Open Technologies)
+##Windows Azure Plugin for Eclipse with Java (Microsoft Open Technologies)
 
-Prerequisites:
+前提条件:
 
-1. Windows 7, Windows 8, Windows Server 2008, or Windows Server 2012. (Not available for Mac or Linux.)
-2. Eclipse Indigo or later.
+1.	Windows 7、Windows 8、Windows Server 2008、または Windows Server 2012 (Mac または Linux では利用できません)。
+2.	2.Eclipse Indigo 以降。
 
-Installation steps:
+インストール手順:
 
-1. In Eclipse, from the **Help** menu, select **Install New Software**.
-2. Enter the site location <http://dl.msopentech.com/eclipse> and press **Enter**.
-3. Select the items to be installed and click **Finish**.
+1. Eclipse で、**[Help]** メニューの **[Install New Software]** をクリックします。
+2. サイトの場所を入力し、<http://dl.msopentech.com/eclipse>**Enter キー**を押します。
+3. インストールする項目を選択して、**[Finish]** をクリックします。
 
-This plugin uses the latest version of the Azure SDK. This can be downloaded using the Web Platform Installer (WebPI) at <http://go.microsoft.com/fwlink/?LinkID=252838>. However, if you don't have it installed, when you create your first Azure deployment project, the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies) will automatically install the appropriate version of the Azure SDK. 
+このプラグインでは、Windows Azure SDK の最新バージョンが使用されています。これは、<http://go.microsoft.com/fwlink/?LinkID=252838> で Web プラットフォーム インストーラー (WebPI) を使用してダウンロードできます。ただし、まだインストールしないうちに、最初の Windows Azure 展開プロジェクトを作成すると、Windows Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) によって適切なバージョンの Windows Azure SDK が自動的にインストールされます。
+
 

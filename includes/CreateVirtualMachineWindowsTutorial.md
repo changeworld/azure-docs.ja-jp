@@ -1,146 +1,154 @@
-# Create a Virtual Machine Running Windows Server #
+# Windows Server を実行する仮想マシンの作成#
 
-It's easy to create a virtual machine that is running the Windows Server operating system when you use the Image Gallery in the Azure Management Portal. This tutorial teaches you how to create a virtual machine running Windows Server in the cloud that you can then access and customize. You don't need prior experience with Azure to use this tutorial. 
+Windows Azure の管理ポータルのイメージ ギャラリーを使用すると、Windows Server オペレーティング システムを実行する仮想マシンを簡単に作成できます。このチュートリアルでは、Windows Server を実行する仮想マシンをクラウドに作成し、それにアクセスしてカスタマイズする方法について説明します。このチュートリアルを利用するにあたって、Windows Azure の使用経験は不要です。
 
-You will learn:
+学習内容:
 
-- [About virtual machines in Azure] []
-- [How to create the virtual machine] []
-- [How to log on to the virtual machine after you create it] []
-- [How to attach a data disk to the new virtual machine] []
+- [Windows Azure での仮想マシンについて] []
+- [仮想マシンの作成方法] []
+- [仮想マシンを作成後、ログオンする方法] []
+- [新しい仮想マシンにデータ ディスクを接続する方法] []
 
-**Note:** This tutorial creates a virtual machine that is not connected to a virtual network.  If you want a virtual machine to use a virtual network, you must specify the virtual network when you create the virtual machine. For more information about virtual networks, see [Azure Virtual Network Overview](http://go.microsoft.com/fwlink/p/?LinkID=294063).
+**注:** このチュートリアルでは、仮想ネットワークに接続されていない仮想マシンを作成します。仮想マシンが仮想ネットワークを使用する場合、仮想マシンの作成時に仮想ネットワークを指定する必要があります。仮想ネットワークの詳細については、「[仮想ネットワーク](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
 
-##<a id="virtualmachine"> </a>About virtual machines in Azure ##
+##<a id="virtualmachine"> </a>Windows Azure での仮想マシンについて##
 
-A virtual machine in Azure is a server in the cloud that you can control and manage. After you create a virtual machine in Azure, you can delete and re-create it whenever you need to, and you can access the virtual machine just like any other server. To learn more, see [Virtual Machines](http://go.microsoft.com/fwlink/p/?LinkID=271224).
+Windows Azure の仮想マシンは、制御と管理が可能なクラウド上のサーバーです。Windows Azure で仮想マシンを作成した後、仮想マシンは必要に応じていつでも削除と再作成が可能で、他のサーバーとまったく同様に仮想マシンにアクセスできます。仮想マシンの作成には、仮想ハード ディスク (.vhd ファイル) が使用されます。仮想マシンを作成するときは、次の種類の仮想ハード ディスクを使います。
 
-##<a id="custommachine"> </a>How to create the virtual machine##
+- **イメージ** - イメージは、新しい仮想マシンを作成するときにテンプレートとして使用します。イメージには、実行中の仮想マシンとは違って、コンピューター名やユーザー アカウント設定のような具体的な設定がありません。イメージを使って仮想マシンを作成すると、新しい仮想マシン用のオペレーティング システム ディスクが自動的に作成されます。
+- **ディスク** - ディスクは、起動してオペレーティング システムの実行中バージョンとしてマウントできる VHD です。イメージは、プロビジョニングするとディスクになります。イメージを使って仮想マシンを作成すると、ディスクが常に作成されます。仮想ハードウェアに接続され、サービスの一部として実行されている VHD はディスクです。
 
-This tutorial shows you how to use the **From Gallery** method in the Management Portal to create a custom virtual machine. This method provides more options than the **Quick Create** method does for configuring a virtual machine when you create it.
+イメージから仮想マシンを作成するときは、次の選択肢があります。
+
+- Windows Azure の管理ポータルにあるプラットフォーム イメージを使って仮想マシンを作成します。
+- イメージを格納した .vhd ファイルを作成し、Windows Azure にアップロードした後、そのイメージを使って仮想マシンを作成します。詳細については、「[Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](/ja-jp/manage/windows/common-tasks/upload-a-vhd/)」を参照してください。
+
+各仮想マシンは、その仮想マシンだけがクラウド サービス内に配置されているか、他の仮想マシンと共にグループ化されクラウド サービス内に配置されています。同じクラウド サービス内に複数の仮想マシンを配置すると、仮想マシン間の相互通信、仮想マシン間でのネットワーク トラフィックの負荷分散、仮想マシンの高可用性を有効にできます。クラウド サービスと仮想マシンの詳細については、[Windows Azure 入門](http://go.microsoft.com/fwlink/p/?LinkId=311926)に関するページの「実行モデル」のセクションを参照してください。
+
+##<a id="custommachine"> </a>仮想マシンの作成方法##
+
+このチュートリアルでは、管理ポータルの **[ギャラリーから]** を使用してカスタム仮想マシンを作成する方法について説明します。この方法には、仮想マシンを作成するときに必要に応じて仮想マシンの接続リソース、DNS 名、ネットワーク接続を定義できるため、**[簡易作成]** を使用する場合よりも数多くのオプションが用意されています。
 
 
-1. Sign in to your subscription to use the Azure [Management Portal](http://manage.windowsazure.com). If you don't have a subscription, you can sign up for a [free trial](http://go.microsoft.com/fwlink/p/?LinkID=23435).
+1. Windows Azure の[管理ポータル](http://manage.windowsazure.com)にサインインします。
 
-2. On the command bar, click **New**.
+2. コマンド バーで、**[新規]** をクリックします。
 
-3. Click **Virtual Machine**, and then click **From Gallery**.
+3. **[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 	
-4. From **Choose an Image**, select **Windows Server 2012 R2 Datacenter**. (The available images may differ depending on the subscription you're using.) Click the arrow to continue.
+4. **[イメージの選択]** から、一覧にあるいずれかのイメージを選択します (利用できるイメージは使用しているサブスクリプションによって異なる場合があります)。矢印をクリックして続行します。
 	
-5. If multiple versions of the image are available, in **Version Release Date**, pick the version you want to use.
+5. 複数のバージョンのイメージが利用できる場合、**[バージョンのリリース日]** で、使用するバージョンを選択します。
 
-6. In **Virtual Machine Name**, type the name that you want to use for the virtual machine. For this virtual machine, type **MyTestVM1**.
+6. **[仮想マシン名]** ボックスに、仮想マシンに使用する名前を入力します。この仮想マシンの場合は、「**MyTestVM1**」と入力します。
 
-7. In **Size**, select the size of the virtual machine. The size you should select depends on the number of cores required to run your application. For this virtual machine, choose the smallest available size.
+7. **[サイズ]** ボックスで、仮想マシンのサイズを選択します。選択するサイズは、アプリケーションの実行に必要なコアの数に応じて変わります。この仮想マシンの場合は、利用可能な最小サイズを選択します。
 
-8. In **New User Name**, type a name for the administrative account that you want to use to manage the server. For this virtual machine, type **MyTestVM1Admin**.
+8. **[新しいユーザー名]** に、サーバーの管理に使用する管理アカウントの名前を入力します。この仮想マシンの場合は、「**MyTestVM1Admin**」と入力します。
 
-9. In **New Password**, type a strong password for the administrative account on the virtual machine. In **Confirm Password**, retype the password. Click the arrow to continue.
+9. **[新しいパスワード]** ボックスに、仮想マシンの管理アカウントの強力なパスワードを入力します。**[パスワードの確認]** ボックスに、パスワードを再度入力します。矢印をクリックして続行します。
 
-10. You can place virtual machines together in a cloud service to provide robust applications, but for this tutorial, you only create a single virtual machine. To do this, select **Create a new cloud service**.
+10. クラウド サービスに複数の仮想マシンをまとめて配置して信頼性の高いアプリケーションを実現することもできますが、このチュートリアルでは仮想マシンを 1 台だけ作成します。そのためには、**[新しいクラウド サービスの作成]** を選択します。
 
-11. In **Cloud Service DNS Name**, type a name that uses between 3 and 24 lowercase letters and numbers. This name becomes part of the URI that is used to contact the virtual machine through the cloud service. For this virtual machine, type **MyService1**.
+11. **[クラウド サービス DNS 名]** に DNS 名を入力します。DNS 名の長さは 3 ～ 24 文字で、小文字と数字を使用できます。この名前は、クラウド サービスを介して仮想マシンにアクセスするときに使用する URI の一部になります。この仮想マシンの場合は、「**MyService1**」と入力します。
 
-12. In **Region/Affinity Group/Virtual Network**, select where you want to locate the virtual machine.
+12. **[リージョン]/[アフィニティ グループ]/[仮想ネットワーク]** で、仮想マシンを含める場所を選択します。
 
-13. To store the VHD that the virtual machine will use, accept the default setting of **Use an Automatically Generated Storage Account**.
+13. VHD ファイルが保存されているストレージ アカウントを選択できます。このチュートリアルでは、既定の **[自動的に生成されたストレージ アカウントを使用]** をそのまま使用します。
 
-14. Under **Availability Set**, for the purposes of this tutorial use the default setting of **None**. Click the arrow to continue.
+14. **[可用性セット]** では、このチュートリアルの目的に合わせて、既定の設定である **[なし]** を使用します。矢印をクリックして続行します。
 
-15.  Under **VM Agent**, decide whether to install the VM Agent. This agent provides the environment for you to install extensions that can help you interact with the virtual machine. For details, see [Using Extensions](http://go.microsoft.com/FWLink/p/?LinkID=390493).  
+15. **[VM エージェント]** では、VM エージェントをインストールするかどうかを決定します。このエージェントには、仮想マシンの操作に役立つ拡張機能をインストールするための環境が用意されています。詳細については、[拡張機能の使用に関するページ](http://go.microsoft.com/FWLink/p/?LinkID=394093)を参照してください。**重要**: VM エージェントは、仮想マシンを作成するときにのみインストールできます。
  
-16. Under **Endpoints**, review the new endpoints that will be created to allow connections to the virtual machine, such as through Remote Desktop
-and Windows PowerShell remoting. You also can add endpoints now, or create them later. For instructions on creating them later, see [How to Set Up Communication with a Virtual Machine](http://www.windowsazure.com/en-us/manage/linux/how-to-guides/setup-endpoints/).
+16. **[エンドポイント]** で、リモート デスクトップや Windows PowerShell リモート処理などを使用した仮想マシンへの接続を許可するために作成される新しいエンドポイントを確認します。ここでエンドポイントを追加したり、後でエンドポイントを作成することもできます。後でエンドポイントを作成する手順については、「[How to Set Up Communication with a Virtual Machine (仮想マシンとの通信をセットアップする方法)](http://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/setup-endpoints/)」を参照してください。
 
-17. Click the check mark to create the virtual machine.
+17. チェック マークをクリックして、仮想マシンを作成します。
     
-	After the virtual machine and cloud service are created, the Management Portal lists the new virtual machine under **Virtual Machines** and lists the cloud service under **Cloud Services**. Both the virtual machine and the cloud service are started automatically.
+	仮想マシンとクラウド サービスが作成されると、管理ポータルでは、**[仮想マシン]** の下に新しい仮想マシンが表示され、**[クラウド サービス]** の下にクラウド サービスが表示されます。仮想マシンとクラウド サービスはどちらも自動的に開始されます。
 
 
-## <a id="logon"> </a>How to log on to the virtual machine after you create it ##
+## <a id="logon"> </a>仮想マシンを作成後、ログオンする方法##
 
-You can log on to the virtual machine that you created to manage both its settings and the applications that are running on it.
+作成した仮想マシンにログオンして、仮想マシンの設定と、仮想マシン上で実行されるアプリケーションの両方を管理できます。
 
-1. Sign in to the Azure [Management Portal](http://manage.windowsazure.com).
+1. Windows Azure の[管理ポータル](http://manage.windowsazure.com)にサインインします。
 
-2. Click **Virtual Machines**, and then select the **MyTestVM1** virtual machine.
+2. **[仮想マシン]** をクリックし、**[MyTestVM1]** 仮想マシンを選択します。
 
-3. On the command bar, click **Connect**.
+3. コマンド バーで、**[接続]** をクリックします。
 
-4. Click **Open** to use the remote desktop protocol file that was automatically created for the virtual machine.
+4. **[開く]** をクリックして、仮想マシン用に自動的に作成されたリモート デスクトップ プロトコル ファイルを使用します。
 
-5. Click **Connect**.
+5. **[接続]** をクリックします。
 
-	![Continue with connecting](./media/CreateVirtualMachineWindowsTutorial/connectpublisher.png)
+	![接続の続行](./media/CreateVirtualMachineWindowsTutorial/connectpublisher.png)
 
-6. In the password box, type the user name and password that you specified when you created the virtual machine, and then click **OK**.
+6. 仮想マシンの作成時に指定したユーザー名とパスワードを入力し、**[OK]** をクリックします。
 
-7. Click **Yes** to verify the identity of the virtual machine.
+7. **[はい]** をクリックして、目的の仮想マシンであることを確認します。
 
-	![Verify the identity of the machine](./media/CreateVirtualMachineWindowsTutorial/connectverify.png)
+	![目的の仮想マシンであることを確認](./media/CreateVirtualMachineWindowsTutorial/connectverify.png)
 
-	You can now work with the virtual machine just like you would a server in your office.
+	これで仮想マシンをオフィス内のサーバーとまったく同様に扱うことができます。
 
-## <a id="attachdisk"> </a>How to attach a data disk to the new virtual machine ##
+## <a id="attachdisk"> </a>新しい仮想マシンにデータ ディスクを接続する方法##
 
-Your application might need to store data. To set this up, attach a data disk to the virtual machine. The easiest way to do this is to attach an empty data disk to the virtual machine.
+アプリケーションによってはデータの保存が必要になる場合があります。その場合は、仮想マシンにデータ ディスクを接続します。最も簡単な方法は、仮想マシンに空のデータ ディスクを接続することです。
 
-1. Sign in to the Azure [Management Portal](http://manage.windowsazure.com).
+1. Windows Azure の[管理ポータル](http://manage.windowsazure.com)にサインインします。
 
-2. Click **Virtual Machines**, and then select the **MyTestVM1** virtual machine.
+2. **[仮想マシン]** をクリックし、**[MyTestVM1]** 仮想マシンを選択します。
 
-3. On the command bar, click **Attach**, and then click **Attach Empty Disk**.
+3. コマンド バーで、**[ディスクの接続]**、**[空のディスクの接続]** の順にクリックします。
 
-	The **Attach Empty Disk** dialog box appears.
+	**[空のディスクの接続]** ダイアログ ボックスが表示されます。
 
-	> [WACOM.NOTE] The Quick Start page might be displayed instead of the dashboard and command bar. If this happens, click **Dashboard** from the top.
+4. **[仮想マシン名]**、**[ストレージの場所]**、**[ファイル名]**、**[ホスト キャッシュの設定]** の値は既に定義されています。必要なのは、ディスクのサイズを入力することだけです。**[サイズ]** ボックスに「**5**」と入力します。
 
-4. The **Virtual Machine Name**, **Storage Location**, **File Name**, and **Host Cache Preference** are already defined for you. All you have to do is enter the size that you want for the disk. Type **5** in the **Size** field.
+	**注:** ディスクはすべて、VHD ファイルから Windows Azure のストレージに作成されます。ストレージに追加する VHD ファイルの名前は指定できますが、ディスクの名前は Windows Azure によって自動的に生成されます。
 
-	**Note:** All disks are created from a VHD file in Azure storage. You can provide a name for the VHD file that is added to storage, but Azure generates the name of the disk automatically.
+5. チェック マークをクリックして、仮想マシンにデータ ディスクを接続します。
 
-5. Click the check mark to attach the data disk to the virtual machine.
+6. 仮想マシンの名前をクリックします。ここでダッシュボードが表示されるので、データ ディスクが仮想マシンに正しく接続されたか確認できます
 
-6. Click the name of the virtual machine. This displays the dashboard so you can verify that the data disk was successfully attached to the virtual machine.
+	この仮想マシンには、2 つのディスクがあります。接続したディスクは、**ディスク** テーブルに表示されます。
 
-	The virtual machine now has 2 disks. The disk that you attached is listed in the **Disks** table.
+	![空のディスクの接続](./media/CreateVirtualMachineWindowsTutorial/attachemptysuccess.png)
 
-	![Attach empty disk](./media/CreateVirtualMachineWindowsTutorial/attachemptysuccess.png)
+	仮想マシンにデータ ディスクを接続した後も、ディスクはオフラインで初期化されていません。データ ディスクを使ってデータを保存する前に、仮想マシンにログオンして、ディスクを初期化する必要があります。
 
-	After you attach the data disk to the virtual machine, the disk is offline and not initialized. Before you can use it to store data, you'll need to log on to the virtual machine and initialize the disk.
+7. 仮想マシンに接続するには、前のセクション「**仮想マシンを作成後、ログオンする方法**」の手順を使用します。
 
-7. Connect to the virtual machine by using the steps in the previous section, **How to log on to the virtual machine after you create it**.
+8. 仮想マシンにログオンした後、**サーバー マネージャー**を開きます。左のウィンドウで **[ストレージ]** を展開し、**[ディスクの管理]** をクリックします。
 
-8. After you log on to the virtual machine, open **Server Manager**. In the left pane, expand **Storage**, and then click **Disk Management**.
+	![サーバー マネージャーでディスクを初期化](./media/CreateVirtualMachineWindowsTutorial/servermanager.png)
 
-	![Initialize the disk in Server Manager](./media/CreateVirtualMachineWindowsTutorial/servermanager.png)
+9. **[ディスク 2]** を右クリックして、**[ディスクの初期化]** をクリックします。
 
-9. Right-click **Disk 2**, and then click **Initialize Disk**.
+	![初期化の開始](./media/CreateVirtualMachineWindowsTutorial/initializedisk.png)
 
-	![Start initialization](./media/CreateVirtualMachineWindowsTutorial/initializedisk.png)
+10. **[OK]** をクリックして初期化処理を開始します。
 
-10. Click **OK** to start the initialization process.
+11. ディスク 2 のスペース割り当て領域を右クリックして、**[新しいシンプル ボリューム]** をクリックし、既定値を使ってウィザードを終了します。
 
-11. Right-click the space allocation area for Disk 2, click **New Simple Volume**, and then finish the wizard with the default values.
+	![ボリュームの作成](./media/CreateVirtualMachineWindowsTutorial/initializediskvolume.png)
 
-	![Create the volume](./media/CreateVirtualMachineWindowsTutorial/initializediskvolume.png)
+	これでディスクがオンラインになり、新しいドライブ文字が使用できるようになりました。
 
-	The disk is now online and ready to use with a new drive letter.
-
-	![Initialization success](./media/CreateVirtualMachineWindowsTutorial/initializesuccess.png)
+	![初期化の成功](./media/CreateVirtualMachineWindowsTutorial/initializesuccess.png)
 
 
-##Next Steps 
+##次のステップ
 
-To learn more about configuring Windows virtual machines on Azure, see the following articles:
+Windows Azure での Windows 仮想マシンの構成に関する詳細については、次の記事を参照してください。
 
--[How to Connect Virtual Machines in a Cloud Service](http://www.windowsazure.com/en-us/documentation/articles/cloud-services-connect-virtual-machine/)
+-[How to Connect Virtual Machines in a Cloud Service (クラウド サービス内の仮想マシンを接続する方法)](http://www.windowsazure.com/ja-jp/documentation/articles/cloud-services-connect-virtual-machine/)
 
--[Manage the Availability of Virtual Machines](http://www.windowsazure.com/en-us/documentation/articles/manage-availability-virtual-machines/)
+-[Manage the Availability of Virtual Machines (仮想マシンの可用性管理)](http://www.windowsazure.com/ja-jp/documentation/articles/manage-availability-virtual-machines/)
 
-[About virtual machines in Azure]: #virtualmachine
-[How to create the virtual machine]: #custommachine
-[How to log on to the virtual machine after you create it]: #logon
-[How to attach a data disk to the new virtual machine]: #attachdisk
-[How to set up communication with the virtual machine]: #endpoints
+[Windows Azure での仮想マシンについて]: #virtualmachine
+[仮想マシンの作成方法]: #custommachine
+[仮想マシンを作成後、ログオンする方法]: #logon
+[新しい仮想マシンにデータ ディスクを接続する方法]: #attachdisk
+[仮想マシン間の通信をセットアップする方法]: #endpoints
+

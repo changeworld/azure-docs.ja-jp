@@ -1,130 +1,129 @@
-<properties linkid="dev-net-how-to-access-control" urlDisplayName="Access Control" pageTitle="How to use Access Control (.NET) - Azure feature guide" metaKeywords="Azure Access Control Service authentication C#" description="Learn how to use Access Control Service (ACS) in your Azure application to authenticate users when they try to gain access to a web app." metaCanonical="" services="active-directory" documentationCenter=".NET" title="How to Authenticate Web Users with Azure Active Directory Access Control" authors="juneb" solutions="" manager="" editor="" />
+<properties linkid="dev-net-how-to-access-control" urlDisplayName="アクセス制御" pageTitle="アクセス制御の使用方法 (.NET) - Windows Azure の機能ガイド" metaKeywords="Azure アクセス制御サービス認証 C#" description="このガイドでは、ユーザーが Web アプリケーションにアクセスしようとするときに、それらのユーザーを認証するために Windows Azure アプリケーションでアクセス制御サービス (ACS) を使用する方法について説明します。" metaCanonical="" services="active-directory" documentationCenter=".NET" title="Windows Azure Active Directory のアクセス制御で Web ユーザーを認証する方法" authors=""  solutions="" writer="juneb" manager="" editor=""  />
 
 
 
 
-# How to Authenticate Web Users with Azure Active Directory Access Control
+# Windows Azure Active Directory のアクセス制御で Web ユーザーを認証する方法
 
 
-This guide shows you how to use Azure Active Directory Access Control (also known as Access Control Service or ACS) to authenticate users from identity providers such as Microsoft, Google, Yahoo, and Facebook when they try to gain access to a web application.
+このガイドでは、Microsoft、Google、Yahoo、Facebook などの ID プロバイダーのユーザーが Web アプリケーションにアクセスしようとするときに、それらのユーザーを認証するために Windows Azure Active Directory の Access Control (Access Control サービス (ACS) とも呼ばれます) を使用する方法について説明します。
 
-<h2><span class="short-header">Table of Contents</span>Table of Contents</h2>
+<h2><span class="short-header">目次</span>目次</h2>
 
--   [What is ACS?][]
--   [Concepts][]
--   [Prerequisites][]
--   [Create an Access Control Namespace][]
--   [Create an ASP.NET MVC Application][]
--   [Integrate your Web Application with ACS][]
--   [Test the Integration with ACS][]
--   [View Claims Sent By ACS][vcsb]
--   [View the Application in the ACS Management Portal][vpp]
--   [Add an Identity Provider][]
--   [What's Next][]
+-   [ACS とは][]
+-   [概念][]
+-   [前提条件][]
+-   [Access Control 名前空間の作成][]
+-   [ASP.NET MVC アプリケーションを作成する][]
+-   [Web アプリケーションを ACS と統合する][]
+-   [ACS との統合をテストする][]
+-   [ACS により送信されたクレームを参照する][vcsb]
+-   [ACS 管理ポータルでアプリケーションを参照する][vpp]
+-   [ID プロバイダーを追加する][]
+-   [参照トピック][]
 
-<h2><span class="short-header">What is ACS?</span>What is ACS?</h2>
+<h2><span class="short-header">ACS とは</span>ACS とは</h2>
 
-Most developers are not identity experts and do not want to spend time developing authentication and authorization mechanisms for their applications and services. ACS is an Azure service that provides an easy way for you to authenticate users to access your web applications and services without having to add complex authentication logic to your code.
+ほとんどの開発者は ID の専門家ではなく、アプリケーションやサービスの認証と承認のメカニズムの開発に時間をかけたくはありません。ACS は、Web アプリケーションとサービスにアクセスするユーザーを認証するための簡単な方法を提供する Windows Azure サービスです。これを使えば、複雑な認証ロジックをコードに追加する必要はありません。
 
-The following features are available in ACS:
+ACS では、次の機能を使用できます。
 
--   Integration with Windows Identity Foundation (WIF).
--   Support for popular web identity providers (IPs) including Microsoft accounts (formerly known as Windows Live ID), Google, Yahoo, and Facebook.
--   Support for Active Directory Federation Services (AD FS) 2.0.
--   An Open Data Protocol (OData)-based management service that provides
-    programmatic access to ACS settings.
--   A Management Portal that allows administrative access to the ACS
-    settings.
+-   Windows Identity Foundation (WIF) との統合。
+-   Microsoft アカウント (旧 Windows Live ID)、Google、Yahoo、Facebook などの一般的な Web ID プロバイダーのサポート。
+-   Active Directory フェデレーション サービス (AD FS) 2.0 のサポート。
+-   ACS 設定へのプログラムによるアクセスを提供する Open Data Protocol 
+    (OData) ベースの管理サービス。
+-   ACS 設定への管理アクセスが可能な管理ポータル。
 
-For more information about ACS, see [Access Control Service 2.0][].
+ACS の詳細については、[アクセス制御サービス 2.0 に関するページ][]を参照してください。
 
-<h2><span class="short-header">Concepts</span>Concepts</h2>
+<h2><span class="short-header">概念</span>概念</h2>
 
-ACS is built on the principles of claims-based identity -- a consistent approach to creating authentication mechanisms for applications running on-premises or in the cloud. Claims-based identity provides a common way for applications and services to get the identity information they need about users inside their organization, in other organizations, and on the Internet.
+ACS はクレームベース ID のプリンシパルに基づいており、これは内部またはクラウドで実行されているアプリケーションの認証メカニズムを作成するための一貫した方法になっています。クレームベース ID は、アプリケーションとサービスが組織内、他の組織内、およびインターネット上のユーザーに関する必要な ID 情報を取得するための一般的な方法を提供します。
 
-To complete the tasks in this guide, you should understand the following terms and concepts are used in this guide:
+このガイドのタスクを完了するには、このガイドで使用される次の用語と概念を理解している必要があります。
 
 
-**Client** - A browser that is attempting to gain access to your web application.
+**クライアント**: Web アプリケーションにアクセスしようとするブラウザー。
 
-**Relying party (RP) application** - Your web app. An RP application is a website or service that outsources authentication to one external authority. In identity jargon, we say that the RP trusts that authority. This guide explains how to configure your application to trust ACS.
+**証明書利用者 (RP) アプリケーション**: 使用している Web アプリケーション。RP アプリケーションは、外部の機関に認証を委託する Web サイトまたは Web サービスです。ID の分野では、"RP がその機関を信頼する" という表現を使います。このガイドでは、アプリケーションが ACS を信頼するように構成する方法について説明します。
 
-**Token** - A user gains access to an RP application by presenting a valid token that was issued by an authority that the RP application trusts. A collection of security data that is issued when a client is authenticated. It contains a set of claims, which are attributes of the authenticated user, such as a user's name or age, or an identifier for a user role. A token is digitally signed so its issuer can be identified and its content cannot be changed.
+**トークン**: ユーザーは RP アプリケーションが信頼している機関によって発行された有効なトークンを提示することによって、RP アプリケーションにアクセスできます。クライアントの認証時に発行されたセキュリティ データのコレクションです。これには、クレームのセット、つまり、ユーザーの名前や年齢、ユーザー ロールの ID など、認証されたユーザーの属性が含まれます。トークンはデジタル署名されるため、発行者を特定でき、その内容は変更できません。
 
-**Identity Provider (IP)** - An  authority that authenticates user identities and issues security tokens, such as Microsoft account (Windows Live ID), Facebook,  Google, Twitter, and Active Directory. When ACS is configured to trust an IP, it accepts and validates the tokens that the IP issues. Because ACS can trust multiple IPs at the same time, when your application trusts ACS, you can  your application can offer users the option to be authenticated by any of the IPs that ACS trusts on your behalf.
+**ID プロバイダー (IP)**: ユーザー ID を認証し、セキュリティ トークンを発行する機関。Microsoft アカウント (Windows Live ID)、Facebook、Google、Twitter、Active Directory などです。ACS が IP を信頼するように構成されている場合、ACS はその IP によって発行されたトークンを受け入れて検証します。ACS は同時に複数の IP を信頼できるので、アプリケーションが ACS を信頼すると、ACS が信頼しているいずれかの IP によって認証するオプションをアプリケーションでユーザーに提示できます。
 
-**Federation Provider (FP)** - Identity providers (IPs) have direct knowledge of users, authenticate users by using their credentials, and issue claims about users. A Federation Provider (FP) is a different kind of authority. Instead of authenticating users directly, the FP brokers authentication. It acts as an intermediary between a relying party application and one or more IPs. ACS is a federation provider (FP).
+**フェデレーション プロバイダー (FP)**: ID プロバイダー (IP) はユーザーについての直接の情報を持ち、資格情報を使ってユーザーを認証し、ユーザーに関するクレームを発行します。フェデレーション プロバイダー (FP) は、それとは別の種類の機関です。ユーザーを直接認証する代わりに、FP は認証を仲介します。証明書利用者アプリケーションと 1 つ以上の IP の間の仲介役として機能します。ACS はフェデレーション プロバイダー (FP) です。
 
-**ACS Rule Engine** - Claims transformation rules convert the claims in tokens from trusted IPs so they can be used by an RP. ACS includes a rule engine that  applies the claims transformation rules that you specify for your RP.
+**ACS 規則エンジン**: クレーム変換規則は、信頼されている IP からのトークンのクレームを変換するため、RP で使用できます。ACS には、RP に指定するクレーム変換規則を適用する規則エンジンが含まれています。
 
-**Access Control Namespace** - Provides a unique scope for addressing ACS resources within your application. The namespace contains your settings, such as the IPs you trust, the RP applications you want to serve, the rules that you apply to incoming tokens, and it displays the endpoints that the application and the developer use to communicate with ACS.
+**Access Control 名前空間**: アプリケーション内で ACS リソースのアドレスを指定するための一意のスコープが提供されます。この名前空間には、信頼する IP、サービスを提供する RP アプリケーション、受信トークンに適用する規則などの設定が含まれ、アプリケーションと開発者が ACS とのやり取りに使用するエンドポイントが表示されます。
 
-The following figure shows how ACS authentication works with a web application:
+次の図は、Web アプリケーションで ACS 認証がどのように機能するかを示しています。
 
 ![][0]
 
-1.  The client (in this case, a browser) requests a page from the RP.
-2.  Since the request is not yet authenticated, the RP redirects the
-    user to the authority that it trusts, which is ACS. The ACS presents
-    the user with the choice of IPs that were specified for this RP. The
-    user selects the appropriate IP.
-3.  The client browses to the IP's authentication page, and prompts the
-    user to log on.
-4.  After the client is authenticated (for example, the identity
-    credentials are entered), the IP issues a security token.
-5.  After issuing a security token, the IP directs the client to send the security token that the IP issued to ACS.
-6.  ACS validates the security token issued by the IP, inputs the
-    identity claims in this token into the ACS rules engine, calculates
-    the output identity claims, and issues a new security token that
-    contains these output claims.
-7.  ACS directs the client to send the security token that ACS issued to the RP. The RP validates the signature on the security token, extracts claims for use by the application business logic, and returns the page that was originally requested.
+1.  クライアント (ここではブラウザー) が RP のページを要求します。
+2.  要求がまだ認証されていないので、RP は信頼している機関 (つまり
+    ACS) にユーザーをリダイレクトします。ACS は、この RP 
+    用に指定されている IP の選択肢をユーザーに提示します。ユ
+    ーザーが適切な IP を選択します。
+3.  クライアントは IP の認証ページに移動し、ユーザーにログオンを求めま
+    す。
+4.  クライアントが認証されたら (たとえば、ID 資格情報が入力さ
+    れたら)、IP はセキュリティ トークンを発行します。
+5.  セキュリティ トークンの発行後、IP は、IP が ACS に発行したセキュリティ トークンを送信するようクライアントに指示します。
+6.  ACS は IP によって発行されたセキュリティ トークンを検証し、
+    このトークンの ID クレームを ACS 規則エンジンに入力して出力 ID 
+    クレームを計算し、これらの出力クレームを含む新しいセキュリティ
+    トークンを発行します。
+7.  ACS は、ACS が RP に発行したセキュリティ トークンを送信するようクライアントに指示します。RP がセキュリティ トークンの署名を検証して、アプリケーション ビジネス ロジックにより使用されるクレームを抽出し、最初に要求されたページを返します。
 
-<h2><span class="short-header">Prerequisites</span>Prerequisites</h2>
-
-
-To complete the tasks in this guide, you will need the following:
-
--	Azure subscription
--	Microsoft Visual Studio 2012 
--	Identity and Access Tool for Visual Studio 2012 (To download, see [Identity and Access Tool][])
+<h2><span class="short-header">前提条件</span>前提条件</h2>
 
 
-<h2><span class="short-header">Create an Access Control Namespace</span>Create an Access Control Namespace</h2>
+このガイドのタスクを完了するには、次のものが必要です。
 
-To use Active Directory Access Control in Azure, create an Access Control namespace. The namespace provides a unique scope for
-addressing ACS resources within your application.
+-	Windows Azure サブスクリプション
+-	Microsoft Visual Studio 2012
+-	Identity and Access Tool for Visual Studio 2012 (ダウンロードするには、[Identity and Access Tool のダウンロード ページ][]を参照)
 
-1.  Log into the [Azure Management Portal][] (https://manage.WindowsAzure.com).
+
+<h2><span class="short-header">Access Control 名前空間の作成</span>Access Control 名前空間の作成</h2>
+
+Windows Azure で Active Directory のアクセス制御を使用するには、Access Control 名前空間を作成します。名前空間では、アプリケーション内で ACS リ
+ソースのアドレスを指定するための一意のスコープが提供されます。
+
+1.  [Windows Azure の管理ポータル][] (https://manage.WindowsAzure.com) にログインします。
     
-2.  Click **Active Directory**.  
+2.  **[Active Directory]** をクリックします。
 
 	![][1]
 
-3.  To create a new Access Control namespace, click **New**. **App Services** and **Access Control** will be selected. Click **Quick Create**. 
+3.  新しい Access Control 名前空間を作成するには、**[新規]** をクリックします。**[アプリケーション サービス]** と **[アクセス制御]** が選択されます。**[簡易作成]** をクリックします。
 
 	![][2]
 
-4.  Enter a name for the namespace. Azure verifies that the name is unique.
+4.  名前空間の名前を入力します。名前が一意であるかが確認されます。
 
-5.  Select the region in which the namespace is used. For best performance, use the region in which you are deploying your application, and then click **Create**.
+5.  名前空間が使用されるリージョンを選択します。パフォーマンスを最高にするには、アプリケーションを展開するリージョンと同じにし、**[作成]** をクリックします。
 
-Azure creates and activates the namespace.
+名前空間が作成されて有効化されます。
 
-<h2><span class="short-header">Create an ASP.NET MVC Application</span>Create an ASP.NET MVC Application</h2>
+<h2><span class="short-header">ASP.NET MVC アプリケーションの作成</span>ASP.NET MVC アプリケーションの作成</h2>
 
-In this step, you create a ASP.NET MVC application. In later steps, we'll integrate this simple web forms application with ACS.
+この手順では、ASP.NET MVC アプリケーションを作成します。後の手順では、このシンプルな Web フォーム アプリケーションを ACS に統合します。
 
-1.	Start Visual Studio 2012 or Visual Studio Express for Web 2012 (Previous versions of Visual Studio will not work with this tutorial).
-1.	Click **File**, and then click **New Project**.
-1.	Select the Visual C#/Web template, and then select **ASP.NET MVC 4 Web Application**.
+1.	Visual Studio 2012 または Visual Studio Express for Web 2012 を起動します (それより前のバージョンの Visual Studio は、このチュートリアルでは機能しません)。
+1.	**[ファイル]** をクリックし、**[新しいプロジェクト]** をクリックします。
+1.	Visual C#/Web テンプレートを選択し、**[ASP.NET MVC 4 Web アプリケーション]** を選択します。
 
-	We'll use a MVC application for this guide, but you can use any web application type for this task.
+	このガイドでは MVC アプリケーションを使用しますが、このタスクにはどの種類の Web アプリケーションでも使用できます。
 
 	![][3]
 
-1. In **Name**, type **MvcACS**, and then click **OK**.
-1. In the next dialog, select **Internet Application**, and then click **OK**.
-1. Edit the *Views\Shared\_LoginPartial.cshtml* file and replace the contents with the following code:
+1. **[名前]** に、「**MvcACS**」と入力して **[OK]** をクリックします。
+1. 次のダイアログで、**[インターネット アプリケーション]** を選択して **[OK]** をクリックします。
+1. *Views\Shared\_LoginPartial.cshtml* ファイルを編集し、内容を次のコードに置き換えます。
 
         @if (Request.IsAuthenticated)
         {
@@ -150,75 +149,75 @@ In this step, you create a ASP.NET MVC application. In later steps, we'll integr
             </ul>
         }
 
-Currently, ACS doesn't set User.Identity.Name, so we need to make the above change.
+現在のところ、ACS は User.Identity.Name を設定しないため、上記の変更を加える必要があります。
 
-1. Press F5 to run the application. The default ASP.NET MVC application appears in your web browser.
+1. F5 キーを押してアプリケーションを実行します。既定の ASP.NET MVC アプリケーションが Web ブラウザーに表示されます。
 
-<h2><span class="short-header">Integrate your Web Application with ACS</span>Integrate your Web Application with ACS</h2>
+<h2><span class="short-header">Web アプリケーションを ACS と統合する</span>Web アプリケーションを ACS と統合する</h2>
 
-In this task, you will integrate your ASP.NET web application with ACS.
+このタスクでは、ASP.NET Web アプリケーションを ACS と統合します。
 
-1.	In Solution Explorer, right-click the MvcACS project, and then select **Identity and Access**.
+1.	ソリューション エクスプローラーで、MvcACS プロジェクトを右クリックし、**[Identity and Access]** をクリックします。
 
-	If the **Identity and Access** option does not appear on the context menu, install the Identity and Access Tool. For information, see [Identity and Access Tool]. 
+	**[Identity and Access]** オプションがコンテキスト メニューに表示されない場合、Identity and Access Tool をインストールします。詳細については、[Identity and Access Tool のダウンロード ページ]を参照してください。
 
 	![][4]
 
-2.	On the **Providers** tab, select **Use the Azure Access Control Service**.
+2.	**[プロバイダー]** タブで、**[Windows Azure のアクセス制御サービスを使用する]** を選択します。
 
     ![][44]
 
-3.  Click the **Configure** link.
+3.  **[構成]** リンクをクリックします。
 
     ![][444]
 
-	Visual Studio requests information about the Access Control namespace. Enter the namespace name you created earlier (Test in this images above, but you will have a different namespace). Switch back to the Azure Management Portal to get the symmetric key.
+	Visual Studio により、Access Control 名前空間に関する情報が要求されます。前の手順で作成した名前空間名を入力します (上の画像では Test ですが、実際には別の名前空間です)。Windows Azure の管理ポータルに戻り、対称キーを取得します。
 
 	![][17]
 
-4.  In the Azure Management Portal, click the Access Control namespace and then click **Manage**.
+4.  Windows Azure の管理ポータルで、Access Control 名前空間をクリックし、**[管理]** をクリックします。
 
 	![][8]
 
-5.	Click **Management Service** and then click **Management Client**.
+5.	**[管理サービス]** をクリックし、**[管理クライアント]** をクリックします。
 
 	![][18]
 
-6.	Click **Symmetric Key**, click **Show Key**, and copy the key value. Then, click **Cancel** to exit the Edit Management Client page without making changes. 
+6.	**[対称キー]** をクリックし、**[キーの表示]** をクリックして、キーの値をコピーします。次に、**[キャンセル]** をクリックし、変更を加えずに管理クライアントの編集ページを終了します。
 
 	![][19]
 
-7.  In Visual Studio, paste the key in the **Enter the Management Key for the namespace** field and click **Save management key**, and then click **OK**.
+7.  Visual Studio で、**[名前空間の管理キーを入力]** フィールドにキーを貼り付け、**[管理キーの保存]** をクリックして **[OK]** をクリックします。
 
 	![][20]
 
-	Visual Studio uses the information about the namespace to connect to the ACS Management Portal and get the settings for your namespace, including the identity providers, realm, and return URL.
+	Visual Studio は、名前空間に関する情報を使用して ACS 管理ポータルに接続し、ID プロバイダー、領域、戻り先 URL など、名前空間の設定を取得します。
 
-8.	Select **Windows Live ID** (Microsoft account) and click OK. 
+8.	**[Windows Live ID]** (Microsoft アカウント) を選択して [OK] をクリックします。
 
 	![][5]
 
-<h2><span class="short-header">Test the Integration with ACS</span>Test the Integration with ACS</h2>
+<h2><span class="short-header">ACS との統合をテストする</span>ACS との統合をテストする</h2>
 
-This task explains how to test the integration of your RP application and ACS.
+このタスクでは、RP アプリケーションと ACS の統合をテストする方法について説明します。
 
--	Press F5 in Visual Studio to run the app.
+-	Visual Studio で F5 キーを押してアプリケーションを実行します。
 
-When your application is integrated with ACS and you have selected Windows Live ID (Microsoft account), instead of opening the default ASP.NET Web Forms application, your browser is redirected to the sign-in page for Microsoft accounts. When you sign in with a valid user name a password, you are then redirected to the  MvcACS application.
+アプリケーションが ACS と統合されており、Windows Live ID (Microsoft アカウント) を選択した場合、既定の ASP.NET Web フォーム アプリケーションを開く代わりに、ブラウザーが Microsoft アカウントのサインイン ページにリダイレクトされます。有効なユーザー名とパスワードでサインインすると、MvcACS アプリケーションにリダイレクトされます。
 
 ![][6]
 
-Congratulations! You have successfully integrated ACS with your ASP.NET web application. ACS is now handling the authentication of users using their Microsoft account credentials.
+ご利用ありがとうございます。ACS と ASP.NET Web アプリケーションを正常に統合できました。ACS が Microsoft アカウントの資格情報を使用してユーザーの認証を処理するようになっています。
 
-<h2><a name="bkmk_viewClaims"></a>View Claims Sent By ACS</h2>
+<h2><a name="bkmk_viewClaims"></a>ACS により送信されたクレームを参照する</h2>
 
-In this section we will modify the application to view the claims sent by ACS.  The Identity and Access tool has created a rule group that passes through all claims from the IP to your application.  Note that different identity providers send different claims.
+このセクションでは、ACS によって送信されたクレームが参照されるようにアプリケーションを変更します。Identity and Access Tool により、IP からアプリケーションへのすべてのクレームを通過する規則グループが作成されています。ID プロバイダーが異なると送信されるクレームが異なる点に注意してください。
 
-1. Open the *Controllers\HomeController.cs* file. Add a **using** statement for **System.Threading**:
+1. *Controllers\HomeController.cs* ファイルを開きます。**System.Threading** の **using** ステートメントを追加します。
 
  	using System.Threading;
 
-1. In the HomeController class add the *Claims* method:
+1. HomeController クラスに、*Claims* メソッドを追加します。
 
     public ActionResult Claims()
     {
@@ -229,13 +228,13 @@ In this section we will modify the application to view the claims sent by ACS.  
         return View();
     }
 
-1. Right click on the *Claims* method and select **Add View**.
+1. *Claims* メソッドを右クリックし、**[ビューの追加]** を選択します。
 
 ![][66]
 
-1. Click **Add**.
+1. **[追加]** をクリックします。
 
-1. Replace the contents of the *Views\Home\Claims.cshtml* file with the following code:
+1. *Views\Home\Claims.cshtml* ファイルの内容を次のコードに置き換えます。
 
         @{
             ViewBag.Title = "Claims";
@@ -285,104 +284,104 @@ In this section we will modify the application to view the claims sent by ACS.  
         }
         </table>
 
-1. Run the application and navigate to the *Claims* method:
+1. アプリケーションを実行し、*Claims* メソッドに移動します。
 
 ![][666]
 
-For more information on using claims in your application, see the [Windows Identity Foundation library](http://msdn.microsoft.com/en-us/library/hh377151.aspx).
+アプリケーションでクレームの使い方の詳細については、「[Windows Identity Foundation](http://msdn.microsoft.com/en-us/library/hh377151.aspx)」を参照してください。
 
-<h2><a name="bkmk_VP"></a>View the App in the ACS Management Portal</h2>
+<h2><a name="bkmk_VP"></a>ACS 管理ポータルでアプリケーションを参照する</h2>
 
-The Identity and Access Tool in Visual Studio automatically integrates your application with ACS.
+Visual Studio の Identity and Access Tool は、アプリケーションと ACS と自動的に統合します。
 
-When you select the Use Azure Access Control option and then run your application, the Identity and Access Tool adds your application as a relying party, configures it to use the selected identity providers, and generates and selects the default claims transformation rules for the application.
+[Windows Azure の Access Control を使用する] オプションを選択してアプリケーションを実行すると、Identity and Access Tool によりアプリケーションが証明書利用者として追加されて、選択された ID プロバイダーを使用するように構成され、アプリケーションの既定のクレーム変換規則が生成および選択されます。
 
-You can review and change these configuration settings in the ACS Management Portal. Use the following steps to review the changes in the portal.
+これらの構成設定は、ACS 管理ポータルで確認して変更できます。ポータルで変更を確認するには、次の手順を使用します。
 
-1.	Log into the Windows [Azure Management Portal](http://manage.WindowsAzure.com).
+1.	[Windows Azure の管理ポータル](http://manage.WindowsAzure.com)にログインします。
 
-2.	Click **Active Directory**. 
+2.	**[Active Directory]** をクリックします。
 
 	![][8]
 
-3.	Select an Access Control namespace and then click **Manage**. This action opens the ACS Management Portal.
+3.	Access Control 名前空間を選択し、**[管理]** をクリックします。この操作により、ACS 管理ポータルが開きます。
 
 	![][9]
 
 
-4.	Click **Relying party applications**.
+4.	**[証明書利用者アプリケーション]** をクリックします。
 
-	The new MvcACS application appears in the list of relying party applications. The realm is automatically set to the application main page.
+	新しい MvcACS アプリケーションが、証明書利用者アプリケーションの一覧に表示されます。領域は、自動的にアプリケーション メイン ページに設定されます。
 
 	![][10]
 
 
-5.	Click **MvcACS**.
+5.	**MvcACS** をクリックします。
 
-	The Edit Relying Party Application page contains configuration settings for the MvcACS web application. When you change the settings on this page and save them, the changes are immediately applied to the application.
+	[証明書利用者アプリケーションの編集] ページには、MvcACS Web アプリケーションの構成設定が表示されます。このページの設定を変更して保存すると、変更がすぐにアプリケーションに適用されます。
 
 	![][11]
 
-6.	Scroll down the page to see the remaining configuration settings for the MvcACS application, including the identity providers and claims transformation rules.
+6.	ID プロバイダーやクレーム変換規則など、MvcACS アプリケーションの他の構成設定が表示されるまで、ページを下にスクロールします。
 
 	![][12]
 
-In the next section, we'll use the features of the ACS Management Portal to make a change to the web application -- just to show how easy it is to do.
+次のセクションでは、ACS 管理ポータルの機能を使用して Web アプリケーションに変更を加え、どれくらい簡単に変更できるかを示します。
 
-<h2><span class="short-header">Add an Identity Provider</span>Add an Identity Provider</h2>
+<h2><span class="short-header">ID プロバイダーを追加する</span>ID プロバイダーを追加する</h2>
 
-Let's use the ACS Management Portal to change the authentication of our MvcACS application. In this example, we'll add Google as an identity provider for MvcACS.
+ACS 管理ポータルを使用して、MvcACS アプリケーションの認証を変更しましょう。この例では、Google を MvcACS の ID プロバイダーとして追加します。
 
-1.	Click **Identity providers** (in the navigation menu) and then click **Add**.
+1.	**[ID プロバイダー]** (ナビゲーション メニュー) をクリックし、**[追加]** をクリックします。
 
 	![][13]
 
-2.	Click **Google** and then click **Next**. The MvcACS app checkbox is selected by default. 
+2.	**Google** をクリックし、**[次へ]** をクリックします。MvcACS アプリケーションのチェック ボックスが既定でオンになっています。
 
 	![][14]
 
-3. Click Save. 
+3. [保存] をクリックします。
 
 	![][15]
 
 
-Done! If you go back to Visual Studio, open the project for the MvcACS app, and click **Identity and Access**, the tool lists both the Windows Live ID and Google identity providers.  
+これで完了です。Visual Studio に戻ったら、MvcACS アプリケーションのプロジェクトを開いて **[Identity and Access]** をクリックすると、ツールにより Windows Live ID と Google ID プロバイダーの両方が一覧表示されます。
 
 ![][16]
 
-And, when you run your application, you'll see the effect. When an application supports more than one identity provider, the user's browser is first directed to a page hosted by ACS that prompts the user to choose an identity provider. 
+また、アプリケーションを実行すると、効果を確認できます。アプリケーションで複数の ID プロバイダーがサポートされる場合、ユーザーのブラウザーにはまず ACS によりホストされているページが表示され、ユーザーは ID プロバイダーの選択を求められます。
 
 ![][7]
 
-After the user selects an identity provider, the browser goes to the identity provider sign-in page.
+ユーザーが ID プロバイダーを選択したら、ブラウザーは ID プロバイダーのサインイン ページに移動します。
 
-<h2><span class="short-header">What's Next</span>What's Next</h2>
+<h2><span class="short-header">参照トピック</span>参照トピック</h2>
 
-You have created a web application that is integrated with ACS. But, this is just the beginning! You can expand on this scenario.
+ACS と統合された Web アプリケーションを作成できました。ただし、まだ始まりにすぎません。このシナリオを展開することができます。
  
-For example, you can add more identity providers for this RP or allow users registered in enterprise directories, such as Active Directory Domain Services, to log on to the web application.
+たとえば、この RP に他の ID プロバイダーを追加したり、Active Directory ドメイン サービスなどのエンタープライズ ディレクトリに登録されたユーザーが Web アプリケーションにログオンできるようにしたりすることができます。
 
-You can also add rules to your namespace that determine which claims are sent to an application for processing in the application business logic.
+アプリケーション ビジネス ロジックで処理するためにアプリケーションに送信されるクレームを決定する規則を、名前空間に追加することもできます。
 
-To further explore ACS functionality and to experiment with more scenarios, see [Access Control Service 2.0].
+さらに ACS の機能を調べたり、他のシナリオを試してみたりする場合は、[アクセス制御サービス 2.0 に関するページ]を参照してください。
 
 
-  [What is ACS?]: #what-is
-  [Concepts]: #concepts
-  [Prerequisites]: #pre
-  [Create an ASP.NET MVC Application]: #create-web-app
-  [Create an Access Control Namespace]: #create-namespace
-  [Integrate your Web Application with ACS]: #Identity-Access
-  [Test the Integration with ACS]: #Test-ACS
-  [View the Application in the ACS Management Portal]: acs-portal
-  [Add an Identity Provider]: #add-IP
-  [What's Next]: #whats-next
+  [ACS とは]: #what-is
+  [概念]: #concepts
+  [前提条件]: #pre
+  [ASP.NET MVC アプリケーションを作成する]: #create-web-app
+  [Access Control 名前空間の作成]: #create-namespace
+  [Web アプリケーションを ACS と統合する]: #Identity-Access
+  [ACS との統合をテストする]: #Test-ACS
+  [ACS 管理ポータルでアプリケーションを参照する]: acs-portal
+  [ID プロバイダーを追加する]: #add-IP
+  [参照トピック]: #whats-next
   [vcsb]: #bkmk_viewClaims
   [vpp]: #bkmk_VP
 
   [Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
   [Identity and Access Tool]: http://go.microsoft.com/fwlink/?LinkID=245849
-  [Azure Management Portal]: http://manage.WindowsAzure.com
+  [Windows Azure の管理ポータル]: http://manage.WindowsAzure.com
 
   [0]: ./media/active-directory-dotnet-how-to-use-access-control/acs-01.png
   [1]: ./media/active-directory-dotnet-how-to-use-access-control/acsCreateNamespace.png
@@ -409,3 +408,6 @@ To further explore ACS functionality and to experiment with more scenarios, see 
   [18]: ./media/active-directory-dotnet-how-to-use-access-control/acsManagementService.png
   [19]: ./media/active-directory-dotnet-how-to-use-access-control/acsShowKey.png
   [20]: ./media/active-directory-dotnet-how-to-use-access-control/acsConfigAcsNamespace2.png
+
+
+

@@ -1,62 +1,62 @@
-<properties linkid="develop-python-web-app-with-blob-storage" urlDisplayName="Web App with Blob Storage" pageTitle="Python web app with table storage | Microsoft Azure" metaKeywords="Azure table storage Python, Azure Python application, Azure Python tutorial, Azure Python example" description="A tutorial that teaches you how to create a Python web application using the Azure Client Libraries. Django is used as the web framework." metaCanonical="" services="storage" documentationCenter="Python" title="Python Web Application using Table Storage" authors="" solutions="" videoId="" scriptId="" manager="" editor="mollybos" />
+<properties linkid="develop-python-web-app-with-blob-storage" UrlDisplayName="BLOB ストレージを使用した Web アプリケーション" pageTitle="テーブル ストレージを使用した Python Web アプリケーション - Windows Azure チュートリアル" MetaKeywords="Azure テーブル ストレージ Python, Azure Python アプリケーション, Azure Python チュートリアル, Azure Python 例" description="Windows Azure クライアント ライブラリを使用して Python Web アプリケーションを作成する方法について説明したチュートリアルです。Django を Web フレームワークとして使用します。" metaCanonical="" services="storage" documentationCenter="Python" title="テーブル ストレージを使用する Python Web アプリケーション" authors=""  solutions="" videoId="" scriptId="" writer="" manager="" editor="mollybos"  />
 
 
 
 
 
-# Python Web Application using Table Storage
+# テーブル ストレージを使用する Python Web アプリケーション
 
-In this tutorial, you will learn how to create an application that uses Table Storage with the Azure Client Libraries for Python. If this is your first Python Azure app, you may wish to take a look at [Django Hello World Web Application][] first.
+このチュートリアルでは、Python 向け Windows Azure クライアント ライブラリに基づいて、テーブル ストレージを使用するアプリケーションの作成方法について説明します。このアプリケーションが最初の Python Azure アプリケーションである場合は、「[Django Hello World Web Application (Django Hello World Web アプリケーション)][]」を先に参照することをお勧めします。
 
-For this guide, you will create a web-based task-list application that you can deploy to Azure. The task list allows a user to retrieve tasks, add new tasks, and mark tasks as completed.  We'll be using Django as the web framework.
+このガイドでは、Windows Azure にデプロイできる Web ベースのタスク一覧アプリケーションを作成します。このタスク一覧では、ユーザーがタスクの取得、新しいタスクの追加、タスクの完了済みのマーク付けを実行できます。また、Django を Web フレームワークとして使用します。
 
-The task items are stored in Azure Storage. Azure Storage provides unstructured data storage that is fault-tolerant and highly available. Azure Storage includes several data structures where you can store and access data, and you can leverage the storage services from the APIs included in the Azure SDK for Python or
-via REST APIs. For more information, see [Storing and Accessing Data in Azure].
+タスク項目は Windows Azure ストレージに格納されます。Windows Azure ストレージは、フォールト トレランスと可用性に優れた非構造化データ ストレージです。Windows Azure ストレージには、データを格納してアクセスできるデータ構造がいくつか用意されています。Windows Azure SDK for Python に含まれる API または REST API を通じて、そのストレージ サービスを
+活用できます。詳細については、「[Windows Azure のデータの格納とアクセス]」を参照してください。
 
-You will learn:
+学習内容:
 
--   How to work with Azure Table Storage service
+-   Windows Azure テーブル ストレージ サービスを使用する方法
 
-A screenshot of the completed application will be similar to the one below (the added tasks items will be different):
+完成したアプリケーションのスクリーンショットは、次のようになります (追加されるタスク項目は異なる場合があります)。
 
 ![](./media/storage-python-use-table-storage-web-app/web-app-with-storage-Finaloutput-mac.png)
 
 [WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
-## <a id="setup"> </a>Setting Up the Development Environment
+## <a id="setup"> </a>開発環境の設定
 
-**Note:** If you need to install Python or the Client Libraries, please see the [Python Installation Guide](http://windowsazure.com/en-us/documentation/articles/python-how-to-install).
+**注:** Python またはクライアント ライブラリをインストールする場合は、「[Python Installation Guide (Python インストール ガイド)](http://windowsazure.com/en-us/documentation/articles/python-how-to-install)」を参照してください。
 
 
 
-*Note for Windows*: if you used the Windows WebPI installer, you already have Django and the Client Libs installed.
+*Windows に関するメモ*: Windows WebPI インストーラーを使用した場合、Django とクライアント ライブラリが既にインストールされています。
 
-## Create A Storage Account In Azure
+## Windows Azure のストレージ アカウントの作成
 
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## Create A Django Project
+## Django プロジェクトの作成
 
-Here are the steps for creating the app:
+次に、アプリケーションを作成するための手順を示します。
 
--   Create a default Django Project named 'TableserviceSample' 
-- 	From the command line, cd into a directory where you would like to store your code, then run the following command: 
+-   "TableserviceSample" という名前の既定の Django プロジェクトを作成します。
+-	コマンド ラインで、ディレクトリをコードの保存先となるディレクトリに変更し、次のコマンドを実行します。
 
 		django-admin.py startproject TableserviceSample
 
--   Add a new Python file **views.py** to the project
--   Add the following code to **views.py** to import the required Django support:
+-   新しい Python ファイル **views.py** をプロジェクトに追加します。
+-   必要な Django サポートをインポートするために、次のコードを **views.py** に追加します。
            
-        from django.http import HttpResponse
+from django.http import HttpResponse
         from django.template.loader import render_to_string
         from django.template import Context
 
--   Create a new folder named **templates** under the **TableserviceSample/TableserviceSample** folder.
--   Edit the application settings so your templates can be located. Open **settings.py** and add the following entry to INSTALLED_APPS:
+-   **TableserviceSample/TableserviceSample** フォルダーの下に **templates** という名前の新しいフォルダーを作成します。
+-   テンプレートが検索できるように、アプリケーション設定を変更します。**settings.py** を開き、次のエントリを INSTALLED_APPS に追加します。
 
-        'TableserviceSample',
+'TableserviceSample',
 
--   Add a new Django template file **mytasks.html** to the **templates** folder and add following code to it:
+-   新しい Django テンプレート ファイル **mytasks.html** を **templates** フォルダーに追加し、次のコードをそのファイルに追加します。
  
 <pre>
 	&lt;html&gt;
@@ -94,33 +94,33 @@ Here are the steps for creating the app:
 </pre> 
 
     
-## Import windowsazure storage module
-Add following code on the top of **views.py** just after Django imports
+## Windows Azure ストレージ モジュールのインポート
+次のコードを、**views.py** の先頭部分で Django のインポートの直後に追加します。
 
 	from azure.storage import TableService
 
-## Get storage account name and account key
-Add the following code to **views.py** just after the windowsazure import, and replace  'youraccount' and 'yourkey' with your real account name and key. You can get an account name and key from azure management portal. 
+## ストレージ アカウント名とアカウント キーの取得
+次のコードを、**views.py** にある Windows Azure スレージ モジュールのインポートの直後に追加し、"youraccount" と "yourkey" の部分を実際のアカウント名とアカウント キーに置き換えます。これで、アカウント名とアカウント キーを Azure 管理ポータルから取得できます。
 
 	account_name = 'youraccount'
 	account_key = 'yourkey'
 
-## Create TableService
-Add the following code after **account_name**:
+## TableService の作成
+次のコードを **account_name** の後に追加します。
 
 	table_service = TableService(account_name=account_name, account_key=account_key)
 	table_service.create_table('mytasks')
 
-## List tasks 
-Add function list_tasks to **views.py**:
+## タスクの一覧表示
+関数 list_tasks を **views.py** に追加します。
 
 	def list_tasks(request): 
 		entities = table_service.query_entities('mytasks', '', 'name,category,date,complete')    
 		html = render_to_string('mytasks.html', Context({'entities':entities}))
 		return HttpResponse(html)
 
-##  Add task
-Add the function add_task to **views.py**:
+##  タスクの追加
+関数 add_task を **views.py** に追加します。
 
 	def add_task(request):
 		name = request.GET['name']
@@ -131,8 +131,8 @@ Add the function add_task to **views.py**:
 		html = render_to_string('mytasks.html', Context({'entities':entities}))
 		return HttpResponse(html)
 
-## Update task status
-Add the function update_task to **views.py**:
+## タスク状態の更新
+関数 update_task を **views.py** に追加します。
 
 	def update_task(request):
 		name = request.GET['name']
@@ -146,42 +146,43 @@ Add the function update_task to **views.py**:
 		return HttpResponse(html)
 
 
-## Mapping urls
-Now you need to map the URLs in the Django app. Open **urls.py** and add following mappings to urlpatterns:
+## URL のマッピング
+ここで、Django アプリケーションで URL をマップする必要があります。**urls.py** を開き、次のマッピングを urlpatterns に追加します。
 
 	url(r'^$', 'TableserviceSample.views.list_tasks'),
 	url(r'^list_tasks$', 'TableserviceSample.views.list_tasks'),
 	url(r'^add_task$', 'TableserviceSample.views.add_task'),
 	url(r'^update_task$', 'TableserviceSample.views.update_task'),
 
-## Run the application
+## アプリケーションの実行
 
 
--  Switch to the **TableserviceSample** directory if you haven't already, and run the command:
+-  **TableserviceSample** ディレクトリに移動し (現在のディレクトリがこのディレクトリではない場合)、次のコマンドを実行します。
 
 	python manage.py runserver
 
--   Point your browser to: `http://127.0.0.1:8000/`. Replace 8000 with the real port number.
+-   ブラウザーで http://127.0.0.1:8000/ を開きます。8000 は実際のポート番号に置き換えてください。
 
-You can now click **Add Task** to create a task, and then click the **Complete** button to update the task and set its status to Yes.
-
-
-
-## Running the Application in the Compute Emulator, Publishing and Stopping/Deleting your Application
-
-Now that you've successfully run your app on the built-in Django server, you can test it out further by deploying it to the Azure emulator (Windows only) and then publishing to Azure.  For general instructions on how to do this, please refer to the article [Django Hello World Web Application] which discusses these steps in detail.
+これで、**[Add Task]** をクリックするとタスクが 1 つ作成されます。**[Complete]** ボタンをクリックするとタスクが更新され、状態が [Yes] に設定されます。
 
 
-<h2><a id="NextSteps"></a>Next Steps</h2>
 
-Now that you have learned the basics of the Azure Table storage service, follow these links to learn how to do more complex storage tasks.
+## コンピューティング エミュレーターでのアプリケーションの実行と、アプリケーションの発行、停止、削除
 
-- See the MSDN Reference: [Storing and Accessing Data in Azure] []
-- Visit the Azure Storage Team Blog: <http://blogs.msdn.com/b/windowsazurestorage/>
+これで、組み込みの Django サーバーでアプリケーションを適切に実行しました。このアプリケーションを Windows Azure エミュレーターにデプロイして (Windows の場合のみ)、Windows Azure に発行することによって、さらに詳細なテストができます。これを実行する方法の一般的な手順については、「[Django Hello World Web アプリケーション]」の記事を参照してください。この記事では手順が詳細に説明されています。
 
 
-[Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+<h2><a id="NextSteps"></a>次のステップ</h2>
 
-[Installation Guide]: ../python-how-to-install 
+これで、Windows Azure テーブル ストレージ サービスの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
-[Django Hello World Web Application]: http://windowsazure.com/en-us/documentation/articles/virtual-machines-python-django-web-app-windows-server
+- MSDN リファレンス: [Windows Azure のデータの格納とアクセス] []
+- Windows Azure ストレージ チーム ブログ (このページは英語の場合があります): <http://blogs.msdn.com/b/windowsazurestorage/>
+
+
+[Windows Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+
+[インストール ガイド]: ../python-how-to-install
+
+[Django Hello World Web アプリケーション]: http://windowsazure.com/en-us/documentation/articles/virtual-machines-python-django-web-app-windows-server
+

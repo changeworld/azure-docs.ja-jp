@@ -1,40 +1,40 @@
 
-### To sign up for a Blitline account
+### Blitline アカウントにサインアップするには
 
-1. Log in to the [Azure Management Portal](https://manage.windowsazure.com/).
+1. [Windows Azure の管理ポータル](https://manage.windowsazure.com/).にログインします。
 
-2. In the lower pane of the management portal, click **New**.
+2. 管理ポータルの下のウィンドウの **[新規]** をクリックします。
 
 	![command-bar-new][command-bar-new]
 
-3. Click **Store**.
+3. **[ストア]** をクリックします。
 
 	![blitline-store][blitline-store]
 
-4. In the **Choose an Add-on** dialog, select **Blitline** and click the right arrow.
+4. **[サービスの選択]** ダイアログで **[Blitline]** を選択し、右矢印をクリックします。
 
-5. In the **Personalize Add-on** dialog select the **Blitline** plan you want to sign up for.
+5. **[個人用サービス]** ダイアログで、サインアップする **[Blitline]** プランを選択します。
 
-6. Enter a name to identify your **Blitline** service in your Azure settings, or use the default value of **Blitline**. Names must be between 1 and 100 characters in length and contain only alphanumeric characters, dashes, dots, and underscores. The name must be unique in your list of subscribed Azure Store Items.
+6. Windows Azure 設定で **Blitline** サービスを特定する名前を入力するか、**Blitline** の既定値を使用します。名前は 1 ～ 100 文字にする必要があります。また、名前に含めることができるのは英数字、ダッシュ、ピリオド、およびアンダースコアのみです。名前は、Windows Azure ストアのサブスクライブ項目の一覧で一意になっている必要があります。
 
 	![store-screen-1][store-screen-1]
 
-7. Choose a value for the region; for example, West US. 
+7. リージョンの値を選択します (たとえば [米国西部])。
 
-8. Click the right arrow.
+8. 右矢印をクリックします。
 
-9. On the **Review Purchase** tab, review the plan and pricing information, and review the legal terms. If you agree to the terms, click the check mark. After you click the check mark, your Blitline account will begin the provisioning process. 
+9. **[購入の確認]** タブで、プランと料金情報および法律条項を確認します。条項に同意したら、チェックマークをクリックします。チェック マークをクリックすると、Blitline アカウントのプロビジョニング プロセスが開始されます。
 
 
-To use Blitline you need to have your Application ID.
+Blitline を使用するには、アプリケーション ID が必要です。
 
-### To find your Blitline Application ID ###
+### Blitline アプリケーション ID を見つけるには ###
 
-1. Click **Connection Info**.
+1. **[接続文字列]** をクリックします。
 
 	![blitline-connection-info-button][blitline-connection-info-button]
 
-2. In the *Connection info* dialog, you can see your Application ID
+2. *[接続文字列]* ダイアログに、アプリケーション ID が表示されます。
 
 	![blitline-connection-info][blitline-connection-info]
 
@@ -45,4 +45,6 @@ To use Blitline you need to have your Application ID.
 [store-screen-1]: ./media/blitline-signup/blitline_purchase.jpg
 [blitline-connection-info-button]: ./media/blitline-signup/blitline_connection_info_button.png
 [blitline-connection-info]: ./media/blitline-signup/blitline_connection_info_screen.jpeg
+
+
 

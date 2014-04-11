@@ -1,167 +1,168 @@
-<properties linkid="develop-python-install-python" urlDisplayName="Install Python" pageTitle="Install Python and the SDK - Azure" metaKeywords="Azure Python SDK" description="Learn how to install Python and the SDK to use with Azure." metaCanonical="" services="" documentationCenter="Python" title="Installing Python and the SDK" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-python-install-python" UrlDisplayName="Python のインストール" pageTitle="Python と SDK のインストール - Windows Azure" MetaKeywords="Azure Python SDK" description="Windows Azure で使用するための Python と SDK のインストール方法について説明します。" metaCanonical="" services="" documentationCenter="Python" title="Python と SDK のインストール" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
-# Installing Python and the SDK
-Python is pretty easy to setup on Windows and comes pre-installed on Mac and Linux.  This guide walks you through installation and getting your machine ready for use with Azure.  This guide will help you with the following:
+# Python と SDK のインストール
+Python は、Windows でのセットアップが容易であり、Mac および Linux ではプレインストールされています。このガイドでは、インストール方法と Azure で使用するためのコンピューターの準備について説明します。以下の説明が記載されています。
 
-* What's in the Python Azure SDK?
-* Which Python and which version to use
-* Installation on Windows
-* Installation on Mac and Linux
+* Python Azure SDK の機能
+* 使用する Python とそのバージョン
+* Windows でのインストール
+* Mac と Linux でのインストール
 
-## What's in the Python Azure SDK?
+## Python Azure SDK の機能
 
-The Azure SDK for Python includes components that allow you to develop, deploy, and mangage Python applications for Azure. Specifically, the Azure SDK for Python includes the following:
+Windows Azure SDK for Python には、Windows Azure 向けの Python アプリケーションを開発、デプロイ、管理するためのコンポーネントが用意されています。Windows Azure SDK for Python には次のコンポーネントが用意されています。
 
-* **The Python Client Libraries for Azure**. These class libraries provide an interface for accessing Azure features, such as Data Management Services and Cloud Services.  
-* **The Azure Command-Line Tools for Mac and Linux**. This is a set of command-line tools for deploying and managing Azure services, such as Azure Web Sites and Azure Virtual Machines. These tools work on any platform, including Mac, Linux, and Windows.
-* **PowerShell for Azure (Windows Only)**. This is a set of PowerShell cmdlets for deploying and managing Azure Services, such as Cloud Services and Virtual Machines.
-* **The Azure Emulators (Windows Only)**. The compute and storage emulators are local emulators of Cloud Services and Data Management Services that allow you to test an application locally. The Azure Emulators run on Windows only.
+* **Windows Azure 用 Python クライアント ライブラリ**。これらのクラス ライブラリには、データ管理サービスやクラウド サービスなどの Windows Azure の機能にアクセスするためのインターフェイスが用意されています。
+* **Mac および Linux 用 Windows Azure コマンド ライン ツール**。これは、Windows Azure の Web サイトや Windows Azure の仮想マシンなどの Windows Azure サービスをデプロイおよび管理するためのコマンド ライン ツールのセットです。これらのツールは、Mac、Linux、Windows などすべてのプラットフォームで動作します。
+* **PowerShell for Windows Azure (Windows のみ)**。これは、クラウド サービスや仮想マシンなどの Windows Azure サービスをデプロイおよび管理するための PowerShell コマンドレットのセットです。
+* **Windows Azure エミュレーター (Windows のみ)**。コンピューティング エミュレーターとストレージ エミュレーターは、アプリケーションをローカルでテストできるようにするためのクラウド サービスおよびデータ管理サービスのローカル エミュレーターです。Windows Azure エミュレーターは Windows 上でのみ動作します。
 
 
-The core scenarios for this release are:
+このリリースでの主要なシナリオは以下のとおりです。
 
-* **Windows**: Cloud Service -- for example a Django site using Webroles
-* **Mac/Linux**: IaaS -- Run what you like in a VM; Consume Azure Services through Python
+* **Windows**: クラウド サービス -- Web ロールを使用する Django サイトなど。
+* **Mac/Linux**: IaaS -- VM で必要なものを実行する (Python を利用した Azure サービスの使用)。
 
-## Which Python and which version to use
+## 使用する Python とそのバージョン
 
-There are several flavors of Python interpreters available - examples include:
+利用可能な Python インタープリターにはいくつかの種類があります。以下に例を示します。
 
-* CPython - the standard and most commonly used Python interpreter
-* IronPython - Python interpreter that runs on .Net/CLR
-* Jython - Python interpreter that runs on the JVM
+* CPython - 最も一般的に使用されている標準的な Python インタープリター
+* IronPython - .Net/CLR 上で実行する Python インタープリター
+* Jython - JVM 上で実行する Python インタープリター
 
-For the purposes of this release, only **CPython** is tested and supported.  We also recommend at least version 2.7.  **IronPython** support will be added in the near future as well.
+このリリースでは、**CPython** のみをテストしサポートします。また、バージョン 2.7 以上の使用をお勧めします。**IronPython** のサポートも、近い将来に追加される予定です。
 
-## Where to get Python?
+## Python を入手するには
 
-There are several ways to get CPython:
+CPython はいくつかの方法で入手できます。
 
-* Directly from www.python.org
-* From a reputable distro such as www.enthought.com or www.ActiveState.com
-* Build from source!
+* www.python.org から直接入手
+* www.enthought.com や www.ActiveState.com などの信頼できるディストリビューターから入手
+* ソースからビルド
 
-Unless you have a specific need, we recommend the first two options, as described below.
+特定のニーズがない限り、以下に説明するように、最初の 2 つの入手方法をお勧めします。
 
-## Installation on Windows
+## Windows でのインストール
 
-For Windows you can use the provided [WebPI installer] from the main Python Developer Center to streamline the installation (it will grab CPython from www.python.org).
+Windows では、メインの Python デベロッパー センターから入手できる [WebPI インストーラー]を使用して、インストールを合理化できます (このインストーラーにより www.python.org から CPython が取得されます)。
 
-**Note:** On Windows Server, in order to download the WebPI installer you may have to configure IE ESC settings (Start/Adminstrative Tools/Server Manager, then click **Configure IE ESC**, set to Off)
+**注:** Windows Server では、WebPI インストーラーをダウンロードするには、IE ESC 設定の構成が必要になる場合があります。そのためには、[スタート]、[管理ツール]、[サーバー マネージャー] の順にクリックしてから、**[IE ESC の構成]** をクリックし、[オフ] に設定します。
 
 ![how-to-install-python-webpi-1](./media/python-how-to-install/how-to-install-python-webpi-1.png)
 
-The WebPI installer provides everything you need to Python Azure apps as well specific support for Django apps:
+WebPI インストーラーには、Python Azure アプリケーションに必要なものがすべて用意されており、Django アプリケーション向けの特定のサポートも提供されます。
 
 
 ![how-to-install-Python-webpi-2](./media/python-how-to-install/how-to-install-python-webpi-2.png)
  
 
-Once finished, you should see this screen confirming your install choices:
+完了すると、インストールの選択内容を確認する次の画面が表示されます。
 
 
 ![how-to-install-python-webpi-3](./media/python-how-to-install/how-to-install-python-webpi-3.png)
 
 
-After installation is complete, type python at the prompt to make sure things went smoothly.  Depending on how you installed, you may need to set your "path" variable to find (the right version of) Python:
+インストールの完了後、プロンプトで「python」と入力し、インストールが問題なく実行されたことを確認します。インストールの方法によっては、"path" 変数を (正しいバージョンの) Python が検索されるように設定する必要があります。
 
 ![how-to-install-python-win-run](./media/python-how-to-install/how-to-install-python-win-run.png)
 
 
-While this release is focused primarily on Web Apps with Django, feel free to browse the [Python Package Index (PyPI)][] for a rich selection of other software.  If you chose to install a Distro, you'll already have most of the interesting bits for a variety of scenarios from web development to Technical Computing.
+このリリースでは Django を使用した Web アプリケーションに焦点を当てていますが、いつでも [Python Package Index (PyPI)][] を参照して、豊富にあるその他のソフトウェアを確認してください。ディストリビューションをインストールすると、Web 開発から技術計算にいたるさまざまなシナリオのうち、興味のある多くのシナリオを実施することができます。
 
-To see what Python packages are installed in **site-packages** enter the following to find its location:
+**site-packages** ディレクトリにインストールされている Python パッケージを確認するには、以下のように入力して、そのディレクトリの場所を検索します。
 
 ![how-to-install-python-win-site](./media/python-how-to-install/how-to-install-python-win-site.png)
 
-This will give a list what's been installed on your system.
+これにより、システムにインストールされているものが一覧表示されます。
 
-After the installation you should have Python, Django, the Client Libraries available at the default location:
+インストール後は、既定の場所から Python、Django、クライアント ライブラリを使用することができます。
 
 		C:\Python27\Lib\site-packages\windowsazure
 		C:\Python27\Lib\site-packages\django
 
 ### Python Tools for Visual Studio
 
-Python Tools for Visual Studio is a free/OSS plugin from Microsoft which turns VS into a full-fledged Python IDE:
+Python Tools for Visual Studio は Microsoft が提供する無料の OSS プラグインで、VS を本格的な Python IDE として使用することができます。
 
 ![how-to-install-python-ptvs](./media/python-how-to-install/how-to-install-python-ptvs.png)
 
-Using Python Tools for Visual Studio is optional, but is recommended as it gives you Python and Django Project/Solution support, debugging, profiling, Template editing and Intellisense, deployment to cloud, etc.  This add-in  works with your existing VS2010 install.  If you don't have VS2010, WebPI will install the free Integrated Shell + PTVS which essentially give you a **completely free** "VS Python Express" IDE.  For more information, see [Python Tools for Visual Studio on CodePlex][].  
+Python Tools for Visual Studio の使用はオプションですが、使用することをお勧めします。それは、Python Tools for Visual Studio によって、Python と Django についてプロジェクト/ソリューションのサポート、デバッグ、プロファイル、テンプレートの編集と Intellisense、クラウドへのデプロイなどを利用できるためです。このアドインは、既存の VS2010 インストールで動作します。VS2010 がインストールされていない場合、WebPI によって無料の統合シェルと PTVS がインストールされ、**完全に無料**の "VS Python Express" IDE を利用できるようになります。詳細については、「[Python Tools for Visual Studio on CodePlex (CodePlex の Python Tools for Visual Studio)][]」を参照してください。
 
-Note: While the PTVS plug-in is small, the Integrated Shell will increases your download times. The Integrated Shell version also currently doesn't support the "Add Azure Deployment Project" feature.
+注: PTVS プラグインはサイズが小さいですが、統合シェルによってダウンロードにかかる時間が長くなる場合があります。現時点では、統合シェルのバージョンは "Windows Azure デプロイ プロジェクトの追加" 機能をサポートしていません。
 
-## Windows Uninstall
+## Windows でのアンインストール
 
-The **Azure SDK for Python June 2012** WebPI product is not an application in the typical sense, but actually a collection of distinct products such as 32-bit Python 2.7, Azure client APIs for Python, Django, etc. which are bundled together.  A consequence of this is it has no conventional uninstaller of its own, so you will need to remove the programs that it installs individually from the Windows Control Panel.  
+**Windows Azure SDK for Python June 2012** WebPI 製品は、一般的な意味でのアプリケーションではありません。実際には、これは 32 ビット版 Python 2.7、Python 用 Windows Azure クライアント API、Django などの各製品のコレクションです。これらの製品がまとめてバンドルされています。このため、このコレクション自体には、従来のアンインストーラーがありません。インストールされるプログラムを個別に Windows のコントロール パネルから削除する必要があります。
 
-If you ever wish to reinstall **Azure SDK for Python**, simply open a PowerShell command prompt as an administrator and run the following command:
+**Windows Azure SDK for Python** を再インストールする場合は、管理者として PowerShell コマンド プロンプトを開き、次のコマンドを実行するだけです。
 
 	rm -force "HKLM:\SOFTWARE\Microsoft\Windows Azure SDK for Python - June 2012"
 
-and then rerun WebPI.
+次に、WebPI を再実行します。
 
-## Installation on Linux and MacOS
+## Linux と MacOS でのインストール
 
-Python is most likely already installed on your Dev machine.  You can check by entering:
+ほとんどの場合、Python は開発コンピューター上に既にインストールされています。次のように入力することで、確認できます。
 
 ![how-to-install-python-linux-run](./media/python-how-to-install/how-to-install-python-linux-run.png)
 
-Here we see that this Azure Suse VM has CPython 2.7.2 installed which is fine for running the Azure tutorials and Django samples. If you need to upgrade, follow your OS's recommended package upgrade instructions.  Note however, that in general it's better to leave the system Python alone (others may depend on that version) and install the newer version via [Virtualenv][].
+ここでは、Azure Suse VM に CPython 2.7.2 がインストールされており、Windows Azure チュートリアルと Django のサンプルを実行する際にそのまま使用できることがわかります。アップグレードが必要な場合は、OS によって推奨されるパッケージ アップグレードの手順に従います。ただし一般的には、システム上の Python はそのままの状態にしておき (他のコンポーネントはそのバージョンに応じてアップグレードが必要になる場合があります)、[Virtualenv][] を利用して新しいバージョンをインストールすることが適しています。
 
-To install the Python Azure Client Libraries, use **pip** to grab it from **PyPI**:
+Python Azure クライアント ライブラリをインストールするには、**pip** を使用して、**PyPI** からクライアント ライブラリを取得します。
 
 	curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | sudo python
 	
-The command above will silently prompt for the root password. Type it and press Enter.  Next:
+上記のコマンドでは、ルート パスワードが要求されます (パスワードは非表示)。パスワードを入力して Enter キーを押します。次に、以下を入力します。
 	
 	sudo /usr/local/bin/pip-2.7 install azure
 
-You should now see the client libraries installed under **site-packages**.  On MacOS:
+これで、**site-packages** にインストールされたクライアント ライブラリを確認できます。MacOS では次のように表示されます。
 
-![MacOS site-packages](./media/python-how-to-install/how-to-install-python-mac-site.png)
+![MacOS の site-packages](./media/python-how-to-install/how-to-install-python-mac-site.png)
 
-When developing from mac/linux, there are two main scenarios supported for this release:
+Mac/Linux で開発する場合、このリリースでサポートされている 2 つの主要なシナリオがあります。
 
-1. Consuming Azure Services by using the client libraries for Python
+1.Python クライアント ライブラリを使用して、Windows Azure サービスを利用する
 
-2. Running your app in a Linux VM
+2.Linux VM でアプリケーションを実行する
 
-The first scenario enables you to author rich web apps that take advantage of the Azure PaaS capabilities such as blob storage, queues, etc. via Pythonic wrappers for the Azure REST API's.  These work identically on Windows, Mac and Linux.  See the Tutorials and How To Guides for examples.  You can also use these client libraries from within a Linux VM.
+最初のシナリオでは、REST API 用の Python ラッパーを介して Windows Azure の PaaS 機能 (BLOB ストレージやキューなど) を利用するリッチ Web アプリケーションを作成できます。これらのアプリケーションは、Windows、Mac、Linux 上で同じように機能します。サンプルについては、チュートリアルやハウツー ガイドを参照してください。また、Linux VM からこれらのクライアント ライブラリを使用することもできます。
 
-For the VM scenario, you simply start a Linux VM of your choice (Ubuntu, CentOS, Suse) and run/manage what you like.  As an example, you can run [IPython](http://ipython.org) REPL/notebook on your Windows/Mac/Linux machine and point your browser to a Linux or Windows multi-proc VM running the IPython Engine on Azure. For more information on IPython installation please see its tutorial.
+VM のシナリオでは、選択した Linux VM (Ubuntu、CentOS、Suse) を起動し、必要なものを実行または管理するだけです。たとえば、Windows/Mac/Linux コンピューター上で [IPython](http://ipython.org) REPL/Notebook を実行し、Azure 上で IPython エンジンを実行している Linux または Windows の複数プロセッサの VM をブラウザーで指定することができます。IPython のインストールの詳細については、IPython のチュートリアル参照してください。
 
-For information on how to setup a Linux VM, please see the [Linux Management section.](/en-us/manage/linux/)
+Linux VM を設定する方法については、「[Linux Management (Linux の管理)](/en-us/manage/linux/)」を参照してください。
 
  
 
-## Additional Software and Resources:
+## その他のソフトウェアとリソース:
 
-* [Enthought Python Distribution][]
-* [ActiveState Python Distribution][]
-* [SciPy - A suite of Scientific Python libraries][]
-* [NumPy - A numerics library for Python][]
-* [Django Project - A mature web framework/CMS][]
-* [IPython - an advanced REPL/Notebook for Python][]
-* [IPython Notebook on Azure][]
-* [Python Tools for Visual Studio on CodePlex][]
+* [Enthought Python Distribution (Enthought の Python ディストリビューション)][]
+* [ActiveState Python Distribution (ActiveState の Python ディストリビューション)][]
+* [SciPy - A suite of Scientific Python libraries (SciPy - Python の科学技術計算ライブラリのパッケージ)][]
+* [NumPy - A numerics library for Python (NumPy - Python の数値計算ライブラリ)][]
+* [Django Project - A mature web framework/CMS (Django Project - 進化した Web フレームワーク/CMS)][]
+* [IPython - an advanced REPL/Notebook for Python (IPython - 高度な Python 用 REPL/Notebook)][]
+* [IPython Notebook on Azure (Azure での IPython Notebook)][]
+* [Python Tools for Visual Studio on CodePlex (CodePlex の Python Tools for Visual Studio)][]
 * [Virtualenv][]
 
 
-[Enthought Python Distribution]: http://www.enthought.com 
-[ActiveState Python Distribution]: http://www.activestate.com
-[SciPy - A suite of Scientific Python libraries]: http://www.scipy.org
-[NumPy - A numerics library for Python]: http://www.numpy.org
-[Django Project - A mature web framework/CMS]: http://www.djangoproject.com 
-[IPython - an advanced REPL/Notebook for Python]: http://ipython.org
-[IPython Notebook on Azure]: http://windowsazure.com/en-us/documentation/articles/virtual-machines-python-ipython-notebook
-[Python Tools for Visual Studio on CodePlex]: http://pytools.codeplex.com 
+[Enthought Python Distribution (Enthought の Python ディストリビューション)]: http://www.enthought.com 
+[ActiveState Python Distribution (ActiveState の Python ディストリビューション)]: http://www.activestate.com
+[SciPy - A suite of Scientific Python libraries (SciPy - Python の科学技術計算ライブラリのパッケージ)]: http://www.scipy.org
+[NumPy - A numerics library for Python (NumPy - Python の数値計算ライブラリ)]: http://www.numpy.org
+[Django Project - A mature web framework/CMS (Django Project - 進化した Web フレームワーク/CMS)]: http://www.djangoproject.com 
+[IPython - an advanced REPL/Notebook for Python (IPython - 高度な Python 用 REPL/Notebook)]: http://ipython.org
+[IPython Notebook on Azure (Azure での IPython Notebook)]: http://windowsazure.com/en-us/documentation/articles/virtual-machines-python-ipython-notebook
+[Python Tools for Visual Studio on CodePlex (CodePlex の Python Tools for Visual Studio)]: http://pytools.codeplex.com 
 [Python Package Index (PyPI)]: http://pypi.python.org/pypi
 [Virtualenv]: http://pypi.python.org/pypi/virtualenv 
-[WebPI installer]: http://go.microsoft.com/fwlink/?LinkId=254281&clcid=0x409
-[Setting up a Linux VM via the Azure portal]: ../../../shared/chunks/create-and-configure-opensuse-vm-in-portal
-[How to use the Azure Command-Line Tools for Mac and Linux]: ../../shared/chunks/crossplat-cmd-tools
+[WebPI インストーラー]: http://go.microsoft.com/fwlink/?LinkId=254281&clcid=0x409
+[Setting up a Linux VM via the Windows Azure portal (Windows Azure ポータルでの Linux VM の設定)]: ../../../shared/chunks/create-and-configure-opensuse-vm-in-portal
+[Mac および Linux 用 Windows Azure コマンド ライン ツールの使用方法]: ../../shared/chunks/crossplat-cmd-tools
+
 

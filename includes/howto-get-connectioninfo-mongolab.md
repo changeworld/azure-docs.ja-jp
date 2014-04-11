@@ -1,21 +1,22 @@
-When you provision a MongoLab database, MongoLab transmits a connection URI to Azure in MongoDB's standard connection string format. This value is used to initiate a MongoDB connection through your choice of MongoDB driver. For more information about connection strings, see [Connections](http://www.mongodb.org/display/DOCS/Connections) at mongodb.org.
+MongoLab データベースをプロビジョニングすると、MongoLab により Windows Azure に MongoDB の標準接続文字列形式で URI が送信されます。この値は、選択した MongoDB ドライバーをとおして MongoDB 接続を初期化するために使用されます。接続文字列の詳細については、mongodb.org の[接続に関するページ](http://www.mongodb.org/display/DOCS/Connections)を参照してください。
 
-**This URI contains your database user name and password.  Treat it as sensitive information and do not share it.**
+**この URI は、データベース ユーザー名とパスワードを含んでいます。機密情報として扱い、他人と共有しないでください。**
 
-You can retrieve this URI in the Azure Portal using the following steps:
+この URI は、Windows Azure ポータルで次のステップを使用して取得できます。
 
-1. Select **Add-ons**.  
+1. **[アドオン]** を選択します。
 ![AddonsButton][button-addons]
-1. Locate your MongoLab service in your add-on list.  
+1. アドオンの一覧で MongoLab サービスを見つけます。
 ![MongolabEntry][entry-mongolabaddon]
-1. Cick the name of your add-on to reach the add-on page.
-1. Click **Connection Info**.  
+1. アドオンの名前をクリックして、アドオン ページに移動します。
+1. **[接続文字列]** をクリックします。
 ![ConnectionInfoButton][button-connectioninfo]  
-Your MongoLab URI displays:  
+MongoLab の URI が表示されます。
 ![ConnectionInfoScreen][screen-connectioninfo]  
-1.  Click the clipboard button to the right of the MONGOLAB_URI value to copy the full value to the clipboard.
+1. MONGOLAB_URI 値の右側のクリップボード ボタンをクリックし、値全体をクリップボードにコピーします。
 
 [entry-mongolabaddon]: ./media/howto-get-connectioninfo-mongolab/entry-mongolabaddon.png
 [button-connectioninfo]: ./media/howto-get-connectioninfo-mongolab/button-connectioninfo.png
 [screen-connectioninfo]: ./media/howto-get-connectioninfo-mongolab/dialog-mongolab_connectioninfo.png
 [button-addons]: ./media/howto-get-connectioninfo-mongolab/button-addons.png
+

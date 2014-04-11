@@ -1,203 +1,157 @@
-<properties linkid="web-sites-create-web-jobs" urlDisplayName="How to create web jobs in Microsoft Azure" pageTitle="How to Create Web Jobs in Microsoft Azure Web Sites" metaKeywords="Microsoft Azure Web Sites, Web Jobs" description="Learn how to create web jobs in Microsoft Azure Web Sites." metaCanonical="" services="web-sites" documentationCenter="" title="How to Create Web Jobs in Microsoft Azure Web Sites" authors="timamm"  solutions="" writer="timamm" manager="paulettm" editor="mollybos"  />
+<properties linkid="web-sites-create-web-jobs" urlDisplayName="Windows Azure で Web ジョブを作成する方法" pageTitle="Windows Azure の Web サイトで Web ジョブを作成する方法" metaKeywords="Windows Azure の Web サイト, Web ジョブ" description="Windows Azure の Web サイトで Web ジョブを作成する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="Windows Azure の Web サイトで Web ジョブを作成する方法" authors=""  solutions="" writer="timamm" manager="paulettm" editor="mollybos"  />
 
-#How to Use the WebJobs feature in Microsoft Azure Web Sites#
+#Windows Azure の Web サイトで Web ジョブ機能を使用する方法#
 
-Microsoft Azure Web Sites enables you to run programs or scripts in your web site in one of three ways: on demand, continuously, or on a schedule. There is no additional cost to use Microsoft Azure WebJobs unless you wish to enable the Always On feature described later in this article.
+Windows Azure の Web サイトを使用すると、Web サイト内でプログラムやスクリプトを "オンデマンドで実行"、"連続的に実行"、および "スケジュールに従って実行" のうちいずれかの方法で実行できます。後で説明する常時接続機能を有効にしない限り、Windows Azure の Web ジョブの使用に追加コストはかかりません。
 
 
-## Table of Contents ##
-- [Acceptable File Types for Scripts](#acceptablefiles)
-- [Create an On Demand Task](#CreateOnDemand)
-- [Create a Continuously Running Task](#CreateContinuous)
-- [Create a Scheduled Task](#CreateScheduled)
-	- [Scheduled jobs and Azure Scheduler](#Scheduler)
-- [View the Job History](#ViewJobHistory)
-- [Notes](#WHPNotes)
-- [Next Steps](#NextSteps)
-	- [Do More with the Microsoft Azure WebJobs SDK](#WebJobsSDK)
-	- [Alternative Methods of Deployment](#AlternateDeployments)
-	- [Additional Resources](#AdditionalResources)
+## 目次##
+- [スクリプトとして使用できるファイルの種類](#acceptablefiles)
+- [オンデマンドで実行するタスクを作成する](#CreateOnDemand)
+- [連続的に実行するタスクを作成する](#CreateContinuous)
+- [スケジュールに従って実行するタスクを作成する](#CreateScheduled)
+- [履歴を確認する](#ViewJobHistory)
+- [次の手順](#NextSteps)
+	- [Windows Azure の Web ジョブ SDK を活用する](#WebJobsSDK)
+	- [別の方法で展開する](#AlternateDeployments)
+	- [その他のリソース](#AdditionalResources)
 
 <a name="acceptablefiles"></a>
-##Acceptable File Types for Scripts##
-The following file types are accepted as runnable scripts:
+##スクリプトとして使用できるファイルの種類##
+実行可能なスクリプトとして使用できるファイルの種類は次のとおりです。
 
-.cmd, .bat, .exe (using windows cmd)
+.cmd、.bat、.exe (windows cmd を使用)
 
-.ps1 (using powershell)
+.ps1 (powershell を使用)
 
-.sh (using bash)
+.sh (bash を使用)
 
-.php (using php)
+.php (php を使用)
 
-.py (using python)
+.py (python を使用)
 
-.js (using node)
+.js (node を使用)
 
 <a name="CreateOnDemand"></a>
-##Create an On Demand Task##
+##オンデマンドで実行するタスクを作成する##
 
-1. In the command bar of the **WebJobs** page, click **Add**. The **New Job** dialog appears.
+1. **[Web ジョブ]** ページのコマンド バーで、**[追加]** をクリックします。**[新しい Web ジョブ]** ダイアログ ボックスが表示されます。
 	
-	![On Demand Task][OnDemandWebJob]
+	![オンデマンドで実行するタスク][OnDemandWebJob]
 	
-2. Under **Name**, provide a name for the task. The name must start with a letter or a number and cannot contain any special characters other than "-" and "_".
+2. **[名前]** ボックスに、タスクの名前を入力します。名前は、先頭を文字または数字にする必要があります。"-" と "_" 以外の特殊文字を使用することはできません。
 	
-3. In the **Content (Zip Files - 100MB Max)** box, browse to the zip file that contains your script. The zip file should contain your executable (.exe .cmd .bat .sh .php .py .js) as well as any supporting files needed to run the program or script.
+3. **[コンテンツ (zip ファイル - 最大 200 MB)]** ボックスで、スクリプトが含まれている zip ファイルを指定します。この zip ファイルには、実行可能ファイル (.exe .cmd .bat .sh .php .py .js) のほか、プログラムまたはスクリプトの実行に必要な補助ファイルもすべて含まれている必要があります。
 	
-4. In the **How to Run** box, choose **Run on Demand**.
+4. **[実行方法]** ボックスの一覧の **[オンデマンドで実行]** をクリックします。
 	
-5. Check the check mark on the bottom right of the dialog to upload the script to your web site. The name you specified for the task appears in the list:
+5. スクリプトを Web サイトにアップロードするには、ダイアログ ボックスの右下にあるチェック マークをクリックします。タスクに指定した名前が、一覧に表示されます。
 	
-	![Task List][WebJobsList]
+	![タスクの一覧][WebJobsList]
 	
-6. To run the script, select its name in the list and click **Run Once** in the command bar at the bottom of the portal page.
+6. スクリプトを実行するには、一覧で名前を選択し、ポータル ページの下部にあるコマンド バーの **[一度だけ実行する]** をクリックします。
 	
-	![Run Once][RunOnce]
+	![一度だけ実行する][RunOnce]
 
 <a name="CreateContinuous"></a>
-##Create a Continuously Running Task##
+##連続的に実行するタスクを作成する##
 
-1. To create a continuously executing task, follow the same steps for creating a task that runs once, but in the **How to Run** box, choose **Run continuously**.
+1. 連続的に実行するタスクを作成するには、一度だけ実行するタスクを作成する場合と同様の手順を使用します。ただし、**[実行方法]** ボックスの一覧では **[連続的に実行]** を選択します。
 	
-	![New Continuous Task][NewContinuousJob]
+	![連続的に実行する新しいタスク][NewContinuousJob]
 	
-2. To start or stop a continuously running task, select the task in the list and click **Start** or **Stop** in the command bar.
+2. 連続的に実行するタスクを開始または停止するには、一覧でタスクを選択し、コマンド バーの **[開始]** または **[停止]** をクリックします。
 
-> [WACOM.NOTE] If your website runs on more than one instance, a continuously running task will run on all of your instances. On demand and scheduled tasks run on a single instance selected for load balancing by Microsoft Azure.
+> [WACOM.NOTE] Web サイトが複数のインスタンスで実行される場合、連続的に実行するタスクはすべてのインスタンス上で実行されます。オンデマンドで実行するタスクおよびスケジュールに従って実行するタスクは、負荷分散目的で Windows Azure によって選択された単一のインスタンス上で実行されます。
 
 > [WACOM.NOTE]
-> For continuous tasks, it is recommended that you enable **Always On** on the Configure page for your web site. The Always On feature, available in Basic and Standard mode, prevents web sites from being unloaded, even if they have been idle for some time. If your web site is always loaded, your continuously running task may run more reliably. 
+> 連続的に実行するタスクについては、Web サイトの [構成] ページで **[常時接続]** を有効にすることをお勧めします。常時接続は標準モードでのみ使用できる機能で、これにより、アイドル状態がしばらく続いても Web サイトのアンロードを防止することができます。Web サイトが常に読み込まれていれば、連続的に実行するタスクをより高い信頼性で実行できます。
 
 <a name="CreateScheduled"></a>
-##Create a Scheduled Task##
-1. To create a scheduled task, follow the same steps as before, but in the **How to Run** box, choose **Run on a schedule**.
+##スケジュールに従って実行するタスクを作成する##
+1. スケジュールに従って実行するタスクを作成するには、これまでと同様の手順を使用します。ただし、**[実行方法]** ボックスの一覧では **[スケジュールに従って実行]** を選択します。
 	
-	![New Scheduled Job][NewScheduledJob]
+	![スケジュールに従って実行する新しいジョブ][NewScheduledJob]
 	
-2. Choose the **Scheduler Region** for your job, and then click the arrow on the bottom right of the dialog to proceed to the next screen.
+2. **[スケジューラのリージョン]** ボックスの一覧で、ジョブに応じたリージョンを選択し、ダイアログ ボックスの右下にある右矢印をクリックして、次の画面に進みます。
 
-3. In the **Create Job** dialog, choose the type of **Recurrence** you want: **One-time job** or **Recurring job**.
+3. **[ジョブの作成]** ダイアログ ボックスの **[繰り返し]** ボックスで、繰り返しの種類として **[一度だけのジョブ]** または **[定期的なジョブ]** を選択します。
 	
-	![Schedule Recurrence][SchdRecurrence]
+	![繰り返しのスケジュール設定][SchdRecurrence]
 	
-4. Also choose a **Starting** time: **Now** or **At a specific time**.
+4. また、**[開始]** ボックスの一覧で、開始時刻として **[現在]** または **[指定時]** を選択します。
 	
-	![Schedule Start Time][SchdStart]
+	![開始時刻の指定][SchdStart]
 	
-5. If you want to start at a specific time, choose your starting time values under **Starting On**.
+5. 特定の日時に開始するには、**[開始日時]** の各ボックスで、開始時刻の値を選択します。
 	
-	![Schedule Start at a Specific Time][SchdStartOn]
+	![指定時の開始を指定][SchdStartOn]
 	
-6. If you chose a recurring job, you have the **Recur Every** option to specify the frequency of occurrence and the **Ending On** option to specify an ending time.
+6. 定期的なジョブを選択した場合は、**[繰り返しの間隔]** で実行頻度を指定し、**[終了日]** で終了日時を指定します。
 	
-	![Schedule Recurrence][SchdRecurEvery]
+	![繰り返しのスケジュール設定][SchdRecurEvery]
 	
-7. If you choose **Weeks**, you can select the **On a Particular Schedule** box and specify the days of the week that you want the job to run.
+7. **[週]** を選択した場合は **[特定のスケジュールに従って]** チェック ボックスをオンにし、ジョブを実行する曜日 (複数も可能) を指定することができます。
 	
-	![Schedule Days of the Week][SchdWeeksOnParticular]
+	![曜日の指定][SchdWeeksOnParticular]
 	
-8. If you choose **Months** and select the **On a Particular Schedule** box, you can set the job to run on particular numbered **Days** in the month. 
+8. **[月]** を選択して **[特定のスケジュールに従って]** チェック ボックスをオンにした場合は、**[日]** をクリックして、1 か月のうちジョブを実行する日 (複数も可能) を指定することができます。
 	
-	![Schedule Particular Dates in the Month][SchdMonthsOnPartDays]
+	![1 か月のうち特定の日を指定][SchdMonthsOnPartDays]
 	
-9. If you choose **Week Days**, you can select which day or days of the week in the month you want the job to run on.
+9. **[平日]** を選択した場合は、1 か月のうちジョブを実行する曜日 (複数も可能) を指定することができます。
 	
-	![Schedule Particular Week Days in a Month][SchdMonthsOnPartWeekDays]
+	![1 か月のうち特定の曜日を指定][SchdMonthsOnPartWeekDays]
 	
-10. Finally, you can also use the **Occurrences** option to choose which week in the month (first, second, third etc.) you want the job to run on the week days you specified.
+10. 最後に、**[発生回数]** を併せて使用すると、1 か月のうち指定した曜日にジョブを実行する週 (1 週目、2 週目、3 週目など) を選択することができます。
 	
-	![Schedule Particular Week Days on Particular Weeks in a Month][SchdMonthsOnPartWeekDaysOccurences]
-	
-11. After you have created one or more jobs, their names will appear on the WebJobs tab with their status, schedule type, and other information. Historical information for the last 30  tasks is maintained.
-	
-	![Jobs list][WebJobsListWithSeveralJobs]
-	
-<a name="Scheduler"></a>
-###Scheduled jobs and Azure Scheduler
-Scheduled jobs can be further configured in the Azure Scheduler portal.
-
-1.	On the WebJobs page, click the job's **schedule** link to navigate to the Azure Scheduler portal page. 
-	
-	![Link to Azure Scheduler][LinkToScheduler]
-	
-2. On the Scheduler page, click the job.
-	
-	![Job on the Scheduler portal page][SchedulerPortal]
-	
-3. The **Job Action** page opens, where you can further configure the job. 
-	
-	![Job Action PageInScheduler][JobActionPageInScheduler]
-	
-
-<!-- ================ ViewJobHistory ================= -->
+	![1 か月のうち特定の週の特定の曜日を指定][SchdMonthsOnPartWeekDaysOccurences]
 
 <a name="ViewJobHistory"></a>
-##View the Job History##
-1. To view the execution history of a job, including jobs created with the WebJobs SDK, click  its corresponding link under the **Logs** column. (You can use the clipboard icon to copy the URL of the log file page to the clipboard if you wish.)
-	
-	![Logs Link][WebJobLogs]
-		
-2. Clicking the link opens the web jobs details page for the task. This page shows you the name of the command run, the last times it ran, and its success or failure. Under **Recent job runs**, click a time to see further details.
-	
-	![WebJobDetails][WebJobDetails]
-	
-3. The **WebJob Run Details** page appears. Click **Toggle Output** to see the text of the log contents. The output log is in text format. 
-	
-	![Web job run details][WebJobRunDetails]
-	
-4. To see the output text in a separate browser window, click the **download** link. To download the text itself, right-click the link and use your browser options to save the file contents.
-	
-	![Download log output][DownloadLogOutput]
-	
-5. The **WebJobs** link at the top of the page provides a convenient way to get to a list of web jobs on the history dashboard.
-	
-	![Link to web jobs list][WebJobsLinkToDashboardList]
-	
-	![List of jobs in history dashboard][WebJobsListInJobsDashboard]
-	
-	Clicking one of these links takes you to the WebJob Details page for the job you selected.
+##タスク履歴の確認##
+タスクの実行履歴を確認するには、ダッシュボードの **[ログ]** 列にある、該当するリンクをクリックします (クリップボード アイコンを使用して、ログ ファイル ページの URL をクリップボードにコピーすることもできます)。
 
-<a name="WHPNotes"></a>
-##Notes
+![ログのリンク][WebJobLogs]
 	
-- As of March 2014, web sites in Free mode can time out after 20 minutes if there are no requests to the scm (deployment) site and the web site's portal is not open in Azure. Requests to the actual site will not reset this.
+リンクをクリックすると、タスクの履歴ページが開きます。
 
-- Code for a continuous job needs to be written to run in an endless loop.
+![ジョブの実行履歴][TriggeredHistory]
 
-- Continuous jobs run continuously only when the site is up.
+ログの内容を確認するには、**[出力ファイル]** 列の **[ダウンロード]** リンクをクリックします。
 
-- Basic and Standard modes offer the Always On feature which, when enabled, prevents sites from becoming idle.
+出力ログはテキスト形式で、次のような内容が含まれています。
+
+	[01/08/2014 03:12:27 > 543efe: SYS INFO] Status changed to Initializing
+	[01/08/2014 03:12:27 > 543efe: SYS INFO] Run script 'run.cmd' with script host - 'WindowsScriptHost'
+	[01/08/2014 03:12:28 > 543efe: SYS INFO] Status changed to Running
+	[01/08/2014 03:12:28] 
+	[01/08/2014 03:12:28] C:\DWASFiles\Sites\Contoso\Temp\jobs\triggered\OnDemandWebJob1\knvcab4m.522>ECHO "On Demand Task Test" 
+	[01/08/2014 03:12:28] "On Demand Task Test"
+	[01/08/2014 03:12:28 > 543efe: SYS INFO] Status changed to Success
+
+最近実行された 30 件のタスクに関する履歴情報が管理されます。
 
 <a name="NextSteps"></a>
-##Next Steps##
- 
-<a name="WebJobsSDK"></a>
-###Do More with the Microsoft Azure WebJobs SDK###
-The Microsoft Azure WebJobs SDK simplifies the task of adding background processing to your Microsoft Azure web sites. The SDK integrates Microsoft Azure Storage, triggering a function in your program when items are added to Queues, Blobs or Tables. The dashboard, now integrated into the Azure portal, provides rich monitoring and diagnostics for the programs that you write by using the SDK. The monitoring and diagnostics features are built into the SDK and do not require you to add any special code in your program.
- 
-For more information, see the tutorial [Getting Started with Microsoft Azure WebJobs SDK](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). The tutorial provides an overview of the features of the WebJobs SDK and walks you through creating and running a simple Hello World background process. 
+##次の手順##
 
-To see a walkthrough of a sample command line app created with the Microsoft Azure WebJobs SDK, see [Introducing Windows Azure WebJobs][HanselIntro].
+<a name="WebJobsSDK"></a>
+###Windows Azure の Web ジョブ SDK を活用する###
+Windows Azure の Web ジョブ SDK を使用すると、Windows Azure の Web サイトにバックグラウンド プロセスを追加するタスクが容易になります。この SDK は Windows Azure のストレージを統合し、キュー、BLOB、またはテーブルに項目が追加されると、プログラム内の関数を呼び出します。ダッシュボードでは、この SDK を使用して作成したプログラムを対象として、豊富な監視機能および診断機能が提供されます。監視機能および診断機能 SDK に組み込まれており、プログラムに特別なコードを追加する必要はありません。
+ 
+詳細については、チュートリアル「[Getting Started with Windows Azure の Web ジョブ SDK (Windows Azure の Web ジョブ SDK の概要)](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs)」を参照してください。このチュートリアルでは、Web ジョブ SDK の機能概要を示し、Hello World という単純なバックグラウンド プロセスを作成して実行する方法を説明します。
+
+Windows Azure の Web ジョブ SDK で作成されたコマンド ライン アプリのサンプルの使用例については、「[Introducing Windows Azure の Web ジョブ (Windows Azure の Web ジョブ の紹介)][HanselIntro]」を参照してください。
 
 <a name="AlternateDeployments"></a>
-###Alternative Methods of Deployment###
-If you don't want to use the WebJobs portal page to upload your scripts, you can use FTP, git, or Web Deploy. For more information, see  [How to deploy Windows Azure WebJobs][AmitDeploy] and [Git deploying a .NET console app to Azure using WebJobs][AmitConsole].
+###別の方法で展開する###
+スクリプトのアップロードに Web ジョブ ポータル ページを使用しない場合は、FTP、git、または Web 展開を使用できます。詳細については、「[How to deploy Windows Azure の Web ジョブ (Windows Azure の Web ジョブ を展開する方法)][AmitDeploy]」および「[Git deploying a .NET console app to Azure using Web ジョブ (Web ジョブの使用による Azure への .NET コンソール アプリの Git 展開)][AmitConsole]」を参照してください。
 
 <a name="AdditionalResources"></a>
-###Additional Resources###
-- For an annotated list of links on the WebJobs feature, see [Using the WebJobs feature of Windows Azure Web Sites][RickWebJobsCurah]. 
-	
-- WebJobs-related videos:
-
-	[Azure WebJobs 101 - Basic WebJobs with Jamie Espinosa](http://www.windowsazure.com/en-us/documentation/videos/azure-webjobs-basics/)
-	
-	[Azure WebJobs 102 - Scheduled WebJobs and the WebJobs Dashboard with Jamie Espinosa](http://www.windowsazure.com/en-us/documentation/videos/azure-webjobs-schedule-and-dashboard/)
-	
-	[Azure Scheduler 101 - Kevin Lam explains how to schedule stuff](http://www.windowsazure.com/en-us/documentation/videos/azure-scheduler-how-to/)
+###その他のリソース###
+その他のリソースについては、注釈付きのリンク一覧を参照してください: [Using the WebJobs feature of Windows Azure Web Sites (Windows Azure の Web サイトの Web ジョブ機能の使用)][RickWebJobsCurah]
 
 
-<!-- LINKS -->
+
 [PSonWebJobs]:http://blogs.msdn.com/b/nicktrog/archive/2014/01/22/running-powershell-web-jobs-on-azure-websites.aspx
 
 [HanselIntro]:http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx
@@ -208,7 +162,7 @@ If you don't want to use the WebJobs portal page to upload your scripts, you can
 
 [RickWebJobsCurah]:http://go.microsoft.com/fwlink/?LinkId=390226
 
-<!-- IMAGES -->
+
 [OnDemandWebJob]: ./media/web-sites-create-web-jobs/01aOnDemandWebJob.png
 [WebJobsList]: ./media/web-sites-create-web-jobs/02aWebJobsList.png
 [NewContinuousJob]: ./media/web-sites-create-web-jobs/03aNewContinuousJob.png
@@ -222,13 +176,7 @@ If you don't want to use the WebJobs portal page to upload your scripts, you can
 [SchdMonthsOnPartWeekDays]: ./media/web-sites-create-web-jobs/11SchdMonthsOnPartWeekDays.png
 [SchdMonthsOnPartWeekDaysOccurences]: ./media/web-sites-create-web-jobs/12SchdMonthsOnPartWeekDaysOccurences.png
 [RunOnce]: ./media/web-sites-create-web-jobs/13RunOnce.png
-[WebJobsListWithSeveralJobs]: ./media/web-sites-create-web-jobs/13WebJobsListWithSeveralJobs.png
 [WebJobLogs]: ./media/web-sites-create-web-jobs/14WebJobLogs.png
-[WebJobDetails]: ./media/web-sites-create-web-jobs/15WebJobDetails.png
-[WebJobRunDetails]: ./media/web-sites-create-web-jobs/16WebJobRunDetails.png
-[DownloadLogOutput]: ./media/web-sites-create-web-jobs/17DownloadLogOutput.png
-[WebJobsLinkToDashboardList]: ./media/web-sites-create-web-jobs/18WebJobsLinkToDashboardList.png
-[WebJobsListInJobsDashboard]: ./media/web-sites-create-web-jobs/19WebJobsListInJobsDashboard.png
-[LinkToScheduler]: ./media/web-sites-create-web-jobs/31LinkToScheduler.png
-[SchedulerPortal]: ./media/web-sites-create-web-jobs/32SchedulerPortal.png
-[JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
+[TriggeredHistory]: ./media/web-sites-create-web-jobs/15aTriggeredHistory.png
+
+

@@ -1,8 +1,8 @@
 
 
-In your back-end app, you now have to switch to sending template notifications instead of native payloads. This will simplify the back-end code as you will not have to send multiple payloads for the different platforms.
+バックエンド アプリケーションで、ネイティブ ペイロードではなくテンプレート通知を送信するように切り替える必要があります。これにより、バックエンド コードが簡素化され、さまざまなプラットフォームに対して複数のペイロードを送信する必要がなくなります。
 
-When you send template notifications you only need to provide a set of properties, in our case we will send the set of properties containing the localized version of the current news, for instance:
+テンプレート通知を送信する場合、一連のプロファイルの指定だけが必要になります。この場合は、最新ニュースのローカライズされたバージョンを含む一連のプロパティを送信します。次に例を示します。
 
 	{
 		"News_English": "World News in English!",
@@ -11,18 +11,18 @@ When you send template notifications you only need to provide a set of propertie
 	}
 
 
-This section shows how to send notifications in two different ways:
+このセクションでは、通知を送信するための 2 つの方法について説明します。
 
-- using a console app
-- using a Mobile Services script
+- コンソール アプリケーションの使用
+- モバイル サービス スクリプトの使用
 
-The included code broadcasts to both Windows Store and iOS devices, since the backend can broadcast to any of the supported devices.
+使用されるコードは、Windows ストアと iOS デバイスの両方に対してブロードキャストされます。これは、バックエンドはサポートされているすべてのデバイスにブロードキャストできるためです。
 
 
 
-## To send notifications using a C# console app ##
+## C# コンソール アプリケーションを使用して通知を送信するには##
 
-We will simply modify your *SendNotificationAsync* method by sending a single template notification.
+1 つのテンプレート通知を送信するように、*SendNotificationAsync* メソッドを変更します。
 
 	var hub = NotificationHubClient.CreateClientFromConnectionString("<connection string>", "<hub name>");
     var notification = new Dictionary<string, string>() {
@@ -31,11 +31,11 @@ We will simply modify your *SendNotificationAsync* method by sending a single te
                             {"News_Mandarin", "World News in Mandarin!"}};
     await hub.SendTemplateNotificationAsync(notification, "World");
 
-Note that this simple call will deliver the correct localized piece of news to **all** your devices, irrespective of the platform, as your Notification Hub builds and delivers the correct native payload to all the devices subscribed to a specific tag.
+この単純な呼び出しでは、プラットフォームに関係なく、ローカライズされた各ニュースが適切に**すべての**デバイスに配信されます。これは、通知ハブが適切なネイティブ ペイロードを作成し、そのペイロードを特定のタグにサブスクライブされているすべてのデバイスに配信するためです。
 
-### Mobile Services
+### モバイル サービス
 
-In your Mobile Service scheduler, overwrite your script with:
+モバイル サービス スケジューラで、スクリプトを次のように置き換えます。
 
 	var azure = require('azure');
     var notificationHubService = azure.createNotificationHubService('<hub name>', <connection string with full access>');
@@ -50,4 +50,5 @@ In your Mobile Service scheduler, overwrite your script with:
 		}
 	});
 	
-Note how in this case there is no need to send multiple notifications for different locales and platforms.
+この場合、異なるロケールやプラットフォームに対して複数の通知を送信する必要はありません。
+

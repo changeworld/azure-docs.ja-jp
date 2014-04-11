@@ -1,28 +1,30 @@
 
 
-1. Log into the [Azure Management Portal], click **Mobile Services**, and then click your app.
+1. [Windows Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
-	![](./media/mobile-services-create-custom-api/mobile-services-selection.png)
+	![][0]
 
-2. Click the **API** tab, and then click **Create a custom API**.
+2. **[API]** タブをクリックし、**[カスタム API の作成]** をクリックします。
 
-	![](./media/mobile-services-create-custom-api/mobile-custom-api-create.png)
+	![][1]
 
-	This displays the **Create a new custom API** dialog.
+	**[新しいカスタム API の作成]** ダイアログ ボックスが表示されます。
 
-3. Type _completeall_ in **API name**, and then click the check button.
+3. **[API 名]** に「completeall」と入力して、チェック ボタンをクリックします。
 
-	![](./media/mobile-services-create-custom-api/mobile-custom-api-create-dialog2.png)
+	![][2]
 
-	This creates the new API.
+	これは新しい API を作成します。
 
-	> [WACOM.NOTE] Default permissions are set, which means that any user of the app can call the custom API. However, the application key is not distributed or stored securely and cannot be considered a secure credential. Because of this, you should consider restricting access to only authenticated users on operations that modify data or affect the mobile service.
 
-4. Click the new **completeall** entry in the API table.
+	> [WACOM.NOTE]
+	> 既定のアクセス許可が設定されるため、アプリケーションのユーザーすべてがこのカスタム API を呼び出すことができます。ただし、アプリケーション キーはセキュリティの保護がない状態で配布または保存されるため、安全な資格情報として扱うことはできません。このため、データの変更またはモバイル サービスに影響する操作を、認証されたユーザーのみのアクセスに制限することを考慮する必要があります。
 
-	![](./media/mobile-services-create-custom-api/mobile-custom-api-select2.png)
+4. API テーブル内の新しい **completeall** エントリをクリックします。
 
-5. Click the **Script** tab, replace the existing code with the following code, then click **Save**:
+	![][3]
+
+5. **[スクリプト]** タブをクリックし、既存のコードを次のコードに置き換えて、**[保存]** をクリックします。
 
 		exports.post = function(request, response) {
 			var mssql = request.service.mssql;
@@ -37,17 +39,22 @@
 		};
 
 
-	This code uses the [mssql object] to access the **todoitem** table directly to set the completed flag on all items. Because the **exports.post** function is used, clients send a POST request to perform the operation. The number of changed rows is returned to the client as an integer value.
+	このコードは [mssql オブジェクト]を使用し、**todoitem** テーブルに直接アクセスしてすべての項目の完了フラグを設定します。**exports.post** 関数を使用するため、クライアントは POST 要求を送信して操作を実行します。変更された行数は整数値としてクライアントに返されます。
 
 > [WACOM.NOTE]
-> The <a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj554218.aspx" target="_blank">request</a> and <a href="http://msdn.microsoft.com/en-us/library/windowsazure/dn303373.aspx" target="_blank">response</a> object supplied to custom API functions are implemented by the <a href="http://go.microsoft.com/fwlink/p/?LinkId=309046" target="_blank">Express.js library</a>. For more information, see <a href="http://msdn.microsoft.com/en-us/library/windowsazure/dn280974.aspx" target="_blank">Custom API</a>. 
+> カスタム API の関数に対して指定されている <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554218.aspx" target="_blank">request</a> オブジェクトと <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dn303373.aspx" target="_blank">response</a> オブジェクトが、<a href="http://go.microsoft.com/fwlink/p/?LinkId=309046" target="_blank">Express.js library</a>によって実装されます。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dn280974.aspx" target="_blank">カスタム API</a>」を参照してください。
 
-Next, you will modify the quickstart app to add a new button and code that asynchronously calls the new custom API.
+次に、quickstart アプリケーションを変更し、新しいボタンと、非同期的に新しいカスタム API を呼び出すコードを追加します。
 
 <!-- Anchors. -->
 
 <!-- Images. -->
+[0]: ./media/mobile-services-create-custom-api/mobile-services-selection.png
+[1]: ./media/mobile-services-create-custom-api/mobile-custom-api-create.png
+[2]: ./media/mobile-services-create-custom-api/mobile-custom-api-create-dialog2.png
+[3]: ./media/mobile-services-create-custom-api/mobile-custom-api-select2.png
 
 <!-- URLs. -->
-[Azure Management Portal]: https://manage.windowsazure.com/
-[mssql object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554212.aspx
+[Windows Azure の管理ポータル]: https://manage.windowsazure.com/
+[mssql オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554212.aspx
+

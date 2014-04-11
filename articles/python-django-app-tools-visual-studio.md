@@ -1,79 +1,79 @@
-<properties linkid="develop-python-django-with-visual-studio" urlDisplayName="Django with Visual Studio" pageTitle="Django with Visual Studio (Python) - Azure tutorial" metaKeywords="Azure Django web app, Azure Django virtual machine" description="A tutorial that teaches you how to build a Django web application hosted in an Azure virtual machine." metaCanonical="" services="cloud-services" documentationCenter="Python" title="Creating Django applications with Python Tools for Visual Studio 1.5" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-python-django-with-visual-studio" UrlDisplayName="Visual Studio を使用した Django" pageTitle="Visual Studio を使用した Django (Python) - Windows Azure チュートリアル" MetaKeywords="Azure Django Web アプリケーション, Azure Django 仮想マシン" description="Windows Azure の仮想マシンでホストされる Django Web アプリケーションを作成する方法について説明するチュートリアルです。" metaCanonical="" services="cloud-services" documentationCenter="Python" title="Python Tools for Visual Studio 1.5 を使用して Django アプリケーションを作成する" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
 
-#Creating Django applications with Python Tools for Visual Studio 1.5
+#Python Tools for Visual Studio 1.5 を使用して Django アプリケーションを作成する
 
-**Note:** This tutorial is also encapsulated in a [Youtube video](http://www.youtube.com/watch?v=UsLti4KlgAY).
+**注:** このチュートリアルは [Youtube の動画](http://www.youtube.com/watch?v=UsLti4KlgAY)でご覧になることもできます。
 
-**Note:** A [newer and more extensive tutorial][] targeting PTVS 2.0 Beta is now available.
+**注:** PTVS 2.0 ベータ版に関する、[より詳しい最新のチュートリアル][]もあります。
 
-Developing for Azure is easy when using the available tools.
-This tutorial assumes you have no prior experience using Azure.
-On completing this guide, you will have a Django application up and running in the cloud.
+Windows Azure の開発を容易にする各種ツールが用意されています。
+このチュートリアルは、Windows Azure を使用した経験がない読者を対象に作成されています。
+このガイドでは、クラウドで動作する Django アプリケーションを作成します。
 
-You will learn:
+学習内容:
 
--   How to create a basic Django application
--   How to run and debug your Django application locally using the Django test server
--   How to run your Django application locally in the compute emulator
--   How to publish and re-publish your application to Azure.
+-   基本的な Django アプリケーションの作成方法
+-   Django テスト サーバーを使用して Django アプリケーションをローカルで実行し、デバッグする方法
+-   コンピューティング エミュレーターで Django アプリケーションをローカル実行する方法
+-   Windows Azure にアプリケーションを発行および再発行する方法
 
-By following this tutorial, you will build a simple Hello World web
-application. The application will be hosted in an instance of a web role
-that, when running in Azure, is itself hosted in a dedicated
-virtual machine (VM).
+このチュートリアルを実行して、単純な Hello World Web アプリケーション
+を作成します。このアプリケーションは Web ロールのインスタンスにホストされます。
+Windows Azure で実行する場合は、このロール自体が専用の
+仮想マシン (VM) にホストされます。
 
-A screenshot of the completed application is below:
+完成したアプリケーションのスクリーンショットは次のようになります。
 
 ![](./media/python-django-app-tools-visual-studio/ptvs-dj-FirstAppInCloud.png)
 
 [WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
-## <a id="setup"> </a>Setting Up the Development Environment
+## <a id="setup"> </a>開発環境の設定
 
-Before you can begin developing your Azure application, you need to get the tools and set up your development environment. For details about getting and installing the Azure SDK for Python, see [How to Install Python][].
+Windows Azure アプリケーションを開発する前に、ツールを入手して、開発環境を設定する必要があります。Windows Azure SDK for Python の入手とインストールの詳細については、「[How to Install Python (Python のインストール方法)][]」を参照してください。
 
-**Note:** This tutorial requires Python 2.7 and Django 1.4. These versions are included in the current Azure SDK for Python.
+**注:** このチュートリアルでは、Python 2.7 と Django 1.4 が必要です。これらのバージョンは、Windows Azure SDK for Python の現在のバージョンに含まれています。
 
-**Note:** Deployment to the compute emulator and/or Azure requires the full version of Visual Studio (the integrated shell isn't supported).
+**注:** コンピューティング エミュレーターまたは Windows Azure へのデプロイでは、Visual Studio の完全バージョン (統合シェルはサポートされません) が必要です。
 
-## Creating a New Django Application
+## 新しい Django アプリケーションの作成
 
-To create a new Django application first launch Visual Studio and then create a new project using **File->New Project**.  Find the Python tab (either available at the top-level, or in the Other Languages area) and select the Django Application template:
-
-
-
-![New Python Project Templates](./media/python-django-app-tools-visual-studio/ptvs-dj-NewProject.png)
+新しい Django アプリケーションを作成するには、最初に Visual Studio を起動し、次に **[ファイル] メニューの [新しいプロジェクト]** を使用して新しいプロジェクトを作成します。[Python] タブ (最上位レベルまたは [他の言語] のレベルにあります) を見つけて、Django アプリケーション テンプレートを選択します。
 
 
 
-**Click OK** and you'll have created your first Django app.
+![新しい Python プロジェクト テンプレート](./media/python-django-app-tools-visual-studio/ptvs-dj-NewProject.png)
 
 
-![Visual Studio opened to your first Django project](./media/python-django-app-tools-visual-studio/ptvs-dj-FirstProject.png)
 
-Next you'll want to start developing the first Django app.  You can right click on the module node and select **Add New Django app**... to setup a new app within your project:
+**[OK] をクリック**すると、最初の Django アプリケーションが作成されます。
 
-![Add New App menu item](./media/python-django-app-tools-visual-studio/ptvs-dj-AddNewApp.png)
 
-After which you can enter the new name for your application:
+![最初の Django プロジェクトが表示されている Visual Studio](./media/python-django-app-tools-visual-studio/ptvs-dj-FirstProject.png)
 
-![Add New App name prompt](./media/python-django-app-tools-visual-studio/ptvs-dj-AddNewAppPrompt.png)
+次に、最初の Django アプリケーションの開発を開始します。モジュール ノードを右クリックし、**[新しい Django アプリケーションの追加]** をクリックして、プロジェクト内で新しいアプリケーションを設定することができます。
 
-After entering a name for the application and clicking **OK** a new app is added to your project:
+![新しいアプリケーションを追加するメニュー項目](./media/python-django-app-tools-visual-studio/ptvs-dj-AddNewApp.png)
 
-![Solution Explorer with new app added](./media/python-django-app-tools-visual-studio/ptvs-dj-MyFirstApp.png)
+その後で、アプリケーションに新しい名前を入力できます。
 
-Now update **settings.py** so that your application is registered.  This will cause Django to automatically discover template files which are added to your apps Templates directory. Add the application name to the INSTALLED_APPS section:
+![新しいアプリケーションの名前を追加するプロンプト](./media/python-django-app-tools-visual-studio/ptvs-dj-AddNewAppPrompt.png)
+
+アプリケーションの名前を入力し、**[OK]** をクリックすると、新しいアプリケーションがプロジェクトに追加されます。
+
+![新しいアプリケーションが追加されたソリューション エクスプローラー](./media/python-django-app-tools-visual-studio/ptvs-dj-MyFirstApp.png)
+
+ここで、**settings.py** を更新して、アプリケーションを登録します。これを行うと、Django によって、アプリケーションの [テンプレート] ディレクトリに追加されるテンプレート ファイルが自動的に検出されます。INSTALLED_APPS セクションにアプリケーション名を追加します。
 
 	'DjangoApplication.MyFirstApp',
 
-![Add app to settings.py in INSTALLED_APPS](./media/python-django-app-tools-visual-studio/ptvs-dj-InstallApp.png)
+![INSTALLED_APPS で settings.py にアプリケーションを追加](./media/python-django-app-tools-visual-studio/ptvs-dj-InstallApp.png)
 
-Next lets add some code to the app's **views.py** so that we can return a simple template file:
+次に、アプリケーションの **views.py** にコードをいくつか追加します。これにより、単純なテンプレート ファイルが返されます。
 
 	from django.http import HttpResponse
 	from django.template.loader import render_to_string
@@ -84,88 +84,89 @@ Next lets add some code to the app's **views.py** so that we can return a simple
 											))
 
 
-![Add app to settings.py in INSTALLED_APPS](./media/python-django-app-tools-visual-studio/ptvs-dj-FirstView.png)
+![INSTALLED_APPS で settings.py にアプリケーションを追加](./media/python-django-app-tools-visual-studio/ptvs-dj-FirstView.png)
 
-And then lets add a simple template file that will be rendered when you visit this view.  To do this we can right click on the Templates folder and select **"Add new Item"**:
+次に、このビューにアクセスしたときにレンダリングされる単純なテンプレート ファイルを追加します。そのためには、[テンプレート] フォルダーを右クリックし、**[新しい項目の追加]** をクリックします。
 
-![Add new item to Templates foder](./media/python-django-app-tools-visual-studio/ptvs-dj-AddFirstTemplate.png)
+![[テンプレート] フォルダーへの新しい項目の追加](./media/python-django-app-tools-visual-studio/ptvs-dj-AddFirstTemplate.png)
 
-You can now select "Django HTML Template" from the template list and enter **index.html** in as the filename:
+ここでテンプレートの一覧から [Django HTML テンプレート] を選択し、ファイル名に「**index.html**」と入力します。
 
-![Add new item to Templates foder](./media/python-django-app-tools-visual-studio/ptvs-dj-NewDjangoTemplate.png)
+![[テンプレート] フォルダーへの新しい項目の追加](./media/python-django-app-tools-visual-studio/ptvs-dj-NewDjangoTemplate.png)
 
-After which the template is added to the project and is open.  Here you can see the start of some syntax highlighting for the template tags:
+その後で、テンプレートがプロジェクトに追加されて開きます。このとき、テンプレートのタグで構文の先頭部分が強調表示されているのを確認できます。
 
-![Template Added to Solution Explorer](./media/python-django-app-tools-visual-studio/ptvs-dj-TemplateAdded.png)
+![ソリューション エクスプローラーに追加されたテンプレート](./media/python-django-app-tools-visual-studio/ptvs-dj-TemplateAdded.png)
 
-You could go ahead and start updating the template at this point to change the rendered HTML and you'll get nice intellisense while doing so:
+この時点で、テンプレートの更新を開始して、レンダリングされる HTML に変更を加えることができます。この作業を行うときに、便利な Intellisense 機能を利用できます。
 
-![Template Intellisense for Django Filters](./media/python-django-app-tools-visual-studio/ptvs-dj-TemplateIntellisense.png)
+![Django フィルターに対応したテンプレートの Intellisense](./media/python-django-app-tools-visual-studio/ptvs-dj-TemplateIntellisense.png)
 
-You can leave the capitilization in or out, it won't change the results of this tutorial much one way or another.  Finally you just need to register your view with the url patterns in **urls.py**.  Add this to the **urlpatterns**:
+大文字の使用は有効にしても無効にしてもかまいません。どちらの場合も、このチュートリアルの結果が変わることはありません。最後に、**urls.py** に URL のパターンでビューを登録する必要があります。これは、**urlpatterns** に追加します。
 
 	url(r'^$', 'DjangoApplication.MyFirstApp.views.home', name='home'),
 
-![Register URL](./media/python-django-app-tools-visual-studio/ptvs-dj-RegisterUrl.png)
+![URL の登録](./media/python-django-app-tools-visual-studio/ptvs-dj-RegisterUrl.png)
 
-## Running your Application Locally in the Test Server
+## テスト サーバーでのアプリケーションのローカル実行
 
-At this point you've created your very first Django application.  Now you can run it locally by just **pressing F5**.  
+この時点で、最初の Django アプリケーションの作成は完了しています。これで、**F5 キーを押す**だけで、アプリケーションをローカルで実行することができます。
 
-![Django Hello World in a Browser and the Test Server](./media/python-django-app-tools-visual-studio/ptvs-dj-DjangoHelloWorldTestServer.png)
+![ブラウザーとテスト サーバーでの Django Hello World](./media/python-django-app-tools-visual-studio/ptvs-dj-DjangoHelloWorldTestServer.png)
 
-This will start your Python interpreter running Django's **manage.py** to run the test server.  Once the test server is successfully launched it will also launch a web browser to view the web site.  Because you launched with F5 this is launched under the debugger so we can also set breakpoints either in any of the Python code such as the view code or in the template files themselves:
+これにより、Django の **manage.py** を実行する Python インタープリターが開始され、テスト サーバーが動作します。テスト サーバーが適切に起動されると、Web サイトを表示するために Web ブラウザーも起動されます。F5 キーで起動したため、このアプリケーションはデバッガー内で実行されます。これにより、ビュー コードなどの任意の Python コード内やテンプレート ファイル内にブレークポイントを設定できます。
 
-![Debugger stopped at a template breakpoint](./media/python-django-app-tools-visual-studio/ptvs-dj-TemplateBreakpoint.png)
+![テンプレートのブレークポイントで停止するデバッガー](./media/python-django-app-tools-visual-studio/ptvs-dj-TemplateBreakpoint.png)
 
-You can now **click the stop button** and move onto running in the Azure compute emulator.
+これで、**停止ボタンをクリック**して、Windows Azure コンピューティング エミュレーターでの実行に移行できます。
 
-## Running Your Application Locally in the Emulator	
+## エミュレーターでのアプリケーションのローカル実行	
 
-To run inside of the compute emulator you simply need to add an Azure deployment project to your solution for the Django project.  
+コンピューティング エミュレーター内で実行するには、Windows Azure デプロイ プロジェクトを Django プロジェクト用のソリューションに追加するだけです。
 
-**Note:** Deployment to the compute emulator and/or Azure requires the full version of Visual Studio (the integrated shell isn't supported).
+**注:** コンピューティング エミュレーターまたは Windows Azure へのデプロイでは、Visual Studio の完全バージョン (統合シェルはサポートされません) が必要です。
 
-This can be done by right clicking on the Django project node in Solution Explorer and selecting **"Add Azure Cloud Service Project"**:
+これを実行するには、ソリューション エクスプローラーで Django プロジェクト ノードを右クリックし、**[Windows Azure クラウド サービス プロジェクトの追加]** をクリックします。
 
-![Add Deployment Project](./media/python-django-app-tools-visual-studio/ptvs-dj-AddDeploymentProject.png)
+![デプロイ プロジェクトの追加](./media/python-django-app-tools-visual-studio/ptvs-dj-AddDeploymentProject.png)
 
-After executing this command you'll see a newly added project in solution explorer:
+このコマンドを実行すると、ソリューション エクスプローラーで新しく追加されたプロジェクトを確認できます。
 
-![After Add Deployment Project](./media/python-django-app-tools-visual-studio/ptvs-dj-AfterDeployProjAdded.png)
+![デプロイ プロジェクトを追加した結果](./media/python-django-app-tools-visual-studio/ptvs-dj-AfterDeployProjAdded.png)
 
-This new project is now also marked as the startup project in the solution.  At this point you'll need to **restart Visual Studio as an Administrator** to be able to run in the compute emulator, but after doing so we can simply **hit F5** and the app will run and deploy in the compute emulator:
+この新しいプロジェクトは、ソリューションのスタートアップ プロジェクトとしてマークされます。この時点で、コンピューティング エミュレーターで実行できるように **Visual Studio を管理者として再起動する**必要があります。再起動後は、**F5 キーを押す**だけで、アプリケーションが実行され、コンピューティング エミュレーターにデプロイされます。
 
-![After Add Deployment Project](./media/python-django-app-tools-visual-studio/ptvs-dj-ComputeEmulator.png)
+![デプロイ プロジェクトを追加した結果](./media/python-django-app-tools-visual-studio/ptvs-dj-ComputeEmulator.png)
 
-Now you can see that we are now looking at the same web page but at a slightly different URL.  You can also see that there's no python.exe running the Django test server.  Instead we are running Django through IIS using a FastCGI gateway which is automatically included and setup when working from within Visual Studio.  
+ここで、このチュートリアルと同じ Web ページを現在表示していますが、URL が若干異なっていることに気付くでしょう。また、Django テスト サーバーを実行する python.exe が存在していません。代わりに、FastCGI ゲートウェイを使用し、IIS を介して Django を実行しています。FastCGI ゲートウェイは、Visual Studio 内から作業するときに自動的に取り込まれ設定されます。
 
-When running in the compute emulator you can rapidly iterate on your application - just switch back to Visual Studio, update your files, and refresh the web browser.  You'll see the results immediately!
+コンピューティング エミュレーターで実行するとき、アプリケーションをすばやく反復処理することができます。そのためには、Visual Studio に切り替え、ファイルを更新し、Web ブラウザーを最新の情報に更新します。直ちに結果を確認できます。
 
-## Deploying the Application to Azure
+## Windows Azure へのアプリケーションのデプロイ
 
-Now you're ready to deploy the project to Azure. To do this all you need to do is right click the Azure deployment project in Solution Explorer and **select Publish**:
+これで、プロジェクトを Windows Azure にデプロイする準備ができました。デプロイするには、ソリューション エクスプローラーで Windows Azure デプロイ プロジェクトを右クリックし、**[発行] をクリック**するだけです。
 
-![Package App Menu](./media/python-django-app-tools-visual-studio/ptvs-dj-publish1.png)
+![パッケージ アプリケーションのメニュー](./media/python-django-app-tools-visual-studio/ptvs-dj-publish1.png)
 
-After selecting Publish you will be prompted to sign in to Azure.  You can either import your existing credentials here or setup new credentials:
+[発行] をクリックすると、Windows Azure へのサインインを要求されます。この画面で既存の資格情報をインポートすることもできますし、新しい資格情報を設定することもできます。
 
-![Package Subscription](./media/python-django-app-tools-visual-studio/ptvs-dj-publish2.png)
+![パッケージのサブスクリプション](./media/python-django-app-tools-visual-studio/ptvs-dj-publish2.png)
 
-After selecting the credentials you'll see the Azure Publish Settings screen.  You can select the various options on how your deployment will proceed, or you can just **press Publish**:
+資格情報を選択すると、[Windows Azure 発行設定] 画面が表示されます。デプロイの処理方法についてさまざまなオプションを選択できます。また、オプションを選択せずに **[発行] をクリック**することもできます。
 
-![Package Settings](./media/python-django-app-tools-visual-studio/ptvs-dj-publish3.png)
+![パッケージの設定](./media/python-django-app-tools-visual-studio/ptvs-dj-publish3.png)
 
-You'll now need to wait for the application be setup and deployed.
+ここで、アプリケーションが設定されデプロイされるのを待機する必要があります。
 
-![Package Deployment](./media/python-django-app-tools-visual-studio/ptvs-dj-publish4.png)
+![パッケージのデプロイ](./media/python-django-app-tools-visual-studio/ptvs-dj-publish4.png)
 
-Once it's all setup you can click on the link below DNS Name to view your web site running in the cloud:
-
-
-![Your Django app in the cloud](./media/python-django-app-tools-visual-studio/ptvs-dj-FirstAppInCloud.png)
+設定がすべて完了したら、DNS 名の下にあるリンクをクリックして、クラウドで実行されている Web サイトを表示できます。
 
 
-[How to Install Python]: ../python-how-to-install/
-[newer and more extensive tutorial]: ../web-sites-python-create-deploy-django-app/
+![クラウド内の Django アプリケーション](./media/python-django-app-tools-visual-studio/ptvs-dj-FirstAppInCloud.png)
+
+
+[How to Install Python (Python のインストール方法)]: ../python-how-to-install/
+[より詳しい最新のチュートリアル]: ../web-sites-python-create-deploy-django-app/
+
 

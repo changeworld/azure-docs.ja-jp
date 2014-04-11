@@ -1,299 +1,140 @@
-# Compute
+# コンピューティング
 
-Azure enables you to deploy and monitor your application code
-running inside a Microsoft data center. When you create an application
-and run it on Azure, the code and configuration together is
-called an Azure hosted service. Hosted services are easy to
-manage, scale up and down, reconfigure, and update with new versions of
-your application's code. This article focuses on the Azure
-hosted service application model.<a id="compare" name="compare"></a>
+Windows Azure では、マイクロソフト データ センター内で実行されるアプリケーション コードを展開して監視することができます。アプリケーションを作成して Windows Azure で実行する場合、コードと構成をまとめて Windows Azure ホステッド サービスと呼びます。ホステッド サービスは、管理、規模の拡大/縮小、再構成、新しいバージョンのアプリケーション コードでの更新が簡単です。この記事では、Windows Azure ホステッド サービスのアプリケーション モデルに注目します。<a id="compare" name="compare"></a>
 
-## Table of Contents<a id="_GoBack" name="_GoBack"></a>
+## 目次<a id="_GoBack" name="_GoBack"></a>
 
--   [Azure Application Model Benefits][]
--   [Hosted Service Core Concepts][]
--   [Hosted Service Design Considerations][]
--   [Designing your Application for Scale][]
--   [Hosted Service Definition and Configuration][]
--   [The Service Definition File][]
--   [The Service Configuration File][]
--   [Creating and Deploying a Hosted Service][]
--   [References][]
+-   [Windows Azure アプリケーション モデルの利点][]
+-   [ホステッド サービスの中心概念][]
+-   [ホステッド サービスの設計に関する考慮事項][]
+-   [規模に合わせたアプリケーションの設計][]
+-   [ホステッド サービスの定義と構成][]
+-   [サービス定義ファイル][]
+-   [サービス構成ファイル][]
+-   [ホステッド サービスの作成と展開][]
+-   [参照][]
 
-## <a id="benefits"> </a>Azure Application Model Benefits
+## <a id="benefits"> </a>Windows Azure アプリケーション モデルの利点
 
-When you deploy your application as a hosted service, Azure
-creates one or more virtual machines (VMs) that contain your
-application's code, and boots the VMs on physical machines residing in
-one of the Azure data centers. As client requests to your hosted
-application enter the data center, a load balancer distributes these
-requests equally to the VMs. While your application is hosted in Windows
-Azure, it gets three key benefits:
+アプリケーションをホステッド サービスとして展開すると、Windows Azure によりアプリケーション コードを含む 1 つ以上の仮想マシン (VM) が作成され、いずれかの Windows Azure データ センターに存在する物理マシン上で VM が起動されます。ホステッド アプリケーションへのクライアント要求がデータ センターに入ると、ロード バランサーがそれらの要求を VM に均等に分散します。アプリケーションが Windows Azure にホストされていると、次の主な 3 つの利点があります。
 
--   **High availability.** High availability means Azure ensures
-    that your application is running as much as possible and is able to
-    respond to client requests. If your application terminates (due to
-    an unhandled exception, for example), then Azure will detect
-    this, and it will automatically re-start your application. If the
-    machine your application is running on experiences some kind of
-    hardware failure, then Azure will also detect this and
-    automatically create a new VM on another working physical machine
-    and run your code from there. NOTE: In order for your application to
-    get Microsoft's Service Level Agreement of 99.95% available, you
-    must have at least two VMs running your application code. This
-    allows one VM to process client requests while Azure moves
-    your code from a failed VM to a new, good VM.
+-   **高可用性。**高可用性は、アプリケーションが可能な限り実行されてクライアント要求に応答できることが Windows Azure により確保されることを意味します。アプリケーションが終了した場合 (たとえば、ハンドルされない例外など)、Windows Azure がこれを検出し、アプリケーションを自動的に再起動します。アプリケーションが実行されているマシンで何らかのハードウェア障害が発生した場合、Windows Azure がこれを検出し、動作している別の物理マシンで新しい VM を自動的に作成し、そこからコードを実行します。Microsoft のサービス レベル アグリーメントである 99.95% の可用性をアプリケーションで実現するには、アプリケーション コードを実行する VM が少なくとも 2 つ必要です。これにより、Windows Azure が障害の発生した VM から正常な新しい VM にコードを移行している間、1 つの VM がクライアント要求を処理できるようになります。
 
--   **Scalability.** Azure lets you easily and dynamically
-    change the number of VMs running your application code to handle the
-    actual load being placed on your application. This allows you to
-    adjust your application to the workload that your customers are
-    placing on it while paying only for the VMs you need when you need
-    them. When you want to change the number of VMs, Azure
-    responds within minutes making it possible to dynamically change the
-    number of VMs running as often as desired.
+-   **拡張性。**Windows Azure では、アプリケーション コードを実行してアプリケーションで生じる実際の負荷を処理する VM の数を簡単かつ動的に変更することができます。このため、必要なときに必要な VM の料金を支払うだけで、顧客が設定したワークロードに合わせてアプリケーションを調整することができます。VM の数の変更が必要になると、Windows Azure が数分以内に対応して、実行される VM の数を必要な頻度で動的に変更できるようにします。
 
--   **Manageability.** Because Azure is a Platform as a Service
-    (PaaS) offering, it manages the infrastructure (the hardware itself,
-    electricity, and networking) required to keep these machines
-    running. Azure also manages the platform, ensuring an
-    up-to-date operating system with all the correct patches and
-    security updates, as well as component updates such as the .NET
-    Framework and Internet Information Server. Because all the VMs are
-    running Windows Server 2008, Azure provides additional
-    features such as diagnostic monitoring, remote desktop support,
-    firewalls, and certificate store configuration. All these features
-    are provided at no extra cost. In fact, when you run your
-    application in Azure, the Windows Server 2008 operating
-    system (OS) license is included. Since all of the VMs are running
-    Windows Server 2008, any code that runs on Windows Server 2008 works
-    just fine when running in Azure.
+-   **管理のしやすさ。**Windows Azure はサービスとしてのプラットフォーム (PaaS) であるため、これらのマシンの実行に必要なインフラストラクチャ (ハードウェア自体、電気、ネットワーク) を管理します。さらに、Windows Azure はプラットフォームも管理し、適切な更新プログラム、セキュリティ更新プログラム、.NET Framework や Internet Information Server などのコンポーネントの更新プログラムによって、オペレーティング システムを最新の状態に維持します。すべての VM で Windows Server 2008 が実行されるため、Windows Azure では診断監視、リモート デスクトップ サポート、ファイアウォール、証明書ストアの構成などの追加機能を使用できます。これらの機能はどれも追加料金がかかりません。実際、Windows Azure でアプリケーションを実行する場合、Windows Server 2008 オペレーティング システム (OS) のライセンスが含まれています。すべての VM で Windows Server 2008 が実行されているため、Windows Server 2008 で動作するどのコードも Windows Azure で実行すると正常に機能します。
 
-## <a id="concepts"> </a>Hosted Service Core Concepts
+## <a id="concepts"> </a>ホステッド サービスの中心概念
 
-When your application is deployed as a hosted service in Azure,
-it runs as one or more *roles.* A *role* simply refers to application
-files and configuration. You can define one or more roles for your
-application, each with its own set of application files and
-configuration. For each role in your application, you can specify the
-number of VMs, or *role instances*, to run. The figure below show two
-simple examples of an application modeled as a hosted service using
-roles and role instances.
+Windows Azure でアプリケーションをホステッド サービスとして展開すると、少なくとも 1 つの*ロール*として実行されます。*ロール*は、アプリケーション ファイルと構成だけを指します。アプリケーションには 1 つまたは複数のロールを定義し、それぞれアプリケーション ファイルと構成を含めることができます。アプリケーション内の各ロールについて、実行する VM の数、つまり*ロール インスタンス*を指定できます。次の図は、ロールとロール インスタンスを使用してホステッド サービスとしてモデル化されたアプリケーションの簡単な 2 つの例を示しています。
 
-##### Figure 1: A single role with three instances (VMs) running in an Azure data center
+##### 図 1: Windows Azure データ センターで実行されている 3 つのインスタンス (VM) を持つ 1 つのロール
 
 ![image][0]
 
-##### Figure 2: Two roles, each with two instances (VMs), running in an Azure data center
+##### 図 2: それぞれ Windows Azure データ センターで実行されている 2 つのインスタンス (VM) を持つ 2 つのロール
 
 ![image][1]
 
-Role instances typically process Internet client requests entering the
-data center through what is called an *input endpoint*. A single role
-can have 0 or more input endpoints. Each endpoint indicates a protocol
-(HTTP, HTTPS, or TCP) and a port. It is common to configure a role to
-have two input endpoints: HTTP listening on port 80 and HTTPS listening
-on port 443. The figure below shows an example of two different roles
-with different input endpoints directing client requests to them.
+ロール インスタンスは通常、*入力エンドポイント*と呼ばれるものを通じて、データ センターに入るインターネット クライアント要求を処理します。1 つのロールは 0 か所以上の入力エンドポイントを持つことができます。各エンドポイントは、プロトコル (HTTP、HTTPS、TCP) とポートを示します。通常は、2 つの入力エンドポイントを持つロールを構成します。ポート 80 でリッスンする HTTP とポート 443 でリッスンする HTTPS です。次の図は、クライアント要求をロールにダイレクトする異なる入力エンドポイントを持つ 2 つのロールの例を示しています。
 
 ![image][2]
 
-When you create a hosted service in Azure, it is assigned a
-publicly addressable IP address that clients can use to access it. Upon
-creating the hosted service you must also select a URL prefix that is
-mapped to that IP address. This prefix must be unique as you are
-essentially reserving the *prefix*.cloudapp.net URL so that no one else
-can have it. Clients communicate with your role instances by using the
-URL. Usually, you will not distribute or publish the Azure
-*prefix*.cloudapp.net URL. Instead, you will purchase a DNS name from
-your DNS registrar of choice and configure your DNS name to redirect
-client requests to the Azure URL. For more details, see
-[Configuring a Custom Domain Name in Azure][].
+Windows Azure でホステッド サービスを作成すると、クライアントがアクセスに使用できる、パブリックにアドレス指定することができる IP アドレスが割り当てられます。ホステッド サービスを作成するときは、その IP アドレスにマッピングされる URL プレフィックスも選択する必要があります。本質的には、他のユーザーが使用できないように *prefix*.cloudapp.net という URL を予約することになるため、このプレフィックスは一意にする必要があります。クライアントは、この URL を使用してロール インスタンスと通信します。通常、Windows Azure の 
+*prefix*.cloudapp.net URL を配布または公開することはありません。代わりに、適切な DNS レジストラーから DNS 名を購入し、クライアント要求が Windows Azure の URL にリダイレクトされるように DNS 名を構成します。詳細については、[Windows Azure でのカスタム ドメイン名の構成に関するページ][]を参照してください。
 
-## <a id="considerations"> </a>Hosted Service Design Considerations
+## <a id="considerations"> </a>ホステッド サービスの設計に関する考慮事項
 
-When designing an application to run in a cloud environment, there are
-several considerations to think about such as latency,
-high-availability, and scalability.
+クラウド環境で実行するアプリケーションを設計するときは、遅延時間、高可用性、拡張性など、検討が必要な考慮事項がいくつかあります。
 
-Deciding where to locate your application code is an important
-consideration when running a hosted service in Azure. It is
-common to deploy your application to data centers that are closest to
-your clients to reduce latency and get the best performance possible.
-However, you might choose a data center closer to your company or closer
-to your data if you have some jurisdictional or legal concerns about
-your data and where it resides. There are six data centers around the
-globe capable of hosting your application code. The table below shows
-the available locations:
+Windows Azure でホステッド サービスを実行する場合、アプリケーション コードの配置場所の決定は重要な考慮事項です。通常は、遅延時間を短縮してできる限り最高のパフォーマンスを実現するため、クライアントから最も近いデータ センターにアプリケーションを展開します。
+ただし、データやその場所に関して司法的または法的な懸念事項がある場合は、自社に近いデータ センターやデータに近いデータ センターを選択できます。アプリケーション コードをホストできるデータ センターは、全世界に 6 か所あります。利用できる場所は次の表のとおりです。
 
 <table border="2" cellspacing="0" cellpadding="5" style="border: 2px solid #000000;">
 <tbody>
 <tr>
 <td style="width: 100px;">
-**Country/Region**
+**国/リージョン**
 
 </td>
 <td style="width: 200px;">
-**Sub-regions**
+**サブ リージョン**
 
 </td>
 </tr>
 <tr>
 <td>
-United States
+米国
 
 </td>
 <td>
-South Central & North Central
-
-</td>
-</tr>
-<tr>
-<td>
-Europe
-
-</td>
-<td>
-North & West
+米国中南部、米国中北部
 
 </td>
 </tr>
 <tr>
 <td>
-Asia
+ヨーロッパ
 
 </td>
 <td>
-Southeast & East
+米国北部、米国西部
+
+</td>
+</tr>
+<tr>
+<td>
+アジア
+
+</td>
+<td>
+米国南東部、米国東部
 
 </td>
 </tr>
 </tbody>
 </table>
-When creating a hosted service, you select a sub-region indicating the
-location in which you want your code to execute.
+ホステッド サービスを作成するときは、コードを実行する場所を示すサブ リージョンを選択します。
 
-To achieve high availability and scalability, it is critically important
-that your application's data be kept in a central repository accessible
-to multiple role instances. To help with this, Azure offers
-several storage options such as blobs, tables, and SQL Database. Please see
-the [Data Storage Offerings in Azure][] article for more
-information about these storage technologies. The figure below shows how
-the load balancer inside the Azure data center distributes
-client requests to different role instances all of which have access to
-the same data storage.
+可用性と拡張性を高めるには、アプリケーションのデータを、複数のロール インスタンスにアクセスできる中央リポジトリに保持することが非常に重要です。このため、Windows Azure には複数のストレージ オプション (BLOB、テーブル、SQL データベースなど) が用意されています。これらのストレージ テクノロジの詳細については、[Windows Azure のデータ ストレージ機能][]に関する記事を参照してください。次の図は、Windows Azure データ センター内のロード バランサーが、同じデータ ストレージにアクセスできるすべてのロール インスタンスにクライアント要求を分散する方法を示しています。
 
 ![image][3]
 
-Usually, you want to locate your application code and your data in the
-same data center as this allows for low latency (better performance)
-when your application code accesses the data. In addition, you are not
-charged for bandwidth when data is moved around within the same data
-center.
+通常は、アプリケーション コードとデータを同じデータ センターに配置することをお勧めします。これにより、アプリケーション コードがデータにアクセスするとき、短い遅延時間が許容される (パフォーマンスが向上する) ためです。加えて、データが同じデータ センター内を移動するため、帯域幅の料金がかかりません。
 
-## <a id="scale"> </a>Designing your Application for Scale
+## <a id="scale"> </a>規模に合わせたアプリケーションの設計
 
-Sometimes, you may want to take a single application (like a simple web
-site) and have it hosted in Azure. But frequently, your
-application may consist of several roles that all work together. For
-example, in the figure below, there are two instances of the Web Site
-role, three instances of the Order Processing role, and one instance of
-the Report Generator role. These roles are all working together and the
-code for all of them can be packaged together and deployed as a single
-unit up to Azure.
+場合によっては、1 つのアプリケーション (簡単な Web サイトなど) を選んで、Windows Azure にホストすることができます。しかし、すべて連動する複数のロールでアプリケーションが構成されていることはよくあります。たとえば、次の図には、Web サイト ロールの 2 つのインスタンス、注文処理ロールの 3 つのインスタンス、レポート生成ロールの 1 つのインスタンスがあります。これらのロールはすべて連動しており、すべてのロールのコードをまとめてパッケージ化して 1 つのユニットとして Windows Azure に展開することができます。
 
 ![image][4]
 
-The main reason to split an application into different roles each
-running on its own set of role instances (that is, VMs) is to scale the
-roles independently. For example, during the holiday season, many
-customers may be purchasing products from your company, so you might
-want to increase the number of role instances running your Web Site role
-as well as the number of role instances running your Order Processing
-role. After the holiday season, you may get a lot of products returned,
-so you may still need a lot of Web Site instances but fewer Order
-Processing instances. During the rest of the year, you may only need a
-few Web Site and Order Processing instances. Throughout all of this, you
-may need only one Report Generator instance. The flexibility of
-role-based deployments in Azure enables you to easily adapt your
-application to your business needs.
+それぞれ独自のロール インスタンス (つまり、VM) で実行されているさまざまなロールにアプリケーションを分割する主な理由は、ロールの規模を別々に設定するためです。たとえば、休暇シーズンには多くの顧客が会社から製品を購入するとします。この場合、Web サイト ロールを実行するロール インスタンスの数と、注文処理ロールを実行するロール インスタンスの数を増やすことができます。休暇シーズンが終わると、多くの製品が返品される可能性があるため、Web サイト インスタンスは引き続き多数必要ですが、必要な注文処理インスタンスは減ると思われます。1 年のうち他の期間に必要な Web サイト インスタンスと注文処理インスタンスは少しだけです。この期間全体をとおして、必要なレポート生成インスタンスは 1 つだけです。Windows Azure でのロール ベースの展開に柔軟性があるため、アプリケーションをビジネス ニーズに合わせて簡単に調整することができます。
 
-It's common to have the role instances within your hosted service
-communicate with each other. For example, the web site role accepts a
-customer's order but then it offloads the order processing to the Order
-Processing role instances. The best way to pass work form one set of
-role instances to another set of instances is using the queuing
-technology provided by Azure, either the Queue Service or
-Service Bus Queues. The use of a queue is a critical part of the story
-here. The queue allows the hosted service to scale its roles
-independently allowing you to balance the workload against cost. If the
-number of messages in the queue increases over time, then you can scale
-up the number of Order Processing role instances. If the number of
-messages in the queue decreases over time, then you can scale down the
-number of Order Processing role instances. This way, you are only paying
-for the instances required to handle the actual workload.
+通常、ホステッド サービス内のロール インスタンスは互いに通信します。たとえば、Web サイト ロールは顧客の注文を受け入れますが、注文処理を注文処理ロール インスタンスにオフロードします。1 つのロール インスタンス セットの負荷を別のインスタンス セットに渡すには、Windows Azure に用意されたキュー テクノロジであるキュー サービスまたは サービス バス キューを使用するのが最良の方法です。キューの使用は、この説明の重要な部分です。キューを使用すると、ホステッド サービスがロールの規模を別々に設定できるため、ワークロードとコストのバランスを取ることができます。時間の経過と共にキュー内のメッセージの数が増えた場合、注文処理ロール インスタンスの数を増やすことができます。時間の経過と共にキュー内のメッセージの数が減った場合、注文処理ロール インスタンスの数を減らすことができます。このようにすると、実際のワークロードの処理に必要なインスタンスに対して支払うだけですみます。
 
-The queue also provides reliability. When scaling down the number of
-Order Processing role instances, Azure decides which instances
-to terminate. It may decide to terminate an instance that is in the
-middle of processing a queue message. However, because the message
-processing does not complete successfully, the message becomes visible
-again to another Order Processing role instance that picks it up and
-processes it. Because of queue message visibility, messages are
-guaranteed to eventually get processed. The queue also acts as a load
-balancer by effectively distributing its messages to any and all role
-instances that request messages from it.
+キューには信頼性も備わっています。注文処理ロール インスタンスの数を減らすと、Windows Azure により終了するインスタンスが決定されます。キュー メッセージを処理中のインスタンスの終了が決定されることもあります。しかし、メッセージ処理が正常に完了しないため、そのメッセージは再び別の注文処理ロール インスタンスから見えるようになり、選択されて処理されます。キュー メッセージが見えるようになるため、メッセージは最終的に処理されることが保証されます。キューは、キューにメッセージを要求する任意またはすべてのロール インスタンスにそのメッセージを効率的に分散することで、ロード バランサーとしての役割も果たします。
 
-For the Web Site role instances, you can monitor the traffic coming into
-them and decide to scale the number of them up or down as well. The
-queue allows you to scale the number of Web Site role instances
-independently of the Order Processing role instances. This is very
-powerful and gives you a lot of flexibility. Of course, if your
-application consists of additional roles, you could add additional
-queues as the conduit to communicate between them in order to leverage
-the same scaling and cost benefits.
+Web サイト ロール インスタンスの場合、それらのロール インスタンスに送信されるトラフィックを監視し、ロール インスタンスの数を増やしたり減らしたりすることを決定することもできます。キューにより、注文処理ロール インスタンスとは別個に Web サイト ロール インスタンスの数を増減することが可能になります。これは非常に強力なため、柔軟性がかなり高まります。もちろん、アプリケーションで追加のロールが構成されている場合、規模の設定とコストに関して同じ利点を活用するために、ロール間で通信するための手段としてキューを追加することができます。
 
-## <a id="defandcfg"> </a>Hosted Service Definition and Configuration
+## <a id="defandcfg"> </a>ホステッド サービスの定義と構成
 
-Deploying a hosted service to Azure requires you to also have a
-service definition file and a service configuration file. Both of these
-files are XML files, and they allow you to declaratively specify
-deployment options for your hosted service. The service definition file
-describes all of the roles that make up your hosted service and how they
-communicate. The service configuration file describes the number of
-instances for each role and settings used to configure each role
-instance.
+ホステッド サービスを Windows Azure に展開するには、サービス定義ファイルとサービス構成ファイルも必要です。これらのファイルはどちらも XML ファイルであり、ホステッド サービスの展開オプションを宣言で指定できます。サービス定義ファイルには、ホステッド サービスを構成するすべてのロールとそれらの通信方法が記述されます。サービス構成ファイルには、各ロールのインスタンス数と、各ロール インスタンスの構成に使用される設定が記述されます。
 
-## <a id="def"> </a>The Service Definition File
+## <a id="def"> </a>サービス定義ファイル
 
-As I mentioned earlier, the service definition (CSDEF) file is an XML
-file that describes the various roles that make up your complete
-application. The complete schema for the XML file can be found here:
-[http://msdn.microsoft.com/en-us/library/windowsazure/ee758711.aspx][].
-The CSDEF file contains a WebRole or WorkerRole element for each role
-that you want in your application. Deploying a role as a web role (using
-the WebRole element) means that the code will run on a role instance
-containing Windows Server 2008 and Internet Information Server (IIS).
-Deploying a role as a worker role (using the WorkerRole element) means
-that the role instance will have Windows Server 2008 on it (IIS will not
-be installed).
+前述のとおり、サービス定義 (CSDEF) ファイルは、アプリケーション全体を構成する各種ロールが記述された XML ファイルです。XML ファイルのスキーマ全体については、[http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758711.aspx][] を参照してください。
+CSDEF ファイルには、アプリケーションに必要な各ロールの WebRole 要素または WorkerRole 要素が含まれています。ロールを Web ロールとして展開すると (WebRole 要素を使用)、Windows Server 2008 と Internet Information Server (IIS) を含むロール インスタンスでコードが実行されます。
+ロールを Worker ロールとして展開すると (WorkerRole 要素を使用)、ロール インスタンスで Windows Server 2008 が実行されます (IIS はインストールされません)。
 
-You can certainly create and deploy a worker role that uses some other
-mechanism to listen for incoming web requests (for example, your code
-could create and use a .NET HttpListener). Since the role instances are
-all running Windows Server 2008, your code can perform any operations
-that are normally available to an application running on Windows Server
-2008.
+もちろん、他のメカニズムを使用して受信 Web 要求をリッスンする Worker ロールを作成して展開することができます (たとえば、コードは .NET HttpListener を作成して使用することができます)。すべてのロール インスタンスで Windows Server 2008 が実行されるため、コードは Windows Server 2008 を実行するアプリケーションが通常使用できるどの操作でも実行できます。
 
-For each role, you indicate the desired VM size that instances of that
-role should use. The table below shows the various VM sizes available
-today and the attributes of each:
+ロールごとに、そのロールのインスタンスが使用する必要な VM サイズを指定します。次の表は、現在使用可能な各種 VM サイズと各サイズの属性を示しています。
 
 <table border="2" cellspacing="0" cellpadding="5" style="border: 2px solid #000000;">
 <tbody>
 <tr align="left" valign="top">
 <td>
-**VM Size**
+**VM サイズ**
 
 </td>
 <td>
@@ -305,12 +146,11 @@ today and the attributes of each:
 
 </td>
 <td>
-**Disk**
+**ディスク**
 
 </td>
 <td>
-**Peak  
-Network I/O**
+**ピーク ネットワーク I/O**
 
 </td>
 </tr>
@@ -328,11 +168,11 @@ Network I/O**
 
 </td>
 <td>
-20GB
+20 GB
 
 </td>
 <td>
-\~5 Mbps
+5 Mbps 以下
 
 </td>
 </tr>
@@ -350,11 +190,11 @@ Network I/O**
 
 </td>
 <td>
-225GB
+225 GB
 
 </td>
 <td>
-\~100 Mbps
+100 Mbps 以下
 
 </td>
 </tr>
@@ -372,11 +212,11 @@ Network I/O**
 
 </td>
 <td>
-490GB
+490 GB
 
 </td>
 <td>
-\~200 Mbps
+200 Mbps 以下
 
 </td>
 </tr>
@@ -394,11 +234,11 @@ Network I/O**
 
 </td>
 <td>
-1TB
+1 TB
 
 </td>
 <td>
-\~400 Mbps
+400 Mbps 以下
 
 </td>
 </tr>
@@ -416,184 +256,100 @@ Network I/O**
 
 </td>
 <td>
-2TB
+2 TB
 
 </td>
 <td>
-\~800 Mbps
+800 Mbps 以下
 
 </td>
 </tr>
 </tbody>
 </table>
-You are charged hourly for each VM you use as a role instance and you
-are also charged for any data that your role instances send outside the
-data center. You are not charged for data entering the data center. For
-more information, see [Azure Pricing][]. In general, it is
-advisable to use many small role instances as opposed to a few large
-instances so that your application is more resilient to failure. After
-all, the fewer role instances you have, the more disastrous a failure in
-one of them is to your overall application. Also, as mentioned before,
-you must deploy at least two instances for each role in order to get the
-99.95% service level agreement Microsoft provides.
+ロール インスタンスとして使用する各 VM には 1 時間単位で課金され、ロール インスタンスがデータ センターの外部に送信するデータに対しても課金されます。データ デンターに到着するデータには課金されません。詳細については、[Windows Azure の料金][]に関するページを参照してください。通常は、アプリケーションが障害からすぐに回復できるように、少数の大きいインスタンスを使用するのではなく、多数の小さいロール インスタンスを使用することをお勧めします。結局のところ、使用するロール インスタンスが少なければ少ないほど、いずれかのロール インスタンスで発生した障害がアプリケーション全体に及ぼす被害が大きくなります。さらに、前述のとおり、Microsoft が提供する 99.95% のサービス レベル アグリーメントを達成するには、ロールごとに少なくとも 2 つのインスタンスを展開する必要があります。
 
-The service definition (CSDEF) file is also where you would specify many
-attributes about each role in your application. Here are some of the
-more useful items available to you:
+サービス定義 (CSDEF) ファイルでは、アプリケーション内の各ロールに関する多くの属性も指定します。役に立つ項目のいくつかを次に示します。
 
--   **Certificates**. You use certificates for encrypting data or if
-    your web service supports SSL. Any certificates need to be uploaded
-    to Azure. For more information, see [Managing Certificates
-    in Azure][]. This XML setting installs previously-uploaded
-    certificates into the role instance's certificate store so that they
-    are usable by your application code.
+-   **証明書**。証明書は、データの暗号化、または Web サービスで SSL がサポートされる場合に使用します。すべての証明書を Windows Azure にアップロードする必要があります。詳細については、「[Windows Azure の証明書の管理][]」を参照してください。この XML 設定により、以前にアップロードされた証明書がロール インスタンスの証明書ストアにインストールされるため、アプリケーション コードから使用できるようになります。
 
--   **Configuration Setting Names**. For values that you want your
-    application(s) to read while running on a role instance. The actual
-    value of the configuration settings is set in the service
-    configuration (CSCFG) file which can be updated at any time without
-    requiring you to redeploy your code. In fact, you can code your
-    applications in such a way to detect the changed configuration
-    values without incurring any downtime.
+-   **構成設定名**。ロール インスタンスでの実行中にアプリケーションが読み取る値を指定します。構成設定の実際の値はサービス構成 (CSCFG) ファイルで設定されます。このファイルは、コードを再展開しなくてもいつでも更新できます。実際、ダウンタイムを生じさせずに変更された構成値を検出できる方法で、アプリケーションのコードを記述できます。
 
--   **Input Endpoints**. Here you specify any HTTP, HTTPS, or TCP
-    endpoints (with ports) that you want to expose to the outside world
-    via your *prefix*.cloadapp.net URL. When Azure deploys your
-    role, it will configure the firewall on the role instance
-    automatically.
+-   **入力エンドポイント**。ここでは、*prefix*.cloadapp.net URL を通じて外部に開示する HTTP、HTTPS、または TCP エンドポイント (ポートを含む) をすべて指定します。Windows Azure は、ロールを展開するときに、ロール インスタンスでファイアウォールを自動的に構成します。
 
--   **Internal Endpoints**. Here you specify any HTTP or TCP endpoints
-    that you want exposed to other role instances that are deployed as
-    part of your application. Internal endpoints allow all the role
-    instances within your application to talk to each other but are not
-    accessible to any role instances that are outside your application.
+-   **内部エンドポイント**。ここでは、アプリケーションの一部として展開される他のロール インスタンスに開示する HTTP または TCP エンドポイントをすべて指定します。内部エンドポイントにより、アプリケーション内のすべてのロール インスタンスが互いに通信できるようになります。ただし、アプリケーションの外部にあるロール インスタンスにはアクセスできません。
 
--   **Import Modules**. These optionally install useful components on
-    your role instances. Components exist for diagnostic monitoring,
-    remote desktop, and Azure Connect (which allows your role
-    instance to access on-premises resources through a secure channel).
+-   **インポート モジュール**。これらのモジュールにより、役に立つコンポーネントがロール インスタンスにオプションでインストールされます。コンポーネントは、診断監視、リモート デスクトップ、Windows Azure Connect (ロール インスタンスが安全なチャネル経由で内部設置型リソースにアクセスできるようにします) のために存在します。
 
--   **Local Storage**. This allocates a subdirectory on the role
-    instance for your application to use. It is described in more detail
-    in the [Data Storage Offerings in Azure][] article.
+-   **ローカル ストレージ**。これにより、アプリケーションのロール インスタンスに使用するサブディレクトリが割り当てられます。この点の詳細については、[Windows Azure のデータ ストレージ機能][]に関する記事を参照してください。
 
--   **Startup Tasks**. Startup tasks give you a way to install
-    prerequisite components on a role instance as it boots up. The tasks
-    can run elevated as an administrator if required.
+-   **スタートアップ タスク**。スタートアップ タスクを使用すると、ロール インスタンスの起動時に必須のコンポーネントをインストールできます。このタスクは、必要な場合は昇格された管理者特権で実行できます。
 
-## <a id="cfg"> </a>The Service Configuration File
+## <a id="cfg"> </a>サービス構成ファイル
 
-The service configuration (CSCFG) file is an XML file that describes
-settings that can be changed without redeploying your application. The
-complete schema for the XML file can be found here:
-[http://msdn.microsoft.com/en-us/library/windowsazure/ee758710.aspx][].
-The CSCFG file contains a Role element for each role in your
-application. Here are some of the items you can specify in the CSCFG
-file:
+サービス構成 (CSCFG) ファイルは、アプリケーションを再展開しなくても変更できる設定が記述される XML ファイルです。XML ファイルのスキーマ全体については、[http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758710.aspx][]. を参照してください。
+CSCFG ファイルには、アプリケーションの各ロールに対応する Role 要素が含まれています。CSCFG ファイルで指定できる項目のいくつかを次に示します。
 
--   **OS Version**. This attribute allows you to select the operating
-    system (OS) version you want used for all the role instances running
-    your application code. This OS is known as the *guest OS*, and each
-    new version includes the latest security patches and updates
-    available at the time the guest OS is released. If you set the
-    osVersion attribute value to "\*", then Azure automatically
-    updates the guest OS on each of your role instances as new guest OS
-    versions become available. However, you can opt out of automatic
-    updates by selecting a specific guest OS version. For example,
-    setting the osVersion attribute to a value of
-    "WA-GUEST-OS-2.8\_201109-01" causes all your role instances to get
-    what is described on this web page:
-    [http://msdn.microsoft.com/en-us/library/hh560567.aspx][]. For more
-    information about guest OS versions, see [Managing Upgrades to the
-    Azure Guests OS].
+-   **OS バージョン**。この属性では、アプリケーション コードを実行するすべてのロール インスタンスに使用するオペレーティング システム (OS) バージョンを選択できます。この OS は*ゲスト OS* と呼ばれ、新しい各バージョンにはゲスト OS がリリースされた時点で入手できる最新のセキュリティ更新プログラムと更新プログラムが含まれています。osVersion 属性を "\*" に設定した場合、新しいゲスト OS バージョンが利用可能になると、Windows Azure により各ロール インスタンスでゲスト OS が自動的に更新されます。ただし、特定のゲスト OS バージョンを選択することで自動更新を無効にすることができます。たとえば、osVersion 属性を値 "WA-GUEST-OS-2.8\_201109-01" に設定すると、すべてのロール インスタンスに Web ページ [http://msdn.microsoft.com/ja-jp/library/hh560567.aspx][] で記述されている内容が提供されます。ゲスト OS バージョンの詳細については、[Windows Azure ゲスト OS のアップグレードの管理に関するページ] を参照してください。
 
--   **Instances**. This element's value indicates the number of role
-    instances you want provisioned running the code for a particular
-    role. Since you can upload a new CSCFG file to Azure
-    (without redeploying your application), it is trivially simple to
-    change the value for this element and upload a new CSCFG file to
-    dynamically increase or decrease the number of role instances
-    running your application code. This allows you to easily scale your
-    application up or down to meet actual workload demands while also
-    controlling how much you are charged for running the role instances.
+-   **インスタンス**。この要素の値では、特定のロールのコードを実行するようにプロビジョニングするロール インスタンスの数を指定します。新しい CSCFG ファイルを Windows Azure にアップロードできる (アプリケーションを再展開する必要がありません) ことから明らかなように、この要素の値を変更して新しい CSCFG ファイルをアップロードすることで、アプリケーション コードを実行するロール インスタンスの数を簡単に動的に増減することができます。このため、実際のワークロード需要に合わせてアプリケーションを簡単に拡大または縮小できるだけでなく、ロール インスタンスの実行に対して課金される金額を制御することもできます。
 
--   **Configuration Setting Values**. This element indicates values for
-    settings (as defined in the CSDEF file). Your role can read these
-    values while it is running. These configuration settings values are
-    typically used for connection strings to SQL Database or to Windows
-    Azure Storage, but they can be used for any purpose you desire.
+-   **構成設定値**。この要素では、設定の値を指定します (CSDEF ファイルでの定義と同様)。ロールは、実行中にこれらの値を読み取ることができます。これらの構成設定値は、通常 SQL データベースまたは Windows Azure のストレージへの接続文字列に使用されますが、必要に応じてどのような目的でも使用できます。
 
-## <a id="hostedservices"> </a>Creating and Deploying a Hosted Service
+## <a id="hostedservices"> </a>ホステッド サービスの作成と展開
 
-Creating a hosted service requires that you first go to the [Windows
-Azure Management Portal] and provision a hosted service by specifying
-a DNS prefix and the data center you ultimately want your code running
-in. Then in your development environment, you create your service
-definition (CSDEF) file, build your application code and package (zip)
-all these files into a service package (CSPKG) file. You must also
-prepare your service configuration (CSCFG) file. To deploy your role,
-you upload the CSPKG and CSCFG files with the Azure Service
-Management API. Once deployed, Azure, will provision role
-instances in the data center (based upon the configuration data),
-extract your application code from the package, copy it to the role
-instances, and boot the instances. Now, your code is up and running.
+ホステッド サービスを作成するには、まず [Windows Azure の管理ポータル]にアクセスし、DNS プレフィックスと最終的にコードを実行するデータ センターを指定することでホステッド サービスをプロビジョニングする必要があります。次に、展開環境で、サービス定義 (CSDEF) ファイルを作成してアプリケーション コードを構築し、これらのファイルをすべてサービス パッケージ (CSPKG) ファイルにパッケージ化 (zip) します。さらに、サービス構成 (CSCFG) ファイルも準備する必要があります。ロールを展開するには、Windows Azure サービス管理 API を使用して CSPKG ファイルと CSCFG ファイルをアップロードします。展開されると、Windows Azure が (構成データに基づいて) データ センター内のロール インスタンスをプロビジョニングします。次に、パッケージからアプリケーション コードを抽出してロール インスタンスにコピーし、インスタンスを起動します。これで、コードを実行できるようになります。
 
-The figure below shows the CSPKG and CSCFG files you create on your
-development computer. The CSPKG file contains the CSDEF file and the
-code for two roles. After uploading the CSPKG and CSCFG files with the
-Azure Service Management API, Azure creates the role
-instances in the data center. In this example, the CSCFG file indicated
-that Azure should create three instances of role \#1 and two
-instances of Role \#2.
+次の図は、開発コンピューター上で作成する CSPKG ファイルと CSCFG ファイルを示しています。CSPKG ファイルには、CSDEF ファイルと 2 つのロールのコードが含まれています。Windows Azure サービス管理 API を使用して CSPKG ファイルと CSCFG ファイルをアップロードすると、Windows Azure によってデータ センターにロール インスタンスが作成されます。この例では、CSCFG ファイルは、Windows Azure がロール 1 の 3 つのインスタンスとロール 2 の 2 つのインスタンスを作成することを示しています。
 
 ![image][5]
 
-For more information about deploying, upgrading, and reconfiguring your
-roles, see the [Deploying and Updating Azure Applications][]
+ロールの展開、アップグレード、再構成の詳細については、[Windows Azure アプリケーションの展開および更新に関する記事][]を参照してください。
 article.<a id="Ref" name="Ref"></a>
 
 ## <a id="references"> </a>References
 
--   [Creating a Hosted Service for Azure][]
+-   [Windows Azure 対応のホステッド サービスの作成][]
 
--   [Managing Hosted Services in Azure][]
+-   [Windows Azure におけるホステッド サービスの管理][]
 
--   [Migrating Applications to Azure][]
+-   [Windows Azure へのアプリケーションの移行][]
 
--   [Configuring an Azure Application][]
+-   [Windows Azure アプリケーションの構成][]
 
 <div style="width: 700px; border-top: solid; margin-top: 5px; padding-top: 5px; border-top-width: 1px;">
 
-<p>Written by Jeffrey Richter (Wintellect)</p>
+<p>著者: Jeffrey Richter (Wintellect)</p>
 
 </div>
 
-  [Azure Application Model Benefits]: #benefits
-  [Hosted Service Core Concepts]: #concepts
-  [Hosted Service Design Considerations]: #considerations
-  [Designing your Application for Scale]: #scale
-  [Hosted Service Definition and Configuration]: #defandcfg
-  [The Service Definition File]: #def
-  [The Service Configuration File]: #cfg
-  [Creating and Deploying a Hosted Service]: #hostedservices
-  [References]: #references
+  [Windows Azure アプリケーション モデルの利点]: #benefits
+  [ホステッド サービスの中心概念]: #concepts
+  [ホステッド サービスの設計に関する考慮事項]: #considerations
+  [規模に合わせたアプリケーションの設計]: #scale
+  [ホステッド サービスの定義と構成]: #defandcfg
+  [サービス定義ファイル]: #def
+  [サービス構成ファイル]: #cfg
+  [ホステッド サービスの作成と展開]: #hostedservices
+  [参照]: #references
   [0]: ./media/application-model/application-model-3.jpg
   [1]: ./media/application-model/application-model-4.jpg
   [2]: ./media/application-model/application-model-5.jpg
-  [Configuring a Custom Domain Name in Azure]: http://www.windowsazure.com/en-us/develop/net/common-tasks/custom-dns/
-  [Data Storage Offerings in Azure]: http://www.windowsazure.com/en-us/develop/net/fundamentals/cloud-storage/
+  [Windows Azure でのカスタム ドメイン名の構成]: http://www.windowsazure.com/ja-jp/develop/net/common-tasks/custom-dns/
+  [Windows Azure のデータ ストレージ機能]: http://www.windowsazure.com/ja-jp/develop/net/fundamentals/cloud-storage/
   [3]: ./media/application-model/application-model-6.jpg
   [4]: ./media/application-model/application-model-7.jpg
   
-  [Azure Pricing]: http://www.windowsazure.com/en-us/pricing/calculator/
-  [Managing Certificates in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg981929.aspx
-  [http://msdn.microsoft.com/en-us/library/windowsazure/ee758710.aspx]: http://msdn.microsoft.com/en-us/library/windowsazure/ee758710.aspx
-  [http://msdn.microsoft.com/en-us/library/hh560567.aspx]: http://msdn.microsoft.com/en-us/library/hh560567.aspx
-  [Managing Upgrades to the Azure Guests OS]: http://msdn.microsoft.com/en-us/library/ee924680.aspx
-  [Azure Management Portal]: http://manage.windowsazure.com/
+  [Windows Azure の料金]: http://www.windowsazure.com/ja-jp/pricing/calculator/
+  [Windows Azure の証明書の管理]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg981929.aspx
+  [http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758710.aspx]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758710.aspx
+  [http://msdn.microsoft.com/ja-jp/library/hh560567.aspx]: http://msdn.microsoft.com/ja-jp/library/hh560567.aspx
+  [Windows Azure ゲスト OS のアップグレードの管理]: http://msdn.microsoft.com/ja-jp/library/ee924680.aspx
+  [Windows Azure の管理ポータル]: http://manage.windowsazure.com/
   [5]: ./media/application-model/application-model-8.jpg
-  [Deploying and Updating Azure Applications]: http://www.windowsazure.com/en-us/develop/net/fundamentals/deploying-applications/
-  [Creating a Hosted Service for Azure]: http://msdn.microsoft.com/en-us/library/gg432967.aspx
-  [Managing Hosted Services in Azure]: http://msdn.microsoft.com/en-us/library/gg433038.aspx
-  [Migrating Applications to Azure]: http://msdn.microsoft.com/en-us/library/gg186051.aspx
-  [Configuring an Azure Application]: http://msdn.microsoft.com/en-us/library/windowsazure/ee405486.aspx
+  [Windows Azure アプリケーションの展開および更新]: http://www.windowsazure.com/ja-jp/develop/net/fundamentals/deploying-applications/
+  [Windows Azure 対応のホステッド サービスの作成]: http://msdn.microsoft.com/ja-jp/library/gg432967.aspx
+  [Windows Azure におけるホステッド サービスの管理]: http://msdn.microsoft.com/ja-jp/library/gg433038.aspx
+  [Windows Azure へのアプリケーションの移行]: http://msdn.microsoft.com/ja-jp/library/gg186051.aspx
+  [Windows Azure アプリケーションの構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405486.aspx
+
+

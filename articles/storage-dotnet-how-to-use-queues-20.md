@@ -1,87 +1,88 @@
-<properties linkid="dev-net-2-how-to-queue-service" urlDisplayName="Queue Service" pageTitle="How to use queue storage from .NET | Microsoft Azure" metaKeywords="Get started Azure queue   Azure asynchronous processing   Azure queue   Azure queue storage   Azure queue .NET   Azure queue storage .NET   Azure queue C#   Azure queue storage C#" description="Learn how to use the Windows Azure queue storage service to create and delete queues and insert, peek, get, and delete queue messages." metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="storage" documentationCenter=".NET" title="How to use the Queue Storage Service" authors="tamram" />
-
-# How to use Queue Storage from .NET
+﻿<properties linkid="dev-net-2-how-to-queue-service" urlDisplayName="キュー サービス (2.0)" pageTitle="キュー ストレージ サービスを使用する方法 - Windows Azure" metaKeywords="Azure キューの概要   Azure の非同期処理   Azure キュー   Azure キュー ストレージ   Azure キュー .NET   Azure キュー ストレージ .NET   Azure キュー C#   Azure キュー ストレージ C#" description="Windows Azure キュー ストレージ サービスを使用して、キューの作成および削除、キュー メッセージの挿入、ピーク、取得、および削除を行う方法を学習します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="キュー ストレージ サービスを使用する方法" />
 
 
-This guide will show you how to perform common scenarios using the
-Azure Queue storage service. The samples are written in C\# code
-and use the Azure Storage Client for .NET. The scenarios covered include **inserting**,
-**peeking**, **getting**, and **deleting** queue messages, as well as
-**creating and deleting queues**. For more information on queues, refer
-to the [Next steps][] section.
 
-<h2>Table of contents</h2>
+# キュー ストレージ サービスを使用する方法
 
--   [What is Queue Storage][]
--   [Concepts][]
--   [Create an Azure Storage Account][]
--   [Setup an Azure Storage connection string][]
--   [How to: Programmatically access queues using .NET][]
--   [How to: Create a queue][]
--   [How to: Insert a message into a queue][]
--   [How to: Peek at the next message][]
--   [How to: Change the contents of a queued message][]
--   [How to: Dequeue the next message][]
--   [How to: Leverage additional options for dequeuing messages][]
--   [How to: Get the queue length][]
--   [How to: Delete a queue][]
--   [Next steps][]
+<div class="dev-center-tutorial-selector">
+<a href="/ja-jp/develop/net/how-to-guides/queue-service-v17/" title="バージョン 1.7">バージョン 1.7</a>
+<a href="/ja-jp/develop/net/how-to-guides/queue-service/" title="バージョン 2.0" class="current">バージョン 2.0</a> 
+</div>
+
+
+このガイドでは、Windows Azure キュー ストレージ サービスを使用して
+一般的なシナリオを実行する方法について説明します。サンプルは C\# コードで記述され、Windows Azure .NET 用ストレージ クライアント (バージョン 2.0) を利用しています。キュー メッセージの**挿入**、**ピーク**、
+**取得**、および**削除**と、**キューの作成および削除**の各シナリオに
+ついて説明します。キューの詳細については、「[次の手順][]」の
+セクションを参照してください。
+
+<h2>目次</h2>
+
+-   [キュー ストレージとは][]
+-   [概念][]
+-   [Windows Azure のストレージ アカウントの作成][]
+-   [Windows Azure のストレージ接続文字列の設定][]
+-   [方法: .NET を使用してキューにプログラムでアクセスする][]
+-   [方法: キューを作成する][]
+-   [方法: メッセージをキューに挿入する][]
+-   [方法: 次のメッセージをピークする][]
+-   [方法: キューに配置されたメッセージの内容を変更する][]
+-   [方法: 次のメッセージをデキューする][]
+-   [方法: 追加オプションを利用してメッセージをデキューする][]
+-   [方法: キューの長さを取得する][]
+-   [方法: キューを削除する][]
+-   [次の手順][]
 
 [WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
-<h2><a name="create-account"></a><span  class="short-header">Create an account</span>Create an Azure Storage account</h2>
+<h2><a name="create-account"></a><span  class="short-header">アカウントの作成</span>Windows Azure のストレージ アカウントの作成</h2>
 
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-<h2><a name="setup-connection-string"></a><span  class="short-header">Setup a connection string</span>Setup an Azure Storage Connection String</h2>
+<h2><a name="setup-connection-string"></a><span  class="short-header">接続文字列の設定</span>Windows Azure のストレージ接続文字列の設定</h2>
 
-The Azure Storage Client Library for .NET supports using a storage connection
-string to configure endpoints and credentials for accessing storage
-services. You can put your storage connection string in a configuration
-file, rather than hard-coding it in code:
+Windows Azure .NET 用ストレージ クライアント ライブラリでは、ストレージ接続文字列を
+使用して、ストレージ サービスにアクセスするためのエンドポイント
+および資格情報を構成できます。ストレージ接続文字列は、コード内にハードコーディングするのではなく、構成ファイルの中で指定します。
 
-- When using Azure Cloud Services, it is recommended you store your connection string using the Azure service configuration system (`*.csdef` and `*.cscfg` files).
-- When using Azure Web Sites, Azure Virtual Machines, or building .NET applications that are intentded to run outside of Azure, it is recommended you store your connection string using the .NET configuration system (e.g. `web.config` or `app.config` file).
+- Windows Azure のクラウド サービスを使用するときには、Windows Azure サービス構成システム ('*.csdef' ファイルおよび '*.cscfg' ファイル) を使用して接続文字列を格納することをお勧めします。
+- Windows Azure の Web サイトまたは Windows Azure の仮想マシンを使用する場合や、Windows Azure の外部で実行される .NET アプリケーションを作成する場合は、.NET 構成システム ('web.config' ファイル、'app.config' ファイルなど) を使用して接続文字列を格納することをお勧めします。
 
-In both cases, you can retrieve your connection string using the `CloudConfigurationManager.GetSetting` method, as shown later in this guide.
+いずれの場合でも、このガイドで後ほど説明する `CloudConfigurationManager.GetSetting` メソッドを使用して接続文字列を取得できます。
 
-### Configuring your connection string when using Cloud Services
+### クラウド サービスを使用する場合の接続文字列の構成
 
-The service configuration mechanism is unique to Azure Cloud Services
-projects and enables you to dynamically change configuration settings
-from the Azure Management Portal without redeploying your
-application.
+サービス構成メカニズムは、Windows Azure のクラウド サービスのプロジェクトに特有のものであり、これを使用すると、アプリケーションを再展開することなく Windows Azure の管理ポータルから構成設定を動的に変更できます。
 
-To configure your connection string in the Azure service
-configuration:
+Windows Azure サービス構成で接続文字列を構成するには:
 
-1.  Within the Solution Explorer of Visual Studio, in the **Roles** folder of your Azure Deployment Project, right-click your web role or worker role and click **Properties**.  
+1. Visual Studio のソリューション エクスプローラーで、Windows Azure 展開プロジェクトの **[ロール]** フォルダー内の Web ロールまたは Worker ロールを右クリックし、**[プロパティ]** をクリックします。
 
 	![Blob5](./media/storage-dotnet-how-to-use-queues-20/blob5.png)
 
-2.  Click the **Settings** tab and press the **Add Setting** button. 
+2. **[設定]** タブをクリックし、**[設定の追加]** をクリックします。
  
 	![Blob6](./media/storage-dotnet-how-to-use-queues-20/blob6.png)
 
-	A new **Setting1** entry will then show up in the settings grid.
+	新しい **[Setting1]** エントリが設定グリッドに表示されます。
 
-3.  In the **Type** drop-down of the new **Setting1** entry, choose **Connection String**.  
+3. 新しい **[Setting1]** エントリの **[種類]** ボックスの一覧で、**[接続文字列]** をクリックします。
 
 	![Blob7](./media/storage-dotnet-how-to-use-queues-20/blob7.png)
 
-4.  Click the **...** button at the right end of the **Setting1** entry. The **Storage Account Connection String** dialog will open.
+4. **[Setting1]** エントリの右端にある **[...]** をクリックします。**[ストレージ アカウント接続文字列]** ダイアログ ボックスが開きます。
 
-5.  Choose whether you want to target the storage emulator (the Azure storage simulated on your local machine) or an actual storage account in the cloud. The code in this guide works with either option. Enter the **Primary Access Key** value copied from the earlier step in this tutorial if you wish to store queue data in the    storage account we created earlier on Azure.   
+5. ストレージ エミュレーター (ローカル コンピューターでシミュレートされた Windows Azure のストレージ) をターゲットとするか、クラウド内の実際のストレージ アカウントをターゲットとするかを選択します。このガイドに記載されているコードは、どちらのオプションにも対応しています。以前に Windows Azure で作成したストレージ アカウントにキュー データを格納する場合は、このチュートリアルの前の手順からコピーした**プライマリ アクセス キー**の値を入力します。
 
 	![Blob8](./media/storage-dotnet-how-to-use-queues-20/blob8.png)
 
-6.  Change the entry **Name** from **Setting1** to a "friendlier" name like **StorageConnectionString**. You will reference this connection string later in the code in this guide.  
+6. エントリの **[名前]** を **Setting1** から **StorageConnectionString** などの "わかりやすい" 名前に変更します。この接続文字列は、このガイドの後半のコードで参照します。
 
 	![Blob9](./media/storage-dotnet-how-to-use-queues-20/blob9.png)
 	
-### Configuring your connection string using .NET configuration
+### .NET 構成を使用した接続文字列の構成
 
-If you are writing an application that is not an Azure cloud service, (see previous section), it is recommended you use the .NET configuration system (e.g. `web.config` or `app.config`).  This includes Azure Web Sites or Azure Virtual Machines, as well as applications designed to run outside of Azure.  You store the connection string using the `<appSettings>` element as follows:
+Windows Azure のクラウド サービスではないアプリケーション (前のセクションを参照) を記述する場合は、.NET 構成システム ('web.config'、'app.config' など) を使用することをお勧めします。これには、Windows Azure の Web サイトや Windows Azure の仮想マシンのほか、Windows Azure の外部で実行されるアプリケーションも含まれます。次のように、'<appSettings>' 要素を使用して接続文字列を格納します。
 
 	<configuration>
   		<appSettings>
@@ -89,202 +90,180 @@ If you are writing an application that is not an Azure cloud service, (see previ
   		</appSettings>
 	</configuration>
 
-Read [Configuring Connection Strings][] for more information on storage connection strings.
+ストレージ接続文字列の詳細については、「[接続文字列の構成方法][]」を参照してください。
 	
-You are now ready to perform the how-to tasks in this guide.
+これで、このガイドのハウツー タスクを実行する準備が整いました。
 
-<h2><a name="access"></a><span  class="short-header">Access programmatically</span>How to: Programmatically access queues using .NET</h2>
+<h2><a name="access"></a><span  class="short-header">プログラムでのアクセス</span>方法: .NET を使用してキューにプログラムでアクセスする</h2>
 
-<h3>Obtaining the assembly</h3>
-You can use NuGet to obtain the `Microsoft.WindowsAzure.Storage.dll` assembly. Right-click your project in **Solution Explorer** and choose **Manage NuGet Packages**.  Search online for "WindowsAzure.Storage" and click **Install** to install the Azure Storage package and dependencies.
+<h3>アセンブリの取得</h3>
+NuGet を使用して 'Microsoft.WindowsAzure.Storage.dll' アセンブリを取得できます。**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Windows Azure のストレージのパッケージと依存関係をインストールします。
 
-`Microsoft.WindowsAzure.Storage.dll` is also included in the Azure SDK for .NET, which can be downloaded from the <a href="http://www.windowsazure.com/en-us/develop/net/#">.NET Developer Center</a>. The assembly is installed to the `%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\<sdk-version>\ref\` directory.
+'Microsoft.WindowsAzure.Storage.dll' は、<a href="http://www.windowsazure.com/ja-jp/develop/net/#">.NET デベロッパー センター</a>からダウンロードできる Windows Azure SDK for .NET 2.0 にも含まれています。アセンブリは、'%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\v2.0\ref\' ディレクトリにインストールされます。
 
-<h3>Namespace declarations</h3>
-Add the following code namespace declarations to the top of any C\# file
-in which you wish to programmatically access Azure Storage:
+<h3>名前空間宣言</h3>
+プログラムを使用して Windows Azure のストレージにアクセスするすべての C\# ファイルの冒頭部分に、名前空間を宣言する次のコードを追加します。
 
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Auth;
 	using Microsoft.WindowsAzure.Storage.Queue;
 
-Make sure you reference the `Microsoft.WindowsAzure.Storage.dll` assembly.
+'Microsoft.WindowsAzure.Storage.dll' アセンブリを参照してください。
 
-<h3>Retrieving your connection string</h3>
-You can use the **CloudStorageAccount** type to represent 
-your Storage Account information. If you are using a Windows 
-Azure project template and/or have a reference to 
-Microsoft.WindowsAzure.CloudConfigurationManager, you 
-can you use the **CloudConfigurationManager** type
-to retrieve your storage connection string and storage account
-information from the Azure service configuration:
+<h3>接続文字列の取得</h3>
+**CloudStorageAccount** 型を使用してストレージ アカウント情報を表すことができます。Windows Azure プロジェクト 
+テンプレートを使用している場合や、
+Microsoft.WindowsAzure.CloudConfigurationManager への
+参照がある場合は、**CloudConfigurationManager** 型を
+使用して Windows Azure サービス構成からストレージ接続文字列と
+ストレージ アカウント情報を取得できます。
 
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-If you are creating an application with no reference to Microsoft.WindowsAzure.CloudConfigurationManager and your connection string is located in the `web.config` or `app.config` as show above, then you can use **ConfigurationManager** to retrieve the connection string.  You will need to add a reference to System.Configuration.dll to your project, and add another namespace declaration for it:
+作成しているアプリケーションに Microsoft.WindowsAzure.CloudConfigurationManager への参照が含まれておらず、接続文字列が web.config または app.config に格納されている場合は、**ConfigurationManager** を使用して接続文字列を取得できます。System.Configuration.dll への参照をプロジェクトに追加し、対応する名前空間宣言を追加する必要があります。
 
 	using System.Configuration;
 	...
 	CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
 		ConfigurationManager.ConnectionStrings["StorageConnectionString"].ConnectionString);
 
-<h3>ODataLib dependencies</h3>
-ODataLib dependencies in the Storage Client Library for .NET are resolved through the ODataLib (version 5.0.2) packages available through NuGet and not WCF Data Services.  The ODataLib libraries can be downloaded directly or referenced by your code project through NuGet.  The specific ODataLib packages are [OData], [Edm], and [Spatial].
+<h3>ODataLib 依存</h3>
+.NET 用ストレージ クライアント ライブラリの ODataLib 依存は、WCF Data Services ではなく、NuGet から入手できる ODataLib (バージョン 5.0.2) パッケージで解決されます。ODataLib ライブラリは、直接ダウンロードすることも、NuGet を使用してコード プロジェクトで参照することもできます。具体的な ODataLib パッケージは、[OData]、[Edm]、および [Spatial] です。
 
-<h2><a name="create-queue"></a><span  class="short-header">Create a queue</span>How to: Create a queue</h2>
+<h2><a name="create-queue"></a><span  class="short-header">キューを作成する</span>方法: キューを作成する</h2>
 
-A **CloudQueueClient** object lets you get reference objects for queues.
-The following code creates a **CloudQueueClient** object. All code in
-this guide uses a storage connection string stored in the Azure
-application's service configuration. There are also other ways to create
-a **CloudStorageAccount** object. See [CloudStorageAccount][]
-documentation for details.
+**CloudQueueClient** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。
+次のコードでは、**CloudQueueClient** オブジェクトを作成します。このガイドのすべてのコードでは、Windows Azure アプリケーションのサービス構成に格納されているストレージ接続文字列を使用します。**CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、[CloudStorageAccount][] のドキュメントを参照してください。
 
-    // Retrieve storage account from connection string
+    // 接続文字列からストレージ アカウントを取得します
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the queue client
+    // キュー クライアントを作成します
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-Use the **queueClient** object to get a reference to the queue you want
-to use. You can create the queue if it doesn't exist.
+**queueClient** オブジェクトを使用して、使用するキューへの参照を取得します。キューが存在しない場合は作成できます。
 
-    // Retrieve a reference to a queue
+    // キューへの参照を取得します
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
 
-    // Create the queue if it doesn't already exist
+    // キューが存在しない場合は作成します
     queue.CreateIfNotExists();
 
-<h2><a name="insert-message"> </a><span  class="short-header">Insert a message</span>How to: Insert a message into a queue</h2>
+<h2><a name="insert-message"> </a><span  class="short-header">メッセージを挿入する</span>方法: メッセージをキューに挿入する</h2>
 
-To insert a message into an existing queue, first create a new
-**CloudQueueMessage**. Next, call the **AddMessage** method. A
-**CloudQueueMessage** can be created from either a string (in UTF-8
-format) or a **byte** array. Here is code which creates a queue (if it
-doesn't exist) and inserts the message 'Hello, World':
+既存のキューにメッセージを挿入するには、最初に新しい 
+**CloudQueueMessage** を作成します。次に、**AddMessage** メソッドを呼び出します。A
+**CloudQueueMessage** は、文字列 (UTF-8 形式) または**バイト**配列から作成できます。次のコードでは、キューが存在しない場合は
+作成し、メッセージ 'Hello, World' を挿入します。
 
-    // Retrieve storage account from connection string.
+    // 接続文字列からストレージ アカウントを取得します。
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the queue client.
+    // キュー クライアントを作成します。
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-    // Retrieve a reference to a queue.
+    // キューへの参照を取得します。
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
 
-    // Create the queue if it doesn't already exist.
+    // キューが存在しない場合は作成します。
     queue.CreateIfNotExists();
 
-    // Create a message and add it to the queue.
+    // メッセージを作成して、キューに追加します。
     CloudQueueMessage message = new CloudQueueMessage("Hello, World");
     queue.AddMessage(message);
 
-<h2><a name="peek-message"></a><span  class="short-header">Peek at the next message</span>How to: Peek at the next message</h2>
+<h2><a name="peek-message"></a><span  class="short-header">次のメッセージのピーク</span>方法: 次のメッセージをピークにする</h2>
 
-You can peek at the message in the front of a queue without removing it
-from the queue by calling the **PeekMessage** method.
+**PeekMessage** メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。
 
-    // Retrieve storage account from connection string
+    // 接続文字列からストレージ アカウントを取得します
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the queue client
+    // キュー クライアントを作成します
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-    // Retrieve a reference to a queue
+    // キューへの参照を取得します
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
 
-    // Peek at the next message
+    // 次のメッセージをピークします
     CloudQueueMessage peekedMessage = queue.PeekMessage();
 
-	// Display message.
+	// 詳細を表示します。
 	Console.WriteLine(peekedMessage.AsString);
 
-<h2><a name="change-contents"></a><span  class="short-header">Change message contents</span>How to: Change the contents of a queued message</h2>
+<h2><a name="change-contents"></a><span  class="short-header">メッセージの内容を変更する</span>方法: キューに配置されたメッセージの内容を変更する</h2>
 
-You can change the contents of a message in-place in the queue. If the
-message represents a work task, you could use this feature to update the
-status of the work task. The following code updates the queue message
-with new contents, and sets the visibility timeout to extend another 60
-seconds. This saves the state of work associated with the message, and
-gives the client another minute to continue working on the message. You
-could use this technique to track multi-step workflows on queue
-messages, without having to start over from the beginning if a
-processing step fails due to hardware or software failure. Typically,
-you would keep a retry count as well, and if the message is retried more
-than *n* times, you would delete it. This protects against a message
-that triggers an application error each time it is processed.
+キュー内のメッセージの内容をインプレースで変更できます。メッセージが
+作業タスクを表している場合は、この機能を使用して、作業タスクの状態を
+更新できます。次のコードでは、キュー メッセージを
+新しい内容に更新し、表示タイムアウトを設定して、
+60 秒延長します。これにより、メッセージに関連付けられている作業の状態が保存され、クライアントにメッセージの操作を続行する時間が 1 分与えられます。この方法を使用すると、キュー メッセージに対する複数の手順から成る
+ワークフローを追跡でき、ハードウェアまたはソフトウェアの問題が
+原因で処理手順が失敗した場合に最初からやり直す必要がなくなります。通常は、
+さらに再試行回数を保持し、メッセージの再試行回数が *n* 回を超えた場合は
+メッセージを削除するようにします。こうすることで、処理するたびに
+アプリケーション エラーをトリガーするメッセージから保護されます。
 
-    // Retrieve storage account from connection string.
+    // 接続文字列からストレージ アカウントを取得します。
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the queue client.
+    // キュー クライアントを作成します。
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-    // Retrieve a reference to a queue.
+    // キューへの参照を取得します。
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
 
-	// Get the message from the queue and update the message contents.
+	// キューからメッセージを取得し、メッセージ内容を更新できるようにします。
     CloudQueueMessage message = queue.GetMessage();
     message.SetMessageContent("Updated contents.") ;
     queue.UpdateMessage(message, 
         TimeSpan.FromSeconds(0.0),  // Make it visible immediately.
         MessageUpdateFields.Content | MessageUpdateFields.Visibility);
 
-<h2><a name="get-message"></a><span  class="short-header">De-queue the next message</span>How to: De-queue the next message</h2>
+<h2><a name="get-message"></a><span  class="short-header">次のメッセージをデキューする</span>方法: 次のメッセージをデキューする</h2>
 
-Your code de-queues a message from a queue in two steps. When you call
-**GetMessage**, you get the next message in a queue. A message returned
-from **GetMessage** becomes invisible to any other code reading messages
-from this queue. By default, this message stays invisible for 30
-seconds. To finish removing the message from the queue, you must also
-call **DeleteMessage**. This two-step process of removing a message
-assures that if your code fails to process a message due to hardware or
-software failure, another instance of your code can get the same message
-and try again. Your code calls **DeleteMessage** right after the message
-has been processed.
+コードでは、2 つの手順でキューからメッセージをデキューします。**GetMessage** を呼び出すと、キュー内の次のメッセージを取得します。**GetMessage** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。既定では、このメッセージを参照できない状態は 30 秒間続きます。また、キューからのメッセージの削除を完了するには、**DeleteMessage** を呼び出す必要があります。このようにメッセージを 2 つの手順で削除することで、
+ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が
+失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度
+処理することができます。コードでは、メッセージが処理された直後に **DeleteMessage** を呼び出します。
 
-    // Retrieve storage account from connection string
+    // 接続文字列からストレージ アカウントを取得します
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the queue client
+    // キュー クライアントを作成します
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-    // Retrieve a reference to a queue
+    // キューへの参照を取得します
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
 
-    // Get the next message
+    // 次のメッセージを取得します
     CloudQueueMessage retrievedMessage = queue.GetMessage();
 
-    //Process the message in less than 30 seconds, and then delete the message
+    // 30 秒未満でメッセージを処理した後、メッセージを削除します
     queue.DeleteMessage(retrievedMessage);
 
-<h2><a name="advanced-get"></a><span  class="short-header">More de-queueing options</span>How to: Leverage additional options for de-queuing messages</h2>
+<h2><a name="advanced-get"></a><span  class="short-header">その他のデキュー オプション</span>方法: 追加オプションを利用してメッセージをデキューする</h2>
 
-There are two ways you can customize message retrieval from a queue.
-First, you can get a batch of messages (up to 32). Second, you can set a
-longer or shorter invisibility timeout, allowing your code more or less
-time to fully process each message. The following code example uses the
-**GetMessages** method to get 20 messages in one call. Then it processes
-each message using a **foreach** loop. It also sets the invisibility
-timeout to five minutes for each message. Note that the 5 minutes starts
-for all messages at the same time, so after 5 minutes have passed since
-the call to **GetMessages**, any messages which have not been deleted
-will become visible again.
+キューからのメッセージの取得をカスタマイズする方法は 2 つあります。
+1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。2 つ目の方法では、
+コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を
+長くまたは短くすることができます。次のコード例では、**GetMessages** メソッドを使用して、1 回の呼び出しで 20 個のメッセージを取得します。その後、**foreach** ループを使用して、各メッセージを処理します。また、各メッセージの
+非表示タイムアウトを 5 分に設定します。この 5 分の非表示期間は、すべてのメッセージに対して同時に開始します。そのため、**GetMessages** の呼び出しから 5 分が経過すると、削除されていないすべてのメッセージが再び表示されます。
 
-    // Retrieve storage account from connection string.
+    // 接続文字列からストレージ アカウントを取得します。
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the queue client.
+    // キュー クライアントを作成します。
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-    // Retrieve a reference to a queue.
+    // キューへの参照を取得します。
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
 
     foreach (CloudQueueMessage message in queue.GetMessages(20, TimeSpan.FromMinutes(5)))
@@ -293,97 +272,92 @@ will become visible again.
         queue.DeleteMessage(message);
     }
 
-<h2><a name="get-queue-length"></a><span  class="short-header">Get the queue length</span>How to: Get the queue length</h2>
+<h2><a name="get-queue-length"></a><span  class="short-header">キューの長さを取得する</span>方法: キューの長さを取得する</h2>
 
-You can get an estimate of the number of messages in a queue. The
-**FetchAttributes** method asks the Queue service to
-retrieve the queue attributes, including the message count. The **ApproximateMethodCount**
-property returns the last value retrieved by the
-**FetchAttributes** method, without calling the Queue service.
+キュー内のメッセージの概数を取得できます。**FetchAttributes** メソッドは、メッセージ数などのキューの属性を取得するようにキュー サービスに要求します。**ApproximateMethodCount** プロパティは、キュー サービスを呼び出さずに、**FetchAttributes** メソッドによって取得された最後の値を返します。
 
-    // Retrieve storage account from connection string.
+    // 接続文字列からストレージ アカウントを取得します。
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the queue client.
+    // キュー クライアントを作成します。
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-    // Retrieve a reference to a queue.
+    // キューへの参照を取得します。
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
 
-	// Fetch the queue attributes.
+	// キューの属性を取得します。
 	queue.FetchAttributes();
 
-    // Retrieve the cached approximate message count.
+    // キャッシュされているメッセージの概数を取得します。
     int? cachedMessageCount = queue.ApproximateMessageCount;
 
-	// Display number of messages.
+	// メッセージの数を表示します。
 	Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 
-<h2><a name="delete-queue"></a><span  class="short-header">Delete a queue</span>How to: Delete a queue</h2>
+<h2><a name="delete-queue"></a><span  class="short-header">キューを削除する</span>方法: キューを削除する</h2>
 
-To delete a queue and all the messages contained in it, call the
-**Delete** method on the queue object.
+キューおよびキューに格納されているすべてのメッセージを削除するには、キュー オブジェクトの **Delete** メソッドを呼び出します。
 
-    // Retrieve storage account from connection string.
+    // 接続文字列からストレージ アカウントを取得します。
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the queue client.
+    // キュー クライアントを作成します。
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-    // Retrieve a reference to a queue.
+    // キューへの参照を取得します。
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
 
-    // Delete the queue.
+    // キューを削除します。
     queue.Delete();
 
-<h2><a name="next-steps"></a>Next steps</h2>
+<h2><a name="next-steps"></a>次の手順</h2>
 
-Now that you've learned the basics of queue storage, follow these links
-to learn how to do more complex storage tasks.
+これで、キュー ストレージの基本を学習できました。さらに複雑な
+ストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
 <ul>
-<li>View the Queue service reference documentation for complete details about available APIs:
+<li>利用可能な API の詳細については、キュー サービスのリファレンス ドキュメントを参照してください。
   <ul>
-    <li><a href="http://msdn.microsoft.com/en-us/library/windowsazure/dn495001(v=azure.10).aspx">Storage Client Library for .NET reference</a>
+    <li><a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/wa_storage_api_ref_reference_home.aspx">.NET 用ストレージ クライアント ライブラリ リファレンス</a>
     </li>
-    <li><a href="http://msdn.microsoft.com/en-us/library/windowsazure/dd179355">REST API reference</a></li>
+    <li><a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179355">REST API リファレンス</a></li>
   </ul>
 </li>
-<li>Learn about more advanced tasks you can perform with Azure Storage at <a href="http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx">Storing and Accessing Data in Azure</a>.</li>
-<li>View more feature guides to learn about additional options for storing data in Azure.
+<li>Windows Azure のストレージを使用して実行できるさらに高度なタスクについては、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx">Windows Azure のデータの格納とアクセス</a>」を参照してください。</li>
+<li>Windows Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
   <ul>
-    <li>Use <a href="/en-us/develop/net/how-to-guides/table-services/">Table Storage</a> to store structured data.</li>
-    <li>Use <a href="/en-us/develop/net/how-to-guides/blob-storage/">Blob Storage</a> to store unstructured data.</li>
-    <li>Use <a href="/en-us/develop/net/how-to-guides/sql-database/">SQL Database</a> to store relational data.</li>
+    <li>構造化データの格納には、<a href="/ja-jp/develop/net/how-to-guides/table-services/">テーブル ストレージ</a>を使用します。</li>
+    <li>非構造化データの格納には、<a href="/ja-jp/develop/net/how-to-guides/blob-storage/">BLOB ストレージ</a>を使用します。</li>
+    <li>リレーショナル データの格納には、<a href="/ja-jp/develop/net/how-to-guides/sql-database/">SQL データベース</a>を使用します。</li>
   </ul>
 </li>
 </ul>
 
 
 
-  [Next Steps]: #next-steps
-  [What is Queue Storage]: #what-is
-  [Concepts]: #concepts
-  [Create an Azure Storage Account]: #create-account
-  [Setup an Azure Storage Connection String]: #setup-connection-string
-  [How to: Programmatically access queues using .NET]: #access
-  [How To: Create a Queue]: #create-queue
-  [How To: Insert a Message into a Queue]: #insert-message
-  [How To: Peek at the Next Message]: #peek-message
-  [How To: Change the Contents of a Queued Message]: #change-contents
-  [How To: Dequeue the Next Message]: #get-message
-  [How To: Leverage Additional Options for Dequeuing Messages]: #advanced-get
-  [How To: Get the Queue Length]: #get-queue-length
-  [How To: Delete a Queue]: #delete-queue
-  [Download and install the Azure SDK for .NET]: /en-us/develop/net/
-  [.NET client library reference]: http://msdn.microsoft.com/en-us/library/windowsazure/dn495001(v=azure.10).aspx
-  [Creating a Azure Project in Visual Studio]: http://msdn.microsoft.com/en-us/library/windowsazure/ee405487.aspx 
-  [CloudStorageAccount]: http://msdn.microsoft.com/en-us/library/microsoft.windowsazure.cloudstorageaccount_methods.aspx
-  [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
-  [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-  [Configuring Connection Strings]: http://msdn.microsoft.com/en-us/library/windowsazure/ee758697.aspx
+  [次の手順]: #next-steps
+  [キュー ストレージとは]: #what-is
+  [概念]: #concepts
+  [Windows Azure のストレージ アカウントの作成]: #create-account
+  [Windows Azure のストレージ接続文字列の設定]: #setup-connection-string
+  [方法: .NET を使用してキューにプログラムでアクセスする]: #access
+  [方法: キューを作成する]: #create-queue
+  [方法: メッセージをキューに挿入する]: #insert-message
+  [方法: 次のメッセージをピークする]: #peek-message
+  [方法: キューに配置されたメッセージの内容を変更する]: #change-contents
+  [方法: 次のメッセージをデキューする]: #get-message
+  [方法: 追加オプションを利用してメッセージをデキューする]: #advanced-get
+  [方法: キューの長さを取得する]: #get-queue-length
+  [方法: キューを削除する]: #delete-queue
+  [Windows Azure SDK for .NET をダウンロードしてインストールする]: /ja-jp/develop/net/
+  [Visual Studio で Windows Azure プロジェクトを作成する]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405487.aspx 
+  [CloudStorageAccount]: http://msdn.microsoft.com/ja-jp/library/microsoft.windowsazure.cloudstorageaccount_methods.aspx
+  [Windows Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+  [Windows Azure のストレージ チーム ブログ (このページは英語の場合があります)]: http://blogs.msdn.com/b/windowsazurestorage/
+  [接続文字列の構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758697.aspx
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
-  [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
+  [空間]: http://nuget.org/packages/System.Spatial/5.0.2
+
