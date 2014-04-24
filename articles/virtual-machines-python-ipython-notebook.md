@@ -1,81 +1,63 @@
-<properties linkid="develop-python-ipython-notebook" urlDisplayName="IPython Notebook" pageTitle="IPython Notebook - Azure tutorial" metaKeywords="" description="A tutorial that shows how to deploy the IPython Notebook on Azure, using Linux or Windows virtual machines (VMs)." metaCanonical="" services="virtual-machines" documentationCenter="Python" title="IPython Notebook on Azure" authors="" solutions="" manager="" editor="" />
+﻿<properties linkid="develop-python-ipython-notebook" urlDisplayName="IPython Notebook" pageTitle="IPython Notebook - Azure チュートリアル" metaKeywords="" description="Linux または Windows の仮想マシン (VM) を使用して Azure 上に IPython Notebook を展開する方法について説明するチュートリアルです。" metaCanonical="" services="virtual-machines" documentationCenter="Python" title="Azure での IPython Notebook" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-# IPython Notebook on Azure
+# Azure での IPython Notebook
 
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
-<p>The <a href="http://ipython.org">IPython project</a> provides a collection of tools for scientific computing that include powerful interactive shells, high-performance and easy to use parallel libraries and a web-based environment called the IPython Notebook. The Notebook provides a working environment for interactive computing that combines code execution with the creation of a live computational document. These notebook files can contain arbitrary text, mathematical formulas, input code, results, graphics, videos and any other kind of media that a modern web browser is capable of displaying.</p>
+<p><a href="http://ipython.org">IPython プロジェクト</a>には、科学技術計算用ツールのコレクションが用意されています。このコレクションには、強力な対話型のシェル、高いパフォーマンスを実現する使いやすい並列ライブラリ、および IPython Notebook と呼ばれる Web ベースの環境が含まれています。この Notebook よって、コードの実行とリアルタイムなコンピューティング ドキュメントの作成を統合した、対話型コンピューティング向けの作業環境が実現されます。作成されるノートブック ファイルには、任意のテキスト、数式、入力コード、結果、グラフィックス、ビデオ、その他の種類のメディアなど、最新の Web ブラウザーで表示できるデータを含めることができます。</p>
 </div>
-<div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkID=254535&amp;clcid=0x409" target="_blank" class="label">watch the tutorial</a> <a style="background-image: url('/media/devcenter/python/ipy-youtube2.png') !important;" href="http://go.microsoft.com/fwlink/?LinkID=254535&amp;clcid=0x409" target="_blank" class="dev-onpage-video"><span class="icon">Play Video</span></a> <span class="time">5:22</span></div>
+<div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkID=254535&amp;clcid=0x409" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/devcenter/python/ipy-youtube2.png') !important;" href="http://go.microsoft.com/fwlink/?LinkID=254535&amp;clcid=0x409" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">5:22</span></div>
 </div>
 
-Whether you're absolutely new to Python and want to learn it in a fun,
-interactive environment or do some serious parallel/technical computing, the
-IPython Notebook is a great choice. As an illustration of its capabilities, the
-following screenshot shows the IPython Notebook being used, in combination with
-the SciPy and matplotlib packages, to analyze the structure of a sound
-recording:
+Python を初めて利用し、対話形式の環境で楽しく Python を学習する場合でも、本格的な並列計算や技術計算をする場合でも、IPython Notebook は適切な選択です。機能を説明するために、次のスクリーンショットでは、IPython Notebook を SciPy および matplotlib パッケージと組み合わせて使用し、録音物の構造を分析する方法を示します。
 
-![Screenshot](./media/virtual-machines-python-ipython-notebook/ipy-notebook-spectral.png)
+![スクリーンショット](./media/virtual-machines-python-ipython-notebook/ipy-notebook-spectral.png)
 
-This document will show you how to deploy the IPython Notebook on Windows
-Azure, using Linux or Windows virtual machines (VMs).  By using the IPython
-Notebook on Azure, you can easily provide a web-accessible interface to
-scalable computational resources with all the power of Python and its many
-libraries.  Since all installation is done in the cloud, users can access these
-resources without the need for any local configuration beyond a modern web
-browser.
+このドキュメントでは、Linux または Windows の仮想マシンを使用して Windows Azure 上に IPython Notebook を展開する方法について説明します。Azure で IPython Notebook を使用すると、Web 経由でアクセスできるインターフェイスを拡張性の高いコンピューティング リソースに提供できます。これにより、Python とその多くのライブラリが持つ機能をすべて利用することができます。すべてのインストールはクラウド内で完了しているため、ユーザーは最新の Web ブラウザーでローカルに構成しなくても、これらのリソースにアクセスできます。
 
 [WACOM.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
 
-## Create and Configure a VM on Azure
+## Azure での VM の作成と構成
 
-The first step is to create a Virtual Machine (VM)  running on Azure.
-This VM is a complete operating system in the cloud and will be used to
-run the IPython Notebook. Azure is capable of running both Linux and Windows
-virtual machines, and we will cover the setup of IPython on both types of virtual machines.
+最初の手順は Azure で動作する仮想マシン (VM) を作成することです。
+この VM は、クラウド内の完全なオペレーティング システムであり、IPython Notebook を実行するために使用されます。Azure では Linux と Windows のどちらの仮想マシンも実行できます。また、これらの種類の仮想マシン上に IPython を設定することもできます。
 
 ### Linux VM
 
-Follow the instructions given [here][portal-vm-linux] to create a virtual machine of the *OpenSUSE* or *Ubuntu* distribution. This tutorial uses OpenSUSE 12.3 and Ubuntu Server 13.04. We'll assume the default user name *azureuser*.
+[ここ][portal-vm-linux]に記載されている手順に従って、*OpenSUSE* または *Ubuntu* ディストリビューションの仮想マシンを作成します。このチュートリアルでは、OpenSUSE 12.3 と Ubuntu Server 13.04. を使用します。既定のユーザー名は *azureuser* であると想定しています。
 
 ### Windows VM
 
-Follow the instructions given [here][portal-vm-windows] to create a virtual machine of the *Windows Server 2012 Datacenter* distribution. In this tutorial, we'll assume that the user name is *azureuser*.
+[ここ][portal-vm-windows]に記載されている手順に従って、*Windows Server 2012 Datacenter* ディストリビューションの仮想マシンを作成します。このチュートリアルでは、ユーザー名が *azureuser* であると想定しています。
 
-## Create an Endpoint for the IPython Notebook
+## IPython Notebook 用のエンドポイントの作成
 
-This step applies to both the Linux and Windows VM. Later on we will configure
-IPython to run its notebook server on port 9999. To make this port publicly
-available, we must create an endpoint in the Azure Management Portal. This
-endpoint opens up a port in the Azure firewall and maps the public port (HTTPS,
-443) to the private port on the VM (9999).
+この手順は Linux と Windows の両方の VM に適用されます。後で、IPython の Notebook サーバーがポート 9999 で実行するように IPython を構成します。このポートがパブリックに利用できるように、Azure 管理ポータルでエンドポイントを作成する必要があります。このエンドポイントは Azure ファイアウォールでポートを開き、パブリック ポート (HTTPS、443) を VM のプライベート ポート (9999) にマップします。
 
-To create an endpoint, go to the VM dashboard, click "Endpoints", then "Add
-Endpoint" and create a new endpoint (called `ipython_nb` in this example). Pick
-TCP for the protocol, 443 for the public port and 9999 for the private port:
+エンドポイントを作成するには、VM ダッシュボードに移動し、[エンドポイント]、[エンドポイントの追加] の順にクリックして、新しいエンドポイント (この例では `ipython_nb`) を作成します。プロトコルに
+TCP を選択し、パブリック ポートには 443、プライベート ポートには 9999 を指定します。
 
-![Screenshot](./media/virtual-machines-python-ipython-notebook/ipy-azure-linux-005.png)
+![スクリーンショット](./media/virtual-machines-python-ipython-notebook/ipy-azure-linux-005.png)
 
-After this step, the "Endpoints" Dashboard tab will look like this:
+この順が完了すると、ダッシュボードの [エンドポイント] タブが次のように表示されます。
 
-![Screenshot](./media/virtual-machines-python-ipython-notebook/ipy-azure-linux-006.png)
+![スクリーンショット](./media/virtual-machines-python-ipython-notebook/ipy-azure-linux-006.png)
 
-## Install Required Software on the VM
+## VM への必要なソフトウェアのインストール
 
-To run the IPython Notebook on our VM, we must first install IPython and
-its dependencies.
+VM で IPython Notebook を実行するには、最初に、IPython とその依存する
+ソフトウェアをインストールする必要があります。
 
 ### Linux (OpenSUSE)
 
-To install IPython and its dependencies, SSH into the Linux VM and carry out 
-the following steps.
+IPython とその依存するソフトウェアをインストールするには、最初に、
+SSH を使用して Linux VM に接続し、次の手順を実行します。
 
-Install [NumPy][numpy], [Matplotlib][matplotlib], [Tornado][tornado] and other IPython's dependencies by doing:
+次のコマンドを実行して、[NumPy][numpy]、[Matplotlib][matplotlib]、[Tornado][tornado]、および IPython が依存するその他のモジュールをインストールします。
 
     sudo zypper install python-matplotlib
     sudo zypper install python-tornado
@@ -83,10 +65,10 @@ Install [NumPy][numpy], [Matplotlib][matplotlib], [Tornado][tornado] and other I
 
 ### Linux (Ubuntu)
 
-To install IPython and its dependencies, SSH into the Linux VM and carry out 
-the following steps.
+IPython とその依存するソフトウェアをインストールするには、最初に、
+SSH を使用して Linux VM に接続し、次の手順を実行します。
 
-Install [NumPy][numpy], [Matplotlib][matplotlib], [Tornado][tornado] and other IPython's dependencies by doing:
+次のコマンドを実行して、[NumPy][numpy]、[Matplotlib][matplotlib]、[Tornado][tornado]、および IPython が依存するその他のモジュールをインストールします。
 
     sudo apt-get install python-matplotlib
     sudo apt-get install python-tornado
@@ -95,109 +77,96 @@ Install [NumPy][numpy], [Matplotlib][matplotlib], [Tornado][tornado] and other I
 
 ### Windows
 
-To install IPython and its dependencies on the Windows VM, Remote Desktop to connect to the VM. Then carry out the following steps, 
-using the Windows PowerShell to run all command line actions.
+IPython とその依存モジュールを Windows VM にインストールするには、リモート デスクトップから VM に接続します。その後で、Windows PowerShell を使用して
+次の手順を実行し、すべてのコマンド ラインのアクションを実行します。
 
-**Note**: In order to download anything using Internet Explorer, you'll need to change some security settings.  From **Server Manager**, click on **Local Server**, then on **IE Enhanced Security Configuration** and turn it off for administrators.  You can enable it again once you're done installing IPython.
+**注**: Internet Explorer を使用してダウンロードするには、セキュリティの設定を変更する必要があります。**サーバー マネージャー**で、**[ローカル サーバー]**、**[IE セキュリティ強化の構成]** の順にクリックし、Administrators に対して IE セキュリティ強化の構成を無効にします。IPython のインストールが完了したら、その設定を再度有効にできます。
 
-1.  Install Python 2.7.5 (32 bit) from [python.org](http://www.python.org/download). 
-    You will also need to add `C:\Python27` and `C:\Python27\Scripts` to your `PATH` 
-    environment variable.
+1.  [python.org](http://www.python.org/download) から Python 2.7.5 (32 ビット) をインストールします。
+    `C:\Python27` と `C:\Python27\Scripts` を `PATH` 環境変数に追加する必要もあります。
 
-1.  Install distribute by downloading the file **distribute_setup.py**
-    from [python-distribute.org](http://python-distribute.org/) and then running the
-    command:
+1.  [python-distribute.org](http://python-distribute.org/) からファイル **distribute_setup.py** をダウンロードし、次のコマンドを実行して、配布されたファイルをインストールします。
 
         python distribute_setup.py
 
-1.  Install [Tornado][tornado] and [PyZMQ][pyzmq] by running the commands:
+1.  次のコマンドを実行して、[Tornado][tornado] と [PyZMQ][pyzmq] をインストールします。
 
         easy_install tornado
         easy_install pyzmq
 
-1.  Download and install [NumPy][numpy] using the
-    `.exe` binary installer available on their web site.  As of this writing, the latest version is **numpy-1.7.1-win32-superpack-python2.7.exe**.
+1.  [NumPy][numpy] をダウンロードし、NumPy の Web サイトで入手できる `.exe` バイナリ インストーラーを使ってインストールします。この記事の執筆時点で最新バージョンは **numpy-1.7.1-win32-superpack-python2.7.exe** です。
 
-1.  Download and install [Matplotlib][matplotlib] using the
-    `.exe` binary installer available on their web site.  As of this writing, the latest version is **matplotlib-1.2.1.win32-py2.7.exe**.
+1.  [Matplotlib][matplotlib] をダウンロードし、Matplotlib の Web サイトで入手できる `.exe` バイナリ インストーラーを使ってインストールします。この記事の執筆時点で最新バージョンは **matplotlib-1.2.1.win32-py2.7.exe** です。
 
-1.  Download and install OpenSSL. You can find Windows versions of OpenSSL at [http://slproweb.com/products/Win32OpenSSL.html](http://slproweb.com/products/Win32OpenSSL.html).
+1.  OpenSSL をダウンロードしインストールします。Windows 版 OpenSSL は [http://slproweb.com/products/Win32OpenSSL.html](http://slproweb.com/products/Win32OpenSSL.html) から入手できます。
 
-	* If you install a **Light** version, you must also install the **Visual C++ 2008 Redistributable** (also available from this page.)
+	* **Light** 版をインストールする場合は、**Visual C++ 2008 再頒布可能パッケージ** (同じページから入手可能) も併せてインストールする必要があります。
 
-	* You will  need to add `C:\OpenSSL-Win32\bin` to your `PATH` environment variable.
+	* `PATH` 環境変数に `C:\OpenSSL-Win32\bin` を追加する必要があります。
 
-	> [WACOM.NOTE] When installing OpenSSL, use version 1.0.1g or higher as these include a fix for the Heartbleed security vulnerability.
+	> [WACOM.NOTE] OpenSSL をインストールする際は、ハートブリードのセキュリティ脆弱性の修正を含む、バージョン 1.0.1g 以降のバージョンを使用してください。
 
-1.  Install the IPython using the command:
+1.  次のコマンドを使用して IPython をインストールします。
 
         easy_install ipython
 
-1.  Open a port in Windows Firewall.  On Windows Server 2012, the firewall will block incoming connections by default.  To open port 9999, follow these steps:
+1.  Windows ファイアウォールでポートを開きます。Windows Server 2012 では、ファイアウォールにより、着信接続が既定でブロックされます。ポート 9999 を開くには、次の手順に従います。
 
-    - Start **Windows Firewall with Advanced Security** from the Start Screen.
+    - スタート画面から **[セキュリティが強化された Windows ファイアウォール]** を開きます。
 
-    - Click on **Inbound Rules** in the left panel.
+    - 左側のパネルで **[受信の規則]** をクリックします。
 
-	- Click on **New Rule...** in the Actions panel.
+	- [操作] パネルで **[新しい規則]** をクリックします。
 
-	- In the New Inbound Rule Wizard, select **Port**.
+	- 新規の受信の規則ウィザードで **[ポート]** を選択します。
 
-	- In the next screen, select **TCP** and enter **9999** in **Specific local ports**.
+	- 次の画面で、**[TCP]** を選択し、**[特定のローカル ポート]** に「**9999**」と入力します。
 
-	- Accept defaults, give the rule a name and click Finish.
+	- 既定値をそのまま使用し、規則の名前を指定して、[完了] をクリックします。
 
-### Configure the IPython Notebook
+### IPython Notebook の構成
 
-Next, we configure the IPython Notebook. The first step is to create a custom
-IPython configuration profile to encapsulate the configuration information:
+次に、IPython Notebook を構成します。最初の手順では、カスタムの IPython 構成プロファイルを作成して、構成情報をカプセル化します。
 
     ipython profile create nbserver
 
-Next we `cd` to the profile directory to create our SSL certificate and edit
-the profiles configuration file.
+次に、プロファイル ディレクトリに移動して (`cd` コマンドを使用)、SSL 証明書を作成し、プロファイルの構成ファイルを編集します。
 
-On Linux (OpenSUSE):
+Linux (OpenSUSE):
 
     cd ~/.config/ipython/profile_nbserver/
 
-On Linux (Ubuntu):
+Linux (Ubuntu):
 
     cd ~/.ipython/profile_nbserver/
 
-On Windows:
+Windows:
 
     cd \users\azureuser\.ipython\profile_nbserver
 
-On both platforms create the SSL certificate as follows:
+どちらのプラットフォームの場合も、次のようにして SSL 証明書を作成します。
 
     openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
 
-Note that since we are creating a self-signed SSL certificate, when connecting
-to the notebook your browser will give you a security warning.  For long-term
-production use, you will want to use a properly signed certificate associated
-with your organization.  Since certificate management is beyond the scope of
-this demo, we will stick to a self-signed certificate for now.
+ここでは自己署名 SSL 証明書を作成しているので、ノートブックに接続するときに、ブラウザーでセキュリティに関する警告が表示されます。長期間にわたって
+製品を使用するには、組織に関連付けられている適切に署名された証明書を
+使用する必要があります。証明書の管理はこのデモの範囲を越えているので、
+ここでは自己署名証明書を引き続き使用します。
 
-In addition to using a certificate, you must also provide a password to protect
-your notebook from unauthorized use.  For security reasons IPython uses
-encrypted passwords in its configuration file, so you'll need to encrypt your
-password first.  IPython provides a utility to do so; at a command prompt run:
+証明書を使用するだけでなく、許可されてない使用からノートブックを保護するために
+パスワードを指定する必要もあります。セキュリティ上の理由から、IPython は暗号化されたパスワードを構成ファイルで使用するため、最初にパスワードを暗号化する必要があります。IPython には暗号化のためのユーティリティが用意されています。コマンド プロンプトで次を実行してください。
 
     python -c "import IPython;print IPython.lib.passwd()"
 
-This will prompt you for a password and confirmation, and will then print the
-password as follows:
+このコマンドでは、パスワードとその確認が要求され、次のようにパスワードが出力されます。
 
     Enter password: 
     Verify password: 
     sha1:b86e933199ad:a02e9592e59723da722.. (elided the rest for security)
     
-Next, we will edit the profile's configuration file, which is the
-`ipython_notebook_config.py` file in the profile directory you are in.  This
-file has a number of fields and by default all are commented out.  You can open
-this file with any text editor of your liking, and you should ensure that it
-has at least the following content:
+次に、プロファイルの構成ファイルを編集します。このファイルは、現在のプロファイル ディレクトリにある `ipython_notebook_config.py` ファイルで、多くのフィールドを含んでおり、既定ではすべてのフィールドがコメント アウトされています。このファイルは、
+よく使用するテキスト エディターで開くことができます。少なくとも次の内容が
+含まれていることを確認してください。
 
     c = get_config()
     
@@ -225,113 +194,97 @@ has at least the following content:
     c.NotebookApp.port = 9999
     c.NotebookApp.open_browser = False
 
-### Run the IPython Notebook
+### IPython Notebook の実行
 
-At this point we are ready to start the IPython Notebook. To do this,
-navigate to the directory you want to store notebooks in and start
-the IPython Notebook server:
+この時点で、IPython Notebook を開始する準備が整っています。IPython Notebook を実行するには、
+ノートブックを保存するディレクトリに移動して、
+IPython Notebook サーバーを起動します。
 
     ipython notebook --profile=nbserver
 
-You should now be able to access your IPython Notebook at the address
-`https://[Your Chosen Name Here].cloudapp.net`.
+これで、アドレス `https://[選択した名前].cloudapp.net` で IPython Notebook にアクセスすることができます。
 
-When you first access your notebook, the login page asks for your password:
+ノートブックに初めてアクセスするとき、ログイン ページでパスワードが要求されます。
 
-![Screenshot](./media/virtual-machines-python-ipython-notebook/ipy-notebook-001.png)
+![スクリーンショット](./media/virtual-machines-python-ipython-notebook/ipy-notebook-001.png)
 
-And once you log in, you will see the "IPython Notebook Dashboard", which is
-the control center for all notebook operations.  From this page you can create
-new notebooks, open existing ones, etc:
+ログインすると、"IPython Notebook ダッシュボード" が表示されます。これは、ノートブックに関するすべての操作のコントロール センターとなります。このページから、新しいノートブックを作成する、
+既存のノートブックを開くなどの操作を実行できます。
 
-![Screenshot](./media/virtual-machines-python-ipython-notebook/ipy-notebook-002.png)
+![スクリーンショット](./media/virtual-machines-python-ipython-notebook/ipy-notebook-002.png)
 
-If you click on the "New Notebook" button, you will see an opening page as
-follows:
+[New Notebook] ボタンをクリックすると、次のようにページが
+開きます。
 
-![Screenshot](./media/virtual-machines-python-ipython-notebook/ipy-notebook-003.png)
+![スクリーンショット](./media/virtual-machines-python-ipython-notebook/ipy-notebook-003.png)
 
-The area marked with an `In []:` prompt is the input area, and here you can
-type any valid Python code and it will execute when you hit `Shift-Enter` or
-click on the "Play" icon (the right-pointing triangle in the toolbar).
+`In []:` プロンプトがある領域に適切な Python コードを入力します。`Shift + Enter` キーを押すか、[実行] アイコン (ツール バーにある右向き三角形) をクリックすると、ここに入力したコードが実行されます。
 
-Sinc we have configured the notebook to start with NumPy and matplotlib support
-automatically, you can even produce figures, for example:
+NumPy と matplotlib のサポートで自動的に開始されるようにノートブックを構成してあるので、次の例のように、図を作成できます。
 
-![Screenshot](./media/virtual-machines-python-ipython-notebook/ipy-notebook-004.png)
+![スクリーンショット](./media/virtual-machines-python-ipython-notebook/ipy-notebook-004.png)
 
-## A powerful paradigm: live computational documents with rich media
+## 強力なパラダイム: リッチ メディアを含んだリアルタイムなコンピューティング ドキュメント
 
-The notebook itself should feel very natural to anyone who has used Python and
-a word processor, because it is in some ways a mix of both: you can execute
-blocks of Python code, but you can also keep notes and other text by changing
-the style of a cell from "Code" to "Markdown" using the drop-down menu in the
-toolbar:
+ノートブック自体は、Python とワード プロセッサを使用したことがあるユーザーにとっては
+違和感のないドキュメントです。これは、Python とワード プロセッサの両方の特徴を
+持っているためです。ノートブックでは、Python コードのブロックを実行できます。
+また、ツール バーのドロップダウン メニューでセルの形式を [Code] から [Markdown] に
+変更して、メモなどのテキストを保存することもできます。
 
-![Screenshot](./media/virtual-machines-python-ipython-notebook/ipy-notebook-005.png)
+![スクリーンショット](./media/virtual-machines-python-ipython-notebook/ipy-notebook-005.png)
 
 
-But this is much more than a word processor, as the IPython notebook allows the
-mixing of computation and rich media (text, graphics, video and virtually
-anything a modern web browser can display). For example, you can mix
-explanatory videos with computation for educational purposes:
+IPython Notebook はワード プロセッサよりも優れています。IPython Notebook では、
+計算処理とリッチ メディア (テキスト、グラフィックス、ビデオなど、
+最新の Web ブラウザーで表示できるほとんどのデータ) を混在させることができます。たとえば、教育用に
+説明ビデオと計算処理を混在させることができます。
 
-![Screenshot](./media/virtual-machines-python-ipython-notebook/ipy-notebook-006.png)
+![スクリーンショット](./media/virtual-machines-python-ipython-notebook/ipy-notebook-006.png)
 
-or embed external web sites that remain live and usable, inside of a notebook
-file:
+また、ノートブック ファイル内に外部の Web サイトを埋め込んで、リアルタイムに
+表示し利用することができます。
 
-![Screenshot](./media/virtual-machines-python-ipython-notebook/ipy-notebook-007.png)
+![スクリーンショット](./media/virtual-machines-python-ipython-notebook/ipy-notebook-007.png)
 
-And with the power of Python's many excellent libraries for scientific and
-technical computing, a simple calculation can be performed with the same ease
-than a complex network analysis, all in one environment:
+Python に関連する多数の優れた科学技術計算用ライブラリを使用することで、
+1 つの環境で、複雑なネットワーク分析も単純な計算も同じように簡単に
+実行することができます。
 
-![Screenshot](./media/virtual-machines-python-ipython-notebook/ipy-notebook-008.png)
+![スクリーンショット](./media/virtual-machines-python-ipython-notebook/ipy-notebook-008.png)
 
-This paradigm of mixing the power of the modern web with live computation
-offers many possibilities, and is ideally suited for the cloud; the Notebook
-can be used:
+最新の Web の機能とリアルタイムな計算処理を混在させるというパラダイムは、
+多くの可能性を示すものです。このパラダイムは、クラウドに適した理想的な
+パラダイムです。Notebook の用途には次のようなものがあります。
 
-* as a computational scratchpad to record exploratory work on a problem,
+* 問題に対する調査作業を記録するためのコンピューティング スクラッチパッドとして使用。
 
-* to share results with colleagues, either in 'live' computational form or in
-  hardcopy formats (HTML, PDF),
+* "リアルタイムな" コンピューティング フォームまたはハードコピーの形式 (HTML や PDF) で、同僚と作業結果を共有するために使用。
 
-* to distribute and present live teaching materials that involve computation,
-  so students can immediately experiment with the real code, modify it and
-  re-execute it interactively,
+* 計算処理を含んだライブ教材の配布や提示のために使用。これにより、生徒は実際のコードの試行、コードの変更、対話形式によるコードの再実行をすぐに行うことができます。
 
-* to provide "executable papers" that present the results of research in a way
-  that can be immediately reproduced, validated and extended by others,
+* 直ちに再現したり、検証したり、他のユーザーが拡張したりできる方法で調査結果を示す "実行可能な用紙" を提供するために使用。
 
-* as a platform for collaborative computing: multiple users can log into the
-  same notebook server to share a live computational session,
+* コラボレーション コンピューティング用のプラットフォームとして使用。複数のユーザーが同じ Notebook サーバーにログインして、ライブのコンピューティング セッションを共有できます。
 
-* and more...
+* その他にも用途はあります。
 
-If you go to the IPython source code repository, you will find an entire
-directory with [notebook
-examples](https://github.com/ipython/ipython/tree/master/examples/notebooks)
-which you can download and then experiment with on your own Azure IPython VM.
-Simply download the `.ipynb` files from the site and upload them onto the
-dashboard of your notebook Azure VM (or download them directly into the VM).
+IPython のソース コード リポジトリにアクセスすると、[ノートブックのサンプル](https://github.com/ipython/ipython/tree/master/examples/notebooks)が保存されているディレクトリ全体を確認できます。これらのサンプルをダウンロードして、ユーザー独自の Azure IPython VM で試用することができます。
+このサイトから `.ipynb` ファイルをダウンロードし、それらのファイルをユーザーのノートブックに関する Azure VM のダッシュボードにアップロードするだけです (または VM に直接ダウンロードします)。
 
-## Conclusion
+## まとめ
 
-The IPython Notebook provides a powerful interface for accessing interactively
-the power of the Python ecosystem on Azure.  It covers a wide range of
-usage cases including simple exploration and learning Python, data analysis and
-visualization, simulation and parallel computing. The resulting Notebook
-documents contain a complete record of the computations that are performed and
-can be shared with other IPython users.  The IPython Notebook can be used as a
-local application, but it is ideally suited for cloud deployments on Azure
+IPython Notebook には、Azure 上で Python エコシステムの機能に対話的にアクセスするための強力なインターフェイスが用意されています。このインターフェイスは
+幅広い用途 (簡単な調査、Python の学習、データの分析と表示、シミュレーション、
+並列コンピューティングなど) に対応しています。作成される Notebook
+のドキュメントには実行された計算処理の完全な記録が含まれており、このドキュメントは
+他の IPython ユーザーと共有できます。IPython Notebook はローカル アプリケーションとして使用できますが、Azure でのクラウドの展開に最適です。
 
-The core features of IPython are also available inside Visual Studio via the 
-[Python Tools for Visual Studio](http://pytools.codeplex.com) (PTVS). PTVS is a free and open-source plug-in 
-from Microsoft that turns Visual Studio into an advanced Python development 
-environment that includes an advanced editor with IntelliSense, debugging, 
-profiling and parallel computing integration.
+IPython の主要機能は、[Python Tools for Visual Studio](http://pytools.codeplex.com)
+(PTVS) を介して Visual Studio 内部で使用することもできます。PTVS は、Microsoft が提供する無料のオープン ソース プラグインです。
+このプラグインによって、Visual Studio を Python の高度な開発環境として利用する
+ことができます。この開発環境には、IntelliSense を備えた高度なエディター、
+デバッグ、プロファイル、並列コンピューティング統合の機能が含まれています。
 
 
 
@@ -340,5 +293,6 @@ profiling and parallel computing integration.
 [NumPy]:        http://www.numpy.org/               "NumPy"
 [Matplotlib]:   http://matplotlib.sourceforge.net/  "Matplotlib"
 
-[portal-vm-windows]: /en-us/manage/windows/tutorials/virtual-machine-from-gallery/
-[portal-vm-linux]: /en-us/manage/linux/tutorials/virtual-machine-from-gallery/
+[portal-vm-windows]: /ja-jp/manage/windows/tutorials/virtual-machine-from-gallery/
+[portal-vm-linux]: /ja-jp/manage/linux/tutorials/virtual-machine-from-gallery/
+
