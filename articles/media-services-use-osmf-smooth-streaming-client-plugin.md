@@ -1,59 +1,59 @@
-<properties linkid="develop-media-services-tutorials-smooth-streaming-plugin-for-open-source-media-framework" urlDisplayName="Smooth Streaming Plugin" pageTitle="Smooth Streaming Plugin for the Open Source Media Framework" metaKeywords="" description="Learn how to use the Azure Media Services Smooth Streaming plugin for the Adobe Open Source Media Framework." metaCanonical="" services="media-services" documentationCenter="" title="How to Use the Microsoft Smooth Streaming Plugin for the Adobe Open Source Media Framework" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-media-services-tutorials-smooth-streaming-plugin-for-open-source-media-framework" urlDisplayName="スムーズ ストリーミング プラグイン" pageTitle="Open Source Media Framework 用スムーズ ストリーミング プラグイン" metaKeywords="" description="Azure メディア サービス Adobe Open Source Media Framework 用スムーズ ストリーミング プラグインを使用する方法について説明します。" metaCanonical="" services="media-services" documentationCenter="" title="Adobe Open Source Media Framework 用 Microsoft スムーズ ストリーミング プラグインを使用する方法" authors="" solutions="" manager="" editor="" />
 
 
 
-# How to Use the Microsoft Smooth Streaming Plugin for the Adobe Open Source Media Framework #
+# Adobe Open Source Media Framework 用 Microsoft スムーズ ストリーミング プラグインを使用する方法#
 
-##Overview ##
-The Microsoft Smooth Streaming plugin for Open Source Media Framework 2.0 (SS for OSMF) extends the default capabilities of OSMF and adds Microsoft Smooth Streaming content playback to new and existing OSMF players. The plugin also adds Smooth Streaming playback capabilities to Strobe Media Playback (SMP).
+##概要##
+Open Source Media Framework 2.0 用 Microsoft スムーズ ストリーミング プラグイン (OSMF 用 SS) は、OSMF の既定の機能を拡張し、新規または既存の OSMF プレーヤーに Microsoft スムーズ ストリーミング コンテンツ再生機能を追加します。また、このプラグインは、Strobe Media Playback (SMP) にもスムーズ ストリーミング再生機能を追加します。
 
-SS for OSMF includes two versions of plugin:
+OSMF 用 SS には、次に示す 2 つのバージョンのプラグインが含まれています。
 
-- Static Smooth Streaming plugin for OSMF (.swc)
+- OSMF 用 Static スムーズ ストリーミング プラグイン (.swc)
 
-- Dynamic Smooth Streaming plugin for OSMF (.swf)
+- OSMF 用 Dynamic スムーズ ストリーミング プラグイン (.swf)
 
-This document assumes that the reader has a general working knowledge of OSMF and OSMF plug-ins. For more information about OSMF, please see the documentation on the [official OSMF site](http://osmf.org/).
+このドキュメントでは、OSMF および OSMF プラグインに関する一般的な実務知識を持つ読者を想定しています。OSMF の詳細については、[OSMF の公式サイト](http://osmf.org/)にあるドキュメントを参照してください。
 
-###Smooth Streaming plugin for OSMF 2.0
+###OSMF 2.0 用スムーズ ストリーミング プラグイン。
 
-The plugin supports loading and playback of on-demand Smooth Streaming content with the following features:
+このプラグインは、オンデマンド スムーズ ストリーミング コンテンツの読み込みおよび再生を次の機能でサポートしています。
 
-- On-demand Smooth Streaming playback (Play, Pause, Seek, Stop)
-- Live Smooth Streaming playback (Play)
-- Live DVR functions (Pause, Seek, DVR Playback, Go-to-Live)
-- Support for video codecs - H.264
-- Support for Audio codecs - AAC
-- Multiple audio language switching with OSMF built-in APIs
-- Max playback quality selection with OSMF built-in APIs
-- Sidecar closed captions with OSMF captions plugin
-- Adobe&reg; Flash&reg; Player 10.2 or higher.
-- This version only supports OSMF 2.0.
+- オンデマンド スムーズ ストリーミング再生 (再生、一時停止、シーク、停止)
+- ライブ スムーズ ストリーミング再生 (再生)
+- ライブ DVR 機能 (一時停止、シーク、DVR 再生、Go-to-Live)
+- ビデオ コーデックのサポート - H.264
+- オーディオ コーデックのサポート - AAC
+- OSMF ビルトイン API による複数オーディオ言語切り替え
+- OSMF ビルトイン API による再生時の最高画質選択
+- OSMF キャプション プラグインによるサイドカー クローズド キャプション
+- Adobe&reg; Flash&reg; Player 10.2 以上
+- このバージョンでは OSMF 2.0 のみをサポート
 
-The following are unsupported features:
+次の機能はサポートされません。
 
-- VC-1 and WMA codec
-- Content protection (PlayReady)
-- Text and Sparse Tracks
-- Trickplay (slow motion, fast-forward, and rewind)
+- VC-1 および WMA コーデック
+- コンテンツ保護 (PlayReady)
+- テキスト トラックとスパース トラック
+- Trickplay (スロー モーション、早送り、巻き戻し)
 
-The following is a list of known issues:
+既知の問題の一覧を次に示します。
 
-- Playback of Smooth Streaming content with 48KHz audio tracks have issues. Flash runtime have a known issue for rendering 48KHz audio content. Because of this issue, Smooth Streaming content encoded with 48Khz settings might not work as expected. Please see: [Using Flash Player](http://forums.adobe.com/message/4483498#4483498) and [Adobe Flash Player 11.3  -  Bug 3210964](https://bugbase.adobe.com/index.cfm?event=bug&id=3210964) for more info.
-- Multiple Smooth Streaming content playback on single page might cause issues. This is a known issue with OSMF.
-- Playback of Stage video might cause problems and no video on some machines. As a workaround you can disable hardware acceleration or Stage video.
+- 48 KHz オーディオ トラックが含まれる スムーズ ストリーミング コンテンツの再生に問題があります。Flash ランタイムには、48 KHz オーディオ コンテンツのレンダリングに関する問題があります。この問題のため、48 Khz 設定でエンコードされたスムーズ ストリーミング コンテンツが正しく動作しないことがあります。詳細については、「[Using Flash Player (Flash Player の使用)](http://forums.adobe.com/message/4483498#4483498)」および「[Adobe Flash Player 11.3 -  Bug 3210964 (Adobe Flash Player 11.3 - バグ 3210964)](https://bugbase.adobe.com/index.cfm?event=bug&id=3210964)」を参照してください。
+- 単一ページで複数のスムーズ ストリーミング コンテンツを再生すると、問題が発生することがあります。これは OSMF に関する既知の問題です。
+- Stage Video を再生すると、問題が発生することがあります。一部のコンピューターではビデオをまったく再生できないこともあります。回避策として、ハードウェア アクセラレータまたは Stage Video を無効にすることができます。
 
-## Loading the Plugin
-OSMF plugins can be loaded statically (at compile time) or dynamically (at run-time). The Smooth Streaming plugin for OSMF download includes both dynamic and static versions.
+##プラグインの読み込み
+OSMF プラグインは、静的 (コンパイル時) または動的 (実行時) に読み込むことができます。OSMF 用スムーズ ストリーミング プラグインのダウンロードには、静的バージョンと動的バージョンの両方が含まれています。
 
-- Static loading: To load statically, a static library (SWC) file is required. Static plugins are added as a reference to the projects and merge inside the final output file at the compile time.
+- 静的読み込み: 静的に読み込むには、静的ライブラリ (SWC) ファイルが必要です。静的プラグインは参照としてプロジェクトに追加され、コンパイル時に最終的な出力ファイル内部でマージされます。
 
-- Dynamic loading: To load dynamically, a precompiled (SWF) file is required. Dynamic plugins are loaded in the runtime and not included in the project output. (Compiled output) Dynamic plugins can be loaded using HTTP and FILE protocols.
+- 動的読み込み: 動的に読み込むには、プリコンパイル済みファイル (SWF) ファイルが必要です。動的プラグインはランタイムに読み込まれ、プロジェクト出力 (コンパイル済み出力) には含まれません。動的プラグインは HTTP および FILE プロトコルを使用して読み込むことができます。
 
-For more information on static and dynamic loading, see the official [OSMF plugin page](http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf).
+静的読み込みと動的読み込みの詳細については、[OSMF 公式サイトのプラグインに関するページ](http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf)を参照してください。
 
-###SS for OSMF Static Loading
-The code snippet below shows how to load the SS plugin for OSMF statically and play a basic video using OSMF MediaFactory class. Before including the SS for OSMF code, please ensure that the project reference includes the "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc" static plugin.
+###OSMF 用 SS の静的読み込み
+次のコード スニペットは、OSMF 用 SS プラグインを静的に読み込み、OSMF MediaFactory クラスを使用して基本的なビデオを再生する方法を示しています。OSMF 用 SS をコードに含める前に、プロジェクト参照に静的プラグイン "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc" が含まれていることを確認してください。
 
 <pre><code>
 package 
@@ -188,9 +188,9 @@ package
 </code></pre>
 
 
-###SS for OSMF Dynamic Loading
+###OSMF 用 SS の動的読み込み
 
-The code snippet below shows how to load the SS plugin for OSMF dynamically and play a basic video using the OSMF MediaFactory class. Before including the SS for OSMF code, copy the "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" dynamic plugin to the project folder if you want to load using FILE protocol, or copy under a web server for HTTP load. There is no need to include "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc" in the project references.
+次のコード スニペットは、OSMF 用 SS プラグインを動的に読み込み、OSMF MediaFactory クラスを使用して基本的なビデオを再生する方法を示しています。OSMF 用 SS をコードに含める前に、動的プラグイン "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" をプロジェクト フォルダーにコピー (FILE プロトコルを使用して読み込む場合) するか、Web サーバーにコピー (HTTP プロトコルを使用して読み込む場合) してください。プロジェクト参照に "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc" を含める必要はありません。
 
 <pre><code>
 package 
@@ -326,15 +326,14 @@ package
 }
 </code></pre>
 
-##Strobe Media  Playback with the SS ODMF Dynamic Plugin
-The Smooth Streaming for OSMF dynamic plugin is compatible with [Strobe Media Playback (SMP)](http://osmf.org/strobe_mediaplayback.html). You can use the SS for OSMF plugin to add Smooth Streaming content playback to SMP. To do this, copy "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" under a web server for HTTP load using the following steps:
+##Strobe Media Playback と SS ODMF 動的プラグイン
+OSMF 用スムーズ ストリーミング動的プラグインには、[Strobe Media Playback (SMP)](http://osmf.org/strobe_mediaplayback.html) との互換性があります。OSMF 用 SS プラグインを使用すると、スムーズ ストリーミング コンテンツ再生機能を SMP に追加することができます。これには、"MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" を Web サーバーにコピーし、次に示す手順を使用して HTTP 読み込みを行ってください。
 
-1.	Browse the [Strobe Media Playback setup page](http://osmf.org/dev/2.0gm/setup.html). 
-2.	Set the src to a Smooth Streaming source, (e.g. http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
-3.	Make the desired configuration changes and click Preview and Update.
+1.	[Strobe Media Playback セットアップ ページ](http://osmf.org/dev/2.0gm/setup.html)に移動します。
+2.	[src] をスムーズ ストリーミング ソース (「http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest」など) に設定します。	必要な構成変更を行い、[Preview and Update] をクリックします。
  
-	**Note** Your content web server needs a valid crossdomain.xml. 
-4.	Copy and paste the code to a simple HTML page using your favorite text editor, such as in the following example:
+	**注**: コンテンツ Web サーバーには有効な crossdomain.xml が必要です。
+4.	コードをコピーし、好みのテキスト エディターで作成した HTML ページに、次の例のようにコードを貼り付けます。
 
 
 
@@ -361,7 +360,7 @@ The Smooth Streaming for OSMF dynamic plugin is compatible with [Strobe Media Pl
 
 
 
-5. Add Smooth Streaming OSMF plugin to the embed code and save.
+5. OSMF 用スムーズ ストリーミング プラグインを埋め込みコードに追加して保存します。
 
 		<html>
 		<object width="920" height="640"> 
@@ -383,7 +382,8 @@ The Smooth Streaming for OSMF dynamic plugin is compatible with [Strobe Media Pl
 		</html>
 
 
-6. 	Save your HTML page and publish to a web server. Browse to the published web page using your favorite Flash&reg; Player enabled Internet browser (Internet Explorer, Chrome, Firefox, so on).
-7. 	Enjoy Smooth Streaming content inside Adobe&reg; Flash&reg; Player.
+6. 	HTML ページを保存して、Web サーバーに発行します。Flash&reg; Player 対応の好みのインターネット ブラウザー (Internet Explorer、Chrome、Firefox など) を使用して、発行済みの Web ページに移動します。
+7. 	Adobe&reg; Flash&reg; Player でスムーズ ストリーミング コンテンツをお楽しみください。
 
-For more information on general OSMF development, please see the official [OSMF development page](http://osmf.org/resources.html).
+全般的な OSMF 開発の詳細については、[OSMF 公式サイトの開発に関するページ](http://osmf.org/resources.html)を参照してください。
+

@@ -1,82 +1,84 @@
-<properties title="How to use the queue service (PHP) - Azure feature guide" pageTitle="How to use the queue service (PHP) | Microsoft Azure" metaKeywords="Azure Queue Service messaging PHP" description="Learn how to use the Azure Queue service to create and delete queues, and insert, get, and delete messages. Samples written in PHP." documentationCenter="PHP" services="storage" authors="" />
+<properties title="キュー サービスの使用方法 (PHP) - Azure の機能ガイド" pageTitle="キュー サービスの使用方法 (PHP) | Microsoft Azure" metaKeywords="Azure キュー サービス メッセージング PHP" description="Azure キュー サービスを使用して、キューを作成および削除する方法、メッセージを挿入、取得、削除する方法について説明します。コード サンプルは PHP で記述されています。" documentationCenter="PHP" services="storage" authors="" />
 
-# How to use the Queue service from PHP
+# PHP からキュー サービスを使用する方法
 
-This guide will show you how to perform common scenarios using the Azure Queue service. The samples are written using classes from the Windows SDK for PHP. The scenarios covered include **inserting**, **peeking**, **getting**, and **deleting** queue messages, as well as **creating and deleting queues**. For more information on queues, see the [Next Steps](#NextSteps) section.
+このガイドでは、Azure キュー サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Windows SDK for PHP のクラスを利用して記述されています。キュー メッセージの**挿入**、**ピーク**、
+**取得**、および**削除**と、**キューの作成および削除**の各シナリオに
+ついて説明します。キューの詳細については、「[次のステップ](#NextSteps)」を参照してください。
 
-##Table of contents
+##目次
 
-* [What is Queue Storage](#what-is)
-* [Concepts](#concepts)
-* [Create an Azure storage account](#create-account)
-* [Create a PHP application](#create-app)
-* [Configure your application to the Queue service](#configure-app)
-* [Setup an Azure Storage connection](#connection-string)
-* [How to: Create a queue](#create-queue)
-* [How to: Add a message to a queue](#add-message)
-* [How to: Peek at the next message](#peek-message)
-* [How to: De-queue the next message](#dequeue-message)
-* [How to: Change the contents of a queued message](#change-message)
-* [Additional options for de-queuing messages](#additional-options)
-* [How to: Get queue length](#get-queue-length)
-* [How to: Delete a queue](#delete-queue)
-* [Next steps](#next-steps)
+* [キュー ストレージとは](#what-is)
+* [概念](#concepts)
+* [Azure のストレージ アカウントの作成](#create-account)
+* [PHP アプリケーションの作成](#create-app)
+* [キュー サービスにアクセスするようにアプリケーションを構成する](#configure-app)
+* [Azure のストレージ接続文字列の設定](#connection-string)
+* [方法: キューを作成する](#create-queue)
+* [方法: メッセージをキューに追加する](#add-message)
+* [方法: 次のメッセージをピークする](#peek-message)
+* [方法: 次のメッセージをデキューする](#dequeue-message)
+* [方法: キューに配置されたメッセージの内容を変更する](#change-message)
+* [メッセージのデキュー用の追加オプション](#additional-options)
+* [方法: キューの長さを取得する](#get-queue-length)
+* [方法: キューを削除する](#delete-queue)
+* [次のステップ](#next-steps)
 
 [WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
-<h2><a id="create-account"></a>Create an Azure storage account</h2>
+<h2><a id="create-account"></a>Azure のストレージ アカウントの作成</h2>
 
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-<h2><a id="create-app"></a>Create a PHP application</h2>
+<h2><a id="create-app"></a>PHP アプリケーションの作成</h2>
 
-The only requirement for creating a PHP application that accesses the Azure Queue service is the referencing of classes from the Azure SDK for PHP from within your code. You can use any development tools to create your application, including Notepad.
+Azure キュー サービスにアクセスする PHP アプリケーションを作成するための要件は、コード内から Azure SDK for PHP のクラスを参照することのみです。アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。
 
-In this guide, you will use Queue service features which can be called within a PHP application locally, or in code running within an Azure web role, worker role, or web site.
+このガイドで使用するキュー サービス機能は、PHP アプリケーション内でローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト上で実行されるコード内で呼び出すこともできます。
 
-<h2><a id="GetClientLibrary"></a>Get the Azure Client Libraries</h2>
+<h2><a id="GetClientLibrary"></a>Azure クライアント ライブラリの入手</h2>
 
 [WACOM.INCLUDE [get-client-libraries](../includes/get-client-libraries.md)]
 
-<h2><a id="configure-app"></a>Configure your application to access the Queue service</h2>
+<h2><a id="configure-app"></a>キュー サービスにアクセスするようにアプリケーションを構成する</h2>
 
-To use the Azure Queue service APIs, you need to:
+Azure キュー サービス API を使用するには、次の要件があります。
 
-1. Reference the autoloader file using the [require_once][require_once] statement, and
-2. Reference any classes you might use.
+1. [require_once][require_once] ステートメントを使用してオートローダー ファイルを参照する
+2. 使用する可能性のあるクラスを参照する
 
-The following example shows how to include the autoloader file and reference the **ServicesBuilder** class.
+次の例では、オートローダー ファイルをインクルードし、**ServicesBuilder** クラスを参照する方法を示しています。
 
 > [WACOM.NOTE]
-> This example (and other examples in this article) assume you have installed the PHP Client Libraries for Azure via Composer. If you installed the libraries manually or as a PEAR package, you will need to reference the `WindowsAzure.php` autoloader file.
+> この例 (およびこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされているとします。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、`WindowsAzure.php` オートローダー ファイルを参照する必要があります。
 
 	require_once 'vendor\autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
 
 
-In the examples below, the `require_once` statement will be shown always, but only the classes necessary for the example to execute will be referenced.
+この後のコード例では、`require_once` ステートメントが常に記述されていますが、コード例の実行に必要なクラスのみ参照されます。
 
-<h2><a id="connection-string"></a>Setup an Azure storage connection</h2>
+<h2><a id="connection-string"></a>Azure のストレージ接続文字列の設定</h2>
 
-To instantiate an Azure Queue service client you must first have a valid connection string. The format for the queue service connection string is:
+Azure キュー サービス クライアントをインスタンス化するには、まず有効な接続文字列が必要です。キュー サービスの接続文字列の形式は次のとおりです。
 
-For accessing a live service:
+ライブ サービスにアクセスする場合: 
 
 	DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]
 
-For accessing the emulator storage:
+エミュレーター ストレージにアクセスする場合: 
 
 	UseDevelopmentStorage=true
 
 
-To create any Azure service client you need to use the **ServicesBuilder** class. You can:
+いずれの Azure サービス クライアントを作成するにも、**ServicesBuilder** クラスを使用する必要があります。そのための方法は次のとおりです。
 
-* pass the connection string directly to it or
-* use the **CloudConfigurationManager (CCM)** to check multiple external sources for the connection string:
-	* by default it comes with support for one external source - environmental variables
-	* you can add new sources by extending the **ConnectionStringSource** class
+* 接続文字列を直接渡す
+* **CloudConfigurationManager (CCM)** を使用して複数の外部ソースに対して接続文字列を確認する
+	* 既定では 1 つの外部ソース (環境変数) のみサポートされています。
+	* **ConnectionStringSource** クラスを継承して新しいソースを追加できます。
 
-For the examples outlined here, the connection string will be passed directly.
+ここで概説している例では、接続文字列を直接渡します。
 
 	require_once 'vendor\autoload.php';
 
@@ -85,9 +87,9 @@ For the examples outlined here, the connection string will be passed directly.
 	$queueRestProxy = ServicesBuilder::getInstance()->createQueueService($connectionString);
 
 
-<h2><a id="create-queue"></a>How to: Create a queue</h2>
+<h2><a id="create-queue"></a>方法: キューを作成する</h2>
 
-A **QueueRestProxy** object lets you create a queue with the **createQueue** method. When creating a queue, you can set options on the queue, but doing so is not required. (The example below shows how to set metadata on a queue.)
+**QueueRestProxy** オブジェクトの **createQueue** メソッドを使用してキューを作成できます。キューの作成時にキューのオプションを設定できますが、この設定は必須ではありません (次の例では、キューのメタデータを設定する方法を示しています)。
 
 	require_once 'vendor\autoload.php';
 
@@ -110,19 +112,19 @@ A **QueueRestProxy** object lets you create a queue with the **createQueue** met
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179446.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179446.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
 > [WACOM.NOTE]
-> You should not rely on case sensitivity for metadata keys. All keys are read from the service in lowercase.
+> メタデータ キーでは大文字と小文字は区別されません。すべてのキーはサービスから小文字で返されます。
 
 
-<h2><a id="add-message"></a>How to: Add a message to a queue</h2>
+<h2><a id="add-message"></a>方法: メッセージをキューに追加する</h2>
 
-To add a message to a queue, use **QueueRestProxy->createMessage**. The method takes the queue name, the message text, and message options (which are optional).
+メッセージをキューに追加するには、**QueueRestProxy->createMessage** を使用します。このメソッドにはキュー名、メッセージ テキスト、メッセージ オプション (省略可能) を渡します。
 
 	require_once 'vendor\autoload.php';
 
@@ -141,15 +143,15 @@ To add a message to a queue, use **QueueRestProxy->createMessage**. The method t
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179446.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179446.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-<h2><a id="peek-message"></a>How to: Peek at the next message</h2>
+<h2><a id="peek-message"></a>方法: 次のメッセージをピークする</h2>
 
-You can peek at a message (or messages) at the front of a queue without removing it from the queue by calling **QueueRestProxy->peekMessages**. By default, **peekMessage** method returns a single message, but you can change that value with the **PeekMessagesOptions->setNumberOfMessages** method.
+**QueueRestProxy->peekMessages** メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。既定では、**peekMessage** メソッドによって 1 つのメッセージが返されますが、その数は **PeekMessagesOptions->setNumberOfMessages** メソッドを使用して変更できます。
 
 	require_once 'vendor\autoload.php';
 
@@ -170,7 +172,7 @@ You can peek at a message (or messages) at the front of a queue without removing
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179446.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179446.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
@@ -192,9 +194,9 @@ You can peek at a message (or messages) at the front of a queue without removing
 		}
 	}
 
-<h2><a id="dequeue-message"></a>How to: De-queue the next message</h2>
+<h2><a id="dequeue-message"></a>方法: 次のメッセージをデキューする</h2>
 
-Your code removes a message from a queue in two steps. First, you call **QueueRestProxy->listMessages**, which makes the message invisible to any other code reading from the queue. By default, this message will stay invisible for 30 seconds (if the message is not deleted in this time period, it will become visible on the queue again). To finish removing the message from the queue, you must call **QueueRestProxy->deleteMessage**. This two-step process of removing a message assures that when your code fails to process a message due to hardware or software failure, another instance of your code can get the same message and try again. Your code calls **deleteMessage** right after the message has been processed.
+コードでは、2 つの手順でキューからメッセージを削除します。まず、**QueueRestProxy->listMessages** を呼び出すことです。このメソッドから返されたメッセージは、このキューからメッセージを読み取る他のコードからは参照できなくなります。既定では 30 秒、このメッセージは参照できなくなります (メッセージがこの時間内に削除されない場合、このキュー内で再び参照できるようになります)。キューからのメッセージの削除を完了するには、**QueueRestProxy->deleteMessage** を呼び出す必要があります。2 段階の手順でメッセージを削除するこの方法では、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。コードでは、メッセージが処理された直後に **deleteMessage** を呼び出します。
 
 	require_once 'vendor\autoload.php';
 
@@ -224,15 +226,15 @@ Your code removes a message from a queue in two steps. First, you call **QueueRe
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179446.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179446.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-<h2><a id="change-message"></a>How to: Change the contents of a queued message</h2>
+<h2><a id="change-message"></a>方法: キューに配置されたメッセージの内容を変更する</h2>
 
-You can change the contents of a message in-place in the queue by calling **QueueRestProxy->updateMessage**. If the message represents a work task, you could use this feature to update the status of the work task. The following code updates the queue message with new contents, and sets the visibility timeout to extend another 60 seconds. This saves the state of work associated with the message, and gives the client another minute to continue working on the message. You could use this technique to track multi-step workflows on queue messages, without having to start over from the beginning if a processing step fails due to hardware or software failure. Typically, you would keep a retry count as well, and if the message is retried more than n times, you would delete it. This protects against a message that triggers an application error each time it is processed.
+**QueueRestProxy->updateMessage** を呼び出すことで、キュー内のメッセージの内容をインプレースで変更できます。メッセージが作業タスクを表している場合は、この機能を使用して、作業タスクの状態を更新できます。次のコードでは、キュー メッセージを新しい内容に更新し、表示タイムアウトを設定して、60 秒延長します。これにより、メッセージに関連付けられている作業の状態が保存され、クライアントにメッセージの操作を続行する時間が 1 分与えられます。この方法を使用すると、キュー メッセージに対する複数の手順から成るワークフローを追跡でき、ハードウェアまたはソフトウェアの問題が原因で処理手順が失敗した場合に最初からやり直す必要がなくなります。通常は、さらに再試行回数を保持し、メッセージの再試行回数が n 回を超えた場合はメッセージを削除するようにします。こうすることで、処理するたびにアプリケーション エラーをトリガーするメッセージから保護されます。
 
 	require_once 'vendor\autoload.php';
 
@@ -266,15 +268,15 @@ You can change the contents of a message in-place in the queue by calling **Queu
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179446.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179446.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-<h2><a id="additional-options"></a>Additional options for de-queuing messages</h2>
+<h2><a id="additional-options"></a>メッセージのデキュー用の追加オプション</h2>
 
-There are two ways you can customize message retrieval from a queue. First, you can get a batch of messages (up to 32). Second, you can set a longer or shorter visibility timeout, allowing your code more or less time to fully process each message. The following code example uses the **getMessages** method to get 16 messages in one call. Then it processes each message using a **for** loop. It also sets the invisibility timeout to five minutes for each message.
+キューからのメッセージの取得をカスタマイズする方法は 2 つあります。1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。2 つ目の方法では、コードで各メッセージを完全に処理できるように、表示タイムアウトの設定を長くまたは短くすることができます。次のコード例では、**getMessages** メソッドを使用して、1 回の呼び出しで 16 個のメッセージを取得します。その後、**for** ループを使用して、各メッセージを処理します。また、各メッセージの非表示タイムアウトを 5 分に設定します。
 
 	require_once 'vendor\autoload.php';
 
@@ -313,15 +315,15 @@ There are two ways you can customize message retrieval from a queue. First, you 
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179446.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179446.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-<h2><a id="get-queue-length"></a>How to: Get queue length</h2>
+<h2><a id="get-queue-length"></a>方法: キューの長さを取得する</h2>
 
-You can get an estimate of the number of messages in a queue. The **QueueRestProxy->getQueueMetadata** method asks the queue service to return metadata about the queue. Calling the **getApproximateMessageCount** method on the returned object provides a count of how many messages are in a queue. The count is only approximate because messages can be added or removed after the queue service responds to your request.
+キュー内のメッセージの概数を取得できます。**QueueRestProxy->getQueueMetadata** メソッドを使用して、キューのメタデータを返すようにキュー サービスに要求します。返されたオブジェクトの **getApproximateMessageCount** メソッドを呼び出して、キュー内のメッセージの数を取得します。キュー サービスが要求に応答した後にメッセージが追加または削除される可能性があるため、これらの値は概数にすぎません。
 
 	require_once 'vendor\autoload.php';
 
@@ -339,7 +341,7 @@ You can get an estimate of the number of messages in a queue. The **QueueRestPro
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179446.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179446.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
@@ -347,9 +349,9 @@ You can get an estimate of the number of messages in a queue. The **QueueRestPro
 	
 	echo $approx_msg_count;
 
-<h2><a id="delete-queue"></a>How to: Delete a queue</h2>
+<h2><a id="delete-queue"></a>方法: キューを削除する</h2>
 
-To delete a queue and all the messages contained in it, call the **QueueRestProxy->deleteQueue** method.
+キューおよびキューに含まれているすべてのメッセージを削除するには、**QueueRestProxy->deleteQueue** メソッドを呼び出します。
 
 	require_once 'vendor\autoload.php';
 
@@ -366,21 +368,22 @@ To delete a queue and all the messages contained in it, call the **QueueRestProx
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179446.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179446.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
 
-<h2><a id="next-steps"></a>Next steps</h2>
+<h2><a id="next-steps"></a>次のステップ</h2>
 
-Now that you've learned the basics of the Azure Queue service, follow these links to learn how to do more complex storage tasks.
+これで、Azure キュー サービスの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
-- See the MSDN Reference: [Storing and Accessing Data in Azure] []
-- Visit the Azure Storage Team Blog: <http://blogs.msdn.com/b/windowsazurestorage/>
+- MSDN リファレンス: [Azure のデータの格納とアクセス] []
+- Azure のストレージ チーム ブログ: <http://blogs.msdn.com/b/windowsazurestorage/>
 
-[download]: http://go.microsoft.com/fwlink/?LinkID=252473
+[ダウンロード]: http://go.microsoft.com/fwlink/?LinkID=252473
 [require_once]: http://www.php.net/manual/en/function.require-once.php
-[Azure Management Portal]: http://manage.windowsazure.com/
-[Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+[Azure 管理ポータル]: http://manage.windowsazure.com/
+[Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+

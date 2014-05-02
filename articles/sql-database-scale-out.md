@@ -1,38 +1,38 @@
-<properties linkid="manage-services-how-to-scale-a-sqldb" urlDisplayName="How to scale" pageTitle="How to scale a SQL Database - Azure" metaKeywords="" description="Learn about options for scaling your SQL Database in Azure." metaCanonical="" services="sql-database" documentationCenter="" title="How to Scale a SQL Database Solution" authors="" solutions="" manager="" editor="" />
+<properties linkid="manage-services-how-to-scale-a-sqldb" urlDisplayName="規模の設定方法" pageTitle="SQL データベースの規模の設定方法 - Azure" metaKeywords="" description="Azure の SQL データベースの規模変更の選択肢について説明します。" metaCanonical="" services="sql-database" documentationCenter="" title="SQL データベース ソリューションの規模の設定方法" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
+<h1 id="scale">SQL データベース ソリューションの規模の設定方法</h1>
 
-<h1 id="scale">How to Scale a SQL Database Solution</h1>
 
+Azure の場合、データベースの拡張性はスケール アウトと同義です。データ センターにある複数のコモディティ サーバーにワークロードが再配分されます。スケール アウトは、データ容量またはパフォーマンスの問題に対処する戦略の 1 つです。急成長している大規模なデータベースには、アクセスするユーザー数の多少にかかわらず、いずれ、スケール アウト戦略が必要になります。
 
-On Azure, database scalability is synonymous with scale out, where a workload is redistributed across multiple commodity servers in a data center. Scale out is a strategy for addressing problems with data capacity or performance. A very large database that is on a high-growth trajectory will eventually require a scale out strategy, whether it is accessed by a few users or many users.
+Azure 上でのスケール アウトは、フェデレーションによって実現するのが最善です。SQL データベースのフェデレーションは、水平的シャーディングに基づいています。つまり、1 つ以上のテーブルを行単位で分割し、複数のフェデレーション メンバーに分配します。
 
-Scale out on Azure is best achieved through federation. SQL Database federation is based on horizontal sharding, where one or more tables are split by row and portioned across multiple federation members. 
+フェデレーションは、あらゆる拡張性の問題に対する唯一の回答ではありません。データまたはアプリケーションの要件の特徴によっては、もっと単純な手法が適していることもあります。以下に、簡単なものから順番に、ソリューション候補を挙げます。
 
-Federation is not the only answer to every scalability problem. Sometimes the characteristics of your data or application requirements point to simpler approaches. The following list presents potential solutions in order of complexity.
+##データベースのサイズを拡大する
 
-##Increase the size of the database
-
-Databases are created at a fixed size subject to a maximum imposed by each edition. For the Web edition, you can increase a database to a maximum of 5 gigabytes. For Business edition, the maximum database size is 150 gigabytes. The most obvious way to increase data capacity is to change the edition and maximum size:
+データベースは固定サイズで作成され、エディションごとに最大サイズが決まっています。Web Edition の場合、データベースのサイズは最大 5 GB に拡大できます。Business Edition の場合、データベースの最大サイズは 150 GB です。データ容量を増やす最も明瞭な方法は、エディションおよび最大サイズの変更です。
 
      ALTER DATABASE school MODIFY (EDITION = 'Business', MAXSIZE=10GB);
 
-##Use multiple databases and allocate users
+##データベースを複数使用してユーザーを配分する
 
-In limited scenarios, you could create copies of a database and then allocate logins and users across each database. Before federation was an option, this was a common approach for redistributing a workload. This approach is viable for databases that you use on a short-term basis and then merge later into a primary database that you keep on premise, and for solutions that provide read-only data.
+利用できる状況は限られますが、データベースのコピーを作成し、各データベースにログインとユーザーを配分することもできます。フェデレーションという選択肢が登場する前は、これが負荷を分散する一般的な手法でした。この手法は、データベースを短期的に使用し、後で内部設置型のプライマリ データベースにマージする場合、および、読み取り専用データを提供するソリューションの場合に有効です。
 
-##Use federations
+##フェデレーションを使用する
 
-Federations in SQL Database are used to achieve greater scalability and performance. One or more tables within a database are split by row and portioned across multiple databases (Federation members). This type of horizontal partitioning is often referred to as 'sharding'. The primary scenarios in which this is useful are where you need to achieve scale, performance, or to manage capacity. 
+SQL データベースのフェデレーションは、拡張性とパフォーマンスを高めるために使用されます。データベース内の 1 つ以上のテーブルを行単位で分割し、複数のデータベース (フェデレーション メンバー) に分配します。この種の水平的パーティション分割は、しばしば "シャーディング" と呼ばれます。これが便利なのは、主として、拡張性とパフォーマンスを実現する必要がある場合、または容量を管理する必要がある場合です。
 
-Federations are supported in the Business edition. For more information, see [Federations in SQL Database][] and [SQL Database Federations Tutorial - DBA][].
+フェデレーションは Business Edition でサポートされています。詳細については、[Azure SQL データベースでのフェデレーション][]」および「[SQL Database Federations のチュートリアル - DBA][]」を参照してください。
 
-##Consider other forms of storage
+##その他の形態のストレージを検討する
 
-Remember that Azure supports multiple forms of data storage, including table storage and blob storage. If you do not require relational features, table or blob storage can be more economical. 
+Azure では、テーブル ストレージや BLOB ストレージも含めて、複数の形態のデータ ストレージがサポートされていることを思い出してください。リレーショナル機能が必要でない場合は、テーブルまたは BLOB ストレージの方が経済的なこともあります。
 
-[Federations in SQL Database]: http://msdn.microsoft.com/en-us/library/windowsazure/hh597452.aspx
-[SQL Database Federations Tutorial - DBA]: http://msdn.microsoft.com/en-us/library/windowsazure/hh778416.aspx
+[Azure SQL データベースでのフェデレーション]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh597452.aspx
+[SQL Database Federations のチュートリアル - DBA]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh778416.aspx
+

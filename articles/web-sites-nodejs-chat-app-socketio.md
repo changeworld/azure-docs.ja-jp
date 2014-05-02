@@ -1,44 +1,41 @@
-<properties linkid="dev-nodejs-website-with-socketio" urlDisplayName="Website Using Socket.IO" pageTitle="Node.js Website using Socket.io - Azure tutorial" metaKeywords="Azure Node.js socket.io tutorial, Azure Node.js socket.io, Azure Node.js tutorial" description="A tutorial that demonstrates using socket.io in a node.js website hosted on Azure." metaCanonical="" services="web-sites" documentationCenter="Node.js" title="Build a Node.js Chat Application with Socket.IO on an Azure Web Site" authors="larryfr" solutions="" videoId="" scriptId="" manager="paulettm" editor="mollybos" />
+<properties linkid="dev-nodejs-website-with-socketio" urlDisplayName="Socket.IO を使用する Web サイト" pageTitle="Socket.io を使用する Node.js Web サイト - Azure チュートリアル" metaKeywords="Azure Node.js socket.io チュートリアル, Azure Node.js socket.io, Azure Node.js チュートリアル" description="Azure でホストされる node.js Web サイトで socket.io を使用する方法を示すチュートリアル。" metaCanonical="" services="web-sites" documentationCenter="Node.js" title="Azure の Web サイトで Socket.IO を使用する Node.js チャット アプリケーションの構築" authors="larryfr" solutions="" videoId="" scriptId="" manager="paulettm" editor="mollybos" />
 
 
 
 
-#Build a Node.js Chat Application with Socket.IO on an Azure Web Site
+#Azure の Web サイトで Socket.IO を使用する Node.js チャット アプリケーションの構築
 
-Socket.IO provides real-time communication between your node.js server and clients. This tutorial will walk you through hosting a Socket.IO based chat application as an Azure Web Site. For more information on Socket.IO, see [http://socket.io/][socketio].
+Socket.IO は、node.js サーバーとクライアントの間のリアルタイム通信を提供します。このチュートリアルでは、Azure の Web サイトとして Socket.IO ベースのチャット アプリケーションをホストする手順を説明します。Socket.IO の詳細については、[http://socket.io/][socketio] を参照してください。
 
 <div class="dev-callout"> 
-<b>Note</b> 
-	<p>The procedures in this task apply to Azure Web Sites; for Cloud Services, see <a href="http://www.windowsazure.com/en-us/develop/nodejs/tutorials/app-using-socketio/">Build a Node.js Chat Application with Socket.IO on an Azure Cloud Service</a>.</p> 
+<b>メモ</b>
+	<p>このタスクの手順は、Azure の Web サイトに適用されます。クラウド サービスについては、「<a href="http://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/app-using-socketio/">Azure クラウド サービスで Socket.IO を使用する Node.js チャット アプリケーションの構築</a>」を参照してください。</p>
 </div>
 
-A screenshot of the completed application is below:
+完成したアプリケーションのスクリーンショットは次のようになります。
 
-![A browser displaying the chat application][completed-app]
+![チャット アプリケーションを表示しているブラウザー][completed-app]
 
-## <a id="Download"></a>Download the Chat Example
+## <a id="Download"></a>チャットのサンプルのダウンロード
 
-For this project, we will use the chat example from the [Socket.IO
-GitHub repository]. Perform the following steps to download the example
-and add it to the project you previously created.
+このプロジェクトでは、[Socket.IO GitHub リポジトリ]にあるチャットのサンプルを使用します。次の手順を実行して、サンプルをダウンロードし、先ほど作成したプロジェクトに追加します。
 
-1.  Create a local copy of the repository by using the **Clone** button. You may also use the **ZIP** button to download the project.
+1. **[複製]** ボタンを使用して、リポジトリのローカル コピーを作成します。**[ZIP]** ボタンを使用してプロジェクトをダウンロードすることもできます。
 
-    ![A browser window viewing https://github.com/LearnBoost/socket.io/tree/master/examples/chat, with the ZIP download icon highlighted][chat-example-view]
+    ![https://github.com/LearnBoost/socket.io/tree/master/examples/chat が表示され、ZIP のダウンロード アイコンが強調表示されているブラウザー ウィンドウ][chat-example-view]
 
-3.  Navigate the directory structure of the local repository until you arrive at the **examples\\chat**
-    directory. Copy the contents of this directory to a seperate directory such as
-    **\\node\\chat**.
+3. ローカル リポジトリのディレクトリ構造で、**examples\\chat** 
+    ディレクトリに移動します。このディレクトリの内容を、**\\node\\chat** 
+    などの別のディレクトリにコピーします。
 
-## <a id="Modify"></a>Modify App.js and Install Modules
+## <a id="Modify"></a>App.js の変更とモジュールのインストール
 
-Before deploying the application to Azure, we must
-make some minor modifications. Perform the following steps to the
-app.js file:
+アプリケーションを Azure に展開する前に、いくつかの点を変更する必要が
+あります。次の手順で app.js ファイルを変更します。
 
-1.  Open the app.js file in Notepad or other text editor.
+1. app.js ファイルをメモ帳などのテキスト エディターで開きます。
 
-2.  Find the **Module dependencies** section at the beginning of app.js and change the line containing **sio = require('..//..//lib//socket.io')** to **sio = require('socket.io')** as shown below:
+2. app.js の先頭にある **Module dependencies** セクションを探して、次のように **sio = require('..//..//lib//socket.io')** を含む行を **sio = require('socket.io')** に変更します。
 
 		var express = require('express')
   		, stylus = require('stylus')
@@ -47,9 +44,9 @@ app.js file:
   		, sio = require('socket.io');                //Updated
 
 
-3.  To ensure the application listens on the correct port, open
-    app.js in Notepad or your favorite editor, and then change the
-    following line by replacing **3000** with **process.env.PORT** as shown below:
+3. アプリケーションが適切なポートでリッスンするように、メモ帳などの
+    エディターで app.js を開き、次のように **3000** を **process.env.PORT** 
+    に変更します。
 
         //app.listen(3000, function () {            //Original
 		app.listen(process.env.PORT, function () {  //Updated
@@ -57,89 +54,89 @@ app.js file:
 		  console.log('   app listening on http://' + addr.address + ':' + addr.port);
 		});
 
-After saving the changes to app.js, use the following steps to
-install required modules::
+app.js に対する変更を保存してから、次の手順で必要なモジュールを
+インストールします。
 
-1.  From the command-line, change directories to the **\\node\\chat** directory and use the following command to install the modules required by this application:
+1. コマンド ラインで **\\node\\chat** ディレクトリに移動し、このアプリケーションで必要なモジュールを次のコマンドを使用してインストールします。
 
         npm install
 
-    This will install the modules listed in the package.json file. After
-    the command completes, you should see output similar to the
-    following:
+    これによって、package.json ファイルにリストされているモジュールがインストールされます。コマンドが完了すると、次のような出力が表示されます。
 
-    ![The output of the npm install command][npm-output]
+    ![npm install コマンドの出力][npm-output]
 
-2.  Since this example was originally a part of the Socket.IO GitHub
-    repository, and directly referenced the Socket.IO library by
-    relative path, Socket.IO was not referenced in the package.json
-    file, so we must install it by issuing the following command:
+2. このサンプルはもともと Socket.IO GitHub リポジトリの一部であり、相対
+    パスによって Socket.IO ライブラリを直接参照していたため、package.json 
+    ファイルでは Socket.IO は参照されていませんでした。そのため、次のコマンド
+    を発行してインストールする必要があります。
 
         npm install socket.io -save
 
-## <a id="Publish"></a>Create an Azure Web Site and enable Git publishing
+## <a id="Publish"></a>Azure の Web サイトの作成と Git 発行の有効化
 
-Follow these steps to create an Azure Web Site, and then enable Git publishing for the web site.
+Azure の Web サイトを作成し、Web サイトの Git 発行を有効にするには、次の手順に従います。
 
-<div class="dev-callout"><strong>Note</strong>
-<p>To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account  in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A7171371E" target="_blank">Azure Free Trial</a>.</p>
+<div class="dev-callout"><strong>注</strong>
+<p>このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A7171371E" target="_blank">Azure の無料評価版のサイト</a>を参照してください。</p>
 </div>
 
-1. From the command-line, change directories to the **\\node\chat** directory and use the following command to create a new Azure Web Site and enable a Git repository for the web site and the local directory. This will also create a Git remote named 'azure'.
+1. コマンド ラインで **\\node\chat** ディレクトリに移動します。次のコマンドを使用して新しい Azure の Web サイトを作成し、Web サイトとローカル ディレクトリの Git リポジトリを有効にします。"azure" という名前の Git リモートも作成されます。
 
 		azure site create mysitename --git
 
-	You must replace 'mysitename' with a unique name for your web site.
+	"mysitename" を一意の Web サイト名に置き換える必要があります。
 
-2. Commit the existing files to the local reposotiry by using the following commands:
+2. 次のコマンドを使用して、既存のファイルをローカル リポジトリにコミットします。
 
 		git add .
 		git commit -m "Initial commit"
 
-3. Push the files to the Azure Web Site repository with the following command:
+3. 次のコマンドで、ファイルを Azure の Web サイト リポジトリにプッシュします。
 
 		git push azure master
 
-	You will receive status messages as modules are imported on the server. Once this process has completed, the application will be hosted on your Azure Web Site.
+	モジュールがサーバーにインポートされると、ステータス メッセージを受信します。この処理が完了すると、アプリケーションが Azure の Web サイトでホストされるようになります。
 
  	<div class="dev-callout">
-	<b>Note</b>
-	<p>During module installation, you may notice errors that 'The imported project ... was not found'. These can safely be ignored.</p>
+	<b>注</b>
+	<p>モジュールのインストール中に、"インポートされたプロジェクト ... が見つかりませんでした" というエラーが表示される場合があります。このエラーは無視してかまいません。</p>
 	</div>
 
-4. Socket.IO uses WebSockets, which are not enabled by default on Azure. To enable web sockets, use the following command:
+4. Socket.IO では、WebSocket を使用します。WebSocket は、Azure では既定で有効になりません。Web Socket を有効にするには、次のコマンドを使用します。
 
 		azure site set -w
 
-	If prompted, enter the name of the web site.
+	Web サイトの名前の入力を求められた場合は、入力します。
 
 	>[WACOM.NOTE]
-	>The 'azure site set -w' command will only work with version 0.7.4 or higher of the Azure Cross-Platform Command-Line Interface. You can also enable WebSocket support using the Azure Management Portal.
+	>"azure site set -w" コマンドは、Version 0.7.4 以降の Azure クロスプラットフォーム コマンド ライン インターフェイスでのみ機能します。また、Azure 管理ポータルを使用して、WebSocket のサポートを有効にすることもできます。
 	>
-	>To enable WebSockets using the [Azure Management Portal](https://manage.windowsazure.com), select the Configure page for your web site, select 'ON' for the Web Sockets entry, and then click Save.
+	>[Azure の管理ポータル](https://manage.windowsazure.com)を使用して WebSocket を有効にするには、Web サイトの [構成] ページを選択し、Web Socket エントリで [オン] を選択して、[保存] をクリックします。
 	>	
-	>![websockets](./media/web-sites-nodejs-chat-app-socketio/websockets.png)
+	>![WebSocket](./media/web-sites-nodejs-chat-app-socketio/websockets.png)
 	
-5. To view the web site on Azure, use the following command to launch your web browser and navigate to the hosted web site:
+5. Azure で Web サイトを表示するには、次のコマンドを使用して Web ブラウザーを起動し、ホストされている Web サイトに移動します。
 
 		azure site browse
 
-Your application is now running on Azure, and can relay chat
-messages between different clients using Socket.IO.
+これで、アプリケーションは Azure で実行されるようになり、
+Socket.IO を使用する複数のクライアント間でチャット 
+メッセージを中継できます。
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>For simplicity, this sample is limited to chatting between users connected to the same instance. This means that if the cloud service creates two worker role instances, users will only be able to chat with others connected to the same worker role instance. To scale the application to work with multiple role instances, you could use a technology like Service Bus to share the Socket.IO store state across instances. For examples, see the Service Bus Queues and Topics usage samples in the <a href="https://github.com/WindowsAzure/azure-sdk-for-node">Azure SDK for Node.js GitHub repository</a>.</p>
+<strong>注</strong>
+<p>わかりやすくするために、このサンプルは同じインスタンスに接続したユーザー間でのチャットに制限されています。つまり、クラウド サービスによって 2 つのワーカー ロール インスタンスが作成された場合、ユーザーは同じワーカー ロール インスタンスに接続された他のユーザーとのみチャットすることができます。複数のロール インスタンスで機能するようにこのアプリケーションを拡張するには、サービス バスなどのテクノロジを使用して、インスタンス間で Socket.IO ストアの状態を共有します。たとえば、<a href="https://github.com/WindowsAzure/azure-sdk-for-node">Azure SDK for Node.js GitHub リポジトリ</a>にあるサービス バス キューおよびトピックの使用例を参照してください。</p>
 </div>
 
-##Next steps
+##次のステップ
 
-In this tutorial you learned how to create a chat application hosted in an Azure Web Site. You can also host this application as an Azure Cloud Service. For steps on how to accomplish this, see [Build a Node.js Chat Application with Socket.IO on an Azure Cloud Service][cloudservice].
+このチュートリアルでは、Azure の Web サイトでホストされるチャット アプリケーションを作成する方法を説明しました。このアプリケーションは、Azure クラウド サービスとしてホストすることもできます。そのための作業手順については、「[Azure クラウド サービスで Socket.IO を使用する Node.js チャット アプリケーションの構築][cloudservice]」を参照してください。
 
 [socketio]: http://socket.io/
 [completed-app]: ./media/web-sites-nodejs-chat-app-socketio/websitesocketcomplete.png
-[Socket.IO GitHub repository]: https://github.com/LearnBoost/socket.io/tree/0.9.14
-[cloudservice]: /en-us/develop/nodejs/tutorials/app-using-socketio/
+[Socket.IO GitHub リポジトリ]: https://github.com/LearnBoost/socket.io/tree/0.9.14
+[cloudservice]: /ja-jp/develop/nodejs/tutorials/app-using-socketio/
 
 [chat-example-view]: ./media/web-sites-nodejs-chat-app-socketio/socketio-2.png
 [npm-output]: ./media/web-sites-nodejs-chat-app-socketio/socketio-7.png
+

@@ -1,51 +1,50 @@
-<properties linkid="dev-net-common-tasks-profiling-in-compute-emulator" urldisplayname="Team Foundation Service" headerexpose="" pageTitle="Profiling a Cloud Service Locally in the Compute Emulator" metakeywords="" footerexpose="" description="" umbraconavihide="0" disquscomments="1" title="Testing the Performance of a Cloud Service Locally in the Azure Compute Emulator Using the Visual Studio Profiler" authors="" />
+<properties linkid="dev-net-common-tasks-profiling-in-compute-emulator" urldisplayname="Team Foundation Service" headerexpose="" pageTitle="コンピューティング エミュレーターでのクラウド サービスのローカルなプロファイル" metakeywords="" footerexpose="" description="" umbraconavihide="0" disquscomments="1" title="Visual Studio プロファイラーを使用した、Azure コンピューティング エミュレーターでのクラウド サービスのパフォーマンスのローカルなテスト" authors="" />
 
-# Testing the Performance of a Cloud Service Locally in the Azure Compute Emulator Using the Visual Studio Profiler
+# Visual Studio プロファイラーを使用した、Azure コンピューティング エミュレーターでのクラウド サービスのパフォーマンスのローカルなテスト
 
-A variety of tools and techniques are available for testing the performance of cloud services.
-When you publish a cloud service to Azure, you can have Visual Studio collect profiling
-data and then analyze it locally, as described in [Profiling an Azure Application][1].
-You can also use diagnostics to track a variety of performance
-counters, as described in [Using performance counters in Azure][2].
-You might also want to profile your application locally in the compute emulator before deploying it to the cloud.
+クラウド サービスのパフォーマンスのテストには、さまざまなツールや手法を使用できます。
+Azure にクラウド サービスを発行するとき、「[クラウド サービスのパフォーマンスのテスト][1]」で説明されているように、Visual Studio でプロファイル データを収集してデータをローカルに分析するように設定することができます。
+また、[Using performance counters in Azure (Azure でのパフォーマンス カウンターの使用)][2]」で
+説明されているように、診断機能を使用してさまざまなパフォーマンス カウンターを追跡することもできます。
+アプリケーションをクラウドに展開する前に、コンピューティング エミュレーターでローカルにプロファイルすることもできます。
 
-This article covers the CPU Sampling method of profiling, which can be done locally in the emulator. CPU sampling is a method of profiling that is not very intrusive. At a designated sampling interval, the profiler takes a snapshot of the call stack. The data is collected over a period of time, and shown in a report. This method of profiling tends to indicate where in a computationally intensive application most of the CPU work is being done.  This gives you the opportunity to focus on the "hot path" where your application is spending the most time.
+この記事では、エミュレーターでローカルに実行できるプロファイル手法である CPU サンプリングについて説明します。CPU サンプリングは、あまり侵入的でないプロファイル手法です。プロファイラーは、指定されたサンプリング間隔でコール スタックのスナップショットを取得します。データはある期間にわたって収集され、レポートに示されます。このプロファイル手法では、コンピューティング処理が集中するアプリケーションで大部分の CPU 処理が行われる箇所が示されます。これによって、アプリケーションが多くの時間を費やしている "ホット パス" に焦点を合わせる機会が与えられます。
 
 
-## Prerequisites
+## 前提条件
 
-You can run the profiler locally only if you have Visual Studio Premium or Visual Studio Ultimate. 
+プロファイラーをローカルに実行できるのは、Visual Studio Premium または Visual Studio Ultimate がある場合だけです。
 
-## In this article:
+## この記事の内容:
 
--   [Step 1: Configure Visual Studio for Profiling][]
+-   [手順 1. Visual Studio をプロファイル向けに構成する][]
 
--   [Step 2: Attach to a Process][]
+-   [手順 2. プロセスにアタッチする][]
 
--   [Step 3: View Profiling Reports][]
+-   [手順 3. プロファイル レポートを表示する][]
 
--   [Step 4: Make Changes and Compare Performance][]
+-   [手順 4. 変更を行ってパフォーマンスを比較する][]
 
--   [Troubleshooting][]
+-   [トラブルシューティング][]
 
--   [Next Steps][]
+-   [次のステップ][]
 
-## <a name="step1"> </a> Step 1: Configure Visual Studio for Profiling
+## <a name="step1"> </a> 手順 1. Visual Studio をプロファイル向けに構成する
 
-First, there are a few Visual Studio configuration options that might be helpful when profiling. To make sense of the profiling reports, you'll need symbols (.pdb files) for your application and also symbols for system libraries. You'll want to make sure that you reference the available symbol servers. To do this, on the **Tools** menu in Visual Studio, choose **Options**, then choose **Debugging**, then **Symbols**. Make sure that Microsoft Symbol Servers is listed under **Symbol file (.pdb) locations**.  You can also reference http://referencesource.microsoft.com/symbols, which might have additional symbol files.
+まず、プロファイル時に有用な Visual Studio の構成オプションがいくつかあります。プロファイル レポートを理解しやすくするために、アプリケーションのシンボル (.pdb ファイル) およびシステム ライブラリのシンボルが必要です。使用可能なシンボル サーバーを参照していることを確認してください。確認するには、Visual Studio の **[ツール]** メニューで、**[オプション]**、**[デバッグ]**、**[シンボル]** の順に選択します。Microsoft シンボル サーバーが **[シンボル ファイル (.pdb) の場所]** の下に表示されていることを確認します。その他のシンボル ファイルが含まれている http://referencesource.microsoft.com/symbols を参照することもできます。
 
 ![][4]
 
-If desired, you can simplify the reports that the profiler generates by setting Just My Code. With Just My Code enabled, function call stacks are simplified so that calls entirely internal to libraries and the .NET Framework are hidden from the reports. On the **Tools** menu, choose **Options**. Then expand the **Performance Tools** node, and choose **General**. Select the checkbox for **Enable Just My Code for profiler reports**.
+必要な場合は、[マイ コードのみ] を設定して、プロファイラーが生成するレポートを簡素化することができます。[マイ コードのみ] を有効にすると、完全にライブラリおよび .NET Framework の内部への呼び出しがレポートから隠されるように関数コール スタックが簡素化されます。**[ツール]** メニューの **[オプション]** を選択します。次に、**[パフォーマンス ツール]** ノードを展開し、**[全般]** を選択します。**[プロファイラー レポートでマイ コードのみを有効にする]** チェック ボックスをオンにします。
 
 ![][17]
 
-You can use these instructions with an existing project or with a new project.  If you create a new project to try the techniques described below, choose a C# **Azure Cloud Service** project, and select a **Web Role** and a **Worker Role**.
+これらの手順は、既存のプロジェクトまたは新規プロジェクトに適用できます。以降で説明する手法を試すために新規プロジェクトを作成する場合は、C# の # **[Azure クラウド サービス]** プロジェクトを選択し、**[Web ロール]** および **[worker ロール]** を選択します。
 
 ![][5]
 
-For example purposes, add some code to your project that takes
-a lot of time and demonstrates some obvious performance problem. For example, add the following code to a worker role project:
+例として、時間がかかり明白なパフォーマンス問題を示すコードを
+プロジェクトに追加してください。たとえば、worker ロール プロジェクトに次のコードを追加します。
 
 	public class Concatenator
 	{
@@ -61,7 +60,7 @@ a lot of time and demonstrates some obvious performance problem. For example, ad
 	    }
 	}
 
-Call this code from the Run method in the worker role's RoleEntryPoint-derived class.
+worker ロールの RoleEntryPoint から派生したクラスの Run メソッドからこのコードを呼び出します。
 
 	public override void Run()
 	{
@@ -71,69 +70,69 @@ Call this code from the Run method in the worker role's RoleEntryPoint-derived c
 	    }
 	}
 
-Build and run your cloud service locally with the solution configuration set to **Release**. This ensures that all files and folders are 
-created for running the application locally, and ensures that all the emulators are started.
+ソリューション構成を **[リリース]** に設定して、クラウド サービスをローカルにビルドして実行します。これによって、アプリケーションをローカルに実行するために
+すべてのファイルとフォルダーが作成され、すべてのエミュレーターが起動されます。
 
-## <a name="step2"> </a> Step 2: Attach to a Process
+## <a name="step2"> </a> 手順 2. プロセスにアタッチする
 
-Instead of profiling the application by starting it from the Visual Studio 2010 IDE, you must attach the profiler to a running process. 
+アプリケーションを Visual Studio 2010 IDE から起動してプロファイルするのではなく、実行中のプロセスにプロファイラーをアタッチする必要があります。
 
-To attach the profiler to a process, on the **Analyze** menu, choose **Profiler** and **Attach/Detach**.
+プロファイラーをプロセスにアタッチするには、**[分析]** メニューで **[プロファイラー]**、**[アタッチ/デタッチ]** の順に選択します。
 
 ![][6]
 
-For a worker role, find the WaWorkerHost.exe process.
+worker ロールの場合は、WaWorkerHost.exe プロセスを見つけます。
 
 ![][7]
 
-If your project folder is on a network drive, the profiler will ask you to provide another location to save the profiling reports.
+プロジェクト フォルダーがネットワーク ドライブ上にある場合は、プロファイル レポートの保存場所として別の場所を提供するように求められます。
 
- You can also attach to a web role by attaching to WaIISHost.exe.
- If there are multiple worker role processes in your application, you need to use the processID to distinguish them. You can query the processID programmatically by accessing the Process object. For example, if you add this code to the Run method of the RoleEntryPoint-derived class in a role, you can look at the
-log in the Compute Emulator UI to know what process to connect to.
+ WaIISHost.exe にアタッチして Web ロールにアタッチすることもできます。
+ アプリケーション内に複数の worker ロールがある場合は、processID を使用してそれらを区別する必要があります。Process オブジェクトにアクセスすることで、プログラムで processID を照会できます。たとえば、ロール内の RoleEntryPoint から派生したクラスの Run メソッドに次のコードを追加すると、
+コンピューティング エミュレーター UI でログを調べて、接続しているプロセスを知ることができます。
 
 	var process = System.Diagnostics.Process.GetCurrentProcess();
 	var message = String.Format("Process ID: {0}", process.Id);
 	Trace.WriteLine(message, "Information");
 
-To view the log, start the Compute Emulator UI.
+ログを表示するには、コンピューティング エミュレーター UI を起動します。
 
 ![][8]
 
-Open the worker role log console window in the Compute Emulator UI by clicking on the console window's title bar. You can see the process ID in the log.
+コンピューティング エミュレーター UI で、コンソール ウィンドウのタイトル バーをクリックして worker ロール ログのコンソール ウィンドウを開きます。ログに "Process ID" が表示されています。
 
 ![][9]
 
-One you've attached, perform the steps in your application's UI (if needed) to reproduce the scenario.
+アタッチしたプロセスについて、アプリケーションの UI で手順に従って (必要な場合) シナリオを再現します。
 
-When you want to stop profiling, choose the **Stop Profiling** link.
+プロファイルを停止する場合は、**[プロファイルの停止]** を選択します。
 
 ![][10]
 
-## <a name="step3"> </a> Step 3: View Performance Reports
+## <a name="step3"> </a> 手順 3. パフォーマンス レポートを表示する
 
-The performance report for your application is displayed.
+アプリケーションのパフォーマンス レポートが表示されます。
 
-At this point, the profiler stops executing, saves data in a .vsp file, and displays a report
-that shows an analysis of this data.
+この時点で、プロファイラーは実行を停止し、.vsp ファイルにデータを保存し、
+そのデータの分析を示すレポートを表示します。
 
 ![][11]
 
 
-If you see String.wstrcpy in the Hot Path, click on Just My Code to change the view to show user code only.  If you see String.Concat, try pressing the Show All Code button.
+[ホット パス] に "String.wstrcpy" が表示されている場合は、[マイ コードのみ] をクリックして、ユーザー コードだけを表示するようにビューを変更します。"String.Concat" が表示されている場合は、[すべてのコードの表示] を押してみてください。
 
-You should see the Concatenate method and String.Concat taking up a large portion
-of the execution time.
+Concatenate メソッドと String.Concat が実行時間の大部分を占めていることが
+わかります。
 
 ![][12]
 
-If you added the string concatenation code in this article, you should see a warning in the Task List for this. You may also see a warning that there is an excessive amount of garbage collection, which is due to the number of strings that are disposed.
+この記事で文字列連結コードを追加した場合は、それに関する [タスク リスト] に警告が表示されます。処理される文字列の数によっては、過剰な量のガベージ コレクションがあるという警告が表示されることもあります。
 
 ![][14]
 
-## <a name="step4"> </a> Step 4: Make Changes and Compare Performance
+## <a name="step4"> </a> 手順 4. 変更を行ってパフォーマンスを比較する
 
-You can also compare the performance before and after a code change.  Edit the code to replace the string concatenation operation with the use of StringBuilder:
+コードを変更する前後でパフォーマンスを比較することもできます。コードを編集して、文字列連結操作を StringBuilder の使用に置き換えます。
 
 	public static string Concatenate(int number)
 	{
@@ -146,45 +145,45 @@ You can also compare the performance before and after a code change.  Edit the c
 	    return builder.ToString();
 	}
 
-Do another performance run, and then compare the performance. In the Performance Explorer, if the runs are in the same session, you can just select both reports, open the shortcut menu, and choose **Compare Performance Reports**. If you want to compare with a run in another performance session, open the **Analyze** menu, and choose **Compare Performance Reports**. Specify both files in the dialog box that appears.
+パフォーマンス測定用にもう一度実行し、パフォーマンスを比較します。パフォーマンス エクスプローラーで、2 回の実行が同じセッションにある場合は、両方のレポートを選択し、ショートカット メニューを開いて **[パフォーマンス レポートの比較]** を選択します。別のパフォーマンス セッション内の実行と比較する場合は、**[分析]** メニューを開いて **[パフォーマンス レポートの比較]** を選択します。表示されるダイアログ ボックスで、両方のファイルを指定します。
 
 ![][15]
 
-The reports highlight differences between the two runs.
+レポートに 2 つの実行の相違点が示されます。
 
 ![][16]
 
-Congratulations! You've gotten started with the profiler.
+ご利用ありがとうございます。プロファイラーの使用を開始しました。
 
-## <a name="troubleshooting"> </a> Troubleshooting
+## <a name="troubleshooting"> </a> トラブルシューティング
 
-- Make sure you are profiling a Release build.
+- リリース ビルドをプロファイルしていることを確認します。
 
-- If the Attach/Detach option is not enabled on the Profiler menu, run the Performance Wizard.
+- [プロファイラー] メニューで [アタッチ/デタッチ] オプションが有効になっていない場合は、パフォーマンス ウィザードを実行します。
 
-- Use the Compute Emulator UI to view the status of your application. 
+- コンピューティング エミュレーター UI を使用して、アプリケーションの状態を表示します。
 
-- If you have problems starting applications in the emulator, or attaching the profiler, shut down the compute emulator and restart it. If that doesn't solve the problem, try rebooting. This problem can occur if you use the Compute Emulator to suspend and remove running deployments.
+- エミュレーターでのアプリケーションの起動、プロファイラーのアタッチに問題がある場合は、コンピューティング エミュレーターをシャットダウンし、再起動します。これで問題が解決しない場合は、コンピューターを再起動してみてください。コンピューティング エミュレーターを使用して、実行中の展開を中断および削除すると、この問題が発生することがあります。
 
-- If you have used any of the profiling commands from the
-command line, especially the global settings, make sure that VSPerfClrEnv /globaloff has been called and that VsPerfMon.exe has been shut down.
+- コマンド ラインからいずれかのプロファイル コマンドを
+使用した場合は (特にグローバル設定)、VSPerfClrEnv /globaloff が呼び出され、VsPerfMon.exe がシャットダウンされたことを確認します。
 
-- If when sampling, you see the message "PRF0025: No data was collected," check that the process you attached to has CPU activity. Applications that are not doing any computational work might not produce any sampling data.  It's also possible that the process exited before any sampling was done. Check to see that the Run method for a role that you are profiling does not terminate.
+- サンプリング時にメッセージ "PRF0025: データは収集されませんでした" が表示された場合は、アタッチ先のプロセスに CPU 活動があることをチェックします。コンピューティング作業を行っていないアプリケーションは、サンプリング データを生成しないことがあります。また、サンプリングが行われる前にプロセスが終了した可能性もあります。プロファイル中のロールの Run メソッドが終了していないことをチェックします。
 
-## <a name="nextSteps"> </a> Next Steps
+## <a name="nextSteps"> </a> 次のステップ
 
-Instrumenting Azure binaries in the emulator is not supported in the Visual Studio 2010 profiler, but if you want to test memory allocation, you can choose that option when profiling. You can also choose concurrency profiling, which helps you determine whether threads are wasting time competing for locks, or tier interaction profiling, which helps you track down performance problems when interacting between tiers of an application, most frequently between the data tier and a worker role.  You can view the database queries that your app generates and use the profiling data to improve your use of the database. For information about tier interaction profiling, see [Walkthrough: Using the Tier Interaction Profiler in Visual Studio Team System 2010][3].
+Visual Studio 2010 プロファイラーでは、エミュレーター内の Azure バイナリのインストルメント化はサポートされていませんが、メモリの割り当てをテストする場合は、プロファイル時にオプションを選択できます。また、スレッドがロックの競合のために時間を浪費しているかどうかの判断に役立つ同時実行プロファイルを選択することも、アプリケーションの層間 (最も多いのはデータ層と worker ロールの間) で相互作用するときのパフォーマンス問題の追跡に役立つ階層の相互作用のプロファイルを選択することもできます。アプリケーションが生成するデータベース クエリを表示し、プロファイル データを使用してデータベースの使用を強化することができます。階層の相互作用のプロファイルの詳細については、「[Walkthrough: Using the Tier Interaction Profiler in Visual Studio Team System 2010 (チュートリアル: Visual Studio Team System 2010 での階層の相互作用のプロファイラーの使用)][3]」を参照してください。
 
 
-[Step 1: Configure Visual Studio for Profiling]: #step1
-[Step 2: Attach to a Process]: #step2
-[Step 3: View Profiling Reports]: #step3
-[Step 4: Make Changes and Compare Performance]: #step4
-[Troubleshooting]: #troubleshooting
-[Next Steps]: #nextSteps
+[手順 1. Visual Studio をプロファイル向けに構成する]: #step1
+[手順 2. プロセスにアタッチする]: #step2
+[手順 3. プロファイル レポートを表示する]: #step3
+[手順 4. 変更を行ってパフォーマンスを比較する]: #step4
+[トラブルシューティング]: #troubleshooting
+[次のステップ]: #nextSteps
 
-[1]: http://msdn.microsoft.com/en-us/library/windowsazure/hh369930.aspx
-[2]: http://www.windowsazure.com/en-us/develop/net/common-tasks/performance-profiling
+[1]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh369930.aspx
+[2]: http://www.windowsazure.com/ja-jp/develop/net/common-tasks/performance-profiling
 [3]: http://blogs.msdn.com/b/habibh/archive/2009/06/30/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010.aspx
 [4]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
 [5]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally10.png
@@ -199,3 +198,4 @@ Instrumenting Azure binaries in the emulator is not supported in the Visual Stud
 [15]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally013.png
 [16]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally012.png
 [17]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally08.png
+

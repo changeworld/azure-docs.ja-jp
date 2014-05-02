@@ -1,175 +1,175 @@
-<properties linkid="develop-mobile-tutorials-command-line-administration" urlDisplayName="Command Line Administration" pageTitle="Administering a Mobile Service at the command line - Azure tutorial" metaKeywords="" description="Learn how to create, deploy, and manage your Azure Mobile Service using command-line tools." metaCanonical="" services="" documentationCenter="Mobile" title="Automate mobile services with command-line tools" authors="glenga" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-tutorials-command-line-administration" urlDisplayName="コマンド ラインによる管理" pageTitle="コマンド ラインでのモバイル サービスの管理 - Azure チュートリアル" metaKeywords="" description="コマンド ライン ツールを使用して Azure モバイル サービスを作成、展開、および管理する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="コマンド ライン ツールを使用したモバイル サービスの自動化" authors="glenga" solutions="" manager="" editor="" />
 
 
 
 
-# Automate mobile services with command-line tools 
+# コマンド ライン ツールを使用したモバイル サービスの自動化
 
-This topic shows you how to use the Azure command-line tools to automate the creation and management of Azure Mobile Services. This topic shows you how to install and get started using the command-line tools and use them to perform the following Mobile Services tasks:
+このトピックでは、Azure コマンド ライン ツールを使用して、Azure モバイル サービスの作成と管理を自動化する方法を紹介します。このトピックでは、コマンド ライン ツールのインストールとその使用を始めるための方法、およびコマンド ライン ツールを使用して次のモバイル サービス タスクを実行する方法ついて説明します。
 
--	[Create a new mobile service] 
--	[Create a new table]
--   [Register a script to a table operation][Register a new table script]
--   [List tables]
-- 	[Delete an existing table]
--	[List mobile services]
--   [Delete an existing mobile service]
+-	[新しいモバイル サービスを作成する]
+-	[新しいテーブルを作成する]
+-   [テーブル操作にスクリプトを登録する][Register a new table script]
+-   [テーブルをリストする]
+- 	[既存のテーブルを削除する]
+-	[モバイル サービスをリストする]
+-   [既存のモバイル サービスを削除する]
  
-When combined into a single script or batch file, these individual commands automate the creation, verification, and deletion process of a mobile service. 
+個々のコマンドを単一のスクリプトまたはバッチ ファイルと組み合わせることにより、モバイル サービスの作成、確認、および削除のプロセスを自動化することができます。
 
-To use the Azure command-line tools to manage Mobile Services, you need an Azure account that has the Azure Mobile Services feature enabled.
+Azure コマンド ライン ツールを使用してモバイル サービスを管理するには、Azure モバイル サービス機能を有効にした Azure アカウントが必要です。
 
-+ If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/" target="_blank">Azure Free Trial</a>.
++ アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/" target="_blank">Azure の無料評価版サイト</a>を参照してください。
 
-+ If you have an existing account but need to enable the Azure Mobile Services preview, see <a href="../create-a-windows-azure-account/#enable" target="_blank">Enable Azure preview features</a>.
++ 既にアカウントがあっても、Azure モバイル サービスのプレビューを有効にする必要がある場合は、<a href="../create-a-windows-azure-account/#enable" target="_blank">Azure プレビュー機能の有効化に関するページ</a>を参照してください。
 
-This topic covers a selection of common administration tasks supported by the Azure command-line tools. For more information, see [Azure command-line tools documentation][reference-docs].
+このトピックでは、Azure コマンド ライン ツールでサポートされている一般的な管理タスクを取り上げます。詳細については、[Azure コマンド ライン ツールに関するドキュメント][reference-docs]を参照してください。
 
 <!--+  You must download and install the Azure command-line tools to your local machine. To do this, follow the instructions in the first section of this topic. 
 
 + (Optional) To be able to execute HTTP requests directly from the command-line, you must use cURL or an equivalent tool. cURL runs on a variety of platforms. Locate and install cURL for your specific platform from the <a href=http://go.microsoft.com/fwlink/p/?LinkId=275676 target="_blank">cURL download  page</a>.-->
 
-<h2><a name="install"></a><span class="short-header">Install the tools</span>Install the Azure Command-Line Tools</h2>
+<h2><a name="install"></a><span class="short-header">ツールのインストール</span>Azure コマンド ライン ツールをインストールする</h2>
 
-The following list contains information for installing the command-line tools, depending on your operating system:
+次の説明に従って、お使いのオペレーティング システムに対応するコマンド ライン ツールをインストールしてください。
 
-* **Windows**: Download the [Azure Command-Line Tools Installer][windows-installer]. Open the downloaded .msi file and complete the installation steps as you are prompted.
+***Windows**: [Azure コマンド ライン ツール インストーラー][windows-installer]をダウンロードします。ダウンロードした .msi ファイルを開き、指示に従ってインストール手順を実行します。
 
-* **Mac**: Download the [Azure SDK Installer][mac-installer]. Open the downloaded .pkg file and complete the installation steps as you are prompted.
+* **Mac**: [Azure SDK インストーラー][mac-installer]をダウンロードします。ダウンロードした .pkg ファイルを開き、指示に従ってインストール手順を実行します。
 
-* **Linux**: Install the latest version of [Node.js][nodejs-org] (see [Install Node.js via Package Manager][install-node-linux]), then run the following command:
+* **Linux**: 最新バージョンの [Node.js][nodejs-org] をインストールし ([パッケージ マネージャーを使った Node.js のインストールに関するページ][install-node-linux]を参照)、次のコマンドを実行します。
 
 		npm install azure-cli -g
 
-To test the installation, type `azure` at the command prompt. When the installation is successful, you will see a list of all the available `azure` commands.
-<h2><a name="import-account"></a><span class="short-header">Import settings</span>How to download and import publish settings</h2>
+インストールをテストするには、コマンド プロンプトで「`azure`」と入力します。インストールが正常に完了している場合は、使用可能なすべての `azure` コマンドの一覧が表示されます。
+<h2><a name="import-account"></a><span class="short-header">設定のインポート</span>発行の設定をダウンロードおよびインポートする方法</h2>
 
-To get started, you must first download and import your publish settings. Then you can use the tools to create and manage Azure Services. To download your publish settings, use the `account download` command:
+最初に、発行の設定をダウンロードしてインポートする必要があります。これにより、Azure サービスを作成および管理するためのツールを使用できるようになります。発行の設定をダウンロードするには、次のように `account download` コマンドを使用します。
 
 		azure account download
 
-This opens your default browser and prompts you to sign in to the Management Portal. After signing in, your `.publishsettings` file is downloaded. Note the location of this saved file.
+既定のブラウザーが開き、管理ポータルにサインインするよう求められます。サインインすると、`.publishsettings` ファイルがダウンロードされます。このファイルを保存した場所をメモしておきます。
 
-Next, import the `.publishsettings` file by running the following command, replacing `<path-to-settings-file>` with the path to your `.publishsettings` file:
+その後で、次のコマンドを実行して `.publishsettings` ファイルをインポートします。ここでは、`<path-to-settings-file>` に、お使いの `.publishsettings` ファイルのパスを指定してください。
 
 		azure account import <path-to-settings-file>
 
-You can remove all of the information stored by the <code>import</code> command by using the <code>account clear</code> command:
+<code>account clear</code> コマンドを使用すると、<code>import</code> コマンドによって格納されたすべての情報を削除できます。
 
 		azure account clear
 
-To see a list of options for `account` commands, use the `-help` option:
+`account` コマンドのオプションの一覧を表示するには、`-help` オプションを使用します。
 
 		azure account -help
 
-After importing your publish settings, you should delete the `.publishsettings` file for security reasons. For more information, see [How to install the Azure Command-Line Tools for Mac and Linux]. You are now ready to begin creating and managing Azure Mobile Services from the command line or in batch files.  
+発行の設定をインポートした後は、セキュリティ上の理由から、`.publishsettings` ファイルを削除する必要があります。詳細については、「[Mac および Linux 用 Azure コマンド ライン ツールのインストール方法]」を参照してください。これで、コマンド ラインまたはバッチ ファイルを使用して Azure モバイル サービスの作成および管理を開始する準備が整いました。
 
-<h2><a name="create-service"></a><span class="short-header">Create service</span>How to create a mobile service</h2>
+<h2><a name="create-service"></a><span class="short-header">サービスの作成</span>モバイル サービスを作成する方法</h2>
 
-You can use the command-line tools to create a new mobile service instance. While creating the mobile service, you also create a SQL Database instance in a new server. 
+コマンド ライン ツールを使用して、新しいモバイル サービス インスタンスを作成することができます。モバイル サービスを作成する間に、SQL データベース インスタンスを新しいサーバーに作成することもできます。
 
-The following command creates a new mobile service instance in your subscription, where `<service-name>` is the name of the new mobile service, `<server-admin>` is the login name of the new server, and `<server-password>` is the password for the new login:
+次のコマンドでは、新しいモバイル サービス インスタンスがサブスクリプション内で作成されます。`<service-name>` は新しいモバイル サービスの名前、`<server-admin>` は新しいサーバーのログイン名、`<server-password>` は新しいログインのパスワードです。
 
 		azure mobile create <service-name> <server-admin> <server-password>
 
-The `mobile create` command fails when the specified mobile service exists. In your automation scripts, you should attempt to delete a mobile service before attempting to recreate it.
+指定されたモバイル サービスが既に存在する場合、`mobile create` コマンドは失敗します。自動化スクリプト内では、モバイル サービスの再作成を試行する前に、そのモバイル サービスを削除する必要があります。
 
-<h2><a name="list-services"></a><span class="short-header">List services</span>How to list existing mobile services in a subscription</h2>
+<h2><a name="list-services"></a><span class="short-header">サービスのリスト</span>サブスクリプション内の既存のモバイル サービスをリストする方法</h2>
 
-The following command returns a list of all the mobile services in an Azure subscription:
+次のコマンドでは、Azure サブスクリプション内のすべてのモバイル サービスのリストが返されます。
 
 		azure mobile list
 
-This command also shows the current state and URL of each mobile service.
+このコマンドでは、各モバイル サービスの現在の状態と URL も表示されます。
 
-<h2><a name="delete-service"></a><span class="short-header">Delete service</span>How to delete an existing mobile service</h2>
+<h2><a name="delete-service"></a><span class="short-header">サービスの削除</span>既存のモバイル サービスを削除する方法</h2>
 
-You can use the command-line tools to delete an existing mobile service, along with the related SQL Database and server. The following command deletes the mobile service, where `<service-name>` is the name of the mobile service to delete:
+コマンド ライン ツールを使用して、関連する SQL データベースおよびサーバーと共に既存のモバイル サービスを削除することができます。次のコマンドでは、モバイル サービスが削除されます。`<service-name>` は、削除するモバイル サービスの名前です。
 
 		azure mobile delete <service-name> -a -q
 
-By including `-a` and `-q` parameters, this command also deletes the SQL Database and server used by the mobile service without displaying a prompt.
+このコマンドでは、`-a` パラメーターと `-q` パラメーターを含めることで、モバイル サービスで使用されている SQL データベースやサーバーも、確認メッセージを表示することなく削除されます。
 
-<div class="dev-callout"><strong>Note</strong> 
-   <p>If you do not specify the <code>-q</code> parameter along with <code>-a</code> or <code>-d</code>, execution is paused and you are prompted to select delete options for your SQL Database. Only use the <code>-a</code> parameter when no other service uses the database or server; otherwise use the <code>-d</code> parameter to only delete data that belongs to the mobile service being deleted.</p>
+<div class="dev-callout"><strong>注</strong>
+   <p><code>-a</code> または <code>-d</code> と共に <code>-q</code> パラメーターを指定しなかった場合、実行が一時停止され、SQL データベースの削除オプションを選択するように求めるメッセージが表示されます。<code>-a</code> パラメーターは、他のサービスでデータベースまたはサーバーが使用されていない場合にのみ使用してください。それ以外の場合は、削除するモバイル サービスに含まれるデータのみを削除できるように、<code>-d</code> パラメーターを使用してください。</p>
 </div>
 
-<h2><a name="create-table"></a><span class="short-header">Create table</span>How to create a table in the mobile service</h2>
+<h2><a name="create-table"></a><span class="short-header">テーブルの作成</span>モバイル サービスにテーブルを作成する方法</h2>
 
-The following command creates a table in the specified mobile service, where `<service-name>` is the name of the mobile service and `<table-name>` is the name of the table to create:
+次のコマンドでは、指定されたモバイル サービスにテーブルが作成されます。`<service-name>` はモバイル サービスの名前、`<table-name>` は作成するテーブルの名前です。
 
 		azure mobile table create <service-name> <table-name>
 
-This creates a new table with the default permissions, `application`, for the table operations: `insert`, `read`, `update`, and `delete`. 
+これにより、新しいテーブルが作成され、テーブル操作 `insert`、`read`、`update`、`delete` に対して、既定のアクセス許可 `application` が設定されます。
 
-The following command creates a new table with public `read` permission but with `delete` permission granted only to administrators:
+次のコマンドでは、パブリックの`読み取り`アクセス許可で新しいテーブルが作成されますが、管理者にのみ`削除`アクセス許可が付与されます。
 
 		azure mobile table create <service-name> <table-name> -p read=public,delete=admin
 
-The following table shows the script permission value compared to the permission value in the [Azure Management Portal].
+次のテーブルでは、スクリプトのアクセス許可値と [Azure 管理ポータル]でのアクセス許可値を比較しています。
 
-<table border="1" width="100%"><tr><th>Script value</th><th>Management Portal value</th></tr>
-<tr><td><code>public</code></td><td>Everyone</td></tr>
-<tr><td><code>application</code> (default)</td><td>Anybody with the application key</td></tr>
-<tr><td><code>user</code></td><td>Only authenticated users</td></tr>
-<tr><td><code>admin	</code></td><td>Only scripts and admins</td></tr></table>
+<table border="1" width="100%"><tr><th>スクリプトの値</th><th>管理ポータルの値</th></tr>
+<tr><td><code>public</code></td><td>すべてのユーザー</td></tr>
+<tr><td><code>application</code>(既定)</td><td> アプリケーション キーを持つユーザー</td></tr>
+<tr><td><code>user</code></td><td>認証されたユーザーのみ</td></tr>
+<tr><td><code>admin	</code></td><td>スクリプトと管理者のみ</td></tr></table>
 
-The `mobile table create` command fails when the specified table already exists. In your automation scripts, you should attempt to delete a table before attempting to recreate it.
+指定されたテーブルが存在する場合、`mobile table create` コマンドは失敗します。自動化スクリプト内では、テーブルの再作成を試行する前に、そのテーブルを削除する必要があります。
 
-<h2><a name="list-tables"></a><span class="short-header">List tables</span>How to list existing tables in a mobile service</h2>
+<h2><a name="list-tables"></a><span class="short-header">テーブルのリスト</span>モバイル サービス内の既存のテーブルをリストする方法</h2>
 
-The following command returns a list of all of the tables in a mobile service, where `<service-name>` is the name of the mobile service:
+次のコマンドでは、モバイル サービス内のすべてのテーブルのリストが返されます。`<service-name>` は、モバイル サービスの名前です。
 
 		azure mobile table list <service-name>
 
-This command also shows the number of indexes on each table and the number of data rows currently in the table.
+このコマンドでは、各テーブルのインデックスの数と、テーブル内に現在存在するデータ行の数も表示されます。
 
-<h2><a name="delete-table"></a><span class="short-header">Delete table</span>How to delete an existing table from the mobile service</h2>
+<h2><a name="delete-table"></a><span class="short-header">テーブルの削除</span>モバイル サービスから既存のテーブルを削除する方法</h2>
 
-The following command deletes a table from the mobile service, where `<service-name>` is the name of the mobile service and `<table-name>` is the name of the table to delete:
+次のコマンドでは、モバイル サービスからテーブルが削除されます。`<service-name>` はモバイル サービスの名前、`<table-name>` は削除するテーブルの名前です。
 
 		azure mobile table delete <service-name> <table-name> -q
 
-In automation scripts, use the `-q` parameter to delete the table without displaying a confirmation prompt that blocks execution.
+自動化スクリプト内では、実行をブロックする確認プロンプトを表示せずにテーブルを削除するために、`-q` パラメーターを使用します。
 
-<h2><a name="register-script"></a><span class="short-header">Register a script</span>How to register a script to a table operation</h2>
+<h2><a name="register-script"></a><span class="short-header">スクリプトの登録</span>テーブル操作にスクリプトを登録する方法</h2>
 
-The following command uploads and registers a function to an operation on a table, where `<service-name>` is the name of the mobile service, `<table-name>` is the name of the table, and `<operation>` is the table operation, which can be `read`, `insert`, `update`, or `delete`:
+次のコマンドでは、関数をアップロードし、テーブルに対する操作に登録します。`<service-name>` はモバイル サービスの名前、`<table-name>` はテーブルの名前、`<operation>` はテーブル操作 (`read`、`insert`、`update`、`delete`) です。
 
 		azure mobile script upload <service-name> table/<table-name>.<operation>.js
 
-Note that this operation uploads a JavaScript (.js) file from the local computer. The name of the file must be composed  from the table and operation names, and it must be located in the `table` subfolder relative to the location where the command is executed. For example, the following operation uploads and registers a new `insert` script that belongs to the `TodoItems` table:
+この操作では、JavaScript (.js) ファイルがローカル コンピューターからアップロードされます。ファイル名はテーブル名と操作名で構成し、ファイルは、コマンドが実行される場所の `table` サブフォルダーに配置する必要があります。たとえば、次の操作では、`TodoItems` テーブルに対する新しい `insert` スクリプトがアップロードおよび登録されます。
 
 		azure mobile script upload todolist table/todoitems.insert.js
 
-The function declaration in the script file must also match the registered table operation. This means that for an `insert` script, the uploaded script contains a function with the following signature:
+スクリプト ファイル内の関数宣言は、登録されているテーブル操作にも一致する必要があります。つまり、`insert` スクリプトの場合は、アップロードされたスクリプトに、次のシグネチャを持つ関数が含まれるということです。
 
 		function insert(item, user, request) {
 		    ...
 		} 
 
-For more information about registering scripts, see [Mobile Services server script reference].
+スクリプトの登録方法の詳細については、[モバイル サービスのサーバー スクリプト リファレンス]を参照してください。
 
-<!--<h2><a name="test-service"></a><span class="short-header">Test the service</span>Test the new mobile service</h2>
+<!--<h2><a name="test-service"></a><span class="short-header">サービスのテスト</span>新しいモバイル サービスをテストする</h2>
 
-When you are automating the creation of your mobile service, you can optionally use cURL or another command-line request generator to 
+モバイル サービスの作成を自動化する場合は、必要に応じて cURL または別のコマンドライン要求ジェネレーターを使用することもできます。
 
-## <a name="nextsteps"> </a>Next Steps
-Next steps here....
+## <a name="nextsteps"> </a>次のステップ
+次の手順をここに記載....
 -->
 <!-- Anchors. -->
-[Download and install the command-line tools]: #install
-[Download and import publish settings]: #import
-[Create a new mobile service]: #create-service
-[Get the master key]: #get-master-key
-[Create a new table]: #create-table
-[Register a new table script]: #register-script
-[Delete an existing table]: #delete-table
-[Delete an existing mobile service]: #delete-service
-[Test the mobile service]: #test-service
-[List mobile services]: #list-services
-[List tables]: #list-tables
-[Next steps]: #next-steps
+[コマンド ライン ツールをダウンロードしインストールする]: #install
+[発行設定をダウンロードしインポートする]: #import
+[新しいモバイル サービスを作成する]: #create-service
+[マスター キーを取得する]: #get-master-key
+[新しいテーブルを作成する]: #create-table
+[新しいテーブル スクリプトを登録する]: #register-script
+[既存のテーブルを削除する]: #delete-table
+[既存のモバイル サービスを削除する]: #delete-service
+[モバイル サービスをテストする]: #test-service
+[モバイル サービスをリストする]: #list-services
+[テーブルをリストする]: #list-tables
+[次のステップ]: #next-steps
 
 <!-- Images. -->
 
@@ -184,14 +184,15 @@ Next steps here....
 
 
 <!-- URLs. -->
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/p?LinkId=262293
+[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p?LinkId=262293
 
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
 [nodejs-org]: http://nodejs.org/
 [install-node-linux]: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 
 [mac-installer]: http://go.microsoft.com/fwlink/p?LinkId=252249
 [windows-installer]: http://go.microsoft.com/fwlink/p?LinkID=275464
-[reference-docs]: /en-us/manage/linux/other-resources/command-line-tools/#Commands_to_manage_mobile_services
-[How to install the Azure Command-Line Tools for Mac and Linux]: http://go.microsoft.com/fwlink/p/?LinkId=275795
+[reference-docs]: /ja-jp/manage/linux/other-resources/command-line-tools/#Commands_to_manage_mobile_services
+[Mac および Linux 用 Azure コマンド ライン ツールのインストール方法]: http://go.microsoft.com/fwlink/p/?LinkId=275795
+
 

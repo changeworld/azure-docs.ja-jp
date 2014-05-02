@@ -1,94 +1,94 @@
-<properties linkid="develop-java-tutorials-jenkins-continuous-integration" urlDisplayName="Jenkins Continuous Integration" pageTitle="Using Azure Storage with a Jenkins Continuous Integration Solution | Microsoft Azure" metaKeywords="" description="This tutorial show how to use the Azure blob service as a repository for build artifacts created by a Jenkins continuous integration solution." metaCanonical="" services="storage" documentationCenter="Java" title="Using Azure Storage with a Jenkins Continuous Integration solution" authors="waltpo" solutions="" manager="bjsmith" editor="mollybos" />
+<properties linkid="develop-java-tutorials-jenkins-continuous-integration" urlDisplayName="Jenkins 継続的インテグレーション" pageTitle="Jenkins 継続的インテグレーション ソリューションでの Azure ストレージの使用 | Microsoft Azure" metaKeywords="" description="このチュートリアルでは、Jenkins を使用する継続的インテグレーション ソリューションで作成されるビルド アーティファクトのリポジトリとして Azure BLOB サービスを使用する方法について説明します。" metaCanonical="" services="storage" documentationCenter="Java" title="Jenkins 継続的インテグレーション ソリューションでの Azure ストレージの使用" authors="waltpo" solutions="" manager="bjsmith" editor="mollybos" />
 
-#Using Azure Storage with a Jenkins Continuous Integration solution
+#Jenkins 継続的インテグレーション ソリューションでの Azure ストレージの使用
 
-*By [Microsoft Open Technologies Inc.][ms-open-tech]*
+*[Microsoft Open Technologies Inc.][ms-open-tech]*
 
-The following information shows how to use the Azure Blob service as a repository of build artifacts created by a Jenkins Continuous Integration (CI) solution. One of the scenarios where you would find this useful is when you're coding in an agile development environment (using Java or other languages), builds are running based on continuous integration, and you need a repository for your build artifacts, so that you could, for example, share them with other organization members, your customers, or maintain an archive. 
+ここでは、Jenkins 継続的インテグレーション (CI) ソリューションで作成されるビルド アーティファクトのリポジトリとして Azure BLOB サービスを使用する方法について説明します。この方法が有用になるシナリオの 1 つが、アジャイル開発環境で (Java などの言語を使って) コーディングをしており、継続的インテグレーションに基づいてビルドを実行するとき、ビルド アーティファクト用のリポジトリが必要な場合です。このリポジトリがあれば、ビルド アーティファクトを他の組織のメンバーや顧客と共有したり、そのアーカイブを保存したりできます。
 
-In this tutorial you will be using the Azure Storage Plugin for Jenkins CI made available by Microsoft Open Technologies, Inc.
+このチュートリアルでは、Microsoft Open Technologies, Inc が公開している Jenkins CI 用の Azure ストレージ プラグインを使用します。
 
-## Table of Contents
+## 目次
 
--   [Overview of Jenkins][]
--   [Benefits of using the Blob service][]
--   [Prerequisites][]
--   [How to use the Blob service with Jenkins CI][]
--   [How to install the Azure Storage plugin][]
--   [How to configure the Azure Storage plugin to use your storage account][]
--   [How to create a post-build action that uploads your build artifacts to your storage account][]
--   [Components used by the Blob service][]
+-   [Jenkins の概要][]
+-   [BLOB サービスを使用するメリット][]
+-   [前提条件][]
+-   [Jenkins CI で BLOB サービスを使用する方法][]
+-   [Azure ストレージ プラグインのインストール方法][]
+-   [Azure ストレージ プラグインを構成してストレージ アカウントを使用する方法][]
+-   [ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションの作成方法][]
+-   [BLOB サービスが使用するコンポーネント][]
 
-<h2><a name="overview"></a><span class="short header">Overview</span>Overview of Jenkins</h2>
-Jenkins enables continuous integration of a software project by allowing developers to easily integrate their code changes and have builds produced automatically and frequently, thereby increasing the productivity of the developers. Builds are versioned, and build artifacts can be uploaded to various repositories. This topic will show how to use Azure blob storage as the repository of the build artifacts.
+<h2><a name="overview"></a><span class="short header">概要</span>Jenkins の概要</h2>
+Jenkins では、開発者がコードの変更を簡単に統合し、ビルドを自動的に頻繁に生成することができ、開発者の生産性が向上するため、ソフトウェア プロジェクトの継続的な統合を実現できます。ビルドはバージョン管理され、ビルド アーティファクトをさまざまなリポジトリにアップロードできます。このトピックでは、Azure BLOB ストレージをビルド アーティファクトのリポジトリとして使用する方法について説明します。
 
-More information about Jenkins can be found at [Meet Jenkins][].
+Jenkins の詳細については、「[Meet Jenkins (Jenkins について)][]」を参照してください。
 
-<h2><a name="benefits"></a><span class="short header">Benefits</span>Benefits of using the Blob service</h2>
+<h2><a name="benefits"></a><span class="short header">メリット</span>BLOB サービスを使用するメリット</h2>
 
-Benefits of using the Blob service to host your agile development build artifacts include:
+BLOB サービスを使用してアジャイル開発のビルド アーティファクトをホストするメリットには、次の点が挙げられます。
 
-- High availability of your build artifacts.
-- Performance when your Jenkins CI solution uploads your build artifacts.
-- Performance when your customers and partners download your build artifacts.
-- Control over user access policies, with a choice between anonymous access, expiration-based shared access signature access, private access, etc.
+- ビルド アーティファクトに高可用性を実現。
+- Jenkins CI ソリューションでビルド アーティファクトをアップロードする際のパフォーマンスを改善。
+- 顧客およびパートナーがビルド アーティファクトをダウンロードする際のパフォーマンスを改善。
+- 匿名アクセス、有効期限ベースの共有アクセス署名によるアクセス、プライベート アクセスなどから 1 つを選んでユーザー アクセス ポリシーを制御。
 
-<h2><a name="prerequisites"></a><span class="short header">Prequisites</span>Prequisites</h2>
+<h2><a name="prerequisites"></a><span class="short header">前提条件</span>前提条件</h2>
 
-You will need the following to use the Blob service with your Jenkins CI solution:
+Jenkins CI ソリューションで BLOB サービスを使用するには、次のものが必要です。
 
-- A Jenkins Continuous Integration solution.
+- Jenkins 継続的インテグレーション ソリューション。
 
-    If you currently don't have a Jenkins CI solution, you can run a Jenkins CI solution using the following technique:
+    Jenkins CI ソリューションがない場合には、次の方法によって Jenkins CI ソリューションを実行できます。
 
-    1. On a Java-enabled machine, download jenkins.war from <http://jenkins-ci.org>.
-    2. At a command prompt that is opened to the folder that contains jenkins.war, run:
+    1. Java が有効なコンピューターで、<http://jenkins-ci.org> から jenkins.war をダウンロードします。
+    2. コマンド プロンプトを開いて jenkins.war が格納されているフォルダーに移動し、次のコマンドを実行します。
 
         `java -jar jenkins.war`
 
-    3. In your browser, open `http://localhost:8080/`. This will open the Jenkins dashboard, which you will use to install and configure the Azure Storage plugin.
+    3. ブラウザーで、`http://localhost:8080/` を開きます。Jenkins ダッシュボードが開きます。ここで、Azure ストレージ プラグインをインストールおよび構成できます。
 
-        While a typical Jenkins CI solution would be set up to run as a service, running the Jenkins war at the command line will be sufficient for this tutorial.
+        通常の Jenkins CI ソリューションであればサービスとして実行されるように設定しますが、このチュートリアルではコマンド ラインで Jenkins.war を実行するだけで十分です。
 
-- An Azure account. You can sign up for an Azure account at <http://www.windowsazure.com>.
+- Azure アカウント。Azure アカウントには、<http://www.windowsazure.com> でサインアップできます。
 
-- An Azure storage account. If you don't already have a storage account, you can create one using the steps at [How to Create a Storage Account][].
+- Azure のストレージ アカウント。まだストレージ アカウントを取得していない場合には、[ストレージ アカウントの作成方法][]を示した記事の手順に従って作成できます。
 
-- Familiarity with the Jenkins CI solution is recommended but not required, as the following content will use a basic example to show you the steps needed when using the Blob service as a repository for Jenkins CI build artifacts.
+- 以降では、Jenkins CI のビルド アーティファクトで BLOB サービスをリポジトリとして使用するうえで必要な手順を、基本的な例を使って説明しています。Jenkins CI ソリューションにある程度習熟していることが望ましいものの、必須ではありません。
 
-<h2><a name="howtouse"></a><span class="short header">How to use Blob service</span>How to use the Blob service with Jenkins CI</h2>
+<h2><a name="howtouse"></a><span class="short header">BLOB サービスの使用方法</span>Jenkins CI で BLOB サービスを使用する方法</h2>
 
-To use the Blob service with Jenkins, you'll need to install the Azure Storage plugin, configure the plugin to use your storage account, and then create a post-build action that uploads your build artifacts to your storage account. These steps are described in the following sections.
+Jenkins で BLOB サービスを使用するには、Azure ストレージ プラグインをインストールし、そのプラグインを構成してストレージ アカウントを使用するようにしたうえで、ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションを作成する必要があります。以降のセクションでは、ここに挙げた手順について説明します。
 
-<h2><a name="howtoinstall"></a><span class="short header">How to install</span>How to install the Azure Storage plugin</h2>
+<h2><a name="howtoinstall"></a><span class="short header">インストール方法</span>Azure ストレージ プラグインのインストール方法</h2>
 
-1. Within the Jenkins dashboard, click **Manage Jenkins**.
-2. In the **Manage Jenkins** page, click **Manage Plugins**.
-3. Click the **Available** tab.
-4. In the **Artifact Uploaders** section, check **Azure Storage plugin**.
-5. Click either **Install without restart** or **Download now and install after restart**.
-6. Restart Jenkins.
+1. Jenkins ダッシュボードで、**[Manage Jenkins]** をクリックします。
+2. **[Manage Jenkins]** ページで **[Manage Plugins]** をクリックします。
+3. **[Available]** タブをクリックします。
+4. **[Artifact Uploaders]** セクションで、**Azure ストレージ プラグイン**のチェック ボックスをオンにします。
+5. **[Install without restart]** と **[Download now and install after restart]** のいずれかをクリックします。
+6. Jenkins を再起動します。
 
-<h2><a name="howtoconfigure"></a><span class="short header">How to configure</span>How to configure the Azure Storage plugin to use your storage account</h2>
+<h2><a name="howtoconfigure"></a><span class="short header">構成方法</span>Azure ストレージ プラグインを構成してストレージ アカウントを使用する方法</h2>
 
-1. Within the Jenkins dashboard, click **Manage Jenkins**.
-2. In the **Manage Jenkins** page, click **Configure System**.
-3. In the **Azure Storage Account Configuration** section:
-    1. Enter your storage account name, which you can obtain from the Azure portal, <https://manage.windowsazure.com>.
-    2. Enter your storage account key, also obtainable from the Azure portal.
-    3. Use the default value for **Blob Service Endpoint URL** if you are using the public Azure cloud. If you are using a different Azure cloud, use the endpoint as specified in the Azure management portal for your storage account. 
-    4. Click **Validate Storage Credentials** to validate your storage account. 
-    5. [Optional] If you have additional storage accounts that you want made available to your Jenkins CI, click **Add more Storage Accounts**.
-    6. Click **Save** to save your settings.
+1. Jenkins ダッシュボードで、**[Manage Jenkins]** をクリックします。
+2. **[Manage Jenkins]** ページで **[Configure System]** をクリックします。
+3. **[Azure Storage Account Configuration]** セクションで、次の操作を行います。
+    1. Azure ポータル (<https://manage.windowsazure.com>) で取得したストレージ アカウント名を入力します。
+    2. 同様に、Azure ポータルで取得したストレージ アカウント キーを入力します。
+    3. パブリック Azure クラウドを使用している場合、**[Blob Service Endpoint URL]** には既定値を使用します。これとは異なる Azure クラウドを使用している場合には、Azure 管理ポータルでストレージ アカウント用に指定されたエンドポイントを使用します。
+    4. **[Validate Storage Credentials]** をクリックしてストレージ アカウントを検証します。
+    5. [省略可能] Jenkins CI で利用できるストレージ アカウントを追加する場合には、**[Add more Storage Accounts]** をクリックします。
+    6. **[Save]** をクリックして設定を保存します。
 
-<h2><a name="howtocreatepostbuild"></a><span class="short header">How to create post-build action</span>How to create a post-build action that uploads your build artifacts to your storage account</h2>
+<h2><a name="howtocreatepostbuild"></a><span class="short header">ビルド後のアクションの作成方法</span>ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションの作成方法</h2>
 
-For instruction purposes, first we'll need to create a job that will create several files, and then add in the post-build action to upload the files to your storage account.
+説明のため、ストレージ アカウントにファイルをアップロードするためのビルド後のアクションを追加する前に、複数のファイルを作成するジョブを作成する必要があります。
 
-1. Within the Jenkins dashboard, click **New Job**.
-2. Name the job **MyJob**, click **Build a free-style software project**, and then click **OK**.
-3. In the **Build** section of the job configuration, click **Add build step** and choose **Execute Windows batch command**.
-4. In **Command**, use the following commands:
+1. Jenkins ダッシュボードで、**[New Job]** をクリックします。
+2. ジョブの名前を **MyJob** に設定し、**[Build a free-style software project]**、**[OK]** の順にクリックします。
+3. ジョブ構成の **[Build]** セクションで **[Add build step]** をクリックした後、**[Execute Windows batch command]** を選択します。
+4. **[Command]** で次のコマンドを使用します。
 
         md text
         cd text
@@ -96,51 +96,52 @@ For instruction purposes, first we'll need to create a job that will create seve
         date /t > date.txt
         time /t >> date.txt
  
-5. In the **Post-build Actions** section of the job configuration, click **Add post-build action** and choose **Upload artifacts to Azure Blob storage**.
-6. For **Storage Account Name**, select the storage account to use.
-7. For **Container Name**, specify the container name. (The container will be created if it does not already exist when the build artifacts are uploaded.) You can use environment variables, so for this example enter **${JOB_NAME}** as the container name.
+5. ジョブ構成の **[Post-build Actions]** セクションで **[Add post-build action]** をクリックした後、**[Upload artifacts to Azure Blob storage]** を選択します。
+6. **[Storage Account Name]** では、使用するストレージ アカウントを選択します。
+7. **[Container Name]** では、コンテナー名を指定します (コンテナーは、ビルド アーティファクトをアップロードする時点で存在していなければ、自動で作成されます)。環境変数を使用することもできます。この例では、コンテナー名に「**${JOB_NAME}**」と入力します。
 
-    **Tip**
+    **ヒント**
     
-    Below the **Command** section where you entered a script for **Execute Windows batch command** is a link to the environment variables recognized by Jenkins. Click that link to learn the environment variable names and descriptions. Note that environment variables that contain special characters, such as the **BUILD_URL** environment variable, are not allowed as a container name or common virtual path.
+    **[Execute Windows batch command]** にスクリプトを入力した **[Command]** セクションの下には、Jenkins が認識できる環境変数へのリンクがあります。環境変数の名前および説明を確認するには、リンクをクリックします。**BUILD_URL** など、特殊文字が含まれる環境変数は、コンテナー名および共通仮想パスに使用できません。
 
-8. Click **Make container public** for this example. (If you want to use a private container, you'll need to create a shared access signature to allow access. That is beyond the scope of this topic. You can learn more about shared access signatures at [Creating a Shared Access Signature](http://go.microsoft.com/fwlink/?LinkId=279889).)
-9. For **List of Artifacts to upload**, enter **text/*.txt**.
-10. For **Common virtual path for uploaded artifacts**, enter **${BUILD\_ID}/${BUILD\_NUMBER}**.
-11. Click **Save** to save your settings.
-12. In the Jenkins dashboard, click **Build Now** to run **MyJob**. Examine the console output for status. Status messages for Azure storage will be included in the console output when the post-build action starts to upload build artifacts.
-13. Upon successful completion of the job, you can examine the build artifacts by opening the public blob.
-    1. Login to the Azure management portal, <https://manage.windowsazure.com>.
-    2. Click **Storage**.
-    3. Click the storage account name that you used for Jenkins.
-    4. Click **Containers**.
-    5. Click the container named **myjob**, which is the lowercase version of the job name that you assigned when you created the Jenkins job. Container names and blob names are lowercase (and case-sensitive) in Azure storage. Within the list of blobs for the container named **myjob** you should see **hello.txt** and **date.txt**. Copy the URL for either of these items and open it in your browser. You will see the text file that was uploaded as a build artifact.
+8. この例では **[Make container public]** をクリックします (プライベート コンテナーを使用する場合には、共有アクセス署名を作成してアクセスを許可する必要があります。ただし、この点についてはこのトピックでは取り扱いません。共有アクセス署名に関する詳細については、[共有アクセス署名の作成に関するページ](http://go.microsoft.com/fwlink/?LinkId=279889)を参照してください)。
+9. **[List of Artifacts to upload]** では、「**text/*.txt**」と入力します。
+10. **[Common virtual path for uploaded artifacts]** では、「**${BUILD\_ID}/${BUILD\_NUMBER}**」と入力します。
+11. **[Save]** をクリックして設定を保存します。
+12. Jenkins ダッシュボードで、**[Build Now]** をクリックして **MyJob** を実行します。コンソール出力でステータスを確認します。ビルド後のアクションによってビルド アーティファクトのアップロードが開始されると、コンソール出力に Azure ストレージに関するステータス メッセージが表示されます。
+13. ジョブが正常に完了すると、パブリック BLOB を開いてビルド アーティファクトを確認できます。
+    1. Azure 管理ポータル (<https://manage.windowsazure.com>) にログインします。
+    2. **[ストレージ]** をクリックします。
+    3. Jenkins に使用したストレージ アカウント名をクリックします。
+    4. **[コンテナー]** をクリックします。
+    5. **myjob** という名前のコンテナーをクリックします。これは、Jenkins ジョブを作成したときに割り当てたジョブ名を小文字にしたものです。Azure ストレージでは、コンテナー名と BLOB 名は小文字です (大文字と小文字は区別されます)。**myjob** という名前のコンテナーの BLOB の一覧に、**hello.txt** と **date.txt** の 2 つがあります。そのどちらかの URL をコピーして、ブラウザーで開きます。このテキスト ファイルがビルド アーティファクトとしてアップロードされていることがわかります。
 
-<h2><a name="components"></a><span class="short header">Blob service components</span>Components used by the Blob service</h2>
+<h2><a name="components"></a><span class="short header">BLOB サービス コンポーネント</span>BLOB サービスが使用するコンポーネント</h2>
 
-The following provides an overview of the Blob service components.
+以下では、BLOB サービス コンポーネントの概要を説明します。
 
-- **Storage Account**: All access to Azure Storage is done through a storage account. This is the highest level of the namespace for accessing blobs. An account can contain an unlimited number of containers, as long as their total size is under 100TB.
-- **Container**: A container provides a grouping of a set of blobs. All blobs must be in a container. An account can contain an unlimited number of containers. A container can store an unlimited number of blobs.
-- **Blob**: A file of any type and size. There are two types of blobs that can be stored in Azure Storage: block and page blobs. Most files are block blobs. A single block blob can be up to 200GB in size. This tutorial uses block blobs. Page blobs, another blob type, can be up to 1TB in size, and are more efficient when ranges of bytes in a file are modified frequently. For more information about blobs, see [Understanding Block Blobs and Page Blobs](http://msdn.microsoft.com/en-us/library/windowsazure/ee691964.aspx).
-- **URL format**: Blobs are addressable using the following URL format:
+- **ストレージ アカウント**: Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。これは、アクセスする BLOB の名前空間の中でも最高レベルに位置するものです。アカウントに格納できるコンテナーの数は、コンテナーの合計サイズが 100 TB 未満である限り無制限です。
+- **コンテナー**: コンテナーは、BLOB のセットをグループ化します。すべての BLOB はコンテナーに格納されている必要があります。1 つのアカウントに格納できるコンテナーの数は無制限です。また、1 つのコンテナーに保存できる BLOB の数も無制限です。
+- **BLOB**: 任意の種類およびサイズのファイルです。Azure のストレージ サービスに格納できる BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。ほとんどのファイルはブロック BLOB です。1 つのブロック BLOB には、最大で 200 GB までのデータを格納できます。このチュートリアルでは、ブロック BLOB を使用します。もう 1 つの種類の BLOB であるページ BLOB には、最大 1 TB までのデータを格納できます。ファイルのバイト数の範囲が頻繁に変更される場合には、こちらの方が効率的です。BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee691964.aspx)」を参照してください。
+- **URL 形式**: BLOB は、次の URL 形式を使用してアドレスを指定し、アクセスできます。
 
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
     
-    (The format above applies to the public Azure cloud. If you are using a different Azure cloud, use the endpoint within the Azure management portal to determine your URL endpoint.)
+    (ここに挙げた形式は、パブリック Azure クラウドに適用されるものです。これとは異なる Azure クラウドを使用している場合には、Azure 管理ポータル内のエンドポイントを使用して URL エンドポイントを指定します。)
 
-    In the format above, `storageaccount` represents the name of your storage account, `container_name` represents the name of your container, and `blob_name` represents the name of your blob, respectively. Within the container name, you can have multiple paths, separated by a forward slash, **/**. The example container name in this tutorial was **MyJob**, and **${BUILD\_ID}/${BUILD\_NUMBER}** was used for the common virtual path, resulting in the blob having a URL of the following form:
+    この形式では、`storageaccount` がストレージ アカウントの名前、`container_name` がコンテナーの名前、`blob_name` が BLOB の名前を、それぞれ表しています。コンテナー名にはパスを複数使用することができます。その場合には、スラッシュ (**/**) で区切ります。このチュートリアルで例に使用したコンテナー名は **MyJob**、共通仮想パスは **${BUILD\_ID}/${BUILD\_NUMBER}** でした。このため、BLOB の URL は次のようになります。
 
     `http://example.blob.core.windows.net/myjob/2013-01-28_15-00-35/2/hello.txt`
 
-  [Overview of Jenkins]: #overview
-  [Benefits of using the Blob service]: #benefits
-  [Prerequisites]: #prerequisites
-  [How to use the Blob service with Jenkins CI]: #howtouse
-  [How to install the Azure Storage plugin]: #howtoinstall
-  [How to configure the Azure Storage plugin to use your storage account]: #howtoconfigure
-  [How to create a post-build action that uploads your build artifacts to your storage account]: #howtocreatepostbuild
-  [Components used by the Blob service]: #components
-  [How to Create a Storage Account]: http://go.microsoft.com/fwlink/?LinkId=279823
-  [Meet Jenkins]: https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins
+  [Jenkins の概要]: #overview
+  [BLOB サービスを使用するメリット]: #benefits
+  [前提条件]: #prerequisites
+  [Jenkins CI で BLOB サービスを使用する方法]: #howtouse
+  [Azure ストレージ プラグインのインストール方法]: #howtoinstall
+  [Azure ストレージ プラグインを構成してストレージ アカウントを使用する方法]: #howtoconfigure
+  [ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションの作成方法]: #howtocreatepostbuild
+  [BLOB サービスが使用するコンポーネント]: #components
+  [ストレージ アカウントの作成方法]: http://go.microsoft.com/fwlink/?LinkId=279823
+  [Meet Jenkins (Jenkins について)]: https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins
   [ms-open-tech]: http://msopentech.com
+

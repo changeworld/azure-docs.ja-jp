@@ -1,113 +1,113 @@
-<properties linkid="develop-mobile-tutorials-get-started-with-push-xamarin-android" urlDisplayName="Get Started with Push Notifications" pageTitle="Get started with push notifications - Mobile Services" metaKeywords="" description="Learn how to use push notifications in Xamarin.Android apps with Azure Mobile Services." metaCanonical="" disqusComments="0" umbracoNaviHide="1" title="Get started with push notifications in Mobile Services" documentationCenter="Mobile" authors="" />
-# Get started with push notifications in Mobile Services
+<properties linkid="develop-mobile-tutorials-get-started-with-push-xamarin-android" urlDisplayName="プッシュ通知の使用" pageTitle="プッシュ通知の使用 - モバイル サービス" metaKeywords="" description="Azure モバイル サービスにより Xamarin.Android アプリケーションでプッシュ通知を使用する方法について説明します。" metaCanonical="" disqusComments="0" umbracoNaviHide="1" title="モバイル サービスでのプッシュ通知の使用" documentationCenter="Mobile" authors="" />
+# モバイル サービスでのプッシュ通知の使用
 
 <div class="dev-center-tutorial-selector sublanding">
-<a href="/en-us/develop/mobile/tutorials/get-started-with-push-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-android" title="Android">Android</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a></div>
+<a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-js" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-wp8" title="Windows Phone">Windows Phone</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-ios" title="iOS">iOS</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-android" title="Android">Android</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a></div>
 
-This topic shows you how to use Azure Mobile Services to send push notifications to a Xamarin.Android app. In this tutorial you add push notifications using the Google Cloud Messaging (GCM) service to the quickstart project. When complete, your mobile service will send a push notification each time a record is inserted.
+このトピックでは、Azure モバイル サービスを使用して Xamarin Android アプリにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Google Cloud Messaging (GCM) サービスを使用したプッシュ通知をクイック スタート プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
 
-This tutorial walks you through these basic steps to enable push notifications:
+このチュートリアルでは、プッシュ通知を有効にするための、次の基本的な手順について説明します。
 
-1. [Register your app for push notifications]
-2. [Configure Mobile Services]
-2. [Add push notifications to the app]
-3. [Update scripts to send push notifications]
-4. [Insert data to receive notifications]
+1. [アプリケーションをプッシュ通知に登録する]
+2. [モバイル サービスを構成する]
+2. [アプリケーションにプッシュ通知を追加する]
+3. [プッシュ通知を送信するようにスクリプトを更新する]
+4. [データを挿入して通知を受け取る]
 
-This tutorial requires the following:
+このチュートリアルには、次のものが必要です。
 
-+ An active Google account
++ アクティブな Google アカウント
 
-This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete [Get started with Mobile Services]. 
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。
 
-<h2><a name="register"></a><span class="short-header">Register your app</span>Register your app for push notifications</h2>
+<h2><a name="register"></a><span class="short-header">アプリケーションの登録</span>アプリケーションをプッシュ通知に登録する</h2>
 
-<div class="dev-callout"><b>Note</b>
-<p>To complete the procedure in this topic, you must have a Google account that has a verified email address. To create a new Google account, go to <a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a>.</p>
+<div class="dev-callout"><b>メモ</b>
+<p>このトピックの手順を完了するには、電子メール アドレスの確認が完了している Google アカウントが必要になります。新しい Google アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> にアクセスしてください。</p>
 </div> 
 
-1. Navigate to the <a href="http://go.microsoft.com/fwlink/p/?LinkId=268303" target="_blank">Google apis</a> web site, sign-in with your Google account credentials, and then click **Create project...**.
+1. <a href="http://go.microsoft.com/fwlink/p/?LinkId=268303" target="_blank">Google apis</a> Web サイトに移動し、Google アカウント資格情報でサインインして、**[Create project...]** をクリックします。
 
 	![][1]   
 
 	> [WACOM.NOTE]
-	> When you already have an existing project, you are directed to the **Dashboard** page after login. To create a new project from the Dashboard, expand **API Project<**, click **Create...** under **Other projects**, then enter a project name and click **Create project**.
+	> 既にプロジェクトがある場合は、ログイン後に **[Dashboard]** ページが表示されます。ダッシュボードで新しいプロジェクトを作成するには、**[API Project]<**, click **Create...** under **Other projects**, then enter a project name and click **Create project**.
 
 2. Click the Overview button in the left column, and make a note of the Project Number in the Dashboard section. 
 
 	Later in the tutorial you set this value as the **PROJECT_ID** variable in the client.
 
-3. On the <a href="http://go.microsoft.com/fwlink/p/?LinkId=268303" target="_blank">Google apis</a> page, click **Services**, then click the toogle to turn on **Google Cloud Messaging for Android** and accept the terms of service. 
+3. On the <a href="http://go.microsoft.com/fwlink/p/?LinkId=268303" target="_blank">Google apis</a> ページで **[Services]** をクリックし、トグルをクリックして **[Google Cloud Messaging for Android]** をオンにし、サービスの条件に同意します。
 
-4. Click **API Access**, and then click **Create new Server key...** 
+4. **[API Access]** をクリックし、**[Create new Server key...]** をクリックします。
 
 	![][2]
 
-5. In **Configure Server Key for API Project**, click **Create**.
+5. **[Configure Server Key for API Project]** で、**[Create]** をクリックします。
 
 	![][3]
 
-6. Make a note of the **API key** value.
+6. **[API key]** の値をメモしておきます。
 
 	![][4] 
 
-Next, you will use this API key value to enable Mobile Services to authenticate with GCM and send push notifications on behalf of you app.
+次に、この API キー値を使用して、モバイル サービスが GCM で認証し、アプリケーションの代わりにプッシュ通知を送信できるようにします。
 
-<a name="configure"></a><h2><span class="short-header">Configure the service</span>Configure Mobile Services to send push requests</h2>
+<a name="configure"></a><h2><span class="short-header">サービスの構成</span>プッシュ要求を送信するようにモバイル サービスを構成する</h2>
 
-1. Log on to the [Azure Management Portal], click **Mobile Services**, and then click your app.
+1. Azure の管理ポータル[にログオンし、][モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
 	![][18]
 
-2. Click the **Push** tab, enter the **API Key** value obtained from GCM in the previous procedure, and then click **Save**.
+2. **[プッシュ]** タブをクリックし、前の手順で GCM から取得した **API キー**値を入力して、**[保存]** をクリックします。
 
 	![][19]
 
-	You mobile service is now configured to work with GCM to send push notifications.
+	これで、GCM と連係してプッシュ通知を送信するようにモバイル サービスが構成されました。
 
-<a name="add-push"></a><h2><span class="short-header">Add push notifications</span>Add push notifications to your app</h2>
+<a name="add-push"></a><h2><span class="short-header">プッシュ通知の追加</span>アプリケーションにプッシュ通知を追加する</h2>
 
-1. First we will want to add **PushSharp** as a reference in our project. To do this we must compile the latest version of PushSharp and add the compiled DLL as a reference to our Xamarin.Android project.
+1. 最初に、**PushSharp** をプロジェクトの参照として追加します。そのためには、最新バージョンの PushSharp をコンパイルし、コンパイルされた DLL を Xamarin.Android プロジェクトの参照として追加する必要があります。
 
-2. Visit the [PushSharp Github page], and download the latest release. Once you've extracted the collection of files, navigate to the following sample project folder:
+2. [PushSharp Github ページ]にアクセスし、最新リリースをダウンロードします。ファイル一式を展開したら、次のサンプル プロジェクト フォルダーに移動します。
 
 	**/Client.Samples/PushSharp.ClientSample.MonoForAndroid/PushSharp.ClientSample.MonoForAndroid.Gcm/**
 
-	.. and open the project file:
+	次のプロジェクト ファイルを開きます。
 	
 	**  PushSharp.ClientSample.MonoForAndroid.Gcm.csproj **
 
-3. Build the MonoForAndroid PushSharp client sample in **Release** mode.
+3. MonoForAndroid PushSharp クライアント サンプルを**リリース** モードでビルドします。
 
-4. Create an **_external** folder in your Xamarin.Android project folder
+4. **_external** フォルダーを Xamarin.Android プロジェクト フォルダー内に作成します。
 
-5. Copy the following file from the MonoForAndroid PushSharp client sample to the newly created **_external** folder in your Xamarin.Android project folder:
+5. MonoForAndroid PushSharp クライアント サンプルから、Xamarin.Android プロジェクト フォルダー内の新しく作成した **_external** フォルダーに次のファイルをコピーします。
 
 	 **\bin\Release\PushSharp.Client.MonoForAndroid.dll**
 
-6. Open your Xamarin.Android project in Xamarin Studio (or Visual Studio). 
+6. Xamarin.Android プロジェクトを Xamarin Studio (または Visual Studio) で開きます。
 
-7. Right click the project **References** folder, and choose **Edit References...**
+7. プロジェクトの **References** フォルダーを右クリックし、**[Edit References]** を選択します。
 
-8. Go to the **.Net Assembly** tab, browse to your project's **_external** folder, select the **PushSharp.Client.MonoForAndroid.dll** we built earlier and click **Add**. Click OK to close the dialog. 
+8. **[.Net Assembly]** タブに移動します。プロジェクトの **_external** フォルダーを参照し、前の手順でビルドした **PushSharp.Client.MonoForAndroid.dll** を選択し、**[Add]** をクリックします。[OK] をクリックしてダイアログ ボックスを閉じます。
 
-9. Open **Constants.cs** and add the following line, replacing **PROJECT\_ID** with the Google Project_ID you noted earlier:
+9. **Constants.cs** を開き、次の行を追加します。このとき、**PROJECT_ID** を、メモに記録しておいた Google Project_ID に置き換えます。
 
 		public const string SenderID = "PROJECT_ID"; // Google API Project Number
 
-10. Copy the file **PushService.cs** from the MonoForAndroid PushSharp client sample to your Xamarin.Android project folder and add it to your project.
+10. MonoForAndroid PushSharp クライアント サンプルから **PushService.cs** ファイルを Xamarin.Android プロジェクト フォルダーにコピーして、これをプロジェクトに追加します。
 
-11. Change the namespace used in **PushService.cs** to match your project's namespace (ex: XamarinTodoQuickStart).
+11. **PushService.cs** 内で使用されている名前空間を、プロジェクトの名前空間 (たとえば、XamarinTodoQuickStart など)。
 
-12. Change the **SENDER_IDS** array in **PushService.cs** to reference the **SenderID** Constant we created above:
+12. 前の手順で作成した定数 **SenderID** を参照するために、**PushService.cs** 内の **SENDER_IDS** 配列を変更します。
 
 		public static string[] SENDER_IDS = new string[] { Constants.SenderID };
 		
-13. Add a new static property to the **PushHandlerService** in **PushService.cs** to keep track of our device registration ID:
+13. デバイス登録 ID を追跡するために、**PushService.cs** 内の **PushHandlerService** に新しい静的プロパティを追加します。
 
 		public static string RegistrationID { get; private set; }
 		
-14. Update the **OnRegistered** method in **PushService.cs** to store the received registration id to our local static variable:
+14. 受け取った登録 ID をローカル静的変数に格納するために、**PushService.cs** 内の **OnRegistered** メソッドを更新します。
 
 		protected override void OnRegistered(Context context, string registrationId)
 		{
@@ -115,12 +115,12 @@ Next, you will use this API key value to enable Mobile Services to authenticate 
             RegistrationID = registrationId;
 		}
 
-15. Update the **OnMessage** method in **PushService.cs** to display the push message received as part of the notification (replace the existing **createNotification** call):
+15. 受け取ったプッシュ メッセージを通知の一部として表示するために、**PushService.cs** 内の **OnMessage** メソッドを更新します (既存の **createNotification** 呼び出しを置き換えます)。
 
         string message = intent.Extras.GetString("message");
         createNotification("New todo item!", "Todo item: " + message);
        
-16. Take note that the **OnMessage** method has the following code by default to store off the last push message received:
+16. **OnMessage** メソッドは、最後に受け取ったプッシュ メッセージを格納するための次のコードを既定で持ちます。
 
         //Store the message
         var prefs = GetSharedPreferences(context.PackageName, FileCreationMode.Private);
@@ -128,13 +128,13 @@ Next, you will use this API key value to enable Mobile Services to authenticate 
         edit.PutString("last_msg", msg.ToString());
         edit.Commit();
 
-17. Update the **createNotification** method in **PushService.cs** to reference **TodoActivity** instead of **DefaultActivity**.
+17. **DefaultActivity** の代わりに **TodoActivity** を参照するために、**PushService.cs** 内の **createNotification** メソッドを更新します。
 
-18. Open **TodoActivity.cs** and add the following using statement:
+18. **TodoActivity.cs** を開き、次の using ステートメントを追加します。
 
         using PushSharp.Client;
 
-19. In **TodoActivity.cs** insert the following lines just above where the **MobileServiceClient** is created:
+19. **TodoActivity.cs** 内で、作成された **MobileServiceClient** のすぐ上に次の行を追加します。
 	
         // Check to ensure everything's setup right
         PushClient.CheckDevice(this);
@@ -144,7 +144,7 @@ Next, you will use this API key value to enable Mobile Services to authenticate 
         System.Diagnostics.Debug.WriteLine("Registering...");
         PushClient.Register(this, PushHandlerBroadcastReceiver.SENDER_IDS);
 
-20. Open **TodoItem.cs** and add a new field to keep track of the registered device id for the person who added the TodoItem:
+20. TodoItem を追加したユーザーの登録済みデバイス ID を追跡するために、**TodoItem.cs** を開き、次の新しいフィールドを追加します。
 
         [DataMember(Name = "channel")]
         public string RegistrationId { get; set; }
@@ -158,21 +158,21 @@ Next, you will use this API key value to enable Mobile Services to authenticate 
             RegistrationId = PushHandlerService.RegistrationID
 		};
 
-Your app is now updated to support push notifications.
+これで、アプリケーションがプッシュ通知をサポートするように更新されました。
 
-<h2><a name="update-scripts"></a><span class="short-header">Update the insert script</span>Update the registered insert script in the Management Portal</h2>
+<h2><a name="update-scripts"></a><span class="short-header">挿入スクリプトの更新</span>管理ポータルで登録されている挿入スクリプトを更新する</h2>
 
-1. In the Management Portal, click the **Data** tab and then click the **TodoItem** table. 
+1. 管理ポータルで、**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
 	![][21]
 
-2. In **TodoItem**, click the **Script** tab and select **Insert**.
+2. **[TodoItem]** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。
    
   	![][22]
 
-	This displays the function that is invoked when an insert occurs in the **TodoItem** table.
+	**TodoItem** テーブルで挿入が発生したときに呼び出される関数が表示されます。
 
-3. Replace the insert function with the following code, and then click **Save**:
+3. insert 関数を次のコードに置き換え、**[保存]** をクリックします。
 
 		function insert(item, user, request) {
 			request.execute({
@@ -190,32 +190,32 @@ Your app is now updated to support push notifications.
 			});
 		}
 
-   This registers a new insert script, which uses the [gcm object] to send a push notification (the inserted text) to the device provided in the insert request. 
+   これで、新しい insert スクリプトが登録されます。このスクリプトは [gcm オブジェクト]を使用して、挿入要求で指定されたデバイスにプッシュ通知 (挿入されたテキスト) を送信します。
 
-<h2><a name="test"></a><span class="short-header">Test the app</span>Test push notifications in your app</h2>
+<h2><a name="test"></a><span class="short-header">アプリケーションのテスト</span>アプリケーションでプッシュ通知をテストする</h2>
 
-1. Run the app and add a new Todo item. Ensure that you receive a push notification about the new Todo item being added.
+1. アプリケーションを実行し、新しい Todo 項目を追加します。新しい Todo 項目の追加に関するプッシュ通知を受け取ることを確認します。
 
-2. Review the **Logs** tab of your mobile app in the Azure management portal to see the logging messages we added to the **Insert** method on the **TodoItem** table above.
+2. Azure 管理ポータルのモバイル アプリケーションの **[ログ]** タブで、前の手順で **TodoItem** テーブルの **Insert** メソッドに追加したログ メッセージが表示されていることを確認します。
 
-3. Look at the **TodoItem** table in the Azure management portal to see the new **channel** column that was added and contains unique device registration identifiers.
+3. Azure 管理ポータルの **TodoItem** テーブルで、追加された新しい **channel** 列に一意のデバイス登録識別子が含まれていることを確認します。
 
-You have successfully completed this tutorial.
+これで、このチュートリアルは終了です。
 
-## Get completed example
-Download the [completed example project]. Be sure to update the **ApplicationURL**, **ApplicationKey**, and **SenderID** variables with your own Azure settings. 
+##完成したサンプルの入手
+[完成したサンプル プロジェクト]をダウンロードします。**ApplicationURL**、**ApplicationKey**、および **SenderID** の各変数を独自の Azure 設定で更新してください。
 
-## <a name="next-steps"> </a>Next steps
+## <a name="next-steps"> </a>次のステップ
 
-In this simple example a user receives a push notification with the data that was just inserted. In the next tutorial, [Push notifications to app users], you will create a separate Devices table in which to store device tokens and send a push notification out to all stored channels when an insert occurs. 
+この単純な例では、ユーザーは挿入したばかりのデータのプッシュ通知を受け取ります。次のチュートリアル、「[Push notifications to app users (アプリケーション ユーザーへのプッシュ通知)]」では、デバイス トークンを格納するための個別の Devices テーブルを作成し、挿入が発生したときに、すべての格納されているチャネルにプッシュ通知を送信します。
 
 <!-- Anchors. -->
-[Register your app for push notifications]: #register
-[Configure Mobile Services]: #configure
-[Update scripts to send push notifications]: #update-scripts
-[Add push notifications to the app]: #add-push
-[Insert data to receive notifications]: #test
-[Next Steps]:#next-steps
+[アプリケーションをプッシュ通知に登録する]: #register
+[モバイル サービスを構成する]: #configure
+[プッシュ通知を送信するようにスクリプトを更新する]: #update-scripts
+[アプリケーションにプッシュ通知を追加する]: #add-push
+[データを挿入して通知を受け取る]: #test
+[次のステップ]:#next-steps
 
 <!-- Images. -->
 [1]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-google-developers.png
@@ -234,20 +234,21 @@ In this simple example a user receives a push notification with the data that wa
 
 
 <!-- URLs. TODO:: update 'Download the Android app project' download link, 'GitHub', completed project, etc. -->
-[Google apis]: http://go.microsoft.com/fwlink/p/?LinkId=268303
-[Android Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
-[Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-xamarin-android
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android
-[Push notifications to app users]: /en-us/develop/mobile/tutorials/push-notifications-to-users-android
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android
+[Google API]: http://go.microsoft.com/fwlink/p/?LinkId=268303
+[Android プロビジョニング ポータル]: http://go.microsoft.com/fwlink/p/?LinkId=272456
+[モバイル サービス Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-android
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-android
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-android
+[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-android
+[Push notifications to app users (アプリケーション ユーザーへのプッシュ通知)]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-android
+[スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android
 
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[Mobile Services Xamarin conceptual]: /en-us/develop/mobile/how-to-guides/work-with-xamarin-client-library
-[gcm object]: http://go.microsoft.com/fwlink/p/?LinkId=282645
-[completed example project]: http://go.microsoft.com/fwlink/p/?LinkId=331303
-[PushSharp Github page]: https://github.com/Redth/PushSharp
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
+[モバイル サービスに関連する Xamarin の概念]: /ja-jp/develop/mobile/how-to-guides/work-with-xamarin-client-library
+[gcm オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=282645
+[完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331303
+[PushSharp Github ページ]: https://github.com/Redth/PushSharp
+
 

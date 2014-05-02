@@ -1,129 +1,129 @@
-<properties linkid="develop-media-services-how-to-guides-media-services-java" urlDisplayName="Media Services" pageTitle="How to use Media Services (Java) - Azure feature guide" metaKeywords="Azure Media Services, Azure media, Azure streaming, azure media, azure streaming, azure encoding" description="Describes how to use Azure Media Services to perform common tasks including encoding, encrypting, and streaming resources." metaCanonical="" services="media-services" documentationCenter="Java" title="How to Use Media Services" authors="waltpo" solutions="" manager="" editor="mollybos" />
+<properties linkid="develop-media-services-how-to-guides-media-services-java" urlDisplayName="メディア サービス" pageTitle="メディア サービスの使用方法 (Java) - Azure の機能ガイド" metaKeywords="Azure メディア サービス, Azure メディア, Azure ストリーミング, azure メディア, azure ストリーミング, azure エンコード" description="Azure メディア サービスを使用して、リソースのエンコード、暗号化、ストリーミングなど、基本的なタスクを実行する方法について説明します。" metaCanonical="" services="media-services" documentationCenter="Java" title="メディア サービスを使用する方法" authors="waltpo" solutions="" manager="" editor="mollybos" />
 
 
 
 
 
-#How to Use Media Services
+#メディア サービスを使用する方法
 
-This guide shows you how to start programming with Azure Media Services using Java. The guide includes a technical overview of Media Services, steps to configure your Azure account for Media Services, and code that shows how to accomplish typical programming tasks. 
+このガイドでは、Azure メディア サービスを使用した Java によるプログラミングの基礎について説明します。メディア サービスの技術的概要、メディア サービスに使用する Azure アカウントの構成手順、標準的なプログラミング タスクの実行方法を示すコードなどで構成されます。
 
-## Table of Contents
+## 目次
 
--   [What Are Media Services?][]
--   [Setting Up an Azure Account for Media Services][]
--   [Setting up for Media Services development][]
--   [How to: Use Media Services with Java][]
--   [Additional Resources][]
+-   [メディア サービスとは][]
+-   [メディア サービスに使用する Azure アカウントの設定][]
+-   [メディア サービス開発のための設定][]
+-   [方法: Java でメディア サービスを使用する][]
+-   [その他のリソース][]
 
-<h2><a name="what-are"></a><span class="short header">What are Media Services?</span>What are Media Services?</h2>
+<h2><a name="what-are"></a><span class="short header">メディア サービスとは</span>メディア サービスとは</h2>
  
-Azure Media Services form an extensible media platform that integrates the best of the Microsoft Media Platform and third-party media components in Azure. Media Services provide a media pipeline in the cloud that enables industry partners to extend or replace component technologies. ISVs and media providers can use Media Services to build end-to-end media solutions. This overview describes the general architecture and common development scenarios for Media Services.
+Azure メディア サービスは、Microsoft Media Platform とサードパーティのメディア コンポーネントのそれぞれの良さを Azure に統合する拡張可能なメディア プラットフォームです。メディア サービスは、クラウドの中でメディアパイプラインとして機能します。業界パートナーは、メディア サービスを利用して、コンポーネント テクノロジを拡張したり、置き換えたりすることができます。ISV やメディア プロバイダーは、メディア サービスを利用して、エンド ツー エンドのメディア ソリューションを構築できます。ここでは、メディア サービスの全般的なアーキテクチャと一般的な開発シナリオの概要を説明します。
 
-The following diagram illustrates the basic Media Services architecture.
+以下の図は、メディア サービスの基本アーキテクチャを示したものです。
 
-![Media Services Architecture](./media/media-services-dotnet-how-to-use/wams-01.png)
+![メディア サービスのアーキテクチャ](./media/media-services-dotnet-how-to-use/wams-01.png)
 
-###Media Services Feature Support
-The current release of Media Services provides the following feature set for developing media applications in the cloud. 
+###メディア サービスの機能サポート
+最新リリースのメディア サービスには、クラウドにおけるメディア アプリケーションの開発用途として、次の機能セットが用意されています。
 
-- **Ingest**. Ingest operations bring assets into the system, for example by uploading them and encrypting them before they are placed into Azure Storage. By the RTM release, Media Services will offer integration with partner components to provide fast UDP (User Datagram Protocol) upload solutions.
-- **Encode**. Encode operations include encoding, transforming and converting media assets. You can run encoding tasks in the cloud using the Media Encoder that is included in Media Services. Encoding options include the following:
-   - Use the Azure Media Encoder and work with a range of standard codecs and formats, including industry-leading IIS Smooth Streaming, MP4, and conversion to Apple HTTP Live Streaming.
-   - Convert entire libraries or individual files with total control over input and output.
-   - A large set of supported file types, formats, and codecs (see [Supported File Types for Media Services][]).
-   - Supported format conversions. Media Services enable you to convert ISO MP4 (.mp4) to Smooth Streaming File Format (PIFF 1.3) (.ismv; .isma). You can also convert Smooth Streaming File Format (PIFF) to Apple HTTP Live Streaming (.msu8, .ts).
-- **Protect**. Protecting content means encrypting live streaming or on demand content for secure transport, storage, and delivery. Media Services provide a DRM technology-agnostic solution for protecting content.  Currently supported DRM technologies are Microsoft PlayReady Protection and MPEG Common Encryption. Support for additional DRM technologies will be available. 
-- **Stream**. Streaming content involves sending it live or on demand to clients, or you can retrieve or download specific media files from the cloud. Media Services provide a format-agnostic solution for streaming content.  Media Services provide  streaming origin support for Smooth Streaming, Apple HTTP Live Streaming, and MP4 formats. Support for additional formats will be available. You can also seamlessly deliver streaming content by using Azure CDN or a third-party CDN, which enables the option  to scale to millions of users.   
+- **取り込み**。たとえば、Azure ストレージに配置するアセットを事前にアップロードしたり暗号化したりすることによって、システムにアセットを取り込む操作です。メディア サービスの RTM リリースまでには、パートナー コンポーネントとの統合が可能となり、高速な UDP (ユーザー データグラム プロトコル) アップロード ソリューションが実現します。
+- **エンコード**。エンコード操作には、メディア アセットのエンコードや変換が伴います。エンコード タスクは、メディア サービスに付属のメディア エンコーダーを使用し、クラウドで実行することができます。次のエンコード機能があります。
+   - Azure メディア エンコーダーの使用と一連の標準コーデックおよび形式への対応 (業界をリードする IIS スムーズ ストリーミング、MP4、Apple HTTP ライブ ストリーミングへの変換など)。
+   - 入力と出力をトータルに制御することでライブラリ全体または個々のファイルを変換。
+   - ファイル タイプ、形式、コーデックを豊富にサポート ([メディア サービスでサポートされるファイル タイプに関するページ][] を参照)。
+   - 形式の変換。メディア サービスでは、ISO MP4 (.mp4) を Smooth Streaming File Format (PIFF 1.3) (.ismv、.isma) に変換できます。Smooth Streaming File Format (PIFF) を Apple HTTP ライブ ストリーミング (.msu8、.ts) に変換することもできます。
+- **保護**。コンテンツの保護とは、ライブ ストリーミングやオンデマンド コンテンツを暗号化することによって、送信、保存、配信のセキュリティを保護することです。メディア サービスは、特定の DRM テクノロジにとらわれないコンテンツ保護ソリューションを提供します。現在サポートされている DRM テクノロジは、Microsoft PlayReady Protection および MPEG Common Encryption です。その他の DRM テクノロジも今後サポートされる予定です。
+- **ストリーム**。コンテンツのストリーミングとは、コンテンツをライブでまたはオンデマンドでクライアントに送信したり、特定のメディア ファイルをクラウドから取得 (ダウンロード) したりすることです。メディア サービスは、特定の形式にとらわれないコンテンツ ストリーミングを提供します。メディア サービスでは、スムーズ ストリーミング、Apple HTTP ライブ ストリーミング、および MP4 形式が、ストリーミングの配信元としてサポートされます。その他の形式も今後サポートされる予定です。Azure CDN またはサードパーティ CDN を使用してストリーミング コンテンツをシームレスに配信することもでき、必要に応じて、配信規模を何百万というユーザーにまで拡張することができます。
 
-###Media Services Development Scenarios
-Media Services support several common media development scenarios as described in the following table. 
+###メディア サービス開発シナリオ
+メディア サービスでサポートされる代表的なメディア開発シナリオを次の表に示します。
 <table border="2" cellspacing="0" cellpadding="5" style="border: 2px solid #000000;">
   <thead>
     <tr>
-       <th>Scenario</th>
-       <th>Description</th>
+       <th>シナリオ</th>
+       <th>説明</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-        <td>Building end-to-end workflows</td>
-        <td>Build comprehensive media workflows entirely in the cloud. From uploading media to distributing content, Media Services provide a range of components that can be combined to handle specific application workflows. Current capabilities include upload, storage, encoding, format conversion, content protection, and on-demand streaming delivery.</td>
+        <td>エンド ツー エンド ワークフローの構築</td>
+        <td>クラウドにより、包括的なメディア配信ワークフローを構築できます。メディアのアップロードからコンテンツ配信まで、メディアサービスは、特定のアプリケーション ワークフローに合わせて組み合わせられるコンポーネントを提供します。現在は、アップロード、ストレージ、エンコード、形式変換、コンテンツ保護、オンデマンド ストリーミング配信などの機能が含まれます。</td>
     </tr>
     <tr>
-        <td>Building hybrid workflows</td>
-        <td>You can integrate Media Services with existing tools and processes. For example, encode content on-site then upload to Media Services for transcoding into multiple formats and deliver through Azure CDN, or a third-party CDN. Media Services can be called individually via standard REST APIs for integration with external applications and services.</td>
+        <td>ハイブリッド ワークフローの構築</td>
+        <td>メディア サービスは、既存のツールやプロセスと統合できます。たとえば、コンテンツをオンサイトでエンコードして、複数の形式にトランスコードするためにメディア サービスにアップロードし、Azure CDN やサードパーティ CDN を通じて配信します。メディア サービスを標準 REST API 経由で個別に呼び出し、外部アプリケーションやサービスと統合できます。</td>
     </tr>
     <tr>
-        <td>Providing cloud support for media players</td>
-        <td>You can create, manage, and deliver media across multiple devices (including iOS, Android, and Windows devices) and platforms.</td>
+        <td>メディア プレーヤーのクラウド サポート</td>
+        <td>多様なデバイス (iOS、Android、Windows デバイスなど) およびプラットフォームを対象にメディアを作成、管理、配信できます。</td>
     </tr>
   </tbody>
 </table>
 
-###Media Services Client Development
-Extend the reach of your Media Services solution by using SDKs and player frameworks to build media client applications. These clients are for developers who want to build Media Services applications that offer compelling user experiences across a range of devices and platforms. Depending on the devices that you want to build client applications for, there are options for SDKs and player frameworks available from Microsoft and other third-party partners.  
+###メディア サービス クライアント開発
+SDK とプレーヤー フレームワークを使用してメディア クライアント アプリケーションを構築することによって、メディア サービス ソリューションの裾野を広げることができます。メディア サービス アプリケーションを構築する開発者は、幅広いデバイスとプラットフォームを対象に魅力的なエクスペリエンスをユーザーに提供することができます。SDK およびプレーヤー フレームワークは、構築するクライアント アプリケーションの動作環境となるデバイスに応じて Microsoft やサードパーティ パートナーから提供されています。
 
-The following provides a list of available client SDKs and player frameworks.  For more information on these and other planned SDKs and player frameworks, and the functionality they can support, see [Media Services Client Development]. 
+以下に示したのは、クライアント SDK およびプレーヤー フレームワークの一覧です。これらの SDK とプレーヤー フレームワーク、サポート可能な機能の詳細については、[メディア サービス クライアント開発に関するページ]を参照してください。今後予定されている SDK とプレーヤー フレームワークについても記載されています。
 
-####Mac and PC client support  
-For PCs and Macs you can target a streaming experience using Microsoft Silverlight or Adobe Open Source Media Framework.
+####Mac および PC クライアントのサポート
+Microsoft Silverlight または Adobe Open Source Media Framework を使用することにより、PC および Mac を対象にしてストリーミング エクスペリエンスを提供できます。
 
--	[Smooth Streaming Client for Silverlight](http://www.iis.net/download/smoothclient)
--	[Microsoft Media Platform: Player Framework for Silverlight](http://smf.codeplex.com/documentation)
--	[Smooth Streaming Plugin for OSMF 2.0](http://go.microsoft.com/fwlink/?LinkId=275022). For information on how to use this plug-in, see [How to Use Smooth Streaming Plugin for Adobe Open Source Media Framework](http://go.microsoft.com/fwlink/?LinkId=275034).
+-	[Silverlight 用 Smooth Streaming Client](http://www.iis.net/download/smoothclient)
+-	[Microsoft Media Platform: Silverlight 用プレーヤー フレームワーク](http://smf.codeplex.com/documentation)
+-	[OSMF 2.0 用スムーズ ストリーミング プラグイン](http://go.microsoft.com/fwlink/?LinkId=275022)。このプラグインを使用する方法については、[Adobe Open Source Media Framework 用スムーズ ストリーミング プラグインの使用方法に関するページ](http://go.microsoft.com/fwlink/?LinkId=275034)を参照してください。
 
-####Windows 8 applications
-For Windows 8, you can build Windows Store applications using any of the supported development languages and constructs like HTML, Javascript, XAML, C# and C+.
+####Windows 8 アプリケーション
+Windows 8 用には、サポートされている開発言語やコンストラクト (HTML、Javascript、XAML、C#、C+ など) を使用して Windows ストア アプリケーションを作成できます。
 
--	[Smooth Streaming Client SDK for Windows 8](http://go.microsoft.com/fwlink/?LinkID=246146). For more information on how to create a Windows Store application using this SDK, see [How to Build a Smooth Streaming Windows Store Application](http://go.microsoft.com/fwlink/?LinkId=271647). For information on how to create a smooth streaming player in HTML5, see [Walkthrough: Building Your First HTML5 Smooth Streaming Player](http://msdn.microsoft.com/en-us/library/jj573656.aspx).
+-	[Windows 8 用 Smooth Streaming Client SDK](http://go.microsoft.com/fwlink/?LinkID=246146)。この SDK を使用して Windows ストア アプリケーションを作成する方法の詳細については、[スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法に関するページ](http://go.microsoft.com/fwlink/?LinkId=271647)を参照してください。HTML5 でスムーズ ストリーミング プレイヤーを作成する方法については、「[Walkthrough: Building Your First HTML5 Smooth Streaming Player (チュートリアル: 初めての HTML5 スムーズ ストリーミング プレイヤーを作成する)](http://msdn.microsoft.com/ja-jp/library/jj573656.aspx)」を参照してください。
 
--	[Microsoft Media Platform: Player Framework for Windows 8 Windows Store Applications](http://playerframework.codeplex.com/wikipage?title=Player%20Framework%20for%20Windows%208%20Metro%20Style%20Apps&referringTitle=Home)
+-	[Microsoft Media Platform: Windows 8 Windows ストア アプリケーション用プレーヤー フレームワーク](http://playerframework.codeplex.com/wikipage?title=Player%20Framework%20for%20Windows%208%20Metro%20Style%20Apps&referringTitle=Home)
 
 ####Xbox
-Xbox supports Xbox LIVE applications that can consume Smooth Streaming content. The Xbox LIVE Application Development Kit (ADK) includes:
+Xbox では、スムーズ ストリーミング コンテンツを使用する Xbox LIVE アプリケーションがサポートされています。Xbox LIVE アプリケーション開発キット (ADK) には、次のコンポーネントが含まれています。
 
--	Smooth Streaming client for Xbox LIVE ADK
--	Microsoft Media Platform: Player Framework for Xbox LIVE ADK
+-	Xbox LIVE ADK 用 Smooth Streaming Client
+-	Microsoft Media Platform: Xbox LIVE ADK 用プレーヤー フレームワーク
 
-####Embedded or dedicated devices
-Devices such as connected TVs, set-top boxes, Blu-Ray players, OTT TV boxes, and mobile devices that have a custom application development framework and a custom media pipeline. Microsoft provides the following porting kits that can be licensed, and enables partners to port Smooth Streaming playback for the platform.
+####組み込みデバイスまたは専用デバイス
+カスタム アプリケーション開発フレームワークおよびカスタム メディア パイプラインを備えたデバイス (スマート テレビ、セットトップ ボックス、ブルーレイ プレーヤー、OTT TV ボックス、モバイル デバイスなど)。Microsoft では、次に示すライセンス取得可能な移植キットを提供しています。これらを使用すると、プラットフォームに対応したスムーズ ストリーミング再生機能の移植が可能になります。
 
--	[Smooth Streaming Client Porting Kit](http://www.microsoft.com/en-us/mediaplatform/sspk.aspx)
+-	[Smooth Streaming Client Porting Kit](http://www.microsoft.com/ja-jp/mediaplatform/sspk.aspx)
 -	[Microsoft PlayReady Device Porting Kit](http://www.microsoft.com/PlayReady/Licensing/device_technology.mspx)
 
 ####Windows Phone
-Microsoft provides an SDK that can be used to build premium video applications for Windows Phone. 
+Microsoft では、Windows Phone 用の優れたビデオ アプリケーションを作成するために使用できる SDK を提供しています。
 
--	[Smooth Streaming Client for Silverlight](http://www.iis.net/download/smoothclient)
--	[Microsoft Media Platform: Player Framework for Silverlight](http://smf.codeplex.com/documentation)
+-	[Silverlight 用 Smooth Streaming Client](http://www.iis.net/download/smoothclient)
+-	[Microsoft Media Platform: Silverlight 用プレーヤー フレームワーク](http://smf.codeplex.com/documentation)
 
-####iOS devices
-For iOS devices including iPhone, iPod, and iPad, Microsoft ships an SDK that you can use to build applications for these platforms to deliver premium video content: Smooth Streaming SDK for iOS Devices with PlayReady.  The SDK is available only to licensees, so for more information, please [email Microsoft](mailto:askdrm@microsoft.com). For information on iOS development, see the [iOS Developer Center](https://developer.apple.com/devcenter/ios/index.action).
+####iOS デバイス
+iPhone、iPod、iPad などの iOS デバイス用に Microsoft で用意されている SDK (Smooth Streaming SDK for iOS Devices with PlayReady) を使用すると、これらのプラットフォームを対象にして、高品質のビデオ コンテンツを提供するアプリケーションを作成できます。この SDK を使用するには、ライセンスの取得が必要です。詳細については、[Microsoft に電子メールでお問い合わせください](mailto:askdrm@microsoft.com)。iOS 開発の詳細については、「[iOS Developer Center (iOS デベロッパー センター)](https://developer.apple.com/devcenter/ios/index.action)」を参照してください。
 
-####Android devices
-Several Microsoft partners ship SDKs for the Android platform that add the capability to play back Smooth Streaming on an Android device. Please [email Microsoft](mailto:sspkinfo@microsoft.com?subject=Partner%20SDKs%20for%20Android%20Devices) for more details on the partners.
+####Android デバイス
+複数の Microsoft パートナーにより、Android デバイスでのスムーズ ストリーミング再生機能を追加するための Android プラットフォーム用 SDK が提供されています。パートナーの詳細については、[Microsoft に電子メールでお問い合わせください](mailto:sspkinfo@microsoft.com?subject=Partner%20SDKs%20for%20Android%20Devices)。
 
-<h2><a name="setup-account"></a><span class="short header">Setting up an account</span>Setting up an Azure account for Media Services</h2>
+<h2><a name="setup-account"></a><span class="short header">アカウントの設定</span>メディア サービスに使用する Azure アカウントの設定</h2>
 
-To set up your Media Services account, use the Azure Management Portal. See the topic [How to Create a Media Services Account][]. After creating your account in the Management Portal, you are ready to set up your computer for Media Services development. 
+メディア サービス アカウントを設定するには、Azure 管理ポータルを使用します。「[メディア サービス アカウントの作成方法][]」を参照してください。管理ポータルでアカウントを作成すると、メディア サービス開発用にコンピューターをセットアップできるようになります。
 
-<h2><a name="setup-dev"> </a><span class="short header">Setting up for Media Services development</span></h2>
+<h2><a name="setup-dev"> </a><span class="short header">メディア サービス開発のための設定</span></h2>
 
-This section contains general prerequisites for Media Services development using the Media Services SDK for Java.
+このセクションでは、Media Services SDK for Java を使用したメディア サービス開発の大まかな前提条件について説明します。
 
-###Prerequisites
+###前提条件
 
--   A Media Services account in a new or existing Azure subscription. See the topic [How to Create a Media Services Account][].
--   The Azure Libraries for Java, which you can install from the [Azure Java Developer Center][].
+-   新規または既存の Azure サブスクリプションで作成したメディア サービス アカウント。「[メディア サービス アカウントの作成方法][]」を参照してください。
+-   Azure Libraries for Java。これは [Azure Java デベロッパー センター][]からインストールできます。
 
-<h2><a name="connect"> </a><span class="short header">Use Media Services with Java</span>How to: Use Media Services with Java</h2> 
+<h2><a name="connect"> </a><span class="short header">Java でメディア サービスを使用する</span>方法: Java でメディア サービスを使用する</h2>
 
-The following code shows how to create an asset, upload a media file to the asset, run a job with a task to transform the asset, and download the output files of the transformed asset.
+次のコードは、アセットを作成してメディア ファイルをアセットにアップロードし、アセットの変換タスクを伴うジョブを実行して、変換されたアセットの出力ファイルをダウンロードする方法を示しています。
 
-You'll need to set up a media services account before using this code. For information about setting up an account, see [How to Create a Media Services Account](http://www.windowsazure.com/en-us/manage/services/media-services/how-to-create-a-media-services-account/).
+このコードを使用する前に、メディア サービス アカウントを設定する必要があります。アカウントの設定方法については、「[メディア サービス アカウントの作成方法](http://www.windowsazure.com/ja-jp/manage/services/media-services/how-to-create-a-media-services-account/)」を参照してください。
 
-Substitute your values for the `clientId` and `clientSecret` variables. The code also relies on a locally stored file, `c:/media/MPEG4-H264.mp4`. You'll need to provide your own file to use. The code also requires an output folder, `c:/output`, which is where the output files will be downloaded.
+変数 `clientId` および `clientSecret` は、実際の値に置き換えてください。また、このコードは、ローカル保存されているファイル `c:/media/MPEG4-H264.mp4` に依存しています。実際に使用するファイルを用意する必要があります。コードには、出力ファイルのダウンロード先となる出力フォルダー `c:/output` も必要です。
 
 	import java.io.*;
 	import java.net.URI;
@@ -280,7 +280,7 @@ Substitute your values for the `clientId` and `clientSecret` variables. The code
 	
 	        // Create a task with the specified media processor, in this case to transform the original asset to the H264 Broadband 720p preset.
 	        // Information on the various configurations can be found at
-	        // http://msdn.microsoft.com/en-us/library/windowsazure/jj129582.aspx.
+	        // http://msdn.microsoft.com/ja-jp/library/windowsazure/jj129582.aspx.
 	        // This example uses only one task, but others could be added.
 	        Task.CreateBatchOperation task = Task.create(
 	                mediaProcessor.getId(),
@@ -405,11 +405,11 @@ Substitute your values for the `clientId` and `clientSecret` variables. The code
 	
 	}
 
-The assets that you create are stored in Azure storage. However, use only the Azure media services APIs (not Azure storage APIs) to add, update, or delete assets.
+作成したアセットは、Azure ストレージに保存されます。ただし、アセットを追加、更新、または削除するには、(Azure ストレージ API ではなく) Azure メディア サービス API のみを使用してください。
 
-###Determining which media processors are available
+###使用できるメディア プロセッサの判定
 
-The code above used a media processor by accessing it via a specific media processor name (and if there was more than one version, it would use the latest version). To determine which media processors are available, you could use the following code.
+前のコードでは、特定のメディア プロセッサ名でアクセスしてメディア プロセッサを使用しました (複数のバージョンがある場合は最新バージョンを使用)。使用できるメディア プロセッサを判定するには、次のコードを使用できます。
 
     for (MediaProcessorInfo mediaProcessor:  mediaService.list(MediaProcessor.list()))
     {
@@ -419,7 +419,7 @@ The code above used a media processor by accessing it via a specific media proce
         System.out.println(mediaProcessor.getVersion());  
     }
 
-Alternatively, the following code shows how to retrieve the ID of a media processor by name.
+代替方法として、次のコードは、メディア プロセッサの ID を名前で取得する方法を示しています。
 
     String mediaProcessorName = "Storage Decryption"; 
     EntityListOperation<MediaProcessorInfo> operation;
@@ -431,22 +431,23 @@ Alternatively, the following code shows how to retrieve the ID of a media proces
     System.out.println("Processor named " + mediaProcessorName + 
                        " has ID of " + processor.getId());
 
-###Canceling a job
-Should you need to cancel a job that hasn't finished processing, the following code shows how to cancel a job by job ID.
+###ジョブの取り消し
+処理が完了していないジョブを取り消す必要がある場合は、次に示すコードで、ジョブをジョブ ID で取り消す方法を参照してください。
 
     mediaService.action(Job.cancel(jobId));
 
-<h2><a name="additional-resources"></a><span class="short header">Additional Resources</span>Additional Resources</h2>
+<h2><a name="additional-resources"></a><span class="short header">その他のリソース</span>その他のリソース</h2>
 
-For Media Services Javadoc documentation, see [Azure Libraries for Java documentation][].
+メディア サービスに関する Javadoc ドキュメントについては、[Azure Libraries for Java のドキュメント][]を参照してください。
 
-  [What Are Media Services?]: #what-are
-  [Setting Up an Azure Account for Media Services]: #setup-account
-  [Setting up for Media Services Development]: #setup-dev
-  [How to: Use Media Services with Java]: #connect
-  [Additional Resources]: #additional-resources
-  [How to Create a Media Services Account]: http://go.microsoft.com/fwlink/?linkid=256662
-  [Azure Java Developer Center]: http://www.windowsazure.com/en-us/develop/java/
-  [Azure Libraries for Java documentation]: http://dl.windowsazure.com/javadoc/
-  [Media Services Client Development]: http://msdn.microsoft.com/en-us/library/windowsazure/dn223283.aspx
+  [メディア サービスとは]: #what-are
+  [メディア サービスに使用する Azure アカウントの設定]: #setup-account
+  [メディア サービス開発のための設定]: #setup-dev
+  [方法: Java でメディア サービスを使用する]: #connect
+  [その他のリソース]: #additional-resources
+  [メディア サービス アカウントの作成方法]: http://go.microsoft.com/fwlink/?linkid=256662
+  [Azure Java デベロッパー センター]: http://www.windowsazure.com/ja-jp/develop/java/
+  [Azure Libraries for Java のドキュメント]: http://dl.windowsazure.com/javadoc/
+  [メディア サービス クライアント開発に関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn223283.aspx
+
 

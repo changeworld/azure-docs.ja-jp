@@ -1,132 +1,133 @@
-<properties linkid="develop-php-tutorials-convert-wordpress-to-multisite" urlDisplayName="Convert a WordPress Site to a Multisite" pageTitle="Convert a WordPress Site to a Multisite" metaKeywords="WordPress, Multisite" description="Learn how to take an existing WordPress web site created through the gallery in Azure and convert it to WordPress Multisite" metaCanonical="" services="web-sites" documentationCenter="PHP" title="Convert a WordPress Site to a Multisite" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-php-tutorials-convert-wordpress-to-multisite" urlDisplayName="WordPress サイトの Multisite への変換" pageTitle="WordPress サイトの Multisite への変換" metaKeywords="WordPress, Multisite" description="Azure のギャラリーを使って作成された既存の WordPress Web サイトを取得し、WordPress Multisite に変換する方法を説明します。" metaCanonical="" services="web-sites" documentationCenter="PHP" title="WordPress サイトの Multisite への変換" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-# Convert a WordPress Site to a Multisite
+# WordPress サイトの Multisite への変換
 
-*By [Ben Lobaugh][ben-lobaugh], [Microsoft Open Technologies Inc.][ms-open-tech]*
+*執筆者: [Ben Lobaugh][ben-lobaugh] ([Microsoft Open Technologies Inc.][ms-open-tech]*)
 
-In this tutorial you will learn how to take an existing WordPress web site created through the gallery in Azure and convert it into a WordPress Multisite install. Additionally, you will learn how to assign a custom domain to each of the subsites within your install.
+このチュートリアルでは、Azure のギャラリーを使って作成された既存の WordPress Web サイトを取得し、WordPress Multisite インストールに変換する方法を説明します。また、インストール内の各サブサイトにカスタム ドメインを割り当てる方法も説明します。
 
-It is assumed that you have an existing installation of WordPress. If you do not, please follow the guidance provided in [Create a WordPress web site from the gallery in Azure][website-from-gallery].
+ここでは、WordPress のインストールが既にあるものとします。ない場合は、「[Azure でギャラリーから WordPress Web サイトを作成する][website-from-gallery]」の説明に従ってください。
 
-Converting an existing WordPress single site install to Multisite is generally fairly simple, and many of the initial steps here come straight from the [Create A Network][wordpress-codex-create-a-network] page on the [WordPress Codex](http://codex.wordpress.org).
+既存の WordPress シングル サイト インストールから Multisite への変換は、通常はごく簡単で、ここでの初期手順の多くは [WordPress Codex](http://codex.wordpress.org) の「[Create A Network (ネットワークの作成)][wordpress-codex-create-a-network]」から引用したものです。
 
-Lets get started.
+それでは始めましょう。
 
-## Allow Multisite
+## Multisite の許可
 
-You first need to enable Multisite through the `wp-config.php` file with the **WP\_ALLOW\_MULTISITE** constant. There are two methods to edit your web site files: the first is through FTP, and the second through Git. If you are unfamiliar with how to setup either of these methods, please refer to the following tutorials:
+まず、`wp-config.php` ファイルの **WP\_ALLOW\_MULTISITE** 定数を使用して、Multisite を有効にする必要があります。Web サイト ファイルを編集するには、2 つの方法があります。FTP を使用する方法と、Git を使用する方法です。どちらのセットアップ方法にも慣れていない場合は、以下のチュートリアルを参照してください。
 
-* [PHP web site with MySQL and FTP][website-w-mysql-and-ftp-ftp-setup]
+* [MySQL および FTP による PHP Web サイト][website-w-mysql-and-ftp-ftp-setup]
 
-* [PHP web site with MySQL and Git][website-w-mysql-and-git-git-setup]
+* [MySQL および Git による PHP Web サイト][website-w-mysql-and-git-git-setup]
 
-Open the `wp-config.php` file with the editor of your choosing and add the following above the `/* That's all, stop editing! Happy blogging. */` line.
+任意のエディターで `wp-config.php` ファイルを開き、以下の行を `/* That's all, stop editing! Happy blogging.*/` 行の上に追加します。
 
 	/* Multisite */
 
 	define( 'WP_ALLOW_MULTISITE', true );
 
-Be sure to save the file and upload it back to the server!
+必ずファイルを保存し、サーバーにアップロードし直してください。
 
-## Network Setup
+## ネットワークのセットアップ
 
-Log in to the *wp-admin* area of your website and you should see a new item under the **Tools** menu called **Network Setup**. Click **Network Setup** and fill in the details of your network.
+Web サイトの *wp-admin* 領域にログインし、**[ツール]** メニューに **[Network Setup]** という新しい項目があることを確認します。**[Network Setup]** をクリックし、ネットワークの詳細を入力します。
 
-![Network Setup Screen][wordpress-network-setup]
+![[Network Setup] 画面][wordpress-network-setup]
 
-This tutorial uses the *Sub-directories* site schema because it should always work, and we will be setting up custom domains for each subsite later in the tutorial. However, it should be possible to setup a subdomain install if you map a domain through the Portal and setup wildcard DNS properly.
+このチュートリアルでは、*Sub-directories* サイト スキーマを使用します。このスキーマは常に機能する必要があるためです。このチュートリアルの後の方では、各サブサイトのカスタム ドメインをセットアップします。ただし、ポータルを通じてドメインをマップし、ワイルドカード DNS を適切にセットアップすると、サブドメイン インストールをセットアップすることができます。
 
-For more information on sub-domain vs sub-directory setups see the [Types of multisite network][wordpress-codex-types-of-networks] article on the WordPress Codex.
+サブドメインのセットアップとサブディレクトリのセットアップの詳細については、WordPress Codex の「[Types of multisite network (マルチサイト ネットワークの種類)][wordpress-codex-types-of-networks]」を参照してください。
 
-## Enable the Network
+## ネットワークの有効化
 
-The network is now configured in the database, but there is one remaining step to enable the network functionality. Finalize the `wp-config.php` settings and ensure `web.config` properly routes each site.
-
-
-After clicking the **Install** button on the *Network Setup* page, WordPress will attempt to update the `wp-config.php` and `web.config` files. However, you should always check the files to ensure the updates were successful. If not, this screen will present you with the necessary updates. Edit and save the files.
+これで、ネットワークがデータベースで構成されましたが、ネットワーク機能を有効にするにはもう 1 つ手順が残っています。`wp-config.php` 設定の最終処理を行い、`web.config` が各サイトを適切にルーティングしていることを確認します。
 
 
-After making these updates you will need to logout and re-login to the wp-admin dashboard.
-
-There should now be an additional menu on the admin bar labeled **My Sites**. This menu allows you to control your new network through the **Network Admin** dashboard.
-
-# Adding custom domains
-
-The [WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] plugin makes it a breeze to add custom domains to any site in your network. In order for the plugin to operate properly, you need to do some additional setup on the Portal, and also at your domain registrar.
-
-## Enable domain mapping to the web site
-
-The default free website mode does not support adding custom domains to Azure web sites. You will need to switch to Shared or Standard mode. To do this:
-
-* Log in to the Azure Portal and locate your web site. 
-* Click on the **Scale** tab in the main content area
-* Under **General**, select either *SHARED* or *STANDARD*
-* Click **Save**
-
-You may receive a message asking you to verify the change and acknowledge your web site may now incur cost, depending upon usage and the other configuration you set.
-
-It takes a few seconds to process the new settings, so now is a good time to start setting up your domain.
-
-## Verify your domain
-
-Before Azure Web Sites will allow you to map a domain to the site, you first need to verify that you have the authorization to map the domain. To do so, you must add a new CNAME record to your DNS entry.
-
-* Log in to your domain's DNS manager
-* Create a new CNAME *awverify*
-* Point *awverify* to *awverify.YOUR_DOMAIN.azurewebsites.net*
-
-It may take some time for the DNS changes to go into full effect, so if the following steps do not work immediately, go make a cup of coffee, then come back and try again.
-
-## Add the domain to the web site
-
-Return to your web site through the Azure Portal, and this time click the **CONFIGURE** tab. The **MANAGE DOMAINS** button should be available. Click it.
-
-The *Manage custom domains* dialog show pop up. This is where you will input all the domains which you wish to assign to your web site. If a domain is not listed here, it will not be available for mapping inside WordPress, regardless of how the domain DNS is setup.
-
-![Manage custom domains dialog][wordpress-manage-domains]
-
-After typing your domain into the text box, Azure will verify the *awverify* CNAME record you created previously. If the DNS has not fully propigated, a red indicator will show. If it was successful, you will see a green checkmark. 
-
-Take note of the IP Address listed at the bottom of the dialog. You will need this to setup the A record for your domain.
-
-## Setup the domain A record
-
-If the other steps were successful, you may now assign the domain to your Azure web site through a DNS A record. 
-
-It is important to note here that Azure web sites accepts both CNAME and A records, however you *must* use an A record to enable proper domain mapping. A CNAME cannot be forwarded to another CNAME, which is what Azure created for you with YOUR_DOMAIN.azurewebsites.net.
-
-Using the IP address from the previous step, return to your DNS manager and setup the A record to point to that IP.
+*[ネットワーク セットアップ]* ページで **[インストール]** ボタンをクリックすると、`wp-config.php` ファイルと `web.config` ファイルが自動的に更新されます。ただし、これらのファイルを必ずチェックし、正常に更新されていることを確認してください。正常に更新されていない場合は、この画面に必要な更新が表示されます。ファイルを編集して保存します。
 
 
-## Install and setup the plugin
+これらの更新を行った後で、いったんログアウトしてから、この wp-admin ダッシュボードに再ログインする必要があります。
 
-WordPress Multisite currently does not have a built in method to map custom domains. However, there is a plugin called [WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] that adds the functionality for you. Log in to the Network Admin portion of your site and install the **WordPress MU Domain Mapping** plugin.
+この時点で、管理バーに **[My Sites]** というメニューが追加されています。このメニューを使用すると、**Network Admin** ダッシュボードを通じて新しいネットワークを管理できます。
 
-After installing and activating the plugin, visit **Settings** > **Domain Mapping** to configure the plugin. In the first textbox, *Server IP Address*, input the IP Address you used to setup the A record for the domain. Set any *Domain Options* you desire (the defaults are often fine) and click **Save**.
+# カスタム ドメインの追加
 
-## Map the domain
+[WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] プラグインを利用すると、ネットワーク上のサイトにカスタム ドメインを簡単に追加できます。このプラグインを正常に機能させるには、ポータルとドメイン レジストラーで追加のセットアップを行う必要があります。
 
-Visit the **Dashboard** for the site you wish to map the domain to. Click on **Tools** > **Domain Mapping** and type the new domain into the textbox and click **Add**.
+## Web サイトへのドメイン マッピングの有効化
 
-By default, the new domain will be rewritten to the autogenerated site domain. If you want to have all traffic sent to the new domain, check the *Primary domain for this blog* box before saving. You can add an unlimited number of domains to a site, but  only one can be primary.
+既定の無料 Web サイト モードでは、Azure の Web サイトへのカスタム ドメインの追加がサポートされていません。共有モードまたは標準モードに切り替える必要があります。これを行うには、次の手順を実行します。
 
-## Do it again
+* Azure ポータルにログインして、自分の Web サイトに移動します。
+* メイン コンテンツ領域の **[規模の設定]** タブをクリックします。
+* **[全般]** で、*[共有]* または *[標準]* を選択します。
+* **[保存]** をクリックします。
 
-Azure Web Sites allows you to add an unlimited number of domains to a web site. To add another domain you will need to execute the **Verify your domain** and **Setup the domain A record** sections for each domain.	
+設定してある使用方法やその他の構成によっては、変更の確認と、Web サイトへの今後の課金の承認を求めるメッセージが表示される場合があります。
+
+新しい設定の処理には少し時間がかかるので、ドメインのセットアップを開始します。
+
+## ドメインの確認
+
+Azure の Web サイトでドメインをサイトにマップするには、まず、ドメインをマップする権限が与えられていることを確認する必要があります。そのためには、新しい CNAME レコードを DNS エントリに追加します。
+
+* 自分のドメインの DNS マネージャーにログインします
+* 新しい CNAME *awverify* を作成します
+* *awverify* が *awverify.YOUR_5DOMAIN.azurewebsites.net* を指すようにします
+
+場合によっては、DNS の変更が完全に有効になるまで少し時間がかかります。以下の手順がすぐにはうまく動作しない場合は、しばらくしてからやり直してください。
+
+## Web サイトへのドメインの追加
+
+Azure ポータルを通じて自分の Web サイトに戻り、今度は **[構成]** タブをクリックします。**[ドメインの管理]** ボタンが使用可能になっています。このボタンをクリックします。
+
+*[カスタム ドメインの管理]* ダイアログが表示されます。ここで、自分の Web サイトに割り当てるすべてのドメインを入力します。ドメインがこの一覧に表示されない場合、ドメイン DNS がどのようにセットアップされているかにかかわらず、そのドメインは WordPress 内でのマッピングに使用できません。
+
+![[カスタム ドメインの管理] ダイアログ][wordpress-manage-domains]
+
+ドメインをテキスト ボックスに入力すると、以前に作成した *awverify* CNAME レコードが確認されます。DNS が完全に反映されていない場合は、赤いインジケーターが表示されます。成功した場合は、緑のチェック マークが表示されます。
+
+ダイアログの下部に表示される IP アドレスをメモしておきます。ドメインのための A レコードをセットアップするときに必要になります。
+
+## ドメイン A レコードのセットアップ
+
+ここまでの手順が成功すると、DNS A レコードを通じてドメインを自分の Azure の Web サイトに割り当てられるようになります。
+
+ここで重要なのは、Azure の Web サイトでは CNAME と A レコードのどちらも許容されるものの、適切なドメイン マッピングを可能にするには A レコードを使う必要があるということです**。Azure では、YOUR_DOMAIN.azurewebsites.net で CNAME が作成されますが、CNAME は他の CNAME に転送することができません。
+
+DNS マネージャーに戻り、前の手順でメモした IP アドレスを指すように A レコードをセットアップします。
+
+
+## プラグインのインストールとセットアップ
+
+現在、WordPress Multisite には、カスタム ドメインをマップするための方法が組み込まれていません。ただし、[WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] というプラグインを使用すると、この機能を追加することができます。自分のサイトの Network Admin 部分にログインして、**WordPress MU Domain Mapping** プラグインをインストールします。
+
+プラグインをインストールおよびアクティブ化した後で、**[設定]** > **[Domain Mapping]** にアクセスし、プラグインを構成します。1 つ目のテキスト ボックス *[Server IP Address]* で、ドメインの A レコードのセットアップに使用した IP アドレスを入力します。必要に応じて *[Domain Options]* を設定し (通常は既定のままでよい)、**[Save]** をクリックします。
+
+## ドメインのマップ
+
+ドメインのマップ対象のサイトの**ダッシュボード**にアクセスします。**[ツール]**、**[Domain Mapping]** の順にクリックし、テキスト ボックスに新しいドメインを入力して、**[Add]** をクリックします。
+
+既定では、新しいドメインは自動生成されたサイト ドメインに書き換えられます。すべてのトラフィックが新しいドメインに送信されるようにするには、保存する前に *[Primary domain for this blog]* チェック ボックスをオンにします。サイトに追加するドメインの数に制限はありませんが、プライマリにできるのは 1 つだけです。
+
+## 繰り返し
+
+Azure の Web サイトでは、Web サイトに追加できるドメインの数に制限はありません。他のドメインを追加するには、各ドメインに対して「**ドメインの確認**」および「**ドメイン A レコードのセットアップ**」セクションの手順を繰り返します。	
 
 [ben-lobaugh]: http://ben.lobaugh.net
 [ms-open-tech]: http://msopentech.com
-[website-from-gallery]: https://www.windowsazure.com/en-us/develop/php/tutorials/website-from-gallery/
+[website-from-gallery]: https://www.windowsazure.com/ja-jp/develop/php/tutorials/website-from-gallery/
 [wordpress-codex-create-a-network]: http://codex.wordpress.org/Create_A_Network
-[website-w-mysql-and-ftp-ftp-setup]: https://www.windowsazure.com/en-us/develop/php/tutorials/website-w-mysql-and-ftp/#header-0
-[website-w-mysql-and-git-git-setup]: https://www.windowsazure.com/en-us/develop/php/tutorials/website-w-mysql-and-git/#header-1
+[website-w-mysql-and-ftp-ftp-setup]: https://www.windowsazure.com/ja-jp/develop/php/tutorials/website-w-mysql-and-ftp/#header-0
+[website-w-mysql-and-git-git-setup]: https://www.windowsazure.com/ja-jp/develop/php/tutorials/website-w-mysql-and-git/#header-1
 [wordpress-network-setup]: ./media/web-sites-php-convert-wordpress-multisite/wordpress-network-setup.png
 [wordpress-codex-types-of-networks]: http://codex.wordpress.org/Before_You_Create_A_Network#Types_of_multisite_network
 [wordpress-plugin-wordpress-mu-domain-mapping]: http://wordpress.org/extend/plugins/wordpress-mu-domain-mapping/
 
 [wordpress-manage-domains]: ./media/web-sites-php-convert-wordpress-multisite/wordpress-manage-domains.png
+
 

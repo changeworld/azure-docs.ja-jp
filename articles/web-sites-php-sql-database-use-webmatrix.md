@@ -1,117 +1,117 @@
-<properties linkid="develop-php-website-with-sql-database-and-webmatrix" urlDisplayName="Web w/ SQL + WebMatrix" pageTitle="PHP web site with SQL Database and WebMatrix - Azure" metaKeywords="" description="A tutorial that demonstrates how to use the free WebMatrix IDE to create and deploy a PHP web site that stores data in SQL Database." metaCanonical="" services="" documentationCenter="" title="Create and Deploy a PHP Web Site and SQL Database using WebMatrix" authors="" solutions="" manager="" editor="mollybos" />
+<properties linkid="develop-php-website-with-sql-database-and-webmatrix" urlDisplayName="SQL と WebMatrix を使用した Web サイト" pageTitle="SQL データベースと WebMatrix を使用した PHP Web サイト - Azure" metaKeywords="" description="無料の WebMatrix IDE を使用して、SQL データベースにデータを保存する PHP Web サイトを作成および展開する方法を示すチュートリアル。" metaCanonical="" services="" documentationCenter="" title="WebMatrix を使用して PHP Web サイトと SQL データベースを作成および展開する" authors="" solutions="" manager="" editor="mollybos" />
 
 
 
 
 
-#Create and Deploy a PHP Web Site and SQL Database using WebMatrix
+#WebMatrix を使用して PHP Web サイトと SQL データベースを作成および展開する
 
-This tutorial shows you how to use WebMatrix to develop and deploy a PHP application that uses an Azure SQL Database to an Azure web site. WebMatrix is a free web development tool from Microsoft that includes everything you need for web site development. WebMatrix supports PHP and includes intellisense for PHP development. 
+このチュートリアルでは、Azure SQL データベースを使用する PHP アプリケーションを WebMatrix で作成し、Azure の Web サイトに展開する方法を示します。WebMatrix は、Microsoft から提供されている無料の Web 開発ツールで、Web サイトの開発に必要なものがすべて用意されています。WebMatrix では PHP がサポートされており、PHP 開発用 Intellisense が含まれています。
 
-This tutorial assumes you have [SQL Server Express][install-SQLExpress] installed on your computer so that you can test an application locally. However, you can complete the tutorial without having SQL Server Express installed. Instead, you can deploy your application directly to Azure web sites.
+このチュートリアルは、アプリケーションをローカルでテストできるように、コンピューターに [SQL Server Express][install-SQLExpress] がインストールされていることを前提としています。ただし、SQL Server Express をインストールせずにチュートリアルを完了することもできます。その場合は、アプリケーションを直接 Azure の Web サイトに展開します。
 
-Upon completing this guide, you will have a PHP-SQL Database web site running in Azure.
+このチュートリアルを完了すると、Azure で動作する PHP-SQL データベース Web サイトが完成します。
  
-You will learn:
+学習内容:
 
-* How to create an Azure Web Site and a SQL Database using the Management Portal. Because PHP is enabled in Azure Web Sites by default, nothing special is required to run your PHP code.
-* How to develop a PHP application using WebMatrix.
-* How to publish and re-publish your application to Azure using WebMatrix.
+* 管理ポータルを使用して Azure の Web サイトおよび SQL データベースを作成する方法。Azure の Web サイトでは PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます。
+* WebMatrix を使用して PHP アプリケーションを作成する方法。
+* WebMatrix を使用して Azure にアプリケーションを発行および再発行する方法。
  
-By following this tutorial, you will build a simple Tasklist web application in PHP. The application will be hosted in an Azure web site. A screenshot of the running application is below:
+このチュートリアルでは、タスク一覧用の単純な Web アプリケーション (Tasklist) を PHP で作成します。このアプリケーションは Azure の Web サイトでホストします。実行中のアプリケーションのスクリーンショットは次のようになります。
 
-![Azure PHP Web Site][running-app]
+![Azure の PHP Web サイト][running-app]
 
 [WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
-##Prerequisites
+##前提条件
 
-1. [Download][tasklist-sqlazure-download] the Tasklist application files. The Tasklist application is a simple PHP application that allows you to add, mark complete, and delete items from a task list. Task list items are stored in a SQL Database (SQL Server Express for local testing). The application consists of these files:
+1. Tasklist アプリケーションのファイルを [ダウンロード][tasklist-sqlazure-download]します。Tasklist アプリケーションは、タスク一覧のアイテムの追加、完了済みとしてのマーク付け、および削除を行うための、単純な PHP アプリケーションです。タスク一覧のアイテムは SQL データベースに保存されます (ローカル テストには SQL Server Express を使用します)。アプリケーションは、次のファイルで構成されます。
 
-* **index.php**: Displays tasks and provides a form for adding an item to the list.
-* **additem.php**: Adds an item to the list.
-* **getitems.php**: Gets all items in the database.
-* **markitemcomplete.php**: Changes the status of an item to complete.
-* **deleteitem.php**: Deletes an item.
-* **taskmodel.php**: Contains functions that add, get, update, and delete items from the database.
-* **createtable.php**: Creates the SQL Database table for the application. This file will only be called once.
+* **index.php**: タスクを表示し、一覧にアイテムを追加するためのフォームを提供します。
+* **additem.php**: 一覧にアイテムを追加します。
+* **getitems.php**: データベース内のアイテムをすべて取得します。
+* **markitemcomplete.php**: アイテムのステータスを "完了済み" に変更します。
+* **deleteitem.php**: アイテムを削除します。
+* **taskmodel.php**: データベース内のアイテムの追加、取得、更新、および削除を行う関数が含まれています。
+* **createtable.php**: アプリケーション用の SQL データベース テーブルを作成します。このファイルは 1 度しか呼び出されません。
 
-2. Create a SQL Server database called `tasklist`. You can do this from the `sqlcmd` command prompt with these commands:
+2. `tasklist` という SQL Server データベースを作成します。これには、`sqlcmd` コマンド プロンプトで次のコマンドを実行します。
 
 		>sqlcmd -S <server name>\sqlexpress -U <user name> -P <password>
 		1> create database tasklist
 		2> GO
 
-	This step is only necessary if you want to test your application locally.
+	この手順は、アプリケーションをローカルでテストする場合にのみ必要です。
 
-## Create a web site and SQL Database
+## Web サイトと SQL データベースの作成
 
-1. Login to the [Management Portal][preview-portal].
-2. Click the **+ New** icon on the bottom left of the portal.
+1. [管理ポータル][preview-portal]にログインします。
+2. ポータルの左下にある **[新規]** アイコンをクリックします。
 
-	![Create New Azure Web Site][NewWebSite1]
+	![新しい Azure の Web サイトの作成][NewWebSite1]
 
-3. Click **WEB SITE**, then **CUSTOM CREATE**.
+3. **[Web サイト]** をクリックし、**[カスタム作成]** をクリックします。
 
-	![Custom Create a new Web Site][NewWebSite2]
+	![新しい Web サイトのカスタム作成][NewWebSite2]
 
-	Enter a value for **URL**, select **Create a New SQL Database** from the **DATABASE** dropdown,  and select the data center for your web site in the **REGION** dropdown. Click the arrow at the bottom of the dialog.
+	**[URL]** ボックスに値を入力し、**[データベース]** ボックスの一覧の **[新しい SQL データベースを作成する]** を選択して、**[リージョン]** ボックスの一覧で Web サイトのデータ センターを選択します。ダイアログの下部にある矢印をクリックします。
 
-	![Fill in web site details][NewWebSite3_SQL]
+	![Web サイトの詳細の入力][NewWebSite3_SQL]
 
-4. Enter a value for the **NAME** of your database and select **NEW SQL Database server**. Enter a server login name and password (and confirm the password).Choose the region in which your new SQL Database server will be created.
+4. データベースの **[名前]** を入力し、**[新しい SQL データベース サーバー]** を選択します。サーバーのログイン名とパスワードを入力し、確認のためパスワードをもう一度入力します。新しい SQL データベース サーバーを作成するリージョンを選択します。
 
-	![Fill in SQL Database settings][NewWebSite4_SQL]
+	![SQL データベースの設定の指定][NewWebSite4_SQL]
 
-	When the web site has been created you will see the text **Creating Web Site "[SITENAME]" succeeded**. Next, you will get the database connection information.
+	Web サイトが作成されると、**"Web サイト [サイト名] の作成に成功しました"** というテキストが表示されます。次に、データベースの接続情報を取得します。
 
-5. Click **LINKED RESOURCES**, then the database's name.
+5. **[リンク済みリソース]** をクリックして、データベース名をクリックします。
 
-	![Linked Resources][NewWebSite6_SQL]
+	![リンク済みリソース][NewWebSite6_SQL]
 
-6. Click **View connection strings**.
+6. **[接続文字列の表示]** をクリックします。
 
-	![Connection string][NewWebSite7]
+	![接続文字列][NewWebSite7]
 	
-From the **PHP** section of the resulting dialog, make note of the values for `UID`, `PWD`, `Database`, and `$serverName`. You will use this information later.
+表示されたダイアログの **[PHP]** セクションから、`UID`、`PWD`、`Database`、および `$serverName` の値をメモします。この情報は後で使用します。
 
-##Install WebMatrix
+##WebMatrix のインストール
 
-You can install WebMatrix from the [Management Portal][preview-portal]. 
+WebMatrix は、[管理ポータル][preview-portal]からインストールできます。
 
-1. After logging in, navigate to your web site's Quick Start page, and click the WebMatrix icon at the bottom of the page:
+1. ログインした後、Web サイトのクイック スタート ページに移動して、ページの下部にある WebMatrix アイコンをクリックします。
 
-	![Install WebMatrix][InstallWebMatrix]
+	![WebMatrix のインストール][InstallWebMatrix]
 
-	Follow the prompts to install WebMatrix.
+	表示される手順に従って WebMatrix をインストールします。
 
-2. After WebMatrix is installed, it will attempt to open your site as a WebMatrix project. You can choose to edit your live site directly or download a local copy. For this tutorial, select 'Edit local copy'. 
+2. WebMatrix がインストールされると、サイトを WebMatrix プロジェクトとして開く試行が行われます。ライブ サイトを直接編集するか、ローカル コピーをダウンロードするかを選択できます。このチュートリアルではローカル コピーを編集します。
 
-3. When prompted to download your site, choose **Yes, install from the Template Gallery**.
+3. サイトをダウンロードするかどうかを確認するメッセージが表示されたら、**[はい、テンプレート ギャラリーからインストールします]** を選択します。
 
-	![Download web site][download-site]
+	![Web サイトをダウンロードする][download-site]
 
-4. From the available templates, choose **PHP**.
+4. 使用できるテンプレートから、**[PHP]** を選択します。
 
-	![Site from template][site-from-template]
+	![テンプレートからサイトを作成する][site-from-template]
 
-5. Select the **Empty Site** template. Provide a name for the site and click **NEXT**.
+5. **[空のサイト]** テンプレートを選択します。サイトの名前を指定し、**[次へ]** をクリックします。
 
-	![Provide name for site][site-from-template-2]
+	![サイト名の指定][site-from-template-2]
 
-Your site will be opened on WebMatrix with some default files in place.
+サイトが WebMatrix で開き、既定のファイルが配置されます。
 
-##Develop your application
+##アプリケーションの作成
 
-In the next few steps you will develop the Tasklist application by adding the files you downloaded earlier and making a few modifications. You could, however, add your own existing files or create new files.
+次に示す数ステップで、Tasklist アプリケーションを作成します。これには、ダウンロードしておいたファイルを追加し、いくつかの変更を行います。ただし、独自の既存ファイルを追加することも、新しいファイルを作成することもできます。
 
-1. With your site open in WebMatrix, add your application files by clicking **Add Existing**:
+1. WebMatrix でサイトを開き、**[既存項目の追加]** をクリックしてアプリケーション ファイルを追加します。
 
-	![WebMatrix - Add existing files][edit_addexisting]
+	![WebMatrix - 既存ファイルを追加する][edit_addexisting]
 
-	In the resulting dialog, navigate to the files you downloaded earlier, select all of them, and click Open. When prompted, choose to replace the `index.php` file. 
+	表示されたダイアログで、ダウンロードしておいたファイルの場所に移動し、すべて選択して、[開く] をクリックします。確認のメッセージが表示されたら、`index.php` ファイルの置き換えを選択します。
 
-2. Next, you need to add your local SQL Server database connection information to the `taskmodel.php` file. Open the  `taskmodel.php` file by double clicking it, and update the database connection information in the `connect` function. (**Note**: Jump to [Publish Your Application](#Publish) if you do not want to test your application locally and want to instead publish directly to Azure Web Sites.)
+2. 次に、ローカル SQL Server データベースの接続情報を `taskmodel.php` ファイルに追加する必要があります。`taskmodel.php` ファイルをダブルクリックして開き、`connect` 関数内のデータベース接続情報を更新します (**注**: アプリケーションをローカルでテストせず、直接 Azure の Web サイトに発行する場合は、「[アプリケーションの発行](#Publish)」に進んでください)。
 
 		// DB connection info
 		$host = "localhost\sqlexpress";
@@ -119,20 +119,20 @@ In the next few steps you will develop the Tasklist application by adding the fi
 		$pwd = "your password";
 		$db = "tasklist";
 
-	Save the `taskmodel.php` file.
+	`taskmodel.php` ファイルを保存します。
 
-3. For the application to run, the `items` table needs to be created. Right click the `createtable.php` file and select **Launch in browser**. This will launch `createtable.php` in your browser and execute code that creates the `items` table in the `tasklist` database.
+3. アプリケーションを実行するには、`items` テーブルを作成する必要があります。`createtable.php` ファイルを右クリックし、**[ブラウザーで起動]** を選択します。これにより、`createtable.php` がブラウザーで起動し、`tasklist` データベースに `items` テーブルを作成するコードが実行されます。
 
-	![WebMatrix - Launch createtable.php in browser][edit_run]
+	![WebMatrix - ブラウザーで createtable.php を起動する][edit_run]
 
-4. Now you can test the application locally. Right click the `index.php` file and select **Launch in browser**. Test the application by adding items, marking them complete, and deleting them.   
+4. これで、アプリケーションのテストをローカルで行うことができます。`index.php` ファイルを右クリックし、**[ブラウザーで起動]** を選択します。アイテムの追加、完了済みとしてのマーク付け、および削除を行うことにより、アプリケーションをテストします。
 
 
-<h2><a id="Publish"></a>Publish your application</h2>
+<h2><a id="Publish"></a>アプリケーションの発行</h2>
 
-Before publishing your application to Azure Web Sites, the database connection information in `taskmodel.php` needs to be updated with the connection information you obtained earlier (in the [Create an Azure Web Site and SQL Database](#CreateWebsite) section).
+アプリケーションを Azure の Web サイトに発行する前に、`taskmodel.php` ファイル内のデータベース接続情報を、先ほど (「[Web サイトと SQL データベースの作成](#CreateWebsite)」セクションで) 取得した接続情報に更新する必要があります。
 
-1. Open the `taskmodel.php` file by double clicking it, and update the database connection information in the `connect` function.
+1. `taskmodel.php` ファイルをダブルクリックして開き、`connect` 関数内のデータベース接続情報を更新します。
 
 		// DB connection info
 		$host = "value of $serverName";
@@ -140,47 +140,47 @@ Before publishing your application to Azure Web Sites, the database connection i
 		$pwd = "the SQL password you created when creating the web site";
 		$db = "value of Database";
 	
-	Save the `taskmodel.php` file.
+	`taskmodel.php` ファイルを保存します。
 
-2. Click **Publish** in WebMatrix, then click **Continue** in the **Publish Preview** dialog.
+2. WebMatrix で **[発行]** をクリックし、**[発行のプレビュー]** ダイアログの **[続行]** をクリックします。
 
-	![WebMatrix - Publish][edit_publish]
+	![WebMatrix - 発行][edit_publish]
 
-3. Navigate to http://[your web site name].azurewebsites.net/createtable.php to create the `items` table.
+3. `items` テーブルを作成するには、http://[Web サイト名].azurewebsites.net/createtable.php に移動します。
 
-4. Lastly, navigate to http://[your web site name].azurewebsites.net/index.php to launch the application.
+4. 最後に、http://[Web サイト名].azurewebsites.net/index.php に移動してアプリケーションを起動します。
 	
-##Modify and republish your application
+##アプリケーションを変更して再発行する
 
-You can easily modify your application by editing the local copy of the site you downloaded earlier and republish or you can make the edit directly in the Remote mode. Here, you will make a simple change to the heading in in the `index.php` file and save it directly to the live site.
+アプリケーションを変更するには、前にダウンロードしたサイトのローカル コピーを編集して、再発行する方法と、リモート モードでサイトを直接編集する方法があります。ここでは、`index.php` ファイルの見出しに簡単な変更を加え、それをライブ サイトへ直接保存します。
 
-1. Click on the Remote tab of your site in WebMatrix and select **Open Remote View**. This will open your remote site for editing directly.
-	 ![WebMatrix - Open Remote View][OpenRemoteView]
+1. WebMatrix で目的のサイトの [リモート] タブをクリックし、**[リモート ビューを開く]** を選択します。リモート サイトが開き、直接編集できるようになります。
+	 ![WebMatrix - リモート ビューを開く][OpenRemoteView]
  
-2. Open the `index.php` file by double-clicking it.
-	![WebMatrix - Open index file][Remote_editIndex]
+2. `index.php` ファイルをダブルクリックして開きます。
+	![WebMatrix - インデックス ファイルを開く][Remote_editIndex]
 
-3. Change **My ToDo List** to **My Task List** in the **title** and **h1** tags and save the file.
-
-
-4. When saving has completed, click the Run button to see the changes on the live site.
-	![WebMatrix - Launch site in Remote][Remote_run]
+3. **title** タグと **h1** タグの **My ToDo List** を **My Task List** に変更し、このファイルを保存します。
 
 
-
-## Next Steps
-
-You've seen how to create and deploy a web site from WebMatrix to Azure. To learn more about WebMatrix, check out these resources:
-
-* [WebMatrix for Azure](http://go.microsoft.com/fwlink/?LinkID=253622&clcid=0x409)
-
-* [WebMatrix web site](http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200106398)
+4. ファイルを保存したら [実行] ボタンをクリックし、ライブ サイトで変更内容を確認します。
+	![WebMatrix - リモートでサイトを実行][Remote_run]
 
 
 
+## 次のステップ
+
+これで WebMatrix から Web サイトを作成して Azure に展開する方法はわかりました。WebMatrix の詳細については、次のリソースを参照してください。
+
+* [Azure 用 WebMatrix の概要](http://go.microsoft.com/fwlink/?LinkID=253622&clcid=0x409)
+
+* [WebMatrix の Web サイト](http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200106398)
 
 
-[install-SQLExpress]: http://www.microsoft.com/en-us/download/details.aspx?id=29062
+
+
+
+[install-SQLExpress]: http://www.microsoft.com/ja-jp/download/details.aspx?id=29062
 [running-app]: ./media/web-sites-php-sql-database-use-webmatrix/tasklist_app_windows.png
 [tasklist-sqlazure-download]: http://go.microsoft.com/fwlink/?LinkId=252504
 [NewWebSite1]: ./media/web-sites-php-sql-database-use-webmatrix/NewWebSite1.jpg
@@ -204,30 +204,6 @@ You've seen how to create and deploy a web site from WebMatrix to Azure. To lear
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [preview-portal]: https://manage.windowsazure.com
-
-
-
-
-
-
 
 

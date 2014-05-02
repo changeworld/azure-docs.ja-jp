@@ -1,4 +1,4 @@
-<properties linkid="dev-java-how-to-service-bus-queues" urlDisplayName="Service Bus Queues" pageTitle="How to use Service Bus queues (Java) - Azure" metaKeywords="Azure Service Bus queues, Azure queues, Azure messaging, Azure queues Java" description="Learn how to use Service Bus queues in Azure. Code samples written in Java." metaCanonical="" services="service-bus" documentationCenter="Java" title="How to Use Service Bus Queues" authors="waltpo" solutions="" manager="" editor="mollybos" />
+<properties linkid="dev-java-how-to-service-bus-queues" urlDisplayName="サービス バス キュー" pageTitle="サービス バス キューの使用方法 (Java) - Azure" metaKeywords="Azure サービス バス キュー, Azure キュー, Azure メッセージング, Azure キュー Java" description="Azure でのサービス バス キューの使用方法を学習します。コード サンプルは Java で記述されています。" metaCanonical="" services="service-bus" documentationCenter="Java" title="サービス バス キューの使用方法" authors="waltpo" solutions="" manager="" editor="mollybos" />
 
 
 
@@ -7,31 +7,31 @@
 
 
 
-# How to Use Service Bus Queues
+# サービス バス キューの使用方法
 
-This guide will show you how to use Service Bus queues. The samples are
-written in Java and use the [Azure SDK for Java][]. The
-scenarios covered include **creating queues**, **sending and receiving
-messages**, and **deleting queues**.
+このガイドでは、サービス バス キューの使用方法について説明します。サンプルは Java で記述され、
+[Azure SDK for Java][] を利用しています。紹介するシナリオは、
+**キューの作成**、**メッセージの送受信**、および
+**キューの削除**です。
 
-## Table of Contents
+## 目次
 
--   [What are Service Bus Queues?][]
--   [Create a Service Namespace][]
--   [Obtain the Default Management Credentials for the Namespace][]
--   [Configure Your Application to Use Service Bus][]
--   [How to: Create a Security Token Provider][]
--   [How to: Create a Queue][How to: Create a Security Token Provider]
--   [How to: Send Messages to a Queue][]
--   [How to: Receive Messages from a Queue][]
--   [How to: Handle Application Crashes and Unreadable Messages][]
--   [Next Steps][]
+-   [サービス バス キューとは][]
+-   [サービス名前空間の作成][]
+-   [名前空間の既定の管理資格情報の取得][]
+-   [サービス バスを使用するようにアプリケーションを構成する][]
+-   [方法: セキュリティ トークン プロバイダーを作成する][]
+-   [How to: キューを作成する][How to: Create a Security Token Provider]
+-   [How to: メッセージをキューに送信する][]
+-   [How to: キューからメッセージを受信する][]
+-   [How to: アプリケーションのクラッシュと読み取り不能のメッセージを処理する][]
+-   [次のステップ][]
 
 [WACOM.INCLUDE [howto-service-bus-queues](../includes/howto-service-bus-queues.md)]
 
-## <a name="bkmk_ConfigApp"> </a>Configure Your Application to Use Service Bus
+## <a name="bkmk_ConfigApp"> </a>サービス バスを使用するようにアプリケーションを構成する
 
-Add the following import statements to the top of the Java file:
+次の import ステートメントを Java ファイルの先頭に追加します。
 
 	// Include the following imports to use service bus APIs
 	import com.microsoft.windowsazure.services.serviceBus.*;
@@ -39,17 +39,17 @@ Add the following import statements to the top of the Java file:
 	import com.microsoft.windowsazure.services.core.*; 
 	import javax.xml.datatype.*;
 	
-## <a name="bkmk_HowToCreateQueue"> </a>How to Create a Queue
+## <a name="bkmk_HowToCreateQueue"> </a>キューの作成方法
 
-Management operations for Service Bus queues can be performed via the
-**ServiceBusContract** class. A **ServiceBusContract** object is
-constructed with an appropriate configuration that encapsulates the
-token permissions to manage it, and the **ServiceBusContract** class is
-the sole point of communication with Azure.
+サービス バス キューの管理処理は、**ServiceBusContract** クラスを
+使用して実行できます。**ServiceBusContract** オブジェクトは、
+管理用のトークン アクセス許可をカプセル化した適切な構成で作成します。
+**ServiceBusContract** クラスでのみ Azure サービス バス トピックとの
+やり取りが可能です。
 
-The **ServiceBusService** class provides methods to create, enumerate,
-and delete queues. The example below shows how a **ServiceBusService** object
-can be used to create a queue named "TestQueue", with a namespace named "HowToSample":
+**ServiceBusService** クラスには、キューの作成、列挙、および削除のための
+メソッドが用意されています。次の例では、**ServiceBusService** オブジェクトを使用して、
+"HowToSample" 名前空間の "TestQueue" という名前のキューを作成する方法を示しています。
 
     Configuration config = 
     	ServiceBusConfiguration.configureWithWrapAuthentication(
@@ -72,26 +72,26 @@ can be used to create a queue named "TestQueue", with a namespace named "HowToSa
         System.exit(-1);
     }
 
-There are methods on QueueInfo that allow properties of the queue to be
-tuned (for example: to set the default "time-to-live" value to be
-applied to messages sent to the queue). The following example shows how
-to create a queue named "TestQueue" with a maximum size of 5GB:
+QueueInfo には、キューのプロパティを調整できるメソッドが用意されて
+います (たとえば、キューに送信されるメッセージに対して既定の "有効期間" 値が
+適用されるように設定することができます)。次の例では、名前が "TestQueue"、
+最大サイズが 5 GB であるキューを作成する方法を示しています。
 
     long maxSizeInMegabytes = 5120;
     QueueInfo queueInfo = new QueueInfo("TestQueue");
     queueInfo.setMaxSizeInMegabytes(maxSizeInMegabytes); 
     CreateQueueResult result = service.createQueue(queueInfo);
 
-Note that you can use the **listQueues** method on **ServiceBusContract**
-objects to check if a queue with a specified name already exists within
-a service namespace.
+**ServiceBusContract** オブジェクトの **listQueues** メソッドを使用すると、
+指定した名前のキューがサービス名前空間に既に存在するかどうかを
+確認できます。
 
-## <a name="bkmk_HowToSendMsgs"> </a>How to Send Messages to a Queue
+## <a name="bkmk_HowToSendMsgs"> </a>メッセージをキューに送信する方法
 
-To send a message to a Service Bus Queue, your application will obtain a
-**ServiceBusContract** object. The below code demonstrates how to send a
-message for the "TestQueue" queue we created above within our
-"HowToSample" service namespace:
+メッセージをサービス バス キューに送信するには、アプリケーションで 
+**ServiceBusContract** オブジェクトを取得します。次のコードでは、前のコードで "HowToSample" サービス名前空間内で
+作成した "TestQueue" キューにメッセージを送信する方法を
+示しています。
 
     try
     {
@@ -105,19 +105,19 @@ message for the "TestQueue" queue we created above within our
         System.exit(-1);
     }
 
-Messages sent to (and received from ) Service Bus queues are instances
-of the **BrokeredMessage** class. **BrokeredMessage** objects have a set
-of standard methods (such as **getLabel**, **getTimeToLive**,
-**setLabel**, and **setTimeToLive**), a dictionary that is used to hold
-custom application specific properties, and a body of arbitrary
-application data. An application can set the body of the message by
-passing any serializable object into the constructor of the
-**BrokeredMessage**, and the appropriate serializer will then be used to
-serialize the object. Alternatively, a **java.IO.InputStream** can be
-provided.
+サービス バス キューに送信されたメッセージ (およびサービス バス キューから受信したメッセージ) は、
+**BrokeredMessage** クラスのインスタンスになります。**BrokeredMessage** オブジェクトには、
+一連の標準的なメソッド (**getLabel**、**getTimeToLive**、
+**setLabel**、**setTimeToLive** など) と、アプリケーションに
+固有のカスタム プロパティの保持に使用するディクショナリが用意されており、
+任意のアプリケーション データの本体が格納されます。アプリケーションでは、**BrokeredMessage** の
+コンストラクターにシリアル化可能なオブジェクトを渡すことによって
+メッセージの本文を設定できます。その後で、適切なシリアライザーを使用して
+オブジェクトをシリアル化します。この方法に代わって、**java.IO.InputStream** を
+使用できます。
 
-The following example demonstrates how to send five test messages to the
-"TestQueue" **MessageSender** we obtained in the code snippet above:
+次の例では、前に示したコード スニペットで取得した "TestQueue" の 
+**MessageSender** にテスト メッセージを 5 件送信する方法を示しています。
 
     for (int i=0; i<5; i++)
     {
@@ -129,45 +129,45 @@ The following example demonstrates how to send five test messages to the
          service.sendQueueMessage("TestQueue", message);
     }
 
-Service Bus queues support a maximum message size of 256 KB (the header,
-which includes the standard and custom application properties, can have
-a maximum size of 64 KB). There is no limit on the number of messages
-held in a queue but there is a cap on the total size of the messages
-held by a queue. This queue size is defined at creation time, with an
-upper limit of 5 GB.
+サービス バス キューでは、最大 256 KB までのメッセージをサポートして
+います (標準とカスタムのアプリケーション プロパティが含まれるヘッダー
+の最大サイズは 64 KB です)。キューで保持されるメッセージ数には上限が
+ありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには
+上限があります。このキューのサイズはキューの作成時に定義します。
+上限は 5 GB です。
 
-## <a name="bkmk_HowToReceiveMsgs"> </a>How to Receive Messages from a Queue
+## <a name="bkmk_HowToReceiveMsgs"> </a>キューからメッセージを受信する方法
 
-The primary way to receive messages from a queue is to use a
-**ServiceBusContract** object. Received messages can work in two
-different modes: **ReceiveAndDelete** and **PeekLock**.
+キューからメッセージを受信する主な方法は、
+**ServiceBusContract** オブジェクトを使用することです。メッセージは 2 つの異なるモードで受信できます。
+**ReceiveAndDelete** と **PeekLock** です。
 
-When using the **ReceiveAndDelete** mode, receive is a single-shot
-operation - that is, when Service Bus receives a read request for a
-message in a queue, it marks the message as being consumed and returns
-it to the application. **ReceiveAndDelete** mode (which is the default
-mode) is the simplest model and works best for scenarios in which an
-application can tolerate not processing a message in the event of a
-failure. To understand this, consider a scenario in which the consumer
-issues the receive request and then crashes before processing it.
-Because Service Bus will have marked the message as being consumed, then
-when the application restarts and begins consuming messages again, it
-will have missed the message that was consumed prior to the crash.
+**ReceiveAndDelete** モードを使用する場合、受信が 1 回ずつの動作に
+なります。つまり、サービス バス はキュー内のメッセージに対する読み取り要求を
+受け取ると、メッセージを読み取り中としてマークし、アプリケーションに
+返します。**ReceiveAndDelete** モード (既定) は最も
+シンプルなモデルであり、障害発生時にアプリケーション側で
+メッセージを処理しないことを許容できるシナリオに
+最適です。このことを理解するために、コンシューマーが受信要求を発行した後で、
+メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。
+サービス バスはメッセージを読み取り済みとしてマークするため、アプリケーションが
+再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていた
+メッセージは見落とされることになります。
 
-In **PeekLock** mode, receive becomes a two stage operation, which makes
-it possible to support applications that cannot tolerate missing
-messages. When Service Bus receives a request, it finds the next message
-to be consumed, locks it to prevent other consumers receiving it, and
-then returns it to the application. After the application finishes
-processing the message (or stores it reliably for future processing), it
-completes the second stage of the receive process by calling **Delete**
-on the received message. When Service Bus sees the **Delete** call, it
-will mark the message as being consumed and remove it from the queue.
+**PeekLock** モードでは、メッセージの受信処理が 2 段階の動作になり、
+メッセージが失われることが許容できないアプリケーションに対応することが
+できます。サービス バスは要求を受け取ると、次に読み取られるメッセージを
+検索して、他のコンシューマーが受信できないようロックしてから、
+アプリケーションにメッセージを返します。アプリケーションがメッセージの
+処理を終えた後 (または後で処理するために確実に保存した後)、
+受信したメッセージに対して **Delete** を呼び出して受信処理の
+第 2 段階を完了します。サービス バスが **Delete** の呼び出しを確認すると、
+メッセージが読み取り中としてマークされ、キューから削除されます。
 
-The example below demonstrates how messages can be received and
-processed using **PeekLock** mode (not the default mode). The example
-below does an infinite loop and processes messages as they arrive into
-our "TestQueue":
+次の例では、**PeekLock** モード (既定ではない) を使用した
+メッセージの受信および処理の方法を示しています。次の例では、
+無限ループを使用して、"TestQueue" にメッセージが到着するごとに
+処理しています。
 
     	try
 	{
@@ -220,55 +220,55 @@ our "TestQueue":
 	    System.exit(-1);
 	} 	
 
-## <a name="bkmk_HowToHandleAppCrashes"> </a>How to Handle Application Crashes and Unreadable Messages
+## <a name="bkmk_HowToHandleAppCrashes"> </a>アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法
 
-Service Bus provides functionality to help you gracefully recover from
-errors in your application or difficulties processing a message. If a
-receiver application is unable to process the message for some reason,
-then it can call the **unlockMessage** method on the received message
-(instead of the **deleteMessage** method). This will cause Service Bus
-to unlock the message within the queue and make it available to be
-received again, either by the same consuming application or by another
-consuming application.
+サービス バスには、アプリケーションにエラーが発生した場合や、メッセージの
+処理に問題がある場合に復旧を支援する機能が備わっています。受信側の
+アプリケーションが何らかの理由によってメッセージを処理できない場合には、
+受信したメッセージについて (**deleteMessage** メソッドの代わりに) 
+**unlockMessage** メソッドを呼び出すことができます。このメソッドが呼び出されると、サービス バスによって
+キュー内のメッセージのロックが解除され、メッセージが再度受信できる状態に
+変わります。メッセージを受信するアプリケーションは、以前と同じものでも、
+別のものでもかまいません。
 
-There is also a timeout associated with a message locked within the
-queue, and if the application fails to process the message before the
-lock timeout expires (e.g., if the application crashes), then Service
-Bus will unlock the message automatically and make it available to be
-received again.
+キュー内でロックされているメッセージにはタイムアウトも設定されています。
+アプリケーションがクラッシュした場合など、ロックがタイムアウトに
+なる前にアプリケーションがメッセージの処理に失敗した場合には、
+メッセージのロックが自動的に解除され、再度受信できる状態に
+変わります。
 
-In the event that the application crashes after processing the message
-but before the **deleteMessage** request is issued, then the message
-will be redelivered to the application when it restarts. This is often
-called **At Least Once Processing**, that is, each message will be
-processed at least once but in certain situations the same message may
-be redelivered. If the scenario cannot tolerate duplicate processing,
-then application developers should add additional logic to their
-application to handle duplicate message delivery. This is often achieved
-using the **getMessageId** method of the message, which will remain
-constant across delivery attempts.
+メッセージが処理された後、**deleteMessage** 要求が発行される前に
+アプリケーションがクラッシュした場合は、アプリケーションが再起動する際に
+メッセージが再配信されます。一般的に、この動作は 
+**"1 回以上の処理"** と呼ばれます。つまり、すべてのメッセージが 1 回以上
+処理されますが、特定の状況では、同じメッセージが再配信される
+可能性があります。重複処理が許されないシナリオの場合、
+重複メッセージの配信を扱うロジックをアプリケーションに
+追加する必要があります。通常、この問題は
+メッセージの **getMessageId** メソッドを使用して対処します。このプロパティは
+配信が試行された後も同じ値を保持します。
 
-## <a name="bkmk_NextSteps"> </a>Next Steps
+## <a name="bkmk_NextSteps"> </a>次のステップ
 
-Now that you've learned the basics of Service Bus queues, see the MSDN
-topic [Queues, Topics, and Subscriptions][] for more information.
+これで、サービス バス キューの基本を学習できました。詳細については、MSDN のトピック「[サービス バス キュー、トピックおよびサブスクリプション][]」を参照してください。
 
-  [Azure SDK for Java]: http://msdn.microsoft.com/en-us/library/windowsazure/hh690953(v=vs.103).aspx
-  [What are Service Bus Queues?]: #what-are-service-bus-queues
-  [Create a Service Namespace]: #create-a-service-namespace
-  [Obtain the Default Management Credentials for the Namespace]: #obtain-default-credentials
-  [Configure Your Application to Use Service Bus]: #bkmk_ConfigApp
-  [How to: Create a Security Token Provider]: #bkmk_HowToCreateQueue
-  [How to: Send Messages to a Queue]: #bkmk_HowToSendMsgs
-  [How to: Receive Messages from a Queue]: #bkmk_HowToReceiveMsgs
-  [How to: Handle Application Crashes and Unreadable Messages]: #bkmk_HowToHandleAppCrashes
-  [Next Steps]: #bkmk_NextSteps
-  [Service Bus Queue Diagram]: ../../../DevCenter/Java/Media/SvcBusQueues_01_FlowDiagram.jpg
-  [Azure Management Portal]: http://manage.windowsazure.com/
-  [Service Bus Node screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_02_SvcBusNode.jpg
-  [Create a New Namespace screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_03_CreateNewSvcNamespace.jpg
-  [Available Namespaces screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_04_SvcBusNode_AvailNamespaces.jpg
-  [Namespace List screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_05_NamespaceList.jpg
-  [Properties Pane screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_06_PropertiesPane.jpg
-  [Default Key screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_07_DefaultKey.jpg
-  [Queues, Topics, and Subscriptions]: http://msdn.microsoft.com/en-us/library/windowsazure/hh367516.aspx
+  [Azure SDK for Java]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690953(v=vs.103).aspx
+  [サービス バス キューとは]: #what-are-service-bus-queues
+  [サービス名前空間の作成]: #create-a-service-namespace
+  [名前空間の既定の管理資格情報の取得]: #obtain-default-credentials
+  [サービス バスを使用するようにアプリケーションを構成する]: #bkmk_ConfigApp
+  [方法: セキュリティ トークン プロバイダーを作成する]: #bkmk_HowToCreateQueue
+  [How to: メッセージをキューに送信する]: #bkmk_HowToSendMsgs
+  [How to: キューからメッセージを受信する]: #bkmk_HowToReceiveMsgs
+  [How to: アプリケーションのクラッシュと読み取り不能のメッセージを処理する]: #bkmk_HowToHandleAppCrashes
+  [次のステップ]: #bkmk_NextSteps
+  [サービス バス キューの図]: ../../../DevCenter/Java/Media/SvcBusQueues_01_FlowDiagram.jpg
+  [Azure の管理ポータル]: http://manage.windowsazure.com/
+  [サービス バス ノードのスクリーンショット]: ../../../DevCenter/Java/Media/SvcBusQueues_02_SvcBusNode.jpg
+  [名前空間の新規作成のスクリーンショット]: ../../../DevCenter/Java/Media/SvcBusQueues_03_CreateNewSvcNamespace.jpg
+  [利用可能な名前空間のスクリーンショット]: ../../../DevCenter/Java/Media/SvcBusQueues_04_SvcBusNode_AvailNamespaces.jpg
+  [名前空間の一覧のスクリーンショット]: ../../../DevCenter/Java/Media/SvcBusQueues_05_NamespaceList.jpg
+  [プロパティ ウィンドウのスクリーンショット]: ../../../DevCenter/Java/Media/SvcBusQueues_06_PropertiesPane.jpg
+  [既定のキー のスクリーンショット]: ../../../DevCenter/Java/Media/SvcBusQueues_07_DefaultKey.jpg
+  [サービス バス キュー、トピックおよびサブスクリプション]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367516.aspx
+

@@ -1,131 +1,131 @@
-<properties linkid="develop-mobile-tutorials-get-started-with-data-xamarin-android" urlDisplayName="Get Started with Data" pageTitle="Get started with data (Xamarin.Android) - Azure Mobile Services" metaKeywords="Azure Xamarin.Android data, Azure mobile services data" description="Learn how to store and access data from your Azure Mobile Services Xamarin.Android app." metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Get started with data in Mobile Services" documentationCenter="Mobile" authors="" />
+<properties linkid="develop-mobile-tutorials-get-started-with-data-xamarin-android" urlDisplayName="データの使用" pageTitle="データの使用 (Xamarin.Android) - Azure モバイル サービス" metaKeywords="Azure Xamarin.Android データ, Azure モバイル サービス データ" description="Azure モバイル サービス Xamarin.Android アプリケーションからのデータを保存する方法、およびデータにアクセスする方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Get started with data in Mobile Services" documentationCenter="Mobile" authors="" />
 
-# Get started with data in Mobile Services
+# モバイル サービスでのデータの使用
 <div class="dev-center-tutorial-selector sublanding">    
-	<a href="/en-us/develop/mobile/tutorials/get-started-with-data-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-android" title="Android">Android</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-html" title="HTML">HTML</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a>
+	<a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-js" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-wp8" title="Windows Phone">Windows Phone</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-ios" title="iOS">iOS</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-android" title="Android">Android</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-html" title="HTML">HTML</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a>
 </div>	
 
-<p>This topic shows you how to use Azure Mobile Services to leverage data in a Xamarin.Android app. In this tutorial, you will download an app that stores data in memory, create a new mobile service, integrate the mobile service with the app, and then login to the Azure Management Portal to view changes to data made when running the app.</p>
+<p>このトピックでは、Azure のモバイル サービスを使用して Xamarin.Android アプリケーションのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにログインして、アプリケーションの実行中にデータに加えられた変更を表示します。</p>
 
-<div class="dev-callout"><b>Note</b>
-<p>This tutorial is intended to help you better understand how Mobile Services enables you to use Azure to store and retrieve data from a Xamarin.Android app. As such, this topic walks you through many of the steps that are completed for you in the Mobile Services quickstart. If this is your first experience with Mobile Services, consider first completing the tutorial <a href="/en-us/develop/mobile/tutorials/get-started-xamarin-android">Get started with Mobile Services</a>.</p>
+<div class="dev-callout"><b>注</b>
+<p>このチュートリアルの目的は、Azure を使用して Xamarin.Android アプリケーションのデータを格納および取得できるようにするためのモバイル サービスのしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル「<a href="/ja-jp/develop/mobile/tutorials/get-started-xamarin-android">モバイル サービスの使用</a>」を完了することをお勧めします。</p>
 </div>
 
-This tutorial walks you through these basic steps:
+このチュートリアルでは、次の基本的な手順について説明します。
 
-1. [Download the Xamarin.Android app project][GitHub] 
-2. [Create the mobile service]
-3. [Add a data table for storage]
-4. [Update the app to use Mobile Services]
-5. [Test the app against Mobile Services]
+1. [Xamarin.Android アプリ プロジェクトのダウンロード][GitHub]
+2. [モバイル サービスの作成]
+3. [ストレージのデータ テーブルの追加]
+4. [モバイル サービスを使用するためのアプリケーションの更新]
+5. [モバイル サービスに対するアプリケーションのテスト]
 
-<div class="dev-callout"><strong>Note</strong> <p>To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A9C9624B5" target="_blank">Azure Free Trial</a>.</p></div> 
+<div class="dev-callout"><strong>注</strong><p> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A9C9624B5" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
 
-This tutorial requires the [Azure Mobile Services Component], [Xamarin.Android], and Android SDK 4.2 or a later version. 
+このチュートリアルには、[Azure モバイル サービス コンポーネント]、[Xamarin.Android]、および Android SDK 4.2 以降のバージョンが必要です。
 
-<div class="dev-callout"><b>Note</b>
-<p>The downloaded GetStartedWithData project requires targetting Android 4.2 or a later version. However, the Mobile Services SDK requires only Android 2.2 or a later version.</p>
+<div class="dev-callout"><b>注</b>
+<p>ダウンロードした GetStartedWithData プロジェクトは、Android 4.2 以降のバージョンをターゲットとしています。ただし、モバイル サービス SDK は、Android 2.2 以降で動作します。</p>
 </div>
 
-<h2><a name="download-app"></a><span class="short-header">Download the project</span>Download the GetStartedWithData project</h2>
+<h2><a name="download-app"></a><span class="short-header">プロジェクトのダウンロード</span>GetStartedWithData プロジェクトのダウンロード</h2>
 
-This tutorial is built on the [GetStartedWithData app][GitHub], which is a Xamarin.Android app. The UI for this app is identical to the app generated by the Mobile Services Android quickstart, except that added items are stored locally in memory. 
+このチュートリアルは、Xamarin.Android アプリケーションである [GetStartedWithData アプリケーション][GitHub]に基づいています。このアプリケーションの UI は、追加された項目がメモリにローカルに格納される点を除き、モバイル サービス Android のクイック スタートで生成したアプリケーションと同じです。
 
-1. Download the `GetStartedWithData` sample app and extract the files on your computer. 
+1. `GetStartedWithData` サンプル アプリケーションをダウンロードし、コンピューター上でファイルを展開します。
 
-2. In Xamarin Studio, click **File** then **Open**, browse to where you extracted the GetStartedWithData sample project, and select **XamarinTodoQuickStart.Android.sln** and open it.
+2. Xamarin Studio で、**[File]**、**[Open]** の順にクリックし、GetStartedWithData サンプル プロジェクトを展開した場所を参照します。**XamarinTodoQuickStart.Android.sln** を選択して開きます。
 
-3. Locate and open the **TodoActivity** class
+3. **TodoActivity** クラスを探して開きます。
 
-   	Notice that there are `// TODO::` comments that specify the steps you must take to make this app work with your mobile service.
+   	`// TODO::` コメントに、このアプリケーションをモバイル サービスで実行するために必要な手順が指定されている点に注目してください。
 
-5. From the **Run** menu, click **Start Without Debugging**, you will then be asked to pick an emulator or attached USB Android device.
+5. **[Run]** メニューの **[Start Without Debugging]** をクリックします。エミュレーターまたは接続されている USB Android デバイスを選択するよう求めるメッセージが表示されます。
 
-	<div class="dev-callout"><strong>Note</strong> <p>You can run this project using an Android phone, or using the Android emulator. Running with an Android phone  requires you to download a phone-specific USB driver.</p> <p>To run the project in the Android emulator, you must define a least one Android Virtual Device (AVD). Use the AVD Manager to create and manage these devices.</p></div>
+	<div class="dev-callout"><strong>メモ</strong> <p>このプロジェクトは、Android フォンまたは Android エミュレーターを使用して実行できます。Android フォンで実行するには、機器に固有の USB ドライバーをダウンロードする必要があります。</p><p>プロジェクトを Android エミュレーターで実行するには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager を使用します。</p></div>
 
-6. In the app, type meaningful text, such as _Complete the tutorial_, and then click **Add**.
+6. アプリケーションで、わかりやすいテキスト (たとえば、「_チュートリアルの完了_」) を入力し、**[Add]** をクリックします。
 
    	![][13]
 
-   	Notice that the saved text is stored in an in-memory collection and displayed in the list below.
+   	保存したテキストがメモリ内のコレクションに格納され、下のリストに表示されます。
 
-<h2><a name="create-service"></a><span class="short-header">Create mobile service</span>Create a new mobile service in the Management Portal</h2>
+<h2><a name="create-service"></a><span class="short-header">モバイル サービスの作成</span>管理ポータルでの新しいモバイル サービスの作成</h2>
 
 [WACOM.INCLUDE [mobile-services-create-new-service-data](../includes/mobile-services-create-new-service-data.md)]
 
-<h2><a name="add-table"></a><span class="short-header">Add a new table</span>Add a new table to the mobile service</h2>
+<h2><a name="add-table"></a><span class="short-header">新しいテーブルの追加</span>モバイル サービスへの新しいテーブルの追加</h2>
 
-To be able to store app data in the new mobile service, you must first create a new table.  
+アプリケーション データを新しいモバイル サービスに格納できるようにするには、最初に新しいテーブルを作成する必要があります。
 
-1. In the Management Portal, click **Mobile Services**, and then click the mobile service that you just created.
+1. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
-2. Click the **Data** tab, then click **+Create**.
+2. **[データ]** タブをクリックし、**[作成]** をクリックします。
 
    	![][5]
 
-   	This displays the **Create new table** dialog.
+   	**[新しいテーブルの作成]** ダイアログ ボックスが表示されます。
 
-3. In **Table name** type _TodoItem_, then click the check button.
+3. **[テーブル名]** に「_TodoItem_」と入力し、チェック ボタンをクリックします。
 
   	![][6]
 
-  	This creates a new storage table **TodoItem** with the default permissions set, which means that any user of the app can access and change data in the table. 
+  	これにより、既定のアクセス許可が設定された新しいストレージ テーブル **TodoItem** が作成されます。既定のアクセス許可とは、アプリケーションの任意のユーザーがテーブル内のデータにアクセスし、変更を加えることができることを表します。
 
     <div class="dev-callout"> 
-	<b>Note</b> 
-	<p>The same table name is used in Mobile Services quickstart. However, each table is created in a schema that is specific to a given mobile service. This is to prevent data collisions when multiple mobile services use the same database.</p> 
+	<b>注</b>
+	<p>モバイル サービスのクイック スタートでも同じテーブル名が使用されています。ただし、それぞれのテーブルは、特定のモバイル サービスに固有のスキーマ内で作成されています。これには、複数のモバイル サービスで同じデータベースを使用した場合にデータの競合を回避する目的があります。</p>
 	</div>
 
-4. Click the new **TodoItem** table and verify that there are no data rows.
+4. 新しい **TodoItem** テーブルをクリックし、データ行がないことを確認します。
 
-5. Click the **Columns** tab and verify that there is only a single **id** column, which is automatically created for you.
+5. **[列]** タブをクリックし、自動的に作成される **[id]** 列のみがあることを確認します。
 
-  	This is the minimum requirement for a table in Mobile Services. 
+  	これは、モバイル サービスのテーブルの最小要件です。
 
-    <div class="dev-callout"><b>Note</b>
-	<p>When dynamic schema is enabled on your mobile service, new columns are created automatically when JSON objects are sent to the mobile service by an insert or update operation.</p>
+    <div class="dev-callout"><b>注</b>
+	<p>モバイル サービスで動的スキーマを有効にすると、挿入操作または更新操作によって JSON オブジェクトがモバイル サービスに送信されるときに新しい列が自動的に作成されます。</p>
     </div>
 
-You are now ready to use the new mobile service as data storage for the app.
+これで、新しいモバイル サービスをアプリケーションのデータ ストレージとして使用する準備が整いました。
 
-<h2><a name="update-app"></a><span class="short-header">Update the app</span>Update the app to use the mobile service for data access</h2>
+<h2><a name="update-app"></a><span class="short-header">アプリケーションの更新</span>モバイル サービスをデータ アクセスに使用するためのアプリケーションの更新</h2>
 
-Now that your mobile service is ready, you can update the app to store items in Mobile Services instead of the local collection. 
+モバイル サービスの準備が整ったら、ローカル コレクションの代わりにモバイル サービスに項目を格納するようにアプリケーションを更新します。
 
-1. If you don't already have **Azure Mobile Services** listed in the Components folder, you can get it by right-clicking **Components**, choosing **Get More Components** and then searching for **Azure Mobile Services**.
+1. **Azure モバイル サービス**が Components フォルダーに含まれていない場合は、**[コンポーネント]** を右クリックし、**[コンポーネントの取得]** を選択して、**Azure モバイル サービス**を探します。
 
-  	This adds the Mobile Services SDK component to the project.
+  	これにより、モバイル サービス SDK コンポーネントがプロジェクトに追加されます。
 
-2. Open the **AndroidManifest.xml** file and ensure the following permission line exists:
+2. **AndroidManifest.xml** ファイルを開き、次のアクセス許可行があることを確認します。
 
 		<uses-permission android:name="android.permission.INTERNET" />
 
-  	This enables the app to access Mobile Services in Azure.
+  	これにより、アプリケーションが Azure のモバイル サービスにアクセスできるようになります。
 
-3. From the **Solution** window, open the **TodoActivity** class, and uncomment the following line of code: 
+3. **[ソリューション]** ウィンドウで、**TodoActivity** クラスを開き、次のコード行をコメント解除します。
 
 		using Microsoft.WindowsAzure.MobileServices;
- 
-4. We will remove the in-memory list currently used by the app, so we can replace it with a mobile service. In the **TodoActivity** class, comment out the following line of code, which defines the existing **todoItemList** list.
+
+4. 次に、現在アプリケーションで使用されているメモリ内のリストを削除して、モバイル サービスで置き換えます。**TodoActivity** クラスで、既存の **todoItemList** リストを定義している次のコード行をコメント アウトします。
 
 		public List<TodoItem> todoItemList = new ArrayList<TodoItem>();
 
-5. Once the previous step is done, the project will indicate build errors. Search for the three remaining locations where the `todoItemList` variable is used and comment out the sections indicated. 
+5. 前の手順を完了すると、プロジェクトのビルド エラーが示されます。`todoItemList` 変数が使用されている残りの 3 か所を検索し、該当するセクションをコメント アウトします。
 
-6. We now add our mobile service. Uncomment the following lines of code:
+6. 次に、モバイル サービスを追加します。次のコード行をコメント解除します。
 
         private MobileServiceClient client; // Mobile Service Client references
         private IMobileServiceTable<TodoItem> todoTable; // Mobile Service Table used to access data   
 
-7. In the Management Portal, click **Mobile Services**, and then click the mobile service you just created.
+7. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
-8. Click the **Dashboard** tab and make a note of the **Site URL**, then click **Manage keys** and make a note of the **Application key**.
+8. **[ダッシュボード]** タブをクリックし、**サイトの URL** をメモに記録します。次に、**[キーの管理]** をクリックし、**アプリケーション キー**をメモに記録します。
 
    	![][8]
 
-  	You will need these values when accessing the mobile service from your app code.
+  	これらの値は、アプリケーション コードからモバイル サービスにアクセスするときに必要になります。
 
-9. In the **Constants** class, uncomment the following member variables:
+9. **Constants** クラスで、次のメンバー変数をコメント解除します。
 
         public const string ApplicationURL = @"AppUrl";
         public const string ApplicationKey = @"AppKey";
@@ -143,11 +143,11 @@ Now that your mobile service is ready, you can update the app to store items in 
 		// Get the Mobile Service Table instance to use
 		todoTable = client.GetTable<TodoItem>();    
 
-  	This creates a new instance of MobileServiceClient that is used to access your mobile service. It also creates the MobileServiceTable instance that is used to proxy data storage in the mobile service.
+  	これで、モバイル サービスにアクセスするために使用される MobileServiceClient の新しいインスタンスが作成されます。また、モバイル サービス内のデータ ストレージをプロキシ経由で接続するために使用される MobileServiceTable の新しいインスタンスも作成されます。
 
-12. Find the ProgressFilter class at the bottom of the file and uncomment it. This class displays a 'loading' indicator while MobileServiceClient is running network operations.
+12. ファイルの末尾にある ProgressFilter クラスを探し、コメント解除します。このクラスは、MobileServiceClient がネットワーク操作を実行しているときに "読み込み中" インジケーターを表示します。
 
-13. Uncommment these lines of the **CheckItem** method:
+13. 次に示す **CheckItem** メソッドの行をコメント解除します。
 
 		try {
 			await todoTable.UpdateAsync(item);
@@ -157,9 +157,9 @@ Now that your mobile service is ready, you can update the app to store items in 
 			CreateAndShowDialog(e, "Error");
 		}
 
-   	This sends an item update to the mobile service and removes checked items from the adapter.
+   	これにより、項目の更新がモバイル サービスに送信され、チェックされた項目がアダプターから削除されます。
     
-14. Uncommment these lines of the **AddItem** method:
+14. 次に示す **AddItem** メソッドの行をコメント解除します。
 	
 		try 
 		{
@@ -174,9 +174,9 @@ Now that your mobile service is ready, you can update the app to store items in 
 			CreateAndShowDialog(e, "Error");
 		}   		
 
-  	This code creates a new item and inserts it into the table in the remote mobile service.
+  	このコードでは、新しい項目を作成し、それをリモート モバイル サービスのテーブルに挿入します。
 
-15. Uncommment these lines of the **RefreshItemsFromTableAsync** method:
+15. 次に示す **RefreshItemsFromTableAsync** メソッドの行をコメント解除します。
 
 		try {
 			// Get the items that weren't marked as completed and add them in the adapter
@@ -192,62 +192,62 @@ Now that your mobile service is ready, you can update the app to store items in 
 			CreateAndShowDialog(e, "Error");
 		}
 
-	This queries the mobile service and returns all items that are not marked as complete. Items are added to the adapter for binding.
+	このコードでは、モバイル サービスに対するクエリを実行して、完了マークが付けられていないすべての項目を取得します。項目は、バインド用にアダプターに追加されます。
 		
 
-Now that the app has been updated to use Mobile Services for backend storage, it's time to test the app against Mobile Services.
+バックエンド ストレージのモバイル サービスを使用するようにアプリケーションを更新した後は、モバイル サービスに対してアプリケーションをテストします。
 
-<h2><a name="test-app"></a><span class="short-header">Test the app</span>Test the app against your new mobile service</h2>
+<h2><a name="test-app"></a><span class="short-header">アプリケーションのテスト</span>新しいモバイル サービスに対するアプリケーションのテスト</h2>
 
-1. From the **Run** menu, click **Start Without Debugging** to start the project. You will be asked to pick an existing emulator image or an attached USB Android device.
+1. **[Run]** メニューの **[Start Without Debugging]** をクリックして、プロジェクトを開始します。既存のエミュレーター イメージまたは接続されている USB Android デバイスを選択するよう求めるメッセージが表示されます。
 
-	This executes your app, built with Xamarin.Android, that uses the client library to send a query that returns items from your mobile service.
+	これにより、モバイル サービスから項目を取得するクエリを、クライアント ライブラリを使用して送信するアプリケーションが Xamarin.Android でビルドされ、実行されます。
 
-5. As before, type meaningful text, then click **Add**.
+5. 前回と同様に、わかりやすいテキストを入力し、**[Add]** をクリックします。
 
-   	This sends a new item as an insert to the mobile service.
+   	これにより、新しい項目が挿入としてモバイル サービスに送信されます。
 
-3. In the [Management Portal], click **Mobile Services**, and then click your mobile service.
+3. [管理ポータル]で、**[モバイル サービス]** をクリックし、対象のモバイル サービスをクリックします。
 
-4. Click the **Data** tab, then click **Browse**.
+4. **[データ]** タブをクリックし、**[参照]** をクリックします。
 
    	![][9]
   
-   	Notice that the **TodoItem** table now contains data, with id values generated by Mobile Services, and that columns have been automatically added to the table to match the TodoItem class in the app.
+   	**TodoItem** テーブルに、モバイル サービスによって生成された ID 値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
 
-This concludes the **Get started with data** tutorial for Xamarin.Android.
+これで、Xamarin.Android 向けの**データの使用**に関するチュートリアルは終了です。
 
-## Get completed example
-Download the [completed example project]. Be sure to update the **applicationURL** and **applicationKey** variables with your own Azure settings. 
+##完成したサンプルの入手
+[完成したサンプル プロジェクト]をダウンロードします。**applicationURL** 変数と **applicationKey** 変数を独自の Azure 設定で更新してください。
 
-## <a name="next-steps"> </a>Next steps
+## <a name="next-steps"> </a>次のステップ
 
-This tutorial demonstrated the basics of enabling a Xamarin.Android app to work with data in Mobile Services. 
+このチュートリアルでは、Xamarin.Android アプリでモバイル サービスのデータを操作できるようにするための基本について説明しました。
 
-Next, consider completing one of the following tutorials that is based on the GetStartedWithData app that you created in this tutorial:
+次は、このチュートリアルで作成した GetStartedWithData アプリケーションに基づく次のいずれかのチュートリアルを行うことをお勧めします。
 
-* [Validate and modify data with scripts]
-  <br/>Learn more about using server scripts in Mobile Services to validate and change data sent from your app.
+* [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]
+  <br/>モバイル サービスでサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
-* [Refine queries with paging]
-  <br/>Learn how to use paging in queries to control the amount of data handled in a single request.
+* [ページングを使用したモバイル サービス クエリの改善]
+  <br/>クエリ内でページングを使用して、単一の要求で渡されるデータの量を制御する方法について説明します。
 
-Once you have completed the data series, try these other Xamarin.Android tutorials:
+データ シリーズを完了した後は、次に示す、Xamarin.Android に関する他のチュートリアルを行うことをお勧めします。
 
-* [Get started with authentication] 
-	<br/>Learn how to authenticate users of your app.
+* [認証の使用]
+	<br/>アプリケーションのユーザーを認証する方法について説明します。
 
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app with Mobile Services.
+* [プッシュ通知の使用]
+  <br/>モバイル サービスを使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
 <!-- Anchors. -->
 
-[Get the Windows Store app]: #download-app
-[Create the mobile service]: #create-service
-[Add a data table for storage]: #add-table
-[Update the app to use Mobile Services]: #update-app
-[Test the app against Mobile Services]: #test-app
-[Next Steps]:#next-steps
+[Windows ストア アプリの入手]: #download-app
+[モバイル サービスの作成]: #create-service
+[ストレージのデータ テーブルの追加]: #add-table
+[モバイル サービスを使用するためのアプリケーションの更新]: #update-app
+[モバイル サービスに対するアプリケーションのテスト]: #test-app
+[次のステップ]:#next-steps
 
 <!-- Images. -->
 
@@ -262,18 +262,19 @@ Once you have completed the data series, try these other Xamarin.Android tutoria
 [13]: ./media/partner-xamarin-mobile-services-android-get-started-data/mobile-quickstart-startup-android.png
 
 <!-- URLs. TODO:: update 'Download the Android app project' download link, 'GitHub', completed project, etc. -->
-[Validate and modify data with scripts]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android
-[Refine queries with paging]: /en-us/develop/mobile/tutorials/add-paging-to-data-xamarin-android
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-xamarin-android
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android
+[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android
+[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-xamarin-android
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-android
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-android
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-android
+[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-android
 
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Management Portal]: https://manage.windowsazure.com/
-[Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
-[Download the Android app project]: http://www.google.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[管理ポータル]: https://manage.windowsazure.com/
+[Azure モバイル サービス コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
+[Android アプリ プロジェクトのダウンロード]: http://www.google.com/
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331302
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
 
-[completed example project]: http://go.microsoft.com/fwlink/p/?LinkId=331302
+[完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331302
+

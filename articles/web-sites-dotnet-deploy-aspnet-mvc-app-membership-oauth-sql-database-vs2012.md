@@ -3,234 +3,234 @@
 
 
 
-# Deploy a Secure ASP.NET MVC app with Membership, OAuth, and SQL Database to an Azure Web Site
+# メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC 5 アプリケーションを Azure の Web サイトに展開する
 
-***By [Rick Anderson](https://twitter.com/RickAndMSFT) and Tom Dykstra. Updated 15 October 2013.***
+***執筆: [Rick Anderson](https://twitter.com/RickAndMSFT) および Tom Dykstra。更新日: 2013 年 10 月 15 日。***
 
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/develop/net/tutorials/web-site-with-sql-database/" title="Visual Studio 2013">Visual Studio 2013</a><a href="/en-us/develop/net/tutorials/web-site-with-sql-database-vs2012/" title="Visual Studio 2012" class="current">Visual Studio 2012</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/develop/net/tutorials/web-site-with-sql-database/" title="Visual Studio 2013">Visual Studio 2013</a><a href="/ja-jp/develop/net/tutorials/web-site-with-sql-database-vs2012/" title="Visual Studio 2012" class="current">Visual Studio 2012</a></div>
 
-<div class="dev-callout"><strong>Note</strong><p>A <a href="/en-us/develop/net/tutorials/web-site-with-sql-database/">newer version of this tutorial</a> is available. You can still follow this version if you want to use Visual Studio 2012, but the newer version is significantly easier to follow.</p></div>
+<div class="dev-callout"><strong>注</strong><p><a href="/ja-jp/develop/net/tutorials/web-site-with-sql-database/">このチュートリアルの新しいバージョン</a>が提供されています。Visual Studio 2012 を使用する場合はこのバージョンを引き続き利用できますが、新しいバージョンの方が格段に取り組みやすい内容となっています。</p></div>
 
-This tutorial shows you how to build a secure ASP.NET MVC 4 web application that enables users to log in with credentials from Facebook, Yahoo, and Google. You will also deploy the application to Azure.
+このチュートリアルでは、ユーザーが Facebook、Yahoo、Google の資格情報を使用してログインできる、安全な ASP.NET MVC 4 Web アプリケーションを構築する方法について説明します。さらに、作成したアプリケーションを Azure に展開する方法についても学習します。
 
-You can open an Azure account for free, and if you don't already have Visual Studio 2012, the SDK automatically installs Visual Studio 2012 for Web Express. You can start developing for Azure for free.
+Azure アカウントは無料で開くことができます。また、まだ Visual Studio 2012 を持っていない場合は、SDK によって Visual Studio 2012 for Web Express が自動的にインストールされます。これで、Azure 向けのアプリケーションを無料で開発できます。
 
-This tutorial assumes that you have no prior experience using Azure. On completing this tutorial, you'll have a secure data-driven web application up and running in the cloud and using a cloud database.
+このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルでは、安全なデータ主導型 Web アプリケーションを作成し、クラウド データベースを使用してクラウド上で実行します。
 
-You'll learn:
+学習内容: 
 
-* How to enable your machine for Azure development by installing the Azure SDK.
-* How to create a secure ASP.NET MVC 4 project and publish it to an Azure Web Site.
-* How to use OAuth and the ASP.NET membership database to secure your application.
-* How to deploy a membership database to Azure.
-* How to use a SQL database to store data in Azure.
-* How to use Visual Studio to update and manage the membership database.
+* Azure SDK をインストールして、Azure 向け開発用にコンピューターを準備する方法
+* 安全な ASP.NET MVC 4 プロジェクトを作成して Azure の Web サイトに発行する方法
+* OAuth および ASP.NET メンバーシップ データベースを使用してアプリケーションを保護する方法
+* メンバーシップ データベースを Azure に展開する方法
+* SQL データベースを使用して Azure にデータを保存する方法
+* Visual Studio を使用して、メンバーシップ データベースを更新および管理する方法
 
-You'll build a simple contact list web application that is built on ASP.NET MVC 4 and uses the ADO.NET Entity Framework for database access. The following illustration shows the login page for the completed application:
+ASP.NET MVC 4 に基づく、データベース アクセスに ADO.NET Entity Framework を使用する、簡単な連絡先リスト Web アプリケーションをビルドします。次の図は、完成したアプリケーションのログイン ページです。
 
-![login page](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxb.png)
+![ログイン ページ](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxb.png)
 
 [WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
-In this tutorial:
+このチュートリアルの内容: 
 
-- [Set up the development environment][setupdbenv]
-- [Set up the Azure environment][setupwindowsazureenv]
-- [Create an ASP.NET MVC 4 application][createapplication]
-- [Deploy the application to Azure][deployapp1]
-- [Add a database to the application][adddb]
-- [Add an OAuth Provider][]
-- [Add Roles to the Membership Database][]
-- [Create a Data Deployment Script][]
-- [Deploy the app to Azure][deployapp11]
-- [Update the Membership Database][]
-- [Next steps][]
+- [開発環境を設定する][setupdbenv]
+- [Azure 環境を設定する][setupwindowsazureenv]
+- [ASP.NET MVC 4 アプリケーションを作成する][createapplication]
+- [Azure にアプリケーションを展開する][deployapp1]
+- [アプリケーションにデータベースを追加する][adddb]
+- [OAuth プロバイダーを追加する][]
+- [メンバーシップ データベースにロールを追加する][]
+- [データ展開スクリプトを作成する][]
+- [Azure にアプリケーションを展開する][deployapp11]
+- [メンバーシップ データベースを更新する][]
+- [次のステップ][]
 
-<h2><a name="bkmk_setupdevenv"></a>Set up the development environment</h2>
+<h2><a name="bkmk_setupdevenv"></a>開発環境を設定する</h2>
 
-To start, set up your development environment by installing the Azure SDK for the .NET Framework. 
+最初に、.NET Framework 対応の Azure SDK をインストールして、開発環境を設定します 
 
-1. To install the Azure SDK for .NET, click the link below. If you don't have Visual Studio 2012 installed yet, it will be installed by the link. This tutorial requires Visual Studio 2012. 
+1. Azure SDK for .NET をインストールするには、次のリンクをクリックします。Visual Studio 2012 をまだインストールしていない場合は、次のリンクをクリックするとインストールされます。このチュートリアルには、Visual Studio 2012 が必要です。
 [Azure SDK for Visual Studio 2012]( http://go.microsoft.com/fwlink/?LinkId=254364)
-1. When you are prompted to run or save the installation executable, click **Run**.
-1. In the Web Platform Installer window, click **Install** and proceed with the installation.
+1. インストール プログラムの実行または保存を求めるメッセージが表示されたら、**[実行]** をクリックします。
+1. Web Platform Installer のウィンドウで、**[インストール]** をクリックし、インストールの手順を進めます。
 
-![Web Platform Installer - Azure SDK for .NET][WebPIAzureSdk20NetVS12]
-
-
-When the installation is complete, you have everything necessary to start developing.
+![Web Platform Installer -  Azure SDK for .NET][WebPIAzureSdk20NetVS12]
 
 
+インストールが完了すると、開発に必要なツールがすべて揃います。
 
-<h2><a name="bkmk_setupwindowsazure"></a>Set up the Azure environment</h2>
 
-Next, set up the Azure environment by creating an Azure Web Site and a SQL database.
 
-### Create a web site and a SQL database in Azure
+<h2><a name="bkmk_setupwindowsazure"></a>Azure 環境を設定する</h2>
 
-Your Azure Web Site will run in a shared hosting environment, which means it runs on virtual machines (VMs) that are shared with other Azure clients. A shared hosting environment is a low-cost way to get started in the cloud. Later, if your web traffic increases, the application can scale to meet the need by running on dedicated VMs. If you need a more complex architecture, you can migrate to an Azure Cloud Service. Cloud services run on dedicated VMs that you can configure according to your needs.
+次のステップでは、Azure の Web サイトと SQL データベースを作成することで Azure 環境をセットアップします。
 
-Azure SQL Database is a cloud-based relational database service that is built on SQL Server technologies. The tools and applications that work with SQL Server also work with SQL Database.
+### Azure で Web サイトと SQL データベースを作成する
 
-1. In the [Azure Management Portal](https://manage.windowsazure.com), click **Web Sites** in the left tab, and then click  **New**.
+Azure の Web サイトは、共有ホスティング環境で実行されます。つまり、他の Azure クライアントと共有する仮想マシン (VM) 上で実行されます。共有ホスティング環境は、低コストでクラウドの利用を開始できる方法です。後で Web トラフィックが増加したら、アプリケーションの規模を変更して専用 VM 上で実行するように設定してニーズを満たすことができます。もっと複雑なアーキテクチャが必要な場合は、Azure のクラウド サービスに移行できます。クラウド サービスは専用 VM 上で実行され、ユーザーのニーズに応じて構成できます。
 
-![New button in Management Portal][rxWSnew]
+Azure SQL データベースは、SQL Server テクノロジに基づいて構築されたクラウドベースのリレーショナル データベース サービスです。SQL Server で動作するツールおよびアプリケーションは、SQL データベースでも動作します。
 
-2. Click **CUSTOM CREATE**.
+1. [Azure 管理ポータル](https://manage.windowsazure.com)で、左側のタブにある **[Web サイト]** をクリックし、**[新規]** をクリックします。
 
-	![Create with Database link in Management Portal][rxCreateWSwithDB]
+![管理ポータルの新しいボタン][rxWSnew]
 
-The **New Web Site - Custom Create** wizard opens. 
+2. **[カスタム作成]** をクリックします。
 
-3. In the **New Web Site** step of the wizard, enter a string in the **URL** box to use as the unique URL for your application. The complete URL will consist of what you enter here plus the suffix that you see next to the text box. The illustration shows "contactmgr2", but that URL is probably taken so you will have to choose a different one.
+	![管理ポータルの [データベースとともに作成] リンク][rxCreateWSwithDB]
 
-	![Create with Database link in Management Portal][rxCreateWSwithDB_2]
+**新しい Web サイト - カスタム作成**ウィザードが開きます。
 
-4. In the **Database** drop-down list, choose **Create a new SQL database**.
+3. ウィザードの **[新しい Web サイトを作成する]** 手順で、アプリケーションの一意の URL として使用する文字列を **[URL]** ボックスに入力します。ここに入力した文字列と、このテキスト ボックスの右側に表示されている文字列を組み合わせたものが実際の URL になります。図には "contactmgr2" と表示されていますが、その URL は既に取得されている可能性が高いため、別の URL の選択が必要になります。
 
-5. In the **Region** drop-down list, choose the same region you selected for the Web site. This setting specifies which data center your VM will run in. In the **DB CONNECTION STRING NAME**, enter *connectionString1*.
+	![管理ポータルの [データベースとともに作成] リンク][rxCreateWSwithDB_2]
 
-	![Create a New Web Site step of New Web Site - Create with Database wizard][rxCreateWSwithDB_2]
+4. **[データベース]** ドロップダウン リストで、**[新しい SQL データベースを作成します]** を選択します。
 
-6. Click the arrow that points to the right at the bottom of the box. The wizard advances to the **Database Settings** step.
+5. **[リージョン]** ボックスの一覧で、Web サイトで選択したリージョンと同じリージョンを選択します。この設定では、どのデータ センターで VM を実行するかを指定します。**[DB 接続文字列名]** に「*connectionString1*」と入力します。
 
-7. In the **Name** box, enter *ContactDB*.
+	![新しい Web サイト - データベースとともに作成ウィザードの [新しい Web サイトを作成する] 手順][rxCreateWSwithDB_2]
 
-8. In the **Server** box, select **New SQL Database server**. Alternatively, if you previously created a SQL Server database, you can select that SQL Server from the dropdown control.
+6. ボックスの下部にある右矢印をクリックします。ウィザードの **[データベースの設定]** 手順に進みます。
 
-9. Enter an administrator **LOGIN NAME** and **PASSWORD**. If you selected **New SQL Database server** you aren't entering an existing name and password here, you're entering a new name and password that you're defining now to use later when you access the database. If you selected a SQL Server you've created previously, you'll be prompted for the password to the previous SQL Server account name you created. For this tutorial, we won't check the **Advanced ** box. The **Advanced ** box allows you to set the DB size (the default is 1 GB but you can increase this to 150 GB) and the collation.
+7. **[名前]** ボックスに「*ContactDB*」と入力します。
 
-10. Click the check mark at the bottom of the box to indicate you're finished.
+8. **[サーバー]** ボックスで、**[新しい SQL データベース サーバー]** を選択します。または、以前に SQL Server データベースを作成した場合は、ボックスの一覧からその SQL Server を選択できます。
+
+9. 管理者の**ログイン名**と**パスワード**を入力します。**[新しい SQL データベース サーバー]** を選択した場合は、既存の名前とパスワードではなく、このデータベースへのアクセス時に使用する新しい名前とパスワードを入力してください。以前に作成した SQL Server を選択した場合は、その SQL Server の作成時に設定したパスワードを入力します。このチュートリアルでは、**[データベースの詳細設定を構成します]** チェック ボックスをオンにしません。**詳細設定**では、DB サイズ (既定値は 1 GB ですが 150 GB まで拡張可能) と照合順序を指定できます。
+
+10. 終了したら、ダイアログ ボックスの下部にあるチェック マークをクリックします。
 	
-	![Database Settings step of New Web Site - Create with Database wizard][setup007]
+	![新しい Web サイト - データベースとともに作成ウィザードの [データベースの設定] 手順][setup007]
 	
-	The following image shows using an existing SQL Server and Login.
-	![Database Settings step of New Web Site - Create with Database wizard][rxPrevDB]
+	次の画像では、既存の SQL Server を選択した場合のログインを示しています。
+	![新しい Web サイト - データベースとともに作成ウィザードの [データベースの設定] 手順][rxPrevDB]
 
-	The Management Portal returns to the Web Sites page, and the **Status** column shows that the site is being created. After a while (typically less than a minute), the **Status** column shows that the site was successfully created. In the navigation bar at the left, the number of sites you have in your account appears next to the **Web Sites** icon, and the number of databases appears next to the **SQL Databases** icon.
-
-
-<h2><a name="bkmk_createmvc4app"></a>Create an ASP.NET MVC 4 application</h2>
-
-You have created an Azure Web Site, but there is no content in it yet. Your next step is to create the Visual Studio web application project that you'll publish to Azure.
-
-### Create the project
-
-1. Start Visual Studio 2012.
-1. From the **File** menu click **New Project**.
-3. In the **New Project** dialog box, expand **Visual C#** and select **Web** under **Installed Templates** and then select **ASP.NET MVC 4 Web Application**. Keep the default **.NET Framework 4.5**. Name the application **ContactManager** and click **OK**.
-
-	![New Project dialog box][newapp002]
-
-6. In the **New ASP.NET MVC 4 Project** dialog box, select the **Internet Application** template. Keep the default Razor **View Engine** and then click **OK**.
-
-	![New ASP.NET MVC 4 Project dialog box][rxb2]
-
-### Set the page header and footer
+	管理ポータルが [Web サイト] ページに戻り、**[状態]** 列にサイトが作成中であることが示されます。しばらくすると (通常は 1 分未満)、サイトの作成に成功したことが **[状態]** 列に示されます。左側にあるナビゲーション バーでは、アカウントで所有するサイト数が **[Web サイト]** アイコンの横に表示され、データベース数が **[SQL データベース]** アイコンの横に表示されます。
 
 
-1. In **Solution Explorer**, expand the Views\Shared folder and open the *_Layout.cshtml* file.
+<h2><a name="bkmk_createmvc4app"></a>ASP.NET MVC 4 アプリケーションを作成する</h2>
 
-	![_Layout.cshtml in Solution Explorer][newapp004]
+Azure の Web サイトを作成しましたが、まだその中にコンテンツがありません。次の手順では、Azure に発行する Visual Studio Web アプリケーション プロジェクトを作成します。
 
-1. Replace each occurrence of "My ASP.NET MVC Application" with "Contact Manager".
-1. Replace "your logo here" with "CM Demo".
+### プロジェクトを作成する
+
+1. Visual Studio 2012 を起動します。
+1. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
+3. **[新しいプロジェクト]** ダイアログ ボックスで、**[インストールされているテンプレート]** の下にある **[Visual C#]** を展開して **[Web]** を選択し、**[ASP.NET MVC 4 Web アプリケーション]** を選択します。既定の **[.NET Framework 4.5]** をそのまま使用します。アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
+
+	![[新しいプロジェクト] ダイアログ ボックス][newapp002]
+
+6. **[新しい ASP.NET MVC 4 プロジェクト]** ダイアログ ボックスで、**[インターネット アプリケーション]** テンプレートを選択します。**[ビュー エンジン]** ボックスの一覧で既定の [Razor] をそのまま使用し、**[OK]** をクリックします。
+
+	![[新しい ASP.NET MVC 4 プロジェクト] ダイアログ ボックス][rxb2]
+
+### ページのヘッダーとフッターを設定する
+
+
+1. **ソリューション エクスプローラー**で、Views\Shared フォルダーを展開し、*_Layout.cshtml* ファイルを開きます。
+
+	![_ソリューション エクスプローラーに表示されている Layout.cshtml ファイル][newapp004]
+
+1. "My ASP.NET MVC Application" となっている箇所をすべて「Contact Manager」に書き換えます。
+1. "your logo here" を「CM Demo」に書き換えます。
 
 
 
-### Run the application locally
+### ローカルでアプリケーションを実行する
 
-1. Press CTRL+F5 to run the application. The application home page appears in the default browser.
-![To Do List home page][rxa]
+1. Ctrl + F5 キーを押して、アプリケーションを実行します。アプリケーションのホーム ページが既定のブラウザーに表示されます。
+![To Do List のホーム ページ][rxa]
 
-This is all you need to do for now to create the application that you'll deploy to Azure. Later you'll add database functionality.
+これで、Azure に展開するアプリケーションを作成するために必要な操作が完了しました。データベース機能は後で追加します。
 
-<h2><a name="bkmk_deploytowindowsazure1"></a>Deploy the application to Azure</h2>
+<h2><a name="bkmk_deploytowindowsazure1"></a>Azure にアプリケーションを展開する</h2>
 
-1. In your browser, open the [Azure Management Portal](http://manage.windowsazure.com "portal").
+1. ブラウザーで、[Azure 管理ポータル](http://manage.windowsazure.com "portal")を開きます。
 
-2. In the **Web Sites** tab, click the name of the site you created earlier.
+2. **[Web サイト]** タブで、前の手順で作成したサイトの名前をクリックします。
 
-	![Contact manager application in Management Portal Web Sites tab][setup009]
+	![管理ポータルの [Web サイト] タブにある Contact Manager アプリケーション][setup009]
 
-3. On the right side of the window, click **Download publish profile**.
+3. ウィンドウの右側で、**[発行プロファイルのダウンロード]** をクリックします。
 
-	![Quickstart tab and Download Publishing Profile button][firsdeploy001]
+	![[クイック スタート] タブと [発行プロファイルのダウンロード] ボタン][firsdeploy001]
 
-	This step downloads a file that contains all of the settings that you need in order to deploy an application to your Web Site. You'll import this file into Visual Studio so you don't have to enter this information manually.
+	この手順では、アプリケーションを Web サイトに展開するために必要な設定をすべて含むファイルがダウンロードされます。このファイルを Visual Studio にインポートすると、この情報を手動で入力する必要はありません。
 
-4. Save the .*publishsettings* file in a folder that you can access from Visual Studio.
+4. Visual Studio からアクセスできるフォルダーに .*publishsettings* ファイルを保存します。
 
-	![saving the .publishsettings file][firsdeploy002]
+	![.publishsettings ファイルの保存][firsdeploy002]
 
 
 	[WACOM.INCLUDE [publishsettingsfilewarningchunk](../includes/publishsettingsfilewarningchunk.md)]
 
-5. In Visual Studio, right-click the project in **Solution Explorer** and select **Publish** from the context menu.
+5. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
 
-	![Publish in project context menu][PublishVSSolution]
+	![プロジェクトのコンテキスト メニューの [発行]][PublishVSSolution]
 	
-	The **Publish Web** wizard opens.
+	**Web の発行**ウィザードが開きます。
 
-6. In the **Profile** tab of the **Publish Web** wizard, click **Import**.
+6. **Web の発行**ウィザードの **[プロファイル]** タブで、**[インポート]** をクリックします。
 
-	![Import publish settings][ImportPublishSettings]
+	![発行設定のインポート][ImportPublishSettings]
 
-	The **Import Publish Profile** dialog box appears.
+	**[発行プロファイルのインポート]** ダイアログ ボックスが表示されます。
 
-1. If you have not previously added your Azure subscription in Visual Studio, perform the following steps. In these steps you add your subscription so that the drop-down list under **Import from an Azure web site** will include your web site.
+1. 以前に Visual Studio で Azure サブスクリプションを追加していない場合は、次の手順に従います。これらの手順で、**[Azure の Web サイトからインポート]** の下のドロップダウン リストに Web サイトが含まれるようにサブスクリプションを追加します。
     
-	a.  In the **Import Publish Profile** dialog box, click **Add Azure subscription**. 
+	a. **[発行プロファイルのインポート]** ダイアログ ボックスで、**[Azure サブスクリプションの追加]** をクリックします。
 
-	![add win az sub](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rzAddWAsub.png)
+	![Azure サブスクリプションの追加](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rzAddWAsub.png)
 	
-	b. In the **Import Azure Subscriptions** dialog box, click **Download subscription file**.
+	b. **[Azure サブスクリプションのインポート]** ダイアログ ボックスで、**[サブスクリプション ファイルのダウンロード]** をクリックします。
     
-	![download sub](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rzDownLoad.png)
+	![サブスクリプションのダウンロード](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rzDownLoad.png)
 	
-	c. In your browser window, save the *.publishsettings* file.
+	c. ブラウザー ウィンドウで、*.publishsettings* ファイルを保存します。
     
-	![download pub file](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rzDown2.png)
-    
+	![発行ファイルのダウンロード](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rzDown2.png)
+
 	> [WACOM.NOTE]
-	> The .publishsettings file contains your  credentials (unencoded) that are used to administer your Azure subscriptions and services. The security best practice for this file is to store it temporarily outside your source directories (for example in the Libraries\Documents folder), and then  delete it once the import has completed. A malicious user who gains access to the .publishsettings file can edit, create, and delete your Azure services.
+	> publishsettings ファイルには、Azure のサブスクリプションとサービスの管理に使用される資格情報 (デコード済み) が保存されています。このファイルのセキュリティに関するベスト プラクティスは、このファイルをソース ディレクトリの外 (Libraries\Documents フォルダーなど) に一時的に保存し、インポートが完了したらそのファイルを削除することです。悪意のあるユーザーが .publishsettings ファイルへのアクセス許可を取得すると、Azure サービスを編集、作成、削除できるためです。
 	
     
-	d. In the **Import Azure Subscriptions** dialog box, click **Browse** and navigate to the *.publishsettings* file.
+	d. **[Azure サブスクリプションのインポート]** ダイアログ ボックスで、**[参照]** をクリックし、*.publishsettings* ファイルに移動します。
     
-	![download sub](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rzDownLoad.png)
+	![サブスクリプションのダウンロード](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rzDownLoad.png)
 	
-	e. Click **Import**.
+	e. **[インポート]** をクリックします。
     
-	![import](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rzImp.png)
+	![インポート](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rzImp.png)
 
-7. In the **Import Publish Profile** dialog box, select **Import from an Azure web site**, select your web site from the drop-down list, and then click **OK**.
+7. **[発行プロファイルのインポート]** ダイアログ ボックスで、**[Azure の Web サイトからインポート]** をクリックし、ドロップダウン リストから Web サイトを選択して **[OK]** をクリックします。
 
-	![Import Publish Profile][ImportPublishProfile]
+	![発行プロファイルのインポート][ImportPublishProfile]
 
-	The application you created is now running in the cloud. The next time you deploy the application, only the changed (or new) files will be deployed.
+	これで、作成したアプリケーションはクラウドで実行されています。このアプリケーションを次に展開するときは、変更したファイル (または新しいファイル) のみが展開されます。
 	
-	![To Do List home page running in Azure][newapp005]
+	![Azure で実行されている連絡先リストのホーム ページ][newapp005]
 
 
-<h2><a name="bkmk_addadatabase"></a>Add a database to the application</h2>
+<h2><a name="bkmk_addadatabase"></a>アプリケーションにデータベースを追加する</h2>
 
-Next, you'll update the MVC application to add the ability to display and update contacts and store the data in a database. The application will use the Entity Framework to create the database and to read and update data in the database.
+次に、MVC アプリケーションを更新して、連絡先を表示および更新してデータをデータベースに保存する機能を追加します。アプリケーションでは、データベースの作成およびデータベース内のデータの読み取りと更新に Entity Framework を使用します。
 
-### Add data model classes for the contacts
+### 連絡先のデータ モデル クラスを追加する
 
-You begin by creating a simple data model in code.
+まず、コードで単純なデータ モデルを作成します。
 
-1. In **Solution Explorer**, right-click the Models folder, click **Add**, and then **Class**.
+1. **ソリューション エクスプローラー**で、Models フォルダーを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
 
-![Add Class in Models folder context menu][adddb001]
+![Models フォルダーのコンテキスト メニューの [クラスの追加]][adddb001]
 
-2. In the **Add New Item** dialog box, name the new class file *Contact.cs*, and then click **Add**.
+2. **[新しい項目の追加]** ダイアログ ボックスで、新しいクラス ファイルに「*Contact.cs*」という名前を付け、**[追加]** をクリックします。
 
-![Add New Item dialog box][adddb002]
+![[新しい項目の追加] ダイアログ ボックス][adddb002]
 
-3. Replace the contents of the Contacts.cs file with the following code.
+3. Contacts.cs ファイルの内容を次のコードに置き換えます。
 
         using System.ComponentModel.DataAnnotations;
         using System.Globalization;
@@ -249,69 +249,69 @@ You begin by creating a simple data model in code.
             }
         }
 
-The **Contacts** class defines the data that you will store for each contact, plus a primary key, *ContactID*, that is needed by the database.
+**Contacts** クラスでは、各連絡先について保存するデータと、データベースが必要とする主キー (*ContactID*) を定義します。
 
-### Create web pages that enable app users to work with the contacts
+### アプリケーション ユーザーが連絡先を操作できる Web ページを作成する
 
-The ASP.NET MVC scaffolding feature can automatically generate code that performs create, read, update, and delete (CRUD) actions.
+ASP.NET MVC のスキャフォールディング機能によって、作成、読み取り、更新、削除 (CRUD 操作) を実行するコードを自動的に生成できます。
 
-<h2><a name="bkmk_addcontroller"></a>Add a Controller and a view for the data</h2>
+<h2><a name="bkmk_addcontroller"></a>データのコントローラーとビューを追加する</h2>
 
-1. Build the project **(Ctrl+Shift+B)**. (You must build the project before using scaffolding mechanism.) 
-1. In **Solution Explorer**, right-click the Controllers folder and click **Add**, and then click **Controller**.
+1.プロジェクトをビルドします **(Ctrl + Shift + B)**。(スキャフォールディング機能の使用前にプロジェクトをビルドする必要があります。)
+1. **ソリューション エクスプローラー**で、Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。
 
-	![Add Controller in Controllers folder context menu][addcode001]
+	[Controllers フォルダーのコンテキスト メニューの [コントローラーの追加]][addcode001]
 
-5. In the **Add Controller** dialog box, enter "HomeController" as your controller name. 
-1. Set the **Scaffolding options** Template to  **MVC Controller with read/write actions and views, using Entity Framework**.
-6. Select **Contact** as your model class and **&lt;New data context...&gt;** as your data context class.
+5.**[コントローラーの追加]** ダイアログ ボックスで、コントローラー名として「HomeController」と入力します。
+1. **[スキャフォールディングのオプション]** の [テンプレート] で **[Entity Framework を使用した、読み取り/書き込み操作とビューのある MVC コントローラー]** を選択します。
+6. モデル クラスとして **Contact** を、データ コンテキスト クラスとして [**&lt;新しいデータ コンテキスト...&gt;**] を選択します。
 
-	![Add Controller dialog box][addcode002]
+	[[コントローラーの追加] ダイアログ ボックス][addcode002]
 
-7. On the **New Data Context** dialog box, accept the default value *ContactManager.Models.ContactManagerContext*.
-	![Add Controller dialog box][rxNewCtx]
+7. **[新しいデータ コンテキスト]** ダイアログ ボックスで、既定値の *ContactManager.Models.ContactManagerContext* をそのまま使用します。
+	[[コントローラーの追加] ダイアログ ボックス][rxNewCtx]
 
-8. Click **OK**, then click **Add** in the **Add Controller** dialog box.
-9. On the **Add Controller** overwrite dialog, make sure all options are checked and click **OK**.
+8.**[OK]** をクリックし、**[コントローラーの追加]** ダイアログ ボックスで **[追加]** をクリックします。
+9. **[コントローラーの追加]** の上書き確認のダイアログ ボックスで、すべてのチェック ボックスがオンになっていることを確認し、**[OK]** をクリックします。
 
-	![Add Controller message box][rxOverwrite] 
+	[[コントローラーの追加] メッセージ ボックス][rxOverwrite]
 
-Visual Studio creates a controller methods and views for CRUD database operations for **Contact** objects.
+Visual Studio によって、**Contact** オブジェクトの CRUD データベース操作に対応したコントローラー メソッドとビューが作成されます。
 
-## Enable Migrations, create the database, add sample data and a data initializer ##
+## Migrations の有効化、データベースの作成、サンプル データとデータ初期化子の追加##
 
-The next task is to enable the [Code First Migrations](http://msdn.microsoft.com/library/hh770484.aspx) feature in order to create the database based on the data model you created.
+次の作業では、作成したデータ モデルに基づいてデータベースを作成するために、[Code First Migrations](http://msdn.microsoft.com/library/hh770484.aspx) 機能を有効にします。
 
-1. In the **Tools** menu, select **Library Package Manager** and then **Package Manager Console**.
+1.**[ツール]** メニューの **[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。
 
-	![Package Manager Console in Tools menu][addcode008]
+	[[ツール] メニューの [パッケージ マネージャー コンソール]][addcode008]
 
-2. In the **Package Manager Console** window, enter the following command:
+2.**[パッケージ マネージャー コンソール]** ウィンドウで、次のコマンドを入力します。
 
 		enable-migrations -ContextTypeName ContactManagerContext
 
-	![enable-migrations][rxE] 
-	You must specify the context type name (**ContactManagerContext**) because the project contains two [DbContext](http://msdn.microsoft.com/en-us/library/system.data.entity.dbcontext(v=VS.103).aspx) derived classes, the **ContactManagerContext** we just added and the **UsersContext**, which is used for the membership database. The **ContactManagerContext** class was added by the Visual Studio scaffolding wizard.
+	[enable-migrations][rxE]
+	コンテキストの型名 (**ContactManagerContext**) を指定する必要があります。プロジェクトに [DbContext](http://msdn.microsoft.com/ja-jp/library/system.data.entity.dbcontext(v=VS.103).aspx) の 2 つの派生クラスがあるためです。前の手順で追加した **ContactManagerContext** と、メンバーシップ データベースに使用される **UsersContext** です。**ContactManagerContext** クラスは Visual Studio のスキャフォールディング ウィザードによって追加されました。
 
-	The **enable-migrations** command creates a *Migrations* folder and it puts in that folder a *Configuration.cs* file that you can edit to configure Migrations. 
+	**enable-migrations** コマンドによって *Migrations* フォルダーが作成され、そのフォルダーに *Configuration.cs* ファイルが保存されます。このファイルを編集して Migration を構成できます。
 
-2. In the **Package Manager Console** window, enter the following command:
+2. **[パッケージ マネージャー コンソール]** ウィンドウで、次のコマンドを入力します。
 
 		add-migration Initial
 
 
-	The **add-migration Initial** command generates a file named **&lt;date_stamp&gt;Initial** in the *Migrations* folder that creates the database. The first parameter ( **Initial** ) is arbitrary and is used to create the name of the file. You can see the new class files in **Solution Explorer**.
+	**add-migration Initial** コマンドは、データベースを作成する **&lt;date_stamp&gt;Initial** ファイルを *Migrations* フォルダーに生成します。最初のパラメーター ( **Initial** ) は省略可能で、ファイルの名前を作成するときに使用されます。新しいクラス ファイルは**ソリューション エクスプローラー**で表示できます。
 
-	In the **Initial** class, the **Up** method creates the Contacts table, and the **Down** method (used when you want to return to the previous state) drops it.
+	**Initial** クラスでは、**Up** メソッドを使用して Contacts テーブルを作成し、**Down** メソッドを使用してそのテーブルを削除します (前の状態に戻します)。
 
-3. Open the *Migrations\Configuration.cs* file. 
-4. Add the following namespaces. 
+3. *Migrations\Configuration.cs* ファイルを開きます。
+4. 次の名前空間を追加します。
 
     	 using ContactManager.Models;
 
 
 
-5. Replace the *Seed* method with the following code:
+5.*Seed* メソッドを次のコードに置き換えます。
 
         protected override void Seed(ContactManager.Models.ContactManagerContext context)
         {
@@ -364,61 +364,61 @@ The next task is to enable the [Code First Migrations](http://msdn.microsoft.com
                 );
         }
 
-	This code above will initialize the database with the contact information. For more information on seeding the database, see [Seeding and Debugging Entity Framework (EF) DBs](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx).
+	このコードでは、連絡先情報を使用してデータベースを初期化します。シード データベースの生成の詳細については、「[Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)」を参照してください。
 
 
-6. In the **Package Manager Console** enter the command:
+6. **[パッケージ マネージャー コンソール]**で、次のコマンドを入力します。
 
 		update-database
 
-	![Package Manager Console commands][addcode009]
+	[パッケージ マネージャー コンソールのコマンド][addcode009]
 
-	The **update-database** runs the first migration which creates the database. By default, the database is created as a SQL Server Express LocalDB database. (Unless you have SQL Server Express installed, in which case the database is created using the SQL Server Express instance.)
+	**update-database** によって、データベースを作成する最初の Migration が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます (SQL Server Express をインストールしている場合を除き、この例では、SQL Server Express インスタンスを使用してデータベースが作成されます)。
 
-7. Press CTRL+F5 to run the application. 
+7.Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
 
-The application shows the seed data and provides edit, details and delete links.
+アプリケーションでは、登録されたデータが表示され、編集、詳細、削除のリンクが示されます。
 
-![MVC view of data][rx2]
+![データの MVC ビュー][rx2]
 
-<h2><a name="addOauth"></a><span class="short-header">OAuth</span>Add an OAuth Provider</h2>
+<h2><a name="addOauth"></a><span class="short-header">OAuth</span>OAuth プロバイダーを追加する</h2>
 
-[OAuth](http://oauth.net/ "http://oauth.net/") is an open protocol that allows secure authorization in a simple and standard method from web, mobile, and desktop applications. The ASP.NET MVC internet template uses OAuth to expose Facebook, Twitter, Google, Yahoo, and Microsoft as authentication providers. Although this tutorial uses only Facebook, Google, and Yahoo as the authentication providers, you can easily modify the code to use any of the providers. The steps to implement other providers are very similar to the steps you will see in this tutorial. 
+[OAuth](http://oauth.net/ "http://oauth.net/") は、Web、モバイル、およびデスクトップのアプリケーションからシンプルで標準的な方法で安全に認証するためのオープン プロトコルです。ASP.NET MVC インターネット テンプレートは OAuth を使用して、Facebook、Twitter、Google、Yahoo、Microsoft を認証プロバイダーとしてサポートします。このチュートリアルでは Facebook、Google、Yahoo のみを認証プロバイダーとして使用しますが、コードを少し変更すれば他のプロバイダーも使用できます。他のプロバイダーを実装する手順は、このチュートリアルで説明する手順とほとんど同じです。
 
-In addition to authentication, the tutorial will also use roles to implement authorization. Only those users you add to the canEdit role will be able to create, edit, or delete contacts.
+このチュートリアルでは、認証の他にロールを使用して権限を付与します。canEdit ロールに追加したユーザーのみが連絡先を作成、編集、削除できます。
 
-## Registering with an external provider ##
+## 外部プロバイダーを登録する##
 
-To authenticate users with credentials from some external providers, you must register your web site with the provider and obtain a key and connection secret. Google and Yahoo don't require you to register and obtain keys.
+外部プロバイダーから取得した資格情報を使用してユーザーを認証するには、そのプロバイダーに Web サイトを登録し、鍵と接続シークレットを取得する必要があります。Google と Yahoo の場合は、登録して鍵を取得する必要がありません。
 
-This tutorial does not show all of the steps you must perform to register with these providers. The steps are typically not difficult. To successfully register your site, follow the instructions provided on those sites. To get started with registering your site, see the developer site for:
+このチュートリアルでは、これらのプロバイダーに登録するための手順を詳しく説明しません。複雑な手順ではないので、プロバイダーの指示に従ってサイトを登録してください。サイトの登録については、次の開発者向けサイトを参照してください。
 
 - [Facebook](http://developers.facebook.com/)
 - [Microsoft](http://go.microsoft.com/fwlink/?LinkID=144070)
 - [Twitter](http://dev.twitter.com/)
 
-Navigate to  [https://developers.facebook.com/apps](https://developers.facebook.com/apps/)  page and log in if necessary. Click the **Register as a Developer** button and complete the registration process. Once you complete registration, click **Create New App**. Enter a name for the app. You don't need to enter an app namespace.
+[https://developers.facebook.com/apps](https://developers.facebook.com/apps/) ページへ移動し、必要であればログインします。**[Register as a Developer]** ボタンをクリックして登録手続きを行います。登録が完了したら、**[新しいアプリケーションを作成]** をクリックします。アプリケーションの名前を入力します。アプリケーションの名前空間を入力する必要はありません。
 
-![Create New FB app](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxFBapp.png)
-
-
-Enter localhost for the **App Domain** and http://localhost/ for the **Site URL**. Click **Enabled** for **Sandbox Mode**, then click **Save Changes**.
+![新しい FB アプリケーションの作成](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxFBapp.png)
 
 
-You will need the **App ID** and the **App Secret** to implement OAuth in this application.
-	![New FB app][rxFB]
+**[App Domain]** に「localhost」と入力し、**[Site URL]** に「http://localhost/」 と入力します。**[Sandbox Mode]** で **[有効]** をクリックし、**[変更を保存]** をクリックします。
 
-## Creating test users ##
-In the left pane under **Settings** click **Developer Roles**. Click the **Create** link on the **Test Users** row (not the **Testers** row).
 
-![FB testers](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxFBt.png)
+このアプリケーションに OAuth を実装するには、**[App ID]** と **[App Secret]** が必要です。
+	[新しい FB アプリケーション][rxFB]
 
-Click on the **Modify** link to get the test users email (which you will use to log into the application). Click the **See More** link, then click **Edit** to set the test users password.
+## テスト ユーザーを作成する ##
+画面左側の **[設定]** で **[開発者の役割]** をクリックします。(**テスト担当者**行ではなく) **テスト ユーザー**行の **[作成]** リンクをクリックします。
 
-## Adding application id and secret from the provider ##
+![FB テスター](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxFBt.png)
 
-Open the *App_Start\AuthConfig.cs* file. Remove the comment characters from the *RegisterFacebookClient* method and add the app id and app secret. Use the values you obtained, the values shown below will not work. Remove the comment characters from the *OAuthWebSecurity.RegisterGoogleClient* call and add the *OAuthWebSecurity.RegisterYahooClient* as shown below. The Google and Yahoo providers don't require you to register and obtain keys. 
-Warning: Keep your app ID and secret secure. A malicious user who has your app ID and secret can pretend to be your application.
+**[変更]** リンクをクリックし、テスト ユーザーの電子メールを取得します (アプリケーションにログインするとき使用します)。**[もっと見る]** リンクをクリックし、次に **[編集]** をクリックしてテスト ユーザーのパスワードを設定します。
+
+## プロバイダーのアプリケーション ID と鍵を追加する##
+
+*App_Start\AuthConfig.cs* ファイルを開きます。*RegisterFacebookClient* メソッドからコメント文字を削除し、App ID と App Secret を追加します。実際に取得した値を使用してください。ここに表示されている値は使用できません。*OAuthWebSecurity.RegisterGoogleClient* 呼び出しからコメント文字を削除し、次のように *AuthWebSecurity.RegisterYahooClient* を追加します。Google プロバイダーと Yahoo プロバイダーの場合、登録して鍵を取得する必要がありません。
+警告: アプリケーション ID とシークレットを安全な場所に保管してください。アプリケーション ID とシークレットが悪意のあるユーザーに漏れると、アプリケーションに不正アクセスされる可能性があります。
 
      public static void RegisterAuth()
         {
@@ -431,46 +431,46 @@ Warning: Keep your app ID and secret secure. A malicious user who has your app I
         }
 
 
-1. Run the application and click  the **Log In** link. 
-1. Click the **Facebook** button. 
-1. Enter your Facebook credentials or one of the test users credentials.
-1. Click **Okay** to allow the application to access your Facebook resources.
-1. You are redirected to the Register page. If you logged in using a test account, you can change the **user name** to something shorter, for example "Bill FB test". Click the **Register** button which will save the user name and email alias to the membership database. 
-1. Register another user. Currently a bug in the log in system prevents you from logging off and logging in as another user using the same provider (that is, you can't log off your Facebook account and log back in with a different Facebook account). To work around this, navigate to the site using a different browser and register another user. One user will be added to the manager role and have edit access to application, the other user will only have access to non-edit methods on the site. Anonymous users will only have access to the home page.
-1. Register another user using a different provider.
-1. **Optional**: You can also create a local account not associated with one of the providers. Later on in the tutorial we will remove the ability to create local accounts. To create a local account, click the **Log out** link (if you are logged in), then click the **Register link**. You might want to create a local account for administration purposes that is not associated with any external authentication provider.
+1. アプリケーションを実行し、**[ログイン]** リンクをクリックします。
+1. **[Facebook]** ボタンをクリックします。
+1. Facebook の資格情報、またはいずれかのテスト ユーザーの資格情報を入力します。
+1. **[OK]** をクリックします。アプリケーションから Facebook のリソースへアクセスできるようになります。
+1. 登録ページにリダイレクトされます。テスト アカウントを使用してログインした場合は、もう少し短い**ユーザー名**に変更できます ("Bill FB test" など)。**[登録]** ボタンをクリックします。ユーザー名と電子メール エイリアスがメンバーシップ データベースに保存されます。
+1. 別のユーザーを登録します。現在、ログイン システムのバグにより、システムからログオフした後、同じプロバイダーを使用して別のユーザーとしてログインできません (つまり、Facebook アカウントをログオフした後、別の Facebook アカウントで再びログインすることはできません)。これに対処するには、別のブラウザーを使用して目的のサイトへアクセスし、別のユーザーを登録してください。一方のユーザーが管理者ロールに追加され、アプリケーションに対する編集権限が与えられます。もう一方のユーザーはそのサイトで非編集メソッドのみを実行できます。匿名ユーザーはホーム ページにのみアクセスできます。
+1. 別のプロバイダーを使用して他のユーザーを登録します。
+1. **省略可能**: どのプロバイダーにも関連付けられていないローカル アカウントを作成することもできます。後ほどこのチュートリアルで、ローカル アカウントを作成する機能を削除します。ローカル アカウントを作成するには、**[ログアウト]** リンクをクリックし (現在ログインしている場合)、**[登録]** リンクをクリックします。必要であれば、どの外部認証プロバイダーにも関連付けられていない管理用のローカル アカウントを作成します。
 
-<h2><a name="mbrDB"></a><span class="short-header">Membership DB</span>Add Roles to the Membership Database</h2>
-In this section you will add the *canEdit* role to the membership database. Only those users in the canEdit role will be able to edit data. A best practice is to name roles by the actions they can perform, so *canEdit* is preferred over a role called *admin*. When your application evolves you can add new roles such as *canDeleteMembers* rather than *superAdmin*.
+<h2><a name="mbrDB"></a><span class="short-header">メンバーシップ DB</span>メンバーシップ データベースにロールを追加する</h2>
+このセクションでは、*canEdit* ロールをメンバーシップ データベースに追加します。canEdit ロールのユーザーのみがデータを編集することができます。実行可能な操作に基づいてロール名を付けるのが望ましいので、この場合は *admin* より *canEdit* が適しています。その後、必要に応じて、("*superAdmin*" ではなく) "*canDeleteMembers*" などの新しいロールを追加します。
 
-1. In the **View** menu click **Server Explorer**. 
+1. **[表示]** メニューで **[サーバー エクスプローラー]** をクリックします。
 
-1. In **Server Explorer**, expand **DefaultConnection** then expand **Tables**.
+1. **サーバー エクスプローラー**で **DefaultConnection** を展開し、さらに **Tables** を展開します。
 
-1. Right click **UserProfile** and click **Show Table Data**.
+1. **UserProfile** を右クリックして **[テーブル データの表示]** をクリックします。
  
-	![Show table data][rxSTD]
+	![テーブル データの表示][rxSTD]
  
-1. Record the **UserId** for the user that will have the canEdit role. In the image below, the user *ricka* with **UserId** 2 will have the canEdit role for the site.
+1. canEdit ロールを割り当てるユーザーの **UserId** を記録します。次の図では、**UserId** が "2" であるユーザー *ricka* に canEdit ロールが割り当てられています。
 
-	![user IDs][rxUid]
+	![ユーザー ID][rxUid]
  
-1. Right click **webpages_Roles** and click **Show Table Data**.
-1. Enter **canEdit** in the **RoleName** cell. The **RoleId** will be 1 if this is the first time you've added a role. Record the RoleID. Be sure there is not a trailing space character, "canEdit " in the role table will not match "canEdit" in the controller code.
+1. **webpages_Roles** を右クリックして **[テーブル データの表示]** をクリックします。
+1. **RoleName** セルに「**canEdit**」と入力します。ロールを初めて追加する場合、**RoleId** は 1 になります。RoleID を記録しておきます。末尾にスペースを入れないように注意してください。ロール テーブルの "canEdit " がコントローラー コードの "canEdit" と一致しなくなります。
 
-	![roleID][rxRoleID] 
+	![roleID][rxRoleID]
 
-1. Right click **webpages UsersInRoles** and click **Show Table Data**. Enter the **UserId** for the user you want to grant *canEdit* access and the **RoleId**.
+1. **webpages UsersInRoles** を右クリックして、**[テーブル データの表示]** をクリックします。*canEdit* アクセスを付与するユーザーの **UserId** と **RoleId** を入力します。
 
-	![usr role ID tbl][rxUR] 
+	![ユーザーのロール ID テーブル][rxUR]
 
-The  **webpages_OAuthMembership** table contains the OAuth provider, the provider UserID and the UserID for each registered OAuth user. <!-- Don't replace "-" with "_" or it won't validate -->The **webpages-Membership** table contains the ASP.NET membership table. You can add users to this table using the register link. It's a good idea to add a user with the *canEdit* role that is not associated with Facebook or another third party authorization provider so that you can always have *canEdit* access even when the third party authorization provider is not available. Later on in the tutorial we will disable ASP.NET membership registration.
+**webpages_OAuthMembership** テーブルには、OAuth プロバイダー、プロバイダーの UserID、および登録されている各 OAuth ユーザーの UserID が格納されます。<!-- Don't replace "-" with "_" or it won't validate -->**webpages-Membership** テーブルには、ASP.NET メンバーシップ テーブルが格納されます。登録リンクを使用して、このテーブルにユーザーを追加できます。*canEdit* ロールが割り当てられており、Facebook や他のサードパーティ認証プロバイダーに関連付けられていないユーザーを追加しておけば、サードパーティ認証プロバイダーに接続できない場合でも *canEdit* アクセスが可能になります。後ほどこのチュートリアルで、ASP.NET メンバーシップ登録を無効にします。
 
-## Protect the Application with the Authorize Attribute ##
+## Authorize 属性を使用してアプリケーションを保護する##
 
-In this section we will apply the [Authorize](http://msdn.microsoft.com/en-us/library/system.web.mvc.authorizeattribute(v=vs.100).aspx) attribute to restrict access to the action methods. Anonymous user will be able to view the home page only. Registered users will be able to see contact details, the about and the contacts pages. Only users in the *canEdit* role will be able to access action methods that change data.
+このセクションでは、[Authorize](http://msdn.microsoft.com/ja-jp/library/system.web.mvc.authorizeattribute(v=vs.100) 属性を適用してアクション メソッドへのアクセスを制限します。匿名ユーザーが表示できるのはホーム ページだけになります。登録ユーザーは連絡先の詳細ページを閲覧できます。*canEdit* ロールを与えられているユーザーのみがアクション メソッドを実行してデータを変更できます。
 
-1. Add the [Authorize](http://msdn.microsoft.com/en-us/library/system.web.mvc.authorizeattribute(v=vs.100).aspx) filter and the [RequireHttps](http://msdn.microsoft.com/en-us/library/system.web.mvc.requirehttpsattribute(v=vs.108).aspx) filter to the application. An alternative approach is to add the [Authorize](http://msdn.microsoft.com/en-us/library/system.web.mvc.authorizeattribute(v=vs.100).aspx) attribute and the [RequireHttps](http://msdn.microsoft.com/en-us/library/system.web.mvc.requirehttpsattribute(v=vs.108).aspx) attribute to each controller, but it's considered a security best practice to apply them to the entire application. By adding them globally, every new controller and action method you add will automatically be protected, you won't need to remember to apply them. For more information see [Securing your ASP.NET MVC 4 App and the new AllowAnonymous Attribute](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx). Open the *App_Start\FilterConfig.cs* file and replace the *RegisterGlobalFilters* method with the following.
+1. [Authorize](http://msdn.microsoft.com/ja-jp/library/system.web.mvc.authorizeattribute(v=vs.100).aspx) フィルターと [RequireHttps](http://msdn.microsoft.com/ja-jp/library/system.web.mvc.requirehttpsattribute(v=vs.108).aspx) フィルターをアプリケーションに追加します。[Authorize](http://msdn.microsoft.com/ja-jp/library/system.web.mvc.authorizeattribute(v=vs.100).aspx) 属性と [RequireHttps](http://msdn.microsoft.com/ja-jp/library/system.web.mvc.requirehttpsattribute(v=vs.108).aspx) 属性をコントローラーごとに追加する方法もありますが、セキュリティ上の理由から、通常はこれらをアプリケーション全体に適用します。アプリケーション全体に適用すれば、新しいコントローラーやアクション メソッドを追加したとき、それらが自動的に保護されます。ユーザー自身で適用する必要がありません。詳細については、[ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性に関するページ](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx)を参照してください。*App_Start\FilterConfig.cs* ファイルを開き、*RegisterGlobalFilters* メソッドを次のように書き換えます。
 
         public static void
         RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -480,9 +480,9 @@ In this section we will apply the [Authorize](http://msdn.microsoft.com/en-us/li
             filters.Add(new RequireHttpsAttribute());
         }
 
-1. Add the [AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) attribute to the **Index** method. The [AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) attribute enables you to whitelist the methods you want to opt out of authorization.
-1. Add   [Authorize(Roles = "canEdit")] to the Get and Post methods that change data (Create, Edit, Delete). 
-1. Add the *About* and *Contact* methods. A portion of the completed code is shown below.
+1. [AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) 属性を **Index** メソッドに追加します。[AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) 属性を使用すれば、特定のメソッドを認証不要として指定できます。
+1. データを変更 (作成、編集、削除) する Get メソッドと Post メソッドに [Authorize(Roles = "canEdit")] を追加します。
+1. *About* メソッドと *Contact* メソッドを追加します。追加後のコードは次のようになります。
 
 	    public class HomeController : Controller
 	    {
@@ -508,221 +508,221 @@ In this section we will apply the [Authorize](http://msdn.microsoft.com/en-us/li
 	        {
 	            return View();
 	        }
-	        // Methods moved and omitted for clarity.
+	        // メソッドはわかりやすいように省略されています。
 	    }
 
-1. Remove ASP.NET membership registration. The current  ASP.NET membership registration in the project does not provide support for password resets and it does not verify that a human is registering (for example with a [CAPTCHA](http://www.asp.net/web-pages/tutorials/security/16-adding-security-and-membership)). Once a user is authenticated using one of the third party providers, they can register. In the AccountController, remove the *[AllowAnonymous]* from the GET and POST *Register* methods. This will prevent bots and anonymous users from registering.
-1. In the *Views\Shared\_LoginPartial.cshtml*, remove the Register action link.
-1. Enable SSL. In Solution Explorer, click the **ContactManager** project, then click F4 to bring up the properties dialog. Change **SSL Enabled** to true. Copy the **SSL URL**.
+1. ASP.NET メンバーシップ登録を削除します。このプロジェクトの現在の ASP.NET メンバーシップ登録はパスワードのリセットをサポートしておらず、人間による登録を検証しません ([CAPTCHA](http://www.asp.net/web-pages/tutorials/security/16-adding-security-and-membership) など)。いずれかのサードパーティ プロバイダーを使用してユーザーを認証すると、登録できるようになります。AccountController で、GET および POST *Register* メソッドから *[AllowAnonymous]* を削除します。これによって、ボットや匿名ユーザーが登録されるのを防ぎます。
+1. *Views\Shared\_LoginPartial.cshtml* で登録リンクを削除します。
+1. SSL を有効にします。ソリューション エクスプローラーで **ContactManager** プロジェクトをクリックし、F4 キーを押します。プロパティ ダイアログ ボックスが表示されます。**[SSL Enabled]** を True に変更します。**[SSL URL]** をコピーします。
 
-	![enable SSL][rxSSL]
+	![SSL を有効にする][rxSSL]
  
-1. In Solution Explorer, right click the **Contact Manager** project and click **Properties**.
-1. In the left tab, click **Web**.
-1. Change the **Project Url** to use the **SSL URL**.
-1. Click **Create Virtual Directory**.
+1. ソリューション エクスプローラーで **Contact Manager** プロジェクトを右クリックし、**[プロパティ]** をクリックします。
+1. 左側のタブで **[Web]** をクリックします。
+1. **[プロジェクト URL]** を変更し、**SSL URL** を使用するようにします。
+1. **[仮想ディレクトリの作成]** をクリックします。
 	
-	![enable SSL][rxS2]
+	![SSL を有効にする][rxS2]
  
-1. Press CTRL+F5 to run the application. The browser will display a certificate warning. For our application you can safely click on the link **Continue to this website**. Verify only the users in the *canEdit* role can change data. Verify anonymous users can only view the home page.
+1. Ctrl + F5 キーを押して、アプリケーションを実行します。ブラウザーに証明書の警告が表示されます。このアプリケーションでは、**[このサイトの閲覧を続行する]** をクリックしてかまいません。*canEdit* ロールを与えられているユーザーのみがデータを変更できることを確認します。匿名ユーザーが閲覧できるのはホーム ページのみであることを確認します。
 
-	![cert Warn][rxNOT]
+	![証明書の警告][rxNOT]
 
-	![cert Warn][rxNOT2]
+	![証明書の警告][rxNOT2]
  
-Azure Web sites include a valid security certificate, so you won't see this warning when you deploy to Azure.
-<h2><a name="ppd"></a><span class="short-header">Prepare DB</span>Create a Data Deployment Script</h2>
+Azure の Web サイトには有効なセキュリティ証明書が備わっているので、Azure に展開するときこの警告は表示されません。
+<h2><a name="ppd"></a><span class="short-header">DB の作成</span>データ展開スクリプトを作成する</h2>
 
 
-The membership database isn't managed by Entity Framework Code First so you can't use Migrations to deploy it.  We'll use the [dbDacFx](http://msdn.microsoft.com/en-us/library/dd394698.aspx) provider to deploy the database schema, and we'll configure the publish profile to run a script that will insert initial membership data into membership tables.
+メンバーシップ データベースは Entity Framework Code First によって管理されないので、Migrations を使用して展開できません。[dbDacFx](http://msdn.microsoft.com/ja-jp/library/dd394698.aspx) プロバイダーを使用してデータベース スキーマを展開し、メンバーシップ データをメンバー テーブルに挿入するスクリプトを実行するように発行プロファイルを構成します。
 
-This tutorial will use  SQL Server Management Studio (SSMS) to create data deployment scripts. 
+このチュートリアルでは、SQL Server Management Studio (SSMS) を使用してデータ展開スクリプトを作成します。
 
-Install SSMS  from [Microsoft SQL Server 2012 Express Download Center](http://www.microsoft.com/en-us/download/details.aspx?id=29062):
+[Microsoft SQL Server 2012 Express ダウンロード センター](http://www.microsoft.com/ja-jp/download/details.aspx?id=29062)から SSMS をインストールします。
 
-- [ENU\x64\SQLManagementStudio_x64_ENU.exe](http://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x64/SQLManagementStudio_x64_ENU.exe) for 64 bit systems.
-- [ENU\x86\SQLManagementStudio_x86_ENU.exe](http://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x86/SQLManagementStudio_x86_ENU.exe) for 32 bit systems.
+- [ENU\x64\SQLManagementStudio_x64_ENU.exe](http://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x64/SQLManagementStudio_x64_ENU.exe) (64 ビット システム)
+- [ENU\x86\SQLManagementStudio_x86_ENU.exe](http://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x86/SQLManagementStudio_x86_ENU.exe) (32 ビット システム)
 
- If you choose the wrong one for your system it will fail to install and you can try the other one.
+ お使いのシステムに適したバージョンを選択しないとインストールできません。その場合は、適切なバージョンを選択して、もう一度インストールしてください。
 
-(Note that this is a 600 megabyte download. It may take a long time to install and may require a reboot of your computer.)
+(ダウンロード データは 600 MB あるので、インストールに多少時間がかかります。また、コンピューターの再起動が必要な場合もあります。)
 
-On the first page of the SQL Server Installation Center, click **New SQL Server stand-alone installation or add features to an existing installation**, and follow the instructions, accepting the default choices. The following image shows the step that install SSMS.
+SQL Server インストール センターの最初のページで **[SQL Server の新規スタンドアロン インストールを実行するか、既存のインストールに機能を追加します]** をクリックし、画面の指示に従います。設定は既定値を使用してください。SSMS のインストール画面を次に示します。
 
-![SQL Install][rxSS] 
+![SQL インストール][rxSS]
 
-### Create the development database script ###
+### 開発データベース スクリプトを作成する###
 
 
-1. Run SSMS.
-1. In the **Connect to Server** dialog box, enter *(localdb)\v11.0* as the Server name, leave **Authentication** set to **Windows Authentication**, and then click **Connect**. If you have installed SQL Express, enter **.\SQLEXPRESS**.
+1. SSMS を実行します。
+1. **[サーバーへの接続]** ダイアログ ボックスで、サーバー名として「*(localdb)\v11.0*」と入力します。**[認証]** を **[Windows 認証]** に設定して **[接続]** をクリックします。SQL Express をインストールしている場合は、「**.\SQLEXPRESS**」と 入力します。
 	
-	![con to srvr dlg][rxC2S] 
+	![[サーバーへの接続] ダイアログ ボックス][rxC2S]
 
-1. In the **Object Explorer** window, expand **Databases**, right-click **aspnet-ContactManager**, click **Tasks**, and then click **Generate Scripts**.
+1. **オブジェクト エクスプローラー**で **[データベース]** を展開し、**[aspnet-ContactManager]** を右クリックして、**[タスク]**、**[スクリプトの生成]** の順にクリックします。
 	
-	![Gen Scripts][rxGenScripts] 
+	![スクリプトの生成][rxGenScripts]
 
-1. In the **Generate and Publish Scripts** dialog box, click **Set Scripting Options**.
-You can skip the **Choose Objects** step because the default is Script entire database and all database objects and that is what you want.
+1. **[スクリプトの生成とパブリッシュ]** ダイアログ ボックスで、**[スクリプト作成オプションの設定]** をクリックします。
+**[オブジェクトの選択]** ステップはスキップしてかまいません。既定の設定 ([データベース全体とすべてのデータベース オブジェクトのスクリプトを作成]) をそのまま使用します。
 
-1. Click **Advanced**.
+1. **[詳細設定]** をクリックします。
 
-	![Set scripting options][rx11] 
+	![スクリプト作成オプションの設定][rx11]
 
-1. In the **Advanced Scripting Options** dialog box, scroll down to **Types of data to script**, and click the **Data only** option in the drop-down list. (See the image below the next step.)
+1. **[スクリプト作成の詳細オプション]** ダイアログ ボックスで **[スクリプトを作成するデータの種類]** までスクロールし、一覧から **[データのみ]** を選択します (次の図を参照)。
 
-1. Change **Script USE DATABASE** to **False**.  USE statements aren't valid for Azure SQL Database and aren't needed for deployment to SQL Server Express in the test environment. 
+1. **[USE DATABASE のスクリプトを作成]** を **False** に変更します。Azure SQL データベースでは USE ステートメントを使用しません。また、SQL Server Express をテスト環境に展開する場合、USE ステートメントは必要ありません。
 	
-	![Set scripting options][rxAdv] 
+	![スクリプト作成オプションの設定][rxAdv]
 
-1. Click **OK**.
-1. In the **Generate and Publish Scripts** dialog box, the **File name** box specifies where the script will be created. Change the path to your solution folder (the folder that has your *Contacts.sln* file) and change the file name to *aspnet-data-membership.sql*.
-1. Click **Next** to go to the **Summary** tab, and then click **Next** again to create the script.
+1. **[OK]** をクリックします。
+1. **[スクリプトの生成とパブリッシュ]** ダイアログ ボックスで、**[ファイル名]** ボックスにスクリプトの作成場所を指定します。ソリューション フォルダー (*Contacts.sln* ファイルが保存されているフォルダー) のパスを変更し、ファイル名を「*aspnet-data-membership.sql*」に変更します。
+1. **[次へ]** をクリックして **[概要]** タブへ進み、もう一度 **[次へ]** をクリックしてスクリプトを作成します。
 
-	![Save or pub][rx1] 
+	![保存または発行][rx1]
 
-1. Click **Finish**.
+1. **[完了]** をクリックします。
 
-<h2><a name="bkmk_deploytowindowsazure11"></a>Deploy the app to Azure</h2>
+<h2><a name="bkmk_deploytowindowsazure11"></a>Azure にアプリケーションを展開する</h2>
 
-1. Open the application root *Web.config* file. Find the *DefaultConnection* markup, and then copy and paste it under the *DefaultConnection* markup line. Rename the copied element *DefaultConnectionDeploy*. You will need this connection string to deploy the user data in the membership database.
-	![3 cons str][rxD] 
+1. アプリケーション ルートの *Web.config* ファイルを開きます。*DefaultConnection* マークアップを見つけ、それをコピーして *DefaultConnection* マークアップ行の下に貼り付けます。コピーした要素の名前を「*DefaultConnectionDeploy*」に変更します。ユーザー データをメンバーシップ データベースにデプロイするには、この接続文字列が必要になります。
+	![3 つの接続文字列][rxD]
 
-1. Build the application.
-1. In Visual Studio, right-click the project in **Solution Explorer** and select **Publish** from the context menu.
+1. アプリケーションをビルドします。
+1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
 
-	![Publish in project context menu][firsdeploy003]
+	![プロジェクトのコンテキスト メニューの [発行]][firsdeploy003]
 
-The **Publish Web** wizard opens.
+**Web の発行**ウィザードが開きます。
 
-1. Click the **Settings** tab. Click the **v** icon to select the **Remote connection string** for the **ContactManagerContext** and  **DefaultConnectionDeploy**. The three Databases listed will all use the same connection string. The **ContactManagerContext** database stores the contacts, the **DefaultConnectionDeploy** is used only to deploy the user account data to the membership database and the **UsersContext** database is the membership database.
+1. **[設定]** タブをクリックします。**ContactManagerContext** と **DefaultConnectionDeploy** で、**v** アイコンをクリックして **[リモート接続文字列]** を選択します。表示されている 3 つのデータベースでは、すべて同じ接続文字列を使用します。**ContactManagerContext** データベースには連絡先が保存されます。**DefaultConnectionDeploy** は、ユーザー アカウント データをメンバーシップ データベースへ展開するときに使用します。**UsersContext** はメンバーシップ データベースです。
 	
-	![settings][rxD2] 
+	![設定][rxD2]
 
-1. Under **ContactManagerContext**, check **Execute Code First Migrations**.
+1. **ContactManagerContext** で、**[Code First Migrations を実行する]** チェック ボックスをオンにします。
 	
-	![settings][rxSettings] 
+	![設定][rxSettings]
 
-1. Under **DefaultConnectionDeploy** check **Update database** then click the **Configure database updates** link.
-1. Click the **Add SQL Script** link and navigate to the  *aspnet-data-membership.sql* file. You only need to do this once. The next deployment you uncheck **Update database** because you won't need to add the user data to the membership tables.
+1. **DefaultConnectionDeploy** で **[データベースの更新]** チェック ボックスをオンにして、**[データベースの更新の構成]** リンクをクリックします。
+1. **[SQL スクリプトの追加]** リンクをクリックし、*aspnet-data-membership.sql* ファイルへ移動します。この操作を行うのは 1 回だけです。次の展開時にはユーザー データをメンバーシップ テーブルに追加する必要がないので、**[データベースの更新]** チェック ボックスをオフにします。
 
-	![add sql][rxAddSQL2] 
+	![SQL の追加][rxAddSQL2]
 
-1. Click **Publish**.
-1. Navigate to the [https://developers.facebook.com/apps](https://developers.facebook.com/apps/)  page and change the **App Domains** and **Site URL** settings to the Azure URL.
-1. Test the application. Verify only the users in the *canEdit* role can change data. Verify anonymous users can only view the home page. Verify authenticated users can navigate to all links that don't change data.
-1. The next time you publish the application be sure to uncheck **Update database** under **DefaultConnectionDeploy**.
+1. **[発行]** をクリックします。
+1. [https://developers.facebook.com/apps](https://developers.facebook.com/apps/) ページへ移動し、**[App Domains]** と **[Site URL]** の設定を Azure URL に変更します。
+1. アプリケーションをテストします。*canEdit* ロールを与えられているユーザーのみがデータを変更できることを確認します。匿名ユーザーが閲覧できるのはホーム ページのみであることを確認します。認証ユーザーは、データを変更しないすべてのリンク先へ移動できることを確認します。
+1. 次にアプリケーションを発行するときは、**DefaultConnectionDeploy** の **[データベースの更新]** チェック ボックスをオフにしてください。
 	
-	![settings][rxSettings]
+	![設定][rxSettings]
 
-<h2><a name="ppd2"></a><span class="short-header">Update DB</span>Update the Membership Database</h2>
+<h2><a name="ppd2"></a><span class="short-header">DB の更新</span>メンバーシップ データベースを更新する</h2>
 
-Once the site is deployed to Azure and you have more registered users you might want to make some of them members of the *canEdit* role. In this section we will use Visual Studio to connect to the SQL database and add users to the *canEdit* role.
+サイトを Azure に展開した後、さらに別の登録ユーザーを *canEdit* ロールに追加する必要が生じる場合もあります。このセクションでは、Visual Studio を使用して SQL データベースに接続し、*canEdit* ロールにユーザーを追加します。
 
-![settings][rxSettings] 
+![設定][rxSettings]
 
-1. In **Solution Explorer**, right click the project and click **Publish**.
-	![Publish][rxP]
+1. **ソリューション エクスプローラー**で目的のプロジェクトを右クリックし、**[発行]** をクリックします。
+	![発行][rxP]
 
-1. Click the **Settings** tab.
-2. Copy the connection string. For example, the connection string used in this sample is:
+1. **[設定]** タブをクリックします。
+2. 接続文字列をコピーします。たとえば、このサンプルで使用されている接続文字列は 
 	Data Source=tcp:d015leqjqx.database.windows.net,1433;
 	Initial Catalog=ContactDB2;User Id=ricka0@d015lxyze;Password=xyzxyz
-1. Close the publish dialog.
-1. In the **View** menu click **Server Explorer**. 
+1. 発行ダイアログ ボックスを閉じます。
+1. **[表示]** メニューで **[サーバー エクスプローラー]** をクリックします。
 
-1. Click on the **Connect to Database** icon.
+1. **[データベースに接続]** アイコンをクリックします。
 	
-	![Publish][rxc]
+	![発行][rxc]
 
-1. If you are prompted for the Data Source, click **Microsoft SQL Server**.
-	![Publish][rx3]
+1. データ ソースを選択するためのダイアログ ボックスが表示された場合は、**[Microsoft SQL Server]** をクリックします。
+	![発行][rx3]
 
-1. Copy and paste the **Server Name**, which starts with *tcp* (see the image below).
-1. Click **Use SQL Server Authentication**
-1. Enter your **User name** and **Password**, which are in the connection string you copied.
-1. Enter the database name (ContactDB, or the  string after "Initial Catalog=" in the database if you didn't name it ContactDB.) If you get an error dialog, see the next section. 
-1. Click **Test Connection**. If you get an error dialog, see the next section. 
-	![add con dlg][rx4]
+1. "*tcp*" で始まるサーバー名をコピーして、**[サーバー名]** ボックスに貼り付けます (次の図を参照)。
+1. **[SQL Server 認証を使用する]** をクリックします。
+1. **[ユーザー名]** と **[パスワード]** を入力します。これらの情報はコピーした接続文字列に含まれています。
+1. データベース名 (ContactDB) を入力します ("ContactDB" 以外の名前を付けた場合は、データベースの "Initial Catalog=" の後の文字列を入力します)。エラー メッセージが表示される場合は、次のセクションを参照してください。
+1. **[接続テスト]** をクリックします。エラー メッセージが表示される場合は、次のセクションを参照してください。
+	![接続の追加ダイアログ][rx4]
 
-## Cannot open server login error ##
-If you get an error dialog stating "Cannot open server" you will need to add your IP address to the allowed IPs.
+## サーバーに接続できない場合 ##
+"サーバーを開けない" ことを知らせるエラー メッセージが表示された場合は、使用できる IP に IP アドレスを追加する必要があります。
 
-![firewall error][rx5]
+![ファイアウォール エラー][rx5]
 
-1. In the Azure Portal, Select **SQL Databases** in the left tab.
+1. Azure ポータルの左側のタブで **[SQL データベース]** を選択します。
 
-	![Select SQL][rx6]
+	![[SQL] を選択します。][rx6]
 
-1. Select the database you wish to open.
+1. 接続するデータベースを選択します。
 
-1. Click the **Set up Azure firewall rules for this IP address** link.
+1. **[この IP アドレス用に Azure ファイアウォール ルールを設定する]** リンクをクリックします。
 
-	![firewall rules][rx7]
+	![ファイアウォール ルール][rx7]
 
-1. When you are prompted with "The current IP address xxx.xxx.xxx.xxx is not included in existing firewall rules. Do you want to update the firewall rules?", click **Yes**. Adding this address is often not enough, you will need to add a range of IP addresses.
+1. "現在の IP アドレス xxx.xxx.xxx.xxx は既存のファイアウォール ルールに含まれていません。ファイアウォール ルールを更新しますか?" というメッセージが表示されたら、**[はい]** をクリックします。このアドレスだけでは不十分な場合は、IP アドレスの範囲を追加する必要があります。
 
-## Adding a Range of Allowed IP Addresses ##
+## 使用できる IP アドレスの範囲を追加する##
 
-1. In the Azure Portal, Click **SQL Databases**.
-1. Click the **Server** hosting your Database.
+1. Azure ポータルで **[SQL データベース]** をクリックします。
+1. データベースをホストする **[サーバー]** をクリックします。
 
-	![db server][rx8]
+	![データベース サーバー][rx8]
 
-1. Click **Configure** on the top of the page.
-1. Add a rule name, starting and ending IP addresses.
-	![ip range][rx9]
+1. ページの上部にある **[構成]** をクリックします。
+1. ルール名、開始 IP アドレス、終了 IP アドレスを追加します。
+	![IP 範囲][rx9]
 
-1. At the bottom of the page, click **Save**.
-1. You can now edit the membership database using the steps previously shown.
+1. ページの下部にある **[保存]** をクリックします。
+1. ここで、前に説明した手順に従ってメンバーシップ データベースを編集します。
 
-<h2><a name="nextsteps"></a><span class="short-header">Next steps</span>Next steps</h2>
+<h2><a name="nextsteps"></a><span class="short-header">次のステップ</span>次のステップ</h2>
 
-This tutorial and the sample application was written by [Rick Anderson](http://blogs.msdn.com/b/rickandy/) (Twitter [@RickAndMSFT](https://twitter.com/RickAndMSFT)) with assistance from Tom Dykstra, Tom FitzMacken and Barry Dorrans (Twitter [@blowdart](https://twitter.com/blowdart)). 
+このチュートリアルとサンプル アプリケーションは、Tom Dykstra、Tom FitzMacken、Barry Dorrans (Twitter [@blowdart](https://twitter.com/blowdart)) の協力の下、[Rick Anderson](http://blogs.msdn.com/b/rickandy/) (Twitter [@RickAndMSFT](https://twitter.com/RickAndMSFT)) が執筆しました。
 
-Please leave feedback on what you liked or what you would like to see improved, not only about the tutorial itself but also about the products that it demonstrates. Your feedback will help us prioritize improvements. We are especially interested in finding out how much interest there is in more automation for the process of configuring and deploying the membership database. 
+役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。特に、メンバーシップ データベースの構成と展開の自動化に関するご意見をお待ちしております。
 
-To get the colorful Facebook, Google and Yahoo log on buttons, see the blog post [Customizing External Login Buttons in ASP.NET MVC 4](http://www.beabigrockstar.com/customizing-external-login-buttons-in-asp-net-mvc-4/). For information on using Windows Authentication, see the following:
+Facebook、Google、Yahoo のカラフルなログイン ボタンを取得する方法については、ブログ投稿「[Customizing External Login Buttons in ASP.NET MVC 4 (ASP.NET MVC 4 で外部ログイン ボタンをカスタマイズする)](http://www.beabigrockstar.com/customizing-external-login-buttons-in-asp-net-mvc-4/)」を参照してください。Windows 認証の詳細については、次の Web ページを参照してください。
 
-- [Azure Authentication ](http://www.asp.net/vnext/overview/fall-2012-update/windows-azure-authentication)
-- [How to Create an Intranet Site Using ASP.NET MVC](http://msdn.microsoft.com/en-us/library/gg703322(v=vs.98).aspx)
+- [Azure Authentication (Azure の認証)](http://www.asp.net/vnext/overview/fall-2012-update/windows-azure-authentication)
+- [ASP.NET MVC を使用してイントラネット サイトを作成する方法](http://msdn.microsoft.com/ja-jp/library/gg703322(v=vs.98).aspx)
 
-Another way to store data in an Azure application is to use Azure storage, which provide non-relational data storage in the form of blobs and tables. The following links provide more information on ASP.NET MVC and Window Azure. 
+Azure アプリケーションにデータを保存するには、Azure ストレージを使用する方法もあります。Azure ストレージには、非リレーショナル データを BLOB 形式とテーブル形式で保存できます。ASP.NET MVC および Window Azure の詳細については、次の Web ページを参照してください。
 
-- [.NET Multi-Tier Application Using Storage Tables, Queues, and Blobs](http://www.windowsazure.com/en-us/develop/net/tutorials/multi-tier-web-site/1-overview/).
-- [Intro to ASP.NET MVC 4](http://www.asp.net/mvc/tutorials/mvc-4/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4)
-- [Getting Started with Entity Framework using MVC][EFCodeFirstMVCTutorial]
-- [OAuth 2.0 and Sign-In](http://blogs.msdn.com/b/vbertocci/archive/2013/01/02/oauth-2-0-and-sign-in.aspx)
+- [ストレージ テーブル、キュー、BLOB を使用する .NET 多層アプリケーションに関するページ](http://www.windowsazure.com/ja-jp/develop/net/tutorials/multi-tier-web-site/1-overview/)
+- [ASP.NET MVC 4 の入門ページ](http://www.asp.net/mvc/tutorials/mvc-4/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4)
+- [MVC を使用した Entity Framework の概要に関するページ][EFCodeFirstMVCTutorial]
+- [OAuth 2.0 とサインインに関するブログ投稿](http://blogs.msdn.com/b/vbertocci/archive/2013/01/02/oauth-2-0-and-sign-in.aspx)
 
 
-You've seen how to deploy a web application to an Azure Web Site. To learn more about how to configure, manage, and scale Azure Web Sites, see the how-to topics on the [Common Tasks][CommonTasks] page.
+Azure の Web サイトに Web アプリケーションを展開する方法を確認したところで、Azure の Web サイトを構成、管理、および拡張する方法をさらに確認するには、「[一般的なタスク][CommonTasks]」ページにある操作方法のトピックを参照してください。
 
-To learn how to debug Azure Web Sites, see [Troubleshooting Azure Web Sites in Visual Studio](/en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/).
+Azure の Web サイトのデバッグ方法については、「[Visual Studio での Azure の Web サイトのトラブルシューティング](/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)」を参照してください。
 
-To learn how to deploy an application to an Azure Cloud Service, see [The Cloud Service version of this tutorial][NetAppWithSqlAzure] and [Developing Web Applications with Azure][DevelopingWebAppsWithWindowsAzure]. Some reasons for choosing to run an ASP.NET web application in an Azure Cloud Service rather than an Azure Web Site include the following:
+Azure のクラウド サービスにアプリケーションを展開する方法を確認するには、[このチュートリアルのクラウド サービス バージョン][NetAppWithSqlAzure]および [Azure を使った Web アプリケーションの開発に関するページ][DevelopingWebAppsWithWindowsAzure]を参照してください。Azure の Web サイトではなく Azure のクラウド サービスで ASP.NET Web アプリケーションを実行する場合のいくつかの理由を次に示します。
 
-* You want administrator permissions on the web server that the application runs on.
-* You want to use Remote Desktop Connection to access the web server that the application runs on. 
-* Your application is multi-tier and you want to distribute work across multiple virtual servers (web and workers).
+* アプリケーションが実行される Web サーバーに対する管理者権限が必要である。
+* アプリケーションが実行される Web サーバーにアクセスするためにリモート デスクトップ接続を使用したい。
+* 多層アプリケーションを使用し、複数の仮想サーバー (Web および worker) 間で処理を分散したい。
 
-For more information about both SQL Database and Azure Storage, see [Data Storage Offerings on Azure][WindowsAzureDataStorageOfferings].
+SQL データベースと Azure ストレージの詳細については、「[Data Storage Offerings on Azure (Azure のデータ ストレージ機能)][WindowsAzureDataStorageOfferings]」を参照してください。
 
-To learn more about how to use SQL Database, see [Working with Azure SQL Database in the ASP.NET Data Access Content Map](http://go.microsoft.com/fwlink/p/?LinkId=282414#ssdb).
+SQL データベースの使用方法については、[ASP.NET データ アクセス コンテンツ マップでの Azure SQL データベースの操作に関するページ](http://go.microsoft.com/fwlink/p/?LinkId=282414#ssdb)を参照してください。
 
-To learn more about the Entity Framework and Code First Migrations, see the following resources:
+Entity Framework および Code First Migrations の詳細については、次のリソースを参照してください。
 
-* [Getting Started with Entity Framework using MVC][EFCodeFirstMVCTutorial]
-* [Code First Migrations][EFCFMigrations]
+* [MVC を使用した Entity Framework の概要に関するページ][EFCodeFirstMVCTutorial]
+* [Code First Migrations に関するページ][EFCFMigrations]
 
 
 
 
 <!-- bookmarks -->
-[Add an OAuth Provider]: #addOauth
-[Add Roles to the Membership Database]:#mbrDB
-[Create a Data Deployment Script]:#ppd
-[Update the Membership Database]:#ppd2
+[OAuth プロバイダーを追加する]: #addOauth
+[メンバーシップ データベースにロールを追加する]:#mbrDB
+[データ展開スクリプトを作成する]:#ppd
+[メンバーシップ データベースを更新する]:#ppd2
 [setupdbenv]: #bkmk_setupdevenv
 [setupwindowsazureenv]: #bkmk_setupwindowsazure
 [createapplication]: #bkmk_createmvc4app
@@ -740,7 +740,7 @@ To learn more about the Entity Framework and Code First Migrations, see the foll
 
 [WindowsAzureDataStorageOfferings]: http://social.technet.microsoft.com/wiki/contents/articles/data-storage-offerings-on-the-windows-azure-platform.aspx
 
-[NetAppWithSQLAzure]: http://www.windowsazure.com/en-us/develop/net/net-app-with-sql-azure
+[NetAppWithSQLAzure]: http://www.windowsazure.com/ja-jp/develop/net/net-app-with-sql-azure
 
 
 
@@ -753,20 +753,20 @@ To learn more about the Entity Framework and Code First Migrations, see the foll
 
 
 [EFCodeFirstMVCTutorial]: http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
-[EFCFMigrations]: http://msdn.microsoft.com/en-us/library/hh770484
+[EFCFMigrations]: http://msdn.microsoft.com/ja-jp/library/hh770484
 
 
 <!-- links from Tom's hopefully no collisions -->
 
 [WindowsAzureDataStorageOfferings]: http://social.technet.microsoft.com/wiki/contents/articles/data-storage-offerings-on-the-windows-azure-platform.aspx
 
-[NetAppWithSQLAzure]: http://www.windowsazure.com/en-us/develop/net/tutorials/cloud-service-with-sql-database/
+[NetAppWithSQLAzure]: http://www.windowsazure.com/ja-jp/develop/net/tutorials/cloud-service-with-sql-database/
 
 
 
 
 
-[CommonTasks]: http://www.windowsazure.com/en-us/develop/net/common-tasks/
+[CommonTasks]: http://www.windowsazure.com/ja-jp/develop/net/common-tasks/
 
 
 
@@ -775,8 +775,8 @@ To learn more about the Entity Framework and Code First Migrations, see the foll
 
 
 [EFCodeFirstMVCTutorial]: http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
-[EFCFMigrations]: http://msdn.microsoft.com/en-us/library/hh770484
-[DevelopingWebAppsWithWindowsAzure]: http://msdn.microsoft.com/en-us/library/Hh674484
+[EFCFMigrations]: http://msdn.microsoft.com/ja-jp/library/hh770484
+[DevelopingWebAppsWithWindowsAzure]: http://msdn.microsoft.com/ja-jp/library/Hh674484
 
 <!-- images-->
 [rxE]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxE.png
@@ -842,9 +842,10 @@ To learn more about the Entity Framework and Code First Migrations, see the foll
 [addcode008]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/dntutmobile-migrations-package-manager-menu.png
 [addcode009]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/dntutmobile-migrations-package-manager-console.png
 [Important information about ASP.NET in Azure Web Sites]: #aspnetwindowsazureinfo
-[Next steps]: #nextsteps
+[次のステップ]: #nextsteps
 [ImportPublishSettings]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/ImportPublishSettings.png
 [ImportPublishProfile]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/ImportPublishProfile.png
 [PublishVSSolution]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/PublishVSSolution.png
 [WebPIAzureSdk20NetVS12]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/WebPIAzureSdk20NetVS12.png
 [WebPIAzureSdk20NetVS12]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/WebPIAzureSdk20NetVS12.png
+

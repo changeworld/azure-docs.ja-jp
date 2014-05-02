@@ -1,72 +1,64 @@
-<properties linkid="manage-services-storage-SQL-Server-backup" urlDisplayName="Storage for SQL Server backups" pageTitle="How to use Azure storage for SQL Server backup and restore | Azure" metaKeywords="" description="" metaCanonical="" services="storage" documentationCenter="" title="How to Use Azure Storage for SQL Server Backup and Restore" authors="karaman" solutions="" manager="clairt" editor="tysonn" />
+<properties linkid="manage-services-storage-SQL-Server-backup" urlDisplayName="SQL Server のバックアップ用ストレージ" pageTitle="Azure ストレージを使用した SQL Server のバックアップと復元の方法 | Azure" metaKeywords="" description="" metaCanonical="" services="storage" documentationCenter="" title="Azure ストレージを使用した SQL Server のバックアップと復元の方法" authors="karaman" solutions="" manager="clairt" editor="tysonn" />
 
 
 
-<h1 id="SQLServerBackupandRestoretostorage">  How to Use Azure Storage for SQL Server Backup and Restore</h1>
+<h1 id="SQLServerBackupandRestoretostorage">  Azure ストレージを使用した SQL Server のバックアップと復元の方法</h1>
 
-The feature that provides the ability to write SQL Server backups to the Azure Blob storage service was released in SQL Server 2012 SP1 CU2. You can use this functionality to back up to and restore from the Azure Blob service from a on-premises SQL Server database or a SQL Server database in an Azure Virtual Machine. Backup to cloud offers benefits of availability, limitless geo-replicated off-site storage, and ease of migration of data to and from the cloud.   In this release, you can issue BACKUP or RESTORE statements by using T-SQL or SMO. Back up to or restore from the Azure Blob storage service by using SQL Server Management Studio Backup or Restore Wizard is not available.
+SQL Server のバックアップを Azure BLOB ストレージ サービスに書き込める機能は SQL Server 2012 SP1 CU2 でリリースされました。この機能を使用すると、Azure BLOB サービスとの間で、内部設置型の SQL Server データベースまたは Azure の仮想マシン上の SQL Server データベースをバックアップおよび復元できます。クラウドへのバックアップには、高い可用性、無制限の社外ストレージのジオ (主要地域) レプリケーション、クラウドとの間でのデータ移行の容易さという利点があります。このリリースでは、T-SQL または SMO を使用して BACKUP または RESTORE ステートメントを発行できます。SQL Server Management Studio のバックアップと復元のウィザードを使用して、Azure BLOB ストレージ サービスとの間でバックアップまたは復元を行うことはできません。
 
-<h2> Benefits of Using the Azure Blob Service for SQL Server Backups</h2>
+<h2> SQL Server のバックアップに Azure BLOB サービスを使用する利点</h2>
 
-Storage management, risk of storage failure, access to off-site storage, and configuring devices are some of the general backup challenges.  For SQL Server running in an Azure Virtual Machine, there are additional challenges of configuring and backing up a VHD, or configuring attached drives. The following lists some of the key benefits of using the Azure Blob storage service storage for SQL Server backups:
+バックアップには一般的に、ストレージの管理、ストレージ障害のリスク、社外ストレージへのアクセス、デバイスの構成などの課題があります。Azure の仮想マシンで実行されている SQL Server については、そのほかにも、VHD の構成とバックアップ、接続されたドライブの構成などの課題があります。次に示しているのは、SQL Server のバックアップに Azure BLOB ストレージ サービスのストレージを使用する主な利点です。
 
-* Flexible, reliable, and limitless off-site storage: Storing your backups on Azure Blob service can be a convenient, flexible, and easy to access off-site option. Creating off-site storage for your SQL Server backups can be as easy as modifying your existing scripts/jobs. Off-site storage should typically be far enough from the production database location to prevent a single disaster that might impact both the off-site and production database locations. By choosing to geo replicate the Blob storage you have an extra layer of protection in the event of a disaster that could affect the whole region. In addition, backups are available from anywhere and at any time and can easily be accessed for restores.
-* Backup Archive: The Azure Blob Storage service offers a better alternative to the often used tape option to archive backups. Tape storage might require physical transportation to an off-site facility and measures to protect the media. Storing your backups in Azure Blob Storage provides an instant, highly available, and a durable archiving option.
-* No overhead of hardware management: There is no overhead of hardware management with Azure services. Azure services manage the hardware and provide geo-replication for redundancy and protection against hardware failures.
-* Currently for instances of SQL Server running in an Azure Virtual Machine, backing up to Azure Blob storage services can be done by creating attached disks. However, there is a limit to the number of disks you can attach to an Azure Virtual Machine. This limit is 16 disks for an extra large instance and fewer for smaller instances. By enabling a direct backup to Azure Blob Storage, you can bypass the 16 disk limit.
-* In addition, the backup file which now is stored in the Azure Blob storage service is directly available to either an on-premises SQL Server or another SQL Server running in an Azure Virtual Machine, without the need for database attach/detach or downloading and attaching the VHD.
-* Cost Benefits: Pay only for the service that is used. Can be cost-effective as an off-site and backup archive option. See the [Azure pricing calculator](http://go.microsoft.com/fwlink/?LinkId=277060 "Pricing Calculator"), and the [Azure Pricing article](http://go.microsoft.com/fwlink/?LinkId=277059 "Pricing article") for more information.
+* 柔軟性と信頼性が高い無制限の社外ストレージ: Azure BLOB サービスにバックアップを保存することで、社外ストレージへのアクセスが柔軟かつ簡単に行え、便利になります。SQL Server のバックアップ用に社外ストレージを作成するのは、既存のスクリプトやジョブを変更するのと同じくらい簡単です。社外ストレージは通常、運用データベースから十分に離れた場所に設置して、一度の災害によって社外ストレージと運用データベースの両方が影響を受けないようにする必要があります。BLOB ストレージのジオ (主要地域) レプリケーションを利用することで、リージョン全体に被害が及ぶような災害に対する防御措置を強化できます。また、バックアップは場所や時間を問わずに使用でき、簡単にアクセスして復元することが可能です。
+* バックアップ アーカイブ: Azure BLOB ストレージ サービスは、バックアップ アーカイブによく利用されているテープに代わる、優れた手法を提供しています。テープ ストレージでは、場合によって社外設備への物理的な搬送やメディア保護の対策が必要です。Azure BLOB ストレージへのバックアップの保存では、可用性と持続性に優れた高速アーカイブが可能です。
+* ハードウェア管理のオーバーヘッドが不要: Azure サービスではハードウェア管理のオーバーヘッドはありません。Azure サービスのハードウェア管理では、ハードウェア障害に対する冗長性実現と保護のためにジオ (主要地域) レプリケーションが行われます。
+* 現在、Azure の仮想マシンで実行されている SQL Server のインスタンスについては、接続されたディスクを作成することで、Azure BLOB ストレージ サービスにバックアップできます。ただし、Azure の仮想マシンに接続できるディスクの数には制限があります。この制限はインスタンス サイズが XL の場合は 16 ディスクです。インスタンス サイズが小さくなるほど、このディスク数は少なくなります。Azure BLOB ストレージに直接バックアップできるようにすることで、この 16 ディスクという制限を回避できます。
+* また、Azure BLOB ストレージ サービスに保存されているバックアップ ファイルは、内部設置型の SQL Server でも、Azure の仮想マシンで実行されている別の SQL Server でも直接使用できます。データベースの接続/切断や VHD のダウンロードと接続は不要です。
+* コスト面の利点: 使用するサービスに対してのみ課金されます。社外ストレージやバックアップ アーカイブ用にこのサービスを選択することで、高い費用対効果を得られます。詳細については、[Azure の料金計算ツール](http://go.microsoft.com/fwlink/?LinkId=277060 "Pricing Calculator")および [Azure の料金の概要](http://go.microsoft.com/fwlink/?LinkId=277059 "Pricing article")を参照してください。
 
-For more details, see [SQL Server Backup and Restore with Azure Blob Storage Service](http://go.microsoft.com/fwlink/?LinkId=271617).
+詳細については、「[Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](http://go.microsoft.com/fwlink/?LinkId=271617)」を参照してください。
 
-The following two sections introduce the Azure Blob storage service, and the SQL Server components used when backing up to or restoring from the Azure Blob storage service. It is important to understand the components and the interaction between them to do a backup to or restore from the Azure Blob storage service. 
+次の 2 つのセクションでは、Azure BLOB ストレージ サービスのコンポーネントについて、さらに Azure BLOB ストレージ サービスとの間のバックアップまたは復元に使用する SQL Server のコンポーネントについて概要を示します。重要なのは、それらのコンポーネントを理解するだけでなく、コンポーネント間のやり取りも把握してから、Azure BLOB ストレージ サービスとの間でバックアップまたは復元を行うことです。
 
-Creating an Azure account is the first step to this process. SQL Server uses the Azure storage account name and its access key values to authenticate and write and read blobs to the storage service. The SQL Server Credential stores this authentication information and is used during the backup or restore operations. 
+Azure アカウントの作成がこのプロセスの最初の手順です。SQL Server では、Azure ストレージ アカウントの名前とアクセス キー値を使用して、ストレージ サービスとの間で認証と BLOB の読み書きを行います。SQL Server 資格情報にこの認証情報が保存され、その資格情報がバックアップまたは復元処理時に使用されます。
 
-For a complete walkthrough of creating a storage account and performing a simple restore, see [Getting Started withAzure Storage Service for SQL Server Backup and Restore](http://go.microsoft.com/fwlink/?LinkId=271615) 
+ストレージ アカウントを作成して単純な復元を実行する詳細なチュートリアルについては、「[Azure BLOB ストレージ サービスへの SQL Server のバックアップと復元の概要](http://go.microsoft.com/fwlink/?LinkId=271615)」を参照してください。
 
-## Azure Blob Storage Service Components 
+## Azure BLOB ストレージ サービスのコンポーネント
 
-* Storage Account: The storage account is the starting point for all storage services. To access an Azure Blob Storage service, first create an Azure Storage account. The storage account name and its access key properties are required to authenticate to the Azure Blob Storage service and its components. 
-For more information about Azure Blob storage service, see [How to use the Azure Blob Storage Service](http://www.windowsazure.com/en-us/develop/net/how-to-guides/blob-storage/)
+* ストレージ アカウント: ストレージ アカウントはすべてのストレージ サービスの出発点となります。Azure BLOB ストレージ サービスにアクセスするには、まず Azure のストレージ アカウントを作成します。ストレージ アカウントの名前とアクセス キー プロパティが Azure BLOB ストレージ サービスとそのコンポーネントに対する認証に必要です。
+Azure BLOB ストレージ サービスの詳細については、「[How to use the Azure Blob Storage Service (Azure BLOB ストレージ サービスを使用する方法)](http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/blob-storage/)」を参照してください。
 
-* Container: A container provides a grouping of a set of Blobs, and can store an unlimited number of Blobs. To write a SQL Server backup to an Azure Blob service, you must have at least the root container created. 
+* コンテナー: コンテナーは一連の BLOB のグループ化に使用され、格納できる BLOB の数に制限はありません。SQL Server のバックアップを Azure BLOB サービスに書き込むには、少なくとも root コンテナーが作成されている必要があります。
 
-* Blob: A file of any type and size. There are two types of blobs that can be stored in the Azure Blob storage service: block and page blobs.  SQL Server backup uses page Blobs as the Blob type. Blobs are addressable using the following URL format: `https://<storage account>.blob.core.windows.net/<container>/<blob>`
-For more information about page Blobs, see [Understanding Block and Page Blobs](http://msdn.microsoft.com/en-us/library/windowsazure/ee691964.aspx)
+* BLOB: 任意の種類およびサイズのファイルです。Azure BLOB ストレージ サービスに格納できる BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。SQL Server のバックアップでは、BLOB の種類としてページ BLOB を使用します。BLOB は、次の URL 形式を使用してアドレスを指定し、アクセスできます: `https://<storage account>.blob.core.windows.net/<container>/<blob>`
+ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee691964.aspx)」を参照してください。
 
-## SQL Server Components
+## SQL Server のコンポーネント
 
-* URL: A URL specifies a Uniform Resource Identifier (URI) to a unique backup file. The URL is used to provide the location and name of the SQL Server backup file. In this implementation, the only valid URL is one that points to a page Blob in an Azure Storage account. The URL must point to an actual Blob, not just a container. If the Blob does not exist, it is created. If an existing Blob is specified, BACKUP fails, unless the > WITH FORMAT option is specified. 
-Following is an example of the URL you would specifiy in the BACKUP command: 
+* URL: URL は一意のバックアップ ファイルへの Uniform Resource Identifier (URI) を参照します。URL を使用して SQL Server バックアップ ファイルの場所と名前を指定します。この実装では、Azure のストレージ アカウントのページ BLOB を参照する URL のみ有効です。URL は、コンテナーだけでなく実際の BLOB を参照する必要があります。BLOB が存在しない場合は作成されます。既存の BLOB を指定した場合、> WITH FORMAT オプションを指定していないと、BACKUP は失敗します。
+BACKUP コマンドで URL を指定する例を次に示します。
 **`http[s]://ACCOUNTNAME.Blob.core.windows.net/<CONTAINER>/<FILENAME.bak>`
 
-<b>Note:</b> HTTPS is not required, but is recommended.
-<b>Important</b>
-If you choose to copy and upload a backup file to the Azure Blob storage service, you must use a page blob type as your storage option if you are planning to use this file for restore operations. RESTORE from a block blob type will fail with an error. 
+<b>注:</b> HTTPS は必須ではありませんが、使用することをお勧めします。
+<b>重要</b>
+バックアップ ファイルをコピーして Azure BLOB ストレージ サービスにアップロードする場合、そのファイルを復元処理に使用する予定があれば、ストレージ オプションの BLOB の種類としてページ BLOB を使用する必要があります。BLOB の種類としてブロック BLOB を使用すると、RESTORE がエラーで失敗します。
 
-* Credential: The information that is required to connect and authenticate to Azure Blob storage service is stored as a Credential.  In order for SQL Server to write backups to an Azure Blob or restore from it, a SQL Server credential must be created. The Credential stores the name of the storage account and the storage account access key.  Once the credential is created, it must be specified in the WITH CREDENTIAL option when issuing the BACKUP/RESTORE statements. For more information about how to view, copy or regenerate storage account access keys, see [Storage Account Access Keys](http://msdn.microsoft.com/en-us/library/windowsazure/hh531566.aspx).
-For step by step instructions about how to create a SQL Server Credential, see [Getting Started with Azure Storage Service for SQL Server Backup and Restore](http://go.microsoft.com/fwlink/?LinkId=271615).
+* 資格情報: Azure BLOB ストレージ サービスに対する接続と認証に必要な情報は資格情報として保存されます。SQL Server から Azure BLOB に対してバックアップを書き込んだり復元したりするには、SQL Server 資格情報を作成する必要があります。その資格情報にストレージ アカウントの名前とアクセス キーを保存します。作成した資格情報は、BACKUP/RESTORE ステートメントの発行時に WITH CREDENTIAL オプションで指定する必要があります。ストレージ アカウントのアクセス キーの表示、コピー、再生成方法の詳細については、「[Azure ストレージ アカウントのアクセス キーを表示、コピー、再生成する方法](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh531566.aspx)」を参照してください。
+SQL Server 資格情報を作成する手順の詳細については、「[Azure BLOB ストレージ サービスへの SQL Server のバックアップと復元の概要](http://go.microsoft.com/fwlink/?LinkId=271615)」を参照してください。
 
-## SQL Server Database Backups and Restore with Azure Blobs- Concepts and Tasks:
+## Azure BLOB を使用した SQL Server データベースのバックアップと復元 - 概念とタスク: 
 
-**Concepts, Considerations, and Code samples:**
+**概念、考慮事項、コード サンプル: **
 
-[SQL Server Backup and Restore with Azure Blob Storage Service](http://go.microsoft.com/fwlink/?LinkId=271617)
+[Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](http://go.microsoft.com/fwlink/?LinkId=271617)
 
-**Getting Started Tutorial:**
+**概要チュートリアル: **
 
-[Getting Started with SQL Server Backup and Restore to Azure Blob Storage Service](http://go.microsoft.com/fwlink/?LinkID=271615 "Tutorial")
+[Azure BLOB ストレージ サービスへの SQL Server のバックアップと復元の概要](http://go.microsoft.com/fwlink/?LinkID=271615 "Tutorial")
 
-**Best Practices, Troubleshooting:**
+**ベスト プラクティス、トラブルシューティング: **
 	
-[Back and Restore Best Practices (Azure Blob Storage Service)](http://go.microsoft.com/fwlink/?LinkId=272394)
-
-
-
-
-	
-
-
-
+[バックアップと復元に関するベスト プラクティス (Azure BLOB ストレージ サービス)](http://go.microsoft.com/fwlink/?LinkId=272394)
 

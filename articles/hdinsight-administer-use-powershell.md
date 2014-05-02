@@ -1,39 +1,39 @@
-<properties linkid="manage-services-hdinsight-administer-hdinsight-using-powershell" urlDisplayName="HDInsight Administration" pageTitle="Administer HDInsight using PowerShell | Azure" metaKeywords="hdinsight, hdinsight administration, hdinsight administration azure" description="Learn how to perform administrative tasks for the HDInsight clusters using PowerShell." services="hdinsight" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" title="Administer HDInsight using PowerShell" authors="bradsev" />
+<properties linkid="manage-services-hdinsight-administer-hdinsight-using-powershell" urlDisplayName="HDInsight の管理" pageTitle="PowerShell を使用した HDInsight の管理 | Azure" metaKeywords="hdinsight, hdinsight の管理, hdinsight の管理と azure" description="PowerShell を使用して、HDInsight クラスターの管理タスクを実行する方法について説明します。" services="hdinsight" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" title="PowerShell を使用した HDInsight の管理" authors="bradsev" />
 
-# Administer HDInsight using PowerShell
+# PowerShell を使用した HDInsight の管理
 
-Azure PowerShell is a powerful scripting environment that you can use to control and automate the deployment and management of your workloads in Azure. In this article, you will learn how to manage HDInsight clusters using a local Azure PowerShell console through the use of Windows PowerShell. For the list of the HDInsight PowerShell cmdlets, see [HDInsight cmdlet reference][hdinsight-powershell-reference].
+Azure PowerShell は、Azure のワークロードの展開と管理を制御し自動化するために使用できる強力なスクリプティング環境です。この記事では、ローカルの Azure PowerShell コンソールを使って HDInsight クラスターを管理する方法を、Windows PowerShell を例として説明します。HDInsight PowerShell コマンドレットの一覧については、「[HDInsight コマンドレット リファレンス][hdinsight-powershell-reference]」を参照してください。
 
-**Prerequisites:**
+**前提条件:**
 
-Before you begin this article, you must have the following:
+この記事を読み始める前に、次の項目を用意する必要があります。
 
-- An Azure subscription. Azure is a subscription-based platform. The HDInsight PowerShell cmdlets perform the tasks with your subscription. For more information about obtaining a subscription, see [Purchase Options][azure-purchase-options], [Member Offers][azure-member-offers], or [Free Trial][azure-free-trial].
+- Azure サブスクリプションが必要です。Azure はサブスクリプション方式のプラットフォームです。HDInsight PowerShell コマンドレットはサブスクリプションを使ってタスクを実行します。サブスクリプションの入手方法の詳細については、[購入オプション][azure-purchase-options]、[メンバー プラン][azure-member-offers]、または[無料評価版][azure-free-trial]に関するページを参照してください。
 
-- A workstation with Azure PowerShell. For instructions, see [Install and configure Azure PowerShell][Powershell-install-configure].
+- Azure PowerShell を実行できるワークステーション。手順については、[Azure PowerShell のインストールおよび構成に関するページ][Powershell-install-configure]を参照してください。
 
 			
 	
 
-## In this article
+## この記事の内容
 
-* [Provision a cluster](#provision)
-* [List and show clusters](#listshow)
-* [Delete a cluster](#delete)
-* [Grant/Revoke HTTP services access](#httpservices)
-* [Submit MapReduce jobs](#mapreduce)
-* [Submit Hive jobs](#hive)
-* [Upload data to the Blob storage](#upload)
-* [Download MapReduce output data from the Blob storage](#download)
-
-
-##<a id="provision"></a> Provision an HDInsight cluster
-HDInsight uses an Azure Blob Storage container as the default file system. An Azure storage account and storage container are required before you can create an HDInsight cluster. 
+* [クラスターのプロビジョニング](#provision)
+* [クラスターの一覧と表示](#listshow)
+* [クラスターの削除](#delete)
+* [HTTP サービスのアクセス許可の付与/取り消し](#httpservices)
+* [MapReduce ジョブの送信](#mapreduce)
+* [Hive ジョブの送信](#hive)
+* [BLOB ストレージへのデータのアップロード](#upload)
+* [BLOB ストレージからの MapReduce 出力データのダウンロード](#download)
 
 
-**To create an Azure storage account**
+##<a id="provision"></a> HDInsight クラスターのプロビジョニング
+HDInsight は、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。HDInsight クラスターを作成するには Azure ストレージ アカウントとストレージ コンテナーが必要です。
 
-After you have imported the publishsettings file, you can use the following command to create a storage account:
+
+**Azure ストレージ アカウントを作成するには**
+
+発行設定ファイルをインポートした後、次のコマンドを使ってストレージ アカウントを作成できます。
 
 	# Create an Azure storage account
 	$storageAccountName = "<StorageAcccountName>"
@@ -41,32 +41,32 @@ After you have imported the publishsettings file, you can use the following comm
 
 	New-AzureStorageAccount -StorageAccountName $storageAccountName -Location $location
 
-> [WACOM.NOTE] The storage account must be located in the same data center as the HDInsight Cluster. Currently, you can only provision HDInsight clusters in the following data centers:
+> [WACOM.NOTE] ストレージ アカウントは、HDInsight クラスターと同じデータ センターに置く必要があります。現在、HDInsight クラスターのプロビジョニングができるのは次のデータ センターだけです。
 
 ><ul>
-<li>Southeast Asia</li>
-<li>North Europe</li>
-<li>West Europe</li>
-<li>East US</li>
-<li>West US</li>
+<li>東南アジア</li>
+<li>北ヨーロッパ</li>
+<li>西ヨーロッパ</li>
+<li>米国東部</li>
+<li>米国西部</li>
 </ul>
 
 
 
-For information on creating an Azure storage account using the management portal, see [How to Create a Storage Account](/en-us/manage/services/storage/how-to-create-a-storage-account/).
+管理ポータルを使った Azure ストレージ アカウントの作成については、「[ストレージ アカウントの作成方法](/ja-jp/manage/services/storage/how-to-create-a-storage-account/)」を参照してください。
 
-If you have already had a storage account but do not know the account name and account key, you can use the following commands to retrieve the information:
+既にストレージ アカウントを持っていて、アカウント名とアカウント キーがわからない場合は、次のコマンドを使ってその情報を取得できます。
 
 	# List storage accounts for the current subscription
 	Get-AzureStorageAccount
 	# List the keys for a storage account
 	Get-AzureStorageKey <StorageAccountName>
 
-For details on getting the information using the management portal, see the *How to: View, copy and regenerate storage access keys* section of [How to Manage Storage Accounts](/en-us/manage/services/storage/how-to-manage-a-storage-account/).
+管理ポータルを使用して情報を取得する方法の詳細については、「[ストレージ アカウントの管理方法](/ja-jp/manage/services/storage/how-to-manage-a-storage-account/)」の「*方法: ストレージ アクセス キーの表示、コピーおよび再生成*」を参照してください。
 
-**To create Azure storage container**
+**Azure ストレージ コンテナーを作成するには**
 
-PowerShell can not create a Blob container during the HDInsight provision process. You can create one using the following script:
+PowerShell は、HDInsight のプロビジョニング処理中に、BLOB コンテナーを作成することはできません。コンテナーは次のスクリプトを使って作成します。
 
 	$storageAccountName = "<StorageAccountName>"
 	$storageAccountKey = Get-AzureStorageKey $storageAccountName | %{ $_.Primary }
@@ -79,9 +79,9 @@ PowerShell can not create a Blob container during the HDInsight provision proces
 	# Create a Blob storage container
 	New-AzureStorageContainer -Name $containerName -Context $destContext
 
-**To provision a cluster**
+**クラスターをプロビジョニングするには**
 
-Once you have the storage account and the blob container prepared, you are ready to create a cluster.    
+ストレージ アカウントを用意して、BLOB コンテナーを準備したら、クラスターを作成する準備は整いました。
 		
 	$storageAccountName = "<StorageAccountName>"
 	$containerName = "<ContainerName>"
@@ -97,32 +97,32 @@ Once you have the storage account and the blob container prepared, you are ready
 	New-AzureHDInsightCluster -Name $clusterName -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainerName $containerName  -ClusterSizeInNodes $clusterNodes
 
 
-The following screenshot shows the script execution:
+次の図はスクリプト実行時のスクリーンショットです。
 
 ![HDI.PS.Provision][image-hdi-ps-provision]
 
 
 
 
-##<a id="listshow"></a> List and show cluster details
-Use the following commands to list and show cluster details:
+##<a id="listshow"></a> クラスターの一覧と詳細の表示
+クラスターの一覧と詳細を表示するには、次のコマンドを使用します。
 
-**To list all clusters in the current subscription**
+**現在のサブスクリプションにあるクラスターをすべて一覧表示するには**
 
 	Get-AzureHDInsightCluster 
 
-**To show details of the specific cluster in the current subscription**
+**現在のサブスクリプションにある特定のクラスターの詳細を表示するには**
 
 	Get-AzureHDInsightCluster -Name <ClusterName> 
 
-##<a id="delete"></a> Delete a cluster
-Use the following command to delete a cluster:
+##<a id="delete"></a> クラスターの削除
+クラスターを削除するには、次のコマンドを使用します。
 
 	Remove-AzureHDInsightCluster -Name <ClusterName> 
 
-##<a id="httpservice"></a> Grant/revoke HTTP services access
+##<a id="httpservice"></a> HTTP サービスのアクセス許可の付与/取り消し
 
-HDInsight clusters have the following HTTP Web services (all of these services have RESTful endpoints):
+HDInsight クラスターには、以下の HTTP Web サービスがあります (これらすべてのサービスには、REST ベースのエンドポイントがあります)。
 
 - ODBC
 - JDBC
@@ -131,22 +131,22 @@ HDInsight clusters have the following HTTP Web services (all of these services h
 - Templeton
 
 
-By default, these services are granted for access. You can revoke/grant the access.  Here is a sample:
+既定では、これらのサービスへのアクセス許可が付与されます。アクセス許可を取り消す/付与することができます。例を示します。
 
 	Revoke-AzureHDInsightHttpServicesAccess -Name hdiv2 -Location "East US"
 
-In the sample <i>hdiv2</i> is an HDInsight cluster name.
+この例で、<i>hdiv2</i> が HDInsight クラスター名です。
 
->[WACOM.NOTE] By granting/revoking the access, you will reset the cluster user username and password.
+>[WACOM.NOTE] アクセス許可を付与する/取り消すことで、クラスター ユーザーのユーザー名とパスワードがリセットされます。
 
-This can also be done using the Windows Azure Management portal. See [Administer HDInsight using the Management portal][hdinsight-admin-portal].
+この処理は、Azure 管理ポータルを使って行うこともできます。[管理ポータルを使用した HDInsight の管理][hdinsight-admin-portal]を参照してください。
 
-##<a id="mapreduce"></a> Submit MapReduce jobs
-The HDInsight cluster distribution comes with some MapReduce samples. One of the samples is for counting word frequencies in source files.
+##<a id="mapreduce"></a> MapReduce ジョブの送信
+HDInsight クラスターのディストリビューションには MapReduce のサンプルが付属します。サンプルの 1 つは、ソース ファイルに出現する単語の頻度を算出します。
 
-**To submit a MapReduce job**
+**MapReduce ジョブを送信するには**
 
-The following PowerShell script submits the word count sample job: 
+以下に、ワード カウント サンプル ジョブを送信する PowerShell スクリプトを示します。
 	
 	$clusterName = "<HDInsightClusterName>"            
 	
@@ -156,14 +156,14 @@ The following PowerShell script submits the word count sample job:
 	# Run the job and show the standard error 
 	$wordCountJobDefinition | Start-AzureHDInsightJob -Cluster $clusterName | Wait-AzureHDInsightJob -WaitTimeoutInSeconds 3600 | %{ Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $_.JobId -StandardError}
 	
-> [WACOM.NOTE] *hadoop-examples.jar* comes with version 2.1 HDInsight clusters. The file has been renamed to *hadoop-mapreduce.jar* on version 3.0 HDInsight clusters.
+> [WACOM.NOTE] *hadoop-examples.jar* は、バージョン 2.1 の HDInsight クラスターに付属しています。バージョン 3.0 の HDInsight クラスターで、このファイルの名前は *hadoop-mapreduce.jar* に変更されました
 
-For information about the WASB prefix, see [Use Azure Blob storage for HDInsight][hdinsight-
-storage].
+WASB プレフィックスについては、「[HDInsight で Azure BLOB ストレージを使用][hdinsight-
+storage]」を参照してください。
 
-**To download the MapReduce job output**
+**MapReduce ジョブの出力をダウンロードするには**
 
-The following PowerShell script retrieves the MapReduce job output from the last procedure:
+次の PowerShell スクリプトは、先の手順で実行した MapReduce ジョブの出力を取得します。
 
 	$storageAccountName = "<StorageAccountName>"   
 	$containerName = "<ContainerName>"             
@@ -178,7 +178,7 @@ The following PowerShell script retrieves the MapReduce job output from the last
 	# Display the output
 	cat ./example/data/WordCountOutput/part-r-00000 | findstr "there"
 
-For more information on developing and running MapReduce jobs, see [Using MapReduce with HDInsight][hdinsight-mapreduce].
+MapReduce ジョブの開発と実行の詳細については、「[HDInsight での MapReduce の使用][hdinsight-mapreduce]」を参照してください。
 
 
 
@@ -217,12 +217,12 @@ For more information on developing and running MapReduce jobs, see [Using MapRed
 
 
 
-##<a id="hive"></a> Submit Hive jobs
-The HDInsight cluster distribution comes with a sample Hive table called *hivesampletable*. You can use a HiveQL "show tables;" to list the Hive tables on a cluster.
+##<a id="hive"></a> Hive ジョブの送信
+HDInsight クラスターのディストリビューションには、*hivesampletable* という Hive テーブルのサンプルが付属します。HiveQL の "show tables;" を使うと、クラスターの Hive テーブルの一覧を表示できます。
 
-**To submit a Hive job**
+**Hive ジョブを送信するには**
 
-The following script submit a hive job to list the Hive tables:
+以下に、Hive テーブルの一覧を表示する Hive ジョブを送信するスクリプトを示します。
 	
 	$clusterName = "<HDInsightClusterName>"               
 	
@@ -237,48 +237,49 @@ The following script submit a hive job to list the Hive tables:
 	Use-AzureHDInsightCluster -Name $clusterName
 	Invoke-Hive $querystring
 
-The Hive job will first show the Hive tables created on the cluster, and the data returned from the hivesampletable.
+この Hive ジョブはまず、クラスターに作成された Hive テーブルを表示し、続いて hivesampletable から返されたデータを表示します。
 
-For more information on using Hive, see [Using Hive with HDInsight][hdinsight-hive].
-
-
-##<a id="upload"></a>Upload data to the Blob storage
-See [Upload data to HDInsight][hdinsight-upload-data].
-
-##<a id="download"></a>Download the MapReduce output from the Blob storage
-See the [Submit MapReduce jobs](#mapreduce) session in this article.
-
-## See Also
-* [HDInsight Cmdlet Reference Documentation][hdinsight-powershell-reference]
-* [Administer HDInsight using management portal][hdinsight-admin-portal]
-* [Administer HDInsight using command-line interface][hdinsight-admin-cli]
-* [Provision HDInsight clusters][hdinsight-provision]
-* [Upload data to HDInsight][hdinsight-upload-data]
-* [Submit Hadoop jobs programmatically][hdinsight-submit-jobs]
-* [Get started with Azure HDInsight][hdinsight-get-started]
+Hive の使用法の詳細については、「[HDInsight での Hive の使用][hdinsight-hive]」を参照してください。
 
 
-[azure-purchase-options]: https://www.windowsazure.com/en-us/pricing/purchase-options/
-[azure-member-offers]: https://www.windowsazure.com/en-us/pricing/member-offers/
-[azure-free-trial]: https://www.windowsazure.com/en-us/pricing/free-trial/
+##<a id="upload"></a>BLOB ストレージへのデータのアップロード
+「[データを HDInsight にアップロードする方法][hdinsight-upload-data]」を参照してください。
 
-[hdinsight-get-started]: /en-us/documentation/articles/hdinsight-get-started/
-[hdinsight-provision]: /en-us/documentation/articles/hdinsight-provision-clusters/
+##<a id="download"></a>BLOB ストレージからの MapReduce 出力のダウンロード
+この記事の「[MapReduce ジョブの送信](#mapreduce)」を参照してください。
 
-[hdinsight-submit-jobs]: /en-us/documentation/articles/hdinsight-submit-hadoop-jobs-programmatically/
+## 関連項目
+* [HDInsight Cmdlet Reference Documentation (HDInsight コマンドレット リファレンス ドキュメント)][hdinsight-powershell-reference]
+* [管理ポータルを使用した HDInsight クラスターの管理][hdinsight-admin-portal]
+* [コマンド ライン インターフェイスを使用した HDInsight の管理][hdinsight-admin-cli]
+* [HDInsight クラスターのプロビジョニング][hdinsight-provision]
+* [データを HDInsight へアップロードする方法][hdinsight-upload-data]
+* [プログラムによる Hadoop ジョブの送信][hdinsight-submit-jobs]
+* [Azure HDInsight の概要][hdinsight-get-started]
 
-[hdinsight-admin-portal]: /en-us/documentation/articles/hdinsight-administer-use-management-portal/
-[hdinsight-admin-cli]: /en-us/documentation/articles/hdinsight-administer-use-command-line/
-[hdinsight-storage]: /en-us/documentation/articles/hdinsight-use-blob-storage/
-[hdinsight-mapreduce]: /en-us/documentation/articles/hdinsight-use-mapreduce/
 
-[hdinsight-hive]: /en-us/documentation/articles/hdinsight-use-hive/
-[hdinsight-upload-data]: /en-us/documentation/articles/hdinsight-upload-data/
+[azure-purchase-options]: https://www.windowsazure.com/ja-jp/pricing/purchase-options/
+[azure-member-offers]: https://www.windowsazure.com/ja-jp/pricing/member-offers/
+[azure-free-trial]: https://www.windowsazure.com/ja-jp/pricing/free-trial/
 
-[hdinsight-powershell-reference]: http://msdn.microsoft.com/en-us/library/windowsazure/dn479228.aspx
+[hdinsight-get-started]: /ja-jp/documentation/articles/hdinsight-get-started/
+[hdinsight-provision]: /ja-jp/documentation/articles/hdinsight-provision-clusters/
 
-[Powershell-install-configure]: /en-us/documentation/articles/install-configure-powershell/
+[hdinsight-submit-jobs]: /ja-jp/documentation/articles/hdinsight-submit-hadoop-jobs-programmatically/
+
+[hdinsight-admin-portal]: /ja-jp/documentation/articles/hdinsight-administer-use-management-portal/
+[hdinsight-admin-cli]: /ja-jp/documentation/articles/hdinsight-administer-use-command-line/
+[hdinsight-storage]: /ja-jp/documentation/articles/hdinsight-use-blob-storage/
+[hdinsight-mapreduce]: /ja-jp/documentation/articles/hdinsight-use-mapreduce/
+
+[hdinsight-hive]: /ja-jp/documentation/articles/hdinsight-use-hive/
+[hdinsight-upload-data]: /ja-jp/documentation/articles/hdinsight-upload-data/
+
+[hdinsight-powershell-reference]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn479228.aspx
+
+[Powershell-install-configure]: /ja-jp/documentation/articles/install-configure-powershell/
 
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
+
 
 

@@ -1,280 +1,278 @@
-<properties linkid="services-linux-cassandra-with-linux" urlDisplayName="Cassandra with Linux" pageTitle="Run Cassandra with Linux on Azure" metaKeywords="" description="Explains how to run a Cassandra cluster on Linux in Azure Virtual Machines." metaCanonical="" services="virtual-machines" documentationCenter="Node.js" title="Running Cassandra with Linux on Azure and Accessing it from Node.js" authors="" solutions="" manager="" editor="" />
+<properties linkid="services-linux-cassandra-with-linux" urlDisplayName="Linux での Cassandra" pageTitle="Azure 上の Linux での Cassandra の実行" metaKeywords="" description="Azure の仮想マシンの Linux で Cassandra クラスターを実行する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="Node.js" title="Azure 上の Linux で Cassandra を実行して Node.js からアクセス" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-<h1><a id = ""></a>Running Cassandra with Linux on Azure and Accessing it from Node.js </h1>
-**Author:** Hanu Kommalapati
+<h1><a id = ""></a>Azure 上の Linux で Cassandra を実行して Node.js からアクセス</h1>
+**執筆者:** Hanu Kommalapati
 
-## Table of Contents##
+## 目次##
 
-- [Overview] []
-- [Cassandra Deployment Schematic] []
-- [Composite Deployment] []
-- [Azure Virtual Machine Deployment] []
-- [Task 1: Deploy Linux Cluster] []
-- [Task 2: Set Up Cassandra on Each Virtual Machine] []
-- [Task 3: Access Cassandra Cluster from Node.js] []
-- [Conclusion] []
+- [概要][]
+- [Cassandra の展開方式][]
+- [複合展開][]
+- [仮想マシンの展開][]
+- [タスク 1: Linux クラスターの展開][]
+- [タスク 2: 各仮想マシンでの Cassandra のセットアップ][]
+- [タスク 3: Node.js からの Cassandra クラスターへのアクセス][]
+- [まとめ][]
 
 
-##<a id="overview"> </a>Overview ##
+##<a id="overview"> </a>概要##
 
-Azure provides a NoSQL database service through Azure Table storage which allows schema-less storage of business objects. This service can be used from Node.JS, .NET, Java and any other languages that can speak HTTP and REST.  However, there are other popular NoSQL databases like Cassandra and Couchbase which could not be run on Azure PaaS due to its state-less cloud service model.  Azure Virtual Machines now allows the running of these NoSQL databases on Azure with no changes to the codebase. The intention of this writing is to show how to run a Cassandra cluster on Virtual Machines and access it from Node.js. This does not cover the Cassandra deployment for real world production operations where one needs to look at multi-data center Cassandra cluster with the associated backup and recovery strategies. In this exercise, we will use Ubuntu 12.04 version of Linux and Cassandra 1.0.10; however the process can be tweaked for any Linux distribution. 
+Azure には、スキーマなしでビジネス オブジェクトを保存できる Azure テーブル ストレージによる NoSQL データベース サービスが用意されています。このサービスは、HTTP および REST をサポートする Node.js、.NET、Java などの言語から使用できます。ただし、ほかにも Cassandra や Couchbase のように、ステートレス クラウド モデルであるために Azure PaaS では実行できない人気の NoSQL データベースも存在します。Azure の仮想マシンでは、現在、このような NoSQL データベースをコードベースを変更することなく Azure 上で実行できます。この文章の目的は、仮想マシン上で Cassandra クラスターを実行し、それに Node.js からアクセスする方法を示すことです。実際の運用環境への Cassandra の展開については取り上げません。運用環境では、マルチ データ センターの Cassandra クラスターおよび関連するバックアップ戦略と回復戦略に目を向ける必要があります。この演習では、Linux の Ubuntu バージョン 12.04 および Cassandra 1.0.10 を使用します。ただし、手順はどの Linux ディストリビューションに対しても応用できます。
 
-## <a id="schematic"> </a>Cassandra Deployment Schematic ##
+## <a id="schematic"> </a>Cassandra のデプロイ方式##
 
-The Azure Virtual Machines capability enables running of NoSQL databases like [Cassandra](http://wiki.apache.org/cassandra/) on Microsoft public cloud as easy as running them in a private cloud environment excepting one difference of virtual network configuration specific to the Azure Virtual Machines infrastructure. As of this writing, Cassandra is not available as a managed service on Azure and hence in this article we will look at setting up of a Cassandra cluster on Virtual Machines and access it from another Linux instance hosted inside Virtual Machines as well. The node.js code snippets shown can also be used from PaaS hosted web application or web service. One of the core strengths of Azure is allowing the composite application model that can take advantage of the best of PaaS and IaaS worlds. 
+Azure の仮想マシン機能では、[Cassandra](http://wiki.apache.org/cassandra/) のような NoSQL データベースを、プライベート クラウド環境と同じように簡単に Microsoft パブリック クラウド上で実行できます。違うのは 1 つだけ、Azure の仮想マシン インフラストラクチャに特有の仮想ネットワーク構成だけです。この記事の執筆時点では、Cassandra は Azure 上の管理されたサービスとしては利用できません。そのため、この記事では、仮想マシン上で Cassandra クラスターをセットアップして、仮想マシン内部でホストされた別の Linux インスタンスからアクセスします。ここで示した node.js のコード断片は、PaaS でホストしている Web アプリケーションまたは Web サービスからも使用できます。Azure の中核的な強みの 1 つは、PaaS の世界と IaaS の世界で優れたところを共に活用する複合アプリケーション モデルが可能なことです。
 
-There are two deployment models that are feasible for Cassandra application environment: self-contained Virtual Machines deployment and a composite deployment.  In a composite deployment, a Virtual Machines-hosted Cassandra cluster will be consumed from a PaaS hosted Azure web application (or web service) using Thrift interface through the load balancer.  Even though each Cassandra node proxies the request to other peer nodes in the event of a key space fault,  the load balancer helps with the entry level load balancing of the requests.  Also the load balancer creates a firewall protected sandbox for a better control of the data. 
+Cassandra アプリケーション環境で実現できる展開モデルは 2 つあります。自立的仮想マシン展開と複合展開です。複合デプロイの場合、仮想マシンでホストされた Cassandra クラスターは、PaaS でホストされた Azure Web アプリケーション (または Web サービス) から Thrift インターフェイスを使用してロード バランサーを介して利用されます。各 Cassandra ノードは、キー スペース フォールト時に他のピア ノードに対する要求のプロキシになりますが、ロード バランサーがエントリ レベルの要求の負荷分散をこなします。また、ロード バランサーは、データ制御を強化するために、ファイアウォールで保護されたサンドボックスを作成します。
 
-## <a id="composite"> </a> Composite Deployment ##
+## <a id="composite"> </a> 複合デプロイ##
 
-The goal of a composite deployment is to maximize the usage of PaaS while keeping the virtual machine footprint to an absolute minimum in an effort to save on the overhead imposed by the infrastructure management of the virtual machines. Due to the server management overhead, only deploy those components that require stateful behavior that can't be modified easily due to various reasons including the time-to-market, lack of visibility into source code, and low level access to the OS. 
+複合展開の目的は、仮想マシンのインフラストラクチャ管理によるオーバーヘッドを減らすために仮想マシンの規模を極限まで抑えて、PaaS の使用効率を最大化することです。サーバー管理にはオーバーヘッドがあるため、市場投入までの時間、不明なソース コード、OS に対する低水準アクセスなどのさまざまな理由により簡単には修正できず、ステートフルな動作を必要とするコンポーネントだけを展開します。
 
-![Composite deployment diagram](./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux1.png)
+![複合デプロイ図](./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux1.png)
 
-##<a id="deployment"> </a>Azure Virtual Machine Deployment##
+##<a id="deployment"> </a>Azure の仮想マシンの展開##
 
-![Virtual machine deployment](./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux2.png)
+![仮想マシンのデプロイ](./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux2.png)
 
-In the above diagrams a 4-node Cassandra cluster is deployed inside Virtual Machines behind a load balancer that is configured to allow Thrift traffic. Azure hosted PaaS application accesses the cluster using language specific Thrift libraries. There are libraries for languages including Java, C#, Node.js, Python and C++. The self-contained Virtual Machines deployment shown in the second diagram consumes data by applications running inside another cloud service hosted on Virtual Machines. 
+前に示している図では、Thrift トラフィックを許すように構成されたロード バランサーの背後で、4 ノードの Cassandra クラスターが仮想マシン内に展開されています。Azure でホストする PaaS アプリケーションは、言語固有の Thrift ライブラリを使用してクラスターにアクセスします。Java、C#、Node.js、Python、C++ などの言語用のライブラリがあります。2 つ目の図に示されている自立的仮想マシン展開では、仮想マシンでホストされた別のクラウド サービス内部で実行されているアプリケーションによってデータが利用されます。
 
-##<a id="task1"> </a>Task 1: Deploy Linux Cluster##
+##<a id="task1"> </a>タスク 1: Linux クラスターの展開##
 
-During the Virtual Machines preview release, in order for the Linux VMs to be part of the same virtual network, all the machines need to be deployed to the same cloud service. Typical sequence for creating a cluster is: 
+仮想マシンのプレビュー リリース中に、Linux VM が同じ仮想ネットワークの一部になるためには、すべての仮想マシンを同じクラウド サービスに展開する必要があります。クラスター作成の一般的な流れは次のようになります。
 
-![Sequence diagram for creating a cluster](./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux4.png)
+![クラスター作成の流れ図](./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux4.png)
 
-**Step 1: Generate SSH Key pair**
+**手順 1. SSH キー ペアの生成**
 
-Azure needs an X509 public key that is either PEM or DER encoded at the provisioning time. Generate a public/private key pair using the instructions located at [How to Use SSH with Linux on Azure](http://www.windowsazure.com/en-us/manage/linux/how-to-guides/ssh-into-linux/).  If you plan to use putty.exe as an SSH client either on Windows or Linux, you have to convert the PEM encoded RSA private key to PPK format using puttygen.exe.  Instructions for this can be found at [Generating SSH Key Pair for Linux VM Deployment on Windows Azure](http://blogs.msdn.com/b/hanuk/archive/2012/06/07/generating-ssh-key-pair-for-linux-vm-deployment-on-windows-azure.aspx).
+Azure では、プロビジョニング時に PEM または DER でエンコードされた X509 公開キーが必要です。「[Azure 上の Linux における SSH の使用方法](http://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/ssh-into-linux/)」の指示に従って公開キーと秘密キーのペアを生成します。Windows または Linux で SSH クライアントとして putty.exe を使用する場合は、puttygen.exe を使用して、PEM でエンコードした RSA 秘密キーを PPK 形式に変換する必要があります。この手順については、「[Generating SSH Key Pair for Linux VM Deployment on Azure (Azure 上の Linux VM 展開用の SSH キー ペアの生成)](http://blogs.msdn.com/b/hanuk/archive/2012/06/07/generating-ssh-key-pair-for-linux-vm-deployment-on-windows-azure.aspx)」を参照してください。
 
-**Step 2:  Create a Ubuntu VM**
+**手順 2. Ubuntu VM の作成**
 
-To create the first Ubuntu VM, log into the Azure preview portal, click **New**, click **Virtual Machine**, click **From Gallery**, click **Unbuntu Server 12.xx**, and then click the right arrow. For a tutorial that describes how to create a Linux VM, see [Create a Virtual Machine Running Linux](http://www.windowsazure.com/en-us/manage/linux/tutorials/virtual-machine-from-gallery/).
+最初の Ubuntu VM を作成するには、Azure プレビュー ポータルにログインして、**[新規]**、**[仮想マシン]**、**[ギャラリーから]**、**[Unbuntu Server 12.xx]** の順にクリックして、右矢印をクリックします。Linux VM の作成方法を説明したチュートリアルについては、「[Linux を実行する仮想マシンの作成](http://www.windowsazure.com/ja-jp/manage/linux/tutorials/virtual-machine-from-gallery/)」を参照してください。
 
-Then, enter the following information on the VM Configuration screen:
+次に、[仮想マシンの構成] 画面で、次の情報を入力します。
 
 <table>
 	<tr>
-		<th>Field Name</th>
-		<th>Field Value</th>
-		<th>Remarks</th>
+		<th>フィールド名</th>
+		<th>フィールド値</th>
+		<th>解説</th>
 	</tr>
 	<tr>
-		<td>Virtual Machine Name</td>
+		<td>仮想マシン名</td>
 		<td>hk-cas1</td>
-		<td>This is the hostname of the VM</td>
+		<td>これは、仮想マシンのホスト名です。</td>
 	</tr>
 	<tr>
-		<td>New User Name</td>
+		<td>新しいユーザー名</td>
 		<td>localadmin</td>
-		<td>"admin" is a reserved user name in Ubuntu 12.xx</td>
+		<td>"admin" は Ubuntu 12.xx の予約ユーザー名です。</td>
 	</tr>
 	<tr>
-		<td>New Password</td>
-		<td><i>strong password</i></td>
+		<td>新しいパスワード</td>
+		<td><i>強力なパスワード</i></td>
 		<td></td>
 	</tr>
 	<tr>
-		<td>Confirm Password</td>
-		<td><i>strong password</i></td>
+		<td>パスワードの確認</td>
+		<td><i>強力なパスワード</i></td>
 		<td></td>
 	</tr>
 	<tr>
-		<td>Size</td>
-		<td>Small</td>
-		<td>Select the VM based on the IO needs. </td>
+		<td>サイズ</td>
+		<td>S</td>
+		<td>IO のニーズに応じて仮想マシンを選択します。</td>
 	</tr>
 	<tr>
-		<td>Secure using SSH Key for Authentication</td>
-		<td>Click check box</td>
-		<td>Check if you want to secure with an SSH key</td>
+		<td>認証に SSH キーを使用してセキュリティを確保する</td>
+		<td>チェック ボックスをオンにします</td>
+		<td>SSH キーによるセキュリティが必要な場合にオンにします。</td>
 	</tr>
 	<tr>
-		<td>Certificate</td>
-		<td><i>file name of the public key certificate</i></td>
-		<td>DER or PEM encoded SSH public key generated with OpenSSL or other tools</td>
+		<td>証明書</td>
+		<td><i>公開キー証明書のファイル名</i></td>
+		<td>OpenSSL などのツールを使って生成された DER または PEM でエンコードされた SSH 公開キー。</td>
 	</tr>
 </table>
 
-Enter the following information on the VM Mode screen:
+[VM モード] 画面で、次の情報を入力します。
 
 
 <table>
 	<tr>
-		<th>Field Name</th>
-		<th>Field Value</th>
-		<th>Remarks</th>
+		<th>フィールド名</th>
+		<th>フィールド値</th>
+		<th>解説</th>
 	</tr>
 	<tr>
-		<td>Standalone Virtual VM</td>
-		<td>"check" the radio box</td>
-		<td>This is for the first VM for subsequent VMs, we will use "Connect to Existing VM" option</td>
+		<td>スタンドアロンの仮想マシン</td>
+		<td>ラジオ ボタンをクリックします。</td>
+		<td>これは最初の仮想マシンの場合です。それ以後の仮想マシンでは、[既存の仮想マシンに接続する] をクリックします。</td>
 	</tr>
 	<tr>
-		<td>DNS Name</td>
-		<td><i>unique name</i>.cloudapp.net</td>
-		<td>Give a machine agnostic load balancer name</td>
+		<td>DNS 名</td>
+		<td><i>独自の名前</i>.cloudapp.net</td>
+		<td>マシンとは独立したロード バランサー名を指定します。</td>
 	</tr>
 	<tr>
-		<td>Storage Account</td>
-		<td><i>default storage account</i></td>
-		<td>Use the default storage account you created</td>
+		<td>ストレージ アカウント</td>
+		<td><i>既定のストレージ アカウント</i></td>
+		<td>作成した既定のストレージ アカウントを使用します。</td>
 	</tr>
 	<tr>
-		<td>Region/Affinity Group/Virtual Network</td>
-		<td>West US</td>
-		<td>Select a region from which your web applications access the Cassandra cluster</td>
+		<td>リージョン/アフィニティ グループ/仮想ネットワーク</td>
+		<td>米国西部</td>
+		<td>Cassandra クラスターにアクセスする Web アプリケーションのリージョンを選択します。</td>
 	</tr>
 </table>
 
-Repeat the above process for all the virtual machines that will be part of the Cassandra cluster.  At this point all the machines will be part of the same network and can ping each other.  If the ping doesn't work, check the VM's firewall (e.g. iptables) configuration to make sure that ICMP is allowed. Be sure to disable ICMP once network connectivity is successfully tested to reduce the attack vector. 
+Cassandra クラスターに属するすべての仮想マシンについて、前に示している手順を繰り返します。この時点では、すべての仮想マシンが同じネットワークに属し、お互いに Ping を送信できます。Ping が機能しない場合は、仮想マシンのファイアウォールの構成 (iptables など) をチェックして、ICMP が許可されていることを確認します。ネットワーク接続のテストに成功したら、攻撃手段を減らすために ICMP は無効にしてください。
 
-**Step 3:  Add  a Load Balanced Thrift Endpont** 
+**手順 3. 負荷分散された Thrift エンドポイントの追加**
 
-After step 1 and step 2, each VM should have SSH endpoint already defined. Now let us add the load balanced Thrift endpoint with a public port of 9160. Here is sequence:
+手順 1. および手順 2. を終えると、各 VM には既に SSH エンドポイントが定義されています。ここで、パブリック ポートが 9160 で負荷分散された Thrift エンドポイントを追加します。手順は次のとおりです。
 
-a.	From the details view of the first VM, click "Add Endpoint"
+a.	最初の VM の詳細ビューで、[エンドポイントの追加] をクリックします。
 
-b.	On the "Add endpoint to virtual machine" screen, select "Add endpoint" radio button
+b.	[仮想マシンにエンドポイントを追加します] 画面で、[エンドポイントの追加] をクリックします。
 
-c.	Click right arrow 
+c.	右矢印をクリックします。
 
-d.	On the "Specify endpoint details"  screen enter the following
-<table>
+d.	[エンドポイントの詳細を指定します] 画面で、次の情報を入力します。<table>
 	<tr>
-		<th >Field Name</th>
-		<th>Field Value</th>
-		<th>Remarks</th>
+		<th>フィールド名</th>
+		<th>フィールド値</th>
+		<th>解説</th>
 	</tr>
 	<tr>
-		<td>Name</td>
+		<td>名前</td>
 		<td>cassandra</td>
-		<td>Any unique endpoint name will be fine</td>
+		<td>重複しなければどのような名前でもかまいません。</td>
 	</tr>
 	<tr>
-		<td>Protocol</td>
+		<td>プロトコル</td>
 		<td>TCP</td>
 		<td></td>
 	</tr>
 	<tr>
-		<td>Public Port</td>
+		<td>パブリック ポート</td>
 		<td>9160</td>
-		<td>Default Thrift port. </td>
+		<td>既定の Thrift ポートです。</td>
 	</tr>
 	<tr>
-		<td>Private Port</td>
+		<td>プライベート ポート</td>
 		<td>9160</td>
-		<td>Unless you changed this in cassandra.yaml</td>
+		<td>cassandra.yaml でこれを変更していない場合。</td>
 	</tr>
 </table>
-After the above work, the first VM will display cassandra endpoint with LOAD BALANCED field as "NO". Ignore this for the moment as this will change to "YES" once we add this endpoint to the subsequent VMs
+前に示している設定を終えると、最初の VM では、cassandra エンドポイントの [負荷分散] が [いいえ] と表示されます。当面、これは無視してください。このエンドポイントを以降の VM に追加すると [はい] に変わります。
 
-e.	Now select the second VM and add endpoint by repeating the above process with only minor difference that you will select "Load-balance traffic on an existing endpoint" and use "cassandra-960" from the drop down box.  At this stage, the endpoint mapping to both the VMs will change the status from LOAD BALANCED status "NO" to "YES". 
+e.	2 つ目の VM を選択し、前に示している手順を繰り返してエンドポイントを追加します。少しだけ違うのは、[既存のエンドポイントのトラフィックを負荷分散します] を選択し、ドロップダウン ボックスの一覧の [cassandra-960] を選択することです。この段階で、両方の VM にマッピングされたエンドポイントは、[負荷分散] の状態が [いいえ] から [はい] に変わります。
 
-Repeat "e" for the subsequent nodes in the cluster. 
+クラスターの以降のノードについて、"e" の手順を繰り返します。
 
-Now that we have the VMs ready, it is time to set up Cassandra on each of the VMs. Since Cassandra is not a standard part of many Linux distributions, let's resort to a manual deployment process.  
+これで VM の準備が完了しました。次は各 VM で Cassandra をセットアップします。Cassandra は多くの Linux ディストリビューションで標準パッケージではないため、手作業で展開します。
 
-[Please note that we are using a manual approach for the software installation on each VM. However, the process can be expedited by setting up a fully functioning Cassandra VM, capture it as the base image and create additional instances from this base image. The instructions for capturing the Linux image are located at [How to Capture an Image of a Virtual Machine Running Linux](https://www.windowsazure.com/en-us/manage/linux/how-to-guides/capture-an-image/).] 
+[各 VM に対するソフトウェアのインストールは手作業で行います。ただし、この作業は、完全に機能する Cassandra VM をセットアップして、それを基本イメージとしてキャプチャし、この基本イメージから残りのインスタンスを作成することで、時間を短縮することができます。Linux イメージのキャプチャ方法については、「[Linux を実行する仮想マシンのイメージをキャプチャする方法](https://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/capture-an-image/)]」を参照してください。
 
-##<a id="task2"> </a>Task 2: Set Up Cassandra on Each Virtual Machine##
+##<a id="task2"> </a>タスク 2: 各仮想マシンでの Cassandra のセットアップ##
 
-**Step 1: Install Pre-Requisites**
+**手順 1. 前提条件のインストール**
 
-Cassandra requires Java Virtual Machine and hence install the latest JRE using the following command for Debian derivatives including Ubuntu:
-         
+Cassandra には Java 仮想マシンが必要であり、そのため、Ubuntu を含む Debian 系 Linux では、次のコマンドを使用して最新の JRE をインストールする必要があります。         
 	sudo add-apt-repository ppa:webupd8team/java
     sudo apt-get update
     sudo apt-get install oracle-java7-installer
 
-**Step 2: Cassandra Installation**
+**手順 2. インストールした Cassandra のテスト**
 
-1.	Login using SSH to the Linux (Ubuntu) VM instance.
+1.	SSH を使用して Linux (Ubuntu) VM インスタンスにログインします。
 
-2.	Use wget to download Cassandra bits from the mirror suggested at (http://cassandra.apache.org/download/)[http://cassandra.apache.org/download/] to "~/downloads" directory as apache-cassandra-bin.tar.gz. Please note that the version number is not included in the downloaded file to make sure that the publication remains agnostic of the version.
+2.	wget を使用して、ダウンロード ページ (http://cassandra.apache.org/download/)[http://cassandra.apache.org/download/] に記載されたミラーから Cassandra を ~/downloads ディレクトリに apache-cassandra-bin.tar.gz としてダウンロードします。処理がバージョンに左右されないように、ダウンロードしたファイルの名前にはバージョン番号を含めていないことに注意してください。
 
-3.	Unzip the tar ball into the default login directory by executing the following command: 
+3.	次のコマンドを実行して、tar ball を既定のログイン ディレクトリに展開します。
 	
 		tar -zxvf downloads/apache-cassandra-bin.tar.gz
-The above will expand the archive into apache-cassandra- [version] directory.   
+このコマンドは、アーカイブを apache-cassandra- [version] ディレクトリに展開します。
 
-4. Create the following two default directories for holding logs and data:
+4. ログとデータを保持する次の 2 つの既定ディレクトリを作成します。
 
 		$ sudo chown -R /var/lib/cassandra
 		$ sudo chown -R /var/log/cassandra
-5.	Grant write permissions to the user identity under which  Cassandra will run	
+5.	Cassandra を実行するユーザー ID に書き込みアクセス許可を付与します。	
 
 		a.	sudo chown -R <user>:<group> /var/lib/cassandra
 		b.	sudo chown -R <user>:<group> /var/log/cassandra
-		To use current user context, replace the <user> and <group> with $USER and $GROUP
-6.	Start Cassandra from the apache-cassandra-[version]/bin directory using the following command: 
+		現在のユーザー コンテキストを使用するには、<user> と <group> を $USER と $GROUP に置き換えます。
+6.	次のコマンドを使用して、apache-cassandra-[version]/bin ディレクトリから Cassandra を開始します。
 
 		$ ./cassandra
 
-The above will start the Cassandra node as a background process. Use -cassandra "f" to start the process in the foreground mode.
+このコマンドは、Cassandra ノードをバックグラウンド プロセスとして開始します。-cassandra "f" を使用すると、プロセスがフォアグラウンド モードで開始されます。
 
-The log should may show mx4j error. Cassandra will function fine without mx4j but it is necessary for managing the Cassandra installation.  Kill Cassandra process before the next step.
+ログに mx4j エラーが記録される場合があります。Cassandra は mx4j がなくても問題なく動作しますが、Cassandra のインストールを管理するには mx4j が必要です。次の手順に進む前に、Cassandra プロセスを終了してください。
 
-**Step 3: Install mx4j**
+**手順 3. mx4j のインストール**
 
-	a)	Download mx4j: wget [http://sourceforge.net/projects/mx4j/files/MX4J%20Binary/3.0.2/mx4j-3.0.2.tar.gz/download](http://sourceforge.net/projects/mx4j/files/MX4J%20Binary/3.0.2/mx4j-3.0.2.tar.gz/download) -O mx4j.tar.gz
+	a)	mx4j のダウンロード: wget [http://sourceforge.net/projects/mx4j/files/MX4J%20Binary/3.0.2/mx4j-3.0.2.tar.gz/download](http://sourceforge.net/projects/mx4j/files/MX4J%20Binary/3.0.2/mx4j-3.0.2.tar.gz/download) -O mx4j.tar.gz
 	b)	tar -zxvf mx4j.tar.gz
 	c)	cp mx4j-23.0.2/lib/*.jar ~/apache-cassandra-<version>/lib
 	d)	rm -rf mx4j-23.0.2
 	e)	rm mx4j.tar.gz
-Restart Cassandra process at this stage
+この段階で Cassandra プロセスを再起動します。
 
-**Step 4: Test Cassandra Installation**
+**手順 4. インストールした Cassandra のテスト**
 
-Execute the following command from Cassandra's bin directory for connecting using thrift client:
+Cassandra の bin ディレクトリから次のコマンドを実行して、thrift クライアントで接続します。
 
 	cassandra-cli -h localhost -p 9160
 
-**Step 5: Enable Cassandra for External Connections**
+**手順 5. Cassandra の外部接続の有効化**
 
-By default Cassandra is only set up to listen on the loop back address and hence for external connections this change is mandatory. 
+既定では、Cassandra はループバック アドレスをリッスンするようにセットアップされているだけです。したがって外部接続をするにはこれの変更が必須になります。
 
-Edit  "conf/cassandra.yaml" to change the **listen\_address** and **rpc\_address** to the IP address or hostname of the server so that the current node will be visible to the other nodes as well as to the external load balancers.
+"conf/cassandra.yaml" を編集して、**listen_address** および **rpc_address** をサーバーの IP アドレスまたはホスト名に変更し、現在のノードが外部のロード バランサーに加えて他のノードにも見えるようにします。
 
-Repeat Step 1 through 5 for all the nodes in the cluster.
+クラスターのすべてのノードについて、手順 1. から手順 5. までを繰り返します。
 
-Now that all the individual VMs are ready with the necessary software, it is time to establish communication between the nodes through seed configuration. Review the information located at [http://wiki.apache.org/cassandra/MultinodeCluster](http://wiki.apache.org/cassandra/MultinodeCluster)  for details on the multi-node cluster configuration. 
+これで、個々の VM すべてに必要なソフトウェアが用意されたため、今度はシードを構成してノード間の通信を確立します。マルチノード クラスター構成の詳細については、[http://wiki.apache.org/cassandra/MultinodeCluster](http://wiki.apache.org/cassandra/MultinodeCluster) にある情報を参照してください。
 
-**Step 6: Set up Multi-Node Cluster**
+**手順 6. マルチノード クラスターのセットアップ**
 
-Edit cassandra.yaml to change the following properties in all the VMs:
+cassandra.yaml を編集して、すべての VM について次のプロパティを変更します。
 
 **a)	cluster_name**
 
-Default cluster name is set to "Test Cluster"; change it to something that reflects your application.  Example:  "AppStore" . If you had already started the cluster with "Test Cluster" for testing during the installation, you will get a cluster name mismatch error. To fix this error, delete all the files under /var/lib/cassandra/data/system directory.
+既定のクラスター名は "Test Cluster" に設定されています。これをアプリケーションを反映した名前に変更します。たとえば "AppStore" になります。インストール時にテスト用として既にクラスターを "Test Cluster" という名前で開始した場合は、クラスター名が一致しないというエラーになります。このエラーを修正するには、/var/lib/cassandra/data/system ディレクトリにあるファイルをすべて削除します。
 
 **b)	seeds**
 
-The IP addresses specified here will be used by new nodes to learn about the ring topology. Set the most reliable nodes as your seeds in a comma separated format:  "*host1*,*host2*" . Example setting:  "hk-ub1,hk-ub2".
+ここで指定した IP アドレスは、新しいノードによってリング トポロジについて知るために使用されます。コンマ区切り形式 ("*host1*,*host2*") で、最も信頼できるノードをシードとして設定します。たとえば、"hk-ub1,hk-ub2" になります。
 
-We will accept the default tokens provided by the seed servers as this is not our focus in this exercise. For optimal token generation, see the python script located at: 
-[http://wiki.apache.org/cassandra/GettingStarted](http://wiki.apache.org/cassandra/GettingStarted).
+この演習の主眼ではないため、シード サーバーによる既定のトークンをそのまま受け入れます。最適なトークン生成については、python スクリプト
+([http://wiki.apache.org/cassandra/GettingStarted](http://wiki.apache.org/cassandra/GettingStarted)) を参照してください。
 
-Restart Cassandra on all the nodes to apply the above changes. 
+すべてのノードで Cassandra を再起動して、上記の変更を適用します。
 
-**Step 7: Test the multi-node Cluster**
+**手順 7. マルチノード クラスターのテスト**
 
-Nodetool installed into the Cassandra's bin directory will help with cluster operations. We will use nodetool to verify the cluster setup through the following command format: 
+Cassandra の bin ディレクトリにインストールされた nodetool はクラスター操作に役立ちます。nodetool を使用してクラスターのセットアップを確認します。次のコマンドを実行します。
 
 	$ bin/nodetool -h <hostname> -p 7199 ring
 
-If the configuration is correct, it should display the information as shown below for a 3-node cluster:
+構成が正しい場合、下に示すような情報が表示されます (3 ノード クラスターの例)。
 
 <table>
 	<tr>
 		<td>Address</td>
 		<td>DC</td>
 		<td>Rack</td>
-		<td>Status</td>
+		<td>ステータス</td>
 		<td>State</td>
 		<td>Load</td>
 		<td>Owns</td>
@@ -322,47 +320,47 @@ If the configuration is correct, it should display the information as shown belo
 	</tr>
 </table>
 
-At this stage, the cluster is ready for Thrift clients through the cloud service URL (DNS name given during creation of the first VM) created during the "Deploy Linux Cluster" task. 
+この段階で、クラスターは、「Linux クラスターの展開」タスクで作成したクラウド サービス URL (最初の VM の作成時に指定した DNS 名) を介して Thrift クライアントが使える状態になっています。
 
-##<a id="task3"> </a>Task 3: Access Cassandra Cluster from Node.js##
+##<a id="task3"> </a>タスク 3: Node.js からの Cassandra クラスターへのアクセス##
 
-Create a Linux VM on Azure using the process described in the previous tasks.  Make sure that this VM is standalone VM as we will be using this as a client for accessing the Cassandra cluster. We will install Node.js, NPM and [cassandra-client](https://github.com/racker/node-cassandra-client)  from github before connecting to Cassandra cluster from this VM: 
+先のタスクで説明した手順に従って Azure に Linux VM を 1 つ作成します。Cassandra クラスターにアクセスするクライアントとして使用するため、この VM はスタンドアロン VM にしてください。この VM から Cassandra クラスターに接続する前に、GitHub から Node.js、NPM および [cassandra-client](https://github.com/racker/node-cassandra-client) をインストールします。
 
-**Step 1: Install Node.js and NPM**
+**手順 1. Node.js と NPM のインストール**
 
-a)	Install the pre-requisites 
+a)	前提条件をインストールします。
 
 	sudo apt-get install g++ libssl-dev apache2-utils make
-b)	We will use source from GitHub to compile and install; before we can clone the repo, we need to install the git core runtime:
+b)	GitHub にあるソースをコンパイルしてインストールします。リポジトリを複製する前に、git コア ランタイムをインストールする必要があります。
 
 	sudo apt-get install git-core
-c)	Clone Node repo
+c)	Node リポジトリを複製します。
 
 	git clone git://github.com/joyent/node.git
-d)	The above will create the directory with name "node". Execute the following command sequence to compile install node.js:
+d)	このコマンドは "node" という名前のディレクトリを作成します。次のコマンドを実行して、node.js をコンパイルしてインストールします。
 
 	cd node
 	./configure
 	make
 	sudo make install
 
-e)	Install NPM from stable binaries by executing the following command
+e)	次のコマンドを実行して、安定版バイナリから NPM をインストールします。
 
 	curl http://npmjs.org/install.sh | sh
 
-**Step 2: Install cassandra-client package**
+**手順 2. cassandra-client パッケージのインストール**
 
 	npm cassandra-client 
 
-**Step 3: Prepare Cassandra Storage**
+**手順 3. Cassandra ストレージの準備**
 
-Cassandra storage uses the concepts of KEYSPACE and COLUMNFAMILY which can be approximately compared to DATABASE and TABLE structures in the RDBMS parlance. The KEYSAPCE will contain a set of COLUMNFAMILY definitions. Each COLUMNFAMILY will contain a set of rows and in turn each row contains several columns as shown in the composite view below:
+Cassandra ストレージでは、KEYSPACE および COLUMNFAMILY という概念が使用されます。これはおおよそ RDBMS 用語の DATABASE 構造および TABLE 構造に相当します。KEYSAPCE は 1 組の COLUMNFAMILY 定義を含みます。各 COLUMNFAMILY は 1 組の行を含み、各行はいくつかの列を含みます (次の図を参照)。
 
-![Rows and columns](./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux3.png)
+![行と列](./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux3.png)
 
-We will use the previously deployed Cassandra cluster to demonstrate node.js access by creating and querying the above data structures.  We will create a simple node.js script that performs the basic preparation of the cluster for storing customer data. The techniques shown in the script can easily be used in a node.js web application or web services. Please keep in mind that the snippets are only meant to show how the stuff works and for real world solutions, the code shown has a lot of room (e.g. security, logging, scalability, etc.) for improvement. 
+先に展開した Cassandra クラスターを使用して、このデータ構造を作成し照会することで、node.js アクセスの方法を示します。顧客データを保存するためにクラスターの基本的な準備を実行する単純な node.js スクリプトを作成します。スクリプトで示した技法は、node.js Web アプリケーションまたは Web サービスでも容易に利用できます。コード断片はしくみを示すことだけを目的としており、実際のソリューションで使用する場合、コードには改善の余地 (セキュリティ、ログ、拡張性など) が大いにあることに留意してください。
 
-Let us define the required variables at the script scope to include PooledConnection from the cassandra-client module and frequently used keyspace name and the keyspace connection parameters:
+スクリプトのスコープで必要な変数を定義し、cassandra-client モジュールから PooledConnection をインクルードし、よく使用するキー スペース名およびキー スペース接続パラメーターを定義します。
 
 	casdemo.js: 
 	var pooledCon = require('cassandra-client').PooledConnection;
@@ -370,7 +368,7 @@ Let us define the required variables at the script scope to include PooledConnec
 	var ksConOptions = { hosts: ['<azure_svc_name>.cloudapp.net:9160'], 
 	                     keyspace: ksName, use_bigints: false };
 
-In preparation for storing the customer data, we need to first create a KEYSPACE using the following script example: 
+顧客データを保存する準備として、まず次のスクリプト例を使用して KEYSPACE を作成する必要があります。
 
 	casdemo.js: 
 	function createKeyspace(callback){
@@ -392,9 +390,9 @@ In preparation for storing the customer data, we need to first create a KEYSPACE
 	   con.shutdown();
 	} 
 	
-createKeysapce function takes a callback function as the argument which is meant to execute the COLUMNFAMILY creation function as KEYSPACE is a prerequisite for column family creation.  Note that we need to connect to "system" KEYSPACE for application KEYSPACE definition.  [Cassandra Query Language (CQL)](http://cassandra.apache.org/doc/cql/CQL.html) is consistently used in interacting with the cluster throughout these snippets. Since the CQL composed in the above script didn't have any parameter markers we are using a blank parameter collection ("[]") when PooledConnection.execute() method. 
+createKeysapce 関数は、引数としてコールバック関数をとります。これは、KEYSPACE が列ファミリ作成の前提条件であり、関数内で COLUMNFAMILY 作成関数を実行するためです。アプリケーションの KEYSPACE 定義のために "system" KEYSPACE に接続する必要があることに注意してください。コード断片では、クラスターとのやり取りのために [Cassandra Query Language (CQL)](http://cassandra.apache.org/doc/cql/CQL.html) が一貫して使用されています。前に示しているスクリプトで作成した CQL にはパラメーター マーカーがないため、PooledConnection.execute() メソッドでは空のパラメーター コレクション ("[]") を使用しています。
 
-Upon successful key space creation, the function createColumnFamily(),  shown in the following snippet, will be executed to create the necessary COLUMNFAMILY definitions:
+キー スペースが正常に作成されると、次に示している createColumnFamily() 関数が実行されて、必要な COLUMNFAMILY 定義が作成されます。
 
 	casdemo.js: 
 	//Creates COLUMNFAMILY
@@ -416,7 +414,7 @@ Upon successful key space creation, the function createColumnFamily(),  shown in
 	  con.shutdown();
 	} 
 
-Parameterized CQL template will be combined with params object to generate valid CQL for COLUMNFAMILY creation. After successful creation of  the COLUMNFAMILY, the callback supplied, in this case populateCustomerData() will be called as a part of the asynchronous call chain.
+パラメーター化された CQL テンプレートを params オブジェクトと組み合わせて、COLUMNFAMILY 作成用の有効な CQL を生成します。COLUMNFAMILY が正常に作成されると、指定されたコールバック、この場合は populateCustomerData() が非同期コール チェーンの一部として呼び出されます。
 
 	casdemo.js: 
 	//populate Data
@@ -441,9 +439,9 @@ Parameterized CQL template will be combined with params object to generate valid
 	  con.shutdown();
 	}
 
-populateCustomerData() inserts couple of rows into the COLUMNFAMILY namely customers_cf. In Cassandra Query Language, UPDATE will insert the record if the record is not already present in the process making INSERT CQL statement redundant. 
+populateCustomerData() は、COLUMNFAMILY つまり customers_cf に 2 行挿入します。Cassandra Query Language では、UPDATE 操作時にレコードが既に存在しない場合、レコードが挿入されるため、INSERT CQL ステートメントは冗長です。
 
-So far we wired the callback chain: createKeyspace() to createColumnFamily() to populateCustomerData(). Now it is time for us to execute the code through the following code snippet:
+ここまでで、createKeyspace()、createColumnFamily()、populateCustomerData() と続くコールバック チェーンを作成しました。今度は、次のコード断片を使ってコードを実行します。
 
 	casdemo.js:
 	var pooledCon = require('cassandra-client').PooledConnection;
@@ -454,12 +452,12 @@ So far we wired the callback chain: createKeyspace() to createColumnFamily() to 
 	createKeyspace(createColumnFamily);
 	//rest of the not shown
 
-Execute the following command from the shell prompt to execute the script:
+シェル プロンプトから次のコマンドを実行して、スクリプトを実行します。
 
 	//the following command will create the KEYSPACE, COLUMNFAMILY and //inserts two customer records
 	$ node casdemo.js
 
-readCustomer() method will access the Azure hosted cluster and displays  JSON snippet retrieved after executing the CQL query:
+readCustomer() メソッドは Azure でホストされたクラスターにアクセスして、CQL クエリの実行後に取得した JSON 断片を表示します。
 
 	casdemo.js: 
 	//read the two rows inserted above
@@ -489,17 +487,18 @@ Modify  casdemo.js to add the above function and call it after commenting the pr
 	readCustomer(ksConOptions)
 	//rest of the code below not shown
 		
-##<a id="conclusion"> </a>Conclusion##
+##<a id="conclusion"> </a>まとめ##
 
-Azure Virtual Machines capability allows the creation of Linux  (images provided by Microsoft partners) and Windows virtual machines which allow the migration of existing server products and applications with zero changes. Cassandra NoSQL database server discussed in this article is one such example. The Cassandra cluster set up in this write up can be accessed by Azure hosted cloud services, 3rd party public clouds and private clouds from both Windows and Linux OS environments. In this article we covered node.js as the client; however, Cassandra can be accessed from .NET, Java and other language environments. 
+Azure の仮想マシン機能を利用すると、Linux (Microsoft パートナーの提供するイメージ) および Windows 仮想マシンを作成して、既存のサーバー製品およびアプリケーションを一切変更することなく移行できます。この記事で取り上げた Cassandra NoSQL データベース サーバーはその一例です。この記事でセットアップした Cassandra クラスターは、Azure でホストしているクラウド サービス、サード パーティのパブリック クラウドおよびプライベート クラウドで Windows OS 環境および Linux OS 環境の両方からアクセスできます。この記事では、クライアントとして node.js を使用しましたが、Cassandra は .NET や Java などの言語環境からもアクセスできます。
 
-[Overview]: #overview
-[Cassandra Deployment Schematic]: #schematic
-[Composite Deployment]: #composite
-[Azure Virtual Machine Deployment]: #deployment
-[Task 1: Deploy Linux Cluster]: #task1
-[Task 2: Set Up Cassandra on Each Virtual Machine]: #task2
-[Task 3: Access Cassandra Cluster from Node.js]: #task3
-[Conclusion]: #conclusion
+[概要]: #overview
+[Cassandra の展開方式]: #schematic
+[複合展開]: #composite
+[仮想マシンの展開]: #deployment
+[タスク 1: Linux クラスターの展開]: #task1
+[タスク 2: 各仮想マシンでの Cassandra のセットアップ]: #task2
+[タスク 3: Node.js からの Cassandra クラスターへのアクセス]: #task3
+[まとめ]: #conclusion
+
 
 

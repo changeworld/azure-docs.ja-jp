@@ -1,108 +1,108 @@
-<properties linkid="develop-media-services-tutorials-smooth-streaming-windows-store-app" urlDisplayName="Smooth Streaming Windows Store App" pageTitle="Smooth Streaming Windows Store App - Azure .NET tutorials" metaKeywords="" description="Learn how to use Azure Media Services to create a C# Windows Store application with a XML MediaElement control to playback Smooth Stream content." metaCanonical="" services="media-services" documentationCenter="" title="How to Build a Smooth Streaming Windows Store Application" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-media-services-tutorials-smooth-streaming-windows-store-app" urlDisplayName="スムーズ ストリーミング用の Windows ストア アプリケーション" pageTitle="スムーズ ストリーミング用の Windows ストア アプリケーション - Azure .NET チュートリアル" metaKeywords="" description="Azure メディア サービスを使用して、スムーズ ストリーム コンテンツを再生するための XML MediaElement コントロールを備えた Windows ストア アプリケーションを C# で作成する方法について説明します。" metaCanonical="" services="media-services" documentationCenter="" title="スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法" authors="" solutions="" manager="" editor="" />
 
 
 
-#How to Build a Smooth Streaming Windows Store Application
+#スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法
 
-The Smooth Streaming Client SDK for Windows 8 enables developers to build Windows Store applications that can play on-demand and live Smooth Streaming content. In addition to the basic playback of Smooth Streaming content, the SDK also provides rich features like Microsoft PlayReady protection, quality level restriction, Live DVR, audio stream switching, listening for status updates (such as quality level changes) and error events, and so on. For more information of the supported features, see the [release notes](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes).
+Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマンドおよびライブ スムーズ ストリーミング コンテンツの再生が可能な Windows ストア アプリケーションを作成できます。スムーズ ストリーミング コンテンツの基本再生機能に加えて、SDK では、Microsoft PlayReady Protection、品質レベル制限、ライブ DVR、オーディオ ストリーム切り替え、ステータス更新 (品質レベルの変化など) のリスニング、エラー イベントなどの豊富な機能が提供されます。サポートされている機能の詳細については、[リリース ノート](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes)を参照してください。
 
-This tutorial covers the APIs. For player development, Microsoft strongly recommends using [Player Framework for Windows 8](http://playerframework.codeplex.com/). Player framework makes it easier to build applications and provides many additional features. 
+このチュートリアルでは、API について説明します。Microsoft では、プレーヤーの開発には [Windows 8 用プレーヤー フレームワーク](http://playerframework.codeplex.com/)の使用を強くお勧めします。プレーヤー フレームワークを使用すると、多数の追加機能が提供され、アプリケーションの作成が容易になります。
 
-This tutorial contains four lessons:
+このチュートリアルには、次の 4 つのレッスンが含まれています。
 
-1. Create a Basic Smooth Streaming Store Application
-2. Add a Slider Bar to Control the Media Progress
-3. Select Smooth Streaming Streams
-4. Select Smooth Streaming Tracks
+1. 基本的なスムーズ ストリーミング ストア アプリケーションの作成
+2. スライダーの追加によるメディア進行の制御
+3. スムーズ ストリーミング ストリームの選択
+4. スムーズ ストリーミング トラックの選択
 
-#Prerequisites
-- Windows 8 32-bit or 64-bit. You can get [Windows 8 Enterprise Evaluation](http://msdn.microsoft.com/en-us/evalcenter/jj554510.aspx) from MSDN.
-- Visual Studio 2012 or Visual Studio Express 2012 for Windows 8 installed on Windows 8. You can get the trial version from [here](http://www.microsoft.com/visualstudio/11/en-us/downloads).
-- [Microsoft Smooth Streaming Client SDK for Windows 8](http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Homehttp://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home).
+#前提条件
+- Windows 8 32 ビットまたは 64 ビット。MSDN から [Windows 8 Enterprise Evaluation](http://msdn.microsoft.com/ja-jp/evalcenter/jj554510.aspx) を入手することもできます。
+- Windows 8 にインストールされた Visual Studio 2012 または Visual Studio Express 2012 for Windows 8。試用版は[こちら](http://www.microsoft.com/visualstudio/11/ja-jp/downloads)から入手できます。
+- [Windows 8 用 Microsoft Smooth Streaming Client SDK](http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Homehttp://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home)。
 
-The completed solution for each lesson can be downloaded from MSDN Developer Code Samples (Code Gallery): [Lesson 1](http://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f "A Simple Windows 8 Smooth Streaming Media Player"), [Lesson 2](http://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a "A Simple Windows 8 Smooth Streaming Media Player with a Slider Bar Control"), [Lesson 3](http://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44 "A Windows 8 Smooth Streaming Media Player with Stream Selection"), and [Lesson 4](http://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907 "A Windows 8 Smooth Streaming Media Player with Track Selection").
+各レッスンの完成したソリューションは、MSDN デベロッパー サンプル コード集 (コード ギャラリー) からダウンロードできます: [レッスン 1](http://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f "A Simple Windows 8 Smooth Streaming Media Player (単純な Windows 8 スムーズ ストリーミング メディア プレーヤー)")、[レッスン 2](http://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a "A Simple Windows 8 Smooth Streaming Media Player with a Slider Bar Control (スライダー コントロールを備えた単純な Windows 8 スムーズ ストリーミング メディア プレーヤー)")、[レッスン 3](http://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44 "A Windows 8 Smooth Streaming Media Player with Stream Selection (ストリーム選択機能を備えた Windows 8 スムーズ ストリーミング メディア プレーヤー)")、[レッスン 4](http://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907 "A Windows 8 Smooth Streaming Media Player with Track Selection (トラック選択機能を備えた Windows 8 スムーズ ストリーミング メディア プレーヤー)")。
 
-#Lesson 1: Create a Basic Smooth Streaming Store Application
-In this lesson, you will create a Windows Store application with a MediaElement control to play Smooth Stream content.  The running application looks like:
+#レッスン 1: 基本的なスムーズ ストリーミング ストア アプリケーションの作成
+このレッスンでは、スムーズ ストリーミング コンテンツを再生するための MediaElement コントロールを備えた Windows ストア アプリケーションを作成します。実行中のアプリケーションは次のような外観になります。
 
-![Smooth Streaming Windows Store application example][PlayerApplication]
+![スムーズ ストリーミング用の Windows ストア アプリケーションの例][PlayerApplication]
  
-For more information on developing Windows Store application, see [Develop Great Apps for Windows 8](http://msdn.microsoft.com/en-us/windows/apps/br229512.aspx). 
-This lesson contains the following procedures:
+Windows ストア アプリケーションの開発の詳細については、「[Windows 8 用の優れたアプリケーションの開発](http://msdn.microsoft.com/ja-jp/windows/apps/br229512.aspx)」を参照してください。
+このレッスンは、次の工程で構成されています。
 
-1.	Create a Windows Store project
-2.	Design the user interface (XAML)
-3.	Modify the code behind file
-4.	Compile and test the application
+1.	Windows ストア プロジェクトの作成
+2.	ユーザー インターフェイスの設計 (XAML)
+3.	コード ビハインド ファイルの変更
+4.	アプリケーションのコンパイルとテスト
 
-**To create a Windows Store project**
+**Windows ストア プロジェクトを作成するには**
 
-1.	Run Visual Studio 2012
-2.	From the **FILE** menu, click **New**, and then click **Project**.
-3.	From the New Project dialog, type or select  the following values:
+1.	Visual Studio 2012 を実行します。
+2.	**[ファイル]** メニューの **[新規作成]** をポイントし、**[プロジェクト]** をクリックします。
+3.	[新しいプロジェクト] ダイアログ ボックスで、次の値を入力または選択します。
 
 	<table border="1">
 	<tr>
-		<th>Name</th>
-		<th>Value</th>
+		<th>名前</th>
+		<th>値</th>
 	</tr>
 	<tr>
-		<td>Template group</td>
-		<td>Installed/Templates/Visual C#/Windows Store</td>
+		<td>テンプレート グループ</td>
+		<td>インストール済み/テンプレート/Visual C#/Windows ストア</td>
 	</tr>
 	<tr>
-		<td>Template</td>
-		<td>Blank App (XAML)</td>
+		<td>テンプレート</td>
+		<td>新しいアプリケーション (XAML)</td>
 	</tr>
 	<tr>
-		<td>Name</td>
+		<td>名前</td>
 		<td>SSPlayer</td>
 	</tr>
 	<tr>
-		<td>Location</td>
+		<td>場所</td>
 		<td>C:\SSTutorials</td>
 	</tr>
 	<tr>
-		<td>Solution Name</td>
+		<td>ソリューション名</td>
 		<td>SSPlayer</td>
 	</tr>
 	<tr>
-		<td>Create directory for solution</td>
-		<td>(selected)</td>
+		<td>ソリューションのディレクトリを作成</td>
+		<td>(オン)</td>
 	</tr>
 	</table>
 
-4.	Click **OK**.
+4.	**[OK]** をクリックします。
 
-**To add a reference to the Smooth Streaming Client SDK**
+**Smooth Streaming Client SDK への参照を追加するには**
 
-1.	From Solution Explorer, right-click **SSPlayer**, and then click **Add Reference**.
-2.	Type or select the following values:
+1.	ソリューション エクスプローラーで **[SSPlayer]** を右クリックし、**[参照の追加]** をクリックします。
+2.	次の値を入力または選択します。
 
 	<table border="1">
 	<tr>
-		<th>Name</th>
-		<th>Value</th>
+		<th>名前</th>
+		<th>値</th>
 	</tr>
 	<tr>
-		<td>Reference group</td>
-		<td>Windows/Extensions</td>
+		<td>参照グループ</td>
+		<td>Windows/拡張</td>
 	</tr>
 	<tr>
-		<td>Reference</td>
-		<td>Select Microsoft Smooth Streaming Client SDK for Windows 8 and Microsoft Visual C++ Runtime Package 
+		<td>参照</td>
+		<td>Windows 8 用 Microsoft Smooth Streaming Client SDK と Microsoft Visual C++ ランタイム パッケージを選択
 		</td>
 	</tr>
 	</table>
 	
-3.	Click **OK**. 
+3.	**[OK]** をクリックします。
 
-After adding the references, you must select the targeted platform (x64 or x86), adding references will not work for Any CPU platform configuration.  In solution explorer, you will see yellow warning mark for these added references.
+参照を追加した後、対象プラットフォーム (x64 または x86) を選択します。[任意の CPU] プラットフォーム構成では参照の追加が機能しません。この場合は、ソリューション エクスプローラーで、追加した参照に黄色の警告マークが表示されます。
 
-**To design the player user interface**
+**プレーヤー ユーザー インターフェイスを設計するには**
 
-1.	From Solution Explorer, double click **MainPage.xaml** to open it in the design view.
-2.	Locate the **&lt;Grid&gt;** and **&lt;/Grid&gt;**  tags the XAML file, and paste the following code between the two tags:
+1.	ソリューション エクスプローラーで、**MainPage.xaml** をダブルクリックしてデザイン ビューを開きます。
+2.	XAML ファイル内で  **&lt;Grid&gt;** タグと **&lt;/Grid&gt;** タグを探し、2 つのタグの間に次のコードを貼り付けます。
 
 		<Grid.RowDefinitions>
 		    <RowDefinition Height="20"/>    <!-- spacer -->
@@ -146,31 +146,31 @@ After adding the references, you must select the targeted platform (x64 or x86),
 		    <TextBox x:Name="txtStatus" FontSize="10" Width="700" VerticalAlignment="Center"/>
 		</StackPanel>
 
-	The MediaElement control is used to playback media. The slider control named sliderProgress will be used in the next lesson to control the media progress.
+	MediaElement コントロールは、メディアの再生に使用します。次のレッスンでは、sliderProgress という名前のスライダー コントロールを使用して、メディアの進行を制御します。
 
-3.	Press **CTRL+S** to save the file.
+3.	**Ctrl + S** キーを押して、ファイルを保存します。
 
-The MediaElement control does not support Smooth Streaming content out-of-box. To enable the Smooth Streaming support, you must register the Smooth Streaming byte-stream handler by file name extension and MIME type.  To register, you use the MediaExtensionManager.RegisterByteStremHandler method of the Windows.Media namespace.
+MediaElement コントロールは、そのままではスムーズ ストリーミング コンテンツをサポートしていません。スムーズ ストリーミング サポートを有効にするには、スムーズ ストリーミング バイトストリーム ハンドラーをファイル名拡張子と MIME タイプで登録する必要があります。登録するには、Windows.Media 名前空間の MediaExtensionManager.RegisterByteStremHandler メソッドを使用します。
 
-In this XAML file, some event handlers are associated with the controls.  You must define those event handlers.
+この XAML ファイル内で、いくつかのイベント ハンドラーがコントロールに関連付けられています。これらのイベント ハンドラーを定義する必要があります。
 
-**To modify the code behind file**
+**コード ビハインド ファイルを変更するには**
 
-1.	From Solution Explorer, right-click **MainPage.xaml**, and then click **View Code**.
-2.	At the top of the file, add the following using statement:
+1.	ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
+2.	ファイルの先頭に次の using ステートメントを追加します。
 
 		using Windows.Media;
 
-3.	At the beginning of the **MainPage** class, add the following data member:
+3.	**MainPage** クラスの先頭に、次のデータ メンバーを追加します。
 
 		private MediaExtensionManager extensions = new MediaExtensionManager();
 
-4.	At the end of the **MainPage** constructor, add the following two lines:
+4.	**MainPage** コンストラクターの末尾に、次の 2 行を追加します。
 
 		extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
 		extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
 		
-5.	At the end of the **MainPage** class, past the following code:
+5.	**MainPage** クラスの末尾に、次のコードを貼り付けます。
 
 		#region UI Button Click Events
 		private void btnPlay_Click(object sender, RoutedEventArgs e)
@@ -213,54 +213,54 @@ In this XAML file, some event handlers are associated with the controls.  You mu
 		}
 		#endregion
 
-	The sliderProgress_PointerPressed event handler is defined here.  There are more works to do to get it working, which will be covered in the next lesson of this tutorial.
-6.	Press **CTRL+S** to save the file.
+	ここでは sliderProgress_PointerPressed イベント ハンドラーが定義されています。正しく機能させるには他の作業も必要ですが、これらについては次のレッスンで説明します。
+6.	**Ctrl + S** キーを押して、ファイルを保存します。
 
-The finished the code behind file shall look like this:
+完成したコード ビハインド ファイルは次のようになります。
 
-![Codeview in Visual Studio of Smooth Streaming Windows Store application][CodeViewPic]
+![Visual Studio のコード ビューに表示されたスムーズ ストリーミング用の Windows ストア アプリケーション][CodeViewPic]
 
-**To compile and test the application**
+**アプリケーションのコンパイルとテストを行うには**
 
-1.	From the **BUILD** menu, click **Configuration Manager**.
-2.	Change **Active solution platform** to match your development platform.
-3.	Press **F6** to compile the project. 
-4.	Press **F5** to run the application.
-5.	At the top of the application, you can either use the default Smooth Streaming URL or enter a different one. 
-6.	Click **Set Source**. Because **Auto Play** is enabled by default, the media shall play automatically.  You can control the media using the **Play**, **Pause** and **Stop** buttons.  You can control the media volume using the vertical slider.  However the horizontal slider for controlling the media progress is not fully implemented yet. 
+1.	**[ビルド]** メニューの **[構成マネージャー]** をクリックします。
+2.	**[アクティブ ソリューション プラットフォーム]** を、開発プラットフォームに一致するように変更します。
+3.	**F6** キーを押して、プロジェクトをコンパイルします。
+4.	**F5** キーを押してアプリケーションを実行します。
+5.	アプリケーションの先頭部分で、既定のスムーズ ストリーミング URL を使用するか、別の URL を入力します。
+6.	**[ソースの設定]** をクリックします。**[自動的に再生する]** が既定で有効になっているため、メディアは自動的に再生されます。**[再生]** ボタン、**[一時停止]** ボタン、および **[停止]** ボタンを使用して、メディアを制御できます。垂直スライダーを使用して、音量を制御できます。ただし、メディアの進行を制御するための水平スライダーは、まだ完全に実装できていません。
 
-You have completed lesson1.  In this lesson, you use a MediaElement control to playback Smooth Streaming content.  In the next lesson, you will add a slider to control the progress of the Smooth Streaming content.
+これでレッスン 1 が完了しました。このレッスンでは、MediaElement コントロールを使用して、スムーズ ストリーミング コンテンツを再生しました。次のレッスンでは、スライダーを追加して、スムーズ ストリーミング コンテンツの進行を制御します。
 
 
-#Lesson 2: Add a Slider Bar to Control the Media Progress
-In lesson 1, you created a Windows Store application with a MediaElement XAML control to playback Smooth Streaming media content.  It comes some basic media functions like start, stop and pause.  In this lesson, you will add a slider bar control to the application.
+#レッスン 2: スライダーの追加によるメディア進行の制御
+レッスン 1 では、スムーズ ストリーミング メディア コンテンツを再生するための MediaElement XAML コントロールを備えた Windows ストア アプリケーションを作成しました。これには、開始、停止、一時停止などの基本的なメディア機能が備わっています。このレッスンでは、アプリケーションにスライダー コントロールを追加します。
 
-In this tutorial, we will use a timer to update the slider position based on the current position of the MediaElement control.  The slider start and end time also need to be updated in case of live content.  This can be better handled in the adaptive source update event.
+このチュートリアルでは、タイマーを使用し、MediaElement コントロールの現在の位置に基づいて、スライダーの位置を更新します。ライブ コンテンツの場合は、スライダーの開始時間と終了時間も更新する必要があります。この処理は、アダプティブ ソース更新イベント内で行う方が適しています。
 
-Media sources are objects that generate media data.  The source resolver takes a URL or byte stream and creates the appropriate media source for that content.  The source resolver is the standard way for the applications to create media sources. 
+メディア ソースとは、メディア データを生成するオブジェクトです。ソース リゾルバーは URL またはバイト ストリームを受け取って、そのコンテンツに対応する適切なメディア ソースを作成します。ソース リゾルバーの使用は、アプリケーションがメディア ソースを作成するための標準的な手段です。
 
-This lesson contains the following procedures:
+このレッスンは、次の工程で構成されています。
 
-1.	Register the Smooth Streaming handler 
-2.	Add the adaptive source manager level event handlers
-3.	Add the adaptive source level event handlers
-4.	Add MediaElement event handlers
-5.	Add slider bar related code
-6.	Compile and test the application
+1.	スムーズ ストリーミング ハンドラーの登録
+2.	アダプティブ ソース マネージャー レベルのイベント ハンドラーの追加
+3.	アダプティブ ソース レベルのイベント ハンドラーの追加
+4.	MediaElement イベント ハンドラーの追加
+5.	スライダー関連コードの追加
+6.	アプリケーションのコンパイルとテスト
 
-**To register the Smooth Streaming byte-stream handler and pass the propertyset**
+**スムーズ ストリーミング バイトストリーム ハンドラーを登録して propertyset を渡すには**
 
-1.	From Solution Explorer, right click **MainPage.xaml**, and then click **View Code**.
-2.	At the beginning of the file, add the following using statement:
+1.	ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
+2.	ファイルの先頭に次の using ステートメントを追加します。
 
 		using Microsoft.Media.AdaptiveStreaming;
 
-3.	At the beginning of the MainPage class, add the following data members:
+3.	MainPage クラスの先頭に、次のデータ メンバーを追加します。
 
 		private Windows.Foundation.Collections.PropertySet propertySet = new Windows.Foundation.Collections.PropertySet();             
 		private IAdaptiveSourceManager adaptiveSourceManager;
 	
-4.	Inside the **MainPage** constructor, add the following code after the **this.Initialize Components();** line and the registration code lines written in the previous lesson:
+4.	**MainPage** コンストラクター内で、**this.Initialize Components();** という行と前のレッスンで記述した登録コード行の後に、次のコードを追加します。
 	
 		// Gets the default instance of AdaptiveSourceManager which manages Smooth 
 		//Streaming media sources.
@@ -269,7 +269,7 @@ This lesson contains the following procedures:
 		// {A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}" must be hardcoded.
 		propertySet["{A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}"] = adaptiveSourceManager;
 	
-5.	Inside the **MainPage** constructor, modify the two RegisterByteStreamHandler methods to add the forth parameters:
+5.	**MainPage** コンストラクター内で、2 つの RegisterByteStreamHandler メソッドを変更して、4 つ目のパラメーターを追加します。
 
 		// Registers Smooth Streaming byte-stream handler for ".ism" extension and, 
 		// "text/xml" and "application/vnd.ms-ss" mime-types and pass the propertyset. 
@@ -285,16 +285,16 @@ This lesson contains the following procedures:
 		    "application/vnd.ms-sstr+xml", 
 		propertySet);
 
-6.	Press **CTRL+S** to save the file.
+6.	**Ctrl + S** キーを押して、ファイルを保存します。
 
-**To add the adaptive source manager level event handler**
+**アダプティブ ソース マネージャー レベルのイベント ハンドラーを追加するには**
 
-1.	From Solution Explorer, right click **MainPage.xaml**, and then click **View Code**.
-2.	Inside the **MainPage** class, add the following data member:
+1.	ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
+2.	**MainPage** クラス内で、次のデータ メンバーを追加します。
 
 		private AdaptiveSource adaptiveSource = null;
 
-3.	At the end of the **MainPage** class, add the following event handler:
+3.	**MainPage** クラスの末尾に、次のイベント ハンドラーを追加します。
 	
 		#region Adaptive Source Manager Level Events
 		private void mediaElement_AdaptiveSourceOpened(AdaptiveSource sender, AdaptiveSourceOpenedEventArgs args)
@@ -303,22 +303,22 @@ This lesson contains the following procedures:
 		}
 		#endregion Adaptive Source Manager Level Events
 
-4.	At the end of the **MainPage** constructor, add the following line to subscribe to the adaptive source open event:
+4.	AdaptiveSourceOpenedEvent をサブスクライブするために、**MainPage** コンストラクターの末尾に次の行を追加します。
 	
 	adaptiveSourceManager.AdaptiveSourceOpenedEvent += 
 	    new AdaptiveSourceOpenedEventHandler(mediaElement_AdaptiveSourceOpened);
 
-5.	Press **CTRL+S** to save the file.
+5.	**Ctrl + S** キーを押して、ファイルを保存します。
 
-**To add adaptive source level event handlers**
+**アダプティブ ソース レベルのイベント ハンドラーを追加するには**
 
-1.	From Solution Explorer, right click **MainPage.xaml**, and then click **View Code**.
-2.	Inside the **MainPage** class, add the following data member:
+1.	ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
+2.	**MainPage** クラス内で、次のデータ メンバーを追加します。
 	
 		private AdaptiveSourceStatusUpdatedEventArgs adaptiveSourceStatusUpdate; 
 		private Manifest manifestObject;
 	
-3.	At the end of the **MainPage** class, add the following event handlers:
+3.	**MainPage** クラスの末尾に、次のイベント ハンドラーを追加します。
 
 		#region Adaptive Source Level Events
 		private void mediaElement_ManifestReady(AdaptiveSource sender, ManifestReadyEventArgs args)
@@ -338,7 +338,7 @@ This lesson contains the following procedures:
 		}
 		#endregion Adaptive Source Level Events
 
-4.	At the end of the <strong>mediaElement AdaptiveSourceOpened</strong> method, add the following code to subscribe to the events:
+4.	各イベントをサブスクライブするために、<strong>mediaElement AdaptiveSourceOpened</strong> メソッドの末尾に次のコードを追加します。
 	
 		adaptiveSource.ManifestReadyEvent +=
 	                mediaElement_ManifestReady;
@@ -347,14 +347,14 @@ This lesson contains the following procedures:
 		adaptiveSource.AdaptiveSourceFailedEvent += 
 		    mediaElement_AdaptiveSourceFailed;
 	
-5.	Press **CTRL+S** to save the file.
+5.	**Ctrl + S** キーを押して、ファイルを保存します。
 
-The same events are available on Adaptive Source manger level as well, which can be used for handling functionality common to all media elements in the app. Each AdaptiveSource includes its own events and all AdaptiveSource events will be cascaded under AdaptiveSourceManager.
+アダプティブ ソース マネージャー レベルにも同じイベントがあり、これらは、アプリケーション内ですべてのメディア要素に共通した機能の処理に使用できます。各 AdaptiveSource には独自のイベントがあり、すべての AdaptiveSource イベントは AdaptiveSourceManager からカスケード処理されます。
 
-**To add Media Element event handlers**
+**MediaElement イベント ハンドラーを追加するには**
 
-1.	From Solution Explorer, right click **MainPage.xaml**, and then click **View Code**.
-2.	At the end of the **MainPage** class, add the following event handlers:
+1.	ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
+2.	**MainPage** クラスの末尾に、次のイベント ハンドラーを追加します。
 	
 		#region Media Element Event Handlers 
 		private void MediaOpened(object sender, RoutedEventArgs e)
@@ -373,33 +373,33 @@ The same events are available on Adaptive Source manger level as well, which can
 		}
 		#endregion Media Element Event Handlers
 
-3.	At the end of the **MainPage** constructor, add the following code to subscript to the events:
+3.	各イベントをサブスクライブするために、**MainPage** コンストラクターの末尾に次のコードを追加します。
 	
 		mediaElement.MediaOpened += MediaOpened;
 		mediaElement.MediaEnded += MediaEnded;
 		mediaElement.MediaFailed += MediaFailed;
 
-4.	Press **CTRL+S** to save the file.
+4.	**Ctrl + S** キーを押して、ファイルを保存します。
 
-**To add slider bar related code**
+**スライダー関連コードを追加するには**
 
-1.	From Solution Explorer, right click **MainPage.xaml**, and then click **View Code**.
-2.	At the beginning of the file, add the following using statement:
+1.	ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
+2.	ファイルの先頭に次の using ステートメントを追加します。
 	
 		using Windows.UI.Core;
 
-3.	Inside the **MainPage** class, add the following data members:
+3.	**MainPage** クラス内で、次のデータ メンバーを追加します。
 	
 		public static CoreDispatcher _dispatcher;
 		private DispatcherTimer sliderPositionUpdateDispatcher;
 	
-4.	At the end of the **MainPage** constructor, add the following code:
+4.	**MainPage** コンストラクターの末尾に、次のコードを追加します。
 
 		_dispatcher = Window.Current.Dispatcher;
 		PointerEventHandler pointerpressedhandler = new PointerEventHandler(sliderProgress_PointerPressed);
 		sliderProgress.AddHandler(Control.PointerPressedEvent, pointerpressedhandler, true);    
 	
-5.	At the end of the **MainPage** class, add the following code:
+5.	**MainPage** クラスの末尾に、次のコードを追加します。
 	
 		#region sliderMediaPlayer
 		private double SliderFrequency(TimeSpan timevalue)
@@ -453,7 +453,7 @@ The same events are available on Adaptive Source manger level as well, which can
 		    sliderPositionUpdateDispatcher.Start();
 		}
 		
-		// Slider start and end time must be updated in case of live content
+		// ライブ コンテンツの場合は、スライダーの開始時間と終了時間を更新する必要があります
 		public async void setSliderStartTime(long startTime)
 		{
 		    await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -464,7 +464,7 @@ The same events are available on Adaptive Source manger level as well, which can
 		    });
 		}
 		
-		// Slider start and end time must be updated in case of live content
+		// ライブ コンテンツの場合は、スライダーの開始時間と終了時間を更新する必要があります
 		public async void setSliderEndTime(long startTime)
 		{
 		    await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -476,7 +476,7 @@ The same events are available on Adaptive Source manger level as well, which can
 		}
 		#endregion sliderMediaPlayer
 
-	**Note:** CoreDispatcher is used to make changes to the UI thread from non UI Thread. In case of bottleneck on dispatcher thread, developer can choose to use dispatcher provided by UI-element he/she intends to update.  For example:
+	**注:** CoreDispatcher は、非 UI スレッドから UI スレッドへの変更を行うために使用します。開発者は、ディスパッチャー スレッドでボトルネックが発生した場合に備えて、更新する UI 要素によって提供されるディスパッチャーの使用を選択できます。次に例を示します。
 	
 		await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
 		  timespan = new TimeSpan(adaptiveSourceStatusUpdate.EndTime); 
@@ -484,41 +484,41 @@ The same events are available on Adaptive Source manger level as well, which can
 		  sliderProgress.Maximum = absvalue; }); 
 		
 
-6.	At the end of the **mediaElement_AdaptiveSourceStatusUpdated** method, add the following code:
+6.	**mediaElement_AdaptiveSourceStatusUpdated** メソッドの末尾に、次のコードを追加します。
 	
 		setSliderStartTime(args.StartTime);
 		setSliderEndTime(args.EndTime);
 
-7.	At the end of the **MediaOpened** method, add the following code:
+7.	**MediaOpened** メソッドの末尾に、次のコードを追加します。
 	
 	sliderProgress.StepFrequency = SliderFrequency(mediaElement.NaturalDuration.TimeSpan);
 	sliderProgress.Width = mediaElement.Width;
 	setupTimer();
 
-8.	Press **CTRL+S** to save the file.
+8.	**Ctrl + S** キーを押して、ファイルを保存します。
 
-**To compile and test the application**
+**アプリケーションのコンパイルとテストを行うには**
 
-1. Press **F6** to compile the project. 
-2.	Press **F5** to run the application.
-3.	At the top of the application, you can either use the default Smooth Streaming URL or enter a different one. 
-4.	Click **Set Source**. 
-5.	Test the slider bar.
+1. **F6** キーを押して、プロジェクトをコンパイルします。
+2.	**F5** キーを押してアプリケーションを実行します。
+3.	アプリケーションの先頭部分で、既定のスムーズ ストリーミング URL を使用するか、別の URL を入力します。
+4.	**[ソースの設定]** をクリックします。
+5.	スライダーをテストします。
 
-You have completed lesson 2.  In this lesson you added a slider to application. 
+これでレッスン 2 が完了しました。このレッスンでは、アプリケーションにスライダーを追加しました。
 
-#Lesson 3: Select Smooth Streaming Streams
-Smooth Streaming is capable to stream content with multiple language audio tracks that are selectable by the viewers.  In this lesson, you will enable viewers to select streams. This lesson contains the following procedures:
+#レッスン 3: スムーズ ストリーミング ストリームの選択
+スムーズ ストリーミングでは、複数の言語オーディオ トラックを使用したコンテンツのストリーミングが可能あり、ユーザーがストリームを選択することができます。このレッスンでは、ユーザーによるストリーム選択を有効にします。このレッスンは、次の工程で構成されています。
 
-1. Modify the XAML file
-2. Modify the code behand file
-3. Compile and test the application
+1. XAML ファイルの変更
+2. コード ビハインド ファイルの変更
+3. アプリケーションのコンパイルとテスト
 
 
-**To modify the XAML file**
+**XAML ファイルを変更するには**
 
-1. From Solution Explorer, right-click **MainPage.xaml**, and then click **View Designer**.
-2. Locate &lt;Grid.RowDefinitions&gt;, and modify the RowDefinitions so they looks like:
+1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[デザイナーの表示]** をクリックします。
+2. &lt;Grid.RowDefinitions&gt; を探し、次のように各 RowDefinition を変更します。
 
 		<Grid.RowDefinitions>            
 			<RowDefinition Height="20"/>
@@ -528,7 +528,7 @@ Smooth Streaming is capable to stream content with multiple language audio track
 		    <RowDefinition Height="50"/>
 		</Grid.RowDefinitions>
 
-3. Inside the &lt;Grid&gt;&lt;/Grid&gt; tags, add the following code to define a listbox control, so users can see the list of available streams, and select streams:
+3. &lt;Grid&gt;&lt;/Grid&gt; タグ内に次のコードを追加して、リストボックス コントロールを定義します。これによりユーザーは、使用できるストリームの一覧を確認し、ストリームを選択できます。
 
 		<Grid Name="gridStreamAndBitrateSelection" Grid.Row="3">
 			<Grid.RowDefinitions>
@@ -554,13 +554,13 @@ Smooth Streaming is capable to stream content with multiple language audio track
 			</StackPanel>
 		</Grid>
 
-4. Press **CTRL+S** to save the changes.
+4. **Ctrl + S** キーを押して、変更を保存します。
 
 
-**To modify the code behind file**
+**コード ビハインド ファイルを変更するには**
 
-1. From Solution Explorer, right-click **MainPage.xaml**, and then click **View Code**.
-2. Inside the SSPlayer namespace, add a new class:
+1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
+2. SSPlayer 名前空間内に、次の新しいクラスを追加します。
 		#region class Stream
 	
 	    public class Stream
@@ -606,14 +606,14 @@ Smooth Streaming is capable to stream content with multiple language audio track
 	    }
 	    #endregion class Stream
 
-3. At the beginning of the MainPage class, add the following variable definitions:
+3. MainPage クラスの先頭に、次の変数定義を追加します。
 
 		private List<Stream> availableStreams;
 		private List<Stream> availableAudioStreams;
 		private List<Stream> availableTextStreams;
 		private List<Stream> availableVideoStreams;
 
-4. Inside the MainPage class, add the following region:
+4. MainPage クラス内に、次の #region ブロックを追加します。
 
 		#region stream selection
 		///<summary>
@@ -751,14 +751,14 @@ Smooth Streaming is capable to stream content with multiple language audio track
 		}
 		#endregion stream selection
 
-5. Locate the mediaElement_ManifestReady method, append the following code at the end of the function:
+5. mediaElement_ManifestReady メソッドを探して、関数の末尾に次のコードを追加します。
 	
 		getStreams(manifestObject);
         refreshAvailableStreamsListBoxItemSource();
 
-	So when MediaElement manifest is ready, the code gets a list of the available streams, and populates the UI list box with the list.
+	これにより、MediaElement マニフェストの準備が完了すると、コードは使用可能なストリームのリストを取得し、このリストを UI リスト ボックスに設定します。
 
-6. Inside the MainPage class, locate the UI buttons click events region, and then add the following function definition:
+6. MainPage クラス内で "UI buttons click events" という #region ブロックを探し、次の関数定義を追加します。
 
 		private void btnChangeStream_Click(object sender, RoutedEventArgs e)
         {
@@ -771,27 +771,27 @@ Smooth Streaming is capable to stream content with multiple language audio track
             changeStreams(selectedStreams);
         }
 
-**To compile and test the application**
+**アプリケーションのコンパイルとテストを行うには**
 
-1. Press **F6** to compile the project. 
-2.	Press **F5** to run the application.
-3.	At the top of the application, you can either use the default Smooth Streaming URL or enter a different one. 
-4.	Click **Set Source**. 
-5.	The default language is audio_eng. Try to switch between audio_eng and audio_es. Everytime, you select a new stream, you must click the Submit button.
+1. **F6** キーを押して、プロジェクトをコンパイルします。
+2.	**F5** キーを押してアプリケーションを実行します。
+3.	アプリケーションの先頭部分で、既定のスムーズ ストリーミング URL を使用するか、別の URL を入力します。
+4.	**[ソースの設定]** をクリックします。
+5.	既定の言語は audio_eng です。audio_eng と audio_es を切り替えてみてください。新しいストリームを選択するたびに、[送信] ボタンをクリックする必要があります。
 
-You have completed lesson 3.  In this lesson, you add the functionality to choose streams.
+これでレッスン 3 が完了しました。このレッスンでは、ストリームを選択する機能を追加しました。
 
-#Lesson 4: Select Smooth Streaming Tracks
-A Smooth Streaming presentation can contain multiple video files encoded with different quality levels (bit rates) and resolutions. In this lesson, you will enable users to select tracks. This lesson contains the following procedures:
+#レッスン 4: スムーズ ストリーミング トラックの選択
+スムーズ ストリーミング プレゼンテーションには、別々の品質レベル (ビット レート) と解像度でエンコードされた複数のビデオ ファイルが含まれていることがあります。このレッスンでは、ユーザーによるトラック選択を有効にします。このレッスンは、次の工程で構成されています。
 
-1. Modify the XAML file
-2. Modify the code behand file
-3. Compile and test the application
+1. XAML ファイルの変更
+2. コード ビハインド ファイルの変更
+3. アプリケーションのコンパイルとテスト
 
-**To modify the XAML file**
+**XAML ファイルを変更するには**
 
-1. From Solution Explorer, right-click **MainPage.xaml**, and then click **View Designer**.
-2. Locate the &lt;Grid&gt; tag with the name **gridStreamAndBitrateSelection**, append the following code at the end of the tag:
+1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[デザイナーの表示]** をクリックします。
+2. Name 属性が **gridStreamAndBitrateSelection** である &lt;Grid&gt; タグを探し、タグの末尾に次のコードを追加します。
 
 		<StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
 		 <StackPanel Orientation="Horizontal">
@@ -808,13 +808,13 @@ A Smooth Streaming presentation can contain multiple video files encoded with di
 		 </ListBox>
 		</StackPanel>
 
-3. Press **CTRL+S** to save he changes
+3. **Ctrl + S** キーを押して、変更を保存します。
 
 
-**To modify the code behind file**
+**コード ビハインド ファイルを変更するには**
 
-1. From Solution Explorer, right-click **MainPage.xaml**, and then click **View Code**.
-2. Inside the SSPlayer namespace, add a new class:
+1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
+2. SSPlayer 名前空間内に、次の新しいクラスを追加します。
 	
 		#region class Track
 	    public class Track
@@ -853,11 +853,11 @@ A Smooth Streaming presentation can contain multiple video files encoded with di
 	    }
 	    #endregion class Track
 
-3. At the beginning of the MainPage class, add the following variable definitions:
+3. MainPage クラスの先頭に、次の変数定義を追加します。
 	
 		private List<Track> availableTracks;
 
-4. Inside the MainPage class, add the following region:
+4. MainPage クラス内に、次の #region ブロックを追加します。
 	
 		#region track selection
         /// <summary>
@@ -956,12 +956,12 @@ A Smooth Streaming presentation can contain multiple video files encoded with di
         }
         #endregion track selection
 
-5. Locate the mediaElement_ManifestReady method, append the following code at the end of the function:
+5. mediaElement_ManifestReady メソッドを探して、関数の末尾に次のコードを追加します。
 
 		getTracks(manifestObject);
 		refreshAvailableTracksListBoxItemSource();
 
-6. Inside the MainPage class, locate the UI buttons click events region, and then add the following function definition:
+6. MainPage クラス内で "UI buttons click events" という #region ブロックを探し、次の関数定義を追加します。
 
 		private void btnChangeStream_Click(object sender, RoutedEventArgs e)
         {
@@ -974,20 +974,21 @@ A Smooth Streaming presentation can contain multiple video files encoded with di
             changeStreams(selectedStreams);
         }
 
-**To compile and test the application**
+**アプリケーションのコンパイルとテストを行うには**
 
-1. Press **F6** to compile the project. 
-2.	Press **F5** to run the application.
-3.	At the top of the application, you can either use the default Smooth Streaming URL or enter a different one. 
-4.	Click **Set Source**. 
-5.	By default, all of the tracks of the video stream are selected. To experiment the bit rate changes, you can select the lowest bit rate available, and then select the highest bit rate available. You must click Submit after each change.  You can see the video quality changes.
+1. **F6** キーを押して、プロジェクトをコンパイルします。
+2.	**F5** キーを押してアプリケーションを実行します。
+3.	アプリケーションの先頭部分で、既定のスムーズ ストリーミング URL を使用するか、別の URL を入力します。
+4.	**[ソースの設定]** をクリックします。
+5.	既定では、ビデオ ストリームのすべてのトラックが選択されます。ビット レートの変化を試すには、使用可能な最低ビット レートを選択してから、使用可能な最高ビット レートを選択します。変更した後には、そのたびに [送信] をクリックする必要があります。ビデオ品質の変化を確認できます。
 
-You have completed lesson 4.  In this lesson, you add the functionality to choose tracks.
+これでレッスン 4 が完了しました。このレッスンでは、トラックを選択する機能を追加しました。
 
 
-#Other Resources:
-- [How to build a Smooth Streaming Windows 8 JavaScript application with advanced features](http://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx)
-- [Smooth Streaming Technical Overview](http://www.iis.net/learn/media/on-demand-smooth-streaming/smooth-streaming-technical-overview)
+#その他のリソース: 
+- [How to build a Smooth Streaming Windows 8 JavaScript application with advanced features (高度な機能を備えたスムーズ ストリーミング用の Windows 8 JavaScript アプリケーションを作成する方法)](http://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx)
+- [Smooth Streaming Technical Overview (スムーズ ストリーミングの技術概要)](http://www.iis.net/learn/media/on-demand-smooth-streaming/smooth-streaming-technical-overview)
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
+

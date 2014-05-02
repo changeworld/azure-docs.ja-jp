@@ -1,117 +1,114 @@
-<properties linkid="dev-nodejs-how-to-service-bus-queues" urlDisplayName="Queue Service" pageTitle="How to use the queue service (Node.js) | Microsoft Azure" metaKeywords="Azure Queue Service get messages Node.js" description="Learn how to use the Azure Queue service to create and delete queues, and insert, get, and delete messages. Samples written in Node.js." metaCanonical="" services="storage" documentationCenter="Node.js" title="How to Use the Queue Service from Node.js" authors="" solutions="" manager="" editor="" />
+<properties linkid="dev-nodejs-how-to-service-bus-queues" urlDisplayName="キュー サービス" pageTitle="キュー サービスを使用する方法 (Node.js) | Microsoft Azure" metaKeywords="Azure キュー サービス メッセージ取得 Node.js" description="Azure キュー サービスを使用して、キューを作成および削除する方法、メッセージを挿入、取得、削除する方法について説明します。サンプルは Node.js で記述されています。" metaCanonical="" services="storage" documentationCenter="Node.js" title="Node.js からキュー サービスを使用する方法" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-# How to Use the Queue Service from Node.js
+# Node.js からキュー サービスを使用する方法
 
-This guide shows you how to perform common scenarios using the Windows
-Azure Queue service. The samples are written using the Node.js
-API. The scenarios covered include **inserting**, **peeking**,
-**getting**, and **deleting** queue messages, as well as **creating and
-deleting queues**. For more information on queues, refer to the [Next Steps][] section.
+このガイドでは、Azure キュー サービスを使用して一般的なシナリオを
+実行する方法について説明します。サンプルは Node.js API を使用して
+記述されています。紹介するシナリオは、キュー メッセージの**挿入**、**ピーク**、
+**取得**、および**削除**と、**キューの作成および削除**の各シナリオに
+ついて説明します。キューの詳細については、「[次のステップ][]」を参照してください。
 
-## Table of Contents
+## 目次
 
-* [What is the Queue Service?][]   
-* [Concepts][]   
-* [Create an Azure Storage Account][]   
-* [Create a Node.js Application][]   
-* [Configure your Application to Access Storage][]   
-* [Setup an Azure Storage Connection String][]   
-* [How To: Create a Queue][]   
-* [How To: Insert a Message into a Queue][]   
-* [How To: Peek at the Next Message][]   
-* [How To: Dequeue the Next Message][]   
-* [How To: Change the Contents of a Queued Message][]   
-* [How To: Additional Options for Dequeuing Messages][]   
-* [How To: Get the Queue Length][]   
-* [How To: Delete a Queue][]   
-* [Next Steps][]
+* [キュー サービスとは][]
+* [概念][]
+* [Azure のストレージ アカウントの作成][]
+* [Node.js アプリケーションの作成][]
+* [アプリケーションのストレージへのアクセスの構成][]
+* [Azure のストレージ接続文字列の設定][]
+* [方法: キューを作成する][]
+* [方法: メッセージをキューに挿入する][]
+* [方法: 次のメッセージをピークする][]
+* [方法: 次のメッセージをデキューする][]
+* [方法: キューに配置されたメッセージの内容を変更する][]
+* [方法: メッセージをデキューするための追加オプション][]
+* [方法: キューの長さを取得する][]
+* [方法: キューを削除する][]
+* [次のステップ][]
 
-## <a name="what-is"> </a>What is the Queue Service?
+## <a name="what-is"> </a>キュー サービスとは
 
-The Azure Queue service is a service for storing large numbers of
-messages that can be accessed from anywhere in the world via
-authenticated calls using HTTP or HTTPS. A single queue message can be
-up to 64KB in size, a queue can contain millions of messages, up to the
-100TB total capacity limit of a storage account. Common uses of the Queue
-service include:
+Azure キュー サービスは、大量のメッセージを格納するためのサービス
+です。これらのメッセージは、HTTP または HTTPS を使用して認証
+された呼び出しを介して世界中のどこからでもアクセスできます。キューの 1 つのメッセージの最大サイズは
+64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限である
+100 TB に達するまで、数百万のメッセージを格納できます。キュー サービスの一般的な
+使用法を次に示します。
 
--   <span>Creating a backlog of work to process asynchronously</span>
--   Passing messages from an Azure web role to a worker role
+-   <span>非同期に処理する作業のバックログを作成する</span>
+-   Azure Web ロールから worker ロールにメッセージを渡す
 
-## <a name="concepts"> </a>Concepts
+## <a name="concepts"> </a>概念
 
-The Queue service contains the following components:
+キュー サービスには、次のコンポーネントが含まれます。
 
 ![Queue1][Queue1]
 
--   **URL format:** Queues are addressable using the following URL
-    format:   
+-   **URL 形式:** キューは、次の URL 形式を使用してアドレス指定
+    できます。   
     
 		http://storageaccount.queue.core.windows.net/queue  
       
-    The following URL addresses one of the queues in the diagram:  
+    次の URL を使用すると、図のいずれかのキューをアドレス指定できます。  
     
 		http://myaccount.queue.core.windows.net/imagesToDownload
 
--   **Storage Account:** All access to Azure Storage is done
-    through a storage account. A storage account is the highest level of
-    the namespace for accessing queues. The total size of blob, table,
-    and queue contents in a storage account cannot exceed 100TB.
+-   **ストレージ アカウント:** Azure のストレージにアクセス
+    する場合には必ず、ストレージ アカウントを使用します。ストレージ アカウントは、アクセスするキューの
+    名前空間の中でも最高レベルに位置するものです。ストレージ アカウント内の BLOB、テーブル、
+    およびキューの内容の合計サイズが 100 TB を超えることはできません。
 
--   **Queue:** A queue contains a set of messages. All messages must be
-    in a queue.
+-   **キュー**: キューは、メッセージのセットを格納します。すべてのメッセージはキューに
+    格納されている必要があります。
 
--   **Message:** A message, in any format, of up to 64KB.
+-   **メッセージ:** 形式を問わず、メッセージのサイズは最大で 64 KB です。
 
-## <a name="create-account"> </a>Create an Azure Storage Account
+## <a name="create-account"> </a>Azure のストレージ アカウントの作成
 
-To use storage operations, you need an Azure storage account. You
-can create a storage account by following these steps. (You can also
-create a storage account [using the REST API][].)
+ストレージ操作を行うには、Azure のストレージ アカウントが必要です。ストレージ アカウントを
+作成するには、次の手順に従います。([REST API を使用して][]
+ストレージ アカウントを作成することもできます)。
 
-1.  Log into the [Azure Management Portal].
+1. [Azure 管理ポータル]にログインします。
 
-2.  At the bottom of the navigation pane, click **+NEW**.
+2. ナビゲーション ウィンドウの下部にある **[新規]** をクリックします。
 
-	![+new][plus-new]
+	![[+ 新規]][plus-new]
 
-3.  Click **Storage Account**, and then click **Quick Create**.
+3. **[ストレージ アカウント]**、**[簡易作成]** の順にクリックします。
 
-	![Quick create dialog][quick-create-storage]
+	![[簡易作成] ダイアログ][quick-create-storage]
 
-4.  In URL, type a subdomain name to use in the URI for the
-    storage account. The entry can contain from 3-24 lowercase letters
-    and numbers. This value becomes the host name within the URI that is
-    used to address Blob, Queue, or Table resources for the
-    subscription.
+4. [URL] で、ストレージ アカウントの URI で使用する
+    サブドメイン名を入力します。文字数は 3 ～ 24 文字で、アルファベット小文字と数字を使用できます。この名前は、対応するサブスクリプションの BLOB リソース、キュー リソース、またはテーブル リソースのアドレス指定に使用される URL のホスト名になります。
 
-5.  Choose a Region/Affinity Group in which to locate the
-    storage. If you will be using storage from your Azure
-    application, select the same region where you will deploy your
-    application.
+5. ストレージの配置先となるリージョンまたは
+    アフィニティ グループを選択します。Azure アプリケーションから
+    ストレージを使用する場合は、アプリケーションを展開する
+    リージョンと同じリージョンを選択します。
 
-6.  Click **Create Storage Account**.
+6. **[ストレージ アカウントの作成]** をクリックします。
 
-## <a name="create-app"> </a>Create a Node.js Application
+## <a name="create-app"> </a>Node.js アプリケーションの作成
 
-Create a blank Node.js application. For instructions creating a Node.js application, see [Create and deploy a Node.js application to an Azure Web Site], [Node.js Cloud Service] (using Windows PowerShell), or [Web Site with WebMatrix].
+空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービスへのデプロイ] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ]に関するページを参照してください。
 
-## <a name="configure-access"> </a>Configure Your Application to Access Storage
+## <a name="configure-access"> </a>アプリケーションのストレージへのアクセスの構成
 
-To use Azure storage, you need to download and use the Node.js
-azure package, which includes a set of convenience libraries that
-communicate with the storage REST services.
+Azure ストレージを使用するには、Node.js azure パッケージをダウンロード
+して使用する必要があります。このパッケージには、ストレージ REST サービス
+と通信するための便利なライブラリのセットが含まれています。
 
-### Use Node Package Manager (NPM) to obtain the package
+### ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
 
-1.  Use a command-line interface such as **PowerShell** (Windows,) **Terminal** (Mac,) or **Bash** (Unix), navigate to the folder where you created your sample application.
+1.  **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
 
-2.  Type **npm install azure** in the command window, which should
-    result in the following output:
+2.  コマンド ウィンドウに「**npm install azure**」と入力すると、
+    次のような出力が生成されます。
 
         azure@0.7.5 node_modules\azure
 		|-- dateformat@1.0.2-1.2.3
@@ -125,36 +122,36 @@ communicate with the storage REST services.
 		|-- xml2js@0.2.7 (sax@0.5.2)
 		|-- request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
 
-3.  You can manually run the **ls** command to verify that a
-    **node\_modules** folder was created. Inside that folder you will
-    find the **azure** package, which contains the libraries you need to
-    access storage.
+3. 手動で **ls** コマンドを実行して、**node\_modules**
+    フォルダーが作成されたことを確認することもできます。このフォルダーに
+    **azure** パッケージがあります。このパッケージには、ストレージに
+    アクセスするために必要なライブラリが含まれています。
 
-### Import the package
+### パッケージをインポートする
 
-Using Notepad or another text editor, add the following to the top the
-**server.js** file of the application where you intend to use storage:
+メモ帳などのテキスト エディターを使用して、ストレージを使用するアプリケーションの
+**server.js** ファイルの先頭に次の内容を追加します。
 
     var azure = require('azure');
 
-## <a name="setup-connection-string"> </a>Setup an Azure Storage Connection
+## <a name="setup-connection-string"> </a>Azure のストレージ接続文字列の設定
 
-The azure module will read the environment variables AZURE\_STORAGE\_ACCOUNT and AZURE\_STORAGE\_ACCESS\_KEY for information required to connect to your Azure storage account. If these environment variables are not set, you must specify the account information when calling **createQueueService**.
+azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT および AZURE\_STORAGE\_ACCESS\_KEY を読み取ります。これらの環境変数が設定されていない場合、**createQueueService** を呼び出すときにアカウント情報を指定する必要があります。
 
-For an example of setting the environment variables in a configuration file for an Azure Cloud Service, see [Node.js Cloud Service with Storage].
+Azure クラウド サービスの構成ファイルで環境変数を設定する例については、[ストレージを使用する Node.js クラウド サービスに関するトピック]を参照してください。
 
-For an example of setting the environment variables in the management portal for an Azure Web Site, see [Node.js Web Application with Storage]
+Azure Web サイトの管理ポータルで環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーションに関するトピック]を参照してください。
 
-## <a name="create-queue"> </a>How To: Create a Queue
+## <a name="create-queue"> </a>方法: キューを作成する
 
-The following code creates a **QueueService** object, which enables you
-to work with queues.
+次のコードは、**QueueService** オブジェクトを作成し、これによってキュー
+を操作できるようにします。
 
     var queueService = azure.createQueueService();
 
-Use the **createQueueIfNotExists** method, which returns the specified
-queue if it already exists or creates a new queue with the specified
-name if it does not already exist.
+**createQueueIfNotExists** メソッドを使用します。このメソッドは、
+指定されたキューが存在する場合は、そのキューを返します。指定されたキューが
+存在しない場合は、指定された名前で新しいキューを作成します。
 
 	queueService.createQueueIfNotExists(queueName, function(error){
     	if(!error){
@@ -162,27 +159,27 @@ name if it does not already exist.
 	    }
 	});
 
-###Filters
+###フィルター
 
-Optional filtering operations can be applied to operations performed using **QueueService**. Filtering operations can include logging, automatically retrying, etc. Filters are objects that implement a method with the signature:
+オプションのフィルター操作は、**QueueService** を使用して行われる操作に適用できます。フィルター操作には、ログ、自動的な再試行などが含まれる場合があります。フィルターは、次のようなシグネチャを実装するオブジェクトです。
 
-		function handle (requestOptions, next)
+		関数ハンドル (requestOptions, next)
 
-After doing its preprocessing on the request options, the method needs to call "next" passing a callback with the following signature:
+要求オプションに対するプリプロセスを行った後で、このメソッドは "next" を呼び出して、次のシグネチャのコールバックを渡す必要があります。
 
-		function (returnObject, finalCallback, next)
+		関数 (returnObject, finalCallback, next)
 
-In this callback, and after processing the returnObject (the response from the request to the server), the callback needs to either invoke next if it exists to continue processing other filters or simply invoke finalCallback otherwise to end up the service invocation.
+このコールバックで、returnObject (サーバーへの要求からの応答) の処理の後に、コールバックは next を呼び出すか (他のフィルターの処理を続けるために next が存在する場合)、単に finalCallback を呼び出す必要があります (サービス呼び出しを終了する場合)。
 
-Two filters that implement retry logic are included with the Azure SDK for Node.js, **ExponentialRetryPolicyFilter** and **LinearRetryPolicyFilter**. The following creates a **QueueService** object that uses the **ExponentialRetryPolicyFilter**:
+再試行のロジックを実装する 2 つのフィルター (**ExponentialRetryPolicyFilter** と **LinearRetryPolicyFilter**) が、Azure SDK for Node.js に含まれています。次のコードは、**ExponentialRetryPolicyFilter** を使う **QueueService** オブジェクトを作成します。
 
 	var retryOperations = new azure.ExponentialRetryPolicyFilter();
 	var queueService = azure.createQueueService().withFilter(retryOperations);
 
-## <a name="insert-message"> </a>How To: Insert a Message into a Queue
+## <a name="insert-message"> </a>方法: メッセージをキューに挿入する
 
-To insert a message into a queue, use the **createMessage** method to
-create a new message and add it to the queue.
+キューにメッセージを挿入するには、**createMessage** メソッドを使用し、
+新しいメッセージを作成してキューに追加します。
 
 	queueService.createMessage(queueName, "Hello world!", function(error){
 	    if(!error){
@@ -191,11 +188,11 @@ create a new message and add it to the queue.
 	});
 
 
-## <a name="peek-message"> </a>How To: Peek at the Next Message
+## <a name="peek-message"> </a>方法: 次のメッセージをピークする
 
-You can peek at the message in the front of a queue without removing it
-from the queue by calling the **peekMessages** method. By default,
-**peekMessages** peeks at a single message.
+**PeekMessage** メソッドを呼び出すと、キューの先頭にあるメッセージを
+キューから削除せずにピークできます。既定では、
+**peekMessages** は 1 つのメッセージを対象としてピークします。
 
 	queueService.peekMessages(queueName, function(error, messages){
 		if(!error){
@@ -206,20 +203,20 @@ from the queue by calling the **peekMessages** method. By default,
 
 
 > [WACOM.NOTE] 
->Using <strong>peekMessage</strong> when there are no messages in the queue will not return an error, however no messages will be returned.
+キューにメッセージがないときに <strong>peekMessage</strong> を使用した場合、エラーは返されませんが、メッセージも返されません。
 
-## <a name="get-message"> </a>How To: Dequeue the Next Message
+## <a name="get-message"> </a>方法: 次のメッセージをデキューする
 
-Your code removes a message from a queue in two steps. When you call
-**getMessages**, you get the next message in a queue by default. A
-message returned from **getMessages** becomes invisible to any other
-code reading messages from this queue. By default, this message stays
-invisible for 30 seconds. To finish removing the message from the queue,
-you must also call **deleteMessage**. This two-step process of removing
-a message assures that when your code fails to process a message due to
-hardware or software failure, another instance of your code can get the
-same message and try again. Your code calls **deleteMessage** right
-after the message has been processed.
+コードでは、2 つの手順でキューからメッセージを削除します。既定では、
+**getMessages** を呼び出すと、キュー内の次のメッセージを取得します。**GetMessage** から
+返されたメッセージは、このキューからメッセージを読み取る他のコードから
+参照できなくなります。既定では、このメッセージを参照
+できない状態は 30 秒間続きます。また、キューからのメッセージの削除を完了するには、
+**DeleteMessage** を呼び出す必要があります。2 段階の手順でメッセージを削除する
+この方法では、ハードウェアまたはソフトウェアの問題が原因でコードによる
+メッセージの処理が失敗した場合に、コードの別のインスタンスで同じ
+メッセージを取得し、もう一度処理することができます。コードでは、メッセージが処理された直後に
+**DeleteMessage** を呼び出します。
 
 	queueService.getMessages(queueName, function(error, messages){
 	    if(!error){
@@ -238,14 +235,14 @@ after the message has been processed.
 	});
 
 > [WACOM.NOTE]
-> Using <b>getMessages</b> when there are no messages in the queue will not return an error, however no messages will be returned.
+> キューにメッセージがないときに <b>peekMessage</b> を使用した場合、エラーは返されませんが、メッセージも返されません。
 
-## <a name="change-contents"> </a>How To: Change the Contents of a Queued Message
+## <a name="change-contents"> </a>方法: キューに配置されたメッセージの内容を変更する
 
-You can change the contents of a message in-place in the queue. If the
-message represents a work task, you could use this feature to update the
-status of the work task. The code below uses the **updateMessage**
-method to update a message.
+キュー内のメッセージの内容をインプレースで変更できます。メッセージが
+作業タスクを表している場合は、この機能を使用して、作業タスクの状態を
+更新できます。次のコードでは、**updateMessage** メソッド
+を使用してメッセージを更新します。
 
     queueService.getMessages(queueName, function(error, messages){
 		if(!error){
@@ -264,15 +261,15 @@ method to update a message.
 		}
 	});
 
-## <a name="advanced-get"> </a>How To: Additional Options for Dequeuing Messages
+## <a name="advanced-get"> </a>方法: メッセージをデキューするための追加オプション
 
-There are two ways you can customize message retrieval from a queue.
-First, you can get a batch of messages (up to 32). Second, you can set a
-longer or shorter invisibility timeout, allowing your code more or less
-time to fully process each message. The following code example uses the
-**getMessages** method to get 15 messages in one call. Then it processes
-each message using a for loop. It also sets the invisibility timeout to
-five minutes for each message.
+キューからのメッセージの取得をカスタマイズする方法は 2 つあります。
+1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。2 つ目の方法では、
+コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を
+長くまたは短くすることができます。次のコード例では、
+**GetMessages** メソッドを使用して、1 回の呼び出しで 15 個のメッセージを取得します。その後、for ループを
+使用して、各メッセージを処理します。また、各メッセージの非表示
+タイムアウトを 5 分に設定します。
 
     queueService.getMessages(queueName
 		, {numofmessages: 15, visibilitytimeout: 5 * 60}
@@ -294,14 +291,14 @@ five minutes for each message.
 		}
 	});
 
-## <a name="get-queue-length"> </a>How To: Get the Queue Length
+## <a name="get-queue-length"> </a>方法: キューの長さを取得する
 
-You can get an estimate of the number of messages in a queue. The
-**getQueueMetadata** method asks the queue service to return metadata
-about the queue, and the **approximatemessagecount** property of the
-response contains a count of how many messages are in a queue. The count
-is only approximate because messages can be added or removed after the
-queue service responds to your request.
+キュー内のメッセージの概数を取得できます。メソッド 
+**getQueueMetadata** では、キューのメタデータを返すように
+キュー サービスに要求します。また、応答の **approximatemessagecount**
+プロパティには、キュー内のメッセージの数が格納されます。キュー サービスが
+要求に応答した後にメッセージが追加または削除される可能性があるため、
+これらの値は概数にすぎません。
 
     queueService.getQueueMetadata(queueName, function(error, queueInfo){
 		if(!error){
@@ -309,10 +306,10 @@ queue service responds to your request.
 		}
 	});
 
-## <a name="delete-queue"> </a>How To: Delete a Queue
+## <a name="delete-queue"> </a>方法: キューを削除する
 
-To delete a queue and all the messages contained in it, call the
-**deleteQueue** method on the queue object.
+キューおよびキューに含まれているすべてのメッセージを削除するには、
+**deleteQueue** メソッドを呼び出します。
 
     queueService.deleteQueue(queueName, function(error){
 		if(!error){
@@ -320,36 +317,36 @@ To delete a queue and all the messages contained in it, call the
 		}
 	});
 
-## <a name="next-steps"> </a>Next Steps
+## <a name="next-steps"> </a>次のステップ
 
-Now that you've learned the basics of queue storage, follow these links
-to learn how to do more complex storage tasks.
+これで、キュー ストレージの基本を学習できました。さらに複雑な
+ストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   See the MSDN Reference: [Storing and Accessing Data in Azure][].
--   Visit the [Azure Storage Team Blog][].
--   Visit the [Azure SDK for Node] repository on GitHub.
+-   MSDN リファレンス: [Azure のデータの格納とアクセス][]
+-   [Azure のストレージ チーム ブログ][]
+-   GitHub の [Azure SDK for Node] リポジトリ
 
-  [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
-  [Next Steps]: #next-steps
-  [What is the Queue Service?]: #what-is
-  [Concepts]: #concepts
-  [Create an Azure Storage Account]: #create-account
-  [Create a Node.js Application]: #create-app
-  [Configure your Application to Access Storage]: #configure-access
-  [Setup an Azure Storage Connection String]: #setup-connection-string
-  [How To: Create a Queue]: #create-queue
-  [How To: Insert a Message into a Queue]: #insert-message
-  [How To: Peek at the Next Message]: #peek-message
-  [How To: Dequeue the Next Message]: #get-message
-  [How To: Change the Contents of a Queued Message]: #change-contents
-  [How To: Additional Options for Dequeuing Messages]: #advanced-get
-  [How To: Get the Queue Length]: #get-queue-length
-  [How To: Delete a Queue]: #delete-queue
-  [using the REST API]: http://msdn.microsoft.com/en-us/library/windowsazure/hh264518.aspx
-  [Azure Management Portal]: http://manage.windowsazure.com
-  [Create and deploy a Node.js application to an Azure Web Site]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)/
-  [Node.js Cloud Service with Storage]: /en-us/develop/nodejs/tutorials/web-app-with-storage/
-  [Node.js Web Application with Storage]: /en-us/develop/nodejs/tutorials/web-site-with-storage/
+  [Azure ノードの追加]: https://github.com/WindowsAzure/azure-sdk-for-node
+  [次のステップ]: #next-steps
+  [キュー サービスとは]: #what-is
+  [概念]: #concepts
+  [Azure のストレージ アカウントの作成]: #create-account
+  [Node.js アプリケーションの作成]: #create-app
+  [アプリケーションのストレージへのアクセスの構成]: #configure-access
+  [Azure のストレージ接続文字列の設定]: #setup-connection-string
+  [方法: キューを作成する]: #create-queue
+  [方法: メッセージをキューに挿入する]: #insert-message
+  [方法: 次のメッセージをピークする]: #peek-message
+  [方法: 次のメッセージをデキューする]: #get-message
+  [方法: キューに配置されたメッセージの内容を変更する]: #change-contents
+  [方法: メッセージをデキューするための追加オプション]: #advanced-get
+  [方法: キューの長さを取得する]: #get-queue-length
+  [方法: キューを削除する]: #delete-queue
+  [REST API を使用して]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh264518.aspx
+  [Azure 管理ポータル]: http://manage.windowsazure.com
+  [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: /ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
+  [ストレージを使用する Node.js クラウド サービスに関するトピック]: /ja-jp/develop/nodejs/tutorials/web-app-with-storage/
+  [ストレージを使用する Node.js Web アプリケーションに関するトピック]: /ja-jp/develop/nodejs/tutorials/web-site-with-storage/
   
   [Queue1]: ./media/storage-nodejs-how-to-use-queues/queue1.png
   [plus-new]: ./media/storage-nodejs-how-to-use-queues/plus-new.png
@@ -357,7 +354,8 @@ to learn how to do more complex storage tasks.
   
   
   
-  [Node.js Cloud Service]: {localLink:2221} "Web App with Express"
-  [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
-  [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-  [Web Site with WebMatrix]: /en-us/develop/nodejs/tutorials/web-site-with-webmatrix/
+  [Node.js クラウド サービスへのデプロイ]: {localLink:2221} "Express を使用した Web アプリケーション"
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+  [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+  [WebMatrix による Web サイトの作成とデプロイ]: /ja-jp/develop/nodejs/tutorials/web-site-with-webmatrix/
+

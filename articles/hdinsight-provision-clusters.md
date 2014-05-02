@@ -1,119 +1,117 @@
-<properties linkid="manage-services-hdinsight-provision-hdinsight-clusters" urlDisplayName="HDInsight Administration" pageTitle="Provision HDInsight clusters | Azure" metaKeywords="hdinsight, hdinsight administration, hdinsight administration azure" description="Learn how to provision clusters for Azure HDInsight using the management portal, PowerShell, or the command line." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="Provision HDInsight clusters" authors="jgao" />
+<properties linkid="manage-services-hdinsight-provision-hdinsight-clusters" urlDisplayName="HDInsight の管理" pageTitle="HDInsight クラスターのプロビジョニング | Azure" metaKeywords="hdinsight, hdinsight の管理, hdinsight の管理と azure" description="管理ポータル、PowerShell、コマンド ラインを使用して Azure HDInsight のクラスターをプロビジョニングする方法について説明します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="HDInsight クラスターのプロビジョニング" authors="jgao" />
 
-#Provision HDInsight clusters
+#HDInsight クラスターのプロビジョニング
 
-In this article, you will learn different ways to provision HDInsight cluster.
+この記事では、HDInsight クラスターをプロビジョニングするさまざまな方法を説明します。
 
-**Prerequisites:**
+**前提条件:**
 
-Before you begin this article, you must have the following:
+この記事を読み始める前に、次の項目を用意する必要があります。
 
-- An Azure subscription. Azure is a subscription-based platform. The HDInsight PowerShell cmdlets perform the tasks with your subscription. For more information about obtaining a subscription, see [Purchase Options][azure-purchase-options], [Member Offers][azure-member-offers], or [Free Trial][azure-free-trial].
+- Azure サブスクリプションが必要です。Azure はサブスクリプション方式のプラットフォームです。HDInsight PowerShell コマンドレットはサブスクリプションを使ってタスクを実行します。サブスクリプションの入手方法の詳細については、[購入オプション][azure-purchase-options]、[メンバー プラン][azure-member-offers]、または[無料評価版][azure-free-trial]に関するページを参照してください。
 
-##In this article
+##この記事の内容
 
-* [Using Azure Management Portal](#portal)
-* [Using Azure PowerShell](#powershell)
-* [Using Cross-platform Command Line](#cli)
-* [Using HDInsight .NET SDK](#sdk)
-* [Next steps](#nextsteps)
+* [Azure 管理ポータルの使用](#portal)
+* [Azure PowerShell の使用](#powershell)
+* [クロスプラットフォーム コマンド ラインの使用](#cli)
+* [HDInsight .NET SDK の使用](#sdk)
+* [次のステップ](#nextsteps)
 
-##<a id="portal"></a> Using Azure Management Portal
+##<a id="portal"></a> Azure 管理ポータルの使用
 
-HDInsight cluster uses an Azure Blob Storage container as the default file system. An Azure storage account located on the same data center is required before you can create a HDInsight cluster. For more information, see [Use Azure Blob Storage with HDInsight][hdinsight-storage]. For details on creating an Azure storage account, see [How to Create a Storage Account][azure-create-storageaccount].
-
-
-> [WACOM.NOTE] Currently, only the Southeast Asia, North Europe, West Europe, East US and the West US regions can host HDInsight clusters.
-
-This session describes the procedure for creating an HDInsight cluster using the custom create option.  For the information on using the quick create option, see [Get Started with Azure HDInsight][hdinsight-getting-started].
+HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。HDInsight クラスターを作成するには、同じデータ センターにある Azure ストレージ アカウントが必要です。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。Azure ストレージ アカウントの作成の詳細については、「[ストレージ アカウントの作成方法][azure-create-storageaccount]」を参照してください。
 
 
-**To create a HDInsight cluster using the custom create option**
+> [WACOM.NOTE] 現在、HDInsight クラスターをホストできるリージョンは、東南アジア、北ヨーロッパ、西ヨーロッパ、米国東部、米国西部のみです。
 
-1. Sign in to the [Azure Management Portal][azure-management-portal].
-2. Click **+ NEW** on the bottom of the page, click **DATA SERVICES**, click **HDINSIGHT**, and then click **CUSTOM CREATE**.
-3. On the Cluster Details page, type or choose the following values:
+ここでは、[カスタム作成] オプションを使用して HDInsight クラスターを作成する手順について説明します。[簡易作成] オプションの使用法については、「[Azure HDInsight の概要][hdinsight-getting-started]」を参照してください。
+
+
+**カスタム作成オプションを使用して HDInsight クラスターを作成するには**
+
+1. [Azure 管理ポータル][azure-management-portal]にサインインします。
+2. ページ下部の **[+ 新規]** をクリックし、**[データ サービス]**、**[HDINSIGHT]**、**[カスタム作成]** の順にクリックします。
+3. [クラスターの詳細] ページで、次の値を入力または選択します。
 
 	<table border='1'>
-		<tr><th>Property</th><th>Value</th></tr>
-		<tr><td>CLUSTER NAME</td>
-			<td><p>Name the cluster. </p>
+		<tr><th>プロパティ</th><th>値</th></tr>
+		<tr><td>クラスター名</td>
+			<td><p>クラスターの名前を指定します。</p>
 				<ul>
-				<li>DNS name must start and end with alpha numeric, may contain dashes.</li>
-				<li>The field must be a string between 3 to 63 characters.</li>
+				<li>DNS 名の最初と最後の文字は英数字にする必要があります。それ以外ではダッシュ (-) を使用できます。</li>
+				<li>3 ～ 63 文字のクラスター名を入力できます。</li>
 				</ul></td></tr>
-		<tr><td>DATA NODES</td>
-			<td>Specify the number of nodes in the cluster. The default value is 4.</td></tr>
-		<tr><td>HDINSIGHT VERSION</td>
-			<td>Choose the version. The default is 2.0 running Hadoop 1.2 clusters.  The 3.0 uses Hadoop 2.2 clusters. For more information, see <a href="http://www.windowsazure.com/en-us/manage/services/hdinsight/versioning-in-hdinsight/">What version of Hadoop is in Azure HDInsight?</a>.</td></tr>
-		<tr><td>REGION</td>
-			<td>Specify the data center where the cluster is installed. The location has to be the same as the Azure Blob storage that will be used as the default file system. Currently you can only choose *Southeast Asia*, *North Europe*, *West Europe*, *East US* or *West US*.</td>
+		<tr><td>データ ノード</td>
+			<td>クラスター内のノード数を指定します。既定値は 4 です。</td></tr>
+		<tr><td>HDInsight のバージョン</td>
+			<td>バージョンを選択します。既定値は、Hadoop 1.2 クラスターを実行する 2.0 です。3.0 は Hadoop 2.2 クラスターを使用します。詳細については、「<a href="http://www.windowsazure.com/ja-jp/manage/services/hdinsight/versioning-in-hdinsight/">What version of Hadoop is in Azure HDInsight? (Azure HDInsight でサポートされている Hadoop のバージョン)</a>」を参照してください。</td></tr>
+		<tr><td>リージョン</td>
+			<td>クラスターをインストールするデータ センターを指定します。既定のファイル システムとして使用する Azure BLOB ストレージと同じ場所にする必要があります。現在選択できるのは、*東南アジア*、*北ヨーロッパ*、*西ヨーロッパ*、*米国東部* または *米国西部*のみです。</td>
 		</tr>
 	</table>
 
 	![HDI.CustomProvision.Page1][image-customprovision-page1]
 
-4. Click the right arrow on the bottom right corner of the page.
-5. On the Configure Cluster User page, type or choose the following value:
+4. ページの右下隅にある右矢印をクリックします。
+5. [クラスター ユーザーの構成] ページで、次の値を入力または選択します。
 
 	<table border='1'>
-		<tr><th>Property</th><th>Value</th></tr>
-		<tr><td>USER NAME</td>
-			<td>Specify the HDInsight cluster user name.</td></tr>
-		<tr><td><p>PASSWORD</p><p>CONFIRM PASSWORD</p></td>
-			<td>Specify the HDInsight cluster user password.</td></tr>
-		<tr><td>Enter Hive/Oozie Metastore</td>
-			<td>Specify a SQL database on the same data center to be used as the Hive/Oozie metastore.</td></tr>
-		<tr><td>HIVE META/OOZIESTORE DATABASE</td>
-			<td>Specify the Azure SQL database that will be used as the metastore for Hive/OOzie. This SQL database must be in the same data center as the HDInsight cluster. The list box only lists the SQL databases in the same data center as you specified on the Cluster Details page.</td></tr>
-		<tr><td>DATABASE USER</td>
-			<td>Specify the SQL database user that will be used to connect to the database.</td></tr>
-		<tr><td>DATABASE USER PASSWORD</td>
-			<td>Specify the SQL database user password.</td></tr>
+		<tr><th>プロパティ</th><th>値</th></tr>
+		<tr><td>ユーザー名</td>
+			<td>HDInsight クラスターのユーザー名を指定します。</td></tr>
+		<tr><td><p>パスワード</p><p>パスワードの確認</p></td>
+			<td>HDInsight クラスターのユーザー パスワードを指定します。</td></tr>
+		<tr><td>Hive/Oozie メタストアの入力</td>
+			<td>同じデータ センターにある Hive/Oozie メタストアとして使用する SQL データベースを指定します。</td></tr>
+		<tr><td>Hive Meta/Ooziestore データベース</td>
+			<td>Hive/OOzie のメタストアとして使用する Azure SQL データベースを指定します。この SQL データベースは、HDInsight クラスターと同じデータ センターにある必要があります。ボックスの一覧には、[クラスターの詳細] ページで指定したデータ センターにある SQL データベースしか表示されません。</td></tr>
+		<tr><td>データベース ユーザー</td>
+			<td>データベースへの接続時に使用する SQL データベース ユーザーを指定します。</td></tr>
+		<tr><td>データベース ユーザー パスワード</td>
+			<td>SQL データベース ユーザーのパスワードを指定します。</td></tr>
 	</table>
 
-	For version 2.0 HDInsight cluster, the credentials provided here can only access the services on the cluster. Remote Desktop can be turned on after the cluster is created.
+	Version 2.0 の HDInsight クラスターの場合、ここで指定した資格情報でアクセスできるのはクラスター上のサービスのみです。リモート デスクトップは、クラスターの作成後、有効にできます。
 
 	![HDI.CustomProvision.Page2][image-customprovision-page2]
 
 
-6. Click the right arrow on the bottom right corner of the page.
-7. On the Storage Account page, type or choose the following value:
+6. ページの右下隅にある右矢印をクリックします。
+7. [ストレージ アカウント] ページで、次の値を入力または選択します。
 
 	<table border='1'>
-		<tr><th>Property</th><th>Value</th></tr>
-		<tr><td>STORAGE ACCOUNT</td>
-			<td>Specify the Azure Storage account that will be used as the default file system for the HDInsight cluster. You can choose one of the three options:
+		<tr><th>プロパティ</th><th>値</th></tr>
+		<tr><td>ストレージ アカウント</td>
+			<td>HDInsight クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを指定します。次の 3 つのオプションのいずれかを選択できます。
 			<ul>
-				<li>Use Existing Storage</li>
-				<li>Create New Storage</li>
-				<li>Use Storage From Another Subscription</li>
+				<li>既存のストレージを使用する</li>
+				<li>新しいストレージを作成する</li>
+				<li>別のサブスクリプションのストレージを使用する</li>
 			</ul>
 			</td></tr>
-		<tr><td>ACCOUNT NAME</td>
-			<td>When <b>Use Existing Storage</b> is chosen, the list box only lists the storage accounts located on the same data center.</td></tr>
-		<tr><td>ACCOUNT KEY</td>
-			<td>This field is only available when <strong>Use Storage From Another Subscription</strong> is chosen in the STORAGE ACCOUNT field.</td></tr>	
-		<tr><td>DEFAULT CONTAINER</td>
-			<td>The default container on the storage account will be used as the default file system for the HDInsight cluster. When <strong>Use Existing Storage</strong> in the STORAGE ACCOUNT field and <strong>Create default container</strong> in the DEFAULT CONTAINER filed are chosen, the default container name has the same name as the cluster. If a container with the name fo the cluster already exists, a sequence number will be appended to the container name. For example, mycontainer1, mycontainer2, and so on.</td></tr>
-		<tr><td>ADDITIONAL STORAGE ACCOUNTS</td>
-			<td>HDInsight supports multiple storage accounts. There is no limits of the additional storage account that can be used by a cluster. However, if you create a cluster using the Management Portal, you will find a limit of seven due to the UI constraints. Each additional storage account you specify in this field adds an extra Storage Account page where you can specify the account information. For example, in the following screenshot, 1 additional storage account is selected, the page 4 is added to the dialog.</td></tr>		
+		<tr><td>アカウント名</td>
+			<td>[<b>既存のストレージを使用する</b>] を選択すると、ボックスの一覧には、同じデータ センターにあるストレージ アカウントしか表示されません。</td></tr>
+		<tr><td>アカウント キー</td>
+			<td>このフィールドは、[ストレージ アカウント] で <strong>[別のサブスクリプションのストレージを使用する]</strong> を選択した場合にだけ使用できます。</td></tr>	
+		<tr><td>既定のコンテナー</td>
+			<td>ストレージ アカウントの既定のコンテナーは、HDInsight クラスターの既定のファイル システムとして使用されます。[ストレージ アカウント] で <strong>[既存のストレージを使用する]</strong> を選択し、[既定のコンテナー] で <strong>[既定のコンテナーの作成]</strong> を選択した場合、既定のコンテナー名はクラスターと同じ名前になります。クラスター名と同じ名前のコンテナーが既に存在する場合は、コンテナー名に連番が付加されます。たとえば、mycontainer1、mycontainer2、などとなります。</td></tr>
+		<tr><td>追加のストレージ アカウント</td>
+			<td>HDInsight は複数のストレージ アカウントをサポートします。クラスターで使用できる追加ストレージ アカウントの数に制限はありません。ただし、管理ポータルを使用してクラスターを作成する場合は、UI の制約により 7 が上限になります。ここで指定した追加のストレージ アカウントごとに [ストレージ アカウント] ページが追加され、そこでアカウント情報を指定できます。たとえば、次のスクリーンショットでは、追加のストレージ アカウントが 1 つ選択され、ページ 4 がダイアログに追加されています。</td></tr>		
 	</table>
 
 	![HDI.CustomProvision.Page3][image-customprovision-page3]
 
-8. Click the right arrow on the bottom right corner of the page.
-9. On the Storage Account page, enter the account information for the additional storage account:
+8. ページの右下隅にある右矢印をクリックします。
+9. [ストレージ アカウント] ページで、追加したストレージ アカウントのアカウント情報を入力します。
 
 	![HDI.CustomProvision.Page4][image-customprovision-page4]
 
-10. Click the Complete button (the check icon) on the bottom right corner to start the HDInsight cluster provision process.
+10. 右下隅にある [完了] ボタン (チェック マーク アイコン) をクリックすると、HDInsight クラスターのプロビジョニング処理が開始されます。
 
-It can take several minutes to provision a cluster.  When the provision process is completed successfully, the status column for the cluster will show **Running**.
+クラスターのプロビジョニングは数分かかる場合があります。プロビジョニング処理が正常に完了すると、クラスターの [状態] 列に **[実行中]** と表示されます。
 
-> [WACOM.NOTE] Once an Azure storage account is chosen for your HDInsight cluster, you can neither delete the account, nor change the account to a different account.
-
-
+> [WACOM.NOTE] HDInsight クラスター用の Azure ストレージ アカウントを選択した後は、そのアカウントを削除することも、別のアカウントに変更することもできません。
 
 
 
@@ -157,21 +155,23 @@ It can take several minutes to provision a cluster.  When the provision process 
 
 
 
-##<a id="powershell"></a> Using Azure PowerShell
-Azure PowerShell is a powerful scripting environment that you can use to control and automate the deployment and management of your workloads in Azure. For information on configuring a workstation to run HDInsight Powershell cmdlets, see [Install and configure Azure PowerShell][powershell-install-configure]. For more information on using PowerShell with HDInsight, see [Administer HDInsight using PowerShell][hdinsight-admin-powershell]. For the list of the HDInsight PowerShell cmdlets, see [HDInsight cmdlet reference][hdinsight-powershell-reference].
-
-The following procedures are needed to provision an HDInsight cluster using PowerShell:
-
-- Create an Azure Storage account
-- Create an Azure Blob container
-- Create a HDInsight cluster
-
-HDInsight uses an Azure Blob Storage container as the default file system. An Azure storage account and storage container are required before you can create an HDInsight cluster. The storage account must be located in the same data center as the HDInsight Cluster.
 
 
-**To create an Azure storage account**
+##<a id="powershell"></a> Azure PowerShell の使用
+Azure PowerShell は、Azure のワークロードの展開と管理を制御し自動化するために使用できる強力なスクリプティング環境です。コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」を参照してください。HDInsight で PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]」を参照してください。HDInsight PowerShell コマンドレットの一覧については、「[HDInsight コマンドレット リファレンス][hdinsight-powershell-reference]」を参照してください。
 
-- Run the following commands from an Azure PowerShell console window:
+PowerShell を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
+
+- Azure ストレージ アカウントの作成
+- Azure BLOB コンテナーの作成
+- HDInsight クラスターの作成
+
+HDInsight は、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。HDInsight クラスターを作成するには Azure ストレージ アカウントとストレージ コンテナーが必要です。ストレージ アカウントは、HDInsight クラスターと同じデータ センターに置く必要があります。
+
+
+**Azure ストレージ アカウントを作成するには**
+
+- 次のコマンドを Azure PowerShell コンソール ウィンドウから実行します。
 
 		$storageAccountName = "<StorageAcccountName>"
 		$location = "<MicrosoftDataCenter>"		# For example, "West US"
@@ -179,7 +179,7 @@ HDInsight uses an Azure Blob Storage container as the default file system. An Az
 		# Create an Azure storage account
 		New-AzureStorageAccount -StorageAccountName $storageAccountName -Location $location
 	
-	If you have already had a storage account but do not know the account name and account key, you can use the following PowerShell commands to retrieve the information:
+	既にストレージ アカウントを持っていて、アカウント名とアカウント キーがわからない場合は、次の PowerShell コマンドを使ってその情報を取得できます。
 	
 		# List storage accounts for the current subscription
 		Get-AzureStorageAccount
@@ -187,9 +187,9 @@ HDInsight uses an Azure Blob Storage container as the default file system. An Az
 		# List the keys for a storage account
 		Get-AzureStorageKey "<StorageAccountName>"
 	
-**To create Azure storage container**
+**Azure ストレージ コンテナーを作成するには**
 
-- Run the following commands from an Azure PowerShell window:
+- 次のコマンドを Azure PowerShell ウィンドウから実行します。
 
 		$storageAccountName = "<StorageAccountName>"
 		$storageAccountKey = "<StorageAccountKey>"
@@ -202,11 +202,11 @@ HDInsight uses an Azure Blob Storage container as the default file system. An Az
 		# Create a Blob storage container
 		New-AzureStorageContainer -Name $containerName -Context $destContext
 
-Once you have the storage account and the blob container prepared, you are ready to create a cluster. 
+ストレージ アカウントを用意して、BLOB コンテナーを準備したら、クラスターを作成する準備は整いました。
 
-**To provision an HDInsight cluster**
+**HDInsight クラスターをプロビジョニングするには**
 
-- Run the following commands from an Azure PowerShell window:		
+- 次のコマンドを Azure PowerShell ウィンドウから実行します。		
 
 		$subscriptionName = "<SubscriptionName>"		# The name of the Azure subscription.
 		$storageAccountName = "<StorageAccountName>"	# The Azure storage account that hosts the default container. The default container will be used as the default file system.
@@ -223,15 +223,15 @@ Once you have the storage account and the blob container prepared, you are ready
 		# Create a new HDInsight cluster
 		New-AzureHDInsightCluster -Name $clusterName -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainerName $containerName  -ClusterSizeInNodes $clusterNodes
 
-	It can take several minutes before the cluster provision completes.
+	クラスターのプロビジョニングが完了するまでに数分かかる場合があります。
 
 	![HDI.CLI.Provision][image-hdi-ps-provision]
 
-You can also provision cluster and configure it to connect to more than one Azure Blob storage or custom Hive and Oozie metastores. This advanced feature allows you to separate lifetime of your data and metadata from the lifetime of the cluster. 
+クラスターをプロビジョニングして、複数の Azure BLOB ストレージまたはカスタム Hive/Oozie メタストアに接続するように構成することもできます。この高度な機能を利用すると、データとメタデータの寿命を、クラスターの寿命と切り離すことができます。
 
-**To provision an HDInsight cluster using configuration**
+**構成を使用して HDInsight クラスターをプロビジョニングするには**
 
-- Run the following commands from a Windows PowerShell window:
+- 次のコマンドを Windows PowerShell ウィンドウから実行します。
 
 		$subscriptionName = "<SubscriptionName>"
 		$clusterName = "<ClusterName>"
@@ -268,9 +268,9 @@ You can also provision cluster and configure it to connect to more than one Azur
 		    Add-AzureHDInsightMetastore -SqlAzureServerName "$oozieSQLDatabaseServerName.database.windows.net" -DatabaseName $oozieSQLDatabaseName -Credential $oozieCreds -MetastoreType OozieMetastore |
 		        New-AzureHDInsightCluster -Name $clusterName -Location $location
 
-**To list HDInsight clusters**
+**HDInsight クラスターの一覧を表示するには**
 
-- Run the following commands from an Azure PowerShell window:
+- 次のコマンドを Azure PowerShell ウィンドウから実行します。
 
 		Get-AzureHDInsightCluster -Name <ClusterName>
 
@@ -380,87 +380,86 @@ You can also provision cluster and configure it to connect to more than one Azur
 
 
 
+##<a id="cli"></a>クロスプラットフォーム コマンド ラインの使用
 
-##<a id="cli"></a> Using Cross-platform command line
-
-Another option for provisioning an HDInsight cluster is the Cross-platform Command-line Interface. The command-line tool is implemented in Node.js. It can be used on any platform that supports Node.js including Windows, Mac and Linux. The command-line tool is open source.  The source code is managed in GitHub at <a href= "https://github.com/WindowsAzure/azure-sdk-tools-xplat">https://github.com/WindowsAzure/azure-sdk-tools-xplat</a>. For a general guide on how to use the command-line interface, see [How to use the Azure Command-Line Tools for Mac and Linux][azure-command-line-tools]. For comprehensive reference documentation, see [Azure command-line tool for Mac and Linux][azure-command-line-tool]. This article only covers using the command-line interface from Windows.
+HDInsight クラスターをプロビジョニングするもう 1 つの方法は、クロスプラットフォーム コマンド ライン インターフェイスです。コマンド ライン ツールは Node.js で実装されます。Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。コマンド ライン ツールはオープン ソースです。ソース コードは GitHub (<a href= "https://github.com/WindowsAzure/azure-sdk-tools-xplat">https://github.com/WindowsAzure/azure-sdk-tools-xplat</a>) で管理されています。コマンド ライン インターフェイスの使用方法の一般的ガイドについては、「[Mac および Linux 用 Azure コマンド ライン ツールの使用方法][azure-command-line-tools]」を参照してください。包括的なリファレンス ドキュメントについては、「[Mac および Linux 用 Azure コマンド ライン ツール][azure-command-line-tool]」を参照してください。この記事では、Windows からコマンド ライン インターフェイスを使用する方法だけを取り上げます。
 
 
-The following procedures are needed to provision an HDInsight cluster using Cross-platform command line:
+クロスプラットフォーム コマンド ラインを使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
 
-- Install cross-platform command line
-- Download and import Azure account publish settings
-- Create an Azure Storage account
-- Provision a cluster
+- クロスプラットフォーム コマンド ラインのインストール
+- Azure アカウントの発行設定のダウンロードとインポート
+- Azure ストレージ アカウントの作成
+- クラスターのプロビジョニング
 
-The command-line interface can be installed using *Node.js Package Manager (NPM)* or Windows Installer.
+コマンド ライン インターフェイスは *Node.js パッケージ マネージャー (NPM)* または Windows インストーラーを使用してインストールできます。
 
-**To install the command-line interface using NPM**
+**NPM を使用してコマンド ライン インターフェイスをインストールするには**
 
-1.	Browse to **www.nodejs.org**.
-2.	Click **INSTALL** and following the instructions using the default settings.
-3.	Open **Command Prompt** (or *Azure Command Prompt*, or *Developer Command Prompt for VS2012*) from your workstation.
-4.	Run the following command in the command prompt window.
+1.	ブラウザーで **www.nodejs.org** を開きます。
+2.	**[INSTALL]** をクリックし、指示に従います。設定は既定の設定を使います。
+3.	コンピューターから**コマンド プロンプト** (または *Azure コマンド プロンプト*、または *VS2012 の開発者コマンド プロンプト*) を開きます。
+4.	コマンド プロンプト ウィンドウで次のコマンドを実行します。
 
 		npm install -g azure-cli
 
-	> [WACOM.NOTE] If you get an error saying the NPM command is not found, verify the following paths are in the PATH environment variable: <i>C:\Program Files (x86)\nodejs;C:\Users\[username]\AppData\Roaming\npm</i> or <i>C:\Program Files\nodejs;C:\Users\[username]\AppData\Roaming\npm</i>
+	> [WACOM.NOTE] NPM コマンドが見つからないというエラーが表示される場合、次のパスが PATH 環境変数の中にあることを確認します: <i>C:\Program Files (x86)\nodejs;C:\Users\[ユーザー名]\AppData\Roaming\npm</i> または <i>C:\Program Files\nodejs;C:\Users\[ユーザー名]\AppData\Roaming\npm</i>
 	
 
 
-5.	Run the following command to verify the installation:
+5.	次のコマンドを実行してインストールを確認します。
 
 		azure hdinsight -h
 
-	You can use the *-h* switch at different levels to display the help information.  For example:
+	*-h* スイッチを使うと、さまざまなレベルでヘルプ情報を表示できます。次に例を示します。
 		
 		azure -h
 		azure hdinsight -h
 		azure hdinsight cluster -h
 		azure hdinsight cluster create -h
 
-**To install the command-line interface using windows installer**
+**Windows インストーラーを使用してコマンド ライン インターフェイスをインストールするには**
 
-1.	Browse to **http://www.windowsazure.com/en-us/downloads/**.
-2.	Scroll down to the **Command line tools** section, and then click **Cross-platform Command Line Interface** and follow the Web Platform Installer wizard.
+1.	ブラウザーで **http://www.windowsazure.com/ja-jp/downloads/** を開きます。
+2.	下へスクロールして、**[コマンド ライン ツール]** セクションの **[クロスプラットフォーム コマンド ライン インターフェイス]** をクリックし、Web プラットフォーム インストーラー ウィザードの指示に従います。
 
-Before using the command-line interface, you must configure connectivity between your workstation and Azure. Your Azure subscription information is used by the command-line interface to connect to your account. This information can be obtained from Azure in a publish settings file. The publish settings file can then be imported as a persistent local config setting that the command-line interface will use for subsequent operations. You only need to import your publish settings once.
-
-
-> [WACOM.NOTE] The publish settings file contains sensitive information. It is recommended that you delete the file or take additional steps to encrypt the user folder that contains the file. On Windows, modify the folder properties or use BitLocker.
+コマンド ライン インターフェイスを使用する前に、自分のコンピューターと Azure との接続を構成する必要があります。Azure のサブスクリプション情報は、コマンド ライン インターフェイスがアカウントにアクセスする際に使用されます。この情報は、Azure から発行設定ファイルとして入手できます。発行設定ファイルは永続的なローカル構成設定としてインポートすることができます。インポートすると、コマンド ライン インターフェイスの以降の操作にはこのファイルが使用されます。発行設定のインポートは 1 回だけ行う必要があります。
 
 
-**To download and import publish settings**
+> [WACOM.NOTE] 発行設定ファイルには、機密情報が含まれます。このファイルを削除するか、追加の作業を行ってファイルのある user フォルダーを暗号化することをお勧めします。Windows の場合、フォルダー プロパティを変更するか、または BitLocker を使用します。
 
-1.	Open a **Command Prompt**.
-2.	Run the following command to download the publish settings file.
+
+**発行設定をダウンロードしてインポートするには**
+
+1.	**コマンド プロンプト**を開きます。
+2.	次のコマンドを実行して、発行設定ファイルをダウンロードします。
 
 		azure account download
  
 	![HDI.CLIAccountDownloadImport][image-cli-account-download-import]
 
-	The command shows the instructions for downloading the file, including an URL.
+	URL も含めて、ファイルのダウンロード方法が表示されます。
 
-3.	Open **Internet Explorer** and browse to the URL listed in the command prompt window.
-4.	Click **Save** to save the file to the workstation.
-5.	From the command prompt window, run the following command to import the publish settings file:
+3.	**Internet Explorer** を開き、コマンド プロンプト ウィンドウに表示された URL にアクセスします。
+4.	**[保存]** をクリックして、ファイルをコンピューターに保存します。
+5.	コマンド プロンプト ウィンドウで次のコマンドを実行して、発行設定ファイルをインポートします。
 
 		azure account import <file>
 
-	In the previous screenshot, the publish settings file was saved to C:\HDInsight folder on the workstation.
+	先のスクリーンショットで、発行設定ファイルはコンピューターの C:\HDInsight フォルダーに保存されています。
 
 
-HDInsight uses an Azure Blob Storage container as the default file system. An Azure storage account is required before you can create an HDInsight cluster. The storage account must be located in the same data center.
+HDInsight は、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。HDInsight クラスターを作成するには Azure ストレージ アカウントが必要です。ストレージ アカウントは、クラスターと同じデータ センターに配置する必要があります。
 
-**To create an Azure storage account**
+**Azure ストレージ アカウントを作成するには**
 
-- From the command prompt window, run the following command:
+- コマンド プロンプト ウィンドウで次のコマンドを実行します。
 
 		azure account storage create [options] <StorageAccountName>
 
-For information on creating an Azure storage account using Azure Management portal, see [How to Create a Storage Account][azure-create-storageaccount].
+Azure 管理ポータルを使った Azure ストレージ アカウントの作成については、「[ストレージ アカウントの作成方法][azure-create-storageaccount]」を参照してください。
 
-If you have already had a storage account but do not know the account name and account key, you can use the following commands to retrieve the information:
+既にストレージ アカウントを持っていて、アカウント名とアカウント キーがわからない場合は、次のコマンドを使ってその情報を取得できます。
 
 	-- lists storage accounts
 	azure account storage list
@@ -469,17 +468,17 @@ If you have already had a storage account but do not know the account name and a
 	-- Lists the keys for a storage account
 	azure account storage keys list <StorageAccountName>
 
-For details on getting the information using the management portal, see the *How to: View, copy and regenerate storage access keys* section of [How to Manage Storage Accounts][azure-manage-storageaccount].
+管理ポータルを使用して情報を取得する方法の詳細については、「[ストレージ アカウントの管理方法][azure-manage-storageaccount]」の「*方法: ストレージ アクセス キーの表示、コピーおよび再生成*」を参照してください。
 
-The *azure hdinsight cluster create* command creates the container if it doesn't exist. If you choose to create the container beforehand, you can use the following command:
+*azure hdinsight cluster create* コマンドは、コンテナーが存在しない場合、コンテナーを作成します。コンテナーを事前に作成する場合は、次のコマンドを使用できます。
 
 	azure storage container create --account-name <StorageAccountName> --account-key <StorageAccountKey> [ContainerName]
 		
-Once you have the storage account and the blob container prepared, you are ready to create a cluster.
+ストレージ アカウントを用意して、BLOB コンテナーを準備したら、クラスターを作成する準備は整いました。
 
-**To create a HDInsight cluster**
+**HDInsight クラスターを作成するには**
 
-- From the command prompt window, run the following command:
+- コマンド プロンプト ウィンドウで次のコマンドを実行します。
 
 		azure hdinsight cluster create --clusterName <ClusterName> --storageAccountName <StorageAccountName> --storageAccountKey <storageAccountKey> --storageContainer <StorageContainer> --nodes <NumberOfNodes> --location <DataCenterLocation> --username <HDInsightClusterUsername> --clusterPassword <HDInsightClusterPassword>
 
@@ -501,12 +500,11 @@ Once you have the storage account and the blob container prepared, you are ready
 
 
 
+通常は、HDInsight クラスターをプロビジョニングして、ジョブを実行した後、クラスターを削除してコストを削減します。コマンド ライン インターフェイスを使うと、構成をファイルに保存して、クラスターをプロビジョニングするたびにその構成を再利用することができます。
 
-Typically, you provision an HDInsight cluster, run their jobs, and then delete the cluster to cut down the cost. The command-line interface gives you the option to save the configurations into a file, so that you can reuse it every time you provision a cluster.  
+**構成ファイルを使用して HDInsight クラスターをプロビジョニングするには**
 
-**To provision an HDInsight cluster using a configuration file**
-
-- From the command prompt window, run the following command:
+- コマンド プロンプト ウィンドウで次のコマンドを実行します。
  
 		azure hdinsight cluster config create <file>
 		 
@@ -528,9 +526,9 @@ Typically, you provision an HDInsight cluster, run their jobs, and then delete t
 	![HDI.CLIClusterCreationConfig][image-cli-clustercreation-config]
 
 
-**To list and show cluster details**
+**クラスターの一覧と詳細を表示するには**
 
-- Use the following commands to list and show cluster details:
+- クラスターの一覧と詳細を表示するには、次のコマンドを使用します。
 
 		azure hdinsight cluster list
 		azure hdinsight cluster show <ClusterName>
@@ -538,72 +536,72 @@ Typically, you provision an HDInsight cluster, run their jobs, and then delete t
 	![HDI.CLIListCluster][image-cli-clusterlisting]
 
 
-**To delete a cluster**
+**クラスターを削除するには**
 
-- Use the following command to delete a cluster:
+- クラスターを削除するには、次のコマンドを使用します。
 
 		azure hdinsight cluster delete <ClusterName>
 
 
 
-##<a id="sdk"></a> Using HDInsight .NET SDK
-The HDInsight .NET SDK provides .NET client libraries that makes it easier to work with HDInsight from .NET. 
+##<a id="sdk"></a> HDInsight .NET SDK の使用
+HDInsight .NET SDK は、.NET から HDInsight を簡単に操作できる .NET クライアント ライブラリを提供します。
 
-The following procedures are needed to provision an HDInsight cluster using the SDK:
+SDK を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
 
-- Install HDInsight .NET SDK
-- Create a console application
-- Run the application
+- HDInsight .NET SDK のインストール
+- コンソール アプリケーションの作成
+- アプリケーションの実行
 
 
-**To install HDInsight .NET SDK**
-You can install latest published build of the SDK from [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started). The instructions will be shown in the next procedure.
+**HDInsight .NET SDK をインストールするには**
+公開されている最新の SDK を [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) からインストールできます。次の手順で、具体的な方法を説明します。
 
-**To create a Visual Studio console application**
+**Visual Studio コンソール アプリケーションを作成するには**
 
-1. Open Visual Studio 2012.
+1. Visual Studio 2012 を開きます。
 
-2. From the File menu, click **New**, and then click **Project**.
+2. [ファイル] メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
 
-3. From New Project, type or select the following values:
+3. [新しいプロジェクト] で、次の値を入力または選択します。
 
 	<table style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse;">
 	<tr>
-	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">Property</th>
-	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">Value</th></tr>
+	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">プロパティ</th>
+	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">値</th></tr>
 	<tr>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Category</td>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px; padding-right:5px;">Templates/Visual C#/Windows</td></tr>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">カテゴリ</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px; padding-right:5px;">テンプレート/Visual C#/Windows</td></tr>
 	<tr>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Template</td>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Console Application</td></tr>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">テンプレート</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">コンソール アプリケーション</td></tr>
 	<tr>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Name</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">名前</td>
 	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">CreateHDICluster</td></tr>
 	</table>
 
-4. Click **OK** to create the project.
+4. **[OK]** をクリックしてプロジェクトを作成します。
 
 
-5. From the **Tools** menu, click **Library Package Manager**, click **Package Manager Console**.
+5. **[ツール]** メニューで **[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
 
-6. Run the following commands in the console to install the packages.
+6. コンソールで次のコマンドを実行して、パッケージをインストールします。
 
 		Install-Package Microsoft.WindowsAzure.Management.HDInsight
 
 
-	This command adds .NET libraries and references to them to the current Visual Studio project.
+	このコマンドは、.NET ライブラリおよび .NET ライブラリへの参照を現在の Visual Studio プロジェクトに追加します。
 
-7. From Solution Explorer, double-click **Program.cs** to open it.
+7. ソリューション エクスプローラーで **Program.cs** をダブルクリックして、このファイルを開きます。
 
-8. Add the following using statements to the top of the file:
+8. 次の using ステートメントをファイルの先頭に追加します。
 
 		using System.Security.Cryptography.X509Certificates;
 		using Microsoft.WindowsAzure.Management.HDInsight;
 		using Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning;
 
 	
-9. In the Main() function, copy and paste the following code:
+9. Main() 関数で、次のコードをコピーしてファイルに貼り付けます。
 		
         string certfriendlyname = "<CertificateFriendlyName>";
         string subscriptionid = "<WindowsAzureSubscriptionID>";
@@ -651,41 +649,41 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
         Console.WriteLine("Press ENTER to continue.");
         Console.ReadKey();
 
-10. Replace the variables at the beginning of the main() function. 
+10. main() 関数の先頭にある変数を置き換えます。
 
-**To run the application**
+**アプリケーションを実行するには**
 
-While the application is open in Visual Studio, press **F5** to run the application. A console window should open and display the status of the application. It can take several minutes to create a HDInsight cluster.
+アプリケーションを Visual Studio で開いている間に、**F5** キーを押してアプリケーションを実行します。コンソール ウィンドウが開き、アプリケーションの状態が表示されます。HDInsight クラスターの作成は数分かかる場合があります。
 
 
 
-##<a id="nextsteps"></a> Next steps
-In this article, you have learned several ways to provision an HDInsight cluster. To learn more, see the following articles:
+##<a id="nextsteps"></a> 次のステップ
+この記事では、HDInsight クラスターをプロビジョニングする方法をいくつか説明しました。詳細については、次の記事を参照してください。
 
-* [Get started with Azure HDInsight][hdinsight-getting-started]
-* [Administer HDInsight using PowerShell][hdinsight-admin-powershell]
-* [Submit Hadoop jobs programmatically][hdinsight-submit-jobs]
-* [Azure HDInsight SDK documentation][hdinsight-sdk-documentation]
+* [Azure HDInsight の概要][hdinsight-getting-started]
+* [PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
+* [プログラムによる Hadoop ジョブの送信][hdinsight-submit-jobs]
+* [Azure HDInsight SDK のドキュメント][hdinsight-sdk-documentation]
 
-[hdinsight-version]: /en-us/manage/services/hdinsight/versioning-in-hdinsight/
-[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/en-us/library/dn479185.aspx
-[hdinsight-getting-started]: /en-us/manage/services/hdinsight/get-started-hdinsight/
-[hdinsight-storage]: /en-us/manage/services/hdinsight/howto-blob-store/
-[hdinsight-admin-powershell]: /en-us/manage/services/hdinsight/administer-hdinsight-using-powershell/
-[hdinsight-submit-jobs]: /en-us/manage/services/hdinsight/submit-hadoop-jobs-programmatically/
-[hdinsight-configure-powershell]: /en-us/manage/services/hdinsight/install-and-configure-powershell-for-hdinsight/ 
-[hdinsight-powershell-reference]: http://msdn.microsoft.com/en-us/library/windowsazure/dn479228.aspx
+[hdinsight-version]: /ja-jp/manage/services/hdinsight/versioning-in-hdinsight/
+[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/ja-jp/library/dn479185.aspx
+[hdinsight-getting-started]: /ja-jp/manage/services/hdinsight/get-started-hdinsight/
+[hdinsight-storage]: /ja-jp/manage/services/hdinsight/howto-blob-store/
+[hdinsight-admin-powershell]: /ja-jp/manage/services/hdinsight/administer-hdinsight-using-powershell/
+[hdinsight-submit-jobs]: /ja-jp/manage/services/hdinsight/submit-hadoop-jobs-programmatically/
+[hdinsight-configure-powershell]: /ja-jp/manage/services/hdinsight/install-and-configure-powershell-for-hdinsight/ 
+[hdinsight-powershell-reference]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn479228.aspx
 
-[azure-create-storageaccount]: /en-us/manage/services/storage/how-to-create-a-storage-account/ 
+[azure-create-storageaccount]: /ja-jp/manage/services/storage/how-to-create-a-storage-account/ 
 [azure-management-portal]: https://manage.windowsazure.com/
-[azure-command-line-tools]: /en-us/develop/nodejs/how-to-guides/command-line-tools/
-[azure-command-line-tool]: /en-us/manage/linux/other-resources/command-line-tools/
-[azure-manage-storageaccount]: /en-us/manage/services/storage/how-to-manage-a-storage-account/
-[azure-purchase-options]: https://www.windowsazure.com/en-us/pricing/purchase-options/
-[azure-member-offers]: https://www.windowsazure.com/en-us/pricing/member-offers/
-[azure-free-trial]: https://www.windowsazure.com/en-us/pricing/free-trial/
+[azure-command-line-tools]: /ja-jp/develop/nodejs/how-to-guides/command-line-tools/
+[azure-command-line-tool]: /ja-jp/manage/linux/other-resources/command-line-tools/
+[azure-manage-storageaccount]: /ja-jp/manage/services/storage/how-to-manage-a-storage-account/
+[azure-purchase-options]: https://www.windowsazure.com/ja-jp/pricing/purchase-options/
+[azure-member-offers]: https://www.windowsazure.com/ja-jp/pricing/member-offers/
+[azure-free-trial]: https://www.windowsazure.com/ja-jp/pricing/free-trial/
 
-[Powershell-install-configure]: /en-us/documentation/articles/install-configure-powershell/
+[Powershell-install-configure]: /ja-jp/documentation/articles/install-configure-powershell/
 
 
 [image-customprovision-page1]: ./media/hdinsight-provision-clusters/HDI.CustomProvision.Page1.png 
@@ -699,3 +697,5 @@ In this article, you have learned several ways to provision an HDInsight cluster
 [image-cli-clusterlisting]: ./media/hdinsight-provision-clusters/HDI.CLIListClusters.png "List and show clusters"
 
 [image-hdi-ps-provision]: ./media/hdinsight-provision-clusters/HDI.ps.provision.png
+
+

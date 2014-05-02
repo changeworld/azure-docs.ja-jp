@@ -1,158 +1,158 @@
-<properties linkid="manage-windows-common-tasks-install-mysql" urlDisplayName="Install MySQL" pageTitle="Create a virtual machine running MySQL in Azure " metaKeywords="Azure virtual machines, Azure Windows Server, Azure installing MySQL, Azure configuring MySQL, Azure databases" description="Create an Azure virtual machine running Windows Server 2008 R2, and then install and configure a MySQL database on the virtual machine." metaCanonical="" services="virtual-machines" documentationCenter="" title="Install MySQL on a virtual machine running Windows Server 2008 R2 in Azure" authors="kathydav" solutions="" manager="jeffreyg" editor="tysonn" />
+<properties linkid="manage-windows-common-tasks-install-mysql" urlDisplayName="MySQL のインストール" pageTitle="Azure で MySQL を実行する仮想マシンを作成する" metaKeywords="Azure の仮想マシン, Azure Windows Server, Azure での MySQL のインストール, Azure での MySQL の構成, Azure データベース" description="Windows Server 2008 R2 を実行する Azure の仮想マシンを作成し、仮想マシンに MySQL データベースをインストールして構成します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure で Windows Server 2008 R2 を実行する仮想マシンへの MySQL のインストール" authors="kathydav" solutions="" manager="jeffreyg" editor="tysonn" />
 
 
 
 
 
-#Install MySQL on a virtual machine running Windows Server 2008 R2 in Azure
+#Azure で Windows Server 2008 R2 を実行する仮想マシンへの MySQL のインストール
 
-[MySQL](http://www.mysql.com) is a popular open source, SQL database. Using the [Azure Management Portal][AzurePreviewPortal], you can create a virtual machine running Windows Server 2008 R2 from the Image Gallery.  You can then install and configure a MySQL database on the virtual machine.
+[MySQL](http://www.mysql.com) は広く普及しているオープン ソースの SQL データベースです。[Azure 管理ポータル][AzurePreviewPortal]では、Windows Server 2008 R2 を実行する仮想マシンをイメージ ギャラリーから作成できます。この仮想マシンには、MySQL データベースをインストールして構成することができます。
 
-In this tutorial, you will learn how to:
+このチュートリアルで学習する内容は次のとおりです。
 
-- Use the Management Portal to create a virtual machine running Windows Server 2008 R2.
+- 管理ポータルを使用して Windows Server 2008 R2 を実行するカスタム仮想マシンを作成する。
 
-- Install and run MySQL Community Server on the virtual machine.
+- 仮想マシンに MySQL Community Server をインストールして実行する。
 
-##Create a virtual machine running Windows Server 2008 R2
+##Windows Server 2008 R2 を実行する仮想マシンの作成
 
 [WACOM.INCLUDE [create-and-configure-windows-server-2008-vm-in-portal](../includes/create-and-configure-windows-server-2008-vm-in-portal.md)]
 
-##Attach a data disk
+##データ ディスクの接続
 
 [WACOM.INCLUDE [attach-data-disk-windows-server-2008-vm-in-portal](../includes/attach-data-disk-windows-server-2008-vm-in-portal.md)]
 
-##Install and run MySQL Community Server on the virtual machine
-Follow these steps to install, configure, and run MySQL Community Server:
+##仮想マシンへの MySQL Community Server のインストールと実行
+MySQL Community Server をインストール、構成、および実行するには、次の手順に従います。
 
-1. After you've connected to the virtual machine using Remote Desktop, open **Internet Explorer** from the **Start** menu. 
+1. リモート デスクトップを使用して仮想マシンに接続した後で、**[スタート]** メニューから **Internet Explorer** を開きます。
 
-2. Select the **Tools** button in the upper right corner. In **Internet Options**, select the **Security** tab, and then select the **Trusted Sites** icon, and finally click the **Sites** button. Add *http://\*.mysql.com* to the list of trusted sites.
+2. 右上にある **[ツール]** ボタンを選択します。**[インターネット オプション]** で、**[セキュリティ]** タブ、**[信頼済みサイト]** アイコンの順に選択し、**[サイト]** をクリックします。信頼済みサイトの一覧に *http://\*.mysql.com* を追加します。
 
-3. Go to [Download MySQL Community Server][MySQLDownloads].
+3. [MySQL Community Server のダウンロード ページ][MySQLDownloads]に移動します。
 
-4. Select **Microsoft Windows** in the **Platform** drop down menu and click **Select**.
+4. **[Select Platform]** ドロップダウン メニューの **[Microsoft Windows]** を選択し、**[Select]** をクリックします。
 
-5. Find the most recent release of **Windows (x86, 64-bit), MSI Installer** and click **Download**. 
+5. 最新リリースの **[Windows (x86, 64-bit), MSI Installer]** を見つけて **[Download]** をクリックします。
 
-6. Select **No thanks, just start my download!** (or, register for an account).  If prompted, select a mirror site to download the MySQL installer and save the installer to the desktop.
+6. **[No thanks, just start my download]** を選択します (または、アカウント登録を行います)。確認メッセージが表示されたら、MySQL インストーラーをダウンロードするミラー サイトを選択して、インストーラーをデスクトップに保存します。
 
-7. Double-click the installer file on the desktop to begin installation.
+7. デスクトップに保存したインストーラー ファイルをダブルクリックして、インストールを開始します。
 
-8. Click **Next**.
+8. **[次へ]** をクリックします。
 
-	![MySQL Setup][MySQLInstall1]
+	![MySQL のセットアップ][MySQLInstall1]
 
-9. Accept the license agreement and click **Next**.
+9. ライセンス契約の内容に同意し、**[Next]** をクリックします。
 
-	![MySQL Setup][MySQLInstall2]
+	![MySQL のセットアップ][MySQLInstall2]
 
-10. Click **Typical** to install common features.
+10. 一般的な機能をインストールするために **[Typical]** をクリックします。
 
-	![MySQL Setup][MySQLInstall3]
+	![MySQL のセットアップ][MySQLInstall3]
 
-11. Click **Install**.
+11. **[Install]** をクリックします。
 
-	![MySQL Setup][MySQLInstall4]
+	![MySQL のセットアップ][MySQLInstall4]
 
-12. Start the MySQL Configuration Wizard and click **Next**.
+12. MySQL 構成ウィザードを開始し、**[Next]** をクリックします。
 
-	![Configure MySQL][MySQLConfig1]
+	![MySQL の構成][MySQLConfig1]
 
-13. Select **Detailed Configuration** and click Next.
+13. **[Detailed Configuration]** を選択して [Next] をクリックします。
 
-	![Configure MySQL][MySQLConfig2]
+	![MySQL の構成][MySQLConfig2]
 
-14. Select **Server Machine** if you plan to run MySQL along with other applications on the server, or the select option that best fits your needs.  Click **Next**.
+14. サーバーで他のアプリケーションと共に MySQL を実行する場合は **[Server Machine]** を選択します。または、ニーズに合う他のオプションを選択します。**[次へ]** をクリックします。
 
-	![Configure MySQL][MySQLConfig3]
+	![MySQL の構成][MySQLConfig3]
 
-15. Select **Multifunctional Database**, or the select option that best fits your needs.  Click **Next**.
+15. **[Multifunctional Database]** を選択するか、ニーズに合う他のオプションを選択します。**[次へ]** をクリックします。
 
-	![Configure MySQL][MySQLConfig4]
+	![MySQL の構成][MySQLConfig4]
 
-16. Select the data drive you attached in the steps above.
+16. 先ほど接続したデータ ドライブを選択します。
 
-	![Configure MySQL][MySQLConfig5]
+	![MySQL の構成][MySQLConfig5]
 
-17. Select **Decision Support (DSS)/OLAP**, or the select option that best fits your needs.  Click **Next**.
+17. **[Decision Support (DSS)/OLAP]** を選択するか、ニーズに合う他のオプションを選択します。**[次へ]** をクリックします。
 
-	![Configure MySQL][MySQLConfig6]
+	![MySQL の構成][MySQLConfig6]
 
-18. Select **Enable TCP/IP Networking** and **Add firewall exception for this port** (this will create an inbound rule in Windows Firewall named **MySQL Server**).
+18. **[Enable TCP/IP Networking]** と **[Add firewall exception for this port]** をオンにします (これにより、Windows ファイアウォールに **MySQL Server** という名前の受信規則が作成されます)。
 
-	![Configure MySQL][MySQLConfig7]
+	![MySQL の構成][MySQLConfig7]
 
-19. Select **Best Support For Multilingualism** if you need to store text in many different languages, or the select option that best fits your needs.  Click **Next**.
+19. テキストを多言語で格納する必要がある場合は **[Best Support For Multilingualism]** を選択します。または、ニーズに合う他のオプションを選択します。**[次へ]** をクリックします。
 
-	![Configure MySQL][MySQLConfig8]
+	![MySQL の構成][MySQLConfig8]
 
-20. Select **Install As Windows Service** and **Launch the MySQL Server automatically**.  Also select **Include Bin Directory in Windows PATH**. Click **Next**.
+20. **[Install As Windows Service]** と **[Launch the MySQL Server automatically]** をオンにします。**[Include Bin Directory in Windows PATH]** もオンにします。**[次へ]** をクリックします。
 
-	![Configure MySQL][MySQLConfig9]
+	![MySQL の構成][MySQLConfig9]
 
-21. Enter the root password. Do not check **Enable root access from remote machines** or **Create An Anonymous Account**.  Click **Next**.
+21. ルート パスワードを入力します。**[Enable root access from remote machines]** と **[Create An Anonymous Account]** はオンにしないでください。**[次へ]** をクリックします。
 
-	![Configure MySQL][MySQLConfig10]
+	![MySQL の構成][MySQLConfig10]
 
-22. Click **Execute** and wait for configuration to complete.
+22. **[Execute]** をクリックして、構成が完了するまで待ちます。
 
-	![Configure MySQL][MySQLConfig11]
+	![MySQL の構成][MySQLConfig11]
 
-23. Click **Finish**.
+23. **[完了]** をクリックします。
 
-	![Configure MySQL][MySQLConfig12]
+	![MySQL の構成][MySQLConfig12]
 
-24. Click **Start** and select **MySQL 5.x Command Line Client** to start the command line client.
+24. **[スタート]** をクリックし、**[MySQL 5.x Command Line Client]** を選択して、コマンド ライン クライアントを起動します。
 
-25.  Enter the root password at the prompt (which you set in a previous step) and you'll be presented with a prompt where you can issue SQL statements to interact with the database.
+25. 先ほど作成したルート パスワードをプロンプトで入力すると、データベースを操作するための SQL ステートメントを実行できるプロンプトが表示されます。
 
-26. To create a new MySQL user, run the following at the **mysql>** prompt:
+26. 新しい MySQL ユーザーを作成するには、**mysql>** プロンプトで次のコマンドを実行します。
 
 		mysql> CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 
-	Note, the semi-colons (;) at the end of the lines are crucial for ending the commands.
+	行末のセミコロン (;) は、コマンドの終わりを示すために必要です。
 
-27. To create a database and grant the `mysqluser` user permissions on it, issue the following commands:
+27. データベースを作成し、このデータベースに対するアクセス許可を `mysqluser` ユーザーに付与するには、次のコマンドを実行します。
 
 		mysql> CREATE DATABASE testdatabase;
 		mysql> GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 
-	Note that database user names and passwords are only used by scripts connecting to the database.  Database user account names do not necessarily represent actual user accounts on the computer.
+	データベースのユーザー名とパスワードは、データベースに接続するスクリプトのみが使用します。データベース ユーザー アカウントは、コンピューター上の実際のユーザー アカウントを表しているとは限りません。
 
-28. To login from another computer, execute the following:
+28. 別のコンピューターにログインするには、次のコマンドを実行します。
 
 		mysql> GRANT ALL ON testdatabase.* TO 'mysqluser'@'<ip-address>' IDENTIFIED BY 'password';
 
-	where `ip-address` is the IP address of the computer from which you will connect to MySQL.
+	`ip-address` は、MySQL への接続元コンピューターの IP アドレスです。
 	
-29. To exit the MySQL command line client, issue the following command:
+29. MySQL コマンド ライン クライアントを終了するには、次のコマンドを実行します。
 
 		quit
 
-30. Once MySQL is installed you must configure an endpoint so that MySQL can be accessed remotely. Log in to the [Azure Management Portal][AzurePreviewPortal]. In the Azure portal, click **Virtual Machines**, then the name of your new virtual machine, then **Endpoints**, and then  **Add Endpoint**.
+30. MySQL をインストールしたら、MySQL にリモートでアクセスできるように、エンドポイントを構成する必要があります。[Azure 管理ポータル][AzurePreviewPortal]にログインします。Azure ポータルで、**[仮想マシン]** をクリックし、新しい仮想マシンの名前をクリックして、**[エンドポイント]**、**[エンドポイントの追加]** の順にクリックします。
 
-	![Endpoints][AddEndPoint]
+	![エンドポイント][AddEndPoint]
 
-31. Select **Add Endpoint** and click arrow to continue.
+31. **[エンドポイントの追加]** を選択し、矢印をクリックして続行します。
 	
-	![Endpoints][AddEndPoint2]
+	![エンドポイント][AddEndPoint2]
 
-32. Add an endpoint with name "MySQL", protocol **TCP**, and both **Public** and **Private** ports set to "3306". Click the check mark. This will allow MySQL to be accessed remotely.
+32. エンドポイントを追加します。名前に「MySQL」、プロトコルに **[TCP]** を指定し、**[パブリック ポート]** と **[プライベート ポート]** の両方に「3306」を指定します。チェック マークをクリックします。これにより、MySQL へのリモート アクセスが可能になります。
 	
-	![Endpoints][AddEndPoint3]
+	![エンドポイント][AddEndPoint3]
 
-33. You can remotely connect to MySQL running on your virtual machine in Azure.  From a local computer running MySQL, run the following command to log in as the **mysqluser** user you created in the steps above:
+33. Azure の仮想マシンで実行されている MySQL に、リモートでアクセスすることができます。MySQL を実行しているローカル コンピューターから次のコマンドを実行すると、先ほど作成した **mysqluser** ユーザーとしてログインできます。
 
 		mysql -u mysqluser -p -h <yourservicename>.cloudapp.net
 
-	For example, using the virtual machine created in this tutorial, the command would be:
+	たとえば、このチュートリアルで作成した仮想マシンを使用する場合、コマンドは次のようになります。
 
 		mysql -u mysqluser -p -h testwinvm.cloudapp.net
 
-##Summary
+##まとめ
 
-In this tutorial you learned how to create a Windows 2008 R2 virtual machine and remotely connect to it. You also learned how to install and configure MySQL on the virtual machine, create a database and a new MySQL user. For more information on MySQL, see the [MySQL Documentation](http://dev.mysql.com/doc/).
+このチュートリアルでは、Windows Server 2008 R2 仮想マシンを作成し、リモート接続する方法を説明しました。仮想マシンに MySQL をインストールして構成し、データベースと新しい MySQL ユーザーを作成する方法も学習しました。MySQL の詳細については、[MySQL のドキュメント](http://dev.mysql.com/doc/)を参照してください。
 
 [AzurePreviewPortal]: http://manage.windowsazure.com
 [MySQLDownloads]: http://www.mysql.com/downloads/mysql/
@@ -177,3 +177,4 @@ In this tutorial you learned how to create a Windows 2008 R2 virtual machine and
 [AddEndPoint]: ./media/virtual-machines-mysql-windows-server-2008r2/WinVMAddEndpointMySQL0.png
 [AddEndPoint2]: ./media/virtual-machines-mysql-windows-server-2008r2/WinVMAddEndpointMySQL1.png
 [AddEndPoint3]: ./media/virtual-machines-mysql-windows-server-2008r2/WinVMAddEndpointMySQL.png
+

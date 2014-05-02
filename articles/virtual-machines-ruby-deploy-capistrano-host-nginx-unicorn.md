@@ -1,119 +1,119 @@
-<properties linkid="dev-ruby-web-app-with-linux-vm-capistrano" urlDisplayName="Ruby on Rails Azure VM Capistrano" pageTitle="Deploying a Ruby on Rails Web application to an Azure Virtual Machine using Capistrano - tutorial" metaKeywords="ruby on rails, ruby on rails azure, rails azure, rails vm, capistrano azure vm, capistrano azure rails, unicorn azure vm, unicorn azure rails, unicorn nginx capistrano, unicorn nginx capistrano azure, nginx azure" description="Learn how to deploy a Ruby on Rails application to an Azure Virtual Machine using Capistrano, Unicorn and Nginx." metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Deploy a Ruby on Rails Web application to an Azure VM using Capistrano" authors="" />
+<properties linkid="dev-ruby-web-app-with-linux-vm-capistrano" urlDisplayName="Ruby on Rails Azure VM Capistrano" pageTitle="Capistrano を使用して Ruby on Rails Web アプリケーションを Azure 仮想マシンに展開 - チュートリアル" metaKeywords="ruby on rails、ruby on rails azure、rails azure、rails vm、capistrano azure vm、capistrano azure rails、unicorn azure vm、unicorn azure rails、unicorn nginx capistrano、unicorn nginx capistrano azure、nginx azure" description="Capistrano、Unicorn、Nginxを使用して、Azure の仮想マシンに Ruby on Rails アプリケーションを展開する方法について学習します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Capistrano を使用して Azure VM に Ruby on Rails Web アプリケーションを展開する" authors="" />
 
 
 
-#Deploy a Ruby on Rails Web application to an Azure VM using Capistrano
+#Capistrano を使用して Azure VM に Ruby on Rails Web アプリケーションを展開する
 
-This tutorial describes how to deploy a Ruby on Rails-based web site to an Azure Virtual Machine using [Capistrano](https://github.com/capistrano/capistrano/). This tutorial also describes how to [Nginx](http://nginx.org/) and [Unicorn](https://github.com/blog/517-unicorn) to host the application on the virtual machine.
+このチュートリアルでは、[Capistrano](https://github.com/capistrano/capistrano/) を使用して Azure の仮想マシンに Ruby on Rails ベースの Web サイトを展開する方法について説明します。また、[Nginx](http://nginx.org/) および [Unicorn](https://github.com/blog/517-unicorn) を使用して、仮想マシンでアプリケーションをホストする方法についても説明します。
 
-This tutorial assumes you have no prior experience using Azure. Upon completing this tutorial, you will have a Ruby on Rails-based application up and running in the cloud.
+このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルを完了すると、クラウドで動作する Ruby on Rails ベースのアプリケーションが完成します。
 
-You will learn how to:
+学習内容:
 
-* Setup your development environment
+* 開発環境を設定する
 
-* Install Ruby and Ruby on Rails
+* Ruby および Ruby on Rails をインストールする
 
-* Install and configure Nginx and Unicorn
+* Nginx および Unicorn をインストールして構成する
 
-* Create a new Rails application
+* 新しい Rails アプリケーションを作成する
 
-* Deploy a Rails application to an Azure Virtual machine using Capistrano
+* Capistrano を使用して Azure の仮想マシンに Rails アプリケーションを展開する
 
-The following is a screenshot of the completed application:
+完成したアプリケーションのスクリーンショットは次のようになります。
 
-![a browser displaying Listing Posts][blog-rails-cloud]
+![ブラウザーに表示された [Listing Posts]][blog-rails-cloud]
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>The application used for this tutorial includes native binary components. For this reason, you may encounter problems if your development environment is not Linux-based as the Gemfile.lock produced on the development machine may not include entries for the Linux compatible version of required gems.</p>
-<p>Specific steps are called out for using a Windows development environment, as this represents the most significant delta from the target deployment environment. However, if you encounter errors during or after deployment that are not covered by the steps in this article, you may wish to retry the steps in this article from a Linux-based development environment.</p>
+<strong>注</strong>
+<p>このチュートリアルで使用するアプリケーションには、ネイティブのバイナリ コンポーネントが含まれています。このため、開発環境が Linux ベースでない場合は、開発用コンピューターで生成された Gemfile.lock に Linux と互換性のないバージョンの gem のエントリが含まれる可能性があり、問題が発生することがあります。</p>
+<p>Windows 開発環境を使用する場合向けには、対象とするデプロイ環境との違いが特に大きいため、固有の手順を記載しています。ただし、この記事で説明されていないエラーがデプロイ中やデプロイ後に発生した場合は、この記事の手順を Linux ベースの開発環境から再試行することをお勧めします。</p>
 
 </div>
 
-##In this article
+##この記事の内容
 
-* [Set up your development environment](#setup)
+* [開発環境を設定する](#setup)
 
-* [Create a Rails application](#create)
+* [Rails アプリケーションを作成する](#create)
 
-* [Test the application](#test)
+* [アプリケーションをテストする](#test)
 
-* [Create a source repository](#repository)
+* [ソース リポジトリを作成する](#repository)
 
-* [Create an Azure Virtual Machine](#createvm)
+* [Azure の仮想マシンを作成する](#createvm)
 
-* [Test Nginx](#nginx)
+* [Nginx をテストする](#nginx)
 
-* [Prepare for deployment](#capify)
+* [デプロイの準備をする](#capify)
 
-* [Deploy](#deploy)
+* [展開](#deploy)
 
-* [Next steps](#next)
+* [次のステップ](#next)
 
-##<a id="setup"></a>Set up your development environment
+##<a id="setup"></a>開発環境を設定する
 
-1. Install Ruby in your development environment. Depending on your operating system, the steps may vary.
+1. 開発環境に Ruby をインストールします。この手順は、使用しているオペレーティング システムによって異なる場合があります。
 
-	* **Apple OS X** - There are several Ruby distributions for OS X. This tutorial was validated on OS X by using [Homebrew](http://brew.sh/) to install **rbenv** and **ruby-build**. Installation information can be found at [https://github.com/sstephenson/rbenv/](https://github.com/sstephenson/rbenv/).
+	***Apple OS X** - OS X 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証には、OS X で [Homebrew](http://brew.sh/) を使用して **rbenv** と **ruby-build** をインストールしました。インストールに関する情報は、[https://github.com/sstephenson/rbenv/](https://github.com/sstephenson/rbenv/) で確認できます。
 
-	* **Linux** - Use your distributions package management system. This tutorial was validated on Ubuntu 12.10 using the ruby1.9.1 and ruby1.9.1-dev packages.
+	***Linux** - ディストリビューションのパッケージ管理システムを使用します。このチュートリアルは、Ubuntu 12.10 で ruby1.9.1 および ruby1.9.1-dev パッケージを使用して検証されました。
 
-	* **Windows** - There are several Ruby distributions for Windows. This tutorial was validated using [RailsInstaller](http://railsinstaller.org/) 1.9.3-p392.
+	* **Windows** - Windows 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルは、[RailsInstaller](http://railsinstaller.org/) 1.9.3-p392 を使用して検証されました。
 
-2. Open a new command-line or terminal session and enter the following command to install Ruby on Rails:
+2. 新しいコマンド ラインまたはターミナル セッションを開き、次のコマンドを入力して Ruby on Rails をインストールします。
 
 		gem install rails --no-rdoc --no-ri
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>This command may require administrator or root privileges on some operating systems. If you receive an error while running this command, try using 'sudo' as follows:</p>
+	<strong>注</strong>
+	<p>オペレーティング システムによっては、このコマンドには管理者特権または root 権限が必要となる場合があります。このコマンドの実行中にエラーが発生した場合は、次のように "sudo" を使用してください。</p>
 	<pre class="prettyprint">sudo gem install rails</pre>
 	</div>
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>Version 3.2.12 of the Rails gem was used for this tutorial.</p>
+	<strong>メモ</strong>
+	<p>このチュートリアルでは、Rails gem Version 3.2.12 を使用しました。</p>
 	</div>
 
-3. You must also install a JavaScript interpreter, which will be used by Rails to compile CoffeeScript assets used by your Rails application. A list of supported interpreters is available at [https://github.com/sstephenson/execjs#readme](https://github.com/sstephenson/execjs#readme).
+3. JavaScript インタープリターもインストールする必要があります。これは、Rails アプリケーションで使われる CoffeeScript アセットをコンパイルするために Rails によって使用されます。サポートされているインタープリターの一覧は、[https://github.com/sstephenson/execjs#readme](https://github.com/sstephenson/execjs#readme) で確認できます。
 	
-	[Node.js](http://nodejs.org/) was used during validation of this tutorial, as it is available for OS X, Linux and Windows operating systems.
+	[Node.js](http://nodejs.org/) をこのチュートリアルの検証中に使用しました。このインタープリターは OS X、Linux、Windows の各オペレーティング システムで利用できるためです。
 
-##<a id="create"></a>Create a Rails application
+##<a id="create"></a>Rails アプリケーションを作成する
 
-1. From the command-line or terminal session, create a new Rails application named "blog_app" by using the following command:
+1. コマンド ラインまたはターミナル セッションから、次のコマンドを使用して、"blog_app" という名前の新しい Rails アプリケーションを作成します。
 
 		rails new blog_app
 
-	This command creates a new directory named **blog_app**, and populates it with the files and sub-directories required by a Rails application.
+	このコマンドは、**blog_app** という新しいディレクトリを作成し、Rails アプリケーションに必要なファイルとサブディレクトリをそこに格納します。
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>This command may take a minute or longer to complete. It performs a silent installation of the gems required for a default application, and during this time may appear to hang.</p>
+	<strong>注</strong>
+	<p>このコマンドが完了するまでには、しばらく時間がかかることがあります。このコマンドによって既定のアプリケーションに必要な gem のサイレント インストールが実行されますが、その間にハングしたように見える場合があります。</p>
 	</div>
 
-2. Change directories to the **blog_app** directory, and then use the following command to create a basic blog scaffolding:
+2. ディレクトリを **blog_app** に変更し、次のコマンドを使用して、基本的なブログ スキャフォールディングを作成します。
 
 		rails generate scaffold Post name:string title:string content:text
 
-	This will create the controller, view, model, and database migrations used to hold posts to the blog. Each post will have an author name, title for the post, and text content.
+	これにより、コントローラー、ビュー、モデル、およびブログへの投稿を保持するためのデータベースの移行が作成されます。各投稿には、作者名、記事のタイトル、およびテキスト コンテンツが含められます。
 
-3. To create the database that will store the blog posts, use the following command:
+3. 次のコマンドを実行して、ブログへの投稿を保存するデータベースを作成します。
 
 		rake db:migrate
 
-	This will use the default database provider for Rails, which is the [SQLite3 Database][sqlite3]. While you may wish to use a different database for a production application, SQLite is sufficient for the purposes of this tutorial.
+	この場合、Rails の既定のデータベース プロバイダーである [SQLite3 データベース][sqlite3]が使用されます。運用アプリケーションでは別のデータベースを使用する方が適している場合もありますが、このチュートリアルの目的では SQLite で十分です。
 
-##<a id="test"></a>Test the application
+##<a id="test"></a>アプリケーションをテストする
 
-Perform the following steps to start the Rails server in your development environment
+次の手順を実行して、開発環境で Rails サーバーを開始します。
 
-1. Change directories to the **blog_app** directory if you are not already there, and start the rails server using the following command:
+1. 別のディレクトリにいる場合は、**blog_app** ディレクトリに変更します。次のコマンドを使用して rails サーバーを開始します。
 
 		rails s
 
-	You should see output similar to the following. Note the port that the web server is listening on. In the example below, it is listening on port 3000.
+	次のような出力が表示されます。Web サーバーがリッスンしているポートに注目してください。下の例では、ポート 3000 をリッスンしています。
 
 		=> Booting WEBrick
 		=> Rails 3.2.12 application starting in development on http://0.0.0.0:3000
@@ -123,28 +123,28 @@ Perform the following steps to start the Rails server in your development enviro
 		[2013-03-12 19:11:31] INFO  ruby 1.9.3 (2012-04-20) [x86_64-linux]
 		[2013-03-12 19:11:31] INFO  WEBrick::HTTPServer#start: pid=9789 port=3000
 
-2. Open your browser and navigate to http://localhost:3000/. You should see a page similar to the following:
+2. ブラウザーを開き、http://localhost:3000/ に移動します。次のようなページが表示されます。
 
-	![default rails page][default-rails]
+	![既定の rails ページ][default-rails]
 
-	This page is a static welcome page. To see the forms generated by the scaffolding command, navigate to http://localhost:3000/posts. You should see a page similar to the following:
+	これは静的な開始ページです。スキャフォールディング コマンドによって生成されたフォームを表示するには、http://localhost:3000/posts に移動します。次のようなページが表示されます。
 
-	![a page listing posts][blog-rails]
+	![投稿の一覧のページ][blog-rails]
 
-	To stop the server process, enter CTRL+C in the command-line
+	サーバー プロセスを停止するには、コマンド ラインで Ctrl + C キーを押します。
 
-##<a id="repository"></a>Create a source repository
+##<a id="repository"></a>ソース リポジトリを作成する
 
-For this tutorial, we will use [Git](http://git-scm.com/) and [GitHub](https://github.com/) for version control and as a central location for our code.
+このチュートリアルでは、バージョン管理およびコードの集中的な保管場所として [Git](http://git-scm.com/) と [GitHub](https://github.com/) を使用します。
 
-1.	Create a new repository on [GitHub](https://github.com/). If you do not currently have a GitHub account, you can sign up for a free account. The steps in this tutorial assume that the repository name is **blog_app**.
+1. 	[GitHub](https://github.com/) で新しいリポジトリを作成します。GitHub アカウントを持っていない場合は、無料のアカウントにサインアップできます。このチュートリアルの手順では、リポジトリ名を **blog_app** と想定します。
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>The scripts created in later sections of this document will contain the address of your virtual machine and the user name used to deploy the application over SSH. For this reason, we recommend that you use a private GitHub repository if possible.</p>
+	<strong>メモ</strong>
+	<p>このドキュメントの後の手順で作成するスクリプトには、使用している仮想マシンのアドレスと、SSH 経由でのアプリケーションの展開に使用したユーザー名を含めることになります。このため、可能であればプライベートな GitHub リポジトリを使用することをお勧めします。</p>
 	</div>
 
-2.	From the command prompt, change directories to the **blog_app** directory and run the following commands to upload the initial version of the application to your GitHub repository:
+2. 	コマンド プロンプトから、ディレクトリを **blog_app** に変更し、次のコマンドを実行して、最初のバージョンのアプリケーションを GitHub リポジトリにアップロードします。
 
 		git init
 		git add .
@@ -153,59 +153,59 @@ For this tutorial, we will use [Git](http://git-scm.com/) and [GitHub](https://g
 		git push -u origin master
 
 
-##<a id="createvm"></a>Create an Azure Virtual Machine
+##<a id="createvm"></a>Azure の仮想マシンを作成する
 
-Follow the instructions given [here][vm-instructions] to create an Azure virtual machine that hosts Linux.
+[ここ][vm-instructions]に記載されている指示に従って、Linux をホストする Azure の仮想マシンを作成します。
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>The steps in this tutorial were performed on an Azure Virtual Machine hosting Ubuntu 12.10. If you are using a different Linux distribution, different steps may be required to accomplish the same tasks.</p>
+<strong>メモ</strong>
+<p>このチュートリアルの手順は、Ubuntu 12.10. をホストする Azure の仮想マシンで実行されました。他の Linux ディストリビューションを使用する場合は、同じタスクを完了するために別の手順が必要になることがあります。</p>
 </div>
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>You <strong>only</strong> need to create the virtual machine. Stop after learning how to connect to the virtual machine using SSH.</p>
+<strong>注</strong>
+<p>ここで作成する必要があるのは、仮想マシンだけ<strong></strong>です。SSH を使用して仮想マシンに接続する方法を確認したら戻ってください。</p>
 </div>
 
-After creating the Azure Virtual Machine using SSH and perform the following steps to install Ruby and Rails on the virtual machine:
+SSH を使用して Azure の仮想マシンを作成したら、次の手順を実行して、仮想マシンに Ruby および Rails をインストールします。
 
-1. Connect to the virtual machine using SSH and use the following commands to update existing packages and install your Ruby environment:
+1. SSH を使用して仮想マシンに接続し、次のコマンドを使用して、既存のパッケージの更新と Ruby 環境のインストールを行います。
 
 		sudo apt-get -y update
 		sudo apt-get -y upgrade
 		sudo apt-get -y install ruby1.9.1 ruby1.9.l-dev build-essential libsqlite3-dev nodejs curl git-core nginx
 
-	After the installation completes, use the following command to verify that Ruby has been successfully installed:
+	インストールが完了したら、次のコマンドを使用して Ruby が正常にインストールされたことを確認します。
 
 		ruby -v
 
-	This should return the version of Ruby that is installed on the virtual machine, which may be different than 1.9.1. For example, **ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-linux]**.
+	このコマンドは、仮想マシンにインストールされている Ruby のバージョンを返します。これは 1.9.1 ではない可能性もあります。たとえば、**ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-linux]** のようになります。
 
-2. Use the following command to install Bundler:
+2. 次のコマンドを使用して Bundler をインストールします。
 
 		sudo gem install bundler
 
-	Bundler will be used to install the gems required by your Rails application once it has been copied to the server.
+	Bundler は、いったんサーバーにコピーされると、Rails アプリケーションに必要な gem をインストールするために使用されます。
 
-##<a id="nginx"></a>Open port 80 and test Nginx
+##<a id="nginx"></a>ポート 80 を開いて Nginx をテストする
 
-Nginx provides a default web site that we can use to make sure our virtual machine is accepting web traffic. Perform the following steps enable traffic over port 80 and test the default Nginx web site.
+Nginx には、仮想マシンが Web トラフィックを受け入れているかどうかを確認するために使用できる既定の Web サイトが用意されています。次の手順を実行して、ポート 80 経由のトラフィックを有効にし、既定の Nginx Web サイトをテストします。
 
-2.	From the SSH session with the VM, start the Nginx service:
+2. 	VM への SSH セッションから、Nginx サービスを開始します。
 
 		sudo service nginx start
 
-	This will start the Nginx service, which will listen for incoming traffic on port 80.
+	これにより Nginx サービスが開始され、ポート 80 で受信トラフィックをリッスンします。
 
-2. In your browser, navigate to the [Azure Management Portal][management-portal] and select your Virtual Machine.
+2. ブラウザーで [Azure 管理ポータル][management-portal]に移動し、適切な仮想マシンを選択します。
 
-	![virtual machine list][vmlist]
+	![仮想マシンの一覧][vmlist]
 
-3. Select **ENDPOINTS** at the top of the page, and then click **+ ADD ENDPOINT** at the bottom of the page.
+3. ページの上部にある **[エンドポイント]** を選択し、ページの下部にある **[エンドポイントの追加]** をクリックします。
 
-	![endpoints page][endpoints]
+	![エンドポイント ページ][endpoints]
 
-4. In the **ADD ENDPOINT** dialog, click the arrow in the bottom left to continue to the second page, and enter the following information in the form:
+4. **[エンドポイントの追加]** ダイアログで、左下にある矢印をクリックして次のページへ進み、フォームに次の情報を入力します。
 
 	* **NAME**: HTTP
 
@@ -215,62 +215,62 @@ Nginx provides a default web site that we can use to make sure our virtual machi
 
 	* **PRIVATE PORT**: 80
 
-	This will create a public port of 80 that will route traffic to the private port of 80 - where Nginx is listening.
+	これにより、プライベート ポート 80 にトラフィックをルーティングするパブリック ポート 80 が作成されます。ルーティング先のプライベート ポートは、Nginx がリッスンしています。
 
-	![new endpoint dialog][new-endpoint]
+	![新しいエンドポイントのダイアログ][new-endpoint]
 
-5. Click the checkmark to save the endpoint.
+5. チェックマークをクリックして、エンドポイントを保存します。
 
-6. A message should appear that states **UPDATE IN PROGRESS**. Once this message disappears, the endpoint is active. You may now test your application by navigating to the DNS name of your virtual machine. The web site should appear similar to the following:
+6. **"更新が進行中です"** というメッセージが表示されます。このメッセージが消えると、エンドポイントがアクティブになります。この時点で仮想マシンの DNS 名に移動すると、アプリケーションをテストできます。Web サイトは次のように表示されます。
 
-	![nginx welcome page][nginx-welcome]
+	![nginx の開始ページ][nginx-welcome]
 
-2.	Stop and remove the default Nginx website with the following commands:
+2. 	次のコマンドを使用して、既定の Nginx Web サイトを停止して削除します。
 
 		sudo service nginx stop
 		sudo rm /etc/nginx/sites-enabled/default
 
-	The deployment scripts ran later in this tutorial will make the blog_app the default website served by Nginx.
+	このチュートリアルの後の手順で実行する展開スクリプトでは、blog_app が Nginx によって提供される既定の Web サイトに設定されます。
 
-##<a id="capify"></a>Prepare for deployment
+##<a id="capify"></a>展開の準備をする
 
-In this section, you will modify the application to use the Unicorn web server, enable Capistrano for deployment, enable GitHub access from the virtual machine, and create the scripts used to deploy and start the application.
+このセクションでは、Unicorn Web サーバーを使用するようにアプリケーションを変更し、デプロイ用に Capistrano を有効にします。さらに、仮想マシンから GitHub へのアクセスを有効にし、アプリケーションのデプロイと開始に使用するスクリプトを作成します。
 
-1. Authorize your virtual machine to authenticate to your GitHub account using a certificate by performing the steps described on the [Generating SSH Keys](https://help.github.com/articles/generating-ssh-keys#platform-all) page. This will be used to access your GitHub repository from the deployment scripts.
+1. [SSH キーの生成方法に関するページ](https://help.github.com/articles/generating-ssh-keys#platform-all)に記載されている手順を実行して、証明書を使用して GitHub アカウントに認証できるように仮想マシンを承認します。これは、展開スクリプトから GitHub リポジトリにアクセスするために使用されます。
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>While the SSH key must be generated on the virtual machine, you can add the key to your GitHub account using the browser in the development environment.</p>
-	<p>To view the contents of the SSH certificate so that you can copy and paste to GitHub, use the following command:</p>
+	<strong>注</strong>
+	<p>SSH キーは仮想マシン上で生成する必要がありますが、GitHub アカウントへのキーの追加には開発環境のブラウザーを使用できます。</p>
+	<p>SSH 証明書の内容を表示するには、次のコマンドを使用します。この出力結果を GitHub にコピーして貼り付けることができます。</p>
 	<pre>cat ~/.ssh/id_rsa.pub</pre>
 	</div>
 
 
-1. On your development machine, modify the **Gemfile** and uncomment the lines for **Capistrano** and **Unicorn** by removing the '#' character from the beginning of following lines:
+1. 開発用コンピューターで、**Gemfile** を変更し、**Capistrano** と **Unicorn** の行のコメントを解除します。このためには、次の行の先頭にある '#" 文字を削除します。
 
 		# gem 'unicorn'
 		# gem 'capistrano'
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>Unicorn is not available on Windows. If you are using Windows as your development environment, modify the <strong>Gemfile</strong> to ensure that it will only attempt to install Unicorn when deployed to the VM:</p>
+	<strong>メモ</strong>
+	<p>Unicorn は Windows では利用できません。開発環境として Windows を使用している場合は、次のように <strong>Gemfile</strong> を変更して、VM に展開するときにのみ Unicorn のインストールを試みるようにしてください。</p>
 	<pre class="prettyprint">platforms :ruby do<br />  gem 'unicorn'<br />end</pre>
 	</div>
  
-5.	Run the following commands to install the new gems and setup Capistrano for your project:
+5. 	次のコマンドを実行して、新しい gem をインストールし、プロジェクト向けに Capistrano をセットアップします。
 		
 		bundle
 		capify .
 
-6.	Add the following files to the **blog_app/config** directory and populate each file with the contents found at the links below:
+6. 	**blog_app/config** ディレクトリに次のファイルを追加し、以下のリンク先の内容で各ファイルを更新します。
 
-	* [nginx.conf](https://gist.github.com/cff582f4f970a95991e9) - Configures Nginx to work with Unicorn and serve the static files included with the Rails application
-	* [unicorn_init.sh](https://gist.github.com/3272994) - The shell script used to start the Unicorn server process
-	* [unicorn.rb](https://gist.github.com/3273014) - The configuration file for Unicorn
+	* [nginx.conf](https://gist.github.com/cff582f4f970a95991e9) - Nginx を Unicorn と連携させ、Rails アプリケーションに含まれている静的ファイルを提供するように構成します
+	* [unicorn_init.sh](https://gist.github.com/3272994) - Unicorn サーバー プロセスを開始するときに使用するシェル スクリプト
+	* [unicorn.rb](https://gist.github.com/3273014) - Unicorn の構成ファイル
 
-	In each file, replace the word **blogger** with the username used to login to your virtual machine. This is the user that will be used to deploy the application.
+	各ファイルでは、**blogger** という単語を、仮想マシンへのログインに使用するユーザー名に置き換えてください。このユーザーがアプリケーションの展開に使用されます。
 
-7.  In the **blog_app/config** directory, edit the **deploy.rb** file and replace the existing contents with the following:
+7. **blog_app/config** ディレクトリで、**deploy.rb** ファイルを編集し、既存のコンテンツを次の内容に置き換えます。
 
 		require "bundler/capistrano"
 
@@ -316,85 +316,85 @@ In this section, you will modify the application to use the Unicorn web server, 
 		  after "deploy:finalize_update", "deploy:symlink_config"
 		end
 
-	In the above text, replace the following:
+	上のテキストにおいて、次の単語は適切に置き換えてください。
 
-	* **YourGitHubAccount** with your GitHub account name
-	* **VMDNSName** with the DNS of your Azure virtual machine
-	* **blogger** with the username used to login to your virtual machine
-	* **SSHPort** with the external SSH port for your virtual machine
+	* **YourGitHubAccount** は GitHub アカウント名に置換
+	* **VMDNSName** は、Azure 仮想マシンの DNS に置換
+	* **blogger** は仮想マシンへのログインに使用するユーザー名に置換
+	* **SSHPort** は仮想マシンの外部 SSH ポートに置換
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>If your development environment is a Windows system, you must add the following line to the <b>deploy.rb</b> file. This should be placed along with the other <b>set</b> statements at the beginning of the file:</p>
+	<strong>メモ</strong>
+	<p>開発環境が Windows システムの場合は、<b>deploy.rb</b> ファイルに次の行を追加する必要があります。この行は、ファイルの先頭にある他の <b>set</b> ステートメントと一緒に記述する必要があります。</p>
 	<pre>set :bundle_flags, "--no-deployment --quiet"</pre>
-	<p>This is not best practice, as it causes gems to be loaded from the Gemfile during deployment instead of the Gemfile.lock, but is required since the target system (Linux) is different than the development system (Windows).</p>
+	<p>この方法では、デプロイ中に Gemfile.lock ではなく Gemfile から gem が読み込まれます。これはベスト プラクティスとは言えませんが、対象のシステム (Linux) が開発システム (Windows) と異なるために必要です。</p>
 	</div>
 
-7.	Uncomment the assets line in the **Capfile** located in the **blog_app** directory.
+7.	**blog_app** ディレクトリにある **Capfile** で、アセットの行のコメントを解除します。
 
 		load 'deploy/assets'
 
-8.	Run the following commands to commit the changes to the project and upload them to GitHub.
+8.	次のコマンドを実行して、プロジェクトへの変更をコミットし、GitHub にアップロードします。
 
 		git add .
 		git commit -m "adding config files"
 		git push
 
-##<a id="deploy"></a>Deploy
+##<a id="deploy"></a>展開
 
-2.	From your local development machine, use the following command to setup the remote Azure VM for deployment.
+2.	ローカルの開発用コンピューターから次のコマンドを使用して、リモートの Azure VM を展開用にセットアップします。
 
 		cap deploy:setup
 
-	When prompted, enter the password for the virtual machine user account. Capistrano will connect to the VM and create an **apps** directory under the home directory of the user account.
+	仮想マシンのユーザー アカウントのパスワードを要求されたら入力します。Capistrano が VM に接続し、ユーザー アカウントのホーム ディレクトリの下に **apps** ディレクトリを作成します。
 
-3.	From an SSH connection to Azure VM, modify the permissions of the **app** directory by using the following command:
+3.	Azure VM への SSH 接続から、次のコマンドを使用して **app** ディレクトリのパーミッションを変更します。
 		
 		sudo chmod -R 777 apps
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>This is not suggested for production environments, and is only being used now for demonstration purposes.</p>
+	<strong>注</strong>
+	<p>これは運用環境では実行しない手順ですが、ここではデモンストレーションの目的で使用しています。</p>
 	</div>
 
-4.	Do a cold deploy using the following command on your development environment. This will deploy the application to the virtual machine and start the Unicorn service.
+4.	開発環境で次のコマンドを使用して、コールド展開を実行します。これにより、アプリケーションが仮想マシンに展開され、Unicorn サービスが開始されます。
 
 		cap deploy:cold
 
-3.	Start the Nginx service, which should begin routing traffic to Unicorn and serving static content:
+3.	Nginx サービスを開始します。これにより、Unicorn へのトラフィックのルーティングと静的コンテンツの提供が開始されます。
 
 		sudo service nginx start
 
-At this point, your Ruby on Rails application should be running on your Azure virtual machine. To verify this, enter the DNS name of your virtual machine in your web browser. For example, http://railsvm.cloudapp.net. The 'Welcome aboard' screen should appear:
+この時点で、Ruby on Rails アプリケーションは既に Azure の仮想マシンで動作していることになります。これを確認するには、Web ブラウザーに仮想マシンの DNS 名を入力します。たとえば、「http://railsvm.cloudapp.net」のように入力します。'Welcome aboard' という画面が表示されます。
 
-![welcome aboard page][default-rails-cloud]
+!["Welcome aboard" ページ][default-rails-cloud]
 
-If you append '/posts' to the URL, the posts index should appear and you should be able to create, edit and delete posts.
+URL に "/posts" を追加すると、投稿のインデックスが表示され、ポストの作成、編集、削除を行うことができます。
 
-##<a id="next"></a>Next steps
+##<a id="next"></a>次のステップ
 
-In this article you have learned how to create and publish a basic forms-based Rails application to an Azure Virtual Machine using Capistrano. The virtual machine used Unicorn and Nginx to handle web requests to the application.
+この記事では、基本的なフォーム ベースの Rails アプリケーションを作成し、Capistrano を使用して Azure の仮想マシンに発行する方法について説明しました。仮想マシンでは、Unicorn と Nginx を使用してアプリケーションへの Web 要求を処理しました。
 
-For a more basic example of creating and deploying a Rails application to an Azure VM using only SSH, see [Host a Ruby on Rails Web App using a Linux Virtual Machine][ruby-vm].
+より基礎的な例として、Rails アプリケーションを作成し、SSH のみを使用して Azure VM に展開する手順については、「[Linux VM を使用した Azure での Ruby on Rails Web アプリケーション][ruby-vm]」を参照してください。
 
-If you would like to learn more about Ruby on Rails, visit the [Ruby on Rails Guides][rails-guides].
+Ruby on Rails の詳細について学習するには、「[Ruby on Rails のガイド][rails-guides]」を参照してください。
 
-To learn how to use the Azure SDK for Ruby to access Azure services from your Ruby application, see:
+Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サービスにアクセスする方法については、次のリンクを参照してください。
 
-* [Store unstructured data using blobs][blobs]
+* [BLOB を使用して非構造化データを保存する][blobs]
 
-* [Store key/value pairs using tables][tables]
+* [テーブルを使用してキー/値のペアを保存する][tables]
 
-* [Serve high bandwidth content with the Content Delivery Network][cdn-howto]
+* [コンテンツ配信ネットワークを使用して高帯域幅コンテンツを配信する][cdn-howto]
 
-[vm-instructions]: /en-us/manage/linux/tutorials/virtual-machine-from-gallery/
+[vm-instructions]: /ja-jp/manage/linux/tutorials/virtual-machine-from-gallery/
 
 
 [rails-guides]: http://guides.rubyonrails.org/
-[blobs]: /en-us/develop/ruby/how-to-guides/blob-storage/
-[tables]: /en-us/develop/ruby/how-to-guides/table-service/
-[cdn-howto]: /en-us/develop/ruby/app-services/
-[ruby-vm]: /en-us/develop/ruby/tutorials/web-app-with-linux-vm/
+[blobs]: /ja-jp/develop/ruby/how-to-guides/blob-storage/
+[tables]: /ja-jp/develop/ruby/how-to-guides/table-service/
+[cdn-howto]: /ja-jp/develop/ruby/app-services/
+[ruby-vm]: /ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/
  
 [blog-rails]: ./media/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/blograilslocal.png
 [blog-rails-cloud]: ./media/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/blograilscloud.png 
@@ -407,3 +407,4 @@ To learn how to use the Azure SDK for Ruby to access Azure services from your Ru
 
 [management-portal]: https://manage.windowsazure.com/
 [sqlite3]: http://www.sqlite.org/
+

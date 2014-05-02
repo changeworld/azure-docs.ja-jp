@@ -1,53 +1,53 @@
-<properties linkid="manage-linux-howto-linux-agent" urlDisplayName="Linux Agent guide" pageTitle="Linux Agent User Guide for Azure" metaKeywords="" description="Learn how to install and configure Linux Agent (waagent) to manage your virtual machine's interaction with Azure Fabric Controller." metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure Linux Agent User Guide" authors="" solutions="" manager="" editor="" />
+<properties linkid="manage-linux-howto-linux-agent" urlDisplayName="Linux エージェント ガイド" pageTitle="Azure Linux エージェント ユーザー ガイド" metaKeywords="" description="Azure ファブリック コントローラーと仮想マシンとの相互動作を管理するために、Linux エージェント (waagent) をインストールして構成する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure Linux エージェント ユーザー ガイド" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-#Azure Linux Agent User Guide
+#Azure Linux エージェント ユーザー ガイド
 
-##Introduction
+##はじめに
 
-The Azure Linux Agent (waagent) manages virtual machine interaction with the Azure Fabric Controller. It provides the following functionality for Linux IaaS deployments:
+Azure Linux エージェント (waagent) は仮想マシンと Azure ファブリック コントローラーとの相互動作を管理します。Linux IaaS 展開用に次の機能が用意されています。
 
-* **Image Provisioning**
-  - Creation of a user account
-  - Configuring SSH authentication types
-  - Deployment of SSH public keys and key pairs
-  - Setting the host name
-  - Publishing the host name to the platform DNS
-  - Reporting SSH host key fingerprint to the platform
-  - Resource Disk Management
-  - Formatting and mounting the resource disk
-  - Configuring swap space
-* **Networking**
-  - Manages routes to improve compatibility with platform DHCP servers
-  - Ensures the stability of the network interface name
-* **Kernel**
-  - Configuring virtual NUMA
-  - Consume Hyper-V entropy for /dev/random
-  - Configuring SCSI timeouts for the root device (which could be remote)
+* **イメージのプロビジョニング**
+  - ユーザー アカウントの作成
+  - SSH 認証の種類の構成
+  - SSH 公開キーおよびキー ペアの展開
+  - ホスト名の設定
+  - プラットフォーム DNS へのホスト名の発行
+  - プラットフォームへの SSH ホスト キーの指紋のレポート
+  - リソース ディスクの管理
+  - リソース ディスクのフォーマットとマウント
+  - スワップ領域の構成
+* **ネットワーク**
+  - プラットフォーム DHCP サーバーとの互換性を向上させるためのルートの管理
+  - ネットワーク インターフェイス名の安定性の保持
+* **カーネル**
+  - 仮想 NUMA の構成
+  - /dev/random の Hyper-V エントロピの使用
+  - root デバイス (リモート デバイス) の SCSI タイムアウトの構成
 * **Diagnostics**
-  - Console redirection to the serial port
-* **SCVMM Deployments**
-    - Detect and bootstrap the VMM agent for Linux when running in a System
-      Center Virtual Machine Manager 2012 R2 environment
+  - コンソールからシリアル ポートへのリダイレクト
+* **SCVMM の展開**
+    - システムで実行されているときに Linux 用の VMM エージェントを検出およびブートストラップ
+      Center Virtual Machine Manager 2012 R2 環境
 
 
-The information flow from the platform to the agent occurs via two channels:
+プラットフォームからエージェントへの情報の流れは 2 つのチャンネルを経由します。
 
-* A boot-time attached DVD for IaaS deployments. This DVD includes an OVF-compliant configuration file that includes all provisioning information other than the actual SSH keypairs.
+* 起動時に接続される IaaS 展開用 DVD。この DVD に、OVF に準拠した構成ファイルが収録されており、このファイルに、実際の SSH キー ペア以外のすべてのプロビジョニング情報が保存されています。
 
-* A TCP endpoint exposing a REST API used to obtain deployment and topology configuration.
+* 展開とトポロジの構成を取得するために使用する REST API を公開する TCP エンドポイント。
 
-###Obtaining the Linux Agent
-You can obtain the Latest Linux Agent directly from:
+###Linux エージェントの入手
+最新の Linux エージェントは次のいずれかから直接入手できます。
 
-- [The different Distribution providers endorsing Linux on Azure](http://support.microsoft.com/kb/2805216)
-- or from the [Github Open Source Repository for the Azure Linux Agent](https://github.com/WindowsAzure/WALinuxAgent)
+- [Azure 上での動作保証済みのさまざまな Linux ディストリビューションのプロバイダー](http://support.microsoft.com/kb/2805216)
+- [GitHub の Azure Linux エージェント用オープン ソース リポジトリ](https://github.com/WindowsAzure/WALinuxAgent)
 
 
-###Supported Linux Distributions
+###サポートされている Linux ディストリビューション
 * CentOS 6.2+
 * Debian 7.0+
 * Ubuntu 12.04+
@@ -55,96 +55,96 @@ You can obtain the Latest Linux Agent directly from:
 * SLES 11 SP2+
 * Oracle Linux 6.4+
 
-Other Supported Systems:
+サポートされるその他のシステム:
 
 * FreeBSD 9+ (WALinuxAgent v2.0.0+)
 
 
-###Requirements
+###要件
 
-Waagent depends on some system packages in order to function properly:
+Waagent が正しく機能するには次の該当するシステム パッケージが必要です。
 
 * Python 2.5+
 * Openssl 1.0+
 * Openssh 5.3+
-* Filesystem utilities: sfdisk, fdisk, mkfs
-* Password tools: chpasswd, sudo
-* Text processing tools: sed, grep
-* Network tools: ip-route
+* ファイルシステム ユーティリティ: sfdisk、fdisk、mkfs
+* パスワード ツール: chpasswd、sudo
+* テキスト処理ツール: sed、grep
+* ネットワーク ツール: ip-route
 
-##Installation
+##インストール
 
-Installation using an RPM or a DEB package from your distribution's package repository is the preferred method of installing and upgrading the Windows Azure Linux Azure.
+お使いのディストリビューションのパッケージのリポジトリから RPM または DEB パッケージを使用してインストールする方法は、Windows Azure Linux Azure のインストールおよびアップグレードとしてお勧めする方法です。
 
-If installing manually, waagent should be copied to /usr/sbin/waagent and installed by running: 
+手動のインストールでは、次のコマンドを実行して、waagent を /usr/sbin/waagent にコピーおよびインストールする必要があります。
 
 	# sudo chmod 755 /usr/sbin/waagent
 	# /usr/sbin/waagent -install -verbose
 
-The agent's log file is kept at /var/log/waagent.log.
+エージェントのログ ファイルは /var/log/waagent.log に記録されます。
 
 
-##Command Line Options
+##コマンド ライン オプション
 
-###Flags
+###フラグ
 
-- verbose: Increase verbosity of specified command
-- force: Skip interactive confirmation for some commands
+- verbose: 指定したコマンドのメッセージの詳細度を上げます。
+- force: 一部のコマンドの対話形式の確認をスキップします。
 
-###Commands
+###コマンド
 
-- help: Lists the supported commands and flags.
+- help: サポートされているコマンドとフラグを一覧表示します。
 
-- install: Manual installation of the agent
- * Checks the system for required dependencies
+- install: エージェントを手動でインストールします。
+ システムに対してインストールに必須の依存関係かあるかどうかを確認します。*
 
- * Creates the SysV init script (/etc/init.d/waagent), the logrotate configuration file (/etc/logrotate.d/waagent and configures the image to run the init script on boot
+ *SysV の init スクリプト (/etc/init.d/waagent) と logrotate 構成ファイル (/etc/logrotate.d/waagent) を作成します。起動時に init スクリプトを実行するようにイメージを設定します。
 
- * Writes sample configuration file to /etc/waagent.conf
+ * サンプル構成ファイルを /etc/waagent.conf に書き込みます。
 
- * Any existing configuration file is moved to /etc/waagent.conf.old
+ * 既存の構成ファイルは、/etc/waagent.conf.old に移動されます。
 
- * Detects kernel version and applies the VNUMA workaround if necessary
+ * カーネルのバージョンを検出し、必要に応じて VNUMA 回避策を適用します。
 
- * Moves udev rules that may interfere with networking (/lib/udev/rules.d/75-persistent-net-generator.rules, /etc/udev/rules.d/70-persistent-net.rules) to /var/lib/waagent/  
+ * ネットワークを妨げる可能性のある udev ルール (/lib/udev/rules.d/75-persistent-net-generator.rules、/etc/udev/rules.d/70-persistent-net.rules) を /var/lib/waagent/ に移動します。
 
-- uninstall: Remove waagent and associated files
- * Unregisters the init script from the system and deletes it
+- uninstall: waagent と関連するファイルを削除します。
+ *システムから init スクリプトを登録解除して削除します。
 
- * Deletes the logrotate configuration and the waagent config file in /etc/waagent.conf
+ * /etc/waagent.conf 内の logrotate 構成および waagent 構成ファイルを削除します。
 
- * Restores any moved udev rules that were moved during installation
+ * インストール中に移動された udev ルールをすべて復元します。
 
- * Automatic reverting of the VNUMA workaround is not supported, please edit the GRUB configuration files by hand to re-enable NUMA if required.
+ * VNUMA 回避策の自動復帰はサポートされていません。必要に応じて、手動で GRUB の構成ファイルを編集して、NUMA を再度有効にしてください。
 
-- deprovision: Attempt to clean the system and make it suitable for re-provisioning. This operation deleted the following:
- * All SSH host keys (if Provisioning.RegenerateSshHostKeyPair is 'y' in the configuration file)
+- deprovision: システムをクリーンアップし、再プロビジョニングに適した状態にしようとします。この操作によって次のものが削除されます。
+ * すべての SSH ホスト キー (構成ファイルで Provisioning.RegenerateSshHostKeyPair が 'y' の場合)
 
- * Nameserver configuration in /etc/resolv.conf
+ * /etc/resolv.conf 内のネームサーバー構成
 
- * Root password from /etc/shadow (if Provisioning.DeleteRootPassword is 'y' in the configuration file)
+ * /etc/shadow の root パスワード (構成ファイルで Provisioning.DeleteRootPassword が 'y' の場合)
 
- * Cached DHCP client leases
+ * キャッシュされた DHCP クライアントのリース
 
- * Resets host name to localhost.localdomain
+ * ホスト名を localhost.localdomain にリセット
 
- **Warning:** Deprovision does not guarantee that the image is cleared of all sensitive information and suitable for redistribution.
+ **警告:** プロビジョニング解除により、イメージからすべての機密情報が削除され、イメージが再配布に適した状態になることが保証されるわけではありません。
 
-- deprovision+user: Performs everything under -deprovision (above) and also deletes the last provisioned user account (obtained from /var/lib/waagent) and associated data. This parameter is when de-provisioning an image that was previously provisioning on Azure so it may be captured and re-used.
+- deprovision+user: -deprovision の場合のすべての対象 (上記参照) を実行するほか、前回プロビジョニングされたユーザー アカウント (/var/lib/waagent から取得) および関連付けられたデータも削除します。このパラメーターは、Azure で先にプロビジョニングしたイメージのプロビジョニングを解除するため、取得して再使用できます。
 
-- version: Displays the version of waagent
+- version: waagent のバージョンを表示します。
 
-- serialconsole: Configures GRUB to mark ttyS0 (the first serial port) as
-   the boot console. This ensures that kernel bootup logs are sent to the
-   serial port and made available for debugging.
+- serialconsole: GRUB で ttyS0 (最初のシリアル ポート) がブート コンソールに
+   なるように構成します。これにより、カーネルの起動ログがシリアル ポートに送信され、
+   デバッグに使用できるようになります。
 
-- daemon: Run waagent as a daemon to manage interaction with the platform.
-   This argument is specified to waagent in the waagent init script.
+- daemon: プラットフォームとの相互動作を管理するデーモンとして waagent を実行します。
+   この引数には waagent init スクリプト内で waagent が指定されます。
 
 ##Configuration
 
-A configuration file (/etc/waagent.conf) controls the actions of waagent. 
-A sample configuration file is shown below:
+構成ファイル (/etc/waagent.conf) を使用して waagent の動作を制御します。
+サンプル構成ファイルを次に示します。
 	
 	#
 	# Azure Linux Agent Configuration	
@@ -167,135 +167,135 @@ A sample configuration file is shown below:
 	OS.RootDeviceScsiTimeout=300
 	OS.OpensslPath=None
 
-The various configuration options are described in detail below. 
-Configuration options are of three types : Boolean, String or Integer. 
-The Boolean configuration options can be specified as "y" or "n". 
-The special keyword "None" may be used for some string type configuration entries as detailed below.
+さまざまな構成オプションについて次に詳述します。
+構成オプションには、ブール、文字列、整数の 3 つの型があります。
+ブール型の構成オプションは "y" または "n" として指定できます。
+特別なキーワード "None" は、次に詳述しているように、一部の文字列型の構成オプションに使用できます。
 
-**Role.StateConsumer:**
+**Role.StateConsumer: **
 
-Type: String  
-Default: None
+型: 文字列
+既定値: None
 
-If a path to an executable program is specified, it is invoked when waagent has provisioned the image and the "Ready" state is about to be reported to the Fabric. The argument specified to the program will be "Ready". The agent will not wait for the program to return before continuing.
+実行可能プログラムへのパスを指定した場合は、waagent がイメージのプロビジョニングを完了し、"Ready" 状態がファブリックにレポートされようとするときに呼び出されます。プログラムに指定された引数が "Ready" になります。エージェントはプログラムから制御が返るのを待たずに処理を続行します。
 
-**Role.ConfigurationConsumer:**
+**Role.ConfigurationConsumer: **
 
-Type: String  
-Default: None
+型: 文字列
+既定値: None
 
-If a path to an executable program is specified, the program is invoked when the Fabric indicates that a configuration file is available for the virtual machine. The path to the XML configuration file is provided as an argument to the executable. This may be invoked multiple times whenever the configuration file changes. A sample file is provided in the Appendix. The current path of this file is /var/lib/waagent/HostingEnvironmentConfig.xml.
+実行可能プログラムへのパスを指定した場合、構成ファイルが仮想マシンに使用可能であることがファブリックによって通知されると、そのプログラムは呼び出されます。XML 構成ファイルへのパスは引数として実行可能プログラムに渡されます。このプログラムは、構成ファイルが変更されるたびに複数回呼び出すことができます。「付録」にサンプル ファイルを示しています。このファイルの現在のパスは /var/lib/waagent/HostingEnvironmentConfig.xml です。
 
-**Role.TopologyConsumer:**
+**Role.TopologyConsumer: **
 
-Type: String  
-Default: None
+型: 文字列
+既定値: None
 
-If a path to an executable program is specified, the program is invoked when the Fabric indicates that a new network topology layout is available for the virtual machine.The path to the XML configuration file is provided as an argument to the executable. This may be invoked multiple times whenever the network topology changes (due to service healing for example). A sample file is provided in the Appendix. The current location of this file is /var/lib/waagent/SharedConfig.xml.
+実行可能プログラムへのパスを指定した場合、新しいネットワーク トポロジ レイアウトが仮想マシンに使用可能であることがファブリックによって通知されると、そのプログラムは呼び出されます。XML 構成ファイルへのパスは引数として実行可能プログラムに渡されます。このプログラムは、ネットワーク トポロジが変更されるたびに (サービス復旧のためなど) 複数回呼び出すことができます。「付録」にサンプル ファイルを示しています。このファイルの現在の場所は /var/lib/waagent/SharedConfig.xml です。
 
-**Provisioning.Enabled:**
+**Provisioning.Enabled: **
 
-Type: Boolean  
-Default: y
+型: ブール
+既定: y
 
-This allows the user to enable or disable the provisioning functionality in the agent. Valid values are "y" or "n". If provisioning is disabled, SSH host and user keys in the image are preserved and any configuration specified in the Azure provisioning API is ignored.
+エージェントのプロビジョニング機能を有効または無効にすることができます。有効な値は "y" または "n" です。プロビジョニングを無効にした場合、イメージ上の SSH ホストとユーザー キーが保持され、Azure プロビジョニング API で指定した構成はすべて無視されます。
 
-**Provisioning.DeleteRootPassword:**
+**Provisioning.DeleteRootPassword: **
 
-Type: Boolean  
-Default: n
+型: ブール
+既定: n
 
-If set, the root password in the /etc/shadow file is erased during the provisioning process.
+設定した場合、/etc/shadow 内の root パスワードがプロビジョニング プロセス中に消去されます。
 
-**Provisioning.RegenerateSshHostKeyPair:**
+**Provisioning.RegenerateSshHostKeyPair: **
 
-Type: Boolean  
-Default: y
+型: ブール
+既定: y
 
-If set, all SSH host key pairs (ecdsa, dsa and rsa) are deleted during the provisioning process from /etc/ssh/. And a single fresh key pair is generated.
+設定した場合、すべての SSH ホスト キー ペア (ecdsa、dsa、rsa) がプロビジョニング プロセス中に /etc/ssh/ から削除されます。1 つの新しいキー ペアが生成されます。
 
-The encryption type for the fresh key pair is configurable by the Provisioning.SshHostKeyPairType entry. Please note that some distributions will re-create SSH key pairs for any missing encryption types when the SSH daemon is restarted (for example, upon a reboot).
+新しいキー ペアの暗号化の種類は Provisioning.SshHostKeyPairType オプションで構成できます。一部のディストリビューションでは、SSH デーモンの再起動時 (再起動プロセス中など)、不足している暗号化の種類用に SSH キー ペアが再作成されることに注意してください。
 
-**Provisioning.SshHostKeyPairType:**
+**Provisioning.SshHostKeyPairType: **
 
-Type: String  
-Default: rsa
+型: 文字列
+既定: rsa
 
-This can be set to an encryption algorithm type that is supported by the SSH daemon on the virtual machine. The typically supported values are "rsa", "dsa" and "ecdsa". Note that "putty.exe" on Windows does not support "ecdsa". So, if you intend to use putty.exe on Windows to connect to a Linux deployment, please use "rsa" or "dsa".
+仮想マシンの SSH デーモンによってサポートされている暗号化アルゴリズムの種類を設定できます。一般的にサポートされている値は "rsa"、"dsa"、"ecdsa" です。Windows の "putty.exe" は "ecdsa" をサポートしていないことに注意してください。そのため、Windows の putty.exe を使用して Linux の展開に接続する場合は、"rsa" または "dsa" を使用してください。
 
-**Provisioning.MonitorHostName:**
+**Provisioning.MonitorHostName: **
 
-Type: Boolean  
-Default: y
+型: ブール
+既定: y
 
-If set, waagent will monitor the Linux virtual machine for hostname changes (as returned by the "hostname" command) and automatically update the networking configuration in the image to reflect the change. In order to push the name change to the DNS servers, networking will be restarted in the virtual machine. This will result in brief loss of Internet connectivity.
+設定した場合、waagent は Linux 仮想マシンに対してホスト名の変更があるかどうか ("hostname" コマンドによって返される値) を監視し、変更があればイメージ上のネットワーク構成を自動的に更新して反映します。DNS サーバーに名前の変更をプッシュするために、仮想マシンでネットワークが再起動されます。これによりインターネット接続は短時間失われます。
 
-**ResourceDisk.Format:**
+**ResourceDisk.Format: **
 
-Type: Boolean  
-Default: y
+型: ブール
+既定: y
 
-If set, the resource disk provided by the platform will be formatted and mounted by waagent if the filesystem type requested by the user in "ResourceDisk.Filesystem" is anything other than "ntfs". A single partition of type Linux (83) will be made available on the disk. Note that this partition will not be formatted if it can be successfully mounted.
+設定した場合、"ResourceDisk.Filesystem" でユーザーによって要求されたファイル システムの種類が "ntfs" 以外であると、プラットフォームに用意されたリソース ディスクが waagent によってフォーマットされてマウントされます。ファイルシステムの種類が Linux (83) の 1 つのパーティションがディスク上で使用可能になります。このパーティションは、正常にマウント可能な場合、フォーマットされないことに注意してください。
 
-**ResourceDisk.Filesystem:**
+**ResourceDisk.Filesystem: **
 
-Type: String  
-Default: ext4
+型: 文字列
+既定: ext4
 
-This specifies the filesystem type for the resource disk. Supported values vary by Linux distribution. If the string is X, then mkfs.X should be present on the Linux image. SLES 11 images should typically use 'ext3'. FreeBSD images should use 'ufs2' here.
+リソース ディスクのファイルシステムの種類を指定します。サポートされている値は Linux ディストリビューションによって異なります。文字列が X の場合、mkfs.X は Linux イメージ上に存在する必要があります。SLES 11 イメージでは通常は 'ext3' を使用する必要があります。FreeBSD イメージではここで 'ufs2' を使用する必要があります。
 
-**ResourceDisk.MountPoint:**
+**ResourceDisk.MountPoint: **
 
-Type: String  
-Default: /mnt/resource 
+型: 文字列
+既定: /mnt/resource
 
-This specifies the path at which the resource disk is mounted.
+リソース ディスクがマウントされるパスを指定します。
 
-**ResourceDisk.EnableSwap:**
+**ResourceDisk.EnableSwap: **
 
-Type: Boolean  
-Default: n 
+型: ブール
+既定: n
 
-If set, a swap file (/swapfile) is created on the resource disk and added to the system swap space.
+設定した場合、スワップ ファイル (/swapfile) がリソース ディスク上に作成され、システムのスワップ領域に追加されます。
 
-**ResourceDisk.SwapSizeMB:**
+**ResourceDisk.SwapSizeMB: **
 
-Type: Integer  
-Default: 0
+型: 整数
+既定: 0
 
-The size of the swap file in megabytes.
+スワップ ファイルのサイズを MB 単位で指定します。
 
-**LBProbeResponder:**
+**LBProbeResponder: **
 
-Type: Boolean  
-Default: y
+型: ブール
+既定: y
 
-If set, waagent will respond to load balancer probes from the platform (if present).
+設定した場合、waagent はプラットフォームのロード バランサー プローブ (存在する場合) に応答します。
 
-**Logs.Verbose:**
+**Logs.Verbose: **
 
-Type: Boolean  
-Default: n
+型: ブール
+既定: n
 
-If set, log verbosity is boosted. Waagent logs to /var/log/waagent.log and leverages the system logrotate functionality to rotate logs.
+設定した場合、ログの詳細度が上がります。Waagent は /var/log/waagent.log にログを記録し、システムの logrotate 機能を利用してログをローテーションさせます。
 
-**OS.RootDeviceScsiTimeout:**
+**OS.RootDeviceScsiTimeout: **
 
-Type: Integer  
-Default: 300
+型: 整数
+既定: 300
 
-This configures the SCSI timeout in seconds on the OS disk and data drives. If not set, the system defaults are used.
+OS ディスクおよびデータ ドライブの SCSI タイムアウトを秒単位で構成します。設定しない場合、システムの既定値が使用されます。
 
-**OS.OpensslPath:**
+**OS.OpensslPath: **
 
-Type: String  
-Default: None
+型: 文字列
+既定値: None
 
-This can be used to specify an alternate path for the openssl binary to use for cryptographic operations.
+暗号化処理に使用する openssl バイナリの代替パスを指定します。
 
-##Appendix
+##付録
 
-###Sample Role Configuration File
+###サンプル ロール構成ファイル
 
 	<?xml version="1.0" encoding="utf-8"?>
 	<HostingEnvironmentConfig version="1.0.0.0" goalStateIncarnation="1">
@@ -327,7 +327,7 @@ This can be used to specify an alternate path for the openssl binary to use for 
 	    </ResourceReferences>
 	  </HostingEnvironmentConfig>
 
-###Sample Role Topology File
+###サンプル ロール トポロジ ファイル
 
 	<?xml version="1.0" encoding="utf-8"?>
 	<SharedConfig version="1.0.0.0" goalStateIncarnation="2">
@@ -403,3 +403,4 @@ This can be used to specify an alternate path for the openssl binary to use for 
 	    </Instance>
 	  </Instances>
 	</SharedConfig>
+

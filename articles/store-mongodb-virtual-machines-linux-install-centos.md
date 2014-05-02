@@ -1,36 +1,36 @@
-<properties linkid="manage-linux-common-task-mongodb-virtual-machine" urlDisplayName="Install MongoDB" pageTitle="Install MongoDB on a Linux virtual machine in Azure" metaKeywords="Azure vm CentOS, Azure vm Linux, Linux vm, Linux MongoDB" description="Learn how to create an Azure virtual machine with CentOS Linux, and then use SSH or PuTTY to install MongoDB." metaCanonical="" services="virtual-machines" documentationCenter="" title="Install MongoDB on a virtual machine running CentOS Linux in Azure" authors="kathydav" solutions="" manager="jeffreyg" editor="tysonn" />
+<properties linkid="manage-linux-common-task-mongodb-virtual-machine" urlDisplayName="MongoDB のインストール" pageTitle="Azure 上の Linux 仮想マシンへの MongoDB のインストール" metaKeywords="Azure vm CentOS, Azure vm Linux, Linux vm, Linux MongoDB" description="CentOS Linux を実行する Azure 仮想マシンを作成し、SSH または PuTTY を使用して MongoDB をその仮想マシンにインストールする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure 上で CentOS Linux を実行する仮想マシンへの MongoDB のインストール" authors="kathydav" solutions="" manager="jeffreyg" editor="tysonn" />
 
 
 
 
 
+#Azure 上で CentOS Linux を実行する仮想マシンへの MongoDB のインストール
 
-#Install MongoDB on a virtual machine running CentOS Linux in Azure
+[MongoDB](http://www.mongodb.org/) は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。Azure 管理ポータルでは、CentOS Linux を実行する仮想マシンをイメージ ギャラリーから作成できます。この仮想マシンには、MongoDB データベースをインストールして構成することができます。
 
-[MongoDB](http://www.mongodb.org/) is a popular open source, high performance NoSQL database. Using the Azure Management Portal, you can create a virtual machine running CentOS Linux from the Image Gallery. You can then install and configure a MongoDB database on the virtual machine.
+学習内容: 
 
-You will learn:
+- 管理ポータルを使用し、CentOS Linux を実行する Linux 仮想マシンをギャラリーから選択してインストールする方法。
 
-- How to use the Management Portal to select and install a Linux virtual machine running CentOS Linux from the gallery.
-
-- How to connect to the virtual machine using SSH or PuTTY.
-- How to install MongoDB on the virtual machine.
+- SSH または PuTTY を使用して仮想マシンに接続する方法。
+- 仮想マシンに MongoDB をインストールする方法。
 
 
-##Create a virtual machine running CentOS Linux
+##CentOS Linux を実行する仮想マシンの作成
 
 [WACOM.INCLUDE [create-and-configure-centos-vm-in-portal](../includes/create-and-configure-centos-vm-in-portal.md)]
 
-## Attach a data disk
+## データ ディスクの接続
 
 [WACOM.INCLUDE [attach-data-disk-centos-vm-in-portal](../includes/attach-data-disk-centos-vm-in-portal.md)]
 
-##Install and run MongoDB on the virtual machine
+##仮想マシンへの MongoDB のインストールと実行
 
 [WACOM.INCLUDE [install-and-run-mongo-on-centos-vm](../includes/install-and-run-mongo-on-centos-vm.md)]
 
-##Summary
+##まとめ
 
-In this tutorial you learned how to create a Linux virtual machine and remotely connect to it using SSH or PuTTY. You also learned how to install and configure MongoDB on the Linux virtual machine. For more information on MongoDB, see the [MongoDB Documentation](http://www.mongodb.org/display/DOCS/Home).
+このチュートリアルでは、Linux 仮想マシンを作成し、SSH または PuTTY を使用してその仮想マシンにリモート接続する方法について説明しました。Linux 仮想マシンに MongoDB をインストールして構成する方法についても説明しました。MongoDB の詳細については、[MongoDB のドキュメント](http://www.mongodb.org/display/DOCS/Home)を参照してください。
+
 
 

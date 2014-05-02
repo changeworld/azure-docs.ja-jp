@@ -1,75 +1,75 @@
-<properties linkid="dev-nodejs-how-to-sendgrid-email-service" urlDisplayName="SendGrid Email Service" pageTitle="How to use the SendGrid email service (Node.js) - Azure" metaKeywords="Azure SendGrid, Azure email service, Azure SendGrid Node.js, Azure email Node.js" description="Learn how send email with the SendGrid email service on Azure. Code samples written using the Node.js API." metaCanonical="" services="" documentationCenter="Node.js" title="How to Send Email Using SendGrid from Node.js" authors="" solutions="" manager="" editor="" />
+<properties linkid="dev-nodejs-how-to-sendgrid-email-service" urlDisplayName="SendGrid 電子メール サービス" pageTitle="SendGrid 電子メール サービスの使用方法 (Node.js) - Azure" metaKeywords="Azure SendGrid, Azure 電子メール サービス, Azure SendGrid Node.js, Azure 電子メール Node.js" description="Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。コード サンプルは Node.js API を使用して記述されています。" metaCanonical="" services="" documentationCenter="Node.js" title="SendGrid を使用して Node.js から電子メールを送信する方法" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-# How to Send Email Using SendGrid from Node.js
+# SendGrid を使用して Node.js から電子メールを送信する方法
 
-This guide demonstrates how to perform common programming tasks with the
-SendGrid email service on Azure. The samples are written using
-the Node.js API. The scenarios covered include **constructing email**,
-**sending email**, **adding attachments**, **using filters**, and
-**updating properties**. For more information on SendGrid and sending
-email, see the [Next Steps][] section.
+このガイドでは、Azure で SendGrid 電子メール サービスを使用して
+一般的なプログラム タスクを実行する方法を紹介します。サンプルは Node.js API を使用して
+記述されています。紹介するシナリオは、**電子メールの作成**、
+**電子メールの送信**、**添付ファイルの追加**、**フィルターの使用**、および
+**プロパティの更新**です。SendGrid と電子メールの送信の詳細については、
+「[次のステップ][]」を参照してください。
 
-## Table of Contents
+## 目次
 
-* [What is the SendGrid Email Service?][]   
-* [Create a SendGrid Account][]   
-* [Reference the SendGrid Node.js Module][]   
-* [How to: Create an Email][]   
-* [How to: Send an Email][]   
-* [How to: Add an Attachment][]   
-* [How to: Use Filters to Enable Footers, Tracking, and Analytics][]   
-* [How to: Update Email Properties][]   
-* [How to: Use Additional SendGrid Services][]   
-* [Next Steps][1]
+* [SendGrid 電子メール サービスとは][]
+* [SendGrid アカウントの作成][]
+* [SendGrid Node.js モジュールの参照][]
+* [方法: 電子メールを作成する][]
+* [方法: 電子メールを送信する][]
+* [方法: 添付ファイルを追加する][]
+* [方法: フィルターを使用してフッター、追跡、および分析を有効にする][]
+* [方法: 電子メールのプロパティを更新する][]
+* [方法: その他の SendGrid サービスを使用する][]
+* [次のステップ][1]
 
-## <a name="whatis"> </a>What is the SendGrid Email Service?
+## <a name="whatis"> </a>SendGrid 電子メール サービスとは
 
-SendGrid is a [cloud-based email service] that provides reliable
-[transactional email delivery], scalability, and real-time analytics along with flexible APIs
-that make custom integration easy. Common SendGrid usage scenarios
-include:
+SendGrid は、信頼性の高い[トランザクション電子メール配信]、
+拡張性、およびリアルタイム分析の機能を備えた[クラウドベース電子メール サービス]であり、
+柔軟な API を備えているためカスタム統合も容易です。SendGrid の一般的な使用シナリオを
+次に示します。
 
--   Automatically sending receipts to customers
--   Administering distribution lists for sending customers monthly
-    e-fliers and special offers
--   Collecting real-time metrics for things like blocked e-mail, and
-    customer responsiveness
--   Generating reports to help identify trends
--   Forwarding customer inquiries
--   Email notifications from your application
+-   顧客に受信通知を自動送信する
+-   顧客に広告メールを月 1 回送信するための配布リストを
+    管理する
+-   ブロックされた電子メールや顧客の応答性などを表す測定値を
+    リアルタイムで収集する
+-   傾向を認識するために役立つレポートを生成する
+-   顧客の問い合わせを転送する
+-   アプリケーションからの電子メール通知
 
-For more information, see [http://sendgrid.com](http://sendgrid.com).
+詳細については、[http://sendgrid.com](http://sendgrid.com) を参照してください。
 
-## <a name="createaccount"> </a>Create a SendGrid Account
+## <a name="createaccount"> </a>SendGrid アカウントの作成
 
 [WACOM.INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-## <a name="reference"> </a>Reference the SendGrid Node.js Module
+## <a name="reference"> </a>SendGrid Node.js モジュールの参照
 
-The SendGrid module for Node.js can be installed through the node
-package manager (npm) by using the following command:
+Node.js 用の SendGrid モジュールは、次のコマンドを使用することによって、
+ノード パッケージ マネージャー (npm) でインストールできます。
 
     npm install sendgrid
 
-After installation, you can require the module in your application by
-using the following code:
+インストールした後、次のコードを使用して、アプリケーションで
+モジュールを要求できます。
 
     var SendGrid = require('sendgrid')
 
-The SendGrid module exports the **SendGrid** and **Email** functions.
-**SendGrid** is responsible for sending email through either SMTP or Web
-API, while **Email** encapsulates an email message.
+SendGrid モジュールは、**SendGrid** 関数と **Email** 関数をエクスポートします。
+**SendGrid** は SMTP または Web API による電子メールの送信を処理します。
+**Email** は電子メール メッセージをカプセル化します。
 
-## <a name="createemail"> </a>How to: Create an Email
+## <a name="createemail"> </a>方法: 電子メールを作成する
 
-Creating an email message using the SendGrid module involves first
-creating an email message using the Email function, and then sending it
-using the SendGrid function. The following is an example of creating a
-new message using the Email function:
+SendGrid モジュールを使って電子メール メッセージを作成するには、
+最初に Email 関数で電子メール メッセージを作成し、次に SendGrid 関数で
+メッセージを送信します。以下は、Email 関数を使用して新しいメッセージを
+作成する例です。
 
     var mail = new SendGrid.Email({
         to: 'john@contoso.com',
@@ -78,35 +78,35 @@ new message using the Email function:
         text: 'This is a sample email message.'
     });
 
-You can also specify an HTML message for clients that support it by
-setting the html property. For example:
+また、html プロパティを設定することによって、HTML メッセージをサポートする
+クライアント向けに HTML メッセージを指定することもできます。次に例を示します。
 
     html: This is a sample <b>HTML<b> email message.
 
-Setting both the text and html properties provides graceful fallback to
-text content for clients that cannot support HTML messages.
+text プロパティと html プロパティの両方を設定することで、
+HTML メッセージをサポートできないクライアント向けに、テキスト コンテンツへの正常なフォールバックを提供できます。
 
-For more information on all properties supported by the Email function,
-see [sendgrid-nodejs][].
+Email 関数でサポートされるすべてのプロパティの詳細については、
+[sendgrid-nodejs に関するページ][]を参照してください。
 
-## <a name="sendemail"> </a>How to: Send an Email
+## <a name="sendemail"> </a>方法: 電子メールを送信する
 
-After creating an email message using the Email function, you can send
-it using either SMTP or the Web API provided by SendGrid. For details
-about the benefits and differences of each API, see [SMTP vs. Web API][]
-in the SendGrid documentation.
+Email 関数で電子メール メッセージを作成した後で、SendGrid の SMTP または 
+Web API を使用してメッセージを送信できます。各 API の長所と 
+API 間の違いの詳細については、[SMTP と Web API を比較した SendGrid ドキュメント][]を
+参照してください。
 
-Using either the SMTP API or Web API requires that you first initialize
-the SendGrid function using the user and key of your SendGrid account as
-follows:
+SMTP API または Web API を使用するには、最初に、次のように 
+SendGrid アカウントのユーザーとキーを使用して、SendGrid 関数を初期化する
+必要があります。
 
     var sender = new SendGrid.SendGrid('user','key');
 
-The message can now be sent using either SMTP or the Web API. The calls
-are virtually identical, passing the email message and an optional
-callback function; The callback is used to determine the success or
-failure of the operation. The following examples show how to send a
-message using both SMTP and the Web API.
+これで、SMTP または Web API を使用して、メッセージを送信できるようになりました。実質的には
+どちらの呼び出しも同様に機能し、電子メール メッセージとオプションの
+コールバック関数を渡します。このコールバックは、操作の成功や失敗を
+判断するために使用されます。次の例に、SMTP と Web API で
+メッセージを送信する方法を示します。
 
 ### SMTP
 
@@ -123,10 +123,10 @@ message using both SMTP and the Web API.
     });
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>While the above examples show passing in an email object and
-callback function, you can also directly invoke the send and smtp
-functions by directly specifying email properties. For example:</p>
+<strong>注</strong>
+<p>前の例では、電子メール オブジェクトとコールバック関数の受け渡しを
+示していますが、電子メールのプロパティを直接指定することによって、
+send 関数と smtp 関数を直接呼び出すこともできます。次に例を示します。</p>
 <pre class="prettyprint">sender.send({
     to: 'john@contoso.com',
     from: 'anna@contoso.com',
@@ -136,11 +136,11 @@ functions by directly specifying email properties. For example:</p>
 </pre>
 </div>
 
-## <a name="addattachment"> </a>How to: Add an Attachment
+## <a name="addattachment"> </a>方法: 添付ファイルを追加する
 
-Attachments can be added to a message by specifying the file name(s) and
-path(s) in the **files** property. The following example demonstrates
-sending an attachment:
+添付ファイルをメッセージに追加するには、**files** プロパティで
+ファイル名とパスを指定します。次の例に、添付ファイルを送信する方法を
+示します。
 
     sender.send({
         to: 'john@contoso.com',
@@ -154,25 +154,25 @@ sending an attachment:
     });
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>When using the <strong>files</strong> property, the file must be accessible
-through <a href="http://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile">fs.readFile</a>. If the file you wish to attach is hosted in Azure Storage, such as in a Blob container, you must first copy the file to local storage or to an Azure drive before it can be sent as an attachment using the <strong>files</strong> property.</p>
+<strong>注</strong>
+<p><strong>files</strong> プロパティを使用する場合、
+<a href="http://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile">fs.readFile</a> を使ってファイルにアクセスできることが必要です。添付するファイルが、BLOB コンテナーなどの Azure ストレージでホストされている場合、<strong>files</strong> プロパティを使用して添付ファイルとして送信するには、最初にファイルをローカル ストレージまたは Azure ドライブにコピーする必要があります。</p>
 </div>
 
-## <a name="usefilters"> </a>How to: Use Filters to Enable Footers, Tracking, and Twitter
+## <a name="usefilters"> </a>方法: フィルターを使用してフッター、追跡、および Twitter を有効にする
 
-SendGrid provides additional email functionality through the use of
-filters. These are settings that can be added to an email message to
-enable specific functionality such as enabling click tracking, Google
-analytics, subscription tracking, and so on. For a full list of filters,
-see [Filter Settings][].
+SendGrid では、フィルターを使用することでその他の電子メール機能も
+利用することができます。その設定を電子メール メッセージに追加することで、
+クリック追跡、Google 分析、サブスクリプション追跡などの
+独自の機能を有効にすることができます。すべてのフィルターの一覧については、
+[フィルター設定に関するページ][]を参照してください。
 
-Filters can be applied to a message by using the **filters** property.
-Each filter is specified by a hash containing filter-specific settings.
-The following examples demonstrate the footer, click tracking, and
-Twitter filters:
+フィルターは、**filters** プロパティを使用してメッセージに適用できます。
+各フィルターは、フィルター固有の設定を格納したハッシュで指定します。
+次の例に、フッター フィルター、クリック追跡フィルター、および 
+Twitter フィルターの使用方法を示します。
 
-### Footer
+### フッター
 
     sender.send({
         to: 'john@contoso.com',
@@ -189,7 +189,7 @@ Twitter filters:
         }
     });
 
-### Click Tracking
+### クリック追跡
 
     sender.send({
         to: 'john@contoso.com',
@@ -223,15 +223,15 @@ Twitter filters:
         }
     });
 
-## <a name="updateproperties"> </a>How to: Update Email Properties
+## <a name="updateproperties"> </a>方法: 電子メールのプロパティを更新する
 
-Some email properties can be overwritten using **set*Property*** or
-appended using **add*Property***. For example, you can add additional
-recipients by using
+一部の電子メールのプロパティは、**set*Property*** を使用して上書きしたり、
+**add*Property*** を使用して追加したりすることができます。たとえば、次のようにして、
+新しい受信者を追加できます。
 
     email.addTo('jeff@contoso.com');
 
-or set a filter by using
+また、次のように、フィルターを設定することもできます。
 
     email.setFilterSetting({
       'footer': {
@@ -242,46 +242,47 @@ or set a filter by using
       }
     });
 
-For more information, see [sendgrid-nodejs][].
+詳細については、[sendgrid-nodejs に関するページ][]を参照してください。
 
-## <a name="useservices"> </a>How to: Use Additional SendGrid Services
+## <a name="useservices"> </a>方法: その他の SendGrid サービスを使用する
 
-SendGrid offers web-based APIs that you can use to leverage additional
-SendGrid functionality from your Azure application. For full
-details, see the [SendGrid API documentation][].
+SendGrid の Web ベース API を使用して、Azure アプリケーションから
+その他の SendGrid 機能を利用することができます。詳細については、
+[SendGrid API に関するドキュメント][]を参照してください。
 
-## <a name="nextsteps"> </a>Next Steps
+## <a name="nextsteps"> </a>次のステップ
 
-Now that you've learned the basics of the SendGrid Email service, follow
-these links to learn more.
+これで、SendGrid 電子メール サービスの基本を学習できました。
+さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
--   SendGrid Node.js module repository: [sendgrid-nodejs][]
--   SendGrid API documentation:
+-   SendGrid Node.js モジュールのリポジトリ: [sendgrid-nodejs][]
+-   SendGrid API に関するドキュメント: 
     <http://docs.sendgrid.com/documentation/api/>
--   SendGrid special offer for Azure customers:
+-   Azure ユーザー向けの SendGrid 特別プラン: 
     [http://sendgrid.com/azure.html](http://sendgrid.com/azure.html)
 
-  [Next Steps]: http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/blob-storage/#next-steps
-  [What is the SendGrid Email Service?]: #whatis
-  [Create a SendGrid Account]: #createaccount
-  [Reference the SendGrid Node.js Module]: #reference
-  [How to: Create an Email]: #createemail
-  [How to: Send an Email]: #sendemail
-  [How to: Add an Attachment]: #addattachment
-  [How to: Use Filters to Enable Footers, Tracking, and Analytics]: #usefilters
-  [How to: Update Email Properties]: #updateproperties
-  [How to: Use Additional SendGrid Services]: #useservices
+  [次のステップ]: http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/blob-storage/#next-steps
+  [SendGrid 電子メール サービスとは]: #whatis
+  [SendGrid アカウントの作成]: #createaccount
+  [SendGrid Node.js モジュールの参照]: #reference
+  [方法: 電子メールを作成する]: #createemail
+  [方法: 電子メールを送信する]: #sendemail
+  [方法: 添付ファイルを追加する]: #addattachment
+  [方法: フィルターを使用してフッター、追跡、および分析を有効にする]: #usefilters
+  [方法: 電子メールのプロパティを更新する]: #updateproperties
+  [方法: その他の SendGrid サービスを使用する]: #useservices
   [1]: #nextsteps
 
   
   
-  [special offer]: http://www.sendgrid.com/azure.html
+  [特別プラン]: http://www.sendgrid.com/azure.html
   
   
   [sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs
-  [SMTP vs. Web API]: http://docs.sendgrid.com/documentation/get-started/integrate/examples/smtp-vs-rest/
+  [SMTP vs. Web API (SMTP と Web API の比較)]: http://docs.sendgrid.com/documentation/get-started/integrate/examples/smtp-vs-rest/
   
-  [Filter Settings]: http://docs.sendgrid.com/documentation/api/smtp-api/filter-settings/
-  [SendGrid API documentation]: http://docs.sendgrid.com/documentation/api/
-  [cloud-based email service]: http://sendgrid.com/solutions
-  [transactional email delivery]: http://sendgrid.com/transactional-email
+  [フィルター設定に関するページ]: http://docs.sendgrid.com/documentation/api/smtp-api/filter-settings/
+  [SendGrid API に関するドキュメント]: http://docs.sendgrid.com/documentation/api/
+  [クラウド ベースの電子メール サービス]: http://sendgrid.com/solutions
+  [transactional email delivery (トランザクション電子メール配信)]: http://sendgrid.com/transactional-email
+

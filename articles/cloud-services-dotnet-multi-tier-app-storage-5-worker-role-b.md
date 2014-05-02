@@ -1,174 +1,173 @@
-<properties linkid="develop-net-tutorials-multi-tier-web-site-5-worker-role-b" urlDisplayName="Step 5: Worker Role B" pageTitle="ASP.NET Multi-tier Web Application with Azure - Step 5: Worker role B" metaKeywords="Azure tutorial, adding working role cloud service, C# worker role" description="The fifth tutorial in a series that teaches how to configure your computer for Azure development and deploy the Email Service app." metaCanonical="" services="cloud-services,storage" documentationCenter=".NET" title="Building worker role B (email sender) for the Azure Email Service application - 5 of 5." authors="tdykstra,riande" solutions="" manager="wpickett" editor="mollybos" />
+<properties linkid="develop-net-tutorials-multi-tier-web-site-5-worker-role-b" urlDisplayName="ステップ 5: ワーカー ロール B" pageTitle="Azure を使用した ASP.NET 多層 Web アプリケーション - 手順 5. ワーカー ロール B" metaKeywords="Azure チュートリアル, 作業ロール クラウド サービスの追加, C# ワーカー ロール" description="Azure 開発用にコンピューターを構成し、電子メール サービス アプリケーションを展開する方法を学習する 5 番目のチュートリアル (全 5 回シリーズ)。" metaCanonical="" services="cloud-services,storage" documentationCenter=".NET" title="Azure Email Service アプリケーションで使用するワーカー ロール B (電子メール送信) の作成 (5/5)。" authors="tdykstra,riande" solutions="" manager="wpickett" editor="mollybos" />
 
-# Building worker role B (email sender) for the Azure Email Service application - 5 of 5. 
+# Azure Email Service アプリケーションで使用するワーカー ロール B (電子メール送信) の作成 (5/5) 
 
-This is the fifth tutorial in a series of five that show how to build and deploy the Azure Email Service sample application.  For information about the application and the tutorial series, see the [first tutorial in the series][firsttutorial].
+この 5 番目のチュートリアル (全 5 回シリーズ) では、Azure Email Service のサンプル アプリケーションを作成して展開する方法を説明します。このアプリケーションとチュートリアル シリーズの詳細については、[シリーズの最初のチュートリアル][firsttutorial]を参照してください。
 
-In this tutorial you'll learn:
+このチュートリアルでは、次のことについて説明します。
 
-* How to add a worker role to a cloud service project.
-* How to poll a queue and process work items from the queue.
-* How to send emails by using SendGrid.
-* How to handle planned shut-downs by overriding the `OnStop` method.
-* How to handle unplanned shut-downs by making sure that no duplicate emails are sent.
+* クラウド サービス プロジェクトにワーカー ロールを追加する方法
+* キューをポーリングして、キューから取得した作業項目を処理する方法
+* SendGrid を使用して電子メールを送信する方法
+* `OnStop` メソッドをオーバーライドして、計画的シャットダウンを処理する方法
+* 計画外シャットダウンの際、電子メールが重複して送信されないようにする方法
  
-<h2><a name="addworkerrole"></a><span class="short-header">Add worker role B</span>Add worker role B project to the solution</h2>
+<h2><a name="addworkerrole"></a><span class="short-header">ワーカー ロール B の追加</span>ソリューションにワーカー ロール B を追加する</h2>
 
-1. In Solution Explorer, right-click the cloud service project, and choose **New Worker Role Project**.
+1. ソリューション エクスプローラーで、該当するクラウド サービス プロジェクトを右クリックして **[新しいワーカー ロール プロジェクト]** を選択します。
 
-	![New worker role project menu][mtas-new-worker-role-project]
+	![[新しいワーカー ロール プロジェクト] メニュー項目][mtas-new-worker-role-project]
 
-3. In the **Add New Role Project** dialog box, select **C#**, select **Worker Role**, name the project WorkerRoleB, and click **Add**. 
+3. **[新しいロール プロジェクトの追加]** ダイアログ ボックスで **[Visual C#]#** をクリックし、**[ワーカー ロール]** を選択します。プロジェクト名として「WorkerRoleB」と入力し、**[追加]** をクリックします。
 
-	![New role project dialog box][mtas-add-new-role-project-dialog]
+	![[新しいロール プロジェクトの追加] ダイアログ ボックス][mtas-add-new-role-project-dialog]
 
-<h2><a name="addreference"></a><span class="short-header">Add reference</span>Add a reference to the web project</h2>
+<h2><a name="addreference"></a><span class="short-header">参照の追加</span>Web プロジェクトへの参照を追加する</h2>
 
-You need a reference to the web project because that is where the entity classes are defined. You'll use the entity classes in worker role B to read and write data in the Azure tables that the application uses.
+エンティティ クラスが定義されている Web プロジェクトへの参照を追加する必要があります。ワーカー ロール B にあるエンティティ クラスを使用して、このアプリケーションで使用する Azure テーブルのデータを読み書きします。
 
-4. Right-click the WorkerRoleB project, and choose **Add Reference**.
+4. WorkerRoleB プロジェクトを右クリックして、**[参照の追加]** を選択します。
 
-	![Add reference in WorkerRoleB project][mtas-worker-b-add-reference-menu]
+	![WorkerRoleB プロジェクトに参照を追加][mtas-worker-b-add-reference-menu]
 
-4. In **Reference Manager**, add a reference to the MvcWebRole project (or to the web application project if you are running the web UI in an Azure Web Site).
+4. **[参照マネージャー]** で、MvcWebRole プロジェクトへの参照 (Azure の Web サイトで Web UI を実行する場合は Web アプリケーション プロジェクトへの参照) を追加します。
 
-	![Add reference to MvcWebRole][mtas-worker-b-reference-manager]
-
-
-
-<h2><a name="sclpackage"></a><span class="short-header">Add SCL 2.0 Package</span>Add the Storage Client Library 2.0 NuGet package to the project</h2>
-
->[WACOM.NOTE] With Visual Studio 2013 you can skip this section because the current Azure Storage package is installed in the new worker role project.
-
-When you added the project, it didn't automatically get the updated version of the Storage Client Library NuGet package. Instead, it got the old 1.7 version of the package since that is what is included in the project template. Now the solution has two versions of the Azure Storage NuGet package: the 2.0 version in the MvcWebRole and WorkerRoleA projects, and the 1.7 version in the WorkerRoleB project. You need to uninstall the 1.7 version and install the 2.0 version in the WorkerRoleB project.
-
-1. From the **Tools** menu choose **Library Package Manager** and then **Manage NuGet Packages for Solution**.
-
-2. With **Installed Packages** selected in the left pane, scroll down until you get to the Azure Storage package.
-
-	You'll see the package listed twice, once for the 1.7 version and once for the 2.0 version.
-
-4. Select the 1.7 version of the package and click **Manage**.
-
-	The check boxes for MvcWebRole and WorkerRoleB are cleared, and the check box for WorkerRoleB is selected.
-
-5. Clear the check box for WorkerRoleB, and then click **OK**.
-
-6. When you are asked if you want to uninstall dependent packages, click **No**.
-
-	When the uninstall finishes you have only the 2.0 version of the package in the NuGet dialog box.
-
-7. Click **Manage** for the 2.0 version of the package.
-
-	The check boxes for MvcWebRole and WorkerRoleA are selected, and the check box for WorkerRoleA is cleared.
-
-8. Select the check box for WorkerRoleA, and then click **OK**.
+	![MvcWebRole への参照を追加][mtas-worker-b-reference-manager]
 
 
+
+<h2><a name="sclpackage"></a><span class="short-header">SCL 2.0 パッケージの追加</span>ストレージ クライアント ライブラリ 2.0 NuGet パッケージをプロジェクトに追加する</h2>
+
+>[WACOM.NOTE] Visual Studio 2013 では、新しいワーカー ロール プロジェクトに現在の Azure ストレージ パッケージがインストールされているため、このセクションを省略できます。
+
+プロジェクトを追加した時点では、ストレージ クライアント ライブラリ NuGet パッケージの最新バージョンではなく、プロジェクト テンプレートに含まれていた以前のバージョン (NuGet 1.7) が取り込まれました。現在、このソリューションでは、Azure ストレージ NuGet パッケージの 2 つのバージョンが使用されています。MvcWebRole プロジェクトと WorkerRoleA プロジェクトでは 2.0 バージョン、WorkerRoleB プロジェクトでは 1.7 バージョンです。WorkerRoleB プロジェクトから 1.7 バージョンをアンインストールして、2.0 バージョンをインストールする必要があります。
+
+1. **[ツール]** メニューで **[ライブラリ パッケージ マネージャ]**、**[ソリューションの NuGet パッケージの管理]** の順にクリックします。
+
+2. 左側のウィンドウで **[インストール済みのパッケージ]** を選択し、Azure ストレージ パッケージまでスクロールします。
+
+	一覧にはこのパッケージが 2 回表示されます (1.7 バージョンと 2.0 バージョン)。
+
+4. Azure ストレージ パッケージの 1.7 バージョンを選択し、**[管理]** をクリックします。
+
+	MvcWebRole と WorkerRoleB のチェック ボックスがオフ、WorkerRoleB のチェック ボックスがオンになっています。
+
+5. WorkerRoleB のチェック ボックスをオフにして、**[OK]** をクリックします。
+
+6. 依存するパッケージをアンインストールするかどうかを確認するメッセージが表示されたら、**[いいえ]** をクリックします。
+
+	アンインストールが終了すると、このパッケージの 2.0 バージョンのみが NuGet ダイアログ ボックスに表示されます。
+
+7. NuGet パッケージの 2.0 バージョンで **[管理]** をクリックします。
+
+	MvcWebRole と WorkerRoleA のチェック ボックスがオン、WorkerRoleB のチェック ボックスがオフになっています。
+
+8. WorkerRoleB のチェック ボックスをオンにして、**[OK]** をクリックします。
 
 
 
 
-<h2><a name="addref2"></a><span class="short-header">Add SCL 1.7 reference</span>Add a reference to an SCL 1.7 assembly</h2>
 
->[WACOM.NOTE] Skip this section if you have installed the latest SDK and are using Visual Studio 2013
+<h2><a name="addref2"></a><span class="short-header">SCL 1.7 参照の追加</span>SCL 1.7 アセンブリへの参照の追加</h2>
 
-Version 2.0 of the Storage Client Library (SCL) does not have everything needed for diagnostics, so you have to add a reference to one of the 1.7 assemblies, as you did earlier for the other two projects.
+>[WACOM.NOTE] 最新の SDK をインストールし、Visual Studio 2013 を使用している場合は、このセクションをスキップします。
 
-4. Right-click the WorkerRoleB project, and choose **Add Reference**.
+ストレージ クライアント ライブラリ (SCL) バージョン 2.0 には診断に必要なすべての機能が備わっていないので、他の 2 つのプロジェクトと同じように、いずれかの 1.7 アセンブリへの参照を追加します。
 
-5. Click the **Browse...** button at the bottom of the dialog box.
+4. WorkerRoleB プロジェクトを右クリックして、**[参照の追加]** を選択します。
 
-6. Navigate to the following folder:
+5. ダイアログ ボックスの下部にある **[参照]** ボタンをクリックします。
+
+6. 次のフォルダーへ移動します。
 
         C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\2012-10\ref
 
-7. Select *Microsoft.WindowsAzure.StorageClient.dll*, and then click **Add**.
+7. *Microsoft.WindowsAzure.StorageClient.dll* を選択して、**[追加]** をクリックします。
 
-8. In the **Reference Manager** dialog box, click **OK**.
-
-
+8. **[参照マネージャー]** ダイアログ ボックスで **[OK]** をクリックします。
 
 
 
-<h2><a name="addsendgrid"></a><span class="short-header">Add SendGrid package</span>Add the SendGrid NuGet package to the project</h2>
-
-To send email by using SendGrid, you need to install the SendGrid NuGet package.
-
-1. In **Solution Explorer**, right-click the WorkerRoleB project and choose **Manage NuGet Packages**.
-
-	![Manage NuGet Packages][mtas-worker-b-manage-nuget]
-
-2. In the **Manage NuGet Packages** dialog box, select the **Online** tab, enter "sendgrid" in the search box, and press Enter.
-
-3. Click **Install** on the **SendGrid** package.
-
-	![Install the Sendgrid package][mtas-worker-b-install-sendgrid]
-
-4. Close the dialog box.
 
 
+<h2><a name="addsendgrid"></a><span class="short-header">SendGrid パッケージの追加</span>SendGrid NuGet パッケージをプロジェクトに追加する</h2>
+
+SendGrid を使用して電子メールを送信するには、SendGrid NuGet パッケージをインストールする必要があります。
+
+1. **ソリューション エクスプローラー**で WorkerRoleB プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
+
+	![NuGet パッケージの管理][mtas-worker-b-manage-nuget]
+
+2. **[NuGet パッケージの管理]** ダイアログ ボックスで **[オンライン]** タブをクリックし、検索ボックスに「sendgrid」と入力して Enter キーを押します。
+
+3. **Sendgrid** パッケージで **[インストール]** をクリックします。
+
+	![Sendgrid パッケージのインストール][mtas-worker-b-install-sendgrid]
+
+4. ダイアログ ボックスを閉じます。
 
 
 
 
 
 
-<h2><a name="addsettings"></a><span class="short-header">Add project settings</span>Add project settings</h2>
 
-Like worker role A, worker role B needs storage account credentials to work with tables, queues, and blobs. In addition, in order to send email, the worker role needs to have credentials to embed in calls to the SendGrid service. And in order to construct an unsubscribe link to include in emails that it sends, the worker role needs to know the URL of the application. These values are stored in project settings.
 
-For storage account credentials, the procedure is the same as what you saw in [the third tutorial][tut3configstorage].
+<h2><a name="addsettings"></a><span class="short-header">プロジェクト設定の追加</span>プロジェクトの設定を追加する</h2>
 
-1. In **Solution Explorer**, under **Roles** in the cloud project, right-click **WorkerRoleB** and choose **Properties**.
+ワーカー ロール A と同様、ワーカー ロール B についても、テーブル、クエリー、BLOB を操作するにはストレージ アカウントの資格情報が必要です。さらに、ワーカー ロール B が電子メールを送信するには、SendGrid サービスの呼び出しに資格情報を埋め込む必要があります。送信する電子メールに挿入する登録解除リンクを生成するには、このアプリケーションの URL がわかっていなければなりません。これらの値はプロジェクト設定に格納されます。
+
+ストレージ アカウントの資格情報を設定する手順は、[3 番目のチュートリアル][tut3configstorage]で説明した手順と同じです。
+
+1. **ソリューション エクスプローラー**で、該当するクラウド プロジェクトの **[Roles]** を開いて **[WorkerRoleB]** を右クリックし、**[プロパティ]** を選択します。
  
-2. Select the **Settings** tab.
+2. **[設定]** タブを選択します。
 
-2. Make sure that **All Configurations** is selected in the **Service Configuration** drop-down list.
+2. **[サービス構成]** ボックスの一覧で **[すべての構成]** が選択されていることを確認します。
 
-2. Select the **Settings** tab and then click **Add Setting**.
+2. **[設定]** タブを選択し、**[設定の追加]** をクリックします。
 
-3. Enter "StorageConnectionString" in the **Name** column.
+3. **[名前]** 列に「StorageConnectionString」と入力します。
 
-4. Select **Connection String** in the **Type** drop-down list.  
+4. **[種類]** ボックスの一覧の **[接続文字列]** を選択します。
 
-6. Click the ellipsis (**...**) button at the right end of the line to open the **Storage Account Connection String** dialog box.
+6. その行の右端にある **[...]** ボタンをクリックして、**[ストレージ アカウント接続文字列]** ダイアログ ボックスを開きます。
 
-7. In the **Create Storage Connection String** dialog, click the **Your subscription** radio button.
+7. **[ストレージ接続文字列の作成]** ダイアログ ボックスで **[サブスクリプション]** ラジオ ボタンをクリックします。
 
-8. Choose the same **Subscription** and **Account name** that you chose for the web role and worker role A.
+8. Web ロールおよびワーカー ロール A と同じ **[サブスクリプション]** と **[アカウント名]** を選択してください。
 
-1. Follow the same procedure to configure settings for the **Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString** connection string.
+1. 同じ手順に従って、**Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString** 接続文字列を設定します。
 
-	Next, you create and configure the three new settings that are only used by worker role B.
+	次に、ワーカー ロール B のみが使用する 3 つの新しい設定を作成して、構成します。
 
-3. In the **Settings** tab of the **Properties** window, Click **Add Setting**, and then add three new settings of type **String**:
+3. **[プロパティ]** ウィンドウの **[設定]** タブで **[設定の追加]** をクリックし、種類が **[文字列]** である 3 つの新しい設定を追加します。
 
-	* **Name**: SendGridUserName, **Value**: the SendGrid user name that you established in [the second tutorial][tut2].
+	* **[名前]**: SendGridUserName、**[値]**: [2 番目のチュートリアル][tut2]で指定した SendGrid ユーザー名。
 
-	* **Name**: SendGridPassword, **Value**: the SendGrid password.
+	* **[名前]**: SendGridPassword、**[値]**: SendGrid のパスワード。
 
-	* **Name**: AzureMailServiceURL, **Value**: the base URL that the application will have when you deploy it, for example:  http://sampleurl.cloudapp.net.
+	* **[名前]**: AzureMailServiceURL、**[値]**: アプリケーションを展開するときに割り当てられるベース URL (たとえば、http://sampleurl.cloudapp.net)。
 
-	![New settings in WorkerRoleB project][mtas-worker-b-settings]
+	![WorkerRoleB プロジェクトの新しい設定][mtas-worker-b-settings]
 
-### Add code that runs when the worker role starts
+### ワーカー ロール B の起動時に実行するコードを追加
 
-4. In the WorkerRoleB project, delete WorkerRole.cs.
+4. WorkerRoleB プロジェクトで WorkerRole.cs を削除します。
 
-5. Right-click the WorkerRoleB project, and choose **Add Existing Item**.
+5. WorkerRoleB プロジェクトを右クリックして、**[既存項目の追加]** を選択します。
 
-	![Add existing item to Worker Role B][mtas-worker-b-add-existing]
+	![ワーカー ロール B に既存の項目を追加][mtas-worker-b-add-existing]
 
-2. Navigate to the folder where you downloaded the sample application, select the WorkerRoleB.cs file in the WorkerRoleB project, and click **Add**.
+2. サンプル アプリケーションをダウンロードしたフォルダーを開き、WorkerRoleB プロジェクトの WorkerRoleB.cs ファイルを選択して **[追加]** をクリックします。
 
->[WACOM.NOTE] For Visual Studio 2013 with the latest SDK and the latest SendGrid NuGet package, open *WorkerRoleB.cs* and make the following changes to the code: (1) Delete the `using` statement for `SendGridMail.Transport`. (2) Change both instances of `SendGrid.GenerateInstance` to `SendGrid.GetInstance`. (3) Change both instances of `REST.GetInstance` to `Web.GetInstance`.
+>[WACOM.NOTE] Visual Studio 2013 と最新の SDK、および最新の SendGrid NuGet パッケージを使用している場合は、*WorkerRoleB.cs* を開き、コードに次の変更を加えます。(1) `SendGridMail.Transport` の `using` ステートメントを削除します。(2) `SendGrid.GenerateInstance` の両方のインスタンスを `SendGrid.GetInstance` に変更します。(3) `REST.GetInstance` の両方のインスタンスを `Web.GetInstance` に変更します。
 
-3. Open WorkerRoleB.cs and examine the code.
+3. WorkerRoleB.cs を開いてコードを確認します。
 
-	As you already saw in worker role A, the `OnStart` method initializes the context classes that you need in order to work with Azure storage entities. It also makes sure that all of the tables, queues, and blob containers you need in the `Run` method exist.  
+	ワーカー ロール A の場合と同様、`OnStart` メソッドでは、Azure ストレージのエンティティを操作する際に必要となるコンテキスト クラスを初期化します。さらに、`Run` メソッドで使用するテーブル、キュー、BLOB コンテナーがすべて存在するかどうか確認し、必要であれば作成します。
 
-	The difference compared to worker role A is the addition of the blob container and the subscribe queue among the resources to create if they don't already exist. You'll use the blob container to get the files that contain the HTML and plain text for the email body. The subscribe queue is used for sending subscription confirmation emails.
+	ワーカー ロール A と異なるのは、BLOB コンテナーと登録キューが存在しない場合はこれらも作成されることです。BLOB コンテナーは、電子メール本文 (HTML 形式とプレーン テキスト形式) が保存されたファイルを取得するときに使用します。登録キューは、登録確認メールを送信するときに使用します。
 
         public override bool OnStart()
         {
@@ -205,7 +204,7 @@ For storage account credentials, the procedure is the same as what you saw in [t
             return base.OnStart();
         }
 
-	The `Run` method processes work items from two queues: the queue used for messages sent to email lists (work items created by worker role A), and the queue used for subscription confirmation emails (work items created by the subscribe API method in the MvcWebRole project).
+	`Run` メソッドは、2 つのキューから取得した作業項目を処理します。1 つは、電子メール リストに送信するメッセージ (ワーカー ロール A が作成する作業項目) で使用するキュー。もう 1 つは、登録確認メール (MvcWebRole プロジェクトのサブスクライブ API メソッドが作成する作業項目) で使用するキューです。
 
        
         public override void Run()
@@ -240,7 +239,7 @@ For storage account credentials, the procedure is the same as what you saw in [t
                     {
                         ProcessSubscribeQueueMessage(msg);
                         messageFound = true;
-                    }
+                    } 
 
                     if (messageFound == false)
                     {
@@ -265,7 +264,7 @@ For storage account credentials, the procedure is the same as what you saw in [t
             }
         }
 
-	This code runs in an infinite loop until the worker role is shut down. If a work item is found in the main queue, the code processes it and then checks the subscribe queue. 
+	このコードは、ワーカー ロール B がシャットダウンするまで無限ループで実行されます。メイン キューで作業項目が見つかった場合はそれを処理し、登録キューをチェックします。
 
                     // Retrieve and process a new message from the send-email-to-list queue.
                     msg = this.sendEmailQueue.GetMessage();
@@ -283,20 +282,20 @@ For storage account credentials, the procedure is the same as what you saw in [t
                         messageFound = true;
                     }
 
-	If nothing is waiting in either queue, the code sleeps 60 seconds before continuing with the loop. 
+	どちらのキューにも待機中の作業項目がない場合、60 秒間スリープしてからこのループを再開します。
 
                     if (messageFound == false)
                     {
                         System.Threading.Thread.Sleep(1000 * 60);
                     }
 
-	The purpose of the sleep time is to minimize Azure Storage transaction costs, as explained in [the previous tutorial][tut4]. 
+	ここで 60 秒スリープするのは、[前回のチュートリアル][tut4]で説明したように、Azure ストレージのトランザクション コストを最小限に抑えるためです。
 
-	When a queue item is pulled from the queue by the [GetMessage][]  method, that queue item becomes invisible for 30 seconds to all other worker and web roles accessing the queue. This is what ensures that only one worker role instance will pick up any given queue message for processing. You can explicitly set this *exclusive lease* time (the time the queue item is invisible) by passing a  [visibility timeout](http://msdn.microsoft.com/en-us/library/windowsazure/ee758454.aspx) parameter to the  `GetMessage` method. If the worker role could take more than 30 seconds to process a queue message, you should increase the exclusive lease time to prevent other role instances from processing the same message. 
+	[GetMessage][] メソッドを実行してキューからキュー項目を取り出したとき、その後 30 秒間、同じキューにアクセスするその他すべてのワーカー ロールと Web ロールにはそのキュー項目が見えなくなります。これは、複数のワーカー ロール インスタンスが同じキュー メッセージを処理しないようにするためのしくみです。この *"排他的占有"* 時間 (キュー項目へのアクセスが制限される時間) を明示的に設定するには、[表示タイムアウト](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758454.aspx) パラメーターを `GetMessage` メソッドに渡します。ワーカー ロール B がキュー メッセージを処理するのに 30 秒以上かかる場合は、他のロール インスタンスがそのメッセージを同時に処理するのを防ぐため、排他的占有時間を長くする必要があります。
 
-	On the other hand, you don't want to set the exclusive lease time to an excessively large value. For example, if the exclusive lease time is set to 48 hours and your worker role unexpectedly shuts down after dequeuing a message, another worker role would not be able to process the message for 48 hours. The exclusive lease maximum is 7 days.
+	ただし、排他的占有時間をあまり長くするのは望ましくありません。たとえば、排他的占有時間を 48 時間に設定したとすると、メッセージをキューから取り出した後でワーカー ロールが突然シャットダウンした場合、別のワーカー ロールはそのメッセージを 48 時間処理できません。排他的に占有できるのは最大 7 日間です。
 
-	The  [GetMessages](http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.storageclient.cloudqueue.getmessages.aspx)  method (notice the "s" at the end of the name) can be used to pull up to 32 messages from the queue in one call. Each queue access incurs a small transaction cost, and the transaction cost is the same whether 32 messages are returned or zero messages are returned. The following code fetches up to 32 messages in one call and then processes them.
+	[GetMessages](http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.storageclient.cloudqueue.getmessages.aspx) メソッド (メソッド名の末尾に "s" が付いていることに注意) を使用すれば、1 回の呼び出しで最大 32 のメッセージをキューから取り出すことができます。キューにアクセスするたびに多少のトランザクション コストがかかります。また、返されるメッセージ数が 32件であっても、0 件であっても、かかるトランザクション コストは同じです。次のコードは、1 回の呼び出しで最大 32 のメッセージを取得して処理します。
 
     	foreach (CloudQueueMessage msg in sendEmailQueue.GetMessages(32))
 	    {
@@ -304,9 +303,9 @@ For storage account credentials, the procedure is the same as what you saw in [t
 	        messageFound = true;
 	    }
 
-	When using `GetMessages` to remove multiple messages, be sure the visibility timeout gives your application enough time to process all the messages. Once the visibility timeout expires, other role instances can access the message, and once they do, the first instance will not be able to delete the message when it finishes processing the work item.
+	`GetMessages` を使用して複数のメッセージを削除する場合、すべてのメッセージを処理できるだけの十分な占有タイムアウトを設定してください。制限時間が終了すると、他のロール インスタンスもそのメッセージへアクセスできるようになります。他のロール インスタンスが同じメッセージにアクセスした場合、最初に処理していたインスタンスは作業項目の処理が完了した時点でメッセージを削除できません。
 
-	The `Run` method calls `ProcessQueueMessage` when it finds a work item in the main queue:
+	メイン キューに作業項目が見つかると、`Run` メソッドは `ProcessQueueMessage` を呼び出します。
 
        
         private void ProcessQueueMessage(CloudQueueMessage msg)
@@ -388,16 +387,16 @@ For storage account credentials, the procedure is the same as what you saw in [t
                partitionKey, rowKey, GetRoleInstance());
         }
 
-	Poison messages are those that cause the application to throw an exception when they are processed.  If a message has been pulled from the queue more than five times, we assume that it cannot be processed and remove it from the queue so that we don't keep trying to process it. Production applications should consider moving the poison message to a "dead message" queue for analysis rather than deleting the message.
+	処理時に例外が発生するようなメッセージを有害なメッセージといいます。メッセージがキューから既に 5 回取り出されている場合は、そのメッセージを処理不可能とみなし、それ以上は処理せずにキューから削除します。運用アプリケーションでは有害メッセージを削除するのではなく、"デッド メッセージ" キューへ移動して分析します。
 
-	The code parses the queue message into the partition key and row key needed to retrieve the SendEmail row, and a restart flag.
+	次のコードは、キュー メッセージのパーティション キーと行キからー SendEmail 行と再起動フラグを取得します。
 
             var messageParts = msg.AsString.Split(new char[] { ',' });
             var partitionKey = messageParts[0];
             var rowKey = messageParts[1];
             var restartFlag = messageParts[2];
 
-	If processing for this message has been restarted after an unexpected shut down, the code checks the `messagearchive` table to determine if this email has already been sent. If it has already been sent, the code deletes the `SendEmail` row if it exists and deletes the queue message.
+	予期しないシャットダウンの後でこのメッセージの処理を再開した場合、`messagearchive` テーブルをチェックして、電子メールが既に送信されているかどうかを判断します。既に送信されている場合、`SendEmail` 行が存在する場合はそれを削除し、さらに該当するキュー メッセージを削除します。
 
             if (restartFlag == "1")
             {
@@ -420,7 +419,7 @@ For storage account credentials, the procedure is the same as what you saw in [t
                 }
             }
 
-	Next, we get the `SendEmail` row from the `message` table. This row has all of the information needed to send the email, except for the blobs that contain the HTML and plain text body of the email.
+	次に、`message` テーブルから `SendEmail` 行を取得します。この行には、電子メールの送信に必要な (BLOB 以外の) すべての情報が格納されています。BLOB には、HTML 形式とプレーン テキスト形式の電子メール本文が保存されます。
 
             var retrieveOperation = TableOperation.Retrieve<SendEmail>(partitionKey, rowKey);
             var retrievedResult = messageTable.Execute(retrieveOperation);
@@ -432,7 +431,7 @@ For storage account credentials, the procedure is the same as what you saw in [t
                 return;
             }
 
-	Then the code sends the email and archives the `SendEmail` row.
+	次に、電子メールを送信して、`SendEmail` 行をアーカイブへ移動します。
 
             if (emailRowInMessageTable.EmailSent != true)
             {
@@ -447,15 +446,15 @@ For storage account credentials, the procedure is the same as what you saw in [t
                 messageTable.Execute(deleteOperation);
             }
 
-	Moving the row to the messagearchive table can't be done in a transaction because it affects multiple tables.
+	SendEmail 行を messagearchive テーブルへ移動する処理は複数のテーブルに影響を与えるため、トランザクションでは実行できません。
 
-	Finally, if everything else is successful, the queue message is deleted.
+	最後に、すべて正常に処理された場合は、キュー メッセージを削除します。
 
             sendEmailQueue.DeleteMessage(msg);
 
-	The actual work of sending the email by using SendGrid is done by the `SendEmailToList` method. If you want to use a different service than SendGrid, all you have to do is change the code in this method.
+	SendGrid を使用した電子メール送信は、実際には `SendEmailToList` メソッドによって実行されます。SendGrid 以外のサービスを使用するときは、このメソッドのコードを変更するだけです。
 
-	**Note:** If you have invalid credentials in the project settings, the call to SendGrid will fail but the application will not get any indication of the failure.  If you use SendGrid in a production application, consider setting up separate credentials for the web API in order to avoid causing silent failures when an administrator changes his or her SendGrid user account password. For more information, see [SendGrid MultiAuth - Multiple Account Credentials](http://support.sendgrid.com/entries/21658978-sendgrid-multiauth-multiple-account-credentials). You can set up credentials at [https://sendgrid.com/credentials](https://sendgrid.com/credentials). 
+	**注:** プロジェクト設定の資格情報が無効な場合、SendGrid を呼び出すことができません。ただし、それについてのエラー情報は返されません。運用アプリケーションで SendGrid を使用する場合、Web API に別の資格情報を設定しておけば、管理者が自分の SendGrid ユーザー アカウントのパスワードを変更したときサイレント エラーが発生するのを防ぐことができます。詳細については、「[SendGrid MultiAuth -  Multiple Account Credentials (SendGrid MultiAuth - 複数のアカウント資格情報)](http://support.sendgrid.com/entries/21658978-sendgrid-multiauth-multiple-account-credentials)」を参照してください。[https://sendgrid.com/credentials](https://sendgrid.com/credentials) で資格情報を設定できます。
 
         private void SendEmailToList(string emailAddress, string fromEmailAddress, string subjectLine,
             string htmlMessageBodyRef, string textMessageBodyRef)
@@ -484,9 +483,9 @@ For storage account credentials, the procedure is the same as what you saw in [t
             }
         }
 
-	In the `GetBlobText` method, the code gets the blob size and then uses that value to initialize the `MemoryStream` object for performance reasons. If you don't provide the size, what the `MemoryStream` does is allocate 256 bytes, then when the download exceeds that, it allocates 512 more bytes, and so on, doubling the amount allocated each time. For a large blob this process would be inefficient compared to allocating the correct amount at the start of the download.
+	`GetBlobText` メソッドでは、BLOB サイズを取得し、パフォーマンス上の理由からその値を使用して `MemoryStream` オブジェクトを初期化します。BLOB サイズを指定しない場合は `MemoryStream` によって 256 バイトが割り当てられ、ダウンロードがこのサイズを超えるときはさらに 512 バイトが割り当てられます (割り当てサイズが 2 倍になります)。BLOB サイズが大きい場合、ダウンロードの開始時に適切なサイズを割り当てるのに比べ、このプロセスでは十分に対応できません。
 
-	The `Run` method calls `ProcessSubscribeQueueMessage` when it finds a work item in the subscribe queue:
+	登録キューに作業項目が見つかると、`Run` メソッドは `ProcessSubscribeQueueMessage` を呼び出します。
  
         private void ProcessSubscribeQueueMessage(CloudQueueMessage msg)
         {
@@ -529,15 +528,15 @@ For storage account credentials, the procedure is the same as what you saw in [t
                 subscriberGUID, GetRoleInstance());
         }
 
-	This method performs the following tasks:
+	このメソッドは次のタスクを実行します。
 
-	* If the message is a "poison" message, logs and deletes it.
-	* Gets the subscriber GUID from the queue message.
-	* Uses the GUID to get subscriber information from the MailingList table.
-	* Sends a confirmation email to the new subscriber.
-	* Deletes the queue message.
+	* メッセージが "有害" メッセージの場合、それを記録して削除する
+	* キュー メッセージから登録者 GUID を取得する
+	* GUID を使用して、MailingList テーブルから登録者情報を取得する
+	* 確認メールを新規登録者に送信する
+	* キュー メッセージを削除する
 
-	As with emails sent to lists, the actual sending of the email is in a separate method, making it easy for you to change to a different email service if you want to do that.
+	リストに送信される電子メールと同様、電子メールの実際の送信は別のメソッドで処理されます。そのため、必要であれば他の電子メール サービスに簡単に変更できます。
 
         private static void SendSubscribeEmail(string subscriberGUID, Subscriber subscriber, MailingList mailingList)
         {
@@ -562,64 +561,64 @@ For storage account credentials, the procedure is the same as what you saw in [t
 
 
 
-<h2><a name="testing"></a><span class="short-header">Testing</span>Testing Worker Role B</h2>
+<h2><a name="testing"></a><span class="short-header">テスト</span>ワーカー ロール B をテストする</h2>
 
-1. Run the application by pressing F5.
+1. F5 キーを押してアプリケーションを実行します。
 
-2. Go to the **Messages** page to see the message you created to test worker role A. After a minute or so, refresh the web page and you will see that the row has disappeared from the list because it has been archived.
+2. **Messages** ページヘ移動すると、ワーカー ロール A をテストするために作成したメッセージが表示されます。1 分ほどたったら、Web ページを最新の状態に更新してください。先ほどの行がリストから削除されていることがわかります。アーカイブへ移動されたためです。
 
-4. Check the email inbox where you expect to get the email. Note that there might be delays in the sending of emails by SendGrid or delivery to your email client, so you might have to wait a while to see the email. You might need to check your junk mail folder also.
-
-
+4. 電子メールが配送される受信ボックスをチェックします。SendGrid による電子メール送信や電子メール クライアントへの配信に少し時間がかかることがあります。電子メールが届いていない場合は、少し待ってください。迷惑メール フォルダーに振り分けられる可能性もあるので、チェックしてください。
 
 
-<h2><a name="nextsteps"></a><span class="short-header">Next steps</span>Next steps</h2>
-
-You have now built the Azure Email Service application from scratch, and what you have is the same as the completed project that you downloaded.  To deploy to the cloud, test in the cloud, and promote to production, you can use the same procedures that you saw in [the second tutorial][tut2].  If you chose to build the alternative architecture, see [the Azure Web Sites getting started tutorial][getstartedtutorial] for information about how to deploy the MVC project to an Azure Web Site.
-
-To learn more about Azure storage, see the following resource:
-
-* [Essential Knowledge for Windows Azure Storage](http://blogs.msdn.com/b/brunoterkaly/archive/2012/11/08/essential-knowledge-for-windows-azure-storage.aspx) (Bruno Terkaly's blog)
-
-To learn more about the Azure Table service, see the following resources:
-
-* [Essential Knowledge for Azure Table Storage](http://blogs.msdn.com/b/brunoterkaly/archive/2012/11/08/essential-knowledge-for-azure-table-storage.aspx) (Bruno Terkaly's blog)
-* [How to get the most out of Windows Azure Tables](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/11/06/how-to-get-most-out-of-windows-azure-tables.aspx) (Azure Storage team blog)
-* [How to use the Table Storage Service in .NET](http://www.windowsazure.com/en-us/develop/net/how-to-guides/table-services/) 
-* [Windows Azure Storage Client Library 2.0 Tables Deep Dive](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/11/06/windows-azure-storage-client-library-2-0-tables-deep-dive.aspx) (Azure Storage team blog)
-* [Real World: Designing a Scalable Partitioning Strategy for Azure Table Storage](http://msdn.microsoft.com/en-us/library/windowsazure/hh508997.aspx)
-
-To learn more about the Azure Queue service and Azure Service Bus queues, see the following resources:
-
-* [Queue-Centric Work Pattern (Building Real-World Cloud Apps with Windows Azure) ](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)
-* [Azure Queues and Azure Service Bus Queues - Compared and Contrasted][sbqueuecomparison]
-* [How to use the Queue Storage Service in .NET][queuehowto]
-
-To learn more about the Azure Blob service, see the following resources:
-
-* [Unstructured Blob Storage (Building Real-World Cloud Apps with Windows Azure) ](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)
-* [How to use the Azure Blob Storage Service in .NET][blobhowto]
-
-To learn more about autoscaling Azure Cloud Service roles, see the following resources:
-
-* [How to Use the Autoscaling Application Block][autoscalingappblock]
-* [Autoscaling and Azure][autoscaling-and-windows-azure]
-* [Building Elastic, Autoscalable Solutions with Azure](http://channel9.msdn.com/Events/WindowsAzureConf/2012/B04) (MSDN channel 9 video)
 
 
-<h2><a name="Acknowledgments"></a><span class="short-header">Acknowledgments</span>Acknowledgments</h2>
+<h2><a name="nextsteps"></a><span class="short-header">次のステップ</span>次のステップ</h2>
 
-These tutorials and the sample application were written by [Rick Anderson](http://blogs.msdn.com/b/rickandy/) and Tom Dykstra. We would like to thank the following people for their assistance:
+Azure Email Service アプリケーションを最初から作成し、ダウンロードした完成版プロジェクトと同じ状態になりました。クラウドに展開してテストし、運用環境へ昇格するには、[2 番目のチュートリアル][tut2]で説明した手順に従います。別のアーキテクチャを選択した場合は、[Azure の Web サイトの概要チュートリアル][getstartedtutorial]に記載されている MVC プロジェクトを Azure の Web サイトに展開する方法を参照してください。
 
-* Barry Dorrans (Twitter [@blowdart](https://twitter.com/blowdart)) 
-* [Cory Fowler](http://blog.syntaxc4.net/) (Twitter [@SyntaxC4](https://twitter.com/SyntaxC4) ) 
+Azure ストレージの詳細については、次のリソースを参照してください。
+
+* [Essential Knowledge for Windows Azure Storage (Windows Azure ストレージに関する基本知識)](http://blogs.msdn.com/b/brunoterkaly/archive/2012/11/08/essential-knowledge-for-windows-azure-storage.aspx) (Bruno Terkaly のブログ)
+
+Azure テーブル サービスの詳細については、次のリソースを参照してください。
+
+* [Essential Knowledge for Azure Table Storage (Azure テーブル ストレージに関する基本知識)](http://blogs.msdn.com/b/brunoterkaly/archive/2012/11/08/essential-knowledge-for-azure-table-storage.aspx) (Bruno Terkaly のブログ)
+* [How to get the most out of Windows Azure Tables (Windows Azure テーブルの活用方法)](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/11/06/how-to-get-most-out-of-windows-azure-tables.aspx) (Azure ストレージ チームのブログ)
+* [How to use the Table Storage Service in .NET (.NET でテーブル ストレージ サービスを使用する方法)](http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/table-services/)
+* [Windows Azure Storage Client Library 2.0 Tables Deep Dive (Windows Azure ストレージ クライアント ライブラリ 2.0 のテーブルに関する詳細情報)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/11/06/windows-azure-storage-client-library-2-0-tables-deep-dive.aspx) (Azure ストレージ チームのブログ)
+* [Real World: Designing a Scalable Partitioning Strategy for Azure Table Storage (Real World: Azure テーブル ストレージ用の拡張性が高いパーティション分割方法の設計)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh508997.aspx)
+
+Azure キュー サービスおよび Azure のサービス バス キューの詳細については、次のリソースを参照してください。
+
+* [Queue-Centric Work Pattern (Building Real-World Cloud Apps with Windows Azure) (キューを中心とした作業パターン (Windows Azure で構築する実用的なクラウド アプリケーション))](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)
+* [Azure Queues and Azure Service Bus Queues - Compared and Contrasted (Azure キューと Azure のサービス バス キューの比較)][sbqueuecomparison]
+* [How to use the Queue Storage Service in .NET (.NET でキュー ストレージ サービスを使用する方法)][queuehowto]
+
+Azure BLOB サービスの詳細については、次のリソースを参照してください。
+
+* [Unstructured Blob Storage (Building Real-World Cloud Apps with Windows Azure) (非構造化 BLOB ストレージ (Windows Azure で構築する実用的なクラウド アプリケーション))](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)
+* [.NET での Azure BLOB ストレージ サービスの使用方法][blobhowto]
+
+Azure クラウド サービスのオートスケーリングについては、次のリソースを参照してください。
+
+* [オートスケーリング アプリケーション ブロックの使用方法][autoscalingappblock]
+* [Autoscaling and Azure (オートスケーリングと Azure)][autoscaling-and-windows-azure]
+* [Building Elastic, Autoscalable Solutions with Azure (Azure で柔軟性の高いオートスケーリング ソリューションを構築)](http://channel9.msdn.com/Events/WindowsAzureConf/2012/B04) (MSDN channel 9 動画)
+
+
+<h2><a name="Acknowledgments"></a><span class="short-header">謝辞</span>謝辞</h2>
+
+これらのチュートリアルおよびサンプル アプリケーションは [Rick Anderson](http://blogs.msdn.com/b/rickandy/) と Tom Dykstra が執筆しました。今回、協力していただいた次の方々に感謝の意を表します。
+
+* Barry Dorrans (Twitter [@blowdart](https://twitter.com/blowdart))
+* [Cory Fowler](http://blog.syntaxc4.net/) (Twitter [@SyntaxC4](https://twitter.com/SyntaxC4))
 * [Joe Giardino](http://blogs.msdn.com/b/windowsazurestorage/)
-* Don Glover 
+* Don Glover
 * Jai Haridas
 * [Scott Hunter](http://blogs.msdn.com/b/scothu/) (Twitter: [@coolcsh](http://twitter.com/coolcsh))
 * [Brian Swan](http://blogs.msdn.com/b/brian_swan/)
 * [Daniel Wang](http://blogs.msdn.com/b/daniwang/)
-* The members of the Developer Advisory Council who provided feedback:
+* ご意見をお寄せいただいた Developer Advisory Council の方々
    * Damir Arh
    * Jean-Luc Boucho
    * Carlos dos Santos
@@ -641,17 +640,17 @@ These tutorials and the sample application were written by [Rick Anderson](http:
 
 
 
-[firsttutorial]: /en-us/develop/net/tutorials/multi-tier-web-site/1-overview/
-[tut2]: /en-us/develop/net/tutorials/multi-tier-web-site/2-download-and-run/
-[tut3configstorage]: /en-us/develop/net/tutorials/multi-tier-web-site/3-web-role/#configstorage
-[tut4]: /en-us/develop/net/tutorials/multi-tier-web-site/4-worker-role-a/
-[queuehowto]: /en-us/develop/net/how-to-guides/queue-service/
+[firsttutorial]: /ja-jp/develop/net/tutorials/multi-tier-web-site/1-overview/
+[tut2]: /ja-jp/develop/net/tutorials/multi-tier-web-site/2-download-and-run/
+[tut3configstorage]: /ja-jp/develop/net/tutorials/multi-tier-web-site/3-web-role/#configstorage
+[tut4]: /ja-jp/develop/net/tutorials/multi-tier-web-site/4-worker-role-a/
+[queuehowto]: /ja-jp/develop/net/how-to-guides/queue-service/
 
-[blobhowto]: /en-us/develop/net/how-to-guides/blob-storage/
-[GetMessage]: http://msdn.microsoft.com/en-us/library/windowsazure/ee741827.aspx
-[getstartedtutorial]: /en-us/develop/net/tutorials/get-started
-[sbqueuecomparison]: http://msdn.microsoft.com/en-us/library/windowsazure/hh767287.aspx
-[autoscalingappblock]: /en-us/develop/net/how-to-guides/autoscaling/
+[blobhowto]: /ja-jp/develop/net/how-to-guides/blob-storage/
+[GetMessage]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee741827.aspx
+[getstartedtutorial]: /ja-jp/develop/net/tutorials/get-started
+[sbqueuecomparison]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh767287.aspx
+[autoscalingappblock]: /ja-jp/develop/net/how-to-guides/autoscaling/
 
 
 [mtas-new-worker-role-project]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-worker-role-b/mtas-new-worker-role-project.png
@@ -664,4 +663,5 @@ These tutorials and the sample application were written by [Rick Anderson](http:
 
 
 [mtas-worker-b-settings]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-worker-role-b/mtas-worker-b-settings.png
-[autoscaling-and-windows-azure]: http://msdn.microsoft.com/en-us/library/hh680945(v=PandP.50).aspx
+[autoscaling-and-windows-azure]: http://msdn.microsoft.com/ja-jp/library/hh680945(v=PandP.50).aspx
+

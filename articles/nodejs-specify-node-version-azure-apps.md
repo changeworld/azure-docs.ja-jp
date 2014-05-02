@@ -1,48 +1,48 @@
-<properties linkid="develop-nodejs-common-tasks-specifying-a-node-version" urlDisplayName="Specifying a Node.js Version" pageTitle="Specifying a Node.js Version" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="Node.js" title="Specifying a Node.js version in an Azure application" authors="larryfr" solutions="" manager="paulettm" editor="mollybos" />
+<properties linkid="develop-nodejs-common-tasks-specifying-a-node-version" urlDisplayName="Node.js のバージョンの指定" pageTitle="Node.js のバージョンの指定" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="Node.js" title="Azure アプリケーションでの Node.js のバージョンの指定" authors="larryfr" solutions="" manager="paulettm" editor="mollybos" />
 
 
 
 
 
-# Specifying a Node.js version in an Azure application
+# Azure アプリケーションでの Node.js のバージョンの指定
 
-When hosting a Node.js application, you may want to ensure that your application uses a specific version of Node.js. There are several ways to accomplish this for applications hosted on Azure.
+Node.js アプリケーションをホストするときに、アプリケーションで特定のバージョンの Node.js を使用することが必要になる場合があります。Azure でホストされるアプリケーションについてこれを行うには、いくつかの方法があります。
 
-##Default versions
+##既定のバージョン
 
-Currently Azure provides Node.js versions 0.6.17, 0.6.20, and 0.8.4. Unless otherwise specified, 0.6.20 is the default version that will be used.
+現在、Azure では Node.js のバージョン 0.6.17、0.6.20、0.8.4 が提供されています。特に指定しない場合、0.6.20 が既定のバージョンとして使用されます。
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>If you are hosting your application in an Azure Cloud Service (web or worker role,) and it is the first time you have deployed the application, Azure will attempt to use the same version of Node.js as you have installed on your development environment if it matches one of the default versions available on Azure.</p>
+<strong>注</strong>
+<p>Azure クラウド サービス (Web ロールまたは worker ロール) でアプリケーションをホストしており、初めてアプリケーションを展開した場合、開発環境にインストールされていた Node.js が Azure で使用できる既定のバージョンのいずれかと一致するときには、同じバージョンを使用することが試行されます。</p>
 </div>
 
 
-##Versioning with package.json
+##package.json でバージョンを指定する
 
-You can specify the version of Node.js to be used by adding the following to your **package.json** file:
+次の内容を **package.json** ファイルに追加することによって、使用する Node.js のバージョンを指定できます。
 
 	"engines":{"node":version}
 
-Where *version* is the specific version number to use. You can  can specify more complex conditions for version, such as:
+ここで、*version* は使用する特定のバージョン番号です。次のように、より複雑なバージョンの条件を指定することもできます。
 
 	"engines":{"node": "0.6.22 || 0.8.x"}
 
-Since 0.6.22 is not one of the versions available in the hosting environment, the highest version of the 0.8 series that is available will be used instead - 0.8.4.
+0.6.22 はホスティング環境で利用できるバージョンではないため、0.8 シリーズで利用できる最も高いバージョンである 0.8.4 が代わりに使用されます。
 
-##Versioning Cloud Services with PowerShell
+##PowerShell でクラウド サービスのバージョンを指定する
 
-If you are hosting the application in a Cloud Service, and are deploying the application using Azure PowerShell, you can override the default Node.js version by using the **Set-AzureServiceProjectRole** PowerShell cmdlet. For example:
+クラウド サービスでアプリケーションをホストしており、Azure PowerShell を使用してアプリケーションを展開している場合は、PowerShell の **Set-AzureServiceProjectRole** コマンドレットを使用して既定の Node.js のバージョンをオーバーライドできます。次に例を示します。
 
 	Set-AzureServiceProjectRole WebRole1 node 0.8.4
 
-You can also use the **Get-AzureServiceProjectRoleRuntime** to retrieve a list of Node.js versions available for applications hosted as a Cloud Service.
+また、**Get-AzureServiceProjectRoleRuntime** を使用して、クラウド サービスとしてホストされるアプリケーションで利用可能な Node.js のバージョンの一覧を取得できます。
 
-##Using a custom version with Azure Web Sites
+##Azure の Web サイトでカスタム バージョンを使用する
 
-While Azure provides several default versions of Node.js, you may want to use a version that is not provided by default. If your application is hosted as an Azure Web Site, you can accomplish this by using the **iisnode.yml** file. The following steps walk through the process of using a custom version of Node.Js with an Azure Web Site:
+Azure には Node.js の既定のバージョンが複数用意されていますが、既定以外のバージョンを使用することもできます。アプリケーションが Azure の Web サイトとしてホストされている場合、**iisnode.yml** ファイルを使用してこれを実現できます。以下の手順では、Azure の Web サイトで Node.Js のカスタム バージョンを使用するプロセスを説明します。
 
-1. Create a new directory, and then create a **server.js** file within the directory. The **server.js** file should contain the following:
+1. 新しいディレクトリを作成し、そのディレクトリ内に **server.js** ファイルを作成します。**server.js** ファイルの内容は次のようになっている必要があります。
 
 		var http = require('http');
 		http.createServer(function(req,res) {
@@ -50,39 +50,40 @@ While Azure provides several default versions of Node.js, you may want to use a 
 		  res.end('Hello from Azure running node version: ' + process.version + '</br>');
 		}).listen(process.env.PORT || 3000);
 
-	This will display the Node.js version being used when you browse the web site.
+	これにより、Web サイトを閲覧するときに、使用されている Node.js のバージョンが表示されます。
 
-2. Create a new Web Site and note the name of the site. For example, the following uses the [Azure Command-line tools] to create a new Azure Web Site named **mywebsite**, and then enable a Git repository for the web site.
+2. 新しい Web サイトを作成し、サイトの名前をメモしておきます。たとえば、次の例では [Azure コマンド ライン ツール]を使用して、**mywebsite** という名前の新しい Azure の Web サイトを作成し、この Web サイトの Git リポジトリを有効にします。
 
 		azure site create mywebsite --git
 
-3. Create a new directory named **bin** as a child of the directory containing the **server.js** file.
+3. **server.js** ファイルが格納されているディレクトリの子として **bin** という名前の新しいディレクトリを作成します。
 
-4. Download the specific version of **node.exe** (the Windows version) that you wish to use with your application. For example, the following uses **curl** to download version 0.8.1:
+4. アプリケーションで使用する特定のバージョンの **node.exe** (Windows 版) をダウンロードします。たとえば、次の例では **curl** を使用してバージョン 0.8.1 をダウンロードします。
 
 		curl -O http://nodejs.org/dist/v0.8.1/node.exe
 
-	Save the **node.exe** file into the **bin** folder created previously.
+	**node.exe** ファイルを前の手順で作成した **bin** フォルダーに保存します。
 
-5. Create an **iisnode.yml** file in the same directory as the **server.js** file, and then add the following content to the **iisnode.yml** file:
+5. **iisnode.yml** ファイルを **server.js** ファイルと同じディレクトリに作成し、次の内容を **iisnode.yml** ファイルに追加します。
 
 		nodeProcessCommandLine: "D:\home\site\wwwroot\bin\node.exe"
 
-	This path is where the **node.exe** file within your project will be located once you have published your application to the Azure Web Site.
+	このパスは、アプリケーションを Azure の Web サイトに発行した際に、プロジェクト内の **node.exe** ファイルが配置される場所です。
 
-6. Publish your application. For example, since I created a new web site with the --git parameter earlier, the following commands will add the application files to my local Git repository, and then push them to the web site repository:
+6. アプリケーションを発行します。たとえば、先ほど --git パラメーターを指定して新しい Web サイトを作成したので、次のコマンドによって、自分のローカル Git リポジトリにアプリケーション ファイルが追加された後、Web サイトのリポジトリにプッシュされます。
 
 		git add .
 		git commit -m "testing node v0.8.1"
 		git push azure master
 
-	After the application has published, open the web site in a browser. You should see a message stating "Hello from Azure running node version: v0.8.1".
+	アプリケーションが発行された後、ブラウザーで Web サイトを開きます。"Hello from Azure running node version: v0.8.1" というメッセージが表示されます。
 
-##Next Steps
+##次のステップ
 
-Now that you understand how to specify the version of Node.js used by your application, learn how to [work with modules], [build and deploy a Node.js Web Site], and [How to use the Azure Command-Line Tools for Mac and Linux].
+アプリケーションで使用される Node.js のバージョンを指定する方法が理解できたら、[モジュールの使用方法]、[Node.js Web サイトを構築、展開する方法]、[Mac および Linux 用 Azure コマンド ライン ツールの使用方法]に関する各トピックを参照してください。
 
-[How to use the Azure Command-Line Tools for Mac and Linux]: /en-us/develop/nodejs/how-to-guides/command-line-tools/
-[Azure Command-line tools]: /en-us/develop/nodejs/how-to-guides/command-line-tools/
-[work with modules]: /en-us/develop/nodejs/common-tasks/working-with-node-modules/
-[build and deploy a Node.js Web Site]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)/
+[Mac および Linux 用 Azure コマンド ライン ツールの使用方法]: /ja-jp/develop/nodejs/how-to-guides/command-line-tools/
+[Azure コマンド ライン ツール]: /ja-jp/develop/nodejs/how-to-guides/command-line-tools/
+[モジュールの使用方法]: /ja-jp/develop/nodejs/common-tasks/working-with-node-modules/
+[Node.js Web サイトを構築、展開する方法]: /ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
+

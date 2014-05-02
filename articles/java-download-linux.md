@@ -1,4 +1,5 @@
-<properties linkid="java-download-linux" urlDisplayName="Download for Linux" pageTitle="Download the Azure SDK for Java (Linux)" metaKeywords="Azure SDK Java, Azure Java Maven, Azure Maven, Azure plugin for Eclipse, Azure Eclipse Java" description="Download the Azure SDK for Java. Code is provided if you are set up to use Maven for build." metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="" documentationCenter="Java" title="Download the Azure SDK for Java" authors="waltpo" solutions="" manager="" editor="" />
+<properties linkid="java-download-linux" urlDisplayName="Linux 用のダウンロード" pageTitle="Azure SDK for Java のダウンロード (Linux)" metaKeywords="Azure SDK Java, Azure Java Maven, Azure Maven, Azure plugin for Eclipse, Azure Eclipse Java" description="Azure SDK for Java をダウンロードします。Maven を使用してビルドする設定になっている場合のコードを示します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="" documentationCenter="Java" title="Azure SDK for Java のダウンロード" authors="waltpo" solutions="" manager="" editor="" />
 
 
 [WACOM.INCLUDE [download_libraries](../includes/download_libraries.md)]
+

@@ -1,51 +1,52 @@
-<properties linkid="" urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="What is Azure Multi-Factor Authentication?" authors="billmath" solutions="" manager="terrylan" editor="lisatoft" />
+<properties linkid="" urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Azure 多要素認証とは" authors="billmath" solutions="" manager="terrylan" editor="lisatoft" />
 
 
 
 
 
-<h1 id="whatiswamfa">What is Azure Multi-Factor Authentication?</h1>
+<h1 id="whatiswamfa">Azure 多要素認証とは</h1>
 
-Multi-factor or two-factor authentication is a method of authentication that requires the use of more than one verification method and adds a critical second layer of security to user sign-ins and transactions. It works by requiring any two or more of the following verification methods: 
+多要素認証または 2 要素認証は、複数の確認方法の使用を要求することで、ユーザーのサインインとトランザクションにさらなる重要なセキュリティ レイヤーを追加する認証方法です。これらは、次の確認方法のうち 2 つ以上を要求することで機能します。
 
-* Something you know (typically a password)
-* Something you have (a trusted device that is not easily duplicated, like a phone)
-* Something you are (biometrics)
+*ユーザーが知っているもの (通常はパスワード)
+*ユーザーが持っているもの (携帯電話など、簡単には複製できない信頼できるデバイス)
+*ユーザー自身 (生体認証)
 
-The security of multi-factor authentication lies in its layered approach. Compromising multiple authentication factors presents a significant challenge for attackers. Even if an attacker manages to learn the user's password, it is useless without also having possession of the trusted device. Conversely, if the user happens to lose the device, the finder of that device won't be able to use it unless he or she also knows the user's password.
-Azure Multi-Factor Authentication is the multi-factor authentication service that requires users to also verify sign-ins using a mobile app, phone call or text message. It is available to use with Azure Active Directory, to secure on-premise resources with the Azure Multi-Factor Authentication Server, and with custom applications and directories using the SDK. 
+多要素認証のセキュリティは、レイヤー アプローチによってもたらされます。攻撃者にとって、多要素認証を侵害することはかなり困難です。攻撃者にユーザーのパスワードを知られても、信頼できるデバイスを手に入れなければ役に立ちません。反対に、ユーザーがデバイスを紛失した場合、そのデバイスを見つけた人は、ユーザーのパスワードを知らなければデバイスを使用することができません。
+Azure の多要素認証は、モバイル アプリケーション、電話、またはテキスト メッセージを使用したサインインの検証もユーザーに要求する多要素認証です。Azure の Active Directory と同時に使用したり、Azure 多要素認証サーバーによって内部設置型リソースをセキュリティで保護したり、SDK を使用するカスタム アプリケーションおよびディレクトリに使用したりすることができます。
 
-![Azure Multi-Factor Authentication](./media/multi-factor-authentication/WAMFA1.png)
+![Azure 多要素認証](./media/multi-factor-authentication/WAMFA1.png)
 
-<h3>Securing cloud Azure Active Directory</h3>
+<h3>クラウドの Azure Active Directory のセキュリティ保護</h3>
 
-Enable Multi-Factor Authentication for Azure AD identities, and users will be prompted to set up additional verification the next time they sign in. Use Multi-Factor Authentication to secure access to Azure, Microsoft Online Services like Office 365 and Dynamics CRM Online, as well as 3rd party cloud services that integrate Azure AD with no additional set up. Multi-factor authentication can be rapidly enabled for large numbers of global users and applications.  [Learn more](http://msdn.microsoft.com/en-us/library/dn249466.aspx)
+多要素認証を Azure AD の ID に対して有効にすると、ユーザーが次にサインインするときに追加の確認の設定を求められます。多要素認証を使用すると、Azure、Microsoft Online Services (Office 365、Dynamics CRM Online など)、および Azure AD と統合されているサード パーティのクラウド サービスへのアクセスを追加の設定なしで保護できます。これにより、世界中の多数のユーザーとアプリケーションに対して多要素認証をすばやく有効にすることができます。[詳細情報](http://msdn.microsoft.com/ja-jp/library/dn249466.aspx)
 
-<h3>Securing on-premises resources and Active Directory</h3>
+<h3>内部設置型リソースおよび Active Directory でのセキュリティ保護</h3>
 
-Enable Multi-Factor Authentication for your on-premise resources such as IIS and Active Directory using the Azure Multi-Factor Authentication Server.  The Azure Multi-Factor Authentication Server allows the administrator integrate with IIS authentication to secure Microsoft IIS web applications, RADIUS authentication, LDAP authentication, and Windows authentication.  [Learn more](http://msdn.microsoft.com/en-us/library/dn249467.aspx)
-<h3>Securing custom applications</h3>
+IIS や Active Directory などの内部設置型リソースの多要素認証は、Azure 多要素認証サーバーを使用して有効にします。Azure 多要素認証サーバーを使用すると、管理者が IIS 認証と統合して Microsoft IIS Web アプリケーション、RADIUS 認証、LDAP 認証、および Windows 認証をセキュリティで保護することができるようになります。[詳細情報](http://msdn.microsoft.com/ja-jp/library/dn249467.aspx)
+<h3>カスタム アプリケーションのセキュリティ保護</h3>
 
-An SDK enables direct integration with your cloud services. Build Active Authentication phone call and text message verification into your application's sign-in or transaction processes and leverage your application's existing user database. [Learn more](http://msdn.microsoft.com/en-us/library/dn249464.aspx)
+SDK を使用すると、Active Authentication をクラウド サービスに直接統合できます。アプリケーションのサインイン プロセスやトランザクション プロセスに Active Authentication の電話やテキスト メッセージによる確認を組み込んで、アプリケーションの既存のユーザー データベースを活用できます。[詳細情報](http://msdn.microsoft.com/ja-jp/library/dn249464.aspx)
 
-<h3>Multi-Factor Authentication for Office 365</h3>
+<h3>Office 365 の多要素認証</h3>
 
-Multi-Factor Authentication for Office 365, powered by Azure Multi-Factor Authentication, works exclusively with Office 365 applications and is managed from the Office 365 portal. So administrators can now secure their Office 365 resources with multi-factor authentication. [Learn more](http://msdn.microsoft.com/en-us/library/dn383636.aspx)
+Office 365 の多要素認証には、Azure の多要素認証が活かされています。Office 365 アプリケーションに特化し、その管理は Office 365 ポータルから行います。したがって管理者は、多要素認証により Office 365 リソースを保護できるようになります。[詳細情報](http://msdn.microsoft.com/ja-jp/library/dn383636.aspx)
 
-<h3>Multi-Factor Authentication for Azure Administrators</h3>
+<h3>Azure 管理者用の多要素認証</h3>
 
-The same subset of Multi-Factor Authentication capabilities for Office 365 will be available at no cost to all Azure administrators. Every administrative account of Azure subscription can now get additional protection by enabling this core multi-factor authentication functionality. So an administrator that wants to access Azure portal to create a VM, a web site, manage storage, mobile services or any other Azure Service can add multi-factor authentication to his administrator account.  [Learn more](http://msdn.microsoft.com/en-us/library/dn249471.aspx)
+すべての Azure 管理者には、Office 365 向けと同じ多要素認証機能が追加費用なしでご利用いただけます。Azure サブスクリプションのすべての管理者アカウントには、この主要な多要素認証機能を有効にすることによって、保護を追加できるようになりました。したがって、Azure ポータルにアクセスして、VM と Web サイトの作成、ストレージの管理、モバイル サービスの使用など、Azure のさまざまなサービスを利用する必要のある管理者は、各自の管理者アカウントに多要素認証を追加することができます。[詳細情報](http://msdn.microsoft.com/ja-jp/library/dn249471.aspx)
 
-<h3>Multi-Factor Authentication feature comparison</h3>
+<h3>多要素認証の機能の比較</h3>
 
-The following shows the versions of multi-factor authentication that are available and a brief summary of the features it provides. You can use this in determining which version of multi-factor authentication is right for you. [Learn more](http://msdn.microsoft.com/en-us/library/dn249471.aspx)
+次に、使用可能な多要素認証のバージョンと、それぞれのバージョンで提供される機能について簡単な概要を示します。これは、どのバージョンの多要素認証が適切であるかを判断するうえで役立ちます。[詳細情報](http://msdn.microsoft.com/ja-jp/library/dn249471.aspx)
 
-![Azure Multi-Factor Authentication Feature Comparison](./media/multi-factor-authentication/mfacomparison1.png)
+![Azure 多要素認証の機能の比較](./media/multi-factor-authentication/mfacomparison1.png)
 
 
-**Additional Resources**
+**その他のリソース**
 
-* [Sign up for Azure as an organization](/en-us/manage/services/identity/organizational-account/)
-* [Azure Identity](/en-us/manage/windows/fundamentals/identity/)
-* [Azure Multi-Factor Authentication Library](http://technet.microsoft.com/en-us/library/dn249471.aspx)
+* [Azure への組織としてのサインアップ](/ja-jp/manage/services/identity/organizational-account/)
+* [Azure ID](/ja-jp/manage/windows/fundamentals/identity/)
+* [Azure 多要素認証ライブラリ](http://technet.microsoft.com/ja-jp/library/dn249471.aspx)
+
 

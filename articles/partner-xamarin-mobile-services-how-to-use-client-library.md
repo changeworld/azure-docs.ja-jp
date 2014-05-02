@@ -1,44 +1,44 @@
-<properties linkid="mobile-services-how-to-xamarin-client" urlDisplayName="Xamarin" pageTitle="How to use the Xamarin Component client - Azure Mobile Services feature guide" metaKeywords="Azure Mobile Services, Xamarin, iOS, Android, .NET client" description="Learn how to use the Xamarin Component client for Azure Mobile Services." metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="How to use the Xamarin Component client for Azure Mobile Services" authors="" />
+<properties linkid="mobile-services-how-to-xamarin-client" urlDisplayName="Xamarin" pageTitle="Xamarin コンポーネント クライアントの使用方法 - Azure モバイル サービスの機能ガイド" metaKeywords="Azure モバイル サービス, Xamarin, iOS, Android, .NET クライアント" description="Azure モバイル サービス向け Xamarin コンポーネント クライアントを使用する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Azure モバイル サービス向け Xamarin クライアントを使用する方法" authors="" />
 
-# How to use the Xamarin Component client for Azure Mobile Services
+# Azure モバイル サービス向け Xamarin コンポーネント クライアントを使用する方法
 
 <div class="dev-center-tutorial-selector sublanding"> 
-  <a href="/en-us/develop/mobile/how-to-guides/work-with-net-client-library/" title=".NET Framework">.NET Framework</a>
-  	<a href="/en-us/develop/mobile/how-to-guides/work-with-html-js-client/" title="HTML/JavaScript">HTML/JavaScript</a><a href="/en-us/develop/mobile/how-to-guides/work-with-ios-client-library/" title="iOS">iOS</a><a href="/en-us/develop/mobile/how-to-guides/work-with-android-client-library/" title="Android">Android</a><a href="/en-us/develop/mobile/how-to-guides/work-with-xamarin-client-library/" title="Xamarin" class="current">Xamarin</a>
+  <a href="/ja-jp/develop/mobile/how-to-guides/work-with-net-client-library/" title=".NET Framework">.NET Framework</a>
+  	<a href="/ja-jp/develop/mobile/how-to-guides/work-with-html-js-client/" title="HTML/JavaScript">HTML/JavaScript</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-ios-client-library/" title="iOS">iOS</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-android-client-library/" title="Android">Android</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-xamarin-client-library/" title="Xamarin" class="current">Xamarin</a>
 </div>
 
 
-This guide shows you how to perform common scenarios using the Xamarin Component client for Azure Mobile Services, in Xamarin apps for iOS and Android. The scenarios covered include querying for data, inserting, updating, and deleting data, authenticating users, and handling errors. If you are new to Mobile Services, you should consider first completing the "Mobile Services quickstart" tutorial ([Xamarin.iOS][Xamarin.iOS quickstart tutorial]/[Xamarin.Android][Xamarin.Android quickstart tutorial]) and the "Getting Started with Data in .NET" tutorial ([Xamarin.iOS][Xamarin.iOS data tutorial]/[Xamarin.Android][Xamarin.Android data tutorial]). The quickstart tutorial requires [Xamarin][Xamarin download] the [Mobile Services SDK] and helps you configure your account and create your first mobile service.
+このガイドでは、iOS および Android 用の Xamarin アプリで Azure モバイル サービス向け Xamarin コンポーネント クライアントを使用する一般的なシナリオを実行する方法について説明します。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。モバイル サービスを初めて使用する場合は、まずモバイル サービスのクイック スタートに関するチュートリアル ([Xamarin.iOS][Xamarin.iOS quickstart tutorial]/[Xamarin.Android][Xamarin.Android quickstart tutorial]) と .NET でのデータの使用に関するチュートリアル ([Xamarin.iOS][Xamarin.iOS data tutorial]/[Xamarin.Android][Xamarin.Android data tutorial]) を完了することをお勧めします。このクイック スタート チュートリアルでは、[Xamarin][Xamarin download] と[モバイル サービス SDK] が必要です。また、このチュートリアルでは、アカウントの構成と初めてのモバイル サービスの作成がサポートされます。
 
 
-## Table of Contents
+## 目次
 
-- [What is Mobile Services]
-- [Concepts]
-- [How to: Create the Mobile Services client]
-- [How to: Create a table reference]
-- [How to: Query data from a mobile service]
-	- [Filter returned data]
-    - [Sort returned data]
-	- [Return data in pages]
-	- [Select specific columns]
-	- [Look up data by ID]
-- [How to: Insert data into a mobile service]
-- [How to: Modify data in a mobile service]
-- [How to: Delete data in a mobile service]
-- [How to: Authenticate users]
-- [How to: Handle errors]
-- [How to: Work with untyped data]
-- [How to: Design unit tests]
-- [Next steps]
+- [モバイル サービスとは]
+- [概念]
+- [方法: モバイル サービス クライアントを作成する]
+- [方法: テーブル参照を作成する]
+- [方法: モバイル サービスのデータを照会する]
+	- [返されるデータをフィルター処理する]
+    - [返されるデータを並べ替える]
+	- [ページにデータを返す]
+	- [特定の列を選択する]
+	- [ID でデータを検索する]
+- [方法: モバイル サービスにデータを挿入する]
+- [方法: モバイル サービスのデータを変更する]
+- [方法: モバイル サービスのデータを削除する]
+- [方法: ユーザーを認証する]
+- [方法: エラーを処理する]
+- [方法: 型指定のないデータを処理する]
+- [方法: 単体テストを設計する]
+- [次のステップ]
 	
 [WACOM.INCLUDE [mobile-services-concepts](../includes/mobile-services-concepts.md)]
 
-<h2><a name="setup"></a><span class="short-header">Setup</span>Setup and Prerequisites</h2>
+<h2><a name="setup"></a><span class="short-header">セットアップ</span>セットアップと前提条件</h2>
 
-We assume that you have created a mobile service and a table. For more information see [Create a table](http://go.microsoft.com/fwlink/?LinkId=298592). In the code used in this topic, the table is named `TodoItem` and it will have the following columns: `id`, `Text`, and `Complete`.
+前提条件として、モバイル サービスとテーブルを作成してあるとします。詳細については、「[テーブルの作成](http://go.microsoft.com/fwlink/?LinkId=298592)」を参照してください。このトピックで使用するコードでは、テーブルの名前は `TodoItem` であり、`id`、`Text`、`Complete` という列があります。
 
-The corresponding typed client-side .NET type is the following:
+これに対応する型指定されたクライアント側 .NET 型を次に示します。
 
 
 	public class TodoItem
@@ -52,35 +52,35 @@ The corresponding typed client-side .NET type is the following:
 		public bool Complete { get; set; }
 	}
 	
-When dynamic schema is enabled, Azure Mobile Services automatically generates new columns based on the object in insert or update requests. For more information, see [Dynamic schema](http://go.microsoft.com/fwlink/?LinkId=296271).
+動的スキーマを有効にすると、挿入または更新の要求に含まれるオブジェクトに基づいて、Azure のモバイル サービスで自動的に新しい列が生成されます。詳細については、「[動的スキーマ](http://go.microsoft.com/fwlink/?LinkId=296271)」を参照してください。
 
-<h2><a name="create-client"></a><span class="short-header">Create the Mobile Services client</span>How to: Create the Mobile Services client</h2>
+<h2><a name="create-client"></a><span class="short-header">モバイル サービス クライアントの作成</span>方法: モバイル サービス クライアントの作成</h2>
 
-The following code creates the `MobileServiceClient` object that is used to access your mobile service. 
+次のコードは、モバイル サービスにアクセスするために使用される `MobileServiceClient` オブジェクトを生成します。
 			
 	MobileServiceClient client = new MobileServiceClient( 
 		"AppUrl", 
 		"AppKey" 
 	); 
 
-In the code above, replace `AppUrl` and `AppKey` with the mobile service URL and application key, in that order. Both of these are available on the Azure Management Portal, by selecting your mobile service and then clicking on "Dashboard".
+前のコードの `AppUrl` と `AppKey` を、モバイル サービスの URL とアプリケーション キーにそれぞれ置き換えます。どちらも Azure 管理ポータルで確認できます。モバイル サービスを選択し、[ダッシュボード] をクリックしてください。
 
-<h2><a name="instantiating"></a><span class="short-header">Creating a table reference</span>How to: Create a table reference</h2>
+<h2><a name="instantiating"></a><span class="short-header">テーブル参照の作成</span>方法: テーブル参照を作成する</h2>
 
-All of the code that accesses or modifies data in the Mobile Services table calls functions on the `MobileServiceTable` object. You get a reference to the table by calling the [GetTable](http://msdn.microsoft.com/en-us/library/windowsazure/jj554275.aspx) function on an instance of the `MobileServiceClient`. 
+モバイル サービスのテーブル データにアクセスするコードとそのデータを変更するコードは、必ず `MobileServiceTable` オブジェクトで関数を呼び出します。`MobileServiceClient` のインスタンスで [GetTable](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554275.aspx) 関数を呼び出して、テーブルへの参照を取得します。
 
     IMobileServiceTable<TodoItem> todoTable = 
 		client.GetTable<TodoItem>();
 
-This is the typed serialization model; see discussion of <a href="#untyped">the untyped serialization model</a> below.
+これは型指定されたシリアル化のモデルです。後で示す<a href="#untyped">型指定のないシリアル化のモデルに関する説明</a>を参照してください。
 			
-<h2><a name="querying"></a><span class="short-header">Querying data</span>How to: Query data from a mobile service</h2>
+<h2><a name="querying"></a><span class="short-header">データの照会</span>方法: モバイル サービスのデータを照会する</h2>
 
-This section describes how to issue queries to the mobile service. Subsections describe different aspects such as sorting, filtering, and paging. 
+このセクションでは、モバイル サービスにクエリを発行する方法について説明します。サブセクションでは、並べ替え、フィルター処理、ページングなど、さまざまな処理について説明します。
 			
-### <a name="filtering"></a>How to: Filter returned data
+### <a name="filtering"></a>方法: 返されるデータをフィルター処理する
 
-The following code illustrates how to filter data by including a `Where` clause in a query. It returns all items from `todoTable` whose `Complete` property is equal to `false`. The `Where` function applies a row filtering predicate to the query against the table. 
+次のコードは、クエリに `Where` 句を含めることによってデータをフィルター処理する方法を示しています。このコードは、`todoTable` から `Complete` プロパティが `false` になっているすべての項目を返します。`Where` 関数は、行のフィルタリング述語をテーブルに対するクエリに適用します。
 	
 
 	// This query filters out completed TodoItems and 
@@ -89,16 +89,16 @@ The following code illustrates how to filter data by including a `Where` clause 
 	   .Where(todoItem => todoItem.Complete == false)
 	   .ToListAsync();
 
-You can view the URI of the request sent to the mobile service by using message inspection software, such as browser developer tools or Fiddler. If you look at the request URI below,  notice that we are modifying the query string  itself:
+ブラウザー開発者ツールや Fiddler などのメッセージ検査ソフトウェアを使用して、モバイル サービスに送信された要求の URI を表示できます。次の要求 URI を確認すると、クエリ文字列自体に変更を加えていることがわかります。
 
 	GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1				   
-This request would normally be translated roughly into the following SQL query on the server side:
+通常、この要求は、サーバー側で次のような SQL クエリに変換されます。
 			
 	SELECT * 
 	FROM TodoItem 			
 	WHERE ISNULL(complete, 0) = 0
 			
-The function which is passed to the `Where` method can have an arbitrary number of conditions. For example, the line below:
+`Where` メソッドに渡される関数には、任意の数の条件を設定できます。たとえば、次のコードがあるとします。
 
 	// This query filters out completed TodoItems where Text isn't null
 	List<TodoItem> items = await todoTable
@@ -113,26 +113,26 @@ Would be roughly translated (for the same request shown before) as
 	WHERE ISNULL(complete, 0) = 0
 	      AND ISNULL(text, 0) = 0
 
-The `where` statement above will find items with `Complete` status set to false with non-null `Text`.
+前の `where` ステートメントは、null 以外の `Text` を持ち、`Complete` のステータスが false に設定されている項目を検索します。
 
-We also could have written that in multiple lines instead:
+代わりに、次のように複数の行で記述することもできます。
 
 	List<TodoItem> items = await todoTable
 	   .Where(todoItem => todoItem.Complete == false)
 	   .Where(todoItem => todoItem.Text != null)
 	   .ToListAsync();
 
-The two methods are equivalent and may be used interchangeably.  The former option -- of concatenating multiple predicates in one query -- is more compact and recommended.
+この 2 つの方法は等価であり、区別しないで使用できます。複数の述語を 1 つのクエリに連結する前者の方法が、よりコンパクトでありお勧めの方法です。
 
-The `where` clause supports operations that be translated into the Mobile Services OData subset. This includes relational operators (==, !=, <, <=, >, >=), arithmetic operators (+, -, /, *, %), number precision (Math.Floor, Math.Ceiling), string functions (Length, Substring, Replace, IndexOf, StartsWith, EndsWith), date properties (Year, Month, Day, Hour, Minute, Second), access properties of an object, and expressions combining all of these.
+`where` 句は、モバイル サービスの OData サブセットに変換される操作をサポートします。これには、関係演算子 (==、! =、&lt;、&lt;=、&gt;、&gt;=)、算術演算子 (+、-、/、*、%)、数の精度 (Math.Floor、Math.Ceiling)、文字列関数 (Length、Substring、Replace、IndexOf、StartsWith、EndsWith)、日付プロパティ (Year、Month、Day、Hour、Minute、Second)、オブジェクトのアクセス プロパティ、これらすべてを組み合わせた式が含まれます。
 
-### <a name="sorting"></a>How to: Sort returned data
+### <a name="sorting"></a>方法: 返されるデータを並べ替える
 
-The following code illustrates how to sort data by including an `OrderBy` or `OrderByDescending` function in the query. It returns items from `todoTable` sorted ascending by the `Text` field. By default, the server returns only the first 50 elements. 
+次のコードでは、クエリに `OrderBy` 関数または `OrderByDescending` 関数を含めることによってデータを並べ替える方法を示します。次のコードは、`todoTable` から、`Text` フィールドの値に基づいて昇順に並べ替えられた項目を返します。既定では、サーバーは最初の 50 個の要素のみを返します。
 
-<div class="dev-callout"><strong>Note</strong> <p>A server-driven page size is used by default to prevent all elements from being returned. This keeps default requests for large data sets from negatively impacting the service. </p> </div>
+<div class="dev-callout"><strong>注</strong> <p>すべての要素が返されるのを防ぐために、サーバー側で設定されたページ サイズが既定で使用されます。これにより、大きなデータ セットの既定の要求がサービスに悪影響を与えないようにします。</p> </div>
 
-You may increase the number of items to be returned by calling `Take` as described in the next section.
+次のセクションで説明する `Take` を呼び出すことにより、返される項目の数を増やすことができます。
 
 	// Sort items in ascending order by Text field
 	MobileServiceTableQuery<TodoItem> query = todoTable
@@ -144,16 +144,16 @@ You may increase the number of items to be returned by calling `Take` as describ
 					.OrderByDescending(todoItem => todoItem.Text)       
  	List<TodoItem> items = await query.ToListAsync();			
 
-### <a name="paging"></a>How to: Return data in pages
+### <a name="paging"></a>方法: ページにデータを返す
 
-The following code shows how to implement paging in returned data by using the `Take` and `Skip` clauses in the query.  The following query, when executed, returns the top three items in the table. 
+次のコードでは、クエリで `Take` 句と `Skip` 句を使用して、返されたデータにページングを実装する方法を示しています。次のクエリを実行すると、テーブルの最初の上位 3 つの項目が返されます。
 
 	// Define a filtered query that returns the top 3 items.
 	MobileServiceTableQuery<TodoItem> query = todoTable
 					.Take(3);                              
 	List<TodoItem> items = await query.ToListAsync();
 
-The following revised query skips the first three results and returns the next three after that. This is effectively the second "page" of data, where the page size is three items.
+次の変更されたクエリは、最初の 3 つの結果をスキップし、その後の 3 つを返します。ページ サイズが 3 つの項目である場合、これは実質的にデータの 2 番目の "ページ" になります。
 
 	// Define a filtered query that skips the top 3 items and returns the next 3 items.
 	MobileServiceTableQuery<TodoItem> query = todoTable
@@ -161,15 +161,15 @@ The following revised query skips the first three results and returns the next t
 					.Take(3);                              
 	List<TodoItem> items = await query.ToListAsync();
 			
-You can also use the [IncludeTotalCount](http://msdn.microsoft.com/en-us/library/windowsazure/jj730933.aspx) method to ensure that the query will get the total count for <i>all</i> the records that would have been returned, ignoring any take paging/limit clause specified:
+また、[IncludeTotalCount](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj730933.aspx) メソッドを使用すると、指定された take paging/limit 句を無視して、返される<i>すべての</i>レコードの合計数を取得することができます。
 
 	query = query.IncludeTotalCount();
 
-This is a simplified scenario of passing hard-coded paging values to the `Take` and `Skip` methods. In a real-world app, you can use queries similar to the above with a pager control or comparable UI to let users navigate to previous and next pages. 
+これは、ハードコーディングされたページング値を `Take` メソッドおよび `Skip` メソッドに渡す、簡略化したシナリオです。実際のアプリケーションでは、ユーザーが前後のページに移動できるように、ページャー コントロールまたは同等の UI と共に上記と同様のクエリを使用することができます。
 
-### <a name="selecting"></a>How to: Select specific columns
+### <a name="selecting"></a>方法: 特定の列を選択する
 
-You can specify which set of properties to include in the results by adding a `Select` clause to your query. For example, the following code shows how to select just one field and also how to select and format multiple fields:
+クエリに `Select` 句を追加し、結果に含める一連のプロパティを指定できます。たとえば、次のコードでは、1 つのフィールドだけを選択する方法と、複数のフィールドを選択し、フォーマットする方法も示しています。
 
 	// Select one field -- just the Text
 	MobileServiceTableQuery<TodoItem> query = todoTable
@@ -181,7 +181,7 @@ You can specify which set of properties to include in the results by adding a `S
 					.Select(todoItem => string.Format("{0} -- {1}", todoItem.Text.PadRight(30), todoItem.Complete ? "Now complete!" : "Incomplete!"));
 	List<string> items = await query.ToListAsync();
 			
-All the functions described so far are additive, so we can just keep calling them and we'll each time affect more of the query. One more example:
+これまでに説明した関数はいずれも付加的なものであるため、この後も呼び出すようにし、クエリに活用することにします。次の例も参照してください。
 
 	MobileServiceTableQuery<TodoItem> query = todoTable
 					.Where(todoItem => todoItem.Complete == false)
@@ -190,40 +190,40 @@ All the functions described so far are additive, so we can just keep calling the
 					.Take(3);
 	List<string> items = await query.ToListAsync();
 	
-### <a name="lookingup"></a>How to: Look up data by ID
+### <a name="lookingup"></a>方法: ID でデータを検索する
 
-The `LookupAsync` function can be used to look up objects from the database with a particular ID. 
+`LookupAsync` 関数を使うと、データベースから特定の ID を持つオブジェクトを検索することができます。
 
 	// This query filters out the item with the ID of 25
 	TodoItem item25 = await todoTable.LookupAsync(25);
 
-<h2><a name="inserting"></a><span class="short-header">Inserting data</span>How to: Insert data into a mobile service</h2>
+<h2><a name="inserting"></a><span class="short-header">データの挿入</span>方法: モバイル サービスにデータを挿入する</h2>
 
-<div class="dev-callout"><strong>Note</strong> <p>If you want to perform insert, lookup, delete, or update operations on a type, then you need to create a member called <strong>Id</strong> (regardless of case). This is why the example class <strong>TodoItem</strong> has a member of name <strong>Id</strong>. An ID value must not be set to anything other than the default value during insert operations; by contrast, the ID value should always be set to a non-default value and present in update and delete operations.</p> </div>
+<div class="dev-callout"><strong>注</strong> <p>型に対して挿入、検索、削除、更新の各操作を実行する場合は、どのような場合でも <strong>Id</strong> と呼ばれるメンバーを作成する必要があります。そのため、<strong>TodoItem</strong> クラスの例には、名前 <strong>ID</strong> のメンバーがあります。ID 値は、挿入操作時は、既定値以外に設定することはできません。それに対し、更新操作と削除操作では、ID 値を常に既定値以外に設定し、使用する必要があります。</p></div>
 
-The following code illustrates how to insert new rows into a table. The parameter contains the data to be inserted as a .NET object.
+次のコードは、テーブルに新しい行を挿入する方法を示しています。パラメーターには、挿入するデータが .NET オブジェクトとして含まれます。
 
 	await todoTable.InsertAsync(todoItem);
 
-After the await `todoTable.InsertAsync` call returns, the ID of the object in the server is populated to the `todoItem` object in the client. 
+await `todoTable.InsertAsync` の呼び出しが戻ると、サーバーのオブジェクトの ID にクライアントの `todoItem` オブジェクトが設定されます。
 
-To insert untyped data, you may take advantage of Json.NET as shown below. Again, note that an ID must not be specified when inserting an object.
+型指定のないデータを挿入するために、次に示すように Json.NET を活用することもできます。繰り返しになりますが、オブジェクトを挿入する場合は ID を指定することはできません。
 
 	JObject jo = new JObject(); 
 	jo.Add("Text", "Hello World"); 
 	jo.Add("Complete", false);
 	var inserted = await table.InsertAsync(jo);
 
-If you attempt to insert an item with the "Id" field already set, you will get back a `MobileServiceInvalidOperationException` from the service. 
+"Id" フィールドを設定して項目を取得しようとすると、サービスから `MobileServiceInvalidOperationException` が返されます。
 
-<h2><a name="modifying"></a><span class="short-header">Modifying data</span>How to: Modify data in a mobile service</h2>
+<h2><a name="modifying"></a><span class="short-header">データの変更</span>方法: モバイル サービスのデータを変更する</h2>
 
-The following code illustrates how to update an existing instance with the same ID with new information. The parameter contains the data to be updated as a .NET object.
+次のコードは、同じ ID を持つ既存のインスタンスを新しい情報で更新する方法を示しています。パラメーターには、更新するデータが .NET オブジェクトとして含まれます。
 
 	await todoTable.UpdateAsync(todoItem);
 
 
-To insert untyped data, you may take advantage of Json.NET like so. Note that when making an update, an ID must be specified, as that is how the mobile service identifies which instance to update. The ID can be obtained from the result of the `InsertAsync` call.
+型指定のないデータを挿入するために、次のような Json.NET を活用することもできます。更新を行う場合は、更新対象のインスタンスをモバイル サービスが識別できるように、ID を指定する必要があることに注意してしてください。ID は、`InsertAsync` の呼び出しの結果から取得できます。
 
 	JObject jo = new JObject(); 
 	jo.Add("Id", 52);
@@ -231,36 +231,35 @@ To insert untyped data, you may take advantage of Json.NET like so. Note that wh
 	jo.Add("Complete", false);
 	var inserted = await table.UpdateAsync(jo);
 			
-If you attempt to update an item without the "Id" field already set, there is no way for the service to tell which instance to update, so you will get back a `MobileServiceInvalidOperationException` from the service. Similarly, if you attempt to update an untyped item without the "Id" field already set, you will again get back a `MobileServiceInvalidOperationException` from the service. 
+"Id" フィールドを設定せずに項目を更新しようとすると、サービスが更新対象を識別できないため、サービスから `MobileServiceInvalidOperationException` が返されます。同様に、"Id" フィールドを設定せずに型指定されていない項目を更新しようとした場合も、サービスから `MobileServiceInvalidOperationException` が返されます。
 			
 			
-<h2><a name="deleting"></a><span class="short-header">Deleting data</span>How to: Delete data in a mobile service</h2>
+<h2><a name="deleting"></a><span class="short-header">データの削除</span>方法: モバイル サービスのデータを削除する</h2>
 
-The following code illustrates how to delete an existing instance. The instance is identified by the "Id" field set on the `todoItem`.
+次のコードは、既存のインスタンスを削除する方法を示しています。インスタンスは、`todoItem` に設定した "Id" フィールドで識別されます。
 
 	await todoTable.DeleteAsync(todoItem);
 
-To delete untyped data, you may take advantage of Json.NET like so. Note that when making a delete request, an ID must be specified, as that is how the mobile service identifies which instance to delete. A delete request needs only the ID; other properties are not passed to the service, and if any are passed, they are ignored at the service. The result of a `DeleteAsync` call is usually `null` as well. The ID to pass in can be obtained from the result of the `InsertAsync` call.
+型指定のないデータを削除するために、次のような Json.NET を活用することもできます。削除要求を行う場合は、削除対象のインスタンスをモバイル サービスが識別できるように、ID を指定する必要があることに注意してしてください。削除要求は ID のみを必要とします。他のプロパティはサービスに渡されません。そのいずれかが渡された場合、サービスに無視されます。`DeleteAsync` の呼び出しの結果も通常は `null` です。渡す ID は、`InsertAsync` の呼び出しの結果から取得できます。
 
 	JObject jo = new JObject(); 
 	jo.Add("Id", 52);
 	await table.DeleteAsync(jo);
 			
-If you attempt to delete an item without the "Id" field already set, there is no way for the service to tell which instance to delete, so you will get back a `MobileServiceInvalidOperationException` from the service. Similarly, if you attempt to delete an untyped item without the "Id" field already set, you will again get back a `MobileServiceInvalidOperationException` from the service. 
+"Id" フィールドを設定せずに項目を削除しようとすると、サービスが削除対象を識別できないため、サービスから `MobileServiceInvalidOperationException` が返されます。同様に、"Id" フィールドを設定せずに型指定されていない項目を削除しようとした場合も、サービスから `MobileServiceInvalidOperationException` が返されます。
 		
 
 
-<h2><a name="authentication"></a><span class="short-header">Authentication</span>How to: Authenticate users</h2>
+<h2><a name="authentication"></a><span class="short-header">認証</span>方法: ユーザーを認証する</h2>
 
-Mobile Services supports authenticating and authorizing app users using a variety of external identity providers: Facebook, Google, Microsoft Account, Twitter, and Azure Active Directory. You can set permissions on tables to restrict access for specific operations to only authenticated users. You can also use the identity of authenticated users to implement authorization rules in server scripts. For more information, see the "Get started with authentication" tutorial ([Xamarin.iOS][Xamarin.iOS authentication]/[Xamarin.Android][Xamarin.Android authentication]).
+モバイル サービスは、Facebook、Google、Microsoft アカウント、Twitter、Azure Active Directory などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。詳細については、チュートリアル「認証の使用」([Xamarin.iOS][Xamarin.iOS authentication]/[Xamarin.Android][Xamarin.Android authentication]) を参照してください。
 
-Two authentication flows are supported: a _server flow_ and a _client flow_. The server flow provides the simplest authentication experience, as it relies on the provider's web authentication interface. The client flow allows for deeper integration with device-specific capabilities as it relies on provider-specific device-specific SDKs.
+_サーバー フロー_と_クライアント フロー_という 2 つの認証フローがサポートされます。サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。クライアント フローでは、プロバイダー固有とデバイス固有の SDK を利用することから、デバイス固有の機能との統合がさらに進みます。
 
-<h3>Server flow</h3>
-To have Mobile Services manage the authentication process in your Windows Store or Windows Phone app, 
-you must register your app with your identity provider. Then in your mobile service, you need to configure the application ID and secret provided by your provider. For more information, see the "Get started with authentication" tutorial ([Xamarin.iOS][Xamarin.iOS authentication]/[Xamarin.Android][Xamarin.Android authentication]).
+<h3>サーバー フロー</h3>
+モバイル サービスによって Windows ストア アプリまたは Windows Phone アプリの認証プロセスが管理されるようにするには、アプリケーションを ID プロバイダーに登録する必要があります。その後、モバイル サービス内で、プロバイダーから提供されたアプリケーション ID とシークレットを構成する必要があります。詳細については、チュートリアル「認証の使用」([Xamarin.iOS][Xamarin.iOS authentication]/[Xamarin.Android][Xamarin.Android authentication]) を参照してください。
 
-Once you have registered your identity provider, simply call the [LoginAsync method] with the [MobileServiceAuthenticationProvider] value of your provider. For example, the following code initiates a server flow login by using Facebook. 
+ID プロバイダーを登録したら、[MobileServiceAuthenticationProvider] にプロバイダーの値を指定して [LoginAsync メソッド]を呼び出します。たとえば、次のコードは、Facebook を使用してサーバー フローのログインを開始します。
 
 	private MobileServiceUser user;
 	private async System.Threading.Tasks.Task Authenticate()
@@ -286,15 +285,15 @@ Once you have registered your identity provider, simply call the [LoginAsync met
 		}
 	}
 
-If you are using an identity provider other than Facebook, change the value of [MobileServiceAuthenticationProvider] above to the value for your provider.
+Facebook 以外の ID プロバイダーを使用している場合は、上の [MobileServiceAuthenticationProvider] の値をプロバイダーに対応する値に変更してください。
 
-In this case, Mobile Services manages the OAuth 2.0 authentication flow by displaying the login page of the selected provider and generating a Mobile Services authentication token after successful login with the identity provider. The [LoginAsync method] returns a [MobileServiceUser], which provides both the [userId] of the authenticated user and the [MobileServiceAuthenticationToken], as a JSON web token (JWT). This token can be cached and re-used until it expires. For more information, see [Caching the authentication token].
+この場合、モバイル サービスは、選択されたプロバイダーのログイン ページを表示し、ID プロバイダーでのログインが成功した後でモバイル サービス認証トークンを生成することで、OAuth 2.0 認証フローを管理します。[LoginAsync メソッド]は [MobileServiceUser] を返します。これによって、認証されたユーザーの [userId] と、JSON Web トークン (JWT) としての [MobileServiceAuthenticationToken] が提供されます。このトークンはキャッシュして、期限が切れるまで再利用することができます。詳細については、「[認証トークンをキャッシュする]」を参照してください。
 
-<h3>Client flow</h3>
+<h3>クライアント フロー</h3>
 
-Your app can also independently contact the identity provider and then provide the returned token to Mobile Services for authentication. This client flow enables you to provide a single sign-in experience for users or to retrieve additional user data from the identity provider. 
+アプリケーションは個別に ID プロバイダーにアクセスして、返されたトークンを認証のためにモバイル サービスに提供することもできます。このクライアント フローでは、ユーザーにシングル サインイン エクスペリエンスを提供したり、ID プロバイダーから追加のユーザー データを取得したりすることができます。
 
-In the most simplified form, you can use the client flow as shown in this snippet for Facebook or Google. 
+最も単純な形式では、この Facebook や Google のスニペットに示すようにクライアント フローを使用できます。
 
 	var token = new JObject();
 	// Replace access_token_value with actual value of your access token obtained 
@@ -327,8 +326,8 @@ In the most simplified form, you can use the client flow as shown in this snippe
 		}
 	}
 
-<h3><a name="caching"></a>Caching the authentication token</h3>
-In some cases, the call to the login method can be avoided after the first time the user authenticates. You can use a local secure store (such as [Xamarin.Auth][Xamarin.Auth component]) to cache the current user identity the first time they log in and every subsequent time you check whether you already have the user identity in our cache. When the cache is empty, you still need to send the user through the login process. 
+<h3><a name="caching"></a>認証トークンをキャッシュする</h3>
+場合によっては、最初のユーザー認証の後の login メソッドの呼び出しを避けることができます。ローカルのセキュリティで保護された格納場所 ([Xamarin.Auth][Xamarin.Auth component] など) を使用して、ユーザーが初めてログインするときに使用した現在のユーザー ID をキャッシュし、それ以降はユーザー ID がキャッシュに保存されているかどうかを確認します。キャッシュが空の場合は、ユーザーにログイン プロセスを実行してもらう必要があります。
 
 	using Xamarin.Auth;
 	var accountStore = AccountStore.Create(); // Xamarin.iOS
@@ -360,11 +359,11 @@ In some cases, the call to the login method can be avoided after the first time 
 	accountStore.Delete(account, "Facebook");
 
 
-<h2><a name="errors"></a><span class="short-header">Error handling</span>How to: Handle errors</h2>
+<h2><a name="errors"></a><span class="short-header">エラー処理</span>方法: エラーを処理する</h2>
 
-There are several ways to encounter, validate, and work around errors in Mobile Services. 
+モバイル サービスには、エラーの検出、検証、回避のためのさまざまな方法があります。
 
-As an example, server scripts are registered in a mobile service and can be used to perform a wide range of operations on data being inserted and updated, including validation and data modification. Imagine defining and registering a server script that validate and modify data, like so:
+たとえば、サーバー スクリプトは、モバイル サービスに登録され、挿入や更新が行われるデータでの広範な操作 (検証やデータの修正を含む) の実行に使用できます。次のようにデータを検証および変更するサーバー スクリプトを定義し、登録するとします。
 
 	function insert(item, user, request) 
 	{
@@ -375,9 +374,9 @@ As an example, server scripts are registered in a mobile service and can be used
 	   }
 	}
 
-This server-side script validates the length of string data sent to the mobile service and rejects strings that are too long, in this case longer than 10 characters.
+サーバー側スクリプトは、モバイル サービスに送信された文字列データの長さを検証し、長すぎる文字列 (この場合は 10 文字を超える) を拒否します。
 
-Now that the mobile service is validating data and sending error responses on the server-side, you can update your .NET app to be able to handle error responses from validation.
+モバイル サービスはサーバー側でデータを検証してエラー応答を送信するため、検証からのエラー応答を処理できるように .NET アプリケーションを更新することができます。
 
 	private async void InsertTodoItem(TodoItem todoItem)
 	{
@@ -394,9 +393,9 @@ Now that the mobile service is validating data and sending error responses on th
 		}
 	}
 
-<h2><a name="untyped"></a><span class="short-header">Working with untyped data</span>How to: Work with untyped data</h2>
+<h2><a name="untyped"></a><span class="short-header">型指定されていないデータの操作</span>方法: 型指定されていないデータを操作する</h2>
 
-The Xamarin Component client is designed for strongly typed scenarios. However, sometimes, a more loosely typed experience is convenient; for example, this could be when dealing with objects with open schema. That scenario is enabled as follows. In queries, you forego LINQ and use the wire format.
+Xamarin コンポーネント クライアントは厳密に型指定されたシナリオ向けに設計されます。ただし、大まかに型指定されたエクスペリエンスの方が便利であることもあります。たとえば、オープン スキーマでオブジェクトを処理する場合です。このシナリオには次のように対応できます。クエリでは、LINQ を使用せずに、ワイヤ形式を使用します。
 
 	// Get an untyped table reference
 	IMobileServiceTable untypedTodoTable = client.GetTable("TodoItem");			
@@ -404,87 +403,88 @@ The Xamarin Component client is designed for strongly typed scenarios. However, 
 	// Lookup untyped data using OData
 	JToken untypedItems = await untypedTodoTable.ReadAsync("$filter=complete eq 0&$orderby=text");
 
-You get back JSON values that you can use like a property bag. For more information on JToken and Json.NET, see [Json.NET](http://json.codeplex.com/)
+プロパティ バッグのように使用できる JSON 値が返されます。JToken と Json.NET の詳細については、[Json.NET](http://json.codeplex.com/) を参照してください。
 
-<h2><a name="unit-testing"></a><span class="short-header">Designing tests</span>How to: Design unit tests</h2>
+<h2><a name="unit-testing"></a><span class="short-header">テストの設計</span>方法: 単体テストを設計する</h2>
 
-The value returned by `MobileServiceClient.GetTable` and the queries are interfaces. That makes them easily "mockable" for testing purposes, so you could create a `MyMockTable : IMobileServiceTable<TodoItem>` that implements your testing logic.
+`MobileServiceClient.GetTable` とクエリによって返される値はインターフェイスです。そのためテスト目的で簡単にモックを作成できるので、テスト ロジックを実装する `MyMockTable : IMobileServiceTable<TodoItem>` を作成できます。
 
-<h2><a name="nextsteps"></a>Next steps</h2>
+<h2><a name="nextsteps"></a>次のステップ</h2>
 
-Now that you have completed this how-to conceptual reference topic, learn how to perform important tasks in Mobile Services in detail:
+使用方法の概念リファレンス トピックを完了した後は、モバイル サービスで重要なタスクを実行する方法について詳しく確認してください。
 
-* Get started with Mobile Services ([Xamarin.iOS][Get started with Mobile Services iOS]/[Xamarin.Android][Get started with Mobile Services Android])
-  <br/>Learn the basics of how to use Mobile Services.
+* モバイル サービスの使用 ([Xamarin.iOS][Get started with Mobile Services iOS]/[Xamarin.Android][Get started with Mobile Services Android])
+  <br/>モバイル サービスを使用する方法の基本について説明します。
 
-* Get started with data ([Xamarin.iOS][Get started with data iOS]/[Xamarin.Android][Get started with data Android])
-  <br/>Learn more about storing and querying data using Mobile Services.
+* データの使用 ([Xamarin.iOS][Get started with data iOS]/[Xamarin.Android][Get started with data Android])
+  <br/>モバイル サービスを使用してデータの格納およびクエリを実行する方法について説明します。
 
-* Get started with authentication ([Xamarin.iOS][Get started with authentication iOS]/[Xamarin.Android][Get started with authentication Android])
-  <br/>Learn how to authenticate users of your app with an identity provider.
+* 認証の使用 ([Xamarin.iOS][Get started with authentication iOS]/[Xamarin.Android][Get started with authentication Android])
+  <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* Validate and modify data with scripts ([Xamarin.iOS][Validate and modify data with scripts iOS]/[Xamarin.Android][Validate and modify data with scripts Android])
-  <br/>Learn more about using server scripts in Mobile Services to validate and change data sent from your app.
+* スクリプトを使用したデータの検証および変更 ([Xamarin.iOS][Validate and modify data with scripts iOS]/[Xamarin.Android][Validate and modify data with scripts Android])
+  <br/>モバイル サービスでサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
-* Refine queries with paging ([Xamarin.iOS][Refine queries with paging iOS]/[Xamarin.Android][Refine queries with paging Android])
-  <br/>Learn how to use paging in queries to control the amount of data handled in a single request.
+* ページングを使用したクエリの改善 ([Xamarin.iOS][Refine queries with paging iOS]/[Xamarin.Android][Refine queries with paging Android])
+  <br/>クエリ内でページングを使用して、単一の要求で渡されるデータの量を制御する方法について説明します。
 
-* Authorize users with scripts ([Xamarin.iOS][Authorize users with scripts iOS]/[Xamarin.Android][Authorize users with scripts Android])
-  <br/>Learn how to take the user ID value provided by Mobile Services based on an authenticated user and use it to filter the data returned by Mobile Services. 
+* スクリプトを使用したユーザーの認証 ([Xamarin.iOS][Authorize users with scripts iOS]/[Xamarin.Android][Authorize users with scripts Android])
+  <br/>認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理する方法について説明します。
 
 <!-- Anchors. -->
-[What is Mobile Services]: #what-is
-[Concepts]: #concepts
-[How to: Create the Mobile Services client]: #create-client
-[How to: Create a table reference]: #instantiating
-[How to: Query data from a mobile service]: #querying
-[Filter returned data]: #filtering
-[Sort returned data]: #sorting
-[Return data in pages]: #paging
-[Select specific columns]: #selecting
-[Look up data by ID]: #lookingup
-[How to: Bind data to user interface in a mobile service]: #binding
-[How to: Insert data into a mobile service]: #inserting
-[How to: Modify data in a mobile service]: #modifying
-[How to: Delete data in a mobile service]: #deleting
-[How to: Authenticate users]: #authentication
-[How to: Handle errors]: #errors
-[How to: Design unit tests]: #unit-testing 
-[How to: Query data from a mobile service]: #querying
-[How to: Customize the client]: #customizing
-[How to: Work with untyped data]: #untyped
-[Customize request headers]: #headers
-[Customize serialization]: #serialization
-[Next steps]: #nextsteps
-[Caching the authentication token]: #caching
+[モバイル サービスとは]: #what-is
+[概念]: #concepts
+[方法: モバイル サービス クライアントを作成する]: #create-client
+[方法: テーブル参照を作成する]: #instantiating
+[方法: モバイル サービスのデータを照会する]: #querying
+[返されるデータをフィルター処理する]: #filtering
+[返されるデータを並べ替える]: #sorting
+[ページにデータを返す]: #paging
+[特定の列を選択する]: #selecting
+[ID でデータを検索する]: #lookingup
+[方法: モバイル サービスでユーザー インターフェイスにデータをバインドする]: #binding
+[方法: モバイル サービスにデータを挿入する]: #inserting
+[方法: モバイル サービスのデータを変更する]: #modifying
+[方法: モバイル サービスのデータを削除する]: #deleting
+[方法: ユーザーを認証する]: #authentication
+[方法: エラーを処理する]: #errors
+[方法: 単体テストを設計する]: #unit-testing 
+[方法: モバイル サービスのデータを照会する]: #querying
+[方法: クライアントをカスタマイズする]: #customizing
+[方法: 型指定のないデータを処理する]: #untyped
+[要求ヘッダーをカスタマイズする]: #headers
+[シリアル化をカスタマイズする]: #serialization
+[次のステップ]: #nextsteps
+[認証トークンをキャッシュする]: #caching
 
 <!-- URLs. -->
-[Get started with Mobile Services iOS]: /en-us/develop/mobile/tutorials/get-started-xamarin-ios
-[Get started with Mobile Services Android]: /en-us/develop/mobile/tutorials/get-started-xamarin-android
+[Get started with Mobile Services iOS]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-ios
+[Get started with Mobile Services Android]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-android
 [Xamarin download]: http://xamarin.com/download/
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[Xamarin.iOS quickstart tutorial]: /en-us/develop/mobile/tutorials/get-started-xamarin-ios/
-[Xamarin.Android quickstart tutorial]: /en-us/develop/mobile/tutorials/get-started-xamarin-android/
-[Xamarin.iOS data tutorial]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-ios/
-[Xamarin.Android data tutorial]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android/
-[Xamarin.iOS authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-ios/
-[Xamarin.Android authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android/
+[Xamarin.iOS quickstart tutorial]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-ios/
+[Xamarin.Android quickstart tutorial]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-android/
+[Xamarin.iOS data tutorial]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-ios/
+[Xamarin.Android data tutorial]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-android/
+[Xamarin.iOS authentication]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-ios/
+[Xamarin.Android authentication]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-android/
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Xamarin.Auth component]: https://components.xamarin.com/view/xamarin.auth
 
 [Mobile Services SDK]: http://nuget.org/packages/WindowsAzure.MobileServices/
-[Get started with data iOS]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-ios
-[Get started with data Android]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android
-[Get started with authentication iOS]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-ios
-[Get started with authentication Android]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android
-[Validate and modify data with scripts ios]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios
-[Validate and modify data with scripts android]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android
-[Refine queries with paging iOS]: /en-us/develop/mobile/tutorials/add-paging-to-data-xamarin-ios
-[Refine queries with paging Android]: /en-us/develop/mobile/tutorials/add-paging-to-data-xamarin-android
-[Authorize users with scripts iOS]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios
-[Authorize users with scripts Android]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android
-[LoginAsync method]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclientextensions.loginasync.aspx
-[MobileServiceAuthenticationProvider]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider.aspx
-[MobileServiceUser]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.aspx
-[UserID]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid.aspx
-[MobileServiceAuthenticationToken]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken.aspx
+[Get started with data iOS]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-ios
+[Get started with data Android]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-android
+[Get started with authentication iOS]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-ios
+[Get started with authentication Android]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-android
+[Validate and modify data with scripts ios]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios
+[Validate and modify data with scripts android]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android
+[Refine queries with paging iOS]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-xamarin-ios
+[Refine queries with paging Android]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-xamarin-android
+[Authorize users with scripts iOS]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios
+[Authorize users with scripts Android]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android
+[LoginAsync method]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclientextensions.loginasync.aspx
+[MobileServiceAuthenticationProvider]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider.aspx
+[MobileServiceUser]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.aspx
+[UserID]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid.aspx
+[MobileServiceAuthenticationToken]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken.aspx
+

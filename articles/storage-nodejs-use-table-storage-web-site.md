@@ -1,91 +1,91 @@
-<properties linkid="dev-nodejs-tutorials-web-site-with-storage" urlDisplayName="Web Site with Storage" pageTitle="Node.js web site with table storage | Microsoft Azure" metaKeywords="Azure table storage Node.js, Azure Node.js application, Azure Node.js tutorial, Azure Node.js example" description="A tutorial that teaches you how to use the Azure Table service to store data from a Node application hosted on an Azure web site." metaCanonical="" services="web-sites,storage" documentationCenter="Node.js" title="Node.js Web Application using the Azure Table Service" authors="" solutions="" manager="" editor="" />
+<properties linkid="dev-nodejs-tutorials-web-site-with-storage" urlDisplayName="ストレージを使用する Web サイト" pageTitle="テーブル ストレージを使用した Node.js Web サイト | Microsoft Azure" metaKeywords="Azure テーブル ストレージ Node.js, Azure Node.js アプリケーション, Azure Node.js チュートリアル, Azure Node.js 例" description="Azure テーブル サービスを使用して、Azure Web サイトでホストされる Node アプリケーションのデータを格納する方法を示すチュートリアル。" metaCanonical="" services="web-sites,storage" documentationCenter="Node.js" title="Azure テーブル サービスを使用する Node.js Web アプリケーション" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-# Node.js Web Application using the Azure Table Service
+# Azure テーブル サービスを使用する Node.js Web アプリケーション
 
-This tutorial shows you how to use Table service provided by Azure Data Management to store and access data from a [node] application hosted on Azure. This tutorial assumes that you have some prior experience using node and [Git].
+このチュートリアルでは、Azure データ管理で提供されるテーブル サービスを使用して、Azure でホストされる[ノード] アプリケーションのデータを格納する方法やデータにアクセスする方法を示します。このチュートリアルは、ノードおよび [Git] を使用した経験があることを前提としています。
 
-You will learn:
+学習内容: 
 
-* How to use npm (node package manager) to install the node modules
+* npm (ノード パッケージ マネージャー) を使用してノード モジュールをインストールする方法
 
-* How to work with the Azure Table service
+* Azure テーブル サービスを使用する方法
 
-* How to use the Azure command-line tool for Mac and Linux to create an Azure Web Site
+* Mac および Linux 用 Azure コマンド ライン ツールを使用して Azure の Web サイトを作成する方法
 
-By following this tutorial, you will build a simple web-based task-management application that allows creating, retrieving and completing tasks. The tasks are stored in the Table service.
+このチュートリアルでは、タスクを作成、取得、完了する機能を備えた、単純な Web ベースのタスク管理アプリケーションを作成します。タスクはテーブル サービスに格納されます。
  
-The project files for this tutorial will be stored in a directory named **tasklist** and the completed application will look similar to the following:
+このチュートリアルのプロジェクト ファイルは **tasklist** という名前のディレクトリに保存され、作成されるアプリケーションは次のようになります。
 
-![A web page displaying an empty tasklist][node-table-finished]
+![空のタスク一覧が表示されている Web ページ][node-table-finished]
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>This tutorial makes reference to the <strong>tasklist</strong> folder. The full path to this folder is omitted, as path semantics differ between operating systems. You should create this folder in a location that is easy for you to access on your local file system, such as <strong>~/node/tasklist</strong> or <strong>c:\node\tasklist</strong></p>
+<strong>注</strong>
+<p>このチュートリアルでは、<strong>tasklist</strong> フォルダーを参照します。パスのセマンティクスはオペレーティング システムによって異なるので、このフォルダーへの完全なパスは省略しています。このフォルダーは、ローカル ファイル システムのアクセスしやすい場所 (<strong>~/node/tasklist</strong> や <strong>c:\node\tasklist</strong> など) に作成してください。</p>
 </div>
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>Many of the steps below mention using the command-line. For these steps, use the command-line for your operating system, such as <strong>cmd.exe</strong> (Windows) or <strong>Bash</strong> (Unix Shell). On OS X systems you can access the command-line through the Terminal application.</p>
+<strong>注</strong>
+<p>以下に示す手順の多くでは、コマンド ラインを使用します。これらの手順では、<strong>cmd.exe</strong> (Windows) や <strong>Bash</strong> (Unix Shell) など、お使いのオペレーティング システムのコマンド ラインを使用してください。OS X システムでは、ターミナル アプリケーションを使用してコマンド ラインにアクセスできます。</p>
 </div>
 
-##Prerequisites
+##前提条件
 
-Before following the instructions in this article, you should ensure that you have the following installed:
+この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
-* [node] version 0.6.14 or higher
+* [node] Version 0.6.14 以上
 
 * [Git]
 
-* A text editor
+* テキスト エディター
 
-* A web browser
+* Web ブラウザー
 
 [WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
-##Create a storage account
+##ストレージ アカウントを作成する
 
-Perform the following steps to create a storage account. This account will be used by subsequent instructions in this tutorial.
+ストレージ アカウントを作成するには、次の手順を実行します このアカウントは、このチュートリアルの以降の手順で使用されます。
 
-1. Open your web browser and go to the [Azure Portal]. If prompted, login with your Azure subscription information.
+1. Web ブラウザーを開き、[Azure ポータル]に移動します。ログインを求められた場合は、Azure サブスクリプションの情報を使ってログインします。
 
-2. At the bottom of the portal, click **+ NEW** and then select **Storage Account**.
+2. ポータルの下部にある **[+ 新規]** をクリックし、**[ストレージ アカウント]** を選択します。
 
-	![+new][portal-new]
+	![[+ 新規]][portal-new]
 
-	![storage account][portal-storage-account]
+	![ストレージ アカウント][portal-storage-account]
 
-3. Select **Quick Create**, and then enter the URL and Region/Affinity for this storage account. Since this is a tutorial and does not need to be replicated globally, uncheck **Enable Geo-Replication**. Finally, click "Create Storage Account".
+3. **[簡易作成]** を選択し、このストレージ アカウントの URL とリージョン/アフィニティ グループを入力します。これはチュートリアルであり、グローバルにレプリケートする必要がないので、**[ジオ (主要地域) レプリケーションの有効化]** チェック ボックスをオフにします。最後に、[ストレージ アカウントの作成] をクリックします。
 
-	![quick create][portal-quick-create-storage]
+	![簡易作成][portal-quick-create-storage]
 
-	Make note of the URL you enter, as this will be referenced as the account name by later steps.
+	入力した URL は、後の手順でアカウント名として参照されるのでメモしておきます。
 
-4. Once the storage account has been created, click **Manage Keys** at the bottom of the page. This will display the primary and secondary access keys for this storage account. Copy and save the primary access key, then click the checkmark.
+4. ストレージ アカウントが作成されたら、ページの下部にある **[キーの管理]** をクリックします。これにより、このストレージ アカウントのプライマリ アクセス キーとセカンダリ アクセス キーが表示されます。プライマリ アクセス キーをコピーして保存した後、チェックマークをクリックします。
 
-	![access keys][portal-storage-access-keys]
+	![アクセス キー][portal-storage-access-keys]
 
-##Install modules and generate scaffolding
+##モジュールのインストールとスキャフォールディングの生成
 
-In this section you will create a new Node application and use npm to add module packages. For the task-list application you will use the [Express] and [Azure] modules. The Express module provides a Model View Controller framework for node, while the Azure modules provides connectivity to the Table service.
+ここでは、新しい Node アプリケーションを作成し、npm を使用してモジュール パッケージを追加します。タスク一覧アプリケーションの場合は、[Express] モジュールと [Azure] モジュールを使用します。Express モジュールは node の Model View Controller フレームワークを提供し、Azure モジュールはテーブル サービスへの接続を提供します。
 
-###Install express and generate scaffolding
+###express のインストールとスキャフォールディングの生成
 
-1. From the command-line, change directories to the **tasklist** directory. If the **tasklist** directory does not exist, create it.
+1. コマンド ラインで、**tasklist** ディレクトリに移動します。**tasklist** ディレクトリがない場合は作成します。
 
-2. Enter the following command to install express.
+2. 次のコマンドを入力して、express をインストールします。
 
 		npm install express -g
 
     <div class="dev-callout">
-	<strong>Note</strong>
-	<p>When using the '-g' parameter on some operating systems, you may receive an error of <strong>Error: EPERM, chmod '/usr/local/bin/express'</strong> and a request to try running the account as an administrator. If this occurs, use the <strong>sudo</strong> command to run npm at a higher privilege level.</p>
+	<strong>注</strong>
+	<p>一部のオペレーティング システムで "-g" パラメーターを使用する場合、"<strong>Error: EPERM, chmod '/usr/local/bin/express'</strong>" というエラーが表示され、管理者としてアカウントを実行することを要求されることがあります。このような場合は、<strong>sudo</strong> コマンドを使用して、より高い権限レベルで npm を実行します。</p>
 	</div>
 
-    The output of this command should appear similar to the following:
+    このコマンドの出力は次のように表示されます。
 
 		express@3.4.0 C:\Users\larryfr\AppData\Roaming\npm\node_modules\express
 		├── methods@0.0.1
@@ -101,15 +101,15 @@ In this section you will create a new Node application and use npm to add module
 		└── connect@2.9.0 (uid2@0.0.2, pause@0.0.1, qs@0.6.5, bytes@0.2.0, multiparty@2.1.8)
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>The '-g' parameter used when installing the express module installs it globally. This is done so that we can access the <strong>express</strong> command to generate web site scaffolding without having to type in additional path information.</p>
+	<strong>注</strong>
+	<p>express モジュールのインストール時に "-g" パラメーターを使用すると、モジュールはグローバルにインストールされます。これは、追加のパス情報を入力することなく <strong>express</strong> コマンドにアクセスして、Web サイトのスキャフォールディングを生成できるようにするためです。</p>
 	</div>
 
-4. To create the scaffolding which will be used for this application, use the **express** command:
+4. このアプリケーションで使用するスキャフォールディングを作成するには、**express** コマンドを使用します。
 
         express
 
-	The output of this command should appear similar to the following:
+	このコマンドの出力は次のように表示されます。
 
 		create : .
 		create : ./package.json
@@ -132,17 +132,17 @@ In this section you will create a new Node application and use npm to add module
 		run the app:
 		  $ node app
 
-After this command completes, you should have several new directories and files in the **tasklist** directory.
+このコマンドが完了すると、**tasklist** ディレクトリ内に複数の新しいディレクトリやファイルが作成されています。
 
-###Install additional modules
+###追加モジュールのインストール
 
-The **package.json** file is one of the files created by the **express** command. This file contains a list of additional modules that are required for an Express application. Later, when you deploy this application to an Azure Web Site, this file will be used to determine which modules need to be installed on Azure to support your application.
+**package.json** ファイルは、**express** コマンドで作成されるファイルの 1 つです。このファイルには、Express アプリケーションで必要な追加モジュールのリストが含まれます。このファイルは、後でこのアプリケーションを Azure の Web サイトに展開するときに、アプリケーションのサポートのために Azure にインストールする必要があるモジュールを判断するために使用されます。
 
-1. From the command-line, change directories to the **tasklist** folder and enter the following to install the modules described in the **package.json** file:
+1. コマンド ラインで **tasklist** フォルダーに移動し、次のコマンドを入力して **package.json** ファイルに記述されたモジュールをインストールします。
 
         npm install
 
-    The output of this command should appear similar to the following:
+    このコマンドの出力は次のように表示されます。
 
 		express@3.4.0 node_modules\express
 		├── methods@0.0.1
@@ -166,13 +166,13 @@ The **package.json** file is one of the files created by the **express** command
 		├── with@1.1.1 (uglify-js@2.4.0)
 		└── constantinople@1.0.2 (uglify-js@2.4.0)
 
-	This installs all of the default modules that Express needs.
+	これによって、Express で必要な既定のモジュールがすべてインストールされます。
 
-2. Next, enter the following command to install the [azure], [node-uuid], [nconf] and [async] modules locally as well as to save an entry for them to the **package.json** file:
+2. 次に、次のコマンドを入力して、[azure]、[node-uuid]、[nconf]、および [async] モジュールをローカルにインストールし、これらのモジュールのエントリを **package.json** ファイルに保存します。
 
 		npm install azure node-uuid async nconf --save
 
-	The output of this command should appear similar to the following:
+	このコマンドの出力は次のように表示されます。
 
 		async@0.2.9 node_modules\async
 
@@ -198,22 +198,22 @@ The **package.json** file is one of the files created by the **express** command
 		├── xml2js@0.2.8 (sax@0.5.5)
 		└── request@2.25.0 (json-stringify-safe@5.0.0, aws-sign@0.3.0, forever-agent@0.5.0, tunnel-agent@0.3.0, qs@0.6.5, oauth-sign@0.3.0, cookie-jar@0.3.0, node-uuid@1.4.1, http-signature@0.10.0, form-data@0.1.1, hawk@1.0.0)
 
-##Using the Table service in a node application
+##ノード アプリケーションでのテーブル サービスの使用
 
-In this section you will extend the basic application created by the **express** command by adding a **task.js** file which contains the model for your tasks. You will also modify the existing **app.js** and create a new **tasklist.js** file that uses the model.
+ここでは、**express** コマンドで作成された基本的なアプリケーションを、タスクのモデルを格納する **task.js** ファイルを追加することによって拡張します。また、既存の **app.js** を変更し、このモデルを使用する新しい **tasklist.js** ファイルを作成します。
 
-### Create the model
+### モデルの作成
 
-1. In the **tasklist** directory, create a new directory named **models**.
+1. **tasklist** ディレクトリ内に、**models** という名前の新しいディレクトリを作成します。
 
-2. In the **models** directory, create a new file named **task.js**. This file will contain the model for the tasks created by your application.
+2. **models** ディレクトリ内に、**task.js** という名前の新しいファイルを作成します。このファイルには、アプリケーションで作成されるタスクのモデルが格納されます。
 
-3. At the beginning of the **task.js** file, add the following code to reference required libraries:
+3. **task.js** ファイルの先頭に、必要なライブラリを参照する次のコードを追加します。
 
         var azure = require('azure');
   		var uuid = require('node-uuid');
 
-4. Next, you will add code to define and export the Task object. This object is responsible for connecting to the table.
+4. 次に、Task オブジェクトを定義およびエクスポートするコードを追加します。このオブジェクトは、テーブルへの接続を処理します。
 
   		module.exports = Task;
 
@@ -228,7 +228,7 @@ In this section you will extend the basic application created by the **express**
 		  });
 		};
 
-5. Next, add the following code to define additional methods on the Task object, which allow interactions with data stored in the table:
+5. 次に、Task オブジェクトの追加のメソッドを定義する次のコードを追加します。このメソッドによって、テーブルに格納されたデータを操作できます。
 
 		Task.prototype = {
 		  find: function(query, callback) {
@@ -272,13 +272,13 @@ In this section you will extend the basic application created by the **express**
 		  }
 		}
 
-6. Save and close the **task.js** file.
+6. **task.js** ファイルを保存して閉じます。
 
-###Create the controller
+###コントローラーの作成
 
-1. In the **tasklist/routes** directory, create a new file named **tasklist.js** and open it in a text editor.
+1. **tasklist/routes** ディレクトリに **tasklist.js** という名前の新しいファイルを作成し、テキスト エディターで開きます。
 
-2. Add the folowing code to **tasklist.js**. This loads the azure and async modules, which are used by **tasklist.js**. This also defines the **TaskList** function, which is passed an instance of the **Task** object we defined earlier:
+2. 次のコードを **tasklist.js** ファイルに追加します。これによって、**tasklist.js** で使用される azure モジュールと async モジュールが読み込まれます。また、**TaskList** 関数が定義されます。先ほど定義した **Task** オブジェクトのインスタンスがこの関数に渡されます。
 
 		var azure = require('azure');
 		var async = require('async');
@@ -289,7 +289,7 @@ In this section you will extend the basic application created by the **express**
 		  this.task = task;
 		}
 
-2. Continue adding to the **tasklist.js** file by adding the methods used to **showTasks**, **addTask**, and **completeTasks**:
+2. **tasklist.js** ファイルへの内容の追加を続行し、**showTasks**、**addTask**、および **completeTasks** の各メソッドを追加します。
 
 		TaskList.prototype = {
 		  showTasks: function(req, res) {
@@ -335,13 +335,13 @@ In this section you will extend the basic application created by the **express**
 		  }
 		}
 
-3. Save the **tasklist.js** file.
+3. **tasklist.js** ファイルを保存します。
 
-### Modify app.js
+### app.js の変更
 
-1. In the **tasklist** directory, open the **app.js** file in a text editor. This file was created earlier by running the **express** command.
+1. **tasklist** ディレクトリ内の **app.js** ファイルを、テキスト エディターで開きます。このファイルは、先ほど **express** コマンドを実行することによって作成されたものです。
 
-2. At the beginning of the file, add the following to load the azure module, set the table name, partitionKey, and set the storage credentials used by this example:
+2. ファイルの先頭に次のコードを追加します。このコードは、azure モジュールを読み込み、テーブル名と partitionKey を設定し、この例で使用されるストレージ資格情報を設定します。
 
 		var azure = require('azure');
 		var nconf = require('nconf');
@@ -353,16 +353,16 @@ In this section you will extend the basic application created by the **express**
 		var accountKey = nconf.get("STORAGE_KEY");
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>nconf will load the configuration values from either environment variables or the **config.json** file, which we will create later.</p>
+	<strong>注</strong>
+	<p>nconf は、環境変数または後で作成する **config.json** ファイルから構成値を読み込みます。</p>
 	</div>
 
-3. In the app.js file, scroll down to where you see the following line:
+3. app.js ファイル内で、次の行が表示されるまで下へスクロールします。
 
 		app.get('/', routes.index);
 		app.get('/users', user.list);
 
-	Replace the above lines with the code shown below. This will initialize an instance of <strong>Task</strong> with a connection to your storage account. This is passed to the <strong>TaskList</strong>, which will use it to communicate with the Table service:
+	これらの行を下のコードに置き換えます。これにより、ストレージ アカウントへの接続を使って、<strong>Task</strong> のインスタンスが初期化されます。これは <strong>TaskList</strong> に渡され、TaskList ではこれを使用してテーブル サービスを操作します。
 
 		var TaskList = require('./routes/tasklist');
 		var Task = require('./models/task');
@@ -373,13 +373,13 @@ In this section you will extend the basic application created by the **express**
 		app.post('/addtask', taskList.addTask.bind(taskList));
 		app.post('/completetask', taskList.completeTask.bind(taskList));
 	
-4. Save the **app.js** file.
+4. **app.js** ファイルを保存します。
 
-###Modify the index view
+###index ビューの変更
 
-1. Change directories to the **views** directory and open the **index.jade** file in a text editor.
+1. **views** ディレクトリに移動し、テキスト エディターで **index.jade** ファイルを開きます。
 
-2. Replace the contents of the **index.jade** file with the code below. This defines the view for displaying existing tasks, as well as a form for adding new tasks and marking existing ones as completed.
+2. **index.jade** ファイルの内容を、以下のコードに置き換えます。これにより、既存のタスクを表示するビューと、新しいタスクの追加とタスクの完了済みのマーク付けを実行するためのフォームを定義します。
 
 		extends layout
 
@@ -414,15 +414,15 @@ In this section you will extend the basic application created by the **express**
 		    br
 		    button.btn(type="submit") Add item
 
-3. Save and close **index.jade** file.
+3. **index.jade** ファイルを保存して閉じます。
 
-###Modify the global layout
+###グローバル レイアウトの変更
 
-The **layout.jade** file in the **views** directory is used as a global template for other **.jade** files. In this step you will modify it to use [Twitter Bootstrap](https://github.com/twbs/bootstrap), which is a toolkit that makes it easy to design a nice looking web site.
+**views** ディレクトリ内の **layout.jade** ファイルは、他の **.jade** ファイルのグローバル テンプレートとして使用されます。この手順では、[Twitter Bootstrap](https://github.com/twbs/bootstrap) を使用するようにこのファイルを変更します。Twitter Bootstrap は、見栄えのよい Web サイトを簡単にデザインできるツールキットです。
 
-1. Download and extract the files for [Twitter Bootstrap](http://getbootstrap.com/). Copy the **bootstrap.min.css** file from the **bootstrap\\dist\\css** folder to the **public\\stylesheets** directory of your tasklist application.
+1. [Twitter Bootstrap](http://getbootstrap.com/) のファイルをダウンロードして展開します。**bootstrap\\dist\\css** フォルダーから **bootstrap.min.css** ファイルを tasklist アプリケーションの **public\\stylesheets** ディレクトリにコピーします。
 
-2. From the **views** folder, open the **layout.jade** in your text editor and replace the contents with the following:
+2. **views** フォルダーから、テキスト エディターで **layout.jade** を開き、内容を次の内容に置き換えます。
 
 		doctype 5
 		html
@@ -436,15 +436,15 @@ The **layout.jade** file in the **views** directory is used as a global template
 		        a.navbar-brand(href='/') My Tasks
 		    block content
 
-3. Save the **layout.jade** file.
+3. **layout.jade** ファイルを保存します。
 
-###Create configuration file
+###構成ファイルの作成
 
-The **config.json** file contains the connection string used to connect to the SQL Database, and is read by the application at run-time. To create this file, perform the following steps:
+**config.json** ファイルには、SQL データベースに接続するために使用される接続文字列が含まれており、実行時にアプリケーションによって読み取られます。このファイルを作成するには、次の手順を実行します。
 
-1. In the **tasklist** directory, create a new file named **config.json** and open it in a text editor.
+1. **tasklist** ディレクトリに **config.json** という名前の新しいファイルを作成し、テキスト エディターで開きます。
 
-2. The contents of the **config.json** file should appear similiar to the following:
+2. **config.json** ファイルの内容は、次のように設定する必要があります。
 
 		{
 			"STORAGE_NAME": "storage account name",
@@ -453,89 +453,89 @@ The **config.json** file contains the connection string used to connect to the S
 			"TABLE_NAME": "tasks"
 		}
 
-	Replace the **storage account name** with the name of the storage account you created earlier. Replace the **storage access key** with the primary access key for your storage account.
+	**storage account name** を、先ほど作成したストレージ アカウントの名前に置き換えます。**storage access key** を、ストレージ アカウントのプライマリ アクセス キーに置き換えます。
 
-3. Save the file.
+3. ファイルを保存します。
 
-##Run your application locally
+##ローカルでのアプリケーションの実行
 
-To test the application on your local machine, perform the following steps:
+ローカル コンピューターでアプリケーションをテストするには、次の手順を実行します。
 
-1. From the command-line, change directories to the **tasklist** directory.
+1. コマンド ラインで、**tasklist** ディレクトリに移動します。
 
-2. Use the following command to launch the application locally:
+2. 次のコマンドを使用して、ローカルでアプリケーションを起動します。
 
         node app.js
 
-3. Open a web browser and navigate to http://127.0.0.1:3000. This should display a web page similar to the following:
+3.  Web ブラウザーを開いて、http://127.0.0.1:3000 にアクセスします。次のような Web ページが表示されます。
 
-    ![A webpage displaying an empty tasklist][node-table-finished]
+    ![空のタスク一覧が表示されている Web ページ][node-table-finished]
 
-4. Use the provided fields for **Item Name** and **Item Category** to enter information, and then click **Add item**.
+4. 表示された **[Item Name]** と **[Item Category]** のフィールドを使用して情報を入力し、**[Add item]** をクリックします。
 
-5. The page should update to display the item in the ToDo List table.
+5. ページが更新され、ToDo List テーブルにアイテムが表示されるようになります。
 
-    ![An image of the new item in the list of tasks][node-table-list-items]
+    ![タスク一覧の新しいアイテムの画像][node-table-list-items]
 
-6. To complete a task, simply check the checkbox in the Complete column, and then click **Update tasks**.
+6. タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、**[Update tasks]** をクリックします。
 
-7. To stop the node process, go to the command-line and press the **CTRL** and **C** keys.
+7. ノード プロセスを停止するには、コマンド ラインで、**Ctrl** キーを押しながら **C** キーを押します。
 
-##Deploy your application to Azure
+##Azure へのアプリケーションの展開
 
-The steps in this section use the Azure command-line tools to create a new Azure Web Site, and then use Git to deploy your application. To perform these steps you must have an Azure subscription.
+ここで説明する手順では、Azure コマンド ライン ツールを使用して新しい Azure の Web サイトを作成し、Git を使用してアプリケーションを展開します。これらの手順を実行するには、Azure サブスクリプションが必要です。
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>These steps can also be performed by using the Azure portal. For steps on using the Azure portal to deploy a Node.js application, see <a href="http://content-ppe.windowsazure.com/en-us/develop/nodejs/tutorials/create-a-website-(mac)/">Create and deploy a Node.js application to an Azure Web Site</a>.</p>
+<strong>注</strong>
+<p>これらの手順は、Azure ポータルを使用して実行することもできます。Azure ポータルを使用して Node.js アプリケーションを展開する手順については、「<a href="http://content-ppe.windowsazure.com/ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/">Node.js アプリケーションの作成と Azure の Web サイトへの展開</a>」を参照してください。</p>
 </div>
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>If this is the first Azure Web Site you have created, you must use the Azure portal to deploy this application.</p>
+<strong>注</strong>
+<p>初めて Azure の Web サイトを作成した場合は、Azure ポータルを使用してこのアプリケーションを展開する必要があります。</p>
 </div>
 
-###Enable the Azure Web Site feature
+###Azure の Web サイト機能の有効化
 
-If you do not already have an Azure subscription, you can sign up [for free]. After signing up, follow these steps to enable the Azure Web Site feature.
+Azure サブスクリプションをまだ取得していない場合でも、[無料]でサインアップできます。サインアップ後、Azure の Web サイト機能を有効にするには、次の手順に従います。
 
 [WACOM.INCLUDE [antares-iaas-signup](../includes/antares-iaas-signup.md)]
 
-###Install the Azure command-line tool for Mac and Linux
+###Mac および Linux 用 Azure コマンド ライン ツールのインストール
 
-To install the command-line tools, use the following command:
+コマンド ライン ツールをインストールするには、次のコマンドを使用します。
 	
 	npm install azure-cli -g
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>If you have already installed the **Azure SDK for Node.js** from the <a href="/en-us/develop/nodejs/">Azure Developer Center</a>, then the command-line tools should already be installed. For more information, see <a href="/en-us/develop/nodejs/how-to-guides/command-line-tools/">Azure command-line tool for Mac and Linux</a>.</p>
+<strong>注</strong>
+<p><a href="/ja-jp/develop/nodejs/">Azure デベロッパー センター</a>から、既に **Azure SDK for Node.js** をインストールしている場合は、コマンド ライン ツールもインストールされています。詳細については、「<a href="/ja-jp/develop/nodejs/how-to-guides/command-line-tools/">Mac および Linux 用 Azure コマンド ライン ツール</a>」を参照してください。</p>
 </div>
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>While the command-line tools were created primarily for Mac and Linux users, they are based on Node.js and should work on any system capable of running Node.</p>
+<strong>注</strong>
+<p>コマンド ライン ツールは、主に Mac および Linux ユーザー向けに作成されていますが、Node.js に基づいているため、Node を実行できる任意のシステムで動作します。</p>
 </div>
 
-###Import publishing settings
+###発行の設定をインポートする
 
-Before using the command-line tools with Azure, you must first download a file containing information about your subscription. Perform the following steps to download and import this file.
+Azure でコマンド ライン ツールを使用する前に、自分のサブスクリプションに関する情報が含まれているファイルをダウンロードする必要があります。このファイルをダウンロードしてインポートするには、次の手順を実行します。
 
-1. From the command-line, change directories to the **tasklist** directory.
+1. コマンド ラインで、**tasklist** ディレクトリに移動します。
 
-2. Enter the following command to launch the browser and navigate to the download page. If prompted, login with the account associated with your subscription.
+2. 次のコマンドを入力してブラウザーを起動し、ダウンロード ページに移動します。ログインを求められた場合は、サブスクリプションに関連付けられたアカウントを使ってログインします。
 
 		azure account download
 	
-	![The download page][download-publishing-settings]
+	![ダウンロード ページ][download-publishing-settings]
 	
-	The file download should begin automatically; if it does not, you can click the link at the beginning of the page to manually download the file.
+	ファイルのダウンロードが自動的に開始されます。ダウンロードが開始されない場合は、ページの先頭にあるリンクをクリックして、手動でファイルをダウンロードできます。
 
-3. After the file download has completed, use the following command to import the settings:
+3. ファイルのダウンロードが完了したら、次のコマンドを使用して設定をインポートします。
 
 		azure account import <path-to-file>
 		
-	Specify the path and file name of the publishing settings file you downloaded in the previous step. Once the command completes, you should see output similar to the following:
+	そのためには、前の手順でダウンロードした発行設定ファイルのパスとファイル名を指定します。コマンドが完了すると、次のような出力が表示されます。
 	
 		info:   Executing command account import
 		info:   Setting service endpoint to: management.core.windows.net
@@ -547,31 +547,31 @@ Before using the command-line tools with Azure, you must first download a file c
 		info:   Account publish settings imported successfully
 		info:   account import command OK
 
-4. Once the import has completed, you should delete the publish settings file as it is no longer needed and contains sensitive information regarding your Azure subscription.
+4. インポートが完了したら、不要になった発行設定ファイルを削除してください。このファイルには、Azure サブスクリプションの機密情報が含まれているためです。
 
-###Create an Azure Web Site
+###Azure の Web サイトの作成
 
-1. From the command-line, change directories to the **tasklist** directory.
+1. コマンド ラインで、**tasklist** ディレクトリに移動します。
 
-2. Use the following command to create a new Azure Web Site
+2. 新しい Azure の Web サイトを作成するには、次のコマンドを使用します。
 
 		azure site create --git
 		
-	You will be prompted for the web site name and the datacenter that it will be located in. Provide a unique name and select the datacenter geographically close to your location.
+	Web サイト名と Web サイトが配置されるデータセンターを指定するよう求められます。一意の名前を指定し、現在の場所に地理的に近いデータセンターを選択します。
 	
-	The `--git` parameter will create a Git repository on Azure for this web site. It will also initialize a Git repository in the current directory if none exists. It will also create a [Git remote] named 'azure', which will be used to publish the application to Azure. Finally, it will create a **web.config** file, which contains settings used by Azure to host node applications.
+	`--git` パラメーターを指定すると、Azure 上にこの Web サイトの Git リポジトリが作成されます。存在しない場合は、現在のディレクトリで Git リポジトリが初期化されます。また、'azure' という名前の [Git リモート]も作成されます。これは、Azure にアプリケーションを発行するために使用されます。最後に、**web.config** ファイルが作成されます。このファイルには、ノード アプリケーションをホストするために、Azure によって使用される設定が格納されます。
 	
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>If this command is ran from a directory that already contains a Git repository, it will not re-initialize the directory.</p>
+	<strong>注</strong>
+	<p>既に Git リポジトリが含まれているディレクトリからこのコマンドを実行した場合、ディレクトリは再初期化されません。</p>
 	</div>
 	
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>If the `--git` parameter is omitted, yet the directory contains a Git repository, the 'azure' remote will still be created.</p>
+	<strong>注</strong>
+	<p>`--git` パラメーターを省略した場合でも、ディレクトリには Git リポジトリが含まれ、'azure' リモートが作成されます。</p>
 	</div>
 	
-	Once this command has completed, you will see output similar to the following. Note that the line beginning with **Web site created at** contains the URL for the web site.
+	このコマンドが完了すると、次のような出力が表示されます。**Web site created at** で始まる行には、Web サイトの URL が含まれています。
 	
 		info:   Executing command site create
 		help:   Need a site name
@@ -587,93 +587,93 @@ Before using the command-line tools with Azure, you must first download a file c
 		info:   site create command OK
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>If this is the first Azure Web Site for your subscription, you will be instructed to use the portal to create the web site. For more information, see <a href="/en-us/develop/nodejs/tutorials/create-a-website-(mac)/">Create and deploy a Node.js application to an Azure Web Site</a>.</p>
+	<strong>注</strong>
+	<p>これがサブスクリプションで最初の Azure の Web サイトである場合、ポータルを使用して Web サイトを作成するように指示するメッセージが表示されます。詳細については、「<a href="/ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/">Node.js アプリケーションの作成と Azure の Web サイトへの展開</a>」を参照してください。</p>
 	</div>
 
-###Publish the application
+###アプリケーションの発行
 
-1. In the Terminal window, change directories to the **tasklist** directory if you are not already there.
+1. ターミナル ウィンドウで、**tasklist** ディレクトリに移動します (現在のディレクトリがこのディレクトリではない場合)。
 
-2. Use the following commands to add, and then commit files to the local Git repository:
+2. 次のコマンドを使用して、ローカル Git リポジトリにファイルを追加し、コミットします。
 
 		git add .
 		git commit -m "adding files"
 
-3. When pushing the latest Git repository changes to the Azure Web Site, you must specify that the target branch is **master** as this is used for the web site content.
+3. 最新の Git リポジトリの変更内容を Azure の Web サイトに発行する場合、ターゲット分岐は、Web サイトのコンテンツ用に使用されるので、**master** であることを指定する必要があります。
 
 		git push azure master
 	
-	At the end of the deployment, you should see a statement similar to the following:
+	デプロイの最後に、次のようなステートメントが表示されます。
 	
 		To https://username@tabletasklist.azurewebsites.net/TableTasklist.git
  		 * [new branch]      master -> master
 
-4. Once the push operation has completed, browse to the web site URL returned previously by the `azure create site` command to view your application.
+4. プッシュ操作が完了したら、先ほど `azure create site` コマンドから返された Web サイトの URL に移動してアプリケーションを表示します。
 
-###Switch to an environment variable
+###環境変数への切り替え
 
-Earlier we implemented code that looks for a **SQL_CONN** environment variable for the connection string or loads the value from the **config.json** file. In the following steps you will create a key/value pair in your web site configuration that the application real access through an environment variable.
+前の手順で、**SQL_CONN** 環境変数の接続文字列を検索するか、**config.json** ファイルから接続文字列の値を読み込むコードを実装しました。次の手順では、実際のアプリケーションが環境変数を使ってアクセスする、Web サイト構成に含まれるキー/値のペアを作成します。
 
-1. From the Management Portal, click **Web Sites** and then select your web site.
+1. 管理ポータルで、**[Web サイト]** をクリックし、対象となる Web サイトを選択します。
 
-	![Open web site dashboard][go-to-dashboard]
+	![Web サイトのダッシュボードを開く][go-to-dashboard]
 
-2. Click **CONFIGURE** and then find the **app settings** section of the page. 
+2. **[構成]** をクリックし、ページの **[アプリ設定]** セクションを探します。
 
-	![configure link][web-configure]
+	![構成リンク][web-configure]
 
-3. In the **app settings** section, enter **STORAGE_NAME** in the **KEY** field, and the name of your storage account in the **VALUE** field. Click the checkmark to move to the next field. Repeat this process for the following keys and values:
+3. **[アプリ設定]** で、**[キー]** フィールドに「**STORAGE_NAME**」と入力し、**[値]** フィールドに自分のストレージ アカウントの名前を入力します。チェックマークをクリックして、次のフィールドに移動します。次のキーと値について、この手順を繰り返します。
 
-	* **STORAGE_KEY** - the access key for your storage account
+	* **STORAGE_KEY** - ストレージ アカウントのアクセス キー
 	
 	* **PARTITION_KEY** - 'mytasks'
 
 	* **TABLE_NAME** - 'tasks'
 
-	![app settings][app-settings]
+	![アプリケーション設定][app-settings]
 
-4. Finally, click the **SAVE** icon at the bottom of the page to commit this change to the run-time environment.
+4. ページの下部にある **[保存]** アイコンをクリックし、この変更を実行時環境にコミットします。
 
-	![app settings save][app-settings-save]
+	![アプリケーション設定の保存][app-settings-save]
 
-5. From the command-line, change directories to the **tasklist** directory and enter the following command to remove the **config.json** file:
+5. コマンド ラインで、**tasklist** ディレクトリに移動し、次のコマンドを入力して **config.json** ファイルを削除します。
 
 		git rm config.json
 		git commit -m "Removing config file"
 
-6. Perform the following command to deploy the changes to Azure:
+6. 次のコマンドを実行して、変更内容を Azure に展開します。
 
 		git push azure master
 
-Once the changes have been deployed to Azure, your web application should continue to work as it is now reading the connection string from the **app settings** entry. To verify this, change the value for the **STORAGE_KEY** entry in **app settings** to an invalid value. Once you have saved this value, the web site should fail due to the invalid storage access key setting.
+変更内容を Azure に展開した後も、Web アプリケーションは **[アプリ設定]** のエントリから接続文字列を読み取って動作し続けます。これを確認するために、**[アプリ設定]** の **STORAGE_KEY** のエントリを無効な値に変更します。この値を保存すると、無効なストレージ アクセス キーのために Web サイトは動作しなくなります。
 
-##Next steps
+##次のステップ
 
-While the steps in this article describe using the Table Service to store information, you can also use MongoDB. See [Node.js Web Application with MongoDB] for more information.
+この記事の手順では、テーブル サービスを使用して情報を格納する方法を説明しましたが、MongoDB を使用することもできます。詳細については、「[MongoDB を使用する Node.js Web アプリケーション]」を参照してください。
 
-##Additional resources
+##その他のリソース
 
-[Azure command-line tool for Mac and Linux]    
-[Create and deploy a Node.js application to Azure Web Sites]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)/
-[Publishing to Azure Web Sites with Git]: /en-us/develop/nodejs/common-tasks/publishing-with-git/
-[Azure Developer Center]: /en-us/develop/nodejs/
+[Mac および Linux 用 Azure コマンド ライン ツール]
+[Node.js アプリケーションの作成と Azure の Web サイトへの展開]: /ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
+[Git を使用した Azure の Web サイトへの発行]: /ja-jp/develop/nodejs/common-tasks/publishing-with-git/
+[Azure デベロッパー センター]: /ja-jp/develop/nodejs/
 
 
-[node]: http://nodejs.org
+[ノード]: http://nodejs.org
 [Git]: http://git-scm.com
 [Express]: http://expressjs.com
-[for free]: http://windowsazure.com
-[Git remote]: http://git-scm.com/docs/git-remote
+[無料]: http://windowsazure.com
+[Git リモート]: http://git-scm.com/docs/git-remote
 
-[Node.js Web Application with MongoDB]: /en-us/develop/nodejs/tutorials/website-with-mongodb-(Mac)/
-[Azure command-line tool for Mac and Linux]: /en-us/develop/nodejs/how-to-guides/command-line-tools/
-[Create and deploy a Node.js application to an Azure Web Site]: ./web-site-with-mongodb-Mac
-[Publishing to Azure Web Sites with Git]: ../CommonTasks/publishing-with-git
+[MongoDB を使用する Node.js Web アプリケーション]: /ja-jp/develop/nodejs/tutorials/website-with-mongodb-(Mac)/
+[Mac および Linux 用 Azure コマンド ライン ツール]: /ja-jp/develop/nodejs/how-to-guides/command-line-tools/
+[Node.js アプリケーションの作成と Azure の Web サイトへの展開]: ./web-site-with-mongodb-Mac
+[Git を使用した Azure の Web サイトへの発行]: ../CommonTasks/publishing-with-git
 [azure]: https://github.com/WindowsAzure/azure-sdk-for-node
 
 
-[Azure Portal]: http://windowsazure.com
+[Azure ポータル]: http://windowsazure.com
 
 
 [node-table-finished]: ./media/storage-nodejs-use-table-storage-web-site/table_todo_empty.png
@@ -688,3 +688,4 @@ While the steps in this article describe using the Table Service to store inform
 [web-configure]: ./media/storage-nodejs-use-table-storage-web-site/sql-task-configure.png
 [app-settings-save]: ./media/storage-nodejs-use-table-storage-web-site/savebutton.png
 [app-settings]: ./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png
+

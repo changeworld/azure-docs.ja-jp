@@ -1,32 +1,32 @@
-<properties linkid="develop-php-website-with-storage" urlDisplayName="Web w/ Storage" pageTitle="PHP web site with table storage - Azure tutorial" metaKeywords="Azure table storage PHP, Azure PHP website, Azure PHP web site, Azure PHP tutorial, Azure PHP example" description="This tutorial shows you how to create a PHP website and use the Azure Tables storage service in the back-end." metaCanonical="" services="web-sites,storage" documentationCenter="PHP" title="Create a PHP Web Site using Azure Storage" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-php-website-with-storage" urlDisplayName="ストレージを使用した Web サイト" pageTitle="テーブル ストレージを使用した PHP Web サイト - Azure チュートリアル" metaKeywords="Azure テーブル ストレージ PHP, Azure PHP Web サイト, Azure PHP web サイト, Azure PHP チュートリアル, Azure PHP 例" description="このチュートリアルでは、PHP Web サイトを作成し、バックエンドで Azure テーブル ストレージ サービスを使用する方法について説明します。" metaCanonical="" services="web-sites,storage" documentationCenter="PHP" title="Azure ストレージを使用した PHP Web サイトを作成する" authors="" solutions="" manager="" editor="" />
 
-#Create a PHP Web Site using Azure Storage
+#Azure ストレージを使用した PHP Web サイトを作成する
 
-This tutorial shows you how to create a PHP web site and use the Azure Tables storage service in the back-end. This tutorial assumes you have [PHP][install-php] and a web server installed on your computer. The instructions in this tutorial can be followed on any operating system, including Windows, Mac, and  Linux. Upon completing this guide, you will have a PHP web site running in Azure and accessing the Table storage service.
+このチュートリアルでは、PHP Web サイトを作成し、バックエンドで Azure テーブル ストレージ サービスを使用する方法について説明します。このチュートリアルは、コンピューターに [PHP][install-php] および Web サーバーがインストールされていることを前提としています。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作し、テーブル ストレージ サービスにアクセスする PHP Web サイトが完成します。
  
-You will learn:
+学習内容:
 
-* How to install the Azure client libraries and include them into your application.
-* How to use the client libraries for creating tables, and for creating, querying and deleting table entities.
-* How to create an Azure Storage Account and set up your application to use it.
-* How to create an Azure web site and deploy to it using Git
+* Azure クライアント ライブラリをインストールしてアプリケーションに含める方法
+* クライアント ライブラリを使用してテーブルを作成し、テーブル エンティティを作成、照会、削除する方法
+* Azure のストレージ アカウントを作成し、これを使用できるようにアプリケーションをセットアップする方法
+* Azure の Web サイトを作成して Git で展開する方法
  
-You will build a simple Tasklist web application in PHP. A screenshot of the completed application is below:
+このチュートリアルでは、タスク一覧用の単純な Web アプリケーション (Tasklist) を PHP で作成します。完成したアプリケーションのスクリーンショットは次のようになります。
 
-![Azure PHP web site][ws-storage-app]
+![Azure の PHP Web サイト][ws-storage-app]
 
 [WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
-##Installing the Azure client libraries
+##Azure クライアント ライブラリのインストール
 
-To install the PHP Client Libraries for Azure via Composer, follow these steps:
+Azure 向け PHP クライアント ライブラリを Composer 経由でインストールするには、次の手順に従います。
 
-1. [Install Git][install-git]
+1. [Git のインストール][install-git]
 
 	> [WACOM.NOTE]
-	> On Windows, you will also need to add the Git executable to your PATH environment variable.
+	> Windows では、Git 実行可能ファイルを PATH 環境変数に追加する必要があります。
 
-2. Create a file named **composer.json** in the root of your project and add the following code to it:
+2. プロジェクトのルートに **composer.json** という名前のファイルを作成して、次のコードを追加します。
 
 		{
 			"require": {
@@ -41,61 +41,61 @@ To install the PHP Client Libraries for Azure via Composer, follow these steps:
 			"minimum-stability": "dev"
 		}
 
-3. Download **[composer.phar][composer-phar]** in your project root.
+3. **[composer.phar][composer-phar]** をプロジェクトのルートにダウンロードします。
 
-4. Open a command prompt and execute this in your project root
+4. コマンド プロンプトを開き、次のコマンドをプロジェクトのルートで実行します。
 
 		php composer.phar install
 
-##Getting started with the client libraries
+##クライアント ライブラリの使用開始
 
-There are four basic steps that have to be performed before you can make a call to an Azure API wen using the libraries. You will create an initialization script that will perform these steps.
+ライブラリを使用して Azure API を呼び出すには、4 つの基本手順を事前に実行しておく必要があります。ここでは、これらの手順を実行する初期化スクリプトを作成します。
 
-* Create a file called **init.php**.
+* **init.php** という名前のファイルを作成します。
 
-* First, include the autoloader script:
+* まず、オートローダー スクリプトを含めます。
 
 		require_once 'vendor\autoload.php'; 
 	
-* Include the namespaces you are going to use.
+* 使用する名前空間を含めます。
 
-	To create any Azure service client you need to use the **ServicesBuilder** class:
+	いずれの Azure サービス クライアントを作成するにも、**ServicesBuilder** クラスを使用する必要があります。
 
 		use WindowsAzure\Common\ServicesBuilder;
 
-	To catch exceptions produced by any API call you need the **ServiceException** class:
+	API 呼び出しによって発生した例外をキャッチするには、**ServiceException** クラスが必要です。
 
 		use WindowsAzure\Common\ServiceException;
 	
-* To instantiate the service client you will also need a valid connection string. The format for the table service connection strings is:
+* サービス クライアントをインスタンス化するには、有効な接続文字列も必要です。テーブル サービスの接続文字列の形式は次のとおりです。
 
-	For accessing a live service:
+	ライブ サービスにアクセスする場合: 
 	
 		DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]
 	
-	For accessing the emulator storage:
+	エミュレーター ストレージにアクセスする場合: 
 	
 		UseDevelopmentStorage=true
 
-* Use the `ServicesBuilder::createTableService` factory method to instantiate a wrapper around Table service calls.
+* `ServicesBuilder::createTableService` ファクトリ メソッドを使用して、テーブル サービス呼び出しのラッパーをインスタンス化します。
 
 		$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
 	
-	`$tableRestProxy` contains a method for every REST call available on Azure Tables.
+	`$tableRestProxy` には、Azure テーブルに対して使用可能なすべての REST 呼び出しに使用するメソッドが格納されます。
 
 
-## Creating a Table
+## テーブルの作成
 
-Before you can store data you first have to create a container for it, the Table. 
+データを保存するには、そのためのコンテナー (テーブル) を先に作成しておく必要があります。
 
-* Create a file named **createtable.php**.
+* **createtable.php** という名前のファイルを作成します。
 
-* First, include the initialization script you just created. You will be including this script in every file accessing Azure:
+* 先ほど作成した初期化スクリプトを含めます。このスクリプトは、Azure にアクセスするすべてのファイルに含めます。
 
 		<?php
 		require_once "init.php";
 
-* Then, make a call to *createTable* passing in the name of the table. Similarly to other NoSQL table stores, no schema is required for Azure Tables.
+* 次に、テーブルの名前を渡して *createTable* を呼び出します。他の NoSQL テーブル ストアと同様、Azure テーブルにスキーマは必要ありません。
 	
 		try	{
 			$tableRestProxy->createTable('tasks');
@@ -107,18 +107,18 @@ Before you can store data you first have to create a container for it, the Table
 		}
 		?>
 
-	Error codes and message scan be found here: [http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx][msdn-errors]
+	エラー コードとメッセージについては、[http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx][msdn-errors] を参照してください。
 
 
-##Querying a Table
+##テーブルの照会
 
-The home page of the Tasklist application should list all existing tasks and allow the insertion of new ones.
+Tasklist アプリケーションのホーム ページでは、既存のタスクを一覧表示し、新しいタスクを挿入できるようにする必要があります。
 
-* Create a file named **index.php** and insert the following HTML and PHP code which will form the header of the page:
+* **index.php** という名前のファイルを作成し、ページ ヘッダーの形成用に次の HTML および PHP コードを挿入します。
 	
 		<html>
 		<head>
-			<title>Index</title>
+			<title>インデックス</title>
 			<style type="text/css">
 			    body { background-color: #fff; border-top: solid 10px #000;
 			        color: #333; font-size: .85em; margin: 20; padding: 20;
@@ -134,11 +134,11 @@ The home page of the Tasklist application should list all existing tasks and all
 			</style>
 		</head>
 		<body>
-		<h1>My ToDo List <font color="grey" size="5">(powered by PHP and Azure Tables) </font></h1>
+		<h1>My ToDo List <font color="grey" size="5">(PHP テーブルと Azure テーブルを使用) </font></h1>
 		<?php		
 		require_once "init.php";
 
-* To query Azure Tables for **all entities** stored in the *tasks* table you call the *queryEntities* method passing only the name of the table. In the **Updating an Entity** section below you will also see how to pass a filter querying for a specific entity.
+* Azure テーブルに対して、*tasks* テーブルに格納されている**すべてのエンティティ**を照会するには、テーブル名のみを渡して *queryEntities* メソッドを呼び出します。後の **[エンティティの更新]** セクションでは、特定のエンティティを照会するためのフィルターを渡す方法についても確認します。
 
 		try {
 		    $result = $tableRestProxy->queryEntities('tasks');
@@ -149,18 +149,18 @@ The home page of the Tasklist application should list all existing tasks and all
 		    echo $code.": ".$error_message."<br />";
 		}
 		
-* To iterate on the entities in the result set:
+* 結果セット内のエンティティを反復処理するには:
 
 		$entities = $result->getEntities();
 			
 		for ($i = 0; $i < count($entities); $i++) {
 
-* Once you get an `Entity`, the model for reading data is `Entity->getPropertyValue('[name]')`:
+* 'Entity' を取得した後、データを読み取るには次の形式を使用します。`Entity->getPropertyValue('[name]')`:
 
 			if ($i == 0) {
 				echo "<table border='1'>
 				<tr>
-					<td>Name</td>
+					<td>名前</td>
 					<td>Category</td>
 					<td>Date</td>
 					<td>Mark Complete?</td>
@@ -187,21 +187,21 @@ The home page of the Tasklist application should list all existing tasks and all
 			echo "<h3>No items on list.</h3>";
 		?>
 
-* Last, you must insert the form that feeds data into the task insertion script and complete the HTML:
+* 最後に、データをタスク挿入スクリプトに取り込むためのフォームを挿入して、HTML を完成する必要があります。
 
 			<hr/>
 			<form action="additem.php" method="post">
 				<table border="1">
 					<tr>
-						<td>Item Name: </td>
+						<td>Item Name:</td>
 						<td><input name="itemname" type="textbox"/></td>
 					</tr>
 					<tr>
-						<td>Category: </td>
+						<td>Category:</td>
 						<td><input name="category" type="textbox"/></td>
 					</tr>
 					<tr>
-						<td>Date: </td>
+						<td>Date:</td>
 						<td><input name="date" type="textbox"/></td>
 					</tr>
 				</table>
@@ -210,20 +210,20 @@ The home page of the Tasklist application should list all existing tasks and all
 		</body>
 		</html>
 
-## Inserting Entities into a Table
+## テーブルへのエンティティの挿入
 
-Your application can now read all items stored in the table. Since there won't be any at fist, let's add a function that writes data into the database.
+これで、アプリケーションはテーブルに格納されているすべてのアイテムを読み取ることができるようになりました。最初はアイテムが何も格納されていないので、データをデータベースに書き込む関数を追加しましょう。
 
-* Create a file named **additem.php**.
+* **additem.php** という名前のファイルを作成します。
 
-* Add the following to the file:
+* このファイルに次のコードを追加します。
 
 		<?php		
 		require_once "init.php";		
 		use WindowsAzure\Table\Models\Entity;
 		use WindowsAzure\Table\Models\EdmType;		
 
-* The first step of inserting an entity is instantiating an `Entity` object and setting the properties on it:
+* エンティティを挿入する最初の手順は、'Entity' オブジェクトをインスタンス化してプロパティを設定することです。
 		
 		$entity = new Entity();
 		$entity->setPartitionKey('p1');
@@ -233,7 +233,7 @@ Your application can now read all items stored in the table. Since there won't b
 		$entity->addProperty('date', EdmType::STRING, $_POST['date']);
 		$entity->addProperty('complete', EdmType::BOOLEAN, false);
 
-* Then you can pass the `$entity` you just created to the `insertEntity` method:
+* 次に、作成した `$entity` を `insertEntity` メソッドに渡します。
 
 		try{
 			$tableRestProxy->insertEntity('tasks', $entity);
@@ -244,34 +244,34 @@ Your application can now read all items stored in the table. Since there won't b
 		    echo $code.": ".$error_message."<br />";
 		}
 
-* Last, to make the page return to the home page after inserting the entity:
+* 最後に、エンティティの挿入後にホーム ページに戻るように指定します。
 
 		header('Location: index.php');		
 		?>
 	
-## Updating an Entity
+## エンティティの更新
 
-The task list app has the ability to mark an item as complete as well as to unmark it. The home page passes in the *RowKey* and *PartitionKey* of an entity and the target state (marked==1, unmarked==0).
+タスク一覧アプリケーションでは、アイテムに完了マークを付けることも外すこともできます。ホーム ページでは、エンティティの *RowKey* および *PartitionKey* と、対象の状態 (marked==1、unmarked==0) が渡されます。
 
-* Create a file called **markitem.php** and add the initialization part:
+* **markitem.php** という名前のファイルを作成し、初期化の部分を追加します。
 
 		<?php		
 		require_once "init.php";
 		
 
-* The first step to updating an entity is fetching it from the Table:
+* エンティティを更新するための最初の手順は、そのエンティティをテーブルから取得することです。
 		
 		$result = $tableRestProxy->queryEntities('tasks', 'PartitionKey eq \''.$_GET['pk'].'\' and RowKey eq \''.$_GET['rk'].'\'');		
 		$entities = $result->getEntities();		
 		$entity = $entities[0];
 
-	As you can see the passed in query filter is of the form `Key eq 'Value'`. A full description of the query syntax is available [here][msdn-table-query-syntax].
+	`Key eq 'Value'` という形式のクエリ フィルターが渡されています。クエリ構文の詳しい説明については、[こちら][msdn-table-query-syntax]を参照してください。
 
-* Then you can change any properties:
+* 次に、必要に応じてプロパティを変更できます。
 
 		$entity->setPropertyValue('complete', ($_GET['complete'] == 'true') ? true : false);
 
-* And the `updateEntity` method performs the update:
+* `updateEntity` メソッドにより、更新が実行されます。
 
 		try{
 			$result = $tableRestProxy->updateEntity('tasks', $entity);
@@ -282,15 +282,15 @@ The task list app has the ability to mark an item as complete as well as to unma
 		    echo $code.": ".$error_message."<br />";
 		}
 
-* To make the page return to the home page after inserting the entity:
+* エンティティの挿入後にホーム ページに戻るように指定するには:
 
 		header('Location: index.php');		
 		?>
 
 
-## Deleting an Entity
+## エンティティの削除
 
-Deleting an item is accomplished with a single call to `deleteItem`. The passed in values are the **PartitionKey** and the **RowKey**, which together make up the primary key of the entity. Create a file called **deleteitem.php** and insert the following code:
+アイテムの削除は、`deleteItem` を 1 回呼び出すことで実行できます。渡す値は **PartitionKey** と **RowKey** であり、これらの組み合わせがエンティティのプライマリ キーになります。**deleteitem.php** という名前のファイルを作成し、次のコードを挿入します。
 
 		<?php
 		
@@ -301,123 +301,123 @@ Deleting an item is accomplished with a single call to `deleteItem`. The passed 
 		?>
 
 
-## Create an Azure Storage Account
+## Azure のストレージ アカウントの作成
 
-To make your application store data into the cloud you need to first create a storage account in Azure and then pass the proper authentication information to the *Configuration* class.
+アプリケーションでデータをクラウドに保存するには、まず Azure にストレージ アカウントを作成し、適切な認証情報を *Configuration* クラスに渡す必要があります。
 
-1. Login to the [Azure Management Portal][management-portal].
+1. [Azure 管理ポータル][management-portal]にログインします。
 
-2. Click the **+ New** icon on the bottom left of the portal.
+2. ポータルの左下にある **[新規]** アイコンをクリックします。
 
-	![Create New Azure web site][new-website]
+	![新しい Azure の Web サイトの作成][new-website]
 
-3. Click **Data Services**, **Storage**, then **Quick Create**.
+3. **[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
 
-	![Custom Create a new web site][storage-quick-create]
+	![新しい Web サイトのカスタム作成][storage-quick-create]
 	
-	Enter a value for **URL** and select the data center for your web site in the **REGION** dropdown. Click the **Create Storage Account** button at the bottom of the dialog.
+	**[URL]** ボックスに値を入力し、**[リージョン]** ボックスの一覧で Web サイトのデータ センターを選択します。ダイアログ ボックスの下部にある **[ストレージ アカウントの作成]** ボタンをクリックします。
 
-	![Fill in web site details][storage-quick-create-details]
+	![Web サイトの詳細の入力][storage-quick-create-details]
 
-	When the storage account has been created you will see the text **Creation of Storage Account '[NAME]' completed successfully**.
+	ストレージ アカウントが作成されると、"**ストレージ アカウント '[NAME]' の作成が正常に完了しました**" というテキストが表示されます。
 
-4. Ensure the **Storage** tab is selected and then select the storage account you just created from the list.
+4. **[ストレージ]** タブが選択されていることを確認してから、作成したストレージ アカウントを一覧から選択します。
 
-5. Click on **Manage Keys** from the app bar on the bottom.
+5. 下部にあるアプリケーション バーの **[キーの管理]** をクリックします。
 
-	![Select Manage Keys][storage-manage-keys]
+	![[キーの管理] を選択する][storage-manage-keys]
 
-6. Take note of the name of the storage account you created and of the primary key.
+6. 作成したストレージ アカウントの名前とプライマリ キーの値をメモしておきます。
 
-	![Select Manage Keys][storage-access-keys]
+	![[キーの管理] を選択する][storage-access-keys]
 
-7. Open **init.php** and replace `[YOUR_STORAGE_ACCOUNT_NAME]` and `[YOUR_STORAGE_ACCOUNT_KEY]` with the account name and key you took note of in the last step. Save the file.
+7. **init.php** を開き、`[YOUR_STORAGE_ACCOUNT_NAME]` と `[YOUR_STORAGE_ACCOUNT_KEY]` を、先ほどの手順でメモしたアカウント名とキーに置き換えます。ファイルを保存します。
 
 
-## Create an Azure Web Site and Set up Git Publishing
+## Azure の Web サイトの作成と Git 発行の設定
 
-Follow these steps to create an Azure Web Site:
+次の手順に従って、Azure の Web サイトを作成します。
 
-1. Login to the [Azure Management Portal][management-portal].
-2. Click the **+ New** icon on the bottom left of the portal.
+1. [Azure 管理ポータル][management-portal]にログインします。
+2. ポータルの左下にある **[新規]** アイコンをクリックします。
 
-	![Create New Azure Web Site][new-website]
+	![新しい Azure の Web サイトの作成][new-website]
 
-3. Click **Compute**, **Web Site**, then **Quick Create**.
+3. **[コンピューティング]**、**[Web サイト]**、**[簡易作成]** の順にクリックします。
 
-	![Custom Create a new web site][website-quick-create]
+	![新しい Web サイトのカスタム作成][website-quick-create]
 	
-	Enter a value for **URL** and select the data center for your web site in the **REGION** dropdown. Click the **Create New Web Site** button at the bottom of the dialog.
+	**[URL]** ボックスに値を入力し、**[リージョン]** ボックスの一覧で Web サイトのデータ センターを選択します。ダイアログ ボックスの下部にある **[Web サイトの作成]** ボタンをクリックします。
 
-	![Fill in web site details][website-quick-create-details]
+	![Web サイトの詳細の入力][website-quick-create-details]
 
-	When the web site has been created you will see the text **Creation of Web Site '[SITENAME]' completed successfully**. Now, you can enable Git publishing.
+	Web サイトが作成されると、"**Web サイト '[サイト名]' の作成が正常に完了しました**" というテキストが表示されます。これで、Git 発行を有効にする準備ができました。
 
-5. Click the name of the web site displayed in the list of web sites to open the web site's **QUICKSTART** dashboard.
+5. Web サイトの一覧に表示されている Web サイトの名前をクリックして、Web サイトの**クイック スタート** ダッシュボードを開きます。
 
-	![Open web site dashboard][go-to-dashboard]
+	![Web サイトのダッシュボードを開く][go-to-dashboard]
 
 
-6. At the bottom right of the Quickstart page, select **Set up a deployment from source control**.
+6. クイックスタート ページの右下隅で、**[ソース管理からの展開の設定]** を選択します。
 
-	![Set up Git publishing][setup-git-publishing]
+	![Git 発行の設定][setup-git-publishing]
 
-6. When asked "Where is your source code?" select **Local Git repository**, and then click the arrow.
+6. ソース コードの位置をたずねるメッセージが表示されたら、**[ローカル Git リポジトリ]** を選択し、矢印をクリックします。
 
-	![where is your source code][where-is-code]
+	![ソース コードの位置][where-is-code]
 
-7. To enable Git publishing, you must provide a user name and password. Make a note of the user name and password you create. (If you have set up a Git repository before, this step will be skipped.)
+7. Git 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。作成するユーザー名とパスワードはメモしておいてください (Git リポジトリを設定したことがある場合は、この手順をスキップできます)。
 
-	![Create publishing credentials][credentials]
+	![発行資格情報の作成][credentials]
 
-	It will take a few seconds to set up your repository.
+	リポジトリの設定にかかる時間はわずかです。
 
-8. Once the Git repository is ready, you will be presented with instructions on the Git commands to use in order to setup a local repository and then push the files to Azure.
+8. Git リポジトリの準備ができると、ローカル リポジトリを設定し、ファイルを Azure にプッシュするために使用する Git コマンドに関する手順が表示されます。
 
-	![Git deployment instructions returned after creating a repository for the web site.][git-instructions]
+	![Web サイトのリポジトリの作成後に返される Git デプロイの手順][git-instructions]
 
-	Note the instructions, as these will be used in the next section to publish the application.
+	表示された指示を書き留めてください。次のセクションで、アプリケーションを発行するときに使用します。
 
-##Publish Your Application
+##アプリケーションを発行する
 
-To publish your application with Git, follow the steps below.
+Git でアプリケーションを発行するには、次の手順に従います。
 
-1. Open the **vendor/microsoft/windowsazure** folder under the root of the application and delete the following files and folders:
+1. アプリケーションのルートにある **vendor/microsoft/windowsazure** フォルダーを開き、次のファイルとフォルダーを削除します。
 	* .git
 	* .gitattributes
 	* .gitignore
 			
-	When the Composer package manager downloads the Azure client libraries and their dependencies it does so by cloning the GitHub repository that they reside in. In the next step, the application will be deployed via Git by creating a repository out of the root folder of the application. Git will ignore the sub-repository where the client libraries live unless the repository-specific files are removed.
+	Composer パッケージ マネージャーが Azure クライアント ライブラリとその依存関係をダウンロードする際には、これらが格納されている GitHub リポジトリが複製されます。次の手順では、アプリケーションのルート フォルダーからリポジトリを作成することにより、Git 経由でアプリケーションを展開します。クライアント ライブラリがあるサブリポジトリは、リポジトリ固有のファイルが削除されていない限り無視されます。
 
-2. Open GitBash (or a terminal, if Git is in your `PATH`), change directories to the root directory of your application, and run the following commands (**Note:** these are the same steps noted at the end of the **Create an Azure Web Site and Set up Git Publishing** section):
+2. GitBash (Git が `PATH` にある場合はターミナル) を開き, ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。 (**注:** これらは、前の「**Azure の Web サイトの作成と Git 発行の設定**」セクションの最後でメモした手順と同じです)。
 
 		git init
 		git add .
 		git commit -m "initial commit"
-		git remote add azure [URL for remote repository]
+		git remote add azure [リモート リポジトリの URL]
 		git push azure master
 
-	You will be prompted for the password you created earlier.
+	先ほど作成したパスワードを入力するように求められます。
 
-3. Browse to **http://[your web site domain]/createtable.php** to create the table for the application.
-4. Browse to **http://[your web site domain]/index.php** to begin using the application.
+3. アプリケーション用のテーブルを作成するには、**http://[Web サイト ドメイン]/createtable.php** に移動します。
+4. アプリケーションの使用を開始するには、**http://[Web サイト ドメイン]/index.php** に移動します。
 
-After you have published your application, you can begin making changes to it and use Git to publish them. 
+アプリケーションを発行した後、アプリケーションへの変更を開始し、Git を使用してその変更を発行することもできます。
 
-##Publish Changes to Your Application
+##アプリケーションへの変更の発行
 
-To publish changes to application, follow these steps:
+アプリケーションへの変更を発行するには、次の手順に従います。
 
-1. Make changes to your application locally.
-2. Open GitBash (or a terminal, it Git is in your `PATH`), change directories to the root directory of your application, and run the following commands:
+1. ローカルでアプリケーションへの変更を行います。
+2. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
 
 		git add .
 		git commit -m "comment describing changes"
 		git push azure master
 
-	You will be prompted for the password you created earlier.
+	先ほど作成したパスワードを入力するように求められます。
 
-3. Browse to **http://[your web site domain]/index.php** to see your changes. 
+3. 変更内容を確認できるように、**http://[Web サイト ドメイン]/index.php** に移動します。
 
 [install-php]: http://www.php.net/manual/en/install.php
 
@@ -425,11 +425,11 @@ To publish changes to application, follow these steps:
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [composer-phar]: http://getcomposer.org/composer.phar
 
-[msdn-errors]: http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+[msdn-errors]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
 
 
 
-[msdn-table-query-syntax]: http://msdn.microsoft.com/en-us/library/windowsazure/dd894031.aspx
+[msdn-table-query-syntax]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd894031.aspx
 [ws-storage-app]: ./media/web-sites-php-storage/ws-storage-app.png
 [management-portal]: https://manage.windowsazure.com
 [new-website]: ./media/web-sites-php-storage/new_website.jpg
@@ -448,3 +448,4 @@ To publish changes to application, follow these steps:
 
 [git-instructions]: ./media/web-sites-php-storage/git-instructions.png
 [where-is-code]: ./media/web-sites-php-storage/where_is_code.png
+

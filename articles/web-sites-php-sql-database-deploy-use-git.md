@@ -1,108 +1,108 @@
-<properties linkid="develop-php-website-with-sql-database-and-git" urlDisplayName="Web w/ SQL + Git" pageTitle="PHP web site with SQL Database and Git - Azure tutorial" metaKeywords="" description="A tutorial that demonstrates how to create a PHP web site that stores data in SQL Database and use Git deployment to Azure." metaCanonical="" services="web-sites,sql-database" documentationCenter="PHP" title="Create a PHP web site with a SQL Database and deploy using Git" authors="waltpo" solutions="" manager="" editor="mollybos" />
+<properties linkid="develop-php-website-with-sql-database-and-git" urlDisplayName="SQL と Git を使用した Web サイト" pageTitle="SQL データベースと Git を使用した PHP Web サイト - Azure チュートリアル" metaKeywords="" description="SQL データベースにデータを保存する PHP Web サイトを作成し、Azure への Git 展開を使用する方法を示すチュートリアル。" metaCanonical="" services="web-sites,sql-database" documentationCenter="PHP" title="SQL データベースを使用する PHP Web サイトを作成して Git で展開する" authors="waltpo" solutions="" manager="" editor="mollybos" />
 
 
 
-#Create a PHP web site with a SQL Database and deploy using Git
+#SQL データベースを使用する PHP Web サイトを作成して Git で展開する
 
-This tutorial shows you how to create a PHP Azure Web Site with an Azure SQL Database and how to deploy it using Git. This tutorial assumes you have [PHP][install-php], [SQL Server Express][install-SQLExpress], the [Microsoft Drivers for SQL Server for PHP][install-drivers], a web server, and [Git][install-git] installed on your computer. Upon completing this guide, you will have a PHP-SQL Database web site running in Azure.
+このチュートリアルでは、Azure SQL データベースを使用する Azure の PHP Web サイトを作成する方法と、Git を使用してそれを展開する方法を説明します。このチュートリアルは、コンピューターに [PHP][install-php]、[SQL Server Express][install-SQLExpress]、[Microsoft Drivers for SQL Server for PHP][install-drivers]、Web サーバー、および [Git][install-git] がインストールされていることを前提としています。このチュートリアルを完了すると、Azure で動作する PHP-SQL データベース Web サイトが完成します。
 
 > [WACOM.NOTE]
-> You can install and configure PHP, SQL Server Express, the Microsoft Drivers for SQL Server for PHP, and Internet Information Services (IIS) using the <a href="http://www.microsoft.com/web/downloads/platform.aspx">Microsoft Web Platform Installer</a>.
+> <a href="http://www.microsoft.com/web/downloads/platform.aspx">Microsoft Web プラットフォーム インストーラー</a>を使用すると、PHP、SQL Server Express、Microsoft Drivers for SQL Server for PHP、およびインターネット インフォメーション サービス (IIS) をインストールおよび構成できます。
 
-You will learn:
+学習内容:
 
-* How to create an Azure Web Site and a SQL Database using the Azure Management Portal. Because PHP is enabled in Azure Web Sites by default, nothing special is required to run your PHP code.
-* How to publish and re-publish your application to Azure using Git.
+* Azure の管理ポータルを使用して Azure の Web サイトおよび SQL データベースを作成する方法。Azure の Web サイトでは PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます。
+* Git を使用して Azure にアプリケーションを発行および再発行する方法。
  
-By following this tutorial, you will build a simple registration web application in PHP. The application will be hosted in an Azure Web Site. A screenshot of the completed application is below:
+このチュートリアルでは、登録用の単純な Web アプリケーションを PHP で作成します。このアプリケーションは Azure の Web サイトでホストします。完成したアプリケーションのスクリーンショットは次のようになります。
 
-![Azure PHP Web Site][running-app]
+![Azure の PHP Web サイト][running-app]
 
 [WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 
-##Create an Azure Web Site and set up Git publishing
+##Azure の Web サイトの作成と Git 発行の設定
 
-Follow these steps to create an Azure Web Site and a SQL Database:
+Azure の Web サイトと SQL データベースを作成するには、次の手順に従います。
 
-1. Login to the [Azure Management Portal][management-portal].
-2. Click the **New** icon on the bottom left of the portal.
-![Create New Azure Web Site][new-website]
+1. [Azure の管理ポータル][management-portal]にログインします。
+2. ポータルの左下にある **[新規]** アイコンをクリックします。
+![新しい Azure の Web サイトの作成][new-website]
 
-3. Click **Web Site**, then **Custom Create**.
+3. **[Web サイト]** をクリックし、**[カスタム作成]** をクリックします。
 
-	![Custom Create a new Web Site][custom-create]
+	![新しい Web サイトのカスタム作成][custom-create]
 
-	Enter a value for **URL**, select **Create a New SQL Database** from the **Database** dropdown,  and select the data center for your web site in the **Region** dropdown. Click the arrow at the bottom of the dialog.
+	**[URL]** ボックスに値を入力し、**[データベース]** ボックスの一覧の **[新しい SQL データベースを作成する]** を選択して、**[リージョン]** ボックスの一覧で Web サイトのデータ センターを選択します。ダイアログの下部にある矢印をクリックします。
 
-	![Fill in web site details][website-details-sqlazure]
+	![Web サイトの詳細の入力][website-details-sqlazure]
 
-4. Enter a value for the **Name** of your database, select the **Edition** [(WEB or BUSINESS)][sql-database-editions], select the **Max Size** for your database, choose the **Collation**, and select **NEW SQL Database server**. Click the arrow at the bottom of the dialog.
+4. データベースの**名前**を入力し、**エディション** [([WEB] または [BUSINESS])][sql-database-editions] を選択します。データベースの**最大サイズ**を選択し、**照合順序**を選択します。**[新しい SQL データベース サーバー]** を選択します。ダイアログの下部にある矢印をクリックします。
 
-	![Fill in SQL Database settings][database-settings]
+	![SQL データベースの設定の指定][database-settings]
 
-5. Enter an administrator name and password (and confirm the password), choose the region in which your new SQL Database server will be created, and check the `Allow Azure Services to access the server` box.
+5. 管理者の名前とパスワードを入力 (およびパスワードを確認) し、新しい SQL データベース サーバーを作成するリージョンを選択して、[Azure サービスにサーバーへのアクセスを許可します] チェック ボックスをオンにします。
 
-	![Create new SQL Database server][create-server]
+	![新しい SQL データベース サーバーの作成][create-server]
 
-	When the web site has been created you will see the text **Creation of Web Site "[SITENAME]" completed successfully**. Now, you can enable Git publishing.
+	Web サイトが作成されると、"**Web サイト "[サイト名]" の作成が正常に完了しました**" というテキストが表示されます。これで、Git 発行を有効にする準備ができました。
 
-6. Click the name of the web site displayed in the list of web sites to open the web site's Quick Start dashboard.
+6. Web サイトの一覧に表示されている Web サイトの名前をクリックして、Web サイトのクイック スタート ダッシュボードを開きます。
 
-	![Open web site dashboard][go-to-dashboard]
+	![Web サイトのダッシュボードを開く][go-to-dashboard]
 
 
-7. At the bottom of the Quick Start page, click **Set up deployment from source control**. 
+7. クイック スタート ページの下部で、**[ソース管理からのデプロイの設定]** を選択します。
 
-	![Set up Git publishing][setup-git-publishing]
+	![Git 発行の設定][setup-git-publishing]
 
-6. When asked "Where is your source code?" select **Local Git repository**, and then click the arrow.
+6. ソース コードの位置をたずねるメッセージが表示されたら、**[ローカル Git リポジトリ]** を選択し、矢印をクリックします。
 
-	![where is your source code][where-is-code]
+	![ソース コードの位置][where-is-code]
 
-8. To enable Git publishing, you must provide a user name and password. Make a note of the user name and password you create. (If you have set up a Git repository before, this step will be skipped.)
+8. Git 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。作成するユーザー名とパスワードはメモしておいてください (Git リポジトリを設定したことがある場合は、この手順をスキップできます)。
 
-	![Create publishing credentials][credentials]
+	![発行資格情報の作成][credentials]
 
-	It will take a few seconds to set up your repository.
+	リポジトリの設定にかかる時間はわずかです。
 
-9. When your repository is ready, you will see instructions for pushing your application files to the repository. Make note of these instructions - they will be needed later.
+9. リポジトリの準備ができると、アプリケーション ファイルをリポジトリにプッシュするための手順が表示されます。これらの手順は後で必要になるため、メモしておいてください。
 
-	![Git instructions][git-instructions]
+	![Git の手順][git-instructions]
 
-##Get SQL Database connection information
+##SQL データベース接続情報を取得する
 
-To connect to the SQL Database instance that is running in Azure Web Sites, your will need the connection information. To get SQL Database connection information, follow these steps:
+Azure の Web サイトで実行されている SQL データベース インスタンスに接続するには、接続情報が必要になります。SQL データベースの接続情報を取得するには、次の手順に従います。
 
-1. From the Azure Management Portal, click **Linked Resources**, then click the database name.
+1. Azure 管理ポータルで、**[リンク済みリソース]** をクリックし、目的のデータベース名をクリックします。
 
-	![Linked Resources][linked-resources]
+	![リンク済みリソース][linked-resources]
 
-2. Click **View connection strings**.
+2. **[接続文字列の表示]** をクリックします。
 
-	![Connection string][connection-string]
+	![接続文字列][connection-string]
 	
-3. From the **PHP** section of the resulting dialog, make note of the values for `SERVER`, `DATABASE`, and `USERNAME`.
+3. 表示されたダイアログの **[PHP]** セクションから、`サーバー`、`データベース`、および`ユーザー名` の値をメモします。
 
-##Build and test your application locally
+##アプリケーションの作成とローカル テスト
 
-The Registration application is a simple PHP application that allows you to register for an event by providing your name and email address. Information about previous registrants is displayed in a table. Registration information is stored in a SQL Database instance. The application consists of two files (copy/paste code available below):
+Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。それまでの登録者情報がテーブルに表示されます。登録情報は SQL データベース インスタンスに保存されます。アプリケーションは、次の 2 つのファイルで構成されます (下にあるコードをコピーし、貼り付けて使用できます)。
 
-* **index.php**: Displays a form for registration and a table containing registrant information.
-* **createtable.php**: Creates the SQL Database table for the application. This file will only be used once.
+* **index.php**: 登録用のフォームと登録者情報が含まれたテーブルを表示します。
+* **createtable.php**: アプリケーション用の SQL データベース テーブルを作成します。このファイルは 1 度しか使用されません。
 
-To run the application locally, follow the steps below. Note that these steps assume you have PHP, SQL Server Express, and a web server set up on your local machine, and that you have enabled the [PDO extension for SQL Server][pdo-sqlsrv].
+アプリケーションをローカルで実行するには、次の手順に従います。これらの手順は、ローカル コンピューターに PHP、SQL Server Express、および Web サーバーがセットアップされており、[SQL Server 用 PDO 拡張機能][pdo-sqlsrv]が有効になっていることを前提としています。
 
-1. Create a SQL Server database called `registration`. You can do this from the `sqlcmd` command prompt with these commands:
+1. `registration` という SQL Server データベースを作成します。これには、`sqlcmd` コマンド プロンプトで次のコマンドを実行します。
 
 		>sqlcmd -S localhost\sqlexpress -U <local user name> -P <local password>
 		1> create database registration
 		2> GO	
 
 
-2. In your web server's root directory, create a folder called `registration` and create two files in it - one called `createtable.php` and one called `index.php`.
+2. Web サーバーのルート ディレクトリで、`registration` というフォルダーを作成し、その中に 2 つのファイル (`createtable.php` と `index.php`) を作成します。
 
-3. Open the `createtable.php` file in a text editor or IDE and add the code below. This code will be used to create the `registration_tbl` table in the `registration` database.
+3. `createtable.php` ファイルをテキスト エディターまたは IDE で開き、次のコードを追加します。このコードは、`registration` データベースに `registration_tbl` テーブルを作成するために使用します。
 
 		<?php
 		// DB connection info
@@ -127,11 +127,11 @@ To run the application locally, follow the steps below. Note that these steps as
 		echo "<h3>Table created.</h3>";
 		?>
 
-	Note that you will need to update the values for <code>$user</code> and <code>$pwd</code> with your local SQL Server user name and password.
+	<code>$user</code> と <code>$pwd</code> の値は、ローカルの SQL Server ユーザー名とパスワードに置き換える必要があります。
 
-4. Open a web browser and browse to **http://localhost/registration/createtable.php**. This will create the `registration_tbl` table in the database.
+4. Web ブラウザーを開いて、**http://localhost/registration/createtable.php** にアクセスします。これにより、データベースに `registration_tbl` テーブルが作成されます。
 
-5. Open the **index.php** file in a text editor or IDE and add the basic HTML and CSS code for the page (the PHP code will be added in later steps).
+5. **index.php** ファイルをテキスト エディターまたは IDE で開いて、ページの基本的な HTML コードおよび CSS コードを追加します (PHP コードは後で追加します)。
 
 		<html>
 		<head>
@@ -164,7 +164,7 @@ To run the application locally, follow the steps below. Note that these steps as
 		</body>
 		</html>
 
-6. Within the PHP tags, add PHP code for connecting to the database.
+6. PHP タグ内に、データベースに接続するための PHP コードを追加します。
 
 		// DB connection info
 		$host = "localhost\sqlexpress";
@@ -180,9 +180,9 @@ To run the application locally, follow the steps below. Note that these steps as
 			die(var_dump($e));
 		}
 
-    Again, you will need to update the values for <code>$user</code> and <code>$pwd</code> with your local MySQL user name and password.
+    ここでも、<code>$user</code> と <code>$pwd</code> の値は、ローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
 
-7. Following the database connection code, add code for inserting registration information into the database.
+7. データベース接続コードの次に、登録情報をデータベースに挿入するためのコードを追加します。
 
 		if(!empty($_POST)) {
 		try {
@@ -204,7 +204,7 @@ To run the application locally, follow the steps below. Note that these steps as
 		echo "<h3>Your're registered!</h3>";
 		}
 
-8. Finally, following the code above, add code for retrieving data from the database.
+8. 上のコードの次に、データベースからデータを取得するためのコードを追加します。
 
 		$sql_select = "SELECT * FROM registration_tbl";
 		$stmt = $conn->query($sql_select);
@@ -225,11 +225,11 @@ To run the application locally, follow the steps below. Note that these steps as
 			echo "<h3>No one is currently registered.</h3>";
 		}
 
-You can now browse to **http://localhost/registration/index.php** to test the application.
+これで、**http://localhost/registration/index.php** にアクセスしてアプリケーションをテストできます。
 
-##Publish your application
+##アプリケーションの発行
 
-After you have tested your application locally, you can publish it to your Azure Web Site using Git. However, you first need to update the database connection information in the application. Using the database connection information you obtained earlier (in the **Get SQL Database connection information** section), update the following information in **both** the `createdatabase.php` and `index.php` files with the appropriate values:
+アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを Azure の Web サイトに発行できます。ただし、まずアプリケーション内のデータベース接続情報を更新する必要があります。先ほど (「**SQL データベース接続情報を取得する**」セクションで) 取得したデータベース接続情報を使用し、`createdatabase.php` ファイルと `index.php` ファイルの**両方**で、次の情報を適切な値に置き換えます。
 
 	// DB connection info
 	$host = "tcp:<value of SERVER>";
@@ -238,16 +238,16 @@ After you have tested your application locally, you can publish it to your Azure
 	$db = "<value of DATABASE>";
 
 > [WACOM.NOTE]
-> In the <code>$host</code>, the value of SERVER must be prepended with <code>tcp:</code>, and the value of <code>$user</code> is the concatenation of the value of USERNAME, '@', and your server ID. Your server ID is the first 10 characters of the value of SERVER.
+> <code>$host</code> で、SERVER の値は先頭に <code>tcp:</code> を付ける必要があります。<code>$user</code> の値は、USERNAME の値、'@'、サーバー ID の連結です。サーバー ID は、SERVER の値の先頭 10 文字です。
 
 
-Now, you are ready to set up Git publishing and publish the application.
+これで、Git 発行を設定してアプリケーションを発行する準備ができました。
 
 > [WACOM.NOTE]
-> These are the same steps noted at the end of the Create an Azure Web Site and Set up Git Publishing section above.
+> これらは、上の「Azure の Web サイトの作成と Git 発行の設定」セクションの最後でメモした手順と同じです。
 
 
-1. Open GitBash (or a terminal, if Git is in your `PATH`), change directories to the root directory of your application, and run the following commands:
+1. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
 
 		git init
 		git add .
@@ -255,31 +255,31 @@ Now, you are ready to set up Git publishing and publish the application.
 		git remote add azure [URL for remote repository]
 		git push azure master
 
-	You will be prompted for the password you created earlier.
+	先ほど作成したパスワードを入力するように求められます。
 
-2. Browse to **http://[site name].azurewebsites.net/createtable.php** to create the MySQL table for the application.
-3. Browse to **http://[site name].azurewebsites.net/index.php** to begin using the application.
+2. アプリケーション用の MySQL テーブルを作成するには、**http://[site name].azurewebsites.net/createtable.php** に移動します。
+3. アプリケーションの使用を開始するには、**http://[site name].azurewebsites.net/index.php** に移動します。
 
-After you have published your application, you can begin making changes to it and use Git to publish them. 
+アプリケーションを発行した後、アプリケーションへの変更を開始し、Git を使用してその変更を発行することもできます。
 
-##Publish changes to your application
+##アプリケーションへの変更の発行
 
-To publish changes to application, follow these steps:
+アプリケーションへの変更を発行するには、次の手順に従います。
 
-1. Make changes to your application locally.
-2. Open GitBash (or a terminal, it Git is in your `PATH`), change directories to the root directory of your application, and run the following commands:
+1. ローカルでアプリケーションへの変更を行います。
+2. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
 
 		git add .
 		git commit -m "comment describing changes"
 		git push azure master
 
-	You will be prompted for the password you created earlier.
+	先ほど作成したパスワードを入力するように求められます。
 
-3. Browse to **http://[site name].azurewebsites.net/index.php** to see your changes.
+3. 変更内容を確認できるように、**http://[site name].azurewebsites.net/index.php** に移動します。
 
 [install-php]: http://www.php.net/manual/en/install.php
-[install-SQLExpress]: http://www.microsoft.com/en-us/download/details.aspx?id=29062
-[install-Drivers]: http://www.microsoft.com/en-us/download/details.aspx?id=20098
+[install-SQLExpress]: http://www.microsoft.com/ja-jp/download/details.aspx?id=29062
+[install-Drivers]: http://www.microsoft.com/ja-jp/download/details.aspx?id=20098
 [install-git]: http://git-scm.com/
 [pdo-sqlsrv]: http://php.net/pdo_sqlsrv
 [running-app]: ./media/web-sites-php-sql-database-deploy-use-git/running_app_3.png
@@ -297,5 +297,6 @@ To publish changes to application, follow these steps:
 [linked-resources]: ./media/web-sites-php-sql-database-deploy-use-git/linked_resources.jpg
 [connection-string]: ./media/web-sites-php-sql-database-deploy-use-git/connection_string.jpg
 [management-portal]: https://manage.windowsazure.com/
-[sql-database-editions]: http://msdn.microsoft.com/en-us/library/windowsazure/ee621788.aspx
+[sql-database-editions]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee621788.aspx
 [where-is-code]: ./media/web-sites-php-sql-database-deploy-use-git/where_is_code.png
+

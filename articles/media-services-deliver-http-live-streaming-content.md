@@ -1,25 +1,25 @@
-<properties linkid="develop-media-services-how-to-guides-deliver-apple-live-streaming" urlDisplayName="Deliver Apple HTTP Live Streaming (HLS)" pageTitle="How to Deliver Apple HTTP Live Streaming (HLS) - Azure" metaKeywords="" description="Learn how to create a locator to Apple HTTP Live Stream (HLS) content on Media Services origin server. Code samples are written in C# and use the Media Services SDK for .NET." metaCanonical="" services="media-services" documentationCenter="" title="How to: Deliver Apple HLS streaming content" authors="migree" solutions="" manager="" editor="" />
+<properties linkid="develop-media-services-how-to-guides-deliver-apple-live-streaming" urlDisplayName="Apple HTTP ライブ ストリーミング (HLS) を配信する" pageTitle="Apple HTTP ライブ ストリーミング (HLS) を配信する方法 - Azure" metaKeywords="" description="メディア サービスの配信元サーバー上にある Apple HTTP ライブ ストリーミング (HLS) コンテンツへのロケーターを作成する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" metaCanonical="" services="media-services" documentationCenter="" title="方法: Apple HLS ストリーミング コンテンツを配信する" authors="migree" solutions="" manager="" editor="" />
 
 
 
 
 
-<h1>How to: Deliver Apple HLS streaming content</h1>
+<h1>方法: Apple HLS ストリーミング コンテンツを配信する</h1>
 
-This article is one in a series introducing Azure Media Services programming. The previous topic was [How to: Deliver Streaming Content](http://go.microsoft.com/fwlink/?LinkID=301942&clcid=0x409).
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[ストリーミング コンテンツを配信する方法に関するページ](http://go.microsoft.com/fwlink/?LinkID=301942&clcid=0x409)を参照してください。
 
-This topic shows how to create a locator to Apple HTTP Live Streaming (HLS) content on a Media Services origin server. Using this approach, you can build a URL to Apple HLS content, and provide it to Apple iOS devices for playback. The basic approach to building the locator URL is the same. Build a locator to the Apple HLS streaming asset path on an origin server, and then build a full URL that links to the manifest for the streaming content.
+このトピックでは、ロケーターを作成して、メディア サービスの配信元サーバー上にある Apple HTTP ライブ ストリーミング (HLS) コンテンツをストリーミングする方法について説明します。その方法を使用すると、Apple HLS コンテンツの URL を構築して Apple iOS デバイスに提供し、再生することができます。ロケーター URL を構築する方法は基本的には変わりません。配信元サーバー上の Apple HLS ストリーミング アセット パスに対するロケーターを構築した後、ストリーミング コンテンツのマニフェストにリンクした完全な URL を構築します。
 
-The following code example assumes that you have already obtained a reference to an HLS streaming asset, and the variable named **assetToStream** is referenced in the code. After you have run this code to generate an origin locator on the asset, you can use the resulting URL to play back the streaming content in an iOS device such as an iPad or an iPhone.
+以下のコード例は、HLS ストリーミング アセットへの参照が取得済みであることを前提としています。コード中では、**assetToStream** という名前の変数で参照されます。このコードを実行してアセットの配信元ロケーターを生成した後、その結果として得られた URL を iOS デバイス (iPad、iPhone など) で使用し、ストリーミング コンテンツを再生することができます。
 
-To build a locator to Apple HLS streaming content:
+Apple HLS ストリーミング コンテンツへのロケーターを構築するには、次の手順を実行します。
 
-   1. Get a reference to the manifest file in the asset
-   2. Define an access policy
-   3. Create the origin locator by calling the CreateLocator
-   4. Build a URL to the manifest file
+   1. アセット内のマニフェスト ファイルへの参照を取得します。
+   2. アクセス ポリシーを定義します。
+   3. CreateLocator を呼び出して元のロケーターを作成します。
+   4. マニフェスト ファイルの URL を構築します。
 
-The following code shows how to implement the steps:
+この手順を実装したコード例を次に示します。
 
 <pre><code>
 static ILocator GetStreamingHLSOriginLocator( string targetAssetID)
@@ -61,26 +61,27 @@ static ILocator GetStreamingHLSOriginLocator( string targetAssetID)
 }
 </code></pre>
 
-For more information about delivering assets, see:
+アセットの配信の詳細については、以下を参照してください。
 <ul>
-<li><a href="http://msdn.microsoft.com/en-us/library/jj129575.aspx">Deliver Assets with the Media Services for .NET</a></li>
-<li><a href="http://msdn.microsoft.com/en-us/library/jj129578.aspx">Deliver Assets with the Media Services REST API</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/jj129575.aspx">Media Services SDK for .NET を使用して資産を配信する</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/jj129578.aspx">Media Services REST API を使って資産を配信する</a></li>
 </ul>
 
-<h2>Next steps</h2>
+<h2>次のステップ</h2>
 
-This topic concludes the Using Azure Media Services topics. We have covered setting up your machine for Media Services development and performing typical programming tasks. For more information about programming Media Services, see the following resources :
+このトピックで、Azure メディア サービスの使用に関するトピックは終了します。メディア サービス開発用のコンピューターのセットアップ、および一般的なプログラミング タスクの実行について説明しました。メディア サービスのプログラミングの詳細については、次のリソースを参照してください。
 
--   [Azure Media Services Documentation][]
--   [Getting Started with the Media Services SDK for .NET][]
--   [Building Applications with the Media Services SDK for .NET][]
--   [Building Applications with the Azure Media Services REST API][]
--   [Media Services Forum][]
--	[How to Monitor a Media Services Account](http://www.windowsazure.com/en-us/manage/services/media-services/how-to-monitor-a-media-services-account/)
--	[How to Manage Content in Media Services](http://www.windowsazure.com/en-us/manage/services/media-services/how-to-manage-content-in-media-services/)
+-   [Azure メディア サービスのドキュメントに関するページ][]
+-   [Media Services SDK for .NET の概要に関するページ][]
+-   [Media Services SDK for .NET を使ったアプリケーション構築に関するページ][]
+-   [Azure メディア サービス REST API を使用したアプリケーション構築に関するページ][]
+-   [メディア サービス フォーラム][]
+-	[メディア サービス アカウントの監視方法に関するページ](http://www.windowsazure.com/ja-jp/manage/services/media-services/how-to-monitor-a-media-services-account/)
+-	[メディア サービスのコンテンツの管理方法に関するページ](http://www.windowsazure.com/ja-jp/manage/services/media-services/how-to-manage-content-in-media-services/)
 
-[Azure Media Services Documentation]: http://go.microsoft.com/fwlink/?linkid=245437
-[Getting Started with the Media Services SDK for .NET]: http://go.microsoft.com/fwlink/?linkid=252966
-[Building Applications with the Azure Media Services REST API]: http://go.microsoft.com/fwlink/?linkid=252967
-[Building Applications with the Media Services SDK for .NET]: http://go.microsoft.com/fwlink/?linkid=247821
-[Media Services Forum]: http://social.msdn.microsoft.com/Forums/en-US/MediaServices/threads
+[Azure メディア サービスのドキュメントに関するページ]: http://go.microsoft.com/fwlink/?linkid=245437
+[Media Services SDK for .NET の概要に関するページ]: http://go.microsoft.com/fwlink/?linkid=252966
+[Azure メディア サービス REST API を使用したアプリケーション構築に関するページ]: http://go.microsoft.com/fwlink/?linkid=252967
+[Media Services SDK for .NET を使ったアプリケーション構築に関するページ]: http://go.microsoft.com/fwlink/?linkid=247821
+[メディア サービス フォーラム]: http://social.msdn.microsoft.com/Forums/ja-jp/MediaServices/threads
+

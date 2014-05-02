@@ -1,99 +1,99 @@
-<properties linkid="websites-global-web-presence" urlDisplayName="Create a Global Web Presence on Azure Web Sites" pageTitle="Create a Global Web Presence on Azure Web Sites" metaKeywords="" description="This guide provides a technical overview of how to host your organization's (.COM) site on Azure Web Sites. This includes deployment, custom domains, SSL, and monitoring." metaCanonical="http://www.windowsazure.com/en-us/documentation/articles/web-sites-global-web-presence-solution-overview/" services="" documentationCenter="" title="Create a Global Web Presence on Azure Web Sites" authors="jroth" solutions="" manager="paulettm" editor="mollybos" />
+<properties linkid="websites-global-web-presence" urlDisplayName="Azure の Web サイトにグローバル Web プレゼンスを作成" pageTitle="Azure の Web サイトにグローバル Web プレゼンスを作成" metaKeywords="" description="このガイドでは、Azure の Web サイトで組織の (.COM) サイトをホストする方法 (技術概要) について説明します。たとえば、展開、カスタム ドメイン、SSL、監視を取り上げます。" metaCanonical="http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-global-web-presence-solution-overview/" services="" documentationCenter="" title="Azure の Web サイトにグローバル Web プレゼンスを作成" authors="jroth" solutions="" manager="paulettm" editor="mollybos" />
 
 
 
 
 
-# Create a Global Web Presence on Azure Web Sites
+# Azure の Web サイトにグローバル Web プレゼンスを作成
 
-This guide provides a technical overview of how to host your organization's (.COM) site on Azure. This scenario is also referred to as a global web presence. This guide focuses on using [Azure Web Sites][websitesoverview], because Web Sites is the fastest and simplest way to create, migrate, scale, and manage a web application on Azure. However, some application requirements lend themselves better to [Azure Cloud Services][csoverview] or [Azure Virtual Machines][vmoverview] running IIS. These are also excellent choices for hosting web applications. If you are in the initial planning stages, please review the document [Azure Web Sites, Cloud Services, and VMs: When to use which?][chooseservice]. In the absence of a requirement to use Cloud Services or Virtual Machines, we recommend using Web Sites for hosting your global web presence. The rest of this document will provide guidance for using Web Sites with this scenario. 
+このガイドでは、Azure の Web サイトで組織の (.COM) サイトをホストする方法 (技術概要) について説明します。このシナリオは "グローバル Web プレゼンス" とも呼ばれます。このガイドで紹介するのは [Azure の Web サイト][websitesoverview]でホストする方法です。Web サイトを使用すれば、Azure 上に Web アプリケーションをすばやく作成または移行し、それらの Web アプリケーションの規模設定や管理を容易に行えます。ただし、アプリケーションの要件によっては、[Azure のクラウド サービス][csoverview]または IIS を実行する [Azure の仮想マシン][vmoverview]の方が適している場合もあります。これらは Web アプリケーションをホストする際にも適しています。初期の計画段階で、「[Azure の Web サイト、クラウド サービス、仮想マシン: いつ、どれを使用するか][chooseservice]」ドキュメントを確認してください。クラウド サービスまたは仮想マシンを使用する必要がない場合は、Web サイトを使用して組織の .com サイトをホストすることをお勧めします。ここでは、このシナリオでの Azure の Web サイトの使用方法を紹介します。
 
-The following areas are addressed in this guide:
+このガイドの内容は次のとおりです。
 
-- [Create an Azure Web Site](#createwebsite)
-- [Deploy the Web Site](#deploywebsite)
-- [Add a Custom Domain](#customdomain)
-- [Secure the Web Site with SSL](#ssl)
-- [Monitor the Site](#monitor)
+- [Azure の Web サイトの作成](#createwebsite)
+- [Web サイトのデプロイ](#deploywebsite)
+- [カスタム ドメインの追加](#customdomain)
+- [Web サイトを SSL で保護](#ssl)
+- [Web サイトの監視](#monitor)
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>This guide presents some of the most common areas and tasks that are aligned with public-facing .COM site development. However, there are other capabilities of Azure Web Sites that you can use in your specific implementation. To review these capabilities, also see the other guides on <a href="http://www.windowsazure.com/en-us/manage/services/web-sites/digital-marketing-campaign-solution-overview">Digital Marketing Campaigns</a> and <a href="http://www.windowsazure.com/en-us/manage/services/web-sites/business-application-solution-overview">Business Applications</a>.</p>
+<strong>メモ</strong>
+<p>このガイドで取り上げるのは公開 .COM サイト開発で必要となる最も一般的な分野やタスクですが、Azure の Web サイトには特殊なニーズに対応できるその他の機能も備わっています。これらの機能については、<a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/digital-marketing-campaign-solution-overview">デジタル マーケティング キャンペーン</a>および<a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/business-application-solution-overview">基幹業務アプリケーション</a>のガイドを参照してください。</p>
 </div>
 
-##<a name="createwebsite"></a>Create an Azure Web Site
-Using the Azure Management Portal, you can create a new Azure Web Site in several ways. When you click the **New** button on the bottom of the portal, you are presented with the following dialog:
+##<a name="createwebsite"></a>Azure の Web サイトの作成
+Azure 管理ポータルでは、いくつかの方法で新しい Azure の Web サイトを作成できます。ポータルの下部にある **[新規]** をクリックすると、次のようなダイアログ ボックスが表示されます。
 
 ![GlobalWebCreate][GlobalWebCreate]
 
-There are three options for creating a new Web Site: **Quick Create**, **Custom Create**, and **From Gallery**. With each of these options, you should select an Azure region that aligns with the majority of your user base.
+新しい Web サイトを作成するには、**[簡易作成]**、**[カスタム作成]**、**[ギャラリーから]** の 3 つのオプションがあります。どのオプションを選択した場合も、大多数のユーザーが所在している Azure リージョンを選択します。
 
-If you are migrating an existing site, the **Custom Create** option allows you to create or associate a SQL Database or MySQL database. This option also provides the ability to specify several source control options for deployment, such as GitHub or Team Foundation Server (TFS). If you are already managing your web site using a source control mechanism, this provides a quick way to setup your Azure Web Site for deployment.
+既存のサイトを移行する場合に **[カスタム作成]** オプションを選択すると、SQL データベースまたは MySQL データベースを作成するか、またはこれらを関連付けることができます。[カスタム作成] では、GitHub や Team Foundation Server (TFS) などデプロイのソース管理オプションも指定できます。既にソース管理機能を使って Web サイトを管理している場合、Azure の Web サイトの展開をすばやく設定できます。
 
-The **From Gallery** option allows you to setup a new site with one of several frameworks, such as Drupal or WordPress. This can be helpful to quickly set up a new site that you can then customize within the chosen framework.
+**[ギャラリーから]** を選択した場合、いずれかのフレームワーク (Drupal や WordPress など) を指定して新しいサイトをセットアップします。この方法では、新しいサイトをすばやくセットアップし、選択したフレームワーク内でそのサイトをカスタマイズできます。
 
-Like most services in Azure, you must select an Azure region for your new Web Site. Azure has multiple regions located around the world. Once you deploy your web site to any one region, it is accessible globally on the internet. However, multiple regions provides greater flexibility. One obvious benefit is to deploy sites in regions that are closest to users. 
+Azure のほとんどのサービスと同様、新しい Web サイトの Azure リージョンを選択する必要があります。Azure は世界中の複数のリージョンに配置されています。Web サイトをいずれか 1 つのリージョンにデプロイすれば、世界各国どこからでもインターネット経由でそのサイトにアクセスできます。一方、複数のリージョンにデプロイした場合は柔軟性が高まります。たとえば、ユーザーに最も近いリージョンにサイトをデプロイできます。
 
-For details on the steps to create a new web site, see [How to Create and Deploy a Web Site][howtocreatewebsites].
+新しい Web サイトの詳しい作成手順については、「[Web サイトの作成/展開方法][howtocreatewebsites]」を参照してください。
 
-##<a name="deploywebsite"></a>Deploy the Web Site
-There are several ways to deploy your web site to Azure. If you selected a framework from the gallery, you already have a starter site deployed. However, to make any progress, you still must set up some type of editing and deployment procedure. Some of the deployment options include:
+##<a name="deploywebsite"></a>Web サイトの展開
+Web サイトを Azure に展開するにはいくつかの方法があります。ギャラリーからフレームワークを選択するだけで基本的なサイトをデプロイできますが、必要であれば、目的に合わせてサイトとデプロイ設定を編集してください。次のような展開オプションがあります。
 
-- Use an FTP client.
-- Deploy from source control.
-- Publish from Visual Studio.
-- Publish from [WebMatrix][webmatrix].
+- FTP クライアントを使用する
+- ソース管理から展開する
+- Visual Studio から発行する
+- [WebMatrix][webmatrix] から発行する
 
-Each of these options have various strengths. The ability to publish from an FTP client is a simple and straight-forward solution to push new files up to your site. It also means that any existing publishing tools or processes that rely on FTP can continue to work with Azure Web Sites. Source control provides the best control over site content releases, because changes can be tracked, published, and rolled-back to earlier versions if necessary. The options to publish directly from Visual Studio or Web Matrix is a convenience for developers that use either tool. One useful scenario for this feature is during the early stages of a project or for prototyping. In both cases, frequent publishing and testing is potentially more convenient from within the development environment. 
+これらのオプションにはそれぞれ利点があります。FTP クライアントから公開すれば、新しいファイルをサイトへ簡単に取り込むことができます。また、Azure の Web サイトでは、FTP を利用した既存の発行ツールや発行プロセスを引き続き利用できます。サイト コンテンツのリリースを管理するには "ソース管理" が最も適しています。変更を追跡および公開し、必要に応じて前のバージョンへロールバックできます。開発者が Visual Studio または Web Matrix を使用している場合は、これらのツールから直接公開する機能が役立ちます。たとえば、プロジェクトやプロトタイプの初期段階では、開発環境からコンテンツを直接発行してテストできると便利です。
 
-Many of the deployment tasks here involve the use of information in the Azure Management Portal. Go to your web site, select the **Dashboard** tab, and then look for the **quick glance** section. The following screenshot shows several options.
+ここで行う展開作業の多くは、Azure 管理ポータルの情報を使用します。対象となる Web サイトへ移動して **[ダッシュボード]** タブを選択し、**[概要]** セクションを参照してください。次のスクリーンショットにはいくつかのオプションが表示されています。
 
 ![GlobalWebQuickGlance][GlobalWebQuickGlance]
 
-Some source control tools and FTP clients require username/password access. For a new Web Site, credentials are not automatically created. However, you can easily do this by clicking **Reset your deployment credentials**. Once completed, you can use any FTP client to deploy your web site by using these credentials along with the **FTP Host Name** on the same **Dashboard** page.
+一部のソース管理ツールと FTP クライアントは、ユーザー名とパスワードを入力してアクセスする必要があります。新しい Web サイトの資格情報は自動的に作成されませんが、**[展開資格情報のリセット]** をクリックすれば簡単に作成できます。資格情報を作成した後、**[ダッシュボード]** ページにそれらの資格情報と **[FTP ホスト名]** を入力すれば、FTP クライアントを使用して Web サイトを展開できます。
 
 ![GlobalWebFTPSettings][GlobalWebFTPSettings]
 
-Note that the Deployment/FTP user name is a combination of the Web Site name and the user name that you provided. So if your site were "http://contoso.azurewebsite.net" and if your user name were "myuser", the user name for deployment and FTP would be "contoso\myuser".
+展開/FTP ユーザー名は、Web サイト名と指定したユーザー名の組み合わせになります。たとえば、サイトが "http://contoso.azurewebsite.net" でユーザー名が "myuser" の場合、展開および FTP のユーザー名は "contoso\myuser" になります。
 
-You can also choose to deploy through a source control management service, such as GitHub or TFS Online. Click the option to **Set up deployment from source control**. Then follow the instructions for source control system or service of your choice. For step-by-step instructions for publishing from a local Git repository, see [Publishing from Source Control to Azure Web Sites][publishingwithgit].
+GitHub や TFS Online などのソース管理サービスを介して展開する方法もあります。**[ソース管理からの展開の設定]** をクリックし、使用するソース管理システムまたはサービスの指示に従います。ローカル Git リポジトリから発行する詳しい手順については、「[ソース管理から Azure の Web サイトへの発行][publishingwithgit]」を参照してください。
 
-If you plan to use Visual Studio to create and manage your site, you can choose to publish directly from Visual Studio. One method is to click the **Download the publish profile** option. This allows you to save a publishsettings file that can be imported into Visual Studio for web publishing. 
+Visual Studio を使用してサイトを作成および管理する場合は、Visual Studio から直接発行できます。たとえば、**[発行プロファイルのダウンロード]** をクリックして publishsettings ファイルを保存し、このファイルを Visual Studio にインポートして Web 発行で使用できます。
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>It is important to keep the <i>publishsettings</i> file safe and outside of source control, because it contains user names and passwords for both deployment and also any linked database connection strings.</p>
+<strong>注</strong>
+<p><i>publishsettings</i> ファイルは、ソース管理以外の安全な場所に保管してください。このファイルには、展開のユーザー名とパスワード、およびリンクされているすべてのデータベースの接続文字列が保存されています。</p>
 </div>
 
-It is also possible to import the subscription information directly into Visual Studio. For an example, consider a local ASP.NET project in Visual Studio. Right-click on the web project and select **Publish**. The **Import** button in the **Publish Web** dialog enables you to import either a file that contains your Azure subscription settings or the publishsettings file that you downloaded from the Web Sites dashboard. The following screenshot shows these options.
+サブスクリプション情報を Visual Studio へ直接インポートすることもできます。たとえば、Visual Studio でローカル ASP.NET プロジェクトを開発している場合、目的の Web プロジェクトを右クリックして **[発行]** を選択します。**[Web の発行]** ダイアログ ボックスで **[インポート]** をクリックすると、Azure のサブスクリプション設定が保存されたファイル、または Web サイトのダッシュボードからダウンロードした publishsettings ファイルをインポートできます。次のスクリーンショットを参照してください。
 
 ![GlobalWebVSPublish][GlobalWebVSPublish]
 
-For more information about publishing to Azure from Visual Studio, see Deploying an ASP.NET Web Application to an Azure Web Site. 
+Visual Studio から Azure への発行の詳細については、「ASP.NET Web アプリケーションを Azure の Web サイトに展開する」を参照してください。
 
-One more option for both development and deployment is WebMatrix from the Azure Management Portal.
+Web サイトを開発して展開する方法として、Azure 管理ポータルには WebMatrix も用意されています。
 
 ![GlobalWebWebMatrix][GlobalWebWebMatrix]
 
-For more information on this option, see [Develop and deploy a web site with Microsoft WebMatrix][aspnetgetstarted].
+この方法の詳細については、「[Microsoft WebMatrix を使用して Web サイトを開発して展開する][aspnetgetstarted]」を参照してください。
 
-Although these steps provide what you need for deploying your .COM site, you should also create a plan for managing the ongoing content publishing cycle. These options could range from rolling a custom solution, to periodic redeployments for a site that changes infrequently, to a full-featured content management system (CMS). If you're creating a new web site, you should note that there are options in the gallery to use existing CMS frameworks, such as [Drupal][drupal] or [Umbraco][umbraco].
+これらの手順に従えば .COM サイトを展開できますが、現在のコンテンツ発行サイクルを管理するための計画も作成してください。これらのオプションには、カスタム ソリューションの導入、時おり変更されるサイトへの定期的な再デプロイ、すべての機能を備えたコンテンツ管理システム (CMS) などがあります。新しい Web サイトを作成する場合、既存の CMS フレームワーク ([Drupal][drupal]、[Umbraco][umbraco] など) を使用するためのオプションがギャラリーに用意されています。
 
-##<a name="customdomain"></a>Add a Custom Domain
-If this is your global web presence, you will want to associate your registered domain name with the web site. There are many third-party providers that provide domain registration services. Each of these providers supports the creation of different types of DNS records to manage your domain. A DNS record helps to map a user-friendly URL, such as "www.contoso.com", to the actual URL or IP address that hosts the site. 
+##<a name="customdomain"></a>カスタム ドメインの追加
+組織の .COM サイトを作成する場合、通常はその Web サイトに登録済みのドメイン名を関連付けます。多くのサードパーティ プロバイダーがドメイン登録サービスを行っており、各種 DNS レコードの作成とドメイン管理をサポートしています。DNS レコードを使用すれば、対象サイトをホストする実際の URL や IP アドレスに親しみやすい URL ("www.contoso.com" など) を関連付けることができます。
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>In the discussion below, there are two DNS record types of interest. First, a CNAME record can redirect from one URL, such as "www.contoso.com", to a different URL, such as "contoso.azurewebsites.net". Second, an A record can map a URL, such as "www.contoso.com", to an IP address, such as 172.16.48.1.</p>
+<strong>注</strong>
+<p>この後の説明では 2 種類の DNS レコード (CNAME レコードと A レコード) を取り上げます。CNAME レコードは、ある URL ("www.contoso.com" など) から別の URL ("contoso.azurewebsites.net") へリダイレクトします。A レコードは、URL ("www.contoso.com" など) を IP アドレス (172.16.48.1. など) に関連付けます。</p>
 </div>
 
-For Azure Web Sites, you must first create a CNAME record to the Azure Web Site. This setting is done through the third-party registrar's site. The following is an example CNAME record.
+Azure の Web サイトでは、最初に CNAME レコードを作成する必要があります。この設定を行うにはサードパーティの登録サイトを使用します。CNAME レコードの例を次に示します。
 
 <table cellspacing="0" border="1">
 <tr>
-   <th align="left" valign="top">Type</th>
-   <th align="left" valign="top">Host</th>
-   <th align="left" valign="top">Answer</th>
+   <th align="left" valign="top">種類</th>
+   <th align="left" valign="top">ホスト</th>
+   <th align="left" valign="top">リダイレクト先</th>
    <th align="left" valign="top">TTL</th>
 </tr>
 <tr>
@@ -104,19 +104,19 @@ For Azure Web Sites, you must first create a CNAME record to the Azure Web Site.
 </tr>
 </table>
 
-If your domain is newly registered, it might take the domain a day or more to resolve on all DNS servers, which operate off of cached DNS entries. However, if your domain already exists, the CNAME change should happen within a minute. Note that the CNAME record provides a mapping between your domain (which must be qualified with a subdomain alias, such as "www") to the Azure Web Site URL. Neither side of the CNAME record includes the "http://" prefix.
+ドメインを新しく登録した場合、そのドメインがすべての DNS サーバーに反映されるには 1 日以上かかることがあります (キャッシュされた DNS エントリとは別に動作します)。ただし、ドメインが既に存在する場合、CNAME の変更は 1 分ほどで反映されます。CNAME レコードは、ドメイン ("www" などのサブドメイン エイリアスを使用) と Azure の Web サイトの URL を関連付けることができます。CNAME レコードのどちら側にも "http://" プレフィックスは付きません。
 
-In the Azure Management Portal, verify that you are running in **Shared** or Sta****ndard modes on the **Scale** tab (custom domains are not supported for **Free** web sites). Then go to the **Configure** tab and click the **Manage Domains** button. This enables you to associate the web site with the custom domain name. 
+Azure 管理ポータルの **[スケール]** タブで、**[共有]** モードまたは **[標準]** モードを選択していることを確認してください (**[無料]** モードの Web サイトはカスタム ドメインを使用できません)。**[構成]** タブへ移動し、**[ドメインの管理]** をクリックします。Web サイトにカスタム ドメイン名を関連付けられるようになります。
 
 ![GlobalWebWebMatrix][GlobalWebWebMatrix]
 
-Before placing your custom domain in the list, you must first go to your DNS provider and create a CNAME record for your custom domain (www.contoso.com) that points to the URL for your Azure Web Site (contoso.azurewebsites.net). After this propagates, you can enter the custom domain in the dialog shown in the previous screenshot. The presence of the CNAME record for www.contoso.com that points to this web site ensures that you have the authority to use that domain name with this web site. At this point, you can create an A record with the IP address at the bottom of the dialog.
+一覧にカスタム ドメインを追加するには、まず、DNS プロバイダーへアクセスして CNAME レコードを作成する必要があります。その際、カスタム ドメイン (www.contoso.com) と Azure の Web サイト (contoso.azurewebsites.net) の URL を関連付けます。これで、上記のスクリーンショットのダイアログにカスタム ドメインを入力できるようになります。この Web サイトを参照する www.contoso.com の CNAME レコードを作成することで、指定したドメイン名をこの Web サイトで使用する権限が与えられます。この時点で、ダイアログ ボックスの下部の IP アドレスを使用して A レコードを作成できます。
 
 <table cellspacing="0" border="1">
 <tr>
-   <th align="left" valign="top">Type</th>
-   <th align="left" valign="top">Host</th>
-   <th align="left" valign="top">Answer</th>
+   <th align="left" valign="top">種類</th>
+   <th align="left" valign="top">ホスト</th>
+   <th align="left" valign="top">関連付け</th>
    <th align="left" valign="top">TTL</th>
 </tr>
 <tr>
@@ -127,107 +127,107 @@ Before placing your custom domain in the list, you must first go to your DNS pro
 </tr>
 </table>
 
-For more information, see [Configuring a custom domain name for an Azure web site][customdns].
+詳細については、[Azure の Web サイトのカスタム ドメイン名の構成に関するページ][customdns]を参照してください。
 
-##<a name="ssl"></a>Secure the Web Site with SSL
-If your site contains read-only information, there is no need to provide secure access to the site. However, if you collect any user information, perform ecommerce, or manage any other sensitive data, you should secure the site. Security is a big subject, and this paper cannot cover all of the best practices and techniques. However, it is important to highlight the process of enabling Secure Sockets Layer (SSL) for your Web Site. SSL allows users to connect to your site in an encrypted manner with HTTPS addresses instead of HTTP. There are specific steps required to use SSL with Azure Web Sites. 
+##<a name="ssl"></a>Web サイトを SSL で保護
+サイトで公開する情報が読み取り専用の場合、そのサイトへのアクセスをセキュリティで保護する必要はありません。ただし、ユーザー情報を収集したり、通信販売を行ったり、その他の機密データを管理したりする場合は、サイトを保護しなければなりません。セキュリティは大きなテーマなので、すべてのベスト プラクティスや手法をこのドキュメントで取り上げることはできません。ただし、中でも重要なのは、Secure Sockets Layer (SSL) を有効にして Web サイトを保護することです。SSL はユーザーがサイトへ接続する際の通信を暗号化する技術であり、HTTP の代わりに HTTPS アドレスを用います。Azure の Web サイトで SSL を使用するには、決められた手順に従う必要があります。
 
-Azure Web Sites automatically provides a secure connection to the actual site URL. For example, if your site were http://contoso.azurewebsites.net, you can connect over SSL simply by changing "http" to "https", as in **https**://contoso.azurewebsites.net.
+Azure の Web サイトでは、実際のサイト URL への接続が自動的に保護されます。たとえば、サイトが http://contoso.azurewebsites.net の場合、"http" を "https" に変更する (**https**://contoso.azurewebsites.net) だけで SSL 経由で接続できます。
 
-However, if you are using a custom domain name, you must take steps to upload a certificate and enable SSL through the Azure Management Portal for your web site. The following steps provide a summary of this process, but you can find the detailed instructions in the topic [Configuring an SSL certificate for an Azure web site][ssl].
+ただし、カスタム ドメイン名を使用する場合は、Web サイトの Azure 管理ポータルから証明書をアップロードして SSL を有効にする必要があります。この後、そのための大まかな手順を説明しますが、詳細については「[Azure の Web サイトの SSL 証明書の構成][ssl]」を参照してください。
 
-First, obtain an SSL certificate from a Certificate Authority. If you are going to secure your domain with multiple subdomains (for example www.contoso.com and staging.contoso.com), you'll need to get a wildcard certificate (*.contoso.com). These can cost more, so you must decide whether the flexibility of this type of certificate justifies the cost.
+まず、証明機関から SSL 証明書を取得します。保護対象のドメインが複数のサブドメインで構成されている場合は、ワイルドカード証明書を取得する必要があります (たとえば、www.contoso.com と staging.contoso.com の場合、ワイルドカード証明書 *.contoso.com を取得します)。ワイルドカード証明書は通常より費用がかかるので、ワイルドカード証明書によって得られる柔軟性がその費用に見合うかを検討する必要があります。
 
-Once you get the certificate from the Certificate Authority, you cannot simply upload it to Azure in the same format. You must generate a .pfx file using the openssl command. The openssl command is part of the OpenSSL Project. The sources are distributed on the [OpenSSL website][openssl], but you can usually find a precompiled version of the tool on the internet as well. In the following example, a certificate, myserver.crt, and the private key file, myserver.key, are used to create a .pfx file.
+証明機関から証明書を取得した後、そのままのフォーマットでは Azure へアップロードできません。openssl コマンドを使用して .pfx ファイルを生成する必要があります。openssl コマンドは OpenSSL プロジェクトの一部です。ソースは [OpenSSL Web サイト][openssl]で配布されていますが、このツールのコンパイル済みバージョンもインターネットで入手できます。次の例では、証明書 myserver.crt と 秘密キー ファイル myserver.key を使用して .pfx ファイルを作成します。
 
 	openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
-To upload the certificate to Azure, first go to the **Scale** tab and verify that you are running in **Standard** mode. SSL for custom domains is not supported for **Free** or **Shared** modes. On the **Configure** tab, click the **upload a certificate** button.
+証明書を Azure へアップロードするには、**[スケール]**  タブを開き、**[標準]** モードで実行していることを確認します。**[無料]** モードと **[共有]** モードでは、カスタム ドメインを SSL で保護できません。**[構成]** タブで **[証明書をアップロードします]** をクリックします。
 
 ![GlobalWebUplodateCert][GlobalWebUplodateCert]
 
-Then in the **ssl bindings** section, map the certificate to the domain name that it secures. There are two options for this mapping: SNI SSL and IP Based SSL.
+**[SSL のバインディング]** セクションで証明書を選択し、さらにその証明書が保護するドメイン名を選択します。証明書のマッピング方法には、SNI SSL と IP ベースの SSL があります。
 
 ![GlobalWebSSLBindings][GlobalWebSSLBindings]
 
-The **IP Based SSL** option is the traditional way to map the public dedicated IP address to the domain name. This works with all browsers. The **SNI SSL** option allows multiple domains to share the same IP address and yet have different associated SSL certificates for each domain. SNI SSL does not work with some older browsers (for more information on compatibility, see the [Wikipedia entry for SNI SSL][sni]). There is a monthly charge (prorated hourly) associated with each SSL certificate, and the pricing varies depending on the choice of IP based or SNI SSL. For pricing information, see [Web Sites Pricing Details][sslpricing]. For more information on this process, see [Configuring an SSL certificate for an Azure web site][ssl].
+**[IP ベースの SSL]** オプションは、専用のパブリック IP アドレスをドメイン名に関連付ける従来の方法です。この方法はすべてのブラウザーで使用できます。**[SNI SSL]** オプションを選択した場合、複数のドメインで同じ IP アドレスを共有でき、さらにドメインごとに異なる SSL 証明書を関連付けることができます。SNI SSL は一部の古いブラウザーでは機能しません (互換性については、[SNI SSL に関するウィキペディア項目][sni]を参照してください)。SSL 証明書ごとに毎月課金され (時間割り計算)、IP ベースの SSL を選択するか、SNI SSL を選択するかによって料金が異なります。料金については、「[Web サイトの料金詳細][sslpricing]」を参照してください。SSL 証明書の詳細については、「[Azure の Web サイトの SSL 証明書の構成][ssl]」を参照してください。
 
-##<a name="monitor"></a>Monitor the Site
-After your site is actively handling user requests, it is important to use monitoring. For example, you might want to know whether user load is causing high CPU time, which could indicate the need to scale the site. Or application inefficiencies might increase the response time or lead to errors. This section covers some of the built-in monitoring capabilities on the Azure Management Portal.
+##<a name="monitor"></a>Web サイトの監視
+Web サイトでユーザーの要求を処理できるようになったら、運用状況を監視することが大切です。たとえば、ユーザー負荷により CPU 時間が増加している場合は、サイトを拡張する必要があります。また、アプリケーションの処理効率が低下すると、応答時間が長くなったり、エラーが発生したりする可能性があります。このセクションでは、Azure 管理ポータルに組み込まれている一部の監視機能を紹介します。
 
-The **Monitor** tab contains some key metrics for your Web Site in graph format. 
+**[監視]** タブには、Web サイトの主な指標がグラフとして表示されます。
 
 ![GlobalWebMonitor1][GlobalWebMonitor1]
 
-You can customize the metrics in this graph using the Add Metrics button.
+このグラフの指標をカスタマイズするには [メトリックの追加] をクリックします。
 
 ![GlobalWebMonitor2][GlobalWebMonitor2]
 
-For sites running in **Standard** mode, you can also enable endpoint monitoring and alerting. On the **Configure** tab, go to the **monitoring** section, and configure an endpoint. This endpoint runs from one or more locations that you specify and periodically attempts to access your web site. Both timing and error information is collected. 
+**[標準]** モードで実行しているサイトでは、エンドポイントの監視とアラートも有効にできます。**[構成]** タブの **[監視]** セクションでエンドポイントを構成します。このエンドポイントは指定した 1 つの場所から実行でき、定期的に Web サイトへのアクセスを試みます。タイミング情報とエラー情報の両方が収集されます。
 
-In the **Monitor** tab, this endpoint appears showing response time. If you select the endpoint metric, you can then add an alert rule by clicking the **Add Rule** icon.
+**[監視]** タブには、このエンドポイントの応答時間が表示されます。エンドポイント メトリックを選択した後、**[ルールの追加]** アイコンをクリックしてアラート ルールを追加します。
 
 ![GlobalWebMonitor3][GlobalWebMonitor3]
 
-The rule can email administrators or other individuals when the response time exceeds the specified threshold.
+ルールに基づき、応答時間が所定のしきい値を超えた時点で管理者またはその他の担当者に電子メールが送信されます。
 
 ![GlobalWebMonitor4][GlobalWebMonitor4]
 
-If you discover the site requires scaling, this can be done on the **Scale** tab either manually or through the Autoscale preview. The scale tab provides choices for both scale-up (larger dedicated machines) or scale-out (additional shared instances or dedicated instances of the same size). However, the Autoscale preview only supports scale-out. For more details on this option, see the For more information on web site monitoring, see the "Scale with User Demand" section of the [Digital Marketing Campaign][scenariodigitalmarketing] scenario. Also see, [How to Monitor Web Sites][howtomonitor].
+サイトの規模設定 (スケール) が必要と判断した場合、**[スケール]** タブで手動で規模を設定するか、自動スケール (プレビュー) 機能を使用します。[スケール] タブでは、スケールアップ (専用マシンを増強する) とスケールアウト (同じサイズの共有インスタンスまたは専用インスタンスを追加する) の両方を設定できます。ただし、自動スケール (プレビュー) がサポートしているのはスケールアウトのみです。詳細については、[デジタル マーケティング キャンペーン][scenariodigitalmarketing] シナリオの「ユーザーの需要に応じた規模設定 (スケール)」を参照してください。また、「[Web サイトの監視方法][howtomonitor]」も参照してください。
 
-##<a name="summary"></a>Summary
-To create your organization's (.COM) site, the standard tasks include choosing a development framework, site creation, deployment, custom domain assignment, and monitoring. For sites that must secure user data, SSL is highly recommended. This article has provided an overview of performing these tasks using Azure Web Sites. For more information, see the following technical articles referenced in the paper.
+##<a name="summary"></a>まとめ
+組織の (.COM) サイトを作成する際の一般的な作業手順は、開発フレームワークの選択、サイトの作成と展開、カスタム ドメインの割り当て、サイトの監視です。ユーザー データの保護を要するサイトでは SSL を使用してください。ここでは、Azure の Web サイトを使用してこれらの作業を実施する方法を概説しました。詳細については、次の技術解説記事を参照してください。
 
 <table cellspacing="0" border="1">
 <tr>
-   <th align="left" valign="top">Area</th>
-   <th align="left" valign="top">Resources</th>
+   <th align="left" valign="top">領域</th>
+   <th align="left" valign="top">リソース</th>
 </tr>
 <tr>
-   <td valign="middle"><strong>Plan</strong></td>
-   <td valign="top">- <a href="http://www.windowsazure.com/en-us/manage/services/web-sites/choose-web-app-service">Azure Web Sites, Cloud Services, and VMs: When to use which?</a></td>
+   <td valign="middle"><strong>計画</strong></td>
+   <td valign="top">- <a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/choose-web-app-service">Azure の Web サイト、クラウド サービス、仮想マシン: いつ、どれを使用するか</a></td>
 </tr>
 <tr>
-   <td valign="middle"><strong>Create</strong></td>
-   <td valign="top">- <a href="http://www.windowsazure.com/en-us/manage/services/web-sites/how-to-create-websites/">How to Create and Deploy a Web Site</a></td>
+   <td valign="middle"><strong>作成</strong></td>
+   <td valign="top">- <a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-create-websites/">Web サイトの作成/デプロイ方法</a></td>
 </tr>
 <tr>
-   <td valign="middle"><strong>Deploy</strong></td>
-   <td valign="top">- <a href="http://www.windowsazure.com/en-us/develop/net/common-tasks/publishing-with-git/">Publishing from Source Control to Azure Web Sites</a><br/>- <a href="http://www.windowsazure.com/en-us/develop/net/tutorials/get-started/">Deploying an ASP.NET Web Application to an Azure Web Site</a><br/>- <a href="http://www.windowsazure.com/en-us/develop/net/tutorials/website-with-webmatrix/">Develop and deploy a web site with Microsoft WebMatrix</a></td>
+   <td valign="middle"><strong>展開</strong></td>
+   <td valign="top">- <a href="http://www.windowsazure.com/ja-jp/develop/net/common-tasks/publishing-with-git/">ソース管理から Azure の Web サイトへの発行</a><br/>- <a href="http://www.windowsazure.com/ja-jp/develop/net/tutorials/get-started/">ASP.NET Web アプリケーションを Azure の Web サイトに展開する</a><br/>- <a href="http://www.windowsazure.com/ja-jp/develop/net/tutorials/website-with-webmatrix/">Microsoft WebMatrix を使用して Web サイトを開発して展開する</a></td>
 </tr>
 <tr>
-   <td valign="middle"><strong>Custom Domains</strong></td>
-   <td valign="top">- <a href="http://www.windowsazure.com/en-us/develop/net/common-tasks/custom-dns-web-site/">Configuring a custom domain name for an Azure web site</a></td>
+   <td valign="middle"><strong>カスタム ドメイン</strong></td>
+   <td valign="top">- <a href="http://www.windowsazure.com/ja-jp/develop/net/common-tasks/custom-dns-web-site/">Azure の Web サイトのカスタム ドメイン名の構成</a></td>
 </tr>
 <tr>
    <td valign="middle"><strong>SSL</strong></td>
-   <td valign="top">- <a href="http://www.windowsazure.com/en-us/develop/net/common-tasks/enable-ssl-web-site/">Configuring an SSL certificate for an Azure web site</a></td>
+   <td valign="top">- <a href="http://www.windowsazure.com/ja-jp/develop/net/common-tasks/enable-ssl-web-site/">Azure の Web サイトの SSL 証明書の構成</a></td>
 </tr>
 <tr>
-   <td valign="middle"><strong>Monitor</strong></td>
-   <td valign="top">- <a href="http://www.windowsazure.com/en-us/manage/services/web-sites/how-to-monitor-websites/">How to Monitor Web Sites</a></td>
+   <td valign="middle"><strong>監視</strong></td>
+   <td valign="top">- <a href="http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-monitor-websites/">Web サイトの監視方法</a></td>
 </tr>
 </table>
 
-  [websitesoverview]:/en-us/documentation/services/web-sites/
-  [csoverview]:/en-us/documentation/services/cloud-services/
-  [vmoverview]:/en-us/documentation/services/virtual-machines/
-  [chooseservice]:/en-us/manage/services/web-sites/choose-web-app-service
+  [websitesoverview]:/ja-jp/documentation/services/web-sites/
+  [csoverview]:/ja-jp/documentation/services/cloud-services/
+  [vmoverview]:/ja-jp/documentation/services/virtual-machines/
+  [chooseservice]:/ja-jp/manage/services/web-sites/choose-web-app-service
   
   
-  [scenariodigitalmarketing]:/en-us/manage/services/web-sites/digital-marketing-campaign-solution-overview
-  [howtocreatewebsites]:/en-us/manage/services/web-sites/how-to-create-websites/
+  [scenariodigitalmarketing]:/ja-jp/manage/services/web-sites/digital-marketing-campaign-solution-overview
+  [howtocreatewebsites]:/ja-jp/manage/services/web-sites/how-to-create-websites/
   [webmatrix]:http://www.microsoft.com/web/webmatrix/
-  [publishingwithgit]:/en-us/develop/net/common-tasks/publishing-with-git/
-  [aspnetgetstarted]:/en-us/develop/net/tutorials/get-started/
+  [publishingwithgit]:/ja-jp/develop/net/common-tasks/publishing-with-git/
+  [aspnetgetstarted]:/ja-jp/develop/net/tutorials/get-started/
   [drupal]:https://drupal.org/
   [umbraco]:http://umbraco.com/
-  [customdns]:/en-us/develop/net/common-tasks/custom-dns-web-site/
-  [ssl]:/en-us/develop/net/common-tasks/enable-ssl-web-site/
+  [customdns]:/ja-jp/develop/net/common-tasks/custom-dns-web-site/
+  [ssl]:/ja-jp/develop/net/common-tasks/enable-ssl-web-site/
   [openssl]:http://www.openssl.org/
   [sni]:http://en.wikipedia.org/wiki/Server_Name_Indication
-  [sslpricing]:/en-us/pricing/details/web-sites/#service-ssl
-  [howtomonitor]:/en-us/manage/services/web-sites/how-to-monitor-websites/
+  [sslpricing]:/ja-jp/pricing/details/web-sites/#service-ssl
+  [howtomonitor]:/ja-jp/manage/services/web-sites/how-to-monitor-websites/
   
  [GlobalWebCreate]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Create.png
   [GlobalWebQuickGlance]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_QuickGlance.png
@@ -252,3 +252,4 @@ To create your organization's (.COM) site, the standard tasks include choosing a
   
   
   
+

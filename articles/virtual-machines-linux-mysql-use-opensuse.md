@@ -1,32 +1,33 @@
-<properties linkid="virtual-machines-linux-mysql-use-opensuse" urlDisplayName="Install MongoDB" pageTitle="nstall MongoDB on a virtual machine running CentOS Linux in Azure" metaKeywords="Azure, MongoDB" description="Learn how to install Mongo DB on a virtual machine in Azure." metaCanonical="" services="" documentationCenter="" title="Install MongoDB on a virtual machine running CentOS Linux in Azure" authors="" solutions="" manager="" editor="" />
+<properties linkid="virtual-machines-linux-mysql-use-opensuse" urlDisplayName="MongoDB のインストール" pageTitle="Azure 上で CentOS Linux を実行する仮想マシンへの MongoDB のインストール" metaKeywords="Azure、MongoDB" description="Azure の仮想マシンに MongoDB をインストールする方法について説明します。" metaCanonical="" services="" documentationCenter="" title="Azure 上で CentOS Linux を実行する仮想マシンへの MongoDB のインストール" authors="" solutions="" manager="" editor="" />
 
-# Install MySQL on a virtual machine running OpenSUSE Linux in Azure
+#Azure 上で OpenSUSE Linux を実行する仮想マシンへの MySQL のインストール
 
-[MySQL][MySQL] is a popular open source, SQL database.  Using the [Azure Management Portal][AzurePortal], you can create a virtual machine running OpenSUSE Linux from the Image Gallery.  You can then install and configure a MySQL database on the virtual machine.
+[MySQL][MySQL] は広く普及しているオープン ソースの SQL データベースです。[Azure 管理ポータル][AzurePortal]では、OpenSUSE Linux を実行する仮想マシンをイメージ ギャラリーから作成できます。この仮想マシンには、MySQL データベースをインストールして構成することができます。
 
-In this tutorial, you will learn:
+このチュートリアルでは、次のことを説明します。
 
-- How to use the Management Portal to create an OpenSUSE Linux virtual machine from the gallery.
-- How to connect to the virtual machine using SSH or PuTTY.
-- How to install MySQL on the virtual machine.
+- 管理ポータルを使用してギャラリーから OpenSUSE Linux 仮想マシンを作成する方法。
+- SSH または PuTTY を使用して仮想マシンに接続する方法。
+- 仮想マシンに MySQL をインストールする方法。
 
-## Sign up for the Virtual Machines preview feature
+##仮想マシン プレビュー機能へのサインアップ
 
-You will need to sign up for the Azure Virtual Machines preview feature in order to create a virtual machine. You can also sign up for a free trial account if you do not have an Azure account.
+仮想マシンを作成するには、Azure 仮想マシン プレビュー機能にサインアップする必要があります。Azure アカウントを持っていない場合は、無料の試用アカウントにサインアップすることもできます。
 
 [WACOM.INCLUDE [antares-iaas-signup-iaas](../includes/antares-iaas-signup-iaas.md)]
 
-## Create a virtual machine running OpenSUSE Linux
+## OpenSUSE Linux を実行する仮想マシンの作成
 
 [WACOM.INCLUDE [create-and-configure-opensuse-vm-in-portal](../includes/create-and-configure-opensuse-vm-in-portal.md)]
 
-##Install and run MySQL on the virtual machine
+##仮想マシンへの MySQL のインストールと実行
 
 [WACOM.INCLUDE [install-and-run-mysql-on-opensuse-vm](../includes/install-and-run-mysql-on-opensuse-vm.md)]
 
-##Summary
-In this tutorial you learned how to create a virtual machine running OpenSUSE Linux and remotely connect to it using SSH or PuTTY.  You also learned how to install and configure MySQL on the Linux virtual machine.  For more information on MySQL, see the [MySQL Documentation][MySQLDocs].
+##まとめ
+このチュートリアルでは、OpenSUSE Linux を実行する仮想マシンを作成し、SSH または PuTTY を使用してその仮想マシンにリモート接続する方法について説明しました。Linux 仮想マシンに MySQL をインストールして構成する方法についても説明しました。MySQL の詳細については、[MySQL のドキュメント][MySQLDocs]を参照してください。
 
 [MySQLDocs]: http://dev.mysql.com/doc/
 [MySQL]: http://www.mysql.com
 [AzurePortal]: http://manage.windowsazure.com
+

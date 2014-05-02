@@ -1,116 +1,115 @@
-<properties linkid="dev-java-compute-load" urlDisplayName="TSP on Virtual Machine" pageTitle="Compute-intensive Java application on a VM - Azure" metaKeywords="Azure virtual machine Java, Azure Java app, Azure Java application" description="Learn how to create an Azure virtual machine that runs a compute-intensive Java application that can be monitored by another Java application." metaCanonical="" services="virtual-machines" documentationCenter="Java" title="How to run a compute-intensive task in Java on a virtual machine" authors="waltpo" videoId="" scriptId="" solutions="" manager="bjsmith" editor="mollybos" />
+<properties linkid="dev-java-compute-load" urlDisplayName="仮想マシンで TSP を実行する" pageTitle="VM で多くのコンピューティング処理を要する Java アプリケーションを実行する - Azure" metaKeywords="Azure の仮想マシン Java, Azure Java アプリ, Azure Java アプリケーション" description="Azure の仮想マシンを作成し、多くのコンピューティング処理を要する Java アプリケーションを実行して、別の Java アプリケーションで監視する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="Java" title="仮想マシンで多くのコンピューティング処理を要する Java タスクを実行する方法" authors="waltpo" videoId="" scriptId="" solutions="" manager="bjsmith" editor="mollybos" />
 
 
 
-# How to run a compute-intensive task in Java on a virtual machine
+# 仮想マシンで多くのコンピューティング処理を要する Java タスクを実行する方法
 
-With Azure, you can use a virtual machine to handle compute-intensive tasks. For example, a virtual machine could handle tasks and deliver results to client machines or mobile applications. On completing this guide, you will have an understanding of how to create a virtual machine that runs a compute-intensive Java application that can be monitored by another Java application.
+Azure で仮想マシンを使用することで、多くのコンピューティング処理を要するタスクを処理できます。たとえば、仮想マシンでタスクを処理して、結果をクライアント マシンやモバイル アプリケーションに配信できます。このガイドを完了すると、多くのコンピューティング処理を要する Java アプリケーションを実行し、それを別の Java アプリケーションから監視できる仮想マシンの作成方法を理解できます。
 
-This tutorial assumes you know how to create Java console applications, import libraries to your Java application, and generate a Java archive (JAR). No knowledge of Azure is assumed. 
+このチュートリアルは、Java コンソール アプリケーションを作成する方法、Java アプリケーションにライブラリをインポートする方法、および Java アーカイブ (JAR) を生成する方法を理解していることを前提としています。Azure の知識は不要です。
 
-You will learn:
+学習内容:
 
-* How to create a virtual machine with a JDK already installed.
-* How to remotely log in to your virtual machine.
-* How to create a service bus namespace.
-* How to create a Java application that performs a compute-intensive task.
-* How to create a Java application that monitors the progress of the compute-intensive task.
-* How to run the Java applications.
-* How to stop the Java applications.
+* JDK インストール済みの仮想マシンを作成する方法
+*仮想マシンにリモート ログインする方法
+* サービス バス名前空間の作成方法
+* 多くのコンピューティング処理を要するタスクを実行する Java アプリケーションの作成方法
+* 多くのコンピューティング処理を要するタスクの進捗状況を監視する Java アプリケーションの作成方法
+* Java アプリケーションの実行方法
+* Java アプリケーションの停止方法
 
-This tutorial will use the Traveling Salesman Problem for the compute-intensive task. The following is an example of the Java application running the compute-intensive task:
+このチュートリアルでは、多くのコンピューティング処理を要するタスクとして、巡回セールスマン問題を使用します。次に示しているのは、多くのコンピューティング処理を要するタスクを実行する Java アプリケーションの例です。
 
-![Traveling Salesman Problem solver][solver_output]
+![巡回セールスマン問題を解くプログラム][solver_output]
 
-The following is an example of the Java application monitoring the compute-intensive task:
+以下は、多くのコンピューティング処理を要するタスクを監視する Java アプリケーションの例です。
 
-![Traveling Salesman Problem client][client_output]
+![巡回セールスマン問題のクライアント][client_output]
 
 [WACOM.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
 
-## To create a virtual machine
+##仮想マシンを作成するには
 
-1. Log in to the [Azure Management Portal](https://manage.windowsazure.com).
-2. Click **New**, click **Compute**, click **Virtual machine**, and then click **From Gallery**.
-3. In the **Virtual machine image select** dialog, select **JDK 7 Windows Server 2012**.
-Note that **JDK 6 Windows Server 2012** is available in case you have legacy applications that are not yet ready to run in JDK 7.
-4. Click **Next**.
-4. In the **Virtual machine configuration** dialog:
-    1. Specify a name for the virtual machine.
-    2. Specify the size to use for the virtual machine.
-    3. Enter a name for the administrator in the **User Name** field. Remember this name and the password you will enter next, you will use them when you remotely log in to the virtual machine.
-    4. Enter a password in the **New password** field, and re-enter it in the **Confirm** field. This is the Administrator account password.
-    5. Click **Next**.
-5. In the next **Virtual machine configuration** dialog:
-    1. For **Cloud service**, use the default **Create a new cloud service**.
-    2. The value for **Cloud service DNS name** must be unique across cloudapp.net. If needed, modify this value so that Azure indicates it is unique.
-    2. Specify a region, affinity group, or virtual network. For purposes of this tutorial, specify a region such as **West US**.
-    2. For **Storage Account**, select **Use an automatically generated storage account**.
-    3. For **Availability Set**, select **(None)**.
-    4. Click **Next**.
-5. In the final **Virtual machine configuration** dialog:
-    1. Accept the default endpoint entries.
-    2. Click **Complete**.
+1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
+2. **[新規]**、**[コンピューティング]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
+3. **[仮想マシン イメージの選択]** ダイアログ ボックスで、**[JDK 7 Windows Server 2012]** を選択します。
+**[JDK 6 Windows Server 2012]** は、JDK 7 を実行する準備ができていないレガシ アプリケーションがある場合に表示されることに注意してください。
+4. **[次へ]** をクリックします。
+4. **[仮想マシンの構成]** ダイアログ ボックスで次の作業を行います。
+    1. 仮想マシンの名前を指定します。
+    2. 仮想マシンに使用するサイズを指定します。
+    3. **[ユーザー名]** フィールドに、管理者の名前を入力します。この名前と次に入力するパスワードは忘れないでください。仮想マシンにリモート ログインするときに使用します。
+    4. **[新しいパスワード]** フィールドにパスワードを入力し、**[確認]** フィールドに再びパスワードを入力します。これは、Administrator アカウントのパスワードです。
+    5. **[次へ]** をクリックします。
+5. **[仮想マシンの構成]** ダイアログ ボックスで次の作業を行います。
+    1. **[Cloud service]** には、既定の **[新しいクラウド サービスの作成]** を使用します。
+    2. **[クラウド サービス DNS 名]** の値は cloudapp.net 全体で一意であることが必要です。一意であることを示す表示になるように、必要に応じてこの値を修正してください。
+    2. リージョン、アフィニティ グループ、または仮想ネットワークを指定します。このチュートリアルでは、**[米国西部]** などの地域を指定します。
+    2. **[ストレージ アカウント]** で、**[自動的に生成されたストレージ アカウントを使用]** を選択します。
+    3. **[可用性セット]** では **[(なし)]** を選択します。
+    4. **[次へ]** をクリックします。
+5. 最後の **[仮想マシンの構成]** ダイアログ ボックスで次の作業を行います。
+    1. 既定のエンドポイント エントリをそのまま使用します。
+    2. **[完了]** をクリックします。
 
-## To remotely log in to your virtual machine
+##仮想マシンにリモート ログインするには
 
-1. Log on to the [Management Portal](https://manage.windowsazure.com).
-2. Click **Virtual machines**.
-3. Click the name of the virtual machine that you want to log in to.
-4. Click **Connect**.
-5. Respond to the prompts as needed to connect to the virtual machine. When prompted for the administrator name and password, use the values that you provided when you created the virtual machine.
+1. [管理ポータル](https://manage.windowsazure.com)にログオンします。
+2. **[仮想マシン]** をクリックします。
+3. ログインする仮想マシンの名前をクリックします。
+4. **[接続]** をクリックします。
+5. 表示される画面で必要に応じて入力して、仮想マシンに接続します。管理者名とパスワードの入力画面が表示されたら、仮想マシンの作成時に指定した値を使用します。
 
-Note that the Azure Service Bus functionality requires the Baltimore CyberTrust Root certificate to be installed as part of your JRE's **cacerts** store. This certificate is automatically included in the JRE used by this tutorial. If you do not have this certificate in your JRE **cacerts** store, see [Adding a Certificate to the Java CA Certificate Store][add_ca_cert] for information on adding it (as well as information on viewing the certificates in your cacerts store).
+Azure のサービス バス機能により、JRE の **cacerts** ストアの一部として Baltimore CyberTrust Root 証明書をインストールすることが求められます。このチュートリアルで使用する JRE には、この証明書が自動的に含められます。JRE **cacerts** ストアにこの証明書がない場合は、その追加方法 (および cacerts ストアの証明書を表示する方法) を「[証明書を Java CA 証明書ストアに追加する方法][add_ca_cert]」で確認してください。
 
-## How to create a service bus namespace
+## サービス バス名前空間の作成方法
 
-To begin using Service Bus queues in Azure, you must first
-create a service namespace. A service namespace provides a scoping
-container for addressing Service Bus resources within your application.
+Azure のサービス バス  キューを使用するには、最初に
+サービス名前空間を作成する必要があります。サービス名前空間は、アプリケーション内で
+サービス バス リソースをアドレス指定するためのスコープ コンテナーを提供します。
 
-To create a service namespace:
+サービス名前空間を作成するには:
 
-1.  Log on to the [Azure Management Portal](https://manage.windowsazure.com).
-2.  In the lower left navigation pane of the Management Portal, click **Service Bus, Access Control & Caching**.
-3.  In the upper left pane of the Management Portal, click the **Service
-    Bus** node, and then click the **New** button.  
-    ![Service Bus Node screenshot][svc_bus_node]
-4.  In the **Create a new Service Namespace** dialog, enter a
-    **Namespace**, and then to make sure that it is unique, click the
-    **Check Availability** button.  
-    ![Create a New Namespace screenshot][create_namespace]
-5.  After making sure the namespace name is available, choose the
-    country or region in which your namespace should be hosted, and then click the **Create Namespace** button.  
+1. [Azure 管理ポータル](https://manage.windowsazure.com)にログオンします。
+2. 管理ポータルの左下のナビゲーション ウィンドウで、**[Service Bus、Access Control、Caching]** をクリックします。
+3. 管理ポータルの左上のナビゲーション ウィンドウで、**[サービス バス]**
+    ノードをクリックしてから **[新規]** ボタンをクリックします。
+    ![[サービス バス] ノードのスクリーンショット][svc_bus_node]
+4. **[サービス名前空間の新規作成]** ダイアログ ボックスで
+    **[名前空間]** に名前空間の名前を入力し、固有の名前であることを
+    確認するために **[有効か確認]** をクリックします。
+    ![[名前空間の新規作成] のスクリーンショット][create_namespace]
+5. 名前空間の名前が有効であることを確認できたら、名前空間をホスト
+する国またはリージョンを選択して、**[名前空間を作成します]** をクリックします。
       
-    The namespace you created will then appear in the Management Portal
-    and takes a moment to activate. Wait until the status is **Active** before continuing with the next step.
+    作成した名前空間が管理ポータルに表示され、有効化されます。
+    有効化には少し時間がかかります。状態が **[有効]** になるのを待ってから、次の手順に進みます。
 
-## Obtain the Default Management Credentials for the Namespace
+## 名前空間の既定の管理資格情報の取得
 
-In order to perform management operations, such as creating a queue, on
-the new namespace, you need to obtain the management credentials for the
-namespace.
+新規作成した名前空間に対してキューの作成などの管理操作を実行するには、
+名前空間の管理資格情報を取得する必要があります。
 
-1.  In the left navigation pane, click the **Service Bus** node, to
-    display the list of available namespaces:   
-    ![Available Namespaces screenshot][avail_namespaces]
-2.  Select the namespace you just created from the list shown:   
-    ![Namespace List screenshot][namespace_list]
-3.  The right-hand **Properties** pane will list the properties for the
-    new namespace:   
-    ![Properties Pane screenshot][properties_pane]
-4.  The **Default Key** is hidden. Click the **View** button to display
-    the security credentials:   
-    ![Default Key screenshot][default_key]
-5.  Make a note of the **Default Issuer** and the **Default Key** as you
-    will use this information below to perform operations with the
-    namespace. 
+1. 左側のナビゲーション ウィンドウで **[サービス バス]** ノードを
+    クリックして、利用可能な名前空間の一覧を表示します。   
+    ![利用可能な名前空間のスクリーンショット][avail_namespaces]
+2. 表示された一覧から先ほど作成した名前空間を選択します。
+    ![名前空間の一覧のスクリーンショット][namespace_list]
+3. 右側の **[プロパティ]** ウィンドウに、新しい名前空間のプロパティが
+    表示されます。   
+    ![[プロパティ] ウィンドウのスクリーンショット][properties_pane]
+4. **[既定のキー]** は表示されません。**[表示]** をクリックして
+    セキュリティ資格情報を表示します。   
+    ![[既定のキー] のスクリーンショット][default_key]
+5. **[既定の発行者]** と **[既定のキー]** をメモしておきます。
+    この情報は、後で名前空間に対して操作を実行するときに
+    使用します。
 
-## How to create a Java application that performs a compute-intensive task
+## 多くのコンピューティング処理を要するタスクを実行する Java アプリケーションの作成方法
 
-1. On your development machine (which does not have to be the virtual machine that you created), download the [Azure SDK for Java](http://www.windowsazure.com/en-us/develop/java/).
-2. Create a Java console application using the example code at the end of this section. For purposes of this tutorial, we'll use **TSPSolver.java** as the Java file name. Modify the **your\_service\_bus\_namespace**, **your\_service\_bus\_owner**, and **your\_service\_bus\_key** placeholders to use your service bus **namespace**, **Default Issuer** and **Default Key** values, respectively.
-3. After coding, export the application to a runnable Java archive (JAR), and package the required libraries into the generated JAR. For purposes of this tutorial, we'll use **TSPSolver.jar** as the generated JAR name.
+1. 開発用コンピューター上で (これは作成した仮想マシンと同じでなくてもかまいません)、[Azure SDK for Java](http://www.windowsazure.com/ja-jp/develop/java/) をダウンロードします。
+2. このセクションの末尾にあるコード例を使用して、Java コンソール アプリケーションを作成します。このチュートリアルでは、Java ファイル名として **TSPSolver.java** を使用します。**your\_service\_bus\_namespace**、**your\_service\_bus\_owner**、**your\_service\_bus\_key** の各プレースホルダーを変更して、それぞれ自分のサービス バスの **[名前空間]**、**[既定の発行者]**、**[既定のキー]** の値を設定します。
+3. コーディング後、実行可能な Java アーカイブ (JAR) にアプリケーションをエクスポートして、生成される JAR に、必要なライブラリをパッケージ化します。このチュートリアルでは、生成される JAR 名として **TSPSolver.jar** を使用します。
 
 <p/>
 
@@ -297,10 +296,10 @@ namespace.
 
 
 
-## How to create a Java application that monitors the progress of the compute-intensive task
+## 多くのコンピューティング処理を要するタスクの進捗状況を監視する Java アプリケーションの作成方法
 
-1. On your development machine, create a Java console application using the example code at the end of this section. For purposes of this tutorial, we'll use **TSPClient.java** as the Java file name. As above, modify the **your\_service\_bus\_namespace**, **your\_service\_bus\_owner**, and **your\_service\_bus\_key** placeholders to use your service bus **namespace**, **Default Issuer** and **Default Key** values, respectively.
-2. Export the application to a runnable JAR, and package the required libraries into the generated JAR. For purposes of this tutorial, we'll use **TSPClient.jar** as the generated JAR name.
+1. 開発用コンピューターで、このセクションの末尾にあるコード例を使用して、Java コンソール アプリケーションを作成します。このチュートリアルでは、Java ファイル名として **TSPClient.java** を使用します。先ほどと同じように、**your_service_bus_namespace**、**your_service_bus_owner**、**your_service_bus_key** の各プレースホルダーを変更して、それぞれ自分のサービス バスの **[名前空間]**、**[既定の発行者]**、**[既定のキー]** の値を設定します。
+2. 実行可能な JAR にアプリケーションをエクスポートして、生成される JAR に、必要なライブラリをパッケージ化します。このチュートリアルでは、生成される JAR 名として **TSPClient.jar** を使用します。
 
 <p/>
 
@@ -414,15 +413,15 @@ namespace.
 	    
 	}
  
-## How to run the Java applications
-Run the compute-intensive application, first to create the queue, then to solve the Traveling Saleseman Problem, which will add the current best route to the service bus queue. While the compute-intensive application is running (or afterwards), run the client to display results from the service bus queue.
+## Java アプリケーションの実行方法
+多くのコンピューティング処理を要するアプリケーションを、最初はキューを作成するために実行し、次は巡回セールスマン問題を解くために実行します。これにより、サービス バス キューに現在の最適な経路が追加されます。多くのコンピューティング処理を要するアプリケーションの実行中に (または実行後に)、クライアントを実行してサービス バス キューから結果を表示します。
 
-### How to run the compute-intensive application
+### 多くのコンピューティング処理を要するアプリケーションの実行方法
 
-1. Log on to your virtual machine.
-2. Create a folder where you will run your application. For example, **c:\TSP**.
-3. Copy **TSPSolver.jar** to **c:\TSP**,
-4. Create a file named **c:\TSP\cities.txt** with the following contents:
+1. 仮想マシンにログオンします。
+2. アプリケーションを実行するフォルダーを作成します。たとえば、**c:\TSP** です。
+3. **TSPSolver.jar** を **c:\TSP** にコピーします。
+4. **c:\TSP\cities.txt** という名前のファイルを作成し、内容を次のようにします。
 
 		City_1, 1002.81, -1841.35
 		City_2, -953.55, -229.6
@@ -475,43 +474,43 @@ Run the compute-intensive application, first to create the queue, then to solve 
 		City_49, -120.3, -463.13
 		City_50, 588.51, 679.33
 	
-5. At a command prompt, change directories to c:\TSP.
-6. Ensure the JRE's bin folder is in the PATH environment variable.
-7. You'll need to create the service bus queue before you run the TSP solver permutations. Run the following command to create the service bus queue:
+5. コマンド プロンプトで、ディレクトリを c:\TSP に変更します。
+6. JRE の bin フォルダーが PATH 環境変数に指定されていることを確認します。
+7. 巡回セールスマン問題を解くプログラムを実行する前に、サービス バス キューを作成する必要があります。次のコマンドを実行して、サービス バス キューを作成します。
 
         java -jar TSPSolver.jar createqueue
 
-8. Now that the queue is created, you can run the TSP solver permutations. For example, run the following command to run the solver for 8 cities. 
+8. これでキューが作成されたので、巡回セールスマン問題を解くプログラムを実行できます。たとえば、次のコマンドを実行すると、8 都市を対象としてプログラムが実行されます。
 
         java -jar TSPSolver.jar 8
 
- If you don't specify a number, it will run for 10 cities. As the solver finds current shortest routes, it will add them to the queue.
+ 数値を指定しなかった場合は、10 都市を対象として実行されます。現時点で最短の経路が見つかると、それがキューに追加されます。
 
 > [WACOM.NOTE]
-> The larger the number that you specify, the longer the solver will run. For example, running for 14 cities could take several minutes, and running for 15 cities could take several hours. Increasing to 16 or more cities could result in days of runtime (eventually weeks, months, and years). This is due to the rapid increase in the number of permutations evaluated by the solver as the number of cities increases.
+> 指定した数値が大きいほど、プログラムの実行時間は長くなります。たとえば、14 都市の場合は数分で実行できても、15 都市になると実行に数時間かかることがありえます。16 都市以上にすると実行時間が数日になる可能性があります (最終的には数週間、数か月、数年かかります)。これは都市数が増えるにつれてプログラムが評価する順列の数が急増するためです。
  
-### How to run the monitoring client application
-1. Log on to your machine where you will run the client application. This does not need to be the same machine running the **TSPSolver** application, although it can be.
-2. Create a folder where you will run your application. For example, **c:\TSP**.
-3. Copy **TSPClient.jar** to **c:\TSP**,
-4. Ensure the JRE's bin folder is in the PATH environment variable.
-5. At a command prompt, change directories to c:\TSP.
-6. Run the following command:
+### 監視用のクライアント アプリケーションの実行方法
+1. クライアント アプリケーションを実行するコンピューターにログオンします。これは、**TSPSolver** アプリケーションを実行するコンピューターと同じでなくてもかまいません。
+2. アプリケーションを実行するフォルダーを作成します。たとえば、**c:\TSP** です。
+3. **TSPClient.jar** を **c:\TSP** にコピーします。
+4. JRE の bin フォルダーが PATH 環境変数に指定されていることを確認します。
+5. コマンド プロンプトで、ディレクトリを c:\TSP に変更します。
+6. 次のコマンドを実行します。
 
         java -jar TSPClient.jar
 
-    Optionally, specify the number of minutes to sleep in between checking the queue, by passing in a command line argument. The default sleep period for checking the queue is 3 minutes, which is used of no command line argument is passed to **TSPClient**. If you want to use a different value for the sleep interval, for example, one minute, run:
+    必要に応じて、コマンド ライン引数でキューのチェック間隔を分単位で指定します。キューのチェック間隔の既定値は 3 分です。**TSPClient** にコマンド ライン引数が指定されなかった場合、この値が使用されます。チェック間隔として別の値、たとえば 1 分を使用する場合は、次のように実行します。
 
 	    java -jar TSPClient.jar 1
 
-    The client will run until it sees a queue message of "Complete". Note that if you run multiple occurrences of the solver without running the client, you may need to run the client multiple times to completely empty the queue. Alternatively, you can delete the queue and then create it again. To delete the queue, run the following **TSPSolver** (not **TSPClient**)  command:
+    クライアントは、"Complete" というキュー メッセージが見つかるまで実行を続けます。注意点として、クライアントを実行しないで、問題を解くプログラムを複数実行した場合、キューを完全に空にするにはクライアントの複数回実行が必要になる場合があります。別の方法として、キューを削除して再び作成することもできます。キューを削除するには、次のように **TSPSolver** コマンドを実行します (**TSPClient** ではありません)。
 
         java -jar TSPSolver.jar deletequeue
 
-    The solver will run until it finishes examining all routes. 
+    プログラムはすべての経路の調査が完了すると終了します。
 
-## How to stop the Java applications
-For both the solver and client applications, you can press **Ctrl+C** to exit if you want to end prior to normal completion.
+## Java アプリケーションの停止方法
+問題を解くアプリケーションとクライアント アプリケーションのどちらでも、**Ctrl + C** キーを押すと、通常の処理が完了する前にアプリケーションが終了します。
 
 
 [solver_output]: ./media/virtual-machines-java-run-compute-intensive-task/WA_JavaTSPSolver.png
@@ -523,5 +522,6 @@ For both the solver and client applications, you can press **Ctrl+C** to exit if
 [properties_pane]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_06_PropertiesPane.jpg
 [default_key]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_07_DefaultKey.jpg
 [add_ca_cert]: ../java-add-certificate-ca-store
+
 
 

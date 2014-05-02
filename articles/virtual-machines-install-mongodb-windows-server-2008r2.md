@@ -1,33 +1,34 @@
-<properties linkid="manage-windows-common-task-mongodb-vm" urlDisplayName="Install MongoDB" pageTitle="Install MongoDB on a Windows Server virtual machine" metaKeywords="Azure vm, Azure MongoDB, Azure remote desktop" description="Learn how to create an Azure virtual machine with Windows Server 2008 R2, and then use Remote Desktop to install MongoDB." metaCanonical="" services="virtual-machines" documentationCenter="" title="Install MongoDB on a virtual machine running Windows Server in Azure" authors="kathydav" solutions="" manager="jeffreyg" editor="tysonn" />
+<properties linkid="manage-windows-common-task-mongodb-vm" urlDisplayName="MongoDB のインストール" pageTitle="Windows Server 仮想マシンへの MongoDB のインストール" metaKeywords="Azure vm, Azure MongoDB, Azure リモート デスクトップ" description="Windows Server 2008 R2 を実行する Azure の仮想マシンを作成し、リモート デスクトップを使用して MongoDB をインストールする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure で Windows Server を実行する仮想マシンへの MongoDB のインストール" authors="kathydav" solutions="" manager="jeffreyg" editor="tysonn" />
 
 
 
 
-#Install MongoDB on a virtual machine running Windows Server in Azure
+#Azure で Windows Server を実行する仮想マシンへの MongoDB のインストール
 
-[MongoDB][MongoDB] is a popular open source, high performance NoSQL database.  Using the [Azure Management Portal][AzurePreviewPortal], you can create a virtual machine running Windows Server from the Image Gallery.  You can then install and configure a MongoDB database on the virtual machine.
+[MongoDB][MongoDB] は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。[Azure 管理ポータル][AzurePreviewPortal]では、Windows Server 2008 R2 を実行する仮想マシンをイメージ ギャラリーから作成できます。この仮想マシンには、MongoDB データベースをインストールして構成することができます。
 
-In this tutorial, you will learn:
+このチュートリアルでは、次のことを説明します。
 
-- How to use the Management Portal to create a Windows Server virtual machine from the gallery.
-- How to connect to the virtual machine using Remote Desktop.
-- How to install MongoDB on the virtual machine.
+- 管理ポータルを使用してギャラリーから Windows Server 仮想マシンを作成する方法。
+- リモート デスクトップを使用して仮想マシンに接続する方法。
+- 仮想マシンに MongoDB をインストールする方法。
 
-## Create a virtual machine running Windows Server 2008 R2
+## Windows Server 2008 R2 を実行する仮想マシンの作成
 
 [WACOM.INCLUDE [create-and-configure-windows-server-2008-vm-in-portal](../includes/create-and-configure-windows-server-2008-vm-in-portal.md)]
 
-## Attach a data disk
+## データ ディスクの接続
 
 [WACOM.INCLUDE [attach-data-disk-windows-server-2008-vm-in-portal](../includes/attach-data-disk-windows-server-2008-vm-in-portal.md)]
 
-## Install and run MongoDB on the virtual machine 
+## 仮想マシンへの MongoDB のインストールと実行
 
 [WACOM.INCLUDE [install-and-run-mongo-on-win2k8-vm](../includes/install-and-run-mongo-on-win2k8-vm.md)]
 
-##Summary
-In this tutorial you learned how to create a Windows Server virtual machine and remotely connect to it.  You also learned how to install and configure MongoDB on the Windows virtual machine. For more information on MongoDB, see the [MongoDB Documentation][MongoDocs].
+##まとめ
+このチュートリアルでは、Windows Server 仮想マシンを作成し、リモート接続する方法について説明しました。Windows 仮想マシンに MongoDB をインストールして構成する方法も学習しました。MongoDB の詳細については、[MongoDB のドキュメント][MongoDocs]を参照してください。
 
 [MongoDocs]: http://www.mongodb.org/display/DOCS/Home
 [MongoDB]: http://www.mongodb.org/
 [AzurePreviewPortal]: http://manage.windowsazure.com
+

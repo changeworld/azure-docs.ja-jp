@@ -1,367 +1,366 @@
-<properties linkid="develop-java-how-to-guides-access-control" urlDisplayName="Access Control" pageTitle="How to use Access Control (Java) - Azure feature guide" metaKeywords="" description="Learn how to develop and use Access Control with Java in Azure." metaCanonical="" services="active-directory" documentationCenter="Java" title="How to Authenticate Web Users with Azure Access Control Service Using Eclipse" videoId="" scriptId="" authors="waltpo" solutions="" manager="keboyd" editor="mollybos" />
+<properties linkid="develop-java-how-to-guides-access-control" urlDisplayName="アクセス制御" pageTitle="アクセス制御の使用方法 (Java) - Azure の機能ガイド" metaKeywords="" description="Azure で Java によるアクセス制御を開発し、使用する方法について説明します。" metaCanonical="" services="active-directory" documentationCenter="Java" title="Eclipse を使用して Azure の Access Control サービスで Web ユーザーを認証する方法" videoId="" scriptId="" authors="waltpo" solutions="" manager="keboyd" editor="mollybos" />
 
-# How to Authenticate Web Users with Azure Access Control Service Using Eclipse
+# Eclipse を使用して Azure の Access Control サービスで Web ユーザーを認証する方法
 
-This guide will show you how to use the Azure Access Control Service (ACS) within the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies). For more information on ACS, see the [Next steps](#next_steps) section.
+このガイドでは、Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) 内で Azure の Access Control サービス (ACS) を使用する方法について説明します。ACS の詳細については、「[次のステップ](#next_steps)」を参照してください。
 
 > [WACOM.NOTE]
-> The Azure Access Services Control Filter (by Microsoft Open Technologies) is a community technology preview. As pre-release software, it is not formally supported by Microsoft Open Technologies, Inc. nor Microsoft.
+> Azure の Access Control Services Filter (Microsoft Open Technologies 提供) は Community Technology Preview 版です。プレリリース版ソフトウェアとして Microsoft Open Technologies, Inc. によってもマイクロソフトによっても正式にサポートされていません。
 
-## Table of Contents
+## 目次
 
--   [What is ACS?][]
--   [Concepts][]
--   [Prerequisites][]
--   [Create an ACS namespace][]
--   [Add identity providers][]
--   [Add a relying party application][]
--   [Create rules][]
--   [Upload a certificate to your ACS namespace][]
--   [Review the Application Integration Page][]
--   [Create a Java web application][]
--   [Add the ACS Filter library to your application][]
--   [Deploy to the compute emulator][]
--   [Deploy to Azure][]
--   [Next steps][]
+-   [ACS とは][]
+-   [概念][]
+-   [前提条件][]
+-   [ACS 名前空間の作成][]
+-   [ID プロバイダーの追加][]
+-   [証明書利用者アプリケーションの追加][]
+-   [規則の作成][]
+-   [ACS 名前空間への証明書のアップロード][]
+-   [アプリケーション統合 ページの確認][]
+-   [Java Web アプリケーションの作成][]
+-   [アプリケーションへの ACS Filter ライブラリの追加][]
+-   [コンピューティング エミュレーターへのデプロイ][]
+-   [Azure への展開][]
+-   [次のステップ][]
 
-## <a name="what-is"></a>What is ACS?
+## <a name="what-is"></a>ACS とは
 
-Most developers are not identity experts and generally do not want to
-spend time developing authentication and authorization mechanisms for
-their applications and services. ACS is an Azure service that
-provides an easy way of authenticating users who need to access your web
-applications and services without having to factor complex
-authentication logic into your code.
+ほとんどの開発者は ID の専門家ではなく、通常は
+アプリケーションやサービスの認証と承認のメカニズムの
+開発に時間をかけたくはありません。ACS は、Web アプリケーションと
+サービスにアクセスする必要があるユーザーを認証するための簡単な方法を
+提供する Azure サービスです。これを使えば、複雑な認証ロジックを
+コードに組み込む必要がありません。
 
-The following features are available in ACS:
+ACS では、次の機能を使用できます。
 
--   Integration with Windows Identity Foundation (WIF).
--   Support for popular web identity providers (IPs) including Windows Live ID, Google, Yahoo!, and Facebook.
--   Support for Active Directory Federation Services (AD FS) 2.0.
--   An Open Data Protocol (OData)-based management service that provides programmatic access to ACS settings.
--   A Management Portal that allows administrative access to the ACS settings.
+-   Windows Identity Foundation (WIF) との統合。
+-   Windows Live ID、Google、Yahoo!、Facebook などの一般的な Web ID プロバイダーのサポート。
+-   Active Directory フェデレーション サービス (AD FS) 2.0 のサポート。
+-   ACS 設定へのプログラムによるアクセスを提供する Open Data Protocol (OData) ベースの管理サービス。
+-   ACS 設定への管理アクセスが可能な管理ポータル。
 
-For more information about ACS, see [Access Control Service 2.0][].
+ACS の詳細については、[アクセス制御サービス 2.0 に関するページ][]を参照してください。
 
-## <a name="concepts"></a>Concepts
+## <a name="concepts"></a>概念
 
-Azure ACS is built on the principals of claims-based identity -
-a consistent approach to creating authentication mechanisms for
-applications running on-premises or in the cloud. Claims-based identity
-provides a common way for applications and services to acquire the
-identity information they need about users inside their organization, in
-other organizations, and on the Internet.
+Azure の ACS はクレームベース ID のプリンシパルに基づいており、
+これは内部またはクラウドで実行されているアプリケーションの認証メカニズムを
+作成するための一貫した方法になっています。クレームベース ID は、
+アプリケーションとサービスが組織内、他の組織内、およびインターネット上の
+ユーザーに関する必要な ID 情報を取得するための一般的な方法を
+提供します。
 
-To complete the tasks in this guide, you should understand the following
-concepts:
+このガイドのタスクを完了するには、次の概念を理解している
+必要があります。
 
-**Client** - In the context of this how-to guide, this is a browser that
-is attempting to gain access to your web application.
+**クライアント** - この方法説明ガイドのコンテキストでは、Web アプリケーションに
+アクセスしようとするブラウザーのことです。
 
-**Relying party (RP) application** - An RP application is a web site or
-service that outsources authentication to one external authority. In
-identity jargon, we say that the RP trusts that authority. This guide
-explains how to configure your application to trust ACS.
+**証明書利用者 (RP) アプリケーション** -  RP アプリケーションは、外部の機関に
+認証を委託する Web サイトまたは Web サービスです。ID の
+分野では、"RP がその機関を信頼する" という表現を使います。このガイドでは、
+アプリケーションが ACS を信頼するように構成する方法について説明します。
 
-**Token** - A token is a collection of security data that is usually
-issued upon successful authentication of a user. It contains a set of *claims*, attributes of the authenticated user. A claim can represent a
-user's name, an identifier for a role a user belongs to, a user's age,
-and so on. A token is usually digitally signed, which means it can
-always be sourced back to its issuer, and its content cannot be tampered
-with. A user gains access to a RP application by presenting a valid
-token issued by an authority that the RP application trusts.
+**トークン** - トークンは、通常はユーザーの成功した認証に対して発行される
+セキュリティ データのコレクションです。これには、*クレーム* (認証されたユーザーの属性) のセットが含まれます。クレームは、
+ユーザー名、ユーザーが属するロールの ID、ユーザーの年齢などを
+表すことができます。トークンは、通常、電子署名されています。
+つまり、いつでも発行者を確認でき、その内容は改変できないことに
+なります。ユーザーは RP アプリケーションが信頼している機関によって発行された
+有効なトークンを提示することによって、RP アプリケーションにアクセスできます。
 
-**Identity Provider (IP)** - An IP is an authority that authenticates
-user identities and issues security tokens. The actual work of issuing
-tokens is implemented though a special service called Security Token
-Service (STS). Typical examples of IPs include Windows Live ID,
-Facebook, business user repositories (like Active Directory), and so on.
-When ACS is configured to trust an IP, the system will accept and
-validate tokens issued by that IP. ACS can trust multiple IPs at once,
-which means that when your application trusts ACS, you can instantly
-offer your application to all the authenticated users from all the IPs
-that ACS trusts on your behalf.
+**ID プロバイダー (IP)** - IP は、ユーザー ID を認証し、セキュリティ トークンを
+発行する機関です。トークンを発行する実際の作業は、
+Security Token Service (STS) という特別なサービスによって
+実装されます。IP の典型的な例は、Windows Live ID、
+Facebook、ビジネス ユーザー リポジトリ (たとえば Active Directory) などです。
+ACS が IP を信頼するように構成されている場合、システムはその IP によって
+発行されたトークンを受け入れて検証します。ACS は同時に複数の IP を信頼できるので、
+アプリケーションが ACS を信頼すると、ACS が信頼している
+すべての IP のすべての認証されたユーザーがアプリケーションに
+直ちに提示されます。
 
-**Federation Provider (FP)** - IPs have direct knowledge of users,
-and authenticate them using their credentials and issue claims about what
-they know about them. A Federation Provider (FP) is a different kind of
-authority: rather than authenticating users directly, it acts as an
-intermediary and brokers authentication between one RP and one or more
-IPs. Both IPs and FPs issue security tokens, hence they both use
-Security Token Services (STS). ACS is one FP.
+**フェデレーション プロバイダー (FP)** - IP はユーザーについての直接の情報を持ち、
+資格情報を使ってユーザーを認証し、ユーザーのどのような情報を持っているかについての
+クレームを発行します。フェデレーション プロバイダー (FP) は、
+それとは別の種類の機関です。ユーザーを直接認証するのではなく、
+仲介者として機能し、1 つの RP と 1 つ以上の IP との間で認証を
+中継します。IP も FP も Security Token Services (STS) を使用するため、
+どちらもセキュリティ トークンを発行します。ACS は FP の 1 つです。
 
-**ACS Rule Engine** - The logic used to transform incoming tokens from
-trusted IPs to tokens meant to be consumed by the RP is codified in form
-of simple claims transformation rules. ACS features a rule engine that
-takes care of applying whatever transformation logic you specified for
-your RP.
+**ACS 規則エンジン** - 信頼されている IP から受信するトークンを RP で
+使用されるトークンに変換するために使われるロジックは、単純なクレーム変換規則の
+形式に体系化されています。ACS には、RP のために指定された
+任意の変換ロジックを適用できる規則エンジンが
+用意されています。
 
-**ACS Namespace** - A namespace is a top level partition of ACS that you
-use for organizing your settings. A namespace holds a list of IPs you
-trust, the RP applications you want to serve, the rules that you expect
-the rule engine to process incoming tokens with, and so on. A namespace
-exposes various endpoints that will be used by the application and the
-developer to get ACS to perform its function.
+**ACS 名前空間** - 名前空間は、設定を構造化するために使う、ACS の
+最上位レベルの部分です。名前空間は、信頼される IP、
+提供する RP アプリケーション、規則エンジンで受信トークンの処理に使用する
+規則などの一覧を保持します。名前空間は、
+さまざまなエンドポイントを公開します。アプリケーションおよび開発者は、これらのエンドポイントを
+使用して、ACS がその役割を果たせるようにすることができます。
 
-The following figure shows how ACS authentication works with a web
-application:
+次の図は、Web アプリケーションで ACS 認証がどのように機能するかを
+示しています。
 
-![ACS flow diagram][acs_flow]
+![ACS フロー図][acs_flow]
 
-1.  The client (in this case a browser) requests a page from the RP.
-2.  Since the request is not yet authenticated, the RP redirects the user to the authority that it trusts, which is ACS. The ACS presents the user with the choice of IPs that were specified for this RP. The user selects the appropriate IP.
-3.  The client browses to the IP's authentication page, and prompts the user to log on.
-4.  After the client is authenticated (for example, the identity credentials are entered), the IP issues a security token.
-5.  After issuing a security token, the IP redirects the client to ACS and the client sends the security token issued by the IP to ACS.
-6.  ACS validates the security token issued by the IP, inputs the identity claims in this token into the ACS rules engine, calculates the output identity claims, and issues a new security token that contains these output claims.
-7.  ACS redirects the client to the RP. The client sends the new security token issued by ACS to the RP. The RP validates the signature on the security token issued by ACS, validates the claims in this token, and returns the page that was originally requested.
+1.  クライアント (ここではブラウザー) が RP のページを要求します。
+2.  要求がまだ認証されていないので、RP は信頼している機関 (つまり ACS) にユーザーをリダイレクトします。ACS は、この RP 用に指定されている IP の選択肢をユーザーに提示します。ユーザーが適切な IP を選択します。
+3.  クライアントは IP の認証ページに移動し、ユーザーにログオンを求めます。
+4.  クライアントが認証されたら (たとえば、ID 資格情報が入力されたら)、IP はセキュリティ トークンを発行します。
+5.  セキュリティ トークンの発行後、IP はクライアントを ACS にリダイレクトし、クライアントは IP によって発行されたセキュリティ トークンを ACS に送信します。
+6.  ACS は IP によって発行されたセキュリティ トークンを検証し、このトークンの ID クレームを ACS 規則エンジンに入力して出力 ID クレームを計算し、これらの出力クレームを含む新しいセキュリティ トークンを発行します。
+7.  ACS がクライアントを RP にリダイレクトします。クライアントが ACS によって発行された新しいセキュリティ トークンを RP に送信します。RP が ACS によって発行されたセキュリティ トークンの署名を検証し、このトークンのクレームを検証して、最初に要求されたページを返します。
 
-## <a name="pre"></a>Prerequisites
+## <a name="pre"></a>前提条件
 
-To complete the tasks in this guide, you will need the following:
+このガイドのタスクを完了するには、次のものが必要です。
 
-- A Java Developer Kit (JDK), v 1.6 or later.
-- Eclipse IDE for Java EE Developers, Indigo or later. This can be downloaded from <http://www.eclipse.org/downloads/>. 
-- A distribution of a Java-based web server or application server, such as Apache Tomcat, GlassFish, JBoss Application Server, or Jetty.
-- an Azure subscription, which can be acquired from <http://www.microsoft.com/windowsazure/offers/>.
-- The Azure Plugin for Eclipse with Java (by Microsoft Open Technologies) - August 2012 CTP. For more information, see [Installing the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies)](http://msdn.microsoft.com/en-us/library/windowsazure/hh690946.aspx).
-- An X.509 certificate to use with your application. You will need this certificate in both public certificate (.cer) and Personal Information Exchange (.PFX) format. (Options for creating this certificate will be described later in this tutorial).
-- Familiarity with the Azure compute emulator and deployment techniques discussed at [Creating a Hello World Application for Azure in Eclipse](http://msdn.microsoft.com/en-us/library/windowsazure/hh690944.aspx).
+- A Java Developer Kit (JDK) v 1.6 以降。
+- Eclipse IDE for Java EE Developers Indigo 以降。<http://www.eclipse.org/downloads/> からダウンロードできます。
+- Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、GlassFish、JBoss Application Server、Jetty など)。
+- Azure のサブスクリプション。<http://www.microsoft.com/windowsazure/offers/> から入手できます。
+- Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) - 2012 年 8 月時点 CTP 版。詳細については、「[Installing the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies) (Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) のインストール)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690946.aspx)」を参照してください。
+- アプリケーションで使用する X.509 証明書。この証明書は .cer (公開証明書) と .PFX (Personal Information Exchange) の両方の形式のものが必要です。(この証明書の作成方法についてはこのチュートリアルで後で説明)。
+- 「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690944.aspx)」で説明されている、Azure コンピューティング エミュレーターとそのエミュレーターへの展開手法に精通していること。
 
-## <a name="create-namespace"></a>Create an ACS Namespace
+## <a name="create-namespace"></a>ACS 名前空間の作成
 
-To begin using Access Control Service (ACS) in Azure, you must
-create an ACS namespace. The namespace provides a unique scope for
-addressing ACS resources from within your application.
+Azure で Access Control サービス (ACS) の使用を開始するには、ACS 名前空間を作成する必要があります。名前空間では、アプリケーション内から ACS リソースの
+アドレスを指定するための一意のスコープが提供されます。
 
-1. Log into the [Azure Management Portal][].
-2. Click **Active Directory**. 
-3. To create a new Access Control namespace, click **New**, click **App Services**, click **Access Control**, and then click **Quick Create**. 
-4. Enter a name for the namespace. Azure verifies that the name is unique.
-5. Select the region in which the namespace is used. For the best performance, use the region in which you are deploying your application.
-6. If you have more than one subscription, select the subscription that you want to use for the ACS namespace.
-7. Click **Create**.
+1. [Azure 管理ポータル][]にログインします。
+2. **[Active Directory]** をクリックします。
+3. 新しい Access Control 名前空間を作成するには、**[新規]**、**[アプリ サービス]**、**[Access Control]**、**[簡易作成]** の順にクリックします。
+4. 名前空間の名前を入力します。名前が一意であるかが確認されます。
+5. 名前空間を使用するリージョンを選択します。パフォーマンスを最高にするには、アプリケーションを展開するリージョンと同じにし、[作成] をクリックします。
+6. 複数のサブスクリプションがある場合は、ACS 名前空間に使用するサブスクリプションを選択します。
+7. **[作成]** をクリックします。
 
-Azure creates and activates the namespace. Wait until the status of the new namespace is **Active** before continuing. 
+名前空間が作成されて有効化されます。新しい名前空間のステータスが **[アクティブ]** になるのを待ってから、次に進みます。
 
-## <a name="add-IP"></a>Add identity providers
+##<a name="add-IP"></a>ID プロバイダーの追加
 
-In this task, you add IPs to use with your RP application for
-authentication. For demonstration purposes, this task shows how to add
-Windows Live as an IP, but you could use any of the IPs listed in the ACS
-Management Portal.
+このタスクでは、認証のために RP アプリケーションと共に使用できるように IP を
+追加します。デモンストレーションを目的として、このタスクでは Windows Live を IP として
+追加する方法を説明しますが、ACS 管理ポータルの一覧にある任意の IP を
+使用することができます。
 
 
-1.  In the [Azure Management Portal][], click **Active Directory**, select an Access Control namespace, and then click **Manage**. The ACS Management Portal opens.
-2.  In the left navigation pane of the ACS Management Portal, click **Identity providers**.
-3.  Windows Live ID is enabled by default, and cannot be deleted. For purposes of this tutorial, only Windows Live ID is used. This screen, however, is where you could add other IPs, by clicking the **Add** button.
+1.  [Azure 管理ポータル][]で、**[Active Directory]** をクリックし、Access Control 名前空間を選択して、**[管理]** をクリックします。ACS 管理ポータルが開きます。
+2.  ACS 管理ポータルの左のナビゲーション ウィンドウで、**[ID プロバイダー]** をクリックします。
+3.  Windows Live ID は既定で有効になっており、削除することはできません。このチュートリアルでは、Windows Live ID のみ使用します。この画面では、ただし **[追加]** ボタンをクリックして、ほかの IP を追加できます。
 
-Windows Live ID is now enabled as an IP for your ACS namespace. Next, you
-specify your Java web application (to be created later) as an RP.
+これで、Windows Live ID が ACS 名前空間の IP として有効になりました。次は、
+後で作成する Java Web アプリケーションを RP として指定します。
 
-## <a name="add-RP"></a>Add a relying party application
+##<a name="add-RP"></a>証明書利用者アプリケーションの追加
 
-In this task, you configure ACS to recognize your Java web
-application as a valid RP application.
+このタスクでは、Java Web アプリケーションを有効な RP アプリケーションとして
+認識するように ACS を構成します。
 
-1.  On the ACS Management Portal, click **Relying party applications**.
-2.  On the **Relying Party Applications** page, click **Add**.
-3.  On the **Add Relying Party Application** page, do the following:
-    1.  In **Name**, type the name of the RP. For purposes of this tutorial, type **Azure Web
-        App**.
-    2.  In **Mode**, select **Enter settings manually**.
-    3.  In **Realm**, type the URI to which the security token issued by ACS applies. For this task, type **http://localhost:8080/**.
-        ![Relying party realm for use in compute emulator][relying_party_realm_emulator]
-    4.  In **Return URL,** type the URL to which ACS returns the security token. For this task, type **http://localhost:8080/MyACSHelloWorld/index.jsp**
-        ![Relying party return URL for use in compute emulator][relying_party_return_url_emulator]
-    5.  Accept the default values in the rest of the fields.
+1.  ACS 管理ポータルで **[証明書利用者アプリケーション]** をクリックします。
+2.  **[証明書利用者アプリケーション]** ページで、**[追加]** をクリックします。
+3.  **[[証明書利用者アプリケーションの追加]]** ページで、次の操作を行います。
+    1.  **[名前]** に RP の名前を入力します。このチュートリアルでは、「**Azure Web App**」
+        と入力します。
+    2.  **[モード]** で **[設定を手動で入力する]** を選択します。
+    3.  **[領域]** で、ACS によって発行されたセキュリティ トークンを適用する URI を入力します。このタスクでは、「**http://localhost:8080/**」と入力します。
+        ![コンピューティング エミュレーターで使用する証明書利用者領域][relying_party_realm_emulator]
+    4.  **[戻り先 URL]** で、ACS がセキュリティ トークンを返す URL を入力します。このタスクでは、「**http://localhost:8080/MyACSHelloWorld/index.jsp**」と入力します。
+        ![コンピューティング エミュレーターで使用する証明書利用者の戻り先 URL][relying_party_return_url_emulator]
+    5.  その他のフィールドは、既定値のままにします。
 
-4.  Click **Save**.
+4.  **[保存]** をクリックします。
 
-You have now successfully configured your Java web application when it is run in the Azure compute emulator (at
-http://localhost:8080/) to be an RP in your ACS namespace. Next, create
-the rules that ACS uses to process claims for the RP.
+これで、Azure コンピューティング エミュレーターで実行される Java Web アプリケーション (
+http://localhost:8080/) が ACS 名前空間の RP として正常に構成されました。次に、ACS が RP の
+クレームを処理するために使用する規則を作成します。
 
-## <a name="create-rules"></a>Create rules
+##<a name="create-rules"></a>規則の作成
 
-In this task, you define the rules that drive how claims are passed from
-IPs to your RP. For the purpose of this guide, we will simply configure
-ACS to copy the input claim types and values directly in the output
-token, without filtering or modifying them.
+このタスクでは、クレームが IP から RP にどのように渡されるかを決定する規則を
+定義します。このガイドでは、単に入力クレームの種類と値を
+出力トークンに直接コピーするだけで、フィルタリングや
+変更は行わないように、ACS を構成します。
 
-1.  On the ACS Management Portal main page, click **Rule groups**.
-2.  On the **Rule Groups** page, click **Default Rule Group for Azure Web App**.
-3.  On the **Edit Rule Group** page, click **Generate**.
-4.  On the **Generate Rules: Default Rule Group for Azure Web App** page, ensure Windows Live ID is checked and then click **Generate**.	
-5.  On the **Edit Rule Group** page, click **Save**.
+1.  ACS 管理ポータルのメイン ページで、**[規則グループ]** をクリックします。
+2.  **[規則グループ]** ページで、**[Azure Web App の既定の規則グループ]** をクリックします。
+3.  **[規則グループの編集]** ページで **[生成]** をクリックします。
+4.  **[規則の生成: Azure Web App の既定の規則グループ]** ページで、[Windows Live ID] チェック ボックスがオンになっていることを確認し、**[生成]** をクリックします。
+5.  **[規則グループの編集]** ページで **[保存]** をクリックします。
 
-## <a name="upload-certificate"></a>Upload a certificate to your ACS namespace
+## <a name="upload-certificate"></a>ACS 名前空間への証明書のアップロード
 
-In this task, you upload a .PFX certificate that will be used to sign token requests created by your ACS namespace.
+このタスクでは、ACS 名前空間によって作成されたトークン要求への署名に使用される .PFX 証明書をアップロードします。
 
-1.  On the ACS Management Portal main page, click **Certificates and keys**.
-2.  On the **Certificates and Keys** page, click **Add** above **Token Signing**.
-3.  On the **Add Token-Signing Certificate or Key** page:
-    1. In the **Used for** section, click **Relying Party Application** and select **Azure Web App** (which you previously set as the name of your relying party application).
-    2. In the **Type** section, select **X.509 Certificate**.
-    3. In the **Certificate** section, click the browse button and navigate to the X.509 certificate file that you want to use. This will be a .PFX file. Select the file, click **Open**,  and then enter the certificate password in the **Password** text box. Note that for testing purposes, you may use a self-signed-certificate. To create a self-signed certificate, use the **New** button in the **ACS Filter Library** dialog (described later), or use the **encutil.exe** utility from the [project web site][] of the Azure Starter Kit for Java (by Microsoft Open Technologies).
-    4. Ensure that **Make Primary** is checked. Your **Add Token-Signing Certificate or Key** page should look similar to the following.
-        ![Add token-signing certificate][add_token_signing_cert]
-    5. Click **Save** to save your settings and close the **Add Token-Signing Certificate or Key** page.
+1.  ACS 管理ポータルのメイン ページで、**[証明書とキー]** をクリックします。
+2.  **[証明書とキー]** ページで、**[トークンの署名]** の上の **[追加]** をクリックします。
+3.  **[トークン署名証明書またはキーの追加]** ページで、次の操作を行います。
+    1. **[使用目的]** セクションで、**[証明書利用者アプリケーション]** をクリックし、**[Azure Web App]** (前の手順で設定した証明書利用者アプリケーションの名前) を選択します。
+    2. **[型]** セクションで **[X.509 証明書]** を選択します。
+    3. **[証明書]** セクションで、参照ボタンをクリックし、使用する X.509 証明書ファイルに移動します。これが .PFX ファイルになります。そのファイルを選択し、**[開く]** をクリックして、**[パスワード]** ボックスに証明書のパスワードを入力します。テスト目的で、自己署名証明書を使用してもかまいません。自己署名証明書を作成するには、**[ACS Filter Library]** ダイアログ ボックスの **[New]** ボタンを使用するか (後で説明)、または Azure Starter Kit for Java (Microsoft Open Technologies 提供) の[project web site][]の **encutil.exe** ユーティリティを使用します。
+    4. **[プライマリにする]** チェック ボックスがオンになっていることを確認します。**[トークン署名証明書またはキーの追加]** ページは次のようになります。
+        ![トークン署名証明書の追加][add_token_signing_cert]
+    5. **[保存]** をクリックして設定を保存し、**[トークン署名証明書またはキーの追加]** ページを閉じます。
 
-Next, review the information in the Application Integration page and
-copy the URI that you will need to configure your Java web
-application to use ACS.
+次は、[アプリケーション統合] ページの情報を確認し、ACS を
+使用するように Java Web アプリケーションを構成するために
+必要な URI をコピーします。
 
-## <a name="review-app-int"></a>Review the Application Integration page
+##<a name="review-app-int"></a>[アプリケーション統合] ページの確認
 
-You can find all the information and the code necessary to configure
-your Java web application (the RP application) to work with ACS on
-the Application Integration page of the ACS Management Portal. You will
-need this information when configuring your Java web application for
-federated authentication.
+ACS 管理ポータルの [アプリケーション統合] ページでは、
+Java Web アプリケーション (RP アプリケーション) と ACS を
+連携させる構成に必要なすべての情報とコードを見ることができます。Java Web 
+アプリケーションをフェデレーション認証用に構成するときに、
+この情報が必要になります。
 
-1.  On the ACS Management Portal, click **Application integration**.  
-2.  In the **Application Integration** page, click **Login Pages**.
-3.  In the **Login Page Integration** page, click **Azure Web App**.
+1.  ACS 管理ポータルで、**[アプリケーション統合]** をクリックします。
+2.  **[アプリケーション統合]** ページで **[ログイン ページ]** をクリックします。
+3.  **[ログイン ページ統合]** ページで **[Azure Web App]** をクリックします。
 
-In the **Login Page Integration: Azure Web App** page, the URL listed in **Option 1: Link to an ACS-hosted login page** will be used in your Java web application. You will need this value when you add the Azure Access Control Services Filter library to your Java application.
+**[ログイン ページ統合: Azure Web App]** ページで、**[オプション 1: ACS ホステッド ログイン ページへのリンク]** に表示されている URL が Java Web アプリケーションで使用されます。この値は、Azure の Access Control Services Filter ライブラリを Java アプリケーションに追加するときに必要になります。
 
-## <a name="create-java-app"></a>Create a Java web application
-1. Within Eclipse, at the menu click **File**, click **New**, and then click **Dynamic Web Project**. (If you don't see **Dynamic Web Project** listed as an available project after clicking **File**, **New**, then do the following: click **File**, click **New**, click **Project**, expand **Web**, click **Dynamic Web Project**, and click **Next**.) For purposes of this tutorial, name the project **MyACSHelloWorld**. (Ensure you use this name, subsequent steps in this tutorial expect your WAR file to be named MyACSHelloWorld). Your screen will appear similar to the following:
+##<a name="create-java-app"></a>Java Web アプリケーションの作成
+1. Eclipse のメニューで、**[File]**、**[New]**、**[Dynamic Web Project]** の順にクリックします (**[File]** と **[New]** のクリック後、使用可能なプロジェクトとして **[Dynamic Web Project]** が表示されない場合は、**[File]**、**[New]**、**[Project]** の順にクリックし、**[Web]** を展開して、**[Dynamic Web Project]**、**[Next]** の順にクリックします)。このチュートリアルでは、プロジェクトに **MyACSHelloWorld** という名前を付けます (この名前を使用していることを確認してください。このチュートリアルの以降の手順では、WAR ファイルの名前が MyACSHelloWorld であるとします)。画面は次のようになります。
 
-    ![Create a Hello World project for ACS exampple][create_acs_hello_world]
+    ![ACS サンプル用の Hello World プロジェクトの作成][create_acs_hello_world]
 
-    Click **Finish**.
-2. Within Eclipse's Project Explorer view, expand **MyACSHelloWorld**. Right-click **WebContent**, click **New**, and then click **JSP File**.
-3. In the **New JSP File** dialog, name the file **index.jsp**. Keep the parent folder as MyACSHelloWorld/WebContent, as shown in the following:
+    **[完了]** をクリックします。
+2. Eclipse の Project Explorer ビューで、**MyACSHelloWorld** を展開します。**WebContent** を右クリックし、**[New]**、**[JSP File]** の順にクリックします。
+3. **[New JSP File]** ダイアログ ボックスで、ファイルに **index.jsp** という名前を付けます。次に示しているように、親フォルダーは MyACSHelloWorld/WebContent のままにすることに注意してください。
 
-    ![Add a JSP file for ACS example][add_jsp_file_acs]
+    ![ACS サンプル用の JSP ファイルの追加][add_jsp_file_acs]
 
-    Click **Next**.
+    **[次へ]** をクリックします。
 
-4. In the **Select JSP Template** dialog, select **New JSP File (html)** and click **Finish**.
-5. When the index.jsp file opens in Eclipse, add in text to display **Hello ACS World!** within the existing `<body>` element. Your updated `<body>` content should appear as the following:
+4. **[Select JSP Template]** ダイアログで、**[New JSP File (html)]** を選択し、**[Finish]** をクリックします。
+5. index.jsp ファイルが Eclipse で開いたら、"**Hello ACS World!**" を表示するためのテキストを既存の `<body>` 要素に追加します。更新した `<body>` の内容は次のようになります。
 
         <body>
           <b><% out.println("Hello ACS World!"); %></b>
         </body>
     
-    Save index.jsp.
+    index.jsp を保存します。
   
-## <a name="add_acs_filter_library"></a>Add the ACS Filter library to your application
+##<a name="add_acs_filter_library"></a>アプリケーションへの ACS Filter ライブラリの追加
 
-1. In Eclipse's Project Explorer, right-click **MyACSHelloWorld**, click **Build Path**, and then click **Configure Build Path**.
-2. In the **Java Build Path** dialog, click the **Libraries** tab.
-3. Click **Add Library**.
-4. Click **Azure Access Control Services Filter (by MS Open Tech)** and then click **Next**. The **Azure Access Control Services Filter** dialog is displayed.  (The **Location** field may have a different path, depending on where you installed Eclipse, and the version number could be different, depending on software updates.)
+1. Eclipse の Project Explorer で、**MyACSHelloWorld** を右クリックし、**[Build Path]**、**[Configure Build Path]** の順にクリックします。
+2. **[Java Build Path]** ダイアログ ボックスで **[Libraries]** タブをクリックします。
+3. **[Add Library]** をクリックします。
+4. **[Azure Access Control Services Filter (by MS Open Tech)]** をクリックし、**[Next]** をクリックします。**[Azure Access Control Services Filter]** ダイアログ ボックスが表示されます (**[Location]** フィールドに表示されるパスは Eclipse のインストール場所によって異なる場合があります。バージョン番号はソフトウェア更新状況によって異なる場合があります)。
 
-    ![Add ACS Filter library][add_acs_filter_lib]
+    ![ACS Filter ライブラリの追加][add_acs_filter_lib]
 
-5. Using a browser opened to the **Login Page Integration** page of the Management Portal, copy the URL listed in the **Option 1: Link to an ACS-hosted login page** field and paste it into the **ACS Authentication Endpoint** field of the Eclipse dialog.
-6. Using a browser opened to the **Edit Relying Party Application** page of the Management Portal, copy the URL listed in the **Realm** field and paste it into the **Relying Party Realm** field of the Eclipse dialog.
-7. Within the **Security** section of the Eclipse dialog, if you want to use an existing certificate, click **Browse**, navigate to the certificate you want to use, select it, and click **Open**. Or, if you want to create a new certificate, click **New** to display the **New Certificate** dialog, then specify the password, name of the .cer file, and name of the .pfx file for the new certificate.
-8. Check **Embed the certificate in the WAR file**. Embedding the certificate in this manner includes it in your deployment without requiring you to manually add it as a component. (If instead you must store your certificate externally from your WAR file, you could add the certificate as a role component and uncheck **Embed the certificate in the WAR file**.)
-9. [Optional] Keep **Require HTTPS connections** checked. If you set this option, you'll need to access your application using the HTTPS protocol. If you don't want to require HTTPS connections, uncheck this option.
-10. For a deployment to the compute emulator, your **Azure ACS Filter** settings will look similar to the following.
+5. ブラウザーで開いた管理ポータルの **[ログイン ページ統合]** ページで、**[オプション 1: ACS ホステッド ログイン ページへのリンク]** フィールドに表示されている URL をコピーし、Eclipse ダイアログ ボックスの **[ACS Authentication Endpoint]** フィールドに貼り付けます。
+6. ブラウザーで開いた管理ポータルの **[証明書利用者アプリケーションの編集]** ページで、**[領域]** フィールドに表示されている URL をコピーし、Eclipse ダイアログ ボックスの **[Relying Party Realm]** フィールドに貼り付けます。
+7. Eclipse ダイアログ ボックスの **[Security]** セクションで、既存の証明書を使用する場合は、**[Browse]** をクリックして、使用する証明書に移動します。その証明書を選択し、**[Open]** をクリックします。または、新しい証明書を作成する場合は、**[New]** をクリックして **[New Certificate]** ダイアログ ボックスを表示し、新しい証明書のパスワード、.cer ファイル名、および .pfx ファイル名を指定します。
+8. **[Embed the certificate in the WAR file]** チェック ボックスをオンにします。証明書はこの方法で埋め込むことでデプロイに追加されます。手動でコンポーネントとして追加する必要はありません (代わりに WAR ファイル以外からの証明書を保存する必要がある場合は、証明書をロール コンポーネントとして追加し、**[Embed the certificate in the WAR file]** チェック ボックスをオフにすることができます)。
+9. [](必要に応じて) **[Require HTTPS connections]** チェック ボックスをオンにします。このオプションを設定する場合は、HTTPS プロトコルを使用してアプリケーションにアクセスすることが必要になります。HTTPS 接続が不要な場合は、このチェック ボックスをオフにします。
+10. コンピューティング エミュレーターに展開する場合、**[Azure ACS Filter]** 設定は次のようになります。
 
-    ![Azure ACS Filter settings for a deployment to the compute emulator][add_acs_filter_lib_emulator]
+    ![コンピューティング エミュレーターに展開する場合の [Azure ACS Filter] 設定][add_acs_filter_lib_emulator]
 
-11. Click **Finish**.
-12. Click **Yes** when presented with with a dialog box stating that a web.xml file will be created.
-13. Click **OK** to close the **Java Build Path** dialog.
+11. **[完了]** をクリックします。
+12. web.xml ファイルの作成を確認するダイアログ ボックスが表示されたら、**[Yes]** をクリックします。
+13. **[OK]** をクリックして、**[Java Build Path]** ダイアログ ボックスを閉じます。
 
-## <a name="deploy_compute_emulator"></a>Deploy to the compute emulator
+##<a name="deploy_compute_emulator"></a>コンピューティング エミュレーターへの展開
 
-1. In Eclipse's Project Explorer, right-click **MyACSHelloWorld**, click **Azure**, and then click **Package for Azure**.
-2. For **Project name**, type **MyAzureACSProject** and click **Next**.
-3. Select a JDK and application server. (These steps are covered in detail in the [Creating a Hello World Application for Azure in Eclipse](http://msdn.microsoft.com/en-us/library/windowsazure/hh690944.aspx) tutorial).
-4. Click **Finish**.
-5. Click the **Run in Azure Emulator** button.
-6. After your Java web application starts in the compute emulator, close all instances of your browser (so that any current browser sessions do not interfere with your ACS login test).
-7. Run your application by opening <http://localhost:8080/MyACSHelloWorld/> in your browser (or <https://localhost:8080/MyACSHelloWorld/> if you checked **Require HTTPS connections**). You should be prompted for a Windows Live ID login, then you should be taken to the return URL specified for your relying party application.
-99.  When you have finished viewing your application, click the **Reset Azure Emulator** button.
+1. Eclipse の Project Explorer で、**MyACSHelloWorld** を右クリックし、**[Azure]**、**[Package for Azure]** の順にクリックします。
+2. **[Project name]** で、「**MyAzureACSProject**」と入力し、**[Next]** をクリックします。
+3. JDK とアプリケーション サーバーを選択します (これらの手順の詳細については、「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690944.aspx)」のチュートリアルを参照)。
+4. **[完了]** をクリックします。
+5. **[Run in Azure Emulator]** ボタンをクリックします。
+6. Java Web アプリケーションがコンピューティング エミュレーターで起動した後、ブラウザーのすべてのインスタンスを閉じます (ブラウザー セッションが開いていると ACS ログイン テストの妨げになるためです)。
+7. アプリケーションを実行するために、ブラウザーで <http://localhost:8080/MyACSHelloWorld/>http://localhost:8080/MyACSHelloWorld/<https://localhost:8080/MyACSHelloWorld/> を開きます (または、[Require HTTPS connections] チェック ボックスをオンにした場合は、**https://localhost:8080/MyACSHelloWorld/** を開きます)。Windows Live ID でログインするように求められます。その資格情報は指定した証明書利用者アプリケーションの戻り先 URL に送信されます。
+99. アプリケーションの表示が完了したら、**[Reset Azure Emulator]** ボタンをクリックします。
 
-## <a name="deploy_azure"></a>Deploy to Azure
+##<a name="deploy_azure"></a>Azure への展開
 
-To deploy to Azure, you'll need to change the relying party realm and return URL for your ACS namespace.
+Azure に展開するには、ACS 名前空間の証明書利用者領域と戻り先 URL を変更する必要があります。
 
-1. Within the Azure Management Portal, in the **Edit Relying Party Application** page, modify **Realm** to be the URL of your deployed site. Replace **example** with the DNS name you specified for your deployment.
+1. Azure 管理ポータルの **[証明書利用者アプリケーションの編集]** ページで、展開するサイトの URL になる**領域**を変更します。**example** を、指定した展開の DNS 名に置き換えます。
 
-    ![Relying party realm for use in production][relying_party_realm_production]
+    ![運用で使用する証明書利用者の領域][relying_party_realm_production]
 
-2. Modify **Return URL** to be the URL of your application. Replace **example** with the DNS name you specified for your deployment.
+2. アプリケーションの URL になる**戻り先 URL** を変更します。**example** を、指定した展開の DNS 名に置き換えます。
 
-    ![Relying party return URL for use in production][relying_party_return_url_production]
+    ![運用で使用する証明書利用者の戻り先 URL][relying_party_return_url_production]
 
-3. Click **Save** to save your updated replying party realm and return URL changes.
-4. Keep the **Login Page Integration** page open in your browser, you'll need to copy from it shortly.
-5. In Eclipse's Project Explorer, right-click **MyACSHelloWorld**, click **Build Path**, and then click **Configure Build Path**.
-6. Click the **Libraries** tab, click **Azure Access Control Services Filter**, and then click **Edit**.
-7. Using a browser opened to the **Login Page Integration** page of the Management Portal, copy the URL listed in the **Option 1: Link to an ACS-hosted login page** field and paste it into the **ACS Authentication Endpoint** field of the Eclipse dialog.
-8. Using a browser opened to the **Edit Relying Party Application** page of the Management Portal, copy the URL listed in the **Realm** field and paste it into the **Relying Party Realm** field of the Eclipse dialog.
-9. Within the **Security** section of the Eclipse dialog, if you want to use an existing certificate, click **Browse**, navigate to the certificate you want to use, select it, and click **Open**. Or, if you want to create a new certificate, click **New** to display the **New Certificate** dialog, then specify the password, name of the .cer file, and name of the .pfx file for the new certificate.
-10. Keep **Embed the certificate in the WAR file** checked, assuming you want to embed the certificate in the WAR file.
-11. [Optional] Keep **Require HTTPS connections** checked. If you set this option, you'll need to access your application using the HTTPS protocol. If you don't want to require HTTPS connections, uncheck this option.
-12. For a deployment to Azure, your Azure ACS Filter settings will look similar to the following.
+3. **[保存]** をクリックして、変更した証明書利用者の領域と戻り先 URL を保存します。
+4. **[ログイン ページ統合]** ページはブラウザーで開いたままにします。すぐ後にこのページの情報をコピーする必要があるためです。
+5. Eclipse の Project Explorer で、**MyACSHelloWorld** を右クリックし、**[Build Path]**、**[Configure Build Path]** の順にクリックします。
+6. **[Libraries]** タブをクリックし、**[Azure Access Control Services Filter]**、**[Edit]** の順にクリックします。
+7. ブラウザーで開いた管理ポータルの **[ログイン ページ統合]** ページで、**[オプション 1: ACS ホステッド ログイン ページへのリンク]** フィールドに表示されている URL をコピーし、Eclipse ダイアログ ボックスの **[ACS Authentication Endpoint]** フィールドに貼り付けます。
+8. ブラウザーで開いた管理ポータルの **[証明書利用者アプリケーションの編集]** ページで、**[領域]** フィールドに表示されている URL をコピーし、Eclipse ダイアログ ボックスの **[Relying Party Realm]** フィールドに貼り付けます。
+9. Eclipse ダイアログ ボックスの **[Security]** セクションで、既存の証明書を使用する場合は、**[Browse]** をクリックして、使用する証明書に移動します。その証明書を選択し、**[Open]** をクリックします。または、新しい証明書を作成する場合は、**[New]** をクリックして **[New Certificate]** ダイアログ ボックスを表示し、新しい証明書のパスワード、.cer ファイル名、および .pfx ファイル名を指定します。
+10. **[Embed the certificate in the WAR file]** チェック ボックスはオンのままにして、証明書を WAR ファイルに埋め込むものとします。
+11. [](必要に応じて) **[Require HTTPS connections]** チェック ボックスをオンにします。このオプションを設定する場合は、HTTPS プロトコルを使用してアプリケーションにアクセスすることが必要になります。HTTPS 接続が不要な場合は、このチェック ボックスをオフにします。
+12. Azure に展開する場合、[Azure ACS Filter] 設定は次のようになります。
 
-    ![Azure ACS Filter settings for a production deployment][add_acs_filter_lib_production]
+    ![運用展開用の [Azure ACS Filter] 設定][add_acs_filter_lib_production]
 
-13. Click **Finish** to close the **Edit Library** dialog.
-14. Click **OK** to close the **Properties for MyACSHelloWorld** dialog.
-15. In Eclipse, click the **Publish to Azure Cloud** button. Respond to the prompts, similar as done in the **To deploy your application to Azure** section of the [Creating a Hello World Application for Azure in Eclipse](http://msdn.microsoft.com/en-us/library/windowsazure/hh690944.aspx) topic. 
+13. **[Finish]** をクリックして、**[Edit Library]** ダイアログ ボックスを閉じます。
+14. **[OK]** をクリックして **[Properties for MyACSHelloWorld]** ダイアログ ボックスを閉じます。
+15. Eclipse で、**[Publish to Azure Cloud]** ボタンをクリックします。プロンプトに応答します。手順は「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690944.aspx)」の「**To deploy your application to Azure (アプリケーションを Azure に展開するには)**」で行ったものと同様です。
 
-After your web application has been deployed, close any open browser sessions, run your web application, and you should be prompted to sign in with Windows Live ID credentials, followed by being sent to the return URL of your relying party application.
+Web アプリケーションのデプロイ後、開いているブラウザー セッションをすべて閉じてから、Web アプリケーションを実行します。Windows Live ID 資格情報でログインするように求められます。その資格情報は証明書利用者アプリケーションの戻り先 URL に送信されます。
 
-When you are done using your ACS Hello World application, remember to delete the deployment (you can learn how to delete a deployment in the [Creating a Hello World Application for Azure in Eclipse](http://msdn.microsoft.com/en-us/library/windowsazure/hh690944.aspx) topic).
+ACS Hello World アプリケーションの使用後は展開を削除することを忘れないでください (展開の削除方法については、「[Creating a Hello World Application for Azure in Eclipse (Azure 用の Hello World アプリケーションを Eclipse で作成する方法)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690944.aspx)」を参照)。
 
 
-## <a name="next_steps"></a>Next steps
+## <a name="next_steps"></a>次のステップ
 
-For an examination of the Security Assertion Markup Language (SAML) returned by ACS to your application, see [How to view SAML returned by the Azure Access Control Service][]. To further explore ACS's functionality and to experiment with more sophisticated scenarios, see [Access Control Service 2.0][].
+ACS によってアプリケーションに返される SAML (Security Assertion Markup Language) を調べる場合は、「[How to view SAML returned by the Azure Access Control Service (Azure の Access Control サービスによって返される SAML を表示する方法)][]」を参照してください。さらに ACS の機能を調べたり、より洗練されたシナリオを試してみたりする場合は、「[Access Control Service 2.0 (アクセス制御サービス 2.0)][]」を参照してください。
 
-Also, this example used the **Embed the certificate in the WAR file** option. This option makes it simple to deploy the certificate. If instead you want to keep your signing certificate separate from your WAR file, you can use the following technique:
+また、この例では **[Embed the certificate in the WAR file]** オプションも使用しています。このオプションを使用すると証明書のデプロイが簡単になります。代わりに WAR ファイル以外からの署名証明書を保存する場合は、次の手法を使用できます。
 
-1. Within the **Security** section of the **Azure Access Control Services Filter** dialog, type **${env.JAVA_HOME}/mycert.cer** and uncheck **Embed the certificate in the WAR file**. (Adjust mycert.cer if your certificate file name is different.) Click **Finish** to close the dialog.
-2. Copy the certificate as a component in your deployment: In Eclipse's Project Explorer, expand **MyAzureACSProject**, right-click **WorkerRole1**, click **Properties**, expand **Azure Role**, and click **Components**.
-3. Click **Add**.
-4. Within the **Add Component** dialog:
-    1. In the **Import** section:
-        1. Use the **File** button to navigate to the certificate you want to use. 
-        2. For **Method**, select **copy**.
-    2. For **As Name**, click on the text box and accept the default name.
-    3. In the **Deploy** section:
-        1. For **Method**, select **copy**.
-        2. For **To directory**, type **%JAVA_HOME%**.
-    4. Your **Add Component** dialog should look similar to the following.
+1. **[Azure Access Control Services Filter]** ダイアログ ボックスの **[Security]** セクションで、「**${env.JAVA_HOME}/mycert.cer**」と入力し、**[Embed the certificate in the WAR file]** チェック ボックスをオフにします (証明書のファイル名が異なる場合は mycert.cer を調整)。**[Finish]** をクリックしてダイアログ ボックスを閉じます。
+2. コンポーネントとして証明書を展開にコピーする場合: Eclipse の Project Explorer で、**MyAzureACSProject** を展開し、**WorkerRole1** を右クリックし、**[Properties]** をクリックします。**[Azure Role]** を展開し、**[Components]** をクリックします。
+3. **[追加]** をクリックします。
+4. **[Add Component]** ダイアログ ボックスで、次の操作を行います。
+    1. **[Import]** セクション: 
+        1. **[File]** ボタンをクリックして、使用する証明書に移動します。
+        2. **[Method]** で、**[copy]** を選択します。
+    2. **[As Name]** で、テキスト ボックスをクリックし、既定の名前をそのまま使用します。
+    3. **[Deploy]** セクション: 
+        1. **[Method]** で、**[copy]** を選択します。
+        2. **[To directory]** で、「**%JAVA_HOME%**」と入力します。
+    4. **[Add Component]** ダイアログ ボックスは次のようになります。
 
-        ![Add certificate component][add_cert_component]
+        ![証明書コンポーネントの追加][add_cert_component]
 
-    5. Click **OK**.
+    5. **[OK]** をクリックします。
 
-At this point, your certificate would be included in your deployment. Note that regardless of whether you embed the certificate in the WAR file or add it as a component to your deployment, you need to upload the certificate to your namespace as described in the [Upload a certificate to your ACS namespace][] section.
+これで、証明書は展開に追加されました。WAR ファイルに証明書を埋め込むか、コンポーネントとして展開に追加するかにかかわらず、「[ACS 名前空間への証明書のアップロード][]」セクションで説明しているように、証明書を名前空間にアップロードする必要があることに注意してください。
 
-[What is ACS?]: #what-is
-[Concepts]: #concepts
-[Prerequisites]: #pre
-[Create a Java web application]: #create-java-app
-[Create an ACS Namespace]: #create-namespace
-[Add Identity Providers]: #add-IP
-[Add a Relying Party Application]: #add-RP
-[Create Rules]: #create-rules
-[Upload a certificate to your ACS namespace]: #upload-certificate
-[Review the Application Integration Page]: #review-app-int
-[Configure Trust between ACS and Your ASP.NET Web Application]: #config-trust
-[Add the ACS Filter library to your application]: #add_acs_filter_library
-[Deploy to the compute emulator]: #deploy_compute_emulator
-[Deploy to Azure]: #deploy_azure
-[Next steps]: #next_steps
+[ACS とは]: #what-is
+[概念]: #concepts
+[前提条件]: #pre
+[Java Web アプリケーションの作成]: #create-java-app
+[ACS 名前空間の作成]: #create-namespace
+[ID プロバイダーの追加]: #add-IP
+[証明書利用者アプリケーションの追加]: #add-RP
+[規則の作成]: #create-rules
+[ACS 名前空間への証明書のアップロード]: #upload-certificate
+[アプリケーション統合 ページの確認]: #review-app-int
+[ACS と ASP.NET Web アプリケーションとの信頼の構成]: #config-trust
+[アプリケーションへの ACS Filter ライブラリの追加]: #add_acs_filter_library
+[コンピューティング エミュレーターへのデプロイ]: #deploy_compute_emulator
+[Azure への展開]: #deploy_azure
+[次のステップ]: #next_steps
 [project web site]: http://wastarterkit4java.codeplex.com/releases/view/61026
-[How to view SAML returned by the Azure Access Control Service]: /en-us/develop/java/how-to-guides/view-saml-returned-by-acs/
+[How to view SAML returned by the Azure Access Control Service (Azure の Access Control サービスによって返される SAML を表示する方法)]: /ja-jp/develop/java/how-to-guides/view-saml-returned-by-acs/
 [Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
 [Windows Identity Foundation]: http://www.microsoft.com/download/en/details.aspx?id=17331
 [Windows Identity Foundation SDK]: http://www.microsoft.com/download/en/details.aspx?id=4451
-[Azure Management Portal]: https://manage.windowsazure.com
+[Azure 管理ポータル]: https://manage.windowsazure.com
 [acs_flow]: ./media/active-directory-java-authenticate-users-access-control-eclipse/ACSFlow.png
 
 <!-- Eclipse-specific -->
@@ -377,3 +376,4 @@ At this point, your certificate would be included in your deployment. Note that 
 [add_jsp_file_acs]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddJSPFileACS.png
 [create_acs_hello_world]: ./media/active-directory-java-authenticate-users-access-control-eclipse/CreateACSHelloWorld.png
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
+

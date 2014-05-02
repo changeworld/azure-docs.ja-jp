@@ -1,54 +1,54 @@
-<properties linkid="manage-services-hdinsight-recommendation-engine-using-mahout" urlDisplayName="Hadoop Recommendation Engine" pageTitle="Hadoop recommendation engine (.NET) | Azure" metaKeywords="Azure Apache Mahout, Azure recommendation example, Azure recommendation tutorial, Azure recommendation engine" description="A tutorial that teaches how to use the Apache Mahout recommendation engine with Azure to create song suggestions based on listening habits." disqusComments="1" umbracoNaviHide="1" title="Simple recommendation engine using Apache Mahout" authors="jgao" manager="paulettm" editor="cgronlun" />
+<properties linkid="manage-services-hdinsight-recommendation-engine-using-mahout" urlDisplayName="Hadoop リコメンデーション エンジン" pageTitle="Hadoop リコメンデーション エンジン (.NET) | Azure" metaKeywords="Azure Apache Mahout, Azure リコメンデーション例, Azure リコメンデーション チュートリアル, Azure リコメンデーション エンジン" description="このチュートリアルでは、Apache Mahout リコメンデーション エンジンと Azure を使用して、楽曲の再生傾向に基づいた楽曲提案を作成する方法について説明します。" disqusComments="1" umbracoNaviHide="1" title="Apache Mahout を使用した単純なリコメンデーション エンジン" authors="jgao" manager="paulettm" editor="cgronlun" />
 
 
 
-# Simple recommendation engine using Apache Mahout
+# Apache Mahout を使用した単純なリコメンデーション エンジン
 
-Apache Mahout™ is a machine learning library built for use in scalable machine learning applications. Recommender engines are one of the most popular types of machine learning applications in use today and have many obvious marketing applications.
+Apache Mahout™ は、スケーラブルな機械学習アプリケーションのために構築された機械学習ライブラリです。リコメンデーション エンジンは、現在使用されている機械学習アプリケーションの中で最も一般的なものであり、マーケティング分野で盛んに利用されています。
 
-Apache Mahout provides a built-in implementation for Item-based Collaborative Filtering. This approach is widely used to conduct recommendation data mining. Item-based collaborative filtering was developed by Amazon.com. The idea here is that data on user preferences that exhibit correlations between item preferences can be use to infer the tastes of future users from a similar group.
+Apache Mahout にはアイテムベースの協調フィルタリングが組み込まれています。この手法はリコメンデーション データ マイニングで広く用いられています。Amazon.com によって開発されたアイテムベースの協調フィルタリングは、ユーザーの嗜好に関するデータを分析してアイテム間の嗜好の関連性を見出し、同様のグループに属するユーザーの好みを予測しようというものです。
 
-In this tutorial you use the  [Million Song Dataset](http://labrosa.ee.columbia.edu/millionsong/tasteprofile) site and download the [dataset](http://labrosa.ee.columbia.edu/millionsong/sites/default/files/challenge/train_triplets.txt.zip) to create song recommendations for users based on their past listening habits.
+このチュートリアルでは、[Million Song Dataset](http://labrosa.ee.columbia.edu/millionsong/tasteprofile) サイトから[データセット](http://labrosa.ee.columbia.edu/millionsong/sites/default/files/challenge/train_triplets.txt.zip)をダウンロードし、ユーザーの過去の再生傾向に基づいてリコメンデーションを作成します。
 
 
 
-You will learn:
+学習内容: 
 
-* How to use recommendation engines
+* リコメンデーション エンジンを使用する方法
 
-This tutorial is composed of the following segments:
+このチュートリアルで学習する内容は次のとおりです。
 
-1. [Setup and configuration](#setup)
-2. [Examining and formatting the data](#segment1)
-3. [Installing Mahout](#Segment2)
-4. [Running the Mahout job](#segment2)
+1. [セットアップと構成](#setup)
+2. [データの調査と書式設定](#segment1)
+3. [Mahout のインストール](#Segment2)
+4. [Mahout ジョブの実行](#segment2)
 
-## <a name="setup"></a>Setup and configuration 
+## <a name="setup"></a>セットアップと構成
 
-This tutorial assumes that you have gotten setup with Azure and the HDinsight preview and that you have created an HDInsight cluster on which you can run a sample. If you have not done this already, consult the [Get Started with the Azure HDInsight](/en-us/manage/services/hdinsight/get-started-hdinsight/) tutorial for instructions on how to satisfy these prerequisites.
+このチュートリアルは、Azure と HDinsight プレビューのセットアップが完了しており、サンプルを実行できる HDInsight クラスターが既に作成されていることを前提としています。これらの準備が整っていない場合は、「[Azure HDInsight の概要](/ja-jp/manage/services/hdinsight/get-started-hdinsight/)」チュートリアルを参照してセットアップしてください。
 
-## <a name="segment1"></a>Examining and formatting the data 
+## <a name="segment1"></a>データの調査と書式設定
 
-This example deals with the way in which users express a preference for certain songs. The assumption is that the number of times a user listens to a song provides a measure of that user's preference for that song. Patterns detected in the preference data can be used to predict future user preferences based on some of their expressed musical preferences. You can view a sample of this dataset in the **Description** section of the [Echo Nest Taste Profile Subset](http://labrosa.ee.columbia.edu/millionsong/tasteprofile) web page:
+このサンプルでは、特定の楽曲に対するユーザーの嗜好を調査します。ユーザーが楽曲を再生した回数によって、その楽曲に対するユーザーの嗜好度を判断します。嗜好データから何らかのパターンを導き出せば、過去に示した音楽の好みに基づいてそのユーザーの今後の嗜好を予測できます。「[Echo Nest Taste Profile Subset](http://labrosa.ee.columbia.edu/millionsong/tasteprofile)」Web ページの「**説明**」セクションで、このデータセットのサンプルを参照できます。
 
-![The Echo Nest Taste Profile Subset][echo-nest]
+![Echo Nest 嗜好データ サブセット][echo-nest]
 
-###Sample data from the Million Song Dataset
+###Million Song Dataset のサンプル データ
 
-To use this dataset with Mahout you need to do two things:
+このデータセットを Mahout で使用するには、次の 2 つの操作を行う必要があります。
 
-1.	Convert the IDs of both the songs and users to integer values.
-2.	Save the new values with their rankings to a comma-separated file.
+1.	楽曲 ID とユーザー ID を整数値に変換します。
+2.	この新しい値をランキングと共に、コンマ区切りファイルに保存します。
 
-If you do not have Visual Studio 2010 installed, please skip this step and go to Running Mahout Job Section to get a pre-generated version.
+Visual Studio 2010 がインストールされていない場合は、この手順をスキップして「Mahout ジョブの実行」セクションへ進み、事前生成バージョンを取得してください。
 
-Start by launching Visual Studio 2010. In Visual Studio, select **File -> New -> Project**. In the **Installed Templates** pane, inside the **Visual C#** node, select the **Window** category, and then select **Console Application** from the list. Name the project "ConvertToMahoutInput" and click the **OK** button.
+まず Visual Studio 2010 を起動します。Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** の順に選択します。**[インストールされたテンプレート]** の **[Visual C#]** で **[Windows]** カテゴリを選択し、一覧から **[コンソール アプリケーション]** を選択します。プロジェクト名として「ConvertToMahoutInput」と入力し、**[OK]** をクリックします。
 
-![creating a console application][create-console-app]
+![コンソール アプリケーションの作成][create-console-app]
 
-###Creating a console application
+###コンソール アプリケーションの作成
 
-1. Once the application is created, open the **Program.cs** file and add the following static members to the **Program** class:
+1. アプリケーションが作成されたら、**Program.cs** ファイルを開き、次の静的メンバーを **Program** クラスに追加します。
 
 
 		const char tab = '\u0009';
@@ -56,7 +56,7 @@ Start by launching Visual Studio 2010. In Visual Studio, select **File -> New ->
 		static Dictionary<string, int> songMapping = new Dictionary<string, int>();	
 
 
-2. Next, add the `using System.IO;` statment and fill the **Main** method with the following code:
+2. 次に、`using System.IO;` ステートメントを追加し、**Main** メソッドに次のコードを入力します。
 
 		var inputStream = File.Open(args[0], FileMode.Open);
 		var reader = new StreamReader(inputStream);
@@ -98,7 +98,7 @@ Start by launching Visual Studio 2010. In Visual Studio, select **File -> New ->
 		Console.ReadKey();
 
 
-3. Now create the **GetUser** and **GetSong** functions, which convert the ids to integers:
+3. ここで、ID を整数に変換するための **GetUser** 関数および **GetSong** 関数を作成します。
 
 		static int GetUser(string user)
 		{
@@ -116,7 +116,7 @@ Start by launching Visual Studio 2010. In Visual Studio, select **File -> New ->
     		return songMapping[song];
 		}
 
-4. Finally, create the utility that implements the SaveMapping method that saves bot mapping dictionaries to .csv files.
+4. 最後に、ボット マッピング ディクショナリを .csv ファイルに保存するための SaveMapping メソッドを実装するユーティリティを作成します。
 
 		static void SaveMapping(Dictionary<string, int> mapping, string fileName)
 		{
@@ -133,96 +133,96 @@ Start by launching Visual Studio 2010. In Visual Studio, select **File -> New ->
     		writer.Close();
 		}
 
-5. Download the sample data from [this link](http://labrosa.ee.columbia.edu/millionsong/sites/default/files/challenge/train_triplets.txt.zip). Once downloaded, open **train\_triplets.txt.zip** and extract **train\_triplets.txt**.
+5. サンプル データを[このリンク](http://labrosa.ee.columbia.edu/millionsong/sites/default/files/challenge/train_triplets.txt.zip)からダウンロードします。データをダウンロードしたら、**train\_triplets.txt.zip** を開いて **train\_triplets.txt** を抽出します。
 
-	When running the utility, include a command line argument with the location of **train\_triplets.txt**. To do so, right-click the **ConvertToMahoutInput** project node in **Solution Explorer** and select **Properties**. On the project properties page, select the **Debug** tab on the left side, and add the path of &lt;localpath&gt;train\_triplets.txt to the **Command line arguments** text box:
+	このユーティリティを実行する際、**train\_triplets.txt** の場所をコマンド ライン引数として指定します。そのためには、**ソリューション エクスプローラー**で **ConvertToMahoutInput** プロジェクトを右クリックし、**[プロパティ]** を選択します。プロジェクトのプロパティ ページで、左側の **[デバッグ]** タブを選択し、**[コマンド ライン引数]** ボックスに &lt;ローカル パス&gt;train\_triplets.txt のパスを追加します。
 
-	![setting command line arguments][set-cmd-line-args]
+	![コマンド ライン引数の設定][set-cmd-line-args]
 
-###Setting the Command line argument
+###コマンド ライン引数の設定
 
-- Press **F5** to run the program. Once complete, open the **bin\Debug** folder from the location to which the project was saved, and view the utility's output.  You should find users.txt and mInput.txt
+- **F5** キーを押して、プログラムを実行します。完了したら、プロジェクトを保存した場所から **bin\Debug** フォルダーを開き、ユーティリティの出力を確認します。users.txt と mInput.txt が出力されています。
 
-## <a name="segment2"></a>Installing Mahout 
+## <a name="segment2"></a>Mahout のインストール
 
-- Open the HDInsight cluster portal, and click the **Remote Desktop** icon.
+- HDInsight クラスター ポータルを開き、**[リモート デスクトップ]** アイコンをクリックします。
 
-	![The Manage Cluster Icon][mng-cluster-icon]
+	![[クラスターの管理] アイコン][mng-cluster-icon]
 
-###The Remote Desktop icon
+###[リモート デスクトップ] アイコン
 
-HDInsight does not include Mahout by default. But since it is part of the Hadoop eco-system, it can be download from the  [Mahout](http://mahout.apache.org/) website. The most recent version is at 0.7, but this set of instruction is compatible for either version 0.5 or 0.7.
+既定では、HDInsight には Mahout が含まれていません。しかし、Mahout は Hadoop エコシステムの構成要素なので、[Mahout](http://mahout.apache.org/) の Web サイトからダウンロードできます。最新バージョンは 0.7 ですが、この手順説明はバージョン 0.5 または 0.7 に対応しています。
 
-1. First, download [Mahout version 0.7](http://www.apache.org/dyn/closer.cgi/mahout/) onto your local machine.
+1. まず、[Mahout バージョン 0.7](http://www.apache.org/dyn/closer.cgi/mahout/) をローカル コンピューターにダウンロードします。
 
-2. Then Copy it onto the cluster by selecting the local zip file and press control-v to copy, then paste it in to your Hadoop Cluster.
+2. 次に、ダウンロードした Mahout をクラスターにコピーします。ローカル zip ファイルを選択してコピーし、それを Hadoop クラスターに貼り付けてください (Ctrl キーを押しながら V キーを押します)。
 
-	![Uploading Mahout][uploading-mahout]
+	![Mahout のアップロード][uploading-mahout]
 
-###Copying Mahout to the Headnode
+###Mahout をヘッドノードにコピー
 
-1. Finally right click on the zip file after the copying process is done, extract the Mahout distribution into C:\apps\dist.  You now have mahout installed in C:\apps\dist\mahout-distriution-0.7.  
+1. 最後に、コピーした zip ファイルを右クリックして、Mahout を C:\apps\dist に展開します。これで mahout を C:\apps\dist\mahout-distriution-0.7 にインストールできました。
 
-2. Rename the folder to c:\apps\dist\mahout-0.7 for simplicity.  
+2. 操作を簡単にするため、フォルダー名を「c:\apps\dist\mahout-0.7」に変更します。
 
-### <a name="segment3"></a>Running the Mahout job 
+### <a name="segment3"></a>Mahout ジョブの実行
 
-1. Copy the **mInput.txt** file from the **bin\Debug** folder to **c:\\** on the remote cluster. Once the file is copied, extract it. As mentioned in the previous section, copying a file onto a remote RDP session is by pressing control-C on your local machine after selecting the files, then control-v onto the RDP session Window. 
+1. **bin\Debug** フォルダー内の **mInput.txt** ファイルを、リモート クラスター上の **c:\\** にコピーします。コピーした mInput.txt ファイルを展開します。前のセクションで説明したように、リモート RDP セッションにファイルをコピーするには、ローカル コンピューター上で目的のファイルをコピーし (Ctrl + C キー)、それを RDP セッション ウィンドウに貼り付けます (Ctrl + V キー)。
 
-2. Create a file that contains the ID of the user for whom you will be generating recommendations. To do so, simply create a text file called **users.txt** in **c:\\**, containing the id of a single user.
+2. リコメンデーションの生成対象となるユーザーの ID が含まれたファイルを作成します。そのためには、単一ユーザーの ID が記述された **users.txt** テキスト ファイルを **c:\\** に作成します。
 
 <div class="dev-callout"> 
-<b>Note</b> 
-<p>You can generate recommendations for more users by putting their IDs on separate lines. If you have issues generating mInput.txt and users.txt you may download an pre-generated version at this github <a href="https://github.com/wenming/BigDataSamples/tree/master/mahout">repository</a>. 
+<b>注</b> 
+<p>複数のユーザーを対象にしてリコメンデーションを生成することもできます。その場合は、各ユーザーの ID を別々の行に記述します。mInput.txt と users.txt の作成に問題がある場合は、作成済みのファイルをこの github <a href="https://github.com/wenming/BigDataSamples/tree/master/mahout">リポジトリ</a>からダウンロードできます。
 
-It is the most convenient to download everything as one <a href="https://github.com/wenming/BigDataSamples/archive/master.zip">zip file</a>. Find users.txt and mInput.txt and copy them to the remote cluster in folder c:\</p> 
+すべてのファイルを 1 つの <a href="https://github.com/wenming/BigDataSamples/archive/master.zip">zip ファイル</a> としてダウンロードするのが一番便利です。users.txt と mInput.txt を探し、これらをリモート クラスターの c:\ フォルダーにコピーします。</p> 
 </div>
 
-At this point you should open a Hadoop terminal window and navitate to the folder that contains users.txt and mInput.txt.  
+この時点で、Hadoop ターミナル ウィンドウを開き、users.txt と mInput.txt が保存されているフォルダーへ移動します。
 
-![Mahout command window][mahout-cmd-window]
+![Mahout コマンド ウィンドウ][mahout-cmd-window]
 
-###Hadoop Command Window
+###Hadoop コマンド ウィンドウ
 
-1. Next, copy both **mInput.txt** and **users.txt** to HDFS. To do so, open the **Hadoop Command Shell** and run the following commands:
+1. 次に、**mInput.txt** と **users.txt** の両方を HDFS にコピーします。そのためには、**Hadoop コマンド シェル**を開いて次のコマンドを実行します。
 
 		hadoop dfs -copyFromLocal c:\mInput.txt input\mInput.txt
 		hadoop dfs -copyFromLocal c:\users.txt input\users.txt
 
-2. Verify the files have been copied to HDFS:
+2. 2 つのファイルが HDFS へコピーされたことを確認します。
 
 		hadoop fs -ls input/
 
-	This should show:  
+	次のように表示されます。
 
 		Found 2 items
 		-rwxrwxrwx   1 writer supergroup      53322 2013-03-08 20:32 /user/writer/input/mInput.txt
 		-rwxrwxrwx   1 writer supergroup        353 2013-03-08 20:33 /user/writer/input/users.txt
 
-3. Now we can run the Mahout job using the following command:
+3. これで、次のコマンドを使用して Mahout ジョブを実行できます。
 
 		c:\apps\dist\mahout-0.7\bin>hadoop jar c:\Apps\dist\mahout-0.7\mahout-core-0.7-job.jar org.apache.mahout.cf.taste.hadoop.item.RecommenderJob -s SIMILARITY_COOCCURRENCE --input=input/mInput.txt --output=output --usersFile=input/users.txt
 
-	There are many other "distance" functions that the recommendation engine could use to compare the feature fector for different users, you may experiment and change the Similarity class to SIMILARITY\_COOCCURRENCE, SIMILARITY\_LOGLIKELIHOOD, SIMILARITY\_TANIMOTO\_COEFFICIENT, SIMILARITY\_CITY\_BLOCK, SIMILARITY\_COSINE, SIMILARITY\_PEARSON\_CORRELATION, SIMILARITY\_EUCLIDEAN\_DISTANCE.  For the purpose of this tutorial we will not go into the detailed data science aspect of Mahout. 
+	リコメンデーション エンジンでは、その他多数の "distance" 関数を使用して、さまざまなユーザー特性要因を比較できます (SIMILARITY\_COOCCURRENCE、SIMILARITY\_LOGLIKELIHOOD、SIMILARITY\_TANIMOTO\_COEFFICIENT、SIMILARITY\_CITY\_BLOCK、SIMILARITY\_COSINE、SIMILARITY\_PEARSON\_CORRELATION、SIMILARITY\_EUCLIDEAN\_DISTANCE)。目的に応じて Similarity クラスを変更してください。このチュートリアルでは、Mahout のデータ技術については詳しく取り上げません。
 
-4. The Mahout job should run for several minutes, after which an output file will be created. Run the following command to create a local copy of the output file:
+4. Mahout ジョブが数分間実行され、その後で出力ファイルが作成されます。次のコマンドを実行して、出力ファイルのローカル コピーを作成します。
 
 		hadoop fs -copyToLocal output/part-r-00000 c:\output.txt
 
-5. Open the **output.txt** file from the **c:\\** root folder and inspect its contents. The structure of the file is as follows:
+5. **c:\\** ルート フォルダーから **output.txt** ファイルを開き、内容を調べます。このファイルの構造は次のとおりです。
 
 		user	[song:rating,song:rating, ...]
 
-6. If you would like to use other parts of Mahout on your cluster, you should save a copy of Mahout.cmd in the Mahout distribution's bin directory.  
+6. Mahout の他の機能をクラスター上で使用する場合は、Mahout.cmd のコピーを Mahout の bin ディレクトリに保存します。
 
 
-## <a name="summary"></a>Summary 
+## <a name="summary"></a>まとめ
 
-Recommender engines provide important functionality for many modern social networking sites, online shopping, streaming media, and other internet sites. Mahout provides an out-of-the-box recommendation engine that is easy to use, contains many useful features, and is scalable on Hadoop.
+現在、リコメンデーション エンジンは、ソーシャル ネットワーク サイト、オンライン ショッピング、ストリーミング メディアなど、さまざまなインターネット サイトで重要な役割を果たしています。Mahout はすぐに使用できるリコメンデーション エンジンです。使いやすく、多数の便利な機能を備えており、Hadoop 上での拡張も可能です。
 
-##Next Steps
+##次のステップ
 
-While this article demonstrates using the Hadoop command line, you can also perform tasks using the HDInsight Interactive Console. For more information, see [Guidance: HDInsight Interactive JavaScript and Hive Consoles][interactive-console].
+この記事では Hadoop コマンド ラインを使用しましたが、HDInsight の対話型コンソールを使用してタスクを実行することもできます。詳細については、「[ガイダンス: HDInsight の対話型 JavaScript コンソールと Hive コンソール][interactive-console]」を参照してください。
 
 
 [echo-nest]: ./media/hdinsight-hadoop-recommendation-engine/the-echo-nest-taste-profile-subset.png
@@ -231,3 +231,4 @@ While this article demonstrates using the Hadoop command line, you can also perf
 [mng-cluster-icon]: ./media/hdinsight-hadoop-recommendation-engine/the-manage-cluster-icon.png
 [uploading-mahout]: ./media/hdinsight-hadoop-recommendation-engine/uploading-mahout.PNG
 [mahout-cmd-window]: ./media/hdinsight-hadoop-recommendation-engine/mahout-commandwindow.PNG
+

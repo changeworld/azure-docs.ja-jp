@@ -1,104 +1,104 @@
-<properties linkid="develop-mobile-tutorials-single-sign-on-windows-8-wp8" urlDisplayName="Authenticate with single sign-on" pageTitle="Authenticate your app with Live Connect (Windows Phone) | Mobile Dev Center" metaKeywords="" description="Learn how to use Live Connect single sign-on in Azure Mobile Services from a Windows Phone application." metaCanonical="" services="" documentationCenter="Mobile" title="Authenticate your Windows Phone 8 app with Live Connect single sign-on" authors="glenga" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-tutorials-single-sign-on-windows-8-wp8" urlDisplayName="シングル サインオンによる認証" pageTitle="Live Connect によるアプリケーションの認証 (Windows Phone) | モバイル デベロッパー センター" metaKeywords="" description="Windows Phone アプリケーションから、Azure のモバイル サービスで Live Connect シングル サインオンを使用する方法を示します。" metaCanonical="" services="" documentationCenter="Mobile" title="Live Connect シングル サインオンによる Windows Phone 8 アプリの認証" authors="glenga" solutions="" manager="" editor="" />
 
 
 
 
-# Authenticate your Windows Phone 8 app with Live Connect single sign-on
+# Live Connect シングル サインオンによる Windows Phone 8 アプリケーションの認証
 
 <div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/en-us/develop/mobile/tutorials/single-sign-on-windows-8-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/single-sign-on-windows-8-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/single-sign-on-wp8/" title="Windows Phone" class="current">Windows Phone</a>
+	<a href="/ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-dotnet" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-js" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/develop/mobile/tutorials/single-sign-on-wp8/" title="Windows Phone" class="current">Windows Phone</a>
 </div>	
 
-This topic shows you how to use Live Connect single sign-on to authenticate users in Azure Mobile Services from a Windows Phone 8 app.  In this tutorial, you add authentication to the quickstart project using Live Connect. When successfully authenticated by Live Connect, a logged-in user is welcomed by name and the user ID value is displayed.  
+このトピックでは、Live Connect シングル サインオンを使用して、Windows Phone 8 アプリケーションから Azure のモバイル サービスのユーザーを認証する方法を示します。このチュートリアルでは、Live Connect を使用して、クイック スタート プロジェクトに認証を追加します。Live Connect によって正常に認証されると、ログインしたユーザーの名前が認識され、ユーザー ID 値が表示されます。
 
-<div class="dev-callout"><b>Note</b>
-	<p>This tutorial demonstrates the benefits of using the single sign-on experience provided by Live Connect for Windows Phone apps. This enables you to more easily authenticate an already logged-on user with you mobile service. For a more generalized authentication experience that supports multiple authentication providers, see the topic <a href="/en-us/develop/mobile/tutorials/get-started-with-users-wp8/">Get started with authentication</a>. </p>
+<div class="dev-callout"><b>メモ</b>
+	<p>このチュートリアルでは、Live Connect によって Windows Phone アプリケーションに提供されるシングル サインオンを使用する利点を示します。これにより、モバイル サービスに既にログオンしているユーザーの認証が容易になります。複数の認証プロバイダーをサポートする、より汎用的な認証方法については、「<a href="/ja-jp/develop/mobile/tutorials/get-started-with-users-wp8/">モバイル サービスでの認証の使用</a>」を参照してください。</p>
 </div>
 
-This tutorial walks you through these basic steps to enable Live Connect authentication:
+このチュートリアルでは、Live Connect 認証を有効にするための、次の基本的な手順について説明します。
 
-1. [Register your app for authentication and configure Mobile Services]
-2. [Restrict table permissions to authenticated users]
-3. [Add authentication to the app]
+1. [アプリケーションを認証に登録し、モバイル サービスを構成する]
+2. [テーブルのアクセス許可を、認証されたユーザーだけに制限する]
+3. [アプリケーションに認証を追加する]
 
-This tutorial requires the following:
+このチュートリアルには、次のものが必要です。
 
-+ [Live SDK for Windows and Windows Phone]
++ [Windows および Windows Phone 向け Live SDK]
 + Microsoft Visual Studio 2012 Express for Windows Phone
 
-This tutorial is based on the Mobile Services quickstart. You must also first complete the tutorial [Get started with Mobile Services].
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。先にチュートリアル「[モバイル サービスの使用]」を完了している必要があります。
 
-<h2><a name="register"></a><span class="short-header">Register your app</span>Register your app with Live Connect</h2>
+<h2><a name="register"></a><span class="short-header">アプリケーションの登録</span>アプリケーションを Live Connect に登録する</h2>
 
-To be able to authenticate users, you must register your app at the Live Connect Developer Center. You must then register the client secret to integrate Live Connect with Mobile Services.
+ユーザーを認証できるようにするには、Live Connect デベロッパー センターでアプリケーションを登録する必要があります。その後、クライアント シークレットを登録して Live Connect をモバイル サービスと統合する必要があります。
 
-1. Log on to the [Azure Management Portal], click **Mobile Services**, and then click your mobile service.
+1. [Azure 管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。
 
    	![][4]
 
-2. Click the **Dashboard** tab and make a note of the **Site URL** value.
+2. **[ダッシュボード]** タブをクリックし、**[サイトの URL]** の値をメモしておきます。
 
    	![][5]
 
-    You will use this value to define the redirect domain.
+    後でこの値を使用して、リダイレクト ドメインを定義します。
 
-3. Navigate to the <a href="http://go.microsoft.com/fwlink/p/?LinkId=262039" target="_blank">My Applications</a> page in the Live Connect Developer Center, and log on with your Microsoft account, if required. 
+3. Live Connect デベロッパー センターの<a href="http://go.microsoft.com/fwlink/p/?LinkId=262039" target="_blank">アプリケーション管理</a>のページに移動し、必要な場合は Microsoft アカウントでログオンします。
 
-4. Click **Create application**, then type an **Application name** and click **I accept**.
+4. **[アプリケーションの作成]** をクリックし、**[アプリケーション名]** に名前を入力して、**[同意する]** をクリックします。
 
    	![][1] 
 
-   	This registers the application with Live Connect.
+   	これでアプリケーションが Live Connect に登録されます。
 
-5. Click **Application settings page**, then **API Settings** and make a note of the values of the **Client ID** and **Client secret**. 
+5. **[設定の編集]**、**[API 設定]** の順にクリックし、**[クライアント ID]** と **[クライアント シークレット]** の値を書き留めておきます。
 
    	![][2]
 
-    <div class="dev-callout"><b>Security Note</b>
-	<p>The client secret is an important security credential. Do not share the client secret with anyone or distribute it with your app.</p>
+    <div class="dev-callout"><b>セキュリティに関する注意</b>
+	<p>クライアント シークレットは、重要なセキュリティ資格情報です。クライアント シークレットは、他のユーザーと共有したり、アプリケーションで配信したりしないでください。</p>
     </div>
 
-6. In **Redirect domain**, enter the URL of your mobile service from Step 2, click **Yes** under **Mobile client app**, and then click **Save**.
+6. **[リダイレクト ドメイン]** ボックスに手順 2. で入手したモバイル サービスの URL を入力し、**[モバイル クライアント アプリ]** の **[はい]** をクリックして、**[保存]** をクリックします。
 
-7. Back in the Management Portal, click the **Identity** tab, enter the **Client secret** obtained from Live Connect, and then click **Save**.
+7. 管理ポータルに戻って **[ID]** タブをクリックし、Live Connect から入手した **[クライアント シークレット]** を入力して、**[保存]** をクリックします。
 
    	![][13]
 
-Both your mobile service and your app are now configured to work with Live Connect.
+これで、Live Connect と連携するようにモバイル サービスとアプリケーションが構成されました。
 
-<h2><a name="permissions"></a><span class="short-header">Restrict permissions</span>Restrict permissions to authenticated users</h2>
+<h2><a name="permissions"></a><span class="short-header">アクセス許可の制限</span>アクセス許可を認証されたユーザーだけに制限する</h2>
 
-1. In the Management Portal, click the **Data** tab, and then click the **TodoItem** table. 
+1. 管理ポータルで、**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
    	![][14]
 
-2. Click the **Permissions** tab, set all permissions to **Only authenticated users**, and then click **Save**. This will ensure that all operations against the **TodoItem** table require an authenticated user. This also simplifies the scripts in the next tutorial because they will not have to allow for the possibility of anonymous users.
+2. **[アクセス許可]** タブで、すべてのアクセス許可を **[認証されたユーザーのみ]** に設定し、**[保存]** をクリックします。これにより、**TodoItem** テーブルに対するすべての操作には、認証されたユーザーが必要になります。また、次のチュートリアルのスクリプトは、匿名ユーザーの可能性を考慮する必要がなくなるため、簡素化されます。
 
    	![][15]
 
-3. In Visual Studio 2012 Express for Windows Phone, open the project that you created when you completed the tutorial [Get started with Mobile Services]. 
+3. Visual Studio 2012 Express for Windows Phone で、チュートリアル「[モバイル サービスの使用]」を実行したときに作成したプロジェクトを開きます。
 
-4. Press the F5 key to run this quickstart-based app; verify that an exception with a status code of 401 (Unauthorized) is raised. 
+4. F5 キーを押してこのクイック スタート ベースのアプリケーションを実行します。その結果、状態コード 401 (許可されていません) の例外が発生することを確認します。
    
-   	This happens because the app is accessing Mobile Services as an unauthenticated user, but the _TodoItem_ table now requires authentication.
+   	この問題は、認証されていないユーザーとしてアプリケーションからモバイル サービスにアクセスしているのに、_TodoItem_ テーブルでは認証が要求されるために発生します。
 
-Next, you will update the app to authenticate users with Live Connect before requesting resources from the mobile service.
+次に、モバイル サービスからリソースを要求する前に Live Connect を使用してユーザーを認証するようにアプリケーションを更新します。
 
-<h2><a name="add-authentication"></a><span class="short-header">Add authentication</span>Add authentication to the app</h2>
+<h2><a name="add-authentication"></a><span class="short-header">認証の追加</span>アプリに認証を追加する</h2>
 
-1. Download and install the [Live SDK for Windows and Windows Phone].
+1. [Windows および Windows Phone 向け Live SDK] をダウンロードしてインストールします。
 
-2. In the **Project** menu in Visual Studio, click **Add Reference**, then expand **Assemblies**, click **Extensions**, check **Microsoft.Live**, and then click **OK**. 
+2. Visual Studio で、**[プロジェクト]** メニューの **[参照の追加]** をクリックし、**[アセンブリ]** を展開して、**[拡張]** をクリックします。**[Microsoft.Live]** チェック ボックスをオンにし、**[OK]** をクリックします。
 
    	![][16]
 
-  	This adds a reference to the Live SDK to the project.
+  	これにより、Live SDK への参照がプロジェクトに追加されます。
 
-5. Open the project file mainpage.xaml.cs and add the following using statements:
+5. mainpage.xaml.cs プロジェクト ファイルを開き、次の using ステートメントを追加します。
 
         using Microsoft.Live;      
 
-6. Add the following code snippet to the MainPage class:
+6. MainPage クラスに、次のコード スニペットを追加します。
 	
         private LiveConnectSession session;
         private async System.Threading.Tasks.Task Authenticate()
@@ -128,15 +128,15 @@ Next, you will update the app to authenticate users with Live Connect before req
             }
          }
 
-    This creates a member variable for storing the current Live Connect session and a method to handle the authentication process.
+    これにより、現在の Live Connect セッションを格納するためのメンバー変数と認証プロセスを処理するためのメソッドが作成されます。
 
-7. Update string _<< INSERT CLIENT ID HERE >>_ from the previous step with the client ID value that was generated when you registered your app with Live Connect.
+7. 前の手順に含まれる文字列 _<< INSERT CLIENT ID HERE >>_ を、アプリケーションを Live Connect に登録した際に生成されたクライアント ID 値で更新します。
 
-    <div class="dev-callout"><b>Note</b>
-	<p>In a Windows Phone 8 app, an instance of the <strong>LiveAuthClient</strong> class is created by passing the client ID value to the class constructor. In a <a href="/en-us/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/">Windows Store app</a>, the same class is instantiated by passing the redirect domain URI.</p>
+    <div class="dev-callout"><b>注</b>
+	<p>Windows Phone 8 アプリで、<strong>LiveAuthClient</strong> クラスのインスタンスは、クライアント ID 値をクラス コンストラクターに渡すことによって作成されます。<a href="/ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/">Windows ストア アプリ</a>では、リダイレクト ドメインの URI を渡すことによって、同じクラスのインスタンスが作成されます。</p>
     </div>
 
-8. Delete or comment-out the existing **OnNavigatedTo** method override and replace it with the following method that handles the **Loaded** event for the page. 
+8. 既存の **OnNavigatedTo** メソッド オーバーライドを削除またはコメントアウトして、ページの **Loaded** イベントを処理する次のメソッドに置き換えます。
 
         async void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
@@ -144,9 +144,9 @@ Next, you will update the app to authenticate users with Live Connect before req
             RefreshTodoItems();
         }
 
-   	This method calls the new **Authenticate** method. 
+   	このメソッドでは、新しい **Authenticate** メソッドが呼び出されます。
 
-9. Replace the MainPage constructor with the following code:
+9. MainPage コンストラクターを次のコードに置き換えます。
 
         // Constructor
         public MainPage()
@@ -155,21 +155,21 @@ Next, you will update the app to authenticate users with Live Connect before req
             this.Loaded += MainPage_Loaded;
         }
 
-   	This constructor also registers the handler for the Loaded event.
+   	このコンストラクターでは、Loaded イベントのハンドラーも登録されます。
 		
-9. Press the F5 key to run the app and sign into Live Connect with your Microsoft Account. 
+9. F5 キーを押してアプリケーションを実行し、Microsoft アカウントを使用して Live Connect にサインインします。
 
-   	After you are successfully logged-in, the app runs without errors, and you are able to query Mobile Services and make updates to data.
+   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
 
-## <a name="next-steps"> </a>Next steps
+## <a name="next-steps"> </a>次のステップ
 
-In the next tutorial, [Authorize users with scripts], you will take the user ID value provided by Mobile Services based on an authenticated user and use it to filter the data returned by Mobile Services. For information about how to use other identity providers for authentication, see [Get started with authentication]. 
+[スクリプトを使用したユーザーの認証]に関する次のチュートリアルでは、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。他の ID プロバイダーを認証に使用する方法については、「[モバイル サービスでの認証の使用]」を参照してください。
 
 <!-- Anchors. -->
-[Register your app for authentication and configure Mobile Services]: #register
-[Restrict table permissions to authenticated users]: #permissions
-[Add authentication to the app]: #add-authentication
-[Next Steps]:#next-steps
+[アプリケーションを認証に登録し、モバイル サービスを構成する]: #register
+[テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
+[アプリケーションに認証を追加する]: #add-authentication
+[次のステップ]:#next-steps
 
 <!-- Images. -->
 [1]: ./media/mobile-services-windows-phone-single-sign-on/mobile-services-live-connect-add-app.png
@@ -187,12 +187,13 @@ In the next tutorial, [Authorize users with scripts], you will take the user ID 
 [16]: ./media/mobile-services-windows-phone-single-sign-on/mobile-add-reference-live-wp8.png
 
 <!-- URLs. -->
-[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Live SDK for Windows and Windows Phone]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-wp8
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-wp8
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-wp8
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-wp8
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-wp8
+[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Windows および Windows Phone 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-wp8
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-wp8
+[モバイル サービスでの認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-wp8
+[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-wp8
+[スクリプトを使用したユーザーの認証]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-wp8
 
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+

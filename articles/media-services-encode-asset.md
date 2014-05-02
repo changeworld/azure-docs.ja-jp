@@ -1,13 +1,13 @@
-<properties linkid="develop-media-services-how-to-guides-encode-an-asset" urlDisplayName="How to Encode an Asset" pageTitle="How to Encode an Asset for Media Services - Azure" metaKeywords="" description="Learn how to use the Azure Media Encoder to encode media content on Media Services. Code samples are written in C# and use the Media Services SDK for .NET." metaCanonical="" services="media-services" documentationCenter="" title="How to: Encode an Asset" authors="migree" solutions="" manager="" editor="" />
+<properties linkid="develop-media-services-how-to-guides-encode-an-asset" urlDisplayName="アセットをエンコードする方法" pageTitle="メディア サービス用にアセットをエンコードする方法 - Azure" metaKeywords="" description="Azure メディア エンコーダーを使用してメディア サービスでメディア コンテンツをエンコードする方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" metaCanonical="" services="media-services" documentationCenter="" title="方法: アセットをエンコードする" authors="migree" solutions="" manager="" editor="" />
 
 
-#How to: Encode an Asset
-This article is one in a series introducing Azure Media Services programming. The previous topic was [How to: Get a Media Processor](http://go.microsoft.com/fwlink/?LinkID=301732&ampclcid=0x409).
+#方法: アセットをエンコードする
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[方法: メディア プロセッサを取得する](http://go.microsoft.com/fwlink/?LinkID=301732&ampclcid=0x409)に関するページを参照してください。
 
-For media content on the server, you can encode the content with a number of media encodings and formats using Azure Media Encoder. You can also use an encoder provided by a Media Services partner; third-party encoders are available through the [Azure Marketplace][]. You can specify the details of encoding tasks by using [Encoder Preset][] strings, or by using configuration files. 
+Azure メディア エンコーダーを使用すると、さまざまなメディア エンコーディングと各種の形式でサーバー上のメディア コンテンツをエンコードできます。メディア サービスのパートナーから提供されているエンコーダーを利用することもできます。サードパーティのエンコーダーは [Azure Marketplace][] から入手できます。エンコーディング タスクの詳細を指定するには、[エンコーダー プリセット][]文字列を使用するか、構成ファイルを使用します。
 
-##Encoding to MP4
-The following method uploads a single asset and creates a job to encode the asset to MP4 using the "H264 Broadband 720p" preset which will create a single MP4 using H264 encoding at 720p resolution:
+##MP4 へのエンコード
+次のメソッドは、1 つのアセットをアップロードし、"H264 Broadband 720p" プリセットを使用してそのアセットを MP4 にエンコードするジョブを作成します。このプリセットでは、H264 エンコーディングを 720p 解像度で使用して 1 つの MP4 を作成します。
 <pre><code>
 	static IJob CreateEncodingJob(string inputMediaFilePath, string outputFolder)
 	{
@@ -96,16 +96,16 @@ The following method uploads a single asset and creates a job to encode the asse
     	}
 	}
 </code></pre>
-<h2>Encoding to Smooth Streaming</h2>
-If you want to encode a video to smooth streaming there are two options:
+<h2>スムーズ ストリーミングへのエンコード</h2>
+ビデオをスムーズ ストリーミングにエンコードする場合、次の 2 つのオプションがあります。
 <ul>
-<li> Encode directly to Smooth Streaming </li>
-<li> Encode to MP4 and then convert to Smooth Streaming</li>
+<li> スムーズ ストリーミングに直接エンコードする</li>
+<li> MP4 にエンコードしてからスムーズ ストリーミングに変換する</li>
 </ul>
 
-To encode directly to Smooth Streaming use the code shown above, but use one of the Smooth Streaming encoder presets. For a complete list of encoder presets, see [Task Preset Strings for Azure Media Encoder](http://msdn.microsoft.com/en-us/library/jj129582.aspx). 
+スムーズ ストリーミングに直接エンコードするには、先に示したコードを使用しますが、スムーズ ストリーミング エンコーダー プリセットの 1 つを使用します。エンコーダー プリセットの完全な一覧については、「[Media Services Encoder システムのプリセット](http://msdn.microsoft.com/ja-jp/library/jj129582.aspx)」を参照してください。
 
-To convert an MP4 to Smooth Streaming, use the Azure Media Packager. The Azure Media Packager does not support string presets so you must specify configuration options in XML. The XML required to convert MP4 to Smooth Streaming can be found at [Task Preset for Azure Media Packager][]. Copy and paste the XML to a file named MediaPackager_MP4ToSmooth.xml in your project. The following code illustrates how to convert an MP4 asset to Smooth Streaming. The method below takes an existing asset and converts it to. 
+MP4 に変換してからスムーズ ストリーミングに変換するには、Azure Media Packager を使用します。Azure Media Packager では、文字列プリセットがサポートされないため、構成オプションを XML で指定する必要があります。MP4 をスムーズ ストリーミングに変換するために必要な XML については、「[Azure Media Packager のタスク プリセット][]」を参照してください。XML をコピーし、プロジェクト内の MediaPackager_MP4ToSmooth.xml という名前のファイルに貼り付けます。次のコードは、MP4 アセットをスムーズ ストリーミングに変換する方法を示しています。次のメソッドに既存のアセットを指定すると、そのアセットが変換されます。
 <pre><code>
 private static IJob ConvertMP4toSmooth(IAsset assetToConvert, string configFilePath)
  {
@@ -144,19 +144,20 @@ private static IJob ConvertMP4toSmooth(IAsset assetToConvert, string configFileP
 }
 </code></pre>
 
-For more information about processing assets, see:
+アセットの処理の詳細については、以下を参照してください。
 <ul>
-<li><a href="http://msdn.microsoft.com/en-us/library/jj129580.aspx">Process Assets with the Media Services SDK for .NET</a></li>
-<li><a href="http://msdn.microsoft.com/en-us/library/jj129574.aspx">Process Assets with the Media Services REST API</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/jj129580.aspx">Media Services SDK for .NET を使って資産を処理する</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/jj129574.aspx">Media Services REST API を使って資産を処理する</a></li>
 </ul>
 
-##Next Steps
-Now that you know how to create a job to encode an assset, go to the [How To Check Job Progress with Media Services](http://go.microsoft.com/fwlink/?LinkID=301737&ampclcid=0x409) topic.
+##次のステップ
+これで、ジョブを作成してアセットをエンコードする方法を学習できました。次は、[メディア サービスでジョブの進行状況をチェックする方法](http://go.microsoft.com/fwlink/?LinkID=301737&ampclcid=0x409)に関するトピックに進みます。
 
 [Azure Marketplace]: https://datamarket.azure.com/
-[Encoder Preset]: http://msdn.microsoft.com/en-us/library/hh973610.aspx
-[How to: Get a Media Processor Instance]:http://go.microsoft.com/fwlink/?LinkId=301732
-[How to: Upload an Encrypted Asset]:http://go.microsoft.com/fwlink/?LinkId=301733
-[How to: Deliver an Asset by Download]:http://go.microsoft.com/fwlink/?LinkId=301734
-[How to Check Job Progress]:http://go.microsoft.com/fwlink/?LinkId=301737
-[Task Preset for Azure Media Packager]:http://msdn.microsoft.com/en-us/library/windowsazure/hh973635.aspx
+[エンコーダー プリセット]: http://msdn.microsoft.com/ja-jp/library/hh973610.aspx
+[方法: メディア プロセッサ インスタンスを取得する]:http://go.microsoft.com/fwlink/?LinkId=301732
+[方法: 暗号化されたアセットをアップロードする]:http://go.microsoft.com/fwlink/?LinkId=301733
+[方法: ダウンロードによってアセットを配信する]:http://go.microsoft.com/fwlink/?LinkId=301734
+[ジョブの進行状況をチェックする方法]:http://go.microsoft.com/fwlink/?LinkId=301737
+[Azure Media Packager のタスク プリセット]:http://msdn.microsoft.com/ja-jp/library/windowsazure/hh973635.aspx
+

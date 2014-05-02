@@ -1,88 +1,88 @@
-<properties linkid="manage-services-mediaservices-manage-media-services-content" urlDisplayName="How to manage media content" pageTitle="How to manage media content - Azure Media Services" metaKeywords="" description="Learn how to manage your media content in Azure Media Services." metaCanonical="" services="media-services" documentationCenter="" title="How to Manage Content in Media Services" authors="migree" solutions="" manager="" editor="" />
+<properties linkid="manage-services-mediaservices-manage-media-services-content" urlDisplayName="メディア コンテンツの管理方法" pageTitle="メディア コンテンツの管理方法 - Azure メディア サービス" metaKeywords="" description="Azure メディア サービスでメディア コンテンツを管理する方法について説明します。" metaCanonical="" services="media-services" documentationCenter="" title="メディア サービスでのコンテンツの管理方法" authors="migree" solutions="" manager="" editor="" />
 
 
 
 
 
-# How to Manage Content in Media Services #
-The Azure Media Services content view allows you to manage media content for your Media Services account.
+# メディア サービスのコンテンツの管理方法に関するページ#
+Azure メディア サービスのコンテンツ ビューを利用して、メディア サービス アカウントのメディア コンテンツを管理できます。
 
-Currently you can perform the following content operations directly from the portal:
+現在は、次のコンテンツ操作をポータルから直接実行できます。
 
-- View content information like published state, published URL, size, and datetime of last update.
-- Upload new content
-- Encode content
-- Play content video
-- Publish/Unpublish content
-- Delete content
-
-
-## How to: Upload content ##
+- コンテンツ情報の表示 (公開状態、公開 URL、サイズ、日付、最終更新日時など) を表示することもできます。
+- 新しいコンテンツのアップロード
+- コンテンツのエンコード
+- コンテンツ ビデオの再生
+- コンテンツの発行および発行の取り消し
+- コンテンツの削除
 
 
-1. In the [Management Portal](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409), click **Media Services** and then click on the Media Services account name.
-2. Select the CONTENT page. 
-3. Click the **Upload** button on the page or at the bottom of the portal. 
-4. In the **Upload content** dialog, browse to the desired asset file. Click the file and then click **Open** or press **Enter**.
+## 方法: コンテンツをアップロードする##
+
+
+1. [管理ポータル](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409)で、**[メディア サービス]** をクリックし、目的のメディア サービス アカウント名をクリックします。
+2. [コンテンツ] ページを選択します。
+3. ページまたはポータルの下部にある **[アップロード]** をクリックします。
+4. **[コンテンツのアップロード]** ダイアログで、目的のアセット ファイルを見つけます。ファイルをクリックして、**[開く]** をクリックするか、**Enter** キーを押します。
 
 	![UploadContentDialog][uploadcontent]
 
-5. In the Upload Content dialog, click the check button to accept the File and Content Name.
-6. The upload will start and you can track progress from the bottom of the portal.  
+5. [コンテンツのアップロード] ダイアログで、チェック ボタンをクリックして、ファイル名とコンテンツ名をそのまま使用します。
+6. アップロードが開始され、進捗状況はポータルの下部で確認できます。
 
 	![JobStatus][status]
 
-Once the upload has completed, you will see the new asset listed in the Content list. By convention the name will have "**-Source**" appended at the end to help track new content as source content for encoding tasks.
+アップロードが完了すると、コンテンツ一覧に新しいアセットが表示されます。通常、名前の末尾に "**-Source**" が付加され、エンコード タスクのソース コンテンツとして新しいコンテンツを見つけやすくなっています。
 
-If the file size value does not get updated after the uploading process stops, press the **Sync Metadata** button. This synchronizes the asset file size with the actual file size in storage and refreshes the value on the Content page.	
+アップロード処理が終了してもファイル サイズの値が更新されない場合は、**[メタデータの同期]** をクリックします。これによりアセットのファイル サイズがストレージの実際のファイル サイズと同期され、[コンテンツ] ページに表示される値が更新されます。	
 
 
-## How to: Encode content
+##方法: コンテンツをエンコードする
 
-1. In the [Management Portal](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409), click **Media Services** and then click on the Media Services account name. 
-2. Click the CONTENT page at the top of the page.
-3. Click on the desired source video for the encoding job, and then click **Encode** at the bottom of the page.
-4. In the Azure Media Encoder dialog, choose from one of the common or advanced encoding presets.
+1. [管理ポータル](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409)で、**[メディア サービス]** をクリックし、目的のメディア サービス アカウント名をクリックします。
+2. ページの上部にある [コンテンツ] ページをクリックします。
+3. エンコード ジョブで使用する目的のソース ビデオをクリックし、ページの下部にある **[エンコード]** をクリックします。
+4. [Azure メディア エンコーダー] ダイアログで、主なプリセットまたは詳細なプリセットからエンコードを 1 つ選択します。
 
-	**Common Presets**
+	**主なプリセット**
 
-	+ Playback on PC/Mac (via Flash/Silverlight)**. This preset produces a Smooth Streaming asset with the following characteristics: 44.1 kHz 16 bits/sample stereo audio CBR encoded at 96 kbps using AAC, and 720p video CBR encoded at 6 bitrates ranging from 3400 kbps to 400 kbps using H.264 Main Profile, and two second GOPs.
-	+ Playback via HTML5 (IE/Chrome/Safari)**. This preset produces a single MP4 file with the following characteristics: 44.1 kHz 16 bits/sample stereo audio CBR encoded at 128 kbps using AAC, and 720p video CBR encoded at 4500 kbps using H.264 Main Profile.
-	+ Playback on iOS devices and PC/Mac**. This preset produces an asset with the same characteristics as the Smooth Streaming asset (described above), but in a format that can be used to deliver Apple HLS streams to iOS devices. 
+	+ [PC/Mac での再生 (Flash/Silverlight を使用)]**。このプリセットは、次のような特徴を持つスムーズ ストリーミング アセットを作成します。AAC を使用して 96 kbps で CBR エンコードされた 44.1 kHz 16 ビット/サンプルのステレオ オーディオ、および H.264 Main Profile を使用して 3400 ～ 400 kbps の範囲で 6 ビットレートで CBR エンコードされた 720p ビデオ、および 2 秒の GOP。
+	+ [HTML5 (IE/Chrome/Safari) を使用した再生]**。このプリセットは、次のような特徴を持つ単一の MP4 ファイルを作成します。AAC を使用して 128 kbps で CBR エンコードされた 44.1 kHz 16 ビット/サンプルのステレオ オーディオ、および H.264 Main Profile を使用して 4500 kbps で CBR エンコードされた 720p ビデオ。
+	+ [iOS デバイスおよび PC/Mac での再生]**。このプリセットは、スムーズ ストリーミング アセット (上述) と同じ特徴を持つアセットを作成しますが、Apple HLS ストリームを iOS デバイスに配信するときに使用できる形式で作成します。
 
-	**Advanced Presets**
+	**詳細なプリセット**
 	
-	+ The [Task Preset Strings for Azure Media Encoder](http://go.microsoft.com/fwlink/?LinkId=270865) topic explains what each prest in the Advanced Presets list means. 
+	+ 「[Azure Media Encoder 用のタスク プリセット文字列](http://go.microsoft.com/fwlink/?LinkId=270865)」で [詳細なプリセット] ボックスの各プリセットの意味が説明されています。
 
 
 	![EncoderDialog][encoder]
 
-	Currently, the portal does not support all the encoding formats that are supported by the Media Encoder. It also does not support media asset encryption\decryption. You can perform these tasks programmatically, for more information see [Building Applications with the Media Services SDK for .NET](http://go.microsoft.com/fwlink/?LinkId=270866) and [Task Preset Strings for Azure Media Encoder](http://go.microsoft.com/fwlink/?LinkId=270865).
+	現在、ポータルではメディア エンコーダーがサポートするエンコード形式がすべてサポートされているわけではありません。また、メディア アセットの暗号化と復号化もサポートされていません。このようなタスクはプログラムによって実行できます。詳細については、「[Media Services SDK for .NET を使用したアプリケーション構築](http://go.microsoft.com/fwlink/?LinkId=270866)」および「[Azure Media Encoder 用のタスク プリセット文字列](http://go.microsoft.com/fwlink/?LinkId=270865)」を参照してください。
 
 
-5. In the Azure Media Encoder dialog, enter the desired friendly output content name or accept the default. Then click the check button to start the encoding operation and you can track progress from the bottom of the portal.
+5. [Azure メディア エンコーダー] ダイアログで、わかりやすい出力コンテンツ名を入力するか、既定値をそのまま使用します。チェック ボタンをクリックすると、エンコード処理が開始され、進捗状況はポータルの下部で確認できます。
 
-After the encoding is done, your view should look similar to the screen shot below. 
+エンコードが終了すると、ビューは下図のようになります。
 
 	![PortalViewUploadCompleted][portaloverview]
 
 
-If the file size value does not get updated after the encoding is done, press the **Sync Metadata** button. This synchronizes the output asset file size with the actual file size in storage and refreshes the value on the Content page.	
+エンコードが終了してもファイル サイズの値が更新されない場合は、**[メタデータの同期]** をクリックします。これにより出力アセットのファイル サイズがストレージの実際のファイル サイズと同期され、[コンテンツ] ページに表示される値が更新されます。	
 
-## How to: Publish content
+##方法: コンテンツを発行する
 
-1. In the [Management Portal](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409), click **Media Services** and then click on the Media Services account name.
-2. Click the CONTENT page at the top of the page.
-3. Click an asset which is not published. The click the publish button to publish to a public URL. Once the content is published to a URL, the URL can be opened by a client player capable of rendering the encoded content.
+1. [管理ポータル](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409)で、**[メディア サービス]** をクリックし、目的のメディア サービス アカウント名をクリックします。
+2. ページの上部にある [コンテンツ] ページをクリックします。
+3. 発行されていないアセットをクリックします。[発行] をクリックしてパブリック URL に発行します。コンテンツが URL に発行されると、エンコードされたコンテンツを描画できるクライアント プレーヤーでその URL を開くことができるようになります。
 
  ![PublishedContent][publishedcontent]
 
-## How to: Play content from the portal
+##方法: ポータルでコンテンツを再生する
 
 
-1. In the [Management Portal](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409), click **Media Services** and then click on the Media Services account name.
-2. Click the CONTENT page at the top of the page.
-3. Click on the desired video content and click the **Play** button at the bottom of the portal. Only content that has been published is playable from the portal. Also, the encoding must be supported by your browser.
+1. [管理ポータル](http://go.microsoft.com/fwlink/?LinkID=256666&clcid=0x409)で、**[メディア サービス]** をクリックし、目的のメディア サービス アカウント名をクリックします。
+2. ページの上部にある [コンテンツ] ページをクリックします。
+3. 目的のビデオ コンテンツをクリックし、ポータルの下部にある **[再生]** をクリックします。ポータルから再生できるのは、発行されたコンテンツだけです。また、エンコード方法がブラウザーでサポートされている必要があります。
 
 
 <!-- Images -->
@@ -93,3 +93,5 @@ If the file size value does not get updated after the encoding is done, press th
 
 
 [encoder]: ./media/media-services-manage-content/EncoderDialog2.png
+
+

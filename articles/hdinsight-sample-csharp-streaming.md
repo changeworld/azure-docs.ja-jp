@@ -1,60 +1,60 @@
-<properties linkid="manage-services-hdinsight-sample-csharp-streaming" urlDisplayName="HDInsight Samples" pageTitle="The HDInsight C# streaming wordcount sample | Azure" metaKeywords="hdinsight, hdinsight administration, hdinsight administration azure" description="Learn how to run a sample TBD." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="The HDInsight C# streaming wordcount sample" authors="bradsev" />
+<properties linkid="manage-services-hdinsight-sample-csharp-streaming" urlDisplayName="HDInsight のサンプル" pageTitle="HDInsight C# ストリーミング ワードカウント サンプル | Azure" metaKeywords="hdinsight, hdinsight の管理, hdinsight の管理と azure" description="サンプル TBD を実行する方法を説明します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="HDInsight C# ストリーミング ワードカウント サンプル" authors="bradsev" />
 
-# The HDInsight C# streaming wordcount sample
+# HDInsight C# ストリーミング ワードカウント サンプル
  
-Hadoop provides a streaming API to MapReduce that enables you to write map and reduce functions in languages other than Java. This tutorial shows how to write MapReduce progams in C# that uses the Hadoop streaming interface and how to run the programs on Azure HDInsight using Azure  PowerShell. 
+Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語 map 関数と reduce 関数を記述することができます。このチュートリアルでは、Hadoop ストリーミング インターフェイスを使用する MapReduce プログラムを C# で記述する方法、および Azure PowerShell を使用して Azure HDInsight でプログラムを実行する方法を紹介します。
 
-In the example, both the mapper and the reducer are executables that read the input from [stdin][stdin-stdout-stderr] (line by line) and emit the output to [stdout][stdin-stdout-stderr]. The program counts all of the words in the text.
+この例では、mapper と reducer はどちらも [stdin][stdin-stdout-stderr] から入力を (1 行ずつ) 読み取り、出力を [stdout][stdin-stdout-stderr] に書き込む実行可能ファイルです。プログラムはテキスト内の単語すべての出現数を計算します。
 
-When an executable is specified for **mappers**, each mapper task launches the executable as a separate process when the mapper is initialized. As the mapper task runs, it converts its inputs into lines and feeds the lines to the [stdin][stdin-stdout-stderr] of the process. In the meantime, the mapper collects the line-oriented outputs from the stdout of the process and converts each line into a key/value pair, which is collected as the output of the mapper. By default, the prefix of a line up to the first tab character is the key and the rest of the line (excluding the tab character) is the value. If there is no tab character in the line, then entire line is considered as key and the value is null. 
+**mapper** 用の実行可能ファイルが指定されると、各 mapper タスクは mapper 開始時に別のプロセスとしてその実行可能ファイルを起動します。mapper タスクは実行されると、入力を行に変換して、その行をプロセスの [stdin][stdin-stdout-stderr] にフィードします。一方、mapper はプロセスの stdout から行指向の出力を収集して、各行をキーと値のペアに変換します。これが mapper の出力として収集されます。既定では、行の最初のタブ文字までがキーであり、行の残り (タブ文字を除く) がデータです。行にタブ文字がない場合は、行全体がキーと見なされ、値は null になります。
 
-When an executable is specified for **reducers**, each reducer task launches the executable as a separate process when the reducer is initialized. As the reducer task runs, it converts its input key/values pairs into lines and feeds the lines to the [stdin][stdin-stdout-stderr] of the process. In the meantime, the reducer collects the line-oriented outputs from the [stdout][stdin-stdout-stderr] of the process, converts each line into a key/value pair, which is collected as the output of the reducer. By default, the prefix of a line up to the first tab character is the key and the rest of the line (excluding the tab character) is the value. 
+**reducer** 用の実行可能ファイルが指定されると、各 reducer タスクは reducer 開始時に別のプロセスとしてその実行可能ファイルを起動します。reducer タスクは実行されると、入力のキーと値のペアを行に変換して、その行をプロセスの [stdin][stdin-stdout-stderr] にフィードします。一方、reducer はプロセスの [stdout][stdin-stdout-stderr] から行指向の出力を収集して、各行をキーと値のペアに変換します。これが reducer の出力として収集されます。既定では、行の最初のタブ文字までがキーであり、行の残り (タブ文字を除く) がデータです。
 
-For more information on the Hadoop streaming interface, see [Hadoop Streaming][hadoop-streaming]. 
+Hadoop ストリーミング インターフェイスの詳細については、[Hadoop ストリーミングに関するサイト][hadoop-streaming]を参照してください。
  
-**You will learn:**	
+**学習内容:**	
 	
-* How to use Azure PowerShell to run a C# streaming program to analyze data contained in a file on HDInsight.		
-* How to write C# code that uses the Hadoop Streaming interface.
+* Azure PowerShell を使用して C# ストリーミング プログラムを実行し、ファイルに含まれるデータを HDInsight で分析する方法。		
+* Hadoop ストリーミング インターフェイスを使用する C# コードの記述方法。
 
 
-**Prerequisites**:	
+**前提条件**:	
 
-- You must have an Azure Account. For options on signing up for an account see [Try Azure out for free](http://www.windowsazure.com/en-us/pricing/free-trial/) page.
+- Azure アカウントが必要です。アカウントにサインアップする方法については、[Azure の無料評価版のページ](http://www.windowsazure.com/ja-jp/pricing/free-trial/)を参照してください。
 
-- You must have provisioned an HDInsight cluster. For instructions on the various ways in which such clusters can be created, see [Provision HDInsight Clusters](/en-us/manage/services/hdinsight/provision-hdinsight-clusters/)
+- HDInsight クラスターのプロビジョニングを終えている必要があります。クラスターを作成するさまざまな方法については、「[HDInsight クラスターのプロビジョニング](/ja-jp/manage/services/hdinsight/provision-hdinsight-clusters/)」を参照してください。
 
-- You must have installed Azure PowerShell, and have configured them for use with your account. For instructions on how to do this, see [Install and configure Azure PowerShell][powershell-install-configure].
+- Azure PowerShell をインストールして、アカウントを使用するように構成している必要があります。その手順については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」を参照してください。
 
 
-##In this article
-This topic shows you how to run the sample, presents the Java code for the MapReduce program, summarizes what you have learned, and outlines some next steps. It has the following sections.
+##このトピックでは、
+サンプルを実行する方法を説明し、MapReduce プログラムの Java コードを示し、説明した内容をまとめ、次の手順の概略を示します。ここで取り上げる内容は次のとおりです。
 	
-1. [Run the sample with Azure PowerShell](#run-sample)	
-2. [The C# code for Hadoop Streaming](#java-code)
-3. [Summary](#summary)	
-4. [Next steps](#next-steps)	
+1. [Azure PowerShell を使用したサンプルの実行](#run-sample)	
+2. [Hadoop ストリーミングの C# コード](#java-code)
+3. [まとめ](#summary)	
+4. [次のステップ](#next-steps)	
 
-<h2><a id="run-sample"></a>Run the sample with Azure PowerShell</h2>
+<h2><a id="run-sample"></a>Azure PowerShell を使用したサンプルの実行</h2>
 
-**To run the MapReduce job**
+**MapReduce ジョブを実行するには**
 
-1.	Open **Azure PowerShell**. For instructions of opening Azure PowerShell console window, see [Install and configure Azure PowerShell][powershell-install-configure].
+1.	**Azure PowerShell** を開きます。Azure PowerShell コンソール ウィンドウを開く手順については、[Azure PowerShell のインストールと構成に関するページ][powershell-install-configure]を参照してください。
 
-3. Set the two variables in the following commands, and then run them:
+3. 次のコマンドを実行して、2 つの変数を設定します。
 		
 		$subscriptionName = "<SubscriptionName>"   # Azure subscription name
 		$clusterName = "<ClusterName>"             # HDInsight cluster name
 
 
-2. Run the following command to define the MapReduce job.
+2. 次のコマンドを実行して、MapReduce ジョブを定義します。
  
 		# Create a MapReduce job definition for the streaming job.
 		$streamingWC = New-AzureHDInsightStreamingMapReduceJobDefinition -Files "/example/apps/wc.exe", "/example/apps/cat.exe" -InputPath "/example/data/gutenberg/davinci.txt" -OutputPath "/example/data/StreamingOutput/wc.txt" -Mapper "cat.exe" -Reducer "wc.exe" 
 
-	The parameters specify the mapper and reducer functions and the input file and output files.
+	パラメーターは mapper 関数と reducer 関数、入力ファイルと出力ファイルを指定します。
                  
-5. Run the following commands to run the MapReduce job, wait for the job to complete, and then print the standard error:
+5. 次のコマンドを実行して、MapReduce ジョブを実行し、ジョブの完了を待ち、標準エラーを出力します。
 
 		# Run the C# Streaming MapReduce job.
 		# Wait for the job to complete.
@@ -62,12 +62,11 @@ This topic shows you how to run the sample, presents the Java code for the MapRe
 		Select-AzureSubscription $subscriptionName
 		$streamingWC | Start-AzureHDInsightJob -Cluster $clustername | Wait-AzureHDInsightJob -WaitTimeoutInSeconds 3600 | Get-AzureHDInsightJobOutput -Cluster $clustername -StandardError 
 
-6. Run the following commands to display the results of the word count.
+6. 次のコマンドを実行して、ワード カウントの結果を表示します。
 
 		$subscriptionName = "<SubscriptionName>"   
 		$storageAccountName = "<StorageAccountName>" 
-		$containerName = "<ContainerName>
-      "
+		$containerName = "<ContainerName>"
 
 		# Select the current subscription
 		Select-AzureSubscription $subscriptionName
@@ -82,11 +81,11 @@ This topic shows you how to run the sample, presents the Java code for the MapRe
 		# The number of words in the text is:
 		cat ./example/data/StreamingOutput/wc.txt/part-00000
 
-	Note that the output files of a MapReduce job are immutable. So if you rerun this sample you will need to change the name of the output file.
+	MapReduce ジョブの出力ファイルは不変であることに注意してください。そのため、このサンプルを再実行する場合は、出力ファイルの名前を変更する必要があります。
 	
-<h2><a id="java-code"></a>The C# code for Hadoop Streaming</h2>
+<h2><a id="java-code"></a>Hadoop ストリーミングの C# コード</h2>
 
-The MapReduce program uses the cat.exe application as a mapping interface to stream the text into the console and wc.exe application as the reduce interface to count the number of words that are streamed from a document. Both the mapper and reducer read characters, line by line, from the standard input stream (stdin) and write to the standard output stream (stdout). 
+MapReduce プログラムでは、cat.exe アプリケーションを map インターフェイスとして使ってコンソールにテキストをストリーミングし、wc.exe アプリケーションを reduce インターフェイスとして使って、文書からストリーミングされた単語の数を計算します。mapper と reducer はどちらも標準入力ストリーム (stdin) から 1 行ずつ文字を読み取って、標準出力ストリーム (stdout) に書き込みます。
 
 
 
@@ -117,7 +116,7 @@ The MapReduce program uses the cat.exe application as a mapping interface to str
 
  
 
-The mapper code in the cat.cs file uses a StreamReader object to read the characters of the incoming stream into the console, which in turn writes the stream to the standard output stream with the static Console.Writeline method.
+cat.cs ファイルの mapper コードは、StreamReader オブジェクトを使用して入力ストリームの文字をコンソールに読み取り、次にコンソールが静的な Console.Writeline メソッドを使用してストリームを標準出力ストリームに書き込みます。
 
 
 	// The source code for wc.exe (Reducer) is:
@@ -148,39 +147,40 @@ The mapper code in the cat.cs file uses a StreamReader object to read the charac
 	}
 
 
-The reducer code in the wc.cs file uses a [StreamReader][streamreader]   object to read characters from the standard input stream that have been output by the cat.exe mapper. As it reads the characters with the [Console.Writeline][console-writeline] method, it counts the words by counting space and end-of-line characters at the end of each word, and then it writes the total to the standard output stream with the [Console.Writeline][console-writeline] method. 
+wc.cs ファイルの reducer コードは、[StreamReader][streamreader] オブジェクトを使用して、mapper の cat.exe によって出力された標準入力ストリームから文字を読み取ります。[Console.Writeline][console-writeline] メソッドを使用して文字を読み取ると、各単語の末尾にある空白および改行文字をカウントして、[Console.Writeline][console-writeline] メソッドを使用して合計を標準出力ストリームに書き込みます。
 
-<h2><a id="summary"></a>Summary</h2>
+<h2><a id="summary"></a>まとめ</h2>
 
-In this tutorial, you saw how to deploy a MapReduce job on HDInsight using Hadoop Streaming.
+このチュートリアルでは、Hadoop ストリーミングを使用して HDInsight で MapReduce ジョブをデプロイする方法を説明しました。
 
-<h2><a id="next-steps"></a>Next steps</h2>
+<h2><a id="next-steps"></a>次のステップ</h2>
 
-For tutorials running other samples and providing instructions on using Pig, Hive, and MapReduce jobs on Azure HDInsight with Azure PowerShell, see the following topics:
+Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実行するチュートリアルや、Pig、Hive、MapReduce の使用方法に関するチュートリアルについては、次のトピックを参照してください。
 
-* [Get started with Azure HDInsight][getting-started]
-* [Sample: Pi Estimator][pi-estimator]
-* [Sample: Wordcount][wordcount]
-* [Sample: 10GB GraySort][10gb-graysort]
-* [Use Pig with HDInsight][pig]
-* [Use Hive with HDInsight][hive]
-* [Azure HDInsight SDK documentation][hdinsight-sdk-documentation]
+* [Azure HDInsight の概要][getting-started]
+* [サンプル: Pi 推定][pi-estimator]
+* [サンプル: ワードカウント][wordcount]
+* [サンプル: 10 GB GraySort][10gb-graysort]
+* [HDInsight での Pig の使用][pig]
+* [HDInsight での Hive の使用][hive]
+* [Azure HDInsight SDK のドキュメント][hdinsight-sdk-documentation]
 
-[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/en-us/library/dn479185.aspx
+[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/ja-jp/library/dn479185.aspx
 
-[Powershell-install-configure]: /en-us/documentation/articles/install-configure-powershell/
+[Powershell-install-configure]: /ja-jp/documentation/articles/install-configure-powershell/
 
 
-[getting-started]: /en-us/manage/services/hdinsight/get-started-hdinsight/
+[getting-started]: /ja-jp/manage/services/hdinsight/get-started-hdinsight/
 [hadoop-streaming]: http://wiki.apache.org/hadoop/HadoopStreaming
-[streamreader]: http://msdn.microsoft.com/en-us/library/system.io.streamreader.aspx
-[console-writeline]: http://msdn.microsoft.com/en-us/library/system.console.writeline
-[stdin-stdout-stderr]: http://msdn.microsoft.com/en-us/library/3x292kth(v=vs.110).aspx
-[pi-estimator]: /en-us/manage/services/hdinsight/howto-run-samples/sample-pi-estimator/
-[wordcount]: /en-us/manage/services/hdinsight/howto-run-samples/sample-wordcount/
-[10gb-graysort]: /en-us/manage/services/hdinsight/howto-run-samples/sample-10gb-graysort/
+[streamreader]: http://msdn.microsoft.com/ja-jp/library/system.io.streamreader.aspx
+[console-writeline]: http://msdn.microsoft.com/ja-jp/library/system.console.writeline
+[stdin-stdout-stderr]: http://msdn.microsoft.com/ja-jp/library/3x292kth(v=vs.110).aspx
+[pi-estimator]: /ja-jp/manage/services/hdinsight/howto-run-samples/sample-pi-estimator/
+[wordcount]: /ja-jp/manage/services/hdinsight/howto-run-samples/sample-wordcount/
+[10gb-graysort]: /ja-jp/manage/services/hdinsight/howto-run-samples/sample-10gb-graysort/
 
 
-[hive]: /en-us/manage/services/hdinsight/using-hive-with-hdinsight/
-[pig]: /en-us/manage/services/hdinsight/using-pig-with-hdinsight/
+[hive]: /ja-jp/manage/services/hdinsight/using-hive-with-hdinsight/
+[pig]: /ja-jp/manage/services/hdinsight/using-pig-with-hdinsight/
+
 

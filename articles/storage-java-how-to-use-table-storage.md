@@ -1,73 +1,71 @@
-<properties linkid="dev-java-how-to-use-table-storage" urlDisplayName="Table Service" pageTitle="How to use table storage (Java) | Microsoft Azure" metaKeywords="Azure table storage service, Azure table service Java, table storage Java" description="Learn how to use the table storage service in Azure. Code samples are written in Java code." metaCanonical="" services="storage" documentationCenter="Java" title="How to use the Table storage service from Java" authors="" solutions="" manager="" editor="" />
+<properties linkid="dev-java-how-to-use-table-storage" urlDisplayName="テーブル サービス" pageTitle="テーブル ストレージの使用方法 (Java) | Microsoft Azure" metaKeywords="Azure テーブル ストレージ サービス, Azure テーブル サービス Java, テーブル ストレージ Java" description="Azure でのテーブル ストレージ サービスの使用方法について説明します。コード サンプルは Java で記述されています。" metaCanonical="" services="storage" documentationCenter="Java" title="Java からテーブル ストレージ サービスを使用する方法" authors="" solutions="" manager="" editor="" />
 
 
-# How to use the Table storage service from Java
+# Java からテーブル ストレージ サービスを使用する方法
 
-This guide will show you how to perform common scenarios using the
-Azure Table storage service. The samples are written in Java
-code. The scenarios covered include **creating and deleting a table,
-inserting and querying entities in a table**. For more information on
-tables, see the [Next steps](#NextSteps) section.
+このガイドでは、Azure テーブル ストレージ サービスを使用して
+一般的なシナリオを実行する方法について説明します。コード サンプルは Java で
+記述されています。紹介するシナリオは、**テーブルの作成と削除、
+テーブルのエンティティの挿入とクエリ実行**などです。テーブルの詳細については、
+「[次のステップ](#NextSteps)」を参照してください。
 
-## <a name="Contents"> </a>Table of Contents
+## <a name="Contents"> </a>目次
 
-* [What is Table Storage](#what-is)
-* [Concepts](#Concepts)
-* [Create an Azure storage account](#CreateAccount)
-* [Create a Java application](#CreateApplication)
-* [Configure your application to access Table Storage](#ConfigureStorage)
-* [Setup an Azure storage connection string](#ConnectionString)
-* [How to: Create a table](#CreateTable)
-* [How to: Add an entity to a table](#AddEntity)
-* [How to: Insert a batch of entities](#InsertBatch)
-* [How to: Retrieve all entities in a partition](#RetrieveEntities)
-* [How to: Retrieve a range of entities in a partition](#RetrieveRange)
-* [How to: Retrieve a single entity](#RetriveSingle)
-* [How to: Modify an entity](#ModifyEntity)
-* [How to: Query a sbset of entity properties](#QueryProperties)
-* [How to: Insert-or-replace an entity](#InsertOrReplace)
-* [How to: Delete an entity](#DeleteEntity)
-* [How to: Delete a table](#DeleteTable)
-* [Next steps](#NextSteps)
+* [テーブル ストレージとは](#what-is)
+* [概念](#Concepts)
+* [Azure のストレージ アカウントの作成](#CreateAccount)
+* [Java アプリケーションの作成](#CreateApplication)
+* [テーブル ストレージにアクセスするようにアプリケーションを構成する](#ConfigureStorage)
+* [Azure のストレージ接続文字列の設定](#ConnectionString)
+* [方法: テーブルを作成する](#CreateTable)
+* [方法: エンティティをテーブルに追加する](#AddEntity)
+* [方法: エンティティのバッチを挿入する](#InsertBatch)
+* [方法: パーティション内のすべてのエンティティを取得する](#RetrieveEntities)
+* [方法: パーティション内の一定範囲のエンティティを取得する](#RetrieveRange)
+* [方法: 単一のエンティティを取得する](#RetriveSingle)
+* [方法: エンティティを変更する](#ModifyEntity)
+* [方法: エンティティ プロパティのサブセットを照会する](#QueryProperties)
+* [方法: エンティティを挿入または置換する](#InsertOrReplace)
+* [方法: エンティティを削除する](#DeleteEntity)
+* [方法: テーブルを削除する](#DeleteTable)
+* [次のステップ](#NextSteps)
 
 [WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
-##<a name="CreateAccount"></a>Create an Azure storage account
+##<a name="CreateAccount"></a>Azure のストレージ アカウントの作成
 
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## <a name="CreateApplication"></a>Create a Java application
+##<a name="CreateApplication"></a>Java アプリケーションの作成
 
-In this guide, you will use storage features which can be run within a
-Java application locally, or in code running within a web role or worker
-role in Azure. We assume you have downloaded and installed the
-Java Development Kit (JDK), and followed the instructions in [Azure SDK for Java] to install the Azure Libraries
-for Java and the Azure SDK, and have created an Azure
-storage account in your Azure subscription.
+このガイドで使用するストレージ機能は、Java アプリケーション内でローカルで
+実行することも、Azure の Web ロールまたは worker ロールで動作するコード内で
+実行することもできます。前提条件として、Java Development Kit (JDK) を
+ダウンロードしてインストールしているとします。また、[Azure SDK for Java のページ]の指示に従って、Azure Libraries for Java と
+Azure SDK をインストールし、Azure サブスクリプションに
+Azure のストレージ アカウントを作成しているとします。
 
-You can use any development tools to create your application, including
-Notepad. All you need is the ability to compile a Java project and
-reference the Azure Libraries for Java.
+アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。要件は、Java プロジェクトをコンパイルできること、
+および Azure Libraries for Java を参照できることのみです。
 
-## <a name="ConfigureStorage"> </a>Configure your application to access table storage
+## <a name="ConfigureStorage"> </a>テーブル ストレージにアクセスするようにアプリケーションを構成する
 
-Add the following import statements to the top of the Java file where
-you want to use Azure storage APIs to access tables:
+Azure ストレージ API を使用してテーブルにアクセスする Java ファイルの
+先頭には、次の import ステートメントを追加します。
 
     // Include the following imports to use table APIs
     import com.microsoft.windowsazure.services.core.storage.*;
     import com.microsoft.windowsazure.services.table.client.*;
     import com.microsoft.windowsazure.services.table.client.TableQuery.*;
 
-## <a name="ConnectionString"> </a>Setup an Azure storage connection string
+## <a name="ConnectionString"> </a>Azure のストレージ接続文字列の設定
 
-An Azure storage client uses a storage connection string to store
-endpoints and credentials for accessing data management services. When running
-in a client application, you must provide the storage connection string
-in the following format, using the name of your storage account and the
-Primary access key for the storage account listed in the Management
-Portal for the *AccountName* and *AccountKey* values. This example shows
-how you can declare a static field to hold the connection string:
+Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、
+データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。クライアント アプリケーションの実行時、ストレージ接続文字列を次の
+形式で指定する必要があります。*AccountName* と *AccountKey*
+の値には、管理ポータルに表示されるストレージ アカウントの名前と
+プライマリ アクセス キーを使用します。この例では、
+接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
     // Define the connection-string with your values
     public static final String storageConnectionString = 
@@ -75,28 +73,26 @@ how you can declare a static field to hold the connection string:
         "AccountName=your_storage_account;" + 
         "AccountKey=your_storage_account_key";
 
-In an application running within a role in Azure, this string
-can be stored in the service configuration file,
-ServiceConfiguration.cscfg, and can be accessed with a call to the
-**RoleEnvironment.getConfigurationSettings** method. Here's an example
-of getting the connection string from a **Setting** element named
-*StorageConnectionString* in the service configuration file:
+Azure 上のロール内で実行されるアプリケーションでは、
+この文字列はサービス構成ファイルである
+ServiceConfiguration.cscfg に格納でき、
+**RoleEnvironment.getConfigurationSettings** メソッドの呼び出しを使用してアクセスできます。次の例では、
+接続文字列をサービス構成ファイル内の **Setting** 要素 
+(*StorageConnectionString*) から取得します。
 
     // Retrieve storage account from connection-string
     String storageConnectionString = 
         RoleEnvironment.getConfigurationSettings().get("StorageConnectionString");
 
-The samples below assume that you have used one of these two definitions
-to get the storage connection string.
+次のサンプル コードでは、これら 2 つの定義のいずれかを使用してストレージ
+接続文字列を取得するとします。
 
-## <a name="CreateTable"> </a>How to: Create a table
+## <a name="CreateTable"> </a>方法: テーブルを作成する
 
-A **CloudTableClient** object lets you get reference objects for tables
-and entities. The following code creates a **CloudTableClient** object
-and uses it to create a new table. All code in this guide uses a storage
-connection string stored in the Azure application's service
-configuration. There are also other ways to create
-**CloudStorageAccount** object.
+**CloudTableClient** オブジェクトを使用すると、テーブルとエンティティの参照オブジェクトを取得できます。次のコードは、**CloudTableClient** オブジェクトを作成し、これを使用して新しいテーブルを作成します。このガイドのすべてのコードでは、
+Azure アプリケーションのサービス構成に格納されている
+ストレージ接続文字列を使用します。そのほかにも 
+**CloudStorageAccount** オブジェクトを作成する方法はあります。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount =
@@ -109,18 +105,18 @@ configuration. There are also other ways to create
     String tableName = "people";
     tableClient.createTableIfNotExists(tableName);
 
-## <a name="AddEntity"> </a>How to: Add an entity to a table
+## <a name="AddEntity"> </a>方法: エンティティをテーブルに追加する
 
-Entities map to Java objects using a custom class implementing
-**TableEntity**. For convenience, the **TableServiceEntity** class
-implements **TableEntity** and uses reflection to map properties to
-getter and setter methods named for the properties. To add an entity to
-a table, first create a class that defines the properties of your
-entity. The following code defines an entity class that uses the
-customer's first name as the row key, and last name as the partition
-key. Together, an entity's partition and row key uniquely identify the
-entity in the table. Entities with the same partition key can be queried
-faster than those with different partition keys.
+エンティティは、
+**TableEntity** を実装するカスタム クラスを使用して Java オブジェクトにマップされます。コードがシンプルになるように、**TableServiceEntity** クラスでは
+**TableEntity** を実装し、リフレクションを使用することで、プロパティを、
+それらのプロパティの名前が付いた getter および setter メソッドにマップしています。エンティティをテーブルに追加するには、最初に、
+エンティティのプロパティを定義するクラスを作成します。次のコードは、ユーザーの名を行キーとして、姓を
+パーティション キーとして使用するエンティティ クラスを
+定義します。エンティティのパーティション キーと行キーの組み合わせで、
+テーブル内のエンティティを一意に識別します。同じパーティション キーを
+持つエンティティは、異なるパーティション キーを持つ
+エンティティよりも迅速に照会できます。
 
     public class CustomerEntity extends TableServiceEntity {
         public CustomerEntity(String lastName, String firstName) {
@@ -150,17 +146,17 @@ faster than those with different partition keys.
         }
     }
 
-Table operations involving entities require a **TableOperation** object.
-This object defines the operation to be performed on an entity, which
-can be executed with a **CloudTableClient** object. The following code
-creates a new instance of the **CustomerEntity** class with some
-customer data to be stored. The code next calls
-**TableOperation.insert** to create a **TableOperation** object to
-insert an entity into a table, and associates the new **CustomerEntity**
-with it. Finally, the code calls the **execute** method on the
-**CloudTableClient**, specifying the "people" table and the new
-**TableOperation**, which then sends a request to the storage service to
-insert the new customer entity into the "people" table.
+エンティティに関連するテーブル操作には **TableOperation** オブジェクトが必要です。
+このオブジェクトを使用して、エンティティに対して実行する操作を定義します。
+定義した操作は、**CloudTableClient** オブジェクトを使用して実行できます。次のコードでは、
+顧客データの格納用に **CustomerEntity** クラスの新しい
+インスタンスを作成しています。次に、このコードでは 
+**TableOperation.insert** を呼び出し、テーブルへのエンティティの挿入用に
+**TableOperation** オブジェクトを作成して、そのオブジェクトを新しい
+**CustomerEntity** に関連付けています。最後に、このコードでは **execute** の 
+**CloudTableClient** メソッドを呼び出し、"people" テーブルと新しい 
+**TableOperation** を指定しています。それにより、新しい顧客エンティティを
+"people" テーブルに挿入する要求がストレージ サービスに送信されるようになっています。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount =
@@ -180,27 +176,26 @@ insert the new customer entity into the "people" table.
     // Submit the operation to the table service.
     tableClient.execute("people", insertCustomer1);
 
-## <a name="InsertBatch"> </a>How to: Insert a batch of entities
+## <a name="InsertBatch"> </a>方法: エンティティのバッチを挿入する
 
-You can insert a batch of entities to the table service in one write
-operation. The following code creates a **TableBatchOperation** object,
-then adds three insert operations to it. Each insert operation is added
-by creating a new entity object, setting its values, and then calling
-the **insert** method on the **TableBatchOperation** object to associate
-the entity with a new insert operation. Then the code calls **execute**
-on the **CloudTableClient**, specifying the "people" table and the
-**TableBatchOperation** object, which sends the batch of table
-operations to the storage service in a single request. Some things to
-note on batch operations:
+1 回の書き込み操作でエンティティのバッチをテーブル サービスに
+挿入できます。次のコードでは、**TableBatchOperation** オブジェクトを作成し、
+3 つの挿入操作を追加しています。追加する各挿入操作では、
+新しいエンティティ オブジェクトを作成してその値を設定してから、
+**TableBatchOperation** オブジェクトの **insert** メソッドを呼び出して、
+エンティティを新しい挿入操作に関連付けています。次に、このコードでは 
+**CloudTableClient** の **execute** を呼び出して、"people" テーブルと
+**TableBatchOperation** オブジェクトを指定しています。
+それにより、テーブル操作のバッチがストレージ サービスに 1 つの要求で送信されるようになっています。バッチ操作に関しては、次の事項にも留意してください。
 
-1.  You can perform up to 100 insert, delete, merge, replace, insert or
-    merge, and insert or replace operations in any combination in a
-    single batch.
-2.  A batch operation can have a retrieve operation, if it is the only
-    operation in the batch.
-3.  All entities in a single batch operation must have the same
-    partition key.
-4.  A batch operation is limited to a 4MB data payload.
+1. 最大 100 個の挿入、削除、マージ、置換、挿入/マージ、
+    挿入/置換の操作を任意の組み合わせで 1 つのバッチで
+    実行できます。
+2. 取得をバッチ操作として実行することもできますが、
+    バッチ内の唯一の操作であることが必要です。
+3. 1 つのバッチ操作に含まれるすべてのエンティティの
+    パーティション キーが同じである必要があります。
+4. バッチ操作のデータ ペイロードは 4 MB に制限されています。
 
 <!-- -->
 
@@ -235,20 +230,20 @@ note on batch operations:
     // Execute the batch of operations on the "people" table.
     tableClient.execute("people", batchOperation);
 
-## <a name="RetrieveEntities"> </a>How to: Retrieve all entities in a partition
+## <a name="RetrieveEntities"> </a>方法: パーティション内のすべてのエンティティを取得する
 
-To query a table for entities in a partition, you can use a
-**TableQuery**. Call **TableQuery.from** to create a query on a
-particular table that returns a specified result type. The following
-code specifies a filter for entities where 'Smith' is the partition key.
-**TableQuery.generateFilterCondition** is a helper method to create
-filters for queries. Call **where** on the reference returned by the
-**TableQuery.from** method to apply the filter to the query. When the
-query is executed with a call to **execute** on the **CloudTableClient**
-object, it returns an **Iterator** with the **CustomerEntity** result
-type specified. You can then use the **Iterator** returned in a for each
-loop to consume the results. This code prints the fields of each entity
-in the query results to the console.
+テーブルに対してパーティション内のエンティティを照会する場合は、
+**TableQuery** を使用できます。**TableQuery.from** を呼び出して、特定のテーブルに
+対するクエリを作成し、指定した型の結果が返るようにします。次のコードは、
+"Smith" がパーティション キーであるエンティティに対してフィルターを指定します。
+**TableQuery.generateFilterCondition** はクエリのフィルターを
+作成するためのヘルパー メソッドです。**TableQuery.from** メソッドによって返された参照の
+**where** を呼び出して、フィルターをクエリに適用します。クエリが 
+**CloudTableClient** オブジェクトの **execute** の呼び出しを
+使用して実行されると、指定した **CustomerEntity** 型の結果が
+**Iterator** に格納されて返されます。その後、返された **Iterator** を for each ループ内で
+使用して、結果を処理できます。このコードは、クエリ結果の各エンティティの
+フィールドをコンソールに出力します。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount =
@@ -274,15 +269,15 @@ in the query results to the console.
             "\t" + entity.getEmail() + "\t" + entity.getPhoneNumber());
     }
 
-## <a name="RetrieveRange"> </a>How to: Retrieve a range of entities in a partition
+## <a name="RetrieveRange"> </a>方法: パーティション内の一定範囲のエンティティを取得する
 
-If you don't want to query all the entities in a partition, you can
-specify a range by using comparison operators in a filter. The following
-code combines two filters to get all entities in partition 'Smith' where
-the row key (first name) starts with a letter up to 'E' in the alphabet.
-Then it prints the query results. If you use the entities added to the
-table in the batch insert section of this guide, only two entities are
-returned this time (Ben and Denise Smith); Jeff Smith is not included.
+パーティション内の一部のエンティティのみ照会する場合は、
+フィルター内で比較演算子を使用して範囲を指定できます。次のコードは、
+2 つのフィルターを組み合わせて、行キー (名) がアルファベットの "E" までの
+文字で始まる、"Smith" というパーティション内のすべてのエントリを取得します。
+その後で、クエリ結果が出力されます。このガイドのバッチ挿入に関するセクションで
+テーブルに追加したエンティティを使用すると、この場合は 2 つのエンティティ
+(Ben Smith と Denise Smith) だけが返されます。Jeff Smith は返されません。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount =
@@ -319,19 +314,19 @@ returned this time (Ben and Denise Smith); Jeff Smith is not included.
             "\t" + entity.getEmail() + "\t" + entity.getPhoneNumber());
     }
 
-## <a name="RetriveSingle"> </a>How to: Retrieve a single entity
+## <a name="RetriveSingle"> </a>方法: 単一のエンティティを取得する
 
-You can write a query to retrieve a single, specific entity. The
-following code calls **TableOperation.retrieve** with partition key and
-row key parameters to specify the customer 'Jeff Smith', instead of
-creating a **TableQuery** and using filters to do the same thing. When
-executed, the retrieve operation returns just one entity, rather than a
-collection. The **getResultAsType** method casts the result to the type
-of the assignment target, a **CustomerEntity** object. If this type is
-not compatible with the type specified for the query, an exception will
-be thrown. A null value is returned if no entity has an exact partition
-and row key match. Specifying both partition and row keys in a query is
-the fastest way to retrieve a single entity from the Table service.
+単一の特定のエンティティを取得するクエリを記述することができます。次のコードでは、
+**TableOperation.retrieve** を呼び出し、パーティション キーと行キーの
+パラメーターを使用して、顧客 'Jeff Smith' を指定しています。同じ操作は
+**TableQuery** を作成してフィルターを使用することでも可能です。この
+取得操作が実行されると、1 つのコレクションではなく、1 つのエンティティ
+のみ返されます。**getResultAsType** メソッドは、結果を設定先の型である
+**CustomerEntity** オブジェクト型にキャストします。この型が
+クエリに指定した型と互換性がない場合は、
+例外がスローされます。パーティション キーおよび行キーが正確に一致する
+エンティティがない場合は、null 値が返されます。クエリでパーティション キーと行キーの両方を指定することが、
+テーブル サービスから単一のエンティティを取得するための最速の方法です。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount =
@@ -348,19 +343,19 @@ the fastest way to retrieve a single entity from the Table service.
     CustomerEntity specificEntity =
         tableClient.execute("people", retrieveSmithJeff).getResultAsType();
 
-## <a name="ModifyEntity"> </a>How to: Modify an entity
+## <a name="ModifyEntity"> </a>方法: エンティティを変更する
 
-To modify an entity, retrieve it from the table service, make changes to
-the entity object, and save the changes back to the table service with a
-replace or merge operation. The following code changes an existing
-customer's phone number. Instead of calling **TableOperation.insert**
-like we did to insert, this code calls **TableOperation.replace**. The
-**CloudTableClient.execute** method calls the table service, and the
-entity is replaced, unless another application changed it in the time
-since this application retrieved it. When that happens, an exception is
-thrown, and the entity must be retrieved, modified, and saved again.
-This optimistic concurrency retry pattern is common in a distributed
-storage system.
+エンティティを変更するには、そのエンティティをテーブル サービスから取得し、
+エンティティ オブジェクトに変更を加えて、その変更を置換またはマージ操作で
+テーブル サービスに戻して保存します。次のコードは、既存のユーザーの
+電話番号を変更します。挿入の場合のように **TableOperation.insert** を呼び出すのではなく、
+このコードは **TableOperation.replace** を呼び出します。この
+アプリケーションがエンティティを取得した後で別のアプリケーションが
+変更を加えていない限り、**CloudTableClient.execute** メソッドは
+テーブル サービスを呼び出し、このエンティティは置き換えられます。別のアプリケーションが変更を加えた場合は、例外がスローされるので、
+このエンティティを取得して変更し、もう一度保存する必要があります。
+このオプティミスティック同時実行制御の再試行パターンは、
+分散したストレージ システムでは一般的です。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount =
@@ -386,18 +381,18 @@ storage system.
     // Submit the operation to the table service.
     tableClient.execute("people", replaceEntity);
 
-## <a name="QueryProperties"> </a>How to: Query a subset of entity properties
+## <a name="QueryProperties"> </a>方法: エンティティ プロパティのサブセットを照会する
 
-A query to a table can retrieve just a few properties from an entity.
-This technique, called projection, reduces bandwidth and can improve
-query performance, especially for large entities. The query in the
-following code uses the **select** method to return only the email
-addresses of entities in the table. The results are projected into a
-collection of **String** with the help of an **EntityResolver**, which
-does the type conversion on the entities returned from the server. You
-can learn more about projection in this [blog post][]. Note that
-projection is not supported on the local storage emulator, so this code
-runs only when using an account on the table service.
+テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。
+プロジェクションと呼ばれるこの方法では、帯域幅の使用が削減され、クエリの
+パフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。次のコードのクエリは、
+**select** メソッドを使用して、テーブル内のエンティティの
+電子メール アドレスだけを返します。結果は **EntityResolver**
+によって **String** コレクションへのプロジェクション 
+(サーバーから返されるエンティティの型変換) が行われます。プロジェクションの
+詳細については、この[ブログの記事][]を参照してください。プロジェクションは
+ローカル ストレージ エミュレーターではサポートされていません。したがって、
+このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount =
@@ -426,22 +421,22 @@ runs only when using an account on the table service.
         System.out.println(projectedString);
     }
 
-## <a name="InsertOrReplace"> </a>How to: Insert-or-replace an entity
+## <a name="InsertOrReplace"> </a>方法: エンティティを挿入または置換する
 
-Often you want to add an entity to a table without knowing if it already
-exists in the table. An insert-or-replace operation allows you to make a
-single request which will insert the entity if it does not exist or
-replace the existing one if it does. Building on prior examples, the
-following code inserts or replaces the entity for 'Walter Harp'. After
-creating a new entity, this code calls the
-**TableOperation.insertOrReplace** method. This code then calls
-**execute** on the **CloudTableClient** with the table and the insert or
-replace table operation as the parameters. To update only part of an
-entity, the **TableOperation.insertOrMerge** method can be used instead.
-Note that insert-or-replace is not supported on the local storage
-emulator, so this code runs only when using an account on the table
-service. You can learn more about insert-or-replace and insert-or-merge
-in this [blog post][].
+エントリをテーブルに追加するときは、多くの場合、そのエントリがテーブル内に
+既に存在しているかどうかを把握していません。エンティティの挿入または置換操作では、エンティティが存在しない場合に
+そのエンティティを挿入し、エンティティが存在する場合はその既存のエンティティを
+置き換えるという操作を 1 つの要求で処理することができます。これまでの例に対して、
+次のコードは "Walter Harp" のエンティティを挿入または置換します。新しい
+エンティティを作成すると、このコードは
+**TableOperation.insertOrReplace** メソッドを呼び出します。その後、
+**CloudTableClient** の **execute** を呼び出し、テーブルとそのテーブルの
+挿入および置換操作をパラメーターとして渡します。エンティティの一部のみ更新するには、
+**TableOperation.insertOrMerge** メソッドを代わりに使用できます。
+挿入または置換はローカル ストレージ エミュレーターでは
+サポートされていません。したがって、このコードはテーブル サービスの
+アカウントを使用している場合にのみ機能します。挿入または置換、および挿入またはマージの詳細については、
+この[ブログの記事][]を参照してください。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount =
@@ -461,12 +456,12 @@ in this [blog post][].
     // Submit the operation to the table service.
     tableClient.execute("people", insertCustomer5);
 
-## <a name="DeleteEntity"> </a>How to: Delete an entity
+## <a name="DeleteEntity"> </a>方法: エンティティを削除する
 
-You can easily delete an entity after you have retrieved it. Once the
-entity is retrieved, call **TableOperation.delete** with the entity to
-delete. Then call **execute** on the **CloudTableClient**. The following
-code retrieves and deletes a customer entity.
+エンティティは、取得後に簡単に削除できます。エンティティを
+取得したら、削除するエンティティを指定して **TableOperation.delete**
+を呼び出します。その後、**CloudTableClient** の **execute** を呼び出します。次のコードは、
+ユーザー エンティティを取得して削除します。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount =
@@ -488,11 +483,11 @@ code retrieves and deletes a customer entity.
     // Submit the delete operation to the table service.
     tableClient.execute("people", deleteSmithJeff);
 
-## <a name="DeleteTable"> </a>How to: Delete a table
+## <a name="DeleteTable"> </a>方法: テーブルを削除する
 
-Finally, the following code deletes a table from a storage account. A
-table which has been deleted will be unavailable to be recreated for a
-period of time following the deletion, usually less than forty seconds.
+最後に、次のコードは、ストレージ アカウントからテーブルを削除します。削除された
+テーブルは、削除後の一定期間 (通常は 40 秒未満) は
+再作成できなくなります。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount =
@@ -504,19 +499,19 @@ period of time following the deletion, usually less than forty seconds.
     // Delete the table and all its data if it exists.
     tableClient.deleteTableIfExists("people");
 
-## <a name="NextSteps"> </a>Next steps
+## <a name="NextSteps"> </a>次のステップ
 
-Now that you've learned the basics of table storage, follow these links
-to learn how to do more complex storage tasks.
+これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   See the MSDN Reference: [Storing and Accessing Data in Windows
-    Azure]
--   Visit the [Azure Storage Team Blog][]
+-   MSDN リファレンス: [Azure のデータの格納と
+    アクセス]
+-  [Azure のストレージ チーム ブログ][]
 
 
-[using the REST API]: http://msdn.microsoft.com/en-us/library/windowsazure/hh264518.aspx
-[blog post]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
-[Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
-[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-[Azure SDK for Java]: http://www.windowsazure.com/en-us/develop/java/
-[Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+[REST API の使用]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh264518.aspx
+[ブログ記事]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
+[Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+[Azure ストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+[Azure SDK for Java]: http://www.windowsazure.com/ja-jp/develop/java/
+[Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+

@@ -1,57 +1,57 @@
-<properties linkid="" urlDisplayName="" pageTitle="Push notifications to users (Android ) | Mobile Dev Center" metaKeywords="" description="Learn how to use Mobile Services to push notifications to users of your Android app." metaCanonical="" services="" documentationCenter="Mobile" title="Push notifications to users by using Mobile Services" authors="ricksal" solutions="" manager="" editor="" />
+<properties linkid="" urlDisplayName="" pageTitle="ユーザーへのプッシュ通知 (Android) | モバイル デベロッパー センター" metaKeywords="" description="モバイル サービスを使用して Android アプリケーションのユーザーにプッシュ通知を送信する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="モバイル サービスによるユーザーへのプッシュ通知" authors="ricksal" solutions="" manager="" editor="" />
 
 
-# Push notifications to users by using Mobile Services
+# モバイル サービスによるユーザーへのプッシュ通知
 
 <div class="dev-center-tutorial-selector sublanding">
-	<a href="/en-us/develop/mobile/tutorials/push-notifications-to-users-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/push-notifications-to-users-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/push-notifications-to-users-android" title="Android" class="current">Android</a>
+	<a href="/ja-jp/develop/mobile/tutorials/push-notifications-to-users-wp8" title="Windows Phone">Windows Phone</a><a href="/ja-jp/develop/mobile/tutorials/push-notifications-to-users-ios" title="iOS">iOS</a><a href="/ja-jp/develop/mobile/tutorials/push-notifications-to-users-android" title="Android" class="current">Android</a>
 </div>
 
 <div class="dev-onpage-left-content">
-<p>This topic extends the <a href="/en-us/develop/mobile/tutorials/get-started-with-push-android">previous push notification tutorial</a> by adding a new table to store Google Cloud Messaging (GCM) registration URIs, which can then be used to send push notifications to multiple users of the Android app. In this tutorial, a single update will generate push notifications to all registered devices whenever inserts are done to the ToDoList table . In the preceding tutorial, a notification was sent only to the device doing the insert.</p>
+<p>このトピックは、<a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-android">以前のプッシュ通知のチュートリアル</a>を拡充したもので、Google Cloud Messaging (GCM) 登録 URI を格納するテーブルが新たに追加されています。このテーブルを使用することで、Android アプリケーションの複数のユーザーにプッシュ通知を送信できます。このチュートリアルでは、ToDoList テーブルへの挿入が実行されるたびに、1 回の更新によってすべての登録デバイスに対するプッシュ通知を生成します。前のチュートリアルでは、挿入を実行するデバイスに対してのみ通知が送信されていました。</p>
 </div>
 
 
-This tutorial walks you through these steps to update push notifications in your app:
+このチュートリアルでは、アプリケーションでプッシュ通知を更新するための次の手順について説明します。
 
-1. [Create the Registration table]
-2. [Update your app]
-3. [Update server scripts]
-4. [Verify the push notification behavior] 
+1. [Registration テーブルを作成する]
+2. [アプリケーションを更新する]
+3. [サーバー スクリプトを更新する]
+4. [プッシュ通知の動作を確認する]
 
-This tutorial is based on the Mobile Services quickstart and builds on the previous tutorial [Get started with push notifications]. Before you start this tutorial, you must first complete [Get started with push notifications].  
+このチュートリアルは、モバイル サービスのクイック スタートと、1 つ前のチュートリアル「[モバイル サービスでのプッシュ通知の使用]」の内容を前提としています。このチュートリアルを開始する前に、「[モバイル サービスでのプッシュ通知の使用]」を完了している必要があります。
 
-## <a name="create-table"></a>Create a new table
+## <a name="create-table"></a>新しいテーブルを作成する
 
-1. Log into the [Azure Management Portal], click **Mobile Services**, and then click your app.
+1. [Azure 管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
    	![][0]
 
-2. Click the **Data** tab, and then click **Create**.
+2. **[データ]** タブをクリックし、**[作成]** をクリックします。
 
    	![][1]
 
-   	This displays the **Create new table** dialog.
+   	**[新しいテーブルの作成]** ダイアログ ボックスが表示されます。
 
-3. Keeping the default **Anybody with the application key** setting for all permissions, type _Registration_ in **Table name**, and then click the check button.
+3. すべてのアクセス許可について既定の **[アプリケーション キーを持つユーザー]** 設定をそのままにし、**[テーブル名]** に「_Registration_」と入力してチェック ボタンをクリックします。
 
    	![][2]
 
-  	This creates the **Registration** table, which stores the registration URIs used to send push notifications separate from item data.
+  	**Registration** テーブルが作成されます。このテーブルには、項目データとは別にプッシュ通知を送信するために使用される登録 URI が格納されます。
 
-Next, you will modify the push notifications app to store registration data in this new table instead of in the **TodoItem** table.
+次は、**TodoItem** テーブルの代わりにこの新しいテーブルに登録データを格納するようにプッシュ通知アプリケーションを変更します。
 
-## <a name="update-app"></a>Update your app
+## <a name="update-app"></a>アプリケーションを更新する
 
-1. In Eclipse in the Package Explorer, right-click the package (under the `src` node), click **New**, click **Class**.
+1. Eclipse の Package Explorer で (`src` ノードの下にある) パッケージを右クリックし、**[New]**、**[Class]** の順にクリックします。
 
-2. In **Name** type `Registration`, then click **Finish**
+2. **[Name]** に「`Registration`」と入力して、**[Finish]** をクリックします。
 
 	![][6]
 
-	This creates the new Registration class.
+	これで、新しい Registration クラスが作成されます。
 
-3. Open the file ToDoItem.java, and cut the following code:
+3. ファイル ToDoItem.java を開き、次のコードを切り取ります。
 
 		@com.google.gson.annotations.SerializedName("handle")
 		private String mHandle;
@@ -65,11 +65,11 @@ Next, you will modify the push notifications app to store registration data in t
 		}
 	
 
-4. Paste the code you cut in the preceding step into the body of the **Registration** class you previously created.
+4. 前の手順で切り取ったコードを、作成済みの **Registration** クラスの本文に貼り付けます。
 
 
 
-5. Add the following code to the **Registration** class:
+5. **Registration** クラスに、次のコードを追加します。
 
 		@com.google.gson.annotations.SerializedName("id")
 		private int mId;
@@ -91,11 +91,11 @@ Next, you will modify the push notifications app to store registration data in t
 		}
 
 
-6.  Open the **ToDoActivity.java** file, and in the `addItem` method, delete the following lines:
+6. **ToDoActivity.java** ファイルを開き、`addItem` メソッドの次の行を削除します。
 
 		item.setHandle(MyHandler.getHandle());
 
-7. Find the `mClient` property, replace it with the following code:
+7. `mClient` プロパティを探して、次のコードと置き換えます。
 
 		/**
 		 * Mobile Service Client reference
@@ -113,7 +113,7 @@ Next, you will modify the push notifications app to store registration data in t
 
 
 
-8. In the **MyHandler** file, add the following import statements:
+8. **MyHandler** ファイルに、次の import ステートメントを追加します。
 
 		import android.util.Log;
 		
@@ -125,7 +125,7 @@ Next, you will modify the push notifications app to store registration data in t
 		import com.microsoft.windowsazure.mobileservices.TableOperationCallback;
 		
 
-9. Add the following code to the end of the `onRegistered` method:
+9. `onRegistered` メソッドの末尾に、次のコードを追加します。
 
 	    MobileServiceClient client = ToDoActivity.getClient();
 	    MobileServiceTable<Registration> registrations = client.getTable(Registration.class);
@@ -148,21 +148,21 @@ Next, you will modify the push notifications app to store registration data in t
 	    });
 		
 
-Your app is now updated to support push notifications to users.
+これで、アプリケーションが複数のユーザーに対するプッシュ通知をサポートするように更新されました。
 
-## <a name="update-scripts"></a>Update server scripts
+##<a name="update-scripts"></a>サーバー スクリプトを更新する
 
-1. In the Management Portal, click the **Data** tab and then click the **Registration** table. 
+1. 管理ポータルで、**[データ]** タブをクリックし、**Registration** テーブルをクリックします。
 
    	![][3]
 
-2. In **registration**, click the **Script** tab and select **Insert**.
+2. **[Registrations]** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。
    
    	![][4]
 
-   	This displays the function that is invoked when an insert occurs in the **Registration** table.
+   	**Registration** テーブルで挿入が発生したときに呼び出される関数が表示されます。
 
-3. Replace the insert function with the following code, and then click **Save**:
+3. insert 関数を次のコードに置き換え、**[保存]** をクリックします。
 
 		function insert(item, user, request) {
 			var registrationTable = tables.getTable('Registration');
@@ -178,13 +178,13 @@ Your app is now updated to support push notifications to users.
     	    }
 	    }
 
-   	This script checks the **Registration** table for an existing registration with the same URI. The insert only proceeds if no matching registration was found. This prevents duplicate registration records.
+   	このスクリプトは、**Registration** テーブルに同じ URI トークンを持つ既存の登録があるかどうかを調べます。insert の実行は、一致する登録が見つからなかった場合にのみ、先に進みます。これにより、登録レコードの重複が防止されます。
 
-4. Click **TodoItem**, click **Script** and select **Insert**. 
+4. **[TodoItem]** をクリックし、**[スクリプト]** タブをクリックして、**[挿入]** を選択します。
 
    	![][5]
 
-5. Replace the insert function with the following code, and then click **Save**:
+5. insert 関数を次のコードに置き換え、**[保存]** をクリックします。
 
 		function insert(item, user, request) {
 		    request.execute({
@@ -214,16 +214,16 @@ Your app is now updated to support push notifications to users.
         }
     }
 
-    This insert script sends a push notification (with the text of the inserted item) to all registrations stored in the **Registration** table.
+    この insert スクリプトでは、**Registration** テーブルに格納されているすべての登録にプッシュ通知が (挿入された項目のテキストと共に) 送信されます。
 
-## <a name="test-app"></a>Test the app
+## <a name="test-app"></a>アプリケーションをテストする
 
-1. In Eclipse, from the **Run** menu, click **Run** to start the app.
+1. Eclipse で、**[Run]** メニューの **[Run]** をクリックして、アプリケーションを開始します。
 
-5. In the app, type meaningful text, such as _A new Mobile Services task_ and then click the **Add** button.
+5. アプリケーションで、わかりやすいテキスト (たとえば、「_新しいモバイル サービス タスク_」) を入力し、**[Add]** ボタンをクリックします。
 
   
-6. You will see a black notification box appear briefly in the lower part of the screen. 
+6. 画面の下部に、一時的に黒い通知ボックスが表示されます。
 
   	![][28]
 
@@ -231,30 +231,30 @@ Your app is now updated to support push notifications to users.
 
   	![][27]-->
 
-You have successfully completed this tutorial.
+これで、このチュートリアルは終了です。
 
-## Next steps
+## 次のステップ
 
-This concludes the tutorials that demonstrate the basics of working with push notifications. Consider finding out more about the following Mobile Services topics:
+これで、プッシュ通知の基本について説明するチュートリアルは終了です。次のモバイル サービスのトピックの詳細を確認することをお勧めします。
 
-* [Get started with data]
-  <br/>Learn more about storing and querying data using Mobile Services.
+* [データの使用]
+  <br/>モバイル サービスを使用してデータの格納およびクエリを実行する方法について説明します。
 
-* [Get started with authentication]
-  <br/>Learn how to authenticate users of your app with Windows Account.
+* [認証の使用]
+  <br/>Windows アカウントを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [Mobile Services server script reference]
-  <br/>Learn more about registering and using server scripts.
+* [モバイル サービスのサーバー スクリプト リファレンス]
+  <br/>サーバー スクリプトの登録および使用について説明します。
 
-* [How to use the Android client library for Mobile Services]
-  <br/>Learn more about how to use Mobile Services with .NET.
+* [モバイル サービス向け Android クライアント ライブラリの使用方法]
+  <br/>.NET でモバイル サービスを使用する方法について説明します
   
 <!-- Anchors. -->
-[Create the Registration table]: #create-table
-[Update your app]: #update-app
-[Update server scripts]: #update-scripts
-[Verify the push notification behavior]: #test-app
-[Next Steps]: #next-steps
+[Registration テーブルを作成する]: #create-table
+[アプリケーションを更新する]: #update-app
+[サーバー スクリプトを更新する]: #update-scripts
+[プッシュ通知の動作を確認する]: #test-app
+[次のステップ]: #next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-android-push-notifications-app-users/mobile-services-selection.png
@@ -269,14 +269,15 @@ This concludes the tutorials that demonstrate the basics of working with push no
 [28]: ./media/mobile-services-android-push-notifications-app-users/mobile-push-icon.png
 
 <!-- URLs. -->
-[Windows Push Notifications & Live Connect]: http://go.microsoft.com/fwlink/?LinkID=257677
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[My Apps dashboard]: http://go.microsoft.com/fwlink/?LinkId=262039
-[Get started with Mobile Services]: /en-us/develop/mobile/how-to-guides/work-with-net-client-library/#create-new-service
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-android
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-android
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-android
-[JavaScript and HTML]: mobile-services-win8-javascript/
+[Windows プッシュ通知および Live Connect]: http://go.microsoft.com/fwlink/?LinkID=257677
+[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
+[マイ アプリ ダッシュボード]: http://go.microsoft.com/fwlink/?LinkId=262039
+[モバイル サービスの使用]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library/#create-new-service
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-android
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-android
+[モバイル サービスでのプッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android
+[JavaScript と HTML]: mobile-services-win8-javascript/
 
-[Azure Management Portal]: https://manage.windowsazure.com/
-[How to use the Android client library for Mobile Services]: /en-us/develop/mobile/how-to-guides/work-with-android-client-library
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[モバイル サービス向け Android クライアント ライブラリの使用方法]: /ja-jp/develop/mobile/how-to-guides/work-with-android-client-library
+

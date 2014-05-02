@@ -1,41 +1,41 @@
-<properties linkid="develop-mobile-tutorials-send-email-with-sendgrid" urlDisplayName="Send Email Using SendGrid" pageTitle="Send email using SendGrid - Azure Mobile Services" metaKeywords="Azure SendGrid, SendGrid service, Azure emailing, mobile services email" description="Learn how to use the SendGrid service to send email from your Azure Mobile Services app." metaCanonical="" services="" documentationCenter="Mobile" title="Send email from Mobile Services with SendGrid" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-tutorials-send-email-with-sendgrid" urlDisplayName="SendGrid を使用して電子メールを送信する" pageTitle="SendGrid を使用して電子メールを送信する - Azure モバイル サービス" metaKeywords="Azure SendGrid, SendGrid サービス, Azure 電子メール送信, モバイル サービスからの電子メール" description="SendGrid サービスを使用して Azure モバイル サービス アプリケーションから電子メールを送信する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="SendGrid を使用したモバイル サービスからの電子メールの送信" authors="" solutions="" manager="" editor="" />
 
 
 
 
-# Send email from Mobile Services with SendGrid
+# SendGrid を使用したモバイル サービスからの電子メールの送信
 
-This topic shows you how can add email functionality to your mobile service. In this tutorial you add server side scripts to send email using SendGrid. When complete, your mobile service will send an email each time a record is inserted.
+このトピックでは、モバイル サービスに電子メール機能を追加する方法について説明します。このチュートリアルでは、サーバー側スクリプトを追加し、SendGrid を使用して電子メールを送信します。完了すると、モバイル サービスは、レコードが挿入されるたびに電子メールを送信します。
 
-SendGrid is a [cloud-based email service] that provides reliable [transactional email delivery], scalability, and real-time analytics along with flexible APIs that make custom integration easy. For more information, see <http://sendgrid.com>.
+SendGrid は、信頼性の高い[トランザクション電子メール配信]、拡張性、およびリアルタイム分析の機能を備えた[クラウドベース電子メール サービス]であり、柔軟な API を備えているためカスタム統合も容易です。詳細については、<http://sendgrid.com> を参照してください。
 
-This tutorial walks you through these basic steps to enable email functionality:
+このチュートリアルでは、電子メール機能を有効にするための、次の基本的な手順について説明します。
 
-1. [Create a SendGrid account]
-2. [Add a script to send email]
-3. [Insert data to receive email]
+1. [SendGrid アカウントを作成する]
+2. [電子メールを送信するためのスクリプトを追加する]
+3. [データを挿入して電子メールを受け取る]
 
-This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete [Get started with Mobile Services]. 
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。
 
-<h2><a name="sign-up"></a><span class="short-header">Create a new account</span>Create a new SendGrid account</h2>
+<h2><a name="sign-up"></a><span class="short-header">新しいアカウントの作成</span>新しい SendGrid アカウントを作成する</h2>
 
 [WACOM.INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-<h2><a name="add-script"></a><span class="short-header">Register a script</span>Register a new script that sends emails</h2>
+<h2><a name="add-script"></a><span class="short-header">スクリプトの登録</span>電子メールを送信する新しいスクリプトを登録する</h2>
 
-1. Log on to the [Azure Management Portal], click **Mobile Services**, and then click your mobile service.
+1. [Azure 管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。
 
-2. In the Management Portal, click the **Data** tab and then click the **TodoItem** table. 
+2. 管理ポータルで、**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
 	![][1]
 
-3. In **todoitem**, click the **Script** tab and select **Insert**.
+3. **[todoitem]** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。
    
 	![][2]
 
-	This displays the function that is invoked when an insert occurs in the **TodoItem** table.
+	**TodoItem** テーブルで挿入が発生したときに呼び出される関数が表示されます。
 
-4. Replace the insert function with the following code:
+4. insert 関数を次のコードに置き換えます。
 
         var SendGrid = require('sendgrid').SendGrid;
         
@@ -66,50 +66,49 @@ This tutorial is based on the Mobile Services quickstart. Before you start this 
             }
         }
 
-5. Replace the placeholders in the above script with the correct values:
+5. スクリプトに含まれるプレースホルダーを次に示す正しい値に置き換えます。
 
-	- **_username_ and _password_**: the SendGrid credentials you identified in [Create a SendGrid account].
+	- **_username_ および _password_**: 「[SendGrid アカウントを作成する]」で指定した SendGrid の資格情報。
 
-	- **_email-address_**: the address that the email is sent to. In a real-world app, you can use tables to store and retrieve email addresses. When testing your app, just use your own email address.
+	- **_email-address_**: 電子メールの送信先アドレス。実際のアプリケーションでは、テーブルを使用して、電子メール アドレスを保存および取得することができます。アプリケーションをテストする際には、自分の電子メールを使用してください。
 
-	- **_from-address_**: the address from which the email originates. Consider using a registered domain address that belongs to your organization. 
+	- **_from-address_**: 電子メールの送信元アドレス。組織に属する登録済みドメイン アドレスの使用を検討してください。
 
-     <div class="dev-callout"><b>Note</b>
-     <p>If you do not have a registered domain, you can instead use the domain of your Mobile Service, in the format <strong>notifications@<i>your-mobile-service</i>.azure-mobile.net</strong>. However, messages sent to your mobile service domain are ignored.</p>
+     <div class="dev-callout"><b>注</b>
+     <p>登録済みドメインがない場合は、モバイル サービスのドメインを <strong>notifications@<i>your-mobile-service</i>.azure-mobile.net</strong> という形式で使用できます。ただし、モバイル サービス ドメインに送信されたメッセージは無視されます。</p>
     </div> 
 
-6. Click the **Save** button. You have now configured a script to send an email each time a record is inserted into the **TodoItem** table.
+6. **[保存]** ボタンをクリックします。これで、**TodoItem** テーブルにレコードが挿入されるたびに電子メールが送信されるように、スクリプトを構成できました。
 
-<h2><a name="insert-data"></a><span class="short-header">Insert test data</span>Insert test data to receive email</h2>
+<h2><a name="insert-data"></a><span class="short-header">テスト データの挿入</span>テスト データを挿入して電子メールを受け取る</h2>
 
-1. In the client app project, run the quickstart application. 
+1. クライアント アプリケーション プロジェクトで、クイック スタート アプリケーションを実行します。
 
-	This topic shows the Windows Store version of the quickstart,
+	このトピックでは、クイック スタートの Windows ストア バージョンを示します。
 
-2. In the app, type text in **Insert a TodoItem**, and then click **Save**.
+2. アプリケーションで、**[Insert a TodoItem]** にテキストを入力し、**[Save]** をクリックします。
 
 	![][3]
 
-3. Notice that you receive an email, such as one shown in the notification below. 
+3. 次に示す通知のような電子メールが届きます。
 
 	![][4]
 
-	Congratulations, you have successfully configured your mobile service to send email by using SendGrid.
+	これで、SendGrid を使用して電子メールを送信できるようにモバイル サービスを構成できました。
 
-## <a name="nextsteps"> </a>Next Steps
+## <a name="nextsteps"> </a>次のステップ
 
-Now that you've seen how easy it is to use the SendGrid email service with Mobile Services, follow
-these links to learn more about SendGrid.
+モバイル サービスで SendGrid 電子メール サービスを簡単に使用できることがわかりました。SendGrid の詳細については、次のリンク先を参照してください。
 
--   SendGrid API documentation:
+-   SendGrid API に関するドキュメント: 
     <http://docs.sendgrid.com/documentation/api/>
--   SendGrid special offer for Azure customers:
+-   Azure ユーザー向けの SendGrid 特別プラン: 
     <http://sendgrid.com/azure.html>
 
 <!-- Anchors. -->
-[Create a SendGrid account]: #sign-up
-[Add a script to send email]: #add-script
-[Insert data to receive email]: #insert-data
+[SendGrid アカウントを作成する]: #sign-up
+[電子メールを送信するためのスクリプトを追加する]: #add-script
+[データを挿入して電子メールを受け取る]: #insert-data
 
 <!-- Images. -->
 [1]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-portal-data-tables.png
@@ -118,10 +117,11 @@ these links to learn more about SendGrid.
 [4]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-receive-email.png
 
 <!-- URLs. -->
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started
-[sign up page]: http://sendgrid.com/azure.html
-[Multiple User Credentials page]: http://sendgrid.com/credentials
-[Azure Management Portal]: https://manage.windowsazure.com/
-[cloud-based email service]: http://sendgrid.com/solutions
-[transactional email delivery]: http://sendgrid.com/transactional-email
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started
+[サインアップ ページ]: http://sendgrid.com/azure.html
+[Multiple User Credentials page (複数のユーザー資格情報用ページ)]: http://sendgrid.com/credentials
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[cloud-based email service (クラウド ベースの電子メール サービス)]: http://sendgrid.com/solutions
+[transactional email delivery (トランザクション電子メール配信)]: http://sendgrid.com/transactional-email
+
 

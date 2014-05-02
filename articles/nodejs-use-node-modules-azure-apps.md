@@ -1,83 +1,84 @@
-<properties linkid="develop-nodejs-common-tasks-working-with-node-modules" urlDisplayName="Working with Node.js Modules" pageTitle="Working with Node.js Modules" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="Node.js" title="Using Node.js Modules with Azure applications" authors="larryfr" solutions="" manager="paulettm" editor="mollybos" />
+<properties linkid="develop-nodejs-common-tasks-working-with-node-modules" urlDisplayName="Node.js モジュールの操作" pageTitle="Node.js モジュールの操作" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="Node.js" title="Azure アプリケーションでの Node.js モジュールの使用" authors="larryfr" solutions="" manager="paulettm" editor="mollybos" />
 
 
 
 
 
-# Using Node.js Modules with Azure applications
+#Azure アプリケーションでの Node.js モジュールの使用
 
-This document provides guidance on using Node.js modules with applications hosted on Azure. It provides guidance on ensuring that your application uses a specific version of module as well as using native modules with Azure.
+このドキュメントは、Azure でホストされているアプリケーションでの Node.js モジュールの使用に関するガイダンスを示します。また、Azure でアプリケーションによって特定のバージョンのモジュールとネイティブ モジュールが確実に使用されるようにするためのガイダンスも紹介します。
 
-If you are already familiar with using Node.js modules, **package.json** and **npm-shrinkwrap.json** files, the following is a quick summary of what is discussed in this article:
+Node.js モジュールである **package.json** および **npm-shrinkwrap.json** ファイルの使い方について既によくわかっている方は、この記事で概要を簡単にご確認ください。
 
-* Azure Web Sites understand **package.json** and **npm-shrinkwrap.json** files and can install modules based on entries in these files.
-* Azure Cloud Services expect all modules to be installed on the development environment, and the **node\_modules** directory to be included as part of the deployment package.
+*Azure の Web サイトでは **package.json** および **npm-shrinkwrap.json** ファイルが認識され、これらのファイルのエントリに基づいてモジュールをインストールできます。
+*Azure クラウド サービスは、すべてのモジュールが開発環境にインストールされ、**node\_modules** ディレクトリがデプロイ パッケージの一部として含められることを想定します。
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>Azure Virtual Machines are not discussed in this article, as the deployment experience in a VM will be dependent on the operating system hosted by the Virtual Machine.</p>
+<strong>メモ</strong>
+<p>VM でのデプロイは仮想マシンでホストされているオペレーティング システムに依存するので、この記事では Azure の仮想マシンについては説明しません。</p>
 </div>
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>It is possible to enable support for installing modules using <b>package.json</b> or <b>npm-shrinkwrap.json</b> files on Azure, however this requires customization of the default scripts used by Cloud Service projects. For an example of how to accomplish this, see <a href="http://nodeblog.azurewebsites.net/startup-task-to-run-npm-in-azure">Azure Startup task to run npm install to avoid deploying node modules </a></p>
+<strong>注</strong>
+<p><b>package.json</b> または <b>npm-shrinkwrap.json</b> ファイルを使用したモジュール インストールのサポートを有効にできますが、このサポートを有効にするには、クラウド サービスのプロジェクトで使用される既定のスクリプトをカスタマイズする必要があります。これを行う方法の例については、「<a href="http://nodeblog.azurewebsites.net/startup-task-to-run-npm-in-azure">Azure Startup task to run npm install to avoid deploying node modules</a>」(npm インストールを実行してノード モジュールのデプロイを回避するための Azure スタートアップ タスク) を参照してください。</p>
 </div>
 
-##Node.js Modules
+##Node.js モジュール
 
-Modules are loadable JavaScript packages that provide specific functionality for your application. A module is usually installed using the **npm** command-line tool, however some (such as the http module) are provided as part of the core Node.js package.
+モジュールは、アプリケーションに対して特定の機能を提供する読み込み可能な JavaScript パッケージです。通常は **npm** コマンド ライン ツールを使用してインストールされますが、http モジュールのようにコア Node.js パッケージの一部として提供されるものもあります。
 
-When modules are installed, they are stored in the **node\_modules** directory at the root of your application directory structure. Each module within the **node\_modules** directory maintains its own **node\_modules** directory that contains any modules that it depend on, and this repeats again for every module all the way down the dependency chain. This allows each module installed to have its own version requirements for the modules it depends on, however it can result in quite a large directory structure.
+インストールされたモジュールは、アプリケーション ディレクトリ構造のルートにある **node\_modules** ディレクトリに保存されます。この **node\_modules** ディレクトリの各モジュールに独自の **node\_modules** ディレクトリが保持されており、そこには、そのモジュールが依存するすべてのモジュールが含まれます。これは、依存関係チェーンの端から端まですべてのモジュールに対して繰り返されます。これにより、インストールされている各モジュールが、自身が依存するモジュールに対して独自のバージョン要件を持つことができます。ただし、この結果、ディレクトリ構造が非常に大きくなる可能性があります。
 
-When deploying the **node\_modules** directory as part of your application, it will increase the size of the deployment compared to using a **package.json** or **npm-shrinkwrap.json** file; however, it does guarantee that the version of the modules used in production are the same as those used in development.
+**node\_modules** ディレクトリをアプリケーションの一部としてデプロイすると、デプロイのサイズは、**package.json** または **npm-shrinkwrap.json** ファイルを使用した場合に比べると大きくなりますが、運用環境で使用されるモジュールのバージョンが、開発環境で使用されるものと必ず同じになります。
 
-###Native Modules
+###ネイティブ モジュール
 
-While most modules are simply plain-text JavaScript files, some modules are platform-specific binary images. These modules are compiled at install time, usually by using Python and node-gyp. One specific limitation of Azure Web Sites is that while it natively understands how to install modules specified in a **package.json** or **npm-shrinkwrap.json** file, it does not provide Python or node-gyp and cannot build native modules.
+ほとんどのモジュールがシンプルな JavaScript テキスト ファイルですが、中にはプラットフォーム固有のバイナリ イメージのモジュールもあります。こうしたモジュールは、通常、インストール時に Python および node-gyp を使用してコンパイルされます。Azure の Web サイトでは、**package.json** または **npm-shrinkwrap.json** ファイルで指定されたモジュールのインストール方法がネイティブで認識されますが、Python または node-gyp が用意されていないので、ネイティブ モジュールを構築できません。これは Azure の Web サイトの制限事項の 1 つです。
 
-Since Azure Cloud Services rely on the **node\_modules** folder being deployed as part of the application, any native module included as part of the installed modules should work in a cloud service as long as it was installed and compiled on a Windows development system. 
+Azure クラウド サービスは、アプリケーションの一部としてデプロイされている **node\_modules** フォルダーに依存するので、インストールされたモジュールの一部として含まれるネイティブ モジュールはすべて、Windows 開発システムでインストールおよびコンパイルされている限りクウド サービスで動作します。
 
-Native modules are not supported with Azure Web Sites. Some modules such as JSDOM and MongoDB have optional native dependencies, and will work with applications hosted in Azure Web Sites.
+Azure の Web サイトでは、ネイティブ モジュールがサポートされていません。JSDOM、MongoDB など、オプションでネイティブの依存関係が含まれている一部のモジュールについては、Azure の Web サイトでホストされているアプリケーションで動作します。
 
-###Using a package.json file
+###package.json ファイルの使用
 
-The **package.json** file is a way to specify the top level dependencies your application requires so that the hosting platform can install the dependencies, rather than requiring you to include the **node\_packages** folder as part of the deployment. After the application has been deployed, the **npm install** command is used to parse the **package.json** file and install all the dependencies listed.
+**package.json** ファイルは、ホスティング プラットフォームが依存関係をインストールできるように、アプリケーションに必要な最上位レベルの依存関係する 1 つの手段です。この場合、**node\_packages** フォルダーをデプロイの一部として含める必要はありません。アプリケーションのデプロイ後、**npm install** コマンドによって **package.json** ファイルが解析され、表示されているすべての依存関係がインストールされます。
 
-During development, you can use the **--save**, **--save-dev**, or **--save-optional** parameters when installing modules to add an entry for the module to your **package.json** file automatically. For more information, see [npm-install](https://npmjs.org/doc/install.html).
+開発中、モジュールをインストールするときに **--save**、**--save-dev**、または **--save-optional** パラメーターを使用すると、モジュールのエントリを **package.json** ファイルに自動的に追加することができます。詳細については、「[npm-install](https://npmjs.org/doc/install.html)」を参照してください。
 
-One potential problem with the **package.json** file is that it only specifies the version for top level dependencies. Each module installed may or may not specify the version of the modules it depends on, and so it is possible that you may end up with a different dependency chain than the one used in development. 
+**package.json** ファイルの潜在的な問題の 1 つが、このファイルでは最上位レベルの依存関係のバージョンしか指定されないという点です。インストールされているモジュールはそれぞれ、自身が依存しているモジュールのバージョンを指定することがあれば、指定しないこともあります。したがって、依存関係チェーンが、開発時に使用されたもの以外になる可能性があります。
 
 > [WACOM.NOTE]
-> When deploying to an Azure Web Site, if your <b>package.json</b> file references a native module you will see an error similar to the following when publishing the application using Git:
+> Azure の Web サイトへのデプロイ中、<b>package.json</b> ファイルがネイティブ モジュールを参照すると、Git を使用してアプリケーションを発行するときに次のようなエラーが表示されます。
 
 >		npm ERR! module-name@0.6.0 install: 'node-gyp configure build'
 
 >		npm ERR! 'cmd "/c" "node-gyp configure build"' failed with 1	
 
 
-###Using a npm-shrinkwrap.json file
+###npm-shrinkwrap.json ファイルの使用
 
-The **npm-shrinkwrap.json** file is an attempt to address the module versioning limitations of the **package.json** file. While the **package.json** file only includes versions for the top level modules, the **npm-shrinkwrap.json** file contains the version requirements for the full module dependency chain.
+**npm-shrinkwrap.json** ファイルは、**package.json** ファイルのモジュール バージョン管理制限への対処を試みるものです。**package.json** ファイルに含まれるのは最上位レベルのモジュールのバージョンのみですが、**npm-shrinkwrap.json** ファイルには、完全なモジュール依存関係チェーンのバージョン要件が含まれます。
 
-When your application is ready for production, you can lock-down version requirements and create an **npm-shrinkwrap.json** file by using the **npm shrinkwrap** command. This will use the versions currently installed in the **node\_modules** folder, and record these to the **npm-shrinkwrap.json** file. After the application has been deployed to the hosting environment, the **npm install** command is used to parse the **npm-shrinkwrap.json** file and install all the dependencies listed. For more information, see [npm-install](https://npmjs.org/doc/install.html).
+アプリケーションの運用の準備ができたら、バージョン要件を整理して確定し、**npm shrinkwrap** コマンドを使用して **npm-shrinkwrap.json** ファイルを作成できます。これにより **node\_modules** フォルダーに現在インストールされているバージョンが使用され、これらのバージョンが **npm-shrinkwrap.json** ファイルに記録されます。ホスティング環境へのアプリケーションのデプロイ後、**npm install** コマンドによって **npm-shrinkwrap.json** ファイルが解析され、表示されているすべての依存関係がインストールされます。詳細については、「[npm-install](https://npmjs.org/doc/install.html)」を参照してください。
 
 > [WACOM.NOTE]
->When deploying to an Azure Web Site, if your <b>npm-shrinkwrap.json</b> file references a native module you will see an error similar to the following when publishing the application using Git:
+>Azure の Web サイトへのデプロイ中、<b>npm-shrinkwrap.json</b> ファイルがネイティブ モジュールを参照すると、Git を使用してアプリケーションを発行するときに次のようなエラーが表示されます。
 		
 >		npm ERR! module-name@0.6.0 install: 'node-gyp configure build'
 
 >		npm ERR! 'cmd "/c" "node-gyp configure build"' failed with 1
 
 
-##Next Steps
+##次のステップ
 
-Now that you understand how to use Node.js modules with Azure, learn how to [specify the Node.js version], [build and deploy a Node.js Web Site], and [How to use the Azure Command-Line Tools for Mac and Linux].
+Azure で Node.js モジュールを使用する方法が理解できたら、[Node.js バージョンを指定]する方法、[Node.js Web サイトを構築、デプロイする方法]、[Mac および Linux 用 Azure コマンド ライン ツールを使用する方法]に関する各トピックを参照してください。
 
-[specify the Node.js version]: /en-us/develop/nodejs/common-tasks/specifying-a-node-version/
-[How to use the Azure Command-Line Tools for Mac and Linux]: /en-us/develop/nodejs/how-to-guides/command-line-tools/
-[build and deploy a Node.js Web Site]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)/
-[Node.js Web Application with Storage on MongoDB (MongoLab)]: /en-us/develop/nodejs/tutorials/website-with-mongodb-mongolab/
-[Publishing with Git]: /en-us/develop/nodejs/common-tasks/publishing-with-git/
-[Build and deploy a Node.js application to an Azure Cloud Service]: /en-us/develop/nodejs/tutorials/getting-started/
+[Node.js バージョンを指定]: /ja-jp/develop/nodejs/common-tasks/specifying-a-node-version/
+[Mac および Linux 用 Azure コマンド ライン ツールを使用する方法]: /ja-jp/develop/nodejs/how-to-guides/command-line-tools/
+[Node.js Web サイトの構築と展開]: /ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
+[MongoDB (MongoLab) のストレージを使用する Node.js Web アプリケーション]: /ja-jp/develop/nodejs/tutorials/website-with-mongodb-mongolab/
+[Git を使用した発行]: /ja-jp/develop/nodejs/common-tasks/publishing-with-git/
+[Node.js Web サイトを構築、デプロイする方法]: /ja-jp/develop/nodejs/tutorials/getting-started/
+
 
 

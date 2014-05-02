@@ -1,51 +1,51 @@
-<properties linkid="manage-services-hdinsight-howto-pig" urlDisplayName="Use Pig with HDInsight" pageTitle="Use Pig with HDInsight | Azure" metaKeywords="" description="Learn how to use Pig with HDInsight. Write Pig Latin statements to analyze an application log file, and run queries on the data to generate output for analysis." metaCanonical="" services="hdinsight" documentationCenter="" title="Use Pig with HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
+<properties linkid="manage-services-hdinsight-howto-pig" urlDisplayName="HDInsight での Pig の使用" pageTitle="HDInsight での Pig の使用 | Azure" metaKeywords="" description="HDInsight で Pig を使用する方法を学習します。Pig Latin ステートメントを記述してアプリケーション ログ ファイルを分析し、データに対してクエリを実行して分析用の出力を生成します。" metaCanonical="" services="hdinsight" documentationCenter="" title="HDInsight での Pig の使用" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
 
 
-# Use Pig with HDInsight #
+# HDInsight での Pig の使用#
 
 
-[Apache *Pig*][apachepig-home] provides a scripting language to execute *MapReduce* jobs as an alternative to writing Java code. In this tutorial, you will use PowerShell to run some Pig Latin statements to analyze an Apache log4j log file, and run various queries on the data to generate output. This tutorial demonstrates the advantages of Pig, and how it can be used to simplify MapReduce jobs. 
+[Apache *Pig*][apachepig-home] には *MapReduce* ジョブを実行するためのスクリプト言語が備わっており、Java コードの代わりに使用できます。このチュートリアルでは、PowerShell を使用して Pig Latin ステートメントを実行して Apache log4j ログ ファイルを分析し、データに対してさまざまなクエリを実行して出力を生成します。このチュートリアルでは Pig の利点を紹介し、Pig を使用することで MapReduce ジョブがどのように簡略化されるかを実証します。
 
-Pig's scripting language is called *Pig Latin*. Pig Latin statements follow this general flow:   
+Pig のスクリプト言語を *Pig Latin* といいます。Pig Latin ステートメントは一般的なフローに従います。
 
-- **Load**: Read data to be manipulated from the file system
-- **Transform**: Manipulate the data 
-- **Dump or store**: Output data to the screen or store for processing
+- **Load**: 操作対象のデータをファイル システムから読み込みます。
+- **Transform**: データを操作します。
+- **Dump または store**: データを画面に出力します。または、処理できるように保存します。
 
-For more information on Pig Latin, see [Pig Latin Reference Manual 1][piglatin-manual-1] and [Pig Latin Reference Manual 2][piglatin-manual-2].
+Pig Latin の詳細については、「[Pig Latin Reference Manual 1][piglatin-manual-1]」および「[Pig Latin Reference Manual 2][piglatin-manual-2]」を参照してください。
 
-**Prerequisites**
+**前提条件**
 
-Note the following requirements before you begin this article:
+この記事を読み始める前に、次の要件に気を付けてください。
 
-* An Azure HDInsight cluster. For instructions, see [Get started with Azure HDInsight][hdinsight-getting-started] or [Provision HDInsight clusters][hdinsight-provision].
-* Install and configure Azure PowerShell. For instructions, see [Install and configure Azure PowerShell][powershell-install-configure].
+* Azure HDInsight クラスター。手順については、「[Azure HDInsight の概要][hdinsight-getting-started]」または「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」を参照してください。
+* Azure PowerShell のインストールおよび構成。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。
 
-**Estimated time to complete:** 30 minutes
+**所要時間: **30 分
 
-##In this article
+##この記事の内容
 
-* [The Pig usage case](#usage)
-* [Upload data files to Azure Blob storage](#uploaddata)
-* [Understand Pig Latin](#understand)
-* [Run Pig Latin using PowerShell](#powershell)
-* [Next steps](#nextsteps)
+* [Pig の利用例](#usage)
+* [Azure BLOB ストレージへのデータ ファイルのアップロード](#uploaddata)
+* [Pig Latin について](#understand)
+* [PowerShell を使用して Pig Latin を実行](#powershell)
+* [次の手順](#nextsteps)
  
-##<a id="usage"></a>The Pig usage case
-Databases are great for small sets of data and low latency queries. However, when it comes to big data and large data sets in terabytes, traditional SQL databases are not the ideal solution. As database load increases and performance degrades, historically, database administrators have had to buy bigger hardware. 
+##<a id="usage"></a>Pig の利用例
+データベースは、データ量がそれほど多くなく、クエリの待ち時間が短い場合に適しています。数テラバイトもある大規模なデータセットやビッグ データとなると、従来の SQL データベースでは十分に対応できません。これまでデータベース管理者は、データベースの負荷が増大し、パフォーマンスが低下したとき、より大型のハードウェアを購入することでスケールアップを図ってきました。
 
-Generally, all applications save errors, exceptions and other coded issues in a log file, so administrators can review the problems, or generate certain metrics from the log file data. These log files usually get quite large in size, containing a wealth of data that must be processed and mined. 
+通常、アプリケーションで発生したエラー、例外、その他のコーディング問題はすべてログ ファイルに保存されます。管理者はログ ファイルのデータを参照して問題点を確認したり、指標を生成したりします。多くの場合、これらのログ ファイルはサイズが非常に大きくなり、さらにその膨大なログ データを処理、分析しなければなりません。
 
-Log files are a good example of big data. Working with big data is difficult using relational databases and statistics/visualization packages. Due to the large amounts of data and the computation of this data, parallel software running on tens, hundreds, or even thousands of servers is often required to compute this data in a reasonable time. Hadoop provides a MapReduce framework for writing applications that processes large amounts of structured and unstructured data in parallel across large clusters of machines in a very reliable and fault-tolerant manner.
+ログ ファイルはまさにビッグ データといえます。リレーショナル データベースや統計/視覚化パッケージではビッグ データを適切に処理できません。こうした膨大なデータを実用的な速度で処理するには、数十台、数百台、あるいは数千台のサーバー上でソフトウェアを同時に実行する必要があります。Hadoop は、膨大な構造化データと非構造化データを処理するアプリケーションを記述するための MapReduce フレームワークです。クラスター化された多数のコンピューターでこれらのデータを並列処理することで、高い信頼性と耐障害性を実現します。
 
-Using Pig reduces the time needed to write mapper and reducer programs. This means that no Java is required, and there is no need for boilerplate code. You also have the flexibility to combine Java code with Pig. Many complex algorithms can be written in less than five lines of human-readable Pig code.
+Pig を使用すると、mapper プログラムと reducer プログラムの記述に要する時間を短縮できます。つまり、Java は不要であり、従来のようなコードも必要ありません。Java コードと Pig を組み合わせることもできます。多くの複雑なアルゴリズムを、人間による判読が可能な数行の Pig コードで記述できます。
 
-The visual representation of what you will accomplish in this article is shown in the following two figures. These figures show a representative sample of the dataset to illustrate the flow and transformation of the data as you run through the lines of Pig code in the script. The first figure shows a sample of the log4j file:
+次の 2 つの図は、この記事で実行する処理を視覚化したものです。これらの図はデータセットの一部を例にとり、スクリプト内の Pig コード行を実行したときデータがどように処理されるかを示しています。最初の図は log4j ファイルのサンプルです。
 
-![Whole File Sample][image-hdi-log4j-sample]
+![サンプル ファイル全体][image-hdi-log4j-sample]
 
-The second figure shows the data transformation:
+2 つ目の図はデータ変換を示しています。
 
 ![HDI.PIG.Data.Transformation][image-hdi-pig-data-transformation]
 
@@ -76,21 +76,21 @@ The second figure shows the data transformation:
 
 
 
-##<a id="uploaddata"></a>Upload data file to the Blob storage
+##<a id="uploaddata"></a>BLOB ストレージへのデータ ファイルのアップロード
 
-HDInsight uses an Azure Blob storage container as the default file system.  For more information, see [Use Azure Blob Storage with HDInsight][hdinsight-storage]. In this article you will use a log4j sample file distributed with the HDInsight cluster stored in *\example\data\sample.log*. For information on uploading data, see [Upload data to HDInsight][hdinsight-upload-data].
+HDInsight は、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。この記事では、HDInsight クラスターと一緒に配布されている log4j サンプル ファイル (*\example\data\sample.log*) を使用します。データのアップロードについては、「[データを HDInsight へアップロードする方法][hdinsight-upload-data]」を参照してください。
 
-To access files, use the following syntax: 
+ファイルにアクセスするには、次の構文を使用します。
 
 		wasb[s]://[<containerName>@<storageAccountName>.blob.core.windows.net]/<path>/<filename>
 
-For example:
+次に例を示します。
 
 		wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log
 
-replace *mycontainer* with the container name, and *mystorage* with the Blob storage account name. 
+*mycontainer* を実際のコンテナー名に置き換え、*mystorage* を BLOB ストレージ アカウント名に置き換えてください。
 
-Because the file is stored in the default file system, you can also access the file using the following:
+ファイルは既定のファイル システムに保存されるので、次のように指定してファイルにアクセスすることもできます。
 
 		wasb:///example/data/sample.log
 		/example/data/sample.log
@@ -98,16 +98,16 @@ Because the file is stored in the default file system, you can also access the f
 
 
 	
-##<a id="understand"></a> Understand Pig Latin
+##<a id="understand"></a> Pig Latin について
 
-In this session, you will review some Pig Latin statements, and the results after running the statements. In the next session, you will run PowerShell to execute the Pig statements.
+ここでは、いくつかの Pig Latin ステートメントと、その実行結果を確認します。次のセッションでは、PowerShell を使用して Pig ステートメントを実行します。
 
-1. Load data from the file system, and then display the results 
+1. ファイル システムからデータを読み込んで、結果を表示します。
 
 		LOGS = LOAD 'wasb:///example/data/sample.log';
 		DUMP LOGS;
 	
-	The output is similar to the following:
+	次のように出力されます。
 	
 		(2012-02-05 19:23:50 SampleClass5 [TRACE] verbose detail for id 313393809)
 		(2012-02-05 19:23:50 SampleClass6 [DEBUG] detail for id 536603383)
@@ -122,16 +122,16 @@ In this session, you will review some Pig Latin statements, and the results afte
 		(2012-02-05 19:23:50 SampleClass9 [TRACE] verbose detail)
 		...
 
-2. Go through each line in the data file to find a match on the 6 log levels:
+2. データ ファイルの各行を調べ、6 つのログ レベルと照合します。
 
 		LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
  
-3. Filter out the rows that do not have a match. For example, the empty rows.
+3. 一致しない行を除去します。たとえば、空の行です。
 
 		FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
 		DUMP FILTEREDLEVELS;
 
-	The output is similar to the following:
+	次のように出力されます。
 
 		(DEBUG)
 		(TRACE)
@@ -146,12 +146,12 @@ In this session, you will review some Pig Latin statements, and the results afte
 		(TRACE)
 		...
 
-4. Group all of the log levels into their own row:
+4. ログ レベルのすべてをそれぞれ独自の行にまとめます。
 
 		GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
 		DUMP GROUPEDLEVELS;
 
-	The output is similar to the following:
+	次のように出力されます。
 
 		(TRACE),(TRACE),(TRACE),(TRACE),(TRACE),(TRACE),(TRACE),(TRACE),
 		(TRACE),(TRACE),(TRACE),(TRACE),(TRACE),(TRACE),(TRACE),(TRACE),
@@ -166,12 +166,12 @@ In this session, you will review some Pig Latin statements, and the results afte
 		(TRACE), ...
 
 
-5. For each group, count the occurrences of log levels. These is the frequencies of each log level:
+5. グループごとにログ レベルの出現回数をカウントします。これらは各ログ レベルの頻度になります。
 
 		FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
 		DUMP FREQUENCIES;
  
-	The output is similar to the following:
+	次のように出力されます。
 
 		(INFO,3355)
 		(WARN,361)
@@ -180,12 +180,12 @@ In this session, you will review some Pig Latin statements, and the results afte
 		(FATAL,37)
 		(TRACE,29950)
 
-6. Sort the frequencies in descending order:
+6. 出現頻度が多い順に並べ替えます。
 
 		RESULT = order FREQUENCIES by COUNT desc;
 		DUMP RESULT;   
 
-	The output is similar to the following: 
+	次のように出力されます。
 
 		(TRACE,29950)
 		(DEBUG,15608)
@@ -195,24 +195,24 @@ In this session, you will review some Pig Latin statements, and the results afte
 		(FATAL,37)
 
 
-##<a id="powershell"></a>Run Pig Latin using PowerShell
+##<a id="powershell"></a>PowerShell を使用して Pig Latin を実行
 
-This section provides instructions for using PowerShell cmdlets. Before you go through this section, you must first setup the local environment, and configure the connection to Azure. For details, see [Get started with Azure HDInsight][hdinsight-getting-started] and [Administer HDInsight using PowerShell][hdinsight-admin-powershell].
+ここでは PowerShell コマンドレットの使用手順を示します。このセクションを読み進める前に、まずローカル環境をセットアップし、Azure への接続を構成する必要があります。詳細については、「[Azure HDInsight の概要][hdinsight-getting-started]」および「[PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]」を参照してください。
 
 
-**To run Pig Latin using PowerShell**
+**PowerShell を使用して Pig Latin を実行するには**
 
-1. Open an Azure PowerShell console windows. For instructions, see [Install and configure Azure PowerShell][powershell-install-configure].
-2. Run the following command to connect to your Azure subscription:
+1. Azure PowerShell コンソール ウィンドウを開きます。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。
+2. 次のコマンドを実行して、Azure サブスクリプションに接続します。
 
 		Add-AzureAccount
 
-	You will be prompted to enter your Azure account credentials.
-2. Set the variable in the following script, and run it:
+	Azure アカウント資格情報の入力を求められます。
+2. 次のスクリプトで変数を設定して、スクリプトを実行します。
 
 		$clusterName = "<HDInsightClusterName>" 
 
-3. Run the following commands to define the Pig Latin query string:
+3. 次のコマンドを実行して、Pig Latin クエリ文字列を定義します。
 
 		# Create the Pig job definition
 		$0 = '$0';
@@ -226,27 +226,27 @@ This section provides instructions for using PowerShell cmdlets. Before you go t
 		
 		$pigJobDefinition = New-AzureHDInsightPigJobDefinition -Query $QueryString 
 
-	You can also use the -File switch to specify a Pig script file on HDFS.
+	-File スイッチを使用して、HDFS 上の Pig スクリプト ファイルを指定することもできます。
 
-4. Run the following script to submit the Pig job:
+4. 次のスクリプトを実行して、Pig ジョブを送信します。
 		
 		# Submit the Pig job
 		Select-AzureSubscription $subscriptionName
 		$pigJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $pigJobDefinition 
 
-5. Run the following script to wait for the Pig job to complete:		
+5. 次のスクリプトを実行して、Pig ジョブを送信し、ジョブの完了を待ちます。		
 
 		# Wait for the Pig job to complete
 		Wait-AzureHDInsightJob -Job $pigJob -WaitTimeoutInSeconds 3600
 
-6. Run the following script to print the Pig job output:
+6. 次のスクリプトを実行して、Pig ジョブの出力を表示します。
 		
 		# Print the standard error and the standard output of the Pig job.
 		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $pigJob.JobId -StandardOutput
 
 	![HDI.Pig.PowerShell][image-hdi-pig-powershell]
 
-	The Pig job calculates the frequencies of different log types.
+	Pig ジョブがログの種類の出現回数を計算します。
 
 
 
@@ -269,14 +269,14 @@ This section provides instructions for using PowerShell cmdlets. Before you go t
 
  
 
-##<a id="nextsteps"></a>Next steps
+##<a id="nextsteps"></a>次のステップ
 
-While Pig allows you to perform data analysis, other languages included with HDInsight may be of interest to you also. Hive provides a SQL-like query language that allows you to easily query against data stored in HDInsight, while MapReduce jobs written in Java allow you to perform complex data analysis. For more information, see the following:
+Pig ではデータを分析できますが、HDInsight には便利なその他の言語も用意されています。Hive は SQL に似たクエリ言語であり、HDInsight に保存されているデータに対して簡単にクエリを実行できます。また、Java で記述された MapReduce ジョブでは複雑なデータ分析を実行できます。詳細については、次のトピックを参照してください。
 
 
-* [Get started with Azure HDInsight][hdinsight-getting-started]
-* [Upload data to HDInsight][hdinsight-upload-data]
-* [Use Hive with HDInsight][hdinsight-using-hive]
+* [Azure HDInsight の概要][hdinsight-getting-started]
+* [データを HDInsight へアップロードする方法][hdinsight-upload-data]
+* [HDInsight での Hive の使用][hdinsight-using-hive]
 
 
 
@@ -285,18 +285,20 @@ While Pig allows you to perform data analysis, other languages included with HDI
 [apachepig-home]: http://pig.apache.org/
 
 
-[hdinsight-storage]: /en-us/manage/services/hdinsight/howto-blob-store/
-[hdinsight-upload-data]: /en-us/manage/services/hdinsight/howto-upload-data-to-hdinsight/
-[hdinsight-getting-started]: /en-us/manage/services/hdinsight/get-started-hdinsight/
-[hdinsight-admin-powershell]: /en-use/manage/services/hdinsight/administer-hdinsight-using-powershell/
+[hdinsight-storage]: /ja-jp/manage/services/hdinsight/howto-blob-store/
+[hdinsight-upload-data]: /ja-jp/manage/services/hdinsight/howto-upload-data-to-hdinsight/
+[hdinsight-getting-started]: /ja-jp/manage/services/hdinsight/get-started-hdinsight/
+[hdinsight-admin-powershell]: /ja-jp/manage/services/hdinsight/administer-hdinsight-using-powershell/
 
-[hdinsight-using-hive]: /en-us/manage/services/hdinsight/using-hive-with-hdinsight/
+[hdinsight-using-hive]: /ja-jp/manage/services/hdinsight/using-hive-with-hdinsight/
 
-[hdinsight-provision]: /en-us/manage/services/hdinsight/provision-hdinsight-clusters/
-[hdinsight-configure-powershell]: /en-us/manage/services/hdinsight/install-and-configure-powershell-for-hdinsight/ 
+[hdinsight-provision]: /ja-jp/manage/services/hdinsight/provision-hdinsight-clusters/
+[hdinsight-configure-powershell]: /ja-jp/manage/services/hdinsight/install-and-configure-powershell-for-hdinsight/ 
 
-[Powershell-install-configure]: /en-us/documentation/articles/install-configure-powershell/
+[Powershell-install-configure]: /ja-jp/documentation/articles/install-configure-powershell/
 
 [image-hdi-log4j-sample]: ./media/hdinsight-use-pig/HDI.wholesamplefile.png
 [image-hdi-pig-data-transformation]: ./media/hdinsight-use-pig/HDI.DataTransformation.gif
 [image-hdi-pig-powershell]: ./media/hdinsight-use-pig/hdi.pig.powershell.png  
+
+

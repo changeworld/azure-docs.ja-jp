@@ -1,121 +1,121 @@
-<properties linkid="develop-mobile-tutorials-get-started-with-data-html" urlDisplayName="Get Started with Data (HTML5)" pageTitle="Get started with data (HTML 5) | Mobile Dev Center" metaKeywords="" description="Learn how to get started using Mobile Services to leverage data in your HTML app." metaCanonical="" services="" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="glenga" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-tutorials-get-started-with-data-html" urlDisplayName="データの使用 (HTML5)" pageTitle="データの使用 (HTML 5) | モバイル デベロッパー センター" metaKeywords="" description="モバイル サービスを使用して HTML アプリケーションのデータを活用する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="モバイル サービスでのデータの使用" authors="glenga" solutions="" manager="" editor="" />
 
 
 
 
-# Get started with data in Mobile Services
-<div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/en-us/develop/mobile/tutorials/get-started-with-data-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-android" title="Android">Android</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-html" title="HTML" class="current">HTML</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android" title="Xamarin.Android">Xamarin.Android</a> 
+# モバイル サービスでのデータの使用
+<div class="dev-center-tutorial-selector sublanding">
+	<a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-js" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-wp8" title="Windows Phone">Windows Phone</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-ios" title="iOS">iOS</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-android" title="Android">Android</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-html" title="HTML" class="current">HTML</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-android" title="Xamarin.Android">Xamarin.Android</a> 
 </div>	
 
 
-<p>This topic shows you how to use Azure Mobile Services to leverage data in an HTML app. In this tutorial, you will download an app that stores data in memory, create a new mobile service, integrate the mobile service with the app, and then login to the Azure Management Portal to view changes to data made when running the app.</p>
+<p>このトピックでは、Azure のモバイル サービスを使用して HTML アプリケーションのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにログインして、アプリケーションの実行中にデータに加えられた変更を表示します。</p>
 
 
-<div class="dev-callout"><b>Note</b>
-<p>This tutorial is intended to help you better understand how Mobile Services enables you to use Azure to store and retrieve data from an HTML app. As such, this topic walks you through many of the steps that are completed for you in the Mobile Services quickstart. If this is your first experience with Mobile Services, consider first completing the tutorial <a href="/en-us/develop/mobile/tutorials/get-started-html">Get started with Mobile Services</a>.</p>
+<div class="dev-callout"><b>注</b>
+<p>このチュートリアルの目的は、モバイル サービスが HTML アプリケーションのデータを Azure に格納および取得できるようにするしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル「<a href="/ja-jp/develop/mobile/tutorials/get-started-html">モバイル サービスの使用</a>」を完了することをお勧めします。</p>
 </div>
 
-This tutorial walks you through these basic steps:
+このチュートリアルでは、次の基本的な手順について説明します。
 
-1. [Download the HTML app project]
-2. [Create the mobile service]
-3. [Add a data table for storage]
-4. [Update the app to use Mobile Services]
-5. [Test the app against Mobile Services]
+1. [HTML アプリ プロジェクトのダウンロード]
+2. [モバイル サービスの作成]
+3. [ストレージのデータ テーブルの追加]
+4. [モバイル サービスを使用するためのアプリケーションの更新]
+5. [モバイル サービスに対するアプリケーションのテスト]
 
-<div class="dev-callout"><strong>Note</strong> <p>To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-html%2F" target="_blank">Azure Free Trial</a>.</p></div> 
+<div class="dev-callout"><strong>注</strong><p> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-html%2F" target="_blank">Azure の無料評価版のサイト</a>を参照してください。</p></div>
 
-###Additional requirements
+###その他の要件
 
-You can host the GetStartedWithData app on any web server. However, for your convenience scripts have been provided that enable you to run the app on `http://localhost:8000`.
+GetStartedWithData アプリケーションは、任意の Web サーバーでホストできます。ただし、便宜を図るために、アプリケーションを `http://localhost:8000` で実行できるようにするスクリプトが提供されています。
  
-+ To use localhost, this tutorial requires that you have one of the following web servers running on your local computer:
++ localhost を使用するには、ローカル コンピューター上で次のいずれかの Web サーバーが実行されている必要があります。
 
-	+  **On Windows**: IIS Express. IIS Express is installed by the [Microsoft Web Platform Installer].   
-	+  **On MacOS X**: Python, which should already be installed.
-	+  **On Linux**: Python. You must install the [latest version of Python]. 
+	+  **Windows**: IIS ExpressIIS Express は、[Microsoft Web プラットフォーム インストーラー]によってインストールされます。
+	+  **MacOS X**: Python。既にインストールされています。
+	+  **Linux**: Python。[最新バージョンの Python] をインストールする必要があります。
 	
-	You can use any web server to host the app, but these are the web servers that are supported by the downloaded scripts.  
+	このアプリケーションは任意の Web サーバーを使用してホストすることができますが、これらの Web サーバーは、ダウンロードしたスクリプトでサポートされています。
 
-+ A web browser that supports HTML5.
++ HTML5 をサポートする Web ブラウザー。
 
-<h2><a name="download-app"></a><span class="short-header">Download the project</span>Download the GetStartedWithData project</h2>
+<h2><a name="download-app"></a><span class="short-header">プロジェクトのダウンロード</span>GetStartedWithData プロジェクトのダウンロード</h2>
 
-This tutorial is built on the [GetStartedWithData app], which is an HTML5 app. The UI for this app is identical to the app generated by the Mobile Services quickstart, except that added items are stored locally in memory. 
+このチュートリアルは、HTML5 アプリケーションの [GetStartedWithData アプリケーション]に基づいています。このアプリケーションの UI は、追加された項目がメモリにローカルに格納される点を除き、モバイル サービスのクイック スタートで生成したアプリケーションと同じです。
 
-1. [Download the HTML app project files][GetStartedWithData app].
+1. [HTML アプリケーション プロジェクト ファイルをダウンロードします][GetStartedWithData app]。
 
-2. In an HTML editor, open the downloaded project and examine the app.js file.
+2. HTML エディターで、ダウンロードしたプロジェクトを開き、app.js ファイルを確認します。
 
-   	Notice that added items are stored in an in-memory **Array** object (**staticItems**). Refresh the page, and the data disappears. It is not persisted.
+   	追加された項目はメモリ内の **Array** オブジェクト (**staticItems**) に格納される点に注目してください。ページを更新すると、データは消えます。データは保持されません。
 
-3. Launch one of the following command files from the **server** subfolder.
+3. **server** サブフォルダーから次のいずれかのコマンド ファイルを実行します。
 
-	+ **launch-windows** (Windows computers) 
-	+ **launch-mac.command** (Mac OS X computers)
-	+ **launch-linux.sh** (Linux computers)
+	+ **launch-windows** (Windows コンピューター)
+	+ **launch-mac.command** (Mac OS X コンピューター)
+	+ **launch-linux.sh** (Linux コンピューター)
 
-	<div class="dev-callout"><b>Note</b>
-		<p>On a Windows computer, type `R` when PowerShell asks you to confirm that you want to run the script. Your web browser might warn you to not run the script because it was downloaded from the internet. When this happens, you must request that the browser proceed to load the script.</p>
+	<div class="dev-callout"><b>注</b>
+		<p>Windows コンピューターでは、PowerShell からスクリプトの実行の確認を求められた場合は、「`R`」と入力します。Web ブラウザーでは、インターネットからダウンロードしたスクリプトであるため、実行しないよう警告されることがあります。その場合は、ブラウザーがスクリプトの読み込みを開始するよう要求する必要があります。</p>
 	</div>
 	
-	This starts a web server on your local computer to host the new app.
+	これにより、新しいアプリケーションをホストする Web サーバーがローカル コンピューター上で起動します。
 
-4. Open the URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> in a web browser to start the app.
+4. Web ブラウザーで URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> を開いて、アプリケーションを開始します。
 
-5. In the app, type meaningful text, such as _Complete the tutorial_, in **Enter new task**, and then click **Add**.
+5. アプリケーションで、意味のあるテキスト (たとえば、_Complete the tutorial_) を **[Enter new task]** に入力し、**[Add]** をクリックします。
 
    	![][0]  
 
-   	Notice that the saved text is added to the **staticItems** array, and the page is refreshed to display the new item.
+   	保存したテキストが **staticItems** 配列に追加され、ページが更新されて新しい項目が表示されます。
 
-<h2><a name="create-service"></a><span class="short-header">Create mobile service</span>Create a new mobile service in the Management Portal</h2>
+<h2><a name="create-service"></a><span class="short-header">モバイル サービスの作成</span>管理ポータルでの新しいモバイル サービスの作成</h2>
 
 [WACOM.INCLUDE [mobile-services-create-new-service-data](../includes/mobile-services-create-new-service-data.md)]
 
-<h2><a name="add-table"></a><span class="short-header">Add a new table</span>Add a new table to the mobile service</h2>
+<h2><a name="add-table"></a><span class="short-header">新しいテーブルの追加</span>モバイル サービスへの新しいテーブルの追加</h2>
 
-To be able to store app data in the new mobile service, you must first create a new table in the associated SQL Database instance.
+アプリケーション データを新しいモバイル サービスに格納できるようにするには、最初に新しいテーブルを関連付けられた SQL データベース インスタンスに作成する必要があります。
 
-1. In the Management Portal, click **Mobile Services**, and then click the mobile service that you just created.
+1. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
-2. Click the **Data** tab, then click **+Create**.
+2. **[データ]** タブをクリックし、**[作成]** をクリックします。
 
    	![][5]
 
-   	This displays the **Create new table** dialog.
+   	**[新しいテーブルの作成]** ダイアログ ボックスが表示されます。
 
-3. In **Table name** type _TodoItem_, then click the check button.
+3. **[テーブル名]** に「_TodoItem_」と入力し、チェック ボタンをクリックします。
 
   	![][6]
 
-  	This creates a new storage table **TodoItem** with the default permissions set. This means that anyone with the application key, which is distributed with your app, can access and change data in the table.
+  	これにより、既定のアクセス許可が設定された新しいストレージ テーブル **TodoItem** が作成されます。これは、アプリケーションと共に配布されるアプリケーション キーを使用してだれもがテーブル内のデータにアクセスし、変更を加えることができることを表します。
 
     <div class="dev-callout"> 
-	<b>Note</b> 
-	<p>The same table name is used in Mobile Services quickstart. However, each table is created in a schema that is specific to a given mobile service. This is to prevent data collisions when multiple mobile services use the same database.</p> 
+	<b>注</b>
+	<p>モバイル サービスのクイック スタートでも同じテーブル名が使用されています。ただし、それぞれのテーブルは、特定のモバイル サービスに固有のスキーマ内で作成されています。これには、複数のモバイル サービスで同じデータベースを使用した場合にデータの競合を回避する目的があります。</p>
 	</div>
 
-4. Click the new **TodoItem** table and verify that there are no data rows.
+4. 新しい **TodoItem** テーブルをクリックし、データ行がないことを確認します。
 
-5. Click the **Columns** tab. Verify that the following default columns are automatically created for you: 
+5. **[列]** タブをクリックします。次の既定の列が自動的に作成されていることを確認します。
 	
 	<table border="1" cellpadding="10">
  	<tr>
- 	<th>Column Name</th>
- 	<th>Type</th>
- 	<th>Index</th>
+ 	<th>列名</th>
+ 	<th>種類</th>
+ 	<th>インデックス</th>
  	</tr>
  	<tr>
  	<td>id</td>
  	<td>string</td>
- 	<td>Indexed</td>
+ 	<td>インデックス設定済み</td>
  	</tr>
  	<tr>
  	<td>__createdAt</td>
  	<td>date</td>
- 	<td>Indexed</td>
+ 	<td>インデックス設定済み</td>
  	</tr>
  	<tr>
  	<td>__updatedAt</td>
@@ -129,59 +129,59 @@ To be able to store app data in the new mobile service, you must first create a 
  	</tr> 	
  	</table> 
 
-  	This is the minimum requirement for a table in Mobile Services. 
+  	これは、モバイル サービスのテーブルの最小要件です。
 
-    <div class="dev-callout"><b>Note</b>
-	<p>When dynamic schema is enabled on your mobile service, new columns are created automatically when JSON objects are sent to the mobile service by an insert or update operation.</p>
+    <div class="dev-callout"><b>注</b>
+	<p>モバイル サービスで動的スキーマを有効にすると、挿入操作または更新操作によって JSON オブジェクトがモバイル サービスに送信されるときに新しい列が自動的に作成されます。</p>
     </div>
 
-6. In the **Configure** tab, verify that `localhost` is already listed in the **Allow requests from host names** list under **Cross-Origin Resource Sharing (CORS)**. If it's not, type `localhost` in the **Host name** field and then click **Save**.
+6. **[構成]** タブで、**[クロス オリジン リソース共有 (CORS)]** の **[ホスト名からの要求を許可する]** に `localhost` が既に表示されていることを確認します。表示されていない場合は、**[ホスト名]** フィールドに「`localhost`」と入力し、**[保存]** をクリックします。
 
   	![][11]
 
-	<div class="dev-callout"><b>Note</b>
-		<p>If you deploy the quickstart app to a web server other than localhost, you must add the host name of the web server to the <strong>Allow requests from host names</strong> list. For more information, see <a href="http://msdn.microsoft.com/en-us/library/windowsazure/dn155871.aspx" target="_blank">Cross-origin resource sharing</a>.</p>
+	<div class="dev-callout"><b>注</b>
+		<p>localhost 以外の Web サーバーにクイック スタート アプリケーションをデプロイする場合は、<strong>[ホスト名からの要求を許可する]</strong> の一覧に Web サーバーのホスト名を追加する必要があります。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dn155871.aspx" target="_blank">クロス オリジン リソース共有</a>」を参照してください。</p>
 	</div>
 
-You are now ready to use the new mobile service as data storage for the app.
+これで、新しいモバイル サービスをアプリケーションのデータ ストレージとして使用する準備が整いました。
 
-<h2><a name="update-app"></a><span class="short-header">Update the app</span>Update the app to use the mobile service for data access</h2>
+<h2><a name="update-app"></a><span class="short-header">アプリケーションの更新</span>モバイル サービスをデータ アクセスに使用するためのアプリケーションの更新</h2>
 
-Now that your mobile service is ready, you can update the app to store items in Mobile Services instead of the local collection. 
+モバイル サービスの準備が整ったら、ローカル コレクションの代わりにモバイル サービスに項目を格納するようにアプリケーションを更新します。
 
-3. In the Management Portal, click **Mobile Services**, and then click the mobile service you just created.
+3. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
-4. Click the **Dashboard** tab and make a note of the **Site URL**, then click **Manage keys** and make a note of the **Application key**.
+4. **[ダッシュボード]** タブをクリックし、**サイトの URL** をメモに記録します。次に、**[キーの管理]** をクリックし、**アプリケーション キー**をメモに記録します。
 
    	![][8]
 
-  	You will need these values when accessing the mobile service from your app code.
+  	これらの値は、アプリケーション コードからモバイル サービスにアクセスするときに必要になります。
 
-1. In your web editor, open the index.html project file and add the following to the script references for the page:
+1. Web エディターで、index.html プロジェクト ファイルを開き、次のコードをページのスクリプト参照に追加します。
 
         <script src='http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.1.2.min.js'></script>
 
-5. In the editor, open the file app.js, uncomment the following code that defines the **MobileServiceClient** variable, and supply the URL and application key from the mobile service in the **MobileServiceClient** constructor, in that order:
+5. エディターで、app.js ファイルを開き、**MobileServiceClient** 変数を定義している次のコードをコメント解除します。さらに、モバイル サービスの URL とアプリケーション キーを **MobileServiceClient** コンストラクターに順に指定します。
 
 	    var MobileServiceClient = WindowsAzure.MobileServiceClient,
 			client = new MobileServiceClient('AppUrl', 'AppKey'),   		    
 
-  	This creates a new instance of MobileServiceClient that is used to access your mobile service.
+  	これで、モバイル サービスにアクセスするために使用される MobileServiceClient の新しいインスタンスが作成されます。
 
-6. Comment-out the following lines of code:
+6. 次のコード行をコメント アウトします。
 
 		var itemCount = 0;
 		var staticItems = [];
 
-	Data will be stored in the mobile service and not in an in-memory array.
+	データは、メモリ内の配列ではなく、モバイル サービスに格納されます。
 
-6. Uncomment the following line of code:
+6. 次のコード行をコメント解除します。
 
         todoItemTable = client.getTable('todoitem');
 
-   	This code creates a proxy object (**todoItemTable**) for the SQL Database **TodoItem**. 
+   	このコードでは、SQL データベース **TodoItem** のプロキシ オブジェクト (**todoItemTable**) を作成します。
 
-7. Replace the **$('#add-item').submit** event handler with the following code:
+7. **$('#add-item').submit** イベント ハンドラーを次のコードに置き換えます。
 
 		$('#add-item').submit(function(evt) {
 			var textbox = $('#new-item-text'),
@@ -195,9 +195,9 @@ Now that your mobile service is ready, you can update the app to store items in 
 		});
 
 
-  	This code inserts a new item into the table.
+  	このコードでは、新しい項目をテーブルに挿入します。
 
-8. Replace the **refreshTodoItems** method with the following code:
+8. **refreshTodoItems**メソッドを次のコードに置き換えます。
 
 		function refreshTodoItems() {
 
@@ -218,9 +218,9 @@ Now that your mobile service is ready, you can update the app to store items in 
 		}
 	   
 
-   This sends a query to the mobile service that returns all items. The results is iterated over and data is displayed on the page. 
+   これにより、すべての項目を返すクエリがモバイル サービスに送信されます。結果は繰り返し処理され、データがページに表示されます。
 
-9. Replace the **$(document.body).on('change', '.item-text')** and **$(document.body).on('change', '.item-complete')** event handlers with the following code:
+9. **$(document.body).on('change', '.item-text')** イベント ハンドラーと **$(document.body).on('change', '.item-complete')** イベント ハンドラーを次のコードに置き換えます。
         
 		$(document.body).on('change', '.item-text', function() {
 			var newText = $(this).val();
@@ -233,71 +233,71 @@ Now that your mobile service is ready, you can update the app to store items in 
 				.then(refreshTodoItems);
 		});
  
-   	This sends an item update to the mobile service when text is changed or when the box is checked.
+   	これにより、テキストを変更したとき、またはチェック ボックスをオンにしたときに、項目の更新がモバイル サービスに送信されます。
 
-10. Replace the **$(document.body).on('click', '.item-delete')** event handler with the following code:
+10. **$(document.body).on('click', '.item-delete')** イベント ハンドラーを次のコードに置き換えます。
 
 		$(document.body).on('click', '.item-delete', function () {
 			todoItemTable.del({ id: getTodoItemId(this) }).then(refreshTodoItems);
 		});
 
-	This sends a delete to the mobile service when the **Delete** button is clicked.
+	これにより、**[Delete]** ボタンがクリックされたときに削除がモバイル サービスに送信されます。
 
-Now that the app has been updated to use Mobile Services for backend storage, it's time to test the app against Mobile Services.
+バックエンド ストレージのモバイル サービスを使用するようにアプリケーションを更新した後は、モバイル サービスに対してアプリケーションをテストします。
 
-<h2><a name="test-app"></a><span class="short-header">Test the app</span>Test the app against your new mobile service</h2>
+<h2><a name="test-app"></a><span class="short-header">アプリケーションのテスト</span>新しいモバイル サービスに対するアプリケーションのテスト</h2>
 
-4. Reload the URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> in a web browser start the app.
+4. Web ブラウザーで URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> を再読み込みしてアプリケーションを開始します。
 
-    <div class="dev-callout"><b>Note</b>
-	<p>If you need to restart the web server, repeat the steps in the first section.</p>
+    <div class="dev-callout"><b>注</b>
+	<p>Web サーバーを再起動する必要がある場合は、最初のセクションの手順を繰り返してください。</p>
     </div>
 
-2. As before, type text in **Enter new task**, and then click **Add**. 
+2. 前回と同様、**[Enter new task]** にテキストを入力し、**[Add]** をクリックします。
 
-   	This sends a new item as an insert to the mobile service.
+   	これにより、新しい項目が挿入としてモバイル サービスに送信されます。
 
-3. In the [Management Portal], click **Mobile Services**, and then click your mobile service.
+3. [管理ポータル]で、**[モバイル サービス]** をクリックし、対象のモバイル サービスをクリックします。
 
-4. Click the **Data** tab, then click **Browse**.
+4. **[データ]** タブをクリックし、**[参照]** をクリックします。
 
    	![][9]
   
-   	Notice that the **TodoItem** table now contains data, with id values generated by Mobile Services, and that columns have been automatically added to the table to match the TodoItem class in the app.
+   	**TodoItem** テーブルに、モバイル サービスによって生成された ID 値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
 
-5. In the app, check one of the items in the list, then go back to the Browse tab in the portal and click **Refresh**. 
+5. アプリケーションで、リストの項目の 1 つをチェックします。ポータルの [参照] タブに戻り、**[最新の情報に更新]** をクリックします。
 
-  	Notice that the complete value has changed from **false** to **true**.
+  	"complete" 値が **false** から **true** に変更されます。
 
-6. In the app.js project file, locate the **RefreshTodoItems** method and replace the line of code that defines `query` with the following:
+6. app.js プロジェクト ファイルで、**RefreshTodoItems** メソッドを見つけ、`query` を定義しているコード行を次のコード行で置き換えます。
 
    		var query = todoItemTable.where({ complete: false });
 
-7. Load the page again, check another one of the items in the list.
+7. ページをもう一度読み込み、リスト内の別の項目の 1 つをチェックします。
 
-   	Notice that the checked item now disappears from the list. Each update results in a round-trip to the mobile service, which now returns filtered data.
+   	リスト内のチェックされた項目が非表示になります。更新のたびにモバイル サービスへの往復が発生し、その結果、フィルター処理されたデータが返されます。
 
-This concludes the **Get started with data** tutorial.
+これで、**データの使用**に関するチュートリアルはおしまいです。
 
-## <a name="next-steps"> </a>Next steps
+## <a name="next-steps"> </a>次のステップ
 
-This tutorial demonstrated the basics of enabling an HTML app to work with data in Mobile Services. Next, consider completing one of the following tutorials that is based on the GetStartedWithData app that you created in this tutorial:
+このチュートリアルでは、HTML アプリケーションでモバイル サービスのデータを操作できるようにするための基本について説明しました。次は、このチュートリアルで作成した GetStartedWithData アプリケーションに基づく次のいずれかのチュートリアルを行うことをお勧めします。
 
-* [Validate and modify data with scripts]
-  <br/>Learn more about using server scripts in Mobile Services to validate and change data sent from your app.
+* [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]
+  <br/>モバイル サービスでサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
-* [Refine queries with paging]
-  <br/>Learn how to use paging in queries to control the amount of data handled in a single request.
+* [ページングを使用したモバイル サービス クエリの改善]
+  <br/>クエリ内でページングを使用して、単一の要求で渡されるデータの量を制御する方法について説明します。
  
-Once you have completed the data series, learn how to authenticate users of your app try one of these other tutorials by completing [Get started with authentication].
+データ シリーズを完了した後は、アプリのユーザーを認証する方法について学習してください。[認証の使用]に関するチュートリアルを完了して、他のチュートリアルの 1 つを試してください。
 
 <!-- Anchors. -->
-[Download the HTML app project]: #download-app
-[Create the mobile service]: #create-service
-[Add a data table for storage]: #add-table
-[Update the app to use Mobile Services]: #update-app
-[Test the app against Mobile Services]: #test-app
-[Next Steps]:#next-steps
+[HTML アプリ プロジェクトのダウンロード]: #download-app
+[モバイル サービスの作成]: #create-service
+[ストレージのデータ テーブルの追加]: #add-table
+[モバイル サービスを使用するためのアプリケーションの更新]: #update-app
+[モバイル サービスに対するアプリケーションのテスト]: #test-app
+[次のステップ]:#next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-html-get-started-data/mobile-quickstart-startup-html.png
@@ -314,16 +314,17 @@ Once you have completed the data series, learn how to authenticate users of your
 [11]: ./media/mobile-services-html-get-started-data/mobile-services-set-cors-localhost.png
 
 <!-- URLs. -->
-[Validate and modify data with scripts]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-html
-[Refine queries with paging]: /en-us/develop/mobile/tutorials/add-paging-to-data-html
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-html
+[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-html
+[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-html
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-html
 
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Management Portal]: https://manage.windowsazure.com/
-[GetStartedWithData app]:  http://go.microsoft.com/fwlink/?LinkID=286345
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[管理ポータル]: https://manage.windowsazure.com/
+[GetStartedWithData アプリケーション]:  http://go.microsoft.com/fwlink/?LinkID=286345
 
-[Mobile Services HTML/JavaScript How-to Conceptual Reference]: /en-us/develop/mobile/how-to-guides/work-with-html-js-client
+[モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-html-js-client
 
-[Cross-origin resource sharing]: http://msdn.microsoft.com/en-us/library/windowsazure/dn155871.aspx
+[クロス オリジン リソース共有]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn155871.aspx
+
 

@@ -1,24 +1,24 @@
-<properties linkid="develop-media-services-how-to-guides-encrypt-assets" urlDisplayName="Encrypt Assets in Media Services" pageTitle="How to Encrypt Assets in Media Services - Azure" metaKeywords="" description="Learn how to use Microsoft PlayReady Protection to encrypt an asset in Media Services. Code samples are written in C# and use the Media Services SDK for .NET. Code samples are written in C# and use the Media Services SDK for .NET." metaCanonical="" services="media-services" documentationCenter="" title="How to: Protect an Asset with PlayReady Protection" authors="migree" solutions="" manager="" editor="" />
+<properties linkid="develop-media-services-how-to-guides-encrypt-assets" urlDisplayName="メディア サービスでアセットを暗号化する" pageTitle="メディア サービスでアセットを暗号化する方法 - Azure" metaKeywords="" description="Microsoft PlayReady Protection を使用してメディア サービスでアセットを暗号化する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" metaCanonical="" services="media-services" documentationCenter="" title="方法: PlayReady Protection でアセットを保護する" authors="migree" solutions="" manager="" editor="" />
 
 
 
 
 
-<h1><a name="playready"></a>How to: Protect an Asset with PlayReady Protection</h1>
+<h1><a name="playready"></a>方法: PlayReady Protection でアセットを保護する</h1>
 
-This article is one in a series introducing Azure Media Services programming. The previous topic was [How to: Check Job Progress](http://go.microsoft.com/fwlink/?LinkID=301737&clcid=0x409).
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[ジョブの進行状況をチェックする方法に関するページ](http://go.microsoft.com/fwlink/?LinkID=301737&clcid=0x409)を参照してください。
 
-In Azure Media Services you can submit a job that integrates with Microsoft PlayReady Protection to encrypt an asset. The code in this section takes several streaming files from an input folder, creates a task and encrypts them with PlayReady Protection. 
+Azure メディア サービスでは、Microsoft PlayReady Protection と連携してアセットを暗号化するジョブを送信できます。このセクションで紹介するコードは、入力フォルダーから複数のストリーミング ファイルを取得してタスクを作成し、PlayReady Protection を使ってそれらを暗号化します。
 
-The following example shows how to create a simple job to provide PlayReady Protection.
+次の例は、PlayReady Protection を提供する単純なジョブを作成する方法を示しています。
 
-   1. Retrieve configuration data. You can get an example configuration file from the [Task Preset for Azure Media Encryptor](http://msdn.microsoft.com/en-us/library/hh973610.aspx) topic.
-   2. Upload an MP4 input file
-   3. Converts the MP4 file into a Smooth Streaming asset
-   4. Encrypts the asset with PlayReady
-   5. Submits the job
+   1. 構成データを取得します。サンプルの構成ファイルは「[Azure Media Encryptor のタスク プリセット](http://msdn.microsoft.com/ja-jp/library/hh973610.aspx)」トピックから入手できます。
+   2. MP4 入力ファイルをアップロードします。
+   3. MP4 ファイルをスムーズ ストリーミング アセットに変換します。
+   4. アセットを PlayReady で暗号化します。
+   5. ジョブを送信します。
 
-The following code example shows how to implement the steps:
+これらの手順を実装したコード例を次に示します。
 
 <pre><code>
 private static IJob CreatePlayReadyProtectionJob(string inputMediaFilePath, string primaryFilePath, string configFilePath)
@@ -105,11 +105,12 @@ private static IJob CreatePlayReadyProtectionJob(string inputMediaFilePath, stri
 }
 
 </code></pre>
-For more information on PlayReady protection, see:
+PlayReady Protection の詳細については、以下を参照してください。
 <ul>
-<li><a href="http://msdn.microsoft.com/en-us/library/dn189154.aspx">Protecting Assets with Microsoft PlayReady</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/dn189154.aspx">Microsoft PlayReady でのアセットの保護</a></li>
 <li><a href="http://www.microsoft.com/PlayReady/">Microsoft PlayReady</a></li>
 </ul>
 
-<h2>Next Steps</h2>
-Now that you know how to protect asssets with Media services, go to the [How To Manage Assets](http://go.microsoft.com/fwlink/?LinkID=301943&clcid=0x409) topic.
+<h2>次のステップ</h2>
+これで、メディア サービスでアセットを保護する方法を学習できました。次は、「[メディア サービスのコンテンツの管理方法](http://go.microsoft.com/fwlink/?LinkID=301943&clcid=0x409)」トピックに進みます。
+

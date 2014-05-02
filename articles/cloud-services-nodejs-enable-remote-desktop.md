@@ -1,119 +1,116 @@
-<properties linkid="dev-node-remotedesktop" urlDisplayName="Enable Remote Desktop" pageTitle="Enable remote desktop for cloud services (Node.js)" metaKeywords="Azure Node.js remote access, Azure Node.js remote connection, Azure Node.js VM access, Azure Node.js virtual machine access" description="Learn how to enable remote-desktop access for the virtual machines hosting your Azure Node.js application. " metaCanonical="" services="cloud-services" documentationCenter="Node.js" title="Enabling Remote Desktop in Azure" authors="" solutions="" manager="" editor="" />
+<properties linkid="dev-node-remotedesktop" urlDisplayName="リモート デスクトップの有効化" pageTitle="クラウド サービスのリモート デスクトップの有効化 (Node.js)" metaKeywords="Azure Node.js リモート アクセス, Azure Node.js リモート接続, Azure Node.js VM アクセス, Azure Node.js 仮想マシン アクセス" description="Azure Node.js アプリケーションをホストする仮想マシンについてリモート デスクトップ アクセスを有効にする方法を説明します。" metaCanonical="" services="cloud-services" documentationCenter="Node.js" title="Azure でのリモート デスクトップの有効化" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
+# Azure でのリモート デスクトップの有効化
 
-# Enabling Remote Desktop in Azure
-
-Remote Desktop enables you to access the desktop of a role instance
-running in Azure. You can use a remote desktop connection to
-configure the virtual machine or troubleshoot problems with your
-application.
+リモート デスクトップを使用して、Azure で実行されているロール インスタンスの
+デスクトップにアクセスできます。リモート デスクトップ接続を使用して仮想マシンの構成や
+アプリケーションの問題のトラブルシューティングを行うことが
+できます。
 
 <div class="dev-callout">
-	<b>Note</b>
-	<p>The steps in this article only apply to node applications hosted as an Azure Cloud Service.</p>
+	<b>注</b>
+	<p>この記事で説明する手順は、Azure クラウド サービスとしてホストされるノード アプリケーションにのみ適用されます。</p>
 	</div>
 
-This task includes the following steps:
+このタスクの手順は次のとおりです。
 
--   [Step 1: Configure the service for Remote Desktop access using Azure PowerShell]
--   [Step 2: Connect to the role instance]
--   [Step 3: Configure the service to disable Remote Desktop access
-    using Azure PowerShell]
+-   [手順 1. Azure PowerShell を使用して、サービスのリモート デスクトップ アクセスを構成する]
+-   [手順 2. ロール インスタンスに接続する]
+-   [手順 3. Azure PowerShell を使用して、サービスのリモート デスクトップ アクセスが無効になるように構成する]
 
-## <a name="step1"> </a>Step 1: Configure the service for Remote Desktop access using Azure PowerShell
+## <a name="step1"> </a>手順 1. Azure PowerShell を使用して、サービスのリモート デスクトップ アクセスを構成する
 
-To use Remote Desktop, you need to configure your service definition and
-service configuration with a username, password, and certificate to
-authenticate with role instances in the cloud. [Azure PowerShell] includes the **Enable-AzureServiceProjectRemoteDesktop** cmdlet, which
-does this configuration for you.
+リモート デスクトップを使用するには、ユーザー名、パスワード、および証明書を
+使ってクラウドのロール インスタンスで認証するようにサービス定義と
+サービス構成を構成する必要があります。[Azure PowerShell] には **Enable-AzureServiceProjectRemoteDesktop** コマンドレットが含まれており、
+これを使ってこの構成を行うことができます。
 
-Perform the following steps from the computer where the service
-definition was created.
+サービス定義を作成したコンピューターから、
+次の手順を実行します。
 
-1.  From the **Start** menu, select **Azure PowerShell**.
+1.  **[スタート]** メニューの **[Azure PowerShell]** を選択します。
 
-	![Azure PowerShell start menu entry][powershell-menu]
+	![[スタート] メニューの Azure PowerShell のエントリ][powershell-menu]
 
-2.  Change directory to the service directory, type
-    **Enable-AzureServiceProjectRemoteDesktop**, and then enter a user name and
-    password to use when authenticating with role instances in the
-    cloud.
+2.  サービス ディレクトリに移動し、
+    「**Enable-AzureServiceProjectRemoteDesktop**」と入力した後、
+    クラウドのロール インスタンスで認証するときに使用するユーザー名とパスワードを
+    入力します。
 
-	![enable-azureserviceprojectremotedesktop][enable-rdp]
+	![Enable-AzureServiceProjectRemoteDesktop][enable-rdp]
 
-3.  Publish the service configuration changes to the cloud. At the
-    **Azure PowerShell** prompt, type
-    **Publish-AzureServiceProject**.
+3.  サービスの構成変更をクラウドに発行します。**Azure 
+    PowerShell** プロンプトで、「**Publish-
+    AzureServiceProject**」と入力します。
 
-	![publish-azureserviceproject][publish-project]
+	![Publish-AzureServiceProject][publish-project]
 
-When these steps have been completed, the role instances of the service
-in the cloud are configured for Remote Desktop access.
+これらの手順を完了すると、クラウドのサービスのロール インスタンスで、リモート デスクトップ 
+アクセスが構成されます。
 
-## <a name="step2"> </a>Step 2: Connect to the role instance
+## <a name="step2"> </a>手順 2. ロール インスタンスに接続する
 
-With your deployment up and running in Azure, you can connect to
-the role instance.
+Azure で展開を実行できるようになったため、ロール インスタンスに
+接続できます。
 
-1.  In the [Azure Management Portal], select **Cloud Services** and then the service deployed in Step 1 above
+1.  [Azure 管理ポータル]で **[クラウド サービス]** を選択し、手順 1. で展開したサービスを選択します。
 
-	![azure management portal][cloud-services]
+	![Azure 管理ポータル][cloud-services]
 
-2.  Click **Instances**, and then click **Production** or **Staging** to see the instances for your service. Select an instance and then click **Connect** at the bottom of the page.
+2.  **[インスタンス]** をクリックし、**[運用]** または **[ステージング]** をクリックしてサービスのインスタンスを表示します。インスタンスを選択し、ページの下部にある **[接続]** をクリックします。
 
-    ![The instances page][3]
+    ![[インスタンス] ページ][3]
 
-2.  When you click **Connect**, the web browser prompts you to save an
-    .rdp file. If you're using Internet Explorer, click **Open**.
+2.  **[接続]** をクリックすると、.rdp ファイルを保存するように促すメッセージが Web ブラウザーに
+    表示されます。Internet Explorer を使用している場合は、**[開く]** をクリックします。
 
-    ![prompt to open or save the .rdp file][4]
+    ![.rdp ファイルを開くまたは保存することを促すメッセージ][4]
 
-3.  When the file is opened, the following security prompt appears:
+3.  ファイルが開くと、セキュリティに関する次のメッセージが表示されます。
 
-    ![Windows security prompt][5]
+    ![Windows のセキュリティに関するメッセージ][5]
 
-4.  Click **Connect**, and a security prompt will appear for entering
-    credentials to access the instance. Enter the password you created
-    in [Step 1][Step 1: Configure the service for Remote Desktop access using Azure PowerShell], and then click **OK**.
+4.  **[接続]** をクリックすると、インスタンスにアクセスするための資格情報を入力する
+    ように求めるセキュリティ メッセージが表示されます。[手順 1. ][手順 1. 
+    Azure PowerShell を使用して、サービスのリモート デスクトップ アクセスを構成する]で作成したパスワードを入力し、**[OK]** をクリックします。
 
-    ![username/password prompt][6]
+    ![ユーザー名/パスワードの入力を求めるメッセージ][6]
 
-When the connection is made, Remote Desktop Connection displays the
-desktop of the instance in Azure. You have successfully gained
-remote access to your instance and can perform any necessary tasks to
-manage your application.
+接続すると、リモート デスクトップ接続に、Azure 内のインスタンスのデスクトップが
+表示されます。インスタンスへのリモート アクセスが
+正常に確立されたので、アプリケーションの管理に必要なタスクを
+実行できます。
 
-![Remote desktop session][7]
+![リモート デスクトップ セッション][7]
 
-## <a name="step3"> </a>Step 3: Configure the service to disable Remote Desktop access using Azure PowerShell
+## <a name="step3"> </a>手順 3. Azure PowerShell を使用して、サービスのリモート デスクトップ アクセスが無効になるように構成する
 
-When you no longer require remote desktop connections to the role
-instances in the cloud, disable remote desktop access using the [Azure PowerShell]
+クラウドのロール インスタンスに対するリモート デスクトップ接続が不要になった場合は、[Azure PowerShell] を使ってリモート デスクトップ アクセスを無効にします。
 
-1.  From the **Start** menu, select **Azure PowerShell**.
+1.  **[スタート]** メニューの **[Azure PowerShell]** を選択します。
 
-2.  Change directory to the service directory, and type
-    **Disable-AzureServiceProjectRemoteDesktop**:
+2.  サービス ディレクトリに移動し、「**Disable-
+    AzureServiceProjectRemoteDesktop**」と入力します。
 
-3.  Publish the service configuration changes to the cloud. At the
-    **Azure PowerShell** prompt, type
-    **Publish-AzureServiceProject**:
+3.  サービスの構成変更をクラウドに発行します。**Azure 
+    PowerShell** プロンプトで、「**Publish-
+    AzureServiceProject**」と入力します。
 
-## Additional Resources
+## その他のリソース
 
-- [Remotely Accessing Role Instances in Azure] 
-- [Using Remote Desktop with Azure Roles]
+- [Azure ロールのリモート デスクトップ接続をセットアップする]
+- [Azure ロールでのリモート デスクトップの使用]
 
-  [Step 1: Configure the service for Remote Desktop access using Azure PowerShell]: #step1
-  [Step 2: Connect to the role instance]: #step2
-  [Step 3: Configure the service to disable Remote Desktop access using Azure PowerShell]: #step3
+  [手順 1. Azure PowerShell を使用して、サービスのリモート デスクトップ アクセスを構成する]: #step1
+  [手順 2. ロール インスタンスに接続する]: #step2
+  [手順 3. Azure PowerShell を使用して、サービスのリモート デスクトップ アクセスが無効になるように構成する]: #step3
   [Azure PowerShell]: http://go.microsoft.com/?linkid=9790229&clcid=0x409
 
-[Azure Management Portal]: http://manage.windowsazure.com
+[Azure 管理ポータル]: http://manage.windowsazure.com
 [powershell-menu]: ./media/cloud-services-nodejs-enable-remote-desktop/azure-powershell-menu.png
 [publish-project]: ./media/cloud-services-nodejs-enable-remote-desktop/publish-rdp.png
 [enable-rdp]: ./media/cloud-services-nodejs-enable-remote-desktop/enable-rdp.png
@@ -124,5 +121,6 @@ instances in the cloud, disable remote desktop access using the [Azure PowerShel
   [6]: ./media/cloud-services-nodejs-enable-remote-desktop/remote-desktop-13.png
   [7]: ./media/cloud-services-nodejs-enable-remote-desktop/remote-desktop-14.png
   
-  [Remotely Accessing Role Instances in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/hh124107.aspx
-  [Using Remote Desktop with Azure Roles]: http://msdn.microsoft.com/en-us/library/windowsazure/gg443832.aspx
+  [Azure ロールのリモート デスクトップ接続をセットアップする]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh124107.aspx
+  [Azure ロールでのリモート デスクトップの使用]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg443832.aspx
+

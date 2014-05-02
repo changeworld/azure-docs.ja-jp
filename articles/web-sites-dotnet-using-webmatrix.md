@@ -1,68 +1,68 @@
-<properties linkid="develop-dotnet-website-with-webmatrix" urlDisplayName="Website with WebMatrix" pageTitle=".NET web site with WebMatrix - Azure tutorials" metaKeywords="WebMatrix Azure, WebMatrix Azure, Azure web site WebMatrix, Azure website WebMatrix, Web Matrix Azure, WebMatrix Azure" description="Learn how to develop and deploy an Azure web site with WebMatrix." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Develop and deploy a web site with Microsoft WebMatrix" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-dotnet-website-with-webmatrix" urlDisplayName="WebMatrix を使用した Web サイト" pageTitle="WebMatrix を使用した .NET Web サイト - Azure チュートリアル" metaKeywords="WebMatrix Azure, WebMatrix Azure, Azure Web サイト WebMatrix, Azure Web サイト WebMatrix, Web Matrix Azure, WebMatrix Azure" description="WebMatrix を使用して Azure の Web サイトを開発して展開する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Microsoft WebMatrix を使用して Web サイトを開発および展開する" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-#Develop and deploy a web site with Microsoft WebMatrix
-This guide describes how to use Microsoft WebMatrix to create and deploy a web site to Azure.  You will use a sample application from a WebMatrix site template.
+#Microsoft WebMatrix を使用して Web サイトを開発および展開する
+このガイドでは、Microsoft WebMatrix を使用して Web サイトを作成し、それを Azure に展開する方法について説明します。WebMatrix のサイト テンプレートにあるサンプル アプリケーションを使用します。
 
-You will learn:
+学習内容:
 
-* How to sign into Azure from within WebMatrix
-* How to create a site using a built in template with WebMatrix 
-* How to deploy the customized web site directly from WebMatrix to Azure.
+* WebMatrix 内から Azure にサインインする方法
+* WebMatrix による組み込みテンプレートを使用してサイトを作成する方法
+* カスタマイズした Web サイトを直接 WebMatrix から Azure に展開する方法
 
 
 [WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
-## Sign into Azure
+## Azure へのサインイン
 
-1. Launch WebMatrix.
-2. If this is the first time you've used WebMatrix 3, you will be prompted to sign into Azure.  Otherwise, you can click on the **Sign In** button, and choose **Add Account**.  Choose to **Sign in** using your Microsoft Account.
+1. WebMatrix を起動します。
+2. 初めて WebMatrix 3 を使用する場合は、Azure へのサインインを求めるメッセージが表示されます。そうでない場合は、**[サインイン]** ボタンをクリックし、**[アカウントの追加]** を選択します。Microsoft アカウントを使用して**サインイン**することを選択します。
 
-	![Add Account][addaccount]
+	![アカウントの追加][addaccount]
 
-3. If you have signed up for an Azure account, you may log in using your Microsoft Account:
+3. Azure アカウントにサインアップしてある場合は、Microsoft アカウントを使用してログインできます。
 
-	![Sign into Azure][signin]	
+	![Azure へのサインイン][signin]	
 
 
-## Create a site using a built in template for Azure
+## Azure の組み込みテンプレートを使用したサイトの作成
 
-1. On the start screen, click the **New** button, and choose **Template Gallery** to create a new site from the Template Gallery:
+1. スタート画面で **[新規作成]** ボタンをクリックし、**[テンプレート ギャラリー]** を選択して、テンプレート ギャラリーから新しいサイトを作成します。
 
-	![New site from Template Gallery][sitefromtemplate]
+	![テンプレート ギャラリーからの新しいサイト][sitefromtemplate]
 
-2. The Template Gallery will show a list of available templates that can run locally or on Azure.  Select **Bakery** from the list of templates, enter **bakerysample** for the **Site Name**, and click **Next**.
+2. テンプレート ギャラリーに、ローカルにまたは Azure で実行できる使用可能なテンプレートの一覧が表示されます。テンプレートの一覧から **[Bakery]** を選択し、**[サイト名]** に「**bakerysample**」と入力して、**[次へ]** をクリックします。
 
-	![Create Site from Template][sitefromtemplatedetails]
+	![テンプレートからサイトを作成][sitefromtemplatedetails]
 
-3. If you are signed into Azure, you now have the option to create an Azure Web Site for your local site.  Choose a unique name, and select the data cetner where you would like your site to be created: 
+3. Azure にサインインする場合は、ここでローカル サイト用の Azure の Web サイトを作成することができます。一意の名前を選択し、サイトの作成先のデータ センターを選択します。
 
-	![Create site on Azure][sitefromtemplateazure]
+	![Azure でのサイトの作成][sitefromtemplateazure]
 
-	After WebMatrix finishes building the web site, the WebMatrix IDE is displayed:
+	WebMatrix による Web サイトの構築が終了すると、WebMatrix IDE が表示されます。
 
-	![WebMatrix IDE][howtowebmatrixide] 
+	![WebMatrix IDE][howtowebmatrixide]
 
-## Test the web site
+## Web サイトをテストする
 
-The bakery sample includes a simulated order form that sends an email message with the item ordered to a Windows Live Hotmail account that you provide.
+パン屋のサンプルには、シミュレーションとして、指定した Windows Live Hotmail アカウントに注文品目を記載したメールを送信する注文フォームが用意されています。
 
-1. In the left hand navigation pane of WebMatrix, expand the **bakerysample** folder.
+1. WebMatrix の左側にあるナビゲーション ウィンドウで、**bakerysample** フォルダーを展開します。
 
 	![][modify1]
 
-2. Open the *Order.cshtml* page by double-clicking the file name.
+2. ファイル名をダブルクリックして、*Order.cshtml* ページを開きます。
 
 	![][modify2]
 
-3. Find the comment that says //SMTP Configuration for Hotmail.
+3. //SMTP Configuration for Hotmail というコメントを探します。
 
 	![][modify3]
 
-4. Change the values in the following lines to match your own email provider:
+4. 自分のメール プロバイダーに合わせて、次の行の値を変更します。
 
 		WebMail.SmtpServer = "smtp.live.com";
 		WebMail.SmtpPort  = 25;
@@ -73,40 +73,40 @@ The bakery sample includes a simulated order form that sends an email message wi
         WebMail.Password = "";
         WebMail.From = "";
 
-	Change the value of WebMail.SmtpServer to the name of the email server you normally use to send email. Then fill in values for the user name and password. Set the From property to your email address.
+	WebMail.SmtpServer の値を、メール送信に通常使用するメール サーバーの名前に変更します。続いてユーザー名とパスワードの値を指定します。From プロパティは自分のメール アドレスに設定します。
 
-4. On the WebMatrix ribbon click **Run** to test the site.
+4. WebMatrix リボンの **[実行]** をクリックして、サイトをテストします。
 
 	![][modify4]
 
-5. Click **Order Now** on one of the products and send an order to yourself.
+5. 商品の 1 つで **[Order Now]** をクリックして、注文を自分に送信します。
 
-6. Check your email and make sure you got the order confirmation. If you have difficulties sending email, see [Issues with Sending Email][sendmailissues] in the ASP.NET Web Pages (Razor) Troubleshooting Guide.
+6. 注文の確認メールを受け取ったことを確認します。メールを正しく送信できない場合は、ASP.NET Web ページ (Razor) のトラブルシューティング ガイドにある「[Issues with Sending Email (メール送信関連の問題)][sendmailissues]」を参照してください。
  
 
-## Deploy the customized web site from WebMatrix to Azure
+## カスタマイズした Web サイトを WebMatrix から Azure に展開する
 
-1. In WebMatrix, click  **Publish** from the **Home** ribbon to display the **Publish Preview** dialog box for the web site.
+1. WebMatrix で、**[ホーム]** リボンの **[発行]** をクリックします。Web サイトの **[発行のプレビュー]** ダイアログ ボックスが表示されます。
 
-	![WebMatrix Publish Preview][howtopublishpreview]
+	![WebMatrix の発行のプレビュー][howtopublishpreview]
 
-2. Click to select the checkbox next to bakery.sdf and then click **Continue**.  When publishing is completed the URL for the updated web site on Azure is displayed at the bottom of the WebMatrix IDE.  
+2. bakery.sdf の横にあるチェック ボックスをオンにして、**[続行]** をクリックします。発行が完了すると、更新された Azure の Web サイトの URL が WebMatrix IDE の下部に表示されます。
 
-	![Publishing Complete][publishcomplete]
+	![発行の完了][publishcomplete]
 
-3. Click on the link to open the web site in your browser:
+3. リンクをクリックして、ブラウザーで Web サイトを開きます。
 
-	![Bakery Sample Site][bakerysample]
+	![パン屋のサンプル サイト][bakerysample]
 
-	The URL for the web site can also be found in the Azure portal by clicking **Web Sites** to display all web sites for your subscription. The URL for each web site is displayed in the URL column on the web sites page.
+	Web サイトの URL は Azure ポータルでも確認できます。**[Web サイト]** をクリックすると、ユーザーのサブスクリプションに関連付けられた Web サイトがすべて表示されます。各 Web サイトの URL は Web サイトのページの [URL] 列に表示されます。
 
-## Modify the web site and republish it to the Azure web site
+## Web サイトを修正して Azure の Web サイトに再発行する
 
-You can use WebMatrix to modify the site and republish it to your Azure web site. In the following procedure you will add a check box to indicate that the order is a gift.
+WebMatrix を使用してサイトを修正し、それを Azure の Web サイトに再発行することができます。以下の手順では、注文がギフトであることを示すチェック ボックスを追加します。
 
-1. Open the *Order.cshtml* page.
+1. *Order.cshtml* のページを開きます。
 
-2. Locate the "shiping" class form definition. Insert the following code just after the &lt;li&gt; block.
+2. shipping クラスのフォーム定義を見つけます。&lt;li&gt; ブロックの直後に次のコードを挿入します。
 		
 		<li class="gift">
 		    <div class="fieldcontainer" data-role="fieldcontain">
@@ -117,37 +117,37 @@ You can use WebMatrix to modify the site and republish it to your Azure web site
 
 	![][modify5]
 
-3. Locate "var shipping = Request["orderShipping"];" line in the file and insert the following line of code just following it.
+3. ファイルから var shipping = Request["orderShipping"]; 行を見つけて、その直後に次のコード行を挿入します。
 
 		var gift = Request["isGift"];
 
-4. Just after the block of code that validates that the shipping address is not empty in the following code snippet.
+4. 発送先住所が空でないことを検証するコード ブロックの直後に、次のコードを挿入します。
 
 		if(gift != null) {
 			body += "This is a gift." + "<br/>";
 		}
 
-	Your *order.cshtml* file should look similar to the following image.
+	*order.cshtml* ファイルは次の図のようになります。
 
 	![][modify6]
 
-5. Save the file and run the site locally and send yourself a test order. Make sure to test the new check box.
+5. ファイルを保存し、ローカルでサイトを実行して、テスト注文を自分に送信します。新しいチェック ボックスのテストを忘れないでください。
 
 	![][modify7]
 
-6. Republish the site by clicking **Publish** on the **Home** ribbon.
+6. **[ホーム]** リボンの **[発行]** をクリックしてサイトを再発行します。
 
-7. On the **Publish Preview** dialog box, make sure both the Order.cshtml is checked, and click continue.
+7. **[発行のプレビュー]** ダイアログ ボックスで、Order.cshtml のチェック ボックスがオンになっていることを確認して、[続行] をクリックします。
 
-8. Click on the link to open the web site in your browser and test the update on your Azure web site.
+8. リンクをクリックしてブラウザーで Web サイトを開き、Azure の Web サイトの更新内容をテストします。
 
-# Next Steps
+# 次のステップ
 
-You've seen how to create and deploy a web site from WebMatrix to Azure. To learn more about WebMatrix, check out these resources:
+これで WebMatrix から Web サイトを作成して Azure に展開する方法はわかりました。WebMatrix の詳細については、次のリソースを参照してください。
 
-* [WebMatrix for Azure](http://go.microsoft.com/fwlink/?LinkID=253622&clcid=0x409)
+* [Azure 用 WebMatrix の概要](http://go.microsoft.com/fwlink/?LinkID=253622&clcid=0x409)
 
-* [WebMatrix web site](http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200106398)
+* [WebMatrix の Web サイト](http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200106398)
 
 
 
@@ -175,3 +175,4 @@ You've seen how to create and deploy a web site from WebMatrix to Azure. To lear
 
 
 [sendmailissues]: http://go.microsoft.com/fwlink/?LinkId=253001#email
+

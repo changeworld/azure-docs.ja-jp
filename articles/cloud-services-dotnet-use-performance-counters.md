@@ -1,39 +1,37 @@
-<properties linkid="dev-net-commons-tasks-profiling" urlDisplayName="Performance Profiling" pageTitle="Use Performance Counters in Azure (.NET)" metaKeywords="Azure performance counters, Azure performance profiling, Azure performance counters C#, Azure performance profiling C#" description="Learn how to enable and collect data from performance counters in Azure applications. " metaCanonical="" services="cloud-services" documentationCenter=".NET" title="Using performance counters in Azure" authors="ryanwi" solutions="" manager="" editor="" />
+<properties linkid="dev-net-commons-tasks-profiling" urlDisplayName="パフォーマンスのプロファイル" pageTitle="Azure でのパフォーマンス カウンターの使用 (.NET)" metaKeywords="Azure パフォーマンス カウンター, Azure パフォーマンス プロファイル, Azure パフォーマンス カウンター C#, Azure パフォーマンス プロファイル C#" description="Azure アプリケーションで、パフォーマンス カウンターを有効にしてデータを収集する方法を説明します。" metaCanonical="" services="cloud-services" documentationCenter=".NET" title="Azure でのパフォーマンス カウンターの使用" authors="ryanwi" solutions="" manager="" editor="" />
 
 
 
 
 
-# Using performance counters in Azure
+# Azure でのパフォーマンス カウンターの使用
 
-You can use performance counters in an Azure application to
-collect data that can help determine system bottlenecks and fine-tune
-system and application performance. Performance counters available for Windows Server 2008, Windows Server 2012, IIS and ASP.NET can be collected and used to determine the health of your Azure application. 
+Azure アプリケーションでパフォーマンス カウンターを使用してデータを収集すると、システムのボトルネックを特定したり、システムやアプリケーションのパフォーマンスを調整したりするのに役立ちます。Windows Server 2008、Windows Server 2012、IIS、ASP.NET で使用可能なパフォーマンス カウンターは、Azure アプリケーションの状態を把握するために収集して使用できます。
 
-This topic explains how to enable performance counters in your application using the diagnostics.wadcfg configuration file. For information on monitoring the performance of your application in the [Azure Management Portal][], see [How to Monitor Cloud Services][]. For additional in-depth guidance on creating a logging and tracing strategy and using diagnostics and other techniques to troubleshoot problems and optimize Azure applications, see [Troubleshooting Best Practices for Developing Azure Applications][].
+このトピックでは、diagnostics.wadcfg 構成ファイルを使用してアプリケーションでパフォーマンス カウンターを有効にする方法について説明します。[Azure 管理ポータル][]でアプリケーションのパフォーマンスを監視する方法については、「[クラウド サービスの監視方法][]」を参照してください。ログとトレース戦略を作成し、診断機能やその他の手法で問題のトラブルシューティングを行って Azure アプリケーションを最適化する方法の詳細なガイダンスについては、「[Troubleshooting Best Practices for Developing Azure Applications (Azure アプリケーション開発時のトラブルシューティングのベスト プラクティス)][]」を参照してください。
 
-This task includes the following steps:
+このタスクの手順は次のとおりです。
 
--   [Prerequisites][]
--   [Step 1: Collect and store data from performance counters][]
--   [Step 2: (Optional) Create custom performance counters][]
--   [Step 3: Query performance counter data][]
--   [Next Steps][]
--   [Additional Resources][]
+-   [前提条件][]
+-   [手順 1. パフォーマンス カウンターからデータを収集して保存する][]
+-   [手順 2. (省略可能) カスタム パフォーマンス カウンターを作成する][]
+-   [手順 3. パフォーマンス カウンターのデータのクエリを実行する][]
+-   [次のステップ][]
+-   [その他のリソース][]
 
-## <a name="prereqs"> </a>Prerequisites
+## <a name="prereqs"> </a>前提条件
 
-This article assumes that you have imported the Diagnostics monitor into your application and added the diagnostics.wadcfg configuration file to your Visual Studio solution.  See steps 1 and 2 in [Enabling Diagnostics in Azure][] for more information.
+この記事では、アプリケーションに診断モニターをインポートし、Visual Studio ソリューションに diagnostics.wadcfg 構成ファイルを追加していることを前提としています。詳細については、「[Enabling Diagnostics in Azure (Azure の診断機能)][]」を参照してください。
 
-## <a name="step1"> </a>Step 1: Collect and store data from performance counters
+## <a name="step1"> </a>手順 1. パフォーマンス カウンターからデータを収集して保存する
 
-After you have added the diagnostics.wadcfg file to your Visual Studio solution you can configure the collection and storage of performance counter data in an Azure application.  This is done by adding performance counters to the diagnostics.wadcfg file.  Diagnostics data, including performance counters, is first collected on the instance.  The data is then persisted to the **WADPerformanceCountersTable** table in the Azure Table service, so you will also need to specify the storage account in your application. If you're testing your application locally in the Compute Emulator, you can also store diagnostics data locally in the Storage Emulator. Before you store diagnostics data you must first go to the [Azure Management Portal][] and create a storage account. A best practice is to locate your storage account in the same geo-location as your Azure application in order to avoid paying external bandwidth costs and to reduce latency.
+Visual Studio ソリューションに diagnostics.wadcfg ファイルを追加すると、Azure アプリケーションでパフォーマンス カウンター データの収集とストレージを構成できます。これは、diagnostics.wadcfg ファイルにパフォーマンス カウンターを追加することで行うことができます。パフォーマンス カウンターを含む診断データは、まずインスタンスで収集されます。その後、データが Azure テーブル サービスの **WADPerformanceCountersTable** テーブルに保存されるため、アプリケーションでストレージ アカウントを指定する必要もあります。コンピューティング エミュレーターでアプリケーションをローカルにテストする場合、ストレージ エミュレーターで診断データをローカルに保存することもできます。診断データを保存する前に、まず [Azure 管理ポータル][] に移動し、ストレージ アカウントを作成する必要があります。ベスト プラクティスとして、Azure アプリケーションと同じ地理的な場所にあるストレージ アカウントを特定することにより、外部帯域幅のコストが生じないようにしたり、遅延時間を短縮することができます。
 
-### Add performance counters to the diagnostics.wadcfg file
+### diagnostics.wadcfg ファイルにパフォーマンス カウンターを追加する
 
-There are many performance counters that you can collect, the following example shows several performance counters that are recommended for web and worker role monitoring. 
+収集できるパフォーマンス カウンターは多くあります。次の例に、Web ロールおよびワーカー ロールの監視に推奨されるいくつかのパフォーマンス カウンターを示します。
 
-Open the diagnostics.wadcfg file and add the following to the **DiagnosticMonitorConfiguration** element:
+diagnostics.wadcfg ファイルを開き、次の内容を **DiagnosticMonitorConfiguration** 要素に追加します。
 
 		<PerformanceCounters bufferQuotaInMB="0" scheduledTransferPeriod="PT30M">
 		<PerformanceCounterConfiguration counterSpecifier="\Memory\Available Bytes" sampleRate="PT30S" />
@@ -56,62 +54,62 @@ Open the diagnostics.wadcfg file and add the following to the **DiagnosticMonito
 		<PerformanceCounterConfiguration counterSpecifier="\.NET CLR Jit(_Global_)\% Time in Jit" sampleRate="PT30S" />
 		</PerformanceCounters>    
 
-The **bufferQuotaInMB** attribute, which specifies the maximum amount of file system storage that is available for the data collection type (Azure logs, IIS logs, etc.). The default is 0.  When the quota is reached, the oldest data is deleted as new data is added. The sum of all the **bufferQuotaInMB** properties must be greater than the value of the **OverallQuotaInMB** attribute.  For a more detailed discussion of determining how much storage will be required for the collection of diagnostics data, see the Setup WAD section of [Troubleshooting Best Practices for Developing Azure Applications][].
+**bufferQuotaInMB** 属性: データ コレクション タイプに使用可能なファイル システム ストレージの最大量を指定します (Azure ログ、IIS ログなど)。既定値は 0 です。クォータに達すると、新しいデータが追加されたときに最も古いデータが削除されます。0. すべての **bufferQuotaInMB** プロパティの合計が、**OverallQuotaInMB** 属性の値より大きくなる必要があります。診断データの収集に必要なストレージの量を判断する方法の詳細については、「[Troubleshooting Best Practices for Developing Azure Applications (Azure アプリケーションの開発に関するトラブルシューティングのベスト プラクティス)][]」の WAD の設定に関するセクションを参照してください。
 
-The **scheduledTransferPeriod** attribute, which specifies the interval between scheduled transfers of data, rounded up to the nearest minute. In the following examples it is set to PT30M (30 minutes). Setting the transfer period to a small value, such as 1 minute, will adversely impact your application's performance in production but can be useful for seeing diagnostics working quickly when you are testing.  The scheduled transfer period should be small enough to ensure that diagnostic data is not overwritten on the instance, but large enough that it will not impact the performance of your application.
+**scheduledTransferPeriod** 属性: 分単位で四捨五入したデータ転送のスケジュール間隔を指定します。次の例では、PT30M (30 分) に設定されます。転送期間を小さい値 (1 分など) に設定すると、運用環境のアプリケーションのパフォーマンスにマイナスの影響が及びますが、テスト時に診断が機能するかをすぐに確認する場合に役立つことがあります。スケジュールされた転送期間は、インスタンスで診断データが上書きされないような小さい値にし、かつアプリケーションのパフォーマンスに影響を与えないような大きい値にしてください。
 
-The **counterSpecifier** attribute specifies the performance counter to collect.
+**counterSpecifier** 属性: 収集するパフォーマンス カウンターを指定します。
 
-The **sampleRate** attribute specifies the rate at which the performance counter should be sampled, in this case 30 seconds.
+**sampleRate** 属性は、パフォーマンス カウンターをサンプリングする間隔 (この場合は 30 秒) を指定します。
 
-Once you've added the performance counters that you want to collect, save your changes to the diagnostics.wadcfg file.  Next, you need to specify the storage account that the diagnostics data will be persisted to.
+収集するパフォーマンス カウンターを追加したら、変更内容を diagnostics.wadcfg ファイルに保存します。次に、診断データを保存するストレージ アカウントを指定する必要があります。
 
-### Specify the storage account
+### ストレージ アカウントを指定する
 
-To persist your diagnostics information to your Azure Storage account, you must specify a connection string in your service configuration (ServiceConfiguration.cscfg) file.  Azure Tools for Visual Studio version 1.4 (August 2011) and later allows you to have different configuration files (ServiceConfiguration.cscfg) for Local and Cloud. Multiple service configurations are useful for diagnostics because you can use the Storage Emulator for local testing free of charge while maintaining a separate configuration file for production.
+診断情報を Azure ストレージ アカウントに保存するには、サービス構成 (ServiceConfiguration.cscfg) ファイルで接続文字列を指定する必要があります。Azure Tools for Visual Studio バージョン 1.4 (2011 年 8 月) 以降では、ローカルとクラウドに異なる構成ファイル (ServiceConfiguration.cscfg) を使用することができます。ローカル テストにはストレージ エミュレーターを無料で使用しながら、運用環境向けに別個の構成ファイルを維持することができるため、複数のサービス構成があると診断に役立ちます。
 
-To set the connection strings:
+接続文字列を設定するには、次の手順に従います。
 
-1.  Open the ServiceConfiguration.Cloud.cscfg file using your favorite text editor and set the connection string for your storage account:
+1.  任意のテキスト エディターを使用して ServiceConfiguration.Cloud.cscfg ファイルを開き、ストレージ アカウントの接続文字列を設定します。
 
         <ConfigurationSettings>
           <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>"/>
         </ConfigurationSettings>
 
-    The **AccountName** and **AccountKey** values are found in the Management Portal in the storage account dashboard, under **Manage Keys**.
+    ストレージ アカウント ダッシュボードの管理ポータルの **[キーの管理]** の下に、**AccountName** 値と **AccountKey** 値があります。
 
-2.  Save the ServiceConfiguration.Cloud.cscfg file.
-3.  Open the ServiceConfiguration.Local.cscfg file and verify that **UseDevelopmentStorage** is set to true (the default).
+2.  ServiceConfiguration.Cloud.cscfg ファイルを保存します。
+3.  ServiceConfiguration.Local.cscfg ファイルを開き、**UseDevelopmentStorage** が true に設定されている (既定値) ことを確認します。
 
 		<ConfigurationSettings>
       	   <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
 		</ConfigurationSettings>
 
-	Now that the connection strings are set, your application will persist diagnostics data to your storage account when your application is deployed.  
-4. Save and build your project, then deploy your application.
+	これで、接続文字列が設定され、アプリケーションのデプロイ時にアプリケーションで診断データがストレージ アカウントに保存されるようになります。
+4. プロジェクトを保存してビルドし、アプリケーションを展開します。
 
-## <a name="step2"> </a>Step 2: (Optional) Create custom performance counters
+## <a name="step2"> </a>手順 2. (省略可能) カスタム パフォーマンス カウンターを作成する
 
-In addition to the pre-defined performance counters, you can add your own custom performance counters to monitor web or worker roles.  Custom performance counters may be used to track and monitor application-specific behavior and can be created or deleted in a startup task, web role, or worker role with elevated permissions.
+事前定義されたパフォーマンス カウンターに加えて、独自のカスタム パフォーマンス カウンターを追加して Web ロールまたはワーカー ロールを監視できます。カスタム パフォーマンス カウンターを使用すると、アプリケーション固有の動作を追跡して監視することができます。また、カスタム パフォーマンス カウンターは、昇格されたアクセス許可を持つスタートアップ タスク、Web ロール、ワーカー ロールで作成または削除できます。
 
-Perform the following steps to create a simple custom performance counter named "\MyCustomCounterCategory\MyButton1Counter":
+次の手順を実行して、"\MyCustomCounterCategory\MyButton1Counter" という簡単なカスタム パフォーマンス カウンターを作成します。
 
-1.  Open the service definition file (CSDEF) for your application.
-2.  Add the **Runtime** element to the **WebRole** or **WorkerRole**
-    element to allow execution with elevated privileges:
+1.  アプリケーションのサービス定義ファイル (CSDEF) を開きます。
+2.  **Runtime** 要素を **WebRole** または **WorkerRole** 要素に追加して、
+    昇格された権限で実行できるようにします。
 
         <Runtime executionContext="elevated" />
 
-3.  Save the file.
-4.  Open the diagnostics.wadcfg file and add the following to the **DiagnosticMonitorConfiguration** element:
+3.  ファイルを保存します。
+4.  diagnostics.wadcfg ファイルを開き、次の内容を **DiagnosticMonitorConfiguration** 要素に追加します。
 
 		<PerformanceCounters bufferQuotaInMB="0" scheduledTransferPeriod="PT30M">
 		<PerformanceCounterConfiguration counterSpecifier="\MyCustomCounterCategory\MyButton1Counter" sampleRate="PT30S"/>
 		</PerformanceCounters>		
 
-5.	Save the file.
-6.  Create the custom performance counter category in the **OnStart**
-    method of your role, before invoking **base.OnStart**. The following C# example creates a custom category, if it does not already exist:
+5. 	ファイルを保存します。
+6.  **base.OnStart** を呼び出す前に、ロールの **OnStart** メソッドで、
+    カスタム パフォーマンス カウンター カテゴリを作成します。次の C# の例では、まだ存在しない場合にカスタム カテゴリを作成します。
 
 		public override bool OnStart()
         {
@@ -140,8 +138,8 @@ Perform the following steps to create a simple custom performance counter named 
 		return base.OnStart();
         }
 
-7.  Update the counters within your application. The following example
-    updates a custom performance counter on **Button1_Click** events:
+7.  アプリケーション内でカウンターを更新します。次の例では、
+    **Button1_Click** イベントでカスタム パフォーマンス カウンターを更新しています。
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -156,16 +154,16 @@ Perform the following steps to create a simple custom performance counter named 
 		      button1Counter.RawValue.ToString();
         }
 
-8.  Save the file.
+8.  ファイルを保存します。
 
-When these steps have been completed, custom performance counter data is
-collected by the Azure diagnostics monitor.
+これらの操作を完了すると、Azure 診断モニターによってカスタム パフォーマンス カウンターの
+データが収集されます。
 
-## <a name="step3"> </a>Step 3: Query performance counter data
+## <a name="step3"> </a>手順 3. パフォーマンス カウンターのデータのクエリを実行する
 
-Once your application is deployed and running the Diagnostics monitor will begin collecting performance counters and persisting that data to Azure storage. You use tools such as **Server Explorer in Visual Studio**, [Azure Storage Explorer][], or [Azure Diagnostics Manager][] by Cerebrata to view the performance counters data in the **WADPerformanceCountersTable** table.  You can also programatically query the Table service using [C#][], [Java][], [Node.js][], [Python][], or [PHP][].  
+アプリケーションが展開されたら、診断モニターを実行すると、パフォーマンス カウンターの収集が開始され、そのデータが Azure ストレージに保存されます。**Visual Studio のサーバー エクスプローラー**、[Azure Storage Explorer (Azure ストレージ エクスプローラー)][]、[Azure 管理ポータル][](Cerebrata)などのツールを使用して、**WADPerformanceCountersTable** テーブルにあるパフォーマンス カウンター データを確認します。[C#][]、[Java][]、[Node.js][]、[Python][]、[PHP][] を使用して、テーブル サービスをプログラムにより照会することもできます。
 
-The following C# example shows a simple query against the **WADPerformanceCountersTable** table and saves the diagnostics data to a CSV file. Once the performance counters are saved to a CSV file you can use the graphing capabilities in Microsoft Excel or some other tool to visualize the data.  Be sure to add a reference to Microsoft.WindowsAzure.Storage.dll, which is included in the Azure SDK for .NET October 2012 and later. The assembly is installed to the %Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\version-num\ref\ directory.
+次の C# の例は、**WADPerformanceCountersTable** テーブルに対する簡単なクエリを示しており、CSV ファイルに診断データを保存します。パフォーマンス カウンターが CSV ファイルに保存されたら、Microsoft Excel や他のツールのグラフ作成機能を使用してデータを視覚化できます。必ず、Microsoft.WindowsAzure.Storage.dll への参照を追加してください。これは、Azure SDK for .NET (2012 年 10 月) 以降に含まれています。このアセンブリは、%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\version-num\ref\ ディレクトリにインストールされます。
 
 		using Microsoft.WindowsAzure.Storage;
 		using Microsoft.WindowsAzure.Storage.Auth;
@@ -224,7 +222,7 @@ The following C# example shows a simple query against the **WADPerformanceCounte
 		sw.Write(sb.ToString());
 		sw.Close();
 
-Entities map to C# objects using a custom class derived from **TableEntity**. The following code defines an entity class that represents a performance counter in the **WADPerformanceCountersTable** table.
+エンティティは、**TableEntity** から派生するカスタム クラスを使用して C# オブジェクトにマップされます。次のコードは、**WADPerformanceCountersTable** テーブルのパフォーマンス カウンターを表すエンティティ クラスを定義します。
 
 		public class PerformanceCountersEntity : TableEntity
 		{
@@ -236,43 +234,44 @@ Entities map to C# objects using a custom class derived from **TableEntity**. Th
 			public double CounterValue { get; set; }                
 		}
 
-## <a name="nextsteps"> </a>Next Steps
+## <a name="nextsteps"> </a>次のステップ
 
-Now that you've learned the basics of collecting performance counters, follow these links to learn how to implement more complex troubleshooting scenarios.
+これで、パフォーマンス カウンターの収集の基本を学習できました。より複雑なトラブルシューティング シナリオを実装する方法については、次のリンク先を参照してください。
 
-- [Troubleshooting Best Practices for Developing Azure Applications][]
-- [How to Monitor Cloud Services][]
-- [How to Use the Autoscaling Application Block][]
-- [Building Elastic and Resilient Cloud Apps]
+- [Troubleshooting Best Practices for Developing Azure Applications (Azure アプリケーション開発時のトラブルシューティングのベスト プラクティス)][]
+- [クラウド サービスの監視方法][]
+- [オートスケーリング アプリケーション ブロックの使用方法][]
+- [伸縮性と弾力性があるクラウド アプリケーションの作成]
 
-## <a name="additional"> </a>Additional Resources
+## <a name="additional"> </a>その他のリソース
 
-- [Enabling Diagnostics in Azure][]
-- [Collecting Logging Data by Using Azure Diagnostics][]
-- [Debugging an Azure Application][]
+- [Enabling Diagnostics in Azure (Azure の診断機能)][]
+- [Azure 診断を使用したログ データの収集][]
+- [クラウド サービスのデバッグ][]
 
 
-  [Overview of Creating and Using Performance Counters in an Azure Application]: http://msdn.microsoft.com/en-us/library/windowsazure/hh411520.aspx
-  [Prerequisites]: #prereqs
-  [Step 1: Collect and store data from performance counters]: #step1
-  [Step 2: (Optional) Create custom performance counters]: #step2
-  [Step 3: Query performance counter data]: #step3
-  [Next Steps]: #nextsteps
-  [Additional Resources]: #additional
+  [Azure アプリケーションでのパフォーマンス カウンターの作成と使用の概要]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh411520.aspx
+  [前提条件]: #prereqs
+  [手順 1. パフォーマンス カウンターからデータを収集して保存する]: #step1
+  [手順 2. (省略可能) カスタム パフォーマンス カウンターを作成する]: #step2
+  [手順 3. パフォーマンス カウンターのデータのクエリを実行する]: #step3
+  [次のステップ]: #nextsteps
+  [その他のリソース]: #additional
   
-  [Collecting Logging Data by Using Azure Diagnostics]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433048.aspx
-  [Debugging an Azure Application]: http://msdn.microsoft.com/en-us/library/windowsazure/ee405479.aspx
-  [How to Use the Autoscaling Application Block]: http://www.windowsazure.com/en-us/develop/net/how-to-guides/autoscaling/
-  [Troubleshooting Best Practices for Developing Azure Applications]: http://msdn.microsoft.com/en-us/library/windowsazure/hh771389.aspx
-  [Enabling Diagnostics in Azure]: https://www.windowsazure.com/en-us/develop/net/common-tasks/diagnostics/
-  [How to use the Table Storage Service]: http://www.windowsazure.com/en-us/develop/net/how-to-guides/table-services/
-  [Azure Storage Explorer]: http://azurestorageexplorer.codeplex.com/
+  [Azure 診断を使用したログ データの収集]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433048.aspx
+  [クラウド サービスのデバッグ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405479.aspx
+  [オートスケーリング アプリケーション ブロックの使用方法]: http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/autoscaling/
+  [Troubleshooting Best Practices for Developing Azure Applications (Azure アプリケーション開発時のトラブルシューティングのベスト プラクティス)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh771389.aspx
+  [Enabling Diagnostics in Azure (Azure の診断機能)]: https://www.windowsazure.com/ja-jp/develop/net/common-tasks/diagnostics/
+  [テーブル ストレージ サービスを使用する方法]: http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/table-services/
+  [Azure Storage Explorer (Azure ストレージ エクスプローラー)]: http://azurestorageexplorer.codeplex.com/
   
-  [Java]: http://www.windowsazure.com/en-us/develop/java/how-to-guides/table-service/
-  [Python]: http://www.windowsazure.com/en-us/develop/python/how-to-guides/table-service/
-  [PHP]: http://www.windowsazure.com/en-us/develop/php/how-to-guides/table-service/
+  [Java]: http://www.windowsazure.com/ja-jp/develop/java/how-to-guides/table-service/
+  [Python]: http://www.windowsazure.com/ja-jp/develop/python/how-to-guides/table-service/
+  [PHP]: http://www.windowsazure.com/ja-jp/develop/php/how-to-guides/table-service/
   
-  [Building Elastic and Resilient Cloud Apps]: http://msdn.microsoft.com/en-us/library/hh680949(PandP.50).aspx
-  [Azure Management Portal]: http://manage.windowsazure.com
+  [伸縮性と弾力性があるクラウド アプリケーションの作成]: http://msdn.microsoft.com/ja-jp/library/hh680949(PandP.50).aspx
+  [Azure 管理ポータル]: http://manage.windowsazure.com
   [Azure Diagnostics Manager]: http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx
-  [How to Monitor Cloud Services]: https://www.windowsazure.com/en-us/manage/services/cloud-services/how-to-monitor-a-cloud-service/
+  [クラウド サービスの監視方法]: https://www.windowsazure.com/ja-jp/manage/services/cloud-services/how-to-monitor-a-cloud-service/
+

@@ -1,63 +1,64 @@
-<properties linkid="manage-services-how-to-configure-a-sqldb" urlDisplayName="How to configure" pageTitle="How to configure a SQL Database - Azure" metaKeywords="Azure creating SQL Server, Azure configuring SQL Server" description="Learn how to create and configure a logical server using SQL Server in Azure." metaCanonical="" services="sql-database" documentationCenter="" title="How to Create and Configure SQL Database" authors="" solutions="" manager="" editor="" />
+<properties linkid="manage-services-how-to-configure-a-sqldb" urlDisplayName="構成方法" pageTitle="SQL データベースの構成方法 - Azure" metaKeywords="Azure 作成 SQL Server, Azure 構成 SQL Server" description="Azure で SQL Server を使用して論理サーバーを作成し構成する方法について説明します。" metaCanonical="" services="sql-database" documentationCenter="" title="SQL データベースを作成し構成する方法" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-<h1><a id="configLogical"></a>How to Create and Configure SQL Database</h1>
+<h1><a id="configLogical"></a>SQL データベースを作成し構成する方法</h1>
 
-In this topic, you'll step through logical server creation and configuration. In the new Azure (Preview) Management Portal, revised workflows let you create a database first, and then create a server. 
+このトピックでは、論理サーバーを作成し構成する手順を説明します。新しい Azure (プレビュー) 管理ポータルの改訂されたワークフローでは、まずデータベースを作成し、次にサーバーを作成します。
 
-However in this topic, you'll create the server first. You might prefer this approach if you have existing SQL Server databases that you want to upload.
+ただしこのトピックでは、最初にサーバーを作成します。アップロードする既存の SQL Server データベースがある場合は、この方が便利なことがあります。
 
-##Table of Contents##
-* [How to: Create a logical server](#createLogical)
-* [How to: Configure the firewall for the logical server](#configFWLogical)
+##目次##
+* [How to: 論理サーバーの作成](#createLogical)
+* [How to: 論理サーバーのファイアウォールの構成](#configFWLogical)
 
-<h2><a id="createLogical"></a>How to: Create a logical server</h2>
+<h2><a id="createLogical"></a>How to: 論理サーバーの作成</h2>
 
-1. Sign in to the [Management Portal](http://manage.windowsazure.com).
+1. [管理ポータル](http://manage.windowsazure.com)にサインインします。
 
-2. Click **SQL Database** and then click **SERVERS** on the SQL Database home page.
+2. **[SQL データベース]** をクリックし、SQL データベースのホーム ページで **[サーバー]** をクリックします。
 
-4. Click **Add** at the bottom of the page. 
+4. ページの下部にある **[追加]** をクリックします。
 
-5. In Server Settings, enter an administrator name as one word with no spaces. 
+5. [サーバーの設定] で、空白を含まない 1 語で管理者名を入力します。
 
-	SQL Database uses SQL Authentication over an encrypted connection. A new SQL Server authentication login assigned to the sysadmin fixed server role will be created using the name you provide. 
+	SQL データベースでは、暗号化された接続に対して SQL 認証を使用します。sysadmin 固定のサーバー ロールに割り当てられた新しい SQL Server 認証のログインが、入力した名前を使用して作成されます。
 
-	The login cannot be an email address, Windows user account, or a Windows Live ID. Neither Claims nor Windows authentication is supported on SQL Database.
+	ログインには、電子メール アドレス、Windows ユーザー アカウント、または Windows Live ID は使用できません。クレーム認証と Windows 認証のどちらも SQL データベースではサポートされません。
 
-6. Provide a strong password that is over eight characters, using a combination of upper and lower case values, and a number or symbol.
+6. 大文字、小文字、および数字または記号を組み合わせた 9 文字以上の強力なパスワードを指定します。
 
-7. Choose a region. Region determines the geographical location of the server. Regions cannot be easily switched, so choose one that makes sense for this server. Choose a location that is closest to you. Keeping your Azure application and database in the same region saves you on egress bandwidth cost and data latency.
+7. リージョンを選択します。リージョンによって、サーバーのジオ (主要地域)が決まります。リージョンは簡単に切り替えることができないので、このサーバーに最適なリージョンを選択してください。また、最も近い場所を選択してください。Azure アプリケーションとデータベースを同じリージョンに置くことで、送信帯域幅コストおよびデータ遅延を削減できます。
 
-8. Be sure to keep the **Allow Services** option selected so that you can connect to this database using the Management Portal for SQL Database, storage services, and other services on Azure. 
+8. **[Azure サービスにサーバーへのアクセスを許可します]** オプションを選択したままにしてください。そうすれば、SQL データベースの管理ポータル、ストレージ サービス、Azure のその他のサービスを使用してこのデータベースに接続できます。
 
-9. Click the checkmark at the bottom of the page when you are finished.
+9. 終了したら、ページの下部にあるチェックマークをクリックします。
 
-Notice that you did not specify a server name. SQL Database auto-generates the server name to ensure there are no duplicate DNS entries. The server name is a ten-character alphanumeric string. You cannot change the name of your SQL Database server.
+サーバー名を指定しなかったことに注意してください。SQL データベースでは、DNS エントリが重複しないようにサーバー名は自動的に生成されます。サーバー名は、10 文字の英数字文字列です。SQL データベース サーバーの名前は変更できません。
 
-In the next step, you will configure the firewall so that connections from applications running on your network are allowed access.
+次の手順では、ネットワークで実行中のアプリケーションからの接続によるアクセスが許可されるようにファイアウォールを構成します。
 
-<h2><a id="configFWLogical"></a>How to: Configure the firewall for the logical server</h2>
+<h2><a id="configFWLogical"></a>How to: 論理サーバーのファイアウォールの構成</h2>
 
-1. In the [Management Portal](http://manage.windowsazure.com), click **SQL Databases**, click **Servers**, and then click on the server you just created.
+1. [管理ポータル](http://manage.windowsazure.com)で **[SQL データベース]**、**[サーバー]** の順にクリックして、作成したサーバーをクリックします。
 
-2. Click **Configure**. 
+2. **[構成]** をクリックします。
 
-3. Copy the current client IP address. If you are connecting from a network, this is the IP address that your  router or proxy server is listening on. SQL Database detects the IP address used by the current connection so that you can create a firewall rule to accept connection requests from this device. 
+3. 現在のクライアント IP アドレスをコピーします。ネットワークから接続している場合、これは使用するルーターまたはプロキシ サーバーがリッスンしている IP アドレスです。SQL データベースが現在の接続で使用されている IP アドレスを検出すると、このデバイスからの接続要求を受け入れるためのファイアウォール ルールを作成できます。
 
-4. Paste the IP address into both the beginning and end range. Later, if you encounter connection errors indicating that the range is too narrow, you can edit this rule to widen the range.
+4. 開始範囲と終了範囲の両方に IP アドレスを貼り付けます。その後、この範囲が狭すぎることを示す接続エラーが発生した場合は、このルールを編集して範囲を広げることができます。
 
-	If client computers use dynamically assigned IP addresses, you must specify a range that is broad enough to include IP addresses assigned to computers in your network. Start with a narrow range, and then expand it only if you need to.
+	動的に割り当てられた IP アドレスをクライアント コンピューターで使用する場合は、ネットワーク上でコンピューターに割り当てられた IP アドレスを含む範囲を指定する必要があります。狭い範囲から始めて、必要になった場合にのみ範囲を広げます。
 
-5. Enter a name for the firewall rule, such as the name of your computer or company.
+5. 使用するコンピューターや会社の名前など、ファイアウォール ルールの名前を入力します。
 
-6. Click the checkmark to save the rule.
+6. チェックマークをクリックして、ルールを保存します。
 
-7. Click **Save** at the bottom of the page to complete the step. If you do not see **Save**, refresh the browser page.
+7. ページの下部にある **[保存]** をクリックして、手順を完了します。**[保存]** が表示されない場合は、ブラウザーのページを更新します。
 
-You now have a logical server, a firewall rule that allows inbound connections from your IP address, and an administrator login. In the next step, you'll switch to your local computer to complete the remaining configuration steps.
+これで、論理サーバー、IP アドレスからの受信接続を許可するファイアウォール ルール、および管理者ログインが用意できました。次の手順では、ローカル コンピューターに切り替えて、残りの構成手順を完了します。
 
-**Note:** The logical server you just created is transient and will be dynamically hosted on physical servers in a data center. If you delete the server, you should know in advance that this is a non-recoverable action. Be sure to backup any databases that you subsequently upload to the server. 
+**注:** 作成した論理サーバーは一時的で、データ センターの物理サーバー上で動的にホストされます。サーバーを削除する場合は、あらかじめこれは回復不可能な操作であることを知っておく必要があります。後でサーバーにアップロードするデータベースは必ずバックアップしておいてください。
+

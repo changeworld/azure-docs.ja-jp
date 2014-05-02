@@ -1,83 +1,83 @@
-<properties linkid="develop-php-table-service" urlDisplayName="Table Service" pageTitle="How to use table storage (PHP) | Microsoft Azure" metaKeywords="Azure Table service PHP, Azure creating table, Azure deleting table, Azure insert table, Azure query table" description="Learn how to use the Table service from PHP to create and delete a table, and insert, delete, and query the table." metaCanonical="" services="storage" documentationCenter="PHP" title="How to use the Table service from PHP" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-php-table-service" urlDisplayName="テーブル サービス" pageTitle="テーブル ストレージの使用方法 (PHP) | Microsoft Azure" metaKeywords="Azure テーブル サービス PHP, Azure テーブルの作成, Azure テーブルの削除, Azure テーブルの挿入, Azure クエリ テーブル" description="PHP からテーブル サービスを使用して、テーブルを作成および削除する方法、テーブルのエンティティを挿入、削除、照会する方法について説明します。" metaCanonical="" services="storage" documentationCenter="PHP" title="PHP からテーブル サービスを使用する方法" authors="" solutions="" manager="" editor="" />
 
-# How to use the Table service from PHP
+# PHP からテーブル サービスを使用する方法
 
-This guide will show you how to perform common scenarios using the Azure Table service. The samples are written in PHP and use the [Azure SDK for PHP][download]. The scenarios covered include **creating and deleting a table, and inserting, deleting, and querying entities in a table**. For more information on the Azure Table service, see the [Next Steps](#NextSteps) section.
+このガイドでは、Azure テーブル サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは PHP で記述され、[Azure SDK for PHP][download] を利用しています。紹介するシナリオは、**テーブルの作成と削除、テーブルのエンティティの挿入、削除、および照会**などです。Azure テーブル サービスの詳細については、「[次のステップ](#NextSteps)」を参照してください。
 
-##Table of contents
+##目次
 
-* [What is the Table Service](#what-is)
-* [Concepts](#concepts)
-* [Create an Azure storage account](#CreateAccount)
-* [Create a PHP application](#CreateApplication)
-* [Configure your application to access the Table service](#ConfigureStorage)
-* [Setup an Azure storage connection](#ConnectionString)
-* [How to: Create a table](#CreateTable)
-* [How to: Add an entity to a table](#AddEntity)
-* [How to: Retrieve a single entity](#RetrieveEntity)
-* [How to: Retrieve all entities in a partition](#RetEntitiesInPartition)
-* [How to: Retrieve a subset of entities in a partition](#RetrieveSubset)
-* [How to: Retrieve a subset of entity properties](#RetPropertiesSubset)
-* [How to: Update an entity](#UpdateEntity)
-* [How to: Batch table operations](#BatchOperations)
-* [How to: Delete a table](#DeleteTable)
-* [Next Steps](#NextSteps)
+* [テーブル サービスとは](#what-is)
+* [概念](#concepts)
+* [Azure のストレージ アカウントの作成](#CreateAccount)
+* [PHP アプリケーションの作成](#CreateApplication)
+* [テーブル サービスにアクセスするようにアプリケーションを構成する](#ConfigureStorage)
+* [Azure のストレージ接続文字列の設定](#ConnectionString)
+* [方法: テーブルを作成する](#CreateTable)
+* [方法: エンティティをテーブルに追加する](#AddEntity)
+* [方法: 単一のエンティティを取得する](#RetrieveEntity)
+* [方法: パーティション内のすべてのエンティティを取得する](#RetEntitiesInPartition)
+* [方法: パーティション内のエンティティのサブセットを取得する](#RetrieveSubset)
+* [方法: エンティティ プロパティのサブセットを取得する](#RetPropertiesSubset)
+* [方法: エンティティを更新する](#UpdateEntity)
+* [方法: バッチ テーブル処理](#BatchOperations)
+* [方法: テーブルを削除する](#DeleteTable)
+* [次のステップ](#NextSteps)
 
 [WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
-##<a id="CreateAccount"></a>Create an Azure storage account
+##<a id="CreateAccount"></a>Azure のストレージ アカウントの作成
 
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-##<a id="CreateApplication"></a>Create a PHP application
+##<a id="CreateApplication"></a>PHP アプリケーションの作成
 
-The only requirement for creating a PHP application that accesses the Azure Table service is the referencing of classes in the Azure SDK for PHP from within your code. You can use any development tools to create your application, including Notepad.
+Azure テーブル サービスにアクセスする PHP アプリケーションを作成するための要件は、コード内から Azure SDK for PHP のクラスを参照することのみです。アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。
 
-In this guide, you will use Table service features which can be called from within a PHP application locally, or in code running within an Azure web role, worker role, or web site.
+このガイドで使用するテーブル サービス機能は、PHP アプリケーション内からローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト上で実行されるコード内で呼び出すこともできます。
 
-##<a id="GetClientLibrary"></a>Get the Azure Client Libraries
+##<a id="GetClientLibrary"></a>Azure クライアント ライブラリの入手
 
 [WACOM.INCLUDE [get-client-libraries](../includes/get-client-libraries.md)]
 
-##<a id="ConfigureStorage"></a>Configure your application to access the Table service
+##<a id="ConfigureStorage"></a>テーブル サービスにアクセスするようにアプリケーションを構成する
 
-To use the Azure Table service APIs, you need to:
+Azure テーブル サービス API を使用するには、次の要件があります。
 
-1. Reference the autoloader file using the [require_once][require_once] statement, and
-2. Reference any classes you might use.
+1. [require_once][require_once] ステートメントを使用してオートローダー ファイルを参照する
+2.  使用する可能性のあるクラスを参照する
 
-The following example shows how to include the autoloader file and reference the **ServicesBuilder** class.
+次の例では、オートローダー ファイルをインクルードし、**ServicesBuilder** クラスを参照する方法を示しています。
 
 > [WACOM.NOTE]
-> This example (and other examples in this article) assume you have installed the PHP Client Libraries for Azure via Composer. If you installed the libraries manually or as a PEAR package, you will need to reference the <code>WindowsAzure.php</code> autoloader file.
+> この例 (およびこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされているとします。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、<code>WindowsAzure.php</code> オートローダー ファイルを参照する必要があります。
 
 	require_once 'vendor\autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
 
 
-In the examples below, the `require_once` statement will be shown always, but only the classes necessary for the example to execute will be referenced.
+この後のコード例では、`require_once` ステートメントが常に記述されていますが、コード例の実行に必要なクラスのみ参照されます。
 
-##<a id="ConnectionString"></a>Setup an Azure storage connection
+##<a id="ConnectionString"></a>Azure のストレージ接続文字列の設定
 
-To instantiate an Azure Table service client you must first have a valid connection string. The format for the table service connection string is:
+Azure テーブル サービス クライアントをインスタンス化するには、まず有効な接続文字列が必要です。テーブル サービスの接続文字列の形式は次のとおりです。
 
-For accessing a live service:
+ライブ サービスにアクセスする場合: 
 
 	DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]
 
-For accessing the emulator storage:
+エミュレーター ストレージにアクセスする場合: 
 
 	UseDevelopmentStorage=true
 
 
-To create any Azure service client you need to use the **ServicesBuilder** class. You can:
+いずれの Azure サービス クライアントを作成するにも、**ServicesBuilder** クラスを使用する必要があります。そのための方法は次のとおりです。
 
-* pass the connection string directly to it or
-* use the **CloudConfigurationManager (CCM)** to check multiple external sources for the connection string:
-	* by default it comes with support for one external source - environmental variables
-	* you can add new sources by extending the **ConnectionStringSource** class
+* 接続文字列を直接渡す
+* **CloudConfigurationManager (CCM)** を使用して複数の外部ソースに対して接続文字列を確認する
+	* 既定では 1 つの外部ソース (環境変数) のみサポートされています。
+	* **ConnectionStringSource** クラスを継承して新しいソースを追加できます。
 
-For the examples outlined here, the connection string will be passed directly.
+ここで概説している例では、接続文字列を直接渡します。
 
 	require_once 'vendor\autoload.php';
 
@@ -86,9 +86,9 @@ For the examples outlined here, the connection string will be passed directly.
 	$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
 
 
-##<a id="CreateTable"></a>How to: create a table
+##<a id="CreateTable"></a>方法: テーブルを作成する
 
-A **TableRestProxy** object lets you create a table with the **createTable** method. When creating a table, you can set the Table Service timeout. (For more information about the table service timeout, see [Setting Timeouts for Table Service Operations][table-service-timeouts].)
+**TableRestProxy** オブジェクトの **createTable** メソッドを使用してテーブルを作成できます。テーブルの作成時、テーブル サービスのタイムアウトを設定できます (テーブル サービスのタイムアウトの詳細については、「[テーブル サービス操作のサーバー タイムアウトの設定][table-service-timeouts]」を参照)。
 
 	require_once 'vendor\autoload.php';
 
@@ -107,14 +107,14 @@ A **TableRestProxy** object lets you create a table with the **createTable** met
 		$error_message = $e->getMessage();
 		// Handle exception based on error codes and messages.
 		// Error codes and messages can be found here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
 	}
 
-For information about restrictions on Table names, see [Understanding the Table Service Data Model][table-data-model].
+テーブル名の制限については、「[テーブル サービス データ モデルについて][table-data-model]」を参照してください。
 
-##<a id="AddEntity"></a>How to: Add an entity to a table
+##<a id="AddEntity"></a>方法: エンティティをテーブルに追加する
 
-To add an entity to a table, create a new **Entity** object and pass it to **TableRestProxy->insertEntity**. Note that when you create an entity you must specify a `PartitionKey` and `RowKey`. These are the unique identifiers for an entity and are values that can be queried much faster than other entity properties. The system uses `PartitionKey` to automatically distribute the table’s entities over many storage nodes. Entities with the same `PartitionKey` are stored on the same node. (Operations on multiple entities stored on the same node will perform better than on entities stored across different nodes.) The `RowKey` is the unique ID of an entity within a partition.
+エンティティをテーブルに追加するには、新しい **Entity** オブジェクトを作成し、**TableRestProxy->insertEntity** に渡します。エンティティの作成時は `PartitionKey` と `RowKey` を指定する必要があることに注意してください。これらにはエンティティの一意の識別子であり、他のエンティティのプロパティよりはるかに高速に照会できる値です。システムでは `PartitionKey` が使用されて多くのストレージ ノードにテーブル エンティティが自動的に配布されます。`PartitionKey` が同じエンティティは同じノードで格納されています (同じノードで格納されている複数のエンティティに対する処理は、異なるノードにまたがって格納されているエンティティに対する処理よりもパフォーマンスは高くなります)。`RowKey` は特定のパーティション内のエンティティの一意の ID です。
 
 	require_once 'vendor\autoload.php';
 
@@ -141,14 +141,14 @@ To add an entity to a table, create a new **Entity** object and pass it to **Tab
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 	}
 
-For information about Table properties and types, see [Understanding the Table Service Data Model][table-data-model].
+テーブルのプロパティと型については、「[テーブル サービス データ モデルについて][table-data-model]」を参照してください。
 
-The **TableRestProxy** class offers two alternative methods for inserting entities: **insertOrMergeEntity** and **insertOrReplaceEntity**. To use these methods, create a new **Entity** and pass it as a parameter to either method. Each method will insert the entity if it does not exist. If the entity already exists, **insertOrMergeEntity** will update property values if the properties already exist and add new properties if they do not exist, while **insertOrReplaceEntity** completely replaces an existing entity. The following example shows how to use **insertOrMergeEntity**. If the entity with `PartitionKey` "tasksSeattle" and `RowKey` "1" does not already exist, it will be inserted. However, if it has previously been inserted (as shown in the example above), the `DueDate` property will be updated and the `Status` property will be added. The `Description` and `Location` properties are also updated, but with values that effectively leave them unchanged. If these latter two properties were not added as shown in the example, but existed on the target entity, their existing values would remain unchanged.
+**TableRestProxy** クラスには、ほかにもエンティティを挿入する 2 つのメソッド、**insertOrMergeEntity** と **insertOrReplaceEntity** が用意されています。これらのメソッドを使用するには、新しい **Entity** を作成し、いずれかのメソッドにパラメーターとして渡します。各メソッドは、渡されたエンティティが存在しない場合に、そのエンティティを挿入します。エンティティが既に存在する場合、**insertOrMergeEntity** はプロパティ値が既に存在するなら更新し、存在しないなら新しいプロパティを追加します。一方、**insertOrReplaceEntity** は既存のエンティティを完全に置き換えます。次の例は、**insertOrMergeEntity** を使用する方法を示しています。`PartitionKey` が "tasksSeattle" で `RowKey` が "1" であるエンティティがまだ存在しない場合は挿入されます。ただし、既に挿入されている場合 (前の例を参照)、`DueDate` プロパティが更新され、`Status` プロパティが追加されます。`Description` および `Location` プロパティも更新されますが、値は実際には変更されないままになります。これら後者の 2 つのプロパティは例に示しているように追加されますが、ターゲット エンティティに存在しているため、それらの既存の値は変更されないままになります。
 
 	require_once 'vendor\autoload.php';
 
@@ -182,16 +182,16 @@ The **TableRestProxy** class offers two alternative methods for inserting entiti
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 	   
 
-##<a id="RetrieveEntity"></a>How to: Retrieve a single entity
+##<a id="RetrieveEntity"></a>方法: 単一のエンティティを取得する
 
-The **TableRestProxy->getEntity** method allows you to retrieve a single entity by querying for its `PartitionKey` and `RowKey`. In the example below, the partition key `tasksSeattle` and row key `1` are passed to the **getEntity** method.
+**TableRestProxy->getEntity** メソッドを使用して、その `PartitionKey` と `RowKey` を照会することで、1 つのエンティティを取得できます。次の例では、パーティション キー `tasksSeattle` と行キー `1` を **getEntity** メソッドに渡しています。
 
 	require_once 'vendor\autoload.php';
 
@@ -207,7 +207,7 @@ The **TableRestProxy->getEntity** method allows you to retrieve a single entity 
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
@@ -217,9 +217,9 @@ The **TableRestProxy->getEntity** method allows you to retrieve a single entity 
 
 	echo $entity->getPartitionKey().":".$entity->getRowKey();
 
-##<a id="RetEntitiesInPartition"></a>How to: Retrieve all entities in a partition
+##<a id="RetEntitiesInPartition"></a>方法: パーティション内のすべてのエンティティを取得する
 
-Entity queries are constructed using filters (for more information, see [Querying Tables and Entities][filters]). To retrieve all entities in partition, use the filter "PartitionKey eq *partition_name*". The following example shows how to retrieve all entities in the `tasksSeattle` partition by passing a filter to the **queryEntities** method.
+エンティティのクエリはフィルターを使用して作成します (詳細については「[テーブルおよびエンティティのクエリ][filters]」を参照)。パーティション内のすべてのエンティティを取得するには、フィルター "PartitionKey eq *partition_name*" を使用します。次の例では、フィルターを **queryEntities** メソッドに渡すことで、`tasksSeattle` パーティション内のすべてのエンティティを取得する方法を示しています。
 
 	require_once 'vendor\autoload.php';
 
@@ -237,7 +237,7 @@ Entity queries are constructed using filters (for more information, see [Queryin
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
@@ -249,9 +249,9 @@ Entity queries are constructed using filters (for more information, see [Queryin
 		echo $entity->getPartitionKey().":".$entity->getRowKey()."<br />";
 	}
 
-##<a id="RetrieveSubset"></a>How to: Retrieve a subset of entities in a partition
+##<a id="RetrieveSubset"></a>方法: パーティション内のエンティティのサブセットを取得する
 
-The same pattern used in the previous example can be used to retrieve any subset of entities in a partition. The subset of entities you retrieve will be determined by the filter you use (for more information, see [Querying Tables and Entities][filters]).The following example shows how to use a filter to retrieve all entities with a specific `Location` and a `DueDate` less than a specified date.
+前の例で示している同じパターンを使用してパーティション内のエンティティのサブセットを取得できます。取得するエンティティのサブセットは、使用するフィルターによって決まります (詳細については、「[テーブルおよびエンティティのクエリ][filters]」を参照)。次の例では、フィルターを使用して、`Location` が指定した場所でかつ `DueDate` が指定した日付より前のエンティティをすべて取得する方法を示しています。
 
 	require_once 'vendor\autoload.php';
 
@@ -269,7 +269,7 @@ The same pattern used in the previous example can be used to retrieve any subset
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
@@ -281,9 +281,9 @@ The same pattern used in the previous example can be used to retrieve any subset
 		echo $entity->getPartitionKey().":".$entity->getRowKey()."<br />";
 	}
 
-##<a id="RetPropertiesSubset"></a>How to: Retrieve a subset of entity properties
+##<a id="RetPropertiesSubset"></a>方法: エンティティ プロパティのサブセットを取得する
 
-A query can retrieve a subset of entity properties. This technique, called *projection*, reduces bandwidth and can improve query performance, especially for large entities. To specify a property to be retrieved, pass the name of the property to the **Query->addSelectField** method. You can call this method multiple times to add more properties. After executing **TableRestProxy->queryEntities**, the returned entities will only have the selected properties. (If you want to return a subset of Table entities, use a filter as shown in the queries above.)
+クエリを使用してエンティティのプロパティのサブセットを取得できます。*プロジェクション*と呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。取得するプロパティを指定するには、プロパティの名前を **Query->addSelectField** メソッドに渡します。このメソッドを複数回呼び出して、ほかのプロパティを追加できます。**TableRestProxy-&gt;queryEntities** の実行後、返されるエンティティには選択したプロパティのみ格納されています (テーブル エンティティのサブセットが返されるようにする場合は、前のクエリで示したようにフィルターを使用します)。
 
 	require_once 'vendor\autoload.php';
 
@@ -303,7 +303,7 @@ A query can retrieve a subset of entity properties. This technique, called *proj
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
@@ -319,9 +319,9 @@ A query can retrieve a subset of entity properties. This technique, called *proj
 		echo $description."<br />";
 	}
 
-##<a id="UpdateEntity"></a>How to: Update an entity
+##<a id="UpdateEntity"></a>方法: エンティティを更新する
 
-An existing entity can be updated by using the **Entity->setProperty** and **Entity->addProperty** methods on the entity, and then calling **TableRestProxy->updateEntity**. The following example retrieves an entity, modifies one property, removes another property, and adds a new property. Note that removing a property is done by setting its value to **null**. 
+既存のエンティティは、エンティティの **Entity->setProperty** および **Entity->addProperty** メソッドを使用した後、**TableRestProxy->updateEntity** を呼び出すことで更新できます。次の例では、エンティティを取得してから、1 つのプロパティの変更、別のプロパティの削除、新しいプロパティの追加を行っています。プロパティを削除するには、その値を **null** に設定することに注意してください。
 
 	require_once 'vendor\autoload.php';
 	
@@ -349,15 +349,15 @@ An existing entity can be updated by using the **Entity->setProperty** and **Ent
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-##<a id="DeleteEntity"></a>How to: Delete an entity
+##<a id="DeleteEntity"></a>方法: エンティティを削除する
 
-To delete an entity, pass the table name, and the entity's `PartitionKey` and `RowKey` to the **TableRestProxy->deleteEntity** method.
+エンティティを削除するには、テーブル名、およびエンティティの `PartitionKey` と `RowKey` を **TableRestProxy->deleteEntity** メソッドに渡します。
 
 	require_once 'vendor\autoload.php';
 
@@ -374,26 +374,26 @@ To delete an entity, pass the table name, and the entity's `PartitionKey` and `R
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-Note that for concurrency checks, you can set the Etag for an entity to be deleted by using the **DeleteEntityOptions->setEtag** method and passing the **DeleteEntityOptions** object to **deleteEntity** as a fourth parameter.
+同時実行のチェック用に、削除するエンティティの Etag を設定できることに注意してください。そのためには、 **DeleteEntityOptions->setEtag** メソッドを使用して、**DeleteEntityOptions** オブジェクトを 4 番目のパラメーターとして **deleteEntity** に渡します。
 
-##<a id="BatchOperations"></a>How to: Batch table operations
+##<a id="BatchOperations"></a>方法: バッチ テーブル処理
 
-The **TableRestProxy->batch** method allows you to execute multiple operations in a single request. The pattern here involves adding operations to **BatchRequest** object and then passing the **BatchRequest** object to the **TableRestProxy->batch** method. To add an operation to a **BatchRequest** object, you can call any of the following methods multiple times:
+**TableRestProxy->batch** メソッドを使用すると、1 つの要求で複数の処理を実行できます。ここで示しているパターンでは、処理を **BatchRequest** オブジェクトに追加し、**BatchRequest** オブジェクトを **TableRestProxy->batch** メソッドに渡しています。処理を **BatchRequest** オブジェクトに追加するには、次のいずれかのメソッドを複数回呼び出すことができます。
 
-* **addInsertEntity** (adds an insertEntity operation)
-* **addUpdateEntity** (adds an updateEntity operation)
-* **addMergeEntity** (adds a mergeEntity operation)
-* **addInsertOrReplaceEntity** (adds an insertOrReplaceEntity operation)
-* **addInsertOrMergeEntity** (adds an insertOrMergeEntity operation)
-* **addDeleteEntity** (adds a deleteEntity operation)
+* **addInsertEntity** (insertEntity 処理を追加)
+* **addUpdateEntity** (updateEntity 処理を追加)
+* **addMergeEntity** (mergeEntity 処理を追加)
+* **addInsertOrReplaceEntity** (insertOrReplaceEntity 処理を追加)
+* **addInsertOrMergeEntity** (insertOrMergeEntity 処理を追加)
+* **addDeleteEntity** (deleteEntity 処理を追加)
 
-The following example shows how to execute **insertEntity** and **deleteEntity** operations in a single request:
+次の例では、1 つの要求で **insertEntity** 処理と **deleteEntity** 処理を実行する方法を示しています。
 
 	require_once 'vendor\autoload.php';
 	
@@ -430,17 +430,17 @@ The following example shows how to execute **insertEntity** and **deleteEntity**
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-For more information about batching Table operations, see [Performing Entity Group Transactions][entity-group-transactions].
+テーブル バッチ処理の詳細については、「[エンティティ グループ トランザクションの実行][entity-group-transactions]」を参照してください。
 
-##<a id="DeleteTable"></a>How to: Delete a table
+##<a id="DeleteTable"></a>方法: テーブルを削除する
 
-Finally, to delete a table, pass the table name to the **TableRestProxy->deleteTable** method.
+最後に、テーブルを削除するには、テーブル名を **TableRestProxy->deleteTable** メソッドに渡します。
 
 	require_once 'vendor\autoload.php';
 
@@ -457,24 +457,25 @@ Finally, to delete a table, pass the table name to the **TableRestProxy->deleteT
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-##<a id="NextSteps"></a>Next steps
+##<a id="NextSteps"></a>次のステップ
 
-Now that you’ve learned the basics of the Azure Table Service, follow these links to learn how to do more complex storage tasks.
+これで、Azure テーブル サービスの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
-- See the MSDN Reference: [Storing and Accessing Data in Azure] []
-- Visit the Azure Storage Team Blog: <http://blogs.msdn.com/b/windowsazurestorage/>
+- MSDN リファレンス: [Azure のデータの格納とアクセス][]
+- Azure のストレージ チーム ブログ: <http://blogs.msdn.com/b/windowsazurestorage/>
 
-[download]: http://go.microsoft.com/fwlink/?LinkID=252473
-[Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+[ダウンロード]: http://go.microsoft.com/fwlink/?LinkID=252473
+[Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
 [require_once]: http://php.net/require_once
-[table-service-timeouts]: http://msdn.microsoft.com/en-us/library/windowsazure/dd894042.aspx
+[テーブル サービスのタイムアウト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd894042.aspx
 
-[table-data-model]: http://msdn.microsoft.com/en-us/library/windowsazure/dd179338.aspx
-[filters]: http://msdn.microsoft.com/en-us/library/windowsazure/dd894031.aspx
-[entity-group-transactions]: http://msdn.microsoft.com/en-us/library/windowsazure/dd894038.aspx
+[table-data-model]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179338.aspx
+[フィルター]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd894031.aspx
+[entity-group-transactions]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd894038.aspx
+

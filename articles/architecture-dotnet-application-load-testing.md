@@ -1,16 +1,17 @@
-<properties linkid="develop-net-architecture-load-testing" urlDisplayName="Load Testing Pattern" pageTitle="Load Testing Application Pattern - Azure Architecture Patterns" metaKeywords="" description="Find architectural overviews and design patterns that describe how to implement a load testing system on Azure." metaCanonical="" services="" documentationCenter=".NET" title="Load Testing in Azure" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-net-architecture-load-testing" urlDisplayName="ロード テスト パターン" pageTitle="アプリケーション パターンのロード テスト - Azure のアーキテクチャ パターン" metaKeywords="" description="Azure にロード テスト システムを実装する方法を示す、アーキテクチャの概要と設計パターンを紹介します。" metaCanonical="" services="" documentationCenter=".NET" title="Azure のロード テスト" authors="" solutions="" manager="" editor="" />
 
-# Load Testing in Azure
+# Azure のロード テスト
 
-The cloud-based load testing service can load test your web applications. Use Visual Studio to create a load test to determine the capacity and performance of your web application-there's no need to use your own Azure VMs. Instead, you can let the [cloud-based load testing service](http://tfs.visualstudio.com/en-us/learn/load-testing) create these for you.
+クラウド ベースのロード テスト サービスでは、Web アプリケーションに対してロード テストを実施できます。Web アプリケーションの容量およびパフォーマンスを明らかにするロード テストを作成するには、Visual Studio を使用します。このとき、Azure VM を使用する必要はありません。ロード テストは、[クラウド ベースのロード テスト サービス](http://tfs.visualstudio.com/ja-jp/learn/load-testing)で作成できます。
 
 <!--links-->
 
-[Azure and Visual Studio Ultimate]: http://www.microsoft.com/visualstudio/eng/products/visual-studio-ultimate-2012#product-edition-ultimate-details
-[Running Load Tests In Mixed Environments]: http://msdn.microsoft.com/en-us/library/windowsazure/hh966776.aspx
-[Using Visual Studio Load Tests in Azure Roles]: http://msdn.microsoft.com/en-us/library/windowsazure/hh674491.aspx
+[Azure と Visual Studio Ultimate]: http://www.microsoft.com/visualstudio/eng/products/visual-studio-ultimate-2012#product-edition-ultimate-details
+[Running Load Tests In Mixed Environments]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh966776.aspx
+[Using Visual Studio Load Tests in Azure Roles]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh674491.aspx
 
 <!--images-->
+
 
 
 

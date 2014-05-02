@@ -1,76 +1,76 @@
-<properties linkid="develop-mobile-tutorials-build-realtime-apps-with-pusher-ios" urlDisplayName="Build Realtime Apps with Pusher" pageTitle="Build Realtime Apps with Pusher (iOS) - Mobile Services" metaKeywords="" description="Learn how to use Pusher to send notifications to your Azure Media Services app on iOS." metaCanonical="" services="" documentationCenter="Mobile" title="Build Real-time Apps with Mobile Services and Pusher" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-tutorials-build-realtime-apps-with-pusher-ios" urlDisplayName="Pusher を使用したリアルタイム アプリケーションの構築" pageTitle="Pusher を使用したリアルタイム アプリケーションの構築 (iOS) - モバイル サービス" metaKeywords="" description="Pusher を使用して iOS 上の Azure メディア サービス アプリケーションに通知を送信する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="モバイル サービスおよび Pusher を使用したリアルタイム アプリケーションの構築" authors="" solutions="" manager="" editor="" />
 
 
-# Build Real-time Apps with Mobile Services and Pusher
+# モバイル サービスおよび Pusher を使用したリアルタイム アプリケーションの構築
 <div class="dev-center-tutorial-selector sublanding"> 
 	<a href="" title="iOS" class="current">iOS</a> 
 </div>
 
-This topic shows you how can add real-time functionality to your Azure Mobile Services-based app. When completed, your TodoList data is synchronized, in real-time, across all running instances of your app.
+このトピックでは、Azure モバイル サービス ベースのアプリケーションにリアルタイム機能を追加する方法を示します。完了すると、アプリケーションのすべての実行中のインスタンスにわたって、TodoList データがリアルタイムで同期されます。
  
-The [Push Notifications to Users][] tutorial shows you how to use push notifications to inform users of new items in the Todo list. Push notifications are a great way to show occasional changes. However, sometimes an app needs frequent real-time notifications. Real-time notifications can be added to your mobile service using the Pusher API. In this tutorial, we use Pusher with Mobile Services to keep a Todo list synchronized when changes are made in any running instance of the app. 
+[ユーザーへのプッシュ通知][]に関するチュートリアルでは、プッシュ通知を使用して Todo リスト内の新しい項目をユーザーに知らせる方法を示しています。プッシュ通知は変更を随時知らせるための優れた方法です。しかし、アプリケーションには頻繁にリアルタイム通知が必要になることもあります。リアルタイム通知は、Pusher API を使用してモバイル サービスに追加できます。このチュートリアルでは、モバイル サービスと共に Pusher を使用して、アプリケーションの実行中のインスタンスで変更が行われたときに Todo リストを同期された状態に保ちます。
 
-Pusher is a cloud-based service that, like Mobile Services, makes building real-time apps incredibly easy. You can use Pusher to quickly build live polls, chat rooms, multi-player games, collaborative apps, to broadcast live data and content, and that's just the start! For more information, see [http://pusher.com](http://pusher.com).
+Pusher はモバイル サービスのようにクラウド ベースのサービスです。Pusher によってリアルタイム アプリケーションの構築が非常に簡単になります。Pusher を使用すると、ライブ投票、チャット ルーム、マルチプレーヤー ゲーム、コラボレーション アプリケーションをすばやく構築して、ライブ データとライブ コンテンツをブロードキャストすることができます。用途はまだまだあります。詳細については、[http://pusher.com](http://pusher.com) を参照してください。
 
-This tutorial walks you through these basic steps to add realtime collaboration to the Todo list application:
+このチュートリアルでは、Todo リスト アプリケーションにリアルタイム コラボレーションを追加するための基本的な手順について説明します。
 
-1. [Create a Pusher account][]
-2. [Update your app][]
-3. [Install server scripts][]
-4. [Test your app][]
+1. [Pusher アカウントを作成する][]
+2. [アプリケーションを更新する][]
+3. [サーバー スクリプトをインストールする][]
+4. [アプリケーションをテストする][]
 
-This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete [Get started with Mobile Services][].
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用][]」を完了している必要があります。
 
-## <a name="sign-up"></a>Create a new Pusher account
+## <a name="sign-up"></a>新しい Pusher アカウントを作成する
 
 [WACOM.INCLUDE [pusher-sign-up](../includes/pusher-sign-up.md)]
 
-## <a name="update-app"></a>Update your app
+## <a name="update-app"></a>アプリケーションを更新する
 
-Now that you have your Pusher account set up, the next step is to modify the iOS app code for the new functionality.
+Pusher アカウントの設定が終わったので、次に iOS アプリケーション コードを新しい機能向けに変更します。
 
-###Install the libPusher library
+###libPusher ライブラリをインストールする
 
-The [libPusher][] library lets you access Pusher from iOS. 
+[libPusher][] ライブラリを使用すると、iOS から Pusher にアクセスできます。
 
-1. Download the libPusher library [from here][libPusherDownload].
+1. libPusher ライブラリを[ここから][libPusherDownload]ダウンロードします。
 
-2. Create a group called _libPusher_ in your project.
+2. プロジェクト内に _libPusher_ という名前のグループを作成します。
 
-3. In Finder, unzip the downloaded zip file, select the **libPusher-combined.a** and **/headers** folders, and drag these items into the **libPusher** group in your project.
+3. Finder で、ダウンロードした zip ファイルを解凍し、**libPusher-combined.a** および **/headers** フォルダーを選択して、これらの項目をプロジェクト内の **libPusher** グループにドラッグします。
 
-4. Check **Copy items into destination group's folder**, then click **Finish**
+4. **[Copy items into destination group's folder]** をオンにして、**[Finish]** をクリックします。
 	
 	![][add-files-to-group]
 
-   This copies the libPusher files into your project.
+   これで、libPusher ファイルがプロジェクトにコピーされます。
 
-5. On the project root in the project explorer, click **Build Phases**, then click **Add Build Phase** and **Add Copy Files**.
+5. プロジェクト エクスプローラーのプロジェクト ルートで、**[Build Phases]**、**[Add Build Phase]**、**[Add Copy Files]** の順にクリックします。
 
-6. Drag the **libPusher-combined.a** file from the project explorer into the new build phase.
+6. **libPusher-combined.a** ファイルを、プロジェクト エクスプローラーから新しいビルド フェーズにドラッグします。
 
-7. Change the **Destination** to **Frameworks** and click **Copy only when installing**.
+7. **[Destination]** を **[Frameworks]** に変更し、**[Copy only when installing]** をクリックします。
 
 	![][add-build-phase]
 	
-8. Within the **Link Binary With Libraries** area, add the following libraries:
+8. **[Link Binary With Libraries]** 領域内で、次のライブラリを追加します。
 	
 	- libicucore.dylib
 	- CFNetwork.framework
 	- Security.framework
 	- SystemConfiguration.framework
 	
-9. Finally within **Build Settings**, locate the target build setting **Other Linker Flags** and add the **-all_load** flag.
+9. 最後に **[Build Settings]** 内で、ターゲットのビルド設定 **[Other Linker Flags]** を見つけ、**-all_load** フラグを追加します。
 
 	![][add-linker-flag]
 
-	This shows the **-all_load** flag set for the Debug build target.
+	これで、[デバッグ] ビルド ターゲット向けに設定された **-all_load** フラグが示されます。
 
-The library is now installed ready for use.
+ライブラリはインストールされ、使用できる状態になりました。
 
-### Add code to the application
+### アプリケーションにコードを追加する
 
-1. In Xcode, open the **QSTodoService.h** file and add the following method declarations:
+1. Xcode で、**QSTodoService.h** ファイルを開き、次のメソッド宣言を追加します。
 
         // Allows retrieval of items by id
         - (NSUInteger) getItemIndex:(NSDictionary *)item;
@@ -81,12 +81,12 @@ The library is now installed ready for use.
         // To be called when items are completed by other users
         - (NSUInteger) itemCompleted:(NSDictionary *)item;
         
-2. Replace the existing declarations of **addItem** and **completeItem** with the following:
+2. **addItem** および **completeItem** の既存の宣言を次の宣言で置き換えます。
 
 		- (void) addItem:(NSDictionary *) item;
 		- (void) completeItem: (NSDictionary *) item;
 
-3. In **QSTodoService.m**, add the following code to implement the new methods:
+3. **QSTodoService.m** で、次のコードを追加して新しいメソッドを実装します。
 
         // Allows retrieval of items by id
 		- (NSUInteger) getItemIndex:(NSDictionary *)item
@@ -129,9 +129,9 @@ The library is now installed ready for use.
 		    return index;
 		}
 
-	The QSTodoService now allows you to find items by **id** and add and complete items locally without sending explicit requests to the remote service.
+	QSTodoService を使用すると、**id** で項目を検索し、リモート サービスに明示的な要求を送信せずにローカルに項目を追加して完了させることができます。
 	
-4. Replace the existing **addItem** and **completeItem** methods with the following code:
+4. 既存の **addItem** および **completeItem** メソッドを次のコードで置き換えます。
 
 		-(void) addItem:(NSDictionary *)item
 		{
@@ -154,33 +154,33 @@ The library is now installed ready for use.
 		}
 
 
-	Note that items are now added and completed, along with updates to the UI, when events are received from Pusher instead of when the data table is updated.
+	データ テーブルが更新されたときではなく、Pusher からイベントを受け取ったときに、UI が更新されるとともに、項目が追加され完了に設定されることに注意してください。
 
-5. In the **QSTodoListViewController.h** file, add the following import statements:
+5. **QSTodoListViewController.h** ファイルに、次の import ステートメントを追加します。
 
 		#import "PTPusherDelegate.h"
 		#import "PTPusher.h"
 		#import "PTPusherEvent.h"
 		#import "PTPusherChannel.h"
 		
-6. Modify the interface declaration to add **PTPusherDelegate** to look like the following:
+6. 次のように、インターフェイス宣言を変更して **PTPusherDelegate** を追加します。
 
 		@interface QSTodoListViewController : UITableViewController<UITextFieldDelegate, PTPusherDelegate>
 		
-7. Add the following new property:
+7. 次の新しいプロパティを追加します。
 
 		@property (nonatomic, strong) PTPusher *pusher;
 
-8. Add the following code that declares a new method:
+8. 次のコードを追加して新しいメソッドを宣言します。
 
 		// Sets up the Pusher client
 		- (void) setupPusher;
 		
-9. In **QSTodoListViewController.m**, add the following line under the other **@synthesise** lines to implement the new property:
+9. **QSTodoListViewController.m** で、**@synthesise** 行の下に次の行を追加して新しいプロパティを実装します。
 
 		@synthesize pusher = _pusher;
 
-10. Now add the following code to implement the new method:
+10. 次のコードを追加して、新しいメソッドを実装します。
 
 		// Sets up the Pusher client
 		- (void) setupPusher {
@@ -224,9 +224,9 @@ The library is now installed ready for use.
 		    }];
 		}
 
-11. Replace the `**your_app_key**` placeholder with the app_key value you copied from the Connection Info dialog earlier.
+11. プレースホルダー `**your_app_key**` を、前に [出力値] ダイアログからコピーした app_key の値で置き換えます。
 
-12. Replace the **onAdd** method with the following code:
+12. **onAdd** メソッドを次のコードに置き換えます。
 
 		- (IBAction)onAdd:(id)sender
 		{
@@ -240,7 +240,7 @@ The library is now installed ready for use.
 		    itemText.text = @"";
 		}
 
-13. In the **QSTodoListViewController.m** file, locate the (void)viewDidLoad method and add a call to the **setupPusher** method so the first few lines are:
+13. **QSTodoListViewController.m** ファイルで、(void)viewDidLoad メソッドを見つけ、次のように **setupPusher** メソッドへの呼び出しを追加します。
 
 		- (void)viewDidLoad
 		{
@@ -252,38 +252,38 @@ The library is now installed ready for use.
 		// Ask the todoService to set the item's complete value to YES
 	    [self.todoService completeItem:item];
 
-The app is now able to receive events from Pusher, and to update the local Todo list accordingly.
+これで、アプリケーションは Pusher からイベントを受け取り、それに応じてローカルな Todo リストを更新できるようになりました。
 
 
 
-<h2><a name="install-scripts"></a>Install server scripts</h2>
+<h2><a name="install-scripts"></a>サーバー スクリプトをインストールする</h2>
 
 
 
-All that remains is setting up your server scripts. We'll insert a script for when an item is inserted or updated into the TodoList table.
+残りの作業はサーバー スクリプトの設定です。TodoList テーブルに項目が挿入された場合や、項目が更新された場合に対応するスクリプトを挿入します。
 
 
 
-1. Log on to the [Azure Management Portal], click **Mobile Services**, and then click your mobile service.
+1. Azure 管理ポータルにログオンし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。
 
 
-2. In the Management Portal, click the **Data** tab and then click the **TodoItem** table.
+2. 管理ポータルで、**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
 	![][1]
 
 
 
-3. In **TodoItem**, click the **Script** tab and select **Insert**.
+3. **[TodoItem]** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。
 
 
 	![][2]
 
    
 
-	This displays the function that is invoked when an insert occurs in the **TodoItem** table.
+	**TodoItem** テーブルで挿入が発生したときに呼び出される関数が表示されます。
 
 
-4. Replace the insert function with the following code:
+4. insert 関数を次のコードに置き換えます。
 
 
 		var Pusher = require('pusher');
@@ -316,20 +316,20 @@ All that remains is setting up your server scripts. We'll insert a script for wh
 
 
 
-5. Replace the placeholders in the above script with the values you copied from the Connection Info dialog earlier:
+5. 上記スクリプト内のプレースホルダーを、前に [出力値] ダイアログからコピーした値に置き換えます。
 
 	- **`**your_app_id**`**: the app&#95;id value
 	- **`**your_app_key**`**: the app&#95;key value
 	- **`**your_app_key_secret**`**: the app&#95;key&#95;secret
 
 
-6. Click the **Save** button. You have now configured a script to publish an event to Pusher every time a new item is inserted into the **TodoItem** table.
+6. **[保存]** ボタンをクリックします。これで、新しい項目が **TodoItem** テーブルに挿入されるたびに Pusher にイベントを発行するスクリプトが構成されました。
 
 
-7. Select **Update** from the **Operation** dropdown.
+7. **[操作]** ドロップダウンから **[更新]** を選択します。
 
 
-8. Replace the update function with the following code:
+8. update 関数を次のコードに置き換えます。
 
 		var Pusher = require('pusher');
 		
@@ -362,51 +362,51 @@ All that remains is setting up your server scripts. We'll insert a script for wh
 
 
 
-9. Repeat step 5 for this script to replace the placeholders.
+9. このスクリプトにも手順 5. を繰り返して、プレースホルダーを置き換えます。
 
 
-10. Click the **Save** button. You have now configured a script to publish an event to Pusher every time a new item is updated.
-
-
-
-<h2><a name="test-app"></a>Test your app</h2>
+10. **[保存]** ボタンをクリックします。これで、新しい項目が更新されるたびに Pusher にイベントを発行するスクリプトが構成されました。
 
 
 
-To test the app you'll need to run two instances. You can run one instance on an iOS device and another in the iOS simulator.
+<h2><a name="test-app"></a>アプリケーションをテストする</h2>
 
-1. Connect your iOS device, press the **Run** button (or the Command+R key) to start the app on the device, then stop debugging. 
 
-	You now have your app installed on your device.
 
-2. Run the app on the iOS simulator, and at the same time start the app on your iOS device.
+アプリケーションをテストするには、2 つのインスタンスを実行する必要があります。1 つのインスタンスを iOS デバイスから実行し、もう 1 つを iOS シミュレーターで実行します。
 
-	Now you have two instances of the app running.
+1. iOS デバイスを接続し、**[Run]** ボタン (または Command + R キー) を押してデバイスでアプリケーションを起動してから、デバッグを停止します。
 
-3. Add a new Todo item in one of the app instances. 
+	これで、デバイスにアプリケーションがインストールされました。
 
-	Verify that the added item appears in the other instance.
+2. iOS シミュレーターでアプリケーションを実行し、同時に iOS デバイスでアプリケーションを起動します。
 
-4. Check a Todo item to mark it complete in one app instance. 
+	アプリケーションの 2 つのインスタンスが実行されています。
 
-	Verify that the item disappears from the other instance. 
+3. 1 つのアプリケーション インスタンスで新しい Todo 項目を追加します。
 
-Congratulations, you have successfully configured your mobile service app to synchronise across all clients in realtime.
+	追加した項目がもう 1 つのインスタンスに表示されることを確認します。
 
-## <a name="nextsteps"> </a>Next Steps
+4. 1 つのアプリケーション インスタンスで Todo 項目をチェックして、完了としてマークします。
 
-Now that you've seen how easy it is to use the Pusher service with Mobile Services, follow these links to learn more about Pusher.
+	もう 1 つのインスタンスから項目が消えたことを確認します。
 
--   Pusher API documentation: <http://pusher.com/docs>
--   Pusher tutorials: <http://pusher.com/tutorials>
+これで、モバイル サービス アプリケーションがすべてのクライアントにわたってリアルタイムで同期されるように構成されました。
 
-To learn more about registering and using server scripts, see [Mobile Services server script reference].
+## <a name="nextsteps"> </a>次のステップ
+
+モバイル サービスで Pusher サービスを簡単に使用できることがわかりました。Pusher の詳細については、次のリンク先を参照してください。
+
+-   Pusher API ドキュメント: <http://pusher.com/docs>
+-   Pusher チュートリアル: <http://pusher.com/tutorials>
+
+サーバー スクリプトの登録および使用の詳細については、「[モバイル サービスのサーバー スクリプト リファレンス]」を参照してください。
 
 <!-- Anchors. -->
-[Create a Pusher account]: #sign-up
-[Update your app]: #update-app
-[Install server scripts]: #install-scripts
-[Test your app]: #test-app
+[Pusher アカウントを作成する]: #sign-up
+[アプリケーションを更新する]: #update-app
+[サーバー スクリプトをインストールする]: #install-scripts
+[アプリケーションをテストする]: #test-app
 
 <!-- Images. -->
 [1]: ./media/mobile-services-ios-build-realtime-apps-pusher/mobile-portal-data-tables.png
@@ -417,12 +417,13 @@ To learn more about registering and using server scripts, see [Mobile Services s
 [add-linker-flag]: ./media/mobile-services-ios-build-realtime-apps-pusher/pusher-ios-add-linker-flag.png
 
 <!-- URLs. -->
-[Push Notifications to Users]: /en-us/develop/mobile/tutorials/push-notifications-to-users-ios
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started
+[ユーザーへのプッシュ通知]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-ios
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started
 [libPusher]: http://go.microsoft.com/fwlink/p?LinkId=276999
 [libPusherDownload]: http://go.microsoft.com/fwlink/p/?LinkId=276998
 
 
-[Azure Management Portal]: https://manage.windowsazure.com/
+[モバイル サービス]: https://manage.windowsazure.com/
 
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/p/?LinkId=262293
+[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=262293
+

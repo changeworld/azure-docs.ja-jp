@@ -1,157 +1,157 @@
-<properties linkid="manage-services-how-to-monitor-a-storage-account" urlDisplayName="How to monitor" pageTitle="How to monitor a storage account | Microsoft Azure" metaKeywords="Azure monitor storage accounts, storage account management portal, storage account dashboard, storage metrics table, storage metrics chart" description="Learn how to monitor a storage account in Azure by using the Management Portal." metaCanonical="" services="storage" documentationCenter="" title="How To Monitor a Storage Account" authors="tamram" solutions="" manager="mbaldwin" editor="cgronlun" />
+<properties linkid="manage-services-how-to-monitor-a-storage-account" urlDisplayName="監視方法" pageTitle="ストレージ アカウントの監視方法 | Microsoft Azure" metaKeywords="Azure 監視 ストレージ アカウント, ストレージ アカウント管理ポータル,  ストレージ アカウント ダッシュボード, ストレージ メトリック テーブル, ストレージ メトリック チャート" description="管理ポータルを使用して Azure でストレージ アカウントを監視する方法について説明します。" metaCanonical="" services="storage" documentationCenter="" title="ストレージ アカウントの監視方法" authors="tamram" solutions="" manager="mbaldwin" editor="cgronlun" />
 
 
 
 
 
+<h1><a id="createstorageaccount"></a>ストレージ アカウントの監視方法</h1>
 
-<h1><a id="createstorageaccount"></a>How To Monitor a Storage Account</h1>
+ストレージ アカウントは、Azure プレビュー管理ポータルで監視できます。ストレージ アカウントに関連付けられた各ストレージ サービス (BLOB、キュー、およびテーブル) について、監視レベル (最小または詳細) を選択し、適切なデータ保有ポリシーを指定できます。
 
-You can monitor your storage accounts in the Azure Preview Management Portal. For each storage service associated with the storage account (Blob, Queue, and Table), you can choose the level of monitoring - minimal or verbose - and specify the appropriate data retention policy. 
-
-Until you configure monitoring for a storage account, no monitoring data is collected, and the metrics charts on the dashboard and **Monitor** page are empty.
+ストレージ アカウントの監視を構成するまで、監視データは収集されず、ダッシュボードおよび **[監視]** ページのメトリック チャートは空です。
 
 <div class="dev-callout"> 
-<b>Note</b> 
-<p>Additional costs are associated with examining monitoring data in the Management Portal. For more information, see <a href="http://msdn.microsoft.com/en-us/library/windowsazure/hh360997.aspx">Storage Analytics and Billing</a>.</p> 
+<b>注</b>
+<p>管理ポータルで監視データを調査すると、追加のコストがかかります。詳細については、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/hh360997.aspx">ストレージの分析と課金に関するページ</a>を参照してください。</p>
 </div>
 
-##Table of Contents##
+##目次##
 
-* [How to: Configure monitoring for a storage account](#configurestoragemonitoring)
-* [How to: Customize the dashboard for monitoring](#customizestoragemonitoring)
-* [How to: Customize the Monitor page](#customizemonitorpage)
-* [How to: Add metrics to the metrics table](#addmonitoringmetrics)
-* [How to: Customize the metrics chart on the Monitor page](#customizemetricschart)
-* [How to: Configure logging](#configurelogging)
+* [方法: ストレージ アカウントの監視の設定](#configurestoragemonitoring)
+* [方法: ダッシュボードの監視用のカスタマイズ](#customizestoragemonitoring)
+* [方法: [監視] ページのカスタマイズ](#customizemonitorpage)
+* [How to: メトリック テーブルへのメトリックの追加](#addmonitoringmetrics)
+* [方法: [監視] ページのメトリック チャートのカスタマイズ](#customizemetricschart)
+* [方法: ログの構成](#configurelogging)
 
 
-<h2><a id="configurestoragemonitoring"></a>How to: Configure monitoring for a storage account</h2>
+<h2><a id="configurestoragemonitoring"></a>方法: ストレージ アカウントの監視の設定</h2>
 
-1. In the [Management Portal](https://manage.windowsazure.com/), click **Storage**, and then click the storage account name to open the dashboard.
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
-2. Click **Configure**, and scroll down to the **monitoring** settings for the Blob, Table, and Queue services, shown below.
+2. **[構成]** をクリックして、BLOB、テーブル、キューの各サービスの **[監視]** 設定まで下図のようにスクロールします。
 
 	![MonitoringOptions](./media/storage-monitor-storage-account/Storage_MonitoringOptions.png)
 
-3. In **monitoring**, set the level of monitoring and the data retention policy for each service:
+3. **[監視]** で、各サービスの監視レベルおよびデータ保有ポリシーを設定します。
 
--  To set the monitoring level, select one of the following:
+- 監視レベルを設定するには、以下のいずれかを選択します。
 
-      **Minimal** - Collects metrics such as ingress/egress, availability, latency, and success percentages, which are aggregated for the Blob, Table, and Queue services.
+      **[最低限]** - BLOB サービス、テーブル サービス、キュー サービスに集計される、受信/送信、可用性、遅延時間、成功のパーセンテージなどのメトリックを収集します。
 
-      **Verbose** - In addition to the minimal metrics, collects the same set of metrics for each storage operation in the Azure Storage Service API. Verbose metrics enable closer analysis of issues that occur during application operations. 
+      **[詳細]** - 最小レベルのメトリックに加えて、Azure ストレージ サービス API のストレージ操作ごとに同じメトリックを収集します。詳細メトリックにより、アプリケーションの操作中に発生する問題を詳しく分析できます。
 
-      **Off** - Turns off monitoring. Existing monitoring data is persisted through the end of the retention period.
+      **[オフ]** - 監視しません。既存の監視データは、保有期間が経過するまで残ります。
 
-- To set the data retention policy, in **Retention (in days)**, type the number of days of data to retain from 1-365 days. If you do not want to set a retention policy, enter zero. If there is no retention policy, it is up to you to delete the monitoring data. We recommend setting a retention policy based on how long you want to retain storage analytics data for your account so that old and unused analytics data can be deleted by system at no cost.
+- データ保有ポリシーを設定するには、**[保有期間 (日)]** ボックスに、データを保有する日数を 1 ～ 365 日の範囲で入力します。保有ポリシーを設定しない場合は、「0」(ゼロ) を入力します。保有ポリシーがない場合、監視データを削除する責任はユーザーが負います。古くて使用しない分析データがコストをかけずに自動的に削除されるように、アカウントのストレージ分析データをどの程度の期間保持するかに基づいて、データ保有ポリシーを設定することをお勧めします。
 
-4. When you finish the monitoring configuration, click **Save**.
+4. 監視の構成が完了したら、**[保存]** をクリックします。
 
-You should start seeing monitoring data on the dashboard and the **Monitor** page after about an hour.
+約 1 時間後に、ダッシュボードおよび **[監視]** ページに監視データが表示されるようになります。
 
-Metrics are stored in the storage account in four tables named $MetricsTransactionsBlob, $MetricsTransactionsTable, $MetricsTransactionsQueue, and $MetricsCapacityBlob. For more information, see [About Storage Analytics Metrics](http://msdn.microsoft.com/en-us/library/windowsazure/hh343258.aspx).
+メトリックは、ストレージ アカウントの $MetricsTransactionsBlob、$MetricsTransactionsTable、$MetricsTransactionsQueue、$MetricsCapacityBlob という名前の 4 つのテーブルに保存されます。詳細については、「[Storage Analytics Metrics について](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343258.aspx)」を参照してください。
 
-After you set the monitoring levels and retention policies, you can choose which of the available metrics to monitor in the Management Portal, and which metrics to plot on metrics charts. A default set of metrics are displayed at each monitoring level. You can use **Add Metrics** to add or remove metrics from the metrics list.
+監視レベルと保有ポリシーを設定した後、管理ポータルで監視する利用可能なメトリック、およびメトリック チャートにプロットするメトリックを選択できます。監視レベルごとに既定のメトリック セットが表示されます。**[メトリックの追加]** を使用してメトリック一覧のメトリックを追加または削除できます。
 
 
-<h2><a id="customizestoragemonitoring"></a>How to: Customize the dashboard for monitoring</h2>
+<h2><a id="customizestoragemonitoring"></a>方法: ダッシュボードの監視用のカスタマイズ</h2>
 
-On the dashboard, you can choose up to six metrics to plot on the metrics chart from nine available metrics. For each service (Blob, Table, and Queue), the Availability, Success Percentage, and Total Requests metrics are available. The metrics available on the dashboard are the same for minimal or verbose monitoring.
+ダッシュボードで、利用できる 9 個のメトリックから最大 6 個のメトリックを選択してメトリック チャートにプロットできます。サービスごとに (BLOB、テーブル、およびキュー)、空き時間情報、成功のパーセンテージ、および要求数合計のメトリックが利用できます。ダッシュボードで利用できるメトリックは、最少監視でも詳細監視でも同じです。
 
-1. In the [Management Portal](https://manage.windowsazure.com/), click **Storage**, and then click the name of the storage account to open the dashboard.
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
-2. To change the metrics that are plotted on the chart, take one of the following actions:
+2. チャートにプロットされるメトリックを変更するには、以下のいずれかを実行します。
 
-- To add a new metric to the chart, click the check box by the metric header. In a narrow display, click ***n* more** to access headers that can't be displayed in the header area.
+- 新しいメトリックをチャートに追加するには、メトリックのヘッダー部にあるチェック ボックスをオンにします。幅の狭い画面では、***[残り n* 項目]** をクリックして、ヘッダー部に表示できないヘッダーにアクセスします。
 
-- To hide a metric that is plotted on the chart, clear the check box by the metric header.
+- チャートにプロットされているメトリックを非表示にするには、メトリック ヘッダーにあるチェック ボックスをオフにします。
 
 	![Monitoring_nmore](./media/storage-monitor-storage-account/storage_Monitoring_nmore.png)
   
-3. By default, the chart shows trends, displaying only the current value of each metric (the **Relative** option at the top of the chart). To display a Y axis so you can see absolute values, select **Absolute**.
+3. 既定では、チャートには傾向が表示され、各メトリックの現在の値だけが表示されます (チャート上部にある **[相対]** オプション)。Y 軸を表示して絶対値を確認するには、**[絶対]** をクリックします。
 
-4. To change the time range the metrics chart displays, select 6 hours, 24 hours, or 7 days at the top of the chart.
+4. メトリック チャートに表示する期間を変更するには、チャートの上部で [6 時間]、[24 時間]、または [7 日] をクリックします。
      
 
-<h2><a id="customizemonitorpage"></a>How to: Customize the Monitor page</h2>
+<h2><a id="customizemonitorpage"></a>方法: [監視] ページのカスタマイズ</h2>
 
-On the **Monitor** page, you can view the full set of metrics for your storage account. 
+****[監視] ページでは、ストレージ アカウントのメトリックをすべて表示できます。
 
-- If your storage account has minimal monitoring configured, metrics such as ingress/egress, availability, latency, and success percentages are aggregated from the Blob, Table, and Queue services.
+- ストレージ アカウントが最小監視に構成されている場合は、受信/送信、空き時間情報、遅延時間、成功のパーセンテージなどのメトリックが BLOB、テーブル、キューの各サービスから集計されれます。
 
-- If your storage account has verbose monitoring configured, the metrics are available at a finer resolution of individual storage operations in addition to the service-level aggregates.
+- ストレージ アカウントが詳細監視に構成されている場合は、サービス単位の集計に加えて、もっときめ細かい個々のストレージ操作のメトリックも利用できます。
 
-Use the following procedures to choose which storage metrics to view in the metrics charts and table that are displayed on the **Monitor** page. These settings do not affect the collection, aggregation, and storage of monitoring data in the storage account.
+以下の手順を使用して、**[監視]** ページに表示されるメトリック チャートとテーブルに表示するストレージ メトリックを選択します。この設定は、ストレージ アカウント監視データの収集、集計、および保存には影響しません。
 
-<h2><a id="addmonitoringmetrics"></a>How to: Add metrics to the metrics table</h2>
+<h2><a id="addmonitoringmetrics"></a>How to: メトリック テーブルへのメトリックの追加</h2>
 
 
-1. In the [Management Portal](https://manage.windowsazure.com/), click **Storage**, and then click the name of the storage account to open the dashboard.
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
-2. Click **Monitor**.
+2. **[監視]** をクリックします。
 
-	The **Monitor** page opens. By default, the metrics table displays a subset of the metrics that are available for monitoring. The illustration shows the default Monitor display for a storage account with verbose monitoring configured for all three services. Use **Add Metrics** to select the metrics you want to monitor from all available metrics.
+	**[監視]** ページが開きます。既定で、メトリック テーブルには監視に使用できるメトリックのサブセットが表示されます。図は、3 つのサービスすべてに詳細監視を構成したストレージ アカウントで表示される既定の [監視] ページを示しています。**[メトリックの追加]** を使用して、使用できるすべてのメトリックから監視するメトリックを選択します。
 
 
 	![Monitoring_VerboseDisplay](./media/storage-monitor-storage-account/Storage_Monitoring_VerboseDisplay.png)
 
 	<div class="dev-callout"> 
-	<b>Note</b> 
-	<p>Consider costs when you select the metrics. There are transaction and egress costs associated with refreshing monitoring displays. For more information, see <a href="http://msdn.microsoft.com/en-us/library/windowsazure/hh360997.aspx">Storage Analytics and Billing</a>.</p> 
+	<b>注</b>
+	<p>メトリックを選択するときはコストを考慮してください。監視の表示を更新すると、トランザクションと送信のコストがかかります。詳細については、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/hh360997.aspx">ストレージの分析と課金に関するページ</a>を参照してください。</p>
 </div>
 
-3. Click **Add Metrics**. 
+3. **[メトリックの追加]** をクリックします。
 
-	The aggregate metrics that are available in minimal monitoring are at the top of the list. If the check box is selected, the metric is displayed in the metrics list. 
+	最少監視で使用できる集計メトリックは一覧の上部に表示されています。チェック ボックスをオンにすると、そのメトリックがメトリック一覧に表示されます。
 
 	![AddMetricsInitialDisplay](./media/storage-monitor-storage-account/Storage_AddMetrics_InitialDisplay.png)
  
-4. Hover over the right side of the dialog box to display a scrollbar that you can drag to scroll additional metrics into view.
+4. ダイアログ ボックスの右側をポイントするとスクロール バーが表示されます。これをドラッグして、追加のメトリックを表示することができます。
 
 	![AddMetricsScrollbar](./media/storage-monitor-storage-account/Storage_AddMetrics_Scrollbar.png)
 
 
-5. Click the down arrow by a metric to expand a list of operations the metric is scoped to include. Select each operation that you want to view in the metrics table in the Management Portal.
+5. メトリックの横にある下向き矢印をクリックして、メトリックの対象となる操作の一覧を展開します。管理ポータルのメトリック テーブルに表示する操作をそれぞれ選択します。
 
-	In the following illustration, the AUTHORIZATION ERROR PERCENTAGE metric has been expanded.
+	下図では、承認エラーのパーセンテージ メトリックが展開されています。
 
 	![ExpandCollapse](./media/storage-monitor-storage-account/Storage_AddMetrics_ExpandCollapse.png)
 
 
-6. After you select metrics for all services, click OK (checkmark) to update the monitoring configuration. The selected metrics are added to the metrics table.
+6. すべてのサービスについてメトリックを選択したら、[OK] (チェックマーク) をクリックして監視の構成を更新します。選択したメトリックがメトリック テーブルに追加されます。
 
-7. To delete a metric from the table, click the metric to select it, and then click **Delete Metric**, as shown below.
+7. テーブルからメトリックを削除するには、下図のようにメトリックをクリックして選択し、**[メトリックの削除]** をクリックします。
 
 	![DeleteMetric](./media/storage-monitor-storage-account/Storage_DeleteMetric.png)
 
-<h2><a id="customizemetricschart"></a>How to: Customize the metrics chart on the Monitor page</h2>
+<h2><a id="customizemetricschart"></a>方法: [監視] ページのメトリック チャートのカスタマイズ</h2>
 
-1. On the **Monitor** page for the storage account, in the metrics table, select up to 6 metrics to plot on the metrics chart. To select a metric, click the check box on its left side. To remove a metric from the chart, clear the check box.
+1. ストレージ アカウントの **[監視]** ページで、メトリック チャートにプロットするメトリックをメトリック テーブルで最大 6 個選択します。メトリックを選択するには、メトリックの左側にあるチェック ボックスをオンにします。チャートからメトリックを削除するには、チェック ボックスをオフにします。
 
-2. To switch the chart between relative values (final value only displayed) and absolute values (Y axis displayed), select **Relative** or **Absolute** at the top of the chart.
+2. チャートで相対値 (最終値だけ表示) と絶対値 (Y 軸を表示) を切り替えるには、チャートの上部で **[相対]** または **[絶対]** をクリックします。
 
-3.	To change the time range the metrics chart displays, select **6 hours**, **24 hours**, or **7 days** at the top of the chart.
+3.	メトリック チャートに表示する期間を変更するには、チャートの上部で **[6 時間]**、**[24 時間]**、または **[7 日]** をクリックします。
 
 
 
-<h2><a id="configurelogging"></a>How to: Configure logging</h2>
+<h2><a id="configurelogging"></a>方法: ログの構成</h2>
 
-For each of the storage services available with your storage account (Blob, Table, and Queue), you can save diagnostics logs for Read Requests, Write Requests, and/or Delete Requests, and can set the data retention policy for each of the services.
+ストレージ アカウントで利用できるストレージ サービス (BLOB、テーブル、およびキュー) ごとに、読み取り要求、書き込み要求、および削除要求の診断ログを保存でき、サービスごとにデータ保有ポリシーを設定できます。
 
-1. In the [Management Portal](https://manage.windowsazure.com/), click **Storage**, and then click the name of the storage account to open the dashboard.
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
-2. Click **Configure**, and use the Down arrow on the keyboard to scroll down to **logging** (shown below).
+2. **[構成]** をクリックし、キーボードの下方向キーを使って、**[ログ]** までスクロールします (下図)。
 
 	![Storagelogging](./media/storage-monitor-storage-account/Storage_LoggingOptions.png)
 
  
-3. For each service (Blob, Table, and Queue), configure the following:
+3. サービス (BLOB、テーブル、およびキュー) ごとに、次のように構成します。
 
-	- The types of request to log: Read Requests, Write Requests, and Delete Requests
+	- ログを記録する要求の種類: 読み取り要求、書き込み要求、および削除要求。
 
-	- The number of days to retain the logged data. Enter zero is if you do not want to set a retention policy. If you do not set a retention policy, it is up to you to delete the logs.
+	- ログ データを保持する日数。保有ポリシーを設定しない場合は、「0」(ゼロ) を入力します。保有ポリシーを設定しない場合、ログを削除する責任はユーザーが負います。
 
-4. Click **Save**.
+4. **[保存]** をクリックします。
 
-The diagnostics logs are saved in a blob container named $logs in your storage account. For information about accessing the $logs container, see [About Storage Analytics Logging](http://msdn.microsoft.com/en-us/library/windowsazure/hh343262.aspx).
+診断ログは、ストレージ アカウントの $logs という名前の BLOB コンテナーに保存されます。$logs コンテナーへのアクセスの詳細については、「[Storage Analytics Logging について](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343262.aspx)」を参照してください。
+

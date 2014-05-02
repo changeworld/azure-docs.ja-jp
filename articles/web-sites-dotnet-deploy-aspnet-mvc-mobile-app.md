@@ -1,128 +1,127 @@
-<properties linkid="develop-dotnet-aspnet-mvc-4-mobile-website" urlDisplayName="ASP.NET MVC 4 mobile website" pageTitle=".NET ASP.NET MVC 4 mobile web site - Azure tutorials" metaKeywords="Azure tutorial, Azure web app tutorial, Azure mobile app, Azure ASP.NET MVC 4,,ASP.NET MVC" description="A tutorial that teaches you how to deploy a web application to an Azure web site using mobile features in ASP.NET MVC 4 web application." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Deploy an ASP.NET MVC Mobile Web Application on Azure Web Sites" authors="tdykstra" solutions="" manager="" editor="" />
+<properties linkid="develop-dotnet-aspnet-mvc-4-mobile-website" urlDisplayName="ASP.NET MVC 4 モバイル Web サイト" pageTitle=".NET ASP.NET MVC 4 モバイル Web サイト - Azure チュートリアル" metaKeywords="Azure チュートリアル, Azure Web アプリケーション チュートリアル, Azure モバイル アプリケーション, Azure ASP.NET MVC 4, ASP.NET MVC" description="ASP.NET MVC 4 Web アプリケーションのモバイル機能を使用して Web アプリケーションを Azure の Web サイトに展開する方法を示すチュートリアル。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="ASP.NET MVC モバイル Web アプリケーションを Azure の Web サイトに展開する" authors="tdykstra" solutions="" manager="" editor="" />
 
 
 
 
 
+# ASP.NET MVC モバイル Web アプリケーションを Azure の Web サイトに展開する
 
-# Deploy an ASP.NET MVC Mobile Web Application on Azure Web Sites
+***執筆者: [Rick Anderson](https://twitter.com/RickAndMSFT) 更新日: 2013 年 6 月 26 日。***
 
-***By [Rick Anderson](https://twitter.com/RickAndMSFT) Updated 26 June 2013.***
+このチュートリアルでは、Azure の Web サイトに Web アプリケーションを展開する方法について基本を説明します。このチュートリアルの目的上、ASP.NET MVC 4 Web アプリケーションのモバイル機能を取り上げます。このチュートリアルの手順を実行するには、Microsoft Visual Studio 2012 を使用します。[Visual Studio Express 2012][] を使用してもかまいません。これは Microsoft Visual Studio の無料版です。
 
-This tutorial will teach you the basics of how to deploy a web application to to an Azure web site. For the purposes of this tutorial we will work with mobile features in an ASP.NET MVC 4 web application. To perform the steps in this tutorial, you can use Microsoft Visual Studio 2012. You can also use [Visual Studio Express 2012][], which is a free versions of Microsoft Visual Studio. 
+<h2>学習内容: </h2>
 
-<h2>You will learn:</h2>
+- ASP.NET MVC 4 テンプレートで HTML5 ビューポート属性とアダプティブ レンダリングを使用してモバイル デバイス上での表示品質を高める方法
+- モバイル専用のビューを作成する方法
+- ユーザーがアプリケーションのモバイル ビューとデスクトップ ビューを切り替えることのできるビュー切り替え機能を作成する方法
+- Web アプリケーションを Azure に展開する方法
 
-- How the ASP.NET MVC 4 templates use the HTML5 viewport attribute and adaptive rendering to improve display on mobile devices.
-- How to create mobile-specific views.
-- How to create a view switcher that lets users toggle between a mobile view and a desktop view of the application.
-- How to deploy the web application to Azure.
+このチュートリアルでは、スタート プロジェクトに用意されている単純な会議一覧アプリケーションにモバイル機能を追加します。次のスクリーンショットは、完成したアプリケーションのメイン ページを Windows 7 Phone Emulator で表示したものです。
 
-For this tutorial, you'll add mobile features to the simple conference-listing application that's provided in the starter project. The following screenshot shows the main page of the completed application as seen in the Windows 7 Phone Emulator.
-
-![MVC4 conference application main page.][AppMainPage]
+![MVC4 会議アプリケーションのメイン ページ][AppMainPage]
 
 [WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
-<h2>Setting up the development environment</h2>
+<h2>開発環境の設定</h2>
 
-Set up your development environment by installing the Azure SDK for the .NET Framework. 
+.NET Framework 対応の Azure SDK をインストールして、開発環境を設定します。
 
-1. To install the Azure SDK for .NET, click the link below. If you don't have Visual Studio 2012 installed yet, it will be installed by the link. This tutorial requires Visual Studio 2012. 
+1. Azure SDK for .NET をインストールするには、次のリンクをクリックします。Visual Studio 2012 をまだインストールしていない場合は、次のリンクをクリックするとインストールされます。このチュートリアルには、Visual Studio 2012 が必要です。
 [Azure SDK for Visual Studio 2012]( http://go.microsoft.com/fwlink/?LinkId=254364)
-1. When you are prompted to run or save the installation executable, click **Run**.
-1. In the Web Platform Installer window, click **Install** and proceed with the installation.
+1. インストール プログラムの実行または保存を求めるメッセージが表示されたら、**[実行]** をクリックします。
+1. Web Platform Installer のウィンドウで、**[インストール]** をクリックし、インストールの手順を進めます。
 
-![Web Platform Installer - Azure SDK for .NET][WebPIAzureSdk20NetVS12]
+![Web Platform Installer -  Azure SDK for .NET][WebPIAzureSdk20NetVS12]
 
-You will also need a mobile browser emulator. Any of the following will work:
+モバイル ブラウザー エミュレーターも必要です。次のいずれでも動作します。
 
-- [Windows 7 Phone Emulator][Win7PhoneEmulator]. (This is the emulator that's used in most of the screen shots in this tutorial.)
-- Change the user agent string to emulate an iPhone. See [this blog entry][setuseragent] on How-To Geek.
-- [Opera Mobile Emulator][OperaMobileEmulator].
-- [Apple Safari][AppleSafari] with the user agent set to iPhone. For instructions on how to set the user agent in Safari to "iPhone", see [How to let Safari pretend it's IE][HowToSafari] on David Alison's blog.
-- [FireFox][FireFox] with the [FireFox User Agent Switcher][FireFoxUserAgentSwitcher].
+- [Windows 7 Phone Emulator][Win7PhoneEmulator] (このチュートリアルではスクリーンショットの大半でこのエミュレーターを使用しています)。
+- ユーザー エージェント文字列を変更して iPhone をエミュレートします。How-To Geek の[このブログ記事][setuseragent]を参照してください。
+- [Opera Mobile Emulator][OperaMobileEmulator]。
+- [Apple Safari][AppleSafari] (ユーザー エージェントを iPhone に設定)。Safari のユーザー エージェントを "iPhone" に設定する方法については、David Alison のブログの「[How to let Safari pretend it's IE (Safari に IE のふりをさせる方法)][HowToSafari]」を参照してください。
+- [FireFox][FireFox] ([User Agent Switcher][FireFoxUserAgentSwitcher] アドオンを搭載)。
 
-This tutorial shows code in C#. However, the starter project and completed project will be available in Visual Basic. Visual Studio projects with Visual Basic and C# source code are available to accompany this topic:
+このチュートリアルでは、コードを C# で示します。ただし、スタート プロジェクトと完成したプロジェクトは Visual Basic でも利用できます。このトピック用に Visual Basic と C# のソース コードを使用した Visual Studio プロジェクトが用意されています。
 
-- [Starter project download][MVC4StarterProject]
-- [Completed project download][FinishedProject]
+- [スタート プロジェクトのダウンロード][MVC4StarterProject]
+- [完成したプロジェクトのダウンロード][FinishedProject]
 
-<h2>Steps in this tutorial</h2>
+<h2>このチュートリアルの手順</h2>
 
-- [Create an Azure web site](#bkmk_CreateWebSite)
-- [Setup the starter Project](#bkmk_setupstarterproject)
-- [Override the Views, Layouts, and Partial Views][]
-- [Use jQuery Mobile to define the mobile broswer interface][]
-- [Improve the Speakers List][]
-- [Create a Mobile Speakers View][]
-- [Improve the Tags List][]
-- [Improve the Dates List][]
-- [Improve the SessionsTable View][]
-- [Improve the SessionByCode View][]
-- [Deploy the Application to the Azure Web Site][]
+- [Azure の Web サイトの作成](#bkmk_CreateWebSite)
+- [スタート プロジェクトを設定する](#bkmk_setupstarterproject)
+- [ビュー、レイアウト、および部分ビューをオーバーライドする][]
+- [jQuery Mobile を使用してモバイル ブラウザー インターフェイスを定義する][]
+- [スピーカー一覧を強化する][]
+- [モバイル スピーカー ビューを作成する][]
+- [タグ一覧を強化する][]
+- [日付一覧を強化する][]
+- [SessionsTable ビューを強化する][]
+- [SessionByCode ビューを強化する][]
+- [Azure の Web サイトにアプリケーションを展開する][]
 
-<h3><a name="bkmk_CreateWebSite"></a>Create a web site in Azure</h3>
+<h3><a name="bkmk_CreateWebSite"></a>Azure に Web サイトを作成する</h3>
 
-Your Azure Web Site will run in a shared hosting environment, which means it runs on virtual machines (VMs) that are shared with other Azure clients. A shared hosting environment is a low-cost way to get started in the cloud. Later, if your web traffic increases, the application can scale to meet the need by running on dedicated VMs. If you need a more complex architecture, you can migrate to an Azure cloud service. Cloud services run on dedicated VMs that you can configure according to your needs.
+Azure の Web サイトは、共有ホスティング環境で実行されます。つまり、他の Azure クライアントと共有する仮想マシン (VM) 上で実行されます。共有ホスティング環境は、低コストでクラウドの利用を開始できる方法です。後で Web トラフィックが増加したら、アプリケーションの規模を変更して専用 VM 上で実行するように設定してニーズを満たすことができます。もっと複雑なアーキテクチャが必要な場合は、Azure のクラウド サービスに移行できます。クラウド サービスは専用 VM 上で実行され、ユーザーのニーズに応じて構成できます。
 
-1.	Log on to the [Azure Management Portal][managementportal]. In the Management Portal, click **New**.
+1.	[Azure 管理ポータル][managementportal]へのログオン管理ポータルで **[新規]** をクリックします。
 
 	![][CreateWebSite1]
 
-2.	Click **Web Site**, then click **Quick Create**.
+2.	****[Web サイト]**、**[簡易作成] の順にクリックします。
 
 	![][CreateWebSite2]
 
-3.	In the **Create a New Web Site**, enter a string in the **URL** box to use as the unique URL for your application.
+3.	**[新しい Web サイトを作成する]** で、アプリケーションの一意の URL として使用する文字列を **[URL]** ボックスに入力します。
 
 	![][CreateWebSite3]
 
-	The complete URL will consist of what you enter here plus the suffix that you see below the text box. The illustration shows "MyMobileMVC4WebSite", but if someone has already taken that URL you will have to choose a different one. Select the **REGION** in which you are located.
+	URL 全体は、ここで入力した内容に、テキスト ボックスの下に表示されるサフィックスを追加して構成されます。図には "MyMobileMVC4WebSite" と表示されていますが、その URL が既に取得されている場合は、別の URL を選択する必要があります。自分が住んでいる**リージョン**を選択します。
 
-4. Click the check mark at the bottom of the box to indicate you're finished.
+4. 終了したら、ダイアログ ボックスの下部にあるチェック マークをクリックします。
 
-The Management Portal returns to the Web Sites page and the Status column shows that the site is being created. After a while (typically less than a minute) the Status column shows that the site was successfully created. In the navigation bar at the left, the number of sites you have in your account appears in the Web Sites icon, and the number of databases appears in the SQL Databases icon.
+管理ポータルが [Web サイト] ページに戻り、[状態] 列にサイトが作成中であることが示されます。しばらくすると (通常は 1 分未満)、サイトの作成に成功したことが [状態] 列に示されます。左側にあるナビゲーション バーでは、アカウントで所有するサイト数が [Web サイト] アイコンに表示され、データベース数が [SQL データベース] アイコンに表示されます。
 
 ![][CreateWebSite4]
 
-<h3><a name="bkmk_setupstarterproject"></a>Setup the starter project.</h3>
+<h3><a name="bkmk_setupstarterproject"></a>スタート プロジェクトを設定する</h3>
 
-1.	Download the [conference-listing application starter project][MVC4StarterProject].
+1.	[会議一覧アプリケーションのスタート プロジェクト][MVC4StarterProject]をダウンロードします。
 
-2. 	Then in Windows Explorer, right-click the MvcMobileStarterBeta.zip file and choose *Properties*.
+2. 	Windows エクスプローラーで MvcMobileStarterBeta.zip ファイルを右クリックし、*[プロパティ]* をクリックします。
 
-3. 	In the MvcMobileRTMStarter.zip Properties dialog box, choose the Unblock button. (Unblocking prevents a security warning that occurs when you try to use a .zip file that you've downloaded from the web.)
+3. 	[MvcMobileRTMStarter.zip のプロパティ] ダイアログ ボックスで、[ブロックの解除] をクリックします (ブロックを解除すると、Web からダウンロードした .zip ファイルを使おうとしたときに表示されるセキュリティに関する警告を回避できます)。
 
-	![Properties dialog box.][PropertiesPopup]
+	![[プロパティ] ダイアログ ボックス][PropertiesPopup]
 
-4.	Right-click the MvcMobile.zip file and select Extract All to unzip the file.
+4.	MvcMobile.zip ファイルを右クリックし、[すべて展開] をクリックしてファイルを解凍します。
 
-5. 	In Visual Studio, open the MvcMobile.sln file.
+5. 	Visual Studio で、MvcMobile.sln ファイルを開きます。
 
-<h3>To run the starter project</h3>
+<h3>スタート プロジェクトを実行するには</h3>
 
-1.	Press CTRL+F5 to run the application, which will display it in your desktop browser.
-2.	Start your mobile browser emulator, copy the URL for the conference application into the emulator, and then click the Browse by tag link.
-	- If you are using the Windows Phone Emulator, click in the URL bar and press the Pause key to get keyboard access. The image below shows the AllTags view (from choosing Browse by tag).
+1.	Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。アプリケーションがデスクトップ ブラウザーに表示されます。
+2.	モバイル ブラウザー エミュレーターを起動して、会議アプリケーションの URL をエミュレーターにコピーし、[Browse by tag] リンクをクリックします。
+	- Windows Phone Emulator を使用している場合は、URL バー内をクリックして Pause キーを押すと、キーボードにアクセスできます。次の図は、AllTags ビューです ([Browse by tag] を選択した後)。
 
-	![Browse by tag page.][BrowseByTagWithCallout]
+	![[Browse by tag] ページ][BrowseByTagWithCallout]
 
-The display is very readable on a mobile device. Choose the ASP.NET link.
+モバイル デバイス上でも読みやすい表示になっています。[ASP.NET] リンクをクリックします。
 
-![Browse sessions tagged as ASP.NET.][ASPNetPage]
+![ASP.NET というタグの付いたセッションの閲覧][ASPNetPage]
 
-The ASP.NET tag view is very cluttered. For example, the Date column is very difficult to read. Later in the tutorial you'll create a version of the AllTags view that's specifically for mobile browsers and that will make the display readable.
+ASP.NET タグ ビューはまったく整理されていません。たとえば、[Date] 列は読み取りにくくなっています。後で、モバイル ブラウザー専用バージョンの表示が読みやすくなった AllTags ビューを作成します。
 
-<h2><a name="bkmk_overrideviews"></a>Override the Views, Layouts, and Partial Views</h2>
+<h2><a name="bkmk_overrideviews"></a>ビュー、レイアウト、および部分ビューをオーバーライドする</h2>
 
-In this section, you'll create a mobile-specific layout file.
+このセクションでは、モバイル専用のレイアウト ファイルを作成します。
 
-A significant new feature in ASP.NET MVC 4 is a simple mechanism that lets you override any view (including layouts and partial views) for mobile browsers in general, for an individual mobile browser, or for any specific browser. To provide a mobile-specific view, you can copy a view file and add .Mobile to the file name. For example, to create a mobile Index view, copy *Views\Home\Index.cshtml* to *Views\Home\Index.Mobile.cshtml*.
+ASP.NET MVC 4 の重要な新機能として、モバイル ブラウザー全般、個々のモバイル ブラウザー、または特定のブラウザー向けに (レイアウトと部分ビューを含む) 任意のビューをオーバーライドする単純なメカニズムがあります。モバイル専用ビューを用意するには、ビュー ファイルをコピーして .Mobile をファイル名に追加します。たとえば、モバイル インデックス ビューを作成するには、*Views\Home\Index.cshtml* をコピーして名前を *Views\Home\Index.Mobile.cshtml* に変更します。
 
-To start, copy *Views\Shared\\_Layout.cshtml* to *Views\Shared\\_Layout.Mobile.cshtml*. Open *_Layout.Mobile.cshtml* and change the title from **MVC4 Conference** to **Conference (Mobile)**.
+最初に、*Views\Shared\\_Layout.cshtml* をコピーして名前を *Views\Shared\\_Layout.Mobile.cshtml* に変更します。*_Layout.Mobile.cshtml* を開き、タイトルを **MVC4 Conference** から **Conference (Mobile)** に変更します。
 
-In each **Html.ActionLink** call, remove "Browse by" in each link ActionLink. The following code shows the completed body section of the mobile layout file.
+各 **Html.ActionLink** 呼び出しで、各 ActionLink リンクの「Browse by」を削除します。次のコードは、モバイル レイアウト ファイルの完成した body セクションです。
 
      <body>
         <div class="page">
@@ -148,53 +147,53 @@ In each **Html.ActionLink** call, remove "Browse by" in each link ActionLink. Th
         </div>
     </body>
 
-Copy the *Views\Home\AllTags.cshtml* file to *Views\Home\AllTags.Mobile.cshtml*. Open the new file and change the &lt;h2&gt; element from "Tags" to "Tags (M)":
+*Views\Home\AllTags.cshtml* ファイルをコピーして名前を *Views\Home\AllTags.Mobile.cshtml* に変更します。新しいファイルを開き、次のように &lt;h2&gt; 要素を「Tags」から「Tags (M)」に変更します。
 
      <h2>Tags (M)</h2>
 
-Browse to the tags page using a desktop browser and using mobile browser emulator. The mobile browser emulator shows the two changes you made.
+デスクトップ ブラウザー、および、モバイル ブラウザー エミュレーターを使用してタグ ページに移動します。モバイル ブラウザー エミュレーターでは、2 か所が変更されていることがわかります。
 
-![Show changes to tags page][Overrideviews1]
+![変更されたタグ ページの表示][Overrideviews1]
 
-In contrast, the desktop display has not changed.
+対照的に、デスクトップでの表示は変更されていません。
 
-![Show desktop tags view][Overrideviews2]
+![デスクトップのタグ ビューの表示][Overrideviews2]
 
-<h2><a name="bkmk_usejquerymobile"></a>Use jQuery Mobile to define the mobile broswer interface</h2>
+<h2><a name="bkmk_usejquerymobile"></a>jQuery Mobile を使用してモバイル ブラウザー インターフェイスを定義する</h2>
 
-In this section you'll install the jQuery.Mobile.MVC NuGet package, which installs jQuery Mobile and a view-switcher widget.
+このセクションでは、jQuery.Mobile.MVC NuGet パッケージをインストールします。これにより jQuery Mobile とビュー切り替えウィジェットがインストールされます。
 
-The [jQuery Mobile][jquerydocs] library provides a user interface framework that works on all the major mobile browsers. jQuery Mobile applies progressive enhancement to mobile browsers that support CSS and JavaScript. Progressive enhancement allows all browsers to display the basic content of a web page, while allowing more powerful browsers and devices to have a richer display. The JavaScript and CSS files that are included with jQuery Mobile style many elements to fit mobile browsers without making any markup changes.
+[jQuery Mobile][jquerydocs] ライブラリは、すべての主要モバイル ブラウザーで動作するユーザー インターフェイス フレームワークです。jQuery Mobile は、CSS と JavaScript をサポートするモバイル ブラウザーに機能強化を漸進的に適用します。漸進的な機能強化により、すべてのブラウザーで Web ページの基本コンテンツを表示し、もっと強力なブラウザーおよびデバイスでは高機能の表示にすることができます。jQuery Mobile に含まれる JavaScript ファイルと CSS ファイルでは、マークアップを変更することなくモバイル ブラウザーに多くの要素が適合するようにスタイルが設定されています。
 
-1. Delete the *Shared\\_Layout.Mobile.cshtml* file that you created earlier.
+1. 先に作成した *Shared\\_Layout.Mobile.cshtml* ファイルを削除します。
 
-2. Rename the *Views\Home\AllTags.Mobile.cshtml* to *Views\Home\AllTags.Mobile.cshtml.hide* (you will use this file again later.) Because the file no longer has a .cshtml extension, it will not be used by the ASP.NET MVC runtime to render the *AllTags* view.
+2. *Views\Home\AllTags.Mobile.cshtml* ファイルの名前を *Views\Home\AllTags.Mobile.cshtml.hide* に変更します (このファイルは後でもう一度使用します)。ファイル名の拡張子が .cshtml でなくなったため、*AllTags* ビューを描画するために ASP.NET MVC ランタイムでこのファイルが使用されることはありません。
 
-3. Install the jQuery.Mobile.MVC NuGet package by doing this:
+3. 次に示している手順を実行して、jQuery.Mobile.MVC NuGet パッケージをインストールします。
 
-	a.  From the **Tools** menu, select **Package Manager** Console, and then select **Library Package Manager**.
+	a. **[ツール]** メニューの **[パッケージ マネージャー コンソール]** をポイントし、**[ライブラリ パッケージ マネージャー]** をクリックします。
 
-		![Library package manager][jquery1]
+		![ライブラリ パッケージ マネージャー][jquery1]
 	
-	b. In the **Package Manager Console**, enter *Install-Package jQuery.Mobile.MVC -version 1.0.0*
+	b. **パッケージ マネージャー コンソール**で、「*Install-Package jQuery.Mobile.MVC -version 1.0.0*」と入力します。
 
-		![Package manager console][jquery2]
+		![パッケージ マネージャー コンソール][jquery2]
 
-The jQuery.Mobile.MVC NuGet package installs the following:
+jQuery.Mobile.MVC NuGet パッケージは以下をインストールします。
 
-- The *App_Start\BundleMobileConfig.cs* file, which is needed to reference the jQuery JavaScript and CSS files added. You must follow the instructions below and reference the mobile bundle defined in this file.
-- jQuery Mobile CSS files.
-- A ViewSwitcher controller widget (*Controllers\ViewSwitcherController.cs)*. 
-- jQuery Mobile JavaScript files.
-- A jQuery Mobile-styled layout file (*Views\Shared\_Layout.Mobile.cshtml*). 
-- A view-switcher partial view (*MvcMobile\Views\Shared\_ViewSwitcher.cshtml*) that provides a link at the top of each page to switch from desktop view to mobile view and vice versa.
-- Several .png  and .gif image files in the Content\images folder. 
+- *App_Start\BundleMobileConfig.cs* ファイル。追加された jQuery JavaScript ファイルおよび CSS ファイルを参照するために必要です。後の指示に従って、このファイルに定義されているモバイル バンドルを参照する必要があります。
+- jQuery Mobile CSS ファイル。
+- ViewSwitcher コントローラー ウィジェット (*Controllers\ViewSwitcherController.cs*)。
+- jQuery Mobile JavaScript ファイル。
+- jQuery Mobile スタイル レイアウト ファイル (*Views\Shared\_Layout.Mobile.cshtml*)。
+- ビュー切り替え部分ビュー (*MvcMobile\Views\Shared\_ViewSwitcher.cshtml*)。各ページの上部にデスクトップ ビューとモバイル ビューを相互に切り替えるリンクを表示します。
+- Content\images フォルダーの .png および .gif イメージ ファイル。
 
-Open the *Global.asax* file and add the following code as the last line of the Application_Start method.
+*Global.asax* ファイルを開き、Application_Start メソッドの最終行として次のコードを追加します。
 
  	BundleMobileConfig.RegisterBundles(BundleTable.Bundles);
 
-The following code shows the complete Global.asax file.
+完成した Global.asax ファイルのコードを次に示します。
 
 	using System; 
 	using System.Web.Http; 
@@ -226,7 +225,7 @@ The following code shows the complete Global.asax file.
 	    } 
 	}
 
-Open the *MvcMobile\Views\Shared\\_Layout.Mobile.cshtml* file and add the following markup directly after the *Html.Partial* call:
+*MvcMobile\Views\Shared\\_Layout.Mobile.cshtml* ファイルを開き、次のマークアップを *Html.Partial* 呼び出しの直後に追加します。
 
 	<div data-role="header" align="center">
 	    @Html.ActionLink("Home", "Index", "Home")
@@ -235,7 +234,7 @@ Open the *MvcMobile\Views\Shared\\_Layout.Mobile.cshtml* file and add the follow
 	    @Html.ActionLink("Tag", "AllTags")
 	</div>
 
-The complete body section looks like this:
+完成した body セクションは次のようになります。
 
 	<body>
 	    <div data-role="page" data-theme="a">
@@ -256,42 +255,42 @@ The complete body section looks like this:
 	    </div>
 	</body>
 
-Build the application, and in your mobile browser emulator browse to the AllTags view. You see the following:
+アプリケーションをビルドし、モバイル ブラウザー エミュレーターで AllTags ビューに移動します。次のように表示されます。
 
-![After install jquery through nuget.][jquery3]
+![nuget により jquery をインストールした後][jquery3]
 
 <div class="dev-callout"> 
-<b>Note</b> 
-<p>You can debug the mobile specific code by setting the user agent string for IE or Chrome to iPhone and then using the F-12 developer tools.  If your mobile browser doesn't display the <strong>Home</strong>, <strong>Speaker</strong>, <strong>Tag</strong>, and <strong>Date</strong> links as buttons, the references to jQuery Mobile scripts and CSS files are probably not correct.</p> 
+<b>注</b> 
+<p>IE または Chrome のユーザー エージェント文字列を iPhone に設定した後、F12 キーを押すと表示される開発者ツールを使用して、モバイル専用コードをデバッグできます。モバイル ブラウザーに <strong>[Home]</strong>、<strong>[Speaker]</strong>、<strong>[Tag]</strong>、および <strong>[Date]</strong> のリンクがボタンとして表示されない場合は、おそらく jQuery Mobile スクリプト ファイルと CSS ファイルへの参照が正しくありません。</p>
 </div>
 
-In addition to the style changes, you see **Displaying mobile view** and a link that lets you switch from mobile view to desktop view. Choose the **Desktop view link**, and the desktop view is displayed.
+スタイルの変更に加えて、**[Displaying mobile view]** という文字列と、モバイル ビューからデスクトップ ビューに切り替えるリンクが表示されます。**[Desktop view]** リンクをクリックすると、デスクトップ ビューが表示されます。
 
 <!--![Display desktop view][jquery4]-->
 
-The desktop view doesn't provide a way to directly navigate back to the mobile view. You'll fix that now. Open the *Views\Shared\\_Layout.cshtml* file. Just under the &lt;body> element, add the following code, which renders the view-switcher widget:
+デスクトップ ビューには、モバイル ビューに直接戻る手段がありません。今からこの点を修正しましょう。*Views\Shared\\_Layout.cshtml* ファイルを開きます。&lt;body> 要素の直下に、ビュー切り替えウィジェットを描画する次のコードを追加します。
 
     @Html.Partial("_ViewSwitcher")
 
-Here's the completed code:
+完成したコードを次に示します。
 
 	<body>
 	    @Html.Partial("_ViewSwitcher")
 	
 	    <div id="title">
-	        <h1> MVC4 Conference </h1>
+	        <h1> MVC4 Conference</h1>
 	    </div>
 
-		@*Items removed for clarity.*@
+		@*項目はわかりやすいように省略されています。*@
 	</body>
 
-Refresh the **AllTags** view is the mobile browser. You can now navigate between desktop and mobile views.
+モバイル ブラウザーで **AllTags** ビューの表示を更新します。これでデスクトップ ビューとモバイル ビューの切り替えができるようになりました。
 
-![Navigate to mobile views.][jquery5]
+![モバイル ビューに移動][jquery5]
 
 <div class="dev-callout"> 
-<b>Note</b> 
-<p>You can add the following code to the end of the Views\Shared\_ViewSwitcher.cshtml to help debug views when using a browser the user agent string set to a mobile device.</p> 
+<b>注</b> 
+<p>Views\Shared\_ViewSwitcher.cshtml の末尾に次のコードを追加すると、ユーザー エージェント文字列をモバイル デバイスに設定したブラウザーを使用してビューをデバックするときに便利です。</p>
 
 <pre>
 	else 
@@ -299,23 +298,23 @@ Refresh the **AllTags** view is the mobile browser. You can now navigate between
 	     @:Not Mobile/Get 
 	} 
 </pre>
-<p>and adding the following heading to the Views\Shared\_Layout.cshtml file.</p> 
+<p>また、Views\Shared\_Layout.cshtml ファイルに次の見出しを追加します。</p>
 <pre>
 	&lt;h1>Non Mobile Layout MVC4 Conference&lt;/h1>
 </pre>
 </div>
 
-Browse to the AllTags page in a desktop browser. The view-switcher widget is not displayed in a desktop browser because it's added only to the mobile layout page. Later in the tutorial you'll see how you can add the view-switcher widget to the desktop view.
+デスクトップ ブラウザーで AllTags ページに移動します。ビュー切り替えウィジェットはモバイル レイアウト ページにだけ追加されるため、デスクトップ ブラウザーにビュー切り替えウィジェットは表示されていません。デスクトップ ビューにビュー切り替えウィジェットを追加する方法については後述します。
 
-![View desktop experience.][jquery6]
+![デスクトップ ビューの表示][jquery6]
 
-<h2><a name="bkmk_Improvespeakerslist"></a> Improve the Speakers List</h2>
+<h2><a name="bkmk_Improvespeakerslist"></a> スピーカー一覧を強化する</h2>
 
-In the mobile browser and select the **Speakers** link. Because there's no mobile view(*AllSpeakers.Mobile.cshtml*), the default speakers display (*AllSpeakers.cshtml*) is rendered using the mobile layout view (*_Layout.Mobile.cshtml*).
+モバイル ブラウザーで **[Speakers]** リンクをクリックします。モバイル ビュー (*AllSpeakers.Mobile.cshtml*) がないため、既定のスピーカー表示 (*AllSpeakers.cshtml*) がモバイル レイアウト ビュー ((*_Layout.Mobile.cshtml*) を使用して描画されます。
 
-![View the mobile speakers list.][SpeakerList1]
+![モバイル スピーカー一覧の表示][SpeakerList1]
 
-You can globally disable a default (non-mobile) view from rendering inside a mobile layout by setting RequireConsistentDisplayMode to true in the *Views\_ViewStart.cshtml* file, like this:
+*Views\_ViewStart.cshtml* ファイルで次のように RequireConsistentDisplayMode を true に設定すると、モバイル レイアウト内で既定の (非モバイル) ビューの描画をグローバルに無効化できます。
 
 ![][SpeakerList2]
 
@@ -323,23 +322,23 @@ You can globally disable a default (non-mobile) view from rendering inside a mob
         Layout = "~/Views/Shared/_Layout.cshtml";
         DisplayModes.RequireConsistentDisplayMode = true;
     }
-When *RequireConsistentDisplayMode* is set to true, the mobile layout (*_Layout.Mobile.cshtml*) is used only for mobile views. (That is, the view file is of the form ViewName.Mobile.cshtml.) You might want to set *RequireConsistentDisplayMode* to true if your mobile layout doesn't work well with your non-mobile views. The screenshot below shows how the Speakers page renders when *RequireConsistentDisplayMode* is set to true.
+*RequireConsistentDisplayMode* が true に設定されていると、モバイル レイアウト (*_Layout.Mobile.cshtml*) はモバイル ビューだけに使用されます (つまり、ビュー ファイルの名前は ViewName.Mobile.cshtml という形式です)。モバイル レイアウトが非モバイル ビューでうまく動作しない場合は、*RequireConsistentDisplayMode* を true に設定します。次のスクリーンショットは、*RequireConsistentDisplayMode* が true に設定されていると、[Speakers] ページがどのように表示されるかを示しています。
 
 ![][SpeakerList4]
 
-You can disable consistent display mode in a view by setting *RequireConsistentDisplayMode* to false in the view file. The following markup in the *Views\Home\AllSpeakers.cshtml* file sets *RequireConsistentDisplayMode* to false:
+ビュー ファイルで *RequireConsistentDisplayMode* を false に設定すると、ビューの一貫表示モードを無効化できます。次のマークアップは、*Views\Home\AllSpeakers.cshtml* ファイルで *RequireConsistentDisplayMode* を false に設定します。
 
     @model IEnumerable<string>
     @{
         ViewBag.Title = "All speakers";
         DisplayModes.RequireConsistentDisplayMode = false;
     }
-<h2><a name="bkmk_mobilespeakersview"></a>Create a Mobile Speakers View</h2>
+<h2><a name="bkmk_mobilespeakersview"></a>モバイル スピーカー ビューを作成する</h2>
 
-As you just saw, the Speakers view is readable, but the links are small and are difficult to tap on a mobile device. In this section, you'll create a mobile-specific Speakers view that looks like a modern mobile application - it displays large, easy-to-tap links and contains a search box to quickly find speakers.
+いま見たように、スピーカー ビューは読み取れますが、リンクが小さく、モバイル デバイスではタップが困難です。このセクションでは、現代的なモバイル アプリケーション風のモバイル専用スピーカー ビューを作成します。大きくてタップしやすいリンクが表示され、スピーカーをすばやく見つけることのできる検索ボックスが用意されています。
 
-1. Copy *AllSpeakers.cshtml* to *AllSpeakers.Mobile.cshtml.* Open the *AllSpeakers.Mobile.cshtml* file and remove the &lt;h2&gt; heading element.
-2. In the **&lt;ul&gt;** tag, add the data-role attribute and set its value to *listview*. Like other *data-** attributes, *data-role="listview"* makes the large list items easier to tap. This is what the completed markup looks like:
+1. *AllSpeakers.cshtml* をコピーして名前を *AllSpeakers.Mobile.cshtml* に変更します。*AllSpeakers.Mobile.cshtml* ファイルを開き、&lt;h2&gt; 見出し要素を削除します。
+2. **&lt;ul&gt;** タグに data-role 属性を追加し、値を *listview* に設定します。他の *data-*** 属性と同様に、*data-role="listview"* もリスト項目を大きくしてタップしやすくします。完成したマークアップは次のようになります。
 
 	    @model IEnumerable<string>
 	    @{
@@ -351,50 +350,50 @@ As you just saw, the Speakers view is readable, but the links are small and are 
 	        }
 	    </ul>
 
-3.	Refresh the mobile browser. The updated view looks like this:
+3.	モバイル ブラウザーの表示を更新します。更新されたビューは次のようになります。
 
 	![][MobileSpeakersView1]
 
-4.	In the **&lt;ul&gt;** tag, add the data-filter attribute and set it to true. The code below shows the ul markup.
+4.	**&lt;ul&gt;** タグに data-filter 属性を追加し、値を true に設定します。ul のマークアップは次のようになります。
 
 		<ul data-role="listview" data-filter="true">
 
-The following image shows the search filter box at the top of the page that results from the data-filter attribute.
+次の図は、data-filter 属性によってページ上部に追加される検索フィルター ボックスを示しています。
 
 ![][MobileSpeakersView2]
 
-As you type each letter in the search box, jQuery Mobile filters the displayed list as shown in the image below.
+次の図に示すように、検索ボックスに 1 文字入力するたびに、表示された一覧が jQuery Mobile によって絞り込まれます。
 
 ![][MobileSpeakersView3]
 
-<h2><a name="bkmk_improvetags"></a> Improve the Tags List</h2>
+<h2><a name="bkmk_improvetags"></a> タグ一覧を強化する</h2>
 
-Like the default Speakers view, the Tags view is readable, but the links are small and difficult to tap on a mobile device. In this section, you'll fix the Tags view the same way you fixed the Speakers view.
+既定のスピーカー ビューと同様に、タグ ビューも読み取れますが、リンクが小さく、モバイル デバイスではタップが困難です。このセクションでは、スピーカー ビューと同じ方法でタグ ビューを修正します。
 
-1. Rename the *Views\Home\AllTags.Mobile.cshtml.hide* file to the *Views\Home\AllTags.Mobile.cshtml*. Open the renamed file and remove the **&lt;h2&gt;** element.
+1. *Views\Home\AllTags.Mobile.cshtml.hide* ファイルの名前を *Views\Home\AllTags.Mobile.cshtml* に変更します。名前を変更したファイルを開き、**&lt;h2&gt;** 要素を削除します。
 
-2. Add the data-role and data-filter attributes to the **&lt;ul&gt;** tag, as shown here:
+2. 次に示すように、data-role 属性と data-filter 属性を **&lt;ul&gt;** タグに追加します。
 
 		<ul data-role="listview" data-filter="true">
-The image below shows the tags page filtering on the letter J.
+下図は文字 J で絞り込んだタグ ページを示しています。
 
 ![][TagsList1]
 
-<h2><a name="bkmk_improvedates"></a> Improve the Dates List</h2>
+<h2><a name="bkmk_improvedates"></a> 日付一覧を強化する</h2>
 
-You can improve the Dates view like you improved the **Speakers** and **Tags** views, so that it's easier to use on a mobile device.
+**スピーカー** ビューおよび**タグ** ビューと同じように日付ビューもモバイル デバイスで使いやすいように強化できます。
 
-1. Copy the *Views\Home\AllDates.Mobile.cshtml* file to *Views\Home\AllDates.Mobile.cshtml*.
-2. Open the new file and remove the **&lt;h2&gt;** element.
-3. Add *data-role="listview"* to the &lt;ul&gt; tag, like this:
+1. *Views\Home\AllDates.Mobile.cshtml* ファイルをコピーして名前を *Views\Home\AllDates.Mobile.cshtml* に変更します。
+2. 新しいファイルを開き、**&lt;h2&gt;** 要素を削除します。
+3. 次のように、&lt;ul&gt; タグに *data-role="listview"* を追加します。
 
 		<ul data-role="listview">
 
-The image below shows what the **Date** page looks like with the data-role attribute in place.
+次の図は、data-role 属性を設定すると **[Date]** ページがどのように表示されるかを示しています。
 
 ![][DatesList1]
 
-Replace the contents of the *Views\Home\AllDates.Mobile.cshtml* file with the following code:
+*Views\Home\AllDates.Mobile.cshtml* ファイルの内容を次のコードに置き換えます。
 
     @model IEnumerable<DateTime>
     @{
@@ -410,23 +409,23 @@ Replace the contents of the *Views\Home\AllDates.Mobile.cshtml* file with the fo
             <li>@Html.ActionLink(date.ToString("h:mm tt"), "SessionsByDate", new { date })</li>
         }
     </ul>
-This code groups all sessions by days. It creates a list divider for each new day, and it lists all the sessions for each day under a divider. Here's what it looks like when this code runs:
+このコードは、すべてのセッションを日付でグループ分けします。日が変わるごとに一覧に区切り線が挿入され、区切り線の下にそれぞれの日のセッションがすべて表示されます。このコードを実行すると、表示は次のようになります。
 
 ![][DatesList2]
 
-<h2><a name="bkmk_improvesessionstable"></a> Improve the SessionsTable View</h2>
+<h2><a name="bkmk_improvesessionstable"></a> SessionsTable ビューを強化する</h2>
 
-In this section, you'll create a mobile-specific view of sessions. The changes we make will be more extensive than in other views we have created.
+このセクションでは、セッションのモバイル専用ビューを作成します。変更箇所は、これまでに作成した他のビューよりも広範囲にわたります。
 
-In the mobile browser, tap the **Speaker** button, then enter Sc in the search box.
+モバイル ブラウザーで、**[Speaker]** をタップして、検索ボックスに「Sc」と入力します。
 
 ![][SessionView1]
 
-Tap the **Scott Hanselman** link.
+**[Scott Hanselman]** というリンクをタップします。
 
 ![][SessionView2]
 
-As you can see, the display is difficult to read on a mobile browser. The date column is hard to read and the tags column is out of the view. To fix this, copy Views\*Home\SessionsTable.cshtml* to *Views\Home\SessionsTable.Mobile.cshtml*, and then replace the contents of the file with the following code:
+おわかりのように、モバイル ブラウザーで表示を読み取ることは困難です。日付列は読み取りずらく、タグ列は表示されていません。これを修正するために、Views\*Home\SessionsTable.cshtml* をコピーして名前を *Views\Home\SessionsTable.Mobile.cshtml* に変更し、ファイルの内容を次のコードに置き換えます。
 
     @using MvcMobile.Models
     @model IEnumerable<Session>
@@ -442,27 +441,27 @@ As you can see, the display is difficult to read on a mobile browser. The date c
             </li>
         }
     </ul>
-The code removes the room and tags columns, and formats the title, speaker, and date vertically, so that all this information is readable on a mobile browser. The image below reflects the code changes.
+このコードは部屋列とタグ列を削除し、タイトル、スピーカー、日付を縦 1 列に並べて、すべての情報をモバイル ブラウザーで読み取れるようにします。次の図にはコードの変更が反映されています。
 
 ![][SessionView3]
 
-<h2><a name="bkmk_improvesessionbycode"></a> Improve the SessionByCode View</h2>
+<h2><a name="bkmk_improvesessionbycode"></a> SessionByCode ビューを強化する</h2>
 
-Finally, you'll create a mobile-specific view of the **SessionByCode** view. In the mobile browser, tap the **Speaker** button, then enter Sc in the search box.
+最後に、**SessionByCode** ビューのモバイル専用ビューを作成します。モバイル ブラウザーで、**[Speaker]** をタップして、検索ボックスに「Sc」と入力します。
 
 ![][SessionByCode1]
 
-Tap the **Scott Hanselman** link. Scott Hanselman's sessions are displayed.
+**[Scott Hanselman]** というリンクをタップします。Scott Hanselman のセッションが表示されます。
 
 ![][SessionByCode2]
 
-Choose the **An Overview of the MS Web Stack of Love** link.
+**[An Overview of the MS Web Stack of Love]** リンクを選択します。
 
 ![][SessionByCode3]
 
-The default desktop view is fine, but you can improve it.
+既定のデスクトップ ビューでは問題ありませんが、強化することはできます。
 
-Copy the *Views\Home\SessionByCode.cshtml* to *Views\Home\SessionByCode.Mobile.cshtml* and replace the contents of the *Views\Home\SessionByCode.Mobile.cshtml* file with the following markup:
+*Views\Home\SessionByCode.cshtml* をコピーして名前を *Views\Home\SessionByCode.Mobile.cshtml* に変更し、*Views\Home\SessionByCode.Mobile.cshtml* ファイルの内容を次のマークアップに置き換えます。
 
 
     @model MvcMobile.Models.Session
@@ -491,93 +490,93 @@ Copy the *Views\Home\SessionByCode.cshtml* to *Views\Home\SessionByCode.Mobile.c
             <li>@Html.ActionLink(tag, "SessionsByTag", new { tag })</li>
         }
     </ul>
-The new markup uses the **data-role** attribute to improve the layout of the view.
+新しいマークアップでは、**data-role** 属性を使用して、ビューのレイアウトを強化しています。
 
-Refresh the mobile browser. The following image reflects the code changes that you just made:
+モバイル ブラウザーの表示を更新します。次の図には行ったコードの変更が反映されています。
 
 ![][SessionByCode4]
 
-<h2><a name="bkmk_deployapplciation"></a> Deploy the Application to the Azure Web Site</h2>
+<h2><a name="bkmk_deployapplciation"></a> Azure の Web サイトにアプリケーションを展開する</h2>
 
-1. In Visual Studio, right-click the project in **Solution Explorer** and select **Publish** from the context menu.
+1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
 
-	![Publish in project context menu][PublishVSSolution]
+	![プロジェクトのコンテキスト メニューの [発行]][PublishVSSolution]
 
-	The **Publish Web** wizard opens.
-2. In the **Profile** tab of the **Publish Web** wizard, click **Import**.
+	**Web の発行**ウィザードが開きます。
+2. **Web の発行**ウィザードの **[プロファイル]** タブで、**[インポート]** をクリックします。
 
-	![Import publish settings][ImportPublishSettings]
+	![発行設定のインポート][ImportPublishSettings]
 
-	The **Import Publish Profile** dialog box appears.
+	**[発行プロファイルのインポート]** ダイアログ ボックスが表示されます。
 
-3. If you have not previously added your Azure subscription in Visual Studio, perform the following steps. In these steps you add your subscription so that the drop-down list under **Import from an Azure web site** will include your web site.
-	1. In the **Import Publish Profile** dialog box, click **Add Azure subscription**. 
+3. 以前に Visual Studio で Azure サブスクリプションを追加していない場合は、次の手順に従います。これらの手順で、**[Azure の Web サイトからインポート]** の下のドロップダウン リストに Web サイトが含まれるようにサブスクリプションを追加します。
+	1. **[発行プロファイルのインポート]** ダイアログ ボックスで、**[Azure サブスクリプションの追加]** をクリックします。
 
-	![add win az sub](./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/rzAddWAsub.png)
+	![Azure サブスクリプションの追加](./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/rzAddWAsub.png)
 
-	1. In the **Import Azure Subscriptions** dialog box, click **Download subscription file**.
+	1. **[Azure サブスクリプションのインポート]** ダイアログ ボックスで、**[サブスクリプション ファイルのダウンロード]** をクリックします。
     
-	![download sub](./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/rzDownLoad.png)
+	![サブスクリプションのダウンロード](./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/rzDownLoad.png)
+
+	1. ブラウザー ウィンドウで、*.publishsettings* ファイルを保存します。
     
-	1. In your browser window, save the *.publishsettings* file.
-    
-	![download pub file](./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/rzDown2.png)
+	![発行ファイルのダウンロード](./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/rzDown2.png)
     
 	[WACOM.INCLUDE [publishsettingsfilewarningchunk](../includes/publishsettingsfilewarningchunk.md)]
 </br>
     
-	1. In the **Import Azure Subscriptions** dialog box, click **Browse** and navigate to the *.publishsettings* file.
+	1. **[Azure サブスクリプションのインポート]** ダイアログ ボックスで、**[参照]** をクリックし、*.publishsettings* ファイルに移動します。
     
-	![download sub](./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/rzDownLoad.png)
+	![サブスクリプションのダウンロード](./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/rzDownLoad.png)
     
-	1. Click **Import**.
+	1. **[インポート]** をクリックします。
     
-	![import](./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/rzImp.png)
+	![インポート](./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/rzImp.png)
 
-	7. In the **Import Publish Profile** dialog box, select **Import from an Azure web site**, select your web site from the drop-down list, and then click **OK**.
+	7. **[発行プロファイルのインポート]** ダイアログ ボックスで、**[Azure の Web サイトからインポート]** をクリックし、ドロップダウン リストから Web サイトを選択して **[OK]** をクリックします。
 
-	![Import Publish Profile][ImportPublishProfile]
+	![発行プロファイルのインポート][ImportPublishProfile]
 
 
-	8. In the **Connection** tab, click **Validate Connection** to make sure that the settings are correct.
+	8. **[接続]** タブの **[接続の検証]** をクリックし、設定が正しいことを確認します。
 
-	![Validate connection][ValidateConnection]
+	![接続の検証][ValidateConnection]
 
-	9. When the connection has been validated, a green check mark is shown next to the **Validate Connection** button.
-	![connection successful icon and Next button in Connection tab][firsdeploy007]
+	9. 接続が検証されると、**[接続の検証]** ボタンの横に緑色のチェック マークが表示されます。
+	![[接続] タブの [接続成功] アイコンと [次へ] ボタン][firsdeploy007]
 
-	10. You can accept all of the default settings on this page.  You are deploying a Release build configuration and you don't need to delete files at the destination server. The **UsersContext (DefaultConnection)** entry under **Databases** comes from the *UsersContext:DbContext* class which uses the DefaultConnection string. 
-Click **Next**.
+	10. このページでは、既定の設定をすべてそのまま使用できます。リリース ビルド構成をデプロイしているため、デプロイ先サーバーでファイルを削除する必要はありません。**[データベース]** の下にある **UsersContext (DefaultConnection)** エントリは、DefaultConnection 文字列を使用する *UsersContext:DbContext* クラスから取得されています。
+**[次へ]** をクリックします。
 
-	![connection successful icon and Next button in Connection tab][rxPWS]
+	![[接続] タブの [接続成功] アイコンと [次へ] ボタン][rxPWS]
 
-	12. In the **Preview** tab, click **Start Preview**.
-The tab displays a list of the files that will be copied to the server. Displaying the preview isn't required to publish the application but is a useful function to be aware of. In this case, you don't need to do anything with the list of files that is displayed. The next time you publish, only the files that have changed will be in the preview list.
+	12. **[プレビュー]** タブで、**[プレビューの開始]** をクリックします。
+このタブに、サーバーにコピーされるファイルの一覧が表示されます。プレビューの表示は、アプリケーションの発行に必要ではありませんが、知っておくと便利な機能です。この場合、表示されるファイルの一覧で操作を行う必要はありません。次に発行するときは、変更されたファイルだけがプレビュー一覧に示されます。
 
-	![StartPreview button in the Preview tab][firsdeploy009]
+	![[プレビュー] タブの [プレビューの開始] ボタン][firsdeploy009]
 
-	12. Click **Publish**.
+	12. **[発行]** をクリックします。
 
-	Visual Studio begins the process of copying the files to the Azure server. The **Output** window shows what deployment actions were taken and reports successful completion of the deployment.
+	Azure サーバーにファイルをコピーする処理が開始されます。**出力**ウィンドウでは、実行された展開操作が表示され、展開が問題なく完了したことが報告されます。
 
-	15. The default browser automatically opens to the URL of the deployed site. The application you created is now running in the cloud.
+	15. 自動的に既定のブラウザーが開き、展開先のサイトの URL にアクセスします。これで、作成したアプリケーションはクラウドで実行されています。
 
 	![][DeployApplication10]
 
-You can test your live web site using the phone emulator by browsing to the site URL in the mobile browser.
+モバイル ブラウザーでサイト URL を参照することで、携帯電話エミュレーターを使用して確認した Web サイトを生でテストできます。
 
 <!-- Internal Links -->
-[Create an Azure web site]: #bkmk_createaccount
-[Setup the starter Project]: #bbkmk_setupstarterproject
-[Override the Views, Layouts, and Partial Views]: #bkmk_overrideviews
-[Use jQuery Mobile to define the mobile broswer interface]: #bkmk_usejquerymobile
-[Improve the Speakers List]: #bkmk_Improvespeakerslis
-[Create a Mobile Speakers View]: #bkmk_mobilespeakersview
-[Improve the Tags List]: #bkmk_improvetags
-[Improve the Dates List]: #bkmk_improvedates
-[Improve the SessionsTable View]: #bkmk_improvesessionstable
-[Improve the SessionByCode View]: #bkmk_improvesessionbycode
-[Deploy the Application to the Azure Web Site]: #bkmk_deployapplciation
+[ Azure の Web サイトの作成]: #bkmk_createaccount
+[スタート プロジェクトを設定する]: #bbkmk_setupstarterproject
+[ビュー、レイアウト、および部分ビューをオーバーライドする]: #bkmk_overrideviews
+[jQuery Mobile を使用してモバイル ブラウザー インターフェイスを定義する]: #bkmk_usejquerymobile
+[スピーカー一覧を強化する]: #bkmk_Improvespeakerslis
+[モバイル スピーカー ビューを作成する]: #bkmk_mobilespeakersview
+[タグ一覧を強化する]: #bkmk_improvetags
+[日付一覧を強化する]: #bkmk_improvedates
+[SessionsTable ビューを強化する]: #bkmk_improvesessionstable
+[SessionByCode ビューを強化する]: #bkmk_improvesessionbycode
+[Azure の Web サイトにアプリケーションを展開する]: #bkmk_deployapplciation
 
 <!-- Images -->
 [CreateWebSite1]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/depoly_mobile_new_website_1.png
@@ -626,16 +625,16 @@ You can test your live web site using the phone emulator by browsing to the site
 
 <!-- External Links -->
 [MVC4DeveloperPreview]: http://www.asp.net/mvc/mvc4
-[WebDeployUpdate]: http://www.windowsazure.com/en-us/develop/net/
+[WebDeployUpdate]: http://www.windowsazure.com/ja-jp/develop/net/
 [Visual Studio Express 2012]: http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-products
 [MVC4StarterProject]: http://go.microsoft.com/fwlink/?LinkId=228307
 [FinishedProject]: http://go.microsoft.com/fwlink/?LinkId=228306
-[Win7PhoneEmulator]: http://msdn.microsoft.com/en-us/library/ff402530(VS.92).aspx
+[Win7PhoneEmulator]: http://msdn.microsoft.com/ja-jp/library/ff402530(VS.92).aspx
 [OperaMobileEmulator]: http://www.opera.com/developer/tools/mobile/
 [AppleSafari]: http://www.apple.com/safari/download/
 [HowToSafari]: http://www.davidalison.com/2008/05/how-to-let-safari-pretend-its-ie.html
 [FireFox]: http://www.bing.com/search?q=firefox+download
-[FireFoxUserAgentSwitcher]: https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/
+[FireFoxUserAgentSwitcher]: https://addons.mozilla.org/ja-jp/firefox/addon/user-agent-switcher/
 [CSSMediaQuries]: http://www.w3.org/TR/css3-mediaqueries/
 [jquerydocs]: http://jquerymobile.com/demos/1.0b3/#/demos/1.0b3/docs/about/intro.html
 [setuseragent]: http://www.howtogeek.com/113439/how-to-change-your-browsers-user-agent-without-installing-any-extensions/
@@ -650,4 +649,5 @@ You can test your live web site using the phone emulator by browsing to the site
 [firsdeploy007]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/dntutmobile-deploy1-publish-005.png
 [firsdeploy009]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/dntutmobile-deploy1-publish-007.png
 [rxPWS]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/rxPWS.png
+
 

@@ -1,74 +1,72 @@
-<properties linkid="dev-nodejs-cloud9" urlDisplayName="Deploying with Cloud9" pageTitle="Node.js deploying with Cloud9 - Azure tutorial" metaKeywords="Cloud9 IDE Azure, Azure node.js, Azure node apps" description="Learn how to use Cloud9 IDE to develop, build, and deploy a Node.js application to Azure." metaCanonical="" services="cloud-services" documentationCenter="Node.js" title="Deploying an Azure App from Cloud9" authors="larryfr" solutions="" manager="" editor="" />
+<properties linkid="dev-nodejs-cloud9" urlDisplayName="Cloud9 を使用した展開" pageTitle="Cloud9 を使用した Node.js の展開 - Azure チュートリアル" metaKeywords="Cloud9 IDE Azure, Azure node.js, Azure ノード アプリケーション" description="Cloud9 IDE を使用して Node.js アプリケーションを開発、構築し、Azure に展開する方法について説明します。" metaCanonical="" services="cloud-services" documentationCenter="Node.js" title="Cloud9 からの Azure アプリケーションの展開" authors="larryfr" solutions="" manager="" editor="" />
 
 
 
 
 
+# Cloud9 からの Azure アプリケーションの展開
 
-# Deploying an Azure App from Cloud9
+このチュートリアルでは、Cloud9 IDE を使用して Node.js アプリケーションを
+開発、構築し、Azure に展開する方法について説明します。
 
-This tutorial describes how to use Cloud9 IDE to develop, build, and
-deploy a Node.js application to Azure.
+このチュートリアルで学習する内容は次のとおりです。
 
-In this tutorial you will learn how to:
+-   Cloud9 IDE プロジェクトを作成する
+-   Azure にプロジェクトを展開する
+-   既存の Azure の展開を更新する
+-   ステージング環境の展開と運用環境の展開の間でプロジェクトを移動する
 
--   Create a Cloud9 IDE project
--   Deploy the project to Azure
--   Update an existing Azure deployment
--   Move projects between staging and production deployments
+[Cloud9 IDE][] は、クロス プラットフォームのブラウザー ベースの開発環境を提供します。Cloud9 が Node.js プロジェクト用にサポートしている機能の 1 つとして、
+この IDE 内から直接 Azure に展開できます。
+また、Cloud9 は GitHub および BitBucket リポジトリ サービスとも
+統合されており、他のユーザーと簡単にプロジェクトを共有できます。
 
-[Cloud9 IDE][] provides a cross-platform, browser-based development
-environment. One of the features Cloud9 supports for Node.js projects is
-that you can directly deploy to Azure from within the IDE.
-Cloud9 also integrates with the GitHub and BitBucket repository
-services, so it's easy to share your project with others.
+Cloud9 を使用して、多くの最新のブラウザーおよびオペレーティング システムから
+アプリケーションを開発し、Azure に展開することができ、追加の開発ツールや
+SDK をローカルにインストールする必要はありません。次に示す手順は、
+Mac で Google Chrome を使用する場合の手順です。
 
-Using Cloud9, you can develop and deploy an application to Azure
-from many modern browsers and operating systems, without having to
-install additional development tools or SDKs locally. The steps below
-are demonstrated using Google Chrome on a Mac.
+## サインアップ
 
-## Signup
+Cloud9 を使用するには、Cloud9 の Web サイトにアクセスして、
+[サブスクリプションを登録する][Cloud9 IDE]必要があります。既存の GitHub または BitBucket のアカウントを使用して
+サインインすることも、Cloud9 のアカウントを作成することもできます。無料の
+サブスクリプションを利用することも、より多くの機能が提供される
+有料サブスクリプションを利用することもできます。詳細については、[Cloud9 IDE][] を参照してください。
 
-To use Cloud9, you first need to visit their web site and [register for a
-subscription][Cloud9 IDE]. You can sign in with either an existing
-GitHub or BitBucket account, or create a Cloud9 account. A free
-subscription offering is available, as well as a paid offering which
-provides more features. For more information, see [Cloud9 IDE][].
+## Node.js プロジェクトの作成
 
-## Create a Node.js Project
+1.  Cloud9 にサインインし、**[My Projects]** の横にある **+** 符号を
+    クリックし、**[Create a new project]** を選択します。
 
-1.  Sign in to Cloud9, click the **+** symbol beside **My Projects**,
-    and then select **Create a new project**.
+	![新しい Cloud9 プロジェクトの作成](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_create_project.png)
 
-	![create new Cloud9 project](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_create_project.png)
+2.  **[Create a new project]** ダイアログで、プロジェクト名、
+    アクセス、およびプロジェクト タイプを入力します。**[Create]** をクリックしてプロジェクトを作成します。
 
-2.  In the **Create a new project** dialog, enter a project name,
-    access, and project type. Click **Create** to create the project.
-
-	![create new project dialog Cloud9](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_new_project.png)
+	![新しいプロジェクトの作成ダイアログ Cloud9](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_new_project.png)
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>Some options require a paid Cloud9 plan.</p>
+	<strong>注</strong>
+	<p>一部のオプションでは、Cloud9 の有料プランが必要です。</p>
 	</div>
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>The project name of your Cloud9 project is not used when deploying to Azure.</p>
+	<strong>注</strong>
+	<p>Cloud9 プロジェクトのプロジェクト名は、Azure に展開するときには使用されません。</p>
 	</div>
 
-3.  After the project has been created, click **Start Editing**. If this is the first time you have used the Cloud9 IDE, you will be offered the option to take a tour of the service. If you wish to skip the tour and view it at a later date, select **Just the editor,please**.
+3.  プロジェクトが作成されたら、**[Start Editing]** をクリックします。Cloud9 IDE を初めて使用する場合は、サービスの説明ツアーを開始するためのオプションが表示されます。ツアーをスキップして後日見る場合は、**[Just the editor, please]** を選択します。
 
-	![start editing the Cloud9 project](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_startediting.png)
+	![Cloud9 プロジェクトの編集の開始](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_startediting.png)
 
-4.  To create a new Node application, select **File** and then **New
-    File**.
+4.  新しい Node アプリケーションを作成するには、**[File]**、
+    **[New File]** の順に選択します。
 
-	![create new file in the Cloud9 project](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_filenew.png)
+	![Cloud9 プロジェクト内での新しいファイルの作成](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_filenew.png)
 
-5.  A new tab titled **Untitled1** will be displayed. Enter the
-    following code on the **Untitled1** tab to create the Node
-    application:
+5.  **Untitled1** というタイトルの新しいタブが表示されます。**[Untitled1]** タブに
+    次のコードを入力して、Node アプリケーションを
+    作成します。
 
         var http = require('http');
         var port = process.env.PORT;
@@ -78,136 +76,136 @@ provides more features. For more information, see [Cloud9 IDE][].
         }).listen(port);
 	
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>Using process.env.PORT ensures that the application picks up the correct port whether ran in the Cloud9 debugger or when deployed to Azure.</p>
+	<strong>注</strong>
+	<p>process.env.PORT を使用することによって、アプリケーションを Cloud9 デバッガーで実行するか、Azure に展開するかに関係なく、アプリケーションで適切なポートが選択されます。</p>
 	</div>
 
-6.  To save the code, select **File** and then **Save as**. In the
-    **Save As** dialog, enter **server.js** as the file name, and then
-    click **Save**.
+6.  コードを保存するには、**[File]**、**[Save as]** の順に選択します。**[Save As]** ダイアログで、
+    ファイル名として「**server.js**」と入力し、**[Save]** を
+    クリックします。
 
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>You may notice a warning symbol indicating that the req variable is unused. You may safely ignore this warning.</p>
+	<strong>注</strong>
+	<p>req 変数が使用されていないことを示す警告の記号が表示されます。この警告は無視してかまいません。</p>
 	</div>
 
-	![save the server.js file](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_saveas.png)
+	![server.js ファイルの保存](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_saveas.png)
 
-## Run the Application
+## アプリケーションの実行
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>While the steps provided in this section are sufficient for a Hello World application, for applications that use external modules you may need to select a specific version of Node.js for the debug environment. To do this, select <strong>Configure...</strong> from the debug dropdown, and then select the specific version of Node.js. For example, you may receive authentication errors when using the 'azure' module if you do not have Node.js 0.6.x selected.</p>
+<strong>注</strong>
+<p>ここで示す手順は、Hello World アプリケーションでは十分ですが、外部モジュールを使用するアプリケーションでは、デバッグ環境として特定のバージョンの Node.js を選択することが必要になる場合があります。そのためには、デバッグのドロップダウンで <strong>[Configure]</strong> を選択し、Node.js の特定のバージョンを選択します。たとえば、"azure" モジュールを使用しているときに、Node.js 0.6.x が選択されていない場合、認証エラーが表示されることがあります。</p>
 </div>
 
-1.  Click **Debug** to run the application in the Cloud9 debugger.
+1.  **[Debug]** をクリックして、Cloud9 デバッガーでアプリケーションを実行します。
 	
-	![run in the debugger](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_debug.png)
+	![デバッガーでの実行](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_debug.png)
 
-2.  An output window will be displayed. Click on the URL listed to
-    access your application through a browser window.
+2.  出力ウィンドウが表示されます。ブラウザー ウィンドウからアプリケーションに
+    アクセスするには、表示される URL をクリックします。
 
-	![output window](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_output.png)
+	![出力ウィンドウ](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_output.png)
 
-	The resulting application will look as follows:
+	作成されたアプリケーションは、次のように表示されます。
 
-	![application running in browser](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_debug_browser.png)
+	![ブラウザーで実行中のアプリケーション](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_debug_browser.png)
 
-3.  To stop debugging the application, click **stop**.
+3.  アプリケーションのデバッグを停止するには、**[stop]** をクリックします。
 
-## Create an Azure Account
+## Azure アカウントの作成
 
-To deploy your application to Azure, you need an account. If you
-do not already have an Azure account, you can sign up for a free
-trial by following these steps:
+アプリケーションを Azure に展開するには、アカウントが必要です。Azure アカウントを
+持っていない場合は、次の手順に従って無料評価版アカウントに
+サインアップすることもできます。
 
 [WACOM.INCLUDE [create-azure-account](../includes/create-azure-account.md)]
 
 
-## Create a Deployment
+## 展開の作成
 
-1.  To create a new deployment, select **Deploy**, and then click **+** to create a deploy server.
+1.  新しい展開を作成するには、**[Deploy]** を選択し、**[+]** をクリックして展開サーバーを作成します。
 
-    ![create a new deployment][create a new deployment]
+    ![新しいデプロイの作成][create a new deployment]
 
-2.  In the **Add a deploy target** dialog, enter a deployment name and then select **Azure** in the **Choose type** list. The deployment name you specify will be used to identify the deployment within Cloud9; it will not correspond to a deployment name within Azure.
+2.  **[Add a deploy target]** ダイアログで、展開名を入力し、**[Choose type]** の一覧で **[Azure]** を選択します。指定した展開名は、Cloud9 内で展開を識別するために使用され、Azure 内の展開名とは対応しません。
 
-3.  If this is the first time you have created a Cloud9 deployment that uses Azure, you must configure your Azure publish settings. Perform the following steps to download and install these settings into the Cloud9:
+3.  初めて Azure を使用する Cloud9 の展開を作成した場合は、Azure 発行設定を構成する必要があります。これらの設定をダウンロードして Cloud9 にインストールするには、次の手順を実行します。
 
-    1.  Click **Download Azure Settings**.
+    1.  **[Download Azure Settings]** をクリックします。
 
-        ![download publish settings](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_choosetypeandcert.png)
+        ![発行設定のダウンロード](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_choosetypeandcert.png)
 
-        This will open the Azure Management Portal and prompt you to download the Azure publishing settings. You will be required to log in to your Azure account before you can begin.
+        これによって、Azure 管理ポータルが開き、Azure 発行設定のダウンロードを確認するメッセージが表示されます。作業を開始する前に、Azure アカウントにログインする必要があります。
 
-    2.  Save the publishing settings file to your local drive.
+    2.  発行設定ファイルをローカル ドライブに保存します。
 
-    3.  In the **Add a deploy target** dialog, select **Choose File**,
-        and then select the file downloaded in the previous step.
+    3.  **[Add a deploy target]** ダイアログで、**[Choose File]** を選択し、
+        前の手順でダウンロードしたファイルを選択します。
 
-    4.  After selecting the file, click **Upload**.
+    4.  ファイルを選択した後、**[Upload]** をクリックします。
 
-4.  Click **+ Create new** to create a new hosted service. A *hosted service* is the container in which your application is hosted when it is deployed to Azure. For more information, see [Overview of Creating a Hosted Service for Azure][].
+4.  **[+ Create new]** をクリックして、新しいホステッド サービスを作成します。*ホステッド サービス*は、Azure に展開したアプリケーションがホストされるコンテナーです。詳細については、「[Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)][]」を参照してください。
 
-	![create a new deployment](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_createdeployment.png)
+	![新しいデプロイの作成](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_createdeployment.png)
 
-5.  You will be prompted for the name of the new hosted service and configuration options such as the number of instances, host OS, and data center. The deployment name specified will be used as the hosted service name in Azure. This name must be unique within the Azure system.
+5.  新しいホステッド サービスの名前と、インスタンス数、ホスト OS、データ センターなどの構成オプションを指定するよう求めるメッセージが表示されます。指定した展開名は、Azure でホステッド サービス名として使用されます。この名前は Azure システム内で一意である必要があります。
 	
-	![create a new hosted service](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_new_hosted_service_settings.png)
+	![新しいホステッド サービスの作成](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_new_hosted_service_settings.png)
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>In the <strong>Add a deploy target</strong> dialog, any existing Azure hosted services will be listed under the <strong>Choose existing deployment</strong> section; selecting an existing hosted service will result in this project being deployed to that service.</p>
+	<strong>注</strong>
+	<p><strong>[Add a deploy target]</strong> ダイアログの <strong>[Choose existing deployment]</strong> には、既存の Azure ホステッド サービスがすべて表示されます。既存のホステッド サービスを選択すると、このプロジェクトはそのサービスに対して展開されます。</p>
 	</div>
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>Selecting <strong>Enable RDP</strong> and providing a username and password will enable remote desktop for your deployment.</p>
+	<strong>注</strong>
+	<p><strong>[Enable RDP]</strong> を選択し、ユーザー名とパスワードを指定すると、展開のリモート デスクトップが有効になります。</p>
 	</div>
 
 
-## Deploy to the Azure Production Environment
+## Azure 運用環境への展開
 
-1.  Select the deployment you created in the previous steps. A dialog
-    will appear that provides information about this deployment, as well
-    as the production URL that will be used after deployment to Windows
-    Azure.
+1.  前の手順で作成した展開を選択します。ダイアログが
+    表示され、この展開に関する情報と、Azure への
+    展開後に使用される運用環境の URL が
+    示されます。
 
-	![select a deployment](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_select_deployment.png)
+	![デプロイの選択](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_select_deployment.png)
 
-2.  Select **Deploy to Production environment**.
+2.  **[Deploy to Production environment]** を選択します。
 
-3.  Click **Deploy** to begin deployment.
+3.  **[Deploy]** をクリックして展開を開始します。
 
-4.  If this is the first time you have deployed this project to Azure, you will receive an error of **'No web.config found'**. Select **Yes** to create the file. This will add a 'Web.cloud.config' file to your project.
+4.  初めてこのプロジェクトを Azure に展開する場合、**"No web.config found"** というエラーが表示されます。**[Yes]** を選択してファイルを作成します。これにより、"Web.cloud.config" ファイルがプロジェクトに追加されます。
 	
-	![no web.config file found message](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_no_web_config.png)
+	![no web.config file found メッセージ](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_no_web_config.png)
 
-5.  If this is the first time you have deployed this project to Azure, you will receive an error of **'No 'csdef' file present'**. Select **Yes** to create the .csdef file. This will add a'ServiceDefinition.csdef' file to your project.    ServiceDefinition.csdef is an Azure-specific files necessary for publishing your application. For more information, see [Overview of Creating a Hosted Service for Azure][].
+5.  初めてこのプロジェクトを Azure に展開する場合、**"No 'csdef' file present"** というエラーが表示されます。**[Yes]** を選択して .csdef ファイルを作成します。これにより、"ServiceDefinition.csdef" ファイルがプロジェクトに追加されます。ServiceDefinition.csdef は、アプリケーションの発行に必要な Azure 固有のファイルです。詳細については、「[Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)][]」を参照してください。
 
-6.  You will be prompted to select the instance size for this application. Select **Small**, and then click **Create**. For more details about Azure VM sizes, see [How to Configure Virtual Machine Sizes][].
+6.  このアプリケーションのインスタンスのサイズを選択するよう求めるメッセージが表示されます。**[Small]** を選択し、**[Create]** をクリックします。Azure VM のサイズの詳細については、「[仮想マシンのサイズの構成方法][]」を参照してください。
 
-	![specify csdef file values](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_createcsdef.png)
+	![csdef ファイルの値の指定](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_createcsdef.png)
 
-7.  The deployment entry will display the status of the deployment process. Once complete, the deployment will display as **Active**.
+7.  展開のエントリは、展開プロセスの状態を示します。完了すると、展開は **Active** と表示されます。
 
-	![deployment status](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_deployment_status.png)
+	![デプロイの状態](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_deployment_status.png)
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>Projects deployed through the Cloud 9 IDE are assigned a GUID as the deployment name in Azure.</p>
+	<strong>注</strong>
+	<p>Cloud 9 IDE によって展開されるプロジェクトには、Azure の展開名として GUID が割り当てられます。</p>
 	</div>
 
-8.  The deployment dialog includes a link to the production URL. When the deployment is complete, click the URL to browse to your application running in Azure.
+8.  展開ダイアログには、運用環境の URL へのリンクが含まれます。展開が完了したら、URL をクリックして Azure で実行されているアプリケーションを表示します。
 
-	![Azure production URL link](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_production_url.png)
+	![Azure 運用環境の URL リンク](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_production_url.png)
 
-## Update the Application
+## アプリケーションの更新
 
-When you make changes to your application, you can use Cloud9 to deploy the updated application to the same Azure hosted service.
+アプリケーションを変更するときは、Cloud9 を使用して、更新されたアプリケーションを同じ Azure ホステッド サービスに展開できます。
 
-1.  In the server.js file, update your code so that "hello azure v2" is printed to the screen. You can replace the existing code with the following updated code:
+1.  server.js ファイルで、"hello azure v2" が画面に出力されるようにコードを更新します。既存のコードを次の更新されたコードに置き換えます。
 
         var http = require('http');
         var port = process.env.PORT;
@@ -216,99 +214,100 @@ When you make changes to your application, you can use Cloud9 to deploy the upda
             res.end('hello azure v2\n');
         }).listen(port);
 
-2.  To save the code, select **File** and then **Save**.
+2.  コードを保存するには、**[File]**、**[Save]** の順に選択します。
 
-## Deploy the update to the Azure Staging Environment
+## Azure ステージング環境への更新の展開
 
-1.  Select **Deploy to Staging**.
+1.  **[Deploy to Staging]** を選択します。
 
-2.  Click **Deploy** to begin deployment.
+2.  **[Deploy]** をクリックして展開を開始します。
 
-	Each Azure hosted service supports two environments, staging and production. The staging environment is exactly like the production environment, except that you can only access the staged application with an obfuscated, GUID-based URL that is generated by Azure. You can use the staging environment to test your application, and after verifying changes you can move the staging version into production by performing a virtual IP (VIP) swap, as described later in this tutorial.
+	Azure ホステッド サービスはそれぞれステージング環境と運用環境の 2 つの環境をサポートしています。ステージング環境は運用環境とほぼ同じです。唯一の違いは、ステージングされたアプリケーションには、Azure で生成されたわかりにくい GUID ベースの URL を使用しなければアクセスできない点です。ステージング環境を使用してアプリケーションをテストすることができ、変更内容を確認したら、後で説明する仮想 IP (VIP) スワップを実行して、ステージング環境のバージョンを運用環境に移行できます。
 
-3.  When your application is deployed to staging, the guid-based staging URL will be displayed in the Console output, as shown in the screenshot below. Click the URL to open your staged application in a browser.
+3.  アプリケーションがステージング環境に展開されると、次のスクリーンショットに示されているように、コンソール出力に GUID ベースのステージング URL が表示されます。この URL をクリックして、ステージングされたアプリケーションをブラウザーで開きます。
 
-	![console output showing staging URL](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_staging_console_output.png)
+	![ステージング URL を示すコンソール出力](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_staging_console_output.png)
 
-## Move the Update to Production using VIP Swap
+## VIP スワップを使用した運用環境への更新の移行
 
-When a service is deployed to either the production or staging
-environments, a virtual IP address (VIP), is assigned to the service in
-that environment. When you want to move a service from the staging
-environment to the production environment, you can do so without
-redeploying by doing a VIP Swap, which swaps the staging and production
-deployments. A VIP swap puts your tested, staged application into
-production with no downtime in the production environment. For more
-details, see [Overview of Managing Deployments in Azure.][]
+運用環境またはステージング環境にサービスを展開すると、
+その環境のサービスに、仮想 IP アドレス (VIP) が
+割り当てられます。サービスをステージング環境から運用環境に移行するには、
+VIP スワップを実行して、ステージング環境と運用環境の展開を
+スワップすることによって、再展開することなく、この処理を行うことが
+できます。VIP スワップでは、テストされたステージング環境のアプリケーションが
+運用環境に移行され、運用環境でダウンタイムは発生しません。詳細については、
+[Azure における展開管理の概要][]を参照してください。
 
-1.  In the deploy dialog, click on the **Open portal** link to open the
-    Azure Management Portal.
+1.  展開ダイアログで、**[Open portal]** リンクをクリックして
+    Azure 管理ポータルを開きます。
 
-	![Link from deploy dialog to Azure Management Portal][Link from deploy dialog to Azure Management Portal]
+	![展開ダイアログから Azure 管理ポータルへのリンク][Link from deploy dialog to Azure Management Portal]
 
-2.  Sign in to the portal with your credentials.
+2.  自分の資格情報を使用してポータルにサインインします。
 
-3.  On the left of the web page, select **Hosted Services, Storage
-    Accounts & CDN**, and then click **Hosted Services**.
+3.  Web ページの左側で、**[ホステッド サービス、ストレージ アカウント、
+    CDN]** を選択し、**[ホステッド サービス]** をクリックします。
 
-	![Azure Management Portal][Azure Management Portal]
+	![Azure 管理ポータル][Azure Management Portal]
 
-	The results pane shows the hosted service with the name you specified in Cloud9, and two deployments, one with the    **Environment** value **Staging**, the second **Production**.
+	結果のウィンドウに、Cloud9 で指定した名前のホステッド サービスと 2 つの展開が表示されます。1 つは **[環境]** の値が **[ステージング]** で、もう 1 つは **[運用]** です。
 
-4.  To perform the VIP Swap, select the hosted service, and then click **Swap VIP** in the ribbon.
+4.  VIP スワップを実行するには、ホステッド サービスを選択し、リボンの **[VIP のスワップ]** をクリックします。
 
-	![VIP SWAP](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_portal_vipswap.png)
+	![VIP スワップ](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_portal_vipswap.png)
 
-5.  Click **OK** in the Swap VIPs dialog that appears.
+5.  表示された [VIP スワップ] ダイアログ ボックスで **[OK]** をクリックします。
 
-6.  Browse to your production application. You will see that the version of the application previously deployed to stage is now in production.
+6.  運用環境のアプリケーションを参照します。以前にステージング環境に展開されたアプリケーションのバージョンが、運用環境にあることがわかります。
 
-	![Production application running on Azure](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_production_on_azure.png)
+	![Azure で実行されている運用環境のアプリケーション](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_production_on_azure.png)
 
-## Using Remote Desktop
+## リモート デスクトップの使用
 
-If you enabled RDP and specified a username and password when creating your deployment, you can use Remote Desktop to connect to your Hosted Service by selecting a specific instance, and then selecting Connect on
-the ribbon.
+展開を作成するときに、RDP を有効にし、ユーザー名とパスワードを指定した場合は、特定のインスタンスを選択し、リボンの [接続] を選択することによって、リモート デスクトップを使用してホステッド サービスに
+接続できます。
 
-![Connect to an instance](./media/cloud-services-nodejs-develop-deploy-cloud9/connect.png)
+![インスタンスへの接続](./media/cloud-services-nodejs-develop-deploy-cloud9/connect.png)
 
-When you click Connect, you will be prompted to open or download a .RDP file. This file contains the information required to connect to your remote desktop session. Running this file on a Windows system will prompt you for the username and password you entered when creating your deployment, and will then connect you to the desktop of the selected
-instance.
+[接続] をクリックすると、.RDP ファイルを開くか、ダウンロードするよう求めるメッセージが表示されます。このファイルには、リモート デスクトップ セッションに接続するために必要な情報が含まれています。このファイルを Windows システムで実行すると、展開を作成するときに入力したユーザー名とパスワードの入力を求めるメッセージが表示され、選択したインスタンスのデスクトップに
+接続されます。
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>The .RDP file to connect to the hosted instance of your application will only work with the Remote Desktop application on
-WIndows.</p>
+<strong>注</strong>
+<p>ホストされているアプリケーションのインスタンスに接続するための .RDP ファイルは、Windows 上のリモート デスクトップ アプリケーションに
+ついてのみ動作します。</p>
 </div>
 
-## Stop and Delete the Application
+## アプリケーションの停止と削除
 
-Azure bills role instances per hour of server time consumed, and server time is consumed while your application is deployed, even if the instances are not running and are in the stopped state. In addition,
-server time is consumed by both production and stage deployments.
+Azure では、ロール インスタンスで消費されたサーバー時間の時間単位で課金されます。サーバー時間はアプリケーションが展開されている間、消費されます。インスタンスが実行されていない場合や、停止状態の場合にも消費されます。また、サーバー時間は
+運用環境とステージング環境の両方の展開で消費されます。
 
-Cloud9 focuses on providing an IDE and does not provide a direct method of stopping or deleting an application once it has been deployed to Azure. In order to delete an application hosted in Azure, perform the following steps:
+Cloud9 は IDE を提供することに重点を置いており、Azure に展開された後のアプリケーションを直接停止または削除する方法は提供していません。Azure でホストされるアプリケーションを削除するには、次の手順を実行します。
 
-1.  In the deploy dialog, click on the **Open portal** link to open the Azure Management Portal.
+1.  展開ダイアログで、**[Open portal]** リンクをクリックして、Azure 管理ポータルを開きます。
 
-	![Link from deploy dialog to Azure Management Portal](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_portal_link.png)
+	![展開ダイアログから Azure 管理ポータルへのリンク](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_portal_link.png)
 
-2.  Sign in to the portal with your credentials.
+2.  自分の資格情報を使用してポータルにサインインします。
 
-3.  On the left of the web page, select **Hosted Services, Storage Accounts & CDN**, and then click **Hosted Services**.
+3.  Web ページの左側で、**[ホステッド サービス、ストレージ アカウント、CDN]** を選択し、**[ホステッド サービス]** をクリックします。
 
-4.  Select the staging deployment (indicated by the **Environment** value). Click **Delete** in the ribbon to delete the application.
+4.  ステージング環境の展開 (**[環境]** の値で示される) を選択します。リボンの **[削除]** をクリックしてアプリケーションを削除します。
 
-	![delete the deployment](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_deletedeployment.png)
+	![デプロイの削除](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_deletedeployment.png)
 
-5.  Select the production deployment, and click **Delete** to delete that application as well.
+5.  運用環境の展開を選択し、**[削除]** をクリックしてこのアプリケーションも削除します。
 
-## Additional Resources
+## その他のリソース
 
--   [Cloud9 documentation][]
+-   [Cloud9 に関するドキュメント][]
 
 
   [Cloud9 IDE]: http://cloud9ide.com/ 
-  [Overview of Creating a Hosted Service for Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/jj155995.aspx
-  [How to Configure Virtual Machine Sizes]: http://msdn.microsoft.com/en-us/library/windowsazure/ee814754.aspx
-  [Overview of Managing Deployments in Azure.]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433027.aspx
-  [Cloud9 documentation]: http://go.microsoft.com/fwlink/?LinkId=241421&clcid=0x409
+  [Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj155995.aspx
+  [仮想マシンのサイズの構成方法]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee814754.aspx
+  [Azure における展開管理の概要]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433027.aspx
+  [Cloud9 に関するドキュメント]: http://go.microsoft.com/fwlink/?LinkId=241421&clcid=0x409
+

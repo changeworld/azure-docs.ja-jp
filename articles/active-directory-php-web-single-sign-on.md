@@ -1,40 +1,40 @@
-<properties linkid="develop-php-how-to-guides-web-sso" urlDisplayName="Web SSO" pageTitle="Single sign-on with Azure Active Directory (PHP)" metaKeywords="Azure PHP web app, Azure single sign-on, Azure PHP Active Directory" description="Learn how to create a PHP web application that uses single sign-on with Azure Active Directory." metaCanonical="" services="active-directory" documentationCenter="PHP" title="Web Single Sign-On with PHP and Azure Active Directory" authors="waltpo" solutions="" manager="bjsmith" editor="mollybos" videoId="" scriptId="" />
+<properties linkid="develop-php-how-to-guides-web-sso" urlDisplayName="Web SSO" pageTitle="Azure Active Directory によるシングル サインオン (PHP)" metaKeywords="Azure PHP Web アプリケーション, Azure シングル サインオン, Azure PHP Active Directory" description="Azure Active Directory によるシングル サインオンを使用する PHP Web アプリケーションを作成する方法について説明します。" metaCanonical="" services="active-directory" documentationCenter="PHP" title="PHP と Azure Active Directory による Web シングル サインオン" authors="waltpo" solutions="" manager="bjsmith" editor="mollybos" videoId="" scriptId="" />
 
-# Web Single Sign-On with PHP and Azure Active Directory
+# PHP と Azure Active Directory による Web シングル サインオン
 
-##<a name="introduction"></a>Introduction
+##<a name="introduction"></a>はじめに
 
-This tutorial will show PHP developers how to leverage Azure Active Directory to enable single sign-on for users of Office 365 customers. You will learn how to:
+このチュートリアルでは PHP 開発者向けに、Azure Active Directory を活用して、Office 365 顧客のユーザーに対してシングル サインオンを有効にする方法について説明します。学習内容: 
 
-* Provision the web application in a customer's tenant
-* Protect the application using WS-Federation
+* 顧客のテナントでの Web アプリケーションのプロビジョニング
+* WS-Federation を使用したアプリケーションの保護
 
-###Prerequisites
-The following development environment prerequisites are required for this walkthrough:
+###前提条件
+次の開発環境の前提条件はこのチュートリアルで必要になります。
 
-* [PHP Sample Code for Azure Active Directory]
+* [Azure Active Directory 用の PHP サンプル コード]
 * [Eclipse PDT 3.0.x All In Ones]
-* PHP 5.3.1 (via Web Platform Installer)
-* Internet Information Services (IIS) 7.5 with SSL enabled
+* PHP 5.3.1 (Web プラットフォーム インストーラーを使用)
+* インターネット インフォメーション サービス (IIS) 7.5 (SSL が有効)
 * Windows PowerShell
-* [Office 365 PowerShell Commandlets]
+* [Office 365 PowerShell コマンドレット]
 
-###Table of Contents
-* [Introduction][]
-* [Step 1: Create a PHP Application][]
-* [Step 2: Provision the Application in a Company's Directory Tenant][]
-* [Step 3: Protect the Application Using WS-Federation for Employee Sign In][]
-* [Summary][]
+###目次
+* [はじめに][]
+* [手順 1. PHP アプリケーションを作成する][]
+* [手順 2. 会社のディレクトリ テナントでアプリケーションをプロビジョニングする][]
+* [手順 3. WS-Federation を従業員のサインインに使用してアプリケーションを保護する][]
+* [まとめ][]
 
-##<a name="createapp"></a>Step 1: Create a PHP Application
-This step describes how to create a simple PHP application that will represent a protected resource. Access to this resource will be granted through federated authentication managed by the company's STS, which is described later in the tutorial.
+##<a name="createapp"></a>手順 1. PHP アプリケーションを作成する
+この手順では、リソースが保護されたシンプルな PHP アプリケーションを作成する方法について説明します。このリソースへのアクセスは、会社の STS によって管理されるフェデレーション認証を使用して許可されます (後で説明)。
 
-1. Open a new instance of Eclipse.
-2. From the **File** menu, click **New**, then click **New PHP Project**. 
-3. On the **New PHP Project** dialog, name the project *phpSample*, then click **Finish**.
-4. From the **PHP Explorer** menu on the left, right-click *phpProject*, click **New**, then click **PHP File**.
-5. On the **New PHP File** dialog, name the file **index.php**, then click **Finish**.
-6. Replace the generated markup with the following, then save **index.php**:
+1. Eclipse の新しいインスタンスを開きます。
+2. **[File]** メニューの **[New]** をクリックし、**[New PHP Project]** をクリックします。
+3. **[New PHP Project]** ダイアログ ボックスで、プロジェクトに *phpSample* という名前を付け、**[Finish]** をクリックします。
+4. 左側の **[PHP Explorer]** メニューで *phpProject* を右クリックし、**[New]**、**[PHP File]** の順にクリックします。
+5. **[New PHP File]** ダイアログ ボックスで、ファイルに **index.php** という名前を付け、**[Finish]** をクリックします。
+6. 生成されたマークアップを次のコードに置き換え、**index.php** を保存します。
 
 		<!DOCTYPE>
 		<html>
@@ -47,35 +47,35 @@ This step describes how to create a simple PHP application that will represent a
 		</body>
 		</html> 
 
-7. Open **Internet Information Services (IIS) Manager** by typing *inetmgr* at the Run prompt and pressing Enter.
+7. [ファイル名を指定して実行] のプロンプトで「*inetmgr*」と入力し、Enter キーを押して、**インターネット インフォメーション サービス (IIS) マネージャー**を起動します。
 
-8. In IIS Manager, expand the **Sites** folder in the left menu, right-click **Default Web Site**, then click **Add Application...**.
+8. IIS マネージャーで、左側のメニューの **Sites** フォルダーを展開し、**[既定の Web サイト]** を右クリックして、**[アプリケーションの追加...]** をクリックします。
 
-9. On the **Add Application** dialog, set the **Alias** value to *phpSample* and the **Physical path** to the file path where you created the PHP project.
+9. **[アプリケーションの追加]** ダイアログ ボックスで、**[エイリアス]** に「*phpSample*」と入力します。**[物理パス]** で PHP プロジェクトを作成したファイル パスを指定します。
 
-10. In Eclipse, from the **Run** menu, click **Run**.
+10. Eclipse で、**[Run]** メニューの **[Run]** をクリックします。
 
-11. On the **Run PHP Web Application** menu, click **OK**.
+11. **[Run PHP Web Application]** メニューで **[OK]** をクリックします。
 
-12. The **index.php** page will open in a new tab in Eclipse. The page should simply display the text: *Index Page*. 
+12. **index.php** ページが Eclipse の新しいタブで開きます。このページには、*Index Page* というテキストが表示されているだけです。
 
-##<a name="provisionapp"></a>Step 2: Provision the Application in a Company's Directory Tenant
-This step describes how an administrator of an Azure Active Directory customer provisions the PHP application in their tenant and configures single sign-on. After this step is accomplished, the company's employees can authenticate to the web application using their Office 365 accounts.
+##<a name="provisionapp"></a>手順 2. 会社のディレクトリ テナントでアプリケーションをプロビジョニングする
+この手順では、Azure Active Directory 顧客の管理者がテナントで PHP アプリケーションをプロビジョニングし、シングル サインオンを構成する方法について説明します。この手順の完了後、会社の従業員は Office 365 アカウントを使用して Web アプリケーションに対して認証できるようになります。
 
-The provisioning process begins by creating a new Service Principal for the application. Service Principals are used by Azure Active Directory to register and authenticate applications to the directory.
+プロビジョニング プロセスは、アプリケーション用に新しいサービス プリンシパルを作成することから始まります。サービス プリンシパルは Azure Active Directory によって使用されて、アプリケーションがディレクトリに対して登録および認証されます。
 
-1. Download and install the Office 365 PowerShell Commandlets if you haven't done so already.
-2. From the **Start** menu, run the **Microsoft Online Services Module for Windows PowerShell** console. This console provides a command-line environment for configuring attributes about your Office 365 tenant, such as creating and modifying Service Principals.
-3. To import the required **MSOnlineExtended** module, type the following command and press Enter:
+1. Office 365 PowerShell コマンドレットをダウンロードしてインストールします (まだインストールしていない場合)。
+2. **[スタート]** メニューから **Microsoft Online Services Module for Windows PowerShell ** コンソールを実行します。このコンソールには、Office 365 テナントの属性を設定するためのコマンド ライン環境が用意されています。たとえば、サービス プリンシパルの作成や変更などが可能です。
+3. 必要な **MSOnlineExtended** モジュールをインポートするには、次のコマンドを入力し、Enter キーを押します。
 
-		Import-Module MSOnlineExtended -Force
-4. To connect to your Office 365 directory, you will need to provide the company's administrator credentials. Type the following command and press Enter, then enter your credential's at the prompt:
+		Import-Module MSOnlineExtended –Force
+4. Office 365 ディレクトリに接続するには、会社の管理者の資格情報を指定する必要があります。次のコマンドを入力して Enter キーを押したら、プロンプトで資格情報を入力します。
 
 		Connect-MsolService
-5. Now you will create a new Service Principal for the application. Type the following command and press Enter:
+5. この時点でアプリケーション用に新しいサービス プリンシパルを作成します。次のコマンドを入力し、Enter キーを押します。
 
-		New-MsolServicePrincipal -ServicePrincipalNames @("phpSample/localhost") -DisplayName "Federation Sample Web Site" -Type Symmetric -Usage Verify -StartDate "12/01/2012" -EndDate "12/01/2013" 
-This step will output information similar to the following:
+		New-MsolServicePrincipal -ServicePrincipalNames @("phpSample/localhost") -DisplayName "Federation Sample Web Site" -Type Symmetric -Usage Verify -StartDate "12/01/2012" -EndDate "12/01/2013"
+この手順では、次のような出力が表示されます。
 
 		The following symmetric key was created as one was not supplied qY+Drf20Zz+A4t2w e3PebCopoCugO76My+JMVsqNBFc=
 		DisplayName           : Federation Sample PHP Web Site
@@ -90,24 +90,24 @@ This step will output information similar to the following:
 		EndDate               : 12/01/2013 08:00:00 a.m.
 		Usage                 : Verify 
 > [WACOM.NOTE] 
-> You should save this output, especially the generated symmetric key. This key is only revealed to you during Service Principal creation, and you will be unable to retrieve it in the future. The other values are required for using the Graph API to read and write information in the directory.
+> この出力のうち特に生成された対称キーを保存しておく必要があります。このキーはサービス プリンシパルの作成時にしか表示されず、以降に取得することはできません。その他の値は、グラフ API を使用してディレクトリ内の情報を読み書きするために必要です。
 
-6. The final step sets the reply URL for your application. The reply URL is where responses are sent following authentication attempts. Type the following commands and press enter:
+6. 最後の手順では、アプリケーションの応答 URL を設定します。応答 URL は、認証の試行後に応答が送信される場所です。次のコマンドを入力し、Enter キーを押します。
 
-		$replyUrl = New-MsolServicePrincipalAddresses –Address "https://localhost/phpSample" 
+		$replyUrl = New-MsolServicePrincipalAddresses â€“Address "https://localhost/phpSample" 
 
-		Set-MsolServicePrincipal –AppPrincipalId "7829c758-2bef-43df-a685-717089474505" –Addresses $replyUrl 
+		Set-MsolServicePrincipal â€“AppPrincipalId "7829c758-2bef-43df-a685-717089474505" â€“Addresses $replyUrl 
 	
-The web application has now been provisioned in the directory and it can be used for web single sign-on by company employees.
+これで、Web アプリケーションはディレクトリでプロビジョニングされ、会社の従業員が Web シングル サインオンに使用できるようになりました。
 
-##<a name="protectapp"></a>Step 3: Protect the Application Using WS-Federation for Employee Sign In
-This step shows you how to add support for federated login using Windows Identity Foundation (WIF) and the simpleSAML.php libraries you downloaded with the sample code in the prerequisites. You will also add a login page and configure trust between the application and the directory tenant.
+##<a name="protectapp"></a>手順 3. WS-Federation を従業員のサインインに使用してアプリケーションを保護する
+この手順では、前提条件にあるサンプル コードと共にダウンロードした Windows Identity Foundation (WIF) と simpleSAML.php ライブラリを使用して、フェデレーテッド ログインのサポートを追加する方法について説明します。また、ログイン ページを追加し、アプリケーションとディレクトリ テナントとの信頼を構成します。
 
-1. In Eclipse, right-click the **phpSample** project, click **New**, then click **File**. 
+1. Eclipse で、**phpSample** プロジェクトを右クリックし、**[New]**、**[File]** の順にクリックします。
 
-2. On the **New File** dialog, name the file **federation.ini**, then click  **Finish**.
+2. **[New File]** ダイアログ ボックスで、ファイルに **federation.ini** という名前を付け、**[Finish]** をクリックします。
 
-3. In the new **federation.ini** file, enter the following information, supplying the values with the information you saved in Step 2 when creating your Service Principal:
+3. 新しい **federation.ini** ファイルで次の情報を入力します。この情報の値には、「手順 2.」でサービス プリンシパルの作成時に保存した情報を指定します。
 
 		federation.trustedissuers.issuer=https://accounts.accesscontrol.windows.net/v2/wsfederation
 		federation.trustedissuers.thumbprint=qY+Drf20Zz+A4t2we3PebCopoCugO76My+JMVsqNBFc=
@@ -118,11 +118,11 @@ This step shows you how to add support for federated login using Windows Identit
 
 		<div class="dev-callout"><strong>Note</strong><p>The <b>audienceuris</b> and <b>realm</b> values must be prefaced by "spn:".</p></div>
 
-4. In Eclipse, right-click the **phpSample** project, click **New**, then click **PHP File**. 
+4. Eclipse で、**phpSample** プロジェクトを右クリックし、**[New]**、**[File]** の順にクリックします。
 
-5. On the **New PHP File** dialog, name the file **secureResource.php**, then click  **Finish**.
+5. **[New PHP File]** ダイアログ ボックスで、ファイルに **secureResource.php** という名前を付け、**[Finish]** をクリックします。
 
-6. In the new **secureResource.php** file, enter the following code, replacing the **c:\phpLibraries** path with the root location where you downloaded the sample code. The root location should include the **simpleSAML.php** file and **federation** folder:
+6. 新しい **secureResource.php** ファイルで、次のコードを入力して、**c:\phpLibraries** パスを、サンプル コードをダウンロードした root 場所に置き換えます。root 場所には **simpleSAML.php** ファイルと **federation** フォルダーがあることが必要です。
 
 		<?php
 		ini_set('include_path', ini_get('include_path').';c:\phpLibraries\;');
@@ -147,7 +147,7 @@ This step shows you how to add support for federated login using Windows Identit
 		}
 		?> 
 
-7. Open the **index.php** page and update its contents to secure the page, then save it:
+7. **index.php** ページを開き、ページがセキュリティで保護されるように内容を更新したら、そのページを保存します。
 
 		<?php
 		require_once (dirname(__FILE__) . '/secureResource.php');
@@ -172,23 +172,24 @@ This step shows you how to add support for federated login using Windows Identit
 		</body>
 		</html> 
 
-8. From the **Run** menu, click **Run**. You should automatically be redirected to the Office 365 Identity Provider page, where you can log in using your directory tenant credentials. For example, *john.doe@fabrikam.onmicrosoft.com*.
+8. **[Run]** メニューの **[Run]** をクリックします。Office 365 の ID プロバイダー ページに自動的にリダイレクトされます。このページでディレクトリ テナントの資格情報を使用してログインできます。たとえば、*john.doe@fabrikam.onmicrosoft.com* を使用します。
 
-##<a name="summary"></a>Summary
-This tutorial has shown you how to create and configure a single tenant PHP application that uses the single sign-on capabilities of Azure Active Directory.
+##<a name="summary"></a>まとめ
+このチュートリアルでは、シングル サインオン Azure Active Directory 機能を使用する 1 つのテナント PHP アプリケーションを作成および構成する方法について説明しました。
 
-A sample that shows how to use Azure Active Directory and single sign-on for PHP web sites is available at <https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/WAAD.WebSSO.PHP>.
+PHP Web サイト用に Azure Active Directory とシングル サインオンを使用する方法を示すサンプルは、<https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/WAAD.WebSSO.PHP> で入手できます。
 
 
-[Step 1: Create a PHP Application]: #createapp
-[Step 2: Provision the Application in a Company's Directory Tenant]: #provisionapp
-[Step 3: Protect the Application Using WS-Federation for Employee Sign In]: #protectapp
-[Summary]: #summary
-[Introduction]: #introduction
-[Developing Multi-Tenant Cloud Applications with Azure Active Directory]: http://g.microsoftonline.com/0AX00en/121
-[Windows Identity Foundation 3.5 SDK]: http://www.microsoft.com/en-us/download/details.aspx?id=4451
-[Windows Identity Foundation 1.0 Runtime]: http://www.microsoft.com/en-us/download/details.aspx?id=17331
-[Office 365 Powershell Commandlets]: http://onlinehelp.microsoft.com/en-us/office365-enterprises/ff652560.aspx
-[ASP.NET MVC 3]: http://www.microsoft.com/en-us/download/details.aspx?id=4211
+[手順 1. PHP アプリケーションを作成する]: #createapp
+[手順 2. 会社のディレクトリ テナントでアプリケーションをプロビジョニングする]: #provisionapp
+[手順 3. WS-Federation を従業員のサインインに使用してアプリケーションを保護する]: #protectapp
+[まとめ]: #summary
+[はじめに]: #introduction
+[Developing Multi-Tenant Cloud Applications with Azure Active Directory (Azure Active Directory によるマルチテナント クラウド アプリケーションの開発)]: http://g.microsoftonline.com/0AX00en/121
+[Windows Identity Foundation 3.5 SDK]: http://www.microsoft.com/ja-jp/download/details.aspx?id=4451
+[Windows Identity Foundation 1.0 ランタイム]: http://www.microsoft.com/ja-jp/download/details.aspx?id=17331
+[Office 365 PowerShell コマンドレット]: http://onlinehelp.microsoft.com/ja-jp/office365-enterprises/ff652560.aspx
+[ASP.NET MVC 3]: http://www.microsoft.com/ja-jp/download/details.aspx?id=4211
 [Eclipse PDT 3.0.x All In Ones]: http://www.eclipse.org/pdt/downloads/
-[PHP Sample Code for Azure Active Directory]: https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/WAAD.WebSSO.PHP 
+[Azure Active Directory 用の PHP サンプル コード]: https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/WAAD.WebSSO.PHP
+

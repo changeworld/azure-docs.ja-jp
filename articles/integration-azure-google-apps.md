@@ -1,175 +1,175 @@
-<properties umbracoNaviHide="0" pageTitle="Azure AD Integration with Google Apps" metaKeywords="Azure Google Apps Integration" description="Learn about integrating Azure AD with Google Apps." linkid="documentation-services-identity-windows-azure-ad-integration-with-google=apps" urlDisplayName="Azure AD Integration with Google Apps" headerExpose="" footerExpose="" disqusComments="0" editor="lisatoft" manager="terrylan" title="Azure AD Integration with Google Apps" authors="" />
+<properties umbracoNaviHide="0" pageTitle="Google アプリケーションとの Azure AD 統合" metaKeywords="Azure の Google アプリケーションとの統合" description="Azure AD の Google アプリケーションとの統合について説明します。" linkid="documentation-services-identity-windows-azure-ad-integration-with-google=apps" urlDisplayName="Google アプリケーションとの Azure AD 統合" headerExpose="" footerExpose="" disqusComments="0" editor="lisatoft" manager="terrylan" title="Google アプリケーションとの Azure AD 統合" authors="" />
 
-# Azure AD integration with Google Apps
-The objective of this tutorial is to show the integration of Azure and Google Apps. The scenario outlined in this tutorial assumes that you already have the following items:
+# Google アプリケーションとの Azure AD 統合
+このチュートリアルの目的は、Azure と Google アプリケーションの統合を示すことです。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-- A valid Azure subscription
-- A test tenant in Googe Apps
+- 有効な Azure サブスクリプション
+- Googe アプリケーションでのテスト テナント
 
-If you don't have a valid tenant in Google Apps yet, you can, for example, sign up for a trial account at Google Apps for Business web site.
+Google アプリケーションでの有効なテナントがない場合は、Google Apps for Business の Web サイトで試用アカウントにサインアップすることもできます。
 
-The scenario outlined in this tutorial consists of the following building blocks:
+このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-Enabling the application integration for Google Apps
-Configuring single sign-on
-Enabling Google Apps API Access
-Adding custom domains
-Configuring user provisioning
+Google アプリケーションのアプリケーション統合の有効化
+シングル サインオンの構成
+Google アプリケーションの API アクセスの有効化
+カスタム ドメインの追加
+ユーザー プロビジョニングの構成
 
-# Enabling the application integration for Google Apps #
-The objective of this section is to outline how to enable the application integration for Google Apps.
+# Google アプリケーションのアプリケーション統合の有効化#
+このセクションでは、Google アプリケーションのアプリケーション統合を有効にする方法を説明します。
 
-## To enable the application integration for Google Apps, perform the following steps: ##
+## Google アプリケーションのアプリケーション統合を有効にするには、次の手順に従います。##
 
-1.  In the Azure Management Portal, on the left navigation pane, click **Active Directory**.
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
-4.  Click **Add** at the bottom to open the **Add Application** dialog.
-5.  On the **Integrate an app with Azure AD** dialog, click **Manage access to an application**.
-6.  On the **Select an application** to manage page, select **Google Apps** from the list of applications.
-7.  Click the **Complete** button to add the application and close the dialog.
+1.  Azure 管理ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+2.  **[ディレクトリ]** 一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+4.  下部にある **[追加]** をクリックして、**[アプリケーションの追加]** ダイアログを開きます。
+5.  **[Azure AD でのアプリケーションの統合]** ダイアログで、**[アプリケーションへのアクセスの管理]** をクリックします。
+6.  **[管理するアプリケーションの選択]** ページで、アプリケーションの一覧から **[Google Apps]** を選択します。
+7.  **[完了]** をクリックして、アプリケーションを追加してダイアログ ボックスを閉じます。
 
-# Configuring single sign-on #
-The objective of this section is to outline how to enable users to authenticate to Google Apps with their account in Azure AD using federation based on the SAML protocol.
+# シングル サインオンの構成#
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Google アプリケーションに対する認証を行えるようにする方法を説明します。
 
-## To configure federated single sign-on, perform the following steps:
+## フェデレーション シングル サインオンを構成するのには、次の手順に従います。
 
-1. In the Azure Management Portal, select <strong>Active Directory</strong> in the left navigation pane to open the active directory dialog page.
-2. In the directory list, select your directory to open your directory's configuration page.
-3. Select <strong>APPLICATIONS</strong> from the top level menu.
-4. From the list of applications, select <strong>Google Apps</strong> to open the google apps configuration dialog.
-5. To open the <strong>CONFIGURE SINGLE SIGN-ON</strong> dialog, click <strong>Configure single sign-on.</strong>
+1. Azure 管理ポータルで、左側のナビゲーション ウィンドウの <strong>[Active Directory]</strong> を選択して、Active Directory のダイアログ ページを開きます。
+2. ディレクトリの一覧で、目的のディレクトリを選択してディレクトリの構成ページを開きます。
+3. 最上位メニューから <strong>[アプリケーション]</strong> を選択します。
+4. アプリケーションの一覧から <strong>[Google Apps]</strong> を選択して、Google アプリケーションの構成ダイアログ ボックスを開きます。
+5. <strong>[シングル サインオンの構成]</strong> ダイアログ ボックスを開くには、<strong>[シングル サインオンの構成]</strong> をクリックします。
 
 	![Google_Tutorial_01](./media/integration-azure-google-apps/Google_Tutorial_01.png)
 
-6. On the Select the single sign-on mode for this app dialog page, select Users authenticate with their account in Azure AD as MODE, and then click the Next button.
+6. [このアプリケーションのシングル サインオンの選択] ダイアログ ページで、[モード] として [ユーザーは Azure AD のアカウントを使用して認証] を選択し、[次へ] をクリックします。
 
 	![Google_Tutorial_02](./media/integration-azure-google-apps/Google_Tutorial_02.png)
 
-7. On the <strong>Configure App URL</strong> dialog page, in the <strong>GOOGLE APPS TENANT URL</strong> textbox, type the Google Apps tenant URL, and then click the <strong>Next</strong> button.
+7. <strong>[アプリケーション URL の構成]</strong> ダイアログ ページで、<strong>[GOOGLE アプリケーション テナントの URL]</strong> に Google アプリケーション テナントの URL を入力し、<strong>[次へ]</strong> をクリックします。
 
 	![Google_Tutorial_03](./media/integration-azure-google-apps/Google_Tutorial_03.png)
 
-8. On the <strong>Configure single sign-on at Google Apps</strong> dialog page perform the following steps, and then click the <strong>Complete</strong> button.
+8. <strong>[Google アプリケーションでのシングル サインオンの構成]</strong> ダイアログ ページで、次の手順に従い、<strong>[完了]</strong> をクリックします。
 		
-	+ Click <strong>Download certificate</strong>, and then save the certificate as <strong>c:\googleapps.cer</strong>.
-	+ Open the Google Apps login page, and then sign-on
+	+ <strong>[証明書のダウンロード]</strong> をクリックし、<strong>c:\googleapps.cer</strong> として証明書を保存します。
+	+ Google アプリケーションのログイン ページを開き、サインオンします。
 
 	![Google_Tutorial_04](./media/integration-azure-google-apps/Google_Tutorial_04.png)
 
-	+ On the <strong>Admin console</strong>, click Security
+	+ <strong>管理コンソール</strong>で [セキュリティ] をクリックします。
 
 	![Google_Tutorial_05](./media/integration-azure-google-apps/Google_Tutorial_05.png)
 
-	If the Security icon is not visible, you should click More controls on the bottom of the page.
+	[セキュリティ] アイコンが表示されていない場合は、ページの下部にある [その他のコントロール] をクリックしてください。
 
-9. On the <strong>Security</strong> page, click <strong>Advanced</strong> settings.
+9. <strong>[セキュリティ]</strong> ページで、<strong>[詳細設定]</strong> をクリックします。
 
 	![Google_Tutorial_06](./media/integration-azure-google-apps/Google_Tutorial_06.png)
 
-10. In the <strong>Advanced</strong> settings section of the page, select <strong>Set up single sign-on</strong>.
+10. ページの <strong>[詳細設定]</strong> セクションで、<strong>[シングル サインオンの設定]</strong> を選択します。
 
 	![Google_Tutorial_07](./media/integration-azure-google-apps/Google_Tutorial_07.png)
 
-11. On the Set up single sign-on page, perform the following steps:
+11. [シングル サインオンの設定] ページで、次の手順に従います。
 
 	![Google_Tutorial_08](./media/integration-azure-google-apps/Google_Tutorial_08.png)
 
-		+ Select <strong>Enable Single Sign-on</strong>.
-		+ On the <strong>Configure single sign-on at Google Apps</strong> page in the Azure AD Portal, copy the <strong>SINGLE SIGN-ON URL</strong>, and then paste it into the related textbox on the <strong>Security page</strong> in the Google Apps <strong>Admin console</strong>.
-		+ On the <strong>Configure single sign-on at Google Apps</strong> page in the Azure AD Portal, copy the <strong>Single sign-out service URL</strong>, and then paste it into the related textbox on the <strong>Security</strong> page in the Google Apps <strong>Admin console</strong>.
-		+ On the <strong>Configure single sign-on at Google Apps</strong> page in the Azure AD Portal, copy the <strong>Change password URL</strong>, and then paste it into the related textbox on the <strong>Security</strong> page in the Google Apps <strong>Admin console</strong>.
-		+ Click the <strong>Browse</strong> button to locate the <strong>Verification certificate</strong>, and then click Upload.
-		+ Click <strong>Save</strong> changes.
+		+ <strong>[シングル サインオンを有効にする]</strong> を選択します。
+		+ Azure AD ポータルの <strong>[Google アプリケーションでのシングル サインオンの構成]</strong> ページで、<strong>[シングル サインオン URL]</strong> をコピーし、それを Google アプリケーションの<strong>管理コンソール</strong>の <strong>[セキュリティ]</strong> ページにある関連テキスト ボックスに貼り付けます。
+		+ Azure AD ポータルの <strong>[Google アプリケーションでのシングル サインオンの構成]</strong> ページで、<strong>[シングル サインアウト サービス URL]</strong> をコピーし、それを Google アプリケーションの<strong>管理コンソール</strong>の <strong>[セキュリティ]</strong> ページにある関連テキスト ボックスに貼り付けます。
+		+ Azure AD ポータルの <strong>[Google アプリケーションでのシングル サインオンの構成]</strong> ページで、<strong>[パスワードの URL の変更]</strong> をコピーし、それを Google アプリケーションの<strong>管理コンソール</strong>の <strong>[セキュリティ]</strong> ページにある関連テキスト ボックスに貼り付けます。
+		+ <strong>[参照]</strong> をクリックして <strong>[検証証明書]</strong> を指定し、[アップロード] をクリックします。
+		+ <strong>[保存]</strong> をクリックして、変更を保存します。
 
 
-12. On the <strong>Configure single sign-on at Google Apps</strong> page in the Azure AD Portal, click the Complete button.
+12. Azure AD ポータルの <strong>[Google アプリケーションでのシングル サインオンの構成]</strong> ページで、[完了] をクリックします。
 
-You can now go to the [Access Panel](https://login.microsoftonline.com/login.srf?wa=wsignin1.0&rpsnv=2&ct=1384289458&rver=6.1.6206.0&wp=MCMBI&wreply=https:%2F%2Faccount.activedirectory.windowsazure.com%2Flanding.aspx%3Ftarget%3D%252fapplications%252fdefault.aspx&lc=1033&id=500633) and test single sign-on to Google Apps.
+これで、[アクセス パネル](https://login.microsoftonline.com/login.srf?wa=wsignin1.0&rpsnv=2&ct=1384289458&rver=6.1.6206.0&wp=MCMBI&wreply=https:%2F%2Faccount.activedirectory.windowsazure.com%2Flanding.aspx%3Ftarget%3D%252fapplications%252fdefault.aspx&lc=1033&id=500633)に移動し、Google アプリケーションへのシングル サインオンをテストすることができます。
 
-# Enabling Google Apps API Access
-When integrating Azure Active Directory with Google Apps for user provisioning, you must enable API access for your tenant in Google Apps.
+# Google アプリケーションの API アクセスの有効化
+ユーザー プロビジョニングのために Azure の Active Directory を Google アプリケーションと統合する際は、Google アプリケーションのテナントに対する API アクセスを有効にする必要があります。
 
-## To enable Google Apps API access
+## Google アプリケーションの API アクセスを有効にするには
 
-1. Sing-on to your Google Apps tenant.
-1. In the <strong>Admin console</strong>, click <strong>Security</strong>.
+1. Google アプリケーション テナントにサインオンします。
++ 1. <strong>管理コンソール</strong>で <strong>[セキュリティ]</strong> をクリックします。
 <p></p>
 	![Google_Tutorial_05](./media/integration-azure-google-apps/Google_Tutorial_05.png)
 
-	If the Security icon is not visible, click More controls at the bottom of the Admin console.
-1. On the Security page, click <strong>API reference</strong> to open the related configuration dialog page.
-1. Select <strong>Enable API access</strong>.
+	[セキュリティ] アイコンが表示されていない場合は、管理コンソールの下部にある [その他のコントロール] をクリックします。
+1. [セキュリティ] ページで、<strong>[API リファレンス]</strong> をクリックして関連する構成ダイアログ ページを開きます。
+1. <strong>[API アクセスの有効化]</strong> 選択します。
 <p></p>
 	![Google_Tutorial_09](./media/integration-azure-google-apps/Google_Tutorial_09.png)
 
 
-# Adding custom domains
-Configuring user provisioning with Google Apps requires the Azure AD domain and the Google Apps domain to have the same fully qualified domain name (FQDN). However, when you are, for example, using trial tenants to test the scenario in this tutorial, the FQDNS of your tenants typically don't match. To address this issue, you can configure custom domains in Azure AD and in Google Apps. 
-Configuring a custom domain requires access to your public domain's DNS zone file. 
+# カスタム ドメインの追加
+Google アプリケーションでユーザー プロビジョニングを構成するには、Azure AD のドメインと Google アプリケーションのドメインが、同じ完全修飾ドメイン名 (FQDN) を持っている必要があります。ただし、このチュートリアルのシナリオをテストするために試用テナントを使用している場合などは、通常、テナントの FQDN は一致しません。この問題に対処するために、Azure AD と Google アプリケーションにカスタム ドメインを構成することができます。
+カスタム ドメインの構成には、パブリック ドメインの DNS ゾーン ファイルへのアクセスが必要です。
 
 ![Google_Tutorial_10](./media/integration-azure-google-apps/Google_Tutorial_10.png)
 
-##To add a custom domain in Azure AD, perform the following steps:
+##Azure AD でカスタム ドメインを追加するには、次の手順に従います。
 
-1. In the Azure Management Portal, select <strong>Active Directory</strong> in the left navigation pane to open the <strong>active directory</strong> dialog page.
-1. In the directory list, select your directory to open your directory's configuration page.
-1. Select <strong>DOMAINS</strong> from the top level menu.
-1. To open the <strong>ADD DOMAIN NAME</strong> textbox, type your domain name, and then click <strong>add</strong>.
-1. Click <strong>Next</strong> to open the <strong>Verify your domain name</strong> dialog page.
+1. Azure 管理ポータルで、左側のナビゲーション ウィンドウの <strong>[Active Directory]</strong> を選択して、<strong>Active Directory</strong> のダイアログ ページを開きます。
+1. ディレクトリの一覧で、目的のディレクトリを選択してディレクトリの構成ページを開きます。
+1. 最上位メニューから <strong>[ドメイン]</strong> を選択します。
+1. <strong>[ドメイン名の追加]</strong> ボックス開くには、ドメイン名を入力し、<strong>[追加]</strong>クリックします。
+1. <strong>[次へ]</strong> をクリックして、<strong>[ドメイン名の確認]</strong> ダイアログ ページを開きます。
 
 	![Google_Tutorial_11](./media/integration-azure-google-apps/Google_Tutorial_11.png)
-1. Select a <strong>RECORD TYPE</strong>, and then register the selected record in your DNS zone file.
+1. <strong>[レコードの種類]</strong> を選択し、選択したレコードを DNS ゾーン ファイルに登録します。
 
 	![Google_Tutorial_12](./media/integration-azure-google-apps/Google_Tutorial_12.png)
-1. Using the <strong>nslookup command</strong>, you should verify whether the DNS record has been successfully registered.
+1. <strong>nslookup</strong> コマンドを使用して、DNS レコードが正常に登録されたかどうかを確認してください。
 
 	![Google_Tutorial_13](./media/integration-azure-google-apps/Google_Tutorial_13.png)
 
-## To add a custom domain in Google Apps, perform the following steps:
+## Google アプリケーションでカスタム ドメインを追加するには、次の手順に従います。
 
-1. Sign-on to your Google Apps tenant.
-1. In the **Admin console**, click **Domains**.
+1.  Google アプリケーション テナントにサインオンします。
+1. **管理コンソール**で **[ドメイン]** をクリックします。
 
 	![Google_Tutorial_14](./media/integration-azure-google-apps/Google_Tutorial_14.png)
 
-1. Click <strong>Add a custom domain</strong>.
+1. <strong>[カスタム ドメインの追加]</strong> をクリックします。
 
 	![Google_Tutorial_15](./media/integration-azure-google-apps/Google_Tutorial_15.png)
 
-1. Click <strong>Use a domain you already own</strong>, and then click <strong>Continue</strong>.
+1. <strong>[既に所有しているドメインを使用する]</strong> をクリックし、<strong>[続行]</strong> をクリックします。
 
 	![Google_Tutorial_16](./media/integration-azure-google-apps/Google_Tutorial_16.png)
 
-1. Type the name of your custom domain, and then click <strong>Continue</strong>.
+1. カスタム ドメインの名前を入力し、<strong>[続行]</strong> をクリックします。
 
 	![Google_Tutorial_17](./media/integration-azure-google-apps/Google_Tutorial_17.png)
 
-1. Complete the steps to verify ownership of the domain.
+1. ドメインの所有権を確認する手順に従います。
 	
-	If you have already federated single sign-on configured, you must update the Google Apps tenant URL in your federated single ign-on configuration.
+	既にフェデレーション シングル サインオンを構成している場合は、フェデレーション シングル サインオン構成での Google アプリケーション テナントの URL を更新する必要があります。
 
 
 
-# Configuring user provisioning 
-The objective of this section is to outline how to enable provisioning of Active Directory user accounts to Google Apps.
+# ユーザー プロビジョニングの構成
+このセクションでは、Active Directory のユーザー アカウントのプロビジョニングを Google アプリケーションに対して有効にする方法を説明します。
 
-## To configure user provisioning, perform the following steps:
+## ユーザー プロビジョニングを構成するには、次の手順に従います。
 
-1. In the Azure Management Portal, select <strong>Active Directory</strong> in the left navigation pane to open the <strong>active directory</strong> dialog page.
-1. In the directory list, select your directory to open your directory's configuration page.
-1. Select <strong>APPLICATIONS</strong> from the top level menu.
-From the list of applications, select <strong>Google Apps</strong> to open the <strong>google apps</strong> configuration dialog.
-1. To open the <strong>CONFIGURE ACCOUNT SYNC</strong> dialog, click <strong>Configure account sync</strong>.
-1. On the <strong>CONFIGURE ACCOUNT SYNC</strong> dialog page, provide the Google Apps domain name, the Google Apps user name and the Google Apps password, and then click the <strong>Next</strong> button.
+1. Azure 管理ポータルで、左側のナビゲーション ウィンドウの <strong>[Active Directory]</strong> を選択して、<strong>Active Directory</strong> のダイアログ ページを開きます。
+1. ディレクトリの一覧で、目的のディレクトリを選択してディレクトリの構成ページを開きます。
+1. 最上位メニューから <strong>[アプリケーション]</strong> を選択します。
+アプリケーションの一覧から <strong>[Google Apps]</strong> を選択して、<strong>Google アプリケーション</strong>の構成ダイアログ ボックスを開きます。
+1. <strong>[アカウントの同期の構成]</strong> ダイアログを開くには、<strong>[アカウントの同期の構成]</strong> をクリックします。
+1. <strong>[アカウントの同期の構成]</strong> ダイアログ ページで、Google アプリケーションのドメイン名、Google アプリケーションのユーザー名、および Google アプリケーションのパスワードを入力し、<strong>[次へ]</strong> をクリックします。
 
 	![Google_Tutorial_18](./media/integration-azure-google-apps/Google_Tutorial_18.png)
 
-1. On the <strong>Confirmation</strong> dialog page, click the <strong>Complete</strong> button to close the <strong>CONFIGURE ACCOUNT SYNC</strong> dialog.
+1. <strong>[確認]</strong> ダイアログ ページで、<strong>[完了]</strong> をクリックして <strong>[アカウントの同期の構成]</strong>ダイアログを閉じます。
 
-You can now create a test account, wait for 10 minutes and verify that the account has been synchronized to Google Apps.
+ここで、テスト アカウントを作成して 10 分間待機し、アカウントが Google アプリケーションに同期されたことを確認します。
 
-See Also
-[Best Practices for Managing the Application access enhancements for Azure Active Directory
-Application Access](http://social.technet.microsoft.com/wiki/contents/articles/18409.best-practices-for-managing-the-application-access-enhancements-for-windows-azure-active-directory.aspx)
+関連項目
+[Best Practices for Managing the Application access enhancements for Azure Active Directory (Azure Active Directory のアプリケーション アクセスの強化を管理するためのベスト プラクティス)](http://social.technet.microsoft.com/wiki/contents/articles/18409.best-practices-for-managing-the-application-access-enhancements-for-windows-azure-active-directory.aspx)
  
+

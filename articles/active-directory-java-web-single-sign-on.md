@@ -1,47 +1,46 @@
-<properties linkid="develop-java-how-to-guides-web-sso" urlDisplayName="Web SSO" pageTitle="Single sign-on with Azure Active Directory (Java)" metaKeywords="Azure Java web app, Azure single sign-on, Azure Java Active Directory" description="Learn how to create a Java web application that uses single sign-on with Azure Active Directory." metaCanonical="" services="active-directory" documentationCenter="Java" title="Web Single Sign-On with Java and Azure Active Directory" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-java-how-to-guides-web-sso" urlDisplayName="Web SSO" pageTitle="Azure Active Directory によるシングル サインオン (Java)" metaKeywords="Azure Java Web アプリケーション, Azure シングル サインオン, Azure Java Active Directory" description="Azure Active Directory によるシングル サインオンを使用する Java Web アプリケーションを作成する方法について説明します。" metaCanonical="" services="active-directory" documentationCenter="Java" title="Java と Azure Active Directory による Web シングル サインオン" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
+# Java と Azure Active Directory による Web シングル サインオン
 
-# Web Single Sign-On with Java and Azure Active Directory
+<h2><a name="introduction"></a>はじめに</h2>
 
-<h2><a name="introduction"></a>Introduction</h2>
+このチュートリアルでは Java 開発者向けに、Azure Active Directory を活用して、Office 365 顧客のユーザーに対してシングル サインオンを有効にする方法について説明します。学習内容: 
 
-This tutorial will show Java developers how to leverage Azure Active Directory to enable single sign-on for users of Office 365 customers. You will learn how to:
+* 顧客のテナントでの Web アプリケーションのプロビジョニング
+* WS-Federation を使用したアプリケーションの保護
 
-* Provision the web application in a customer's tenant
-* Protect the application using WS-Federation
+<h3>前提条件</h3>
+このチュートリアルでは特定のアプリケーション サーバーを使用しますが、経験豊富な Java 開発者であれば、この後に説明するプロセスは他の環境でも同様に適用できます。次の開発環境の前提条件はこのチュートリアルで必要になります。
 
-<h3>Prerequisites</h3>
-This tutorial uses a specific application server, but if you are an experienced Java developer, the process described below can be applied to other environments as well. The following development environment prerequisites are required for this tutorial:
-
-* [Java Sample Code for Azure Active Directory]
+* [Azure Active Directory 用の Java サンプル コード]
 * [Java Runtime Environment 1.6]
 * [JBoss Application Server version 7.1.1.Final]
 * [JBoss Developer Studio IDE]
-* Internet Information Services (IIS) 7.5 with SSL enabled
+* インターネット インフォメーション サービス (IIS) 7.5 (SSL が有効)
 * Windows PowerShell
-* [Office 365 PowerShell Commandlets]
+* [Office 365 PowerShell コマンドレット]
 
-<h3>Table of Contents</h3>
-* [Introduction][]
-* [Step 1: Create a Java Application][]
-* [Step 2: Provision the Application in a Company's Directory Tenant][]
-* [Step 3: Protect the Application Using WS-Federation for Employee Sign In][]
-* [Summary][]
+<h3>目次</h3>
+* [はじめに][]
+* [手順 1. Java アプリケーションを作成する][]
+* [手順 2. 会社のディレクトリ テナントでアプリケーションをプロビジョニングする][]
+* [手順 3. WS-Federation を従業員のサインインに使用してアプリケーションを保護する][]
+* [まとめ][]
 
-<h2><a name="createapp"></a>Step 1: Create a Java Application</h2>
-This step describes how to create a simple Java application that will represent a protected resource. Access to this resource will be granted through federated authentication managed by the company's STS, which is described later in the tutorial.
+<h2><a name="createapp"></a>手順 1. Java アプリケーションを作成する</h2>
+この手順では、リソースが保護されたシンプルな Java アプリケーションを作成する方法について説明します。このリソースへのアクセスは、会社の STS によって管理されるフェデレーション認証を使用して許可されます (後で説明)。
 
-1. Open a new instance of JBoss Developer Studio.
-2. From the **File** menu, click **New**, then click **Project...**. 
-3. On the **New Project** dialog, expand the **Maven** folder, click **Maven Project**, then click **Next**.
-4. On the **New Maven Project** dialog, check **Create a simple project (skip archetype selection)**, then click **Next**.
-5. On the next page of the **New Maven Project** dialog, type *sample* in the **Group Id** and **Artifact Id** text boxes. Then, select the **war** from the **Packaging** drop-down menu and click **Finish**.
-6. The new Maven project will be created. In the **Project Explorer** menu on the left, expand the **sample** project, right-click the **pom.xml** file, click **Open With**, then click **Text Editor**.
-7. In the **pom.xml** file, add the following XML inside the *&lt;project&gt;* section:
+1. JBoss Developer Studio の新しいインスタンスを開きます。
+2. **[File]** メニューの **[New]** をクリックし、**[Project]** をクリックします。
+3. **[New Project]** ダイアログ ボックスで、**Maven** フォルダーを展開し、**[Maven Project]**、**[Next]** の順にクリックします。
+4. **[New Maven Project]** ダイアログ ボックスで、**[Create a simple project (skip archetype selection)]**、**[Next]** の順にクリックします。
+5. **[New Maven Project]** ダイアログ ボックスの次のページで、**[Group Id]** と **[Artifact Id]** のボックスに「*sample*」と入力します。次に、**[Packaging]** ドロップダウン メニューの **[war]** を選択し、**[Finish]** をクリックします。
+6. 新しい Maven プロジェクトが作成されます。左側の **[Project Explorer]** メニューで、**sample** プロジェクトを展開し、**pom.xml** ファイルを右クリックして、**[Open With]**、**[Text Editor]** の順にクリックします。
+7. **pom.xml** ファイルで、*&lt;project&gt;* セクション内に次の XML を追加します。
 
 		<repositories>
 			<repository>
@@ -89,15 +88,15 @@ This step describes how to create a simple Java application that will represent 
 			</plugins>
 		</build> 
 
-	After you have entered this XML, save the **pom.xml** file.
+	この XML の入力後、**pom.xml** ファイルを保存します。
 
-8. Right-click the **sample** project and click **Maven**, then click **Update Maven Project**. In the **Update Maven Project** dialog, click **OK**. This step will update your project with the **pom.xml** changes.
+8. **sample** プロジェクトを右クリックし、**[Maven]**、**[Update Maven Project]** の順にクリックします。**[Update Maven Project]** ダイアログ ボックスで **[OK]** をクリックします。この手順では **pom.xml** の変更でプロジェクトが更新されます。
 
-10. Right-click the **sample** project, click **New**, then click **JSP File**. 
+10. **sample** プロジェクトを右クリックし、**[New]**、**[JSP File]** の順にクリックします。
 
-11. On the **New JSP File** dialog, change the path for the new file to *sample/src/main/webapp*. Then, name the file **index.jsp** and click **Finish**.
+11. **[New JSP File]** ダイアログで、新しいファイルのパスを *sample/src/main/webapp* に変更します。次に、ファイルに **index.jsp** という名前を付け、**[Finish]** をクリックします。
 
-12. The new **index.jsp** file will open automatically. Replace the automatically generated code with the following, then save the file:
+12. 新しい **index.jsp** ファイルが自動的に開きます。自動的に生成されたコードを次のコードに置き換え、ファイルを保存します。
 
 		<%@ page language="java" contentType="text/html; charset=ISO-8859-1"  pageEncoding="ISO-8859-1"%>
 		<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -111,27 +110,27 @@ This step describes how to create a simple Java application that will represent 
 		</body>
 		</html> 
 
-13. Right-click the **sample** project and click **Run As**, then click **Run on Server**.
+13. **sample** プロジェクトを右クリックして、**[Run As]**、**[Run on Server]** の順にクリックします。
 
-14. On the **Run On Server** dialog, ensure that **JBoss Enterprise Application Platform 6.x** is selected, then click **Finished**.
+14. **[Run On Server]** ダイアログ ボックスで、**[JBoss Enterprise Application Platform 6.x]** が選択されていることを確認し、**[Finished]** をクリックします。
 
-<h2><a name="provisionapp"></a>Step 2: Provision the Application in a Company's Directory Tenant</h2>
-This step describes how an administrator of an Azure Active Directory customer provisions the Java application in their tenant and configures single sign-on. After this step is accomplished, the company's employees can authenticate to the web application using their Office 365 accounts.
+<h2><a name="provisionapp"></a>手順 2. 会社のディレクトリ テナントでアプリケーションをプロビジョニングする</h2>
+この手順では、Azure Active Directory 顧客の管理者がテナントで Java アプリケーションをプロビジョニングし、シングル サインオンを構成する方法について説明します。この手順の完了後、会社の従業員は Office 365 アカウントを使用して Web アプリケーションに対して認証できるようになります。
 
-The provisioning process begins by creating a new Service Principal for the application. Service Principals are used by Azure Active Directory to register and authenticate applications to the directory.
+プロビジョニング プロセスは、アプリケーション用に新しいサービス プリンシパルを作成することから始まります。サービス プリンシパルは Azure Active Directory によって使用されて、アプリケーションがディレクトリに対して登録および認証されます。
 
-1. Download and install the Office 365 PowerShell Commandlets if you haven't done so already.
-2. From the **Start** menu, run the **Microsoft Online Services Module for Windows PowerShell** console. This console provides a command-line environment for configuring attributes about your Office 365 tenant, such as creating and modifying Service Principals.
-3. To import the required **MSOnlineExtended** module, type the following command and press Enter:
+1. Office 365 PowerShell コマンドレットをダウンロードしてインストールします (まだインストールしていない場合)。
+2. **[スタート]** メニューから **Microsoft Online Services Module for Windows PowerShell ** コンソールを実行します。このコンソールには、Office 365 テナントの属性を設定するためのコマンド ライン環境が用意されています。たとえば、サービス プリンシパルの作成や変更などが可能です。
+3. 必要な **MSOnlineExtended** モジュールをインポートするには、次のコマンドを入力し、Enter キーを押します。
 
-		Import-Module MSOnlineExtended -Force
-4. To connect to your Office 365 directory, you will need to provide the company's administrator credentials. Type the following command and press Enter, then enter your credential's at the prompt:
+		Import-Module MSOnlineExtended –Force
+4. Office 365 ディレクトリに接続するには、会社の管理者の資格情報を指定する必要があります。次のコマンドを入力して Enter キーを押したら、プロンプトで資格情報を入力します。
 
 		Connect-MsolService
-5. Now you will create a new Service Principal for the application. Type the following command and press Enter:
+5. この時点でアプリケーション用に新しいサービス プリンシパルを作成します。次のコマンドを入力し、Enter キーを押します。
 
 		New-MsolServicePrincipal -ServicePrincipalNames @("javaSample/localhost") -DisplayName "Federation Sample Web Site" -Type Symmetric -Usage Verify -StartDate "12/01/2012" -EndDate "12/01/2013" 
-This step will output information similar to the following:
+この手順では、次のような出力が表示されます。
 
 		The following symmetric key was created as one was not supplied qY+Drf20Zz+A4t2w e3PebCopoCugO76My+JMVsqNBFc=
 		DisplayName           : Federation Sample Java Web Site
@@ -146,28 +145,28 @@ This step will output information similar to the following:
 		EndDate               : 12/01/2013 08:00:00 a.m.
 		Usage                 : Verify 
 	> [WACOM.NOTE]
-    > You should save this output, especially the generated symmetric key. This key is only revealed to you during Service Principal creation, and you will be unable to retrieve it in the future. The other values are required for using the Graph API to read and write information in the directory.
+    > この出力のうち特に生成された対称キーを保存しておく必要があります。このキーはサービス プリンシパルの作成時にしか表示されず、以降に取得することはできません。その他の値は、グラフ API を使用してディレクトリ内の情報を読み書きするために必要です。
 
-6. The final step sets the reply URL for your application. The reply URL is where responses are sent following authentication attempts. Type the following commands and press enter:
+6. 最後の手順では、アプリケーションの応答 URL を設定します。応答 URL は、認証の試行後に応答が送信される場所です。次のコマンドを入力し、Enter キーを押します。
 
 		$replyUrl = New-MsolServicePrincipalAddresses -Address "https://localhost:8443/sample" 
 
 		Set-MsolServicePrincipal -AppPrincipalId "7829c758-2bef-43df-a685-717089474505" -Addresses $replyUrl 
 	
-The web application has now been provisioned in the directory and it can be used for web single sign-on by company employees.
+これで、Web アプリケーションはディレクトリでプロビジョニングされ、会社の従業員が Web シングル サインオンに使用できるようになりました。
 
-<h2><a name="protectapp"></a>Step 3: Protect the Application Using WS-Federation for Employee Sign In</h2>
-This step shows you how to add support for federated login using Windows Identity Foundation (WIF) and the **waad-federation** library you downloaded as part of the sample code package in the prerequisites. You will also add a login page and configure trust between the application and the directory tenant.
+<h2><a name="protectapp"></a>手順 3. WS-Federation を従業員のサインインに使用してアプリケーションを保護する</h2>
+この手順では、前提条件にあるサンプル コード パッケージの一部としてダウンロードした Windows Identity Foundation (WIF) と **waad-federation** ライブラリを使用して、フェデレーテッド ログインのサポートを追加する方法について説明します。また、ログイン ページを追加し、アプリケーションとディレクトリ テナントとの信頼を構成します。
 
-1. In JBoss Developer Studio, click **File**, then click **Import**.
+1. JBoss Developer Studio で、**[File]**、**[Import]** の順にクリックします。
 
-2. On the **Import** dialog, expand the **Maven** folder, click **Existing Maven Projects**, then click **Next**.
+2. **[Import]** ダイアログ ボックスで、**Maven** フォルダーを展開し、**[Existing Maven Projects]**、**[Next]** の順にクリックします。
 
-3. On the **Import Maven Projects** dialog, set the **Root Directory** path to the location where you downloaded the **waad-federation** library in the sample code. Then, select the checkbox next to the **pom.xml** file from the **waad-federation** project and click **Finish**.
+3. **[Import Maven Projects]** ダイアログ ボックスで、**[Root Directory]** パスを、**waad-federation** ライブラリ (サンプル コード パッケージ内) をダウンロードした場所に設定します。次に、**waad-federation** プロジェクトの **pom.xml** ファイルの横にあるチェック ボックスをオンにし、**[Finish]** をクリックします。
 
-4. Expand the **sample** project, right-click the **pom.xml** file, click **Open With**, then click **Text Editor**.
+4. **sample** プロジェクトを展開し、**pom.xml** ファイルを右クリックして、**[Open With]**、**[Text Editor]** の順にクリックします。
 
-5. In the **pom.xml** file, add the following XML inside the *&lt;project&gt;* section, then save the file:
+5. **pom.xml** ファイルで、*&lt;project&gt;* セクション内に次の XML を追加し、ファイルを保存します。
 
 		<dependencies>
 			<dependency>
@@ -182,13 +181,13 @@ This step shows you how to add support for federated login using Windows Identit
 			</dependency>
 		</dependencies> 
 
-6. Right-click the **sample** project, click **Maven**, then click **Update Project**. In the **Update Maven Project** dialog, click **OK**. This step will update your project with the **pom.xml** changes.
+6. **sample** プロジェクトを右クリックし、**[Maven]**、**[Update Project]** の順にクリックします。**[Update Maven Project]** ダイアログ ボックスで **[OK]** をクリックします。この手順では **pom.xml** の変更でプロジェクトが更新されます。
 
-7. Right-click the **sample** project, click **New**, then click **Filter**.
+7. **sample** プロジェクトを右クリックし、**[New]**、**[Filter]** の順にクリックします。
 
-8. In the **Create Filter** dialog, type *FederationFilter* for the **Class name** entry, then click **Finish**.
+8. **[Create Filter]** ダイアログ ボックスで、**[Class name]** エントリに「*FederationFilter*」と入力し、**[Finish]** をクリックします。
 
-9. The automatically generated **FederationFilter.java** file will open. Replace its code with the following code and save the file:
+9. 自動的に生成された **FederationFilter.java** ファイルが開きます。そのファイルのコードを次のコードに置き換え、ファイルを保存します。
 
 		import java.io.IOException;
 		import javax.servlet.Filter;
@@ -230,9 +229,9 @@ This step shows you how to add support for federated login using Windows Identit
 			}
 		} 
 
-10. In **Project Explorer**, expand the **src**, then **main**, then **webapp** folders. Right-click the **web.xml** file, click **Open With**, then click **Text Editor**.
+10. **Project Explorer** で、**src**、**main**、**webapp** フォルダーの順に展開します。**web.xml** ファイルを右クリックし、**[Open With]**、**[Text Editor]** の順にクリックします。
 
-11. In the **web.xml** file, you will add a filter to handle secured and unsecured pages, and it will also redirect unauthenticated users to the login page (specified as the **login-page-url** filter parameter). However, if a URL matches the regex specified in the **allowed-regex** filter parameter, it will not be filtered. Add the following XML within the *&lt;web-app&gt;* section, then save the **web.xml** file.  
+11. **web.xml** ファイルで、セキュリティで保護されているページと保護されていないページを処理するためのフィルターを追加します。また、そのフィルターでは、認証されていないユーザーがログイン ページ (**login-page-url** フィルター パラメーターで指定したページ) にリダイレクトされます。ただし、URL が **allowed-regex** フィルター パラメーターで指定した正規表現に一致した場合、その URL はフィルター処理されます。*&lt;web-app&gt;* セクション内に次の XML を追加し、**web.xml** ファイルを保存します。
 
 
 		<filter>
@@ -252,11 +251,11 @@ This step shows you how to add support for federated login using Windows Identit
 			<url-pattern>/*</url-pattern>
 		</filter-mapping> 
 
-12. To create a login page, right-click the **sample** project, click **New**, then click **JSP File**. 
+12. ログイン ページを作成するために、**sample** プロジェクトを右クリックし、**[New]**、**[JSP File]** の順にクリックします。
 
-13. On the **New JSP File** dialog, change the path for the new file to *sample/src/main/webapp*. Then, name the file **login.jsp** and click **Finish**.
+13. **[New JSP File]** ダイアログで、新しいファイルのパスを *sample/src/main/webapp* に変更します。次に、ファイルに **login.jsp** という名前を付け、**[Finish]** をクリックします。
 
-14. The new **login.jsp** file will open automatically. Replace the automatically generated code with the following, then save the file:
+14. 新しい **login.jsp** ファイルが自動的に開きます。自動的に生成されたコードを次のコードに置き換え、ファイルを保存します。
 
 		<%@ page language="java" contentType="text/html; charset=ISO-8859-1"  pageEncoding="ISO-8859-1"%>
 		<%@ page import="com.microsoft.samples.federation.*"%>
@@ -272,15 +271,15 @@ This step shows you how to add support for federated login using Windows Identit
 		</body>
 		</html> 
 
-15. In **Project Explorer**, expand the **/src/main** folder of the **sample** project. Right-click the **resources** folder, click **New**, then click **Other**.
+15. **Project Explorer** で、**sample** プロジェクトの **/src/main** フォルダーを展開します。**resources** フォルダーを右クリックし、**[New]**、**[Other]** の順にクリックします。
 
-16. From the **New** dialog, expand the **JBoss Tools Web** folder, click **Properties File**, then click **Next**.
+16. **[New]** ダイアログ ボックスで、**JBoss Tools Web** フォルダーを展開し、**[Properties File]**、**[Next]** の順にクリックします。
 
-17. On the **New File Properties** dialog, name the file **federation**, then click **Finish**.
+17. **[New File Properties]** ダイアログ ボックスで、ファイルに **federation** という名前を付け、**[Finish]** をクリックします。
 
-18. In **Project Explorer**, expand the **src/main/resources** folder of the **sample** project. Right-click the **federation.properties** file, click **Open With**, then click **Text Editor**.
+18. **Project Explorer** で、**sample** プロジェクトの **src/main/resources** フォルダーを展開します。**federation.properties** ファイルを右クリックし、**[Open With]**、**[Text Editor]** の順にクリックします。
 
-19. In the **federation.properties** file, include the following configuration entries, then save the file:
+19. **federation.properties** ファイルで、次の構成エントリを追加し、ファイルを保存します。
 
 		federation.trustedissuers.issuer=https://accounts.accesscontrol.windows.net/v2/wsfederation
 		federation.trustedissuers.thumbprint=qY+Drf20Zz+A4t2we3PebCopoCugO76My+JMVsqNBFc=
@@ -290,13 +289,13 @@ This step shows you how to add support for federated login using Windows Identit
 		federation.reply=https://localhost:8443/sample/wsfed-saml 
 
 	> [WACOM.NOTE]
-    > The **audienceuris** and **realm** values must be prefaced by "spn:".
+    >**audienceuris** と **realm** の値は "spn:" で始める必要があります。
 
-20. Now you need to create a new Servlet. Right-click the **sample** project, click **New**, click **Other**, then click **Servlet**. 
+20. この時点で、新しいサーブレットを作成する必要があります。**sample** プロジェクトを右クリックし、**[New]**、**[Other]**、**[Servlet]** の順にクリックします。
 
-21. On the **Create Servlet** dialog, provide a **Class name** of *FederationServlet* and click **Finish**.
+21. **[Create Servlet]** ダイアログ ボックスで、*FederationServlet* の**クラス名**を指定し、**[Finish]** をクリックします。
 
-22. The **FederationServlet.java** file is automatically opened. Replace its contents with the following code, then save the file:
+22. **FederationServlet.java** ファイルが自動的に開かれます。そのファイルの内容を次のコードに置き換え、ファイルを保存します。
 
 		import java.io.IOException;
 		import javax.servlet.ServletException;
@@ -337,9 +336,9 @@ This step shows you how to add support for federated login using Windows Identit
 		} 
 
 
-23. In **Project Explorer**, expand the **src/main/webapp/WEB-INF** folder. Right-click the **web.xml** file, click **Open With**, then click **Text Editor**.
+23. **Project Explorer** で、**src/main/webapp/WEB-INF** フォルダーを展開します。**web.xml** ファイルを右クリックし、**[Open With]**、**[Text Editor]** の順にクリックします。
 
-24. In the **web.xml** file, replace the **/FederationServlet** setting in the *&lt;url-pattern&gt;* section with **/ws-saml**. For example:
+24. **web.xml** ファイルで、*&lt;url-pattern&gt;* セクション内の **/FederationServlet** 設定を **/ws-saml** に置き換えます。次に例を示します。
 
 		<servlet>
 			<description></description>
@@ -352,9 +351,9 @@ This step shows you how to add support for federated login using Windows Identit
 			<url-pattern>/wsfed-saml</url-pattern>
 		</servlet-mapping> 
 
-25. In **Project Explorer**, expand the **src/main/webapp** folder. Right-click the **index.jsp** file, click **Open With**, then click **Text Editor**.
+25. **Project Explorer** で、**src/main/webapp** フォルダーを展開します。**index.jsp** ファイルを右クリックし、**[Open With]**、**[Text Editor]** の順にクリックします。
 
-26. In the **index.jsp** file, replace the existing code with the following code, then save the file:
+26. **index.jsp** ファイルで、既存のコードを次のコードに置き換え、ファイルを保存します。
 
 		<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 		<%@ page import="com.microsoft.samples.federation.*"%>
@@ -375,9 +374,9 @@ This step shows you how to add support for federated login using Windows Identit
 		</body>
 		</html> 
 
-27. In **Project Explorer**, expand the **src/main/webapp/WEB-INF** folder. Right-click the **web.xml** file, click **Open With**, then click **Text Editor**.
+27. **Project Explorer** で、**src/main/webapp/WEB-INF** フォルダーを展開します。**web.xml** ファイルを右クリックし、**[Open With]**、**[Text Editor]** の順にクリックします。
 
-28. We will now enable SSL for the application. In the **web.xml** file, insert the following *&lt;security-constraint&gt;* section within the *&lt;web-app&gt;* section, then save the file: 
+28. この時点で、アプリケーションの SSL を有効にします。**web.xml** ファイルで、*&lt;web-app&gt;* セクション内に次の *&lt;security-constraint&gt;* セクションを挿入し、ファイルを保存します。
 
 		<security-constraint>
 			<web-resource-collection>
@@ -392,28 +391,29 @@ This step shows you how to add support for federated login using Windows Identit
 		</security-constraint> 
 
 	> [WACOM.NOTE]
-    > Before proceeding, ensure that JBoss Server is already configured to support SSL.
+    > 次の手順に進む前に、SSL をサポートするように JBoss Server を既に構成していることを確認してください。
 
-29. Now we are ready to run the application end-to-end. Right-click the **sample** project, click **Run As**, then click **Run On Server**. Accept the values that you specified before, and click **Finish**.
+29. これで、アプリケーションをエンド ツー エンドで実行する準備ができました。**sample** プロジェクトを右クリックし、**[Run As]**、**[Run On Server]** の順にクリックします。前の手順で指定した値をそのまま使用し、**[Finish]** をクリックします。
 
-30. The JBoss browser will open the login page. If you click on the **Awesome Computers** link, you will be redirected to the Office 365 Identity Provider page, where you can log in using your directory tenant credentials. For example, *john.doe@fabrikam.onmicrosoft.com*.
+30. JBoss ブラウザーで、ログイン ページが開きます。**[Awesome Computers]** リンクをクリックすると、Office 365 の ID プロバイダー ページに自動的にリダイレクトされます。このページでディレクトリ テナントの資格情報を使用してログインできます。たとえば、*john.doe@fabrikam.onmicrosoft.com* を使用します。
 
-31. After you have logged in, you will be redirected again to the secured page (**sample/index.jsp**) as an authenticated user.
+31. ログイン後、認証されたユーザーとしてセキュリティで保護されたページ (**sample/index.jsp**) に再度リダイレクトされます。
 
-<h2><a name="summary"></a>Summary</h2>
-This tutorial has shown you how to create and configure a single tenant Java application that uses the single sign-on capabilities of Azure Active Directory.
+<h2><a name="summary"></a>まとめ</h2>
+このチュートリアルでは、シングル サインオン Azure Active Directory 機能を使用する 1 つのテナント Java アプリケーションを作成および構成する方法について説明しました。
 
-[Introduction]: #introduction
-[Step 1: Create a Java Application]: #createapp
-[Step 2: Provision the Application in a Company's Directory Tenant]: #provisionapp
-[Step 3: Protect the Application Using WS-Federation for Employee Sign In]: #protectapp
-[Summary]: #summary
-[Developing Multi-Tenant Cloud Applications with Azure Active Directory]: http://g.microsoftonline.com/0AX00en/121
-[Windows Identity Foundation 3.5 SDK]: http://www.microsoft.com/en-us/download/details.aspx?id=4451
-[Windows Identity Foundation 1.0 Runtime]: http://www.microsoft.com/en-us/download/details.aspx?id=17331
-[Office 365 Powershell Commandlets]: http://onlinehelp.microsoft.com/en-us/office365-enterprises/ff652560.aspx
-[ASP.NET MVC 3]: http://www.microsoft.com/en-us/download/details.aspx?id=4211
+[はじめに]: #introduction
+[手順 1. Java アプリケーションを作成する]: #createapp
+[手順 2. 会社のディレクトリ テナントでアプリケーションをプロビジョニングする]: #provisionapp
+[手順 3. WS-Federation を従業員のサインインに使用してアプリケーションを保護する]: #protectapp
+[まとめ]: #summary
+[Developing Multi-Tenant Cloud Applications with Azure Active Directory (Azure Active Directory によるマルチテナント クラウド アプリケーションの開発)]: http://g.microsoftonline.com/0AX00en/121
+[Windows Identity Foundation 3.5 SDK]: http://www.microsoft.com/ja-jp/download/details.aspx?id=4451
+[Windows Identity Foundation 1.0 ランタイム]: http://www.microsoft.com/ja-jp/download/details.aspx?id=17331
+[Office 365 PowerShell コマンドレット]: http://onlinehelp.microsoft.com/ja-jp/office365-enterprises/ff652560.aspx
+[ASP.NET MVC 3]: http://www.microsoft.com/ja-jp/download/details.aspx?id=4211
 [Java Runtime Environment 1.6]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
-[Java Sample Code for Azure Active Directory]: https://github.com/WindowsAzure/azure-sdk-for-java-samples/tree/master/WAAD.WebSSO.JAVA
+[Azure Active Directory 用の Java サンプル コード]: https://github.com/WindowsAzure/azure-sdk-for-java-samples/tree/master/WAAD.WebSSO.JAVA
 [JBoss Application Server version 7.1.1.Final]: http://www.jboss.org/jbossas/downloads/
 [JBoss Developer Studio IDE]: https://devstudio.jboss.com/earlyaccess/
+

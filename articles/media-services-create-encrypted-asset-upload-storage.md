@@ -1,30 +1,30 @@
-<properties linkid="develop-media-services-how-to-guides-create-assets" urlDisplayName="Create Encrypted Asset and Upload to Storage" pageTitle="Create Encrypted Asset and Upload to Storage Azure" metaKeywords="" description="Learn how to get media content into Media Services by creating and uploading an encrypted asset." metaCanonical="" services="media-services" documentationCenter="" title="How to: Create an encrypted Asset and upload to storage" authors="migree" solutions="" manager="" editor="" />
+<properties linkid="develop-media-services-how-to-guides-create-assets" urlDisplayName="暗号化されたアセットを作成してストレージにアップロードする" pageTitle="暗号化されたアセットを作成してストレージにアップロードする - Azure" metaKeywords="" description="暗号化されたアセットを作成し、アップロードして、メディア サービスにメディア コンテンツを取得する方法について説明します。" metaCanonical="" services="media-services" documentationCenter="" title="方法: 暗号化されたアセットを作成してストレージにアップロードする" authors="migree" solutions="" manager="" editor="" />
 
 
 
 
 
-<h1><a name="create-asset"> </a><span class="short header">How to: Create an encrypted Asset and upload to storage</span></h1>
+<h1><a name="create-asset"> </a><span class="short header">方法: 暗号化されたアセットを作成してストレージにアップロードする</span></h1>
 
-This article is one in a series introducing Azure Media Services programming. The previous topic was [Setting Up Your Computer for Media Services](http://go.microsoft.com/fwlink/?LinkID=301751&clcid=0x409).
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[メディア サービス開発のためのコンピューターのセットアップに関するページ](http://go.microsoft.com/fwlink/?LinkID=301751&clcid=0x409)を参照してください。
 
-To get media content into Media Services, first create an asset and add files to it, and then upload the asset. This process is called ingesting content.  
+メディア コンテンツをメディア サービスに取り込むには、まずアセットを作成してファイルを追加した後、そのアセットをアップロードします。このプロセスを "コンテンツの取り込み" といいます。
 
-When you create assets, you can specify three different options for encryption. 
+アセットを作成する際には、暗号化に関する 3 つのオプションを指定できます。
 
-- **AssetCreationOptions.None**: no encryption. If you want to create an unencrypted asset, you must set this option.
-- **AssetCreationOptions.CommonEncryptionProtected**: for Common Encryption Protected (CENC) files. An example is a set of files that are already PlayReady encrypted. 
-- **AssetCreationOptions.StorageEncrypted**: storage encryption. Encrypts a clear input file before it is uploaded to Azure storage.
+- **AssetCreationOptions.None**: 暗号化されません。暗号化されていないアセットを作成するには、このオプションを設定する必要があります。
+- **AssetCreationOptions.CommonEncryptionProtected**: Common Encryption Protected (CENC) ファイル用。既に PlayReady で暗号化されている一連のファイルは、その例です
+- **AssetCreationOptions.StorageEncrypted**: ストレージ暗号化。Azure ストレージへのアップロードの前にクリア入力ファイルを暗号化します。
 
-**NOTE**: Note that Media Services provide on-disk storage encryption, not over the wire like Digital Rights Manager (DRM.)
+**注**: メディア サービスでは、Digital Rights Manager (DRM) のようにネットワーク経由ではなく、オンディスクのストレージ暗号化を提供します。
 
-The sample code below does the following: 
+このサンプル コードでは、次のことが行われます。
 
-- Creates an empty Asset.
-- Creates an AssetFile instance that we want to associate with the asset.
-- Creates an AccessPolicy instance that defines the permissions and duration of access to the asset.
-- Creates a Locator instance that provides access to the asset.
-- Uploads a single media file into Media Services. 
+- 空のアセットを作成します。
+- アセットに関連付ける AssetFile インスタンスを作成します。
+- アセットへのアクセス許可とアクセス期間を定義する AccessPolicy インスタンスを作成します。
+- アセットへのアクセスを提供する Locator インスタンスを作成します。
+- 単一のメディア ファイルをメディア サービスにアップロードします。
 
 <pre><code>
 static private IAsset CreateEmptyAsset(string assetName, AssetCreationOptions assetCreationOptions)
@@ -56,7 +56,7 @@ static public IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCr
 }
 </code></pre>
 
-The following code shows how to create an asset and upload multiple files.
+次のコードは、アセットを作成して複数のファイルをアップロードする方法を示します。
 
 <pre><code>
 static public IAsset CreateAssetAndUploadMultipleFiles( AssetCreationOptions assetCreationOptions, string folderPath)
@@ -116,7 +116,8 @@ static void  blobTransferClient_TransferProgressChanged(object sender, BlobTrans
 
 </code></pre>
 
-<h2>Next Steps</h2>
-Now that you have uploaded an asset to Media Services, go to the [How to Get a Media Processor][] topic.
+<h2>次のステップ</h2>
+これで、アセットをメディア サービスにアップロードできました。次は、[メディア プロセッサの取得][]に関するトピックに進みます。
 
-[How to Get a Media Processor]:http://go.microsoft.com/fwlink/?LinkID=301732&clcid=0x409
+[メディア プロセッサの取得]:http://go.microsoft.com/fwlink/?LinkID=301732&clcid=0x409
+

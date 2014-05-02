@@ -1,21 +1,21 @@
-<properties linkid="manage-linux-common-tasks-lampstack" urlDisplayName="Install LAMP stack" pageTitle="Install the LAMP stack on a Linux virtual machine" metaKeywords="" description="Learn how to install the LAMP stack on a Linux virtual machine (VM) in Azure. You can install on Ubuntu or CentOS." metaCanonical="" services="virtual-machines" documentationCenter="" title="Install the LAMP Stack on a Linux virtual machine in Azure" authors="" solutions="" manager="" editor="" />
+<properties linkid="manage-linux-common-tasks-lampstack" urlDisplayName="LAMP スタックのインストール" pageTitle="Linux 仮想マシンへの LAMP スタックのインストール" metaKeywords="" description="Azure 上の Linux 仮想マシン (VM) に LAMP スタックをインストールする方法について説明します。Ubuntu または CentOS 上でインストールできます。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure 上の Linux 仮想マシンへの LAMP スタックのインストール" authors="" solutions="" manager="" editor="" />
 
 
 
 
-#Install the LAMP Stack on a Linux virtual machine in Azure
+#Azure 上の Linux 仮想マシンへの LAMP スタックのインストール
 
-A LAMP stack consists of the following different elements:
+LAMP スタックは次のさまざまな要素で構成されています。
 
-- **L**inux - Operating System
-- **A**pache - Web Server
-- **M**ySQL - Database Server
-- **P**HP - Programming Language
+- **L**inux - オペレーティング システム
+- **A**pache - Web サーバー
+- **M**ySQL - データベース サーバー
+- **P**HP - プログラミング言語
 
 
-##Installing on Ubuntu
+##Ubuntu へのインストール
 
-You will need the following packages installed:
+次のパッケージをインストールする必要があります。
 
 - `apache2`
 - `mysql-server`
@@ -27,14 +27,14 @@ You will need the following packages installed:
 - `php5-gd`
 - `php-pear`
 
-You can run this as a single `apt-get install` command:
+このインストールは次の 1 つの `apt-get install` コマンドで実行できます。
 
 	apt-get install apache2 mysql-server php5 php5-mysql libapache2-mod-auth-mysql libapache2-mod-php5 php5-xsl php5-gd php-pear
 
 
-##Installing On CentOS
+##CentOS へのインストール
 
-You will need the following packages installed:
+次のパッケージをインストールする必要があります。
 
 - `httpd`
 - `mysql`
@@ -42,42 +42,44 @@ You will need the following packages installed:
 - `php`
 - `php-mysql`
 
-You can run this as a single `yum install` command:
+このインストールは次の 1 つの `yum install` コマンドで実行できます。
 
 	yum install httpd mysql mysql-server php-php-mysql
 
 
-Setting Up
+設定
 ----------
 
-1. Set up **Apache**.
+1. **Apache** を設定します。
 
-	1. You will need to restart the Apache Web Server. Run the following command:
+	1. Apache Web サーバーの再起動が必要になります。次のコマンドを実行します。
 
 			sudo /etc/init.d/apache2 restart
-	2. Check to see that the installation is running. Point your browser to: [http://localhost](http://localhost). It should read "It works!".
 
-2. Set up **MySQL**.
-	1. Set the root password for mysql by running the following command
+	2. インストールが実行されていることを確認します。ブラウザーで、[http://localhost](http://localhost) をポイントします。"It works!" と表示されます。
+
+2. **MySQL** を設定します。
+	1. 次のコマンドを実行して MySQL の root パスワードを設定します。
 	
 			mysqladmin -u root -p password yourpassword
 
-	2. Log into the console using the `mysql` or a variety of MySQL clients.
+	2. `mysql` または各種の MySQL クライアントを使用してコンソールにログインします。
 
-3. Set up **PHP**.
+3. **PHP** を設定します。
 
-	1. Enable the Apache PHP Module by running the following command:
+	1. 次のコマンドを実行して Apache PHP Module を有効にします。
 
 			sudo a2enmod php5
 
-	2. Relaunch Apache by running the following command:
+	2. 次のコマンドを実行して Apache を再起動します。
 
 			sudo service apache2 restart
 
 
-##Further Reading
+##参考資料
 
-There are many resources for setting up a LAMP stack on Ubuntu.
+Ubuntu 上での LAMP スタックの設定については多くのリソースがあります。
 
 - [https://help.ubuntu.com/community/ApacheMySQLPHP](https://help.ubuntu.com/community/ApacheMySQLPHP)
 - [http://fedorasolved.org/server-solutions/lamp-stack](http://fedorasolved.org/server-solutions/lamp-stack)
+

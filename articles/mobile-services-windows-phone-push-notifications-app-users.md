@@ -1,48 +1,48 @@
-<properties linkid="develop-net-tutorials-push-notifications-to-users-wp8" urlDisplayName="Push Notifications to Users (WP8)" pageTitle="Push notifications to users (Windows Phone) | Mobile Dev Center" metaKeywords="" description="Learn how to use Mobile Services to push notifications to users of your Windows Phone app." metaCanonical="" services="" documentationCenter="" title="Push notifications to users by using Mobile Services" authors="glenga" solutions="" manager="" editor="" />
+<properties linkid="develop-net-tutorials-push-notifications-to-users-wp8" urlDisplayName="ユーザーへのプッシュ通知 (WP8)" pageTitle="ユーザーへのプッシュ通知 (Windows Phone) | モバイル デベロッパー センター" metaKeywords="" description="モバイル サービスを使用して Windows Phone アプリケーションのユーザーにプッシュ通知を送信する方法について説明します。" metaCanonical="" services="" documentationCenter="" title="モバイル サービスによるユーザーへのプッシュ通知" authors="glenga" solutions="" manager="" editor="" />
 
 
 
 
-# Push notifications to users by using Mobile Services
-<div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/en-us/develop/mobile/tutorials/push-notifications-to-users-wp8" title="Windows Phone" class="current">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/push-notifications-to-users-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/push-notifications-to-users-android" title="Android">Android</a>
+#モバイル サービスによるユーザーへのプッシュ通知
+<div class="dev-center-tutorial-selector sublanding">
+	<a href="/ja-jp/develop/mobile/tutorials/push-notifications-to-users-wp8" title="Windows Phone" class="current">Windows Phone</a><a href="/ja-jp/develop/mobile/tutorials/push-notifications-to-users-ios" title="iOS">iOS</a><a href="/ja-jp/develop/mobile/tutorials/push-notifications-to-users-android" title="Android">Android</a>
 </div>
 
 
-This topic extends the [previous push notification tutorial][Get started with push notifications] by adding a new table to store Microsoft Push Notification Service (MPNS) channel URIs. These channels can then be used to send push notifications to users of the Windows Phone 8 app.  
+このトピックは、Microsoft Push Notification Service (MPNS) チャネル URI を格納する新しいテーブルを追加して、[1 つ前のプッシュ通知に関するチュートリアル][Get started with push notifications]を拡張したものです。これらのチャネルを使用すると、Windows Phone 8 アプリケーションのユーザーにプッシュ通知を送信することができます。
 
-This tutorial walks you through these steps to update push notifications in your app:
+このチュートリアルでは、アプリケーションでプッシュ通知を更新するための次の手順について説明します。
 
-1. [Create the Channel table]
-2. [Update the app]
-3. [Update server scripts]
-4. [Verify the push notification behavior] 
+1. [Channel テーブルを作成する]
+2. [アプリケーションを更新する]
+3. [サーバー スクリプトを更新する]
+4. [プッシュ通知の動作を確認する]
 
-This tutorial is based on the Mobile Services quickstart and builds on the previous tutorial [Get started with push notifications]. Before you start this tutorial, you must first complete [Get started with push notifications].  
+このチュートリアルは、モバイル サービスのクイック スタートと、1 つ前のチュートリアル「[モバイル サービスでのプッシュ通知の使用]」の内容を前提としています。このチュートリアルを開始する前に、「[モバイル サービスでのプッシュ通知の使用]」を完了している必要があります。
 
-## <a name="create-table"></a>Create a new table
+## <a name="create-table"></a>新しいテーブルを作成する
 
-1. Log into the [Azure Management Portal], click **Mobile Services**, and then click your app.
+1. [Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
    	![][0]
 
-2. Click the **Data** tab, and then click **Create**.
+2. **[データ]** タブをクリックし、**[作成]** をクリックします。
 
    	![][1]
 
-   	This displays the **Create new table** dialog.
+   	**[新しいテーブルの作成]** ダイアログ ボックスが表示されます。
 
-3. Keeping the default **Anybody with the application key** setting for all permissions, type _Channel_ in **Table name**, and then click the check button.
+3. すべてのアクセス許可について既定の **[アプリケーション キーを持つユーザー]** 設定をそのままにし、**[テーブル名]** に「_Channel_」と入力してチェック ボタンをクリックします。
 
    	![][2]
 
-  	This creates the **Channel** table, which stores the channel URIs used to send push notifications separate from item data.
+  	**Channel** テーブルが作成されます。このテーブルには、項目データとは別にプッシュ通知を送信するために使用されるチャネル URI が格納されます。
 
-Next, you will modify the push notifications app to store data in this new table instead of in the **TodoItem** table.
+次は、**TodoItem** テーブルの代わりにこの新しいテーブルにデータを格納するようにプッシュ通知アプリケーションを変更します。
 
-## <a name="update-app"></a>Update your app
+## <a name="update-app"></a>アプリケーションを更新する
 
-1. In Visual Studio 2012 Express for Windows Phone, open the project from the tutorial [Get started with push notifications], open up file MainPage.xaml.cs, and remove the **Channel** property from the **TodoItem** class. It should now look like this:
+1. Visual Studio 2012 Express for Windows Phone で、[プッシュ通知の使用に関するチュートリアル]で使用したプロジェクトを開き、MainPage.xaml.cs ファイルを開いて、**TodoItem** クラスから **Channel** プロパティを削除します。その結果、次のようになります。
 
         public class TodoItem
         {
@@ -55,7 +55,7 @@ Next, you will modify the push notifications app to store data in this new table
 	        public bool Complete { get; set; }
         }
 
-2. Replace the **ButtonSave_Click** event handler method with the original version of this method, as follows:
+2. **ButtonSave_Click** イベント ハンドラー メソッドを、次のようにこのメソッドの元のバージョンに置き換えます。
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
@@ -63,7 +63,7 @@ Next, you will modify the push notifications app to store data in this new table
             InsertTodoItem(todoItem);
         }
 
-3. Add the following code that creates a new **Channel** class:
+3. 新しい **Channel** クラスを作成する次のコードを追加します。
 
 	    public class Channel
 	    {
@@ -73,7 +73,7 @@ Next, you will modify the push notifications app to store data in this new table
 	        public string Uri { get; set; }
 	    }
 
-4. Open the file App.xaml.cs and replace **AcquirePushChannel** method with the following code:
+4. App.xaml.cs ファイルを開き、**AcquirePushChannel** メソッドを次のコードに置き換えます。
 
         private void AcquirePushChannel()
         {
@@ -91,21 +91,21 @@ Next, you will modify the push notifications app to store data in this new table
            channelTable.InsertAsync(channel);
         }
 
-     This code inserts a channel into the Channel table.
+     このコードでは、チャネルが Channel テーブルに挿入されます。
 
-## <a name="update-scripts"></a>Update server scripts
+##<a name="update-scripts"></a>サーバー スクリプトを更新する
 
-1. In the Management Portal, click the **Data** tab and then click the **Channel** table. 
+1. 管理ポータルで、**[データ]** タブをクリックし、**Channel** テーブルをクリックします。
 
    	![][3]
 
-2. In **channel**, click the **Script** tab and select **Insert**.
+2. **[channel]** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。
    
    	![][4]
 
-   	This displays the function that is invoked when an insert occurs in the **Channel** table.
+   	**Channel** テーブルで挿入が発生したときに呼び出される関数が表示されます。
 
-3. Replace the insert function with the following code, and then click **Save**:
+3. insert 関数を次のコードに置き換え、**[保存]** をクリックします。
 
 			function insert(item, user, request) {
 				var channelTable = tables.getTable('Channel');
@@ -121,13 +121,13 @@ Next, you will modify the push notifications app to store data in this new table
 	    	    }
 		    }
 
-   	This script checks the **Channel** table for an existing channel with the same URI. The insert only proceeds if no matching channel was found. This prevents duplicate channel records.
+   	このスクリプトでは、**Channel** テーブルに同じ URI を持つ既存のチャネルがないかチェックが行われます。insert の実行は、一致するチャネルが見つからなかった場合にのみ、先に進みます。これにより、チャネル レコードの重複が防止されます。
 
-4. Click **TodoItem**, click **Script** and select **Insert**. 
+4. **[TodoItem]** をクリックし、**[スクリプト]** タブをクリックして、**[挿入]** を選択します。
 
    	![][5]
 
-5. Replace the insert function with the following code, and then click **Save**:
+5. insert 関数を次のコードに置き換え、**[保存]** をクリックします。
 
 	    function insert(item, user, request) {
     	    request.execute({
@@ -155,51 +155,51 @@ Next, you will modify the push notifications app to store data in this new table
     	    }
 	    }
 
-    This insert script sends a push notification (with the text of the inserted item) to all channels stored in the **Channel** table.
+    この insert スクリプトでは、**Channel** テーブルに格納されているすべてのチャネルにプッシュ通知が (挿入された項目のテキストと共に) 送信されます。
 
-## <a name="test-app"></a>Test the app
+## <a name="test-app"></a>アプリケーションをテストする
 
-1. In Visual Studio, select **Deploy Solution** on the **Build**  menu.
+1. Visual Studio で、**[ビルド]** メニューの **[ソリューションの配置]** を選択します。
 
-3. Tap the tile named either **TodoList** or **hello push** to launch the app. 
+3. **TodoList** または **hello push** という名前のタイルをタップして、アプリケーションを開始します。
 
   	![][23]
 
-5. In the app, enter the text "hello push again" in the textbox, and then click **Save**.
+5. アプリケーションで、テキスト ボックスに「hello push again」というテキストを入力し、**[Save]** をクリックします。
 
    	![][24]
 
-  	This sends an insert request to the mobile service to store the added item.
+  	これにより、追加された項目を保存するための挿入要求がモバイル サービスに送信されます。
 
-6. Press the **Start** button to return to the start menu. 
+6. **[スタート]** ボタンを押して [スタート] メニューに戻ります。
 
   	![][25]
 
-  	Notice that the application received the push notification and that the title of the tile is now **hello push**.
+  	アプリケーションがプッシュ通知を受信したため、タイルのタイトルが **hello push** になっています。
 
-9. (Optional) Run the app on two devices at the same time, and repeat the previous step. 
+9. (省略可能) アプリケーションを 2 台のデバイスで同時に実行し、前の手順を繰り返します。
 
-    The notification is sent to all running app instances.  
+    実行中のアプリケーション インスタンスすべてに通知が送信されます。
 
-## Next steps
+## 次のステップ
 
-This concludes the tutorials that demonstrate the basics of working with push notifications. Consider finding out more about the following Mobile Services topics:
+これで、プッシュ通知の基本について説明するチュートリアルは終了です。次のモバイル サービスのトピックの詳細を確認することをお勧めします。
 
-* [Get started with data]
-  <br/>Learn more about storing and querying data using Mobile Services.
+* [データの使用]
+  <br/>モバイル サービスを使用してデータの格納およびクエリを実行する方法について説明します。
 
-* [Get started with authentication]
-  <br/>Learn how to authenticate users of your app with Windows Account.
+* [認証の使用]
+  <br/>Windows アカウントを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [Mobile Services server script reference]
-  <br/>Learn more about registering and using server scripts.
+* [モバイル サービスのサーバー スクリプト リファレンス]
+  <br/>サーバー スクリプトの登録および使用について説明します。
 
 <!-- anchors -->
-[Create the Channel table]: #create-table
-[Update the app]: #update-app
-[Update server scripts]: #update-scripts
-[Verify the push notification behavior]: #test-app
-[Next Steps]: #next-steps
+[Channel テーブルを作成する]: #create-table
+[アプリケーションを更新する]: #update-app
+[サーバー スクリプトを更新する]: #update-scripts
+[プッシュ通知の動作を確認する]: #test-app
+[次のステップ]: #next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-services-selection.png
@@ -215,10 +215,11 @@ This concludes the tutorials that demonstrate the basics of working with push no
 [25]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-quickstart-push6-wp8.png
 
 <!-- URLs. -->
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/p/?LinkId=262293
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-wp8
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-wp8
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-wp8
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-wp8
+[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=262293
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-wp8
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-wp8
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-wp8
+[プッシュ通知の使用に関するチュートリアル]: /ja-jp/develop/mobile/tutorials/get-started-with-push-wp8
 
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
+

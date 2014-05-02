@@ -1,313 +1,313 @@
-<properties linkid="" urlDisplayName="" pageTitle="" metaKeywords="" description="Learn how to use Microsoft HPC Pack and Azure to set up a small, hybrid high performance computing (HPC) cluster" metaCanonical="" services="" documentationCenter="" title="Set up a Hybrid Cluster with Microsoft HPC Pack" authors="danlep" solutions="" manager="dongill" editor="mattshel" />
+<properties linkid="" urlDisplayName="" pageTitle="" metaKeywords="" description="Microsoft HPC Pack と Azure を使用して、小規模のハイブリッド ハイパフォーマンス コンピューティング (HPC) クラスターをセットアップする方法について説明します。" metaCanonical="" services="" documentationCenter="" title="Microsoft HPC Pack を使用してハイブリッド クラスターをセットアップする" authors="danlep" solutions="" manager="dongill" editor="mattshel" />
 
 
 
-#Set up a Hybrid Cluster with Microsoft HPC Pack
-This tutorial shows you how to use Microsoft HPC Pack 2012 R2 and Azure to set up a small, hybrid high performance computing (HPC) cluster. The cluster will consist of an on-premises head node (a computer running the Windows Server operating system and HPC Pack) and some compute nodes you deploy on-demand as worker role instances in an Azure cloud service. You can then run compute jobs on the hybrid cluster.
+#Microsoft HPC Pack を使用してハイブリッド クラスターをセットアップする
+このチュートリアルでは、Microsoft HPC Pack 2012 R2 と Azure を使用して、小規模のハイブリッド ハイパフォーマンス コンピューティング (HPC) クラスターをセットアップする方法について説明します。クラスターは、内部設置型のヘッド ノード (Windows Server オペレーティング システムと HPC Pack を実行するコンピューター) と、Azure クラウド サービス上に worker ロール インスタンスとしてオンデマンドで展開されるいくつかの計算ノードで構成されます。コンピューティング ジョブを、ハイブリッド クラスター上で実行することができます。
  
-![Hybrid HPC cluster][Overview] 
+![ハイブリッド HPC クラスター][Overview]
 
-This tutorial shows one approach, sometimes called cluster "burst to the cloud," to use scalable, on-demand compute resources in Azure to run compute intensive applications.
+このチュートリアルでは、「クラウド バースト」とも呼ばれる方法を紹介します。Azure 上で多くのコンピューティング処理を要するアプリケーションを実行するためにコンピューティング リソースをオンデマンドで使用する、拡張性に優れた方法です。
 
-This tutorial assumes no prior experience with compute clusters or HPC Pack. It is intended only to help you deploy a hybrid cluster quickly for demonstration purposes. For considerations and steps to deploy a hybrid HPC Pack cluster at greater scale in a production environment, see the [detailed guidance](http://go.microsoft.com/fwlink/p/?LinkID=200493).
+このチュートリアルは、コンピューティング クラスターまたは HPC Pack を使用した経験がない読者を対象に作成されています。ハイブリッド クラスターを展開する方法をデモンストレーションを目的として説明します。大規模なハイブリッド HPC Pack クラスターを運用環境に展開するための考慮事項と手順については、[詳細なガイダンス](http://go.microsoft.com/fwlink/p/?LinkID=200493)を参照してください。
 
->[WACOM.NOTE] Azure offers a [range of sizes](http://go.microsoft.com/fwlink/p/?LinkId=389844) for your compute resources, suitable for different workloads. For example, the A8 and A9 instances combine high performance and access to a low latency, high throughput application network needed for certain HPC applications. For information, see [A8 and A9 Compute Intensive Instances: Quick Start with HPC Pack](http://go.microsoft.com/fwlink/p/?Linkid=328042). 
+>[WACOM.NOTE] Azure では、各種のワークロードに適合するように、コンピューティング リソース向けに[さまざまなサイズ](http://go.microsoft.com/fwlink/p/?LinkId=389844)が用意されています。たとえば、A8 と A9 インスタンスでは、高いパフォーマンスとアクセスが組み合わされ、特定の HPC アプリケーションで必要となる、待機時間が短い高スループットのアプリケーション ネットワークが実現されます。詳細については、[A8/A9 コンピューティング集中型インスタンス (HPC Pack を使用したクイック スタート) に関するページ](http://go.microsoft.com/fwlink/p/?Linkid=328042)を参照してください。
 
-This tutorial walks you through these basic steps:
+このチュートリアルでは、次の基本的な手順について説明します。
 
-* [Prerequisistes](#BKMK_Prereq)
-* [Install HPC Pack on the head node](#BKMK_DeployHN)
-* [Prepare the Azure subscription](#BKMK_Prpare)
-* [Configure the head node](#BKMK_ConfigHN)
-* [Add Azure nodes to the cluster](#BKMK_worker)
-* [Start the Azure nodes](#BKMK_start)
-* [Run a command across the cluster](#BKMK_RunCommand)
-* [Run a test job](#BKMK_RunJob)
-* [Stop the Azure nodes](#BKMK_stop)
+* [前提条件](#BKMK_Prereq)
+* [HPC Pack をヘッド ノードにインストールする](#BKMK_DeployHN)
+* [Azure サブスクリプションを準備する](#BKMK_Prpare)
+* [ヘッド ノードを構成する](#BKMK_ConfigHN)
+* [クラスターに Azure ノードを追加する](#BKMK_worker)
+* [Azure ノードを開始する](#BKMK_start)
+* [クラスター全体にコマンドを実行する](#BKMK_RunCommand)
+* [テスト ジョブを実行する](#BKMK_RunJob)
+* [Azure ノードを停止する](#BKMK_stop)
 
-<h2 id="BKMK_Prereq">Prerequisites</h2>
+<h2 id="BKMK_Prereq">前提条件</h2>
 
->[WACOM.NOTE]To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/" target="_blank">Azure Free Trial</a>.
+>[WACOM.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/" target="_blank">Azure の無料評価版サイト</a>を参照してください。
 
-In addition, you need the following for this tutorial.
+さらに、このチュートリアルでは次のものが必要です。
 
-* An on-premises computer that is running an edition of Windows Server 2012 R2 or Windows Server 2012. This computer will be the head node of the HPC cluster. If you are not already running Windows Server, you can download and install an [evaluation version](http://technet.microsoft.com/evalcenter/dn205286.aspx).
+*Windows Server 2012 R2 または Windows Server 2012 を実行する内部設置型のコンピューター。このコンピューターが HPC クラスターのヘッド ノードになります。Windows Server をまだ実行していない場合は、[評価版](http://technet.microsoft.com/evalcenter/dn205286.aspx)をダウンロードしてインストールできます。
 
-	* The computer must be joined to an Active Directory domain.
+	* このコンピューターを Active Directory ドメインに結合します。
 
-	* Ensure that no additional server roles or role services are installed.
+	* 追加のサーバー ロールまたはロール サービスをインストールしていないことを確認します。
 
-	* To support HPC Pack, the operating system must be installed in one of these languages: English, Japanese, or Chinese (Simplified).
+	* HPC Pack をサポートするには、オペレーティング システムのインストールを英語、日本語、または中国語 (簡体字) で行う必要があります。
 
-	* Verify that important and critical updates are installed.
+	* 重要な更新プログラムをインストール済みであることを確認します。
 	
-* Installation files for HPC Pack 2012 R2, which is available free of charge. [Download](http://go.microsoft.com/fwlink/p/?linkid=389557) the full installation package and copy the files to the head node computer or to a network location. Choose installation files in the same language as your installation of Windows Server.
+* HPC Pack 2012 R2 のインストール ファイル。無料で利用できます。フル インストール パッケージを[ダウンロード](http://go.microsoft.com/fwlink/p/?linkid=389557)して、ヘッド ノード コンピューターに、またはネットワーク上にコピーします。Windows Server のインストールと同じ言語を選択してください。
 
-* A domain account with local Administrator permissions on the head node.
+* ヘッド ノード上にローカル管理者権限があるドメイン アカウント。
 
-* TCP connectivity on port 443 from the head node to Azure.
+* ヘッド ノードから Azure への TCP 接続 (ポート 443)。
 
-<h2 id="BKMK_DeployHN">Install HPC Pack on the head node</h2>
+<h2 id="BKMK_DeployHN">HPC Pack をヘッド ノードにインストールする</h2>
 
-You first install Microsoft HPC Pack on an on-premises computer that will be the head node of the cluster.
+最初に、HPC クラスターのヘッド ノードにする内部設置型のコンピューターに Microsoft HPC Pack をインストールします。
 
-1. Log on to the head node by using a domain account that has local Administrator permissions.
+1. ローカル管理者権限があるドメイン アカウントでヘッド ノードにログオンします。
 
-2. Start the HPC Pack Installation Wizard by running Setup.exe from the HPC Pack installation files.
+2. HPC Pack のインストール ファイルから Setup.exe を実行して、HPC Pack のインストール ウィザードを開始します。
 
-3. On the **HPC Pack 2012 R2 Setup** screen, click **New installation or add new features to an existing installation**.
+3. **[HPC Pack 2012 R2 セットアップ]** 画面で、**[新たにインストールするか、新機能を既存のインストールに追加する]** をクリックします。
 
-	![HPC Pack 2012 Setup][install_hpc1]
+	![HPC Pack 2012 セットアップ][install_hpc1]
 
-4. On the **Microsoft Software User Agreement page**, click **Next**.
+4. **[Microsoft ソフトウェア ユーザー契約書]** ページで、**[次へ]** をクリックします。
 
-5. On the **Select Installation Type** page, click **Create a new HPC cluster by creating a head node**, and then click **Next**.
+5. **[インストールの種類の選択]** ページで、**[ヘッド ノードを作成することで新しい HPC クラスターを作成する]** をクリックし、**[次へ]** をクリックします。
 
-	![Select Installation Type][install_hpc2]
+	![インストールの種類の選択][install_hpc2]
 
-6. The wizard runs several pre-installation tests. Click **Next** on the **Installation Rules** page if all tests pass. Otherwise, review the information provided and make any necessary changes in your environment. Then run the tests again or if necessary start the Installation Wizard again. 
+6. ウィザードによってインストール前のテストがいくつか実行されます。すべてのテストが成功したら、**[インストール規則]** ページで **[次へ]** をクリックします。失敗した場合は、表示された情報を確認して、必要な変更を環境に加えます。テストをもう一度実行するか、必要に応じてインストール ウィザードをもう一度開始します。
 
-	![Installation Rules][install_hpc3]
+	![インストール規則][install_hpc3]
 
-7. On the **HPC DB Configuration** page, make sure **Head Node** is selected for all HPC databases, and then click **Next**.
+7. **[HPC DB 構成]** ページで、すべての HPC データベースについて **[ヘッド ノード]** が選択されていることを確認し、**[次へ]** をクリックします。
 
-	![DB Configuration][install_hpc4]
+	![DB 構成][install_hpc4]
 
-8. Accept default selections on the remaining pages of the wizard. On the **Install Required Components** page, click **Install**.
+8. ウィザードの残りのページは既定の設定のままにします。**[必要なコンポーネントのインストール]** ページで、**[インストール]** をクリックします。
 
-	![Install][install_hpc6]
+	![インストール][install_hpc6]
 
-9. After the installation completes, uncheck **Start HPC Cluster Manager** and then click **Finish**. (You will start HPC Cluster Manager in a later step to complete the configuration of the head node.)
+9. インストールが完了したら、**[HPC クラスター マネージャーを開始する]** をオフにして、**[完了]** をクリックします (ヘッド ノードの構成を完了するために HPC クラスター マネージャーを後の手順で開始します)。
 
-	![Finish][install_hpc7]
+	![完了][install_hpc7]
 
-<h2 id="BKMK_Prepare">Prepare the Azure subscription</h2>
-Use the [Management Portal](https://manage.windowsazure.com) to perform the following steps with your Azure subscription. These are needed so you can later deploy Azure nodes from the on-premises head node. 
+<h2 id="BKMK_Prepare">Azure サブスクリプションを準備する</h2>
+[管理ポータル](https://manage.windowsazure.com)を使用して、Azure サブスクリプションで次の手順を使用します。これは、後で、内部設置型のヘッド ノードから Azure ノードを展開するために必要です。
 
-- Upload a management certificate (needed for secure connections between the head node and the Azure services)
+- 管理証明書のアップロード (ヘッド ノードと Azure サービス間の接続をセキュリティ保護するために必要です)
  
-- Create an Azure cloud service in which Azure nodes (worker role instances) will run
+- Azure ノード (worker ロール インスタンス) を実行する Azure クラウド サービスの作成
 
-- Create an Azure storage account
+- Azure のストレージ アカウントの作成
 	
-	>[WACOM.NOTE]Also make a note of your Azure subscription ID, which you will need later. Find this in your Azure <a href="[https://account.windowsazure.com/Subscriptions">account information</a>.
+	>[WACOM.NOTE]Azure サブスクリプション ID を記録しておきます。これは後で必要になります。この ID を確認するには、Azure の<a href="[https://account.windowsazure.com/Subscriptions">アカウント情報</a>を調べてください。
 
-<h3>Upload the default management certificate</h3>
-HPC Pack installs a self-signed certificate on the head node, called the Default Microsoft HPC Azure Management certificate, that you can upload as an Azure management certificate. This certificate is provided for testing purposes and proof-of-concept deployments.
+<h3>既定の管理証明書のアップロード</h3>
+HPC Pack ではヘッド ノードに自己署名証明書 (既定の Microsoft HPC Azure 管理証明書) がインストールされます。これを Azure 管理証明書としてアップロードできます。この証明書は、テスト目的および概念実証の展開用に提供されます。
 
-1. From the head node computer, sign in to the [Management Portal](https://manage.windowsazure.com).
+1. ヘッド ノード コンピューターから[管理ポータル](https://manage.windowsazure.com)にサインインします。
 
-2. Click **Settings**, and then click **Management Certificates**.
+2. **[設定]** をクリックし、**[管理証明書]** をクリックします。
 
-3. On the command bar, click **Upload**.
+3. コマンド バーで、**[アップロード]** をクリックします。
 
-	![Certificate Settings][upload_cert1]
+	![証明書の設定][upload_cert1]
 
-4. Browse on the head node for the file C:\Program Files\Microsoft HPC Pack 2012\Bin\hpccert.cer. Then, click the **Check** button.
+4. ヘッド ノードでファイル C:\Program Files\Microsoft HPC Pack 2012\Bin\hpccert.cer を参照し、**チェック マーク**のボタンをクリックします。
 
-	![Upload Certificate][install_hpc10]
+	![証明書のアップロード][install_hpc10]
 
-You will see **Default HPC Azure Management** in the list of management certificates.
+管理証明書のリストに **[既定の Microsoft HPC Azure 管理]** が表示されます。
 
-<h3>Create an Azure cloud service</h3> 
+<h3>Azure クラウド サービスの作成</h3>
 
->[WACOM.NOTE]For best performance, create the cloud service and the storage account in the same geographic region or affinity group (if configured).
+>[WACOM.NOTE]パフォーマンスを最高にするには、クラウド サービスとストレージ アカウントを同じリージョンまたはアフィニティ グループ (構成済みの場合) に作成します。
 
-1. In the Management Portal, on the command bar, click **New**.
+1. 管理ポータルで、コマンド バーの **[新規]** をクリックします。
 
-2. Click **Compute**, click **Cloud Service**, and then click **Quick Create**.
+2. **[コンピューティング]**、**[クラウド サービス]**、**[簡易作成]** の順にクリックします。
 
-3. Type a URL for the cloud service, and then click **Create Cloud Service**.
+3. クラウド サービスの URL を入力し、**[クラウド サービスを作成する]** をクリックします。
 
-	![Create Service][createservice1]
+	![サービスの作成][createservice1]
 
-<h3>Create an Azure storage account</h3>
+<h3>Azure のストレージ アカウントの作成</h3>
 
-1. In the Management Portal, on the command bar, click **New**.
+1. 管理ポータルで、コマンド バーの **[新規]** をクリックします。
 
-2. Click **Data Services**, click **Storage**, and then click **Quick Create**.
+2. **[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
 
-3. Type a URL for the account, and then click **Create Storage Account**.
+3. アカウントの URL を入力し、**[ストレージ アカウントの作成]** をクリックします。
 
-	![Create Storage][createstorage1]
+	![ストレージの作成][createstorage1]
 
-<h2 id="BKMK_ConfigHN">Configure the head node</h2>
+<h2 id="BKMK_ConfigHN">ヘッド ノードを構成する</h2>
 
-To use HPC Cluster Manager to deploy Azure nodes and to submit jobs, first perform some required cluster configuration steps. 
+HPC クラスター マネージャーを使用して Azure ノードを展開し、ジョブを送信するには、最初にクラスターの構成手順をいくつか実行する必要があります。
 
-1. On the head node, start HPC Cluster Manager. If the **Select Head Node** dialog box appears, click **Local Computer**. The **Deployment To-do List** appears.
+1. ヘッド ノードで、HPC クラスター マネージャーを開始します。**[ヘッド ノードの選択]** ダイアログ ボックスが表示されたら、**[ローカル コンピューター]** をクリックします。**[展開作業一覧]** が表示されます。
 
-2. Under **Required deployment tasks**, click **Configure your network**.
+2. **[必須の展開タスク]** で、**[ネットワークの構成]** をクリックします。
 
-	![Configure Network][config_hpc2]
+	![ネットワークの構成][config_hpc2]
 
-3. In the Network Configuration Wizard, select **All nodes only on an enterprise network** (Topology 5).
+3. ネットワーク構成ウィザードで、**[企業ネットワークのみのすべてのノード]** (トポロジ 5) を選択します。
 
-	![Topology 5][config_hpc3] 
+	![トポロジ 5][config_hpc3]
 
-	>[WACOM.NOTE]This is the simplest configuration for demonstration purposes, because the head node only needs a single network adapter to connect to Active Directory and the Internet. This tutorial does not cover cluster scenarios that require additional networks. 
+	>[WACOM.NOTE]これはデモンストレーションを目的とした最も単純な構成であり、ヘッド ノードには、Active Directory とインターネットに接続するための 1 つのネットワーク アダプターのみが必要です。このチュートリアルでは、追加のネットワークを必要とするクラスター シナリオは扱いません。
 	 
-4. Click **Next** to accept default values on the remaining pages of the wizard. Then, on the **Review** tab, click **Configure** to complete the network configuration.
+4. ウィザードの残りのページは既定の設定のままにして **[次へ]** をクリックします。**[レビュー]** タブで、**[構成]** をクリックして、ネットワーク構成を完了します。
 
-5. In the **Deployment To-do List**, click **Provide installation credentials**. 
+5. **[展開作業一覧]** で、**[インストール資格情報の提供]** をクリックします。
 
-6. In the **Installation Credentials** dialog box, type the credentials of the domain account that you used to install HPC Pack. Then click **OK**.
+6. **[インストール資格情報]** ダイアログ ボックスで、HPC Pack のインストールに使用するドメイン アカウントの資格情報を入力します。次に、**[OK]** をクリックします。
 
-	![Installation Credentials][config_hpc6]
+	![インストール資格情報][config_hpc6]
 
-	>[WACOM.NOTE]HPC Pack services only use installation credentials to deploy on-premises compute nodes.
+	>[WACOM.NOTE]HPC Pack サービスでは、インストール資格情報のみを使用して、内部設置型の計算ノードを展開します。
 	
-7. In the **Deployment To-do List**, click **Configure the naming of new nodes**. 
+7. **[展開作業一覧]** で、**[新しいノードの名前付けの構成]** をクリックします。
 
-8. In the **Specify Node Naming Series** dialog box, accept the default naming series and click **OK**.
+8. **[ノードの名前付け系列の指定]** ダイアログ ボックスで、既定の命名系のままにして、**[OK]** をクリックします。
 
-	![Node Naming][config_hpc8]
+	![ノードの名前付け][config_hpc8]
 
-	>[WACOM.NOTE]The naming series only generates names for domain-joined compute nodes. Azure nodes are named automatically.
+	>[WACOM.NOTE]この命名系では、ドメインに参加している計算ノードの名前のみが生成されます。Azure ノードは自動的に命名されます。
 	  
-9. In the **Deployment To-do List**, click **Create a node template**. You will use the node template to add Azure nodes to the cluster.
+9. **[展開作業一覧]** で、**[ノード テンプレートの作成]** をクリックします。ノード テンプレートを使用して、Azure ノードをクラスターに追加します。
 
-10. In the Create Node Template Wizard, do the following:
+10. ノード テンプレートの作成ウィザードで、次の操作を行います。
 
-	a. On the **Choose Node Template Type** page, click **Azure node template**, and then click **Next**.
+	a. **[ノード テンプレートの種類の選択]** ページで、**[Azure ノード テンプレート]** をクリックし、**[次へ]** をクリックします。
 
-	![Node Template][config_hpc10]
+	![ノード テンプレート][config_hpc10]
 
-	b. Click **Next** to accept the default template name.
+	b. **[次へ]** をクリックし、既定のテンプレート名をそのまま使用します。
 
-	c. On the **Provide Subscription Information** page, enter your Azure subscription ID (available in your Azure <a href="[https://account.windowsazure.com/Subscriptions">account information</a>). Then, in **Management certificate**, click **Browse** and select **Default HPC Azure Management.** Then click **Next**.
+	c. **[サブスクリプション情報の入力]** ページで、Azure サブスクリプション ID (Azure の<a href="[https://account.windowsazure.com/Subscriptions">アカウント情報</a>で参照できます) を入力します。次に、**[管理証明書]** で **[参照]** をクリックして、**[既定の Microsoft HPC Azure 管理]** を選択します。その後で **[次へ]** をクリックします。
 
-	![Node Template][config_hpc12]
+	![ノード テンプレート][config_hpc12]
 
-	d. On the **Provide Service Information** page, select the cloud service and the storage account that you created in a previous step. Then click **Next**.
+	d. **[サービス情報の入力]** ページで、前の手順で作成したクラウド サービスとストレージ アカウントを選択します。その後で **[次へ]** をクリックします。
 
-	![Node Template][config_hpc13]
+	![ノード テンプレート][config_hpc13]
 
-	e. Click **Next** to accept default values on the remaining pages of the wizard. Then, on the **Review** tab, click **Create** to create the node template.
+	e. ウィザードの残りのページは既定の設定のままにして **[次へ]** をクリックします。**[レビュー]** タブで、**[作成]** をクリックしてノード テンプレートを作成します。
 
-	>[WACOM.NOTE]By default, the Azure node template includes settings for you to start (provision) and stop the nodes manually. You can also configure a schedule to start and stop the Azure nodes automatically. 
+	>[WACOM.NOTE]既定では、Azure ノード テンプレートに、ノードを手動で開始 (プロビジョニング) および停止するための設定が含まれています。Azure ノードを自動的に開始および停止するスケジュールを構成することもできます。
 	
-<h2 id="#BKMK_worker">Add Azure nodes to the cluster</h2>
+<h2 id="#BKMK_worker">クラスターに Azure ノードを追加する</h2>
 
-You now use the node template to add Azure nodes to the cluster. Adding the nodes to the cluster stores their configuration information so that you can start (provision) them at any time as role instances in the cloud service. Your subscription only gets charged for Azure nodes after the role instances are running in the cloud service.
+ここでは、ノード テンプレートを使用して、Azure ノードをクラスターに追加します。ノードをクラスターに追加すると、ノードの構成情報が保存されるため、ノードをいつでもクラウド サービスのロール インスタンスとして開始 (プロビジョニング) することができます。Azure ノードについてサブスクリプションに課金されるのは、クラウド サービスでロール インスタンスを実行した後だけです。
 
-For this tutorial you will add two Small nodes.
+このチュートリアルでは、2 つの小規模ノードを追加します。
 
-1. In HPC Cluster Manager, in **Node Management**, in the **Actions** pane, click **Add Node**. 
+1. HPC クラスター マネージャーの **[ノード管理]** で、**[アクション]** ウィンドウの **[ノードの追加]** をクリックします。
 
-	![Add Node][add_node1]
+	![ノードの追加][add_node1]
 
-2. In the Add Node Wizard, on the **Select Deployment Method** page, click **Add Azure nodes**, and then click **Next**.
+2. ノードの追加ウィザードの **[展開方法の選択]** ページで、**[Azure ノードの追加]** をクリックして、**[次へ]** をクリックします。
 
-	![Add Azure Node][add_node1_1]
+	![Azure ノードの追加][add_node1_1]
 
-3. On the **Specify New Nodes** page, select the Azure node template you created previously (called by default **Default AzureNode Template**). Then specify **2** nodes of size **Small**, and then click **Next**.
+3. **[新規ノードの追加]** ページで、前に作成した Azure ノード テンプレート (「**既定の AzureNode テンプレート**」という名前が付いています) を選択します。ノードの数に **[2]** を、ノードのサイズに **[S]** を選択し、**[次へ]** ボタンをクリックします。
 
-	![Specify Nodes][add_node2]
+	![ノードの指定][add_node2]
 
-	For details about the available virtual machine sizes, see [Virtual Machine and Cloud Service Sizes for Azure](http://msdn.microsoft.com/library/windowsazure/dn197896.aspx).
+	使用できる仮想マシンのサイズの詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/windowsazure/dn197896.aspx)」を参照してください。
 
-4. On the **Completing the Add Node Wizard** page, click **Finish**. 
+4. **[ノードの追加の完了]** ページで、**[完了]** をクリックします。
 
-	 Two Azure nodes, named **AzureCN-0001** and **AzureCN-0002**, now appear in HPC Cluster Manager. They are both in the **Not-Deployed** state.
+	 HPC クラスター マネージャーに、**AzureCN-0001** と **AzureCN-0002** という名前の 2 つの Azure ノードが表示されます。どちらも **[未展開]** 状態です。
 
-	![Added Nodes][add_node3]
+	![追加されたノード][add_node3]
 
-<h2 id="BKMK_Start">Start the Azure nodes</h2>
-When you want to use the cluster resources in Azure, use HPC Cluster Manager to start (provision) the Azure nodes and bring them online.
+<h2 id="BKMK_Start">Azure ノードを開始する</h2>
+Azure のクラスター リソースを使用する場合、HPC クラスター マネージャーを使用して、Azure ノードを開始 (プロビジョニング) してオンラインにします。
 
-1.	In HPC Cluster Manager, in **Node Management**, click one or both nodes and then, in the **Actions** pane, click **Start**. 
+1.	HPC クラスター マネージャーの **[ノード管理]** で、**[アクション]** ウィンドウに表示されているどちらか 1 つまたは両方のノードをクリックして、**[開始]** をクリックします。
 
-	![Start Nodes][add_node4]
+	![ノードの開始][add_node4]
 
-2. In the **Start Azure Nodes** dialog box, click **Start**.
+2. **[Azure ノードの開始]** ダイアログ ボックスで、**[開始]** をクリックします。
 
-	![Start Nodes][add_node5]
+	![ノードの開始][add_node5]
  
-	The nodes transition to the **Provisioning** state. You can view the provisioning log to track the provisioning progress.
+	ノードが **[プロビジョニング]** 状態に移行します。プロビジョニング ログを表示して、プロビジョニング進捗状況を確認できます。
 
-	![Provision Nodes][add_node6]
+	![ノードのプロビジョニング][add_node6]
 
-3. After a few minutes, the Azure nodes finish provisioning and are in the **Offline** state. In this state the role instances are running but will not yet accept cluster jobs.
+3. 数分後、Azure ノードのプロビジョニングが完了し、ノードが **[オフライン]** 状態になります。この状態では、ロール インスタンスは実行中ですが、クラスター ジョブは受け入れられません。
 
-4. To confirm that the role instances are running, in the [Management Portal](https://manage.windowsazure.com), click **Cloud Services**, click the name of your cloud service, and then click **Instances**. 
+4. ロール インスタンスが実行中であることを確認するために、[管理ポータル](https://manage.windowsazure.com)で、**[クラウド サービス]**、クラウド サービスの名前、**[インスタンス]** を順にクリックします。
 
-	![Running Instances][view_instances1]
+	![実行中のインスタンス][view_instances1]
 
-	You will see two worker role instances are running in the service. HPC Pack also automatically deploys two **HpcProxy** instances (size Medium) to handle communication between the head node and Azure.
+	2 つの worker ロール インスタンスがサービスで実行中であることがわかります。HPC Pack では、ヘッド ノードと Azure 間の通信を処理するために、2 つの **HpcProxy** インスタンス (サイズは M) も自動的に展開されます。
 
-5. To bring the Azure nodes online to run cluster jobs, select the nodes, right-click, and then click **Bring Online**.
+5. Azure ノードをオンラインにしてクラスター ジョブを実行するには、ノードを選択し右クリックして、**[オンラインにする]** をクリックします。
 
-	![Offline Nodes][add_node7]
+	![オフラインのノード][add_node7]
  
-	HPC Cluster Manager indicates that the nodes are in the **Online** state.
+	ノードが **[オンライン]** 状態であることが表示されます。
 
-<h2 id="BKMK_RunCommand">Run a command across the cluster</h2>	
-You can use the HPC Pack **clusrun** command to run a command or application on one or more cluster nodes. As a simple example, use **clusrun** get the IP configuration of the Azure nodes.
+<h2 id="BKMK_RunCommand">クラスター全体にコマンドを実行する</h2>	
+HPC Pack の **clusrun** コマンドを使用すると、1 つ以上のクラスター ノードでコマンドまたはアプリケーションを実行できます。簡単な例として、**clusrun** を使用して、Azure ノードの IP 構成を取得する手順を紹介します。
 
-1. On the head node, open a command prompt.
+1. ヘッド ノードで、コマンド プロンプトを開きます。
 
-2. Type the following command:
+2. 次のコマンドを入力します。
 
 	`clusrun /nodes:azurecn* ipconfig`
 
-3. You will see output similar to the following.
+3. 次のような出力が表示されます。
 
-	![Clusrun][clusrun1]
+	![clusrun][clusrun1]
 
-<h2 id="BKMK_RunJob">Run a test job</h2>
+<h2 id="BKMK_RunJob">テスト ジョブを実行する</h2>
 
-You can submit a test job that runs on the hybrid cluster. This example is a simple "parametric sweep" job (a type of intrinsically parallel computation) which runs subtasks that add an integer to itself by using the **set /a** command. All the nodes in the cluster contribute to finishing the subtasks for integers from 1 to 100. 
+ハイブリッド クラスター上で実行するテスト ジョブを送信できます。この例は単純な "パラメーター スイープ" ジョブ (並列コンピューティングの一種) です。**set /a** コマンドを使用して、自身に整数を追加するサブタスクを実行します。クラスター内のすべてのノードが、1 ～ 100 の整数に関するサブタスクを完了します。
 
-1. In HPC Cluster Manager, in **Job Management**, in the **Actions** pane, click **New Parametric Sweep Job**.
+1. HPC クラスター マネージャーの **[ジョブ管理]** で、**[アクション]** ウィンドウの **[新しいパラメーター スイープ ジョブ]** をクリックします。
 
-	![New Job][test_job1]
+	![新しいジョブ][test_job1]
 
-2. In the **New Parametric Sweep Job** dialog box, in **Command line**, type `set /a *+*` (overwriting the default command line that appears). Leave default values for the remaining settings, and then click **Submit** to submit the job.
+2. **[新しいパラメーター スイープ ジョブ]** ダイアログ ボックスの **[コマンド ライン]** で、「`set /a *+*`」と入力します (表示されている既定のコマンド ラインを上書きしてください)。残りの設定については既定値のままにして、**[送信]** をクリックしてジョブを送信します。
 
-	![Parametric Sweep][param_sweep1]
+	![パラメーター スイープ][param_sweep1]
 
-3. When the job is finished, double-click the **My Sweep Task** job.
+3. ジョブが完了したら、**[マイ スイープ タスク]** ジョブをダブルクリックします。
 
-4. Click **View Tasks**, and then click a subtask to view the calculated output of that subtask.
+4. **[タスクの表示]** をクリックして、サブタスクの計算された出力を表示します。
 
-	![Task Results][view_job361]
+	![タスクの結果][view_job361]
 
-5. To see which node performed the calculation for that subtask, click **Allocated Nodes**. (Your cluster might show a different node name.)
+5. サブタスクの計算を実行したノードを表示するには、**[割り当て済みのノード]** をクリックします (クラスターによっては異なるノード名が表示されます)。
 
-	![Task Results][view_job362]
+	![タスクの結果][view_job362]
 
-<h2 id="BKMK_stop">Stop the Azure nodes</h2>
+<h2 id="BKMK_stop">Azure ノードを停止する</h2>
 
-After you try out the cluster, you can use HPC Cluster Manager to stop the Azure nodes to avoid unnecessary charges to your account. This stops the cloud service and removes the Azure role instances. 
+クラスターを試した後は、HPC クラスター マネージャーを使用して Azure ノードを停止し、アカウントへの不必要な課金を避けることができます。ノードを停止するとクラウド サービスが停止し、Azure ロール インスタンスが削除されます。
 
-1. In HPC Cluster Manager, in **Node Management,** select both Azure nodes. Then, in the **Actions** pane, click **Stop**. 
+1. HPC クラスター マネージャーの **[ノード管理]** で、両方の Azure ノードを選択します。次に、**[操作]** ウィンドウで **[停止]** をクリックします。
 
-	![Stop Nodes][stop_node1]
+	![ノードの停止][stop_node1]
 
-2. In the **Stop Azure Nodes** dialog box, click **Stop**.
+2. **[Azure ノードの停止]** ダイアログ ボックスで、**[停止]** をクリックします。
 
-	![Stop Nodes][stop_node2]
+	![ノードの停止][stop_node2]
 
-3. The nodes transition to the **Stopping** state. After a few minutes, HPC Cluster Manager shows that the nodes are **Not-Deployed**.
+3. ノードが **[停止中]** 状態に移行します。数分後、HPC クラスター マネージャーに、ノードが **[未展開]** 状態であることが表示されます。
 
-	![Not Deployed Nodes][stop_node4]
+	![未配置のノード][stop_node4]
 
-4. To confirm that the role instances are no longer running in Azure, in the [Management Portal](https://manage.windowsazure.com), click **Cloud Services**, click the name of your cloud service, and then click **Instances**. No instances will be deployed in the production environment.
+4. ロール インスタンスが Azure で実行されていないことを確認するために、[管理ポータル](https://manage.windowsazure.com)で、**[クラウド サービス]**、クラウド サービスの名前、**[インスタンス]** を順にクリックします。運用環境にはインスタンスは展開されません。
 
-	![No Instances][view_instances2]
+	![インスタンスなし][view_instances2]
 
-	This completes the tutorial.
+	このチュートリアルはこれで終わりです。
 
-<h2 id="">Related resources</h2>
+<h2 id="">関連リソース</h2>
 
-* [HPC Pack 2012 R2 and HPC Pack 2012](http://go.microsoft.com/fwlink/p/?LinkID=263697)
-* [Burst to Azure with Microsoft HPC Pack](http://go.microsoft.com/fwlink/p/?LinkID=200493)
-* [Deploying Applications to Azure Nodes](http://go.microsoft.com/fwlink/p/?LinkId=325317)
-* [Microsoft HPC Pack in an Azure Virtual Machine](http://go.microsoft.com/fwlink/p/?linkid=330375)
+* [HPC Pack 2012 R2 と HPC Pack 2012](http://go.microsoft.com/fwlink/p/?LinkID=263697)
+* [Microsoft HPC Pack を使用した Azure へのバースト](http://go.microsoft.com/fwlink/p/?LinkID=200493)
+* [Azure ノードへのアプリケーションの展開](http://go.microsoft.com/fwlink/p/?LinkId=325317)
+* [Azure 仮想マシンでの Microsoft HPC Pack](http://go.microsoft.com/fwlink/p/?linkid=330375)
 
 
-[Overview]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/hybrid_cluster_overview.png
+[概要]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/hybrid_クラスター_overview.png
 [install_hpc1]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/install_hpc1.png
 [install_hpc2]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/install_hpc2.png
 [install_hpc3]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/install_hpc3.png
@@ -343,3 +343,4 @@ After you try out the cluster, you can use HPC Cluster Manager to stop the Azure
 [stop_node2]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/stop_node2.png
 [stop_node4]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/stop_node4.png
 [view_instances2]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/view_instances2.png
+

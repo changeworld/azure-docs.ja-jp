@@ -1,32 +1,33 @@
-<properties linkid="manage-linux-common-tasks-user-root-privileges" urlDisplayName="Use root privileges" pageTitle="Use root privileges on Linux virtual machines in Azure" metaKeywords="" description="Learn how to use root privileges on a Linux virtual machine in Azure." metaCanonical="" services="virtual-machines" documentationCenter="" title="Using root privileges on Linux virtual machines in Azure" authors="" solutions="" manager="" editor="" />
+<properties linkid="manage-linux-common-tasks-user-root-privileges" urlDisplayName="root 権限の使用" pageTitle=" Azure 上の Linux 仮想マシンでの root 権限の使用" metaKeywords="" description="Azure 上の Linux 仮想マシンで root 権限を使用する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure 上の Linux 仮想マシンでの root 権限の使用" authors="" solutions="" manager="" editor="" />
 
 
 
 
-#Using root privileges on Linux virtual machines in Azure
+#Azure 上の Linux 仮想マシンでの root 権限の使用
 
-Users can run commands with elevated privileges on a Linux virtual machine using the `sudo` command. However, the experience may vary depending on how the system was provisioned.
+`sudo` コマンドを使用すると、Linux 仮想マシンの昇格した特権でコマンドを実行できます。ただし、システムがプロビジョニングされている方法によって操作が異なります。
 
-1. **SSH key and password or password only** - the virtual machine was provisioned with either a certificate (`.CER` file) as well as a password, or just a user name and password. In this case `sudo` will prompt for the user's password before executing the command.
+1. **SSH キーとパスワード、またはパスワードのみ** - 仮想マシンが証明書 (`.CER` ファイル) とパスワード、またはユーザー名とパスワードだけでプロビジョニングされている場合。この場合は、コマンドを実行する前に `sudo` からユーザーのパスワードの入力が求められます。
 
-2. **SSH key only** - the virtual machine was provisioned with a certificate (`.cer` or `.pem` file), but no password.  In this case `sudo` **will not** prompt for the user's password before executing the command.
-
-
-##SSH Key and Password, or Password Only
-
-Log into the Linux virtual machine using SSH key or password authentication, then run commands using `sudo`, for example:
-
-	# sudo <command>
-	[sudo] password for azureuser:
-
-In this case the user will be prompted for a password. After entering the password `sudo` will run the command with `root` privileges.
+2. **SSH のキーのみ** - 仮想マシンが証明書 (`.cer` ファイルまたは `.pem` ファイル) を使用してプロビジョニングされ、パスワードがない場合。この場合は、コマンドを実行する前に `sudo` からユーザーのパスワードの入力が求められることはありません。
 
 
-##SSH Key Only
+##SSH キーとパスワード、またはパスワードのみ
 
-Log into the Linux virtual machine using SSH key authentication, then run commands using `sudo`, for example:
+SSH キーまたはパスワード認証を使用して Linux 仮想マシンにログオンし、`sudo` を使用してコマンドを実行します。たとえば、次のようになります。
 
-	# sudo <command>
+	# sudo <コマンド>
+	[sudo] azureuser のパスワード
 
-In this case the user will **not** be prompted for a password. After pressing `<enter>`, `sudo` will run the command with `root` privileges.
+この場合はパスワードの入力が求められます。パスワードを入力した後 `sudo` によってコマンドが `root` 権限で実行されます。
+
+
+##SSH キーのみ
+
+SSH キー認証を使用して Linux 仮想マシンにログオンし、`sudo` を使用してコマンドを実行します。たとえば、次のようになります。
+
+	# sudo <コマンド>
+
+この場合はパスワードの入力が求められません。`<Enter>` キーを押した後 `sudo` によってコマンドが `root` 権限で実行されます。
+
 

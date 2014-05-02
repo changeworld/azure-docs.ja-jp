@@ -1,64 +1,65 @@
-<properties linkid="manage-services-mediaservices-create-a-media-services-account" urlDisplayName="How to create" pageTitle="Create a Media Services Account - Azure" metaKeywords="" description="Describes how to create a new Media Services account in Azure." metaCanonical="" services="media-services" documentationCenter="" title="How to Create a Media Services Account" authors="migree" solutions="" manager="" editor="" />
+<properties linkid="manage-services-mediaservices-create-a-media-services-account" urlDisplayName="作成方法" pageTitle="メディア サービス アカウントの作成 - Azure" metaKeywords="" description="Azure で新しいメディア サービス アカウントを作成する方法について説明します。" metaCanonical="" services="media-services" documentationCenter="" title="メディア サービス アカウントの作成方法" authors="migree" solutions="" manager="" editor="" />
 
 
 
 
-#How to Create a Media Services Account
+#メディア サービス アカウントの作成方法
 
-The Azure Management Portal provides a way to quickly create an Azure Media Services account. You can use your account to access Media Services that enable you to store, encrypt, encode, manage, and stream media content in Azure. At the time you create a Media Services account, you also create an associated storage account (or use an existing one) in the same geographic region as the Media Services account. 
+Azure 管理ポータルには、Azure メディア サービス アカウントをすばやく作成する方法が用意されています。アカウントを使用してメディア サービスにアクセスすると、Azure でメディア コンテンツを保存、暗号化、エンコード、管理、およびストリーミングすることができます。メディア サービス アカウントを作成するときは、同時にメディア サービス アカウントと同じリージョンにストレージ アカウントも作成して関連付けます (または既存のストレージ アカウントを使用します)。
 
-This topic explains how to use the Quick Create method to create a new Media Services account and then associate it with a storage account. 
+このトピックでは、簡易作成の方法を使って新しいメディア サービス アカウントを作成し、それをストレージ アカウントに関連付ける方法について説明します。
 
-##Table of Contents
+##目次
 
--  [Concepts][]
--  [How to: Create a Media Services account using Quick Create][]
+-  [概念][]
+-  [方法: 簡易作成を使用してメディア サービス アカウントを作成する][]
 
 
-<h2><a id="concepts"></a>Concepts</h2>
-Accessing Media Services requires two associated accounts:
+<h2><a id="concepts"></a>概念</h2>
+メディア サービスにアクセスするには、関連付けられた次の 2 つのアカウントが必要です。
 
--   **A Media Services account**. Your account gives you access to a set of cloud-based Media Services that are available in Azure. A Media Services account does not store actual media content. Instead it stores metadata about the media content and media processing jobs in your account. At the time you create the account, you select an available Media Services region. The region you select is a data center that stores the metadata records for your account. 
-    - **Note**  Available Media Services regions include the following: **West Europe**, **Southeast Asia**, **East Asia**, **North Europe**, **West US**, **East US**. Media Services does not use affinity groups. 
--   **An associated storage account**. Your storage account is an Azure storage account that is associated with your Media Services account. The storage account provides blob storage for media files, and must be located in the same geographic region as the Media Services account. When you create a Media Services account, you can either choose an existing storage account in the same region, or you can create a new storage account in the same region. If you delete a Media Services account, the blobs in your related storage account are not deleted. 
+-   **メディア サービス アカウント**。アカウントを使用して、Azure で利用可能なクラウド ベースのメディア サービスにアクセスできます。メディア サービス アカウントには実際のメディア コンテンツは保存されません。代わりに、メディア コンテンツに関するメタデータおよびメディア処理ジョブがアカウントに保存されます。アカウントを作成するときに、利用可能なメディア サービス リージョンを選択します。選択したリージョンに、アカウントのメタデータ レコードを保存するデータ センターが配置されます。
+    - **注:** 利用可能なメディア サービス リージョンは、**西ヨーロッパ**、**東南アジア**、**東アジア**、**北ヨーロッパ**、**米国西部**、**米国東部**です。メディア サービスは、アフィニティ グループを使用しません。
+-   **関連付けられたストレージ アカウント**。ストレージ アカウントは、メディア サービス アカウントに関連付けられた Azure ストレージ アカウントです。ストレージ アカウントにはメディア ファイルの BLOB ストレージが用意されます。また、メディア サービス アカウントと同じリージョンに配置する必要があります。メディア サービス アカウントを作成するときに、同じリージョンにある既存のストレージ アカウントを選択することも、同じリージョンに新しいストレージ アカウントを作成することもできます。メディア サービス アカウントを削除しても、関連付けられたストレージ アカウントにある BLOB は削除されません。
 
-<h2><a id="quick"></a>How to: Create a Media Services account using Quick Create</h2>
+<h2><a id="quick"></a>方法: 簡易作成を使用してメディア サービス アカウントを作成する</h2>
 
-1. In the [Management Portal][], click **New**, click **Media Service**, and then click **Quick Create**.
+1. [管理ポータル][]で、**[新規]**、**[メディア サービス]**、**[簡易作成]** の順にクリックします。
    
-	![Media Services Quick Create](./media/media-services-create-account/wams-QuickCreate.png)
+	![メディア サービスの簡易作成](./media/media-services-create-account/wams-QuickCreate.png)
 
-2. In **NAME**, enter the name of the new account. A Media Services account name is all lower-case numbers or letters with no spaces, and is 3 - 24 characters in length. 
+2. **[名前]** ボックスに新しいアカウントの名前を入力します。メディア サービス アカウント名は、使用できる文字が小文字または数字だけで、空白を含めることはできず、長さは 3 ～ 24 文字です。
 
-3. In **REGION**, select the geographic region that will be used to store the metadata records for your Media Services account. Only the available Media Services regions appear in the dropdown. 
+3. **[リージョン]** ボックスで、メディア サービス アカウントのメタデータ レコードを保存するリージョンを選択します。ドロップダウン リストには利用可能なメディア サービス リージョンだけが表示されます。
 
-4. In **STORAGE ACCOUNT**, select a storage account to provide blob storage of the media content from your Media Services account. You can select an existing storage account in the same geographic region as your Media Services account, or you can create a new storage account. A new storage account is created in the same region. 
+4. **[ストレージ アカウント]** ボックスで、メディア サービス アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。メディア サービス アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。
 
-5. If you created a new storage account, in **NEW STORAGE ACCOUNT NAME**, enter a name for the storage account. The rules for storage account names are the same as for Media Services accounts.
+5. 新しいストレージ アカウントを作成した場合は、**[新しいストレージ アカウント名]** ボックスにストレージ アカウントの名前を入力します。ストレージ アカウントの命名規則は、メディア サービス アカウントと同じです。
 
-6. Click **Quick Create** at the bottom of the form.
+6. フォームの下部にある **[簡易作成]** をクリックします。
 
-	You can monitor the status of the process in the message area at the bottom of the window.
+	処理の状態はウィンドウの下部にあるメッセージ領域で監視できます。
 
-	The **media services** page opens with the new account displayed. When the status changes to Active, it means the account is successfully created.
+	**[メディア サービス]** ページが開き、新しいアカウントが表示されます。状態が "有効" に変わると、アカウントが正常に作成されています。
 
-	![Media Services Page](./media/media-services-create-account/wams-mediaservices-page.png)
+	![[メディア サービス] ページ](./media/media-services-create-account/wams-mediaservices-page.png)
 
-	When you double-click on the account name, the Quick Start page is displayed by default. This page enables you to do some management tasks that are also available on other pages of the portal. For example, you can upload a video file from this page, or do it from the CONTENT page.
+	アカウント名をダブルクリックすると、既定で [クイック スタート] ページが表示されます。このページでは、ポータルの別のページでも実行できる管理タスクをいくつか実行できます。たとえば、ビデオ ファイルのアップロードは、このページから実行することも、[コンテンツ] ページから実行することもできます。
 
-	In addition, you can view code that uses Azure Media Services SDK to accomplish the following tasks: upload, encode, and publish videos. You can click on one of the links under WRITE SOME CODE section, copy the code  and use it in your application. 
+	さらに、Azure メディア サービス SDK を使用して、ビデオのアップロード、エンコード、および発行を実行するコードを表示することもできます。[コードを記述] にあるリンクをクリックして、コードをコピーし、それをアプリケーションで使用できます。
 
 
 <!-- Reusable paths. -->
 
 <!-- Anchors. -->
-  [Concepts]: #concepts
-  [Before you begin]: #begin
-  [How to: Create a Media Services account using Quick Create]: #quick
+  [概念]: #concepts
+  [開始する前に]: #begin
+  [方法: 簡易作成を使用してメディア サービス アカウントを作成する]: #quick
 
 <!-- URLs. -->
   [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
   
-  [Management Portal]: http://manage.windowsazure.com/
+  [管理ポータル]: http://manage.windowsazure.com/
+
 
 

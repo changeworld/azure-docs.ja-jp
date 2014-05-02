@@ -1,66 +1,64 @@
-<properties linkid="dev-net-how-to-use-blog-storage-service-java" urlDisplayName="Blob Service" pageTitle="How to use blob storage (Java) | Microsoft Azure" metaKeywords="Get started Azure blob, Azure unstructured data, Azure unstructured storage, Azure blob, Azure blob storage, Azure blob Java" description="Learn how to use the Azure blob service to upload, download, list, and delete blob content. Samples written in Java." metaCanonical="" services="storage" documentationCenter="Java" title="How to use Blob Storage from Java" authors="" solutions="" manager="" editor="" />
+<properties linkid="dev-net-how-to-use-blog-storage-service-java" urlDisplayName="BLOB サービス" pageTitle="BLOB ストレージの使用方法 (Java) | Microsoft Azure" metaKeywords="Azure BLOB の概要, Azure 非構造化データ, Azure 非構造化ストレージ, Azure BLOB, Azure BLOB ストレージ, Azure BLOB Java" description="BLOB サービスを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、および削除する方法を学習します。コード サンプルは Java で記述されています。" metaCanonical="" services="storage" documentationCenter="Java" title="Java から BLOB ストレージを使用する方法" authors="" solutions="" manager="" editor="" />
 
 
 
 
-# How to use Blob Storage from Java
+# Java から BLOB ストレージを使用する方法
 
-This guide will show you how to perform common scenarios using the
-Azure Blob storage service. The samples are written in Java and
-use the [Azure SDK for Java][]. The scenarios covered include
-**uploading**, **listing**, **downloading**, and **deleting** blobs. For
-more information on blobs, see the [Next Steps](#NextSteps) section.
+このガイドでは、Azure BLOB ストレージ サービスを使用して一般的な
+シナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure 
+SDK for Java][] を利用しています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。BLOB 
+の詳細については、「[次のステップ](#NextSteps)」のセクションを参照してください。
 
-## <a name="Contents"> </a>Table of Contents
+## <a name="Contents"> </a>目次
 
-* [What is Blob Storage](#what-is)
-* [Concepts](#Concepts)
-* [Create an Azure storage account](#CreateAccount)
-* [Create a Java application](#CreateApplication)
-* [Configure your application to access Blob Storage](#ConfigureStorage)
-* [Setup an Azure storage connection string](#ConnectionString)
-* [How to: Create a container](#CreateContainer)
-* [How to: Upload a blob into a container](#UploadBlob)
-* [How to: List the blobs in a container](#ListBlobs)
-* [How to: Download a blob](#DownloadBlob)
-* [How to: Delete a blob](#DeleteBlob)
-* [How to: Delete a blob container](#DeleteContainer)
-* [Next steps](#NextSteps)
+* [BLOB ストレージとは](#what-is)
+* [概念](#Concepts)
+* [Azure のストレージ アカウントの作成](#CreateAccount)
+* [Java アプリケーションの作成](#CreateApplication)
+* [BLOB ストレージにアクセスするようにアプリケーションを構成する](#ConfigureStorage)
+* [Azure のストレージ接続文字列の設定](#ConnectionString)
+* [方法: コンテナーを作成する](#CreateContainer)
+* [方法: コンテナーに BLOB をアップロードする](#UploadBlob)
+* [方法: コンテナー内の BLOB を一覧表示する](#ListBlobs)
+* [方法: BLOB をダウンロードする](#DownloadBlob)
+* [方法: BLOB を削除する](#DeleteBlob)
+* [方法: BLOB コンテナーを削除する](#DeleteContainer)
+* [次のステップ](#NextSteps)
 
 [WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
-<h2><a id="CreateAccount"></a>Create an Azure storage account</h2>
+<h2><a id="CreateAccount"></a>Azure のストレージ アカウントの作成</h2>
 
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## <a name="CreateApplication"> </a>Create a Java application
+## <a name="CreateApplication"></a>Java アプリケーションの作成
 
-In this guide, you will use storage features which can be run within a
-Java application locally, or in code running within a web role or worker
-role in Azure. We assume you have downloaded and installed the
-Java Development Kit (JDK), and followed the instructions in [Download
-the Azure SDK for Java][Azure SDK for Java] to install
-the Azure Libraries for Java and the Azure SDK, and have
-created an Azure storage account in your Azure
-subscription.
+このガイドで使用するストレージ機能は、Java アプリケーション内でローカルで
+実行することも、Azure の Web ロールまたはワーカー ロールで動作するコード内で
+実行することもできます。前提条件として、Java Development Kit (JDK) を
+ダウンロードしてインストールしているとします。また、[Azure SDK for Java の
+ページ][Azure SDK for Java]の指示に従って、Azure Libraries for Java と Azure SDK をインストール
+し、Azure サブスクリプションに Azure ストレージ アカウントを作成していると
+します。
 
-You can use any development tools to create your application, including
-Notepad. All you need is the ability to compile a Java project and
-reference the Azure Libraries for Java.
+アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。要件
+は、Java プロジェクトをコンパイルできること、および Azure Libraries for Java 
+を参照できることのみです。
 
-## <a name="ConfigureStorage"> </a>Configure your application to access Blob Storage
+## <a name="ConfigureStorage"></a>BLOB ストレージにアクセスするようにアプリケーションを構成する
 
-Add the following import statements to the top of the Java file where
-you want to use Azure storage APIs to access blobs:
+Azure ストレージ API を使用して BLOB にアクセスする Java ファイルの先頭には、
+次の import ステートメントを追加します。
 
     // Include the following imports to use blob APIs
     import com.microsoft.windowsazure.services.core.storage.*;
     import com.microsoft.windowsazure.services.blob.client.*;
 
-## <a name="ConnectionString"> </a>Setup an Azure storage connection string
+## <a name="ConnectionString"></a>Azure のストレージ接続文字列の設定
 
-An Azure storage client uses a storage connection string to store
-endpoints and credentials for accessing data management services. When running in a client application, you must provide the storage connection string in the following format, using the name of your storage account and the Primary access key for the storage account listed in the Management Portal for the *AccountName* and *AccountKey* values. This example shows how you can declare a static field to hold the connection string:
+Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ
+管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。クライアント アプリケーションの実行時、ストレージ接続文字列を次の形式で指定する必要があります。*AccountName* と *AccountKey* の値には、管理ポータルに表示されるストレージ アカウントの名前とプライマリ アクセス キーを使用します。この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
     // Define the connection-string with your values
     public static final String storageConnectionString = 
@@ -68,21 +66,20 @@ endpoints and credentials for accessing data management services. When running i
         "AccountName=your_storage_account;" + 
         "AccountKey=your_storage_account_key";
 
-In an application running within a role in Azure, this string
-can be stored in the service configuration file,
-ServiceConfiguration.cscfg, and can be accessed with a call to the
-**RoleEnvironment.getConfigurationSettings** method. Here's an example
-of getting the connection string from a **Setting** element named
-*StorageConnectionString* in the service configuration file:
+Azure 上のロール内で実行されるアプリケーションでは、この文字列はサービス
+構成ファイルである ServiceConfiguration.cscfg に格納でき、
+**RoleEnvironment.getConfigurationSettings** メソッドの呼び出しを使用
+してアクセスできます。次の例では、サービス構成ファイル内の 
+*StorageConnectionString* という名前の **Setting** 要素から接続文字列
+を取得しています。
 
     // Retrieve storage account from connection-string
     String storageConnectionString = 
         RoleEnvironment.getConfigurationSettings().get("StorageConnectionString");
 
-## <a name="CreateContainer"> </a>How to: Create a container
+## <a name="CreateContainer"></a>方法: コンテナーを作成する
 
-A CloudBlobClient object lets you get reference objects for containers
-and blobs. The following code creates a **CloudBlobClient** object.
+CloudBlobClient オブジェクトを使用すると、コンテナーと BLOB の参照オブジェクトを取得できます。次のコードでは、**CloudBlobClient** オブジェクトを作成しています。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount =
@@ -91,12 +88,12 @@ and blobs. The following code creates a **CloudBlobClient** object.
     // Create the blob client
     CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
 
-All blobs reside in a container. Use the **CloudBlobClient** object to
-get a reference to the container you want to use. You can create the
-container if it doesn't exist with the **createIfNotExist** method,
-which will otherwise return the existing container. By default, the new
-container is private, so you must specify your storage access key (as
-you did above) to download blobs from this container.
+BLOB はすべてコンテナー内に格納されます。**CloudBlobClient** オブジェクトにより、
+使用するコンテナーへの参照を取得します。コンテナーが存在しない場合は、
+**createIfNotExist** メソッドを使用して作成できます。存在する場合は、この
+メソッドによって既存のコンテナーが返されます。既定では、新しいコンテナーは
+プライベートであるため、このコンテナーから BLOB をダウンロードするには
+ストレージ アクセス キーを指定する必要があります (前と同じ方法で)。
 
     // Get a reference to a container
     // The container name must be lower case
@@ -105,8 +102,8 @@ you did above) to download blobs from this container.
     // Create the container if it does not exist
     container.createIfNotExist();
 
-If you want to make the files public, you can set the container's
-permissions.
+コンテナー内のファイルを公開する場合は、コンテナーのアクセス許可を設定でき
+ます。
 
     // Create a permissions object
     BlobContainerPermissions containerPermissions = new BlobContainerPermissions();
@@ -117,17 +114,17 @@ permissions.
     // Set the permissions on the container
     container.uploadPermissions(containerPermissions);
 
-Anyone on the internet can see blobs in a public container, but public
-access is limited to reading only.
+パブリック コンテナー内の BLOB は、インターネットに接続しているすべての
+ユーザーが表示できますが、パブリック アクセスは読み取り専用に制限されます。
 
-## <a name="UploadBlob"> </a>How to: Upload a blob into a container
+## <a name="UploadBlob"></a>方法: コンテナーに BLOB をアップロードする
 
-To upload a file to a blob, get a container reference and use it to get
-a blob reference. Once you have a blob reference, you can upload any
-stream by calling upload on the blob reference. This operation will
-create the blob if it doesn't exist, or overwrite it if it does. This
-code sample shows this, and assumes that the container has already been
-created.
+ファイルを BLOB にアップロードするには、コンテナーの参照を取得し、それを
+使用して BLOB の参照を取得します。BLOB の参照を取得したら、BLOB 参照時に 
+upload を呼び出すことで、任意のストリームを BLOB にアップロードできます。この
+処理により、BLOB が存在しない場合は作成され、存在する場合は上書きされます。
+このコード サンプルはこのことを示しており、既にコンテナーが作成されている
+ことを前提としています。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount =
@@ -144,12 +141,12 @@ created.
     File source = new File("c:\\myimages\\myimage.jpg");
     blob.upload(new FileInputStream(source), source.length());
 
-## <a name="ListBlobs"> </a>How to: List the blobs in a container
+## <a name="ListBlobs"></a>方法: コンテナー内の BLOB を一覧表示する
 
-To list the blobs in a container, first get a container reference like
-you did to upload a blob. You can use the container's **listBlobs**
-method with a for loop. The following code outputs the Uri of each blob
-in a container to the console.
+コンテナー内の BLOB を列挙するには、BLOB のアップロード時と同様に、まず
+コンテナーの参照を取得します。コンテナーの **listBlobs** メソッドを for ループ
+と共に使用できます。次のコードでは、コンテナー内の各 BLOB の URI を
+コンソールに出力しています。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount =
@@ -166,35 +163,34 @@ in a container to the console.
         System.out.println(blobItem.getUri());
     }
 
-The blob service has the concept of directories within containers, as
-well. This is so that you can organize your blobs in a more folder-like
-structure.
+BLOB サービスには、コンテナー内のディレクトリという概念もあり
+ます。これは、BLOB をよりフォルダーに近い構造で整理できるように
+するためです。
 
-For example, you could have a container named "photos", in which you
-might upload blobs named "rootphoto1", "2010/photo1", "2010/photo2", and
-"2011/photo1". This would create the virtual directories "2010" and
-"2011" within the "photos" container. When you call **listBlobs** on the
-"photos" container, the collection returned will contain
-**CloudBlobDirectory** and **CloudBlob** objects representing the
-directories and blobs contained at the top level. In this case,
-directories "2010" and "2011", as well as photo "rootphoto1" would be
-returned. You can use the **instanceof** operator to distinguish these
-objects.
+たとえば、"photos" という名前のコンテナーを作成して、その中に "rootphoto1"、
+"2010/photo1"、"2010/photo2"、および "2011/photo1" という名前の BLOB を
+アップロードすることができます。このようにすると、"photos" コンテナー内に 
+"2010" および "2011" という仮想ディレクトリが作成されます。"photos" コンテナー
+の **listBlobs** を呼び出すと、返されるコレクションには
+最上位レベルにある
+ディレクトリおよび BLOB を表す **CloudBlobDirectory** および **CloudBlob** 
+オブジェクトが含まれています。この例の場合は、ディレクトリ "2010" および 
+"2011" と、写真 "rootphoto1" が返されます。**instanceof** 演算子を使用して
+これらのオブジェクトを区別できます。
 
-Optionally, you can pass in parameters to the **listBlobs** method with
-the **useFlatBlobListing** parameter set to true. This will result in
-every blob being returned, regardless of directory. For more
-information, see CloudBlobContainer.listBlobs in the Javadocs
-documentation.
+必要に応じて、**listBlobs** メソッドにパラメーターを渡すことができます。その
+ためには、**useFlatBlobListing** パラメーターに true を設定しておく必要があり
+ます。これにより、ディレクトリに関係なく、すべての BLOB が返されるようになり
+ます。詳細については、Javadoc ドキュメントの CloudBlobContainer.listBlobs 
+に関するページを参照してください。
 
-## <a name="DownloadBlob"> </a>How to: Download a blob
+## <a name="DownloadBlob"></a>方法: BLOB をダウンロードする
 
-To download blobs, follow the same steps as you did for uploading a blob
-in order to get a blob reference. In the uploading example, you called
-upload on the blob object. In the following example, call download to
-transfer the blob contents to a stream object such as a
-**FileOutputStream** that you can use to persist the blob to a local
-file.
+BLOB をダウンロードするには、BLOB の参照を取得するために BLOB をアップ
+ロードしたときと同じ手順に従います。アップロードの例では、BLOB オブジェクト
+の upload を呼び出しました。次の例では、download を呼び出して BLOB の
+内容を **FileOutputStream** などのストリーム オブジェクトに転送しています。
+このオブジェクトは BLOB をローカル ファイルに保持するために使用できます。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount =
@@ -216,9 +212,9 @@ file.
         }
     }
 
-## <a name="DeleteBlob"> </a>How to: Delete a blob
+## <a name="DeleteBlob"></a>方法: BLOB を削除する
 
-To delete a blob, get a blob reference, and call **delete**.
+BLOB を削除するには、BLOB の参照を取得し、**delete** メソッドを呼び出します。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount =
@@ -236,10 +232,10 @@ To delete a blob, get a blob reference, and call **delete**.
     // Delete the blob
     blob.delete();
 
-## <a name="DeleteContainer"> </a>How to: Delete a blob container
+## <a name="DeleteContainer"></a>方法: BLOB コンテナーを削除する
 
-Finally, to delete a blob container, get a blob container reference, and
-call delete.
+最後に、BLOB コンテナーを削除するには、BLOB コンテナーの参照を取得し、
+delete を呼び出します。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount =
@@ -254,15 +250,14 @@ call delete.
     // Delete the blob container
     container.delete();
 
-## <a name="NextSteps"> </a>Next steps
+## <a name="NextSteps"></a>次のステップ
 
-Now that you've learned the basics of blob storage, follow these links
-to learn how to do more complex storage tasks.
+これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   See the MSDN Reference: [Storing and Accessing Data in Windows
-    Azure]
--   Visit the Azure Storage Team Blog: <http://blogs.msdn.com/b/windowsazurestorage/>
+-   MSDN リファレンス: [Azure のデータの格納とアクセス]
+-   Azure のストレージ チーム ブログ: <http://blogs.msdn.com/b/windowsazurestorage/>
 
 
-[Azure SDK for Java]: http://www.windowsazure.com/en-us/develop/java/
-[Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+[Azure SDK for Java]: http://www.windowsazure.com/ja-jp/develop/java/
+[Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+

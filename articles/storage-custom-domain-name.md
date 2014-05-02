@@ -1,145 +1,145 @@
-<properties linkid="manage-services-storage-custom-dns-storage" urlDisplayName="custom dns storage" pageTitle="Configure a domain name for blob data in a storage account | Microsoft Azure" metaKeywords="" description="Learn how to configure a custom domain for accessing blob data in an Azure storage account." metaCanonical="" services="storage" documentationCenter="" title="Configure a custom domain name for blob data in a storage account" authors="tamram" solutions="" manager="mbaldwin" editor="cgronlun" />
+<properties linkid="manage-services-storage-custom-dns-storage" urlDisplayName="custom dns storage" pageTitle="ストレージ アカウントの BLOB データのドメイン名の構成 | Microsoft Azure" metaKeywords="" description="Azure ストレージ アカウントの BLOB データにアクセスするためのカスタム ドメインを構成する方法を説明します。" metaCanonical="" services="storage" documentationCenter="" title="ストレージ アカウントの BLOB データのカスタム ドメイン名の構成" authors="tamram" solutions="" manager="mbaldwin" editor="cgronlun" />
 
 
-# Configure a custom domain name for blob data in an Azure storage account
-You can configure a custom domain for accessing blob data in your Azure storage account. The default endpoint for the Blob service is https://<*mystorageaccount*>.blob.core.windows.net. If you map a custom domain and subdomain such as **www.contoso.com** to the blob endpoint for your storage account, then your users can also access blob data in your storage account using that domain. 
+# Azure ストレージ アカウントの BLOB データのカスタム ドメイン名の構成
+Azure ストレージ アカウントの BLOB データにアクセスするためのカスタム ドメインを構成できます。BLOB サービスの既定のエンドポイントは https://<*mystorageaccount*>.blob.core.windows.net です。**www.contoso.com** などのカスタム ドメインおよびサブドメインをストレージ アカウントの BLOB エンドポイントにマッピングしている場合、ユーザーはそのドメインを使って、ストレージ アカウントの BLOB データにもアクセスできます。
 
 <div class="dev-callout"> 
-<b>Note</b> 
-	<p>The procedures in this task apply to Azure storage accounts. For cloud services, see <a href = "/en-us/develop/net/common-tasks/custom-dns/">Configuring a Custom Domain Name for an Azure Cloud Service</a>; for Web Sites, see <a href="/en-us/develop/net/common-tasks/custom-dns-web-site/">Configuring a Custom Domain Name for an Azure Web Site</a>.</p> 
+<b>注</b>
+	<p>このタスクの手順は、Azure ストレージ アカウントに適用されます。クラウド サービスの場合は「<a href = "/ja-jp/develop/net/common-tasks/custom-dns/">Azure クラウド サービスのカスタム ドメイン名の構成</a>」を、Web サイトの場合は「<a href="/ja-jp/develop/net/common-tasks/custom-dns-web-site/">Azure の Web サイトのカスタム ドメイン名の構成</a>」を参照してください。</p>
 </div>
 
-There are two ways to point your custom domain to the blob endpoint for your storage account. The simplest way is to create a CNAME record mapping your custom domain and subdomain to the blob endpoint. A CNAME record is a DNS feature that maps a source domain to a destination domain. In this case, the source domain is your custom domain and subdomain--note that the subdomain is always required. The destination domain is your Blob service endpoint.
+ストレージ アカウントの BLOB エンドポイントをカスタム ドメインで参照するには、2 つの方法があります。最も簡単な方法は、CNAME レコードを作成して、カスタム ドメインおよびサブドメインを BLOB エンドポイントにマッピングすることです。CNAME レコードは、ソース ドメインを目的のドメインにマッピングする DNS 機能です。この場合、ソース ドメインは、カスタム ドメインおよびサブドメインです。サブドメインは常に必要であることに注意してください。目的のドメインは、BLOB サービス エンドポイントです。
 
-The process of mapping your custom domain to your blob endpoint can, however, result in a brief period of downtime for the domain while you are registering the domain in the Azure Management Portal. If your custom domain is currently supporting an application with a service-level agreement (SLA) that requires that there be no downtime, then you can use the Azure **asverify** subdomain to provide an intermediate registration step so that users will be able to access your domain while the DNS mapping takes place.
+ただし、カスタム ドメインを BLOB エンドポイントにマッピングする処理によって、Azure 管理ポータルでのドメインの登録中にドメインが短時間ダウンする場合があります。カスタム ドメインが現在、ダウンタイムが発生しないことを要求するサービス レベル アグリーメント (SLA) のアプリケーションをサポートしている場合は、DNS マッピングの実行中にユーザーがドメインにアクセスできるように、Azure **asverify** サブドメインを使用して中間登録ステップを提供できます。
 
-The following table shows sample URLs for accessing blob data in a storage account named **mystorageaccount**. The custom domain registered for the storage account is **www.contoso.com**:
+次の表は、**mystorageaccount** というストレージ アカウントの BLOB データにアクセスするためのサンプル URL を示します。ストレージ アカウントに登録されているカスタム ドメインは **www.contoso.com** です。
 
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 	<tbody>
 		<tr>
-			<td style="width: 100px;"><strong>Resource Type</strong></td>
-			<td><strong>URL Formats</strong></td>
+			<td style="width: 100px;"><strong>リソースの種類</strong></td>
+			<td><strong>URL の形式</strong></td>
 		</tr>
 		<tr>
-			<td>Storage account</td>
-			<td><strong>Default URL:</strong> http://mystorageaccount.blob.core.windows.net<br />
-			<strong>Custom domain URL:</strong> http://www.contoso.com</td>
+			<td>ストレージ アカウント</td>
+			<td><strong>既定の URL:</strong> http://mystorageaccount.blob.core.windows.net<br />
+			<strong>カスタム ドメインの URL:</strong> http://www.contoso.com</td>
 		</tr>
 		<tr>
-			<td>Blob</td>
-			<td><strong>Default URL:</strong> http://mystorageaccount.blob.core.windows.net/mycontainer/myblob<br /><strong>Custom domain URL:</strong>
+			<td>BLOB</td>
+			<td><strong>既定の URL:</strong> http://mystorageaccount.blob.core.windows.net/mycontainer/myblob<br /><strong>カスタム ドメインの URL:</strong> 
 			http://www.contoso.com/mycontainer/myblob</td>
 		</tr>
 		<tr>
-			<td>Root container</td>
-			<td><strong>Default URL:</strong> http://mystorageaccount.blob.core.windows.net/myblob 
-			<br/>or<br />
+			<td>ルート コンテナー</td>
+			<td><strong>既定の URL:</strong> http://mystorageaccount.blob.core.windows.net/myblob
+			<br/>または<br />
 			http://mystorageaccount.blob.core.windows.net/$root/myblob<br />
-			<strong>Custom domain URL:</strong> http://www.contoso.com/myblob
-			<br/>or<br />
+			<strong>カスタム ドメインの URL:</strong> http://www.contoso.com/myblob
+			<br/>または<br />
 			http://www.contoso.com/$root/myblob</td>
 		</tr>
 	</tbody>
 </table>
 
-This task will show you how to:
+ここでは、次の操作方法について説明します。
 
 
 
-- <a href="#register-domain">Register a custom domain for your storage account</a>
-- <a href="#register-asverify">Register a custom domain for your storage account using the intermediary asverify subdomain</a>
-- <a name="#verify-subdomain">Verify that the custom domain references your Blob service endpoint</a>
+- <a href="#register-domain">ストレージ アカウントのカスタム ドメインの登録</a>
+- <a href="#register-asverify">中間 asverify サブドメインを使用したストレージ アカウントのカスタム ドメインの登録</a>
+- <a name="#verify-subdomain">カスタム ドメインが BLOB サービス エンドポイントを参照することの確認</a>
 
-<h2><a name="register-domain"></a>Register a custom domain for your storage account</h2>
+<h2><a name="register-domain"></a>ストレージ アカウントのカスタム ドメインの登録</h2>
 
-Use this procedure to register your custom domain if you do not have concerns about having the domain be briefly unavailable to users, or if your custom domain is not currently hosting an application. 
+ユーザーが短時間、ドメインを使用できなくても問題ではない場合、またはカスタム ドメインが現在、アプリケーションのホストでない場合は、この手順でカスタム ドメインを登録します。
 
-If your custom domain is currently supporting an application that cannot have any downtime, then use the procedure outlined in <a href="#register-asverify">Register a custom domain for your storage account using the intermediary asverify subdomain</a>.
+カスタム ドメインが現在、ダウンタイムの発生が許容されないアプリケーションをサポートしている場合は、「<a href="#register-asverify">中間 asverify サブドメインを使用したストレージ アカウントのカスタム ドメインの登録</a>」で説明している手順に従ってください。
 
-To configure a custom domain name, you must create a new CNAME record with your domain registrar. The CNAME record specifies an alias for a domain name; in this case it maps the address of your custom domain to the the Blob service endpoint for your storage account.
+カスタム ドメイン名を構成するには、ドメイン レジストラーで新しい CNAME レコードを作成する必要があります。CNAME レコードによって、ドメイン名のエイリアスが指定されます。この場合、カスタム ドメインのアドレスが、ストレージ アカウントの BLOB サービス エンドポイントにマッピングされます。
 
-Each registrar has a similar but slightly different method of specifying a CNAME record, but the concept
-is the same. Note that many basic domain registration packages do not offer DNS configuration, so you may need to upgrade your domain registration package before you can create the CNAME record. 
+それぞれのレジストラーでは CNAME レコードを指定するための同様の (多少異なる) 手段が用意されていますが、その概念は同じです。多くの基本ドメイン登録パッケージには DNS 構成が用意されていないため、CNAME レコードを作成するには、事前にドメイン登録パッケージのアップグレードが必要である可能性があります。
 
-1.  In the Azure Management Portal, navigate to the **Storage** tab.
+1. Azure 管理ポータルで **[ストレージ]** タブに移動します。
 
-2.  In the **Storage** tab, click the name of the storage account for which you want to map the custom domain.
+2. **[ストレージ]** タブで、カスタム ドメインをマッピングするストレージ アカウントの名前をクリックします。
 
-3.  Click the **Configure** tab.
+3. **[構成]** タブをクリックします。
 
-4.  At the bottom of the screen click **Manage Domain** to display the **Manage Custom Domain** dialog. In the text at the top of the dialog, you'll see information on how to create the CNAME record. For this procedure, ignore the text that refers to the **asverify** subdomain.
+4. 画面の下部で、**[ドメインの管理]** をクリックして **[カスタム ドメインの管理]** ダイアログを表示します。ダイアログ上部のテキストには、CNAME レコードの作成方法に関する情報が含まれています。この手順では、**asverify** サブドメインに関するテキストは無視してください。
 
-5.  Log on to your DNS registrar's web site, and go to the page for
-    managing DNS. You might find this in a section such as **Domain
-    Name**, **DNS**, or **Name Server Management**.
+5. DNS レジストラーの Web サイトにログオンし、DNS の管理ページに
+移動します。これは、"**ドメイン名**"、"**DNS**"、"**ネーム サーバー管理**" 
+などのセクションにあります。
 
-6.  Find the section for managing CNAMEs. You may have to go to an
-    advanced settings page and look for the words **CNAME**, **Alias**,
-    or **Subdomains**.
+6. CNAME 管理セクションを見つけます。詳細設定ページに進み、
+    "**CNAME**"、"**エイリアス**"、"**サブドメイン**" などの語句
+    を探します。
 
-7.  Create a new CNAME record, and provide a subdomain alias, such as **www** or **photos**. Then
-    provide a host name, which is your Blob service endpoint, in the format **mystorageaccount.blob.core.windows.net** (where **mystorageaccount** is the name of your storage account). The host name to use is provided for you in the text of the **Manage Custom Domain** dialog.
+7. 新しい CNAME レコードを作成し、"**www**" や "**photos**" などのサブドメイン エイリアスを指定します。そして、
+    **mystorageaccount.blob.core.windows.net** (ここで、**mystorageaccount** はストレージ アカウントの名前です) という形式でホスト名を指定します。これは、BLOB サービス エンドポイントです。使用するホスト名は、**[カスタム ドメインの管理]** ダイアログ内のテキストに含まれています。
 
-8.  After you have created the CNAME record, return to the **Manage Custom Domain** dialog, and enter the name of your custom domain, including the subdomain, in the **Custom Domain Name** field. For example, if your domain is **contoso.com** and your subdomain is **www**, enter **www.contoso.com**; if your subdomain is **photos**, enter **photos.contoso.com**. Note that the subdomain is required.
+8. 新しい CNAME レコードを作成したら、**[カスタム ドメインの管理]** ダイアログに戻り、サブドメインを含むカスタム ドメイン名を **[カスタム ドメイン名]** フィールドに入力します。たとえば、ドメインが "**contoso.com**" で、サブドメインが "**www**" の場合は、"**www.contoso.com**" と入力します。サブドメインが "**photos**" の場合は、"**photos.contoso.com**" と入力します。サブドメインは必須であることに注意してください。
 
-9. Click the **Register** button to register your custom domain. 
+9. **[登録]** ボタンをクリックしてカスタム ドメインを登録します。
 
-	If the registration is successful, you will see the message **Your custom domain is active**. Users can now view blob data on your custom domain, so long as they have the appropriate permissions. 
+	登録が成功すると、**"カスタム ドメインはアクティブです"** というメッセージが表示されます。これで、ユーザーは、適切なアクセス許可を持っている限り、カスタム ドメインの BLOB データを表示できます。
 
-<h2><a name="register-asverify"></a>Register a custom domain for your storage account using the intermediary asverify subdomain</h2>
+<h2><a name="register-asverify"></a>中間 asverify サブドメインを使用したストレージ アカウントのカスタム ドメインの登録</h2>
 
-Use this procedure to register your custom domain if your custom domain is currently supporting an application with an SLA that requires that there be no downtime. By creating a CNAME that points from asverify.&lt;subdomain&gt;.&lt;customdomain&gt; to asverify.&lt;storageaccount&gt;.blob.core.windows.net, you can pre-register your domain with Azure. You can then create a second CNAME that points from &lt;subdomain&gt;.&lt;customdomain&gt; to &lt;storageaccount&gt;.blob.core.windows.net, at which point traffic to your custom domain will be directed to your blob endpoint.
+カスタム ドメインが現在、ダウンタイムが発生しないことが SLA で要求されているアプリケーションをサポートしている場合は、この手順でカスタム ドメインを登録します。asverify.&lt;subdomain&gt;.&lt;customdomain&gt; から asverify.&lt;storageaccount&gt;.blob.core.windows.net を指す CNAME を作成すると、ドメインを Azure に事前登録できます。そして、&lt;subdomain&gt;.&lt;customdomain&gt; から &lt;storageaccount&gt;.blob.core.windows.net を指す、もう 1 つの CNAME を作成します。このポイントから、カスタム ドメインへのトラフィックが BLOB エンドポイントにダイレクトされます。
 
-The asverify subdomain is a special subdomain recognized by Azure. By prepending **asverify** to your own subdomain, you permit Azure to recognize your custom domain without modifying the DNS record for the domain. Once you do modify the DNS record for the domain, it will be mapped to the blob endpoint with no downtime.
+asverify サブドメインは、Azure で認識される特殊なサブドメインです。自分のサブドメインの前に **asverify** を付けると、ドメインの DNS レコードを変更しなくても、カスタム ドメインが Azure に認識されます。ドメインの DNS レコードを変更すると、ダウンタイムが発生することなく、ドメインが BLOB エンドポイントにマッピングされます。
 
-1.  In the Azure Management Portal, navigate to the **Storage** tab.
+1. Azure 管理ポータルで **[ストレージ]** タブに移動します。
 
-2.  In the **Storage** tab, click the name of the storage account for which you want to map the custom domain.
+2. **[ストレージ]** タブで、カスタム ドメインをマッピングするストレージ アカウントの名前をクリックします。
 
-3.  Click the **Configure** tab.
+3. **[構成]** タブをクリックします。
 
-4.  At the bottom of the screen click **Manage Domain** to display the **Manage Custom Domain** dialog. In the text at the top of the dialog, you'll see information on how to create the CNAME record using the **asverify** subdomain.
+4. 画面の下部で、**[ドメインの管理]** をクリックして **[カスタム ドメインの管理]** ダイアログを表示します。ダイアログ上部のテキストには、**asverify** サブドメインを使用して CNAME レコードを作成する方法に関する情報が含まれます。
 
-5.  Log on to your DNS registrar's web site, and go to the page for
-    managing DNS. You might find this in a section such as **Domain
-    Name**, **DNS**, or **Name Server Management**.
+5. DNS レジストラーの Web サイトにログオンし、DNS の管理ページに
+    移動します。これは、"**ドメイン名**"、"**DNS**"、"**ネーム サーバー管理**" 
+などのセクションにあります。
 
-6.  Find the section for managing CNAMEs. You may have to go to an
-    advanced settings page and look for the words **CNAME**, **Alias**,
-    or **Subdomains**.
+6. CNAME 管理セクションを見つけます。詳細設定ページに進み、
+    "**CNAME**"、"**エイリアス**"、"**サブドメイン**" などの語句
+    を探します。
 
-7.  Create a new CNAME record, and provide a subdomain alias that includes the asverify subdomain. For example, the subdomain you specify will be in the format **asverify.www** or **asverify.photos**. Then
-    provide a host name, which is your Blob service endpoint, in the format **asverify.mystorageaccount.blob.core.windows.net** (where **mystorageaccount** is the name of your storage account). The host name to use is provided for you in the text of the **Manage Custom Domain** dialog.
+7. 新しい CNAME レコードを作成し、asverify サブドメインを含むサブドメイン エイリアスを指定します。たとえば、指定するサブドメインは、"**asverify.www**" または "**asverify.photos**" という形式になります。そして、
+    **mystorageaccount.blob.core.windows.net** (ここで、**asverify.mystorageaccount** はストレージ アカウントの名前です) という形式でホスト名を指定します。これは、BLOB サービス エンドポイントです。使用するホスト名は、**[カスタム ドメインの管理]** ダイアログ内のテキストに含まれています。
 
-8.  After you have created the CNAME record, return to the **Manage Custom Domain** dialog, and enter the name of your custom domain in the **Custom Domain Name** field. For example, if your domain is **contoso.com** and your subdomain is **www**, enter **www.contoso.com**; if your subdomain is **photos**, enter **photos.contoso.com**. Note that the subdomain is required.
+8. 新しい CNAME レコードを作成したら、**[カスタム ドメインの管理]** ダイアログに戻り、カスタム ドメイン名を **[カスタム ドメイン名]** フィールドに入力します。たとえば、ドメインが "**contoso.com**" で、サブドメインが "**www**" の場合は、"**www.contoso.com**" と入力します。サブドメインが "**photos**" の場合は、"**photos.contoso.com**" と入力します。サブドメインは必須であることに注意してください。
 
-9.	Click the checkbox that says **Advanced: Use the 'asverify' subdomain to preregister my custom domain**. 
+9.	**[高度: 'asverify' サブドメインを使ってカスタム ドメインを事前登録する]** チェックボックスをクリックします。
 
-10. Click the **Register** button to preregister your custom domain. 
+10. **[登録]** ボタンをクリックしてカスタム ドメインを事前登録します。
 
-	If the preregistration is successful, you will see the message **Your custom domain is active**. 
+	事前登録が成功すると、**"カスタム ドメインはアクティブです"** というメッセージが表示されます。
 
-11. At this point, your custom domain has been verified by Azure, but traffic to your domain is not yet being routed to your storage account. To complete the process, return to your DNS registrar's web site, and create another CNAME record that maps your subdomain to your Blob service endpoint. For example, specify the subdomain as **www** or **photos**, and the hostname as **mystorageaccount.blob.core.windows.net** (where **mystorageaccount** is the name of your storage account). With this step, the registration of your custom domain is complete.
+11. この時点で、カスタム ドメインは Azure によって確認されていますが、ドメインへのトラフィックは、まだストレージ アカウントへはルーティングされません。処理を完了するには、DNS レジストラーの Web サイトに戻り、サブドメインを BLOB サービス エンドポイントにマッピングする別の CNAME レコードを作成します。たとえば、"**www**" または "**photos**" というサブドメインと、"**mystorageaccount.blob.core.windows.net**" (ここで、"**mystorageaccount**" はストレージ アカウントの名前です) というホスト名を指定します。この手順で、カスタム ドメインの登録が完了します。
 
-12. Finally, you can delete the CNAME record you created using **asverify**, as it was necessary only as an intermediary step.
+12. 最後に、**asverify** を使って作成した CNAME レコードを削除します。このレコードは、中間の手順としてだけ必要であったためです。
 
-Users can now view blob data on your custom domain, so long as they have the appropriate permissions.
+これで、ユーザーは、適切なアクセス許可を持っている限り、カスタム ドメインの BLOB データを表示できます。
 
 <a name="verify-subdomain"> </a>
 
-<h2>Verify that the custom domain references your Blob service endpoint</h2>
+<h2>カスタム ドメインが BLOB サービス エンドポイントを参照することの確認</h2>
 
-To verify that your custom domain is indeed mapped to your Blob service endpoint, create a blob in a public container within your storage account. Then, in a web browser, use a URI in the following format to access the blob:
+カスタム ドメインが実際に BLOB サービス エンドポイントにマッピングされていることを確認するために、ストレージ アカウントのパブリック コンテナーで BLOB を作成します。そして、Web ブラウザーで、次の形式の URI を使って BLOB にアクセスします。
 
 -   http://<*subdomain.customdomain*>/<*mycontainer*>/<*myblob*>
 
-For example, you might use the following URI to access a web form via a
-**photos.contoso.com** custom subdomain that maps to a blob in your
-**myforms** container:
+たとえば、myforms コンテナー内の BLOB にマップされている 
+**photos.contoso.com** カスタム サブドメイン経由で Web フォームにアクセスするには、
+次の URI を入力します。****
 
 -   http://photos.contoso.com/myforms/applicationform.htm
 
-## Additional Resources
+## その他のリソース
 
--   <a href="http://msdn.microsoft.com/en-us/library/windowsazure/gg680307.aspx">How to Map CDN Content to a Custom Domain</a>
+-   <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/gg680307.aspx">CDN コンテンツをカスタム ドメインにマッピングする方法</a>
+
