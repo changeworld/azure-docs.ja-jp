@@ -475,7 +475,7 @@ readCustomer() メソッドは Azure でホストされたクラスターにア�
 	   con.shutdown();
 	} 
 
-Modify  casdemo.js to add the above function and call it after commenting the previously called createKeyspace() method as shown below:
+下に示したように casdemo.js を変更して、上の関数を追加し、先に呼び出した createKeyspace() メソッドをコメントにして、上の関数を呼び出します。
 
 	casdemo.js: 
 	var pooledCon = require('cassandra-client').PooledConnection;
