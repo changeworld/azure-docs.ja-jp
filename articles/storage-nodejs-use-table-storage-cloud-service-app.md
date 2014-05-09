@@ -1,120 +1,118 @@
-<properties linkid="dev-nodejs-basic-web-app-with-storage" urlDisplayName="Web App with Storage" pageTitle="Web app with table storage (Node.js) | Microsoft Azure" metaKeywords="Azure Node.js hello world tutorial, Azure Node.js hello world, Azure Node.js Getting Started tutorial, Azure Node.js tutorial, Azure Node.js Express tutorial" description="A tutorial that builds on the Web App with Express tutorial by adding Azure Storage services and the Azure module." metaCanonical="" services="cloud-services,storage" documentationCenter="Node.js" title="Node.js Web Application using Storage" authors="" solutions="" manager="" editor="" />
+<properties linkid="dev-nodejs-basic-web-app-with-storage" urlDisplayName="ストレージを使用する Web アプリケーション" pageTitle="テーブル ストレージを使用する Web アプリケーション (Node.js) | Microsoft Azure" metaKeywords="Azure Node.js Hello World チュートリアル, Azure Node.js Hello World, Azure Node.js 概要チュートリアル, Azure Node.js チュートリアル, Azure Node.js Express チュートリアル" description="Express を使用する Web アプリケーションのチュートリアルを基に、Azure ストレージ ストレージ サービスと Azure モジュールを追加したチュートリアル。" metaCanonical="" services="cloud-services,storage" documentationCenter="Node.js" title="ストレージを使用する Node.js Web アプリケーション" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
+# ストレージを使用する Node.js Web アプリケーション
 
-# Node.js Web Application using Storage
+このチュートリアルでは、Node.js 用の Azure クライアント ライブラリを
+使用して、[Express を使用する Node.js Web アプリケーション]のチュートリアルで
+作成したアプリケーションを拡張し、データ管理サービスを使用できるようにします。アプリケーションを
+拡張して、Azure に展開できる Web ベースのタスク一覧アプリケーションを
+作成します。このタスク一覧では、ユーザーが
+タスクの取得、新しいタスクの追加、タスクの完了済みのマーク付けを実行できます。
 
-In this tutorial, you will extend the application created in the
-[Node.js Web Application using Express] tutorial by using the Windows
-Azure Client Libraries for Node.js to work with data management services. You
-will extend your application to create a web-based task-list application
-that you can deploy to Azure. The task list allows a user to
-retrieve tasks, add new tasks, and mark tasks as completed.
+タスク項目は Azure ストレージに格納されます。Azure 
+ストレージは、フォールト トレランスと可用性に優れた非構造化データ 
+ストレージです。Azure ストレージには、データを格納してアクセス
+できるデータ構造がいくつか用意されています。Azure SDK for Node.js に
+含まれる API または REST API を通じて、そのストレージ サービスを
+活用できます。詳細については、「[Azure のデータの格納とアクセス]」を参照してください。
 
-The task items are stored in Azure Storage. Azure
-Storage provides unstructured data storage that is fault-tolerant and
-highly available. Azure Storage includes several data structures
-where you can store and access data, and you can leverage the storage
-services from the APIs included in the Azure SDK for Node.js or
-via REST APIs. For more information, see [Storing and Accessing Data in Azure].
+このチュートリアルは、[Node.js Web アプリケーション]および [Express を使用する Node.js][Node.js Web Application using Express] のチュートリアルを完了していることを前提としています。
 
-This tutorial assumes that you have completed the [Node.js Web
-Application] and [Node.js with Express][Node.js Web Application using Express] tutorials.
+学習内容:
 
-You will learn:
+-   Jade テンプレート エンジンを操作する方法
+-   Azure データ管理サービスを操作する方法
 
--   How to work with the Jade template engine
--   How to work with Azure Data Management services
+完成したアプリケーションのスクリーンショットは次のようになります。
 
-A screenshot of the completed application is below:
+![Internet Explorer で表示された完成した Web ページ](./media/storage-nodejs-use-table-storage-cloud-service-app/getting-started-1.png)
 
-![The completed web page in internet explorer](./media/storage-nodejs-use-table-storage-cloud-service-app/getting-started-1.png)
+## Web.Config のストレージ資格情報の設定
 
-## Setting Storage Credentials in Web.Config
-
-To access Azure Storage, you need to pass in storage
-credentials. To do this, you utilize web.config application settings.
-Those settings will be passed as environment variables to Node, which
-are then read by the Azure SDK.
+Azure ストレージにアクセスするには、ストレージ資格情報を
+渡す必要があります。そのためには、web.config アプリケーション設定を使用します。
+これらの設定は環境変数としてノードに渡され、その後 
+Azure SDK によって読み取られます。
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>Storage credentials are only used when the application is
-deployed to Azure. When running in the emulator, the application
-will use the storage emulator.</p>
+<strong>注</strong>
+<p>ストレージの資格情報は、アプリケーションを Azure に展開する
+ときにのみ使用されます。エミュレーターで実行している場合、アプリケーションは
+ストレージ エミュレーターを使用します。</p>
 </div>
 
-Perform the following steps to retrieve the storage account credentials
-and add them to the web.config settings:
+ストレージ アカウントの資格情報を取得して web.config 設定に追加するには、
+次の手順を実行します。
 
-1.  If it is not already open, start the Azure PowerShell from the **Start** menu by expanding **All Programs, Azure**, right-click **Azure PowerShell**, and then select **Run As Administrator**.
+1.  Azure PowerShell をまだ開いていない場合は起動します。**[スタート]** メニューで **[すべてのプログラム]、[Azure]** の順に展開し、**[Azure PowerShell]** を右クリックして、**[管理者として実行]** を選択します。
 
-2.  Change directories to the folder containing your application. For example, C:\\node\\tasklist\\WebRole1.
+2.  アプリケーションが含まれているフォルダーに移動します。たとえば、C:\\node\\tasklist\\WebRole1 です。
 
-3.  From the Azure Powershell window enter the following cmdlet to retrieve the storage account information:
+3.  Azure Powershell ウィンドウで次のコマンドレットを入力して、ストレージ アカウント情報を取得します。
 
         PS C:\node\tasklist\WebRole1> Get-AzureStorageAccounts
 
-	This retrieves the list of storage accounts and account keys associated with your hosted service.
+	これにより、ホステッド サービスに関連付けられたストレージ アカウントとアカウント キーのリストが取得されます。
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>Since the Azure SDK creates a storage account when you deploy a service, a storage account should already exist from deploying your application in the previous guides.</p>
+	<strong>注</strong>
+	<p>Azure SDK では、サービスを展開するときにストレージ アカウントが作成されるので、以前のガイドでアプリケーションを展開したときから、ストレージ アカウントは既に存在しています。</p>
 	</div>
 
-4.  Open the web.cloud.config file containing the environment settings that are used when the application is deployed to Azure:
+4.  web.cloud.config ファイルを開きます。このファイルには、アプリケーションを Azure に展開するときに使用される環境設定が含まれます。
 
         PS C:\node\tasklist\WebRole1> notepad web.cloud.config
 
-5.  Insert the following block under **configuration** element, substituting {STORAGE ACCOUNT} and {STORAGE ACCESS KEY} with the account name and the primary key for the storage account you want to use for deployment:
+5.  次のブロックを **configuration** 要素の下に挿入し、{STORAGE ACCOUNT} と {STORAGE ACCESS KEY} を、展開に使用するストレージ アカウントのアカウント名とプライマリ キーに置き換えます。
 
         <appSettings>
           <add key="AZURE_STORAGE_ACCOUNT" value="{STORAGE ACCOUNT}"/>
           <add key="AZURE_STORAGE_ACCESS_KEY" value="{STORAGE ACCESS KEY}"/>
         </appSettings>
 
-	![The web.cloud.config file contents](./media/storage-nodejs-use-table-storage-cloud-service-app/node37.png)
+	![web.cloud.config ファイルの内容](./media/storage-nodejs-use-table-storage-cloud-service-app/node37.png)
 
-6.  Save the file and close notepad.
+6.  ファイルを保存して、メモ帳を閉じます。
 
-## Install Modules
+## モジュールのインストール
 
-In order to use Azure Data Management services, you must install the
-Azure module for node. You must also install the node-uuid module, as
-this will be used to generate universally unique identifiers (UUIDs). To
-install these modules, enter the command below:
+Azure データ管理サービスを使用するには、ノード用の Azure モジュールを
+インストールする必要があります。node-uuid モジュールもインストールする必要が
+あります。これは汎用一意識別子 (UUID) を生成するために使用されます。これらの
+モジュールをインストールするには、次のコマンドを入力します。
 
     PS C:\node\tasklist\WebRole1> npm install node-uuid azure
 
-After the command completes, the modules have been added to the
-**node\_modules** folder. Perform the following steps to make use of
-these modules in your application:
+コマンドが完了すると、モジュールが 
+**node\_modules** フォルダーに追加されます。アプリケーションでこれらのモジュールを使用する
+には、次の手順を実行します。
 
-1.  Open the server.js file:
+1.  server.js ファイルを開きます。
 
         PS C:\node\tasklist\WebRole1> notepad server.js
 
-2.  Add the code below after the line that ends with express.createServer() to include the node-uuid, home, and azure  modules. The home module does not exist yet, but you will create it shortly.
+2.  以下のコードを、express.createServer() で終わっている行の後に追加して、node-uuid、home、および azure の各モジュールをインクルードします。まだ home モジュールはありませんが、すぐ後で作成します。
 
-	![The server.js code with line app = modules.exports line highlighted](./media/storage-nodejs-use-table-storage-cloud-service-app/node38.png)
+	![server.js コードの app = modules.exports の行を強調表示](./media/storage-nodejs-use-table-storage-cloud-service-app/node38.png)
 
         var uuid = require('node-uuid');
         var Home = require('./home');
         var azure = require('azure');
 
-3.  Add code to create a storage table client passing in storage account and access key information.
+3.  ストレージ アカウントとアクセス キー情報を渡してストレージ テーブル クライアントを作成するコードを追加します。
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>When running in the emulator, the SDK will automatically use the emulator even though storage account information has been provided via web.config.</p>
+	<strong>注</strong>
+	<p>エミュレーターで実行している場合、web.config でストレージ アカウント情報が提供されている場合でも、SDK は自動的にエミュレーターを使用します。</p>
 	</div>
 
         var client = azure.createTableService();
 
-4.  Next, create a table in Azure Storage called tasks. The logic below creates a new table if it doesn't exist, and populates the table with some default data.
+4.  次に、Azure ストレージで tasks という名前のテーブルを作成します。以下のロジックでは、このテーブルが存在しない場合は新しく作成し、テーブルに既定のデータを入力します。
 
         //table creation
         client.createTableIfNotExists('tasks', function(error){
@@ -135,31 +133,31 @@ these modules in your application:
 
         });
 
-5.  Replace the existing code in the route section with the code below, which creates a home controller instance and routes all requests to **/** or **/home** to it.
+5.  route セクションの既存のコードを次のコードに置き換えます。このコードは、home コントローラー インスタンスを作成し、**/** または **/home** に対するすべての要求をこのインスタンスにルーティングします。
 
-	![The server.js file with the routes section highlighted.](./media/storage-nodejs-use-table-storage-cloud-service-app/node39.png)
+	![server.js ファイルの routes セクションを強調表示.](./media/storage-nodejs-use-table-storage-cloud-service-app/node39.png)
 
         var home = new Home(client);
         app.get('/', home.showItems.bind(home));
         app.get('/home', home.showItems.bind(home));
 
-	Notice that instead of handling the request inline, you are now delegating the command to a Home object. The **bind** command is necessary to ensure that these references are properly resolved locally within the home controller.
+	要求をインラインで処理する代わりに、コマンドを Home オブジェクトにデリゲートしています。**bind** コマンドは、これらの参照が home コントローラー内でローカルに正しく解決されるようにするために必要です。
 
-## Creating the Home Controller
+## home コントローラーの作成
 
-You must now create a home controller, which handles all requests for
-the task list site. Perform the following steps to create the
-controller:
+ここで、タスク一覧サイトに対するすべての要求を処理する、home コントローラーを
+作成する必要があります。コントローラーを作成するには、次の手順を
+実行します。
 
-1.  Create a new home.js file in Notepad. This file will contain the
-    controller code that hands the logic for the task list.
+1.  メモ帳で新しい home.js ファイルを作成します。このファイルには、タスク一覧の
+    ロジックを処理するコントローラー コードを含めます。
 
         PS C:\node\tasklist\WebRole1> notepad home.js
 
-2.  Replace the contents with the code below and save the file. The code
-    below uses the javascript module pattern. It exports a Home
-    function. The Home prototype contains the functions to handle the
-    actual requests.
+2.  内容を次のコードに置き換えて、ファイルを保存します。以下のコードでは、
+    javascript モジュール パターンを使用しています。それによって Home 
+    関数がエクスポートされます。Home プロトタイプには、実際の要求を処理する関数が
+    含まれています。
 
         var azure=require('azure');
         module.exports = Home;
@@ -198,34 +196,34 @@ controller:
              },
         };
 
-	Your home controller now includes three functions:
+	これで、home コントローラーには 3 つの関数が追加されました。
 
-	-   *showItems* handles the request.
-	-   *getItems* uses the table client to retrieve open task items
-        from your tasks table. Notice that the query can have additional
-        filters applied; for example, the above query filters only show
-        tasks where completed is equal to false.
-	-   *showResults* calls the Express render function to render the
-        page using the home view that you will create in the next
-        section.
+	-   *showItems* は要求を処理します。
+	-   *getItems* は、テーブル クライアントを使用して、開かれている
+        タスク項目をタスク テーブルから取得します。クエリでは追加のフィルターを適用できます。
+        たとえば、前のクエリ フィルターを適用した場合、completed が 
+        false であるタスクのみが表示されます。
+	-   *showResults* は、Express のレンダリング関数を呼び出し、
+        次のセクションで作成する home ビューを使用してページを
+        レンダリングします。
 
-### Modifying the Home View
+### home ビューの変更
 
-The Jade template engine uses a markup syntax that is less verbose than
-HTML and it is the default engine for working with Express. Perform the
-following steps to create a view that supports displaying task-list
-items:
+Jade テンプレート エンジンでは、HTML よりも簡潔なマークアップ構文を使用します。
+Jade は Express を操作するための既定のエンジンです。タスク一覧の
+項目の表示をサポートするビューを作成するには、次の手順を実行
+します。
 
-1.  From the Windows PowerShell command window, edit home.jade file by
-    using the following command:
+1.  Windows PowerShell コマンド ウィンドウで、次のコマンドを使用して、
+    home.jade ファイルを編集します。
 
         PS C:\node\tasklist\WebRole1\views> notepad home.jade
 
-2.  Replace the contents of the home.jade file with the code below and
-    save the file. The form below contains functionality for reading and
-    updating the task items. (Note that currently the home controller
-    only supports reading; you will change this later.) The form
-    contains details for each item in the task list.
+2.  home.jade ファイルの内容を次のコードに置き換えて、ファイルを
+    保存します。以下のフォームには、タスク項目の読み取りと更新の
+    機能が含まれます (ただし、現時点で home コントローラーがサポート
+    しているのは読み取りだけです。これは後で変更します)。このフォームには、
+    タスク一覧内の各項目の詳細が含まれます。
 
         html
         head
@@ -249,33 +247,33 @@ items:
                                 td 
                                     input(type="checkbox", name="completed", value="#{item.RowKey}") 
 
-## Running the Application in the Compute Emulator
+## コンピューティング エミュレーターでのアプリケーションの実行
 
-1.  In the Windows PowerShell window, enter the following cmdlet to
-    launch your service in the compute emulator and display a web page
-    that calls your service.
+1.  Windows PowerShell ウィンドウで次のコマンドレットを入力して、
+    コンピューティング エミュレーターでサービスを起動し、サービスの呼び出し元の 
+    Web ページを表示します。
 
         PS C:\node\tasklist\WebRole1> Start-AzureEmulator -launch
 
-	Your browser displays the following page, showing the task item that was retrieved from Azure Storage:
+	ブラウザーに次のページが表示され、Azure ストレージから取得されたタスク項目が表示されます。
 
-	![Internet explorer displaying a My Tasklist page with one item in a table.](./media/storage-nodejs-use-table-storage-cloud-service-app/node40.png)
+	![Internet Explorer でテーブル内に項目を 1 つ含む "My Tasklist" ページを表示.](./media/storage-nodejs-use-table-storage-cloud-service-app/node40.png)
 
-## Adding New Task Functionality
+## タスクの新規作成機能の追加
 
-In this section you update the application to support adding new task
-items.
+このセクションでは、新しいタスク項目の追加をサポートするようにアプリケーションを
+更新します。
 
-### Adding a New Route to Server.js
+### server.js への新しいルートの追加
 
-In the server.js file, add the following line after the last route entry
-for **/home**, and then save the file.
+server.js ファイルで、**/home** の最後の route エントリの後に
+次の行を追加し、ファイルを保存します。
 
-![The server.js file with the line containing the route for home highlighted.](./media/storage-nodejs-use-table-storage-cloud-service-app/node41.png)
+![server.js ファイルの home のルートを含む行を強調表示.](./media/storage-nodejs-use-table-storage-cloud-service-app/node41.png)
 
         app.post('/home/newitem', home.newItem.bind(home));
 
-	The routes section should now look as follows:
+	ルート セクションは次のようになります。
 
        // Routes
 
@@ -284,23 +282,23 @@ for **/home**, and then save the file.
        app.get('/home', home.showItems.bind(home));
        app.post('/home/newitem', home.newItem.bind(home));
 
-### Adding the Node-UUID Module
+### node-uuid モジュールの追加
 
-To use the node-uuid module to create a unique identifier, add the
-following line at the top of the home.js file after the first line where
-the module is exported.
+node-uuid モジュールを使用して一意識別子を作成するには、
+home.js ファイルの先頭で、モジュールがエクスポートされている最初の行の
+後に、次の行を追加します。
 
-![The home.js file with the line module.exports = Home highlighted.](./media/storage-nodejs-use-table-storage-cloud-service-app/node42.png)
+![home.js ファイルの module.exports = Home の行を強調表示.](./media/storage-nodejs-use-table-storage-cloud-service-app/node42.png)
 
        var uuid = require('node-uuid');
 
-### Adding the New Item Function to Home Controller
+### home コントローラーへの項目の新規作成関数の追加
 
-To implement the new item functionality, create a **newItem** function.
-In your home.js file, paste the following code after the last function
-and then save the file.
+項目の新規作成機能を実装するには、**newItem** 関数を作成します。
+home.js ファイルで、最後の関数の後に次のコードを貼り付け、
+ファイルを保存します。
 
-![The showresults function is highlighted](./media/storage-nodejs-use-table-storage-cloud-service-app/node43.png)
+![showResults 関数を強調表示](./media/storage-nodejs-use-table-storage-cloud-service-app/node43.png)
 
        newItem: function (req, res) {
            var self = this;
@@ -327,26 +325,26 @@ and then save the file.
            this.getItems(true, createItem);
        },
 
-The **newItem** function performs the following tasks:
+**newItem** 関数は、次のタスクを実行します。
 
--   Extracts the posted item from the body.
--   Sets the **RowKey** and **PartitionKey** values for the new item.
-    These values are required to insert the item into the Azure
-    table. A UUID is generated for the **RowKey** value.
--   Inserts the item into the tasks table by calling the
-    **insertEntity** function.
--   Renders the page by calling the **getItems** function.
+-   ポストされた項目を本体から抽出します。
+-   新しい項目の **RowKey** 値と **PartitionKey** 値を設定します。
+    これらの値は、項目を Azure テーブルに挿入するうえで
+    必要です。UUID は **RowKey** 値に対して生成されます。
+-   **insertEntity** 関数を呼び出して、項目を 
+    tasks テーブルに挿入します。
+-   **getItems** 関数を呼び出して、ページをレンダリングします。
 
-### Adding the New Item Form to the Home View
+### home ビューへの項目の新規作成フォームの追加
 
-Now, update the view by adding a new form to allow the user to add an
-item. In the home.jade file, paste the following code at the end of the
-file and save.
+項目の追加機能を備えた新しいフォームを追加して、ビューを更新
+します。home.jade ファイルで、ファイルの末尾に次のコードを貼り付け、
+ファイルを保存します。
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>In Jade, whitespace is significant, so do not
-remove any of the spacing below.</p>
+<strong>注</strong>
+<p>Jade ではスペースに意味があるため、以下の
+スペースはどれも削除しないでください。</p>
 </div>
 
         hr
@@ -366,74 +364,75 @@ remove any of the spacing below.</p>
                         input(name="item[date]", type="textbox")
             input(type="submit", value="Add item")
 
-### Running the Application in the Emulator
+### エミュレーターでのアプリケーションの実行
 
-1.  Because the Azure emulator is already running, you can
-    browse the updated application:
+1.  Azure エミュレーターは既に実行されているので、更新された
+    アプリケーションを表示できます。
 
         PS C:\node\tasklist\WebRole1> start http://localhost:81/home
 
-	The browser opens and displays the following page:
+	ブラウザーが開き、次のページが表示されます。
 
-	![A web paged titled My Task List with a table containing tasks and fields to add a new task.](./media/storage-nodejs-use-table-storage-cloud-service-app/node44.png)
+	![My Task List というタイトルの Web ページと、タスクおよび新しいタスクを追加するためのフィールドを含むテーブル.](./media/storage-nodejs-use-table-storage-cloud-service-app/node44.png)
 
-2.  Enter for **Item Name:** "New task functionality", **Item Category:** "Site work"?, and for **Item Date:** "12/02/2011". Then click **Add item**.
+2.  **[Item Name]** に「New task functionality」、**[Item Category]** に「Site work」、**[Item Date]** に「12/02/2011」と入力します。次に、**[Add item]** をクリックします。
 
-	The item is added to your tasks table in Azure Storage and displayed as shown in the screenshot below.
+	Azure ストレージの tasks テーブルに項目が追加され、以下のスクリーンショットのように表示されます。
 
-	![A web page titled My Task List with a table containing tasks, after you have added a task to the list.](./media/storage-nodejs-use-table-storage-cloud-service-app/node45.png)
+	![一覧にタスクを追加した後の、My Task List というタイトルの Web ページとタスクが格納されたテーブル](./media/storage-nodejs-use-table-storage-cloud-service-app/node45.png)
 
-## Re-Publishing the Application to Azure
+##Azure へのアプリケーションの再発行
 
-Now that the application is completed, publish it to Azure by
-updating the deployment to the existing hosted service.
+アプリケーションが完成したので、既存のホステッド サービスへの
+展開を更新して、アプリケーションを Azure に発行します。
 
-1.  In the Windows PowerShell window, call the following cmdlet to
-    redeploy your hosted service to Azure. Your storage settings
-    and location were previous saved and do not need to be re-entered.
+1.  Windows PowerShell ウィンドウで、次のコマンドレットを呼び出して
+    ホステッド サービスを Azure に再展開します。ストレージの設定と
+    場所は以前に保存されているので、再入力する必要はありません。
 
         PS C:\node\tasklist\WebRole1> Publish-AzureServiceProject -name myuniquename -location datacentername -launch
 
-	After the deployment is complete, you should see a response similar to the following:
+	デプロイが完了すると、次のような応答が表示されます。
 
-	![the status messages displayed during deployment.](./media/storage-nodejs-use-table-storage-cloud-service-app/node35.png)
+	![デプロイ中に表示されるステータス メッセージ](./media/storage-nodejs-use-table-storage-cloud-service-app/node35.png)
 
-	As before, because you specified the **-launch** option, the browser opens and displays your application running in Azure when publishing is completed.
+	前と同様に **–launch** オプションを指定してあるので、発行が完了するとブラウザーが開かれ、Azure で実行されているアプリケーションが表示されます。
 
-	![A browser window displaying the My Task List page. The URL indicates the page is now being hosted on Azure.](./media/storage-nodejs-use-table-storage-cloud-service-app/node47.png)
+	![My Task List ページを表示しているブラウザー ウィンドウ。URL から、ページが Azure でホストされていることがわかります](./media/storage-nodejs-use-table-storage-cloud-service-app/node47.png)
 
-## Stopping and Deleting Your Application
+## アプリケーションの停止と削除
 
-After deploying your application, you may want to disable it so you can
-avoid costs or build and deploy other applications within the free trial
-time period.
+アプリケーションの展開後に、コストがかかることを避けたり、無料評価版の
+有効期間中に他のアプリケーションを作成して展開したりするために、
+アプリケーションを無効にしたい場合があります。
 
-Azure bills web role instances per hour of server time consumed.
-Server time is consumed once your application is deployed, even if the
-instances are not running and are in the stopped state.
+Azure では、消費されたサーバー時間の 1 時間単位の料金が Web ロール インスタンスに課金されます。
+いったんアプリケーションを展開すると、インスタンスが実行されていない場合や
+停止状態の場合でもサーバー時間が消費されます。
 
-The following steps show you how to stop and delete your application.
+次の手順では、アプリケーションの停止と削除の方法を示します。
 
-1.  In the Windows PowerShell window, stop the service deployment
-    created in the previous section with the following cmdlet:
+1.  Windows PowerShell ウィンドウで次のコマンドレットを実行し、
+    前のセクションで作成したサービスの展開を停止します。
 
         PS C:\node\tasklist\WebRole1> Stop-AzureService
 
-	Stopping the service may take several minutes. When the service is stopped, you receive a message indicating that it has stopped.
+	サービスの停止には、数分間かかる場合があります。サービスが停止すると、停止したことを知らせるメッセージが表示されます。
 
-	![Status messages indicating the service has stopped.](./media/storage-nodejs-use-table-storage-cloud-service-app/node48.png)
+	![サービスが停止したことを示すステータス メッセージ](./media/storage-nodejs-use-table-storage-cloud-service-app/node48.png)
 
-3.  To delete the service, call the following cmdlet:
+3.  サービスを削除するには、次のコマンドレットを呼び出します。
 
         PS C:\node\tasklist\WebRole1> Remove-AzureService contosotasklist
 
-	When prompted, enter **Y** to delete the service.
+	確認を求めるメッセージが表示されたら、「**Y**」と入力して、サービスを削除します。
 
-	Deleting the service may take several minutes. After the service has been deleted you receive a message indicating that the service was deleted.
+	サービスの削除には、数分間かかる場合があります。サービスが削除されると、削除されたことを知らせるメッセージが表示されます。
 
-	![Status messages indicating the service has been deleted.](./media/storage-nodejs-use-table-storage-cloud-service-app/node49.png)
+	![サービスが削除されたことを示すステータス メッセージ](./media/storage-nodejs-use-table-storage-cloud-service-app/node49.png)
 
-  [Node.js Web Application using Express]: http://www.windowsazure.com/en-us/develop/nodejs/tutorials/web-app-with-express/
-  [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
-  [Node.js Web Application]: http://www.windowsazure.com/en-us/develop/nodejs/tutorials/getting-started/
+  [Express を使用する Node.js Web アプリケーション]: http://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/web-app-with-express/
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+  [Node.js Web アプリケーション]: http://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/getting-started/
  
+

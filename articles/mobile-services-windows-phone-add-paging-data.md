@@ -1,12 +1,12 @@
-<properties pageTitle="Add paging to data (Windows Phone) | Mobile Dev Center" metaKeywords="" description="Learn how to use paging to manage the amount of data returned to your Windows Phone app from Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="Refine Mobile Services queries with paging" authors="glenga" solutions="" manager="" editor="" />
+<properties pageTitle="データへのページングの追加 (Windows Phone) | モバイル デベロッパー センター" metaKeywords="" description="ページングを使用して、モバイル サービスから Windows Phone アプリケーションに返されるデータの量を管理する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="ページングを使用したモバイル サービス クエリの改善" authors="glenga" solutions="" manager="" editor="" />
 
-# Refine Mobile Services queries with paging
+# ページングを使用したモバイル サービス クエリの改善
 
-> [AZURE.SELECTOR-LIST (Platform | Backend )]
-- [(Windows Store C# | .NET)](mobile-services-dotnet-backend-windows-store-dotnet-add-paging-data.md)
-- [(Windows Store C# | JavaScript)](mobile-services-windows-store-dotnet-add-paging-data.md)
-- [(Windows Store JavaScript | .NET)](mobile-services-dotnet-backend-windows-store-javascript-add-paging-data.md)
-- [(Windows Store JavaScript | JavaScript)](mobile-services-windows-store-javascript-add-paging-data.md)
+> [AZURE.SELECTOR-LIST (プラットフォーム | バックエンド)]
+- [(Windows ストア C# | .NET)](mobile-services-dotnet-backend-windows-store-dotnet-add-paging-data.md)
+- [(Windows ストア C# | JavaScript)](mobile-services-windows-store-dotnet-add-paging-data.md)
+- [(Windows ストア JavaScript | .NET)](mobile-services-dotnet-backend-windows-store-javascript-add-paging-data.md)
+- [(Windows ストア JavaScript | JavaScript)](mobile-services-windows-store-javascript-add-paging-data.md)
 - [(Windows Phone | .NET)](mobile-services-dotnet-backend-windows-phone-add-paging-data)
 - [(Windows Phone | JavaScript)](mobile-services-windows-phone-add-paging-data)
 - [(iOS | JavaScript)](mobile-services-ios-add-paging-data)
@@ -16,36 +16,37 @@
 - [(Xamarin Android | .NET)](partner-xamarin-mobile-services-android-add-paging-data)
 
 
-This topic shows you how to use paging to manage the amount of data returned to your Windows Phone app from Azure Mobile Services. In this tutorial, you will use the **Take** and **Skip** query methods on the client to request specific "pages" of data.
+このトピックでは、ページングを使用して、Azure のモバイル サービスから Windows Phone アプリケーションに返されるデータの量を管理する方法について説明します。このチュートリアルでは、クライアントで **Take** および **Skip** クエリ メソッドを使用して、データの特定の "ページ" を要求します。
 
->[WACOM.NOTE]To prevent data overflow in mobile device clients, Mobile Services implements an automatic page limit, which defaults to a maximum of 50 items in a response. By specifying the page size, you can explicitly request up to 1,000 items in the response.
+>[WACOM.NOTE]モバイル デバイス クライアントでデータがオーバーフローしないように、モバイル サービスでは、自動ページ制限を実装しています。既定では、1 つの応答で最大 50 項目に設定されます。ページ サイズを指定することで、1 つの応答で 1,000 項目まで明示的に要求できます。
 
-This tutorial builds on the steps and the sample app from the previous tutorial [Get started with data]. Before you begin this tutorial, you must complete at least the first tutorial in the working with data series, [Get started with data]. 
+このチュートリアルは、前の[データの使用]に関するチュートリアルの手順およびサンプル アプリケーションを基に作成されています。このチュートリアルを開始する前に、少なくとも、データ操作シリーズの最初のチュートリアル (「[データの使用]」) を完了している必要があります。
 
 [WACOM.INCLUDE [mobile-services-windows-dotnet-paging](../includes/mobile-services-windows-dotnet-paging.md)]
 
-## <a name="next-steps"> </a>Next Steps
+## <a name="next-steps"> </a>次のステップ
 
-This concludes the set of tutorials that demonstrate the basics of working with data in Mobile Services. Consider finding out more about the following Mobile Services topics:
+これで、モバイル サービスのデータを操作するための基本について説明する一連のチュートリアルは終了です。次のモバイル サービスのトピックの詳細を確認することをお勧めします。
 
-* [Get started with authentication]
-  <br/>Learn how to authenticate users of your app with Windows Account.
+* [認証の使用]
+  <br/>Windows アカウントを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app.
+* [プッシュ通知の使用] 
+  <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
 <!-- Anchors. -->
 
-[Next Steps]:#next-steps
+[次のステップ]:#next-steps
 
 <!-- Images. -->
 
 
 <!-- URLs. -->
-[Get started with Mobile Services]: /en-us/documentation/articles/mobile-services-windows-phone-get-started/
-[Get started with data]: /en-us/documentation/articles/mobile-services-windows-phone-get-started-data/
-[Get started with authentication]: /en-us/documentation/articles/mobile-services-windows-phone-get-started-users/
-[Get started with push notifications]: /en-us/documentation/articles/mobile-services-windows-phone-get-started-push/
+[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started/
+[データの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data/
+[認証の使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-users/
+[プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-push/
 
 
-[Management Portal]: https://manage.windowsazure.com/
+[管理ポータル]: https://manage.windowsazure.com/
+

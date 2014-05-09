@@ -1,119 +1,118 @@
-<properties linkid="mobile-services-monitor-new-relic" urlDisplayName="Use New Relic to monitor Mobile Services" pageTitle="Store server scripts in source control - Azure Mobile Services" metaKeywords="" description="Learn how to use the New Relic add-on to monitor your mobile service." metaCanonical="" disqusComments="1" umbracoNaviHide="0" documentationCenter="Mobile" title="Use New Relic to monitor Mobile Services" authors="" />
-# Use New Relic to monitor Mobile Services
+<properties linkid="mobile-services-monitor-new-relic" urlDisplayName="New Relic を使用したモバイル サービスの監視" pageTitle="ソース管理へのサーバー スクリプトの保存 - Azure モバイル サービス" metaKeywords="" description="New Relic アドオンを使用してモバイル サービスを監視する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="0" documentationCenter="Mobile" title="New Relic を使用したモバイル サービスの監視" authors="" />
+# New Relic を使用したモバイル サービスの監視
 
-This topic shows you how to configure the third-party New Relic add-on to work with Azure Mobile Services to provide enhanced monitoring of your mobile service. 
+このトピックでは、Azure のモバイル サービスを扱えるように New Relic サード パーティ アドオンを構成して、モバイル サービスの監視機能を拡張する方法について説明します。
 
-The tutorial guides you through the following steps:
+このチュートリアルでは、以下の各手順について説明します。
 
-1. [Sign up for New Relic using the Azure Store].
-2. [Install the New Relic module].
-3. [Enable New Relic developer analytics for the mobile service].
-4. [Monitor the mobile service in the New Relic dashboard].
+1. [Azure ストアを使用して New Relic にサインアップする]。
+2. [New Relic モジュールをインストールする]。
+3. [モバイル サービスに対する New Relic 開発者分析を有効にする]。
+4. [New Relic ダッシュボードでモバイル サービスを監視する]。
 
-To complete this tutorial, you must have already created a mobile service by completing either the [Get started with Mobile Services] or the [Get started with data] tutorial.
+このチュートリアルを完了するには、「[モバイル サービスの使用]」または「[データの使用]」チュートリアルを完了して、モバイル サービスを既に作成してある必要があります。
 
-##<a name="sign-up"></a>Sign up for New Relic using the Azure Store
+##<a name="sign-up"></a>Azure ストアを使用して New Relic にサインアップする
 
-The first step is to purchase the New Relic service. This tutorial shows you how to purchase this service from the Azure Store. Mobile Services supports New Relic subscriptions purchased outside of the Azure Store.
+最初に、New Relic サービスを購入します。このチュートリアルでは、Azure ストアからこのサービスを購入する方法を紹介します。モバイル サービスでは、Azure ストア以外で購入した New Relic サブスクリプションもサポートされます。
 
-1. Log in to the [Azure Management Portal](https://manage.windowsazure.com).
+1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
 
-2. In the lower pane of the management portal, click **New**.
+2. 管理ポータルの下のウィンドウの **[新規]** をクリックします。
 
-3. Click **Store**.
+3. **[ストア]** をクリックします。
 
-4. In the **Choose an Add-on** dialog, select **New Relic** and click **Next**.
+4. **[サービスの選択]** ダイアログで、**[New Relic]** をクリックし、**[次へ]** をクリックします。
 
-5. In the **Personalize Add-on** dialog, select the New Relic plan that you want.
+5. **[個人用サービス]** ダイアログで、希望の New Relic プランを選択します。
 
-7. Enter a name for how the New Relic service will appear in your Azure
-   settings, or use the default value **NewRelic**. This name must be unique in
-   your list of subscribed Azure Store items.
+7. Azure の設定における New Relic サービスの表示名を入力するか、既定値
+   **NewRelic** を使用します。この名前は、Azure ストアの
+   サブスクライブ項目の一覧で一意になっている必要があります。
 
-8. Choose a value for the region; for example, **West US**.
+8. リージョンの値を選択します (たとえば **[米国西部]**)。
 
-9. Click **Next**.
+9. **[次へ]** をクリックします。
 
-10. In the **Review Purchase** dialog, review the plan and pricing information,
-    and review the legal terms. If you agree to the terms, click **Purchase**.
+10. **[購入の確認]** ダイアログで、プランと料金情報を確認し、法律条項を確認します。条項に同意したら、**[購入]** をクリックします。
 
-11. After you click **Purchase**, your New Relic account will begin the creation process. You can monitor the status in the Azure management portal.
+11. **[購入]** をクリックすると、New Relic アカウントの作成プロセスが開始されます。その状態は、Azure 管理ポータルで監視できます。
 
-##<a name="install-module"></a>Install the New Relic module
+##<a name="install-module"></a>New Relic モジュールをインストールする
 
-After you have signed-up for the New Relic service, you need to install the New Relic Node.js module in your mobile service. You must have source control enabled for your mobile service to be able to upload this module.
+New Relic サービスにサインアップしたら、New Relic の Node.js モジュールをモバイル サービスにインストールする必要があります。このモジュールをアップロードするには、モバイル サービスに対するソース管理を有効にしておく必要があります。
 
-1. If you haven't already done so, follow the steps in the tutorial [Store server scripts in source control] to enable source control for your mobile service, clone the repository, and install the <a href="http://nodejs.org/" target="_blank">Node Package Manager (NPM)</a>.
+1. まだそうしていない場合は、チュートリアル「[ソース管理へのサーバー スクリプトの保存]」の手順に従ってモバイル サービスのソース管理を有効にし、リポジトリを複製して、<a href="http://nodejs.org/" target="_blank">ノード パッケージ マネージャー (NPM)</a> をインストールします。
 
-2. Navigate to the `.\service` folder of your local Git repository, then from the command prompt run the following command:
+2. コマンド プロンプトで、ローカル Git リポジトリの `.\service` フォルダーに移動し、次のコマンドを実行します。
 
 		npm install newrelic
 
-	NPM installs the [New Relic module][newrelic] in the `\newrelic` subdirectory. 
+	NPM により、[New Relic モジュール][newrelic]が `\newrelic` サブディレクトリにインストールされます。
 
-3. Open a Git command-line tool, such as **GitBash** (Windows) or **Bash** (Unix Shell) and type the following command in the Git command prompt: 
+3. **GitBash** (Windows) や **Bash** (UNIX シェル) などの Git コマンド ライン ツールを開き、Git コマンド プロンプトで次のコマンドを入力します。
 
 		$ git add .
 		$ git commit -m "added newrelic module"
 		$ git push origin master
 		
-	This uploads the new `newrelic` module to your mobile service. 
+	これにより、新しい `newrelic` モジュールがモバイル サービスにアップロードされます。
 
-Next, you will enable New Relic monitoring of your mobile service in the [Management Portal][Azure Management Portal]. 
+次に、[管理ポータル][Azure Management Portal]でモバイル サービスに対する New Relic 監視を有効にします。
 
-##<a name="enable-service"></a>Enable New Relic developer analytics for the mobile service
+##<a name="enable-service"></a>モバイル サービスに対する New Relic 開発者分析を有効にする。
 
-1. In the [Management Portal][Azure Management Portal], select your mobile service, then click the **Configure** tab.
+1. [管理ポータル][Azure Management Portal]で、モバイル サービスを選択し、**[構成]** タブをクリックします。
 
 	![][0]
 
-2. Scroll down to **Developer analytics** and do one of the following, depending on how you purchased your New Relic subscription:
+2. 下へスクロールして **[開発者分析]** を表示し、New Relic サブスクリプションをどのように購入したかに応じて、次のどちらかの手順を実行します。
 
 	+ Purchased in the Azure store:
 
-		Click **Add-on**, select the New Relic add-on from **Choose add-on**, then click **Save**.
+		**[アドオン]** をクリックし、**[アドオンの選択]** で New Relic アドオンを選択して、**[保存]** をクリックします。
 
 		![][1]
 
-	+ Purchased directly from New Relic: 
+	+ New Relic から直接購入した場合:
 
-		Click **Custom**, select the New Relic from **Provider**, enter your key, then click **Save**.
+		**[カスタム]** をクリックし、**[プロバイダー]** で New Relic を選択して、キーを入力します。次に、**[保存]** をクリックします。
 
 		![][2]
 
-		The key can be obtained from your the New Relic dashboard.
+		このキーは New Relic ダッシュボードで取得できます。
 
-3. After registration is complete, you will see a new value in **App settings**:
+3. 登録が完了すると、**[アプリケーション設定]** に新しい値が表示されます。
 
 	![][3] 
 
-##<a name="monitor"></a>Monitor the mobile service in the New Relic dashboard
+##<a name="monitor"></a>New Relic ダッシュボードでモバイル サービスを監視する
 
-1. Run your client app to generate read, create, update, and delete requests to your mobile service.
+1. クライアント アプリケーションを実行して、モバイル サービスに対する読み取り要求、作成要求、更新要求、および削除要求を生成します。
 
-2. Wait a few minutes for the data to be processed, then navigate to the New Relic dashboard.
+2. データが処理されるまで数分待った後で、New Relic ダッシュボードに移動します。
 
-	When your New Relic subscription was purchased as an add-on, select it in the [Management Portal][Azure Management Portal], and click **Manage**.
+	New Relic サブスクリプションをアドオンとして購入した場合、[管理ポータル][Azure Management Portal]でそれを選択して、**[管理]** をクリックします。
 
-3. In New Relic, click **Applications**, then click your mobile service.
+3. [New Relic] で **[アプリケーション]** をクリックし、対象のモバイル サービスをクリックします。
 
 	![][4]
 
-4. Click **Web transactions** to see recent requests you just made to your mobile service:
+4. **[Web トランザクション]** をクリックして、モバイル サービスに対して最近行われた要求を表示します。
 
 	![][5]
 
-##<a name="next-steps"> </a>Next steps
+##<a name="next-steps"> </a>次のステップ
 
-+ For pricing information see the [New Relic page in the Azure Store].
-+ For more information about using New Relic, see [Applications Overview] in the New Relic documentation. 
++ 料金情報については、[Azure ストアの New Relic のページ]を参照してください。
++ New Relic の使用方法については、New Relic ドキュメントの「[Applications Overview (アプリケーションの概要)]」を参照してください。
 
 <!-- Anchors. -->
-[Sign up for New Relic using the Azure Store]: #sign-up
-[Install the New Relic module]: #install-module
-[Enable New Relic developer analytics for the mobile service]: #enable-service
-[Monitor the mobile service in the New Relic dashboard]: #monitor
-[Next steps]: #next-steps
+[Azure ストアを使用して New Relic にサインアップする]: #sign-up
+[New Relic モジュールをインストールする]: #install-module
+[モバイル サービスに対する New Relic 開発者分析を有効にする]: #enable-service
+[New Relic ダッシュボードでモバイル サービスを監視する]: #monitor
+[次のステップ]: #next-steps
 
 <!-- Images. -->
 [0]: ./media/store-new-relic-mobile-services-monitor/mobile-configure-tab.png
@@ -124,15 +123,16 @@ Next, you will enable New Relic monitoring of your mobile service in the [Manage
 [5]: ./media/store-new-relic-mobile-services-monitor/mobile-new-relic-dashboard-2.png
 
 <!-- URLs. -->
-[Source control]: http://msdn.microsoft.com/en-us/library/windowsazure/c25aaede-c1f0-4004-8b78-113708761643
-[Work with server scripts in Mobile Services]: /en-us/develop/mobile/how-to-guides/work-with-server-scripts.md
+[ソース管理]: http://msdn.microsoft.com/ja-jp/library/windowsazure/c25aaede-c1f0-4004-8b78-113708761643
+[モバイル サービスのサーバー スクリプトの操作]: /ja-jp/develop/mobile/how-to-guides/work-with-server-scripts.md
 
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Node.js API Documentation: Modules]: http://nodejs.org/api/modules.html
-[Store server scripts in source control]: /en-us/develop/mobile/tutorials/store-scripts-in-source-control/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
+[Node.js API ドキュメント: Modules (モジュール)]: http://nodejs.org/api/modules.html
+[ソース管理へのサーバー スクリプトの保存]: /ja-jp/develop/mobile/tutorials/store-scripts-in-source-control/
 [newrelic]: https://npmjs.org/package/newrelic
-[New Relic page in the Azure Store]: /en-us/gallery/store/new-relic/new-relic/
-[Applications Overview]: https://docs.newrelic.com/docs/applications-dashboards/applications-overview
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started/
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-dotnet
+[Azure ストアの New Relic のページ]: /ja-jp/gallery/store/new-relic/new-relic/
+[Applications Overview (アプリケーションの概要)]: https://docs.newrelic.com/docs/applications-dashboards/applications-overview
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet
+
 

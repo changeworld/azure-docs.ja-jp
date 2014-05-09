@@ -1,108 +1,107 @@
-<properties linkid="develop-net-tutorials-compute-intensive-task-on-a-virtual-machine" urlDisplayName="Compute Intensive .NET Task" pageTitle="Compute intensive .NET task on a virtual machine - Azure" metaKeywords="deploying compute .NET application, vm .NET application, Service Bus queue monitoring, remote monitoring" description="Learn how to deploy and run a compute-intensive .NET app on an Azure virtual machine and use Service Bus queues to monitor progress remotely." metaCanonical="" services="virtual-machines" documentationCenter=".NET" title="How to run a compute-intensive task in .NET on an Azure virtual machine" authors="waltpo" solutions="" manager="" editor="" />
+<properties linkid="develop-net-tutorials-compute-intensive-task-on-a-virtual-machine" urlDisplayName="多くのコンピューティング処理を要する .NET タスク" pageTitle="仮想マシン上で多くのコンピューティング処理を要する .NET タスク - Azure" metaKeywords="コンピューティング .NET アプリケーションの展開, VM .NET アプリケーション, サービス バス キューの監視, リモート監視" description="多くのコンピューティング処理を要する .NET アプリケーションを Azure の仮想マシンに展開して実行する方法と、サービス バス キューを使用して進行状況をリモート監視する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter=".NET" title="Azure の仮想マシンで多くのコンピューティング処理を要する .NET タスクを実行する方法" authors="waltpo" solutions="" manager="" editor="" />
 
 
 
 
 
-# How to run a compute-intensive task in .NET on an Azure virtual machine
+# Azure の仮想マシンで多くのコンピューティング処理を要する .NET タスクを実行する方法
 
-With Azure, you can use a virtual machine to handle compute-intensive tasks; for example, a virtual machine could handle tasks and deliver results to client machines or mobile applications. On completing this guide, you will have an understanding of how to create a virtual machine that runs a compute-intensive .NET application that can be monitored by another .NET application.
+Azure では、仮想マシンを使用して多くのコンピューティング処理を要するタスクを処理できます。たとえば、仮想マシンでタスクを処理して、結果をクライアント マシンやモバイル アプリケーションに配信することができます。このガイドを完了すると、多くのコンピューティング処理を要する .NET アプリケーションを実行し、それを別の .NET アプリケーションから監視できる仮想マシンの作成方法を理解できます。
 
-This tutorial assumes you know how to create .NET console applications. No knowledge of Azure is assumed. 
+このチュートリアルは、.NET コンソール アプリケーションの作成方法を知っていることを前提としています。Azure の知識は不要です。
 
-You will learn:
+学習内容:
 
-* How to create a virtual machine.
-* How to remotely log in to your virtual machine.
-* How to create a service bus namespace.
-* How to create a .NET application that performs a compute-intensive task.
-* How to create a .NET application that monitors the progress of the compute-intensive task.
-* How to run the .NET applications.
-* How to stop the .NET applications.
+* 仮想マシンの作成方法
+*仮想マシンにリモート ログインする方法
+* サービス バス名前空間の作成方法
+* 多くのコンピューティング処理を要するタスクを実行する .NET アプリケーションの作成方法
+* 多くのコンピューティング処理を要するタスクの進行状況を監視する .NET アプリケーションの作成方法
+* .NET アプリケーションの実行方法
+* .NET アプリケーションの停止方法
 
-This tutorial will use the Traveling Salesman Problem for the compute-intensive task. The following is an example of the .NET application running the compute-intensive task:
+このチュートリアルでは、多くのコンピューティング処理を要するタスクとして、巡回セールスマン問題を使用します。以下は、多くのコンピューティング処理を要するタスクを実行する .NET アプリケーションの例です。
 
-![Traveling Salesman Problem solver][solver_output]
+![巡回セールスマン問題を解くプログラム][solver_output]
 
-The following is an example of the .NET application monitoring the compute-intensive task:
+以下は、多くのコンピューティング処理を要するタスクを監視する .NET アプリケーションの例です。
 
-![Traveling Salesman Problem client][client_output]
+![巡回セールスマン問題のクライアント][client_output]
 
 [WACOM.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
 
-<h2>To create a virtual machine</h2>
+<h2>仮想マシンを作成するには</h2>
 
-1. Log in to the [Azure Management Portal](https://manage.windowsazure.com).
-2. Click **New**.
-3. Click **Virtual machine**.
-4. Click **Quick create**.
-5. In the **Create a virtual machine** screen, enter a value for **DNS name**.
-6. From the **Image** dropdown list, select an image, such as **Windows Server 2012**.
-7. Enter a name for the administrator in the **User Name** field. Remember this name and the password you will enter next, you will use them when you remotely log in to the virtual machine.
-8. Enter a password in the **New password** field, and re-enter it in the **Confirm** field.
-9. From the **Location** drop down list, select the data center location for your virtual machine.
-10. Click **Create virtual machine**. Your virtual machine will start being created. You can monitor the status in the **Virtual machines** section of the management portal. When its status is displayed as **Active**, you can log in to the virtual machine.
+1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
+2. **[新規]** をクリックします。
+3. **[仮想マシン]** をクリックします。
+4. **[簡易作成]** をクリックします。
+5. **[仮想マシンの作成]** 画面で、**[DNS 名]** に値を入力します。
+6. **[イメージ]** ドロップダウン リストから、**[Windows Server 2012]** などのイメージを選択します。
+7. **[ユーザー名]** フィールドに、管理者の名前を入力します。この名前と次に入力するパスワードは忘れないでください。仮想マシンにリモート ログインするときに使用します。
+8. **[新しいパスワード]** フィールドにパスワードを入力し、**[確認]** フィールドに再びパスワードを入力します。
+9. **[場所]** ドロップダウン リストから、仮想マシンを配置するデータ センターの場所を選択します。
+10. **[仮想マシンの作成]** をクリックします。仮想マシンの作成が開始されます。その状態は、管理ポータルの **[仮想マシン]** セクションで監視できます。状態が **[有効]** と表示されたら、仮想マシンにログインできます。
 
-<h2>To remotely log in to your virtual machine</h2>
+<h2>仮想マシンにリモート ログインするには</h2>
 
-1. Log on to the [Management Portal](https://manage.windowsazure.com).
-2. Click **Virtual machines**.
-3. Click the name of the virtual machine that you want to log in to.
-4. Click **Connect**.
-5. Respond to the prompts as needed to connect to the virtual machine. When prompted for the administrator name and password, use the values that you provided when you created the virtual machine.
+1. [管理ポータル](https://manage.windowsazure.com)にログオンします。
+2. **[仮想マシン]** をクリックします。
+3. ログインする仮想マシンの名前をクリックします。
+4. **[接続]** をクリックします。
+5. 表示される画面で必要に応じて入力して、仮想マシンに接続します。管理者名とパスワードの入力画面が表示されたら、仮想マシンの作成時に指定した値を使用します。
 
-<h2>How to create a service bus namespace</h2>
+<h2>サービス バス 名前空間の作成方法</h2>
 
-To begin using Service Bus queues in Azure, you must first
-create a service namespace. A service namespace provides a scoping
-container for addressing Service Bus resources within your application.
+Azure でサービス バス キューを使用するには、最初に
+サービス名前空間を作成する必要があります。サービス名前空間は、アプリケーション内で
+サービス バス リソースをアドレス指定するためのスコープ コンテナーを提供します。
 
-To create a service namespace:
+サービス名前空間を作成するには:
 
-1.  Log in to the [Azure Management Portal](https://manage.windowsazure.com).
-2.  In the left navigation pane of the Management Portal, click **Service Bus**.
-3.  In the lower pane of the Management Portal, click  **Create**.
+1.  [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
+2.  管理ポータルの左のナビゲーション ウィンドウで、**[サービス バス]** をクリックします。
+3.  管理ポータルの下のウィンドウで、**[作成]** をクリックします。
 
-    ![Create new service bus][create_service_bus]
-4.  In the **Create a namespace** dialog, enter a namespace name. The system immediately checks to see if the name is available, as it must be a unique name.
+    ![新しい サービス バスの作成][create_service_bus]
+4.  **[名前空間を作成する]** ダイアログで、名前空間の名前を入力します。その名前が使用できるかどうかがすぐに自動で確認されます。重複する名前は使用できません。
 
-    ![Create a namespace dialog][create_namespace_dialog]
-5.  After ensuring the namespace name is available, choose the region in which your namespace should be hosted (make sure you use the same region in which your virtual machine is hosted).
+    ![[名前空間を作成する] ダイアログ][create_namespace_dialog]
+5.  入力した名前が利用できることを確認できたら、名前空間をホストするリージョンを選択します (仮想マシンをホストするリージョンと同じリージョンを必ず使用してください)。
     <div class="dev-callout">
-    <strong>Important</strong>
-    <p>Pick the **same region** that you use or intend to use for your virtual machine. This will give you the best performance.</p>
+    <strong>重要</strong>
+    <p>仮想マシンが使用するリージョンまたは使用する予定のリージョンと**同じリージョン**を選択してください。そうすることで、最大限のパフォーマンスを引き出すことができます。</p>
     </div>
-6. If you have more than one Azure subscription for the account with which you're logged on, select the subscription to use for the namespace. (If you have only one subscription for the account with which you're logged on, you will not see a dropdown list containing your subscriptions.)
-7. Click the check mark. The system now creates your service namespace and enables it. You might have to wait several minutes as the system provisions resources for your account.
+6. ログオンしたアカウントに複数の Azure サブスクリプションがある場合は、名前空間で使用するサブスクリプションを選択します (ログオンしたアカウントにサブスクリプションが 1 つしかない場合、サブスクリプションのドロップダウン リストは表示されません)。
+7. チェック マークをクリックします。これで、システムによってサービス名前空間が作成および有効化されます。システムがアカウントのリソースを準備し終わるまでに、数分間かかる場合があります。
 
-	![Click create screenshot][click_create]
+	![クリックして作成するスクリーンショット][click_create]
 
-The namespace you created will then appear in the Management Portal and takes a moment to activate. Wait until the status is **Active** before continuing with the next step.
+作成した名前空間が管理ポータルに表示され、アクティブになります。これには少し時間がかかります。状態が **[有効]** になるのを待ってから、次の手順に進みます。
 
-<h2>Obtain the default management credentials for the namespace</h2>
+<h2>名前空間の既定の管理資格情報の取得</h2>
 
-In order to perform management operations, such as creating a queue, on
-the new namespace, you need to obtain the management credentials for the
-namespace.
+新規作成した名前空間に対してキューの作成などの管理操作を実行するには、
+名前空間の管理資格情報を取得する必要があります。
 
-1.  In the left navigation pane, click the **Service Bus** node, to
-    display the list of available namespaces:   
-    ![Available namespaces screenshot][available_namespaces]
-2.  Select the namespace you just created from the list shown:   
-    ![Namespace list screenshot][namespace_list]
-3. Click **Access Key**.   
-    ![Access key button][access_key_button]
-4.  In the dialog, find the **Default Issuer** and **Default Key** entries. Make a note of these values, as you will use this information below to perform operations with the namespace. 
+1. 左側のナビゲーション ウィンドウで **[サービス バス]** ノードを
+    クリックして、利用可能な名前空間の一覧を表示します。   
+    ![利用可能な名前空間のスクリーンショット][available_namespaces]
+2. 表示された一覧から先ほど作成した名前空間を選択します。   
+    ![名前空間の一覧のスクリーンショット][namespace_list]
+3. **[アクセス キー]** をクリックします。
+    ![[アクセス キー] ボタン][access_key_button]
+4.  ダイアログで、**[既定の発行者]** と **[既定のキー]** のエントリを探します。その値を書き留めておきます。この情報は、この後に名前空間に対して操作を実行するときに使用します。
 
-<h2>How to create a .NET application that performs a compute-intensive task</h2>
+<h2>多くのコンピューティング処理を要するタスクを実行する .NET アプリケーションの作成方法</h2>
 
-1. On your development machine (which does not have to be the virtual machine that you created), download the [Azure SDK for .NET](http://www.windowsazure.com/en-us/develop/net/).
-2. Create a .NET console application with the project named **TSPSolver**. Ensure the traget framework is set for .**NET Framework 4** (not **.NET Framework 4 Client Profile**). The target framework can be set after you create a project by the following: In Visual Studio's menu, click **Projects**, click **Properties**, click the **Application** tab, and then set the value for **Target framework**.
-3. Add in the Microsoft ServiceBus library. In Visual Studio Solution Explorer, right-click **TSPSolver**, click **Add Reference**, click the **Browse** tab, browse to **C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\2012-06\ref** and select **Microsoft.ServiceBus.dll** as a reference.
-4. Add in the System Runtime Serialization library. In Visual Studio Solution Explorer, right-click **TSPSolver**, click **Add Reference**, click the **.NET** tab, and select **System.Runtime.Serialization** as a reference.
-5. Use the example code at the end of this section for the contents of **Program.cs**.
-6. Modify the **your\_service\_bus\_namespace**, **your\_service\_bus\_owner**, and **your\_service\_bus\_key** placeholders to use your service bus **namespace**, **Default Issuer** and **Default Key** values, respectively.
-7. Compile the application. This will create **TSPSolver.exe** in your project's **bin** folder (either **bin\release** or **bin\debug**, depending on whether you're targeting a release or debug build). You'll copy this executable and Microsoft.ServiceBus.dll to your virtual machine later.
+1. 開発用コンピューターで (これは作成した仮想マシンと同じでなくてもかまいません)、[Azure SDK for .NET](http://www.windowsazure.com/ja-jp/develop/net/) をダウンロードします。
+2. **TSPSolver** というプロジェクト名で .NET コンソール アプリケーションを作成します。ターゲット フレームワークは **[.NET Framework 4]** に設定します (**[.NET Framework 4 Client Profile]** ではありません)。ターゲット フレームワークは、プロジェクトを作成した後に変更することもできます。その場合は、Visual Studio で **[プロジェクト]** メニューの **[プロパティ]** をクリックし、**[アプリケーション]** タブをクリックして、**[ターゲット フレームワーク]** の値を設定します。
+3. Microsoft ServiceBus ライブラリを追加します。Visual Studio のソリューション エクスプローラーで、**[TSPSolver]** を右クリックし、**[参照の追加]** をクリックします。**[参照]** タブで、**C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\2012-06\ref** に移動し、**[Microsoft.ServiceBus.dll]** を参照として選択します。
+4. System Runtime Serialization ライブラリを追加します。Visual Studio のソリューション エクスプローラーで、**[TSPSolver]** を右クリックし、**[参照の追加]** をクリックします。**[.NET]** タブをクリックし、**[System.Runtime.Serialization]** を参照として選択します。
+5. このセクションの末尾にあるコード例を **Program.cs** の内容として使用します。
+6. **your\_service\_bus\_namespace**、**your\_service\_bus\_owner**、**your\_service\_bus\_key** の各プレースホルダーを変更して、それぞれサービス バスの**名前空間**、**既定の発行者**、**既定のキー**の値を設定します。
+7. アプリケーションをコンパイルします。これにより、プロジェクトの **bin** フォルダー (リリース ビルドかデバッグ ビルドかに応じて **bin\release** または **bin\debug**) に **TSPSolver.exe** が作成されます。この実行可能ファイルと Microsoft.ServiceBus.dll を後で仮想マシンにコピーします。
 
 <p/>
 
@@ -327,14 +326,14 @@ namespace.
 
 
 
-<h2>How to create a .NET application that monitors the progress of the compute-intensive task</h2>
+<h2>多くのコンピューティング処理を要するタスクの進捗状況を監視する .NET アプリケーションの作成方法</h2>
 
-1. On your development machine, create a .NET console application using **TSPClient** as the project name. Ensure the traget framework is set for .**NET Framework 4** (not **.NET Framework 4 Client Profile**). The target framework can be set after you create a project by the following: In Visual Studio's menu, click **Projects**, click **Properties**, click the **Application** tab, and then set the value for **Target framework**.
-2. Add in the Microsoft ServiceBus library. In Visual Studio Solution Explorer, right-click **TSPSolver**, click **Add Reference**, click the **Browse** tab, browse to **C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\2012-06\ref** and select **Microsoft.ServiceBus.dll** as a reference.
-3. Add in the System Runtime Serialization library. In Visual Studio Solution Explorer, right-click **TSPClient**, click **Add Reference**, click the **.NET** tab, and select **System.Runtime.Serialization** as a reference.
-4. Use the example code at the end of this section for the contents of **Program.cs**.
-5. Modify the **your\_service\_bus\_namespace**, **your\_service\_bus\_owner**, and **your\_service\_bus\_key** placeholders to use your service bus **namespace**, **Default Issuer** and **Default Key** values, respectively.
-5. Compile the application. This will create **TSPClient.exe** in your project's **bin** folder (either **bin\release** or **bin\debug**, depending on whether you're targeting a release or debug build). You can run this code from your development machine, or copy this executable and Microsoft.ServiceBus.dll to a machine that will run the client application (it does not need to be on your virtual machine).
+1. 開発用コンピューターで、**TSPClient** というプロジェクト名で .NET コンソール アプリケーションを作成します。ターゲット フレームワークは **[.NET Framework 4]** に設定します (**[.NET Framework 4 Client Profile]** ではありません)。ターゲット フレームワークは、プロジェクトを作成した後に変更することもできます。その場合は、Visual Studio で **[プロジェクト]** メニューの **[プロパティ]** をクリックし、**[アプリケーション]** タブをクリックして、**[ターゲット フレームワーク]** の値を設定します。
+2. Microsoft ServiceBus ライブラリを追加します。Visual Studio のソリューション エクスプローラーで、**[TSPSolver]** を右クリックし、**[参照の追加]** をクリックします。**[参照]** タブで、**C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\2012-06\ref** に移動し、**[Microsoft.ServiceBus.dll]** を参照として選択します。
+3. System Runtime Serialization ライブラリを追加します。Visual Studio のソリューション エクスプローラーで、**[TSPClient]** を右クリックし、**[参照の追加]** をクリックします。**[.NET]** タブをクリックし、**[System.Runtime.Serialization]** を参照として選択します。
+4. このセクションの末尾にあるコード例を **Program.cs** の内容として使用します。
+5. **your\_service\_bus\_namespace**、**your\_service\_bus\_owner**、**your\_service\_bus\_key** の各プレースホルダーを変更して、それぞれサービス バスの**名前空間**、**既定の発行者**、**既定のキー**の値を設定します。
+5. アプリケーションをコンパイルします。これにより、プロジェクトの **bin** フォルダー (リリース ビルドかデバッグ ビルドかに応じて **bin\release** または **bin\debug**) に **TSPClient.exe** が作成されます。このコードを開発用コンピューターから実行することも、別のコンピューターに実行可能ファイルと Microsoft.ServiceBus.dll をコピーして、そこでクライアント アプリケーションを実行することもできます (アプリケーションを仮想マシン上に置く必要はありません)。
 
 <p/>
 
@@ -447,15 +446,15 @@ namespace.
 	    }
 	}
 
-<h2>How to run the .NET applications</h2>
-Run the compute-intensive application, first to create the queue, then to solve the Traveling Saleseman Problem, which will add the current best route to the service bus queue. While the compute-intensive application is running (or afterwards), run the client to display results from the service bus queue.
+<h2>.NET アプリケーションの実行方法</h2>
+多くのコンピューティング処理を要するアプリケーションを、最初はキューを作成するために実行し、次は巡回セールスマン問題を解くために実行します。これにより、サービス バス キューに現在の最適な経路が追加されます。多くのコンピューティング処理を要するアプリケーションの実行中に (または実行後に)、クライアントを実行してサービス バス キューから結果を表示します。
 
-<h3>How to run the compute-intensive application</h3>
+<h3>多くのコンピューティング処理を要するアプリケーションの実行方法</h3>
 
-1. Log on to your virtual machine.
-2. Create a folder named **c:\TSP**. This is where you will run your application.
-3. Copy TSPSolver.exe and Microsoft.ServiceBus.dll, both of which are available in your TSPSolver project's **bin** folder, to **c:\TSP**.
-4. Create a file named **c:\TSP\cities.txt** with the following contents:
+1. 仮想マシンにログオンします。
+2. **c:\TSP** という名前のフォルダーを作成します。これがアプリケーションを実行する場所です。
+3. TSPSolver プロジェクトの **bin** フォルダーにある TSPSolver.exe と Microsoft.ServiceBus.dll を **c:\TSP** にコピーします。
+4. **c:\TSP\cities.txt** という名前のファイルを作成し、内容を次のようにします。
 
 		City_1, 1002.81, -1841.35
 		City_2, -953.55, -229.6
@@ -508,45 +507,45 @@ Run the compute-intensive application, first to create the queue, then to solve 
 		City_49, -120.3, -463.13
 		City_50, 588.51, 679.33
 	
-5. At a command prompt, change directories to c:\TSP.
-6. You'll need to create the service bus queue before you run the TSP solver permutations. Run the following command to create the service bus queue:
+5. コマンド プロンプトで、ディレクトリを c:\TSP に変更します。
+6. 巡回セールスマン問題を解くプログラムを実行する前に、サービス バス キューを作成する必要があります。次のコマンドを実行して、サービス バス キューを作成します。
 
         TSPSolver createqueue
 
-7. Now that the queue is created, you can run the TSP solver permutations. For example, run the following command to run the solver for 8 cities. 
+7. これでキューが作成されたので、巡回セールスマン問題を解くプログラムを実行できます。たとえば、次のコマンドを実行すると、8 都市を対象としてプログラムが実行されます。
 
         TSPSolver 8
 
- If you don't specify a number, the solver will run for 10 cities. As the solver finds current shortest routes, it will add them to the queue.
+ 数値を指定しなかった場合、プログラムは 10 都市を対象として実行されます。現時点で最短の経路が見つかると、それがキューに追加されます。
 
-The solver will run until it finishes examining all routes.
+プログラムはすべての経路の調査が完了すると終了します。
 
 > [WACOM.NOTE]
-> The larger the number that you specify, the longer the solver will run. For example, running for 14 cities could take several minutes, and running for 15 cities could take several hours. Increasing to 16 or more cities could result in days of runtime (eventually weeks, months, and years). This is due to the rapid increase in the number of permutations evaluated by the solver as the number of cities increases.
+> 指定した数値が大きいほど、プログラムの実行時間は長くなります。たとえば、14 都市の場合は数分で実行できても、15 都市になると実行に数時間かかることがありえます。16 都市以上にすると実行時間が数日になる可能性があります (最終的には数週間、数か月、数年かかります)。これは都市数が増えるにつれてプログラムが評価する順列の数が急増するためです。
  
-<h3>How to run the monitoring client application</h3>
-1. Log on to your machine where you will run the client application. This does not need to be the same machine running the **TSPSolver** application, although it can be.
-2. Create a folder where you will run your application. For example, **c:\TSP**.
-3. Copy **TSPClient.exe** and Microsoft.ServiceBus.dll, both of which are in your TSPClient project's **bin** folder, to the c:\TSP folder.
-4. At a command prompt, change directories to c:\TSP.
-5. Run the following command:
+<h3>監視用のクライアント アプリケーションの実行方法</h3>
+1. クライアント アプリケーションを実行するコンピューターにログオンします。これは、**TSPSolver** アプリケーションを実行するコンピューターと同じでなくてもかまいません。
+2. アプリケーションを実行するフォルダーを作成します。たとえば、**c:\TSP** です。
+3. TSPClient プロジェクトの **bin** フォルダーにある **TSPClient.exe** と Microsoft.ServiceBus.dll を c:\TSP フォルダーにコピーします。
+4. コマンド プロンプトで、ディレクトリを c:\TSP に変更します。
+5. 次のコマンドを実行します。
 
         TSPClient
 
-    Optionally, specify the number of minutes to sleep in between checking the queue, by passing in a command line argument. The default sleep period for checking the queue is 3 minutes, which is used if no command line argument is passed to **TSPClient**. If you want to use a different value for the sleep interval, for example, one minute, run:
+    必要に応じて、コマンド ライン引数でキューのチェック間隔を分単位で指定します。キューのチェック間隔の既定値は 3 分です。**TSPClient** にコマンド ライン引数が指定されなかった場合、この値が使用されます。チェック間隔として別の値、たとえば 1 分を使用する場合は、次のように実行します。
 
 	    TSPClient 1
 
-    The client will run until it sees a queue message of "Complete". Note that if you run multiple occurrences of the solver without running the client, you may need to run the client multiple times to completely empty the queue. Alternatively, you can delete the queue and then create it again. To delete the queue, run the following **TSPSolver** (not **TSPClient**)  command:
+    クライアントは、"Complete" というキュー メッセージが見つかるまで実行を続けます。注意点として、クライアントを実行しないで、問題を解くプログラムを複数実行した場合、キューを完全に空にするにはクライアントの複数回実行が必要になる場合があります。別の方法として、キューを削除して再び作成することもできます。キューを削除するには、次のように **TSPSolver** コマンドを実行します (**TSPClient** ではありません)。
 
         TSPSolver deletequeue
 
-<h2>How to stop the .NET applications</h2>
+<h2>.NET アプリケーションの停止方法</h2>
 
-For both the solver and client applications, you can press **Ctrl+C** to exit if you want to end prior to normal completion.
+問題を解くアプリケーションとクライアント アプリケーションのどちらでも、**Ctrl + C** キーを押すと、通常の処理が完了する前にアプリケーションが終了します。
 
-<h2>Alternative to creating and deleting the queue with TSPSolver</h2>
-Instead of using TSPSolver to create or delete the queue, you can create or delete the queue using the [Azure Management Portal](https://manage.windowsazure.com). Visit the service bus section of the Management Portal to access the user interfaces for creating or deleting a queue, as well as for retrieving the connection string, issuer, and access key. You can also view a dashboard of your service bus queues, allowing you to view metrics for your incoming and outgoing messages. 
+<h2>TSPSolver を使用しないでキューを作成し削除する方法</h2>
+TSPSolver を使用してキューを作成したり削除したりする代わりに、[Azure 管理ポータル](https://manage.windowsazure.com)を使用してキューの作成と削除を行うこともできます。管理ポータルの  サービス バス セクションには、キューを作成し削除する機能のほかに、接続文字列や発行者、アクセス キーを取得する機能も用意されています。また、サービス バス キューのダッシュボードを表示して、発着信メッセージのメトリックを表示することもできます。
 
 [solver_output]: ./media/virtual-machines-dotnet-run-compute-intensive-task/WA_dotNetTSPSolver.png
 [client_output]: ./media/virtual-machines-dotnet-run-compute-intensive-task/WA_dotNetTSPClient.png
@@ -556,3 +555,4 @@ Instead of using TSPSolver to create or delete the queue, you can create or dele
 [click_create]: ./media/virtual-machines-dotnet-run-compute-intensive-task/ClickCreate.png
 [namespace_list]: ./media/virtual-machines-dotnet-run-compute-intensive-task/NamespaceList.png
 [access_key_button]: ./media/virtual-machines-dotnet-run-compute-intensive-task/AccessKey.png
+

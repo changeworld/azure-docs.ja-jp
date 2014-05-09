@@ -1,93 +1,93 @@
-<properties linkid="manage-services-sql-databases-premium" urlDisplayName="Premium SQL Database" pageTitle="Sign up for Azure Premium for SQL Database" metaKeywords="" description="Describes how to sign up for the Premium for SQL Database preview, request your Premium database quota, and then upgrade a database to Premium in Azure SQL Database." metaCanonical="" services="cloud-services" documentationCenter="" title="Sign up for the preview of Premium for Azure SQL Database" authors="karaman" solutions="" manager="" editor="tysonn" />
+<properties linkid="manage-services-sql-databases-premium" urlDisplayName="Premium SQL データベース" pageTitle="Azure SQL データベース Premium へのサインアップ" metaKeywords="" description="SQL データベース Premium のプレビューにサインアップし、Premium データベース クォータを要求してから、Azure SQL データベースで Premium にデータベースをアップグレードする方法を説明します。" metaCanonical="" services="cloud-services" documentationCenter="" title="Azure SQL データベース Premium のプレビューへのサインアップ" authors="karaman" solutions="" manager="" editor="tysonn" />
 
 
 
 
 
-#Sign up for the preview of Premium for Azure SQL Database
-In this tutorial, you learn the steps required to participate in the preview of Premium for SQL Database.
+# Azure SQL データベース Premium のプレビューへのサインアップ
+このチュートリアルでは、SQL データベース Premium のプレビューに参加するために必要な手順を説明します。
 
-Azure SQL Database has released a limited preview of a new service - Premium for SQL Database. Premium databases provide reserved resources for more predictable performance for cloud applications.
+Azure SQL データベースでは、新しいサービスの限定プレビュー版である SQL データベース Premium がリリースされています。Premium データベースによって提供される予約済みリソースを利用すると、クラウド アプリケーションのパフォーマンスを予測しやすくなります。
 
-[The feature described in this topic is available only in preview. This topic is pre-release documentation and is subject to change in future releases.]
+[このトピックに記載されている機能は、プレビュー版でのみ利用できます。このトピックはプレリリース資料であり、今後のリリースで変更されることがあります。]]
 
-##Table of Contents##
+##目次##
 
-* [Step 1: Sign-Up for the preview of Premium for SQL Database](#SignUp)
-* [Step 2: Request Premium database quota](#Quota)
-* [Step 3: Create a Premium database ](#Upgrade)
+* [手順 1. SQL データベース Premium のプレビューへサインアップする](#SignUp)
+* [手順 2. Premium データベース クォータを要求する](#Quota)
+* [手順 3. Premium データベースを作成する](#Upgrade)
 
-<h2><a id="SignUp"></a>Step 1: Sign-Up for the Preview of Premium for SQL Database</h2>
-The first step to take advantage of this feature is to sign up your subscription for the Premium for SQL Database preview.
+<h2><a id="SignUp"></a>手順 1. SQL データベース Premium のプレビューへサインアップする</h2>
+この機能を利用するための最初の手順は、SQL データベース プレミアムのプレビューのサブスクリプションにサインアップすることです。
 
-1. Sign in to the [Azure Preview Features Page](http://account.windowsazure.com/PreviewFeatures) using your Microsoft account.
+1. Microsoft アカウントを使用して、[Azure プレビュー機能のページ](http://account.windowsazure.com/PreviewFeatures)にサインインします。
 
-	**Note** - Only Azure account administrators can access the Account portal. If you are not the account administrator for your subscription, please have that person complete the sign-up process for your subscription. For more information about Azure accounts and subscriptions, see [Purchase Options](http://account.windowsazure.com/PreviewFeatures).
+	**注** - アカウント ポータルにアクセスできるのは、Azure アカウント管理者だけです。サブスクリプションのアカウント管理者でない場合は、アカウント管理者に依頼して、サブスクリプションのサインアップ処理を完了してください。Azure のアカウントとサブスクリプションの詳細については、「[購入オプション](http://account.windowsazure.com/PreviewFeatures)」を参照してください。
  
 	![Image1](./media/sql-database-premium-sign-up/AccountSignup-Figure1.png)
 
-2. Find the **Premium for SQL Database** item in the preview features list and click the **try it now** button associated with the item.
+2. プレビュー機能リストで **[SQL データベース Premium]** 項目を探し、その項目に関連付けられている **[今すぐ試す]** ボタンをクリックします。
 
 	![Image2](./media/sql-database-premium-sign-up/AccountSignupButton-Figure2.png)
 
 
-3. Choose the subscription you wish to sign up for the preview.
+3. プレビューにサインアップするサブスクリプションを選択します。
 
 	![Image3](./media/sql-database-premium-sign-up/Subscription-Figure3.png)
 
-	Only active, paid Azure subscriptions are eligible for the preview. You may sign up multiple subscriptions, but each subscription can be signed up only once. 
+	プレビューできるのは、アクティブな有料 Azure サブスクリプションだけです。複数のサブスクリプションにサインアップできますが、各サブスクリプションにサインアップできるのは 1 度だけです。
 
-	Signing a subscription up for the preview will not incur additional charges, but once activated and Premium quota granted, creating or upgrading to a Premium database is subject to the pricing outlined in the [SQL Database Pricing Page](http://www.windowsazure.com/en-us/pricing/details/sql-database/).
+	プレビューを目的としたサブスクリプションへのサインアップでは追加料金は発生しませんが、サブスクリプションがアクティブ化され、Premium クォータが割り当てられた後は、Premium データベースの作成やアップグレードを行うと、「[SQL データベースの料金詳細](http://www.windowsazure.com/ja-jp/pricing/details/sql-database/)」ページに記載されている課金の対象となります。
 
-	The current status of the sign up request is reflected in the preview features list.
+	サインアップ要求の現在の状態は、プレビュー機能リストに反映されます。
 
 	![Image4](./media/sql-database-premium-sign-up/Status-Figure4.png)
 
-4. Requests will be approved based on current capacity and demand. You may wait up to 2 days for your subscription to be activated, with longer wait times indicating high demand or fulfilled public preview capacity.
+4. 要求は、現在の容量と需要に基づいて承認されます。サブスクリプションがアクティブ化されるまでの待機期間は最大で 2 日です。この期間は、需要が大きいほど、またはパブリック プレビュー容量が使用されているほど長くなります。
 
-5. You will receive an email notification once your subscription is activated for the preview. 
-
-
-<h2><a id="Quota"></a>Step 2: Request Premium database quota</h2>
-Once your subscription is activated for the preview, you need to request Premium database quota for each server on which you plan to create a Premium database. As capacity is limited, please only request quota for servers on which you plan to create a Premium database, and cancel any unneeded pending requests.
+5. サブスクリプションがアクティブ化され、プレビュー可能になると、電子メールの通知を受信します。
 
 
-1.	Sign in to the [Azure Management Portal](https://manage.windowsazure.com) using your Microsoft account.
+<h2><a id="Quota"></a>手順 2. Premium データベース クォータを要求する</h2>
+サブスクリプションがアクティブ化され、プレビュー可能になったら、Premium データベースを作成する各サーバー用の Premium データベース クォータを要求する必要があります。容量は限られているため、Premium データベースを作成するサーバーのクォータだけを要求し、必要でない保留された要求は取り消してください。
 
-	**Note** - Account administrators, service administrators, and co-administrators of the subscription can request quota once the subscription is signed up for the preview.
 
-2.	Navigate to the **Servers** list in the **SQL Databases** extension.
-3.	Select the server for which you plan to request Premium database quota.
-4.	Navigate to the **Quick Start** for the selected server by clicking the lightning bolt icon in the top navigation bar.
-5.	Click **Request Premium Database Quota** in the **Premium Database** section.
+1.	Microsoft アカウントを使用して、[Azure 管理ポータル](https://manage.windowsazure.com)にサインインします。
+
+	**注** - サブスクリプションにサインアップし、プレビュー可能になったら、サブスクリプションのアカウント管理者、サービス管理者、共同管理者はクォータを要求できます。
+
+2.	**[SQL データベース]** 拡張機能の **[サーバー]** リストに移動します。
+3.	プレミアム データベース クォータを要求するサーバーを選択します。
+4.	上部のナビゲーション バーにある稲妻のアイコンをクリックして、選択したサーバーの **[クイック スタート]** に移動します。
+5.	**[プレミアム データベース]** セクションで **[プレミアム データベースのクォータの要求]** をクリックします。
 
 	![Image6](./media/sql-database-premium-sign-up/RequestQuota-Figure6.png)
 
 
-	Once your request is submitted, you may wait up to 5 days before being granted quota. Longer wait times may indicate high demand or fulfilled preview capacity.
+	要求を送信した後の、クォータが割り当てられるまでの待機期間は最大で 5 日です。この期間は、需要が大きいほど、またはパブリック プレビュー容量が使用されているほど長くなります。
 	
-	A few additional notes about Premium database quota requests:
+	プレミアム データベース クォータの要求に関する追加の注意事項:
 	
-	- Quota is not available to customers with free-trial subscriptions.
-	- Quota is limited initially, and requests will be granted based on current demand and available capacity.
-	- Microsoft may reclaim unused quota after 15 days.
-	- Only one quota request can be submitted for each logical server in the subscription.
-	- Initially, quota is limited to one database per logical server.
-	- Requesting database quota is free, however, creating a Premium edition database or upgrading an existing Web or Business edition database to Premium will increase the cost of the database.
-6.	You can see the status of your quota request on the server's **Quick Start** page.
+	- 無料評価版サブスクリプションのお客様は、クォータを使用できません。
+	- 最初はクォータに制限があり、要求は、現在の需要と使用可能な容量に基づいて許可されます。
+	- Microsoft は、15 日後に未使用のクォータを回収する場合があります。
+	- クォータ要求は、サブスクリプションの各論理サーバーについて 1 つだけ送信できます。
+	- 最初のクォータは、論理サーバーごとに 1 つのデータベースに制限されています。
+	- データベース クォータの要求は無料ですが、Premium Edition データベースを作成したり、既存の Web Edition または Business Edition のデータベースを Premium にアップグレードしたりすると、データベースのコストが増加します。
+6.	クォータ要求の状態は、サーバーの **[クイック スタート]** ページで確認できます。
 
 	![Image7](./media/sql-database-premium-sign-up/PendingApproval-Figure7.png)
 	
 
-7.	You will receive an email notification when your Premium database quota request is granted and quota is available for use.
-8.	Once granted, you can see a server's remaining Premium database quota on the server's **Quick Start** or **Dashboard** tab.
+7.	Premium データベース クォータ要求が許可され、クォータが使用可能になると、電子メールの通知を受信します。
+8.	許可された後は、サーバーの **[クイック スタート]** または **[ダッシュボード]** タブで、サーバーの残りの Premium データベース クォータを確認できます。
 
 	![Image8](./media/sql-database-premium-sign-up/QuotaApproved-Figure8.png)
 
-<h2><a id="Upgrade"></a>Step 3: Create a Premium database</h2>
+<h2><a id="Upgrade"></a>手順 3. Premium データベースを作成する</h2>
 
 
-Once you have been granted quota, you can create a new Premium edition database or upgrade an existing Web or Business  database to Premium to take advantage of reserved capacity and more predictable performance. 
+クォータが割り当てられたら、新しい Premium Edition データベースを作成したり、Web Edition または Business Edition のデータベースを Premium にアップグレードして、予約済み容量と予測しやすいパフォーマンスを活用できます。
 
 ![Image9](./media/sql-database-premium-sign-up/SpecifyDBSettings-Figure9.png)
 
@@ -95,16 +95,16 @@ Once you have been granted quota, you can create a new Premium edition database 
 ![Image10](./media/sql-database-premium-sign-up/PremiumDBSettings-Figure10.png)
 
 
-For more information, see [Managing a Premium Database](http://go.microsoft.com/fwlink/p/?LinkID=311927).
+詳細については、「[Premium データベースの管理](http://go.microsoft.com/fwlink/p/?LinkID=311927)」を参照してください。
 
 	
 	
-**Note:** You can only change the Premium status or the reservation size of your database once in a 24 hour period.
-<h2><a id="NextSteps"></a>Next Steps</h2>
-For additional information about Premium databases, see:
+**注:** データベースの Premium 状態または予約サイズを変更できるのは、24 時間に 1 度だけです。
+<h2><a id="NextSteps"></a>次のステップ</h2>
+Premium データベースのその他の情報については、次のページを参照してください。
 
-* [Managing a Premium Database](http://go.microsoft.com/fwlink/p/?LinkID=311927)
-* [Premium for SQL Database Guidance](http://go.microsoft.com/fwlink/p/?LinkId=313650)
+* [プレミアム データベースを管理しています](http://go.microsoft.com/fwlink/p/?LinkID=311927)
+* [SQL データベース プレミアムのガイダンス](http://go.microsoft.com/fwlink/p/?LinkId=313650)
 
 
 

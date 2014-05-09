@@ -1,37 +1,37 @@
-<properties linkid="notification-hubs-how-to-guides-howto-register-user-with-aspnet-webapi-windowsphonedotnet" urlDisplayName="Notify Windows Store app users by using Web API" pageTitle="Register the current user for push notifications by using Web API - Notification Hubs" metaKeywords="Azure registering application, Notification Hubs, Azure push notifications, push notification Windows Store app" description="Learn how to request push notification registration in a Windows Store app with Azure Notification Hubs when registeration is performed by ASP.NET Web API." metaCanonical="" services="notification-hubs" documentationCenter="" title="Register the current user for push notifications by using ASP.NET" authors="" solutions="" manager="" editor="" />
-# Register the current user for push notifications by using ASP.NET
+<properties linkid="notification-hubs-how-to-guides-howto-register-user-with-aspnet-webapi-windowsphonedotnet" urlDisplayName="Web API を使用した Windows ストア アプリケーション ユーザーへの通知" pageTitle="Web API を使用した現在のユーザーのプッシュ通知への登録 - 通知ハブ" metaKeywords="Azure 登録アプリケーション, 通知ハブ, Azure プッシュ通知, プッシュ通知 Windows ストア アプリケーション" description="ASP.NET Web API により登録が実行されるときに、Windows ストア アプリケーションで Azure 通知ハブを使用してプッシュ通知登録を要求する方法について説明します。" metaCanonical="" services="notification-hubs" documentationCenter="" title="ASP.NET を使用した現在のユーザーのプッシュ通知への登録" authors="" solutions="" manager="" editor="" />
+# ASP.NET を使用した現在のユーザーのプッシュ通知への登録
 
 <div class="dev-center-tutorial-selector sublanding">
-    <a href="/en-us/documentation/articles/notification-hubs-windows-store-aspnet-register-user-push-notifications/" title="Windows Store C#" class="current">Windows Store C#</a><a href="/en-us/documentation/articles/notification-hubs-ios-aspnet-register-user-push-notifications/" title="iOS">iOS</a>
+    <a href="/ja-jp/documentation/articles/notification-hubs-windows-store-aspnet-register-user-push-notifications/" title="Windows ストア C#" class="current">Windows ストア C#</a><a href="/ja-jp/documentation/articles/notification-hubs-ios-aspnet-register-user-push-notifications/" title="iOS">iOS</a>
 </div>
 
-This topic shows you how to request push notification registration with Azure Notification Hubs when registration is performed by ASP.NET Web API. This topic extends the tutorial [Notify users with Notification Hubs]. You must have already completed the required steps in that tutorial to create the authenticated mobile service. For more information on the notify users scenario, see [Notify users with Notification Hubs].  
+このトピックでは、ASP.NET Web API により登録が実行されるときに Azure 通知ハブを使用してプッシュ通知登録を要求する方法について説明します。このトピックは、「[通知ハブによるユーザーへの通知]」のチュートリアルを拡張したものです。認証されたモバイル サービスを作成するには、このチュートリアルの必要な手順を既に完了している必要があります。ユーザー通知シナリオの詳細については、「[通知ハブによるユーザーへの通知]」を参照してください。
 
-1. In Visual Studio 2012, open the app.xaml.cs file in the project that you created when you completed the prerequisite tutorial [Notify users with Notification Hubs].
+1. Visual Studio 2012 で、前提条件のチュートリアルである「[通知ハブによるユーザーへの通知]」を実行したときに作成したプロジェクトの app.xaml.cs ファイルを開きます。
 
-2. Locate the **InitNotificationsAsync** method and comment-out the code in the method.
+2. **InitNotificationsAsync** メソッドを見つけ、メソッドのコードをコメント解除します。
 
-	You will instead use the ASP.NET Web API to register for notifications.
+	代わりに、ASP.NET Web API を使用して通知に登録します。
 
-3. In **Solution Explorer**, right-click the project name, and then select **Manage NuGet Packages**.
+3. **ソリューション エクスプローラー**でプロジェクト名を右クリックし、**[NuGet パッケージの管理]** を選択します。
 
-4. In the left pane, select the **Online** category, search for `json.net`, click **Install** on the **Json.NET** package, then accept the license agreement. 
+4. 左側のウィンドウで、**[オンライン]** カテゴリを選択し、`json.net` を探します。**Json.NET** パッケージで **[インストール]** をクリックし、使用許諾契約に同意します。
 
   	![][0]
 
-  	This adds the third-party Newtonsoft.Json.dll assembly to your project.
+  	これにより、サードパーティの Newtonsoft.Json.dll アセンブリがプロジェクトに追加されます。
 
-3. In Solution Explorer, right-click the project, click **Add** and then **Class**, then type `LocalStorageManager` and click **Add**.
+3. ソリューション エクスプローラーで、プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックしてから「`LocalStorageManager`」と入力して **[追加]** をクリックします。
 
 	![][1] 
 
-	This adds code file for the **LocalStorageManager** class to the project.
+	これにより、**LocalStorageManager** クラスのコード ファイルがプロジェクトに追加されます。
 
-4. Open the new LocalStorageManager.cs project file and add the following **using** statement:
+4. 新しい LocalStorageManager.cs プロジェクト ファイルを開き、次の **using** ステートメントを追加します。
 
 		using Windows.Storage;
 
-5. Replace the **LocalStorageManager** class definition with the following code:
+5. **LocalStorageManager** クラス定義を次のコードで置き換えます。
 
         class LocalStorageManager
         {
@@ -59,9 +59,9 @@ This topic shows you how to request push notification registration with Azure No
             }
         }
 
-	This code creates and stores a device-specific installation ID, which is used as a tag when creating notifications. If an installation ID exists, it is used instead.
+	このコードにより、通知の作成時にタグとして使用されるデバイス固有のインストール ID が作成されて格納されます。インストール ID が存在する場合、そのインストール ID が代わりに使用されます。
 
-6. Open the MainPage.xaml project file, and replace the root **Grid** element with the following XAML code:
+6. MainPage.xaml プロジェクト ファイルを開き、ルートの **Grid** 要素を次の XAML コードに置き換えます。
 
         <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
             <Grid Margin="120, 58, 120, 80" >
@@ -96,9 +96,9 @@ This topic shows you how to request push notification registration with Azure No
             </Grid>
         </Grid>
 
-	This code creates a UI for collecting a username and password and displaying the installation ID. 
+	このコードにより、ユーザー名とパスワードを収集してインストール ID を表示する UI が作成されます。
 
-7. Back in the MainPage.xaml.cs file, add the following **using** directives:
+7. MainPage.xaml.cs ファイルに戻り、次の **using** ディレクティブを追加します。
 
 		using Newtonsoft.Json;
 		using System.Net.Http;
@@ -106,13 +106,13 @@ This topic shows you how to request push notification registration with Azure No
 		using Windows.Networking.PushNotifications;
 		using Windows.UI.Popups;
 
-8. Add the following definition in the **MainPage** class:
+8. **MainPage** クラス内で、次の定義を追加します。
 
 		private string registerUri = "https://<SERVICE_ROOT_URL>/api/register";
         
-	Replace _`<SERVICE_ROOT_URL>`_ with the root URI of the Web API that you created in **Notify users with Notification Hubs**. 
+	_`<SERVICE_ROOT_URL>`_ を、**「通知ハブによるユーザーへの通知」**で作成した Web API のルート URI に置き換えます。
 
-8. Add the following method to the **MainPage** class:
+8. **MainPage** クラス内で、次のメソッドを追加します。
 
         private async void Login_Click(object sender, RoutedEventArgs e)
         {
@@ -164,9 +164,9 @@ This topic shows you how to request push notification registration with Azure No
             await dialog.ShowAsync();
         }
 
-	This method gets both an installation ID and channel for push notifications and sends it, along with the device type, to the authenticated Web API method that creates a registration in Notification Hubs. This Web API was defined in [Notify users with Notification Hubs].
+	このメソッドは、プッシュ通知のインストール ID とチャネルの両方を取得します。これらの ID とチャネルは、デバイスの種類と共に、通知ハブで登録を作成する認証済みの Web API メソッドに送信されます。この Web API は、「[通知ハブによるユーザーへの通知]」で定義されたものです。
 
-Now that the client app has been updated, return to the [Notify users with Notification Hubs] and update the mobile service to send notifications by using Notification Hubs.
+これで、クライアント アプリケーションが更新されました。「[通知ハブによるユーザーへの通知]」に戻り、通知ハブを使用することで通知を送信するようにモバイル サービスを更新します。
 
 <!-- Anchors. -->
 
@@ -175,6 +175,7 @@ Now that the client app has been updated, return to the [Notify users with Notif
 [1]: ./media/notification-hubs-windows-store-aspnet-register-user-push-notifications/notification-hub-create-aspnet-class.png
 
 <!-- URLs. -->
-[Notify users with Notification Hubs]: /en-us/manage/services/notification-hubs/notify-users-aspnet
+[通知ハブによるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
 
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+

@@ -1,18 +1,18 @@
-<properties linkid="services-linux-user-names" urlDisplayName="User Names in Linux" pageTitle="Selecting User Names for Linux on Azure" metaKeywords="" description="Learn how to select user names for a Linux virtual machine in Azure." metaCanonical="" services="virtual-machines" documentationCenter="" title="Selecting User Names for Linux on Azure" authors="" solutions="" manager="" editor="" />
+<properties linkid="services-linux-user-names" urlDisplayName="Linux でのユーザー名" pageTitle="Azure 上の Linux に対応するユーザー名の選択" metaKeywords="" description="Azure で Linux 仮想マシンに対応するユーザー名を選択する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure 上の Linux に対応するユーザー名の選択" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-#Selecting User Names for Linux on Azure#
+#Azure 上の Linux に対応するユーザー名の選択#
 
-When you create a virtual machine instance for Linux images on Azure you have the ability to select the user name to provision.
+Azure 上で Linux イメージに対応する仮想マシン インスタンスを作成するときに、プロビジョニングするユーザー名を選択することができます。
 
-Linux defines a set of user names that you can't use. It is very important that you **avoid using these names**. If you do use one of these user names, you won't be able to provision the image.
+Linux では、使用できないユーザー名のセットが定義されています。**これらの名前を使用しないこと**は非常に重要です。これらのユーザー名のいずれかを使用した場合は、イメージをプロビジョニングすることができません。
 
-In addition, the Service Management API will return an error that states: Failed to create user *xxxxxx*. This will also be true if you use a user name that already exists in the image as a result of a previous capture operation that did not deprovision the user name already created in the image. 
+さらに、サービス管理 API から "ユーザー *xxxxxx* を作成できませんでした" というエラーが返されます。これは、イメージ内にユーザー名が既に存在している場合にも当てはまります。ユーザー名が既に存在する状況は、前回のキャプチャ操作で、イメージ内に既に作成されていたユーザー名をプロビジョニング解除しなかった場合に発生します。
 
-Following are the user names that you can't use. 
+次に、使用できないユーザー名を示します。
 
 
 
@@ -232,3 +232,4 @@ UBUNTU
 - voice
 - whoopsie
 - www-data
+

@@ -1,27 +1,28 @@
-<properties linkid="develop-mobile-how-to-guides-register-windows-store-app-server-auth" urlDisplayName="Shared Access Signature Part 1" pageTitle="Register your Windows Store app package for Microsoft authentication" metaKeywords="" description="Learn how to register your Windows Store app for Microsoft authentication in your Azure Mobile Services application" metaCanonical="" services="" documentationCenter="Mobile" title="Register your Windows Store app package for Microsoft authentication" authors="glenga" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-how-to-guides-register-windows-store-app-server-auth" urlDisplayName="共有アクセス署名、パート 1" pageTitle="Windows ストア アプリケーション パッケージを Microsoft 認証に登録する" metaKeywords="" description="Azure のモバイル サービス アプリケーションで Microsoft 認証に Windows ストア アプリケーションを登録する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="Windows ストア アプリケーション パッケージを Microsoft 認証に登録する" authors="glenga" solutions="" manager="" editor="" />
 
-# Register your Windows Store app package for Microsoft authentication
+# Windows ストア アプリケーション パッケージを Microsoft 認証に登録する
 
-Azure Mobile Services supports both client-driven and server-driven authentication methods. Server-driven authentication uses identity providers, including Microsoft Account. When you use a Microsoft Account with server-driven authentication without registering your app with Mobile Services, users are prompted to supply credentials every time that the authentication is requested. When you register your app, the Microsoft Account login credentials are cached and can be used for authentication without the user being prompted to supply them again. This topic shows you how to register your Windows Store app package for an improved Microsoft Account login experience when using Azure Mobile Services for authentication. 
+Azure のモバイル サービスでは、クライアント主導とサーバー主導の両方の認証方法がサポートされています。サーバー主導の認証では、Microsoft アカウントなどの ID プロバイダーを使用します。サーバー主導の認証で、アプリケーションをモバイル サービスに登録せずに Microsoft アカウントを使用すると、認証が必要になるたびに、ユーザーは資格情報を入力するように求められます。アプリケーションを登録すると、Microsoft アカウントのログイン資格情報がキャッシュされて認証に使われるようになるので、ユーザーが再度入力を求められることがありません。このトピックでは、認証に Azure のモバイル サービスを使用するときの Microsoft アカウントのログイン エクスペリエンスを向上させるために Windows ストア アプリケーション パッケージを登録する方法について説明します。
 
-Client-driven authentication can be used to provide a single sign-on experience on a Windows device by using Live Connect. If you use Live Connect APIs, you do not need to complete the steps in this topic. For more information, see [Authenticate your Windows Store app with Live Connect single sign-on].   
+Windows デバイスで Live Connect を使用したシングル サインオン エクスペリエンスを提供するために、クライアント主導の認証を使用することができます。Live Connect API を使用する場合は、このトピックの手順を行う必要はありません。詳細については、「[Live Connect シングル サインオンによる Windows ストア アプリケーションの認証]」を参照してください。
 
-Registering your app also enables you to send push notifications to your app. If you have already completed the tutorial [Get started with push notifications] for your app, you have already completed the steps in this topic.
+アプリケーションを登録すると、アプリケーションにプッシュ通知を送信することもできます。アプリケーションのためにチュートリアル「[プッシュ通知の使用]」を既に実行した場合、このトピックの手順は既に終わっています。
 
-<div class="dev-callout"><b>Note</b>
-	<p><em>Visual Studio 2013 Preview</em> includes new features that make it easy to register your Windows Store app package with Mobile Services. For more information, see <a href="http://go.microsoft.com/fwlink/p/?LinkId=309101">Quickstart: Adding push notifications for a mobile service</a> in the Windows Dev Center.</p>
+<div class="dev-callout"><b>注</b>
+	<p><em>Visual Studio 2013 Preview</em> には、Windows ストア アプリ パッケージをモバイル サービスに簡単に登録できる新機能が含まれています。詳細については、Windows デベロッパー センターで<a href="http://go.microsoft.com/fwlink/p/?LinkId=309101">モバイル サービスのプッシュ通知の追加のクイック スタート</a>に関するページを参照してください。</p>
 </div>
 
 [WACOM.INCLUDE [mobile-services-register-windows-store-app](../includes/mobile-services-register-windows-store-app.md)]
 
-After you have registered your app package, remember to supply a value of <strong>true</strong> for the <em>useSingleSignOn</em> when you call the <a href="http://go.microsoft.com/fwlink/p/?LinkId=311594" target="_blank">LoginAsync</a> method. This provides your users with the improved login experience when using a Microsoft Account.
+アプリケーション パッケージの登録後、<a href="http://go.microsoft.com/fwlink/p/?LinkId=311594" target="_blank">LoginAsync</a> メソッドを呼び出すときに、<em>useSingleSignOn</em> に値 <strong>true</strong> を指定してください。そうすることで、Microsoft アカウントを使用する場合に、向上したログイン エクスペリエンスをユーザーに提供できます。
 
 <!-- Anchors. -->
 <!-- Images. -->
 
 
 <!-- URLs. -->
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-dotnet/
-[Authenticate your Windows Store app with Live Connect single sign-on]: /en-us/develop/mobile/tutorials/single-sign-on-windows-8-dotnet
-[Get started with users C#]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Get started with users JavaScript]: /en-us/develop/mobile/tutorials/get-started-with-users-js/
+[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet/
+[Live Connect シングル サインオンによる Windows ストア アプリケーションの認証]: /ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-dotnet
+[ユーザー認証の使用 C#]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet/
+[ユーザー認証の使用 JavaScript]: /ja-jp/develop/mobile/tutorials/get-started-with-users-js/
+

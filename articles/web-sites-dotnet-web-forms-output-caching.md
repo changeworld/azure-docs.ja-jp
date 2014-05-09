@@ -1,84 +1,84 @@
-<properties linkid="video-center-detail" urlDisplayName="details" pageTitle="Video Center Details" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="How to Use ASP.NET Web Forms Output Caching with Azure Web Sites" authors="jroth" solutions="" manager="" editor="" />
+<properties linkid="video-center-detail" urlDisplayName="詳細" pageTitle="ビデオ センターの詳細" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Azure の Web サイトで ASP.NET Web フォームの出力キャッシュを使用する方法" authors="jroth" solutions="" manager="" editor="" />
 
 
 
-# How to Use ASP.NET Web Forms Output Caching with Azure Web Sites
+# Azure の Web サイトで ASP.NET Web フォームの出力キャッシュを使用する方法
 
-This topic explains how to use the Azure Cache Service (Preview) to support ASP.NET page output caching for ASP.NET Web Forms. Page output caching is an optimization that directly returns a cached rendering page for a specific duration of time. This is useful in situations where a page is accessed more frequently than it typically changes. It is important to note that page output caching is not supported for ASP.NET MVC applications.
+ここでは、Azure のキャッシュ サービス (プレビュー) を使用して、ASP.NET Web フォームの ASP.NET ページ出力キャッシュをサポートする方法を説明します。ページ出力キャッシュは、指定した期間だけキャッシュ内のレンダリング ページを直接返す機能です。この機能は、更新頻度の低いページに頻繁にアクセスする場合に役立ちます。ASP.NET MVC アプリケーションはページ出力キャッシュをサポートしていないことに注意してください。
 
-The Cache Service (Preview) provides a distributed caching service that is external to the web site. This enables all instances of the web site to access the same cached rendering of a page.
+キャッシュ サービス (プレビュー) は、Web サイトの外部に分散キャッシュ サービスを提供します。これにより、Web サイトのすべてのインスタンスがキャッシュ内の同じレンダリング ページにアクセスできます。
 
-The basic steps to use the Cache Service (Preview) for page output caching include:
+キャッシュ サービス (プレビュー) を使用してページ出力キャッシュにアクセスする基本手順は次のとおりです。
 
-* [Create the cache.](#createcache)
-* [Configure the ASP.NET project to use Azure Cache.](#configureproject)
-* [Modify the web.config file.](#configurewebconfig)
-* [Use output caching to temporarily return cached versions of a page.](#useoutputcaching)
+* [キャッシュを作成します。](#createcache)
+* [Azure のキャッシュを使用するように ASP.NET プロジェクトを構成します。](#configureproject)
+* [web.config ファイルを修正します。](#configurewebconfig)
+* [出力キャッシュを使用して、キャッシュされたページを一時的に返します。](#useoutputcaching)
 
-<h2><a id="createcache"></a>Create the Cache</h2>
-1. At the bottom of the Azure Management Portal, click on the **New** icon.
+<h2><a id="createcache"></a>キャッシュを作成する</h2>
+1. Azure 管理ポータルの下部にある **[新規]** アイコンをクリックします。
 
-	![NewIcon][NewIcon]
+	![[新規] アイコン][NewIcon]
 
-2. Select **Data Services**, **Cache**, and then click **Quick Create**.
+2. **[データ サービス]**、**[キャッシュ]** の順に選択し、**[簡易作成]** をクリックします。
 
-	![NewCacheDialog][NewCacheDialog]
+	![新規キャッシュ ダイアログ][NewCacheDialog]
 
-3. Type a unique name for the cache in the **Endpoint** text box. Then select appropriate values for the other cache properties, and click **Create a New Cache**.
+3. キャッシュの一意な名前を **[エンドポイント]** ボックスに入力します。キャッシュに関するその他のプロパティを設定し、**[新しいキャッシュの作成]** をクリックします。
 
-4. Select the **Cache** icon in the Management Portal to view all of your Cache Service endpoints.
+4. 管理ポータルで **[キャッシュ]** アイコンを選択します。すべてのキャッシュ サービス エンドポイントが表示されます。
 
-	![CacheIcon][CacheIcon]
+	![キャッシュ アイコン][CacheIcon]
 
-5. You can then select one of the Cache Service endpoints to view its properties. The following sections will use settings from the **Dashboard** tab to configure Caching for an ASP.NET project.
+5. いずれかのキャッシュ サービス エンドポイントを選択すると、そのプロパティが表示されます。この後のセクションでは、**[ダッシュボード]** タブを使用して ASP.NET プロジェクトのキャッシュを構成します。
 
-<h2><a id="configureproject"></a>Configure the ASP.NET project</h2>
-1. First, ensure that you have [installed the latest][]  **Azure SDK for .NET**.
+<h2><a id="configureproject"></a>ASP.NET プロジェクトを構成する</h2>
+1. まず、**Azure SDK for .NET** の[最新バージョンをインストール][]していることを確認します。
 
-2. In Visual Studio, right-click the ASP.NET project in **Solution Explorer**, and then select **Manage NuGet Packages**. (If you are using WebMatrix, click the **NuGet** button on the toolbar instead)
+2. Visual Studio の**ソリューション エクスプローラー**で目的の ASP.NET プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します (WebMatrix を使用している場合は、ツール バーの **[NuGet]** をクリックします)。
 
-3. Type **WindowsAzure.Caching** in the **Search Online** edit box.
+3. **[オンライン検索]** ボックスに「**WindowsAzure.Caching**」と入力します。
 
-	![NuGetDialog][NuGetDialog]
+	![NuGet ダイアログ][NuGetDialog]
 
-4. Select the **Azure Caching** package, and then click the **Install** button.
+4. **[Azure Caching]** パッケージを選択し、**[インストール]** をクリックします。
 
-<h2><a id="configurewebconfig"></a>Modify the Web.Config File</h2>
-In addition to making assembly references for Cache, the NuGet package adds stub entries in the web.config file. To use Cache for ASP.NET page output caching, several modifications must be made to the web.config.
+<h2><a id="configurewebconfig"></a>Web.Config ファイルを修正する</h2>
+NuGet パッケージは、キャッシュに必要なアセンブリ参照を作成するほか、web.config ファイルにスタブ エントリを追加します。キャッシュ サービスを使用して ASP.NET ページ出力キャッシュにアクセスするには、web.config を一部修正する必要があります。
 
-1. Open the **web.config** file for the ASP.NET project.
+1. ASP.NET プロジェクトの **web.config** ファイルを開きます。
 
-2. If you have existing **caching** and **outputCache** elements, comment them out (or remove them).
+2. **caching** 要素と **outputCache** 要素が既に存在する場合は、それらをコメント アウト (または削除) します。
 
-3. Then uncomment the **caching** element that was added by the Azure Caching NuGet package. The end result should look similar to the following screenshot.
+3. Azure Caching NuGet パッケージによって追加された **caching** 要素をコメント解除します。次のスクリーン ショットのようになります。
 
 	![OutputConfig][OutputConfig]
 
-4. Next, find the **dataCacheClients** section. Uncomment the **securityProperties** child element.
+4. 次に、**dataCacheClients** セクションを探します。**securityProperties** 子要素をコメント解除します。
 
 	![CacheConfig][CacheConfig]
 
-5. In the **autoDiscover** element, set the **identifier** attribute to your cache's endpoint URL. To find your endpoint URL, go to the cache properties in the Azure Management Portal. On the **Dashboard** tab, copy the **ENDPOINT URL** value in the **quick glance** section.
+5. **autoDiscover** 要素で、**identifier** 属性にキャッシュのエンドポイント URL を設定します。エンドポイント URL を確認するには、Azure の管理ポータルでキャッシュのプロパティを参照します。**[ダッシュボード]** タブを開き、**[概要]** セクションの **[エンドポイント URL]** の値をコピーします。
 
-	![EndpointURL][EndpointURL]
+	![エンドポイント URL][EndpointURL]
 
-6. In the **messageSecurity** element, set the **authorizationInfo** attribute to your cache's access key. To find the access key, select your cache in the Azure Management Portal. Then click the **Manage Keys** icon on the bottom bar. Click the copy button next to the **PRIMARY ACCESS KEY** text box.
+6. **messageSecurity** 要素で、**authorizationInfo** 属性にキャッシュのアクセス キーを設定します。アクセス キーを確認するには、Azure の管理ポータルで該当するキャッシュを選択します。下部のバーにある **[キーの管理]** アイコンをクリックします。**[プライマリ アクセス キー]** ボックスの横にあるコピー ボタンをクリックします。
 
-	![ManageKeys][ManageKeys]
+	![キーの管理][ManageKeys]
 
-<h2><a id="useoutputcaching"></a>Use Output Caching</h2>
-The final step is to configure pages in your ASP.NET Web Forms application to use output caching. This can be done by adding an **OutputCache** attribute to the beginning of the .ASPX source. For example:
+<h2><a id="useoutputcaching"></a>出力キャッシュを使用する</h2>
+最後に、出力キャッシュを使用する ASP.NET Web フォーム アプリケーションでページを構成します。そのためには、.ASPX ソースの先頭に **OutputCache** 属性を追加します。次に例を示します。
 
 	<%@ OutputCache Duration="45" VaryByParam="*" %>
 
-The previous example caches the page for forty-five seconds. Because **VaryByParam** is set to "*", this cached page output does not change even if different query parameters are passed. But the following example does cache a different version of the page for each value of the "UserId" paraemter:
+上の例では、ページを 45 秒間キャッシュに格納します。**VaryByParam** が "*" に設定されているので、別のクエリ パラメーターが渡された場合でも、キャッシュ内のこのページ出力は変更されません。一方、次の例では、"UserId" パラメーターの値ごとに別のバージョンのページがキャッシュされます。
 
 	<%@ OutputCache Duration="45" VaryByParam="UserId" %>	
 
   
   
   
-[installed the latest]: http://www.windowsazure.com/en-us/downloads/?sdk=net
+[最新バージョンをインストール]: http://www.windowsazure.com/ja-jp/downloads/?sdk=net
 [NewIcon]: ./media/web-sites-web-forms-output-caching/CacheScreenshot_NewButton.PNG
 [NewCacheDialog]: ./media/web-sites-web-forms-output-caching/CachingScreenshot_CreateOptions.PNG
 [CacheIcon]: ./media/web-sites-web-forms-output-caching/CachingScreenshot_CacheIcon.PNG
@@ -90,3 +90,4 @@ The previous example caches the page for forty-five seconds. Because **VaryByPar
   
   
   
+

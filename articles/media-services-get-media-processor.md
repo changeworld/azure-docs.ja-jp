@@ -1,51 +1,51 @@
-<properties linkid="develop-media-services-how-to-guides-create-media-processor" urlDisplayName="Create a Media Processor" pageTitle="How to Create a Media Processor - Azure" metaKeywords="" description="Learn how to create a media processor component to encode, convert format, encrypt, or decrypt media content for Azure Media Services. Code samples are written in C# and use the Media Services SDK for .NET." metaCanonical="" services="media-services" documentationCenter="" title="How to: Get a Media Processor Instance" authors="migree" solutions="" manager="" editor="" />
+<properties linkid="develop-media-services-how-to-guides-create-media-processor" urlDisplayName="メディア プロセッサを作成する" pageTitle="メディア プロセッサを作成する方法 - Azure" metaKeywords="" description="メディア プロセッサ コンポーネントを作成し、Azure メディア サービス用にメディア コンテンツのエンコード、形式の変換、暗号化、または復号化を行う方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" metaCanonical="" services="media-services" documentationCenter="" title="方法: メディア プロセッサ インスタンスを取得する" authors="migree" solutions="" manager="" editor="" />
 
 
 
 
 
-<h1>How to: Get a Media Processor Instance</h1>
-This article is one in a series introducing Azure Media Services programming. The previous topic was [How to: Create an Encrypted Asset and Upload into Storage](http://go.microsoft.com/fwlink/?LinkID=301733&clcid=0x409).
+<h1>方法: メディア プロセッサ インスタンスを取得する</h1>
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、「[方法: 暗号化されたアセットを作成してストレージにアップロードする](http://go.microsoft.com/fwlink/?LinkID=301733&clcid=0x409)」を参照してください。
 
-In Media Services a media processor is a component that handles a specific processing task, such as encoding, format conversion, encrypting, or decrypting media content. You typically create a media processor when you are creating a task to encode, encrypt, or convert the format of media content.
+メディア プロセッサは、メディア サービスのコンポーネントとして、メディア コンテンツのエンコード、形式変換、暗号化、復号化など、特定の処理タスクを担います。通常、メディア コンテンツのエンコード、暗号化、形式変換を行うタスクの作成時にメディア プロセッサを作成します。
 
-The following table provides the name and description of each available media processor.
+次の表は、利用可能なメディア プロセッサの名前と説明の一覧です。
 
 <table border="2" cellspacing="0" cellpadding="5" style="border: 2px solid #000000;">
   <thead>
     <tr>
-       <th>Media Processor Name</th>
-       <th>Description</th>
-	<th>More Information</th>
+       <th>メディア プロセッサ名</th>
+       <th>説明</th>
+	<th>詳細</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-       <td>Azure Media Encoder</td>
-       <td>Lets you run encoding tasks using the Media Encoder.</td>
-       <td><a href="http://msdn.microsoft.com/en-us/library/jj129582.aspx"> Task Preset Strings for the Azure Media Encoder</a></td>
+       <td>Azure メディア エンコーダー</td>
+       <td>メディア エンコーダーを使用してエンコード タスクを実行できます。</td>
+       <td><a href="http://msdn.microsoft.com/ja-jp/library/jj129582.aspx"> Azure メディア エンコーダー用のタスク プリセット文字列</a></td>
     </tr>
     <tr>
         <td>Azure Media Packager</td>
-        <td>Lets you convert media assets from .mp4 to smooth streaming format. Also, lets you convert media assets from smooth streaming to the Apple HTTP Live Streaming (HLS) format.</td>
-		<td><a href="http://msdn.microsoft.com/en-us/library/hh973635.aspx">Task Preset Strings for the Azure Media Packager</a></td>
+        <td>メディア アセットを .mp4 からスムーズ ストリーミング形式に変換できます。また、スムーズ ストリーミングから Apple HTTP ライブ ストリーミング (HLS) 形式にメディア アセットを変換できます。</td>
+		<td><a href="http://msdn.microsoft.com/ja-jp/library/hh973635.aspx">Azure Media Packager のタスク プリセット</a></td>
     </tr>
     <tr>
         <td>Azure Media Encryptor</td>
-        <td>Lets you encrypt media assets using PlayReady Protection.</td>
-        <td><a href="http://msdn.microsoft.com/en-us/library/hh973610.aspx">Task Preset Strings for the Azure Media Packager</a></td>
+        <td>PlayReady Protection を使用してメディア アセットを暗号化できます。</td>
+        <td><a href="http://msdn.microsoft.com/ja-jp/library/hh973610.aspx">Azure Media Packager のタスク プリセット</a></td>
     </tr>
     <tr>
         <td>Storage Decryption</td>
-        <td>Lets you decrypt media assets that were encrypted using storage encryption.</td>
-		<td>N/A</td>
+        <td>ストレージ暗号化を使用して暗号化されたメディア アセットを復号化できます。</td>
+		<td>該当なし</td>
     </tr>
   </tbody>
 </table>
 
 <br />
 
-The following method shows how to get a media processor instance. The code example assumes the use of a module-level variable named **_context** to reference the server context as described in the section [How to: Connect to Media Services Programmatically].
+次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。このコード例では、「[方法: メディア サービスにプログラムから接続する]」で説明しているように、モジュール レベルの変数 **_context** を使用してサーバー コンテキストを参照しています。
 
 <pre><code>
 private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
@@ -60,9 +60,10 @@ private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcess
 }
 </code></pre>
 
-<h2>Next Steps</h2>
-Now that you know how to get a media processor instance, go to the [How to Encode an Asset][] topic which will show you how to use the Azure Media Encoder to encode an asset.
+<h2>次のステップ</h2>
+これで、プロセッサ インスタンスの取得方法を学習できました。次は、[アセットをエンコードする方法][]に関するトピックに進み、Azure メディア エンコーダーを使用してアセットをエンコードする方法を学習します。
 
-[How to Encode an Asset]: http://go.microsoft.com/fwlink/?LinkId=301753
-[Task Preset Strings for the Azure Media Encoder]: http://msdn.microsoft.com/en-us/library/jj129582.aspx
-[How to: Connect to Media Services Programmatically]: http://www.windowsazure.com/en-us/develop/media-services/how-to-guides/set-up-computer-for-media-services
+[アセットをエンコードする方法]: http://go.microsoft.com/fwlink/?LinkId=301753
+[Azure メディア エンコーダー用のタスク プリセット文字列]: http://msdn.microsoft.com/ja-jp/library/jj129582.aspx
+[方法: メディア サービスにプログラムから接続する]: http://www.windowsazure.com/ja-jp/develop/media-services/how-to-guides/set-up-computer-for-media-services
+

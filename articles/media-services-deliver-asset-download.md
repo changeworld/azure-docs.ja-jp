@@ -1,15 +1,15 @@
-<properties linkid="develop-media-services-how-to-guides-deliver-media-assets" urlDisplayName="Delivering Media Assets" pageTitle="How to Deliver Media Assets - Azure" metaKeywords="" description="Learn about options for delivering media assets that have been uploaded to Media Services in Azure. Code samples are written in C# and use the Media Services SDK for .NET." metaCanonical="" services="media-services" documentationCenter="" title="How to: Deliver an Asset by Download" authors="migree" solutions="" manager="" editor="" />
+<properties linkid="develop-media-services-how-to-guides-deliver-media-assets" urlDisplayName="メディア アセットを配信する" pageTitle="メディア アセットを配信する方法 - Azure" metaKeywords="" description="Azure でメディア サービスにアップロードされたメディア アセットを配信するオプションについて説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" metaCanonical="" services="media-services" documentationCenter="" title="方法: ダウンロードによってアセットを配信する" authors="migree" solutions="" manager="" editor="" />
 
 
 
 
 
-<h1>How to: Deliver an Asset by Download</h1>
-This article is one in a series introducing Azure Media Services programming. The previous topic was [How to: Manage Assets](http://go.microsoft.com/fwlink/?LinkID=301815&clcid=0x409).
+<h1>方法: ダウンロードによってアセットを配信する</h1>
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、「[方法: アセットを管理する](http://go.microsoft.com/fwlink/?LinkID=301815&clcid=0x409)」を参照してください。
 
-This topic discusses options for delivering media assets uploaded to Media Services. You can deliver Media Services content in numerous application scenarios. You can download media assets, or access them by using a locator. You can send media content to another application or to another content provider. For improved performance and scalability, you can also deliver content by using a Content Delivery Network (CDN), such as the Azure CDN.
+このトピックでは、メディア サービスにアップロードされたメディア アセットを配信するためのオプションについて説明します。メディア サービスのコンテンツ配信には、さまざまな方法を適用できます。メディア アセットをダウンロードするか、ロケーターを使用してアクセスすることができます。メディア コンテンツは、別のアプリケーションまたは別のコンテンツ プロバイダーに送ることができます。パフォーマンスとスケーラビリティを高めるために、Azure CDN などのコンテンツ配信ネットワーク (CDN: Content Delivery Network) を使用してコンテンツを配信することもできます。
 
-This example shows how to download media assets from Media Services. The code queries the jobs associated with the Media Services account by job ID and accesses its **OutputMediaAssets** collection (which is the set of one or more output media assets that results from running a job). This  example shows how to download output media assets from a job, but you can apply the same approach to download other assets.
+この例では、メディア アセットをメディア サービスからダウンロードする方法を紹介しています。このコードは、ジョブ ID によってメディア サービス アカウントに関連付けられたジョブのクエリを実行し、**OutputMediaAssets** コレクション (ジョブの実行の結果である 1 つまたは複数の出力メディア アセットのセット) にアクセスします。この例では、ジョブから出力メディア アセットをダウンロードしていますが、同じ方法で他のアセットをダウンロードすることもできます。
 
 <pre><code> 
 // Download the output asset of the specified job to a local folder.
@@ -62,11 +62,12 @@ static void DownloadProgress(object sender, DownloadProgressChangedEventArgs e)
 }
 </code></pre>
 
-For more information about delivering assets, see:
+アセットの配信の詳細については、以下を参照してください。
 <ul>
-<li><a href="http://msdn.microsoft.com/en-us/library/jj129575.aspx">Deliver Assets with the Media Services for .NET</a></li>
-<li><a href="http://msdn.microsoft.com/en-us/library/jj129578.aspx">Deliver Assets with the Media Services REST API</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/jj129575.aspx">Media Services SDK for .NET を使用して資産を配信する</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/jj129578.aspx">Media Services REST API を使って資産を配信する</a></li>
 </ul>
 
-<h2>Next Steps</h2>
-This topic explained downloading an asset from Azure Storage. For information on other ways to deliver assets go to the [How to Deliver Streaming Content](http://go.microsoft.com/fwlink/?LinkID=301942) topic.
+<h2>次のステップ</h2>
+このトピックでは、Azure ストレージからのアセットのダウンロードについて説明しました。アセットを配信する他の方法の情報については、[ストリーミング コンテンツを配信する方法](http://go.microsoft.com/fwlink/?LinkID=301942)に関するページを参照してください。
+

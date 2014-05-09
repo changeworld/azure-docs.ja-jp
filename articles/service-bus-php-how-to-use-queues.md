@@ -1,75 +1,75 @@
-<properties linkid="develop-php-how-to-guides-service-bus-queues" urlDisplayName="Service Bus Queues" pageTitle="How to use Service Bus queues (PHP) - Azure" metaKeywords="Azure Service Bus queues, Azure queues, Azure messaging, Azure queues PHP" description="Learn how to use Service Bus queues in Azure. Code samples written in PHP." metaCanonical="" services="service-bus" documentationCenter="PHP" title="How to Use Service Bus Queues" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-php-how-to-guides-service-bus-queues" urlDisplayName="サービス バス キュー" pageTitle="サービス バス キューの使用方法 (PHP) - Azure" metaKeywords="Azure サービス バス キュー, Azure キュー, Azure メッセージング, Azure キュー PHP" description="Azure でのサービス バス キューの使用方法について説明します。コード サンプルは PHP で記述されています。" metaCanonical="" services="service-bus" documentationCenter="PHP" title="サービス バス キューの使用方法" authors="" solutions="" manager="" editor="" />
 
-# How to Use Service Bus Queues
+# サービス バス キューの使用方法
 
-This guide will show you how to use Service Bus queues with PHP. The samples are
-written in PHP and use the [Azure SDK for PHP][download-sdk]. The
-scenarios covered include **creating queues**, **sending and receiving
-messages**, and **deleting queues**.
+このガイドでは、PHP でサービス バス キューを使用する方法について説明します。サンプルは 
+PHP で記述され、[Azure SDK for PHP][download-sdk] を利用しています。紹介するシナリオは、
+**キューの作成**、**メッセージの送受信**、および
+**キューの削除**です。
 
-## Table of Contents
+## 目次
 
--   [What are Service Bus queues?](#what-are-service-bus-queues)
--   [Create a service namespace](#create-a-service-namespace)
--   [Obtain the default management credentials for the namespace](#obtain-default-credentials)
-- 	[Create a PHP application](#CreateApplication)
--	[Get the Azure Client Libraries](#GetClientLibrary)
--   [Configure your application to use Service Bus](#ConfigureApp)
--   [How to: Create a queue](#CreateQueue)
--   [How to: Send messages to a queue](#SendMessages)
--   [How to: Receive messages from a queue](#ReceiveMessages)
--   [How to: Handle application crashes and unreadable messages](#HandleCrashes)
--   [Next steps](#NextSteps)
+-   [サービス バス キューとは](#what-are-service-bus-queues)
+-   [サービス名前空間の作成](#create-a-service-namespace)
+-   [名前空間の既定の管理資格情報の取得](#obtain-default-credentials)
+- 	[PHP アプリケーションの作成](#CreateApplication)
+-	[Azure クライアント ライブラリの入手](#GetClientLibrary)
+-   [サービス バスを使用するようにアプリケーションを構成する](#ConfigureApp)
+-   [方法: キューを作成する](#CreateQueue)
+-   [方法: キューにメッセージを送信する](#SendMessages)
+-   [方法: キューからメッセージを受信する](#ReceiveMessages)
+-   [方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する](#HandleCrashes)
+-   [次のステップ](#NextSteps)
 
 [WACOM.INCLUDE [howto-service-bus-queues](../includes/howto-service-bus-queues.md)]
 
-##<a id="CreateApplication"></a>Create a PHP application
+##<a id="CreateApplication"></a>PHP アプリケーションの作成
 
-The only requirement for creating a PHP application that accesses the Azure Blob service is the referencing of classes in the [Azure SDK for PHP][download-sdk] from within your code. You can use any development tools to create your application, including Notepad.
+Azure BLOB サービスにアクセスする PHP アプリケーションを作成するための要件は、コード内から [Azure SDK for PHP][download-sdk] のクラスを参照することのみです。アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。
 
 > [WACOM.NOTE]
-> Your PHP installation must also have the <a href="http://php.net/openssl">OpenSSL extension</a> installed and enabled.
+> PHP のインストールでは、<a href="http://php.net/openssl">OpenSSL 拡張機能</a>をインストールして有効にしておく必要もあります。
 
-In this guide, you will use service features which can be called within a PHP application locally, or in code running within an Azure web role, worker role, or web site.
+このガイドで使用するサービス機能は、PHP アプリケーション内でローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト上で実行されるコード内で呼び出すこともできます。
 
-##<a id="GetClientLibrary"></a>Get the Azure Client Libraries
+##<a id="GetClientLibrary"></a>Azure クライアント ライブラリの入手
 
 [WACOM.INCLUDE [get-client-libraries](../includes/get-client-libraries.md)]
 
-##<a id="ConfigureApp"></a>Configure your application to use Service Bus
+##<a id="ConfigureApp"></a>サービス バスを使用するようにアプリケーションを構成する
 
-To use the Azure Servise Bus queue APIs, you need to:
+Azure のサービス バス キュー API を使用するには、次の要件があります。
 
-1. Reference the autoloader file using the [require_once][require_once] statement, and
-2. Reference any classes you might use.
+1. [require_once][require_once] ステートメントを使用してオートローダー ファイルを参照する
+2.  使用する可能性のあるクラスを参照する
 
-The following example shows how to include the autoloader file and reference the **ServicesBuilder** class.
+次の例では、オートローダー ファイルをインクルードし、**ServicesBuilder** クラスを参照する方法を示しています。
 
 > [WACOM.NOTE] 
-> This example (and other examples in this article) assume you have installed the PHP Client Libraries for Azure via Composer. If you installed the libraries manually or as a PEAR package, you will need to reference the <code>WindowsAzure.php</code> autoloader file.
+> この例 (およびこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、<code>WindowsAzure.php</code> オートローダー ファイルを参照する必要があります。
 
 	require_once 'vendor\autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
 
 
-In the examples below, the `require_once` statement will be shown always, but only the classes necessary for the example to execute will be referenced.
+この後のコード例では、`require_once` ステートメントが常に記述されていますが、コード例の実行に必要なクラスのみ参照されます。
 
-##<a id="ConnectionString"></a>Setup an Azure Service Bus connection
+##<a id="ConnectionString"></a>Azure のサービス バス接続の設定
 
-To instantiate an Azure Service Bus client you must first have a valid connection string following this format:
+Azure のサービス バス クライアントをインスタンス化するには、第一に、次の形式の有効な接続文字列が必要です。
 
 	Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer];SharedSecretValue=[Default Key]
 
-Where the Endpoint is typically of the format `https://[yourNamespace].servicebus.windows.net`.
+ここで Endpoint の一般的な形式は `https://[yourNamespace].servicebus.windows.net` です。
 
-To create any Azure service client you need to use the **ServicesBuilder** class. You can:
+いずれの Azure サービス クライアントを作成するにも、**ServicesBuilder** クラスを使用する必要があります。そのための方法は次のとおりです。
 
-* pass the connection string directly to it or
-* use the **CloudConfigurationManager (CCM)** to check multiple external sources for the connection string:
-	* by default it comes with support for one external source - environmental variables
-	* you can add new sources by extending the **ConnectionStringSource** class
+* 接続文字列を直接渡す
+* **CloudConfigurationManager (CCM)** を使用して複数の外部ソースに対して接続文字列を確認する
+	* 既定では 1 つの外部ソース (環境変数) のみサポートされています。
+	* **ConnectionStringSource** クラスを継承して新しいソースを追加できます。
 
-For the examples outlined here, the connection string will be passed directly.
+ここで概説している例では、接続文字列を直接渡します。
 
 	require_once 'vendor\autoload.php';
 
@@ -80,13 +80,13 @@ For the examples outlined here, the connection string will be passed directly.
 	$serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
 
-##<a id="CreateQueue"></a>How to: Create a queue
+##<a id="CreateQueue"></a>方法: キューを作成する
 
-Management operations for Service Bus queues can be performed via the
-**ServiceBusRestProxy** class. A **ServiceBusRestProxy** object is
-constructed via the **ServicesBuilder::createServiceBusService** factory method with an appropriate connection string that encapsulates the token permissions to manage it.
+サービス バス キューの管理処理は **ServiceBusRestProxy** クラスを
+使用して実行できます。**ServiceBusRestProxy** オブジェクトを
+作成するには、**ServicesBuilder::createServiceBusService** ファクトリ メソッドに、管理処理用のトークン アクセス許可をカプセル化した適切な接続文字列を渡します。
 
-The example below shows how to instantiate a **ServiceBusRestProxy** and call **ServiceBusRestProxy->createQueue** to create a queue named `myqueue` within a `MySBNamespace` service namespace:
+次の例では、**ServiceBusRestProxy** をインスタンス化し、**ServiceBusRestProxy->createQueue** を呼び出して、`MySBNamespace` サービス名前空間内で `myqueue` という名前のキューを作成する方法を示しています。
 
     require_once 'vendor\autoload.php';
 
@@ -106,19 +106,18 @@ The example below shows how to instantiate a **ServiceBusRestProxy** and call **
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179357
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179357
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
 > [WACOM.NOTE]
-> You can use the <b>listQueues</b> method on <b>ServiceBusRestProxy</b> objects to check if a queue with a specified name already exists within a service namespace.
+> <b>ServiceBusRestProxy</b> オブジェクトの <b>listQueues</b> メソッドを使用すると、指定した名前のキューがサービス名前空間に既に存在するかどうかを確認できます。
 
-##<a id="SendMessages"></a>How to: Send messages to a queue
+##<a id="SendMessages"></a>方法: キューにメッセージを送信する
 
-To send a message to a Service Bus queue, your application will call the **ServiceBusRestProxy->sendQueueMessage** method. The code below demonstrates how to send a message to the `myqueue` queue we created above within the
-`MySBNamespace` service namespace.
+メッセージをサービス バス キューに送信するには、アプリケーションで **ServiceBusRestProxy->sendQueueMessage** メソッドを呼び出します。次のコードでは、前のコードで `MySBNamespace` サービス名前空間内で作成した `myqueue` キューにメッセージを送信する方法を示しています。
 
 	require_once 'vendor\autoload.php';
 
@@ -140,35 +139,35 @@ To send a message to a Service Bus queue, your application will call the **Servi
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/hh780775
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/hh780775
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-Messages sent to (and received from ) Service Bus queues are instances
-of the **BrokeredMessage** class. **BrokeredMessage** objects have a set
-of standard methods (such as **getLabel**, **getTimeToLive**,
-**setLabel**, and **setTimeToLive**) and properties that are used to hold
-custom application-specific properties, and a body of arbitrary
-application data.
+サービス バス キューに送信されたメッセージ (およびサービス バス キューから受信したメッセージ) は、
+**BrokeredMessage** クラスのインスタンスになります。**BrokeredMessage** オブジェクトには、
+一連の標準的なメソッド (**getLabel**、**getTimeToLive**、
+**setLabel**、**setTimeToLive** など) と、アプリケーションに固有の
+カスタム プロパティの保持に使用するプロパティのセットが用意されており、
+任意のアプリケーション データの本体が格納されます。
 
-Service Bus queues support a maximum message size of 256 KB (the header,
-which includes the standard and custom application properties, can have
-a maximum size of 64 KB). There is no limit on the number of messages
-held in a queue but there is a cap on the total size of the messages
-held by a queue. This upper limit on queue size is 5 GB.
+サービス バス キューでは、最大 256 KB までのメッセージをサポートして
+います (標準とカスタムのアプリケーション プロパティが含まれるヘッダー
+の最大サイズは 64 KB です)。キューで保持されるメッセージ数には上限が
+ありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには
+上限があります。このキュー サイズの上限は 5 GB です。
 
-##<a id="ReceiveMessages"></a>How to: Receive messages from a queue
+##<a id="ReceiveMessages"></a>方法: キューからメッセージを受信する
 
-The primary way to receive messages from a queue is to use a **ServiceBusRestProxy->receiveQueueMessage** method. Messages can be received in two different modes: **ReceiveAndDelete** (the default) and **PeekLock**.
+キューからメッセージを受信する主な方法は、**ServiceBusRestProxy->receiveQueueMessage** メソッドを使用することです。メッセージは 2 つの異なるモード (**ReceiveAndDelete** (既定) と **PeekLock**) で受信できます。
 
-When using the **ReceiveAndDelete** mode, receive is a single-shot operation - that is, when Service Bus receives a read request for a message in a queue, it marks the message as being consumed and returns it to the application. **ReceiveAndDelete** mode is the simplest model and works best for scenarios in which an
-application can tolerate not processing a message in the event of a failure. To understand this, consider a scenario in which the consumer issues the receive request and then crashes before processing it. Because Service Bus will have marked the message as being consumed, then when the application restarts and begins consuming messages again, it will have missed the message that was consumed prior to the crash.
+**ReceiveAndDelete** モードを使用する場合、受信が 1 回ずつの動作になります。つまり、サービス バスはキュー内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。**ReceiveAndDelete** モードは最もシンプルなモデルであり、問題が発生した際に
+アプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。サービス バスはメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
-In **PeekLock** mode, receiving a message becomes a two stage operation, which makes it possible to support applications that cannot tolerate missing messages. When Service Bus receives a request, it finds the next message to be consumed, locks it to prevent other consumers from receiving it, and then returns it to the application. After the application finishes processing the message (or stores it reliably for future processing), it completes the second stage of the receive process by passing the received message to **ServiceBusRestProxy->deleteMessage**. When Service Bus sees the **deleteMessage** call, it will mark the message as being consumed and remove it from the queue.
+**PeekLock** モードでは、メッセージの受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。サービス バス は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージを **ServiceBusRestProxy->deleteMessage** に渡して受信処理の第 2 段階を完了します。サービス バスが **deleteMessage** の呼び出しを確認すると、メッセージが読み取り中としてマークされ、キューから削除されます。
 
-The example below demonstrates how a message can be received and processed using **PeekLock** mode (not the default mode).
+次の例では、**PeekLock** モード (既定ではないモード) を使用したメッセージの受信および処理の方法を示しています。
 
 	require_once 'vendor\autoload.php';
 
@@ -200,53 +199,53 @@ The example below demonstrates how a message can be received and processed using
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here:
-		// http://msdn.microsoft.com/en-us/library/windowsazure/hh780735
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/hh780735
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-##<a id="HandleCrashes"></a>How to: Handle application crashes and unreadable messages
+##<a id="HandleCrashes"></a>方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する
 
-Service Bus provides functionality to help you gracefully recover from
-errors in your application or difficulties processing a message. If a
-receiver application is unable to process the message for some reason,
-then it can call the **unlockMessage** method on the received message
-(instead of the **deleteMessage** method). This will cause Service Bus
-to unlock the message within the queue and make it available to be
-received again, either by the same consuming application or by another
-consuming application.
+サービス バスには、アプリケーションにエラーが発生した場合や、メッセージの
+処理に問題がある場合に復旧を支援する機能が備わっています。受信側の
+アプリケーションが何らかの理由によってメッセージを処理できない場合には、
+受信したメッセージについて (**deleteMessage** メソッドの代わりに) 
+**unlockMessage** メソッドを呼び出すことができます。このメソッドが呼び出されると、 サービス バス によって
+キュー内のメッセージのロックが解除され、メッセージが再度受信できる状態に
+変わります。メッセージを受信するアプリケーションは、以前と同じものでも、
+別のものでもかまいません。
 
-There is also a timeout associated with a message locked within the
-queue, and if the application fails to process the message before the
-lock timeout expires (e.g., if the application crashes), then Service
-Bus will unlock the message automatically and make it available to be
-received again.
+キュー内でロックされているメッセージにはタイムアウトも設定されています。
+アプリケーションがクラッシュした場合など、ロックがタイムアウトに
+なる前にアプリケーションがメッセージの処理に失敗した場合には、
+メッセージのロックが自動的に解除され、再度受信できる状態に
+変わります。
 
-In the event that the application crashes after processing the message
-but before the **deleteMessage** request is issued, then the message
-will be redelivered to the application when it restarts. This is often
-called **At Least Once Processing**, that is, each message will be
-processed at least once but in certain situations the same message may
-be redelivered. If the scenario cannot tolerate duplicate processing,
-then adding additional logic to your application to handle duplicate message delivery is recommended. This is often achieved
-using the **getMessageId** method of the message, which will remain
-constant across delivery attempts.
+メッセージが処理された後、**deleteMessage** 要求が発行される前に
+アプリケーションがクラッシュした場合は、アプリケーションが再起動する際に
+メッセージが再配信されます。一般的に、この動作は 
+**"1 回以上の処理"** と呼ばれます。つまり、すべてのメッセージが 1 回以上
+処理されますが、特定の状況では、同じメッセージが再配信される
+可能性があります。重複処理が許されないシナリオの場合、重複メッセージの
+配信を扱うロジックをアプリケーションに追加することをお勧めします。通常、この問題は
+メッセージの **getMessageId** メソッドを使用して対処します。このプロパティは
+配信が試行された後も同じ値を保持します。
 
-##<a id="NextSteps"></a>Next steps
+##<a id="NextSteps"></a>次のステップ
 
-Now that you've learned the basics of Service Bus queues, see the MSDN
-topic [Queues, Topics, and Subscriptions][] for more information.
+これで、サービス バス キューの基本を学習できました。詳細については、MSDN のトピック「[サービス バス キュー、トピックおよびサブスクリプション][]」を参照してください。
 
-[download-sdk]: http://go.microsoft.com/fwlink/?LinkId=252473
-[Service Bus Queue Diagram]: ../../../DevCenter/Java/Media/SvcBusQueues_01_FlowDiagram.jpg
-[Azure Management Portal]: http://manage.windowsazure.com/
-[Service Bus Node screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_02_SvcBusNode.jpg
-[Create a New Namespace screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_03_CreateNewSvcNamespace.jpg
-[Available Namespaces screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_04_SvcBusNode_AvailNamespaces.jpg
-[Namespace List screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_05_NamespaceList.jpg
-[Properties Pane screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_06_PropertiesPane.jpg
-[Default Key screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_07_DefaultKey.jpg
-[Queues, Topics, and Subscriptions]: http://msdn.microsoft.com/en-us/library/windowsazure/hh367516.aspx
+[download-sdk (SDK のダウンロード)]: http://go.microsoft.com/fwlink/?LinkId=252473
+[サービス バス キューの図]: ../../../DevCenter/Java/Media/SvcBusQueues_01_FlowDiagram.jpg
+[Azure 管理ポータル]: http://manage.windowsazure.com/
+[[サービス バス] ノードのスクリーンショット]: ../../../DevCenter/Java/Media/SvcBusQueues_02_SvcBusNode.jpg
+[[新しい名前空間の作成] のスクリーンショット]: ../../../DevCenter/Java/Media/SvcBusQueues_03_CreateNewSvcNamespace.jpg
+[利用可能な名前空間のスクリーンショット]: ../../../DevCenter/Java/Media/SvcBusQueues_04_SvcBusNode_AvailNamespaces.jpg
+[名前空間の一覧のスクリーンショット]: ../../../DevCenter/Java/Media/SvcBusQueues_05_NamespaceList.jpg
+[[プロパティ] ウィンドウのスクリーンショット]: ../../../DevCenter/Java/Media/SvcBusQueues_06_PropertiesPane.jpg
+[[既定のキー] のスクリーンショット]: ../../../DevCenter/Java/Media/SvcBusQueues_07_DefaultKey.jpg
+[サービス バス キュー、トピック、およびサブスクリプション]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367516.aspx
 [require_once]: http://php.net/require_once
+
 

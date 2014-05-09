@@ -1,47 +1,47 @@
-<properties linkid="develop-mobile-tutorials-create-pull-notifications-js" urlDisplayName="Define a custom API that supports pull notifications" pageTitle="Define a custom API that supports pull notifications - Azure Mobile Services" metaKeywords="" description="Learn how to Define a custom API that supports periodic notifications in Windows Store apps that use Azure Mobile Services." metaCanonical="" services="" documentationCenter="" title="Define a custom API that supports periodic notifications" authors="glenga" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-tutorials-create-pull-notifications-js" urlDisplayName="プル通知をサポートするカスタム API の定義" pageTitle="プル通知をサポートするカスタム API の定義 - Azure モバイル サービス" metaKeywords="" description="Azure モバイル サービスを使用した Windows ストア アプリケーションの定期的な通知をサポートするカスタム API の定義方法について説明します。" metaCanonical="" services="" documentationCenter="" title="定期的な通知をサポートするカスタム API の定義" authors="glenga" solutions="" manager="" editor="" />
 
 
 
 
-# Define a custom API that supports periodic notifications
+# 定期的な通知をサポートするカスタム API の定義
 
 <div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/en-us/develop/mobile/tutorials/create-pull-notifications-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/create-pull-notifications-js" title="Windows Store JavaScript" class="current">Windows Store JavaScript</a>
+	<a href="/ja-jp/develop/mobile/tutorials/create-pull-notifications-dotnet" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/develop/mobile/tutorials/create-pull-notifications-js" title="Windows ストア JavaScript" class="current">Windows ストア JavaScript</a>
 </div>
 
-This topic shows you how to use a custom API to support periodic notifications in a Windows Store app. With period notifications enabled, Windows will periodically access your custom API endpoint and use the returned XML, in a tile-specific format, to update the app tile on start menu. For more information, see [Periodic notifications]. 
+このトピックでは、Windows ストア アプリでカスタム API を使用し、定期的な通知をサポートする方法について説明します。定期的な通知が有効になっている場合、Windows が定期的にカスタム API のエンドポイントにアクセスし、返された XML (タイル固有の形式) を使用して、スタート メニューのアプリケーションのタイルを更新します。詳細については、「[定期的な通知の概要]」を参照してください。
 
-You will add this functionality to the app that you created when you completed either the [Get started with Mobile Services] or the [Get started with data] tutorial. To do this, you will complete the following steps:
+チュートリアル「[モバイル サービスの使用]」または「[データの使用]」の最後に作成したアプリケーションが、この機能の追加対象となります。次の手順を実行します。
 
-1. [Define the custom API]
-2. [Update the app to turn on period notifications]
-3. [Test the app] 
+1. [カスタム API を定義する]
+2. [アプリケーションを更新して定期的な通知を有効にする]
+3. [アプリケーションをテストする]
 
-This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete [Get started with Mobile Services] or the [Get started with data].  
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」または「[データの使用]」を完了している必要があります。
 
-## <a name="define-custom-api"></a>Define the custom API
+## <a name="define-custom-api"></a>カスタム API を定義する
 
-1. Log into the [Azure Management Portal], click **Mobile Services**, and then click your app.
+1. [Azure 管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
    	![][0]
 
-2. Click the **API** tab, and then click **Create a custom API**.
+2. **[API]** タブをクリックし、**[カスタム API の作成]** をクリックします。
 
    	![][1]
 
-   	This displays the **Create a new custom API** dialog.
+   	**[新しいカスタム API の作成]** ダイアログ ボックスが表示されます。
 
-3. Change **Get permission** to **Everyone**, type _tiles_ in **API name**, and then click the check button.
+3. **[Get アクセス許可]** を **[すべてのユーザー]** に変更し、**[API 名]** に「_tiles_」と入力して、チェック ボタンをクリックします。
 
    	![][2]
 
-	This creates the new API with public GET access.
+	これで、パブリックな GET アクセス権を持つ新しい API が作成されます。
 
-4. Click the new tiles entry in the API table.
+4. API テーブル内の新しい tiles エントリをクリックします。
 
 	![][3]
 
-5. Click the **Script** tab and replace the existing code with the following:
+5. **[スクリプト]** タブをクリックし、既存のコードを次のコードに置き換えます。
 
 		exports.get = function(request, response) {
 		    var wns = require('wns');
@@ -68,7 +68,7 @@ This tutorial is based on the Mobile Services quickstart. Before you start this 
 		    }
 		};
 
-	This code returns the top 3 uncompleted items from the TodoItem table, then loads them into a JSON object passed to the **wns**.**createTileSquareText01** function. This function returns the following tile template XML:
+	このコードは、TodoItem テーブルから未完了の項目上位 3 件を返し、**wns**.**createTileSquareText01** 関数に渡された JSON オブジェクトに読み込みます。この関数から返されるタイル テンプレート XML は次のとおりです。
 
 		<tile>
 			<visual>
@@ -81,21 +81,21 @@ This tutorial is based on the Mobile Services quickstart. Before you start this 
 			</visual>
 		</tile>
 
-	The **exports.get** function is used because the client will send a GET request to access the tile template.
+	クライアントは、GET 要求を送信してタイル テンプレートにアクセスすることになるため、**exports.get** 関数が使用されます。
 
-   	<div class="dev-callout"><b>Note</b>
-   		<p>This custom API script uses the Node.js <a href="http://go.microsoft.com/fwlink/p/?LinkId=306750">wns module</a>, which is referenced by using the <strong>require</strong> function. This module is different from the <a href="http://go.microsoft.com/fwlink/p/?LinkId=260591">wns object</a> returned by the <a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj554217.aspx">push object</a>, which is used to send push notifications from server scripts.</p>
+   	<div class="dev-callout"><b>注</b>
+   		<p>このカスタム API スクリプトには、Node.js の <a href="http://go.microsoft.com/fwlink/p/?LinkId=306750">wns モジュール</a>が使用されており、<strong>require</strong> 関数を使って参照されています。このモジュールは、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554217.aspx">push オブジェクト</a>から返される <a href="http://go.microsoft.com/fwlink/p/?LinkId=260591">wns オブジェクト</a>とは異なります。push オブジェクトから返される wns オブジェクトは、サーバー スクリプトから push 通知を送信する目的に使用されます。</p>
    	</div>
 
-Next, you will modify the quickstart app to start periodic notifications that update the live tile by requesting the new custom API.
+次に、クイック スタート アプリケーションに変更を加えます。ライブ タイルを更新する定期的な通知を開始するために、新しいカスタム API を要求します。
 
-<h2><a name="update-app"></a><span class="short-header">Update the app </span>Update the app to turn on period notifications</h2>
+<h2><a name="update-app"></a><span class="short-header">アプリケーションを更新する</span>アプリケーションを更新して定期的な通知を有効にする</h2>
 
-1. In Visual Studio, press the F5 key to run the quickstart app from the previous tutorial.
+1. Visual Studio で F5 キーを押して、前のチュートリアルで使用したクイック スタート アプリケーションを実行します。
 
-2. Make sure at least one item is displayed. If there are no items, type text in **Insert a TodoItem**, and then click **Save**.
+2. 少なくとも 1 個の項目が表示されることを確認します。1 つも項目が表示されない場合は、アプリケーションで、**[Insert a TodoItem]** にテキストを入力し、**[Save]** をクリックします。
 
-3. In Visual Studio, expand the `\js` folder in Solution Explorer, open the default.js project, then add the following lines of code after that code that defines the **client** variable:
+3. Visual Studio のソリューション エクスプローラーで `\js` フォルダーを展開し、default.js プロジェクトを開いて、**client** 変数を定義するコードの後に次のコード行を追加します。
 
         var notifications = Windows.UI.Notifications;
         var recurrence = notifications.PeriodicUpdateRecurrence.hour;
@@ -103,33 +103,33 @@ Next, you will modify the quickstart app to start periodic notifications that up
 
         notifications.TileUpdateManager.createTileUpdaterForApplication().startPeriodicUpdate(url, recurrence);
 
-	This code turns on period notifications to request tile template data from the new **tiles** custom API. Select a [PeriodicUpdateRecurrance] value that best matches the update frequency of your data.
+	このコードによって定期的な通知が有効となり、新しいカスタム API (**tiles**) からタイル テンプレート データが要求されます。実際のデータの更新頻度に応じて最適な [PeriodicUpdateRecurrance] 値を選択してください。
 
-## <a name="test-app"></a>Test the app
+## <a name="test-app"></a>アプリケーションをテストする
 
-1. In Visual Studio, press the F5 key to run the app again.
+1. Visual Studio で、F5 キーを押して再度アプリケーションを実行します。
 
-	This will turn on periodic notifications.
+	これで定期的な通知が有効になります。
 
-2. Navigate to the Start screen, locate the live tile for the app, and notice that item data is now displayed in the tile.
+2. スタート画面に移動してアプリケーションのライブ タイルを探し、項目データが表示されていることを確認します。
 
  	![][4]
 
-## Next steps
+## 次のステップ
 
-Now that you have created a periodic notification, consider finding out more about the following Mobile Services topics:
+定期的な通知を作成したら、モバイル サービスに関連した次のトピックも参考にしてください。
 
-* [Get started with push notifications]
-	<br/>Periodic notifications are managed by Windows and occur only on a predefined schedule. Push notifications can be sent by the mobile service on demand and can be toast, tile, and raw notifications.
+* [プッシュ通知の使用]
+	<br/>定期的な通知は、Windows によって管理され、事前定義されたスケジュールでのみ実行されます。プッシュ通知は、モバイル サービスからオンデマンドで送信することができます。トースト、タイル、直接通知のいずれかの形式が利用できます。
 
-* [Mobile Services server script reference]
-  <br/>Learn more about creating custom APIs.
+* [モバイル サービスのサーバー スクリプト リファレンス]
+  <br/>カスタム API の作成について説明します。
 
 <!-- Anchors. -->
-[Define the custom API]: #define-custom-api
-[Update the app to turn on period notifications]: #update-app
-[Test the app]: #test-app
-[Next Steps]: #next-steps
+[カスタム API を定義する]: #define-custom-api
+[アプリケーションを更新して定期的な通知を有効にする]: #update-app
+[アプリケーションをテストする]: #test-app
+[次のステップ]: #next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-services-selection.png
@@ -139,15 +139,16 @@ Now that you have created a periodic notification, consider finding out more abo
 [4]: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-custom-api-live-tile.png
 
 <!-- URLs. -->
-[Windows Push Notifications & Live Connect]: http://go.microsoft.com/fwlink/?LinkID=257677
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[My Apps dashboard]: http://go.microsoft.com/fwlink/?LinkId=262039
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started/#create-new-service
-[Get started with data]: /en-us/develop/mobile/tutorials/started-with-data-js
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-js
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-js
-[JavaScript and HTML]: mobile-services-win8-javascript/
+[Windows プッシュ通知および Live Connect]: http://go.microsoft.com/fwlink/?LinkID=257677
+[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
+[マイ アプリケーション ダッシュボード]: http://go.microsoft.com/fwlink/?LinkId=262039
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
+[データの使用]: /ja-jp/develop/mobile/tutorials/started-with-data-js
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-js
+[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-js
+[JavaScript と HTML]: mobile-services-win8-javascript/
 
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Periodic notifications]: http://msdn.microsoft.com/en-us/library/windows/apps/jj150587.aspx
+[Azure の管理ポータル]: https://manage.windowsazure.com/
+[定期的な通知]: http://msdn.microsoft.com/ja-jp/library/windows/apps/jj150587.aspx
+
 

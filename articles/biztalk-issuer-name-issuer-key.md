@@ -1,99 +1,100 @@
-<properties linkid="manage-services-biztalk-services-issuer-name-issuer-key" urlDisplayName="Issuer name and issuer key" pageTitle="Issuer Name and Issuer Key in BizTalk Services | Azure" metaKeywords="BizTalk Services, BizTalk, issuer name, issuer key, Azure" description="Learn how to retrieve Issuer Name and Issuer Key for either Service Bus or Access Control (ACS) in BizTalk Services." metaCanonical="" services="biztalk-services" documentationCenter="" title="BizTalk Services: Issuer Name and Issuer Key" authors="mandia" solutions="" manager="paulettm" editor="susanjo" />
+<properties linkid="manage-services-biztalk-services-issuer-name-issuer-key" urlDisplayName="発行者名および発行者キー" pageTitle="BizTalk サービスにおける発行者名と発行者キー | Azure" metaKeywords="BizTalk サービス、BizTalk、発行者名、発行者キー, Azure" description="BizTalk サービスのサービス バスまたは Access Control (ACS) の発行者名と発行者キーを取得する方法について説明します。" metaCanonical="" services="biztalk-services" documentationCenter="" title="BizTalk サービス: 発行者名および発行者キー" authors="mandia" solutions="" manager="paulettm" editor="susanjo" />
 
 
 
 
-# BizTalk Services: Issuer Name and Issuer Key
+# BizTalk サービス: 発行者名および発行者キー
 
-Azure BizTalk Services uses the Service Bus Issuer Name and Issuer Key, and the Access Control Issuer Name and Issuer Key. Specifically:
+Azure BizTalk サービスでは、サービス バス発行者名および発行者キーと Access Control 発行者名および発行者キーが使用されます。具体的には次の処理が行われます。
 
 
 <table border="1">
 <tr bgcolor="FAF9F9">
-<td><strong>Task</strong></td>
-<td><strong>Which Issuer Name and Issuer Key</strong></td>
+<td><strong>タスク</strong></td>
+<td><strong>発行者名および発行者キー</strong></td>
 </tr>
 <tr>
-<td>Deploying your application from Visual Studio</td>
-<td>Access Control Issuer Name and Issuer Key</td>
+<td>Visual Studio からアプリケーションをデプロイする</td>
+<td>Access Control 発行者名および発行者キー</td>
 </tr>
 <tr>
-<td>Configuring the Azure BizTalk Services Portal</td>
-<td>Access Control Issuer Name and Issuer Key</td>
+<td>Azure BizTalk サービス ポータルを構成する</td>
+<td>Access Control 発行者名および発行者キー</td>
 </tr>
 <tr>
-<td>Creating LOB Relays with the BizTalk Adapter Services in Visual Studio</td>
-<td>Service Bus Issuer Name and Issuer Key</td>
+<td>Visual Studio で BizTalk Adapter サービスを使用して LOB リレーを作成する</td>
+<td>サービス バス発行者名および発行者キー</td>
 </tr>
 </table>
 
 
-This topic lists the steps to retrieve the Issuer Name and Issuer Key. 
+このトピックでは、発行者名と発行者キーを取得する手順を示します。
 
-## Access Control Issuer Name and Issuer Key
-The Access Control Issuer Name and Issuer Key are used by the following:
+## Access Control 発行者名および発行者キー
+Access Control 発行者名および発行者キーは次のコンポーネントで使用されます。
 
-- Your Azure BizTalk Service application created in Visual Studio: To successfully deploy your BizTalk Service application in Visual Studio to Azure, you enter the Access Control Issuer Name and Issuer Key. 
-- The Azure BizTalk Services  Portal: The first time you log in to the BizTalk Services Portal, you enter your BizTalk Service name as the service provider, enter the Access Control Issuer Name, and the Access Control Issuer Key.
+- Visual Studio で作成した Azure BizTalk サービス アプリケーション: Visual Studio の BizTalk サービス アプリケーションを Azure に正しくデプロイするために、Access Control 発行者名と発行者キーを入力します。
+- Azure BizTalk サービス ポータル: BizTalk サービス ポータルに初めてログインするときに、BizTalk サービス名をサービス プロバイダーとして入力し、Access Control 発行者名と Access Control 発行者キーを入力します。
 
-### To retrieve the Access Control Issuer Name and Issuer Key
+### Access Control 発行者名および発行者キーを取得するには
 
-1. Log in to the [Azure Management Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. In the left navigation pane, select **BizTalk Services**.
-3. Select your BizTalk Service. 
-4. Select **Connection Information** in the task bar. The Access Control Namespace, Default Issuer (Issuer Name), and Default Key (Issuer Key) are listed and can be copied and pasted.<br/><br/>
-To summarize:<br/>
-Issuer Name = Default Issuer<br/>
-Issuer Key = Default Key
+1. [Azure 管理ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にログインします。
+2. 左のナビゲーション ウィンドウで、**[BizTalk サービス]** をクリックします。
+3. BizTalk サービスを選択します。
+4. タスク バーで **[接続情報]** をクリックします。Access Control 名前空間、既定の発行者 (発行者名)、既定のキー (発行者キー) が一覧に表示され、コピーして貼り付けることができます。<br/><br/>
+まとめると次のようになります。<br/>
+発行者名 = 既定の発行者名<br/>
+発行者キー = 既定のキー
 
 
-You can also click **Open ACS Management Portal** to retrieve the Access Control values:
+**[ACS 管理ポータルを開く]** をクリックして Access Control の値を取得することもできます。
 
-1. Log in to the [Azure Management Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. In the left navigation pane, select **BizTalk Services**.
-3. Select your BizTalk Service.
-4. Select the Connection Information button and select **Open ACS Management Portal**.
-5. In the Portal under **Service Settings**, click **Service Identities**. This displays your Service Identity, which is your Access Control Issuer Name value. Click your Service Identity link to see the Password, which is your Issuer Key value. Their values can be copied.<br/><br/>
-For example, in **Service Identities**, you see "owner". "Owner" is your Access Control Issuer Name. When you click the "owner" link, you see the **Password**. When you click the "Password" link, you see the value. This Password value is your Access Control Issuer Key. <br/><br/>
-To summarize:<br/>
-Issuer Name = Service Identity name<br/>
-Issuer Key = Password value
+1. [Azure 管理ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にログインします。
+2. 左のナビゲーション ウィンドウで、**[BizTalk サービス]** をクリックします。
+3. BizTalk サービスを選択します。
+4. [接続情報] をクリックし、**[ACS 管理ポータルを開く]** をクリックします。
+5. **[サービスの設定]** にあるポータルで、**[サービス ID]** をクリックします。これにより、サービス ID が表示されます。これは Access Control 発行者名の値です。サービス ID リンクをクリックすると、パスワードが表示されます。これは発行者キーの値です。これらの値はコピーできます。<br/><br/>
+たとえば、**[サービス ID]** に "所有者" と表示されているとします。"所有者" は Access Control 発行者名です。"所有者" リンクをクリックすると、**パスワード**が表示されます。"パスワード" リンクをクリックすると、値が表示されます。このパスワード値は Access Control 発行者キーです。<br/><br/>
+まとめると次のようになります。<br/>
+発行者名 = サービス ID の名前<br/>
+発行者キー = パスワード値
 
-In the left navigation pane, you can also select **Active Directory** to retrieve the Access Control values. 
+左側のナビゲーション ウィンドウで **[Active Directory]** をクリックして Access Control の値を取得することもできます。
 
 <div class="dev-callout"> 
-<b>Important</b> 
-<p>When an Access Control Namespace is created using <strong>Active Directory</strong>, a Service Identity is <strong>not</strong> automatically created. When you provision a BizTalk Service, an Access Control Namespace, Service Identity named "owner" (Issuer Name), Password (Issuer Key), and Symmetric Key are automatically created.</p> 
-<p><a href="http://go.microsoft.com/fwlink/p/?LinkID=303942">How to: Use ACS Management Service to Configure Service Identities</a> provides more information on Access Control Service Identities.</p>
+<b>重要</b>
+<p><strong>Active Directory</strong> を使用して Access Control 名前空間を作成すると、サービス ID は自動的に作成<strong>されません</strong>。BizTalk サービスをプロビジョニングすると、Access Control 名前空間、"所有者" (発行者名) という名前のサービス ID、パスワード (発行者キー)、および対称キーが自動的に作成されます。</p>
+<p>「<a href="http://go.microsoft.com/fwlink/p/?LinkID=303942">方法: ACS 管理サービスを使用してサービス ID を構成する</a>」には、Access Control サービス ID に関する詳しい情報が記載されています。</p>
 </div>
 
 
-## Service Bus Issuer Name and Issuer Key
-Service Bus Issuer Name and Issuer Key are used by BizTalk Adapter Services. In your BizTalk Services project in Visual Studio, you use the BizTalk Adapter Services to connect to an on-premise Line-of-Business (LOB) system. To connect, you create the LOB Relay and enter your LOB system details. When doing this, you also enter the Service Bus Issuer Name and Issuer Key.
+## サービス バス発行者名および発行者キー
+サービス バス発行者名および発行者キーは BizTalk Adapter サービスで使用されます。Visual Studio の BizTalk サービス プロジェクトでは、BizTalk Adapter サービスを使用して内部設置型の基幹業務 (LOB) システムに接続します。接続するには、LOB リレーを作成し、LOB システムの詳細を入力します。このとき、サービス バス発行者名と発行者キーも入力します。
 
-### To retrieve the Service Bus Issuer Name and Issuer Key
+### サービス バス発行者名および発行者キーを取得するには
 
-1. Log in to the [Azure Management Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885).
-2. In the left navigation pane, click **Service Bus**.
-3. Click your namespace. In the task bar, click **Connection Information**. This displays the **Default Issuer** (Issuer Name) and **Default Key** (Issuer Key). Their values can be copied.<br/><br/>
-To summarize:<br/>
-Issuer Name = Default Issuer<br/>
-Issuer Key = Default Key
+1. [Azure 管理ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にログインします。
+2. 左のナビゲーション ウィンドウで、**[サービス バス]** をクリックします。
+3. 名前空間をクリックします。タスク バーで **[接続情報]** をクリックします。これにより、**既定の発行者** (発行者名) と**既定のキー** (発行者キー) が表示されます。これらの値はコピーできます。<br/><br/>
+まとめると次のようになります。<br/>
+発行者名 = 既定の発行者名<br/>
+発行者キー = 既定のキー
 
-## Next
-Additional Azure BizTalk Services topics:
+## 次のステップ
+Azure BizTalk サービスに関するその他のトピック:
 
--  [Installing the Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
--  [Tutorials: Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
--  [How do I Start Using the Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
--  [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
+-  [Azure BizTalk サービス SDK のインストール](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
+-  [チュートリアル: Azure BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
+-  [Azure BizTalk サービス SDK の使用開始に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+-  [Azure BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
 
-## See Also
--  [How to: Use ACS Management Service to Configure Service Identities](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
-- [BizTalk Services: Developer, Basic, Standard and Premium Editions Chart](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-- [BizTalk Services: Provisioning Using Azure Management Portal](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-- [BizTalk Services: Provisioning Status Chart](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-- [BizTalk Services: Dashboard, Monitor and Scale tabs](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-- [BizTalk Services: Backup and Restore](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-- [BizTalk Services: Throttling](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
+## 関連項目
+-  [方法: ACS 管理サービスを使用してサービス ID を構成する](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
+- [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャートに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+- [BizTalk サービス: Azure 管理ポータルを使用した BizTalk サービスのプロビジョニングに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+- [BizTalk サービス: プロビジョニングの状態のチャートに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+- [BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+- [BizTalk サービス: バックアップと復元に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+- [BizTalk サービス: 調整に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
+

@@ -1,49 +1,48 @@
-<properties linkid="manage-linux-common-tasks-manage-certs" urlDisplayName="Manage certificates" pageTitle="Manage certificates for Linux virtual machines in Azure" metaKeywords="Azure management certs, uploading management certs, Azure Service Management API" description="Learn how to create and upload management certificates for Linux in Azure. The certificate is required if you use the Service Management API." metaCanonical="" services="virtual-machines" documentationCenter="" title="Create management certificates for Linux in Azure" authors="kathydav" solutions="" manager="jeffreyg" editor="tysonn" />
+<properties linkid="manage-linux-common-tasks-manage-certs" urlDisplayName="管理証明書" pageTitle="Azure での Linux 仮想マシン用の管理証明書の作成" metaKeywords="Azure 管理証明書, 管理証明書のアップロード, Azure サービス管理 API" description="Azure で Linux 用の管理証明書を作成してアップロードする方法について説明します。証明書はサービス管理 API を使用する場合に必要です。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure での Linux 用の管理証明書の作成" authors="kathydav" solutions="" manager="jeffreyg" editor="tysonn" />
 
 
 
 
 
+#Azure での Linux 用の管理証明書の作成
 
-#Create management certificates for Linux in Azure
+管理証明書は、サービス管理 API を使用して Azure イメージ プラットフォームと対話するときに必要です。
 
-A management certificate is needed when you want to use the Service Management API to interact with the Azure image platform. 
-
-There is already documentation on how to create and manage these certificates at [http://msdn.microsoft.com/en-us/library/windowsazure/gg551721.aspx](http://msdn.microsoft.com/en-us/library/windowsazure/gg551721.aspx). You can also use OpenSSL to create the management certificate.  For more information, see [OpenSSL](http://openssl.org/). However, this documentation  is primarily focused on the use of the Silverlight portal that might not be accessible to all the Linux users. It describes how you will be able to gain access to these certificates and integrate them with our different tools, partners and use them on your own until this functionality is added in the Azure Management Portal. 
-
-
-##Table of Contents##
-
-* [Obtain a management certificate from the publishsettings file](#createcert)
-* [Install a management certificate using the Azure Management Portal](#management)
-
-<h2><a id="publishsettings"></a>How to: Create and upload a management certificate</h2>
+証明書の作成および管理方法に関するドキュメントは [http://msdn.microsoft.com/ja-jp/library/windowsazure/gg551721.aspx](http://msdn.microsoft.com/ja-jp/library/windowsazure/gg551721.aspx) に既に用意されています。または、OpenSSL を使用して管理証明書を作成することもできます。詳細については、[OpenSSL の Web サイト](http://openssl.org/)を参照してください。ただし、このドキュメントでは、Silverlight ポータルの使用に焦点を合わせています。このポータルには一部の Linux ユーザーがアクセスできない場合があります。独自にこれらの証明書にアクセスし、さまざまなツール (パートナー) に統合して使用する方法について説明します。管理証明書の機能が Azure 管理ポータルに追加されるまでは、この方法に従ってください。
 
 
-We have created an easy way for you to create a management certificate for Azure by visiting: [https://windows.azure.com/download/publishprofile.aspx](https://windows.azure.com/download/publishprofile.aspx)
+##目次##
 
-This web site will ask you to login using your portal credentials and then generate a management certificate  for you that is packaged along with your subscriptionID  on a publishsettings file that you will be asked to download. 
+* [publishsettings ファイルから管理証明書を取得する](#createcert)
+* [Azure 管理ポータルを使用して管理証明書をインストールする](#management)
+
+<h2><a id="publishsettings"></a>方法: 管理証明書を作成してアップロードする</h2>
+
+
+Azure の管理証明書を作成する簡単な方法が用意されています。そのためには [https://windows.azure.com/download/publishprofile.aspx](https://windows.azure.com/download/publishprofile.aspx) にアクセスします。
+
+この Web サイトでは、ポータルの資格情報を使用してログインして管理証明書を生成するように求められます。生成された証明書は subscriptionID と共に publishsettings ファイルにパッケージされ、そのファイルをダウンロードするように求められます。
 
 ![linuxcredentials](./media/linux-create-management-cert/linuxcredentials.png)
 
-Make sure you save this file in safe place as you will not be able to recover it and will need to generate a new management certificate. (There is a limit for the total number of certificates that you can use in the system. See the appropriate section on this web site to confirm this.) You can then use this certificate in multiple ways:
+このファイルは、失うと回復することができず、新しい管理証明書を生成する必要があるため、安全な場所に保存します (システムで使用できる証明書の合計数には制限があります。詳細については、この Web サイトの「証明書の生成の制限」セクションを参照してください)。その後、次の複数の方法でこの証明書を使用できます。
 
-###In Visual Studio###
+###Visual Studio で使用する###
 
 ![VSpublish](./media/linux-create-management-cert/VSpublish.png)
 
 
-###In the Linux Azure Command Line###
+###Linux Azure コマンド ラインで使用する###
 
-You can import the certificate so that you can use it by running the Azure account import command:
+Azure の account import コマンドを実行することで、証明書をインポートして使用できるようになります。
 
 ![cmdlinepublish](./media/linux-create-management-cert/cmdlinepublish.png)
 
-With any other partner or software where you need the tool you will need to extract the management certificate from within the file itself and Base 64 decode it. Some partners such as ScaleXtreme and SUSE Studio will consume the file directly in their current form. 
+他のパートナーまたはソフトウェアのツールが必要な場合は、このファイル自体から管理証明書を抽出し、Base64 でデコードする必要があります。ScaleXtreme や SUSE Studio のような一部のパートナーでは、このファイルを現在の形式のまま使用します。
 
-In order to extract the management certificate you will need to follow this procedure.
+管理証明書を抽出するには、次の手順を実行する必要があります。
 
-You will need to extract from that file the base 64 encoded content between the  quotes after ManagementCertificate.
+このファイルから Base64 でエンコードされた部分を抽出する必要があります。その部分は ManagementCertificate の後で引用符で囲まれています。
 
 	?xml version="1.0" encoding="utf-8"?>
 	<PublishData>
@@ -57,72 +56,72 @@ You will need to extract from that file the base 64 encoded content between the 
 	  </PublishProfile>
 	</PublishData>
 	
-You will need to copy that into a file and then decode it using a base 64 decoder in Linux you can use:
+この部分をファイルにコピーして、次のように Linux の Base64 デコーダーを使用してデコードする必要があります。
 
 	Base64 -d [encodedfile] > [decodedfile].pfx
 
-This will provide you a pfx file that you can either convert to other formats using openssl  to extract the private key if needed:
+これにより PFX ファイルが出力されます。必要に応じてこのファイルは OpenSSL を使用して他の形式に変換して、秘密キーを抽出できます。そのためには次のコマンドを実行します。
 
  	openssl.exe pkcs12 -in publicAndprivate.pfx -nocerts -out privateKey.pem 
 
-In Windows you can decode and extract the PFX file using powershell or a free windows base 64 decoder such as [http://www.fourmilab.ch/webtools/base64/base64.zip]()  by running the command 
+Windows では、PowerShell または無料の Windows Base64 デコーダー ([http://www.fourmilab.ch/webtools/base64/base64.zip] など) を使用してデコードして、PFX ファイルを抽出できます。そのためには次のコマンドを実行します。
 
 	base64 -d key.txt ->key.pfx
 
-####Certificate Generation limit####
+####証明書の生成の制限####
 
-There is a limit of up to 10 certificates that you can create in the platform with this tool.
-Unfortunately there is no way for you to recover the keys that you have generated once they have been generated as we do not save these private keys anywhere in the system.
-If you reach the limit of certificates in the system you will need to contact support through the Azure forums in order to have your certificates erased or use a browser that can render the old Silverlight portal to perform these tasks.
+プラットフォームでこのツールを使用して作成できる証明書の合計数は、最大 10 個に制限されています。
+残念ながら、生成されたキーを回復する方法はありません。システム内のいずれの場所にもこれらの秘密キーが保存されていないためです。
+システムでの証明書の上限数に達した場合は、Azure フォーラムを通じてサポートに連絡して、証明書の削除を依頼できます。または、以前の Silverlight ポータルを表示可能なブラウザーを使用して、このタスクを実行できます。
 
-####If your private key is compromised ####
+####秘密キーが侵害された場合####
 
-If your private key is compromised at any point you will need to use a browser that supports Silverlight to access the old portal and delete the corresponding management certificates on file or contact support through the forums.  
-Generating a new certificates is not enough since all 10 certificates are valid and your old compromised key will still be able to access the web site.
+秘密キーがいずれかの時点で侵害された場合、Silverlight をサポートするブラウザーを使用して以前の Silverlight ポータルにアクセスして、対応する登録済み管理証明書を削除する必要があります。または、フォーラムを通じてサポートに連絡して、このタスクを依頼する必要があります。
+新しい証明書を生成するだけでは不十分です。10 個の証明書がすべて有効であっても、侵害された古いキーはまだ Web サイトにアクセス可能であるためです。
 
-<h2><a id="management"></a>Install a management certificate using the Azure Management Portal</h2>
+<h2><a id="management"></a>Azure 管理ポータルを使用して管理証明書をインストールする</h2>
 
-You can create a management certificate in a variety of ways.  For more information about creating certificates, see [Create a Management Certificate for Azure](http://msdn.microsoft.com/en-us/library/windowsazure/gg551722.aspx).  After you create the certificate, add it to your subscription in Azure. 
+管理証明書は、さまざまな方法で作成できます。証明書の作成方法の詳細については、「[Azure の管理証明書の作成とアップロード](http://msdn.microsoft.com/ja-jp/library/windowsazure/gg551722.aspx)」を参照してください。管理証明書を作成した後、それを Azure のサブスクリプションに追加します。
 
-1. Sign in to the Azure Management Portal.
+1. Azure 管理ポータルにサインインします。
 
-2. In the navigation pane, click **Settings**.
+2. ナビゲーション ウィンドウで **[設定]** をクリックします。
 
-3. Under **Management Certificates**, click **Upload a management certificate**.
+3. **[管理証明書]** で、**[管理証明書のアップロード]** をクリックします。
 
-4. In **Upload a management certificate**, browse to the certificate file, and then click **OK**.
+4. **[管理証明書のアップロード]** で該当する証明書ファイルを見つけ、**[OK]** をクリックします。
 
-### Obtain the thumbprint of the certificate and the subscription ID ###
+### 証明書のサムプリントとサブスクリプション ID を取得する###
 
-You need the thumbprint of the management certificate that you added and you need the subscription ID to be able to upload the .vhd file to Azure.
+Azure に .vhd ファイルをアップロードするには、追加した管理証明書のサムプリントとサブスクリプション ID が必要です。
 
-1. From the Management Portal, click **Settings**.
+1. 管理ポータルで、**[設定]** をクリックします。
 
-2. Under **Management Certificates**, click your certificate, and then record the thumbprint from the **Properties** pane by copying and pasting it to a location where you can retrieve it later.
+2. **[管理証明書]** で目的の証明書をクリックし、**[プロパティ]** ウィンドウでサムプリントをコピーして、後で取得できる場所に貼り付けて記録します。
 
-You also need the ID of your subscription to upload the .vhd file.
+また、.vhd ファイルをアップロードするにはサブスクリプション ID も必要です。
 
-1. From the Management Portal, click **All Items**.
+1. 管理ポータルで、**[すべてのアイテム]** をクリックします。
 
-2. In the center pane, under **Subscription**, copy the subscription and paste it to a location where you can retrieve it later.
+2. 中心のウィンドウの **[サブスクリプション]** でサブスクリプションをコピーして、後で取得できる場所に貼り付けます。
 
-###Providing this information to tools if you generated your own key###
+###独自のキーを生成した場合にツールに指定する情報###
 
-####For CSUPLOAD
+####CSUPLOAD の場合
 
-1.	Open an Azure SDK Command Prompt window as an administrator.
-2.	Set the connection string by using the following command and replacing **Subscriptionid** and **CertThumbprint** with the values that you obtained earlier:
+1.	管理者として Azure SDK のコマンド プロンプト ウィンドウを開きます。
+2.	次のコマンドで **Subscriptionid** と **CertThumbprint**  を先に取得した値に置き換えて実行して、接続文字列を設定します。
 
 
 		csupload Set-Connection "SubscriptionID=<Subscriptionid>;CertificateThumbprint=<Thumbprint>;ServiceManagementEndpoint=https://management.core.windows.net"
 
-####For Linux Azure command line tools
+####Linux 用 Azure コマンド ライン ツールの場合
 
-You will need to base 64 encode the  PFX file you created using openssl with command:
+OpenSSL を使用して作成した PFX ファイルを Base64 でエンコードする必要があります。そのためには次のコマンドを実行します。
 
  		Base64 [file] > [econded file]
 
-You will then need to merge your subscription ID and the base64 encoded pfx into a single file that has the structure: 
+その後、サブスクリプション ID と Base64 でエンコードした PFX を次のような構造になるように 1 つのファイルにマージする必要があります。
 
 		?xml version="1.0" encoding="utf-8"?>
 		<PublishData>
@@ -136,5 +135,6 @@ You will then need to merge your subscription ID and the base64 encoded pfx into
 		  </PublishProfile>
 		</PublishData>
 		
-Where xxxxx is the contents of the [enconded file] you will use to provide the details to the Linux Azure Command Line Tools with the commands:
-Azure account import (File)
+ここで xxxxx は[エンコードしたファイル]の内容です。この部分は Linux 用 Azure コマンド ライン ツールで、
+Azure account import (File) コマンドに使用します。
+

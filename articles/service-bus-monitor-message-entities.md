@@ -1,48 +1,49 @@
-<properties linkid="service-bus-monitor-messaging-entitites" urlDisplayName="Traffic Manager" pageTitle="Monitor Service Bus Messaging Entities - Azure" metaKeywords="" description="Learn how to monitor your Service Bus entities using the Azure Management Portal." metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="service-bus" documentationCenter="" title="How to Monitor Service Bus Messaging Entities" authors="" solutions="" />
+<properties linkid="service-bus-monitor-messaging-entitites" urlDisplayName="トラフィック マネージャー" pageTitle="サービス バス メッセージング エンティティの監視 - Azure" metaKeywords="" description="Azure 管理ポータルを使用してサービス バス エンティティを監視する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="service-bus" documentationCenter="" title="サービス バス メッセージング エンティティの監視方法" authors="" solutions="" />
 
 
-# How to Monitor Service Bus Messaging Entities
+# サービス バス メッセージング エンティティの監視方法
 
-This topic describes how to manage and monitor your Service Bus entities using the [Azure Management Portal](http://manage.windowsazure.com). With the portal, you get a comprehensive view of the status your queues and topics. You can also monitor their usage.
+このトピックでは、[Azure 管理ポータル](http://manage.windowsazure.com)を使用してサービス バス エンティティを管理し監視する方法について説明します。ポータルを使用すると、キューとトピックの状態を包括的に把握できます。またその使用状況を監視することもできます。
 
-## How to Monitor Activity on Service Bus Queues
+## サービス バス キューのアクティビティの監視方法
 
-To monitor a Service Bus queue, do the following:
+サービス バス キューを監視するには、以下の手順を実行します。
 
-1. Log on to the [Azure (Preview) Management Portal](http://manage.windowsazure.com).
-2. Click the **Service Bus** icon on the left navigation bar to get the list of service namespaces. 
-3. Click the namespace that contains the queue you want to monitor. 
-4. In the pivot bar at the top of the page, click **Queues**.
-5. Click the name of the queue that you want to monitor. The queue dashboard appears.
-6. You can see activities on queues that you have created. You can view this information over multiple time windows. The default is 1 hour, but you can click the dropdown next to the time to choose a different time window: the last 24 hours, 7 days, or the last 30 days. You can see data with a precision as low as 5-minute measurement points for the one hour window, 1 hour for the 24-hour window, and 1 day for the 7 and 30-day windows. 
+1. [Azure (プレビュー) 管理ポータル](http://manage.windowsazure.com)にログオンします。
+2. 左側のナビゲーション バーで **[サービス バス]** アイコンをクリックして、サービス名前空間の一覧を表示します。
+3. 監視するキューを含む名前空間をクリックします。
+4. ページ上部のピボット バーで、**[キュー]** をクリックします。
+5. 監視するキューの名前をクリックします。キューのダッシュボードが表示されます。
+6. 作成したキューのアクティビティが表示されます。この情報はいくつかの時間枠で表示できます。既定値は 1 時間ですが、時間枠の横にあるドロップダウン リストをクリックして、異なる時間枠を選択することができます。選択できるのは過去 24 時間、7 日間、または 30 日間です。データの測定期間の単位は、時間枠が 1 時間の場合は 5 分間、24 時間の場合は 1 時間、7 日間および 30 日間の場合は 1 日です。
 
-For any queue, you can see charts of:
+キューの場合、次のグラフが表示されます。
 
-- **Incoming Messages**: number of messages queued during this time interval.
-- **Outgoing Messages**: number of messages de-queued during this time interval.
-- **Length**: number of messages in the entity at the end of this time interval.
-- **Size**: storage space (in MB) being used by this entity at the end of this time interval.
+- **受信メッセージ**: この期間にキューから削除されたメッセージの数。
+- **送信メッセージ**: この期間にキューから削除されたメッセージの数。
+- **長さ**: この期間の終了時におけるエンティティのメッセージの数。
+- **サイズ**: この期間の終了時においてこのエンティティが使用しているストレージ領域 (MB 単位)。
 
-###Quick Glance###
+###概要###
 
-**Quick Glance** on the dashboard reflects the current size of the queue as **Queue Length**. It also displays other properties of the queue or topic. This information is refreshed every 10 seconds.
+ダッシュボードの **[概要]** には、キューの現在のサイズが **[キューの長さ]** として反映されます。また、キューまたはトピックの他のプロパティも表示されます。この情報は 10 秒ごとに更新されます。
 
 ![][1]
 
-## How to Monitor Activity on Service Bus Topics
+## サービス バス トピックのアクティビティの監視方法
 
-To monitor a Service Bus topic, do the following:
+サービス バス トピックを監視するには、以下の手順を実行します。
 
-1. Log on to the [Azure (Preview) Management Portal](http://manage.windowsazure.com).
-2. Click the **Service Bus** icon on the left navigation bar to get the list of service namespaces. 
-3. Click the namespace that contains the topic you want to monitor. 
-4. In the pivot bar at the top of the page, click **Topics**.
-5. Click the name of the topic that you want to monitor. The topic dashboard appears.
+1. [Azure (プレビュー) 管理ポータル](http://manage.windowsazure.com)にログオンします。
+2. 左側のナビゲーション バーで **[サービス バス]** アイコンをクリックして、サービス名前空間の一覧を表示します。
+3. 監視するトピックを含む名前空間をクリックします。
+4. ページ上部のピボット バーで、**[トピック]** をクリックします。
+5. 監視するトピックの名前をクリックします。トピックのダッシュボードが表示されます。
 
-A topic dashboard is similar to a queue dashboard, except for the usage metrics. Outgoing messages and length are not present in the topic dashboard, as that information would be different for each of the subscriptions for a topic. The **Monitor** tab enables you to add usage metrics (number of outgoing messages and length), per topic subscription. To add these metrics, click the **Monitor** tab. Then click **Add Metrics** at the bottom of the page, and then choose from the subscriptions under the topic.
+トピックのダッシュボードはキューのダッシュボードと似ていますが、使用状況のメトリックが異なります。トピックのダッシュボードには送信メッセージ数と長さが表示されません。この情報はトピックのサブスクリプションごとに異なるためです。**[監視]** タブで、トピック サブスクリプションごとに使用状況のメトリック (送信メッセージ数と長さ) を追加できます。メトリックを追加するには、**[監視]** タブをクリックします。ページの下部にある **[メトリックの追加]** をクリックして、トピックの下にあるサブスクリプションを選択します。
 
 
 ![][2]
 
 [1]: ./media/service-bus-monitor-message-entities/QueueDashboard.png
 [2]: ./media/service-bus-monitor-message-entities/AddMetrics.png
+

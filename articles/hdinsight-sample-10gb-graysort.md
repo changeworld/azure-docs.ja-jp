@@ -1,69 +1,69 @@
-<properties linkid="manage-services-hdinsight-sample-10gb-graysort" urlDisplayName="HDInsight Samples" pageTitle="The 10GB GraySort sample | Azure" metaKeywords="hdinsight, hdinsight administration, hdinsight administration azure" description="Learn how to run a general purpose GraySort with HDInsight using Azure PowerShell." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="The 10GB GraySort sample" authors="bradsev" />
+<properties linkid="manage-services-hdinsight-sample-10gb-graysort" urlDisplayName="HDInsight のサンプル" pageTitle="10 GB GraySort サンプル | Azure" metaKeywords="hdinsight, hdinsight の管理, azure hdinsight の管理" description="Azure PowerShell を使用して HDInsight で汎用 GraySort を実行する方法について説明します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="10 GB GraySort サンプル" authors="bradsev" />
 
-# The 10GB GraySort sample
+# 10 GB GraySort サンプル
  
-This sample topic shows how to run a general purpose GraySort with Azure HDInsight using Azure PowerShell. A GraySort is a benchmark sort whose metric is the sort rate (TB/minute) that is achieved while sorting very large amounts of data, usually a 100 TB minimum. 
+このサンプル トピックでは、Azure PowerShell を使用して Azure HDInsight で汎用 GraySort を実行する方法について説明します。GraySort はベンチマーク ソートで、その評価尺度は、非常に大量のデータ、通常は最低でも 100 TB のデータをソートした際のソート速度 (TB/分) です。
 
-This sample uses a modest 10 GB of data so that it can be run relatively quickly. It uses the MapReduce applications developed by Owen O'Malley and Arun Murthy that won the annual general purpose ("daytona") terabyte sort benchmark in 2009 with a rate of 0.578 TB/min (100 TB in 173 minutes). For more information on this and other sorting benchmarks, see the [Sortbenchmark](http://sortbenchmark.org/)   site.
+このサンプルでは、比較的高速に実行できるように、中程度のサイズの 10 GB のデータを使用します。使用する MapReduce アプリケーションは Owen O'Malley と Arun Murthy が開発したもので、2009 年にはテラバイト ソート ベンチマークの汎用目的 ("daytona") 部門で 0.578 TB/分 (173 分で 100 TB) という年間記録を樹立しました。これも含めたソート ベンチマークの詳細については、[Sortbenchmark](http://sortbenchmark.org/) サイトを参照してください。
 
-This sample uses three sets of MapReduce programs:	
+このサンプルでは 3 組の MapReduce プログラムを使用します。	
  
-1. **TeraGen** is a MapReduce program that you can use to generate the rows of data to sort.
-2. **TeraSort** samples the input data and uses MapReduce to sort the data into a total order. TeraSort is a standard sort of MapReduce functions, except for a custom partitioner that uses a sorted list of N-1 sampled keys that define the key range for each reduce. In particular, all keys such that sample[i-1] <= key < sample[i] are sent to reduce i. This guarantees that the output of reduce i are all less than the output of reduce i+1.
-3. **TeraValidate** is a MapReduce program that validates the output is globally sorted. It creates one map per a file in the output directory and each map ensures that each key is less than or equal to the previous one. The map function also generates records of the first and last keys of each file and the reduce function ensures that the first key of file i is greater than the last key of file i-1. Any problems are reported as output of the reduce with the keys that are out of order.
+1. **TeraGen** は、ソートするデータ行を生成するのに使用できる MapReduce プログラムです。
+2. **TeraSort** は入力データをサンプリングし、MapReduce を使用してデータを合計順にソートします。TeraSort は MapReduce 関数の標準ソートです。ただし、各 reduce のキー範囲を定義する N-1 個のサンプリングされたキーのソート済みリストを使用するカスタム partitioner を使用します。特に、sample[i-1] <= key < sample[i] となるキーはすべて reduce i に送られます。このため確実に、reduce i の出力がすべて reduce i+1 の出力より小さくなります。
+3. **TeraValidate** は、出力がグローバルにソートされているか検証する MapReduce プログラムです。出力ディレクトリ内のファイルごとにマップを 1 つ作成します。各マップは各キーが前のキー以下であることを保証します。map 関数は、各ファイルの最初のキーと最後のキーの記録も生成し、reduce 関数は、ファイル i の最初のキーがファイル i-1 の最後のキーよりも大きいことを確認します。問題が見つかった場合は、reduce の出力として範囲外のキーがレポートされます。
 
-The input and output format, used by all three applications, read and write the text files in the right format. The output of the reduce has replication set to 1, instead of the default 3, because the benchmark contest does not require the output data be replicated on to multiple nodes.
+3 つのアプリケーションすべてで使用される入力形式と出力形式は、適切な形式のテキスト ファイルを読み書きします。ベンチマーク コンテストでは出力データを複数のノードにレプリケーションする必要がないため、reduce の出力ではレプリケーションが既定の 3 ではなく 1 に設定されます。
 
  
-**You will learn:**		
-* How to use Azure PowerShell to run a series of MapReduce programs on Azure HDInsight.		
-* What a MapReduce program written in Java looks like.
+**学習内容:**		
+* Azure PowerShell を使用して一連の MapReduce プログラムを HDInsight で実行する方法。		
+* Java で記述された MapReduce プログラムの実例。
 
 
-**Prerequisites**:	
+**前提条件**:	
 
-- You must have an Azure Account. For options on signing up for an account see [Try Azure out for free](http://www.windowsazure.com/en-us/pricing/free-trial/) page.
+- Azure アカウントが必要です。アカウントにサインアップする方法については、[Azure の無料評価版のページ](http://www.windowsazure.com/ja-jp/pricing/free-trial/)を参照してください。
 
-- You must have provisioned an HDInsight cluster. For instructions on the various ways in which such clusters can be created, see [Provision HDInsight Clusters](/en-us/manage/services/hdinsight/provision-hdinsight-clusters/)
+- HDInsight クラスターのプロビジョニングを終えている必要があります。クラスターを作成するさまざまな方法については、「[HDInsight クラスターのプロビジョニング](/ja-jp/manage/services/hdinsight/provision-hdinsight-clusters/)」を参照してください。
 
-- You must have installed Azure PowerShell, and have configured them for use with your account. For instructions on how to do this, see [Install and configure Azure PowerShell][powershell-install-configure].
+- Azure PowerShell をインストールして、アカウントを使用するように構成している必要があります。その手順については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」を参照してください。
 
-##In this article
-This topic shows you how to run the series of MapReduce programs that make up the Sample, presents the Java code for the MapReduce program, summarizes what you have learned, and outlines some next steps. It has the following sections.
+##このトピックでは、
+サンプルを構成する一連の MapReduce プログラムを実行する方法について説明し、MapReduce プログラムの Java コードを示し、説明した内容をまとめ、次の手順の概略を示します。ここで取り上げる内容は次のとおりです。
 	
-1. [Run the sample with Azure PowerShell](#run-sample)	
-2. [The Java code for the TeraSort MapReduce program](#java-code)
-3. [Summary](#summary)	
-4. [Next steps](#next-steps)	
+1. [Azure PowerShell を使用したサンプルの実行](#run-sample)	
+2. [TeraSort MapReduce プログラムの Java コード](#java-code)
+3. [まとめ](#summary)	
+4. [次のステップ](#next-steps)	
 
-<h2><a id="run-sample"></a>Run the sample with Azure PowerShell</h2>
+<h2><a id="run-sample"></a>Azure PowerShell を使用したサンプルの実行</h2>
 
-Three tasks are required by the sample, each corresponding to one of the MapReduce programs decribed in the introduction:	
+サンプルでは 3 つのタスクが必要です。タスクのそれぞれが、先に説明した MapReduce プログラムに対応しています。	
 
-1. Generate the data for sorting by running the **TeraGen** MapReduce job.	
-2. Sort the data by running the **TeraSort** MapReduce job.		
-3. Confirm that the data has been correctly sorted by running the **TeraValidate** MapReduce job.	
+1. **TeraGen** MapReduce ジョブを実行して、ソート用のデータを生成します。	
+2. **TeraSort** MapReduce ジョブを実行して、データをソートします。		
+3. **TeraValidate** MapReduce ジョブを実行して、データが正しくソートされていることを確認します。	
 
 
-**To run the TeraGen program**	
+**TeraGen プログラムを実行するには**	
 
-1. Open Azure PowerShell. For instructions of opening Azure PowerShell console window, see [Install and configure Azure PowerShell][powershell-install-configure].
-2. Set the two variables in the following commands, and then run them:
+1. Azure PowerShell を開きます。Azure PowerShell コンソール ウィンドウを開く手順については、[Azure PowerShell のインストールと構成に関するページ][powershell-install-configure]を参照してください。
+2. 次のコマンドを実行して、2 つの変数を設定します。
 	
 		# Provide the Azure subscription name and the HDInsight cluster name.
 		$subscriptionName = "myAzureSubscriptionName"   
 		$clusterName = "myClusterName"
                  
-4. Run the following command to create a MapReduce job definition"
+4. 次のコマンドを実行して、MapReduce ジョブ定義を作成します。
 
 		# Create a MapReduce job definition for the TeraGen MapReduce program
 		$teragen = New-AzureHDInsightMapReduceJobDefinition -JarFile "/example/jars/hadoop-examples.jar" -ClassName "teragen" -Arguments "-Dmapred.map.tasks=50", "100000000", "/example/data/10GB-sort-input" 
 
-	> [WACOM.NOTE] *hadoop-examples.jar* comes with version 2.1 HDInsight clusters. The file has been renamed to *hadoop-mapreduce.jar* on version 3.0 HDInsight clusters.
+	> [WACOM.NOTE] *hadoop-examples.jar* は、バージョン 2.1 の HDInsight クラスターに付属しています。バージョン 3.0 の HDInsight クラスターで、このファイルの名前は *hadoop-mapreduce.jar* に変更されました
 	
-	The *"-Dmapred.map.tasks=50"* argument specifies that 50 maps will be created to execute the job. The *100000000* argument specifies the amount of data to generate. The final argument,  */example/data/10GB-sort-input*, specifies the output directory to which the results are saved (which contains the input for the following sort stage).
+	"*-Dmapred.map.tasks=50*" 引数は、ジョブを実行するために 50 個のマップを作成することを指定しています。*100000000* 引数は、生成するデータの量を指定しています。最後の引数 */example/data/10GB-sort-input* は、結果を保存する出力ディレクトリを指定しています (これが次のソート段階用の入力になります)。
 
-5. Run the following commands to submit job, wait for job to complete and then print the standard error:
+5. 次のコマンドを実行して、ジョブを送信し、ジョブの完了を待ち、標準エラーを出力します。
 
 		# Run the TeraGen MapReduce job.
 		# Wait for the job to complete.
@@ -72,23 +72,23 @@ Three tasks are required by the sample, each corresponding to one of the MapRedu
 		$teragen | Start-AzureHDInsightJob -Cluster $clustername | Wait-AzureHDInsightJob -WaitTimeoutInSeconds 3600 | Get-AzureHDInsightJobOutput -Cluster $clustername -StandardError 
 
 
-**To run the TeraSort program**			
+**TeraSort プログラムを実行するには**			
 
-1. Open Azure PowerShell.
-2. Set the two variables in the following commands, and then run them:
+1. Azure PowerShell を開きます。
+2. 次のコマンドを実行して、2 つの変数を設定します。
 	
 		# Provide the Azure subscription name and the HDInsight cluster name.
 		$subscriptionName = "myAzureSubscriptionName"   
 		$clusterName = "myClusterName"
 
-3. Run the following command to define the MapReduce job: 	 
+3. 次のコマンドを実行して、MapReduce ジョブを定義します。	 
 
 		# Create a MapReduce job definition for the TeraSort MapReduce program
 		$terasort = New-AzureHDInsightMapReduceJobDefinition -JarFile "/example/jars/hadoop-examples.jar" -ClassName "terasort" -Arguments "-Dmapred.map.tasks=50", "-Dmapred.reduce.tasks=25", "/example/data/10GB-sort-input", "/example/data/10GB-sort-output" 
 
-	The *"-Dmapred.map.tasks=50"* argument specifies that 50 maps will be created to execute the job. The *100000000* argument specifies the amount of data to generate. The final two arguments specify the input and output directories. 
+	"*-Dmapred.map.tasks=50*" 引数は、ジョブを実行するために 50 個のマップを作成することを指定しています。*100000000* 引数は、生成するデータの量を指定しています。最後の 2 つの引数は、入力ディレクトリと出力ディレクトリを指定しています。
 
-4. Run the following command to submit the job, wait for the job to complete, and print the standand error:
+4. 次のコマンドを実行して、ジョブを送信し、ジョブの完了を待ち、標準エラーを出力します。
 
 		# Run the TeraSort MapReduce job.
 		# Wait for the job to complete.
@@ -97,24 +97,24 @@ Three tasks are required by the sample, each corresponding to one of the MapRedu
 		$terasort | Start-AzureHDInsightJob -Cluster $clustername | Wait-AzureHDInsightJob -WaitTimeoutInSeconds 3600 | Get-AzureHDInsightJobOutput -Cluster $clustername -StandardError 
 
 
-**To run the TeraValidate program**
+**TeraValidate プログラムを実行するには**
 		 		
-1. Open Azure PowerShell.
-2. Set the two variables in the following commands, and then run them:
+1. Azure PowerShell を開きます。
+2. 次のコマンドを実行して、2 つの変数を設定します。
 	
 		# Provide the Azure subscription name and the HDInsight cluster name.
 		$subscriptionName = "myAzureSubscriptionName"   
 		$clusterName = "myClusterName"
                  
-3. Run the following command to define the MapReduce job: 
+3. 次のコマンドを実行して、MapReduce ジョブを定義します。
 
 		#	Create a MapReduce job definition for the TeraValidate MapReduce program
 		$teravalidate = New-AzureHDInsightMapReduceJobDefinition -JarFile "/example/jars/hadoop-examples.jar" -ClassName "teravalidate" -Arguments "-Dmapred.map.tasks=50", "-Dmapred.reduce.tasks=25", "/example/data/10GB-sort-output", "/example/data/10GB-sort-validate" 
 
-	The *"-Dmapred.map.tasks=50"* argument specifies that 50 maps will be created to execute the job. he *"-Dmapred.reduce.tasks=25"* argument specifies that 25 reduce tasks will be created to execute the job. The final two arguments specify the input and output directories.  
+	"*-Dmapred.map.tasks=50*" 引数は、ジョブを実行するために 50 個のマップを作成することを指定しています。"*-Dmapred.reduce.tasks=25*" 引数は、ジョブを実行するために 25 個の reduce タスクを作成することを指定しています。最後の 2 つの引数は、入力ディレクトリと出力ディレクトリを指定しています。
  
 
-4. Run the following commands to submit the MapReduce job, wait for the job to complete and print the standard error:
+4. 次のコマンドを実行して、MapReduce ジョブを送信し、ジョブの完了を待ち、標準エラーを出力します。
 
 		# Run the TeraSort MapReduce job.
 		# Wait for the job to complete.
@@ -123,9 +123,9 @@ Three tasks are required by the sample, each corresponding to one of the MapRedu
 		$teravalidate | Start-AzureHDInsightJob -Cluster $clustername | Wait-AzureHDInsightJob -WaitTimeoutInSeconds 3600 | Get-AzureHDInsightJobOutput -Cluster $clustername -StandardError 
 
 
-<h2><a id="java-code"></a>The Java code for the TerraSort MapReduce program</h2>
+<h2><a id="java-code"></a>TeraSort MapReduce プログラムの Java コード</h2>
 
-The code for the TerraSort MapReduce program is presented for inspection in this section. 
+このセクションでは、内容を確認するために TeraSort MapReduce プログラムのコードを示します。
 
 
 	/**
@@ -394,33 +394,34 @@ The code for the TerraSort MapReduce program is presented for inspection in this
 	}
   
 
-<h2><a id="summary"></a>Summary</h2>
+<h2><a id="summary"></a>まとめ</h2>
 
-This sample has demonstrated how to run a series of MapReduce jobs using Azure HDInsight, where the data output for one job becomes the input for the next job in the series.
+このサンプルでは、Azure HDInsight で一連の MapReduce ジョブを実行する方法を示しました。一連のジョブでは、1 つのジョブのデータ出力が次のジョブの入力になります。
 
-<h2><a id="next-steps"></a>Next steps</h2>
+<h2><a id="next-steps"></a>次のステップ</h2>
 
-For tutorials running other samples and providing instructions on using Pig, Hive, and MapReduce jobs on Azure HDInsight with Azure PowerShell, see the following topics:
+Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実行するチュートリアルや、Pig、Hive、MapReduce の使用方法に関するチュートリアルについては、次のトピックを参照してください。
 
-* [Get started with Azure HDInsight][getting-started]
-* [Sample: Pi estimator][pi-estimator]
-* [Sample: Wordcount][wordcount]
-* [Sample: C# Steaming][cs-streaming]
-* [Use Pig with HDInsight][pig]
-* [Use Hive with HDInsight][hive]
-* [Azure HDInsight SDK documentation][hdinsight-sdk-documentation]
+* [Azure HDInsight の概要][getting-started]
+* [サンプル: Pi 推定][pi-estimator]
+* [サンプル: ワードカウント][wordcount]
+* [サンプル: C# ストリーミング][cs-streaming]
+* [HDInsight での Pig の使用][pig]
+* [HDInsight での Hive の使用][hive]
+* [Azure HDInsight SDK のドキュメント][hdinsight-sdk-documentation]
 
-[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/en-us/library/dn479185.aspx
+[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/ja-jp/library/dn479185.aspx
 
-[Powershell-install-configure]: /en-us/documentation/articles/install-configure-powershell/
-
-
-[getting-started]: /en-us/manage/services/hdinsight/get-started-hdinsight/
-[pi-estimator]: /en-us/manage/services/hdinsight/howto-run-samples/sample-pi-estimator/
-[wordcount]: /en-us/manage/services/hdinsight/howto-run-samples/sample-wordcount/
-[cs-streaming]: /en-us/manage/services/hdinsight/howto-run-samples/sample-csharp-streaming/
+[Powershell-install-configure]: /ja-jp/documentation/articles/install-configure-powershell/
 
 
-[hive]: /en-us/manage/services/hdinsight/using-hive-with-hdinsight/
-[pig]: /en-us/manage/services/hdinsight/using-pig-with-hdinsight/
+[getting-started]: /ja-jp/manage/services/hdinsight/get-started-hdinsight/
+[pi-estimator]: /ja-jp/manage/services/hdinsight/howto-run-samples/sample-pi-estimator/
+[wordcount]: /ja-jp/manage/services/hdinsight/howto-run-samples/sample-wordcount/
+[cs-streaming]: /ja-jp/manage/services/hdinsight/howto-run-samples/sample-csharp-streaming/
+
+
+[hive]: /ja-jp/manage/services/hdinsight/using-hive-with-hdinsight/
+[pig]: /ja-jp/manage/services/hdinsight/using-pig-with-hdinsight/
+
 

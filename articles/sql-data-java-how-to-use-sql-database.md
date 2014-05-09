@@ -1,87 +1,87 @@
-<properties linkid="develop-java-sql-azure" urlDisplayName="SQL Database" pageTitle="How to use SQL Azure (Java) - Azure feature guide" metaKeywords="" description="Learn how to use the Azure SQL Database from Java code. " metaCanonical="" services="sql-database" documentationCenter="Java" title="How to Use Azure SQL Database in Java" authors="waltpo" solutions="" manager="" editor="mollybos" />
+<properties linkid="develop-java-sql-azure" urlDisplayName="SQL データベース" pageTitle="SQL Azure の使用方法 (Java) - Azure の機能ガイド" metaKeywords="" description="Java コードから Azure SQL データベースを使用する方法について説明します。" metaCanonical="" services="sql-database" documentationCenter="Java" title="Java での Azure SQL データベースの使用方法" authors="waltpo" solutions="" manager="" editor="mollybos" />
 
-# How to Use Azure SQL Database in Java
+# Java での Azure SQL データベースの使用方法
 
-The following steps show you how to use Azure SQL Database with Java. Command line examples are shown for simplicity, but highly similar steps would be appropriate for web applications, either hosted on-premise, within Azure, or in other environments. This guide covered creating a server and creating a database from the [Azure Management Portal](https://windows.azure.com). For information about performing these tasks from the production portal, see [Using SQL Database with Java](http://msdn.microsoft.com/en-us/library/windowsazure/hh749029.aspx).
+次の手順では、Java で Azure SQL データベースを使用する方法を示しています。わかりやすく説明するために、コマンド ラインの例を示していますが、これと類似した手順を、内部設置型のホステッド Web アプリケーションや、Azure 内またはその他の実行環境内の Web アプリケーションにも適用することができます。このガイドでは、[Azure 管理ポータル](https://windows.azure.com)からのサーバーとデータベースの作成を取り上げます。運用ポータルからのこれらのタスクの実行については、「[Using SQL Database with Java (Java での SQL データベースの使用)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh749029.aspx)」を参照してください。
 
-## What is Azure SQL Database
+## Azure SQL データベースとは
 
-Azure SQL Database provides a relational database management system for Azure, and is based on SQL Server technology. With a SQL Database instance, you can easily provision and deploy relational database solutions to the cloud, and take advantage of a distributed data center that provides enterprise-class availability, scalability, and security with the benefits of built-in data protection and self-healing.
+Azure SQL データベースは、Azure 用のリレーショナル データベース管理システムを提供し、SQL Server テクノロジを基盤としています。SQL データベース インスタンスを使用すると、リレーショナル データベース ソリューションを簡単に準備してクラウドに展開することができ、分散したデータ センターを活用して、組み込みのデータ保護と自己復旧機能のメリットによるエンタープライズ クラスの可用性、拡張性、およびセキュリティを確保できます。
 
-## Table of Contents
+## 目次
 
--   [Concepts][]
--   [Prerequisites][]
--   [Creating an Azure SQL Database][]
--   [Determining the SQL Database connection string][]
--   [To allow access to a range of IP addresses][]
--   [To use Azure SQL Database in Java][]
--   [Communicating with Azure SQL Database from your code][]
--   [To create a table][]
--   [To create an index on a table][]
--   [To insert rows][]
--   [To retrieve rows][]
--   [To retrieve rows using a WHERE clause][]
--   [To retrieve a count of rows][]
--   [To update rows][]
--   [To delete rows][]
--   [To check whether a table exists][]
--   [To drop an index][]
--   [To drop a table][]
--   [Using SQL Database in Java within an Azure Deployment][]
--   [Next steps][]
+-   [概念][]
+-   [前提条件][]
+-   [Azure SQL データベースの作成][]
+-   [SQL データベースの接続文字列の決定][]
+-   [IP アドレスの特定の範囲へのアクセスを許可するには][]
+-   [Java で Azure SQL データベースを使用するには][]
+-   [コードからの Azure SQL データベースとの通信][]
+-   [テーブルを作成するには][]
+-   [テーブルにインデックスを作成するには][]
+-   [行を挿入するには][]
+-   [行を取得するには][]
+-   [WHERE 句を使用して行を取得するには][]
+-   [行数を取得するには][]
+-   [行を更新するには][]
+-   [行を削除するには][]
+-   [テーブルが存在するかどうかを調べるには][]
+-   [インデックスを削除するには][]
+-   [テーブルを削除するには][]
+-   [Azure 展開内での Java からの SQL データベースの使用][]
+-   [次のステップ][]
 
-<h2><a id="concepts"></a>Concepts</h2>
-Because Azure SQL Database is built on SQL Server technologies, accessing SQL Database from Java is very similar to accessing SQL Server from Java. You can develop an application locally (using SQL Server) and then connect to SQL Database by changing only the connection string. You can use a SQL Server JDBC driver for your application. However, there are some differences between SQL Database and SQL Server that could affect your application. For more information, see [Guidelines and Limitations (SQL Database)](http://msdn.microsoft.com/en-us/library/windowsazure/ff394102.aspx).
+<h2><a id="concepts"></a>概念</h2>
+Azure SQL データベースは SQL Server テクノロジに基づいているため、Java から SQL データベースへのアクセスは Java から SQL Server へのアクセスに非常に似ています。アプリケーションをローカルで開発した後 (SQL Server を使用)、接続文字列を変更するだけで SQL データベースに接続できます。SQL Server JDBC ドライバーをアプリケーションに使用できます。ただし、SQL データベースと SQL Server のいくつかの違いがアプリケーションに影響する場合があります。詳細については、「[ガイドラインと制限事項 (SQL データベース)](http://msdn.microsoft.com/ja-jp/library/windowsazure/ff394102.aspx)」を参照してください。
 
-For additional resources for SQL Database, see the [Next steps][] section.
+SQL データベースに関するその他のリソースについては、「[次のステップ][]」を参照してください。
 
-<h2><a id="prerequisites"></a>Prerequisites</h2>
+<h2><a id="prerequisites"></a>前提条件</h2>
 
-The following are prerequisites if you intend to use SQL Database with Java.
+次の前提条件は Java で SQL データベースを使用する場合に必要になります。
 
-* A Java Developer Kit (JDK), v 1.6 or later.
-* An Azure subscription, which can be acquired from <http://www.microsoft.com/windowsazure/offers/>.
-* If you are using Eclipse, you'll need Eclipse IDE for Java EE Developers, Indigo or later. This can be downloaded from <http://www.eclipse.org/downloads/>. You will also need the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies). During installation of this plugin, ensure that Microsoft JDBC Driver 4.0 for SQL Server is included. For more information, see [Installing the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies)](http://msdn.microsoft.com/en-us/library/windowsazure/hh690946.aspx).
-* If you are not using Eclipse, you will need the Microsoft JDBC Driver 4.0 for SQL Server, which you can download from <http://www.microsoft.com/en-us/download/details.aspx?id=11774>.
+* Java Developer Kit (JDK) v 1.6 以降。
+* Azure のサブスクリプション。<http://www.microsoft.com/windowsazure/offers/> から入手できます。
+* Eclipse を使用している場合は、Eclipse IDE for Java EE Developers Indigo 以降が必要です。<http://www.eclipse.org/downloads/> からダウンロードできます。また、Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) も必要です。このプラグインのインストール時には Microsoft JDBC Driver 4.0 for SQL Server がインストール済みであることを確認してください。詳細については、「[Installing the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies) (Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) のインストール)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690946.aspx)」を参照してください。
+* Eclipse を使用していない場合は、Microsoft JDBC Driver 4.0 for SQL Server が必要です。これは、<http://www.microsoft.com/ja-jp/download/details.aspx?id=11774> からダウンロードできます。
 
-<h2><a id="create_db"></a>Creating an Azure SQL Database</h2>
+<h2><a id="create_db"></a>Azure SQL データベースの作成</h2>
 
-Before using Azure SQL Database in Java code, you will need to create an Azure SQL Database server.
+Java コードで Azure SQL データベースを使用するには、Azure SQL データベース サーバーの作成が必要になります。
 
-1. Login to the [Azure Management Portal](https://manage.windowsazure.com).
-2. Click **New**.
+1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
+2. **[新規]** をクリックします。
 
-    ![Create new SQL database][create_new]
+    ![新しい SQL データベースの作成][create_new]
 
-3. Click **SQL database**, and then click **Custom create**.
+3. **[SQL データベース]**、**[カスタム作成]** の順にクリックします。
 
-    ![Create custom SQL database][create_new_sql_db]
+    ![SQL データベースのカスタム作成][create_new_sql_db]
 
-4. In the **Database settings** dialog, specify your database name. For purposes of this guide, use **gettingstarted** as the database name.
-5. For **Server**, select **New SQL Database Server**. Use the default values for the other fields.
+4. **[データベースの設定]** ダイアログ ボックスで、データベース名を指定します。このガイドでは、データベース名として **gettingstarted** を使用します。
+5. **[サーバー]** で、**[新しい SQL データベース サーバー]** を選択します。他のフィールドには既定値をそのまま使用します。
 
-    ![SQL database settings][create_database_settings]
+    ![SQL データベースの設定][create_database_settings]
 
-6. Click the next arrow.	
-7. In the **Server settings** dialog, specify a SQL Server login name. For purposes of this guide, **MySQLAdmin** was used. Specify and confirm a password. Specify a region, and ensure that **Allow Azure Services to access the server** is checked.
+6. 次へ進む矢印をクリックします。	
+7. **[サーバーの設定]** ダイアログ ボックスで、SQL データベース サーバーへのログイン名を入力します。このガイドでは、**MySQLAdmin** を使用しました。パスワードの指定と確認入力を行います。リージョンを指定し、**[Azure サービスにサーバーへのアクセスを許可します]** チェック ボックスがオンになっていることを確認します。
 
-    ![SQL server settings][create_server_settings]
+    ![SQL データベース サーバーの設定][create_server_settings]
 
-8. Click the completion button.
+8. 完了ボタンをクリックします。
 
-<h2><a id="determine_connection_string"></a>Determining the SQL Database connection string</h2>
+<h2><a id="determine_connection_string"></a>SQL データベースの接続文字列の決定</h2>
 
-1. Login to the [Azure Management Portal](https://manage.windowsazure.com).
-2. Click **SQL Databases**.
-3. Click the database that you want to use.
-4. Click **Show connection strings**.
-5. Highlight the contents for the **JDBC** connection string.
+1. [Azure 管理ポータル](https://manage.windowsazure.com)にログインします。
+2. **[SQL データベース]** をクリックします。
+3. 使用するデータベースをクリックします。
+4. **[接続文字列の表示]** をクリックします。
+5. **JDBC** 接続文字列の内容を選択して強調表示させます。
 
-    ![Determine JDBC connection string][get_jdbc_connection_string]
+    ![JDBC 接続文字列の決定][get_jdbc_connection_string]
 
-6. Right-click the highlighted contents of the **JDBC** connection string and click **Copy**.
-7. You can now paste this value into your code file to create a connection string of the following form. Replace *your_server* (in two places) with the text you copied in the previous step, and replace *your_password* with the password value you specified when you created your SQL Database account. (Also replace the values assigned to **database=** and **user=** if you did not use **gettingstarted** and **MySQLAdmin**, respectively.) 
+6. 強調表示させた **JDBC** 接続文字列の内容を右クリックし、**[コピー]** をクリックします。
+7. これで、この値をコード ファイルに貼り付けて、次の形式の接続文字列を作成できるようになりました。*your_server* (2 か所) を、前の手順でコピーしたテキストに置き換え、*your_password* を、SQL データベース アカウントの作成時に指定したパスワードの値に置き換えます (さらに、**gettingstarted** と **MySQLAdmin** を使用しない場合は、**database=** と **user=** に設定された値もそれぞれ置き換える)。
 
     String connectionString =
 		"jdbc:sqlserver://*your_server*.database.windows.net:1433" + ";" +  
@@ -92,43 +92,43 @@ Before using Azure SQL Database in Java code, you will need to create an Azure S
         "hostNameInCertificate=*.int.mscds.com" + ";" +  
         "loginTimeout=30";
 
-We'll actually use this string later in this guide, for now you know the steps to determine the connection string. Also, depending on your application needs, you may not need to use the **encrypt** and **hostNameInCertificate** settings, and you may need to modify the **loginTimeout** setting.
+この文字列はこのガイドで後で実際に使用します。これで、接続文字列を決定する手順がわかりました。さらに、アプリケーションの要件によっては、**encrypt** および **hostNameInCertificate** 設定の使用が不要になったり、**loginTimeout** 設定の変更が必要になったりします。
 
-<h2><a id="specify_allowed_ips"></a>To allow access to a range of IP addresses</h2>
-1. Login to the [Management Portal](https://manage.windowsazure.com).
-2. Click **SQL Databases**.
-3. Click **Servers**.
-4. Click the server that you want to use.
-5. Click **Manage**.
-6. Click **Configure**.
-7. Under **Allowed IP addresses**, enter the name of a new IP rule. Specify the beginning and ending range of the IP addresses. For your convenience, the current client IP address is shown. The following example allows in a single client IP address (your IP address will be different).
+<h2><a id="specify_allowed_ips"></a>IP アドレスの特定の範囲へのアクセスを許可するには</h2>
+1. [管理ポータル](https://manage.windowsazure.com)にログインします。
+2. **[SQL データベース]** をクリックします。
+3. **[サーバー]** をクリックします。
+4. 使用するサーバーをクリックします。
+5. **[管理]** をクリックします。
+6. **[構成]** をクリックします。
+7. **[使用できる IP アドレス]** で、新しい IP ルールの名前を入力します。IP アドレスの開始と終了の範囲を指定します。参考までに、ここでは現在のクライアント IP アドレスを示しています。次の例では、1 つのクライアント IP アドレスにアクセスを許可しています (IP アドレスは実際のものと異なる)。
 
-    ![Allowed IP addresses dialog][allowed_ips_dialog]
+    ![[使用できる IP アドレス] ダイアログ ボックス][allowed_ips_dialog]
 
-8. Click the completion button. The IP addresses that you specify will now be allowed access to your database server.
+8. 完了ボタンをクリックします。これで、指定した IP アドレスはデータベース サーバーへのアクセスが許可されます。
 
-<h2><a id="use_sql_azure_in_java"></a>To use Azure SQL Database in Java</h2>
+<h2><a id="use_sql_azure_in_java"></a>Java で Azure SQL データベースを使用するには</h2>
 
-1. Create a Java project. For purposes of this tutorial, call it **HelloSQLAzure**.
-2. Add a Java class file named **HelloSQLAzure.java** to the project.
-3. Add the **Microsoft JDBC Driver for SQL Server** to your build path.
+1. Java プロジェクトを作成します。このチュートリアルでは、**HelloSQLAzure** という名前にします。
+2. **HelloSQLAzure.java** という名前の Java クラス ファイルをプロジェクトに追加します。
+3. **Microsoft JDBC Driver for SQL Server** をビルド パスに追加します。
 
-   If you are using Eclipse:
+   Eclipse を使用している場合: 
 
-    1. Within Eclipse's Project Explorer, right-click the **HelloSQLAzure** project and click **Properties**.
-    2. In the left-hand pane of the **Properties** dialog, click **Java Build Path**.
-    3. Click the **Libraries** tab, and then click **Add Library**.
-    4. In the **Add Library** dialog, select **Microsoft JDBC Driver 4.0 for SQL Server**, click **Next**, and then click **Finish**.
-    5. Click **OK** to close the **Properties** dialog.
+    1. Eclipse の Project Explorer で、**HelloSQLAzure** プロジェクトを右クリックし、**[Properties]** をクリックします。
+    2. **[Properties]** ダイアログ ボックスの左側のウィンドウで、**[Java Build Path]** をクリックします。
+    3. **[Libraries]** タブをクリックし、**[Add Library]** をクリックします。
+    4. **[Add Library]** ダイアログ ボックスで、**[Microsoft JDBC Driver 4.0 for SQL Server]** を選択し、**[Next]**、**[Finish]** の順にクリックします。
+    5. **[OK]** をクリックして **[Properties]** ダイアログ ボックスを閉じます。
 
-    If you are not using Eclipse, add the Microsoft JDBC Driver 4.0 for SQL Server JAR to your class path. For related information, see [Using the JDBC Driver](http://msdn.microsoft.com/en-us/library/ms378526.aspx).
+    Eclipse を使用していない場合は、Microsoft JDBC Driver 4.0 for SQL Server JAR をクラス パスに追加します。関連情報については、「[JDBC ドライバーの使用](http://msdn.microsoft.com/ja-jp/library/ms378526.aspx)」を参照してください。
 
-4. Within your **HelloSQLAzure.java** code, add in `import` statements as shown in the following:
+4. **HelloSQLAzure.java** コード内で、次に示すような `import` ステートメントを追加します。
 
         import java.sql.*;
         import com.microsoft.sqlserver.jdbc.*;
 
-5. Specify your connection string. Following is an example. As above, replace *your_server* (in two places), *your_user* and *your_password* with the values appropriate for your SQL Database server.
+5. 接続文字列を指定します。たとえば次のようになります。前の手順と同様に、*your_server* (2 か所)、*your_user*、*your_password* を、SQL データベース サーバーに該当する値に置き換えます。
 
         String connectionString =
         	"jdbc:sqlserver://your_server.database.windows.net:1433" + ";" +  
@@ -136,22 +136,22 @@ We'll actually use this string later in this guide, for now you know the steps t
         		"user=your_user@your_server" + ";" +  
         		"password=your_password";
 
-You're now ready to add in code that will communicate with your SQL Database server.
+これで、SQL データベース サーバーと通信するコードを追加する準備ができました。
 
-<h2><a id="communicate_from_code"></a>Communicating with Azure SQL Database from your code</h2>
+<h2><a id="communicate_from_code"></a>コードからの Azure SQL データベースとの通信</h2>
 
-The remainder of this topic shows examples that do the following:
+このトピックの残りでは、次の処理を実行する例を示します。
 
-1. Connect to the SQL Database server.
-2. Define a SQL statement, for example, to create or drop a table, insert/select/delete rows, etc.
-3. Execute the SQL statement, either through a call to **executeUpdate** or **executeQuery**.
-4. Display query results, if appropriate.
+1. SQL データベース サーバーに接続する。
+2. SQL ステートメントを定義する。たとえば、テーブルの作成や削除、行の挿入/選択/削除などを目的として定義します。
+3. SQL ステートメントを実行する。**executeUpdate** または **executeQuery** の呼び出しを使用します。
+4. クエリの結果を表示する (該当する場合)。
 
-The following sections are intended to be read (sampled) in order. The first snippet is a complete sample; the others would rely on part of the framework in the complete sample, such as the **import** statements, **class** and **main** declarations, error handling and resource closing.
+次のセクションは、順番に読み進むように構成 (サンプル提供) されています。最初のスニペットは完全なサンプルになっています。その他のスニペットは完全なサンプルのフレームワークの一部 (**import** ステートメント、**class** と **main** の宣言、エラーの処理、リソースの終了など) に依存するものとします。
 
-<h2><a id="to_create_table"></a>To create a table</h2>
+<h2><a id="to_create_table"></a>テーブルを作成するには</h2>
 
-The following code shows you how to create a table named **Person**.
+次のコードでは、**Person** という名前のテーブルを作成する方法を示しています。
 
 	import java.sql.*;
 	import com.microsoft.sqlserver.jdbc.*;
@@ -234,9 +234,9 @@ The following code shows you how to create a table named **Person**.
 	}
 	
 
-<h2><a id="to_create_index"></a>To create an index on a table</h2>
+<h2><a id="to_create_index"></a>テーブルにインデックスを作成するには</h2>
 
-The following code shows you how to create an index named **index1** on the **Person** table, using the **PersonID** column.
+次のコードでは、**PersonID** 列を使用して、**Person** テーブルに **index1** という名前のインデックスを作成する方法を示しています。
 
 	// Connection string for your SQL Database server.
 	// Change the values assigned to your_server, 
@@ -280,9 +280,9 @@ The following code shows you how to create an index named **index1** on the **Pe
 
 
 
-<h2><a id="to_insert_rows"></a>To insert rows</h2>
+<h2><a id="to_insert_rows"></a>行を挿入するには</h2>
 
-The following code shows you how to add rows to the **Person** table.
+次のコードでは、**Person** テーブルに行を追加する方法を示しています。
 
 	// Connection string for your SQL Database server.
 	// Change the values assigned to your_server, 
@@ -332,9 +332,9 @@ The following code shows you how to add rows to the **Person** table.
 	// Exception handling and resource closing not shown...
 
  
-<h2><a id="to_retrieve_rows"></a>To retrieve rows</h2>
+<h2><a id="to_retrieve_rows"></a>行を取得するには</h2>
 
-The following code shows you how to retrieve rows from the **Person** table.
+次のコードでは、**Person** テーブルから行を取得する方法を示しています。
 
 	// Connection string for your SQL Database server.
 	// Change the values assigned to your_server, 
@@ -387,23 +387,23 @@ The following code shows you how to retrieve rows from the **Person** table.
 	}
 	// Exception handling and resource closing not shown...
 
- The code above selected the top 10 rows from the **Person** table. If you want to return all rows, modify the SQL statement to the following:
+ このコードでは、**Person** テーブルから先頭の 10 行を選択しました。すべての行が返されるようにする場合は、次のように SQL ステートメントを変更します。
 
 	String sqlString = "SELECT * FROM Person";
 
  
-<h2><a id="to_retrieve_rows_using_where"></a>To retrieve rows using a WHERE clause</h2>
+<h2><a id="to_retrieve_rows_using_where"></a>WHERE 句を使用して行を取得するには</h2>
 
-To retrieve rows using a clause, use the code as shown above, except change the SQL statement to include a clause. The following SQL statement includes a clause for rows whose **FirstName** value equals **Jim**.
+句を使用して行を取得するには、前に示したコードで SQL ステートメントを変更して句を追加します。次の SQL 文では、**FirstName** 値が **Jim** に一致する行を取得するための句を追加しています。
 
 	// Define the SQL string.
 	String sqlString = "SELECT * FROM Person WHERE FirstName='Jim'";
 	
-WHERE clauses can also be used when retrieving counts, updating rows, or deleting rows.
+WHERE 句は、行数の取得、行の更新、行の削除にも使用できます。
 
-<h2><a id="to_retrieve_row_count"></a>To retrieve a count of rows</h2>
+<h2><a id="to_retrieve_row_count"></a>行数を取得するには</h2>
 
-The following code shows you how to retrieve a count of rows from the **Person** table.
+次のコードでは、**Person** テーブルから行数を取得する方法を示しています。
  
 	// Connection string for your SQL Database server.
 	// Change the values assigned to your_server, 
@@ -452,9 +452,9 @@ The following code shows you how to retrieve a count of rows from the **Person**
 	}
 	// Exception handling and resource closing not shown...
 
-<h2><a id="to_update_rows"></a>To update rows</h2>
+<h2><a id="to_update_rows"></a>行を更新するには</h2>
 
-The following code shows you how to update rows. In this example, the **LastName** value is changed to **Kim** for any rows where the **FirstName** value is **Jim**.
+次のコードでは、行を更新する方法を示しています。この例では、**FirstName** 値が **Jim** である行はすべて、**LastName** 値が **Kim** に変更されます。
 
 	// Connection string for your SQL Database server.
 	// Change the values assigned to your_server, 
@@ -497,9 +497,9 @@ The following code shows you how to update rows. In this example, the **LastName
 
  
 
-<h2><a id="to_delete_rows"></a>To delete rows</h2>
+<h2><a id="to_delete_rows"></a>行を削除するには</h2>
 
-The following code shows you how to delete rows. In this example, any rows where the **FirstName** value is **Jim** are deleted.
+次のコードでは、行を削除する方法を示しています。この例では、**FirstName** 値が **Jim** である行はすべて削除されます。
 
 	// Connection string for your SQL Database server.
 	// Change the values assigned to your_server, 
@@ -543,9 +543,9 @@ The following code shows you how to delete rows. In this example, any rows where
 	// Exception handling and resource closing not shown...
 	
  
-<h2><a id="to_check_table_existence"></a>To check whether a table exists</h2>
+<h2><a id="to_check_table_existence"></a>テーブルが存在するかどうかを調べるには</h2>
 
-The following code shows you how to determine whether a table exists.
+次のコードでは、テーブルが存在するかどうかを調べる方法を示しています。
 
 	// Connection string for your SQL Database server.
 	// Change the values assigned to your_server, 
@@ -598,9 +598,9 @@ The following code shows you how to determine whether a table exists.
 	}
 	// Exception handling and resource closing not shown...
 
-<h2><a id="to_drop_index"></a>To drop an index</h2>
+<h2><a id="to_drop_index"></a>インデックスを削除するには</h2>
 
-The following code shows you how to drop an index named **index1** on the **Person** table.
+次のコードでは、**Person** テーブルから **index1** という名前のインデックスを削除する方法を示しています。
 
 	// Connection string for your SQL Database server.
 	// Change the values assigned to your_server, 
@@ -644,9 +644,9 @@ The following code shows you how to drop an index named **index1** on the **Pers
 	// Exception handling and resource closing not shown...
 
  
-<h2><a id="to_drop_table"></a>To drop a table</h2>
+<h2><a id="to_drop_table"></a>テーブルを削除するには</h2>
 
-The following code shows you how to drop a table named **Person**.
+次のコードでは、**Person** という名前のテーブルを削除する方法を示しています。
 
 	// Connection string for your SQL Database server.
 	// Change the values assigned to your_server, 
@@ -687,51 +687,52 @@ The following code shows you how to drop a table named **Person**.
 	}
 	// Exception handling and resource closing not shown...
 
-<h2><a id="using_in_azure"></a>Using SQL Database in Java within an Azure Deployment</h2>
+<h2><a id="using_in_azure"></a>Azure 展開内での Java からの SQL データベースの使用</h2>
 
-To use SQL Database in Java within an Azure deployment, in addition to having Microsoft JDBC Driver 4.0 for SQL Server as a library in your class path as shown above, you'll need to package it with your deployment.
+Azure 展開内の Java で SQL データベースを使用するには、前に示したように Microsoft JDBC Driver 4.0 for SQL Server をライブラリとしてクラス パスに追加する操作に加え、パッケージ化して展開に追加する必要があります。
 
 
-**Packaging the Microsoft JDBC Driver 4.0 SQL Server if you are using Eclipse**
+**Eclipse を使用している場合の Microsoft JDBC Driver 4.0 SQL Server のパッケージ化**
 
-1. Within Eclipse's Project Explorer, right-click your project and click **Properties**.
-2. In the left-hand pane of the **Properties** dialog, click **Deployment Assembly**, and then click **Add**.
-3. In the **New Assembly Directive** dialog, click **Java Build Path Entries** and then click **Next**.
-4. Select **Microsoft JDBC Driver 4.0 SQL Server** and then click **Finish**.
-5. Click **OK** to close the **Properties** dialog.
-6. Export your project's WAR file to your approot folder, and rebuild your Azure project, per the steps documented at [Creating a Hello World Application Using the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies)](http://msdn.microsoft.com/en-us/library/windowsazure/hh690944.aspx). That topic also describes how to run your application in the compute emulator, and in Azure.
+1. Eclipse の Project Explorer で、プロジェクトを右クリックし、**[Properties]** をクリックします。
+2. **[Properties]** ダイアログ ボックスの左側のウィンドウで、**[Deployment Assembly]**、**[Add]** の順にクリックします。
+3. **[New Assembly Directive]** ダイアログ ボックスで、**[Java Build Path Entries]**、**[Next]** の順にクリックします。
+4. **[Microsoft JDBC Driver 4.0 SQL Server]** を選択し、**[Finish]** をクリックします。
+5. **[OK]** をクリックして **[Properties]** ダイアログ ボックスを閉じます。
+6. プロジェクトの WAR ファイルを approot フォルダーにエクスポートし、Azure プロジェクトを再ビルドします。その手順については、「[Creating a Hello World Application Using the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies) (Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) を使用した Hello World アプリケーションの作成)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690944.aspx)」で説明しています。そのトピックでは、コンピューティング エミュレーターおよび Azure 上でアプリケーションを実行する方法についても説明しています。
 
-**Packaging the Microsoft JDBC Driver 4.0 SQL Server if you are not using Eclipse**
+**Eclipse を使用していない場合の Microsoft JDBC Driver 4.0 SQL Server のパッケージ化**
 
-* Ensure the Microsoft JDBC Driver 4.0 SQL Server library is included within the same Azure role as your Java application, and added to the class path of your application.
+* Microsoft JDBC Driver 4.0 SQL Server ライブラリが、Java アプリケーションと同じ Azure ロールにインクルードされ、アプリケーションのクラス パスに追加されていることを確認します。
 
-<h2><a id="nextsteps"></a>Next steps</h2>
+<h2><a id="nextsteps"></a>次のステップ</h2>
 
-To learn more about Microsoft JDBC Driver for SQL Server, see [Overview of the JDBC Driver](http://msdn.microsoft.com/en-us/library/ms378749.aspx). To learn more about SQL Database, see [SQL Database Overview](http://msdn.microsoft.com/en-us/library/windowsazure/ee336241.aspx).
+Microsoft JDBC Driver for SQL Server の詳細については、「[JDBC ドライバーの概要](http://msdn.microsoft.com/ja-jp/library/ms378749.aspx)」を参照してください。SQL データベースの詳細については、「[Azure SQL データベースの概要](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336241.aspx)」を参照してください。
 
-[Concepts]:#concepts
-[Prerequisites]:#prerequisites
-[Creating an Azure SQL Database]:#create_db
-[Determining the SQL Database connection string]:#determine_connection_string
-[To allow access to a range of IP addresses]:#specify_allowed_ips
-[To use Azure SQL Database in Java]:#use_sql_azure_in_java
-[Communicating with Azure SQL Database from your code]:#communicate_from_code
-[To create a table]:#to_create_table
-[To create an index on a table]:#to_create_index
-[To insert rows]:#to_insert_rows
-[To retrieve rows]:#to_retrieve_rows
-[To retrieve rows using a WHERE clause]:#to_retrieve_rows_using_where
-[To retrieve a count of rows]:#to_retrieve_row_count
-[To update rows]:#to_update_rows
-[To delete rows]:#to_delete_rows
-[To check whether a table exists]:#to_check_table_existence
-[To drop an index]:#to_drop_index
-[To drop a table]:#to_drop_table
-[Using SQL Database in Java within an Azure Deployment]:#using_in_azure
-[Next steps]:#nextsteps
+[概念]:#concepts
+[前提条件]:#prerequisites
+[Azure SQL データベースの作成]:#create_db
+[SQL データベースの接続文字列の決定]:#determine_connection_string
+[IP アドレスの特定の範囲へのアクセスを許可するには]:#specify_allowed_ips
+[Java で Azure SQL データベースを使用するには]:#use_sql_azure_in_java
+[コードからの Azure SQL データベースとの通信]:#communicate_from_code
+[テーブルを作成するには]:#to_create_table
+[テーブルにインデックスを作成するには]:#to_create_index
+[行を挿入するには]:#to_insert_rows
+[行を取得するには]:#to_retrieve_rows
+[WHERE 句を使用して行を取得するには]:#to_retrieve_rows_using_where
+[行数を取得するには]:#to_retrieve_row_count
+[行を更新するには]:#to_update_rows
+[行を削除するには]:#to_delete_rows
+[テーブルが存在するかどうかを調べるには]:#to_check_table_existence
+[インデックスを削除するには]:#to_drop_index
+[テーブルを削除するには]:#to_drop_table
+[Azure 展開内での Java からの SQL データベースの使用]:#using_in_azure
+[次のステップ]:#nextsteps
 [create_new]: ./media/sql-data-java-how-to-use-sql-database/WA_New.png
 [create_new_sql_db]: ./media/sql-data-java-how-to-use-sql-database/WA_SQL_DB_Create.png
 [create_database_settings]: ./media/sql-data-java-how-to-use-sql-database/WA_CustomCreate_1.png
 [create_server_settings]: ./media/sql-data-java-how-to-use-sql-database/WA_CustomCreate_2.png
 [get_jdbc_connection_string]: ./media/sql-data-java-how-to-use-sql-database/WA_SQL_JDBC_ConnectionString.png
 [allowed_ips_dialog]: ./media/sql-data-java-how-to-use-sql-database/WA_Allowed_IPs.png
+

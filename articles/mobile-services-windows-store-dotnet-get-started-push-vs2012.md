@@ -1,53 +1,53 @@
-<properties linkid="develop-mobile-tutorials-get-started-with-push-dotnet" urlDisplayName="Get Started with Push Notifications" pageTitle="Get started with push notifications - Mobile Services" metaKeywords="push notifications c#" description="Learn how to use push notifications with Azure Mobile Services." metaCanonical="http://www.windowsazure.com/en-us/develop/mobile/tutorials/get-started-with-push-dotnet/" disqusComments="0" umbracoNaviHide="1" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services using Visual Studio 2012" authors="" />
-# Get started with push notifications in Mobile Services using Visual Studio 2012
+<properties linkid="develop-mobile-tutorials-get-started-with-push-dotnet" urlDisplayName="プッシュ通知の使用" pageTitle="プッシュ通知の使用 - モバイル サービス" metaKeywords="プッシュ通知 c#" description="Azure モバイル サービスでプッシュ通知を使用する方法について説明します。" metaCanonical="http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet/" disqusComments="0" umbracoNaviHide="1" documentationCenter="Mobile" title="Visual Studio 2012 を使用したモバイル サービスでのプッシュ通知の使用" authors="" />
+# Visual Studio 2012 を使用したモバイル サービスでのプッシュ通知の使用
 
 <div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/en-us/develop/mobile/tutorials/get-started-with-push-dotnet-vs2012" title="Windows Store C#" class="current">Windows Store C#</a>
-	<a href="/en-us/develop/mobile/tutorials/get-started-with-push-js-vs2012" title="Windows Store JavaScript">Windows Store JavaScript</a>
-	<a href="/en-us/develop/mobile/tutorials/get-started-with-push-wp8" title="Windows Phone">Windows Phone</a>
-	<a href="/en-us/develop/mobile/tutorials/get-started-with-push-ios" title="iOS">iOS</a>
-	<a href="/en-us/develop/mobile/tutorials/get-started-with-push-android" title="Android">Android</a>
-	<a href="/en-us/develop/mobile/tutorials/get-started-with-push-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a>
-	<a href="/en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android" title="Xamarin.Android">Xamarin.Android</a>
+	<a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet-vs2012" title="Windows ストア C#" class="current">Windows ストア C#</a>
+	<a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-js-vs2012" title="Windows ストア JavaScript">Windows ストア JavaScript</a>
+	<a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-wp8" title="Windows Phone">Windows Phone</a>
+	<a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-ios" title="iOS">iOS</a>
+	<a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-android" title="Android">Android</a>
+	<a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a>
+	<a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-android" title="Xamarin.Android">Xamarin.Android</a>
 </div>	
 
-This topic shows you how to use Azure Mobile Services to send push notifications to a Windows Store app. 
-In this tutorial you add push notifications using the Windows Push Notification service (WNS) to the quickstart project. When complete, your mobile service will send a push notification each time a record is inserted.
+このトピックでは、Azure モバイル サービスを使用して Windows ストア アプリケーションにプッシュ通知を送信する方法について説明します。
+このチュートリアルでは、Windows プッシュ通知サービス (WNS) を使用したプッシュ通知をクイック スタート プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
 
-<div class="dev-callout"><b>Note</b>
-	<p>This tutorial adds push notifications to a Windows Store app created in Visual Studio 2012. Visual Studio 2013 includes new features that make it easy to setup push notifications in your Windows Store app using Mobile Services. For the Visual Studio 2013 version, see <a href="/en-us/develop/mobile/tutorials/get-started-with-push-dotnet">Get started with push notifications</a>.</p>
+<div class="dev-callout"><b>注</b>
+	<p>このチュートリアルでは、Visual Studio 2012 で作成された Windows ストア アプリにプッシュ通知を追加します。Visual Studio 2013 には、モバイル サービスを使用する Windows ストア アプリのプッシュ通知を簡単にセットアップできるようにする新機能が含まれています。Visual Studio 2012 バージョンについては、「<a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet">モバイル サービスでのプッシュ通知の使用</a>」を参照してください。</p>
 </div>
 
-This tutorial walks you through these basic steps to enable push notifications:
+このチュートリアルでは、プッシュ通知を有効にするための、次の基本的な手順について説明します。
 
-1. [Register your app for push notifications and configure Mobile Services]
-2. [Create the Registrations table]
-3. [Add push notifications to the app]
-4. [Update scripts to send push notifications]
-5. [Insert data to receive notifications]
+1. [プッシュ通知用のアプリケーションを登録してモバイル サービスを構成する]
+2. [Registrations テーブルを作成する]
+3. [アプリケーションにプッシュ通知を追加する]
+4. [プッシュ通知を送信するようにスクリプトを更新する]
+5. [データを挿入して通知を受け取る]
 
-This tutorial requires the following:
+このチュートリアルには、次のものが必要です。
 
 + Microsoft Visual Studio 2012 Express for Windows 8
-+ Active Windows Store account
++ アクティブな Windows ストア アカウント
 
-This tutorial is based on the [Get started with data] tutorial. Before you start this tutorial, you must first complete [this tutorial][Get started with data]. 
+このチュートリアルは、チュートリアル「[データの使用]」に基づいています。このため、このチュートリアルの前に、[このチュートリアル][Get started with data]を完了している必要があります。
 
-<h2><a name="register"></a><span class="short-header">Register your app</span>Register your app for the Windows Store</h2>
+<h2><a name="register"></a><span class="short-header">アプリケーションの登録</span>アプリケーションを Windows ストアに登録する</h2>
 
-To be able to send push notifications to Windows Store apps from Mobile Services, you must submit your app to the Windows Store. You must then configure your mobile service to integrate with WNS.
+モバイル サービスから Windows ストア アプリケーションにプッシュ通知を送信できるようにするには、アプリケーションを Windows ストアに提出する必要があります。さらに、WNS に統合するためにモバイル サービスを構成する必要があります。
 
 [WACOM.INCLUDE [mobile-services-register-windows-store-app](../includes/mobile-services-register-windows-store-app.md)]
 
-Both your mobile service and your app are now configured to work with WNS. Next, you will create a new table to store registrations.
+これで、WNS と連携するようにモバイル サービスとアプリケーションが構成されました。次に、登録を格納するための新しいテーブルを作成します。
 
-## <a name="create-table"></a>Create a new table
+## <a name="create-table"></a>新しいテーブルを作成する
 
 [WACOM.INCLUDE [mobile-services-create-new-push-table](../includes/mobile-services-create-new-push-table.md)]
 
-<h2><a name="add-push"></a><span class="short-header">Add push notifications</span>Add push notifications to your app</h2>
+<h2><a name="add-push"></a><span class="short-header">プッシュ通知の追加</span>アプリケーションにプッシュ通知を追加する</h2>
 
-1. Open the project file MainPage.xaml.cs and add the following code that creates a new **Registrations** class:
+1. MainPage.xaml.cs プロジェクト ファイルを開き、次に示す新しい **Registrations** クラスを作成するコードを追加します。
 
 	    public class Registrations
 	    {
@@ -59,11 +59,11 @@ Both your mobile service and your app are now configured to work with WNS. Next,
 	
 	The Handle property is used to store the channel URI.
 
-2. Open the file App.xaml.cs and add the following using statement:
+2. App.xaml.cs ファイルを開き、次の using ステートメントを追加します。
 
         using Windows.Networking.PushNotifications;
 
-3. Add the following to App.xaml.cs:
+3. 次のコードを App.xaml.cs に追加します。
 	
         private async void AcquirePushChannel()
 	    {
@@ -75,29 +75,29 @@ Both your mobile service and your app are now configured to work with WNS. Next,
 	       await registrationsTable.InsertAsync(registration);
         }
 
-     This code inserts the current channel into the Registrations table.
+     このコードでは、現在のチャネルが Registrations テーブルに挿入されます。
     
-4. At the top of the **OnLaunched** event handler in App.xaml.cs, add the following call to the new **AcquirePushChannel** method:
+4. App.xaml.cs 内で、**OnLaunched** イベント ハンドラーの先頭に、次に示す新しい **AcquirePushChannel** メソッドへの呼び出しを追加します。
 
         AcquirePushChannel();
 
-   This guarantees that the **CurrentChannel** property is initialized each time the application is launched.
+   これにより、アプリケーションが開始されるたびに必ず **CurrentChannel** プロパティが初期化されます。
 		
-5. Open the Package.appxmanifest file and make sure that in the **Application UI** tab, **Toast capable** is set to **Yes**.
+5. Package.appxmanifest ファイルを開き、**[アプリケーション UI]** タブで **[トースト対応]** が **[はい]** に設定されていることを確認します。
 
    	![][15]
 
-   	This makes sure that your app can raise toast notifications. 
+   	これにより、アプリケーションでトースト通知の使用が有効になります。
 
-<h2><a name="update-scripts"></a><span class="short-header">Update the insert script</span>Update the registered insert scripts in the Management Portal</h2>
+<h2><a name="update-scripts"></a><span class="short-header">挿入スクリプトの更新</span>管理ポータルで登録されている挿入スクリプトを更新する</h2>
 
 [WACOM.INCLUDE [mobile-services-update-registrations-script](../includes/mobile-services-update-registrations-script.md)]
 
-4. Click **TodoItem**, click **Script** and select **Insert**. 
+4. **[TodoItem]** をクリックし、**[スクリプト]** タブをクリックして、**[挿入]** を選択します。
 
    	![][5]
 
-5. Replace the insert function with the following code, and then click **Save**:
+5. insert 関数を次のコードに置き換え、**[保存]** をクリックします。
 
 	    function insert(item, user, request) {
     	    request.execute({
@@ -125,61 +125,61 @@ Both your mobile service and your app are now configured to work with WNS. Next,
     	    }
 	    }
 
-    This insert script sends a push notification (with the text of the inserted item) to all channels stored in the **Registrations** table.
+    この insert スクリプトでは、**Registrations** テーブルに格納されているすべてのチャネルにプッシュ通知が (挿入された項目のテキストと共に) 送信されます。
 
-<h2><a name="test"></a><span class="short-header">Test the app</span>Test push notifications in your app</h2>
+<h2><a name="test"></a><span class="short-header">アプリケーションのテスト</span>アプリケーションでプッシュ通知をテストする</h2>
 
-1. In Visual Studio, press the F5 key to run the app.
+1. Visual Studio で、F5 キーを押してアプリケーションを実行します。
 
-2. In the app, type text in **Insert a TodoItem**, and then click **Save**.
+2. アプリケーションで、**[Insert a TodoItem]** にテキストを入力し、**[Save]** をクリックします。
 
    	![][13]
 
-   	Note that after the insert completes, the app receives a push notification from WNS.
+   	挿入が完了すると、アプリケーションは、WNS からプッシュ通知を受け取ります。
 
    	![][14]
 
-## <a name="next-steps"> </a>Next steps
+## <a name="next-steps"> </a>次のステップ
 
-This tutorial demonstrates the basic push notification functionality provided by Mobile Services. If your app requires more advanced functionalities, such as sending cross-platform notifications, subscription-based routing, or very large volumes, consider using Azure Notification Hubs with your mobile service. For more information, see one of the following Notification Hubs topics:
+このチュートリアルでは、モバイル サービスに用意されている基本的なプッシュ通知機能を示します。より高度な機能 (たとえば、クロスプラットフォーム通知の送信、サブスクリプション ベースのルーティング、大ボリューム) を必要とする場合は、モバイル サービスで Azure 通知ハブを使用することを検討してください。詳細については、通知ハブに関する次のトピックのいずれかを参照してください。
 
-+ [Get started with Notification Hubs]
-  <br/>Learn how to leverage Notification Hubs in your Windows Store app.
++ [通知ハブの使用]
+  <br/>Windows ストア アプリで通知ハブを活用する方法について説明します。
 
-+ [What are Notification Hubs?]
-	<br/>Learn how to create and push notifications to users on multiple platforms.
++ [通知ハブとは]
+	<br/>プッシュ通知を作成して複数のプラットフォームのユーザーにプッシュ通知を送信する方法について説明します。
 
-+ [Send notifications to subscribers]
-	<br/>Learn how users can register and receive push notifications for categories they're interested in.
++ [登録者への通知の送信]
+	<br/>ユーザーが興味のあるカテゴリに関してプッシュ通知を登録して、プッシュ通知を受信できるようにする方法について説明します。
 
-+ [Send notifications to users]
-	<br/>Learn how to send push notifications from a Mobile Service to specific users on any device.
++ [ユーザーへの通知の送信]
+	<br/>モバイル サービスから任意のデバイスを使用している特定のユーザーにプッシュ通知を送信する方法について説明します。
 
-+ [Send cross-platform notifications to users]
-	<br/>Learn how to use templates to send push notifications from a Mobile Service, without having to craft platform-specific payloads in your back-end.
++ [ユーザーへのクロスプラットフォーム通知の送信]
+	<br/>テンプレートを使用して、バックエンドでプラットフォームに固有のペイロードを作成する必要なくモバイル サービスからプッシュ通知を送信する方法について説明します。
 
-Consider finding out more about the following Mobile Services topics:
+次のモバイル サービスのトピックの詳細を確認することをお勧めします。
 
-* [Get started with data]
-  <br/>Learn more about storing and querying data using Mobile Services.
+* [データの使用]
+  <br/>モバイル サービスを使用してデータの格納およびクエリを実行する方法について説明します。
 
-* [Get started with authentication]
-  <br/>Learn how to authenticate users of your app with Windows Account.
+* [認証の使用]
+  <br/>Windows アカウントを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [Mobile Services server script reference]
-  <br/>Learn more about registering and using server scripts.
+* [モバイル サービスのサーバー スクリプト リファレンス]
+  <br/>サーバー スクリプトの登録および使用について説明します。
 
-* [Mobile Services .NET How-to Conceptual Reference]
-  <br/>Learn more about how to use Mobile Services with .NET. 
+* [モバイル サービス .NET の使用方法の概念リファレンス]
+  <br/>.NET でモバイル サービスを使用する方法について説明します
 
 
 <!-- Anchors. -->
-[Register your app for push notifications and configure Mobile Services]: #register
-[Create the Registrations table]: #create-table
-[Update scripts to send push notifications]: #update-scripts
-[Add push notifications to the app]: #add-push
-[Insert data to receive notifications]: #test
-[Next Steps]:#next-steps
+[プッシュ通知用のアプリケーションを登録してモバイル サービスを構成する]: #register
+[Registrations テーブルを作成する]: #create-table
+[プッシュ通知を送信するようにスクリプトを更新する]: #update-scripts
+[アプリケーションにプッシュ通知を追加する]: #add-push
+[データを挿入して通知を受け取る]: #test
+[次のステップ]:#next-steps
 
 <!-- Images. -->
 
@@ -202,22 +202,23 @@ Consider finding out more about the following Mobile Services topics:
 
 
 <!-- URLs. -->
-[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-dotnet
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet
-[Get started with push notifications]: ../tutorials/mobile-services-get-started-with-push-dotnet.md
-[Push notifications to app users]: ../tutorials/mobile-services-push-notifications-to-app-users-dotnet.md
-[Authorize users with scripts]: ../tutorials/mobile-services-authorize-users-dotnet.md
-[JavaScript and HTML]: ../tutorials/mobile-services-get-started-with-push-js.md
+[アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet
+[プッシュ通知の使用]: ../tutorials/mobile-services-get-started-with-push-dotnet.md
+[アプリケーション ユーザーへのプッシュ通知]: ../tutorials/mobile-services-push-notifications-to-app-users-dotnet.md
+[スクリプトを使用したユーザーの認証]: ../tutorials/mobile-services-authorize-users-dotnet.md
+[JavaScript と HTML]: ../tutorials/mobile-services-get-started-with-push-js.md
 
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[Mobile Services .NET How-to Conceptual Reference]: /en-us/develop/mobile/how-to-guides/work-with-net-client-library/
-[Get started with Notification Hubs]: /en-us/manage/services/notification-hubs/getting-started-windows-dotnet/
-[What are Notification Hubs?]: /en-us/develop/net/how-to-guides/service-bus-notification-hubs/
-[Send notifications to subscribers]: /en-us/manage/services/notification-hubs/breaking-news-dotnet/
-[Send notifications to users]: /en-us/manage/services/notification-hubs/notify-users/
-[Send cross-platform notifications to users]: /en-us/manage/services/notification-hubs/notify-users-xplat-mobile-services/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
+[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
+[wns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+[モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library/
+[通知ハブの使用]: /ja-jp/manage/services/notification-hubs/getting-started-windows-dotnet/
+[通知ハブとは]: /ja-jp/develop/net/how-to-guides/service-bus-notification-hubs/
+[登録者への通知の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet/
+[ユーザーへの通知の送信]: /ja-jp/manage/services/notification-hubs/notify-users/
+[ユーザーへのクロスプラットフォーム通知の送信]: /ja-jp/manage/services/notification-hubs/notify-users-xplat-mobile-services/
+

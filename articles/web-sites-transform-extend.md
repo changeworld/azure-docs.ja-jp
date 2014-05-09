@@ -1,26 +1,26 @@
-<properties linkid="dev-net-transform-extend-site" urlDisplayName="Service Bus Topics" pageTitle="Transform and extend your site" metaKeywords="none" description="TBD" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="timamm" writer="timamm" editor="mollybos" manager="paulettm" title="Transform and extend your site"/>
+<properties linkid="dev-net-transform-extend-site" urlDisplayName=" サービス バス トピック" pageTitle="サイトの変換と拡張" metaKeywords="なし" description="TBD" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="timamm" writer="timamm" editor="mollybos" manager="paulettm" title="サイトの変換と拡張"/>
 
-# Transform and extend your site
+# サイトの変換と拡張
 
-By using [XML Document Transformation](http://msdn.microsoft.com/en-us/library/dd465326.aspx) (XDT) declarations, you can transform the [ApplicationHost.config](http://www.iis.net/learn/get-started/planning-your-iis-architecture/introduction-to-applicationhostconfig) file in your Windows Azure web sites. You can also use XDT declarations to add private site extensions to enable custom site administration actions. This article includes a sample PHP Manager site extension that enables management of PHP settings through a web interface.
+[Visual Studio を使用する Web アプリケーション プロジェクト配置の Web.config 変換構文](http://msdn.microsoft.com/ja-jp/library/dd465326.aspx) で説明されている XML ドキュメント変換 (XDT) の宣言を使用して、Azure web サイト内の [ApplicationHost.config](http://www.iis.net/learn/get-started/planning-your-iis-architecture/introduction-to-applicationhostconfig) ファイルを変換することができます。また、XDT 宣言を使用して、プライベート サイト拡張機能を追加し、カスタム サイト管理アクションを有効にすることもできます。この記事には、Web インターフェイスを使用して PHP 設定の管理を有効にする、サンプルの PHP Manager サイト拡張機能が含まれています。
 
 
 <!-- MINI TOC -->
 
-* [Transform the Site Configuration in ApplicationHost.config](#transform)
-* [Extend your Site](#extend)
-	* [Overview of private site extensions](#overview)
-	* [Site extension example: PHP Manager](#SiteSample)
-		* [The PHP Manager web app](#PHPwebapp)
-		* [The applicationHost.xdt file](#XDT)
-	* [Site extension deployment](#deploy)
+* [ApplicationHost.config 内でのサイト構成の変換](#transform)
+* [サイトの拡張](#extend)
+	* [プライベート サイト拡張機能の概要](#overview)
+	* [サイト拡張機能の例: PHP Manager](#SiteSample)
+		* [PHP Manager Web アプリケーション](#PHPwebapp)
+		* [applicationHost.xdt ファイル](#XDT)
+	* [サイト拡張機能のデプロイ](#deploy)
 
-<h2><a id="transform"></a>Transform the Site Configuration in ApplicationHost.config</h2>
-The Azure Web Sites platform provides flexibility and control for site configuration. Although the standard IIS ApplicationHost.config configuration file is not available for direct editing in Windows Azure Web Sites, the platform supports a declarative ApplicationHost.config transform model based on XML Document Transformation (XDT).
+<h2><a id="transform"></a>ApplicationHost.config 内でのサイト構成の変換</h2>
+Azure の Web サイト プラットフォームにより、サイト構成の柔軟性と制御を実現できます。IIS の標準的な ApplicationHost.config 構成ファイルは、Azure の Web サイト内で直接編集することはできませんが、プラットフォームは XML ドキュメント変換 (XDT) に基づく宣言型の ApplicationHost.config 変換モデルをサポートします。
 
-To leverage this transform functionality, you create an ApplicationHost.xdt file with XDT content and place under the site root. Then, on the **Configure** page in the Windows Azure Portal, you set the `WEBSITE_PRIVATE_EXTENSIONS` app setting to 1 (you may need to restart the site). 
+この変換機能を利用するには、XDT の内容を使用して ApplicationHost.xdt ファイルを作成し、サイトのルートの直下に配置します。次に、Azure ポータルの **[構成]** ページで、`WEBSITE_PRIVATE_EXTENSIONS` アプリケーション設定を 1 に設定します (サイトを再起動することが必要になる場合があります)。
 
-The following applicationHost.xdt sample shows how to add a new custom environment variable to a site that uses PHP 5.4.
+PHP 5.4 を使用するサイトに新しいカスタム環境変数を追加する方法を、次の applicationHost.xdt サンプルに示します。
 
 	<?xml version="1.0"?> 
 	<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform"> 
@@ -36,44 +36,44 @@ The following applicationHost.xdt sample shows how to add a new custom environme
 	</configuration> 
 
  
-A log file with transform status and details is available from the FTP root under LogFiles\Transform.
+変換ステータスと詳細を記録したログ ファイルは、FTP ルートの LogFiles\Transform で利用できます。
 
-For additional samples, see [https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions).
+その他のサンプルについては、[https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) を参照してください。
 
-**Note**<br />
-Elements from the list of modules under `system.webServer` cannot be removed or reordered, but additions to the list are possible. 
+**メモ**<br />
+`system.webServer` の下にあるモジュールの一覧に所属している要素の削除や並べ替えは実行できませんが、この一覧への追加は可能です。
 
 
-<h2><a id="extend"></a>Extend your Site</h2>
-<h3><a id="overview"></a>Overview of private site extensions</h3>
-Azure Web Sites supports site extensions as an extensibility point for site administrative actions. In fact, some Azure Web Sites platform features are implemented as pre-installed site extensions. While the pre-installed platform extensions cannot be modified, you can create and configure private extensions for your own sites. This functionality also relies on XDT declarations. The key steps for creating a private site extension are the following:
+<h2><a id="extend"></a>サイトの拡張</h2>
+<h3><a id="overview"></a>プライベート サイト拡張機能の概要</h3>
+Azure Web サイトでは、サイト管理アクションの機能拡張ポイントとして、サイト拡張機能をサポートしています。実際、Azure Web サイト プラットフォームの一部の機能は、事前インストールされたサイト拡張機能として実装されています。事前インストールされたプラットフォーム拡張機能を変更することはできませんが、独自サイトでプライベート拡張機能を作成および構成することができます。この機能も、XDT 宣言に依存します。プライベート サイト拡張機能を作成するための主要な手順を次に示します。
 
-1. Site extension **content**: create any web application supported by Azure Web Sites
-2. Site extension **declaration**: create an ApplicationHost.xdt file
-3. Site extension **deployment**: place content in the SiteExtensions folder under `root`
-4.  Site extension **enablement**: set the `WEBSITE_PRIVATE_EXTENSIONS` app setting to 1
+1. サイト拡張機能**コンテンツ**: Azure の Web サイトでサポートされているあらゆる Web アプリケーションを作成します
+2. サイト拡張機能の**宣言**: ApplicationHost.xdt ファイルを作成します
+3. サイト拡張機能の**デプロイ**:  `ルート`の直下にある SiteExtensions フォルダー内にコンテンツを配置します
+4.  サイト拡張機能の**有効化**: `WEBSITE_PRIVATE_EXTENSIONS` アプリケーション設定を 1 に設定します
 
-Internal links for the web application should point to a path relative to the application path specified in the ApplicationHost.xdt file. Any change to the ApplicationHost.xdt file requires a site recycle. 
+Web アプリケーションに対する内部リンクは、ApplicationHost.xdt ファイル内で指定したアプリケーション パスを基準とする相対パスを指す必要があります。ApplicationHost.xdt ファイルに対してどのような変更を加えた場合でも、サイトのリサイクル、つまり停止と再起動が必要です。
 
-**Note**: Additional information for these key elements is available at [https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions). A detailed example is included to illustrate the steps for creating and enabling a private site extension. The source code for the PHP Manager example that follows can be downloaded from [https://github.com/projectkudu/PHPManager](https://github.com/projectkudu/PHPManager).
+**メモ**: これらの主要な要素の詳細については、[https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) を参照してください。プライベート サイト拡張機能を作成して有効にする手順を示す、詳細な例が掲載されています。その方針に従う PHP Manager のサンプルに対応するソース コードは、[https://github.com/projectkudu/PHPManager](https://github.com/projectkudu/PHPManager) からダウンロードできます。
 
-<h3><a id="SiteSample"></a>Site extension example: PHP Manager</h3>
+<h3><a id="SiteSample"></a>サイト拡張機能の例: PHP Manager</h3>
 
-PHP Manager is a site extension that allows site administrators to easily view and configure their PHP settings using a web interface instead of having to modify PHP .ini files directly. Common configuration files for PHP include the php.ini file located under Program Files and the .user.ini file located in the root folder of your site. Since the php.ini file is not directly editable on the Azure Web Sites platform, the PHP Manager extension uses the .user.ini file to apply setting changes.
+PHP Manager は、PHP の .ini ファイルを直接変更する代わりに、Web インターフェイスを使用して PHP 設定を簡単に表示および構成するためにサイト管理者が使用できるサイト拡張機能です。PHP 用の一般的な構成ファイルに該当するのは、Program Files の下にある php.ini ファイルと、サイトのルート フォルダーにある user.ini ファイルです。Azure の Web サイトのプラットフォーム上で php.ini ファイルを直接編集することはできないため、PHP Manager 拡張機能は user.ini ファイルを使用して設定の変更を適用します。
 
-<h4><a id="PHPwebapp"></a>The PHP Manager web app</h4>
+<h4><a id="PHPwebapp"></a>PHP Manager Web アプリケーション</h4>
 	
-The following is the home page of the PHP Manager web site:
+PHP Manager Web サイトのホーム ページを次に示します。
 
 ![TransformSitePHPUI][TransformSitePHPUI]
 
-As you can see, a site extension is just like a regular web application, but with an additional ApplicationHost.xdt file placed in the root folder of the site (more details about the ApplicationHost.xdt file are available in the next section of this article).
+ここからわかるように、サイト拡張機能は通常の Web アプリケーションに似ていますが、サイトのルート フォルダーに追加の ApplicationHost.xdt ファイルが配置されています (この記事の次のセクションには、ApplicationHost.xdt ファイルに関する詳細が掲載されています)。
 
-The PHP Manager extension was created using the Visual Studio ASP.NET MVC 4 Web Application template. The following view from Solution Explorer shows the structure of the PHP Manager site extension.
+PHP Manager 拡張機能は、Visual Studio ASP.NET MVC 4 Web アプリケーション テンプレートを使用して作成されたものです。ソリューション エクスプローラーの次のビューに、PHP Manager サイト拡張機能の構造を示します。
 
 ![TransformSiteSolEx][TransformSiteSolEx]
 
-The only special logic needed for file I/O is to indicate where the wwwroot directory of the site is located. As the following code example shows, the environment variable "HOME" indicates the site root path, and the wwwroot path can be constructed by appending "site\wwwroot":
+ファイル I/O で必要とされる唯一の特殊なロジックは、サイトの wwwroot ディレクトリが配置されている場所を示すことです。次のコード例に示すように、環境変数 "HOME" はサイトのルート パスを示しており、"site\wwwroot" を追加すると wwwroot パスを作成することができます。
 
 
 	/// <summary>
@@ -91,23 +91,23 @@ The only special logic needed for file I/O is to indicate where the wwwroot dire
 	} 
 
 
-After you have the directory path, you can use regular file I/O operations to read and write to files.
+ディレクトリ パスを作成した後、ファイルを読み書きする通常のファイル I/O 操作を使用できます。
 
-One point of caution with site extensions regards the handling of internal links.  If you have any links in your HTML files that give absolute paths to internal links on your site, you must ensure those links are prepended with your extension name as your site root. This is needed because the site root for your extension is now "/`[your-extension-name]`/" rather than being just "/", so any internal links must be updated accordingly. For example, suppose your code includes a link to the following: 
+サイト拡張機能に関して注意する 1 つの点は、内部リンクの処理に関係しています。サイト上の内部リンクに対応する絶対パスを指定した HTML ファイル内で任意のリンクを使用している場合は、それらのリンクの先頭に、サイトのルートとして拡張機能名を追加する必要があります。拡張機能にとってサイトのルートは、"/" のみではなく、`[拡張機能名]`になったため、このような指定が必要です。したがって、すべての内部リンクも同様に更新する必要があります。たとえば、コード内に次のリンクが含まれているとします。
 
-`"<a href="/Home/Settings">PHP Settings</a>"`
+`"<a href="/Home/Settings">PHP 設定</a>"`
 
-When the link is part of a site extension, the link must be in the following form:
+このリンクがサイト拡張機能の一部である場合は、リンクを次の形式にする必要があります。
 
-`"<a href="/[your-site-name]/Home/Settings">Settings</a>"` 
+`"<a href="/[your-site-name]/Home/Settings">設定</a>"`
 
-You can work around this requirement by either using only relative paths within your web site, or in the case of ASP.NET web sites, by using the `@Html.ActionLink` method which creates the appropriate links for you.
+Web サイト内で相対パスのみを使用するか、ASP.NET Web サイトの場合は適切なリンクを自動的に作成する `@Html.ActionLink` メソッドを使用する方法により、この要件を回避できます。
 
-<h4><a id="XDT"></a>The applicationHost.xdt file</h4>
+<h4><a id="XDT"></a>applicationHost.xdt ファイル</h4>
 
-The code for your site extension goes under %HOME%\SiteExtensions\[your-extension-name]. We'll call this the extension root.  
+サイト拡張機能に対応するコードは、%HOME%\SiteExtensions\[拡張機能名] の下に配置されます。これを、拡張機能ルートと呼びます。
 
-To register your site extension with the applicationHost.config file, you need to place a file called ApplicationHost.xdt in the extension root. The contents of the ApplicationHost.xdt file should be as follows:
+開発したサイト拡張機能を applicationHost.config ファイルに登録するには、ApplicationHost.xdt という名前のファイルを拡張機能のルートに配置する必要があります。ApplicationHost.xdt ファイルの内容を次のようにする必要があります。
 
 	<?xml version="1.0"?>
 	<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
@@ -124,9 +124,9 @@ To register your site extension with the applicationHost.config file, you need t
   		</system.applicationHost>
 	</configuration>
 
-The name you select as your extension name should have the same name as your extension root folder.
+拡張機能名として選択する名前は、拡張機能のルート フォルダーと同じ名前にする必要があります。
 
-This has the effect of adding a new application path to the `system.applicationHost` sites list under the SCM site. The SCM site is a site administration end point with specific access credentials. It has the URL `https://[your-site-name].scm.azurewebsites.net`.  
+この操作により、SCM サイトの下にある `system.applicationHost` サイト一覧に対して、新しいアプリケーション パスを追加する効果が得られます。SCM サイトは、特定のアクセス資格情報を持つサイト管理エンドポイントです。URL は、`https://[サイト名].scm.azurewebsites.net` です。
 
 	<system.applicationHost>
   		...
@@ -150,30 +150,31 @@ This has the effect of adding a new application path to the `system.applicationH
 	  ...
 	</system.applicationHost>
 
-<h3><a id="deploy"></a>Site extension deployment</h3>
+<h3><a id="deploy"></a>サイト拡張機能のデプロイ</h3>
 
-To install your site extension, you can use FTP to copy all the files of your web app to the `\SiteExtensions\[your-extension-name]` folder of the site on which you want to install the extension.  Be sure to copy the ApplicationHost.xdt file to this location as well.
+サイト拡張機能をインストールするために、FTP を使用して、拡張機能のインストール先となるサイトの`\SiteExtensions\[拡張機能名]` フォルダーに Web アプリケーションのすべてのファイルをコピーすることができます。この場所に ApplicationHost.xdt ファイルもコピーしてください。
 
-Next, in the Windows Azure Web Sites Portal, go to the **Configure** tab for the web site that has your extension. In the **app settings** section, add the key `WEBSITE_PRIVATE_EXTENSIONS` and give it a value of `1`.
+次に、Azure の Web サイト ポータルで、拡張機能のインストール先である Web サイトに対応する **[構成]** タブに移動します。**[アプリケーション設定]** セクションで、`WEBSITE_PRIVATE_EXTENSIONS` キーを追加し、`1` という値を指定します。
 
 ![TransformSiteappSettings][TransformSiteappSettings]
 
-Finally, in the Windows Azure Portal, restart your web site to enable your extension.
+最後に、Azure ポータルで Web サイトを再起動し、拡張機能を有効にします。
 
 ![TransformSiteRestart][TransformSiteRestart]
 
-You should be able to see your site extension at:
+次の場所で、サイト拡張機能が表示されます。
 
 
-`https://[your-site-name].scm.azurewebsites.net/[your-extension-name]` 
+`https://[サイト名].scm.azurewebsites.net/[拡張名]`
 
-Note that the URL looks just like the URL for your site, except that it uses HTTPS and contains ".scm". 
+HTTPS が使用され、".scm" が含まれていることを除き、開発するサイトの URL に似た URL を使用することに注意してください。
 
 <!-- IMAGES -->
 [TransformSitePHPUI]: ./media/web-sites-transform-extend/TransformSitePHPUI.png
 [TransformSiteSolEx]: ./media/web-sites-transform-extend/TransformSiteSolEx.png
 [TransformSiteappSettings]: ./media/web-sites-transform-extend/TransformSiteappSettings.png
 [TransformSiteRestart]: ./media/web-sites-transform-extend/TransformSiteRestart.png
+
 
 
 

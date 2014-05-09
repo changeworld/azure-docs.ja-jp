@@ -1,56 +1,57 @@
-<properties linkid="mobile-services-call-custom-api-wp8" urlDisplayName="Call a custom API from the client" pageTitle="Call a custom API from a Windows Phone client - Mobile Services" metaKeywords="" description="Learn how to define a custom API and then call it from a Windows Phone app that use Azure Mobile Services." metaCanonical="" services="" documentationCenter="" title="Call a custom API from the client" authors="glenga" solutions="" manager="" editor="" />
+<properties linkid="mobile-services-call-custom-api-wp8" urlDisplayName="クライアントからのカスタム API 呼び出し" pageTitle="Windows Phone クライアントからのカスタム API 呼び出し - モバイル サービス" metaKeywords="" description="カスタム API を定義し、次に Azure モバイル サービスを使用する Windows Phone アプリケーションからその API を呼び出す方法について説明します。" metaCanonical="" services="" documentationCenter="" title="クライアントからのカスタム API 呼び出し" authors="glenga" solutions="" manager="" editor="" />
 
 
 
 
-# Call a custom API from the client
+# クライアントからのカスタム API 呼び出し
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/mobile-services-windows-store-dotnet-call-custom-api" title="Windows Store C#">Windows Store C#</a><a href="/en-us/documentation/articles/mobile-services-windows-store-javascript-call-custom-api" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/documentation/articles/mobile-services-windows-phone-call-custom-api" title="Windows Phone" class="current">Windows Phone</a><a href="/en-us/documentation/articles/mobile-services-ios-call-custom-api" title="iOS">iOS</a><a href="/en-us/documentation/articles/mobile-services-android-call-custom-api" title="Android">Android</a>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-call-custom-api" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/documentation/articles/mobile-services-windows-store-javascript-call-custom-api" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/documentation/articles/mobile-services-windows-phone-call-custom-api" title="Windows Phone" class="current">Windows Phone</a><a href="/ja-jp/documentation/articles/mobile-services-ios-call-custom-api" title="iOS">iOS</a><a href="/ja-jp/documentation/articles/mobile-services-android-call-custom-api" title="Android">Android</a>
 </div>
-<div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-call-custom-api" title=".NET backend">.NET backend</a> | <a href="/en-us/documentation/articles/mobile-services-windows-phone-call-custom-api"  title="JavaScript backend" class="current">JavaScript backend</a></div>
+<div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-call-custom-api" title=".NET バックエンド">.NET バックエンド</a> | <a href="/ja-jp/documentation/articles/mobile-services-windows-phone-call-custom-api"  title="JavaScript バックエンド" class="current">JavaScript バックエンド</a></div>
 
-This topic shows you how to call a custom API from a Windows Phone app. A custom API enables you to define custom endpoints that expose server functionality that does not map to an insert, update, delete, or read operation. By using a custom API, you can have more control over messaging, including reading and setting HTTP message headers and defining a message body format other than JSON.
+このトピックでは、Windows Phone アプリケーションからカスタム API を呼び出す方法について説明します。カスタム API を使用してカスタム エンドポイントを定義することにより、insert、update、delete、read のいずれの操作にも関連しないサーバー機能を公開することができます。カスタム API を使用することによって、HTTP メッセージ ヘッダーの読み取りや設定、JSON 以外のメッセージ本文形式の定義など、メッセージングをより柔軟に制御することができます。
 
-The custom API created in this topic gives you the ability to send a single POST request that sets the completed flag to `true` for all the todo items in the table. Without this custom API, the client would have to send individual requests to update the flag for each todo item in the table.
+このトピックで作成したカスタム API では、todoitem テーブル内のすべての Todo 項目の完了フラグを `true` に設定する単一の POST 要求を送信できます。このカスタム API を使用せずにこれを行う場合、クライアントは、テーブル内の各 Todo 項目について個別にフラグの更新要求を送信する必要があります。
 
-You will add this functionality to the app that you created when you completed either the [Get started with Mobile Services] or the [Get started with data] tutorial. To do this, you will complete the following steps:
+チュートリアル「[モバイル サービスの使用]」または「[データの使用]」の最後に作成したアプリケーションが、この機能の追加対象となります。次の手順を実行します。
 
-1. [Define the custom API]
-2. [Update the app to call the custom API]
-3. [Test the app] 
+1. [カスタム API を定義する]
+2. [カスタム API を呼び出すようにアプリケーションを更新する]
+3. [アプリケーションをテストする]
 
-This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete [Get started with Mobile Services] or [Get started with data]. This tutorial uses Visual Studio 2012 Express for Windows Phone.
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」または「[データの使用]」を完了している必要があります。このチュートリアルでは、Visual Studio 2012 Express for Windows Phone を使用します。
 
-## <a name="define-custom-api"></a>Define the custom API
+## <a name="define-custom-api"></a>カスタム API を定義する
 
 [WACOM.INCLUDE [mobile-services-create-custom-api](../includes/mobile-services-create-custom-api.md)]
 
 [WACOM.INCLUDE [mobile-services-windows-phone-call-custom-api](../includes/mobile-services-windows-phone-call-custom-api.md)]
 
-## Next steps
+## 次のステップ
 
-Now that you have created a custom API and called it from your Windows Phone app, consider finding out more about the following Mobile Services topics:
+以上、カスタム API を作成し、Windows Phone アプリケーションから呼び出す方法について説明しました。モバイル サービスに関連した次のトピックも参考にしてください。
 
-* [Mobile Services server script reference]
-  <br/>Learn more about creating custom APIs.
+* [モバイル サービスのサーバー スクリプト リファレンス]
+  <br/>カスタム API の作成について説明します。
 
-* [Store server scripts in source control]
-  <br/> Learn how to use the source control feature to more easily and securely develop and publish custom API script code.
+* [ソース管理へのサーバー スクリプトの保存]
+  <br/>ソース管理機能を使用して、カスタム API スクリプト コードを簡単かつ安全に開発、発行する方法について説明します。
 
 <!-- Anchors. -->
-[Define the custom API]: #define-custom-api
-[Update the app to call the custom API]: #update-app
-[Test the app]: #test-app
-[Next Steps]: #next-steps
+[カスタム API を定義する]: #define-custom-api
+[カスタム API を呼び出すようにアプリケーションを更新する]: #update-app
+[アプリケーションをテストする]: #test-app
+[次のステップ]: #next-steps
 
 <!-- Images. -->
 
 
 <!-- URLs. -->
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[Get started with Mobile Services]: /en-us/documentation/articles/mobile-services-windows-phone-get-started/
-[Get started with data]: /en-us/documentation/articles/mobile-services-windows-phone-get-started-data/
-[Get started with authentication]: /en-us/documentation/articles/mobile-services-windows-phone-get-started-users/
-[Get started with push notifications]: /en-us/documentation/articles/mobile-services-windows-phone-get-started-push/
+[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
+[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started/
+[データの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data/
+[認証の使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-users/
+[プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-push/
 
-[Store server scripts in source control]: /en-us/documentation/articles/mobile-services-store-scripts-source-control
+[ソース管理へのサーバー スクリプトの保存]: /ja-jp/documentation/articles/mobile-services-store-scripts-source-control
+

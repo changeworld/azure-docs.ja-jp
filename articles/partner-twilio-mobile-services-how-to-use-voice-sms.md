@@ -1,101 +1,101 @@
-<properties linkid="develop-mobile-tutorials-twilio-for-voice-and-sms" pageTitle="Use Twilio for Voice and SMS Capabilities | Mobile Dev Center" metaKeywords="" description="Learn how to perform common tasks using the Twilio API with Azure Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="How to use Twilio for voice and SMS capabilities from Mobile Services" authors="twilio" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-tutorials-twilio-for-voice-and-sms" pageTitle="音声および SMS 機能での Twilio の使用 | モバイル デベロッパー センター" metaKeywords="" description="Azure モバイル サービスで Twilio API を使用して一般的なタスクを実行する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="モバイル サービスから音声および SMS 機能に Twilio を使用する方法" authors="twilio" solutions="" manager="" editor="" />
 
 
-<h1>How to use Twilio for voice and SMS capabilities from Mobile Services</h1>
+<h1>モバイル サービスから音声および SMS 機能に Twilio を使用する方法</h1>
 
-This topic shows you how to perform common tasks using the Twilio API with Azure Mobile Services. In this tutorial you will learn how to create Custom API scripts that use the Twilio API to initiate a phone call and to send a Short Message Service (SMS) message. 
+このトピックでは、Azure モバイル サービスで Twilio API を使用して一般的なタスクを実行する方法について説明します。このチュートリアルでは、Twilio API を使用して通話を開始したりショート メッセージ サービス (SMS) メッセージを送信したりするカスタム API スクリプトの作成方法を学習します。
 
-<h2><a id="WhatIs"></a>What is Twilio?</h2>
-Twilio is powering the future of business communications, enabling developers to embed voice, VoIP, and messaging into applications. They virtualize all infrastructure needed in a cloud-based, global environment, exposing it through the Twilio communications API platform. Applications are simple to build and scalable. Enjoy flexibility with pay-as-you go pricing, and benefit from cloud reliability.
+<h2><a id="WhatIs"></a>Twilio とは</h2>
+Twilio は、開発者がアプリケーションに音声、VoIP、およびメッセージングを埋め込むことを可能にし、ビジネス コミュニケーションを強化していきます。必要なすべてのインフラストラクチャをクラウド ベースのグローバル環境で仮想化し、Twilio 通信 API プラットフォームを通じてそれを公開します。アプリケーションは構築しやすく、スケーラビリティも優れています。従量課金制の柔軟性と、クラウドの信頼性の利点を活用できます。
 
-**Twilio Voice** allows your applications to make and receive phone calls. **Twilio SMS** enables your applications to send and receive SMS messages. **Twilio Client** allows you to make VoIP calls from any phone, tablet, or browser and supports WebRTC.
+**Twilio Voice** を使用すると、アプリケーションで音声通話の発着信処理を行うことができます。**Twilio SMS** を使用すると、アプリケーションで SMS メッセージの送受信を行うことができます。**Twilio Client** では、任意の電話、タブレット、またはブラウザーから VoIP 通話を行うことができ、WebRTC がサポートされています。
 
-<h2><a id="Pricing"></a>Twilio Pricing and Special Offers</h2>
-Azure customers receive a [special offer][special_offer]: complimentary $10 of Twilio Credit when you upgrade your Twilio Account. This Twilio Credit can be applied to any Twilio usage ($10 credit equivalent to sending as many as 1,000 SMS messages or receiving up to 1000 inbound Voice minutes, depending on the location of your phone number and message or call destination). Redeem this Twilio credit and get started at [ahoy.twilio.com/azure][special_offer].
+<h2><a id="Pricing"></a>Twilio の料金および特別プラン</h2>
+Azure ユーザーには、[特別プラン][special_offer]として、Twilio アカウントをアップグレードする際に、$10 の Twilio クレジットが提供されます。この Twilio クレジットは、任意の Twilio 使用に対して利用できます。$10 のクレジットは、約 1,000 件の SMS メッセージの送信、または最大で 1,000 分の受信音声に相当します (ご利用の電話番号の場所と、メッセージまたは通話の相手の場所に応じて異なります)。この Twilio クレジットを利用するには、[ahoy.twilio.com/azure][special_offer] にアクセスします。
 
-Twilio is a pay-as-you-go service. There are no set-up fees and you can close your account at any time. You can find more details at [Twilio Pricing][twilio_pricing].  
+Twilio は、従量課金制サービスです。セットアップ料金は不要で、いつでもアカウントを閉じることができます。詳細については、[Twilio の料金のページ][twilio_pricing]をご覧ください。
 
-<h2><a id="Concepts"></a>Concepts</h2>
-The Twilio API is a RESTful API that provides voice and SMS functionality for applications. Client libraries are available in multiple languages; for a list, see [Twilio API Libraries] [twilio_libraries].  Additional tutorials are available for using the Twilio any Azure application written in [.NET][azure_twilio_howto_dotnet], [node.js][azure_twilio_howto_node], [Java][azure_twilio_howto_java], [PHP][azure_twilio_howto_php], [Python][azure_twilio_howto_python] or [Ruby][azure_twilio_howto_ruby].
+<h2><a id="Concepts"></a>概念</h2>
+Twilio API は、アプリケーションに音声および SMS 機能を提供する REST ベースの API です。クライアント ライブラリはさまざまな言語で用意されています。言語の一覧については、「[Twilio API Libraries (Twilio API ライブラリ)] [twilio_libraries]」を参照してください。各種の言語で記述された Azure アプリケーションで Twilio を使用するための追加のチュートリアルも用意されています。記述言語は、[.NET][azure_twilio_howto_dotnet]、[node.js][azure_twilio_howto_node]、[Java][azure_twilio_howto_java]、[PHP][azure_twilio_howto_php]、[Python][azure_twilio_howto_python]、[Ruby][azure_twilio_howto_ruby] です。
 
-Key aspects of the Twilio API are Twilio verbs and Twilio Markup Language (TwiML).
+Twilio API の主要な側面として、Twilio 動詞と Twilio Markup Language (TwiML) が挙げられます。
 
-<h3><a id="Verbs"></a>Twilio verbs</h3>
-The API makes use of Twilio verbs; for example, the **&lt;Say&gt;** verb instructs Twilio to audibly deliver a message on a call. 
+<h3><a id="Verbs"></a>Twilio 動詞</h3>
+API では、Twilio 動詞を使用します。たとえば、**&lt;Say&gt;** 動詞は、メッセージを音声で返すことを Twilio に指示します。
 
-The following is a list of Twilio verbs.  Learn about the other verbs and capabilities via [Twilio Markup Language documentation](http://www.twilio.com/docs/api/twiml).
+Twilio 動詞の一覧を次に示します。他の動詞と機能については、[Twilio Markup Language のドキュメント](http://www.twilio.com/docs/api/twiml)を参照してください。
 
-* **&lt;Dial&gt;**: Connects the caller to another phone.
-* **&lt;Gather&gt;**: Collects numeric digits entered on the telephone keypad.
-* **&lt;Hangup&gt;**: Ends a call.
-* **&lt;Play&gt;**: Plays an audio file.
-* **&lt;Pause&gt;**: Waits silently for a specified number of seconds.
-* **&lt;Record&gt;**: Records the caller's voice and returns a URL of a file that contains the recording.
-* **&lt;Redirect&gt;**: Transfers control of a call or SMS to the TwiML at a different URL.
-* **&lt;Reject&gt;**: Rejects an incoming call to your Twilio number without billing you
-* **&lt;Say&gt;**: Converts text to speech that is made on a call.
-* **&lt;Sms&gt;**: Sends an SMS message.
+* **&lt;Dial&gt;**: 呼び出し元を別の電話に接続します。
+* **&lt;Gather&gt;**: 電話キーパッドに入力された数字を収集します。
+* **&lt;Hangup&gt;**: 通話を終了します。
+* **&lt;Play&gt;**: 音声ファイルを再生します。
+* **&lt;Pause&gt;**: 何も行わずに指定された秒数待機します。
+* **&lt;Record&gt;**: 呼び出し元の声を録音し、声が録音されたファイルの URL を返します。
+* **&lt;Redirect&gt;**: 通話または SMS の制御を別の URL の TwiML に転送します。
+* **&lt;Reject&gt;**: Twilio 番号への着信通話を拒否します。課金はされません。
+* **&lt;Say&gt;**: テキストを音声に変換して返します。
+* **&lt;Sms&gt;**: SMS メッセージを送信します。
 
 <h3> <a id="TwiML"></a>TwiML</h3>
-TwiML is a set of XML-based instructions based on the Twilio verbs that inform Twilio of how to process a call or SMS.
+TwiML は、Twilio 動詞に基づいた XML ベースの命令のセットで、通話または SMS をどのように処理するかを Twilio に通知します。
 
-As an example, the following TwiML would convert the text **Hello World** to speech.
+たとえば、次の TwiML は、テキスト **Hello World** を音声に変換します。
 
     <?xml version="1.0" encoding="UTF-8" ?>
     <Response>
        <Say>Hello World</Say>
     </Response>
 
-When your application calls the Twilio API, one of the API parameters is the URL that returns the TwiML response. For development purposes, you can use Twilio-provided URLs to provide the TwiML responses used by your applications. You could also host your own URLs to produce the TwiML responses, and another option is to use the **TwiMLResponse** object.
+アプリケーションで Twilio API を呼び出す場合は、API パラメーターの 1 つで TwiML 応答を返す URL を指定します。開発用には、Twilio から提供される URL を使用して、アプリケーションで使用する TwiML 応答を提供することができます。また、独自に URL をホストして、TwiML 応答を生成することもできます。別のオプションとして、**TwiMLResponse** オブジェクトを使用することもできます。
 
-For more information about Twilio verbs, their attributes, and TwiML, see [TwiML][twiml]. For additional information about the Twilio API, see [Twilio API][twilio_api].
+Twilio の動詞と属性、および TwiML の詳細については、[TwiML に関するページ][twiml]を参照してください。Twilio API の詳細については、[Twilio API に関するページ][twilio_api]を参照してください。
 
-<h2><a id="CreateAccount"></a>Create a Twilio Account</h2>
-When you're ready to get a Twilio account, sign up at [Try Twilio][try_twilio]. You can start with a free account, and upgrade your account later.
+<h2><a id="CreateAccount"></a>Twilio アカウントを作成する</h2>
+Twilio アカウントを取得する準備ができたら、[Twilio のサインアップ ページ][try_twilio]でサインアップします。無料アカウントで始め、後でアカウントをアップグレードすることができます。
 
-When you sign up for a Twilio account, you'll receive an account ID and an authentication token. Both will be needed to make Twilio API calls. To prevent unauthorized access to your account, keep your authentication token secure. Your account ID and authentication token are viewable at the [Twilio account page][twilio_account], in the fields labeled **ACCOUNT SID** and **AUTH TOKEN**, respectively.
+Twilio アカウントにサインアップすると、アカウント ID と認証トークンが発行されます。Twilio API を呼び出すには、この両方が必要になります。自分のアカウントが不正にアクセスされないように、認証トークンを安全に保管してください。アカウント ID と認証トークンは、[Twilio アカウント ページ][twilio_account]の **[ACCOUNT SID]** フィールドと **[AUTH TOKEN]** フィールドでそれぞれ確認できます。
 
-<h2><a id="VerifyPhoneNumbers"></a>Verify Phone Numbers</h2>
-Various phone numbers need to be verified with Twilio for your account. For example, if you want to place outbound phone calls, the phone number must be verified as an outbound caller ID with Twilio. Similarly, if you want a phone number to receive SMS messages, the receiving phone number must be verified with Twilio. For information on how to verify a phone number, see [Manage numbers] [verify_phone]. Some of the code below relies on phone numbers that you will need to verify with Twilio.
+<h2><a id="VerifyPhoneNumbers"></a>電話番号を確認する</h2>
+アカウントに対して、さまざまな電話番号を Twilio で確認する必要があります。たとえば、電話を発信する場合は、電話番号を発信元 ID として Twilio で確認する必要があります。同様に、電話番号を使用して SMS メッセージを受信する場合は、受信に使用する電話番号を Twilio で確認する必要があります。電話番号を確認する方法の詳細については、「[Manage numbers (番号の管理)] [verify_phone]」を参照してください。次に示すコードの一部は、Twilio で確認する必要がある電話番号に依存しています。
 
-As an alternative to using an existing number for your applications, you can purchase a Twilio phone number. For information about purchasing a Twilio phone number, see [Twilio Phone Numbers Help](https://www.twilio.com/help/faq/phone-numbers).
+アプリケーションで既存の番号を使用する代わりに、Twilio 電話番号を購入することができます。Twilio 電話番号の購入については、[Twilio 電話番号のヘルプに関するページ](https://www.twilio.com/help/faq/phone-numbers)を参照してください。
 
-<h2><a id="create_app"></a>Create a Mobile Service</h2>
-A Mobile Service that hosts a Twilio enabled application is no different from any other Mobile Service. You simply add the Twilio node.js library in order to reference it from your Mobile Service Custom API scripts. For information on creating an initial mobile service, see [Getting Started with Mobile Services](http://www.windowsazure.com/en-us/develop/mobile/tutorials/get-started/).
+<h2><a id="create_app"></a>モバイル サービスの作成</h2>
+Twilio 対応のアプリケーションをホストするモバイル サービスには、他のモバイル サービスとの違いはありません。モバイル サービス カスタム API スクリプトから参照するために、Twilio node.js ライブラリを単に追加します。モバイル サービスを初めて作成する場合の詳細については、「[モバイル サービスの使用](http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started/)」を参照してください。
 
-<h2><a id="VerifyPhoneNumbers"></a>Configure Your Mobile Service to use the Twilio Node.js Library</h2>
-Twilio provides a Node.js library that wraps various aspects of Twilio to provide simple and easy ways to interact with the Twilio REST API and Twilio Client to generate TwiML responses.
+<h2><a id="VerifyPhoneNumbers"></a>Twilio Node.js ライブラリを使用するためのモバイル サービスの構成</h2>
+Twilio は、Node.js ライブラリを提供します。このライブラリは、Twilio のさまざまな側面をラップし、Twilio REST API および Twilio Client と対話して TwiML 応答を生成するためのシンプルで簡単な方法を提供します。
 
-To use the Twilio node.js library in your Mobile Service, you need leverage Mobile Services npm module support, which you can do by storing your scripts in source control. The tutorial [Store Scripts in Source Control](http://www.windowsazure.com/en-us/develop/mobile/tutorials/store-scripts-in-source-control/) will walk you through setting up source control for the first time in your Mobile Services and storing your server scripts in a Git repository.
+モバイル サービスで Twilio node.js ライブラリを使用するには、モバイル サービス npm モジュールのサポートを利用する必要があります。そのためには、スクリプトをソース管理に格納します。チュートリアル「[Store Scripts in Source Control (ソース管理へのスクリプトの保存)](http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/store-scripts-in-source-control/)」では、モバイル サービスでの初めてのソース管理のセットアップと、Git リポジトリへのサーバー スクリプトの保存について具体的に説明しています。
 
-Once you have set up source control for your Mobile Service, open Configure tab on your Mobile Service dashboard, locate and copy the Git URL
+モバイル サービスのソース管理のセットアップが済んだら、モバイル サービス ダッシュボードの [構成] タブを開き、Git URL を探してコピーします。
 
-Paste this URL into a browser and replace the repository name with */DebugConsole/index.html*
+この URL をブラウザーに貼り付け、リポジトリ名を */DebugConsole/index.html* に置き換えます。
 
-For example, change:
+たとえば、
 
     https://twilioSample.scm.azure-mobile.net/twilioSample.git
 
-to:
+を次のように変更します。
 
     https://twilioSample.scm.azure-mobile.net/DebugConsole/index.html
 
-When prompted, enter the credentials you used when setting up the source control for the service.  Once logged in you will see the Azure Mobile Service console.  
+入力を求めるメッセージが表示されたら、サービスのソース管理のセットアップに使用した資格情報を入力します。ログインすると、Azure モバイル サービス コンソールが表示されます。
 
-![Mobile Service Console](./media/partner-twilio-mobile-services-how-to-use-voice-sms/twilio-kuduconsole.png)
+![モバイル サービス コンソール](./media/partner-twilio-mobile-services-how-to-use-voice-sms/twilio-kuduconsole.png)
 
-In the console, change the directory to the scripts folder:
+コンソールで、次のようにして、scripts フォルダーに移動します。
 
     cd site\wwwroot\App_Data\config\scripts
 
-Once in the api folder you can install the Twilio node module be executing the following command:
+api フォルダーで次のコマンドを実行して、Twilio ノード モジュールをインストールできます。
 
     npm install twilio
 
-Now you can reference and use the Twilio library in your custom API and table scripts.
+これで、カスタム API とテーブル スクリプトで Twilio ライブラリを参照し、使用できるようになりました。
 
-<h2><a id="howto_make_call"></a>How to: Make an outgoing call</h2>
-The following script shows how to initiate an outgoing call from your Mobile Service using the **makeCall** function. This code also uses a Twilio-provided site to return the Twilio Markup Language (TwiML) response. Substitute your values for the **From** and **To** phone numbers, and ensure that you verify the **From** phone number for your Twilio account prior to running the code.
+<h2><a id="howto_make_call"></a>方法: 発信通話する</h2>
+次のスクリプトは、**makeCall** 関数を使用してモバイル サービスから発信通話を開始する方法を示しています。このコードは、Twilio から提供されるサイトも使用して、Twilio Markup Language (TwiML) 応答を返します。コードを実行する前に、**From** および **To** の電話番号の値を置き換えて、Twilio アカウントの **From** の電話番号を確認します。
 
     var twilio = require('twilio');
 
@@ -114,12 +114,12 @@ The following script shows how to initiate an outgoing call from your Mobile Ser
         });
     };
 
-For more information about the parameters passed in to the **client.makeCall** function, see [http://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls].
+**client.makeCall** 関数に渡されるパラメーターの詳細については、[http://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls] を参照してください。
 
-As mentioned, this code uses a Twilio-provided site to return the TwiML response. You could instead use your own site to provide the TwiML response. For more information, see [How to: Provide TwiML responses from your own web site](#howto_provide_twiml_responses).
+既に説明したように、このコードは Twilio から提供されるサイトを使用して、TwiML 応答を返します。代わりに独自のサイトを使用して TwiML 応答を返すこともできます。詳細については、「[方法: 独自の Web サイトから TwiML 応答を返す](#howto_provide_twiml_responses)」を参照してください
 
-<h2><a id="howto_send_sms"></a>How to: Send an SMS message</h2>
-The following code shows how to send an SMS message using the **sendSms**  function. The **From** number is provided by Twilio for trial accounts to send SMS messages. The **To** number must be verified for your Twilio account before you run the code.
+<h2><a id="howto_send_sms"></a>方法: SMS メッセージを送信する</h2>
+次のコードでは、**sendSms** 関数を使用して SMS メッセージを送信する方法を示しています。試用アカウントで SMS メッセージを送信できるように、**From** の番号が Twilio から提供されます。コードを実行する前に、Twilio アカウントの **To** の番号を確認する必要があります。
 
     var twilio = require('twilio');
 
@@ -147,18 +147,18 @@ The following code shows how to send an SMS message using the **sendSms**  funct
     };
 
 
-<h2><a id="howto_provide_twiml_responses"></a>How to: Provide TwiML responses from your own web site</h2>
+<h2><a id="howto_provide_twiml_responses"></a>方法: 独自の Web サイトから TwiML 応答を返す</h2>
 
-When your application initiates a call to the Twilio API - for example, via the client.InitiateOutboundCall method - Twilio sends your request to a URL that is expected to return a TwiML response. The example in How to: Make an outgoing call uses the Twilio-provided URL http://twimlets.com/message to return the response.
+アプリケーションで Twilio API の呼び出しを開始する場合 (たとえば、client.InitiateOutboundCall メソッドを使用した場合)、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。「方法: 発信通話する」の例では、Twilio から提供される URL http://twimlets.com/message を使用して応答を返します。
 
 <div class="dev-callout">
-<b>Note</b>
-<p>While TwiML is designed for use by web services, you can view the TwiML in your browser. For example, click <a href="http://twimlets.com/message">twimlet_message_url</a> to see an empty &lt;Response&gt; element; as another example, click <a href="http://twimlets.com/message?Message%5B0%5D=Hello%20World">twimlet_message_url_hello_world</a> to see a &lt;Response&gt; element that contains a &lt;Say&gt; element.</p>
+<b>注</b>
+<p>TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。たとえば、<a href="http://twimlets.com/message">twimlet_message_url</a> をクリックすると、空の &lt;Response&gt; 要素が表示されます。もう 1 つの例として、<a href="http://twimlets.com/message?Message%5B0%5D=Hello%20World">twimlet_message_url_hello_world</a> をクリックすると、&lt;Say&gt; 要素を格納している &lt;Response&gt; 要素が表示されます。</p>
 </div>
 
-Instead of relying on the Twilio-provided URL, you can create your own URL site that returns HTTP responses. You can create the site in any language that returns HTTP responses. This topic assumes you'll be hosting the URL from an ASP.NET generic handler.
+Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自の URL サイトを作成できます。HTTP 応答を返すサイトは、任意の言語で作成できます。このトピックでは、ASP.NET 汎用ハンドラーから URL をホストすることを想定しています。
 
-The following script results in a TwiML response that says Hello World on the call.
+次のスクリプトでは、通話時の TwiML 応答で "Hello World" というテキストが読み上げられます。
 
     var twilio = require('twilio');
 
@@ -169,9 +169,9 @@ The following script results in a TwiML response that says Hello World on the ca
         response.send(200, resp.toString());
     };
 
-For more information about TwiML, see [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml).
+TwiML の詳細については、[https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml) を参照してください。
 
-Once you have set up a way to provide TwiML responses, you can pass that URL into the **client.makeCall** method as shown in the following code sample:
+TwiML 応答を提供する方法をセットアップしたら、次のコード サンプルで示すように、その URL を **client.makeCall** メソッドに渡すことができます。
     
     var twilio = require('twilio');
 
@@ -206,9 +206,10 @@ Once you have set up a way to provide TwiML responses, you can pass that URL int
 [verify_phone]: https://www.twilio.com/user/account/phone-numbers/verified#
 
 
-[azure_twilio_howto_dotnet]: /en-us/develop/net/how-to-guides/twilio-voice-and-sms-service/
-[azure_twilio_howto_java]: /en-us/develop/java/how-to-guides/twilio-voice-and-sms-service/
-[azure_twilio_howto_node]: /en-us/develop/nodejs/how-to-guides/twilio-voice-and-sms-service/
-[azure_twilio_howto_ruby]: /en-us/develop/ruby/how-to-guides/twilio-voice-and-sms-service/
-[azure_twilio_howto_python]: /en-us/develop/python/how-to-guides/twilio-voice-and-sms-service/
-[azure_twilio_howto_php]: /en-us/develop/php/how-to-guides/twilio-voice-and-sms-service/
+[azure_twilio_howto_dotnet]: /ja-jp/develop/net/how-to-guides/twilio-voice-and-sms-service/
+[azure_twilio_howto_java]: /ja-jp/develop/java/how-to-guides/twilio-voice-and-sms-service/
+[azure_twilio_howto_node]: /ja-jp/develop/nodejs/how-to-guides/twilio-voice-and-sms-service/
+[azure_twilio_howto_ruby]: /ja-jp/develop/ruby/how-to-guides/twilio-voice-and-sms-service/
+[azure_twilio_howto_python]: /ja-jp/develop/python/how-to-guides/twilio-voice-and-sms-service/
+[azure_twilio_howto_php]: /ja-jp/develop/php/how-to-guides/twilio-voice-and-sms-service/
+

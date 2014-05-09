@@ -1,102 +1,102 @@
-<properties linkid="develop-dotnet-website-with-mongodb-vm" urlDisplayName="Website with MongoDB VM" pageTitle=".NET web site with MongoDB on a virtual machine - Azure" metaKeywords="Azure Git ASP.NET MongoDB, Git .NET, Git MongoDB, ASP.NET MongoDB, Azure MongoDB, Azure ASP.NET, Azure tutorial" description="A tutorial that teaches you how to use Git to deploy an ASP.NET app to an Azure web site connected to MongoDB on a virtual machine." metaCanonical="" services="web-sites,virtual-machines" documentationCenter=".NET" title="Create an Azure web site that connects to MongoDB running on a virtual machine in Azure" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-dotnet-website-with-mongodb-vm" urlDisplayName="MongoDB VM を使用した Web サイト" pageTitle="仮想マシン上の MongoDB を使用した .NET Web サイト - Azure" metaKeywords="Azure Git ASP.NET MongoDB, Git .NET, Git MongoDB, ASP.NET MongoDB, Azure MongoDB, Azure ASP.NET, Azure tutorial" description="A tutorial that teaches you how to use Git to deploy an ASP.NET app to an Azure web site connected to MongoDB on a virtual machine." metaCanonical="" services="web-sites,virtual-machines" documentationCenter=".NET" title="Create an Azure web site that connects to MongoDB running on a virtual machine in Azure" authors="" solutions="" manager="" editor="" />
 
 
-# Create an Azure web site that connects to MongoDB running on a virtual machine in Azure
+# Azure の仮想マシンで実行される MongoDB に接続する Azure の Web サイトを作成する
 
-Using Git, you can deploy an ASP.NET application to an Azure web site. In this tutorial, you will build a simple front-end ASP.NET MVC task list application that connects to a MongoDB database running in a virtual machine in Azure.  [MongoDB][MongoDB] is a popular open source, high performance NoSQL database. After running and testing the ASP.NET application on your development computer, you will upload the application to an Azure web site using Git.
+Git を使用すると、ASP.NET アプリケーションを Azure の Web サイトに展開できます。このチュートリアルでは、Azure の仮想マシンで実行されている MongoDB データベースに接続する、ASP.NET MVC の単純なフロントエンド タスク一覧アプリケーションをビルドします。[MongoDB][MongoDB] は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。開発用コンピューターで ASP.NET アプリケーションを実行してテストした後、Git を使用してアプリケーションを Azure の Web サイトにアップロードします。
 
 [WACOM.INCLUDE [create-account-and-websites-and-vms-note](../includes/create-account-and-websites-and-vms-note.md)]
 
 
 
-##Overview##
+##概要##
 
-In this tutorial you will:
+このチュートリアルでは、次のことについて説明します。
 
-- [Create a virtual machine and install MongoDB](#virtualmachine)
-- [Create and run the My Task List ASP.NET application on your development computer](#createapp)
-- [Create an Azure web site](#createwebsite)
-- [Deploy the ASP.NET application to the web site using Git](#deployapp)
-
-
-##Background knowledge##
-
-Knowledge of the following is useful for this tutorial, though not required:
-
-* The C# driver for MongoDB. For more information on developing C# applications against MongoDB, see the MongoDB [CSharp Language Center][MongoC#LangCenter]. 
-* The ASP .NET web application framework. You can learn all about it at the [ASP.net web site][ASP.NET].
-* The ASP .NET MVC web application framework. You can learn all about it at the [ASP.NET MVC web site][MVCWebSite].
-* Azure. You can get started reading at [Azure][WindowsAzure].
+- [仮想マシンを作成して MongoDB をインストールする](#virtualmachine)
+- [開発用コンピューターで My Task List ASP.NET アプリケーションを作成して実行する](#createapp)
+- [Azure の Web サイトの作成](#createwebsite)
+- [Git を使用して Web サイトに ASP.NET アプリケーションをデプロイする](#deployapp)
 
 
-##Preparation##
+##背景知識##
 
-In this section you will learn how to create a virtual machine in Azure and install MongoDB, and set up your development environment.
+このチュートリアルでは次の事項に関する知識があると楽ですが、必須ではありません。
+
+* MongoDB の C# ドライバー。MongoDB 用 C# アプリケーションの開発の詳細については、MongoDB の [CSharp Language Center][MongoC#LangCenter] を参照してください。
+* ASP .NET Web アプリケーション フレームワーク。詳細については、[ASP.net Web サイト][ASP.NET]で知ることができます。
+* ASP .NET MVC 3.0 Web アプリケーション フレームワーク。詳細については、[ASP.net MVC Web サイト][MVCWebSite]で知ることができます。
+* Azure。詳細については、[Azure][WindowsAzure] サイトを参照してください。
+
+
+##準備##
+
+このセクションでは、Azure の仮想マシンを作成し、MongoDB をインストールして、開発環境を設定する方法について説明します。
 
 <a id="virtualmachine"></a> 
-###Create a virtual machine and install MongoDB###
+###仮想マシンを作成して MongoDB をインストールする###
 
-This tutorial assumes you have created a virtual machine in Azure. After creating the virtual machine you need to install MongoDB on the virtual machine:
+このチュートリアルは、Azure に仮想マシンが作成済みであることを前提としています。仮想マシンの作成後、仮想マシンに MongoDB をインストールする必要があります。
 
-* To create a Windows virtual machine and install MongoDB, see [Install MongoDB on a virtual machine running Windows Server in Azure][InstallMongoOnWindowsVM].
-* Alternatively, to create a Linux virtual machine and install MongoDB, see [Install MongoDB on a virtual machine running CentOS Linux in Azure][InstallMongoOnCentOSLinuxVM].
+* Windows 仮想マシンを作成して MongoDB をインストールする方法については、「[Azure で Windows Server を実行する仮想マシンへの MongoDB のインストール][InstallMongoOnWindowsVM]」を参照してください。
+* 別の方法として、Linux 仮想マシンを作成して MongoDB をインストールする方法については、「[Azure で CentOS Linux を実行する仮想マシンへの MongoDB のインストール][InstallMongoOnCentOSLinuxVM]」を参照してください。
 
-After you have created the virtual machine in Azure and installed MongoDB, be sure to remember the DNS name of the virtual machine ("testlinuxvm.cloudapp.net", for example) and the external port for MongoDB that you specified in the endpoint.  You will need this information later in the tutorial.
+Azure に仮想マシンを作成して MongoDB をインストールしたら、仮想マシンの DNS 名 (たとえば "testlinuxvm.cloudapp.net") とエンドポイントで指定した MongoDB 用の外部ポートを忘れずに記録してください。この情報は後で必要になります。
 
-### Install Visual Studio###
+### Visual Studio のインストール###
 
-Start by installing and running  [Visual Studio Express 2013 for Web] [VSEWeb] or [Visual Studio 2013] [VSUlt].
+最初に、[Visual Studio Express 2013 for Web] [VSEWeb] または [Visual Studio 2013] [VSUlt] をインストールして実行します。
 
-Visual Studio is an IDE, or integrated development environment. Just like you use Microsoft Word to write documents, you'll use an IDE to create applications. This tutorial uses Microsoft Visual Studio 2013, but you can use Microsoft Visual Studio Express 2013, which is a free version of Microsoft Visual Studio.
+Visual Studio は IDE (統合開発環境) です。ドキュメントの作成に Microsoft Word を使用するのと同じように、アプリケーションの作成には IDE を使用します。このチュートリアルでは Microsoft Visual Studio 2013 を使用しますが、Microsoft Visual Studio の無料版である Microsoft Visual Studio Express 2013 を使用することもできます。
 
 <a id="createapp"></a>
-##Create and run the My Task List ASP.NET application on your development computer##
+##開発用コンピューターで My Task List ASP.NET アプリケーションを作成して実行する##
 
-In this section you will create an ASP.NET application called "My Task List" by using Visual Studio.  You will run the application locally, but it will connect to your virtual machine on Azure and use the MongoDB instance that you created there.
+このセクションでは、Visual Studio を使用して "My Task List" という ASP.NET アプリケーションを作成します。このアプリケーションはローカルで実行されますが、Azure 上の仮想マシンに接続し、そこに作成した MongoDB インスタンスを使用します。
 
-###Create the application###
-In Visual Studio, click **New Project**.
+###アプリケーションを作成する###
+Visual Studio で、**[新しいプロジェクト** をクリックします。
 
-![Start Page New Project][StartPageNewProject]
+![[開始] ページの [新しいプロジェクト]][StartPageNewProject]
 
-In the **New Project** window, in the left pane, select **Visual C#**, and then select **Web**. In the middle pane, select **ASP.NET  Web Application**. At the bottom, name your project "MyTaskListApp," and then click **OK**.
+**[新しいプロジェクト]** ウィンドウの左側のウィンドウで、**[Visual C#]** を選択し、**[Web]** を選択します。中央のウィンドウで、**[ASP.NET Web アプリケーション]** を選択します。ウィンドウの下部で、プロジェクトに「MyTaskListApp」という名前を付け、**[OK]** をクリックします。
 
-![New Project Dialog][NewProjectMyTaskListApp]
+![[新しいプロジェクト] ダイアログ][NewProjectMyTaskListApp]
 
-In the **New ASP.NET Project** dialog box, select **MVC**, and then click **OK**.
+**[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[MVC]** を選択し、**[OK]** をクリックします。
 
-![Select MVC Template][VS2013SelectMVCTemplate]
+![MVC テンプレートの選択][VS2013SelectMVCTemplate]
 
-After the project completes, the default page created by the template appears.
+プロジェクトが完成すると、テンプレートから作成された既定のページが表示されます。
 
-![Default ASP.NET MVC Application][VS2013DefaultMVCApplication]
+![既定の ASP.NET MVC アプリケーション][VS2013DefaultMVCApplication]
 
-###Install the MongoDB C# driver
+###MongoDB C# ドライバーをインストールする
 
-MongoDB offers client-side support for C# applications through a driver, which you need to install on your local development computer. The C# driver is available through NuGet.
+MongoDB では、ドライバーを通じてクライアント側の C# アプリケーションをサポートしています。このドライバーをローカルの開発用コンピューターにインストールする必要があります。C# ドライバーは NuGet から入手できます。
 
-To install the MongoDB C# driver:
+MongoDB C# ドライバーをインストールするには、以下を実行します。
 
-1. In **Solution Explorer**, under the **MyTaskListApp** project, right-click **References** and select **Manage NuGetPackages**.
+1. **ソリューション エクスプローラー**で、**MyTaskListApp** プロジェクトの下の **[参照]** を右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-	![Manage NuGet Packages][VS2013ManageNuGetPackages]
+	![NuGet パッケージの管理][VS2013ManageNuGetPackages]
 
-2. In the **Manage NuGet Packages** window, in the left pane, click **Online**. In the **Search Online** box on the right, type "mongocsharpdriver".  Click **Install** to install the driver.
+2. **[NuGet パッケージの管理]** ウィンドウの左側のウィンドウで、**[オンライン]** をクリックします。右側の **[オンラインで検索]** ボックスに「mongocsharpdriver」と入力します。**[インストール]** をクリックして、ドライバーをインストールします。
 
-	![Search for MongoDB C# Driver][SearchforMongoDBCSharpDriver]
+	![MongoDB C# ドライバーの検索][SearchforMongoDBCSharpDriver]
 
-3. Click **I Accept** to accept the 10gen, Inc. license terms.
+3. **[同意する]** をクリックして、10gen, Inc. のライセンス条項に同意します。
 
-4. Click **Close** after the driver has installed.
-	![MongoDB C# Driver Installed][MongoDBCsharpDriverInstalled]
+4. ドライバーがインストールされたら、**[閉じる]** をクリックします。
+	![インストールされた MongoDB C# ドライバー][MongoDBCsharpDriverInstalled]
 
 
-The MongoDB C# driver is now installed.  References to the **MongoDB.Driver.dll** and **MongoDB.Bson.dll** libraries have been added to the project.
+これで MongoDB C# ドライバーがインストールされました。プロジェクトには、**MongoDB.Driver.dll** ライブラリと **MongoDB.Bson.dll** ライブラリへの参照が追加されています。
 
-![MongoDB C# Driver References][MongoDBCSharpDriverReferences]
+![MongoDB C# ドライバーの参照][MongoDBCSharpDriverReferences]
 
-###Add a model###
-In **Solution Explorer**, right-click the *Models* folder and **Add** a new **Class** and name it *TaskModel.cs*.  In *TaskModel.cs*, replace the existing code with the following code:
+###モデルを追加する###
+**ソリューション エクスプローラー**で、*[Models]* フォルダーを右クリックし、**[追加]**、**[クラス]** の順にクリックして、名前を「*TaskModel.cs*」にします。*TaskModel.cs* で、既存のコードを次のコードに置き換えます。
 
 	using System;
 	using System.Collections.Generic;
@@ -128,8 +128,8 @@ In **Solution Explorer**, right-click the *Models* folder and **Add** a new **Cl
 	    }
 	}
 
-###Add the data access layer###
-In **Solution Explorer**, right-click the *MyTaskListApp* project and **Add** a **New Folder** named *DAL*.  Right-click the *DAL* folder and **Add** a new **Class**. Name the class file *Dal.cs*.  In *Dal.cs*, replace the existing code with the following code:
+###データ アクセス レイヤーを追加する###
+**ソリューション エクスプローラー**で、*[MyTaskListApp]* プロジェクトを右クリックし、**[追加]**、**[新しいフォルダー]** の順にクリックして、名前を「*DAL*」にします。ソリューション エクスプローラーで、*[DAL]* フォルダーを右クリックし、**[追加]**、**[クラス]** の順にクリックします。クラス ファイルに「*Dal.cs*」という名前を付けます。*Dal.cs* で、既存のコードを次のコードに置き換えます。
 
 	using System;
 	using System.Collections.Generic;
@@ -234,8 +234,8 @@ In **Solution Explorer**, right-click the *MyTaskListApp* project and **Add** a 
 	    }
 	}
 
-###Add a controller###
-Open the *Controllers\HomeController.cs* file in **Solution Explorer** and replace the existing code with the following:
+###コントローラーを追加する###
+**ソリューション エクスプローラー**で *Controllers\HomeController.cs* ファイルを開き、既存のコードを次のコードに置き換えます。
 
 	using System;
 	using System.Collections.Generic;
@@ -315,12 +315,12 @@ Open the *Controllers\HomeController.cs* file in **Solution Explorer** and repla
 	    }
 	}
 
-###Set up the site style###
-To change the title at the top of the page, open the *Views\Shared\\_Layout.cshtml* file in **Solution Explorer** and replace "Application name" in the navbar header with "My Task List Application" so that it looks like this:
+###サイト スタイルを設定する###
+ページ上部のタイトルを変更するために、**ソリューション エクスプローラー**で *Views\Shared\\_Layout.cshtml* ファイルを開き、ナビゲーション ヘッダーの "Application name" を、次のように "My Task List Application" に置き換えます。
 
  	@Html.ActionLink("My Task List Application", "Index", "Home", null, new { @class = "navbar-brand" })
 
-In order to set up the Task List menu, open the *\Views\Home\Index.cshtml* file and replace the existing code with the following code:
+タスク一覧メニューを設定するために、*\Views\Home\Index.cshtml* ファイルを開き、既存のコードを次のコードに置き換えます。
 	
 	@model IEnumerable<MyTaskListApp.Models.MyTask>
 	
@@ -357,7 +357,7 @@ In order to set up the Task List menu, open the *\Views\Home\Index.cshtml* file 
 	<div>  @Html.Partial("Create", new MyTaskListApp.Models.MyTask())</div>
 
 
-To add the ability to create a new task, right-click the *Views\Home\\* folder and **Add** a **View**.  Name the view *Create*. Replace the code with the following:
+新しいタスクを作成する機能を追加するために、*Views\Home\\* フォルダーを右クリックし、**[追加]**、**[ビュー]** の順にクリックします。ビューの名前を「*Create*」にします。コードを次のコードに置き換えます。
 
 	@model MyTaskListApp.Models.MyTask
 	
@@ -400,79 +400,79 @@ To add the ability to create a new task, right-click the *Views\Home\\* folder a
 	    </fieldset>
 	}
 
-**Solution Explorer** should look like this:
+**ソリューション エクスプローラー**の表示は次のようになります。
 
-![Solution Explorer][SolutionExplorerMyTaskListApp]
+![ソリューション エクスプローラー][SolutionExplorerMyTaskListApp]
 
-###Set the MongoDB connection string###
-In **Solution Explorer**, open the *DAL/Dal.cs* file. Find the following line of code:
+###MongoDB 接続文字列を設定する###
+**ソリューション エクスプローラー**で、*DAL/Dal.cs* ファイルを開きます。次のコード行を見つけます。
 
 	private string connectionString = "mongodb://<vm-dns-name>";
 
-Replace `<vm-dns-name>` with the DNS name of the virtual machine running MongoDB you created in the [Create a virtual machine and install MongoDB][] step of this tutorial.  To find the DNS name of your virtual machine, go to the Azure Management Portal, select **Virtual Machines**, and find **DNS Name**.
+`<vm-dns-name>` を、このチュートリアルの「[仮想マシンを作成して MongoDB をインストールする][]」で作成した MongoDB を実行する仮想マシンの DNS 名に置き換えます。仮想マシンの DNS 名を確認するには、Azure 管理ポータルで **[仮想マシン]** をクリックし、**[DNS 名]** の値を確認します。
 
-If the DNS name of the virtual machine is "testlinuxvm.cloudapp.net" and MongoDB is listening on the default port 27017, the connection string line of code will look like:
+仮想マシンの DNS 名が "testlinuxvm.cloudapp.net" で、MongoDB が既定のポート 27017 をリッスンしている場合、その接続文字列のコード行は次のようになります。
 
 	private string connectionString = "mongodb://testlinuxvm.cloudapp.net";
 
-If the virtual machine endpoint specifies a different external port for MongoDB, you can specifiy the port in the connection string:
+仮想マシンのエンドポイントで MongoDB 用に別の外部ポートが指定されている場合は、接続文字列で次のようにしてポートを指定できます。
 
  	private string connectionString = "mongodb://testlinuxvm.cloudapp.net:12345";
 
-For more information on MongoDB connection strings, see [Connections][MongoConnectionStrings].
+MongoDB の接続文字列の詳細については、[Connections (接続)][MongoConnectionStrings]」を参照してください。
 
-###Test the local deployment###
+###ローカル デプロイをテストする###
 
-To run your application on your development computer, select **Start Debugging** from the **Debug** menu or hit **F5**. IIS Express starts and a browser opens and launches the application's home page.  You can add a new task, which will be added to the MongoDB database running on your virtual machine in Azure.
+開発用コンピューターでアプリケーションを実行するには、**[デバッグ]** メニューの **[デバッグ開始]** をクリックするか、**F5** キーを押します。IIS Express が起動し、ブラウザーが開いて、アプリケーションのホーム ページが表示されます。新しいタスクを追加でき、そのデータは Azure の仮想マシンで実行されている MongoDB データベースに追加されます。
 
-![My Task List Application][TaskListAppBlank]
+![My Task List アプリケーション][TaskListAppBlank]
 
-<h2><span class="short-header">Deploy the application to an Azure web site</span>Deploy the ASP.NET application to an Azure web site</h2>
+<h2><span class="short-header">Azure の Web サイトへのアプリケーションの展開</span>ASP.NET アプリケーションを Azure の Web サイトに展開する</h2>
 
-In this section you will create a web site and deploy the My Task List ASP.NET application using Git.
+このセクションでは、Web サイトを作成し、Git を使用して My Task List ASP.NET アプリケーションをデプロイします。
 
 <a id="createwebsite"></a> 
-###Create an Azure web site###
-In this section you will create an Azure web site.
+###Azure の Web サイトを作成する###
+このセクションでは、Azure の Web サイトを作成します。
 
-1. Open a web browser and browse to the [Azure Management Portal][AzurePortal]. Sign in with your Azure account. 
-2. At the bottom of the page, click **+New**, then **Web Site**, and finally **Quick Create**.
-3. Enter a unique prefix for the application's URL.
-4. Select a region.
-5. Click **Create Web Site**.
+1. Web ブラウザーを開き、[Azure 管理ポータル][AzurePortal]にアクセスします。Azure のアカウントを使用してサインインします。
+2. ページの下部で、**[+新規]**、**[Web サイト]**、**[簡易作成]** の順にクリックします。
+3. アプリケーションの URL 用として一意のプレフィックスを入力します。
+4. リージョンを選択します。
+5. **[Web サイトの作成]** をクリックします。
 
-![Create a new web site][WAWSCreateWebSite]
+![新しい Web サイトの作成][WAWSCreateWebSite]
 
-6. Your web site will be created quickly and will be listed in **Web sites**.
+6. Web サイトがすぐに作成され、**[Web サイト]** に表示されます。
 
 ![WAWSDashboardMyTaskListApp][WAWSDashboardMyTaskListApp]
 
 <a id="deployapp"></a> 
-###Deploy the ASP.NET application to the web site using Git
-In this section you will deploy the My Task List application using Git.
+###Git を使用して Web サイトに ASP.NET アプリケーションを展開する
+このセクションでは、Git を使用して My Task List アプリケーションを展開します。
 
-1. Click your web site name in **Web sites**, then click **Dashboard**.  On the right side, under Quick Glance, click **Set up deployment from source control**.
-2. On the **Where is your source code?** page, choose **Local Git repository**, and the click the **Next** arrow. 
-3. The Git repository should be created quickly. Make note of the instructions on the resulting page as they will be used in the next section.
+1. **[Web サイト]** で Web サイト名をクリックし、**[ダッシュボード]** をクリックします。右側の [概要] で、**[ソース管理からのデプロイの設定]** をクリックします。
+2. **[ソース コードの位置]** ページで、**[ローカル Git リポジトリ]** を選択し、**[次へ]** の矢印をクリックします。
+3. Git リポジトリがすぐに作成されます。次のセクションで使用するため、表示されたページの指示を書き留めてください。
 
-	![Git Repository is Ready][Image9]
+	![Git リポジトリの準備完了][Image9]
 
-4. Under **Push my local files to Azure** there are instructions for pushing your code to Azure. The instructions will look similar to the following:
+4. **[ローカル ファイルを Azure にプッシュする]** の下に、Azure にコードをプッシュする手順が表示されます。手順は次の図のようになります。
 
-	![Push local files to Azure][Image10]
+	![ローカル ファイルを Azure にプッシュ][Image10]
 	
-5. If you do not have Git installed, install it using the **Get it here** link in step 1.
-6. Following the instructions in step 2, commit your local files.  
-7. Add the remote Azure repository and push your files to the Azure web site by following the instructions in step 3.
-8. When the deployment has completed you will see the following confirmation:
+5. Git をまだインストールしていない場合は、ステップ 1 の **"こちらで入手してください"** というリンクを使用してインストールします。
+6. ステップ 2 の手順に従って、ローカル ファイルをコミットします。
+7. ステップ 3 の手順に従って、リモート Azure リポジトリを追加し、ファイルを Azure の Web サイトにプッシュします。
+8. 展開が完了したら、次のような確認メッセージが表示されます。
 
-	![Deployment Complete][Image11]
+	![デプロイ完了][Image11]
 
-9. Your Azure web site is now available.  Check the **Dashboard** page for your site and the **Site URL** field to find the URL for your site. Following the procedures in this tutorial, your site would be available at this URL: http://mytasklistapp.azurewebsites.net.
+9. これで Azure の Web サイトが利用できるようになりました。**[ダッシュボード]** ページでサイトを確認し、**[サイトの URL]** フィールドでサイトの URL を確かめます。このチュートリアルの手順に従うと、サイトは http://mytasklistapp.azurewebsites.net という URL で利用できるようになっています。
 
-##Summary##
+##まとめ##
 
-You have now successfully deployed your ASP.NET application to an Azure web site.  To view the site, click the link in the **Site URL** field of the **Dashboard** page. For more information on developing C# applications against MongoDB, see [CSharp Language Center][MongoC#LangCenter]. 
+これで、Azure の Web サイトに ASP .NET アプリケーションを展開できました。サイトを表示するには、**[ダッシュボード]** ページで **[サイトの URL]** フィールドのリンクをクリックします。MongoDB 用 C# アプリケーションの開発の詳細については、[CSharp Language Center][MongoC#LangCenter] を参照してください。
 
 
 <!-- HYPERLINKS -->
@@ -484,8 +484,8 @@ You have now successfully deployed your ASP.NET application to an Azure web site
 [ASP.NET]: http://www.asp.net/
 [MongoConnectionStrings]: http://www.mongodb.org/display/DOCS/Connections
 [MongoDB]: http://www.mongodb.org
-[InstallMongoOnCentOSLinuxVM]: /en-us/manage/linux/common-tasks/mongodb-on-a-linux-vm/
-[InstallMongoOnWindowsVM]: /en-us/manage/windows/common-tasks/install-mongodb/
+[InstallMongoOnCentOSLinuxVM]: /ja-jp/manage/linux/common-tasks/mongodb-on-a-linux-vm/
+[InstallMongoOnWindowsVM]: /ja-jp/manage/windows/common-tasks/install-mongodb/
 [VSEWeb]: http://www.microsoft.com/visualstudio/eng/2013-downloads#d-2013-express
 [VSUlt]: http://www.microsoft.com/visualstudio/eng/2013-downloads
 
@@ -509,7 +509,8 @@ You have now successfully deployed your ASP.NET application to an Azure web site
 [Image11]: ./media/web-sites-dotnet-store-data-mongodb-vm/GitDeploymentComplete.png
 
 <!-- TOC BOOKMARKS -->
-[Create a virtual machine and install MongoDB]: #virtualmachine
-[Create and run the My Task List ASP.NET application on your development computer]: #createapp
-[Create an Azure web site]: #createwebsite
-[Deploy the ASP.NET application to the web site using Git]: #deployapp
+[仮想マシンを作成して MongoDB をインストールする]: #virtualmachine
+[開発用コンピューターで My Task List ASP.NET アプリケーションを作成して実行する]: #createapp
+[Azure の Web サイトを作成する]: #createwebsite
+[Git を使用して Web サイトに ASP.NET アプリケーションを展開する]: #deployapp
+

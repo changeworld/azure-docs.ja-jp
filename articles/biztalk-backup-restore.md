@@ -1,223 +1,224 @@
-<properties linkid="biztalk-backup-restore" urlDisplayName="BizTalk Services: Backup and Restore" pageTitle="BizTalk Services: Backup and Restore | Azure" metaKeywords="" description="BizTalk Services includes Backup and Restore capabilities. When creating a Backup, a snapshot of the BizTalk Services configuration is taken." metaCanonical="" services="" documentationCenter="" title="BizTalk Services: Backup and Restore" authors=""  solutions="" writer="mandia" manager="paulettm" editor="cgronlun"  />
+<properties linkid="biztalk-backup-restore" urlDisplayName="BizTalk サービス: バックアップと復元" pageTitle="BizTalk サービス: バックアップと復元 | Azure" metaKeywords="" description="BizTalk サービスには、バックアップ機能と復元機能が備わっています。バックアップを作成すると、Azure BizTalk サービス構成のスナップショットが取得されます。" metaCanonical="" services="" documentationCenter="" title="BizTalk サービス: バックアップと復元" authors=""  solutions="" writer="mandia" manager="paulettm" editor="cgronlun"  />
 
 
-# BizTalk Services: Backup and restore
+# BizTalk サービス: バックアップと復元
 
-Azure BizTalk Services includes Backup and Restore capabilities. When creating a Backup, a snapshot of the Azure BizTalk Services configuration is taken.
+Azure BizTalk サービスには、バックアップ機能と復元機能が備わっています。バックアップを作成すると、Azure BizTalk サービス構成のスナップショットが取得されます。
 
-Consider the following scenarios:
-
-
-- You can back up your BizTalk Service configuration in two ways using the Azure Management Portal - creating backups as needed (ad hoc backups) and by running scheduled backups.
-
-- Backup content can be restored to the same BizTalk Service or to a new BizTalk Service. To restore the BizTalk Service using the same name, the existing BizTalk Service must be deleted. Otherwise, the restore fails.
-
-- BizTalk Services can be restored to the same edition or a higher edition. Restoring BizTalk Service to a lower edition, from when the backup was taken, is not supported.
-
-	For example, a backup using the Basic Edition can be restored to the Premium Edition. A backup using the Premium Edition cannot be restored to the Standard Edition.
-
-- The EDI Control numbers are backed up to maintain continuity of the control numbers. If messages are processed after the last backup, restoring this backup content can cause duplicate control numbers.
-
-- Backup and restore is not available as part of the BizTalk Services Developer Edition. 
-
-This topic describes how to backup and restore BizTalk Services using the Azure Management Portal. You can also back up BizTalk Services using REST APIs. For more information on that, see [BizTalk Services REST API](http://msdn.microsoft.com/library/windowsazure/dn232347.aspx). 
-
-[What gets backed up?](#budata)
-
-[Create a backup](#createbu)
-
-[Restore](#restore)
+次のシナリオで考えてみましょう。
 
 
-##<a name="budata"></a>What gets backed up?
+- Azure 管理ポータルを使用して、BizTalk サービス構成を 2 つの方法でバックアップすることができます - 必要に応じてバックアップを作成 (アドホック バックアップ) するか、スケジュールされたバックアップを実行します。
 
-When a backup is created, the following items are backed up:
+- バックアップ コンテンツは、同じ BizTalk サービスまたは新しい BizTalk サービスに復元できます。同じ名前を使用して BizTalk サービスを復元するには、既存の BizTalk サービスを削除する必要があります。そうしないと、復元に失敗します。
+
+- BizTalk サービスは、同じエディション以上に復元できます。バックアップを実行したときより下位のエディションへの BizTalk サービスの復元はサポートされていません。
+
+	たとえば、基本エディションを使用したバックアップはプレミアム エディションに復元できます。プレミアム エディションを使用したバックアップを標準エディションに復元することはできません。
+
+- コントロール番号の連続性を維持するため、EDI コントロール番号がバックアップされます。前回のバックアップ後にメッセージが処理された場合、このバックアップ コンテンツを復元するとコントロール番号が重複する可能性があります。
+
+- バックアップと復元を、BizTalk サービス開発者エディションの一部として利用することはできません。
+
+このトピックでは、Azure 管理ポータルを使用して BizTalk サービスをバックアップおよび復元する方法について説明しています。また、REST API を使用して BizTalk サービスをバックアップすることもできます。詳細については、[BizTalk サービスの REST API に関するページ](http://msdn.microsoft.com/library/windowsazure/dn232347.aspx)を参照してください。
+
+[バックアップ対象](#budata)
+
+[バックアップの作成](#createbu)
+
+[復元](#restore)
+
+
+##<a name="budata"></a>バックアップ対象
+
+バックアップが作成されるとき、次の項目がバックアップされます。
 
 <table border="1"> 
 <TR bgcolor="FAF9F9">
 <th> </th>
-<TH>Items backed up</TH> 
+<TH>バックアップされる項目</TH>
 </TR> 
 <TR>
 <td colspan="2">
- <strong>Azure BizTalk Services Portal</strong></td>
+ <strong>Azure BizTalk サービス ポータル</strong></td>
 </TR> 
 <TR>
-<TD>Configuration and Runtime</TD> 
+<TD>構成とランタイム</TD>
 <TD><bl>
-<li>Partner and profile details</li>
-<li>Partner Agreements</li>
-<li>Custom assemblies deployed</li>
-<li>Bridges deployed</li>
-<li>Certificates</li>
-<li>Transforms deployed</li>
-<li>Pipelines</li>
-<li>Templates created and saved in the BizTalk Services Portal</li>
-<li>X12 ST01 and GS01 mappings</li>
-<li>Control numbers (EDI)</li>
-<li>AS2 Message MIC values</li>
+<li>パートナーとプロファイルの詳細</li>
+<li>パートナー契約</li>
+<li>デプロイされているカスタム アセンブリ</li>
+<li>デプロイされているブリッジ</li>
+<li>証明書</li>
+<li>デプロイされている変換</li>
+<li>パイプライン</li>
+<li>BizTalk サービス ポータルで作成および保存されたテンプレート</li>
+<li>X12 ST01 および GS01 マッピング</li>
+<li>コントロール番号 (EDI)</li>
+<li>AS2 メッセージ MIC 値</li>
 </bl></TD>
 </TR> 
  
 <TR>
 <td colspan="2">
- <strong>Azure BizTalk Service</strong></td>
+ <strong>Azure BizTalk サービス</strong></td>
 </TR> 
 <TR>
-<TD>SSL Certificate</TD> 
+<TD>SSL 証明書</TD>
 <TD>
 <bl>
-<li>SSL Certificate Data</li>
-<li>SSL Certificate Password</li>
+<li>SSL 証明書データ</li>
+<li>SSL 証明書のパスワード</li>
 </bl>
 </TD>
 </TR> 
 <TR>
-<TD>BizTalk Service Settings</TD> 
+<TD>BizTalk サービスの設定</TD>
 <TD>
 <bl>
-<li>Scale unit count</li>
-<li>Edition</li>
-<li>Product Version</li>
-<li>Region/Datacenter</li>
-<li>Access Control Service (ACS) namespace and key</li>
-<li>Tracking database connection string</li>
-<li>Archiving Storage account connection string</li>
-<li>Monitoring storage account connection string</li>
+<li>スケール ユニット数</li>
+<li>エディション</li>
+<li>製品バージョン</li>
+<li>リージョン/データセンター</li>
+<li>Access Control サービス (ACS) の名前空間とキー</li>
+<li>トラッキング データベースの接続文字列</li>
+<li>アーカイブ ストレージ アカウントの接続文字列</li>
+<li>監視ストレージ アカウントの接続文字列</li>
 </bl></TD>
 </TR> 
 <TR>
 <td colspan="2">
- <strong>Additional Items</strong></td>
+ <strong>その他の項目</strong></td>
 </TR> 
 <TR>
-<TD>Tracking Database</TD> 
-<TD>When the BizTalk Service is provisioned, the Tracking Database details are entered, including the Azure SQL Database Server and the Tracking Database name. The Tracking Database is not automatically backed up.<br/><br/>
-<strong>Important</strong><br/>
-If the Tracking Database is accidentally deleted and the database needs recovered, a previous backup must exist. If a backup does not exist, the Tracking Database and its data are not recoverable. In this situation, create a new Tracking Database with the same database name. Geo-Replication is recommended.</TD>
+<TD>トラッキング データベース</TD>
+<TD>BizTalk サービスがプロビジョニングされると、Azure SQL データベース サーバーやトラッキング データベース名など、トラッキング データベースの詳細が入力されます。トラッキング データベースは自動的にはバックアップされません。<br/><br/>
+<strong>重要</strong><br/>
+トラッキング データベースが誤って削除されたため、データベースを復旧する必要がある場合、前のバックアップが存在している必要があります。バックアップが存在しない場合、トラッキング データベースとそのデータは復旧できません。このような状況では、同じデータベース名の新しいトラッキング データベースを作成します。geo レプリケーションが推奨されます。</TD>
 </TR> 
 </table>
 
-##<a name="createbu"></a>Create a backup
+##<a name="createbu"></a>バックアップの作成
 
-A backup can be taken at any time and is completely controlled by you. You can take backups either from the Azure Management Portal or from the BizTalk Service REST API. To create a backup using the BizTalk Services REST API, see <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=325584">Backup BizTalk Service</a>
+バックアップはいつでも取得でき、完全にユーザーによって制御されます。Azure 管理ポータルから、または BizTalk サービスの REST API からバックアップを実行することができます。BizTalk サービスの REST API を使用してバックアップを作成するには、<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=325584">BizTalk サービスのバックアップに関するページ</a>を参照してください。
 
-This section provides instructions on how to take backups using the Management Portal. You can use the Management Portal to create ad hoc backups or schedule backups at desired intervals.
+このセクションでは、管理ポータルを使用してバックアップを実行する方法について説明します。管理ポータルを使用して、アドホック バックアップを作成するか、適切な間隔でバックアップを実行するようにスケジュールすることができます。
 
-##<a name="beforebackup"></a>Before creating a backup
+##<a name="beforebackup"></a>バックアップを作成する前に
 
-Make sure you adhere to the following considerations before you create a backup:
+バックアップを作成する前に、次の注意事項に従うことを確認してください。
 
-1. Before running an ad hoc backup, for active messages in a batch, process the batch of messages. This will help prevent message loss <i>if</i> this backup is restored. Messages in batches are never stored when doing a backup. With scheduled backups, you might not be able to ensure that there are no messages in the batch when the back up starts.
-	<div class="dev-callout"><b>Note</b>
-<p>If a backup is taken with active messages in a batch, these messages are not backed up and are therefore lost.</p></div>
-2. Optional: In the BizTalk Services Portal, stop any management operations.
-4. Create the backup to the Storage account using the <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=325584">Backup BizTalk Service</a> commands available with the REST API.
+1. バッチになっているメッセージに対してアドホック バックアップを実行する前に、メッセージのバッチを処理してください。これにより、このバックアップを復元した場合に<i></i>メッセージが失われるのを防ぐことができます。バックアップの実行時に、バッチになっているメッセージが保存されることはありません。スケジュールされたバックアップを使用する場合は、バックアップを開始するときに、メッセージがバッチになっていないことを確認できない可能性があります。
+	<div class="dev-callout"><b>メモ</b>
+<p>アクティブなメッセージがバッチになっている状態で、それらに対応するバックアップを取得しようとしても、それらのメッセージはバックアップされないため、失われます。</p></div>
+2. オプション: BizTalk サービス ポータルで、管理操作をすべて停止します。
+4. REST API で使用可能な <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=325584">BizTalk サービスのバックアップ</a> コマンドを使用して、ストレージ アカウントに対してバックアップを作成します。
 
-[Ad hoc backups](#backupnow)
+[アドホック バックアップ](#backupnow)
 
-[Schedule a backup](#backupschedule)
+[バックアップのスケジュール](#backupschedule)
 
-###<a name="backupnow"></a>Ad hoc backups
-1. From the Azure Management Portal, click BizTalk Services, and then click the BizTalk Service name you want to back up.
-2. From the BizTalk Service <b>Dashboard</b> tab, click <b>Back up</b> from the bottom of the page.
-3. In the <b>Back up BizTalk Service</b> dialog box, provide a backup name.
-4. Select a blob storage account and click the checkmark to start the backup.
-
-
-Once the backup completes, a container with the backup name you specified is created under the storage account. This container contains your BizTalk Service backup configuration.
+###<a name="backupnow"></a>アドホック バックアップ
+1. Azure 管理ポータルで [BizTalk サービス] をクリックし、バックアップする BizTalk サービスの名前をクリックします。
+2. [BizTalk サービス] の <b>[ダッシュボード]</b> タブで、ページの下部にある <b>[バックアップ]</b> をクリックします。
+3. <b>[BizTalk サービスのバックアップ]</b> ダイアログ ボックスで、バックアップ名を指定します。
+4. BLOB ストレージ アカウントを選択し、バックアップを開始するチェックマークをクリックします。
 
 
-###<a name="backupschedule"></a>Schedule a backup
+バックアップが完了すると、ストレージ アカウントの下に、指定したバックアップ名を持つコンテナーが作成されます。このコンテナーには、BizTalk サービスのバックアップ構成が含まれています。
 
-1. From the Azure Management Portal, click BizTalk Services, click the BizTalk Service name for which you want to schedule automated backups, and then click the **Configure** tab.
-2. For **Backup Status**, select **None** if you do not want to schedule automated backups. To schedule automated backups, click **Automatic**.
-3. For **Storage Account**, select an Azure storage account where the backups will be created.
-4. For **Frequency**, specify the start date and time for the first backup, and the interval (in days) when a backup is taken.
-5. For **Retention Days**, specify a time window (in days) for which the backups are retained. The retention period must be greater than the backup frequency.
-6. Select the **Always keep at least one backup** checkbox to make sure there's at least one backup available even if it is past the retention days period.
-7. Click **Save**.
 
-When a scheduled backup job runs, it creates a container (to store backup data) in the storage account you specified. The name of the container is in the format *BizTalk Service name-date-time*. 
+###<a name="backupschedule"></a>バックアップのスケジュール
 
-If a backup fails, the BizTalk Service dashboard page shows the status of the backup as **Failed**.
+1. Azure 管理ポータルで [BizTalk サービス] をクリックし、自動バックアップのスケジュール対象として使用する BizTalk サービス名をクリックして、**[構成]** タブをクリックします。
+2. 自動バックアップのスケジュールを設定しない場合は、**[バックアップ ステータス]** として **[なし]** を選択します。自動バックアップをスケジュールするには、**[自動]** をクリックします。
+3. **ストレージ アカウント**を対象にする場合は、バックアップの作成場所として使用する Azure ストレージ アカウントを選択します。
+4. **[頻度]** で、最初のバックアップに対応する開始日と時刻、およびバックアップを実行する間隔 (日数単位) を指定します。
+5. **[保持日数]** で、バックアップを保持する期間 (日数単位) を指定します。保持期間は、バックアップ頻度より大きくする必要があります。
+6. **[常に 1 つ以上のバックアップを保存してください]** チェックボックスをオンにし、保持期間が過ぎた場合でも少なくとも 1 つのバックアップが利用できるようにします。
+7. **[保存]** をクリックします。
 
-![Last scheduled backup status][BackupStatus] 
+スケジュールされたバックアップ ジョブを実行すると、指定したストレージ アカウント内に、(バックアップ データを格納するための) コンテナーが作成されます。コンテナーの名前は、*BizTalk サービス名-日付-時刻* という形式になります。
 
-You can click the link to go the Management Services Operation Logs page to find out more about the fault. For more information about operation logs with respect to BizTalk Services, see [BizTalk Services: Troubleshoot using operation logs](http://go.microsoft.com/fwlink/?LinkId=391211).
+バックアップが失敗した場合は、BizTalk サービスのダッシュボード ページで、バックアップの状態として **[失敗]** が表示されます。
 
-##<a name="restore"></a>Restore
+![最後のスケジュールされたバックアップの状態][BackupStatus]
 
-You can restore backups either from the Azure Management Portal or from the BizTalk Services REST API. This section provides instructions on how to restore using the Management Portal. To restore using the REST API, see [Restore BizTalk Service from Backup](http://go.microsoft.com/fwlink/p/?LinkID=325582).
+リンクをクリックして、管理サービスの操作ログ ページに移動し、障害の詳細を確認することができます。BizTalk サービスの操作ログの詳細については、[BizTalk サービス: 操作ログを使用したトラブルシューティングに関するページ](http://go.microsoft.com/fwlink/?LinkId=391211)を参照してください。
 
-###Before restoring a backup
+##<a name="restore"></a>復元
 
-When restoring a backup, consider the following:
+Azure 管理ポータルから、または BizTalk サービスの REST API からバックアップを復元することができます。このセクションでは、管理ポータルを使用して復元を実行する方法について説明します。REST API を使用して復元を実行するには、[バックアップからの BizTalk サービスの復元に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=325582)を参照してください。
 
-- New tracking, archiving, and monitoring stores can be specified while restoring a BizTalk Service.
+###バックアップの復元前
 
-- To restore the BizTalk Service using the same name, delete the existing BizTalk Service before you start with the restore. Otherwise, the restore fails.
+バックアップを復元するときは、次の点を考慮してください。
 
-- The same EDI Runtime data is restored. The EDI Runtime backup stores the control numbers. The restored control numbers are in sequence from the time of the backup. If messages are processed after the last backup, restoring this backup content can cause duplicate control numbers.
+- BizTalk サービスを復元するときに、新しいトラッキング、アーカイブ、および監視ストアを指定できます。
 
-####To restore a backup
+- 同じ名前を使用して BizTalk サービスを復元するには、復元を開始する前に、既存の BizTalk サービスを削除します。そうしないと、復元に失敗します。
 
-1. From the Azure Management Portal, click <b>New</b>, point to <b>App Services</b>, <b>BizTalk Service</b>, and then click <b>Restore</b>.
+- 同じ EDI ランタイム データが復元されます。EDI ランタイム バックアップでは、コントロール番号が保存されます。復元されるコントロール番号は、バックアップの時点から順番に付けられます。前回のバックアップ後にメッセージが処理された場合、このバックアップ コンテンツを復元するとコントロール番号が重複する可能性があります。
 
-	![Restore a backup][Restore]
+####バックアップを復元するには
 
-2. In the New BizTalk Service - Restore wizard, on the <b>Restore BizTalk Service</b> page, click the folder icon from the <b>Backup URL</b> text box to open the <b>Browse Cloud Storage</b> dialog box. The dialog box lists your Azure storage accounts.
+1. Azure 管理ポータルで <b>[新規]</b> をクリックし、<b>[アプリケーション サービス]</b>、<b>[BizTalk サービス]</b> の順にポイントして、<b>[復元]</b>  をクリックします。
 
-	Expand the storage account you specified while creating or scheduling the backup, and then select the container name from where you need to restore the BizTalk Service configuration.
+	![バックアップの復元][Restore]
 
-	From the right pane, select the .txt file corresponding to the back up you are restoring from, and then click <b>Open</b>.
+2. 新しい BizTalk サービス - 復元 ウィザードの <b>[BizTalk サービスの復元]</b> ページで、<b>[バックアップ URL]</b> ボックスのフォルダー アイコンをクリックし、<b>[クラウド ストレージの参照]</b> ダイアログ ボックスを開きます。ダイアログ ボックスで、使用している Azure ストレージ アカウントが表示されます。
 
-3. On the <b>Restore BizTalk Service</b> page, provide the following information:
-- Provide a BizTalk Service name. By default, the name of the backed up BizTalk Service is used.
-- Verify the domain URL, edition, and the region for the restored BizTalk Service.
-- Chose to create a new SQL database instance for the tracking database, and then click the right arrow.
+	バックアップを作成したとき、またはバックアップのスケジュールを設定したときに指定したストレージ アカウントを展開し、BizTalk サービス構成の復元元として使用する必要のあるコンテナー名を選択します。
 
-4. 	In the <b>Specify database settings</b> page, verify the name of the SQL database, specify the physical server where the SQL database will be created, and a username/password for that server.
+	右側のウィンドウで、復元元として使用するバックアップに対応する .txt ファイルを選択し、<b>[開く]</b> をクリックします。
 
-	If you want to configure advanced settings for the SQL database, select the <b>Configure Advanced Database Settings</b> check box, and then click the right arrow.
+3. <b>[BizTalk サービスの復元]</b> ページで、次の情報を指定します。
+- BizTalk サービス名を指定します。既定では、バックアップされた BizTalk サービスの名前が使用されます。
+- 復元しようとする BizTalk サービスのドメイン URL、エディション、およびリージョンを確認します。
+- トラッキング データベースに対応する新しい SQL データベース インスタンスを作成するように選択し、右矢印をクリックします。
 
-	If you do not want to configure advanced database settings, click the right arrow, and then skip to step 6 below.
-5. In the <b>Advanced database settings</b> page, select the database edition you want to use (<b>Web</b> or <b>Business</b>), specify the maximum database size, and the collation rules. Click the right arrow.
+4. 	<b>[データベース設定の指定]</b> ページで、SQL データベースの名前を確認し、SQL データベースの作成場所になる物理サーバーと、そのサーバーのユーザー名およびパスワードを指定します。
 
-6. In the <b>Specify monitoring/archiving settings</b> page create a new storage account or specify an existing storage account where BizTalk Service monitoring information will be stored.
+	SQL データベースの詳細設定を構成する場合は、<b>[データベースの詳細設定を構成します]</b> チェック ボックスをオンにし、右矢印をクリックします。
 
-7. Click the checkmark to start the restoration process</b>.
+	データベースの詳細設定を構成しない場合は、右矢印をクリックし、ステップ 6 に進みます。
+5. <b>[データベースの設定詳細]</b> ページで、使用するデータベースのエディション (<b>Web</b> または <b>Business</b>) を選択し、データベースの最大サイズと照合順序規則を指定します。右矢印をクリックします。
 
-8. Once the restoration successfully completes, a new BizTalk Service is listed in a suspended state on the BizTalk Services page in the Azure Management Portal.
+6. <b>[監視/アーカイブ設定の指定]</b> ページで、新しいストレージ アカウントを作成するか、BizTalk サービスの監視情報の格納に使用する既存のストレージ アカウントを指定します。
 
-###<a name="postrestore"></a>After restoring a backup
+7. チェックマークをクリックして、復元処理を開始します。</b>
 
-BizTalk Service is always restored in a **Suspended** state. This enables you to make any configuration changes in your applications, as required, in your BizTalk Service applications before the new environment is functional. Following are some such considerations that you must make before starting the newly restored BizTalk Service:
+8. 復元が正常に完了すると、Azure 管理ポータルの [BizTalk サービス] ページで、新しい BizTalk サービスが中断という状態で表示されます。
 
-- If you created BizTalk Service applications using the Azure BizTalk Services SDK, you might need to to update the ACS credentials in those applications to work with the restored environment.
+###<a name="postrestore"></a>バックアップの復元後
 
-- You might restore a BizTalk Service to replicate an already functional BizTalk Service environment. In such a scenario, if you have agreements configured in the original BizTalk Services portal that use FTP shares as sources, you might want to update the agreements in the newly restored environment to use some other sources or FTP shares. If you fail to do so, you might have two different agreements trying to pull the same message.
+BizTalk サービスは常に、**[中断]** 状態で復元されます。この結果、新しい環境を機能させる前に、開発したアプリケーション内や、必要に応じて BizTalk サービス アプリケーション内で、さまざまな構成を変更することができます。新しく復元した BizTalk サービスを起動する前に実行する必要がある、このような考慮事項のいくつかを次に示します。
 
-- If you used the restore operation to have multiple BizTalk Service environments, make sure you target the right environment using Visual Studio applications, PowerShell cmdlets, REST APIs, or Trading Partner Management OM APIs.
+- Azure BizTalk サービス SDK を使用して BizTalk サービス アプリケーションを作成した場合は、復元された環境で動作するように、アプリケーション内で ACS の資格情報を更新する必要が生じることがあります。
 
-- It's also a good practice to configure automated backups on the newly restored BizTalk Service environment.
+- 既に機能している BizTalk サービス環境を複製するために、BizTalk サービス機能を復元することも考えられます。このようなシナリオで、FTP 共有を使用する BizTalk サービス ポータルを複製元として使用し、そのポータル内で契約を構成した場合は、新しく復元した環境で契約を更新して、他の複製元または FTP 共有を使用する可能性もあります。このような作業に失敗した場合は、2 つの異なる契約が存在し、それらが同じメッセージを取得しようとする可能性があります。
 
-Once you have met these or other such considerations, go to the BizTalk Service page on Azure Management Portal, select the newly restored BizTalk Service in suspended state, and then click **Resume** from the bottom of the page to start the service.
+- 復元操作を使用して複数の BizTalk サービス環境を用意した場合は、Visual Studio アプリケーション、PowerShell コマンドレット、REST API、または取引先管理オブジェクト モデル (TPM OM) API を使用して、適切な環境をターゲットにしたことを確認します。
 
-## Next
+- また、新しく復元した BizTalk サービス環境で自動バックアップを構成することをお勧めします。
 
-To provision Azure BizTalk Services in the Azure Management Portal, go to [BizTalk Services: Provisioning Using Azure Management Portal](http://go.microsoft.com/fwlink/p/?LinkID=302280). To start creating applications, go to [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197).
+これらの考慮事項や他の考慮事項を満たした後、Azure 管理ポータルの [BizTalk サービス] ページに移動し、中断された状態にある、新しく復元した BizTalk サービスを選択して、ページの下部にある **[再開]** をクリックしてそのサービスを開始します。
 
-## See Also
-- [Backup BizTalk Service](http://go.microsoft.com/fwlink/p/?LinkID=325584)
-- [Restore BizTalk Service from Backup](http://go.microsoft.com/fwlink/p/?LinkID=325582)
-- [BizTalk Services: Developer, Basic, Standard and Premium Editions Chart](http://go.microsoft.com/fwlink/p/?LinkID=302279)
-- [BizTalk Services: Provisioning Using Azure Management Portal](http://go.microsoft.com/fwlink/p/?LinkID=302280)
-- [BizTalk Services: Provisioning Status Chart](http://go.microsoft.com/fwlink/p/?LinkID=329870)
-- [BizTalk Services: Dashboard, Monitor and Scale tabs](http://go.microsoft.com/fwlink/p/?LinkID=302281)
-- [BizTalk Services: Throttling](http://go.microsoft.com/fwlink/p/?LinkID=302282)
-- [BizTalk Services: Issuer Name and Issuer Key](http://go.microsoft.com/fwlink/p/?LinkID=303941)
-- [How do I Start Using the Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+## 次のステップ
+
+Azure BizTalk サービスを Azure 管理ポータルでプロビジョニングするには、[Azure 管理ポータルを使用した BizTalk サービスのプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)に関するページを参照してください。アプリケーションの作成を開始するには、[Azure BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=235197)に関するページを参照してください。
+
+## 関連項目
+- [BizTalk サービスのバックアップに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=325584)
+- [バックアップからの BizTalk サービスの復元に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=325582)
+- [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャートに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302279)
+- [BizTalk サービス: Azure 管理ポータルを使用した BizTalk サービスのプロビジョニングに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302280)
+- [BizTalk サービス: プロビジョニングの状態のチャートに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=329870)
+- [BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302281)
+- [BizTalk サービス: 調整に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302282)
+- [BizTalk サービス: 発行者名および発行者キーに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=303941)
+- [Azure BizTalk サービス SDK の使用開始に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [BackupStatus]: ./media/biztalk-backup-restore/status-last-backup.png
 [Restore]: ./media/biztalk-backup-restore/restore-ui.png
+

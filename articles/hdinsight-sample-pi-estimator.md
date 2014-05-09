@@ -1,59 +1,59 @@
-<properties linkid="manage-services-hdinsight-sample-pi-estimator" urlDisplayName="HDInsight Samples" pageTitle="The HDInsight Pi estimator sample | Azure" metaKeywords="hdinsight, hdinsight sample, mapreduce" description="Learn how to run a simple MapReduce sample on HDInsight." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="The HDInsight Pi estimator sample" authors="bradsev" />
+<properties linkid="manage-services-hdinsight-sample-pi-estimator" urlDisplayName="HDInsight のサンプル" pageTitle="HDInsight Pi 推定サンプル | Azure" metaKeywords="hdinsight, hdinsight のサンプル, mapreduce" description="HDInsight で単純な MapReduce サンプルを実行する方法について説明します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="HDInsight Pi 推定サンプル" authors="bradsev" />
 
-# The HDInsight Pi estimator sample
+# HDInsight Pi 推定サンプル
  
-This topic shows how to run a simple MapReduce program that estimates the value of the mathematical constant Pi with Azure HDinsight using Azure Powershell. 
+このトピックでは、Azure PowerShell を使用して Azure HDinsight で数学定数パイ (Pi) の値を推定する単純な MapReduce プログラムを実行する方法を紹介します。
 
-The program uses a statistical (quasi-Monte Carlo) method to estimate the value of Pi. Points placed at random inside of a unit square also fall within a circle inscribed within that square with a probability equal to the area of the circle, Pi/4. The value of Pi can be estimated from the value of 4R where R is the ratio of the number of points that are inside the circle to the total number of points that are within the square. The larger the sample of points used, the better the estimate is.
+プログラムでは統計的手法 (準モンテカルロ法) に基づいて Pi の値を計算します。単位正方形の内部にランダムに配置された点は、その正方形に内接する円の内部にも円の面積に等しい確率 (Pi/4) で配置されます。Pi の値は 4R という値で計算されます。ここで R は、正方形の内部にある点の総数と、円の内部にある点の数との比率です。サンプルの点の数が大きくなるほど、推定値の精度が上がります。
 
-The PiEstimator Java code that contains the mapper and reducer functions is available for inspection below. The mapper program generates a specified number of points placed at random inside of a unit square and then counts the number of those points that are inside the circle. The reducer program accumulates points counted by the mappers and then estimates the value of Pi from the formula 4R, where R is the ratio of the number of points counted inside the circle to the total number of points that are within the square.
+mapper 関数と reducer 関数を含む PiEstimator Java コードを次に挙げます。mapper プログラムは、指定された数の点を生成して単位正方形内にランダムに配置して、円の内部にある点の数を計算します。reducer プログラムは、mapper が計算した点の数を累計して、4R という公式から Pi の値を推定します。ここで R は、正方形の内部にある点の総数と、円の内部にある点の数との比率です。
 
-The script provided for this sample submits a Hadoop JAR job and is set up to run with a value 16 maps, each of which is required to compute 10 million sample points by the parameter values. These parameter values can be changed to improve the estimated value of Pi. For reference, the first 10 decimal places of Pi are 3.1415926535.
+このサンプルで示したスクリプトでは、Hadoop JAR ジョブを送信し、マップ数を 16 として実行し、それぞれがパラメーター値として指定された 1,000 万個のサンプル点を計算します。このパラメーター値を変更すると、Pi の推定値の精度を高めることができます。参考のために、Pi の小数点以下 10 桁までは 3.1415926535 です。
 
-The .jar file that contains the files needed by Hadoop on Azure to deploy the application is a .zip file and is available for download. You can unzip it with various compression utilities then explore the files at your convenience.
+Hadoop on Azure でアプリケーションを展開するときに必要なファイルを含む jar ファイルは zip ファイルでダウンロードできます。さまざまな圧縮ユーティリティを使ってファイルの圧縮を解除して、自由にファイルを調べることができます。
 
-The other samples that are available to help you get up to speed using HDInsight to run MapReduce jobs are listed on [Running the HDInsight Samples][run-samples] along with links to instructions on how to run them.
+HDInsight を使用して MapReduce ジョブをすばやく実行するのに役立つその他のサンプルは、その実行方法のリンクと共に、「[HDInsight サンプルの実行][run-samples]」に挙げられています。
 
-**You will learn:**
+**学習内容:**
 		
-* How to use Azure PowerShell to run the Pi Estimator MapReduce program on Azure HDInsight.	
-* What a MapReduce program written in Java looks like.
+* Azure PowerShell を使用して Pi 推定 MapReduce プログラムを Azure HDInsight で実行する方法。	
+* Java で記述された MapReduce プログラムの実例。
 
-**Prerequisites**:	
+**前提条件**:	
 
-- You must have an Azure Account. For options on signing up for an account see [Try Azure out for free](http://www.windowsazure.com/en-us/pricing/free-trial/) page.
+- Azure アカウントが必要です。アカウントにサインアップする方法については、[Azure の無料評価版のページ](http://www.windowsazure.com/ja-jp/pricing/free-trial/)を参照してください。
 
-- You must have provisioned an HDInsight cluster. For instructions on the various ways in which such clusters can be created, see [Provision HDInsight Clusters](/en-us/manage/services/hdinsight/provision-hdinsight-clusters/)
+- HDInsight クラスターのプロビジョニングを終えている必要があります。クラスターを作成するさまざまな方法については、「[HDInsight クラスターのプロビジョニング](/ja-jp/manage/services/hdinsight/provision-hdinsight-clusters/)」を参照してください。
 
-- You must have installed Azure PowerShell, and have configured them for use with your account. For instructions on how to do this, see [Install and configure Azure PowerShell][powershell-install-configure].
+- Azure PowerShell をインストールして、アカウントを使用するように構成している必要があります。その手順については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」を参照してください。
 
-##In this article	
-This topic shows you how to run the sample, presents the Java code for the Pi Estimator MapReduce program, summarizes what you have learned, and outlines some next steps. It has the following sections.
+##この記事の内容	
+このトピックでは、サンプルを実行する方法について説明し、Pi 推定 MapReduce プログラムの Java コードを示し、説明した内容をまとめ、次の手順の概略を示します。ここで取り上げる内容は次のとおりです。
 	
-1. [Run the sample with Azure PowerShell](#run-sample)	
-2. [The Java code for the Pi estimator MapReduce program](#java-code)
-3. [Summary](#summary)	
-4. [Next steps](#next-steps)	
+1. [Azure PowerShell を使用したサンプルの実行](#run-sample)	
+2. [Pi 推定 MapReduce プログラムの Java コード](#java-code)
+3. [まとめ](#summary)	
+4. [次のステップ](#next-steps)	
 
-<h2><a id="run-sample"></a>Run the sample with Azure PowerShell</h2>
+<h2><a id="run-sample"></a>Azure PowerShell を使用したサンプルの実行</h2>
 
-**To submit the MapReduce job**
+**MapReduce ジョブを送信するには**
 
-1. Open Azure PowerShell. For instructions of opening Azure PowerShell console window, see [Install and configure Azure PowerShell][powershell-install-configure].
-2. Set the two variables in the following commands, and then run them:
+1. Azure PowerShell を開きます。Azure PowerShell コンソール ウィンドウを開く手順については、[Azure PowerShell のインストールと構成に関するページ][powershell-install-configure]を参照してください。
+2. 次のコマンドを実行して、2 つの変数を設定します。
 	
 		$subscriptionName = "<SubscriptionName>"   # Azure subscription name
 		$clusterName = "<ClusterName>"             # HDInsight cluster name
 
-4. Run the following command to create a MapReduce definition:	
+4. 次のコマンドを実行して、MapReduce ジョブ定義を作成します。	
 
 		$piEstimatorJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/hadoop-examples.jar" -ClassName "pi" -Arguments "16", "10000000" 
 
-	> [WACOM.NOTE] *hadoop-examples.jar* comes with version 2.1 HDInsight clusters. The file has been renamed to *hadoop-mapreduce.jar* on version 3.0 HDInsight clusters.
+	> [WACOM.NOTE] *hadoop-examples.jar* は、バージョン 2.1 の HDInsight クラスターに付属しています。バージョン 3.0 の HDInsight クラスターで、このファイルの名前は *hadoop-mapreduce.jar* に変更されました
 	
-	The first argument indicates how many maps to create (default is 16). The second argument indicates how many samples are generated per map (10 million by default). So this program uses 10*10 million = 160 million random points to make its estimate of Pi. 
+	最初の引数は作成するマップの数を示します (既定値は 16)。2 つ目の引数はマップごとに生成するサンプル数を示します (既定値は 1000 万)。つまりこのプログラムでは、Pi を推定するために 16 × 1,000 万 = 1 億 6,000 万のランダム ポイントが使用されます。
 
-5. Run the following commands to submit the MapReduce job and wait for the job to complete:
+5. 次のコマンドを実行して、MapReduce ジョブを送信し、ジョブの完了を待ちます。
 
 		# Run the Pi Estimator MapReduce job.
 		Select-AzureSubscription $subscriptionName
@@ -62,15 +62,15 @@ This topic shows you how to run the sample, presents the Java code for the Pi Es
 		# Wait for the job to complete.  
 		$piJob | Wait-AzureHDInsightJob -Subscription $subscriptionName -WaitTimeoutInSeconds 3600  
 
-6. Run the following command to retrieve the MapReduce job standard output:
+6. 次のコマンドを実行して、MapReduce ジョブの標準出力を取得します。
 
 		# Print output and standard error file of the MapReduce job
 		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $piJob.JobId -StandardOutput
 
-	For comparison, the first 10 decimal places of Pi are 3.1415926535
+	比較のために、Pi の小数点以下 10 桁までは 3.1415926535 です。
 
 
-<h2><a id="java-code"></a>The Java code for the Pi estimator MapReduce program</h2>
+<h2><a id="java-code"></a>Pi 推定 MapReduce プログラムの Java コード</h2>
 
 
 
@@ -412,34 +412,35 @@ This topic shows you how to run the sample, presents the Java code for the Pi Es
 	 }
   
 
-<h2><a id="summary"></a>Summary</h2>
+<h2><a id="summary"></a>まとめ</h2>
 
-In this tutorial, you saw how to run a MapReduce job on HDInsight and how to use Monte Carlo methods that require and generare large datasets that can be managed by this service.
+このチュートリアルでは、HDInsight 上で MapReduce ジョブを実行し、このサービスで管理できる大量のデータセットを生成するモンテカルロ法を使用する方法を説明しました。
 
-<h2><a id="next-steps"></a>Next steps</h2>
+<h2><a id="next-steps"></a>次のステップ</h2>
 
-For tutorials running other samples and providing instructions on using Pig, Hive, and MapReduce jobs on Azure HDInsight with Azure PowerShell, see the following topics:
+Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実行するチュートリアルや、Pig、Hive、MapReduce の使用方法に関するチュートリアルについては、次のトピックを参照してください。
 
-* [Get Started with Azure HDInsight][getting-started]
-* [Sample: 10GB GraySort][10gb-graysort]
-* [Sample: Wordcount][wordcount]
-* [Sample: C# Steaming][cs-streaming]
-* [Use Pig with HDInsight][pig]
-* [Use Hive with HDInsight][hive]
-* [Azure HDInsight SDK documentation][hdinsight-sdk-documentation]
+* [Azure HDInsight の概要][getting-started]
+* [サンプル: 10 GB GraySort][10gb-graysort]
+* [サンプル: ワードカウント][wordcount]
+* [サンプル: C# ストリーミング][cs-streaming]
+* [HDInsight での Pig の使用][pig]
+* [HDInsight での Hive の使用][hive]
+* [Azure HDInsight SDK のドキュメント][hdinsight-sdk-documentation]
 
-[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/en-us/library/dn479185.aspx
+[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/ja-jp/library/dn479185.aspx
 
-[Powershell-install-configure]: /en-us/documentation/articles/install-configure-powershell/
+[Powershell-install-configure]: /ja-jp/documentation/articles/install-configure-powershell/
 
-[run-samples]: /en-us/manage/services/hdinsight/howto-run-samples
-[getting-started]: /en-us/manage/services/hdinsight/get-started-hdinsight/
-[10gb-graysort]: /en-us/manage/services/hdinsight/howto-run-samples/sample-10gb-graysort/
-[wordcount]: /en-us/manage/services/hdinsight/howto-run-samples/sample-wordcount/
-[cs-streaming]: /en-us/manage/services/hdinsight/howto-run-samples/sample-csharp-streaming/
+[run-samples]: /ja-jp/manage/services/hdinsight/howto-run-samples
+[getting-started]: /ja-jp/manage/services/hdinsight/get-started-hdinsight/
+[10gb-graysort]: /ja-jp/manage/services/hdinsight/howto-run-samples/sample-10gb-graysort/
+[wordcount]: /ja-jp/manage/services/hdinsight/howto-run-samples/sample-wordcount/
+[cs-streaming]: /ja-jp/manage/services/hdinsight/howto-run-samples/sample-csharp-streaming/
 
 
-[hive]: /en-us/manage/services/hdinsight/using-hive-with-hdinsight/
-[pig]: /en-us/manage/services/hdinsight/using-pig-with-hdinsight/
+[hive]: /ja-jp/manage/services/hdinsight/using-hive-with-hdinsight/
+[pig]: /ja-jp/manage/services/hdinsight/using-pig-with-hdinsight/
  
+
 

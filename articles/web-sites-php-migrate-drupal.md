@@ -1,44 +1,44 @@
-<properties linkid="migrating-drupal-to-azure-websites" urlDisplayName="Migrating Drupal to Azure Web Sites" pageTitle="Migrating Drupal to Azure Web Sites" metaKeywords="Drupal, PHP, Web Sites" description="Migrate a Drupal PHP site to Azure Web Sites." metaCanonical="" services="web-sites" documentationCenter="PHP" title="Migrating Drupal to Azure Web Sites" authors="jroth" solutions="" manager="paulettm" editor="mollybos" />
+<properties linkid="migrating-drupal-to-azure-websites" urlDisplayName="Azure の Web サイトへの Drupal の移行" pageTitle="Azure の Web サイトへの Drupal の移行" metaKeywords="Drupal, PHP, Web サイト" description="Drupal PHP サイトを Azure の Web サイトへ移行します。" metaCanonical="" services="web-sites" documentationCenter="PHP" title="Azure の Web サイトの Drupal への移行" authors="jroth" solutions="" manager="paulettm" editor="mollybos" />
 
 
-# Migrating Drupal to Azure Web Sites
+# Azure の Web サイトへの Drupal の移行
 
-Because Azure Web Sites supports both PHP and MySQL, it is relatively straightforward to migrate a Drupal site to Azure Web Sites. And, because Drupal and PHP run on any platform, the process should work for moving Drupal to Azure Web Sites regardless of your current platform. With this said, Drupal installations can vary widely, so there could be some unique migration steps not covered in the following material. Note that the Drush tool is not used, because it is not supported on Azure Web Sites.
+Azure の Web サイトは PHP と MySQL を両方サポートしているので、Drupal サイトは比較的簡単に Azure の Web サイトに移行できます。また、Drupal と PHP はプラットフォームを選ばないため、現在どのプラットフォームを使用しているかにかかわらず、同じ手順で Drupal を Azure の Web サイトに移行できます。同じ理由から、Drupal のインストール環境はサイトによって大きく異なるので、ここに記載されていない独自の移行手順が必要になる場合もあります。Drush ツールは Azure の Web サイトでサポートされないため、使用されません。
 
 > [WACOM.NOTE]
-> If you are moving a large and complex Drupal application, another option is to consider using Azure Cloud Services. For more information about the differences between Web Sites and Cloud Services, see <a href="http://go.microsoft.com/fwlink/?LinkId=310123">Azure Web Sites, Cloud Services, and VMs: When to use which?</a>. For help on moving Drupal to Cloud Services, see <a href="http://blogs.msdn.com/b/brian_swan/archive/2012/03/19/azure-real-world-migrating-drupal-from-lamp-to-windows-azure.aspx">Migrating a Drupal Site from LAMP to Windows Azure</a>.
+> 大規模で複雑な Drupal アプリケーションを移行する場合は、Azure クラウド サービスを使用する方法もあります。Web サイトとクラウド サービスの違いの詳細については、「<a href="http://go.microsoft.com/fwlink/?LinkId=310123">Azure の Web サイト、クラウド サービス、仮想マシン: いつ、どれを使用するか</a>」を参照してください。クラウド サービスへの Drupal の移行については、「<a href="http://blogs.msdn.com/b/brian_swan/archive/2012/03/19/azure-real-world-migrating-drupal-from-lamp-to-windows-azure.aspx">Migrating a Drupal Site from LAMP to Azure (LAMP から Azure への Drupal サイトの移行)</a>」を参照してください。
 
-## Table of Contents
+## 目次
 
-- [Create the Azure Web Site][]
-- [Copy the Database][]
-- [Modify Settings.php][]
-- [Deploy the Drupal Code][]
-- [Related information][]
+- [Azure の Web サイトを作成する][]
+- [データベースをコピーする][]
+- [Settings.php を修正する][]
+- [Drupal コードをデプロイする][]
+- [関連情報][]
  
-##<a name="create-siteanddb"></a><span class="short-header">Create an Azure Web Site and MySQL database</span>1. Create an Azure Web Site and MySQL database
+##<a name="create-siteanddb"></a><span class="short-header">Azure の Web サイトと MySQL データベースを作成する</span>1. Azure の Web サイトと MySQL データベースを作成する
 
-First, go through the step-by-step tutorial to learn how to create a new Web Site with MySQL: [Create a PHP-MySQL Azure web site and deploy using Git][]. If you intend to use Git to publish your Drupal site, then follow the steps in the tutorial that explain how to configure a Git repository. Make sure to follow the instructions in the **Get remote MySQL connection information** section as you will need that information later. You can ignore the remainder of the tutorial for the purposes of deploying your Drupal site, but if you are new to Azure Web Sites (and to Git), you might find the additional reading informative.
+最初に、「[PHP-MySQL Azure の Web サイトを作成して Git で展開する][]」チュートリアルの手順に従って、MySQL を使用する新しい Web サイトを作成します。Git を使用して Drupal サイトを発行する場合は、Git リポジトリの構成方法を説明しているチュートリアルの手順に従います。必ず「**MySQL のリモート接続情報の取得**」セクションの指示に従ってください。この情報は後で必要になります。Drupal サイトを展開することが目的であれば、このチュートリアルの他の部分は無視してかまいません。ただし、Azure の Web サイト (および Git) を初めて使用する場合は、ひととおりお読みになることをお勧めします。
 
-After you setup a new Web Site with a MySQL database, you now have your MySQL database connection information and an (optional) Git repository. The next step is to copy your database to MySQL in Azure Web Sites.
+MySQL データベースを使用する新しい Web サイトを設定すると、MySQL データベース接続情報と (オプションの) Git リポジトリが作成されます。次の手順では、Azure の Web サイトの MySQL にデータベースをコピーします。
 
-##<a name="copy-database"></a><span class="short-header">Copy database to MySQL in Azure Web Sites</span>2. Copy database to MySQL in Azure Web Sites
+##<a name="copy-database"></a><span class="short-header">Azure の Web サイトの MySQL にデータベースをコピーする</span>2.Azure の Web サイトの MySQL にデータベースをコピーする
 
-There are many ways to migrate a database into Azure. One way that works well with MySQL databases is to use the [MySqlDump][] tool. The following command provides and example of how to copy from a local machine to Azure Web Sites:
+データベースを Azure に移行するにはさまざまな方法があります。MySQL データベースの場合、[MySqlDump][] ツールを使用する方法が適しています。次のコマンドは、ローカル コンピューターから Azure の Web サイトにコピーする方法の例を示しています。
 
     mysqldump -u local_username --password=local_password  drupal | mysql -h remote_host -u remote_username --password=remote_password remote_db_name
 
-You do, of course, have to provide the username and password for your existing Drupal database. You also have to provide the hostname, username, password, and database name for the MySQL database you created in the first step. This information is available in the connection string information that you collected previously. The connection string should have a format similar to the following string:
+もちろん、実際に使用する Drupal データベースのユーザー名とパスワードを指定してください。同様に、最初の手順で作成した MySQL データベースのホスト名、ユーザー名、パスワード、データベース名を指定します。この情報は、前に収集した接続文字列情報に含まれています。接続文字列の形式は次のとおりです。
 
     Database=remote_db_name;Data Source=remote_host;User Id=remote_username;Password=remote_password
 
-Depending on the size of your database, the copying process could take several minutes.
+データベースのサイズによっては、コピー処理に数分かかる場合があります。
 
-Now your Drupal database is live in Azure Websites. Before you deploy your Drupal code, you need to modify it so it can connect to the new database.
+これで Drupal データベースを Azure の Web サイトに移行できました。Drupal コードを展開する前に、このコードを修正して、新しいデータベースに接続できるようにする必要があります。
 
-##<a name="modify-settingsphp"></a><span class="short-header">Modify database connection info in settings.php</span>3. Modify database connection info in settings.php
+##<a name="modify-settingsphp"></a><span class="short-header">settings.php のデータベース接続情報を修正する</span>3. settings.php のデータベース接続情報を修正する
 
-Here, you again need your new database connection information. Open the **/drupal/sites/default/setting.php** file in a text editor, and replace the values of ‘database’, ‘username’, ‘password’, and ‘host’ in the **$databases** array with the correct values for your new database. When you are finished, you should have something similar to this:
+ここで、新しいデータベースの接続情報が再び必要になります。テキスト エディターで **/drupal/sites/default/setting.php** ファイルを開き、**$databases** 配列内の 'database'、'username'、'password'、'host' の値を新しいデータベースの値に書き換えます。書き換えた配列は次のようになります。
 
     $databases = array (
        'default' => 
@@ -56,39 +56,40 @@ Here, you again need your new database connection information. Open the **/drupa
        ),
      );
 
-Save the **settings.php** file. Now you are ready to deploy.
+**settings.php** ファイルを保存します。これで展開する準備が整いました。
 
-##<a name="deploy-drupalcode"></a><span class="short-header">Deploy Drupal code using Git or FTP</span>4. Deploy Drupal code using Git or FTP
+##<a name="deploy-drupalcode"></a><span class="short-header">Git または FTP を使用して Drupal コードを展開する</span>4. Git または FTP を使用して Drupal コードを展開する
 
-The last step is to deploy your code to Azure Web Sites using Git or FTP.
+最後に、Git または FTP を使用して、Azure の Web サイトにコードを展開します。
 
-If you are using FTP, get the FTP hostname and username from you website’s dashboard. Then, use any FTP client to upload the Drupal files to the **/site/wwwroot** folder of the remote site.
+FTP を使用する場合は、Web サイトのダッシュボードから FTP のホスト名とユーザー名を取得します。次に、任意の FTP クライアントを使用して、リモート サイトの **/site/wwwroot** フォルダーに Drupal ファイルをアップロードします。
 
-If you are using Git, you should have set up a Git repository in the previous steps. You must install Git on your local machine. Then, follow the instructions provided after you created the repository.
+Git を使用する場合は、前の手順で Git リポジトリを設定している必要があります。ローカル コンピューターに Git をインストールします。リポジトリを作成した後、記載の指示に従ってください。
 
 > [WACOM.NOTE]
-> Depending on your Git settings, you might have to edit your .gitignore file (a hidden file and a sibling to the .git folder created in your local root directory after you executed git commit). This specifies files in your Drupal application that may be ignored. If this contains files that should be deployed, remove those entries so that these files are not ignored.
+> Git の設定によっては、.gitignore ファイル (git commit の実行後にローカル ルート ディレクトリに作成される .git フォルダーと同じ階層にある隠しファイル) の編集が必要になることがあります。これは、Drupal アプリケーションで無視されるファイルを指定します。展開する必要のあるファイルがここに含まれている場合は、それらのファイルを削除して無視されないようにします。
 
-After you have deployed Drupal to Azure Web Sites, you can continue to deploy updates via Git or FTP.
+Azure の Web サイトに Drupal を展開した後は、引き続き Git または FTP を使用して更新を展開できます。
 
-##<a name="related-information"></a><span class="short-header">Related information</span>Related information
+##<a name="related-information"></a><span class="short-header">関連情報</span>関連情報
 
-For more information, see the following posts and topics:
+詳細については、次の投稿およびトピックをご覧ください。
 
-- [Azure Websites, a PHP Perspective][]
-- [Azure Web Sites, Cloud Services, and VMs: When to use which?][]
-- [Configuring PHP in Azure Websites with .user.ini Files][]
-- [Azure Integration Module](https://drupal.org/project/azure_auth)
-- [Azure Blob Storage Module](https://drupal.org/project/azure_blob)
+- [Azure Websites, a PHP Perspective (Azure の Web サイト - PHP について)][]
+- [Azure の Web サイト、クラウド サービス、仮想マシン: いつ、どれを使用するか][]
+- [Configuring PHP in Azure Websites with .user.ini Files (.user.ini ファイルを使用して Azure の Web サイトで PHP を構成する)][]
+- [Azure Integration Module (Azure 統合モジュール)](https://drupal.org/project/azure_auth)
+- [Azure Blob Storage Module (Azure BLOB ストレージ モジュール)](https://drupal.org/project/azure_blob)
 
-  [Create the Azure Web Site]: #create-siteanddb
-  [Copy the Database]: #copy-database
-  [Modify Settings.php]: #modify-settingsphp
-  [Deploy the Drupal Code]: #deploy-drupalcode
-  [Related information]: #related-information
-  [Create a PHP-MySQL Azure web site and deploy using Git]: http://www.windowsazure.com/en-us/develop/php/tutorials/website-w-mysql-and-git/
+  [Azure の Web サイトを作成する]: #create-siteanddb
+  [データベースをコピーする]: #copy-database
+  [Settings.php を修正する]: #modify-settingsphp
+  [Drupal コードをデプロイする]: #deploy-drupalcode
+  [関連情報]: #related-information
+  [PHP-MySQL Azure の Web サイトを作成して Git で展開する]: http://www.windowsazure.com/ja-jp/develop/php/tutorials/website-w-mysql-and-git/
   
-  [Azure Websites, a PHP Perspective]: http://blogs.msdn.com/b/silverlining/archive/2012/06/12/windows-azure-websites-a-php-perspective.aspx
-  [Azure Web Sites, Cloud Services, and VMs: When to use which?]: http://go.microsoft.com/fwlink/?LinkId=310123
-  [Configuring PHP in Azure Websites with .user.ini Files]: http://blogs.msdn.com/b/silverlining/archive/2012/07/10/configuring-php-in-windows-azure-websites-with-user-ini-files.aspx
-  [Azure Integration Module]: http://drupal.org/project/azure
+  [Azure Websites, a PHP Perspective (Azure の Web サイト - PHP について)]: http://blogs.msdn.com/b/silverlining/archive/2012/06/12/windows-azure-websites-a-php-perspective.aspx
+  [Azure の Web サイト、クラウド サービス、仮想マシン: いつ、どれを使用するか]: http://go.microsoft.com/fwlink/?LinkId=310123
+  [Configuring PHP in Azure Websites with .user.ini Files (.user.ini ファイルを使用して Azure の Web サイトで PHP を構成する)]: http://blogs.msdn.com/b/silverlining/archive/2012/07/10/configuring-php-in-windows-azure-websites-with-user-ini-files.aspx
+  [Azure Integration Module (Azure 統合モジュール)]: http://drupal.org/project/azure
+

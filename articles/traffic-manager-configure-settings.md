@@ -1,285 +1,285 @@
-<properties linkid="" urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="How to Configure Traffic Manager Settings" authors="" solutions="" manager="" editor="" />
+<properties linkid="" urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Traffic Manager の設定の構成方法" authors="" solutions="" manager="" editor="" />
 
 
-#How to Configure Traffic Manager Settings#
-Azure Traffic Manager enables you to control the distribution of user traffic to Azure hosted services. 
+#トラフィック マネージャーの設定の構成方法#
+Azure のトラフィック マネージャーを使用すると、Azure ホステッド サービスへのユーザー トラフィックの振り分けを制御できます。
 
-Traffic Manager works by applying an intelligent policy engine to the DNS queries on your main company domain name. Update the DNS resource records that your company owns to point to Traffic Manager domains. Traffic Manager policies that are attached to those domains then resolve DNS queries on your main company domain name to the IP addresses of specific Azure hosted services contained in the Traffic Manager policies. For more information, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/en-us/library/windowsazure/hh744833.aspx).
+トラフィック マネージャーは、会社のメイン ドメイン名に対する DNS クエリにインテリジェントなポリシー エンジンを適用することで機能します。会社が所有する DNS リソース レコードは、会社のドメインで Traffic Manager ドメインが参照されるように更新する必要があります。それらのドメインに接続されているトラフィック マネージャー ポリシーに基づいて、会社のメイン ドメイン名に対する DNS クエリが、トラフィック マネージャー ポリシー内の特定の Azure ホステッド サービスの IP アドレスに解決されます。詳細については、[Azure のトラフィック マネージャーの概要に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh744833.aspx)を参照してください。
 
-##Table of Contents
+##目次
 
-* [How to: Point a Company Internet Domain to a Traffic Manager Domain](#howto_point_company) 
-* [How to: Test a Policy](#howto_test)
-* [How to: Temporarily Disable Policies and Hosted Services](#howto_temp_disable)
-* [How to: Edit a Policy](#howto_edit_policy)
-* [How to: Load Balance Traffic Equally Across a Set of Hosted Services](#howto_load_balance)
-* [How to: Create a Failover Policy](#howto_create_failover)
-* [How to: Direct Incoming Traffic to Hosted Services Based on Network Performance](#howto_direct)
+* [方法: 会社のインターネット ドメインでトラフィック マネージャー ドメインが参照されるようにする](#howto_point_company)
+* [方法: ポリシーをテストする](#howto_test)
+* [方法: ポリシーとホステッド サービスを一時的に無効にする](#howto_temp_disable)
+* [方法: ポリシーを編集する](#howto_edit_policy)
+* [方法: トラフィックを一連のホステッド サービスに均等に負荷分散する](#howto_load_balance)
+* [方法: フェールオーバー ポリシーを作成する](#howto_create_failover)
+* [方法: ネットワーク パフォーマンスに基づいて受信トラフィックをホステッド サービスに振り分ける](#howto_direct)
 
 
-<h2><a id="howto_point_company"></a>How to: Point a Company Internet Domain to a Traffic Manager Domain</h2>
+<h2><a id="howto_point_company"></a>方法: 会社のインターネット ドメインでトラフィック マネージャー ドメインが参照されるようにする</h2>
 
-To point your company domain name to a Traffic Manager domain, edit the DNS resource record on your DNS server using a CNAME. 
+会社のドメイン名で Traffic Manager ドメインが参照されるようにするには、CNAME を使用して DNS サーバー上の DNS リソース レコードを編集します。
 
-For example, to point the main company domain **www.contoso.com** to a Traffic Manager domain named **contoso.trafficmanager.net**, update the DNS resource record as shown below:
+たとえば、会社のメイン ドメイン **www.contoso.com** で **contoso.trafficmanager.net** という名前のトラフィック マネージャー ドメインが参照されるようにするには、DNS リソース レコードを次のように更新します。
 ``www.contoso.com IN CNAME contoso.trafficmanager.net``
 
-All traffic going to *www.contoso.com* will now redirect to *contoso.trafficmanager.net*. Be sure that you are using a domain where you want all traffic redirected to Traffic Manager. 
+これで、*www.contoso.com* へのすべてのトラフィックが *contoso.trafficmanager.net* にリダイレクトされるようになります。使用するドメインは、すべてのトラフィックをトラフィック マネージャーにリダイレクトする必要のあるドメインにしてください。
 
-<h2><a id="howto_test"></a>How to: Test a Policy</h2>
+<h2><a id="howto_test"></a>方法: ポリシーをテストする</h2>
 
-The best way to test your policy is to set up a number of clients and then bring the services in your policy down one at a time. The following tips will help you test your Traffic Manager policy:
+ポリシーをテストする最良の方法は、複数のクライアントを設定し、ポリシー内のサービスを一度に 1 つずつダウンさせることです。以下に、トラフィック マネージャー ポリシーをテストするために役立つヒントを示します。
 
-- **Set the DNS TTL very low** so that changes will propagate quickly - 30 seconds, for example.
+- **DNS TTL を非常に短い時間に設定**して、変更がすぐに反映されるようにします。たとえば 30 秒に設定します。
 
-- **Know the IP addresses of the Azure hosted services** in the policy you are testing. You can obtain this information from the Azure Management Portal. Click on the Production Deployment of your service. In the properties pane on the right, the last entry will be the VIP, which is the virtual IP address of that hosted service.
+- **テストするポリシー内の Azure ホステッド サービスの IP アドレスを確認**します。この情報は Azure 管理ポータルから取得できます。サービスの運用環境のデプロイをクリックします。右側のプロパティ ウィンドウで、最後のエントリがそのホステッド サービスの VIP (仮想 IP アドレス) になります。
 
-	![hosted service IP location][0]
+	![ホステッド サービスの IP の場所][0]
 
-	**Figure 1** -  hosted service IP location
+	**図 1** -  ホステッド サービスの IP の場所
 
-- **Use tools that let you resolve a DNS name to an IP address** and display that address. You are checking to see that your company domain name resolves to IP addresses of the hosted services in your policy. They should resolve in a manner consistent with the load balancing method of your Traffic Manager policy. If you are on a Windows system, you can use nslookup from a CMD window (explained below). Other publicly available tools that allow you to "dig" an IP address are also readily available on the Internet.
+- **DNS 名を IP アドレスに解決**してそのアドレスを表示できるツールを使用します。会社のドメイン名がポリシー内のホステッド サービスの IP アドレスに解決されることを確認します。その名前解決は Traffic Manager ポリシーと同じ負荷分散方式で行われる必要があります。Windows システム上では、CMD ウィンドウから nslookup コマンドを使用できます (後で説明)。他にも、インターネット上には IP アドレスを調べることができるツールがあり、すぐに使用できる状態で公開されています。
 
-- **Check the Traffic Manager policy** by using *nslookup*. 
+- **nslookup コマンドを使用してトラフィック マネージャー ポリシーを確認**します**。
 
-> **To check an Traffic Manager policy by using nslookup** 
+> **nslookup コマンドを使用してトラフィック マネージャー ポリシーを確認するには**
 
->1. Start a CMD window by clicking **Start-Run** and typing **CMD**.
+>1. **[スタート]、[ファイル名を指定して実行]** の順にクリックし、「**CMD**」と入力して、CMD ウィンドウを起動します。
 
->2. In order to flush the DNS resolver cache, type ``ipconfig /flushdns``.
+>2. DNS リゾルバー キャッシュをフラッシュするために、「``ipconfig /flushdns``」と入力します。
 
->3. Type the command ``nslookup <your traffic manager domain>``.
- For example, the following command checks the domain with the prefix *myapp.contoso* ``nslookup myapp.contoso.trafficmanager.net``
+>3. コマンド「``nslookup <your traffic manager domain>``」を入力します。
+ たとえば、``nslookup myapp.contoso.trafficmanager.net`` というコマンドは、プレフィックスが *myapp.contoso* のドメインを確認します。
 
->>A typical result will show the following:
+>>通常、結果として次の情報が表示されます。
 
->> - The DNS name and IP address of the DNS server being accessed to resolve this Traffic Manager domain.
+>> - このトラフィック マネージャー ドメインを解決するためにアクセスされる DNS サーバーの DNS 名と IP アドレス。
 
->> - The Traffic Manager domain name you typed on the command line after "nslookup" and the IP address that Traffic Manager domain resolves to. 
-The second IP address is the important one to check. It should match a VIP for one of the hosted services in the Traffic Manager policy you are testing.
+>> - コマンド ラインで "nslookup" の後に入力したトラフィック マネージャー ドメイン名と、そのトラフィック マネージャー ドメインから解決された IP アドレス。
+この 2 番目の IP アドレスを確認することが重要です。この IP アドレスが、テスト対象のトラフィック マネージャー ポリシー内のいずれかのホステッド サービスの VIP に一致する必要があります。
 
->>![nslookup command example][1]
+>>![nslookup コマンドの例][1]
 
->>**Figure 2** - nslookup command example
+>>**図 2** - nslookup コマンドの例
 
-- **Use one of the additional testing methods listed below.** Select the appropriate method for the type of load balancing you are testing.
+- **そのほかにも、次に示しているようなテスト方法があります。**テスト対象の負荷分散方式に適した方法を選択します。
 
-###Performance policies###
+###パフォーマンス ポリシー###
 
-You will need clients in different parts of the world to effectively test your domain. You could create clients in Azure which will attempt to call your services via your company domain name. Alternatively, if your corporation is global you can remotely log into clients in other parts of the country and test from those clients.
+ドメインを効果的にテストするには、世界中のさまざまな地域にあるクライアントが必要になります。1 つの方法として、Azure 上にクライアントを作成し、それらのクライアントから会社のドメイン名を使用してサービスの呼び出しをテストできます。または、世界各国に事業所がある会社の場合は、他の国の地域にあるクライアントにリモート ログインし、そらのクライアントからテストを行うことができます。
 
-There are free web based nslookup and dig services available. Some of these give you the ability to check DNS name resolution from various locations. Do a search on nslookup for examples. Another option is to use a 3rd party solution like Gomez or Keynote to confirm that your policies are distributing traffic as expected.
+無料で利用できる Web ベースの nslookup および dig サービスがあります。これらのサービスの中には、さまざまな場所から DNS 名前解決を確認できるものもあります。たとえば、nslookup に基づいた検索が可能です。さらに、Gomez や Keynote のようなサード パーティ製ソリューションもあります。このようなソリューションを使用して、トラフィックがポリシーに基づいて予期したとおりに振り分けられることを確認できます。
 
-###Failover policies###
+###フェールオーバー ポリシー###
 
-1. Leave all services up.
+1. すべてのサービスを稼働状態にします。
 
-2. Use a single client.
+2. 1 つのクライアントを使用します。
 
-3. Request DNS resolution for your company domain using ping or a similar utility.
+3. ping または同様のユーティリティを使用して、会社のドメインの DNS 解決を要求します。
 
-4. Ensure that the IP address your obtain is for your primary hosted service. 
+4. 取得した IP アドレスがプライマリ ホステッド サービスの IP アドレスに一致することを確認します。
 
-5. Bring your primary service down or remove the monitoring file so that Traffic Manager thinks it is down.
+5. プライマリ サービスをダウンさせるか監視ファイルを削除して、トラフィック マネージャーでそのサービスがダウンしていると認識されるようにします。
 
-6. Wait at least 2 minutes. 
+6. 少なくとも 2 分待ちます。
 
-7. Request DNS resolution.
+7. DNS 解決を要求します。
 
-8. Ensure that the IP address you obtain is for your secondary hosted service as shown by the order of the services in the Edit Traffic Manager Policy dialog box.
+8. 取得した IP アドレスが、[トラフィック マネージャー ポリシーの編集] ダイアログ ボックスのサービス一覧内の 2 番目のホステッド サービスの IP アドレスに一致することを確認します。
 
-9. Repeat the process, bringing down the secondary service and then the tertiary and so on. Each time, be sure that the DNS resolution returns the IP address of the next service in the list. When all services are down, you should obtain the IP address of the primary hosted service again.
+9. 2 番目のサービスをダウンさせて、次は 3 番目のサービスをダウンさせてという具合に、ここまでの手順を繰り返します。毎回、DNS 解決によって一覧内の次のサービスの IP アドレスが返されることを確認します。すべてのサービスをダウンさせたら、プライマリ ホステッド サービスの IP アドレスが再度返されます。
 
-###Round Robin policies###
+###ラウンド ロビン ポリシー###
 
-1. Leave all services up.
+1. すべてのサービスを稼働状態にします。
 
-2. Use a single client.
+2. 1 つのクライアントを使用します。
 
-3. Request DNS resolution for your top level domain.
+3. トップ レベル ドメインの DNS 解決を要求します。
 
-4. Ensure that the IP address you obtain is one of those in your list.
+4. 取得した IP アドレスが一覧内の IP アドレスのいずれかに一致することを確認します。
 
-5. Repeat the process letting the DNS TTL expire so that you will receive a new IP address. You should see IP addresses returned for each of your hosted services. Then the process will repeat.
+5. ここまでの手順を繰り返します。DNS TTL が経過すると、新しい IP アドレスが返されます。各ホステッド サービスの IP アドレスが順番に返されます。このような処理が繰り返されます。
 
 
-<h2><a id="howto_temp_disable"></a>How to: Temporarily Disable Policies and Hosted Services</h2>
+<h2><a id="howto_temp_disable"></a>方法: ポリシーとホステッド サービスを一時的に無効にする</h2>
 
-You can disable previously created Traffic Manager policies so they will not route traffic. When you disable a Traffic Manager policy, the information of the policy will remain intact and editable in the Traffic Manager interface. You can easily enable the policy again and routing will resume. 
+以前に作成したトラフィック マネージャー ポリシーを無効にして、それらのポリシーに基づいてトラフィックが振り分けられないようにできます。Traffic Manager ポリシーを無効にしても、ポリシーの情報は元のままで、Traffic Manager インターフェイスで編集可能です。ポリシーは簡単に再度有効にでき、トラフィックの振り分けが再開されます。
 
-You can also disable individual hosted services that are part of a Traffic Manager policy. This action effectively leaves the hosted service as part of the policy, but the policy acts as if the hosted service is not included in it. This action is very useful for temporarily removing a hosted service that is in maintenance mode or being redeployed and so unstable. After the hosted service is up and running again, it can be re-enabled. 
+また、トラフィック マネージャー ポリシー内の個々のホステッド サービスを無効にすることもできます。この方法では、無効にしたホステッド サービスはポリシー内に残りますが、そのホステッド サービスが削除されたかのようにポリシーは機能します。この方法が便利なのは、メンテナンス モードのホステッド サービスや、再デプロイされて不安定なホステッド サービスを一時的に削除する場合です。そのホステッド サービスが稼働状態に戻ったら、再度有効にできます。
 
-**Note**  
-Disabling a hosted service has nothing to do with its deployment state in Azure. A healthy service will remain up and able to receive traffic even when disabled in Traffic Manager. Also, disabling a hosted service in one policy does not affect its status in another policy. 
+**注**  
+ホステッド サービスを無効にしても、Azure でのそのサービスの展開状態に影響はありません。正常なサービスは、Traffic Manager で無効になっていても、稼働状態のままでトラフィックを受信できます。また、ポリシー内でホステッド サービスを無効にしても、別のポリシー内でのそのサービスの状態に影響はありません。
 
-###To disable a policy###
+###ポリシーを無効にするには###
 
-1. Select an enabled policy in the Traffic Manager interface tree. 
+1. トラフィック マネージャー インターフェイス ツリーで、有効になっているポリシーを選択します。
 
-2. Click **Disable Policy** on the top toolbar. Note that the button will be greyed out if you highlight a policy that is already disabled.
+2. 上部のツール バーで **[ポリシーの無効化]** をクリックします。既に無効になっているポリシーを選択すると、このボタンは淡色表示されることに注意してください。
 
-###To enable a policy###
+###ポリシーを有効にするには###
 
-1. Select a disabled policy in the Traffic Manager interface tree. 
+1. トラフィック マネージャー インターフェイス ツリーで、無効になっているポリシーを選択します。
 
-2. Click **Enable Policy** on the top toolbar. Note that the button will be greyed out if you highlight a policy that is already disabled.
+2. 上部のツール バーで **[ポリシーの有効化]** をクリックします。既に有効になっているポリシーを選択すると、このボタンは淡色表示されることに注意してください。
 
-###To disable a hosted service###
+###ホステッド サービスを無効にするには###
 
-1. Select an enabled hosted service in a policy in the Traffic Manager interface. You will have to expand a policy in order to see the hosted services contained within it. 
+1. トラフィック マネージャー インターフェイスで、ポリシー内で有効になっているホステッド サービスを選択します。ポリシー内のホステッド サービスを表示するには、そのポリシーを展開する必要があります。
 
-2. Click **Disable Service Policy** on the top toolbar. Note that the button will be greyed out if you highlight a hosted service that is already disabled.
+2. 上部のツール バーで **[サービスのポリシーの無効化]** をクリックします。既に無効になっているホステッド サービスを選択すると、このボタンは淡色表示されることに注意してください。
 
-3. Traffic will stop flowing to the hosted service based on the DNS TTL time set for the Traffic Manager domain that is part of the policy. For more information, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/en-us/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring) and scroll to the section "Monitoring hosted services in Azure Traffic Manager." 
+3. そのホステッド サービスへのトラフィックの振り分けが、ポリシー内のトラフィック マネージャー ドメインに設定された DNS TTL に基づいて停止されます。詳細については、[Azure トラフィック マネージャーの概要に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring)で、Azure トラフィック マネージャーでのホステッド サービスの監視に関するセクションを参照してください。
 
-###To enable a hosted service###
+###ホステッド サービスを有効にするには###
 
-1. Select a disabled hosted service in a policy in the Traffic Manager interface. You will have to expand a policy in order to see the hosted services contained within it. 
+1. トラフィック マネージャー インターフェイスで、ポリシー内で無効になっているホステッド サービスを選択します。ポリシー内のホステッド サービスを表示するには、そのポリシーを展開する必要があります。
 
-2. Click **Enable Service Policy** on the top toolbar. Note that the button will be greyed out if you highlight a hosted service that is already enabled.
+2. 上部のツール バーで **[サービスのポリシーの有効化]** をクリックします。既に有効になっているホステッド サービスを選択すると、このボタンは淡色表示されることに注意してください。
 
-3. Traffic will start flowing to the hosted service again as dictated by the policy.  
+3. そのホステッド サービスへのトラフィックの振り分けがポリシーに基づいて再開されます。
 
-<h2><a id="howto_edit_policy"></a>How to: Edit a Policy</h2>
+<h2><a id="howto_edit_policy"></a>方法: ポリシーを編集する</h2>
 
-If you just need to temporarily turn off a policy or particular hosted services in the policy, you can temporarily disable them without changing the policy.  
+ポリシーまたはポリシー内の特定のホステッド サービスを一時的にオフにする必要がある場合は、ポリシーを変更することなく、それらを一時的に無効にできます。
 
-To change a policy to a different type, use the following steps:
+ポリシーを別の種類に変更するには、次の手順を実行します。
 
-1. **Log into the Traffic Manager area in the Management Portal** at [http://manage.windowsazure.com](http://manage.windowsazure.com). Click **Virtual Network** in the lower left of the portal pages and then choose **Traffic Manager** from the options in the left pane.
+1. **管理ポータル ([http://manage.windowsazure.com](http://manage.windowsazure.com)) でトラフィック マネージャー領域にログイン**します。ポータル ページの左下にある **[仮想ネットワーク]** をクリックし、左側のウィンドウのオプションから **[トラフィック マネージャー]** を選択します。
 
-2. **Select the policy** you want to change in the Traffic Manager screen in the Management Portal.
+2. **管理ポータルのトラフィック マネージャー画面で、変更するポリシーを選択**します。
 
-3. **Click "Configure"** on the top menu bar.
+3. **上部のメニュー バーで [構成] をクリック**します。
 
-4. **Make the desired changes to the policy.** Note that if you change the load balancing method, depending on the selected option, the order of the hosted services in the **Selected hosted services** list may or may not be important.  
+4. **ポリシーに必要な変更を加えます。**負荷分散方法を変更した場合、選択したオプションによっては、**[選択したホステッド サービス]** ボックスの一覧内のホステッド サービスの順序が重要になることに注意してください。
 
-5. Click **Save**.
+5. **[保存]** をクリックします。
 
-<h2><a id="howto_load_balance"></a>How to: Load Balance Traffic Equally Across a Set of Hosted Services</h2>
+<h2><a id="howto_load_balance"></a>方法: トラフィックを一連のホステッド サービスに均等に負荷分散する</h2>
 
-A common load balancing pattern is to provide a set of identical hosted services and send traffic to each in a round-robin fashion. This article outlines the steps to set up a Traffic Manager domain and policy to perform this type of load balancing.
+負荷分散の一般的なパターンは、一連の同じホステッド サービスを用意し、トラフィックをラウンド ロビン方式でそれらの各サービスに送信することです。この記事では、この方式の負荷分散を実行するようにトラフィック マネージャー ドメインとポリシーを設定する手順について概説します。
 
-For more information on the different load balancing methods that Traffic Manager provides, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/en-us/library/windowsazure/hh744833.aspx) and scroll to the section "Load balancing methods in Azure Traffic Manager."
+トラフィック マネージャーに用意されているさまざまな負荷分散方法の詳細については、[Azure トラフィック マネージャーの概要に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh744833.aspx)で、Azure トラフィック マネージャーでの負荷分散方法に関するセクションを参照してください。
 
-1. **Deploy your hosted services** into your production environment. For information on developing and deploying [Azure hosted services](http://msdn.microsoft.com/library/gg432967.aspx).
+1. **ホステッド サービスを運用環境に展開**します。ホステッド サービスの開発と展開については、[Azure ホステッド サービスに関するページ](http://msdn.microsoft.com/library/gg432967.aspx)を参照してください。
 
-2. **Log into the Traffic Manager area in the Management Portal** at [http://manage.windowsazure.com](http://manage.windowsazure.com). Click **Virtual Network** in the lower left of the portal pages and then choose **Traffic Manager** from the options in the left pane.
+2. **管理ポータル ([http://manage.windowsazure.com](http://manage.windowsazure.com)) でトラフィック マネージャー領域にログイン**します。ポータル ページの左下にある **[仮想ネットワーク]** をクリックし、左側のウィンドウのオプションから **[トラフィック マネージャー]** を選択します。
 
-3. **Choose Policies and click "Create".** Choose the folder **Policies** from the left navigation tree to enable **Create** in the top toolbar. Choose **Create**. The **Create Traffic Manager policy** dialog will appear.
+3. **[ポリシー] を選択し、[作成] をクリックします。**左側のナビゲーション ツリーから **[ポリシー]** フォルダーを選択して、上部のツール バーの **[作成]** を有効にします。**[作成]** を選択します。**[トラフィック マネージャー ポリシーの作成]** ダイアログ ボックスが表示されます。
 
-	![Create button for policies][2]
+	![ポリシーの [作成] ボタン][2]
 
-	**Figure 1** - Create button for policies
+	**図 1** -  ポリシーの [作成] ボタン
 
-4. **Choose a subscription.** Policies and domains are associated with single subscription.
+4. **サブスクリプションを選択します。**ポリシーとドメインは 1 つのサブスクリプションに関連付けられます。
 
-5. **Select the Round Robin load balance method.** For more information on the different load balancing methods that Traffic Manager provides, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/en-us/library/windowsazure/hh744833.aspx) and scroll to the section "Load balancing methods in Azure Traffic Manager."
+5. **[ラウンド ロビン] 負荷分散方式を選択します。**トラフィック マネージャーに用意されているさまざまな負荷分散方法の詳細については、[Azure トラフィック マネージャーの概要に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh744833.aspx)で、Azure トラフィック マネージャーでの負荷分散方法に関するセクションを参照してください。
 
-6. **Find hosted services and add them to the policy.** Use the filter box to find hosted services that contain the string you type into the box. Clear the box to display all hosted services in production for the subscription you selected in step 4. Use the arrow buttons to add them to the policy. The order in the **Selected DNS names** box does not matter for this load balancing method.
+6. **ホステッド サービスを見つけ、ポリシーに追加します。**フィルター ボックスを使用して、ボックスに入力した文字列を含むホステッド サービスを見つけます。ボックスをクリアすると、手順 4. で選択したサブスクリプションについて、運用環境にあるすべてのホステッド サービスが表示されます。矢印ボタンを使用して、ホステッド サービスをポリシーに追加します。この負荷分散方法では、**[選択された DNS 名]** ボックスでの順序は重要ではありません。
 
-7. **Set up monitoring.** Monitoring insures that hosted services that are offline are not sent traffic. You must have a specific path and filename set up.
-For more information, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/en-us/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring) and scroll to the section "Monitoring hosted services in Azure Traffic Manager."
+7. **監視を設定します。**監視により、オフラインになっているホステッド サービスにトラフィックが送信されなくなります。ホステッド サービスを監視するには、特定のパスとファイル名を指定する必要があります。
+詳細については、[Azure トラフィック マネージャーの概要に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring)で、Azure トラフィック マネージャーでのホステッド サービスの監視に関するセクションを参照してください。
 
-8. **Name your Traffic Manager domain.** Give your domain a unique name. You can only specify the prefix for your domain. Leave the DNS time to live at its default time. 
-For more information about the effect of this setting, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/en-us/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring) and scroll to "Best practices for hosted services and policies when using Azure Traffic Manager."
+8. **トラフィック マネージャー ドメインに名前を付けます。**ドメインには一意の名前を付けてください。指定できるのはドメイン名のプレフィックスのみです。DNS Time to Live は既定の時間のままにします。
+この設定の効果の詳細については、[Azure トラフィック マネージャーの概要に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring)で、Azure トラフィック マネージャー使用時のホステッド サービスとポリシーのベスト プラクティスに関するセクションを参照してください。
 
 
-	The **Create Traffic Manager policy** dialog box should be similar to the example below.
+	**[トラフィック マネージャー ポリシーの作成]** ダイアログ ボックスは次の例のようになります。
 
-	![Dialog box for Round Robin load balancing method][3] 
+	![ラウンド ロビン負荷分散方法のダイアログ ボックス][3]
 
-	**Figure 2** - Dialog box for Round Robin load balancing method
+	**図 2** - ラウンド ロビン負荷分散方法のダイアログ ボックス
 
-9. **Test the Traffic Manager domain and policy.** For instructions, see  [How to: Test an Azure Traffic Manager Policy](#howto_test). 
+9. **Traffic Manager ドメインとポリシーをテストします。**手順については、「[方法: Azure トラフィック マネージャー ポリシーをテストする](#howto_test)」を参照してください。
 
-10. **Point your DNS Server to the Traffic Manager domain.** Once your Traffic Manager Domain is setup and working, edit the DNS record on your authoritative DNS server to point your company domain to the Traffic Manager domain. 
-For example, the following command routes all traffic going to **www.contoso.com** to the Traffic Manager domain **contoso.trafficmanager.net**: 
+10. **DNS サーバーで Traffic Manager ドメインを参照します。**トラフィック マネージャー ドメインを設定したら、権威 DNS サーバー上の DNS レコードを編集して、会社のドメインでトラフィック マネージャー ドメインが参照されるようにします。
+たとえば、次のコマンドでは、**www.contoso.com** へのすべてのトラフィックがトラフィック マネージャー ドメイン **contoso.trafficmanager.net** に振り分けられます。
 `` www.contoso.com IN CNAME contoso.trafficmanager.net``
-For more information, see [How to: Point to a Company Internet Domain to an Azure Traffic Manager domain](#howto_point_company).
+詳細については、「[方法: 会社のインターネット ドメインでトラフィック マネージャー ドメインが参照されるようにする](#howto_point_company)」を参照してください。
 
-<h2><a id="howto_create_failover"></a>How to: Create a Failover Policy</h2>
+<h2><a id="howto_create_failover"></a>方法: フェールオーバー ポリシーを作成する</h2>
 
-Often an organization wants to provide reliability for its services. It does this by providing backup services in case their primary service goes down. A common pattern for service failover is to provide a set of identical hosted services and send traffic to a primary service, with a list of 1 or more backups. This article outlines the steps to set up a Traffic Manager policy to perform this type of failover backup.
+多くの場合、組織ではサービスの信頼性を維持する必要があります。そのために、会社のプライマリ サービスがダウンした場合に備えてバックアップ サービスを提供します。サービスのフェールオーバーの一般的なパターンは、一連の同じホステッド サービスを用意し、トラフィックをプライマリ サービスに送信する一方で、その他のホステッド サービスはバックアップとして確保しておくことです。この記事では、このフェールオーバー方式の負荷分散を実行するようにトラフィック マネージャー ポリシーを設定する手順について概説します。
 
-For more information on the different load balancing methods that Traffic Manager provides, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/en-us/library/windowsazure/hh744833.aspx) and scroll to the section "Load balancing methods in Azure Traffic Manager."
+トラフィック マネージャーに用意されているさまざまな負荷分散方法の詳細については、[Azure トラフィック マネージャーの概要に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh744833.aspx)で、Azure トラフィック マネージャーでの負荷分散方法に関するセクションを参照してください。
 
-1. **Deploy your hosted services** into your production environment. For information on developing and deploying hosted services, see [Azure hosted services](http://msdn.microsoft.com/library/gg432967.aspx).  
+1. **ホステッド サービスを運用環境に展開**します。ホステッド サービスの開発と展開については、[Azure ホステッド サービスに関するページ](http://msdn.microsoft.com/library/gg432967.aspx)を参照してください。
 
-2. **Log into the Traffic Manager area in the Management Portal** at [http://manage.windowsazure.com](http://manage.windowsazure.com). Click **Virtual Network** in the lower left of the portal pages and then choose **Traffic Manager** from the options in the left pane.
+2. **管理ポータル ([http://manage.windowsazure.com](http://manage.windowsazure.com)) でトラフィック マネージャー領域にログイン**します。ポータル ページの左下にある **[仮想ネットワーク]** をクリックし、左側のウィンドウのオプションから **[トラフィック マネージャー]** を選択します。
 
-3. **Choose Policies and click "Create".** Choose the folder **Policies** from the left navigation tree to enable **Create** in the top toolbar. Choose **Create**. The **Create Traffic Manager policy** dialog will appear.
+3. **[ポリシー] を選択し、[作成] をクリックします。**左側のナビゲーション ツリーから **[ポリシー]** フォルダーを選択して、上部のツール バーの **[作成]** を有効にします。**[作成]** を選択します。**[トラフィック マネージャー ポリシーの作成]** ダイアログ ボックスが表示されます。
 
-	![Create button for policies][4]
+	![ポリシーの [作成] ボタン][4]
 
-	**Figure 1** - Create button for policies
+	**図 1** - ポリシーの [作成] ボタン
 
-4. **Choose a subscription.** Policies and domains are associated with single subscription.
+4. **サブスクリプションを選択します。**ポリシーとドメインは 1 つのサブスクリプションに関連付けられます。
 
-5. **Select the Failover Policy load balance method.** For more information on the different load balancing methods that Traffic Manager provides, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/en-us/library/windowsazure/hh744833.aspx) and scroll to the section "Load balancing methods in Azure Traffic Manager."
+5. **[フェールオーバー ポリシー] 負荷分散方式を選択します。**トラフィック マネージャーに用意されているさまざまな負荷分散方法の詳細については、[Azure トラフィック マネージャーの概要に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh744833.aspx)で、Azure トラフィック マネージャーでの負荷分散方法に関するセクションを参照してください。
 
-6. **Find hosted services and add them to the policy.** Use the filter box to find hosted services that contain the string you type into the box. Clear the box to display all hosted services in production for the subscription you selected in step 4. Use the arrow buttons to add them to the policy. When you select the **Failover** load balancing method, the order of the selected services matters. The primary hosted service is on top. Use the up and down arrows change the order as needed.
+6. **ホステッド サービスを見つけ、ポリシーに追加します。**フィルター ボックスを使用して、ボックスに入力した文字列を含むホステッド サービスを見つけます。ボックスをクリアすると、手順 4 で選択したサブスクリプションについて、運用環境にあるすべてのホステッド サービスが表示されます。矢印ボタンを使用して、ホステッド サービスをポリシーに追加します。**[フェールオーバー]** 負荷分散方法を選択した場合は、選択したサービスの順序が重要です。プライマリ ホステッド サービスが先頭になります。必要に応じて、上向きと下向きの矢印を使用して順序を変更します。
 
-7. Monitoring ensures that hosted services that are offline are not sent traffic. Using a failover policy without setting up monitoring is useless because traffic will be sent to the primary hosted service even if that hosted service is shown as offline. In order to monitor hosted services, you must specify a specific path and filename.
-For more information, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/en-us/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring) and scroll to the section "Monitoring hosted services in Azure Traffic Manager."
+7. 監視により、オフラインになっているホステッド サービスにトラフィックが送信されなくなります。監視を設定しないでフェールオーバー ポリシーを使用しても意味はありません。プライマリ ホステッド サービスがオフラインになっている場合でも、トラフィックがそのホステッド サービスに送信されるためです。ホステッド サービスを監視するには、特定のパスとファイル名を指定する必要があります。
+詳細については、[Azure トラフィック マネージャーの概要に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring)で、Azure トラフィック マネージャーでのホステッド サービスの監視に関するセクションを参照してください。
 
-8. **Name your Traffic Manager domain.** Give your domain a unique name. You can only specify the prefix for your domain. Leave the **DNS time to live (TTL)** at its default time.
-For more information about the effect of this setting, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/en-us/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring) and scroll to "Best practices for hosted services and policies when using Azure Traffic Manager."
+8. **トラフィック マネージャー ドメインに名前を付けます。**ドメインには一意の名前を付けてください。指定できるのはドメイン名のプレフィックスのみです。**[DNS Time to Live (TTL)]** は既定の時間のままにします。
+この設定の効果の詳細については、[Azure トラフィック マネージャーの概要に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring)で、Azure トラフィック マネージャー使用時のホステッド サービスとポリシーのベスト プラクティスに関するセクションを参照してください。
  
-	The **Create Traffic Manager policy** dialog box should look similar to the example below. 
+	**[トラフィック マネージャー ポリシーの作成]** ダイアログ ボックスは次の例のようになります。
 
-	![Dialog box for Failover load balancing method][5]
+	![フェールオーバー負荷分散方式のダイアログ ボックス][5]
 
-	**Figure 2** - Dialog box for Failover load balancing method
+	**図 2** - フェールオーバー負荷分散方法のダイアログ ボックス
 
-9. **Test the Traffic Manager domain and policy.** For more information, see [How to: Test an Azure Traffic Manager Policy](#howto_test). 
+9. **Traffic Manager ドメインとポリシーをテストします。**詳細については、「[方法: Azure トラフィック マネージャー ポリシーをテストする](#howto_test)」を参照してください。
 
-10. **Point your DNS Server to the Traffic Manager domain.** After your Traffic Manager Domain is setup and working, edit the DNS record on your authoritative DNS server to point your company domain to the Traffic Manager domain. 
-For more information, see [How to Point a Company Internet Domain to a Traffic Manager Domain](#howto_point_company). 
-For example, the following command routes all traffic going to **www.contoso.com** to the Traffic Manager domain **contoso.trafficmanager.net**
+10. **DNS サーバーで Traffic Manager ドメインを参照します。**トラフィック マネージャー ドメインを設定したら、権威 DNS サーバー上の DNS レコードを編集して、会社のドメインでトラフィック マネージャー ドメインが参照されるようにします。
+詳細については、「[方法: 会社のインターネット ドメインでトラフィック マネージャー ドメインが参照されるようにする](#howto_point_company)」を参照してください。
+たとえば、次のコマンドでは、**www.contoso.com** へのすべてのトラフィックがトラフィック マネージャー ドメイン **contoso.trafficmanager.net** に振り分けられます。
 ``www.contoso.com IN CNAME contoso.trafficmanager.net``
 
-<h2><a id="howto_direct"></a>How to: Direct Incoming Traffic to Hosted Services Based on Network Performance</h2>
+<h2><a id="howto_direct"></a>方法: ネットワーク パフォーマンスに基づいて受信トラフィックをホステッド サービスに振り分ける</h2>
 
-In order to load balance hosted service that are located in different datacenters across the globe, you can direct incoming traffic to the closest hosted service. Although "closest" may directly correspond to geographic distance, it can also correspond to the location with the lowest latency to service the request. The Performance load balancing method will allow you to distribute based on location and latency, but cannot take into account real-time changes in network configuration or load. For more information on the different load balancing methods that Traffic Manager provides, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/en-us/library/windowsazure/hh744833.aspx) and scroll to the section "Load balancing methods in Azure Traffic Manager."
+世界中のさまざまなデータ センターに配置されているホステッド サービスを負荷分散するために、受信トラフィックを最も近いホステッド サービスに振り分けることができます。"最も近い" というのは、文字どおり地理的距離が最も近い場所に相当する場合もありますが、要求処理までの待機時間が最も短い場所に相当する場合もあります。[パフォーマンス] 負荷分散方式を選択すると、トラフィックを距離や待機時間に基づいて振り分けることはできますが、振り分け時にネットワークの構成や負荷のリアルタイムの変化を考慮することはできません。トラフィック マネージャーに用意されているさまざまな負荷分散方法の詳細については、[Azure トラフィック マネージャーの概要に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh744833.aspx)で、Azure トラフィック マネージャーでの負荷分散方法に関するセクションを参照してください。
 
-The following steps will walk you through the process:
+次の手順では、このプロセスについて説明します。
 
-1. **Deploy your hosted services** into your production environment. For more information, see [Creating a Hosted Service for Azure](http://msdn.microsoft.com/en-us/library/windowsazure/gg432967.aspx). 
-Also refer to "Best practices for hosted services and policies" in the [Overview of Azure Traffic Manager](http://msdn.microsoft.com/en-us/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring).
+1. **ホステッド サービスを運用環境に展開**します。詳細については、「[Azure 対応のホステッド サービスの作成](http://msdn.microsoft.com/ja-jp/library/windowsazure/gg432967.aspx)」を参照してください。
+また、[Azure トラフィック マネージャーの概要に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring)で、ホステッド サービスとポリシーのベスト プラクティスに関するセクションも参照してください。
 
-2. **Log into the Traffic Manager area in the Management Portal** at [http://manage.windowsazure.com](http://manage.windowsazure.com). Click **Virtual Network** in the lower left of the portal pages and then choose **Traffic Manager** from the options in the left pane.
+2. **管理ポータル ([http://manage.windowsazure.com](http://manage.windowsazure.com)) でトラフィック マネージャー領域にログイン**します。ポータル ページの左下にある **[仮想ネットワーク]** をクリックし、左側のウィンドウのオプションから **[トラフィック マネージャー]** を選択します。
 
-3. **Choose Policies and click "Create".** Choose the folder **Policies** from the left navigation tree to enable **Create** in the top toolbar. Choose **Create**. The **Create Traffic Manager policy** dialog will appear. 
+3. **[ポリシー] を選択し、[作成] をクリックします。**左側のナビゲーション ツリーから **[ポリシー]** フォルダーを選択して、上部のツール バーの **[作成]** を有効にします。**[作成]** を選択します。**[トラフィック マネージャー ポリシーの作成]** ダイアログ ボックスが表示されます。
 
-	![Create button for policies][6]
+	![ポリシーの [作成] ボタン][6]
 	
-	**Figure 1** - Create button for policies
+	**図 1** - ポリシーの [作成] ボタン
 
-4. **Choose a subscription.** Policies and domains are associated with single subscription. 
+4. **サブスクリプションを選択します。**ポリシーとドメインは 1 つのサブスクリプションに関連付けられます。
 
-5. **Pick the Performance load balance method.** For more information on the different load balancing methods that Traffic Manager provides, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/en-us/library/windowsazure/hh744833.aspx) and scroll to the section "Load balancing methods in Azure Traffic Manager."
+5. **[パフォーマンス] 負荷分散方式を選択します。**トラフィック マネージャーに用意されているさまざまな負荷分散方法の詳細については、[Azure トラフィック マネージャーの概要に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh744833.aspx)で、Azure トラフィック マネージャーでの負荷分散方法に関するセクションを参照してください。
 
-6. **Find hosted services and add them to the policy.** Use the filter box to find hosted services that contain the string you type into the box. Clear the box to display all hosted services in production for the subscription you selected in step 4. Use the arrow buttons to add them to the policy. The order in the **Selected DNS names** does not matter for this load balancing method.
+6. **ホステッド サービスを見つけ、ポリシーに追加します。**フィルター ボックスを使用して、ボックスに入力した文字列を含むホステッド サービスを見つけます。ボックスをクリアすると、手順 4 で選択したサブスクリプションについて、運用環境にあるすべてのホステッド サービスが表示されます。矢印ボタンを使用して、ホステッド サービスをポリシーに追加します。この負荷分散方法では、**[選択された DNS 名]** ボックスでの順序は重要ではありません。
 
-7. **Set up monitoring.** Monitoring insures that hosted services that are offline are not sent traffic. You must have a specific path and filename set up. 
-For more information, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/en-us/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring) and scroll to the section "Monitoring hosted services in Azure Traffic Manager."
+7. **監視を設定します。**監視により、オフラインになっているホステッド サービスにトラフィックが送信されなくなります。ホステッド サービスを監視するには、特定のパスとファイル名を指定する必要があります。
+詳細については、[Azure トラフィック マネージャーの概要に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring)で、Azure トラフィック マネージャーでのホステッド サービスの監視に関するセクションを参照してください。
 
-8. **Name your Traffic Manager domain.** Give your domain a unique name. You can only specify the prefix for your domain. Leave the **DNS time to live (TTL)** at its default time. 
-For more information about the effect of this setting, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/en-us/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring) and scroll to "Best practices for hosted services and policies when using Azure Traffic Manager."
+8. **トラフィック マネージャー ドメインに名前を付けます。**ドメインには一意の名前を付けてください。指定できるのはドメイン名のプレフィックスのみです。**[DNS Time to Live (TTL)]** は既定の時間のままにします。
+この設定の効果の詳細については、「[Azure トラフィック マネージャーの概要に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring)で、Azure トラフィック マネージャー使用時のホステッド サービスとポリシーのベスト プラクティスに関するセクションを参照してください。
  
-	The **Create Traffic Manager policy** dialog box should look something like the example below. 
+	**[トラフィック マネージャー ポリシーの作成]** ダイアログ ボックスは次の例のようになります。
 
-	![Dialog box for Performance load balancing method][7]
+	![パフォーマンス負荷分散方式のダイアログ ボックス][7]
 
-	**Figure 2** - Dialog box for Performance load balancing method
+	**図 2** - パフォーマンス負荷分散方法のダイアログ ボックス
 
-9. **Test the Traffic Manager domain and policy.** For more information about testing, see [How to: Test an Azure Traffic Manager Policy](#howto_test).
+9. **Traffic Manager ドメインとポリシーをテストします。**テストの詳細については、「[方法: Azure トラフィック マネージャー ポリシーをテストする](#howto_test)」を参照してください。
 
-10. **Point your DNS Server to the Traffic Manager domain.** Once your Traffic Manager Domain is setup and working, edit the DNS record on your authoritative DNS server to point your company domain to the Traffic Manager domain. 
-For example, the following command routes all traffic going to **www.contoso.com** to the Traffic Manager domain **contoso.trafficmanager.net**. 
+10. **DNS サーバーで Traffic Manager ドメインを参照します。**トラフィック マネージャー ドメインを設定したら、権威 DNS サーバー上の DNS レコードを編集して、会社のドメインでトラフィック マネージャー ドメインが参照されるようにします。
+たとえば、次のコマンドでは、**www.contoso.com** へのすべてのトラフィックがトラフィック マネージャー ドメイン **contoso.trafficmanager.net** に振り分けられます。
 ``www.contoso.com IN CNAME contoso.trafficmanager.net``
-For more information, see [How to: Point a Company Internet Domain to an Azure Traffic Manager Domain](#howto_point_company).
+詳細については、「[方法: 会社のインターネット ドメインでトラフィック マネージャー ドメインが参照されるようにする](#howto_point_company)」を参照してください。
 
 [0]: ./media/traffic-manager-configure-settings/hosted_service_IP_location.png
 [1]: ./media/traffic-manager-configure-settings/nslookup_command_example.png
@@ -289,3 +289,4 @@ For more information, see [How to: Point a Company Internet Domain to an Azure T
 [5]: ./media/traffic-manager-configure-settings/Dialog_box_for_Failover_load_balancing_method.png
 [6]: ./media/traffic-manager-configure-settings/Create_button_for_policies.png
 [7]: ./media/traffic-manager-configure-settings/Dialog_box_for_Performance_load_balancing_method.png
+

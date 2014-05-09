@@ -1,58 +1,58 @@
-<properties linkid="develop-mobile-how-to-guides-register-for-single-sign-on" urlDisplayName="Register for single sign on" pageTitle="Register for single sign-on - Azure Mobile Services" metaKeywords="" description="Learn how to register for single sign-on authentication in your Azure Mobile Services application." metaCanonical="" services="" documentationCenter="" title="Register your Windows Store apps to use Windows Live Connect single sign-on" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-how-to-guides-register-for-single-sign-on" urlDisplayName="シングル サインオン用の登録" pageTitle="シングル サインオン用の登録 - Azure のモバイル サービス" metaKeywords="" description="Azure のモバイル サービス アプリケーションでシングル サインオン認証用に登録する方法について説明します。" metaCanonical="" services="" documentationCenter="" title="Windows Live Connect シングル サインオンを使用するための Windows ストア アプリケーションの登録" authors="" solutions="" manager="" editor="" />
 
-# Register your Windows Store apps to use Windows Live Connect single sign-on
+# Windows Live Connect シングル サインオンを使用するための Windows ストア アプリケーションの登録
 
-This topic shows you how to register your app with the Windows Store to be able to use Live Connect for single sign-on as the identity provider for Azure Mobile Services. This step is also required to use push notifications.
+このトピックでは、Azure のモバイル サービスの ID プロバイダーとして Live Connect をシングル サインオンに使用できるように、アプリケーションを Windows ストアに登録する方法について説明します。この手順は、プッシュ通知を使用する場合にも必要です。
 
-<div class="dev-callout"><b>Note</b>
-<p>You do not need to register your app with the Windows Store to be able to use Microsoft Account for authentication before you publish your app. When your Windows Store app does not require single sign-on or push notifications, you can just register your app with Live Connect to use a Microsoft Account login.  For more information, see <a href="/en-us/develop/mobile/how-to-guides/register-for-microsoft-authentication">Register your Windows Store apps to use a Microsoft Account login</a>.</p>
+<div class="dev-callout"><b>注</b>
+<p>アプリケーションを発行する前に、認証用に Microsoft アカウントを使用できるようにアプリケーションを Windows ストアに登録する必要はありません。Windows ストア アプリにシングル サインオンまたはプッシュ通知が必要でない場合は、Microsoft アカウント ログインを使用できるようにアプリケーションを Live Connect に登録するだけでかまいません。詳細については、「<a href="/ja-jp/develop/mobile/how-to-guides/register-for-microsoft-authentication">Microsoft アカウント ログインを使用するためのアプリケーションの登録</a>」を参照してください。</p>
 </div>
 
-1. If you have not already registered your app, navigate to the [Submit an app page] at the Dev Center for Windows Store apps, log on with your Microsoft Account, and then click **App name**.
+1. アプリケーションをまだ登録していない場合は、Windows ストア アプリケーションのデベロッパー センターで[アプリケーション送信のページ]に移動し、Microsoft アカウントでログインして、**[アプリケーション名]** をクリックします。
 
    	![][0]
 
-2. Type a name for your app in **App name**, click **Reserve app name**, and then click **Save**.
+2. **[アプリケーション名]** にアプリケーションの名前を入力し、**[アプリケーション名の予約]** をクリックして、**[保存]** をクリックします。
 
    	![][1]
 
-   	This creates a new Windows Store registration for your app.
+   	これでアプリケーションの新しい Windows ストア登録が作成されます。
 
-3. In Visual Studio 2012 Express for Windows 8, open the project that you created when you completed the tutorial [Get started with Mobile Services].
+3. Visual Studio 2012 Express for Windows 8 で、チュートリアル「[モバイル サービスの使用]」を実行したときに作成したプロジェクトを開きます。
 
-4. In solution explorer, right-click the project, click **Store**, and then click **Associate App with the Store...**. 
+4. ソリューション エクスプローラーでプロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。
 
   	![][2]
 
-   	This displays the **Associate Your App with the Windows Store** Wizard.
+   	**アプリケーションを Windows ストアと関連付ける**ウィザードが表示されます。
 
-5. In the wizard, click **Sign in** and then login with your Microsoft account.
+5. ウィザードで **[サインイン]** をクリックし、Microsoft アカウントでログインします。
 
-6. Select the app that you registered in step 2, click **Next**, and then click **Associate**.
+6. 手順 2. で登録したアプリケーションを選択し、**[次へ]**、**[関連付け]** の順にクリックします。
 
    	![][3]
 
-   	This adds the required Windows Store registration information to the application manifest.    
+   	この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。
 
-9. Navigate to the [My Applications] page in the Live Connect Developer Center and click on your app in the **My applications** list.
+9. Live Connect デベロッパー センターの [[マイ アプリケーション]] ページに移動し、**[マイ アプリケーション]** の一覧でアプリケーションをクリックします。
 
    	![][6] 
 
-10. Click **Edit settings**, then **API Settings** and make a note of the value of **Client secret**. 
+10. **[設定の編集]**、**[API 設定]** の順にクリックし、**[クライアント シークレット]** の値を書き留めます。
 
    	![][7]
 
-    <div class="dev-callout"><b>Security Note</b>
-	<p>The client secret is an important security credential. Do not share the client secret with anyone or distribute it with your app.</p>
+    <div class="dev-callout"><b>セキュリティに関する注意</b>
+	<p>クライアント シークレットは、重要なセキュリティ資格情報です。クライアント シークレットは、他のユーザーと共有したり、アプリケーションで配信したりしないでください。</p>
     </div>
 
-11. In **Redirect domain**, enter the URL of your mobile service from Step 8, and then click **Save**.
+11. **[リダイレクト ドメイン]** で手順 8. のモバイル サービスの URL を入力し、**[保存]** をクリックします。
 
-You are now ready to integrate authentication by using Live Connect into your app. Mobile Services provides the following two methods for authenticating users by using Live Connect:
+Live Connect を使用して認証をアプリケーションに統合する準備ができました。モバイル サービスで Live Connect を使用してユーザーを認証する方法には、次の 2 種類があります。
 
-   - Single sign-on for Windows Store apps. In this method, users only need to authorize authentication in your application one time by using Live Connect, and then credentials are managed by Windows, based on user preferences. For more information see, [Single sign-on for Windows Store apps by using Live Connect].
+   - Windows ストア アプリケーションへのシングル サインオン。この方法では、ユーザーがアプリケーションで Live Connect を使用して認証の承認を 1 回行うだけで、ユーザーの初期設定に基づいて Windows で資格情報が管理されます。詳細については、「[Live Connect を使用した Windows ストア アプリへのシングル サインオン]」を参照してください。
 
-   - Basic authentication. This method, which supports a variety of authentication providers, requires users to log-in every time your app starts. For more information, see [Get started with authentication].
+   - 基本認証。この方法では、さまざまな認証プロバイダーがサポートされますが、ユーザーはアプリケーションの開始ごとにログインする必要があります。詳細については、「[認証の使用]」を参照してください。
 
 <!-- Anchors. -->
 
@@ -69,12 +69,13 @@ You are now ready to integrate authentication by using Live Connect into your ap
 
 
 <!-- URLs. -->
-[Single sign-on for Windows Store apps by using Live Connect]: /en-us/develop/mobile/tutorials/single-sign-on-windows-8-dotnet
-[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[Live Connect を使用した Windows ストア アプリへのシングル サインオン]: /ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-dotnet
+[アプリケーション送信のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-dotnet/
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-dotnet/
-[JavaScript and HTML]: /en-us/develop/mobile/tutorials/get-started-with-users-js/
-[Azure Management Portal]: https://manage.windowsazure.com/
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet
+[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet/
+[スクリプトを使用したユーザーの認証]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-dotnet/
+[JavaScript と HTML]: /ja-jp/develop/mobile/tutorials/get-started-with-users-js/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
+

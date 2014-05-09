@@ -1,31 +1,31 @@
-<properties linkid="" urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Considerations for supporting multiple clients from a single mobile service" authors="krisragh" solutions="" manager="" editor="" />
+<properties linkid="" urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="1 つのモバイル サービスから複数のクライアントをサポートするための考慮事項" authors="krisragh" solutions="" manager="" editor="" />
 
-# Considerations for supporting multiple clients from a single mobile service
+# 1 つのモバイル サービスから複数のクライアントをサポートするための考慮事項
  
-One of the major benefits of using Azure Mobile Services to support mobile app development is the ability to use a single backend service that supports an app on multiple client platforms. Mobile Services provides native client libraries for all major device platforms. For more information, see [Tutorials and resources].
+Azure モバイル サービスを使用してモバイル アプリケーションの開発をサポートする主な利点として、1 つのバックエンド サービスを使用して複数のクライアント プラットフォームのアプリケーションをサポートできることが挙げられます。モバイル サービスには、すべての主要なデバイス プラットフォーム用にネイティブ クライアント ライブラリが用意されています。詳細については、「[チュートリアルとリソース]」を参照してください。
 
-While Mobile Services makes it easy to migrate your native app across multiple client platforms using a single backend service, there are a few considerations that you will need to plan for. This topic provides guidance on how to get push notifications working across all your client platforms. It also decribes how to work around an issue with using client-directed single sign-on using Microsoft Account in both Windows Store and Windows Phone apps. Finally, this topic discusses some best practices for reusing code in Visual Studio projects.
+モバイル サービスでは、1 つのバックエンド サービスを使用して複数のクライアント プラットフォームのネイティブ アプリケーションを簡単に移行できますが、いくつかの考慮事項があります。このトピックでは、すべてのクライアント プラットフォーム間でプッシュ通知が機能するように準備する方法についてガイダンスを示します。また、Windows ストアと Windows Phone の両方のアプリケーションで Microsoft アカウントを使用したクライアント主導のシングル サインオンを利用する場合に、発生する問題を回避する方法についても説明します。このトピックの最後では、Visual Studio プロジェクトでコードを再利用するためのいくつかのベスト プラクティスについて説明します。
 
-## Push Notifications 
-This section discusses two approaches for sending push notifications from your mobile service to client apps on multiple platforms.
+## プッシュ通知 
+このセクションでは、モバイル サービスから複数のプラットフォームのクライアント アプリケーションにプッシュ通知を送信するための 2 つのアプローチについて説明します。
 
-### Leverage Notification Hubs
+### 通知ハブを活用する
 
-Azure Notification Hubs is an Azure service is a scalable solution for sending push notifications from your mobile service (or any backend) to client apps on all major device plaforms. For more information, see [Azure Notification Hubs]. 
+Azure 通知ハブは Azure のサービスの 1 つであり、モバイル サービス (または任意のバックエンド) からすべての主要なデバイス プラットフォームのクライアント アプリケーションにプッシュ通知を送信するための、拡張性の高いソリューションでもあります。詳細については、「[Azure 通知ハブ]」を参照してください。
 
-Notification Hubs provide a consistent and unified infrastructure for creating and managing device registrations and for sending push notifications to devices running on all major device platforms. For more information, see [Get started with Notification Hubs]. Notification Hubs supports platform-specific template registrations, which enables you to use a single API call to send a notification to your app running on any registered platform. For more information, see [Send cross-platform notifications to users].
+通知ハブによって提供される一貫性のある統一されたインフラストラクチャで、デバイスの登録を作成および管理したり、すべての主要なデバイス プラットフォーム上で動作するデバイスにプッシュ通知を送信したりできます。詳細については、「[通知ハブの使用]」を参照してください。通知ハブではプラットフォーム固有のテンプレートの登録がサポートされているため、1 回の API 呼び出しを使用して、登録したすべてのプラットフォーム上で動作するアプリケーションに通知を送信できます。詳細については、「[ユーザーへのクロスプラットフォーム通知の送信]」を参照してください。
 
-Notification Hubs is the recommended solution for sending notifications from your mobile service to mutiple client platforms.
+通知ハブは、モバイル サービスからクライアント プラットフォームに通知を送信するための推奨されるソリューションです。
 
-### Use a common registration table and platform identifier 
+### 共通の登録テーブルとプラットフォーム識別子を使用する
 
-If you choose not to use Notification Hubs, you can still support push notifications to multiple clients from your mobile service by defining a common device registration mechanism. Use a single table to store the device-specific information used by the push notification services of your supported platform. The **Get started with push notifications** tutorials ([Windows Store C#][Get started with push Windows dotnet]/[Windows Store JavaScript][Get started with push Windows js]/[Windows Phone][Get started with push Windows Phone]/[iOS][Get started with push iOS]/[Android][Get started with push Android]) use a **Registrations** table, and store the channel URI (Windows), device token (iOS), or handle (Android) in a column named _handle_. 
+通知ハブを使用しない場合は、共通のデバイス登録メカニズムを定義することで、モバイル サービスから複数のクライアントへのプッシュ通知をサポートできます。1 つのテーブルを使用して、サポートされているプラットフォームのプッシュ通知サービスで使用されるデバイス固有の情報を格納します。チュートリアル「**プッシュ通知の使用**」([Windows ストア C#][Get started with push Windows dotnet]/[Windows ストア JavaScript][Get started with push Windows js]/[Windows Phone][Get started with push Windows Phone]/[iOS][Get started with push iOS]/[Android][Get started with push Android]) では、**Registrations** テーブルを使用し、_handle_ という名前の列にチャネル URI (Windows)、デバイス トークン (iOS)、または ハンドル (Android) を格納しています。
 
-<div class="dev-callout"><b>Note</b>
-	<p>When you use the Add Push Notification wizard in Visual Studio 2013 to add push notifications to a Windows Store app, the wizard automatically creates a table named <strong>Channel</strong> to store channel URIs. The tutorial <strong>Get started with push notifications in Visual Studio 2012</strong> (<a href="/en-us/develop/mobile/tutorials/get-started-with-push-dotnet-vs2012">Windows Store C#</a>/<a href="/en-us/develop/mobile/tutorials/get-started-with-push-js-vs2012">Windows Store JavaScript</a>) shows you how to enable push notifications using the <strong>Registrations</strong> table.</p>
+<div class="dev-callout"><b>注</b>
+	<p>Visual Studio 2013 のプッシュ通知の追加ウィザードで、プッシュ通知を Windows ストア アプリケーションに追加すると、<strong>Channel</strong> という名前のテーブルが自動的に作成されて、チャネル URI の格納に使用されます。チュートリアル「<strong>Visual Studio 2012 でのプッシュ通知の使用</strong>」(<a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet-vs2012">Windows ストア C#</a>/<a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-js-vs2012">Windows ストア JavaScript</a>) では、<strong>Registrations</strong> テーブルを使用してプッシュ通知を有効にする方法を示しています。</p>
 </div>
 
-To support multiple clients in this single registration table, include a _platform_ column in the table, where this field is set to the platform of the client inserting a row during registeration. For example, the following **Registrations** class definition, from a Windows Store C# or Windows Phone app, maps the client _ChannelUri_ field to the _handle_ column in the Registrations table: 
+この 1 つの登録テーブルで複数のクライアントをサポートするには、そのテーブルに _platform_ 列を追加します。このフィールドには、登録時に行が挿入されてクライアントのプラットフォームが設定されます。たとえば、次の **Registrations** クラス定義は、Windows ストア アプリケーションまたは Windows Phone アプリケーションのものであり、クライアントの _ChannelUri_ フィールドを Registrations テーブルの _handle_ 列に対応付けています。
 		
 		public class Registrations
 		{
@@ -45,9 +45,9 @@ To support multiple clients in this single registration table, include a _platfo
 			public string ChannelUri { get; set; }
 		}
 
-Note that on this Windows device, the _Platform_ field always returns `windowsstore` (or `windowsphone`). With dynamic schema enabled (the default), Mobile Services adds a platform column in the Registrations table, if it doesn't already exist. For more information, see [Dynamic schema]. 
+この Windows デバイスでは、_Platform_ フィールドから常に `windowsstore` (または `windowsphone` ) が返されます。動的スキーマが有効になっていると (既定)、モバイル サービスによって Registrations テーブルにプラットフォームの列が追加されます。詳細については、「[動的スキーマ]」を参照してください。
 
-In your server-side script that sends notifications, use the platform field to determine which platform-specific function to call on the [push object].  The following script is a modification of the server script from the **Get started with push notifications** tutorials ([Windows Store C#][Get started with push Windows dotnet]/[Windows Store JavaScript][Get started with push Windows js]/[Windows Phone][Get started with push Windows Phone]/[iOS][Get started with push iOS]/[Android][Get started with push Android]) to enable multiple client platforms:
+通知を送信するサーバー側スクリプトでは、プラットフォームのフィールドを使用して、[push オブジェクト]で呼び出すプラットフォーム固有の関数を決定します。次のスクリプトは、チュートリアル「**プッシュ通知の使用**」([Windows ストア C#][Get started with push Windows dotnet]/[Windows ストア JavaScript][Get started with push Windows js]/[Windows Phone][Get started with push Windows Phone]/[iOS][Get started with push iOS]/[Android][Get started with push Android]) からのサーバー スクリプトであり、複数のクライアント プラットフォームを有効にするように変更を加えています。
 
 		function insert(item, user, request) {
 		    request.execute({
@@ -100,28 +100,29 @@ In your server-side script that sends notifications, use the platform field to d
 
 
 
-## Windows App Registration
+## Windows アプリケーションの登録
 
-In order to use single sign-on client authentication using Microsoft Account in both Windows Store and Windows Phone apps, you must register the Windows Store app on the Windows Store dashboard first. This is because once you create a Live Connect registration for Windows Phone, you cannot create one for Windows Store. For more information about how to do this, please read the topic **Authenticate your Windows Store app with Live Connect single sign-on** ([Windows Store][SSO Windows Store]/[Windows Phone][SSO Windows Phone]).
+Windows ストアと Windows Phone の両方のアプリケーションで Microsoft アカウントを使用したシングル サインオン クライアント認証を利用するには、まず Windows ストア ダッシュボードで Windows ストア アプリケーションを登録する必要があります。Windows Phone 用に Live Connect 登録を作成した後は、Windows ストア用に登録を作成できないためです。この方法の詳細については、「**Live Connect シングル サインオンによる Windows ストア アプリケーションの認証**」([Windows ストア][SSO Windows ストア]/[Windows Phone][SSO Windows Phone]) を参照してください。
 
-## Best practices for reusing code in Visual Studio projects
+## Visual Studio プロジェクトでコードを再利用するためのベスト プラクティス
 
-Portable class libraries enable you to write and build managed assemblies that work on more than one platform, such as Windows Store and Windows Phone. You can create classes that contain code you wish to share across many projects, and then reference those classes from different types of projects. 
+ポータブル クラス ライブラリを使用すると、Windows ストアや Windows Phone など、複数のプラットフォームで動作するマネージ アセンブリを記述してビルドできます。多数のプロジェクトで共有するコードを含むクラスを作成し、各種プロジェクトからそれらのクラスを参照することができます。
 
-You can use the .NET Framework Portable Class Library to implement the Model-View-View Model (MVVM) pattern and share assemblies across multiple platforms. You can implement the model and view model classes in a Portable Class Library project in Visual Studio 2012, and then create views that are customized for different platforms. The model code, common across platforms, may (as an example) retrieve the data from a source such as an Azure Mobile Service in a platform-agnostic manner. The MSDN Library provides an <a href="http://msdn.microsoft.com/en-us/library/gg597391(v=vs.110)">overview and example</a>, discussion of <a href="http://msdn.microsoft.com/en-us/library/gg597392(v=vs.110)">API differences</a>, an example of <a href="http://msdn.microsoft.com/en-us/library/hh563947(v=vs.110)">using portable class libraries to implement the MVVM pattern</a>, additional <a href="http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj714086(v=vs.105).aspx">prescriptive guidance</a>, and information about <a href="http://msdn.microsoft.com/en-us/library/hh871422(v=vs.110)">managing resources</a> in portable class library projects.
+.NET Framework ポータブル クラス ライブラリを使用して、Model-View-View Model (MVVM) パターンを実装し、複数のプラットフォームでアセンブリを共有することができます。Visual Studio 2012 のポータブル クラス ライブラリ プロジェクトでモデル クラスとビュー モデル クラスを実装し、各種プラットフォーム用にカスタマイズされたビューを作成することができます。プラットフォーム間の共通モデル コードでは、(例として) Azure のモバイル サービスなどのソースからプラットフォームに依存しない方法でデータを取得できます。MSDN ライブラリでは、<a href="http://msdn.microsoft.com/ja-jp/library/gg597391(v=vs.110)">概要と例</a>、<a href="http://msdn.microsoft.com/ja-jp/library/gg597392(v=vs.110)">API の相違点</a>の説明、<a href="http://msdn.microsoft.com/ja-jp/library/hh563947(v=vs.110)">ポータブル クラス ライブラリを使用した MVVM パターンの実装</a>の例、その他の<a href="http://msdn.microsoft.com/ja-jp/library/windowsphone/develop/jj714086(v=vs.105).aspx">規範的なガイダンス</a>、およびポータブル クラス ライブラリ プロジェクトでの<a href="http://msdn.microsoft.com/ja-jp/library/hh871422(v=vs.110)">リソースの管理</a>に関する情報が提供されています。
 
 <!-- URLs -->
 
-[Azure Notification Hubs]: /en-us/develop/net/how-to-guides/service-bus-notification-hubs/
-[SSO Windows Store]: /en-us/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/
-[SSO Windows Phone]: /en-us/develop/mobile/tutorials/single-sign-on-wp8/
-[Tutorials and resources]: /en-us/develop/mobile/resources/
-[Get started with Notification Hubs]: /en-us/manage/services/notification-hubs/getting-started-windows-dotnet/
-[Send cross-platform notifications to users]: /en-us/manage/services/notification-hubs/notify-users-xplat-mobile-services/
-[Get started with push Windows dotnet]: /en-us/develop/mobile/tutorials/get-started-with-push-dotnet-vs2012/
-[Get started with push Windows js]: /en-us/develop/mobile/tutorials/get-started-with-push-js-vs2012/
-[Get started with push Windows Phone]: /en-us/develop/mobile/tutorials/get-started-with-push-wp8/
-[Get started with push iOS]: /en-us/develop/mobile/tutorials/get-started-with-push-ios/
-[Get started with push Android]: /en-us/develop/mobile/tutorials/get-started-with-push-android/
-[Dynamic schema]: http://msdn.microsoft.com/en-us/library/windowsazure/jj193175.aspx
-[push object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554217.aspx
+[Azure 通知ハブ]: /ja-jp/develop/net/how-to-guides/service-bus-notification-hubs/
+[SSO Windows ストア]: /ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/
+[SSO Windows Phone]: /ja-jp/develop/mobile/tutorials/single-sign-on-wp8/
+[チュートリアルとリソース]: /ja-jp/develop/mobile/resources/
+[通知ハブの使用]: /ja-jp/manage/services/notification-hubs/getting-started-windows-dotnet/
+[ユーザーへのクロスプラットフォーム通知の送信]: /ja-jp/manage/services/notification-hubs/notify-users-xplat-mobile-services/
+[プッシュの使用 Windows dotnet]: /ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet-vs2012/
+[プッシュの使用 Windows js]: /ja-jp/develop/mobile/tutorials/get-started-with-push-js-vs2012/
+[プッシュの使用 Windows Phone]: /ja-jp/develop/mobile/tutorials/get-started-with-push-wp8/
+[プッシュの使用 iOS]: /ja-jp/develop/mobile/tutorials/get-started-with-push-ios/
+[プッシュの使用 Android]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android/
+[動的スキーマ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193175.aspx
+[push オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554217.aspx
+

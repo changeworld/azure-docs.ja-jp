@@ -1,28 +1,28 @@
-<properties linkid="manage-services-web-sites-operating-system-functionality-available-to-applications" urlDisplayName="Operating System Functionality Available to Applications on Azure Web Sites" pageTitle="Operating System Functionality Available to Applications on Azure Web Sites" metaKeywords="" description="Learn about the common baseline operating system functionality that is available to all applications running on Azure Web Sites, including file access, network access, and registry access." metaCanonical="" services="notification-hubs" documentationCenter="" title="Use Notification Hubs to send breaking news" authors="glenga" solutions="" manager="" editor="" />
+<properties linkid="manage-services-web-sites-operating-system-functionality-available-to-applications" urlDisplayName="Azure の Web サイト上のアプリケーションが利用できるオペレーティング システムの機能" pageTitle="Azure の Web サイト上のアプリケーションが利用できるオペレーティング システムの機能" metaKeywords="" description="ファイル アクセス、ネットワーク アクセス、レジストリ アクセスなど、Azure Web サイト上で動作するすべてのアプリケーションが利用できる基本的なオペレーティング システム機能について説明します。" metaCanonical="" services="notification-hubs" documentationCenter="" title="通知ハブを使用したニュース速報の送信" authors="glenga" solutions="" manager="" editor="" />
 
-# Use Notification Hubs to send breaking news
-<div class="dev-center-tutorial-selector sublanding"> 
-    	<a href="/en-us/manage/services/notification-hubs/breaking-news-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/manage/services/notification-hubs/breaking-news-wp8" title="Windows Phone" class="current">Windows Phone</a><a href="/en-us/manage/services/notification-hubs/breaking-news-ios" title="iOS">iOS</a>
+# 通知ハブを使用したニュース速報の送信
+<div class="dev-center-tutorial-selector sublanding">
+    	<a href="/ja-jp/manage/services/notification-hubs/breaking-news-dotnet" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/manage/services/notification-hubs/breaking-news-wp8" title="Windows Phone" class="current">Windows Phone</a><a href="/ja-jp/manage/services/notification-hubs/breaking-news-ios" title="iOS">iOS</a>
 </div>
 
-This topic shows you how to use Azure Notification Hubs to broadcast breaking news notifications to a Windows Phone app. When complete, you will be able to register for breaking news categories you are interested in, and receive only push notifications for those categories. This scenario is a common pattern for many apps where notifications have to be sent to groups of users that have previously declared interest in them, e.g. RSS reader, apps for music fans, etc. 
+このトピックでは、Azure 通知ハブを使用してニュース速報通知を Windows Phone アプリケーションにブロードキャストする方法について説明します。完了すると、興味のあるニュース速報カテゴリに登録し、それらのカテゴリのプッシュ通知だけを受信できるようになります。このシナリオは、既に興味があると宣言しているユーザーのグループに通知を送信する必要がある多くのアプリケーション (RSS リーダー、音楽ファン向けアプリケーションなど) で一般的なパターンです。
 
-Broadcast scenarios are enabled by including one or more _tags_ when creating a registration in the notification hub. When notifications are sent to a tag, all devices that have registered for the tag will receive the notification. Because tags are simply strings, they do not have to be provisioned in advance. For more information about tags, refer to [Notification Hubs Guidance]. 
+ブロードキャスト シナリオは、通知ハブでの登録の作成時に 1 つ以上の _tags_ を追加することで有効にします。通知がタグに送信されると、タグに登録されたすべてのデバイスが通知を受信します。タグは文字列にすぎないため、事前にプロビジョニングする必要はありません。タグの詳細については、「[通知ハブの概要]」を参照してください。
 
-This tutorial walks you through these basic steps to enable this scenario:
+このチュートリアルでは、このシナリオを有効にするための、次の基本的な手順について説明します。
 
-1. [Add category selection to the app]
-2. [Register for notifications]
-3. [Send notifications from your back-end]
-4. [Run the app and generate notifications]
+1. [アプリケーションにカテゴリ選択を追加する]
+2. [通知を登録する]
+3. [バックエンドから通知を送信する]
+4. [アプリケーションを実行して通知を生成する]
 
-This topic builds on the app you created in [Get started with Notification Hubs]. Before starting this tutorial, you must have already completed [Get started with Notification Hubs].
+このトピックは、「[通知ハブの使用]」で作成したアプリケーションが基になります。このチュートリアルを開始する前に、「[通知ハブの使用]」を完了している必要があります。
 
-##<a name="adding-categories"></a>Add category selection to the app
+##<a name="adding-categories"></a>アプリケーションにカテゴリ選択を追加する
 
-The first step is to add the UI elements to your existing main page that enable the user to select categories to register. The categories selected by a user are stored on the device. When the app starts, a device registration is created in your notification hub with the selected categories as tags. 
+最初の手順として、既存のメイン ページに UI 要素を追加して、ユーザーが登録するカテゴリを選択できるようにします。ユーザーにより選択されるカテゴリは、デバイスに格納されます。アプリが起動すると、通知ハブにデバイス登録が作成され、選択されたカテゴリがタグとして追加されます。
 
-1. Open the MainPage.xaml project file, then replace the **Grid** elements named `TitlePanel` and `ContentPanel` with the following code:
+1. MainPage.xaml プロジェクト ファイルを開き、`TitlePanel` および `ContentPanel` という名前の **Grid** 要素を次のコードに置き換えます。
 			
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="Breaking News" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
@@ -49,13 +49,13 @@ The first step is to add the UI elements to your existing main page that enable 
             <Button Name="SubscribeButton" Content="Subscribe" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
         </Grid>
 
-2. In the project, create a new class named **Notifications**, add the **public** modifier to the class definition, then add the following **using** statements to the new code file:
+2. プロジェクトで、**Notifications** という名前の新しいクラスを作成して、クラス定義に **public** 修飾子を追加し、新しいコード ファイルに次の **using** ステートメントを追加します。
 
 		using Microsoft.Phone.Notification;
 		using Microsoft.WindowsAzure.Messaging;
 		using System.IO.IsolatedStorage;
 
-3. Copy the following code into the new **Notifications** class:
+3. 新しい **Notifications** クラスに次のコードを追加します。
 
 		private NotificationHub hub;
 
@@ -95,25 +95,25 @@ The first step is to add the UI elements to your existing main page that enable 
 		    await hub.RegisterNativeAsync(channel.ChannelUri.ToString(), categories);
 		}
 
-    This class uses the local storage to store the categories of news that this device has to receive. It also contains methods to register for these categories.
+    このクラスは、このデバイスが受信するニュースのカテゴリを格納するためにローカル ストレージを使用します。ローカル ストレージには、これらのカテゴリを登録するメソッドも格納されます。
 
-4. In the above code, replace the `<hub name>` and `<connection string with listen access>` placeholders with your notification hub name and the connection string for *DefaultListenSharedAccessSignature* that you obtained earlier.
+4. 上のコードで、`<hub name>` と `<connection string with listen access>` のプレースホルダーを、通知ハブの名前と既に取得してある *DefaultListenSharedAccessSignature* の接続文字列に置き換えます。
 
-	<div class="dev-callout"><strong>Note</strong> 
-		<p>Because credentials that are distributed with a client app are not generally secure, you should only distribute the key for listen access with your client app. Listen access enables your app to register for notifications, but existing registrations cannot be modified and notifications cannot be sent. The full access key is used in a secured backend service for sending notifications and changing existing registrations.</p>
+	<div class="dev-callout"><strong>注</strong>
+		<p>クライアント アプリケーションを使用して配布される資格情報は一般にセキュリティで保護されないため、クライアント アプリケーションではリッスン アクセス用のキーだけを配布してください。リッスン アクセスにより、アプリケーションが通知を登録できるようになりますが、既存の登録を変更することはできないため、通知を送信できません。通知を送信して既存の登録を変更するセキュリティで保護されたバックエンド サービスでは、フル アクセス キーが使用されます。</p>
 	</div> 
 
-4. In the App.xaml.cs project file, add the following property to the **App** class:
+4. App.xaml.cs プロジェクト ファイルで、次のプロパティを **App** クラスに追加します。
 
 		public Notifications notifications = new Notifications();
 
-	This property is used to create and access a **Notifications** instance.
+	このプロパティは、**Notifications** インスタンスの作成とアクセスに使用されます。
 
-5. In your MainPage.xaml.cs, add the following line:
+5. MainPage.xaml.cs で、次の行を追加します。
 
 		using Windows.UI.Popups;
 
-6. In the MainPage.xaml.cs project file, add the following method:
+6. MainPage.xaml.cs プロジェクト ファイルで、次のメソッドを追加します。
 
 		private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
 		{
@@ -130,19 +130,19 @@ The first step is to add the UI elements to your existing main page that enable 
 		    MessageBox.Show("Subscribed to: " + string.Join(",", categories));
 		}
 	
-	This method creates a list of categories and uses the **Notifications** class to store the list in the local storage and register the corresponding tags with your notification hub. When categories are changed, the registration is recreated with the new categories.
+	このメソッドは、カテゴリのリストを作成し、**Notifications** クラスを使用してそのリストをローカル ストレージに格納し、対応するタグを通知ハブに登録します。カテゴリが変更されると、新しいカテゴリで登録が再作成されます。
 
-Your app is now able to store a set of categories in local storage on the device and register with the notification hub whenever the user changes the selection of categories. 
+これで、アプリケーションがデバイス上のローカル ストレージに一連のカテゴリを格納したり、ユーザーがカテゴリの選択を変更したときに通知ハブに登録できるようになりました。
 
-##<a name="register"></a>Register for notifications
+##<a name="register"></a>通知を登録する
 
-These steps register with the notification hub on startup using the categories that have been stored in local storage. 
+この手順では、ローカル ストレージに格納されたカテゴリを使用して、起動時に通知ハブに通知します。
 
-<div class="dev-callout"><strong>Note</strong> 
-	<p>Because the channel URI assigned by the Microsoft Push Notification Service (MPNS) can chance at any time, you should register for notifications frequently to avoid notification failures. This example registers for notification every time that the app starts. For apps that are run frequently, more than once a day, you can probably skip registration to preserve bandwidth if less than a day has passed since the previous registration.</p>
+<div class="dev-callout"><strong>注</strong>
+	<p>Microsoft プッシュ通知サービス (MPNS) によって割り当てられたチャネル URI はいつでも変更される可能性があるので、通知エラーを回避するために通知を頻繁に登録してください。この例では、アプリケーションが起動するたびに通知を登録します。頻繁に実行されるアプリケーションの場合 (1 日に複数回など)、帯域幅を節約するため、前回の登録から 1 日経過していない場合は登録をスキップできます。</p>
 </div>  
 
-1. Add the following code to the **Notifications** class:
+1. **Notifications** クラスに、次のコードを追加します。
 
 		public IEnumerable<string> RetrieveCategories()
 		{
@@ -150,17 +150,17 @@ These steps register with the notification hub on startup using the categories t
 		    return categories != null ? categories.Split(',') : new string[0];
 		}
 
-	This returns the categories defined in the class.
+	クラスで定義されたカテゴリが返されます。
 
-1. Open the App.xaml.cs file and add the **async** modifier to **Application_Launching** method.
+1. App.xaml.cs ファイルを開き、**async** 修飾子を **Application_Launching** メソッドに追加します。
 
-2. In the **Application_Launching** method, locate and replace the Notification Hubs registration code that you added in [Get started with Notification Hubs] with the following line of code:
+2. **Application_Launching** メソッドで、「[通知ハブの使用]」で追加した通知ハブ登録コード見つけて次のコード行で置き換えます。
 
 		await notifications.SubscribeToCategories(notifications.RetrieveCategories());
 
-	This makes sure that every time the app starts it retrieves the categories from local storage and requests a registeration for these categories. 
+	これにより、アプリケーションが起動するたびに、ローカル ストレージからカテゴリを取得し、これらのカテゴリの登録を要求するようになります。
 
-3. In the MainPage.xaml.cs project file, add the following code that implements the **OnNavigatedTo** method:
+3. MainPage.xaml.cs プロジェクト ファイルで、**OnNavigatedTo** メソッドを実装する次のコードを追加します。
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
@@ -174,59 +174,59 @@ These steps register with the notification hub on startup using the categories t
 		    if (categories.Contains("Sports")) SportsCheckBox.IsChecked = true;
 		}
 
-	This updates the main page based on the status of previously saved categories. 
+	これにより、以前に保存されたカテゴリの状態に基づいてメイン ページが更新されます。
 
-The app is now complete and can store a set of categories in the device local storage used to register with the notification hub whenever the user changes the selection of categories. Next, we will define a backend that can send category notifications to this app.
+これで、アプリケーションが完成し、デバイスのローカル ストレージに一連のカテゴリを格納できるようになりました。ローカル ストレージは、ユーザーがカテゴリの選択を変更したときに通知ハブに登録するために使用されます。次に、このアプリケーションにカテゴリ通知を送信できるバックエンドを定義します。
 
-<h2><a name="send"></a><span class="short-header">Send notifications</span>Send notifications from your back-end</h2>
+<h2><a name="send"></a><span class="short-header">通知を送信する</span>バックエンドから通知を送信する</h2>
 
 [WACOM.INCLUDE [notification-hubs-back-end](../includes/notification-hubs-back-end.md)]
 
-##<a name="test-app"></a>Run the app and generate notifications
+##<a name="test-app"></a>アプリケーションを実行して通知を生成する
 
-1. In Visual Studio, press F5 to compile and start the app.
+1. Visual Studio で、F5 キーを押してアプリケーションをコンパイルおよび起動します。
 
 	![][1] 
 
-	Note that the app UI provides a set of toggles that lets you choose the categories to subscribe to. 
+	アプリケーションの UI には、購読するカテゴリを選択できる一連の切り替えボタンが表示されている点に注目してください。
 
-2. Enable one or more categories toggles, then click **Subscribe**.
+2. 1 つ以上のカテゴリ切り替えボタンを有効にし、**[購読]** をクリックします。
 
-	The app converts the selected categories into tags and requests a new device registration for the selected tags from the notification hub. The registered categories are returned and displayed in a dialog.
+	アプリケーションにより、選択されたカテゴリがタグに変換され、選択されたタグの新しいデバイス登録が通知ハブから要求されます。登録されたカテゴリが返され、ダイアログに表示されます。
 
 	![][2]
 
-4. Send a new notification from the backend in one of the following ways:
+4. 新しい通知は、次のいずれかの方法でバックエンドから送信します。
 
-	+ **Console app:** start the console app.
+	+ **コンソール アプリケーション:** コンソール アプリケーションを起動します。
 
-	+ **Mobile Services:** click the **Scheduler** tab, click the job, then click **Run once**.
+	+ **モバイル サービス:** **[スケジューラ]** タブをクリックしてジョブをクリックし、**[一度だけ実行する]** をクリックします。
 
-	Notifications for the selected categories appear as toast notifications.
+	選択されたカテゴリの通知がトースト通知として表示されます。
 
 	![][3]
 
-You have completed this topic.
+これで、このトピックは終了です。
 
-<!--## <a name="next-steps"> </a>Next steps
+<!--## <a name="next-steps"></a>次のステップ
 
-In this tutorial we learned how to broadcast breaking news by category. Consider completing one of the following tutorials that highlight other advanced Notification Hubs scenarios:
+このチュートリアルでは、ニュース速報をカテゴリごとにブロードキャストする方法について説明しました。他の高度な通知ハブ シナリオを取り上げている、次のいずれかのチュートリアルを行うことをお勧めします。
 
-+ [Use Notification Hubs to broadcast localized breaking news]
++ [通知ハブを使用したローカライズ ニュース速報のブロードキャスト]
 
-	Learn how to expand the breaking news app to enable sending localized notifications. 
+	ニュース速報アプリケーションを拡張して、ローカライズした通知を送信できるようにする方法について説明します。
 
-+ [Notify users with Notification Hubs]
++ [通知ハブによるユーザーへの通知]
 
-	Learn how to push notifications to specific authenticated users. This is a good solution for sending notifications only to specific users.
+	認証された特定のユーザーにプッシュ通知する方法について説明します。これは、特定のユーザーにのみ通知を送信する場合に適したソリューションです。
 -->
 
 <!-- Anchors. -->
-[Add category selection to the app]: #adding-categories
-[Register for notifications]: #register
-[Send notifications from your back-end]: #send
-[Run the app and generate notifications]: #test-app
-[Next Steps]: #next-steps
+[アプリケーションにカテゴリ選択を追加する]: #adding-categories
+[通知を登録する]: #register
+[バックエンドから通知を送信する]: #send
+[アプリケーションを実行して通知を生成する]: #test-app
+[次のステップ]: #next-steps
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-windows-phone-send-breaking-news/notification-hub-breakingnews.png
@@ -236,14 +236,15 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 
 
 <!-- URLs.-->
-[Get started with Notification Hubs]: /en-us/manage/services/notification-hubs/get-started-notification-hubs-wp8/
-[Use Notification Hubs to broadcast localized breaking news]: ./breakingnews-localized-wp8.md 
-[Notify users with Notification Hubs]: /en-us/manage/services/notification-hubs/notify-users/
-[Mobile Service]: /en-us/develop/mobile/tutorials/get-started
-[Notification Hubs Guidance]: http://msdn.microsoft.com/en-us/library/jj927170.aspx
-[Notification Hubs How-To for Windows Phone]: ??
+[通知ハブの使用]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-wp8/
+[通知ハブを使用したローカライズ ニュース速報のブロードキャスト]: ./breakingnews-localized-wp8.md 
+[通知ハブによるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users/
+[モバイル サービス]: /ja-jp/develop/mobile/tutorials/get-started
+[通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
+[方法: Azure 通知ハブ (Windows Phone アプリ)]: ??
 
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+
 
 
 

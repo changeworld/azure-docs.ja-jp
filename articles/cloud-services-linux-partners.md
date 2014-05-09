@@ -1,9 +1,9 @@
-<properties linkid="manage-linux-other-resources-partners" urlDisplayName="Partner solutions" pageTitle="Linux partners for Azure" metaKeywords="" description="Learn about the endorsed Linux images available for Azure virtual machines, including Ubuntu, OpenLogic, and SUSE." metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Partner solutions for Linux in Azure" authors="" />
+<properties linkid="manage-linux-other-resources-partners" urlDisplayName="パートナー ソリューション" pageTitle="Azure の Linux パートナー" metaKeywords="" description="Azure の仮想マシンで使用できる動作保証済み Linux イメージ (Ubuntu、OpenLogic、SUSE など) について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Azure の Linux パートナー ソリューション" authors="" />
 
 
-#Partner solutions for Linux in Azure
+#Azure の Linux パートナー ソリューション
 
-Contact the partners listed on this page for assistance in delivering your Linux-based cloud solutions in Azure. In addition, sign up for the [free preview](https://account.windowsazure.com/PreviewFeatures).
+Azure で Linux ベースのクラウド ソリューションを実現する際に支援が必要な場合は、このページで挙げたパートナーにお問い合わせください。また、[無料のプレビュー](https://account.windowsazure.com/PreviewFeatures)にサインアップしてください。
 
 
 ##Bitnami
@@ -12,16 +12,16 @@ Contact the partners listed on this page for assistance in delivering your Linux
 
 [http://bitnami.org/azure/get-started](http://bitnami.org/azure/get-started)
 
-BitNami provides fully configured images of popular web applications that can be deployed to Azure in one click. The BitNami WebPack and DevPack images for Azure provide fully configured and ready-to-run environments for web and application developers, free of charge. BitNami WebPack bundles Wordpress, Drupal and Joomla! to give developers a choice of the best platforms for developing web sites and blogs. BitNami DevPack provides a development environment complete with Ruby on Rails, PHP, Django and Java language runtimes and all of their dependencies, everything developers need to build web applications in the cloud.
+BitNami は、1 クリックで Azure に展開できる人気の Web アプリケーションの構成済みイメージを提供しています。Azure 用の BitNami WebPack および DevPack イメージは、Web アプリケーション開発者用に構成済みですぐに実行できる環境です。BitNami WebPack には、Wordpress、Drupal、および Joomla! が同梱されていて、Web サイトとブログを開発するのに最適なプラットフォームを選択できます。BitNami DevPack は、Ruby on Rails、PHP、Django、および Java 言語のランタイムとその依存関係など、クラウドで Web アプリケーションを作成するために必要な要素をすべて備えた開発環境です。
 
 
 ##Opscode Chef
 
-[![Opscode](./media/cloud-services-linux-partners/opscode.png)](http://www.opscode.com/partners/microsoft) 
+[![Opscode](./media/cloud-services-linux-partners/opscode.png)](http://www.opscode.com/partners/microsoft)
 
 [www.opscode.com/partners/microsoft](http://www.opscode.com/partners/microsoft)
 	 
-Opscode is the company behind Chef, the rapidly growing cloud infrastructure automation framework used by thousands of organizations, from small startups to Fortune 100 enterprises. Chef's flexible and re-usable templates ("cookbooks") enable you to manage, scale and rebuild Azure environments with ease.
+Opscode は、小さな新興企業からフォーチュン 100 企業まで、数千社で使用されている急成長中のクラウド インフラストラクチャ自動化フレームワークである Chef を支えている会社です。Chef の柔軟で再利用可能なテンプレート ("クックブック") を使用すると、Azure 環境の管理、規模設定および再構築を簡単に実行できます。
 
 ##RightScale
 
@@ -29,7 +29,7 @@ Opscode is the company behind Chef, the rapidly growing cloud infrastructure aut
 
 [www.rightscale.com/microsoft-azure](http://www.rightscale.com/microsoft-azure)
 
-RightScale® Inc., cloud management enables organizations to easily deploy and manage business-critical applications across public, private, and hybrid clouds. RightScale provides efficient configuration, monitoring, automation, and governance of cloud computing infrastructure and applications. Since 2006, millions of servers have been launched with the RightScale solution by leading enterprises including the Associated Press, CBS Interactive, Intercontinental Hotels Group, PBS, and Zynga.
+RightScale® Inc. のクラウド管理を使用すると、パブリック、プライベート、およびハイブリッドのクラウド環境で業務に不可欠なアプリケーションを簡単に展開し管理することができます。RightScale では、クラウド インフラストラクチャおよびアプリケーションの効率的構成、監視、自動化、および統制ができます。2006 年以降、Associated Press や CBS Interactive、Intercontinental Hotels Group、PBS、Zynga などの一流企業によって数百万台のサーバーに RightScale ソリューションが導入されています。
 
 ##ScaleXtreme
 
@@ -37,9 +37,9 @@ RightScale® Inc., cloud management enables organizations to easily deploy and m
 
 [www.scalextreme.com/partners-windows-azure](http://www.scalextreme.com/partners-windows-azure)
  
-ScaleXtreme is delivering the next-generation of systems and cloud management products that gives customers a unified product to manage their Azure and internal enterprise servers. ScaleXtreme is cloud-based and gives customers instant, enterprise-class automation capabilities at a fraction of the cost and complexity of traditional solutions.
+ScaleXtreme は、Azure サーバーと内部企業サーバーを統一的に管理する次世代のシステムとクラウド管理製品を販売しています。ScaleXtreme は、クラウド ベースであり、従来のソリューションの数分の 1 のコストと複雑さで、企業クラスの自動化機能を即座に実現します。
 
-ScaleXtreme gives customers the power to build, launch, monitor, patch, and manage their Windows and Linux servers on Microsoft Azure, and to rapidly deploy and scale their server infrastructure. ScaleXtreme is cloud-based and deploys in minutes, giving customers "instant" systems management and automation capabilities without the need to deploy on-premise infrastructure. Product features includes server templates and provisioning, monitoring, budgets and cost controls, patch management, and rich automation capabilities.
+ScaleXtreme を使用すると、Azure で Windows サーバーと Linux サーバーの構築、起動、監視、パッチ適用、および管理ができ、サーバー インフラストラクチャの迅速な展開およびサイズ設定ができます。ScaleXtreme は、クラウド ベースで数分でデプロイでき、内部設置型インフラストラクチャをデプロイしなくても、システム管理機能と自動化機能を即座に実現できます。製品の特徴としては、サーバー テンプレートとプロビジョニング、監視、予算とコストのコントロール、パッチ管理、豊富な自動化機能などがあります。
 
 
 ##SUSE Studio
@@ -48,7 +48,7 @@ ScaleXtreme gives customers the power to build, launch, monitor, patch, and mana
 
 [www.susestudio.com](http://www.susestudio.com)
 
-SUSE makes it easy to extend SUSE Linux Enterprise Server-based applications to Azure using the one-click-deployment capabilities of SUSE Studio.  Through SUSE Studio, customers can rapidly develop cloud-ready applications that include a preconfigured, integrated and fully supported enterprise-class Linux operating system, and automatically launch them on Azure, virtually eliminating inefficient manual processes. 
+SUSE Studio の 1 クリック 展開機能を利用すると、SUSE Linux Enterprise Server ベースのアプリケーションを Azure に簡単に拡張できます。SUSE Studio を使って、顧客は、構成済みで統合され全面サポートされた企業クラスの Linux オペレーティング システムを含むクラウド対応のアプリケーションを迅速に開発でき、それを Azure で自動的に開始して、効率の悪い手作業を事実上不要にすることができます。
 
 
 ##Ubuntu Juju
@@ -57,9 +57,10 @@ SUSE makes it easy to extend SUSE Linux Enterprise Server-based applications to 
 
 [http://www.ubuntu.com/cloud/azure](http://www.ubuntu.com/cloud/azure)
 
-After recognizing cloud computing was the future and analyzing what cloud adoption would mean to both IT organizations and developers, we've developed Juju, a game-changing service orchestration toolset, that enables the knowledge connected with an application—dependencies, relations and platform configuration—to be encapsulated in a charm.
+クラウド コンピューティングに未来があることを認識し、クラウドの採用が IT 部門と開発者の両方において何を意味するかを分析した結果、これまでとはまったく違うサービス オーケストレーション ツールセットである Juju が開発されました。アプリケーションに関連付けられた知識 (依存関係、関係、プラットフォーム構成) をチャームにカプセル化できます。
 
-A Juju charm is a collection of pre-written instructions that deploys a cloud service. More than 50 are already available, for services including Hadoop, PostgreSQL and Drupal. And because anyone can submit one, the selection is growing all the time.
+Juju チャームは、クラウド サービスを展開する作成済みの手順の集合です。既に、Hadoop や PostgreSQL、Drupal などのサービス用に 50 以上のチャームが使用できるようになっています。チャームはだれでも登録できるため、選択肢は絶えず増え続けています。
 
-Juju is tightly coupled with provisioning, however independent of the underlying infrastructure layer. The base platform can be installed on a public cloud, private cloud, or hardware, ready for the services to be deployed, controlled, and scaled on top with Juju.
+Juju は、背後にあるインフラストラクチャ レイヤーから独立してはいるものの、プロビジョニングと緊密に結び付けられています。ベース プラットフォームは、パブリック クラウド、プライベート クラウド、またはハードウェアにインストールでき、Juju 上でサービスの展開、コントロール、規模設定ができます。
+
 

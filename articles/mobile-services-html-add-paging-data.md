@@ -1,85 +1,86 @@
-<properties linkid="develop-mobile-tutorials-add-paging-to-data-html" urlDisplayName="Add paging to data (HTML5)" pageTitle="Add paging to data (HTML 5) | Mobile Dev Center" metaKeywords="" description="Learn how to use paging to manage the amount of data returned to your HTML app from Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="Refine Mobile Services queries with paging" authors="glenga" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-tutorials-add-paging-to-data-html" urlDisplayName="データへのページングの追加 (HTML5)" pageTitle="データへのページングの追加 (HTML 5) | モバイル デベロッパー センター" metaKeywords="" description="ページングを使用して、モバイル サービスから Android アプリケーションに返されるデータの量を管理する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="ページングを使用したモバイル サービス クエリの改善" authors="glenga" solutions="" manager="" editor="" />
 
 
 
 
-# Refine Mobile Services queries with paging
-<div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/en-us/develop/mobile/tutorials/add-paging-to-data-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-android" title="Android">Android</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-html" title="HTML" class="current">HTML</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-xamarin-android" title="Xamarin.Android">Xamarin.Android</a>
+# ページングを使用したモバイル サービス クエリの改善
+<div class="dev-center-tutorial-selector sublanding">
+	<a href="/ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/develop/mobile/tutorials/add-paging-to-data-js" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/develop/mobile/tutorials/add-paging-to-data-wp8" title="Windows Phone">Windows Phone</a><a href="/ja-jp/develop/mobile/tutorials/add-paging-to-data-ios" title="iOS">iOS</a><a href="/ja-jp/develop/mobile/tutorials/add-paging-to-data-android" title="Android">Android</a><a href="/ja-jp/develop/mobile/tutorials/add-paging-to-data-html" title="HTML" class="current">HTML</a><a href="/ja-jp/develop/mobile/tutorials/add-paging-to-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/ja-jp/develop/mobile/tutorials/add-paging-to-data-xamarin-android" title="Xamarin.Android">Xamarin.Android</a>
 </div>
 
-This topic shows you how to use paging to manage the amount of data returned to your HTML app from Azure Mobile Services. In this tutorial, you will use the **Take** and **Skip** query methods on the client to request specific "pages" of data.
+このトピックでは、ページングを使用して、Azure のモバイル サービスから HTML アプリケーションに返されるデータの量を管理する方法について説明します。このチュートリアルでは、クライアントで **Take** および **Skip** クエリ メソッドを使用して、データの特定の "ページ" を要求します。
 
-<div class="dev-callout"><b>Note</b>
-<p>To prevent data overflow in mobile device clients, Mobile Services implements an automatic page limit, which defaults to a maximum of 50 items in a response. By specifying the page size, you can explicitly request up to 1,000 items in the response.</p>
+<div class="dev-callout"><b>注</b>
+<p>モバイル デバイス クライアントでデータがオーバーフローしないように、モバイル サービスでは、自動ページ制限を実装しています。既定では、1 つの応答で最大 50 項目に設定されます。ページ サイズを指定することで、1 つの応答で 1,000 項目まで明示的に要求できます。</p>
 </div>
 
-This tutorial builds on the steps and the sample app from the previous tutorial [Get started with data]. Before you begin this tutorial, you must complete at least the first tutorial in the working with data series, [Get started with data]. 
+このチュートリアルは、前の[データの使用]に関するチュートリアルの手順およびサンプル アプリケーションを基に作成されています。このチュートリアルを開始する前に、少なくとも、データ操作シリーズの最初のチュートリアル (「[データの使用]」) を完了している必要があります。
 
-1. Run one of the following command files from the **server** subfolder of the project that you modified when you completed the tutorial [Get started with data].
+1. チュートリアル「[データの使用]」を実行したときに変更したプロジェクトの **server** サブフォルダーから次のコマンド ファイルのいずれかを実行します。
 
-	+ **launch-windows** (Windows computers) 
-	+ **launch-mac.command** (Mac OS X computers)
-	+ **launch-linux.sh** (Linux computers)
+	+ **launch-windows** (Windows コンピューター)
+	+ **launch-mac.command** (Mac OS X コンピューター)
+	+ **launch-linux.sh** (Linux コンピューター)
 
-	<div class="dev-callout"><b>Note</b>
-		<p>On a Windows computer, type `R` when PowerShell asks you to confirm that you want to run the script. Your web browser might warn you to not run the script because it was downloaded from the internet. When this happens, you must request that the browser proceed to load the script.</p>
+	<div class="dev-callout"><b>注</b>
+		<p>Windows コンピューターでは、PowerShell からスクリプトの実行の確認を求められた場合は、「`R`」と入力します。Web ブラウザーでは、インターネットからダウンロードしたスクリプトであるため、実行しないよう警告されることがあります。その場合は、ブラウザーがスクリプトの読み込みを開始するよう要求する必要があります。</p>
 	</div>
 
-	This starts a web server on your local computer to host the app.
+	これにより、アプリケーションをホストする Web サーバーがローカル コンピューター上で起動します。
 
-1. In a web browser, navigate to <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a>, then type text in **Add new task** and click **Add**.
+1. Web ブラウザーで、<a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> に移動し、**[Add new task]** にテキストを入力して、**[Add]** をクリックします。
 
-3. Repeat the previous step at least three times, so that you have more than three items stored in the TodoItem table. 
+3. 前の手順を少なくとも 3 回繰り返して、TodoItem テーブルに項目を 3 つ以上保存します。
 
-2. In the app.js file, replace the definitoin of the `query` variable in the **refreshTodoItems** method with the following line code:
+2. app.js ファイルで、**refreshTodoItems** メソッドの `query` 変数の定義を次のコード行に置き換えます。
 
        
         var query = todoItemTable.where({ complete: false }).take(3);
 
-  	This query, when executed, returns the top three items that are not marked as completed.
+  	このクエリでは、実行時に、完了マークが付けられていない上位 3 つの項目を返します。
 
-3. Go back to the web browser and reload the page.
+3. Web ブラウザーに戻り、ページを再読み込みします。
 
-  	Notice that only the first three results from the TodoItem table are displayed. 
+  	TodoItem テーブルから最初の 3 つの結果だけが表示されることに注目してください。
 
-4. (Optional) View the URI of the request sent to the mobile service by using message inspection software, such as browser developer tools or [Fiddler]. 
+4. (省略可能) ブラウザー開発者ツールや [Fiddler] などのメッセージ検査ソフトウェアを使用して、モバイル サービスに送信された要求の URI を表示します。
 
-   	Notice that the **take(3)** method was translated into the query option **$top=3** in the query URI.
+   	クエリの URI では、**take(3)** メソッドがクエリ オプション **$top=3** に変換されていることに注目してください。
 
-5. Update the query once more with the following code:
+5. 再度 query を次のコードに置き換えます。
             
         var query = todoItemTable.where({ complete: false }).skip(3).take(3);
 
-3. Go back to the web browser and reload the page.
+3. Web ブラウザーに戻り、ページを再読み込みします。
 
-   	This query skips the first three results and returns the next three after that. This is effectively the second "page" of data, where the page size is three items.
+   	このクエリでは、最初の 3 つの結果をスキップし、その後の 3 つを返します。ページ サイズが 3 つの項目である場合、これは実質的にデータの 2 番目の "ページ" になります。
 
-    <div class="dev-callout"><b>Note</b>
-    <p>This tutorial uses a simplified scenario by passing hard-coded paging values to the <strong>Take</strong> and <strong>Skip</strong> methods. In a real-world app, you can use queries similar to the above with a pager control or comparable UI to let users navigate to previous and next pages.  You can also call the  <strong>includeTotalCount</strong> method to get the total count of items available on the server, along with the paged data.</p>
+    <div class="dev-callout"><b>注</b>
+    <p>このチュートリアルでは、ハードコーディングされたページング値を <strong>Take</strong> メソッドおよび <strong>Skip</strong> メソッドに渡すことで簡略化したシナリオを使用しています。実際のアプリケーションでは、ユーザーが前後のページに移動できるように、ページャー コントロールまたは同等の UI と共に上記と同様のクエリを使用することができます。また、<strong>includeTotalCount</strong> メソッドを呼び出して、ページングされたデータと共に、サーバーで使用できる項目の合計数を取得することもできます。</p>
     </div>
 
-6. (Optional) Again view the URI of the request sent to the mobile service. 
+6. (省略可能) 再度、モバイル サービスに送信された要求の URI を表示します。
 
-   	Notice that the **skip(3)** method was translated into the query option **$skip=3** in the query URI.
+   	クエリの URI では、**skip(3)** メソッドがクエリ オプション **$skip=3** に変換されていることに注目してください。
 
-## <a name="next-steps"> </a>Next Steps
+## <a name="next-steps"> </a>次のステップ
 
-This concludes the set of tutorials that demonstrate the basics of working with data in Mobile Services. Next, Learn how to authenticate users of your app in [Get started with authentication]. Learn more about how to use Mobile Services with HTML/JavaScript in [Mobile Services HTML/JavaScript How-to Conceptual Reference]
+これで、モバイル サービスのデータを操作するための基本について説明する一連のチュートリアルは終了です。次は、チュートリアル「[認証の使用]」でアプリケーションのユーザーを認証する方法について説明します。[モバイル サービス HTML/JavaScript の使用方法の概念リファレンス] で、HTML/JavaScript でモバイル サービスを使用する方法について説明します。
 
 <!-- Anchors. -->
 
-[Next Steps]:#next-steps
+[次のステップ]:#next-steps
 
 <!-- Images. -->
 
 
 <!-- URLs. -->
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-html
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-html
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-html
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-html
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-html
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-html
 
 
-[Management Portal]: https://manage.windowsazure.com/
-[Mobile Services HTML/JavaScript How-to Conceptual Reference]: /en-us/develop/mobile/how-to-guides/work-with-html-js-client
+[管理ポータル]: https://manage.windowsazure.com/
+[モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-html-js-client
+
 

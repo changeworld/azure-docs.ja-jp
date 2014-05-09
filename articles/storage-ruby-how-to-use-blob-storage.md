@@ -1,80 +1,80 @@
-<properties linkid="dev-ruby-how-to-blob-storage" urlDisplayName="Blob Service" pageTitle="How to use blob storage (Ruby) | Microsoft Azure" metaKeywords="Get started Azure blob, Azure unstructured data, Azure unstructured storage, Azure blob, Azure blob storage, Azure blob Ruby" description="Learn how to use the Azure blob service to upload, download, list, and delete blob content. Samples written in Ruby." metaCanonical="" services="storage" documentationCenter="Ruby" title="How to Use the Blob Service from Ruby" authors="guayan" solutions="" manager="" editor="" />
+<properties linkid="dev-ruby-how-to-blob-storage" urlDisplayName="BLOB サービス" pageTitle="BLOB ストレージの使用方法 (Ruby) | Microsoft Azure" metaKeywords="Azure BLOB の概要, Azure 非構造化データ, Azure 非構造化ストレージ, Azure BLOB, Azure BLOB ストレージ, Azure BLOB Ruby" description="Azure BLOB サービスを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、および削除する方法を学習します。サンプルは Ruby で記述されています。" metaCanonical="" services="storage" documentationCenter="Ruby" title="Ruby から BLOB サービスを使用する方法" authors="guayan" solutions="" manager="" editor="" />
 
 
 
 
 
-#How to Use the Blob Service from Ruby
+#Ruby から BLOB サービスを使用する方法
 
-This guide will show you how to perform common scenarios using the
-Azure Blob service. The samples are written using the Ruby API.
-The scenarios covered include **uploading, listing, downloading,** and **deleting** blobs.
-For more information on blobs, see the [Next Steps](#next-steps) section.
+このガイドでは、Azure BLOB サービスを使用して一般的なシナリオを実行する
+方法について説明します。サンプルは Ruby API を使用して記述されています。
+紹介するシナリオは、BLOB の**アップロード、一覧の取得、ダウンロード**、および**削除**です。
+BLOB の詳細については、「[次のステップ](#next-steps)」のセクションを参照してください。
 
-##Table of Contents
+##目次
 
-* [What is the Blob Service?](#what-is)
-* [Concepts](#concepts)
-* [Create an Azure Storage Account](#CreateAccount)
-* [Create a Ruby Application](#CreateRubyApp)
-* [Configure Your Application to Access Storage](#ConfigAccessStorage)
-* [Setup an Azure Storage Connection](#SetupStorageConnection)
-* [How To: Create a Container](#CreateContainer)
-* [How To: Upload a Blob into a Container](#UploadBlob)
-* [How To: List the Blobs in a Container](#ListBlobs)
-* [How To: Download Blobs](#DownloadBlobs)
-* [How To: Delete a Blob](#DeleteBlob)
-* [Next Steps](#NextSteps)
+* [BLOB サービスとは](#what-is)
+* [概念](#concepts)
+* [Azure ストレージ アカウントの作成](#CreateAccount)
+* [Ruby アプリケーションの作成](#CreateRubyApp)
+* [アプリケーションのストレージへのアクセスの構成](#ConfigAccessStorage)
+* [Azure のストレージ接続文字列の設定](#SetupStorageConnection)
+* [方法: コンテナーを作成する](#CreateContainer)
+* [方法: コンテナーに BLOB をアップロードする](#UploadBlob)
+* [方法: コンテナー内の BLOB を一覧表示する](#ListBlobs)
+* [方法: BLOB をダウンロードする](#DownloadBlobs)
+* [方法: BLOB を削除する](#DeleteBlob)
+* [次のステップ](#NextSteps)
 
 
 [WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
-## <a id="CreateAccount"></a>Create an Azure storage account
+## <a id="CreateAccount"></a>Azure ストレージ アカウントの作成
 
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## <a id="CreateRubyApp"></a>Create a Ruby Application
+## <a id="CreateRubyApp"></a>Ruby アプリケーションの作成
 
-Create a Ruby application. For instructions, 
-see [Create a Ruby Application on Azure](/en-us/develop/ruby/tutorials/web-app-with-linux-vm/).
+Ruby アプリケーションを作成します。手順については、
+[Azure での Ruby アプリケーションの作成に関するページ](/ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/)を参照してください。
 
-## <a id="ConfigAccessStorage"></a>Configure Your Application to Access Storage
+## <a id="ConfigAccessStorage"></a>アプリケーションのストレージへのアクセスの構成
 
-To use Azure storage, you need to download and use the Ruby azure package, which includes a set of convenience libraries that communicate with the storage REST services.
+Azure ストレージを使用するには、Ruby azure パッケージをダウンロードして使用する必要があります。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
 
-### Use RubyGems to obtain the package
+### RubyGems を使用してパッケージを取得する
 
-1. Use a command-line interface such as **PowerShell** (Windows), **Terminal** (Mac), or **Bash** (Unix).
+1. **PowerShell** (Windows)、**ターミナル** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用します。
 
-2. Type "gem install azure" in the command window to install the gem and dependencies.
+2. コマンド ウィンドウに「gem install azure」と入力して、gem と依存関係をインストールします。
 
-### Import the package
+### パッケージをインポートする
 
-Using your favorite text editor, add the following to the top of the Ruby file where you intend to use storage:
+任意のテキスト エディターを使用して、ストレージを使用するアプリケーションの Ruby ファイルの先頭に次のコードを追加します。
 
 	require "azure"
 
-## <a id="SetupStorageConnection"></a>Setup an Azure Storage Connection
+## <a id="SetupStorageConnection"></a>Azure のストレージ接続文字列の設定
 
-The azure module will read the environment variables **AZURE\_STORAGE\_ACCOUNT** and **AZURE\_STORAGE\_ACCESS_KEY** 
-for information required to connect to your Azure storage account. If these environment variables are not set, you must specify the account information before using **Azure::BlobService** with the following code:
+azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** および 
+**AZURE\_STORAGE\_ACCESS_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::BlobService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
 	Azure.config.storage_account_name = "<your azure storage account>"
 	Azure.config.storage_access_key = "<your azure storage access key>"
 
 
-To obtain these values:
+これらの値を取得するには、次の手順を実行します。
 
-1. Log into the [Azure Management Portal](https://manage.windowsazure.com/).
-2. Navigate to the storage account you want to use
-3. Click **MANAGE KEYS** at the bottom of the navigation pane.
-4. In the pop up dialog, you will see the storage account name, primary access key and secondary access key. For access key, you can either the primary one or the secondary one.
+1. [Azure 管理ポータル](https://manage.windowsazure.com/)にログインします。
+2. 使用するストレージ アカウントを表示します。
+3. ナビゲーション ウィンドウの下部にある **[キーの管理]** をクリックします。
+4. ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。アクセス キーは、プライマリとセカンダリのどちらでも選択できます。
 
-## <a id="CreateContainer"></a>How To: Create a Container
+## <a id="CreateContainer"></a>方法: コンテナーを作成する
 
-The **Azure::BlobService** object lets you work with containers and blobs. To create a container, use the **create\_container()** method.
+**Azure::BlobService** オブジェクトを使用して、コンテナーと BLOB を操作できます。コンテナーを作成するには、**create\_container** メソッドを使用します。
 
-The following example creates a container or print out the error if there is any.
+次の例では、コンテナーを作成し、既に存在している場合はエラーを出力します。
 
 	azure_blob_service = Azure::BlobService.new
 	begin
@@ -83,43 +83,43 @@ The following example creates a container or print out the error if there is any
 	  puts $!
 	end
 
-If you want to make the files in the container public, you can set the container's permissions. 
+コンテナー内のファイルを公開する場合は、コンテナーのアクセス許可を設定できます。
 
-You can just modify the <strong>create\_container()</strong> call to pass the **:public\_access\_level** option:
+<strong>create\_container()</strong> の呼び出しを変更して、次のように **:public\_access\_level** オプションを渡すだけです。
 
 	container = azure_blob_service.create_container("test-container", 
 	  :public_access_level => "<public access level>")
 
 
-Valid values for the **:public\_access\_level** option are:
+**:public\_access\_level** オプションに指定できる値は次のとおりです。
 
-* **blob:** Specifies full public read access for container and blob data. Clients can enumerate blobs within the container via anonymous request, but cannot enumerate containers within the storage account.
+* **blob:** コンテナーと BLOB のデータに対する完全パブリック読み取りアクセスを指定します。クライアントは匿名要求でコンテナー内の BLOB を列挙できますが、ストレージ アカウント内のコンテナーを列挙することはできません。
 
-* **container:** Specifies public read access for blobs. Blob data within this container can be read via anonymous request, but container data is not available. Clients cannot enumerate blobs within the container via anonymous request.
+* **container:** BLOB に対するパブリック読み取りアクセスを指定します。該当するコンテナー内の BLOB データは匿名要求で読み取り可能ですが、コンテナー データは参照できません。クライアントはコンテナー内の BLOB を匿名要求で列挙することはできません。
 
-Alternatively, you can modify the public access level of a container by using **set\_container\_acl()** method to specify the public access level.
+別の方法として、**set\_container\_acl()** メソッドを使用してパブリック アクセス レベルを指定することでも、コンテナーのパブリック アクセス レベルを変更できます。
  
-The following example changes the public access level to **container**:
+次の例では、パブリック アクセス レベルを **container** に変更します。
 
 	azure_blob_service.set_container_acl('test-container', "container")
 
-## <a id="UploadBlob"></a>How To: Upload a Blob into a Container
+## <a id="UploadBlob"></a>方法: コンテナーに BLOB をアップロードする
 
-To upload content to a blob, use the **create\_block\_blob()** method to create the blob, use a file or string as the content of the blob. 
+BLOB にコンテンツをアップロードするには、**create\_block\_blob()** メソッドを使用して BLOB を作成し、ファイルまたは文字列を BLOB のコンテンツとして使用します。
 
-The following code will upload the file **test.png** as a new blob named "image-blob" in the container.
+次のコードでは、ファイル **test.png** を、コンテナー内の新しい BLOB として "image-blob" という名前でアップロードします。
 
 	content = File.open("test.png", "rb") { |file| file.read }
 	blob = azure_blob_service.create_block_blob(container.name,
 	  "image-blob", content)
 	puts blob.name
 
-## <a id="ListBlobs"></a>How To: List the Blobs in a Container
+## <a id="ListBlobs"></a>方法: コンテナー内の BLOB を一覧表示する
 
-To list the containers, use **list_containers()** method. 
-To list the blobs within a container, use **list\_blobs()** method. 
+コンテナーの一覧を取得するには、**list_containers()** メソッドを使用します。
+コンテナー内の BLOB の一覧を取得するには、**list\_blobs()** メソッドを使用します。
 
-This outputs the urls of all the blobs in all the containers for the account.
+次のコードでは、アカウントのすべてのコンテナーからすべての BLOB の URL を出力します。
 
 	containers = azure_blob_service.list_containers()
 	containers.each do |container|
@@ -129,24 +129,25 @@ This outputs the urls of all the blobs in all the containers for the account.
 	  end
 	end
 
-## <a id="DownloadBlobs"></a>How To: Download Blobs
+## <a id="DownloadBlobs"></a>方法: BLOB をダウンロードする
 
-To download blobs, use the **get\_blob()** method to retrieve the contents. 
+BLOB をダウンロードするには、**get\_blob()** メソッドを使用してコンテンツを取得します。
 
-The following example demonstrates using **get\_blob()** to download the contents of "image-blob" and write it to a local file.
+次の例は、**get\_blob()** を使用して "image-blob" のコンテンツをダウンロードし、ローカル ファイルに書き込む方法を示しています。
 
 	blob, content = azure_blob_service.get_blob(container.name,"image-blob")
 	File.open("download.png","wb") {|f| f.write(content)}
 
-## <a id="DeleteBlob"></a>How To: Delete a Blob
-Finally, to delete a blob, use the **delete\_blob()** method. The following example demonstrates how to delete a blob.
+## <a id="DeleteBlob"></a>方法: BLOB を削除する
+最後に、BLOB を削除するには **delete\_blob()** メソッドを使用します。次の例は、BLOB の削除方法を示しています。
 
 	azure_blob_service.delete_blob(container.name, "image-blob")
 
-## <a id="NextSteps"></a>Next Steps
+## <a id="NextSteps"></a>次のステップ
 
-Now that you have learned the basics of blob storage, follow these links to learn how to do more complex storage tasks.
+これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   See the MSDN Reference: [Storing and Accessing Data in Azure](http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx)
--   Visit the [Azure Storage Team Blog](http://blogs.msdn.com/b/windowsazurestorage/)
--   Visit the [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) repository on GitHub
+-   MSDN リファレンス: [Azure のデータの格納とアクセス](http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx)
+-   [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+-   GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
+

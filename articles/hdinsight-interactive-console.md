@@ -1,123 +1,123 @@
-<properties linkid="manage-services-hdinsight-howto-work-with-the-interactive-console" urlDisplayName="Interactive Console" pageTitle="How to work with the interactive console in HDInsight | Azure" metaKeywords="" description="In this guide, you'll learn how to perform common tasks such as file upload, run jobs, and visualize data using the interactive console for HDInsight Service." metaCanonical="" services="hdinsight" documentationCenter="" title="HDInsight Interactive JavaScript and Hive Consoles" authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
+<properties linkid="manage-services-hdinsight-howto-work-with-the-interactive-console" urlDisplayName="対話型コンソール" pageTitle="HDInsight サービスで対話型コンソールを使用する方法 | Azure" metaKeywords="" description="このガイドでは、HDInsight サービスの対話型コンソールを使用して一般的な操作 (ファイルのアップロード、ジョブの実行、データの視覚化など) を行う方法について説明します。" metaCanonical="" services="hdinsight" documentationCenter="" title="HDInsight サービスの対話型 JavaScript コンソールと Hive コンソール" authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
 
 
 
 
-# HDInsight Interactive JavaScript and Hive Consoles
+# HDInsight サービスの対話型 JavaScript コンソールと Hive コンソール
 
-Microsoft Azure HDInsight Service comes with interactive consoles for both JavaScript and Hive. These consoles provide a simple, interactive read-evaluate-print loop (REPL) experience, where users can enter expressions, evaluated them, and then query and display the results of a MapReduce job immediately. The JavaScript console executes Pig Latin statements. The Hive console evaluates Hive Query Language (Hive QL) statements. Both types of statements get compiled into MapReduce programs. Managing Hadoop jobs on these consoles is much simpler than remote connecting into the head node of the Hadoop cluster and working with MapReduce programs directly.
+Microsoft Azure HDInsight サービスには、JavaScript と Hive 両方の対話型コンソールが備わっています。これらのコンソールは、読み取り (read)、評価 (evaluate)、出力 (print)、繰り返し (loop) を実現するシンプルな対話型環境 (REPL) です。ユーザーは式を入力し、それらを評価し、クエリを実行することによって MapReduce ジョブの結果を即座に表示できます。JavaScript コンソールは Pig Latin ステートメントを実行します。Hive コンソールは Hive クエリ言語 (Hive QL) のステートメントを評価します。どちらのタイプのステートメントも、MapReduce プログラムとしてコンパイルされます。これらのコンソール上で Hadoop ジョブを管理すれば、Hadoop クラスターのヘッド ノードにリモート接続して MapReduce プログラムを直接実行するより、処理が格段に容易になります。
 
-**The JavaScript Console**: a command shell that provides a fluent interface to the Hadoop ecosystem. A fluent interface uses a method of chaining instructions that relays the context of one call in a sequence to the subsequent call in that sequence. The JavaScript console provides:
+**JavaScript コンソール**: Hadoop エコシステムとの "流れるインターフェイス" を実現するコマンド シェルです。"流れるインターフェイス" では、複数の命令をつなぎ合わせ、一連の流れの中で 1 つの呼び出しのコンテキストを後続の呼び出しに伝える手法が用いられます。JavaScript コンソールの特長は次のとおりです。
 		
-- Access to the Hadoop cluster, its resources, and the Hadoop Distributed File System (HDFS) commands.
-- Management and manipulate of data coming into and out of the Hadoop cluster.
-- A fluent interface that evaluates Pig Latin and JavaScript statements to define a series of MapReduce programs to create data processing workflows.
+- Hadoop クラスターとそのリソース、および Hadoop 分散ファイル システム (HDFS) のコマンドにアクセスできる。
+- Hadoop クラスターとの間でやり取りされるデータを管理および操作できる。
+- Pig Latin と JavaScript のステートメントを評価して一連の MapReduce プログラムを定義し、データ処理ワークフローを作成する "流れるインターフェイス"
 
-**The Hive Console**: Hive is a data warehouse framework, built on top of Hadoop, that provides data management, querying, and analysis. It uses HiveQL, an SQL dialect, to query data stored in a Hadoop cluster. The Hive console provides:
+**Hive コンソール**: Hadoop を基盤とするデータ ウェアハウス フレームワークであり、データの管理、照会、分析を行います。SQL 言語の一種である HiveQL を使用して、Hadoop クラスターに保存されたデータを照会します。Hive コンソールの特長は次のとおりです。
 			
-- Access to the Hadoop cluster, its resources, and the HDFS commands.		
-- An implementation of the Hive framework that can execute HiveQL statements on a Hadoop cluster.	
-- A relational database model for HDFS that enables you to interact with data stored in the distributed file system as if that data were stored in tables.		
-The JavaScript console uses Pig Latin, a data flow language, and the Hive console uses HiveQL, a query language. 	
+- Hadoop クラスターとそのリソース、および HDFS のコマンドにアクセスできる。		
+- Hadoop クラスター上で HiveQL ステートメントを実行できる Hive フレームワーク。	
+- HDFS 対応のリレーショナル データベース モデルであり、テーブルに保存されたデータと同じように、分散ファイル システムに保存されたデータを操作できる。		
+JavaScript コンソールは Pig Latin (データ フロー言語) を使用し、Hive コンソールは HiveQL (照会言語) を使用します。	
 
-Pig (and the JavaScript console) will tend to be preferred by those who are more familiar with a scripting approach, where a sequence of chained (or fluent) transformations is used to define a data processing workflow. It is also a good choice if you have seriously unstructured data.	
+Pig (JavaScript コンソール) はスクリプトに慣れているユーザーに好まれる傾向があります。この場合、連結された ("流れるような") 一連の命令によってデータ処理ワークフローを定義します。データの非構造化が著しい場合にも適しています。	
 
-Hive (and its console) will tend to be preferred by those who are more familiar with SQL and a relational database environment. The use of schema and a table abstraction in Hive means the experience is very close to that typically encountered in a RDBMS.
+Hive (Hive コンソール) は、SQL やリレーショナル データベース環境に慣れているユーザーに好まれる傾向があります。Hive ではスキーマとテーブル抽象化が使用されているので、RDBMS での一般的な処理と非常によく似ています。
 
-Pig and Hive provide higher level languages that are compiled into MapReduce programs that are written in Java and that run on the HDFS. If you need really precise control or high performance you will need to write the MapReduce programs directly.
-
-
-##In this tutorial
-
-* [Use the JavaScript console to run a MapReduce job](#runjob)
-* [Use the JavaScript console to display the results graphically](#displayresults)
-* [Use the Hive console to export the results to a Hive table](#createhivetable)
-* [Use the Hive console to query the data in the Hive table](#queryhivetable)
+Pig と Hive は高水準言語であり、Java で記述された MapReduce プログラムにコンパイルされ、HDFS 上で実行されます。綿密な制御や高いパフォーマンスが求められる場合は、MapReduce プログラムを直接記述する必要があります。
 
 
-##<a name="runjob"></a>Use the JavaScript Console to Run a MapReduce Job
+##このチュートリアルの内容
 
-In this section, you use the JavaScript console to run the WordCount sample that ships with the HDInsight Service. The JavaScript query run here uses the fluent API layered on Pig that is provided by the Interactive Console.  The text file analyzed here is the Project Gutenberg eBook edition of *The Notebooks of Leonardo Da Vinci*. A filter is specified so that the results of the MapReduce job contains only the ten most frequently occurring words. 
+* [JavaScript コンソールを使用して MapReduce ジョブを実行する](#runjob)
+* [JavaScript コンソールを使用して結果をグラフィカルに表示する](#displayresults)
+* [Hive コンソールを使用して結果を Hive テーブルにエクスポートする](#createhivetable)
+* [Hive コンソールを使用して Hive テーブルのデータを照会する](#queryhivetable)
 
-1. Sign in to the [Management Portal](https://manage.windowsazure.com).
-2. Click **HDINSIGHT**. You shall see a list of deployed Hadoop clusters.
-3. Click the name of the HDInsight cluster where you want to connect to.
-4. Click **Manage Cluster**.
-5. Enter your credential, and then click **Log On**.
-6. From the HDInsight portal, click **Samples**.
+
+##<a name="runjob"></a>JavaScript コンソールを使用して MapReduce ジョブを実行する
+
+このセクションでは、JavaScript コンソールを使用して、HDInsight サービスに用意されている WordCount サンプルを実行します。ここでは、対話型 JavaScript コンソールに備わっている、Pig の "流れる API" を使用します。ここで分析するテキスト ファイルは、『*The Notebooks of Leonardo Da Vinci (レオナルド・ダ・ヴィンチの手記)*』の Project Gutenberg 電子書籍版です。MapReduce ジョブの結果として、"最も頻繁に出現する 10 個の単語" のみが出力されるようにフィルターを指定します。
+
+1. [管理ポータル](https://manage.windowsazure.com)にサインインします。
+2. **[HDINSIGHT]** をクリックします。展開した Hadoop クラスターが一覧表示されます。
+3. 接続する HDInsight クラスターの名前をクリックします。
+4. **[クラスターの管理]** をクリックします。
+5. ユーザー名とパスワードを入力して **[ログオン]** をクリックします。
+6. HDInsight ポータルで **[サンプル]** をクリックします。
 
 	![HDI.Tiles.Samples][hdi-tiles-samples]
 
-7. From the **Hadoop Sample Gallery** page , click on the **WordCount**  tile. 
-8. Click **WordCount.js** from the upper right, and save the file  to a local directory, for example the ../downloads folder.
+7. **[Hadoop サンプル ギャラリー]** ページで、**[WordCount]** タイルをクリックします。
+8. 右上にある **[WordCount.js]** をクリックして、このファイルをローカル ディレクトリに保存します (../downloads フォルダーなど)。
 
 	![HDI.JsConsole.WordCountDownloads][hdi-jsconsole-wordcount]
 
-9. Click **Azure HDInsight** on the upper left corner to go back to the cluster dashboard page.
-10. Click **Interactive Cluster** to bring up the JavaScript console. 
+9. 右上隅にある **[Azure HDInsight]** をクリックして、クラスターのダッシュボード ページに戻ります。
+10. **[対話型クラスター]** をクリックして、JavaScript コンソールを表示します。
 	
 	![HDI.Tiles.InteractiveConsole][hdi-tiles-interactive-console]
-11. Click **JavaScript** on the upper right.
-12. Run the following command:
+11. 右上にある **[JavaScript]** をクリックします。
+12. 次のコマンドを実行します。
 
 	fs.put()
 
-13. Enter the following parameters into the **Upload a file** window:  
+13. **[ファイルのアップロード]** ウィンドウで次のパラメーターを入力します。
 
-	- **Source:** _..\downloads\Wordcount.js
- 	- **Destination:** ./WordCount.js/ 	
+	- **ソース:** _..\downloads\Wordcount.js
+ 	- **保存先:** ./WordCount.js/	
 
 	![HDI.JsConsole.UploadJs][hdi-jsconsole-upload]
 
-	Browse the location of the WordCount.js file. The full local path will be required. The single dot at the start of the destination path is needed as part of the relative address in HDFS.
+	WordCount.js ファイルの場所を指定します。完全なローカル パスを指定する必要があります。HDFS の相対アドレスであることを示すため、保存先パスの先頭にドットを 1 つ追加してください。
 
 
-14. Click the **Upload** button.
+14. **[アップロード]** をクリックします。
 
-15. Run the following commands to list the file and display the content:
+15. 次のコマンドを実行して、ファイルを一覧表示し、その内容を表示します。
 
 		#ls
 		#cat WordCount.js
 
 	![HDI.JsConsole.JsCode][hdi-jsconsole-jscode]
 
-	Note that the JavaScript map function removes capital letters from the text using the "toLowerCase()" method before counting the number of occurences of a word in the reduce function. 
+	JavaScript の map 関数は、toLowerCase() メソッドを使用してテキストから大文字を削除します。その後、reduce 関数によって単語の出現回数をカウントします。
 	
-16. Run the following command to list the data file that will be processed by the WordCount MapReduce job: 
+16. 次のコマンドを実行して、WordCount MapReduce ジョブで処理するデータ ファイルを一覧表示します。
 
  		#ls /example/data/gutenberg
 	
-17. Run the following command to execute the MapReduce program: 
+17. 次のコマンドを実行して、MapReduce プログラムを実行します。
 
 		pig.from("/example/data/gutenberg/davinci.txt").mapReduce("/user/admin/WordCount.js", "word, count:long").orderBy("count DESC").take(10).to("DaVinciTop10Words")
 	
-	Replace admin to the current login username.
+	admin は現在のログイン ユーザー名に置き換えます。
 
-	Note how the instructions are "chained" together using the dot operator, and the output file is called *DaVinciTop10Words*. In the next section, you will access the output file. 
+	ドット演算子を使用して命令が "チェーン" されていること、出力ファイルが *DaVinciTop10Words* と呼ばれていることに注意してください。次のセクションでは、この出力ファイルにアクセスします。
 
-	Once completed, you shall see the following:
+	完了すると、次のように表示されます。
 
 		pig.from("/example/data/gutenberg/davinci.txt").mapReduce("/user/admin/WordCount.js", "word, count:long").orderBy("count DESC").take(10).to("DaVinciTop10Words")
 		2013-04-25 18:54:28,116 [main] INFO  org.apache.pig.backend.hadoop.executionengine.mapReduceLayer.MapReduceLauncher - Success! (View Log)
 
-18. Scroll to the right, and then click on **View Log** if you want to observe the job progress. This log will also provide diagnostics if the job fails to complete. When the job does complete, you will see the following message at the end of the log:
+18. ジョブの進捗を確認するには、右へスクロールして **[ログの表示]** をクリックします。ジョブを完了できなかった場合は、その診断情報もこのログに表示されます。ジョブが完了すると、ログの末尾に次のメッセージが表示されます。
 
 		[main] INFO org.apache.pig.backend.hadoop.executionengine.mapReduceLayer.MapReduceLauncher - Success! followed by a link to the log file.
 	
-19. Run the following command to list the output file:
+19. 次のコマンドを実行して、出力ファイルを一覧表示します。
 
 		#ls
 
-	Notice a DavinciTop10Words folder is created.
+	DavinciTop10Words フォルダーが作成されていることを確認してください。
 
-##<a name="displayresults"></a>Use the JavaScript Console to Display the Results Graphically
-In the last section, you ran a MapReduce job to retrieve the top 10 words from a text file. The output file is ./DaVinciTop10Words.
+##<a name="displayresults"></a>JavaScript コンソールを使用して結果をグラフィカルに表示する
+前のセクションでは、テキスト ファイルから出現回数が上位 10 個の単語を取得する MapReduce ジョブを実行しました。出力ファイルは、./DaVinciTop10Words です。
 
-1. Run the following command to display the results in the DaVinciTop10Words directory:
+1. 次のコマンドを実行して、DaVinciTop10Words ディレクトリの結果を表示します。
 
 		file = fs.read("DaVinciTop10Words")
 
-	The result looks like:
+	結果は次のようになります。
 
 		js> file=fs.read("DaVinciTop10Words")
 		the	22966
@@ -131,26 +131,26 @@ In the last section, you ran a MapReduce job to retrieve the top 10 words from a
 		that	2903
 		which	2544
 	
-2. Run the following command to parse the contents of the file into a data file:
+2. 次のコマンドを実行して、ファイルの内容を解析しデータ ファイルに出力します。
 
 		data = parse(file.data, "word, count:long")
 		
-3. Run the following command to plot the data
+3. 次のコマンドを実行して、データをプロットします。
 
 		graph.bar(data)
 		
 	![HDI.JsConsole.BarGraphTop10Words][hdi-jsconsole-bargraph-top10words]
 
 
-##<a name="createhivetable"></a>Use the Hive Console to Export the Results to a Hive Table
+##<a name="createhivetable"></a>Hive コンソールを使用して結果を Hive テーブルにエクスポートする
 
-This section introduces you to the Hive interactive console. You will create a Hive table from the MapReduce job output. The next section shows how to query the data in this table. 
+このセクションでは Hive 対話型コンソールを使用し、MapReduce ジョブの出力から Hive テーブルを作成します。次のセクションでは、このテーブル内のデータを照会する方法を説明します。
 
-**Create the Hive table**
+**Hive テーブルの作成**
 	
-1. Click Hive on the upper right to open the Hive console.
+1. 右上にある [Hive] をクリックして、Hive コンソールを開きます。
 	
-2. Enter the following command to create a two column table named _DaVinciWordCountTable_ from the WordCount sample output that was saved in the "DaVinciTop10Words" folder:
+2. 次のコマンドを入力します。DaVinciTop10Words フォルダーに保存した WordCount サンプル出力を基にして、2 列から成る _DaVinciWordCountTable_ テーブルが作成されます。
 		
 		CREATE EXTERNAL TABLE DaVinciWordCountTable		
 		(word STRING,
@@ -158,30 +158,30 @@ This section introduces you to the Hive interactive console. You will create a H
 		ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'	
 		STORED AS TEXTFILE LOCATION '/user/admin/DaVinciTop10Words';	
 
-	Replace admin with the login username. 
+	admin はログイン ユーザー名に置き換えます。
 
-	Note that the table is created as an EXTERNAL table to keep the folder targeted independent of the table. Also, note that you need only specify the folder in which the output file is located, not the file name itself.
+	対象フォルダーに依存しないようにするため、ここでは外部テーブルとして作成します。また、指定するのは出力ファイルの場所だけであることに注意してください。ファイル名自体は指定する必要がありません。
 
-3. Click **EVALUATE** on the lower left. 		
+3. 左下にある **[評価]** をクリックします。		
 
-4. Enter the following commands to confirm that the two column table has been created:
+4. 次のコマンドを入力して、2 列のテーブルが作成されたことを確認します。
 
 		SHOW TABLES;
 		DESCRIBE DaVinciWordCountTable;
 
-5. Click **EVALUATE**.
+5. **[評価]** をクリックします。
 	
 	![HDI.Hive.ShowDescribeTable][hdi-hive-showdescribetable]
 
-##<a name="queryhivetable"></a>Use the Hive Console to Query the Data in the Hive Table
+##<a name="queryhivetable"></a>Hive コンソールを使用して Hive テーブルのデータを照会する
 
-1. Run the following command to query for the words with the top ten number of occurrences:
+1. 次のコマンドを実行して、出現回数が最も多い 10 個の単語を照会します。
 
 		SELECT word, count
 		FROM DaVinciWordCountTable
 		ORDER BY count DESC LIMIT 10
 
-	The results of this query are:			
+	結果が次のように表示されます。			
 
 		SELECT word, count FROM DaVinciWordCountTable ORDER BY count DESC LIMIT 10
 		the 22966
@@ -195,17 +195,17 @@ This section introduces you to the Hive interactive console. You will create a H
 		that 2903
 		which 2544
 
-## Next Steps
+## 次のステップ
 
-You have seen how to run a Hadoop job from the Interactive JavaScript console and how to inspect the results from a job using this console. You have also seen how the Interactive Hive console can be used to inspect and process the results of a Hadoop job by creating and querying a table that contains the output from a MapReduce program. You have seen examples of Pig Latin and Hive QL statements being used in the consoles. Finally, you have seen how the REPL interactive nature of the JavaScript and Hive consoles simplifies using a Hadoop cluster. To learn more, see the following articles:
+ここでは、対話型 JavaScript コンソールから Hadoop ジョブを実行する方法、さらにこのコンソールを使用してジョブの結果を検証する方法について説明しました。また、対話型 Hive コンソールを使用して Hadoop ジョブの結果を確認および処理しました。その際、MapReduce プログラムの出力を含むテーブルを作成し、そのテーブルに対して照会を実行しました。これらのコンソールで使用する Pig Latin ステートメントと Hive QL ステートメントの例を確認しました。最後に、JavaScript コンソールと Hive コンソールの REPL 対話機能を使用すれば、Hadoop クラスターを容易に操作できることを確認しました。詳細については、次の記事を参照してください。
 
-* [Using Pig with HDInsight][hdinsight-pig] 
-* [Using Hive with HDInsight][hdinsight-hive]
-* [Using MapReduce with HDInsight][hdinsight-mapreduce]
+* [HDInsight での Pig の使用][hdinsight-pig]
+* [HDInsight での Hive の使用][hdinsight-hive]
+* [HDInsight での MapReduce の使用][hdinsight-mapreduce]
 
-[hdinsight-pig]: /en-us/manage/services/hdinsight/using-pig-with-hdinsight/
-[hdinsight-hive]: /en-us/manage/services/hdinsight/using-hive-with-hdinsight/
-[hdinsight-mapreduce]: /en-us/manage/services/hdinsight/using-mapreduce-with-hdinsight/
+[hdinsight-pig]: /ja-jp/manage/services/hdinsight/using-pig-with-hdinsight/
+[hdinsight-hive]: /ja-jp/manage/services/hdinsight/using-hive-with-hdinsight/
+[hdinsight-mapreduce]: /ja-jp/manage/services/hdinsight/using-mapreduce-with-hdinsight/
 
 [hdi-tiles-samples]: ./media/hdinsight-interactive-console/HDI.TileSamples.PNG
 [hdi-jsconsole-wordcount]: ./media/hdinsight-interactive-console/HDI.JsConsole.WordCountDownloads.PNG
@@ -213,4 +213,5 @@ You have seen how to run a Hadoop job from the Interactive JavaScript console an
 [hdi-jsconsole-upload]: ./media/hdinsight-interactive-console/HDI.JsConsole.UploadJs.PNG
 [hdi-jsconsole-jscode]: ./media/hdinsight-interactive-console/HDI.JsConsole.JsCode.PNG
 [hdi-jsconsole-bargraph-top10words]: ./media/hdinsight-interactive-console/HDI.JsConsole.BarGraphTop10Words.PNG
-[hdi-hive-showdescribetable]: ./media/hdinsight-interactive-console/HDI.Hive.ShowDescribeTable.PNG "Hive Table Confirmation")
+[hdi-hive-showdescribetable]: ./media/hdinsight-interactive-console/HDI.Hive.ShowDescribeTable.PNG "Hive テーブルの構成")
+

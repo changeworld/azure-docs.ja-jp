@@ -1,181 +1,178 @@
-<properties linkid="dev-net-common-tasks-publishing-with-vso" urlDisplayName="Publishing with TFS" pageTitle="Continuous delivery with Visual Studio Online in Azure" metaKeywords="" description="Learn how to configure your Visual Studio Online team projects to automatically build and deploy to Azure web sites or cloud services." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Continuous delivery to Azure using Visual Studio Online" authors="ghogen" solutions="" manager="" editor="" />
+<properties linkid="dev-net-common-tasks-publishing-with-vso" urlDisplayName="TFS を使用した発行" pageTitle="Visual Studio Online を使用した Azure への継続的な配信" metaKeywords="" description="Visual Studio Online チーム プロジェクトを、自動的にビルドして Azure の Web サイトまたはクラウド サービスにデプロイするように構成できます。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Visual Studio Online を使用した Azure への継続的な配信" authors="ghogen" solutions="" manager="" editor="" />
 
 
 
 
-# Continuous delivery to Azure using Visual Studio Online
+#Visual Studio Online を使用した Azure への継続的な配信
 
-Visual Studio Online (previously Team Foundation Service) is a cloud-hosted service version of Microsoft's popular Team Foundation Server (TFS) software that provides highly customizable source code and build management, agile development and team process workflow, issue and work item tracking, and more.  You can configure your Visual Studio Online team projects to automatically build and deploy to Azure web sites or cloud services.  For information on how to set up a continuous build and deploy system using an on-premises Team Foundation Server, see [Continuous Delivery for Cloud Services in Azure](../cloud-services-dotnet-continuous-delivery).
+Visual Studio Online (旧 Team Foundation Service) は、Microsoft のよく知られた Team Foundation Server (TFS) ソフトウェアのクラウド ホステッド サービス バージョンで、高度にカスタマイズ可能なソース コードおよびビルド管理、アジャイル開発およびチーム プロセスのワークフロー、問題および作業項目の追跡などの機能を提供します。Visual Studio Online チーム プロジェクトを、自動的にビルドして Azure の Web サイトまたはクラウド サービスにデプロイするように構成できます。内部設置型 Team Foundation Server を使用した継続的なビルドおよびデプロイ システムのセットアップ方法については、「[Azure でのクラウド サービスの継続的な配信に関するページ](../cloud-services-dotnet-continuous-delivery)」 を参照してください。
 
-This tutorial assumes you have Visual Studio 2013 and the Azure SDK installed. If you don't already have Visual Studio 2013, download it by choosing the **Get started for free** link at [www.visualstudio.com](http://www.visualstudio.com). Install the Azure SDK from [here](http://go.microsoft.com/fwlink/?LinkId=239540).
+このチュートリアルは、Visual Studio 2013 と Azure SDK がインストール済みであることを前提としています。Visual Studio 2013 がない場合は、[www.visualstudio.com](http://www.visualstudio.com) で**無料利用の開始**リンクをクリックしてダウンロードします。Azure SDK を[ここ](http://go.microsoft.com/fwlink/?LinkId=239540)からインストールしてください。
 
-To set up a cloud service to automatically build and deploy to Azure by using Visual Studio Online, follow these steps:
+Visual Studio Online を使用してクラウド サービスを自動的にビルドして Azure にデプロイするようにセットアップするには、次の手順に従います。
 
--   [Step 1: Sign up for Visual Studio Online.][]
+-   [手順 1. Visual Studio Online にサインアップする。][]
 
--   [Step 2: Check in a project to source control.][]
+-   [手順 2. プロジェクトをソース管理にチェックインする。][]
 
--   [Step 3: Connect the project to Azure.][]
+-   [手順 3. プロジェクトを Azure に接続する。][]
 
--   [Step 4: Make changes and trigger a rebuild and redeployment.][]
+-   [手順 4. 変更を行い、リビルドと再デプロイをトリガーする。][]
 
--   [Step 5: Redeploy an earlier build (optional)][]
+-   [手順 5. 以前のビルドを再デプロイする (省略可能)][]
 
--   [Step 6: Change the Production deployment (cloud services only)][]
+-   [手順 6. 運用デプロイを変更する (クラウド サービスのみ)][]
 
-<h2> <a name="step1"></a><span class="short-header">Sign up for Visual Studio Online</span>Step 1: Sign up for Visual Studio Online</h2>
+<h2> <a name="step1"></a><span class="short-header">Visual Studio Online へのサインアップ</span>手順 1. Visual Studio Online へのサインアップ</h2>
 
-1. Create a Visual Studio Online account by navigating to [http://www.visualstudio.com](http://www.visualstudio.com). Click the **Sign In** link.
-  You will need to sign-in using a Microsoft account. If this is the first time you've signed in, you are asked to provide some information about yourself, such as your name and email address.
+1. [http://www.visualstudio.com](http://www.visualstudio.com) に移動して Visual Studio Online アカウントを作成します。**[サインイン]** リンクをクリックします。
+  Microsoft アカウントを使用してサインインする必要があります。初めてサインインする場合は、名前や電子メール アドレスなど、自分に関する情報の入力を求められます。
 ![][0]
   
-2. If this isn't the first time you've signed in, you see this screen when you sign in. Click the **Create a free account now** link.<br/>
+2. 初めてのサインインではない場合は、サインインするときにこの画面が表示されます。**無料アカウントを今すぐ作成** リンクをクリックします。<br/>
 ![][36]
 
-3. Create an account URL for your new project. Your account will have the form: https://&lt;accountname&gt;.visualstudio.com.<br/>
+3. 新しいプロジェクトに対応するアカウント URL を作成します。アカウントは https://&lt;accountname&gt;.visualstudio.com のような形式です。<br/>
 ![][37]
  
-4. Now you can create your first project. Enter the project name and description. Choose the version control system you want to use. Team Foundation Version Control (TFVC) or Git are both supported.  You can find out more about these options at [Use version control](http://go.microsoft.com/fwlink/?LinkId=324037). This walkthrough assumes you are using TFVC. Then choose the process template your organization uses, and choose the **Create Project** button. For more information about process templates, see [Work with team project artifacts, choose a process template](http://go.microsoft.com/fwlink/?LinkId=324035).<br/>
+4. これで、最初のプロジェクトを作成できるようになりました。プロジェクトの名前と説明を入力します。次に、使用するバージョン管理システムを選択します。Team Foundation バージョン管理 (TFVC) と Git はいずれもサポートされています。これらのオプションの詳細については、「[バージョン管理の使用](http://go.microsoft.com/fwlink/?LinkId=324037)」を参照してください。このチュートリアルでは、TFVC を使用していることを前提としています。その後、組織で使用するプロセス テンプレートを選択して、**[プロジェクトを作成する]** をクリックします。プロセス テンプレートの詳細については、「[チーム プロジェクト成果物の操作、プロセス テンプレートの選択](http://go.microsoft.com/fwlink/?LinkId=324035)」を参照してください。<br/>
 ![][1]
 
-5. When project creation is done, click the **Open with Visual Studio to connect** button to automatically launch Visual Studio connected to your team project. If you see any security dialog boxes, choose Allow.<br/>
+5. プロジェクトの作成が完了したら、**[Visual Studio で開いて接続する]** をクリックすると、Visual Studio が自動的に起動し、チーム プロジェクトに接続します。セキュリティ ダイアログ ボックスが表示された場合は、[許可] を選択します。<br/>
 ![][2]
 
-<h2><a name="step2"> </a><span class="short-header">Check in a project to source control.</span>Step 2: Check in a project to source control</h2>
+<h2><a name="step2"> </a><span class="short-header">プロジェクトをソース管理にチェックイン</span>手順 2. プロジェクトをソース管理にチェックイン</h2>
 
-1. In Visual Studio, open the solution you want to deploy, or create a new one.
-You can deploy a web site or a cloud service (Azure Application) by following the steps in this walkthrough.
-If you want to create a new solution, create a new Azure Cloud Service project,
-or a new ASP.NET MVC project. Make sure that the project targets .NET Framework 4 or 4.5, and if you are creating a cloud service project, add an ASP.NET MVC web role and a worker role, and choose Internet application for the web role. When prompted, choose **Internet Application**.
-If you want to create a web site, choose the ASP.NET Web Application project template, and then choose MVC. See [Get started with Azure and ASP.NET](http://www.windowsazure.com/en-us/documentation/articles/web-sites-dotnet-get-started/).
+1. Visual Studio で、デプロイするソリューションを開くか、新しいソリューションを作成します。
+このチュートリアルの手順に従って、Web サイトまたはクラウド サービス (Azure アプリケーション) をデプロイできます。
+新しいソリューションを作成する場合は、新しい Azure クラウド サービス プロジェクト、または新しい ASP.NET MVC プロジェクトを作成します。プロジェクトが .NET Framework 4 または 4.5 をターゲットにしていることを確認し、クラウド サービス プロジェクトを作成している場合は、ASP.NET MVC の Web ロールおよび worker ロールのプロジェクトを追加して、Web ロールに対応するインターネット アプリケーションを選択します。確認メッセージが表示されたら、**[インターネット アプリケーション]** を選択します。
+Web サイトを作成する場合は、ASP.NET Web アプリケーション プロジェクトのテンプレートを選択し、次に MVC を選択します。[Azure と ASP.NET の使用に関するページ](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-dotnet-get-started/)を参照してください。
 
-2. Open the context menu for the solution, and select **Add Solution to Source Control**.<br/>
+2. ソリューションのコンテキスト メニューを開き、**[ソリューションをソース管理に追加]** を選択します。<br/>
 ![][5]
 
-3. Accept or change the defaults and choose the **OK** button. Once the process completes, source control icons appear in Solution Explorer.<br/>
+3. 既定値を受け入れるか変更し、**[OK]** を選択します。処理が完了すると、ソース管理アイコンがソリューション エクスプローラーに表示されます。<br/>
 ![][6]
 
-4. Open the shortcut menu for the solution, and choose **Check In**.<br/>
+4. ソリューションのショートカット メニューを開き、**[チェックイン]** を選択します。<br/>
 ![][7]
 
-5. In the Pending Changes area of Team Explorer, type a comment for the check-in and choose the **Check In** button.<br/>
+5. チーム エクスプローラーの [保留中の変更] にチェックインのコメントを入力し、**[チェックイン]** を選択します。<br/>
 ![][8]
 
 <br/>
-Note the options to include or exclude specific changes when you check in. If desired changes are excluded, choose the **Include All** link.<br/>
+チェックイン時に特定の変更を含める、または除外するオプションに注意してください。必要な変更が除外されている場合は、**[すべて含む]** を選択します。<br/>
 ![][9]
 
-<h2> <a name="step3"> </a><span class="short-header">Connect the project to Azure</span>Step 3: Connect the project to Azure</h2>
+<h2> <a name="step3"> </a><span class="short-header">プロジェクトを Azure に接続</span>手順 3. プロジェクトを Azure に接続</h2>
 
-1. Now that you have a VSO team project with some source code in it, you are ready to connect your team project to Azure.  In the [Azure Portal](http://manage.windowsazure.com), select your cloud service or web site, or create a new one by selecting the + icon at the bottom left and choosing **Cloud Service** or **Web Site** and then **Quick Create**. Choose the **Set up publishing with Visual Studio Online** link.<br/>
+1. ソース コードが含まれる VSO チーム プロジェクトが完成したので、チーム プロジェクトを Azure に接続することができます。[Azure ポータル](http://manage.windowsazure.com)で、クラウド サービスまたは Web サイトを選択するか、新たに作成します。作成するには、左下にある [+] アイコンを選択し、**[クラウド サービス]** または **[Web サイト]** を選択して、**[簡易作成]** を選択します。**[Visual Studio Online 発行の設定]** を選択します。<br/>
 ![][10]
 
-2. In the wizard, type the name of your Visual Studio Online account in the textbox and click the **Authorize Now** link. You might be asked to sign in.<br/>
+2. ウィザードで、テキスト ボックスに Visual Studio Online アカウントの名前を入力し、**[今すぐ承認]** をクリックします。サインインを求められることがあります。<br/>
 ![][11]
 
-3. In the OAuth pop-up dialog, choose **Accept** to authorize Azure to configure your team project in VSO.<br/>
+3. [OAuth] ポップアップ ダイアログで、**[承諾]** を選択して Azure が VSO でチーム プロジェクトを構成することを許可します。<br/>
 ![][12]
 
-4. When authorization succeeds, you see a dropdown containing a list of your Visual Studio Online team projects.  Select the name of team project that you created in the previous steps, and choose the wizard's checkmark button.<br/>
+4. 承認が成功すると、Visual Studio Online チーム プロジェクトのリストが含まれるドロップダウンが表示されます。前のステップで作成したチーム プロジェクトの名前を選択し、ウィザードのチェック マーク ボタンを選択します。<br/>
 ![][13]
 
-5. When your project is linked, you will see some instructions for checking in changes to your Visual Studio Online team project.  On your next check-in, Visual Studio Online will build and deploy your project to Azure.  Try this now by clicking the **Check In from Visual Studio** link, and then the **Launch Visual Studio** link (or the equivalent **Visual Studio** button at the bottom of the portal screen).<br/>
+5. プロジェクトがリンクされると、変更を Visual Studio Online チーム プロジェクトにチェックインするための手順が表示されます。次のチェックイン時に、Visual Studio Online はプロジェクトをビルドして Azure にデプロイします。これを試すには、**[Visual Studio 2012 からチェックインする]** をクリックし、**[Visual Studio 2012 を起動]** をクリックします (または、同等のコマンド バーの **[Visual Studio]** ボタンをクリックします)。<br/>
 ![][14]
 
-<h2><a name="step4"> </a><span class="short-header">Trigger a rebuild</span>Step 4: Trigger a rebuild and redeploy your project</h2>
+<h2><a name="step4"> </a><span class="short-header">リビルドのトリガー</span>手順 4. リビルドをトリガーし、プロジェクトを再デプロイ</h2>
 
-1. In Visual Studio's Team Explorer, click the **Source Control Explorer** link.<br/>
+1. Visual Studio のチーム エクスプローラーで、**[ソース管理エクスプローラー]** をクリックします。<br/>
 ![][15]
 
-2. Navigate to your solution file and open it.<br/>
+2. ソリューション ファイルの保存場所に移動し、ファイルを開きます。<br/>
 ![][16]
 
-3. In Solution Explorer, open up a file and change it. For example, change the file _Layout.cshtml under the Views\Shared folder in an MVC web role.<br/>
+3. ソリューション エクスプローラーで、ファイルを開き、変更します。たとえば、MVC Web ロールの Views\Shared フォルダーにある _Layout.cshtml ファイルを変更します。<br/>
 ![][17]
 
-4. Edit the logo for the site and hit Ctrl+S to save the file.<br/>
+4. サイトのロゴを編集し、Ctrl + S キーを押してファイルを保存します。<br/>
 ![][18]
 
-5. In Team Explorer, choose the **Pending Changes** link.<br/>
+5. チーム エクスプローラーで、**[保留中の変更]** を選択します。<br/>
 ![][19]
 
-6. Type in a comment and choose the **Check In** button.<br/>
+6. コメントを入力し、**[チェックイン]** を選択します。<br/>
 ![][20]
 
-7. Choose the Home button to return to the Team Explorer home page.<br/>
+7. [ホーム] ボタンを選択して、チーム エクスプローラーのホーム ページに戻ります。<br/>
 ![][21]
 
-8. Choose the **Builds** link to view the builds in progress.<br/>
+8. **[ビルド]** を選択して、処理中のビルドを表示します。<br/>
 ![][22]
 <br/>
-The Team Explorer shows that a build has been triggered for your check-in.<br/>
+チーム エクスプローラーに、チェックインのためにビルドが開始されたことが表示されます。<br/>
 ![][23]
 
-9. Double-click the name of the build in progress to view a detailed log as the build progresses.<br/>
+9. 処理中のビルドの名前をダブルクリックして、ビルドの進行に合わせて詳細ログを表示します。<br/>
 ![][24]
 
-10. While the build is in-progress, take a look at the build definition that was created when you linked TFS to Azure by using the wizard.  Open the shortcut menu for the build definition and choose **Edit Build Definition**.<br/>
+10. ビルドの処理中、ウィザードを使用して TFS を Azure にリンクしたときに作成されたビルド定義を調べてください。ビルド定義のショートカット メニューを開き、**[ビルド定義の編集]** を選択します。<br/>
 ![][25]
 <br/>
-In the **Trigger** tab, you will see that the build definition is set to build on every check-in by default.<br/>
+**[トリガー]** タブを見ると、既定ではチェックインごとにビルドを行うようにビルド定義が設定されていることがわかります。<br/>
 ![][26]
 <br/>
-In the **Process** tab, you can see the deployment environment is set to the name of your cloud service or web site. If you are working with web sites, the properties you see will be different from those shown here.<br/>
+**[プロセス]** タブを見ると、デプロイ環境がクラウド サービスまたは Web サイトの名前に設定されていることがわかります。Web サイトを操作している場合は、ここで表示されているのとは異なるプロパティが表示されます。<br/>
 ![][27]
 <br/>
-Specify values for the properties if you want different values than the defaults.
-The following table shows default values of the properties for a cloud service:
+既定値と異なる値を使用する場合は、プロパティに対して希望の値を指定します。
+次の表に、クラウド サービスに関するプロパティの既定値を示します。
 	<table>
-<tr><td><b>Property</b></td><td><b>Default Value</b></td></tr>
-<tr><td>Allow Upgrade</td><td>true</td></tr>
-<tr><td>Cloud Service Environment</td><td>Staging</td></tr>
-<tr><td>Cloud Service Name</td><td>The name of the service you are connected to</td></tr>
-<tr><td>Deployment Label</td><td>The same as the service name</td></tr>
-<tr><td>Service Configuration</td><td>ServiceConfiguration.Cloud.cscfg</td></tr>
-<tr><td>Storage Account Name</td><td>Blank, which means try to find a storage account.</td></tr>
-<tr><td>Publish Profile</td><td>The .azurePubxml file. If you check in one, you can choose it here.</td></tr>
+<tr><td><b>プロパティ</b></td><td><b>既定値</b></td></tr>
+<tr><td>アップグレードの許可</td><td>true</td></tr>
+<tr><td>クラウド サービス環境</td><td>ステージング</td></tr>
+<tr><td>クラウド サービス名</td><td>接続先のサービスの名前</td></tr>
+<tr><td>デプロイ ラベル</td><td>サービス名と同じ</td></tr>
+<tr><td>サービス構成</td><td>ServiceConfiguration.Cloud.cscfg</td></tr>
+<tr><td>ストレージ アカウント名</td><td>空白 (ストレージ アカウントを検索する)。</td></tr>
+<tr><td>発行プロファイル</td><td>.azurePubxml ファイル。チェックインする場合、ここで選択できる。</td></tr>
 </table>
 <br/>
-If the storage account property is left blank, Azure searches for one. If there is a storage
-account with the same name as the cloud service, it is used. Otherwise, it uses another storage account,
-or if there is no storage account, it creates one. The storage account provides a place in Azure for storage files and other data. For more information, see [What is a storage account?](http://www.windowsazure.com/en-us/documentation/articles/storage-whatis-account).
+ストレージ アカウントのプロパティが空白のままの場合は、Azure がアカウントを検索します。クラウド サービスと同じ名前のストレージ アカウントがある場合は、それが使用されます。同じ名前のアカウントがない場合は、別のストレージ アカウントが使用されます。ストレージ アカウントがない場合は、アカウントが作成されます。ストレージ アカウントは、ファイルとその他のデータを Azure 内に格納するための場所を提供します。詳細については、「[ストレージ アカウントに関するページ](http://www.windowsazure.com/ja-jp/documentation/articles/storage-whatis-account)を参照してください。
 
-11. By this time, your build should be completed successfully.<br/>
+11. このころまでには、ビルドが正常に完了しています。<br/>
 ![][28]
 
-12. If you double-click the build name, Visual Studio shows a **Build Summary**, including any test results from associated unit test projects.<br/>
+12. ビルド名をダブルクリックすると、関連付けられた単体テスト プロジェクトのテスト結果を含む **[ビルドの概要]** が表示されます。<br/>
 ![][29]
 
-13. In the [Azure Portal](http://manage.windowsazure.com), you can view the associated deployment on the Deployments tab when the staging environment is selected.<br/>
+13. [Azure ポータル](http://manage.windowsazure.com) では、ステージング環境が選択されたとき、関連付けられたデプロイが [デプロイ] タブに表示されます。<br/>
 ![][30]
 
-14.	Browse to your site's URL. For a web site, just click the Browse button on the command bar. For a cloud service, choose the URL in the **Quick Glance** section of the **Dashboard** page that shows the Staging environment for a cloud service. Deployments from continuous integration for cloud services are published to the Staging environment by default. You can change this by setting the Alternate Cloud Service Environment property to Production. This screenshot shows where the site URL is on the cloud service's dashboard page: <br/>
+14.	目的のサイトの URL に移動します。Web サイトの場合は、コマンド バーの参照ボタンをクリックします。クラウド サービスのステージング環境を示す **[ダッシュボード]** ページの **[概要]** セクションで URL を選択します。クラウド サービス向けの継続的な統合からのデプロイは、既定ではステージング環境に発行されます。代替クラウド サービス環境プロパティを [運用] に設定することで、これを変更できます。このスクリーンショットでは、クラウド サービスのダッシュボード ページにサイト URL が表示されています。<br/>
 ![][31]
 <br/>
-A new browser tab will open to reveal your running site.<br/>
+新しいブラウザー タブが開いて、実行中のサイトが表示されます。<br/>
 ![][32]
 
-15.	For cloud services, if you make other changes to your project, you trigger more builds, and you will accumulate multiple deployments. The latest one marked as Active.<br/>
+15.	クラウド サービスの場合は、プロジェクトにその他の変更を加えると、さらにビルドが実行され、複数のデプロイが累積されます。最新のデプロイは [アクティブ] とマークされます。<br/>
 ![][33]
 
-<h2> <a name="step5"> </a><span class="short-header">Redeploy an earlier build</span>Step 5: Redeploy an earlier build</h2>
+<h2> <a name="step5"> </a><span class="short-header">以前のビルドを再デプロイ</span>手順 5. 以前のビルドを再デプロイ</h2>
 
-This step applies to cloud services and is optional. In the management portal, select an earlier deployment and click the **Redeploy** button to rewind your site to an earlier check-in.  Note that this will trigger a new build in TFS, and create a new entry in your deployment history.<br/>
+この手順の内容は、クラウド サービスのみに適用され、省略可能です。管理ポータルで以前のデプロイを選択し、**[再デプロイ]** をクリックしてサイトを以前のチェックインに戻します。これによって、TFS で新しいビルドが開始され、デプロイ履歴に新しいエントリが作成されます。<br/>
 ![][34]
 
-<h2> <a name="step6"> </a><span class="short-header">Change the Production deployment</span>Step 6: Change the Production deployment</h2>
+<h2> <a name="step6"> </a><span class="short-header">運用デプロイの変更</span>手順 6. 運用デプロイの変更</h2>
 
-This step applies only to cloud services, not web sites. When you are ready, you can promote the Staging environment to the production environment by choosing the Swap button in the management portal. The newly deployed Staging environment is promoted to Production, and the previous Production environment, if any, becomes a Staging environment. The Active deployment may be different for the Production and Staging environments, but the deployment history of recent builds is the same regardless of environment.<br/>
+この手順の内容は、クラウド サービスのみに適用され、Web サイトには適用されません。準備が整ったら、管理ポータルで [スワップ] を選択してステージング環境を運用環境へ昇格できます。新たにデプロイされたステージング環境は運用に昇格され、以前の運用環境がある場合、運用環境はステージング環境になります。運用環境とステージング環境でアクティブなデプロイは異なることはありますが、最近のビルドのデプロイ履歴は環境にかかわらず同じです。<br/>
 ![][35]
 
-For more information, see [Visual Studio Online](http://go.microsoft.com/fwlink/?LinkId=253861). If you're using Git, see [Share your code in Git](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx) and [Publishing from Source Control to Azure Web Sites](http://www.windowsazure.com/en-us/documentation/articles/web-sites-publish-source-control).
+詳細については、[Visual Studio Online に関するページ](http://go.microsoft.com/fwlink/?LinkId=253861)を参照してください。Git を使用している場合は、「[Git でコードを共有する](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx)」および「[ソース管理から Azure の Web サイトへの発行](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-publish-source-control)」を参照してください。
 
-[Step 1: Sign up for Visual Studio Online.]: #step1
-[Step 2: Check in a project to source control.]: #step2
-[Step 3: Connect the project to Azure.]: #step3
-[Step 4: Make changes and trigger a rebuild and redeployment.]: #step4
-[Step 5: Redeploy an earlier build (optional)]: #step5
-[Step 6: Change the Production deployment (cloud services only)]: #step6
+[手順 1. Visual Studio Online にサインアップする。]: #step1
+[手順 2. プロジェクトをソース管理にチェックインする。]: #step2
+[手順 3. プロジェクトを Azure に接続する。]: #step3
+[手順 4. 変更を行い、リビルドと再デプロイをトリガーする。]: #step4
+[手順 5. 以前のビルドを再デプロイする (省略可能)]: #step5
+[手順 6. 運用デプロイを変更する (クラウド サービスのみ)]: #step6
 [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
 [1]: ./media/cloud-services-continuous-delivery-use-vso/tfs1.png
 [2]: ./media/cloud-services-continuous-delivery-use-vso/tfs2.png
@@ -214,3 +211,4 @@ For more information, see [Visual Studio Online](http://go.microsoft.com/fwlink/
 [35]: ./media/cloud-services-continuous-delivery-use-vso/tfs35.png
 [36]: ./media/cloud-services-continuous-delivery-use-vso/tfs36.PNG
 [37]: ./media/cloud-services-continuous-delivery-use-vso/tfs37.PNG
+

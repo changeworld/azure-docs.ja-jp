@@ -1,110 +1,110 @@
-<properties linkid="manage-services-hdinsight-administer-hdinsight-using-command-line" urlDisplayName="HDInsight Administration" pageTitle="Administer HDInsight using using the Cross-Platform Command-Line Interface | Azure" metaKeywords="hdinsight, hdinsight administration, hdinsight administration azure" description="Learn how to use the Cross-Platform Command-Line Interface to manage HDInsight clusters on any platform that supports Node.js, including Windows, Mac, and Linux." services="hdinsight" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" title="Administer HDInsight using the Cross-platform Command-line Interface" authors="jgao" />
+<properties linkid="manage-services-hdinsight-administer-hdinsight-using-command-line" urlDisplayName="HDInsight の管理" pageTitle="クロス プラットフォーム コマンド ライン インターフェイスを使用した HDInsight の管理 | Azure" metaKeywords="hdinsight, hdinsight の管理, azure での hdinsight の管理 " description="クロス プラットフォーム コマンド ライン インターフェイスを使用して、Node.js をサポートする Windows、Mac、Linux などのプラットフォームで HDInsight クラスターを管理する方法について説明します。" services="hdinsight" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" title="クロスプラットフォーム コマンド ライン インターフェイスを使用した HDInsight の管理" authors="jgao" />
 
-# Administer HDInsight using the Cross-platform Command-line Interface
+# クロスプラットフォーム コマンド ライン インターフェイスを使用した HDInsight の管理
 
-In this article, you learn how to use the Cross-Platform Command-Line Interface to manage HDInsight clusters. The command-line tool is implemented in Node.js. It can be used on any platform that supports Node.js including Windows, Mac and Linux. 
+この記事では、クロスプラットフォーム コマンド ライン インターフェイスを使用して HDInsight クラスターを管理する方法について説明します。コマンド ライン ツールは Node.js で実装されます。Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。
 
-The command-line tool is open source.  The source code is managed in GitHub at <a href= "https://github.com/WindowsAzure/azure-sdk-tools-xplat">https://github.com/WindowsAzure/azure-sdk-tools-xplat</a>. 
+コマンド ライン ツールはオープン ソースです。ソース コードは GitHub (<a href= "https://github.com/WindowsAzure/azure-sdk-tools-xplat">https://github.com/WindowsAzure/azure-sdk-tools-xplat</a>) で管理されています。
 
-This article only covers using the command-line interface from Windows. For a general guide on how to use the command-line interface, see [How to use the Azure Command-Line Tools for Mac and Linux][azure-command-line-tools]. For comprehensive reference documentation, see [Azure command-line tool for Mac and Linux][azure-command-line-tool].
+この記事では、Windows からコマンド ライン インターフェイスを使用する方法だけを取り上げます。コマンド ライン インターフェイスの使用方法の一般的ガイドについては、「[Mac および Linux 用 Azure コマンド ライン ツールの使用方法][azure-command-line-tools]」を参照してください。包括的なリファレンス ドキュメントについては、「[Mac および Linux 用 Azure コマンド ライン ツール][azure-command-line-tool]」を参照してください。
 
 
-**Prerequisites:**
+**前提条件:**
 
-Before you begin this article, you must have the following:
+この記事を読み始める前に、次の項目を用意する必要があります。
 
-- **Azure subscription**. Azure is a subscription-based platform. For more information about obtaining a subscription, see [Purchase Options][azure-purchase-options], [Member Offers][azure-member-offers], or [Free Trial][azure-free-trial].
+- **Azure サブスクリプション**。Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション][azure-purchase-options]、[メンバー プラン][azure-member-offers]、または[無料評価版][azure-free-trial]に関するページを参照してください。
 
-##In this article
+##この記事の内容
 
-* [Installation](#installation)
-* [Download and import Azure account publishsettings](#importsettings)
-* [Provision a cluster](#provision)
-* [Provision a cluster using configuration file](#provisionconfigfile)
-* [List and show clusters](#listshow)
-* [Delete a cluster](#delete)
-* [Next steps](#nextsteps)
+* [インストール](#installation)
+* [Azure アカウントの発行設定のダウンロードとインポート](#importsettings)
+* [クラスターのプロビジョニング](#provision)
+* [構成ファイルを使用したクラスターのプロビジョニング](#provisionconfigfile)
+* [クラスターの一覧と表示](#listshow)
+* [クラスターの削除](#delete)
+* [次のステップ](#nextsteps)
 
-##<a id="installation"></a> Installation
-The command-line interface can be installed using *Node.js Package Manager (NPM)* or Windows Installer.
+##<a id="installation"></a> インストール
+コマンド ライン インターフェイスは *Node.js パッケージ マネージャー (NPM)* または Windows インストーラーを使用してインストールできます。
 
-**To install the command-line interface using NPM**
+**NPM を使用してコマンド ライン インターフェイスをインストールするには**
 
-1.	Browse to **www.nodejs.org**.
-2.	Click **INSTALL** and following the instructions using the default settings.
-3.	Open **Command Prompt** (or *Azure Command Prompt*, or *Developer Command Prompt for VS2012*) from your workstation.
-4.	Run the following command in the command prompt window.
+1.	ブラウザーで **www.nodejs.org** を開きます。
+2.	**[INSTALL]** をクリックし、指示に従います。設定は既定の設定を使います。
+3.	コンピューターから**コマンド プロンプト** (または *Azure コマンド プロンプト*、または *VS2012 の開発者コマンド プロンプト*) を開きます。
+4.	コマンド プロンプト ウィンドウで次のコマンドを実行します。
 
 		npm install -g azure-cli
 
-	> [WACOM.NOTE] If you get an error saying the NPM command is not found, verify that the following paths are in the PATH environment variable: <i>C:\Program Files (x86)\nodejs;C:\Users\[username]\AppData\Roaming\npm</i> or <i>C:\Program Files\nodejs;C:\Users\[username]\AppData\Roaming\npm</i>
+	> [WACOM.NOTE] NPM コマンドが見つからないというエラーが表示される場合、次のパスが PATH 環境変数の中にあることを確認します: <i>C:\Program Files (x86)\nodejs;C:\Users\[ユーザー名]\AppData\Roaming\npm</i> または <i>C:\Program Files\nodejs;C:\Users\[ユーザー名]\AppData\Roaming\npm</i>
 
 
-5.	Run the following command to verify the installation:
+5.	次のコマンドを実行してインストールを確認します。
 
 		azure hdinsight -h
 
-	You can use the *-h* switch at different levels to display the help information.  For example:
+	*-h* スイッチを使うと、さまざまなレベルでヘルプ情報を表示できます。次に例を示します。
 		
 		azure -h
 		azure hdinsight -h
 		azure hdinsight cluster -h
 		azure hdinsight cluster create -h
 
-**To install the command-line interface using windows installer**
+**Windows インストーラーを使用してコマンド ライン インターフェイスをインストールするには**
 
-1.	Browse to **http://www.windowsazure.com/en-us/downloads/**.
-2.	Scroll down to the **Command line tools** section, and then click **Cross-platform Command Line Interface** and follow the Web Platform Installer wizard.
+1.	ブラウザーで **http://www.windowsazure.com/ja-jp/downloads/** を開きます。
+2.	下へスクロールして、**[コマンド ライン ツール]** セクションの **[クロスプラットフォーム コマンド ライン インターフェイス]** をクリックし、Web プラットフォーム インストーラー ウィザードの指示に従います。
 
-##<a id="importsettings"></a> Download and import Azure account publishsettings
+##<a id="importsettings"></a> Azure アカウントの発行設定のダウンロードとインポート
 
-Before using the command-line interface, you must configure connectivity between your workstation and Azure. Your Azure subscription information is used by the command-line interface to connect to your account. This information can be obtained from Azure in a publishsettings file. The publishsettings file can then be imported as a persistent local config setting that the command-line interface will use for subsequent operations. You only need to import your publishsettings once.
+コマンド ライン インターフェイスを使用する前に、自分のコンピューターと Azure との接続を構成する必要があります。Azure のサブスクリプション情報は、コマンド ライン インターフェイスがアカウントにアクセスする際に使用されます。この情報は、Azure から発行設定ファイルとして入手できます。発行設定ファイルは永続的なローカル構成設定としてインポートすることができます。インポートすると、コマンド ライン インターフェイスの以降の操作にはこのファイルが使用されます。発行設定ファイルのインポートは 1 回だけ行う必要があります。
 
-> [WACOM.NOTE] The publishsettings file contains sensitive information. It is recommended that you delete the file or take additional steps to encrypt the user folder that contains the file. On Windows, modify the folder properties or use BitLocker.
+> [WACOM.NOTE] 発行設定ファイルには、機密情報が含まれます。このファイルを削除するか、追加の作業を行ってファイルのある user フォルダーを暗号化することをお勧めします。Windows の場合、フォルダー プロパティを変更するか、または BitLocker を使用します。
 
 
-**To download and import publishsettings**
+**発行設定ファイルをダウンロードしてインポートするには**
 
-1.	Open a **Command Prompt**.
-2.	Run the following command to download the publishsettings file.
+1.	**コマンド プロンプト**を開きます。
+2.	次のコマンドを実行して、発行設定ファイルをダウンロードします。
 
 		azure account download
  
 	![HDI.CLIAccountDownloadImport][image-cli-account-download-import]
 
-	The command shows the instructions for downloading the file, including an URL.
+	URL も含めて、ファイルのダウンロード方法が表示されます。
 
-3.	Open **Internet Explorer** and browse to the URL listed in the command prompt window.
-4.	Click **Save** to save the file to the workstation.
-5.	From the command prompt window, run the following command to import the publishsettings file:
+3.	**Internet Explorer** を開き、コマンド プロンプト ウィンドウに表示された URL にアクセスします。
+4.	**[保存]** をクリックして、ファイルをコンピューターに保存します。
+5.	コマンド プロンプト ウィンドウで次のコマンドを実行して、発行設定ファイルをインポートします。
 
 		azure account import <file>
 
-	In the previous screenshot, the publishsettings file was saved to C:\HDInsight folder on the workstation.
+	先のスクリーンショットで、発行設定ファイルはコンピューターの C:\HDInsight フォルダーに保存されています。
 
 
-##<a id="provision"></a> Provision an HDInsight cluster
-HDInsight uses an Azure Blob Storage container as the default file system. An Azure storage account is required before you can create an HDInsight cluster. 
+##<a id="provision"></a> HDInsight クラスターのプロビジョニング
+HDInsight は、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。HDInsight クラスターを作成するには Azure ストレージ アカウントが必要です。
 
-After you have imported the publishsettings file, you can use the following command to create a storage account:
+発行設定ファイルをインポートした後、次のコマンドを使ってストレージ アカウントを作成できます。
 
 	azure account storage create [options] <StorageAccountName>
 
 
-> [WACOM.NOTE] The storage account must be collocated in the same data center. Currently, you can only provision HDInsight clusters in the following data centers:
+> [WACOM.NOTE] ストレージ アカウントは、クラスターと同じデータ センターに併置する必要があります。現在、HDInsight クラスターのプロビジョニングができるのは次のデータ センターだけです。
 
 ><ul>
-<li>Southeast Asia</li>
-<li>North Europe</li>
-<li>West Europe</li>
-<li>East US</li>
-<li>West US</li>
+<li>東南アジア</li>
+<li>北ヨーロッパ</li>
+<li>西ヨーロッパ</li>
+<li>米国東部</li>
+<li>米国西部</li>
 </ul>
 
 
-For information on creating an Azure storage account using Azure Management portal, see [How to Create a Storage Account][azure-create-storageaccount].
+Azure 管理ポータルを使った Azure ストレージ アカウントの作成については、「[ストレージ アカウントの作成方法][azure-create-storageaccount]」を参照してください。
 
-If you have already had a storage account but do not know the account name and account key, you can use the following commands to retrieve the information:
+既にストレージ アカウントを持っていて、アカウント名とアカウント キーがわからない場合は、次のコマンドを使ってその情報を取得できます。
 
 	-- lists storage accounts
 	azure account storage list
@@ -113,14 +113,14 @@ If you have already had a storage account but do not know the account name and a
 	-- Lists the keys for a storage account
 	azure account storage keys list <StorageAccountName>
 
-For details on getting the information using the management portal, see the *How to: View, copy and regenerate storage access keys* section of [How to Manage Storage Accounts][azure-manage-storageaccount].
+管理ポータルを使用して情報を取得する方法の詳細については、「[ストレージ アカウントの管理方法][azure-manage-storageaccount]」の「*方法: ストレージ アクセス キーの表示、コピーおよび再生成*」を参照してください。
 
 
-The *azure hdinsight cluster create* command creates the container if it doesn't exist. If you choose to create the container beforehand, you can use the following command:
+*azure hdinsight cluster create* コマンドは、コンテナーが存在しない場合、コンテナーを作成します。コンテナーを事前に作成する場合は、次のコマンドを使用できます。
 
 	azure storage container create --account-name <StorageAccountName> --account-key <StorageAccountKey> [ContainerName]
 		
-Once you have the storage account and the blob container prepared, you are ready to create a cluster: 
+ストレージ アカウントを用意して、BLOB コンテナーを準備したら、クラスターを作成する準備は整いました。次のコマンドを実行できます。
 
 	azure hdinsight cluster create --clusterName <ClusterName> --storageAccountName <StorageAccountName> --storageAccountKey <storageAccountKey> --storageContainer <StorageContainer> --nodes <NumberOfNodes> --location <DataCenterLocation> --username <HDInsightClusterUsername> --clusterPassword <HDInsightClusterPassword>
 
@@ -142,8 +142,8 @@ Once you have the storage account and the blob container prepared, you are ready
 
 
 
-##<a id="provisionconfigfile"></a> Provision an HDInsight cluster using a configuration file
-Typically, you provision an HDInsight cluster, run jobs on it, and then delete the cluster to cut down the cost. The command-line interface gives you the option to save the configurations into a file, so that you can reuse it every time you provision a cluster.  
+##<a id="provisionconfigfile"></a> 構成ファイルを使用した HDInsight クラスターのプロビジョニング
+通常は、HDInsight クラスターをプロビジョニングして、そのクラスター上でジョブを実行した後、クラスターを削除してコストを削減します。コマンド ライン インターフェイスを使うと、構成をファイルに保存して、クラスターをプロビジョニングするたびにその構成を再利用することができます。
  
 	azure hdinsight cluster config create <file>
 	 
@@ -165,8 +165,8 @@ Typically, you provision an HDInsight cluster, run jobs on it, and then delete t
 ![HDI.CLIClusterCreationConfig][image-cli-clustercreation-config]
 
 
-##<a id="listshow"></a> List and show cluster details
-Use the following commands to list and show cluster details:
+##<a id="listshow"></a> クラスターの一覧と詳細の表示
+クラスターの一覧と詳細を表示するには、次のコマンドを使用します。
 	
 	azure hdinsight cluster list
 	azure hdinsight cluster show <ClusterName>
@@ -174,39 +174,41 @@ Use the following commands to list and show cluster details:
 ![HDI.CLIListCluster][image-cli-clusterlisting]
 
 
-##<a id="delete"></a> Delete a cluster
-Use the following command to delete a cluster:
+##<a id="delete"></a> クラスターの削除
+クラスターを削除するには、次のコマンドを使用します。
 
 	azure hdinsight cluster delete <ClusterName>
 
 
 
 
-##<a id="nextsteps"></a> Next steps
-In this article, you have learned how to perform different HDInsight cluster administrative tasks. To learn more, see the following articles:
+##<a id="nextsteps"></a> 次のステップ
+この記事では、さまざまな HDInsight クラスター管理タスクを実行する方法について説明しました。詳細については、次の記事を参照してください。
 
-* [Administer HDInsight using management portal][hdinsight-admin]
-* [Administer HDInsight using PowerShell][hdinsight-admin-powershell]
-* [Get started with Azure HDInsight][hdinsight-getting-started]
-* [How to use the Azure Command-Line Tools for Mac and Linux][azure-command-line-tools]
-* [Azure command-line tool for Mac and Linux][azure-command-line-tool]
-
-
-[azure-command-line-tools]: /en-us/develop/nodejs/how-to-guides/command-line-tools/
-[azure-command-line-tool]: /en-us/manage/linux/other-resources/command-line-tools/
-[azure-create-storageaccount]: /en-us/manage/services/storage/how-to-create-a-storage-account/ 
-[azure-manage-storageaccount]: /en-us/manage/services/storage/how-to-manage-a-storage-account/
-[azure-purchase-options]: https://www.windowsazure.com/en-us/pricing/purchase-options/
-[azure-member-offers]: https://www.windowsazure.com/en-us/pricing/member-offers/
-[azure-free-trial]: https://www.windowsazure.com/en-us/pricing/free-trial/
+* [管理ポータルを使用した HDInsight クラスターの管理][hdinsight-admin]
+* [PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
+* [Azure HDInsight の概要][hdinsight-getting-started]
+* [Mac および Linux 用 Azure コマンド ライン ツールの使用方法][azure-command-line-tools]
+* [Mac および Linux 用 Azure コマンド ライン ツール][azure-command-line-tool]
 
 
-[hdinsight-admin]: /en-us/manage/services/hdinsight/howto-administer-hdinsight/
+[azure-command-line-tools]: /ja-jp/develop/nodejs/how-to-guides/command-line-tools/
+[azure-command-line-tool]: /ja-jp/manage/linux/other-resources/command-line-tools/
+[azure-create-storageaccount]: /ja-jp/manage/services/storage/how-to-create-a-storage-account/ 
+[azure-manage-storageaccount]: /ja-jp/manage/services/storage/how-to-manage-a-storage-account/
+[azure-purchase-options]: https://www.windowsazure.com/ja-jp/pricing/purchase-options/
+[azure-member-offers]: https://www.windowsazure.com/ja-jp/pricing/member-offers/
+[azure-free-trial]: https://www.windowsazure.com/ja-jp/pricing/free-trial/
 
-[hdinsight-admin-powershell]: /en-us/manage/services/hdinsight/administer-hdinsight-using-powershell/
-[hdinsight-getting-started]: /en-us/manage/services/hdinsight/get-started-hdinsight/
+
+[hdinsight-admin]: /ja-jp/manage/services/hdinsight/howto-administer-hdinsight/
+
+[hdinsight-admin-powershell]: /ja-jp/manage/services/hdinsight/administer-hdinsight-using-powershell/
+[hdinsight-getting-started]: /ja-jp/manage/services/hdinsight/get-started-hdinsight/
 
 [image-cli-account-download-import]: ./media/hdinsight-administer-use-command-line/HDI.CLIAccountDownloadImport.png 
 [image-cli-clustercreation]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreation.png
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "List and show clusters"
+
+

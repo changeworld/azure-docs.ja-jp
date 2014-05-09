@@ -1,39 +1,40 @@
-<properties linkid="scripting-center-index" urlDisplayName="index" pageTitle="Scripting Center Index" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="How to Manage Origins in a Media Services Account" authors="juliako" solutions="" manager="" editor="" />
+<properties linkid="scripting-center-index" urlDisplayName="索引" pageTitle="スクリプト センター索引" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="メディア サービス アカウントでオリジンを管理する方法" authors="juliako" solutions="" manager="" editor="" />
 
 
 
 
 
-<h1><a id="managemediaservicesorigins"></a>How to Manage Origins in a Media Services Account</h1>
+<h1><a id="managemediaservicesorigins"></a>メディア サービス アカウントでオリジンを管理する方法</h1>
 
-Media Services enables you to add multiple streaming origins to your account and to configure the origins. Each Media Services account has at least one streaming origin called **default** associated with it. 
-
-
-<h2>Adding and Deleting Origins</h2> 
-
-1. In the [Management Portal](https://manage.windowsazure.com/), click **Media Services**. Then, click the name of the media service.
-2. Select the ORIGINS page. 
-3. Click the ADD or DELETE button at the bottom of the page. Note that the default origin cannot be deleted. 
-4. Click the START button to start the origin. 
-5. If you want to configure the origin, click the name of the origin. 
-
-	![Origin page][origin-page]
-
-<h2>Configuring the Origin</h2>
-
-The CONFIGURE tab enables you to do the following configurations:
-
-1. Set the maximum caching period that will be specified in the cache control header of HTTP responses. This value will not override the maximum cache value that have been set explicitly on the blob content.
-
-2. Specify IP addresses that would be allowed to connect to the published streaming endpoint. If no IP addresses specified, any IP address would be able to connect.
-
-3. Specify configuration for G20 authentication requests from Akami servers.
+メディア サービスでは、複数のストリーミングのオリジンをアカウントに追加し、オリジンを構成することができます。各メディア サービス アカウントには、**"既定"** と呼ばれるストリーミングのオリジンが少なくとも 1 つ関連付けられています。
 
 
-	![Configure origin][configure-origin]
+<h2>オリジンの追加と削除</h2>
 
-	The configuration on this page will only apply to origins that have at least one reserved unit. To reserve the on-demand streaming reserved units, go to the SCALE tab. For detailed information about reserved units, see [Scaling Media Services](http://go.microsoft.com/fwlink/?LinkID=275847&clcid=0x409/).
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[メディア サービス]** をクリックします。次に、メディア サービスの名前をクリックします。
+2. [オリジン] ページを選択します。
+3. ページの下部にある [追加] または [削除] をクリックします。既定のオリジンは削除できない点に注意してください。
+4. [開始] をクリックしてオリジンを開始します。
+5. オリジンを構成する場合は、オリジンの名前をクリックします。
+
+	![[オリジン] ページ][origin-page]
+
+<h2>オリジンの構成</h2>
+
+[構成] タブでは、次の構成を行うことができます。
+
+1. HTTP 応答のキャッシュ制御ヘッダーで指定される最大キャッシュ期間を設定する。この値は、BLOB コンテンツで明示的に設定された最大キャッシュ値をオーバーライドしません。
+
+2. 公開されているストリーミング エンドポイントへの接続が許可される IP アドレスを指定する。IP アドレスが指定されていない場合、どの IP アドレスでも接続できます。
+
+3. Akami サーバーからの G20 認証要求の構成を指定する。
+
+
+	![オリジンの構成][configure-origin]
+
+	このページの構成は、1 つ以上の占有ユニットを持つオリジンのみに適用されます。オンデマンド ストリーミング占有ユニットを予約するには、[スケール] タブに移動します。占有ユニットの詳細については、「[メディア サービスの規模の設定方法](http://go.microsoft.com/fwlink/?LinkID=275847&clcid=0x409/)」を参照してください。
 
 
 [origin-page]: ./media/media-services-manage-origins/media-services-origins-page.png
 [configure-origin]: ./media/media-services-manage-origins/media-services-origins-configure.png
+

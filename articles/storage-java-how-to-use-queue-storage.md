@@ -1,74 +1,72 @@
-<properties linkid="dev-net-how-to-use-queue-storage-service-java" urlDisplayName="Queue Service" pageTitle="How to use the queue service (Java) | Microsoft Azure" metaKeywords="Azure Queue Service, Azure Queue storage service, queues peeking, queues insert messages, queues get messages, queues delete messages, create queues, delete queues, Queue service Java" description="Learn how to use the Azure Queue service to create and delete queues, and insert, get, and delete messages. Samples written in Java." metaCanonical="" services="storage" documentationCenter="Java" title="How to use the Queue storage service from Java" authors="" solutions="" manager="" editor="" />
+<properties linkid="dev-net-how-to-use-queue-storage-service-java" urlDisplayName="キュー サービス" pageTitle="キュー サービスの使用方法 (Java) | Azure" metaKeywords="Azure キュー サービス, Azure キュー ストレージ サービス, キューのピーク, キューへのメッセージの挿入, キューからのメッセージの取得, キューからのメッセージの削除, キューの作成, キューの削除, キュー サービス Java" description="Azure キュー サービスを使用して、キューを作成および削除する方法、メッセージを挿入、取得、削除する方法について説明します。コード サンプルは Java で記述されています。" metaCanonical="" services="storage" documentationCenter="Java" title="Java からキュー ストレージ サービスを使用する方法" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
+# Java からキュー ストレージ サービスを使用する方法
 
-# How to use the Queue storage service from Java
+このガイドでは、Azure キュー ストレージ サービスを使用して
+一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure 
+SDK for Java][] を利用しています。キュー メッセージの挿入、
+ピーク、取得、および削除と、キューの作成および削除の
+各シナリオについて説明します。キューの詳細については、
+「[次のステップ](#NextSteps)」のセクションを参照してください。
 
-This guide will show you how to perform common scenarios using the
-Azure Queue storage service. The samples are written in Java and
-use the [Azure SDK for Java][]. The scenarios covered include
-inserting, peeking, getting, and deleting queue messages, as well as
-creating and deleting queues. For more information on queues, refer to
-the [Next steps](#NextSteps) section.
+## <a name="Contents"> </a>目次
 
-## <a name="Contents"> </a>Table of Contents
-
-* [What is Queue Storage](#what-is)
-* [Concepts](#Concepts)
-* [Create an Azure storage account](#CreateAccount)
-* [Create a Java application](#CreateApplication)
-* [Configure your application to access queue storage](#ConfigureStorage)
-* [Setup an Azure storage connection string](#ConnectionString)
-* [How to: Create a queue](#create-queue)
-* [How to: Add a message to a queue](#add-message)
-* [How to: Peek at the next message](#peek-message)
-* [How to: Dequeue the next message](#dequeue-message)
-* [How to: Change the contents of a queued message](#change-message)
-* [Additional options for dequeuing messages](#additional-options)
-* [How to: Get the queue length](#get-queue-length)
-* [How to: Delete a queue](#delete-queue)
-* [Next steps](#NextSteps)
+* [キュー ストレージとは](#what-is)
+* [概念](#Concepts)
+* [Azure のストレージ アカウントの作成](#CreateAccount)
+* [Java アプリケーションの作成](#CreateApplication)
+* [キュー ストレージにアクセスするようにアプリケーションを構成する](#ConfigureStorage)
+* [Azure のストレージ接続文字列の設定](#ConnectionString)
+* [方法: キューを作成する](#create-queue)
+* [方法: メッセージをキューに追加する](#add-message)
+* [方法: 次のメッセージをピークする](#peek-message)
+* [方法: 次のメッセージをデキューする](#dequeue-message)
+* [方法: キューに配置されたメッセージの内容を変更する](#change-message)
+* [メッセージのデキュー用の追加オプション](#additional-options)
+* [方法: キューの長さを取得する](#get-queue-length)
+* [方法: キューを削除する](#delete-queue)
+* [次のステップ](#NextSteps)
 
 [WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
-<h2><a id="CreateAccount"></a>Create an Azure storage account</h2>
+<h2><a id="CreateAccount"></a>Azure のストレージ アカウントの作成</h2>
 
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## <a name="CreateApplication"> </a>Create a Java application
+## <a name="CreateApplication"></a>Java アプリケーションの作成
 
-In this guide, you will use storage features which can be run within a
-Java application locally, or in code running within a web role or worker
-role in Azure. We assume you have downloaded and installed the
-Java Development Kit (JDK), and followed the instructions in [Download
-the Azure SDK for Java][Azure SDK for Java] to install
-the Azure Libraries for Java and the Azure SDK, and have
-created an Azure storage account in your Azure
-subscription. You can use any development tools to create your
-application, including Notepad. All you need is the ability to compile a
-Java project and reference the Azure Libraries for Java.
+このガイドで使用するストレージ機能は、Java アプリケーション内でローカルで
+実行することも、Azure の Web ロールまたはワーカー ロールで動作するコード内で
+実行することもできます。前提条件として、Java Development Kit (JDK) を
+ダウンロードしてインストールしているとします。また、[Azure SDK for Java の
+ダウンロード ページ][Azure SDK for Java]の指示に従って、
+Azure Libraries for Java と Azure SDK をインストールし、
+Azure サブスクリプションに Azure のストレージ アカウントを
+作成しているとします。アプリケーションの作成には、メモ帳などの任意の
+開発ツールを使用できます。要件は、Java プロジェクトをコンパイルできること、
+および Azure Libraries for Java を参照できることのみです。
 
-## <a name="ConfigureStorage"> </a>Configure your application to access queue storage
+## <a name="ConfigureStorage"> </a>キュー ストレージにアクセスするようにアプリケーションを構成する
 
-Add the following import statements to the top of the Java file where
-you want to use Azure storage APIs to access queues:
+Azure ストレージ API を使用してキューにアクセスする Java ファイルの先頭には、
+次の import ステートメントを追加します。
 
     // Include the following imports to use queue APIs
     import com.microsoft.windowsazure.services.core.storage.*;
     import com.microsoft.windowsazure.services.queue.client.*;
 
-## <a name="ConnectionString"> </a>Setup an Azure storage connection string
+## <a name="ConnectionString"></a>Azure のストレージ接続文字列の設定
 
-an Azure storage client uses a storage connection string to store
-endpoints and credentials for accessing data management services. When running
-in a client application, you must provide the storage connection string
-in the following format, using the name of your storage account and the
-Primary access key for the storage account listed in the Management
-Portal for the *AccountName* and *AccountKey* values. This example shows
-how you can declare a static field to hold the connection string:
+Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、
+データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。クライアント アプリケーションの実行時、ストレージ接続文字列を次の
+形式で指定する必要があります。*AccountName* と *AccountKey*
+の値には、管理ポータルに表示されるストレージ アカウントの名前と
+プライマリ アクセス キーを使用します。この例では、
+接続文字列を保持する静的フィールドを宣言する方法を示しています。
 
     // Define the connection-string with your values
     public static final String storageConnectionString = 
@@ -76,26 +74,26 @@ how you can declare a static field to hold the connection string:
         "AccountName=your_storage_account;" + 
         "AccountKey=your_storage_account_key";
 
-In an application running within a role in Azure, this string
-can be stored in the service configuration file,
-ServiceConfiguration.cscfg, and can be accessed with a call to the
-RoleEnvironment.getConfigurationSettings method. Here's an example of
-getting the connection string from a **Setting** element named
-*StorageConnectionString* in the service configuration file:
+Azure 上のロール内で実行されるアプリケーションでは、この文字列はサービス
+構成ファイルである ServiceConfiguration.cscfg に格納でき、
+RoleEnvironment.getConfigurationSettings メソッドの呼び出しを使用
+してアクセスできます。次の例では、
+接続文字列をサービス構成ファイル内の **Setting** 要素 
+(*StorageConnectionString*) から取得します。
 
     // Retrieve storage account from connection-string
     String storageConnectionString = 
         RoleEnvironment.getConfigurationSettings().get("StorageConnectionString");
 
-## <a name="create-queue"> </a>How to: Create a queue
+## <a name="create-queue"> </a>方法: キューを作成する
 
-A CloudQueueClient object lets you get reference objects for queues. The
-following code creates a CloudQueueClient object.
+CloudQueueClient オブジェクトを使用すると、キューの参照オブジェクトを取得できます。次の
+コードでは、CloudQueueClient オブジェクトを作成します。
 
-All code in this guide uses a storage connection string declared one of
-the two ways shown above. There are also other ways to create
-CloudStorageAccount objects. See the Javadocs documentation for
-CloudStorageAccount for details.
+このガイドのすべてのコードでは、前に示した 2 つの方法のいずれかで宣言した
+ストレージ接続文字列を使用します。CloudStorageAccount オブジェクトを
+作成する方法は他にもあります。詳細については、Javadoc ドキュメントの 
+CloudStorageAccount に関するページを参照してください。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount = 
@@ -104,8 +102,8 @@ CloudStorageAccount for details.
     // Create the queue client
     CloudQueueClient queueClient = storageAccount.createCloudQueueClient();
 
-Use the CloudQueueClient object to get a reference to the queue you want
-to use. You can create the queue if it doesn't exist.
+CloudQueueClient オブジェクトにより、使用するキューへの参照を
+取得します。キューが存在しない場合は作成できます。
 
     // Retrieve a reference to a queue
     CloudQueue queue = queueClient.getQueueReference("myqueue");
@@ -113,13 +111,13 @@ to use. You can create the queue if it doesn't exist.
     // Create the queue if it doesn't already exist
     queue.createIfNotExist();
 
-## <a name="add-message"> </a>How to: Add a message to a queue
+## <a name="add-message"> </a>方法: メッセージをキューに追加する
 
-To insert a message into an existing queue, first create a new
-CloudQueueMessage. Next, call the addMessage method. A CloudQueueMessage
-can be created from either a string (in UTF-8 format) or a byte array.
-Here is code which creates a queu (if it doesn't exist) and inserts the
-message "Hello, World".
+既存のキューにメッセージを挿入するには、最初に新しい 
+CloudQueueMessage を作成します。次に、addMessage メソッドを呼び出します。CloudQueueMessage は、
+文字列 (UTF-8 形式) またはバイト配列から作成できます。
+次のコードでは、キューが存在しない場合は作成し、
+メッセージ 'Hello, World' を挿入します。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount = 
@@ -138,10 +136,10 @@ message "Hello, World".
     CloudQueueMessage message = new CloudQueueMessage("Hello, World");
     queue.addMessage(message);
 
-## <a name="peek-message"> </a>How to: Peek at the next message
+## <a name="peek-message"> </a>方法: 次のメッセージをピークする
 
-You can peek at the message in the front of a queue without removing it
-from the queue by calling peekMessage.
+peekMessage を呼び出すと、キューの先頭にあるメッセージを
+キューから削除せずにピークできます。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount = 
@@ -156,18 +154,18 @@ from the queue by calling peekMessage.
     // Peek at the next message
     CloudQueueMessage peekedMessage = queue.peekMessage();
 
-## <a name="dequeue-message"> </a>How to: Dequeue the next message
+## <a name="dequeue-message"> </a>方法: 次のメッセージをデキューする
 
-Your code dequeues a message from a queue in two steps. When you call
-retrieveMessage, you get the next message in a queue. A message returned
-from retrieveMessage becomes invisible to any other code reading
-messages from this queue. By default, this message stays invisible for
-30 seconds. To finish removing the message from the queue, you must also
-call deleteMessage. This two-step process of removing a message assures
-that if your code fails to process a message due to hardware or software
-failure, another instance of your code can get the same message and try
-again. Your code calls deleteMessage right after the message has been
-processed.
+コードでは、2 つの手順でキューからメッセージをデキューします。retrieveMessage を
+呼び出すと、キュー内の次のメッセージが取得されます。retrieveMessage から
+返されたメッセージは、このキューからメッセージを読み取る他のコードから
+参照できなくなります。既定では、このメッセージを参照できない状態は 
+30 秒間続きます。また、キューからのメッセージの削除を完了するには、deleteMessage を
+呼び出す必要があります。このようにメッセージを 2 つの手順で削除することで、
+ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が
+失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度
+処理することができます。コードでは、メッセージが処理された直後に deleteMessage を
+呼び出します。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount = 
@@ -185,20 +183,18 @@ processed.
     // Process the message in less than 30 seconds, and then delete the message.
     queue.deleteMessage(retrievedMessage);
 
-## <a name="change-message"> </a>How to: Change the contents of a queued message
+## <a name="change-message"> </a>方法: キューに配置されたメッセージの内容を変更する
 
-You can change the contents of a message in-place in the queue. If the
-message represents a work task, you could use this feature to update the
-status of the work task. The following code updates the queue message
-with new contents, and sets the visibility timeout to extend another 60
-seconds. This saves the state of work associated with the message, and
-gives the client another minute to continue working on the message. You
-could use this technique to track multi-step workflows on queue
-messages, without having to start over from the beginning if a
-processing step fails due to hardware or software failure. Typically,
-you would keep a retry count as well, and if the message is retried more
-than n times, you would delete it. This protects against a message that
-triggers an application error each time it is processed.
+キュー内のメッセージの内容をインプレースで変更できます。メッセージが
+作業タスクを表している場合は、この機能を使用して、作業タスクの状態を
+更新できます。次のコードでは、キュー メッセージを
+新しい内容に更新し、表示タイムアウトを設定して、
+60 秒延長します。これにより、メッセージに関連付けられている作業の状態が保存され、クライアントにメッセージの操作を続行する時間が 1 分与えられます。この方法を使用すると、キュー メッセージに対する複数の手順から成る
+ワークフローを追跡でき、ハードウェアまたはソフトウェアの問題が
+原因で処理手順が失敗した場合に最初からやり直す必要がなくなります。通常は、
+さらに再試行回数を保持し、メッセージの再試行回数が n 回を超えた場合は
+メッセージを削除するようにします。こうすることで、処理するたびに
+アプリケーション エラーをトリガーするメッセージから保護されます。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount = 
@@ -219,20 +215,20 @@ triggers an application error each time it is processed.
         EnumSet.of(MessageUpdateFields.CONTENT, MessageUpdateFields.VISIBILITY);
     queue.updateMessage(message, 60, updateFields, null, null);
 
-## <a name="additional-options"> </a>Additional options for dequeuing messages
+## <a name="additional-options"> </a>メッセージをデキューするための追加オプション
 
-There are two ways you can customize message retrieval from a queue.
-First, you can get a batch of messages (up to 32). Second, you can set a
-longer or shorter invisibility timeout, allowing your code more or less
-time to fully process each message.
+キューからのメッセージの取得をカスタマイズする方法は 2 つあります。
+1 つ目の方法では、(最大 32 個の) メッセージのバッチを取得できます。2 つ目の方法では、
+コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を
+長くまたは短くすることができます。
 
-The following code example uses the retrieveMessages method to get 20
-messages in one call. Then it processes each message using a **for**
-loop. It also sets the invisibility timeout to five minutes (300
-seconds) for each message. Note that the five minutes starts for all
-messages at the same time, so when five minutes have passed since the
-call to retrieveMessages, any messages which have not been deleted will
-become visible again.
+次のコード例では、retrieveMessages メソッドを使用して、1 回の呼び出しで 20 
+個のメッセージを取得します。その後、**for** ループを使用して、各メッセージを
+処理します。また、各メッセージの非表示タイムアウトを 5 分 (300 
+秒) に設定します。この 5 分の非表示期間は、すべての
+メッセージに対して同時に開始されます。そのため、retrieveMessages の
+呼び出しから 5 分が経過すると、削除されていないすべてのメッセージが
+再び表示されます。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount = 
@@ -251,15 +247,15 @@ become visible again.
         queue.deleteMessage(message);
     }
 
-## <a name="get-queue-length"> </a>How to: Get the queue length
+## <a name="get-queue-length"> </a>方法: キューの長さを取得する
 
-You can get an estimate of the number of messages in a queue. The
-downloadAttributes method asks the Queue service for several current
-values, including a count of how many messages are in a queue. The count
-is only approximate because messages can be added or removed after the
-Queue service responds to your request. The getApproximateMethodCount
-method returns the last value retrieved by the call to
-downloadAttributes, without calling the Queue service.
+キュー内のメッセージの概数を取得できます。
+downloadAttributes メソッドは、キューにあるメッセージの数など、
+現在の値をキュー サービスに要求します。キュー サービスが
+要求に応答した後にメッセージが追加または削除される可能性があるため、
+これらの値は概数にすぎません。getApproximateMethodCount 
+メソッドは、キュー サービスを呼び出さずに、
+downloadAttributes の呼び出しによって取得された最後の値を返します。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount = 
@@ -277,10 +273,10 @@ downloadAttributes, without calling the Queue service.
     // Retrieve the newly cached approximate message count
     long cachedMessageCount = queue.getApproximateMessageCount();
 
-## <a name="delete-queue"> </a>How to: Delete a queue
+## <a name="delete-queue"> </a>方法: キューを削除する
 
-To delete a queue and all the messages contained in it, call the delete
-method on the queue object.
+キューおよびキューに格納されているすべてのメッセージを削除するには、
+キュー オブジェクトの delete メソッドを呼び出します。
 
     // Retrieve storage account from connection-string
     CloudStorageAccount storageAccount = 
@@ -295,14 +291,14 @@ method on the queue object.
     // Delete the queue
     queue.delete();
 
-## <a name="NextSteps"> </a>Next steps
+## <a name="NextSteps"></a>次のステップ
 
-Now that you've learned the basics of queue storage, follow these links
-to learn how to do more complex storage tasks.
+これで、キュー ストレージの基本を学習できました。さらに複雑な
+ストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   See the MSDN Reference: [Storing and Accessing Data in Windows
-    Azure]
--   Visit the Azure Storage Team Blog: <http://blogs.msdn.com/b/windowsazurestorage/>
+-   MSDN リファレンス: [Azure のデータの格納とアクセス]
+-   Azure のストレージ チーム ブログ: <http://blogs.msdn.com/b/windowsazurestorage/>
 
-[Azure SDK for Java]: http://www.windowsazure.com/en-us/develop/java/
-[Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+[Azure SDK for Java]: http://www.windowsazure.com/ja-jp/develop/java/
+[Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+

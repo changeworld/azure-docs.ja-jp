@@ -1,38 +1,38 @@
-<properties linkid="develop-mobile-tutorials-validate-modify-and-augment-data-xamarin-android" urlDisplayName="Validate Data" pageTitle="Use server scripts to validate and modify data (Xamarin Android) | Mobile Dev Center" metaKeywords="access and change data, Azure Mobile Services, mobile devices, Azure, mobile, Xamarin.Android" description="Learn how to validate and modify data sent using server scripts from your Xamarin.Android app." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using server scripts" authors="" />
+<properties linkid="develop-mobile-tutorials-validate-modify-and-augment-data-xamarin-android" urlDisplayName="データの検証" pageTitle="サーバー スクリプトを使用したデータの検証および変更 (Xamarin Android) | モバイル デベロッパー センター" metaKeywords="データのアクセスと変更, Azure モバイル サービス, モバイル デバイス, Azure, モバイル, Xamarin.Android" description="Xamarin Android アプリからサーバー スクリプトを使用して、送信されたデータを検証および変更する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="サーバー スクリプトを使用したモバイル サービスのデータの検証および変更" authors="" />
 
-# Validate and modify data in Mobile Services by using server scripts
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-android" title="Android">Android</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-html" title="HTML">HTML</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a>
+# サーバー スクリプトを使用したモバイル サービスのデータの検証および変更
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-js" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-wp8" title="Windows Phone">Windows Phone</a><a href="/ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-ios" title="iOS">iOS</a><a href="/ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-android" title="Android">Android</a><a href="/ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-html" title="HTML">HTML</a><a href="/ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a>
 </div>
 
 
-This topic shows you how to leverage server scripts in Azure Mobile Services. Server scripts are registered in a mobile service and can be used to perform a wide range of operations on data being inserted and updated, including validation and data modification. In this tutorial, you will define and register server scripts that validate and modify data. Because the behavior of server side scripts often affects the client, you will also update your Android app to take advantage of these new behaviors. The finished code is available in the [ValidateModifyData app][GitHub] sample.
+このトピックでは、Azure のモバイル サービスでサーバー スクリプトを活用する方法について説明します。サーバー スクリプトは、モバイル サービスに登録され、挿入や更新が行われるデータでの広範な操作 (検証やデータの修正を含む) の実行に使用できます。このチュートリアルでは、検証およびデータの修正を行うサーバー スクリプトを定義して登録します。多くの場合、サーバー側スクリプトの動作がクライアントに影響を与えるため、これらの新しい動作の利点を活用できるように Android アプリも更新します。完成したコードは、[ValidateModifyData アプリケーション][GitHub] サンプルで参照できます。
 
-This tutorial walks you through these basic steps:
+このチュートリアルでは、次の基本的な手順について説明します。
 
-1. [Add string length validation]
-2. [Update the client to support validation]
-3. [Add a timestamp on insert]
-4. [Update the client to display the timestamp]
+1. [文字列の長さの検証の追加]
+2. [検証をサポートするためのクライアントの更新]
+3. [挿入時のタイムスタンプの追加]
+4. [タイムスタンプを表示するためのクライアントの更新]
 
-This tutorial builds on the steps and the sample app from the previous tutorial [Get started with data]. Before you begin this tutorial, you must first complete [Get started with data].  
+このチュートリアルは、前の[データの使用]に関するチュートリアルの手順およびサンプル アプリケーションを基に作成されています。このチュートリアルを開始する前に、[データの使用]に関するチュートリアルを完了している必要があります。
 
-## <a name="string-length-validation"></a>Add validation
+## <a name="string-length-validation"></a>検証の追加
 
-It is always a good practice to validate the length of data that is submitted by users. First, you register a script that validates the length of string data sent to the mobile service and rejects strings that are too long, in this case longer than 10 characters.
+ユーザーにより送信されたデータの長さを検証することをお勧めします。最初に、モバイル サービスに送信された文字列データの長さを検証するスクリプトを登録し、長すぎる文字列 (この場合は 10 文字を超える) を拒否します。
 
-1. Log into the [Azure Management Portal], click **Mobile Services**, and then click your app. 
+1. [Azure 管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
 	![][0]
 
-2. Click the **Data** tab, then click the **TodoItem** table.
+2. **[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
 	![][1]
 
-3. Click **Script**, then select the **Insert** operation.
+3. **[スクリプト]** をクリックし、**[挿入]** 操作を選択します。
 
 	![][2]
 
-4. Replace the existing script with the following function, and then click **Save**.
+4. 既存のスクリプトを次の関数に置き換え、**[保存]** をクリックします。
 
         function insert(item, user, request) {
             if (item.text.length > 10) {
@@ -42,35 +42,35 @@ It is always a good practice to validate the length of data that is submitted by
             }
         }
 
-    This script checks the length of the **text** property and sends an error response when the length exceeds 10 characters. Otherwise, the **execute** method is called to complete the insert.
+    このスクリプトは、**text** プロパティの長さを調べ、長さが 10 文字を超えた場合にエラー応答を送信します。それ以外の場合、**execute** メソッドが呼び出されて挿入を完了します。
 
     <div class="dev-callout"> 
 	<b>Note</b> 
 	<p>You can remove a registered script on the <strong>Script</strong> tab by clicking <strong>Clear</strong> and then <strong>Save</strong>.</p></div>
 
-## <a name="update-client-validation"></a>Update the client
+## <a name="update-client-validation"></a>クライアントの更新
 
-Now that the mobile service is validating data and sending error responses, you need to verify that your app is correctly handling error responses from validation.
+モバイル サービスはデータを検証してエラー応答を送信するため、アプリケーションが検証からのエラー応答を適切に処理していることを確認する必要があります。
 
-1. In Xamarin Studio, open the project that you created when you completed the tutorial [Get started with data].
+1. Xamarin Studio で、「[モバイル サービスでのデータの使用]」チュートリアルを実行したときに作成したプロジェクトを開きます。
 
-2. In the TodoActivity.cs file, locate the **AddItem** method and replace the call to the CreateAndShowDialog method with the following code:
+2. TodoActivity.cs ファイルで、**AddItem** メソッドを探し、CreateAndShowDialog メソッドの呼び出しを次のコードで置き換えます。
 
     	var exDetail = ex.InnerException.InnerException as 	
 			MobileServiceInvalidOperationException;
     	CreateAndShowDialog(exDetail.Message, "Error");
 
-	This displays the error message returned by the mobile service. 
+	これにより、モバイル サービスから返されたエラー メッセージが表示されます。
 
-3. Click **Run** to start the app, then type text longer than 10 characters in the textbox and click the **Add** button.
+3. **[Run]** をクリックして、アプリケーションを開始します。次に、テキスト ボックスに 10 文字より長いテキストを入力し、**[Add]** をクリックします。
 
-  	Notice that error is handled and the error messaged is displayed to the user.
+  	エラーが処理され、エラー メッセージがユーザーに表示されることに注目してください。
 
-## <a name="add-timestamp"></a>Add a timestamp
+## <a name="add-timestamp"></a>タイムスタンプの追加
 
-The previous tasks validated an insert and either accepted or rejected it. Now, you will update inserted data by using a server script that adds a timestamp property to the object before it gets inserted.
+前のタスクでは、挿入を検証して、受け入れるか拒否しました。ここでは、オブジェクトへの挿入前にタイムスタンプ プロパティをそのオブジェクトに追加するサーバー スクリプトを使用して、挿入されたデータを更新します。
 
-1. In the **Scripts** tab in the [Management Portal], replace the current **Insert** script with the following function, and then click **Save**.
+1. [管理ポータル]の **[スクリプト]** タブで、現在の **[挿入]** スクリプトを次の関数で置き換え、**[保存]** をクリックします。
 
         function insert(item, user, request) {
             if (item.text.length > 10) {
@@ -81,27 +81,27 @@ The previous tasks validated an insert and either accepted or rejected it. Now, 
             }
         }
 
-    This function augments the previous insert script by adding a new **createdAt** timestamp property to the object before it gets inserted by the call to **request**.**execute**. 
+    この関数は、**request**.**execute** の呼び出しで、オブジェクトへの挿入前に、新しい **createdAt** タイムスタンプ プロパティをそのオブジェクトに追加することにより、前の挿入スクリプトを強化しています。
 
-    <div class="dev-callout"><b>Note</b>
-	<p>Dynamic schema must be enabled the first time that this insert script runs. With dynamic schema enabled, Mobile Services automatically adds the <strong>createdAt</strong> column to the <strong>TodoItem</strong> table on the first execution. Dynamic schema is enabled by default for a new mobile service, and it should be disabled before the app is published.</p>
+    <div class="dev-callout"><b>注</b>
+	<p>挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマが有効になっていると、挿入スクリプトを最初に実行した時点でモバイル サービスによって <strong>TodoItem</strong> テーブルに <strong>createdAt</strong> 列が自動で追加されます。動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションの公開前に無効にする必要があります。</p>
     </div>
 
-2. From the **Run** menu, then click **Run** to start the app, then type text (shorter than 10 characters) in the textbox and click **Add**.
+2. **[Run]** メニューの **[Run]** をクリックして、アプリケーションを開始します。次に、テキスト ボックスに 10 文字未満のテキストを入力し、**[Add]** をクリックします。
 
-   	Notice that the new timestamp does not appear in the app UI.
+   	新しいタイムスタンプがアプリケーション UI に表示されないことを確認します。
 
-3. Back in the Management Portal, click the **Browse** tab in the **todoitem** table.
+3. 管理ポータルに戻り、**todoitem** テーブルの **[参照]** タブをクリックします。
    
-   	Notice that there is now a **createdAt** column, and the new inserted item has a timestamp value.
+   	**[createdAt]** 列が存在し、新しく挿入された項目にタイムスタンプ値が保持されていることを確認します。
   
-Next, you need to update the Android app to display this new column.
+次に、Android アプリを更新してこの新しい列を表示する必要があります。
 
-## <a name="update-client-timestamp"></a>Update the client again
+## <a name="update-client-timestamp"></a>クライアントの再更新
 
-The Mobile Service client will ignore any data in a response that it cannot serialize into properties on the defined type. The final step is to update the client to display this new data.
+モバイル サービス クライアントは、定義された型のプロパティにシリアル化できない応答内のデータを無視します。最後の手順は、クライアントを更新してこの新しいデータを表示することです。
 
-1. Add the following code to the private field definitions in the **TodoItem** class:
+1. **TodoItem** クラス内のプライベート フィールド定義に、次のコードを追加します。
 
         [DataMember(Name = "createdAt")]
         public DateTime? CreatedAt { get; set; }
@@ -110,59 +110,59 @@ The Mobile Service client will ignore any data in a response that it cannot seri
 	<p>The <code>DataMember's Name</code> annotation tells the client to map the new <code>CreatedAt</code> property in the app to the <code>createdAt</code> column defined in the TodoItem table, which has a different name. By using this annotation, your app can have property names on objects that differ from column names in the SQL Database. Without this annotation, an error occurs because of the casing differences.</p>
     </div>
 
-2. In the GetView method, add the following code just above where the current code that sets <code>checkBox.Text</code> to <code>currentItem.Text</code>:
+2. GetView メソッドで、<code>checkBox.Text</code> を <code>currentItem.Text</code> に設定する現在のコードの直前に、次のコードを追加します。
 
        	string displayDate = "missing";
        	if (currentItem.CreatedAt.HasValue)
        		displayDate = currentItem.CreatedAt.Value.ToShortTimeString();
 
-   	This creates a formatted date string when a timestamp value exists. 
+   	これにより、タイムスタンプ値が存在する場合は、フォーマットされた日付文字列が作成されます。
 
-3. Locate the code `checkBox.Text = currentItem.Text` again and replace this line of code with the following:
+3. コードの `checkBox.Text = currentItem.Text` を探し、このコード行を次のコードで置き換えます。
 
 		checkBox.Text = string.Format("{0} - {1}", currentItem.Text, displayDate);
 
-	This appends the timestamp date to the item for display.
+	これにより、タイムスタンプ日付が表示用に項目に追加されます。
 	
-4. From the **Run** menu, then click **Run** to start the app. 
+4. **[Run]** メニューの **[Run]** をクリックして、アプリケーションを開始します。
 
-	Notice that the timestamp is only displayed for items inserted after you updated the insert script.
+	挿入スクリプトを更新した後で、タイムスタンプが挿入された項目にのみ表示されることに注目してください。
 
-5. In **TodoActivity.cs**, replace the existing query in **RefreshItemsFromTableAsync** with the following query:
+5. **TodoActivity.cs** で、**RefreshItemsFromTableAsync** の既存のクエリを次のクエリに置き換えます。
 
 		var list = await todoTable.Where(item => item.Complete == false && 
 										 item.CreatedAt != null)
 								  .ToListAsync();
 
-	This method updates the query to also filter out items that do not have a timestamp value.
+	このメソッドは、クエリを更新し、タイムスタンプ値を保持しない項目をフィルターで除きます。
 	
-6. From the **Run** menu, then click **Run** to start the app.
+6. **[Run]** メニューの **[Run]** をクリックして、アプリケーションを開始します。
 
-  	Notice that all items created without timestamp value disappear from the UI.
+  	タイムスタンプ値なしで作成されたすべての項目が UI から消去されていることに注目してください。
 
-You have completed this working with data tutorial.
+これで、データの使用に関するチュートリアルは終了です。
 
-## <a name="next-steps"> </a>Next steps
+## <a name="next-steps"> </a>次のステップ
 
-Now that you have completed this tutorial, consider continuing on with the final tutorial in the data series: [Refine queries with paging].
+このチュートリアルが完了したため、データ シリーズの最終チュートリアル「[ページングを使用したモバイル サービス クエリの改善]」に進むことを検討してください。
 
-Server scripts are also used when authorizing users and for sending push notifications. For more information see the following tutorials:
+サーバー スクリプトは、ユーザーを認証するときに、およびプッシュ通知の送信のためにも使用されます。詳細については、次のチュートリアルを参照してください。
 
-* [Authorize users with scripts]
-  <br/>Learn how to filter data based on the ID of an authenticated user.
+* [スクリプトを使用したユーザーの承認]
+  <br/>認証されたユーザーの ID に基づきデータをフィルター処理する方法について説明します。
 
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app.
+* [プッシュ通知の使用] 
+  <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [Mobile Services server script reference]
-  <br/>Learn more about registering and using server scripts.
+* [モバイル サービスのサーバー スクリプト リファレンス]
+  <br/>サーバー スクリプトの登録および使用について説明します。
 
 <!-- Anchors. -->
-[Add string length validation]: #string-length-validation
-[Update the client to support validation]: #update-client-validation
-[Add a timestamp on insert]: #add-timestamp
-[Update the client to display the timestamp]: #update-client-timestamp
-[Next Steps]: #next-steps
+[文字列の長さの検証の追加]: #string-length-validation
+[検証をサポートするためのクライアントの更新]: #update-client-validation
+[挿入時のタイムスタンプの追加]: #add-timestamp
+[タイムスタンプを表示するためのクライアントの更新]: #update-client-timestamp
+[次のステップ]: #next-steps
 
 <!-- Images. -->
 [0]: ./media/partner-xamarin-mobile-services-android-validate-modify-data-server-scripts/mobile-services-selection.png
@@ -172,14 +172,15 @@ Server scripts are also used when authorizing users and for sending push notific
 
 
 <!-- URLs. -->
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-xamarin-android
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android
-[Refine queries with paging]: /en-us/develop/mobile/tutorials/add-paging-to-data-xamarin-android
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android
+[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-android
+[スクリプトを使用したユーザーの認証]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android
+[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-xamarin-android
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-android
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-android
+[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-android
 
-[Management Portal]: https://manage.windowsazure.com/
-[Azure Management Portal]: https://manage.windowsazure.com/
+[管理ポータル]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331330
+

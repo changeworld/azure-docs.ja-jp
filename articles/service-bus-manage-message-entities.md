@@ -1,116 +1,117 @@
-<properties linkid="service-bus-manage-messaging-entitites" urlDisplayName="Traffic Manager" pageTitle="Manage Service Bus Messaging Entities - Azure" metaKeywords="" description="Learn how to create and manage your Service Bus entities using the Azure Management Portal." metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="service-bus" documentationCenter="" title="How to Manage Service Bus Messaging Entities" authors="" solutions="" />
+<properties linkid="service-bus-manage-messaging-entitites" urlDisplayName="トラフィック マネージャー" pageTitle="サービス バス メッセージング エンティティの管理 - Azure" metaKeywords="" description="Azure 管理ポータルを使用してサービス バス エンティティを作成し管理する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="service-bus" documentationCenter="" title="サービス バス メッセージング エンティティの管理方法" authors="" solutions="" />
 
 
 
-# How to Manage Service Bus Messaging Entities
+# サービス バス メッセージング エンティティの管理方法
 
-This topic describes how to create and manage your Service Bus entities using the [Azure Management Portal](http://manage.windowsazure.com). You can use the portal to create new service namespaces or messaging entities (queues, topics, or subscriptions). You can also delete entities, or change the status of entities. 
+このトピックでは、[Azure 管理ポータル](http://manage.windowsazure.com)を使用してサービス バス エンティティを作成し管理する方法について説明します。ポータルを使用して、新しいサービス名前空間またはメッセージング エンティティ (キュー、トピック、またはサブスクリプション) を作成できます。また、エンティティの削除やエンティティの状態の変更を行うこともできます。
 
-To use this feature and other new Azure capabilities, sign up for the [free preview](https://account.windowsazure.com/PreviewFeatures).
+この機能をはじめとした Azure の新機能を使用するには、[無料のプレビュー](https://account.windowsazure.com/PreviewFeatures)にサインアップしてください。
 
-##Table of Contents##
+##目次##
 
-* [How To: Create a Service Bus Entity](#create)
-* [How To: Delete a Service Bus Entity](#delete)
-* [How To: Disable or Enable a Service Bus Entity](#disableenable)
-* [Additional Resources](#seealso)
+* [方法: サービス バス エンティティを作成する](#create)
+* [方法: サービス バス エンティティを削除する](#delete)
+* [方法: サービス バス エンティティを無効または有効にする](#disableenable)
+* [その他のリソース](#seealso)
 
-<h2><a id="create"></a>How To: Create a Service Bus Entity</h2>
+<h2><a id="create"></a>方法: サービス バス エンティティを作成する</h2>
 
-The Azure Management Portal supports two ways to create a Service Bus entity: *Quick Create* or *Custom Create*.
+Azure 管理ポータルではサービス バス エンティティの作成方法として 2 つの方法 (*簡易作成*と*カスタム作成*) がサポートされています。
 
-###Quick Create###
+###簡易作成###
 
-Quick Create enables you to create to create a Service Bus queue, topic, or relay service namespace in one easy step. Follow these steps to create a Service Bus entity.
+簡易作成では、サービス バスのキュー、トピック、またはリレー サービス名前空間を 1 つの簡単な手順で作成できます。サービス バス エンティティを作成するには、次の手順を実行します。
 
-1.	Log on to the [Azure (Preview) Management Portal](http://manage.windowsazure.com).
-2.	Click the **New** icon at the bottom left of the management portal.
-3.	Click the **App Services** icon, and then click **Service Bus Queue** (topic or relay). Click **Quick Create**, and enter the queue name, region, and Azure subscription id.
+1.	[Azure (プレビュー) 管理ポータル](http://manage.windowsazure.com)にログオンします。
+2.	管理ポータルの左下にある **[新規]** アイコンをクリックします。
+3.	**[アプリケーション サービス]** アイコンをクリックし、**[サービス バス キュー]** (トピックまたはリレー) をクリックします。**[簡易作成]** をクリックして、キュー名、リージョン、および Azure サブスクリプション ID を入力します。
 
-	a.	If this is your first namespace in the selected region, the portal suggests a namespace queue ; [your entity name]-ns. You can change this value.
+	a.	これが選択したリージョンで最初の名前空間である場合は、名前空間キューとして [your entity name]-ns が示されます。この値は変更できます。
 
-	b.	If you already have at least one service namespace in this region, a namespace is selected automatically. You can change that selected namespace.
+	b.	このリージョンに既に少なくとも 1 つサービス名前空間がある場合は、名前空間が自動的に選択されます。選択された名前空間は変更できます。
 
-4.	Click the check mark next to **create a new queue** (or topic).
-5.	When the queue or topic has been created, you will see the message **Creation of Queue ‘[Queue Name]’ Completed**.
+4.	**[新しいキューを作成する]** (または [新しいトピックを作成する]) の横にあるチェック マークをクリックします。
+5.	キューまたはトピックが作成されると、"**キュー '[Queue Name]' の作成が完了しました**" というメッセージが表示されます。
 
-	a. If you don’t have any namespaces in this region or in this Azure subscription, a new namespace is auto-created for you. In such case, you will receive two success messages: one for the namespace creation and the other one for the entity creation.
+	a. このリージョンまたはこの Azure サブスクリプションに名前空間がない場合、新しい名前空間が自動的に作成されます。このような場合、成功メッセージが 2 つ表示されます。1 つは名前空間の作成、もう 1 つはエンティティ作成の成功メッセージです。
 
 	![][1]
 
-Click the **Service Bus** icon on the left navigation bar to get a list of namespaces. You will find the new namespace you just created. Click the namespace in the list. You will see the entity you just created under that namespace.
+左側のナビゲーション バーで **[サービス バス]** アイコンをクリックして、名前空間の一覧を表示します。先ほど作成した新しい名前空間が表示されています。一覧でその名前空間をクリックします。先ほど作成したエンティティがその名前空間の下に表示されます。
 
-**Note** You may not see the namespace listed immediately. It takes a few seconds to create the service namespace and update portal interface. 
+**注:** 名前空間がすぐには一覧に表示されないことがあります。サービス名前空間を作成してポータル画面を更新するには数秒かかります。
 
-**Note** Using **Quick Create** for a relay does not create a new relay endpoint. It only creates a namespace under which you can programmatically create relay endpoint. For more details, see the [Service Bus documentation](http://www.windowsazure.com/en-us/develop/net/how-to-guides/service-bus-relay/).
+**注:** リレーで **[簡易作成]** を使用しても新しいリレー エンドポイントは作成されません。リレー エンドポイントをプログラムによってその配下に作成できる名前空間が作成されるだけです。詳細については、[サービス バスのマニュアル](http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/service-bus-relay/)を参照してください。
 
-###Custom Create###
+###カスタム作成###
 
-**Custom Create** is the more detailed version that gives you knobs to change the default values of the properties of the entity (queue or topic) being created. To create a topic or entity using **Custom Create**, follow these steps: 
+**カスタム作成**では、作成するエンティティ (キューまたはトピック) のプロパティの既定値をさらに詳細に変更できます。**カスタム作成**を使用してトピックまたはエンティティを作成するには、次の手順を実行します。
 
-1.	Log on to the [Azure (Preview) Management Portal](http://manage.windowsazure.com).
-2.	Click **New** at the bottom left of the management portal.
-3.	Click the **App Services** icon, and then click **Service Bus Queue** (topic or relay). Then click Custom Create.
-4.	In the first dialog screen, enter the queue name, region, and Azure subscription id.
+1.	[Azure (プレビュー) 管理ポータル](http://manage.windowsazure.com)にログオンします。
+2.	管理ポータルの左下にある **[新規]** をクリックします。
+3.	**[アプリケーション サービス]** アイコンをクリックし、**[サービス バス キュー]** (トピックまたはリレー) をクリックします。[カスタム作成] をクリックします。
+4.	最初のダイアログ画面で、キュー名、リージョン、および Azure サブスクリプション ID を入力します。
 
-	a.	If this is your first service namespace in the selected region, the portal suggests a namespace queue ; [your entity name]-ns. You can change this value.
+	a.	これが選択したリージョンで最初のサービス名前空間である場合は、名前空間キューとして [your entity name]-ns が示されます。この値は変更できます。
 
-	b.	If you already have at least one namespace in this region, a namespace is selected automatically. You can change that selected namespace.
+	b.	このリージョンに既に少なくとも 1 つ名前空間がある場合は、名前空間が自動的に選択されます。選択された名前空間は変更できます。
 
-5. Click **Next **to insert the remaining properties. 
+5. **[次へ]** をクリックして、残りのプロパティを挿入します。
 
 	![][2]
 	
-6. Click the check mark to create the queue. 
+6. チェック マークをクリックしてキューを作成します。
 
 	![][3]
 
-Click the **Service Bus** icon on the left navigation bar to get the list of service namespaces. You will find the new namespace you just created. Click the namespace in the list. You will see the entity you just created under that namespace.
+左側のナビゲーション バーで **[サービス バス]** アイコンをクリックして、サービス名前空間の一覧を表示します。先ほど作成した新しい名前空間が表示されています。一覧でその名前空間をクリックします。先ほど作成したエンティティがその名前空間の下に表示されます。
 
-<h2><a id="delete"></a>How To: Delete a Service Bus Entity</h2>
+<h2><a id="delete"></a>方法: サービス バス エンティティを削除する</h2>
 
-Using the portal, you can delete a Service Bus messaging entity. This is applicable to queues, topics, and topic subscriptions. To delete a queue or topic, do the following:
+ポータルを使用して、サービス バス メッセージング エンティティを削除できます。これはキュー、トピック、およびトピック サブスクリプションに適用されます。キューまたはトピックを削除するには、以下の手順を実行します。
 
-1. Navigate to the service namespace list view and click the namespace under which you created the entity (queue or topic).
-2. Click the **Delete** icon at the bottom of the page and confirm the delete operation.
+1. サービス名前空間の一覧表示に移動して、エンティティ (キューまたはトピック) を作成した名前空間をクリックします。
+2. ページの下部にある **[削除]** アイコンをクリックして、削除操作の確認メッセージに応答します。
 
 	![][4]
 
-**Note** Entity deletion is not recoverable. Once it is deleted, you cannot recover it. However, you can create another entity with same name.
+**注:** エンティティの削除は取り消しできません。いったん削除すると、回復できません。ただし、同じ名前で別のエンティティを作成することはできます。
 
-To delete a topic subscription, do the following:
+トピック サブスクリプションを削除するには、以下の手順を実行します。
 
-1.	Navigate to the namespaces list view and click the namespace under which you created the topic.
-2.	Click the topic under which you created the subscription.
-3.	Click the **Subscriptions** tab and select the subscription you want to delete.
-4.	Click **Delete** icon at the bottom of the page and confirm the delete operation.
+1.	名前空間の一覧表示に移動して、トピックを作成した名前空間をクリックします。
+2.	サブスクリプションを作成したトピックをクリックします。
+3.	**[サブスクリプション]** タブをクリックして、削除するサブスクリプションを選択します。
+4.	ページの下部にある **[削除]** アイコンをクリックして、削除操作の確認メッセージに応答します。
 
-<h2><a id="disableenable"></a>How To: Disable or Enable a Service Bus Entity</h2>
+<h2><a id="disableenable"></a>方法: サービス バス エンティティを無効または有効にする</h2>
 
-You can use the portal to change the status of a Service Bus entity. This is applicable to queues and topics. To disable or enable a queue or topic, do the following:
+サービス バス エンティティの状態はポータルで変更することができます。これはキューおよびトピックに適用されます。キューまたはトピックを無効または有効にするには、以下の手順を実行します。
 
-1. Navigate to the service namespace list view and click the namespace under which you created the entity (queue or topic).
-2. Click **Disable** (or **Enable**) at the bottom of the page.
+1. サービス名前空間の一覧表示に移動して、エンティティ (キューまたはトピック) を作成した名前空間をクリックします。
+2. ページの下部にある **[無効化]** (または **[有効化]**) をクリックします。
 
 	![][5]	
 
-<h2><a id="seealso"></a>Additional Resources</h2>
+<h2><a id="seealso"></a>その他のリソース</h2>
 
 
-[Azure Service Bus][]
+[Azure のサービス バス][]
 
-[.NET Developer Center][] on the Azure web site
+Azure Web サイトにある [.NET デベロッパー センターのページ][]
 
-[Creating Applications that Use Service Bus Topics and Subscriptions][]
+[サービス バスのトピックとサブスクリプションを使用するアプリケーションの作成に関するページ][]
 
-[Queues, Topics, and Subscriptions][]
+[サービス バス キュー、トピック、およびサブスクリプション][]
 
-[Azure Service Bus]: http://go.microsoft.com/fwlink/?LinkId=266834
-[.NET Developer Center]: http://go.microsoft.com/fwlink/?LinkID=262187
-[Creating Applications that Use Service Bus Topics and Subscriptions]: http://go.microsoft.com/fwlink/?LinkId=264293
-[Queues, Topics, and Subscriptions]: http://go.microsoft.com/fwlink/?LinkId=264291
+[Azure のサービス バス]: http://go.microsoft.com/fwlink/?LinkId=266834
+[.NET デベロッパー センターのページ]: http://go.microsoft.com/fwlink/?LinkID=262187
+[サービス バスのトピックとサブスクリプションを使用するアプリケーションの作成に関するページ]: http://go.microsoft.com/fwlink/?LinkId=264293
+[サービス バス キュー、トピック、およびサブスクリプション]: http://go.microsoft.com/fwlink/?LinkId=264291
 [1]: ./media/service-bus-manage-message-entities/QueueQuickCreate.png
 [2]: ./media/service-bus-manage-message-entities/AddQueue1.png
 [3]: ./media/service-bus-manage-message-entities/ConfigureQueue.png
 [4]: ./media/service-bus-manage-message-entities/DeleteEntity.png
 [5]: ./media/service-bus-manage-message-entities/DisableEnable.png
+

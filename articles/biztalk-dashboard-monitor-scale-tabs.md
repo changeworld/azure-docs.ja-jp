@@ -1,382 +1,383 @@
-<properties linkid="manage-services-biztalk-services-dashboard-monitor-scale-tabs" urlDisplayName="Dashboard, Monitor and Scale tabs" pageTitle="Dashboard, Monitor, and Scale in Biztalk Services | Azure" metaKeywords="BizTalk Services, Azure, dashboard, monitor, scale" description="Learn about the controls on the Management Portal tabs for BizTalk Services: Dashboard, Monitor, and Scale." metaCanonical="" services="biztalk-services" documentationCenter="" title=" Monitor and Scale tabs" authors="mandia" solutions="" manager="paulettm" editor="cgronlun" />
+<properties linkid="manage-services-biztalk-services-dashboard-monitor-scale-tabs" urlDisplayName="[ダッシュボード]、[監視]、および [スケール] タブ" pageTitle="ダッシュボード、監視、Biztalk サービスでのスケール | Azure" metaKeywords="BizTalk サービス, Azure, ダッシュボード, 監視, スケール" description="BizTalk サービスの [管理ポータル] タブのコントロール ([ダッシュボード]、[監視]、[スケール]) について説明します。" metaCanonical="" services="biztalk-services" documentationCenter="" title="[監視] および [スケール] タブ" authors="mandia" solutions="" manager="paulettm" editor="cgronlun" />
 
 
 
 
-# BizTalk Services: Dashboard, Monitor and Scale tabs
+# BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ
 
-The first time you open the Azure Management Portal, you are automatically placed at the **ALL ITEMS** tab. The columns in the **ALL ITEMS** tab can be sorted. To view your BizTalk Service, select your BizTalk Service in the **ALL ITEMS** tab or click the **BIZTALK SERVICES** tab; and then click your BizTalk Service name.
+Azure 管理ポータルを最初に開くと、自動的に **[すべてのアイテム]** タブが表示されます。**[すべてのアイテム]** タブ内の列は並べ替えることができます。BizTalk サービスを表示するには、**[すべてのアイテム]** タブ内の BizTalk サービスを選択するか、**[BizTalk サービス]** タブをクリックし、BizTalk サービス名をクリックします。
 
-This opens a new window with the following options:
+新しいウィンドウが開き、次のオプションが表示されます。
 
-- [Quick Start](#QuickStart)
+- [クイック スタート](#QuickStart)
 
-- [Dashboard](#Dashboard)
+- [ダッシュボード](#Dashboard)
 
-- [Monitor](#Monitor)
+- [監視](#Monitor)
 
-- [Scale](#Scale)
+- [スケール](#Scale)
 
-This topic describes these tabs.
+このトピックでは、これらのタブについて説明します。
 
 
-##<a name="QuickStart"></a>Quick Start
-In the Quick Start tab, you can do the following:
+##<a name="QuickStart"></a>クイック スタート
+[クイック スタート] タブで、次の操作を行うことができます。
 
 <table border="1">
 <tr bgcolor="FAF9F9">
-        <td><strong>Option</strong></td>
-        <td><strong>Description</strong></td>
+        <td><strong>オプション</strong></td>
+        <td><strong>説明</strong></td>
 </tr>
     <tr>
-        <td>Get the tools</td>
+        <td>ツールの入手</td>
 
-        <td>Download the BizTalk Services SDK to install the Visual Studio project templates on your on-premise development computer. These templates create the <strong>BizTalk Services</strong> (bridge) and the <strong>BizTalk Service Artifacts</strong> (Transform) Visual Studio projects that are deployed to your BizTalk Service.
+        <td>BizTalk サービス SDK をダウンロードし、Visual Studio プロジェクト テンプレートを内部設置型の開発用コンピューターにインストールします。これらのテンプレートは、BizTalk サービスにデプロイされる <strong>BizTalk サービス</strong> (ブリッジ) および <strong>BizTalk サービス アーティファクト</strong> (変換) Visual Studio プロジェクトを作成します。
 
         <br/><br/>
-		<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335"> How do I Start Using the Azure BizTalk Services SDK </a> and <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">Installing the Azure BizTalk Services SDK</a> lists the steps to get started.
+		作業を開始する手順については、<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335">Azure BizTalk サービス SDK を使用して開始する方法に関するページ</a>および <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">Azure BizTalk サービス SDK のインストールに関するページ</a>を参照してください。
         </td>
     </tr>
 
     <tr>
-        <td>Create partner agreements</td>
+        <td>パートナー契約の作成</td>
 
-        <td>Opens the Azure BizTalk Services Portal hosted on Azure where you add partners and create X12 and AS2 EDI agreements.
+        <td>Azure でホストされている Azure BizTalk サービス ポータルを開きます。ここで、パートナーを追加し、X12 契約および AS2 EDI 契約を作成します。
 
         <br/><br/>
 
-        <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">Configuring Components for EDI Messaging on BizTalk Services Portal</a> lists the steps to get started.
+        <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">BizTalk サービス ポータル上の EDI メッセージングのコンポーネントの構成に関するページ</a>で、作業を開始する手順を説明しています。
         </td>
     </tr>
 
 <tr>
-        <td>Learn more about BizTalk Services</td>
+        <td>BizTalk サービスの詳細</td>
 
-        <td>Go to the learning center to learn more about Azure BizTalk Services.</td>
+        <td>Azure BizTalk サービスの詳細については、学習センターを参照してください。</td>
 </tr>
 
 </table>
 
 
-In the task bar at the bottom, you can **Manage** the BizTalk Service, view the Access Control Namespace **Connection Information**, **Sync Keys** of the Storage Account, or **Delete** the BizTalk Service:
+下部のタスク バーで、BizTalk サービスを**管理**したり、Access Control 名前空間の**接続情報**を表示したり、ストレージ アカウントの**キーを同期**したり、BizTalk サービスを**削除**することができます。
 
 
 <table border="1">
 <tr bgcolor="FAF9F9">
-        <td><strong>Option</strong></td>
-        <td><strong>Description</strong></td>
+        <td><strong>オプション</strong></td>
+        <td><strong>説明</strong></td>
 </tr>
 <tr>
-<td>Manage</td>
-<td>When you click Manage, the Azure BizTalk Services Portal opens. The BizTalk Services Portal is the entrance to EDI configuration, including adding partners and creating AS2 and X12 agreements.
+<td>管理</td>
+<td>[管理] をクリックすると、Azure BizTalk サービス ポータルが開きます。BizTalk サービス ポータルは、パートナーの追加や AS2 契約および X12 契約の作成などの EDI 構成を行うためのスタート地点です。
 <br/><br/>
-This is the same as <strong>Create partner agreements</strong> on the <strong>Quick Start</strong> tab.
+これは、<strong>[クイック スタート]</strong> タブの<strong>パートナー契約の作成</strong>と同じです。
 <br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">Configuring Components for EDI Messaging on BizTalk Services Portal</a> provides more information on the BizTalk Services Portal.</td>
-</tr>
-
-<tr>
-<td>Connection Information</td>
-<td>When you click Connection Information, the Access Control Namespace, Default Issuer, and Default Key are displayed. You can copy these values.
-<br/><br/>
-You can also open the Access Control Management Portal. This Access Control Mangement Portal is the same as using the Active Directory option in the left navigation pane.
-<br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">Managing Your ACS Namespace</a> provides more information on the Access Control Management Portal.</td>
+BizTalk サービス ポータルに関する詳細情報については、<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">BizTalk サービス ポータル上の EDI メッセージングのコンポーネントの構成に関するページ</a>を参照してください。</td>
 </tr>
 
 <tr>
-<td>Sync Keys</td>
-<td>When you create a Storage account, a Primary Key and Secondary Key are automatically created. These Keys control access to your Storage Account. Your BizTalk Service automatically uses the Primary Key. <strong>Sync Keys</strong> enable users to switch between the Primary Key and the Secondary Key without disrupting the BizTalk Service.
+<td>接続情報</td>
+<td>[接続情報] をクリックすると、[Access Control 名前空間]、[既定の発行者]、および [既定のキー] が表示されます。この値はコピーできます。
 <br/><br/>
-For example, you want the BizTalk Service to use a new Primary Key for the Storage Account. To do this:
+Access Control 管理ポータルを開くこともできます。Access Control 管理ポータルは、左のナビゲーション ウィンドウで [Active Directory] オプションを使用するのと同じです。
+<br/><br/>
+<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">ACS 名前空間の管理に関するページ</a>では、Access Control 管理ポータルについて詳細に説明されています。</td>
+</tr>
+
+<tr>
+<td>キーの同期</td>
+<td>ストレージ アカウントを作成すると、プライマリ キーおよびセカンダリ キーが自動的に作成されます。これらのキーは、ストレージ アカウントへのアクセスを制御します。BizTalk サービスは自動的にプライマリ キーを使用します。<strong>キーの同期</strong>により、BizTalk サービスを中断せずにプライマリ キーとセカンダリ キー間を切り替えることができます。
+<br/><br/>
+たとえば、BizTalk サービスでストレージ アカウント用に新しいプライマリ キーを使用することができます。これを行うには、次の手順を実行します。
 <br/><br/>
 <ol>
-<li>Click your BizTalk Service and click <strong>Sync Keys</strong>. Select the Secondary Key. When you do this, the BizTalk Service starts using the Secondary Key.</li>
-<li>In the Azure Management Portal, click your Storage account and Regenerate the Primary Key. Remember, your BizTalk Service is using the Secondary Key.</li>
-<li>Click your BizTalk Service and click <strong>Sync Keys</strong>. Now, select the Primary Key. This is the new Primary Key you regenerated.</li>
-<li>In the Azure Management Portal, click your Storage account and Regenerate the Secondary Key.</li>
+<li>BizTalk サービスをクリックし、<strong>[キーの同期]</strong> をクリックします。セカンダリ キーを選択します。これを行うと、BizTalk サービスはセカンダリ キーの使用を開始します。</li>
+<li>Azure 管理ポータルで、ストレージ アカウントをクリックしてプライマリ キーを再生成します。BizTalk サービスはセカンダリ キーを使用していることに注意してください。</li>
+<li>BizTalk サービスをクリックし、<strong>[キーの同期]</strong> をクリックします。プライマリ キーを選択します。これは、再生成した新しいプライマリ キーです。</li>
+<li>Azure 管理ポータルで、ストレージ アカウントをクリックしてセカンダリ キーを再生成します。</li>
 </ol>
 <br/>
-This process is called "rollover keys". The purpose is to enable users to switch between the Primary Key and the Secondary Key without disrupting the BizTalk Service.</td>
+このプロセスを "キーのロールオーバー" といいます。その目的は、BizTalk サービスを中断せずにプライマリ キーとセカンダリ キーの間で切り替えを行うことです。</td>
 </tr>
 
 <tr>
-<td>Delete</td>
-<td>When you click Delete, your BizTalk Service and all items deployed to it are removed.</td>
+<td>削除</td>
+<td>[削除] をクリックすると、BizTalk サービスとそれにデプロイされたすべてのアイテムが削除されます。</td>
 </tr>
 </table>
 
 
-##<a name="Dashboard"></a>Dashboard
-When you click your BizTalk Service name, the Dashboard tab is displayed. The Dashboard displays the following information:
+##<a name="Dashboard"></a>ダッシュボード
+BizTalk サービス名をクリックすると、[ダッシュボード] タブが表示されます。ダッシュボードには次の情報が表示されます。
 
-#### Metric Graph
-A graph that shows a fixed list of performance metrics. These metrics provide real-time values regarding the health of your BizTalk Service. Metrics include:
+####メトリック グラフ
+パフォーマンス メトリックの一定のリストを示すグラフです。これらのメトリックは、BizTalk サービスの正常性状態に関するリアルタイムの値を提供します。メトリックには次のものがあります。
 
-- CPU Usage
-- Failures at Source
-- Failures in Process
-- Messages Processed
-- Messages Received
-- Processing Latency
+- CPU 使用率
+- ソースのエラー
+- プロセス内のエラー
+- 処理されたメッセージ
+- 受信したメッセージ
+- 処理の遅延時間
 
-For a description of these performance metrics, go to [Available Metrics](#Metrics) in this topic.
+これらのパフォーマンス メトリックについては、このトピックの「[使用可能なメトリック](#Metrics)」を参照してください。
 
-##### Relative or Absolute
-The graph shows trends, displaying only the current value of each metric; which is the **Relative** option. To display a Y axis to see the absolute values, select **Absolute**.
+##### 相対または絶対
+グラフには傾向が表示され、各メトリックの現在の値だけが表示されます (**[相対]** オプション)。Y 軸を表示して絶対値を確認するには、**[絶対]** をクリックします。
 
-##### Interval
-Modifies the time range the metrics are displayed in the graph. Options include:
+##### 間隔
+グラフにメトリックが表示される期間を変更できます。次のオプションがあります。
 
-- 1 Hour
-- 1 Day
-- 7 Days
+- 1 時間
+- 1 日
+- 7 日
 
 
-#### Quick Glance
-Lists your BizTalk Service properties, including the following:
+#### 概要
+次のような BizTalk サービスのプロパティを表示します。
 
 <table border="1">
 <tr bgcolor="FAF9F9">
-        <td><strong>Option</strong></td>
-        <td><strong>Description</strong></td>
+        <td><strong>オプション</strong></td>
+        <td><strong>説明</strong></td>
 </tr>
 <tr>
-<td>Update Tracking Database credentials</td>
-<td>Changes the user name and password used to log into the Tracking Database.<br/><br/>
-When you provision the BizTalk Service, you enter a user name and password to log into the Tracking Database. Using this option, you can modify your BizTalk Service to use a different user name and password to log into the Tracking Database.<br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">BizTalk Services: Provisioning Using Azure Management Portal</a> lists the steps to provision a BizTalk Service.</td>
+<td>トラッキング データベース資格情報の更新</td>
+<td>トラッキング データベースにログインするためのユーザー名とパスワードを変更します。<br/><br/>
+BizTalk サービスのプロビジョニングを行うときは、ユーザー名とパスワードを入力してトラッキング データベースにログインします。このオプションを使用すると、トラッキング データベースにログインするために別のユーザー名とパスワードを使用するように BizTalk サービスを変更できます。<br/><br/>
+<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">BizTalk サービス: Azure 管理ポータルを使用したプロビジョニングに関するページ</a>に、BizTalk サービスのプロビジョニング手順が記載されています。</td>
 </tr>
 <tr>
-<td>Update SSL Certificate</td>
-<td>Can enter a different SSL certificate.<br/><br/>
-When you provision the BizTalk Service, a self-signed SSL certificate is automatically created. Using this option, you can modify your BizTalk Service to use a different SSL certificate.<br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">BizTalk Services: Provisioning Using Azure Management Portal</a> lists the steps to provision a BizTalk Service.</td>
+<td>SSL 証明書の更新</td>
+<td>異なる SSL 証明書を入力できます。<br/><br/>
+BizTalk サービスのプロビジョニングを行うと、自己署名 SSL 証明書が自動的に作成されます。このオプションを使用すると、別の SSL 証明書を使用するように BizTalk サービスを変更できます。<br/><br/>
+<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">BizTalk サービス: Azure 管理ポータルを使用したプロビジョニングに関するページ</a>に、BizTalk サービスのプロビジョニング手順が記載されています。</td>
 </tr>
 <tr>
-<td>Download Certificate</td>
-<td>Using this option, you can download the SSL certificate used by your BizTalk Service.<br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">BizTalk Services: Provisioning Using Azure Management Portal</a> lists the steps to provision a BizTalk Service.</td>
+<td>証明書のダウンロード</td>
+<td>このオプションを使用すると、BizTalk サービスに使用される SSL 証明書をダウンロードできます。<br/><br/>
+<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">BizTalk サービス: Azure 管理ポータルを使用したプロビジョニングに関するページ</a>に、BizTalk サービスのプロビジョニング手順が記載されています。</td>
 </tr>
 <tr>
-<td>Status</td>
-<td>Shows the current status of your BizTalk Service.</td>
+<td>ステータス</td>
+<td>BizTalk サービスの現在の状態を表示します。</td>
 </tr>
 <tr>
-<td>Service URL</td>
-<td>This URL routes to your BizTalk Service. This is the same as the <strong>Domain URL</strong> entered when your BizTalk Service is provisioned. </td>
+<td>サービス URL</td>
+<td>この URL から、BizTalk サービスにアクセスできます。これは、BizTalk サービスがプロビジョニングされるときに入力される<strong>ドメイン URL</strong> と同じです。</td>
 </tr>
 <tr>
-<td>Public Virtual IP (VIP) Address</td>
-<td>This IP address is assigned to your BizTalk Service. It is used for all input endpoints and is the source address for outbound traffic. This IP address belongs to your BizTalk Service as long as it is provisioned. If you delete the BizTalk Service, the IP address is assigned to another service deployment.</td>
+<td>パブリック仮想 IP (VIP) アドレス</td>
+<td>この IP アドレスは BizTalk サービスに割り当てられます。これはすべての入力エンドポイントで使用され、送信トラフィックのソース アドレスとなります。この IP アドレスは、プロビジョニングされる限り BizTalk サービスに属します。BizTalk サービスを削除すると、この IP アドレスは、他のサービス デプロイに割り当てられます。</td>
 </tr>
 <tr>
-<td>ACS Namespace</td>
-<td>Authenticates with BizTalk Service. This is the same <strong>ACS Namespace</strong> entered when the BizTalk Service is provisioned.</td>
+<td>ACS 名前空間</td>
+<td>BizTalk サービスで認証を行います。これは、BizTalk サービスがプロビジョニングされるときに入力される <strong>ACS 名前空間</strong>と同じです。</td>
 </tr>
 <tr>
-<td>Edition</td>
-<td>Lists the Edition. Options include Developer, Basic, Standard, and Premium. This is the same Edition entered when the BizTalk Service is provisioned. <br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302281">BizTalk Services: Developer, Basic, Standard and Premium Editions Chart</a> lists the edition differences, including costs.</td>
+<td>エディション</td>
+<td>エディションが表示されます。開発者、基本、標準、およびプレミアムというオプションがあります。これは、BizTalk サービスがプロビジョニングされるときに入力されるエディションと同じです。<br/><br/>
+<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302281">BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャートに関するページ</a>に、エディションの違い (コストなど) が記載されています。</td>
 </tr>
 <tr>
-<td>Location</td>
-<td>Shows the geographic region that hosts your BizTalk Service. This is the same as the <strong>Region</strong> entered when the BizTalk Service is provisioned.</td>
+<td>場所</td>
+<td>BizTalk サービスをホストするジオ (主要地域) リージョンを表示します。これは、BizTalk サービスがプロビジョニングされるときに入力される<strong>リージョン</strong>と同じです。</td>
 </tr>
 <tr>
-<td>Created</td>
-<td>Shows the date and time the BizTalk Service was provisioned.</td>
+<td>作成日時</td>
+<td>BizTalk サービスがプロビジョニングされた日時を示します。</td>
 </tr>
 <tr>
-<td>Tracking Database</td>
-<td>The Azure SQL Database name that stores the tracking tables used by your BizTalk Service. This is the same <strong>Tracking Database</strong> entered when the BizTalk Service is provisioned.</td>
+<td>トラッキング データベース</td>
+<td>BizTalk サービスで使用される追跡テーブルを格納する Azure SQL データベース名です。これは、BizTalk サービスがプロビジョニングされるときに入力される<strong>トラッキング データベース</strong>と同じです。</td>
 </tr>
 <tr>
-<td>Monitoring/Archiving Storage</td>
-<td>The Azure Storage account name that stores the monitoring output of your BizTalk Service. This is the same <strong>Monitoring/Archiving Storage Account</strong> entered when the BizTalk Service is provisioned.</td>
+<td>ストレージの監視/アーカイブ</td>
+<td>BizTalk サービスの監視出力を格納する Azure ストレージ アカウント名です。これは、BizTalk サービスがプロビジョニングされるときに入力される<strong>監視/アーカイブ ストレージ アカウント</strong>と同じです。</td>
 </tr>
 <tr>
-<td>Subscription Name</td>
-<td>The subscription governs access to the Azure Management Portal. This is the same <strong>Subscription</strong> name selected when the BizTalk Service is provisioned.</td>
+<td>サブスクリプション名</td>
+<td>サブスクリプションは、Azure 管理ポータルへのアクセスを管理します。これは、BizTalk サービスがプロビジョニングされるときに選択される<strong>サブスクリプション名</strong>と同じです。</td>
 </tr>
 <tr>
-<td>Subscription ID</td>
-<td>The subscription governs access to the Azure Management Portal. When a subscription is created, a subscription ID is automatically generated. When using REST APIs, you may need to enter the Subscription ID.</td>
+<td>サブスクリプション ID</td>
+<td>サブスクリプションは、Azure 管理ポータルへのアクセスを管理します。サブスクリプションが作成されると、サブスクリプション ID は自動的に生成されます。REST API を使用するときは、サブスクリプション ID の入力が必要になる場合があります。</td>
 </tr>
 </table>
 
-[BizTalk Services: Provisioning Using Azure Management Portal](http://go.microsoft.com/fwlink/p/?LinkID=302280) lists the steps to provision a BizTalk Service.
+[BizTalk サービス: Azure 管理ポータルを使用したプロビジョニングに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302280)に、BizTalk サービスのプロビジョニング手順が記載されています。
 
 
-#### Manage, Connection Information, Sync Keys and Delete
-In the task bar at the bottom, you can **Manage** the BizTalk Service, view the Access Control Namespace **Connection Information**, **Sync Keys** of the Storage Account, or **Delete** the BizTalk Service:
+#### [管理]、[接続情報]、[キーの同期]、[削除]
+下部のタスク バーで、BizTalk サービスを**管理**したり、Access Control 名前空間の**接続情報**を表示したり、ストレージ アカウントの**キーを同期**したり、BizTalk サービスを**削除**することができます。
 
 <table border="1">
 <tr bgcolor="FAF9F9">
-        <td><strong>Option</strong></td>
-        <td><strong>Description</strong></td>
+        <td><strong>オプション</strong></td>
+        <td><strong>説明</strong></td>
 </tr>
 <tr>
-<td>Manage</td>
-<td>When you click Manage, the Azure BizTalk Services Portal opens. The BizTalk Services Portal is the entrance to EDI configuration, including adding partners and creating AS2 and X12 agreements.
+<td>管理</td>
+<td>[管理] をクリックすると、Azure BizTalk サービス ポータルが開きます。BizTalk サービス ポータルは、パートナーの追加や AS2 契約および X12 契約の作成などの EDI 構成を行うためのスタート地点です。
 <br/><br/>
-This is the same as <strong>Create partner agreements</strong> on the <strong>Quick Start</strong> tab.
+これは、<strong>[クイック スタート]</strong> タブの<strong>パートナー契約の作成</strong>と同じです。
 <br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">Configuring Components for EDI Messaging on BizTalk Services Portal</a> provides more information on the BizTalk Services Portal.</td>
+BizTalk サービス ポータルに関する詳細情報については、<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">BizTalk サービス ポータル上の EDI メッセージングのコンポーネントの構成に関するページ</a>を参照してください。</td>
 </tr>
 <tr>
-<td>Connection Information</td>
-<td>When you click Connection Information, the Access Control Namespace, Default Issuer, and Default Key are displayed. You can copy these values.
+<td>接続情報</td>
+<td>[接続情報] をクリックすると、[Access Control 名前空間]、[既定の発行者]、および [既定のキー] が表示されます。この値はコピーできます。
 <br/><br/>
-You can also open the Access Control Management Portal. This Access Control Mangement Portal is the same as using the Active Directory option in the left navigation pane.
+Access Control 管理ポータルを開くこともできます。Access Control 管理ポータルは、左のナビゲーション ウィンドウで [Active Directory] オプションを使用するのと同じです。
 <br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">Managing Your ACS Namespace</a> provides more information on the Access Control Management Portal.</td>
+<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">ACS 名前空間の管理に関するページ</a>では、Access Control 管理ポータルについて詳細に説明されています。</td>
 </tr>
 <tr>
-<td>Sync Keys</td>
-<td>When you create a Storage account, a Primary Key and Secondary Key are automatically created. These Keys control access to your Storage Account. Your BizTalk Service automatically uses the Primary Key. <strong>Sync Keys</strong> enable users to switch between the Primary Key and the Secondary Key without disrupting the BizTalk Service.
+<td>キーの同期</td>
+<td>ストレージ アカウントを作成すると、プライマリ キーおよびセカンダリ キーが自動的に作成されます。これらのキーは、ストレージ アカウントへのアクセスを制御します。BizTalk サービスは自動的にプライマリ キーを使用します。<strong>キーの同期</strong>により、BizTalk サービスを中断せずにプライマリ キーとセカンダリ キー間を切り替えることができます。
 <br/><br/>
-For example, you want the BizTalk Service to use a new Primary Key for the Storage Account. To do this:
+たとえば、BizTalk サービスでストレージ アカウント用に新しいプライマリ キーを使用することができます。これを行うには、次の手順を実行します。
 <br/><br/>
 <ol>
-<li>Click your BizTalk Service and click <strong>Sync Keys</strong>. Select the Secondary Key. When you do this, the BizTalk Service starts using the Secondary Key.</li>
-<li>In the Azure Management Portal, click your Storage account and Regenerate the Primary Key. Remember, your BizTalk Service is using the Secondary Key.</li>
-<li>Click your BizTalk Service and click <strong>Sync Keys</strong>. Now, select the Primary Key. This is the new Primary Key you regenerated.</li>
-<li>In the Azure Management Portal, click your Storage account and Regenerate the Secondary Key.</li>
+<li>BizTalk サービスをクリックし、<strong>[キーの同期]</strong> をクリックします。セカンダリ キーを選択します。これを行うと、BizTalk サービスはセカンダリ キーの使用を開始します。</li>
+<li>Azure 管理ポータルで、ストレージ アカウントをクリックしてプライマリ キーを再生成します。BizTalk サービスはセカンダリ キーを使用していることに注意してください。</li>
+<li>BizTalk サービスをクリックし、<strong>[キーの同期]</strong> をクリックします。プライマリ キーを選択します。これは、再生成した新しいプライマリ キーです。</li>
+<li>Azure 管理ポータルで、ストレージ アカウントをクリックしてセカンダリ キーを再生成します。</li>
 </ol>
 <br/>
-This process is called "rollover keys". The purpose is to enable users to switch between the Primary Key and the Secondary Key without disrupting the BizTalk Service.</td>
+このプロセスを "キーのロールオーバー" といいます。その目的は、BizTalk サービスを中断せずにプライマリ キーとセカンダリ キーの間で切り替えを行うことです。</td>
 </tr>
 
 <tr>
-<td>Delete</td>
-<td>When you click Delete, your BizTalk Service and all items deployed to it are removed.</td>
+<td>削除</td>
+<td>[削除] をクリックすると、BizTalk サービスとそれにデプロイされたすべてのアイテムが削除されます。</td>
 </tr>
 </table>
 
 
-##<a name="Monitor"></a>Monitor
-The Monitor tab displays the following information: 
+##<a name="Monitor"></a>監視
+[監視] タブには次の情報が表示されます。
 
-#### Metric Graph
-A graph that displays the selected performance metrics. These metrics provide real-time values regarding the health of your BizTalk Service. You choose which performance metrics are displayed. A maximum of six performance metrics can be displayed simultaneously.
+####メトリック グラフ
+選択されたパフォーマンス メトリックを表示するグラフです。これらのメトリックは、BizTalk サービスの正常性状態に関するリアルタイムの値を提供します。表示されるパフォーマンス メトリックを選択します。最大で 6 つのパフォーマンス メトリックを同時に表示できます。
 
-##### Relative or Absolute
-The graph shows trends, displaying only the current value of each metric; which is the **Relative** option. To display a Y axis to see the absolute values, select **Absolute**.
+##### 相対または絶対
+グラフには傾向が表示され、各メトリックの現在の値だけが表示されます (**[相対]** オプション)。Y 軸を表示して絶対値を確認するには、**[絶対]** をクリックします。
 
-##### Interval
-Modifies the time range the metrics are displayed in the graph. Options include:
+##### 間隔
+グラフにメトリックが表示される期間を変更できます。次のオプションがあります。
 
-- 1 Hour
-- 1 Day
-- 7 Days
+- 1 時間
+- 1 日
+- 7 日
 
-#### To remove or display metrics in the graph
->1. Click the **Monitor** tab.
->2. Click **Add Metrics** in the task bar:<br/>
-![Click Add Metrics][AddMetrics]
->3. Check the performance metrics you want to display on the **Monitor** tab.
->4. Click the checkmark to return to the **Monitor** tab.
->5. Click the circle next to the metric to display that metric's value in the graph.<br/>
-For example, the **CPU Usage** metric is grayed out; its output is not displayed in the graph:<br/>
-![CPU Usage metric is grayed out][GrayedMetric]
+#### メトリックをグラフから削除または表示するには
+>1. **[監視]** タブをクリックします。
+>2. タスク バーで **[メトリックの追加]** をクリックします。<br/>
+![[メトリックの追加] をクリック][AddMetrics]
+>3. **[監視]** タブで、表示するパフォーマンス メトリックを確認します。
+>4. チェックマークをクリックして、**[監視]** タブに戻ります。
+>5. グラフにメトリック値を表示するメトリックの横にある円をクリックします。<br/>
+たとえばの **CPU 使用率** メトリックは淡色表示されます。グラフでは、出力が表示されません。<br/>
+![CPU 使用率のメトリックは淡色表示される][GrayedMetric]
 <br/>
-Click the grayed out circle to enable the **CPU Usage** metric to display its output in the graph:<br/>
-![CPU Usage metric is enabled][EnabledMetric]
+淡色表示された円をクリックすると、**[CPU 使用率]** メトリックが有効になり、グラフ内で表示されます。<br/>
+![[CPU 使用率] メトリックが有効になっている][EnabledMetric]
 
->6. To remove a metric from the display graph and the list, click **Delete Metric** in the task bar. Clicking **Delete Metric** removes the metric from the Monitor tab. To add the metric back to the list, click **Add Metrics** in the task bar, check the metric, and click the checkmark to return to the **Monitor** tab. Click the grayed out circle to enable the metric in the graph.
+>6. グラフとリストからメトリックを削除するには、タスク バーの **[メトリックの削除]** をクリックします。**[メトリックの削除]** をクリックすると、[監視] タブからメトリックが削除されます。メトリックをリストに戻す場合は、タスク バーの **[メトリックの追加]** をクリックし、メトリックを確認し、チェックマークをクリックして **[監視]** タブに戻ります。淡色表示された円をクリックすると、グラフ内のメトリックが有効になります。
 
-##<a name="Metrics"></a>Available Metrics
-The following performance counters/metrics are available:
+##<a name="Metrics"></a>使用可能なメトリック
+次のパフォーマンス カウンター/メトリックを使用できます。
 
 <table border="1">
 <tr bgcolor="FAF9F9">
-<td><strong>Metric</strong></td>
-<td><strong>Description</strong></td>
+<td><strong>メトリック</strong></td>
+<td><strong>説明</strong></td>
 </tr>
 <tr>
-<td>RountdTrip Latency</td>
-<td>In milliseconds (ms), this performance metric displays the average time taken to process a message from the time it is received until it is fully processed by the BizTalk Service across all bridges. Only messages successfully processed are counted.<br/><br/>
-When the following events occur, a timestamp is created:
+<td>ラウンドトリップ遅延</td>
+<td>このパフォーマンス メトリックは、すべてのブリッジの BizTalk サービスによる、受信時刻から完全に処理されるまでにかかる平均時間をミリ秒 (ms) で表示します。正常に処理されたメッセージのみがカウントされます。<br/><br/>
+次のイベントが発生した場合は、タイムスタンプが作成されます。
 <ul>
-<li>Message enters the gateway</li>
-<li>Message is routed to the destination</li>
-<li>Destination response is received</li>
-<li>Destination acknowledgement response sent to the gateway</li>
+<li>メッセージがゲートウェイに入る</li>
+<li>メッセージが送信先にルーティングされる</li>
+<li>送信先の応答が受信される</li>
+<li>送信先の確認応答がゲートウェイに送信される</li>
 </ul>
 <br/>
-This metric shows the result of the following calculation:
+このメトリックは、次の計算結果を表示します。
 <br/><br/>
-[Destination acknowledgement response sent to the gateway] - [Message enters the gateway]</td>
+[ゲートウェイに送信された送信先の確認応答]  - [ゲートウェイに入ったメッセージ]</td>
 </tr>
 <tr>
-<td>Failures At Source</td>
-<td>A performance metric that displays the total number of messages that failed by the BizTalk Service when pulling messages from the source endpoints.</td>
+<td>ソースのエラー</td>
+<td>BizTalk サービスがソース エンドポイントからメッセージを取り出すときに失敗したメッセージの合計数を表示するパフォーマンス メトリックです。</td>
 </tr>
 <tr>
-<td>CPU Usage</td>
-<td>Lists the average %Processor Time of all role instances.</td>
+<td>CPU 使用率</td>
+<td>すべてのロール インスタンスの平均処理時間の割合を表示します。</td>
 </tr>
 <tr>
-<td>Processing Latency</td>
-<td>In milliseconds (ms), this performance metric displays the average time taken to process a message by the BizTalk Service across all bridges, excluding the time spent in destinations. Only messages successfully processed are counted.<br/><br/>
-When each of the following events occur, a timestamp is created:
+<td>処理の遅延時間</td>
+<td>このパフォーマンス メトリックは、すべてのブリッジの BizTalk サービスによるメッセージ処理にかかる平均時間をミリ秒 (ms) で表示します。送信先でかかる時間は除外されます。正常に処理されたメッセージのみがカウントされます。<br/><br/>
+次の各イベントが発生した場合は、タイムスタンプが作成されます。
 
 <ul>
-<li>Message enters the gateway</li>
-<li>Message is routed to the destination</li>
-<li>Destination response is received</li>
-<li>Destination acknowledgement response sent to the gateway</li>
+<li>メッセージがゲートウェイに入る</li>
+<li>メッセージが送信先にルーティングされる</li>
+<li>送信先の応答が受信される</li>
+<li>送信先の確認応答がゲートウェイに送信される</li>
 </ul>
-<br/>This metric shows the result of the following calculation:<br/><br/>
-[Destination acknowledgement response sent to the gateway] - [Message enters the gateway] - [Destination response is received] + [Message is routed to the destination]</td>
+<br/>このメトリックは、次の計算結果を表示します。<br/><br/>
+[ゲートウェイに送信された送信先確認応答] - [ゲートウェイに入ったメッセージ] - [受信された送信先の応答] + [送信先にルーティングされたメッセージ]</td>
 </tr>
 <tr>
-<td>Failures In Process</td>
-<td>A performance metric that displays the total number of messages that failed during processing by the BizTalk Service across all the bridges within a time interval.</td>
+<td>プロセス内のエラー</td>
+<td>すべてのブリッジの BizTalk サービスが期間内に処理するときに失敗したメッセージの合計数を表示するパフォーマンス メトリックです。</td>
 </tr>
 <tr>
-<td>Messages Sent</td>
-<td>A performance metric that displays the total number of messages sent by the BizTalk Service across all bridges within a time interval. This metric is incremented when a message sent from a pipeline reaches the route destination. This metric does not indicate that a message is successfully processed.<br/><br/>
-In a Request-Reply scenario, the metric is incremented when the route destination sends a receipt acknowledgement back to the pipeline.</td>
+<td>送信されたメッセージ</td>
+<td>すべてのブリッジの BizTalk サービスによって期間内に送信されたメッセージの合計数を表示するパフォーマンス メトリックです。このメトリックは、パイプラインから送信されたメッセージがルートの送信先に到達したときに 1 増えます。このメトリックは、メッセージが正常に処理されたことを示すものではありません。<br/><br/>
+要求 - 応答シナリオでは、このメトリックは、ルート送信先がパイプラインに受信確認を送り返したときに 1 増えます。</td>
 </tr>
 <tr>
-<td>Messages Received</td>
-<td>A performance metric that displays the total number of messages received by the BizTalk Service across all bridges within a time interval. This metric is incremented when a new message is received by the pipeline.</td>
+<td>受信したメッセージ</td>
+<td>すべてのブリッジの BizTalk サービスが期間内に受信したメッセージの合計数を表示するパフォーマンス メトリックです。このメトリックは、パイプラインによって新しいメッセージが受信されたときに 1 増えます。</td>
 </tr>
 <tr>
-<td>Messages In Process</td>
-<td>A performance metric that displays the total number of messages currently being processed by the BizTalk Service within a time interval.</td>
+<td>処理中のメッセージ</td>
+<td>BizTalk サービスが期間内に現在処理しているメッセージの合計数を表示するパフォーマンス メトリックです。</td>
 </tr>
 <tr>
-<td>Messages Processed</td>
-<td>A performance metric that displays the total number of messages successfully processed by the BizTalk Service across all bridges within a time interval. This metric is incremented when a message is successfully received by the pipeline and successfully routed to the destination.</td>
+<td>処理されたメッセージ</td>
+<td>すべてのブリッジの BizTalk サービスが期間内に正常に処理したメッセージの合計数を表示するパフォーマンス メトリックです。このメトリックは、パイプラインによってメッセージが正常に受信され、送信先に正常にルーティングされたときに 1 増えます。</td>
 </tr>
 </table>
 
 
-##<a name="Scale"></a>Scale
-In the Scale tab, you can add or subtract the number of units used by your BizTalk Service. By default, there is one Unit configured. Additional Units can be added to scale your BizTalk Service. When you increase the scale, you are increasing throughput. The amount of resources also increases, including deployed bridges, agreements, LOB connections, and processing power. For example, you increase the scale from 1 Unit to 2 Units. In this situation, you can deploy double the number of bridges, double the agreements, double the LOB connections, and double the processing power.
+##<a name="Scale"></a>スケール
+[スケール] タブで、BizTalk サービスで使用されるユニット数を追加または削減できます。既定では、1 つのユニットが構成されています。ユニットを追加して BizTalk サービスをスケールできます。スケールを増やすと、スループットが増えます。また、デプロイされるブリッジ、契約、LOB 接続、処理能力などのリソース量も増えます。たとえば、ユニットを 1 から 2 に増やすとします。この場合、2 倍のブリッジ数をデプロイでき、契約数、LOB 接続数、処理能力をそれぞれ 2 倍にできます。
 
-Some BizTalk editions do not offer a scale option. In this situation, one Unit is permitted. To determine how many units your edition can be scaled, refer to [BizTalk Services: Developer, Basic, Standard and Premium Editions Chart](http://go.microsoft.com/fwlink/p/?LinkID=302279).
+一部の BizTalk エディションではスケール オプションが提供されません。この場合、許容されるユニットは 1 つです。お使いのエディションでスケールできるユニット数については、「[BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャートに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302279)を参照してください。
 
-Increasing the number of units may impact pricing. If you increase the Units, clicking **Save** displays a message that tells you if billing is impacted. You then choose to continue. When you increase the number of Units, the BizTalk Service status changes from Active to Updating. In the Updating state, your BizTalk Service continues to run.
+ユニット数を増やすと、料金に影響する可能性があります。ユニットを増やすと、**[保存]** をクリックしたときに、料金に影響があることを示すメッセージが表示されます。[OK] をクリックして続行します。ユニット数を増やすと、BizTalk サービスのステータスがアクティブから更新中に代わります。更新中というステータスで、BizTalk サービスの実行が続行されます。
 
 
 
-## Next
-Now that you're familiar with the different tabs, you can learn more about the Azure BizTalk Services features:
+## 次のステップ
+ここでは、各種のタブについて学びました。Azure BizTalk サービスの機能についてさらに学習できます。
 
-- [BizTalk Services: Throttling](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
-- [BizTalk Services: Issuer Name and Issuer Key](http://go.microsoft.com/fwlink/p/?LinkID=303941)
-- [BizTalk Services: Backup and Restore](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+- [BizTalk サービス: 調整に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
+- [BizTalk サービス: 発行者名および発行者キーに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=303941)
+- [BizTalk サービス: バックアップと復元に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
 
-## See Also
-- [BizTalk Services: Developer, Basic, Standard and Premium Editions Chart](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-- [BizTalk Services: Provisioning Using Azure Management Portal](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-- [BizTalk Services: BizTalk Service State Chart](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-- [How do I Start Using the Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+## 関連項目
+- [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャートに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+- [BizTalk サービス: Azure 管理ポータルを使用した BizTalk サービスのプロビジョニングに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+- [BizTalk サービス: BizTalk サービスの状態のグラフに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+- [Azure BizTalk サービス SDK の使用開始に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [AddMetrics]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_AddMetrics.png
 [GrayedMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_GrayedMetric.png
 [EnabledMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_EnabledMetric.png
+

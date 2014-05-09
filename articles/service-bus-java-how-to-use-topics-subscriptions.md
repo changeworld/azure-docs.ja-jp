@@ -1,4 +1,4 @@
-<properties linkid="dev-java-how-to-service-bus-topics" urlDisplayName="Service Bus Topics" pageTitle="How to use Service Bus topics (Java) - Azure" metaKeywords="Get started Azure Service Bus topics, Get Started Service Bus topics, Azure publish subscribe messaging, Azure messaging topics and subscriptions, Service Bus topic Java" description="Learn how to use Service Bus topics and subscriptions in Azure. Code samples are written for Java applications." metaCanonical="" services="service-bus" documentationCenter="Java" title="How to Use Service Bus Topics/Subscriptions" authors="waltpo" solutions="" manager="bjsmith" editor="mollybos" />
+<properties linkid="dev-java-how-to-service-bus-topics" urlDisplayName="サービス バス トピック" pageTitle="サービス バス トピックの使用方法 (Java) - Azure" metaKeywords="Azure サービス バス トピックの概要, サービス バス トピックの概要, Azure 発行/サブスクライブ メッセージング, Azure メッセージング トピックおよびサブスクリプション, サービス バス トピック Java" description="Azure でのサービス バスのトピックとサブスクリプションの使用方法について説明します。コード サンプルは Java アプリケーション向けに作成されています。" metaCanonical="" services="service-bus" documentationCenter="Java" title="サービス バス トピック/サブスクリプションの使用方法" authors="waltpo" solutions="" manager="bjsmith" editor="mollybos" />
 
 
 
@@ -6,33 +6,33 @@
 
 
 
-# How to Use Service Bus Topics/Subscriptions
+# サービス バス トピック/サブスクリプションの使用方法
 
-This guide will show you how to use Service Bus topics and
-subscriptions. The samples are written in Java and use the [Azure SDK for Java][]. The scenarios covered include **creating topics
-and subscriptions**, **creating subscription filters**, **sending
-messages to a topic**, **receiving messages from a subscription**, and
-**deleting topics and subscriptions**.
+このガイドでは、サービス バスのトピックとサブスクリプションの
+使用方法について説明します。サンプルは Java で記述され、[Azure SDK for Java][] を利用しています。ここでは、**トピックとサブスクリプションの作成**、
+**サブスクリプション フィルターの作成**、**トピックへのメッセージの
+送信**、**サブスクリプションからのメッセージの受信**、
+**トピックとサブスクリプションの削除**などのシナリオについて説明します。
 
-## Table of Contents
+## 目次
 
--   [What are Service Bus Topics and Subscriptions?][]
--   [Create a Service Namespace][]
--   [Obtain the Default Management Credentials for the Namespace][]
--   [Configure Your Application to Use Service Bus][]
--   [How to: Create a Topic][]
--   [How to: Create Subscriptions][]
--   [How to: Send Messages to a Topic][]
--   [How to: Receive Messages from a Subscription][]
--   [How to: Handle Application Crashes and Unreadable Messages][]
--   [How to: Delete Topics and Subscriptions][]
--   [Next Steps][]
+-   [サービス バス トピックとサブスクリプションとは][]
+-   [サービス名前空間の作成][]
+-   [名前空間の既定の管理資格情報の取得][]
+-   [サービス バスを使用するようにアプリケーションを構成する][]
+-   [How to: トピックを作成する][]
+-   [How to: サブスクリプションを作成する][]
+-   [How to: メッセージをトピックに送信する][]
+-   [How to: サブスクリプションからメッセージを受信する][]
+-   [How to: アプリケーションのクラッシュと読み取り不能のメッセージを処理する][]
+-   [How to: トピックとサブスクリプションを削除する][]
+-   [次のステップ][]
 
 [WACOM.INCLUDE [howto-service-bus-topics](../includes/howto-service-bus-topics.md)]
 
-## <a name="bkmk_ConfigYourApp"> </a>Configure Your Application to Use Service Bus
+## <a name="bkmk_ConfigYourApp"> </a>サービス バスを使用するようにアプリケーションを構成する
 
-Add the following import statements to the top of the Java file:
+次の import ステートメントを Java ファイルの先頭に追加します。
 
     // Include the following imports to use service bus APIs
     import com.microsoft.windowsazure.services.serviceBus.*;
@@ -40,19 +40,19 @@ Add the following import statements to the top of the Java file:
     import com.microsoft.windowsazure.services.core.*;
     import javax.xml.datatype.*;
 
-Add the Azure Libraries for Java to your build path and include it in your project deployment assembly.
+Azure Libraries for Java をビルド パスに追加し、プロジェクトの展開アセンブリに含めます。
 
-## <a name="bkmk_HowToCreateTopic"> </a>How to Create a Topic
+## <a name="bkmk_HowToCreateTopic"> </a>トピックの作成方法
 
-Management operations for Service Bus topics can be performed via the
-**ServiceBusContract** class. A **ServiceBusContract** object is
-constructed with an appropriate configuration that encapsulates the
-token permissions to manage it, and the **ServiceBusContract** class is
-the sole point of communication with Azure.
+サービス バス トピックの管理処理は**ServiceBusContract** クラスを
+使用して実行できます。**ServiceBusContract** オブジェクトは、
+管理用のトークン アクセス許可をカプセル化した適切な構成で作成します。
+**ServiceBusContract** クラスでのみ Azure  サービス バス トピックとの
+やり取りが可能です。
 
-The **ServiceBusService** class provides methods to create, enumerate,
-and delete topics. The example below shows how a **ServiceBusService** object
-can be used to create a topic named "TestTopic", with a namespace named "HowToSample":
+**ServiceBusService** クラスには、トピックの作成、列挙、および削除のための
+メソッドが用意されています。次の例では、**ServiceBusService** オブジェクトを使用して、
+"HowToSample" 名前空間の "TestTopic" という名前のトピックを作成する方法を示しています。
 
     Configuration config = 
     	ServiceBusConfiguration.configureWithWrapAuthentication(
@@ -74,54 +74,53 @@ can be used to create a topic named "TestTopic", with a namespace named "HowToSa
 		System.exit(-1);
 	}
 
-There are methods on **TopicInfo** that allow properties of the topic to
-be tuned (for example: to set the default "time-to-live" value to be
-applied to messages sent to the topic). The following example shows how
-to create a topic named "TestTopic" with a maximum size of 5GB:
+**TopicInfo** には、トピックのプロパティを調整できるメソッドが用意されて
+います (たとえば、トピックに送信されるメッセージに対して既定の 
+"有効期間" 値が適用されるように設定することができます)。次の例では、名前が "TestTopic"、
+最大サイズが 5 GB であるトピックを作成する方法を示します。
 
     long maxSizeInMegabytes = 5120;  
 	TopicInfo topicInfo = new TopicInfo("TestTopic");  
     topicInfo.setMaxSizeInMegabytes(maxSizeInMegabytes); 
     CreateTopicResult result = service.createTopic(topicInfo);
 
-Note that you can use the **listTopics** method on
-**ServiceBusContract** objects to check if a topic with a specified name
-already exists within a service namespace.
+**ServiceBusContract** オブジェクトの **listTopics** 
+メソッドを使用すると、指定した名前のトピックがサービス名前空間に
+既に存在するかどうかを確認できます。
 
-## <a name="bkmk_HowToCreateSubscrip"> </a>How to Create Subscriptions
+## <a name="bkmk_HowToCreateSubscrip"> </a>サブスクリプションの作成方法
 
-Topic subscriptions are also created with the **ServiceBusService**
-class. Subscriptions are named and can have an optional filter that
-restricts the set of messages passed to the subscription's virtual
-queue.
+トピック サブスクリプションも **ServiceBusService** クラスで
+作成します。サブスクリプションを指定し、サブスクリプションの仮想キューに渡す
+メッセージを制限するフィルターを設定することができます。
 
-### Create a Subscription with the default (MatchAll) Filter
+### 既定の (MatchAll) フィルターを適用したサブスクリプションの作成
 
-The **MatchAll** filter is the default filter that is used if no filter
-is specified when a new subscription is created. When the **MatchAll**
-filter is used, all messages published to the topic are placed in the
-subscription's virtual queue. The following example creates a
-subscription named "AllMessages" and uses the default **MatchAll**
-filter.
+**MatchAll** フィルターは、新しいサブスクリプションの作成時にフィルターが
+指定されていない場合に使用される既定のフィルターです。**MatchAll** フィルターを
+使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの
+仮想キューに置かれます。次の例では、"AllMessages" という
+名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを
+使用します。
 
     SubscriptionInfo subInfo = new SubscriptionInfo("AllMessages");
     CreateSubscriptionResult result = 
         service.createSubscription("TestTopic", subInfo);
 
-### Create Subscriptions with Filters
+### フィルターを適用したサブスクリプションの作成
 
-You can also setup filters that allow you to scope which messages sent
-to a topic should show up within a specific topic subscription.
+トピックに送信されたメッセージのうち、特定のトピック サブスクリプション内に表示
+されるメッセージに絞り込めるフィルターを設定することもできます。
 
-The most flexible type of filter supported by subscriptions is the
-**SqlFilter**, which implements a subset of SQL92. SQL filters operate
-on the properties of the messages that are published to the topic. For
-more details about the expressions that can be used with a SQL filter,
-review the SqlFilter.SqlExpression syntax.
+サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、
+SQL92 のサブセットを実装する **SqlFilter** です。SQL フィルターは、トピックに
+発行されるメッセージのプロパティに対して適用されます。SQL フィルターで
+使用できる式の詳細については、SqlFilter.SqlExpression 構文の
+説明を参照してください。
 
-The example below creates a subscription named "HighMessages" with a
-**SqlFilter** that only selects messages that have a custom
-**MessageNumber** property greater than 3:
+次の例では、"HighMessages" という名前のサブスクリプションを作成し、
+**SqlFilter** を適用します。このフィルターでは、
+カスタム プロパティ **MessageNumber** が 3 を超えるメッセージのみが選択されます。
 
     // Create a "HighMessages" filtered subscription  
 	SubscriptionInfo subInfo = new SubscriptionInfo("HighMessages");
@@ -134,11 +133,11 @@ The example below creates a subscription named "HighMessages" with a
     // Delete the default rule, otherwise the new rule won't be invoked.
     service.deleteRule("TestTopic", "HighMessages", "$Default");
 
-Similarly, the following example creates a subscription named
-"LowMessages" with   
- a SqlFilter that only selects messages that have a MessageNumber
-property less   
- than or equal to 3:
+同様に、次の例では "LowMessages" という名前のサブスクリプションを
+作成し、SqlFilter を適用   
+ します。このフィルターでは、MessageNumber が 3 以下のメッセージ
+のみが   
+ 選択されます。
 
     // Create a "LowMessages" filtered subscription
 	SubscriptionInfo subInfo = new SubscriptionInfo("LowMessages");
@@ -152,37 +151,37 @@ property less
     service.deleteRule("TestTopic", "LowMessages", "$Default");
 
 
-When a message is now sent to the "TestTopic", it will always be
-delivered to receivers subscribed to the "AllMessages" topic
-subscription, and selectively delivered to receivers subscribed to the
-"HighMessages" and "LowMessages" topic subscriptions (depending upon the
-message content).
+メッセージが "TestTopic" に送信されると、そのメッセージは 
+"AllMessages" トピック サブスクリプションにサブスクライブされた
+受信者に必ず配信され、さらにメッセージの内容に応じて、"HighMessages" 
+および "LowMessages" トピック サブスクリプションにサブスクライブされている
+受信者に対して選択的に配信されます。
 
-## <a name="bkmk_HowToSendMsgs"> </a>How to Send Messages to a Topic
+## <a name="bkmk_HowToSendMsgs"> </a>メッセージをトピックに送信する方法
 
-To send a message to a Service Bus Topic, your application will obtain a
-**ServiceBusContract** object. The below code demonstrates how to send a
-message for the "TestTopic" topic we created above within our
-"HowToSample" service namespace:
+サービス バス トピックにメッセージを送信するには、アプリケーションで 
+**ServiceBusContract** オブジェクトを取得します。次のコードでは、前のコードで "HowToSample" 
+サービス名前空間内で作成した "TestTopic" トピックにメッセージを
+送信する方法を示しています。
 
     BrokeredMessage message = new BrokeredMessage("MyMessage");
     service.sendTopicMessage("TestTopic", message);
 
-Messages sent to Service Bus Topics are instances of the
-**BrokeredMessage** class. **BrokeredMessage** objects have a set of
-standard methods (such as **setLabel** and **TimeToLive**), a dictionary
-that is used to hold custom application specific properties, and a body
-of arbitrary application data. An application can set the body of the
-message by passing any serializable object into the constructor of the
-**BrokeredMessage**, and the appropriate **DataContractSerializer** will
-then be used to serialize the object. Alternatively, a
-**java.io.InputStream** can be provided.
+サービス バス トピックに送信されたメッセージは、
+**BrokeredMessage** クラスのインスタンスです。**BrokeredMessage** オブジェクトには、
+一連の標準的なメソッド (**setLabel**、**TimeToLive** など) と、
+アプリケーションに固有のカスタム プロパティの保持に使用するディクショナリが
+用意されており、任意のアプリケーション データの本体が格納されます。アプリケーションでは、**BrokeredMessage** の
+コンストラクターにシリアル化可能なオブジェクトを渡すことによって
+メッセージの本文を設定できます。その後で、適切な **DataContractSerializer** 
+を使用してオブジェクトをシリアル化します。この方法に代わって、
+**java.io.InputStream** を使用できます。
 
-The following example demonstrates how to send five test messages to the
-"TestTopic" **MessageSender** we obtained in the code snippet above.
-Note how the **MessageNumber** property value of each message varies on
-the iteration of the loop (this will determine which subscriptions
-receive it):
+**次の例では、前に示したコード スニペットで取得した "TestTopic" の 
+**MessageSender にテスト メッセージを 5 件送信する方法を示しています。
+各メッセージの **MessageNumber** プロパティの値がループの反復回数に応じて
+どのように変化するのかに注目してください (これによってメッセージを
+受信するサブスクリプションが決定されます)。
 
     for (int i=0; i<5; i++)  {
        	// Create message, passing a string message for the body
@@ -193,44 +192,44 @@ receive it):
 		service.sendTopicMessage("TestTopic", message);
 	}
 
-Service Bus topics support a maximum message size of 256 MB (the header,
-which includes the standard and custom application properties, can have
-a maximum size of 64 MB). There is no limit on the number of messages
-held in a topic but there is a cap on the total size of the messages
-held by a topic. This topic size is defined at creation time, with an
-upper limit of 5 GB.
+サービス バス トピックでは、最大 256 MB までのメッセージをサポートしています 
+(標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 
+64 MB です)。トピックで保持されるメッセージ数には
+上限がありませんが、1 つのトピックで保持できるメッセージの合計サイズには
+上限があります。このトピックのサイズはトピックの作成時に定義します。
+上限は 5 GB です。
 
-## <a name="bkmk_HowToReceiveMsgs"> </a>How to Receive Messages from a Subscription
+## <a name="bkmk_HowToReceiveMsgs"> </a>サブスクリプションからメッセージを受信する方法
 
-The primary way to receive messages from a subscription is to use a
-**ServiceBusContract** object. Received messages can work in two
-different modes: **ReceiveAndDelete** and **PeekLock**.
+サブスクリプションからメッセージを受信する主な方法は、
+**ServiceBusContract** オブジェクトを使用することです。メッセージは 2 つの異なるモードで受信できます。
+**ReceiveAndDelete** と **PeekLock** です。
 
-When using the **ReceiveAndDelete** mode, receive is a single-shot
-operation - that is, when Service Bus receives a read request for a
-message, it marks the message as being consumed and returns it to the
-application. **ReceiveAndDelete** mode is the simplest model and works
-best for scenarios in which an application can tolerate not processing a
-message in the event of a failure. To understand this, consider a
-scenario in which the consumer issues the receive request and then
-crashes before processing it. Because Service Bus will have marked the
-message as being consumed, then when the application restarts and begins
-consuming messages again, it will have missed the message that was
-consumed prior to the crash.
+**ReceiveAndDelete** モードを使用する場合、受信が 1 回ずつの動作に
+なります。つまり、サービス バスはメッセージに対する読み取り要求を
+受け取ると、メッセージを読み取り中としてマークし、アプリケーションに
+返します。**ReceiveAndDelete** モードは最もシンプルな
+モデルであり、問題が発生した際にアプリケーション側でメッセージを処理しないことを
+許容できるシナリオに最適です。このことを理解するために、
+コンシューマーが受信要求を発行した後で、メッセージを処理する前に
+クラッシュしたというシナリオを考えてみましょう。サービス バスはメッセージを読み取り済みとして
+マークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、
+クラッシュ前に読み取られていたメッセージは見落とされることに
+なります。
 
-In **PeekLock** mode, receive becomes a two stage operation, which makes
-it possible to support applications that cannot tolerate missing
-messages. When Service Bus receives a request, it finds the next message
-to be consumed, locks it to prevent other consumers receiving it, and
-then returns it to the application. After the application finishes
-processing the message (or stores it reliably for future processing), it
-completes the second stage of the receive process by calling **Delete**
-on the received message. When Service Bus sees the **Delete** call, it
-will mark the message as being consumed and remove it from the topic.
+**PeekLock** モードでは、メッセージの受信処理が 2 段階の動作になり、
+メッセージが失われることが許容できないアプリケーションに対応することが
+できます。サービス バス は要求を受け取ると、次に読み取られるメッセージを
+検索して、他のコンシューマーが受信できないようロックしてから、
+アプリケーションにメッセージを返します。アプリケーションがメッセージの
+処理を終えた後 (または後で処理するために確実に保存した後)、
+受信したメッセージに対して **Delete** を呼び出して受信処理の
+第 2 段階を完了します。サービス バスが **Delete** の呼び出しを確認すると、
+メッセージが読み取り中としてマークされ、トピックから削除されます。
 
-The example below demonstrates how messages can be received and
-processed using **PeekLock** mode (not the default mode). The example
-below performs a loop and processes messages in the "HighMessages" subscription and then exits when there are no more messages (alternatively, it could be set to wait for new messages).
+次の例では、**PeekLock** モード (既定ではない) を使用した
+メッセージの受信および処理の方法を示しています。次の例では、
+ループを実行し、"HighMessages" サブスクリプション内のメッセージ処理します。メッセージがなくなるとループを終了します (または、新しいメッセージを待機するように設定される場合もあります)。
 
 	try
 	{
@@ -283,39 +282,39 @@ below performs a loop and processes messages in the "HighMessages" subscription 
 	    System.exit(-1);
 	} 
 
-## <a name="bkmk_HowToHandleAppCrash"> </a>How to Handle Application Crashes and Unreadable Messages
+## <a name="bkmk_HowToHandleAppCrash"> </a>アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法
 
-Service Bus provides functionality to help you gracefully recover from
-errors in your application or difficulties processing a message. If a
-receiver application is unable to process the message for some reason,
-then it can call the **unlockMessage** method on the received message
-(instead of the **deleteMessage** method). This will cause Service Bus
-to unlock the message within the topic and make it available to be
-received again, either by the same consuming application or by another
-consuming application.
+サービス バス には、アプリケーションにエラーが発生した場合や、メッセージの
+処理に問題がある場合に復旧を支援する機能が備わっています。受信側の
+アプリケーションが何らかの理由によってメッセージを処理できない場合には、
+受信したメッセージについて (**deleteMessage** メソッドの代わりに) 
+**unlockMessage** メソッドを呼び出すことができます。このメソッドが呼び出されると、
+サービス バスによってトピック内のメッセージのロックが解除され、
+メッセージが再度受信できる状態に変わります。メッセージを受信する
+アプリケーションは、以前と同じものでも、別のものでもかまいません。
 
-There is also a timeout associated with a message locked within the
-topic, and if the application fails to process the message before the
-lock timeout expires (e.g., if the application crashes), then Service
-Bus will unlock the message automatically and make it available to be
-received again.
+トピック内でロックされているメッセージにはタイムアウトも設定されています。
+アプリケーションがクラッシュした場合など、ロックがタイムアウトに
+なる前にアプリケーションがメッセージの処理に失敗した場合には、
+メッセージのロックが自動的に解除され、再度受信できる状態に
+変わります。
 
-In the event that the application crashes after processing the message
-but before the **deleteMessage** request is issued, then the message
-will be redelivered to the application when it restarts. This is often
-called **At Least Once Processing**, that is, each message will be
-processed at least once but in certain situations the same message may
-be redelivered. If the scenario cannot tolerate duplicate processing,
-then application developers should add additional logic to their
-application to handle duplicate message delivery. This is often achieved
-using the **getMessageId** method of the message, which will remain
-constant across delivery attempts.
+メッセージが処理された後、**deleteMessage** 要求が発行される前に
+アプリケーションがクラッシュした場合は、アプリケーションが再起動する際に
+メッセージが再配信されます。一般的に、この動作は 
+**"1 回以上の処理"** と呼ばれます。つまり、すべてのメッセージが 1 回以上
+処理されますが、特定の状況では、同じメッセージが再配信される
+可能性があります。重複処理が許されないシナリオの場合、
+重複メッセージの配信を扱うロジックをアプリケーションに
+追加する必要があります。通常、この問題は
+メッセージの **getMessageId** メソッドを使用して対処します。このプロパティは
+配信が試行された後も同じ値を保持します。
 
-## <a name="bkmk_HowToDeleteTopics"> </a>How to Delete Topics and Subscriptions
+## <a name="bkmk_HowToDeleteTopics"> </a>トピックとサブスクリプションを削除する方法
 
-The primary way to delete topics and subscriptions is to use a
-**ServiceBusContract** object. Deleting a topic will also delete any subscriptions that are registered
-with the topic. Subscriptions can also be deleted independently.
+トピックとサブスクリプションを削除する主な方法は、
+**ServiceBusContract** オブジェクトを使用することです。トピックを削除すると、そのトピックに登録されたサブスクリプションも
+すべて削除されます。サブスクリプションは、個別に削除することもできます。
 
     // Delete subscriptions
     service.deleteSubscription("TestTopic", "AllMessages");
@@ -325,28 +324,29 @@ with the topic. Subscriptions can also be deleted independently.
     // Delete a topic
 	service.deleteTopic("TestTopic");
 
-# <a name="bkmk_NextSteps"> </a>Next Steps
+# <a name="bkmk_NextSteps"> </a>次のステップ
 
-Now that you've learned the basics of Service Bus queues, see the MSDN
-topic [Service Bus Queues, Topics, and Subscriptions][] for more information.
+これで、サービス バス キューの基本を学習できました。詳細については、
+MSDN のトピック「[サービス バス キュー、トピック、およびサブスクリプション][]」を参照してください。
 
-  [Azure SDK for Java]: http://www.windowsazure.com/en-us/develop/java/
-  [What are Service Bus Topics and Subscriptions?]: #what-are-service-bus-topics
-  [Create a Service Namespace]: #create-a-service-namespace
-  [Obtain the Default Management Credentials for the Namespace]: #obtain-default-credentials
-  [Configure Your Application to Use Service Bus]: #bkmk_ConfigYourApp
-  [How to: Create a Topic]: #bkmk_HowToCreateTopic
-  [How to: Create Subscriptions]: #bkmk_HowToCreateSubscrip
-  [How to: Send Messages to a Topic]: #bkmk_HowToSendMsgs
-  [How to: Receive Messages from a Subscription]: #bkmk_HowToReceiveMsgs
-  [How to: Handle Application Crashes and Unreadable Messages]: #bkmk_HowToHandleAppCrash
-  [How to: Delete Topics and Subscriptions]: #bkmk_HowToDeleteTopics
-  [Next Steps]: #bkmk_NextSteps
-  [Service Bus Topics diagram]: ../../../DevCenter/Java/Media/SvcBusTopics_01_FlowDiagram.jpg
-  [Azure Management Portal]: http://manage.windowsazure.com/
-  [Service Bus Node screenshot]: ../../../DevCenter/dotNet/Media/sb-queues-03.png
-  [Create a New Namespace ]: ../../../DevCenter/dotNet/Media/sb-queues-04.png
-  [Namespace List screenshot]: ../../../DevCenter/dotNet/Media/sb-queues-05.png
-  [Properties Pane screenshot]: ../../../DevCenter/dotNet/Media/sb-queues-06.png
-  [Default Key screenshot]: ../../../DevCenter/dotNet/Media/sb-queues-07.png
-  [Service Bus Queues, Topics, and Subscriptions]: http://msdn.microsoft.com/library/windowsazure/hh367516.aspx
+  [Azure SDK for Java]: http://www.windowsazure.com/ja-jp/develop/java/
+  [サービス バス トピックとサブスクリプションとは]: #what-are-service-bus-topics
+  [サービス名前空間の作成]: #create-a-service-namespace
+  [名前空間の既定の管理資格情報の取得]: #obtain-default-credentials
+  [サービス バスを使用するようにアプリケーションを構成する]: #bkmk_ConfigYourApp
+  [How to: トピックを作成する]: #bkmk_HowToCreateTopic
+  [How to: サブスクリプションを作成する]: #bkmk_HowToCreateSubscrip
+  [How to: メッセージをトピックに送信する]: #bkmk_HowToSendMsgs
+  [How to: サブスクリプションからメッセージを受信する]: #bkmk_HowToReceiveMsgs
+  [How to: アプリケーションのクラッシュと読み取り不能のメッセージを処理する]: #bkmk_HowToHandleAppCrash
+  [How to: トピックとサブスクリプションを削除する]: #bkmk_HowToDeleteTopics
+  [次のステップ]: #bkmk_NextSteps
+  [サービス バス トピックの図]: ../../../DevCenter/Java/Media/SvcBusTopics_01_FlowDiagram.jpg
+  [Azure 管理ポータル]: http://manage.windowsazure.com/
+  [[サービス バス] ノードのスクリーンショット]: ../../../DevCenter/dotNet/Media/sb-queues-03.png
+  [名前空間の新規作成]: ../../../DevCenter/dotNet/Media/sb-queues-04.png
+  [名前空間の一覧のスクリーンショット]: ../../../DevCenter/dotNet/Media/sb-queues-05.png
+  [[プロパティ] ウィンドウのスクリーンショット]: ../../../DevCenter/dotNet/Media/sb-queues-06.png
+  [[既定のキー] のスクリーンショット]: ../../../DevCenter/dotNet/Media/sb-queues-07.png
+  [サービス バス キュー、トピック、およびサブスクリプション]: http://msdn.microsoft.com/library/windowsazure/hh367516.aspx
+

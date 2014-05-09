@@ -1,102 +1,102 @@
-<properties linkid="manage-services-hdinsight-howto-sdk" urlDisplayName="HDInsight SDK" pageTitle="How to use the HDInsight .NET libraries | Azure" metaKeywords="" description="Learn how to get the HDInsight NuGet packages and use them from your .NET application." metaCanonical="" services="hdinsight" documentationCenter="" title="Use the Hadoop .NET SDK with HDInsight" authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
+<properties linkid="manage-services-hdinsight-howto-sdk" urlDisplayName="HDInsight SDK" pageTitle="HDInsight .NET ライブラリの使用方法 | Azure" metaKeywords="" description="HDInsight NuGet パッケージを入手し、それらを .NET アプリケーションから使用する方法について説明します。" metaCanonical="" services="hdinsight" documentationCenter="" title="Hadoop .NET SDK と HDInsight の使用" authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
 
 
 
 
 
-#Use the Hadoop .NET SDK with HDInsight#
+#Hadoop .NET SDK と HDInsight の使用#
 
-The Hadoop .NET SDK provides .NET client libraries that makes it easier to work with Hadoop from .NET. In this tutorial you will learn how to get the Hadoop .NET SDK and use it to build a simple .NET based application that runs Hive queries using the Azure HDInsight Service. Given an actors.txt file, you will write an application to find the actor/actress who gets the most awards. 
+Hadoop .NET SDK は、.NET から Hadoop を簡単に操作できる .NET クライアント ライブラリを提供します。このチュートリアルでは、Hadoop .NET SDK の入手方法と、それを使って、Azure HDInsight サービスを利用して Hive クエリを実行する単純な .NET ベースのアプリケーションをビルドする方法について説明します。actors.txt ファイルが与えられ、受賞数が最も多い俳優または女優を検索するアプリケーションを作成します。
 
-To enable HDInsight, click [here](https://account.windowsazure.com/PreviewFeatures).
+HDInsight を有効にするには、[ここ](https://account.windowsazure.com/PreviewFeatures)をクリックしてください。
 
-## In this Article
+## この記事の内容
 
-* [Download and install the Hadoop .NET SDK](#install)
-* [Prepare for the tutorial](#prepare)
-* [Create the application](#create)
-* [Run the application](#run)
-* [Next Steps](#nextsteps)
+* [Hadoop .NET SDK のダウンロードとインストール](#install)
+* [チュートリアルの準備](#prepare)
+* [アプリケーションを作成する](#create)
+* [アプリケーションの実行](#run)
+* [次のステップ](#nextsteps)
 
-##<a id="install"></a> Download and Install the Hadoop .NET SDK##
+##<a id="install"></a> Hadoop .NET SDK のダウンロードとインストール##
 
-You can install latest published build of the SDK from [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started). The SDK includes the following components:
+公開されている最新の SDK を [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) からインストールできます。SDK には次のコンポーネントが含まれています。
 
-* **MapReduce library** - simplifies writing MapReduce jobs in .NET languages using the Hadoop streaming interface.
+* **MapReduce ライブラリ** - Hadoop ストリーミング インターフェイスを使用して、.NET 言語で MapReduce ジョブを簡単に記述できます。
 
-* **LINQ to Hive client library** - translates C# or F# LINQ queries into HiveQL queries and executes them on the Hadoop cluster. This library can also execute arbitrary HiveQL queries from a .NET application.
+* **LINQ to Hive クライアント ライブラリ** -  C# または F# の LINQ クエリを HiveQL クエリに変換し、それを Hadoop クラスター上で実行します。このライブラリを使用すれば、.NET アプリケーションから任意の HiveQL クエリを実行することもできます。
 
-* **WebClient library** - contains client libraries for *WebHDFS* and *WebHCat*.
+* **WebClient ライブラリ** - *WebHDFS* および *WebHCat* のクライアント ライブラリが含まれています。
 
-	* **WebHDFS client library** - works with files in HDFS and Azure Blog Storage.
+	* **WebHDFS** クライアント ライブラリ -  HDFS および Azure BLOB ストレージのファイルを操作します。
 
-	* **WebHCat client library** - manages the scheduling and execution of jobs in HDInsight cluster.
+	* **WebHCat クライアント ライブラリ** -  HDInsight クラスターでのジョブのスケジュールと実行を管理します。
 	
-The NuGet syntax to install the libraries:
+これらのライブラリをインストールする NuGet 構文は次のとおりです。
 	
 	install-package Microsoft.Hadoop.MapReduce
 	install-package Microsoft.Hadoop.Hive 
 	install-package Microsoft.Hadoop.WebClient 
 			
-These commands add the libraries and references to the current Visual Studio project.
+これらのコマンドは、ライブラリと参照を現在の Visual Studio プロジェクトに追加します。
 
-##<a id="prepare"></a> Prepare for the Tutorial
+##<a id="prepare"></a> チュートリアルの準備
 
-You must have a [Azure subscription][free-trial], and a [Azure Storage Account][create-storage-account] before you can proceed. You must also know your Azure storage account name and account key. For the instructions on how to  get this information, see the *How to: View, copy and regenerate storage access keys* section of [How to Manage Storage Accounts](/en-us/manage/services/storage/how-to-manage-a-storage-account/).
+このチュートリアルを実行するには、[Azure サブスクリプション][free-trial]と [Azure ストレージ アカウント][create-storage-account]が必要です。Azure ストレージのアカウント名とアカウント キーも確認しておく必要があります。この情報を取得する方法については、「[ストレージ アカウントの管理方法](/ja-jp/manage/services/storage/how-to-manage-a-storage-account/)」の「*方法: ストレージ アクセス キーの表示、コピーおよび再生成*」を参照してください。
 
 
-You must also download the Actors.txt file used in this tutorial. Perform the following steps to download this file to your development environment:
+このチュートリアルで使用する Actors.txt ファイルもダウンロードする必要があります。このファイルを開発環境にダウンロードする手順は次のとおりです。
 
-1. Create a C:\Tutorials folder on your local computer.
+1. ローカル コンピューター上に C:\Tutorials フォルダーを作成します。
 
-2. Download [Actors.txt](http://www.microsoft.com/en-us/download/details.aspx?id=37003), and save the file to the C:\Tutorials folder.
+2. [Actors.txt](http://www.microsoft.com/ja-jp/download/details.aspx?id=37003) をダウンロードして、C:\Tutorials フォルダーに保存します。
 
-##<a id="create"></a>Create the Application
+##<a id="create"></a>アプリケーションを作成する
 
-In this section you will learn how to upload files to Hadoop cluster programmatically and how to execute Hive jobs using LINQ to Hive.
+このセクションでは、プログラムを使用して Hadoop クラスターにファイルをアップロードする方法、および LINQ to Hive を使用して Hive ジョブを実行する方法を説明します。
 
-1. Open Visual Studio 2012.
+1. Visual Studio 2012 を開きます。
 
-2. From the File menu, click **New**, and then click **Project**.
+2. [ファイル] メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
 
-3. From New Project, type or select the following values:
+3. [新しいプロジェクト] で、次の値を入力または選択します。
 
 	<table style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse;">
 	<tr>
-	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">Property</th>
-	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">Value</th></tr>
+	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">プロパティ</th>
+	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">値</th></tr>
 	<tr>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Category</td>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px; padding-right:5px;">Templates/Visual C#/Windows</td></tr>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">カテゴリ</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px; padding-right:5px;">テンプレート/Visual C##/Windows</td></tr>
 	<tr>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Template</td>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Console Application</td></tr>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">テンプレート</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">コンソール アプリケーション</td></tr>
 	<tr>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Name</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">名前</td>
 	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">SimpleHiveJob</td></tr>
 	</table>
 
-4. Click **OK** to create the project.
+4. **[OK]** をクリックしてプロジェクトを作成します。
 
 
-5. From the **Tools** menu, click **Library Package Manager**, click **Package Manager Console**.
+5. **[ツール]** メニューで **[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
 
-6. Run the following commands in the console to install the packages.
+6. コンソールで次のコマンドを実行して、パッケージをインストールします。
 
 		install-package Microsoft.Hadoop.Hive 
 		install-package Microsoft.Hadoop.WebClient 
 
-	These commands add .NET libraries and references to them to the current Visual Studio project.
+	これらのコマンドは、.NET ライブラリおよび .NET ライブラリへの参照を現在の Visual Studio プロジェクトに追加します。
 
-7. From Solution Explorer, double-click **Program.cs** to open it.
+7. ソリューション エクスプローラーで **Program.cs** をダブルクリックして、このファイルを開きます。
 
-8. Add the following using statements to the top of the file:
+8. 次の using ステートメントをファイルの先頭に追加します。
 
 		using Microsoft.Hadoop.WebHDFS.Adapters;
 		using Microsoft.Hadoop.WebHDFS;
 		using Microsoft.Hadoop.Hive;
 	
-9. In the Main() function, copy and paste the following code:
+9. Main() 関数で、次のコードをコピーしてファイルに貼り付けます。
 		
 		// Upload actors.txt to Blob Storage
 		var asvAccount = [Storage-account-name.blob.core.windows.net];
@@ -155,41 +155,42 @@ In this section you will learn how to upload files to Hadoop cluster programmati
         Console.WriteLine("\nPress any key to continue.");
         Console.ReadKey();
 
-10. Update the constants in the application. Azure HDInsight Service uses Azure Blob storage as the default file system. During the HDInsight provision process, a blob is designated as the default file system. You have the options to use the default file system container or a container in a different Blob storage. For more information see [Use Azure Blob storage with HDInsight](/en-us/manage/services/hdinsight/howto-blob-store/).
+10. アプリケーションの定数を更新します。Azure HDInsight サービスは、既定のファイル システムとして Azure BLOB ストレージを使用します。HDInsight のプロビジョン処理中に、BLOB が既定のファイル システムとして指定されます。既定のファイル システム コンテナーまたは別の BLOB ストレージのコンテナーを使用することもできます。詳細については、「[HDInsight での Azure BLOB ストレージの使用](/ja-jp/manage/services/hdinsight/howto-blob-store/)」を参照してください。
 
-	If you choose to use the default file system container, you can find the storage account name, the storage key, and the container name from the *c:\apps\dist\hadoop-1.1.0-SNAPSHOT\conf>core-site.xml* configuration file by remoting to the cluster. The container used as the default file system can be found by search *fs.default.name*; the storage account name and the account key can be found by searching *fs.azure.account.key*.
+	既定のファイル システム コンテナーを使う場合は、クラスターにリモート接続して、*c:\apps\dist\hadoop-1.1.0-SNAPSHOT\conf>core-site.xml* 構成ファイルからストレージ アカウント名、ストレージ キー、コンテナー名を取得することができます。既定のファイル システムとして使用するコンテナーは、*fs.default.name* を検索すると確認できます。ストレージ アカウント名およびアカウント キーは *fs.azure.account.key* を検索すると確認できます。
 	
-##<a id="run"></a>Run the Application
+##<a id="run"></a>アプリケーションの実行
 
-While the application is open in Visual Studio, press **F5** to run the application. A console window should open and display the steps executed by the application as data is uploaded, stored into a Hive table, and finally queried. Once the application is complete and the query results have been returned, press any key to terminate the application.
+アプリケーションを Visual Studio で開いている間に、**F5** キーを押してアプリケーションを実行します。コンソール ウィンドウが開き、アプリケーションの実行している手順が表示されます。データがアップロードされ、Hive テーブルに格納され、最後に照会されます。アプリケーションが完了して、クエリ結果が返されたら、任意のキーを押してアプリケーションを終了します。
 
 ![HDI.HadoopSDKOutput](./media/hdinsight-use-hadoop-dotnet-sdk/HDI.HadoopSDKOutput.PNG "Console Application")
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>Each step performed by the application may take seconds or even minutes to complete. The time to upload the Actors.txt file will vary based on your Internet connection to the Azure data center, while the other steps are dependent on cluster size.</p>
+<strong>注</strong>
+<p>アプリケーションによって実行される各手順は、完了するまでに数秒、ときには数分かかる場合があります。Actors.txt ファイルをアップロードする時間は、Azure データ センターに対するインターネット接続の状態に応じて変動し、他の手順にかかる時間はクラスター サイズに左右されます。</p>
 </div>
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>The LOAD DATA INPATH operation is a move operation that moves the Actors.txt data into the Hive-controlled file system namespace. This effectively removes the Actors.txt file from the upload location. Because of this, the Actors.txt file must be uploaded each time you run this application.</p>
-<p>For more information on loading data into Hive, see <a href="https://cwiki.apache.org/confluence/display/Hive/GettingStarted#GettingStarted-DMLOperations">Hive GettingStarted</a>.</p>
+<strong>注</strong>
+<p>LOAD DATA INPATH 操作は、Hive が制御するファイル システム名前空間に Actors.txt データを移動する移動操作です。これにより事実上、アップロード場所から Actors.txt ファイルは削除されます。このため、Actors.txt ファイルはこのアプリケーションを実行するたびにアップロードする必要があります。</p>
+<p>Hive へのデータ読み取りの詳細については、「<a href="https://cwiki.apache.org/confluence/display/Hive/GettingStarted#GettingStarted-DMLOperations">Hive GettingStarted (Hive の概要)</a>」を参照してください。</p>
 </div>
 
-##<a id="nextsteps"></a>Next steps
-Now you understand how to create a .NET application using Hadoop .NET SDK. To learn more, see the following articles:
+##<a id="nextsteps"></a>次のステップ
+ここでは、Hadoop .NET SDK を使用して .NET アプリケーションを作成する方法を学習しました。詳細については、次の記事を参照してください。
 
-* [Get started with Azure HDInsight](/en-us/manage/services/hdinsight/get-started-hdinsight/)
-* [Use Pig with HDInsight][hdinsight-pig] 
-* [Use MapReduce with HDInsight][hdinsight-mapreduce]
-* [Use Hive with HDInsight](/en-us/manage/services/hdinsight/using-hive-with-hdinsight/)
+* [Azure HDInsight の概要](/ja-jp/manage/services/hdinsight/get-started-hdinsight/)
+* [HDInsight での Pig の使用][hdinsight-pig]
+* [HDInsight での MapReduce の使用][hdinsight-mapreduce]
+* [HDInsight での Hive の使用](/ja-jp/manage/services/hdinsight/using-hive-with-hdinsight/)
 
-[hdinsight-pig]: /en-us/manage/services/hdinsight/using-pig-with-hdinsight/
-[hdinsight-mapreduce]: /en-us/manage/services/hdinsight/using-mapreduce-with-hdinsight/
+[hdinsight-pig]: /ja-jp/manage/services/hdinsight/using-pig-with-hdinsight/
+[hdinsight-mapreduce]: /ja-jp/manage/services/hdinsight/using-mapreduce-with-hdinsight/
 
 
 
-[free-trial]: http://www.windowsazure.com/en-us/pricing/free-trial/
-[create-storage-account]: http://www.windowsazure.com/en-us/manage/services/storage/how-to-create-a-storage-account/
+[free-trial]: http://www.windowsazure.com/ja-jp/pricing/free-trial/
+[create-storage-account]: http://www.windowsazure.com/ja-jp/manage/services/storage/how-to-create-a-storage-account/
+
 
 

@@ -1,85 +1,85 @@
-<properties linkid="dev-ruby-how-to-table-services" urlDisplayName="Table Service" pageTitle="How to use table storage (Ruby) | Microsoft Azure" metaKeywords="Azure table storage service, Azure table service Ruby, table storage Ruby" description="Learn how to use the table storage service in Azure. Code samples are written using the Ruby API." metaCanonical="" services="storage" documentationCenter="Ruby" title="How to Use the Table Service from Ruby" authors="guayan" solutions="" manager="" editor="" />
+<properties linkid="dev-ruby-how-to-table-services" urlDisplayName="テーブル サービス" pageTitle="テーブル ストレージの使用方法 (Ruby) | Microsoft Azure" metaKeywords="Azure テーブル ストレージ サービス, Azure テーブル サービス Ruby, テーブル ストレージ Ruby" description="Azure でのテーブル ストレージ サービスの使用方法について説明します。コード サンプルは Ruby API を使用して記述されています。" metaCanonical="" services="storage" documentationCenter="Ruby" title="Ruby からテーブル サービスを使用する方法" authors="guayan" solutions="" manager="" editor="" />
 
 
 
 
 
-# How to Use the Table Service from Ruby
+# Ruby からテーブル サービスを使用する方法
 
-This guide shows you how to perform common scenarios using the Windows
-Azure Table service. The samples are written written using the
-Ruby API. The scenarios covered include **creating and deleting a
-table, inserting and querying entities in a table**. For more
-information on tables, see the [Next Steps](#next-steps) section.
+このガイドでは、Azure テーブル サービスを使用して一般的なシナリオを
+実行する方法について説明します。サンプルは Ruby API を使用して記述されて
+います。紹介するシナリオは、**テーブルの作成と削除、
+テーブルのエンティティの挿入とクエリ実行**などです。テーブルの
+詳細については、「[次のステップ](#next-steps)」のセクションを参照してください。
 
-## Table of Contents
+## 目次
 
-* [What is the Table Service?](#what-is)
-* [Concepts](#concepts)
-* [Create an Azure Storage Account](#create-a-windows-azure-storage-account)
-* [Create a Ruby application](#create-a-ruby-application)
-* [Configure your Application to Access Storage](#configure-your-application-to-access-storage)
-* [Setup an Azure Storage Connection](#setup-a-windows-azure-storage-connection)
-* [How to: Create a Table](#how-to-create-a-table)
-* [How to: Add an Entity to a Table](#how-to-add-an-entity-to-a-table)
-* [How To: Update an Entity](#how-to-update-an-entity)
-* [How to: Work with Groups of Entities](#how-to-work-with-groups-of-entities)
-* [How to: Query for an Entity](#how-to-query-for-an-entity)
-* [How to: Query a Set of Entities](#how-to-query-a-set-of-entities)
-* [How To: Query a Subset of Entity Properties](#how-to-query-a-subset-of-entity-properties)
-* [How To: Delete an Entity](#how-to-delete-an-entity)
-* [How to: Delete a Table](#how-to-delete-a-table)
-* [Next Steps](#next-steps)
+* [テーブル サービスとは](#what-is)
+* [概念](#concepts)
+* [Azure ストレージ アカウントの作成](#create-a-windows-azure-storage-account)
+* [Ruby アプリケーションの作成](#create-a-ruby-application)
+* [アプリケーションのストレージへのアクセスの構成](#configure-your-application-to-access-storage)
+* [Azure のストレージ接続文字列の設定](#setup-a-windows-azure-storage-connection)
+* [方法: テーブルを作成する](#how-to-create-a-table)
+* [方法: エンティティをテーブルに追加する](#how-to-add-an-entity-to-a-table)
+* [方法: エンティティを更新する](#how-to-update-an-entity)
+* [方法: エンティティのグループを操作する](#how-to-work-with-groups-of-entities)
+* [方法: エンティティを照会する](#how-to-query-for-an-entity)
+* [方法: エンティティのセットを照会する](#how-to-query-a-set-of-entities)
+* [方法: エンティティ プロパティのサブセットを照会する](#how-to-query-a-subset-of-entity-properties)
+* [方法: エンティティを削除する](#how-to-delete-an-entity)
+* [方法: テーブルを削除する](#how-to-delete-a-table)
+* [次のステップ](#next-steps)
 
 [WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
-## <a id="create-a-windows-azure-storage-account"></a>Create an Azure Storage Account
+## <a id="create-a-windows-azure-storage-account"></a>Azure ストレージ アカウントの作成
 
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## <a id="create-a-ruby-application"></a>Create a Ruby Application
+## <a id="create-a-ruby-application"></a>Ruby アプリケーションの作成
 
-Create a Ruby application. For instructions, 
-see [Create a Ruby Application on Azure](/en-us/develop/ruby/tutorials/web-app-with-linux-vm/).
+Ruby アプリケーションを作成します。手順については、
+[Azure での Ruby アプリケーションの作成に関するページ](/ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/).
+を参照してください。
+## <a id="configure-your-application-to-access-storage"></a>アプリケーションのストレージへのアクセスの構成
 
-## <a id="configure-your-application-to-access-storage"></a>Configure Your Application to Access Storage
+Azure ストレージを使用するには、Ruby azure パッケージをダウンロードして使用する必要があります。
+このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
 
-To use Azure storage, you need to download and use the Ruby azure package, 
-which includes a set of convenience libraries that communicate with the storage REST services.
+### RubyGems を使用してパッケージを取得する
 
-### Use RubyGems to obtain the package
+1. **PowerShell** (Windows)、**ターミナル** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用します。
 
-1. Use a command-line interface such as **PowerShell** (Windows), **Terminal** (Mac), or **Bash** (Unix).
+2. コマンド ウィンドウに「**gem install azure**」と入力して、gem と依存関係をインストールします。
 
-2. Type **gem install azure** in the command window to install the gem and dependencies.
+### パッケージをインポートする
 
-### Import the package
-
-Use your favorite text editor, add the following to the top of the Ruby file where you intend to use storage:
+任意のテキスト エディターを使用して、ストレージを使用する Ruby ファイルの先頭に次のコードを追加します。
 
 	require "azure"
 
-## <a id="setup-a-windows-azure-storage-connection"></a>Setup an Azure Storage Connection
+## <a id="setup-a-windows-azure-storage-connection"></a>Azure のストレージ接続文字列の設定
 
-The azure module will read the environment variables **AZURE\_STORAGE\_ACCOUNT** and **AZURE\_STORAGE\_ACCESS\_KEY** 
-for information required to connect to your Azure storage account. If these environment variables are not set, you must specify the account information before using **Azure::TableService** with the following code:
+azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** および 
+**AZURE\_STORAGE\_ACCESS\_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::TableService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
 	Azure.config.storage_account_name = "<your azure storage account>"
 	Azure.config.storage_access_key = "<your azure storage access key>"
 
-To obtain these values:
+これらの値を取得するには、次の手順を実行します。
 
-1. Log into the [Azure Management Portal](https://manage.windowsazure.com/).
+1. [Azure 管理ポータル](https://manage.windowsazure.com/)にログインします。
 
-2. Navigate to the storage account you want to use.
+2. 使用するストレージ アカウントを表示します。
 
-3. Click **MANAGE KEYS** at the bottom of the navigation pane.
+3. ナビゲーション ウィンドウの下部にある **[キーの管理]** をクリックします。
 
-4. In the pop up dialog, you will see the storage account name, primary access key and secondary access key. For access key, you can either the primary one or the secondary one.
+4. ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。アクセス キーは、プライマリとセカンダリのどちらでも選択できます。
 
-## <a id="how-to-create-a-table"></a>How to Create a Table
+## <a id="how-to-create-a-table"></a>方法: テーブルを作成する
 
-The **Azure::TableService** object lets you work with tabls and entities. To create a table, use the **create\_table()** method. The following example creates a table or print out the error if there is any.
+**Azure::TableService** オブジェクトを使用すると、テーブルとエンティティを操作できます。テーブルを作成するには、**create\_table()** メソッドを使用します。次の例では、テーブルを作成し、既に存在している場合はエラーを出力します。
 
 	azure_table_service = Azure::TableService.new
 	begin
@@ -88,34 +88,34 @@ The **Azure::TableService** object lets you work with tabls and entities. To cre
 	  puts $!
 	end
 
-## <a id="how-to-add-an-entity-to-a-table"></a>How to Add an Entity to a Table
+## <a id="how-to-add-an-entity-to-a-table"></a>方法: エンティティをテーブルに追加する
 
-To add an entity, first create a hash object that defines your entity properties. Note that for every entity you mustspecify a **PartitionKey** and **RowKey**. These are the unique identifiers of your entities, and are values that can be queried much faster than your other properties. Azure Storage Service uses **PartitionKey** to automatically distribute the table's entities over many storage nodes. Entities with the same **PartitionKey** are stored on the same node. The **RowKey** is the unique ID of the entity within the partition it belongs to. 
+エンティティを追加するには、エンティティのプロパティを定義するハッシュ オブジェクトを最初に作成します。すべてのエンティティについて、**PartitionKey** と **RowKey** を指定する必要があることに注意してください。これらはエンティティの一意の識別子であり、他のエンティティのプロパティよりはるかに高速に照会できる値です。Azure ストレージ サービスでは、テーブルのエンティティを多数のストレージ ノードに自動的に配布するために **PartitionKey** を使用します。**PartitionKey** が同じエンティティは同じノードに格納されます。**RowKey** は、エンティティが属するパーティション内のエンティティの一意の ID です。
 
 	entity = { "content" => "test entity", 
 	  :PartitionKey => "test-partition-key", :RowKey => "1" }
 	azure_table_service.insert_entity("testtable", entity)
 
-## <a id="how-to-update-an-entity"></a>How To: Update an Entity
+## <a id="how-to-update-an-entity"></a>方法: エンティティを更新する
 
-There are multiple methods available to update an existing entity:
+既存のエンティティを更新するには、複数のメソッドがあります。
 
-* **update\_entity():** Update an existing entity by replacing it.
-* **merge\_entity():** Updates an existing entity by merging new property values into the existing entity.
-* **insert\_or\_merge\_entity():** Updates an existing entity by replacing it. If no entity exists, a new one will be inserted:
-* **insert\_or\_replace\_entity():** Updates an existing entity by merging new property values into the existing entity. If no entity exists, a new one will be inserted.
+* **update\_entity():** 既存のエンティティを、置換することで更新します。
+* **merge\_entity():** 既存のエンティティを、新しいプロパティ値を既存のエンティティにマージすることで更新します。
+* **insert\_or\_merge\_entity():** 既存のエンティティを、置換することで更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
+* **insert\_or\_replace\_entity():** 既存のエンティティを、新しいプロパティ値を既存のエンティティにマージすることで更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
 
-The following example demonstrates updating an entity using **update\_entity()**:
+次の例に、**update\_entity()** を使用してエンティティを更新する方法を示します。
 
 	entity = { "content" => "test entity with updated content", 
 	  :PartitionKey => "test-partition-key", :RowKey => "1" }
 	azure_table_service.update_entity("testtable", entity)
 
-With **update\_entity()** and **merge\_entity()**, if the entity that is being updated doesn't exist then the update operation will fail. Therefore if you wish to store an entity regardless of whether it already exists, you should instead use **insert\_or\_replace\_entity()** or **insert\_or\_merge\_entity()**.
+**update\_entity()** と **merge\_entity()** では、更新されるエンティティが存在しないと更新操作は失敗します。したがって、既に存在しているかどうかに関係なくエンティティを格納するには、代わりに **insert\_or\_replace\_entity()** または **insert\_or\_merge\_entity()** を使用する必要があります。
 
-## <a id="how-to-work-with-groups-of-entities"></a>How to: Work with Groups of Entities
+## <a id="how-to-work-with-groups-of-entities"></a>方法: エンティティのグループを操作する
 
-Sometimes it makes sense to submit multiple operations together in a batch to ensure atomic processing by the server. To accomplish that, you first create a **Batch** object and then use the **execute\_batch()** method on **TableService**. The following example demonstrates submitting two entities with RowKey 2 and 3 in a batch. Notice that it only works for entities with the same PartitionKey.
+状況によって、複数の操作をバッチとして送信し、サーバーによるアトミック処理を行うことが合理的である場合があります。このためには、まず **Batch** オブジェクトを作成し、次に **TableService** の **execute\_batch()** メソッドを使用します。次の例では、RowKey が 2 および 3 である 2 つのエンティティをバッチで送信する方法を示します。これは、同じ PartitionKey を持つエンティティでのみ機能することに注意してください。
 
 	azure_table_service = Azure::TableService.new
 	batch = Azure::Storage::Table::Batch.new("testtable", 
@@ -125,46 +125,47 @@ Sometimes it makes sense to submit multiple operations together in a batch to en
 	end
 	results = azure_table_service.execute_batch(batch)
 
-## <a id="how-to-query-for-an-entity"></a>How to: Query for an Entity
+## <a id="how-to-query-for-an-entity"></a>方法: エンティティを照会する
 
-To query an entity in a table, use the **get\_entity()** method, by passing the table name, **PartitionKey** and **RowKey**.
+テーブル内のエンティティを照会するには、**get\_entity()** メソッドを使用して、テーブル名、**PartitionKey**、および **RowKey** を渡します。
 
 	result = azure_table_service.get_entity("testtable", "test-partition-key", 
 	  "1")
 
-## <a id="how-to-query-a-set-of-entities"></a>How to: Query a Set of Entities
+## <a id="how-to-query-a-set-of-entities"></a>方法: エンティティのセットを照会する
 
-To query a set of entities in a table, create a query hash object and use the **query\_entities()** method. The following example demonstrates getting all the entities with the same **PartitionKey**:
+テーブル内のエンティティのセットを照会するには、クエリ ハッシュ オブジェクトを作成し、**query\_entities()** メソッドを使用します。次の例では、同じ **PartitionKey** を持つエンティティをすべて取得します。
 
 	query = { :filter => "PartitionKey eq 'test-partition-key'" }
 	result, token = azure_table_service.query_entities("testtable", query)
 
-**Notice** that if the result set is too large for a single query to return, a continuation token will be returned which you can use to retrieve subsequent pages.
+**注** 結果セットが大きすぎて単一のクエリで返すことができない場合は、継続トークンが返されます。この継続トークンを使用すると、後続のページを取得できます。
 
-## <a id="how-to-query-a-subset-of-entity-properties"></a>How To: Query a Subset of Entity Properties
+## <a id="how-to-query-a-subset-of-entity-properties"></a>方法: エンティティ プロパティのサブセットを照会する
 
-A query to a table can retrieve just a few properties from an entity. This technique, called "projection", reduces bandwidth and can improve query performance, especially for large entities. Use the select clause and pass the names of the properties you would like to bring over to the client.
+テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。"プロジェクション" と呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。select 句を使用して、クライアントに渡すプロパティの名前を指定します。
 
 	query = { :filter => "PartitionKey eq 'test-partition-key'", 
 	  :select => ["content"] }
 	result, token = azure_table_service.query_entities("testtable", query)
 
-## <a id="how-to-delete-an-entity"></a>How To: Delete an Entity
+## <a id="how-to-delete-an-entity"></a>方法: エンティティを削除する
 
-To delete an entity, use the **delete\_entity()** method. You need to pas in the name of the table which contains the entity, the PartitionKey and RowKey of the entity.
+エンティティを削除するには、**delete\_entity()** メソッドを使用します。目的のエンティティを含んでいるテーブルの名前と、エンティティの PartitionKey および RowKey を渡す必要があります。
 
 		azure_table_service.delete_entity("testtable", "test-partition-key", "1")
 
-## <a id="how-to-delete-a-table"></a>How to: Delete a Table
+## <a id="how-to-delete-a-table"></a>方法: テーブルを削除する
 
-To delete a table, use the **delete\_table()** method and pass in the name of the table you want to delete.
+テーブルを削除するには、**delete\_table()** を使用して、削除するテーブルの名前を渡します。
 
 		azure_table_service.delete_table("testtable")
 
-## <a id="next-steps"></a>Next Steps
+## <a id="next-steps"></a>次のステップ
 
-Now that you've learned the basics of table storage, follow these links to learn how to do more complex storage tasks.
+これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
-* See the MSDN Reference: [Storing and Accessing Data in Azure](http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx)
-* Visit the [Azure Storage Team Blog](http://blogs.msdn.com/b/windowsazurestorage/)
-* Visit the [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) repository on GitHub
+* MSDN リファレンス: [Azure のデータの格納とアクセス](http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx)
+* [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+* GitHub の [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
+

@@ -1,86 +1,86 @@
-<properties linkid="dev-nodejs-enablesslworker" urlDisplayName="Enable SSL worker role" pageTitle="Configure SSL for a cloud service (Node.js) worker role" metaKeywords="Node.js Azure SSL, Node.js Azure, SSL worker role" description="" metaCanonical="" services="cloud-services" documentationCenter="Node.js" title="Configuring SSL for a Node.js Application in an Azure Worker Role" authors="" solutions="" manager="" editor="" />
+<properties linkid="dev-nodejs-enablesslworker" urlDisplayName="SSL worker ロールを有効にする" pageTitle="クラウド サービス (Node.js) worker ロール向けの SSL の構成" metaKeywords="Node.js Azure SSL, Node.js Azure, SSL worker ロール" description="" metaCanonical="" services="cloud-services" documentationCenter="Node.js" title="Azure worker ロールで Node.js アプリケーションの SSL を構成する" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-# Configuring SSL for a Node.js Application in an Azure Worker Role
+# Azure worker ロールで Node.js アプリケーションの SSL を構成する
 
-Secure Socket Layer (SSL) encryption is the most commonly used method of
-securing data sent across the internet. This common task discusses how
-to specify an HTTPS endpoint for a Node.js application hosted as an Azure Cloud Service in a worker role.
+Secure Socket Layer (SSL) の暗号化は、インターネットを介して送信されるデータを
+セキュリティで保護する際に最もよく使用される方法です。この一般的なタスクでは、
+worker ロールで Azure クラウド サービスとしてホストされる Node.js アプリケーションの HTTPS エンドポイントを指定する方法について説明します。
 
 <div class="dev-callout">
-	<b>Note</b>
-	<p>The steps in this article only apply to node applications hosted as an Azure Cloud Service in a worker role.</p>
+	<b>注</b>
+	<p>この記事で説明する手順は、worker ロールで Azure クラウド サービスとしてホストされるノード アプリケーションにのみ適用されます。</p>
 	</div>
 
-This task includes the following steps:
+このタスクの手順は次のとおりです。
 
--   [Step 1: Create a Node.js service and publish the service to the cloud]
--   [Step 2: Get an SSL certificate]
--   [Step 3: Modify the Application to use the SSL certificate]
--   [Step 4: Modify the Service Definition File]
--   [Step 5: Connect to the Role Instance by Using HTTPS]
+-   [手順 1. Node.js サービスを作成してクラウドにサービスを発行する]
+-   [手順 2: SSL 証明書を取得する]
+-   [手順 3. SSL 証明書を使用するようにアプリケーションを変更する]
+-   [手順 4. サービス定義ファイルを変更する]
+-   [手順 5. HTTPS を使用してロール インスタンスに接続する]
 
-## <a name="step1"> </a>Step 1: Create a Node.js service and publish the service to the cloud
+## <a name="step1"> </a>手順 1. Node.js サービスを作成してクラウドにサービスを発行する
 
-You can create a simple Node.js 'hello
-world' service using the Azure PowerShell using these steps:
+Azure PowerShell を使用して、次の手順
+に従って簡単な Node.js "hello world" サービスを作成できます。
 
-1. From the **Start Menu** or **Start Screen**, search for **Azure PowerShell**. Finally, right-click **Azure PowerShell** and select **Run As Administrator**.
+1. **[スタート] メニュー**または**スタート画面**で、「**Azure PowerShell**」を検索します。最後に、**[Azure PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
 
-	![Azure PowerShell icon][powershell-menu]
+	![Azure PowerShell アイコン][powershell-menu]
 
 	
 
-2.  Create a new service, using **New-AzureServiceProject** cmdlet.
+2. **New-AzureServiceProject** コマンドレットを使用して、新しいサービスを作成します。
 
 	![][1]
 
-3.  Add a worker role to your service using **Add-AzureNodeWorkerRole** cmdlet:
+3. **Add-AzureNodeWorkerRole** コマンドレットを使用して、サービスに worker ロールを追加します。
 
     ![][2]
 
-4.  Publish your service to the cloud using **Publish-AzureServiceProject** cmdlet:
+4. **Publish-AzureServiceProject** コマンドレットを使用して、サービスをクラウドに発行します。
 
     ![][3]
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>If you have not previously imported publish settings for your Azure subscription, you will receive an error when trying to publish. For information on downloading and importing the publish settings for your subscription, see <a href="https://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings">How to Use the Azure PowerShell for Node.js</a></p>
+	<strong>注</strong>
+	<p>以前に Azure サブスクリプションの発行設定をインポートしていない場合、発行しようとするとエラーが出力されます。サブスクリプションの発行設定のダウンロードとインポートについては、<a href="https://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings">Azure PowerShell for Node.js の使用方法</a>に関するページを参照してください。</p>
 	</div>
 
-The **Created Website URL** value returned by the **Publish-AzureServiceProject** cmdlet contains the fully qualified domain name for your hosted application. You will need to obtain an SSL certificate for this specific fully qualified domain name and deploy it to Azure.
+**Publish-AzureServiceProject** コマンドレットから返される**作成された Web サイトの URL** の値には、ホステッド アプリケーションの完全修飾ドメイン名が含まれます。この特定の完全修飾ドメイン名について SSL 証明書を取得し、Azure に展開する必要があります。
 
-## <a name="step2"> </a>Step 2: Get an SSL Certificate
+## <a name="step2"> </a>手順 2. SSL 証明書を取得する
 
-To configure SSL for an application, you first need to get an SSL
-certificate that has been signed by a Certificate Authority (CA), a
-trusted third-party who issues certificates for this purpose. If you do
-not already have one, you will need to obtain one from a company that
-sells SSL certificates.
+アプリケーションの SSL を構成するには、最初に、セキュリティ保護
+のための証明書を発行する信頼されたサード パーティである、証明機関
+(CA) によって署名された SSL 証明書を取得する必要があります。まだ
+SSL 証明書がない場合は、SSL 証明書を販売する会社から取得する
+必要があります。
 
-The certificate must meet the following requirements for SSL
-certificates in Azure:
+証明書は、Azure における SSL 証明書の次の要件を満たす
+必要があります。
 
--   The certificate must contain a private key.
--   The certificate must be created for key exchange (**.pfx** file).
--   The certificate's subject name must match the domain used to access
-    the cloud service. You cannot acquire an SSL certificate for the
-    cloudapp.net domain, so the certificate's subject name must match
-    the custom domain name used to access your application. For example, __mysecuresite.cloudapp.net__.
--   The certificate must use a minimum of 2048-bit encryption.
+-   証明書は秘密キーを含む必要があります。
+-   証明書はキー交換のために作成される必要があります (**.pfx** ファイル)。
+-   証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致
+    する必要があります。cloudapp.net ドメインの SSL 証明書を取得する
+    ことはできないため、証明書の件名を、アプリケーションへの接続に使用
+    されるカスタム ドメイン名と一致させる必要があります。たとえば、「__mysecuresite.cloudapp.net__」のように入力します。
+-   証明書では、2,048 ビット以上の暗号化を使用する必要があります。
 
-The **.pfx** file containing the certificate will be added to your service project and deployed to Azure in the following steps.
+証明書が含まれている **.pfx** ファイルは、次に示す手順でサービス プロジェクトに追加され、Azure に展開されます。
 
-## <a name="step3"> </a>Step 3: Modify the Application to use the SSL certificate
+## <a name="step3"> </a>手順 3. SSL 証明書を使用するようにアプリケーションを変更する
 
-When a Node.js application is deployed to a worker role, the server certificate and SSL connection are managed by Node.exe. To handle SSL traffic, you must use the 'https' module instead of 'http'. Perform the following steps to add the SSL certificate to your project, and then modify the application to use the certificate.
+Node.js アプリケーションを worker ロールに展開すると、サーバー証明書と SSL 接続は Node.exe によって管理されます。SSL トラフィックを処理するには、"http" ではなく "https" モジュールを使用する必要があります。次の手順を実行して、SSL 証明書をプロジェクトに追加し、この証明書を使用するようにアプリケーションを変更します。
 
-1.   Save the **.pfx** file provided to you by your Certificate Authority (CA) to the directory containing your application. For example, **c:\\node\\securesite\\workerrole1** is the directory that contains the application used in this article.
+1. 証明機関 (CA) から提供された **.pfx** ファイルを、アプリケーションが格納されているディレクトリに保存します。たとえば、この記事で使用されているアプリケーションが格納されているディレクトリは **c:\\node\\securesite\\workerrole1** です。
 
-2.   Open the **c:\\node\\securesite\\workerrole1\server.js** file using Notepad.exe, and replace the file contents with the following:
+2.   Notepad.exe を使用して **c:\\node\\securesite\\workerrole1\server.js** ファイルを開き、ファイルの内容を次の内容に置き換えます。
 
 		var https = require('https');
 		var fs = require('fs');
@@ -96,20 +96,19 @@ When a Node.js application is deployed to a worker role, the server certificate 
 		}).listen(port);
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>You must replace 'certificate.pfx' with the name of the certificate file and "password" with the password (if any) of the certificate file.</p>
+	<strong>注</strong>
+	<p>'certificate.pfx' を証明書ファイルの名前に、"password" を証明書ファイルのパスワード (ある場合) に置き換える必要があります。</p>
 	</div>
 
-3.   Save the **server.js** file.
+3. **server.js** ファイルを保存します。
 
-The modifications to the **server.js** file result in the application listening for communication on port 443 (the standard port for SSL communications) when it is deployed to Azure. The **.pfx** file will be used to implement SSL communications over this transport.
+**server.js** ファイルをこのように変更すると、アプリケーションを Azure に展開したときに、アプリケーションはポート 443 (SSL 通信用の標準ポート) で通信をリッスンするようになります。**.pfx** ファイルは、このトランスポートで SSL 通信を実装するために使用されます。
 
-## <a name="step4"> </a>Step 4: Modify the Service Definition File
+## <a name="step4"> </a>手順 4. サービス定義ファイルを変更する
 
-Since your application is now listening over port 443, you must also modify the service definition to allow communication over this port.
+これで、アプリケーションはポート 443 でリッスンするようになったので、このポートでの通信を許可するようにサービス定義も変更する必要があります。
 
-1.  In the service directory, open the service definition file
-    (**ServiceDefinition.csdef**), update the http **InputEndpoint** element within the **Endpoints** section to enable communication over port 443:
+1. サービス ディレクトリで、サービス定義ファイル (**ServiceDefinition.csdef**) を開き、**Endpoints** セクションの http **InputEndpoint** 要素を更新して、ポート 443 での通信を有効にします。
 
         <WorkerRole name="WorkerRole1" vmsize="Small">
         ...
@@ -120,49 +119,49 @@ Since your application is now listening over port 443, you must also modify the 
         ...
         </WorkerRole>
 
-	After making this change, save the **ServiceDefinition.csdef** file.
+	この変更を行った後、**ServiceDefinition.csdef** ファイルを保存します。
 
-4.  Refresh your updated configuration in the cloud by publishing
-    your service again. At the Azure PowerShell
-    prompt, type **Publish-AzureServiceProject** from the service directory.
+4. もう一度サービスを発行して、クラウド内の構成を最新の情報に
+    更新します。Azure PowerShell
+    プロンプトで、「**Publish-AzureServiceProject**」と入力します。
 
-## <a name="step5"> </a>Step 5: Connect to the Role Instance by Using HTTPS
+## <a name="step5"> </a>手順 5. HTTPS を使用してロール インスタンスに接続する
 
-Now that your deployment is up and running in Azure, you can
-connect to it using HTTPS.
+Azure で展開を実行できるようになったため、HTTPS を使用して
+接続できます。
 
-1.  In the Management Portal, select your cloud service, then click **Dashboard**.
+1. 管理ポータルで、目的のクラウド サービスを選択し、**[ダッシュボード]** をクリックします。
 
-2. Scroll down and click the link displayed as the **Site URL**:
+2. 下へスクロールし、**[サイトの URL]** として表示されているリンクをクリックします。
 
-    ![the site url][site-url]
+    ![サイトの URL][site-url]
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>If the Site URL displayed in the portal does not specify HTTPS, then you must manually enter the URL in the browser using HTTPS instead of HTTP.</p>
+	<strong>注</strong>
+	<p>ポータルに表示されるサイトの URL で HTTPS が指定されていない場合は、ブラウザーで HTTP の代わりに HTTPS を使用して手動で URL を入力する必要があります。</p>
 	</div>
 
-3.  A new browser will open and display your website.
+3. 新しいブラウザーが開いて、Web サイトが表示されます。
 
-    Your browser will display a lock icon to indicate that it is
-    using an HTTPS connection. This also indicates that your application
-    has been configured correctly for SSL.
+    ブラウザーには、HTTPS 接続を使用していることを示す
+    錠前のアイコンが表示されます。これは、アプリケーションの SSL が正しく
+    構成されていることも示します。
 
     ![][8]
 
-## Additional Resources
+## その他のリソース
 
-[How to Associate a Certificate with a Service]
+[証明書をサービスに関連付ける方法]
 
-[Configuring SSL for a Node.js Application in an Azure Web Role]
+[Azure Web ロールで Node.js アプリケーションの SSL を構成する]
 
-[How to Configure an SSL Certificate on an HTTPS Endpoint]
+[HTTPS エンドポイント上での SSL 証明書の構成方法]
 
-  [Step 1: Create a Node.js service and publish the service to the cloud]: #step1
-  [Step 2: Get an SSL certificate]: #step2
-  [Step 3: Modify the Application to use the SSL certificate]: #step3
-  [Step 4: Modify the Service Definition File]: #step4
-  [Step 5: Connect to the Role Instance by Using HTTPS]: #step5
+  [手順 1. Node.js サービスを作成してクラウドにサービスを発行する]: #step1
+  [手順 2: SSL 証明書を取得する]: #step2
+  [手順 3. SSL 証明書を使用するようにアプリケーションを変更する]: #step3
+  [手順 4. サービス定義ファイルを変更する]: #step4
+  [手順 5. HTTPS を使用してロール インスタンスに接続する]: #step5
   [**Azure PowerShell**]: http://go.microsoft.com/?linkid=9790229&clcid=0x409
   
   
@@ -171,16 +170,17 @@ connect to it using HTTPS.
   [1]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-01.png
   [2]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-02-worker.png
   [3]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-03-worker.png
-  [Azure Management Portal]: http://manage.windowsazure.com
+  [Azure 管理ポータル]: http://manage.windowsazure.com
   
   
-  [How to Associate a Certificate with a Service]: http://msdn.microsoft.com/en-us/library/windowsazure/gg465718.aspx
+  [証明書をサービスに関連付ける方法]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg465718.aspx
   
   [site-url]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/site-url.png
   [8]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-08.png
-  [How to Configure an SSL Certificate on an HTTPS Endpoint]: http://msdn.microsoft.com/en-us/library/windowsazure/ff795779.aspx
+  [HTTPS エンドポイント上での SSL 証明書の構成方法]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff795779.aspx
   [powershell-menu]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/azure-powershell-start.png
   
   
-  [Configuring SSL for a Node.js Application in an Azure Web Role]: /en-us/develop/nodejs/common-tasks/enable-ssl/
+  [Azure Web ロールで Node.js アプリケーションの SSL を構成する]: /ja-jp/develop/nodejs/common-tasks/enable-ssl/
   
+

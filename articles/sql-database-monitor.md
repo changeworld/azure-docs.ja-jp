@@ -1,13 +1,14 @@
-<properties linkid="manage-services-how-to-monitor-a-sqldb" urlDisplayName="How to monitor" pageTitle="How to monitor a SQL Database - Azure service management" metaKeywords="" description="Learn how to monitor a SQL Database using the Azure Management Portal." metaCanonical="" services="sql-database" documentationCenter="" title="How to Monitor Logical Servers and Database Instances" authors="" solutions="" manager="" editor="" />
+<properties linkid="manage-services-how-to-monitor-a-sqldb" urlDisplayName="監視方法" pageTitle="SQL データベースの監視方法 - Azure サービス管理" metaKeywords="" description="Azure 管理ポータルを使用して SQL データベースを監視する方法について説明します。" metaCanonical="" services="sql-database" documentationCenter="" title="論理サーバーとデータベース インスタンスの監視方法" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-<h1 id="monitor">How to Monitor Logical Servers and Database Instances</h1>
+<h1 id="monitor">論理サーバーとデータベース インスタンスの監視方法</h1>
 
-Monitoring tools and techniques that you might be accustomed to using on an on-premises server, such as auditing logins, running traces, and using performance counters, are not available for SQL Database. On Azure, you use Data Management Views (DMVs) to monitor data capacity, query problems, and current connections. 
+ログインの監査、トレースの実行、パフォーマンス カウンターの使用など、内部設置型サーバーで使い慣れている人も多い監視ツールや技法は、SQL データベースでは利用できません。Azure では、データ管理ビュー (DMV) を使用して、データの容量、クエリの問題、および現在の接続を監視します。
 
-For more information, see [Monitoring SQL Database Using Dynamic Management Views][].
+詳細については、「[動的管理ビューを使用した SQL データベースの監視][]」を参照してください。
 
-[Monitoring SQL Database Using Dynamic Management Views]: http://msdn.microsoft.com/en-us/library/windowsazure/ff394114.aspx
+[動的管理ビューを使用した SQL データベースの監視]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff394114.aspx
+

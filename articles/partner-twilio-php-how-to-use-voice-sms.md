@@ -1,101 +1,101 @@
-<properties title="How to Use Twilio for Voice and SMS (PHP) - Azure" pageTitle="How to Use Twilio for Voice and SMS (PHP) - Azure" metaKeywords="Azure PHP Twilio, Azure phone calls, Azure phone calls, Azure twilio, Azure SMS, Azure SMS, Azure voice calls, azure voice calls, Azure text messages, Azure text messages" description="Learn how to make a phone call and send a SMS message with the Twilio API service on Azure. Code samples written in PHP." documentationCenter="PHP" services="" authors="waltpo" manager="bjsmith" editor="mollybos" />
+<properties title="音声および SMS に Twilio を使用する方法 (PHP) - Azure" pageTitle="音声および SMS に Twilio を使用する方法 (PHP) - Azure" metaKeywords="Azure PHP Twilio, Azure 電話, Azure 電話, Azure twilio, Azure SMS, Azure SMS, Azure 音声通話, azure 音声通話, Azure テキスト メッセージ, Azure テキスト メッセージ" description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について説明します。コード サンプルは PHP で記述されています。" documentationCenter="PHP" services="" authors="waltpo" manager="bjsmith" editor="mollybos" />
 
-# How to Use Twilio for Voice and SMS Capabilities in PHP
-This guide demonstrates how to perform common programming tasks with the Twilio API service on Azure. The scenarios covered include making a phone call and sending a Short Message Service (SMS) message. For more information on Twilio and using voice and SMS in your applications, see the [Next Steps](#NextSteps) section.
+# PHP で音声および SMS 機能に Twilio を使用する方法
+このガイドでは、Azure で Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「[次のステップ](#NextSteps)」を参照してください。
 
-## Table of Contents
-* [What is Twilio?](#WhatIs)
-* [Twilio Pricing](#Pricing)
-* [Concepts](#Concepts)
-* [Create a Twilio Account](#CreateAccount)
-* [Verify Phone Numbers](#VerifyPhoneNumbers)
-* [Create a PHP Application](#create_app)
-* [Configure Your Application to Use Twilio Libraries](#configure_app)
-* [How to: Make an outgoing call](#howto_make_call)
-* [How to: Send an SMS message](#howto_send_sms)
-* [How to: Provide TwiML Responses from your own Web site](#howto_provide_twiml_responses)
+## 目次
+* [Twilio とは](#WhatIs)
+* [Twilio の料金](#Pricing)
+* [概念](#Concepts)
+* [Twilio アカウントを作成する](#CreateAccount)
+* [電話番号を確認する](#VerifyPhoneNumbers)
+* [PHP アプリケーションの作成](#create_app)
+* [Twilio ライブラリを使用するようにアプリケーションを構成する](#configure_app)
+* [方法: 発信通話する](#howto_make_call)
+* [方法: SMS メッセージを送信する](#howto_send_sms)
+* [方法: 独自の Web サイトから TwiML 応答を返す](#howto_provide_twiml_responses)
 
-<h2><a id="WhatIs"></a>What is Twilio?</h2>
-Twilio is powering the future of business communications, enabling developers to embed voice, VoIP, and messaging into applications. They virtualize all infrastructure needed in a cloud-based, global environment, exposing it through the Twilio communications API platform. Applications are simple to build and scalable. Enjoy flexibility with pay-as-you go pricing, and benefit from cloud reliability.
+<h2><a id="WhatIs"></a>Twilio とは</h2>
+Twilio は、開発者がアプリケーションに音声、VoIP、およびメッセージングを埋め込むことを可能にし、ビジネス コミュニケーションを強化していきます。必要なすべてのインフラストラクチャをクラウド ベースのグローバル環境で仮想化し、Twilio 通信 API プラットフォームを通じてそれを公開します。アプリケーションは構築しやすく、スケーラビリティも優れています。従量課金制の柔軟性と、クラウドの信頼性の利点を活用できます。
 
-**Twilio Voice** allows your applications to make and receive phone calls. **Twilio SMS** enables your application to send and receive text messages. **Twilio Client** allows you to make VoIP calls from any phone, tablet, or browser and supports WebRTC.
+**Twilio Voice** を使用すると、アプリケーションで音声通話の発着信処理を行うことができます。**Twilio SMS** を使用すると、アプリケーションでテキスト メッセージの送受信を行うことができます。**Twilio Client** では、任意の電話、タブレット、またはブラウザーから VoIP 通話を行うことができ、WebRTC がサポートされています。
 
-<h2><a id="Pricing"></a>Twilio Pricing and Special Offers</h2>
+<h2><a id="Pricing"></a>Twilio の料金および特別プラン</h2>
 
-Azure customers receive a [special offer][http://www.twilio.com/azure]: complimentary $10 of Twilio Credit when you upgrade your Twilio Account. This Twilio Credit can be applied to any Twilio usage ($10 credit equivalent to sending as many as 1,000 SMS messages or receiving up to 1000 inbound Voice minutes, depending on the location of your phone number and message or call destination). Redeem this Twilio credit and get started at: [http://ahoy.twilio.com/azure](http://ahoy.twilio.com/azure).
+Azure ユーザーには、[特別プラン][http://www.twilio.com/azure]として、Twilio アカウントをアップグレードする際に、$10 の Twilio クレジットが提供されます。この Twilio クレジットは、任意の Twilio 使用に対して利用できます。$10 のクレジットは、約 1,000 件の SMS メッセージの送信、または最大で 1,000 分の受信音声に相当します (ご利用の電話番号の場所と、メッセージまたは通話の相手の場所に応じて異なります)。この Twilio クレジットを利用するには、[http://ahoy.twilio.com/azure](http://ahoy.twilio.com/azure) にアクセスします。
 
-Twilio is a pay-as-you-go service. There are no set-up fees and you can close your account at any time. You can find more details at [Twilio Pricing][twilio_pricing].
+Twilio は、従量課金制サービスです。セットアップ料金は不要で、いつでもアカウントを閉じることができます。詳細については、[Twilio の料金のページ][twilio_pricing]をご覧ください。
 
-<h2><a id="Concepts"></a>Concepts</h2>
-The Twilio API is a RESTful API that provides voice and SMS functionality for applications. Client libraries are available in multiple languages; for a list, see [Twilio API Libraries][twilio_libraries].
+<h2><a id="Concepts"></a>概念</h2>
+Twilio API は、アプリケーションに音声および SMS 機能を提供する REST ベースの API です。クライアント ライブラリはさまざまな言語で用意されています。言語の一覧については、[Twilio API ライブラリに関するページ][twilio_libraries]を参照してください。
 
-Key aspects of the Twilio API are Twilio verbs and Twilio Markup Language (TwiML).
+Twilio API の主要な側面として、Twilio 動詞と Twilio Markup Language (TwiML) が挙げられます。
 
-<h3><a id="Verbs"></a>Twilio Verbs</h3>
-The API makes use of Twilio verbs; for example, the **&lt;Say&gt;** verb instructs Twilio to audibly deliver a message on a call.
+<h3><a id="Verbs"></a>Twilio 動詞</h3>
+API では、Twilio 動詞を使用します。たとえば、**&lt;Say&gt;** 動詞は、メッセージを音声で返すことを Twilio に指示します。
 
-The following is a list of Twilio verbs. Learn about the other verbs and capabilities via [Twilio Markup Language documentation][http://www.twilio.com/docs/api/twiml].
+Twilio 動詞の一覧を次に示します。他の動詞と機能については、[Twilio Markup Language のドキュメント][http://www.twilio.com/docs/api/twiml]を参照してください。
 
-* **&lt;Dial&gt;**: Connects the caller to another phone.
-* **&lt;Gather&gt;**: Collects numeric digits entered on the telephone keypad.
-* **&lt;Hangup&gt;**: Ends a call.
-* **&lt;Play&gt;**: Plays an audio file.
-* **&lt;Pause&gt;**: Waits silently for a specified number of seconds.
-* **&lt;Record&gt;**: Records the caller's voice and returns a URL of a file that contains the recording.
-* **&lt;Redirect&gt;**: Transfers control of a call or SMS to the TwiML at a different URL.
-* **&lt;Reject&gt;**: Rejects an incoming call to your Twilio number without billing you
-* **&lt;Say&gt;**: Converts text to speech that is made on a call.
-* **&lt;Sms&gt;**: Sends an SMS message.
+* **&lt;Dial&gt;**: 呼び出し元を別の電話に接続します。
+* **&lt;Gather&gt;**: 電話キーパッドに入力された数字を収集します。
+* **&lt;Hangup&gt;**: 通話を終了します。
+* **&lt;Play&gt;**: 音声ファイルを再生します。
+* **&lt;Pause&gt;**: 何も行わずに指定された秒数待機します。
+* **&lt;Record&gt;**: 呼び出し元の声を録音し、声が録音されたファイルの URL を返します。
+* **&lt;Redirect&gt;**: 通話または SMS の制御を別の URL の TwiML に転送します。
+* **&lt;Reject&gt;**: Twilio 番号への着信通話を拒否します。課金はされません。
+* **&lt;Say&gt;**: テキストを音声に変換して返します。
+* **&lt;Sms&gt;**: SMS メッセージを送信します。
 
 <h3><a id="TwiML"></a>TwiML</h3>
-TwiML is a set of XML-based instructions based on the Twilio verbs that inform Twilio of how to process a call or SMS.
+TwiML は、Twilio 動詞に基づいた XML ベースの命令のセットで、通話または SMS をどのように処理するかを Twilio に通知します。
 
-As an example, the following TwiML would convert the text **Hello World** to speech.
+たとえば、次の TwiML は、テキスト "**Hello World**" を音声に変換します。
 
     <?xml version="1.0" encoding="UTF-8" ?>
     <Response>
        <Say>Hello World</Say>
     </Response>
 
-When your application calls the Twilio API, one of the API parameters is the URL that returns the TwiML response. For development purposes, you can use Twilio-provided URLs to provide the TwiML responses used by your applications. You could also host your own URLs to produce the TwiML responses, and another option is to use the **TwiMLResponse** object.
+アプリケーションで Twilio API を呼び出す場合は、API パラメーターの 1 つである URL によって TwiML 応答が返されます。開発用には、Twilio から提供される URL を使用して、アプリケーションで使用する TwiML 応答を提供することができます。また、独自に URL をホストして、TwiML 応答を生成することもできます。別のオプションとして、**TwiMLResponse** オブジェクトを使用することもできます。
 
-For more information about Twilio verbs, their attributes, and TwiML, see [TwiML][twiml]. For additional information about the Twilio API, see [Twilio API][twilio_api].
+Twilio の動詞と属性、および TwiML の詳細については、[TwiML に関するページ][twiml]を参照してください。Twilio API の詳細については、[Twilio API に関するページ][twilio_api]を参照してください。
 
-<h2><a id="CreateAccount"></a>Create a Twilio Account</h2>
-When you're ready to get a Twilio account, sign up at [Try Twilio][try_twilio]. You can start with a free account, and upgrade your account later.
+<h2><a id="CreateAccount"></a>Twilio アカウントを作成する</h2>
+Twilio アカウントを取得する準備ができたら、[Twilio のサインアップ ページ][try_twilio]でサインアップします。無料アカウントで始め、後でアカウントをアップグレードすることができます。
 
-When you sign up for a Twilio account, you'll receive an account ID and an authentication token. Both will be needed to make Twilio API calls. To prevent unauthorized access to your account, keep your authentication token secure. Your account ID and authentication token are viewable at the [Twilio account page][twilio_account], in the fields labeled **ACCOUNT SID** and **AUTH TOKEN**, respectively.
+Twilio アカウントにサインアップすると、アカウント ID と認証トークンが発行されます。Twilio API を呼び出すには、この両方が必要になります。自分のアカウントが不正にアクセスされないように、認証トークンを安全に保管してください。アカウント ID と認証トークンは、[Twilio アカウント ページ][twilio_account]の **[ACCOUNT SID]** フィールドと **[AUTH TOKEN]** フィールドでそれぞれ確認できます。
 
-<h2><a id="VerifyPhoneNumbers"></a>Verify Phone Numbers</h2>
-Various phone numbers need to be verified with Twilio for your account. For example, if you want to place outbound phone calls using your existing phone number for caller ID, the phone number must be verified with Twilio. Similarly, until you upgrade, if you want to send SMS messages to a phone number, it must be verified with Twilio. After upgrading, you can send SMS messages to any number without verifying it. For information on how to verify a phone number, see [Manage Numbers][verify_phone]. Some of the code below relies on phone numbers that you will need to verify with Twilio.
+<h2><a id="VerifyPhoneNumbers"></a>電話番号を確認する</h2>
+アカウントに対して、さまざまな電話番号を Twilio で確認する必要があります。たとえば、発信元 ID の既存の電話番号を使用して電話を発信する場合は、その電話番号を Twilio で確認する必要があります。同様に、アップグレードするまでは、電話番号に SMS メッセージを送信する場合、その電話番号を Twilio で確認する必要があります。アップグレードした後は、電話番号を確認することなくその番号に SMS メッセージを送信できます。電話番号を確認する方法の詳細については、[番号の管理に関するページ][verify_phone]を参照してください。次に示すコードの一部は、Twilio で確認する必要がある電話番号に依存しています。
 
-As an alternative to using an existing number for your applications, you can purchase a Twilio phone number. For information about purchasing a Twilio phone number, see [Twilio Phone Numbers Help](https://www.twilio.com/help/faq/phone-numbers).
+アプリケーションで既存の番号を使用する代わりに、Twilio 電話番号を購入することができます。Twilio 電話番号の購入については、[Twilio 電話番号のヘルプに関するページ](https://www.twilio.com/help/faq/phone-numbers)を参照してください。
 
-<h2><a id="create_app"></a>Create a PHP Application</h2>
-A PHP application that uses the Twilio service and is running in Azure is no different than any other PHP application that uses the Twilio service. While Twilio services are REST-based and can be called from PHP in several ways, this article will focus on how to use Twilio services with [Twilio library for PHP from Github][twilio_php]. For more information about using the Twilio library for PHP, see [http://readthedocs.org/docs/twilio-php/en/latest/index.html][twilio_lib_docs].
+<h2><a id="create_app"></a>PHP アプリケーションの作成</h2>
+Twilio サービスを使用する Azure 上の PHP アプリケーションと、Twilio サービスを使用するその他の PHP アプリケーションに違いはありません。Twilio サービスは REST ベースであり、PHP から複数の方法で呼び出すことができますが、この記事では、Twilio サービスの呼び出しに [GitHub の PHP 用 Twilio ライブラリ][twilio_php]を使用する方法について重点的に説明します。PHP 用 Twilio ライブラリの使用方法の詳細については、[http://readthedocs.org/docs/twilio-php/en/latest/index.html][twilio_lib_docs] を参照してください。
 
-Detailed instructions for building and deploying a Twilio/PHP application to Azure are available at [How to Make a Phone Call Using Twilio in a PHP Application on Azure][howto_phonecall_php].
+Azure 上で Twilio/PHP アプリケーションをビルドおよび展開する手順の詳細については、「[Azure 上の PHP アプリケーションで Twilio を使用して通話する方法][howto_phonecall_php]」を参照してください。
 
-<h2><a id="configure_app"></a>Configure Your Application to Use Twilio Libraries</h2>
-You can configure your application to use the Twilio library for PHP in two ways:
+<h2><a id="configure_app"></a>Twilio ライブラリを使用するようにアプリケーションを構成する</h2>
+PHP 用 Twilio ライブラリを使用するようにアプリケーションを構成するには、次の 2 つの方法があります。
 
-1. Download the Twilio library for PHP from Github ([https://github.com/twilio/twilio-php][twilio_php]) and add the **Services** directory to your application.
+1. GitHub ([https://github.com/twilio/twilio-php][twilio_php]) から PHP 用 Twilio ライブラリをダウンロードし、**Services** ディレクトリをアプリケーションに追加します。
 
 	-OR-
 
-2. Install the Twilio library for PHP as a PEAR package. It can be installed with the following commands:
+2. PHP 用 Twilio ライブラリを PEAR パッケージとしてインストールします。インストールには、次のコマンドを使用できます。
 
 		$ pear channel-discover twilio.github.com/pear
 		$ pear install twilio/Services_Twilio
 
-Once you have installed the Twilio library for PHP, you can then add a **require_once** statement at the top of your PHP files to reference the library:
+PHP 用 Twilio ライブラリをインストールしたら、ライブラリを参照する **require_once** ステートメントを PHP ファイルの先頭に追加できます。
 
     	require_once 'Services/Twilio.php';
 
-For more information, see [https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme].
+詳細については、[https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme] を参照してください。
 
-<h2><a id="howto_make_call"></a>How to: Make an outgoing call</h2>
-The following shows how to make an outgoing call using the **Services_Twilio** class. This code also uses a Twilio-provided site to return the Twilio Markup Language (TwiML) response. Substitute your values for the **From** and **To** phone numbers, and ensure that you verify the **From** phone number for your Twilio account prior to running the code.
+<h2><a id="howto_make_call"></a>方法: 発信通話する</h2>
+次のコードでは、**Services_Twilio** クラスを使用して発信通話を行う方法を示しています。このコードは、Twilio から提供されるサイトも使用して、Twilio Markup Language (TwiML) 応答を返します。コードを実行する前に、**From** および **To** の電話番号の値を置き換えて、Twilio アカウントの **From** の電話番号を確認します。
 
 	// Include the Twilio PHP library.
 	require_once 'Services/Twilio.php';
@@ -137,14 +137,14 @@ The following shows how to make an outgoing call using the **Services_Twilio** c
 		echo 'Error: ' . $e->getMessage();
 	}
 
-As mentioned, this code uses a Twilio-provided site to return the TwiML response. You could instead use your own site to provide the TwiML response; for more information, see [How to Provide TwiML Responses from Your Own Web Site](#howto_provide_twiml_responses).
+既に説明したように、このコードは Twilio から提供されるサイトを使用して、TwiML 応答を返します。代わりに独自のサイトを使用して TwiML 応答を返すことができます。詳細については、「[方法: 独自の Web サイトから TwiML 応答を返す](#howto_provide_twiml_responses)」を参照してください。
 
 
-- **Note**: To troubleshoot SSL certificate validation errors, see [http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
+- **注**: SSL 証明書の検証エラーのトラブルシューティングを行うには、[http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] を参照してください。
 
 
-<h2><a id="howto_send_sms"></a>How to: Send an SMS message</h2>
-The following shows how to send an SMS message using the **Services_Twilio** class. The **From** number is provided by Twilio for trial accounts to send SMS messages. The **To** number must be verified for your Twilio account prior to running the code.
+<h2><a id="howto_send_sms"></a>方法: SMS メッセージを送信する</h2>
+次のコードでは、**Services_Twilio** クラスを使用して SMS メッセージを送信する方法を示しています。試用アカウントで SMS メッセージを送信できるように、**From** の番号が Twilio から提供されます。コードを実行する前に、Twilio アカウントの **To** の番号を確認する必要があります。
 
 	// Include the Twilio PHP library.
 	require_once 'Services/Twilio.php';
@@ -174,12 +174,12 @@ The following shows how to send an SMS message using the **Services_Twilio** cla
 		echo 'Error: ' . $e->getMessage();
 	}
 
-<h2><a id="howto_provide_twiml_responses"></a>How to: Provide TwiML Responses from your own Web site</h2>
-When your application initiates a call to the Twilio API, Twilio will send your request to a URL that is expected to return a TwiML response. The example above uses the Twilio-provided URL [http://twimlets.com/message][twimlet_message_url]. (While TwiML is designed for use by Twilio, you can view the it in your browser. For example, click [http://twimlets.com/message][twimlet_message_url] to see an empty `<Response>` element; as another example, click [http://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] to see a `<Response>` element that contains a `<Say>` element.)
+<h2><a id="howto_provide_twiml_responses"></a>方法: 独自の Web サイトから TwiML 応答を返す</h2>
+アプリケーションで Twilio API の呼び出しを開始すると、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。前の例では、Twilio から提供される URL [http://twimlets.com/message][twimlet_message_url] を使用しています (TwiML は Twilio で使用するように設計されており、ブラウザーで表示できます。たとえば、[http://twimlets.com/message][twimlet_message_url] をクリックすると、空の `<Response>` 要素が表示されます。もう 1 つの例として、[http://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] をクリックすると、`<Say>` 要素を格納している `<Response>` 要素が表示されます)。
 
-Instead of relying on the Twilio-provided URL, you can create your own site that returns HTTP responses. You can create the site in any language that returns XML responses; this topic assumes you'll be using PHP to create the TwiML.
+Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自のサイトを作成できます。XML 応答を返すサイトは任意の言語で作成できます。このトピックでは、PHP を使用して TwiML を作成します。
 
-The following PHP page results in a TwiML response that says **Hello World** on the call.
+次の PHP ページでは、通話時の TwiML 応答で "**Hello World**" というテキストが読み上げられます。
 
     <?php    
 		header("content-type: text/xml");    
@@ -189,7 +189,7 @@ The following PHP page results in a TwiML response that says **Hello World** on 
 		<Say>Hello world.</Say>
 	</Response>
 
-As you can see from the example above, the TwiML response is simply an XML document. The Twilio library for PHP contains classes that will generate TwiML for you. The example below produces the equivalent response as shown above, but uses the **Services\_Twilio\_Twiml** class in the Twilio library for PHP:
+この例からわかるように、TwiML 応答は XML ドキュメントにすぎません。PHP 用 Twilio ライブラリには、TwiML を生成するクラスが用意されています。次の例では、前の例と同じ応答が生成されますが、PHP 用 Twilio ライブラリの **Services\_Twilio\_Twiml** クラスを使用しています。
 
 	require_once('Services/Twilio.php');
 	
@@ -197,9 +197,9 @@ As you can see from the example above, the TwiML response is simply an XML docum
 	$response->say("Hello world.");
 	print $response;
 
-For more information about TwiML, see [https://www.twilio.com/docs/api/twiml][twiml_reference]. 
+TwiML の詳細については、[https://www.twilio.com/docs/api/twiml][twiml_reference] を参照してください。
 
-Once you have your PHP page set up to provide TwiML responses, use the URL of the PHP page as the URL passed into the  `Services_Twilio->account->calls->create`  method. For example, if you have a Web application named **MyTwiML** deployed to an Azure hosted service, and the name of the PHP page is **mytwiml.php**, the URL can be passed to  **Services_Twilio->account->calls->create**  as shown in the following example:
+TwiML 応答を返すように PHP ページを設定したら、その PHP ページの URL を、`Services_Twilio->account->calls->create` メソッドに渡します。たとえば、Azure ホステッド サービスに展開された **MyTwiML** という名前の Web アプリケーションがあるとします。その PHP ページの名前が **mytwiml.php** である場合、次の例に示すように URL を **Services_Twilio->account->calls->create** に渡すことができます。
 
 	require_once 'Services/Twilio.php';
 
@@ -227,19 +227,19 @@ Once you have your PHP page set up to provide TwiML responses, use the URL of th
 		echo 'Error: ' . $e->getMessage();
 	}
 
-For additional information about using Twilio in Azure with PHP, see [How to Make a Phone Call Using Twilio in a PHP Application on Azure][howto_phonecall_php].
+Azure で PHP に基づいて Twilio を使用する方法の詳細については、「[Azure 上の PHP アプリケーションで Twilio を使用して通話する方法][howto_phonecall_php]」を参照してください。
 
-<h2><a id="AdditionalServices"></a>How to: Use Additional Twilio Services</h2>
-In addition to the examples shown here, Twilio offers web-based APIs that you can use to leverage additional Twilio functionality from your Azure application. For full details, see the [Twilio API documentation][twilio_api_documentation].
+<h2><a id="AdditionalServices"></a>方法: その他の Twilio サービスを使用する</h2>
+ここに示す例以外にも、Twilio が提供する Web ベースの API を使用して、Azure アプリケーションからその他の Twilio 機能を利用することができます。詳細については、[Twilio API に関するドキュメント][twilio_api_documentation]を参照してください。
 
-<h2><a id="NextSteps"></a>Next Steps</h2>
-Now that you've learned the basics of the Twilio service, follow these links to learn more:
+<h2><a id="NextSteps"></a>次のステップ</h2>
+これで、Twilio サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
-* [Twilio Security Guidelines][twilio_security_guidelines]
-* [Twilio HowTo's and Example Code][twilio_howtos]
-* [Twilio Quickstart Tutorials][twilio_quickstarts] 
-* [Twilio on GitHub][twilio_on_github]
-* [Talk to Twilio Support][twilio_support]
+* [Twilio に関するセキュリティ ガイドラインのページ][twilio_security_guidelines]
+* [Twilio に関する方法とコード例のページ][twilio_howtos]
+* [Twilio に関するクイック スタート チュートリアルのページ][twilio_quickstarts]
+* [GitHub 上の Twilio に関するページ][twilio_on_github]
+* [Twilio に関するサポートへの連絡のページ][twilio_support]
 
 [twilio_php]: https://github.com/twilio/twilio-php
 [twilio_lib_docs]: http://readthedocs.org/docs/twilio-php/en/latest/index.html
@@ -249,7 +249,7 @@ Now that you've learned the basics of the Twilio service, follow these links to 
 [howto_phonecall_php]: ../partner-twilio-php-make-phone-call
 [twilio_voice_request]: https://www.twilio.com/docs/api/twiml/twilio_request
 [twilio_sms_request]: https://www.twilio.com/docs/api/twiml/sms/twilio_request
-[misc_role_config_settings]: http://msdn.microsoft.com/en-us/library/windowsazure/hh690945.aspx
+[misc_role_config_settings]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690945.aspx
 [twimlet_message_url]: http://twimlets.com/message
 [twimlet_message_url_hello_world]: http://twimlets.com/message?Message%5B0%5D=Hello%20World
 [twiml_reference]: https://www.twilio.com/docs/api/twiml
@@ -267,3 +267,4 @@ Now that you've learned the basics of the Twilio service, follow these links to 
 [twilio_on_github]: https://github.com/twilio
 [twilio_support]: http://www.twilio.com/help/contact
 [twilio_quickstarts]: http://www.twilio.com/docs/quickstart
+

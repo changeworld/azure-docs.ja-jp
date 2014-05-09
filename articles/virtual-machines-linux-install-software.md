@@ -1,46 +1,46 @@
-<properties linkid="manage-linux-commontasks-install-software" urlDisplayName="Install software on VM" pageTitle="Install software on a Linux virtual machine - Azure" metaKeywords="" description="Learn how to install software on your Linux virtual machine in Azure by using CentOS/Red Hat or Ubuntu." metaCanonical="" services="virtual-machines" documentationCenter="" title="Install software on your Linux virtual machine in Azure" authors="" solutions="" manager="" editor="" />
+<properties linkid="manage-linux-commontasks-install-software" urlDisplayName="VM へのソフトウェアのインストール" pageTitle="Linux 仮想マシンへのソフトウェアのインストール - Azure" metaKeywords="" description="CentOS/Red Hat または Ubuntu を使用して Azure 上の Linux 仮想マシンにソフトウェアをインストールする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure 上の Linux 仮想マシンへのソフトウェアのインストール" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-#Install software on your Linux virtual machine in Azure
+# Azure 上の Linux 仮想マシンへのソフトウェアのインストール
 
-Linux distributions tend to use software "packages" to install software. These packages are usually managed using a set of commands, such as `apt` or `yum`. You can also install programs without a package, such as with a _tarball_ of the source code.
+Linux ディストリビューションでは、ソフトウェア "パッケージ" を使用してソフトウェアをインストールするのが一般的です。これらのパッケージは通常、`apt` や `yum` のような一連のコマンドを使用して管理します。また、パッケージを使用せずにソフトウェアをインストールすることもできます。たとえば、ソース コードの _tarball_ を使用する場合です。
 
-We will be covering how to use the package managers for some of the common Linux distributions. The stepos will differ based on which Linux distribution you are using.
+ここでは、いくつかの一般的な Linux ディストリビューションのパッケージ マネージャーを使用してソフトウェアをインストールする方法について説明します。インストールの手順は使用する Linux ディストリビューションによって異なります。
 
-**Note:** Depending on how your environment is setup, these commands may need to be ran using root privleges (via `sudo`).
+**注:** 環境がどのようにセットアップされているかに応じて、ここで示しているコマンドの実行には root 権限 (`sudo` の使用) が必要になる場合があります。
 
 ##CentOS/Red Hat
 
-CentOS comes with `yum` for package management. With this tool, you can install, uninstall, update, list installed packages, and more. See below for the syntax to these commands.
+CentOS には、パッケージ管理用に `yum` が付属しています。このツールを使用すると、パッケージのインストール、アンインストール、更新、インストール済みパッケージの一覧表示などが可能です。これらのコマンドの構文については、この後の説明を参照してください。
 
 
-### Installing
+### インストール
 
-This will install a package, as well as any packages it depends on. Due to dependencies, more than one package may be installed.
+このコマンドでは、パッケージおよびそれと依存関係のあるパッケージがすべてインストールされます。依存関係に応じて、複数のパッケージがインストールされる場合があります。
 
 	yum install [package name]
 
 
-### Uninstalling
+### アンインストール
 
-This will uninstall a package from your machine. Keep in mind, it will not remove any dependencies.
+このコマンドでは、マシンからパッケージがアンインストールされます。ただし、依存関係は削除されないことに注意してください。
 
 	yum remove [package name]
 
 
-### Updating
+### 更新
 
-This will update a package to the latest version. The package must be installed before you can update it.
+このコマンドでは、パッケージが最新バージョンに更新されます。パッケージを更新するには、そのパッケージがインストールされている必要があります。
 
 	yum update [package name]
 
 
-### Listing Installed Packages
+### インストール済みパッケージの一覧表示
 
-This will show a list of all the installed packages on your machine.
+このコマンドでは、マシン上のすべてのインストール済みパッケージが一覧表示されます。
 
 	yum list installed
 
@@ -48,29 +48,30 @@ This will show a list of all the installed packages on your machine.
 Ubuntu
 ------
 
-Ubuntu comes with `apt` (Advanced Packaging Tool) for package management. With this tool, you can install, uninstall, update, list installed packages, and more. See below for the syntax to these commands.
+Ubuntu には、パッケージ管理用に `apt` (Advanced Packaging Tool) が付属しています。このツールを使用すると、パッケージのインストール、アンインストール、更新、インストール済みパッケージの一覧表示などが可能です。これらのコマンドの構文については、この後の説明を参照してください。
 
 
-### Installing
+### インストール
 
-This will install a package, as well as any packages it depends on. Due to dependencies, more than one package may be installed.
+このコマンドでは、パッケージおよびそれと依存関係のあるパッケージがすべてインストールされます。依存関係に応じて、複数のパッケージがインストールされる場合があります。
 
 	apt-get install [package name]
 
 
-### Uninstalling
+### アンインストール
 
-This will uninstall a package from your machine. Keep in mind, it will not remove any dependencies.
+このコマンドでは、マシンからパッケージがアンインストールされます。ただし、依存関係は削除されないことに注意してください。
 
 	apt-get remove [package name]
 
 
-### Updating/Upgrading
+### 更新/アップグレード
 
-To upgrade to a new versio, you will need to use two commands: one to update your package index, and another to upgrade the packages. Run the following command to update your package index:
+新しいバージョンにアップグレードするには、2 つのコマンドを使用する必要があります。1 つはパッケージのインデックスを更新するコマンド、もう 1 つはパッケージをアップグレードするコマンドです。次のコマンドを実行して、パッケージのインデックスを更新します。
 
 	apt-get update
 
-Once your package index is updated, run the following command to ugprade your packages:
+パッケージのインデックスが更新されたら、次のコマンドを実行してパッケージをアップグレードします。
 
 	apt-get upgrade
+

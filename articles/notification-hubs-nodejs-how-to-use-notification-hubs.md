@@ -1,43 +1,42 @@
-<properties linkid="develop-nodejs-how-to-guides-service-bus-notification-hubs" urlDisplayName="Notification Hubs" pageTitle="Service Bus Notification Hubs - Node.js Dev Center" metaKeywords="" description="Learn how to use Service Bus Notification Hubs to send push notifications. Code samples are written for Node.js applications." metaCanonical="" services="service-bus" documentationCenter="Node.js" title="How to Use Service Bus Notification Hubs" authors="larryfr" solutions="" manager="" editor="" />
+<properties linkid="develop-nodejs-how-to-guides-service-bus-notification-hubs" urlDisplayName="通知ハブ" pageTitle="サービス バス通知ハブ - Node.js デベロッパー センター" metaKeywords="" description="サービス バス通知ハブを使用してプッシュ通知を送信する方法について説明します。コード サンプルは Node.js アプリケーション向けに作成されています。" metaCanonical="" services="service-bus" documentationCenter="Node.js" title="サービス バス通知ハブの使用方法" authors="larryfr" solutions="" manager="" editor="" />
 
 
 
 
 
+# サービス バス通知ハブの使用方法
 
-# How to Use Service Bus Notification Hubs
+このガイドでは、Node.js アプリケーションからサービス バス通知ハブを
+使用する方法について説明します。紹介するシナリオでは、**Android、iOS、Windows Phone、Windows ストア アプリへの通知の送信**を対象としています。通知ハブの詳細については、「[次のステップ](#next)」のセクションを参照してください。
 
-This guide will show you how to use Service Bus Notification Hubs
-from Node.js applications. The scenarios covered include **sending notifications to Android, iOS, Windows Phone and Windows Store applications**. For more information on notification hubs, see the [Next Steps](#next) section.
+## 目次
 
-## Table of Contents
+-   [サービス バス 通知ハブとは](#hub)
+-   [Node.js アプリケーションの作成](#create)
+-   [サービス バスを使用するためのアプリケーションの構成](#config)
+-   [方法: 通知を送信する](#send)
+-   [次のステップ](#next)
 
--   [What is are Service Bus Notification Hubs?](#hub)
--   [Create a Node.js application](#create)
--   [Configure the application to use Service Bus](#config)
--   [How to: Send notifications](#send)
--   [Next Steps](#next)
+##<a id="hub"></a> サービス バス通知ハブとは
 
-##<a id="hub"></a> What are Service Bus Notification Hubs? 
+Azure のサービス バス通知ハブによって、モバイル デバイスにプッシュ通知を送信するための、使いやすく拡張性の高いマルチプラットフォーム インフラストラクチャが提供されます。詳細については、「[Azure のサービス バス通知ハブ](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj927170.aspx)」を参照してください。
 
-Azure Service Bus Notification Hubs provide an easy-to-use, multiplatform, scalable infrastructure for sending push notifications to mobile devices. For more information, see [Azure Service Bus Notification Hubs](http://msdn.microsoft.com/en-us/library/windowsazure/jj927170.aspx).
+##<a id="create"></a> Node.js アプリケーションの作成
 
-##<a id="create"></a> Create a Node.js Application
+空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure Web サイトへの展開]」、「[Node.js クラウド サービス]」(Windows PowerShell の使用)、または「[WebMatrix を使用した Web サイト]」を参照してください。
 
-Create a blank Node.js application. For instructions creating a Node.js application, see [Create and deploy a Node.js application to Azure Web Site], [Node.js Cloud Service] (using Windows PowerShell), or [Web Site with WebMatrix].
+##<a id="config"></a> サービス バスを使用するようにアプリケーションを構成する
 
-##<a id="config"></a> Configure Your Application to Use Service Bus
+Azure のサービス バスを使用するには、Node.js azure パッケージを
+ダウンロードして使用する必要があります。このパッケージには、サービス バス REST サービスと通信
+するための便利なライブラリのセットが含まれています。
 
-To use Azure Service Bus, you need to download and use the
-Node.js azure package. This includes a set of convenience libraries that
-communicate with the Service Bus REST services.
+### ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
 
-### Use Node Package Manager (NPM) to obtain the package
+1.  **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
 
-1.  Use a command-line interface such as **PowerShell** (Windows,) **Terminal** (Mac,) or **Bash** (Unix), navigate to the folder where you created your sample application.
-
-2.  Type **npm install azure** in the command window, which should
-    result in the following output:
+2.  コマンド ウィンドウに「**npm install azure**」と入力すると、
+    次のような出力が生成されます。
 
         azure@0.7.0 node_modules\azure
 		|-- dateformat@1.0.2-1.2.3
@@ -51,61 +50,60 @@ communicate with the Service Bus REST services.
 		|-- xml2js@0.2.6 (sax@0.4.2)
 		|-- request@2.16.6 (forever-agent@0.2.0, aws-sign@0.2.0, tunnel-agent@0.2.0, oauth-sign@0.2.0, json-stringify-safe@3.0.0, cookie-jar@0.2.0, node-uuid@1.4.0, qs@0.5.5, hawk@0.10.2, form-data@0.0.7)
 
-3.  You can manually run the **ls** or **dir** command to verify that a
-    **node\_modules** folder was created. Inside that folder find the
-    **azure** package, which contains the libraries you need to access
-    Service Bus notification hubs.
+3. 手動で **ls** または **dir** コマンドを実行して、
+    **node\_modules** フォルダーが作成されたことを確認することもできます。このフォルダーで
+    **azure** パッケージを検索します。このパッケージには、
+    サービス バス通知ハブにアクセスするために必要なライブラリが含まれています。
 
-### Import the module
+### モジュールのインポート
 
-Using a text editor, add the following to the top of
-the **server.js** file of the application:
+テキスト エディターを使用して、アプリケーションの 
+**server.js** ファイルの先頭に次の内容を追加します。
 
     var azure = require('azure');
 
-### Setup an Azure Service Bus connection
+### Azure のサービス バス接続の設定
 
-The **NotificationHubService** object lets you work with notification hubs. The
-following code creates a **NotificationHubService** object for the nofication hub named **hubname**. Add it near the
-top of the **server.js** file, after the statement to import the azure
-module:
+**NotificationHubService** オブジェクトを使用すると、通知ハブを操作できます。次の
+コードは、**hubname** という名前の通知ハブ用の **NotificationHubService** オブジェクトを作成します。**server.js** ファイルの
+先頭付近の、azure モジュールをインポートするステートメントの後に、このコードを追加します。
 
     var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
 
-The connection **connectionstring** value can be obtained from the Azure Management portal by performing the following steps:
+接続 **connectionstring** の値は、Azure 管理ポータルで次の手順を実行して取得できます。
 
-1. From the Azure Management portal, select **Service Bus**, and then select the namespace that contains the notification hub.
+1. Azure 管理ポータルで **[サービス バス]** を選択し、通知ハブが含まれている名前空間を選択します。
 
-2. Select **NOTIFICATION HUBS**, and then select the hub you wish to use.
+2. **[通知ハブ]** を選択し、使用するハブを選択します。
 
-3. Select **View Connection String** from the **quick glance** section, and copy the connection string value.
+3. **[概要]** セクションで **[接続文字列の表示]** を選択し、接続文字列の値をコピーします。
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>You can also retrieve the connection string using the <b>Get-AzureSbNamespace</b> cmdlet provided by Azure PowerShell or the <b>azure sb namespace show</b> command with the Azure Command-Line Tools.</p>
+<strong>注</strong>
+<p>また、Azure PowerShell に用意されている <b>Get-AzureSbNamespace</b> コマンドレット、または Azure コマンド ライン ツールで <b>azure sb namespace show</b> コマンドを使用して、接続文字列を取得することもできます。</p>
 
 </div>
 
-##<a id="send"></a> How to send notifications
+##<a id="send"></a> 通知の送信方法
 
-The **NotificationHubService** object exposes the following object instances for sending notifications to specific devices and applications:
+**NotificationHubService** オブジェクトは、特定のデバイスやアプリケーションに通知を送信するために、次のオブジェクト インスタンスを公開します。
 
-* **Android** - use the **GcmService** object, which is available at **notificationHubService.gcm**
-* **iOS** - use the **ApnsService** object, which is accessible at **notificationHubService.apns**
-* **Windows Phone** - use the **MpnsService** object, which is available at **notificationHubService.mpns**
-* **Windows Store applications** - use the **WnsService** object, which is available at **notificationHubService.wns**
+* **Android** - **notificationHubService.gcm** で利用可能な **GcmService** オブジェクトを使用します。
+* **iOS** - **notificationHubService.apns** でアクセス可能な **ApnsService** オブジェクトを使用します。
+* **Windows Phone** - **notificationHubService.mpns** で利用可能な **MpnsService** オブジェクトを使用します。
+* **Windows Store applications** - **notificationHubService.wns** で利用可能な **WnsService** オブジェクトを使用します。
 
-### How to send Android application notifications
+### Android アプリケーション通知の送信方法
 
-The **GcmService** object provides a **send** method that can be used to send notifications to Android applications. The **send** method accepts the following parameters:
+**GcmService** オブジェクトには、Android アプリケーションに通知を送信するために使用される **send** メソッドが用意されています。**send** メソッドは、次のパラメーターを受け取ります。
 
-* Tags - the tag identifier. If no tag is provided, the notification will be sent to al clients
-* Payload - the message's JSON or string payload
-* Callback - the callback function
+* Tags - タグ識別子。タグが指定されない場合、通知はすべてのクライアントに送信されます。
+* Payload - メッセージの JSON または文字列ペイロード
+* Callback - コールバック関数
 
-For more information on the payload format, see the Payload section of [Implementing GCM Server](http://developer.android.com/google/gcm/server.html#payload).
+ペイロード形式の詳細については、「[Implementing GCM Server (GCM サーバーの実装)](http://developer.android.com/google/gcm/server.html#payload)」の「Payload (ペイロード)」のセクションを参照してください。
 
-The following code uses the **GcmService** instance exposed by the **NotificationHubService** to send a message to all clients.
+次のコードは、**NotificationHubService** によって公開されている **GcmService** インスタンスを使用して、すべてのクライアントにメッセージを送信します。
 
 	var payload = {
 	  data: {
@@ -118,17 +116,17 @@ The following code uses the **GcmService** instance exposed by the **Notificatio
 	  }
 	});
 
-### How to send iOS application notifications
+### iOS アプリケーション通知の送信方法
 
-The **ApnsService** object provides a **send** method that can be used to send notifications to iOS applications. The **send** method accepts the following parameters:
+**ApnsService** オブジェクトには、iOS アプリケーションに通知を送信するために使用される **send** メソッドが用意されています。**send** メソッドは、次のパラメーターを受け取ります。
 
-* Tags - the tag identifier. If no tag is provided, the notification will be sent to all clients
-* Payload - the message's JSON or string payload
-* Callback - the callback function
+* Tags - タグ識別子。タグが指定されない場合、通知はすべてのクライアントに送信されます。
+* Payload - メッセージの JSON または文字列ペイロード
+* Callback - コールバック関数
 
-For more information the payload format, see The Notification Payload section of the [Local and Push Notification Programming Guide](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html).
+ペイロード形式の詳細については、「[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html)」の「Notification Payload (通知ペイロード)」のセクションを参照してください。
 
-The following code uses the **ApnsService** instance exposed by the **NotificationHubService** to send an alert message to all clients:
+次のコードは、**NotificationHubService** によって公開されている **ApnsService** インスタンスを使用して、すべてのクライアントにアラート メッセージを送信します。
 
 	var payload={ 
 	    alert: 'Hello!'
@@ -139,20 +137,20 @@ The following code uses the **ApnsService** instance exposed by the **Notificati
       }
 	});
 
-### How to send Windows Phone notifications
+### Windows Phone 通知の送信方法
 
-The **MpnsService** object provides a **send** method that can be used to send notifications to Windows Phone applications. The **send** method accepts the following parameters:
+**MpnsService** オブジェクトには、Windows Phone アプリに通知を送信するために使用される **send** メソッドが用意されています。**send** メソッドは、次のパラメーターを受け取ります。
 
-* Tags - the tag identifier. If no tag is provided, the notification will be sent to all clients
-* Payload - the message's XML payload
-* TargetName - 'toast' for toast notifications. 'token' for tile notifications.
-* NotificationClass - The priority of the notification. See the HTTP Header Elements section of [Push notifications from a server](http://msdn.microsoft.com/en-us/library/hh221551.aspx) for valid values.
-* Options - optional request headers
-* Callback - the callback function
+* Tags - タグ識別子。タグが指定されない場合、通知はすべてのクライアントに送信されます。
+* Payload - メッセージの XML ペイロード
+* TargetName - トースト通知の場合は 'toast'。タイル通知の場合は 'token'。
+* NotificationClass - 通知の優先度。有効な値については、「[Push notifications from a server (サーバーからのプッシュ通知)](http://msdn.microsoft.com/ja-jp/library/hh221551.aspx)」の「HTTP Header Elements (HTTP ヘッダー要素)」のセクションを参照してください。
+* Options - 省略可能な要求ヘッダー
+* Callback - コールバック関数
 
-For a list of valid TargetName, NotificationClass, and header options, see [Push notifications from a server](http://msdn.microsoft.com/en-us/library/hh221551.aspx).
+有効な TargetName、NotificationClass、ヘッダー オプションについては、「[Push notifications from a server (サーバーからのプッシュ通知)](http://msdn.microsoft.com/ja-jp/library/hh221551.aspx)」を参照してください。
 
-The following code uses the **MpnsService** instance exposed by the **NotificationHubService** to send a toast alert:
+次のコードは、**NotificationHubService** によって公開されている **MpnsService** インスタンスを使用して、トースト アラートを送信します。
 
 	var payload = '<?xml version="1.0" encoding="utf-8"?><wp:Notification xmlns:wp="WPNotification"><wp:Toast><wp:Text1>string</wp:Text1><wp:Text2>string</wp:Text2></wp:Toast></wp:Notification>';
 	notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
@@ -161,19 +159,19 @@ The following code uses the **MpnsService** instance exposed by the **Notificati
 	  }
 	});
 
-### How to send Windows Store application notifications
+### Windows ストア アプリ通知の送信方法
 
-The **WnsService** object provides a **send** method that can be used to send notifications to Windows Store applications.  The **send** method accepts the following parameters:
+**WnsService** オブジェクトには、Windows ストア アプリに通知を送信するために使用される **send** メソッドが用意されています。**send** メソッドは、次のパラメーターを受け取ります。
 
-* Tags - the tag identifier. If no tag is provided, the notification will be sent to all clients
-* Payload - the XML message payload
-* Type - the notification type
-* Options - optional request headers
-* Callback - the callback function
+* Tags - タグ識別子。タグが指定されない場合、通知はすべてのクライアントに送信されます。
+* Payload - XML メッセージ ペイロード
+* Type - 通知の種類
+* Options - 省略可能な要求ヘッダー
+* Callback - コールバック関数
 
-For a list of valid Types and request headers, see [Push notification service request and response headers](http://msdn.microsoft.com/en-us/library/windows/apps/hh465435.aspx).
+有効な Type と要求ヘッダーの一覧については、「[プッシュ通知サービスの要求ヘッダーと応答ヘッダー](http://msdn.microsoft.com/ja-jp/library/windows/apps/hh465435.aspx)」を参照してください。
 
-The following code uses the **WnsService** instance exposed by the **NotificationHubService** to send a toast alert:
+次のコードは、**NotificationHubService** によって公開されている **WnsService** インスタンスを使用して、トースト アラートを送信します。
 
 	var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
 	notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
@@ -182,41 +180,42 @@ The following code uses the **WnsService** instance exposed by the **Notificatio
 	  }
 	});
 
-##<a id="next"></a> Next Steps
+##<a id="next"></a> 次のステップ
 
-Now that you've learned the basics of Service Bus topics, follow these
-links to learn more.
+これで、サービス バス トピックの基本を学習できました。さらに詳細な情報が
+必要な場合は、次のリンク先を参照してください。
 
--   See the MSDN Reference: [Azure Service Bus Notification Hubs][].
--   Visit the [Azure SDK for Node] repository on GitHub.
+-   MSDN リファレンス:「[Azure のサービス バス通知ハブ][]」。
+-   GitHub の [Azure SDK for Node] リポジトリ。
 
   [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
-  [Next Steps]: #nextsteps
-  [What are Service Bus Topics and Subscriptions?]: #what-are-service-bus-topics
-  [Create a Service Namespace]: #create-a-service-namespace
-  [Obtain the Default Management Credentials for the Namespace]: #obtain-default-credentials
-  [Create a Node.js Application]: #Create_a_Nodejs_Application
-  [Configure Your Application to Use Service Bus]: #Configure_Your_Application_to_Use_Service_Bus
-  [How to: Create a Topic]: #How_to_Create_a_Topic
-  [How to: Create Subscriptions]: #How_to_Create_Subscriptions
-  [How to: Send Messages to a Topic]: #How_to_Send_Messages_to_a_Topic
-  [How to: Receive Messages from a Subscription]: #How_to_Receive_Messages_from_a_Subscription
-  [How to: Handle Application Crashes and Unreadable Messages]: #How_to_Handle_Application_Crashes_and_Unreadable_Messages
-  [How to: Delete Topics and Subscriptions]: #How_to_Delete_Topics_and_Subscriptions
+  [次のステップ]: #nextsteps
+  [サービス バス トピックとサブスクリプションとは]: #what-are-service-bus-topics
+  [サービス名前空間の作成]: #create-a-service-namespace
+  [名前空間の既定の管理資格情報の取得]: #obtain-default-credentials
+  [Node.js アプリケーションの作成]: #Create_a_Nodejs_Application
+  [サービス バスを使用するようにアプリケーションを構成する]: #Configure_Your_Application_to_Use_Service_Bus
+  [How to: トピックを作成する]: #How_to_Create_a_Topic
+  [How to: サブスクリプションを作成する]: #How_to_Create_Subscriptions
+  [How to: メッセージをトピックに送信する]: #How_to_Send_Messages_to_a_Topic
+  [How to: サブスクリプションからメッセージを受信する]: #How_to_Receive_Messages_from_a_Subscription
+  [How to: アプリケーションのクラッシュと読み取り不能のメッセージを処理する]: #How_to_Handle_Application_Crashes_and_Unreadable_Messages
+  [How to: トピックとサブスクリプションを削除する]: #How_to_Delete_Topics_and_Subscriptions
   [1]: #Next_Steps
-  [Topic Concepts]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-topics-01.png
-  [Azure Management Portal]: http://manage.windowsazure.com
+  [トピックの概念]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-topics-01.png
+  [Azure 管理ポータル]: http://manage.windowsazure.com
   [image]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-03.png
   [2]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-04.png
   [3]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-05.png
   [4]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-06.png
   [5]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-07.png
-  [SqlFilter.SqlExpression]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-  [Azure Service Bus Notification Hubs]: http://msdn.microsoft.com/en-us/library/windowsazure/jj927170.aspx
-  [SqlFilter]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
-  [Web Site with WebMatrix]: /en-us/develop/nodejs/tutorials/web-site-with-webmatrix/
-  [Node.js Cloud Service]: /en-us/documentation/articles/cloud-services-nodejs-develop-deploy-app/
-[Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
-  [Create and deploy a Node.js application to Azure Web Site]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)/
-  [Node.js Cloud Service with Storage]: /en-us/develop/nodejs/tutorials/web-app-with-storage/
-  [Node.js Web Application with Storage]: /en-us/develop/nodejs/tutorials/web-site-with-storage/
+  [SqlFilter.SqlExpression]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
+  [Azure のサービス バス通知ハブ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj927170.aspx
+  [SqlFilter]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
+  [WebMatrix を使用した Web サイト]: /ja-jp/develop/nodejs/tutorials/web-site-with-webmatrix/
+  [Node.js クラウド サービス]: /ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/
+[管理ポータルを開く]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
+  [Node.js アプリケーションの作成と Azure Web サイトへの展開]: /ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
+  [ストレージを使用する Node.js クラウド サービス]: /ja-jp/develop/nodejs/tutorials/web-app-with-storage/
+  [ストレージを使用する Node.js Web アプリケーション]: /ja-jp/develop/nodejs/tutorials/web-site-with-storage/
+
