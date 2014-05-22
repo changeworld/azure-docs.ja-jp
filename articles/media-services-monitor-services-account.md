@@ -1,50 +1,51 @@
-<properties linkid="manage-services-mediaservices-monitor-a-media-services-account" urlDisplayName="How to monitor" pageTitle="Monitor a Media Services Account - Azure" metaKeywords="" description="Describes how to configure monitoring for your Media Services account in Azure." metaCanonical="" services="media-services" documentationCenter="" title="How to Monitor a Media Services Account" authors="migree" solutions="" manager="" editor="" />
+<properties linkid="manage-services-mediaservices-monitor-a-media-services-account" urlDisplayName="監視する方法" pageTitle="メディア サービス アカウントの監視 - Azure" metaKeywords="" description="Azure のメディア サービス アカウントの監視を構成する方法を説明します。" metaCanonical="" services="media-services" documentationCenter="" title="メディア サービス アカウントを監視する方法" authors="migree" solutions="" manager="" editor="" />
 
 
 
 
 
-<h1><a id="monitormediaservicesaccount"></a>How to Monitor a Media Services Account</h1>
-The Azure Media Services dashboard presents usage metrics and account information that you can use to manage your Media Services account.
+<h1><a id="monitormediaservicesaccount"></a>メディア サービス アカウントの監視方法に関するページ</h1>
+Azure メディア サービスのダッシュボードには、使用状況のメトリックおよびアカウント情報が表示され、それをメディア サービス アカウントの管理に利用できます。
 
-You can monitor the number of queued encoding jobs, failed encoding tasks, active encoding jobs represented by the input and output data from the encoder, as well as the blob storage usage associated with your Media Services account. In addition, if you are streaming content to customers, you can retrieve various streaming metrics as well. You can choose to monitor your data for the last 6 hours, 24 hours or 7 days.
+監視できるのは、キューに格納されたエンコード ジョブの数、失敗したエンコード タスク、エンコーダーからの入出力データによって表されるアクティブなエンコード ジョブ、およびメディア サービス アカウントに関連付けられた BLOB ストレージの使用状況です。さらに、顧客に対してコンテンツをストリーミング配信している場合は、さまざまなストリーミング メトリックも取得できます。データの監視期間は、過去 6 時間、24 時間、または 7 日間から選択できます。
  
-**Note**   Additional costs are associated with monitoring storage data in the Azure Management Portal. For more information, see [Storage Analytics and Billing](http://go.microsoft.com/fwlink/?LinkId=256667).
+**注:** Azure 管理ポータルでストレージ データを監視すると、それに応じて追加のコストがかかります。詳細については、[ストレージの分析と課金に関するページ](http://go.microsoft.com/fwlink/?LinkId=256667)を参照してください。
 
-<h2><a id="configuremonitoring"></a>How to: Monitoring a Media Services account</h2>
+<h2><a id="configuremonitoring"></a>方法: メディア サービス アカウントの監視</h2>
 
-1. In the [Management Portal](http://go.microsoft.com/fwlink/?LinkID=256666), click **Media Services**, and then click the Media Services account name to open the dashboard. 
+1. [管理ポータル](http://go.microsoft.com/fwlink/?LinkID=256666)で、**[メディア サービス]** をクリックし、目的のメディア サービス アカウント名をクリックしてダッシュボードを開きます。
 
 	![MediaServices_Dashboard][dashboard]
 
-2. To monitor your encoding jobs or data, simply begin submitting encoding jobs to Media Services, or start streaming content to customers through the use of Azure Media On-Demand Streaming. You should start seeing monitoring data on the dashboard after about an hour.
+2. エンコード ジョブまたはデータを監視するには、メディア サービスに対するエンコード ジョブの送信を開始するか、Azure メディア オンデマンド ストリーミングを使用して顧客に対するコンテンツのストリーミング配信を開始します。約 1 時間後に、ダッシュボードに監視データが表示されるようになります。
 
-<h2><a id="configuringstorage"></a>How to: Monitoring your blob storage usage (Optional)</h2>
-1. Click the **STORAGE ACCOUNT** name under the **quick glance** section.
-2. On the storage account page, click the **configure page** link, and scroll down to the **monitoring** settings for the Blob, Table, and Queue services, shown below.
+<h2><a id="configuringstorage"></a>方法: BLOB ストレージの使用状況の監視 (省略可能)</h2>
+1. **[概要]** で、**ストレージ アカウント**の名前をクリックします。
+2. ストレージ アカウントのページで、**[構成ページ]** リンクをクリックして、BLOB、テーブル、キューの各サービスの **[監視]** 設定まで下図のようにスクロールします。
 
-	**Note** Blobs are the only supported storage type in Media Services.
+	**注:** BLOB は、メディア サービスで唯一サポートされているストレージの種類です。
 
 	![StorageOptions][storage_options_scoped]
 
-3. In **monitoring**, set the level of monitoring and the data retention policy for Blobs:
+3. **[監視]** で、BLOB の監視レベルおよびデータ保有ポリシーを設定します。
 
--  To set the monitoring level, select one of the following:
+- 監視レベルを設定するには、以下のいずれかを選択します。
 
-      **Minimal** - Collects metrics such as ingress/egress, availability, latency, and success percentages, which are aggregated for the Blob, Table, and Queue services.
+      **[最低限]** - BLOB サービス、テーブル サービス、キュー サービスに集計される、受信/送信、可用性、遅延時間、成功のパーセンテージなどのメトリックを収集します。
 
-      **Verbose** - In addition to the minimal metrics, collects the same set of metrics for each storage operation in the Azure Storage Service API. Verbose metrics enable closer analysis of issues that occur during application operations. 
+      **[詳細]** - 最小レベルのメトリックに加えて、Azure ストレージ サービス API のストレージ操作ごとに同じメトリックを収集します。詳細メトリックにより、アプリケーションの操作中に発生する問題を詳しく分析できます。
 
-      **Off** - Turns off monitoring. Existing monitoring data is persisted through the end of the retention period.
+      **[オフ]** - 監視しません。既存の監視データは、保有期間が経過するまで残ります。
 
-- To set the data retention policy, in **Retention (in days)**, type the number of days of data to retain from 1 to 365 days. If you do not want to set a retention policy, enter zero. If there is no retention policy, it is up to you to delete the monitoring data. We recommend setting a retention policy based on how long you want to retain storage analytics data for your account so that old and unused analytics data can be deleted by the system at no cost.
+- データ保有ポリシーを設定するには、**[保有期間 (日)]** ボックスに、データを保有する日数を 1 ～ 365 日の範囲で入力します。保有ポリシーを設定しない場合は、「0」(ゼロ) を入力します。保有ポリシーがない場合、監視データを削除する責任はユーザーが負います。使用しない古い分析データがコストをかけずに自動的に削除されるように、アカウントのストレージ分析データをどの程度の期間保持するかに基づいて、データ保有ポリシーを設定することをお勧めします。
 
-4. When you finish the monitoring configuration, click **Save**.
-Similar to Media Services metrics, you should start seeing monitoring data on the dashboard after about an hour.
-Metrics are stored in the storage account in four tables named $MetricsTransactionsBlob, $MetricsTransactionsTable, $MetricsTransactionsQueue, and $MetricsCapacityBlob. For more information, see [Storage Analytics Metrics](http://go.microsoft.com/fwlink/?LinkId=256668).
+4. 監視の構成が完了したら、**[保存]** をクリックします。
+メディア サービスのメトリックと同様に、約 1 時間後に、ダッシュボードに監視データが表示されるようになります。
+メトリックは、ストレージ アカウントの、$MetricsTransactionsBlob、$MetricsTransactionsTable、$MetricsTransactionsQueue、$MetricsCapacityBlob という名前の 4 つのテーブルに格納されています。詳細については、[ストレージ分析のメトリックに関するページ](http://go.microsoft.com/fwlink/?LinkId=256668)を参照してください。
 
 
 <!-- Images -->
 [dashboard]: ./media/media-services-monitor-services-account/media-services-dashboard.png
 [storage_options_scoped]: ./media/media-services-monitor-services-account/storagemonitoringoptions_scoped.png
+
 

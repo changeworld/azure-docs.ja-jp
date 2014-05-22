@@ -1,15 +1,15 @@
-<properties linkid="develop-media-services-how-to-guides-manage-assets" urlDisplayName="Manage Assets in Media Services" pageTitle="How to Manage Assets in Media Services - Azure" metaKeywords="" description="Learn how to manage assets on Media Services. You can also manage jobs, tasks, access policies, locators, and more. Code samples are written in C# and use the Media Services SDK for .NET." metaCanonical="" services="media-services" documentationCenter="" title="How to: Manage Assets in storage" authors="migree" solutions="" manager="" editor="" />
+<properties linkid="develop-media-services-how-to-guides-manage-assets" urlDisplayName="メディア サービス内のアセットの管理" pageTitle="メディア サービス内のアセットを管理する方法 - Azure" metaKeywords="" description="メディア サービス内のアセットを管理する方法を説明します。ジョブ、タスク、アクセス ポリシー、ロケーターなども管理できます。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" metaCanonical="" services="media-services" documentationCenter="" title="方法: ストレージ内のアセットを管理する" authors="migree" solutions="" manager="" editor="" />
 
 
 
 
-<h1>How to: Manage Assets in storage</h1>
+<h1>方法: ストレージ内のアセットを管理する</h1>
 
-This article is one in a series introducing Azure Media Services programming. The previous topic was [How to: Protect an Asset](http://go.microsoft.com/fwlink/?LinkID=301813&clcid=0x409).
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[アセットを保護する方法の説明のページ](http://go.microsoft.com/fwlink/?LinkID=301813&clcid=0x409)を参照してください。
 
-After you create media assets and upload them to Media Services, you can access and manage the assets on the server. You can also manage other objects on the server that are part of Media Services, including jobs, tasks, access policies, locators, and more.
+メディア アセットを作成してメディア サービスにアップロードした後、サーバー上のそのアセットにアクセスして管理することができます。サーバー上には、それ以外にも、ジョブ、タスク、アクセス ポリシー、ロケーターなど、メディア サービスのさまざまなオブジェクトが存在しますが、それらのオブジェクトも管理対象にすることができます。
 
-The following example shows how to query for an asset by assetId. 
+次の例は、assetId でアセットを照会する方法を示しています。
 <pre><code>
 static IAsset GetAsset(string assetId)
 {
@@ -25,7 +25,7 @@ static IAsset GetAsset(string assetId)
 }
 </code></pre> 
 
-To list all assets available on the server, you can use the following method which iterates through the assets collection, and display details about each asset.
+サーバーで利用可能なすべてのアセットを一覧表示するには、次のメソッドを使ってアセット コレクションを反復処理し、各アセットの詳細を表示できます。
 <pre><code> 
 static void ListAssets()
 {
@@ -63,7 +63,7 @@ static void ListAssets()
     Console.Write(builder.ToString());
 }
 </code></pre>
-The following code snippet deletes all the assets from the Media Services account.
+次のコード スニペットは、メディア サービス アカウントからすべてのアセットを削除します。
 <pre><code>
 foreach (IAsset asset in _context.Assets)
 {
@@ -71,11 +71,12 @@ foreach (IAsset asset in _context.Assets)
 }
 </code></pre>
 
-For more information about managing assets, see:
+アセットの管理の詳細については、以下を参照してください。
 <ul>
-<li><a href="http://msdn.microsoft.com/en-us/library/jj129589.aspx">Manage Assets with the Media Services SDK for .NET</a></li>
-<li><a href="http://msdn.microsoft.com/en-us/library/jj129583.aspx">Manage Assets with the Media Services REST API</a></li></ul>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/jj129589.aspx">Media Services SDK for .NET で資産を管理する</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/jj129583.aspx">Media Services REST API を使って資産を管理する</a></li></ul>
 
 
-<h2>Next Steps</h2>
-Now that you know how to manage assets, go to the [How to Deliver an Asset by Download](http://go.microsoft.com/fwlink/?LinkID=301734&clcid=0x409) topic.
+<h2>次のステップ</h2>
+これで、アセットの管理方法を学習できました。次は、[ダウンロードによってアセットを配信する方法に関するトピック](http://go.microsoft.com/fwlink/?LinkID=301734&clcid=0x409)に進みます。
+

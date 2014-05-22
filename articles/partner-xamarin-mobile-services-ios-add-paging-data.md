@@ -1,41 +1,41 @@
-<properties linkid="" urlDisplayName="" pageTitle="Add paging to data (Xamarin iOS) | Mobile Dev Center" metaKeywords="" description="Learn how to use paging to manage the amount of data returned to your Xamarin iOS app from Mobile Services." metaCanonical="" services="" authors="" solutions="" manager="" editor="" title="Refine Mobile Services queries with paging" documentationCenter="Mobile" />
+<properties linkid="" urlDisplayName="" pageTitle="データへのページングの追加 | モバイル デベロッパー センター" metaKeywords="" description="ページングを使用して、モバイル サービスから Xamarin iOS アプリケーションに返されるデータの量を管理する方法について説明します。" metaCanonical="" services="" authors="" solutions="" manager="" editor="" title="ページングを使用したモバイル サービス クエリの改善" documentationCenter="Mobile" />
 
 
-# Refine Mobile Services queries with paging
+# ページングを使用したモバイル サービス クエリの改善
 
 <div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/en-us/develop/mobile/tutorials/add-paging-to-data-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-android" title="Android">Android</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-html" title="HTML">HTML</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-xamarin-ios" title="Xamarin.iOS" class="current">iOS C#</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-xamarin-android" title="Xamarin.Android">Android C#</a>
+	<a href="/ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/develop/mobile/tutorials/add-paging-to-data-js" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/develop/mobile/tutorials/add-paging-to-data-wp8" title="Windows Phone">Windows Phone</a><a href="/ja-jp/develop/mobile/tutorials/add-paging-to-data-ios" title="iOS">iOS</a><a href="/ja-jp/develop/mobile/tutorials/add-paging-to-data-android" title="Android">Android</a><a href="/ja-jp/develop/mobile/tutorials/add-paging-to-data-html" title="HTML">HTML</a><a href="/ja-jp/develop/mobile/tutorials/add-paging-to-data-xamarin-ios" title="Xamarin.iOS" class="current">iOS C#</a><a href="/ja-jp/develop/mobile/tutorials/add-paging-to-data-xamarin-android" title="Xamarin.Android">Android C#</a>
 </div>
 
 
-This topic shows you how to use paging to manage the amount of data returned to your iOS app from Azure Mobile Services. In this tutorial, you will use the **Skip** and **Take** query properties on the client to request specific "pages" of data.
+このトピックでは、ページングを使用して、Azure モバイル サービスから iOS アプリケーションに返されるデータの量を管理する方法について説明します。このチュートリアルでは、クライアントで **Skip** および **Take** クエリ プロパティを使用して、データの特定の "ページ" を要求します。
 
-<div class="dev-callout"><b>Note</b>
-<p>To prevent data overflow in mobile device clients, Mobile Services implements an automatic page limit, which defaults to a maximum of 50 items in a response. By specifying the page size, you can explicitly request up to 1,000 items in the response.</p>
+<div class="dev-callout"><b>注</b>
+<p>モバイル デバイス クライアントでデータがオーバーフローしないように、モバイル サービスでは、自動ページ制限を実装しています。既定では、1 つの応答で最大 50 項目に設定されます。ページ サイズを指定することで、1 つの応答で 1,000 項目まで明示的に要求できます。</p>
 </div>
 
-This tutorial builds on the steps and the sample app from the previous tutorial [Get started with data]. Before you begin this tutorial, you must complete at least the first tutorial in the working with data series, [Get started with data]. 
+このチュートリアルは、前の[データの使用]に関するチュートリアルの手順およびサンプル アプリケーションを基に作成されています。このチュートリアルを開始する前に、少なくとも、データ操作シリーズの最初のチュートリアル (「[データの使用]」) を完了している必要があります。
 
-1. In Xamarin Studio, open the project that you modified when you completed the tutorial [Get started with data].
+1. Xamarin Studio で、「[モバイル サービスでのデータの使用]」チュートリアルを実行したときに変更したプロジェクトを開きます。
 
-2. Press the **Run** button to build the project and start the app, then enter text into the textbox and click the  plus (**+**) icon.
+2. **[Run]** をクリックして、プロジェクトをビルドし、アプリケーションを開始します。次に、テキスト ボックスにテキストを入力し、プラス (**[+]**) アイコンをクリックします。
 
-3. Repeat the previous step at least three times, so that you have more than three items stored in the TodoItem table. 
+3. 前の手順を少なくとも 3 回繰り返して、3 つを超える項目を TodoItem テーブルに保存します。
 
-4. Open the **TodoService.cs** file, locate the **RefreshDataAsync** method, and replace the LINQ query on the <code>todoTable</code> with the following query: 
+4. **TodoService.cs** ファイルを開き、**RefreshDataAsync** メソッドを見つけ、<code>todoTable</code> の LINQ クエリを次のクエリで置き換えます。
 
 			Items = await todoTable
 							.Where (todoItem => todoItem.Complete == false)
         		            .Take(3)
                 		    .ToListAsync();
 
-   	This query returns the top three items that are not marked as completed. 
+   	このクエリでは、完了マークが付けられていない上位 3 つの項目を返します。
 
-5. Rebuild and start the app. 
+5. アプリケーションをリビルドして開始します。
    
-    Notice that only the first three results from the TodoItem table are displayed. 
+    TodoItem テーブルから最初の 3 つの結果だけが表示されることに注目してください。
 
-7. Update the LINQ query in the **RefreshDataAsync** method once more to the following:
+7. 再度、**RefreshDataAsync** メソッドの LINQ クエリを次のクエリに置き換えます。
 
 			Items = await todoTable
 							.Where (todoItem => todoItem.Complete == false)
@@ -43,37 +43,38 @@ This tutorial builds on the steps and the sample app from the previous tutorial 
 		                    .Take(3)
 		                    .ToListAsync();
 
-   	This time, set the **Skip** value to 3. 
+   	今回は、**Skip** の値を 3 に設定します。
 
-   	This query skips the first three results and returns the next three after that. This is effectively the second "page" of data, where the page size is three items.
+   	このクエリでは、最初の 3 つの結果をスキップし、その後の 3 つを返します。ページ サイズが 3 つの項目である場合、これは実質的にデータの 2 番目の "ページ" になります。
 
-    <div class="dev-callout"><b>Note</b>
-    <p>This tutorial uses a simplified scenario by setting hard-coded paging values for the <strong>Skip</strong> and <strong>Take</strong> properties. In a real-world app, you can use queries similar to the above with a pager control or comparable UI to let users navigate to previous and next pages. You can also call the <strong>IncludeTotalCount</strong> method to get the total count of all items available on the server, along with the paged data.</p>
+    <div class="dev-callout"><b>注</b>
+    <p>このチュートリアルでは、<strong>Skip</strong> および <strong>Take</strong> プロパティにハードコーディングされたページング値を設定することで簡略化したシナリオを使用しています。実際のアプリケーションでは、ユーザーが前後のページに移動できるように、ページャー コントロールまたは同等の UI と共に上記と同様のクエリを使用することができます。また、<strong>IncludeTotalCount</strong> メソッドを呼び出して、ページングされたデータと共に、サーバーで使用できるすべての項目の合計数を取得することもできます。</p>
     </div>
 
-## <a name="next-steps"> </a>Next Steps
+## <a name="next-steps"> </a>次のステップ
 
-This concludes the set of tutorials that demonstrate the basics of working with data in Mobile Services. Consider finding out more about the following Mobile Services topic:
+これで、モバイル サービスのデータを操作するための基本について説明する一連のチュートリアルは終了です。次のモバイル サービスのトピックの詳細を確認することをお勧めします。
 
-* [Get started with authentication]
-  <br/>Learn how to authenticate users of your app with Windows Account.
+* [認証の使用]
+  <br/>Windows アカウントを使用してアプリケーションのユーザーを認証する方法について説明します。
  
 <!--
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app.
+* [プッシュ通知の使用]
+  <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 -->
 
 <!-- Anchors. -->
 
-[Next Steps]:#next-steps
+[次のステップ]:#next-steps
 
 <!-- Images. -->
 
 
 <!-- URLs. -->
-[Get started with Mobile Services]: ./en-us/develop/mobile/tutorials/get-started-xamarin-ios
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-ios
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-ios
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-xamarin-ios
+[モバイル サービスの使用]: ./ja-jp/develop/mobile/tutorials/get-started-xamarin-ios
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-ios
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-ios
+[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-ios
 
-[Management Portal]: https://manage.windowsazure.com/
+[管理ポータル]: https://manage.windowsazure.com/
+

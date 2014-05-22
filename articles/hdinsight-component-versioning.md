@@ -1,67 +1,67 @@
-<properties linkid="manage-services-hdinsight-version" urlDisplayName="HDInsight Hadoop Version" pageTitle="What's new in the cluster versions provided by HDInsight? | Azure" metaKeywords="hdinsight, hadoop, hdinsight hadoop, hadoop azure" description="HDInsight supports multiple Hadoop cluster versions deployable at any time. See the Hadoop and HortonWorks Data Platform (HDP) distribution versions supported." services="HDInsight" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" title="What's new in the cluster versions provided by HDInsight?" authors="bradsev" />
+<properties linkid="manage-services-hdinsight-version" urlDisplayName="HDInsight　Hadoop バージョン" pageTitle="HDInsight で提供されるクラスター バージョンの新機能| Azure" metaKeywords="hdinsight, hadoop, hdinsight hadoop, hadoop azure" description="HDInsight は、いつでも展開可能な複数の Hadoop クラスター バージョンをサポートしています。サポートされている Hadoop および HortonWorks Data Platform (HDP) のディストリビューションのバージョンを確認してください。" services="HDInsight" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" title="HDInsight で提供されるクラスター バージョンの新機能" authors="bradsev" />
 
 
-#What's new in the cluster versions provided by HDInsight?
+#HDInsight で提供されるクラスター バージョンの新機能
 
-Azure HDInsight now supports Hadoop 2.2 with HDinsight cluster version 3.0 and takes full advantage of this platform to provide a range of significant benefits to customers. These include, most notably:
+Azure HDInsight は、HDinsight クラスター バージョン 3.0 での Hadoop 2.2 をサポートしており、このプラットフォームを最大限に活用して、広範囲にわたる大きな利点をお客様に提供します。これには、特に以下の利点があります。
 
-- Hive: Order of magnitude improvements to Hive query response times (up to 40x) and to data compression (up to 80%) using the Optimized Row Columnar (ORC) format.
+- Hive: Hive クエリの応答時間 (最大 40 x) および、Optimized Row Columnar (ORC) 形式によるデータ圧縮 (最大 80%) への重要な機能強化の序列。
 
-- YARN: A new, general-purpose, distributed, application management framework that has replaced the classic Apache Hadoop MapReduce framework for processing data in Hadoop clusters. It effectively serves as the Hadoop operating system, and takes Hadoop from a single-use data platform for batch processing to a multi-use platform that enables batch, interactive, online and stream processing. This new management framework improves scalability and cluster utilization according to criteria such as capacity guarantees, fairness, and service-level agreements.
+- YARN: Hadoop クラスターでのデータ処理に使用される従来の Apache Hadoop MapReduce フレームワークに代わる、新しい汎用的な分散アプリケーション管理フレームワーク。Hadoop オペレーティング システムとして効果的に機能し、単一の目的のバッチ処理用データ プラットフォームであった Hadoop を、バッチ、インタラクティブ、オンライン、ストリームの各処理が可能な多目的プラットフォームにします。この新しい管理フレームワークにより、容量の保証、公平性、サービス レベル アグリーメントなどの基準に従って、スケーラビリティおよびクラスター使用率が向上します。
 
-- Pig, Sqoop, Qozie, Ambari: Component version upgrades for HDinsight cluster version 3.0 (HDP 2.0) that provide parity with HDinsight cluster version 2.1 (HDP 1.3). See the version tables below for specifics. Note that Hbase, Mahout, Flume are not included.
+- Pig、Sqoop、Qozie、Ambari: HDinsight クラスター バージョン 3.0 (HDP 2.0) のコンポーネント バージョン アップグレードで、HDinsight クラスター バージョン 2.1 (HDP 1.3) でのパリティを提供します。詳細については、以下のバージョンの各表を参照してください。Hbase、Mahout、Flume は含まれていないことに注意してください。
 
-**Deployment**	
-Creation of HDInsight 3.0 clusters on Hadoop 2.2 is supported by the Azure Portal, the HDinsight SDK, and by Azure PowerShell.
+**デプロイ**	
+Hadoop 2.2 での HDInsight 3.0 クラスターの作成は、Azure ポータル、HDinsight SDK、および Azure PowerShell でサポートされています。
 
-**Global Availability**		
-With the release of Azure HDInsight on Hadoop 2.2, Microsoft has make HDInsight available in all major Azure geographies with the exception of Greater China. Specifically, west Europe and southeast Asia data centers have been brought online. This enables customers to locate clusters in a data center that is close and potentially in a zone of similar compliance requirements. 
+**グローバル対応**		
+Hadoop 2.2 上の Azure HDInsight のリリースにより、HDInsight は、中国を除くすべての主要な Azure 地域で使用できるようになりました。具体的には、西ヨーロッパと東南アジアのデータ センターがオンラインになりました。これで、お客様は、距離的に近く、コンプライアンス要件が似ていると思われる地域にあるデータ センター内のクラスターを見つけることができます。
 
-**Breaking Changes**	
-Only the "wasb://" syntax is supported in HDInsight 3.0 clusters. The older "asv://" syntax is supported in HDInsight 2.1 and 1.6 clusters, but it is not supported in HDInsight 3.0 clusters and it will not be supported in later versions. This means that any jobs submitted to an HDInsight 3.0 cluster that explicitly use the “asv://” syntax will fail. The wasb:// syntax should be used instead. Also, jobs submitted to any HDInsight 3.0 clusters that are created with an existing metastore that contains explicit references to resources using the asv:// syntax will fail. These metastores will need to be recreated using the wasb:// to address resources.
+**重大な変更**	
+HDInsight 3.0 クラスターでは、"wasb://" 構文のみがサポートされます。旧バージョンの "asv://" 構文は、HDInsight 2.1 および 1.6 クラスターではサポートされますが、HDInsight 3.0 クラスターではサポートされず、以降のバージョンでもサポートされません。つまり、"asv://" 構文を明示的に使用するジョブを HDInsight 3.0 クラスターに送信すると、そのジョブは失敗します。代わりに、wasb:// 構文を使用する必要があります。また、既存のメタストアにより、asv:// 構文を使用してリソースへの明示的な参照を含むジョブを作成し、HDInsight 3.0 クラスターに送信すると、そのジョブは失敗します。これらのメタストアは、wasb:// を使用してリソースをアドレス指定するように再作成する必要があります。
 
-##HDInsight versions
-HDInsight supports multiple Hadoop cluster versions that can be deployed at any time. Each version choice provisions a specific version of the HortonWorks Data Platform (HDP) distribution and a set of components that are contained within that distribution.
+##HDInsight のバージョン
+HDInsight は、いつでも展開できる Hadoop クラスター バージョンを複数サポートしています。各バージョンを選択すると、特定のバージョンの Hortonworks Data Platform (HDP) ディストリビューション、および、そのディストリビューションに含まれるコンポーネントがプロビジョニングされます。
 
-###Cluster version 3.0
+###クラスター バージョン 3.0
 
-Azure HDInsight now supports Hadoop 2.2. It is based on the Hortonworks Data Platform version 2.0 and provides Hadoop services with the component versions itemized in the following table:
+Azure HDInsight で Hadoop 2.2 がサポートされるようになりました。Hortonworks Data Platform Version 2.0 に基づいており、次の表に示すコンポーネント バージョンの Hadoop サービスが提供されます。
 
 <table border="1">
-<tr><th>Component</th><th>Version</th></tr>
+<tr><th>コンポーネント</th><th>バージョン</th></tr>
 <tr><td>Apache Hadoop</td><td>2.2.0</td></tr>
 <tr><td>Apache Hive</td><td>0.12.0</td></tr>
 <tr><td>Apache Pig</td><td>0.12</td></tr>
 <tr><td>Apache Sqoop</td><td>1.4.4</td></tr>
 <tr><td>Apache Oozie</td><td>4.0.0</td></tr>
-<tr><td>Apache HCatalog</td><td>Merged with Hive</td></tr>
-<tr><td>Apache Templeton</td><td>Merged with Hive</td></tr>
+<tr><td>Apache HCatalog</td><td>Hive にマージ</td></tr>
+<tr><td>Apache Templeton</td><td>Hive にマージ</td></tr>
 <tr><td>Ambari</td><td>API v1.0</td></tr>
 </table>
 
-###Cluster version 2.1
+###クラスター バージョン 2.1
 
-The default cluster version used by [Azure HDInsight](http://go.microsoft.com/fwlink/?LinkID=285601) is 2.1. It is based on the Hortonworks Data Platform version 1.3.0 and provides Hadoop services with the component versions itemized in the following table:
+[Azure HDInsight](http://go.microsoft.com/fwlink/?LinkID=285601) で使用される既定のクラスター バージョンは 2.1 です。Hortonworks Data Platform Version 1.3.0 に基づいており、次の表に示すコンポーネント バージョンの Hadoop サービスが提供されます。
 
 <table border="1">
-<tr><th>Component</th><th>Version</th></tr>
+<tr><th>コンポーネント</th><th>バージョン</th></tr>
 <tr><td>Apache Hadoop</td><td>1.2.0</td></tr>
 <tr><td>Apache Hive</td><td>0.11.0</td></tr>
 <tr><td>Apache Pig</td><td>0.11</td></tr>
 <tr><td>Apache Sqoop</td><td>1.4.3</td></tr>
 <tr><td>Apache Oozie</td><td>3.2.2</td></tr>
-<tr><td>Apache HCatalog</td><td>Merged with Hive</td></tr>
-<tr><td>Apache Templeton</td><td>Merged with Hive</td></tr>
+<tr><td>Apache HCatalog</td><td>Hive にマージ</td></tr>
+<tr><td>Apache Templeton</td><td>Hive にマージ</td></tr>
 <tr><td>Ambari</td><td>API v1.0</td></tr>
 </table>
 
 
-###Cluster version 1.6
+###クラスター バージョン 1.6
 
-[Azure HDInsight](http://go.microsoft.com/fwlink/?LinkID=285601) cluster version 1.6 is also available. It is based on the Hortonworks Data Platform version 1.1.0 and provides Hadoop services with the component versions itemized in the following table:
+[Azure HDInsight](http://go.microsoft.com/fwlink/?LinkID=285601) クラスター バージョン 1.6 も利用できます。Hortonworks Data Platform Version 1.1.0 に基づいており、次の表に示すコンポーネント バージョンの Hadoop サービスが提供されます。
 
 <table border="1">
-<tr><th>Component</th><th>Version</th></tr>
+<tr><th>コンポーネント</th><th>バージョン</th></tr>
 <tr><td>Apache Hadoop</td><td>1.0.3</td></tr>
 <tr><td>Apache Hive</td><td>0.9.0</td></tr>
 <tr><td>Apache Pig</td><td>0.9.3</td></tr>
@@ -69,55 +69,55 @@ The default cluster version used by [Azure HDInsight](http://go.microsoft.com/fw
 <tr><td>Apache Oozie</td><td>3.2.0</td></tr>
 <tr><td>Apache HCatalog</td><td>0.4.1</td></tr>
 <tr><td>Apache Templeton</td><td>0.1.4</td></tr>
-<tr><td>SQL Server JDBC Driver</td><td>3.0</td></tr>
+<tr><td>SQL Server JDBC ドライバー</td><td>3.0</td></tr>
 </table>
 
 
-### Select a version when provisioning an HDInsight cluster
+###HDInsight クラスターのプロビジョニング時にバージョンを選択
 
-When creating a cluster through the HDInsight PowerShell Cmdlets or the HDInsight .NET SDK, you can choose the version for the HDInsight Hadoop cluster using the "Version" parameter.
+HDInsight PowerShell コマンドレットまたは HDInsight .NET SDK を使用してクラスターを作成するときは、"Version" パラメーターを使用して、HDInsight Hadoop クラスターのバージョンを選択することができます。
 
-If you use the **Quick Create** option, you will get the version 2.1 of HDInsight Hadoop cluster by default. If you use the **Custom Create** option from the Azure Portal, you can choose the version of the cluster you will deploy from the **HDInsight Version** drop-down on the **Cluster Details** page. Version 3.0 of HDInsight Hadoop cluster is only available as an option on the **Custom Create** wizard.
+**簡易作成** オプションを使用する場合は、HDInsight Hadoop クラスターのバージョン 2.1 が既定で使用されます。Azure ポータルで **[カスタム作成]** オプションを使用する場合は、**[クラスターの詳細]** ページの **[HDInsight のバージョン]** ボックスで、展開されるクラスターのバージョンを選択できます。HDInsight Hadoop クラスターのバージョン 3.0 は、**カスタム作成**ウィザードでのオプションとしてのみ使用可能です。
 
 ![HDI.Versioning.VersionScreen][image-hdi-versioning-versionscreen]
 
 
-## Supported versions
-The following table lists the versions of HDInsight currently available, the corresponding Hortonworks Data Platform (HDP) versions that they use, and their release dates. When known, their deprecation dates will also be provided.
+##サポートされているバージョン
+次の表に、現在使用できる HDInsight のバージョン、該当する Hortonworks Data Platform (HDP) のバージョン、そのリリース日を示します。非推奨となった場合は、その日付も記載されます。
 
 <table border="1">
-<tr><th>HDInsight version</th><th>HDP version</a></th><th>Release date</th></tr>
+<tr><th>HDInsight のバージョン</th><th>HDP のバージョン</a></th><th>リリース日</th></tr>
 <tr><td>HDI 3.0</td><td>HDP 2.0</td><td>02/11/2014</td></tr>
 <tr><td>HDI 2.1</td><td>HDP 1.3</td><td>10/28/2013</td></tr>
 <tr><td>HDI 1.6</td><td>HDP 1.1</td><td>10/28/2013</td></tr>
 </table><br/>
 
 
-### The Service-Level Agreement (SLA) for HDInsight cluster versions 
-The SLA is defined in terms of a "Support Window". A Support Window refers to the period of time that an HDInsight cluster version is supported by Microsoft Customer Support.  An HDInsight cluster is outside the Support Window if its version has a Support Expiration Date past the current date.  A list of supported HDInsight cluster versions may be found in the table above.  The Support Expiration Date for a given HDInsight version (denoted as version X) is calculated as the later of:  
+### HDInsight クラスター バージョンのサービス レベル アグリーメント (SLA)
+SLA は、"サポート ウィンドウ" の条件で定義されます。サポート ウィンドウとは、HDInsight クラスターのバージョンが Microsoft カスタマー サポートによってサポートされる期間を指しています。HDInsight クラスターは、そのバージョンのサポート有効期限が現在の日付を過ぎている場合、サポート ウィンドウの枠外です。サポートされている HDInsight クラスターのバージョンの一覧は上記のテーブルに示されています。所定の HDInsight のバージョン (バージョン X とする) のサポート有効期限は、次の数式で計算した日付のうち、遅い方とされます。
 
-- Formula 1:  Add 180 days to the date HDInsight cluster version X was released
-- Formula 2: Add 90 days to the date HDInsight cluster version X+1 (the subsequent version after X) is made available in the Azure Management Portal.
+- 数式 1: HDInsight クラスター バージョン X がリリースされた日に 180 日を加える。
+- 数式 2: HDInsight クラスター バージョン X+1 (X の次のバージョン) が Azure 管理ポータルで使用可能になった日付に 90 日を加える。
 
-> [WACOM.NOTE] Both HDInsight 2.1 and 3.0 use the 64-bit version of Windows 2008 R2 SP1 with .NET Framework 4.0. 
+> [WACOM.NOTE] HDInsight 2.1 および 3.0 は両方とも、.NET Framework 4.0 を含む Windows 2008 R2 SP1 の64 ビット バージョンを使用します。 
 
-**Additional notes and information on versioning**	
+**バージョン管理に関するその他のメモと情報**	
 
-* The SQL Server JDBC Driver is used internally by HDInsight and is not used for external operations. If you wish to connect to HDInsight using ODBC, please use the Microsoft Hive ODBC driver. For more information on using Hive ODBC, [Connect Excel to HDInsight with the Microsoft Hive ODBC Driver][connect-excel-with-hive-ODBC].
+*SQL Server JDBC ドライバーは HDInsight によって内部的に使用され、外部の操作では使用されません。ODBC を使用して HDInsight に接続する場合は、Microsoft Hive ODBC ドライバーを使用してください。Hive ODBC の使い方の詳細については、「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][connect-excel-with-hive-ODBC]」を参照してください。
 
-* HDInsight cluster version 3.0 uses an Hadoop distribution that is based on the [Hortonworks Data Platform 2.0][hdp-2-0-8].
+*HDInsight クラスター バージョン 3.0 は、[Hortonworks Data Platform 2.0][hdp-2-0-8] を基盤とする Hadoop ディストリビューションを使用します。
 
-* HDInsight cluster version 2.1 uses an Hadoop distribution that is based on the [Hortonworks Data Platform 1.3][hdp-1-3-0]. This is the default Hadoop cluster created when using the Azure HDInsight portal.
+*HDInsight クラスター バージョン 2.1 は、[Hortonworks Data Platform 1.3][hdp-1-3-0] を基盤とする Hadoop ディストリビューションを使用します。これが、Azure HDInsight ポータルの使用時に作成される既定の Hadoop クラスターです。
 
-* HDInsight cluster version 1.6 uses an Hadoop distribution that is based on the [Hortonworks Data Platform 1.1][hdp-1-1-0]. 
+*HDInsight クラスター バージョン 1.6 は、[Hortonworks Data Platform 1.1][hdp-1-1-0] を基盤とする Hadoop ディストリビューションを使用します。
 
-* The component versions associated with HDInsight cluster versions may change in future updates to HDInsight. One way to determine the available components and to verify which versions are being used for a cluster to use the Ambari REST API. The GetComponentInformation command can be used to retrieve information about a service component. For details, see the [Ambari documentation][ambari-docs]. Another way to obtain this information is to login to a cluster using remote desktop and examine the contents of the "C:\apps\dist\" directory directly.
+*HDInsight クラスターのバージョンに関連付けられたコンポーネントのバージョンは、将来 HDInsight が更新されたときに変更される可能性があります。利用可能なコンポーネントを特定し、どのバージョンがクラスターに使用されているかどうかを確認する 1 つの方法は、Ambari REST API を使用することです。GetComponentInformation コマンドを使用すると、サービス コンポーネントに関する情報を取得できます。詳細については、「[Ambari のドキュメント][ambari-docs]」を参照してください。この情報を取得するもう 1 つの方法は、リモート デスクトップを使用してクラスターにログインし、"C:\apps\dist\" ディレクトリの内容を直接確認することです。
 
 [image-hdi-versioning-versionscreen]: ./media/hdinsight-component-versioning/hdi-versioning-version-screen.png
 
-[wa-forums]: http://www.windowsazure.com/en-us/support/forums/
+[wa-forums]: http://www.windowsazure.com/ja-jp/support/forums/
 
-[connect-excel-with-hive-ODBC]: /en-us/documentation/articles/hdinsight-connect-excel-hive-ODBC-driver
+[connect-excel-with-hive-ODBC]: /ja-jp/documentation/articles/hdinsight-connect-excel-hive-ODBC-driver
 
 [hdp-2-0-8]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.8.0/bk_releasenotes_hdp_2.0/content/ch_relnotes-hdp2.0.8.0.html
 
@@ -126,3 +126,4 @@ The SLA is defined in terms of a "Support Window". A Support Window refers to th
 [hdp-1-1-0]: http://docs.hortonworks.com/HDPDocuments/HDP1/HDP-Win-1.1/bk_releasenotes_HDP-Win/content/ch_relnotes-hdp-win-1.1.0_1.html
 
 [ambari-docs]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
+

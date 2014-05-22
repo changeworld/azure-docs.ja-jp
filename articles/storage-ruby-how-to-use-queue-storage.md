@@ -1,86 +1,82 @@
-<properties linkid="dev-ruby-how-to-service-bus-queues" urlDisplayName="Queue Service" pageTitle="How to use the queue service (Ruby) | Microsoft Azure" metaKeywords="Azure Queue Service get messages Ruby" description="Learn how to use the Azure Queue service to create and delete queues, and insert, get, and delete messages. Samples written in Ruby." metaCanonical="" services="storage" documentationCenter="Ruby" title="How to Use the Queue Storage Service from Ruby" authors="guayan" solutions="" manager="" editor="" />
+<properties linkid="dev-ruby-how-to-service-bus-queues" urlDisplayName="キュー サービス" pageTitle="キュー サービスを使用する方法 (Ruby) | Microsoft Azure" metaKeywords="Azure キュー サービス メッセージ取得 Ruby" description="Azure キュー サービスを使用して、キューを作成および削除する方法、メッセージを挿入、取得、削除する方法について説明します。コード サンプルは Ruby で記述されています。" metaCanonical="" services="storage" documentationCenter="Ruby" title="Ruby からキュー ストレージ サービスを使用する方法" authors="guayan" solutions="" manager="" editor="" />
 
 
 
 
 
-# How to Use the Queue Storage Service from Ruby
+# Ruby からキュー ストレージ サービスを使用する方法
 
-This guide shows you how to perform common scenarios using the Windows
-Azure Queue Storage service. The samples are written using the Ruby Azure API.
-The scenarios covered include **inserting**, **peeking**, **getting**,
-and **deleting** queue messages, as well as **creating and deleting
-queues**. For more information on queues, refer to the [Next
-Steps](#next-steps) section.
+このガイドでは、Azure キュー ストレージ サービスを使用して
+一般的なシナリオを実行する方法について説明します。サンプルは Ruby Azure API を使用して記述されています。
+キュー メッセージの**挿入**、**ピーク**、
+**取得**、および**削除**と、**キューの作成および削除**の各シナリオに
+ついて説明します。キューの詳細については、「[次の手順](#next-steps)」のセクションを参照してください。
 
-## Table of Contents
+## 目次
 
-* [What is Queue Storage?](#what-is)
-* [Concepts](#concepts)
-* [Create an Azure Storage Account](#CreateAccount)
-* [Create a Ruby Application](#create-a-ruby-application)
-* [Configure Your Application to Access Storage](#configure-your-application-to-access-storage)
-* [Setup an Azure Storage Connection](#setup-a-windows-azure-storage-connection)
-* [How To: Create a Queue](#how-to-create-a-queue)
-* [How To: Insert a Message into a Queue](#how-to-insert-a-message-into-a-queue)
-* [How To: Peek at the Next Message](#how-to-peek-at-the-next-message)
-* [How To: Dequeue the Next Message](#how-to-dequeue-the-next-message)
-* [How To: Change the Contents of a Queued Message](#how-to-change-the-contents-of-a-queued-message)
-* [How To: Additional Options for Dequeuing Messages](#how-to-additional-options-for-dequeuing-messages)
-* [How To: Get the Queue Length](#how-to-get-the-queue-length)
-* [How To: Delete a Queue](#how-to-delete-a-queue)
-* [Next Steps](#next-steps)
+* [キュー ストレージとは](#what-is)
+* [概念](#concepts)
+* [Azure ストレージ アカウントの作成](#CreateAccount)
+* [Ruby アプリケーションの作成](#create-a-ruby-application)
+* [アプリケーションのストレージへのアクセスの構成](#configure-your-application-to-access-storage)
+* [Azure のストレージ接続文字列の設定](#setup-a-windows-azure-storage-connection)
+* [方法: キューを作成する](#how-to-create-a-queue)
+* [方法: メッセージをキューに挿入する](#how-to-insert-a-message-into-a-queue)
+* [方法: 次のメッセージをピークする](#how-to-peek-at-the-next-message)
+* [方法: 次のメッセージをデキューする](#how-to-dequeue-the-next-message)
+* [方法: キューに配置されたメッセージの内容を変更する](#how-to-change-the-contents-of-a-queued-message)
+* [方法: メッセージをデキューするための追加オプション](#how-to-additional-options-for-dequeuing-messages)
+* [方法: キューの長さを取得する](#how-to-get-the-queue-length)
+* [方法: キューを削除する](#how-to-delete-a-queue)
+* [次のステップ](#next-steps)
 
 [WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
-## <a id="CreateAccount"></a>Create an Azure storage account
+## <a id="CreateAccount"></a>Azure ストレージ アカウントの作成
 
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## <a id="create-a-ruby-application"></a>Create a Ruby Application
+## <a id="create-a-ruby-application"></a>Ruby アプリケーションの作成
 
-Create a Ruby application. For instructions, 
-see [Create a Ruby Application on Azure](/en-us/develop/ruby/tutorials/web-app-with-linux-vm/).
+Ruby アプリケーションを作成します。手順については、[Azure での Ruby アプリケーションの作成に関するページ](/ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/)を参照してください。
 
-## <a id="configure-your-application-to-access-storage"></a>Configure Your Application to Access Storage
+##  <a id="configure-your-application-to-access-storage"></a>アプリケーションからストレージへのアクセスの構成
 
-To use Azure storage, you need to download and use the Ruby azure package, which includes a set of convenience libraries that communicate with the storage REST services.
+Azure ストレージを使用するには、Ruby azure パッケージをダウンロードして使用する必要があります。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
 
-### Use RubyGems to obtain the package
+### RubyGems を使用してパッケージを取得する
 
-1. Use a command-line interface such as **PowerShell** (Windows), **Terminal** (Mac), or **Bash** (Unix).
+1. **PowerShell** (Windows)、**ターミナル** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用します。
 
-2. Type "gem install azure" in the command window to install the gem and dependencies.
+2. コマンド ウィンドウに「gem install azure」と入力して、gem と依存関係をインストールします。
 
-### Import the package
+### パッケージをインポートする
 
-Use your favorite text editor, add the following to the top of the Ruby file where you intend to use storage:
+任意のテキスト エディターを使用して、ストレージを使用する Ruby ファイルの先頭に次のコードを追加します。
 
 	require "azure"
 
-## <a id="setup-a-windows-azure-storage-connection"></a>Setup an Azure Storage Connection
+##  <a id="setup-a-windows-azure-storage-connection"></a>Azure のストレージ接続文字列の設定
 
-The azure module will read the environment variables **AZURE\_STORAGE\_ACCOUNT** and **AZURE\_STORAGE\_ACCESS_KEY** 
-for information required to connect to your Azure storage account. If these environment variables are not set, 
-you must specify the account information before using **Azure::QueueService** with the following code:
+azure モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** および **AZURE\_STORAGE\_ACCESS_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::QueueService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
 	Azure.config.account_name = "<your azure storage account>"
 	Azure.config.access_key = "<your Azure storage access key>"
 
-To obtain these values:
+これらの値を取得するには、次の手順を実行します。
 
-1. Log into the [Azure Management Portal](https://manage.windowsazure.com/).
-2. Navigate to the storage account you want to use
-3. Click **MANAGE KEYS** at the bottom of the navigation pane.
-4. In the pop up dialog, you will see the storage account name, primary access key and secondary access key. For access key, you can select either the primary one or the secondary one.
+1. [Azure の管理ポータル](https://manage.windowsazure.com/)にログインします。
+2. 使用するストレージ アカウントを表示します。
+3. ナビゲーション ウィンドウの下部にある **[キーの管理]** をクリックします。
+4. ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。アクセス キーには、プライマリとセカンダリのどちらでも選択できます。
 
-## <a id="how-to-create-a-queue"></a>How To: Create a Queue
+## <a id="how-to-create-a-queue"></a>方法: キューを作成する
 
-The following code creates a **Azure::QueueService** object, which enables you to work with queues.
+次のコードは、**Azure::QueueService** オブジェクトを作成し、これによってキューを操作できるようにします。
 
 	azure_queue_service = Azure::QueueService.new
 
-Use the **create_queue()** method to create a queue with the specified name.
+**create_queue()** メソッドを使用して、指定した名前のキューを作成します。
 
 	begin
 	  azure_queue_service.create_queue("test-queue")
@@ -88,51 +84,52 @@ Use the **create_queue()** method to create a queue with the specified name.
 	  puts $!
 	end
 
-## <a id="how-to-insert-a-message-into-a-queue"></a>How To: Insert a Message into a Queue
+## <a id="how-to-insert-a-message-into-a-queue"></a>方法: メッセージをキューに挿入する
 
-To insert a message into a queue, use the **create_message()** method to create a new message and add it to the queue.
+キューにメッセージを挿入するには、**create_message()** メソッドを使用し、新しいメッセージを作成してキューに追加します。
 
 	azure_queue_service.create_message("test-queue", "test message")
 
-## <a id="how-to-peek-at-the-next-message"></a>How To: Peek at the Next Message
+## <a id="how-to-peek-at-the-next-message"></a>方法: 次のメッセージをピークする
 
-You can peek at the message in the front of a queue without removing it from the queue by calling the **peek\_messages()** method. By default, **peek\_messages()** peeks at a single message. You can also specify how many messages you want to peek.
+**peek\_messages()** メソッドを呼び出すと、キューの先頭にあるメッセージを
+キューから削除せずにピークできます。既定では、**peek\_messages()** は 1 つのメッセージを対象としてピークします。ピークするメッセージ数を指定することもできます。
 
 	result = azure_queue_service.peek_messages("test-queue",
 	  {:number_of_messages => 10})
 
-## <a id="how-to-dequeue-the-next-message"></a>How To: Dequeue the Next Message
+## <a id="how-to-dequeue-the-next-message"></a>方法: 次のメッセージをデキューする
 
-Your can removes a message from a queue in two steps.
+キューからのメッセージの削除は、2 段階の手順で実行できます。
 
-1. When you call **list\_messages()**, you get the next message in a queue by default. You can also specify how many messages you want to get. The messages returned from **list\_messages()** becomes invisible to any other code reading messages from this queue. You pass in the visibility timeout in seconds as a parameter.
+1. **list\_messages()** を呼び出すと、既定では、キュー内の次のメッセージを取得します。取得するメッセージ数を指定することもできます。**list\_messages()** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。パラメーターとして、表示タイムアウトを秒単位で指定します。
 
-2. To finish removing the message from the queue, you must also call **delete_message()**.
+2. キューからのメッセージの削除を完了するには、**delete_message()** も呼び出す必要があります。
 
-This two-step process of removing a message assures that when your code fails to process a message due to hardware or software failure, another instance of your code can get the same message and try again. Your code calls **delete\_message()** right after the message has been processed.
+2 段階の手順でメッセージを削除するこの方法では、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。コードでは、メッセージが処理された直後に **delete\_message()** を呼び出します。
 
 	messages = azure_queue_service.list_messages("test-queue", 30)
 	azure_queue_service.delete_message("test-queue", 
 	  messages[0].id, messages[0].pop_receipt)
 
-## <a id="how-to-change-the-contents-of-a-queued-message"></a>How To: Change the Contents of a Queued Message
+## <a id="how-to-change-the-contents-of-a-queued-message"></a>方法: キューに配置されたメッセージの内容を変更する
 
-You can change the contents of a message in-place in the queue. The code below uses the **update_message()** method to update a message. The method will return a tuple which contains the pop receipt of the queue message and a UTC date time value that represents when the message will be visible on the queue.
+キュー内のメッセージの内容をインプレースで変更できます。次のコードでは、**update_message()** メソッドを使用してメッセージを更新します。このメソッドは、キュー メッセージの PopReceipt と、メッセージがキューに配置される日時を表す UTC 日付/時刻値を含むタプルを返します。
 
 	message = azure_queue_service.list_messages("test-queue", 30)
 	pop_receipt, time_next_visible = azure_queue_service.update_message(
 	  "test-queue", message.id, message.pop_receipt, "updated test message", 
 	  30)
 
-## <a id="how-to-additional-options-for-dequeuing-messages"></a>How To: Additional Options for Dequeuing Messages
+## <a id="how-to-additional-options-for-dequeuing-messages"></a>方法: メッセージをデキューするための追加オプション
 
-There are two ways you can customize message retrieval from a queue.
+キューからのメッセージの取得をカスタマイズする方法は 2 つあります。
 
-1. You can get a batch of message.
+1. メッセージのバッチを取得できます。
 
-2. You can set a longer or shorter invisibility timeout, allowing your code more or less time to fully process each message.
+2. コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を長くまたは短くすることができます。
 
-The following code example uses the **list\_messages()** method to get 15 messages in one call. Then it prints and deletes each message. It also sets the invisibility timeout to five minutes for each message.
+次のコード例では、**list\_messages()** メソッドを使用して、1 回の呼び出しで 15 個のメッセージを取得します。その後、各メッセージを出力して削除します。また、各メッセージの非表示タイムアウトを 5 分に設定します。
 
 	azure_queue_service.list_messages("test-queue", 300
 	  {:number_of_messages => 15}).each do |m|
@@ -140,25 +137,26 @@ The following code example uses the **list\_messages()** method to get 15 messag
 	  azure_queue_service.delete_message("test-queue", m.id, m.pop_receipt)
 	end
 
-## <a id="how-to-get-the-queue-length"></a>How To: Get the Queue Length
+## <a id="how-to-get-the-queue-length"></a>方法: キューの長さを取得する
 
-You can get an estimation of the number of messages in the queue. The **get\_queue\_metadata()** method asks the queue service to return the approximate message count and metadata about the queue.
+キュー内のメッセージの概数を取得できます。**get\_queue\_metadata()** メソッドを使用して、おおよそのメッセージ数とキューのメタデータを返すようにキュー サービスに要求します。
 
 	message_count, metadata = azure_queue_service.get_queue_metadata(
 	  "test-queue")
 
-## <a id="how-to-delete-a-queue"></a>How To: Delete a Queue
+## <a id="how-to-delete-a-queue"></a>方法: キューを削除する
 
-To delete a queue and all the messages contained in it, call the **delete\_queue()** method on the queue object.
+キューおよびキューに格納されているすべてのメッセージを削除するには、キュー オブジェクトの **delete\_queue()** メソッドを呼び出します。
 
 	azure_queue_service.delete_queue("test-queue")
 
-## <a id="next-steps"></a>Next Steps
+## <a id="next-steps"></a>次のステップ
 
-Now that you've learned the basics of queue storage, follow these links to learn how to do more complex storage tasks.
+これで、キュー ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
-- See the MSDN Reference: [Storing and Accessing Data in Azure](http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx)
-- Visit the [Azure Storage Team Blog](http://blogs.msdn.com/b/windowsazurestorage/)
-- Visit the [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) repository on GitHub
+-   MSDN リファレンス: [Azure のデータの格納とアクセス](http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx)に関するページを参照
+- [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)を参照
+- GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリを参照
 
-For a comparision between the Azure Queue Service discussed in this article and Azure Service Bus Queues discussed in the [How to use Service Bus Queues](/en-us/develop/ruby/how-to-guides/service-bus-queues/) article, see [Azure Queues and Azure Service Bus Queues - Compared and Contrasted](http://msdn.microsoft.com/en-us/library/windowsazure/hh767287.aspx)
+この記事で説明されている Azure キュー サービスと、「[Service Bus キューの使用方法](/ja-jp/develop/ruby/how-to-guides/service-bus-queues/)」で説明されている Azure Service Bus キューの比較については、「[Azure キューと Azure サービス バス キューの比較](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh767287.aspx)」を参照してください。
+

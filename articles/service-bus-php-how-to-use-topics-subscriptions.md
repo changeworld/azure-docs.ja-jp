@@ -1,76 +1,76 @@
-<properties linkid="develop-php-how-to-guides-service-bus-topics" urlDisplayName="Service Bus Topics" pageTitle="How to use Service Bus topics (PHP) - Azure" metaKeywords="" description="Learn how to use Service Bus topics with PHP in Azure." metaCanonical="" services="service-bus" documentationCenter="PHP" title="How to Use Service Bus Topics/Subscriptions" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-php-how-to-guides-service-bus-topics" urlDisplayName="サービス バス トピック" pageTitle="サービス バス トピック (PHP) の使用方法 - Azure" metaKeywords="" description="Azure 上の PHP でサービス バス トピックを使用する方法について説明します。" metaCanonical="" services="service-bus" documentationCenter="PHP" title="サービス バス トピックのサブスクリプションを使用する方法" authors="" solutions="" manager="" editor="" />
 
 
-# How to Use Service Bus Topics/Subscriptions
+# サービス バス トピック/サブスクリプションの使用方法
 
-This guide will show you how to use Service Bus topics and
-subscriptions. The samples are written in PHP and use the [Azure SDK for PHP][download-sdk]. The scenarios covered include **creating topics and subscriptions**, **creating subscription filters**, **sending messages to a topic**, **receiving messages from a subscription**, and **deleting topics and subscriptions**.
+このガイドでは、サービス バス トピックとサブスクリプションの
+使用方法について説明します。サンプルは PHP で記述され、[Azure SDK for PHP][download-sdk] を利用しています。ここでは、**トピックとサブスクリプションの作成**、**サブスクリプション フィルターの作成**、**トピックへのメッセージの送信**、**サブスクリプションからのメッセージの受信**、**トピックとサブスクリプションの削除**などのシナリオについて説明します。
 
-## Table of Contents
+## 目次
 
--   [What are Service Bus Topics and Subscriptions?](#what-are-service-bus-topics)
--   [Create a Service Namespace](#create-a-service-namespace)
--   [Obtain the Default Management Credentials for the Namespace](#obtain-default-credentials)
-- 	[Create a PHP application](#CreateApplication)
--	[Get the Azure Client Libraries](#GetClientLibrary)
--   [Configure Your Application to Use Service Bus](#ConfigureApp)
--   [How to: Create a Topic](#CreateTopic)
--   [How to: Create a Subscription](#CreateSubscription)
--   [How to: Send Messages to a Topic](#SendMessage)
--   [How to: Receive Messages from a Subscription](#ReceiveMessages)
--   [How to: Handle Application Crashes and Unreadable Messages](#HandleCrashes)
--   [How to: Delete Topics and Subscriptions](#DeleteTopicsAndSubscriptions)
--   [Next Steps](#NextSteps)
+-   [サービス バス トピックとサブスクリプションとは](#what-are-service-bus-topics)
+-   [サービス名前空間の作成](#create-a-service-namespace)
+-   [名前空間の既定の管理資格情報の取得](#obtain-default-credentials)
+- 	[PHP アプリケーションの作成](#CreateApplication)
+-	[Azure クライアント ライブラリの入手](#GetClientLibrary)
+-   [サービス バスを使用するようにアプリケーションを構成する](#ConfigureApp)
+-   [How to: トピックを作成する](#CreateTopic)
+-   [方法: サブスクリプションを作成する](#CreateSubscription)
+-   [How to: メッセージをトピックに送信する](#SendMessage)
+-   [How to: サブスクリプションからメッセージを受信する](#ReceiveMessages)
+-   [How to: アプリケーションのクラッシュと読み取り不能のメッセージを処理する](#HandleCrashes)
+-   [How to: トピックとサブスクリプションを削除する](#DeleteTopicsAndSubscriptions)
+-   [次のステップ](#NextSteps)
 
 [WACOM.INCLUDE [howto-service-bus-topics](../includes/howto-service-bus-topics.md)]
 
-##<a id="CreateApplication"></a>Create a PHP application
+##<a id="CreateApplication"></a>PHP アプリケーションの作成
 
-The only requirement for creating a PHP application that accesses the Azure Blob service is the referencing of classes in the [Azure SDK for PHP][download-sdk] from within your code. You can use any development tools to create your application, including Notepad.
+Azure BLOB サービスにアクセスする PHP アプリケーションを作成するための要件は、コード内から [Azure SDK for PHP][download-sdk] のクラスを参照することのみです。アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。
 
 > [WACOM.NOTE]
-> Your PHP installation must also have the <a href="http://php.net/openssl">OpenSSL extension</a> installed and enabled.
+>  PHP のインストールでは、<a href="http://php.net/openssl">OpenSSL 拡張機能</a>をインストールし、有効にしておくことも必要です。
 
-In this guide, you will use service features which can be called within a PHP application locally, or in code running within an Azure web role, worker role, or web site.
+このガイドで使用するサービス機能は、PHP アプリケーション内でローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト上で実行されるコード内で呼び出すこともできます。
 
-##<a id="GetClientLibrary"></a>Get the Azure Client Libraries
+##<a id="GetClientLibrary"></a>Azure クライアント ライブラリの入手
 
 [WACOM.INCLUDE [get-client-libraries](../includes/get-client-libraries.md)]
 
-##<a id="ConfigureApp"></a>Configure your application to use Service Bus
+##<a id="ConfigureApp"></a>サービス バスを使用するようにアプリケーションを構成する
 
-To use the Azure Service Bus topic APIs, you need to:
+Azure の サービス バス トピック API を使用するには、次の要件があります。
 
-1. Reference the autoloader file using the [require_once][require-once] statement, and
-2. Reference any classes you might use.
+1. [require_once][require-once] ステートメントを使用してオートローダー ファイルを参照する
+2. 使用する可能性のあるクラスを参照する
 
-The following example shows how to include the autoloader file and reference the **ServiceBusService** class.
+次の例では、オートローダー ファイルをインクルードし、**ServiceBusService** クラスを参照する方法を示しています。
 
 	> [WACOM.NOTE]
-	> This example (and other examples in this article) assume you have installed the PHP Client Libraries for Azure via Composer. If you installed the libraries manually or as a PEAR package, you will need to reference the <code>WindowsAzure.php</code> autoloader file.
+	>  この例 (およびこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、<code>WindowsAzure.php</code> オートローダー ファイルを参照する必要があります。
 
 	require_once 'vendor\autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
 
 
-In the examples below, the `require_once` statement will be shown always, but only the classes necessary for the example to execute will be referenced.
+この後のコード例では、`require_once` ステートメントが常に記述されていますが、コード例の実行に必要なクラスのみ参照されます。
 
-##<a id="ConnectionString"></a>Setup an Azure Service Bus connection
+##<a id="ConnectionString"></a>Azure のサービス バス接続の設定
 
-To instantiate an Azure Service Bus client you must first have a valid connection string following this format:
+Azure のサービス バス クライアントをインスタンス化するには、第一に、次の形式の有効な接続文字列が必要です。
 
 	Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer];SharedSecretValue=[Default Key]
 
-Where the Endpoint is typically of the format `https://[yourNamespace].servicebus.windows.net`.
+ここで Endpoint の一般的な形式は `https://[yourNamespace].servicebus.windows.net` です。
 
-To create any Azure service client you need to use the **ServicesBuilder** class. You can:
+いずれの Azure サービス クライアントを作成するにも、**ServicesBuilder** クラスを使用する必要があります。そのための方法は次のとおりです。
 
-* pass the connection string directly to it or
-* use the **CloudConfigurationManager (CCM)** to check multiple external sources for the connection string:
-	* by default it comes with support for one external source - environmental variables
-	* you can add new sources by extending the **ConnectionStringSource** class
+* 接続文字列を直接渡す
+* **CloudConfigurationManager (CCM)** を使用して複数の外部ソースに対して接続文字列を確認する
+	* 既定では、1 つの外部ソース (環境変数) のみサポートされています。- 
+	* **ConnectionStringSource** クラスを継承して新しいソースを追加できます。
 
-For the examples outlined here, the connection string will be passed directly.
+ここで概説している例では、接続文字列を直接渡します。
 
 	require_once 'vendor\autoload.php';
 
@@ -80,13 +80,13 @@ For the examples outlined here, the connection string will be passed directly.
 
 	$serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
-##<a id="CreateTopic"></a>How to: Create a topic
+##<a id="CreateTopic"></a>方法: トピックを作成する
 
-Management operations for Service Bus topics can be performed via the
-**ServiceBusRestProxy** class. A **ServiceBusRestProxy** object is
-constructed via the **ServicesBuilder::createServiceBusService** factory method with an appropriate connection string that encapsulates the token permissions to manage it.
+サービス バス トピックの管理操作は、
+**ServiceBusRestProxy** クラス経由で実行できます。**ServiceBusRestProxy** オブジェクトを
+作成するには、**ServicesBuilder::createServiceBusService** ファクトリ メソッドに、管理処理用のトークン アクセス許可をカプセル化した適切な接続文字列を渡します。
 
-The example below shows how to instantiate a **ServiceBusRestProxy** and call **ServiceBusRestProxy->createTopic** to create a topic named `mytopic` within a `MySBNamespace` service namespace:
+次の例では、**ServiceBusRestProxy** をインスタンス化し、**ServiceBusRestProxy->createTopic** を呼び出して、`MySBNamespace` サービス名前空間内で `mytopic` という名前のトピックを作成する方法を示しています。
 
 	require_once 'vendor\autoload.php';
 
@@ -105,22 +105,22 @@ The example below shows how to instantiate a **ServiceBusRestProxy** and call **
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179357
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179357
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
 	> [WACOM.NOTE]
-	> You can use the <b>listTopics</b> method on <b>ServiceBusRestProxy</b> objects to check if a topic with a specified name already exists within a service namespace.
+	> <b>ServiceBusRestProxy</b> オブジェクトの <b>listTopics</b> メソッドを使用すると、指定した名前のトピックがサービス名前空間に既に存在するかどうかを確認できます。
 
-##<a id="CreateSubscription"></a>How to: Create a subscription
+##<a id="CreateSubscription"></a>方法: サブスクリプションを作成する
 
-Topic subscriptions are also created with the **ServiceBusRestProxy->createSubscription** method. Subscriptions are named and can have an optional filter that restricts the set of messages passed to the subscription's virtual queue.
+トピック サブスクリプションを **ServiceBusRestProxy->createSubscription** メソッドで作成することもできます。サブスクリプションを指定し、サブスクリプションの仮想キューに渡すメッセージを制限するフィルターを設定することができます。
 
-### Create a subscription with the default (MatchAll) filter
+### 既定の (MatchAll) フィルターを適用してサブスクリプションを作成する
 
-The **MatchAll** filter is the default filter that is used if no filter is specified when a new subscription is created. When the **MatchAll** filter is used, all messages published to the topic are placed in the subscription's virtual queue. The following example creates a subscription named 'mysubscription' and uses the default **MatchAll** filter.
+**MatchAll** フィルターは、新しいサブスクリプションの作成時にフィルターが指定されていない場合に使用される既定のフィルターです。**MatchAll** フィルターを使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの仮想キューに置かれます。次の例では、'mysubscription' という名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを使用します。
 
 	require_once 'vendor\autoload.php';
 
@@ -139,20 +139,20 @@ The **MatchAll** filter is the default filter that is used if no filter is speci
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179357
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179357
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-### Create subscriptions with filters
+### フィルターを適用してサブスクリプションを作成する
 
-You can also setup filters that allow you to scope which messages sent to a topic should show up within a specific topic subscription. The most flexible type of filter supported by subscriptions is the **SqlFilter**, which implements a subset of SQL92. SQL filters operate on the properties of the messages that are published to the topic. For more information about SqlFilters, see [SqlFilter.SqlExpression Property][sqlfilter].
+トピックに送信されたメッセージのうち、特定のトピック サブスクリプション内に表示されるメッセージに絞り込めるフィルターを設定することもできます。サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する **SqlFilter** です。SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。SqlFilter の詳細については、「[SqlFilter.SqlExpression プロパティ][sqlfilter]」を参照してください。
 
 	> [WACOM.NOTE]
-	> Each rule on a subscription processes incoming messages independently, adding their result messages to the subscription. In addition, each new subscription has a default <b>Rule</b> with a filter that adds all messages from the topic to the subscription. To receive only messages matching your filter, you must remove the default rule. You can remove the default rule by using the <b>ServiceBusRestProxy->deleteRule</b> method.
+	> サブスクリプションのルールごとに受信メッセージが個別に処理され、処理後のメッセージがサブスクリプションに追加されます。さらに、新しいサブスクリプションにはそれぞれ、既定の<b>ルール</b>があり、トピックからのすべてのメッセージをサブスクリプションに追加するフィルターが設定されています。独自のフィルターに一致するメッセージのみ受信するには、この既定のルールを削除する必要があります。既定のルールを削除するには、<b>ServiceBusRestProxy->deleteRule</b> メソッドを使用します。
 
-The example below creates a subscription named "HighMessages" with a **SqlFilter** that only selects messages that have a custom **MessageNumber** property greater than 3 (see [How to: Send messages to a topic](#SendMessage) for information about adding custom properties to messages):
+下の例では、3 を超えるカスタム **MessageNumber** プロパティを持つメッセージだけを **SqlFilter** で選択する、"HighMessages" というサブスクリプションを作成します (メッセージへのカスタム プロパティの追加の詳細については、「[方法: メッセージをトピックに送信する](#SendMessage)」を参照してください)。
 
 	$subscriptionInfo = new SubscriptionInfo("HighMessages");
    	$serviceBusRestProxy->createSubscription("mytopic", $subscriptionInfo);
@@ -163,9 +163,9 @@ The example below creates a subscription named "HighMessages" with a **SqlFilter
    	$ruleInfo->withSqlFilter("MessageNumber > 3");
    	$ruleResult = $serviceBusRestProxy->createRule("mytopic", "HighMessages", $ruleInfo);
 
-Note that the code above requires the use of an additional namespace: `WindowsAzure\ServiceBus\Models\SubscriptionInfo`.
+このコードには、追加の名前空間 `WindowsAzure\ServiceBus\Models\SubscriptionInfo` を使用する必要があることに注意してください。
 
-Similarly, the following example creates a subscription named "LowMessages" with a SqlFilter that only selects messages that have a MessageNumber property less than or equal to 3:
+同様に、次の例では "LowMessages" という名前のサブスクリプションを作成し、SqlFilter を適用します。このフィルターでは、MessageNumber が 3 以下のメッセージのみが選択されます。
 
 	$subscriptionInfo = new SubscriptionInfo("LowMessages");
    	$serviceBusRestProxy->createSubscription("mytopic", $subscriptionInfo);
@@ -176,12 +176,11 @@ Similarly, the following example creates a subscription named "LowMessages" with
    	$ruleInfo->withSqlFilter("MessageNumber <= 3");
    	$ruleResult = $serviceBusRestProxy->createRule("mytopic", "LowMessages", $ruleInfo);
 
-When a message is now sent to the `mytopic` topic, it will always be delivered to receivers subscribed to the `mysubscription` subscription, and selectively delivered to receivers subscribed to the "HighMessages" and "LowMessages" subscriptions (depending upon the message content).
+メッセージが `mytopic` トピックに送信されると、そのメッセージは `mysubscription` トピック サブスクリプションにサブスクライブされた受信者に必ず配信され、さらにメッセージの内容に応じて、"HighMessages" および "LowMessages" トピック サブスクリプションにサブスクライブされている受信者に対して選択的に配信されます。
 
-##<a id="SendMessage"></a>How to: Send messages to a topic
+##<a id="SendMessage"></a>方法: メッセージをトピックに送信する
 
-To send a message to a Service Bus topic, your application will call the **ServiceBusRestProxy->sendTopicMessage** method. The code below demonstrates how to send a message to the `mytopic` topic we created above within the
-`MySBNamespace` service namespace.
+メッセージを サービス バス トピックに送信するために、アプリケーションは **ServiceBusRestProxy->sendTopicMessage** メソッドを呼び出します。次のコードでは、前のコードで `MySBNamespace` サービス名前空間内で作成した `mytopic` トピックにメッセージを送信する方法を示しています。
 
 	require_once 'vendor\autoload.php';
 
@@ -203,13 +202,13 @@ To send a message to a Service Bus topic, your application will call the **Servi
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/hh780775
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/hh780775
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-Messages sent to Service Bus topics are instances of the **BrokeredMessage** class. **BrokeredMessage** objects have a set of standard properties and methods (such as **getLabel**, **getTimeToLive**, **setLabel**, and **setTimeToLive**), as well as properties that can be used to hold custom application-specific properties. The following example demonstrates how to send five test messages to the `mytopic` topic we created earlier. The **setProperty** method is used to add a custom property (`MessageNumber`) to each message. Note how the `MessageNumber` property value varies on each message (this can be used to determine which subscriptions receive it, as shown in the [How to: Create a Subscription](#CreateSubscription) section above):
+サービス バス トピックに送信されたメッセージは、**BrokeredMessage** クラスのインスタンスです。**BrokeredMessage** オブジェクトには、一連の標準的なプロパティとメソッド (**getLabel**、**getTimeToLive**、**setLabel**、**setTimeToLive** など) だけでなく、アプリケーションに固有のカスタム プロパティの保持に使用できるプロパティも用意されています。次の例では、前に作成した `mytopic` トピックにテスト メッセージを 5 通送信する方法を示しています。**setProperty** メソッドを使用して、カスタム プロパティ (`MessageNumber`) を各メッセージに追加します。`MessageNumber` プロパティの値がメッセージごとにどのように変化するのかに注目してください (前に示した「[方法: サブスクリプションを作成する](#CreateSubscription)」のセクションで説明したように、この値を使用して、メッセージを受信するサブスクリプションを決定できます)。 
 
 	for($i = 0; $i < 5; $i++){
 		// Create message.
@@ -223,18 +222,18 @@ Messages sent to Service Bus topics are instances of the **BrokeredMessage** cla
 		$serviceBusRestProxy->sendTopicMessage("mytopic", $message);
 	}
 
-Service Bus queues support a maximum message size of 256 KB (the header, which includes the standard and custom application properties, can have a maximum size of 64 KB). There is no limit on the number of messages held in a queue but there is a cap on the total size of the messages held by a queue. This upper limit on queue size is 5 GB.
+サービス バス キューでは、最大 256 KB までのメッセージをサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です)。キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。このキュー サイズの上限は 5 GB です。
 
-##<a id="ReceiveMessages"></a>How to: Receive messages from a subscription
+##<a id="ReceiveMessages"></a>方法: サブスクリプションからメッセージを受信する
 
-The primary way to receive messages from a subscription is to use a **ServiceBusRestProxy->receiveSubscriptionMessage** method. Received messages can work in two different modes: **ReceiveAndDelete** (the default) and **PeekLock**.
+サブスクリプションからメッセージを受信する主な方法は、**ServiceBusRestProxy->receiveSubscriptionMessage** メソッドを使用することです。受信したメッセージは、2 つの異なるモード (**ReceiveAndDelete** (既定) と **PeekLock**) で受信できます。
 
-When using the **ReceiveAndDelete** mode, receive is a single-shot operation - that is, when Service Bus receives a read request for a message in a subscription, it marks the message as being consumed and returns it to the application. **ReceiveAndDelete** mode is the simplest model and works best for scenarios in which an
-application can tolerate not processing a message in the event of a failure. To understand this, consider a scenario in which the consumer issues the receive request and then crashes before processing it. Because Service Bus will have marked the message as being consumed, then when the application restarts and begins consuming messages again, it will have missed the message that was consumed prior to the crash.
+**ReceiveAndDelete** モードを使用する場合、受信は 1 回ずつの動作になります。つまり、サービス バスは、サブスクリプション内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。- **ReceiveAndDelete** モードは最もシンプルなモデルであり、問題が発生した際に
+アプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。サービス バスはメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
-In **PeekLock** mode, receiving a message becomes a two stage operation, which makes it possible to support applications that cannot tolerate missing messages. When Service Bus receives a request, it finds the next message to be consumed, locks it to prevent other consumers receiving it, and then returns it to the application. After the application finishes processing the message (or stores it reliably for future processing), it completes the second stage of the receive process by passing the received message to **ServiceBusRestProxy->deleteMessage**. When Service Bus sees the **deleteMessage** call, it will mark the message as being consumed and remove it from the queue.
+**PeekLock** モードでは、メッセージの受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。サービス バスは要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージを **ServiceBusRestProxy->deleteMessage** に渡して受信処理の第 2 段階を完了します。サービス バスが **deleteMessage** の呼び出しを確認すると、メッセージが読み取り中としてマークされ、キューから削除されます。
 
-The example below demonstrates how a message can be received and processed using **PeekLock** mode (not the default mode). 
+次の例では、**PeekLock** モード (既定ではないモード) を使用したメッセージの受信および処理の方法を示しています。
 
 	require_once 'vendor\autoload.php';
 
@@ -268,25 +267,29 @@ The example below demonstrates how a message can be received and processed using
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here:
-		// http://msdn.microsoft.com/en-us/library/windowsazure/hh780735
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/hh780735
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-##<a id="HandleCrashes"></a>How to: Handle application crashes and unreadable messages
+##<a id="HandleCrashes"></a>方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する
 
-Service Bus provides functionality to help you gracefully recover from errors in your application or difficulties processing a message. If a receiver application is unable to process the message for some reason, then it can call the **unlockMessage** method on the received message (instead of the **deleteMessage** method). This will cause Service Bus to unlock the message within the queue and make it available to be received again, either by the same consuming application or by another consuming application.
+サービス バスには、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。受信側のアプリケーションが何らかの理由によってメッセージを処理できない場合には、
+受信したメッセージについて (**deleteMessage** メソッドの代わりに) 
+**unlockMessage** メソッドを呼び出すことができます。このメソッドが呼び出されると、サービス バスによってキュー内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。メッセージを受信するアプリケーションは、以前と同じものでも、別のものでもかまいません。
 
-There is also a timeout associated with a message locked within the queue, and if the application fails to process the message before the lock timeout expires (e.g., if the application crashes), then Service Bus will unlock the message automatically and make it available to be received again.
+キュー内でロックされているメッセージにはタイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合には、メッセージのロックが自動的に解除され、再度受信できる状態に変わります。
 
-In the event that the application crashes after processing the message but before the **deleteMessage** request is issued, then the message will be redelivered to the application when it restarts. This is often called **At Least Once Processing**, that is, each message will be processed at least once but in certain situations the same message may be redelivered. If the scenario cannot tolerate duplicate processing, then application developers should add additional logic to their application to handle duplicate message delivery. This is often achieved using the **getMessageId** method of the message, which will remain constant across delivery attempts.
+メッセージが処理された後、**deleteMessage** 要求が発行される前に
+アプリケーションがクラッシュした場合は、アプリケーションが再起動する際に
+メッセージが再配信されます。一般的に、この動作は **"1 回以上の処理"** と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。通常、この問題はメッセージの **getMessageId** メソッドを使用して対処します。このプロパティは、配信が試行された後も同じ値を保持します。
 
-##<a id="DeleteTopicsAndSubscriptions"></a>How to Delete Topics and Subscriptions
+##<a id="DeleteTopicsAndSubscriptions"></a>トピックとサブスクリプションを削除する方法
 
-To delete a topic or a subscription, use the **ServiceBusRestProxy->deleteTopic** or the **ServiceBusRestProxy->deleteSubscripton** methods respectively. Note that deleting a topic will also delete any subscriptions that are registered with the topic.
+トピックまたはサブスクリプションを削除するには、**ServiceBusRestProxy->deleteTopic** メソッドまたは **ServiceBusRestProxy->deleteSubscripton** メソッドをそれぞれ使用します。トピックを削除すると、そのトピックに登録されたサブスクリプションもすべて削除されることに注意してください。
 
-The following example shows how to delete a topic (`mytopic`) and its registered subscriptions.
+次のコードでは、トピック (`mytopic`) とその登録されたサブスクリプションを削除する方法を示しています。
 
     require_once 'vendor\autoload.php';
 
@@ -304,33 +307,32 @@ The following example shows how to delete a topic (`mytopic`) and its registered
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179357
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179357
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-By using the **deleteSubscription** method, you can delete a subscription independently:
+**deleteSubscription** メソッドを使用すると、サブスクリプションを個別に削除できます。
 
 	$serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 
-##<a id="NextSteps"></a>Next steps
+##<a id="NextSteps"></a>次のステップ
 
-Now that you've learned the basics of Service Bus queues, see the MSDN
-topic [Queues, Topics, and Subscriptions][] for more information.
+これで、サービス バス キューの基本を学習できました。詳細については、MSDN のトピック「[サービス バス キュー、トピックおよびサブスクリプション][]」を参照してください。
 
 [download-sdk]: http://go.microsoft.com/fwlink/?LinkId=252473
-[What are Service Bus Topics and Subscriptions?]: #bkmk_WhatAreSvcBusTopics
-[Create a Service Namespace]: #bkmk_CreateSvcNamespace
-[Obtain the Default Management Credentials for the Namespace]: #bkmk_ObtainDefaultMngmntCredentials
-[Configure Your Application to Use Service Bus]: #bkmk_ConfigYourApp
-[How to: Create a Topic]: #bkmk_HowToCreateTopic
-[How to: Create Subscriptions]: #bkmk_HowToCreateSubscrip
-[How to: Send Messages to a Topic]: #bkmk_HowToSendMsgs
-[How to: Receive Messages from a Subscription]: #bkmk_HowToReceiveMsgs
-[How to: Handle Application Crashes and Unreadable Messages]: #bkmk_HowToHandleAppCrash
-[How to: Delete Topics and Subscriptions]: #bkmk_HowToDeleteTopics
-[Next Steps]: #bkmk_NextSteps
+[サービス バス トピックとサブスクリプションとは]: #bkmk_WhatAreSvcBusTopics
+[サービス名前空間の作成]: #bkmk_CreateSvcNamespace
+[名前空間の既定の管理資格情報の取得]: #bkmk_ObtainDefaultMngmntCredentials
+[サービス バスを使用するようにアプリケーションを構成する]: #bkmk_ConfigYourApp
+[How to: トピックを作成する]: #bkmk_HowToCreateTopic
+[How to: サブスクリプションを作成する]: #bkmk_HowToCreateSubscrip
+[How to: メッセージをトピックに送信する]: #bkmk_HowToSendMsgs
+[How to: サブスクリプションからメッセージを受信する]: #bkmk_HowToReceiveMsgs
+[How to: アプリケーションのクラッシュと読み取り不能のメッセージを処理する]: #bkmk_HowToHandleAppCrash
+[How to: トピックとサブスクリプションを削除する]: #bkmk_HowToDeleteTopics
+[次のステップ]: #bkmk_NextSteps
 [Service Bus Topics diagram]: ../../../DevCenter/Java/Media/SvcBusTopics_01_FlowDiagram.jpg
 [Azure Management Portal]: http://manage.windowsazure.com/
 [Service Bus Node screenshot]: ../../../DevCenter/dotNet/Media/sb-queues-03.png
@@ -340,6 +342,6 @@ topic [Queues, Topics, and Subscriptions][] for more information.
 [Default Key screenshot]: ../../../DevCenter/dotNet/Media/sb-queues-07.png
 [Queues, Topics, and Subscriptions]: http://msdn.microsoft.com/en-us/library/windowsazure/hh367516.aspx
 [Available Namespaces screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_04_SvcBusNode_AvailNamespaces.jpg
-[sqlfilter]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
+[sqlfilter]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
 
 [require-once]: http://php.net/require_once

@@ -1,137 +1,137 @@
-<properties linkid="web-sites-backup" urlDisplayName="Azure Web Sites Backups" pageTitle="Azure Web Sites Backups" metaKeywords="Azure Web Sites, Backups" description="Learn how to create backups of your Azure web sites." metaCanonical="" services="web-sites" documentationCenter="" title="Azure Web Sites Backups" authors="timamm" solutions="" manager="paulettm" editor="mollybos" />
+<properties linkid="web-sites-backup" urlDisplayName="Azure の Web サイトのバックアップ" pageTitle="Azure の Web サイトのバックアップ" metaKeywords="Azure の Web サイト, バックアップ" description="Azure の Web サイトのバックアップを作成する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="Azure の Web サイトのバックアップ" authors="timamm" solutions="" manager="paulettm" editor="mollybos" />
 
-#Azure Web Sites Backups
+#Azure の Web サイトのバックアップ
 
-The Azure Web Sites Backup and Restore feature lets you easily create web site backups manually or automatically. You can restore your web site to a previous state, or create a new web site based on one of your original site's backups. 
+Azure の Web サイトのバックアップと復元の機能で、手動または自動で簡単に Web サイトのバックアップを作成することができます。Web サイトを以前の状態に復元したり、元のサイトのいずれかのバックアップに基づいて新しい Web サイトを作成したりすることができます。
 
 
-For information on restoring an Azure web site from backup, see [Restore an Azure web site](http://www.windowsazure.com/en-us/documentation/articles/web-sites-restore/).
+バックアップから Azure の Web サイトを復元する方法の詳細については、「[Restore an Azure web site (Azure の Web サイトを復元する)](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-restore/)」を参照してください。
 
-##In this article
+##この記事の内容
 
-- [What Gets Backed Up](#whatsbackedup)
-- [Requirements and Restrictions](#requirements)
-- [To Create a Manual Backup](#manualbackup)
-- [To Configure Automated Backups](#automatedbackups)
-- [How Backups Are Stored](#aboutbackups)
-- [Notes](#notes)
-- [Next Steps](#nextsteps)
-	- [More about storage accounts](#moreaboutstorage)
+- [バックアップ対象](#whatsbackedup)
+- [要件および制限](#requirements)
+- [手動でバックアップを作成するには](#manualbackup)
+- [自動バックアップを構成するには](#automatedbackups)
+- [バックアップの保存](#aboutbackups)
+- [メモ](#notes)
+- [次のステップ](#nextsteps)
+	- [ストレージ アカウントの詳細](#moreaboutstorage)
 
 <a name="whatsbackedup"></a>
-##What Gets Backed Up 
-Azure Web Sites backs up the following information:
+##バックアップ対象
+Azure の Web サイトでは次の情報をバックアップします。
 
-* Web site configuration
-* Web site file content
-* Any SQL Server or MySQL databases connected to your site (you can choose which ones to include in the backup)
+* Web サイトの構成
+* Web サイトのファイル コンテンツ
+* サイトに接続されているすべての SQL Server または MySQL データベース (バックアップに含めるものを選択できます)
 
-This information is backed up to the Azure storage account that you specify. 
+この情報は指定した Azure のストレージ アカウントにバックアップされます。
 
-> [WACOM.NOTE] Each backup is a complete offline copy of your web site, not an incremental update.
+> [WACOM.NOTE] 各バックアップは、増分更新ではなく、Web サイトの完全なオフライン コピーです。
 
 <a name="requirements"></a>
-##Requirements and Restrictions
+##要件および制限
 
-* The Backup and Restore feature requires requires the site to be in a Standard tier. For more information about scaling your web site use a Standard tier, see [How to Scale Web Sites](http://www.windowsazure.com/en-us/documentation/articles/web-sites-scale/). 
+* バックアップと復元の機能には、標準レベルにあるサイトが必要です。標準レベルを使用する Web サイトを規模変更する方法の詳細については、「[How to Scale Web Sites (Web サイトの規模変更方法)](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-scale/)」を参照してください。
 
-* The Backup and Restore feature requires an Azure storage account that must belong to the same subscription as the web site that you are going to back up. If you do not yet have a storage account, you can create one by clicking the **Storage** button (grid icon) in the left pane of the Azure portal, and then choosing **New** in the command bar at the bottom. For more information on Azure storage accounts, see the [links](#moreaboutstorage) at the end of this article.
+* バックアップと復元の機能には、バックアップを作成しようとしている Web サイトと同じサブスクリプションに属する必要がある Azure のストレージ アカウントが必要です。まだストレージ アカウントを所有していない場合は、Azure ポータルの左側ウィンドウの **[ストレージ]** (グリッド アイコン) をクリックし、下部のコマンド バーで **[新規]** をクリックして作成することができます。Azure のストレージ アカウントの詳細については、この記事の末尾に示されている[リンク](#moreaboutstorage)を参照してください。
 
 <a name="manualbackup"></a>
-## To Create a Manual Backup
+## 手動でバックアップを作成するには
 
-1. In the Azure portal for your web site, choose the **Backups** tab.
+1. Web サイトの Azure ポータルで、**[バックアップ]** タブを選択します。
 	
-	![Backups page][ChooseBackupsPage]
+	![バックアップ ページ][ChooseBackupsPage]
 	
-2. Select the storage account to which you want to back up your web site. The storage account must belong to the same subscription as the web site that you are going to back up.
+2. Web サイトをバックアップするストレージ アカウントを選択します。ストレージ アカウントは、バックアップを作成しようとしている Web サイトと同じサブスクリプションに属している必要があります。
 	
-	![Choose storage account][ChooseStorageAccount]
+	![ストレージ アカウントの選択][ChooseStorageAccount]
 	
-3. In the **Included Databases** option, select the databases that are connected to your web site (SQL Server or MySQL) that you want to back up. 
+3. **含まれるデータベース** オプションで、バックアップを作成する Web サイト (SQL Server または MySQL) に接続されているデータベースを選択します。
 	
-	![Choose databases to include][IncludedDatabases]
+	![含めるデータベースの選択][IncludedDatabases]
 
-	> [WACOM.NOTE] 	For a database to appear in this list, its connection string must exist in the **Connection Strings** section of the Configure tab in the portal.
+	> [WACOM.NOTE] 	このリストにデータベースを表示するには、データベースの接続文字列がポータルの [構成] タブの**接続文字列**セクションに存在する必要があります。
 	
-4. In the command bar, click **Backup Now**.
+4. コマンド バーで、**[今すぐバックアップ]** をクリックします。
 	
-	![BackUpNow button][BackUpNow]
+	![BackUpNow ボタン][BackUpNow]
 	
-	You will see a progress message during the backup process:
+	バックアップ処理中に、進行状況についてのメッセージが表示されます。
 	
-	![Backup progress message][BackupProgress]
+	![バックアップの進行状況についてのメッセージ][BackupProgress]
 	
-You can make a manual backup at any time. During Preview, no more than 2 manual backups can be made in a 24-hour period (subject to change).  
+手動バックアップはいつでもできます。プレビュー期間中、手動バックアップは 24 時間以内に 2 回まで実行できます (変更されることがあります)。
 
 <a name="automatedbackups"></a>
-## To Configure Automated Backups
+## 自動バックアップを構成するには
 
-1. On the Backups page, set **Automated Backup** to ON.
+1. [バックアップ] ページで、**[自動バックアップ]** をオンにします。
 	
-	![Enable automated backups][SetAutomatedBackupOn]
+	![自動化されたバックアップを有効にする][SetAutomatedBackupOn]
 	
-2. Select the storage account to which you want to back up your web site. The storage account must belong to the same subscription as the web site that you are going to back up.
+2. Web サイトをバックアップするストレージ アカウントを選択します。ストレージ アカウントは、バックアップを作成しようとしている Web サイトと同じサブスクリプションに属している必要があります。
 	
-	![Choose storage account][ChooseStorageAccount]
+	![ストレージ アカウントの選択][ChooseStorageAccount]
 	
-3. In the **Frequency** box, specify how often you want automated backups to be made. (During Preview, the number of days is the only time unit available.)
+3. **[頻度]** ボックスで、自動化されたバックアップの頻度を指定します(プレビュー期間中、使用可能な時間単位は日数のみです)。
 	
-	![Choose backup frequency][Frequency]
+	![バックアップ頻度の選択][Frequency]
 	
-	The number of days must be between 1 and 90, inclusive (from once a day to once every 90 days).
+	日数は 1 ～ 90 (1 日 1 回から 90 日に 1 回まで) にする必要があります。
 	
-4. Use the **Start Date** option to specify a date and time when you want the automated backups to begin. 
+4. **開始日** オプションを使用して、自動化されたバックアップを開始する日時を指定します。
 	
-	![Choose start date][StartDate]
+	![開始日の選択][StartDate]
 	
-	Times are available in half-hour increments.
+	時間は 30 分単位で選択できます。
 	
-	![Choose start time][StartTime]
+	![開始時刻の選択][StartTime]
 	
-	> [WACOM.NOTE] Azure stores backup times in UTC format, but displays them in accordance with the system time on the computer that you are using to display the portal.
+	> [WACOM.NOTE] Azure ではバックアップ時間は UTC 形式で保存されますが、ポータルの表示に使用しているコンピューターのシステム時刻に基づいて表示されます。
 	
-5. In the **Included Databases** section, select the databases that are connected to your web site (SQL Server or MySQL) that you want to back up. For a database to appear in the list, its connection string must exist in the **Connection Strings** section of the Configure tab in the portal.
+5. **[含まれるデータベース]** セクションで、バックアップを作成する Web サイト (SQL Server または MySQL) に接続されているデータベースを選択します。リストにデータベースを表示するには、データベースの接続文字列がポータルの [構成] タブの**接続文字列**セクションに存在する必要があります。
 	
-	![Choose databases to include][IncludedDatabases]
+	![含めるデータベースの選択][IncludedDatabases]
 	
-	> [WACOM.NOTE] If you choose to include one or more databases in the backup and have specified a Frequency of less than 7 days, you will be warned that frequent backups can increase your database costs.
+	> [WACOM.NOTE] 1 つ以上のデータベースをバックアップに含めて、7 日未満の頻度を指定すると、頻繁なバックアップはデータベースのコストを増やす可能性があるという警告が表示されます。
 	
-6. In the command bar, click the **Save** button to save your configuration changes (or choose **Discard** if you decide not to save them).
+6. コマンド バーをクリックし、**[保存]** をクリックして、構成の変更を保存します (保存しない場合は、**[破棄]** を選択します)。
 	
-	![Save button][SaveIcon]
+	![保存ボタン][SaveIcon]
 
 <a name="aboutbackups"></a>
-## How Backups Are Stored
+## バックアップの保存
 
-After you have made one or more backups, they will be visible on the Containers tab of your storage account. Your backups will be in a container called **websitebackups**. Each backup consists of a .zip file that contains the backed up data and an .xml file that contains a manifest of the .zip file contents. 
+1 つ以上のバックアップを行うと、ストレージ アカウントの [コンテナー] タブに表示されます。バックアップは **websitebackups** というコンテナーに含まれます。各バックアップは、バックアップしたデータを含む .zip ファイルと、.zip ファイルの内容のマニフェストを含む .xml ファイルで構成されます。
 
-The .zip and .xml backup file names consist of your web site name followed by an underscore and a time stamp of when the backup was taken. The time stamp contains the date in the format YYYYMMDD (in digits with no spaces) plus the 24-hour time in UTC format (for example, fabrikam_201402152300.zip). The content of these files can be unzipped and browsed in case you want to access your backups without actually performing a web site restore.
+.zip バックアップ ファイルおよび .xml バックアップ ファイルの名前は、Web サイトの名前の後にアンダー スコアとバックアップされたときのタイムスタンプを付けて構成されます。タイムスタンプには YYYYMMDD 形式の日付 (スペースなしの数字) に UTC 形式の 24 時間表記を付けたものが含まれます (たとえば、fabrikam_201402152300.zip)。実際には Web サイトの復元を実行せずにバックアップにアクセスする場合は、これらのファイルの内容を解凍して、参照することができます。
 
-> [WACOM.NOTE] Altering any of the files in your **websitebackups** container can cause the backup to become invalid and therefore non-restorable.
+> [WACOM.NOTE] **websitebackups** コンテナー内のファイルを変更すると、バックアップが無効になり、復元できなくなる可能性があります。
 
 <a name="notes"></a>
-## Notes
+## 注
 
-* Make sure that you set up the connection strings for each of your databases properly on the Configure tab of the web site so that the Backup and Restore feature can include your databases.
-* During Preview, you are responsible for managing the backed up content saved to your storage account. If you delete a backup from your storage account and have not made a copy elsewhere, you will not be able to restore the backup later. 
-* Although you can back up more than one web site to the same storage account, for ease of maintenance, consider creating a separate storage account for each web site.
-* During Preview, backup and restore operations are available only through the Azure Management Portal.
+* バックアップと復元の機能をデータベースに含めることができるように、各データベースの接続文字列を Web サイトの [構成] タブで適切に設定していることを確認します。
+* プレビュー期間中、ストレージ アカウントに保存されているバックアップ コンテンツを管理します。バックアップをストレージ アカウントから削除して別の場所にコピーを作成していない場合は、後でバックアップを復元することはできません。
+* 複数の Web サイトを同じストレージ アカウントにバックアップできますが、保守しやすくするために、各 Web サイトに別々のストレージ アカウントを作成することを検討します。
+* プレビュー期間中、バックアップ操作と復元操作は、Azure 管理ポータルを通じてのみ使用可能です。
 
 <a name="nextsteps"></a>
-## Next Steps
-For information on restoring an Azure web site from backup, see [Restore an Azure web site](http://www.windowsazure.com/en-us/documentation/articles/web-sites-restore/).
+## 次のステップ
+バックアップからの Azure の Web サイトの復元の詳細については、「[Restore an Azure web site (Azure の Web サイトの復元)](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-restore/)」を参照してください。
 
 <a name="moreaboutstorage"></a>
-### More about storage accounts
+### ストレージ アカウントの詳細
 
-[What is a Storage Account?](http://www.windowsazure.com/en-us/documentation/articles/storage-whatis-account/)
+[ストレージ アカウントとは](http://www.windowsazure.com/ja-jp/documentation/articles/storage-whatis-account/)
 
-[How to: Create a storage account](http://www.windowsazure.com/en-us/documentation/articles/storage-create-storage-account/)
+[方法: ストレージ アカウントを作成する](http://www.windowsazure.com/ja-jp/documentation/articles/storage-create-storage-account/)
 
-[How To Monitor a Storage Account](http://www.windowsazure.com/en-us/documentation/articles/storage-monitor-storage-account/)
+[ストレージ アカウントの監視方法](http://www.windowsazure.com/ja-jp/documentation/articles/storage-monitor-storage-account/)
 
-[Understanding Winidows Azure Storage Billing](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
+[Winidows Azure ストレージでの課金について](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
 
 <!-- IMAGES -->
 [ChooseBackupsPage]: ./media/web-sites-backup/01ChooseBackupsPage.png
@@ -144,3 +144,4 @@ For information on restoring an Azure web site from backup, see [Restore an Azur
 [StartDate]: ./media/web-sites-backup/08StartDate.png
 [StartTime]: ./media/web-sites-backup/09StartTime.png
 [SaveIcon]: ./media/web-sites-backup/10SaveIcon.png
+

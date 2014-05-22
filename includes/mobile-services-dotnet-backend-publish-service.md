@@ -1,24 +1,25 @@
 
 
-After testing the Windows Store app against the local mobile service, the final stage of this tutorial is to publish the mobile service to Azure and run the app against the live service.
+ローカルのモバイル サービスと組み合わせて Windows ストア アプリをテストした後、このチュートリアルの最終段階でモバイル サービスを Azure に発行し、ライブ サービスと組み合わせてアプリを実行します。
 
-1. In Solution Explorer, right-click the mobile service project and click **Publish**
+1. ソリューション エクスプローラーで、モバイル サービス プロジェクトを右クリックし、**[発行]** をクリックします。
 
 	![](./media/mobile-services-dotnet-backend-publish-service/mobile-quickstart-publish.png)
 
-	This displays the Publish Web dialog box.
+	[Web の発行] ダイアログ ボックスが表示されます。
 
-2. Click **Import**, click **Browse**, navigate to the location where you earlier saved the publish profile file, Select the publish profile file, click **OK**.
+2. **[インポート]**、**[参照]** の順にクリックし、以前に発行プロファイル ファイルを保存した場所に移動して、発行プロファイル ファイルを選択し、**[OK]** をクリックします。
 
 	![](./media/mobile-services-dotnet-backend-publish-service/mobile-quickstart-publish-import-profile.png)
 
-	This loads the information needed by Visual Studio to publish your mobile service to Azure. 
+	この結果、モバイル サービスを Azure に発行するために Visual Studio が必要とする情報が読み込まれます。
 	
-	<div class="dev-callout"><strong>Security note</strong> <p>After importing the publish profile, consider deleting the downloaded file as it contains information that can be used by others to access your services.</p></div>
+	<div class="dev-callout"><strong>セキュリティ上の注意</strong><p>ダウンロードしたファイルに含まれている情報を使用して他のユーザーがお客様のサービスにアクセスすることも可能であるため、発行プロファイルをインポートした後、ダウンロードしたファイルを削除することを検討してください。</p></div>
 
-3. Click **Validate connection** to verify that publishing is correctly configured, then click **Publish**.
+3. **[接続の検証]** をクリックして、発行が正しく構成されていることを確認した後、**[発行]** をクリックします。
 
 	![](./media/mobile-services-dotnet-backend-publish-service/mobile-quickstart-publish-2.png)
 
-	After publishing succeeds, you will again see the confirmation page that the mobile service is up and running, this time in Azure.
+	発行に成功した後、確認ページが再び表示されますが、今度はモバイル サービスが Azure 内で実行されていることが示されます。
+
 

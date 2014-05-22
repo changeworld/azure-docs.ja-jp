@@ -1,5 +1,6 @@
-<properties linkid="develop-java-javadocs" urlDisplayName="Javadocs" pageTitle="Javadocs - Azure resources" metaKeywords="" description="Javadoc API reference for the Azure SDK for Java." metaCanonical="" services="" documentationCenter="Java" title="Javadoc Content" authors="waltpo" solutions="" manager="bjsmith" editor="mollybos" />
+<properties linkid="develop-java-javadocs" urlDisplayName="Javadoc" pageTitle="Javadoc - Azure リソース" metaKeywords="" description="Azure SDK for Java の Javadoc API 参照。" metaCanonical="" services="" documentationCenter="Java" title="Javadoc のコンテンツ" authors="waltpo" solutions="" manager="bjsmith" editor="mollybos" />
 
-# Javadoc Content
+#Javadoc のコンテンツ
 
-The Javadoc content for the Azure Libraries for Java can be viewed at <http://dl.windowsazure.com/javadoc>.
+Azure Libraries for Java の Javadoc のコンテンツは <http://dl.windowsazure.com/javadoc>で参照できます。
+

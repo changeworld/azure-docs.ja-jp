@@ -1,61 +1,61 @@
-<properties linkid="dev-ruby-how-to-service-bus-topics" urlDisplayName="Service Bus Topics" pageTitle="How to use Service Bus topics (Ruby) - Azure" metaKeywords="Get started Azure Service Bus topics, Get Started Service Bus topics, Azure publish subscribe messaging, Azure messaging topics and subscriptions, Service Bus topic ruby" description="Learn how to use Service Bus topics and subscriptions in Azure. Code samples are written for Ruby applications." metaCanonical="" services="service-bus" documentationCenter="Ruby" title="How to Use Service Bus Topics/Subscriptions" authors="guayan" solutions="" manager="" editor="" />
+<properties linkid="dev-ruby-how-to-service-bus-topics" urlDisplayName="サービス バス トピック" pageTitle="サービス バス トピックの使用方法 (Ruby) - Azure" metaKeywords="Azure サービス バス トピックの概要, サービス バス トピックの概要, Azure 発行/サブスクライブ メッセージング, Azure メッセージング トピックおよびサブスクリプション, サービス バス トピック ruby" description="Azure での サービス バス のトピックとサブスクリプションの使用方法について学習します。コード サンプルは Ruby アプリケーション向けに作成されています。" metaCanonical="" services="service-bus" documentationCenter="Ruby" title="サービス バス トピック/サブスクリプションの使用方法" authors="guayan" solutions="" manager="" editor="" />
 
 
 
 
 
-# How to Use Service Bus Topics/Subscriptions
+#  サービス バス トピック/サブスクリプションの使用方法
 
-This guide will show you how to use Service Bus topics and subscriptions from Ruby applications. The scenarios covered include **creating topics and subscriptions, creating subscription filters, sending messages** to a topic, **receiving messages from a subscription**, and **deleting topics and subscriptions**. For more information on topics and subscriptions, see the [Next Steps](#NextSteps) section.
+このガイドでは、Ruby アプリケーションからサービス バス トピックとサブスクリプションを使用する方法について説明します。ここでは、
+**トピックとサブスクリプションの作成、サブスクリプション フィルターの作成、トピックへのメッセージの送信**、**サブスクリプションからのメッセージの受信**、**トピックとサブスクリプションの削除**などのシナリオについて説明します。トピックとサブスクリプションの詳細については、「[次の手順](#NextSteps)」を参照してください。
 
-## Table of Contents
-* [What are Service Bus Topics and Subscriptions](#what-are-service-bus-topics)
-* [Create a Service Namespace](#create-a-service-namespace)
-* [Obtain the Default Management Credentials for the Namespace](#obtain-default-credentials)
-* [Create a Ruby Application](#create-a-ruby-application)
-* [Configure Your Application to Use Service Bus](#configure-your-application-to-use-service-bus)
-* [Setup an Azure Service Bus Connection](#setup-a-windows-azure-service-bus-connection)
-* [How to Create a Topic](#how-to-create-a-topic)
-* [How to Create Subscriptions](#how-to-create-subscriptions)
-* [How to Send Messages to a Topic](#how-to-send-messages-to-a-topic)
-* [How to Receive Messages from a Subscription](#how-to-receive-messages-from-a-subscription)
-* [How to Handle Application Crashes and Unreadable Messages](#how-to-handle-application-crashes-and-unreadable-messages)
-* [How to Delete Topics and Subscriptions](#how-to-delete-topics-and-subscriptions)
-* [Next Steps](#NextSteps)
+## 目次
+* [サービス バス トピックとサブスクリプションとは](#what-are-service-bus-topics)
+* [サービス名前空間の作成](#create-a-service-namespace)
+* [名前空間の既定の管理資格情報の取得](#obtain-default-credentials)
+* [Ruby アプリケーションの作成](#create-a-ruby-application)
+* [サービス バスを使用するようにアプリケーションを構成する](#configure-your-application-to-use-service-bus)
+* [Azure のサービス バス接続の設定](#setup-a-windows-azure-service-bus-connection)
+* [トピックを作成する方法](#how-to-create-a-topic)
+* [サブスクリプションの作成方法](#how-to-create-subscriptions)
+* [メッセージをトピックに送信する方法](#how-to-send-messages-to-a-topic)
+* [サブスクリプションからメッセージを受信する方法](#how-to-receive-messages-from-a-subscription)
+* [アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法](#how-to-handle-application-crashes-and-unreadable-messages)
+* [方法: トピックとサブスクリプションを削除する](#how-to-delete-topics-and-subscriptions)
+* [次のステップ](#NextSteps)
 
 [WACOM.INCLUDE [howto-service-bus-topics](../includes/howto-service-bus-topics.md)]
 
-## <a id="create-a-ruby-application"></a>Create a Ruby Application
+## <a id="create-a-ruby-application"></a>Ruby アプリケーションを作成する
 
-Create a Ruby application. For instructions, see [Create a Ruby Application on Azure](/en-us/develop/ruby/tutorials/web-app-with-linux-vm/).
+Ruby アプリケーションを作成します。手順については、[Azure での Ruby アプリケーションの作成に関するページ](/ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/)を参照してください。
 
-## <a id="configure-your-application-to-use-service-bus"></a>Configure Your Application to Use Service Bus
+## <a id="configure-your-application-to-use-service-bus"></a> サービス バス を使用するようにアプリケーションを構成する
 
-To use Azure service bus, you need to download and use the Ruby azure package, which includes a set of convenience libraries that communicate with the storage REST services.
+Azure サービス バスを使用するには、Ruby azure パッケージをダウンロードして使用する必要があります。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
 
-### Use RubyGems to obtain the package
+### RubyGems を使用してパッケージを取得する
 
-1. Use a command-line interface such as **PowerShell** (Windows), **Terminal** (Mac), or **Bash** (Unix).
+1. **PowerShell** (Windows)、**ターミナル** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用します。
 
-2. Type "gem install azure" in the command window to install the gem and dependencies.
+2. コマンド ウィンドウに「gem install azure」と入力して、gem と依存関係をインストールします。
 
-### Import the package
+### パッケージをインポートする
 
-Use your favorite text editor, add the following to the top of the Ruby file where you intend to use storage:
+任意のテキスト エディターを使用して、ストレージを使用する Ruby ファイルの先頭に次のコードを追加します。
 
     require "azure"
 
-## <a id="setup-a-windows-azure-service-bus-connection"></a>Setup an Azure Service Bus Connection
+## <a id="setup-a-windows-azure-service-bus-connection"></a>Azure のサービス バス接続の設定
 
-The azure module will read the environment variables **AZURE\_SERVICEBUS\_NAMESPACE** and **AZURE\_SERVICEBUS\_ACCESS\_KEY** 
-for information required to connect to your Azure service bus namespace. If these environment variables are not set, you must specify the namespace information before using **Azure::ServiceBusService** with the following code:
+azure モジュールは、Azure サービス バス に接続するために必要な情報として、環境変数 **AZURE\_SERVICEBUS\_NAMESPACE** および **AZURE\_SERVICEBUS\_ACCESS\_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::ServiceBusService** を使用する前に、次のコードを使用して名前空間の情報を指定する必要があります。
 
     Azure.config.sb_namespace = "<your azure service bus namespace>"
     Azure.config.sb_access_key = "<your azure service bus access key>"
 
-## <a id="how-to-create-a-topic"></a>How to Create a Topic
+## <a id="how-to-create-a-topic"></a>トピックの作成方法
 
-The **Azure::ServiceBusService** object lets you work with topics. The following code creates an **Azure::ServiceBusService** object. To create a topic, use the **create\_topic()** method. The following example creates a topic or print out the error if there is any.
+**Azure::ServiceBusService** オブジェクトを使用して、トピックを操作できます。次のコードでは、**Azure::ServiceBusService** オブジェクトを作成します。トピックを作成するには、**create\_topic()** メソッドを使用します。次の例では、トピックを作成し、既に存在する場合はエラーを出力します。
 
 	azure_service_bus_service = Azure::ServiceBusService.new
 	begin
@@ -64,7 +64,7 @@ The **Azure::ServiceBusService** object lets you work with topics. The following
       puts $!
     end
 
-You can also pass in a **Azure::ServiceBus::Topic** object with additional options, which allows you to override default topic settings such as message time to live or maximum queue size. The following example shows setting the maximum queue size to 5GB and time to live to 1 minute:
+**Azure::ServiceBus::Topic** オブジェクトに追加のオプションを渡すこともできます。これにより、メッセージの有効期間やキューの最大サイズなどの既定のトピックの設定をオーバーライドできます。次の例は、キューの最大サイズを 5 GB に、有効期間を 1 分に設定する方法を示しています。
 
 	topic = Azure::ServiceBus::Topic.new("test-topic")
     topic.max_size_in_megabytes = 5120
@@ -72,32 +72,30 @@ You can also pass in a **Azure::ServiceBus::Topic** object with additional optio
 
     topic = azure_service_bus_service.create_topic(topic)
 
-## <a id="how-to-create-subscriptions"></a>How to Create Subscriptions
+## <a id="how-to-create-subscriptions"></a>サブスクリプションの作成方法
 
-Topic subscriptions are also created with the **Azure::ServiceBusService** object. Subscriptions are named and can have an optional filter that restricts the set of messages delivered to the subscription's virtual queue.
+トピック サブスクリプションも **Azure::ServiceBusService** オブジェクトで作成します。サブスクリプションを指定し、サブスクリプションの仮想キューに配信するメッセージを制限するフィルターを設定することができます。
 
-**Note**
-Subscriptions are persistent and will continue to exist until either they, or the topic they are associated with, are deleted. If your application contains logic to create a subscription, it should first check if the subscription already exists by using the getSubscription method.
+**注**: サブスクリプションは永続的であり、サブスクリプション、またはサブスクリプションが関連付けられているトピックが削除されるまで存在し続けます。アプリケーションにサブスクリプションを作成するロジックが含まれている場合は、最初に getSubscription メソッドを使用して、サブスクリプションが既に存在しているかどうかを確認する必要があります。
 
-### Create a Subscription with the default (MatchAll) Filter
+### 既定の (MatchAll) フィルターを適用したサブスクリプションの作成
 
-The **MatchAll** filter is the default filter that is used if no filter is specified when a new subscription is created. When the **MatchAll** filter is used, all messages published to the topic are placed in the subscription's virtual queue. The following example creates a subscription named "all-messages" and uses the default **MatchAll** filter.
+**MatchAll** フィルターは、新しいサブスクリプションの作成時にフィルターが指定されていない場合に使用される既定のフィルターです。**MatchAll** フィルターを使用すると、トピックに発行されたすべてのメッセージがサブスクリプションの仮想キューに置かれます。次の例では、"all-messages" という名前のサブスクリプションを作成し、既定の **MatchAll** フィルターを使用します。
 
 	subscription = azure_service_bus_service.create_subscription("test-topic", 
 	  "all-messages")
 
-### <a id="how-to-create-subscriptions"></a>Create Subscriptions with Filters
+### <a id="how-to-create-subscriptions"></a>フィルターを適用したサブスクリプションの作成
 
-You can also setup filters that allow you to scope which messages sent to a topic should show up within a specific topic subscription.
+トピックに送信されたメッセージのうち、特定のトピック サブスクリプション内に表示されるメッセージに絞り込めるフィルターを設定することもできます。
 
-The most flexible type of filter supported by subscriptions is the **Azure::ServiceBus::SqlFilter**, which implements a subset of SQL92. SQL filters operate on the properties of the messages that are published to the topic. For more details about the expressions that can be used with a SQL filter, review the [SqlFilter.SqlExpression](http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx) syntax.
+サブスクリプションでサポートされているうち最も柔軟性の高いフィルターの種類は、**Azure::ServiceBus::SqlFilter** です。これは、SQL92.  のサブセットです。SQL フィルターは、トピックに対して発行されているメッセージのプロパティを操作します。SQL フィルターで使用できる式の詳細については、[SqlFilter.SqlExpression](http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx) 構文の説明を参照してください。
 
-Filters can be added to a subscription by using the **create\_rule()** method of the **Azure::ServiceBusService** object. This method allows you to add new filters to an existing subscription.
+フィルターをサブスクリプションに追加するには、**Azure::ServiceBusService** オブジェクトの **create\_rule()** メソッドを使用します。このメソッドによって、新しいフィルターを既存のサブスクリプションに追加できます。
 
-**Note**
-Since the default filter is applied automatically to all new subscriptions, you must first remove the default filter or the **MatchAll** will override any other filters you may specify. You can remove the default rule by using the **delete\_rule()** method of the **Azure::ServiceBusService** object.
+**注**: 既定のフィルターはすべての新しいサブスクリプションに自動的に適用されるので、最初に既定のフィルターを削除する必要があります。削除しない場合、**MatchAll** は指定される他のすべてのフィルターをオーバーライドします。既定のルールを削除するには、**Azure::ServiceBusService** オブジェクトの **delete\_rule()**メソッドを使用します。
 
-The examples below creates a subscription named "high-messages" with a **Azure::ServiceBus::SqlFilter** that only selects messages that have a custom **message\_number** property greater than 3:
+次の例では、"high-messages" という名前のサブスクリプションを作成し、**Azure::ServiceBus::SqlFilter** を適用します。このフィルターでは、カスタム プロパティ **message\_number** が 3 を超えるメッセージのみが選択されます。
 
 	subscription = azure_service_bus_service.create_subscription("test-topic", 
 	  "high-messages")
@@ -111,7 +109,7 @@ The examples below creates a subscription named "high-messages" with a **Azure::
 	  :sql_expression => "message_number > 3" })
 	rule = azure_service_bus_service.create_rule(rule)
 
-Similarly, the following example creates a subscription named "low-messages" with a **Azure::ServiceBus::SqlFilter** that only selects messages that have a **message_number** property less than or equal to 3:
+同様に、次の例では "low-messages" という名前のサブスクリプションを作成し、**Azure::ServiceBus::SqlFilter** を適用します。このフィルターでは、**message_number** プロパティが 3 以下のメッセージのみが選択されます。
 
 	subscription = azure_service_bus_service.create_subscription("test-topic", 
 	  "low-messages")
@@ -125,13 +123,13 @@ Similarly, the following example creates a subscription named "low-messages" wit
 	  :sql_expression => "message_number <= 3" })
 	rule = azure_service_bus_service.create_rule(rule)
 
-When a message is now sent to "test-topic", it will always be delivered to receivers subscribed to the "all-messages" topic subscription, and selectively delivered to receivers subscribed to the "high-messages" and "low-messages" topic subscriptions (depending upon the message content).
+メッセージが "test-topic" に送信されると、そのメッセージは "all-messages" トピック サブスクリプションにサブスクライブしている受信者に必ず配信され、さらにメッセージのコンテンツに応じて、"high-messages" および "low-messages" トピック サブスクリプションにサブスクライブしている受信者に対して選択的に配信されます。
 
-## <a id="how-to-send-messages-to-a-topic"></a>How to Send Messages to a Topic
+## <a id="how-to-send-messages-to-a-topic"></a>メッセージをトピックに送信する方法
 
-To send a message to a Service Bus topic, your application must use the **send\_topic\_message()** method of the **Azure::ServiceBusService** object. Messages sent to Service Bus Topics are **Azure::ServiceBus::BrokeredMessage** objects. **Azure::ServiceBus::BrokeredMessage** objects have a set of standard properties (such as **label** and **time\_to\_live**), a dictionary that is used to hold custom application specific properties, and a body of string data. An application can set the body of the message by passing a string value to the **send\_topic\_message()** method and any required standard properties will be populated by default values.
+メッセージをサービス バス トピックに送信するには、アプリケーションで **Azure::ServiceBusService** オブジェクトの **send\_topic\_message()** メソッドを使用する必要があります。サービス バス トピックに送信されたメッセージは、**Azure::ServiceBus::BrokeredMessage** オブジェクトです。**Azure::ServiceBus::BrokeredMessage** オブジェクトには、一連の標準的なプロパティ (**label**、**time\_to\_live** など)、アプリケーション固有のカスタム プロパティの保持に使用するディクショナリ、および文字列データの本体が含まれています。アプリケーションでは、文字列値を **send\_topic\_message()** メソッドに渡すことによってメッセージの本文を設定でき、必須の標準プロパティは既定値に設定されます。
 
-The following example demonstrates how to send five test messages to "test-topic". Note that the **message_number** custom property value of each message varies on the iteration of the loop (this will determine which subscription receive it):
+次の例では、"test-topic" に 5 件のテスト メッセージを送信する方法を示します。各メッセージの **message_number** カスタム プロパティの値がループの反復回数に応じて変化することに注目してください (これによってメッセージを受信するサブスクリプションが決定されます)。
 
 	5.times do |i|
 	  message = Azure::ServiceBus::BrokeredMessage.new("test message " + i, 
@@ -139,17 +137,17 @@ The following example demonstrates how to send five test messages to "test-topic
 	  azure_service_bus_service.send_topic_message("test-topic", message)
 	end
 
-Service Bus topics support a maximum message size of 256 MB (the header, which includes the standard and custom application properties, can have a maximum size of 64 MB). There is no limit on the number of messages held in a topic but there is a cap on the total size of the messages held by a topic. This topic size is defined at creation time, with an upper limit of 5 GB.
+サービス バス トピックでは、最大 256 MB までのメッセージをサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 MB です)。トピックで保持されるメッセージ数には上限がありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。このトピックのサイズはトピックの作成時に定義します。上限は 5 GB です。
 
-## <a id="how-to-receive-messages-from-a-subscription"></a>How to Receive Messages from a Subscription
+## <a id="how-to-receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する方法
 
-Messages are received from a subscription using the **receive\_subscription\_message()** method on the **Azure::ServiceBusService** object. By default, messages are read(peak) and locked without deleting it from the subscription. You can read and delete the message from the subscription by setting the **peek\_lock** option to **false**.
+サブスクリプションからメッセージを受信するには、**Azure::ServiceBusService** オブジェクトの **receive\_subscription\_message()** メソッドを使用します。既定では、メッセージは読み取られて (ピークされて) ロックされますが、サブスクリプションからは削除されません。**peek\_lock** オプションを **false** に設定すると、サブスクリプションからメッセージを読み取って削除できます。
 
-The default behavior makes the reading and deleting into a two stage operation, which makes it possible to support applications that cannot tolerate missing messages. When service bus receives a request, it finds the next message to be consumed, locks it to prevent other consumers receiving it, and then returns it to the application. After the application finishes processing the message (or stores it reliably for future processing), it completes the second stage of the receive process by calling **delete\_subscription\_message()** method and providing the message to be deleted as a parameter. The **delete\_subscription\_message()** method will mark the message as being consumed and remove it from the subscription.
+既定の動作では、読み取りと削除が 2 段階の操作になるため、メッセージが失われることを許容できないアプリケーションにも対応することができます。サービス バスは要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、**delete\_subscription\_message()** メソッドを呼び出し、削除するメッセージをパラメーターとして指定して、受信処理の第 2 段階を完了します。**delete\_subscription\_message()** メソッドによって、メッセージが読み取り中としてマークされ、キューから削除されます。
 
-If the **:peek\_lock** parameter is set to **false**, reading and deleting the message becomes the simplest model, and works best for scenarios in which an application can tolerate not processing a message in the event of a failure. To understand this, consider a scenario in which the consumer issues the receive request and then crashes before processing it. Because Service Bus will have marked the message as being consumed, then when the application restarts and begins consuming messages again, it will have missed the message that was consumed prior to the crash.
+**:peek\_lock** パラメーターを **false** に設定すると、メッセージの読み取りと削除は最もシンプルなモデルになります。これは、問題の発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。サービス バスはメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
-The example below demonstrates how messages can be received and processed using **receive\_subscription\_message()**. The example first receives and deletes a message from the "low-messages" subscription by using **:peek\_lock** set to **false**, then it receives another message from the "high-messages" and then deletes the message using **delete\_queue\_message()**:
+次の例では、**receive\_subscription\_message()** を使用したメッセージの受信および処理の方法を示しています。この例では、まず **:peek\_lock** を **false** に設定して使用することで、"low-messages" サブスクリプションからメッセージを受信して削除します。次に、"high-messages" から別のメッセージを受信し、**delete\_queue\_message()** を使用してそのメッセージを削除します。
 
     message = azure_service_bus_service.receive_subscription_message(
 	  "test-topic", "low-messages", { :peek_lock => false })
@@ -158,28 +156,29 @@ The example below demonstrates how messages can be received and processed using 
     azure_service_bus_service.delete_subscription_message("test-topic", 
 	  "high-messages", message.sequence_number, message.lock_token)
 
-## <a id="how-to-handle-application-crashes-and-unreadable-messages"></a>How to Handle Application Crashes and Unreadable Messages
+## <a id="how-to-handle-application-crashes-and-unreadable-messages"></a>アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法
 
-Service bus provides functionality to help you gracefully recover from errors in your application or difficulties processing a message. If a receiver application is unable to process the message for some reason, then it can call the **unlock\_subscription\_message()** method on the **Azure::ServiceBusService** object. This will cause service bus to unlock the message within the subscription and make it available to be received again, either by the same consuming application or by another consuming application.
+サービス バスには、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。受信側のアプリケーションが何らかの理由によってメッセージを処理できない場合には、**Azure::ServiceBusService** オブジェクトの **unlock\_subscription\_message()** メソッドを呼び出すことができます。このメソッドが呼び出されると、サブスクリプション内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。このメッセージは、同じコンシューマー側アプリケーションまたは他のコンシューマー側アプリケーションで受信されます。
 
-There is also a timeout associated with a message locked within the subscription, and if the application fails to process the message before the lock timeout expires (e.g., if the application crashes), then service bus will unlock the message automatically and make it available to be received again.
+サブスクリプション内でロックされているメッセージには、タイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合は、サービス バスによってメッセージのロックが自動的に解除され、再度受信できる状態に変わります。
 
-In the event that the application crashes after processing the message but before the **delete\_subscription\_message()** method is called, then the message will be redelivered to the application when it restarts. This is often called **At Least Once Processing**, that is, each message will be processed at least once but in certain situations the same message may be redelivered. If the scenario cannot tolerate duplicate processing, then application developers should add additional logic to their application to handle duplicate message delivery. This is often achieved using the **message\_id** property of the message, which will remain constant across delivery attempts.
+メッセージが処理された後、**delete\_subscription\_message()** メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。一般的に、この動作は **"1 回以上の処理"** と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。通常、この問題はメッセージの **message\_id** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
-## <a id="how-to-delete-topics-and-subscriptions"></a>How to Delete Topics and Subscriptions
+## <a id="how-to-delete-topics-and-subscriptions"></a>トピックとサブスクリプションを削除する方法
 
-Topics and subscriptions are persistent, and must be explicitly deleted either through the [Azure Management Portal](https://manage.windowsazure.com) or programmatically. The example below demonstrates how to delete the topic named "test-topic".
+トピックおよびサブスクリプションは永続的であり、[Azure 管理ポータル](https://manage.windowsazure.com)またはプログラムによって明示的に削除する必要があります。次の例では、"test-topic" という名前のトピックを削除する方法を示します。
 
 	azure_service_bus_service.delete_topic("test-topic")
 
-Deleting a topic will also delete any subscriptions that are registered with the topic. Subscriptions can also be deleted independently. The following code demonstrates how to delete the subscription named "high-messages" from the "test-topic" topic:
+トピックを削除すると、そのトピックに登録されたサブスクリプションもすべて削除されます。サブスクリプションは、個別に削除することもできます。次のコードでは、"high-messages" という名前のサブスクリプションを "test-topic" トピックから削除する方法を示しています。
 
 	azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 
-## <a id="NextSteps"></a>Next Steps
+## <a id="NextSteps"></a>次のステップ
 
-Now that you've learned the basics of Service Bus topics, follow these links to learn more.
+これで、サービス バス トピックの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
--   See the MSDN Reference: [Queues, Topics, and Subscriptions](http://msdn.microsoft.com/en-us/library/windowsazure/hh367516.aspx)
--   API reference for [SqlFilter](http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx)
--	Visit the [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) repository on GitHub
+-   MSDN リファレンスの「[サービス バス キュー、トピック、およびサブスクリプション](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367516.aspx)」を参照
+-   [SqlFilter](http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx) という API リファレンス
+-	GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリにアクセス
+

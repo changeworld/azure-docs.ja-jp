@@ -1,46 +1,46 @@
-<properties linkid="develop-notificationhubs-tutorials-send-localized-breaking-news-iOS" urlDisplayName="Localized Breaking News" pageTitle="Notification Hubs Localized Breaking News Tutorial for iOS" metaKeywords="" description="Learn how to use Azure Service Bus Notification Hubs to send localized breaking news notifications (iOS)." metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Use Notification Hubs to send localized breaking news to iOS devices" authors="ricksal" solutions="" manager="" editor="" />
-# Use Notification Hubs to send localized breaking news to iOS devices
+<properties linkid="develop-notificationhubs-tutorials-send-localized-breaking-news-iOS" urlDisplayName="ローカライズしたニュース速報" pageTitle="通知ハブ ローカライズした iOS 向けニュース速報チュートリアル" metaKeywords="" description="Azure のサービス バス通知ハブを使用して、ローカライズしたニュース速報通知を送信する方法を説明します (iOS)。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="通知ハブを使用したローカライズ ニュース速報の iOS への送信" authors="ricksal" solutions="" manager="" editor="" />
+#通知ハブを使用した iOS デバイスへのローカライズ ニュース速報の送信
 
 <div class="dev-center-tutorial-selector sublanding"> 
-    	<a href="/en-us/manage/services/notification-hubs/breaking-news-localized-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/manage/services/notification-hubs/breaking-news-localized-ios" title="iOS" class="current">iOS</a>
+    	<a href="/ja-jp/manage/services/notification-hubs/breaking-news-localized-dotnet" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/manage/services/notification-hubs/breaking-news-localized-ios" title="iOS" class="current">iOS</a>
 </div>
 
 
-This topic shows you how to use the **template** feature of Azure Notification Hubs to broadcast breaking news notifications that have been localized by language and device. In this tutorial you start with the Windows Store app created in [Use Notification Hubs to send breaking news]. When complete, you will be able to register for categories you are interested in, specify a language in which to receive the notifications, and receive only push notifications for the selected categories in that language.
+このトピックでは、Azure 通知ハブの**テンプレート**機能を使用して、言語およびデバイスごとにローカライズしたニュース速報通知をブロードキャストする方法について説明します。このチュートリアルでは、「[通知ハブを使用したニュース速報の送信]」で作成した Windows ストア アプリケーションを使用します。完了すると、興味のあるニュース速報カテゴリに登録して受信する通知の言語を指定し、選択したカテゴリのその言語のプッシュ通知だけを受信できるようになります。
 
-This tutorial walks you through these basic steps to enable this scenario:
+このチュートリアルでは、このシナリオを有効にするための、次の基本的な手順について説明します。
 
-1. [Template concepts] 
-2. [The app user interface]
-3. [Building the iOS app]
-4. [Send notifications from your back-end]
-
-
-There are two parts to this scenario:
-
-- iOS app allows client devices to specify a language, and to subscribe to different breaking news categories; 
-
-- the back-end broadcasts the notifications, using the **tag** and **template** feautres of Azure Notification Hubs.
+1. [テンプレートの概念]
+2. [アプリケーションのユーザー インターフェイス]
+3. [iOS アプリケーションを構築する]
+4. [バックエンドから通知を送信する]
 
 
+このシナリオは次の 2 つに分けられます。
 
-##Prerequisites ##
+- iOS アプリケーションで、クライアント デバイスが言語を指定し、さまざまなニュース速報カテゴリを購読できるようになります。
 
-You must have already completed the [Use Notification Hubs to send breaking news] tutorial and have the code available, because this tutorial builds directly upon that code. 
-
-You also need Visual Studio 2012.
+- Azure 通知ハブの**タグ**機能と**テンプレート**機能を使用して、バックエンドからブロードキャストされます。
 
 
 
-<h2><a name="concepts"></a><span class="short-header">concepts</span>Template concepts</h2>
+##前提条件##
 
-In [Use Notification Hubs to send breaking news] you built an app that used **tags** to subscribe to notifications for different news categories.
-Many apps, however, target multiple markets and require localization. This means that the content of the notifications themselves have to be localized and delivered to the correct set of devices.
-In this topic we will show how to use the **template** feature of Notification Hubs to easily deliver localized breaking news notifications.
+「[通知ハブを使用したニュース速報の送信]」のチュートリアルを完了し、コードが使用可能な状態になっている必要があります。このチュートリアルでは、そのコードに基づいているためです。
 
-Note: one way to send localized notifications is to create multiple versions of each tag. For instance, to support English, French, and Mandarin, we would need three different tags for world news: "world_en", "world_fr", and "world_ch". We would then have to send a localized version of the world news to each of these tags. In this topic we use templates to avoid the proliferation of tags and the requirement of sending multiple messages.
+Visual Studio 2012 も必要です。
 
-At a high level, templates are a way to specify how a specific device should receive a notification. The template specifies the exact payload format by referring to properties that are part of the message sent by your app back-end. In our case, we will send a locale-agnostic message containing all supported languages:
+
+
+<h2><a name="concepts"></a><span class="short-header">概念</span>テンプレートの概念</h2>
+
+「[通知ハブを使用したニュース速報の送信]」では、**タグ**を使用してさまざまなニュース カテゴリの通知を購読するアプリケーションを構築しました。
+しかし、多くのアプリケーションは複数の市場をターゲットとしており、ローカライズが必要です。これは、通知自体の内容をローカライズし、適切なデバイス セットに配信する必要があることを意味します。
+このトピックでは、通知ハブの**テンプレート**機能を使用して、ローカライズしたニュース速報通知を簡単に配信する方法について説明します。
+
+注: ローカライズした通知を送信する 1 つの方法として、各タグの複数のバージョンを作成する方法があります。たとえば、ワールド ニュースで英語、フランス語、標準中国語をサポートするには、3 つのタグ ("world_en"、"world_fr"、"world_ch") が必要です。その後、ワールド ニュースのローカライズ バージョンをこれらの各タグに送信する必要があります。このトピックでは、テンプレートを使用することでタグの増加を抑制し、複数のメッセージを送信しなくてもよいようにします。
+
+大まかに言えば、テンプレートとは、特定のデバイスが通知をどのように受信するかを特定するための手段です。テンプレートは、アプリケーション バックエンドにより送信されるメッセージの一部となっているプロパティを参照することで、正確なペイロードを指定します。このケースでは、サポートされるすべての言語を含む、ロケールにとらわれないメッセージを送信します。
 
 	{
 		"News_English": "...",
@@ -48,7 +48,7 @@ At a high level, templates are a way to specify how a specific device should rec
 		"News_Mandarin": "..."
 	}
 
-Then we will ensure that devices register with a template that refers to the correct property. For instance,  an iOS app that wants to register for French news will register the following:
+次に、デバイスが、適切なプロパティを参照するテンプレートを登録するようにします。たとえば、フランス語ニュースを登録する iOS アプリケーションは、次のテンプレートを登録します。
 
 	{
 		aps:{
@@ -56,26 +56,26 @@ Then we will ensure that devices register with a template that refers to the cor
 		}
 	}
 
-Templates are a very powerful feature you can learn more about in our [Notification Hubs Guidance] article. A reference for the template expression language is in our [How To: Service Bus Notification Hubs (iOS Apps)].
+テンプレートは有用な機能です。詳細については、「[通知ハブの概要]」の記事を参照してください。テンプレート式言語のリファレンスは、「[方法: Azure 通知ハブ (iOS アプリケーション)]」にあります。
 
-<h2><a name="ui"></a><span class="short-header">App ui</span>The app user interface</h2>
+<h2><a name="ui"></a><span class="short-header">アプリケーションの UI</span>アプリケーションのユーザー インターフェイス</h2>
 
-We will now modify the Breaking News app that you created in the topic [Use Notification Hubs to send breaking news] to send localized breaking news using templates.
+ここでは、「[通知ハブを使用したニュース速報の送信]」で作成したニュース速報アプリケーションを変更し、テンプレートを使用してローカライズしたニュース速報を送信します。
 
 
-In your MainStoryboard_iPhone.storyboard, add a Segmented Control with the three languages we support: English, French, and Mandarin.
+MainStoryboard_iPhone.storyboard で、サポートする 3 つの言語 ([English]、[French]、[Mandarin]) を備える Segmented Control を追加します。
 
 ![][13]
 	
-Then make sure to add an IBOutlet in your ViewController.h as shown below:
+次に、以下に示すように ViewController.h に IBOutlet を追加します。
 	
 ![][14]
 	
-<h2><a name="building-client"></a><span class="building app">App ui</span>Building the iOS app</h2>
+<h2><a name="building-client"></a><span class="building app">アプリケーション UI</span>iOS アプリケーションを構築する</h2>
 
-In order to adapt your client apps to receive localized messages, you have to replace your *native* registrations (i.e. registrations that do you specify a template) with template registrations.
+クライアント アプリケーションがローカライズしたメッセージを受信できるようにするには、*ネイティブ*登録 (つまり、テンプレートを指定する登録) をテンプレート登録に置き換える必要があります。
 
-1. In your Notification.h add the *retrieveLocale* method, and modify the store and subscribe methods as shown below:
+1. Notification.h で、*retrieveLocale* メソッドを追加し、以下に示すように store メソッドと subscribe メソッドを変更します。
 
 		- (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet*) categories completion: (void (^)(NSError* error))completion;
 
@@ -85,7 +85,7 @@ In order to adapt your client apps to receive localized messages, you have to re
 		
 		- (int) retrieveLocale;
 		
-	In your Notification.m, modify the *storeCategoriesAndSubscribe* method, by adding the locale parameter and storing it in the user defaults:
+	Notification.m で、ロケール パラメーターを追加してユーザーの既定の設定に格納することで、*storeCategoriesAndSubscribe* メソッドを変更します。
 	
 		- (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
 		    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -96,7 +96,7 @@ In order to adapt your client apps to receive localized messages, you have to re
 		    [self subscribeWithLocale: locale categories:categories completion:completion];
 		}
 
-	Then modify the *subscribe* method to include the locale:
+	次に、*subscribe* メソッドを変更してロケールを追加します。
 	
 		- (void) subscribeWithLocale: (int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion{
 		    SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:@"<connection string>" notificationHubPath:@"<hub name>"];
@@ -119,9 +119,9 @@ In order to adapt your client apps to receive localized messages, you have to re
 		    [hub registerTemplateWithDeviceToken:self.deviceToken name:@"newsTemplate" jsonBodyTemplate:template expiryTemplate:@"0" tags:categories completion:completion];
 		}
 		
-	Note how we are now using the method *registerTemplateWithDeviceToken*, instead of *registerNativeWithDeviceToken*. When we register for a template we have to provide the json template and also a name for the template (as our app might want to register different templates). Make sure to register your categories as tags, as we want to make sure to receive the notifciations for those news.
+	ここで、*registerNativeWithDeviceToken* の代わりに *registerTemplateWithDeviceToken* メソッドをどのように使用しているかに注目してください。テンプレートを登録するときは、json テンプレートに加えて、テンプレートの名前も指定する必要があります (アプリケーションにより複数のテンプレートが登録されることがあるため)。それらのニュースの通知を確実に受信できるようにするため、カテゴリをタグとして登録してください。
 	
-	Finally, add a method to retrieve the locale from the user default settings:
+	最後に、ユーザーの既定の設定からロケールを取得するメソッドを追加します。
 	
 		- (int) retrieveLocale {
 		    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -131,11 +131,11 @@ In order to adapt your client apps to receive localized messages, you have to re
 		    return locale < 0?0:locale;
 		}
 		
-3. Now that we modified our Notifications class, we have to make sure that our ViewController makes use of the new UISegmentControl. Add the following line in the *viewDidLoad* method to make sure to show the locale that is currently selected:
+3. ここまでで、Notifications クラスを変更したので、ViewController が新しい UISegmentControl を使用することを確認する必要があります。*viewDidLoad* メソッドに次の行を追加し、現在選択されているロケールが表示されるようにします。
 
 		self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
 		
-	Then, in your *subscribe* method, change your call to the *storeCategoriesAndSubscribe* to the following:
+	次に、*subscribe* メソッドで、*storeCategoriesAndSubscribe* への呼び出しを次のように変更します。
 	
 		[notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
 	        if (!error) {
@@ -148,7 +148,7 @@ In order to adapt your client apps to receive localized messages, you have to re
 	        }
 	    }];
 	    
-4. Finally, you have to update the *didRegisterForRemoteNotificationsWithDeviceToken* method in your AppDelegate.m, so that you can correctly refresh your registration when your app starts. Change your call to the *subscribe* method of notifications with the following:
+4. 最後に、アプリケーションの起動時に登録を正しく更新できるように、 *AppDelegate.m で didRegisterForRemoteNotificationsWithDeviceToken* メソッドを更新します。通知の *subscribe* メソッドへの呼び出しを、次のように変更します。
 
 		NSSet* categories = [notifications retrieveCategories];
 	    int locale = [notifications retrieveLocale];
@@ -158,30 +158,30 @@ In order to adapt your client apps to receive localized messages, you have to re
 	        }
 	    }];
 
-<h2><a name="send"></a><span class="short-header">Send localized notifications</span>Send localized notifications from your back-end</h2>
+<h2><a name="send"></a><span class="short-header">ローカライズした通知を送信する</span>バックエンドからローカライズした通知を送信する</h2>
 
 [WACOM.INCLUDE [notification-hubs-localized-back-end](../includes/notification-hubs-localized-back-end.md)]
 
 
-## Next Steps
+## 次のステップ
 
-For more information on using templates, see:
+テンプレートの使用方法の詳細については、以下を参照してください。
 
-- [Notify users with Notification Hubs: ASP.NET] 
-- [Notify users with Notification Hubs: Mobile Services] 
-- [Notification Hubs Guidance] 
+- [通知ハブによるユーザーへの通知: ASP.NET]
+- [通知ハブによるモバイル サービスのユーザーへの通知: モバイル サービス]
+- [通知ハブの概要]
 
-A reference for the template expression language is in [Notification Hubs How-To for iOS].
+テンプレート式言語のリファレンスは、「[方法: Azure 通知ハブ (iOS アプリ)]」にあります。
 
 
 
 		
 <!-- Anchors. -->
-[Template concepts]: #concepts
-[The app user interface]: #ui
-[Building the iOS app]: #building-client
-[Send notifications from your back-end]: #send
-[Next Steps]: #next-steps
+[テンプレートの概念]: #concepts
+[アプリケーションのユーザー インターフェイス]: #ui
+[iOS アプリケーションを構築する]: #building-client
+[バックエンドから通知を送信する]: #send
+[次のステップ]: #next-steps
 
 <!-- Images. -->
 
@@ -200,26 +200,26 @@ A reference for the template expression language is in [Notification Hubs How-To
 
 
 
-
 <!-- URLs. -->
-[How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/en-us/library/jj927168.aspx
-[Use Notification Hubs to send breaking news]: /en-us/manage/services/notification-hubs/breaking-news-ios
-[Mobile Service]: /en-us/develop/mobile/tutorials/get-started
-[Notify users with Notification Hubs: ASP.NET]: /en-us/manage/services/notification-hubs/notify-users-aspnet
-[Notify users with Notification Hubs: Mobile Services]: /en-us/manage/services/notification-hubs/notify-users
-[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started/#create-new-service
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-ios
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-ios
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-ios
-[Push notifications to app users]: /en-us/develop/mobile/tutorials/push-notifications-to-users-ios
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-ios
-[JavaScript and HTML]: /en-us/develop/mobile/tutorials/get-started-with-push-js.md
+[方法: Azure 通知ハブ (iOS アプリケーション)]: http://msdn.microsoft.com/ja-jp/library/jj927168.aspx
+[通知ハブを使用したニュース速報の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-ios
+[モバイル サービス]: /ja-jp/develop/mobile/tutorials/get-started
+[通知ハブによるユーザーへの通知: ASP.NET]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
+[通知ハブによるモバイル サービスのユーザーへの通知: モバイル サービス]: /ja-jp/manage/services/notification-hubs/notify-users
+[アプリケーションの提出に関するページ: ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Get started with Mobile Services]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-ios
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-ios
+[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-ios
+[アプリケーション ユーザーへのプッシュ通知]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-ios
+[スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-ios
+[JavaScript と HTML]: /ja-jp/develop/mobile/tutorials/get-started-with-push-js.md
 
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Windows Developer Preview registration steps for Mobile Services]: ../HowTo/mobile-services-windows-developer-preview-registration.md
-[wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs Guidance]: http://msdn.microsoft.com/en-us/library/jj927170.aspx
-[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/en-us/library/jj927168.aspx
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[モバイル サービスの Windows 開発者プレビュー登録の手順]: ../HowTo/mobile-services-windows-developer-preview-registration.md
+[wns オブジェクトに関するページ]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+[通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
+[方法: Azure 通知ハブ (iOS アプリ)]: http://msdn.microsoft.com/ja-jp/library/jj927168.aspx
+

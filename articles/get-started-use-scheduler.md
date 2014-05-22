@@ -1,29 +1,30 @@
-<properties linkid="get-started-with-scheduler" urlDisplayName="Get started with Scheduler" pageTitle="Get started using Scheduler | Azure" metaKeywords="scheduler" description="TBD" umbracoNaviHide="0" disqusComments="1" editor="mattshel" manager="carolz" title="Get started with Scheduler" authors="" />
+<properties linkid="get-started-with-scheduler" urlDisplayName="Scheduler の使用" pageTitle="Scheduler の使用 | Azure" metaKeywords="Scheduler" description="TBD" umbracoNaviHide="0" disqusComments="1" editor="mattshel" manager="carolz" title="Scheduler の使用" authors="" />
 
 
-# Get started with Scheduler
+# Scheduler の使用
 
-(TODO: provide a short description of the article.)
+(TODO: 記事の簡単な説明を提供します)
 
-You will learn:
+学習内容:
 
-* (TODO: provide a bulleted list of items the customer will learn by completing this tutorial.  List items should begin with "how to," for example: "How to use Visual Studio to develop for Azure." Each bulleted list item should end in a period.
+* (TODO: ユーザーがこのチュートリアルを完了することで学習する項目の箇条書きリストを提供します。箇条書きリストの項目は「方法」で始める必要があります。たとえば「方法: Visual Studio を使用して Azure 向けの開発を行う」とします。箇条書きリストの各項目は句点で終わる必要があります)
 
-(TODO: provide a description of the final application, followed by a screenshot of the completed application.)
+(TODO: 完成したアプリケーションの説明、続いてそのアプリケーションのスクリーンショットを提供します)
 
-##(TODO: Add a header)
+##(TODO: ヘッダーを追加します)
 
-(TODO: Step the user through the application. You can use as many h2 and h3 headers as necessary throughout the tutorial. Steps within the sections should be presented in ordered lists.)
+(TODO: アプリケーションでユーザーが実行する手順を提供します。チュートリアル全体で必要な数だけ h2 と h3 のヘッダーを使用できます。セクション内の手順は番号付きリストで示す必要があります)
 
-## Next steps
+## 次のステップ
 
-(TODO: Optional section that points the user to related topics and additional information.  Start with a short  summary and then transition to a list of related articles.)
+(TODO: 必要に応じて関連トピックと追加情報をユーザーに示すセクションです。短いまとめで始め、続いて関連記事のリストに移ります)
 
-* (TODO: Short sentence of link1): [(TODO: Enter link1 text)] [NextStepsLink1]
-* (TODO: Short sentence of link2): [(TODO: Enter link2 text)] [NextStepsLink2]
+* (TODO: link1 の短い文): [(TODO: link1 テキストを入力)] [NextStepsLink1]
+* (TODO: link2 の短い文): [(TODO: link2 テキストを入力)] [NextStepsLink2]
 
-enter Next Steps 1 URL)
-enter Next Steps 2 URL)
+(次のステップ 1 の URL を入力)
+(次のステップ 2 の URL を入力)
 
-if used an image1, enter the url here, otherwise delete this)
-if used an image2, enter the url here, otherwise delete this)
+(image1 を使用する場合はここにその URL を入力します。使用しない場合は削除します)
+(image2 を使用する場合はここにその URL を入力します。使用しない場合は削除します)
+

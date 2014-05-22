@@ -1,32 +1,32 @@
-<properties linkid="develop-mobile-how-to-guides-register-for-microsoft-waad-authentication" urlDisplayName="Register for Azure Active Directory Authentication" pageTitle="Register for Azure Active Directory authentication - Mobile Services" metaKeywords="Azure registering application, Azure Active Directory authentication, application authenticate, authenticate mobile services" description="Learn how to register for Azure Active Directory authentication in your Azure Mobile Services application." metaCanonical="" disqusComments="0" umbracoNaviHide="1" title="Register your apps to use an Azure Active Directory Account login" authors="" />
+<properties linkid="develop-mobile-how-to-guides-register-for-microsoft-waad-authentication" urlDisplayName="Azure Active Directory 認証用の登録" pageTitle="Azure Active Directory 認証用の登録 - モバイル サービス" metaKeywords="Azure でのアプリケーションの登録, Azure Active Directory 認証, アプリケーションの認証, モバイル サービスの認証" description="Azure モバイル サービス アプリケーションで Azure Active Directory 認証に登録する方法について説明します。" metaCanonical="" disqusComments="0" umbracoNaviHide="1" title="Azure Active Directory アカウント ログインを使用するためのアプリケーションの登録" authors="" />
 
 
-# Register your apps to use an Azure Active Directory Account login
+# Azure Active Directory アカウント ログインを使用するためのアプリケーションの登録
 
-This topic shows you how to register your apps to be able to use Azure Active Directory as an authentication provider for Azure Mobile Services. 
+このトピックでは、Azure モバイル サービスの認証プロバイダーとして Azure Active Directory を使用できるようにアプリケーションを登録する方法について説明します。
 
-<div class="dev-callout"><b>Note</b>
-<p>When you intend to also provide client-driven authentication for single sign-on (SSO) or push notifications from a Windows Store app, consider also registering your app with the Windows Store. For more information, see <a href="/en-us/develop/mobile/how-to-guides/register-for-single-sign-on">Register your Windows Store apps for Windows Live Connect authentication</a>.</p>
+<div class="dev-callout"><b>注</b>
+<p>また、Windows ストア アプリからシングル サインオン (SSO) またはプッシュ通知に対応するためにクライアント主体の認証を提供する場合は、アプリケーションを Windows ストアに登録することも検討します。詳細については、「<a href="/ja-jp/develop/mobile/how-to-guides/register-for-single-sign-on">Windows Live Connect シングル サインオンを使用するための Windows ストア アプリの登録</a>」を参照してください。</p>
 </div>
 
-1. Log into the [Azure Management Portal]. 
+1. [Azure 管理ポータル]にログインします。
 
-2. Navigate to **Active Directory** in the management portal, then click your directory.
+2. 管理ポータルの **[Active Directory]** に移動し、目的のディレクトリをクリックします。
 
    ![][1] 
 
-3. Click on the **Applications** tab, then click **Add an App**. 
+3. **[アプリケーション]** タブをクリックし、**[アプリケーションの追加]** をクリックします。
 
    ![][2]
 
 
-4. Follow the directions in the new application wizard choosing **Web Application And/Or Web API** for the XXX. Enable Single Sign On. When prompted for the **App URL**, paste the mobile services application URL.
+4. XXX の **[Web アプリケーションや Web API]** を選択して、新しいアプリケーション ウィザードの指示に従います。シングル サインオンを有効にします。**[アプリケーション URL]** を求めるメッセージが表示されたら、モバイル サービス アプリケーションの URL を貼り付けます。
 
 
-5. *** MORE TO COME ***
+5. *** (さらに続く)***
 
 
-You are now ready to use an Azure Active Directory for authentication in your app by providing the client ID and client secret values to Mobile Services.
+これで、クライアント ID とクライアント シークレットの値をモバイル サービスに渡すことにより、Azure Active Directory を使用してアプリケーションで認証を使用する準備ができました。
 
 <!-- Anchors. -->
 
@@ -35,4 +35,5 @@ You are now ready to use an Azure Active Directory for authentication in your ap
 [2]: ./media/mobile-services-app-active-directory-login/mobile-live-connect-app-api-settings.png
 
 <!-- URLs. -->
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+

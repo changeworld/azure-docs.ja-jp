@@ -1,288 +1,288 @@
-<properties linkid="manage-linux-howto-service-management-api" urlDisplayName="Service Management API" pageTitle="How to use the service management API for VMs - Azure" metaKeywords="" description="Learn how to use the Azure Service Management API for a Linux virtual machine." metaCanonical="" services="virtual-machines" documentationCenter="" title="How to Use the Service Management API" authors="" solutions="" manager="" editor="" />
+<properties linkid="manage-linux-howto-service-management-api" urlDisplayName="サービス管理" pageTitle="VM 用サービス管理 API の使用方法 - Azure" metaKeywords="" description="Linux 仮想マシン用 Azure サービス管理 API の使用方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="サービス管理 API の使用方法" authors="" solutions="" manager="" editor="" />
 
 
 
 
-#How to Use the Service Management API
+#サービス管理 API の使用方法
 
-##Initialization##
+##初期化##
 
-To invoke the Azure IaaS service management API from NodeJS, the `azure` module is used.
+NodeJS から Azure IaaS サービス管理 API を呼び出すには、`azure` モジュールを使用します。
 
 	var azure = require('azure');
 
-First create an instance of the ServiceManagementService. All calls to the API will use this object. The subscription id, credentials, and other connection options are established at this time. To manage more than one subscription, create more than one ServiceManagementService.
+まず、ServiceManagementService のインスタンスを作成します。API のすべての呼び出しにこのオブジェクトを使用します。サブスクリプション ID、資格情報、その他の接続オプションはこの時点で確立します。複数のサブスクリプションを管理するには、複数の ServiceManagementService を作成します。
 
 	var iaasClient = azure.createServiceManagementService(subscriptionid, auth, options);
 
-- Subscriptionid is a required string. It should be the subscription id of the account being accessed.
-- Auth is an optional object that specifies the private key and public certificate to be used with this account.	
-	- keyfile - file path of .pem file that has private key. Ignored if keyvalue is specified.
-	- keyvalue - actual value of private key as stored in a .pem file.
-	- certfile - file path of .pem file that has public certificate. Ignored if cervalue is specified.
-	- certvalue - actual value of public certificate as stored in a .pem file.
-	- If the above values are not specified, then process environment variable values `CLIENT_AUTH_KEYFILE` and `CLIENT_AUTH_CERTFILE` are read and used. If these are not set, then default values for the files are tried: priv.pem and pub.pem.
-	- If it is not possible to load the private key and public certificate, then an error is thrown.
+- Subscriptionid は必須の文字列です。アクセス中のアカウントのサブスクリプション ID であることが必要です。
+- Auth は省略可能なオブジェクトであり、このアカウントと共に使用される秘密キーと公開証明書を指定します。	
+	- keyfile - 秘密キーが保存されている .pem ファイルのファイル パスです。keyvalue を指定した場合は無視されます。
+	- keyvalue - .pem ファイルに保存されている秘密キーの実際の値です。
+	- certfile - 公開証明書が保存されている .pem ファイルのファイル パスです。cervalue を指定した場合は無視されます。
+	- certvalue - .pem ファイルに格納されている公開キーの実際の値です。
+	- これらの値を指定しない場合は、プロセス環境変数値 `CLIENT_AUTH_KEYFILE` と `CLIENT_AUTH_CERTFILE` が読み取られて使用されます。これらの値が設定されていない場合は、priv.pem および pub.pem ファイルの既定の値が試されます。
+	- 秘密キーと公開証明書を読み込めない場合は、エラーがスローされます。
 
-- Options is an optional object that may be used to control properties used by the client.	
-	- host - host name of Azure management server. If not specified, it uses the default host.
-	- apiversion - version string to use in the HTTP header. If not specified uses default version.
-	- serializetype - may be XML or JSON. If not specified uses default serialization.
+- Options は省略可能なオブジェクトであり、クライアントによって使用されるプロパティの制御に使用できます。	
+	- host - Azure 管理サーバーのホスト名です。指定しない場合は、既定のホストが使用されます。
+	- apiversion - HTTP ヘッダーで使用されるバージョン文字列です。指定しない場合は、既定のバージョンが使用されます。
+	- serializetype - XML または JSON を指定できます。指定しない場合は、既定のシリアル化が使用されます。
 
-Optionally a tunneling proxy may be used to enable the HTTPS request to go through a proxy. When the IaasClient is created it will process the environment variable `HTTPS_PROXY`. If it is set to a valid URL, then the host name and port are parsed from the URL and are used in subsequent requests to identify the proxy.
+必要に応じて、トンネリング プロキシを使用して HTTPS 要求がプロキシを通過できるようにすることも可能です。IaasClient が作成されると、環境変数 `HTTPS_PROXY` の処理に使用されます。有効な URL が設定された場合、ホスト名とポートが URL の解析により取得され、プロキシを識別する後続の要求に使用されます。
 
 		iaasClient.SetProxyUrl(proxyurl)
 
-The SetProxyUrl may be called to explicitly set the proxy host and port. It has the same effect as setting the `HTTPS_PROXY` environment variable, and will override the environment setting.
+SetProxyUrl を呼び出してプロキシのホストとポートを明示的に設定することも可能です。その結果は `HTTPS_PROXY` 環境変数を設定した場合と同じです。この環境設定が上書きされます。
 
-##Callbacks##
+##コールバック##
 
-All the APIs have a required callback argument. Completion of the request is signaled by calling the function passed in the callback. 
+すべての API に callback 引数は必須です。要求の完了は、callback で渡された関数を呼び出すことで通知されます。
 
 	callback(rsp)
 
-- The callback has a single parameter which is the response object.
-- isSuccessful - true or false
-- statusCode - HTTP Status code from the response
-- response - the response parsed into a javascript object. Set if isSuccessful is true.
-- error - a javascript object holding error information set if isSuccessful is false.
-- body - the actual body of the response as a string
-- headers - the actual HTTP headers of the response
-- reqopts - the Node HTTP request options used to make the request.
+- callback のパラメーターは 1 つであり、応答オブジェクトです。
+- isSuccessful - true または false
+- statusCode - 応答の HTTP ステータス コードです。
+- response - 解析されて、javascript オブジェクトになる応答です。isSuccessful が true の場合に設定されます。
+- error - isSuccessful が false の場合にエラー情報が格納される javascript オブジェクトです。
+- body - 応答の実際の本文文字列です。
+- headers - 応答の実際の HTTP ヘッダーです。
+- reqopts - Node HTTP 要求のオプションであり、要求を行うために使用されます。
 
-Note that in some cases completion may only indicate that the request was accepted. In this case use **GetOperationStatus** to get the final status.
+要求の完了という表示は、要求が受け入れられた事実のみを示す可能性があることに注意してください。この場合、**GetOperationStatus** を使用して最終的なステータスを取得します。
 
-##APIs##
+##API##
 
 **iaasClient.GetOperationStatus(requested, callback)**
 
-- Many management calls return before the operation is completed. These return a value of 202 Accepted, and place a requested in the ms-request-id HTPP Header. To poll for completion of the request, use this API and pass in the requested value.
-- callback is required.
+- 多くの管理呼び出しは、処理が完了する前に制御を返します。これにより 202 Accepted の値が返され、要求された値が ms-request-id HTPP ヘッダー内に渡されます。要求が完了したことをポーリングするには、この API を使用して、要求した値を渡します。
+- callback は必須です。
 
 **iaasClient.GetOSImage(imagename, callback)**
 
-- imagename is a required string name of the image.
-- callback is required.
-- The response object will contain properties of the named image if successful.
+- imagename は必須であり、イメージの名前を表す文字列です。
+- callback は必須です。
+- 成功した場合、応答オブジェクトには指定したイメージのプロパティが格納されます。
 
 **iaasClient.ListOSImages(callback)**
 
-- callback is required.
-- The response object will contain an array of image objects if successful.
+- callback は必須です。
+- 成功した場合、応答オブジェクトにはイメージ オブジェクトの配列が格納されます。
 
 **iaasClient.CreateOSImage(imageName, mediaLink, imageOptions, callback)**
 
-- imageName is a required string name of the image.
-- mediaLink is a required string name of the mediaLink to use.
-- imageOptions is an optional object. It may contain these properties
+- imageName は必須であり、イメージの名前を表す文字列です。
+- mediaLink は必須であり、使用するメディア リンクの名前を表す文字列です。
+- imageOptions は省略可能なオブジェクトです。格納できるプロパティは次のとおりです。
 	- Category
-	- Label - default to imageName if not set.
+	- Label - 設定しない場合、既定で imageName と同じ値に設定されます。
 	- Location
 	- RoleSize
 
-- callback is required. (If imageOptions is not set, this may be the third parameter.)
-- The response object will contain properties of the created image if successful.
+- callback は必須です。(imageOptions を設定しない場合、これを 3 番目のパラメーターとして指定できます)。
+- 成功した場合、応答オブジェクトには作成されたイメージのプロパティが格納されます。
 
 **iaasClient.ListHostedServices(callback)**
 
-- callback is required.
-- The response object will contain an array of hosted service objects if successful.
+- callback は必須です。
+- 成功した場合、応答オブジェクトにはホステッド サービス オブジェクトの配列が格納されます。
 
 **iaasClient.GetHostedService(serviceName, callback)**
 
-- serviceName is a required string name of the hosted service.
-- callback is required.
-- The response object will contain properties of the hosted service if successful.
+- serviceName は必須であり、ホステッド サービスの名前を表す文字列です。
+- callback は必須です。
+- 成功した場合、応答オブジェクトにはホステッド サービスのプロパティが格納されます。
 
 **iaasClient.CreateHostedService(serviceName, serviceOptions, callback)**
 
-- serviceName is a required string name of the hosted service.
-- serviceOptions is an optional object. It may contain these properties
-	- Description - default to 'Service host'
-	- Label - default to serviceName if not set.
-	- Location - default to 'Azure Preview' -TODO change when released.
--	callback is required.
+- serviceName は必須であり、ホステッド サービスの名前を表す文字列です。
+- serviceOptions は省略可能なオブジェクトです。格納できるプロパティは次のとおりです。
+	- Description - 既定で 'Service host' に設定されます。
+	- Label - 設定しない場合、既定で serviceName と同じ値に設定されます。
+	- Location - 既定で 'Azure Preview' に設定されます - リリース後に変更予定です。
+-	callback は必須です。
 
 **iaasClient.GetStorageAccountKeys(serviceName, callback)**
 
-- serviceName is a required string name of the hosted service.
-- callback is required.
-- The response object will contain storage access keys if successful.
+- serviceName は必須であり、ホステッド サービスの名前を表す文字列です。
+- callback は必須です。
+- 成功した場合、応答オブジェクトにはストレージ アクセス キーが格納されます。
 
 **iaasClient.GetDeployment(serviceName, deploymentName, callback)**
 
-- serviceName is a required string name of the hosted service.
-- deploymentName is a required string name of the deployment.
-- callback is required.
-- The response object will contain properties of the named deployment if successful.
+- serviceName は必須であり、ホステッド サービスの名前を表す文字列です。
+- deploymentName は必須であり、デプロイの名前を表す文字列です。
+- callback は必須です。
+- 成功した場合、応答オブジェクトには指定したデプロイのプロパティが格納されます。
 
 **iaasClient.GetDeploymentBySlot(serviceName, deploymentSlot, callback)**
 
-- serviceName is a required string name of the hosted service.
-- deploymentSlot is a required string name of the slot (Staged or Production).
-- callback is required.
-- The response object will contain properties of deployments in the slot if successful.
+- serviceName は必須であり、ホステッド サービスの名前を表す文字列です。
+- deploymentSlot は必須であり、スロット (Staged または Production) の名前を表す文字列です。
+- callback は必須です。
+- 成功した場合、応答オブジェクトにはスロット内のデプロイのプロパティが格納されます。
 
 **iaasClient.CreateDeployment(serviceName, deploymentName, VMRole, deployOptions, callback)**
 
-- serviceName is a required string name of the hosted service.
-- deploymentName is a required string name of the deployment.
-- VMRole is a required object that has properties of the Role to be created for the deployment.
-- deployOptions is an optional object. It may contain these properties
-	- DeploymentSlot - default to 'Production'
-	- Label - default to deploymentName if not set.
-	- UpgradeDomainCount - no default
-- callback is required.
+- serviceName は必須であり、ホステッド サービスの名前を表す文字列です。
+- deploymentName は必須であり、デプロイの名前を表す文字列です。
+- VMRole は必須のオブジェクトであり、デプロイ用に作成するロールのプロパティを格納します。
+- deployOptions は省略可能なオブジェクトです。格納できるプロパティは次のとおりです。
+	- DeploymentSlot - 既定で 'Production' に設定されます。
+	- Label - 設定しない場合、既定で deploymentName と同じ値に設定されます。
+	- UpgradeDomainCount - 既定値はありません。
+- callback は必須です。
 
 **iaasClient.GetRole(serviceName, deploymentName, roleName, callback)**
 
-- serviceName is a required string name of the hosted service.
-- deploymentName is a required string name of the deployment.
-- roleName is a required string name of the role.
-- callback is required.
-- The response object will contain properties of the named role if successful.
+- serviceName は必須であり、ホステッド サービスの名前を表す文字列です。
+- deploymentName は必須であり、デプロイの名前を表す文字列です。
+- roleName は必須であり、ロールの名前を表す文字列です。
+- callback は必須です。
+- 成功した場合、応答オブジェクトには指定したロールのプロパティが格納されます。
 
 **iaasClient.AddRole(serviceName, deploymentName, VMRole, callback)**
 
-- serviceName is a required string name of the hosted service.
-- deploymentName is a required string name of the deployment.
-- VMRole is a required object that has properties of the Role to be added to the deployment.
-- callback is required.
+- serviceName は必須であり、ホステッド サービスの名前を表す文字列です。
+- deploymentName は必須であり、デプロイの名前を表す文字列です。
+- VMRole は必須のオブジェクトであり、デプロイ用に追加するロールのプロパティを格納します。
+- callback は必須です。
 
 **iaasClient.ModifyRole(serviceName, deploymentName, roleName, VMRole, callback)**
 
-- serviceName is a required string name of the hosted service.
-- deploymentName is a required string name of the deployment.
-- roleName is a required string name of the role.
-- VMRole is a required object that has properties to be modified in the role.
-- callback is required.
+- serviceName は必須であり、ホステッド サービスの名前を表す文字列です。
+- deploymentName は必須であり、デプロイの名前を表す文字列です。
+- roleName は必須であり、ロールの名前を表す文字列です。
+- VMRole は必須のオブジェクトであり、変更するロールのプロパティを格納します。
+- callback は必須です。
 
 **iaasClient.DeleteRole(serviceName, deploymentName, roleName, callback)**
 
-- serviceName is a required string name of the hosted service.
-- deploymentName is a required string name of the deployment.
-- roleName is a required string name of the role.
-- callback is required.
+- serviceName は必須であり、ホステッド サービスの名前を表す文字列です。
+- deploymentName は必須であり、デプロイの名前を表す文字列です。
+- roleName は必須であり、ロールの名前を表す文字列です。
+- callback は必須です。
 
 **iaasClient.AddDataDisk(serviceName, deploymentName, roleName, datadisk, callback)**
 
-- serviceName is a required string name of the hosted service.
-- deploymentName is a required string name of the deployment.
-- roleName is a required string name of the role.
-- Datadisk is a required object used to specify how the data disk will be created.
-- callback is required.
+- serviceName は必須であり、ホステッド サービスの名前を表す文字列です。
+- deploymentName は必須であり、デプロイの名前を表す文字列です。
+- roleName は必須であり、ロールの名前を表す文字列です。
+- Datadisk は必須のオブジェクトであり、データ ディスクの変更方法を指定するために使用します。
+- callback は必須です。
 
 **iaasClient.ModifyDataDisk(serviceName, deploymentName, roleName, LUN, datadisk, callback)**
 
-- serviceName is a required string name of the hosted service.
-- deploymentName is a required string name of the deployment.
-- roleName is a required string name of the role.
-- LUN is the number that identifies the data disk
-- Datadisk is a required object used to specify how the data disk will be modified.
-- callback is required.
+- serviceName は必須であり、ホステッド サービスの名前を表す文字列です。
+- deploymentName は必須であり、デプロイの名前を表す文字列です。
+- roleName は必須であり、ロールの名前を表す文字列です。
+- LUN はデータ ディスクを識別する番号です。
+- Datadisk は必須のオブジェクトであり、データ ディスクの変更方法を指定するために使用します。
+- callback は必須です。
 
 **iaasClient.RemoveDataDisk(serviceName, deploymentName, roleName, LUN, callback)**
 
-- serviceName is a required string name of the hosted service.
-- deploymentName is a required string name of the deployment.
-- roleName is a required string name of the role.
-- LUN is the number that identifies the data disk
-- callback is required.
+- serviceName は必須であり、ホステッド サービスの名前を表す文字列です。
+- deploymentName は必須であり、デプロイの名前を表す文字列です。
+- roleName は必須であり、ロールの名前を表す文字列です。
+- LUN はデータ ディスクを識別する番号です。
+- callback は必須です。
 
 **iaasClient.ShutdownRoleInstance(serviceName, deploymentName, roleInstance, callback)**
 
-- serviceName is a required string name of the hosted service.
-- deploymentName is a required string name of the deployment.
-- roleInstance is a required string name of the role instance.
-- callback is required.
+- serviceName は必須であり、ホステッド サービスの名前を表す文字列です。
+- deploymentName は必須であり、デプロイの名前を表す文字列です。
+- roleInstance は必須であり、ロール インスタンスの名前を表す文字列です。
+- callback は必須です。
 
 **iaasClient.RestartRoleInstance(serviceName, deploymentName, roleInstance, callback)**
 
-- serviceName is a required string name of the hosted service.
-- deploymentName is a required string name of the deployment.
-- roleInstance is a required string name of the role instance.
-- callback is required.
+- serviceName は必須であり、ホステッド サービスの名前を表す文字列です。
+- deploymentName は必須であり、デプロイの名前を表す文字列です。
+- roleInstance は必須であり、ロール インスタンスの名前を表す文字列です。
+- callback は必須です。
 
 **iaasClient.CaptureRoleInstance(serviceName, deploymentName, roleInstance, captOptions, callback)**
 
-- serviceName is a required string name of the hosted service.
-- deploymentName is a required string name of the deployment.
-- roleInstance is a required string name of the role instance.
-- captOptions is a required object that defines the capture actions
+- serviceName は必須であり、ホステッド サービスの名前を表す文字列です。
+- deploymentName は必須であり、デプロイの名前を表す文字列です。
+- roleInstance は必須であり、ロール インスタンスの名前を表す文字列です。
+- captOptions は必須のオブジェクトであり、キャプチャ アクションを定義します。
 	- PostCaptureActions
 	- ProvisioningConfiguration
 	- SupportsStatelessDeployment
 	- TargetImageLabel
 	- TargetImageName
-- callback is required.
+- callback は必須です。
 
-##Data objects##
+##データ オブジェクト##
 
-The APIs take objects as input when creating or modifying a deployment, a role, or a disk. Other APIs will return similar objects on a Get or List operation.
-This section sketches out the object properties.
-Deployment
+API はデプロイ、ロール、またはディスクの作成や変更をするときに、入力としてオブジェクトを受け取ります。Get または List の処理で同様のオブジェクトを返す API もあります。
+このセクションでは、オブジェクトのプロパティについて概説します。
+デプロイ
 
-- Name - string
-- DeploymentSlot - 'Staging' or 'Production'
-- Status - string - output only
-- PrivateID - string - output only
-- Label - string
-- UpgradeDomainCount - number
-- SdkVersion - string
-- Locked - true or false
-- RollbackAllowed - true or false
-- RoleInstance - object - output only
-- Role - VMRole object
-- InputEndpointList - array of InputEndpoint
+- Name - 文字列
+- DeploymentSlot - 'Staging' または 'Production'
+- Status - 文字列 - 出力のみ
+- PrivateID - 文字列 - 出力のみ
+- Label - 文字列
+- UpgradeDomainCount - 数字
+- SdkVersion - 文字列
+- Locked - true または false
+- RollbackAllowed - true または false
+- RoleInstance - オブジェクト - 出力のみ
+- Role - VMRole オブジェクト
+- InputEndpointList - InputEndpoint の配列
 
 **VMRole**
 
-- RoleName - string. Required for create.
-- RoleSize - string. Optional for create.
-- RoleType - string. Defaults to 'PersistentVMRole' if not specified in create.
-- OSDisk - object. Required for create
-- DataDisks - array of objects. Optional for create.
-- ConfigurationSets - array of Configuration objects.
+- RoleName - 文字列。作成するときは必須です。
+- RoleSize - 文字列。作成するときは省略可能です。
+- RoleType - 文字列。作成するときに指定しない場合、既定で 'PersistentVMRole' に設定されます。
+- OSDisk - オブジェクト。作成するときは必須です。
+- DataDisks - オブジェクトの配列。作成するときは省略可能です。
+- ConfigurationSets - 構成オブジェクトの配列。
 
 **RoleInstance**
 
-- RoleName - string
-- InstanceName - string
-- InstanceStatus - string
-- InstanceUpgradeDomain - number
-- InstanceFaultDomain - number
-- InstanceSize - string
-- IpAddress - string
+- RoleName - 文字列。
+- InstanceName - 文字列。
+- InstanceStatus - 文字列。
+- InstanceUpgradeDomain - 数字。
+- InstanceFaultDomain - 数字。
+- InstanceSize - 文字列。
+- IpAddress - 文字列。
 
 **OSDisk**
 
-- SourceImageName - string. Required for create
-- DisableWriteCache - true or false
-- DiskName - string.
-- MediaLink - string
+- SourceImageName - 文字列。作成するときは必須です。
+- DisableWriteCache - true または false
+- DiskName - 文字列。
+- MediaLink - 文字列。
 
 **DataDisk**
 
-- DisableReadCache - true or false
-- EnableWriteCache - true or false
-- DiskName - string
-- MediaLink - string
-- LUN - number (0-15)
-- LogicalDiskSizeInGB - number
-- SourceMediaLink - string
-- There are 3 ways to specify the disk during creation - by name, by media, or by size. The options specified will determine how it works. See RDFE API document for details.
+- DisableReadCache - true または false
+- EnableWriteCache - true または false
+- DiskName - 文字列。
+- MediaLink - 文字列。
+- LUN - 数字 (0 ～ 15)
+- LogicalDiskSizeInGB - 数字。
+- SourceMediaLink - 文字列。
+- 作成するときにディスクを指定する方法として、名前、メディア、またはサイズを使用できます。その指定方法によって処理が決まります。詳細については、RDFE API のドキュメントを参照してください。
 
 **ProvisioningConfiguration**
 
 - ConfigurationSetType - 'ProvisioningConfiguration'
-- AdminPassword - string
-- MachineName - string
-- ResetPasswordOnFirstLogon - true or false
+- AdminPassword - 文字列。
+- MachineName - 文字列。
+- ResetPasswordOnFirstLogon - true または false
 
 **NetworkConfiguration**
 
 - ConfigurationSetType - 'NetworkConfiguration'
-- InputEndpoints - array of ExternalEndpoints
+- InputEndpoints - ExternalEndpoints の配列
 
 **InputEndpoint**
 
@@ -297,9 +297,9 @@ Deployment
 - Port
 - Protocol
 
-##Sample code##
+##コード サンプル##
 
-Here is a sample javascript code that creates a hosted service and a deployment, and then polls for the completion status of the deployment.
+ここでは、ホステッド サービスとデプロイを作成し、デプロイの完了ステータスをポーリングするサンプル JavaScript コードを示します。
 
 	var azure = require('azure');
 	
@@ -417,3 +417,4 @@ Here is a sample javascript code that creates a hosted service and a deployment,
 	    showErrorResponse(rspobj);
 	  }
 	});
+

@@ -1,20 +1,21 @@
 
-The mobile service project that you download lets you to run your new mobile service right on your local computer or virtual machine. This makes it easy to debug your service code before you even publish it to Azure.
+ダウンロードするモバイル サービス プロジェクトを使用して、ローカル コンピューターまたは仮想マシンで新しいモバイル サービスを適切に動作させることができます。この結果、サービスを Azure に発行する前であっても、サービスのコードを容易にデバッグできるようになります。
 
-In this section, you will test your new app against the mobile service running locally.
+ここでは、ローカルで実行されているモバイル サービスと組み合わせて、新しいアプリをテストします。
 
-1. Browse to the location where you saved the compressed project files, expand the files on your computer, and open the solution file in Visual Studio.
+1. 圧縮されたプロジェクト ファイルの保存場所を参照し、ファイルをコンピューター上に展開して、Visual Studio でソリューション ファイルを開きます。
 
-2. Press the **F5** key to rebuild the project and start the mobile service locally.
+2. Visual Studio で **F5** キーを押してプロジェクトをリビルドし、モバイル サービスをローカルで開始します。
 
 	![](./media/mobile-services-dotnet-backend-test-local-service-dotnet/mobile-service-startup.png)
 
-	A web page is displayed after the mobile service starts successfully.
+	モバイル サービスが正常に起動した後、Web ページが表示されます。
 
-3. In Solution Explorer in Visual Studio, right-click your client app project and click **Set as StartUp Project** and then press the **F5** key to rebuild the project and start the app.
+3. Visual Studio のソリューション エクスプ ローラーでクライアント アプリケーション プロジェクトを右クリックして、**[スタートアップ プロジェクトに設定]** をクリックし、**F5** キーを押してプロジェクトをリビルドした後、アプリケーションを起動します。
 
-	This starts the app, which connects to the local mobile service instance.	
+	この結果、アプリケーションが起動され、ローカルのモバイル サービス インスタンスに接続されます。	
 
-4. In the app, type meaningful text, such as _Complete the tutorial_, in **Insert a TodoItem**, and then click **Save**.
+4. アプリケーションで、**[Insert a TodoItem]** ボックスに意味のあるテキスト (たとえば、「_チュートリアルの完了_」) を入力し、**[Save]** をクリックします。
 
-	This sends a POST request to the local mobile service. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile service, and the data is displayed in the second column in the app.
+	この結果、POST 要求がローカルのモバイル サービス宛てに送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目はモバイル サービスによって返され、データはアプリケーションの 2 番目の列に表示されます。
+

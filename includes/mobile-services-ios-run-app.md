@@ -1,19 +1,20 @@
 
 
 
-The final stage of this tutorial is to build and run your new app.
+このチュートリアルの最後に、新しいアプリケーションをビルドして実行します。
 
-1. Browse to the location where you saved the compressed project files, expand the files on your computer, and open the project file using Xcode.
+1. 圧縮されたプロジェクト ファイルの保存場所を参照し、ファイルをコンピューター上に展開して、Xcode でプロジェクト ファイルを開きます。
 
    	![](./media/mobile-services-ios-run-app/mobile-xcode-project.png)
 
-2. Press the **Run** button to build the project and start the app in the iPhone emulator, which is the default for this project.
+2. **[実行]** をクリックしてプロジェクトをビルドし、このプロジェクトの既定である iPhone エミュレーターでアプリケーションを開始します。
 
-3. In the app, type meaningful text, such as _Complete the tutorial_ and then click the plus (**+**) icon.
+3. アプリケーションで、意味のあるテキスト (たとえば、「_チュートリアルの完了_」) を入力し、正符号 (**+**) アイコンをクリックします。
 
    	![](./media/mobile-services-ios-run-app/mobile-quickstart-startup-ios.png)
 
-   	This sends a POST request to the new mobile service hosted in Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile service, and the data is displayed in the list.
+   	これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目がモバイル サービスによって返され、データが一覧に表示されます。
 
-	>[WACOM.NOTE]You can review the code that accesses your mobile service to query and insert data, which is found in the TodoService.m file.</p> 
+	>[WACOM.NOTE]モバイル サービスにアクセスして TodoService.m ファイルにあるデータを照会および挿入するコードを確認できます。</p>
  	</div>
+

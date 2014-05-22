@@ -1,53 +1,53 @@
-<properties linkid="mobile-services-recovery-disaster" urlDisplayName="Recover your mobile service in the event of a disaster" pageTitle="Recover your mobile service in the event of a disaster - Azure Mobile Services" metaKeywords="" description="Learn how to recover your mobile service in the event of a disaster." metaCanonical="" services="" documentationCenter="Mobile" title="Recover your mobile service in the event of a disaster" authors="yavorg" solutions="" manager="" editor="" />
+<properties linkid="mobile-services-recovery-disaster" urlDisplayName="障害発生時のモバイル サービスの復旧" pageTitle="障害発生時のモバイル サービスの復旧 - Azure モバイル サービス" metaKeywords="" description="障害発生時にモバイル サービスを復旧する方法について説明します" metaCanonical="" services="" documentationCenter="Mobile" title="障害発生時のモバイル サービスの復旧" authors="yavorg" solutions="" manager="" editor="" />
 
-# Recover your mobile service in the event of a disaster
+# 障害発生時のモバイル サービスの復旧
 
-When you use Azure Mobile Services to deploy an app, you can use its built-in features to ensure business continuity in the event of availability problems, such as server failures, network disruptions, data loss, and widespread facilities loss. By deploying your app using Azure Mobile Services you are taking advantage of many fault tolerance and infrastructure capabilities that you would have to design, implement, and manage if you were to deploy a traditional on-premise solution. Azure mitigates a large fraction of potential failures at a fraction of the cost.
+Azure のモバイル サービスを使用して、アプリケーションを展開した場合、組み込み機能を使用することで、サーバーの障害、ネットワークの中断、データの消失、広範囲に及ぶ設備の損失など、可用性の問題が発生したときにビジネス継続性を維持できます。Azure のモバイル サービスを使用して、アプリケーションを展開することで、従来の内部設置型ソリューションを展開する場合に設計、実装、および管理する必要があるさまざまなフォールト トレランス機能やインフラストラクチャ機能を利用することができます。Azure により、わずかな料金で潜在的な障害の大部分が軽減されます。
 
-<h2><a name="prepare"></a><span class="short-header">Prepare</span>Prepare for possible disasters</h2>
+<h2><a name="prepare"></a><span class="short-header">準備</span>考えられる災害に対応する準備</h2>
 
-To make recovery easier in case of an availability problem, you can prepare for it in advance: 
+可用性の問題が発生した場合に簡単に復旧するには、あらかじめ対応する準備を整えておきます。
 
-+ **Back up your data in the Azure mobile service SQL Database**
-	<br/>Your mobile service application data is stored in an Azure SQL Database. We recommend that you back it up as prescribed in the [SQL Database business continuity guidance].
-+ **Back up your mobile service scripts**
-	<br/>We recommend that you store your mobile service scripts in a source-control system such as [Team Foundation Service] or [GitHub] and not rely only on the copies in the mobile service itself. You can download the scripts via the Azure portal, using the Mobile Services [source control feature], or [using the Azure command-line tool]. Pay close attention to features labeled as "preview" in the portal, as recovery for those scripts is not guaranteed and you might need to recover them from your own source control original.
-+ **Reserve a secondary mobile service**
-	<br/>In the event of an availability problem with your mobile service, you may have to redeploy it to an alternate Azure region. To ensure capacity is available (for example under rare circumstances such as the loss of an entire region), we recommend that you create a secondary mobile service in your alternate region and set its mode the same as or higher than the mode of your primary service. (If your primary service is in shared mode, you can make the secondary service either shared or reserved. But if the primary is reserved, then the secondary must also be reserved.)
++ **Azure のモバイル サービスの SQL データベースのデータをバックアップする**
+	<br/>モバイル サービス アプリケーションのデータは Azure SQL データベースに格納されています。「[Azure SQL データベースにおけるビジネス継続性]」の説明に従ってバックアップすることをお勧めします。
++ **モバイル サービス スクリプトをバックアップする**
+	<br/>[Team Foundation Service] や [GitHub] などのソース管理システムにモバイル サービス スクリプトを保存し、モバイル サービス自体でのコピーのみに頼らないようにすることをお勧めします。スクリプトは、モバイル サービスの[ソース管理機能]または [Azure コマンド ライン ツール]を使用して、Azure ポータルからダウンロードできます。ポータルで "プレビュー" というラベルが付いている機能には、細心の注意を払ってください。それらのスクリプトの復旧は保証されておらず、独自のソース管理の元のスクリプトから復旧することが必要になる場合があります。
++ **セカンダリ モバイル サービスを占有に設定する**
+	<br/>モバイル サービスで可用性の問題が発生した場合、Azure の代替リージョンに再展開することが必要になる場合があります。(たとえば、リージョン全体のデータの損失などのまれな状況で) 容量の可用性を確保するためには、代替リージョンにセカンダリ モバイル サービスを作成し、そのモードをプライマリ サービスのモードと同じかそれ以上に設定することをお勧めします。(プライマリ サービスが共有モードの場合、セカンダリ サービスは共有と占有のどちらかに設定できます。ただし、プライマリが占有の場合、セカンダリも占有である必要があります)。
 
 
-<h2><a name="watch"></a><span class="short-header">Watch</span>Watch for signs of a problem</h2>
+<h2><a name="watch"></a><span class="short-header">監視</span>問題の兆候の監視</h2>
 
-These circumstances indicate a problem that might require a recovery operation:
+次の状況は、復旧操作が必要となる可能性がある問題を示しています。
 
-+ Apps that are connected to your mobile service can't communicate with it for an extended period of time.
-+ Mobile service status is displayed as **Unhealthy** in the [Azure portal].
-+ An **Unhealthy** banner appears at the top of every tab for your mobile service in the Azure portal, and management operations produce error messages.
-+ The [Azure Service Dashboard] indicates an availability problem.
++ モバイル サービスに接続されているアプリケーションが長時間にわたってモバイル サービスと通信できない。
++ [Azure ポータル]で、モバイル サービスの状態が "**異常**" と表示されている。
++ Azure ポータルで、モバイル サービスのどのタブの上部にも "**異常**" というバナーが表示され、管理操作を実行するとエラー メッセージが生成される。
++ [Azure サービス ダッシュボード]に可用性の問題が示されている。
 
-<h2><a name="recover"></a><span class="short-header">Recover</span>Recover from a disaster</h2>
+<h2><a name="recover"></a><span class="short-header">復旧</span>災害からの復旧</h2>
 
-When a problem occurs, use the Service Dashboard to get guidance and updates.
+問題が発生した場合は、サービス ダッシュボードを使用して、ガイダンスと最新情報を取得します。
  
-If you're prompted by the Service Dashboard, execute the following steps to restore your mobile service to a running state in an alternate Azure region. If you created a secondary service in advance, its capacity will be used to restore the primary service. Because the URL and application key of the primary service is unchanged after recovery, you don't have to update any apps that refer to it. 
+サービス ダッシュボードが表示されたら、次の手順を実行して、モバイル サービスを Azure の代替リージョンで "実行中" 状態に復元します。あらかじめセカンダリ サービスを作成している場合は、その容量を使用して、プライマリ サービスが復元されます。プライマリ サービスの URL とアプリケーション キーは復旧後も変更されないため、プライマリ サービスを参照するアプリケーションを更新する必要はありません。
 
-To recover your mobile service after an outage:
+停電後にモバイル サービスを復旧するには、以下の手順を実行します。
 
-1. In the Azure portal, ensure that the status of your service is reported as **Unhealthy**.
+1. Azure ポータルで、サービスの状態が "**異常**" と報告されていることを確認します。
 
-2. If you already reserved a secondary mobile service, you can skip this step.
+2. セカンダリ モバイル サービスを既に占有に設定している場合は、この手順をスキップできます。
 
-   If you haven't already reserved a secondary mobile service, create one now in another Azure region. Set its mode the same as or higher than the mode of your primary service. (If your primary service is in shared mode, you can make the secondary service either shared or reserved. But if the primary is reserved, then the secondary must also be reserved.)
+   セカンダリ モバイル サービスをまだ占有に設定していない場合は、Azure の別のリージョンにセカンダリ モバイル サービスを 1 つ作成します。モードをプライマリ サービスのモードと同じか、それよりも高く設定します (プライマリ サービスが共有モードの場合、セカンダリ サービスは共有と占有のどちらかに設定できます。ただし、プライマリが占有の場合、セカンダリも占有である必要があります)。
 
-3. Configure the Azure command-line tools to work with your subscription, as described in [Automate mobile services with command-line tools].
+3. 「[コマンド ライン ツールを使用したモバイル サービスの自動化]」の説明に従って、サブスクリプションを操作できるように Azure コマンド ライン ツールを構成します。
 
-4. Now you can use your secondary service to recover your primary one.
+4. これで、セカンダリ サービスを使用して、プライマリ サービスを復旧できます。
 
-    <div class="dev-callout"><b>Important</b>
-	<p>When you execute the command in this step, the secondary service is deleted so that its capacity can be used to recover the primary service. We recommend that you back up your scripts and settings before you run the command, if you would like to keep them.</p>
+    <div class="dev-callout"><b>重要</b>
+	<p>この手順のコマンドを実行すると、セカンダリ サービスの容量を使用してプライマリ サービスを復旧できるように、セカンダリ サービスは削除されます。スクリプトと設定を保持する場合は、コマンドを実行する前に、バックアップすることをお勧めします。</p>
     </div>
 
-   When you're ready, execute this command:
+   準備ができたら、次のコマンドを実行します。
 
 		azure mobile recover PrimaryService SecondaryService
 		info:    Executing command mobile recover
@@ -57,28 +57,29 @@ To recover your mobile service after an outage:
 		info:    Recovery complete
 		info:    mobile recover command OK
 
-    <div class="dev-callout"><b>Note</b>
-	<p>It may take a few minutes after the command completes until you can see the changes in the portal.</p>
+    <div class="dev-callout"><b>注</b>
+	<p>コマンドが完了してからポータルに変更が反映されるまでに数分かかる場合があります。</p>
     </div>
 
-5. Verify that all scripts have been recovered correctly by comparing them to your originals in source control. In most cases, scripts are automatically recovered without data loss, but if you find a discrepancy, you can recover that script manually.
+5. すべてのスクリプトをソース管理内の元のスクリプトと比較して、正しく復旧されていることを確認します。ほとんどの場合、スクリプトはデータが失われることなく自動的に復旧されます。ただし、相違がある場合は、そのスクリプトを手動で復旧できます。
 
-6. Make sure that your recovered service is communicating with your Azure SQL Database. The recover command recovers the mobile service, but retains the connection to the original database. If the problem in the primary Azure region also affects the database, the recovered service may still not be running correctly. You can use the Azure Service Dashboard to examine the database status for a given region. If the original database is not working, you can recover it:
-	+ Recover your Azure SQL Database to the Azure region where you just recovered your mobile service, as described in [SQL Database business continuity guidance].
-	+ In the Azure portal, on the **"Configure"** tab of your mobile service, choose "Change database" and then select the newly recovered database.
+6. 復旧したサービスが Azure SQL データベースと通信していることを確認します。復旧コマンドでは、モバイル サービスが復旧されますが、元のデータベースへの接続が保持されます。Azure のプライマリ リージョンの問題がデータベースにも影響を与えている場合は、復旧したサービスが正常に実行されないことがあります。特定のリージョンのデータベースの状態は、Azure サービス ダッシュボードを使用して確認できます。元のデータベースが動作していない場合は、次の手順でデータベースを復旧できます。
+	+ 「[Azure SQL データベースにおけるビジネス継続性]」の説明に従って、モバイル サービスを復旧した Azure のリージョンに対して Azure SQL データベースを復旧します。
+	+ Azure ポータルで、モバイル サービスの **[構成]** タブにある [データベースの変更] をクリックし、新しく復旧したデータベースを選択します。
 
-Now you should be in a state where your mobile service has been recovered to a new Azure region and is now accepting traffic from your store apps using its original URL.
+これで、モバイル サービスが Azure の新しいリージョンに復旧され、元の URL を使用して、ストア アプリからトラフィックを受け取っている状態になります。
 
 <!-- Anchors. -->
 
 <!-- Images. -->
 
 <!-- URLs. -->
-[SQL Database business continuity guidance]: http://msdn.microsoft.com/en-us/library/windowsazure/hh852669.aspx
+[Azure SQL データベースにおけるビジネス継続性]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh852669.aspx
 [Team Foundation Service]: http://tfs.visualstudio.com/
 
-[source control feature]: http://www.windowsazure.com/en-us/develop/mobile/tutorials/store-scripts-in-source-control/
-[using the Azure command-line tool]: http://www.windowsazure.com/en-us/develop/mobile/tutorials/command-line-administration/
-[Azure portal]: http://manage.windowsazure.com/
-[Azure Service Dashboard]: http://www.windowsazure.com/en-us/support/service-dashboard/
-[Automate mobile services with command-line tools]: http://www.windowsazure.com/en-us/develop/mobile/tutorials/command-line-administration/
+[ソース管理機能]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/store-scripts-in-source-control/
+[Azure コマンド ライン ツール]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/command-line-administration/
+[Azure ポータル]: http://manage.windowsazure.com/
+[Azure サービス ダッシュボード]: http://www.windowsazure.com/ja-jp/support/service-dashboard/
+[コマンド ライン ツールを使用したモバイル サービスの自動化]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/command-line-administration/
+

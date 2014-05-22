@@ -1,54 +1,55 @@
-<properties linkid="manage-services-what-is-a-cloud-service" urlDisplayName="What is a Cloud Service" pageTitle="What is a cloud service - Azure service management" metaKeywords="Azure cloud services intro, cloud services overview, cloud services basics" description="An introduction to the cloud service in Azure." metaCanonical="" services="cloud-services" documentationCenter="" title="What is a cloud service?" authors="ryanwi" solutions="" manager="" editor="" />
+<properties linkid="manage-services-what-is-a-cloud-service" urlDisplayName="クラウド サービスとは" pageTitle="クラウド サービスとは - Azure のサービス管理" metaKeywords="Azure クラウド サービスの紹介, クラウド サービスの概要, クラウド サービスの基本" description="Azure のクラウド サービスを紹介します。" metaCanonical="" services="cloud-services" documentationCenter="" title="クラウド サービスとは" authors="ryanwi" solutions="" manager="" editor="" />
 
 
 
 
-#What is a cloud service?
-When you create an application and run it in Azure, the code and configuration together are called an Azure cloud service (known as a *hosted service* in earlier Azure releases).
+#クラウド サービスとは
+アプリケーションを作成して、それを Azure で実行するときは、そのコードと構成をあわせて Azure *クラウド サービス*と呼びます (以前にリリースした Azure ではホステッド サービスと呼ばれていました)。
 
-By creating a cloud service, you can deploy a multi-tier application in Azure, defining multiple roles to distribute processing and allow flexible scaling of your application. A cloud service consists of one or more web roles and/or worker roles, each with its own application files and configuration.
+クラウド サービスを作成することにより、Azure に多階層アプリケーションを展開し、複数のロールを定義して処理を分散し、アプリケーションの規模を柔軟に設定することができます。クラウド サービスは 1 つ以上の Web ロールまたは worker ロールから構成され、各ロールにそれぞれ専用のアプリケーション ファイルと構成が関連付けられます。
 
-For a cloud service, Azure maintains the infrastructure for you, performing routine maintenance, patching the operating systems, and attempting to recover from service and hardware failures. If you define at least two instances of every role, most maintenance, as well as your own service upgrades, can be performed without any interruption in service. A cloud service must have at least two instances of every role to qualify for the Azure Service Level Agreement, which guarantees external connectivity to your Internet-facing roles at least 99.95 of the time. 
+クラウド サービスの場合、Azure がユーザーに代わってインフラストラクチャの保守と日常的な保守を行い、オペレーティング システムにパッチを適用し、サービスとハードウェアの障害時には回復を図ります。あらゆるロールにインスタンスを最低 2 つ定義した場合、ほとんどの保守作業は、ユーザー独自のサービスのアップグレードも含めて、サービスを中断することなく実施できます。クラウド サービスが Azure サービス レベル アグリーメントの対象になるには、各ロール用に複数のインスタンスを展開している必要があります。その場合、インターネットに接続するロールが 99.95% 以上の時間、外部に接続されることが保証されます。
 
-Each cloud service has two environments to which you can deploy your service package and configuration. You can deploy a cloud service to the staging environment to test it before you promote it to production. Promoting a staged cloud service to production is a simple matter of swapping the virtual IP addresses (VIPs) that are associated with the two environments. 
-
-
-## Concepts ##
+各クラウド サービスには、サービス パッケージと構成を展開できる環境が 2 つ用意されています。クラウド サービスは、まずステージング環境にデプロイしてテストした後、運用環境に昇格させることができます。ステージングされたクラウド サービスを運用環境に昇格させるのは、2 つの環境に関連付けられた仮想 IP アドレス (VIP) を交換するだけの簡単な処理です。
 
 
-- **cloud service role:** A cloud service role is comprised of application files and a configuration. A cloud service can have two types of role:
+## 概念##
+
+
+- **クラウド サービス ロール**: クラウド サービス ロールはアプリケーション ファイルと構成によって成り立っています。クラウド サービスにはロールが 2 種類あります。
  
->- **web role:**A web role provides a dedicated Internet Information Services (IIS) web-server used for hosting front-end web applications.
+>- **Web ロール**: Web ロールは、フロントエンド Web アプリケーションのホスティングに使用される専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。
 
->- **worker role:** Applications hosted within worker roles can run asynchronous, long-running or perpetual tasks independent of user interaction or input.
+>- **worker ロール**: worker ロール内でホスティングされるアプリケーションは、ユーザーの操作や入力とは関係なく、非同期タスク、長時間かかるタスク、または常駐タスクを実行できます。
 
-- **role instance:** A role instance is a virtual machine on which the application code and role configuration run. A role can have multiple instances, defined in the service configuration file.
+- **ロール インスタンス**: ロール インスタンスとは、アプリケーション コードとロール構成が実行される仮想マシンです。1 つのロール用に複数のインスタンスを展開するようにサービス構成ファイルで定義できます。
 
-- **guest operating system:** The guest operating system for a cloud service is the operating system installed on the role instances (virtual machines) on which your application code runs.
+- **ゲスト オペレーティング システム**: クラウド サービスのゲスト オペレーティング システムは、アプリケーション コードが実行されるロール インスタンス (仮想マシン) にインストールされたオペレーティング システムです。
 
-- **cloud service components:** Three components are required in order to deploy an application as a cloud service in Azure:
+- **クラウド サービスのコンポーネント**: Azure のクラウド サービスとしてアプリケーションを展開するには、3 つのコンポーネントが必要です。
 
->- **service definition file:** The cloud service definition file (.csdef) defines the service model, including the number of roles.
+>- **サービス定義ファイル**: クラウド サービス定義ファイル (.csdef) は、ロールの数も含めて、サービス モデルを定義します。
 
->- **service configuration file:** The cloud service configuration file (.cscfg) provides configuration settings for the cloud service and individual roles, including the number of role instances.
+>- **サービス構成ファイル**: クラウド サービス構成ファイル (.cscfg) は、ロール インスタンスの数も含めて、クラウド サービスおよび個々のロールの構成設定を指定します。
 
->- **service package:** The service package (.cspkg) contains the application code and the service definition file.
+>- **サービス パッケージ**: サービス パッケージ (.cspkg) は、アプリケーション コードとサービス定義ファイルを含みます。
 
-- **cloud service deployment:** A cloud service deployment is an instance of a cloud service deployed to the Azure staging or production environment. You can maintain deployments in both staging and production.
+- **クラウド サービス展開**: クラウド サービス展開は、Azure のステージング環境または運用環境に展開されたクラウド サービスのインスタンスです。ステージング環境と運用環境の両方に展開を保持できます。
 
-- **deployment environments:** Azure offers two deployment environments for cloud services: a *staging environment* in which you can test your deployment before you promote it to the *production environment*. The two environments are distinguished only by the virtual IP addresses (VIPs) by which the cloud service is accessed. In the staging environment, the cloud service's globally unique identifier (GUID) identifies it in URLs (*GUID*.cloudapp.net). In the production environment, the URL is based on the friendlier DNS prefix assigned to the cloud service (for example, *myservice*.cloudapp.net).
+- **展開環境:** Azure には、クラウド サービス用に 2 つの展開環境が用意されています。*ステージング環境*で展開をテストした後、*運用環境*に昇格させます。2 つの環境で異なるのは、クラウド サービスがアクセスに使用する仮想 IP アドレス (VIP) だけです。ステージング環境では、展開の URL はクラウド サービスのグローバル一意識別子 (GUID) に基づいたものになります (*GUID*.cloudapp.net)。運用環境では、展開の URL はクラウド サービスに割り当てられたわかりやすい DNS プレフィックスに基づいたものになります (*myservice*.cloudapp.net など)。
 
-- **swap deployments:** To promote a deployment in the Azure staging environment to the production environment, you can "swap" the deployments by switching the VIPs by which the two deployments are accessed. After the deployment, the DNS name for the cloud service points to the deployment that had been in the staging environment. 
+- **展開のスワップ**: Azure のステージング環境にある展開を運用環境に昇格させるには、2 つの展開にアクセスするときに使用する VIP を切り替えることで展開を "スワップ" します。展開後、クラウド サービスの DNS 名は、ステージング環境にあった展開を指します。
 
-- **minimal vs. verbose monitoring:** *Minimal monitoring*, which is configured by default for a cloud service, uses performance counters gathered from the host operating systems for role instances (virtual machines). *Verbose monitoring* gathers additional metrics based on performance data within the role instances to enable closer analysis of issues that occur during application processing. For more information, see [How to Monitor Cloud Services][HTMonitorCloudServices].
+- **最小監視と詳細監視**: *最小監視*は、クラウド サービス用に既定で構成されており、ロール インスタンス (仮想マシン) のホスト オペレーティング システムから収集したパフォーマンス カウンターを使用します。*詳細監視*は、アプリケーション処理時に発生する問題を詳しく分析できるように、ロール インスタンス内のパフォーマンス データに基づいて追加のメトリックを収集します。詳細については、「[クラウド サービスの監視方法][HTMonitorCloudServices]」を参照してください。
 
-- **Azure Diagnostics:** Azure Diagnostics is the API that enables you to collect diagnostic data from applications running in Azure. Azure Diagnostics must be enabled for cloud service roles in order for verbose monitoring to be turned on. 
+- **Azure 診断**: Azure 診断は、Azure で実行しているアプリケーションから診断データを収集できる API です。詳細監視を有効にするには、クラウド サービス ロールの Azure 診断を有効にする必要があります。
 
-- **link a resource:** To show your cloud service's dependencies on other resources, such as an Azure SQL Database instance, you can "link" the resource to the cloud service. In the Preview Management Portal, you can view linked resources on the **Linked Resources** page, view their status on the dashboard, and scale a linked SQL Database instance along with the service roles on the **Scale** page. Linking a resource in this sense does not connect the resource to the application; you must configure the connections in the application code.
+- **リソースのリンク**: 使用しているクラウド サービスと、Azure SQL データベース インスタンスのような他のリソースとの依存関係を示すために、リソースをクラウド サービスに "リンク" することができます。プレビュー管理ポータルでは、**[リンク済みリソース]** ページでリンクされたリソースを表示し、ダッシュボードでその状態を表示し、**[スケール]** ページでサービス ロールと共にリンクされた SQL データベース インスタンスの規模を設定できます。この意味でリソースをリンクしても、リソースはアプリケーションに接続されません。接続はアプリケーション コードで構成する必要があります。
 
-- **scale a cloud service:** A cloud service is scaled out by increasing the number of role instances (virtual machines) deployed for a role. A cloud service is scaled in by decreasing role instances. In the Preview Management Portal, you can also scale a linked SQL Database instance, by changing the SQL Database edition and the maximum database size, when you scale your service roles.
+- **クラウド サービスの規模設定 (スケール)**: クラウド サービスは、ロール用に展開したロール インスタンス (仮想マシン) の数を増やすことによって規模が拡大されます。クラウド サービスは、ロール インスタンスの数を減らすことによって規模が縮小されます。プレビュー管理ポータルでは、サービス ロールの規模を設定するときに、リンクされた SQL データベースのエディションと最大データベース サイズを変更することで、リンクされた SQL データベース インスタンスの規模を設定することもできます。
 
-- **Azure Service Level Agreement (SLA):** The Azure Compute SLA guarantees that, when you deploy two or more role instances for every role, access to your cloud service will be maintained at least 99.95 percent of the time. Also, detection and corrective action will be initiated 99.9 percent of the time when a role instance's process is not running. For more information, see [Service Level Agreements] [SLA].
+- **Azure サービス レベル アグリーメント (SLA)**: Azure コンピューティング SLA では、各ロール用に複数のインスタンスを展開している場合、クラウド サービスへのアクセスが 99.95% 以上の時間、維持されることが保証されます。また、ロール インスタンスのプロセスが実行されていないときに、その検出作業と是正措置が開始されることが 99.9% の時間、保証されます。詳細については、「[サービス レベル アグリーメント][SLA]」を参照してください。
 
-[HTMonitorCloudServices]:https://www.windowsazure.com/en-us/manage/services/cloud-services/how-to-monitor-a-cloud-service/
-[SLA]: https://www.windowsazure.com/en-us/support/legal/sla/
+[HTMonitorCloudServicesm]:https://www.windowsazure.com/ja-jp/manage/services/cloud-services/how-to-monitor-a-cloud-service/
+[SLA]: https://www.windowsazure.com/ja-jp/support/legal/sla/
+

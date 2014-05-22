@@ -1,6 +1,6 @@
 
 
-1. Open the project file default.js and in the **app.OnActivated** method overload, replace the last call to the **refreshTodoItems** method with the following code: 
+1. default.js プロジェクト ファイルを開き、**app.OnActivated** メソッド オーバーロード内で、**refreshTodoItems** メソッドに対する最後の呼び出しを次のコードで置き換えます。
 	
         var userId = null;
 
@@ -34,10 +34,12 @@
 
         authenticate();
 
-    This creates a member variable for storing the current user and a method to handle the authentication process. The user is authenticated by using a Facebook login. If you are using an identity provider other than Facebook, change the value passed to the <strong>login</strong> method above to one of the following: _microsoftaccount_, _twitter_, or _google_.
+    これにより、現在のユーザーを格納するためのメンバー変数と認証プロセスを処理するためのメソッドが作成されます。ユーザーは、Facebook ログインを使用して認証されます。Facebook 以外の ID プロバイダーを使用している場合は、上の <strong>login</strong> メソッドに渡す値を _microsoftaccount_、_twitter_、_google_ のいずれかに変更します。
 
-    >[WACOM.NOTE]If you registered your Windows Store app package information with Mobile Services, you should call the <a href="http://go.microsoft.com/fwlink/p/?LinkId=322050" target="_blank">login</a> method by supplying a value of <strong>true</strong> for the <em>useSingleSignOn</em> parameter. If you do not do this, your users will still be presented with a login prompt every time that the login method is called.
+    >[WACOM.NOTE]Windows ストア アプリ パッケージ情報をモバイル サービスに既に登録している場合は、<em>useSingleSignOn</em> パラメーターに値 <strong>true</strong> を指定して <a href="http://go.microsoft.com/fwlink/p/?LinkId=322050" target="_blank">login</a> メソッドを呼び出す必要があります。この操作を行わない場合、login メソッドが呼び出されるたびに、ユーザーにログイン プロンプトが表示されます。
 
-9. Press the F5 key to run the app and sign into the app with your chosen identity provider. 
+9. F5 キーを押してアプリケーションを実行し、選択した ID プロバイダーでアプリケーションにサインインします。
 
-   	When you are successfully logged-in, the app should run without errors, and you should be able to query Mobile Services and make updates to data.
+   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
+
+

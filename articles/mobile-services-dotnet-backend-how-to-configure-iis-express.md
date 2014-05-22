@@ -1,10 +1,11 @@
-<properties pageTitle="Configure IIS Express for local testing of Mobile Service" metaKeywords="Azure Mobile Services, .NET Backend, IIS Express" description="Learn how to configure IIS Express to allow connections to a local mobile service project for testing." authors="glenga" title="Configure the local web server to allow connections to a local mobile service" />
+<properties pageTitle="モバイル サービスのローカル テスト向けの IIS Express の構成" metaKeywords="Azure モバイル サービス, .NET バックエンド, IIS Express" description="テスト目的でローカル モバイル サービス プロジェクトに接続できるように IIS Express を構成する方法について説明します。" authors="glenga" title="ローカル モバイル サービスへの接続を可能にするローカル Web サーバーの構成" />
 
-# Configure the local web server to allow connections to a local mobile service 
+# ローカル モバイル サービスへの接続を可能にするローカル Web サーバーの構成
 
-Azure Mobile Services enables you create your mobile service in Visual Studio using one of the supported .NET languages and then publish it to Azure. One of the major benefits of using a .NET backend for your mobile service is the ability to run, test, and debug the mobile service on your local computer or virtual machine before publishing it to Azure. 
+Azure モバイル サービスを利用すると、サポートされている .NET 言語の 1 つを使用して Visual Studio で独自のモバイル サービスを作成して、Azure に発行することができます。モバイル サービスで .NET バックエンドを使用する大きな利点の 1 つは、Azure に発行する前に、ローカル コンピューターまたは仮想マシン上でモバイル サービスの実行、テスト、デバッグが可能になることです。
 
-To be able to test a mobile service locally with clients running on an emulator, virtual machine or on a separate workstation, you have to configure the local Web server and host computer to allow connections to the workstation's IP address and port. This topic shows you how to configure IIS Express to enable connections to your locally hosted mobile service. 
+エミュレーター、仮想マシン、または別のコンピューター上で実行されているクライアントを使用してモバイル サービスをローカルにテストするには、コンピューターの IP アドレスとポートに接続できるようにローカル Web サーバーとホスト コンピューターを構成する必要があります。このトピックでは、IIS Express を構成して、ローカルにホストされたモバイル サービスへの接続を可能にする方法を示します。
 
 [WACOM.INCLUDE [mobile-services-how-to-configure-iis-express](../includes/mobile-services-how-to-configure-iis-express.md)] 
+
 

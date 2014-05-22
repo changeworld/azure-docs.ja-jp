@@ -1,27 +1,28 @@
-<properties umbracoNaviHide="0" pageTitle="How To Configure Cloud Services" metaKeywords="Azure cloud services, cloud service, configure cloud service" description="Learn how to configure Azure cloud services." linkid="manage-windows-how-to-guide-storage-accounts" urlDisplayName="How to: storage accounts" headerExpose="" footerExpose="" disqusComments="1" title="Sign up for Azure as an organization" authors="" />
+<properties umbracoNaviHide="0" pageTitle="クラウド サービスの構成方法" metaKeywords="Azure クラウド サービス, クラウド サービス, 構成 クラウド サービス" description="Azure のクラウド サービスの構成方法について説明します。" linkid="manage-windows-how-to-guide-storage-accounts" urlDisplayName="方法: ストレージ アカウント" headerExpose="" footerExpose="" disqusComments="1" title="Azure への組織としてのサインアップ" authors="" />
 
 
 
-#Sign up for Azure as an organization
+#Azure への組織としてのサインアップ
 
 [WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
 
-Until recently, you could only sign up for a new Azure subscription using your Microsoft account (Windows Live ID). Azure now supports using either of the following two account methods to sign up:
+最近まで、新しい Azure サブスクリプションにサインアップするには、必ず Microsoft アカウント (Windows Live ID) を使用する必要がありました。現在、Azure では、次に示す 2 つのアカウントのいずれかを使用してサインアップすることができます。
 
-* **Microsoft accounts** (created by you for personal use) - Provide access to all consumer-oriented Microsoft products and cloud services, such as Outlook (Hotmail), Messenger, SkyDrive, MSN, Xbox LIVE, or Office Live. Signing up for Outlook automatically creates a Microsoft account with an @Outlook.com address. Once created, a Microsoft account can be used to access consumer-related Microsoft cloud services and/or Azure. [Learn more](http://windows.microsoft.com/en-US/windows-live/sign-in-what-is-microsoft-account)
+* **Microsoft アカウント** (個人ユーザー向け) - Outlook (Hotmail)、Messenger、SkyDrive、MSN、Xbox LIVE、Office Live など、すべてのコンシューマー向け Microsoft 製品およびクラウド サービスへのアクセスを可能にします。Outlook にサインアップすると、@Outlook.com アドレスの Microsoft アカウントが自動的に作成されます。一度作成されら、その Microsoft アカウントを使用して、コンシューマー関連の Microsoft クラウド サービスや Azure にアクセスできます。[詳細情報](http://windows.microsoft.com/ja-jp/windows-live/sign-in-what-is-microsoft-account)
 
-* **Organizational accounts** (issued by an admin for business/academic use) - Provide access to all small, middle and enterprise business-level Microsoft cloud services, such as Azure, Windows Intune, or Office 365. When you sign up to either one of these services as an organization, a cloud based tenant is automatically provisioned in Azure Active Directory to represent your organization. [Learn more](http://technet.microsoft.com/en-us/library/jj573650) 
+* **組織アカウント** (ビジネス/教育機関用に管理者が発行) - あらゆるレベルのビジネスを対象とした、Azure、Windows Intune、Office 365 など、すべての中小およびエンタープライズ ビジネス レベルの Microsoft クラウド サービスに対するアクセスを可能にします。これらのサービスのいずれかに組織としてサインアップすると、クラウド ベースのテナントが、Azure の Active Directory で組織を表すように自動的にプロビジョニングされます。[詳細情報](http://technet.microsoft.com/ja-jp/library/jj573650)
 
-	Once this tenant has been created, an admin can then issue organizational accounts to each of its employees/students and assign licenses to those accounts based on which cloud service subscriptions they need access to, such as Azure. 
+	このテナントが作成されたら、管理者が各従業員/学生に組織アカウントを発行し、それぞれがアクセスする必要があるクラウド サービス (Azure など) のサブスクリプションに基づいて各アカウントにライセンスを付与できます。
 
-	*Want to sign up for Azure as an organization?* **Sign up now**
+	*組織として Azure にサインアップする必要がある場合は、***今すぐサインアップ**
 
-<h2>What is Azure Active Directory?</h2>
+<h2>Azure の Active Directory とは</h2>
 
-In much the same way that Active Directory is a service made available to customers through the Windows Server operating system to manage their on-premises directory, Azure Active Directory (Azure AD) is a service that is made available through Azure so that you can manage your organization’s cloud directory. [Learn more](http://technet.microsoft.com/en-us/library/hh967619)
+Active Directory サービスは、顧客が Windows Server オペレーティング システムを介して利用し、それぞれの内部設置型ディレクトリを管理します。Azure の Active Directory (Azure AD) サービスもしくみはこれとほぼ同じです。つまり、Azure を介して利用し、組織のクラウド ディレクトリを管理できます。[詳細情報](http://technet.microsoft.com/ja-jp/library/hh967619)
 
-Because it is your organization’s cloud directory, you decide who your users are, what information to keep in the cloud, who can use the information or manage it, and what applications or services are allowed to access that information. When you use Azure AD, it is Microsoft’s responsibility to keep Active Directory running in the cloud with high scale, high availability, and integrated disaster recovery, while fully respecting your requirements for the privacy and security of your organization’s information.
+Active Directory は組織のクラウド ディレクトリであるため、そのディレクトリのユーザー、クラウドに保存する情報、その情報の使用者または管理者、およびその情報にアクセスできるようにするアプリケーションまたはサービスを決定します。Azure AD を使用するときに、高い拡張性と可用性、および統合障害復旧を備えたクラウドで Active Directory を実行し続けながら、組織の情報のプライバシーおよびセキュリティに関する要件に十分に対応できるようにすることが Microsoft の務めです。
 
-<h3>Integration with Active Directory on-premises</h3>
+<h3>内部設置型 Active Directory との統合</h3>
 
-If your organization already uses Active Directory on-premises, you can use Azure AD’s directory integration capabilities, such as directory sync and single sign-on, to further extend the reach of your existing on-premises identities into the cloud for an improved admin and end user experience. [Learn more](http://technet.microsoft.com/en-us/library/jj573653)
+組織が既に内部設置型 Active Directory を使用している場合は、ディレクトリ同期、シングル サインオンなどの Azure AD のディレクトリ統合機能を使用し、既存の内部設置型の ID をクラウドに拡張して、管理およびエンド ユーザー エクスペリエンスを強化できます。[詳細情報](http://technet.microsoft.com/ja-jp/library/jj573653)
+

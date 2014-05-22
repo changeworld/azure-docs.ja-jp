@@ -1,4 +1,4 @@
-<properties linkid="dev-net-how-to-sql-azure" urlDisplayName="SQL Database" pageTitle="How to use SQL Database (.NET) - Azure feature guide" metaKeywords="Get started SQL Azure, Getting started SQL Azure, SQL Azure database connection, SQL Azure ADO.NET, SQL Azure ODBC, SQL Azure EntityClient" description="Get started with SQL Database. Learn how to create a SQL Database instance and connect to it using ADO.NET, ODBC, and EntityClient Provider." metaCanonical="" services="sql-database" documentationCenter=".NET" title="How to use Azure SQL Database in .NET applications" authors="" solutions="" manager="" editor="" />
+<properties linkid="dev-net-how-to-sql-azure" urlDisplayName="SQL データベース" pageTitle="SQL データベースの使用方法 (.NET) - Azure の機能ガイド" metaKeywords="SQL Azure の使用, SQL Azure の概要, SQL Azure データベース接続, SQL Azure ADO.NET, SQL Azure ODBC, SQL Azure EntityClient" description="SQL データベースを使ってみる: SQL データベース インスタンスの作成方法および ADO.NET、ODBC、EntityClient プロバイダーを使用した接続方法について説明します。" metaCanonical="" services="sql-database" documentationCenter=".NET" title=".NET アプリケーションで Azure SQL データベースを使用する方法" authors="" solutions="" manager="" editor="" />
 
 
 
@@ -6,142 +6,127 @@
 
 
 
-# How to use Azure SQL Database in .NET applications
+# .NET アプリケーションで Azure SQL データベースを使用する方法
 
-This guide shows you how to create a logical server and database instance on Azure SQL Database and connect to
-the database using the following .NET Framework data provider technologies:
-ADO.NET, ODBC, and EntityClient Provider.
+このガイドでは、Azure SQL データベースに論理サーバーとデータベース インスタンスを作成する方法、および ADO.NET、ODBC、EntityClient プロバイダーなどの .NET Framework データ プロバイダー テクノロジを使用してこのデータベースに接続する方法について説明します。
 
 
-<h2><a name="Whatis"></a>What is SQL Database</h2>
+<h2><a name="Whatis"></a>SQL データベースとは</h2>
 
-SQL Database provides a relational database management system for Azure and is based on SQL Server technology. With a SQL Database instance, you can easily provision and deploy relational database solutions to the cloud, and take advantage of a distributed data center that provides enterprise-class availability, scalability, and security with the benefits of built-in data protection and self-healing.
+SQL データベースは、Azure 用のリレーショナル データベース管理システムを提供し、SQL Server テクノロジを基盤としています。SQL データベース インスタンスを使用すると、リレーショナル データベース ソリューションを簡単に準備してクラウドにデプロイすることができ、分散したデータ センターを活用して、組み込みのデータ保護と自己復旧機能のメリットによるエンタープライズ クラスの可用性、拡張性、およびセキュリティを確保できます。
 
-## Table of Contents
+## 目次
 
-- [Sign in to Azure](#PreReq1)
-- [Create and Configure SQL Database](#PreReq2)
-- [Connect to SQL Database](#connect-db) 
-- [Connect Using ADO.NET](#using-sql-server)
-- [Connect Using ODBC](#using-ODBC)
-- [Connect Using EntityClient Provider](#using-entity)
-- [Next Steps](#next-steps)
+- [Azure へのサインイン](#PreReq1)
+- [SQL データベースの作成と構成](#PreReq2)
+- [SQL データベースに接続する](#connect-db)
+- [ADO.NET を使用した接続](#using-sql-server)
+- [ODBC を使用した接続](#using-ODBC)
+- [EntityClient プロバイダーを使用した接続](#using-entity)
+- [次のステップ](#next-steps)
 
-<h2><a name="PreReq1"></a>Sign in to Azure</h2>
+<h2><a name="PreReq1"></a>Azure へのサインイン</h2>
 
-SQL Database provides relational data storage, access, and management services on Azure. To use it, you'll need an Azure subscription.
+SQL データベースは、Azure におけるリレーショナル データのストレージ サービス、アクセス サービス、および管理サービスを提供します。これを使用するには、Azure サブスクリプションが必要です。
 
-1. Open a web browser, and browse to [http://www.windowsazure.com](http://www.windowsazure.com). To get started with a free account, click free trial in the upper right corner and follow the steps.
+1. Web ブラウザーを開いて、[http://www.windowsazure.com](http://www.windowsazure.com) にアクセスします。無料アカウントを取得するには、右上にある [無料評価版] をクリックして、表示される手順に従います。
 
-2. Your account is now created. You are ready to get started.
+2. アカウントが作成されました。これで使用開始する準備が整いました。
 
 
-<h2><a name="PreReq2"></a><span class="short-header">Create and configure SQL Database</span></h2>
+<h2><a name="PreReq2"></a><span class="short-header">SQL データベースの作成と構成</span></h2>
 
-Next, you'll create and configure a database and server. In the Azure Management Portal, revised workflows let you create the database first, and follow up with server provisioning. 
+次に、データベースとサーバーを作成して構成します。Azure 管理ポータルで、改訂されたワークフローに従ってまずデータベースを作成し、次にサーバー プロビジョニングを行います。
 
-<h3 name="createsrvr">Create a database instance and logical server</h3>
+<h3 name="createsrvr">データベース インスタンスと論理サーバーの作成</h3>
 
-1. Sign in to the [Azure Management Portal][].
+1. [Azure 管理ポータル][]にサインインします。
 
-2. Click **+NEW** at the bottom of the page.
+2. ページの下部にある **[+新規]** をクリックします。
 
-3. Click **Data Services**.
+3. **[データ サービス]** をクリックします。
 
-4. Click **SQL Database**.
+4. **[SQL データベース]** をクリックします。
 
-5. Click **Custom Create**. 
+5. **[カスタム作成]** をクリックします。
 
-6. In Name, enter a database name.
+6. [名前] で、データベース名を入力します。
 
-7. Choose an edition, maximum size, and collation. For the purposes of this guide, you can use the default values. 
+7. エディション、最大サイズ、および照合順序を選択します。このガイドでは、既定値を使用します。
 
-	SQL Database provides two database editions. Web Edition grows up to a size of 5 GB. Business Edition grows up to a size of 50 GB.
+	SQL データベースには 2 つのデータベース エディションが用意されています。Web Edition は、最大 5 GB までのサイズに対応します。Business Edition は、最大 50 GB までのサイズに対応します。
 
-	The MAXSIZE is specified when the database is first created and can
-later be changed using ALTER DATABASE. MAXSIZE provides the ability to
-limit the size of the database.
+	データベースを最初に作成するときに MAXSIZE を指定します。この値は、後で ALTER DATABASE を使用して変更できます。MAXSIZE は、データベースのサイズを制限する機能を提供します。
 
-	For each SQL database created on Azure, there are actually three
-replicas of that database. This is done to ensure high availability.
-Failover is transparent and part of the service. The [Service Level
-Agreement][] provides 99.9% uptime for SQL Database.
+	実際には、Azure 上に作成された SQL データベース 1 つにつき、3 つのレプリカが存在します。これは、高可用性を確保するためです。
+フェールオーバーは透過的な機能であり、サービスの一部です。[サービス レベル アグリーメント][]では、SQL データベースの 99.9% のアップタイムが約束されます。
 
-8. In Server, select **New SQL Database Server**. 
+8. [サーバー] で、**[新しい SQL データベース サーバー]** を選択します。
 
-9. Click the arrow to go on to the next page.
+9. 矢印をクリックして、次のページに進みます。
 
-10. In Server Settings, enter a SQL Server authentication login name.
+10. [サーバーの設定] で、SQL Server 認証のログイン名を入力します。
 
-	SQL Database uses SQL Authentication over an encrypted connection. A new SQL Server authentication login assigned to the sysadmin fixed server role will be created using the name you provide. 
+	SQL データベースでは、暗号化された接続を経由して SQL 認証を使用します。sysadmin 固定のサーバー ロールに割り当てられた新しい SQL Server 認証のログインが、入力した名前を使用して作成されます。
 
-	The login cannot be an email address, Windows user account, or a Windows Live ID. Neither Claims nor Windows authentication is supported on SQL Database.
+	ログインには、電子メール アドレス、Windows ユーザー アカウント、または Windows Live ID は使用できません。クレーム認証と Windows 認証のどちらも SQL データベースではサポートされません。
 
-11. Provide a strong password that is over eight characters, using a combination of upper and lower case values, and a number or symbol.
+11. 大文字、小文字、および数字か記号を組み合わせた 9 文字以上の強力なパスワードを指定します。
 
-12. Choose a region. Region determines the geographical location of the server. Regions cannot be easily switched, so choose one that makes sense for this server. Choose a location that is closest to you. Keeping your Azure application and database in the same region saves you on egress bandwidth cost and data latency.
+12. リージョンを選択します。リージョンによって、サーバーのジオ (主要地域)が決まります。リージョンは簡単に切り替えることができないので、このサーバーに最適なリージョンを選択してください。また、最も近い場所を選択してください。Azure アプリケーションとデータベースを同じリージョンに置くことで、送信帯域幅コストおよびデータ遅延を削減できます。
 
-13. Be sure to keep the **Allow Azure Services to access the server** option selected so that you can connect to this database using the Management Portal for SQL Database, storage services, and other services on Azure. 
+13. **[Azure サービスにサーバーへのアクセスを許可します]** オプションを選択したままにしてください。そうすれば、SQL データベース用の管理ポータル、ストレージ サービス、Azure のその他のサービスを使用してこのデータベースに接続できます。
 
-14. Click the checkmark at the bottom of the page when you are finished.
+14.  終了したら、ページの下部にあるチェックマークをクリックします。
 
-Notice that you did not specify a server name. SQL Database auto-generates the server name to ensure there are no duplicate DNS entries. The server name is a ten-character alphanumeric string. You cannot change the name of your SQL Database server.
+サーバー名を指定しなかったことに注意してください。SQL データベースでは、DNS エントリが重複しないようにサーバー名は自動的に生成されます。サーバー名は、10 文字の英数字文字列です。SQL データベース サーバーの名前は変更できません。
 
-After the database is created, click on it to open its dashboard. The dashboard provides connection strings that you can copy and use in application code. It also shows the management URL that you'll need to specify if you are connecting to the database from Management Studio or other administrative tool.
+データベースを作成したら、クリックしてそのダッシュボードを開きます。ダッシュボードに表示される接続文字列をコピーして、アプリケーション コードで使用できます。Management Studio やその他の管理ツールからデータベースに接続する場合に指定する必要がある管理 URL も表示されます。
 
 
 ![image](./media/sql-database-dotnet-how-to-use/SQLDbDashboard.PNG)
 
 
-In the next step, you will configure the firewall so that connections from applications running on your network are allowed access.
+次の手順では、ネットワークで実行中のアプリケーションからの接続によるアクセスが許可されるようにファイアウォールを構成します。
 
-<h3 name="configFWLogical">Configure the firewall for the logical server</h3>
+<h3 name="configFWLogical">論理サーバーのファイアウォールの構成</h3>
 
-1. Click **SQL Databases**, click **Servers** at the top of the page, and then click on the server you just created.
+1. **[SQL データベース]** をクリックし、ページの上部にある **[サーバー]** をクリックして、作成したサーバーをクリックします。
 
 	![Image2](./media/sql-database-dotnet-how-to-use/SQLDBFirewall.PNG)
 
-2. Click **Configure**. 
+2. **[構成]** をクリックします。
 
-3. Copy the current client IP address. If you are connecting from a network, this is the IP address that your  router or proxy server is listening on. SQL Database detects the IP address used by the current connection so that you can create a firewall rule to accept connection requests from this device. 
+3. 現在のクライアント IP アドレスをコピーします。ネットワークから接続している場合、これは使用するルーターまたはプロキシ サーバーがリッスンしている IP アドレスです。SQL データベースが現在の接続で使用されている IP アドレスを検出すると、このデバイスからの接続要求を受け入れるためのファイアウォール ルールを作成できます。
 
-4. Paste the IP address into both the START IP ADDRESS and END IP ADDRESS to establish the range addresses that are allowed to access the server. Later, if you encounter connection errors indicating that the range is too narrow, you can edit this rule to widen the range.
+4. IP アドレスを START IP ADDRESS と END IP ADDRESS の両方に貼り付けて、サーバーへのアクセスが許可されるアドレスの範囲を確立します。その後、この範囲が狭すぎることを示す接続エラーが発生した場合は、このルールを編集して範囲を広げることができます。
 
-	If client computers use dynamically assigned IP addresses, you must specify a range that is broad enough to include IP addresses assigned to computers in your network. Start with a narrow range, and then expand it only if you need to.
+	動的に割り当てられた IP アドレスをクライアント コンピューターで使用する場合は、ネットワーク上でコンピューターに割り当てられた IP アドレスを含む範囲を指定する必要があります。狭い範囲から始めて、必要になった場合にのみ範囲を広げます。
 
-5. Enter a name for the firewall rule, such as the name of your computer or company.
+5. 使用するコンピューターや会社の名前など、ファイアウォール ルールの名前を入力します。
 
-6. Click the checkmark next to the rule to save it.
+6. ルールの横にあるチェックマークをクリックして、ルールを保存します。
 
 	![Image3](./media/sql-database-dotnet-how-to-use/SQLDBIPRange.PNG)
 
-7. Click **Save** at the bottom of the page to complete the step. If you do not see **Save**, refresh the browser page.
+7. ページの下部にある **[保存]** をクリックして、手順を完了します。**[保存]** が表示されない場合は、ブラウザーのページを更新します。
 
-You now have a database instance, logical server, a firewall rule that allows inbound connections from your IP address, and an administrator login. You are now ready to connect to the database programmatically.
+これで、データベース インスタンス、論理サーバー、IP アドレスからの受信接続を許可するファイアウォール ルール、および管理者ログインが用意できました。また、プログラムでデータベースに接続する準備ができました。
 
 
-<h2><a name="Connect-DB"></a><span class="short-header">Connect to SQL Database</span></h2>
+<h2><a name="Connect-DB"></a><span class="short-header">SQL データベースへの接続</span></h2>
 
-This section shows how to connect to SQL Database instance using different
-.NET Framework data providers.
+このセクションでは、さまざまに異なる .NET Framework データ プロバイダーを使用して SQL データベース インスタンスに接続する方法について説明します。
 
-If you choose to use Visual Studio and your configuration doesn't
-include an Azure web application as a front-end, there are no
-additional tools or SDKs needed to be installed on the development
-computer. You can just start developing your application.
+Visual Studio を使用することを選択した場合、構成に Azure Web アプリケーションがフロントエンドとして含まれていないときは、開発コンピューターに追加のツールや SDK をインストールする必要はありません。すぐにアプリケーションの開発を開始できます。
 
-You can use all of the same designer tools in Visual Studio to work with
-SQL Database as you can to work with SQL Server. The Server Explorer allows
-you to view (but not edit) database objects. The Visual Studio Entity
-Data Model Designer is fully functional and you can use it to create
-models against SQL Database for working with Entity Framework.
+Visual Studio では SQL Server で使用するものと同じデザイナー ツールをすべて使用して、SQL データベースを操作できます。サーバー エクスプローラーでは、データベース オブジェクトを表示できますが、編集はできません。Visual Studio Entity Data Model デザイナーのすべての機能を使用して、SQL データベースに対するモデルを作成し、Entity Framework を利用することができます。
 
-### <a name="using-sql-server"></a>Using .NET Framework Data Provider for SQL Server
+### <a name="using-sql-server"></a>SQL Server 用の .NET Framework データ プロバイダーの使用
 
-The **System.Data.SqlClient** namespace is the.NET Framework Data
-Provider for SQL Server.
+**System.Data.SqlClient** 名前空間は、SQL Server 用の .NET Framework データ プロバイダーです。
 
-The standard connection string looks like this:
+標準の接続文字列は、次のようになります。
 
     Server=tcp:.database.windows.net;
     Database=;
@@ -150,8 +135,7 @@ The standard connection string looks like this:
     Trusted_Connection=False;
     Encrypt=True;
 
-You can use the **SQLConnectionStringBuilder** class to build a
-connection string as shown in the following code sample:
+**SQLConnectionStringBuilder** クラスを使用すると、次のコード例に示すような接続文字列を作成できます。
 
     SqlConnectionStringBuilder csBuilder;
     csBuilder = new SqlConnectionStringBuilder();
@@ -162,18 +146,15 @@ connection string as shown in the following code sample:
     csBuilder.UserID = MyAdmin;
     csBuilder.Password = pass@word1;
 
-If the elements of a connection string are known ahead of time, they can
-be stored in a configuration file and retrieved at run time to construct
-a connection string. Here is a sample connection string in configuration
-file:
+接続文字列の要素が事前にわかっている場合は、それらを構成ファイルに格納しておき、実行時に取得して、接続文字列を作成することができます。構成ファイル内の接続文字列の例を次に示します。
 
     <connectionStrings>
       <add name="ConnectionString" 
            connectionString ="Server=tcp:xxxxxxxxxx.database.windows.net;Database=testDB;User ID=MyAdmin@xxxxxxxxxx;Password=pass@word1;Trusted_Connection=False;Encrypt=True;" />
     </connectionStrings>
 
-To retrieve the connection string in a configuration file, you use the
-**ConfigurationManager** class:
+構成ファイル内の接続文字列を取得するには、
+**ConfigurationManager** クラスを使用します。
 
     SqlConnectionStringBuilder csBuilder;
     csBuilder = new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
@@ -181,10 +162,9 @@ To retrieve the connection string in a configuration file, you use the
     SqlConnection conn = new SqlConnection(csBuilder.ToString());
     conn.Open();
 
-### <a name="using-ODBC"></a>Using .NET Framework Data Provider for ODBC
+### <a name="using-ODBC"></a>ODBC 用の .NET Framework データ プロバイダーの使用
 
-The **System.Data.Odbc** namespace is the.NET Framework Data Provider
-for ODBC. The following is a sample ODBC connection string:
+**System.Data.Odbc** 名前空間は、ODBC 用の .NET Framework データ プロバイダーです。ODBC 接続文字列の例を次に示します。
 
     Driver={SQL Server Native Client 10.0};
     Server=tcp:.database.windows.net;
@@ -193,8 +173,7 @@ for ODBC. The following is a sample ODBC connection string:
     Pwd=;
     Encrypt=yes;
 
-The **OdbcConnection** class represents an open connection to a data
-source. Here is a code sample on how to open a connection:
+**OdbcConnection** クラスは、データ ソースへの開かれた接続を表します。接続を開く方法のコード例を次に示します。
 
     string cs = "Driver={SQL Server Native Client 10.0};" +
                 "Server=tcp:xxxxxxxxxx.database.windows.net;" +
@@ -206,59 +185,48 @@ source. Here is a code sample on how to open a connection:
     OdbcConnection conn = new OdbcConnection(cs);
     conn.Open();
 
-If you want to build the connection string on the runtime, you can use
-the **OdbcConnectionStringBuilder** class.
+ランタイムで接続文字列を作成する必要がある場合は、**OdbcConnectionStringBuilder** クラスを使用できます。
 
-### <a name="using-entity"></a>Using EntityClient Provider
+### <a name="using-entity"></a>EntityClient プロバイダーの使用
 
-The **System.Data.EntityClient** namespace is the .NET Framework Data
-Provider for the Entity Framework.
+**System.Data.EntityClient** 名前空間は、Entity Framework 用の .NET Framework データ プロバイダーです。
 
-The Entity Framework enables developers to create data access
-applications by programming against a conceptual application model
-instead of programming directly against a relational storage schema. The
-Entity Framework builds on top of storage-specific ADO.NET data
-providers by providing an **EntityConnection** to an underlying data
-provider and relational database.
+Entity Framework を使用することで、開発者は、リレーショナル ストレージ スキーマに対する直接のプログラミングではなく、概念的なアプリケーション モデルに対するプログラミングによってデータ アクセス アプリケーションを作成できます。Entity Framework は、基になるデータ プロバイダーおよびリレーショナル データベースに **EntityConnection** を提供することにより、ストレージ固有の ADO.NET データ プロバイダーに基づいて構築されます。
 
-To construct an **EntityConnection** object, you have to reference a set
-of metadata that contains the necessary models and mapping, and also a
-storage-specific data provider name and connection string. After the
-**EntityConnection** is in place, entities can be accessed through the
-classes generated from the conceptual model.
+**EntityConnection** オブジェクトを構築するには、必要なモデルとマッピング、さらにストレージ固有のデータ プロバイダー名と接続文字列を含んだ一連のメタデータを参照する必要があります。
+**EntityConnection** を確立すると、概念モデルから生成されたクラスを使用してエンティティにアクセスできます。
 
-Here is a connection string sample:
+接続文字列の例を次に示します。
 
     metadata=res://*/SchoolModel.csdl|res://*/SchoolModel.ssdl|res://*/SchoolModel.msl;provider=System.Data.SqlClient;provider connection string="Data Source=xxxxxxxxxx.database.windows.net;Initial Catalog=School;Persist Security Info=True;User ID=MyAdmin;Password=***********"
 
-For more information, see [EntityClient Provider for the Entity
-Framework][].
+詳細については、「[Entity Framework 用の EntityClient プロバイダー][]」を参照してください。
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>次のステップ
 
-Now that you have learned the basics of connecting to SQL Database, see the
-following resources to learn more about SQL Database.
+これで、SQL データベースへの接続の基本を学習できました。SQL データベースについてさらに詳細な情報が必要な場合は、次のリソースを参照してください。
 
--   [Development: How-to Topics (SQL Database)][]
--   [SQL Database][]
+-   [開発作業の方法に関するトピック (SQL データベース)][]
+-   [SQL データベース][]
 
 
-  [What is SQL Database]: #WhatIs
-  [Sign in to Azure]: #PreReq1
-  [Create and Configure SQL Database]: #PreReq2
-  [Connect to SQL Database]: #connect-db
-  [Connect Using ADO.NET]: #using-sql-server
-  [Connect Using ODBC]: #using-ODBC
-  [Connect Using EntityClient Provider]: #using-entity
-  [Next Steps]: #next-steps
-  [Azure Free Trial]: {localLink:2187} "Free Trial"
-  [Azure Management Portal]: http://manage.windowsazure.com
-  [How to Create a SQL Database Server]: http://social.technet.microsoft.com/wiki/contents/articles/how-to-create-a-sql-azure-server.aspx
-  [Management Portal for SQL Database]: http://msdn.microsoft.com/en-us/library/windowsazure/gg442309.aspx
-  [SQL Database Firewall]: http://social.technet.microsoft.com/wiki/contents/articles/sql-azure-firewall.aspx
-  [Tools and Utilities Support (SQL Database)]: http://msdn.microsoft.com/en-us/library/windowsazure/ee621784.aspx
-  [How to Create a SQL Database on Azure]: http://social.technet.microsoft.com/wiki/contents/articles/how-to-create-a-sql-azure-database.aspx
-  [Service Level Agreement]: {localLink:1132} "SLA"
-  [EntityClient Provider for the Entity Framework]: http://msdn.microsoft.com/en-us/library/bb738561.aspx
-  [Development: How-to Topics (SQL Database)]: http://msdn.microsoft.com/en-us/library/windowsazure/ee621787.aspx
-  [SQL Database]: http://msdn.microsoft.com/en-us/library/windowsazure/ee336279.aspx
+  [SQL データベースとは]: #WhatIs
+  [Azure へのサインイン]: #PreReq1
+  [SQL データベースの作成と構成]: #PreReq2
+  [SQL データベースへの接続]: #connect-db
+  [ADO.NET を使用した接続]: #using-sql-server
+  [ODBC を使用した接続]: #using-ODBC
+  [EntityClient プロバイダーを使用した接続]: #using-entity
+  [次のステップ]: #next-steps
+  [Azure 無料評価版]: {localLink:2187} "Free Trial"
+  [Azure 管理ポータル]: http://manage.windowsazure.com
+  [方法: SQL データベース サーバーを作成する]: http://social.technet.microsoft.com/wiki/contents/articles/how-to-create-a-sql-azure-server.aspx
+  [SQL データベースの管理ポータル]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg442309.aspx
+  [SQL データベースのファイアウォール]: http://social.technet.microsoft.com/wiki/contents/articles/sql-azure-firewall.aspx
+  [ツールとユーティリティのサポート (SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee621784.aspx
+  [Azure で SQL データベースを作成する方法]: http://social.technet.microsoft.com/wiki/contents/articles/how-to-create-a-sql-azure-database.aspx
+  [サービス レベル アグリーメント]: {localLink:1132} "SLA"
+  [Entity Framework 用の EntityClient プロバイダー]: http://msdn.microsoft.com/ja-jp/library/bb738561.aspx
+  [開発作業の方法に関するトピック (SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee621787.aspx
+  [SQL データベース]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336279.aspx
+

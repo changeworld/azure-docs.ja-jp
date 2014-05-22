@@ -1,50 +1,51 @@
-<properties linkid="manage-services-hdinsight-howto-monitor-hdinsight" urlDisplayName="Monitor" pageTitle="Monitor HDInsight | Azure" metaKeywords="" description="Learn how to monitor an HDInsight cluster and view Hadoop job history through the Azure management portal." metaCanonical="" services="hdinsight" documentationCenter="" title="How to Monitor HDInsight" authors="jgao" solutions="" manager="paulettm" editor="mollybos" />
+<properties linkid="manage-services-hdinsight-howto-monitor-hdinsight" urlDisplayName="監視" pageTitle="HDInsight の監視 | Azure" metaKeywords="" description="HDInsight クラスターを監視し、Azure 管理ポータルを介して Hadoop ジョブ履歴を表示する方法を説明します。" metaCanonical="" services="hdinsight" documentationCenter="" title="HDInsight を監視する方法" authors="jgao" solutions="" manager="paulettm" editor="mollybos" />
 
 
 
 
-# How to Monitor HDInsight
+#HDInsight を監視する方法
 
-In this topic, you will learn how to monitor an HDInsight cluster.
+このトピックでは、HDInsight クラスターを監視する方法を学習します。
 
-##Table of Contents
+##目次
 
-* [How to: Monitor a HDInsight cluster](#monitorcluster)
-* [How to: View Hadoop job history](#jobhistory)
+* [方法: HDInsight クラスターを監視する](#monitorcluster)
+* [方法: Hadoop ジョブ履歴を表示する](#jobhistory)
 
-##<a id="monitorcluster"></a> How to: Monitor an HDInsight cluster
+##<a id="monitorcluster"></a>方法: HDInsight クラスターを監視する
 
-To monitor the health of an HDInsight cluster and the Hadoop jobs running on the cluster, you can connect to the HDInsight Dashboard, and click the Monitor Cluster tile.
+HDInsight クラスターの状態と HDInsight クラスター上で実行されている Hadoop ジョブを監視するには、HDInsight ダッシュボードに接続して、[クラスターの管理] タイルをクリックします。
 
 ![HDI.TileMonitorCluster][hdi-monitor-cluster-tile]
 
-The Monitor page looks like:
+次のような監視ページが表示されます。
 
 ![HDI.MonitorPage][hdi-monitor-page]
 
 
-On the right, it shows both Namenode and job tracker are up running, and the 4 data nodes are running in the healthy state.
+画面右側に、Namenode とジョブ追跡機能の両方が実行中であること、および 4 つのデータ ノードが正常に実行されていることが示されています。
 
-On the left, it shows the map reduce metrics for the past 30 minutes. You can change the monitor windows to 30 minutes, 1 hour, 3 hours, 12 hours, 1 day, 2 days, 1 week and 2 weeks.
+画面左側には、過去 30 分間の MapReduce 統計データが表示されます。データの監視期間は、30 分、1 時間、3 時間、12 時間、1 日、2 日、1 週間、2 週間から選択できます。
 
-##<a id="jobhistory"></a> How to: View Hadoop job history
-To view Hadoop job history, connect to HDInsight Dashboard, and then click the Job History tile. 
+##<a id="jobhistory"></a>方法: Hadoop ジョブ履歴を表示する
+Hadoop ジョブ履歴を表示するには、HDInsight ダッシュボードに接続して [ジョブ履歴] タイルをクリックします。
 
 ![HDI.TileJobHistory][hdi-job-history-tile]
 
-The tile shows the number of jobs that have been ran; for example, the previous image indicates job history is available for 6 jobs.  The job history page looks like the following:
+このタイルには、これまでに実行されたジョブの数が表示されます。たとえば、前の画像では、6 つのジョブの履歴を参照できることがわかります。次のようなジョブ履歴ページが表示されます。
 
 ![HDI.JobHistoryPage][hdi-job-history-page]
 
 
-## See Also
+##関連項目
 
-* [How to: Administer HDInsight](/en-us/manage/services/hdinsight/howto-administer-hdinsight/)
-* [How to: Deploy an HDInsight Cluster Programmatically](/en-us/manage/services/hdinsight/howto-deploy-cluster/)
-* [How to: Execute Remote Jobs on Your HDInsight Cluster Programmatically](/en-us/manage/services/hdinsight/howto-execute-jobs-programmatically/)
-* [Tutorial: Getting Started with Azure HDInsight](/en-us/manage/services/hdinsight/get-started-hdinsight/)
+* [方法: HDInsight を管理する](/ja-jp/manage/services/hdinsight/howto-administer-hdinsight/)
+* [方法: HDInsight クラスターをプログラムで展開する](/ja-jp/manage/services/hdinsight/howto-deploy-cluster/)
+* [方法: HDInsight クラスターでリモート ジョブをプログラムから実行する](/ja-jp/manage/services/hdinsight/howto-execute-jobs-programmatically/)
+* [チュートリアル: Azure HDInsight の概要](/ja-jp/manage/services/hdinsight/get-started-hdinsight/)
 
 [hdi-monitor-cluster-tile]: ./media/hdinsight-monitor/HDI.TileMonitorCluster.PNG
 [hdi-monitor-page]: ./media/hdinsight-monitor/HDI.MonitorPage.PNG
 [hdi-job-history-tile]: ./media/hdinsight-monitor/HDI.TileJobHistory.PNG
 [hdi-job-history-page]: ./media/hdinsight-monitor/HDI.JobHistoryPage.PNG
+

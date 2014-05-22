@@ -1,109 +1,109 @@
-<properties linkid="web-sites-restore" urlDisplayName="Restore a Microsoft Azure web site" pageTitle="Restore a Microsoft Azure web site" metaKeywords="Azure Web Sites, Restore, restoring" description="Learn how to restore your Azure web sites from backup." metaCanonical="" services="web-sites" documentationCenter="" title="Restore a Microsoft Azure web site" authors="timamm"  solutions="" writer="timamm" manager="paulettm" editor="mollybos"  />
+<properties linkid="web-sites-restore" urlDisplayName="Microsoft Azure の Web サイトの復元" pageTitle="Microsoft Azure の Web サイトの復元" metaKeywords="Azure の Web サイト, 復元, 復旧" description="Azure の web サイトをバックアップから復元する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="Microsoft Azure の Web サイトの復元" authors="timamm"  solutions="" writer="timamm" manager="paulettm" editor="mollybos"  />
 
-#Restore a Microsoft Azure web site
+#Microsoft Azure の Web サイトの復元
 
-This article shows you how to restore a web site that you have previously backed up by using the Azure Web Sites Backup feature. For more information, see [Microsoft Azure Web Sites Backups](http://www.windowsazure.com/en-us/documentation/articles/web-sites-backup/). 
+この記事では、Azure の Web サイトのバックアップ機能を使用して以前にバックアップした Web サイトを復元する方法について説明します。詳細については、[Microsoft Azure の Web サイトのバックアップに関するページ](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-backup/)を参照してください。
 
-The Azure Web Sites Restore feature lets restore your web site on-demand to a previous state, or create a new web site based on one of your original site's backups. Creating a new web site that runs in parallel to the latest version can be useful for A/B testing.
+Azure の Web サイトの復元機能を使用して、オンデマンドで Web サイトを以前の状態に復元すること、または元のサイトのいずれかのバックアップに基づいて新しい Web サイトを作成することができます。最新バージョンと並列で実行する新しい Web サイトを作成すると、A/B テストを実施する場合に役立ちます。
 
-The Restore feature, available on the Backups tab in the Azure Web Sites portal, is available only in Standard mode.
+Azure の Web サイトのポータルで [バックアップ] タブに配置されている復元機能は、標準モードでのみ使用可能です。
 
-##In this article
-- [To Restore an Azure web site from a previously made backup](#PreviousBackup)
-- [To Restore an Azure web site directly from a storage account](#StorageAccount)
-- [Choose Your Web Site Restore Settings and Start the Restore Operation](#RestoreSettings)
-- [View the Operation Logs](#OperationLogs)
+##この記事の内容
+- [以前に作成したバックアップから、Azure の Web サイトを復元するには](#PreviousBackup)
+- [ストレージ アカウントから、Azure の Web サイトを直接復元するには](#StorageAccount)
+- [Web サイト復元設定の選択と復元操作の開始](#RestoreSettings)
+- [操作ログの表示](#OperationLogs)
 
 
 <a name="PreviousBackup"></a>
-##To Restore an Azure web site from a previously made backup
+##以前に作成したバックアップから、Azure の Web サイトを復元するには
 
-1. On the **Backups** tab, click **Restore Now** in the command bar at the bottom of the portal page. The **Restore Now** dialog box appears.
+1. **[バックアップ]** タブで、ポータル ページの下部にあるコマンド バーの **[今すぐ復元]** をクリックします。**[今すぐ復元]** ダイアログ ボックスが表示されます。
 	
-	![Choose backup source][ChooseBackupSource]
+	![バックアップ ソースの選択][ChooseBackupSource]
 	
-2. Under **Choose backup source**, select **Previous Backup for this Web Site**.
-3. Select the date of the backup that you want to restore, and then click the right arrow to continue.
-4. Follow the steps in the [Choose Your Web Site Restore Settings](#RestoreSettings) section later in this article.
+2. **[バックアップ ソースの選択]** で、**[この Web サイトの前のバックアップ]** をクリックします。
+3. 復元するバックアップの日付を選択し、右矢印をクリックして続行します。
+4. この記事の後半に掲載されている「[Web サイト復元設定の選択](#RestoreSettings)」の手順に従います。
 
 <a name="StorageAccount"></a>
-##To Restore an Azure web site directly from a storage account
+##ストレージ アカウントから、Azure の Web サイトを直接復元するには
 
-1. On the **Backups** tab, click **Restore Now** in the command bar at the bottom of the portal page. The **Restore Now** dialog box appears.
+1. **[バックアップ]** タブで、ポータル ページの下部にあるコマンド バーの **[今すぐ復元]** をクリックします。**[今すぐ復元]** ダイアログ ボックスが表示されます。
 	
-	![Choose backup source][ChooseBackupSource]
+	![バックアップ ソースの選択][ChooseBackupSource]
 	
-2. Under **Choose backup source**, select **Storage Account File**. Here you can directly specify the URL for the storage account file, or click the folder icon to navigate to blob storage and specify the backup file. This example chooses the folder icon.
+2. **[バックアップ ソースの選択]** で、**[ストレージ アカウント ファイル]** をクリックします。ここでは、ストレージ アカウント ファイルに対応する URL を直接指定するか、BLOB ストレージに移動するためのフォルダー アイコンをクリックしてバックアップ ファイルを指定します。この例では、フォルダー アイコンをクリックします。
 	
-	![Storage Account File][StorageAccountFile]
+	![ストレージ アカウント ファイル][StorageAccountFile]
 	
-3. Click the folder icon to open the **Browse Cloud Storage** dialog box.
+3. フォルダー アイコンをクリックし、**[クラウド ストレージの参照]** ダイアログ ボックスを開きます。
 	
-	![Browse Cloud Storage][BrowseCloudStorage]
+	![クラウド ストレージの参照][BrowseCloudStorage]
 	
 
-4. Expand the name of the storage account that you want to use, and then select **websitebackups**, which contains your backups.
-5. Select the zip file containing the backup that you want to restore, and then click **Open**.
-6. The Storage account file has been selected and shows in the storage account box. Click the right arrow to continue.
+4. 使用するストレージ アカウントの名前を展開し、バックアップを格納している **websitebackups** を選択します。
+5. 復元するバックアップを格納している zip ファイルを選択し、**[開く]** をクリックします。
+6. ストレージ アカウント ファイルが選択され、[ストレージ アカウント] ボックス内に表示されます。右矢印をクリックして次へ進みます。
 	
-	![Storage Account File Selected][StorageAccountFileSelected]
+	![ストレージ アカウント ファイルが選択された状態][StorageAccountFileSelected]
 	
-7. Continue with the section that follows, [Choose Your Web Site Restore Settings and Start the Restore Operation](#RestoreSettings).
+7. この後に続く「[Web サイト復元設定の選択と復元操作の開始](#RestoreSettings)」セクションに進みます。
 
 <a name="RestoreSettings"></a>
-##Choose Your Web Site Restore Settings and Start the Restore Operation
-1. Under **Choose your web site restore settings**, **Restore To**, select either **Current web site** or **New web site instance**.
+##Web サイト復元設定の選択と復元操作の開始
+1. **[Web サイト復元設定の選択]** で **[復元先]** をクリックし、**[現在の Web サイト]** または **[新しい Web サイト インスタンス]** を選択します。
 	
-	![Choose your web site restore settings][ChooseRestoreSettings]
+	![Web サイト復元設定の選択][ChooseRestoreSettings]
 	
-	If you select **Current web site**, your existing web site will be overwritten by the backup that you selected (destructive restore). All changes you have made to the web site since the time of the chosen backup will be permanently removed, and the restore operation cannot be undone. During the restore operation, your current web site will be temporarily unavailable, and you will be warned to this effect.
+	**[現在の Web サイト]** を選択した場合は、選択したバックアップによって、既存の Web サイトが上書きされます (破壊的復元)。選択したバックアップの時刻より後にこの Web サイトに対して加えたすべて変更は完全に削除され、復元操作を元に戻すことはできません。復元操作中に、現在の Web サイトは一時的に使用不可能になります。この影響に関する警告が表示されます。
 	
-	If you select **New web site instance**, a new web site will be created in the same region with the name that you specify. (By default, the new name is **restored-***oldWebSiteName*.) 
+	**[新しい Web サイト インスタンス]** を選択した場合は、既に指定した名前が存在するのと同じリージョンに、新しい Web サイトが作成されます (既定では、新しいサイトの名前は **restored -***oldWebSiteName* になります)。
 	
-	The site that you restore will contain the same content and configuration that were made in the portal for the original site. It will also include any databases that you choose to include in the next step.
-2. If you want to restore a database along with your web site, under **Included Databases**, select the name of the database server that you want to restore the database to by using the dropdown under **Restore To**. You can also choose to create a new database server to restore to, or choose **Don't Restore** to not restore the database, which is the default. 
+	復元先サイトには、元のサイトと同じコンテンツ、および元のサイトに対応するポータルで実行されたのと同じ構成が格納されます。また、復元先サイトに含めるデータベースを次の手順で選択しますが、それらのデータベースすべても格納されます。
+2. Web サイトと共にデータベースを復元する場合は、**[含まれるデータベース]** で、**[復元先]** の下にあるドロップダウンを使用して、データベースの復元先になるデータベース サーバーの名前を選択します。復元先として使用する新しいデータベース サーバーを作成する方針を選択すること、または既定である **[復元しない]** を使用してデータベースを復元しない方針を選択することができます。
 	
-	After you have chosen the server name, specify the name of the target database for the restore in the **Database Name** box.
+	サーバー名を選択した後、**[データベース名]** ボックスで、復元のターゲット データベースの名前を指定します。
 	
-	If your restore includes one or more databases, you can select **Automatically adjust connection strings** to update your connection strings stored in the backup to point to your new database, or database server, as appropriate. You should verify that all functionality related to databases works as expected after the restore completes.
+	復元に少なくとも 1 つのデータベースが含まれている場合は、**[接続文字列の自動調整]** を選択して、バックアップに保存されている接続文字列を更新し、必要に応じて新しいデータベースまたはデータベース サーバーを指すようにすることができます復元が完了した後、データベースに関連しているすべての機能が期待どおりに動作していることを確認する必要があります。
 	
-	![Choose database server host][ChooseDBServer]
+	![データベース サーバー ホストの選択][ChooseDBServer]
 	
-	> [WACOM.NOTE] You cannot restore a SQL database with the same name to the same SQL Server. You must choose either a different database name or a different SQL Server host to restore the database to. 
+	> [WACOM.NOTE] SQL データベースを、同じデータベース名を使用して、同じ SQL Server に復元することはできません。別のデータベース名を選択するか、データベースの復元先として別の SQL Server ホストを選択する必要があります。
 	
-	> [WACOM.NOTE] You can restore a MySQL database with the same name to the same server, but be aware that this will clear out the existing content stored in the MySQL database.	
+	> [WACOM.NOTE] MySQL データベースを、同じデータベース名を使用して、同じサーバーに復元することは可能です。ただし、その場合は MySQL データベースに格納されている既存のコンテンツが消去されることに注意してください。	
 	
-3. If you choose to restore an existing database, you will need to provide a user name and password. If you choose to restore to a new database, you will need to provide a new database name:
+3. 既存のデータベースを復元する場合は、ユーザー名とパスワードを入力する必要があります。新しいデータベースに復元する場合は、新しいデータベース名を入力する必要があります。
 	
-	![Restore to a new SQL database][RestoreToNewSQLDB]
+	![新しい SQL データベースへの復元][RestoreToNewSQLDB]
 	
-	Click the right arrow to continue.	
-4. If you chose to create a new database, you will need to provide credentials and other initial configuration information for the database in the next dialog. The example here shows a new SQL database. (The options for a new MySQL database are somewhat different.)
+	右矢印をクリックして次へ進みます。	
+4. 新しいデータベースを作成する場合は、次のダイアログ ボックスで、データベースに対応する資格情報とその他の初期構成情報を入力する必要があります。新しい SQL データベースを次の例に示します (新しい MySQL データベースに対応するオプションはある程度異なります)。
 	
-	![New SQL database settings][NewSQLDBConfig]
+	![新しい SQL データベースの設定][NewSQLDBConfig]
 	
-5. Click the check mark to start the restore operation. When it completes, the new web site instance (if that is the restore option you chose) will be visible in the list of web sites in the portal.
+5. チェックマークをクリックして、復元操作を開始します。操作が完了した時点で、ポータル内にある Web サイトの一覧に新しい Web サイト インスタンス (既存ではなく新規サイトの復元オプションを選択した場合) が表示されます。
 	
-	![Restored Contoso web site][RestoredContosoWebSite]
+	![復元された Contoso 社の Web サイト][RestoredContosoWebSite]
 
 <a name="OperationLogs"></a>
-##View the Operation Logs
+##操作ログの表示
 	
-1. To see details about the success or failure of the web site restore operation, go to the web site's Dashboard tab. In the **Quick Glance** section, under **Management Services**, click **Operation Logs**.
+1. Web サイトの復元操作の成功または失敗に関する詳細を表示するには、Web サイトの [ダッシュボード] タブに移動します。**[概要]** セクションの **[管理サービス]** で **[操作ログ]** をクリックします。
 	
-	![Dashboard - Operation Logs Link][DashboardOperationLogsLink]
+	![ダッシュボード - [操作ログ] リンク][DashboardOperationLogsLink]
 	
-2. You are taken to the Management Services portal **Operation Logs** page, where you can see the log for your restore operation in the list of operation logs:
+2. 管理サービス ポータルの **[操作ログ]** ページが表示され、このページで、操作ログの一覧に含まれている復元操作のログを確認することができます。
 	
-	![Management Services Operation Logs page][ManagementServicesOperationLogsList]
+	![管理サービスの [操作ログ] ページ][ManagementServicesOperationLogsList]
 	
-3. To view details about the operation, select the operation in the list, and then click the **Details** button in the command bar.
+3. 操作の詳細を表示するには、一覧でいずれかの操作を選択し、コマンド バーの **[詳細]** ボタンをクリックします。
 	
-	![Details Button][DetailsButton]
+	![[詳細] ボタン][DetailsButton]
 	
-	When you do so, the **Operations Details** window opens and shows you the copiable contents of the log file:
+	この操作を実行すると、**[操作の詳細]** ウィンドウが開き、ログ ファイルの内容がコピー可能な形式で表示されます。
 	
-	![Operation Details][OperationDetails]
+	![操作の詳細][OperationDetails]
 	
 
 <!-- IMAGES -->
@@ -120,3 +120,4 @@ The Restore feature, available on the Backups tab in the Azure Web Sites portal,
 [ManagementServicesOperationLogsList]: ./media/web-sites-restore/11ManagementServicesOperationLogsList.png
 [DetailsButton]: ./media/web-sites-restore/12DetailsButton.png
 [OperationDetails]: ./media/web-sites-restore/13OperationDetails.png
+

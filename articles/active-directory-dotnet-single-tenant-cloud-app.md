@@ -1,70 +1,70 @@
-<properties linkid="" urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Developing Single Tenant Applications with Azure Active Directory" authors="" solutions="" manager="" editor="" />
+<properties linkid="" urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Azure Active Directory によるシングルテナント クラウド アプリケーションの開発" authors="" solutions="" manager="" editor="" />
 
 
 
-# Developing Single Tenant Applications with Azure Active Directory
+# Azure Active Directory によるシングルテナント クラウド アプリケーションの開発
 
-<h2><a name="introduction"></a>Introduction</h2>
+<h2><a name="introduction"></a>はじめに</h2>
 
-This tutorial will show you how to leverage Azure Active Directory to authenticate directory users and read their data from the directory. You will learn how to:
+このチュートリアルでは、Azure Active Directory を活用して、ディレクトリ ユーザーを認証し、ディレクトリからそれらのユーザーのデータを読み取る方法について説明します。学習内容: 
 
-* Provision the web application in a customer's tenant
-* Protect the application using WS-Federation
-* Access the directory using the Graph API
+* 顧客のテナントでの Web アプリケーションのプロビジョニング
+*  WS-Federation を使用したアプリケーションの保護
+* Graph API を使用したディレクトリへのアクセス
 
-<h3>Prerequisites</h3>
-The following development environment prerequisites are required for this walkthrough:
+<h3>前提条件</h3>
+次の開発環境の前提条件はこのチュートリアルで必要になります。
 
 * Visual Studio 2010 SP1
 * Microsoft .NET Framework 4.0
 * [ASP.NET MVC 3]
-* [Windows Identity Foundation 1.0 Runtime]
+* [Windows Identity Foundation 1.0 ランタイム]
 * [Windows Identity Foundation 3.5 SDK]
 * [WCF Data Services for OData V3]
-* Internet Information Services (IIS) 7.5 with SSL enabled
-* Windows PowerShell
-* [Office 365 PowerShell Commandlets]
+* インターネット インフォメーション サービス (IIS) 7.5  (SSL が有効)
+*  Windows PowerShell
+* [Office 365 PowerShell コマンドレット]
 
-<h3>Table of Contents</h3>
-* [Introduction][]
-* [Step 1: Create an ASP.NET MVC Application][]
-* [Step 2: Provision the Application in a Company's Directory Tenant][]
-* [Step 3: Protect the Application Using WS-Federation for Employee Sign In][]
-* [Step 4: Read Directory Data Using the Graph API][]
-* [Summary][]
+<h3>目次</h3>
+* [はじめに][]
+* [手順 1. ASP.NET MVC アプリケーションを作成する][]
+* [手順 2. 会社のディレクトリ テナントでアプリケーションをプロビジョニングする][]
+* [手順 3. WS-Federation を従業員のサインインに使用してアプリケーションを保護する][]
+* [手順 4. Graph API を使用してディレクトリ データを読み取る][]
+* [まとめ][]
 
-<h2><a name="createapp"></a>Step 1: Create an ASP.NET MVC Application</h2>
-This step describes how to create a simple ASP.NET MVC application that will represent a protected resource. Access to this resource will be granted through federated authentication managed by the company's STS, which is described later in the tutorial.
+<h2><a name="createapp"></a>手順 1. ASP.NET MVC アプリケーションを作成する</h2>
+この手順では、リソースが保護されたシンプルな ASP.NET MVC アプリケーションを作成する方法について説明します。このリソースへのアクセスは、会社の STS によって管理されるフェデレーション認証を使用して許可されます (後で説明)。
 
-1. Open Visual Studio as an Administrator.
-2. From the **File** menu, click **New Project**. 
-3. From the template menu on the left, select **Web**, then click **ASP.NET MVC 3 Web Application**. Name the project *OrgIdFederationSample*.
-4. On the **New ASP.NET MVC 3 Project** dialog, select the **Empty** template, then click **OK**.
-5. After Visual Studio generates the new project, right click on the **Controllers** folder in **Solution Explorer**, click **Add**, then click **Controller**.
-6. On the **Add Controller** dialog, name the new controller *HomeController.cs*, then click **Add**.
-7. The **HomeController.cs** file will be created and opened. In the code file, right click on the ***Index()*** method and click **Add View...**. 
-8. On the **Add View** dialog, click **OK**. An **Index.cshtml** file will be created in a new folder named **Home**. 
-9. Right-click on your **OrgIdFederationSample** project in **Solution Explorer**, then click **Properties**.
-10. On the properties window, click **Web** on the left menu, then select **Use Local IIS Web server**. A dialog may appear asking you to create a virtual directory for the project; click **Yes** on the dialog.
-11. Build and run the application. The Index page of your Home controller will appear.
+1.  Visual Studio を管理者として開きます。
+2. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
+3. 左側のテンプレート メニューで **[Web]** を選択し、**[ASP.NET MVC 3  Web アプリケーション]** をクリックします。プロジェクトに「*OrgIdFederationSample*」という名前を付けます。
+4. **[新しい ASP.NET MVC 3  プロジェクト]** ダイアログ ボックスで **[空]** テンプレート、**[OK]** の順にクリックします。
+5. Visual Studio によって新しいプロジェクトが生成された後、**ソリューション エクスプローラー**で **Controllers** フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。
+6. **[コントローラーの追加]** ダイアログ ボックスで、新しいコントローラーに「*HomeController.cs*」という名前を付け、**[追加]** をクリックします。
+7. **HomeController.cs** ファイルが作成されて、開かれます。コード ファイルで ***Index()*** メソッドを右クリックし、**[ビューの追加]** をクリックします。
+8. **[ビューの追加]** ダイアログ ボックスで、**[OK]** をクリックします。**Home** という新しいフォルダーに、**Index.cshtml** ファイルが作成されます。
+9. **ソリューション エクスプローラー**で **OrgIdFederationSample** プロジェクトを右クリックし、**[プロパティ]** をクリックします。
+10. プロパティ ウィンドウの左側のメニューで **[Web]** をクリックし、**[IIS Web サーバーの使用]** を選択します。プロジェクトの仮想ディレクトリの作成を求めるダイアログ ボックスが表示される場合があります。このダイアログ ボックスで **[はい]** をクリックします。
+11. アプリケーションをビルドし、実行します。Home コントローラーの Index ページが表示されます。
 
-<h2><a name="provisionapp"></a>Step 2: Provision the Application in a Company's Directory Tenant</h2>
-This step describes how an administrator of an Azure Active Directory customer provisions the MVC application in their tenant and configures single sign-on. After this step is accomplished, the company's employees can authenticate to the web application using their Office 365 accounts.
+<h2><a name="provisionapp"></a>手順 2. 会社のディレクトリ テナントでアプリケーションをプロビジョニングする</h2>
+この手順では、Azure Active Directory 顧客の管理者がテナントで MVC アプリケーションをプロビジョニングし、シングル サインオンを構成する方法について説明します。この手順の完了後、会社の従業員は Office 365  アカウントを使用して Web アプリケーションに対して認証できるようになります。
 
-The provisioning process begins by creating a new Service Principal for the application. Service Principals are used by Azure Active Directory to register and authenticate applications to the directory.
+プロビジョニング プロセスは、アプリケーション用に新しいサービス プリンシパルを作成することから始まります。サービス プリンシパルは Azure Active Directory によって使用されて、アプリケーションがディレクトリに対して登録および認証されます。
 
-1. Download and install the Office 365 PowerShell Commandlets if you haven't done so already.
-2. From the **Start** menu, run the **Microsoft Online Services Module for Windows PowerShell** console. This console provides a command-line environment for configuring attributes about your Office 365 tenant, such as creating and modifying Service Principals.
-3. To import the required **MSOnlineExtended** module, type the following command and press Enter:
+1. Office 365  PowerShell コマンドレットをダウンロードしてインストールします (まだインストールしていない場合)。
+2. **[スタート]** メニューから **Microsoft Online Services Module for Windows PowerShell ** コンソールを実行します。このコンソールには、Office 365  テナントの属性を構成するためのコマンド ライン環境が用意されています。たとえば、サービス プリンシパルの作成や変更などが可能です。
+3. 必要な **MSOnlineExtended** モジュールをインポートするには、次のコマンドを入力し、Enter キーを押します。
 
-		Import-Module MSOnlineExtended -Force
-4. To connect to your Office 365 directory, you will need to provide the company's administrator credentials. Type the following command and press Enter, then enter your credential's at the prompt:
+		Import-Module MSOnlineExtended –Force
+4. Office 365  ディレクトリに接続するには、会社の管理者の資格情報を指定する必要があります。次のコマンドを入力して Enter キーを押したら、プロンプトで資格情報を入力します。
 
 		Connect-MsolService
-5. Now you will create a new Service Principal for the application. Type the following command and press Enter:
+5. この時点でアプリケーション用に新しいサービス プリンシパルを作成します。次のコマンドを入力し、Enter キーを押します。
 
 		New-MsolServicePrincipal -ServicePrincipalNames @("OrgIdFederationSample/localhost") -DisplayName "Federation Sample Web Site" -Type Symmetric -Usage Verify -StartDate "12/01/2012" -EndDate "12/01/2013" 
-This step will output information similar to the following:
+この手順では、次のような出力が表示されます。
 
 		The following symmetric key was created as one was not supplied qY+Drf20Zz+A4t2w e3PebCopoCugO76My+JMVsqNBFc=
 		DisplayName           : Federation Sample Web Site
@@ -78,75 +78,75 @@ This step will output information similar to the following:
 		StartDate             : 12/01/2012 08:00:00 a.m.
 		EndDate               : 12/01/2013 08:00:00 a.m.
 		Usage                 : Verify 
-	<div class="dev-callout"><strong>Note</strong><p>You should save this output, especially the generated symmetric key. This key is only revealed to you during Service Principal creation, and you will be unable to retrieve it in the future. The other values are required for using the Graph API to read and write information in the directory.</p></div>
+	<div class="dev-callout"><strong>注</strong><p>この出力のうち特に生成された対称キーを保存しておく必要があります。このキーはサービス プリンシパルの作成時にしか表示されず、以降に取得することはできません。その他の値は、グラフ API を使用してディレクトリ内の情報を読み書きするために必要です。</p></div>
 
-6. The final step sets the reply URL for your application. The reply URL is where responses are sent following authentication attempts. Type the following commands and press enter:
+6. 最後の手順では、アプリケーションの応答 URL を設定します。応答 URL は、認証の試行後に応答が送信される場所です。次のコマンドを入力し、Enter キーを押します。
 
 		$replyUrl = New-MsolServicePrincipalAddresses -Address "https://localhost/OrgIdFederationSample" 
 
 		Set-MsolServicePrincipal -AppPrincipalId "7829c758-2bef-43df-a685-717089474505" -Addresses $replyUrl 
 	
-The web application has now been provisioned in the directory and it can be used for web single sign-on by company employees.
+これで、Web アプリケーションはディレクトリでプロビジョニングされ、会社の従業員が Web シングル サインオンに使用できるようになりました。
 
-<h2><a name="protectapp"></a>Step 3: Protect the Application Using WS-Federation for Employee Sign In</h2>
-This step shows you how to add support for federated login using Windows Identity Foundation (WIF). You will also add a login page and configure trust between the application and the directory tenant.
+<h2><a name="protectapp"></a>手順 3. WS-Federation を従業員のサインインに使用してアプリケーションを保護する</h2>
+この手順では、Windows Identity Foundation (WIF) を使用して、フェデレーテッド ログインのサポートを追加する方法について説明します。また、ログイン ページを追加し、アプリケーションとディレクトリ テナントとの信頼を構成します。
 
-1. In Visual Studio, right-click the **OrgIdFederationSample** project and select **"Add STS reference..."**. This context menu option was added when you installed the WIF SDK.
-2. In the **Federation Utility** dialog under **Application URI**, you need to provide the URI in the following format:
+1. Visual Studio で **OrgIdFederationSample** プロジェクトを右クリックし、**[STS 参照の追加]** をクリックします。このコンテキスト オプションは、WIF SDK のインストール時に追加されます。
+2. **[フェデレーション ユーティリティ]** ダイアログ ボックスの **[アプリケーション URI]** に、次の形式で URI を入力します。
 
 		spn:<Your AppPrincipalId>@<Your Directory Domain>
 
-	**spn** specifies that the URI is a Service Principal name, **Your AppPrincpalId** is the **AppPrincipalId** GUID value generated when you created a Service Principal, and **Your Directory Domain** is the *.onmicrosoft.com domain for the directory tenant. For this sample application, a complete Application URI value is specified as shown below:
+	**spn** は、この URL がサービス プリンシパル名であることを指定しています。**Your AppPrincpalId** はサービス プリンシパルの作成時に生成される **AppPrincipalId** GUID 値、**Your Directory Domain** はディレクトリ テナントの *.onmicrosoft.com ドメインです。このサンプル アプリケーションでは、アプリケーションの URI 全体の値を次のように指定します。
 
 		spn:7829c758-2bef-43df-a685-717089474505@awesomecomputers.onmicrosoft.com
 
-	After you have entered the Application URI, click **Next**.
+	アプリケーション URI を入力した後、**[次へ]** をクリックします。
 
-3. A warning dialog will appear stating that "The application is not hosted on a secure https connection." This is caused by the Federation Utility not recognizing the **spn:** format, but the application will still use a secure https connection anyway. Click **Yes** to continue.
+3. "アプリケーションが、セキュリティで保護された https 接続でホストされていない" ことを知らせる警告ダイアログ ボックスが表示されます。これは **spn:** 形式を認識しないフェデレーション ユーティリティによって発生する警告ですが、この警告が表示されても、アプリケーションはセキュリティで保護された https 接続を使用します。**[はい]** をクリックして続行します。
 
-4. On the next page of the Federation Utility, select **Use an existing STS**, then under **STS WS-Federation metadata document location**, enter the URL for the WS-Federation metadata document. This URL is specified in the following format:
+4. フェデレーション ユーティリティの次のページで **[既存の STS を使用する]** を選択し、**[WS-Federation メタデータのドキュメントの場所]** に WS-Federation メタデータ ドキュメントの URL を入力します。この URL は、次の形式で指定します。
 
-		https://accounts.accesscontrol.windows.net/<Domain Name or Tenant ID>/FederationMetadata/2007-06/FederationMetadata.xml 
+		https://accounts.accesscontrol.windows.net/<ドメイン名またはテナント ID>/FederationMetadata/2007-06/FederationMetadata.xml
 
-	For this application, the WS-Federation metadata location is specified as shown below:
+	このアプリケーションでは、WS-Federation メタデータの場所を次のように指定します。
 
 		https://accounts.accesscontrol.windows.net/fabrikam.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml 
 
-	After you have entered the metadata location, click **Next**.
+	メタデータの場所を入力した後、**[次へ]** をクリックします。
 
-5. On the next page of the Federation Utility, select **Disable certificate chain validation**, then click **Next**.
+5. フェデレーション ユーティリティの次のページで **[証明書チェーン検証を無効にする]** を選択し、**[次へ]** をクリックします。
 
-6. On the next page of the Federation Utility, select **No encryption**, then click **Next**.
+6. フェデレーション ユーティリティの次のページで **[暗号化しない]** を選択し、**[次へ]** をクリックします。
 
-7. The next page of the Federation Utility displays the claims provided by the STS. Review the claims, then click **Next**.
+7. フェデレーション ユーティリティの次のページに、STS が提供するクレームが表示されます。クレームを確認し、**[次へ]** をクリックします。
 
-8. Next you will configure Internet Information Services (IIS) to support SSL for your development environment. To open the IIS Manager, you can type *inetmgr* at the **Run** prompt. 
+8. 次に、開発環境で SSL がサポートされるように、インターネット インフォメーション サービス (IIS) を構成します。IIS マネージャーを開くには、**[ファイル名を指定して実行]** プロンプトで「*inetmgr*」と入力します。
 
-9. In IIS Manager, expand the **Sites** folder in the left menu, then click on **Default Web Site Home**. From the **Actions** menu on the right, click **Bindings...**.
+9. IIS マネージャーで、左側のメニューの **Sites** フォルダーを展開し、**[既定の Web サイトのホーム]** をクリックします。右側の **[操作]** メニューで、**[バインド]** をクリックします。
 
-10. On the **Site Bindings** dialog, click **Add**. On the **Add Site Binding** dialog, change the **Type** dropdown to ***https***, then under **SSL certificate**, select **IIS Express Development Certificate**. Click **OK**.
+10. **[サイト バインド]** ダイアログ ボックスで、**[追加]** をクリックします。**[サイト バインドの追加]** ダイアログ ボックスの **[種類]** ドロップダウン リストを ***[https]*** に変更し、**[SSL 証明書]** で **[IIS Express 開発証明書]** を選択します。**[OK]** をクリックします。
 
-11. In IIS Manager, click **Application Pools** in the left menu, then select the **ASP.NET v4.0** entry in the list and click **Advanced Settings** from the **Actions** menu on the right.
+11. IIS マネージャーの左側のメニューの **[アプリケーション プール]** をクリックし、一覧の **[ASP.NET v4.0]** エントリを選択して、右側の **[操作]** メニューの **[詳細設定]** をクリックします。
 
-12. On the **Advanced Settings** dialog, set the **Load User Profile** property to **true**. Click **OK**.
+12. **[詳細設定]** ダイアログ ボックスで "**ユーザー プロファイルの読み込み**" プロパティを **true** に設定します。**[OK]** をクリックします。
 
-13. In Visual Studio, open the **Web.config** file from **Solution Explorer** in the root of your project. 
+13. Visual Studio で、**ソリューション エクスプローラー**からプロジェクトのルートの **Web.config** ファイルを開きます。
 
-14. In the **Web.config** file, locate the **wsFederation** section and add a **reply** attribute with the same value as the **$replyUrl** variable you specified when creating the Service Principal. For example:
+14. **Web.config** ファイルで **wsFederation** セクションを探し、サービス プリンシパルの作成時に指定した **$replyUrl** 変数と同じ値を指定して **reply** 属性を追加します。次に例を示します。
 
 		<wsFederation passiveRedirectEnabled="true" issuer="https://accounts.accesscontrol.windows.net/v2/wsfederation" realm="spn: 7829c758-2bef-43df-a685-717089474505" requireHttps="false" reply="https://localhost/OrgIdFederationSample" /> 
 
-15. Add a **httpRuntime** node inside the **system.web** section with the **requestValidationMode** attribute set to **2.0**. For example:
+15. **httpRuntime** ノードを **system.web** セクション内に追加し、**requestValidationMode** 属性を "**2.0**" に設定します。次に例を示します。
 
 		<system.web>
 			<httpRuntime requestValidationMode="2.0" /> 
 			...
 
-	Save the **Web.config** file.
+	**Web.config** ファイルを保存します。
 
-16. Now that you have enabled authentication for the web application, the **Index** page should be modified to present an authenticated user's claims. Open the **Index.cshtml** file located in the **Home** folder of the **Views** folder.
+16. これで Web アプリケーションの認証が有効になり、**Index** ページが変更されて、認証されたユーザーのクレームが表示されるようになりました。"**ビュー**" フォルダーの "**ホーム**" フォルダーにある **Index.cshtml** を開きます。
 
-17. Add the following code snippet to the **Index.cshtml** file and save it:
+17. 次のコード スニペットを **Index.cshtml** ファイルに追加し、ファイルを保存します。
 
 		<p>
 			@if (User.Identity.IsAuthenticated)
@@ -160,30 +160,31 @@ This step shows you how to add support for federated login using Windows Identit
 			}
 		</p> 
 
-18. After you have saved the changes to the **Index.cshtml** file, press **F5** to run the application. You will be redirected to the Office 365 Identity Provider page, where you can log in using your directory tenant credentials. For example, *john.doe@awesomecomputers.onmicrosoft.com*.
+18. **Index.cshtml** ファイルの変更を保存した後、**F5** キーを押してアプリケーションを実行します。
+Office 365  の ID プロバイダー ページにリダイレクトされます。このページでディレクトリ テナントの資格情報を使用してログインできます。たとえば、*john.doe@awesomecomputers.onmicrosoft.com* を使用します。
 
-19. After you have signed in using your credentials, you will be redirected to the Index page of your Home controller, where your account's claims are displayed. This demonstrates a user successfully authenticating to the application using single sign-on provided by Azure Active Directory.
+19. 資格情報を使用してサインインすると、Home コントローラーの Index ページにリダイレクトされ、アカウントのクレームが表示されます。このことは、ユーザーが Azure Active Directory によるシングル サインオンを使用して、アプリケーションに対する認証に成功したことを示しています。
 
-<h2><a name="readdata"></a>Step 4: Read Directory Data Using the Graph API</h2>
-This step shows you how to use the Graph API to connect to your Azure Active Directory tenant and read data. To help you get started with the Graph API, download the following ASP.NET application: [Sample Application with Write Support for Graph API]. This application contains helper methods that make it easier to authenticate and make requests against the Graph API.
+<h2><a name="readdata"></a>手順 4. Graph API を使用してディレクトリ データを読み取る</h2>
+この手順では、Graph API を使用して、Azure Active Directory テナントに接続し、データを読み取る方法について説明します。Graph API を使い始めるにあたって参考になる ASP.NET アプリケーションとして、[Graph API による書き込みに対応したサンプル アプリケーション]をダウンロードしてください。このアプリケーションには、Graph API に対する認証と要求が簡単になるヘルパー メソッドが含まれています。
 
-You will also add permissions to your application's Service Principal that you created in Step 2. To add these permissions, you'll need the AppPrincipalId value.
+また、手順 2. で作成したアプリケーションのサービス プリンシパルにアクセス許可を追加します。これらのアクセス許可を追加するには、AppPrincipalId 値が必要になります。
 
-1. Download and extract the sample application to your desired folder.
-2. Before you can use the sample code, you must give additional permissions to the Service Principal. These permissions will make it possible for the Service Principal to read data by using the Graph API. From the **Start** menu, run the **Microsoft Online Services Module for Windows PowerShell** console.
-3. You will give read permissions to the Service Principal by adding it to the Service Support Administrator role. For more information about assigning roles to Service Principal, see [Role-Based Access Control for Graph API]. Type the following command and press Enter:
+1. サンプル アプリケーションを目的のフォルダーにダウンロードし、展開します。
+2. サンプル コードを使用する前に、追加のアクセス許可をサービス プリンシパルに与える必要があります。これらのアクセス許可により、サービス プリンシパルが Graph API を使用してデータを読み取ることができるようになります。**[スタート]** メニューから **Microsoft Online Services Module for Windows PowerShell** コンソールを実行します。
+3. 読み取りアクセス許可をサービス プリンシパルに与えます。そのためには、このプリンシパルにサービス サポート管理者ロールを追加します。サービス プリンシパルへのロールの割り当ての詳細については、「[Azure AD Graph およびロールベースのアクセス制御]」を参照してください。次のコマンドを入力し、Enter キーを押します。
 
 		Add-MsolRoleMember -RoleMemberType "ServicePrincipal" -RoleName "Service Support Administrator" -RoleMemberObjectId $appPrincipal.ObjectId 
 
-4. The **$appPrincipal.ObjectId** variable is your Service Principal's objectId, which can be obtained by typing the following command and pressing Enter:
+4. **$appPrincipal.ObjectId** 変数はサービス プリンシパルの ObjectID です。この ID は次のコマンドを入力して Enter キーを押すことで取得できます。
 
 		Get-MsolServicePrincipal -AppPrincipalId 7829c758-2bef-43df-a685-717089474505 
 
-	<div class="dev-callout"><strong>Note</strong><p>The **AppPrincipalId value above was returned when you created your Service Principal in Step 2.</p></div>
+	<div class="dev-callout"><strong>注</strong><p>この **AppPrincipalId 値は、手順 2. でサービス プリンシパルを作成したときに返された値です。</p></div>
 
-5. After you have added the role to your Service Principal, start Visual Studio and open the sample application's root **Web.config** file.
+5. サービス プリンシパルにロールを追加した後、Visual Studio を開始し、サンプル アプリケーションのルート **Web.config** ファイルを開きます。
 
-6. Locate the *&lt;configuration&gt;* section in the **Web.config**, then navigate to the *&lt;appSettings&gt;* section. Change the values for the *TenantDomainName*, *AppPrincipalId*, and *SymmetricKey* keys to the values for your Service Principal. For example:
+6. **Web.config** で *&lt;configuration&gt;* セクションを見つけたら、*&lt;appSettings&gt;* セクションに移動します。*TenantDomainName*、*AppPrincipalId*、*SymmetricKey* の各キーの値をサービス プリンシパルの値に変更します。次に例を示します。
 
 		<appSettings> 
 			...
@@ -195,27 +196,28 @@ You will also add permissions to your application's Service Principal that you c
 			...
 		</appSettings>
 
-7. Save the **Web.config** file, then press **F5** to run the application.
+7. **Web.config** ファイルを保存したら、**F5** キーを押してアプリケーションを実行します。
 
-8. The sample application will display a menu for accessing all your users, company administrators, and more. Clicking on one of the links will return the information stored in your tenant by using the Graph API.
+8. サンプル アプリケーションに、すべてのユーザー、会社管理者などにアクセスするためのメニューが表示されます。リンクのいずれかをクリックすると、テナントに保存されている情報が Graph API を使用して返されます。
 
-<h2><a name="summary"></a>Summary</h2>
-This tutorial has shown you how to create and configure a single tenant application that uses the single sign-on capabilities of Azure Active Directory. In addition, you have accessed the tenant's directory data by using the Graph API. We recommend that you explore the sample application to understand how to take advantage of the Graph API in your own application.
+<h2><a name="summary"></a>まとめ</h2>
+このチュートリアルでは、シングル サインオン Azure Active Directory 機能を使用する 1 つのテナント アプリケーションを作成および構成する方法について説明しました。さらに、Graph API を使用してテナントのディレクトリ データにアクセスしました。サンプル アプリケーションを詳しく調べて独自のアプリケーションで Graph API を活用する方法を理解することをお勧めします。
 
-To learn more about the Graph API, [you can read about it on MSDN]. You can also create multi-tenant applications for Azure Active Directory by reading the following tutorial: [Developing Multi-Tenant Cloud Applications with Azure Active Directory].
+Graph API の詳細については、[MSDN の関連記事]を参照してください。Azure Active Directory を使用してマルチテナント アプリケーションを作成することもできます。手順については、「[Developing Multi-Tenant Cloud Applications with Azure Active Directory (Azure Active Directory によるマルチテナント クラウド アプリケーションの開発)]」を参照してください。
 
-[Introduction]: #introduction
-[Step 1: Create an ASP.NET MVC Application]: #createapp
-[Step 2: Provision the Application in a Company's Directory Tenant]: #provisionapp
-[Step 3: Protect the Application Using WS-Federation for Employee Sign In]: #protectapp
-[Step 4: Read Directory Data Using the Graph API]: #readdata
-[Summary]: #summary
-[Developing Multi-Tenant Cloud Applications with Azure Active Directory]: http://g.microsoftonline.com/0AX00en/121
-[Windows Identity Foundation 3.5 SDK]: http://www.microsoft.com/en-us/download/details.aspx?id=4451
-[Windows Identity Foundation 1.0 Runtime]: http://www.microsoft.com/en-us/download/details.aspx?id=17331
-[Office 365 Powershell Commandlets]: http://onlinehelp.microsoft.com/en-us/office365-enterprises/ff652560.aspx
-[ASP.NET MVC 3]: http://www.microsoft.com/en-us/download/details.aspx?id=4211
+[はじめに]: #introduction
+[手順 1. ASP.NET MVC アプリケーションを作成する]: #createapp
+[手順 2. 会社のディレクトリ テナントでアプリケーションをプロビジョニングする]: #provisionapp
+[手順 3. WS-Federation を従業員のサインインに使用してアプリケーションを保護する]: #protectapp
+[手順 4. Graph API を使用してディレクトリ データを読み取る]: #readdata
+[まとめ]: #summary
+[Developing Multi-Tenant Cloud Applications with Azure Active Directory (Azure Active Directory によるマルチテナント クラウド アプリケーションの開発)]: http://g.microsoftonline.com/0AX00en/121
+[Windows Identity Foundation 3.5 SDK]: http://www.microsoft.com/ja-jp/download/details.aspx?id=4451
+[Windows Identity Foundation 1.0 ランタイム]: http://www.microsoft.com/ja-jp/download/details.aspx?id=17331
+[Office 365 PowerShell コマンドレット]: http://onlinehelp.microsoft.com/ja-jp/office365-enterprises/ff652560.aspx
+[ASP.NET MVC 3]: http://www.microsoft.com/ja-jp/download/details.aspx?id=4211
 [WCF Data Services for OData V3]: http://www.microsoft.com/download/en/details.aspx?id=29306
-[Sample Application with Write Support for Graph API]: http://code.msdn.microsoft.com/Write-Sample-App-for-79e55502
-[Role-Based Access Control for Graph API]: http://msdn.microsoft.com/en-us/library/hh974466.aspx
-[you can read about it on MSDN]: http://msdn.microsoft.com/en-us/library/hh974476.aspx
+[Graph API による書き込みに対応したサンプル アプリケーション]: http://code.msdn.microsoft.com/Write-Sample-App-for-79e55502
+[Azure AD Graph およびロールベースのアクセス制御]: http://msdn.microsoft.com/ja-jp/library/hh974466.aspx
+[MSDN の関連記事]: http://msdn.microsoft.com/ja-jp/library/hh974476.aspx
+

@@ -1,9 +1,11 @@
 
 
-1. In Visual Studio, In the Management Portal, click the **Data** tab, and then click the **TodoItem** table. 
+1. Visual Studio と管理ポータルを使用し、**[データ]** タブをクリックして、**TodoItem** テーブルをクリックします。
 
    	![](./media/mobile-services-restrict-permissions-javascript-backend/mobile-portal-data-tables.png)
 
-2. Click the **Permissions** tab, set all permissions to **Only authenticated users**, and then click **Save**. This will ensure that all operations against the **TodoItem** table require an authenticated user. This also simplifies the scripts in the next tutorial because they will not have to allow for the possibility of anonymous users.
+2. **[アクセス許可]** タブで、すべてのアクセス許可を **[認証されたユーザーのみ]** に設定し、**[保存]** をクリックします。これにより、**TodoItem** テーブルに対するすべての操作には、認証されたユーザーが必要になります。また、次のチュートリアルのスクリプトは、匿名ユーザーの可能性を考慮する必要がなくなるため、簡素化されます。
 
    	![](./media/mobile-services-restrict-permissions-javascript-backend/mobile-portal-change-table-perms.png)
+
+

@@ -1,9 +1,9 @@
 
-1. Open the project file mainpage.xaml.cs and add the following using statement:
+1. mainpage.xaml.cs プロジェクト ファイルを開き、次の using ステートメントを追加します。
 
         using Windows.UI.Popups;
 
-6. Add the following code snippet to the MainPage class:
+6. MainPage クラスに、次のコード スニペットを追加します。
 	
         private MobileServiceUser user;
         private async System.Threading.Tasks.Task AuthenticateAsync()
@@ -29,9 +29,9 @@
             }
         }
 
-    This creates a member variable for storing the current user and a method to handle the authentication process. The user is authenticated by using a Facebook login. If you are using an identity provider other than Facebook, change the value of **MobileServiceAuthenticationProvider** above to the value for your provider.
+    これにより、現在のユーザーを格納するためのメンバー変数と認証プロセスを処理するためのメソッドが作成されます。ユーザーは、Facebook ログインを使用して認証されます。Facebook 以外の ID プロバイダーを使用している場合は、上の **MobileServiceAuthenticationProvider** の値を、プロバイダーに対応する値に変更してください。
 
-8. Replace the existing **OnNavigatedTo** method override with the following method that calls the new **Authenticate** method:
+8. 既存の **OnNavigatedTo** イベント ハンドラーを、新しい **Authenticate** メソッドを呼び出す次のハンドラーに置き換えます。
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -39,6 +39,8 @@
             RefreshTodoItems();
         }
 		
-9. Press the F5 key to run the app and sign into the app with your chosen identity provider. 
+9. F5 キーを押してアプリケーションを実行し、選択した ID プロバイダーでアプリケーションにサインインします。
 
-   	When you are successfully logged-in, the app should run without errors, and you should be able to query Mobile Services and make updates to data.
+   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
+
+

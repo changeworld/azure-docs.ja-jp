@@ -1,71 +1,71 @@
-<properties linkid="dev-nodejs-how-to-twilio-voice-sms-service" urlDisplayName="Twilio Voice and SMS Service" pageTitle="Using Twilio for Voice, VoIP, and SMS Messaging in Azure" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="Node.js" title=" VoIP" authors="" solutions="" manager="" editor="" />
+<properties linkid="dev-nodejs-how-to-twilio-voice-sms-service" urlDisplayName="Twilio Voice と SMS サービス" pageTitle="Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="Node.js" title="VoIP" authors="" solutions="" manager="" editor="" />
 
 
-# Using Twilio for Voice, VoIP, and SMS Messaging in Azure
+#Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用
 
-This guide demonstrates how to build apps that communicate with Twilio and node.js on Azure.
+このガイドでは、Azure で Twilio と node.js によって通信するアプリケーションを構築する方法を示します。
 
-## Table of Contents
+## 目次
 
-* [What is Twilio?](#whatis)
-* [Sign Up For Twilio (Microsoft Discount)](#signup)
-* [Create and Deploy a node.js Azure Website](#azuresite)
-* [Configure the Twilio Module](#twiliomodule)
-* [Make an Outbound Call](#makecall)
-* [Send an SMS Message](#sendmessage)
-* [Next Steps](#nextsteps)
+* [Twilio とは](#whatis)
+* [Twilio へのサインアップ (Microsoft ディスカウント)](#signup)
+* [node.js Azure Web サイトの作成およびデプロイ](#azuresite)
+* [Twilio モジュールの構成](#twiliomodule)
+* [発信通話の実行](#makecall)
+* [SMS メッセージの送信](#sendmessage)
+* [次のステップ](#nextsteps)
 
 <a id="whatis"/>
-## What is Twilio?
+##Twilio とは
 
-Twilio is an API platform that makes it easy for developers to make and receive phone calls, send and receive text messages, and embed VoIP calling into browser-based and native mobile applications.  Let's briefly go over how this works before diving in.
+Twilio は、開発者が簡単に音声通話の発着信処理、テキスト メッセージの送受信、およびブラウザー ベースでネイティブのモバイル アプリケーションへの VoIP 通話の埋め込みができるようにする API プラットフォームです。ここでは、詳細について説明する前に、そのしくみを簡単に解説します。
 
-### Receiving Calls and Text Messages
+###通話とテキスト メッセージの受信
 
-Twilio allows developers to [purchase programmable phone numbers][purchase_phone] which can be used to both send and receive calls and text messages.  When a Twilio number receives an inbound call or text, Twilio will send your web application an HTTP POST or GET request, asking you for instructions on how to handle the call or text.  Your server will respond to Twilio's HTTP request with [TwiML][twiml], a simple set of XML tags that contain instructions on how to handle a call or text.  We will see examples of TwiML in just a moment.
+Twilio を使用すると、開発者は[プログラム可能な電話番号を購入][purchase_phone]できます。この番号は、通話およびテキスト メッセージの送信と受信の両方に使用できます。Twilio 番号が受信通話またはテキストを受け取ると、Twilio は Web アプリケーションに HTTP POST または GET 要求を送信し、通話またはテキストの処理方法に関する命令を求めます。サーバーは Twilio の HTTP 要求に [TwiML][twiml] で応答します。これは、通話またはテキストの処理方法についての命令を含む XML タグの単純なセットです。TwiML の例は、すぐ後で示します。
 
-### Making Calls and Sending Text Messages
+###通話の発信とテキスト メッセージの送信
 
-By making HTTP requests to the Twilio web service API, developers can send text messages or initiate outbound phone calls.  For outbound calls, the developer must also specify a URL that returns TwiML instructions for how to handle the outbound call once it is connected.
+Twilio Web サービス API に対する HTTP 要求を作成することで、開発者はテキスト メッセージを送信したり、発信通話を開始したりすることができます。発信通話では、開発者は発信通話の接続後の処理方法についての TwiML 命令を返す URL も指定する必要があります。
 
-### Embedding VoIP Capabilities in UI code (JavaScript, iOS, or Android)
+###UI コード (JavaScript、iOS、または Android) への VoIP 機能の埋め込み
 
-Twilio provides a client-side SDK which can turn any desktop web browser, iOS app, or Android app into a VoIP phone.  In this article, we will focus on how to use VoIP calling in the browser.  In addition to the Twilio JavaScript SDK running in the browser, a server-side application (our node.js application) must be used to issue a "capability token" to the JavaScript client.  You can read more about using VoIP with node.js [on the Twilio dev blog][voipnode].
+Twilio にはクライアント側 SDK が用意されており、デスクトップ Web ブラウザー、iOS アプリ、または Android アプリを VoIP 電話にすることができます。この記事では、主にブラウザーで VoIP 通話を使用する方法について説明します。ブラウザーで実行される Twilio JavaScript SDK のほかに、サーバー側アプリケーション (node.js アプリケーション) を使用して、JavaScript クライアントに "機能トークン" を発行する必要があります。node.js での VoIP の使用については、[Twilio 開発ブログ][voipnode]で詳細を読むことができます。
 
 <a id="signup"/>
-## Sign Up For Twilio (Microsoft Discount)
+##Twilio へのサインアップ (Microsoft ディスカウント)
 
-Before using Twilio services, you must first [sign up for an account][signup].  Microsoft Azure customers receive a special discount - [be sure to sign up here][signup]!
+Twilio サービスを使用する前に、まず、[アカウントにサインアップ][signup]する必要があります。Microsoft Azure のお客様は特別割引をご利用いただけます。[こちらからサインアップ][signup]してください。
 
 <a id="azuresite"/>
-## Create and Deploy a node.js Azure Website
+##node.js Azure Web サイトの作成および展開
 
-Next, you will need to create a node.js website running on Azure.  [The official documentation for doing this is located here][azure_new_site].  At a high level, you will be doing the following:
+次に、Azure 上で実行される node.js Web サイトを作成する必要があります。[そのための公式なドキュメントは、ここにあります][azure_new_site]。大まかには、次の作業を行います。
 
-* Signing up for an Azure account, if you don't have one already
-* Using the Azure admin console to create a new website
-* Adding source control support (we will assume you used git)
-* Creating a file `server.js` with a simple node.js web application
-* Deploying this simple application to Azure
+* まだ Azure アカウントを持っていない場合は、サインアップする
+* Azure 管理コンソールを使用して新しい Web サイトを作成する
+* ソース管理サポートを追加する (git を使用したと想定)
+* シンプルな node.js Web アプリケーションと共にファイル `server.js` を作成する
+* このシンプルなアプリケーションを Azure に展開する
 
 <a id="twiliomodule"/>
-## Configure the Twilio Module
+##Twilio モジュールの構成
 
-Next, we will begin to write a simple node.js application which makes use of the Twilio API.  Before we begin, we need to configure our Twilio account credentials.  
+次に、Twilio API を使用するシンプルな node.js アプリケーションの記述を開始します。その前に、Twilio アカウント資格情報を構成する必要があります。
 
-### Configuring Twilio Credentials in System Environment Variables
+###システム環境変数での Twilio 資格情報の構成
 
-In order to make authenticated requests against the Twilio back end, we need our account SID and auth token, which function as the username and password set for our Twilio account. The most secure way to configure these for use with the node module in Azure is via system environment variables, which you can set directly in the Azure admin console.
+Twilio バックエンドに対して認証された要求を行うには、アカウント SID と認証トークンが必要です。これらが Twilio アカウントのユーザー名とパスワードのセットとして機能します。これらを Azure のノード モジュールで使用するように構成する最も安全な方法は、システム環境変数を通じて行う方法です。システム環境変数は、Azure 管理コンソールで直接設定できます。
 
-Select your node.js website, and click the "CONFIGURE" link.  If you scroll down a bit, you will see an area where you can set configuration properties for your application.  Enter your Twilio account credentials ([found on your Twilio dashboard][twilio_dashboard]) as shown - make sure to name them "TWILIO_ACCOUNT_SID" and "TWILIO_AUTH_TOKEN", respectively:
+node.js Web サイトを選択し、[構成] リンクをクリックします。下へ少しスクロールすると表示される領域で、アプリケーションの構成プロパティを設定します。以下のように、Twilio アカウント資格情報を入力します ([Twilio ダッシュボードで確認できます][twilio_dashboard]) - それぞれを "TWILIO_ACCOUNT_SID" と "TWILIO_AUTH_TOKEN" にします。
 
-![Azure admin console][azure-admin-console]
+![Azure 管理コンソール][azure-admin-console]
 
-Once you have configured these variables, restart your application in the Azure console.
+これらの変数を構成したら、Azure コンソールでアプリケーションを再起動します。
 
-### Declaring the Twilio module in package.json
+###package.json での Twilio モジュールの宣言
 
-Next, we need to create a package.json to manage our node module dependencies via [npm].  At the same level as the "server.js" file you created in the Azure/node.js tutorial, create a file named "package.json".  Inside this file, place the following:
+次に、package.json を作成して、[npm] を通じてノード モジュールの依存関係を管理する必要があります。Azure/node.js のチュートリアルで作成した "server.js" ファイルと同じレベルで、"package.json" という名前のファイルを作成します。このファイル内に、次のコードを追加します。
 
   {
     "name": "application-name",
@@ -81,12 +81,12 @@ Next, we need to create a package.json to manage our node module dependencies vi
     }
   }
 
-This declares the twilio module as a dependency, as well as the popular [express web framework][express] and the EJS template engine.  Okay, now we're all set - let's write some code!
+このコードは、一般的な [express Web フレームワーク][express]および EJS テンプレート エンジンと共に、twilio モジュールを依存関係として宣言します。これで設定はすべて終わりました。コードの記述を始めましょう。- 
 
 <a id="makecall"/>
-## Make an Outbound Call
+##発信通話の実行
 
-Let's create a simple form that will place a call to a number we choose.  Open up server.js, and enter the following code.  Note where it says "CHANGE_ME" - put the name of your azure website there:
+選択した番号に電話をかける単純なフォームを作成しましょう。server.js を開き、次のコードを入力します。"CHANGE_ME" と記述されている個所は、自分の Azure Web サイトの名前に置き換えてください。- 
 
   // Module dependencies
   var express = require('express'), 
@@ -156,7 +156,7 @@ Let's create a simple form that will place a call to a number we choose.  Open u
     console.log("Express server listening on port " + app.get('port'));
   });
 
-Next, create a directory called "views" - inside this directory, create a file named "index.ejs" with the following contents:
+次に、"views" という名前のディレクトリを作成します。このディレクトリ内に、次の内容を持つ "index.ejs" という名前のファイルを作成します。- 
 
   &lt;!DOCTYPE html&gt;
   &lt;html&gt;
@@ -176,12 +176,12 @@ Next, create a directory called "views" - inside this directory, create a file n
   &lt;/body&gt;
   &lt;/html&gt;
 
-Now, deploy your website to Azure and open your home .  You should be able to enter your phone number in the text field, and receive a call from your Twilio number!
+ここで、Web サイトを Azure に展開し、ホームを開きます。自分の電話番号をテキスト フィールドに入力し、Twilio 番号からの通話を着信できるはずです。
 
 <a id="sendmessage"/>
-## Send an SMS Message
+##SMS メッセージを送信する
 
-Now, let's set up a user interface and form handling logic to send a text message.  Open up "server.js", and add the following code after the last call to "app.post":
+ここでは、テキスト メッセージの送信ロジックを処理するユーザー インターフェイスとフォームをセットアップします。"server.js" を開いて、最後の "app.post" の呼び出しの後に次のコードを追加します。
 
   app.post('/sms', function(request, response) {
       var client = twilio();
@@ -202,7 +202,7 @@ Now, let's set up a user interface and form handling logic to send a text messag
       });
   });
 
-In "views/index.ejs", add another form under the first one to submit a number and a text message:
+"views/index.ejs" で、最初のフォームの下に、番号とテキスト メッセージを送信するためのもう 1 つのフォームを追加します。
 
   &lt;form action="/sms" method="POST"&gt;
       &lt;input placeholder="Enter a phone number" name="number"/&gt;
@@ -212,24 +212,24 @@ In "views/index.ejs", add another form under the first one to submit a number an
       &lt;input type="submit" value="Send text to the number above"/&gt;
   &lt;/form&gt;
 
-Redeploy your application to Azure, and you should now be able to submit that form and send yourself (or any of your closest friends) a text message!
+アプリケーションを Azure に再デプロイします。今度は、そのフォームを送信し、テキスト メッセージを自分 (または親しい友人) に送ることができるはずです。
 
 <a id="nextsteps"/>
-## Next Steps
+## 次のステップ
 
-You have now learned the basics of using node.js and Twilio to build apps that communicate.  But these examples barely scratch the surface of what's possible with Twilio and node.js.  For more information using Twilio with node.js, check out the following resources:
+これで、通信するアプリケーションを node.js と Twilio を使用して構築する方法の基本を学習できました。ただし、これらは、Twilio と node.js でできることの初歩的な例にすぎません。Node.js と Twilio の使用方法の詳細については、次のリソースをご覧ください。
 
-* [Official module docs][docs]
-* [Tutorial on VoIP with node.js applications][voipnode]
-* [Votr - a real-time SMS voting application with node.js and CouchDB (three parts)][votr]
-* [Pair programming in the browser with node.js][pair]
+* [公式のモジュールのドキュメント][docs]
+* [node.js アプリケーションによる VoIP のチュートリアル][voipnode]
+* [Votr - node.js と CouchDB によるリアルタイムの SMS 投票アプリケーション (3 部構成)][votr]
+* [node.js によるブラウザーでのペア プログラミング][pair]
 
-We hope you love hacking node.js and Twilio on Azure!
+Azure で node.js と Twilio を活用してください。
 
 [purchase_phone]: https://www.twilio.com/user/account/phone-numbers/available/local
 [twiml]: https://www.twilio.com/docs/api/twiml
 [signup]: http://ahoy.twilio.com/azure
-[azure_new_site]: http://www.windowsazure.com/en-us/develop/nodejs/tutorials/create-a-website-(mac)/
+[azure_new_site]: http://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
 [twilio_dashboard]: https://www.twilio.com/user/account
 [npm]: http://npmjs.org
 [express]: http://expressjs.com
@@ -238,6 +238,7 @@ We hope you love hacking node.js and Twilio on Azure!
 [votr]: http://www.twilio.com/blog/2012/09/building-a-real-time-sms-voting-app-part-1-node-js-couchdb.html
 [pair]: http://www.twilio.com/blog/2013/06/pair-programming-in-the-browser-with-twilio.html
 [azure-admin-console]: ./media/partner-twilio-nodejs-how-to-use-voice-sms/twilio_1.png
+
 
 
 

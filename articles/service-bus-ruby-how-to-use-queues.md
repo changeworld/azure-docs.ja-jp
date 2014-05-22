@@ -1,62 +1,61 @@
-<properties linkid="dev-ruby-how-to-service-bus-queues" urlDisplayName="Service Bus Queues" pageTitle="How to use Service Bus queues (Ruby) - Azure" metaKeywords="Azure Service Bus queues, Azure queues, Azure messaging, Azure queues Ruby" description="Learn how to use Service Bus queues in Azure. Code samples written in Ruby." metaCanonical="" services="service-bus" documentationCenter="Ruby" title="How to Use Service Bus Queues" authors="guayan" solutions="" manager="" editor="" />
+<properties linkid="dev-ruby-how-to-service-bus-queues" urlDisplayName="サービス バス キュー" pageTitle="サービス バス キューの使用方法 (Ruby) - Azure" metaKeywords="Azure サービス バス キュー, Azure キュー, Azure メッセージング, Azure キュー Ruby" description="Azure でのサービス バス キューの使用方法を学習します。コード サンプルは Ruby で記述されています。" metaCanonical="" services="service-bus" documentationCenter="Ruby" title="サービス バス キューの使用方法" authors="guayan" solutions="" manager="" editor="" />
 
 
 
 
-# How to Use Service Bus Queues
+# サービス バス キューの使用方法
 
-This guide will show you how to use Service Bus queues. The samples are
-written in Ruby and use the Azure gem. The scenarios
-covered include **creating queues, sending and receiving messages**, and
-**deleting queues**. For more information on queues, see the [Next Steps](#next-steps) section.
+このガイドでは、サービス バス キューの使用方法について説明します。サンプルは
+Ruby で記述され、Azure gem を利用しています。紹介するシナリオは、
+**キューの作成、メッセージの送受信**、および
+**キューの削除**です。キューの詳細については、「[次のステップ](#next-steps)」のセクションを参照してください。
 
-## Table of Contents
+## 目次
 
-* [What are Service Bus Queues?](#what-are-service-bus-queues)
-* [Create a Service Namespace](#create-a-service-namespace)
-* [Obtain the Default Management Credentials for the Namespace](#obtain-default-credentials)
-* [Create a Ruby Application](#create-a-ruby-application)
-* [Configure Your Application to Use Service Bus](#configure-your-application-to-use-service-bus)
-* [Setup an Azure Service Bus Connection](#setup-a-windows-azure-service-bus-connection)
-* [How to Create a Queue](#how-to-create-a-queue)
-* [How to Send Messages to a Queue](#how-to-send-messages-to-a-queue)
-* [How to Receive Messages from a Queue](#how-to-receive-messages-from-a-queue)
-* [How to Handle Application Crashes and Unreadable Messages](#how-to-handle-application-crashes-and-unreadable-messages)
-* [Next Steps](#next-steps)
+* [サービス バス キューとは](#what-are-service-bus-queues)
+* [サービス名前空間の作成](#create-a-service-namespace)
+* [名前空間の既定の管理資格情報の取得](#obtain-default-credentials)
+* [Ruby アプリケーションの作成](#create-a-ruby-application)
+* [サービス バスを使用するようにアプリケーションを構成する](#configure-your-application-to-use-service-bus)
+* [Azure のサービス バス接続の設定](#setup-a-windows-azure-service-bus-connection)
+* [キューの作成方法](#how-to-create-a-queue)
+* [メッセージをキューに送信する方法](#how-to-send-messages-to-a-queue)
+* [キューからメッセージを受信する方法](#how-to-receive-messages-from-a-queue)
+* [アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法](#how-to-handle-application-crashes-and-unreadable-messages)
+* [次のステップ](#next-steps)
 
 [WACOM.INCLUDE [howto-service-bus-queues](../includes/howto-service-bus-queues.md)]
 
-## <a id="create-a-ruby-application"></a>Create a Ruby Application
+## <a id="create-a-ruby-application"></a>Ruby アプリケーションの作成
 
-Create a Ruby application. For instructions, see [Create a Ruby Application on Azure](/en-us/develop/ruby/tutorials/web-app-with-linux-vm/).
+Ruby アプリケーションを作成します。手順については、[Azure での Ruby アプリケーションの作成に関するページ](/ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/)を参照してください。
 
-## <a id="configure-your-application-to-use-service-bus"></a>Configure Your Application to Use Service Bus
+## <a id="configure-your-application-to-use-service-bus"></a> サービス バス を使用するようにアプリケーションを構成する
 
-To use Azure service bus, you need to download and use the Ruby azure package, which includes a set of convenience libraries that communicate with the storage REST services.
+Azure サービス バスを使用するには、Ruby azure パッケージをダウンロードして使用する必要があります。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
 
-### Use RubyGems to obtain the package
+### RubyGems を使用してパッケージを取得する
 
-1. Use a command-line interface such as **PowerShell** (Windows), **Terminal** (Mac), or **Bash** (Unix).
+1. **PowerShell** (Windows)、**ターミナル** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用します。
 
-2. Type "gem install azure" in the command window to install the gem and dependencies.
+2. コマンド ウィンドウに「gem install azure」と入力して、gem と依存関係をインストールします。
 
-### Import the package
+### パッケージをインポートする
 
-Use your favorite text editor, add the following to the top of the Ruby file where you intend to use storage:
+任意のテキスト エディターを使用して、ストレージを使用する Ruby ファイルの先頭に次のコードを追加します。
 
     require "azure"
 
-## <a id="setup-a-windows-azure-service-bus-connection"></a>Setup an Azure Service Bus Connection
+## <a id="setup-a-windows-azure-service-bus-connection"></a>Azure のサービス バス接続の設定
 
-The azure module will read the environment variables **AZURE\_SERVICEBUS\_NAMESPACE** and **AZURE\_SERVICEBUS\_ACCESS_KEY** 
-for information required to connect to your Azure service bus namespace. If these environment variables are not set, you must specify the namespace information before using **Azure::ServiceBusService** with the following code:
+azure モジュールは、Azure サービス バス に接続するために必要な情報として、環境変数 **AZURE\_SERVICEBUS\_NAMESPACE** および **AZURE\_SERVICEBUS\_ACCESS_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::ServiceBusService** を使用する前に、次のコードを使用して名前空間の情報を指定する必要があります。
 
     Azure.config.sb_namespace = "<your azure service bus namespace>"
     Azure.config.sb_access_key = "<your azure service bus access key>"
 
-## <a id="how-to-create-a-queue"></a>How to Create a Queue
+## <a id="how-to-create-a-queue"></a>方法: キューを作成する
 
-The **Azure::ServiceBusService** object lets you work with queues. To create a queue, use the **create_queue()** method. The following example creates a queue or print out the error if there is any.
+**Azure::ServiceBusService** オブジェクトを使用して、キューを操作できます。キューを作成するには、**create_queue()** メソッドを使用します。次の例では、キューを作成し、既に存在している場合はエラーを出力します。
 
     azure_service_bus_service = Azure::ServiceBusService.new
     begin
@@ -65,7 +64,7 @@ The **Azure::ServiceBusService** object lets you work with queues. To create a q
       puts $!
     end
 
-You can also pass in a **Azure::ServiceBus::Queue** object with additional options, which allows you to override default queue settings such as message time to live or maximum queue size. The following example shows setting the maximum queue size to 5GB and time to live to 1 minute:
+追加のオプションを **Azure::ServiceBus::Queue** オブジェクトに渡すこともできます。これにより、メッセージの有効期間やキューの最大サイズなどの既定のキューの設定をオーバーライドできます。次の例は、キューの最大サイズを 5 GB に、有効期間を 1 分に設定する方法を示しています。
 
     queue = Azure::ServiceBus::Queue.new("test-queue")
     queue.max_size_in_megabytes = 5120
@@ -73,27 +72,27 @@ You can also pass in a **Azure::ServiceBus::Queue** object with additional optio
 
     queue = azure_service_bus_service.create_queue(queue)
 
-## <a id="how-to-send-messages-to-a-queue"></a>How to Send Messages to a Queue
+## <a id="how-to-send-messages-to-a-queue"></a>メッセージをキューに送信する方法
 
-To send a message to a service bus queue, you application will call the **send\_queue\_message()** method on the **Azure::ServiceBusService** object. Messages sent to (and received from) service bus queues are **Azure::ServiceBus::BrokeredMessage** objects, and have a set of standard properties (such as **label** and **time\_to\_live**), a dictionary that is used to hold custom application specific properties, and a body of arbitrary application data. An application can set the body of the message by passing a string value as the message and any required standard properties will be populated with default values.
+メッセージを サービス バス キューに送信するために、アプリケーションで **Azure::ServiceBusService** オブジェクトの **send\_queue\_message()** メソッドを呼び出します。サービス バス キューに送信された (およびサービス バス キューから受信された) メッセージは **Azure::ServiceBus::BrokeredMessage** オブジェクトであり、このオブジェクトには、標準的なプロパティ (**label**、**time\_to\_live** など)、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、および任意のアプリケーション データの本体が備わっています。アプリケーションでは、メッセージとして文字列値を渡すことによってメッセージの本文を設定でき、必須の標準プロパティは既定値に設定されます。
 
-The following example demonstrates how to send a test message to the queue named "test-queue" using **send\_queue\_message()**:
+次の例では、**send\_queue\_message()** を使用して、"test-queue" というキューにテスト メッセージを送信する方法を示しています。
 
     message = Azure::ServiceBus::BrokeredMessage.new("test queue message")
     message.correlation_id = "test-correlation-id"
     azure_service_bus_service.send_queue_message("test-queue", message)
 
-Service bus queues support a maximum message size of 256 KB (the header, which includes the standard and custom application properties, can have a maximum size of 64 KB). There is no limit on the number of messages held in a queue but there is a cap on the total size of the messages held by a queue. This queue size is defined at creation time, with an upper limit of 5 GB.
+サービス バス キューでは、最大 256 KB までのメッセージをサポートしています (標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です)。キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。このキュー サイズは作成時に定義され、上限は 5 GB です。
 
-## <a id="how-to-receive-messages-from-a-queue"></a>How to Receive Messages from a Queue
+## <a id="how-to-receive-messages-from-a-queue"></a>キューからメッセージを受信する方法
 
-Messages are received from a queue using the **receive\_queue\_message()** method on the **Azure::ServiceBusService** object. By default, messages are read and locked without being deleted from the queue. However, you can delete messages from the queue as they are read by setting the **:peek_lock** option to **false**.
+メッセージは、**Azure::ServiceBusService** オブジェクトの **receive\_queue\_message()** メソッドを使用してキューからを受信します。既定では、メッセージは読み取られて (ピークされて) ロックされますが、キューからは削除されません。ただし、**:peek_lock** オプションを **false** に設定すると、読み取ったメッセージをキューから削除できます。
 
-The default behavior makes the reading and deleting into a two stage operation, which makes it possible to support applications that cannot tolerate missing messages. When service bus receives a request, it finds the next message to be consumed, locks it to prevent other consumers receiving it, and then returns it to the application. After the application finishes processing the message (or stores it reliably for future processing), it completes the second stage of the receive process by calling **delete\_queue\_message()** method and providing the message to be deleted as a parameter. The **delete\_queue\_message()** method will mark the message as being consumed and remove it from the queue.
+既定の動作では、読み取りと削除が 2 段階の操作になるため、メッセージが失われることを許容できないアプリケーションにも対応することができます。Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、**delete\_queue\_message()** メソッドを呼び出し、削除するメッセージをパラメーターとして指定して、受信処理の第 2 段階を完了します。**delete\_queue\_message()** メソッドによって、メッセージが読み取り中としてマークされ、キューから削除されます。
 
-If the **:peek\_lock** parameter is set to **false**, reading and deleting the message becomes the simplest model, and works best for scenarios in which an application can tolerate not processing a message in the event of a failure. To understand this, consider a scenario in which the consumer issues the receive request and then crashes before processing it. Because Service Bus will have marked the message as being consumed, then when the application restarts and begins consuming messages again, it will have missed the message that was consumed prior to the crash.
+**:peek\_lock** パラメーターを **false** に設定すると、メッセージの読み取りと削除は最もシンプルなモデルになります。これは、問題の発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。サービス バスはメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
 
-The example below demonstrates how messages can be received and processed using **receive\_queue\_message()**. The example first receives and deletes a message by using **:peek\_lock** set to **false**, then it receives another message and then deletes the message using **delete\_queue\_message()**:
+次の例では、**receive\_queue\_message()** を使用したメッセージの受信および処理の方法を示しています。この例では、まず **:peek\_lock** を **false** に設定し、メッセージを受信して削除します。次に、別のメッセージを受信してから、**delete\_queue\_message()** を使用してメッセージを削除します。
 
     message = azure_service_bus_service.receive_queue_message("test-queue", 
 	  { :peek_lock => false })
@@ -101,19 +100,20 @@ The example below demonstrates how messages can be received and processed using 
     azure_service_bus_service.delete_queue_message("test-queue",
 	  message.sequence_number, message.lock_token)
 
-## <a id="how-to-handle-application-crashes-and-unreadable-messages"></a>How to Handle Application Crashes and Unreadable Messages
+## <a id="how-to-handle-application-crashes-and-unreadable-messages"></a>アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法
 
-Service bus provides functionality to help you gracefully recover from errors in your application or difficulties processing a message. If a receiver application is unable to process the message for some reason, then it can call the **unlock\_queue\_message()** method on the **Azure::ServiceBusService** object. This will cause service bus to unlock the message within the queue and make it available to be received again, either by the same consuming application or by another consuming application.
+サービス バスには、アプリケーションにエラーが発生した場合や、メッセージの処理に問題がある場合に復旧を支援する機能が備わっています。受信側のアプリケーションが何らかの理由によってメッセージを処理できない場合には、**Azure::ServiceBusService** オブジェクトの **unlock\_queue\_message()** メソッドを呼び出すことができます。このメソッドが呼び出されると、サービス バスによってキュー内のメッセージのロックが解除され、メッセージが再度受信できる状態に変わります。メッセージを受信するアプリケーションは、以前と同じものでも、別のものでもかまいません。
 
-There is also a timeout associated with a message locked within the queue, and if the application fails to process the message before the lock timeout expires (e.g., if the application crashes), then service bus will unlock the message automatically and make it available to be received again.
+キュー内でロックされているメッセージには、タイムアウトも設定されています。アプリケーションがクラッシュした場合など、ロックがタイムアウトになる前にアプリケーションがメッセージの処理に失敗した場合は、Service Bus によってメッセージのロックが自動的に解除され、再度受信できる状態に変わります。
 
-In the event that the application crashes after processing the message but before the **delete\_queue\_message()** method is called, then the message will be redelivered to the application when it restarts. This is often called **At Least Once Processing**, that is, each message will be processed at least once but in certain situations the same message may be redelivered. If the scenario cannot tolerate duplicate processing, then application developers should add additional logic to their application to handle duplicate message delivery. This is often achieved using the **message\_id** property of the message, which will remain constant across delivery attempts.
+メッセージが処理された後、**delete\_queue\_message()** メソッドが呼び出される前にアプリケーションがクラッシュした場合は、アプリケーションが再起動する際にメッセージが再配信されます。一般的に、この動作は **"1 回以上の処理"** と呼ばれます。つまり、すべてのメッセージが 1 回以上処理されますが、特定の状況では、同じメッセージが再配信される可能性があります。重複処理が許されないシナリオの場合、重複メッセージの配信を扱うロジックをアプリケーションに追加する必要があります。通常、この問題はメッセージの **message\_id** プロパティを使用して対処します。このプロパティは配信が試行された後も同じ値を保持します。
 
-## <a id="next-steps"></a>Next Steps
+## <a id="next-steps"></a>次のステップ
 
-Now that you've learned the basics of Service Bus queues, follow these links to learn more.
+これで、サービス バスキューの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
--   See the MSDN Reference: [Queues, Topics, and Subscriptions](http://msdn.microsoft.com/en-us/library/windowsazure/hh367516.aspx)
--   Visit the [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) repository on GitHub
+-   MSDN リファレンスの「[サービス バス キュー、トピック、およびサブスクリプション](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367516.aspx)」を参照
+-   GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリを参照
 
-For a comparision between the Azure Service Bus Queues discussed in this article and Azure Queues discussed in the [How to use the Azure Queue Service](/en-us/develop/ruby/how-to-guides/queue-service/) article, see [Azure Queues and Azure Service Bus Queues - Compared and Contrasted](http://msdn.microsoft.com/en-us/library/windowsazure/hh767287.aspx)
+この記事で説明されている Azure サービス バス キューと、「[サービス バス キューの使用方法](/ja-jp/develop/ruby/how-to-guides/queue-service/)」で説明されている Azure サービス バス キューの比較については、「[Azure Queues and Azure Service Bus Queues - Compared and Contrasted (Azure キューと Azure サービス バス キューの比較)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh767287.aspx)」を参照してください。
+

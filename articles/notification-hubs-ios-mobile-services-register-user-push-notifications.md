@@ -1,20 +1,20 @@
-<properties linkid="notification-hubs-how-to-guides-howto-register-user-with-mobile-service-ios" urlDisplayName="Notify iOS app users by using Mobile Services" pageTitle="Register the current user for push notifications by using a mobile service - Notification Hubs" metaKeywords="Azure registering application, Notification Hubs, Azure push notifications, push notification iOS app" description="Learn how to request push notification registration in an iOS app with Azure Notification Hubs when registeration is performed by Azure Mobile Services." metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Register the current user for push notifications by using a mobile service" authors="" solutions="" manager="" editor="" />
+<properties linkid="notification-hubs-how-to-guides-howto-register-user-with-mobile-service-ios" urlDisplayName="モバイル サービスを使用した iOS アプリケーション ユーザーへの通知" pageTitle="モバイル サービスを使用した現在のユーザーのプッシュ通知への登録 - 通知ハブ" metaKeywords="Azure 登録アプリケーション, 通知ハブ, Azure プッシュ通知, プッシュ通知 iOS アプリケーション" description="Azure モバイル サービスにより登録が実行されるときに、iOS アプリケーションで Azure 通知ハブを使用してプッシュ通知登録を要求する方法について説明します。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="モバイル サービスを使用した現在のユーザーのプッシュ通知への登録" authors="" solutions="" manager="" editor="" />
 
-# Register the current user for push notifications by using a mobile service
+#モバイル サービスを使用した現在のユーザーのプッシュ通知への登録
 
 <div class="dev-center-tutorial-selector sublanding">
-    <a href="/en-us/documentation/articles/notification-hubs-windows-store-mobile-services-register-user-push-notifications/" title="Windows Store C#">Windows Store C#</a><a href="/en-us/documentation/articles/notification-hubs-ios-mobile-services-register-user-push-notifications/" title="iOS" class="current">iOS</a>
+    <a href="/ja-jp/documentation/articles/notification-hubs-windows-store-mobile-services-register-user-push-notifications/" title="Windows ストア C#">Windows ストア C#</a> <a href="/ja-jp/documentation/articles/notification-hubs-ios-mobile-services-register-user-push-notifications/" title="iOS" class="current">iOS</a>
 </div>
 
-This topic shows you how to request push notification registration with Azure Notification Hubs when registration is performed by Azure Mobile Services. This topic extends the tutorial [Notify users with Notification Hubs]. You must have already completed the required steps in that tutorial to create the authenticated mobile service. For more information on the notify users scenario, see [Notify users with Notification Hubs].  
+このトピックでは、Azure のモバイル サービスにより登録が実行されるときに Azure 通知ハブへのプッシュ通知登録を要求する方法について説明します。このトピックは、チュートリアル「[通知ハブによるユーザーへの通知]」を拡張したものです。認証されたモバイル サービスを作成するには、このチュートリアルの必要な手順を既に完了している必要があります。ユーザー通知シナリオの詳細については、「[通知ハブによるユーザーへの通知]」を参照してください。
 
-1. In Xcode, open the QSTodoService.h file in the project that you created when you completed the prerequisite tutorial [Get started with authentication], and add the following **deviceToken** property:
+1. Xcode で、前提条件のチュートリアルである「[認証の使用]」を実行したときに作成したプロジェクトの QSTodoService.h ファイルを開き、次の **deviceToken** プロパティを追加します。
 
 		@property (nonatomic) NSData* deviceToken;
 
- 	This property stores the device token.
+ 	このプロパティには、デバイス トークンが格納されます。
 
-2. In the QSTodoService.m file, add the following **getDeviceTokenInHex** method: 
+2. QSTodoService.m ファイルで、次の **getDeviceTokenInHex** メソッドを追加します。
 
 			- (NSString*)getDeviceTokenInHex {
 			    const unsigned *tokenBytes = [[self deviceToken] bytes];
@@ -25,27 +25,27 @@ This topic shows you how to request push notification registration with Azure No
 			    return hexToken;
 			}
 
-	This method converts the device token to a hex string value.
+	このメソッドは、デバイス トークンを 16 進数の文字列値に変換します。
 
-3. In the QSAppDelegate.m file, add the following lines of code to the **didFinishLaunchingWithOptions** method:
+3. QSAppDelegate.m ファイルで、次のコード行を **didFinishLaunchingWithOptions** メソッドに追加します。
 
 			[[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
 
-	This enables push notifications in your app.
+	これにより、アプリケーションでプッシュ通知が有効になります。
 
-4. 	In the QSAppDelegate.m file, add the following method: 
+4. 	QSAppDelegate.m ファイルで、次のメソッドを追加します。
 	
 			- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 			    [QSTodoService defaultService].deviceToken = deviceToken;
 			}
 
-	This updates the **deviceToken** property.
+	これにより、**deviceToken** プロパティが更新されます。
 
-	<div class="dev-callout"><b>Note</b>
-	<p>At this point, there should not be any other code in this method. If you already have a call to the **registerNativeWithDeviceToken** method that was added when you completed the <a href="/en-us/manage/services/notification-hubs/get-started-notification-hubs-ios/" target="_blank">Get Started with Notification Hubs</a> tutorial, you must comment-out or remove that call.</p>
+	<div class="dev-callout"><b>注</b>
+	<p>この時点では、このメソッドに他のコードは存在しません。チュートリアル「<a href="/ja-jp/manage/services/notification-hubs/get-started-notification-hubs-ios/" target="_blank">通知ハブの使用</a>」を完了したときに追加された **registerNativeWithDeviceToken** メソッドへの呼び出しが既にある場合、その呼び出しをコメント解除するか、削除する必要があります。</p>
 	</div>
 	
-5.  (Optional) In the QSAppDelegate.m file, add the following handler method: 
+5. (省略可能) QSAppDelegate.m ファイルで、次のハンドラー メソッドを追加します。
 	
 			- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
 			    NSLog(@"%@", userInfo);
@@ -55,9 +55,9 @@ This topic shows you how to request push notification registration with Azure No
 			    [alert show];
 			}
 
- 	This method displays an alert in the UI when your app receives notifications while it is running.
+ 	アプリケーションが実行中に通知を受信すると、このメソッドは UI にアラートを表示します。
 
-6. In the QSTodoListViewController.m file, add the **registerForNotificationsWithBackEnd** method:
+6. QSTodoListViewController.m ファイルで、**registerForNotificationsWithBackEnd** メソッドを追加します。
 
 			- (void)registerForNotificationsWithBackEnd {    
 			    NSString* json = [NSString  stringWithFormat:@"{\"platform\":\"ios\", \"deviceToken\":\"%@\"}", [self.todoService getDeviceTokenInHex] ];
@@ -73,9 +73,9 @@ This topic shows you how to request push notification registration with Azure No
 			    }];
 			}
 
-	This method constructs a json payload that contains the device token. It then calls the custom API in your Mobile Service to register for notification. This method creates a device token for push notifications and sends it, along with the device type, to the custom API method that creates a registration in Notification Hubs. This custom API was defined in [Notify users with Notification Hubs].
+	このメソッドは、デバイス トークンを含む json ペイロードを作成します。その後、モバイル サービスでカスタム API を呼び出して通知に登録します。このメソッドは、プッシュ通知のデバイス トークンを作成し、通知ハブで登録を作成するカスタム API メソッドに、デバイスの種類と共に送信します。このカスタム API は、「[通知ハブによるユーザーへの通知]」で定義されたものです。
 
-7.	Finally, in the **viewDidAppear** method, add a call to this the new **registerForNotificationsWithBackEnd** method after the user successfully authenticates, as in the following example:
+7.	最後の点として、ユーザーが正常に認証された後、**viewDidAppear** メソッド内の新しい **registerForNotificationsWithBackEnd** メソッドにこのメソッドへの呼び出しを追加します。次に例を示します。
 	
 			- (void)viewDidAppear:(BOOL)animated
 			{
@@ -91,11 +91,11 @@ This topic shows you how to request push notification registration with Azure No
 			    }];
 			}
 	
-	<div class="dev-callout"><b>Note</b>
-	<p>This makes sure that registration is requested every time that the page is loaded. In your app, you may only want to make this registration periodically to ensure that the registration is current.</p>
+	<div class="dev-callout"><b>注</b>
+	<p>これにより、ページが読み込まれるたびに登録が要求されるようになります。アプリケーションでは、この登録が常に最新の状態となるように、定期的な登録のみ行うことができます。</p>
 	</div>
 
-Now that the client app has been updated, return to the [Notify users with Notification Hubs] and update the mobile service to send notifications by using Notification Hubs.
+これで、クライアント アプリケーションが更新されました。「[通知ハブによるユーザーへの通知]」に戻り、通知ハブを使用することで通知を送信するようにモバイル サービスを更新します。
 
 <!-- Anchors. -->
 
@@ -103,8 +103,9 @@ Now that the client app has been updated, return to the [Notify users with Notif
 
 
 <!-- URLs. -->
-[Notify users with Notification Hubs]: /en-us/manage/services/notification-hubs/notify-users
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-ios/
+[通知ハブによるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-ios/
 
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Get Started with Notification Hubs]: /en-us/manage/services/notification-hubs/get-started-notification-hubs-ios/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[通知ハブの使用]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-ios/
+

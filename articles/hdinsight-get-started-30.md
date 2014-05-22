@@ -1,87 +1,85 @@
-<properties linkid="manage-services-hdinsight-get-started-hdinsight" urlDisplayName="Get Started" pageTitle="Get started using Hadoop 2.2 clusters with HDInsight | Azure" metaKeywords="" description="Get started using Hadoop 2.2 clusters with HDInsight, a big data solution. Learn how to provision clusters, run MapReduce jobs, and output data to Excel for analysis." metaCanonical="" services="hdinsight" documentationCenter="" title="Get started using Azure HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
+<properties linkid="manage-services-hdinsight-get-started-hdinsight" urlDisplayName="概要" pageTitle="HDInsight での Hadoop 2.2 クラスター使用の概要 | Azure" metaKeywords="" description="HDInsight での Hadoop 2.2 クラスター使用の概要と Big Data ソリューション。クラスターのプロビジョニングと MapReduce ジョブを実行し、データを Excel に出力して分析する方法を説明します。" metaCanonical="" services="hdinsight" documentationCenter="" title="Azure HDInsight の概要" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
 
 
 
-# Get started using Hadoop 2.2 clusters with HDInsight 
+#HDInsight での Hadoop 2.2 クラスター使用の概要
 
-HDInsight makes [Apache Hadoop][apache-hadoop] available as a service in the cloud. It makes the MapReduce software framework available in a simpler, more scalable, and cost efficient Azure environment. HDInsight also provides a cost efficient approach to the managing and storing of data using Azure Blob storage. 
+HDInsight は、[Apache Hadoop][apache-hadoop] をクラウドのサービスとして利用するためのツールです。HDInsight により、拡張性とコスト効率に優れたシンプルな Azure 環境で MapReduce ソフトウェア フレームワークを利用できます。また、HDInsight は Azure BLOB ストレージを使用して低コストでデータを管理および保存するしくみも備えています。
 
-In this tutorial, you will provision an HDInsight cluster using the Azure Management Portal, submit a Hadoop MapReduce job using PowerShell, and then import the MapReduce job output data into Excel for examination.
+このチュートリアルでは、Azure 管理ポータルを使用して HDInsight クラスターをプロビジョニングし、PowerShell を使用して Hadoop MapReduce ジョブを送信し、MapReduce ジョブの出力データを Excel にインポートして調査します。
 
-> [WACOM.NOTE] This tutorial covers using Hadoop 2.2 clusters on HDInsight. For the tutorial using Hadoop 1.2 clusters on HDInsight, see [Get started using Azure HDInsight][hdinsight-get-started].
+> [WACOM.NOTE] このチュートリアルでは、HDInsight での Hadoop 2.2 クラスターの使用について説明します。HDInsight で Hadoop 1.2 クラスターを使用するチュートリアルについては、「[Azure HDInsight の概要][hdinsight-get-started]」を参照してください。
 
-> [WACOM.NOTE]	The *asv://* syntax is not supported in HDInsight clusters version 3.0 and will not be supported in later versions. The *wasb://* syntax should be used instead. 
+> [WACOM.NOTE]	*asv://* 構文は HDInsight クラスター バージョン 3.0 でサポートされていません。また、それ以降のバージョンでもサポートされません。代わりに、*wasb://* 構文を使用する必要があります。
 
-In conjunction with the general availability of Azure HDInsight, Microsoft has also released HDInsight Emulator for Azure, formerly known as Microsoft HDInsight Developer Preview. This product targets developer scenarios and as such only supports single-node deployments. For using HDInsight Emulator, see [Get Started with the HDInsight Emulator][hdinsight-emulator].
+Azure の HDInsight を一般に利用可能にすると共に、Microsoft は HDInsight Emulator for Azure (旧称 Microsoft HDInsight 開発者プレビュー) もリリースしました。この製品は開発者シナリオを対象としており、そのため単一ノード展開のみをサポートします。HDInsight Emulator の使用法については、「[HDInsight Emulator の概要][hdinsight-emulator]」を参照してください。
 
-**Prerequisites:**
+**前提条件:**
 
-Before you begin this tutorial, you must have the following:
-
-
-- An Azure subscription. For more information about obtaining a subscription, see [Purchase Options][azure-purchase-options], [Member Offers][azure-member-offers], or [Free Trial][azure-free-trial].
-- A computer that is running Windows 8, Windows 7, Windows Server 2012, or Windows Server 2008 R2. This computer will be used to submit MapReduce jobs.
-- Office 2013 Professional Plus, Office 365 Pro Plus, Excel 2013 Standalone, or Office 2010 Professional Plus.
-
-**Estimated time to complete:** 30 minutes
-
-##In this tutorial
-
-* [Set up local environment for running PowerShell](#setup)
-* [Provision an HDInsight cluster](#provision)
-* [Run a WordCount MapReduce program](#sample)
-* [Connect to Microsoft business intelligence tools](#powerquery)
-* [Next steps](#nextsteps)
+このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 
+- Azure サブスクリプションが必要です。サブスクリプションの入手方法の詳細については、[購入オプション][azure-purchase-options]、[メンバー プラン][azure-member-offers]、または[無料評価版][azure-free-trial]に関するページを参照してください。
+- Windows 8、Windows 7、Windows Server 2012、Windows Server 2008 R2 のいずれかを実行しているコンピューターが必要です。このコンピューターは、MapReduce ジョブを送信するために使用します。
+- Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone、Office 2010 Professional Plus のいずれかが必要です。
 
-##<a id="setup"></a> Set up local environment for running PowerShell
+**所要時間: ** 30 分
 
-There are several ways to submit MapReduce jobs to HDInsight. In this tutorial, you will use Azure PowerShell. To install Azure PowerShell, run the [Microsoft Web Platform Installer][powershell-download]. Click **Run** when prompted, click **Install**, and then follow the instructions. For more information, see [Install and configure Azure PowerShell][powershell-install-configure].
+##このチュートリアルの内容
 
-The PowerShell cmdlets require your subscription information so that it can be used to manage your services.
+* [PowerShell を実行するローカル環境をセットアップする](#setup)
+* [HDInsight クラスターをプロビジョニングする](#provision)
+* [ワードカウント MapReduce プログラムを実行する](#sample)
+* [Microsoft Business Intelligence ツールに接続する](#powerquery)
+* [次のステップ](#nextsteps)
 
-**To connect to your subscription using Azure AD**
 
-1. Open the Azure PowerShell console, as instructed in [How to: Install Azure PowerShell][powershell-open].
-2. Run the following command:
+
+##<a id="setup"></a> PowerShell を実行するローカル環境をセットアップする
+
+MapReduce ジョブは、いくつかの方法で HDInsight に送信できます。このチュートリアルでは、Azure PowerShell を使用します。Azure PowerShell をインストールするには、[Microsoft Web プラットフォーム インストーラー][powershell-download]を実行します。メッセージが表示されたら **[実行]**、**[インストール]** の順にクリックして、指示に従います。詳細については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。
+
+PowerShell コマンドレットでサービスを管理するために、サブスクリプション情報が必要です。
+
+**Azure AD を使用してサブスクリプションに接続するには**
+
+1. Azure PowerShell コンソール ウィンドウを開きます。手順は「[方法: Azure PowerShell をインストールするには][powershell-open]」を参照してください。
+2. 次のコマンドを実行します。
 
 		Add-AzureAccount
 
-3. In the window, type the email address and password associated with your account. Azure authenticates and saves the credential information, and then closes the window.
+3. ウィンドウで、アカウントに関連付けられている電子メール アドレスとパスワードを入力します。Azure により資格情報が認証および保存され、ウィンドウが閉じます。
 
-The other method to connect to  your subscription is using the certificate method. For instructions, see [Install and configure Azure PowerShell][powershell-install-configure].
+サブスクリプションに接続するもう 1 つの方法は、証明書方式の使用です。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。
 	
-##<a name="provision"></a>Provision an HDInsight cluster
+##<a name="provision"></a>HDInsight クラスターをプロビジョニングする
 
-The HDInsight provision process requires an Azure Storage account to be used as the default file system. The storage account must be located in the same data center as the HDInsight compute resources. Currently, you can only provision HDInsight clusters in the following data centers:
+HDInsight のプロビジョン プロセスでは、Azure のストレージ アカウントを既定のファイル システムとして使用する必要があります。ストレージ アカウントは、HDInsight コンピューティング リソースと同じデータ センターに置く必要があります。現在、HDInsight クラスターのプロビジョニングができるのは次のデータ センターだけです。
 
-- Southeast Asia
-- North Europe
-- West Europe
-- East US
-- West US
+- 東南アジア
+- 北ヨーロッパ
+- 西ヨーロッパ
+- 米国東部
+- 米国西部
 
-You must choose one of the five data centers for your Azure Storage account.
+Azure のストレージ アカウント用に、5 か所のデータ センターのうちいずれかを選択する必要があります。
 
-**To create an Azure Storage account**
+**Azure ストレージ アカウントを作成するには**
 
-1. Sign in to the [Azure Management Portal][azure-management-portal].
-2. Click **NEW** on the lower left corner, point to **DATA SERVICES**, point to **STORAGE**, and then click **QUICK CREATE**.
+1. [Azure 管理ポータル][azure-management-portal]にサインインします。
+2. 左下にある **[新規]** をクリックし、**[データ サービス]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
 
 	![HDI.StorageAccount.QuickCreate][image-hdi-storageaccount-quickcreate]
 
-3. Enter **URL**, **LOCATION** and **REPLICATION**, and then click **CREATE STORAGE ACCOUNT**. Affinity groups are not supported. You will see the new storage account in the storage list. 
-4. Wait until the **STATUS** of the new storage account is changed to **Online**.
-5. Click the new storage account from the list to select it.
-6. Click **MANAGE ACCESS KEYS** from the bottom of the page.
-7. Make a note of the **STORAGE ACCOUNT NAME** and the **PRIMARY ACCESS KEY**.  You will need them later in the tutorial.
+3. **[URL]**、**[場所]**、および **[レプリケーション]** に値を入力し、**[ストレージ アカウントの作成]** をクリックします。アフィニティ グループはサポートされていません。新しいストレージ アカウントがストレージ一覧に表示されます。
+4. 新しいストレージ アカウントの **[状態]** 列が **[オンライン]** になるまで待ちます。
+5. 一覧の新しいストレージ アカウントをクリックして選択します。
+6. ページの下部にある **[アクセス キーの管理]** をクリックします。
+7. **[ストレージ アカウント名]** と **[プライマリ アクセス キー]** の値をメモします。この情報は後で必要になります。
 
 
-For the detailed instructions, see
-[How to Create a Storage Account][azure-create-storageaccount] and [Use Azure Blob Storage with HDInsight][hdinsight-storage].
-
+詳細な手順については、「[ストレージ アカウントの作成方法][azure-create-storageaccount]」および「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
 
 
 
@@ -99,45 +97,45 @@ For the detailed instructions, see
 
 
 
-Provision HDInsight 3.0 clusters is currently only supported using the custom create option.
+HDInsight 3.0 クラスターのプロビジョニングは、現在、カスタム作成オプションを使用した方法だけがサポートされています。
 
-**To provision an HDInsight cluster** 
+**HDInsight クラスターをプロビジョニングするには**
 
-1. Sign in to the [Azure Management Portal][azure-management-portal]. 
+1. [Azure 管理ポータル][azure-management-portal]にサインインします。
 
-2. Click **HDINSIGHT** on the left to list the HDInsight clusters under your account. In the following screenshot, there is no existing HDInsight cluster.
+2. 左側にある **[HDInsight]** をクリックして、アカウントにある HDInsight クラスターを一覧表示します。次のスクリーンショットには、既存の HDInsight クラスターが 1 つもありません。
 
 	![HDI.ClusterStatus][image-hdi-clusterstatus]
 
-3. Click **NEW** on the lower left side, click **DATA SERVICES**, click **HDINSIGHT**, and then click **CUSTOM CREATE**.
+3. 左下にある **[新規]** をクリックし、**[データ サービス]**、**[HDInsight]**、**[簡易作成]** の順にクリックします。
 
 	![HDI.CustomCreateCluster][image-hdi-customcreatecluster]
 
-4. From the Cluster Details tab, enter or select the following values:
+4. [クラスターの詳細] タブで、次の値を入力または選択します。
 
 	<table border="1">
-	<tr><th>Name</th><th>Value</th></tr>
-	<tr><td><strong>Cluster Name</strong></td><td>Name of the cluster.</td></tr>
-	<tr><td><strong>Data Nodes</strong></td><td>Number of data nodes you want to deploy. For testing purposes, create a single node cluster. <br />The cluster size limit varies for Azure subscriptions. Contact Azure billing support to increase the limit.</td></tr>
-	<tr><td><strong>HDInsight Version</strong></td><td>Choose <strong>3.0</strong> to create a Hadoop 2.2 cluster on HDInsight.</td></tr>
-	<tr><td><strong>Region</strong></td><td>Choose the same region as the storage account you created in the last procedure. HDInsight requires the storage account located in the same region. Later in the configuration, you can only choose a storage account that is in the same region as you specified here.
+	<tr><th>名前</th><th>値</th></tr>
+	<tr><td><strong>クラスター名</strong></td><td>クラスターの名前。</td></tr>
+	<tr><td><strong>データ ノード</strong></td><td>展開するデータ ノードの数。テストでは、単一ノード クラスターを作成します。<br />クラスター サイズの制限は、Azure サブスクリプションによって変わります。制限値を上げるには、Azure の課金サポートにお問い合わせください。</td></tr>
+	<tr><td><strong>HDInsight のバージョン</strong></td><td>HDInsight 上に Hadoop 2.2 クラスターを作成するために <strong>[3.0]</strong> を選択します。</td></tr>
+	<tr><td><strong>リージョン</strong></td><td>最後の手順で作成したストレージ アカウントと同じリージョンを選択します。HDInsight は、同じリージョンに配置されたストレージ アカウントを必要とします。これ以後の構成作業では、ここで指定した地域と同じリージョンにあるストレージ アカウントしか選択できません。
 	</td></tr>
 	</table>
 
-4. Click the right arrow in the bottom right corner to configure cluster user. 
-4. From the Configure Cluster user tab, enter **User Name** and **Password** for the HDInsight cluster user account. In addition to this account, you can create a RDP user account after the cluster is provisioned, so you can remote desktop into the cluster. For instructions, see [Administer HDInsight using Management portal][hdinsight-admin-portal]
-4. Click the right arrow in the bottom right corner to configure the storage account. 
-5. From the Storage Account tag, enter or select the following values:
+4. ページの右下隅にある右矢印をクリックして、クラスター ユーザーを構成します。
+4. [クラスター ユーザーの構成] タブで、HDInsight クラスターのユーザー アカウントの **[ユーザー名]** と **[パスワード]** を入力します。クラスターをプロビジョニングした後、このアカウントに加えて、RDP ユーザー アカウントも作成できるため、クラスターにリモート デスクトップ接続することができます。手順については、「[管理ポータルを使用した HDInsight の管理][hdinsight-admin-portal]」を参照してください。
+4. ページの右下隅にある右矢印をクリックして、ストレージ アカウントを構成します。
+5. [ストレージ アカウント] タブで、次の値を入力または選択します。
 
 	<table border="1">
-	<tr><th>Name</th><th>Value</th></tr>
-	<tr><td>STORAGE ACCOUNT</td><td>Select <strong>Use Existing Storage</strong>. You also have the option to have the management portal to create a new storage account if you don't have one created.</td></tr>
-	<tr><td>ACCOUNT NAME</td><td>Specify the storage account you created in the last procedure of this tutorial. Note only the storage accounts in the same region are displayed in the list box.</td></tr>
-	<tr><td>DEFAULT CONTAINER</td><td>Select <strong>Create defatul container</strong>. When this options is chosen, the default container name has the same name as the cluster name.</td></tr>
-	<tr><td>ADDITIONAL STORATGE ACCOUNT</td><td>Select <strong>0</strong>. You have the option to connect the cluster to up to 7 additional storage acounts.</td></tr>
+	<tr><th>名前</th><th>値</th></tr>
+	<tr><td>ストレージ アカウント</td><td><strong>[既存のストレージを使用する]</strong> を選択します。新しいストレージ アカウントを作成していない場合は、管理ポータルに作成させることもできます。</td></tr>
+	<tr><td>アカウント名</td><td>このチュートリアルの最後の手順で作成したストレージ アカウントを指定します。リスト ボックスには同じリージョンのストレージ アカウントだけが表示されることに注意してください。</td></tr>
+	<tr><td>既定のコンテナー</td><td> <strong>[既定のコンテナーの作成]</strong> を選択します。このオプションを選択した場合、既定のコンテナー名はクラスター名と同じになります。</td></tr>
+	<tr><td>追加のストレージ アカウント</td><td><strong>[0]</strong> を選択します。クラスターは最大 7 個の追加のストレージ アカウントに接続することができます。</td></tr>
 	</table>
 
-5. Click the check icon in the bottom right corner to create the cluster. When the provision process completes, the  status column will show **Running**.
+5. 右下隅にあるチェック アイコンをクリックして、クラスターを作成します。プロビジョニング処理が完了すると、[状態] 列に **[実行中]** と表示されます。
 
 
 
@@ -146,38 +144,36 @@ Provision HDInsight 3.0 clusters is currently only supported using the custom cr
 
 
 
-##<a name="sample"></a>Run a WordCount MapReduce job
+##<a name="sample"></a>ワードカウント MapReduce ジョブを実行する
 
-Now you have an HDInsight cluster provisioned. The next step is to run a MapReduce job to count words in a text file. 
+HDInsight クラスターのプロビジョニングが終わりました。次は、MapReduce ジョブを実行してテキスト ファイルの単語数を計算します。
 
-Running a MapReduce job requires the following elements:
+MapReduce ジョブを実行するには次の要素が必要です。
 
-* A MapReduce program. In this tutorial, you will use the WordCount sample that comes with the HDInsight cluster distribution so you don't need to write your own. It is located on */example/jars/hadoop-mapreduce-examples.jar*. For instructions on writing your own MapReduce job, see [Develop Java MapReduce programs for HDInsight][hdinsight-develop-MapReduce].
+* MapReduce プログラム。このチュートリアルでは、HDInsight クラスター ディストリビューションに付属するワードカウント サンプルを使用するため、自分で書く必要はありません。プログラムは */example/jars/hadoop-mapreduce-examples.jar* に格納されています。独自の MapReduce ジョブの作成手順については、「[HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-MapReduce]」を参照してください。
 
-* An input file. You will use */example/data/gutenberg/davinci.txt* as the input file. For information on upload files, see [Upload Data to HDInsight][hdinsight-upload-data].
-* An output file folder. You will use */example/data/WordCountOutput* as the output file folder. The system will create the folder if it doesn't exist.
+* 入力ファイル。*/example/data/gutenberg/davinci.txt* を入力ファイルとして使用します。ファイルのアップロードについては、「[データを HDInsight へアップロードする方法][hdinsight-upload-data]」を参照してください。
+* 出力ファイル フォルダー。*/example/data/WordCountOutput* を出力ファイル フォルダーとして使用します。フォルダーが存在しない場合は自動的に作成されます。
 
-The URI scheme for accessing files in Blob storage is:
+BLOB ストレージ内のファイルにアクセスするための URI スキームは次のとおりです。
 
 	wasb[s]://<containername>@<storageaccountname>.blob.core.windows.net/<path>
 
-> [WACOM.NOTE] By default, the Blob container used for the default file system has the same name as the HDInsight cluster.
+> [WACOM.NOTE] 既定で、既定のファイル システムに使用される Blob コンテナーの名前は、HDInsight クラスターと同じです。
 
-The URI scheme provides both unencrypted access with the *wasb:* prefix, and SSL encrypted access with wasbs. We recommend using wasbs wherever possible, even when accessing data that lives inside the same Azure data center.
+この URI スキームは、暗号化なしのアクセス (*wasb:* プレフィックス) と SSL で暗号化されたアクセス (wasbs:) の両方に対応しています。同じ Azure データ センター内のデータにアクセスする場合でも、できる限り wasbs を使用することをお勧めします。
 
-Because HDInsight uses a Blob Storage container as the default file system, you can refer to files and directories inside the default file system using relative or absolute paths.
+HDInsight は既定のファイル システムとして BLOB ストレージ コンテナーを使用するので、相対パスまたは絶対パスを使用して、既定のファイル システム内のファイルとディレクトリを指定できます。
 
-For example, to access the hadoop-mapreduce-examples.jar, you can use one of the following options:
+たとえば、hadoop-mapreduce-examples.jar にアクセスする場合、次のいずれかを使用できます。
 
 	● wasb://<containername>@<storageaccountname>.blob.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
 	● wasb:///example/jars/hadoop-mapreduce-examples.jar
 	● /example/jars/hadoop-mapreduce-examples.jar
 				
-The use of the *wasb://* prefix in the paths of these files. This is needed to indicate Azure Blob Storage is being used for input and output files. The output directory assumes a default path relative to the *wasb:///user/&lt;username&gt;* folder. 
+これらのファイルのパスの先頭には *wasb://* が使用されています。これは、入力ファイルと出力ファイルで Azure BLOB ストレージを使用することを示しています。出力ディレクトリの既定のパスは、*wasb:///user/&lt;username&gt;* フォルダーを基準とした相対パスです。
 
-For more information, see [Use Azure Blob Storage with HDInsight][hdinsight-storage].
-
-
+詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
 
 
 
@@ -197,42 +193,44 @@ For more information, see [Use Azure Blob Storage with HDInsight][hdinsight-stor
 
 
 
-**To run the WordCount sample**
 
-1. Open **Azure PowerShell**. For instructions of opening Azure PowerShell console window, see [Install and configure Azure PowerShell][powershell-install-configure].
 
-3. Run the following commands to set the variables.  
+**ワードカウント サンプルを実行するには**
+
+1. **Azure PowerShell** を開きます。Azure PowerShell コンソール ウィンドウを開く手順については、[Azure PowerShell のインストールと構成に関するページ][powershell-install-configure]を参照してください。
+
+3. 次のコマンドを実行して、変数を設定します。
 		
 		$subscriptionName = "<SubscriptionName>" 
 		$clusterName = "<HDInsightClusterName>"        
 		
-5. Run the following commands to create a MapReduce job definition:
+5. 次のコマンドを実行して、MapReduce ジョブ定義を作成します。
 
 		# Define the MapReduce job
 		$wordCountJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" -ClassName "wordcount" -Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data/WordCountOutput"
 
-	The hadoop-mapreduce-examples.jar file comes with the HDInsight cluster distribution. There are two arguments for the MapReduce job. The first one is the source file name, and the second is the output file path. The source file comes with the HDInsight cluster distribution, and the output file path will be created at the run-time.
+	hadoop-mapreduce-examples.jar ファイルは HDInsight クラスターのディストリビューションに付属しています。MapReduce ジョブには引数が 2 つあります。最初の引数はソース ファイル名で、2 つ目の引数は出力ファイル パスです。ソース ファイルは HDInsight クラスターのディストリビューションに付属しており、出力ファイル パスは実行時に作成されます。
 
-6. Run the following command to submit the MapReduce job:
+6. 次のコマンドを実行して、MapReduce ジョブを送信します。
 
 		# Submit the job
 		Select-AzureSubscription $subscriptionName
 		$wordCountJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $wordCountJobDefinition 
 		
-	In addition to the MapReduce job definition, you must also provide the HDInsight cluster name where you want to run the MapReduce job. 
+	MapReduce ジョブ定義に加えて、MapReduce ジョブを実行する HDInsight クラスター名も指定する必要があります。
 
-	The *Start-AzureHDInsightJob* is an asynchroized call.  To check the completion of the job, use the *Wait-AzureHDInsightJob* cmdlet.
+	*Start-AzureHDInsightJob* は非同期呼び出しです。ジョブの完了を確認するには、*Wait-AzureHDInsightJob* コマンドレットを使用します。
 
-6. Run the following command to check the completion of the MapReduce job:
+6. 次のコマンドを実行して、MapReduce ジョブの完了を確認します。
 
 		Wait-AzureHDInsightJob -Job $wordCountJob -WaitTimeoutInSeconds 3600 
 		
-8. Run the following command to check any errors with running the MapReduce job:	
+8. 次のコマンドを実行して、MapReduce ジョブの実行中に発生したエラーを確認します。	
 	
 		# Get the job output
 		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $wordCountJob.JobId -StandardError
 		
-	The following screenshot shows the output of a successful run. Otherwise, you will see some error messages.
+	次のスクリーンショットは、正常実行時の出力を示しています。正常でない場合は、エラー メッセージが表示されます。
 
 	![HDI.GettingStarted.RunMRJob][image-hdi-gettingstarted-runmrjob]
 
@@ -267,128 +265,128 @@ For more information, see [Use Azure Blob Storage with HDInsight][hdinsight-stor
 
 
 
-**To retrieve the results of the MapReduce job**
+**MapReduce ジョブの結果を取得するには**
 
-1. Open **Azure PowerShell**.
-2. Run the following commands to create a C:\Tutorials folder, and change directory to the folder:
+1. **Azure PowerShell** を開きます。
+2. 次のコマンドを実行して、C:\Tutorials フォルダーを作成し、そのフォルダーに移動します。
 
 		mkdir \Tutorials
 		cd \Tutorials
 	
-	The default Azure Powershell directory is *C:\Windows\System32\WindowsPowerShell\v1.0*. By default, you don't have the write permission on this folder. You must change directory to a folder where you have write permission.
+	Azure Powershell の既定のディレクトリは *C:\Windows\System32\WindowsPowerShell\v1.0* です。既定では、このフォルダーに対する書き込みアクセス許可がありません。書き込みアクセス許可があるフォルダーに移動する必要があります。
 	
-2. Set the three variables in the following commands, and then run them:
+2. 次のコマンドの 3 つの変数を設定し、コマンドを実行します。
 
 		$subscriptionName = "<SubscriptionName>"       
 		$storageAccountName = "<StorageAccountName>"   
 		$containerName = "<ContainerName>"			   
 
-	The Azure Storage account is the one you created earlier in the tutorial. The storage account is used to host the Blob container that is used as the default HDInsight cluster file system.  The Blob storage container name usually share the same name as the HDInsight cluster unless you specify a different name when you provision the cluster.
+	Azure のストレージ アカウントは、このチュートリアルで先に作成したアカウントです。ストレージ アカウントは、既定の HDInsight クラスター ファイル システムとして使用する BLOB コンテナーをホストするために使用されます。BLOB ストレージ コンテナー名は、クラスターのプロビジョニング時に別の名前を指定しない限り、通常、HDInsight クラスターと同じ名前です。
 
-3. Run the following commands to create an Azure storage context object:
+3. 次のコマンドを実行して、Azure のストレージ コンテキスト オブジェクトを作成します。
 		
 		# Create the storage account context object
 		Select-AzureSubscription $subscriptionName
 		$storageAccountKey = Get-AzureStorageKey $storageAccountName | %{ $_.Primary }
 		$storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
 
-	The *Select-AzureSubscription* is used to set the current subscription in case you have multiple subscriptions, and the default subscription is not the one to use. 
+	*Select-AzureSubscription* は、サブスクリプションが複数あり、使用するサブスクリプションが既定のサブスクリプションではない場合に、現在のサブスクリプションを設定するために使用します。
 
-4. Run the following command to download the MapReduce job output from the Blob container to the workstation:
+4. 次のコマンドを実行して、MapReduce ジョブの出力を BLOB コンテナーからワークステーションにダウンロードします。
 
 		# Download the job output to the workstation
 		Get-AzureStorageBlobContent -Container $ContainerName -Blob example/data/WordCountOutput/part-r-00000 -Context $storageContext -Force
 
-	The *example/data/WordCountOutput* folder is the output folder specified when you run the MapReduce job. *part-r-00000* is the default file name for MapReduce job output.  The file will be download to the same folder structure on the local folder. For example, in the following screenshot, the current folder is the C root folder. The file will be downloaded to the *C:\example\data\WordCountOutput&#92;* folder.
+	*example/data/WordCountOutput* フォルダーは、MapReduce ジョブの実行時に指定した出力フォルダーです。*part-r-00000* は MapReduce ジョブの出力の既定のファイル名です。ファイルはフォルダー構造を保ったままローカル フォルダーにダウンロードされます。たとえば、次のスクリーンショットでは、現在のフォルダーが C ドライブのルート フォルダーです。ファイルは *C:\example\data\WordCountOutput\#92;* フォルダーにダウンロードされます。
 
-5. Run the following command to print the MapReduce job output file:
+5. 次のコマンドを実行して、MapReduce ジョブの出力ファイルの内容を表示します。
 
 		cat ./example/data/WordCountOutput/part-r-00000 | findstr "there"
 
 	![HDI.GettingStarted.MRJobOutput][image-hdi-gettingstarted-mrjoboutput]
 
-	The MapReduce job produces a file named *part-r-00000* with the words and the counts.  The script uses the findstr command to list all of the words that contains *"there"*.
+	MapReduce ジョブは、単語と出現回数が記録された *part-r-00000* という名前のファイルを作成します。スクリプトでは findstr コマンドを使用して、*"there"* を含む単語をすべて表示しています。
 
 
-> [WACOM.NOTE] If you open <i>./example/data/WordCountOutput/part-r-00000</i>, a multi-line output from a MapReduce job, in Notepad, you will notice the line breaks are not renter correctly. This is expected.
+> [WACOM.NOTE]MapReduce ジョブで出力された複数行を含む <i>./example/data/WordCountOutput/part-r-00000</i> ファイルをメモ帳で開いた場合、改行が正しく表示されません。これは予期されることです。
 
 
 	
-##<a name="powerquery"></a>Connecting to Microsoft business intelligence tools 
+##<a name="powerquery"></a>Microsoft Business Intelligence ツールに接続する
 
-The Power Query add-in for Excel can be used to export output from HDInsight into Excel where Microsoft Business Intelligence (BI) tools can be used to further process or display the results. When you created an HDInsight cluster, a default container with the same name as the cluster was created in the storage account associated with it when it was created. This is automatically populated with a set of files. One of these files is a sample Hive table. In this section we will show how to import the data contained in this table into Excel for viewing and additional processing.
+Power Query for Excel アドインを使用すると、Excel に HDInsight の出力をエクスポートして、Microsoft Business Intelligence (BI) ツールで結果をさらに処理し表示することができます。HDInsight クラスターを作成したときに、クラスターと同じ名前を持つ既定のコンテナーが、クラスターに関連付けられたストレージ アカウントに作成されています。コンテナーにはファイル セットが自動的に配置されます。そのうちの 1 つがサンプル Hive テーブルです。このセクションでは、このテーブルに格納されているデータを Excel にインポートして表示し、追加の処理を実行する方法を説明します。
 
-You must have Excel 2010 or 2013 installed to complete this part of the tutorial. Here we will import the default Hive table that ships in HDInsight.
+チュートリアルのこの部分を完了するには、Excel 2010 または 2013 がインストールされている必要があります。ここでは HDInsight に付属する既定の Hive テーブルをインポートします。
 
-**To download Microsoft PowerQuery for Excel**
+**Microsoft Power Query for Excel をダウンロードするには**
 
-- Download Microsoft Power Query for Excel from the [Microsoft Download Center](http://www.microsoft.com/en-us/download/details.aspx?id=39379) and install it.
+- [Microsoft ダウンロード センター](http://www.microsoft.com/ja-jp/download/details.aspx?id=39379)から Microsoft Power Query for Excel をダウンロードして、インストールします。
 
-**To import HDInsight data**
+**HDInsight データをインポートするには**
 
-1. Open Excel, and create a new blank workbook.
-3. Click the **Power Query** menu, click **From Other Sources**, and then click **From Azure HDInsight**.
+1. Excel を開き、新しい空のブックを作成します。
+3. **[Power Query]** メニューをクリックし、**[その他のデータ ソース]**、**[Azure の HDInsight]** の順にクリックします。
 
 	![HDI.GettingStarted.PowerQuery.ImportData][image-hdi-gettingstarted-powerquery-importdata]
 
-3. Enter the **Account Name** of the Azure Blob Storage Account associated with your cluster, and then click **OK**. This is the storage account you created earlier in the tutorial.
-4. Enter the **Account Key** for the Azure Blob Storage Account, and then click **Save**. 
-5. In the Navigator pane on the right, double-click the Blob storage container name. By default the container name is the same name as the cluster name. 
+3. クラスターに関連付けられた Azure BLOB ストレージ アカウントの名前を **[アカウント名]** ボックスに入力し、**[OK]** をクリックします。これは、このチュートリアルで先に作成したストレージ アカウントです。
+4. Azure BLOB ストレージ アカウントのアカウント キーを **[アカウント キー]** ボックスに入力し、**[保存]** をクリックします 
+5. 右側にある [ナビゲーター] ウィンドウで、BLOB ストレージ コンテナーの名前をダブルクリックします。既定で、コンテナー名はクラスター名と同じです。
 
-6. Locate **part-r-00000** in the **Name** column (the path is *.../example/data/WordCountOutput*), and then click **Binary** on the left of **part-r-00000**.
+6. **[名前]** 列にある **[part-r-00000]** (パスは *.../example/data/WordCountOutput*) を見つけて、**[part-r-00000]** の左側にある **[バイナリ]** をクリックします。
 
 	![HDI.GettingStarted.PowerQuery.ImportData2][image-hdi-gettingstarted-powerquery-importdata2]
 
-8. Right-click **Column1.1**, and then select **Rename**.
-9. Change the name to **Word**.
-10. Repeat the process to rename **Column1.2** to **Count**.
+8. **[Column1.1]** を右クリックし、**[名前の変更]** をクリックします。
+9. 名前を「**Word**」に変更します。
+10. 同様にして **[Column1.2]** を「**Count**」に変更します。
 
 	![HDI.GettingStarted.PowerQuery.ImportData3][image-hdi-gettingstarted-powerquery-importdata3]
 
-9. Click **Apply & Close** in the upper left corner. The query then imports the Hive Table into Excel.
+9. 左上隅にある **[適用して閉じる]** をクリックします。このクエリは Excel に Hive テーブルをインポートします。
 
-##<a name="nextsteps"></a>Next steps
-In this tutorial, you have learned how to provision a cluster with HDInsight, run a MapReduce job on it, and import the results into Excel where they can be further processed and graphically displayed using BI tools. To learn more, see the following articles:
+##<a name="nextsteps"></a>次のステップ
+このチュートリアルでは、HDInsight を使用してクラスターをプロビジョニングした後、そのクラスター上で MapReduce ジョブを実行し、結果を Excel にインポートする方法を説明しました。このデータは、BI ツールを使用してさらに処理し、グラフィカルに表示することができます。詳細については、次の記事を参照してください。
 
-- [Get started with HDInsight][hdinsight-get-started]
-- [Get started with the HDInsight Emulator][hdinsight-emulator]
-- [Use Azure Blob storage with HDInsight][hdinsight-storage]
-- [Administer HDInsight using PowerShell][hdinsight-admin-powershell]
-- [Upload data to HDInsight][hdinsight-upload-data]
-- [Use Hive with HDInsight][hdinsight-hive]
-- [Use Pig with HDInsight][hdinsight-pig]
-- [Use Oozie with HDInsight][hdinsight-oozie]
-- [Develop C# Hadoop streaming MapReduce programs for HDInsight][hdinsight-develop-streaming]
-- [Develop Java MapReduce programs for HDInsight][hdinsight-develop-mapreduce]
+- [HDInsight の使用][hdinsight-get-started]
+- [HDInsight Emulator の概要][hdinsight-emulator]
+- [HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]
+- [PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
+- [HDInsight へのデータのアップロード][hdinsight-upload-data]
+- [HDInsight での Hive の使用][hdinsight-hive]
+- [HDInsight での Pig の使用][hdinsight-pig]
+- [Use Oozie with HDInsight (HDInsight での Oozie の使用)][hdinsight-oozie]
+- [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発][hdinsight-develop-streaming]
+- [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][hdinsight-develop-mapreduce]
 
 
-[hdinsight-get-started]: /en-us/documentation/articles/hdinsight-get-started/
-[hdinsight-get-started-3.0]: /en-us/documentation/articles/hdinsight-get-started-30/
-[hdinsight-provision]: /en-us/documentation/articles/hdinsight-provision-clusters/
-[hdinsight-admin-powershell]: /en-us/documentation/articles/hdinsight-administer-use-powershell/
-[hdinsight-upload-data]: /en-us/documentation/articles/hdinsight-upload-data/
-[hdinsight-mapreduce]: /en-us/documentation/articles/hdinsight-use-mapreduce
-[hdinsight-hive]: /en-us/documentation/articles/hdinsight-use-hive/
-[hdinsight-pig]: /en-us/documentation/articles/hdinsight-use-pig/
-[hdinsight-oozie]: /en-us/documentation/articles/hdinsight-use-oozie/
-[hdinsight-storage]: /en-us/documentation/articles/hdinsight-use-blob-storage/
-[hdinsight-emulator]: /en-us/documentation/articles/hdinsight-get-started-emulator/
-[hdinsight-develop-streaming]: /en-us/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/
-[hdinsight-develop-mapreduce]: /en-us/documentation/articles/hdinsight-develop-deploy-java-mapreduce/
-[hdinsight-admin-portal]: /en-us/documentation/articles/hdinsight-administer-use-management-portal/
-[hdinsight-develop-streaming]: /en-us/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/
+[hdinsight-get-started]: /ja-jp/documentation/articles/hdinsight-get-started/
+[hdinsight-get-started-3.0]: /ja-jp/documentation/articles/hdinsight-get-started-30/
+[hdinsight-provision]: /ja-jp/documentation/articles/hdinsight-provision-clusters/
+[hdinsight-admin-powershell]: /ja-jp/documentation/articles/hdinsight-administer-use-powershell/
+[hdinsight-upload-data]: /ja-jp/documentation/articles/hdinsight-upload-data/
+[hdinsight-mapreduce]: /ja-jp/documentation/articles/hdinsight-use-mapreduce
+[hdinsight-hive]: /ja-jp/documentation/articles/hdinsight-use-hive/
+[hdinsight-pig]: /ja-jp/documentation/articles/hdinsight-use-pig/
+[hdinsight-oozie]: /ja-jp/documentation/articles/hdinsight-use-oozie/
+[hdinsight-storage]: /ja-jp/documentation/articles/hdinsight-use-blob-storage/
+[hdinsight-emulator]: /ja-jp/documentation/articles/hdinsight-get-started-emulator/
+[hdinsight-develop-streaming]: /ja-jp/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/
+[hdinsight-develop-mapreduce]: /ja-jp/documentation/articles/hdinsight-develop-deploy-java-mapreduce/
+[hdinsight-admin-portal]: /ja-jp/documentation/articles/hdinsight-administer-use-management-portal/
+[hdinsight-develop-streaming]: /ja-jp/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/
 
-[azure-purchase-options]: https://www.windowsazure.com/en-us/pricing/purchase-options/
-[azure-member-offers]: https://www.windowsazure.com/en-us/pricing/member-offers/
-[azure-free-trial]: https://www.windowsazure.com/en-us/pricing/free-trial/
+[azure-purchase-options]: https://www.windowsazure.com/ja-jp/pricing/purchase-options/
+[azure-member-offers]: https://www.windowsazure.com/ja-jp/pricing/member-offers/
+[azure-free-trial]: https://www.windowsazure.com/ja-jp/pricing/free-trial/
 [azure-management-portal]: https://manage.windowsazure.com/
-[azure-create-storageaccount]: /en-us/documentation/articles/storage-create-storage-account/ 
+[azure-create-storageaccount]: /ja-jp/documentation/articles/storage-create-storage-account/ 
 
 [apache-hadoop]: http://hadoop.apache.org/
 
 [powershell-download]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[powershell-install-configure]: /en-us/documentation/articles/install-configure-powershell/
-[powershell-open]: /en-us/documentation/articles/install-configure-powershell/#install
+[powershell-install-configure]: /ja-jp/documentation/articles/install-configure-powershell/
+[powershell-open]: /ja-jp/documentation/articles/install-configure-powershell/#install
 
 [image-hdi-storageaccount-quickcreate]: ./media/hdinsight-get-started-3.0/HDI.StorageAccount.QuickCreate.png
 [image-hdi-clusterstatus]: ./media/hdinsight-get-started-3.0/HDI.ClusterStatus.png
@@ -399,3 +397,5 @@ In this tutorial, you have learned how to provision a cluster with HDInsight, ru
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.PowerQuery.ImportData2.png
 [image-hdi-gettingstarted-powerquery-importdata3]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.PowerQuery.ImportData3.png
+
+

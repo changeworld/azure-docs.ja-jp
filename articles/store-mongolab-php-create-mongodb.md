@@ -1,3 +1,4 @@
-<properties title="How to use MongoLab to Create a MongoDB database in Azure" pageTitle="How to use MongoLab to Create a MongoDB database in Azure" metaKeywords="MongoLab MongoDB Azure" description="Learn how to use MongoLab to create a MongoDB database in Azure." documentationCenter="PHP" services="" authors="" />
+<properties title="Azure で MongoLab を使用して MongoDB データベースを作成する方法" pageTitle="Azure で MongoLab を使用して MongoDB データベースを作成する方法" metaKeywords="MongoLab MongoDB Azure" description="MongoLab で MongoDB データベースを作成して Azure アプリケーションと連携させる方法について説明します。" documentationCenter="PHP" services="" authors="" />
 
 [WACOM.INCLUDE [create-mongolab-mongodb](../includes/create-mongolab-mongodb.md)]
+

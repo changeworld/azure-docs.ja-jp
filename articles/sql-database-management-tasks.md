@@ -1,70 +1,70 @@
-<properties umbracoNaviHide="0" pageTitle="How to Manage SQL Database" metaKeywords="Azure SQL database, SQL database, manage sql database, add logins, connect to sql database" description="Learn how to manage Azure SQL database." linkid="devnav-manage-services-cloud-services" urlDisplayName="Cloud Services" headerExpose="" footerExpose="" disqusComments="1" title="How to Manage SQL Database" authors="" />
+<properties umbracoNaviHide="0" pageTitle="SQL データベースの管理方法" metaKeywords="Azure SQL データベース, SQL データベース, sql データベースの管理, ログインの追加, sql データベースへの接続" description="Azure SQL データベースの管理方法について説明します。" linkid="devnav-manage-services-cloud-services" urlDisplayName="クラウド サービス" headerExpose="" footerExpose="" disqusComments="1" title="SQL データベースの管理方法" authors="" />
 
 
-<h1><a id="swap"></a>How to Manage SQL Database</h1>
+<h1><a id="swap"></a>SQL データベースの管理方法</h1>
 
-This topic shows you how to perform simple management tasks on Azure SQL Database. 
+このトピックでは、Azure SQL データベースに対して単純な管理タスクを実行する方法を示します。
 
-##Table of Contents##
+##目次##
 
-* [How to: Connect to SQL Database in Azure using Management Studio](#connect)
-* [How to: Add logins and users to SQL Database in Azure](#addlogins)
-
-
-<h2><a id="connect"></a>How to: Connect to SQL Database in Azure using Management Studio</h2>
-
-Management Studio is an administrative tool that lets you manage multiple SQL Server instances and servers in a single workspace. If you already have an on-premises SQL Server instance, you can open a connection to both the on-premises instance and a logical server on Azure to perform tasks side by side.
-
-Management Studio includes features that are not currently available in the management portal, such as a syntax checker and the ability to save scripts and named queries for reuse. SQL Database is just a tabular data stream (TDS) endpoint. Any tools that work with TDS, including Management Studio, are valid for SQL Database operations. Scripts that you develop for on-premises server will run on a SQL Database logical server. 
-
-In the following step, you'll use Management Studio to connect to a logical server on Azure. This step requires you to have SQL Server Management Studio version 2008 R2 or 2012. If you need help downloading or connecting to  Management Studio, see [Managing SQL Database using Management Studio][] on this site.
-
-Before you can connect, it is sometimes necessary to create a firewall exception that allows outbound requests on port 1433 on your local system. Computers that are secure by default typically do not have port 1433 open. 
-
-##Configure the firewall for an on-premises server
-
-1. In Windows Firewall with Advanced Security, create a new outbound rule.
-
-2. Choose **Port**, specify TCP 1433, specify **Allow the connection**, and be sure that the **Public** profile is selected.
-
-3. Provide a meaningful name, such as *WindowsAzureSQLDatabase (tcp-out) port 1433*. 
+* [Management Studio を使用して Azure 上の SQL データベースに接続する方法](#connect)
+* [Azure 上の SQL データベースにログインとユーザーを追加する方法](#addlogins)
 
 
-##Connect to a logical server
+<h2><a id="connect"></a>Management Studio を使用して Azure 上の SQL データベースに接続する方法</h2>
 
-1. In Management Studio, in Connect to Server, make sure that Database Engine is selected, then enter the logical server name in this format: *servername*.database.widnows.net
+Management Studio は、単一のワークスペースで複数の SQL Server インスタンスと複数のサーバーを管理できる管理ツールです。内部設置型の SQL Server インスタンスが既に存在する場合は、タスクをサイド バイ サイドで実行するために、内部設置型インスタンスと Azure 上の論理サーバーの両方に対して接続を開くことができます。
 
-	You can also get the fully qualified server name in the management portal, on the server dashboard, in MANAGE URL.
+Management Studio には、構文チェック機能や、再利用の目的でスクリプトと名前付きクエリを保存する機能など、現時点では管理ポータルで使用できない機能が含まれています。SQL データベースは、単純な表形式のデータ ストリーム (TDS) エンドポイントです。Management Studio を含め、TDS に対して使用できるどのツールも、SQL データベースを操作するときに有効に使用できます。内部設置型サーバーを対象にして作成したスクリプトは、SQL データベース論理サーバーで実行されます。
 
-2. In Authentication, choose **SQL Server Authentication** and then enter the administrator login that you created when you configured the logical server.
+この手順では、Management Studio を使用して、Azure 上の論理サーバーに接続します。この手順では SQL Server Management Studio Version 2008 R2 または 2012 が必要です。Management Studio のダウンロードまたは接続に関するヘルプが必要な場合は、このサイトの「[SQL Server Management Studio を使用した SQL データベースの管理][]」を参照してください。
 
-3. Click **Options**. 
+接続する前に、ローカル システムのポート 1433 で送信要求を許可するファイアウォールの例外を作成する必要が生じることがあります。既定でセキュリティにより保護されたコンピューターでは通常、ポート 1433 が開かれていません。
 
-4. In Connect to database, specify **master**.
+##内部設置型サーバーのファイアウォールの構成
+
+1. セキュリティが強化された Windows ファイアウォールで、新しい送信の規則を作成します。
+
+2. **[ポート]** をクリックし、TCP 1433 を指定して、**[接続を許可する]** を選択し、**[パブリック]** プロファイルが選択されていることを確認します。
+
+3. *WindowsAzureSQLDatabase (tcp-out) port 1433* など、わかりやすい名前を指定します。
 
 
-##Connect to an on-premises server
+##論理サーバーに接続する
 
-1. In Management Studio, in Connect to Server, make sure that Database Engine is selected, then enter the name of a local instance in this format: *servername*\\*instancename*. If the server is local and a default instance, enter *localhost*.
+1. Management Studio の [サーバーに接続する] で、データベース エンジンが選択されていることを確認し、*サーバー名*.database.widnows.net という形式で論理サーバー名を入力します。
 
-2. In Authentication, choose **Windows Authentication** and then enter a Windows account that is a member of the sysadmin role.
+	サーバー ダッシュボードの [URL の管理] で、管理ポータルで使用されている完全修飾サーバー名を取得することもできます。
+
+2. [認証] で **[SQL Server 認証]** を選択し、論理サーバーを構成したときに作成した管理者ログインを入力します。
+
+3.  **[オプション]** をクリックします。
+
+4. [データベースへの接続] で **master** を指定します。
 
 
-<h2><a id="addlogins"></a>How to: Add logins and users to SQL Database in Azure</h2>
+##内部設置型サーバーに接続する
 
-After you deploy a database, you need to configure logins and assign permissions. In the next step, you’ll run two scripts.
+1. Management Studio の [サーバーに接続する] で、データベース エンジンが選択されていることを確認し、*サーバー名*\\*instancename* という形式でローカル インスタンスの名前を入力します。サーバーがローカルであり、既定のインスタンスを使用している場合は、「*localhost*」と入力します。
 
-For the first script, you'll connect to master and run a script that creates logins. Logins will be used to support read and write operations, and to delegate operational tasks, such as the ability to run system queries without ‘sa’ permissions.
+2. [認証] で **[Windows 認証]** を選択し、sysadmin ロールのメンバーである Windows アカウントを入力します。
 
-The logins you create must be SQL Server authentication logins. If you already have ready-made scripts that use Windows user identities or claims identities, that script will not work on SQL Database.
 
-The second script assigns database user permissions. For this script, you will connect to a database already loaded on Azure.
+<h2><a id="addlogins"></a>Azure 上の SQL データベースにログインとユーザーを追加する方法</h2>
 
-##Create logins
+データベースをデプロイした後に、ログインを構成し、アクセス許可を割り当てる必要があります。次の手順では、2 つのスクリプトを実行します。
 
-1. In Management Studio, connect to a logical server on Azure, expand the Databases folder, right-click **master**, and select **New Query**.
+最初のスクリプトでは、master データベースに接続してログインを作成するスクリプトを実行します。ログインは、読み取り操作と書き込み操作をサポートするため、および OLE_LINK1OLE_LINK6 "sa" アクセス許可なしでシステム クエリを実行する機能など、OLE_LINK1OLE_LINK6 操作タスクを委任するために使用されます。
 
-2. Use the following Transact-SQL statements to create logins. Replace the password with a valid password. Select each one individually, and then click **Execute**. Repeat for the remaining logins.
+作成するログインは、SQL Server 認証ログインであることが必要です。Windows ユーザーの ID を使用する、または ID を要求するスクリプトが既に存在している場合は、そのスクリプトは SQL データベースで動作しません。
+
+2 つ目のスクリプトは、データベース ユーザーにアクセス許可を割り当てます。このスクリプトでは、既に Azure に読み込まれているデータベースに接続します。
+
+##ログインを作成する
+
+1. Management Studio で、Azure 上の論理サーバーに接続し、データベース フォルダーを開き、**master** を右クリックして、**[新しいクエリ]** をクリックします。
+
+2.  次の Transact SQL ステートメントを使用して、ログインを作成します。パスワードを、有効なパスワードに置き換えます。それぞれを個別に選択し、**[実行]** をクリックします。残りのログインに対して、同じ手順を繰り返します。
 
 <div style="width:auto; height:auto; overflow:auto"><pre>
     -- run on master, execute each line separately
@@ -80,11 +80,11 @@ The second script assigns database user permissions. For this script, you will c
 </pre></div>
 
 
-##Create database users
+##データベース ユーザーを作成する
 
-1. Expand the Databases folder, right-click **school**, and select **New Query**.
+1.  データベース フォルダーを展開し、**school** を右クリックして、**[新しいクエリ]** をクリックします。
 
-2. Use the following Transact-SQL statements to add database users. Replace the password with a valid password. 
+2.  次の Transact SQL ステートメントを使用し、データベース ユーザーを追加します。パスワードを、有効なパスワードに置き換えます。
 
 <div style="width:auto; height:auto; overflow:auto"><pre>
     -- run on a regular database, execute each line separately
@@ -102,30 +102,31 @@ The second script assigns database user permissions. For this script, you will c
     GRANT VIEW DATABASE STATE to 'sqlops';
 </pre></div>
 
-##View and test logins
+##ログインを表示およびテストする
 
-1. In a new query window, connect to **master** and execute the following statement: 
+1. [新しいクエリ] ウィンドウで **master** に接続し、次のステートメントを実行します。
 
         SELECT * from sys.sql_logins;
 
-2. In Management Studio, right click on **school** database and select **New Query**.
+2. Management Studio で **school** データベースを右クリックして、**[新しいクエリ]** をクリックします。
 
-3. On the Query menu, point to **Connection**, and then click **Change Connection**.
+3. [クエリ] メニューの **[接続]** をポイントし、**[接続の変更]** をクリックします。
 
-4. Login as *sqlreader*.
+4. *sqlreader* としてログインします。
 
-5. Copy and try to run the following statement. You should get an error stating that the object does not exist.
+5. 次のステートメントをコピーし、実行してみます。オブジェクトが存在しないことを示すエラーが表示されます。
 
         INSERT INTO dbo.StudentGrade (CourseID, StudentID, Grade)
         VALUES (1061, 30, 9);
 
-6. Open a second query window and change the connection context to *sqlwriter*. The same query should now run successfully.
+6. 2 番目のクエリ ウィンドウを開き、接続コンテキストを *sqlwriter* に変更します。今度は、同じクエリが正常に実行されます。
 
-You have now created and tested several logins. For more information, see [Managing Databases and Logins in SQL Database][] and [Monitoring SQL Database Using Dynamic Management Views][].
+ここまでで、複数のログインを作成してテストしました。詳細については、「[SQL データベースにおけるデータベースとログインの管理][]」および「[動的管理ビューを使用した Azure SQL データベースの監視][]」を参照してください。
 
-[Managing Databases and Logins in SQL Database]: http://msdn.microsoft.com/en-us/library/windowsazure/ee336235.aspx
-[Monitoring SQL Database Using Dynamic Management Views]: http://msdn.microsoft.com/en-us/library/windowsazure/ff394114.aspx
-[Managing SQL Database using Management Studio]: http://www.windowsazure.com/en-us/develop/net/common-tasks/sql-azure-management/
+[SQL データベースにおけるデータベースとログインの管理]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336235.aspx
+[動的管理ビューを使用した Azure SQL データベースの監視]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff394114.aspx
+[SQL Server Management Studio を使用した SQL データベースの管理]: http://www.windowsazure.com/ja-jp/develop/net/common-tasks/sql-azure-management/
+
 
 
 

@@ -1,29 +1,30 @@
-<properties linkid="manage-hdinsight-understand-nosql" urlDisplayName="Understand NoSQL technologies" pageTitle="Understanding NoSQL Technologies on Azure | Azure" metaKeywords="" description="Learn how NoSQL technologies on HDInsight can help you manage data not suited to relational databases, such as big data sets and JSON documents or graphs." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="storage,hdinsight" documentationCenter="" title="Data management: Understanding NoSQL technologies on Azure" authors="dchappell" />
+<properties linkid="manage-hdinsight-understand-nosql" urlDisplayName="NoSQL のテクノロジを理解する" pageTitle="Azure での NoSQL テクノロジについて | Azure" metaKeywords="" description="ビッグ データ セットと JSON ドキュメント、またはグラフなど、リレーショナル データベースに適していないデータの管理に、HDInsight の NoSQL テクノロジがどのように役立つかを説明します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="storage,hdinsight" documentationCenter="" title="データ管理: Azure での NoSQL テクノロジについて" authors="dchappell" />
 
-# Data management: Understanding NoSQL technologies on Azure
+#データ管理: Azure での NoSQL テクノロジについて
 
-**Summary:** Azure offers a broad array of options for your NoSQL workloads, but it can be challenging to determine which one is right for you.  This document explains NoSQL technologies on Azure and how to choose the right service to manage your non-relational data, which includes unstructured or particularly large data sets often referred to as "big data." 
+**概要:** Azure には、NoSQL ワークロード用に多様なオプションが用意されていますが、どれが適切かを判断することは容易ではありません。このドキュメントでは、Azure 上で利用できる NoSQL テクノロジについて説明した後、非構造化データ セットや、特にしばしば "ビッグ データ" と呼ばれる大規模なデータ セットなどの非リレーショナル データを管理する適切なサービスを選択する方法を説明します。
 
-Relational technology has long been the dominant approach for working with data. However, when you work with very large amounts of different types of data, scaling across many servers is challenging. Also, relational technology is not the best fit for managing some kinds of data, such as JSON documents or graphs. This guide walks through the options, explaining what each one provides and why you might want to use it.
+リレーショナル テクノロジは、長年、データ処理の支配的な手法でした。ところが、種類の異なる非常に大量のデータを処理しようとすると、多数のサーバーにまたがって規模を拡大することは容易ではありません。また、リレーショナル テクノロジは、JSON ドキュメントやグラフのようなデータを管理する場合は最適でもありません。このガイドでは、オプションについて順に説明し、各オプションが提供する機能とその使用理由を示します。
 
-**Contents:**
+**目次:**
 
-* Data on Azure: The Big Picture	
-* Azure Relational Technologies: A Quick Look	
-* Azure NoSQL Technologies: Operational Data	
-	* Key/Value Stores	
-	* Column Family Stores	
-	* Document Stores	
-	* Graph Databases	
-* Azure NoSQL Technologies: Analytical Data	
-	* Hadoop MapReduce	
-	* HDInsight	
+*Azure 上のデータ: 全体像	
+*Azure リレーショナル テクノロジ: 概要	
+*Azure NoSQL テクノロジ: 運用データ	
+	*キー/値ストア	
+	*列ファミリ ストア	
+	*ドキュメント ストア	
+	*グラフ データベース	
+*Azure NoSQL テクノロジ: 分析データ	
+	*Hadoop MapReduce	
+	*HDInsight	
 
-**Author:** David Chappell, Principal of Chappell & Associates
+**作成者**: David Chappell (Principal of Chappell &amp; Associates)
 
-**Published:** November 2013
+**発行:** 2013年 11 月
 
-**Revision:** 1.0
+**リビジョン:** 1.0
 
-**Download:** <a href="http://go.microsoft.com/fwlink/p/?LinkId=330292" target="_blank">Understanding NoSQL technologies on Azure PDF file</a>
+**ダウンロード:**<a href="http://go.microsoft.com/fwlink/p/?LinkId=330292" target="_blank">「Azure での NoSQL テクノロジについて」の PDF ファイル</a>
+
 

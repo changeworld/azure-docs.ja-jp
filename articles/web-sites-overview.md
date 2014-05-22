@@ -1,12 +1,13 @@
-<properties umbracoNaviHide="0" pageTitle="What are Web Sites" metaKeywords="Azure Web Sites, Azure deployment, Azure configuration changes, Azure deployment update, Azure .NET deployment, Azure .NET deployment" description="Learn how to configure Web Sites in Azure to use a SQL or MySQL database, and learn how to configure diagnostics and download logs." linkid="itpro-windows-howto-configure-websites" urlDisplayName="How to Configure Web sites" title="What are Web Sites" authors="" />
+<properties umbracoNaviHide="0" pageTitle="Web サイトとは" metaKeywords="Azure の Web サイト, Azure のデプロイ, Azure の構成の変更, Azure のデプロイの更新, Azure .NET のデプロイ, Azure .NET のデプロイ" description="SQL データベースまたは MySQL データベースを使用できるように Web サイトを構成する方法や、診断ログとダウンロード ログを構成する方法について説明します。" linkid="itpro-windows-howto-configure-websites" urlDisplayName="Web サイトの構成方法" title="Web サイトとは" authors="" />
 
 
 
-#What are Web Sites?
+#Web サイトとは
 
 [WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
 
-Web sites are web application hosts which support popular web application technologies such as .NET, Node.js and PHP without requiring any code changes to existing applications.  All of the common programming models and resources that .NET, Node.js and PHP developers use to access resources such as files and databases will continue to work as expected on web sites deployed to Azure.  Web sites provide access to file and database resources and to  all of the standard configuration files (such as web.config, php.ini and config.js) used by web applications today. A web site is the host for a web application running in the cloud that you can control and manage. 
+Web サイトとは、.NET、Node.js、PHP などの人気のある Web アプリケーション テクノロジをサポートする Web アプリケーションのホストであり、既存のアプリケーションのコードに変更を加える必要はありません。.NET、Node.js、PHP の各開発者がファイルやデータベースのようなリソースにアクセスするために使用しているすべての一般的なプログラミング モデルとリソースは、Azure にデプロイする Web サイトでも予期されるとおりに引き続き機能します。Web サイトでは、ファイル リソースとデータベース リソースにアクセスでき、また現在の Web アプリケーションで使用されているすべての標準的な構成ファイル (web.config、php.ini、config.js など) にもアクセスできます。Web サイトは、クラウドで実行されている Web アプリケーションのホストであり、開発者はそれらのアプリケーションを制御および管理することができます。
+
 
 
 

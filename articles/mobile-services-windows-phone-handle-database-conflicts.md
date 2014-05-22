@@ -1,48 +1,48 @@
-<properties linkid="develop-mobile-tutorials-optimistic-concurrent-data-wp8" urlDisplayName="Optimistic concurrency" pageTitle="Handle database write conflicts with optimistic concurrency (Windows Store) | Mobile Dev Center" metaKeywords="" description="Learn how to handle database write conflicts on both the server and in your Windows Store application." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Handling database write conlicts" authors="" />
+<properties linkid="develop-mobile-tutorials-optimistic-concurrent-data-wp8" urlDisplayName="オプティミスティック同時実行制御" pageTitle="オプティミスティック同時実行制御を使用したデータベース書き込み競合の処理 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="サーバー上と Windows ストア アプリケーション内でデータベース書き込み競合を処理する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="データベースの書き込み競合の処理" authors="" />
 
-# Handling database write conflicts
+# データベースの書き込み競合の処理
 
 <div class="dev-center-tutorial-selector sublanding">
-<a href="/en-us/develop/mobile/tutorials/handle-database-write-conflicts-dotnet/" title="Windows Store C#">Windows Store C#</a>
-<a href="/en-us/develop/mobile/tutorials/handle-database-write-conflicts-javascript/" title="Windows Store JavaScript">Windows Store JavaScript</a>
-<a href="/en-us/develop/mobile/tutorials/handle-database-write-conflicts-wp8/" title="Windows Phone" class="current">Windows Phone</a>
+<a href="/ja-jp/develop/mobile/tutorials/handle-database-write-conflicts-dotnet/" title="Windows ストア C#">Windows ストア C#</a>
+<a href="/ja-jp/develop/mobile/tutorials/handle-database-write-conflicts-javascript/" title="Windows ストア JavaScript">Windows ストア JavaScript</a>
+<a href="/ja-jp/develop/mobile/tutorials/handle-database-write-conflicts-wp8/" title="Windows Phone" class="current">Windows Phone</a>
 </div>
 
-This tutorial is intended to help you better understand how to handle conflicts that occur when two or more clients write to the same database record in a Windows Phone 8 app. Two or more clients may write changes to the same item, at the same time, in some scenarios. Without any conflict detection, the last write would overwrite any previous updates even if this was not the desired result. Mobile Services provides support for detecting and resolving these conflicts. This topic walks you through the steps that allow you to handle database write conflicts on both the server and in your application.
+このチュートリアルでは、Windows Phone 8 アプリケーションの同じデータベース レコードに複数のクライアントが書き込みを行ったときに発生する競合を処理する方法について説明します。シナリオによっては、複数のクライアントが同じ項目に対して同時に変更を書き込む場合があります。競合を検知しない場合、それを意図していなくても、最後に行われた書き込みによってそれ以前の更新がすべて上書きされます。モバイル サービスには、このような競合を検出して解決する機能がサポートされています。このトピックでは、サーバー上とアプリケーション内でデータベース書き込み競合を処理する手順を紹介します。
 
-In this tutorial you will add functionality to the quickstart app to handle contentions that occur when updating the TodoItem database. This tutorial walks you through these basic steps:
+このチュートリアルでは、クイック スタート アプリケーションに機能を追加して、TodoItem データベースを更新するときに発生する競合を処理します。このチュートリアルでは、次の基本的な手順について説明します。
 
-1. [Update the application to allow updates]
-2. [Enable Conflict Detection in your application]
-3. [Test database write conflicts in the application]
-4. [Automatically handling conflict resolution in server scripts]
+1. [更新を実行できるようにアプリケーションを更新する]
+2. [アプリケーションでの競合検出を有効にする]
+3. [アプリケーションでデータベース書き込み競合をテストする]
+4. [サーバー スクリプトで競合の解決を自動的に処理する]
 
 
-This tutorial requires the following
+このチュートリアルには、次のものが必要です。
 
-+ Microsoft Visual Studio 2012 Express for Windows Phone 8 or later.
-+ [Windows Phone 8 SDK] running on Windows 8. 
-+ [Azure Account]
-+ This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete [Get started with Mobile Services].
-+ Azure Mobile Services NuGet Package 1.1.0 or later. To get the latest version, follow these steps below:
-	1. In Visual Studio, open the project and right-click the project in Solution Explorer then click **Manage Nuget Packages**. 
++ Microsoft Visual Studio 2012 Express for Windows Phone 8 以降。
+Windows 8 上で動作する + [Windows Phone 8 SDK]。
++ [Azure アカウント]
++ このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。
++ Azure モバイル サービス NuGet パッケージ 1.1.0 以降。最新バージョンを入手するには、次の手順に従います。
+	1. Visual Studio のソリューション エクスプローラーで、プロジェクトを開いて右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
 		![][13]
 
-	2. Expand **Online** and click **Microsoft and .NET**. In the search text box enter **Azure Mobile Services**. Click **Install** on the **Azure Mobile Services** NuGet Package.
+	2. **[オンライン]** を展開し、**[Microsoft and .NET]** をクリックします。検索ボックスに「**Azure Mobile Services**」と入力します。**[Azure Mobile Services]** NuGet パッケージで **[インストール]** をクリックします。
 
 		![][14]
 
 
  
 
-<h2><a name="uiupdate"></a><span class="short-header">Update the UI</span>Update the application to allow updates</h2>
+<h2><a name="uiupdate"></a><span class="short-header">UI の更新</span>更新を実行できるようにアプリケーションを更新する</h2>
 
-In this section you will update the TodoList user interface to allow updating the text of each item in a ListBox control. The ListBox will contain a CheckBox and TextBox control for each item in the database table. You will be able to update the text field of the TodoItem. The application will handle the `LostFocus` event from that TextBox to update the item in the database.
+このセクションでは、TodoList ユーザー インターフェイスを更新して、ListBox コントロールの各項目のテキストを更新できるようにします。ListBox にはデータベース テーブルの各項目に対応する CheckBox コントロールと TextBox コントロールが含まれます。TodoItem のテキスト フィールドを更新できるようになります。アプリケーションで TextBox の `LostFocus` イベントを処理して、データベース内の項目を更新できるようになります。
 
 
-1. In Visual Studio, open the TodoList project you downloaded in the [Get started with Mobile Services] tutorial.
-2. In the Visual Studio Solution Explorer, open MainPage.xaml and replace the `phone:LongListSelector` definition with the ListBox shown below and save the change.
+1. Visual Studio で、「[モバイル サービスの使用]」チュートリアルでダウンロードした TodoList プロジェクトを開きます。
+2. Visual Studio ソリューション エクスプローラーで MainPage.xaml を開き、その中の `phone:LongListSelector` 定義を、次に示す ListBox で置き換え、変更を保存します。
 
 		<ListBox Grid.Row="4" Grid.ColumnSpan="2" Name="ListItems">
 			<ListBox.ItemTemplate>
@@ -56,12 +56,12 @@ In this section you will update the TodoList user interface to allow updating th
 		</ListBox>
 
 
-2. In the Visual Studio Solution Explorer, open MainPage.xaml.cs and add the following `using` directive.
+2. Visual Studio ソリューション エクスプローラーで MainPage.xaml.cs を開き、次の `using` ディレクティブを追加します。
 
 		using System.Threading.Tasks;
 
 
-3. In the Visual Studio Solution Explorer, open MainPage.xaml.cs. Add the event handler to the MainPage for the TextBox `LostFocus` event as shown below.
+3. Visual Studio ソリューション エクスプローラーで MainPage.xaml.cs を開きます。次に示すように、MainPage に TextBox の `LostFocus` イベントのイベント ハンドラーを追加します。
 
 
         private async void ToDoText_LostFocus(object sender, RoutedEventArgs e)
@@ -76,7 +76,7 @@ In this section you will update the TodoList user interface to allow updating th
             }
         }
 
-4. In MainPage.xaml.cs, add the definition for the MainPage `UpdateToDoItem()` method referenced in the event handler as shown below.
+4. MainPage.xaml.cs で、次に示すように、イベント ハンドラーで参照される MainPage の `UpdateToDoItem()` メソッドの定義を追加します。
 
         private async Task UpdateToDoItem(TodoItem item)
         {
@@ -91,13 +91,13 @@ In this section you will update the TodoList user interface to allow updating th
             }
         }
 
-The application now writes the text changes to each item back to the database when the TextBox loses focus.
+これで、TextBox からフォーカスが外れたときに各項目のテキストの変更がデータベースに書き戻されるようになります。
 
-<h2><a name="enableOC"></a><span class="short-header">Enable Optimistic Concurrency</span>Enable Conflict Detection in your application</h2>
+<h2><a name="enableOC"></a><span class="short-header">オプティミスティック同時実行制御の有効化</span>アプリケーションでの競合検出を有効にする</h2>
 
-Two or more clients may write changes to the same item, at the same time, in some scenarios. Without any conflict detection, the last write would overwrite any previous updates even if this was not the desired result. [Optimistic Concurrency Control] assumes that each transaction can commit and therefore does not use any resource locking. Before committing a transaction, optimistic concurrency control verifies that no other transaction has modified the data. If the data has been modified, the committing transaction is rolled back. Azure Mobile Services supports optimistic concurrency control by tracking changes to each item using the `__version` system property column that is added to each table. In this section, we will enable the application to detect these write conflicts through the `__version` system property. The application will be notified by a `MobileServicePreconditionFailedException` during an update attempt if the record has changed since the last query. It will then be able to make a choice of whether to commit its change to the database or leave the last change to the database intact. For more information on the System Properties for Mobile Services, see [System Properties].
+シナリオによっては、複数のクライアントが同じ項目に対して同時に変更を書き込む場合があります。競合を検知しない場合、それを意図していなくても、最後に行われた書き込みによってそれ以前の更新がすべて上書きされます。[オプティミスティック同時実行制御]では、それぞれのトランザクションがコミットでき、そのためリソース ロックが一切使用されないことを前提としています。オプティミスティック同時実行制御ではトランザクションをコミットする前に、他のトランザクションがそのデータを変更していないことを確認します。データが変更されている場合、トランザクションのコミットはロール バックされます。Azure のモバイル サービスはオプティミスティック同時実行制御をサポートしており、各テーブルに追加されている `__version` システム プロパティ列を使用して各項目の変更を追跡します。このセクションでは、アプリケーションで `__version` システム プロパティを利用してこのような書き込み競合を検出できるようにします。前回のクエリ以降にレコードが変更されていた場合、アプリケーションで更新しようとしたときに `MobileServicePreconditionFailedException` が通知されます。その際、データベースに変更をコミットするか、前回の変更をそのままデータベースに残すかというどちらかの処理を選択することができます。モバイル サービスのシステム プロパティの詳細については、[システム プロパティ]に関するページを参照してください。
 
-1. In MainPage.xaml.cs update the **TodoItem** class definition with the following code to include the **__version** system property enabling support for write conflict detection:
+1. MainPage.xaml.cs で、**TodoItem** クラスの定義を次のコードに更新します。このコードには **__version** システム プロパティが含まれており、書き込み競合の検出がサポートされます。
 
 		public class TodoItem
 		{
@@ -110,15 +110,15 @@ Two or more clients may write changes to the same item, at the same time, in som
 			public string Version { set; get; }
 		}
 
-	<div class="dev-callout"><strong>Note</strong>
-	<p>When using untyped tables, enable optimistic concurrency by adding the Version flag to the SystemProperties of the table.</p>
+	<div class="dev-callout"><strong>注</strong>
+	<p>型指定のないテーブルを使用する場合にオプティミスティック同時実行制御を有効にするには、テーブルの SystemProperties に Version フラグを追加します。</p>
 	<pre><code>//Enable optimistic concurrency by retrieving __version
 todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 </code></pre>
 	</div>
 
 
-2. By adding the `Version` property to the `TodoItem` class, the application will be notified with a `MobileServicePreconditionFailedException` exception during an update if the record has changed since the last query. This exception includes the latest version of the item from the server. In MainPage.xaml.cs, add the following code to handle the exception in the `UpdateToDoItem()` method.
+2. `TodoItem` クラスに `Version` プロパティを追加することで、前回のクエリ以降にレコードが変更されていた場合、更新中にアプリケーションに対して `MobileServicePreconditionFailedException` 例外が通知されます。この例外には、サーバーから取得された最新バージョンの項目が含まれます。MainPage.xaml.cs に、例外を処理するための次のコードを `UpdateToDoItem()` メソッドに追加します。
 
         private async Task UpdateToDoItem(TodoItem item)
         {
@@ -149,7 +149,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
         }
 
 
-3. In MainPage.xaml.cs, add the definition for the `ResolveConflict()` method referenced in `UpdateToDoItem()`. Notice that in order to resolve the conflict, you set the local item's version to the updated version from the server before committing the user's decision. Otherwise, you will continually encounter the conflict.
+3. MainPage.xaml.cs に、`UpdateToDoItem()` で参照される `ResolveConflict()` メソッドの定義を追加します。競合を解決する順序に注意してください。ローカル項目のバージョンをサーバーから取得された更新後のバージョンに設定した後で、ユーザーの決定をコミットします。この順序に従わない場合、競合が次々と発生します。
 
 
         private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)		
@@ -185,67 +185,67 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
 
 
-<h2><a name="test-app"></a><span class="short-header">Test the app</span>Test database write conflicts in the application</h2>
+<h2><a name="test-app"></a><span class="short-header">アプリケーションのテスト</span>アプリケーションでデータベース書き込み競合をテストする</h2>
 
-In this section you will test the code that handles write conflicts by running the app in two different Windows Phone 8 emulators (WVGA and WVGA 512M). Both client apps will attempt to update the same item's `text` property requiring the user to resolve the conflict.
+このセクションでは、2 つの異なる Windows Phone 8 エミュレーター (WVGA と WVGA 512M) でアプリケーションを実行して、書き込み競合を処理するコードをテストします。2 つのクライアント アプリケーションが、同じ項目の `text` プロパティを更新しようとして、ユーザーに競合を解決を要求します。
 
 
-1. In Visual Studio, make sure **Emulator WVGA 512MB** is selected from the dropdown box as the deployment target as shown in the screenshot below.
+1. Visual Studio で、次のスクリーン ショットに示すように、展開のターゲットを指定するボックスの一覧で **[Emulator WVGA 512MB]** が選択されていることを確認します。
 
 	![][0]
 
-2. In Visual Studio on the menu, click **BUILD** then **Deploy Solution**. If the emulator was not previously running, it will take a few minutes for the emulator to load the Windows Phone 8 Operating System. Verify in the output window at the bottom that the build and deployment to the Windows Phone 8 emulator succeeded.
+2. Visual Studio のメニューで、**[ビルド]**、**[ソリューションの配置]** の順にクリックします。このエミュレーターが事前に実行されていない場合、エミュレーターに Windows Phone 8 オペレーティング システムが読み込まれるまで数分かかります。下の出力ウィンドウで、ビルドと Windows Phone 8 エミュレーターへの展開が正常に実行されたことを確認します。
 
 	![][2]
 
-3. In Visual Studio, change the deployment target dropdown box to **Emulator WVGA**.
+3. Visual Studio で、展開のターゲットを **[Emulator WVGA]** に変更します。
 
 	![][1]
 
-4. In Visual Studio on the menu, click **BUILD** then **Deploy Solution**. Verify in the output window at the bottom that the build and deployment to the Windows Phone 8 emulator succeeded.
+4. Visual Studio のメニューで、**[ビルド]**、**[ソリューションの配置]** の順にクリックします。下の出力ウィンドウで、ビルドと Windows Phone 8 エミュレーターへの展開が正常に実行されたことを確認します。
 
    	![][2]
   
-5. Place both emulators running side by side. We can simulate concurrent write conflicts between the client apps running on these emulators. Swipe from right to left in both emulators to view the list of installed applications. Scroll to the bottom of each list and click the **todolist** app.
+5. この 2 つのエミュレーターを並行して実行します。この 2 つのエミュレーターで実行されるクライアント アプリケーションの間での同時書き込み競合をシミュレートすることができます。どちらのエミュレーターでも、右から左方向へスワイプすると、インストールされているアプリケーションの一覧が表示されます。それぞれの一覧の下までスクロールして、**todolist** アプリケーションをクリックします。
 
 	![][3]
 
-6. In the left emulator, update the `text` of the last TodoItem to **Test Write 1**, then click another text box so that the `LostFocus` event handler updates the database. The screenshot below shows an example. 
+6. 左側のエミュレーターで、最後の TodoItem の `text` を「**Test Write 1**」に更新した後、`LostFocus` イベント ハンドラーによってデータベースが更新されるように、別のテキスト ボックスをクリックします。次のスクリーンショットのようになります。
 
 	![][4]
 
-7. At this point the corresponding item in the right emulator has an old version and old text value. In the right emulator, enter **Test Write 2** for the text property. Then click another text box so the `LostFocus` event handler in the right emulator attempts to update the database with the old version.
+7. この時点で、右側のエミュレーター内の対応する項目には、古いバージョンと古いテキスト値が含まれています。右側のエミュレーターで、text プロパティに「**Test Write 2**」と入力します。その後で別のテキスト ボックスをクリックすると、右側のエミュレーターの `LostFocus` イベント ハンドラーが古いバージョンでデータベースを更新しようとします。
 
 	![][5]
 
-8. Since the version used with the update attempt didn't match the server version, the Mobile Services SDK throws the `MobileServicePreconditionFailedException` allowing the app to resolve this conflict. To resolve the conflict, you can click **ok** to commit the values from the right app. Alternatively, click **cancel** to discard the values in the right app, leaving the values from the left app committed. 
+8. この更新の試行で使用されたバージョンの値がサーバー側のバージョンと一致していないため、アプリケーションでこの競合を解決できるようにモバイル サービス SDK から `MobileServicePreconditionFailedException` がスローされます。この競合を解決するには、**[ok]** をクリックして右側のアプリケーションの値をコミットします。または、**[cancel]** をクリックして右側のアプリケーションの値を破棄し、左側のアプリケーションでコミットされた値を残します。
 
 	![][6]
 
 
 
-<h2><a name="scriptsexample"></a><span class="short-header">Handling conflicts with scripts</span>Automatically handling conflict resolution in server scripts</h2>
+<h2><a name="scriptsexample"></a><span class="short-header">スクリプトを使用した競合処理</span>サーバー スクリプトで競合の解決を自動的に処理する</h2>
 
-You can detect and resolve write conflicts in server scripts. This is a good idea when you can use scripted logic instead of user interaction to resolve the conflict. In this section, you will add a server side script to the TodoItem table for the application. The logic this script will use to resolve conflicts is as follows:
+サーバー スクリプトで書き込み競合を検出し、解決することができます。ユーザーの操作ではなくスクリプト ロジックによって競合を解決できる場合、この方法を使用することをお勧めします。このセクションでは、アプリケーションで使用する TodoItem テーブルにサーバー側スクリプトを追加します。このスクリプトで使用されるロジックでは、次の方法で競合を解決します。
 
-+  If the TodoItem's ` complete` field is set to true, then it is considered completed and `text` can no longer be changed.
-+  If the TodoItem's ` complete` field is still false, then attempts to update `text` will be comitted.
++  TodoItem の  `complete` フィールドが true に設定されている場合、これは完了していると見なされ、`text` を変更できなくなります。
++  TodoItem の `complete` フィールドが false のままである場合は、`text` の更新の試行がコミットされます。
 
-The following steps walk you through adding the server update script and testing it.
+次の手順で、サーバー更新スクリプトの追加とテストの方法を説明します。
 
-1. Log into the [Azure Management Portal], click **Mobile Services**, and then click your app. 
+1. [Azure 管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
    	![][7]
 
-2. Click the **Data** tab, then click the **TodoItem** table.
+2. **[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
    	![][8]
 
-3. Click **Script**, then select the **Update** operation.
+3. **[スクリプト]** をクリックし、**[更新]** 操作を選択します。
 
    	![][9]
 
-4. Replace the existing script with the following function, and then click **Save**.
+4. 既存のスクリプトを次の関数に置き換え、**[保存]** をクリックします。
 
 		function update(item, user, request) { 
 			request.execute({ 
@@ -262,51 +262,51 @@ The following steps walk you through adding the server update script and testing
 				}
 			}); 
 		}   
-5. Change the TodoItem text for the last item in the app in the left emulator. Then click another text box so the `LostFocus` event handler updates the database.
+5. 左側のエミュレーターで、アプリケーションの最後の項目の TodoItem テキストを変更します。その後で別のテキスト ボックスをクリックすると、`LostFocus` イベント ハンドラーによってデータベースが更新されます。
 
 	![][4]
 
-6. In the right emulator, enter a different value for the text property of the last TodoItem. Then click another text box so the `LostFocus` event handler in the right emulator attempts to update the database with the old version
+6. 右側のエミュレーターで、最後の TodoItem の text プロパティに別の値を入力します。その後で別のテキスト ボックスをクリックすると、右側のエミュレーターの `LostFocus` イベント ハンドラーが、古いバージョンでデータベースを更新しようとします。
 
 	![][5]
 
-7. Notice that no exception was encountered in the app since the server script resolved the conflict by allowing the update since the item is not marked complete. To see that the update was truly successful, click **Refresh** in the app in the left emulator to re-query the database.
+7. この項目は完了としてマークされていないため、サーバー側スクリプトによって更新が許可され、競合が解決されます。したがって、アプリケーション内では例外が発生しません。更新が本当に成功したかどうか確認するには、左側のエミュレーターのアプリケーションで **[Refresh]** をクリックして、データベースに再びクエリを実行してください。
 
 	![][10]
 
-8. In the app in the left emulator, click the check box to complete the last TodoItem.
+8. 左側のエミュレーターで、最後の TodoItem のチェック ボックスをオンにして完了としてマークします。
 
 	![][11]
 
-9. In the app in the right emulator, try to update the same TodoItem's text and trigger the `LostFocus` event. In response to the conflict, the script resolved it by refusing the update because the item was already completed. 
+9. 右側のエミュレーターのアプリで、同じ TodoItem のテキストを更新して `LostFocus` イベントを発生させます。この項目は既に完了しているため、スクリプトが更新を拒否することで競合が解決されます。
 
 	![][12]
 
 
-## <a name="next-steps"> </a>Next steps
+## <a name="next-steps"> </a>次のステップ
 
-This tutorial demonstrated how to enable a Windows Phone 8 app to handle write conflicts when working with data in Mobile Services. Next, consider completing one of the following tutorials in our data series:
+このチュートリアルでは、Windows Phone 8 アプリケーションでモバイル サービスのデータを操作する際の書き込み競合を処理できるようにする方法を説明しました。次に、データ シリーズの次のチュートリアルのいずれかを行うことをお勧めします。
 
-* [Validate and modify data with scripts]
-  <br/>Learn more about using server scripts in Mobile Services to validate and change data sent from your app.
+* [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]
+  <br/>モバイル サービスでサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
-* [Refine queries with paging]
-  <br/>Learn how to use paging in queries to control the amount of data handled in a single request.
+* [ページングを使用したモバイル サービス クエリの改善]
+  <br/>クエリ内でページングを使用して、単一の要求で渡されるデータの量を制御する方法について説明します。
 
-Once you have completed the data series, you can also try one of the following Windows Phone 8 tutorials:
+データ シリーズを完了した後は、次に示すいずれかの Windows Phone 8 チュートリアルを行うことができます。
 
-* [Get started with authentication] 
-  <br/>Learn how to authenticate users of your app.
+* [認証の使用]
+  <br/>アプリケーションのユーザーを認証する方法について説明します。
 
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app with Mobile Services.
+* [プッシュ通知の使用]
+  <br/>モバイル サービスを使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
  
 <!-- Anchors. -->
-[Update the application to allow updates]: #uiupdate
-[Enable Conflict Detection in your application]: #enableOC
-[Test database write conflicts in the application]: #test-app
-[Automatically handling conflict resolution in server scripts]: #scriptsexample
-[Next Steps]:#next-steps
+[更新を実行できるようにアプリケーションを更新する]: #uiupdate
+[アプリケーションでの競合検出を有効にする]: #enableOC
+[アプリケーションでデータベース書き込み競合をテストする]: #test-app
+[サーバー スクリプトで競合の解決を自動的に処理する]: #scriptsexample
+[次のステップ]:#next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-windows-phone-handle-database-conflicts/mobile-EmulatorWVGA512MB.png
@@ -327,19 +327,20 @@ Once you have completed the data series, you can also try one of the following W
 
 
 <!-- URLs. -->
-[Optimistic Concurrency Control]: http://go.microsoft.com/fwlink/?LinkId=330935
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started/#create-new-service
-[Azure Account]: http://www.windowsazure.com/en-us/pricing/free-trial/
-[Validate and modify data with scripts]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-wp8
-[Refine queries with paging]: /en-us/develop/mobile/tutorials/add-paging-to-data-wp8
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-wp8
-[Get started with data]: ./mobile-services-get-started-with-data-wp8.md
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-wp8
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-wp8
+[オプティミスティック同時実行制御]: http://go.microsoft.com/fwlink/?LinkId=330935
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
+[Azure アカウント]: http://www.windowsazure.com/ja-jp/pricing/free-trial/
+[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-wp8
+[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-wp8
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-wp8
+[データの使用]: ./mobile-services-get-started-with-data-wp8.md
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-wp8
+[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-wp8
 
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Management Portal]: https://manage.windowsazure.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[管理ポータル]: https://manage.windowsazure.com/
 [Windows Phone 8 SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268374
-[Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268375
-[Developer Code Samples site]:  http://go.microsoft.com/fwlink/p/?LinkId=271146
-[System Properties]: http://go.microsoft.com/fwlink/?LinkId=331143
+[モバイル サービス SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268375
+[デベロッパー サンプル コード集のサイト]:  http://go.microsoft.com/fwlink/p/?LinkId=271146
+[システム プロパティ]: http://go.microsoft.com/fwlink/?LinkId=331143
+

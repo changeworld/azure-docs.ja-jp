@@ -1,85 +1,86 @@
-<properties linkid="manage-services-mediaservices-scale-media-service" urlDisplayName="How to scale" pageTitle="How to Scale a media service | Azure Documentation" metaKeywords="" description="Learn how to scale Media Services by specifying the number of On-Demand Streaming Reserved Units and Encoding Reserved Units that you would like your account to be provisioned with." metaCanonical="" services="media-services" documentationCenter="" title="How to Scale a Media Service" authors="migree" solutions="" manager="" editor="" />
+<properties linkid="manage-services-mediaservices-scale-media-service" urlDisplayName="規模を設定する方法" pageTitle="メディア サービスの規模を設定する方法 | Azure のマニュアル" metaKeywords="" description="アカウントのプロビジョニングに使用するオンデマンド ストリーミング占有ユニットおよびエンコード占有ユニットの数を指定してメディア サービスの規模を設定する方法を説明します。" metaCanonical="" services="media-services" documentationCenter="" title="メディア サービスの規模を設定する方法" authors="migree" solutions="" manager="" editor="" />
 
 
 
 
 
-#How to Scale a Media Service  
+#メディア サービスの規模を設定する方法
 
 [WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
 
 
-You can scale Media Services by specifying the number of **On-Demand Streaming Reserved Units** and **Encoding Reserved Units** that you would like your account to be provisioned with. 
+メディア サービスは、アカウントのプロビジョニングに使用する**オンデマンド ストリーミング占有ユニット**および**エンコード占有ユニット**の数を指定することで規模を設定できます。
 
 
-<h2>On-Demand Streaming Reserved Units</h2>
+<h2>オンデマンド ストリーミング占有ユニット</h2>
 
-On-Demand Streaming reserved units provide you with both dedicated egress capacity that can be purchased in increments of 200 Mbps and  additional functionality which currently includes [dynamic packaging capabilities](http://go.microsoft.com/fwlink/?LinkId=276874). By default, on-demand streaming is configured in a shared-instance model for which server resources (for example, compute, egress capacity, etc.) are shared with all other users. To improve an on-demand streaming throughput, it is recommended to purchase On-Demand Streaming reserved units. 
+オンデマンド ストリーミング占有ユニットを使用すると、専用の送信容量を 200 Mbps 単位で購入できるほか、[動的パッケージ化機能](http://go.microsoft.com/fwlink/?LinkId=276874)などの追加機能を利用できるようになります。既定では、オンデマンド ストリーミングは、サーバー リソース (コンピューティング、送信容量など) を他のユーザーと共有する共有インスタンス モデルとして構成されます。オンデマンド ストリーミングのスループットを高めるために、オンデマンド ストリーミング占有ユニットの購入をお勧めします。
 
-To change the number of on-demand streaming reserved units, do the following:
+オンデマンド ストリーミング占有ユニットの数を変更するには、以下の手順を実行します。
 
-1. In the [Management Portal](https://manage.windowsazure.com/), click **Media Services**. Then, click the name of the media service.
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[メディア サービス]** をクリックします。次に、メディア サービスの名前をクリックします。
 
-2. Select the ORIGINS page. Then, click on the origin that you want to modify.
+2. [オリジン] ページを選択します。次に、変更するオリジンをクリックします。
 
-	![Origin page](./media/media-services-how-to-scale/media-services-origin-page.png)
+	![[オリジン] ページ](./media/media-services-how-to-scale/media-services-origin-page.png)
 
-3. To specify the number of reserved units, select the SCALE tab and move the **reserved capacity** slider.
+3. 占有ユニットの数を指定するには、[スケール] タブを選択し、**[占有容量]** スライダーを動かします。
 
-	![Scale page](./media/media-services-how-to-scale/media-services-origin-scale.png)
+	![[スケール] ページ](./media/media-services-how-to-scale/media-services-origin-scale.png)
 
-4. Press the SAVE button to save your changes.
+4. [保存] ボタンを押して、変更を保存します。
 
-	The allocation of any new units of on-demand streaming takes around 20 minutes to complete. 
+	オンデマンド ストリーミングの新しいユニットの割り当ては完了するまでに約 20 分かかります。
 
 	 
-	**Note:** Currently, going from any positive value of on-demand streaming units back to none, can disable on-demand streaming for up to an hour.
+	**注:** 現時点では、オンデマンド ストリーミング占有ユニットの数を正の値からゼロに戻すと、オンデマンド ストリーミングが最大 1 時間無効になります。
 
 
-	**Note:** The highest number of units specified for the 24-hour period is used in calculating the cost. For information about pricing details, see [Media Services Pricing Details](http://go.microsoft.com/fwlink/?LinkId=275107).
+	**注:** コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Azure 料金早見表](http://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
 
-<h2>Encoding Reserved Units</h2>
+<h2>エンコード占有ユニット</h2>
 
-The number of provisioned encoding reserved units is equal to the number of media tasks that can be processed concurrently in a given account. For example, if your account has 5 reserved units, then 5 media tasks will be running concurrently as long as there are tasks to be processed. The remaining tasks will wait in the queue and will get picked up for processing sequentially as soon as a running task finishes. If an account does not have any reserved units provisioned, then tasks will be picked up sequentially. In this case, the wait time between one task finishing and the next one starting will depend on the availability of resources in the system.
+用意したエンコード占有ユニットの数が、所定のアカウントで並列処理できるメディア タスクの数になります。たとえば、アカウントの占有ユニットの数が 5 である場合、処理するタスクがある限り、5 個のメディア タスクが並列実行されます。残りのタスクはキューで待機して、実行中のタスクが完了すると直ちにキューから取り出されて順番に処理されます。アカウントに占有ユニットが用意されていない場合、タスクは逐次処理されます。この場合、あるタスクが終了した後、次のタスクが開始するまでの待機時間は、システムのリソースが利用できるかどうかに左右されます。
 
-To change the number of encoding reserved units, do the following:
+エンコード占有ユニットの数を変更するには、以下の手順を実行します。
 
-1. In the [Management Portal](https://manage.windowsazure.com/), click **Media Services**. Then, click the name of the media service.
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[メディア サービス]** をクリックします。次に、メディア サービスの名前をクリックします。
 
-2. Select the PROCESSORS page. 
+2. [プロセッサ] ページを選択します。
 
-	![Processors page](./media/media-services-how-to-scale/media-services-encoding-scale.png) 
+	![[プロセッサ] ページ](./media/media-services-how-to-scale/media-services-encoding-scale.png)
 
-3. Press the SAVE button to save your changes.
+3. [保存] ボタンを押して、変更を保存します。
 
-	The new encoding reserved units are allocated almost immediately.
+	新しいエンコード占有ユニットは、ほぼ即座に割り当てられます。
 
-	**Note:** The highest number of units specified for the 24-hour period is used in calculating the cost.
+	**注:** コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。
 
-<h2>Opening a Support Ticket</h2>
+<h2>サポート チケットを開く</h2>
 
 
-By default every Media Services account can scale to up to 25 Encoding and 5 On-Demand Streaming Reserved Units. You can request a higher limit by opening a support ticket.
+既定で、各メディア サービス アカウントは最大 25 個のエンコードと 5 個のオンデマンド ストリーミング占有ユニットを設定できます。サポート チケットを開くと、上限の拡大を要求できます。
 
-To open a support ticket do the following: 
+サポート チケットを開くには、以下の手順を実行します。
 
-1. Log in to your Azure account at [Management Portal](http://manage.windowsazure.com).
-2. Go to [Support](http://www.windowsazure.com/en-us/support/contact/).
-3. Click on "Get Support".
-4. Select your subscription.
-5. Under support type select "Technical".
-6. Click on "Create Ticket".
-7. Select "Azure Media Services" in the product list presented on the next page.
-8. Select "Media Processing" as "Problem type" and then select "Reservation Units" under category.
-9. Click Continue.
-10. Follow instructions on next page and then enter details about how many Encoding or On-Demand Streaming reserved units you need.
-11. Click submit to open the ticket.
+1. [管理ポータル](http://manage.windowsazure.com)の Azure アカウントにログインします。
+2. [サポート](http://www.windowsazure.com/ja-jp/support/contact/)に移動します。
+3. [サポートの要求] をクリックします。
+4. サブスクリプションを選択します。
+5. サポートの種類として [技術] を選択します。
+6. [チケットの作成] をクリックします。
+7. 次のページに示される製品一覧で [Azure メディア サービス] を選択します。
+8. [問題の種類] として [メディア処理] を選択し、カテゴリとして [占有ユニット] を選択します。
+9. [続行] をクリックして続行します。
+10. 次のページにある指示に従って、必要なエンコードまたはオンデマンド ストリーミング占有ユニットの数を入力します。
+11. [送信] をクリックして、チケットを開きます。
 
 
 
 
 
  
+
 
 
 

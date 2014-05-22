@@ -1,115 +1,113 @@
-<properties linkid="dev-nodejs-enablessl" urlDisplayName="Enable SSL" pageTitle="Configure SSL for a cloud service (Node.js) - Azure" metaKeywords="Node.js Azure SSL, Node.js Azure HTTPS" description="Learn how to specify an HTTPS endpoint for a Node.js web role and how to upload an SSL certificate to secure your application." metaCanonical="" services="cloud-services" documentationCenter="Node.js" title="Configuring SSL for a Node.js Application in an Azure Web Role" authors="" solutions="" manager="" editor="" />
+<properties linkid="dev-nodejs-enablessl" urlDisplayName="SSL の有効化" pageTitle="クラウド サービス (Node.js) 向けの SSL の構成 - Azure" metaKeywords="Node.js Azure SSL, Node.js Azure HTTPS" description="Node.js Web ロールの HTTPS エンドポイントを指定する方法、SSL 証明書をアップロードしてアプリケーションを保護する方法について説明します。" metaCanonical="" services="cloud-services" documentationCenter="Node.js" title="Azure Web ロールで Node.js アプリケーションの SSL を構成する" authors="" solutions="" manager="" editor="" />
 
 
 
 
-# Configuring SSL for a Node.js Application in an Azure Web Role
+# Azure Web ロールで Node.js アプリケーションの SSL を構成する
 
-Secure Socket Layer (SSL) encryption is the most commonly used method of
-securing data sent across the internet. This common task discusses how
-to specify an HTTPS endpoint for a Node.js application hosted as an Azure Cloud Service in a web role and how to upload an
-SSL certificate to secure your application.
+Secure Socket Layer (SSL) の暗号化は、インターネットを介して送信されるデータを
+セキュリティで保護する際に最もよく使用される方法です。この一般的なタスクでは、
+Web ロールで Azure クラウド サービスとしてホストされる Node.js アプリケーションの HTTPS エンドポイントを指定する方法、
+SSL 証明書をアップロードしてアプリケーションを保護する方法について説明します。
 
-<div class="dev-callout">Note
-<p>The steps in this article only apply to node applications hosted as an Azure Cloud Service in a web role; for Web Sites, see <a href="../web-sites-configure-ssl-certificate/">Configuring an SSL certificate for an Azure web site</a>.</p>
+<div class="dev-callout">注
+<p>この記事で説明する手順は、Web ロールで Azure クラウド サービスとしてホストされるノード アプリケーションにのみ適用されます。Web サイトについては、「<a href="../web-sites-configure-ssl-certificate/">Azure の Web サイトの SSL 証明書の構成</a>」を参照してください。</p>
 </div>
 
-This task includes the following steps:
+このタスクの手順は次のとおりです。
 
--   [Step 1: Create a Node.js service and publish the service to the cloud]
--   [Step 2: Get an SSL certificate]
--   [Step 3: Import the SSL certificate]
--   [Step 4: Modify the Service Definition and Configuration Files]
--   [Step 5: Connect to the Role Instance by Using HTTPS]
+-   [手順 1. Node.js サービスを作成してクラウドにサービスを発行する]
+-   [手順 2: SSL 証明書を取得する]
+-   [手順 3. SSL 証明書をインポートする]
+-   [手順 4. サービス定義ファイルとサービス構成ファイルを変更する]
+-   [手順 5. HTTPS を使用してロール インスタンスに接続する]
 
-## <a name="step1"> </a>Step 1: Create a Node.js service and publish the service to the cloud
+## <a name="step1"> </a>手順 1. Node.js サービスを作成してクラウドにサービスを発行する
 
-When a Node.js application is deployed to an Azure web role, the
-server certificate and SSL connection are managed by Internet
-Information Services (IIS), so that the Node.js service can be written
-as if it were an http service. You can create a simple Node.js 'hello
-world' service using the Azure PowerShell using these steps:
+Node.js アプリケーションを Azure Web ロールに展開すると、
+サーバー証明書と SSL 接続はインターネット
+インフォメーション サービス (IIS) によって管理されるため、
+Node.js サービスを http サービスと同様に記述できます。Azure PowerShell を使用して、次の手順
+に従って簡単な Node.js "hello world" サービスを作成できます。
 
-1. From the **Start Menu** or **Start Screen**, search for **Azure PowerShell**. Finally, right-click **Azure PowerShell** and select **Run As Administrator**.
+1. **[スタート] メニュー**または**スタート画面**で、「**Azure PowerShell**」を検索します。最後に、**[Azure PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
 
-	![Azure PowerShell icon][powershell-menu]
+	![Azure PowerShell アイコン][powershell-menu]
 
 [WACOM.INCLUDE [install-dev-tools](../includes/install-dev-tools.md)]
 
 
-2.  Create a new service project using the **New-AzureServiceProject** cmdlet. 
+2. **New-AzureServiceProject** コマンドレットを使用して、新しいサービス プロジェクトを作成します。
 
 	![][1]
 
-3.  Add a web role to your service using **Add-AzureNodeWebRole** cmdlet:
+3. **Add-AzureNodeWebRole** コマンドレットを使用して、サービスに Web ロールを追加します。
 
     ![][2]
 
-4.  Publish your service to the cloud using **Publish-AzureServiceProject** cmdlet:
+4. **Publish-AzureServiceProject** コマンドレットを使用して、サービスをクラウドに発行します。
 
     ![][3]
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>If you have not previously imported publish settings for your Azure subscription, you will receive an error when trying to publish. For information on downloading and importing the publish settings for your subscription, see <a href="https://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings">How to Use the Azure PowerShell for Node.js</a></p>
+	<strong>注</strong>
+	<p>以前に Azure サブスクリプションの発行設定をインポートしていない場合、発行しようとするとエラーが出力されます。サブスクリプションの発行設定のダウンロードとインポートについては、<a href="https://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings">Azure PowerShell for Node.js の使用方法</a>に関するページを参照してください。</p>
 	</div>
 
-The **Created Web Site URL** value returned by the **Publish-AzureServiceProject** cmdlet contains the fully qualified domain name for your hosted application. You will need to obtain an SSL certificate for this specific fully qualified domain name and deploy it to Azure.
+**Publish-AzureServiceProject** コマンドレットから返される**作成された Web サイトの URL** の値には、ホステッド アプリケーションの完全修飾ドメイン名が含まれます。この特定の完全修飾ドメイン名について SSL 証明書を取得し、Azure に展開する必要があります。
 
-## <a name="step2"> </a>Step 2: Get an SSL Certificate
+## <a name="step2"> </a>手順 2. SSL 証明書を取得する
 
-To configure SSL for an application, you first need to get an SSL
-certificate that has been signed by a Certificate Authority (CA), a
-trusted third-party who issues certificates for this purpose. If you do
-not already have one, you will need to obtain one from a company that
-sells SSL certificates.
+アプリケーションの SSL を構成するには、最初に、セキュリティ保護
+のための証明書を発行する信頼されたサード パーティである、証明機関
+(CA) によって署名された SSL 証明書を取得する必要があります。まだ
+SSL 証明書がない場合は、SSL 証明書を販売する会社から取得する
+必要があります。
 
-The certificate must meet the following requirements for SSL
-certificates in Azure:
+証明書は、Azure における SSL 証明書の次の要件を満たす
+必要があります。
 
--   The certificate must contain a private key.
--   The certificate must be created for key exchange (.pfx file).
--   The certificate's subject name must match the domain used to access
-    the cloud service. You cannot acquire an SSL certificate for the
-    cloudapp.net domain, so the certificate's subject name must match
-    the custom domain name used to access your application. For example, __mysecuresite.cloudapp.net__.
--   The certificate must use a minimum of 2048-bit encryption.
+-   証明書は秘密キーを含む必要があります。
+-   証明書はキー交換のために作成される必要があります (.pfx ファイル)。
+-   証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致
+    する必要があります。cloudapp.net ドメインの SSL 証明書を取得する
+    ことはできないため、証明書の件名を、アプリケーションへの接続に使用
+    されるカスタム ドメイン名と一致させる必要があります。たとえば、「__mysecuresite.cloudapp.net__」のように入力します。
+-   証明書では、2,048 ビット以上の暗号化を使用する必要があります。
 
-## <a name="step3"> </a>Step 3: Import the SSL certificate
+## <a name="step3"> </a>手順 3. SSL 証明書をインポートする
 
-Once you have a certificate, install it into the certificate store on your development machine. This certificate will be retrieved and uploaded to Azure as part of your application deployment package based on configuration changes you make in a subsequent step.
+証明書を取得したら、開発用コンピューターの証明書ストアに証明書をインストールします。この証明書は、後の手順で行う構成の変更に基づくアプリケーションの展開パッケージの一部として取得され、Azure にアップロードされます。
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>The steps used in this section are based on the Windows 8 version of the Certificate Import Wizard. If you are using a previous version of Windows, the steps listed here may not match the order displayed in the wizard. If this is the case, fully read this section before using the Certificate Import Wizard so that you understand what overall actions must be performed.</p>
+<strong>注</strong>
+<p>このセクションの手順は、Windows 8 バージョンの証明書のインポート ウィザードに基づいています。以前のバージョンの Windows を使用している場合、ここで示されている手順はウィザードに表示される順序と一致しないことがあります。このような場合は、証明書のインポート ウィザードを使用する前にこのセクション全体を通読して、実行する必要がある全体的なアクションを理解しておいてください。</p>
 </div>
 
-To import the SSL certificate, perform the following steps:
+SSL 証明書をインポートするには、次の手順を実行します。
 
-1.   Using Windows Explorer, navigate to the directory where the **.pfx** file containing the certificate is located and then double-click on the certificate. This will display the Certificate Import Wizard.
+1. エクスプローラーを使用して、証明書が含まれている **.pfx** ファイルがあるディレクトリに移動し、証明書をダブルクリックします。証明書のインポート ウィザードが表示されます。
 	
-	![certificate wizard][cert-wizard]
+	![証明書ウィザード][cert-wizard]
 
-2.   In the **Store Location** section, select **Current User** and then click **Next**. This will install the certificate into the certificate store for your user account.
+2. **[ストアの場所]** で、**[現在のユーザー]** を選択し、**[次へ]** をクリックします。使用しているユーザー アカウントの証明書ストアに証明書がインストールされます。
 
-3.   Continue through the wizard, accepting the defaults, until you arrive at the **Private key protection** screen. Here, you must enter the password (if any) for the certificate. You must also select **Mark this key as exportable**. Finally, click **Next**.
+3. **[秘密キーの保護]** 画面が表示されるまで、既定値を受け入れながらウィザードの手順を続行します。この画面で、証明書のパスワード (ある場合) を入力する必要があります。また、**[このキーをエクスポート可能にする]** も選択する必要があります。最後に、**[次へ]** をクリックします。
 
-	![private key protection][key-protection]
+	![秘密キーの保護][key-protection]
 
-4. Continue through the wizard, accepting the defaults, until the certificate has successfully been installed.
+4. 証明書が正常にインストールされるまで、既定値を受け入れながらウィザードの手順を続行します。
 
-Now you must modify your service definition to reference the certificate you
-have installed.
+次に、インストールした証明書を参照するようにサービス定義を変更する必要が
+あります。
 
-## <a name="step4"> </a>Step 4: Modify the Service Definition and Configuration Files
+## <a name="step4"> </a>手順 4. サービス定義ファイルとサービス構成ファイルを変更する
 
-Your application must be configured to reference the certificate, and an HTTPS
-endpoint must be added. As a result, the service definition and service
-configuration files need to be updated.
+アプリケーションは、証明書を参照するように構成する必要があります。また、
+HTTPS エンドポイントを追加する必要があります。その結果、サービス定義ファイルおよびサービス
+構成ファイルを更新する必要があります。
 
-1.  In the service directory, open the service definition file
-    (ServiceDefinition.csdef), add a **Certificates** section within the **WebRole** section, and include the following information about the
-    certificate:
+1. サービス ディレクトリで、サービス定義ファイル (ServiceDefinition.csdef) を開き、**WebRole** セクション内に **Certificates** セクションを追加し、証明書に関する次の情報を含めます。
 
         <WebRole name="WebRole1" vmsize="ExtraSmall">
         ...
@@ -120,11 +118,11 @@ configuration files need to be updated.
         ...
         </WebRole>
 
-    The **Certificates** section defines the name of the certificate,
-    its location, and the name of the store where it is located. Since we installed the certificate to the user certificate store, a value of "My" is used. Other certificate store locations can also be used. See [How to
-    Associate a Certificate with a Service] for more information.
+    **Certificates** セクションでは、証明書の名前、場所、および
+    この証明書があるストアの名前を定義します。ユーザーの証明書ストアに証明書をインストールしたため、"My" という値が使用されます。他の証明書ストアの場所も使用できます。詳細については、
+    「[サービスと証明書の関連付け]」を参照してください。
 
-2.  In your service definition file, update the http **InputEndpoint** element within the **Endpoints** section to enable HTTPS:
+2. サービス定義ファイルで、**Endpoints** セクション内の http **InputEndpoint** 要素を更新し、HTTPS を有効にします。
 
         <WebRole name="WebRole1" vmsize="Small">
         ...
@@ -135,16 +133,15 @@ configuration files need to be updated.
         ...
         </WebRole>
 
-    All of the required changes to the service definition file have been
-    completed, but you still need to add the certificate information to
-    the service configuration file.
+    サービス定義ファイルに対して必要な変更はすべて完了しましたが、
+    サービス構成ファイルに証明書の情報を追加する必要もあります。
 
-3.  In your service configuration files
-    (**ServiceConfiguration.Cloud.cscfg** and
-    **ServiceConfiguration.Local.cscfg**), add the certificate to the
-    empty **Certificates** section within the **Role** section,
-    replacing the sample thumbprint value below with that of your
-    certificate:
+3. サービス構成ファイル
+    (**ServiceConfiguration.Cloud.cscfg** と
+    **ServiceConfiguration.Local.cscfg**) で、
+    **Role** セクション内の空の **Certificates** セクションに
+    証明書を追加し、次に示す拇印値のサンプルを証明書の拇印値に
+    置き換えます。
 
         <Role name="WebRole1">
         ...
@@ -156,49 +153,49 @@ configuration files need to be updated.
         ...
         </Role>
 
-4.  Refresh your service configuration in the cloud by publishing
-    your service again. At the Azure PowerShell
-    prompt, type **Publish-AzureServiceProject** from the service directory.
+4. もう一度サービスを発行して、クラウド内のサービスの構成を
+    最新の情報に更新します。Azure PowerShell
+    プロンプトで、「**Publish-AzureServiceProject**」と入力します。
 
-	As part of the publish process, the referenced certificate will be copied from the local certificate store and included in the deployment package.
+	発行プロセスの中で、参照された証明書がローカル証明書ストアからコピーされ、デプロイ パッケージに含められます。
 
-## <a name="step5"> </a>Step 5: Connect to the Role Instance by Using HTTPS
+## <a name="step5"> </a>手順 5. HTTPS を使用してロール インスタンスに接続する
 
-Now that your deployment is up and running in Azure, you can
-connect to it using HTTPS.
+Azure で展開を実行できるようになったため、HTTPS を使用して
+接続できます。
 
-1.  In the Management Portal, select your cloud service, then click **Dashboard**.
+1. 管理ポータルで、目的のクラウド サービスを選択し、**[ダッシュボード]** をクリックします。
 
-2. Scroll down and click the link displayed as the **Site URL**:
+2. 下へスクロールし、**[サイトの URL]** として表示されているリンクをクリックします。
 
-    ![the site url][site-url]
+    ![サイトの URL][site-url]
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>If the Site URL displayed in the portal does not specify HTTPS, then you must manually enter the URL in the browser using HTTPS instead of HTTP.</p>
+	<strong>注</strong>
+	<p>ポータルに表示されるサイトの URL で HTTPS が指定されていない場合は、ブラウザーで HTTP の代わりに HTTPS を使用して手動で URL を入力する必要があります。</p>
 	</div>
 
-3.  A new browser will open and display your web site.
+3. 新しいブラウザーが開いて、Web サイトが表示されます。
 
-    Your browser will display a lock icon to indicate that it is
-    using an HTTPS connection. This also indicates that your application
-    has been configured correctly for SSL.
+    ブラウザーには、HTTPS 接続を使用していることを示す
+    錠前のアイコンが表示されます。これは、アプリケーションの SSL が正しく
+    構成されていることも示します。
 
     ![][8]
 
-## Additional Resources
+## その他のリソース
 
-[How to Associate a Certificate with a Service]
+[サービスと証明書の関連付け]
 
-[Configuring SSL for a Node.js Application in an Azure Worker Role]
+[Azure ワーカー ロールで Node.js アプリケーションの SSL を構成する]
 
-[How to Configure an SSL Certificate on an HTTPS Endpoint]
+[HTTPS エンドポイント上での SSL 証明書の構成方法]
 
-  [Step 1: Create a Node.js service and publish the service to the cloud]: #step1
-  [Step 2: Get an SSL certificate]: #step2
-  [Step 3: Import the SSL certificate]: #step3
-  [Step 4: Modify the Service Definition and Configuration Files]: #step4
-  [Step 5: Connect to the Role Instance by Using HTTPS]: #step5
+  [手順 1. Node.js サービスを作成してクラウドにサービスを発行する]: #step1
+  [手順 2: SSL 証明書を取得する]: #step2
+  [手順 3. SSL 証明書をインポートする]: #step3
+  [手順 4. サービス定義ファイルとサービス構成ファイルを変更する]: #step4
+  [手順 5. HTTPS を使用してロール インスタンスに接続する]: #step5
   [**Azure PowerShell**]: http://go.microsoft.com/?linkid=9790229&clcid=0x409
   
   
@@ -207,15 +204,16 @@ connect to it using HTTPS.
   [1]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-01.png
   [2]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-02.png
   [3]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-03.png
-  [Azure Management Portal]: http://manage.windowsazure.com
+  [Azure の管理ポータル]: http://manage.windowsazure.com
   
   
-  [How to Associate a Certificate with a Service]: http://msdn.microsoft.com/en-us/library/windowsazure/gg465718.aspx
+  [サービスと証明書の関連付け]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg465718.aspx
   
   [site-url]: ./media/cloud-services-nodejs-configure-ssl-certificate/site-url.png
   [8]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-08.png
-  [How to Configure an SSL Certificate on an HTTPS Endpoint]: http://msdn.microsoft.com/en-us/library/windowsazure/ff795779.aspx
+  [HTTPS エンドポイント上での SSL 証明書の構成方法]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff795779.aspx
   [powershell-menu]: ./media/cloud-services-nodejs-configure-ssl-certificate/azure-powershell-start.png
   [cert-wizard]: ./media/cloud-services-nodejs-configure-ssl-certificate/certificateimport.png
   [key-protection]: ./media/cloud-services-nodejs-configure-ssl-certificate/exportable.png
-  [Configuring SSL for a Node.js Application in an Azure Worker Role]: /en-us/develop/nodejs/common-tasks/enable-ssl-worker-role/
+  [Azure ワーカー ロールで Node.js アプリケーションの SSL を構成する]: /ja-jp/develop/nodejs/common-tasks/enable-ssl-worker-role/
+

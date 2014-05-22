@@ -1,100 +1,101 @@
-<properties linkid="biztalk-troubleshoot-using-ops-logs" urlDisplayName="BizTalk Services: Troubleshoot using operation logs" pageTitle="BizTalk Services: Troubleshoot using ops logs | Azure" metaKeywords="" description="BizTalk Services: Troubleshoot using ops logs" metaCanonical="" services="" documentationCenter="" title="BizTalk Services: Troubleshoot using ops logs" authors=""  solutions="" writer="nitinme" manager="paulettm" editor="cgronlun"  />
+<properties linkid="biztalk-troubleshoot-using-ops-logs" urlDisplayName="BizTalk サービス: 操作ログを使用したトラブルシューティング" pageTitle="BizTalk サービス: 操作ログを使用したトラブルシューティング | Azure" metaKeywords="" description="BizTalk サービス: 操作ログを使用したトラブルシューティング" metaCanonical="" services="" documentationCenter="" title="BizTalk サービス: 操作ログを使用したトラブルシューティング" authors=""  solutions="" writer="nitinme" manager="paulettm" editor="cgronlun"  />
 
 
 
-# BizTalk Services: Troubleshoot using operation logs
+# BizTalk サービス: 操作ログを使用したトラブルシューティング
 
-Operation Logs is a Management Services feature available in the Azure Management portal that allows you to view historical logs of operations performed on your Azure services, including BizTalk Service. This enables you to view historical data related to management operations on your BizTalk Service subscription for as far back as 180 days.
+操作ログは、Azure 管理ポータルで使用できる管理サービス機能で、BizTalk サービスを含む Azure サービスで実行された操作の履歴ログを表示することができます。BizTalk サービス サブスクリプションにおける管理操作に関する履歴データを 180 日間分、確認できます。
 
-<div class="dev-callout"><b>Note</b>
-<p>This feature only captures logs for management operations on BizTalk Services, such as when the service was started, backed up, etc. Such operations are tracked irrespective of whether they are performed from the Azure Management Portal or by using the <a href="http://msdn.microsoft.com/en-us/library/windowsazure/dn232347.aspx">BizTalk Service REST APIs</a>. For a complete list of operations that are tracked using Management Services, see <a href="#bizops">Operations Tracked Using Azure Management Services</a>.</p>
-<p>This does not capture the logs for activities related to BizTalk Service runtime (such as message processed by bridges, etc.). To view such logs, you must use the Tracking view from the BizTalk Services portal. For more information, see <a HREF="http://msdn.microsoft.com/library/windowsazure/hh949805.aspx">Tracking Messages</a>.</p>
+<div class="dev-callout"><b>注</b>
+<p>この機能は、サービスの開始やバックアップなど、BizTalk サービスでの管理操作のログのみを記録します。このような管理操作は、Azure 管理ポータルから実行したか、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dn232347.aspx">BizTalk サービスの REST API</a> を使用して実行したかを問わず、常に追跡されます。管理サービスを使用して追跡される操作の完全な一覧については、「<a href="#bizops">Azure 管理サービスを使用して追跡される操作</a>」を参照してください。</p>
+<p>この機能は、BizTalk サービスのランタイムに関連するアクティビティのログは記録しません (ブリッジが処理するメッセージなど)。このようなログを表示するには、BizTalk サービス ポータルの [追跡] ビューを使用する必要があります。詳細については、「<a HREF="http://msdn.microsoft.com/library/windowsazure/hh949805.aspx">Tracking Messages (メッセージの追跡)</a>」を参照してください。</p>
 </div>
 
-##<a name="viewlogs"></a>View BizTalk Services Operation Logs
-1. From the Azure Management Portal, click Management Services, and then click the Operation Logs tab.
-2. You can filter the logs based on various parameters like subscription, date range, service type (e.g. BizTalk Services), service name, or status (of the operation e.g. Succeeded, Failed)
-3. Click the checkmark to view the filtered list. The following illustration shows activities related to testbiztalkservice.
-	![View operation logs][ViewLogs] 
-4. To view more about a specific operation, select the row and click <b>Details</b> from the bottom of the page.
+##<a name="viewlogs"></a>BizTalk サービスの操作ログの表示
+1. Azure 管理ポータルで、[管理サービス] をクリックし、[操作ログ] タブをクリックします。
+2. サブスクリプション、日付の範囲、サービスの種類 (BizTalk サービスなど)、サービス名、操作の状態 (成功、失敗など) のようなさまざまなパラメーターに基づいてログをフィルター処理することができます。
+3. フィルター処理された一覧を表示するには、チェックマークをクリックします。次の図は、testbiztalkservice に関連するアクティビティを示します。
+	![操作ログの表示][ViewLogs]
+4. 特定の操作について詳細を表示するには、操作の行を選択して、ページの下部にある <b>[詳細]</b> をクリックします。
 
 
-##<a name="bizops"></a>Operations Tracked Using Azure Management Services
-The following table lists the operations that are tracked using the Azure Management Services.
+##<a name="bizops"></a>Azure 管理サービスを使用して追跡される操作
+Azure 管理サービスを使用して追跡される操作の一覧を次の表に示します。
 
 <table border="1" cellpadding="5">
 <tr>
-<td>CreateBizTalkService</td> 
-<td align="left">Operation to create a new BizTalk Service</td> 
+<td>CreateBizTalkService</td>
+<td align="left">新しい BizTalk サービスを作成する操作</td>
 </tr> 
 <tr>
-<td>DeleteBizTalkService</td> 
-<td align="left">Operation to delete a BizTalk Service</td>  
+<td>DeleteBizTalkService</td>
+<td align="left">BizTalk サービスを削除する操作</td>
 </tr> 
 <tr>
-<td>RestartBizTalkService</td> 
-<td align="left">Operation to restart a BizTalk Service</td> 
+<td>RestartBizTalkService</td>
+<td align="left">BizTalk サービスを再起動する操作</td>
 </tr>
 <tr>
-<td>StartBizTalkService</td> 
-<td align="left">Operation to start a BizTalk Service</td> 
+<td>StartBizTalkService</td>
+<td align="left">BizTalk サービスを開始する操作</td>
 </tr>
 <tr>
-<td>StopBizTalkService</td> 
-<td align="left">Operation to stop a BizTalk Service</td> 
+<td>StopBizTalkService</td>
+<td align="left">BizTalk サービスを停止する操作</td>
 </tr>
 <tr>
-<td>DisableBizTalkService</td> 
-<td align="left">Operation to disable a BizTalk Service</td> 
+<td>DisableBizTalkService</td>
+<td align="left">BizTalk サービスを無効にする操作</td>
 </tr>
 <tr>
-<td>EnableBizTalkService</td> 
-<td align="left">Operation to enable a BizTalk Service</td> 
+<td>EnableBizTalkService</td>
+<td align="left">BizTalk サービスを有効にする操作</td>
 </tr>
 <tr>
-<td>BackupBizTalkService</td> 
-<td align="left">Operation to back up a BizTalk Service</td> 
+<td>BackupBizTalkService</td>
+<td align="left">BizTalk サービスをバックアップする操作</td>
 </tr>
 <tr>
-<td>RestoreBizTalkService</td> 
-<td align="left">Operation to restore a BizTalk Service from specified backup</td> 
+<td>RestoreBizTalkService</td>
+<td align="left">指定されたバックアップから BizTalk サービスを復元する操作</td>
 </tr>
 <tr>
-<td>SuspendBizTalkService</td> 
-<td align="left">Operation to suspend a BizTalk Service</td> 
+<td>SuspendBizTalkService</td>
+<td align="left">BizTalk サービスを中断する操作</td>
 </tr>
 <tr>
-<td>ResumeBizTalkService</td> 
-<td align="left">Operation to resume a BizTalk Service</td> 
+<td>ResumeBizTalkService</td>
+<td align="left">BizTalk サービスを再開する操作</td>
 </tr>
 <tr>
-<td>ScaleBizTalkService</td> 
-<td align="left">Operation to scale a BizTalk Service up or down</td> 
+<td>ScaleBizTalkService</td>
+<td align="left">BizTalk サービスの規模を変更する操作</td>
 </tr>
 <tr>
-<td>ConfigUpdateBizTalkService</td> 
-<td align="left">Operation to update the configuration of a BizTalk Service</td> 
+<td>ConfigUpdateBizTalkService</td>
+<td align="left">BizTalk サービスの構成を更新する操作</td>
 </tr>
 <tr>
-<td>ServiceUpdateBizTalkService</td> 
-<td align="left">Operation to upgrade or downgrade a BizTalk Service to a different version</td> 
+<td>ServiceUpdateBizTalkService</td>
+<td align="left">BizTalk サービスを別のバージョンにアップグレードまたはダウングレードする操作</td>
 </tr>
 <tr>
-<td>PurgeBackupBizTalkService</td> 
-<td align="left">Operation to purge backups of the BizTalk Service outside the retention period</td> 
+<td>PurgeBackupBizTalkService</td>
+<td align="left">保持期間を超えた BizTalk サービスのバックアップを消去する操作</td>
 </tr>
 </table>
 
 
-## See Also
-- [Backup BizTalk Service](http://go.microsoft.com/fwlink/p/?LinkID=325584)
-- [Restore BizTalk Service from Backup](http://go.microsoft.com/fwlink/p/?LinkID=325582)
-- [BizTalk Services: Developer, Basic, Standard and Premium Editions Chart](http://go.microsoft.com/fwlink/p/?LinkID=302279)
-- [BizTalk Services: Provisioning Using Azure Management Portal](http://go.microsoft.com/fwlink/p/?LinkID=302280)
-- [BizTalk Services: Provisioning Status Chart](http://go.microsoft.com/fwlink/p/?LinkID=329870)
-- [BizTalk Services: Dashboard, Monitor and Scale tabs](http://go.microsoft.com/fwlink/p/?LinkID=302281)
-- [BizTalk Services: Throttling](http://go.microsoft.com/fwlink/p/?LinkID=302282)
-- [BizTalk Services: Issuer Name and Issuer Key](http://go.microsoft.com/fwlink/p/?LinkID=303941)
-- [How do I Start Using the Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+## 関連項目
+- [BizTalk サービスのバックアップに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=325584)
+- [バックアップからの BizTalk サービスの復元に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=325582)
+- [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャートに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302279)
+- [BizTalk サービス: Azure 管理ポータルを使用した BizTalk サービスのプロビジョニングに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302280)
+- [BizTalk サービス: プロビジョニングの状態のチャートに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=329870)
+- [BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302281)
+- [BizTalk サービス: 調整に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302282)
+- [BizTalk サービス: 発行者名および発行者キーに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=303941)
+- [Azure BizTalk サービス SDK の使用開始に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [ViewLogs]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png
+

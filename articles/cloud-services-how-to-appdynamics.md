@@ -1,107 +1,107 @@
-<properties linkid="manage-services-how-to-use-appdynamics" urlDisplayName="Monitor with AppDynamics" pageTitle="How to use AppDynamics with Azure" metaKeywords="" description="Learn how to use AppDynamics for Azure." metaCanonical="" services="cloud-services" documentationCenter="" title="How To Use AppDynamics for Azure" authors="ryanwi" solutions="" manager="" editor="" />
+<properties linkid="manage-services-how-to-use-appdynamics" urlDisplayName="AppDynamics による監視" pageTitle="Azure における AppDynamics の使用方法" metaKeywords="" description="Azure で AppDynamics を使用する方法を説明します。" metaCanonical="" services="cloud-services" documentationCenter="" title="Azure における AppDynamics の使用方法" authors="ryanwi" solutions="" manager="" editor="" />
 
 
 
 
-#How To Use AppDynamics for Azure#
+#Azure における AppDynamics の使用方法#
 
-This topic describes how to get started with AppDynamics for Azure.
+このトピックでは、Azure 用の AppDynamics の基本的な使用方法について説明しています。
 
-##Table of Contents##
+##目次##
 
-* [What is AppDynamics?](#what)
-* [Prerequisites](#prereq)
-* [Register for an AppDynamics Account](#register)
-* [Download the .NET Agent from AppDynamics](#download)
-* [Add the .NET Agent to Azure Roles and Modify Startup](#addagent)
-* [Publish the AppDynamics-Instrumented Application to Azure](#publish)
-* [Monitor Your Application](#monitor)
-
-
-<h2><a id="what"></a>What is AppDynamics?</h2>
-
-AppDynamics is an application performance monitoring solution that helps you:
-
-- Identify problems, such as slow and stalled user requests and errors, in a production environment
-
-- Troubleshoot and isolate the root cause of such problems
-
-There are two components in AppDynamics:
-
-- Application Server Agent: The Application Server .NET Agent collects data from your servers. You run a separate Agent on every role instance that you want to monitor. You can download the Agent from the AppDynamics portal.
-
-- AppDynamics Controller: The Agent sends its information to an AppDynamics Controller hosted service on Azure. Using a web browser-based console, you log into the Controller to monitor, analyze and troubleshoot your application.
-
-	![AppDynamics Diagram](./media/cloud-services-how-to-appdynamics/addiagram.png)
+* [AppDynamics とは](#what)
+* [前提条件](#prereq)
+* [AppDynamics アカウントを登録する](#register)
+* [AppDynamics から .NET エージェントをダウンロードする](#download)
+* [.NET エージェントを Azure のロールに追加してスタートアップを変更する](#addagent)
+* [AppDynamics でインストルメント化されたアプリケーションを Azure に発行する](#publish)
+* [アプリケーションを監視する](#monitor)
 
 
-<h2><a id="prereq"></a>Prerequisites</h2>
+<h2><a id="what"></a>AppDynamics とは</h2>
 
-- Visual Studio 2010 or later
-- A Visual Studio solution to be monitored
+AppDynamics は、アプリケーション パフォーマンス監視ソリューションで、次のような用途があります。
+
+- 運用環境で、動作が遅くストールしたユーザー リクエストやエラーのような問題を特定する
+
+- そのような問題の根本原因を解明して特定する
+
+AppDynamics にはコンポーネントが 2 つあります。
+
+- アプリケーション サーバー エージェント: アプリケーション サーバー .NET エージェントによってサーバーからデータが収集されます。監視するあらゆるロール インスタンス上で別々のエージェントを実行します。AppDynamics ポータルからこのエージェントをダウンロードできます。
+
+- AppDynamics コントローラー: エージェントから情報が Azure 上の AppDynamics コントローラー ホステッド サービスに送信されます。Web ブラウザー ベースのコンソールを使用して、コントローラーにログインし、アプリケーションの監視、分析、および問題解決を実行します。
+
+	![AppDynamics の図](./media/cloud-services-how-to-appdynamics/addiagram.png)
+
+
+<h2><a id="prereq"></a>前提条件</h2>
+
+- Visual Studio 2010 以降
+- 監視対象の Visual Studio ソリューション
 - Azure SDK
-- Azure account
+- Azure アカウント
 
-<h2><a id="register"></a>Register for an AppDynamics Account</h2>
+<h2><a id="register"></a>AppDynamics アカウントを登録する</h2>
 
-To register for an AppDynamics for Azure account:
+Azure アカウント用の AppDynamics を登録するには、次に示している手順を実行します。
 
-1. Click **Try Free** or **Sign Up** for AppDynamics on the Azure Marketplace at [https://datamarket.azure.com/browse/Applications](https://datamarket.azure.com/browse/Applications).
+1. Azure Marketplace ([https://datamarket.azure.com/browse/Applications](https://datamarket.azure.com/browse/Applications)) で AppDynamics の **[無料試用]** または **[サインアップ]** をクリックします。
 
-	If you choose **Sign Up**, you receive a free version of AppDynamics Pro for Azure with full functionality, which downgrades after 30 days to a free version of AppDynamics Lite for Azure with limited functionality. You do not need to provide a credit card for this option. You can upgrade to AppDynamics Pro for Azure at any time.
+	**[サインアップ]** をクリックした場合、Azure 用の AppDynamics Pro の無料版を受け取ります。機能は制限されておらず、30 日後に機能が制限された Azure 用の AppDynamics Lite の無料版にダウングレードされます。この場合、クレジット カード番号を入力する必要はありません。いつでも Azure 用の AppDynamics Pro にアップグレードできます。
 
-	If you choose **Try Free**, you receive a free version of AppDynamics Pro for Azure with full functionality. You need to provide a credit card for this option. After 30 days your credit account will be charged for continued use of AppDynamics Pro for Azure, unless you cancel your subscription.
+	**[無料試用]** をクリックした場合、Azure 用の AppDynamics Pro の無料版を受け取ります。機能は制限されていません。この場合、クレジット カード番号を入力する必要があります。サブスクリプションを取り消さない限り、30 日後、Azure 用の AppDynamics Pro の継続使用に関してクレジット アカウントに課金されます。
 
-	You need one agent license for each role instance that you wish to monitor. For example, a site running 2 Web role instances and 2 Worker role instances requires 4 agent licenses.
+	監視するロール インスタンスごとに 1 つエージェント ライセンスが必要です。たとえば、2 つの Web ロール インスタンスと 2 つの woker ロール インスタンスを実行するサイトはエージェント ライセンスが 4 つ必要です。
 
-2. On the registration page, provide your user information, a password, email address, company name, and the name of the application you are monitoring as you will publish it with Azure.
+2. 登録ページで、ユーザーの情報、パスワード、メール アドレス、会社名、および監視するアプリケーションの名前を指定します。このアプリケーションは Azure を使用して発行します。
 
-3. Click **Register Now**.
+3. **[今すぐ登録]** をクリックします。
 
-	You will receive your AppDynamics credentials and the AppDynamics Controller URL (host and port) assigned to your account in an email sent to the address you provide on the sign-up page. Save this information.
+	AppDynamics 資格情報およびアカウントに割り当てられた AppDynamics コントローラーの URL (ホストとポート) が、サインアップ ページで指定したメール アドレスに送信されます。この情報は保存してください。
 
-	If you already have AppDynamics credentials from another product, you can sign in using them.
+	別の製品で既に AppDynamics 資格情報を持っている場合は、それを使用してサインインすることができます。
 
-	You will also be given an AppDynamics account home page.   
+	AppDynamics アカウントのホーム ページも提供されます。
 
-	You will land on your AppDynamics account home page.
+	AppDynamics アカウントの自分のホーム ページが表示されます。
 
-	Your AppDynamics account home page includes:
+	AppDynamics アカウントのホーム ページには以下が含まれます。
 
-	- Controller URL: from which to log into your account on the AppDynamics controller hosted service
+	- コントローラー URL: AppDynamics コントローラー ホステッド サービスのアカウントにログインする URL
 
-	- AppDynamics credentials: Account Name and Access Key
+	- AppDynamics 資格情報: アカウント名とアクセス キー
 
-	- Link to the AppDynamics download site: from which to download the AppDynamics .NET Agent
+	- AppDynamics ダウンロード サイトへのリンク: AppDynamics .NET エージェントをダウンロードするためのリンク
 
-	- Number of days left in your Pro trial
+	- Pro 試用版の残り日数
 
-	- Links to the AppDynamics on-boarding videos and documentation
+	- AppDynamics の入門ビデオおよびマニュアルへのリンク
 
-	You can access your AppDynamics account home page at any time by entering its URL in a web browser and signing in with your AppDynamics credentials.
+	AppDynamics アカウントのホーム ページは、Web ブラウザーで URL を入力し、AppDynamics 資格情報を使用してサインインすると、いつでもアクセスできます。
 
-<h2><a id="download"></a>Download the .NET Agent from AppDynamics</h2>
+<h2><a id="download"></a>AppDynamics から .NET エージェントをダウンロードする</h2>
 
-1. Navigate to the AppDynamics download site. The URL is in your welcome email and on your AppDynamics account home page.
+1. AppDynamics ダウンロード サイトに移動します。URL は、ウェルカム メールおよび AppDynamics アカウントのホーム ページに記載されています。
 
-2. Log in with your AppDynamics account name and access key.
+2. AppDynamics のアカウント名とアクセス キーを使用してログインします。
 
-3. Download the file named AppDynamicsdotNetAgentSetup64.msi. Do not run the file.
+3. AppDynamicsdotNetAgentSetup64.msi という名前のファイルをダウンロードします。実行はしないでください。
 
 
-<h2><a id="addagent"></a>Add the .NET Agent to Azure Roles and Modify Startup</h2>
+<h2><a id="addagent"></a>.NET エージェントを Azure のロールに追加してスタートアップを変更する</h2>
 
-This step instruments the roles in your Visual Studio solution for monitoring by AppDynamics. There is no traditional Windows wizard-style installation procedure required to use AppDynamics for Azure.
+この手順では、Visual Studio ソリューションのロールに AppDynamics による監視を設定します。Azure 用の AppDynamics を使用するにあたって、従来のような Windows のウィザード式インストール手順は必要ありません。
 
-1. Either create a new Azure project in Visual Studio or open an existing Azure project.
+1. Visual Studio で新しい Azure プロジェクトを作成するか、既存の Azure プロジェクトを開きます。
 
-2. If you created a new project, add the Web role and/or Worker role projects to the solution.
+2. 新しいプロジェクトを作成した場合は、ソリューションに Web ロールまたは woker ロールのプロジェクトを追加します。
 
-3. To each Web and Worker role project that you want to monitor add the downloaded .NET Agent .msi file. 
+3. 監視する Web および woker ロール プロジェクトごとに、ダウンロードした .NET エージェント .msi ファイルを追加します。
 
-	Note that while each *role project* has a single attached .NET Agent .msi, each *role instance* in the project requires a separate .NET Agent license.
+	各*ロール プロジェクト*には 1 つの .NET エージェント .msi がアタッチされているだけですが、プロジェクトの各*ロール インスタンス*には別々の .NET エージェント ライセンスが必要なことに注意してください。
 
-4. To each Web and Worker role project that you want to monitor add a text file named startup.cmd and paste the following lines in it:
+4. 監視する Web および woker ロール プロジェクトごとに、startup.cmd という名前のテキスト ファイルを追加し、次の行を貼り付けます。
    
 		if defined COR_PROFILER GOTO END 
 		SETLOCAL EnableExtensions 
@@ -111,53 +111,54 @@ This step instruments the roles in your Visual Studio solution for monitoring by
 		GOTO END   
 		:END
 
-5. For each Web and Worker role that you want to monitor, set the **Copy to Output Directory** property for the AppDynamics agent .msi file and for the startup.cmd file to **Copy Always**.
+5. 監視する Web および woker ロールごとに、AppDynamics エージェント .msi ファイルおよび startup.cmd ファイルの **[出力ディレクトリにコピー]** プロパティを **[常にコピーする]** に設定します。
 
-	![Copy Always](./media/cloud-services-how-to-appdynamics/adcopyalways.png)
+	![常にコピーする](./media/cloud-services-how-to-appdynamics/adcopyalways.png)
 
-6. In the ServiceDefinition.csdef file for the Azure project, add a Startup Task element that invokes startup.cmd with parameters for each WorkerRole and WebRole element.  
+6. Azure プロジェクトの ServiceDefinition.csdef ファイルに、各 WorkerRole および WebRole 要素用のパラメーターを付けて startup.cmd を起動する Startup Task 要素を追加します。
 
-	Add the following lines:
+	次の行を追加します。
 
 		<Startup>
 		<Task commandLine="startup.cmd [your_controller_host] [your_controller_port] [your_account_name] [your_access_key] [your_application_name]" executionContext="elevated" taskType="simple"/>
 		</Startup>
 	
-	where:
+	各値の説明:
 	
-	- *your controller host* and *your controller port* are the Controller host and port assigned to your account, and *your account name* and *your access key* are the credentials assigned to you by AppDynamics. This information is provided in the email sent when you registered with AppDynamics and also on your AppDynamic home page. See [Register for an AppDynamics Account](#register).
+	- *your_controller_host* および *your_controller_port* は、アカウントに割り当てられたコントローラーのホストとポートで、*your_account_name* および *your_access_key* は、AppDynamics によって割り当てられた資格情報です。この情報は、AppDynamics に登録したときに受け取ったメールおよび AppDynamic のホーム ページに記載されています。「[AppDynamics アカウントを登録する](#register)」を参照してください。
 
 		
-	- *your application name* is the name you choose for the application. This name will identify the application in the AppDynamics Controller interface.
+	- *your_application_name* はアプリケーションに付ける名前です。この名前は、AppDynamics コントローラーの操作画面でアプリケーションを識別するために使用されます。
 
-	Your ServiceDefinition.csdef file will look something like this: 
+	ServiceDefinition.csdef ファイルは次のようになります。
 
-	![Service Definition](./media/cloud-services-how-to-appdynamics/adscreen.png)
-
-
-##<a name="publish"></a>Publish the AppDynamics-Instrumented Application to Azure
-
-For each AppDynamics-instrumented role project:
-
-1. In Visual Studio, select the role project.
-
-2. Select Publish to Azure.
+	![サービス定義](./media/cloud-services-how-to-appdynamics/adscreen.png)
 
 
-##<a name="monitor"></a>Monitor Your Application
+##<a name="publish"></a>AppDynamics でインストルメント化されたアプリケーションを Azure に発行する
 
-1. Log into the AppDynamics Controller at the URL given in your welcome email and on your AppDynamics account home page.
+AppDynamics でインストルメント化されたロール プロジェクトごとに、以下の手順を実行します。
 
-2. Send some requests to your application so there is some traffic to monitor and wait a few minutes.
+1. Visual Studio で、ロール プロジェクトを選択します。
 
-3. In the AppDynamics Controller, select your application.
+2. [発行] をクリックして、Azure に発行します。
 
-4. Monitor your application.
 
-##<a name="learn"></a>Learn More
+##<a name="monitor"></a>アプリケーションを監視する
 
-See your AppDynamics account home page for links to documentation and videos.
+1. ウェルカム メールおよび AppDynamics アカウントのホーム ページに記載された URL を使用して AppDynamics にログインします。
 
-The latest updates to this document are in the wiki version at [http://docs.appdynamics.com/display/ADAZ/How+To+Use+AppDynamics+for+Windows+Azure](http://docs.appdynamics.com/display/ADAZ/How+To+Use+AppDynamics+for+Windows+Azure). 
+2. 監視するトラフィックが生じるように、アプリケーションにリクエストを送信して、数分間待ちます。
+
+3. AppDynamics コントローラーで、アプリケーションを選択します。
+
+4. アプリケーションを監視します。
+
+##<a name="learn"></a>詳細情報
+
+マニュアルとビデオのリンクについては、AppDynamics アカウントのホーム ページを参照してください。
+
+この文書の最新版は、wiki 版 ([http://docs.appdynamics.com/display/ADAZ/How+To+Use+AppDynamics+for+Windows+Azure](http://docs.appdynamics.com/display/ADAZ/How+To+Use+AppDynamics+for+Windows+Azure)) で参照できます。
+
 
 

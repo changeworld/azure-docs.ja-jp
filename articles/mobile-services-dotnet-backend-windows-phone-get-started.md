@@ -1,108 +1,108 @@
-<properties linkid="develop-mobile-tutorials-get-started-wp8" urlDisplayName="Get Started (WP8)" pageTitle="Get Started with Azure Mobile Services for Windows Phone apps" metaKeywords="" description="Follow this tutorial to get started using Azure Mobile Services for Windows Phone development. " metaCanonical="" services="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-tutorials-get-started-wp8" urlDisplayName="作業の開始 (WP8)" pageTitle="Windows Phone アプリケーション向け Azure のモバイル サービスの使用" metaKeywords="" description="このチュートリアルでは、Windows Phone 用の開発を行う場合に Azure のモバイル サービスを使用する方法を示します。" metaCanonical="" services="" documentationCenter="Mobile" title="モバイル サービスの使用" authors="glenga" solutions="" manager="" editor="" />
 
-# <a name="getting-started"> </a>Get started with Mobile Services
+# <a name="getting-started"> </a>モバイル サービスの使用
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started" title="Windows Store C#">Windows Store C#</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started" title="Windows Phone" class="current">Windows Phone</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started" title="iOS">iOS</a>	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started" title="Android">Android</a>
-	<!--<a href="/en-us/documentation/articles/get-started-android" title="Android">Android</a>
-		<a href="/en-us/documentation/articles/get-started-html" title="HTML">HTML</a>
-		<a href="/en-us/documentation/articles/partner-xamarin-mobile-services-ios-get-started" title="Xamarin.iOS">Xamarin.iOS</a>
-		<a href="/en-us/documentation/articles/partner-xamarin-mobile-services-android-get-started" title="Xamarin.Android">Xamarin.Android</a>
-		<a href="/en-us/documentation/articles/partner-sencha-mobile-services-get-started/" title="Sencha">Sencha</a>
-		<a href="/en-us/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/" title="PhoneGap">PhoneGap</a>-->
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started" title="Windows Phone" class="current">Windows Phone</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started" title="iOS">iOS</a>	<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started" title="Android">Android</a>
+	<!--<a href="/ja-jp/documentation/articles/get-started-android" title="Android">Android</a>
+		<a href="/ja-jp/documentation/articles/get-started-html" title="HTML">HTML</a>
+		<a href="/ja-jp/documentation/articles/partner-xamarin-mobile-services-ios-get-started" title="Xamarin.iOS">Xamarin.iOS</a>
+		<a href="/ja-jp/documentation/articles/partner-xamarin-mobile-services-android-get-started" title="Xamarin.Android">Xamarin.Android</a>
+		<a href="/ja-jp/documentation/articles/partner-sencha-mobile-services-get-started/" title="Sencha">Sencha</a>
+		<a href="/ja-jp/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/" title="PhoneGap">PhoneGap</a>-->
 </div>
 
 <div class="dev-center-tutorial-subselector">
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started/" title=".NET backend" class="current">.NET backend</a> | <a href="/en-us/documentation/articles/mobile-services-windows-phone-get-started/"  title="JavaScript backend" >JavaScript backend</a>
+	<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started/" title=".NET バックエンド" class="current">.NET バックエンド</a> | <a href="/ja-jp/documentation/articles/mobile-services-windows-phone-get-started/"  title="JavaScript バックエンド" >JavaScript バックエンド</a>
 </div>
 
-This tutorial shows you how to add a cloud-based backend service to a Windows Phone 8 app using Azure Mobile Services. In this tutorial, you will create both a new mobile service and a simple _To do list_ app that stores app data in the new mobile service. The mobile service that you will create uses the supported .NET languages using Visual Studio for server-side business logic and to manage the mobile service. To create a mobile service that lets you write your server-side business logic in JavaScript, see the [JavaScript backend version] of this topic.
+このチュートリアルでは、Azure のモバイル サービスを使用して Windows Phone 8 アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な _To do list_ アプリケーションの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために Visual Studio を使用してサポートされる .NET 言語を使用し、モバイル サービスを管理します。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[JavaScript バックエンド バージョン]」を参照してください。
 
-A screenshot from the completed app is below:
+完成したアプリケーションのスクリーンショットは次のようになります。
 
 ![][0]
 
->[WACOM.NOTE]To complete this tutorial, you need an Azure account that has the Azure Mobile Services feature enabled. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A30A4DDE2&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-phone-get-started%2F" target="_blank">Azure Free Trial</a>. <br />This tutorial requires <a href="https://go.microsoft.com/fwLink/p/?LinkID=257546" target="_blank">Visual Studio Professional 2013</a>. A free trial version is available.
+>[WACOM.NOTE]このチュートリアルを完了するには、Azure のモバイル サービスの機能を有効にした Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A30A4DDE2&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-phone-get-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。<br />このチュートリアルには、<a href="https://go.microsoft.com/fwLink/p/?LinkID=257546" target="_blank">Visual Studio Professional 2013</a> が必要です。無料評価版が利用できます。
 
-## <a name="create-new-service"> </a>Create a new mobile service
+## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
 
 [WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/mobile-services-dotnet-backend-create-new-service.md)]
 
-## Create a new Windows Phone app
+## 新しい Windows Phone アプリケーションを作成する
 
-Once you have created your mobile service, you can follow an easy quickstart in the Management Portal to either create a new app or modify an existing app to connect to your mobile service. 
+モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、新しいアプリケーションを作成するか、既存のアプリケーションを変更してモバイル サービスに接続することができます。
 
-In this section you will create a new Windows Phone 8 app that is connected to your mobile service.
+ここでは、モバイル サービスに接続された新しい Windows Phone 8 アプリを作成します。
 
-1.  In the Management Portal, click **Mobile Services**, and then click the mobile service that you just created.
+1. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
-2. In the quickstart tab, click **Windows Phone 8** under **Choose platform** and expand **Create a new Windows Phone 8 app**.
+2. [クイック スタート] タブの **[プラットフォームの選択]** で **[Windows Phone 8]** を選択し、**[新しい Windows Phone 8 アプリを作成する]** を展開します。
 
    	![][6]
 
-   	This displays the three easy steps to create a Windows Phone app connected to your mobile service.
+   	これにより、モバイル サービスに接続された Windows Phone アプリケーションを作成するための簡単な 3 つの手順が表示されます。
 
   	![][7]
 
-3. If you haven't already done so, download and install <a href="https://go.microsoft.com/fwLink/p/?LinkID=257546" target="_blank">Visual Studio Professional 2013</a> on your local computer or virtual machine.
+3. まだインストールしていない場合は、<a href="https://go.microsoft.com/fwLink/p/?LinkID=257546" target="_blank">Visual Studio Professional 2013</a> をダウンロードし、ローカル コンピューターまたは仮想マシンにインストールします。
 
-4. Under **Download and publish you service to the cloud**, click **Download**. 
+4. **[サービスのダウンロードとクラウドへの発行]** で **[ダウンロード]** をクリックします。
 
-  	This downloads a solution contains projects for both the mobile service and for the sample _To do list_ application that is connected to your mobile service. Save the compressed project file to your local computer, and make a note of where you save it.
+  	これにより、モバイル サービスとモバイル サービスに接続されている _To do list_ サンプル アプリケーションの両方のプロジェクトを含むソリューションがダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
-5. Under **Publish your service to the cloud**, download your publish profile, save the downloaded file to your local computer, and make a note of where you save it.
+5. **[クラウドへのサービスの発行]** で、発行プロファイルをダウンロードし、ダウンロードしたファイルをローカル コンピューターに保存して、保存場所を書き留めておきます。
 
-## Test the mobile service on your local computer
+## ローカル コンピューターでモバイル サービスをテストする
 
 [WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service](../includes/mobile-services-dotnet-backend-test-local-service.md)]
 
->[WACOM.NOTE]There are additional configuration steps needed to run a Windows Phone app that connects a local service. We don't show how to do this in this topic, but you can learn more in [How to connect to a local web service from the Windows Phone 8 emulator]. 
+>[WACOM.NOTE]このほかにも、ローカル サービスを接続する Windows Phone アプリケーションの実行に必要な構成手順があります。このトピックではこの方法については説明しませんが、詳細については [Windows Phone 8 エミュレーターからローカル Web サービスに接続する方法]を参照してください。
 
-## Publish your mobile service
+## モバイル サービスを発行する
 
 [WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
 
 <ol start="4">
-<li><p>In the Windows Phone app project, open the App.xaml.cs file, locate the code that creates a <a href="http://msdn.microsoft.com/en-us/library/Windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx" target="_blank">MobileServiceClient</a> instance, comment-out the code that creates this client using <em>localhost</em> and uncomment the code that creates the client using the remote mobile service URL, which looks like the following:</p>
+<li><p>Windows Phone アプリケーション プロジェクトで、App.xaml.cs ファイルを開き、<a href="http://msdn.microsoft.com/ja-jp/library/Windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx" target="_blank">MobileServiceClient</a> インスタンスを作成するコードを見つけて、<em>localhost</em> を使用してこのクライアントを作成するコードをコメント アウトし、リモート モバイル サービス URL を使用してクライアントを作成するコードのコメントを解除すると、次のようになります。</p>
 
         <pre><code>public static MobileServiceClient MobileService = new MobileServiceClient(
             "https://todolist.azure-mobile.net/",
             "XXXXXXX-APPLICATION-KEY-XXXXXXXX");</code></pre>
 
-	<p>The client will now access the mobile service published to Azure.</p></li>
+	<p>クライアントは Azure に発行されたモバイル サービスにアクセスするようになります。</p></li>
 
-<li><p>Press the <strong>F5</strong> key to rebuild the project and start the app.</p></li>
+<li><p><strong>F5</strong> キーを押してプロジェクトを再ビルドし、アプリケーションを開始します。</p></li>
 
-<li><p>In the app, type meaningful text, such as <em>Complete the tutorial</em>, and then click <strong>Save</strong>.</p>
+<li><p>アプリケーションで、意味のあるテキスト (たとえば、「<em>チュートリアルの完了</em>」) を入力し、<strong>[Save]</strong> をクリックします。</p>
 
-<p>This sends a POST request to the new mobile service hosted in Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile service, and the data is displayed in the list.</p>
+<p>これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目がモバイル サービスによって返され、データが一覧に表示されます。</p>
 	<div class="dev-callout"> 
-	<b>Note</b> 
-   	<p>You can review the code that accesses your mobile service to query and insert data, which is found in the MainPage.xaml.cs file.</p> 
+	<b>メモ</b>
+   	<p>モバイル サービスにアクセスして MainPage.xaml.cs ファイルにあるデータを照会および挿入するコードを確認できます。</p>
  	</div>
 </li>
 </ol>
 
 ![][10]
 
-This shows how to run your new client app against the mobile service running in Azure. Before you can test the Windows Phone app with the mobile service running on a local computer, you must configure the Web server and firewall to allow access from your Windows Phone device or emulator. For more information, see [Configure the local web server to allow connections to a local mobile service](/en-us/documentation/articles/mobile-services-dotnet-backend-how-to-configure-iis-express).
+これで、Azure で実行されているモバイル サービスに対して新しいクライアント アプリケーションを実行する方法が示されます。Windows Phone アプリケーションをローカル コンピューターで実行しているモバイル サービスでテストする前に、Windows Phone デバイスまたはエミュレーターからのアクセスを許可するように Web サーバーおよびファイアウォールを構成する必要があります。詳細については、「[Configure the local web server to allow connections to a local mobile service (ローカル モバイル サービスへの接続を許可するようにローカル Web サーバーを構成する)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-configure-iis-express)」を参照してください。
 
-## <a name="next-steps"> </a>Next Steps
-Now that you have completed the quickstart, learn how to perform additional important tasks in Mobile Services: 
+## <a name="next-steps"> </a>次のステップ
+クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。
 
-* [Get started with data]
-  <br/>Learn more about storing and querying data using Mobile Services.
+* [データの使用]
+  <br/>モバイル サービスを使用してデータの格納およびクエリを実行する方法について説明します。
 
-* [Get started with authentication]
-  <br/>Learn how to authenticate users of your app with an identity provider.
+* [認証の使用]
+  <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app.
+* [プッシュ通知の使用]
+  <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
 <!-- Anchors. -->
-[Getting started with Mobile Services]:#getting-started
-[Create a new mobile service]:#create-new-service
-[Define the mobile service instance]:#define-mobile-service-instance
-[Next Steps]:#next-steps
+[モバイル サービスの使用]:#getting-started
+[新しいモバイル サービスを作成する]:#create-new-service
+[モバイル サービス インスタンスの定義]:#define-mobile-service-instance
+[次のステップ]:#next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-windows-phone-get-started/mobile-quickstart-completed-wp8.png
@@ -117,12 +117,13 @@ Now that you have completed the quickstart, learn how to perform additional impo
 
 
 <!-- URLs. -->
-[Get started with data]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data
-[Get started with authentication]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-users
-[Get started with push notifications]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push
+[データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data
+[認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-users
+[プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push
 [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
-[Mobile Services SDK]: https://go.microsoft.com/fwLink/p/?LinkID=268375
+[モバイル サービス SDK]: https://go.microsoft.com/fwLink/p/?LinkID=268375
 
-[Management Portal]: https://manage.windowsazure.com/
-[JavaScript backend version]: /en-us/documentation/articles/mobile-services-windows-phone-get-started
-[How to connect to a local web service from the Windows Phone 8 emulator]: http://go.microsoft.com/fwlink/p/?LinkId=391930
+[管理ポータル]: https://manage.windowsazure.com/
+[JavaScript バックエンド バージョン]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started
+[Windows Phone 8 エミュレーターからローカル Web サービスに接続する方法]: http://go.microsoft.com/fwlink/p/?LinkId=391930
+

@@ -1,30 +1,31 @@
 
 
-By default, all requests to mobile service resources are restricted to clients that present the application key, which does not strictly secure access to resources. To secure your resources, you need to restrict access to authenticated clients only.
+既定では、モバイル サービスのリソースに対するすべての要求を実行するには、クライアントがアプリケーション キーを提出する必要があるという制限が加えられていますが、この方法ではリソースに対するアクセスが厳格に保護されるわけではありません。リソースを保護するには、認証されたクライアントのみにアクセスを制限する必要があります。
 
-1. In Visual Studio, open the project that contains your mobile service. 
+1. Visual Studio で、モバイル サービスを含むプロジェクトを開きます。
 
-2. In Solution Explorer, expand the Controllers folder and open the TodoItemController.cs project file.
+2. ソリューション エクスプローラーで、Controllers フォルダーを展開し、TodoItemController.cs プロジェクト ファイルを開きます。
 
-	The **TodoItemController** class implements data access for the TodoItem table. 
+	**TodoItemController** クラスは、TodoItem テーブルに対するデータ アクセスを実装します。
 
-3. Add the following `using` statement at the top of the code page:
+3. コード ページの先頭に次の `using` ステートメントを追加します。
 
 		using Microsoft.WindowsAzure.Mobile.Service.Security;
 
-4. Apply the following AuthorizeLevel attribute to the **TodoItemController** class:
+4. 次の AuthorizeLevel 属性を **TodoItemController** クラスに適用します。
 
 		[AuthorizeLevel(AuthorizationLevel.User)] 
 
-	This will ensure that all operations against the **TodoItem** table require an authenticated user. 
+	これにより、**TodoItem** テーブルに対するすべての操作には、認証されたユーザーが必要になります。
 
-	>[WACOM.NOTE]Apply the AuthorizeLevel attribute to individual methods to set specific authorization levels on the methods exposed by the controller.
+	>[WACOM.NOTE]コント ローラーによって公開されるメソッドに対して特定の認証レベルを設定するには、個々のメソッドに AuthorizeLevel 属性を適用します。
 
-5. Expand the App_Start folder, open the WebApiConfig.cs project file, then add the following code to the **Register** method:
+5. App_Start フォルダーを展開し、WebApiConfig.cs プロジェクト ファイルを開き、**Register** メソッドに次のコードを追加します。
 
 		config.SetIsHosted(true);
 	
-	This tells the local mobile service project to run as if it is being hosted in Azure, including honoring the AuthorizeLevel settings. Without this setting, all HTTP requests to *localhost* are permitted without authentication despite the AuthorizeLevel setting.  
+	この作業により、ローカルのモバイル サービス プロジェクトに対して、AuthorizeLevel 設定に従うことも含め、まるで Azure でホストされているかのように動作することを指示します。この設定がない場合は、AuthorizeLevel の設定にかかわりなく、*localhost* に対するすべての HTTP 要求は認証なしで許可されます。
 
-6. Republish your service project.
+6. サービス プロジェクトを再発行します。
+
 

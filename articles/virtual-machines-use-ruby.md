@@ -1,76 +1,76 @@
-<properties linkid="manage-services-identity-multi-factor-authentication" urlDisplayName="What is Azure Multi-Factor Authentication?" pageTitle="What is Azure Multi-Factor Authentication?" metaKeywords="" description="Learn more about Azure Multi-Factor Authentication, a method of authentication that requires the use of more than one verification method and adds a critical second layer of security to user sign-ins and transactions." metaCanonical="" services="active-directory,multi-factor-authentication" documentationCenter="" title="How to Manage Azure Virtual Machines using Ruby" authors="larryfr" solutions="" manager="" editor="" />
+<properties linkid="manage-services-identity-multi-factor-authentication" urlDisplayName="Azure 多要素認証とは" pageTitle="Azure 多要素認証とは" metaKeywords="" description="Azure 多要素認証 (複数の確認方法の使用を要求することで、ユーザーのサインインとトランザクションにさらなる重要なセキュリティ レイヤーを追加する認証方法) について説明します。" metaCanonical="" services="active-directory,multi-factor-authentication" documentationCenter="" title="Ruby を使用して Azure の仮想マシンを管理する方法" authors="larryfr" solutions="" manager="" editor="" />
 
 
 
-#How to Manage Azure Virtual Machines using Ruby
+#Ruby を使用して Azure の仮想マシンを管理する方法
 
-This guide will show you how to programmatically perform common management tasks for Azure Virtual Machines, such as creating and configuring VMs and adding data disks. The Azure SDK for Ruby provides access to service management functionality for a variety of Azure Services, including Azure Virtual machines.
+このガイドでは、Azure の仮想マシンの一般的な管理タスク (VM の作成と構成、データ ディスクの追加など) をプログラムで実行する方法について説明します。Azure SDK for Ruby は、Azure の仮想マシンを含め、さまざまな Azure サービスのサービス管理機能へのアクセスを提供します。
 
-##Table of Contents
+##目次
 
-* [What is service management?](#what-is)
-* [Concepts](#concepts)
-* [Create a management certificate](#setup-certificate)
-* [Create a Ruby application](#create-app)
-* [Configure your application to use the SDK](#configure-access)
-* [Setup an Azure management connection](#setup-connection)
-* [How To: Work with Virtual Machines](#virtual-machine)
-* [How To: Work with images and disks](#vm-images)
-* [How To: Work with Cloud Services](#cloud-services)
-* [How To: Work with Storage Services](#storage-services)
-* [Next steps](#next-steps)
+* [サービス管理とは](#what-is)
+* [概念](#concepts)
+* [管理証明書の作成](#setup-certificate)
+* [Ruby アプリケーションの作成](#create-app)
+* [SDK を使用するようにアプリケーションを構成する](#configure-access)
+* [Azure 管理接続の設定](#setup-connection)
+* [方法: 仮想マシンの操作](#virtual-machine)
+* [方法: イメージとディスクの操作](#vm-images)
+* [方法: クラウド サービスの操作](#cloud-services)
+* [方法: ストレージ サービスの操作](#storage-services)
+* [次のステップ](#next-steps)
 
-## <a name="what-is"> </a>What is service management?
+## <a name="what-is"> </a>サービス管理とは
 
-Azure provides [REST APIs for service management operations](http://msdn.microsoft.com/en-us/library/windowsazure/ee460799.aspx), including management of Azure Virtual Machines. The Azure SDK for ruby exposes management operations for Virtual Machines through the **Azure::VirtualMachineSerivce** class. Much of the virtual machine management functionality available through the [Azure Management Portal](https://manage.windowsazure.com) is accessible using this class.
+Azure には、Azure の仮想マシンの管理を含め、[サービス管理操作のための REST API](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee460799.aspx) が用意されています。Azure SDK for Ruby は、**Azure::VirtualMachineSerivce** クラスを通じて仮想マシンの管理操作を公開します。[Azure の管理ポータル](https://manage.windowsazure.com)を通じて使用できる仮想マシン管理機能の大半は、このクラスを使用してアクセスできます。
 
-While the service management API can be used to manage a variety of services hosted on Azure, this document only provides details for the management of Azure Virtual machines.
+サービス管理 API を使用して、Azure にホストされたさまざまなサービスを管理することもできますが、このドキュメントでは、Azure の仮想マシンの管理に関する詳細のみを扱います。
 
-## <a name="concepts"> </a>Concepts
+## <a name="concepts"> </a>概念
 
-Azure Virtual Machines are implemented as 'roles' within a Cloud Service. Each Cloud Service can contain one or more roles, which are logically grouped into deployments. The role defines the overall physical characteristics of the VM, such as how much memory is available, how many CPU cores, etc.
+Azure の仮想マシンは、クラウド サービス内では "ロール" として実装されます。各クラウド サービスには、デプロイへと論理的にグループ化される 1 つ以上のロールを含めることができます。ロールでは、使用可能なメモリの量、CPU コアの数など、VM の物理的な特性全体が定義されます。
 
-Each VM also has an OS disk, which contains the bootable operating system. A VM can have one or more data disks, which are additional disks that should be used to store application data. Disks are implemented as virtual hard drives (VHD) stored in Azure Blob Storage. VHDs can also be exposed as 'images', which are templates that are used to create disks used by a VM during the VM creation. For example, creating a new VM that uses an Ubuntu image will result in a new OS disk being created from the Ubuntu image.
+各 VM には OS ディスクもあり、これには起動可能なオペレーティング システムが含まれます。VM には 1 つ以上のデータ ディスクを含めることができます。これは、アプリケーション データの格納に使用する追加ディスクです。ディスクは、Azure BLOB ストレージ内に格納される仮想ハード ドライブ (VHD) として実装されます。また、VHD は "イメージ" として公開されます。これは、VM の作成時に、VM によって使用されるディスクを作成するためのテンプレートです。たとえば、Ubuntu イメージを使用する新しい VM を作成すると、Ubuntu イメージから新しい OS ディスクが作成されます。
 
-Most images are provided by Microsoft or partners, however you can create your own images or create an image from a VM hosted in Azure.
+ほとんどのイメージは Microsoft またはパートナーから提供されますが、独自のイメージを作成することも、Azure にホストされた VM からイメージを作成することもできます。
 
-## <a name="setup-certificate"> </a>Create an Azure management certificate
+## <a name="setup-certificate"> </a>Azure の管理証明書の作成
 
-When performing service management operations, such as those exposed through the **Azure::VirtualMachineService** class, you must provide your Azure Subscription ID and a file containing a management certificate for your subscription. Both are used by the SDK when authenticating to the Azure REST API.
+**Azure::VirtualMachineService** クラスによって公開されるものなど、サービス管理操作を実行するときは、Azure サブスクリプション ID とサブスクリプションの管理証明書を含むファイルを指定する必要があります。いずれも Azure REST API に対する認証を行う際に SDK によって使用されます。
 
-You can obtain the subscription Id and a management certificate by using the Azure Cross-Platform Command-Line Interface (xplat-cli). See [Install and configure the Azure Cross-platform Command-Line Interface](http://www.windowsazure.com/en-us/manage/install-and-configure-cli/) for information on installing and configuring the xplat-cli.
+サブスクリプション ID と管理証明書を取得するには、Azure クロスプラットフォーム コマンド ライン インターフェイス (xplat-cli) を使用します。xplat-cli のインストールと構成については、[Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成に関するページ](http://www.windowsazure.com/ja-jp/manage/install-and-configure-cli/)を参照してください。
 
-Once the xplat-cli is configured, you can perform the following steps to retrieve your Azure subscription ID and export a management certificate:
+xplat-cli を構成した後で、次の手順で Azure サブスクリプション ID を取得し、管理証明書をエクスポートできます。
 
-1. To retrieve the subscription ID, use:
+1. サブスクリプション ID を取得するには、次のコマンドを使用します。
 
 		azure account list
 
-2. To export the management certificate, use the following command:
+2. 管理証明書をエクスポートするには、次のコマンドを使用します。
 
 		azure account cert export
 
-	After the command completes, the certificate will be exported to a file named &lt;azure-subscription-name&gt;.pem. For example, if your subscription is named **mygreatsubscription**, the file created will be named **mygreatsubscription.pem**.
+	コマンドが完了すると、証明書は &lt;azure-subscription-name&gt;.pem という名前のファイルにエクスポートされます。たとえば、サブスクリプションが **mygreatsubscription** という名前の場合は、**mygreatsubscription.pem** という名前のファイルが作成されます。
 
-Make note of the subscription ID and the location of the PEM file containing the exported certificate, as these will be used later in this document.
+サブスクリプション ID とエクスポートされた証明書を含む PEM ファイルの場所をメモしてください。このドキュメントの後の手順で使用します。
 
-## <a name="create-app"></a>Create a Ruby application
+## <a name="create-app"></a>Ruby アプリケーションの作成
 
-Create a new Ruby application. The examples used in this document can be implemented in a single **.rb** file.
+新しい Ruby アプリケーションを作成します。このドキュメントで使用するサンプルは、単一の **.rb** ファイルで実装できます。
 
-## <a name="configure-access"></a>Configure your application
+## <a name="configure-access"></a>アプリケーションの構成
 
-To manage Azure Services, you need to download and use the Azure gem, which contains the Azure SDK for Ruby.
+Azure サービスを管理するには、Azure SDK for Ruby が含まれる Azure gem をダウンロードして使用する必要があります。
 
-### Use the gem command to install the package
+### gem コマンドを使用してパッケージをインストール
 
-1.  Use a command-line interface such as **PowerShell** (Windows,) **Terminal** (Mac,) or **Bash** (UNIX), navigate to the folder where you created your sample application.
+1.  **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (UNIX) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
 
-2. Use the following to install the azure gem:
+2. 次のコマンドを使用して Azure gem をインストールします。
 
 		gem install azure
 
-	You should see output similar to the following:
+	次のような出力が表示されます。
 
 		Fetching: mini_portile-0.5.1.gem (100%)
 		Fetching: nokogiri-1.6.0-x86-mingw32.gem (100%)
@@ -89,52 +89,52 @@ To manage Azure Services, you need to download and use the Azure gem, which cont
 		7 gems installed
 
 	<div class="dev-callout">
-	<b>Note</b>
-	<p>If you receive a permissions related error, use <code>sudo gem install azure</code> instead.</p>
+	<b>注</b>
+	<p>アクセス許可関連のエラーが発生した場合は、代わりに <code>sudo gem install azure</code> を使用します。</p>
 	</div>
 
-### Require the gem
+### gem を要求
 
-Using a text editor, add the following to the top of your Ruby application file. This will load the azure gem and make the Azure SDK for Ruby available to your application:
+テキスト エディターを使用して、Ruby アプリケーション ファイルの先頭に次の内容を追加します。これにより、Azure gem が読み込まれ、アプリケーションで Azure SDK for Ruby を使用できるようになります。
 
 	require 'azure'
 
-## <a name="setup-connection"> </a>How to: Connect to service management
+## <a name="setup-connection"></a>方法: サービス管理に接続する
 
-To successfully perform service management operations with Azure, you must specify the subscription ID and certificate obtained in the [Create an Azure management certificate](#setup-certificate) section. The easiest way to do this is to specify the ID and path to the certificate file using the following environment variables:
+Azure でサービス管理操作を正しく実行するには、「[Azure の管理証明書の作成](#setup-certificate)」セクションで取得したサブスクリプション ID と証明書を指定する必要があります。その最も簡単な方法は、次の環境変数を使用して ID と証明書ファイルのパスを指定する方法です。
 
-* AZURE\_MANAGEMENT\_CERTIFICATE - The path to the .PEM file containing the management certificate.
+* AZURE\_MANAGEMENT\_CERTIFICATE - 管理証明書を含む .PEM ファイルのパス。
 
-* AZURE\_SUBSCRIPTION\_ID - The subscription ID for your Azure subscription.
+* AZURE\_SUBSCRIPTION\_ID - 使用している Azure サブスクリプションに対応するサブスクリプション ID。
 
-You can also set these values programmatically in your application by using the following:
+これらの値は、アプリケーションでプログラムを使って設定することもできます。それには次のコマンドを使用します。
 
 	Azure.configure do |config|
 	  config.management_certificate = 'path/to/certificate'
 	  config.subscription_id = 'subscription ID'
 	end
 
-##<a name="virtual-machine"> </a>How to: Work with virtual machines
+##<a name="virtual-machine"> </a>方法: 仮想マシンの操作
 
-Management operations for Azure Virtual Machines are performed using the **Azure::VirtualMachineService** class.
+Azure の仮想マシンの管理操作は、**Azure::VirtualMachineService** クラスを使用して実行します。
 
-###How to: Create a new virtual machine
+###方法: 新しい仮想マシンの作成
 
-To create a new virtual machine, use the **create\_virtual\_machine** method. This method accpets a hash containing the following parameters and returns a **Azure::VirtualMachineManagement::VirtualMachine** instance that describes the VM that was created:
+新しい仮想マシンを作成するには、**create\_virtual\_machine** メソッドを使用します。このメソッドは、次のパラメーターを含むハッシュを受け入れ、作成された VM を示す **Azure::VirtualMachineManagement::VirtualMachine** インスタンスを返します。
 
-**Paramaters**
+**パラメーター**
 
-* **:vm\_name** - The name of the virtual machine
+* **:vm\_name** - 仮想マシンの名前。
 
-* **:vm\_user** - The root or admin user name
+* **:vm\_user** - root または admin ユーザー名。
 
-* **:password** - The password to use for the root or admin user
+* **:password** - root または admin ユーザーに使用するパスワード。
 
-* **:image** - The OS image that will be used to create the OS Disk for this VM. The OS disk will be stored in a VHD created in blob storage.
+* **:image** - この VM の OS ディスクを作成するのに使用する OS イメージ。OS ディスクは、BLOB ストレージ内に作成された VHD に格納されます。
 
-* **:location** - The region in which the VM will be created. This should be the same region as the storage account that contains the disks used by this VM.
+* **:location** - VM を作成するリージョン。この VM で使用するディスクを含むストレージ アカウントと同じリージョンである必要があります。
 
-The following is an example of creating a new virtual machine using these parameters:
+以下は、これらのパラメーターを使用して新しい仮想マシンを作成する例です。
 
 	vm_params = {
 	  :vm_name => 'mygreatvm',
@@ -152,33 +152,33 @@ The following is an example of creating a new virtual machine using these parame
 	puts "The virtual IP address of the machine is #{vm.ipaddress}."
     puts "The fully qualified domain name is #{vm.cloud_service_name}.cloudapp.net."
 
-**Options**
+**オプション**
 
-You can supply a hash of optional parameters that allow you to override default behavior of the VM creation, such as specifying an existing storage account instead of creating a new one.
+VM の作成の既定の動作をオーバーライドできるオプション パラメーターのハッシュを指定できます (新しいストレージ アカウントを作成せずに、既存のストレージ アカウントを指定するなど)。
 
-The following are the options that are available when using the **create\_virtual\_machine** method:
+**create\_virtual\_machine** メソッドを使用するときに、次のオプションを使用できます。
 
-* **:storage\_account\_name** - The name of the storage account to use for storing disk images. If the storage account does not already exist, a new one is created. If ommitted, a new storage account is created with a name based on the :vm\_name param.
+* **:storage\_account\_name** - ディスク イメージの格納に使用するストレージ アカウントの名前。ストレージ アカウントが存在しない場合は、新たに作成されます。このオプションを省略した場合は、:vm\_name パラメーターに基づいた名前で新しいストレージ アカウントが作成されます。
 
-* **:cloud\_service\_name** - The name of the cloud service to use for hosting the virtual machine. If the cloud service does not already exist, a new one is created. If ommitted, a new cloud service account is created with a name based on the :vm\_name param.
+* **:cloud\_service\_name** - 仮想マシンのホスティングに使用するクラウド サービスの名前。クラウド サービスが存在しない場合は、新たに作成されます。このオプションを省略した場合は、:vm\_name パラメーターに基づいた名前で新しいクラウド サービス アカウントが作成されます。
 
-* **:deployment\_name** - The name of the deployment to use when deploying the virtual machine configuration
+* **:deployment\_name** - 仮想マシンの構成をデプロイするときに使用するデプロイの名前。
 
-* **:tcp\_endpoints** - The TCP ports to publicly expose for this VM. The SSH endpoint (for Linux-based VMs,) and WinRM endpoint (for Windows-based VMs) do not need to be specified, and will be created automatically. Multiple ports can be specified, seperated by a comma. To associate an internal port with a public port using a different port number, use the format **public port:internal port**. For example, 80:8080 exposes the internal port 8080 as public port 80.
+* **:tcp\_endpoints** - この VM で公開する TCP ポート。SSH エンドポイント (Linux ベースの VM) と WinRM エンドポイント (Windows ベースの VM) を指定する必要はありません。自動的に作成されます。コンマで区切って複数のポートを指定できます。異なるポート番号を使用して内部ポートをパブリック ポートに関連付ける場合は、**public port:internal port** という形式を使用します。たとえば、80:8080 と指定すると、内部ポート 8080 がパブリック ポート 80 として公開されます。
 
-* **:service\_location** - The target certificate store location on the VM. Only applies to Windows-based VMs.
+* **:service\_location** - VM 上のターゲット証明書ストアの場所。Windows ベースの VM にのみ適用されます。
 
-* **:ssh\_private\_key\_file** - The file containing the private key, which will be used to secure SSH access to the Linux-based VM. It is also used to specify the certificate used to secure WinRM if the HTTPS transport is selected. If **:ssh\_private\_key\_file** and **:ssh\_certificate\_file** are omitted, SSH will use only password authentication
+* **:ssh\_private\_key\_file** - プライベート キーを含むファイル。Linux ベースの VM への SSH アクセスを保護するために使用されます。HTTPS トランスポートが選択されている場合は、WinRM の保護に使用する証明書を指定するためにも使用されます。**:ssh\_private\_key\_file** と **:ssh\_certificate\_file** を省略した場合、SSH ではパスワード認証のみが使用されます。
 
-* **:ssh\_certificate\_file** - The file containing the certificate file, which will be used to secure SSH access to the Linux-based VM. It is also used to specify the certificate used to secure WinRM if the HTTPS transport is selected. If **:ssh\_private\_key\_file** and **:ssh\_certificate\_file** are omitted, SSH will use only password authentication
+* **:ssh\_certificate\_file** - 証明書ファイルを含むファイル。Linux ベースの VM への SSH アクセスを保護するために使用されます。HTTPS トランスポートが選択されている場合は、WinRM の保護に使用する証明書を指定するためにも使用されます。**:ssh\_private\_key\_file** と **:ssh\_certificate\_file** を省略した場合、SSH ではパスワード認証のみが使用されます。
 
-* **:ssh\_port** - The public port that will be used for SSH communication. If omitted, the SSH port defaults to 22.
+* **:ssh\_port** - SSH 通信に使用されるパブリック ポート。省略した場合は、SSH ポートは既定で 22 になります。
 
-* **:vm\_size** - The size of the VM. This determines memory size, number of cores, bandwidth, and other physical characteristics of the VM. See [Virtual Machine and Cloud Services sizes for Azure](http://msdn.microsoft.com/en-us/library/windowsazure/dn197896.aspx) for available sizes and physical characteristics.
+* **:vm\_size** - VM のサイズ。これにより、メモリ サイズ、コアの数、帯域幅など、VM の物理的な特性が決まります。利用できるサイズと物理的な特性については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/ja-jp/library/windowsazure/dn197896.aspx)」を参照してください。
 
-* **:winrm_transport** - An array of the transports available for use with WinRM. Valid transports are 'http' and 'https'. If 'https' is specified as a transport, you must also use **:ssh\_private\_key\_file** and **:ssh\_certificate\_file** to specify the certificate used to secure the HTTPS communications.
+* **:winrm_transport** - WinRM で使用できるトランスポートの配列。有効なトランスポートは "http" と "https" です。トランスポートとして "https" を指定した場合は、**:ssh\_private\_key\_file** と **:ssh\_certificate\_file** を使用して、HTTPS 通信を保護するための証明書を指定する必要があります。
 
-The following is an example of creating a new virtual machine that uses a small compute instance, publicly exposes ports for HTTP(local port 8080, public port 80) and HTTPS(443) traffic, and enables certificate authentication for SSH sessions using the specified certificate files:
+次に示すのは、S コンピューティング インスタンスを使用する新しい仮想マシンの作成例です。HTTP トラフィック (ローカル ポート 8080、パブリック ポート 80) と HTTPS トラフィック (443) 用にポートを公開し、指定の証明書ファイルを使用して SSH セッションに対して証明書認証を有効にします。
 
 	vm_params = {
 	  :vm_name => 'myvm',
@@ -198,158 +198,159 @@ The following is an example of creating a new virtual machine that uses a small 
 	vm_mgr = Azure::VirtualMachineService.new
 	vm = vm_mgr.create_virtual_machine(vm_params, vm_opts)
 
-###How to: List virtual machines
+###方法: 仮想マシンの一覧の表示
 
-To list existing virtual machines for your Azure Subscription, use the **list\_virtual\_machines** method. This method returns an array of **Azure::VirtualMachineManagement::VirtualMachine** objects:
+Azure サブスクリプションにおける既存の仮想マシンの一覧を表示するには、**list\_virtual\_machines** メソッドを使用します。このメソッドは、**Azure::VirtualMachineManagement::VirtualMachine** オブジェクトの配列を返します。
 
 	vm_mgr = Azure::VirtualMachineService.new
 	virtual_machines = vm_mgr.list_virtual_machines
 
-###How to: Get information on a virtual machine
+###方法: 仮想マシンの情報の取得
 
-To get an instance of **Azure::VirtualMachineManagement::VirtualMachine** for a specific virtual machine, use the **get\_virtual\_machine** mathod and provide the virtual machine and cloud service names:
+特定の仮想マシンに関する **Azure::VirtualMachineManagement::VirtualMachine** のインスタンスを取得するには、**get\_virtual\_machine** メソッドを使用し、仮想マシンとクラウド サービスの名前を指定します。
 
 	vm_mgr = Azure::VirtualMachineService.new
 	vm = vm_mgr.get_virtual_machine('myvm', 'mycloudservice')
 
-###How to: Delete a virtual machine
+###方法: 仮想マシンを削除する
 
-To delete a virtual machine, use the **delete\_virtual\_machine** method and provide the virtual machine and cloud service names:
+仮想マシンを削除するには、**delete\_virtual\_machine** メソッドを使用し、仮想マシンとクラウド サービスの名前を指定します。
 
 	vm_mgr = Azure::VirtualMachineService.new
 	vm = vm_mgr.delete_virtual_machine('myvm', 'mycloudservice')
 
 <div class="dev-callout">
-<b>Warning</b>
-<p>The <b>delete_virtual_machine</b> method deletes the cloud service and any disks associated with the virtual machine.</p>
+<b>警告</b>
+<p><b>delete_virtual_machine</b> メソッドは、仮想マシンに関連付けられているすべてのディスクとクラウド サービスを削除します。</p>
 </div>
 
-###How to: Shutdown a virtual machine
+###方法: 仮想マシンのシャットダウン
 
-To shut down a virtual machine, use the **shutdown\_virtual\_machine** method and provide the virtual machine and cloud service names:
+仮想マシンをシャットダウンするには、**shutdown\_virtual\_machine** メソッドを使用し、仮想マシンとクラウド サービスの名前を指定します。
 
 	vm_mgr = Azure::VirtualMachineService.new
 	vm = vm_mgr.shutdown_virtual_machine('myvm', 'mycloudservice')
 
-###How to: Start a virtual machine
+###方法: 仮想マシンの起動
 
-To start a virtual machine, use the **start\_virtual\_machine** method and provide the virtual machine and cloud service names:
+仮想マシンを起動するには、**start\_virtual\_machine** メソッドを使用し、仮想マシンとクラウド サービスの名前を指定します。
 
 	vm_mgr = Azure::VirtualMachineService.new
 	vm = vm_mgr.start_virtual_machine('myvm', 'mycloudservice')
 
-##<a name="vm-images"> </a>How to: Work with virtual machine images and disks
+##<a name="vm-images"> </a>方法: 仮想マシン イメージとディスクの操作
 
-Operations on virtual machine images are performed using the **Azure::VirtualMachineImageService** class. Operations on disks are performed using the **Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementService** class.
+仮想マシン イメージに対する操作は、**Azure::VirtualMachineImageService** クラスを使用して実行します。ディスクに対する操作は、**Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementService** クラスを使用して実行します。
 
-###How to: List virtual machine images
+###方法: 仮想マシン イメージの一覧の表示
 
-To list available virtual machine images, use the **list\_virtual\_machine\_images** method. This returns an array of **Azure::VirtualMachineImageService** objects.
+利用できる仮想マシン イメージの一覧を表示するには、**list\_virtual\_machine\_images** メソッドを使用します。このメソッドは、**Azure::VirtualMachineImageService** オブジェクトの配列を返します。
 
 	image_mgr = Azure::VirtualMachineImageService.new
 	images = image_mgr.list_virtual_machine_images
 
-###How to: List disks
+###方法: ディスクの一覧の表示
 
-To list disks for your Azure subscription, use the **list\_virtual\_machine\_disks** method. This returns an array of **Azure::VirtualMachineImageManagement::VirtualMachineDisk** objects.
+Azure サブスクリプションに対応するディスクの一覧を表示するには、**list\_virtual\_machine\_disks** メソッドを使用します。このメソッドは、**Azure::VirtualMachineImageManagement::VirtualMachineDisk** オブジェクトの配列を返します。
 
 	disk_mgr = Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementService.new
 	disks = disk_mgr.list_virtual_machine_disks
 
-###How to: Delete a disk
+###方法: ディスクの削除
 
-To delete a disk, use the **delete\_virtual\_machine\_disk** method and specify the name of the disk to be deleted:
+ディスクを削除するには、**delete\_virtual\_machine\_disk** メソッドを使用し、削除対象のディスクの名前を指定します。
 
 	disk_mgr = Azure::VirtualMachineImageManagement::VirtualMachineDiskManagementService.new
 	disk_mgr.delete_virtual_machine_disk
 
-##<a name="cloud-services"> </a>How to: Work with cloud Services
+##<a name="cloud-services"> </a>方法: クラウド サービスの操作
 
-Management operations for Azure Cloud Services are performed using the **Azure::CloudService** class.
+Azure クラウド サービスの管理操作は、**Azure::CloudService** クラスを使用して実行します。
 
-###How to: Create a cloud service
+###方法: クラウド サービスの作成
 
-To create a new cloud service, use the **create\_cloud\_service** method and provide a name and a hash of options. Valid options are:
+新しいクラウド サービスを作成するには、**create\_cloud\_service** メソッドを使用し、オプションの名前とハッシュを指定します。有効なオプションは次のとおりです。
 
-* **:location** - *Required*. The region in which the cloud service will be created.
+* **:location** - *必須*。クラウド サービスの作成先リージョンです。
 
-* **:description** - A description of the cloud service.
+* **:description** - クラウド サービスの説明。
 
-The following creates a new cloud service in the East US region:
+以下のコマンドは、米国東部リージョンで新しいクラウド サービスを作成します。
 
 	cs_mgr = Azure::CloudService.new
 	cs_mgr.create_cloud_service('mycloudservice', { :location => 'East US' })
 
-###How to: List cloud services
+###方法: クラウド サービスの一覧の表示
 
-To list the cloud services for your Azure subscription, use the **list\_cloud\_services** method. This method returns an array of **Azure::CloudServiceManagement::CloudService** objects:
+Azure サブスクリプションのクラウド サービスの一覧を表示するには、**list\_cloud\_services** メソッドを使用します。このメソッドは、**Azure::CloudServiceManagement::CloudService** オブジェクトの配列を返します。
 
 	cs_mgr = Azure::CloudService.new
 	cloud_services = cs_mgr.list_cloud_services
 
-###How to: See if a cloud service already exists
+###方法: クラウド サービスの有無の確認
 
-To check if a specific cloud service already exists, use the **get\_cloud\_service** method and provide the name of the cloud service. Returns **true** if a cloud service of the specified name exists; otherwise, **false**.
+特定のクラウド サービスが存在するかどうかを確認するには、**get\_cloud\_service** メソッドを使用し、クラウド サービスの名前を指定します。指定した名前のクラウド サービスが存在する場合は、**true** が返されます。それ以外の場合は、**false** が返されます。
 
 	cs_mgr = Azure::CloudService.new
 	cs_exists = cs_mgr.get_cloud_service('mycloudservice')
 
-###How to: Delete a cloud service
+###方法: クラウド サービスの削除
 
-To delete a cloud service, use the **delete\_cloud\_service** method and provide the name of the cloud service:
+クラウド サービスを削除するには、**delete\_cloud\_service** メソッドを使用し、クラウド サービスの名前を指定します。
 
 	cs_mgr = Azure::CloudService.new
 	cs_mgr.delete_cloud_service('mycloudservice')
 
-###How to: Delete a deployment
+###方法: デプロイの削除
 
-To delete a deployment for a cloud service, use the **delete\_cloud\_service\_deployment** method and provide the cloud service name:
+クラウド サービスのデプロイを削除するには、**delete\_cloud\_service\_deployment** メソッドを使用し、クラウド サービスの名前を指定します。
 
 	cs_mgr = Azure::CloudService.new
 	cs_mgr.delete_cloud_service_deployment('mycloudservice')
 
-##<a name="storage-services"> </a>How to: Work with storage services
+##<a name="storage-services"> </a>方法: ストレージ サービスの操作
 
-Management operations for Azure Cloud Services are performed using the **Azure::StorageService** class.
+Azure クラウド サービスの管理操作は、**Azure::StorageService** クラスを使用して実行します。
 
-###How to: Create a storage account
+###方法: ストレージ アカウントの作成
 
-To create a new storage account, use the **create\_storage\_account** method and provide a name and a hash of options. Valid options are:
+新しいストレージ アカウントを作成するには、**create\_storage\_account** メソッドを使用し、オプションの名前とハッシュを指定します。有効なオプションは次のとおりです。
 
-* **:location** - *Required*. The region in which the storage account will be created.
+* **:location** - *必須*。ストレージ アカウントの作成先リージョンです。
 
-* **:description** - A description of the storage account.
+* **:description** - ストレージ アカウントの説明。
 
-The following creates a new storage account in the 'East US' region:
+以下のコマンドは、"米国東部" リージョンで新しいストレージ アカウントを作成します。
 
 	storage_mgr = Azure::StorageService.new
 	storage_mgr.create_storage_account('mystorage', { :location => 'East US' })
 
-###How to: List storage accounts
+###方法: ストレージ アカウントの一覧の表示
 
-To get a list of storage accounts for your Azure subscription, use the **list\_storage\_accounts** method. This method returns an array of **Azure::StorageManagement::StorageAccount** objects.
+Azure サブスクリプションのストレージ アカウントの一覧を取得するには、**list\_storage\_accounts** メソッドを使用します。このメソッドは、**Azure::StorageManagement::StorageAccount** オブジェクトの配列を返します。
 
 	storage_mgr = Azure::StorageService.new
 	accounts = storage_mgr.list_storage_accounts
 
-###How to: See if a storage account exists
+###方法: ストレージ アカウントの有無の確認
 
-To see if a specific storage account exists, use the **get\_storage\_account** method and specify the name of the storage account. Returns **true** if the storage account exists; otherwise, **false**.
+特定のストレージ アカウントが存在するかどうかを確認するには、**get\_storage\_account** メソッドを使用し、ストレージ アカウントの名前を指定します。ストレージ アカウントが存在する場合は **true** が返され、それ以外の場合は **false** が返されます。
 
 	storage_mgr = Azure::StorageService.new
 	store_exists = storage_mgr.get_storage_account('mystorage')
 
-###How to: Delete a storage account
+###方法: ストレージ アカウントの削除
 
-To delete a storage account, use the **delete\_storage\_account** method and specify the name of the storage account:
+ストレージ アカウントを削除するには、**delete\_storage\_account** メソッドを使用し、ストレージ アカウントの名前を指定します。
 
 	storage_mgr = Azure::StorageService.new
 	storage_mgr.delete_storage_account('mystorage')
 
-##<a name="next-steps"> </a>Next Steps
+## <a name="next-steps"></a>次のステップ
 
-Now that you've learned the basics of programmatically creating Azure Virtual machines, follow these links to learn how to do more about working with VMs.
+以上で、Azure の仮想マシンをプログラムで作成する方法の基本を説明しました。VM の操作方法については、次のリンク先を参照してください。
 
-* Visit the [Virtual Machines](http://www.windowsazure.com/en-us/documentation/services/virtual-machines/) feature page
-*  See the MSDN Reference: [Virtual Machines](http://msdn.microsoft.com/en-us/library/windowsazure/jj156003.aspx)
-* Learn how to host a [Ruby on Rails application on a Virtual Machine](http://www.windowsazure.com/en-us/develop/ruby/tutorials/web-app-with-linux-vm/)
+* [仮想マシン](http://www.windowsazure.com/ja-jp/documentation/services/virtual-machines/)の機能に関するページを参照
+*    MSDN リファレンス: [仮想マシン](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156003.aspx) に関するページを参照
+* [Ruby on Rails アプリケーションを仮想マシンで](http://www.windowsazure.com/ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/)ホストする方法を確認
+

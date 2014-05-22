@@ -1,60 +1,61 @@
-<properties linkid="dev-net-service-bus-amqp-overview" urlDisplayName="Azure Notification Hubs" pageTitle="Azure Notification Hubs" metaKeywords="Azure push notifications, Azure notification hubs, Azure messaging" description="Learn how to use push notifications in Azure. Code samples written in C# using the .NET API." metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Azure Notification Hubs" authors="" />
+<properties linkid="dev-net-service-bus-amqp-overview" urlDisplayName="Azure 通知ハブ" pageTitle="Azure 通知ハブ" metaKeywords="Azure プッシュ通知, Azure 通知ハブ, Azure メッセージング" description="Azure でプッシュ通知を使用する方法を説明します。.NET API を使用して C# で記述されたサンプル コード。" metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Azure 通知ハブ" authors="" />
 
 
-#Azure Notification Hubs
+#Azure 通知ハブ
 
 
-Push notification support in Azure enables you to access an easy-to-use, multiplatform, and scaled-out push infrastructure, which greatly simplifies the implementation of push notifications for both consumer and enterprise applications for mobile platforms.
+Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。
 
-<h2><span class="short-header">What are Push Notifications?</span>What are Push Notifications?</h2>
+<h2><span class="short-header">プッシュ通知とは</span>プッシュ通知とは</h2>
 
-Smartphones and tablets have the ability to "notify" users when an event has occurred. In Windows Store applications, the notification can result in a _toast_: a modeless window appears, with a sound, to signal a new push. On Apple iOS devices, the push similarly interrupts with a dialog box, requesting the user to view or close the notification. Clicking **View** opens the application that is receiving the message.
+スマートフォンやタブレットでは、イベントの発生時にそれをユーザーに "知らせる" 機能があります。Windows ストア アプリケーションでは、_トースト_で通知される場合があります。つまり、新しい通知を知らせるモードレス ウィンドウが表示され、効果音が鳴ります。Apple iOS デバイスでも同様に、ダイアログ ボックスが操作に割り込むように表示され、ユーザーは通知を表示するか、閉じるかを選択できます。**[View]** をタップすると、そのメッセージを受信するアプリケーションが開きます。
 
-Push notifications help mobile devices display fresh information while remaining energy-efficient. Push notifications are a vital component for consumer apps, where they are used to increase app engagement and usage. Notifications are also useful to enterprises, when up-to-date information increases employee responsiveness to business events. 
+プッシュ通知は、モバイル デバイスの電力消費を抑えながら、最新情報を表示するために有効な機能です。プッシュ通知はコンシューマー アプリケーションの必須コンポーネントです。プッシュ通知を利用して、ユーザーをアプリケーションに惹き付け、使用率を向上させるためです。エンタープライズ アプリケーションでも、通知は役立ちます。従業員に最新情報を通知することで、ビジネス イベントに対する即応性を向上することができます。
 
-Some specific examples of mobile engagement scenarios are:
+次に、モバイル デバイス関連のシナリオの具体例を示します。
 
-1.  Updating a tile on Windows 8 or Windows Phone with current financial information.
-2.  Alerting a user with a toast that some work item has been assigned to that user, in a workflow-based enterprise app.
-3.  Displaying a badge with the number of current sales leads in a CRM app (such as Microsoft Dynamics CRM).
+1. Windows 8 または Windows Phone のタイルに最新の財務情報を表示する。
+2. ワークフロー ベースのエンタープライズ アプリケーションで、ユーザーに作業項目が割り当てられたときに、トーストでユーザーに警告を表示する。
+3. CRM アプリケーション (Microsoft Dynamics CRM など) で、現在の潜在顧客の数を示すバッジを表示する。
 
-<h2><span class="short-header">How Push Notifications Work</span>How Push Notifications Work</h2>
+<h2><span class="short-header">プッシュ通知の動作</span>プッシュ通知の動作</h2>
 
-Push notifications are delivered through platform-specific infrastructures called _Platform Notification Systems_ (PNS). A PNS offers barebones functions (that is, no support for broadcast, personalization) and have no common interface. For instance, in order to send a notification to a Windows Store app, a developer must contact the WNS (Windows Notification Service), to send a notification to an iOS device, the same developer has to contact APNS (Apple Push Notification Service), and send the message a second time.
+プッシュ通知は、_プラットフォーム通知システム_ (PNS: Platform Notification System) と呼ばれるプラットフォーム独自のインフラストラクチャを利用して配信されます。PNS の機能は最小限であり、ブロードキャストや個人向け設定などはサポートされず、共通インターフェイスも用意されていません。たとえば、Windows ストア アプリに通知を送信するには、WNS (Windows Notification Service) にアクセスする必要があります。また、iOS デバイスに通知を送信するには、まず APNS (Apple Push Notification Service) にアクセスした後で、メッセージを送信する必要があります。
 
-At a high level, though, all platform notification systems follow the same pattern:
+ただし、大まかに言えば、すべてのプラットフォームの通知システムが同じパターンに従って動作します。
 
-1.  The client app contacts the PNS to retrieve its _handle_. The handle type depends on the system. For WNS, it is a URI or "notification channel." For APNS, it is a token.
-2.  The client app stores this handle in the app _back-end_ for later usage. For WNS, the back-end is typically a cloud service. For Apple, the system is called a _provider_.
-3.  To send a push notification, the app back-end contacts the PNS using the handle to target a specific client app instance.
-4.  The PNS forwards the notification to the device specified by the handle.
+1. クライアント アプリケーションが PNS にアクセスし、_ハンドル_を取得します。ハンドルの種類はシステムにより異なります。WNS の場合、ハンドルは URI または "通知チャネル" です。APNS の場合、ハンドルはトークンです。
+2. クライアント アプリケーションは、このハンドルをアプリケーションの_バックエンド_に格納し、後で使用できるようにします。WNS の場合、一般的にバックエンドはクラウド サービスになります。Apple の場合は、このシステムを_プロバイダー_と呼びます。
+3. プッシュ通知を送信する際には、アプリケーションのバックエンドがハンドルを使用して PNS にアクセスし、特定のクライアント アプリケーション インスタンスを対象として指定します。
+4. PNS は、ハンドルで指定されたデバイスに通知を転送します。
 
 ![][0]
 
-<h2><span class="short-header">The Challenges of Push Notifications</span>The Challenges of Push Notifications</h2>
+<h2><span class="short-header">プッシュ通知の課題</span>プッシュ通知の課題</h2>
 
-While these systems are very powerful, they still leave much work to the app developer in order to implement even common push notification scenarios, such as broadcasting or sending push notifications to a user.
+以上のシステムは高度な機能を備えていますが、ブロードキャストやユーザーへのプッシュ通知の送信などの一般的なプッシュ通知シナリオを実装するだけでも、アプリケーション開発者はさらに多くの課題を克服する必要があります。
 
-Push notifications are one of the most requested features in cloud services for mobile apps. The reason for this is that the infrastructure required to make them work is fairly complex and mostly unrelated to the main business logic of the app. Some of the challenges in building an on-demand push infrastructure are:
+プッシュ通知は、モバイル アプリケーション向けのクラウド サービスで最も需要の高い機能の 1 つです。それは、プッシュ通知を機能させるために必要なインフラストラクチャが非常に複雑であることに加え、プッシュ通知の機能がアプリケーションの主要なビジネス ロジックと無関係であることが多いためです。オンデマンド プッシュ インフラストラクチャを構築する際に課題となるのは、次のような点です。
 
-- **Platform dependency.** In order to send notifications to devices on different platforms, multiple interfaces must be coded in the back-end. Not only are the low-level details different, but the presentation of the notification (tile, toast, or badge) is also platform-dependent. These differences can lead to complex and hard-to-maintain back-end code.
+- **プラットフォーム依存。**さまざまなプラットフォームのデバイスに通知を送信するには、複数のインターフェイスに対応するコードをバックエンドに用意する必要があります。詳細な仕様が異なるだけでなく、通知の表示方法 (タイル、トースト、バッジなど) もプラットフォームに依存します。このため、バックエンド コードは複雑化し、保守が困難になります。
 
-- **Scale.** Scaling this infrastructure has two aspects:
-1. Per PNS guidelines, device tokens must be refreshed every time the app is launched. This leads to a large amount of traffic (and consequent database accesses) just to keep the device tokens up to date. When the number of devices grows (possibly to millions), the cost of creating and maintaining this infrastructure is nonnegligible.
-2.  Most PNSs do not support broadcast to multiple devices. It follows that a broadcast to millions of devices results in millions of calls to the PNSs. Being able to scale these requests is nontrivial, because usually app developers want to keep the total latency down (for example, the last device to receive the message should not receive the notification 30 minutes after the notifications has been sent, as for many cases it would defeat the purpose to have push notifications).
-- **Routing.** PNSs provide a way to send a message to a device. However, in most apps notifications are targeted at users and/or interest groups (for example, all employees assigned to a certain customer account). As such, in order to route the notifications to the correct devices, the app back-end must maintain a registry that associates interest groups with device tokens. This overhead adds to the total time to market and maintenance costs of an app.
+- **拡張性。**このインフラストラクチャの拡張に関しては、次の 2 つの問題点があります。
+1. PNS のガイドラインに従って、アプリケーションが起動されるたびにデバイス トークンを更新する必要があります。そのため、デバイス トークンを最新の状態に維持するためだけに膨大なトラフィック (およびそれに伴うデータベース アクセス) が発生します。デバイスの数が増加すると (数百万台に達する可能性があります)、このインフラストラクチャの作成と保守にかかるコストが無視できないものになります。
+2. ほとんどの PNS は、複数のデバイスに対するブロードキャストをサポートしていません。そのため、数百万台のデバイスに対してブロードキャストを実行すると、PNS に対して数百万回の呼び出しを実行することになります。このように要求が増大する可能性があることは、重大な問題です。一般的に、アプリケーション開発者は合計遅延時間をできるだけ少なくしようとするためです (たとえば、最終的にメッセージを受信するデバイスが通知の送信後 30 分経ってもメッセージを受信しなければ、ほとんどの場合、プッシュ通知を使用する意味がなくなります)。
+- **ルーティング。**PNS は、デバイスにメッセージを送信する機能を備えています。しかし、ほとんどのアプリケーションでは通知の対象がユーザーまたは特定のグループです (特定の顧客アカウントに割り当てられた全従業員など)。そのため、通知を適切なデバイスにルーティングするには、特定のグループにデバイス トークンを関連付けるためのレジストリをアプリケーションのバックエンドで維持する必要があります。この対策を行うことで、市場投入までの開発期間が長引き、アプリケーションの保守コストも増大します。
 
-<h2><span class="short-header">Why Use Notification Hubs?</span>Why Use Notification Hubs?</h2>
+<h2><span class="short-header">通知ハブを使用する理由</span>通知ハブを使用する理由</h2>
 
-Notification hubs provide a ready-to-use push notification infrastructure that supports the following:
+通知ハブはすぐに利用できるプッシュ通知インフラストラクチャであり、次の機能がサポートされます。
 
-- **Multiple platforms.** Notification hubs provide a common interface to send notifications to all supported platforms. The app back-end can send notifications in platform-specific, or platform-independent formats. Notification hubs can send push notifications to Windows Store, iOS, Android, and Windows Phone apps.
-- **Pub/Sub routing.** Each device, when sending its handle to a notification hub, can specify one or more _tags_. For more information about tags, see the following section. Tags do not have to be pre-provisioned or disposed. Tags provide a simple way to send notifications to users or interest groups. Since tags can contain any app-specific identifier (such as user or group IDs), their use frees the app back-end from the burden of having to store and manage device handles.
-- **Scale.** Notification hubs scale to millions of devices without the need to re-architect or shard.
+- **複数のプラットフォーム。**通知ハブは、サポート対象のすべてのプラットフォームに通知を送信する共通インターフェイスを備えています。アプリケーションのバックエンドから、通知をプラットフォームの独自形式で送信することも、プラットフォームに依存しない形式で送信することもできます。通知ハブからプッシュ通知を送信できるのは、Windows ストア アプリケーション、iOS アプリケーション、Android アプリケーション、および Windows Phone アプリケーションです。
+- **パブリッシュ/サブスクライブ ルーティング。**各デバイスのハンドルを通知ハブに送信する際に、1 つ以上の_タグ_を指定することができます。タグの詳細については、以下のセクションを参照してください。タグは事前に定義したり、破棄したりする必要はありません。タグを使用して、通知を簡単にユーザーや対象グループに送信できます。タグにはアプリケーション独自の識別子 (ユーザー ID、グループ ID など) を含めることができるため、タグを使用することで、アプリケーションのバックエンドでデバイス ハンドルの格納と管理の処理を行う必要がなくなります。
+- **拡張性。**通知ハブは再設計やシャーディングを行わなくても、数百万のデバイスに対応できます。
 
-Notification hubs use a full multiplatform, scaled-out push notification infrastructure, and considerably reduce the push-specific code that runs in the app backend. Notification hubs implement all the functionality of a push infrastructure. Devices are only responsible for registering their PNS handles, and the back-end is responsible for sending platform-independent messages to users or interest groups.
+通知ハブはマルチプラットフォームに完全対応する、スケールアウトされたプッシュ通知インフラストラクチャを使用しており、アプリケーションのバックエンドで実行するプッシュ通知用コードを大幅に減らすことができます。通知ハブは、プッシュ通知インフラストラクチャのすべての機能を備えています。デバイス側の処理は PNS ハンドルを登録するだけであり、バックエンドによってプラットフォームに依存しないメッセージがユーザーまたは対象グループに送信されます。
 
 ![][1]
 
   [0]: ./media/notification-hubs-overview/SBPushNotifications1.gif
   [1]: ./media/notification-hubs-overview/SBPushNotifications2.gif
+

@@ -1,77 +1,78 @@
-<properties linkid="manage-services-biztalk-services-throttling" urlDisplayName="Throttling" pageTitle="Throttling thresholds in BizTalk Services | Azure" metaKeywords="BizTalk Services, throttling, Azure" description="Learn about throttling thresholds and resulting runtime behaviors for BizTalk Services. Throttling is based on memory usage and number of simultaneous messages." metaCanonical="" services="biztalk-services" documentationCenter="" title="BizTalk Services: Throttling" authors="mandia" solutions="" manager="paulettm" editor="susanjo" />
+<properties linkid="manage-services-biztalk-services-throttling" urlDisplayName="調整" pageTitle="BizTalk サービスでのしきい値の調整 | Azure" metaKeywords="BizTalk サービス, 調整, Azure" description="調整のしきい値についてと、結果として生じる BizTalk サービスのランタイムの動作について説明します。調整は、メモリ使用率および同時メッセージ数に基づいて行われます。" metaCanonical="" services="biztalk-services" documentationCenter="" title="BizTalk サービス: 調整" authors="mandia" solutions="" manager="paulettm" editor="susanjo" />
 
 
 
 
 
-# BizTalk Services: Throttling
+# BizTalk サービス: 調整
 
-Azure BizTalk Services implements Service throttling based on two conditions: memory usage and the number of simultaneous messages processing. This topic lists the throttling thresholds and describes the Runtime behavior when a throttling condition occurs.
+Azure BizTalk サービスは、メモリ使用率およびメッセージの同時処理数という 2 つの条件に基づいてサービスの調整を実装します。このトピックでは、調整のしきい値を示し、調整条件が発生したときのランタイムの動作について説明します。
 
 
-## Throttling Thresholds
+## 調整のしきい値
 
-The following table lists the throttling source and thresholds:
+調整の対象としきい値の一覧を次の表に示します。
 
 
 <table border="1">
 
 <tr bgcolor="FAF9F9">
         <th> </th>
-        <td><strong>Description</strong></td>
-        <td><strong>Low Threshold</strong></td>
-        <td><strong>High Threshold</strong></td>
+        <td><strong>説明</strong></td>
+        <td><strong>低いしきい値</strong></td>
+        <td><strong>高いしきい値</strong></td>
 </tr>
     <tr>
-        <td>Memory</td>
-        <td>% of total system memory available/PageFileBytes. 
+        <td>メモリ</td>
+        <td>使用可能な合計システム メモリ/PageFileBytes の割合。
 <br/><br/>
-Total available PageFileBytes is approximately 2 times the RAM of the system.</td>
+使用可能な合計 PageFileBytes は、システムの RAM の約 2 倍です。</td>
         <td>60%</td>
         <td>70%</td>
     </tr>
     <tr>
-        <td>Message Processing</td>
-        <td>Number of messages processing simultaneously</td>
-        <td>40 * number of cores</td>
-        <td>100 * number of cores</td>
+        <td>メッセージ処理</td>
+        <td>メッセージの同時処理数</td>
+        <td>40 * コアの数</td>
+        <td>100 * コアの数</td>
     </tr>
 </table>
 
-When a high threshold is reached, Azure BizTalk Services starts to throttle. Throttling stops when the low threshold is reached. For example, your service is using 65% system memory. In this situation, the service does not throttle. Your service starts using 70% system memory. In this situation, the service throttles and continues to throttle until the service uses 60% (low threshold) system memory.
+高いしきい値に達すると、調整が開始されます。低いしきい値に達すると、調整は停止します。たとえば、サービスで 65% のシステム メモリを使用しているとします。この状況では、調整は行われません。一方、サービスで 70% のシステム メモリの使用を開始するとします。この状況では、調整が行われ、サービスによるシステム メモリの使用が 60% (低いしきい値) になるまで調整が継続されます。
 
-Azure BizTalk Services tracks the throttling status (normal state vs. throttled state) and the throttling duration.
+Azure BizTalk サービスでは、調整の状態 (通常と調整された状態) および調整の期間が追跡されます。
 
 
-## Runtime Behavior
+## ランタイムの動作
 
-When Azure BizTalk Services enters a throttling state, the following occurs:
+Azure BizTalk サービスが調整状態になると、次のことが発生します。
 
-- Throttling is per role instance. For example:<br/>
-RoleInstanceA is throttling. RoleInstanceB is not throttling. In this situation, messages in RoleInstanceB are processed as expected. Messages in RoleInstanceA are discarded and fail with the following error:<br/><br/>
-Server is busy. Please try again.<br/><br/>
-- Any pull sources do not poll or download a message. For example:<br/>
-A pipeline pulls messages from an external FTP source. The role instance doing the pull gets into a throttling state. In this situation, the pipeline stops downloading additional messages until the role instance stops throttling.
-- A response is sent to the client so the client can resubmit the message.
-- You must wait until the throttling is resolved. Specifically, you must wait until the low threshold is reached.
+- 調整はロール インスタンス単位で行われます。次に例を示します。<br/>
+RoleInstanceA は調整中です。RoleInstanceB は調整されていません。この状況では、RoleInstanceB のメッセージは予期したとおりに処理されます。RoleInstanceA のメッセージは破棄され、次のエラーで失敗します。<br/><br/>
+サーバーがビジー状態です。もう一度実行してください。<br/><br/>
+- 取り出し元は、メッセージをポーリングまたはダウンロードしません。次に例を示します。<br/>
+パイプラインは外部の FTP ソースからメッセージを取り出します。取り出しを実行するロール インスタンスは調整状態になります。この状況では、パイプラインは、ロール インスタンスが調整を停止するまで追加のメッセージのダウンロードを停止します。
+- 応答がクライアントに送信され、クライアントはメッセージを再送信できるようになります。
+- 調整が解決されるまで待つ必要があります。具体的には、低いしきい値に達するまで待つ必要があります。
 
-## Important notes
-- Throttling cannot be disabled.
-- Throttling thresholds cannot be modified.
-- Throttling is implemented system-wide.
-- The Azure SQL Database Server also has built-in throttling.
+## 重要
+- 調整を無効にすることはできません。
+- 調整のしきい値を変更することはできません。
+- 調整はシステム全体で実装されます。
+- Azure SQL データベース サーバーには、組み込みの調整もあります。
 
-## Additional Azure BizTalk Services topics
+## Azure BizTalk サービスに関するその他のトピック
 
--  [Installing the Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
--  [Tutorials: Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
--  [How do I Start Using the Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
--  [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
+-  [Azure BizTalk サービス SDK のインストール](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
+-  [チュートリアル: Azure BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
+-  [Azure BizTalk サービス SDK の使用開始に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+-  [Azure BizTalk サービス](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
-## See Also
-- [BizTalk Services: Developer, Basic, Standard and Premium Editions Chart](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-- [BizTalk Services: Provisioning Using Azure Management Portal](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-- [BizTalk Services: Provisioning Status Chart](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-- [BizTalk Services: Dashboard, Monitor and Scale tabs](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-- [BizTalk Services: Backup and Restore](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-- [BizTalk Services: Issuer Name and Issuer Key](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+## 関連項目
+- [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャートに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+- [BizTalk サービス: Azure 管理ポータルを使用した BizTalk サービスのプロビジョニングに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+- [BizTalk サービス: プロビジョニングの状態のチャートに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+- [BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+- [BizTalk サービス: バックアップと復元に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+- [BizTalk サービス: 発行者名および発行者キーに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+

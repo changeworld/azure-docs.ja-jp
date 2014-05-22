@@ -1,103 +1,103 @@
-<properties linkid="hdinsight-emulator-release-notes" urlDisplayName="HDInsight Emulator release notes" pageTitle="Release notes: Microsoft HDInsight Emulator for Azure | Azure" metaKeywords="hdinsight, Azure hdinsight, hdinsight azure, get started hdinsight, emulator, hdinsight emulator" description="Get late-breaking information about the most recent releases of the HDInsight Emulator." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" title="Release notes: Microsoft HDInsight Emulator for Azure" authors="cgronlun" />
+<properties linkid="hdinsight-emulator-release-notes" urlDisplayName="HDInsight Emulator のリリース ノート" pageTitle="リリース ノート: Microsoft HDInsight Emulator for Azure | Azure" metaKeywords="hdinsight, Azure hdinsight, hdinsight azure, hdinsight の使用, エミュレーター, hdinsight emulator" description="HDInsight Emulator の最新リリースについての最新情報を取得します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" title="リリース ノート: Microsoft HDInsight Emulator for Azure" authors="cgronlun" />
 
 
 
 
-# Release notes: Microsoft HDInsight Emulator for Azure 
+# リリース ノート: Microsoft HDInsight Emulator for Azure
 
 
 
 > [WACOM.NOTE] 
-> The easiest way to check the version number is to look in Add/Remove Programs at the entry for "Microsoft HDInsight Emulator for Azure" (for version 1.0.0.0 or greater) or "Microsoft HDInsight Developer Preview" (for versions less than 1.0.0.0). 
+> バージョン番号を確認する最も簡単な方法は、[プログラムの追加と削除] で [Microsoft HDInsight Emulator for Azure] (Version 1.0.0.0 以上の場合) または [Microsoft HDInsight 開発者プレビュー] (Version 1.0.0.0 未満の場合) の項目を探すことです。
 
-## v1.0.0.0, Released 10/28/2013
+## v1.0.0.0、2013 年 10 月 28 日リリース
 
-* This is the generally available (GA) release of the Microsoft HDInsight Emulator for Azure, formerly known as Microsoft HDInsight Developer Preview. 
+* これは、Microsoft HDInsight Emulator for Azure (旧称 Microsoft HDInsight 開発者プレビュー) の一般公開 (GA) リリースです。
 
-* As with the preview releases of this product, this release continues to target developer scenarios and as such only supports single-node deployments. 
+* この製品のプレビュー リリースと同様に、このリリースも引き続き開発者シナリオを対象としており、そのため単一ノード展開のみをサポートします。
 
-### What's New? 
+### 新機能
  
-* Scripts have been added to simplify setting all Apache Hadoop services to automatic or manual start. The default will still be automatic as before, but all services can now be changed using the set-onebox-manualstart.cmd or set-onebox-autostart.cmd scripts that are installed in C:\Hadoop. 
+* Apache Hadoop のすべてのサービスを自動起動または手動起動に簡単に設定できるように、スクリプトが追加されました。既定では、以前と同様に自動起動ですが、C:\Hadoop にインストールされた set-onebox-manualstart.cmd または set-onebox-autostart.cmd スクリプトを使用して、すべてのサービスを変更できるようになりました。
 
-* The number of required installation dependencies has been reduced significantly, allowing for faster installations. 
+* インストール時に必要な依存コンポーネントの数が大幅に減少したため、迅速にインストールできます。
 
-* Bug fix in the command used to run Pig samples in the RunSamples.ps1 script installed in the GettingStarted folder. 
+* GettingStarted フォルダーにインストールされている RunSamples.ps1 スクリプトで Pig のサンプルを実行するときに使用するコマンドのバグが修正されました。
 
-* This version contains an update to the Hortonworks Data Platform version 1.1 that matches the Hortonworks Data Platform services available with Azure HDInsight cluster version 1.6. 
+* このバージョンには、Azure HDInsight クラスター Version 1 で使用できる Hortonworks Data Platform サービスに相当する Hortonworks Data Platform Version 1.1 の更新が含まれます。6. 
 
-## v0.11.0.0, Released 09/30/2013
+## v0.11.0.0、2013 年 09 月 30 日リリース
 
-### What's New? 
+### 新機能
 		
-* The HDInsight dashboard has been removed. 
+* HDInsight ダッシュボードが削除されました。
 
-* This version contains an update to the Hortonworks Data Platform Developer Preview that matches with the Hortonworks Data Platform Preview on Azure HDInsight. 
+* このバージョンには、Azure HDInsight 上の Hortonworks Data Platform Preview に相当する Hortonworks Data Platform 開発者プレビューの更新が含まれます。
 
-## v0.10.0.0, Released 08/9/2013
+## v0.10.0.0、2013 年 8 月 9 日リリース
 
-### What's New? 
+### 新機能
 	
-* This version contains an update to the Hortonworks Data Platform Developer Preview that matches with the Hortonworks Data Platform Preview on Azure HDInsight.
+* このバージョンには、Azure HDInsight 上の Hortonworks Data Platform Preview に相当する Hortonworks Data Platform 開発者プレビューの更新が含まれます。
 
-## v0.8.0.0, Released 06/7/2013
+## v0.8.0.0、2013 年 6 月 7 日リリース
 
-### What's New? 
+### 新機能
 
-* This version contains an update to the Hortonworks Data Platform Developer Preview that matches with the Hortonworks Data Platform Preview on Azure HDInsight.
+* このバージョンには、Azure HDInsight 上の Hortonworks Data Platform Preview に相当する Hortonworks Data Platform 開発者プレビューの更新が含まれます。
 
-## v0.6.0.0, Released 05/13/2013
+## v0.6.0.0、2013 年 5 月 13 日リリース
 
-### What's New? 
+### 新機能
 
-* Hive Server 2 is now being installed. This is required for the new version 0.9.2.0 of the Microsoft ODBC Driver for Hive that was released at the same time as this update. 
+* Hive Server 2 がインストールされるようになりました。これは、この更新と同時にリリースされた Microsoft ODBC Driver for Hive の新しい Version 0.9.2.0 で必要になります。
 
-* All services are set to automatic startup so no more having to start everything again after a machine reboot. 
+* すべてのサービスが自動起動に設定され、コンピューターの再起動後に再びすべてを開始する必要がなくなりました。
 
-## v0.4.0.0, Released 03/25/2013
+## v0.4.0.0、2013 年 3 月 25 日リリース
 
-### What's New? 
+### 新機能
 
-* New release of Microsoft HDInsight Developer Preview as well as Hortonworks Data Platform for Windows Developer Preview. 
+* Microsoft HDInsight 開発者プレビューおよび Hortonworks Data Platform for Windows 開発者プレビューの新リリース。
 
-* Includes Apache Hadoop, Hive, Pig, Sqoop, Oozie, HCatalog, and Templeton. 
+* Apache Hadoop、Hive、Pig、Sqoop、Oozie、HCatalog、Templeton を含みます。
 
-* New Microsoft HDInsight Dashboard with the following features: 
+* 新しい Microsoft HDInsight ダッシュボードには次の機能があります。
  
-* Connect to multiple clusters, including the local installation as well as those running remotely using Azure HDInsight Service. 
+* ローカル インストールのほか、Azure HDInsight サービスを使用してリモート実行されているクラスターも含めて、複数のクラスターに接続します。
  
-* For more information on HDInsight Service, see http://www.windowsazure.com/en-us/manage/services/hdinsight.
+* HDInsight サービスの詳細については、http://www.windowsazure.com/ja-jp/manage/services/hdinsight を参照してください。
 
-* Configure ASV on local cluster
+* ローカル クラスター上の ASV を構成します。
 
-* See detailed instructions below.
+* 詳細な手順は以下を参照してください。
 
-* Author and edit Hive queries in the new interactive Hive console.
+* 新しい対話的な Hive コンソールで Hive クエリを作成し編集します。
 
-* View and download job history and results.
+* ジョブの履歴と結果を表示してダウンロードできます。
 
-### Release Notes 
+### リリース ノート
 
-Port numbers 
+ポート番号
 
-* The REST API endpoints on a local HDInsight installation and the Azure HDInsight Service are accessed through different port numbers for the same services: 
+* ローカル HDInsight インストール上の REST API エンドポイントと Azure HDInsight サービスは、同じサービスについて異なるポート番号でアクセスされます。
 
-	Local: 
-	Oozie: http://localhost:11000/oozie/v1/admin/status 
-	Templeton: http://localhost:50111/templeton/v1/status 
-	ODBC: use port 10000 in DSN configuration or connection string. 
+	ローカル: 
+	Oozie: http://localhost:11000/oozie/v1/admin/status
+	Templeton: http://localhost:50111/templeton/v1/status
+	ODBC: DSN 構成または接続文字列でポート 10000 を使用します。
 
-	HDInsight Service: 
-	Oozie: http://ServerFQDN:563/oozie/v1/admin/status 
-	Templeton: http://ServerFQDN:563/templeton/v1/status 
-	ODBC: use port 563 in DSN configuration or connection string. 
+	HDInsight サービス: 
+	Oozie: http://ServerFQDN:563/oozie/v1/admin/status
+	Templeton: http://ServerFQDN:563/templeton/v1/status
+	ODBC: DSN 構成または接続文字列でポート 563 を使用します。
 
 
-* Configuring ASV on the local cluster: 
+* ローカル クラスター上の ASV の構成
 
-	In the dashboard, you will see a default local cluster named "local (hdfs)". If you want ASV as your storage for your local installation, do the following: 
+	ダッシュボードには、"ローカル (hdfs)" という名前の既定のローカル クラスターが表示されます。ローカル インストールのストレージとして ASV を使用する場合は、以下の手順を実行します。
 
-	1. Add the account tag in core-site.xml found in C:\Hadoop\hadoop-1.1.0-SNAPSHOT\conf:       
+	1. C:\Hadoop\hadoop-1.1.0-SNAPSHOT\conf にある core-site.xml にアカウント タグを追加します。
 
 			<property>
         		<name>fs.azure.account.key.{AccountName}</name>
@@ -108,7 +108,7 @@ Port numbers
         		<name>fs.default.name</name>
        			<!-- cluster variant -->
        	 		<value>asv://ASVContainerName@ASVAccountName</value>
-        		<description>The name of the default file system.  Either the literal string "local" or a host:port for NDFS.</description>
+        		<description>The name of the default file system.Either the literal string "local" or a host:port for NDFS.</description>
         		<final>true</final>
       		</property>
 
@@ -118,7 +118,7 @@ Port numbers
         		<description>A base for other temporary directories.</description>
       		</property>
       
-		Example:       
+		例:
 
 			<property>
     			<name>fs.azure.account.key.MyHadoopOnAzureAccountName</name>
@@ -129,33 +129,33 @@ Port numbers
 				<name>fs.default.name</name>
 				<!-- cluster variant -->
 				<value>asv://MyASVContainer@MyASVAccount</value>
-				<description>The name of the default file system.  Either the literal string "local" or a host:port for NDFS.</description>
+				<description>The name of the default file system.Either the literal string "local" or a host:port for NDFS.</description>
 				<final>true</final>
 			</property>
         
 
-	2. Open the Hadoop command shell on your desktop in elevated mode and run the following command:
+	2. デスクトップから Hadoop コマンド シェルを昇格モードで開き、次のコマンドを実行します。
 	 
 	 		%HADOOP_NODE%\stop-onebox.cmd && %HADOOP_NODE%\start-onebox.cmd
 
-	3. Access any file on that account using the full URI: asv://{container}@{account}/{path} (or asvs:// if you want to use HTTPS for accessing the data). Example:
+	3. asv://{container}@{account}/{path} というフル URI を使用してそのアカウントにある任意のファイルにアクセスします (HTTPS を使用してデータにアクセスする場合は asvs://)。例:
 	 
 	 		hadoop fs -lsr 
 			asvs://MyHadoopOnAzureContainerName@MyHadoopOnAzureAccountName/example/data/
 
-	4. Delete the currently registered local cluster and re-register it with the new ASV credentials. 
+	4. 現在登録されているローカル クラスターを削除し、新しい ASV 資格情報を使って再登録します。
 
 
-## v0.3.0.0, Released 12/13/2012 
+## v0.3.0.0、2012 年 12 月 13 日リリース
 
-* Dashboard website has been changed to anonymous authentication instead of using windows credentials. This eliminates the issue with the login prompt mentioned in the previous version release notes. 
+* ダッシュボードの Web サイトで Windows 資格情報の代わりに匿名認証を使用するように変更されました。これにより、以前のバージョンのリリース ノートに記載されていたログイン プロンプトに関する問題が解消されます。
 
-* Fixed some Sqoop bugs with export and some types of imports. 
+* エクスポートと一部のインポートにおける Sqoop のバグを修正しました。
 
-### Release issues 
+### リリースの問題
 
-* JavaScript console fails to load, see release notes for version 0.2.0.0 for details. 
-* Sqoop command line will display warnings as shown below. These will be fixed in a future update and can be safely ignored. 
+* JavaScript コンソールの読み込みに失敗します。詳細については、Version 0.2.0.0 のリリース ノートを参照してください。
+* Sqoop コマンド ラインに次のような警告が表示されます。これは今後の更新プログラムで修正される予定であり、無視してもかまいません。
 	
 		c:\Hadoop\sqoop-1.4.2\bin>sqoop version 
 		Setting HBASE_HOME to 
@@ -168,46 +168,46 @@ Port numbers
 		git commit id 3befda0a456124684768348bd652b0542b002895 
 		Compiled by  on Thu 11/29/2012- 3:26:26.10
 
-## v0.2.0.0, Released 12/3/2012
+## v0.2.0.0、2012 年 12 月 3 日リリース
 
-* Introduction of semantic versioning to MSI 
+* MSI に対するセマンティック バージョン管理の導入
 
-* Fixes for various installation bugs reported on the MSDN forums, particularly around installing the HDInsight Dashboard 
+* MSDN フォーラムで報告されたさまざまなインストール バグ、特に HDInsight ダッシュボードのインストール関係のバグの修正
 
-* Start menu items added for increased discoverability 
+* 見つけやすいように [スタート] メニュー項目を追加
 
-* Fix for Hive Console multi-line input 
+* Hive コンソールの複数行入力の修正
 
-* Minor updates to getting started content 
+* 入門用コンテンツの細かな更新
 
-### Release issues 
+### リリースの問題
 
-* JavaScript console fails to load 
+* JavaScript コンソールの読み込みに失敗します。
 
-	* On some installations, the JavaScript console will fail with an HTTP 404 error displayed on the page. To work around this, navigate directly to http://localhost:8080 to use the console. 
+	* 一部のインストールで、ページに HTTP 404 エラーが表示され JavaScript コンソールの読み込みに失敗します。この問題を回避するには、コンソールを使用して http://localhost:8080 に直接移動します。
 
-* Browsing to HDInsight Dashboard raises a login prompt 
+* HDInsight ダッシュボードに移動するとログイン プロンプトが表示されます。
 
-	* We've had some reports of a login dialog being raised when browsing to the HDInsight Dashboard. In that case, you can provide the login information for your current user and you should be able to browse to the dashboard. 
-
-
-## v1.0.0.0, Released 10/23/2012
-
-* Initial release 
-
-### Release Issues 
-
-* Hive Console 
-
-	* If a newline is included in the Hive command submitted, you will get a "syntax error." Remove newlines and the query should execute as intended. 
+	* HDInsight ダッシュボードに移動すると、ログイン ダイアログ ボックスが表示されるという報告がいくつかありました。その場合は、現在のユーザーのログイン情報を入力すると、ダッシュボードに移動できます。
 
 
+## v1.0.0.0、2012 年 10 月 23 日リリース
 
-## General Known Issues
+* 最初のリリース
 
-* Hadoop user password expiration 
+### リリースの問題
 
-	The password for the Hadoop user may expire, dependent upon your AD policies pushed to the machine. The following PowerShell script will set the password to not expire, and can be run from an administrative command prompt. 	
+* Hive コンソール
+
+	* 送信した Hive コマンドに改行文字が含まれていると、構文エラーになります。改行を削除すると、クエリは意図したとおりに実行ざれます。
+
+
+
+## 一般的な既知の問題
+
+* Hadoop ユーザーのパスワードの有効期限
+
+	コンピューターに適用された AD ポリシーによっては、Hadoop ユーザーのパスワードが期限切れになることがあります。以下の PowerShell スクリプトは、パスワードが期限切れにならないように設定します。このスクリプトは管理コマンド プロンプトから実行することができます。	
 
 		$username = "hadoop"
 		$ADS_UF_DONT_EXPIRE_PASSWD = 0x10000 # (65536, from ADS_USER_FLAG_ENUM enumeration)
@@ -230,32 +230,33 @@ Port numbers
 		}
 
 
-* Temp Directory> 
+* 一時ディレクトリ
 	
-	hadoop.tmp.dir points to the wrong location: Rather than pointing C:\hadoop\hdfs, it points to c:\hdfs. This bug will be fixed in the next update of HDP bits. 
+	hadoop.tmp.dir が間違った場所を指しており、C:\hadoop\hdfs ではなく、c:\hdfs を指しています。このバグは、HDP 関連の次の更新プログラムで修正されます。
 
-* OS Restrictions 
+* OS の制限
 
-	HDInsight Server must be installed on a 64-bit OS 
+	HDInsight Server は、64 ビット OS にインストールする必要があります。
 
-* HDInsight can't be found in WebPI search results. 
+* WebPI の検索結果に HDInsight が見つかりません。
 
-	This is typically due to an OS restriction. HDInsight requires a 64-bit operating system with a minimum version of Windows 7 Service Pack 1, Windows Server 2008 R2 Service Pack1, Windows 8, or Windows Server 2012.
+	これは通常、OS の制限です。HDInsight には、64 ビットのオペレーティング システムが必要で、少なくとも Windows 7 Service Pack 1、Windows Server 2008 R2 Service Pack1、Windows 8、または Windows Server 2012 以上が必要です。
 
-* Administrative Command Prompt documentation 
+* 管理コマンド プロンプトのマニュアル
 
-	* In order to run commands such as **hadoop mradmin** or **hadoop defadmin**, you must run as the hadoop user. 
+	* **hadoop mradmin** または **hadoop defadmin** のようなコマンドを実行するには、Hadoop ユーザーとして実行する必要があります。
 
-	* To easily create a shell running as that user, open a Hadoop Command prompt and run the following: 
+	* そのユーザーとして実行しているシェルを簡単に作成するには、Hadoop コマンド プロンプトを開いて、次のコマンドを実行します。
 	 
 	 		start-hadoopadminshell
 
-	* This will open a new command shell running with Hadoop administrator privileges 
+	* これにより Hadoop の管理者権限で実行されている新しいコマンド シェルが開きます。
 
-##<a name="nextsteps"></a> Next steps
+##<a name="nextsteps"></a> 次のステップ
 
-- [Get started with the HDInsight Emulator][hdinsight-emulator]
+- [HDInsight Emulator の概要][hdinsight-emulator]
 
 
-[hdinsight-emulator]: /en-us/documentation/articles/hdinsight-get-started-emulator/
+[hdinsight-emulator]: /ja-jp/documentation/articles/hdinsight-get-started-emulator/
+
 

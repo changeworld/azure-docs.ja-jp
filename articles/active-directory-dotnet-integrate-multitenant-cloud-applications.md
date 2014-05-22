@@ -1,65 +1,65 @@
-<properties linkid="" urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Integrating Multi-Tenant Cloud Applications with Azure Active Directory" authors="" solutions="" manager="" editor="" />
+<properties linkid="" urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="マルチテナント クラウド アプリケーションと Azure Active Directory の統合" authors="" solutions="" manager="" editor="" />
 
-# Integrating Multi-Tenant Cloud Applications with Azure Active Directory
+# マルチテナント クラウド アプリケーションと Azure Active Directory の統合
 
-##<a name="introduction"></a>Introduction
+##<a name="introduction"></a>はじめに
 
-Azure Active Directory (Azure AD) is a modern, REST-based service that provides identity management and access control capabilities for cloud applications. Azure AD easily integrates with cloud services as well as Azure, Microsoft Office 365, Dynamics CRM Online, and Windows Intune. Existing on-premise Active Directory deployments can also take full advantage of Azure AD. To learn more, see the [Identity page][] on [windowsazure.com][].
+Azure の Active Directory (Azure AD) は、クラウド アプリケーションに ID 管理機能およびアクセス制御機能を提供する最新の REST ベースのサービスです。Azure AD は Azure、Microsoft Office 365、Dynamics CRM Online、Windows Intune だけでなく、クラウド サービスとも簡単に統合されます。既存の内部設置型 Active Directory の展開でも Azure AD を最大限に活用できます。詳細については、[windowsazure.com][] の [ID ページ][]を参照してください。
 
-This walkthrough is intended for .NET developers who want to integrate a multi-tenant application with Azure AD. You will learn how to:
+このチュートリアルは、マルチテナント アプリケーションを Azure AD と統合したいと考えている .NET 開発者を対象としています。学習内容: 
 
-* Enable customers to sign up for your application using Azure AD
-* Enable single sign-on (SSO) with Azure AD
-* Query a customer's directory data using the Azure AD Graph API
+* Azure AD を使用して顧客によるアプリケーションへのサインアップを有効にする
+* Azure AD を使用してシングル サインオン (SSO) を有効にする
+* Azure AD Graph API を使用して顧客のディレクトリ データを照会する
 
-The companion sample application for this walkthrough can be [downloaded here][]. The sample can be run without changes, but you may need to change your [port assignment in Visual Studio][] to use https. Follow the instructions in the link, but set the binding protocol to "https" in the bindings section of the ApplicationHost.config file. All code snippets in the steps below have been taken from the sample.
+このチュートリアルで使用するサンプル アプリケーションは[こちらからダウンロード][]できます。サンプルは変更せずに実行できますが、https を使用するには [Visual Studio でのポート割り当て][]の変更が必要になる場合があります。このリンクの先の手順に従いますが、ApplicationHost.config ファイルの bindings セクションでバインド プロトコルを "https" に設定してください。以降に示している手順のすべてのコードはサンプルからの抜粋です。
 
 > [WACOM.NOTE]
-> The multi-tenant directory app sample is provided for illustration purposes only.  This sample (including its helper library classes) should not be used in production.
+> マルチテナント ディレクトリ アプリケーションのサンプルは例示のみを目的として提供されています。このサンプルを (そのヘルパー ライブラリ クラスも含め) 運用環境には使用しないでください。
 
 
-###Prerequisites
-The following developer prerequisites are required for this walkthrough:
+###前提条件
+開発者には次の前提条件がこのチュートリアルで必要になります。
 
 * [Visual Studio 2012][]
 * [WCF Data Services for OData][]
 
-###Table of Contents
-* [Introduction][]
-* [Part 1: Get a Client ID for Accessing Azure AD][]
-* [Part 2: Enable Customers to Sign-Up Using Azure AD][]
-* [Part 3: Enable Single Sign-On][]
-* [Part 4: Access Azure AD Graph][]
-* [Part 5: Publish Your Application][]
-* [Summary][]
+###目次
+* [はじめに][]
+* [パート 1: Azure AD へのアクセス用のクライアント ID を取得する][]
+* [パート 2: Azure AD を使用して顧客によるサインアップを有効にする][]
+* [パート 3: シングル サインオンを有効にする][]
+* [パート 4: Azure AD Graph にアクセスする][]
+* [パート 5: アプリケーションを発行する][]
+* [まとめ][]
 
 
-##<a name="getclientid"></a>Part 1: Get a Client ID for Accessing Azure AD
-This section describes how to get a Client ID and Client Secret after you have created a Microsoft Seller Dashboard account. A Client ID is the unique identifier for your application, and a Client Secret is the associated key required when making requests using the Client ID. Both are required to integrate your application with Azure AD.
+##<a name="getclientid"></a>パート 1: Azure AD へのアクセス用のクライアント ID を取得する
+このセクションでは、Microsoft 販売者ダッシュボード アカウントを作成した後にクライアント ID とクライアント シークレットを取得する方法について説明します。クライアント ID はアプリケーションの一意の識別子です。クライアント シークレットはその対応するキーであり、クライアント ID を使用して要求を行うときに必要になります。いずれもアプリケーションを Azure AD と統合するために必要です。
 
-###Step 1: Create an Account with the Microsoft Seller Dashboard
-To develop and publish applications that integrate with Azure AD, you must sign up for a [Microsoft Seller Dashboard][] account. Then you will be prompted to [create an account profile][] as either a company or an individual. This profile is used to publish applications on the Azure Marketplace or other marketplaces, and it is required to generate a Client ID and Client Secret.  
+###手順 1. Microsoft 販売者ダッシュボードでアカウントを作成する
+Azure AD と統合するアプリケーションを開発して発行するには、[Microsoft 販売者ダッシュボード][] アカウントにサインアップする必要があります。その後、会社または個人として[アカウントのプロファイルを作成する][]ように求められます。このプロファイルは、Azure Marketplace などのマーケットプレースにアプリケーションを発行するために使用され、クライアント ID とクライアント シークレットを生成するために必要になります。
 
-New accounts are put into an "Account Pending Approval" state. This state does not prevent you from starting development - you can still create Client IDs as well as draft app listings. However, an app listing can only be submitted for approval once the account itself is approved. The submitted app listing will only be visible to customers in the Azure Marketplace after it has been approved.
+新しいアカウントは [承認の保留] 状態になります。この状態では、開発を開始することはできませんが、クライアント ID とドラフト アプリケーションの内容を作成することはできます。ただし、アプリケーションの内容を承認のために送信できるのは、アカウント自体が承認されてからのみです。送信したアプリケーションの内容が Azure Marketplace で顧客に表示されるのは、その内容が承認されてからのみです。
 
-###Step 2: Get a Client ID for your Application
-You need a Client ID and Client Secret to integrate your application with Azure AD. A Client ID is the unique identifier for your application, and it is primarily used to identify an application for single sign-on or for authenticating calls to the Azure AD Graph. For more information about obtaining a Client ID and Client Secret, see [Create Client IDs and Secrets in the Microsoft Seller Dashboard][]. 
+###手順 2. アプリケーションのクライアント ID を取得する
+アプリケーションを Azure AD と統合するには、クライアント ID とクライアント シークレットが必要です。クライアント ID はアプリケーションの一意の識別子であり、主にシングル サインオン時や、Azure AD Graph 呼び出し認証時に、アプリケーションを識別するために使用されます。クライアント ID とクライアント シークレットの取得の詳細については、「[Microsoft 販売者ダッシュボードでのクライアント ID とシークレットの作成][]」を参照してください。
 
 > [WACOM.NOTE]
-> Your Client ID and Client Secret will be needed later in this walkthrough, so make sure that you record them.
+> クライアント ID とクライアント シークレットはこのチュートリアルの後半で必要になるため、必ず記録しておいてください。
 
-To generate a Client ID and Client Secret, you will need to enter the following properties in the Microsoft Seller Dashboard:
+クライアント ID とクライアント シークレットを生成するには、Microsoft 販売者ダッシュボードで次のプロパティを入力する必要があります。
 
-**App Domain**: The hostname of your application, for example "contoso.com". This property must not contain any port number. During development, this property should be set to "localhost".
+**アプリケーション ドメイン**: アプリケーションのホスト名 (「contoso.com」など)。このプロパティにポート番号を含めないでください。開発中、このプロパティは「localhost」に設定する必要があります。
 
-**App Redirect URL**: The redirect URL where Azure AD will send a response after user sign-in and when an organization has authorized your application, for example: "https://contoso.com/." During development, this property should be set to "https://localhost:&#60;port number&#62;"
+**アプリケーションのリダイレクト URL**: ユーザーのサインイン後に組織がアプリケーションを承認すると Azure AD が応答を送信する先のリダイレクト URL (「https://contoso.com/」など)。開発中、このプロパティは「https://localhost:&#60;port number&#62;」に設定する必要があります。
 
-###Step 3: Configure Your Application to Use the Client ID and Client Secret
-This step requires the Client ID and Client Secret that were generated during signup on the Seller Dashboard. The Client ID is used for SSO, and both the Client ID and Client Secret will be used later to obtain an access token to call the Azure AD Graph API.  
+###手順 3. クライアント ID とクライアント シークレットを使用するようにアプリケーションを構成する
+このステップには、販売者ダッシュボードでのサインアップ時に生成されたクライアント ID とクライアント シークレットが必要です。クライアント ID は SSO に使用されます。クライアント ID とクライアント シークレットの両方は Azure AD Graph API 呼び出し用のアクセス トークンを取得するために後で使用されます。
 
-The sample application has been pre-wired to use Azure AD, and loads the Client ID and Client Secret from config. In the **Web.config** file in the sample application, make the following changes: 
+サンプル アプリケーションは、Azure AD を使用するために事前に接続され、config からクライアント ID とクライアント シークレットを読み込みます。サンプル アプリケーションの **Web.config** ファイルで、次のように変更します。
 
-1. In the **appSettings** node, replace the values for "clientId" and "SymmetricKey" with your Client ID, Client Secret, and your App Domain: 
+1. **appSettings** ノードでは、"clientId"、"SymmetricKey"、"AppHostname" の値をクライアント ID、クライアント シークレット、アプリケーション ドメインに置き換えます。
 
 		<appSettings>
     		<add key="clientId" value="(Your Client ID value)"/>
@@ -67,7 +67,7 @@ The sample application has been pre-wired to use Azure AD, and loads the Client 
 			<add key="AppHostname" value="(Your App Domain)"/>
 		</appSettings>
 
-2. In the **audienceUris** node of **system.identityModel**, insert your Client ID after "spn:":
+2. **System.IdentityModel** の **audienceUris** ノードでは、"spn:" の後ろにクライアント ID を挿入します。
 
 		<system.identityModel>
     		<audienceUris>
@@ -75,64 +75,64 @@ The sample application has been pre-wired to use Azure AD, and loads the Client 
     		</audienceUris>
 
 
-##<a name="enablesignup"></a>Part 2: Enable Customers to Sign-Up Using Azure AD
+##<a name="enablesignup"></a>パート 2: Azure AD を使用して顧客によるサインアップを有効にする
 
-This section describes how to enable customers to sign up for your application using Azure AD. Before a customer can use an application integrated with Azure AD, a tenant administrator must authorize the application. This authorization process starts with a consent request from your application to Azure, which generates a response that must be handled by your application. The following steps describe how to generate a consent request and handle the response.
+このセクションでは、Azure AD を使用して顧客によるサインアップを有効にする方法について説明します。顧客が Azure AD と統合されたアプリケーションを使用する前に、テナント管理者はアプリケーションの承認プロセスを実行する必要があります。このプロセスはアプリケーションから Azure AD への同意要求から始まります。Azure AD がその要求への応答を生成し、アプリケーションがその応答を処理する必要があります。次に示している手順では、同意要求の生成と応答の処理の方法について説明します。
 
-The steps in this section use helper classes from the sample application. These classes are contained in the *Microsoft.IdentityModel.WAAD.Preview* library of the sample, and they make it easier to focus on application code rather than identity and protocol specifics.
+このセクションの手順では、サンプル アプリケーションのヘルパー クラスを使用します。これらのヘルパー クラスはサンプルの *Microsoft.IdentityModel.WAAD.Preview* ライブラリに含まれています。それらのクラスにより、アプリケーション コードではなく ID と プロトコルの仕様に注力しやすくなります。
 
-###Step 1: Requesting Consent for Your Application
-The following example interaction demonstrates the process of requesting consent for your application:
+###手順 1. アプリケーションに対する同意を要求する
+次の一連の操作は、アプリケーションに対する同意を要求するプロセスの例です。
 
-1. The customer clicks a "sign up using Azure AD" link on a web page in your application.
-2.	You redirect the customer to the Azure AD authorization page with your application's information appended to the request.
-3.	The customer either grants or denies consent for your application.
-4.	Azure AD redirects the customer to your specified App Redirect URL. You specified this URL when you generated a Client ID and Client Secret on the Microsoft Seller Dashboard.  The redirect request indicates the result of the consent request, including information about their tenant if consent was granted.
+1. 顧客はアプリケーションの Web ページで [sign up using Azure AD] リンクをクリックします。
+2.	要求に付加されたアプリケーションの情報を使用して、Azure AD の認証ページに顧客をリダイレクトします。
+3.	顧客はアプリケーションに対する同意を提示または拒否します。
+4.	Azure AD によって顧客は指定されたアプリケーションのリダイレクト URL にリダイレクトされます。この URL は、Microsoft 販売者ダッシュボードでクライアント ID とクライアント シークレットを生成したときに指定したものです。リダイレクト要求は、同意が提示された場合のテナントの情報など、同意要求の結果を示しています。
 
-To generate the redirect request in step 2 above, you must append querystring parameters to the following URL for the Azure AD authorization page: *http://activedirectory.windowsazure.com/Consent/AuthorizeApplication.aspx*
+前に示している手順 2. のリダイレクト要求を生成するには、Azure AD の認証ページの URL (*http://activedirectory.windowsazure.com/Consent/AuthorizeApplication.aspx*) に querystring パラメーターを追加する必要があります。
 
-The querystring parameters are described below:
+querystring パラメーターについて次に説明します。
 
-**ApplicationID**: (Required) The **ClientID** value you received in the Seller Dashboard.
+**ApplicationID**: (必須) 販売者ダッシュボードで受け取った **ClientID** 値。
 
-**RequestedPermissions**: (Optional) The permissions that must be granted to your application by the tenant.
-During development, these permissions are used for testing unpublished applications. For published applications, this parameter will be ignored. Instead, the requested permissions in your application listing will be used. See Part 5 for more information about this listing.
-There are three possible values for this parameter:
+**RequestedPermissions**: (省略可能) テナントがアプリケーションに与える必要があるアクセス許可。
+開発中、これらのアクセス許可は未発行のアプリケーションをテストするために使用されます。発行済みのアプリケーションでは、このパラメーターは無視されます。代わりに、アプリケーションの内容で要求されているアクセス許可が使用されます。アプリケーションの内容の詳細については、パート 5 を参照してください。
+このパラメーターには次の 3 つの値を指定できます。
 
-**DirectoryReader**: Grants permission to read directory data, such as user accounts, groups, and information about your organization. Enables SSO.
+**DirectoryReader**: ユーザー アカウント、グループ、組織の情報などのディレクトリ データを読み取るためのアクセス許可を与えます。SSO を有効にします。
 
-**UserAccountAdministrator**: Grants permission to read and write data, such as users, groups and information about your organization. Enables SSO.
+**UserAccountAdministrator**: ユーザー、グループ、組織の情報などのデータを読み書きするためのアクセス許可を与えます。SSO を有効にします。
 
-**None**: Enables single sign-on but disables access to directory data.
+**None**: シングル サインオンを有効にしますが、ディレクトリ データへのアクセスは無効にします。
 
-The default value is "None" if the parameter is unspecified or incorrectly specified.
+パラメーターを指定しないか誤って指定した場合、既定値は "None" になります。
 
-The following is an example valid consent request URL:
+次に示しているのは、有効な同意要求の URL の例です。
 *https://activedirectory.windowsazure.com/Consent/AuthorizeApplication.aspx?ApplicationId=33E48BD5-1C3E-4862-BA79-1C0D2B51FB26&RequestedPermissions=DirectoryReader*
 
-In the sample application, the "Register" link contains a similar URL for consent request, as shown below:
+サンプル アプリケーションでは、[Register] リンクには同意要求の URL が含まれています。次のようになっています。
 
 ![login][login]
 
 
 > [WACOM.NOTE]
-> When you test your unpublished application, you will go through a consent experience that is similar to your customers. However, the authorization page for an unpublished application looks different than the authorization page for a published application. A published application displays your app name, logo, and publisher details, whereas an unpublished application does not.
+> 未発行のアプリケーションをテストするときは、顧客と同様の同意プロセスを実行することになります。ただし、未発行のアプリケーションの認証ページと発行済みのアプリケーションの認証ページとでは、表示内容が異なります。発行済みのアプリケーションではアプリケーションの名前、ロゴ、発行者の詳細が表示されますが、未発行のアプリケーションでは表示されません。
 
-###Step 2: Handling the Consent Response
-After a customer has granted or denied consent for your application, the Azure AD sends a response to your application's App Redirect URL. This response contains the following querystring parameters:
+###手順 2. 同意応答を処理する
+顧客がアプリケーションに対する同意を提示または拒否した後、Azure AD はアプリケーションのリダイレクト URL に応答を送信します。この応答には次の querystring パラメーターが含まれています。
 
-**TenantId**: The unique GUID for the Azure AD tenant that has authorized your application. This parameter will only be specified if the customer has authorized your application.
+**TenantId**: アプリケーションを承認した Azure AD テナントに一意の GUID。このパラメーターが指定されるのは、顧客がアプリケーションを承認した場合のみです。
 
-**Consent**: The value will be set to "Granted" if the application has been authorized, or "Denied" if the request has been rejected.
+**Consent**: アプリケーションが承認された場合は値が "Granted" に設定され、要求が却下された場合は "Denied" に設定されます。
 
-The following is an example valid response to the consent request that indicates the application has been authorized:
+次に示しているのは、アプリケーションが承認されたことを示す、同意要求への有効な応答の例です。
 *https://app.litware.com/redirect.aspx&TenantId=7F3CE253-66DB-4AEF-980A-D8312D76FDC2&Consent=Granted*
 
-Your application will need to maintain context such that the request sent to the Azure AD authorization page is tied to the response (and would reject any responses without an associated request).
+アプリケーションでは、Azure AD の承認ページに送信された要求が応答に関連付けられるように、コンテキストを維持する必要があります (要求が関連付けられていない応答はすべて却下されます)。
 
-<div class="dev-callout"><strong>Note</strong><p>After consent is granted, Azure AD may take some time before SSO and Graph access are provisioned. The first user in each organization that signs up for your application may see see sign-in errors until the provisioning completes.</p></div>
+<div class="dev-callout"><strong>注</strong><p>同意が提示された後、Azure AD では SSO と Graph のプロビジョニングが完了するまで時間がかかる場合があります。各組織でアプリケーションにサインアップした最初のユーザーには、プロビジョニングが完了するまでサインイン エラーが表示される場合があります。</p></div>
 
-After a customer has granted consent to your application, it's important to associate and store the newly created tenant in your application with the TenantId returned by the consent response. The sample application contains an *HttpModule* in the *Microsoft.IdentityModel.WAAD.Preview.Consent* namespace that automatically records the TenantId to a customer/TenantId "data store" on all successful consent responses.  The code for this is included below, and recording of the TenantId to a customer/TenantId "data store" is performed by the *TrustedIssuers.Add* method:
+顧客がアプリケーションに対する同意を提示した後、重要なのは、同意応答によって返される TenantId を使用して、新たに作成したテナントをアプリケーションで関連付けて保存することです。サンプル アプリケーションでは、*Microsoft.IdentityModel.WAAD.Preview.Consent* 名前空間にある *HttpModule* が、すべての同意応答によって返される TenantId を customer/TenantId データ ストアに自動的に記録します。次に示しているコードと、customer/TenantId データ ストアへの TenantId の記録は、*TrustedIssuers.Add* メソッドが実行します。
 
 	private void Application_BeginRequest(Object source,
              EventArgs e)
@@ -152,53 +152,53 @@ After a customer has granted consent to your application, it's important to asso
         }            
     }
 
-Before you can test the consent request/response code for your application, you must get an Azure AD directory tenant.
+アプリケーションに対する同意要求/応答のコードをテストする前に、Azure AD ディレクトリ テナントを取得する必要があります。
 
-<h3>Step 3: Get an Azure AD Tenant to Test Your Application</h3>
-To test your application's ability to integrate with Azure AD, you'll need an Azure AD tenant. If you already have a tenant that you use for testing another application, you can reuse it. We recommend getting at least two tenants to ensure your app can be tested and used by multiple tenants. We do not recommend using a production tenant for this purpose. [Get an Azure AD tenant][].
+<h3>手順 3. アプリケーションのテストに必要な Azure AD テナントを取得する</h3>
+アプリケーションが Azure AD と統合できたことをテストするには、Azure AD テナントが必要です。別のアプリケーションのテストに使用しているテナントが既にある場合は、そのテナントを再利用できます。アプリケーションを複数のテナントでテストおよび使用できるように、2 つ以上のテナントを取得することをお勧めします。この目的に運用環境のテナントを使用することはお勧めしません。別の [Azure AD テナントを取得][]してください。
 
-Once you have obtained an Azure AD tenant, you can build and run the application by pressing **F5**. Additionally, you can try to sign up for your application using the new  tenant. 
+Azure AD テナントを取得したら、**F5** キーを押してアプリケーションをビルドして実行できます。さらに、新しいテナントを使用してアプリケーションへのサインアップを試すことができます。
 
-<div class="dev-callout"><strong>Note</strong><p>If your customers sign up for a new Azure AD tenant, it may take some time for that tenant to be fully provisioned. Users may see errors on the consent page until the provisioning completes.</p></div>
+<div class="dev-callout"><strong>注</strong><p>顧客が新しい Azure AD テナントにサインアップする場合、テナントではプロビジョニングが完了するまで時間がかかることがあります。プロビジョニングが完了するまで、ユーザーには同意ページでエラーが表示される場合があります。</p></div>
 
-<h2><a name="enablesso"></a>Part 3: Enable Single Sign-On</h2>
+<h2><a name="enablesso"></a>パート 3: シングル サインオンを有効にする</h2>
 
-This section shows you how to enable Single Sign-On (SSO). The process starts with constructing a sign-in request to Azure AD that authenticates a user to your application, then verifies in the sign-in response that the customer belongs to a tenant that has authorized your application. The sign-in request requires your Client ID from the Seller Dashboard and the Tenant ID of the customer's organization.
+このセクションでは、シングル サインオン (SSO) を有効にする方法について説明します。このプロセスではまず、アプリケーションにユーザーを認証するために、Azure AD へのサインイン要求を生成します。次に、アプリケーションを承認したテナントに顧客が属していることを、サインイン応答で確認します。サインイン要求には、販売者ダッシュボードで生成したクライアント ID と顧客組織のテナント ID が必要です。
 
-The sign-in request is specific to a directory tenant, and must include a TenantID.  A TenantID can be determined from an Azure AD directory tenant's domain name. There are two common ways to get this domain name from the end user as they sign-in:
+サインイン要求はディレクトリ テナントに固有のものであり、TenantID が含まれている必要があります。TenantID は Azure AD ディレクトリ テナントのドメイン名から調べることができます。サインイン時にエンド ユーザーからこのドメイン名を取得するには、一般的に次の 2 つの方法があります。
 
-* If the URL of the application is *https://contoso.myapp.com* or *https://myapp.com/contoso.com*, *contoso* and *contoso.com* represent the Azure AD domain name and *myapp.com* represents your application's URL. 
-* Your application can prompt the user for their email address or their Azure AD domain name. This approach is used in the sample application, where the user must enter their Azure AD domain name, as shown below:
+* アプリケーションの URL が *https://contoso.myapp.com* または *https://myapp.com/contoso.com* の場合、*contoso* と *contoso.com* は Azure AD ドメイン名を表し、*myapp.com* はアプリケーションの URL を表します。
+* アプリケーションで、ユーザーに自分の電子メール アドレスまたは Azure AD ドメイン名の入力を求めることができます。このアプローチは、サンプル アプリケーションで使用して、ユーザーに Azure AD ドメイン名の入力を求めます。次のようになっています。
 
 ![login][login]
 
-<h3>Step 1: Look up the Tenant ID</h3>
-Using the Azure AD domain name supplied by the customer, you can look up their Tenant ID by parsing the Azure AD federation metadata. In the sample application, this process is handled by the *Domain2TenantId* method of the *Microsoft.IdentityModel.WAAD.Preview.TenantUtils.Globals* class.
+<h3>手順 1. テナント ID を調べる</h3>
+顧客が入力した Azure AD ドメイン名を使用して、Azure AD フェデレーション メタデータを解析することで、そのテナント ID を調べることができます。サンプル アプリケーションでは、このプロセスは * *Microsoft.IdentityModel.WAAD.Preview.TenantUtils.Globals* クラスの *Domain2TenantId* メソッドによって処理されます。
 
-To demonstrate this process, the following steps use the contoso.com domain name.
+このプロセスを実際に試すには、次に示している手順で contoso.com ドメイン名を使用します。
 
-1.	Get the **FederationMetadata.xml** file for the Azure AD tenant. For example:  
+1.	Azure AD テナントの **FederationMetadata.xml** ファイルを取得します。次に例を示します。
 *https://accounts.accesscontrol.windows.net/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml*
-2.	In the **FederationMetadata.xml** file, locate the **Entity Descriptor** entry. The Tenant ID is included as part of the **entityID** property following the "https://sts.windows.net", as shown below:
+2.	**FederationMetadata.xml** ファイルで、**Entity Descriptor** エントリを見つけます。テナント ID は、"https://sts.windows.net" に続く **entityID** プロパティの一部として含まれています。次のようになっています。
 
 		 <EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" entityID="https://sts.windows.net/a7456b11-6fe2-4e5b-bc83-67508c201e4b/" ID="_cba45203-f8f4-4fc3-a3bb-0b136a2bafa5"> 
-In this case, the TenantID value is **a7456b11-6fe2-4e5b-bc83-67508c201e4b**.
-3.	In your application's customer/TenantId "data store," you should store the domain and its associated TenantID.  These two values can be used together for future sign-in requests and eliminate the need to get the **FederationMetadata.xml** each time. The sample application does not feature this optimization.
+この場合、TenantID 値は **a7456b11-6fe2-4e5b-bc83-67508c201e4b** です。
+3.	アプリケーションの customer/TenantId データ ストアに、ドメインとその対応する TenantID を保存する必要があります。これら 2 つの値を以降のサインイン要求に一緒に使用することで、**FederationMetadata.xml** を毎回取得する必要がなくなります。サンプル アプリケーションでは、この最適化を行っていません。
 
-<h3>Step 2: Generate the Sign-In Request</h3>
-When a customer signs in to your application, such as by clicking a sign-in button, the sign-in request must be generated by using the customer's Tenant ID and your application's Client ID. In the sample application, this request is generated by the *GenerateSignInMessage* method of the *Microsoft.IdentityModel.WAAD.Preview.WebSSO.URLUtils* class. This method verifies that the customer's TenantID represents an organization that has authorized your application, and it generates the destination URL for the sign-in button, as shown below:
+<h3>手順 2. サインイン要求を生成する</h3>
+顧客がサインイン ボタンのクリックなどによりアプリケーションにログインすると、サインイン要求が顧客のテナント ID とアプリケーションのクライアント ID を使用して生成される必要があります。サンプル アプリケーションでは、この要求は *Microsoft.IdentityModel.WAAD.Preview.WebSSO.URLUtils* クラスの *GenerateSignInMessage* メソッドによって生成されます。このメソッドは、アプリケーションを承認した組織を顧客の TenantID が表すことを確認し、サインイン ボタンのリンク先 URL を生成します。次のようになっています。
 
 ![login][login]
 
-Clicking the button will navigate the user's browser a sign-in page for Azure AD. Once signed in, Azure AD will return a sign-in response to the application.
+このボタンをクリックすると、ユーザーのブラウザーで Azure AD のサインイン ページが表示されます。顧客がサインインしたら、Azure AD はサインイン応答をアプリケーションに返します。
 
-###Step 3: Validate the Issuer of the Incoming Token in the Sign-In Response
+###手順 3. サインイン応答内の受信トークンの発行元を検証する
 
-When a customer signs in to your application, you need to validate that their tenant has authorized your application. Their sign-in response contains a token, and the token contains properties and claims that can be inspected by your application.
+顧客がアプリケーションにサインインすると、顧客のテナントによってアプリケーションが承認されていることを検証する必要があります。サインイン応答にはトークンが含まれています。トークンにはアプリケーションで検査できるプロパティとクレームが含まれています。
 
-To perform this validation, you must get the TenantID from the Issuer property in the token and ensure that it exists in the customer/TenantId "data store". In the sample application, this validation is achieved by creating a custom token handler class that extends Windows Identity Foundation's *Saml2SecurityTokenHandler*. The custom token handler verifies the incoming security token and makes its claims and properties available to the application so that the TenantID can be validated. The code snippet for this class is shown below.
+この検証を実行するには、トークン内の Issuer プロパティから TenantID を取得し、その ID が customer/TenantId データ ストアに存在することを確認する必要があります。サンプル アプリケーションでは、この検証を行うために、Windows Identity Foundation の *Saml2SecurityTokenHandler* を継承するカスタム トークン ハンドラー クラスを作成しています。カスタム トークン ハンドラーは、受信セキュリティ トークンを確認し、そのクレームとプロパティをアプリケーションから使用できるようにすることで、TenantID を検証できるようにしています。このクラスのコードの抜粋を次に示します。
 
-In the sample application, the original code can be found under the *Microsoft.IdentityModel.WAAD.Preview.WebSSO* namespace. The token handler also uses the Contains method of the *Microsoft.IdentityModel.WAAD.Preview.WebSSO.TrustedIssuers* class, which verifies that the TenantID is persisted in the customer/TenantId "data store."
+サンプル アプリケーションでは、元のコードは *Microsoft.IdentityModel.WAAD.Preview.WebSSO* 名前空間にあります。トークン ハンドラーは、*Microsoft.IdentityModel.WAAD.Preview.WebSSO.TrustedIssuers* クラスの Contains メソッドも使用します。このメソッドは、TenantID が customer/TenantId データ ストアに保存されていることを確認します。
 
 	/// <summary>
     /// Extends the out of the box SAML2 token handler by ensuring
@@ -219,28 +219,28 @@ In the sample application, the original code can be found under the *Microsoft.I
         }
     }
 
-Once the token is validated, the user is signed in to the application. Run the application and try signing in using an Azure AD account in the consented tenant that you created earlier.
+トークンが検証されたら、ユーザーはアプリケーションにサインインされています。アプリケーションを実行し、以前に作成した同意済みのテナントで Azure AD アカウントを使用してサインインを試します。
 
-<h2><a name="accessgraph"></a>Part 4: Access Azure AD Graph</h2>
+<h2><a name="accessgraph"></a>パート 4: Azure AD Graph にアクセスする</h2>
 
-This section describes how to obtain an access token and call the Azure AD Graph API to access a tenant's directory data. For example, while the token obtained during sign in contains user information such as a name and email address, your application may need information such as group memberships or the name of the user's manager. This information can be obtained from the tenant's directory by using the Graph API. For more information about the Graph API, see [this topic][].
+このセクションでは、アクセス トークンを取得し、Azure AD Graph API を呼び出してテナントのディレクトリ データにアクセスする方法について説明します。たとえば、サインイン中に取得されたトークンには、名前や電子メール アドレスなどのユーザー情報が含まれていますが、アプリケーションでは、グループ メンバーシップやユーザーのマネージャーの名前などの情報が必要な場合があります。このような情報は、Graph API を使用してテナントのディレクトリから取得できます。Graph API の詳細については、 [こちらのトピック][]を参照してください。
 
-Before your application can call the Azure AD Graph, it must authenticate itself and obtain an access token. Access tokens are obtained by authenticating your application with its Client ID and Client Secret. The following steps will show you how to:
+アプリケーションから Azure AD Graph を呼び出すには、その前にアプリケーションを認証し、アクセス トークンを取得する必要があります。アクセス トークンは、そのクライアント ID とクライアント シークレットを使用してアプリケーションを認証することで取得します。ここでの手順では、次の操作を実行する方法を示します。
 
-1.	Use a generated proxy class to call the Azure AD Graph
-2.	Acquire an access token using Azure Authentication Library (AAL) 
-3.	Call the Azure AD Graph to get a list of tenant users
+1.	生成されたプロキシ クラスを使用して Azure AD Graph を呼び出す
+2.	Azure Authentication Library (AAL) を使用してアクセス トークンを取得する
+3.	Azure AD Graph を呼び出してテナント ユーザーのリストを取得する
 
-<div class="dev-callout"><strong>Note</strong><p>The sample application helper library Microsoft.IdentityModel.WAAD.Preview already contains an auto-generated proxy class (created by adding a Service Reference to https://graph.windows.net/your-domain-name called GraphService). The application will use this proxy class to call into the Azure AD Graph service.</p></div>
+<div class="dev-callout"><strong>注</strong><p>サンプル アプリケーションのヘルパー ライブラリである Microsoft.IdentityModel.WAAD.Preview には、自動生成されたプロキシ クラス ([サービス参照の追加] によって https://graph.windows.net/your-domain-name に作成された GraphService というクラス) が既に含まれています)。アプリケーションはこのプロキシ クラスを使用して Azure AD Graph サービスを呼び出します。</p></div>
 
-<h3>Step 1: Use the Proxy Class to Call the Azure AD Graph</h3>
-In this step, we are going to use the sample application to show you how to:
+<h3>手順 1. プロキシ クラスを使用して Azure AD Graph を呼び出す</h3>
+この手順では、サンプル アプリケーションを使用して、次の操作を実行する方法を示します。
 
-1.	Create an tenant-specific Azure AD Graph endpoint
-2.	Use the endpoint to instantiate the proxy to call the Graph
-3.	Add the authorization header to the request and acquire the token.  
+1.	テナント固有の Azure AD Graph エンドポイントを作成する
+2.	エンドポイントを使用し、プロキシをインスタンス化して、Graph を呼び出す
+3.	Authorization ヘッダーを要求に追加し、トークンを取得する
 
-In the sample application, these calls to the API are handled by the GraphInterface method in the *Microsoft.IdentityModel.WAAD.Preview.Graph.GraphInterface* class, as shown in the following code.
+サンプル アプリケーションでは、API へのこれらの呼び出しは *Microsoft.IdentityModel.WAAD.Preview.Graph.GraphInterface* クラスの GraphInterface メソッドによって処理されます。次のコードのようになっています。
 
 	public GraphInterface()
     {
@@ -265,10 +265,10 @@ In the sample application, these calls to the API are handled by the GraphInterf
         AddHeaders(GetAuthorizationHeader());
     }
 
-<h3>Step 2: Acquire an Access Token Using Azure Authentication Library</h3>
-The sample application uses the Azure Authentication Library (AAL) to acquire tokens for accessing the Graph API.  The token acquisition process is managed by the *GetAuthorizationHeader* method in the *Microsoft.IdentityModel.WAAD.Preview.Graph.GraphInterface* class, and is shown below.  
+<h3>手順 2. Azure Authentication Library を使用してアクセス トークンを取得する</h3>
+サンプル アプリケーションでは、Azure Authentication Library (AAL) を使用して、Graph API へのアクセス用のトークンを取得しています。トークンの取得プロセスは、*Microsoft.IdentityModel.WAAD.Preview.Graph.GraphInterface* クラスの *GetAuthorizationHeader* メソッドによって管理され、次のようになっています。
 
-<div class="dev-callout"><strong>Note</strong><p>AAL is available as a NuGet package and can be installed within Visual Studio.</p></div>
+<div class="dev-callout"><strong>注意</strong><p>AAL は NuGet パッケージとして入手可能で、Visual Studio にインストールできます。</p></div>
 
 	/// <summary>
     /// Method to get the Oauth2 Authorization header from ACS
@@ -300,14 +300,14 @@ The sample application uses the Azure Authentication Library (AAL) to acquire to
         return authzHeader;
     }
 
-The following information is used to acquire the access token, as demonstrated in the code above:
+次の情報を使用してアクセス トークンを取得しています。前のコードで示しているようになっています。
 
-1.	The application's information (ClientID, ServicePrincipalKey and AppHostname)
-2.	The target information, which is the Graph and referred to as ServiceRealm above
-3.	The TenantDomainName that you acquired earlier
+1.	アプリケーションの情報 (ClientID、ServicePrincipalKey、AppHostname)
+2.	ターゲットの情報 (Graph。前のコードでは ServiceRealm として参照)
+3.	前に取得した TenantDomainName
 
-<h3>Step 3: Call the Azure AD Graph to Get a List of Users</h3>
-The following method in the *Microsoft.IdentityModel.WAAD.Preview.Graph.GraphInterface* class gets a list of all users for your tenant, using the *DataService* proxy generated earlier.
+<h3>手順 3. Azure AD Graph を呼び出してユーザーのリストを取得する</h3>
+*Microsoft.IdentityModel.WAAD.Preview.Graph.GraphInterface* クラスの次のメソッドは、前に生成された *DataService* プロキシを使用して、テナントのすべてのユーザーのリストを取得します。
 
 	public List<User> GetUsers()
     {
@@ -321,29 +321,29 @@ The following method in the *Microsoft.IdentityModel.WAAD.Preview.Graph.GraphInt
         return userQuery.ToList();
     }
 
-This method is called from the **HomeController.cs** file to show the user list on the Users tab in the web application.
+このメソッドは、**HomeController.cs** ファイルから呼び出して、Web アプリケーションの [Users] タブでユーザー リストを表示するために使用します。
 
-<h2><a name="publish"></a>Part 5: Publish Your Application</h2>
+<h2><a name="publish"></a>パート 5: アプリケーションを発行する</h2>
 
-Once you have thoroughly tested your application, you can create an application listing and publish your application listing on the Azure Marketplace. These steps are performed on the Microsoft Seller Dashboard.  
+アプリケーションを徹底的にテストしたら、アプリケーションの内容を作成して Azure Marketplace に発行できます。これらの手順は Microsoft 販売者ダッシュボードで実行します。
 
-<div class="dev-callout"><strong>Note</strong><p>Your app is responsible for managing any billing relationship with your customers. The Azure Marketplace only provides links to your application's web site and information about it.</p></div>
+<div class="dev-callout"><strong>注</strong><p>アプリケーションで、顧客に発生する課金を管理する必要があります。Azure Marketplace では、アプリケーションの Web サイトとその関連情報へのリンクのみが提供されます。</p></div>
 
-<h3>Step 1: Creating an Application Manifest and App Listing</h3>
+<h3>手順 1. アプリケーション マニフェストとアプリケーションの内容を作成する</h3>
 
-Before creating an app listing, you must generate a new Client ID and Client Secret for the production version of your application. In Part 1 of this walkthrough, you generated a Client ID and Client Secret intended for a test version of your application. Repeat those steps and configure your application to use the new values, ensuring that you set a production App Domain and App Redirect URL.
+アプリケーションの内容を作成する前に、アプリケーションの製品版の新しいクライアント ID とクライアント シークレットを生成する必要があります。このチュートリアルのパート 1 では、アプリケーションのテスト版のクライアント ID とクライアント シークレットを生成しました。それらの手順を繰り返し、新しい値でアプリケーションを構成して、運用環境のアプリケーション ドメインとアプリケーション リダイレクト URL を設定します。
 
-Next, you must create an application manifest that lists the permissions your application will request for customer consent. This manifest is written in an XML format governed by an XSD file.  The manifest must be uploaded as part of the application listing you are creating. 
+次に、アプリケーション マニフェストを作成して、顧客の同意を求めるためにアプリケーションに必要になるアクセス許可をマニフェストで示す必要があります。このマニフェストは、XSD ファイルによって制御される XML 形式で記述されます。マニフェストは、作成するアプリケーションの内容の一部としてアップロードする必要があります。
 
-There are three different permission levels, as described in Part 1 of the walkthrough:
+チュートリアルのパート 1 で説明しているように、次の 3 つ異なるアクセス許可レベルがあります。
 
-**DirectoryReader**: Grants permission to read directory data, such as user accounts, groups, and information about your organization. Enables SSO.
+**DirectoryReader**: ユーザー アカウント、グループ、組織の情報などのディレクトリ データを読み取るためのアクセス許可を与えます。SSO を有効にします。
 
-**UserAccountAdministrator**: Grants permission to read and write data, such as users, groups and information about your organization. Enables SSO.
+**UserAccountAdministrator**: ユーザー、グループ、組織の情報などのデータを読み書きするためのアクセス許可を与えます。SSO を有効にします。
 
-**None**: Enables single sign-on but disables access to directory data.
+**None**: シングル サインオンを有効にしますが、ディレクトリ データへのアクセスは無効にします。
 
-Two application manifest examples are included below. The first demonstrates permissions for a SSO-only application, and the second demonstrates permissions for a read-only application:
+アプリケーション マニフェストの 2 つの例を次に示します。1 つ目は、SSO 専用のアプリケーションに対するアクセス許可を、2 つ目は、読み取り専用のアプリケーションに対するアクセス許可を示しています。
 
 	<?xml version="1.0" encoding="utf-16"?>
 	<AppRequiredPermissions>
@@ -362,48 +362,49 @@ Two application manifest examples are included below. The first demonstrates per
       </AppPermissionRequests>
     </AppRequiredPermissions>
 
-The *Policy* attribute in the examples above describes the type of application permission being requested. Currently, only the "AppOnly" permission attribute is supported. This permission type indicates that the application only accesses the Directory as itself. 
+前に示している例の *Policy* 属性では、要求されているアプリケーション アクセス許可の種類を記述しています。現在、アクセス許可属性としては "AppOnly" のみがサポートされています。このアクセス許可の種類は、そのアプリケーションのみがディレクトリにアクセスすることを示しています。
 
-The optional *Reason* element allows you to specify (in multiple cultures) your justification for the required permission level. This text is displayed on the consent page to aid the customer when they are approving or rejecting your application.
+場合によっては *Reason* 要素を使用して、必要なアクセス許可レベルについて理由を (複数のカルチャで) 指定することもできます。このテキストは同意ページに表示されて、顧客がアプリケーションを承認または却下するときに役立ちます。
 
-Using your new Client ID and your application manifest, you can create an application listing by following the instructions in [Add Apps in the Microsoft Seller Dashboard][]. When creating an application listing, make sure to select the Azure AD application type. Once you have finished creating your application listing, click "submit" to publish your application to the Azure Marketplace. You'll need to wait until your application is approved before publication completes.
+新しいクライアント ID とアプリケーション マニフェストを使用し、[Microsoft 販売者ダッシュボードの [アプリケーションの追加][] での指示に従って、アプリケーションの内容を作成できます。アプリケーションの内容を作成するときは、種類として Azure AD アプリケーションを選択してください。アプリケーションの内容の作成が完了したら、[送信] をクリックしてアプリケーションを Azure Marketplace に発行します。アプリケーションの承認と発行が完了するまで待つ必要があります。
 
-<div class="dev-callout"><strong>Note</strong><p>If you are prompted to "add tax and payout information", you can skip this step because you are selling your application directly to customer and not through Microsoft.</p></div>
+<div class="dev-callout"><strong>注</strong><p>"税金と支払いの情報を追加" するように求められた場合、この手順はスキップできます。Microsoft を通じてではなく顧客に直接アプリケーションを販売するためです。</p></div>
 
-<h3>Step 2: Finalize Testing and Make Your Application Public</h3>
-Once your application listing is approved, you should test your application again end-to-end. For example, make sure that your application has been updated with the production ClientID and Client Secret.  Run through the testing checklist a final time, ensuring that the consent page now shows the information you included in your application listing.
+<h3>手順 2. テストを完了してアプリケーションを発行する</h3>
+アプリケーションの内容が承認されると、エンド ツー エンドでもう一度アプリケーションをテストする必要があります。たとえば、アプリケーションが運用環境の ClientID とクライアント シークレットで更新されていることを確認してください。最終的にテストのチェック リストを通しで実行して、アプリケーションの内容に含まれる情報が同意ページに表示されることを確認します。
 
-<h2><a name="summary"></a>Summary</h2>
-In this walkthrough, you have learned how to integrate your multi-tenant application with Azure AD. The process included three steps:
+<h2><a name="summary"></a>まとめ</h2>
+このチュートリアルでは、マルチテナント アプリケーションを Azure AD と統合する方法について説明しました。このプロセスは次の 3 つの手順で構成されました。
 
-* Enable customers to sign up for your application using Azure AD
-* Enable single sign-on (SSO) with Azure AD
-* Query a customer's directory data using the Azure AD Graph API
+* Azure AD を使用して顧客によるアプリケーションへのサインアップを有効にする
+* Azure AD を使用してシングル サインオン (SSO) を有効にする
+* Azure AD Graph API を使用して顧客のディレクトリ データを照会する
 
-Integrating with Azure AD allows your customers to sign up and sign in to your application using an identity management system that they already maintain, which reduces or eliminates the need to do separate identity management tasks with your application. This functionality gives your customers a more seamless experience when using your application, and it frees up the time spent doing management tasks.
+アプリケーションを Azure AD と統合することで、顧客は保守済みの ID 管理システムを使用して、そのアプリケーションにサインアップしてサインインできるようになります。その結果、アプリケーションで個別の ID 管理タスクを実行する必要がなくなります。この機能により、アプリケーション使用時のよりシームレスなエクスペリエンスを顧客に与えるだけでなく、管理タスクの実行にかかっていた時間を解放することもできます。
 
 
-[Introduction]: #introduction
-[Part 1: Get a Client ID for Accessing Azure AD]: #getclientid
-[Part 2: Enable Customers to Sign-Up Using Azure AD]: #enablesignup
-[Part 3: Enable Single Sign-On]: #enablesso
-[Part 4: Access Azure AD Graph]: #accessgraph
-[Part 5: Publish Your Application]: #publish
-[Summary]: #summary
+[はじめに]: #introduction
+[パート 1: Azure AD へのアクセス用のクライアント ID を取得する]: #getclientid
+[パート 2: Azure AD を使用して顧客によるサインアップを有効にする]: #enablesignup
+[パート 3: シングル サインオンを有効にする]: #enablesso
+[パート 4: Azure AD Graph にアクセスする]: #accessgraph
+[パート 5: アプリケーションを発行する]: #publish
+[まとめ]: #summary
 [Visual Studio 2012]: http://www.microsoft.com/visualstudio/eng/downloads
-[AAL x86 NuGet  Package]: http://g.microsoftonline.com/1AX00en/124
-[AAL x64 NuGet Package]: http://g.microsoftonline.com/1AX00en/125
-[Visual Studio Identity & Access Tool]: http://g.microsoftonline.com/1AX00en/126
+[AAL x86 NuGet パッケージ]: http://g.microsoftonline.com/1AX00en/124
+[AAL x64 NuGet パッケージ]: http://g.microsoftonline.com/1AX00en/125
+[Visual Studio 向け Identity & Access ツール]: http://g.microsoftonline.com/1AX00en/126
 [Windows Identity Foundation 3.5]: http://g.microsoftonline.com/1AX00en/127
 [WCF Data Services for OData]: http://www.microsoft.com/download/en/details.aspx?id=29306
-[Identity page]: http://www.windowsazure.com/en-us/home/features/identity/
+[ID ページ]: http://www.windowsazure.com/ja-jp/home/features/identity/
 
-[downloaded here]: http://go.microsoft.com/fwlink/?LinkId=271213
-[port assignment in Visual Studio]: http://msdn.microsoft.com/en-us/library/ms178109(v=vs.100).aspx
-[Microsoft Seller Dashboard]: https://sellerdashboard.microsoft.com/
-[create an account profile]: http://msdn.microsoft.com/en-us/library/jj552460.aspx
-[Create Client IDs and Secrets in the Microsoft Seller Dashboard]: http://msdn.microsoft.com/en-us/library/jj552461.aspx
-[Get an Azure AD tenant]: http://g.microsoftonline.com/0AX00en/5
-[this topic]: http://msdn.microsoft.com/en-us/library/windowsazure/hh974476.aspx
-[Add Apps in the Microsoft Seller Dashboard]: http://msdn.microsoft.com/en-us/library/jj552465.aspx
+[こちらからダウンロード]: http://go.microsoft.com/fwlink/?LinkId=271213
+[Visual Studio でのポート割り当て]: http://msdn.microsoft.com/ja-jp/library/ms178109(v=vs.100).aspx
+[Microsoft 販売者ダッシュボード]: https://sellerdashboard.microsoft.com/
+[アカウントのプロファイルを作成する]: http://msdn.microsoft.com/ja-jp/library/jj552460.aspx
+[Microsoft 販売者ダッシュボードでのクライアント ID とシークレットの作成]: http://msdn.microsoft.com/ja-jp/library/jj552461.aspx
+[Azure AD テナントを取得]: http://g.microsoftonline.com/0AX00en/5
+[こちらのトピック]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh974476.aspx
+[Microsoft 販売者ダッシュボードの [アプリケーションの追加]: http://msdn.microsoft.com/ja-jp/library/jj552465.aspx
 [login]: ./media/active-directory-dotnet-integrate-multitent-cloud-applications/login.png
+
