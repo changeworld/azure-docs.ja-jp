@@ -1,66 +1,67 @@
-<properties title="How to customize monitoring" pageTitle="How to customize monitoring" description="Learn how to customize monitoring charts in Azure." authors="stepsic"  />
+<properties title="監視をカスタマイズする方法" pageTitle="監視をカスタマイズする方法" description="Azure でグラフの監視をカスタマイズする方法について説明します。" authors="stepsic"  />
 
-# Customizing monitoring
+# 監視のカスタマイズ
 
-In the Azure Portal Preview, you can now view your monitoring data in more ways than you could before, including customizing the time range and choosing more metrics.
+Azure プレビュー ポータルで、以前より多くの方法で監視データを表示できるようになりました。その中には、期間のカスタマイズや、より多くのメトリックを選択することが含まれます。
 
-1. In the [Azure Portal Preview](https://portal.azure.com/), click **Browse**, then **Web Sites**, and then click the name of a Web Site to open the blade.
+1. [Azure プレビュー ポータル](https://portal.azure.com/)で、**[参照]**、**[Web サイト]** の順にクリックしてから、Web サイトの名前をクリックしてブレードを開きます。
 
-2. On then **Monitoring** lens you can Requests, Errors, [Web tests](http://go.microsoft.com/fwlink/?LinkID=394528&clcid=0x409), and [Analytics](http://go.microsoft.com/fwlink/?LinkID=394529&clcid=0x409). Clicking on the **Requests and errors today** part will show you the **Metric** blade.
+2. その後、**[監視]** レンズを使用して、要求、エラー、[Web テスト](http://go.microsoft.com/fwlink/?LinkID=394528&clcid=0x409)、および [分析](http://go.microsoft.com/fwlink/?LinkID=394529&clcid=0x409) に関連する操作を実行できます。**[今日の要求とエラー]** パーツをクリックすると、**[メトリック]** ブレードが表示されます。
 
-   ![Monitoring lens](./media/insights-how-to-customize-monitoring/Insights_MonitoringChart.png)
+   ![監視レンズ](./media/insights-how-to-customize-monitoring/Insights_MonitoringChart.png)
 
-3. The **Metric** blade shows you details about metrics that you select. At the top of the blade is a graph, below that a table that shows you aggregation of those metrics, such as average, minimum and maximum. Below that is a list of the alerts you’ve defined, filtered to the metrics that appear on the blade. This way, if you have a lot of alerts, you’ll only see the relevant ones here. You can still see all of the alerts for your web site by clicking on the **Alert rules** part on the **Web site** blade.
+3. **[メトリック]** ブレードでは、選択したメトリックに関する詳細が表示されます。ブレードの上部にはグラフがあり、下部にある表では、平均、最小値、最大値など、これらのメトリックに関する集約が表示されます。その下には、既に定義したアラートの一覧があり、ブレード上に表示されているメトリックに関連するものだけが表示されるようにフィルターが適用されています。多数のアラートが発生した場合でも、この方法により、この状況に関連するアラートのみが表示されます。**[Web サイト]** ブレードの **[アラート ルール]** パーツをクリックする方法で、Web サイトに対応するすべてのアラートを表示することもできます。
 
-   ![Metric blade](./media/insights-how-to-customize-monitoring/Insights_MetricBlade.png)
+   ![[メトリック] ブレード](./media/insights-how-to-customize-monitoring/Insights_MetricBlade.png)
 
-4. To customize the metrics that appear, right click on the chart and select **Edit Query**: 
+4. 表示されるメトリックをカスタマイズするには、グラフを右クリックし、**[クエリの編集]** をクリックします。
 
-   ![Edit Query](./media/insights-how-to-customize-monitoring/Insights_MetricMenu.png)
+   ![クエリの編集](./media/insights-how-to-customize-monitoring/Insights_MetricMenu.png)
 
-5. On the Edit Query blade you can do two things: change the time range and chose different metics.
+5. [クエリの編集] ブレードで、期間の変更、および他のメトリックの選択という 2 つの操作を実行できます。
 
-   ![Edit Query](./media/insights-how-to-customize-monitoring/Insights_EditQuery.png)
+   ![クエリの編集](./media/insights-how-to-customize-monitoring/Insights_EditQuery.png)
 
-6. Changing the time range is as easy as selecting a different range (such as **Past Hour**) and clicking **Save** at the bottom of the blade. New in the Portal Preview, you can choose **Custom**:
+6. 期間の変更は簡単であり、別の範囲 (**[過去 1 時間]** など) を選択して、ブレードの下部にある **[保存]** をクリックするだけです。ポータルのプレビューの新機能である **[カスタム]** を選択することができます。
 
-  ![Custom time range](./media/insights-how-to-customize-monitoring/Insights_CustomTime.png)
+  ![カスタム期間](./media/insights-how-to-customize-monitoring/Insights_CustomTime.png)
    
-7. Custom allows you to choose any period of time over the past 2 weeks, for example, you can see the whole two weeks, or, just 1 hour from yesterday. Type in the text box to enter a different hour.
+7. カスタムを使用すると、過去 2 週間のうち任意の期間を選択できます。たとえば、2 週間全体、または昨日のうち特定の 1 時間のみを表示することができます。別の期間を指定するには、テキスト ボックスに入力します。
 
-8. Below the time range, you chan choose any number of metrics to show on the chart. You can see some new Metrics: **Memory working set** and **Average memory working set**.
+8. 期間の下で、グラフに表示するメトリックの数として、任意の数値を選択することができます。**[Memory working set]** および **[Average memory working set]** という、いくつかの新しいメトリックを表示することもできます。
 
-9. When you click Save your changes will persist until you leave the Web site blade. When you come back later, you'll see the original metric and time range again.
+9. [保存] をクリックすると、[Web サイト] ブレードを閉じるまでは変更内容が維持されます。後でもう一度このブレードを表示するときは、初期のメトリックと期間が表示されます。
 
-## Web hosting plan monitoring
+## Web ホスティング プランの監視
 
-Also new in the Azure Portal Preview is the ability to monitor performance metrics about the instances that your web sites run on. To access these metrics, click on the Web Hosting Plan icon in the Summary lens.
+また Azure プレビュー ポータルの新機能として、Web サイトを実行しているインスタンスに関するパフォーマンス メトリックを監視する機能もあります。これらのメトリックにアクセスするには、[監視] レンズ内にある Web ホスティング プランのアイコンをクリックします。
 
-   ![Web hosting plan](./media/insights-how-to-customize-monitoring/Insights_WHPSelect.png)
+   ![Web ホスティング プラン](./media/insights-how-to-customize-monitoring/Insights_WHPSelect.png)
    
-There you can see a chart in the **Monitoring** lens that behaves just like the chart in the Web site blade, except you can see the new metrics:
+**[監視]** レンズ内でグラフを表示できます。次の新しいメトリックを表示できる点を除き、[Web サイト] ブレード内のグラフと同じように動作します。
 - CPU Percentage
 - Memory Percentage
 - HTTP Queue Depth
 - Disk Queue Depth
 
-## Creating side-by-side charts
+## サイド バイ サイドのグラフの作成
 
-With the powerful user customization in the Azure Portal Preview you can create side-by-side charts for customization.
+Azure プレビュー ポータルの強力なユーザー カスタマイズ機能を使用して、サイド バイ サイドのグラフを作成し、カスタマイズすることができます。
 
-1. First, right click on the chart you want to start from and select **Customize**
+1. 最初に、出発点として使用するグラフを右クリックし、**[カスタマイズ]** をクリックします。
 
-   ![Customize chart](./media/insights-how-to-customize-monitoring/Insights_Customize.png)
+   ![グラフのカスタマイズ](./media/insights-how-to-customize-monitoring/Insights_Customize.png)
 
-2. Then click **Clone** on the **...** menu to copy the part
+2. 次に、**[...]** メニューの **[複製]** をクリックし、このパーツ、つまりグラフをクリップボードにコピーします。
 
-   ![Clone part](./media/insights-how-to-customize-monitoring/Insights_ClonePart.png)
+   ![パーツの複製](./media/insights-how-to-customize-monitoring/Insights_ClonePart.png)
 
-3. Finally, click **Done** on the toolbar at the top of the screen. You can now treat this part like a normal metric part. If you right click and change the metric that is displayed, you can see two different metrics side-by-side at the same time:
+3. 最後に、画面の上部にあるツール バーで **[完了]** をクリックします。これで、通常のメトリック パーツと同様に、このパーツを扱うことができます。表示されたメトリックを右クリックして変更を加えると、2 つの異なるメトリックをサイド バイ サイドで同時に表示することができます。
 
-   ![Two metrics Side by Side](./media/insights-how-to-customize-monitoring/Insights_SideBySide.png)
+   ![2 つのメトリックをサイド バイ サイドで表示](./media/insights-how-to-customize-monitoring/Insights_SideBySide.png)
    
-Note, that the chart time range and chosen metrics will reset when you leave the portal.
+ポータルを閉じると、グラフの期間と選択したメトリックはリセットされることに注意してください。
+
 
 
 

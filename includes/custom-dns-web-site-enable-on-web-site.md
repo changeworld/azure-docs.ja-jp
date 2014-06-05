@@ -1,21 +1,22 @@
-After the records for your domain name have propagated, you must associate them with your web site. Use the following steps to enable the domain names using your web browser.
+ドメイン名のレコードが反映されたら、それを Web サイトに関連付ける必要があります。Web ブラウザーを使用してドメイン名を有効にするには、次の手順を使用します。
 
-> [WACOM.NOTE] It can take some time for CNAME records created in the previous steps to propagate through the DNS system. You cannot add the domain name of to your Azure Web Site until the CNAME has propagated. If you are using an A record, you cannot add the A record domain name to the your Azure Web Site until the **awverify.www** or **www** CNAME records created in the previous step have propagated.
+> [WACOM.NOTE]前の手順で作成された CNAME レコードが DNS に反映されるまで多少の時間がかかります。CNAME が反映されるまで、Azure Web サイトに対してドメイン名を追加することはできません。A レコードを使用している場合、前の手順で作成された **awverify.www** レコードまたは **www** CNAME レコードが反映されるまで、Azure Web サイトに A レコードのドメイン名を追加することはできません。
 > 
-> You can use a service such as <a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> to verify that the CNAME is available.
+> <a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> などのサービスを使用すると、CNAME を利用できるかどうかを確認できます。
 
-1. In your browser, open the [Azure Management Portal](https://manage.windowsazure.com).
+1. ブラウザーで、[Azure 管理ポータル](https://manage.windowsazure.com)を開きます。
 
-2. In the **Web Sites** tab, click the name of your site, select **Dashboard**, and then select **Manage Domains** from the bottom of the page.
+2. **[Web サイト]** タブで、サイト名をクリックし、**[ダッシュボード]** を選択して、ページの下部にある **[ドメインの管理]** を選択します。
 
 	![](./media/custom-dns-web-site/dncmntask-cname-6.png)
 
-6. Use the **DOMAIN NAMES** text boxes to enter the domain names to associate with this web site. 
+6. **[ドメイン名]** ボックスに、この Web サイトに関連付けるドメイン名を入力します。
 
 	![](./media/custom-dns-web-site/dncmntask-cname-7.png)
 
-6. Click the check mark in the lower right corner to save the domain name configuration.
+6. 右下にあるチェック マークをクリックして、ドメイン名の構成を保存します。
 
-	Once configuration has completed, the custom domain name will be listed in the **domain names** section of the **Configure** page of your web site.
+	構成が完了したら、カスタム ドメイン名は Web サイトの **[構成]** ページの **[ドメイン名]** セクションに表示されます。
 
-At this point, you should be able to enter the custom domain name in your browser and see that it successfully takes you to your Azure Web Site. 
+この時点でブラウザーにカスタム ドメイン名を入力して、対象の Azure Web サイトに正常にアクセスできることを確認できます。
+

@@ -1,7 +1,7 @@
 
-##<a name="update-app"></a>Update the app to call the custom API
+##<a name="update-app"></a>カスタム API を呼び出すようにアプリケーションを更新する
 
-1. In Visual Studio, open the MainPage.xaml file in your quickstart project, locate the **Button** element named `ButtonRefresh`, and replace it with the following XAML code: 
+1. Visual Studio でクイック スタート プロジェクトの MainPage.xaml ファイルを開き、`ButtonRefresh` という **Button** 要素を探して、次の XAML コードに置き換えます。
 
 		<StackPanel Orientation="Horizontal">
 	        <Button Margin="72,0,0,0" Name="ButtonRefresh" 
@@ -10,24 +10,24 @@
 	                Click="ButtonCompleteAll_Click">Complete All</Button>
 	    </StackPanel>
 
-	This adds a new button to the page. 
+	新しいボタンがページに追加されます。
 
-2. Open the MainPage.xaml.cs code file, and add the following class definition code:
+2. MainPage.xaml.cs コード ファイルを開き、次のクラス定義コードを追加します。
 
 	    public class MarkAllResult
 	    {
 	        public int Count { get; set; }
 	    }
 
-	This class is used to hold the row count value returned by the custom API. 
+	このクラスは、カスタム API から返される行数の値を保持する目的で使用します。
 
-3. Locate the **RefreshTodoItems** method in the **MainPage** class, and make sure that the `query` is defined by using the following **Where** method:
+3. **MainPage** クラスの **RefreshTodoItems** メソッドを探し、`query` が、次の **Where** メソッドを使用して定義されていることを確認します。
 
         .Where(todoItem => todoItem.Complete == false)
 
-	This filters the items so that completed items are not returned by the query.
+	ここでは、完了済みの項目が返されないように、項目をフィルターで処理しています。
 
-3. In the **MainPage** class, add the following method:
+3. **MainPage** クラス内で、次のメソッドを追加します。
 
 		private async void ButtonCompleteAll_Click(object sender, RoutedEventArgs e)
 		{
@@ -51,18 +51,19 @@
 		    await dialog.ShowAsync();
 		}
 
-	This method handles the **Click** event for the new button. The [InvokeApiAsync](http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx) method is called on the client, which sends a POST request to the new custom API. The result returned by the custom API is displayed in a message dialog, as are any errors.
+	これは、新しいボタンの **Click** イベントを処理するメソッドです。POST 要求を新しいカスタム API に送信する [InvokeApiAsync](http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx) メソッドがクライアントで呼び出されます。カスタム API から返された結果は、メッセージ ダイアログに表示されます。エラーが発生した場合はそれらも表示されます。
 
-## <a name="test-app"></a>Test the app
+## <a name="test-app"></a>アプリケーションをテストする
 
-1. In Visual Studio, press the **F5** key to rebuild the project and start the app.
+1. Visual Studio で **F5** キーを押してプロジェクトをリビルドし、アプリケーションを開始します。
 
-2. In the app, type some text in **Insert a TodoItem**, then click **Save**.
+2. アプリケーションで、**[Insert a TodoItem]** に任意のテキストを入力し、**[Save]** をクリックします。
 
-3. Repeat the previous step until you have added several todo items to the list.
+3.  前の手順を繰り返して、複数の Todo 項目をリストに追加します。
 
-4. Click the **Complete All** button.
+4. **[Complete All]** ボタンをクリックします。
 
   	![](./media/mobile-services-windows-store-dotnet-call-custom-api/mobile-custom-api-windows-store-completed.png)
 
-	A message dialog is displayed that indicates the number of items marked complete and the filtered query is executed again, which clears all items from the list.
+	完了としてマークされた項目の数を示すメッセージ ダイアログが表示され、フィルター処理済みのクエリが再度実行されて、すべての項目がリストから消去されます。
+

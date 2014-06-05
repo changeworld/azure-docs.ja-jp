@@ -1,105 +1,106 @@
-<properties linkid="automation-create-runbook-from-samples" urlDisplayName="Get Started with Azure Automation" pageTitle="Get Started with Azure Automation" metaKeywords="" description="Learn how to import and run an automation job in Azure." metaCanonical="" services="automation" documentationCenter="" title="Get Started with Azure Automation" authors="" solutions="" manager="" editor="" />
+<properties linkid="automation-create-runbook-from-samples" urlDisplayName="Azure オートメーションの使用" pageTitle="Azure オートメーションの使用" metaKeywords="" description="Azure でオートメーション ジョブをインポートして実行する方法について説明します。" metaCanonical="" services="automation" documentationCenter="" title="Azure オートメーションの使用" authors="" solutions="" manager="" editor="" />
 
 
-# Get started with Azure Automation
+# Azure オートメーションの使用
 
-This tutorial walks you through the steps to import and execute an Automation runbook in Microsoft Azure. 
+このチュートリアルでは、Microsoft Azure にオートメーション Runbook をインポートして実行する手順について説明します。
 
-Microsoft Azure Automation provides a way for developers to automate the manual, long-running, error-prone, and frequently repeated tasks that are commonly performed in a cloud environment. You can create, monitor, manage, and deploy resources in your Azure environment using runbooks, which under the hood are Windows PowerShell Workflows. To learn more about Automation, see the [Automation Overview Guide](http://go.microsoft.com/fwlink/p/?LinkId=392861). 
+開発者は Microsoft Azure オートメーションを使用すると、クラウド環境で一般的に実行される、手動で実行時間が長く、エラーが起こりやすく、頻繁に繰り返されるタスクを自動化する手段を入手できます。Runbook を使用して、Azure 環境内でリソースを作成、監視、管理、およびデプロイすることができます。Runbook は、内部で Windows PowerShell のワークフローを使用しています。オートメーションの詳細については、[オートメーション概要ガイドに関するページ](http://go.microsoft.com/fwlink/p/?LinkId=392861)を参照してください。
 
-This tutorial walks you through the steps to import a sample runbook into Azure Automation, execute the runbook, and then view its output.
+このチュートリアルでは、Azure オートメーションにサンプルの Runbook をインポートし、その Runbook を実行して、出力を表示する手順について説明します。
 
-## Samples and utility runbooks
+## サンプル Runbook とユーティリティ Runbook
 
-The Azure Automation team has created a number of runbook samples to help you get started with Automation.  These samples cover basic Automation concepts and are intended to help you learn how to write your own runbooks.  
+Azure オートメーション チームはさまざまな Runbook サンプルを作成し、オートメーションに関連する作業を開始できるようにしました。これらのサンプルはオートメーションの基本的な概念を取り扱っており、独自の Runbook を作成する方法を学習するのに役立ちます。
 
-The Automation team has also created utility runbooks that you can use as building blocks for larger Automation tasks.  
+また、オートメーション チームは、より大きいオートメーション タスクの構成要素として使用できるユーティリティ Runbook も作成しました。
 
->[WACOM.NOTE] It's a best practice to write small, modular, reusable runbooks. We also strongly recommend that you create your own utility runbooks for commonly used scenarios after you’re familiar with Automation.  
+>[WACOM.NOTE] 小規模で、モジュール構造を採用した、再利用可能な Runbook を作成することをお勧めします。また、オートメーションに慣れた後は、一般的に使用されるシナリオで役立つ独自のユーティリティ Runbook を作成することも強くお勧めします。
 
-You can view and download the Automation team’s sample and utility runbooks on [Script Center](http://go.microsoft.com/fwlink/p/?LinkId=393029). 
+[スクリプト センター](http://go.microsoft.com/fwlink/p/?LinkId=393029)で、オートメーション チームが作成したサンプル Runbook とユーティリティ Runbook を表示し、ダウンロードすることができます。
 
-## The Automation community and feedback
+## オートメーション関連のコミュニティとフィードバック
 
-Runbooks from the community and other Microsoft teams are also published on  [Script Center](http://go.microsoft.com/fwlink/?LinkID=391681). 
+コミュニティや Microsoft の他のチームから提供された Runbook も、[スクリプト センター](http://go.microsoft.com/fwlink/?LinkID=391681)で公開されています。
 
-<strong>Give us feedback!</strong>  If you are looking for a runbook solution or PowerShell integration module, post a Script Request on the Script Center. If you have an idea for a new feature for Automation, post it on [User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback).
+<strong>フィードバックの送信</strong>Runbook ソリューションや PowerShell 統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。オートメーションに関連する新機能が思い浮かんだ場合は、[User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) に投稿してください。
 
 [WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
-## Download a sample runbook from the Script Center
+## スクリプト センターからのサンプル Runbook のダウンロード
 
-1.	Go to  [Script Center](http://go.microsoft.com/fwlink/p/?LinkId=393029), and then click **Hello World for Azure Automation**.
+1.	[スクリプト センター](http://go.microsoft.com/fwlink/p/?LinkId=393029)にアクセスし、**[Hello World Azure Automation]** をクリックします。
 
-2.	Click the file name, **Write-HelloWorld.ps1**, next to **Download**, and then save the file to your computer.
+2.	**[Download]** の横にある **[Write-HelloWorld.ps1]** というファイル名をクリックし、そのファイルをコンピューターに保存します。
 
 
-## Import the sample runbook to Azure
+## Azure への サンプル Runbook のインポート
 
-1.	Log in to the [Azure Management Portal](http://manage.windowsazure.com).
+1.	[Azure 管理ポータル](http://manage.windowsazure.com)にログインします。
 
-2.	In the Management Portal, click **Create an Automation Account**.
+2.	管理ポータルで、**[オートメーション アカウントの作成]** をクリックします。
 
-	>[WACOM.NOTE] If you’ve already created an automation account, you can skip to step 4.
+	>[WACOM.NOTE] オートメーション アカウントを既に作成した場合は、手順 4 に進むことができます。
 
-	![Create Account](./media/automation/automation_01_CreateAccount.png)
+	![アカウントの作成](./media/automation/automation_01_CreateAccount.png)
 
-3.	On the **Add a New Automation Account** page, enter a name for the account, and then click the check mark.
+3.	**[新しいオートメーション アカウントの追加]** ページで、アカウントの名前を入力し、チェック マークをクリックします。
 
-	![Add New Account](./media/automation/automation_02_addnewautoacct.png)
+	![新しいアカウントの追加](./media/automation/automation_02_addnewautoacct.png)
  
-4.	On the **Automation** page, click the new account you just created.
+4.	**[オートメーション]** ページで、作成した新しいアカウントをクリックします。
  
-	![New Account](./media/automation/automation_03_NewAutoAcct.png)
+	![新しいアカウント](./media/automation/automation_03_NewAutoAcct.png)
 
-5.	Click **RUNBOOKS**.
+5.	**[Runbook]** をクリックします。
 
-	![Runbooks Tab](./media/automation/automation_04_RunbooksTab.png)
+	![[Runbook] タブ](./media/automation/automation_04_RunbooksTab.png)
   
-6.	Click **IMPORT**.
+6.	**[インポート]** をクリックします。
 
-	![Import](./media/automation/automation_05_Import.png)
+	![インポート](./media/automation/automation_05_Import.png)
 
-7.	Browse to the **Write-HelloWorld.ps1** script you downloaded, and then click the check mark.
+7.	ダウンロードした **Write-HelloWorld.ps1** スクリプトを参照し、チェック マークをクリックします。
 
-	![Browse](./media/automation/automation_06_Browse.png)	
+	![参照](./media/automation/automation_06_Browse.png)	
  
-8.	Click **Write-HelloWorld**.
+8.	**[Write-HelloWorld]** をクリックします。
 
-	![Imported Runbook](./media/automation/automation_07_ImportedRunbook.png)
+	![インポートした Runbook](./media/automation/automation_07_ImportedRunbook.png)
 
-9.	Click **AUTHOR**, and then click **DRAFT**. For this runbook, you don’t need to make any modifications.  
+9.	**[作成者]** をクリックし、**[ドラフト]** をクリックします。この Runbook に対して、どのような変更も加える必要はありません。
 
-	You can now see the contents of **Write-HelloWorld.ps1**. You can modify the contents of a runbook in Draft mode. 
+	ここで、**Write-HelloWorld.ps1** の内容を参照できます。ドラフト モードでは、Runbook の内容を変更できます。
 
-	![Author Draft](./media/automation/automation_08_AuthorDraft.png)  
+	![作成者のドラフト](./media/automation/automation_08_AuthorDraft.png)
  
-10.	Click **PUBLISH** to promote the runbook so it's ready for production use.
+10.	**[発行]** をクリックして Runbook を昇格し、運用環境で使用する準備をします。
 
-	![Publish](./media/automation/automation_085_Publish.png)
+	![発行](./media/automation/automation_085_Publish.png)
    
-11.	When you are prompted to save and publish the runbook, click **Yes**.
+11.	Runbook を保存して発行するかどうかを問い合わされた場合は、**[はい]** をクリックします。
  
-	![Save and Pub prompt](./media/automation/automation_09_SavePubPrompt.png)
+	![保存して発行するためのメッセージ](./media/automation/automation_09_SavePubPrompt.png)
 
-12.	Click **PUBLISHED**, and then click **START**.
+12.	**[発行済]** をクリックし、**[開始]** をクリックします。
 
-	![Published](./media/automation/automation_10_PublishStart.png)
+	![発行済](./media/automation/automation_10_PublishStart.png)
  
-13.	On the **Specify the runbook parameter values** page, type a **Name** that will be used as an input parameter for the Write-HelloWorld.ps1 script, and then click the check mark.
+13.	**[Runbook パラメーターの値を指定します]**ページで、Write-HelloWorld.ps1 スクリプトの入力パラメーターとして使用される **[名前]** を入力し、チェック マークをクリックします。
 
-	![Runbook Parameters](./media/automation/automation_11_RunbookParams.png)
+	![Runbook のパラメーター](./media/automation/automation_11_RunbookParams.png)
   
-14.	Click **JOBS** to check the status of the runbook job you just started, and then click the timestamp in the **JOB START** column to view the job summary.
+14.	**[ジョブ]** をクリックして、開始した Runbook ジョブの状態を確認し、**[ジョブ開始]** 列にあるタイムスタンプをクリックしてジョブの概要を表示します。
 
-	![Runbook Status](./media/automation/automation_12_RunbookStatus.png)
+	![Runbook のステータス](./media/automation/automation_12_RunbookStatus.png)
 
-15.	On the **SUMMARY** page you can see the summary, input parameters, and output of the job.
+15.	 **[概要]** ページで、ジョブの概要、入力パラメーター、出力を表示できます。
  
-	![Runbook Summary](./media/automation/automation_13_RunbookSummary_callouts.png)
+	![Runbook の概要](./media/automation/automation_13_RunbookSummary_callouts.png)
 
-## See Also
+## 関連項目
 
-- [Automation Overview](http://go.microsoft.com/fwlink/p/?LinkId=392860)
-- [Runbook Authoring Guide](http://go.microsoft.com/fwlink/p/?LinkID=301740)
-- [Automation Forum](http://go.microsoft.com/fwlink/p/?LinkId=390561)
+- [オートメーションの概要](http://go.microsoft.com/fwlink/p/?LinkId=392860)
+- [Runbook 作成ガイド (英語)](http://go.microsoft.com/fwlink/p/?LinkID=301740)
+- [オートメーション フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=390561)
+

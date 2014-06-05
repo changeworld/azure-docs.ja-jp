@@ -1,19 +1,20 @@
-The Domain Name System (DNS) is used to locate things on the internet. For example, when you enter an address in your browser, or click a link on a web page, it uses DNS to translate the domain into an IP address. The IP address is sort of like a street address, but it's not very human friendly. For example, it is much easier to remember a DNS name like **contoso.com** than it is to remember an IP address such as 192.168.1.88 or 2001:0:4137:1f67:24a2:3888:9cce:fea3.
+ドメイン ネーム システム (DNS) は、インターネット上で要素を検索するために使用されます。たとえば、ブラウザーにアドレスを入力するか、Web ページでリンクをクリックすると、DNS を使用してドメインが IP アドレスに変換されます。IP アドレスは住所に似ていますが、人間にとってわかりやすい情報ではありません。たとえば、**contoso.com** のような DNS 名の方が、192.168.1.88 や 2001:0:4137:1f67:24a2:3888:9cce:fea3 などの IP アドレスよりはるかに覚えやすい情報です。
 
-The DNS system is based on *records*. Records associate a specific *name*, such as **contoso.com**, with either an IP address or another DNS name. When an application, such as a web browser, looks up a name in DNS, it finds the record, and uses whatever it points to as the address. If the value it points to is an IP address, the browser will use that value. If it points to another DNS name, then the application has to do resolution again. Ultimately, all name resolution will end in an IP address.
+DNS システムは*レコード*に基づいたしくみです。**contoso.com** のような特定の*名前*が、レコードによって IP アドレスまたは別の DNS 名に関連付けられます。Web ブラウザーなどのアプリケーションは、DNS で名前を検索し、レコードを検索して、そのレコードが指すアドレスを使用します。レコードが指す値が IP アドレスの場合、ブラウザーはその値を使用します。レコードが別の DNS 名を指す場合、アプリケーションは、もう一度名前を解決する必要があります。こうして最終的には、すべての名前が解決され、IP アドレスが取得されます。
 
-When you create an Azure Web Site, a DNS name is automatically assigned to the site. This name takes the form of **&lt;yoursitename&gt;.azurewebsites.net**. When you add your web site as an Azure Traffic Manager endpoint, your web site is then accessible through the **&lt;yourtrafficmanagerprofile&gt;.trafficmanager.net** domain.
+DNS 名は、Azure Web サイトの作成時に、サイトに自動的に割り当てられます。この名前は、**&lt;yoursitename&gt;.azurewebsites.net** という形式です。Web サイトを Azure トラフィック マネージャー エンドポイントとして追加すると、**&lt;yourtrafficmanagerprofile&gt;.trafficmanager.net** ドメイン経由で Web サイトにアクセスできます。
 
-> [WACOM.NOTE] When your web site is configured as a Traffic Manager endpoint, you will use the **.trafficmanager.net** address when creating DNS records.
+> [WACOM.NOTE] Web サイトがトラフィック マネージャー エンドポイントとして構成されている場合、DNS レコードの作成時に **.trafficmanager.net** アドレスを使用します。
 
-> [WACOM.NOTE] You can only use CNAME records with Traffic Manager
+> [WACOM.NOTE] トラフィック マネージャーでは、CNAME レコードのみ使用できます。
 
-There are also multiple types of records, each with their own functions and limitations, but for web sites configured to as Traffic Manager endpoints, we only care about one; *CNAME* records.
+レコードにも複数の種類があり、それぞれに独自の機能と制約がありますが、トラフィック マネージャー エンドポイントとして構成された Web サイトに関して重要なのは *CNAME* レコードのみです。
 
-###CNAME or Alias record
+###CNAME レコードまたはエイリアス レコード
 
-A CNAME record maps a *specific* DNS name, such as **mail.contoso.com** or **www.contoso.com**, to another (canonical) domain name. In the case of Azure Web Sites using Traffic Manager, the canonical domain name is the **&lt;myapp>.trafficmanager.net** domain name of your Traffic Manager profile. Once created, the CNAME creates an alias for the **&lt;myapp>.trafficmanager.net** domain name. The CNAME entry will resolve to the IP address of your **&lt;myapp>.trafficmanager.net** domain name automatically, so if the IP address of the web site changes, you do not have to take any action.
+CNAME レコードは、**mail.contoso.com** や **www.contoso.com** などの*特定の* DNS 名をドメインを別の (正規の) ドメイン名にマップします。トラフィック マネージャーを使用した Azure Web サイトの場合、正規のドメイン名は、トラフィック マネージャー プロファイルの **&lt;myapp>.trafficmanager.net** ドメイン名です。CNAME を作成すると、**&lt;myapp>.trafficmanager.net** ドメイン名のエイリアスが CNAME によって作成されます。CNAME エントリは **&lt;myapp>.trafficmanager.net** ドメイン名の IP アドレスを自動的に解決するため、Web サイトの IP アドレスが変更されても、特別な対応を行う必要はありません。
 
-Once traffic arrives at Traffic Manager, it then routes the traffic to your web site, using the load balancing method it is configured for. This is completely transparent to visitors to your web site. They will only see the custom domain name in their browser.
+トラフィック マネージャーに到着したトラフィックは、構成された負荷分散方法を使用して、Web サイトにルーティングされます。これは、Web サイトにアクセスするユーザーに対して透過的です。ユーザーのブラウザーには、カスタム ドメイン名のみが表示されます。
 
-> [WACOM.NOTE] Some domain registrars only allow you to map subdomains when using a CNAME record, such as **www.contoso.com**, and not root names, such as **contoso.com**. For more information on CNAME records, see the documentation provided by your registrar, <a href="http://en.wikipedia.org/wiki/CNAME_record">the Wikipedia entry on CNAME record</a>, or the <a href="http://tools.ietf.org/html/rfc1035">IETF Domain Names - Implementation and Specification</a> document.
+> [WACOM.NOTE] いくつかのドメイン レジストラーでは、CNAME レコードを使用する場合にマップすることが許可されるのは、ルート名 (**contoso.com** など) ではなく、サブドメイン (**www.contoso.com** など) のみです。CNAME レコードの詳細については、レジストラーが提供するドキュメント、「<a href="http://en.wikipedia.org/wiki/CNAME_record">the Wikipedia entry on CNAME record (CNAME レコードに関するウィキペディア項目)</a>」、または「<a href="http://tools.ietf.org/html/rfc1035">IETF Domain Names - Implementation and Specification (IETF ドメイン名 - 実装と仕様書)</a>」を参照してください。
+

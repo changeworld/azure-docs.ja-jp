@@ -1,1 +1,2 @@
-When you use a Microsoft Azure Traffic Manager to load balance traffic to your Azure Web Site, that web site can then be accessed using the **\*.trafficmanager.net** domain name assigned by Azure. You can also associate a custom domain name, such as www.contoso.com, with your web site in order to provide a more recognizable domain name for your users.
+Microsoft Azure トラフィック マネージャーを使用して、Azure Web サイトにトラックを負荷分散する場合、Azure によって割り当てられる **\*.trafficmanager.net** ドメイン名を使用して Web サイトにアクセスできます。また、ユーザーにわかりやすいドメイン名を付けるために、www.contoso.com のようなカスタム ドメイン名を Web サイトに関連付けることもできます。
+

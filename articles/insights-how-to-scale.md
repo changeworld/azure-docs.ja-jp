@@ -1,78 +1,79 @@
-<properties title="How to scale a website" pageTitle="How to scale a website" description="Learn how to scale your hosting plan in Azure." authors="stepsic"  />
+<properties title="Web サイトのスケール変更方法" pageTitle="Web サイトのスケール変更方法" description="Azure でホスティング プランのスケールを変更する方法について説明します。" authors="stepsic"  />
 
-# How to Scale a Web site
+# Web サイトのスケール変更方法
 
-In the Azure Portal Preview, you can manually set the instance count of your Web Hosting Plan, or, you can set parameters to have it automatically scale. Before you configure scaling for your Web Hosting Plan, you should consider that scaling is affected by instance size. Larger sizes have more cores and memory, and so they will have better performance for the same number of instances.
+Azure プレビュー ポータルで、Web ホスティング プランのインスタンス数を手動で設定するか、パラメーターを指定して自動的にスケールを変更することができます。Web ホスティング プランの規模を構成する前に、インスタンスのサイズによってスケールが影響を受けることを考慮する必要があります。サイズが大きくなると、コアとメモリが増えるため、インスタンス数が同じままの場合はパフォーマンスが向上します。
 
-Scale affects an entire Web Hosting Plan. When you create a Web Site you have the option to create a new Web Hosting Plan or an existing Web Hosting Plan. Once you have a Web Hosting Plan, all of the sites will share the same instances, so they all scale together.
+規模は、全体的な Web ホスティング プランに影響します。Web サイトを作成するときに、新しい Web ホスティング プランを作成するか、既存の Web ホスティング プランを使用するオプションがあります。Web ホスティング プランを確定した時点で、すべてのサイトが同じインスタンスを共有するため、それらすべては共にスケールを変更することになります。
 
-## Scaling a Web Hosting Plan
+## Web ホスティング プランのスケールの変更
 
-1. In the [Azure Portal Preview](https://portal.azure.com/), click **Browse**, then **Web Sites**, and then click the name of the Web Site to open the blade.
+1. [Azure プレビュー ポータル](https://portal.azure.com/)で、**[参照]**、**[Web サイト]** の順にクリックしてから、Web サイトの名前をクリックしてブレードを開きます。
 
-2. The **Scale** part on **Operations** lens of the Web Site blade will tell you the status of the Web Hosting Plan: **Off** for when you are scaling manually, **Performance** for when you are scaling by one or more performance metrics, and **Schedule** for when you have enabled multiple autoscale profiles.
+2. [Web サイト] ブレードの **[操作]** レンズにある **[スケール]** パーツで、Web ホスティング プランのステータスが表示されます。**[Off]** は手動でスケールを変更する状況に対応します。**[パフォーマンス]** は、1 つ以上のパフォーマンス メトリックによってスケールを変更する状況に対応します。**[スケジュール]** は、複数の自動スケール プロファイルを有効にした状況に対応します。
 
-    ![Scale part](./media/insights-how-to-scale/Insights_ScalePartOff.png)
+    ![[スケール] パーツ](./media/insights-how-to-scale/Insights_ScalePartOff.png)
 
-3. Clicking on the part will take you to the **Scale** blade. At the top of the scale blade you can see a history of autoscale actions for your Web Hosting Plan.
+3. このパーツをクリックすると、**[スケール]** ブレードに移動します。[スケール] ブレードの上部には、Web ホスティング プランに対応する自動スケール アクションの履歴が表示されます。
 
-    ![Scale blade](./media/insights-how-to-scale/Insights_ScaleBladeDayZero.png)
+    ![[スケール] ブレード](./media/insights-how-to-scale/Insights_ScaleBladeDayZero.png)
 
-4. You can manually adjust the number of virtual machines that run your Web Hosting Plan with the **Instance** slider. 
+4. **[インスタンス]** スライダーを使用して、Web ホスティング プランを実行する仮想マシンの数を手動で調整することができます。
 
-5. If you want the number of instances to automatically adjust based on load, select **Performance** under **Autoscale Mode**. At this time you cannot select **Schedule** in the Azure Portal Preview.
+5. 負荷に基づいてインスタンス数を自動的に調整する場合は、**[自動スケール モード]** の **[パフォーマンス]** をオンにします。現時点では、Azure プレビュー ポータルで **[スケジュール]** を選択することはできません。
 
-    ![Scale blade with CPU Percentage](./media/insights-how-to-scale/Insights_ScaleBladeCPU.png) 
+    ![CPU 使用率が表示されている [スケール] ブレード](./media/insights-how-to-scale/Insights_ScaleBladeCPU.png)
 
-6. Once you select Performance, there are two changes:
-    - **Instance Range** now allows you to choose a maximum and minimum instance count. Autoscale will always keep you in this range, irrespective of load.
-    - You can define the performance metrics in the **Target Metrics** section
+6. [パフォーマンス]を選択した時点で、2 つの変化が発生します。
+    - **[インスタンス範囲]** で、インスタンス数の最大値と最小値を選択できます。[自動スケール] により、負荷にかかわりなく、常にこの範囲内に維持されます。
+    - **[ターゲット メトリック]** セクションで、パフォーマンスを定義できます。
 
-7. The **CPU Percentage** section allows you to set a target for the average CPU across all of the instances in your Web Hosting Plan. A scale up will happen when the average CPU exceeds the maximum you define.
+7. **[CPU 使用率]** セクションでは、Web ホスティング プラン内にあるすべてのインスタンスを対象とする平均 CPU に関するターゲットを設定することができます。平均 CPU が、定義した最大値を超えたときは、スケール アップが発生します。
 
-With auto scale enabled, you'll see **Performance** in the part on the Web site blade, and, you'll see your scale history in the chart:
+自動スケールが有効になっている場合は、[Web サイト] ブレードのパーツ内で **[パフォーマンス]** が表示され、グラフ内でのスケールの履歴を確認できます。
 
-![Scale blade with CPU Percentage](./media/insights-how-to-scale/Insights_ScalePartBladeOn.png) 
+![CPU 使用率が表示されている [スケール] ブレード](./media/insights-how-to-scale/Insights_ScalePartBladeOn.png)
 
-Note that in the Azure Portal Preview, you cannot change the number of instances of a Shared Web Hosting Plan.
+Azure プレビュー ポータルで、共有 Web ホスティング プランのインスタンス数を変更できないことに注意してください。
 
-## Advanced scaling
+## 詳細なスケール設定
 
-New in the Azure Portal Preview, you can scale based on metrics other than CPU Percentage, and can even have a complex set of scale up and scale down rules.
+Azure プレビュー ポータルの新機能として、CPU 使用率以外のメトリックに基づいてスケールを設定することや、スケール アップとのスケール ダウンのルールから成る複合セットを使用することもできます。
 
-### Scaling based on other performance metrics
-In addition to CPU, you can scale based on:
+### 他のパフォーマンス メトリックに基づくスケール変更
+CPU に加えて、次のものに基づくスケール変更も利用できます。
 
-- Average Memory - If the average percentage of Memory used on the instances goes above or below specified thresholds, instances are added or removed.
-- HTTP Queue Depth or Disk Queue Depth - If the number of messages in either queue the of HTTP requests or the Disk goes above or below a specified threshold, instances are added or removed.
+- [平均メモリ] - インスタンスで使用されているメモリの平均割合が、指定したしきい値を上回ったか下回った場合は、インスタンスが追加または削除されます。
+- [HTTP キューの深さ] または [ディスク キューの深さ] -  HTTP 要求キューとディスク キューのどちらかの中にあるメッセージの数が、指定したしきい値を上回ったか下回った場合は、インスタンスが追加または削除されます。
 
-There are two different ways to scale by another metric. If you want to only scale by a single metric, select the chevron next to the **CPU Percentage** slider. This will open the Metric Details blade:
+別のメトリックに基づいてスケールを変更する 2 つの方法があります。ただ 1 つのメトリックに基づいてスケールを変更する場合は、**[CPU 使用率]** スライダーの横にある不等号を選択します。[メトリックの詳細] ブレードが表示されます。
 
-   ![Entry point to scale metrics](./media/insights-how-to-scale/Insights_ScaleMetricChevron.png)
+   ![スケールを変更するメトリックのエントリ ポイント](./media/insights-how-to-scale/Insights_ScaleMetricChevron.png)
 
-To scale by more than one metric at a time, you can click **Add Metric** in the command bar:
+一度に 1 つ以上のメトリックに基づいてスケールを変更するには、コマンド バーの **[メトリックの追加]** をクリックします。
 
-   ![Add metrics](./media/insights-how-to-scale/Insights_AddMetric.png)
+   ![メトリックの追加](./media/insights-how-to-scale/Insights_AddMetric.png)
    
-The Metric Detail blade contains all of the controls that you need to set up your optimal scale profile. At the top, choose the new metric that you want to scale by.
+[メトリックの詳細] ブレードには、最適なスケール プロファイルを設定するために必要とされるすべてのコントロールがあります。上部で、スケール変更の基準として使用する新しいメトリックを選択します。
 
-### Scaling with multiple steps
+### 複数のステップによるスケール変更
 
-Below the graph of the metric are two sections: **Scale up rules** and **Scale down rules**. Your service will scale up if **any** of the scale up rules are met. Conversely, your service will scale down if **all** of the scale down rules are met.
+メトリックから成るグラフの下には、**[スケール アップルール]** および **[スケール ダウン ルール]** という 2 つのセクションがあります。スケール アップ ルールの**いずれか**が満たされた場合は、サービスはスケール アップされます。逆に、スケール ダウン ルールの**いずれか**が満たされた場合は、サービスはスケール ダウンされます。
 
-For each rule you choose:
-- Condition - either Greater than or Less than
-- Threshold - the number that this metric has to pass to trigger the action
-- Over Past - the number of minutes that this metric is averaged over
-- Scale up or down by - the size of the scale action
-- Cool down - how long this rule should wait after the previous scale action to scale again
+ルールごとに、次のものを選択します。
+- [条件] - [より大きい] または [より小さい]
+- [しきい値] - アクションをトリガーするためにこのメトリックが通過する必要のある数値
+- [過去の持続時間] - このメトリックの平均を求めるために使用する、分単位の時間
+- [スケール アップまたはスケール ダウンの幅] - スケール アクションのサイズ
+- [クール ダウン] - 直前のスケール アクションが実施された後、もう一度スケール変更を実施するまでにこのルールが待機する必要のある時間の長さ
 
-   ![Multiple scale rules](./media/insights-how-to-scale/Insights_MultipleScaleRules.png)
+   ![複数のスケール ルール](./media/insights-how-to-scale/Insights_MultipleScaleRules.png)
 
-With multiple scale rules, you can be more agressive about scaling up (or down) as performance changes. For example, you can define two scale rules:
+複数のスケール ルールを使用して、パフォーマンスの変化に応じ、より積極的にスケール アップ (またはスケール ダウン) を実施することができます。たとえば、次のような 2 つのスケール ルールを定義できます。
 
-1. Scale up by 1 instance if CPU percentage is above 60%
+1. CPU 使用率が 60% を超える場合は、インスタンス 1 つ分のスケール アップ
 
-2. Scale up by 3 instances if CPU percentage is above 85%
+2. CPU 使用率が 85% を超える場合は、インスタンス 3 つ分のスケール アップ
 
-With this additional rule, if your load exceeds 85% before a scale action, you will get two additional instances instead of one. 
+後者の追加ルールにより、スケール アクションが実施される前にロードが 85% を超えた場合は、インスタンス 1 つ分だけではなく、さらに 2 つの追加インスタンスを取得することになります。
+

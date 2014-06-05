@@ -1,31 +1,32 @@
-<properties title="How to debug with events" pageTitle="How to debug with events" description="Learn how to see events in Azure." authors="hanikn"  />
+<properties title="イベントを使用してデバッグする方法" pageTitle="イベントを使用してデバッグする方法" description="Azure で発生したイベントを表示する方法について説明します。" authors="hanikn"  />
 
-# Monitor the events impacting your Azure websites or resource groups 
+# Azure の Web サイトまたはリソース グループに影響を与えるイベントを監視します。
 
-1.	Sign in to the [Azure Portal Preview](https://portal.azure.com/). 
+1.	[Azure 管理ポータル](https://portal.azure.com/)にサインインします。
 
-2.	Click on the **Browse** button on the left-hand-side navigation bar (also known as the **jump bar**).
+2.	左側のナビゲーション バー (**ジャンプ バー**とも呼びます) にある **[参照]** をクリックします。
 
-   ![Browse Hub](./media/insights-debugging-with-events/Insights_Browse.png)
+   ![ハブの参照](./media/insights-debugging-with-events/Insights_Browse.png)
 	
-3. Then choose either **Resource groups** or **Websites** (depending on which events you are interested in). For illustration purposes, the screenshots in this document include the Event for resource groups.
+3. (関心のあるイベントに応じて) **リソース グループ** または **Web サイト** を選択します。説明の目的で、このドキュメントのスクリーン ショットでは、リソース グループに対応するイベントを使用しています。
 
-4.	On the **Resource groups** blade, click on the name of the resource group. This will navigate you to the resource group blade.
+4.	**[リソース グループ]** ブレードで、リソース グループの名前をクリックします。この結果、そのリソース グループに対応するブレードに移動します。
 
-	![Resource groups](./media/insights-debugging-with-events/Insights_SelectRG.png)
+	![リソース グループ](./media/insights-debugging-with-events/Insights_SelectRG.png)
 
-5.	The resource group blade includes a part called **Events in the past week**. Each of the bars on that part, represent the number of events that have happened on each of days of the past week. Each of bars can have two different colors: blue and pink. Pink represents **Failed** events on that day, and blue represents all other events.
+5.	リソース グループのブレードには、**[過去 1 週間のイベント]** というパーツが含まれています。このパーツ内にある各バーは、過去 1 週間の各日に発生したイベントの数を表します。各バーに、青およびピンクという 2 つの異なる色が表示されていることがあります。ピンクはその日の **失敗** イベントを表し、青はそれ以外のすべてのイベントを表します。
  
- 	![Resource groups](./media/insights-debugging-with-events/Insights_RGBlade.png)
+ 	![リソース グループ](./media/insights-debugging-with-events/Insights_RGBlade.png)
 
-6.	Now, click on the **Events in the past week** part. You will see, a new blade called the **Events** blade that include all of the events in the past week that impacted your resource group.
+6.	ここで、**[過去 1 週間のイベント]** パーツをクリックします。**[イベント]** ブレードという新しいブレードが表示されます。この中には、リソース グループに影響を及ぼした、過去 1 週間のすべてのイベントが含まれています。
 
- ![Resource groups](./media/insights-debugging-with-events/Insights_AllEvents.png)
+ ![リソース グループ](./media/insights-debugging-with-events/Insights_AllEvents.png)
 
-6.	Click on one of  the events. 
+6.	イベントのいずれかをクリックします。
 
- ![Resource groups](./media/insights-debugging-with-events/Insights_EventDetails.png)
+ ![リソース グループ](./media/insights-debugging-with-events/Insights_EventDetails.png)
 
-A new blade will open that includes a lot of details about the event. For **Failed** events, this page usually includes a **Substatus** and a **Properties** section that include useful details for debugging purposes.
+イベントに関して多くの詳細を示す新しいブレードが表示されます。**[失敗]** イベントに関しては、このページで通常、デバッグの目的で役立つ詳細を示す**[サブステータス]** および **[プロパティ]** というセクションが表示されます。
+
 
 

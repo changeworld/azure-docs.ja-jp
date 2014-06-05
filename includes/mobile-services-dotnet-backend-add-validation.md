@@ -1,13 +1,13 @@
 
-It is always a good practice to validate the length of data that is submitted by users. In this section you will add code to the mobile service that validates the length of string data sent to the mobile service and rejects strings that are too long, in this case longer than 10 characters.
+ユーザーにより送信されたデータの長さを検証することをお勧めします。このセクションでは、モバイル サービスに送信された文字列データの長さを検証し、長すぎる文字列 (この場合は 10 文字を超える) を拒否するコードを追加します。
 
-1. Start Visual Studio with the **Run as administrator** option and open the solution that contains the mobile service project that you worked with in the [Getting Started] or [Get started with data] tutorial.
+1. **[管理者として実行]** オプションを使用して Visual Studio を起動し、「[Getting Started (概要)]」または「[Get started with data (データの使用)]」チュートリアルで使用したモバイル サービス プロジェクトが入ったソリューションを開きます。
 
-2. In the Solution Explorer window expand the todo list service project and expand **Contollers**. Open the TodoItemController.cs file which is part of the mobile service project.  
+2. ソリューション エクスプローラー ウィンドウで、todo list サービス プロジェクトを展開し、**[Contollers]** フォルダーを展開します。モバイル サービス プロジェクトの一部である TodoItemController.cs ファイルを開きます。
 
    	![](./media/mobile-services-dotnet-backend-add-validation/mobile-services-open-todoitemcontroller.png)
 
-3. Replace the `PostTodoItem` method with the following method which will validate that the text string is not greater than 10 characters. For items that do have a text length greater than 10 characters, the method returns an HTTP Status code 400 Bad Request with a descriptive message included as content.
+3. `PostTodoItem` メソッドを、テキスト文字列が 10 文字以下であることを検証する次のメソッドと置き換えます。項目のテキストが 10 文字より長い場合は、説明メッセージをコンテンツとして含む "HTTP ステータス コード 400 – Bad Request" が返されます。
 
 
         public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
@@ -25,13 +25,13 @@ It is always a good practice to validate the length of data that is submitted by
 
 
 
-4. Right click the service project and click **Build** to build the mobile service project. Verify no errors occurred.
+4. サービス プロジェクトを右クリックし、**[ビルド]** をクリックしてモバイル サービス プロジェクトをビルドします。エラーが発生しないことを確認します。
 
    	![](./media/mobile-services-dotnet-backend-add-validation/mobile-services-build-dotnet-service.png)
 
-5. Right click the service project and click **Publish**. Publish the mobile service to your Microsoft Azure account using the publishing settings you previously used in the [Getting Started] or [Get started with data] tutorial.
+5. サービス プロジェクトを右クリックし、**[発行]** をクリックします。以前、「[Getting Started (概要)]」または「[Get started with data (データの使用)]」チュートリアルで使用した発行の設定を使用して、Microsoft Azure アカウントにモバイル サービスを発行します。
  
-     >[WACOM.NOTE] You can alternatively test with the service hosted locally in IIS Express. For more information see the [Get started with data] tutorial.
+     >[WACOM.NOTE] または、IIS Express でローカルにホストされているサービスを使用してテストすることもできます。詳細については、チュートリアル「[Get started with data (データの使用)]」を参照してください。
 
     ![](./media/mobile-services-dotnet-backend-add-validation/mobile-services-publish-dotnet-service.png)
 
@@ -40,5 +40,6 @@ It is always a good practice to validate the length of data that is submitted by
 
 
 <!-- URLs. -->
-[Getting Started]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
-[Get started with data]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-
+[Getting Started (概要)]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
+[Get started with data (データの使用)]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-
+

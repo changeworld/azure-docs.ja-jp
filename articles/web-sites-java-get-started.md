@@ -1,57 +1,57 @@
-<properties linkid="develop-java-tutorials-web-site-get-started" urlDisplayName="Get started with Azure" pageTitle="Get started with Microsoft Azure Web Sites using Java" metaKeywords="" description="This tutorial shows you how to deploy a Java web site to Microsoft Azure." metaCanonical="" services="web-sites" documentationCenter="Java" title="Get started with Azure and Java" videoId="" scriptId="" authors="waltpo" solutions="" manager="keboyd" editor="mollybos" />
+<properties linkid="develop-java-tutorials-web-site-get-started" urlDisplayName="Azure の概要" pageTitle="Java を使用する Microsoft Azure の Web サイトの概要" metaKeywords="" description="このチュートリアルでは、Java Web サイトを Microsoft Azure に展開する方法を示します。" metaCanonical="" services="web-sites" documentationCenter="Java" title="Azure と Java の概要" videoId="" scriptId="" authors="waltpo" solutions="" manager="keboyd" editor="mollybos" />
 
-# Get started with Azure web sites and Java
+# Azure の Web サイトと Java の概要
 
-This tutorial shows how to create a web site on Microsoft Azure using Java, using either the Azure application gallery, or the Azure web site configuration UI. 
+このチュートリアルでは、Azure のアプリケーション ギャラリーまたは Azure の Web サイト構成 UI を利用して、Java を使用する Web サイトを Microsoft Azure に作成する方法を示します。
 
-If you don't want to use either of those techniques, for example, if you want to customize your application container, see [Upload a custom Java web site to Azure](../web-sites-java-custom-upload).
+これらの手法のいずれも使用しない場合、たとえば、アプリケーション コンテナーをカスタマイズする場合は、「[Upload a custom Java web site to Azure (カスタム Java Web サイトを Azure にアップロードする)](../web-sites-java-custom-upload)」を参照してください。
 
-> [WACOM.NOTE] To complete this tutorial, you need a Microsoft Azure account. If you don't have an account, you can <a href="/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">activate your MSDN subscriber benefits</a> or <a href="/en-us/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">sign up for a free trial</a>.
+> [WACOM.NOTE] このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、<a href="/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">MSDN サブスクライバーの特典を有効にする</a>か、<a href="/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">無料評価版にサインアップ</a>してください。
 
-# Create a Java web site using the Azure application gallery
+# Azure のアプリケーション ギャラリーを使用して Java Web サイトを作成する
 
-This information shows how to use the Azure application gallery to select a Java application container, either Apache Tomcat or Jetty, for your web site.
+ここでは、Azure のアプリケーション ギャラリーを使用して、Web サイトの Java アプリケーション コンテナーとして Apache Tomcat または Jetty を選択する方法を示します。
 
-The following shows how a web site built using Tomcat from the application gallery would appear:
+アプリケーション ギャラリーの Tomcat を使用してビルドした Web サイトは次のようになります。
 
-![Web site using Apache Tomcat](./media/web-sites-java-get-started/tomcat.png)
+![Apache Tomcat を使用する Web サイト](./media/web-sites-java-get-started/tomcat.png)
 
-The following shows how a web site built using Jetty from the application gallery would appear:
+アプリケーション ギャラリーの Jetty を使用してビルドした Web サイトは次のようになります。
 
-![Web site using Jetty](./media/web-sites-java-get-started/jetty.png)
+![Jetty を使用する Web サイト](./media/web-sites-java-get-started/jetty.png)
 
-1. Log in to the Microsoft Azure Management Portal.
-2. Click **New**, click **Compute**, click **Web Site**, and then click **From Gallery**.
-3. From the list of apps, select one of the Java application servers, such as **Apache Tomcat** or **Jetty**.
-4. Click **Next**.
-5. Specify the URL name.
-6. Select a region. For example, **West US**.
-7. Click **Complete**.
+1. Microsoft Azure の管理ポータルにログインします。
+2. **[新規]**、**[コンピューティング]**、**[Web サイト]**、**[ギャラリーから]** の順にクリックします。
+3. アプリケーションの一覧でいずれかの Java アプリケーション サーバー (**Apache Tomcat** や **Jetty** など) を選択します。
+4. **[次へ]** をクリックします。
+5. URL 名を指定します。
+6. リージョンを選択します。たとえば **[米国西部]** にします。
+7. **[完了]** をクリックします。
 
-Within a few moments, your web site will be created. To view the web site, within the Azure Management Portal, in the **Web Sites** view, wait for the status to show as **Running** and then click the URL for the web site.
+すぐに Web サイトが作成されます。Web サイトを表示するには、Azure の管理ポータルの **[Web サイト]** ビューで、状態が **[実行中]** になるまで待ってから、Web サイトの URL をクリックします。
 
-Now that you've create the web site with an app container, see the **Next steps** section for information about uploading your application to the web site.
+これで、Web サイトとアプリケーション コンテナーが作成されました。アプリケーションを Web サイトにアップロードする方法については、「**次のステップ**」を参照してください。
 
-# Create a Java web site using the Azure configuration UI
+# Azure の構成 UI を使用して Java Web サイトを作成する
 
-This information shows how to use the Azure configuration UI to select a Java application container, either Apache Tomcat or Jetty, for your web site.
+ここでは、Azure の構成 UI を使用して、Web サイトの Java アプリケーション コンテナーとして Apache Tomcat または Jetty を選択する方法を示します。
 
-1. Log in to the Microsoft Azure Management Portal.
-2. Click **New**, click **Compute**, click **Web Site**, and then click **Quick Create**.
-3. Specify the URL name.
-4. Select a region. For example, **West US**.
-5. Click **Complete**. Within a few moments, your web site will be created. To view the web site, within the Azure Management Portal, in the **Web Sites** view, wait for the status to show as **Running** and then click the URL for the web site.
-6. Still within the Azure Management Portal, in the **Web Sites** view, click the name of your web site to open the 
-dashboard.
-7. Click **Configure**.
-8. In the **General** section, enable **Java** by clicking the available version.
-9. The options for the web container are displayed, for example, Tomcat and Jetty. Select the web container that you want to use. 
-10. Click **Save**. 
+1. Microsoft Azure の管理ポータルにログインします。
+2. **[新規]**、**[コンピューティング]**、**[Web サイト]**、**[簡易作成]** の順にクリックします。
+3. URL 名を指定します。
+4. リージョンを選択します。たとえば **[米国西部]** にします。
+5. **[完了]** をクリックします。すぐに Web サイトが作成されます。Web サイトを表示するには、Azure の管理ポータルの **[Web サイト]** ビューで、状態が **[実行中]** になるまで待ってから、Web サイトの URL をクリックします。
+6. 同じく Azure の管理ポータルの **[Web サイト]** ビューで、Web サイトの名前をクリックして、ダッシュボードを開きます。
+7. **[構成]** をクリックします。
+8. **[全般]** セクションで、使用できるバージョンをクリックすることで **[Java]** を有効にします。
+9. Web コンテナーのオプションとして Tomcat や Jetty などが表示されます。使用する Web コンテナーを選択します。
+10. **[保存]** をクリックします。
 
-Within a few moments, your web site will become Java-based. To confirm it is Java-based, within the Azure Management Portal, in the **Web Sites** view, wait for the status to show as **Running** and then click the URL for the web site. Note that the page will provide text stating that the new site is a Java-base web site.
+すぐに Web サイトが Java ベースになります。Java ベースになっていることを確認するには、Azure の管理ポータルの **[Web サイト]** ビューで、状態が **[実行中]** になるまで待ってから、Web サイトの URL をクリックします。開いたページには、新しいサイトが Java ベースの Web サイトであることを示すテキストが表示されます。
 
-Now that you've create the web site with an app container, see the **Next steps** section for information about uploading your application to the web site.
+これで、Web サイトとアプリケーション コンテナーが作成されました。アプリケーションを Web サイトにアップロードする方法については、「**次のステップ**」を参照してください。
 
-# Next steps
+# 次のステップ
 
-At this point, you have a Java application server running as your Java web site on Azure. To add in your own application or web page, see [Add an application or web page to your Java web site](../web-sites-java-add-app).
+この時点で、Java アプリケーション サーバーは Azure で Java Web サイトとして動作しています。独自のアプリケーションや Web ページを追加するには、「[Add an application or web page to your Java web site (Java Web サイトにアプリケーションや Web ページを追加する)](../web-sites-java-add-app)」を参照してください。
+

@@ -1,109 +1,109 @@
-<properties pageTitle="How to use Code First Migrations .NET backend (Mobile Services)" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Considerations for supporting multiple clients from a single mobile service" authors="glenga" solutions="" writer="glenga" manager="dwrede" editor="" />
+<properties pageTitle="Code First Migrations .NET バックエンドの使用方法 (モバイル サービス)" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="1 つのモバイル サービスから複数のクライアントをサポートするための考慮事項" authors="glenga" solutions="" writer="glenga" manager="dwrede" editor="" />
 
-# How to make data model changes to a .NET backend mobile service
+# データ モデルの変更を .NET バックエンド モバイル サービスに加える方法
 
-In a .NET backend mobile service project, the default Entity Framework Code First database initializer derives from the [DropCreateDatabaseIfModelChanges] class. This initializer tells Entity Framework to drop and recreate the database whenever it detects a data model change exposed by your [DbContext]. You should continue to use this initializer during local development of your mobile service project, and the .NET backend tutorials assume that you are using this initializer. However, for situations where you want to make data model changes and maintain existing data in the database, you must use Code First Migrations. Using Code First Migrations is also a good solution for publishing data model changes to Azure, since a SQL Databasecannot be dropped.
+.NET バックエンド モバイル サービス プロジェクトで、既定の Entity Framework Code First データベース初期化子は、[DropCreateDatabaseIfModelChanges] クラスから派生しています。この初期化子は、使用中の [DbContext] によって発行されたデータ モデルに対する変更が検出されるたびに、データベースを削除して再作成するように Entity Framework に指示します。モバイル サービス プロジェクトをローカル開発している間は、この初期化子を継続して使用する必要があり、.NET バックエンドに関するチュートリアルでは、この初期化子を使用していることを想定します。ただし、データ モデルに変更を加え、データベース内で既存のデータを保持しようとする場合は、Code First Migrations を使用する必要があります。Azure に対してデータ モデルの変更を発行する場合は、SQL Database を削除できないため、この場合も Code First Migrations を使用する方法が適切なソリューションになります。
 
-This topic shows how to use Code First Migrations to make data model changes to an existing SQL Database and without losing existing data. This procedure assumes that you have already published your mobile service project to Azure, that there is existing data in your database, and that the remote and local data models are still in sync.
+このトピックでは Code First Migrations を使用して、既存のデータを失うことなく、既存の SQL データベースにデータ モデルの変更を加える方法を示します。この手順では、モバイル サービス プロジェクトを既に Azure に発行したこと、データベース内に既存のデータがあること、およびリモートとローカルのデータ モデルが同期状態にあることを想定します。
 
->[WACOM.NOTE]We recommend that complete as much of your data model development as possible on your local computer before you publish to Azure. If you have already published your .NET backend mobile service project to Azure, and your SQL Database table schema does not match the current data model of your project, you must drop the tables or otherwise manually get them in sync before you try to publish using Code First Migrations. 
+>[WACOM.NOTE]Azure にデータ モデル発行する前に、ローカル コンピューターでデータ モデルの開発をできるだけ多く完了させておくことをお勧めします。.NET バックエンド モバイル サービス プロジェクトを既に Azure に発行し、SQL データベースのテーブル スキーマが、プロジェクトの現在のデータ モデルと一致していない場合は、テーブルを削除するか、それ以外の場合は Code First Migrations を使用して発行を試みる前にスキーマとデータ モデルを手動で同期させる必要があります。
 
-When you are developing a .NET backend mobile service project on your local computer, the easiest way to deal with data model changes is to continue to use the default initializer, which drops and recreates the database whenever a data model change is detected. This same approach does not work when republishing your project to Azure. The initializer fails because the runtime doesn't have permissions to drop a SQL Database in Azure, which is a good thing. 
+.NET バックエンド モバイル サービス プロジェクトをローカル コンピューター上で開発している場合に、データ モデルの変更に対処する最も簡単な方法は、既定の初期化子の使用を継続することです。この初期化子は、データ モデルの変更が検出されるたびに、データベースを削除して再作成します。Azure に対してプロジェクトを再発行するときは、これと同じアプローチは機能しません。ランタイムには、Azure 内の SQL データベースを削除するアクセス許可がありません。この仕様は適切ですが、その結果、初期化子は削除に失敗します。
 
->[WACOM.NOTE]When developing and testing your mobile service project against live Azure services, you should always use a mobile service instance that is dedicated for testing. You should never develop or test against a mobile service that is currently in production or being used by client apps.
+>[WACOM.NOTE]Azure ライブ サービスに対してモバイル サービス プロジェクトを開発し、テストをする場合は、必ずテスト専用のモバイル サービス インスタンスを使用する必要があります。現時点で運用されているモバイル サービスや、クライアント アプリケーションによって使用されているモバイル サービスに対して、開発またはテストを決して実施しないでください。
 
-## Drop tables in your SQL Database
+## SQL データベース内のテーブルの削除
 
-Before you can get Migrations working in Azure against a SQL Database, you should manually drop any existing tables in the database schema used by your mobile service. Use the following steps to drop existing tables from your SQL Database. If you database schema is already in sync with the current data model, you can skip this and start with [Migrations].
+Azure 内で SQL データベースに対して Migrations を実行する前に、モバイル サービスで使用しているデータベース スキーマの中に存在する既存のすべてのテーブルを手動で削除する必要があります。SQL データベースから既存のテーブルを削除するには、次の手順を使用します。データベース スキーマが現在のデータ モデルと既に同期している場合は、この手順をスキップして「[Migrations]」に進んでください。
 
-1. Login to the [Azure Management Portal], select your mobile service, click the **Configure** tab, and click the **SQL Database** link. 
+1. [Azure 管理ポータル]にログインし、モバイル サービスを選択して、**[構成]** タブ、**[SQL データベース]** リンクの順にクリックします。
 
 	![][0]
 
-	This takes you to the portal page for the database used by your mobile service.
+	この結果、モバイル サービスで使用しているデータベースに対応するポータル ページに移動します。
 
-2. Click the **Manage** button and log in to your SQL Database server. 
+2. **[管理]** をクリックし、SQL データベース サーバーにログインします。
 
 	![][1]
 
-3. In the SQL Database manager, click **Design**, click **Tables**, select a table in your mobile service's schema, click **Drop table**, and then **OK** to confirm.
+3. SQL データベース マネージャーで、**[設計]**、**[テーブル]** の順にクリックし、モバイル サービスのスキーマ内にあるテーブルを選択して、**[テーブルの削除]** をクリックしてから、**[OK]** をクリックして削除してよいことを確認します。
 
 	![][2]
    
-4. Repeat the previous step for each table in the mobile service's schema.
+4. モバイル サービスのスキーマ内にあるテーブルごとに、前の手順を繰り返します。
 
-	With the existing tables removed, Code First Migrations can be intialized on the SQL Database. Tables that do not belong to the mobile service's schema do not affect your mobile service and should not be dropped.
+	既存のテーブルを削除した後、SQL データベースに対して Code First Migrations を初期化できます。モバイル サービスのスキーマに属していないテーブルは、モバイル サービスには影響を及ぼさず、削除することは望ましくありません。
 
-## <a name="migrations"></a>Enable Code First Migrations
+## <a name="migrations"></a>Code First Migrations の有効化
 
-Code First Migrations uses a snapshot method to generate code that, when executed, makes schema changes to the database. With Migrations, you can make incremental changes to your data model and maintain existing data in the database. The following steps turn on Migrations and apply data model changes in the project, the local database, and in Azure. 
+Code First Migrations は、実行されたときにスナップショットの手法を使用して、データベースに対してスキーマの変更を加えるコードを生成します。Migrations を使用する場合は、データ モデルに対して増分の変更を加え、データベース内で既存のデータを保持することができます。次の手順では Migrations を有効にし、プロジェクト、ローカル データベース、Azure のそれぞれに対してデータ モデルの変更を適用します。
 
-1. In Visual Studio in the Solution Explorer, right-click the mobile service project and click **Set as startup project**.
+1. Visual Studio のソリューション エクスプローラーで、モバイル サービス プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
  
-2. From the **Tools** menu, expand **NuGet Package Manager**, then click **Package Manager Console**.
+2. **[ツール]** メニューで **[NuGet パッケージ マネージャー]** を展開し、**[パッケージ マネージャー コンソール]** をクリックします。
 
-	This displays the Package Manager Console, which you will use to manage your Code First Migrations.
+	この結果、パッケージ マネージャー コンソールが表示され、このコンソールを使用して Code First Migrations を管理することができます。
 
-3. In the Package Manager Console, run the following command:
+3. パッケージ マネージャー コンソールで、次のコマンドを実行します。
 
 		PM> Enable-Migrations
 
-	This turns on Code First Migrations for your project.
+	この結果、プロジェクトに対して Code First Migrations が有効になります。
 
-4. In the console, run the following command:
+4. コンソールで、次のコマンドを実行します。
 
 		PM> Add-Migration Initial
 
-	This creates a new migration named *Initial*. Migration code is stored in the Migrations project folder.
+	この結果、*Initial* という名前の新しい移行が作成されます。移行用コードは、Migrations プロジェクト フォルダーに格納されます。
 
-5. Expand the App_Start folder, open the WebApiConfig.cs project file and add the following **using** statements:
+5. [App_Start] フォルダーを展開し、WebApiConfig.cs プロジェクト ファイルを開き、次の **using** ステートメントを追加します。
 
 		using System.Data.Entity.Migrations;
 		using todolistService.Migrations;
 
-	In the above code, you must replace the _todolistService_ string with the namespace of your project, which for the downloaded quickstart project is <em>mobile&#95;service&#95;name</em>Service.  
+	上記のコードで、_todolistService_ 文字列を、プロジェクトで使用している名前空間に置換する必要があります。ダウンロードしたクイックスタート プロジェクトの場合は、<em>mobile&#95;service&#95;name</em>Service です。
  
-6. In this same code file, comment-out the call to the **Database.SetInitializer** method and add the following code after it:
+6. この同じコード ファイル内で、**Database.SetInitializer** メソッドの呼び出しをコメント アウトし、その後に次のコードを追加します。
 
         var migrator = new DbMigrator(new Configuration());
         migrator.Update();
 
-	This disables the default Code First database initializer that drops and recreates the database and replaces it with an explicit request to apply the latest migration. At this point, any data model changes will result in an InvalidOperationException when the data is accessed, unless a migration has been created for it. Going forward, your service must use Code First Migrations to migrate data model changes to the database.
+	この結果、データベースの削除と再作成を実行する Code First database の既定の初期化子が無効になり、最新の移行を適用する明示的な要求に置換されます。この時点で、データに対する移行がまだ作成されていない場合は、データにアクセスしたときに、InvalidOperationException 内でデータ モデルに対するすべての変更が発生する結果になります。この後、サービスで Code First Migrations を使用して、データ モデルに対する変更をデータベースに移行する必要があります。
 
-7.  Press F5 to start the mobile service project on the local computer.
+7. F5 キーを押して、ローカル コンピューターでモバイル サービス プロジェクトを開始します。
  
-	At this point, the database is in sync with the data model. If you provided seed data, you can verify it by clicking **Try it out**, **GET tables/todoitem**, then **Try this out** and **Send**. For more information, see [Seeding data in migrations].
+	この時点で、データベースは、データ モデルと同期した状態にあります。登録されたデータを指定した場合は、**[Try it out]**、**[GET tables/todoitem]**、**[Try this out]**、**[Send]** の順にクリックして、このことを確認できます。詳細については、「[移行時のデータの登録]」を参照してください。
 
-8.   Now make a change to your data model, such as adding a new UserId property to the TodoItem type, rebuild the project, and then in the Package Manager, run the following command:
+8.   ここで、TodoItem の種類に対して新しい UserId プロパティを追加するなど、データ モデルに変更を加え、プロジェクトをリビルドし、パッケージ マネージャーで次のコマンドを実行します。
 
 		PM> Add-Migration NewUserId
                                                                
-	This creates a new migration named *NewUserId*. A new code file, which implements this change, is added in the Migrations folder  
+	この結果、*NewUserId* という名前の新しい移行が作成されます。この変更を実装する新しいコード ファイルが、Migrations フォルダーに追加されます。
 
-9.  Press F5 again to restart the mobile service project on the local computer.
+9.  F5 キーを押して、ローカル コンピューターでモバイル サービス プロジェクトを再起動します。
 
-	The migration is applied to the database and the database is again in sync with the data model. If you provided seed data, you can verify it by clicking **Try it out**, **GET tables/todoitem**, then **Try this out** and **Send**. For more information, see [Seeding data in migrations].
+	この移行がデータベースに適用され、データベースはもう一度データ モデルに同期されます。登録されたデータを指定した場合は、**[Try it out]**、**[GET tables/todoitem]**、**[Try this out]**、**[Send]** の順にクリックして、このことを確認できます。詳細については、「[移行時のデータの登録]」を参照してください。
 
-10. Republish the mobile service to Azure, then run the client app to access the data and verify that data loads and no error occur. 
+10. Azure に対してモバイル サービスを再発行してから、クライアント アプリケーションを実行してデータにアクセスし、データが読み込まれて何もエラーが発生していないことを確認します。
 
-13. (Optional) In the [Azure Management Portal], select your mobile service, click the **Configure** tab, and click the **SQL Database** link. 
+13. (省略可能) [Azure 管理ポータル]にログインし、モバイル サービスを選択して、**[構成]** タブ、**[SQL データベース]** リンクの順にクリックします。
 
 	![][0]
 
-	This navigates to the SQL Database page for your mobile service's database.
+	この結果、モバイル サービスのデータベースに対応する SQL データベース ページに移動します。
 
-14. (Optional) Click **Manage**, log in to your SQL Database server, then click **Design** and verify that the schema changes have been made in Azure. 
+14. (省略可能) **[管理]** をクリックし、SQL データベース サーバーにログインしてから、**[設計]** をクリックして、Azure にスキーマの変更が加えられたことを確認します。
 
     ![][1] 
 
 
-##<a name="seeding"></a>Seeding data in migrations
+##<a name="seeding"></a>移行時のデータの登録
 
-You can have Migrations add seed data to the database when a migration is executed. The Configuration class has a Seed method that you can override to insert or update data. The Configuration.cs code file is added to the Migrations folder when Migrations are enabled. These examples show how to override the [Seed] method to seed data to the **TodoItems** table. The [Seed] method is called after migrating to the latest version. 
+移行を実行するときに、Migrations が登録データをデータベースに追加するように設定することもできます。Configuration クラスには、登録を行うための Seed メソッドがあり、このメソッドを使用してデータの挿入または更新をオーバーライドすることができます。Migrations を有効にするときに、Configuration.cs コード ファイルが Migrations フォルダーに追加されます。以下の例では、[Seed] メソッドをオーバーライドして、データを **TodoItems** テーブルに登録する方法を示します。最新のバージョンに移行した後で、[Seed] メソッドが呼び出されます。
 
-###Seed a new table
+###新しいテーブルの登録
 
-The following code seeds the **TodoItems** table with new rows of data:
+次のコードでは、新しいデータ行を使用して **TodoItems** テーブルへの登録を実行します。
 
         List<TodoItem> todoItems = new List<TodoItem>
         {
@@ -117,9 +117,9 @@ The following code seeds the **TodoItems** table with new rows of data:
         }
         base.Seed(context);
 
-###Seed a new column in a table
+###テーブル内での新しい列の登録
 
-The following code seeds just the UserId column:
+次のコードでは、UserId 列のみを登録します。
  		    
         context.TodoItems.AddOrUpdate(
             t => t.UserId,
@@ -129,11 +129,11 @@ The following code seeds just the UserId column:
             );
         base.Seed(context);
 
-This code calls the [AddOrUpdate] helper extension method to add seed data to the new UserId column. By using [AddOrUpdate], duplicate rows are not created.
+このコードは、[AddOrUpdate] ヘルパー拡張メソッドを呼び出し、登録データを新しい UserId 列に追加します。[AddOrUpdate] を使用する場合は、重複する行は作成されません。
 
 <!-- Anchors -->
 [Migrations]: #migrations
-[Seeding data in migrations]: #seeding
+[移行時のデータの登録]: #seeding
 
 <!-- Images -->
 [0]: ./media/mobile-services-dotnet-backend-how-to-use-code-first-migrations/navagate-to-sql-database.png
@@ -141,8 +141,9 @@ This code calls the [AddOrUpdate] helper extension method to add seed data to th
 [2]: ./media/mobile-services-dotnet-backend-how-to-use-code-first-migrations/sql-database-drop-tables.png
 
 <!-- URLs -->
-[DropCreateDatabaseIfModelChanges]: http://msdn.microsoft.com/query/dev12.query?appId=Dev12IDEF1&l=EN-US&k=k("System.Data.Entity.DropCreateDatabaseIfModelChanges`1");k(TargetFrameworkMoniker-.NETFramework,Version%3Dv4.5);k(DevLang-csharp)&rd=true
-[Seed]: http://msdn.microsoft.com/en-us/library/hh829453(v=vs.113).aspx
-[Azure Management Portal]: https://manage.windowsazure.com/
-[DbContext]: http://msdn.microsoft.com/en-us/library/system.data.entity.dbcontext(v=vs.113).aspx
-[AddOrUpdate]: http://msdn.microsoft.com/en-us/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx
+[DropCreateDatabaseIfModelChanges]: http://msdn.microsoft.com/query/dev12.query?appId=Dev12IDEF1&l=ja-jp&k=k("System.Data.Entity.DropCreateDatabaseIfModelChanges`1");k(TargetFrameworkMoniker-.NETFramework,Version%3Dv4.5);k(DevLang-csharp)&rd=true
+[Seed]: http://msdn.microsoft.com/ja-jp/library/hh829453(v=vs.113).aspx
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[DbContext]: http://msdn.microsoft.com/ja-jp/library/system.data.entity.dbcontext(v=vs.113).aspx
+[AddOrUpdate]: http://msdn.microsoft.com/ja-jp/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx
+

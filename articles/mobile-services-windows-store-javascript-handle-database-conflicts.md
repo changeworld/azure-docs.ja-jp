@@ -1,45 +1,45 @@
-<properties linkid="develop-mobile-tutorials-optimistic-concurrent-data-javascript" urlDisplayName="Optimistic concurrency" pageTitle="Handle database write conflicts with optimistic concurrency (Windows Store) | Mobile Dev Center" metaKeywords="" writer="wesmc" description="Learn how to handle database write conflicts on both the server and in your Windows Store application." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Handling database write conflicts" />
+<properties linkid="develop-mobile-tutorials-optimistic-concurrent-data-javascript" urlDisplayName="オプティミスティック同時実行制御" pageTitle="オプティミスティック同時実行制御を使用したデータベース書き込み競合の処理 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" writer="wesmc" description="サーバー上と Windows ストア アプリケーション内でデータベース書き込み競合を処理する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="データベースの書き込み競合の処理" />
 
-# Handling database write conflicts
+# データベースの書き込み競合の処理
 
 <div class="dev-center-tutorial-selector sublanding">
-<a href="/en-us/develop/mobile/tutorials/handle-database-write-conflicts-dotnet/" title="Windows Store C#">Windows Store C#</a>
-<a href="/en-us/develop/mobile/tutorials/handle-database-write-conflicts-javascript/" title="Windows Store JavaScript" class="current">Windows Store JavaScript</a>
-<a href="/en-us/develop/mobile/tutorials/handle-database-write-conflicts-wp8/" title="Windows Phone">Windows Phone</a></div>	
+<a href="/ja-jp/develop/mobile/tutorials/handle-database-write-conflicts-dotnet/" title="Windows ストア C#">Windows ストア C#</a>
+<a href="/ja-jp/develop/mobile/tutorials/handle-database-write-conflicts-javascript/" title="Windows ストア JavaScript" class="current">Windows ストア JavaScript</a>
+<a href="/ja-jp/develop/mobile/tutorials/handle-database-write-conflicts-wp8/" title="Windows Phone">Windows Phone</a></div>	
 
-This tutorial is intended to help you better understand how to handle conflicts that occur when two or more clients write to the same database record in a Windows Store app. Two or more clients may write changes to the same item, at the same time, in some scenarios. Without any conflict detection, the last write would overwrite any previous updates even if this was not the desired result. Windows Azure Mobile Services provides support for detecting and resolving these conflicts. This topic walks you through the steps that allow you to handle database write conflicts on both the server and in your application.
+このチュートリアルでは、Windows ストア アプリケーションの同じデータベース レコードに複数のクライアントが書き込みを行ったときに発生する競合を処理する方法について説明します。シナリオによっては、複数のクライアントが同じ項目に対して同時に変更を書き込む場合があります。競合を検知しない場合、それを意図していなくても、最後に行われた書き込みによってそれ以前の更新がすべて上書きされます。Windows Azure Mobile Services には、このような競合を検出して解決する機能がサポートされています。このトピックでは、サーバー上とアプリケーション内でデータベース書き込み競合を処理する手順を紹介します。
 
-In this tutorial you will add functionality to the quickstart app to handle contentions that occur when updating the TodoItem database. This tutorial walks you through these basic steps:
+このチュートリアルでは、クイック スタート アプリケーションに機能を追加して、TodoItem データベースを更新するときに発生する競合を処理します。このチュートリアルでは、次の基本的な手順について説明します。
 
-1. [Update the application to allow updates]
-2. [Enable Conflict Detection in your application]
-3. [Test database write conflicts in the application]
-4. [Automatically handling conflict resolution in server scripts]
-
-
-This tutorial requires the following
-
-+ Microsoft Visual Studio 2013 Express for Windows or later.
-+ This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete [Get started with Mobile Services] downloading the JavaScript language version of the starter project. 
-+ [Windows Azure Account]
-+ Windows Azure Mobile Services NuGet Package 1.1.5 or later. To get the latest version, follow these steps below:
-	1. In Visual Studio, open the project and right-click the project in Solution Explorer then click **Manage Nuget Packages**. 
+1. [更新を実行できるようにアプリケーションを更新する]
+2. [アプリケーションでの競合検出を有効にする]
+3. [アプリケーションでデータベース書き込み競合をテストする]
+4. [サーバー スクリプトで競合の解決を自動的に処理する]
 
 
-	2. Expand **Online** and click **Microsoft and .NET**. In the search text box enter **WindowsAzure.MobileServices.WinJS**. Click **Install** on the **Windows Azure Mobile Services for WinJS** NuGet Package.
+このチュートリアルには、次のものが必要です。
+
++ Microsoft Visual Studio 2013 Express for Windows 以降。
++ このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[Mobile Services の使用]」を完了してスタート プロジェクトの JavaScript 言語バージョンをダウンロードしている必要があります。
++ [Windows Azure アカウント]
++ Windows Azure Mobile Services NuGet パッケージ 1.1.5 以降。最新バージョンを入手するには、次の手順に従います。
+	1. Visual Studio のソリューション エクスプローラーで、プロジェクトを開いて右クリックし、**[NuGet パッケージの管理]** をクリックします。
+
+
+	2. **[オンライン]** を展開し、**[Microsoft and .NET]** をクリックします。検索ボックスに「**WindowsAzure.MobileServices.WinJS**」と入力します。**WinJS 用の Windows Azure Mobile Services** NuGet パッケージで **[インストール]** をクリックします。
 
 		![][20]
 
 
  
 
-<h2><a name="uiupdate"></a><span class="short-header">Update the UI</span>Update the application to allow updates</h2>
+<h2><a name="uiupdate"></a><span class="short-header">UI の更新</span>更新を実行できるようにアプリケーションを更新する</h2>
 
-In this section you will update the user interface to allow updating the text of each item. The binding template will contain a checkbox and text class control for each item in the database table. You will be able to update the text field of the TodoItem. The application will handle the `keydown` event so that the item is updated by pressing the **Enter** key.
+このセクションでは、ユーザー インターフェイスを更新して、各項目のテキストを更新できるようにします。バインド テンプレートには、データベース テーブルの各項目に対応するチェックボックスおよびテキスト クラス コントロールが含まれます。TodoItem のテキスト フィールドを更新できるようになります。アプリケーションは `keydown` イベントを処理します。項目は **Enter** キーを押すと更新されます。
 
 
-1. In Visual Studio, open the JavaScript language version of the TodoList project you downloaded in the [Get started with Mobile Services] tutorial.
-2. In the Visual Studio Solution Explorer, open default.html and replace the `TemplateItem` div tag definition with the div tag shown below and save the change. This adds a textbox control to allow you to edit the text of a TodoItem.
+1. Visual Studio で、「[Mobile Services の使用]」チュートリアルでダウンロードした TodoList プロジェクトの JavaScript 言語バージョンを開きます。
+2. Visual Studio ソリューション エクスプローラーで default.html を開き、その中の `TemplateItem` div タグ定義を、次に示す div タグで置き換え、変更を保存します。これによってテキスト ボックス コントロールが追加され、TodoItem のテキストを編集できるようになります。
 
         <div id="TemplateItem" data-win-control="WinJS.Binding.Template">
           <div style="display: -ms-grid; -ms-grid-columns: auto 1fr">
@@ -51,7 +51,7 @@ In this section you will update the user interface to allow updating the text of
         </div>
 
 
-3. In Solution Explorer for Visual Studio, expand the **js** folder. Open the default.js file and replace the `updateTodoItem` function with the following definition which will not remove updated items from the user interface.
+3. Visual Studio のソリューション エクスプローラーで、**js** フォルダーを展開します。default.js ファイルを開き、`updateTodoItem` 関数を次の定義で置き換えますが、ユーザー インターフェイスの更新された項目は削除されません。
 
         var updateTodoItem = function (todoItem) {
           // This code takes a freshly completed TodoItem and updates the database. 
@@ -59,7 +59,7 @@ In this section you will update the user interface to allow updating the text of
           };
 
 
-4. In the default.js file, add the following event handler for the `keydown` event so that the item is updated by pressing the **Enter** key.
+4. default.js ファイルで、`keydown` イベントに次のイベント ハンドラーを追加します。**Enter** キーを押すと項目が更新されます。
 
         listItems.onkeydown = function (eventArgs) {
           if (eventArgs.key == "Enter") {
@@ -69,19 +69,19 @@ In this section you will update the user interface to allow updating the text of
             }
           };
 
-The application now writes the text changes to each item back to the database when the **Enter** key is pressed.
+これで、**Enter** キーが押されたときに各項目のテキストの変更がデータベースに書き戻されるようになります。
 
-<h2><a name="enableOC"></a><span class="short-header">Enable Optimistic Concurrency</span>Enable Conflict Detection in your application</h2>
+<h2><a name="enableOC"></a><span class="short-header">オプティミスティック同時実行制御の有効化</span>アプリケーションでの競合検出を有効にする</h2>
 
-Windows Azure Mobile Services supports optimistic concurrency control by tracking changes to each item using the `__version` system property column that is added to each table. In this section, we will enable the application to detect these write conflicts through the `__version` system property. Once this system property is enabled on the todoTable, the application will be notified by a `MobileServicePreconditionFailedException` during an update attempt if the record has changed since the last query. The app will then be able to make a choice of whether to commit its change to the database or leave the last change to the database intact. For more information on the System Properties for Mobile Services, see [System Properties].
+Windows Azure Mobile Services はオプティミスティック同時実行制御をサポートしており、各テーブルに追加されている `__version` システム プロパティ列を使用して各項目の変更を追跡します。このセクションでは、アプリケーションで `__version` システム プロパティを利用してこのような書き込み競合を検出できるようにします。このシステム プロパティが todoTable で有効になると、前回のクエリ以降にレコードが変更されていた場合、更新中にアプリケーションに対して `MobileServicePreconditionFailedException` で通知されます。その際、アプリケーションではデータベースに変更をコミットするか、前回の変更をそのままデータベースに残すかというどちらかの処理を選択することができます。モバイル サービスのシステム プロパティの詳細については、[システム プロパティ]に関するページを参照してください。
 
-1. In the default.js file, under the declaration of the `todoTable` variable, add the code to include the **__version** system property enabling support for write conflict detection.
+1. default.js ファイルの `todoTable` 変数の宣言の下に次のコードを追加します。このコードには **__version** システム プロパティが含まれており、書き込み競合の検出がサポートされます。
 
         var todoTable = client.getTable('TodoItem');
         todoTable.systemProperties |= WindowsAzure.MobileServiceTable.SystemProperties.Version;
 
 
-2. By adding the `Version` system property to the table's system properties, the application will be notified with a `MobileServicePreconditionFailedException` exception during an update if the record has changed since the last query. This exception will be caught in JavaScript with an error function. The error includes the latest version of the item from the server which is used to resolve conflicts. In default.js, update the `updateTodoItem` function to catch the error and call a `resolveDatabaseConflict` function.
+2. テーブルのシステム プロパティに `Version` システム プロパティを追加することで、前回のクエリ以降にレコードが変更されていた場合、更新中にアプリケーションに対して `MobileServicePreconditionFailedException` 例外が通知されます。この例外は JavaScript でエラー関数を使用して捕捉されます。エラーには、競合を解決するために使用されるサーバーの項目の最新バージョンが含まれます。default.js で `updateTodoItem` 関数を更新してエラーを捕捉し、`resolveDatabaseConflict` 関数を呼び出します。
 
         var updateTodoItem = function (todoItem) {
           // This code takes a freshly completed TodoItem and updates the database. 
@@ -104,7 +104,7 @@ Windows Azure Mobile Services supports optimistic concurrency control by trackin
         };
 
 
-3. In default.js, add the definition for the `resolveDatabaseConflict()` function that is referenced in `updateTodoItem` function. Notice that in order to resolve the conflict, you set the local item's version to the updated version from the server before updating the item in the database. Otherwise, you will continually encounter a conflict.
+3. default.js で、`updateTodoItem` 関数で参照される `resolveDatabaseConflict()` 関数の定義を追加します。競合を解決する順序に注意してください。ローカル項目のバージョンをサーバーから取得された更新後のバージョンに設定した後で、データベースの項目を更新します。この順序に従わない場合、競合が次々と発生します。
 
 
         var resolveDatabaseConflict = function (localItem, serverItem) {
@@ -125,32 +125,32 @@ Windows Azure Mobile Services supports optimistic concurrency control by trackin
         }
 
 
-<h2><a name="test-app"></a><span class="short-header">Test the app</span>Test database write conflicts in the application</h2>
+<h2><a name="test-app"></a><span class="short-header">アプリケーションのテスト</span>アプリケーションでデータベース書き込み競合をテストする</h2>
 
-In this section you will build a Windows Store app package to install the app on a second machine or virtual machine. Then you will run the app on both machines generating a write conflict to test the code. Both instances of the app will attempt to update the same item's `text` property requiring the user to resolve the conflict.
+このセクションでは、Windows ストア アプリケーション パッケージをビルドして、そのアプリケーションを 2 台目のコンピューターまたは仮想マシンにインストールします。その後、2 台のコンピューターでアプリケーションを実行し、書き込み競合を発生させて、コードをテストします。2 つのアプリケーション インスタンスが同じ項目の `text` プロパティを更新しようとして、ユーザーに競合の解決を要求します。
 
 
-1. Create a Windows Store app package to install on second machine or virtual machine. To do this, click **Project**->**Store**->**Create App Packages** in Visual Studio.
+1. Windows ストア アプリケーション パッケージを作成し、2 台目のコンピューターまたは仮想マシンにインストールします。それには、Visual Studio で **[プロジェクト]**、**[ストア]**、**[アプリケーション パッケージの作成]** の順にクリックします。
 
 	![][0]
 
-2. On the Create Your Packages screen, click **No** as this package will not be uploaded to the Windows Store. Then click **Next**.
+2. [パッケージの作成] 画面で、Windows ストアにこのパッケージをアップロードするかどうかを確認する質問に対して **[いいえ]** をクリックします。その後、**[次へ]** をクリックします。
 
 	![][1]
 
-3. On the Select and Configure Packages screen, accept the defaults and click **Create**.
+3. [パッケージの選択と構成] 画面で、既定の設定をそのまま適用し、**[作成]** をクリックします。
 
 	![][10]
 
-4. On the Package Creation Completed screen, click the **Output location** link to open the package location.
+4. [パッケージの作成が完了しました] 画面で、**[出力場所]** リンクをクリックして、パッケージの出力場所を開きます。
 
    	![][11]
 
-5. Copy the package folder, "todolist_1.0.0.0_AnyCPU_Debug_Test", to the second machine. On that machine, open the package folder and right click on the **Add-AppDevPackage.ps1** PowerShell script and click **Run with PowerShell** as shown below. Follow the prompts to install the app.
+5. パッケージ フォルダー "todolist_1.0.0.0_AnyCPU_Debug_Test" を 2 台目のコンピューターにコピーします。このコンピューター上でこのパッケージ フォルダーを開き、次に示すように、**Add-AppDevPackage.ps1** PowerShell スクリプトを右クリックして **[PowerShell で実行]** をクリックします。表示される手順に従ってアプリケーションをインストールします。
 
 	![][12]
   
-6. Run instance 1 of the app in Visual Studio by clicking **Debug**->**Start Debugging**. On the Start screen of the second machine, click the down arrow to see "Apps by name". Then click the **todolist** app to run instance 2 of the app. 
+6. Visual Studio で **[デバッグ]**、**[デバッグの開始]** の順にクリックして、アプリケーション インスタンス 1 を実行します。2 台目のコンピューターの [スタート] 画面で、下向きの矢印ボタンをクリックし、[アプリ 名前順] を表示します。**todolist** アプリケーションをクリックして、アプリケーション インスタンス 2 を実行します。
 
 	App Instance 1	
 	![][2]
@@ -159,7 +159,7 @@ In this section you will build a Windows Store app package to install the app on
 	![][2]
 
 
-7. In instance 1 of the app, update the text of the last item to **Test Write 1**, then press the **Enter** key to update the database. The screenshot below shows an example.
+7. アプリケーション インスタンス 1 で、最後の項目のテキストを「**Test Write 1**」に更新した後、**Enter** キーを押してデータベースを更新します。次のスクリーンショットのようになります。
 	
 	App Instance 1	
 	![][3]
@@ -167,7 +167,7 @@ In this section you will build a Windows Store app package to install the app on
 	App Instance 2	
 	![][2]
 
-8. At this point the last item in instance 2 of the app has an old version of the item. In that instance of the app, enter **Test Write 2** for the `text` property of the last item and press **Enter** to update the database with an old `_version` property.
+8. この時点で、アプリケーション インスタンス 2 内の最後の項目には使用していないバージョンが含まれています。そのアプリケーション インスタンスで、最後の項目の `text` プロパティに「**Test Write 2**」を入力し、**Enter** キーを押して、使用していない `_version` プロパティでデータベースを更新します。
 
 	App Instance 1	
 	![][4]
@@ -175,7 +175,7 @@ In this section you will build a Windows Store app package to install the app on
 	App Instance 2	
 	![][5]
 
-9. Since the `__version` value used with the update attempt didn't match the server `__version` value, the Mobile Services SDK throws a `MobileServicePreconditionFailedException` as an error in the `updateTodoItem` function allowing the app to resolve this conflict. To resolve the conflict, you can click **Yes** to commit the values from instance 2. Alternatively, click **No** to discard the values in instance 2, leaving the values from instance 1 of the app committed. 
+9. この更新の試行で使用された `__version` の値は、サーバー側の `__version` の値と一致していないため、アプリケーション側でこの競合を解決できるように Mobile Services SDK から `updateTodoItem` 関数のエラーとして `MobileServicePreconditionFailedException` がスローされます。競合を解決するには、**[はい]** をクリックしてインスタンス 2 の値をコミットします。または、**[いいえ]** をクリックしてインスタンス 2 の値を破棄し、インスタンス 1 でコミットされた値を残します。
 
 	App Instance 1	
 	![][4]
@@ -185,28 +185,28 @@ In this section you will build a Windows Store app package to install the app on
 
 
 
-<h2><a name="scriptsexample"></a><span class="short-header">Handling conflicts with scripts</span>Automatically handling conflict resolution in server scripts</h2>
+<h2><a name="scriptsexample"></a><span class="short-header">スクリプトを使用した競合処理</span>サーバー スクリプトで競合の解決を自動的に処理する</h2>
 
-You can detect and resolve write conflicts in server scripts. This is a good idea when you can use scripted logic instead of user interaction to resolve the conflict. In this section, you will add a server side script to the TodoItem table for the application. The logic this script will use to resolve conflicts is as follows:
+サーバー スクリプトで書き込み競合を検出し、解決することができます。ユーザーの操作ではなくスクリプト ロジックによって競合を解決できる場合、この方法を使用することをお勧めします。このセクションでは、アプリケーションで使用する TodoItem テーブルにサーバー側スクリプトを追加します。このスクリプトで使用されるロジックでは、次の方法で競合を解決します。
 
-+  If the TodoItem's ` complete` field is set to true, then it is considered completed and `text` can no longer be changed.
-+  If the TodoItem's ` complete` field is still false, then attempts to update `text` will be comitted.
++  TodoItem の `complete` フィールドが true に設定されている場合、これは完了していると見なされ、`text` を変更できなくなります。
++  TodoItem の `complete` フィールドが false のままである場合は、`text` の更新の試行がコミットされます。
 
-The following steps walk you through adding the server update script and testing it.
+次の手順で、サーバー更新スクリプトの追加とテストの方法を説明します。
 
-1. Log into the [Windows Azure Management Portal], click **Mobile Services**, and then click your app. 
+1. [Windows Azure の管理ポータル]にログインし、**[Mobile Services]** をクリックして、アプリケーションをクリックします。
 
    	![][7]
 
-2. Click the **Data** tab, then click the **TodoItem** table.
+2. **[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
    	![][8]
 
-3. Click **Script**, then select the **Update** operation.
+3. **[スクリプト]** をクリックし、**[更新]** 操作を選択します。
 
    	![][9]
 
-4. Replace the existing script with the following function, and then click **Save**.
+4. 既存のスクリプトを次の関数に置き換え、**[保存]** をクリックします。
 
 		function update(item, user, request) { 
 			request.execute({ 
@@ -223,7 +223,7 @@ The following steps walk you through adding the server update script and testing
 				}
 			}); 
 		}   
-5. Run the **todolist** app on both machines. Change the TodoItem `text` for the last item in instance 2 and press **Enter** so the app updates the database.
+5. 両方のコンピューターで **todolist** アプリケーションを実行します。インスタンス 2 で、最後の項目の TodoItem `text` を変更し、**Enter** キーを押してデータベースが更新されるようにします。
 
 	App Instance 1	
 	![][4]
@@ -231,7 +231,7 @@ The following steps walk you through adding the server update script and testing
 	App Instance 2	
 	![][5]
 
-6. In instance 1 of the app, enter a different value for the last text property then press **Enter**. The app attempts to update the database with an incorrect `__version` property.
+6. アプリケーション インスタンス 1 で、最後の text プロパティに別の値を入力し、**Enter** キーを押します。アプリケーションは不適切な `__version` プロパティでデータベースを更新しようとします。
 
 	App Instance 1	
 	![][13]
@@ -239,7 +239,7 @@ The following steps walk you through adding the server update script and testing
 	App Instance 2	
 	![][14]
 
-7. Notice that no exception was encountered in the app since the server script resolved the conflict allowing the update since the item is not marked complete. To see that the update was truly successful, click **Refresh** in instance 2 to re-query the database.
+7. この項目は完了としてマークされていないため、サーバー側スクリプトによって更新が許可され、競合が解決されることから、アプリケーション内では例外が発生しません。更新が本当に成功したかどうか確認するには、インスタンス 2 の **[Refresh]** をクリックして、データベースに再びクエリを実行してください。
 
 	App Instance 1	
 	![][15]
@@ -247,7 +247,7 @@ The following steps walk you through adding the server update script and testing
 	App Instance 2	
 	![][15]
 
-8. In instance 1, click the check box to complete the last Todo item.
+8. インスタンス 1 で、最後の Todo 項目のチェック ボックスをオンにして、完了としてマークします。
 
 	App Instance 1	
 	![][16]
@@ -255,7 +255,7 @@ The following steps walk you through adding the server update script and testing
 	App Instance 2	
 	![][15]
 
-9. In instance 2, try to update the last TodoItem's text and press **Enter** this causes a conflict because it has been updated setting the complete field to true. In response to the conflict, the script resolved it by refusing the update because the item was already completed. The script provided a message in the response.  
+9. インスタンス 2 で、最後の TodoItem のテキストを更新し、**Enter** キーを押します。complete フィールドの設定が true に更新されたため、競合が発生します。この項目は既に完了しているため、スクリプトが更新を拒否することで競合が解決されます。スクリプトによって、応答でメッセージが示されました。
 
 	App Instance 1	
 	![][17]
@@ -263,30 +263,30 @@ The following steps walk you through adding the server update script and testing
 	App Instance 2	
 	![][18]
 
-## <a name="next-steps"> </a>Next steps
+## <a name="next-steps"> </a>次のステップ
 
-This tutorial demonstrated how to enable a Windows Store app to handle write conflicts when working with data in Mobile Services. Next, consider completing one of the following tutorials in our data series:
+このチュートリアルでは、Windows ストア アプリケーションでモバイル サービスのデータを操作する際の書き込み競合を処理できるようにする方法について説明しました。次に、データ シリーズの次のチュートリアルのいずれかを行うことをお勧めします。
 
-* [Validate and modify data with scripts]
-  <br/>Learn more about using server scripts in Mobile Services to validate and change data sent from your app.
+* [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]
+  <br/>モバイル サービスでサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
-* [Refine queries with paging]
-  <br/>Learn how to use paging in queries to control the amount of data handled in a single request.
+* [ページングを使用したモバイル サービス クエリの改善]
+  <br/>クエリ内でページングを使用して、単一の要求で渡されるデータの量を制御する方法について説明します。
 
-Once you have completed the data series, you can also try one of the following Windows Store tutorials:
+データ シリーズを完了した後は、次に示すいずれかの Windows ストア チュートリアルを行うことができます。
 
-* [Get started with authentication] 
-  <br/>Learn how to authenticate users of your app.
+* [認証の使用]
+  <br/>アプリケーションのユーザーを認証する方法について説明します。
 
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app with Mobile Services.
+* [プッシュ通知の使用]
+  <br/>モバイル サービスを使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
  
 <!-- Anchors. -->
-[Update the application to allow updates]: #uiupdate
-[Enable Conflict Detection in your application]: #enableOC
-[Test database write conflicts in the application]: #test-app
-[Automatically handling conflict resolution in server scripts]: #scriptsexample
-[Next Steps]:#next-steps
+[更新を実行できるようにアプリケーションを更新する]: #uiupdate
+[アプリケーションでの競合検出を有効にする]: #enableOC
+[アプリケーションでデータベース書き込み競合をテストする]: #test-app
+[サーバー スクリプトで競合の解決を自動的に処理する]: #scriptsexample
+[次のステップ]:#next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-create-app-package1.png
@@ -312,18 +312,18 @@ Once you have completed the data series, you can also try one of the following W
 [20]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/mobile-manage-nuget-packages-dialog.png
 
 <!-- URLs. -->
-[Optimistic Concurrency Control]: http://go.microsoft.com/fwlink/?LinkId=330935
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started/#create-new-service
-[Windows Azure Account]: http://www.windowsazure.com/en-us/pricing/free-trial/
-[Validate and modify data with scripts]: /en-us/documentation/articles/mobile-services-windows-store-javascript-validate-modify-data-server-scripts/
-[Refine queries with paging]: /en-us/documentation/articles/mobile-services-windows-store-javascript-add-paging-data/
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started
-[Get started with authentication]: /en-us/documentation/articles/mobile-services-windows-store-javascript-get-started-users/
-[Get started with push notifications]: /en-us/documentation/articles/mobile-services-windows-store-javascript-get-started-push/
+[オプティミスティック同時実行制御]: http://go.microsoft.com/fwlink/?LinkId=330935
+[Mobile Services の使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
+[Windows Azure アカウント]: http://www.windowsazure.com/ja-jp/pricing/free-trial/
+[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-validate-modify-data-server-scripts/
+[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-add-paging-data/
+[Mobile Services の使用]: /ja-jp/develop/mobile/tutorials/get-started
+[認証の使用]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-users/
+[プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-push/
 
-[Windows Azure Management Portal]: https://manage.windowsazure.com/
-[Management Portal]: https://manage.windowsazure.com/
+[Windows Azure の管理ポータル]: https://manage.windowsazure.com/
+[管理ポータル]: https://manage.windowsazure.com/
 [Windows Phone 8 SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268374
-[Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268375
-[Developer Code Samples site]:  http://go.microsoft.com/fwlink/p/?LinkId=271146
-[System Properties]: http://go.microsoft.com/fwlink/?LinkId=331143
+[モバイル サービス SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268375
+[デベロッパー サンプル コード集のサイト]:  http://go.microsoft.com/fwlink/p/?LinkId=271146
+[システム プロパティ]: http://go.microsoft.com/fwlink/?LinkId=331143

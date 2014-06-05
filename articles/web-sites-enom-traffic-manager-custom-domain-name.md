@@ -1,51 +1,52 @@
-<properties title="Learn how to configure an Azure web site that uses Traffic Manager to use a domain name registered with eNom" pageTitle="Configure an eNom domain name for an Azure web site that uses Traffic Manager" metaKeywords="Windows Azure, Windows Azure Web Sites, domain name" description="" services="web-sites" documentationCenter="" authors="larryfr, jroth" />
+<properties title="eNom で登録したドメイン名を使用するように、トラフィック マネージャーを利用する Azure の Web サイトを構成する方法について説明します" pageTitle="トラフィック マネージャーを利用する Azure の Web サイトの eNom ドメイン名の構成" metaKeywords="Windows Azure, Windows Azure の Web サイト, ドメイン名" description="" services="web-sites" documentationCenter="" authors="larryfr, jroth" />
 
-#Configuring a custom domain name for an Azure Web Site using Traffic Manager (eNom)
+#トラフィック マネージャーを利用する Azure の Web サイトのカスタム ドメイン名の構成 (eNom)
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/web-sites-custom-domain-name" title="Custom Domain">Custom Domain</a><a href="/en-us/documentation/articles/web-sites-godaddy-custom-domain-name" title="GoDaddy">GoDaddy</a><a href="/en-us/documentation/articles/web-sites-network-solutions-custom-domain-name" title="Network Solutions">Network Solutions</a><a href="/en-us/documentation/articles/web-sites-registerdotcom-custom-domain-name" title="Register.com">Register.com</a><a href="/en-us/documentation/articles/web-sites-enom-custom-domain-name" title="Enom" class="current">Enom</a><a href="/en-us/documentation/articles/web-sites-moniker-custom-domain-name" title="Moniker">Moniker</a><a href="/en-us/documentation/articles/web-sites-dotster-custom-domain-name" title="Dotster">Dotster</a><a href="/en-us/documentation/articles/web-sites-domaindiscover-custom-domain-name" title="DomainDiscover">DomainDiscover</a><a href="/en-us/documentation/articles/web-sites-directnic-custom-domain-name" title="Directnic">Directnic</a></div>
-<div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/web-sites-enom-custom-domain-name/" title="Web Sites">Web Site</a> | <a href="/en-us/documentation/articles/web-sites-enom-traffic-manager-custom-domain-name/" title="Web Site using Traffic Manager" class="current">Web Site using Traffic Manager</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/web-sites-custom-domain-name" title="カスタム ドメイン">カスタム ドメイン</a><a href="/ja-jp/documentation/articles/web-sites-godaddy-custom-domain-name" title="GoDaddy">GoDaddy</a><a href="/ja-jp/documentation/articles/web-sites-network-solutions-custom-domain-name" title="Network Solutions">Network Solutions</a><a href="/ja-jp/documentation/articles/web-sites-registerdotcom-custom-domain-name" title="Register.com">Register.com</a><a href="/ja-jp/documentation/articles/web-sites-enom-custom-domain-name" title="Enom" class="current">Enom</a><a href="/ja-jp/documentation/articles/web-sites-moniker-custom-domain-name" title="Moniker">Moniker</a><a href="/ja-jp/documentation/articles/web-sites-dotster-custom-domain-name" title="Dotster">Dotster</a><a href="/ja-jp/documentation/articles/web-sites-domaindiscover-custom-domain-name" title="DomainDiscover">DomainDiscover</a><a href="/ja-jp/documentation/articles/web-sites-directnic-custom-domain-name" title="Directnic">Directnic</a></div>
+<div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/web-sites-enom-custom-domain-name/" title="Web サイト">Web サイト</a> | <a href="/ja-jp/documentation/articles/web-sites-enom-traffic-manager-custom-domain-name/" title="トラフィック マネージャーを利用する Web サイト" class="current">トラフィック マネージャーを利用する Web サイト</a></div>
 
 [WACOM.INCLUDE [intro](../includes/custom-dns-web-site-intro-traffic-manager.md)]
 
-This article provides instructions on using a custom domain name purchased from [eNom](https://enom.com) with Azure Web Sites.
+この記事では、[eNom](https://enom.com) から購入したカスタム ドメイン名を Azure の Web サイトで使用する手順を示します。
 
 [WACOM.INCLUDE [tmwebsitefooter](../includes/custom-dns-web-site-traffic-manager-notes.md)]
 
 [WACOM.INCLUDE [introfooter](../includes/custom-dns-web-site-intro-notes.md)]
 
-In this article:
+この記事の内容:
 
--   [Understanding DNS records](#understanding-records)
--   [Configure your web sites for standard mode](#bkmk_configsharedmode)
--   [Add a DNS record for your custom domain](#bkmk_configurecname)
--   [Enable Traffic Manager for your web site](#enabledomain)
+-   [DNS レコードについて](#understanding-records)
+-   [Web サイトの標準モード用の構成](#bkmk_configsharedmode)
+-   [カスタム ドメインの DNS レコードの追加](#bkmk_configurecname)
+-   [Web サイトに対するトラフィック マネージャーの有効化](#enabledomain)
 
-<h2><a name="understanding-records"></a>Understanding DNS records</h2>
+<h2><a name="understanding-records"></a>DNS レコードについて</h2>
 
 [WACOM.INCLUDE [understandingdns](../includes/custom-dns-web-site-understanding-dns-traffic-manager.md)]
 
-<h2><a name="bkmk_configsharedmode"></a>Configure your web sites for standard mode</h2>
+<h2><a name="bkmk_configsharedmode"></a>Web サイトの標準モード用の構成</h2>
 
 [WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes-traffic-manager.md)]
 
-<a name="bkmk_configurecname"></a><h2>Add a DNS record for your custom domain</h2>
+<a name="bkmk_configurecname"></a><h2>カスタム ドメインの DNS レコードの追加</h2>
 
-To associate your custom domain with an Azure Web Site, you must add a new entry in the DNS table for your custom domain by using tools provided by eNom. Use the following steps to locate the DNS tools for enom.com
+カスタム ドメインを Azure の Web サイトに関連付けるには、eNom のツールを使用して、新しいエントリをカスタム ドメインの DNS テーブルに追加する必要があります。次の手順を使用して eNom.com の DNS ツールを見つけます。
 
-1. Log on to your account with eNom, and select **Domains** and then **My Domains**. This will display your domain names.
+1. eNom のアカウントにログオンし、**[Domains]**、**[My Domains]** の順に選択します。これにより、ドメイン名が表示されます。
 
-2. From the **My Domains** page, use the **Manage Domain** field to select **Host Records**. This will display the host records fields.
+2. **[My Domains]** ページで、**[Manage Domain]** フィールドを使用して **[Host Records]** を選択します。これにより、ホスト レコードのフィールドが表示されます。
 
-	![DNS Zone File tab](./media/web-sites-custom-domain-name/e-hostrecords.png)
+	![[DNS Zone File] タブ](./media/web-sites-custom-domain-name/e-hostrecords.png)
 
-4. The Host Records editor allows you to select the specific record type using the **Record Type** field. For Azure Web Sites that use Traffic Manager, you should only use the **CNAME (Alias)** selection, as Traffic Manager only works with CNAME records.
+4. Host Records editor では、**[Record Type]** フィールドを使用して特定のレコード タイプを選択できます。トラフィック マネージャーを利用する Azure の Web サイトの場合、**[CNAME (Alias)]** のみを選択して使用する必要があります。トラフィック マネージャーはCNAME でのみ動作するためです。
 
-	![zone file editor](./media/web-sites-custom-domain-name/e-editrecordstm.png)
+	![Zone File Editor](./media/web-sites-custom-domain-name/e-editrecordstm.png)
 
-	* When adding a CNAME record, you must set the **Host Name** field to the sub-domain you wish to use. For example, **www**. You must set the **Address** field to the **.trafficmanager.net** domain name of the Traffic Manager profile used with your Azure Web Site. For example, **contoso.trafficmanager.net**.
+	* CNAME レコードを追加するときは、**[Host Name]** フィールドを、使用するサブドメインに設定する必要があります。たとえば **www** にします。**[Address]** フィールドを、Azure の Web サイトで利用するトラフィック マネージャー プロファイルの **.trafficmanager.net** ドメイン名に設定する必要があります。たとえば **contoso.trafficmanager.net** にします。
 
-5. When you have finished adding or modifying records, click **Save** to save the changes.
+5. レコードの追加または変更が完了したら、**[Save]** をクリックして変更を保存します。
 
-<h2><a name="enabledomain"></a>Enable Traffic Manager web site</h2>
+<h2><a name="enabledomain"></a>Web サイトに対するトラフィック マネージャーの有効化</h2>
 
 [WACOM.INCLUDE [modes](../includes/custom-dns-web-site-enable-on-traffic-manager.md)]
+

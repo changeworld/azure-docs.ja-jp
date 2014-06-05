@@ -1,12 +1,12 @@
 
 
-1. In Visual Studio, open the project that you modified when you completed the tutorial **Get started with data**.
+1. Visual Studio で、「**モバイル サービスでのデータの使用**」チュートリアルを実行したときに変更したプロジェクトを開きます。
 
-2. Press the **F5** key to run the app, then type text in **Insert a TodoItem** and click **Save**.
+2. **F5** キーを押してアプリケーションを実行し、**[Insert a TodoItem]** ボックスにテキストを入力して、**[Save]** をクリックします。
 
-3. Repeat the previous step at least three times, so that you have more than three items stored in the TodoItem table. 
+3. 前の手順を少なくとも 3 回繰り返して、TodoItem テーブルに項目を 3 つ以上保存します。
 
-2. In the default.js file, replace the **RefreshTodoItems** method with the following code:
+2. default.js ファイルで、**RefreshTodoItems** メソッドを次のコードに置き換えます。
 
         var refreshTodoItems = function () {
             // Define a filtered query that returns the top 3 items.
@@ -19,17 +19,17 @@
                 });
         };
 
-  	This query, when executed during data binding, returns the top three items that are not marked as completed.
+  	このクエリは、データ バインド中に実行されると、完了マークが付けられていない上位 3 つの項目を返します。
 
-3. Press the **F5** key to run the app.
+3. **F5** キーを押してアプリケーションを実行します。
 
-  	Notice that only the first three results from the TodoItem table are displayed. 
+  	TodoItem テーブルから最初の 3 つの結果だけが表示されることに注目してください。
 
-4. (Optional) View the URI of the request sent to the mobile service by using message inspection software, such as browser developer tools or [Fiddler]. 
+4. (省略可能) ブラウザー開発者ツールや [Fiddler] などのメッセージ検査ソフトウェアを使用して、モバイル サービスに送信された要求の URI を表示します。
 
-   	Notice that the **take(3)** method was translated into the query option **$top=3** in the query URI.
+   	クエリの URI では、**take(3)** メソッドがクエリ オプション **$top=3** に変換されていることに注目してください。
 
-5. Update the **RefreshTodoItems** method once more with the following code:
+5. 再度 **RefreshTodoItems** メソッドを次のコードに置き換えます。
             
         var refreshTodoItems = function () {
             // Define a filtered query that skips the first 3 items and 
@@ -44,15 +44,16 @@
                 });
         };
 
-   	This query skips the first three results and returns the next three after that. This is effectively the second "page" of data, where the page size is three items.
+   	このクエリでは、最初の 3 つの結果をスキップし、その後の 3 つを返します。ページ サイズが 3 つの項目である場合、これは実質的にデータの 2 番目の "ページ" になります。
 
-    <div class="dev-callout"><b>Note</b>
-    <p>This tutorial uses a simplified scenario by passing hard-coded paging values to the <strong>Take</strong> and <strong>Skip</strong> methods. In a real-world app, you can use queries similar to the above with a pager control or comparable UI to let users navigate to previous and next pages.  You can also call the  <strong>includeTotalCount</strong> method to get the total count of items available on the server, along with the paged data.</p>
+    <div class="dev-callout"><b>注</b>
+    <p>このチュートリアルでは、ハードコーディングされたページング値を <strong>Take</strong> メソッドおよび <strong>Skip</strong> メソッドに渡すことで簡略化したシナリオを使用しています。実際のアプリケーションでは、ユーザーが前後のページに移動できるように、ページャー コントロールまたは同等の UI と共に上記と同様のクエリを使用することができます。また、<strong>includeTotalCount</strong> メソッドを呼び出して、ページングされたデータと共に、サーバーで使用できる項目の合計数を取得することもできます。</p>
     </div>
 
-6. (Optional) Again view the URI of the request sent to the mobile service. 
+6. (省略可能) 再度、モバイル サービスに送信された要求の URI を表示します。
 
-   	Notice that the **skip(3)** method was translated into the query option **$skip=3** in the query URI.
+   	クエリの URI では、**skip(3)** メソッドがクエリ オプション **$skip=3** に変換されていることに注目してください。
 
 <!-- URLs -->
 [Fiddler]: http://go.microsoft.com/fwlink/?LinkID=262412
+

@@ -1,71 +1,71 @@
 
-<properties linkid="develop-mobile-tutorials-get-started-offline-data-dotnet" urlDisplayName="Getting Started with Offline Data" pageTitle="Get started with offline data in Mobile Services (Windows Store) | Mobile Dev Center" metaKeywords="" description="Learn how to use offline data in your Windows Store application." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Get started with offline data in Mobile Services" authors="wesmc" />
+<properties linkid="develop-mobile-tutorials-get-started-offline-data-dotnet" urlDisplayName="オフライン データの使用" pageTitle="モバイル サービスでのオフライン データの使用 (Windows ストア) | Mobile Dev Center" metaKeywords="" description="Windows ストア アプリケーションでオフライン データを使用する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="モバイル サービスでのオフライン データの使用" authors="wesmc" />
 
-# Get started with Offline Data in Mobile Services
+# モバイル サービスでのオフライン データの使用
 
 <div class="dev-center-tutorial-selector sublanding">
-<a href="/en-us/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data" title="Windows Store C#" class="current">Windows Store C#</a>
+<a href="/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data" title="Windows ストア C#" class="current">Windows ストア C#</a>
 </div>
 
-This topic shows you how to use use the offline capabilities of Azure Mobile Services. Azure Mobile Services offline features allow you to interact with a local database when you are in an offline scenario with your Mobile Service. The offline features allow you to sync your local changes with the mobile service when you are online again. 
+このトピックでは、Azure モバイル サービスのオフライン機能を使用する方法を説明します。Azure モバイル サービスのオフライン機能を使用すると、モバイル サービスに対してオフラインになっている状況でも、ローカル データベースとやり取りすることができます。再びオンライン状態に復帰したときに、オフライン機能により、ローカルの変更をモバイル サービスに同期させることができます。
 
-In this tutorial, you will update the app from the [Get started with Mobile Services] or [Get Started with Data] tutorial to support the offline features of Azure Mobile Services. Then you will add data in a disconnected offline scenario, sync those items to the online database, and then log in to the Windows Azure Management Portal to view changes to data made when running the app.
+このチュートリアルでは、[モバイル サービスの使用] または [データの使用] いずれかのチュートリアルで使用したアプリケーションを更新し、Azure モバイル サービスのオフライン機能をサポートできるようにします。その後、切断されたオフラインの状況でデータを追加し、それらの項目をオンライン データベースに同期してから、Windows Azure 管理ポータルにログインして、アプリケーションを実行したときにデータに加えた変更を表示します。
 
 
->[WACOM.NOTE] This tutorial is intended to help you better understand how Mobile Services enables you to use Windows Azure to store and retrieve data in a Windows Store app. As such, this topic walks you through many of the steps that are completed for you in the Mobile Services quickstart. If this is your first experience with Mobile Services, consider first completing the tutorial [Get started with Mobile Services].
+>[WACOM.NOTE]このチュートリアルの目的は、モバイル サービスが Windows ストア アプリのデータを Windows Azure に格納および取得できるようにするしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル「[モバイル サービスの使用]」を完了することをお勧めします。
 
-This tutorial walks you through these basic steps:
+このチュートリアルでは、次の基本的な手順について説明します。
 
-1. [Update the app to support offline features]
-2. [Test the app in an offline Scenario] 
-3. [Update the app to reconnect your mobile service]
-4. [Test the app connected to the Mobile Service]
+1. [オフライン機能をサポートするようにアプリケーションを更新する]
+2. [オフラインの状況でアプリケーションをテストする]
+3. [モバイル サービスに再接続するようにアプリケーションを更新する]
+4. [モバイル サービスに接続されているアプリケーションをテストする]
 
-This tutorial requires the following:
+このチュートリアルには、次のものが必要です。
 
-* Visual Studio 2013 running on Windows 8.1.
-* Completion of the [Get started with Mobile Services] or [Get Started with Data] tutorial.
-* Windows Azure Mobile Services SDK NuGet package version 1.3.0-alpha
-* Windows Azure Mobile Services SQLite Store NuGet package 0.1.0-alpha 
+* Windows 8.1 で実行されている Visual Studio 2013。
+*「[モバイル サービスの使用]」または「[データの使用]」を完了している。
+* Windows Azure Mobile サービス SDK の NuGet パッケージ Version 1.3.0-alpha
+* Windows Azure モバイル サービス SQLite Store の NuGet パッケージ 0.1.0-alpha
 * SQLite for Windows 8.1
 
->[WACOM.NOTE] To complete this tutorial, you need a Windows Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Windows Azure Free Trial</a>. 
+>[WACOM.NOTE] このチュートリアルを完了するには、Windows Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Windows Azure の無料評価版サイト</a>を参照してください。
 
-## <a name="enable-offline-app"></a>Update the app to support offline features
+## <a name="enable-offline-app"></a>オフライン機能をサポートするようにアプリケーションを更新する
 
-Azure Mobile Services offline features allow you to interact with a local database when you are in an offline scenario with your Mobile Service. To use these features in your app, you initialize `MobileServiceClient.SyncContext` to a local store. Then reference your table through the `IMobileServiceSyncTable` interface.
+Azure モバイル サービスのオフライン機能を使用すると、モバイル サービスに対してオフラインになっている状況でも、ローカル データベースとやり取りすることができます。アプリケーションでこれらの機能を使用するには、`MobileServiceClient.SyncContext` をローカル ストアに初期化します。その後、`IMobileServiceSyncTable` インターフェイスを使用してテーブルを参照します。
 
-This section uses SQLite as the local store for the offline features.
+このセクションでは、オフライン機能のローカル ストアとして SQLite を使用します。
 
->[WACOM.NOTE] You can skip this section and just download a version of the Getting Started project that already has offline support.  To download a project with offline support enabled, see [Getting Started Offline Sample].
+>[WACOM.NOTE] このセクションをスキップし、既にオフラインをサポートしている Getting Started プロジェクトのバージョンをダウンロードすることもできます。オフライン サポートが有効になっているプロジェクトをダウンロードするには、[オフライン サンプルの使用]を参照してください。
 
 
-1. Install SQLite. You can install it from this link, [SQLite for Windows 8.1].
+1. SQLite をインストールします。次のリンク [SQLite for Windows 8.1] からインストールできます。
 
-    >[WACOM.NOTE] If you are using Internet Explorer, clicking the link to install SQLite may prompt you to download the .vsix as a .zip file. Save the file to a location on your hard drive with the .vsix extension instead of .zip. The double click the .vsix file in Windows Explorer to run the installation.
+    >[WACOM.NOTE] Internet Explorer を使用している場合は、SQLite をインストールするためにこのリンクをクリックすると、.vsix を .zip ファイルとしてダウンロードするためのプロンプトが表示されることがあります。ファイルに .zip ではなく .vsix 拡張子を付けて、ハード ドライブ上の場所に保存します。エクスプローラーで .vsix ファイルをダブルクリックすると、インストールが実行されます。
 
-2. In Visual Studio open the project that you completed in the [Get started with Mobile Services] or [Get Started with Data] tutorial. Add a **Windows Extension** reference to **SQLite for Windows Runtime (Windows 8.1)**. 
+2. Visual Studio で、「[モバイル サービスの使用]」または「[データの使用]」のチュートリアルで完成させたプロジェクトを開きます。**[Windows 拡張]** への参照を **[SQLite for Windows Runtime (Windows 8.1)]** に追加します。
 
     ![][1]
 
-    >[WACOM.NOTE] The SQLite Runtime requires you to change the processor architecture of the project being built to **x86**, **x64**, or **ARM**. **Any CPU** is not supported.
+    >[WACOM.NOTE] SQLite ランタイムでは、ビルド対象のプロジェクトのプロセッサ アーキテクチャを **[x86]**、**[x64]**、または **[ARM]** に変更する必要があります。**[任意の CPU]** はサポートされません。
 
-3. In Solution Explorer for Visual Studio, right click your client app project and click **Manage Nuget Packages** to run NuGet Package Manager. Search for **SQLiteStore** to install the **WindowsAzure.MobileServices.SQLiteStore** package.
+3. Visual Studio のソリューション エクスプローラーで、クライアント アプリケーション プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックして NuGet パッケージ マネージャーを実行します。**SQLiteStore** を見つけ、**WindowsAzure.MobileServices.SQLiteStore** パッケージをインストールします。
 
     ![][2]
 
-4. In Solution Explorer for Visual Studio, open the MainPage.xaml.cs file. Add the following using statements to the top of the file.
+4. Visual Studio のソリューション エクスプローラーで、MainPage.xaml.cs ファイルを開きます。次の using ステートメントをファイルの先頭に追加します。
 
         using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
         using Microsoft.WindowsAzure.MobileServices.Sync;
         using Newtonsoft.Json.Linq;
 
-5. In Mainpage.xaml.cs replace the declaration of `todoTable` with a declaration of type `IMobileServicesSyncTable` that is initialized by calling `MobileServicesClient.GetSyncTable()`.
+5. Mainpage.xaml.cs 内で、`todoTable` の宣言を、`IMobileServicesSyncTable` を呼び出して初期化する `MobileServicesClient.GetSyncTable()` 型の宣言に置き換えます。
 
         //private IMobileServiceTable<TodoItem> todoTable = App.MobileService.GetTable<TodoItem>();
         private IMobileServiceSyncTable<TodoItem> todoTable = App.MobileService.GetSyncTable<TodoItem>();
 
-6. In MainPage.xaml.cs, update the `TodoItem` class so that the class includes the **Version** system property as follows.
+6. MainPage.xaml.cs で、`TodoItem` クラスを更新し、次のようにこのクラスに **Version** システム プロパティが含まれるようにします。
 
         public class TodoItem
         {
@@ -79,7 +79,7 @@ This section uses SQLite as the local store for the offline features.
         }
 
 
-7. In MainPage.xaml.cs, update the `OnNavigatedTo` event handler so that it initializes the client sync context with a SQLite store. The SQLite store is created with a table that matches the schema of the mobile service table but it must contain the **Version** system property added in the previous step.
+7. MainPage.xaml.cs で、`OnNavigatedTo` イベント ハンドラーを更新し、SQLite ストアを使用してクライアントの同期コンテキストを初期化するようにします。この SQLite ストアは、モバイル サービス テーブルのスキーマに一致するテーブルを使用して作成しますが、この中には、前の手順で追加した **Version** システム プロパティが含まれている必要があります。
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -92,9 +92,9 @@ This section uses SQLite as the local store for the offline features.
             RefreshTodoItems();
         }
 
-8. In Solution Explorer for Visual Studio, open the MainPage.xaml file. Find the the Grid element that contains the StackPanel titled **Query and Update Data**. Add the following UI code that replaces the elements from the row definitions down to the start tag of the ListView. 
+8. Visual Studio のソリューション エクスプローラーで、MainPage.xaml.xaml ファイルを開きます。**Query and Update Data** というタイトルの StackPanel を含む Grid 要素を見つけます。行の定義から ListView の開始タグに至るまでの要素を置き換える、次の UI コードを追加します。
 
-    This code adds row and column definitions to the grid to layout the elements. It also adds two button controls with click event handlers for **Push** and **Pull** operations. The buttons are positioned just above the `ListView` named ListItems. Save the file.
+    このコードは、要素をレイアウトするために、グリッドに行と列の定義を追加します。また、**Push** と **Pull** の各操作に対応するクリック イベント ハンドラーを持つ 2 つのボタン コントロールも追加します。これらのボタンは、`ListView` という名前の ListItems のすぐ上に配置されます。ファイルを保存します。
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -117,7 +117,7 @@ This section uses SQLite as the local store for the offline features.
         
 
 
-9. In MainPage.xaml.cs, add the button click event handlers for the **Push** and **Pull** buttons and save the file.
+9. MainPage.xaml.cs で、**Push** と **Pull** の各ボタンに対応するボタン クリック イベント ハンドラーを追加し、ファイルを保存します。
 
         private async void ButtonPull_Click(object sender, RoutedEventArgs e)
         {
@@ -163,35 +163,35 @@ This section uses SQLite as the local store for the offline features.
             }
         }
 
-10. Don't run the app yet. Press the **F7** key to rebuild the project. Verify no build errors occurred.
+10. このアプリケーションをまだ実行しないでください。**F7** キーを押してプロジェクトをリビルドします。ビルド エラーが発生しないことを確認します。
 
 
-## <a name="test-offline-app"></a>Test the app in an offline scenario
+## <a name="test-offline-app"></a>オフラインの状況でアプリケーションをテストする
 
-In this section, you break the app connection with the mobile service to simulate an offline scenario. Then you will add some data items which will be held in the local store.
+ここでは、オフラインの状況をシミュレートするために、モバイル サービスに対するアプリケーションの接続を解除します。その後、いくつかのデータ項目を追加します。これらはローカル ストア内に保持されます。
 
-Notice that in this section the app should not be connected to any mobile service. So the **Push** and **Pull** buttons will throw exceptions if you test them. In the next section, you will connect this client app to the mobile service again to test the **Push** and **Pull** operations to sync the store with the mobile service database.
+このセクションでは、アプリケーションをどのモバイル サービスに接続してはならないことに注意してください。したがって、**Push** と **Pull** の各ボタンをテストすると、例外がスローされます。次のセクションでは、このクライアント アプリケーションをモバイル サービスに再度接続し、ストアをモバイル サービスのデータベースに同期する目的で、**Push** と **Pull** の各操作をテストします。
 
 
-1. In Solution Explorer for Visual Studio, open App.xaml.cs. Change the initialization of the **MobileServiceClient** to a invalid address by replacing "**azure-mobile.net**" with "**azure-mobile.xxx**" for your URL. Then save the file.
+1. Visual Studio のソリューション エクスプローラーで App.xaml.cs を開きます。URLとして **azure mobile.net** を **azure mobile.xxx** に置き換えることによって、**MobileServiceClient** の初期化を無効なアドレスに変更します。その後、ファイルを保存します。
 
          public static MobileServiceClient MobileService = new MobileServiceClient(
             "https://your-mobile-service.azure-mobile.xxx/",
             "AppKey"
         );
 
-2. In Visual Studio, press **F5** to build and run the app. Enter a new todo item and click **Save**. The new todo items exist only in the local store until they can be pushed to the mobile service. The client app behaves as if its connected to the mobile service supporting all create, read, update, delete (CRUD) operations.
+2. Visual Studio で、**F5** キーを押してアプリケーションをビルドして実行します。新しい todo 項目を入力し、**[Save]** をクリックします。モバイル サービスにプッシュされるまで、新しい todo 項目はローカル ストア内にのみ存在します。クライアント アプリケーションは、まるで作成、読み取り、更新、削除 (CRUD) 操作のすべてをサポートするモバイル サービスに接続されているかのように動作します。
 
     ![][4]
 
-3. Close the app and restart it to verify that the new items you created are persisted to the local store.
+3. アプリケーションを終了し、再起動して、作成した新しい項目がローカル ストアに保存されていることを確認します。
 
-## <a name="update-online-app"></a>Update the app to reconnect your mobile service
+## <a name="update-online-app"></a>モバイル サービスに再接続するようにアプリケーションを更新する
 
-In this section you reconnect the app to the mobile service. This simulates the app moving from an offline state to an online state with the mobile service.
+ここでは、アプリケーションをモバイル サービスに再接続します。これは、アプリケーションがオフライン状態から、モバイル サービスとのオンライン状態に移行したことをシミュレートします。
 
 
-1. In Solution Explorer for Visual Studio, open App.xaml.cs. Change the initialization of the **MobileServiceClient** back to the correct address by replacing "**azure-mobile.xxx**" with "**azure-mobile.net**" for your URL. Then save the file.
+1. Visual Studio のソリューション エクスプローラーで App.xaml.cs を開きます。URLとして **azure mobile.xxx** を **azure mobile.net** に置き換えることによって、**MobileServiceClient** の初期化を元の正しいアドレスに変更します。その後、ファイルを保存します。
 
          public static MobileServiceClient MobileService = new MobileServiceClient(
             "https://your-mobile-service.azure-mobile.net/",
@@ -199,67 +199,67 @@ In this section you reconnect the app to the mobile service. This simulates the 
         );
 
 
-## <a name="test-online-app"></a>Test the app connected to the mobile service
+## <a name="test-online-app"></a>モバイル サービスに接続されているアプリケーションをテストする
 
 
-In this section you will test push and pull operations to sync the local store with the mobile service database.
+ここではプッシュ操作とプル操作をテストし、ローカル ストアをモバイル サービス データベースに同期します。
 
-1. In Visual Studio, press the **F5** key to rebuild and run the app. Notice that the data looks the same as the offline scenario even though the app is now connected to the mobile service. This is because this app always works with the `IMobileServiceSyncTable` that is pointed to the local store.
+1. Visual Studio で、**F5** キーを押してアプリケーションをリビルドして実行します。アプリケーションは現在モバイル サービスに接続されていますが、オフラインの状況と同じ表示になっていることに注意してください。この原因は、このアプリケーションが常に、ローカル ストアを指している `IMobileServiceSyncTable` との組み合わせで動作していることにあります。
 
     ![][5]
 
-2. Log into the Microsoft Azure Management portal and look at the database for your mobile service. If your service uses the JavaScript backend for mobile services, you can browse the data from the **Data** tab of the mobile service. If you are using the .NET backend for your mobile service, you can click on the **Manage** button for your database in the SQL Azure Extension to execute a query against your table.
+2. Microsoft Azure 管理ポータルにログインし、モバイル サービスに対応するデータベースを参照します。開発中のサービスが、モバイル サービスとして JavaScript バックエンドを使用している場合は、モバイル サービスの **[データ]** タブからデータを参照できます。モバイル サービスとして .NET バックエンドを使用している場合は、SQL Azure 拡張機能内にあるデータベースに対応する **[管理]** ボタンをクリックして、テーブルに対してクエリを実行することができます。
 
-    Notice the data has not been synchronized between the database and the local store.
+    データベースとローカル ストアの間でデータがまだ同期されていないことを確認します。
 
     ![][6]
 
-3. In the app, press the **Push** button. This causes the app to call `MobileServiceClient.SyncContext.PushAsync` and then `RefreshTodoItems` to refresh the app with the items from the local store. This push operation results in the mobile service database receiving the data from the store. However, the local store does not receive the items from the mobile service database.
+3. アプリケーションで、**[Push]** ボタンをクリックします。これにより、アプリケーションは `MobileServiceClient.SyncContext.PushAsync` を呼び出し、次に `RefreshTodoItems` を呼び出して、ローカル ストアから取得した項目を使用してアプリケーション内のデータを更新します。このプッシュ操作により、モバイル サービス データベースはストアからデータを受信します。ただし、ローカル ストアは、モバイル サービス データベースから項目を受信しません。
 
-    A push operation is executed off the `MobileServiceClient.SyncContext` instead of the `IMobileServicesSyncTable` and pushes changes on all tables associated with that sync context. This is to cover scenarios where there are relationships between tables.
+    プッシュ操作は `IMobileServicesSyncTable` の代わりに、`MobileServiceClient.SyncContext` を実行し、同期コンテキストに関連付けられているすべてのテーブルに対して変更をプッシュします。これは、テーブル間にリレーションシップがある状況に対応することを目的としています。
 
     ![][7]
 
-4. In the app a few new items to the local store.
+4. アプリケーション内には、ローカル ストアに渡す必要のあるいくつかの新しい項目が存在します。
 
     ![][8]
 
-5. This time press the **Pull** button in the app. The app only calls `IMobileServiceSyncTable.PullAsync()` and `RefreshTodoItems`.  Notice that all the data from the mobile service database was pulled into the local store and shown in the app. However, also notice that all the data in the local store was still pushed to the mobile service database. This is because a **pull always does a push first**.    
+5. 今度は、アプリケーションの **Pull** ボタンをクリックします。アプリケーションは、`IMobileServiceSyncTable.PullAsync()` と `RefreshTodoItems` のみを呼び出します。モバイル サービス データベースから取得したすべてのデータがローカル ストアにプルされ、アプリケーション内で表示されることに注意してください。ただし、ローカル ストア内のすべてのデータが既にモバイル サービス データベースに対してプッシュされていることに注意してください。これは、**プルは必ず、最初にプッシュを実行する**ことが原因です。
  
     ![][9]
 
     ![][10] 
   
 
-##Summary
+##まとめ
 
-In order to support the offline features of mobile services, we used the `IMobileServiceSyncTable` interface and initialized `MobileServiceClient.SyncContext` with a local store. In this case the local store was a SQLite database.
+モバイル サービスのオフライン機能をサポートするために、`IMobileServiceSyncTable` インターフェイスを使用して、ローカル ストアにより `MobileServiceClient.SyncContext` を初期化しました。この場合は、ローカル ストアは、SQLite データベースでした。
 
-The normal CRUD operations for mobile services work as if the app is still connected but, all the operations occur against the local store.
+モバイル サービスに対する通常の CRUD 操作は、まるでアプリケーションが接続されているかのように機能しますが、すべての操作はローカル ストアに対して実施されます。
 
-When we wanted to synchronize the local store with the server, we used the `IMobileServiceSyncTable.PullAsync` and `MobileServiceClient.SyncContext.PushAsync` methods.
+ローカル ストアをサーバーと同期しようとする場合は、`IMobileServiceSyncTable.PullAsync` と `MobileServiceClient.SyncContext.PushAsync` の各メソッドを使用しました。
 
-*  To push changes to the server, we called `IMobileServiceSyncContext.PushAsync()`. This method is a member of `IMobileServicesSyncContext` instead of the sync table because it will push changes across all tables:
+*  変更内容をサーバーにプッシュするために、`IMobileServiceSyncContext.PushAsync()` を呼び出しました。このメソッドは、すべてのテーブルに対して変更をプッシュするため、同期テーブルではなく `IMobileServicesSyncContext` のメンバーです。
 
-    Only records that have been modified in some way locally (through CRUD operations) will be sent to the server.
+    何らかの方法で (CRUD 操作により) ローカルで変更されたレコードだけが、サーバー宛てに送信されます。
    
-* To pull data from a table on the server to the app, we called `IMobileServiceSyncTable.PullAsync`.
+* サーバー上のテーブルからアプリケーションにデータをプルするために、`IMobileServiceSyncTable.PullAsync` を呼び出しました。
 
-    A pull always issues a push first.  
+    プルは必ず、最初にプッシュを実行します。
 
-    There are also overloads of **PullAsync()** that allow a query to be specified. Note that in the preview release of offline support for Mobile Services, **PullAsync** will read all rows in the corresponding table (or query)--it does not attempt to read only rows newer than the last sync, for instance. If the rows already exist in the local sync table, they will remain unchanged.
+    クエリを指定することを許可する、**PullAsync()** のオーバー ロードも存在します。モバイル サービスのオフライン サポートに関するプレビュー リリースでは、**PullAsync** は、対応するテーブル (またはクエリ) 内にあるすべての行を読み取る予定です。たとえば、前回の同期より新しい行のみを読み取ろうとすることはありません。行が既にローカルの同期テーブル内に存在している場合は、それらの行は変化しないままです。
 
 
-## Next steps
+##次のステップ
 
-* [Handling conflicts with offline support for Mobile Services]
+* [モバイル サービスのオフライン サポートでの競合を処理する]
 
 <!-- Anchors. -->
-[Update the app to support offline features]: #enable-offline-app
-[Test the app in an offline Scenario]: #test-offline-app
-[Update the app to reconnect your mobile service]: #update-online-app
-[Test the app connected to the Mobile Service]: #test-online-app
-[Next Steps]:#next-steps
+[オフライン機能をサポートするようにアプリケーションを更新する]: #enable-offline-app
+[オフラインの状況でアプリケーションをテストする]: #test-offline-app
+[モバイル サービスに再接続するようにアプリケーションを更新する]: #update-online-app
+[モバイル サービスに接続されているアプリケーションをテストする]: #test-online-app
+[次のステップ]:#next-steps
 
 <!-- Images -->
 [0]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-todoitem-data-browse.png
@@ -276,12 +276,13 @@ When we wanted to synchronize the local store with the server, we used the `IMob
 
 
 <!-- URLs. -->
-[Handling conflicts with offline support for Mobile Services]: /en-us/documentation/articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data/ 
-[Getting Started Offline Sample]: http://go.microsoft.com/fwlink/?LinkId=394777
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started/#create-new-service
-[Getting Started]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started/
-[Get started with data]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/
-[Get started with Mobile Services]: /en-us/documentation/articles/mobile-services-windows-store-get-started/
+[モバイル サービスのオフライン サポートでの競合を処理する]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data/ 
+[オフライン サンプルの使用]: http://go.microsoft.com/fwlink/?LinkId=394777
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
+[作業の開始]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started/
+[データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/
+[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-get-started/
 [SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkId=394776
+
 
 

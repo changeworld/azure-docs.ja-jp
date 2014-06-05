@@ -1,7 +1,8 @@
-After the records for your domain name have propagated, you should be able to use your browser to verify that your custom domain name can be used to access your web site.
+ドメイン名のレコードが反映されると、カスタム ドメイン名を使用して対象の Web サイトにアクセスできることをブラウザーで確認できます。
 
-> [WACOM.NOTE] It can take some time for your CNAME to propagate through the DNS system. You can use a service such as <a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> to verify that the CNAME is available.
+> [WACOM.NOTE]CNAME が DNS に反映されるまで多少の時間がかかります。<a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> などのサービスを使用すると、CNAME を利用できるかどうかを確認できます。
 
-If you have not already added your web site as a Traffic Manager endpoint, you must do this before name resolution will work, as the custom domain name routes to Traffic Manager. Traffic Manager then routes to your web site. Use the information in [Add or Delete Endpoints](http://msdn.microsoft.com/en-us/library/windowsazure/hh744839.aspx) to add your web site as an endpoint in your Traffic Manager profile.
+カスタム ドメイン名がトラフィック マネージャーにルーティングされているため、Web サイトがトラフィック マネージャーのエンドポイントとしてまだ追加されていない場合は、名前を適切に解決するためにエンドポイントとして追加する必要があります。これにより、トラフィック マネージャーによって対象の Web サイトにルーティングされます。トラフィック マネージャーのプロファイルに Web サイトをエンドポイントとして追加する方法については、「[エンドポイントの追加と削除](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh744839.aspx)」を参照してください。
 
-> [WACOM.NOTE] If your web site is not listed when adding an endpoint, verify that it is configured for Standard mode. You must use Standard mode for your web site in order to work with Traffic Manager.
+> [WACOM.NOTE] エンドポイントを追加する際に Web サイトが表示されない場合は、Web サイトが標準モードに構成されていることを確認します。Web サイトをトラフィック マネージャーで操作するには、標準モードを使用する必要があります。
+

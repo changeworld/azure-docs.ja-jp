@@ -1,31 +1,30 @@
-<properties linkid="develop-java-tutorials-web-site-custom_upload" urlDisplayName="Upload custom Java web site" pageTitle="Upload a custom Java web site to Azure" metaKeywords="" description="This tutorial shows you how to upload a custom Java web site to Azure." metaCanonical="" services="web-sites" documentationCenter="Java" title="Upload a custom Java web site to Azure" videoId="" scriptId="" authors="waltpo" solutions="" manager="keboyd" editor="mollybos" />
+<properties linkid="develop-java-tutorials-web-site-custom_upload" urlDisplayName="カスタム Java Web サイトのアップロード" pageTitle="Azure へのカスタム Java Web サイトのアップロード" metaKeywords="" description="このチュートリアルでは、カスタム Java Web サイトを Azure にアップロードする方法を示します。" metaCanonical="" services="web-sites" documentationCenter="Java" title="Azure へのカスタム Java Web サイトのアップロード" videoId="" scriptId="" authors="waltpo" solutions="" manager="keboyd" editor="mollybos" />
 
-# Upload a custom Java web site to Azure
+# Azure へのカスタム Java Web サイトのアップロード
 
-This topic explains how to upload a custom Java  web site to Azure. Included is information that applies to any Java web site, and also some examples for specific applications.
+このトピックでは、カスタム Java Web サイトを Azure にアップロードする方法について説明します。Java Web サイトに適用される情報や、特定のアプリケーションを有効にする例も取り上げています。
 
-Note that Azure provides a means for creating Java web sites using the Azure portal's configuration UI, and the Azure application gallery, as documented at [Get started with Azure web sites and Java
-](../web-sites-java-get-started). This tutorial is for scenarios in which you do not want to use the Azure configuration UI or the Azure application gallery.  
+Azure には、Azure ポータルの構成 UI や Azure のアプリケーション ギャラリーを使用して Java Web サイトを作成するための手段が用意されています。詳細については、「[Azure の Web サイトと Java の概要](../web-sites-java-get-started)」を参照してください。このチュートリアルは、Azure の構成 UI やアプリケーション ギャラリーを使用しないシナリオを対象にしています。
 
-# Configuration guidelines
+# 構成のガイドライン
 
-The following describes the settings expected for custom Java web sites on Azure.
+ここでは、Azure のカスタム Java Web サイトに想定される設定について説明します。
 
-- The HTTP port used by the Java process is dynamically assigned.  The process must use the port from the environment variable `HTTP_PLATFORM_PORT`.
-- All listen ports other than the single HTTP listener should be disabled.  In Tomcat, that includes the shutdown, HTTPS, and AJP ports.
-- The container needs to be configured for IPv4 traffic only.
-- The **startup** command for the application needs to be set in the configuration.
-- Applications that require directories with write permission need to be located in the Azure web site's content directory,  which is **D:\home**.
+- Java プロセスで使用される HTTP ポートは動的に割り当てられます。このプロセスでは、環境変数 `HTTP_PLATFORM_PORT` のポートを使用する必要があります。
+- 1 つの HTTP リスナー以外のすべてのリッスン ポートを無効にする必要があります。Tomcat では、それはシャットダウン、HTTPS、AJP などのポートです。
+- コンテナーは IPv4 トラフィック専用に構成する必要があります。
+- アプリケーションの**スタートアップ** コマンドはこの構成で設定する必要があります。
+- 書き込みアクセス許可のあるディレクトリを必要とするアプリケーションは、Azure の Web サイトのコンテンツ ディレクトリ (**D:\home**) に配置する必要があります。
 
-You can set environment variables as required in the web.config file.
+web.config ファイルで必要に応じて環境変数を設定できます。
 
-# web.config httpPlatform configuration
+# web.config の httpPlatform の構成
 
-The following information describes the **httpPlatform** format within web.config.
+ここでは、web.config での **httpPlatform** 形式について説明します。
                                  
-**arguments** (Default=""). Arguments to the executable or script specified in the **processPath** setting.
+**arguments** (Default="")。**processPath** 設定で指定した実行可能ファイルまたはスクリプトへの引数。
 
-Examples (shown with **processPath** included):
+次に例を示します (**processPath** も使用)。
 
     processPath="d:\home\site\wwwroot\bin\tomcat\bin\catalina.bat"
     arguments="start"
@@ -34,10 +33,10 @@ Examples (shown with **processPath** included):
     arguments="-Djava.net.preferIPv4Stack=true -Djetty.port=%HTTP\_PLATFORM\_PORT% -Djetty.base=&quot;d:\home\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115&quot; -jar &quot;d:\home\site\wwwroot\bin\jetty-distribution-9.1.0.v20131115\start.jar&quot;"
 
 
-**processPath** - Path to the executable or script that will launch a process listening for HTTP requests.
+**processPath** -  HTTP 要求のリッスン プロセスを起動する実行可能ファイルまたはスクリプトへのパス。
 
 
-Examples:
+次に例を示します。
 
 
     processPath="%JAVA_HOME%\bin\java.exe"
@@ -46,30 +45,30 @@ Examples:
 
     processPath="d:\home\site\wwwroot\bin\tomcat\bin\catalina.bat"
                                                                                        
-**rapidFailsPerMinute** (Default=10.) Number of times the process specified in **processPath** is allowed to crash per minute. If this limit is exceeded, **HttpPlatformHandler** will stop launching the process for the remainder of the minute.
+**rapidFailsPerMinute** (Default=10)。**processPath** で指定したプロセスが 1 分あたりにクラッシュできる回数。この制限を超えた場合、**HttpPlatformHandler** は残りの分数、プロセスを起動しなくなります。
                                     
-**requestTimeout** (Default="00:02:00".) Duration for which **HttpPlatformHandler** will wait for a response from the process listening on `%HTTP_PLATFORM_PORT%`.
+**requestTimeout** (Default="00:02:00")。**HttpPlatformHandler** が `%HTTP_PLATFORM_PORT%` でリッスン プロセスからの応答を待つ期間。
 
-**startupRetryCount** (Default=10.) Number of times **HttpPlatformHandler** will try to launch the process specified in **processPath**. See **startupTimeLimit** for more details.
+**startupRetryCount** (Default=10)。**HttpPlatformHandler** が **processPath** で指定されたプロセスを起動しようとする回数。詳細については「**startupTimeLimit**」を参照してください。
 
-**startupTimeLimit** (Default=10 seconds.) Duration for which **HttpPlatformHandler** will wait for the executable/script to start a process listening on the port.  If this time limit is exceeded, **HttpPlatformHandler** will kill the process and try to launch it again **startupRetryCount** times.
+**startupTimeLimit** (Default=10 seconds)。**HttpPlatformHandler** が実行可能ファイル/スクリプトによるポートのリッスン プロセスの開始を待つ期間。この制限を超えた場合、**HttpPlatformHandler** はリッスン プロセスを強制終了し、**startupRetryCount** の回数、再起動しようとします。
                                                                                       
-**stdoutLogEnabled** (Default="true".) If true, **stdout** and **stderr** for the process specified in the **processPath** setting will be redirected to the file specified in **stdoutLogFile** (see **stdoutLogFile** section).
+**stdoutLogEnabled** (Default="true")。true の場合、**processPath** 設定で指定されたプロセスの **stdout** と **stderr** は、**stdoutLogFile** で指定されたファイルにリダイレクトされます (「**stdoutLogFile**」を参照)。
                                     
-**stdoutLogFile** (Default="d:\home\LogFiles\httpPlatformStdout.log".) Absolute file path for which **stdout** and **stderr** from the process specified in **processPath** will be logged.
+**stdoutLogFile** (Default="d:\home\LogFiles\httpPlatformStdout.log")。**processPath** で指定されたプロセスの **stdout** と **stderr** を記録するログの絶対ファイル パス。
                                     
-> [WACOM.NOTE] `%HTTP_PLATFORM_PORT%` is a special placeholder which needs to specified either as part of **arguments** or as part of the **httpPlatform** **environmentVariables** list. This will be replaced by an internally generated port by **HttpPlatformHandler** so that the process specified by **processPath** can listen on this port.
+> [WACOM.NOTE] `%HTTP_PLATFORM_PORT%` は特殊なプレース ホルダーであり、**arguments** の一部としてか、**httpPlatform** **environmentVariables** リストの一部として指定する必要があります。このプレース ホルダーは、**HttpPlatformHandler** によって内部で生成されたポートに置き換えられるため、**processPath** で指定されたプロセスがこのポートをリッスンできるようになります。
 
-# Deployment
+# 展開
 
-Java based web sites can be deployed easily through most of the same means that are used with the Internet Information Services (IIS) based web applications.  FTP, Git and Kudu are all supported as deployment mechanisms, as is the integrated SCM capability for web sites. WebDeploy works as a protocol, however, as Java is not developed in Visual Studio, WebDeploy does not fit with Java web site deployment use cases.
+Java ベースの Web サイトは、インターネット インフォメーション サービス (IIS) ベースの Web アプリケーションで使用されるほぼ同じ手段を使用して、簡単に展開できます。FTP、Git、Kudu はすべて、Web サイト用の統合 SCM 機能と同様に、展開メカニズムとしてサポートされています。WebDeploy はプロトコルとして機能しますが、Java は Visual Studio で開発されていないため、WebDeploy は Java Web サイトの展開には向いていません。
 
-# Application configuration Examples
+# アプリケーションの構成例
 
-For the following applications, a web.config file and the application configuration is provided as examples to show how to enable your Java application on Azure web sites.
+次のアプリケーションの web.config ファイルとアプリケーション構成は、Azure の Web サイトで Java アプリケーションを有効にする方法を示す例として挙げています。
 
 ## Tomcat
-While there are two variations on Tomcat that are supplied with Azure Web Sites, it is still quite possible to upload customer specific instances.  Below is an example of an install of Tomcat with a different JVM.
+Azure の Web サイトには 2 種類の Tomcat インスタンスが用意されていますが、独自のインスタンスをアップロードすることもできます。次に示しているのは、個別の JVM に Tomcat をインストールする例です。
 
 	<?xml version="1.0" encoding="UTF-8"?>
 	<configuration>
@@ -89,19 +88,19 @@ While there are two variations on Tomcat that are supplied with Azure Web Sites,
 	  </system.webServer>
 	</configuration>
 
-On the Tomcat side, there are a few configuration changes that need to be made.  The server.xml needs to be edited to set:
+Tomcat 側で、行う必要のあるいくつかの構成変更があります。server.xml では次のように設定する必要があります。
 
--	Shutdown port = -1
--	HTTP connector port = {port.http}
--	HTTP connector address = "127.0.0.1"
--	Comment out HTTPS and AJP connectors
--	The IPv4 setting can also be set in the catalina.properties file where you can add     `java.net.preferIPv4Stack=true`
+-	シャットダウン ポート = -1
+-	HTTP コネクタ ポート = {port.http}
+-	HTTP コネクタ アドレス = "127.0.0.1"
+-	HTTPS と AJP のコネクタをコメントアウト
+-	IPv4 の設定は catalina.properties ファイルでも可能で、     `java.net.preferIPv4Stack=true` を追加できます。
     
-Direct3d calls are not supported on Azure web sites. To disable those, add the following Java option should your application make such calls: `-Dsun.java2d.d3d=false`
+Direct3d の呼び出しは Azure の Web サイトではサポートされていません。それらの呼び出しを無効にするには、アプリケーションによる `-Dsun.java2d.d3d=false` の呼び出しに備えて、次の Java オプションを追加します。
 
 ## Jetty
 
-As is the case for Tomcat, customers can upload their own instances for Jetty. In the case of running the full install of Jetty, the configuration would look like this:
+Tomcat の場合と同様、Jetty の独自のインスタンスをアップロードできます。Jetty のフル インストールを実行する場合、構成は次のようになります。
 
 	<?xml version="1.0" encoding="UTF-8"?>
 	<configuration>
@@ -118,15 +117,15 @@ As is the case for Tomcat, customers can upload their own instances for Jetty. I
 	  </system.webServer>
 	</configuration>
 
-The Jetty configuration needs to be changed in the start.ini to set `java.net.preferIPv4Stack=true`.
+Jetty の構成を start.ini で変更して、`java.net.preferIPv4Stack=true` を設定する必要があります。
 
 ## Hudson
 
-Our test used the Hudson 3.1.2 war and the default Tomcat 7.0.50 instance but without using the UI to set things up.  Because Hudson is a software build tool, it is advised to install it on dedicated instances where the **AlwaysOn** flag can be set on the site.
+Microsoft のテストでは、Hudson 3.1.2 war と既定の Tomcat 7.0.50 インスタンスを使用しましたが、セットアップに UI を使用しませんでした。Hudson はソフトウェア ビルド ツールであるため、サイトで **AlwaysOn** フラグを設定できる専用のインスタンスにインストールすることをお勧めします。
 
-1. In your azure website’s site root, i.e., **d:\home\site\wwwroot**, create a **webapps** directory (if not already present), and place Hudson.war in **d:\home\site\wwwroot\webapps**.
-2. Download apache maven 3.0.5 (compatible with Hudson) and place it in **d:\home\site\wwwroot**.
-3. Create web.config in **d:\home\site\wwwroot** and paste the following contents in it:
+1. Azure の Web サイトのサイト ルート (**d:\home\site\wwwroot**) に **webapps** ディレクトリを作成し (まだない場合)、**d:\home\site\wwwroot\webapps** に Hudson.war を配置します。
+2. apache maven 3.0.5 (Hudson と互換性あり) をダウンロードし、**d:\home\site\wwwroot** に配置します。
+3. **d:\home\site\wwwroot** に web.config を作成し、そのファイルに次の内容を貼り付けます。
 	
 		<?xml version="1.0" encoding="UTF-8"?>
 		<configuration>
@@ -148,43 +147,43 @@ Our test used the Hudson 3.1.2 war and the default Tomcat 7.0.50 instance but wi
 		  </system.webServer>
 		</configuration>
 
-    At this point the web site can be restarted to take the changes.   Connect to http://yoursite/hudson to start Hudson.
+    この時点で、Web サイトを再び開始して、変更を行うことができます。http://yoursite/hudson に接続して Hudson を開始します。
 
-4. After Hudson configures itself, you should see the following screen:
+4. Hudson の自動構成の後に、次の画面が表示されます。
 
     ![Hudson](./media/web-sites-java-custom-upload/hudson1.png)
     
-5. Access the Hudson configuration page: Click **Manage Hudson**, and then click **Configure System**.
-6. Configure the JDK as shown below:
+5. Hudson の構成ページにアクセスします。**[Manage Hudson]** をクリックし、**[Configure System]** をクリックします。
+6. 次に示しているように JDK を構成します。
 
-	![Hudson configuration](./media/web-sites-java-custom-upload/hudson2.png)
+	![Hudson の構成](./media/web-sites-java-custom-upload/hudson2.png)
 
-7. Configure Maven as shown below:
+7. 次に示すように Maven を構成します。
 
-	![Maven configuration](./media/web-sites-java-custom-upload/maven.png)
+	![Maven の構成](./media/web-sites-java-custom-upload/maven.png)
 
-8. Save the settings. Hudson should now be configured and ready for use.
+8. 設定を保存します。これで、Hudson は構成されて使用できる状態になりました。
 
-For additional information on Hudson, see [http://hudson-ci.org](http://hudson-ci.org).
+Hudson の詳細については、[http://hudson-ci.org](http://hudson-ci.org) を参照してください。
 
 ## Liferay
 
-Liferay is supported on Azure web sites. Since Liferay can require significant memory, the site needs to run on a medium or large dedicated worker, which can provide enough memory. Liferay also takes several minutes to start up. For that reason, it is recommended that you set the site to **Always On**.  
+Liferay は Azure の Web サイトでサポートされています。Liferay には大量のメモリが必要になることがあるため、十分なメモリを用意できる中規模または大規模な専用ワーカーで、サイトを実行する必要があります。Liferay も起動するまで数分かかります。そのため、サイトで **AlwaysOn** を設定することをお勧めします。
 
-Using Liferay 6.1.2 Community Edition GA3 bundled with Tomcat, the following files were edited after downloading Liferay:
+Tomcat にバンドルされている Liferay 6.1.2 Community Edition GA3 を使用して、次のファイルを Liferay のダウンロード後に編集します。
 
 **Server.xml**
 
-- Change Shutdown port to -1.
-- Change HTTP connector to 
+- シャットダウン ポートを -1 に変更。
+- HTTP コネクタを次のように変更。
 		`<Connector port="${port.http}" protocol="HTTP/1.1" connectionTimeout="600000" address="127.0.0.1" URIEncoding="UTF-8" />`
-- Comment out the AJP connector.
+- AJP コネクタをコメントアウト。
 
-In the **liferay\tomcat-7.0.40\webapps\ROOT\WEB-INF\classes** folder, create a file named **portal-ext.properties**. This file needs to contain one line, as shown here:
+**liferay\tomcat-7.0.40\webapps\ROOT\WEB-INF\classes** フォルダーで、**portal-ext.properties** という名前のファイルを作成します。このファイルには、次に示している 1 行を追加する必要があります。
 
     liferay.home=d:/home/site/wwwroot/liferay
 
-At the same directory level as the tomcat-7.0.40 folder, create a file named **web.config** with the following content:
+tomcat-7.0.40 フォルダーと同じディレクトリ レベルで、**web.config** という名前のファイルを次の内容で作成します。
 
 	<?xml version="1.0" encoding="UTF-8"?>
 	<configuration>
@@ -208,13 +207,13 @@ At the same directory level as the tomcat-7.0.40 folder, create a file named **w
 	  </system.webServer>
 	</configuration>
 
-Under the **httpPlatform** block, the **requestTimeout** is set to “00:10:00”.  It can be reduced but then you are likely to see some timeout errors while Liferay is bootstrapping.  If this value is changed, then the **connectionTimeout** in the tomcat server.xml should also be modified.  
+**httpPlatform** ブロックで、**requestTimeout** は "00:10:00" に設定されています。この時間を短くすることはできますが、Liferay のブートストラップ中に何らかのタイムアウト エラーが表示される可能性があります。この値を変更した場合は、Tomcat の server.xml の **connectionTimeout** も変更する必要があります。
 
-It is worth noting that the JRE_HOME environnment varariable is specified in the above web.config to point to the 64-bit JDK. The default is 32-bit, but since Liferay may require high levels of memory, it is recommended to use the 64-bit JDK.
+注意点としては、前に示している web.config で JRE_HOME 環境変数を、64-bit JDK を参照するように指定しています。既定では 32-bit ですが、Liferay では高位のメモリが必要になる場合があるため、64-bit JDK を使用することをお勧めします。
 
-Once you make these changes, restart your website running Liferay, Then, open http://yoursite.  The Liferay portal is available from the website root. 
+これらの変更を行ったら、Liferay を実行する Web サイトを再び開始し、http://yoursite を開きます。Liferay ポータルは Web サイトのルートから利用できます。
 
-For more information on Liferay, see [http://www.liferay.com](http://www.liferay.com).
+Liferay の詳細については、[http://www.liferay.com](http://www.liferay.com) を参照してください。
 
 
 

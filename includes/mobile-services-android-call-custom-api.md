@@ -1,9 +1,9 @@
 
-##<a name="update-app"></a>Update the app to call the custom API
+##<a name="update-app"></a>カスタム API を呼び出すようにアプリケーションを更新する
 
-1. We will add a button labelled "Complete All" next to the existing button, and move both buttons down a line. In Eclipse, open the *res\layout\activity_to_do.xml* file in your quickstart project, locate the **LinearLayout** element that contains the **Button** element named `buttonAddToDo`. Copy the **LinearLayout** and paste it immediately following the original one. Delete the **Button** element from the first **LinearLayout**.
+1. "Complete All" というラベルのボタンを既存のボタンの横に追加し、両方のボタンを 1 行下に移動します。Eclipse で、クイック スタート プロジェクトの *res\layout\activity_to_do.xml* ファイルを開き、`buttonAddToDo` という **Button** 要素が含まれている **LinearLayout** 要素を見つけます。**LinearLayout** をコピーし、元の要素の直後に貼り付けます。最初の **LinearLayout** から **Button** 要素を削除します。
 
-2. In the second **LinearLayout**, delete the **EditText** element, and add the following  code immediately following the existing **Button** element: 
+2. 2 番目の **LinearLayout** で、**EditText** 要素を削除し、既存の **Button** 要素の直後に次のコードを追加します。
 
         <Button
             android:id="@+id/buttonCompleteItem"
@@ -12,9 +12,9 @@
             android:onClick="completeItem"
             android:text="@string/complete_button_text" />
 
-	This adds a new button to the page, on a separate line, next to the existing button.
+	これにより、ページの別の行にある既存のボタンの横に新しいボタンが追加されます。
 
-3. The second **LinearLayout** now looks like this:
+3. これで、2 番目の **LinearLayout** が次のようになります。
 
 	     <LinearLayout
 	        android:layout_width="match_parent" 
@@ -36,12 +36,12 @@
 	    </LinearLayout>
 	
 
-4. Open the res\values\string.xml file and add the following line of code:
+4. res\values\string.xml ファイルを開き、次のコード行を追加します。
 
     	<string name="complete_button_text">Complete All</string>
 
 
-5. In Package Explorer, right click the project name in the *src* folder (`com.example.{your projects name}`), choose **New** then **Class**. In the dialog, enter **MarkAllResult** in the class name field, choose OK, and replace the resulting class definition with the following code:
+5. Package Explorer で、*src* フォルダーのプロジェクト名 (`com.example.{your projects name}`) を右クリックし、**[New]**、**[Class]** の順にクリックします。ダイアログのクラス名フィールドに「**MarkAllResult**」と入力し、[OK] をクリックして、作成されたクラス定義を次のコードで置き換えます。
 
 		import com.google.gson.annotations.SerializedName;
 		
@@ -58,15 +58,15 @@
 			}
 		}
 
-	This class is used to hold the row count value returned by the custom API. 
+	このクラスは、カスタム API から返される行数の値を保持する目的で使用します。
 
-6. Locate the **refreshItemsFromTable** method in the **ToDoActivity.java** file, and make sure that the first line of code starts out like this:
+6. **ToDoActivity.java** ファイルで **refreshItemsFromTable** メソッドを見つけ、最初のコード行が次のようになっていることを確認します。
 
         mToDoTable.where().field("complete").eq(false)
 
-	This filters the items so that completed items are not returned by the query.
+	ここでは、完了済みの項目が返されないように、項目をフィルターで処理しています。
 
-7. In the **ToDoActivity.java** file, add the following method:
+7. **ToDoActivity.java** ファイル内に次のメソッドを追加します。
 
 		public void completeItem(View view) {
 			mClient.invokeApi("completeAll", MarkAllResult.class, new ApiOperationCallback<MarkAllResult>() {
@@ -82,20 +82,21 @@
 		    });
 		}
 	
-	This method handles the **Click** event for the new button. The **invokeApi** method is called on the client, which sends a POST request to the new custom API. The result returned by the custom API is displayed in a message dialog, as are any errors.
+	これは、新しいボタンの **Click** イベントを処理するメソッドです。POST 要求を新しいカスタム API に送信する **invokeApi** メソッドがクライアントで呼び出されます。カスタム API から返された結果は、メッセージ ダイアログに表示されます。エラーが発生した場合はそれらも表示されます。
 
-## Test the app
+## アプリケーションをテストする
 
-1. From the **Run** menu, click **Run** to start the project in the Android emulator.
+1. **[Run]** メニューの **[Run]** をクリックして、Android エミュレーター内でプロジェクトを開始します。
 
-	This executes your app, built with the Android SDK, that uses the client library to send a query that returns items from your mobile service.
+	これにより、モバイル サービスから項目を取得するクエリを、クライアント ライブラリを使用して送信するアプリケーションが Android SDK でビルドされ、実行されます。
 
-2. In the app, type some text in **Insert a TodoItem**, then click **Add**.
+2. アプリケーションで、**[Insert a TodoItem]** に任意のテキストを入力し、**[Add]** をクリックします。
 
-3. Repeat the previous step until you have added several todo items to the list.
+3.  前の手順を繰り返して、複数の Todo 項目をリストに追加します。
 
-4. Click the **Complete All** button.
+4. **[Complete All]** ボタンをクリックします。
 
   	![](./media/mobile-services-android-call-custom-api/mobile-custom-api-android-completed.png)
 
-	A message dialog is displayed that indicates the number of items marked complete and the filtered query is executed again, which clears all items from the list.
+	完了としてマークされた項目の数を示すメッセージ ダイアログが表示され、フィルター処理済みのクエリが再度実行されて、すべての項目がリストから消去されます。
+

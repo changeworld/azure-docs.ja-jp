@@ -1,10 +1,10 @@
 
 
-1. Open the project file QSTodoListViewController.m and in the **viewDidLoad** method, remove the following code that reloads the data into the table:
+1. プロジェクト ファイル QSTodoListViewController.m を開き、**viewDidLoad** メソッドで、データをテーブルに再び読み込む次のコードを削除します。
 
         [self refresh];
 
-2.	Just after the **viewDidLoad** method, add the following code:  
+2.	**viewDidLoad** メソッドの直後に次のコードを追加します。
 
         - (void)viewDidAppear:(BOOL)animated
         {
@@ -19,10 +19,11 @@
             }];
         }
 
-    <div class="dev-callout"><b>Note</b>
-	<p>If you are using an identity provider other than Facebook, change the value passed to <strong>loginWithProvider</strong> above to one of the following: <em>microsoftaccount</em>, <em>facebook</em>, <em>twitter</em>, or <em>google</em>.</p>
+    <div class="dev-callout"><b>注</b>
+	<p>Facebook 以外の ID プロバイダーを使用している場合は、上の <strong>loginWithProvider</strong> メソッドに渡される値を <em>microsoftaccount</em>、<em>facebook</em>、<em>twitter</em>、または <em>google</em> のいずれかに変更します。</p>
     </div>
 		
-3. Press the **Run** button to build the project, start the app in the iPhone emulator, then log-on with your chosen identity provider.
+3. **[実行]** を押してプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを起動して、選択した ID プロバイダーでログオンします。
 
-   	When you are successfully logged-in, the app should run without errors, and you should be able to query Mobile Services and make updates to data.
+   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
+

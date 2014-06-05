@@ -1,68 +1,68 @@
-<properties  pageTitle="Schedule Backend Tasks with Scheduler - Mobile Services" metaKeywords="" description="Use the Windows Azure Mobile Services Scheduler to schedule jobs for your mobile app." metaCanonical="" services="" documentationCenter="Mobile" title="Schedule recurring jobs in Mobile Services" authors=""  solutions="" writer="" manager="" editor=""  />
+<properties  pageTitle="スケジューラを使用したバックエンド タスクのスケジュール - モバイル サービス" metaKeywords="" description="Windows Azure モバイル サービス スケジューラを使用して、モバイル アプリケーション用のジョブをスケジュールします。" metaCanonical="" services="" documentationCenter="Mobile" title="モバイル サービスでの繰り返し発生するジョブのスケジュール" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
-# Schedule recurring jobs in Mobile Services 
+# モバイル サービスでの繰り返し発生するジョブのスケジュール
 
 <div class="dev-center-tutorial-subselector">
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-schedule-recurring-tasks/" title=".NET backend" class="current">.NET backend</a> | <a href="/en-us/documentation/articles/mobile-services-schedule-recurring-tasks/"  title="JavaScript backend" >JavaScript backend</a>
+	<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-schedule-recurring-tasks/" title=".NET バックエンド" class="current">.NET バックエンド</a> | <a href="/ja-jp/documentation/articles/mobile-services-schedule-recurring-tasks/"  title="JavaScript バックエンド" >JavaScript バックエンド</a>
 </div>
  
-This topic shows you how to use the job scheduler functionality in the Management Portal to define server script code that is executed based on a schedule that you define. In this case, the script periodically check with a remote service, in this case Twitter, and stores the results in a new table. Some other periodic tasks that can be scheduled include:
+このトピックでは、管理ポータルのジョブ スケジューラ機能を使用して、定義したスケジュールに基づいて実行されるサーバー スクリプト コードを定義する方法について説明します。このスクリプトは、リモート サービス (ここでは Twitter) に対する確認を定期的に行い、結果を新しいテーブルに格納します。スケジュールできる定期的なタスクには、次のようなものがあります。
 
-+ Archiving old or duplicate data records.
-+ Requesting and storing external data, such as tweets, RSS entries, and location information.
-+ Processing or resizing stored images.
++ 古いデータ レコードまたは重複しているデータ レコードのアーカイブ。
++ 外部データ (ツイート、RSS エントリ、場所情報など) の要求と格納。
++ 格納されている画像の処理とサイズ変更。
 
-This tutorial walks you through the following steps of how to use the job scheduler to create a scheduled job that requests tweet data from Twitter and stores the tweets in a new Updates table:
+このチュートリアルでは、ジョブ スケジューラを使用してスケジュールされたジョブを作成する手順について以降に説明します。このジョブでは、Twitter からのツイート データを要求し、新しい Updates テーブルにツイートを格納します。
 
-+ [Register for Twitter access and store credentials]
-+ [Download and install the LINQ to Twitter library]
-+ [Create the new Updates table]
-+ [Create a new scheduled job]
-+ [Test the scheduled job locally]
-+ [Publish the service and register the job]
++ [Twitter アクセスを登録して資格情報を保存する]
++ [LINQ to Twitter ライブラリをダウンロードしてインストールする]
++ [新しい Updates テーブルを作成する]
++ [新しいスケジュール済みジョブを作成する]
++ [スケジュールされたジョブをローカルでテストする]
++ [サービスを発行してジョブを登録する]
 
->[WACOM.NOTE]This tutorial uses the third-party LINQ to Twitter library to simplify OAuth 2.0 access to Twitter v1.1. APIs. You must download and install the LINQ to Twitter NuGet package to complete this tutorial. For more information, see the [LINQ to Twitter CodePlex project].
+>[WACOM.NOTE]このチュートリアルでは、サード パーティの LINQ to Twitter ライブラリを使用して、Twitter v1.1 への OAuth 2.0 アクセスを簡単にします。API。このチュートリアルを完了するには、LINQ to Twitter の NuGet パッケージをダウンロードしてインストールする必要があります。詳細については、[LINQ to Twitter の CodePlex プロジェクトに関するページ]を参照してください。
 
-##<a name="get-oauth-credentials"></a>Register for access to Twitter v1.1 APIs and store credentials
+##<a name="get-oauth-credentials"></a>Twitter v1.1 API へのアクセスを登録して資格情報を保存する
 
 [WACOM.INCLUDE [mobile-services-register-twitter-access](../includes/mobile-services-register-twitter-access.md)]
 
 <ol start="7">
-<li><p>In Solution Explorer in Visual Studio, open the web.config file for the mobile service project, locate the <strong>MS_TwitterConsumerKey</strong> and <strong>MS_TwitterConsumerSecret</strong> app settings and replace the values of these keys with Twitter consumer key and consumer secret values that you set in the portal.</p></li>
+<li><p>Visual Studio のソリューション エクスプローラーで、モバイル サービス プロジェクトに対応する web.config ファイルを開き、<strong>MS_TwitterConsumerKey</strong> と <strong>MS_TwitterConsumerSecret</strong> の各アプリケーション設定を見つけて、これらのキーの値を、ポータルで設定した Twitter のコンシューマー キーとコンシューマー シークレットの値に置換します。</p></li>
 
-<li><p>In the same section, add the following new app settings, replacing the placeholders with the Twitter access token and access token secret values that you set as app settings in the portal:</p>
+<li><p>同じセクションで、次の新しいアプリケーション設定を追加し、プレースホルダーを、ポータルのアプリケーション設定で設定した Twitter のアクセス トークンとアクセス トークン シークレットの値に置換します。</p>
 
 <pre><code>&lt;add key="TWITTER_ACCESS_TOKEN" value="**your_access_token**" /&gt;
 &lt;add key="TWITTER_ACCESS_TOKEN_SECRET" value="**your_access_token_secret**" /&gt;</code></pre>
 
-<p>The mobile service uses these stored settings when it runs on the local computer, which lets you test the scheduled job before you publish it. When running in Azure, the mobile service instead uses values set in the portal and ignores these project settings.  </p></li>
+<p>モバイル サービスをローカル コンピューター上で実行するときに、モバイル サービスはこれら保存されている設定を使用するため、スケジュールされたジョブを発行する前にテストすることができます。Azure 内で実行する場合は、モバイル サービスは代わりにポータル内で設定した値を使用し、これら プロジェクト内の設定を無視します。</p></li>
 </ol>
 
-##<a name="install-linq2twitter"></a>Download and install the LINQ to Twitter library
+##<a name="install-linq2twitter"></a>LINQ to Twitter ライブラリをダウンロードしてインストールする
 
-1. In **Solution Explorer** in Visual Studio, right-click the project name, and then select **Manage NuGet Packages**.
+1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクト名を右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-2. In the left pane, select the **Online** category, search for `linq2twitter`, click **Install** on the **linqtotwitter** package, then read and accept the license agreements. 
+2. 左側のウィンドウで **[オンライン]** カテゴリを選択し、``linq2twitter`` を見つけて **linqtotwitter** パッケージに対応する **[インストール]** をクリックし、使用許諾契約を読んで同意します。
 
   	![][1]
 
-  	This adds the Linq to Twitter library to your mobile service project.
+  	これにより、Linq to Twitter ライブラリがモバイル サービス プロジェクトに追加されます。
 
-Next, you need to create a new table in which to store tweets.
+次に、ツイートを格納するための新しいテーブルを作成する必要があります。
 
-##<a name="create-table"></a>Create the new Updates table
+##<a name="create-table"></a>新しい Updates テーブルを作成する
 
-1. In the Solution Explorer in Visual Studio, right-click the DataObjects folder, expand **Add**, click **Class**,   type `Updates` for **Name**, then click **Add**.
+1. Visual Studio の [ソリューション エクスプローラーで、DataObjects フォルダーを右クリックし、**[追加]** をクリックします。**[クラス]** をクリックし、**[名前]** として「`Updates`」と入力してから **[追加]** をクリックします。
 
-	This creates a new project file for the Updates class.
+	これにより、Updates クラスに対応する新しいプロジェクト ファイルが作成されます。
 
-2. In this new class, add the following **using** statements:
+2. この新しいクラスで、次の **using** ステートメントを追加します。
  
 		using Microsoft.WindowsAzure.Mobile.Service;
 		using System.ComponentModel.DataAnnotations;
 
-3. Replace the **Updates** class definition with the following code:
+3. **Updates** クラス定義を次のコードで置き換えます。
 
 		public class Updates 
 	    {
@@ -74,23 +74,23 @@ Next, you need to create a new table in which to store tweets.
 	        public DateTime Date { get; set; }
     	}
 
-4. Expand the Models folder, open the data model context file (named <em>service_name</em>Context.cs) and add the following property that returns a typed **DbSet**:
+4. [Models] フォルダーを展開し、データ モデルのコンテキスト ファイル (<em>service_name</em>Context.cs という名前) を開き、**DbSet** という型指定された値を返す、次のプロパティを追加します。
 
 		public DbSet<Updates> Updates { get; set; }
 
-	The Updates table, which is created in the database when the DbSet is first accessed, is used by the service to store tweet data.  
+	DbSet に最初にアクセスしたときにデータベース内に作成される Updates テーブルは、ツイート データを格納する目的でサービスによって使用されます。
 
-	>[WACOM.NOTE] When using the default database initializer, Entity Framework will drop and recreate the database whenever it detects a data model change in the Code First model definition. To make this data model change and maintain existing data in the database, you must use Code First Migrations. The default initializer cannot be used against a SQL Database in Azure. For more information, see [How to Use Code First Migrations to Update the Data Model](/en-us/documentation/articles/mobile-services-dotnet-backend-use-code-first-migrations).  
+	>[WACOM.NOTE] データベースの既定の初期化子を使用する場合は、Code First のモデル定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。Azure 内の SQL データベースに対して、既定の初期化子を使用することはできません。詳細については、[Code First Migrations を使用してデータ モデルを更新する方法に関するページ](/ja-jp/documentation/articles/mobile-services-dotnet-backend-use-code-first-migrations)を参照してください。
 
-Next, you create the scheduled job that accesses Twitter and stores tweet data in the new Updates table.
+次に、Twitter にアクセスしてツイート データを新しい Updates テーブルに格納することを目的とした、スケジュールされたジョブを作成します。
 
-##<a name="add-job"></a>Create a new scheduled job  
+##<a name="add-job"></a>新しいスケジュール済みジョブを作成する
 
-1. Expand the ScheduledJobs folder and open the SampleJob.cs project file.
+1. ScheduledJobs フォルダーを展開し、SampleJob.cs プロジェクト ファイルを開きます。
 
-	This class, which inherits from **ScheduledJob**, represents a job that can be scheduled, in the Azure Management Portal, to run on a fixed schedule or on demand.
+	**ScheduledJob** から継承されたこのクラスは、スケジュール可能なジョブを表し、そのジョブは Azure 管理ポータルで定期的なスケジュールで、またはオンデマンドで実行されます。
 
-2. Replace the contents of SampleJob.cs with the following code:
+2. SampleJob.cs の内容を次のコードに置き換えます。
  
 		using System;
 		using System.Linq;
@@ -200,74 +200,74 @@ Next, you create the scheduled job that accesses Twitter and stores tweet data i
 		    }
 		}
 
-	In the above code, you must replace the strings _todolistService_ and _todolistContext_ with the namespace and DbContext of your downloaded project, which are <em>mobile&#95;service&#95;name</em>Service and <em>mobile&#95;service&#95;name</em>Context, respective.  
+	上記のコードで、_todolistService_ と _todolistContext_ の各文字列を、ダウンロードしたプロジェクトの名前空間と DbContext に置き換える必要があります。これらはそれぞれ、<em>mobile&#95;service&#95;name</em>Service と <em>mobile&#95;service&#95;name</em>Context です。
    	
-	In the above code, the **ExecuteAsync** override method calls the Twitter query API using stored credentials to request recent tweets that contain the hashtag `#mobileservices`. Duplicate tweets and replies are removed from the results before they are stored in the table.
+	上記のコードで、**ExecuteAsync** オーバーライド メソッドは保存された資格情報を使用して Twitter のクエリ API を呼び出し、`#mobileservices` というハッシュタグを含む最近のツイートを要求します。テーブルに格納される前に、重複しているツイートやリプライが結果から削除されます。
 
-##<a name="run-job-locally"></a>Test the scheduled job locally
+##<a name="run-job-locally"></a>スケジュールされたジョブをローカルでテストする
 
-Schedule jobs can be tested locally before being published to Azure and registered in the portal. 
+スケジュールされたジョブを Azure に発行してポータルに登録する前に、ローカルでテストすることができます。
 
-1. In Visual Studio, with the mobile service project set as the startup project, press F5.
+1. Visual Studio で、モバイル サービス プロジェクトがスタートアップ プロジェクトとして設定された状態で、F5 キーを押します。
 
-	This starts the mobile service project and displays a new browser window with the welcome page.
+	これにより、モバイル サービス プロジェクトが開始され、開始ページで新しいブラウザー ウィンドウが表示されます。
 
-2. Copy the mobile service URL from the open browser window, append the `/tables/samplejob` path to the URL, then execute a new POST request to this URL using a HTTP utility, like Fiddler.
+2. 開いているブラウザー ウィンドウからモバイル サービスの URL をコピーし、`tables/samplejob` パスをその URL に追加してから、Fiddler などの HTTP ユーティリティを使用して、この URL に対して新しい POST 要求を実行します。
 
-	The **ExecuteAsync* *method is started on the local computer.
+	**ExecuteAsync* *メソッドが、ローカル コンピューターで開始されます。
 
-3. In Server Explorer, expand **Data Connections**, **MSTableConnectionString**, and **tables**; right-click **Updates** and click **Show Table Data**.
+3. サーバー エクスプローラーで、**[データ接続]**、**MSTableConnectionString**、**[テーブル]** の順に展開し、**[Udates]** を右クリックしてから **[テーブルのデータの表示]** をクリックします。
 
-	The new tweets are entered as rows in the data table.
+	この新しいツイートは、データ テーブル内の行として入力されます。
 
-##<a name="register-job"></a>Publish the service and register the new job 
+##<a name="register-job"></a>サービスを発行して新しいジョブを登録する
 
-The job must be registered in the **Scheduler** tab so that Mobile Services can run it on the schedule that you define.
+このジョブを **スケジューラ** タブ内に登録する必要があります。その結果、定義したスケジュールに従って、モバイル サービスがこのジョブを実行できるようになります。
 
-3. Republish the mobile service project to Azure.
+3. モバイル サービスを Azure に対して再発行します。
 
-4. In the [Azure Management Portal], click Mobile Services, and then click your app.
+4. [Azure 管理ポータル]で、[モバイル サービス] をクリックして、アプリケーションをクリックします。
  
 	![][2]
 
-2. Click the **Scheduler** tab, then click **+Create**. 
+2. **[スケジューラ]** タブをクリックし、**[作成]** をクリックします。
 
    	![][3]
 
-    >[WACOM.NOTE]When you run your mobile service in <em>Free</em> tier, you are only able to run one scheduled job at a time. In paid tiers, you can run up to ten scheduled jobs at a time.
+    >[WACOM.NOTE]モバイル サービスを<em>無料</em>レベルで運用している場合は、スケジュールされた複数のジョブを同時に実行することはできません。有料レベルでは、10 個までのスケジュールされたジョブを同時に実行できます。
 
-3. In the scheduler dialog, enter _SampleJob_ for the **Job Name**, set the schedule interval and units, then click the check button. 
+3. [スケジューラ] ダイアログ ボックスで、**[ジョブ名]** に「_SampleJob_」と入力し、スケジュールの間隔と単位を設定して、チェック ボタンをクリックします。
    
    	![][4]
 
-   	This creates a new job named **SampleJob**. 
+   	これにより、**SampleJob** という名前の新しいジョブが作成されます。
 
-4. Click the new job you just created, then click **Run Once** to test the script. 
+4. 作成した新しいジョブをクリックし、**[一度だけ実行する]** をクリックしてスクリプトをテストします。
 
   	![][5]
 
-   	This executes the job while it remains disabled in the scheduler. From this page, you can enable the job and change its schedule at any time.
+   	これにより、ジョブが実行されます。ただし、スケジューラ内では無効の状態のままです。このページから、いつでもジョブを有効にし、スケジュールを変更することができます。
 
-	>[WACOM.NOTE]A POST request can still be used to start the scheduled job. However, the authorization defaults to user, which means that the request must include the application key in the header.
+	>[WACOM.NOTE]引き続き POST 要求を使用して、スケジュールされたジョブを開始することができます。ただし、認証の既定はユーザーを対象にしており、要求のヘッダーにアプリケーション キーを含める必要があることを意味します。
 
-4. (Optional) In the [Azure Management Portal], click manage for the database associated with your mobile service.
+4. (省略可能) [Azure 管理ポータル]で、モバイル サービスに関連付けられたデータベースの [管理] をクリックします。
 
     ![][6]
 
-5. In the Management portal execute a query to view the changes made by the app. Your query will be similar to the following query but use your mobile service name as schema name instead of `todolist`.
+5. 管理ポータルでクエリを実行して、アプリケーションによって加えられた変更を表示します。クエリは次のようになりますが、スキーマ名として `todolist` の代わりにモバイル サービスの名前を使用します。
 
         SELECT * FROM [todolist].[Updates]
 
-Congratulations, you have successfully created a new scheduled job in your mobile service. This job will be executed as scheduled until you disable or modify it.
+これで、スケジュールされた新しいジョブがモバイル サービスに作成されました。このジョブは、無効化または変更するまで、スケジュールに従って実行されます。
 
 <!-- Anchors. -->
-[Register for Twitter access and store credentials]: #get-oauth-credentials
-[Download and install the LINQ to Twitter library]: #install-linq2twitter
-[Create the new Updates table]: #create-table
-[Create a new scheduled job]: #add-job
-[Test the scheduled job locally]: #run-job-locally
-[Publish the service and register the job]: #register-job
-[Next steps]: #next-steps
+[Twitter アクセスを登録して資格情報を保存する]: #get-oauth-credentials
+[LINQ to Twitter ライブラリをダウンロードしてインストールする]: #install-linq2twitter
+[新しい Updates テーブルを作成する]: #create-table
+[新しいスケジュール済みジョブを作成する]: #add-job
+[スケジュールされたジョブをローカルでテストする]: #run-job-locally
+[サービスを発行してジョブを登録する]: #register-job
+[次のステップ]: #next-steps
 
 <!-- Images. -->
 [1]: ./media/mobile-services-dotnet-backend-schedule-recurring-tasks/add-linq2twitter-nuget-package.png
@@ -278,8 +278,9 @@ Congratulations, you have successfully created a new scheduled job in your mobil
 [6]: ./media/mobile-services-dotnet-backend-schedule-recurring-tasks/manage-sql-azure-database.png
 
 <!-- URLs. -->
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Register your apps for Twitter login with Mobile Services]: /en-us/documentation/articles/mobile-services-how-to-register-twitter-authentication
-[Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
-[App settings]: http://msdn.microsoft.com/en-us/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
-[LINQ to Twitter CodePlex project]: http://linqtotwitter.codeplex.com/
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[モバイル サービスでの Twitter ログイン用のアプリケーションの登録]: /ja-jp/documentation/articles/mobile-services-how-to-register-twitter-authentication
+[Twitter デベロッパー]: http://go.microsoft.com/fwlink/p/?LinkId=268300
+[アプリケーション設定]: http://msdn.microsoft.com/ja-jp/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+[LINQ to Twitter の CodePlex プロジェクトに関するページ]: http://linqtotwitter.codeplex.com/
+

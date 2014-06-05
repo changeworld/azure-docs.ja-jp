@@ -1,1 +1,64 @@
-<properties linkid="" urlDisplayName="Tracking work for your website" pageTitle="Tracking work for your website | Azure" metaKeywords="Visual Studio Online, VSO, work, items, backlog" description="Learn how to track and manage work for your website." metaCanonical="" services="visual-studio-online" documentationCenter="" title="Tracking work for your website" authors="rmarron" solutions="" manager="" editor="" /># Tracking work for your websiteIn this topic, you'll learn how to use the work item tracking tools to manage work for your website.## Table of Contents* <a href="#how-to-add-work-items-to-your-backlog">How to: Add work items to your backlog</a>* <a href="#how-to-manage-your-backlog">How to: Manage your backlog</a>* <a href="#how-to-view-recently-completed-work">How to: View recently completed work</a>## How to: Add work items to your backlog1. Navigate to your team project blade.2. Inside of the "work" lens at the bottom, click on the backlog part.  	The backlog blade will launch. Your backlog contains a prioritized list of work for your website. 	![Open backlog](./media/visual-studio-online-work-item-tracking/visual-studio-online-open-backlog.png)3. Add an item by typing the title in the text box at the top and hitting enter.		If you are using a Scrum process template, you can choose to add a bug or a product backlog item by selecting it from the drop down on the right.4. Click on the work item to open it and add more details.	![Open work item](./media/visual-studio-online-work-item-tracking/visual-studio-online-open-work-item.png)5. On the work item form, you can edit the title, add a description, assign the work item to a user, and mark it as complete.6. At the bottom of the work item form, you can add a comment to the work item and view its history.		To dig into the work item's history, you can click on a change, and a blade will open with more details about what happened.## How to: Manage your backlogKeeping a well prioritized backlog is key to successfully managing work for your website. There are two pieces to this:###Removing work when it is completed1. Open the work item you would like to mark complete.2. Check the check box labeled "completed."3. Save the work item.4. A stub for this item will remain on the backlog until you refresh the backlog or close and open it again.![Completed work item](./media/visual-studio-online-work-item-tracking/visual-studio-online-completed-work-item.png)###Keeping your backlog in priority order1. Hover over the work item whose priority you would like to change.2. Click the gripper bar on the left side of the work item.3. Drag and drop the work item to its new position on the backlog.![Dragging work item](./media/visual-studio-online-work-item-tracking/visual-studio-online-dragging-work-item.png)## How to: View recently completed work1. On the team project blade, click on the completed items blade.2. View the list of recently completed work. ![Dragging work item](./media/visual-studio-online-work-item-tracking/visual-studio-online-completed-items.png)
+<properties linkid="" urlDisplayName="Web サイトの作業の追跡" pageTitle="Web サイトの作業の追跡 | Azure" metaKeywords="Visual Studio Online, VSO, 作業, 項目, バックログ" description="Web サイトの作業を追跡および管理する方法について説明します。" metaCanonical="" services="visual-studio-online" documentationCenter="" title="Web サイトの作業の追跡" authors="rmarron" solutions="" manager="" editor="" />
+
+# Web サイトの作業の追跡
+このトピックでは、作業項目の追跡ツールを使用して Web サイトの作業を管理する方法について説明します。
+
+## 目次
+* <a href="#how-to-add-work-items-to-your-backlog">方法: 作業項目をバックログに追加する</a>
+* <a href="#how-to-manage-your-backlog">方法: バックログを管理する</a>
+* <a href="#how-to-view-recently-completed-work">方法: 最近完了した作業を表示する</a>
+
+## 方法: 作業項目をバックログに追加する
+1. チーム プロジェクトのブレードに移動します。
+
+2. 下部にある作業レンズ内でバックログ パーツをクリックします。
+ 
+	バックログのブレードが開きます。バックログには Web サイトの作業の一覧があり、作業は優先順位付けされています。
+
+	![バックログを開く](./media/visual-studio-online-work-item-tracking/visual-studio-online-open-backlog.png)
+
+3. 項目を追加するには、上部にあるテキスト ボックスにタイトルを入力し、Enter キーを押します。
+	
+	スクラム プロセス テンプレートを使用している場合は、バグや製品のバックログ項目を右側のドロップダウンから選択することで追加できます。
+
+
+4. 作業項目をクリックして開き、詳細を追加します。
+
+	![作業項目を開く](./media/visual-studio-online-work-item-tracking/visual-studio-online-open-work-item.png)
+
+5. 作業項目フォームでは、作業項目のタイトルの編集、説明の追加、ユーザーへの割り当て、完了としてのマークが可能です。
+
+6. 作業項目フォームの下部では、作業項目へのコメントの追加やその項目の履歴の表示が可能です。
+	
+	作業項目の履歴を調べるには、変更をクリックします。ブレードが開いて、これまで実行された作業の詳細が表示されます。
+
+## 方法: バックログを管理する
+
+作業を優先順位付けしたバックログを維持することは、Web サイトの作業を管理するための鍵となります。そのためには次の 2 つのプロセスが必要です。
+
+###作業を完了したら削除する
+
+1. 完了としてマークする作業項目を開きます。
+2. [完了] チェック ボックスをオンにします。
+3. 作業項目を保存します。
+4. この項目のスタブは、バックログを更新するか、閉じてから再び開くまで、バックログに残ります。
+
+![完了した作業項目](./media/visual-studio-online-work-item-tracking/visual-studio-online-completed-work-item.png)
+
+###バックログで作業を優先順位付けする
+
+1. 優先順位を変更する作業項目をポイントします。
+2. 作業項目の左側にあるグリッパー バーをクリックします。
+3. バックログでの新しい位置に作業項目をドラッグしてドロップします。
+
+![作業項目をドラッグする](./media/visual-studio-online-work-item-tracking/visual-studio-online-dragging-work-item.png)
+
+## 方法: 最近完了した作業を表示する
+
+1. チーム プロジェクトのブレードで、完了した項目のブレードをクリックします。
+2. 最近完了した作業の一覧を表示します。
+
+![作業項目をドラッグする](./media/visual-studio-online-work-item-tracking/visual-studio-online-completed-items.png)
+
+
+

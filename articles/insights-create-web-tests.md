@@ -1,55 +1,56 @@
-<properties title="How to create web test" pageTitle="How to create web test" description="Learn how to create web tests in Azure." authors="stepsic"  />
+<properties title="Web テストの作成方法" pageTitle="Web テストの作成方法" description="Azure で Web テストを作成する方法について説明します。" authors="stepsic"  />
 
-# Web tests
+# Web テスト
 
-Is your Azure Website still running? Is it responding properly, and fast enough? Tests your website at regular intervals by configuring a Web test. If the site goes down or responds slowly or incorrectly, you'll receive an email alert. And you'll get graphs showing its availability and responsiveness over time.  
+Azure Web サイトは引き続き実行されているでしょうか。正常に応答しており、十分速いでしょうか。Web テストを構成し、Web サイトを定期的にテストしてください。サイトがダウンした場合や、応答が遅いか不適切な場合は、電子メール アラートが配信されます。時間の経過に伴う、サイトの可用性と応答時間を示すグラフが表示されます。
 
-   ![Browse Hub](./media/insights-create-web-tests/Inisghts_WebTestBlade.png)
+   ![ハブの参照](./media/insights-create-web-tests/Inisghts_WebTestBlade.png)
 
-You can set up availability monitoring for any Azure Website that is using a Basic or Standard plan.  You can create up to 3 Web tests and run each of these tests from up to 3 geographic locations. You don't have to alter the website in any way.
+基本プランまたは標準プランを使用している任意の Azure Web サイトに対して、可用性の監視を設定できます。最大 3 つの Web テストを作成し、最大 3 つの地理的な場所からこれらの各テストを実行することができます。どのような方法でも Web サイトを変更する必要はありません。
 
-You can also pause web tests during deployments or known outages so your overall availability isn't affected.  Overall availability is calculated over all the web tests including the different locations selected.
+デプロイ中、または計画された停止期間は、Web テストを一時停止することもできます。その結果、全体の可用性は影響を受けません。全体的な可用性は、選択したさまざまな場所を含め、すべての Web テストを対象にして計算されます。
 
-## How to set up a web test
+## Web テストを設定する方法
 
-1. To configure a web test, first ensure your website is either **Basic** or **Standard**.
-2. Then, choose the **Web Test** part on the **Web site** blade:
+1. Web テストを構成するには、最初に、使用中の Web サイトが**基本**と**標準**のどちらかであることを確認します。
+2. 次に、**[Web サイト]** ブレードの **[Web テスト]** パーツをクリックします。
 
-   ![Configure Web Tests](./media/insights-create-web-tests/Insights_ConfigurePart.png)
+   ![Web テストの構成](./media/insights-create-web-tests/Insights_ConfigurePart.png)
 
-3. In the **Create web test** blade, name the web test and specify the URL to run the test against.
+3. **[Web テストの作成]** ブレードで、Web テストに名前を付け、テストの実行対象となる URL を指定します。
 
-   ![Create Web Test](./media/insights-create-web-tests/Insights_CreateTest.png)
+   ![Web テストの作成](./media/insights-create-web-tests/Insights_CreateTest.png)
 
-4. Then choose up to 3 out of the 8 locations
+4. 次に、8 つの場所のうち 3 つを選択します。
 
-5. Specify the criteria for success including HTTP status code checks or string contains on the site itself.
+5. HTTP ステータス コードのチェックや、サイト自体に含まれている文字列など、成功の条件を指定します。
 
-6. Then choose alert settings including the sensitivity and who to email.
+6. その後、感度や電子メール送信先などを含め、アラートの設定を選択します。
 
-   ![Alerts](./media/insights-create-web-tests/Inisghts_AlertCreation.png)
+   ![アラート](./media/insights-create-web-tests/Inisghts_AlertCreation.png)
    
-    - High sensitivity will create an alert whenever a test failure is detected in just 1 location.
-    - Medium sensitivity requires at least half of the locations have seen a failure in 10 minutes.
-    - Low sensitivity requires that the test at all locations have failed within 15 minutes.
+    - 高い感度を指定すると、ただ 1 つの場所でテストの失敗が検出されるたびにアラートを作成します。
+    - 中程度の感度を指定すると、10 分以内に少なくとも半分の場所で障害が確認される必要があります。
+    - 低い感度を指定すると、15 分以内にすべての場所でテストが失敗することが必要です。
 
-Once you are done click in the **Create** button. After your web test can been created, it will execute every 5 mins from the location(s) specified, so it may take a little while for the data to show up.
+完了した時点で、**[作成]** をクリックします。Web テストを作成した後、指定した場所から 5 分ごとにテストが実行されます。そのため、最初にデータが表示されるまでに、多少の時間がかかることがあります。
 
-### What are the locations about? 
-We send a request to the website from those locations, in the same way that users will access the site from different parts of the world. If your site becomes unavailable in the USA but still available in Europe, you'll know that the problem is a network issue, rather than in your server.
+### 場所とは?
+ユーザーが世界中のさまざまな部分からサイトにアクセスするのと同じ方法で、これらの場所から Web サイトに要求を送信します。サイトが米国で使用できず、ヨーロッパで引き続き使用できる場合は、サーバーではなくネットワークに問題があることがわかります。
 
-### Using Success Criteria
-Typically you’ll want to test that the HTTP status code equals 200, which signals that the server recognized the URI and returned a page.
+### 成功の条件の使用
+通常、HTTP ステータス コードが 200 に等しいことをテストします。この値は、サーバーが URI を認識し、ページを返したことを意味します。
 
-You cannot use wildcards in the content match string, but you can test any plain text.
+コンテンツの一致文字列としてワイルドカードを使用することはできませんが、任意のプレーンテキストをテストすることができます。
 
-## Uh oh - my site is down!  
-If your web test doesn't pass the success criteria then it will be marked as a failed test and reduce the overall availability for your web site. Failed tests (As well as successful tests) are shown on a scatter chat on the specific web test blade.  
+## 困ったことに -  サイトがダウンした場合
+Web テストの結果、成功の条件を満たさなかった場合は、そのテストは失敗したテストというマークを付けられ、Web サイトの全体的な可用性が低下します。失敗したテスト (また、成功したテスト) は、特定の Web テスト ブレードにある散布図で表示されます。
 
-   ![Failed Test](./media/insights-create-web-tests/Insights_FailedWebTest.png)
+   ![失敗したテスト](./media/insights-create-web-tests/Insights_FailedWebTest.png)
 
-Failed tests can be analyzed to determine why they failed.  Drill into a failed web test and download and open Visual Studio Web Test Result File to analyze and understand why the test failed.
+失敗したテストを分析して、失敗の理由を決定することができます。失敗した Web テストを表示し、Visual Studio の Web テスト結果をダウンロードして開き、テストが失敗した理由を分析して理解します。
 
-   ![Open in VS](./media/insights-create-web-tests/Insights_OpenInVS.png)
+   ![VS で開く](./media/insights-create-web-tests/Insights_OpenInVS.png)
+
 
 

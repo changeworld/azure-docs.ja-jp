@@ -1,18 +1,19 @@
-<properties linkid="" urlDisplayName="" pageTitle="Supported browsers and devices" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Supported browsers and devices" authors="Justin Beckwith"  solutions="" writer="" manager="" editor=""  />
+<properties linkid="" urlDisplayName="" pageTitle="サポートされているブラウザーとデバイス" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="サポートされているブラウザーとデバイス" authors="Justin Beckwith"  solutions="" writer="" manager="" editor=""  />
 
-#Supported browsers and devices
-The Microsoft Azure Preview Portal runs on all modern desktop and tablet devices and browsers. 
+#サポートされているブラウザーとデバイス
+Microsoft Azure プレビュー ポータルは、最新の主要なデスクトップ デバイスとタブレット デバイス、および最新の主要なブラウザーで動作します。
 
-### Supported Devices
-The preview portal will run great on modern PCs, Macs, and tablets. Mobile phones are not currently supported.
+### サポートされているデバイス
+プレビュー ポータルは、最新の PC、Mac、およびタブレットで快適に動作します。携帯電話は現時点でサポートされていません。
 
-### Supported Browsers
-The latest versions of the following browsers are supported:
+### サポートされているブラウザー
+次のブラウザーの最新バージョンがサポートされています。
 
-- Internet Explorer (10 and up)
-- Safari (7 and up)
-- Chrome (Latest)
-- Firefox (Latest)
+- Internet Explorer (10 以降)
+- Safari (7 以降)
+- Chrome (最新バージョン)
+- Firefox (最新バージョン)
 
-*Safari 6 and lower is not supported. If you're using OS X, you can either use Chrome, Firefox, or upgrade to OS X Mavericks to get Safari 7.*
+*Safari 6 以前はサポートされていません。OS X を使用している場合は、Chrome と Firefox のどちらかを使用すること、または OS X Mavericks にアップグレードして Safari 7 を入手することができます。*
     
+

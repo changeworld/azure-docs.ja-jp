@@ -1,43 +1,43 @@
-<properties linkid="hdinsight-dotnet-avro-serialization" urlDisplayName="HDInsight Avro.NET Serialization" pageTitle="Serialize Data with Avro.NET | Azure" metaKeywords="" description="Learn how Azure HDInsight uses Avro.NET to serialize big data." metaCanonical="" services="hdinsight" documentationCenter="" title="Serialize Data with Avro.NET " authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
+<properties linkid="hdinsight-dotnet-avro-serialization" urlDisplayName="HDInsight Avro.NET のシリアル化" pageTitle="Avro.NET を使用したデータのシリアル化 | Azure" metaKeywords="" description="Azure HDInsight が Avro.NET を使用してビッグ データをシリアル化する方法について説明します。" metaCanonical="" services="hdinsight" documentationCenter="" title="Avro.NET を使用したデータのシリアル化 " authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
 
 
 
-# Serialize Data with Avro.NET 
+# Avro.NET を使用したデータのシリアル化
 
-##Overview
-This topic shows how to use the Microsoft Avro Library (Avro.NET) to serialize objects and other data structures into streams of bytes in order to persist them to memory, a database or a file. It implements the Apache Avro data serialization system using JSON to define language agnostic schema that provide a compact binary data interchange format that can be processed by many languages (currently C, C++, C#, Java, PHP, Python, and Ruby) when the objects must be recovered by means of deserialization.
+##概要
+このトピックでは、Microsoft Avro Library (Avro.NET) を使用して、オブジェクトとその他のデータ構造体をバイト ストリームにシリアル化し、メモリ、データベース、またはファイルに格納する方法を示します。このライブラリは、言語に依存しないスキーマを定義するために、JSON を使用して、Apache Avro データ シリアル化システムを定義します。このスキーマはコンパクトなバイナリ データ交換形式を定義し、逆シリアル化を使用してオブジェクトを回復する必要があるときは、多くの言語 (現時点で C、C++、C#、Java、PHP、Python、および Ruby) がこの形式を処理できます。
  
 
-Apache Avro serialization format is widely used in Hadoop environments including Microsoft HDInsight. Detailed information on the format can be found in the Apache Avro Specification. 
+Apache Avro のシリアル化形式は、Microsoft HDInsight を含む Hadoop 環境で広く使用されています。この形式の詳細については、Apache Avro Specification を参照してください。
 
-Microsoft HDInsight Avro.NET library supports two ways of serializing objects: 
-using reflection 
-using generic record
+Microsoft HDInsight Avro.NET ライブラリは、オブジェクトをシリアル化する 2 つの方法をサポートしています。
+リフレクションを使用する方法
+汎用レコードを使用する方法
 
-##Prerequisites
+##前提条件
 
-The Microsoft .NET Library for Avro is distributed as a NuGet Package. Install from Visual Studio: Select the **Project** tab -> **Manage NGet Packages...**, search for "Avro" in the **Online Search** box, and then Click the **Install** button next to **Microsoft .NET Library for Avro**. The Newtonsoft.Json (>= .5.0.5) dependency is also downloaded automatically with 
-
-
-###Outline
-Scenarios:
-
- * <a href="#Scenario1">Serialization using reflection
-
- * <a href="#Scenario2">Serialization using Avro object containers
-
- * <a href="#Scenario3">Serialization using object container files and serialization with reflection
+Microsoft .NET Library for Avro は、NuGet パッケージの形式で配布されています。Visual Studio でインストールを実行する方法: **[プロジェクト]** タブで **[NuGet パッケージの管理]** をクリックし、**[オンライン検索]** ボックスで「Avro」を検索して、**[Microsoft .NET Library for Avro]** の横にある **[インストール]** をクリックします。Newtonsoft.Json (.5.0.5 以降) の依存関係も自動的にダウンロードされます。
 
 
- * <a href="#Scenario4">Serialization using object container files and serialization with generic record
+###概略
+シナリオ: 
+
+ * <a href="#Scenario1">リフレクションを使用したシリアル化
+
+ * <a href="#Scenario2">Avro オブジェクト コンテナーを使用したシリアル化
+
+ * <a href="#Scenario3">オブジェクト コンテナー ファイルを使用したシリアル化とリフレクションを使用したシリアル化
 
 
- * <a href="#Scenario5">Serialization using object container files with custom compression codec
+ * <a href="#Scenario4">オブジェクト コンテナー ファイルを使用したシリアル化と汎用レコードを使用したシリアル化
 
 
-<h2> <a name="Scenario1">Serialization using reflection </a></h2>
+ * <a href="#Scenario5">オブジェクト コンテナー ファイルとカスタム圧縮コーデックの組み合わせを使用したシリアル化
 
-In the example below a class and a struct are being serialized, deserialized and finally compared to the initial instances to insure identity. The JSON schema for the types is automatically built by Microsoft Avro Library taking into account data contract attributes. Microsoft Avro Library uses [Data Contract resolver](http://msdn.microsoft.com/en-us/library/ms731072(v=vs.110).aspx)  to identify the fields being serialized.
+
+<h2> <a name="Scenario1">リフレクションを使用したシリアル化</a></h2>
+
+次の例では、クラスと構造体のシリアル化、および逆シリアル化を実行し、最後に初期のインスタンスと比較して同一性を確認します。これらの型に対応する JSON スキーマは、アカウント データのコントラクト属性を考慮に入れたうえで、Microsoft Avro Library によって自動的に作成されます。Microsoft Avro ライブラリは[データ コントラクト シリアライザー](http://msdn.microsoft.com/ja-jp/library/ms731072(v=vs.110).aspx)を使用して、シリアル化しようとするフィールドを識別します。
 
     namespace Microsoft.Hadoop.Avro.Sample
     {
@@ -155,11 +155,11 @@ In the example below a class and a struct are being serialized, deserialized and
     // ----------------------------------------
     // Press any key to exit.
 
-<h2> <a name="Scenario2"></a>Serialization using Avro object containers</h2>
+<h2> <a name="Scenario2"></a>Avro オブジェクト コンテナーを使用したシリアル化</h2>
 
-It is not always possible to have the .NET classes representing the data. The schema of data can be dynamic as, for example, when the data is represented as Comma Separated Values files (CSV) with unknown in advance schema and requires transformation to Avro format.
-In such cases, one needs to create an instance of the special class (AvroRecord) with explicitly specified JSON schema, populate the fields with the required data and serialize it. 
-This example shows how to define a schema, create the corresponding record, populate it with the data, then serialize and deserialize. Finally, initial and deserialized objects are compared for identity.
+データを表す .NET クラスを常に使用できるとは限りません。データのスキーマを動的にすることもできます。たとえば、データがコンマ区切り値ファイル (CSV) として表現されており、スキーマが事前に把握できておらず、Avro 形式に変換する必要がある場合を想定します。
+このような場合は、明示的に指定した JSON スキーマを使用して特別なクラス (AvroRecord) のインスタンスを作成し、必要なデータを保持するフィールドを設定して、そのインスタンスをシリアル化する必要があります。
+次の例では、スキーマを定義し、対応するレコードを作成して、データを設定してから、シリアル化と逆シリアル化を実行する方法を示します。最後に、初期オブジェクトと、逆シリアル化を実行した後のオブジェクトを比較し、同一性を確認します。
 
     namespace Microsoft.Hadoop.Avro.Sample
     {
@@ -275,10 +275,10 @@ This example shows how to define a schema, create the corresponding record, popu
     // ----------------------------------------
     // Press any key to exit.
 
-<h2> <a name="Scenario3"></a>Serialization using object container files and serialization with reflection</h2>
+<h2> <a name="Scenario3"></a>オブジェクト コンテナー ファイルを使用したシリアル化とリフレクションを使用したシリアル化</h2>
 
-This example is similar to Example 1: a class and a struct are being serialized and stored in an Object Container file located in the current directory of the sample application. Then this file is read, data is deserialized and finally compared to the initial instances to insure identity.
-The data in Object Container file is compressed using the deflate (Link?) compression codec.
+次の例は例 1 に似ています。クラスと構造体をシリアル化し、サンプル アプリケーションの現在のディレクトリにあるオブジェクト コンテナー ファイルに保存します。次にこのファイルを読み取り、データを逆シリアル化し、最後に初期インスタンスと比較して同一性を確認します。
+deflate 圧縮コーデックを使用して、オブジェクト コンテナー ファイル内のデータを圧縮します。
 
     namespace Microsoft.Hadoop.Avro.Sample
     {
@@ -511,11 +511,11 @@ The data in Object Container file is compressed using the deflate (Link?) compre
     // ----------------------------------------
     // Press any key to exit.
 
-<h2> <a name="Scenario4"></a>Serialization using object container files and serialization with generic record</h2>
+<h2> <a name="Scenario4"></a>オブジェクト コンテナー ファイルを使用したシリアル化と汎用レコードを使用したシリアル化</h2>
 
-This example is similar to Example 2: a sample data set is serialized using AvroRecord with explicitly defined JSON schema. Serialized data is stored in a new Object Container file located in the current directory of the sample application. Then this file is read, data is deserialized and finally compared to the initial instances to insure identity.
+次の例は例 2 に似ています。AvroRecord と、明示的に定義した JSON スキーマを使用して、サンプル データ セットをシリアル化します。シリアル化されたデータは、サンプル アプリケーションにとっての現在のディレクトリにある新しいオブジェクト コンテナー ファイルに格納されます。次にこのファイルを読み取り、データを逆シリアル化し、最後に初期インスタンスと比較して同一性を確認します。
 
-The data in Object Container file is not compressed (Null compression codec is used).
+オブジェクト コンテナー ファイル内のデータは圧縮されません (Null 圧縮コーデックを使用)。
 
     namespace Microsoft.Hadoop.Avro.Sample
     {
@@ -768,9 +768,9 @@ The data in Object Container file is not compressed (Null compression codec is u
     // ----------------------------------------
     // Press any key to exit.
 
-<h2> <a name="Scenario5"></a>Serialization using object container files with custom compression codec</h2>
+<h2> <a name="Scenario5"></a>オブジェクト コンテナー ファイルとカスタム圧縮コーデックの組み合わせを使用したシリアル化</h2>
 
-[Avro Specification](http://avro.apache.org/docs/current/spec.html#Required+Codecs) allows usage of the optional compression codecs (in addition to Null and Deflate). This example below shows how to use a custom compression codec for Object Container files. It is not implementing “really” different codec (like Snappy, mentioned as a supported optional codec in Avro Specification), but uses the [Deflate](http://msdn.microsoft.com/en-us/library/system.io.compression.deflatestream(v=vs.110).aspx) implementation of .NET Framework 4.5 (provides a better compression algorithm based on zlib), which many developers may find useful.
+[Avro Specification](http://avro.apache.org/docs/current/spec.html#Required+Codecs) では、(Null と Deflate 以外に) オプションの圧縮コーデックを使用することもできます。次の例では、オブジェクト コンテナー ファイルに対してカスタム圧縮コーデックを使用する方法を使用します。この例では、"実際に" 異なっているコーデック (サポートされているオプションのコーデックとして Avro Specification に記載されている Snappy など) を実装せず、.NET Framework 4.5 での [Deflate](http://msdn.microsoft.com/ja-jp/library/system.io.compression.deflatestream(v=vs.110).aspx) の実装 (zlib に基づく、より良い圧縮アルゴリズムを提供) を使用します。多くの開発者にとって、この方法が役に立つ可能性があります。
 
     // This code needs to be compiled with the parameter Target Framework set as ".NET Framework 4.5"
     // to ensure the desired implementation of Deflate compression algorithm is used
@@ -1262,5 +1262,6 @@ The data in Object Container file is not compressed (Null compression codec is u
     // Press any key to exit.
 
 	
+
 
 

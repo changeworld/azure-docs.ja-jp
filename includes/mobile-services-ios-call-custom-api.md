@@ -1,11 +1,11 @@
 
-<h2><a name="update-app"></a><span class="short-header">Update the app </span>Update the app to call the custom API</h2>
+<h2><a name="update-app"></a><span class="short-header">アプリケーションを更新する</span>カスタム API を呼び出すようにアプリケーションを更新する</h2>
 
-1. Create a button, so you can click it to call the custom API. Drag a **Round Rect Button** from the **Object Library** located at the bottom of the **Utilities** pane, and place it below or next to the text field. Double-click to add the text **"All"**. 
+1. カスタム API を呼び出すボタンを作成します。**[Utilities]** ウィンドウの下部にある **[Object Library]** から **[Round Rect Button]** をドラッグし、テキスト フィールドの下または横に配置します。ダブルクリックし、「**All**」というテキストを追加します。
 
-	This adds a new button **"All"**.
+	新しいボタン **[All]** が追加されます。
 
-2. Open the **QSTodoService.m** code file, locate the `refreshDataOnSuccess` method and make sure that it contains the following code:
+2. **QSTodoService.m** コード ファイルを開き、`refreshDataOnSuccess` メソッドを見つけて、次のコードが含まれていることを確認します。
 
 		- (void)refreshDataOnSuccess:(QSCompletionBlock)completion
 		{		   
@@ -24,13 +24,13 @@
 		    }];		    		    		    
 		}
 
-	This filters the items so that completed items are not returned by the query.
+	ここでは、完了済みの項目が返されないように、項目をフィルターで処理しています。
 
-3. Now it's time to connect this object to the view controller source code. **Control-click** the new **"All"** button, and drag the mouse over to before the `@end` line in **QSTodoListViewController.h**. Connect the object to a new **Action** named `onCompleteAll` in **QSTodoListViewController**. Xcode will automatically insert the following line before the `@end` line:
+3. 次に、このオブジェクトをビュー コントローラーのソース コードに接続します。新しい **[All]** ボタンを **Ctrl キーを押しながらクリック**し、**QSTodoListViewController.h** の `@end` 行の前にマウスをドラッグします。**QSTodoListViewController** 内の `onCompleteAll` という名前の新しい**アクション**にオブジェクトを接続します。Xcode により、次の行が `@end` 行の前に自動的に挿入されます。
 
 		   - (IBAction)onCompleteAll:(id)sender;
 
-4. The goal of this `onCompleteAll` method is to handle the Click event for the new button. It invokes a new `completeAll` method that we will add to our custom class, which in turn sends a POST request to the new custom API. The result returned by the custom API is displayed in a message dialog, as are any errors. Edit **QSTodoListViewController.m** to add the following implementation before the `@end` line:
+4. この `onCompleteAll` メソッドの目的は、新しいボタンの Click イベントを処理することです。これにより、カスタム クラスに追加する新しい `completeAll` メソッドが呼び出され、新しいカスタム API に POST 要求が送信されます。カスタム API から返された結果は、メッセージ ダイアログに表示されます。エラーが発生した場合はそれらも表示されます。**QSTodoListViewController.m** を編集し、次の実装を `@end` 行の前に追加します。
 
 		   - (IBAction)onCompleteAll:(id)sender {
 		    [self.todoService completeAll:^(id result, NSHTTPURLResponse* response, NSError* error)
@@ -61,11 +61,11 @@
 		     }];
   		   }
 
-5. Notice that the code above refers to a new method `completeAll` that has not yet been defined in **QSTodoService**. Edit **QSTodoService.h** and add the following line before the `@end` line:
+5. 前のコードで、**QSTodoService** でまだ定義されていない新しいメソッド `completeAll` を参照していることに注意してください。**QSTodoService.h** を編集し、次の行を `@end` 行の前に追加します。
 
 		- (void) completeAll:(MSAPIBlock)completion;
 
-6. Add the corresponding implementation of `completeAll` in **QSTodoService.m** before the `@end` line. iOS is similar to JavaScript in that it doesn't support JSON serialization of arbitrary types. As such, it has quite a simple API for invoking custom APIs as well, consisting of the `invokeAPI` method. 
+6. **QSTodoService.m** の `@end` 行の前に、`completeAll` の対応する実装を追加します。iOS は、任意の型の JSON シリアル化をサポートしない点で JavaScript に似ています。そのため、カスタム API を呼び出すための API は非常にシンプルで、`invokeAPI` メソッドで構成されています。
 
 		- (void) completeAll:(MSAPIBlock)completion
 		{
@@ -78,14 +78,15 @@
 		     completion:completion ];
 		}
 
-## <a name="test-app"></a>Test the app
+## <a name="test-app"></a>アプリケーションをテストする
 
-1. In Xcode, select an emulator to deploy to (either iPhone or iPad), press the **Run** button (or the **Command+R** key) to rebuild the project and start the app. This executes your Windows Azure Mobile Services client, built with the iOS SDK, that queries items from your mobile service.
+1. Xcode で、iPhone または iPad に展開するエミュレーターを選択し、**[Run]** ボタン (または **Command + R** キー) を押してプロジェクトをリビルドし、アプリケーションを起動します。これにより、モバイル サービスから項目にクエリを行う Windows Azure のモバイル サービス クライアントが、iOS SDK でビルドされ、実行されます。
 
-2. Type text in the text field, and then click the **+** button. This sends a new item as an insert to the mobile service.
+2. テキスト フィールドにテキストを入力し、**[+]** をクリックします。これにより、新しい項目が挿入としてモバイル サービスに送信されます。
 
-3. Repeat the previous step until you have added several items to the list.
+3. 前の手順を繰り返して、複数の項目をリストに追加します。
 
-4. Tap the **All** button. An alert box is displayed that indicates the number of items marked complete and the filtered query is executed again, which clears all items from the list.
+4. **[All]** ボタンをタップします。完了としてマークされた項目の数を示す警告ボックスが表示され、フィルター処理済みのクエリが再度実行されて、すべての項目がリストから消去されます。
 
   	![](./media/mobile-services-ios-call-custom-api/mobile-custom-api-ios-completed.png)
+

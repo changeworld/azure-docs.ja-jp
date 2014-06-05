@@ -1,43 +1,44 @@
 
 
-The new Twitter v1.1 APIs requires your app to authenticate before accessing resources. First, you need to get the credentials needed to request access by using OAuth 2.0. Then, you will store them securely in the app settings for your mobile service.
+新しい Twitter v1.1 API では、リソースにアクセスする前にアプリケーションの認証が求められます。まず、OAuth 2.0 を使用して、アクセスの要求に必要な資格情報を取得する必要があります。次に、モバイル サービス用のアプリケーション設定にその資格情報を安全に保存します。
 
-1. If you haven't already done so, complete the steps in the topic <a href="/en-us/documentation/articles/mobile-services-how-to-register-twitter-authentication/" target="_blank">Register your apps for Twitter login with Mobile Services</a>. 
+1. そのような操作をまだ実行していない場合には、トピック「<a href="/ja-jp/documentation/articles/mobile-services-how-to-register-twitter-authentication/" target="_blank">モバイル サービスでの Twitter ログイン用のアプリケーションの登録</a>」の手順を実行します。
   
-  	Twitter generates the credentials needed to enable you to access Twitter v1.1 APIs. You can get these credentials from the Twitter Developers web site. 
+  	Twitter v1.1 API にアクセスできるようにするために必要な資格情報は、Twitter が生成します。この資格情報は Twitter デベロッパーの Web サイトから取得できます。
 
-2. Navigate to the <a href="http://go.microsoft.com/fwlink/p/?LinkId=268300" target="_blank">Twitter Developers</a> web site, sign-in with your Twitter account credentials, navigate to **My Applications**, and select your Twitter app.
+2. <a href="http://go.microsoft.com/fwlink/p/?LinkId=268300" target="_blank">Twitter デベロッパー</a>の Web サイトに移動し、Twitter アカウント資格情報でサインインして、**[My Applications]** に移動し、自分の Twitter アプリケーションを選択します。
 
     ![](./media/mobile-services-register-twitter-access/mobile-twitter-my-apps.png)
 
-3. In the **Details** tab for the app, make a note of the following values:
+3. アプリケーションの **[Details]** タブで、次の値を調べます。
 
-	+ **Consumer key**
-	+ **Consumer secret**
-	+ **Access token**
-	+ **Access token secret**
+	+ **コンシューマー キー**
+	+ **コンシューマー シークレット**
+	+ **アクセス トークン**
+	+ **アクセス トークン シークレット**
 
 	![](./media/mobile-services-register-twitter-access/mobile-twitter-app-secrets.png)
 
-4. Log on to the [Windows Azure Management Portal], click **Mobile Services**, and then click your mobile service.
+4. [Windows Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。
 
-5. Click the **Identity** tab, enter the **Consumer key** and **Consumer secret** values obtained from Twitter, and click **Save**. 
+5. **[ID]** タブをクリックし、Twitter から取得した **[コンシューマー キー]** と **[コンシューマー シークレット]** の値を入力して、**[保存]** をクリックします。
 
 	![](./media/mobile-services-register-twitter-access/mobile-identity-tab-twitter-only.png)
 
-2. Click the **Configure** tab, scroll down to **App settings** and enter a **Name** and **Value** pair for each of the following that you obtained from the Twitter site, then click **Save**.
+2. **[構成]** タブをクリックし、下へスクロールして **[アプリケーション設定]** を選択して、Twitter サイトから取得した次の項目の名前と値をそれぞれ **[名前]** と **[値]** に入力して、**[保存]** をクリックします。
 
 	+ `TWITTER_ACCESS_TOKEN`
 	+ `TWITTER_ACCESS_TOKEN_SECRET`
 
 	![](./media/mobile-services-register-twitter-access/mobile-schedule-job-app-settings.png)
 
-	This stores the Twitter access token in app settings. Like the consumer credentials on the **Identity** tab, the access credentials are also stored encrypted in app settings, and you can access them in your server scripts without hard-coding them in the script file. For more information, see [App settings].
+	これにより、アプリケーション設定に Twitter アクセス トークンが保存されます。**[ID]** タブのコンシューマー資格情報と同様に、アクセス資格情報も暗号化されてアプリケーション設定に保存され、サーバー スクリプト ファイルに資格情報をハード コーディングすることなくサーバー スクリプト内で資格情報にアクセスすることができます。詳細については、「[アプリ設定]」を参照してください。
 
 <!-- URLs. -->
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
+[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [WindowsAzure.com]: http://www.windowsazure.com/
-[Windows Azure Management Portal]: https://manage.windowsazure.com/
-[Register your apps for Twitter login with Mobile Services]: /en-us/documentation/articles/mobile-services-how-to-register-twitter-authentication
-[Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
-[App settings]: http://msdn.microsoft.com/en-us/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+[Windows Azure の管理ポータル]: https://manage.windowsazure.com/
+[モバイル サービスでの Twitter ログイン用のアプリケーションの登録]: /ja-jp/documentation/articles/mobile-services-how-to-register-twitter-authentication
+[Twitter デベロッパー]: http://go.microsoft.com/fwlink/p/?LinkId=268300
+[アプリ設定]: http://msdn.microsoft.com/ja-jp/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+

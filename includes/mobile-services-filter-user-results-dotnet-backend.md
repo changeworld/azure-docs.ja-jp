@@ -1,26 +1,26 @@
 
 
-Now that authentication is required to access data in the TodoItem table, you can use the userID value assigned by Mobile Services to filter returned data.
+TodoItem テーブル内のデータにアクセスするために認証が必要なため、モバイル サービスによって割り当てられた userID の値を使用して、返されたデータをフィルター処理します。
 
->[WACOM.NOTE]The methods below should have the **RequiresAuthorizationAttribute** applied at the **User** **Authorizationlevel**. This restricts table access to only authenticated users.
+>[WACOM.NOTE]下に示すすべてのメソッドでは、**RequiresAuthorizationAttribute** が **User** **Authorizationlevel**で適用されている必要があります。これにより、テーブルへのアクセス許可が、認証されたユーザーのみに制限されます。
 
-1. In Visual Studio 2013, open your mobile service project, expand the DataObjects folder, then open the TodoItem.cs project file.
+1. Visual Studio 2013 で、モバイル サービス プロジェクトを開きます。DataObjects フォルダーを展開し、TodoItem.cs プロジェクト ファイルを開きます。
 
-	The TodoItem class defines the data object, and you need to add a UserId property to use for filtering.
+	TodoItem クラスは、データ オブジェクトを定義します。フィルター処理に使用するためには、UserId プロパティを追加する必要があります。
 
-2. Add the following new UserId property to the **TodoItem** class:
+2. 次の新しい UserId プロパティを **TodoItem** クラスに追加します。
 
 		public string UserId { get; set; }
 
-	>[WACOM.NOTE] When using the default database initializer, Entity Framework will drop and recreate the database whenever it detects a data model change in the Code First model definition. To make this data model change and maintain existing data in the database, you must use Code First Migrations. The default initializer cannot be used against a SQL Database in Azure. For more information, see [How to Use Code First Migrations to Update the Data Model](/en-us/documentation/articles/mobile-services-dotnet-backend-use-code-first-migrations).
+	>[WACOM.NOTE] データベースの既定の初期化子を使用する場合は、Code First のモデル定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。Azure 内の SQL データベースに対して、既定の初期化子を使用することはできません。詳細については、[Code First Migrations を使用してデータ モデルを更新する方法に関するページ](/ja-jp/documentation/articles/mobile-services-dotnet-backend-use-code-first-migrations)を参照してください。
 
-3. In Solution Explorer, expand the Controllers folder, open the TodoItemController.cs project file, and add the following **using** statement:
+3. ソリューション エクスプローラーで、Controllers フォルダーを展開し、TodoItemController.cs プロジェクト ファイルを開いて、次の **using** ステートメントを追加します。
 
 		using Microsoft.WindowsAzure.Mobile.Service.Security;
 
-	The **TodoItemController** class implements data access for the TodoItem table. 
+	**TodoItemController** クラスは、TodoItem テーブルに対するデータ アクセスを実装します。
  
-4. Locate the **PostTodoItem** method and add the following code at the end right before the **return** statement:
+4. **PostTodoItem** メソッドを探し、最後の **return** ステートメントの直前に次のコードを追加します。
 
 		// Get the logged-in user.
 	    var currentUser = User as ServiceUser;
@@ -28,16 +28,17 @@ Now that authentication is required to access data in the TodoItem table, you ca
 	    // Set the user ID on the item.
 	    item.UserId = currentUser.Id;
 
-    This code adds a UserId value to the item, which is the user ID of the authenticated user, before it is inserted into the TodoItem table. 
+    このコードは、UserId の値 (認証済みのユーザーの ID) を TodoItem テーブルに挿入する前に、項目に追加するためのものです。
 	
 
-5. Locate the **GetAllTodoItems** method and replace the existing **return** statement with the following line of code:
+5. **GetAllTodoItems** メソッドを見つけ、既存の ** return** ステートメントを次のコード行と置き換えます。
 
         // Get the logged-in user.
         var currentUser = User as ServiceUser;
 
         return Query().Where(todo => todo.UserId == currentUser.Id);
 
-   	This query filters the returned TodoItem objects so that each user only receives the items that they inserted. You can optionally 
+   	このクエリは、返される TodoItem オブジェクトにフィルター処理を実施して、それぞれのユーザーが自分で挿入した項目のみを受け取るためのものです。必要に応じて、次の手順を実行します。
 
-6. Republish the mobile service project to Azure.
+6. モバイル サービス プロジェクトを Azure に対して再発行します。
+

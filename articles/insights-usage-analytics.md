@@ -1,33 +1,34 @@
-<properties title="How to use end user analytics" pageTitle="How to use end user analytics" description="Learn about end user analytics in Azure." authors="vladj"  />
+<properties title="エンド ユーザー分析機能を使用する方法" pageTitle="エンド ユーザー分析機能を使用する方法" description="Azure でのエンド ユーザー分析について説明します。" authors="vladj"  />
 
-# Analytics for Web sites
+# Web サイトに関する分析
 
-Wonder how many users have visited you site?  Wonder what the average page load time is or what browsers are being used?  By inserting a few lines of script in your web pages, you can collect data about how your web site is used by your customers. 
+何人のユーザーがサイトにアクセスしたでしょうか。ページの平均読み込み時間とはどれくらいで、どのブラウザーが使用されているでしょうか。Web ページに数行のスクリプトを挿入すると、顧客が Web サイトをどのように使用しているかを示すデータを収集できます。
 
-   ![End User Analytics](./media/insights-usage-analytics/Insights_ConfiguredExperience.png)
+   ![エンド ユーザー分析](./media/insights-usage-analytics/Insights_ConfiguredExperience.png)
 
-## How to set up End User Analytics
-1. Click on the part on the **Web site** blade that says **End user analytics**
-2. On the **Configuration** blade, select the entire instrumentation script and copy it.
+## エンド ユーザー分析機能を設定する方法
+1. **[Web サイト]** ブレードの **[エンド ユーザー分析]** パーツをクリックします。
+2. **[構成]** ブレードで、インストルメンテーション スクリプト全体を選択し、コピーします。
 
    ![Configuration](./media/insights-usage-analytics/Insights_CopyCode.png)
 
 
-3. Paste the script into each of your web pages, just before the close of the </head> tag.  It's a good idea to insert the script into all your web pages. If you're using ASP.NET, you can do that by inserting the script into your application's master page.
+3. 各 Web ページで、</head> タグを閉じる直前に、このスクリプトを貼り付けます。すべての Web ページにこのスクリプトを挿入することをお勧めします。ASP.NET を使用している場合は、アプリケーションのマスター ページにこのスクリプトを挿入する方法で、この作業を実現できます。
 
-4. Deploy and use your web application. Usage analytic information will begin to appear after about 5-10 minutes.
+4. Web アプリケーションをデプロイし、使用します。約 5 ～ 10 分後に、利用状況分析情報の表示が開始されます。
 
-## Exploring the data
+## データの探索
 
-The Browsers session part allows you to drill into to see the different browsers and then browser versions.
+[ブラウザー セッション] パーツを使用して、さまざまなブラウザーの詳細と、それらのブラウザーのバージョンを表示することができます。
 
-   ![Browsers](./media/insights-usage-analytics/Insights_Browsers.png)
+   ![ブラウザー](./media/insights-usage-analytics/Insights_Browsers.png)
 
-The Analytics part shows:
-- A break down of the different device types including Desktop and Mobile.
-- Your top 5 pages and graphs the page load time over the past week.  The number of sessions and views is also available
+[分析] パーツでは、次のものが表示されます。
+- デスクトップやモバイルを含む、さまざまなデバイスの種類ごとの分類。
+- 過去 1 週間における上位 5 つのページと、ページの読み込み時間を示すグラフ。セッション数と表示回数も利用できます。
 
-   ![Top Pages](./media/insights-usage-analytics/Insights_TopPages.png)
+   ![上位ページ](./media/insights-usage-analytics/Insights_TopPages.png)
 
-- Your slowest pages in the past week so you can improve them to meet your business goals and objectives
+- 過去 1 週間における最も遅いページも表示されるため、ビジネスの目標と目的を満たすために、それらのページ改善することができます。
+
 

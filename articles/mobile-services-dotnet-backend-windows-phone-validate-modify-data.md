@@ -1,52 +1,52 @@
-<properties linkid="develop-mobile-tutorials-dotnet-backend-validate-modify-and-augment-data-wp8" urlDisplayName="Validate and Modify Data" pageTitle="Use the .Net backend to validate and modify data (Windows Phone 8) | Mobile Dev Center" metaKeywords="" description="Learn how to validate, modify, and augment data for your Windows Phone app with .Net backend Windows Azure Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using the .Net backend" authors="wesmc" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-tutorials-dotnet-backend-validate-modify-and-augment-data-wp8" urlDisplayName="データの検証および変更" pageTitle=".NET バックエンドを使用したデータの検証および変更 (Windows Phone 8) | モバイル デベロッパー センター" metaKeywords="" description=".NET バックエンド Windows Azure モバイル サービスを活用する Windows Phone アプリのデータを検証、変更、および拡張する方法を説明します。" metaCanonical="" services="" documentationCenter="Mobile" title=".NET バックエンドを使用したモバイル サービスのデータの検証および変更" authors="wesmc" solutions="" manager="" editor="" />
 
 
 
 
-# Validate and modify data in Mobile Services using the .Net Backend.
+# .NET バックエンドを使用したモバイル サービスのデータの検証および変更
 
 <div class="dev-center-tutorial-selector sublanding">
-<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-validate-modify-data/" title="Windows Store C#">Windows Store C#</a>
-<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-validate-modify-data/" title="Windows Store JavaScript">Windows Store JavaScript</a>
-<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-validate-modify-data/" title="Windows Phone" class="current">Windows Phone</a>
-<a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-ios" title="iOS">iOS</a>
-<a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-android" title="Android">Android</a>
-<a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-html" title="HTML">HTML</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a>
-<a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android" title="Xamarin.Android">Xamarin.Android</a>
+<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-validate-modify-data/" title="Windows ストア C#">Windows ストア C#</a>
+<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-validate-modify-data/" title="Windows ストア JavaScript">Windows ストア JavaScript</a>
+<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-validate-modify-data/" title="Windows Phone" class="current">Windows Phone</a>
+<a href="/ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-ios" title="iOS">iOS</a>
+<a href="/ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-android" title="Android">Android</a>
+<a href="/ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-html" title="HTML">HTML</a><a href="/ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a>
+<a href="/ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android" title="Xamarin.Android">Xamarin.Android</a>
 </div>
 
 <div class="dev-center-tutorial-subselector">
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-validate-modify-data/" title=".NET backend" class="current">.NET backend</a> | 
-	<a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-wp8"  title="JavaScript backend">JavaScript backend</a>
+	<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-validate-modify-data/" title=".NET バックエンド" class="current">.NET バックエンド</a> |
+	<a href="/ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-wp8"  title="JavaScript バックエンド">JavaScript バックエンド</a>
 </div>
 
 
-This topic shows you how to use code in your .Net backend Windows Azure Mobile Services to validate and modify data. The .Net backend service is an HTTP service built with the Web API framework. If you are familiar with the `ApiController` class defined with the Web API framework, the `TableController` class provided by Mobile Services will be very intuitive. `TableController` is derived from the `ApiController` class and provides additional functionality for interfacing with a database table. It can be used to perform operations on data being inserted and updated, including validation and data modification which is demonstrated in this tutorial. 
+このトピックでは、.NET バックエンド Windows Azure モバイル サービス内でコードを使用してデータを検証および変更する方法について説明します。.NET バックエンド サービスは、Web API フレームワークを使用して構築した HTTP サービスです。Web API フレームワークで定義されている `ApiController` クラスについて理解している場合は、モバイル サービスによって提供されている `TableController` クラスは非常に直感的に把握できます。`TableController` は、`ApiController` クラスから派生したもので、データベース テーブルとやり取りするための追加機能を提供します。挿入や更新の対象となるデータを操作する目的で使用でき、このチュートリアルで示す検証やデータの変更もその中に含まれます。
 
-This tutorial walks you through these basic steps:
+このチュートリアルでは、次の基本的な手順について説明します。
 
-1. [Add string length validation]
-2. [Update the client to support validation]
-3. [Test length validation]
-4. [Add a timestamp for CompleteDate]
-5. [Update the client to display the CompleteDate]
+1. [文字列の長さの検証の追加]
+2. [検証をサポートするためのクライアントの更新]
+3. [長さの検証テスト]
+4. [CompleteDate に関するタイムスタンプの追加]
+5. [CompleteDate を表示するためのクライアントの更新]
 
-This tutorial builds on the steps and the sample app from the previous tutorial, [Getting Started] or [Get started with data]. Before you begin this tutorial, you must first complete the [Getting Started] or [Get started with data] tutorial.  
+このチュートリアルは、以前のチュートリアルである「[作業の開始]」または「[データの使用]」に関する手順およびサンプル アプリケーションを基に作成されています。このチュートリアルを開始する前に、「[作業の開始]」または「[データの使用]」を完了している必要があります。
 
-## <a name="string-length-validation"></a>Add validation
+## <a name="string-length-validation"></a>検証の追加
 
 [WACOM.INCLUDE [mobile-services-dotnet-backend-add-validation](../includes/mobile-services-dotnet-backend-add-validation.md)]
 
 
-## <a name="update-client-validation"></a>Update the client
+## <a name="update-client-validation"></a>クライアントの更新
 
-Now that the mobile service is setup to validate data and send error responses for an invalid text length, you need to update your app to be able to handle error responses from validation. The error will be caught as a `MobileServiceInvalidOperationException` from the client app's call to `IMobileServiceTable<TodoItem].InsertAsync()`.
+今度は、データを検証し、テキストの長さが無効な場合はエラー応答を送信するようにモバイル サービスを設定するため、検証からのエラー応答を処理できるようにアプリケーションを更新する必要があります。エラーは、クライアント アプリケーションによる `IMobileServiceTable<TodoItem].InsertAsync()` の呼び出しからの `MobileServiceInvalidOperationException` としてキャッチされます。
 
-1. In the Solution Explorer window in Visual Studio, navigate to the client project and open the MainPage.xaml.cs file. Add the following using statement to the file.
+1. Visual Studio のソリューション エクスプローラー ウィンドウで、クライアント プロジェクトに移動し、MainPage.xaml.cs ファイルを開きます。次の using ステートメントをファイルに追加します。
 
         using Newtonsoft.Json.Linq;
 
-2. In MainPage.xaml.cs replace the existing **InsertTodoItem** method with the following code:
+2. MainPage.xaml.cs で、既存の **InsertTodoItem** メソッドを次のコードに置き換えます。
 
         private async void InsertTodoItem(TodoItem todoItem)
         {
@@ -72,31 +72,31 @@ Now that the mobile service is setup to validate data and send error responses f
             }
         }
 
-   	This version of the method includes error handling for the **MobileServiceInvalidOperationException** that displays the deserialized error message from the response content in a message box.
+   	このバージョンのメソッドには、**MobileServiceInvalidOperationException** に対するエラー処理が含まれていて、応答内容から取得した逆シリアル化エラー メッセージをメッセージ ボックス内に表示します。
 
-## <a name="test-length-validation"></a>Test Length Validation
+## <a name="test-length-validation"></a>長さの検証テスト
 
-1. In Visual Studio configure the desired Windows Phone deployment target. Then in the Solution Explorer window right click the client app project and then click **Debug**, **Start new instance**.
+1. Visual Studio で、希望する Windows Phone 展開ターゲットを構成します。ソリューション エクスプローラー ウィンドウでクライアント アプリケーション プロジェクトを右クリックし、**[デバッグ]**、**[新しいインスタンスを開始]** の順にクリックします。
 
-2. Enter the text for a new todo item with a length greater than 10 characters and then click **Save**.
+2. 新しい todo 項目に対して 10 文字を超える長さのテキストを入力し、**[Save]** をクリックします。
 
     ![][1]
 
-3. You will get a message dialog similar to the following in response to the invalid text.
+3. 無効なテキストへの応答として、次のようなメッセージ ダイアログが表示されます。
 
     ![][2]
 
-## <a name="add-timestamp"></a>Add a timestamp field for CompleteDate
+## <a name="add-timestamp"></a>CompleteDate に関するタイムスタンプ フィールドの追加
 
 [WACOM.INCLUDE [mobile-services-dotnet-backend-add-completedate](../includes/mobile-services-dotnet-backend-add-completedate.md)]
 
 
-## <a name="update-client-timestamp"></a>Update the client to display the CompleteDate
+## <a name="update-client-timestamp"></a>CompleteDate を表示するためのクライアントの更新
 
-The final step is to update the client to display the new **CompleteDate** data. 
+最後の手順は、クライアントを更新して新しい **CompleteDate** データを表示することです。
 
 
-1. In Solution Explorer for Visual Studio, in the todolist client project, open the MainPage.xaml file and replace the **StackPanel** element with the definition below. Then save the file. This changes the event handler on **CheckBoxComplete** so that we handle the `click` event. Also we add a text block next to the check box and bind it to the complete date timestamp.
+1. Visual Studio のソリューション エクスプローラーで todolist クライアント プロジェクトを使用し、MainPage.xaml ファイルを開き、その中の **StackPanel** 要素を、次に示す定義で置き換えます。その後、ファイルを保存します。これにより、**CheckBoxComplete** に対応するイベント ハンドラーが変更され、`click` イベントをコード内で処理することになります。また、チェック ボックスの横にテキスト ブロックを追加して、完全な日付タイムスタンプにバインドします。
 	      
         <StackPanel Orientation="Horizontal">
           <CheckBox Name="CheckBoxComplete" IsChecked="{Binding Complete, Mode=TwoWay}"
@@ -107,7 +107,7 @@ The final step is to update the client to display the new **CompleteDate** data.
         </StackPanel>
 
 
-2. In Solution Explorer for Visual Studio, in the todolist client project, open the MainPage.xaml.cs file, replace the `CheckBoxComplete_Checked` event handler with the `CheckBoxComplete_Clicked` event handler that follows. This is so we can see the complete date after completing the item.
+2. Visual Studio のソリューション エクスプローラーで todolist クライアント プロジェクトを使用し、MainPage.xaml.cs ファイルを開き、`CheckBoxComplete_Checked` イベント ハンドラーを、次に示す `CheckBoxComplete_Clicked` に置き換えます。これにより、項目が完成した後、完全な日付を確認できます。
 
         private void CheckBoxComplete_Clicked(object sender, RoutedEventArgs e)
         {
@@ -117,7 +117,7 @@ The final step is to update the client to display the new **CompleteDate** data.
         }
 
 
-3. In the MainPage.xaml.cs file, then replace the existing **TodoItem** class with the following definition that includes the new **CompleteDate** property as a nullable type.
+3. MainPage.xaml.cs ファイルで、既存の **TodoItem** クラスを、null 許容型として新しい **CompleteDate** プロパティを含む、次の定義に置き換えます。
 
         public class TodoItem
         {
@@ -130,13 +130,13 @@ The final step is to update the client to display the new **CompleteDate** data.
             public DateTime? CompleteDate { get; set; }
         }
 	
-    >[WACOM.NOTE] The <code>DataMemberAttribute</code> tells the client to map the new <code>CompleteDate</code> property in the app to the <code>CompleteDate</code> column defined in the TodoItem table. By using this attribute, your app can have property names on objects that differ from column names in the SQL Database.
+    >[WACOM.NOTE] <code>DataMemberAttribute</code> は、アプリケーション内の新しい <code>CompleteDate</code> プロパティを、TodoItem テーブル内で定義された <code>CompleteDate</code> 列にマップするようにクライアントに指示します。この属性を使用することにより、アプリケーションでは、SQL データベース内の列名と異なるプロパティ名をオブジェクトに対して使用することができます。
     
 
 	
 
 
-4. In MainPage.xaml.cs, remove or comment out the `.Where` clause function in the existing **RefreshTodoItems** method so that completed todoitems are included in the results.
+4. MainPage.xaml.cs で、既存の **RefreshTodoItems** メソッド内にある `Where`句関数を削除またはコメント アウトします。その結果、完了した todoitems が結果の中に含まれるようになります。
 
             // This query filters out completed TodoItems and 
             // items without a timestamp. 
@@ -145,7 +145,7 @@ The final step is to update the client to display the new **CompleteDate** data.
                .ToCollectionAsync();
 
 
-5. In MainPage.xaml.cs, update the **UpdateCheckedTodoItem** method as follows so that the items are refreshed after an update and completed items are not removed from the list. Then save the file.	
+5. MainPage.xaml.cs 内で、**UpdateCheckedTodoItem** メソッドを次のように更新します。その結果、更新を行った後に項目の表示が更新され、完了した項目はリストから削除されなくなります。その後、ファイルを保存します。	
 
         private async void UpdateCheckedTodoItem(TodoItem item)
         {
@@ -156,40 +156,40 @@ The final step is to update the client to display the new **CompleteDate** data.
         }
 
 
-6. In the Solution Explorer windows of Visual Studio, right click the **Solution** and click **Rebuild Solution** to rebuild both the client and the .NET backend service. Verify both project build without errors.
+6. Visual Studio の ソリューション エクスプローラー ウィンドウで **[ソリューション]** を右クリックし、**ソリューションのリビルド** をクリックして、クライアントと .NET バックエンド サービスの両方をリビルドします。両方のプロジェクトがエラーなしでビルドされることを確認します。
 
 
 	
-7. Press the **F5** key to run the client app and service locally. Add some new items and click to mark some items complete to see the **CompleteDate** timestamp being updated.
+7. **F5** キーを押して、クライアント アプリケーションとサービスをローカルで実行します。いくつかの新しい項目を追加し、いくつかの項目に完了マークを付けて、**CompleteDate** タイムスタンプが更新されていることを確認します。
 
 
-8. In Solution Explorer for Visual Studio, right click the todolist service project and click **Publish**. Publish your .NET backend service to Microsoft Azure using your publishing setting file that you downloaded from the Azure portal.
+8. Visual Studio のソリューション エクスプローラーで、todolist サービス プロジェクトを右クリックし、**[発行]** をクリックします。Azure ポータルからダウンロードした発行設定ファイルを使用して、.NET バックエンド サービスを Microsoft Azure に発行します。
 
-9. Update the App.xaml.cs file for the client project by uncommenting the connection to the mobile service address. Test the app against the .NET Backend hosted in your Azure account.
+9. モバイル サービス アドレスへの接続をコメント解除して、クライアント プロジェクトに対応する App.xaml.cs ファイルを更新します。Azure アカウント内でホストされている .NET バックエンドに対してアプリケーションをテストします。
 
 
-## <a name="next-steps"> </a>Next steps
+## <a name="next-steps"> </a>次のステップ
 
-Now that you have completed this tutorial, consider continuing on with the final tutorial in the data series: [Refine queries with paging].
+このチュートリアルが完了したため、データ シリーズの最終チュートリアル「[ページングを使用したモバイル サービス クエリの改善]」に進むことを検討してください。
 
-Server scripts are also used when authorizing users and for sending push notifications. For more information see the following tutorials:
+サーバー スクリプトは、ユーザーを認証するときに、およびプッシュ通知の送信のためにも使用されます。詳細については、次のチュートリアルを参照してください。
 
-* [Service-side authorization of users]
-  <br/>Learn how to filter data based on the ID of an authenticated user.
+* [ユーザーのサービス側の承認]
+  <br/>認証されたユーザーの ID に基づきデータをフィルター処理する方法について説明します。
 
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app.
+* [プッシュ通知の使用]
+  <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [Mobile Services .NET How-to Conceptual Reference]
-  <br/>Learn more about how to use Mobile Services with .NET.
+* [モバイル サービス .NET の使用方法の概念リファレンス]
+  <br/>.NET でモバイル サービスを使用する方法について説明します
 
 <!-- Anchors. -->
-[Add string length validation]: #string-length-validation
-[Update the client to support validation]: #update-client-validation
-[Test length validation]: #test-length-validation
-[Add a timestamp for CompleteDate]: #add-timestamp
-[Update the client to display the CompleteDate]: #update-client-timestamp
-[Next Steps]: #next-steps
+[文字列の長さの検証の追加]: #string-length-validation
+[検証をサポートするためのクライアントの更新]: #update-client-validation
+[長さの検証テスト]: #test-length-validation
+[CompleteDate に関するタイムスタンプの追加]: #add-timestamp
+[CompleteDate を表示するためのクライアントの更新]: #update-client-timestamp
+[次のステップ]: #next-steps
 
 <!-- Images. -->
 [1]: ./media/mobile-services-dotnet-backend-windows-phone-validate-modify-data/mobile-services-invalid-text-length.png
@@ -198,16 +198,17 @@ Server scripts are also used when authorizing users and for sending push notific
 
 
 <!-- URLs. -->
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started/#create-new-service
-[Service-side authorization of users]: en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-authorize-users-in-scripts/
-[Refine queries with paging]: /en-us/develop/mobile/tutorials/add-paging-to-data-dotnet
-[Getting Started]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started/
-[Get started with data]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/
-[Get started with authentication]: en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-users/
-[Get started with push notifications]: en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push/
-[JavaScript and HTML]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-js
+[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
+[ユーザーのサービス側の承認]: ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-authorize-users-in-scripts/
+[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
+[作業の開始]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started/
+[データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/
+[認証の使用]: ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-users/
+[プッシュ通知の使用]: ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push/
+[JavaScript と HTML]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-js
 
-[Management Portal]: https://manage.windowsazure.com/
-[Windows Azure Management Portal]: https://manage.windowsazure.com/
-[Mobile Services .NET How-to Conceptual Reference]: /en-us/develop/mobile/how-to-guides/work-with-net-client-library
+[管理ポータル]: https://manage.windowsazure.com/
+[Windows Azure の管理ポータル]: https://manage.windowsazure.com/
+[モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library
+

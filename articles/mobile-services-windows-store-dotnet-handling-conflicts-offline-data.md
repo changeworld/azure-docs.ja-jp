@@ -1,64 +1,64 @@
 
 
-<properties linkid="develop-mobile-tutorials-handle-conflcits-offline-data-dotnet" urlDisplayName="Handle Conflicts with Offline Data" pageTitle="Handle Conflicts with offline data in Mobile Services (Windows Store) | Mobile Dev Center" metaKeywords="" description="Learn how to handle conflicts with offline data in your Windows Store application." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Handling conflicts with offline data in Mobile Services" authors="wesmc" />
+<properties linkid="develop-mobile-tutorials-handle-conflcits-offline-data-dotnet" urlDisplayName="オフライン データとの競合の処理" pageTitle="Mobile Services のオフライン データとの競合の処理 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="Windows ストア アプリケーションでオフライン データとの競合を処理する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Mobile Services のオフライン データとの競合の処理" authors="wesmc" />
 
 
-# Handling conflicts with offline data in Mobile Services
+# Mobile Services のオフライン データとの競合の処理
 
 <div class="dev-center-tutorial-selector sublanding">
-<a href="/en-us/documentation/articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data" title="Windows Store C#" class="current">Windows Store C#</a>
+<a href="/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data" title="Windows ストア C#" class="current">Windows ストア C#</a>
 </div>
 
 
-<p>This topic shows you how to synchronize data and handle conflicts when using the offline capabilities of Windows Azure Mobile Services. In this tutorial, you will download an app that supports both offline and online data, integrate the mobile service with the app, and then login to the Windows Azure Management Portal to view and update the database when running the app.
+<p>このトピックでは、Windows Azure Mobile Services のオフライン機能を使用する場合にデータを同期して、競合を処理する方法について説明します。このチュートリアルでは、オフライン データとオンライン データの両方をサポートするアプリケーションをダウンロードした後、モバイル サービスをそのアプリケーションに統合します。その後、Windows Azure の管理ポータルにログインして、アプリケーションの実行中にデータベースを表示して更新します。
 </p>
 
-This tutorial builds on the steps and the sample app from the previous tutorial [Get started with offline data]. Before you begin this tutorial, you must first complete [Get started with offline data].
+このチュートリアルは、前の「[オフライン データの使用]」チュートリアルの手順およびサンプル アプリケーションを基に作成されています。このチュートリアルを開始する前に、「[オフライン データの使用]」チュートリアルを完了している必要があります。
 
 
-This tutorial walks you through these basic steps:
+このチュートリアルでは、次の基本的な手順について説明します。
 
-1. [Download the Windows Store app project] 
-2. [Add a due date column for the database]
-  * [Updating the database for .NET backend mobile services]  
-  * [Updating the database for JavaScript mobile services]  
-3. [Test the app against a mobile service]
-4. [Manually update the data in the backend to create a conflict]
+1. [Windows ストア アプリ プロジェクトのダウンロード]
+2. [期日列のデータベースへの追加]
+  * [.NET バックエンド モバイル サービスのデータベースの更新]
+  * [JavaScript モバイル サービスのデータベースの更新]
+3. [モバイル サービスに対するアプリケーションのテスト]
+4. [競合を作成するためのバックエンドでのデータの手動更新]
 
-This tutorial requires Visual Studio 2013 running on Windows 8.1.
-
-
-## <a name="download-app"></a>Download the sample project
-
-This tutorial is built on the [Handling conflicts code sample], which is a Windows Store app project in Visual Studio 2013. The UI for this app is similar to the app in the tutorial [Get started with offline data], except that there is a new date column in for each TodoItem. 
-
-1. Download the C# version of the [Handling conflicts code sample]. 
-
-2. Install [SQLite for Windows 8.1] if it has not been installed.
-
-3. In Visual Studio 2013, open the downloaded project. Press the **F5** key to rebuild the project and start the app.
-
-4. In the app, type some text in **Insert a TodoItem**, then click **Save**. You can also modify the due date of the todo items you add.
-
-Note that the app is not yet connected to any mobile service, so the buttons **Push** and **Pull** will throw exceptions.
+このチュートリアルでは、Windows 8.1 で実行されている Visual Studio 2013 が必要です。
 
 
-## <a name="add-column"></a>Add a column to the data model
+## <a name="download-app"></a>サンプル プロジェクトのダウンロード
 
-In this section you will update the database for your mobile service to include a TodoItem table with a due date column. The app allows you to change the due date for an item at runtime so that you can generate sync conflicts in a later section of this tutorial. 
+このチュートリアルは、Visual Studio 2013 の Windows ストア アプリ プロジェクトである、[競合コード サンプルの処理]に基づいて構築されています。このアプリケーションの UI は、各 TodoItem に新しいデータ列があることを除き、「[オフライン データの使用]」チュートリアルのアプリケーションと似ています。
 
-The `TodoItem` class in the sample is defined in MainPage.xaml.cs. Notice the class has the following attribute which will target the sync operations against that table.
+1. [競合コード サンプルの処理]の C# バージョンをダウンロードします。
+
+2. インストールされていない場合は、[SQLite for Windows 8.1] をインストールします。
+
+3. Visual Studio 2013 でダウンロードしたプロジェクトを開きます。**F5** キーを押してプロジェクトをリビルドし、アプリケーションを開始します。
+
+4. アプリケーションで、**[Insert a TodoItem]** に任意のテキストを入力し、**[Save]** をクリックします。追加する todo 項目の期日を変更することもできます。
+
+アプリケーションはモバイル サービスにまだ接続されていないため、**[プッシュ]** および **[プル]** は例外をスローすることに注意してください。
+
+
+## <a name="add-column"></a>列のデータ モデルへの追加
+
+このセクションでは、モバイル サービスのデータベースを更新して、期日列のある TodoItem テーブルを含めます。このアプリケーションによって、このチュートリアルの後のセクションで同期の競合を生成できるように実行時に項目の期日を変更できます。
+
+サンプルの `TodoItem` クラスは、MainPage.xaml.cs で定義されます。クラスは、そのテーブルに対する同期操作を対象とする次の属性を持っていることに注意してください。
 
         [DataTable("TodoWithDate")]
 
-Update your database to include this table.
+データベースを更新してこのテーブルを含めます。
 
-### <a name="dotnet-backend"></a>Updating the database for .NET backend mobile services 
+### <a name="dotnet-backend"></a>.NET バックエンド モバイル サービスのデータベースの更新
 
-If you are using the .NET backend for your mobile service, follow these steps to update the schema for your database.
+モバイル サービスに .NET バックエンドを使用している場合、データベースのスキーマを更新するには、次の手順に従います。
 
-1. Open your .NET backend mobile service project in Visual Studio.
-2. In Solution Explorer for Visual Studio, in your service project, expand the **Models** folder and open ToDoItem.cs. Add the `DueDate` property as follows.
+1. Visual Studio で、.NET バックエンド モバイル サービス プロジェクトを開きます。
+2. Visual Studio のソリューション エクスプローラーのサービス プロジェクトで、**[モデル]** フォルダーを展開し、ToDoItem.cs を開きます。次のように、`DueDate` プロパティを追加します。
 
           public class TodoItem : EntityData
           {
@@ -68,11 +68,11 @@ If you are using the .NET backend for your mobile service, follow these steps to
           }
 
 
-3. In Solution Explorer for Visual Studio, expand the **App_Start** folder and open the WebApiConfig.cs file. 
+3. Visual Studio のソリューション エクスプローラーで **App_Start** フォルダーを展開し、WebApiConfig.cs ファイルを開きます。
 
-    In the WebApiConfig.cs file, notice that your default database initializer class is derived from the `DropCreateDatabaseIfModelChanges` class. This means any change to the model will result in the table being dropped and recreated to accommodate the new model. So the data in the table will be lost and the table will be re-seeded. Modify the Seed method of the database initializer so that the `Seed()` initialization function as follows to initialize the new DueDate column. Save the WebApiConfig.cs file.
+    WebApiConfig.cs ファイルで、既定のデータベース初期化子クラスが `DropCreateDatabaseIfModelChanges` クラスから派生していることに注意してください。つまり、モデルへの変更により、テーブルが削除され、新しいモデルを格納するために再作成されることになります。したがって、テーブル内のデータは失われ、テーブルは再シードされます。次のように `Seed()` 初期化関数が新しい DueDate 列を初期化するように、データベース初期化子の Seed メソッドを変更します。WebApiConfig.cs ファイルを保存します。
 
-    >[WACOM.NOTE] When using the default database initializer, Entity Framework will drop and recreate the database whenever it detects a data model change in the Code First model definition. To make this data model change and maintain existing data in the database, you must use Code First Migrations. For more information, see [How to Use Code First Migrations to Update the Data Model](./articles/mobile-services-dotnet-backend-use-code-first-migrations).
+    >[WACOM.NOTE] データベースの既定の初期化子を使用する場合は、Code First のモデル定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。詳細については、「[How to Use Code First Migrations to Update the Data Model (Code First Migrations を使用してデータ モデルを更新する方法)](./articles/mobile-services-dotnet-backend-use-code-first-migrations)」を参照してください。
 
 
         new TodoItem { Id = "1", Text = "First item", Complete = false, DueDate = DateTime.Today },
@@ -80,129 +80,129 @@ If you are using the .NET backend for your mobile service, follow these steps to
 
           
 
-4. In Solution Explorer for Visual Studio, expand the **Controllers** folder and open ToDoItemController.cs. Rename the `TodoItemController` class to `TodoWithDateController`. This will change the REST endpoint for table operations. 
+4. Visual Studio のソリューション エクスプローラーで、**Controllers** フォルダーを展開し、ToDoItemController.cs を開きます。`TodoItemController` クラスの名前を `TodoWithDateController` に変更します。この結果、テーブル操作のための REST エンドポイントが変更されます。
 
         public class TodoWithDateController : TableController<TodoItem>
     
 
-5. In Solution Explorer for Visual Studio, right click your .NET backend mobile service project and click **Publish** to publish your changes.
+5. Visual Studio のソリューション エクスプ ローラーで、.NET バックエンド モバイル サービス プロジェクトを右クリックし、**[発行]** をクリックして変更を発行します。
 
 
-### <a name="javascript-backend"></a>Updating the database for JavaScript backend mobile services
+### <a name="javascript-backend"></a>JavaScript バックエンド モバイル サービスのデータベースの更新
 
-For JavaScript backend mobile services, you will add a new table named **TodoWithDate**. To add the **TodoWithDate** table for JavaScript backend mobile services, follow these steps.
+JavaScript バックエンド モバイル サービスでは、**TodoWithDate** という名前の新しいテーブルを追加します。JavaScript バックエンド モバイル サービスに **TodoWithDate** テーブルを追加するには、次の手順に従います。
 
-  1. Log into the [Azure Management Portal]. 
+  1. [Azure の管理ポータル]にログインします。
 
-  2. Navigate to the **Data** tab of your mobile service. 
+  2. モバイル サービスの **[データ]** タブに移動します。
 
-  3. Click **Create** at the bottom of the page and create a new table named **TodoWithDate**. 
+  3. ページの下部で、**[作成]** をクリックし、**TodoWithDate** という名前の新しいテーブルを作成します。
 
 
-## <a name="test-app"></a>Test the app against your  mobile service
+## <a name="test-app"></a>モバイル サービスに対するアプリケーションのテスト
 
-Now it's time to test the app against Mobile Services.
+次に、Mobile Services に対してアプリケーションをテストします。
 
-1. In the Azure Management Portal, find your mobile service's application key by clicking **Manage Keys** on the command bar. Copy the **Application Key**.
+1. Azure の管理ポータルで、コマンド バーの **[キーの管理]** をクリックしてモバイル サービスのアプリケーション キーを検索します。**アプリケーション キー**をコピーします。
 
-2. In Solution Explorer for Visual Studio, open the App.xaml.cs file in the client sample project. Change the initialization of the **MobileServiceClient** to use your mobile service URL and application key:
+2. Visual Studio のソリューション エクスプローラーで、クライアント サンプル プロジェクトの App.xaml.cs ファイルを開きます。**MobileServiceClient** の初期化を変更して、モバイル サービス URL およびアプリケーション キーを使用します。
 
          public static MobileServiceClient MobileService = new MobileServiceClient(
             "https://your-mobile-service.azure-mobile.net/",
             "Your AppKey"
         );
 
-3. In Visual Studio, press the **F5** key to build and run the app.
+3. Visual Studio で、**F5** キーを押してアプリケーションをビルドおよび実行します。
 
-4. As before, type text in the textbox, and then click **Save**. This saves the data to the local sync table, but not to the server.
+4. 前と同様に、テキスト ボックスにテキストを入力し、**[Save]** をクリックします。これによってデータはローカルの同期テーブルには保存されますが、サーバーには保存されません。
 
     ![][0]
 
-5. To see the current state of your database, log into the [Azure Management Portal], click **Mobile Services**, and then click your mobile service.
+5. データベースの現在の状態を表示するには、[Azure の管理ポータル] にログインし、**[Mobile Services]** をクリックして、目的のモバイル サービスをクリックします。
 
-  * If you are using the JavaScript backend for your mobile service, click the **Data** tab, then click the **TodoWithDate** table. Click **Browse** to see that the table will still be empty, since we have not pushed changes from the app to the server..
+  * モバイル サービスの JavaScript バックエンドを使用している場合は、**[データ]** タブをクリックし、**TodoWithDate** テーブルをクリックします。アプリケーションからサーバーに変更をプッシュしていないため、**[参照]** をクリックして、テーブルがまだ空であることを確認します。
 
         ![][1]
 
-  *  If you are using the .NET backend for your mobile service, click the **Configure** tab, then click your SQL database. Click **Manage** at the bottom of the screen to log into the SQL Azure Managment Portal to view your database.  
+  *  モバイル サービスの .NET バックエンドを使用している場合は、**[構成]** タブをクリックし、SQL データベースをクリックします。画面の下部にある **[管理]** をクリックして、SQL Azure の管理ポータルにログインし、データベースを表示します。  
 
         ![][2]
    	 
 
-7. Back in the app, click **Push**.
+7. アプリケーションに戻り、**[プッシュ]** をクリックします。
 
-8. In the Management Portal, click **Refresh** on the **TodoItem** table. You should now see the data that you entered in your app.
+8. 管理ポータルで、**TodoItem** テーブルの **[最新の情報に更新]** をクリックします。アプリケーションで入力したデータが表示されます。
 
    	![][3]
 
-## <a name="handle-conflict"></a>Update the data in the backend to create a conflict
+## <a name="handle-conflict"></a>競合を作成するためのバックエンドでのデータの更新
 
-In a real world scenario, a sync conflict would occur when one app pushes updates to a record in the database, and then another app tries to push a change to the same record which is based on an outdated version of that record. If an instance of the app tries to update the same record, without pulling in the updated record, a conflict will occur and be caught as a `MobileServicePreconditionFailedException` in the app.  
+現実のシナリオでは、1 つのアプリケーションがデータベースのレコードに更新をプッシュし、次に別のアプリケーションがそのレコードの使用していないバージョンに基づく変更を同じレコードへプッシュしようとする場合に同期の競合が発生します。アプリケーションのインスタンスが更新されたレコードでプルせずに同じレコードを更新しようとすると、競合が発生し、アプリケーションで `MobileServicePreconditionFailedException` として捕捉されます。
 
-If you want to deploy the app to another machine to run two instances of the app to generate a conflict, you can follow the deployment instructions in the [Handling Database Conflicts] tutorial.
+アプリケーションを別のコンピューターに展開し、アプリケーションの 2 つのインスタンスを実行して、競合を生成する場合は、「[データベースの競合の処理]」チュートリアルの展開の手順に従います。
 
-The following steps show you how you can update the database in Visual Studio to cause a conflcit.
+次の手順では、Visual Studio でデータベースを更新して競合を発生させる方法を示しています。
 
-1. In Visual Studio run Server Explorer and connect to your Azure account. Expand your **SQL Databases** for your Azure account.
+1. Visual Studio でサーバー エクスプ ローラーを実行し、Azure アカウントに接続します。Azure アカウントの **SQL Databases** を展開します。
  
     ![][5]
  
    
-2. Right click your SQL database in list and click **Open in SQL Server Object Explorer**.
-3. In SQL Server Object Explorer, expand your database and expand **Tables**. Right click your **TodoWithDate** table and click **View Data**. 
+2. リストの SQL データベースを右クリックし、**[SQL Server オブジェクト エクスプローラーで開く]** をクリックします。
+3. SQL Server オブジェクト エクスプ ローラーで、データベースを展開し、**テーブル**を展開します。**TodoWithDate** テーブルを右クリックし、**[データの表示]** をクリックします。 
 
 
-4. Change the **complete** field for one of the items to True.
+4. 項目のうちの 1 つの **complete** フィールドを True に変更します。
 
     ![][6]
 
-5. Back in your Todo app, edit the same item that you modified in the database directly.
+5. Todo アプリケーションに戻り、データベースで変更した項目と同じ項目を直接編集します。
 
     ![][7]
 
-6. Click the **Push** button. You will see a dialog box asking how to resolve the conflict. Choose one of the options to resolve the conflict.
+6. **[プッシュ]** をクリックします。競合を解決する方法を指示するダイアログ ボックスが表示されます。いずれかのオプションを選択して、競合を解決します。
 
     ![][8]
 
-## Review of the code for handling sync conflicts
+## 同期の競合を処理するためのコードの確認
 
-In order to set up the offline feature to detect conflicts, you must include a version column in both your local database and your data transfer object. The class `TodoItem` has the following member:
+オフライン機能を設定して競合を検出するために、ローカル データベースとデータ転送オブジェクトの両方に version の列を含める必要があります。`TodoItem` クラスには、次のメンバーが含まれます。
 
         [Version]
         public string Version { get; set; }
 
-The column `__version` is also specified in the local database set up in the  `OnNavigatedTo()` method.
+列 `__version` は、`OnNavigatedTo()` メソッドのローカル データベース設定でも指定されます。
 
-To handle offline sync conflicts in your code, you create a class that implements `IMobileServiceSyncHandler`. Pass an object of this type in the call to `InitializeAsync`:
+コードでオフラインの同期の競合を処理するには、`IMobileServiceSyncHandler` を実装するクラスを作成します。呼び出しのこの型のオブジェクトを `InitializeAsync` に渡します。
 
      await App.MobileService.SyncContext.InitializeAsync(store, new SyncHandler(App.MobileService));
 
-The class `SyncHandler` in **MainPage.xaml.cs** implements `IMobileServiceSyncHandler`. The method `ExecuteTableOperationAsync` is called when each push operation is sent to the server. If an exception of type `MobileServicePreconditionFailedException` is thrown, this means that there is a conflict between the local and remote versions of an item.
+**MainPage.xaml.cs** の `SyncHandler` クラスは `IMobileServiceSyncHandler` を実装します。メソッド `ExecuteTableOperationAsync` は、各プッシュ操作がサーバーに送信されるときに呼び出されます。型 `MobileServicePreconditionFailedException` の例外がスローされると、項目のローカルとリモートのバージョン間で競合が発生していることを意味します。
 
-To resolve conflicts in favor of the local item, you should simply retry the operation. Once a conflict has occurred, the local item version will be updated to match the server version, so executing the operation again will overwrite the server changes with the local changes:
+ローカル項目を優先して競合を解決するには、操作を再試行します。競合が発生すると、ローカル項目のバージョンはサーバーのバージョンと一致するように更新されるため、操作をもう一度実行するとサーバーの変更はローカルの変更で上書きされます。
 
     await operation.ExecuteAsync(); 
 
-To resolve conflicts in favor of the server item, simply return from the `ExecuteTableOperationAsync`. The local version of the object will be discarded and replaced with the value from the server.
+サーバー項目を優先して競合を解決するには、`ExecuteTableOperationAsync` から戻ります。オブジェクトのローカル バージョンは破棄され、サーバーの値に置き換えられます。
 
-To stop the push operation (but retain the queued changes), use the method `AbortPush()`:
+プッシュ操作を停止する (ただし、キューに設定された変更は保持) には、`AbortPush()` メソッドを使用します。
 
     operation.AbortPush();
 
-This will stop the current push operation but will keep all pending changes, including the current operation if `AbortPush` is called from `ExecuteTableOperationAsync`. The next time that `PushAsync()` is called, these changes will be sent to the server. 
+これによって現在のプッシュ操作は停止しますが、`AbortPush` が `ExecuteTableOperationAsync` から呼び出される場合は、現在の操作を含めて、すべての保留中の変更は保存されます。次回 `PushAsync()` が呼び出されると、これらの変更はサーバーに送信されます。
 
-When a push is canceled, `PushAsync` will throw a `MobileServicePushFailedException`, and the exception property `PushResult.Status` will have the value `MobileServicePushStatus.CancelledByOperation`. 
+プッシュがキャンセルされると、`PushAsync` は `MobileServicePushFailedException` をスローし、例外プロパティ `PushResult.Status` は値 `MobileServicePushStatus.CancelledByOperation` を含みます。
 
 
 <!-- Anchors. -->
-[Download the Windows Store app project]: #download-app
-[Create the mobile service]: #create-service
-[Add a due date column for the database]: #add-column
-[Updating the database for .NET backend mobile services]: #dotnet-backend  
-[Updating the database for JavaScript mobile services]: #javascript-backend
-[Test the app against a mobile service]: #test-app
-[Manually update the data in the backend to create a conflict]: #handle-conflict
-[Next Steps]:#next-steps
+[Windows ストア アプリ プロジェクトのダウンロード]: #download-app
+[モバイル サービスの作成]: #create-service
+[期日列のデータベースへの追加]: #add-column
+[.NET バックエンド モバイル サービスのデータベースの更新]: #dotnet-backend  
+[JavaScript モバイル サービスのデータベースの更新]: #javascript-backend
+[モバイル サービスに対するアプリケーションのテスト]: #test-app
+[競合を作成するためのバックエンドでのデータの手動更新]: #handle-conflict
+[次のステップ]:#next-steps
 
 <!-- Images -->
 [0]: ./media/mobile-services-windows-store-dotnet-handling-conflicts-offline-data/mobile-services-handling-conflicts-app-run1.png
@@ -219,9 +219,10 @@ When a push is canceled, `PushAsync` will throw a `MobileServicePushFailedExcept
 
 
 <!-- URLs -->
-[Handling conflicts code sample]: http://go.microsoft.com/fwlink/?LinkId=394787
-[Get started with Mobile Services]: /en-us/documentation/articles/mobile-services-windows-store-get-started/
-[Get started with offline data]: /en-us/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data
+[競合コード サンプルの処理]: http://go.microsoft.com/fwlink/?LinkId=394787
+[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-get-started/
+[オフライン データの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data
 [SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkId=394776
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Handling Database Conflicts]: /en-us/documentation/articles/mobile-services-windows-store-dotnet-handle-database-conflicts/#test-app
+[Azure の管理ポータル]: https://manage.windowsazure.com/
+[データベースの競合の処理]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-handle-database-conflicts/#test-app
+

@@ -1,12 +1,12 @@
-##<a name="add-select-images"></a>Update the quickstart client app to capture and upload images
+##<a name="add-select-images"></a>アプリケーションの更新イメージをキャプチャおよびアップロードするクイック スタート クライアント アプリケーションの更新
 
-1. In Visual Studio 2012, open the Package.appxmanifest file and in the **Capabilities** tab enable the **Webcam** and **Microphone** capabilities.
+1. Visual Studio 2012 で、Package.appxmanifest ファイルを開き、**[機能]** タブの **[Web カメラ]** 機能と **[マイク]** 機能を有効にします。
 
    	![](./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-app-manifest-camera.png)
  
-   	This makes sure that your app can use a camera attached to the computer. Users will be requested to allow camera access the first time that the app is run.
+   	これにより、コンピューターに接続されたカメラをアプリケーションで使用できます。ユーザーは、アプリケーションを最初に実行したときに、カメラのアクセスを許可することを求められます。
 
-1. Open the MainPage.xaml file and replace the **StackPanel** element directly after the first **Task** element with the following code:
+1. MainPage.xaml ファイルを開き、最初の **Task** 要素の直後にある **StackPanel** 要素を次のコードに置き換えます。
 
         <StackPanel Orientation="Horizontal" Margin="72,0,0,0">
             <TextBox Name="TextInput" Margin="5" MaxHeight="40" MinWidth="300"></TextBox>
@@ -16,7 +16,7 @@
                     Click="ButtonSave_Click"/>
         </StackPanel>
 
-2. Replace the **StackPanel** element in the **DataTemplate** with the following code:
+2. **DataTemplate** 内の **StackPanel** 要素を次のコードに置き換えます。
 
         <StackPanel Orientation="Vertical">
             <CheckBox Name="CheckBoxComplete" IsChecked="{Binding Complete, Mode=TwoWay}" 
@@ -26,9 +26,9 @@
                     MaxHeight="250"/>
         </StackPanel> 
 
-   	This adds an image to the **ItemTemplate** and sets its binding source as the URI of the uploaded image in the Blob Storage service.
+   	これにより、イメージが **ItemTemplate** に追加され、バインド ソースが、Blob ストレージ サービスのアップロードされたイメージの URI として設定されます。
 
-3. Open the MainPage.xaml.cs project file and add the following **using** statements:
+3. MainPage.xaml.cs プロジェクト ファイルを開き、次の **using** ステートメントを追加します。
 	
 		using Windows.Media.Capture;
 		using Windows.Storage;
@@ -36,7 +36,7 @@
 		using Microsoft.WindowsAzure.Storage.Auth;
 		using Microsoft.WindowsAzure.Storage.Blob;
     
-4. In the TodoItem class, add the following properties:
+4. TodoItem クラスで、次のプロパティを追加します。
 
         [JsonProperty(PropertyName = "containerName")]
         public string ContainerName { get; set; }
@@ -50,9 +50,9 @@
         [JsonProperty(PropertyName = "imageUri")]
         public string ImageUri { get; set; } 
 
-   	>[WACOM.NOTE]To add new properties to the TodoItem object, you must have Dynamic Schema enabled in your mobile service. When Dynamic Schema is enabled, new columns are automatically added to the TodoItem table that map to these new properties.
+   	>[WACOM.NOTE]新しいプロパティを TodoItem オブジェクトに追加するには、モバイル サービスで動的スキーマを有効にする必要があります。動的スキーマが有効になっていると、TodoItem テーブルに、これらの新しいプロパティに対応する新しい列が自動的に追加されます。
 
-5. In the MainPage class, add the following code:
+5. MainPage クラスで、次のコードを追加します。
 
         // Use a StorageFile to hold the captured image for upload.
         StorageFile media = null;
@@ -65,9 +65,9 @@
 				.CaptureFileAsync(CameraCaptureUIMode.PhotoOrVideo);
         }
 
-  	This code displays the camera UI to capture an image, and saves the image to a storage file.
+  	このコードにより、イメージをキャプチャしてイメージをストレージ ファイルに保存する、カメラ UI が表示されます。
 
-6. Replace the existing `InsertTodoItem` method with the following code:
+6. 既存の `InsertTodoItem` メソッドを次のコードに置き換えます。
  
         private async void InsertTodoItem(TodoItem todoItem)
         {
@@ -114,31 +114,31 @@
             items.Add(todoItem);
         }
 
-	This code sends a request to the mobile service to insert a new TodoItem, including the image file name. The response contains the SAS, which is then used to insert the image in the Blob store, and the URI of the image for data binding.
+	このコードは、新しい TodoItem を挿入する要求をモバイル サービスに送信します (イメージ ファイル名を含む)。応答には、SAS (その後、BLOB ストア内のイメージの挿入に使用される) と、データ バインド用のイメージの URI が含まれます。
 
-The final step is to test the app and validate that uploads succeed.
+最後の手順では、アプリケーションをテストし、アップロードが成功するかどうかを検証します。
 		
-##<a name="test"></a>Test uploading the images in your app
+##<a name="test"></a>アプリケーションのイメージのアップロードをテストする
 
-1. In Visual Studio, press the F5 key to run the app.
+1. Visual Studio で、F5 キーを押してアプリケーションを実行します。
 
-2. Enter text in the textbox under **Insert a TodoItem**, then click **Photo**.
+2. **[Insert a TodoItem]** のテキスト ボックスにテキストを入力し、**[Photo]** をクリックします。
 
    	![](./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-quickstart-blob-appbar.png)
 
-  	This displays the camera capture UI. 
+  	これにより、カメラ キャプチャ UI が表示されます。
 
-3. Click the image to take a picture, then click **OK**.
+3. 写真を撮るイメージをクリックし、**[OK]** をクリックします。
   
    	![](./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-quickstart-blob-camera.png)
 
-4. Click **Upload** to insert the new item and upload the image.
+4. **[Upload]** をクリックし、新しい項目を挿入してイメージをアップロードします。
 
 	![](./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-quickstart-blob-appbar2.png)
 
-5. The new item, along with the uploaded image, is displayed in the list view.
+5. 新しい項目がアップロード イメージと共にリスト ビューに表示されます。
 
 	![](./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-quickstart-blob-ie.png)
 
-   	>[WACOM.NOTE]The image is downloaded automatically from the Blob Storage service when the <code>imageUri</code> property of the new item is bound to the <strong>Image</strong> control.
+   	>[WACOM.NOTE]新しい項目の <code>imageUri</code> プロパティが <strong>Image</strong> コントロールにバインドされると、イメージは Blob ストレージ サービスから自動的にダウンロードされます。
 

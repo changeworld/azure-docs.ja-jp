@@ -1,138 +1,138 @@
-<properties pageTitle="Using Windows PowerShell with Resource Manager" metaKeywords="ResourceManager, PowerShell, Azure PowerShell" description="Use Windows PowerShell to create a resource group" metaCanonical="" services="" documentationCenter="" title="Using Windows PowerShell with Resource Manager" authors="juneb" solutions="" manager="mbaldwin" editor="mollybos" />
+<properties pageTitle="リソース マネージャーでの Windows PowerShell の使用" metaKeywords="ResourceManager, PowerShell, Azure PowerShell" description="Windows PowerShell を使用してリソース グループを作成する" metaCanonical="" services="" documentationCenter="" title="リソース マネージャーでの Windows PowerShell の使用" authors="juneb" solutions="" manager="mbaldwin" editor="mollybos" />
 
-# Using Windows PowerShell with Resource Manager #
+# リソース マネージャーでの Windows PowerShell の使用#
 
-Resource Manager introduces an entirely new way of thinking about your Azure resources. Instead of creating and managing individual resources, you begin by imagining a complex service, such as a blog, a photo gallery, a SharePoint portal, or a wiki. You use a template -- a resource model of the service --  to create a resource group with the resources that you need to support the service. Then, you can manage and deploy that resource group as a logical unit. 
+リソース マネージャーでは、Azure リソースに関するまったく新しい考え方が導入されています。個々のリソースを作成して管理するのではなく、まず、ブログ、フォト ギャラリー、SharePoint ポータル、Wiki などの複雑なサービスを想定して開始します。サービスのリソース モデルであるテンプレートを使用して、サービスをサポートするために必要なリソースでリソース グループを作成します。これにより、そのリソース グループを論理ユニットとして管理して、展開できます。
 
-In this tutorial, you learn how to use Windows PowerShell with Resource Manager for Microsoft Azure. It walks you through the process of creating and deploying a resource group for an Azure-hosted web site (or web application) with a SQL database, complete with all of the resources that you need to support it.
+このチュートリアルでは、Windows PowerShell を Microsoft Azure のリソース マネージャーで使用する方法について説明します。ここでは、サポートするために必要なすべてのリソースを含む、SQL データベースを備えた Azure でホストされる Web サイト (または Web アプリケーション) のリソース グループを作成し、展開するプロセスを説明します。
 
-**Estimated time to complete:** 15 minutes
+**所要時間:** 15 分
 
 
-## Prerequisites ##
+## 前提条件##
 
-Before you can use Windows PowerShell with Resource Manager, you must have the following:
+リソース マネージャーで Windows PowerShell を使用するには、以下が必要です。
 
-- Windows PowerShell, Version 3.0 or later. To find the version of Windows PowerShell, type:`$PSVersionTable` and verify that the value of `PSVersion` is 3.0 or greater. To install a newer version, see [Windows Management Framework 3.0 ](http://www.microsoft.com/en-us/download/details.aspx?id=34595) or [Windows Management Framework 4.0](http://www.microsoft.com/en-us/download/details.aspx?id=40855).
+- Windows PowerShell、Version 3.0 以降。Windows PowerShell のバージョンを確認するには、「`$PSVersionTable`」と入力し、`PSVersion` の値が 3.0 以上であることを確認します。新しいバージョンをインストールするには、「[Windows Management Framework 3.0](http://www.microsoft.com/ja-jp/download/details.aspx?id=34595)」または「[Windows Management Framework 4.0](http://www.microsoft.com/ja-jp/download/details.aspx?id=40855)」を参照してください。
 	
-- Azure PowerShell version 0.8.0 or later. To install the latest version and associate it with your Azure subscription, see [How to install and configure Windows Azure PowerShell](http://www.windowsazure.com/en-us/documentation/articles/install-configure-powershell/).
+- Azure PowerShell Version 0.8.0 以降。最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、「[How to install and configure Windows Azure PowerShell (Windows Azure PowerShell のインストールおよび構成方法)](http://www.windowsazure.com/ja-jp/documentation/articles/install-configure-powershell/)」を参照してください。
 
-This tutorial is designed for Windows PowerShell beginners, but it assumes that you understand the basic concepts, such as modules, cmdlets, and sessions. For more information about Windows PowerShell, see [Getting Started with Windows PowerShell](http://technet.microsoft.com/en-us/library/hh857337.aspx).
+このチュートリアルは、Windows PowerShell の初心者向けに設計されていますが、モジュール、コマンドレット、セッションなどの基本概念を理解していることを前提としています。Windows PowerShell の詳細については、「[Getting Started with Windows PowerShell (Windows PowerShell の概要)](http://technet.microsoft.com/ja-jp/library/hh857337.aspx)」を参照してください。
 
-To get detailed help for any cmdlet that you see in this tutorial, use the Get-Help cmdlet. 
+このチュートリアルに表示されているすべてのコマンドレットの詳細なヘルプを取得するには、Get-Help コマンドレットを使用します。
 
 	Get-Help <cmdlet-name> -Detailed
 
-For example, to get help for the Add-AzureAccount cmdlet, type:
+たとえば、Add-AzureAccount コマンドレットについてのヘルプを確認するには、次のように入力します。
 
 	Get-Help Add-AzureAccount -Detailed
 
-## In this tutorial ##
-* [About the Azure Powershell Modules](#about)
-* [Create a resource group](#create)
-* [Manage a resource group](#manage)
-* [Troubleshoot a resource group](#troubleshoot)
-* [Next steps](#next)
+## このチュートリアルの内容##
+* [Azure PowerShell モジュールについて](#about)
+* [リソース グループの作成](#create)
+* [リソース グループの管理](#manage)
+* [リソース グループのトラブルシューティング](#troubleshoot)
+* [次のステップ](#next)
 
 
 
-##<a id="about"></a>About the Azure PowerShell Modules ##
-Beginning in version 0.8.0, the Azure PowerShell installation includes three Windows PowerShell modules:
+##<a id="about"></a>Azure PowerShell モジュールについて##
+Version 0.8.0 以降、Azure PowerShell のインストールには次の 3 つの Windows PowerShell モジュールが含まれています。
 
-- **Azure**: Includes the traditional cmdlets for managing individual resources, such as storage accounts, web sites, databases, virtual machines, and media services. For more information, see [Azure Service Management Cmdlets](http://msdn.microsoft.com/en-us/library/jj152841.aspx).
+- **Azure**: ストレージ アカウント、Web サイト、データベース、仮想マシン、メディア サービスなどの個々のリソースを管理するための従来型のコマンドレットが含まれます。詳細については、「[Azure Service Management Cmdlets (Azure サービス管理コマンドレット)](http://msdn.microsoft.com/ja-jp/library/jj152841.aspx)」を参照してください。
 
-- **AzureResourceManager**: Includes cmdlets for creating, managing, and deploying the Azure resources for a resource group. For more information, see [Azure Resource Manager Cmdlets](http://go.microsoft.com/fwlink/?LinkID=394765).
+- **AzureResourceManager**: リソース グループの Azure リソースの作成、管理、および展開のためのコマンドレットが含まれます。詳細については、[Azure リソース マネージャー コマンドレット](http://go.microsoft.com/fwlink/?LinkID=394765)に関するページを参照してください。
 
-- **AzureProfile**: Includes cmdlets common to both modules, such as Add-AzureAccount, Get-AzureSubscription, and Switch-AzureMode. For more information, see [Azure Profile Cmdlets](http://go.microsoft.com/fwlink/?LinkID=394766).
+- **AzureProfile**: Add-AzureAccount、Get-AzureSubscription、Switch-AzureMode などの両方のモジュールに共通のコマンドレットが含まれます。詳細については、[Azure プロファイル コマンドレット](http://go.microsoft.com/fwlink/?LinkID=394766)に関するページを参照してください。
 
-> [ WACOM.NOTE] The Azure Resource Manager module is currently in preview. It might not provide the same management capabilities as the Azure Service Management module. 
+> [ WACOM.NOTE] Azure リソース マネージャー モジュールは、現在プレビュー段階にあります。Azure サービス管理モジュールと同じ管理機能を提供しないことがあります。
 
-The Azure and Azure Resource Manager modules are not designed to be used in the same Windows PowerShell session. To make it easy to switch between them, we have added a new cmdlet, **Switch-AzureMode**, to the Azure Profile module.
+Azure および Azure リソース マネージャー モジュールは、同じ Windows PowerShell セッションで使用するようには設計されていません。これらを簡単に切り替えるために、新しいコマンドレット **Switch-AzureMode** を Azure Profile モジュールに追加しました。
 
-When you use Azure PowerShell, the cmdlets in the Azure and Azure Profile modules are imported by default. To switch to the Azure Resource Manager module, use the Switch-AzureMode cmdlet. It removes the Azure module from your session and imports the Azure Resource Manager (and Azure Profile) modules.
+Azure PowerShell を使用する場合、Azure および Azure Profile モジュールのコマンドレットが既定でインポートされます。Azure Resource Manager モジュールに切り替えるには、Switch-AzureMode コマンドレットを使用します。これによって、Azure モジュールはセッションから削除され、Azure Resource Manager (および Azure Profile) モジュールがインポートされます。
 
-To switch to the AzureResoureManager module, type:
+AzureResoureManager モジュールに切り替えるには、次のように入力します。
 
     PS C:\> Switch-AzureMode -Name AzureResourceManager
 
-To switch back to the Azure module, type:
+Azure モジュールに切り替えるには、次のように入力します。
 
     PS C:\> Switch-AzureMode -Name AzureServiceManagement
 
-By default, Switch-AzureMode affects only the current session. To make the switch effective in all Windows PowerShell sessions, use the **Global** parameter of Switch-AzureMode.
+既定では、Switch-AzureMode は、現在のセッションのみに影響します。スイッチをすべての Windows PowerShell セッションで有効にするには、Switch-AzureMode の **Global** パラメーターを使用します。
 
-For help with the Switch-AzureMode cmdlet, type: `Get-Help Switch-AzureMode` or see [Switch-AzureMode](http://go.microsoft.com/fwlink/?LinkID=394398).
+Switch-AzureMode コマンドレットについての質問は、`Get-Help Switch-AzureMode`」と入力するか、「[Switch-AzureMode](http://go.microsoft.com/fwlink/?LinkID=394398) に関するページを参照してください。
   
-To get a list of cmdlets in the AzureResourceManager module with a help synopsis, type: 
+ヘルプの概要と AzureResourceManager モジュールのコマンドレットの一覧を取得するには、次のように入力します。
 
 	PS C:\> Get-Command -Module AzureResourceManager | Get-Help | Format-Table Name, Synopsis
 
 	Name                                   Synopsis
 	----                                   --------
-	Get-AzureLocation                      Gets the Azure data center locations and the resource types that they support
-	Get-AzureResource                      Gets Azure resources
-	Get-AzureResourceGroup                 Gets Azure resource groups
-	Get-AzureResourceGroupDeployment       Gets the deployments in a resource group.
-	Get-AzureResourceGroupGalleryTemplate  Gets resource group templates in the gallery
-	Get-AzureResourceGroupLog              Gets the deployment log for a resource group
-	New-AzureResource                      Creates a new resource in a resource group
-	New-AzureResourceGroup                 Creates an Azure resource group and its resources
-	New-AzureResourceGroupDeployment       Add an Azure deployment to a resource group.
-	Remove-AzureResource                   Deletes a resource
-	Remove-AzureResourceGroup              Deletes a resource group.
-	Save-AzureResourceGroupGalleryTemplate Saves a gallery template to a JSON file
-	Set-AzureResource                      Changes the properties of an Azure resource.
-	Stop-AzureResourceGroupDeployment      Cancels a resource group deployment
-	Test-AzureResourceGroupTemplate        Detects errors in a resource group template or template parameters
+	Get-AzureLocation                      Azure データ センターの場所とサポートされるリソースの種類を取得します
+	Get-AzureResource                      Azure リソースを取得します
+	Get-AzureResourceGroup                 Azure リソース グループを取得します
+	Get-AzureResourceGroupDeployment       リソース グループ内の展開を取得します。
+	Get-AzureResourceGroupGalleryTemplate  ギャラリー内のリソース グループ テンプレートを取得します
+	Get-AzureResourceGroupLog              リソース グループの展開ログを取得します
+	New-AzureResource                      リソース グループに新しいリソースを作成します
+	New-AzureResourceGroup                 Azure リソース グループとそのリソースを作成します
+	New-AzureResourceGroupDeployment       リソース グループに Azure の展開を追加します。
+	Remove-AzureResource                   リソースを削除します
+	Remove-AzureResourceGroup              リソース グループを削除します。
+	Save-AzureResourceGroupGalleryTemplate ギャラリー テンプレートを JSON ファイルに保存します
+	Set-AzureResource                      Azure リソースのプロパティを変更します。
+	Stop-AzureResourceGroupDeployment      リソース グループの展開を取り消します
+	Test-AzureResourceGroupTemplate        リソース グループ テンプレートまたはテンプレート パラメーターのエラーを検出します
 
 
-To get full help for a cmdlet, type a command with the format:
+コマンドレットの完全なヘルプを取得するには、次の形式でコマンドを入力します。
 
 	Get-Help <cmdlet-name> -Full
 
-For example, 
+たとえば、次のように入力します。
 
 	Get-Help Get-AzureLocation -Full
 
   
-#<a id="create"></a> Create a resource group for a web site and database#
+#<a id="create"></a> Web サイトとデータベースのリソース グループを作成する#
 
-This section of the tutorial guides you through the process of creating and deploying a resource group for a web site with a SQL database. 
+チュートリアルのこのセクションでは、SQL データベースを使用して Web サイトのリソース グループを作成および展開するプロセスを説明します。
 
-You don't need to be an expert in Azure, SQL, web sites, or resource management to do this task. The templates provide a model of the resource group with all of the resources that you're likely to need. And because we're using Windows PowerShell to automate the tasks, you can use these process as a model for scripting large-scale tasks.
+このタスクを実行するためには、Azure、SQL、Web サイト、またはリソース管理の専門家である必要はありません。テンプレートには、リソース グループのモデルと必要になる可能性のあるすべてのリソースが用意されています。タスクを自動化するために Windows PowerShell を使用しているため、これらのプロセスを大規模なタスクのスクリプトのモデルとして使用することができます。
 
-## Step 1: Switch to Azure Resource Manager 
-1. Start Windows PowerShell. You can use any host program that you like, such as the Windows PowerShell console or Windows PowerShell ISE.
+## 手順 1. Azure リソース マネージャーに切り替える
+1. Windows PowerShell を起動します。Windows PowerShell コンソールや Windows PowerShell ISE など、必要なホスト プログラムを使用することができます。
 
-2. Use the **Switch-AzureMode** cmdlet to import the cmdlets in the AzureResourceManager and AzureProfile modules. 
+2. **Switch-AzureMode** コマンドレットを使用して、AzureResourceManager モジュールおよび AzureProfile モジュールのコマンドレットをインポートします。
 
 	`PS C:\>Switch-AzureMode AzureResourceManager`
 
-3. To add your Azure account to the Windows PowerShell session, use the **Add-AzureAccount** cmdlet. 
+3. Azure アカウントを Windows PowerShell セッションに追加するには、**Add-AzureAccount** コマンドレットを使用します。
 
     `PS C:\> Add-AzureAccount`
 
-The cmdlet prompts you for an email address and password. Then it downloads your account settings so they are available to Windows PowerShell. 
+このコマンドレットを使用すると、電子メール アドレスとパスワードを求められます。アカウント設定がダウンロードされるため、Windows PowerShell で使用できるようになります。
 
-The account settings expire, so you need to refresh them occasionally. To refresh the account settings, run **Add-AzureAccount** again. 
+アカウント設定の有効期限が切れるため、ときどき更新する必要があります。アカウント設定を更新するには、**Add-AzureAccount** をもう一度実行します。
 
-> [ WACOM.NOTE] The AzureResourceManager module requires Add-AzureAccount. A Publish Settings file is not sufficient.     
+> [ WACOM.NOTE] AzureResourceManager モジュールには、Add-AzureAccount が必要です。発行設定ファイルでは不十分です。
 
 
 
-## Step 2: Select a gallery template ##
+## 手順 2. ギャラリー テンプレートを選択する##
 
-There are several ways to create a resource group and its resources, but the easiest way  is to use a resource group template. A *resource group template* is JSON string that defines the resources in a resource group. The string includes placeholders called "parameters" for user-defined values, like names and sizes.
+リソース グループとそのリソースを作成するにはいくつかの方法がありますが、最も簡単な方法はリソース グループ テンプレートを使用することです。*リソース グループ テンプレート* は、リソース グループのリソースを定義する JSON 文字列です。文字列には、名前やサイズなどのユーザー定義の値の "パラメーター" と呼ばれるプレースホルダーが含まれます。
 
-Azure hosts a gallery of resource group templates and you can create your own templates, either from scratch or by editing a gallery template. In this tutorial, we'll use a gallery template. 
+Azure にはリソース グループ テンプレートのギャラリーがホストされ、独自のテンプレートを最初から、またはギャラリー テンプレートを編集して、作成することができます。このチュートリアルでは、ギャラリー テンプレートを使用します。
 
-To search for a template in the Azure resource group template gallery, use the **Get-AzureResourceGroupGalleryTemplate** cmdlet.  
+Azure リソース グループ テンプレート ギャラリーでテンプレートを検索するには、**Get-AzureResourceGroupGalleryTemplate**  コマンドレットを使用します。
 
-At the Windows Powershell prompt, type:
+Windows PowerShell プロンプトで、次のように入力します。
     
     PS C:\> Get-AzureResourceGroupGalleryTemplate
 
-The cmdlet returns a list of gallery templates with Publisher and Identity properties. You use the **Identity** property to identify the template in the commands.
+コマンドレットは、Publisher プロパティと Identity プロパティを持つギャラリー テンプレートの一覧を返します。**Identity** プロパティを使用して、コマンドのテンプレートを識別します。
 
     Publisher       Identity
     ---------       --------
@@ -144,26 +144,26 @@ The cmdlet returns a list of gallery templates with Publisher and Identity prope
     Microsoft       Microsoft.Boilerplate.0.1.0-preview1
 	...
 
-TIP: To recall the last command, press the up-arrow key.
+ヒント: 最後のコマンドを取り消すには、上方向キーを押します。
 
-The Microsoft.WebSiteSQLDatabase.0.1.0-preview1.json template looks interesting. To get more information about a gallery template, use the **Identity** parameter. The value of the Identity parameter is Identity of the template.
+Microsoft.WebSiteSQLDatabase.0.1.0-preview1.json テンプレートは、興味深いものです。ギャラリー テンプレートの詳細を確認するには、**Identity** パラメーターを使用します。Identity パラメーターの値は、そのテンプレートの ID です。
 
     PS C:\> Get-AzureResourceGroupGalleryTemplate -Identity Microsoft.WebSiteSQLDatabase.0.1.0-preview1.json
 
-The cmdlet returns an object with much more information about the template, including a description.
+コマンドレットは、説明など、テンプレートに関するより多くの情報を持つオブジェクトを返します。
 
-	<p>Windows Azure Web Sites offers secure and flexible development, 
-	deployment and scaling options for any sized web application. Leverage 
-	your existing tools to create and deploy applications without the hassle 
-	of managing infrastructure.</p>
+	<p>Windows Azure の Web サイトでは、安全で柔軟性の高い開発、展開、
+	拡張オプションを、あらゆるサイズの Web アプリケーションに提供します。
+	インフラストラクチャ管理の煩雑さを伴わずに、既存のツールを利用して
+	アプリケーションを作成および展開できます。</p>
  
-This template looks like it will meet our needs. Let's save it to disk and look at it more closely.
+このテンプレートは、ニーズを満たしているようです。ディスクに保存して、詳しく見てみましょう。
  
-## Step 3: Examine the Template
+## 手順 3. テンプレートを確認する
 
-Let's save the template to a JSON file on disk. This step is not required, but it makes it easier to view the template. To save the template, use the **Save-AzureResourceGroupGalleryTemplate** cmdlet. Use its **Identity** parameter to specify the template and the **Path** parameter to specify a path on disk.
+テンプレートをディスク上の JSON ファイルに保存します。この手順は必須ではありませんが、テンプレートを簡単に表示することができます。テンプレートを保存するには、**Save-AzureResourceGroupGalleryTemplate** コマンドレットを使用します。テンプレートを指定するには **Identity** パラメーターを使用し、ディスク上のパスを指定するには **Path** パラメーターを使用します。
 
-Save-AzureResourceGroupGalleryTemplate saves the template and returns the path a file name of the JSON template file. 
+Save-AzureResourceGroupGalleryTemplate はテンプレートを保存して、パス、JSON テンプレート ファイルのファイル名を返します。
 
 	PS C:\> Save-AzureResourceGroupGalleryTemplate -Identity Microsoft.WebSiteSQLDatabase.0.1.0-preview1.json -Path D:\Azure\Templates
 
@@ -172,11 +172,11 @@ Save-AzureResourceGroupGalleryTemplate saves the template and returns the path a
 	D:\Azure\Templates\Microsoft.WebSite.0.1.0-preview1.json
 
 
-You can view the template file in a text editor, such as Notepad. Each template has a **resources** section and a **parameters** section.
+テンプレート ファイルは、メモ帳などのテキスト エディターで表示できます。各テンプレートには、**resources** セクションと **parameters** セクションがあります。
 
-The **resources** section of the template lists the resources that the template creates. This template creates a SQL database server and SQL database, a server farm and web site, and several management settings.
+テンプレートの **resources** セクションには、テンプレートを作成するリソースが一覧表示されます。このテンプレートによって、SQL データベース サーバーと SQL データベース、サーバー ファームと Web サイト、およびいくつかの管理設定が作成されます。
   
-The definition of each resource includes its properties, such as name, type and location, and parameters for user-defined values. For example, this section of the template defines the SQL database. It includes parameters for the database name ([parameters('databaseName')]), the database server location [parameters('serverLocation')], and the collation property [parameters('collation')].
+各リソースの定義には、名前、種類と場所、ユーザー定義の値のパラメーターなどのプロパティが含まれます。たとえば、テンプレートのこのセクションでは、SQL データベースを定義します。データベース名のパラメーター ([parameters('databaseName')])、データベース サーバーの場所のパラメーター [parameters('serverLocation')]、および照合順序プロパティのパラメーター [parameters('collation')] が含まれます。
 
 		{
           "name": "[parameters('databaseName')]",
@@ -193,7 +193,7 @@ The definition of each resource includes its properties, such as name, type and 
           }
         },
 
-The **parameters** section of the template is a collection of the parameters that are defined in all of the resources. It includes the databaseName, serverLocation, and collation properties.
+テンプレートの **parameters** セクションはすべてのリソースで定義されるパラメーターのコレクションです。これには、databaseName プロパティ、serverLocation プロパティ、および照合順序のプロパティが含まれます。
 
 	"parameters": {
 	...    
@@ -211,14 +211,14 @@ The **parameters** section of the template is a collection of the parameters tha
       "defaultValue": "SQL_Latin1_General_CP1_CI_AS"
     }
 
-Some parameters have a default value. When you use the template, you are not required to supply values for these parameters. If you do not specify a value, the default value is used. 
+一部のパラメーターには既定値があります。テンプレートを使用する場合、これらのパラメーターには値を指定する必要がありません。値を指定しないと、既定値が使用されます。
 
 	"collation": {
 	      "type": "string",
 	      "defaultValue": "SQL_Latin1_General_CP1_CI_AS"
 	    }
 
-When parameters that have enumerated values, the valid values are listed with the parameter. For example, the **sku** parameter can take values of Free, Shared, Basic, or Standard. If you don't specify a value for the **sku** parameter, it uses the default value, Free.
+列挙値があるパラメーターの場合は、有効な値がパラメーターと共に一覧表示されます。たとえば、**sku** パラメーターには Free、Shared、Basic、または Standard の値を指定できます。**sku** パラメーターに値を指定しないと、既定値 Free が使用されます。
 
     "sku": {
       "type": "string",
@@ -232,22 +232,22 @@ When parameters that have enumerated values, the valid values are listed with th
     },
 
 
-Note that the **administratorLoginPassword** parameter uses a secure string, not plain text. When you provide a value for a secure string, the value is obscured. 
+**administratorLoginPassword** パラメーターは、プレーンテキストではなく、セキュリティ保護された文字列を使用します。セキュリティ保護された文字列の値を指定すると、値が隠されます。
 
 	"administratorLoginPassword": {
       "type": "securestring"
     },
 
 
-We're almost ready to use the template, but before we do, we need to find locations for each of the resources.
+テンプレートを使用する準備が整いましたが、実行する前に、各リソースの場所を見つける必要があります。
 
-## Step 4: Get resource type locations
+## 手順 4. リソースの種類の場所を取得する
 
-Most templates ask you to specify a location for each of the resources in a resource group. Every resource is located in an Azure data center, but not every Azure data center supports every resource type. 
+ほとんどのテンプレートでは、リソース グループ内の各リソースの場所を指定するように求められます。すべてのリソースは Azure データ センターにありますが、すべての Azure データ センターがすべてのリソースの種類をサポートしているわけではありません。
 
-Select any location that supports the resource type. The resources in a resource group do not need to be in the same location, and they do not need to be in the same location as the resource group or the subscription.
+そのリソースの種類をサポートしている任意の場所を選択します。リソース グループのリソースは同じ場所にある必要はありませんし、リソース グループまたはサブスクリプションと同じ場所にある必要もありません。
 
-To get the locations that support each resource type, use the **Get-AzureLocation** cmdlet. Here is a excerpt from the output. (This output might be different from yours. The details are likely to change over time.)
+各リソースの種類をサポートする場所を取得するには、**Get-AzureLocation** コマンドレットを使用します。出力からの抜粋を次に示します。(この出力は実際の出力とは異なる場合があります。詳細は時間の経過と共に変化する可能性があります)。
 
 	Name                                 Locations
 	----                                 ---------
@@ -264,15 +264,15 @@ To get the locations that support each resource type, use the **Get-AzureLocatio
 	Microsoft.Web/sites                  Brazil South, East Asia, East US, Japan East, Japan West, North
 	                                     Central US, North Europe, West Europe, West US
 
-Now, we have the information that we need to create the resource group.
+これで、リソース グループを作成するために必要な情報が得られました。
 
-## Step 5: Create a resource group
+##ステップ 5. リソース グループを作成する
  
-In this step, we'll use the resource group template to create the resource group. For reference, open the Microsoft.WebSiteSQLDatabase.0.1.0-preview1 JSON file on disk and follow along. 
+この手順では、リソース グループ テンプレートを使用してリソース グループを作成します。詳細については、ディスク上の Microsoft.WebSiteSQLDatabase.0.1.0-preview1 JSON ファイルを開いて、理解してください。
 
-To create a resource group, use the **New-AzureResourceGroup** cmdlet.
+リソース グループを作成するには、**New-AzureResourceGroup** コマンドレットを使用します。
 
-The command uses the **Name** parameter to specify a name for the resource group and the **Location** parameter to specify its location. Use the output of **Get-AzureLocation** to select a location for the resource group. It uses the **GalleryTemplateIdentity** parameter to specify the gallery template.
+コマンドは **Name** パラメーターを使用してリソース グループの名前を指定し、**Location** パラメーターを使用して場所を指定します。**Get-AzureLocation** の出力を使用して、リソース グループの場所を選択します。**GalleryTemplateIdentity** パラメーターを使用して、ギャラリー テンプレートを指定します。
 
 	PS C:\> New-AzureResourceGroup ` 
 			-Name TestRG1 `
@@ -280,23 +280,23 @@ The command uses the **Name** parameter to specify a name for the resource group
 			-GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.1.0-preview1 `
             ....
 
-As soon as you type the template name, New-AzureResourceGroup fetches the template, parses it, and adds the template parameters to the command dynamically. This makes it very easy to specify the template parameter values. And, if you forget a required parameter value, Windows PowerShell prompts you for the value.
+テンプレート名を入力すると、New-AzureResourceGroup がテンプレートを取得し、解析して、テンプレート パラメーターをコマンドに動的に追加します。これにより、テンプレート パラメーターの値の指定が非常に簡単になります。また、必須のパラメーター値を忘れた場合は、Windows PowerShell から値を求められます。
 
-**Dynamic Template Parameters**
+**動的なテンプレート パラメーター**
 
-To get the parameters, type a minus sign (-) to indicate a parameter name and then press the TAB key. Or, type the first few letters of a parameter name, such as siteName and then press the TAB key. 
+パラメーターを取得するには、マイナス記号 (-) を入力してパラメーター名を示し、Tab キーを押します。または、siteName などのパラメーター名の最初の数文字を入力して、Tab キーを押します。
 
 		PS C:\> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.1.0-preview1 
 		-si<TAB>
 
-Windows PowerShell completes the parameter name. To cycle through the parameter names, press TAB repeatedly.
+Windows PowerShell がパラメーター名を完了します。パラメーター名を順番に繰り返し、Tab キーも繰り返し押します。
 
 		PS C:\> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.1.0-preview1 
 		-siteName 
 
-Enter a name for the web site and repeat the TAB process for each of the parameters. The parameters with a default value are optional. To accept the default value, omit the parameter from the command. 
+Web サイトの名前を入力して、各パラメーターの Tab 処理を繰り返します。既定値があるパラメーターは省略可能です。既定値をそのまま使用するには、コマンドのパラメーターを省略します。
 
-When a template parameter has enumerated values, such as the sku parameter in this template, to cycle through the parameter values, press the TAB key.
+テンプレート パラメーターにこのテンプレートの sku パラメーターのような列挙値がある場合は、パラメーターの値を周期的に繰り返して Tab キーを押します。
 
 		PS C:\> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.1.0-preview1 
 		-siteName TestSite -sku <TAB>
@@ -307,7 +307,7 @@ When a template parameter has enumerated values, such as the sku parameter in th
 		PS C:\> New-AzureResourceGroup -Name TestRG1 -Location "East Asia" -GalleryTemplateIdentity Microsoft.WebSiteSQLDatabase.0.1.0-preview1 
 		-siteName TestSite -sku Basic<TAB>
 
-Here is an example of a New-AzureResourceGroup command that specifies only the required template parameters and the **Verbose** common parameter. Note that the **administratorLoginPassword** is omitted. (The backtick (`) is the Windows PowerShell line continuation character.)
+必要なテンプレート パラメーターと **Verbose** 共通パラメーターのみを指定する New-AzureResourceGroup コマンドの例を次に示します。**administratorLoginPassword** は省略します (バックティック (`) は、Windows PowerShell の行連結文字です)。
 
 	PS C:\> New-AzureResourceGroup 
 	-Name TestRG `
@@ -322,14 +322,14 @@ Here is an example of a New-AzureResourceGroup command that specifies only the r
 	-databaseName TestDB `
 	-Verbose
 
-When you enter the command, you are prompted for the missing mandatory parameter, **administratorLoginPassword**. And, when you type the password, the secure string value is obscured. This strategy eliminates the risk of providing a password in plain text.
+コマンドを入力すると、不足している必須パラメーター **administratorLoginPassword** を入力するように求められます。パスワードを入力すると、セキュリティ保護された文字列値が隠されます。この対策によって、プレーンテキストでパスワードを提供することの危険性が解消されます。
 
 	cmdlet New-AzureResourceGroup at command pipeline position 1
 	Supply values for the following parameters:
 	(Type !? for Help.)
 	administratorLoginPassword: **********
 
-**New-AzureResourcGroup** returns the resource group that it created and deployed. Here is the output of the command, including the verbose output.
+**New-AzureResourcGroup** は作成して展開したリソース グループを返します。詳細な出力などのコマンドの出力を示します。
 
 	VERBOSE: 3:47:30 PM - Create resource group 'TestRG' in location 'East Asia'
 	VERBOSE: 3:47:30 PM - Template is valid.
@@ -365,15 +365,15 @@ When you enter the command, you are prompted for the missing mandatory parameter
                     TestSite               Microsoft.Web/sites                   westus
 
 
-In just a few steps, we created and deployed the resources required for a complex web site. 
-The gallery template provided almost all of the information that we needed to do this task.
-And, the task is easily automated. 
+わずかな手順で、複雑な Web サイトに必要なリソースを作成して展開しました。
+テンプレート ギャラリーには、このタスクを実行するために必要なほとんどすべての情報が用意されています。
+また、タスクは簡単に自動化されます。
 
-#<a id="manage"></a> Manage a Resource Group
+#<a id="manage"></a> リソース グループの管理
 
-After creating a resource group, you can use the cmdlets in the AzureResourceManager module to manage the resource group, change it, add resources to it, remove it.
+リソース グループを作成すると、AzureResourceManager モジュールのコマンドレットを使用してリソース グループの管理、変更、リソース グループへのリソースの追加、および削除ができます。
 
-- To get the resource groups in your subscription, use the **Get-AzureResourceGroup** cmdlet:
+- サブスクリプションのリソース グループを取得するには、**Get-AzureResourceGroup** コマンドレットを使用します。
 
 		PS C:>Get-AzureResourceGroup
 
@@ -391,7 +391,7 @@ After creating a resource group, you can use the cmdlets in the AzureResourceMan
 	                    TestPlan               Microsoft.Web/serverFarms             westus
 	                    TestSite               Microsoft.Web/sites                   westus
 
-- To get the resources in the resource group, use the **GetAzureResource** cmdlet and its ResourceGroupName parameter. Without parameters, Get-AzureResource gets all resources in your Azure subscription.
+- リソース グループのリソースを取得するには、**GetAzureResource** コマンドレットおよびその ResourceGroupName パラメーターを使用します。パラメーターがない場合、Get-AzureResource は Azure サブスクリプション内のすべてのリソースを取得します。
 
 		PS C:\> Get-AzureResource -ResourceGroupName TestRG
 		
@@ -407,7 +407,7 @@ After creating a resource group, you can use the cmdlets in the AzureResourceMan
 
 
 
-- To add a resource to the resource group, use the **New-AzureResource** cmdlet. This command adds a new web site to the TestRG resource group. This command is a bit more complex, because it does not use a template. 
+- リソース グループにリソースを追加するには、**New-AzureResource** コマンドレットを使用します。このコマンドは、新しい Web サイトを TestRG リソース グループに追加します。このコマンドは、テンプレートを使用しないため、もう少し複雑です。
 
 		PS C:\>New-AzureResource -Name TestSite2 `
 		-Location "North Europe" `
@@ -416,7 +416,7 @@ After creating a resource group, you can use the cmdlets in the AzureResourceMan
 		-ApiVersion 2004-04-01 `
 		-PropertyObject @{"name" = "TestSite2"; "siteMode"= "Limited"; "computeMode" = "Shared"}
 
-- To add a new template-based deployment to the resource group, use the **New-AzureResourceGroupDeployment** command. 
+- テンプレート ベースの新しい展開をリソース グループに追加するには、**New-AzureResourceGroupDeployment** コマンドを使用します。
 
 		PS C:\>New-AzureResourceGroupDeployment ` 
 		-ResourceGroupName TestRG `
@@ -430,9 +430,9 @@ After creating a resource group, you can use the cmdlets in the AzureResourceMan
 		-resourceGroup TestRG
 
 
-- To delete a resource from the resource group, use the **Remove-AzureResource** cmdlet. This cmdlet deletes the resource, but does not delete the resource group.
+- リソース グループからリソースを削除するには、**Remove-AzureResource** コマンドレットを使用します。このコマンドレットはリソースを削除しますが、リソース グループは削除しません。
 
-	This command removes the TestSite2 web site from the TestRG resource group.
+	このコマンドは、TestRG リソース グループから TestSite2 Web サイトを削除します。
 
 		Remove-AzureResource -Name TestSite2 `
 			-Location "North Europe" `
@@ -440,7 +440,7 @@ After creating a resource group, you can use the cmdlets in the AzureResourceMan
 			-ResourceType "Microsoft.Web/sites" `
 			-ApiVersion 2004-04-01
 
-- To delete a resource group, use the **Remove-AzureResourceGroup** cmdlet. This cmdlet deletes the resource group and its resources.
+- リソース グループを削除するには、**Remove-AzureResourceGroup** コマンドレットを使用します。このコマンドレットは、リソース グループとそのリソースを削除します。
 
 		PS C:\ps-test> Remove-AzureResourceGroup -Name TestRG
 		
@@ -449,35 +449,36 @@ After creating a resource group, you can use the cmdlets in the AzureResourceMan
 		[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 
 
-#<a id="troubleshoot"></a> Troubleshoot a Resource Group
-As you experiment with the cmdlets in the AzureResourceManager modules, you are likely to encounter errors. Use the tips in this section to resolve them.
+#<a id="troubleshoot"></a> リソース グループのトラブルシューティング
+AzureResourceManager モジュールのコマンドレットで試してみたように、エラーが発生する可能性があります。このセクションのヒントを使用してエラーを解決してください。
 
-## Preventing errors
+## エラーの防止
 
-The AzureResourceManager module includes cmdlets that help you to prevent errors.
-
-
-- **Get-AzureLocation**: This cmdlet gets the locations that support each type of resource. Before you enter a location for a resource, use this cmdlet to verify that the location supports the resource type.
+AzureResourceManager モジュールにはエラーを防止するためのコマンドレットが含まれています。
 
 
-- **Test-AzureResourceGroupTemplate**: Test your template and template parameter before you use them. Enter a custom or gallery template and the template parameter values you plan to use. This cmdlet tests whether the template is internally consistent and whether your parameter value set matches the template. 
+- **Get-AzureLocation**: このコマンドレットはリソースの各種類をサポートする場所を取得します。リソースの場所を入力する前に、このコマンドレットを使用してその場所がリソースの種類をサポートしていることを確認します。
+
+
+- **Test-AzureResourceGroupTemplate**: 使用する前にテンプレートとテンプレート パラメーターをテストします。カスタム テンプレートまたはギャラリー テンプレートと、使用するテンプレート パラメーター値を入力します。このコマンドレットは、テンプレートが内部的に一貫性があるかどうか、およびパラメーター値セットがテンプレートと一致するかどうかをテストします。
 
 
 
-## Fixing errors
+## エラーの修正
 
-- **Get-AzureResourceGroupLog**: This cmdlet gets the entries in the log for each  deployment of the resource group. If something goes wrong, begin by examining the deployment logs. 
+- **Get-AzureResourceGroupLog**: このコマンドレットはリソース グループの各展開のログのエントリを取得します。問題が生じた場合は、展開ログを調べることにから開始します。
 
-- **Verbose and Debug**:  The cmdlets in the AzureResourceManager module call REST APIs that do the actual work. To see the messages that the APIs return, set the $DebugPreference variable to "Continue" and use the Verbose common parameter in your commands. The messages often provide vital clues about the cause of any failures.
+- **Verbose および Debug**: AzureResourceManager モジュールのコマンドレットは実際の作業を行う REST API を呼び出します。API が返すメッセージを表示するには、$DebugPreference 変数を "Continue" に設定して、コマンドで Verbose 共通パラメーターを使用します。多くの場合、メッセージはエラーの原因に関する重要な手掛かりを提供します。
 
-- **Your Azure credentials have not been set up or have expired**:  To refresh the credentials in your Windows PowerShell session, use the Add-AzureAccount cmdlet. The credentials in a publish settings file are not sufficient for the cmdlets in the AzureResourceManager module.
+- **Azure の資格情報が設定されていないか、期限が切れています**: Windows PowerShell セッションの資格情報を更新するために、Add-AzureAccount コマンドレットを使用します。発行設定ファイルの資格情報は、AzureResourceManager モジュールのコマンドレットには十分ではありません。
 
 
-#<a id="next"></a> Next Steps
-To learn more about using Windows PowerShell with Resource Manager:
+#<a id="next"></a> 次のステップ
+リソース マネージャーでの Windows PowerShell の使用の詳細については、次を参照してください。
  
-- [Azure Resource Manager Cmdlets](http://go.microsoft.com/fwlink/?LinkID=394765&clcid=0x409): Learn to use the cmdlets in the AzureResourceManager modules.
-- [Azure blog](http://blogs.msdn.com/windowsazure): Learn about new features in Azure.
-- [Windows PowerShell blog](http://blogs.msdn.com/powershell): Learn about new features in Windows PowerShell.
-- ["Hey, Scripting Guy!" Blog](http://blogs.technet.com/b/heyscriptingguy/): Get real-world tips and tricks from the community.
-- [Using the Azure Cross-Platform Command-Line Interface with the Resource Manager](http://www.windowsazure.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/): Learn alternate ways to automate Resource Manager operations.
+- [Azure リソース マネージャー コマンドレットに関するページ](http://go.microsoft.com/fwlink/?LinkID=394765&clcid=0x409): AzureResourceManager モジュールのコマンドレットを使用する方法について説明します。
+- [Azure blog (Azure のブログ)](http://blogs.msdn.com/windowsazure): Azure の新機能について説明します。
+- [Windows PowerShell blog (Windows PowerShell ブログ)](http://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
+- ["Hey, Scripting Guy!"Blog ("Hey, Scripting Guy!" ブログ)](http://blogs.technet.com/b/heyscriptingguy/): 実際のヒントとテクニックをコミュニティから取得します。
+- [Using the Azure Cross-Platform Command-Line Interface with the Resource Manager (リソース マネージャーでの Azure クロス プラットフォーム コマンド ライン インターフェイスの使用)](http://www.windowsazure.com/ja-jp/documentation/articles/xplat-cli-azure-resource-manager/): リソース マネージャーの操作を自動化する別の方法を説明します。
+

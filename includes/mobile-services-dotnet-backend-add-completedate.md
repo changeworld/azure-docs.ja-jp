@@ -1,10 +1,10 @@
-In this section we will modify the model of our database by adding a new timestamp field named **CompleteDate**. This field will record the last time the todo item was completed. Entity Framework will update the database based on our model change using a default database initializer class derived from [DropCreateDatabaseIfModelChanges](http://go.microsoft.com/fwlink/?LinkId=394621). 
+このセクションでは、**CompleteDate** という名前の新しいタイムスタンプ フィールドを追加して、データベースのモデルを変更します。このフィールドには、最後に Todo 項目が完了した時刻が記録されます。Entity Framework は、[DropCreateDatabaseIfModelChanges](http://go.microsoft.com/fwlink/?LinkId=394621) から派生した既定のデータベース初期化子クラスを使用し、このモデルの変更に基づいてデータベースを更新します。
 
-1. In Solution Explorer for Visual Studio, expand the **App_Start** folder in the todolist service project. Open the WebApiConfig.cs file.
+1. Visual Studio のソリューション エクスプローラーで、todolist サービス プロジェクト内の **[App_Start]** フォルダーを展開します。WebApiConfig.cs ファイルを開きます。
 
-2. In the WebApiConfig.cs file, notice that your default database initializer class is derived from the `DropCreateDatabaseIfModelChanges` class. This means any change to the model will result in the table being dropped and recreated to accommodate the new model. So the data in the table will be lost and the table will be re-seeded. Modify the Seed method of the database initializer so that the seed data is as follows as save the WebApiConfig.cs file.
+2. WebApiConfig.cs ファイルで、既定のデータベース初期化子クラスが `DropCreateDatabaseIfModelChanges` クラスから派生していることに注意してくださいつまり、モデルへの変更により、テーブルが削除され、新しいモデルを格納するために再作成されることになります。したがって、テーブル内のデータは失われ、テーブルは再シードされます。次のように登録されたデータが WebApiConfig.cs ファイルを保存するように、データベース初期化子の Seed メソッドを変更します。
 
-    >[WACOM.NOTE] When using the default database initializer, Entity Framework will drop and recreate the database whenever it detects a data model change in the Code First model definition. To make this data model change and maintain existing data in the database, you must use Code First Migrations. For more information, see [How to Use Code First Migrations to Update the Data Model](./articles/mobile-services-dotnet-backend-use-code-first-migrations).
+    >[WACOM.NOTE] データベースの既定の初期化子を使用する場合は、Code First のモデル定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。詳細については、「[How to Use Code First Migrations to Update the Data Model (Code First Migrations を使用してデータ モデルを更新する方法)](./articles/mobile-services-dotnet-backend-use-code-first-migrations)」を参照してください。
 
         List<TodoItem> todoItems = new List<TodoItem>
         {
@@ -13,7 +13,7 @@ In this section we will modify the model of our database by adding a new timesta
         };
      
 
-3. In Solution Explorer for Visual Studio, expand the **DataObjects** folder in the todolist service project. Open the TodoItem.cs file and update the TodoItem class to include the CompleteDate field as follows. Then save the TodoItem.cs file.
+3. Visual Studio のソリューション エクスプローラーで、todolist サービス プロジェクト内の **[DataObjects]** フォルダーを展開します。TodoItem.cs ファイルを開き、CompleteDate フィールドを次のように追加して TodoItem クラスを更新します。その後、TodoItem.cs ファイルを保存します。
 
         public class TodoItem : EntityData
         {
@@ -22,7 +22,7 @@ In this section we will modify the model of our database by adding a new timesta
           public System.DateTime? CompleteDate { get; set; }
         }
 
-4. In Solution Explorer for Visual Studio, expand the **Controllers** folder in the todolist service project. Open the TodoItemController.cs file and update the `PatchTodoItem` method so that it will set the **CompleteDate** when the **Complete** property is changing from false to true. Then save the TodoItemController.cs file.
+4. Visual Studio のソリューション エクスプローラーで、todolist サービス プロジェクト内の **Controllers** フォルダーを展開します。TodoItemController.cs ファイルを開き、**Complete** プロパティが false から true に変更されたときに **CompleteDate** が設定されるように、'PatchTodoItem' メソッドを更新します。その後、TodoItemController.cs ファイルを保存します。
 
         public Task<TodoItem> PatchTodoItem(string id, Delta<TodoItem> patch)
         {
@@ -36,6 +36,7 @@ In this section we will modify the model of our database by adding a new timesta
         }
 
 
-5. Rebuild the todolist .NET backend service project and verify that you have no build errors. 
+5. todolist .NET バックエンド サービス プロジェクトをリビルドし、ビルド エラーがないことを確認します。
 
-Next, you will update the client app to display the new **CompleteDate** data.
+次に、クライアント アプリケーションを更新して新しい **CompleteDate** データを表示します。
+

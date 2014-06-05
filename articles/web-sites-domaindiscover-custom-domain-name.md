@@ -1,72 +1,73 @@
-<properties title="Learn how to configure an Azure web site to use a domain name registered with DomainDiscover - TierraNet" pageTitle="Configure a DomainDiscover domain name for an Azure web site" metaKeywords="Azure, Azure Web Sites, DomainDiscover, TierraNet" description="Learn how to configure an Azure web site to use a domain name registered with DomainDiscover - TierraNet" services="web-sites" documentationCenter="" authors="larryfr,jroth" />
+<properties title="DomainDiscover (TierraNet) で登録したドメイン名を使用するように Azure の Web サイトを構成する方法について説明します" pageTitle="Azure の Web サイトの DomainDiscover ドメイン名の構成" metaKeywords="Azure, Azure の Web サイト, DomainDiscover, TierraNet" description="DomainDiscover (TierraNet) で登録したドメイン名を使用するように Azure の Web サイトを構成する方法について説明します。" services="web-sites" documentationCenter="" authors="larryfr,jroth" />
 
-#Configuring a custom domain name for an Azure Web Site (DomainDiscover / TierraNet)
+#Azure の Web サイトのカスタム ドメイン名の構成 (DomainDiscover (TierraNet))
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/web-sites-custom-domain-name" title="Custom Domain">Custom Domain</a><a href="/en-us/documentation/articles/web-sites-godaddy-custom-domain-name" title="GoDaddy">GoDaddy</a><a href="/en-us/documentation/articles/web-sites-network-solutions-custom-domain-name" title="Network Solutions">Network Solutions</a><a href="/en-us/documentation/articles/web-sites-registerdotcom-custom-domain-name" title="Register.com">Register.com</a><a href="/en-us/documentation/articles/web-sites-enom-custom-domain-name" title="Enom">Enom</a><a href="/en-us/documentation/articles/web-sites-moniker-custom-domain-name" title="Moniker">Moniker</a><a href="/en-us/documentation/articles/web-sites-dotster-custom-domain-name" title="Dotster">Dotster</a><a href="/en-us/documentation/articles/web-sites-domaindiscover-custom-domain-name" title="DomainDiscover" class="current">DomainDiscover</a><a href="/en-us/documentation/articles/web-sites-directnic-custom-domain-name" title="Directnic">Directnic</a></div>
-<div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/web-sites-domaindiscover-custom-domain-name/" title="Web Sites" class="current">Web Site</a> | <a href="/en-us/documentation/articles/web-sites-domaindiscover-traffic-manager-custom-domain-name/" title="Web Site using Traffic Manager">Web Site using Traffic Manager</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/web-sites-custom-domain-name" title="カスタム ドメイン">カスタム ドメイン</a><a href="/ja-jp/documentation/articles/web-sites-godaddy-custom-domain-name" title="GoDaddy">GoDaddy</a><a href="/ja-jp/documentation/articles/web-sites-network-solutions-custom-domain-name" title="Network Solutions">Network Solutions</a><a href="/ja-jp/documentation/articles/web-sites-registerdotcom-custom-domain-name" title="Register.com">Register.com</a><a href="/ja-jp/documentation/articles/web-sites-enom-custom-domain-name" title="Enom">Enom</a><a href="/ja-jp/documentation/articles/web-sites-moniker-custom-domain-name" title="Moniker">Moniker</a><a href="/ja-jp/documentation/articles/web-sites-dotster-custom-domain-name" title="Dotster">Dotster</a><a href="/ja-jp/documentation/articles/web-sites-domaindiscover-custom-domain-name" title="DomainDiscover" class="current">DomainDiscover</a><a href="/ja-jp/documentation/articles/web-sites-directnic-custom-domain-name" title="Directnic">Directnic</a></div>
+<div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/web-sites-domaindiscover-custom-domain-name/" title="Web サイト" class="current">Web サイト</a> | <a href="/ja-jp/documentation/articles/web-sites-domaindiscover-traffic-manager-custom-domain-name/" title="トラフィック マネージャーを利用する Web サイト">トラフィック マネージャーを利用する Web サイト</a></div>
 
 [WACOM.INCLUDE [intro](../includes/custom-dns-web-site-intro.md)]
 
-This article provides instructions on using a custom domain name purchased from [DomainDiscover.com](https://domaindiscover.com)  with Azure Web Sites. DomainDiscover.com is part of TierraNet.
+この記事では、[DomainDiscover.com](https://domaindiscover.com) から購入したカスタム ドメイン名を Azure の Web サイトで使用する手順を示します。DomainDiscover.com は TierraNet のサービスの一つです。
 
 [WACOM.INCLUDE [introfooter](../includes/custom-dns-web-site-intro-notes.md)]
 
-In this article:
+この記事の内容:
 
--   [Understanding DNS records](#understanding-records)
--   [Configure your web sites for basic, shared or standard mode](#bkmk_configsharedmode)
--   [Add a DNS record for your custom domain](#bkmk_configurecname)
--   [Enable the domain on your web site](#enabledomain)
+-   [DNS レコードについて](#understanding-records)
+-   [Web サイトの基本、共有、または標準モード用の構成](#bkmk_configsharedmode)
+-   [カスタム ドメインの DNS レコードの追加](#bkmk_configurecname)
+-   [Web サイトでのドメインの有効化](#enabledomain)
 
-<h2><a name="understanding-records"></a>Understanding DNS records</h2>
+<h2><a name="understanding-records"></a>DNS レコードについて</h2>
 
 [WACOM.INCLUDE [understandingdns](../includes/custom-dns-web-site-understanding-dns-raw.md)]
 
-<h2><a name="bkmk_configsharedmode"></a>Configure your web sites for basic, shared or standard mode</h2>
+<h2><a name="bkmk_configsharedmode"></a>Web サイトの基本、共有、または標準モード用の構成</h2>
 
 [WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes.md)]
 
-<a name="bkmk_configurecname"></a><h2>Add a DNS record for your custom domain</h2>
+<a name="bkmk_configurecname"></a><h2>カスタム ドメインの DNS レコードの追加</h2>
 
-To associate your custom domain with an Azure Web Site, you must add a new entry in the DNS table for your custom domain by using tools provided by DomainDiscover. Use the following steps to locate the DNS tools for DomainDiscover.com
+カスタム ドメインを Azure の Web サイトに関連付けるには、DomainDiscover のツールを使用して、新しいエントリをカスタム ドメインの DNS テーブルに追加する必要があります。次の手順を使用して DomainDiscover.com の DNS ツールを見つけます。
 
-1. Log on to your account with DomainDiscover.com (TierraNet) by selecting **Control Panel** from the **Login** menu.
+1. **[Login]** メニューの **[Control Panel]** をクリックして、DomainDiscover.com (TierraNet) のアカウントにログオンします。
 
-    ![DomainDiscover Login Menu](.\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_LoginMenu.png)
+    ![DomainDiscover の [Login] メニュー](.\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_LoginMenu.png)
 
-2. On the **Domain Services** page, select the domain that you want to use for your Azure web site.
+2. **[Domain Services]** ページで、Azure の Web サイトで使用するドメインを選択します。
 
-    ![Domain management page](.\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DomainManagement.png)
+    ![ドメイン管理ページ](.\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DomainManagement.png)
 
-3. In the Domain settings, click the **Edit** button for **DNS Service**.
+3. ドメイン設定で、**[DNS Service]** の **[Edit]** をクリックします。
 
-    ![DNS edit button](.\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DNSEditButton.png)
+    ![DNS の [Edit] ボタン](.\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DNSEditButton.png)
 
-4. In the **Manage DNS** window, select the type of DNS record to add in the **Add Records** list. Then click the **Add** button.
+4. **[Manage DNS]** ウィンドウで、DNS レコードのタイプを選択して **[Add Records]** ボックスの一覧に追加します。その後、**[Add]** をクリックします。
 
-    ![DNS edit button](.\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DNSAddRecords.png)
+    ![DNS の [Edit] ボタン](.\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DNSAddRecords.png)
 
-5. On the following page, enter the DNS record values. Then click the **Add** button.
+5. 次のページで、DNS レコードの値を入力します。その後、**[Add]** をクリックします。
 
-    ![DNS edit button](.\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DNSRecords.png)
+    ![DNS の [Edit] ボタン](.\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DNSRecords.png)
 
-    * When adding a CNAME record, you must first select **CNAME (Alias)** on the **Manage DNS** page. Then set the **Host** field to the sub-domain you wish to use. For example, **www**. You must set the **Alias Hostname** field to the **.azurewebsites.net** domain name of your Azure Web Site. For example, **contoso.azurwebsites.net**. Then provide a Time-to-Live (TTL) value, such as 1800 seconds.
+    * CNAME レコードを追加するときは、まず **[Manage DNS]** ページで **[CNAME (Alias)]** を選択する必要があります。その後、**[Host]** フィールドを、使用するサブドメインに設定します。たとえば **www** にします。**[Alias Hostname]** フィールドを、Azure の Web サイトの **.azurewebsites.net** ドメイン名に設定する必要があります。たとえば **contoso.azurwebsites.net** にします。その後、Time-to-Live (TTL) の値を 1,800 (秒) などに設定します。
 
-    * When adding an A record, you must first select **A** on the **Manage DNS** page. Then set the **Host** field to either **@** (this represents root domain name, such as **contoso.com**,) or the sub-domain you wish to use (for example, **www**.) You must set the **IP Address** field to the IP address of your Azure Web Site. Then provide a Time-to-Live (TTL) value such as 1800 seconds.
+    * A レコードを追加する場合は、まず **[Manage DNS]** ページで **[A]** を選択する必要があります。その後、**[Host]** フィールドを、**@** (**contoso.com** などのルート ドメイン名) か、使用するサブドメイン (**www** など) のいずれかに設定します。**[IP Address]** フィールドを、Azure の Web サイトの IP アドレスに設定する必要があります。その後、Time-to-Live (TTL) の値を 1,800 (秒) などに設定します。
 
-		> [WACOM.NOTE] If you will be using an A record, you must also add a CNAME record with one of the following configurations:
+		> [WACOM.NOTE] A レコードを使用する場合、次のいずれかの構成で CNAME レコードを追加する必要があります。
 		> 
-		> * A **Host** value of **www** with an **Alias Hostname** value of **&lt;yourwebsitename&gt;.azurewebsites.net**.
+		> * **[Host]** 値が **www**、**[Alias Hostname]** 値が **&lt;yourwebsitename&gt;.azurewebsites.net**。
 		> 
-		> OR
+		> または
 		> 
-		> * A **Host** value of **awverify.www** with an **Alias Hostname** value of **awverify.&lt;yourwebsitename&gt;.azurewebsites.net**.
+		> * **[Host]** 値が **awverify.www**、**[Alias Hostname]** 値が **awverify.&lt;yourwebsitename&gt;.azurewebsites.net**。
 		> 
-		> This CNAME record is used by Azure to validate that you own the domain described by the A record
+		> この CNAME レコードは Azure で使用されて、A レコードで参照されるドメインの所有者が検証されます。
 
 
-5. If you added an A record, you might get a warning that the existing A record for your domain is not inactive. It uses the most recently changed record, and DomainDirect already has a default A record for the root domain name. You can either rely on this precedence, or you can remove the default A record by selecting the **DELETE** button.
+5. A レコードを追加した場合、ドメインの既存の A レコードが非アクティブになっていないという警告が表示されることがあります。DomainDirect では、最近変更されたレコードでルート ドメイン名に既定の A レコードが既に設定されています。この設定をそのまま使用するか、**[DELETE]** をクリックして既定の A レコードを削除できます。
 
-<h2><a name="enabledomain"></a>Enable the domain name on your web site</h2>
+<h2><a name="enabledomain"></a>Web サイトでのドメイン名の有効化</h2>
 
 [WACOM.INCLUDE [modes](../includes/custom-dns-web-site-enable-on-web-site.md)]
+

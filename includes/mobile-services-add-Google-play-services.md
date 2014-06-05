@@ -1,28 +1,29 @@
 
 
-1. Open the Android SDK Manager by clicking **Window** from the top toolbar of Eclipse. Locate the target version of the Android SDK that is specified in your project properties, open it, and choose **Google APIs**.
+1. Eclipse の上部のツール バーで **[ウィンドウ]** をクリックして Android SDK Manager を開きます。プロジェクトのプロパティで指定された目的のバージョンの Android SDK を探して開き、**[Google APIs]** をオンにします。
 
-2. Scroll down to **Extras**, expand it, and choose **Google Play Services**, as shown below. Click **Install Packages**. Note the SDK path, for use in the following step. Restart Eclipse.
+2. 下方向へスクロールして **[Extras]** を展開し、下に示すように **[Google Play Services]** をオンにします。**[Install Packages]** をクリックします。SDK のパスはこの後の手順で使用するので、メモしておいてください。Eclipse を再起動します。
 
    	![](./media/notification-hubs-android-get-started/notification-hub-create-android-app4.png)
 
 
-3. Install the Google Play Services SDK in your project. In Eclipse, click **File**, then **Import**. Select **Android**, then **Existing Android Code into Workspace**, and click **Next**. Click **Browse**, navigate to the Android SDK path (usually in a folder named `adt-bundle-windows-x86_64`), then go to the `\extras\google\google_play_services\libproject` subfolder, and there select the google-play-services-lib folder, and click **OK**. Check the **Copy projects into workspace** checkbox, and then click **Finish**.
+3. Google Play Services SDK をプロジェクトにインストールします。Eclipse で、**[File]** をクリックし、**[Import]** をクリックします。**[Android]** を選択し、**[Existing Android Code into Workspace]** を選択します。**[Next]** をクリックします。**[Browse]** をクリックし、Android SDK パス (通常は `adt-bundle-windows-x86_64` フォルダー) に移動します。`\extras\google\google_play_services\libproject` サブフォルダーに移動し、google-play-services-lib フォルダーを選択します。**[OK]** をクリックします。**[Copy projects into workspace]** チェック ボックスをオンにし、**[Finish]** をクリックします。
 
 	![](./media/mobile-services-android-get-started-push/mobile-eclipse-import-Play-library.png)
 
-5. Next you must reference the Google Play Services SDK library that you just imported, from your project. 
+5. 次に、プロジェクトからインポートした Google Play Services SDK ライブラリを参照する必要があります。
 
-2. In **Package Explorer**, right-click your project and choose *Properties*.
+2. **Package Explorer** でプロジェクトを右クリックし、*[Properties]* をクリックします。
  
-3. In the Properties window, choose Android on the left.
+3. [Properties] ウィンドウで、左側の [Android] を選択します。
 
 	![](./media/mobile-services-android-get-started-push/mobile-google-set-project-properties.png)
 
 
-5.  In the **Library** section, choose **Add** , and select the Google Play Services project (*google-play-services-lib*) and click **OK**.
+5.  **[Library]** セクションで **[Add]** をクリックし、[Google Play Services] プロジェクト (*google-play-services-lib*) をオンにして **[OK]** をクリックします。
 
-6. Click **Apply** and then **OK**.
+6. **[Apply]** をクリックし、**[OK]** をクリックします。
+
 
 
 

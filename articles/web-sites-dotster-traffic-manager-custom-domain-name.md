@@ -1,64 +1,65 @@
-<properties title="Learn how to configure an Azure web site that uses Traffic Manager to use a domain name registered with Dotster" pageTitle="Configure a Dotster domain name for an Azure web site using Traffic Manager" metaKeywords="Windows Azure, Windows Azure Web Sites, Dotster, Traffic Manager" description="Learn how to configure an Azure web site that uses Traffic Manager to use a domain name registered with Dotster" services="web-sites" documentationCenter="" authors="larryfr,jroth" />
+<properties title="Dotster で登録したドメイン名を使用するように、トラフィック マネージャーを利用する Azure の Web サイトを構成する方法について説明します" pageTitle="トラフィック マネージャーを利用する Azure の Web サイトの Dotster ドメイン名の構成" metaKeywords="Windows Azure, Windows Azure の Web サイト, Dotster, トラフィック マネージャー" description="Dotster で登録したドメイン名を使用するように、トラフィック マネージャーを利用する Azure の Web サイトを構成する方法について説明します。" services="web-sites" documentationCenter="" authors="larryfr,jroth" />
 
-#Configuring a custom domain name for a Windows Azure Web Site using Traffic Manager (Dotster)
+#トラフィック マネージャーを利用する Windows Azure の Web サイトのカスタム ドメイン名の構成 (Dotster)
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/web-sites-custom-domain-name" title="Custom Domain">Custom Domain</a><a href="/en-us/documentation/articles/web-sites-godaddy-custom-domain-name" title="GoDaddy">GoDaddy</a><a href="/en-us/documentation/articles/web-sites-network-solutions-custom-domain-name" title="Network Solutions">Network Solutions</a><a href="/en-us/documentation/articles/web-sites-registerdotcom-custom-domain-name" title="Register.com">Register.com</a><a href="/en-us/documentation/articles/web-sites-enom-custom-domain-name" title="Enom">Enom</a><a href="/en-us/documentation/articles/web-sites-moniker-custom-domain-name" title="Moniker">Moniker</a><a href="/en-us/documentation/articles/web-sites-dotster-custom-domain-name" title="Dotster" class="current">Dotster</a><a href="/en-us/documentation/articles/web-sites-domaindiscover-custom-domain-name" title="DomainDiscover">DomainDiscover</a><a href="/en-us/documentation/articles/web-sites-directnic-custom-domain-name" title="Directnic">Directnic</a></div>
-<div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/web-sites-dotster-custom-domain-name/" title="Web Sites">Web Site</a> | <a href="/en-us/documentation/articles/web-sites-dotster-traffic-manager-custom-domain-name/" title="Web Site using Traffic Manager" class="current">Web Site using Traffic Manager</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/web-sites-custom-domain-name" title="カスタム ドメイン">カスタム ドメイン</a><a href="/ja-jp/documentation/articles/web-sites-godaddy-custom-domain-name" title="GoDaddy">GoDaddy</a><a href="/ja-jp/documentation/articles/web-sites-network-solutions-custom-domain-name" title="Network Solutions">Network Solutions</a><a href="/ja-jp/documentation/articles/web-sites-registerdotcom-custom-domain-name" title="Register.com">Register.com</a><a href="/ja-jp/documentation/articles/web-sites-enom-custom-domain-name" title="Enom">Enom</a><a href="/ja-jp/documentation/articles/web-sites-moniker-custom-domain-name" title="Moniker">Moniker</a><a href="/ja-jp/documentation/articles/web-sites-dotster-custom-domain-name" title="Dotster" class="current">Dotster</a><a href="/ja-jp/documentation/articles/web-sites-domaindiscover-custom-domain-name" title="DomainDiscover">DomainDiscover</a><a href="/ja-jp/documentation/articles/web-sites-directnic-custom-domain-name" title="Directnic">Directnic</a></div>
+<div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/web-sites-dotster-custom-domain-name/" title="Web サイト">Web サイト</a> | <a href="/ja-jp/documentation/articles/web-sites-dotster-traffic-manager-custom-domain-name/" title="トラフィック マネージャーを利用する Web サイト" class="current">トラフィック マネージャーを利用する Web サイト</a></div>
 
 
 [WACOM.INCLUDE [intro](../includes/custom-dns-web-site-intro-traffic-manager.md)]
 
-This article provides instructions on using a custom domain name purchased from [Dotster.com](https://dotster.com) with Azure Web Sites.
+この記事では、[Dotster.com](https://dotster.com) から購入したカスタム ドメイン名を Azure の Web サイトで使用する手順を示します。
 
 [WACOM.INCLUDE [tmwebsitefooter](../includes/custom-dns-web-site-traffic-manager-notes.md)]
 
 [WACOM.INCLUDE [introfooter](../includes/custom-dns-web-site-intro-notes.md)]
 
-In this article:
+この記事の内容:
 
--   [Understanding DNS records](#understanding-records)
--   [Configure your web sites for standard mode](#bkmk_configsharedmode)
--   [Add a DNS record for your custom domain](#bkmk_configurecname)
--   [Enable Traffic Manager for your web site](#enabledomain)
+-   [DNS レコードについて](#understanding-records)
+-   [Web サイトの標準モード用の構成](#bkmk_configsharedmode)
+-   [カスタム ドメインの DNS レコードの追加](#bkmk_configurecname)
+-   [Web サイトに対するトラフィック マネージャーの有効化](#enabledomain)
 
-<h2><a name="understanding-records"></a>Understanding DNS records</h2>
+<h2><a name="understanding-records"></a>DNS レコードについて</h2>
 
 [WACOM.INCLUDE [understandingdns](../includes/custom-dns-web-site-understanding-dns-traffic-manager.md)]
 
-<h2><a name="bkmk_configsharedmode"></a>Configure your web sites for standard mode</h2>
+<h2><a name="bkmk_configsharedmode"></a>Web サイトの標準モード用の構成</h2>
 
 [WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes-traffic-manager.md)]
 
-<a name="bkmk_configurecname"></a><h2>Add a DNS record for your custom domain</h2>
+<a name="bkmk_configurecname"></a><h2>カスタム ドメインの DNS レコードの追加</h2>
 
-To associate your custom domain with an Azure Web Site, you must add a new entry in the DNS table for your custom domain by using tools provided by Dotster. Use the following steps to locate the DNS tools for Dotster.com
+カスタム ドメインを Azure の Web サイトに関連付けるには、Dotster のツールを使用して、新しいエントリをカスタム ドメインの DNS テーブルに追加する必要があります。次の手順を使用して Dotster.com の DNS ツールを見つけます。
 
-1. Log on to your account with Dotster.com. On the **Domain** menu, select **DomainCentral**.
+1. Dotster.com のアカウントにログオンします。**[Domain]** メニューの **[DomainCentral]** をクリックします。
 
-    ![Domain Central Dotster Menu](.\media\web-sites-dotster-custom-domain-name\Dotster_DomainCentralMenu.png)
+    ![Dotster の [DomainCentral] メニュー項目](.\media\web-sites-dotster-custom-domain-name\Dotster_DomainCentralMenu.png)
 
-2. Select your domain to bring up a list of settings. Then select the **Nameservers** link.
+2. ドメインを選択して設定の一覧を表示します。次に、**[Nameservers]** リンクをクリックします。
 
-    ![Dotster Domain Configuration Options](.\media\web-sites-dotster-custom-domain-name\Dotster_DomainMenu.png)
+    ![Dotster のドメイン構成オプション](.\media\web-sites-dotster-custom-domain-name\Dotster_DomainMenu.png)
 
-3. Select the **Use different name servers**. In order to take advantage of the DNS services on Dotster, you must specify the following name servers: ns1.nameresolve.com, ns2.nameresolve.com, ns3.nameresolve.com, and ns4.nameresolve.com.
+3. **[Use different name servers]** を選択します。Dotster の DNS サービスを利用するには、ネーム サーバーとして ns1.nameresolve.com、ns2.nameresolve.com、ns3.nameresolve.com、ns4.nameresolve.com を指定する必要があります。
 
-    ![Dotster Domain Configuration Options](.\media\web-sites-dotster-custom-domain-name\Dotster_Nameservers.png)
+    ![Dotster のドメイン構成オプション](.\media\web-sites-dotster-custom-domain-name\Dotster_Nameservers.png)
 
-    > [WACOM.NOTE] It can take 24-48 hours for the name servers change to take affect. The remainder of steps in this article do not work until that time.
+    > [WACOM.NOTE] ネーム サーバーで変更が有効になるまで 24 〜 48 時間かかることがあります。それまで、この記事の残りの手順を実行することはできません。
 
-4. In DomainCentral, select your domain, and then select **DNS**. In the **Modify** list, select the type of DNS record to add (**CNAME Alias** or **A Record**). 
+4. DomainCentral で、ドメインを選択し、**[DNS]** を選択します。**[Modify]** ボックスの一覧で、DNS レコードのタイプとして **[CNAME Alias]** または **[A Record]** を選択して追加します。
 
-    ![Dotster Domain Configuration Options](.\media\web-sites-dotster-custom-domain-name\Dotster_DNS.png)
+    ![Dotster のドメイン構成オプション](.\media\web-sites-dotster-custom-domain-name\Dotster_DNS.png)
 
-5. Then specify the **Host** and **Points To** fields for the record. When complete click the **Add** button.
+5. 次に、レコードの **[Host]** と **[Points To]** の各フィールドを指定します。完了したら、**[Add]** をクリックします。
 
-    ![Dotster Domain Configuration Options](.\media\web-sites-dotster-custom-domain-name\Dotster_DNS_CNAME_TM.png)
+    ![Dotster のドメイン構成オプション](.\media\web-sites-dotster-custom-domain-name\Dotster_DNS_CNAME_TM.png)
  
-    * When adding a CNAME record, you must set the **Host** field to the sub-domain you wish to use. For example, **www**. You must set the **Points To** field to the **.trafficmanager.net** domain name of the Traffic Manager profile you are using with your Azure Web Site. For example, **contoso.trafficmanager.net**.
+    * CNAME レコードを追加するときは、**[Host]** フィールドを、使用するサブドメインに設定する必要があります。たとえば **www** にします。**[Points To]** フィールドを、Azure の Web サイトで利用するトラフィック マネージャーの **.trafficmanager.net** ドメイン名に設定する必要があります。たとえば **contoso.trafficmanager.net** にします。
 
-	    > [WACOM.NOTE] You must only use CNAME records when associating your custom domain name with a web site that is load balanced using Traffic Manager.
+	    > [WACOM.NOTE] CNAME レコードを使用する必要があるのは、トラフィック マネージャーを利用して負荷分散されている Web サイトにカスタム ドメイン名を関連付けるときのみです。
 
-<h2><a name="enabledomain"></a>Enable Traffic Manager web site</h2>
+<h2><a name="enabledomain"></a>Web サイトに対するトラフィック マネージャーの有効化</h2>
 
 [WACOM.INCLUDE [modes](../includes/custom-dns-web-site-enable-on-traffic-manager.md)]
+

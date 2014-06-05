@@ -1,54 +1,55 @@
-<properties linkid="develop-java-tutorials-web-site-add-app" urlDisplayName="Add an application to your Java web site" pageTitle="Add an application to your Java web site" metaKeywords="" description="This tutorial shows you how to add a page or application to your Java web site on Microsoft Azure." metaCanonical="" services="web-sites" documentationCenter="Java" title="Add an application to your Java web site" videoId="" scriptId="" authors="waltpo" solutions="" manager="keboyd" editor="mollybos" />
+<properties linkid="develop-java-tutorials-web-site-add-app" urlDisplayName="Java Web サイトへのアプリケーションの追加" pageTitle="Java Web サイトへのアプリケーションの追加" metaKeywords="" description="このチュートリアルでは、Microsoft Azure の Java Web サイトに Web ページやアプリケーションに追加する方法を示します。" metaCanonical="" services="web-sites" documentationCenter="Java" title="Java Web サイトへのアプリケーションの追加" videoId="" scriptId="" authors="waltpo" solutions="" manager="keboyd" editor="mollybos" />
 
-# Add an application to your Java web site on Azure
+# Azure の Java Web サイトへのアプリケーションの追加
 
-This tutorial shows how to add in a web page or an application to a Java web site that was previously created using the Azure gallery or the Azure configuration UI.
+このチュートリアルでは、前に Azure のギャラリーまたは Azure の構成 UI を利用して作成した Java Web サイトに Web ページやアプリケーションを追加する方法を示します。
 
-Note that you can use source control to upload your application or web pages, including in continuous integration scenarios. Instructions for using source control with your web site are available at [Publishing from Source Control to Azure Web Sites](../web-sites-publish-source-control). As an alternative to source control, this article will show how to use FTP to upload the application.
+継続的な統合シナリオなどで、ソース管理を使用してアプリケーションや Web ページをアップロードできます。Web サイトでのソース管理の使用手順については、「[ソース管理から Azure の Web サイトへの発行](../web-sites-publish-source-control)」を参照してください。この記事では、ソース管理の代わりに FTP を使用してアプリケーションをアップロードする方法を示します。
 
-This tutorial assumes you have already completed the steps at [Get started with Microsoft Azure Web Sites and Java](../web-sites-java-get-started).
+このチュートリアルでは、「[Azure の Web サイトと Java の概要](../web-sites-java-get-started)」の手順を完了しているものとします。
 
-# Customize a web site using FTP
-You'll need to determine your FTP credentials, and use them to access the the web site contents. Then, you can modify the contents to run your application. The example shown here will use File Explorer to facilitate FTP, but you can use other FTP techniques as well. 
+# FTP を使用した Web サイトのカスタマイズ
+FTP 資格情報を調べ、その情報を使用して Web サイトのコンテンツにアクセスする必要があります。その後、アプリケーションを実行するようにコンテンツを変更できます。ここで示している例では、エクスプローラー内から FTP を簡単に使用できるようにしていますが、他の方法を使用することもできます。
 
-## Use FTP credentials to access your site contents
+## FTP 資格情報を使用してサイトのコンテンツにアクセスする
 
-1. Within the Microsoft Azure Management Portal, navigate to the **Web Sites** view.
-2. Within the **Web Sites** view, click the name of your web site.
-3. Click **Dashboard**.
-4. Within the **Dashboard** view, under **Quick Glance**, click **Download the publish profile**. Save this file locally. Ensure that you keep this file secure, as it contains the user name and password that allows publishing to your site (as well as copying contents from your site).
-5. Open the downloaded Publish Settings file using a text editor. Within that file, note the values for **userName** and **userPwd**. They represent the user name and password, respectively, that you will use to access the files in the site.
-6. Access your web site's files, providing the user name and password when prompted. This example will use FTP from within Internet Explorer, but you can use other techniques as well. To proceed with using FTP, within the **Dashboard** view, click the URL listed under **FTP Host Name**. (You can also determine the FTP host name from within the Publish Settings file, it is the value assigned to **publishUrl**.) 
-7. When prompted for the user name and password, use the values specified in the Publish Settings file for **userName** and **userPwd**. 
-8. Still within Internet Explorer, to switch to File Explorer view, click **View**, and then click **Open FTP site in File Explorer**.
+1. Microsoft Azure 管理ポータルで、**[Web サイト]** ビューに移動します。
+2. **[Web サイト]** ビューで、Web サイトの名前をクリックします。
+3. **[ダッシュボード]** をクリックします。
+4. **[ダッシュボード]** ビューの **[概要]** で、**[発行プロファイルのダウンロード]** をクリックします。このファイルをローカルに保存します。このファイルは安全な場所に保管してください。このファイル内のユーザー名とパスワードを使用すると、サイトへの発行もサイトからのコンテンツのコピーも可能になるためです。
+5. テキスト エディターを使用して、ダウンロードした発行設定ファイルを開きます。そのファイル内の **userName** と **userPwd** の値を書き留めておきます。それらの値はユーザー名とパスワードを表しており、サイトのファイルにアクセスするために使用します。
+6. Web サイトのファイルにアクセスします。プロンプトが表示されたら、ユーザー名とパスワードを入力します。この例では、Internet Explorer 内から FTP を使用しますが、他の方法を使用することもできます。FTP の使用を続行するには、**[ダッシュボード]** ビューの **[FTP ホスト名]** ボックスの一覧で URL をクリックします (発行設定ファイルで FTP ホスト名を調べることもできます。**publishUrl** に割り当てられた値になっています)。
+7. ユーザー名とパスワードの入力を求められたら、発行設定ファイルで **userName** と **userPwd** に指定された値を使用します。
+8. そのまま Internet Explorer で、エクスプローラー ビューに切り替えるために、**[表示]** をクリックし、**[エクスプローラーで FTP サイトを開く]** をクリックします。
 
-## Access the webapps folder for your web site
+## Web サイトの webapps フォルダーにアクセスする
 
-Within the File Explorer view of your web site on Azure, you can now customize your web site. You'll need to copy your application to the **webapps** folder for your web site. The navigation path to that folder differs based on how you set up your web site.
+Azure の Web サイトのエクスプローラー ビューで、Web サイトをカスタマイズできるようになりました。Web サイトの **webapps** フォルダーにアプリケーションをコピーする必要があります。そのフォルダーへのナビゲーション パスは Web サイトの設定方法によって異なります。
 
-- If you set up your web site by using the Azure application gallery, within File Explorer, double-click **site**, double-click **wwwroot**, double-click **bin**, double-click the version of the application server that your web site is using, and then double-click **webapps**. 
-- If you set up your web site by using the Azure configuration UI, within File Explorer, double-click **site**, double-click **wwwroot**, and then double-click **webapps**. 
-- If you set up your web site by using a custom upload, navigate as needed to the **webapps** folder. 
+- Azure のアプリケーション ギャラリーを使用して Web サイトを設定している場合は、エクスプローラーで **[site]**、**[wwwroot]**、**[bin]** の順にダブルクリックし、Web サイトで使用しているアプリケーション サーバーのバージョンをダブルクリックして、**[webapps]** をダブルクリックします。
+- Azure の構成 UI を使用して Web サイトを設定している場合は、エクスプローラーで **[site]**、**[wwwroot]**、**[webapps]** の順にダブルクリックします。
+- カスタム アップロードを使用して Web サイトを設定している場合は、必要に応じたパスをたどって **webapps** フォルダーに移動します。
 
-## To add a WAR file to your web site using FTP
+## FTP を使用して WAR ファイルを Web サイトに追加するには
 
-1. Navigate to the **webapps** folder using the technique appropriate for your web site, as described above.
-2. Copy your WAR file to the **webapps** folder.
+1. 前に説明しているように、Web サイトに適した方法で **webapps** フォルダーに移動します。
+2. WAR ファイルを **webapps** フォルダーにコピーします。
 
-The application server will detect that you've added the WAR file, and will automatically load it. You can then run your app in the browser, via the URL for your web site with the name of the WAR file appended to it. 
+アプリケーション サーバーによって、WAR ファイルが追加されたことが検出され、自動的に読み込まれます。その後、Web サイトの URL に続けて WAR ファイルの名前を指定することで、ブラウザーでアプリケーションを実行できます。
 
-For example, browse to http://*mysitename*.azurewebsites.net/*mywar*, where *mysitename* is the name you specified for your URL, and *mywar* is the case-sensitive name of the WAR that you copied (without the trailing **.war**).
+たとえば、http://*mysitename*.azurewebsites.net/*mywar* と指定します。ここで、*mysitename* は、URL に指定した名前であり、*mywar* は、コピーした WAR の大文字と小文字が区別される名前 (後続の **.war** は不要) です。
 
-## To add a web page to your web site using FTP
-1. Navigate to the **webapps** folder. 
-2. Create a new folder within the **webapps** folder.
-3. Open the new folder.
-4. Add your web page to the new folder. 
+## FTP を使用して Web ページを Web サイトに追加するには
+1. **webapps** フォルダーに移動します。
+2. **webapps** フォルダー内に新しいフォルダーを作成します。
+3. 新しいフォルダーを開きます。
+4. Web ページを新しいフォルダーに追加します。
  
-The application server will detect that you've added the new folder and web file, and will automatically load it. 
-Then, run your JSP file using the URL in the form of http://*mysitename*.azurewebsites.net/*myfolder*/*myfile.jsp*, where *mysitename* is the name you specified for your URL, *myfolder* is the folder you created in **webapps**, and *myfile.jsp* is the name of the JSP file that you created.
+アプリケーション サーバーによって、新しいフォルダーと Web ファイルが追加されたことが検出され、自動的に読み込まれます。
+その後、http://*mysitename*.azurewebsites.net/*myfolder*/*myfile.jsp* という形式の URL を使用して、JSP ファイルを実行します。ここで、*mysitename* は、URL で指定した名前であり、*myfolder* は、**webapps** 内に作成したフォルダーであり、*myfile.jsp* は、作成した JSP ファイルの名前です。
 
-Note that if you copy files (other than WAR files) to the ROOT directory, the application server will need to be restarted before those files are used. The autoload functionality for the Java web sites running on Azure is based on a new WAR file being added, or new files or directories added to the **webapps** folder.  
+ルート ディレクトリにファイル (WAR ファイル以外) をコピーした場合は、それらのファイルを使用する前に、アプリケーション サーバーの再起動が必要になります。Azure で実行されている Java Web サイトの自動読み込み機能は、**webapps** フォルダーに追加される新しい WAR ファイル、または新しいファイルやディレクトリに基づいて動作します。
 
 
   
+

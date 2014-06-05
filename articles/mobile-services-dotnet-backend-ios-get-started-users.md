@@ -1,66 +1,67 @@
-<properties pageTitle="Get started with authentication (Windows Store) | Mobile Dev Center" metaKeywords="authentication, Facebook, Google, Twitter, Microsoft Account, login" description="Learn how to use Mobile Services to authenticate users of your Windows Store app through a variety of identity providers, including Google, Facebook, Twitter, and Microsoft." metaCanonical="" services="mobile" documentationCenter="Mobile" title="Get started with authentication in Mobile Services" authors="Glenn Gailey" solutions="" manager="" editor="" />
+<properties pageTitle="認証の使用 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="認証, Facebook, Google, Twitter, Microsoft アカウント, ログイン" description="モバイル サービスを使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを介して Windows ストア アプリのユーザーを認証する方法について説明します。" metaCanonical="" services="mobile" documentationCenter="Mobile" title="モバイル サービスでの認証の使用" authors="Glenn Gailey" solutions="" manager="" editor="" />
 
-# Get started with authentication in Mobile Services
+# モバイル サービスでの認証の使用
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users" title="Windows Store C#">Windows Store C#</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-users" title="Windows Phone">Windows Phone</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users" title="iOS" class="current">iOS</a><!--<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started-users" title="Android">Android</a>-->
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-users" title="Windows Phone">Windows Phone</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users" title="iOS" class="current">iOS</a><!--<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-users" title="Android">Android</a>-->
 </div>
 
-<div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users/" title=".NET backend" class="current">.NET backend</a> | <a href="/en-us/documentation/articles/mobile-services-ios-get-started-users/"  title="JavaScript backend">JavaScript backend</a></div>
+<div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users/" title=".NET バックエンド" class="current">.NET バックエンド</a> | <a href="/ja-jp/documentation/articles/mobile-services-ios-get-started-users/"  title="JavaScript バックエンド">JavaScript バックエンド</a></div>
 
-This topic shows you how to authenticate users in Azure Mobile Services from your app. In this tutorial, you add authentication to the quickstart project using an identity provider that is supported by Mobile Services. After being successfully authenticated and authorized by Mobile Services, the user ID value is displayed.
+このトピックでは、アプリケーションから Azure モバイル サービスのユーザーを認証する方法について説明します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
 
-This tutorial walks you through these basic steps to enable authentication in your app:
+このチュートリアルでは、アプリケーションでの認証を有効にするための、次の基本的な手順について説明します。
 
-1. [Register your app for authentication and configure Mobile Services]
-2. [Restrict table permissions to authenticated users]
-3. [Add authentication to the app]
+1. [アプリケーションを認証に登録し、モバイル サービスを構成する]
+2. [テーブルのアクセス許可を、認証されたユーザーだけに制限する]
+3. [アプリケーションに認証を追加する]
 
-This tutorial is based on the Mobile Services quickstart. You must also first complete the tutorial [Get started with Mobile Services]. 
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。先にチュートリアル「[モバイル サービスの使用]」を完了している必要があります。
 
-##<a name="register"></a>Register your app for authentication and configure Mobile Services
+##<a name="register"></a>アプリケーションを認証に登録し、モバイル サービスを構成する
 
 [WACOM.INCLUDE [mobile-services-register-authentication](../includes/mobile-services-register-authentication.md)] 
 
 <ol start="5">
-<li><p>In Visual Studio, open the Web.config file for the mobile service project, and in the appSettings section, set the app identifier and shared secret values obtained from your identity provider.</p>
-<p>These settings are used during local development. After publishing your mobile service project to Azure, these settings are overridden by the values set in the portal.</p></li>
+<li><p>Visual Studio でモバイル サービス プロジェクトの Web.config ファイルを開き、appSettings セクションで、アプリケーションの識別子と ID プロバイダーから取得した共有シークレット値を設定します。</p>
+<p>これらの設定は、ローカル開発中に使用されます。モバイル サービス プロジェクトを Azure に発行すると、これらの設定はポータルで設定された値で上書きされます。</p></li>
 </ol>
 
-##<a name="permissions"></a>Restrict permissions to authenticated users
+##<a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 
 [WACOM.INCLUDE [mobile-services-restrict-permissions-dotnet-backend](../includes/mobile-services-restrict-permissions-dotnet-backend.md)] 
 
 <ol start="6">
-<li><p>In Xcode, open the project that you created when you completed the tutorial <a href="/en-us/documentation/articles/mobile-services-ios-get-started">Get started with Mobile Services</a>.</p></li> 
-<li><p>Press the <strong>Run</strong> button to build the project and start the app in the iPhone emulator; verify that an unhandled exception with a status code of 401 (Unauthorized) is raised after the app starts.<p> 
+<li><p>Xcode で、チュートリアル「<a href="/ja-jp/documentation/articles/mobile-services-ios-get-started">モバイル サービスの使用</a>」を実行したときに作成したプロジェクトを開きます。</p></li>
+<li><p><strong>[実行]</strong> を押してプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを開始します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。<p>
    
-   	<p>This happens because the app attempts to access Mobile Services as an unauthenticated user, but the <em>TodoItem</em> table now requires authentication.</p></li>
+   	<p>この問題は、認証されないユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしているのに、<em>TodoItem</em> テーブルでは認証が要求されるために発生します。</p></li>
 </ol>
 
-Next, you will update the app to authenticate users before requesting resources from the mobile service.
+次に、モバイル サービスのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
-##<a name="add-authentication"></a>Add authentication to the app
+##<a name="add-authentication"></a>アプリケーションに認証を追加する
 
 [WACOM.INCLUDE [mobile-services-ios-authenticate-app](../includes/mobile-services-ios-authenticate-app.md)]
 
-##<a name="next-steps"></a>Next steps
+##<a name="next-steps"></a>次のステップ
 
-In the next tutorial, [Service-side authorization of Mobile Services users][Authorize users with scripts], you will take the user ID value provided by Mobile Services based on an authenticated user and use it to filter the data returned by Mobile Services. 
+次の[モバイル サービス ユーザーのサービス側の認証][Authorize users with scripts]チュートリアルでは、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。
 
 <!-- Anchors. -->
-[Register your app for authentication and configure Mobile Services]: #register
-[Restrict table permissions to authenticated users]: #permissions
-[Add authentication to the app]: #add-authentication
-[Next Steps]:#next-steps
+[アプリケーションを認証に登録し、モバイル サービスを構成する]: #register
+[テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
+[アプリケーションに認証を追加する]: #add-authentication
+[次のステップ]:#next-steps
 
 
 <!-- URLs. -->
-[Get started with Mobile Services]: /en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started/
-[Get started with data]: /en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data/
-[Get started with authentication]: /en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users/
-[Get started with push notifications]: /en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started-push/
-[Authorize users with scripts]: /en-us/documentation/articles/mobile-services-dotnet-backend-ios-authorize-users-in-scripts
+[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started/
+[データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data/
+[認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users/
+[プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-push/
+[スクリプトを使用したユーザーの承認]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-authorize-users-in-scripts
 
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Mobile Services .NET How-to Conceptual Reference]: /en-us/develop/mobile/how-to-guides/work-with-net-client-library
-[Register your Windows Store app package for Microsoft authentication]: /en-us/documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library
+[Windows ストア アプリ パッケージを Microsoft 認証に登録する]: /ja-jp/documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication
+

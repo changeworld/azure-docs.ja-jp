@@ -1,158 +1,159 @@
-<properties linkid="storage-introduction" urlDisplayName="Introduction to Azure Storage" pageTitle="Introduction to Storage | Microsoft Azure" metaKeywords="Get started  Azure storage introduction  Azure storage overview  Azure blob   Azure unstructured data   Azure unstructured storage   Azure blob   Azure blob storage  Azure queue   Azure asynchronous processing   Azure queue   Azure queue storage Azure table   Azure nosql   Azure large structured data store   Azure table   Azure table storage   Azure " description="An overview of Microsoft Azure Storage." metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="storage" documentationCenter="" title="Introduction to Microsoft Azure Storage" authors="tamram" />
+<properties linkid="storage-introduction" urlDisplayName="Azure ストレージの概要" pageTitle="ストレージの概要 |Microsoft Azure" metaKeywords="はじめに, Azure ストレージ入門, Azure ストレージの概要, Azure BLOB, Azure の非構造化データ, Azure 非構造化ストレージ, Azure BLOB, Azure BLOB ストレージ, Azure キュー, Azure 非同期処理, Azure キュー, Azure キュー ストレージ, Azure テーブル, Azure nosql,  Azure 大容量構造化データ ストア, Azure テーブル, Azure テーブル ストレージ, Azure " description="Microsoft Azure ストレージの概要について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="storage" documentationCenter="" title="Microsoft Azure ストレージの概要" authors="tamram" />
 
-# Introduction to Microsoft Azure Storage
+# Microsoft Azure ストレージの概要
 
-This article provides an introduction to Microsoft Azure Storage for developers, IT Pros, and business decision makers. By reading it, you'll learn about:
+この記事では、開発者、IT プロフェッショナル、およびビジネスの意思決定者向けに、Microsoft Azure ストレージの概要を示します。この記事では、次の項目について説明します。
 
-- What Azure Storage is, and how you can take advantage of it in your cloud, mobile, server, and desktop applications
-- What kinds of data you can store with the Azure Storage services: Blob, Table and Queue storage
-- How access to your data in Azure Storage is managed
-- How your Azure Storage data is protected via redundancy and replication 
-- Where to go next to build your first Azure Storage application
+- Azure ストレージの簡単な説明、およびクラウド、モバイル、サーバー、およびデスクトップ アプリケーションでの活用方法
+- Azure ストレージ サービスの BLOB ストレージ、テーブル ストレージ、およびキュー ストレージのそれぞれに保存できるデータの種類
+- Azure ストレージに保存されたデータへのアクセス管理の方法
+- 冗長性およびレプリケーションによる Azure ストレージのデータ保護の方法
+- Azure ストレージ アプリケーションを初めて構築する場合に役立つ詳細情報
 
-## What is Azure Storage? ##
+##Azure ストレージとは##
 
-Cloud computing enables new scenarios for applications requiring scalable, durable and highly available storage for their data – which is exactly why Microsoft developed Azure Storage. In addition to enabling developers to build large scale applications to support new scenarios Azure Storage also provides the storage foundation for Microsoft's Infrastructure as a Service capability further testament to its robustness. 
+クラウド コンピューティングは、スケーラブルで、耐久性と高可用性に富んだストレージを必要とするアプリケーションに適した新しいシナリオを実現します。それこそがまさに、Microsoft が Azure ストレージを開発した理由です。Azure ストレージは、開発者が新しいシナリオをサポートするための大規模なアプリケーションの構築に使用できるだけでなく、Microsoft の "サービスとしてのインフラストラクチャ" 機能の堅牢性を裏付けるストレージ基盤となります。
 
-Azure Storage is massively scalable, so you can store and process hundreds of terabytes of data to support the big data scenarios required by scientific, financial analysis, and media applications. Or you can store the small amounts of data required for a small business website. Wherever your needs fall, you pay only for the data you’re storing. Azure Storage currently stores tens of trillions of unique customer objects, and handles millions of requests per second on average. 
+Azure ストレージは拡張性に富んでいます。科学、財務分析、およびメディアのアプリケーションで求められるビッグ データ シナリオに対応して、数百テラバイトのデータを保存、処理できます。また、スモール ビジネスの Web サイト用に、少量のデータを保存することもできます。お客様のニーズがどのような規模であろうとも、料金は保存しているデータ量に応じた金額のみです。Azure ストレージには現在、膨大な数のお客様のプロジェクトが保存され、1 秒間に平均数百万の要求が処理されています。
 
-Azure Storage is elastic, so you can design applications for a large global audience, and scale those applications as needed - both the amount of storage and the number of transactions required. You pay only for what you use, and only when you use it.
+Azure ストレージは弾力性に富んでいるため、広範なグローバル ユーザー向けにアプリケーションを設計し、必要に応じて、求められるストレージ容量とトランザクション数の両面からそれらのアプリケーションの規模を変更できます。料金は使用した容量のみ、また使用したときのみが課金されます。
 
-Azure Storage uses an auto-partitioning system that automatically load-balances your data based on traffic. This means that as the demands on your application grow, Azure Storage automatically allocates the appropriate resources to meet them. 
+Azure ストレージは、自動パーティション分割システムを使用し、トラフィック量に基づいてデータを均等に負荷分散します。つまり、Azure ストレージでは、アプリケーションの需要の拡大に応じて、それに対応する適切なリソースが自動的に割り当てられます。
 
-Azure Storage is accessible from anywhere in the world, from any type of application, whether it’s running in the cloud, on the desktop, on an on-premise server, or on a mobile or tablet device. You can use Azure Storage in mobile scenarios where the application stores a subset of data on the device and synchronizes it with a full set of data stored in the cloud.
+Azure ストレージは、世界中どこからでも、あらゆる種類のアプリケーションからアクセスでき、そのアプリケーションがクラウド、デスクトップ、オンプレミスのサーバー、またはモバイルやタブレット デバイスのいずれで実行されていても利用できます。また、アプリケーションがデータの一部をデバイスに保存し、そのデータをクラウドに保存された完全なデータと同期するモバイルのシナリオも、Azure ストレージで実現できます。
 
-Azure Storage supports clients using a diverse set of operating systems (including Windows and Linux) and a variety of programming languages (including .NET, Java, and C++) for convenient development. Azure Storage also exposes data resources via simple REST APIs, which are available to any client capable of sending and receiving data via HTTP/HTTPS. 
+Azure ストレージは、多様なセットのオペレーティング システム (Windows および Linux を含む) と、多様なプログラミング言語 (.NET、Java、C++) を使用するクライアントをサポートしているため、アプリケーション開発に便利です。またデータ リソースには、HTTP/HTTPS の送受信機能を持つ任意のクライアントから、単純な REST API 経由でアクセスできます。
 
-## Introducing the Azure Storage Services ##
+## Azure ストレージ サービスの概要##
 
-The Azure Storage services are Blob storage, Table storage, and Queue storage:
+Azure ストレージ サービスには、BLOB ストレージ、テーブル ストレージ、キュー ストレージがあります。
 
-- **Blob storage** stores file data. A blob can be any type of text or binary data, such as a document, media file, or application installer. 
-- **Table storage** stores structured datasets. Table storage is a NoSQL key-attribute data store, which allows for rapid development and fast access to large quantities of data.
-- **Queue storage** provides reliable messaging for workflow processing and for communication between components of cloud services.
+- **BLOB ストレージ**には、ファイル データが格納されます。ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを BLOB として保存できます。
+- **テーブル ストレージ**には、構造型データが格納されます。テーブル ストレージは、NoSQL キー属性データ ストアであるため、開発が迅速化され、大量のデータにすばやくアクセスできます。
+- **キュー ストレージ**は、ワークフロー処理およびクラウド サービスのコンポーネント間通信のための、信頼性の高いメッセージング機能を提供します。
 
-These three services are included in every storage account. A storage account is a unique namespace that gives you access to Azure Storage. Each storage account can contain up to 200 TB of combined blob, queue, and table data.
+これら 3 つのサービスは、すべてのストレージ アカウントに含まれます。ストレージ アカウントは、Azure ストレージにアクセスできる一意の名前空間です。各ストレージ アカウントには、最大 200 TB の BLOB (異なる種類のデータの組み合わせが可能)、キュー、およびテーブルのデータを格納できます。
 
-Before you can create a storage account, you must have an Azure subscription, which is a plan that gives you access to a variety of Azure services. You can create up to 20 uniquely named storage accounts with a single subscription.
+ストレージ アカウントを作成するには、事前に Azure サブスクリプション (多様な Azure サービスにアクセスするためのプラン) が必要です。1 つのサブスクリプションに対し、最大 20 の一意の名前を持つストレージ アカウントを作成できます。
 
-You can get started with Azure with a [free trial](/en-us/pricing/free-trial/). Once you decide to purchase a plan, you can choose from a variety of [purchase options](/en-us/pricing/purchase-options/). If you’re an [MSDN subscriber](/en-us/pricing/member-offers/msdn-benefits-details/), you get free monthly credits that you can use with Azure services, including Azure Storage.
+Azure は、まず[無料評価版](/ja-jp/pricing/free-trial/)で使用してみることができます。またプランの購入時には、さまざまな[購入オプション](/ja-jp/pricing/purchase-options/)から選択できます。[MSDN サブスクライバー](/ja-jp/pricing/member-offers/msdn-benefits-details/)には、毎月、Azure ストレージを含む Azure サービスに使用できる無料使用分のクレジットが与えられます。
 
-## Blob Storage ##
+## BLOB ストレージ##
 
-For users with large amounts of unstructured data to store in the cloud, Blob storage offers a cost-effective and scalable solution. You can use Blob storage to store content such as:
+大量の非構造化データをクラウドに保存する場合は、BLOB ストレージを使用するとコスト効率の高いスケーラブルなソリューションが実現します。BLOB ストレージには、次のようなコンテンツを格納できます。
 
-- Documents 
-- Social data such as photos, videos, music, and blogs
-- Backups of files, computers, databases, and devices
-- Images and text for web applications
-- Configuration data for cloud applications
-- Big data, such as logs and other large datasets
+- ドキュメント
+- 写真、ビデオ、音楽、ブログなどのソーシャル データ
+- ファイル、コンピューター、データベース、およびデバイスのバックアップ データ
+- Web アプリケーションのイメージとテキスト
+- クラウド アプリケーションの構成データ
+- ログやその他の大きなデータセットなどのビッグ データ
 
-Every blob is organized into a container. Containers also provide a useful way to assign security policies to groups of objects. A storage account can contain any number of containers, and a container can contain any number of blobs, up to the 200 TB capacity limit of the storage account.  
+すべての BLOB は、コンテナーに編成されます。コンテナーを使用すると、オブジェクトのグループにセキュリティ ポリシーを便利に割り当てることができます。ストレージ アカウントの容量の上限である 200 TB を超えない限り、ストレージ アカウントには任意の数のコンテナーを含めることができ、コンテナーには任意の数の BLOB を含めることができます。
 
-Blob storage offers two types of blobs, block blobs and page blobs (disks). Block blobs are optimized for streaming and storing cloud objects, and are a good choice for storing documents, media files, backups etc. A block blob can be up to 200 GB in size. Page blobs are optimized for representing IaaS disks and supporting random writes, and may be up to 1 TB in size. An Azure virtual machine network attached IaaS disk is a VHD stored as a page blob.
+BLOB ストレージが提供する BLOB には、ブロック BLOB とページ BLOB (ディスク) の 2 種類があります。ブロック BLOB はストリーミングおよびクラウド オブジェクトの格納に最適化されているため、ドキュメント、メディア ファイル、バックアップ データなどの格納に適しています。ブロック BLOB は、最大 200 GB までサイズを拡大できます。ページ BLOB は、IaaS のディスクとして使用でき、ランダムな書き込みをサポートするように最適化され、最大 1 TB までサイズを拡大できます。Azure 仮想マシン ネットワークに設置された IaaS ディスクは、ページ BLOB として格納される VHD です。
 
-For very large datasets where network constraints make uploading or downloading data to Blob storage over the wire unrealistic, you can ship a hard drive to Microsoft to import or export data directly from the data center using the [Azure Import/Export Service](http://www.windowsazure.com/documentation/articles/storage-import-export-service/). You can also copy blob data within your storage account or across storage accounts. 
+ネットワーク上の制限があるために、有線接続経由で BLOB ストレージにデータをアップロードまたはダウンロードできない場合は、Microsoft にハード ドライブを送付し、データ センターから直接データをインポートまたはエクスポートする [Azure インポート/エクスポート サービス](http://www.windowsazure.com/documentation/articles/storage-import-export-service/)を使用できます。BLOB データは、ストレージ アカウント内またはストレージ アカウント間でコピーすることもできます。
 
-## Table Storage ##
+## テーブル ストレージ##
 
-Modern applications often demand data stores with greater scalability and flexibility than previous generations of software required. Table storage offers highly available, massively scalable storage, so that your application can automatically scale to meet user demand. Table storage is Microsoft’s NoSQL key/attribute store – it has a schemaless design, making it different from traditional relational databases. With a schemaless data store, it's easy to adapt your data as the needs of your application evolve. Table storage is easy to use, so developers can create applications quickly. Access to data is fast and cost-effective for all kinds of applications.  Table storage is typically significantly lower in cost than traditional SQL for similar volumes of data.
+最新のアプリケーションの多くは、前の世代のソフトウェアよりも、拡張性と柔軟性に優れたデータ ストアを必要とします。テーブル ストレージは、高度な可用性と拡張性を備え、アプリケーションを需要に応じて自動的に拡張できます。テーブル ストレージは、Microsoft の NoSQL のキーまたは属性ストアですが、従来のリレーショナル データベースと異なり、スキーマなしの設計です。スキーマなしのデータ ストアでは、アプリケーションの進化のニーズに合わせてデータを容易に修正できます。テーブル ストレージは使いやすいため、開発者はアプリケーションを迅速に作成できます。あらゆる種類のデータに、高速かつ経済的にアクセスできます。テーブル ストレージは、通常、従来の SQL と比較して、同様の容量のデータをはるかに低コストで保存できます。
 
-Table storage is a key-attribute store, meaning that every entity in a table is stored with a property name. This property name, the key can be used for filtering and specifying selection criteria. The key along with a collection of properties and their values comprise an entity. Since Table storage is schemaless, entities in the same table can contain different collections of properties, and those properties can be of different types. 
+テーブル ストレージは、キー属性ストアであるため、テーブル内のすべてのエンティティにプロパティ名が付いて保存されます。このプロパティ名 (キー) は、フィルタリングや、選択条件の指定に使用できます。1 つのエンティティは、キーおよび一連のプロパティとその値で構成されます。テーブル ストレージはスキーマがないため、同じテーブル内のエンティティが異なるコレクションのプロパティを持つことができ、それらのプロパティに異なる型を使用できます。
 
-You can use Table storage to store flexible datasets, such as user data for web applications, address books, device information, and any other type of metadata that your service requires.  You can store any number of entities in a table, and a storage account may contain any number of tables, up to the 200 TB capacity limit of the storage account.
+テーブル ストレージを使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、およびサービスに必要なその他の種類のメタデータなど、柔軟なデータセットを保存できます。ストレージ アカウントの容量の上限である 200 TB を超えない限り、テーブルには任意の数のエンティティを保存でき、ストレージ アカウントには任意の数のテーブルを含めることができます。
 
-Like Blobs and Queues, developers can manage and access Table Storage using standard REST protocols, however Table Storage also supports a subset of the OData protocol, simplifying advanced querying capabilities and enabling both JSON and AtomPub (XML based) formats.
+テーブル ストレージは、BLOB ストレージやキュー ストレージと同様、標準の REST プロトコルを使用して管理およびアクセスできますが、それに加えて OData プロトコルのサブセットもサポートしているため、高度なクエリ機能を容易に使用でき、JSON と AtomPub (XML ベース) の両方の形式が有効になります。
 
-For today's Internet-based applications, NoSQL databases like Table storage offer a popular alternative to traditional relational databases. 
+今日のインターネットベースのアプリケーションでは、テーブル ストレージのような NoSQL データベースが、従来のリレーショナル データベースの代わりに広く使用されています。
 
-## Queue Storage ##
+## キュー ストレージ##
 
-In designing applications for scale, application components are often decoupled, so that they can scale independently. Queue storage provides a reliable messaging solution for asynchronous communication between application components, whether they are running in the cloud, on the desktop, on an on-premise server, or on a mobile device. Queue storage also supports managing asynchronous tasks and building process workflows. 
+拡張性を重視してアプリケーションを設計する場合、通常、アプリケーション コンポーネントを個別に拡張できるように分離します。キュー ストレージでは、アプリケーション コンポーネントがクラウド、デスクトップ、オンプレミス サーバー、モバイル デバイスのいずれで実行されている場合でも、信頼性の高いメッセージング ソリューションによって、アプリケーション コンポーネント間の非同期通信が実行されます。キュー ストレージではまた、非同期タスクの管理とプロセス ワークフローの構築もサポートします。
 
-A storage account can contain any number of queues. A queue can contain any number of messages, up to the 200 TB capacity limit of the storage account. Individual messages may be up to 64 KB in size.
+ストレージ アカウントには、任意の数のキューを含めることができます。キューには、ストレージ アカウントの 200 TB の容量の上限を超えない限り、任意の数のメッセージを含めることができます。1 つのメッセージは、最大 64 KB のサイズにすることができます。
 
-## Access to Blob, Table, and Queue Resources ##
+## BLOB、テーブル、およびキューのリソースへのアクセス##
 
-By default, only the storage account owner can access resources in the storage account. For the security of your data, every request made against resources in your account must be authenticated. Authentication relies on a Shared Key model. Blobs can also be configured to support anonymous authentication. 
+既定では、ストレージ アカウント所有者のみが、ストレージ アカウント内のリソースにアクセスできます。データのセキュリティを保護するため、アカウント内のリソースに対するすべての要求を認証する必要があります。認証は、共有キー モデルに依存します。BLOB を構成して、匿名認証をサポートすることもできます。
 
-Your storage account is assigned two private access keys on creation that are used for authentication. Having two keys ensures that your application remains available when you regularly regenerate the keys as a common security key management practice.
+ストレージ アカウントには、認証に使用される 2 つのプライベート アクセス キーが作成時に割り当てられます。2 つのキーを持つことで、通常のセキュリティ キーの管理手法に従って定期的にキーを再生成しても、アプリケーションが使用できます。
 
-If you do need to allow users controlled access to your storage resources, then you can create a [shared access signature](../storage-dotnet-shared-access-signature-part-1/). A shared access signature is a token that can be appended to a URL that enables delegated access to a container, blob, table, or queue. Anyone who possesses the token can access the resource it points to with the permissions it specifies, for the period of time that it is valid.
+ストレージ リソースへのアクセス許可をユーザーが管理する必要がある場合は、[共有アクセス署名](../storage-dotnet-shared-access-signature-part-1/)を作成できます。共有アクセス署名は、URL に追加することで、コンテナー、BLOB、テーブル、またはキューへのアクセスを委任できるトークンです。トークンを持つすべてのユーザーは、トークンが有効な間、トークンに指定されたアクセス許可を使用して、トークンが示すリソースにアクセスできます。
 
-Finally, you can specify that a container and its blobs, or a specific blob, are available for public access. When you indicate that a container or blob is public, anyone can read it anonymously; no authentication is required.  Public containers and blobs are useful for exposing resources such as media and documents that are hosted on websites.  To decrease network latency for a global audience, you can cache blob data used by websites with the Azure CDN.
+最後に、コンテナーとそれに含まれるすべての BLOB、または特定の BLOB をパブリック アクセスで使用できるように指定できます。コンテナーまたは BLOB をパブリックとして指定すると、認証が不要になり、すべてのユーザーが匿名でリソースを読み取ることができます。パブリック コンテナーと BLOB は、Web サイトでホストされているメディアやドキュメントなどのリソースを公開する場合に便利です。グローバル ユーザーのネットワーク待ち時間を短縮するために、Web サイトで使用される BLOB データを Azure CDN によってキャッシュできます。
 
-## Replication for Durability and High Availability ##
+## レプリケーションによる持続性と高可用性##
 
-Data in your storage account is replicated to ensure durability that is also highly available, meeting the [Azure Storage SLA ](/en-us/support/legal/sla/)even in the face of transient hardware failures. You have three options for replicating the data in your storage account:
+ストレージ アカウント内のデータは、レプリケーションによって持続性と高可用性が維持されているため、一時的にハードウェア障害が発生しても、[Azure ストレージ SLA ](/ja-jp/support/legal/sla/) が満たされます。ストレージ アカウント内のデータのレプリケーションには、3 つのオプションがあります。
 
-- *Locally redundant storage (LRS)* is replicated three times within a single data center. When you write data to a blob, queue, or table, the write operation is performed synchronously across all three replicas. LRS protects your data from normal hardware failures.
-- *Geo-redundant storage (GRS)* is replicated three times within a single region, and is also replicated asynchronously to a second region hundreds of miles away from the primary region. GRS keeps an equivalent of 6 copies (replicas) of your data (3 in each region). GRS enable Microsoft to failover to a second region if we can't restore the first region due to a major outage or disaster.  GRS is recommended over locally redundant storage.
-- *Read-access geo-redundant storage (RA-GRS)* provides all of the benefits of geo-redundant storage noted above, and also allows read access to data at the secondary region in the event that the primary region becomes unavailable. Read-access geo-redundant storage is recommended for maximum availability in addition to durability.  
+- *ローカル冗長ストレージ (LRS)* は、1 つのデータ センター内で 3 回複製されます。BLOB、キュー、またはテーブルにデータを書き込む際に、書き込み操作がすべての 3 つのレプリカに対して同期的に実行されます。LRS では、通常のハードウェア障害からデータが保護されます。
+- *Geo 冗長ストレージ (GRS)* は、1 つのリージョン内で 3 回複製され、プライマリ リージョンから数百マイル離れたセカンダリ リージョンにも非同期的に複製されます。GRS では、元のデータと同値のコピー (レプリカ) が 6 つ (各リージョンに 3 つずつ) 保持されます。GRS を使用すると、Microsoft は、最初のリージョンが重大なシステム停止や災害のために復元できない場合に、2 番目のリージョンにフェールオーバーできます。GRS は、ローカル冗長ストレージよりも推奨されるオプションです。
+- *読み取りアクセス Geo 冗長ストレージ (RA GRS)* は、前に述べた Geo 冗長ストレージのすべてのメリットを備え、さらにプライマリ リージョンが使用できない場合、セカンダリ リージョンのデータに読み取りアクセスできます。読み取りアクセス Geo 冗長ストレージは、持続性に加えて最大の可用性を備えた推奨されるオプションです。
 
-The price differences between LRS, GRS and RA-GRS can be found on the [Storage Pricing Details](/en-us/pricing/details/storage/) page.
+LRS、GRS、および RA GRS の料金の差異については、「[Storage (ストレージ サービス) の料金詳細](/ja-jp/pricing/details/storage/) 」のページを参照してください。
 
-## Pricing ##
+## 料金##
 
-Customers are charged for Azure Storage based on four factors: the storage capacity used, the replication option selected, the number of requests made against the service, and data egress. 
+料金は、使用したストレージ容量、選択されているレプリケーション オプション、サービスに対する要求の数、および送信データ転送の 4 つの要素に基づいて課金されます。
 
-Storage capacity refers to how much of your storage account allotment you are using to store data. The cost of simply storing your data is determined by how much data you are storing, and how it is replicated. Every read and write operation against Azure Storage makes a request against the service.Data egress refers to data transferred out of a Windows Azure region. When the data in your storage account is accessed by an application that is not running in the same region, whether that application is a cloud service or some other type of application, then you are charged for data egress. (For Windows Azure services, you can take steps to group your data and services in the same data centers to reduce or eliminate process and data egress charges.) 
+ストレージ容量とは、データの保存に使用するためにストレージ アカウントに割り当てられた容量を指します。単純にデータを保存する場合の料金は、保存するデータ量とレプリケーション方法によって決まります。サービスに対する要求とは、Azure ストレージに対するすべての読み取り、書き込み操作を指します。送信データ転送とは、Windows Azure のリージョン外に転送されるデータです。他のリージョンで動作しているアプリケーションがストレージ アカウント内のデータにアクセスした場合、そのアプリケーションがクラウド サービスか、その他の種類のアプリケーションかに関係なく、送信データ転送として課金されます (Windows Azure サービスでは、同じデータ センター内のデータとサービスをグループ化して、送信データ転送処理とそれに伴う料金を削減または不要にする手順が用意されています)
 
-The [Storage Pricing Details](/en-us/pricing/details/storage/) page provides detailed pricing information for storage capacity, replication, and transactions. The [Data Transfers Pricing Details](/en-us/pricing/details/data-transfers/) provides detailed pricing information for data egress. You can use the [Azure Storage Pricing Calculator](/en-us/pricing/calculator/?scenario=data-management) to help estimate your costs.
+ストレージ容量、レプリケーション、トランザクションの料金の詳細については、「[Storage (ストレージ サービス) の料金詳細](/ja-jp/pricing/details/storage/)」のページを参照してください。送信データ転送の料金の詳細については、「[データ転送の料金の詳細](/ja-jp/pricing/details/data-transfers/)」を参照してください。コストの見積には、[計算ツール](/ja-jp/pricing/calculator/?scenario=data-management) をご利用ください。
 
-## Developing Against Storage ##
+## ストレージに対する開発##
 
-Azure Storage exposes storage resources via a [REST API](http://msdn.microsoft.com/library/windowsazure/dd179355.aspx) that can be called by any language that can make HTTP/HTTPS requests. Additionally, Azure Storage offers programming libraries for several popular languages. These libraries simplify many aspects of working with Azure Storage by handling details such as synchronous and asynchronous invocation, batching of operations, exception management, automatic retries, operational behavior and so forth. Libraries are currently available for the following languages and platforms, with others in the pipeline:
+Azure ストレージでは、HTTP/HTTPS 要求機能を持つ任意の言語を使用して [REST API](http://msdn.microsoft.com/library/windowsazure/dd179355.aspx) を呼び出すことで、リソースにアクセスできます。さらに、主要な複数の言語のプログラミング ライブラリも用意されています。これらのライブラリを使用すると、同期呼び出しと非同期呼び出し、操作のバッチ処理、例外管理、自動再試行、実行動作などの詳細が処理され、Azure ストレージの使用に関するさまざまな側面が簡略化されます。ライブラリは、次の言語およびプラットフォーム用が現在提供されており、その他についても準備中です。
 
 - [.NET](http://msdn.microsoft.com/library/dn495001(v=azure.10).aspx)
-- [Native code](http://msdn.microsoft.com/library/dn495438.aspx)
-- [Java](/en-us/develop/java/)
+- [ネイティブ コード](http://msdn.microsoft.com/library/dn495438.aspx)
+- [Java](/ja-jp/develop/java/)
 - [Node.js](../storage/#node)
 - [PHP](../storage/#php)
 - [Ruby](../storage/#ruby)
 - [Python](../storage/#python)
 - [PowerShell](http://msdn.microsoft.com/library/dn495240.aspx)
 
-## Next Steps ##
+## 次のステップ##
 
-To get started with Azure Storage, explore these resources:
+Azure ストレージを導入するには、次のリソースを参照してください。
 
-- [Azure Storage Documentation](/en-us/documentation/services/storage/)
-- [Azure Storage Scalability and Performance Targets](http://msdn.microsoft.com/library/windowsazure/dn249410.aspx)
+- [Azure ストレージのドキュメント](/ja-jp/documentation/services/storage/)
+- [Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](http://msdn.microsoft.com/library/windowsazure/dn249410.aspx)
 
-<h3>For .NET Developers</h3>
+<h3>.NET 開発者向け</h3>
 
-- [How to use Blob Storage from .NET](../storage-dotnet-how-to-use-blobs-20/)
-- [How to use Table Storage from .NET](../storage-dotnet-how-to-use-tables-20/)
-- [How to use Queue Storage from .NET](../storage-dotnet-how-to-use-queues-20/)
+- [How to use Blob Storage from .NET (.NET から BLOB ストレージを使用する方法)](../storage-dotnet-how-to-use-blobs-20/)
+- [How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)](../storage-dotnet-how-to-use-tables-20/)
+- [How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)](../storage-dotnet-how-to-use-queues-20/)
 
-<h3>For Java Developers</h3>
+<h3>Java 開発者向け</h3>
 
-- [How to use Blob Storage from Java](../storage-java-how-to-use-blob-storage/)
-- [How to use Table Storage from Java](..storage-java-how-to-use-table-storage/)
-- [How to use Queue Storage from Java](..storage-java-how-to-use-queue-storage/)
+- [Java から BLOB ストレージを使用する方法](../storage-java-how-to-use-blob-storage/)
+- [How to use Table Storage from Java (Java からテーブル ストレージを使用する方法)](..storage-java-how-to-use-table-storage/)
+- [How to use Queue Storage from Java (Java からキュー ストレージを使用する方法)](..storage-java-how-to-use-queue-storage/)
 
-<h3>For Node.js Developers</h3>
+<h3>Node.js 開発者向け</h3>
 
-- [How to use Blob Storage from Node.js](../storage-nodejs-how-to-use-blob-storage/)
-- [How to use Table Storage from Node.js](../storage-nodejs-how-to-use-table-storage/)
-- [How to use Queue Storage from Node.js](../storage-nodejs-how-to-use-queue-storage/)
+- [How to use Blob Storage from Node.js (Node.js から BLOB ストレージを使用する方法)](../storage-nodejs-how-to-use-blob-storage/)
+- [How to use Table Storage from Node.js (Node.js からテーブル ストレージを使用する方法)](../storage-nodejs-how-to-use-table-storage/)
+- [How to use Queue Storage from Node.js (Node.js からキュー ストレージを使用する方法)](../storage-nodejs-how-to-use-queue-storage/)
 
-<h3>For PHP Developers</h3>
+<h3>PHP 開発者向け</h3>
 
-- [How to use Blob Storage from PHP](../storage-php-how-to-use-blob-storage/)
-- [How to use Table Storage from PHP](..storage-php-how-to-use-table-storage/)
-- [How to use Queue Storage from PHP](..storage-php-how-to-use-queue-storage/)
+- [How to use Blob Storage from PHP (PHP から BLOB ストレージを使用する方法)](../storage-php-how-to-use-blob-storage/)
+- [How to use Table Storage from PHP (PHP からテーブル ストレージを使用する方法)](..storage-php-how-to-use-table-storage/)
+- [How to use Queue Storage from PHP (PHP からキュー ストレージを使用する方法)](..storage-php-how-to-use-queue-storage/)
 
-<h3>For Ruby Developers</h3>
+<h3>Ruby 開発者向け</h3>
 
-- [How to use Blob Storage from Ruby](../storage-ruby-how-to-use-blob-storage/)
-- [How to use Table Storage from Ruby](..storage-ruby-how-to-use-table-storage/)
-- [How to use Queue Storage from Ruby](..storage-ruby-how-to-use-queue-storage/)
+- [How to use Blob Storage from Ruby (Ruby から BLOB ストレージを使用する方法)](../storage-ruby-how-to-use-blob-storage/)
+- [How to use Table Storage from Ruby (Ruby からテーブル ストレージを使用する方法)](..storage-ruby-how-to-use-table-storage/)
+- [How to use Queue Storage from Ruby (Ruby からキュー ストレージを使用する方法)](..storage-ruby-how-to-use-queue-storage/)
 
-<h3>For Python Developers</h3>
+<h3>Python 開発者向け</h3>
 
-- [How to use Blob Storage from Python](../storage-python-how-to-use-blob-storage/)
-- [How to use Table Storage from Python](..storage-python-how-to-use-table-storage/)
-- [How to use Queue Storage from Python](..storage-python-how-to-use-queue-storage/)
+- [How to use Blob Storage from Python (Python から BLOB ストレージを使用する方法)](../storage-python-how-to-use-blob-storage/)
+- [How to use Table Storage from Python (Python からテーブル ストレージを使用する方法)](..storage-python-how-to-use-table-storage/)
+- [How to use Queue Storage from Python (Python からキュー ストレージを使用する方法)](..storage-python-how-to-use-queue-storage/)
+

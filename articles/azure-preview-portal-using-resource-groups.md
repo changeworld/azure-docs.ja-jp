@@ -1,48 +1,48 @@
-<properties linkid="" urlDisplayName="" pageTitle="Using Resource groups to manage your Azure resources" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Using Resource groups to manage your Azure resources" authors="Nafisa Bhojawala"  solutions="" writer="" manager="" editor=""  />
+<properties linkid="" urlDisplayName="" pageTitle="リソース グループを使用した Azure リソースの管理" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="リソース グループを使用した Azure リソースの管理" authors="Nafisa Bhojawala"  solutions="" writer="" manager="" editor=""  />
 
 
-# Using Resource groups to manage your Azure resources
+# リソース グループを使用した Azure リソースの管理
 
-### Introduction
+### はじめに
 
-Historically, managing a resource (a user-managed entity such as a database server, database or web site,) in Microsoft Azure required you to perform operations against one resource at a time. If you had a complex application made up of multiple resources, management of this application became a complex task. In the Microsoft Azure preview portal you can create resource groups to manage all your resources in an application together. Resource group is a new concept in Azure that serves as the lifecycle boundary for every resource contained within it. 
+従来、Microsoft Azure 内のリソース (データベース サーバー、データベース、Web サイトのようにユーザーが管理するエンティティ) を管理するには、一度に 1 つのリソースに対して操作を実行する必要がありました。複数のリソースから成る複雑なアプリケーションを使用している場合は、このようなアプリケーションの管理は複雑な作業になっていました。一方、Microsoft Azure プレビュー ポータルを使用すると、リソース グループを作成して、1 つのアプリケーション内にあるすべてのリソースをまとめて管理することができます。リソース グループは Azure 内の新しい概念であり、そのグループに含まれるすべてのリソースに対してライフサイクルの境界という機能を果たします。
 <br><br />
 
-Resource groups enable you to manage all your resources in an application together. Resource groups are enabled by the new management functionality, Azure Resource Manager. Azure Resource Manager allows you to group multiple resources as a logical group which serves as the lifecycle boundary for every resource contained within it. Typically a group will contain resources related to a specific application. For example, a group may contain a Web Site resource that hosts your public website, a SQL Database that stores relational data used by the site, and a Storage Account that stores non-relational assets. 
+リソース グループを使用すると、1 つのアプリケーション内にあるすべてのリソースをまとめて管理することができます。新しい管理機能である Azure リソース マネージャーを使用して、リソース グループを有効にします。Azure リソース マネージャーを使用すると、複数のリソースを 1 つの論理グループとしてグループ化することができ、その論理グループは、グループ内に含まれるすべてのリソースに対してライフサイクルの境界として機能します。通常、1 つのグループには、特定のアプリケーションに関連するリソースを含めます。たとえば、公開する Web サイトをホストする Web サイト リソース、そのサイトが使用するリレーショナル データを格納する SQL データベース、および非リレーショナル アセットを格納するストレージ アカウントを、1 つのグループに含めることができます。
 
-Here is a concise overview of how to use Resource groups within the Microsoft Azure Preview Portal. 
+ここでは、Microsoft Azure プレビュー ポータル内でリソース グループを使用する方法に関する簡潔な概要を示します。
 <br><br />
 
-### Creating Resource groups
+### リソース グループの作成
 
-Whenever a resource is created in the preview portal, it is always created within a resource group. You can choose to create a new resource group or use an existing resource group in the create flow. <br><br />
+プレビュー ポータル内でリソースを作成すると、そのリソースは必ずリソース グループ内に作成されます。新しいリソース グループを作成すること、または作成フローの一部として既存のリソース グループを使用することができます。<br><br />
 
 ![](http://i.imgur.com/USKkQdW.png)
 
 <br><br />
-When you are create an application that consists of a few resources working together (e.g. Website + Database) it is always created in its own resource group, so you can manage the lifecycle of all related assets using the resource group. You can additional or remove additional resources from the resource group as your application evolves. 
+互いに連携する少数のリソース (たとえば、Web サイトとデータベース)で構成される 1 つのアプリケーションを作成するときは、そのアプリケーションは独自のリソース グループ内で作成されるため、そのリソース グループを使用してすべての関連アセットのライフサイクルを管理することができます。アプリケーションの発展に応じて、リソース グループに対して他のリソースを追加または削除することができます。
 
 ![](http://i.imgur.com/Me0jbio.png)
 
 
 <br><br />
 
-### Browsing Resource groups
+### リソース グループの参照
 
-You can browse all resource groups by clicking on the Jumpbar on the left side of your screen. A resource group has a blade that gives you all the information on a particular resource group. The Resource group blade will also give you a unified view of your billing and monitoring information for all the resources in the Resource group.
+画面の左側にあるジャンプ バーをクリックして、すべてのリソース グループを参照することができます。リソース グループには、特定のリソース グループ内にあるすべての情報を示すブレードがあります。リソース グループのブレードでは、そのリソース グループ内にあるすべてのリソースに関する課金情報と監視情報を示す統合ビューも表示されます。
 
-The summary section shows a visual resource map of all the resources in the resource group, it also shows resources in other resource groups that are linked to the resource group. The resource map also shows the status of each resource. 
+概要セクションでは、リソース グループ内にあるすべてのリソースに対応するビジュアル リソース マップが表示されます。また、このリソース グループにリンクされている他のリソース グループ内にあるリソースも表示されます。リソース マップでは、各リソースの状態も表示されます。
 ![](http://i.imgur.com/PhJeLZQ.png)
 
 <br><br />
 
-The resource map part can be customized to show in a larger size which will display all the resources that are contained within the resource group and resources in other resource groups that are linked. This part can be pinned to the Starboard, which will copy the part to the Startboard.
+リソース マップのパーツをカスタマイズして、より大きなサイズで表示することもできます。その場合は、リソース グループ内に含まれているすべてのリソース、およびリンク先である他のリソース グループ内にあるリソースが表示されます。このパーツをスタートボードに固定表示することもでき、その場合はパーツがスタートボードにコピーされます。
 
 ![](http://i.imgur.com/5Wqv2XR.png)
 
 <br><br />
 
-  Clicking on the resource map launches the list view of all the resources on the resource map. This view will list all the resources within a resource group or linked to it. Clicking on these resources will launch their blades. 
+  リソース マップのどこかをクリックすると、リソース マップ上にあるすべてのリソースを示すリスト ビューが起動されます。このビューでは、特定のリソース グループ内、またはリンク先のリソース グループ内にあるすべてのリソースが一覧表示されます。これらのリソースをクリックすると、それらに対応するブレードが起動されます。
 
 ![](http://i.imgur.com/COPjNng.png)
 
@@ -51,20 +51,21 @@ The resource map part can be customized to show in a larger size which will disp
 
 <br><br />
 
-### Adding resources to Resource groups
+### リソース グループへのリソースの追加
 
-You can add resources to a resource group using the “Add” command on the resource group blade. Following the steps in the flow will allow you to add other resources to the resource group.
+リソース グループのブレードにある [追加] コマンドを使用して、リソース グループにリソースを追加することができます。フローの手順に従うと、他のリソースをリソース グループに追加できます。
 
 ![](http://i.imgur.com/G79kayH.png)
 
-Note: It is not advisable to put team project in the same resource group as other Azure resources. If you create a Team Project in a new account and group, then create a Website, the site group will default to the last group used (VSO group) and you will end up with runtime/developer resources in the same group. 
+注: チーム プロジェクトを、他の Azure リソースと同じリソース グループ内に配置することはお勧めしません。チーム プロジェクト内で新しいアカウントとグループを作成し、その後に Web サイトを作成する場合は、サイト グループは既定で、最後に使用されたグループ (VSO グループ) に設定され、最終的にはランタイム/開発者向けリソースが同じグループ内に配置される結果になります。
 
 
 
 <br><br />
 
-### Deleting Resource groups
+### リソース グループの削除
 
-Since resource groups allow you to manage the lifecycle of all the contained resources, deleting a resource group will delete all the resources contained within it. You can also delete individual resources within a resource group. You want to exercise caution when you are deleting a resource group since there might be other resources linked to it. You can see the linked resources in the resource map and take the necessary steps to avoid any unintentional consequences when you delete resource groups. 
+リソース グループでは、その中に含まれているすべてのリソースのライフサイクルを管理することができるため、リソース グループを削除すると、その中に含まれているすべてのリソースが削除されます。また、リソース グループ内にある個々のリソースを削除することもできます。リソース グループに対して他のリソースがリンクされている可能性があるため、リソース グループを削除する場合は注意を払う必要があります。リンクされているリソースは、リソース マップ内で確認できます。リソース グループを削除した結果、意図していない結果が生じることを防止するために、必要な手順を実行できます。
 
 ![](http://i.imgur.com/ZTXoISb.png)
+

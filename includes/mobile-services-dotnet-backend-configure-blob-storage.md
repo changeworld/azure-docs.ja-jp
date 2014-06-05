@@ -1,38 +1,38 @@
-The existing **TodoItemController** is updated so that the **PostTodoItem** method generates an SAS when a new Todo item is inserted.
+新規 Todo 項目を挿入すると **PostTodoItem** メソッドが SAS を生成するように、既存の **TodoItemController** を更新します。
 
-0. If you haven't yet created your storage account, see [How To Create a Storage Account].
+0. まだストレージ アカウントを作成していない場合には、「[How To Create a Storage Account (ストレージ アカウントの作成方法)]」を参照してください。
 
-1. In the Management Portal, click **Storage**, click the storage account, then click **Manage Keys**. 
+1. 管理ポータルで、**[ストレージ]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
 
   	![](./media/mobile-services-configure-blob-storage/mobile-blob-storage-account.png)
 
-2. Make a note of the **Storage Account Name** and **Access Key**.
+2. **ストレージ アカウント名**と**アクセス キー**をメモします。
 
    	![](./media/mobile-services-configure-blob-storage/mobile-blob-storage-account-keys.png)
 
-3. In your mobile service, click the **Configure** tab, scroll down to **App settings** and enter a **Name** and **Value** pair for each of the following that you obtained from the storage account, then click **Save**.
+3. モバイル サービスで、**[構成]** タブをクリックし、**[アプリケーション設定]** まで下へスクロールします。次に、ストレージ アカウントから取得した次の項目の名前と値をそれぞれ **[名前]** と **[値]** に入力して、**[保存]** をクリックします。
 
 	+ `STORAGE_ACCOUNT_NAME`
 	+ `STORAGE_ACCOUNT_ACCESS_KEY`
 
 	![](./media/mobile-services-configure-blob-storage/mobile-blob-storage-app-settings.png)
 
-	The storage account access key is stored encrypted in app settings. You can access this key from any server script at runtime. For more information, see [App settings].
+	ストレージ アカウントのアクセス キーは暗号化された状態でアプリケーション設定に保存されます。このキーには、実行時にどのサーバー スクリプトからでもアクセスできます。詳細については、「[アプリ設定]」を参照してください。
 
-4. In Solution Explorer in Visual Studio, open the Web.config file for the mobile service project and add the following new app settings, replacing the placeholders with the storage account name and access key that you set as app settings in the portal:
+4. Visual Studio のソリューション エクスプローラーで、モバイル サービス プロジェクトに対応する Web.config ファイルを開き、次の新しいアプリケーション設定を追加します。プレースホルダーは、ストレージ アカウント名、およびポータルのアプリケーション設定として設定したアクセス キーと置き換えてください。
 
 		<add key="STORAGE_ACCOUNT_NAME" value="**your_account_name**" />
 		<add key="STORAGE_ACCOUNT_ACCESS_KEY" value="**your_access_token_secret**" />
 
-	The mobile service uses these stored settings when it runs on the local computer, which lets you test the code before you publish it. When running in Azure, the mobile service instead uses app settings values set in the portal and ignores these project settings. 
+	モバイル サービスをローカル コンピューター上で実行するときに、モバイル サービスはこれら保存されている設定を使用するため、コードを発行する前にテストすることができます。Azure 内で実行する場合、モバイル サービスは代わりにポータル内のアプリケーション設定値を使用し、これらのプロジェクト設定を無視します。
 
-5.  In the Controllers folder, open the TodoItemController.cs file and add the following **using** directives:
+5. Controllers フォルダーで、TodoItemController.cs ファイルを開き、次の **using** ディレクティブを追加します。
 
 		using System;
 		using Microsoft.WindowsAzure.Storage.Auth;
 		using Microsoft.WindowsAzure.Storage.Blob;
   
-8.  Replace the existing **PostTodoItem** method with the following code:
+8. 既存の **PostTodoItem** メソッドを次のコードに置き換えます。
 
 		var azure = require('azure');
 		var qs = require('querystring');
@@ -89,12 +89,12 @@ The existing **TodoItemController** is updated so that the **PostTodoItem** meth
 
  	![][4]
 
-   	This replaces the function that is invoked when an insert occurs in the TodoItem table with a new script. This new script generates a new SAS for the insert, which is valid for 5 minutes, and assigns the value of the generated SAS to the `sasQueryString` property of the returned item. The `imageUri` property is also set to the resource path of the new BLOB to enable image display during binding in the client UI.
+   	この操作により、TodoItem テーブルで挿入が発生したときに呼び出される関数が、新しいスクリプトに置き換わります。この新しいスクリプトは、挿入のための新しい SAS を生成し (5 分間有効)、生成された SAS の値を返された項目の `sasQueryString` プロパティに割り当てます。`imageUri` プロパティに新しい BLOB のリソース パスが設定され、クライント UI でのバインド中にイメージを表示できるようになります。
 
-	>[WACOM.NOTE] This code creates an SAS for an individual BLOB. If you need to upload multiple blobs to a container using the same SAS, you can instead call the <a href="http://go.microsoft.com/fwlink/?LinkId=390455" target="_blank">generateSharedAccessSignature method</a> with an empty blob resource name, like this: 
+	>[WACOM.NOTE]このコードでは、個々の BLOB に対して SAS が作成されます。同じ SAS を使用してコンテナーに複数の BLOB をアップロードする場合は、代わりに、空の BLOB リソース名を使って <a href="http://go.microsoft.com/fwlink/?LinkId=390455" target="_blank">generateSharedAccessSignature メソッド</a>を呼び出すことができます。次に例を示します。
 	<pre><code>blobService.generateSharedAccessSignature(containerName, '', sharedAccessPolicy);</code></pre>
 
-Next, you will update the quickstart app to add image upload functionality by using the SAS generated on insert.
+次に、挿入時に生成される SAS を使用してイメージ アップロード機能を追加する、クイック スタート アプリケーションを更新します。
  
 <!-- Anchors. -->
 
@@ -112,5 +112,6 @@ Next, you will update the quickstart app to add image upload functionality by us
 [10]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-app-settings.png
 
 <!-- URLs. -->
-[How To Create a Storage Account]: /en-us/manage/services/storage/how-to-create-a-storage-account
-[App settings]: http://msdn.microsoft.com/en-us/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+[How To Create a Storage Account (ストレージ アカウントの作成方法)]: /ja-jp/manage/services/storage/how-to-create-a-storage-account
+[アプリ設定]: http://msdn.microsoft.com/ja-jp/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+

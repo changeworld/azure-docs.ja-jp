@@ -1,20 +1,20 @@
-<properties pageTitle="Streaming logs and console" description="Streaming logs and console overview" title="Streaming logs and console" authors="adamab" />
+<properties pageTitle="ストリーミング ログとコンソール" description="ストリーミング ログとコンソールの概要" title="ストリーミング ログとコンソール" authors="adamab" />
 
-## Streaming Logs and the Console ##
+## ストリーミング ログとコンソール##
 
-### Streaming Logs ###
+### ストリーミング ログ###
 
-The Microsoft Azure Preview Portal provides an integrated streaming log viewer that lets you view tracing events from your websites in real time.  
+Microsoft Azure プレビュー ポータルには、ストリーミング ログ ビューアーが用意されており、Web サイトのトレース イベントをリアルタイムで表示できます。
 
-Setting this up requires a few simple steps:
+この設定には、次のいくつかの簡単な手順が必要です。
 
-- Write traces in your code
-- Enable Application Diagnostics from within the Azure Preview Portal
-- Click on the streaming logs part on the website blade
+- コードにトレースを記述する
+- Azure プレビュー ポータル内からアプリケーション診断を有効にする
+- Web サイト ブレードの [ストリーミング ログ] パーツをクリックする
 
-### How to write traces in your code ###
+### 方法: コードにトレースを記述する###
 
-Writing traces in your code is easy.  In C# it's as easy as writing the following code:
+コードにトレースを記述するのは簡単です。C# では、次のコードを記述するだけです。
 
 `````````````````````````
 Trace.TraceInformation("My trace statement");
@@ -28,37 +28,37 @@ Trace.TraceWarning("My warning statement");
 Trace.TraceError("My error statement");
 `````````````````````````
 
-The Trace class lives in the System.Diagnostics namespace.
+Trace クラスは System.Diagnostics 名前空間にあります。
 
-In a node.js app you can write this code to achieve the same result:
+node.js アプリケーションでは、次のコードを記述すると同じ結果を得られます。
 
 `````````````````````````
 console.log("My trace statement").
 `````````````````````````
 
-### How to enable and view the streaming logs ###
+### 方法: ストリーミング ログを有効にして表示する###
 
-Diagnostics are enabled on a per website basis.  From within the [portal](https://portal.azure.com) click the **Browse** button on the left menu bar and then click **Websites** to get to the list of all your websites.  
+診断は Web サイトごとに有効になります。[ポータル](https://portal.azure.com)で左側のメニュー バーにある **[参照]** ボタンをクリックし、**[Web サイト]** をクリックすると、既存のすべての Web サイトの一覧が表示されます。
 
 ![][BrowseSitesScreenshot]
 
-Click on the name of the website that you want to configure.  Then click on the part called **DIAGNOSTIC LOGS** and turn the **Application Logging (Filesystem)** switch to the **ON** setting.  The **Level** option then appears, letting you change the severity level of traces to capture.  You should set this to **Verbose** if you're just trying to get familiar with the feature as this will ensure all of your trace statements get logged.
+構成する Web サイトの名前をクリックします。次に、**[診断ログ]** パーツをクリックし、**[アプリケーション ログ記録 (ファイル システム)]** を **[オン]** に切り替えます。**[レベル]** オプションが表示されて、取り込むトレースの重要度レベルを変更できるようになります。**[詳細]** はこの機能に詳しくなっておこうとする場合に設定してください。この設定では、トレース ステートメントのすべてがログに記録されるためです。
 
-Click **SAVE** at the top of the blade and you're ready to view logs.
+ブレードの上部にある **[保存]** をクリックします。これで、ログを表示できる状態になりました。
 
-To view the streaming logs from within the portal click the **STREAMING LOGS** part on the webiste blade.  If your site is actively writing trace statements then you should see them in the resulting window in near real time.
+ポータル内からストリーミング ログを表示するには、Web サイト ブレードの **[ストリーミング ログ]** パーツをクリックします。サイトによってトレース ステートメントがアクティブに書き込まれている場合は、結果ウィンドウにそれらのステートメントがほぼリアルタイムで表示されます。
 
 ![][StreamingLogsScreenshot]
 
-## Console ##
+## コンソール##
 
-The Azure Preview Portal provides console access to your web site environment. You can explore your web site's file system and run powershell/cmd scripts.  You are bound by the same permissions set as your running web site code when executing console commands. You won't be able to access protected directories or run scripts that require elevated permissions.  
+Azure プレビュー ポータルには、Web サイト環境にアクセスするためのコンソールが用意されています。コンソールでは、Web サイトのファイル システムを操作したり、powershell/cmd スクリプトを実行したりできます。コンソールのコマンドを実行するときは、実行中の Web サイトのコードに設定された同じアクセス許可が適用されます。保護されたディレクトリにアクセスしたり、より高いレベルのアクセス許可が必要なスクリプトを実行したりすることはできません。
 
-To get to the console, browse to a website as described in the section above.  Click on the **Console** part and the console will open.
+コンソールにアクセスするには、前のセクションで説明しているように Web サイトを参照します。**[コンソール]** パーツをクリックすると、コンソールが開きます。
 
 ![][ConsoleScreenshot]
 
-To get familiar with the console try basic commands like these:
+コンソールに詳しくなるには、次のような基本的なコマンドを試してください。
 
 
 `````````````````````````
@@ -75,3 +75,4 @@ cd
 [BrowseSitesScreenshot]: ./media/web-sites-streaming-logs-and-console/browse-sites.png
 [StreamingLogsScreenshot]: ./media/web-sites-streaming-logs-and-console/streaming-logs.png
 [ConsoleScreenshot]: ./media/web-sites-streaming-logs-and-console/console.png
+
