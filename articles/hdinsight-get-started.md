@@ -167,9 +167,9 @@ HDInsight は既定のファイル システムとして BLOB ストレージ �
 
 たとえば、hadoop-examples.jar にアクセスする場合、次のいずれかを使用できます。
 
-	â— wasb://<containername>@<storageaccountname>.blob.core.windows.net/example/jars/hadoop-examples.jar
-	â— wasb:///example/jars/hadoop-examples.jar
-	â— /example/jars/hadoop-examples.jar
+	●  wasb://<containername>@<storageaccountname>.blob.core.windows.net/example/jars/hadoop-examples.jar
+	●  wasb:///example/jars/hadoop-examples.jar
+	●  /example/jars/hadoop-examples.jar
 				
 これらのファイルのパスの先頭には *wasb://* が使用されています。これは、入力ファイルと出力ファイルで Azure BLOB ストレージを使用することを示しています。出力ディレクトリの既定のパスは、*wasb:///user/&lt;ユーザー名&gt;* フォルダーを基準とした相対パスです。
 
