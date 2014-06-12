@@ -1,111 +1,105 @@
-<properties linkid="dev-nodejs-basic-web-app-with-express" urlDisplayName="Web App with Express" pageTitle="Web App with Express (Node.js) - Azure Tutorial" metaKeywords="Azure Node.js hello world tutorial, Azure Node.js hello world, Azure Node.js Getting Started tutorial, Azure Node.js tutorial, Azure Node.js Express tutorial" description="An tutorial that builds on the cloud service tutorial, and demonstrates how to use the Express module." metaCanonical="" services="cloud-services" documentationCenter="Node.js" title="Build a Node.js web application using Express on an Azure Cloud Service" authors="" solutions="" manager="" editor="" />
+<properties linkid="dev-nodejs-basic-web-app-with-express" urlDisplayName="Express を使用した Web アプリケーション" pageTitle="Express を使用した Web アプリケーション (Node.js) - Azure チュートリアル" metaKeywords="Azure Node.js Hello World チュートリアル, Azure Node.js Hello World, Azure Node.js 概要チュートリアル, Azure Node.js チュートリアル, Azure Node.js Express チュートリアル" description="クラウド サービスのチュートリアルを基に、Express モジュールの使用方法を示すチュートリアル。" metaCanonical="" services="cloud-services" documentationCenter="Node.js" title="Azure のクラウド サービスで Express を使用した Node.js Web アプリケーションの構築" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
 
+# Azure のクラウド サービスで Express を使用した Node.js Web アプリケーションの構築
 
-# Build a Node.js web application using Express on an Azure Cloud Service
+node.js には、コア ランタイムの最小限の機能セットが含まれます。
+多くの場合、開発者は Node.js アプリケーションを開発するときに、サード パーティ モジュールを使用して追加機能を指定します。このチュートリアルでは、[Express][] モジュールを使用して新しいアプリケーションを作成します。Express モジュールは、Node.js Web アプリケーションを作成するための MVC フレームワークを提供します。
 
-Node.js includes a minimal set of functionality in the core runtime.
-Developers often use 3rd party modules to provide additional
-functionality when developing a Node.js application. In this tutorial
-you will create a new application using the [Express][] module, which provides an MVC framework for creating Node.js web applications.
+完成したアプリケーションのスクリーンショットは次のようになります。
 
-A screenshot of the completed application is below:
+!["Welcome to Express in Azure" と表示している Web ブラウザー](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
 
-![A web browser displaying Welcome to Express in Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
+##クラウド サービス プロジェクトの作成
 
-##Create a Cloud Service Project
+'expressapp' という名前の新しいクラウド サービス プロジェクトを作成するには、次の手順を実行します。
 
-Perform the following steps to create a new cloud service project named 'expressapp':
+1. **[スタート] メニュー**または**スタート画面**で、「**Azure PowerShell**」を検索します。最後に、**[Azure PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
 
-1. From the **Start Menu** or **Start Screen**, search for **Azure PowerShell**. Finally, right-click **Azure PowerShell** and select **Run As Administrator**.
-
-	![Azure PowerShell icon](./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png)
+	![Azure PowerShell のアイコン](./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png)
 
 	[WACOM.INCLUDE [install-dev-tools](../includes/install-dev-tools.md)]
 
-2. Change directories to the **c:\\node** directory and then enter the following commands to create a new solution named **expressapp** and a web role named **WebRole1**:
+2. **c:\\node** ディレクトリに移動し、次のコマンドを入力して **expressapp** という名前の新しいソリューションと **WebRole1** という名前の Web ロールを作成します。
 
 		PS C:\node> New-AzureServiceProject expressapp
 		PS C:\Node> Add-AzureNodeWebRole
 
-##Install Express
+##Express のインストール
 
-1. Install the Express module by issuing the following command:
+1. 次のコマンドを発行して Express モジュールをインストールします。
 
 		PS C:\node\expressapp> npm install express -g
 
-	The output of the npm command should look similar to the result below. 
+	この npm コマンドにより次のような結果が出力されます。
 
-	![Windows PowerShell displaying the output of the npm install express command.](./media/cloud-services-nodejs-develop-deploy-express-app/express-g.png)
+	![Windows PowerShell での npm install express コマンドの出力の表示](./media/cloud-services-nodejs-develop-deploy-express-app/express-g.png)
 
-2. Change directories to the **WebRole1** directory and use the express command to generate a new application:
+2. **WebRole1** ディレクトリに移動し、express コマンドを使用して新しいアプリケーションを生成します。
 
         PS C:\node\expressapp\WebRole1> express
 
-	You will be prompted to overwrite your earlier application. Enter **y** or **yes** to continue. Express will generate the app.js file and a folder structure for building your application.
+	前のアプリケーションを上書きするかどうかを確認するメッセージが表示されます。**「y」**または**「yes」**と入力して続行します。Express によって、app.js ファイルと、アプリケーションを構築するためのフォルダー構造が生成されます。
 
-	![The output of the express command](./media/cloud-services-nodejs-develop-deploy-express-app/node23.png)
+	![express コマンドの出力](./media/cloud-services-nodejs-develop-deploy-express-app/node23.png)
 
-3.  Delete the **server.js** file and then rename the generated **app.js** file to **server.js**.
+3.  **server.js** ファイルを削除し、生成された **app.js** ファイルの名前を **server.js** に変更します。
 
         PS C:\node\expressapp\WebRole1> del server.js
         PS C:\node\expressapp\WebRole1> ren app.js server.js
 
-5.  To install additional dependencies defined in the package.json file,
-    enter the following command:
+5.  package.json ファイル内で定義された依存関係をインストールするには、次のコマンドを入力します。
 
         PS C:\node\expressapp\WebRole1> npm install
 
-	![The output of the npm install command](./media/cloud-services-nodejs-develop-deploy-express-app/node26.png)
+	![npm install コマンドの出力](./media/cloud-services-nodejs-develop-deploy-express-app/node26.png)
 
-8.  Use the following command to run the application in the Windows
-    Azure emulator:
+8.  次のコマンドを使用して、アプリケーションを Azure エミュレーターで実行します。
 
         PS C:\node\expressapp\WebRole1> Start-AzureEmulator -launch
 
-	![A web page containing welcome to express.](./media/cloud-services-nodejs-develop-deploy-express-app/node28.png)
+	![Welcome to Express メッセージを含む Web ページ](./media/cloud-services-nodejs-develop-deploy-express-app/node28.png)
 
-## Modifying the View
+## ビューの変更
 
-Now modify the view to display the message "Welcome to Express in
-Azure".
+次に、"Welcome to Express in Azure" というメッセージが表示されるようにビューを変更します。
 
-1.  Enter the following command to open the index.jade file:
+1.  次のコマンドを入力して、index.jade ファイルを開きます。
 
         PS C:\node\expressapp\WebRole1> notepad views/index.jade
 
-    ![The contents of the index.jade file.](./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png)
+    ![index.jade ファイルの内容](./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png)
 
-    Jade is the default view engine used by Express applications. For more
-    information on the Jade view engine, see [http://jade-lang.com][].
+    Jade は Express アプリケーションで使用される既定のビュー エンジンです。Jade ビュー エンジンの詳細については、[http://jade-lang.com][] を参照してください。
 
-2.  Modify the last line of text by appending **in Azure**.
+2.  テキストの最後の行に **in Azure** を追加します。
 
-	![The index.jade file, the last line reads: p Welcome to \#{title} in Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
+	![index.jade ファイルの最後の行は、次のようになります。p Welcome to \#{title} in Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
 
-3.  Save the file and exit Notepad.
+3.  ファイルを保存して、メモ帳を終了します。
 
-4.  Refresh your browser and you will see your changes.
+4.  ブラウザーの表示を最新情報に更新すると、変更を確認できます。
 
-	![A browser window, the page contains Welcome to Express in Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node32.png)
+	![ブラウザー ウィンドウで "Welcome to Express in Azure" と表示されたページ](./media/cloud-services-nodejs-develop-deploy-express-app/node32.png)
 
-After testing the application, use the **Stop-AzureEmulator** cmdlet to stop the emulator.
+アプリケーションのテストが終了したら、**Stop-AzureEmulator** コマンドレットを使用してエミュレーターを停止します。
 
-##Publishing the Application to Azure
+##Azure へのアプリケーションの発行
 
-In the Azure PowerShell window, use the **Publish-AzureServiceProject** cmdlet to deploy the application to a cloud service
+Azure PowerShell ウィンドウで、**Publish-AzureServiceProject** コマンドレットを使用してアプリケーションをクラウド サービスにデプロイします。
 
     PS C:\node\expressapp\WebRole1> Publish-AzureServiceProject -ServiceName myexpressapp -Location "East US" -Launch
 
-Once the deployment operation completes, your browser will open and display the web page.
+デプロイ操作が完了すると、ブラウザーが開き、Web ページが表示されます。
 
-![A web browser displaying the Express page. The URL indicates it is now hosted on Azure.](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
+![Express ページを表示している Web ブラウザー。URL は、ページが Azure でホストされていることを示している。](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
 
 
-  [Node.js Web Application]: http://www.windowsazure.com/en-us/develop/nodejs/tutorials/getting-started/
+  [Node.js Web アプリケーション]: http://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/getting-started/
   [Express]: http://expressjs.com/
   [http://jade-lang.com]: http://jade-lang.com
+
 

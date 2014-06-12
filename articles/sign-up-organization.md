@@ -1,24 +1,25 @@
-<properties linkid="manage-services-identity-organization-account" urlDisplayName="Organization accounts" pageTitle="Sign up for Azure as an organization" metaKeywords="" description="Learn how you can use an organizational account to leverage the existing user accounts, policies, settings, or on-premise server deployments you already have improve efficiencies between your organization's on-premises identity infrastructure and Azure AD." metaCanonical="" services="active-directory" documentationCenter="" title="Sign up for Azure as an organization" authors="" solutions="" manager="" editor="" />
+<properties linkid="manage-services-identity-organization-account" urlDisplayName="組織アカウント" pageTitle="Azure への組織としてのサインアップ" metaKeywords="" description="組織アカウントを使用して、組織の内部設置型 ID および Azure AD の間の効率性を既に強化した既存のユーザー アカウント、ポリシー、設定、または内部設置型サーバー展開を利用する方法について説明します。" metaCanonical="" services="active-directory" documentationCenter="" title="Azure への組織としてのサインアップ" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
-<h1 id="signup">Sign up for Azure as an organization</h1>
+<h1 id="signup">Azure への組織としてのサインアップ</h1>
 
-[WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
+[WACOM.INCLUDE [免責事項](../includes/disclaimer.md)]
 
-Until recently, you could only sign up for a new Azure subscription using your Microsoft account (Windows Live ID). Azure now supports using either of the following two account methods to sign up:
+最近まで、新しい Azure サブスクリプションにサインアップするには、必ず Microsoft アカウント (Windows Live ID) を使用する必要がありました。現在、Azure では、次に示す 2 つのアカウントのいずれかを使用してサインアップすることができます。
 
-* **Microsoft accounts** (created by you for personal use) - Provide access to all consumer-oriented Microsoft products and cloud services, such as Outlook (Hotmail), Messenger, SkyDrive, MSN, Xbox LIVE, or Office Live. Signing up for Outlook automatically creates a Microsoft account with an @Outlook.com address. Once created, a Microsoft account can be used to access consumer-related Microsoft cloud services and/or Azure. [Learn more](http://windows.microsoft.com/en-US/windows-live/sign-in-what-is-microsoft-account)
+* **Microsoft アカウント** (個人ユーザー向け) - Outlook (Hotmail)、Messenger、SkyDrive、MSN、Xbox LIVE、Office Live など、すべてのコンシューマー向け Microsoft 製品およびクラウド サービスへのアクセスを可能にします。Outlook にサインアップすると、@Outlook.com アドレスの Microsoft アカウントが自動的に作成されます。一度作成されら、その Microsoft アカウントを使用して、コンシューマー関連の Microsoft クラウド サービスや Azure にアクセスできます。[詳細情報](http://windows.microsoft.com/ja-jp/windows-live/sign-in-what-is-microsoft-account)
 
-* **Organizational accounts** (issued by an admin for business/academic use) - Provide access to all small, middle and enterprise business-level Microsoft cloud services, such as Azure, Windows Intune, or Office 365. When you sign up to either one of these services as an organization, a cloud based tenant is automatically provisioned in Azure Active Directory to represent your organization. [Learn more](http://technet.microsoft.com/en-us/library/jj573650) 
+* **組織アカウント** (ビジネス/教育機関用に管理者が発行) - あらゆるレベルのビジネスを対象とした、Azure、Windows Intune、Office 365 など、すべての中小およびエンタープライズ ビジネス レベルの Microsoft クラウド サービスに対するアクセスを可能にします。これらのサービスのいずれかに組織としてサインアップすると、クラウド ベースのテナントが、Azure Active Directory で組織を表すように自動的にプロビジョニングされます。[詳細情報](http://technet.microsoft.com/ja-jp/library/jj573650)
 
-	Once this tenant has been created, an admin can then issue organizational accounts to each of its employees/students and assign licenses to those accounts based on which cloud service subscriptions they need access to, such as Azure. 
+	このテナントが作成されたら、管理者が各従業員/学生に組織アカウントを発行し、それぞれがアクセスする必要があるクラウド サービス (Azure など) のサブスクリプションに基づいて各アカウントにライセンスを付与できます。
 
-Want to sign up for Azure as an organization? [**Sign up now**](http://go.microsoft.com/fwlink/?LinkId=269967) 
+組織として Azure にサインアップする必要がある場合は、[**今すぐサインアップ**](http://go.microsoft.com/fwlink/?LinkId=269967)
 
-**Additional Resources**
+**その他のリソース**
 
-* [What is Azure AD?](/en-us/manage/services/identity/what-is-windows-azure-active-directory/) 
-* [Azure AD Library on TechNet](http://technet.microsoft.com/en-us/library/hh967619.aspx)
-* [Azure AD Library on MSDN](http://msdn.microsoft.com/library/windowsazure/jj673460.aspx)
+* [Azure AD とは?](/ja-jp/manage/services/identity/what-is-windows-azure-active-directory/)
+* [TechNet の Azure AD ライブラリ](http://technet.microsoft.com/ja-jp/library/hh967619.aspx)
+* [MSDN の Azure AD ライブラリ](http://msdn.microsoft.com/library/windowsazure/jj673460.aspx)
+

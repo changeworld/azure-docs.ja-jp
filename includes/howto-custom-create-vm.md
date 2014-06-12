@@ -1,4 +1,4 @@
-<properties writer="kathydav" editor="tysonn" manager="jeffreyg" />
+<properties authors="kathydav" editor="tysonn" manager="jeffreyg" />
 
 #カスタム仮想マシンの作成方法
 
@@ -8,7 +8,7 @@
 
 **重要**: 仮想マシンが仮想ネットワークを使用して、ホスト名を使用した直接接続またはクロスプレミス接続の設定ができるようにするには、仮想マシンの作成時に必ず仮想ネットワークを指定する必要があります。仮想マシンが仮想ネットワークに接続するように設定できるのは、仮想マシンの作成時に限られています。仮想ネットワークの詳細については、「[仮想ネットワーク](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
 
-1. [Windows Azure の管理ポータル](http://manage.windowsazure.com)にサインインします。
+1. [Azure の管理ポータル](http://manage.windowsazure.com)にサインインします。
 
 2. コマンド バーで、**[新規]** をクリックします。
 
@@ -43,13 +43,13 @@
 
 	**注**: 仮想マシンが可用性セットのメンバーである場合、その仮想マシンは別の障害ドメインに展開されます。可用性セットに複数の仮想マシンがあると、ネットワークやローカル ハード ディスクで問題が発生した場合、または予定されたシステム停止時にもアプリケーションを使用できます。
 
-15. **[VM エージェント]** では、VM エージェントをインストールするかどうかを決定します。このエージェントには、仮想マシンの操作に役立つ拡張機能をインストールするための環境が用意されています。詳細については、[拡張機能の使用に関するページ](http://go.microsoft.com/FWLink/p/?LinkID=394093)を参照してください。
-	**重要**: VM エージェントは、仮想マシンを作成するときにのみインストールできます。
-
-15. **[エンドポイント]** で、リモート デスクトップや Secure Shell (SSH) クライアントなどを使用した仮想マシンへの接続を許可するために作成される新しいエンドポイントを確認します。ここでエンドポイントを追加したり、後でエンドポイントを作成することもできます。後でエンドポイントを作成する手順については、「[How to Set Up Communication with a Virtual Machine (仮想マシンとの通信をセットアップする方法)](http://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/setup-endpoints/)」を参照してください。
+15. **[VM エージェント]** では、VM エージェントをインストールするかどうかを決定します。このエージェントには、仮想マシンの操作に役立つ拡張機能をインストールするための環境が用意されています。詳細については、[拡張機能の使用に関するページ](http://go.microsoft.com/FWLink/p/?LinkID=390493)を参照してください。
 
 
-16. 矢印をクリックして、仮想マシンを作成します。
+16. **[エンドポイント]** で、リモート デスクトップや Secure Shell (SSH) クライアントなどを使用した仮想マシンへの接続を許可するために作成される新しいエンドポイントを確認します。ここでエンドポイントを追加したり、後でエンドポイントを作成することもできます。後でエンドポイントを作成する手順については、「[How to Set Up Communication with a Virtual Machine (仮想マシンとの通信をセットアップする方法)](http://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/setup-endpoints/)」を参照してください。
+
+
+17. 矢印をクリックして、仮想マシンを作成します。
 
 
 	![カスタム仮想マシンの作成に成功](./media/howto-custom-create-vm/VMSuccessWindows.png)
@@ -57,7 +57,7 @@
 
 [Add a Virtual Machine to a Virtual Network (仮想ネットワークに仮想マシンを追加する)]: /ja-jp/manage/services/networking/add-a-vm-to-a-virtual-network/
 
-[About Affinity Groups for Virtual Network (仮想ネットワークのアフィニティ グループについて)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/
+[仮想ネットワークのアフィニティ グループに関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/
 
 [新しい仮想マシンの作成]: ./media/howto-custom-create-vm/Create.png
 

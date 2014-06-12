@@ -29,7 +29,7 @@
 
    	![][4] 
 
-8. [サービス] ページで **[Windows Azure のモバイル サービス]** の **[Live サービス サイト]** をクリックします。
+8. [サービス] ページで **[Azure のモバイル サービス]** の **[Live サービス サイト]** をクリックします。
 
 	![][5]
 
@@ -39,7 +39,7 @@
 
     >[WACOM.NOTE]クライアント シークレットとパッケージ SID は、重要なセキュリティ資格情報です。これらの機密情報は、他のユーザーと共有したり、アプリケーションで配信したりしないでください。
 
-10. [Windows Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
+10. [Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
    	![][7]
 
@@ -61,7 +61,7 @@
 [8]: ./media/mobile-services-register-windows-store-app/mobile-push-tab.png
 
 <!-- URLs. -->
-[Get started with Mobile Services (モバイル サービスの使用)]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
-[アプリケーションの提出に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[Windows Azure の管理ポータル]: https://manage.windowsazure.com/
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
+[アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[Azure の管理ポータル]: https://manage.windowsazure.com/
 

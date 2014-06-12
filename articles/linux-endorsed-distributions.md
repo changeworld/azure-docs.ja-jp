@@ -1,94 +1,95 @@
-<properties linkid="manage-linux-other-resources-endorsed-distributions" urlDisplayName="Endorsed distributions" pageTitle="Endorsed distributions of Linux in Azure" metaKeywords="" description="Learn about Linux on Azure-endorsed distributions, including guidelines for Ubuntu, OpenLogic, and SUSE." metaCanonical="" services="virtual-machines" documentationCenter="" title="Linux on Azure-Endorsed Distributions" authors="kathydav" solutions="" manager="jeffreyg" editor="tysonn" />
+<properties linkid="manage-linux-other-resources-endorsed-distributions" urlDisplayName="動作保証済みディストリビューション" pageTitle="Azure での動作保証済み Linux ディストリビューション" metaKeywords="" description="Azure での動作保証済み Linux ディストリビューションについて、Ubuntu、OpenLogic、および SUSE に関する指針も含めて、説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure での動作保証済み Linux ディストリビューション" authors=""  solutions="" writer="kathydav" manager="jeffreyg" editor="tysonn"  />
 
 
 
 
 
-#Linux on Azure-Endorsed Distributions
+#Azure での動作保証済み Linux ディストリビューション
 
-The distribution images on the Gallery are provided by the following partners and we are working with the community to bring even more endorsed distributions. In the meantime you can always Bring your Own Linux following the guidelines in this page.
+ギャラリーにあるディストリビューション イメージは、以下のパートナーから提供されており、マイクロソフトはコミュニティと協力して動作保証済みディストリビューションの数を増やそうと努めています。一方で、このページの指針に従えば、いつでも独自の Linux を展開することができます。
 
-## Canonical ##
+## Canonical##
  
 [http://www.ubuntu.com/cloud/azure](http://www.ubuntu.com/cloud/azure)
 
-Canonical engineering and open community governance drive Ubuntu's success in client, server and cloud computing,  including personal cloud services for consumers. Canonical's vision of a unified free platform in Ubuntu, from phone to cloud, with a family of coherent interfaces for the phone, tablet, TV and desktop, makes Ubuntu the first choice for diverse institutions from public cloud providers to the makers of consumer electronics, and a favorite among individual technologists.
+Canonical のエンジニアリングおよびオープン コミュニティ体制は、消費者向け個人クラウド サービスも含めて、クライアント、サーバー、およびクラウド コンピューティングにおける Ubuntu の成功を支えています。Canonical は、Ubuntu に関して、携帯電話、タブレット、テレビ、およびデスクトップで一貫したインターフェイスを備え、携帯電話からクラウドまで統一されたフリー プラットフォームにするというビジョンを持っているため、Ubuntu はパブリック クラウド プロバイダーから家電メーカーに至るまで多様な企業が最初に選択するディストリビューションとなり、個々の技術者のお気に入りとなっています。
 
-With developers and engineering centers around the world, Canonical is uniquely positioned to partner with hardware makers, content providers and software developers to bring Ubuntu solutions to market, from PCs to servers and handheld devices.
+世界中に開発者と開発センターが存在しているため、Canonical は独自の地位を確立しており、ハードウェア メーカーやコンテンツ プロバイダー、ソフトウェア開発者と提携して、PC からサーバーや携帯機器まで、さまざまな Ubuntu ソリューションを市場に送り出しています。
 
 ## OpenLogic ##
  
 [http://www.openlogic.com/azure](http://www.openlogic.com/azure)
 
-OpenLogic is a leading provider of enterprise open source solutions for the cloud and the data center. OpenLogic helps hundreds of leading enterprise across a wide range of industries to safely acquire, support, and control open source software. OpenLogic offers commercial-grade technical support and indemnification for 600 open source packages backed by the OpenLogic Expert Community, including enterprise level support for CentOS as well as being the launch partner for providing Centos images on Azure.
+OpenLogic は、クラウドおよびデータ センター向けの企業オープン ソース ソリューションの一流プロバイダーです。OpenLogic は、多種多様な業界の一流企業数百社に対して、オープン ソース ソフトウェアを安全に入手し、サポートし、コントロールできるよう支援しています。OpenLogic は、600 種類のオープン ソース パッケージについて、OpenLogic Expert Community に支えられた商用品質のテクニカル サポートと保証を提供しています。たとえば、CentOS を企業レベルでサポートし、Azure に Centos イメージを提供する開設時パートナーでもあります。
 
 ## Oracle##
 [http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)
 
-Oracle’s strategy is to offer a broad portfolio of solutions for public and private clouds, while giving customers choice and flexibility in how they deploy Oracle software in Oracle clouds as well as other clouds.  Oracle’s partnership with Microsoft enables customers to deploy Oracle software in Microsoft public and private clouds with the confidence of certification and support from Oracle.  Oracle’s commitment and investment in Oracle public and private cloud solutions is unchanged.
+Oracle の戦略は、顧客に Oracle クラウドおよびその他のクラウドにおいて Oracle ソフトウェアを展開する選択肢と幅広い運用を提供しながら、パブリック クラウドおよびプライベート クラウドにソリューションの幅広いポートフォリオを提供するものです。Microsoft との Oracle のパートナーシップによって、顧客は Oracle ソフトウェアを Microsoft のパブリック クラウドおよびプライベート クラウドで Oracle からの証明とサポートに自信を持って展開することができます。Oracle の取り組みと Oracle のパブリックとプライベート クラウド ソリューションへの投資が変わることはありません。
 
 ##SUSE##
  
 [http://www.suse.com/suse-linux-enterprise-server-on-azure](http://www.suse.com/suse-linux-enterprise-server-on-azure)
 
-SUSE Linux Enterprise Server on Azure is a proven platform that provides superior reliability and security for cloud computing. SUSE's versatile Linux platform seamlessly integrates with Azure cloud services to deliver an easily manageable cloud environment. And with more than 9,200 certified applications from over 1,800 independent software vendors for SUSE Linux Enterprise Server, SUSE ensures that workloads running supported in the data center can be confidently deployed on Azure.
+SUSE Linux Enterprise Server on Azure は、クラウド コンピューティングで優れた信頼性とセキュリティを実現する実績あるプラットフォームです。SUSE の多機能な Linux プラットフォームは Azure クラウド サービスとシームレスに統合され、管理の容易なクラウド環境を実現します。SUSE Linux Enterprise Server には、1,800 社を超える独立系ソフトウェア ベンダーによる 9,200 本を超える公認アプリケーションが存在し、SUSE は、データ センターで実行されているワークロードを Azure に自信を持って展開できることを保証しています。
 
-## Supported Versions ##
+## サポートされているバージョン##
 
-The following table shows the different distribution versions, Linux Integration Services (LIS) drivers and Azure Linux Agent versions that have been tested to work on Azure. LIS drivers are available at [http://www.microsoft.com/en-us/download/details.aspx?id=34603](http://www.microsoft.com/en-us/download/details.aspx?id=34603). Linux Agent versions are available at [https://github.com/windowsazure/walinuxagent](https://github.com/windowsazure/walinuxagent).
+以下のテーブルは、Azure 上での動作がテストされた各種ディストリビューション、Linux Integration Services (LIS)、および Azure Linux エージェントのバージョンを示しています。LIS ドライバーは [http://www.microsoft.com/ja-jp/download/details.aspx?id=34603](http://www.microsoft.com/ja-jp/download/details.aspx?id=34603) にあります。Linux エージェントのバージョンは [https://github.com/windowsazure/walinuxagent](https://github.com/windowsazure/walinuxagent) にあります。
 
-The table also includes a link to the Kernel compatibility patch required by some distribution versions to work optimally in Azure.
+テーブルには、Azure で最適な動作をするために一部のディストリビューション バージョンで必要になるカーネル互換性パッチのリンクも記載しています。
 
 <table border="1" width="600">
   <tr bgcolor="#E9E7E7">
-		<th>Distribution</th>		
-	    <th>Version</th>
-	    <th>Drivers</th>
-		<th>Kernel Compatibility Patch</th>
-		<th>Agent</th>
+		<th>ディストリビューション</th>		
+	    <th>バージョン</th>
+	    <th>ドライバー</th>
+		<th>カーネル互換性パッチ</th>
+		<th>エージェント</th>
 			</tr>
 	<tr>
-		<th>  Canonical UBUNTU </th>
-		<td> Ubuntu 12.04.1, 12.10, and 13.04</td>
-		<td>In Kernel</td>
-		<td><a href="http://go.microsoft.com/fwlink/?LinkID=275152&amp;clcid=0x409">Required for 12.04 or 12.04.01 only</a></td>
-		<td>Package: In package repo under walinuxagent <br />
-			Source: <A HREF="http://go.microsoft.com/fwlink/p/?LinkID=250998">GITHUB</A></td>
+		<th>  Canonical UBUNTU</th>
+		<td> Ubuntu 12.04.1、12.10、および 13.04</td>
+		<td>カーネル内</td>
+		<td><a href="http://go.microsoft.com/fwlink/?LinkID=275152&amp;clcid=0x409">12.04 または 12.04.01 のみ必要</a></td>
+		<td>パッケージ: walinuxagent のパッケージ リポジトリ内<br />
+			ソース: <A HREF="http://go.microsoft.com/fwlink/p/?LinkID=250998">GITHUB</A></td>
 			</tr>
 	<tr>
-		<th> CENTOS by Open Logic </th>
+		<th> CENTOS by Open Logic</th>
 		<td> CentOS 6.3+</td>
-	    <td>CentOS 6.3: <a href="http://go.microsoft.com/fwlink/p/?LinkID=254263">LIS drivers</a>; CentOS 6.4+ drivers: in Kernel</td>
-		<td><a href="http://go.microsoft.com/fwlink/?LinkID=275153&amp;clcid=0x409">Required for 6.3 only</a></td>
-		<td>Package:In <a href="http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/">Open Logic package repo </a> under walinuxagent<br />
-			Source: <A HREF="http://go.microsoft.com/fwlink/p/?LinkID=250998">GITHUB</A></td>
+	    <td>CentOS 6.3: <a href="http://go.microsoft.com/fwlink/p/?LinkID=254263">LIS ドライバー</a>。CentOS 6.4 + ドライバー: カーネル</td>
+		<td><a href="http://go.microsoft.com/fwlink/?LinkID=275153&amp;clcid=0x409">6.3 のみ必要</a></td>
+		<td>パッケージ: walinuxagent の <a href="http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/">Open Logic パッケージ リポジトリ</a>内<br />
+			ソース: <A HREF="http://go.microsoft.com/fwlink/p/?LinkID=250998">GITHUB</A></td>
  		
 	</tr>
 	<tr>
-		<th> Oracle Linux </th>
+		<th> Oracle Linux</th>
 		<td> 6.4+</td>
-        <td>In Kernel</td>
-		<td>N/A</td>
-		<td>Package: In repo, name: WALinuxAgent
+        <td>カーネル内</td>
+		<td>該当なし</td>
+		<td>パッケージ: リポジトリ内、名前: WALinuxAgent
 <br />
-			Source: <A HREF="http://go.microsoft.com/fwlink/p/?LinkID=250998">GITHUB</A></td>
+			ソース: <A HREF="http://go.microsoft.com/fwlink/p/?LinkID=250998">GITHUB</A></td>
 		
 	</tr><tr>
-		<th> SUSE Linux Enterprise </th>
+		<th> SUSE Linux Enterprise</th>
 		<td> SLES 11 SP3+</td>
-        <td>In Kernel</td>
-		<td>N/A</td>
-		<td>Package: In <A HREF="https://build.opensuse.org/project/show/Cloud:Tools" >Cloud:Tools</A> repo, name: WALinuxAgent<br />
-			Source Code: <A HREF="http://go.microsoft.com/fwlink/p/?LinkID=250998">GITHUB</A></td>
+        <td>カーネル内</td>
+		<td>該当なし</td>
+		<td>パッケージ: <A HREF="https://build.opensuse.org/project/show/Cloud:Tools" >Cloud:Tools</A> リポジトリ内、名前: WALinuxAgent<br />
+			ソース コード: <A HREF="http://go.microsoft.com/fwlink/p/?LinkID=250998">GITHUB</A></td>
 		
 	</tr>
 	<tr>
-		<th> openSUSE </th>
+		<th> openSUSE</th>
 		<td> OpenSUSE 13.1+</td>
-		<td>In Kernel</td>
-		<td>N/A</td>
-		<td>Package: In <A HREF="https://build.opensuse.org/project/show/Cloud:Tools" >Cloud:Tools</A> repo, name: WALinuxAgent<br />
-			Source Code: <A HREF="http://go.microsoft.com/fwlink/p/?LinkID=250998">GITHUB</A></td>
+		<td>カーネル内</td>
+		<td>該当なし</td>
+		<td>パッケージ: <A HREF="https://build.opensuse.org/project/show/Cloud:Tools" >Cloud:Tools</A> リポジトリ内、名前: WALinuxAgent<br />
+			ソース コード: <A HREF="http://go.microsoft.com/fwlink/p/?LinkID=250998">GITHUB</A></td>
 		
 	</tr>
 </table>
+

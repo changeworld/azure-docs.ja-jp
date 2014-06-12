@@ -1,12 +1,11 @@
-<properties linkid="dev-net-how-to-access-control" urlDisplayName="アクセス制御" pageTitle="アクセス制御の使用方法 (.NET) - Windows Azure の機能ガイド" metaKeywords="Azure アクセス制御サービス認証 C#" description="このガイドでは、ユーザーが Web アプリケーションにアクセスしようとするときに、それらのユーザーを認証するために Windows Azure アプリケーションでアクセス制御サービス (ACS) を使用する方法について説明します。" metaCanonical="" services="active-directory" documentationCenter=".NET" title="Windows Azure Active Directory のアクセス制御で Web ユーザーを認証する方法" authors=""  solutions="" writer="juneb" manager="" editor=""  />
+<properties linkid="dev-net-how-to-access-control" urlDisplayName="アクセス制御" pageTitle="アクセス制御の使用方法 (.NET) - Azure の機能ガイド" metaKeywords="Azure アクセス制御サービス認証 C#" description="このガイドでは、ユーザーが Web アプリケーションにアクセスしようとするときに、それらのユーザーを認証するために Azure アプリケーションでアクセス制御サービス (ACS) を使用する方法について説明します。" metaCanonical="" services="active-directory" documentationCenter=".NET" title="Azure Active Directory のアクセス制御で Web ユーザーを認証する方法" authors=""  solutions="" writer="juneb" manager="" editor="" />
 
 
 
+# Azure Active Directory のアクセス制御で Web ユーザーを認証する方法
 
-# Windows Azure Active Directory のアクセス制御で Web ユーザーを認証する方法
 
-
-このガイドでは、Microsoft、Google、Yahoo、Facebook などの ID プロバイダーのユーザーが Web アプリケーションにアクセスしようとするときに、それらのユーザーを認証するために Windows Azure Active Directory の Access Control (Access Control サービス (ACS) とも呼ばれます) を使用する方法について説明します。
+このガイドでは、Microsoft、Google、Yahoo、Facebook などの ID プロバイダーのユーザーが Web アプリケーションにアクセスしようとするときに、それらのユーザーを認証するために Azure Active Directory の Access Control (Access Control サービス (ACS) とも呼ばれます) を使用する方法について説明します。
 
 <h2><span class="short-header">目次</span>目次</h2>
 
@@ -24,16 +23,16 @@
 
 <h2><span class="short-header">ACS とは</span>ACS とは</h2>
 
-ほとんどの開発者は ID の専門家ではなく、アプリケーションやサービスの認証と承認のメカニズムの開発に時間をかけたくはありません。ACS は、Web アプリケーションとサービスにアクセスするユーザーを認証するための簡単な方法を提供する Windows Azure サービスです。これを使えば、複雑な認証ロジックをコードに追加する必要はありません。
+ほとんどの開発者は ID の専門家ではなく、アプリケーションやサービスの認証と承認のメカニズムの開発に時間をかけたくはありません。ACS は、Web アプリケーションとサービスにアクセスするユーザーを認証するための簡単な方法を提供する Azure サービスです。これを使えば、複雑な認証ロジックをコードに追加する必要はありません。
 
 ACS では、次の機能を使用できます。
 
 -   Windows Identity Foundation (WIF) との統合。
 -   Microsoft アカウント (旧 Windows Live ID)、Google、Yahoo、Facebook などの一般的な Web ID プロバイダーのサポート。
 -   Active Directory フェデレーション サービス (AD FS) 2.0 のサポート。
--   ACS 設定へのプログラムによるアクセスを提供する Open Data Protocol 
+-   -   ACS 設定へのプログラムによるアクセスを提供する Open Data Protocol 
     (OData) ベースの管理サービス。
--   ACS 設定への管理アクセスが可能な管理ポータル。
+-   -   ACS 設定への管理アクセスが可能な管理ポータル。
 
 ACS の詳細については、[アクセス制御サービス 2.0 に関するページ][]を参照してください。
 
@@ -83,29 +82,29 @@ ACS はクレームベース ID のプリンシパルに基づいており、こ
 
 このガイドのタスクを完了するには、次のものが必要です。
 
--	Windows Azure サブスクリプション
+-	Azure サブスクリプション
 -	Microsoft Visual Studio 2012
 -	Identity and Access Tool for Visual Studio 2012 (ダウンロードするには、[Identity and Access Tool のダウンロード ページ][]を参照)
 
 
 <h2><span class="short-header">Access Control 名前空間の作成</span>Access Control 名前空間の作成</h2>
 
-Windows Azure で Active Directory のアクセス制御を使用するには、Access Control 名前空間を作成します。名前空間では、アプリケーション内で ACS リ
+Azure で Active Directory のアクセス制御を使用するには、Access Control 名前空間を作成します。名前空間では、アプリケーション内で ACS リ
 ソースのアドレスを指定するための一意のスコープが提供されます。
 
-1.  [Windows Azure の管理ポータル][] (https://manage.WindowsAzure.com) にログインします。
+1. [Azure の管理ポータル][] (https://manage.WindowsAzure.com) にログインします。
     
-2.  **[Active Directory]** をクリックします。
+2. **[Active Directory]** をクリックします。
 
 	![][1]
 
-3.  新しい Access Control 名前空間を作成するには、**[新規]** をクリックします。**[アプリケーション サービス]** と **[アクセス制御]** が選択されます。**[簡易作成]** をクリックします。
+3. 新しい Access Control 名前空間を作成するには、**[新規]** をクリックします。**[アプリケーション サービス]** と **[アクセス制御]** が選択されます。**[簡易作成]** をクリックします。
 
 	![][2]
 
-4.  名前空間の名前を入力します。名前が一意であるかが確認されます。
+4. 名前空間の名前を入力します。名前が一意であるかが確認されます。
 
-5.  名前空間が使用されるリージョンを選択します。パフォーマンスを最高にするには、アプリケーションを展開するリージョンと同じにし、**[作成]** をクリックします。
+5. 名前空間が使用されるリージョンを選択します。パフォーマンスを最高にするには、アプリケーションを展開するリージョンと同じにし、**[作成]** をクリックします。
 
 名前空間が作成されて有効化されます。
 
@@ -149,7 +148,7 @@ Windows Azure で Active Directory のアクセス制御を使用するには、
             </ul>
         }
 
-現在のところ、ACS は User.Identity.Name を設定しないため、上記の変更を加える必要があります。
+現在のところ、ACS は User.Identity.Name を設定しないため、前に示している変更を加える必要があります。
 
 1. F5 キーを押してアプリケーションを実行します。既定の ASP.NET MVC アプリケーションが Web ブラウザーに表示されます。
 
@@ -163,7 +162,7 @@ Windows Azure で Active Directory のアクセス制御を使用するには、
 
 	![][4]
 
-2.	**[プロバイダー]** タブで、**[Windows Azure のアクセス制御サービスを使用する]** を選択します。
+2.	**[プロバイダー]** タブで、**[Azure のアクセス制御サービスを使用する]** を選択します。
 
     ![][44]
 
@@ -171,11 +170,11 @@ Windows Azure で Active Directory のアクセス制御を使用するには、
 
     ![][444]
 
-	Visual Studio により、Access Control 名前空間に関する情報が要求されます。前の手順で作成した名前空間名を入力します (上の画像では Test ですが、実際には別の名前空間です)。Windows Azure の管理ポータルに戻り、対称キーを取得します。
+	Visual Studio により、Access Control 名前空間に関する情報が要求されます。前の手順で作成した名前空間名を入力します (上の画像では Test ですが、実際には別の名前空間です)。Azure の管理ポータルに戻り、対称キーを取得します。
 
 	![][17]
 
-4.  Windows Azure の管理ポータルで、Access Control 名前空間をクリックし、**[管理]** をクリックします。
+4.  Azure の管理ポータルで、Access Control 名前空間をクリックし、**[管理]** をクリックします。
 
 	![][8]
 
@@ -187,7 +186,7 @@ Windows Azure で Active Directory のアクセス制御を使用するには、
 
 	![][19]
 
-7.  Visual Studio で、**[名前空間の管理キーを入力]** フィールドにキーを貼り付け、**[管理キーの保存]** をクリックして **[OK]** をクリックします。
+7.Visual Studio で、**[名前空間の管理キーを入力]** フィールドにキーを貼り付け、**[管理キーの保存]** をクリックして **[OK]** をクリックします。
 
 	![][20]
 
@@ -217,7 +216,7 @@ Windows Azure で Active Directory のアクセス制御を使用するには、
 
  	using System.Threading;
 
-1. HomeController クラスに、*Claims* メソッドを追加します。
+1. HomeController クラスで、*Claims* メソッドを追加します。
 
     public ActionResult Claims()
     {
@@ -228,7 +227,7 @@ Windows Azure で Active Directory のアクセス制御を使用するには、
         return View();
     }
 
-1. *Claims* メソッドを右クリックし、**[ビューの追加]** を選択します。
+1. * Claims* メソッドを右クリックし、**[ビューの追加]** を選択します。
 
 ![][66]
 
@@ -288,17 +287,17 @@ Windows Azure で Active Directory のアクセス制御を使用するには、
 
 ![][666]
 
-アプリケーションでクレームの使い方の詳細については、「[Windows Identity Foundation](http://msdn.microsoft.com/en-us/library/hh377151.aspx)」を参照してください。
+アプリケーションでクレームの使い方の詳細については、「[Windows Identity Foundation library (Windows Identity Foundation ライブラリ)](http://msdn.microsoft.com/ja-jp/library/hh377151.aspx)」を参照してください。
 
 <h2><a name="bkmk_VP"></a>ACS 管理ポータルでアプリケーションを参照する</h2>
 
 Visual Studio の Identity and Access Tool は、アプリケーションと ACS と自動的に統合します。
 
-[Windows Azure の Access Control を使用する] オプションを選択してアプリケーションを実行すると、Identity and Access Tool によりアプリケーションが証明書利用者として追加されて、選択された ID プロバイダーを使用するように構成され、アプリケーションの既定のクレーム変換規則が生成および選択されます。
+[Azure の Access Control を使用する] オプションを選択してアプリケーションを実行すると、Identity and Access Tool によりアプリケーションが証明書利用者として追加されて、選択された ID プロバイダーを使用するように構成され、アプリケーションの既定のクレーム変換規則が生成および選択されます。
 
-これらの構成設定は、ACS 管理ポータルで確認して変更できます。ポータルで変更を確認するには、次の手順を使用します。
+これらの構成設定は、ACS 管理ポータルで確認して変更できます。ポータルで変更を確認するには、次のステップを使用します。
 
-1.	[Windows Azure の管理ポータル](http://manage.WindowsAzure.com)にログインします。
+1.	[Azure の管理ポータル](http://manage.WindowsAzure.com)にログインします。
 
 2.	**[Active Directory]** をクリックします。
 
@@ -379,9 +378,9 @@ ACS と統合された Web アプリケーションを作成できました。�
   [vcsb]: #bkmk_viewClaims
   [vpp]: #bkmk_VP
 
-  [Access Control Service 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
-  [Identity and Access Tool]: http://go.microsoft.com/fwlink/?LinkID=245849
-  [Windows Azure の管理ポータル]: http://manage.WindowsAzure.com
+  [アクセス制御サービス 2.0 に関するページ]: http://go.microsoft.com/fwlink/?LinkID=212360
+  [Identity and Access Tool のダウンロード ページ]: http://go.microsoft.com/fwlink/?LinkID=245849
+  [Azure の管理ポータル]: http://manage.WindowsAzure.com
 
   [0]: ./media/active-directory-dotnet-how-to-use-access-control/acs-01.png
   [1]: ./media/active-directory-dotnet-how-to-use-access-control/acsCreateNamespace.png
@@ -408,6 +407,5 @@ ACS と統合された Web アプリケーションを作成できました。�
   [18]: ./media/active-directory-dotnet-how-to-use-access-control/acsManagementService.png
   [19]: ./media/active-directory-dotnet-how-to-use-access-control/acsShowKey.png
   [20]: ./media/active-directory-dotnet-how-to-use-access-control/acsConfigAcsNamespace2.png
-
 
 

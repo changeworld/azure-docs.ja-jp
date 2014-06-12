@@ -1,54 +1,54 @@
-<properties linkid="develop-net-tutorials-push-notifications-to-users-ios" urlDisplayName="Push Notifications to Users (iOS)" pageTitle="Push notifications to users (iOS) | Mobile Dev Center" metaKeywords="" description="Learn how to use Mobile Services to push notifications to users of your iOS app." metaCanonical="" services="" documentationCenter="Mobile" title="Push notifications to users by using Mobile Services" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-net-tutorials-push-notifications-to-users-ios" urlDisplayName="ユーザーへのプッシュ通知 (iOS)" pageTitle="ユーザーへのプッシュ通知 (iOS) | モバイル デベロッパー センター" metaKeywords="" description="モバイル サービスを使用して iOS アプリケーションのユーザーにプッシュ通知を送信する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="モバイル サービスによるユーザーへのプッシュ通知" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
  
-# Push notifications to users by using Mobile Services
+# モバイル サービスによるユーザーへのプッシュ通知
 <div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/en-us/develop/mobile/tutorials/push-notifications-to-users-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/push-notifications-to-users-ios" title="iOS" class="current">iOS</a><a href="/en-us/develop/mobile/tutorials/push-notifications-to-users-android" title="Android">Android</a>
+	<a href="/ja-jp/develop/mobile/tutorials/push-notifications-to-users-wp8" title="Windows Phone">Windows Phone</a><a href="/ja-jp/develop/mobile/tutorials/push-notifications-to-users-ios" title="iOS" class="current">iOS</a><a href="/ja-jp/develop/mobile/tutorials/push-notifications-to-users-android" title="Android">Android</a>
 </div>
 
-This topic extends the [previous push notification tutorial][Get started with push notifications] by adding a new table to store Apple Push Notification Service (APNS) tokens. These tokens can then be used to send push notifications to users of the iPhone or iPad app.  
+このトピックは、Apple Push Notification Service (APNS) トークンを格納する新しいテーブルを追加して、[以前のプッシュ通知のチュートリアル][モバイル サービスでのプッシュ通知の使用]を拡張したものです。これらのトークンを使用して、iPhone または iPad アプリケーションのユーザーにプッシュ通知を送信できます。
 
-This tutorial walks you through these steps to update push notifications in your app:
+このチュートリアルでは、アプリケーションでプッシュ通知を更新するための次の手順について説明します。
 
-1. [Create the Devices table]
-2. [Update the app]
-3. [Update server scripts]
-4. [Verify the push notification behavior] 
+1. [Devices テーブルを作成する]
+2. [アプリケーションを更新する]
+3. [サーバー スクリプトを更新する]
+4. [プッシュ通知の動作を確認する]
 
-This tutorial is based on the Mobile Services quickstart and builds on the previous tutorial [Get started with push notifications]. Before you start this tutorial, you must first complete [Get started with push notifications].  
+このチュートリアルは、モバイル サービスのクイック スタートと、1 つ前のチュートリアル「[モバイル サービスでのプッシュ通知の使用]」の内容を前提としています。このチュートリアルを開始する前に、「[モバイル サービスでのプッシュ通知の使用]」を完了している必要があります。
 
-## <a name="create-table"></a><h2><span class="short-header">Create the table</span>Create the new Devices table</h2>
+## <a name="create-table"></a><h2><span class="short-header">テーブルの作成</span>新しい Devices テーブルを作成する</h2>
 
-1. Log into the [Azure Management Portal], click **Mobile Services**, and then click your app.
+1. [Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
    	![][0]
 
-2. Click the **Data** tab, and then click **Create**.
+2. **[データ]** タブをクリックし、**[作成]** をクリックします。
 
    	![][1]
 
-   	This displays the **Create new table** dialog.
+   	**[新しいテーブルの作成]** ダイアログ ボックスが表示されます。
 
-3. Keeping the default **Anybody with the application key** setting for all permissions, type _Devices_ in **Table name**, and then click the check button.
+3. すべてのアクセス許可について既定の **[アプリケーション キーを持つユーザー]** 設定をそのままにし、**[テーブル名]** に「Devices」と入力してチェック ボタンをクリックします。
 
    	![][2]
 
-  	This creates the **Devices** table, which stores the device tokens used to send push notifications separate from item data.
+  	**Devices** テーブルが作成されます。このテーブルには、項目データとは別にプッシュ通知を送信するために使用されるデバイス トークンが格納されます。
 
-Next, you will modify the push notifications app to store data in this new table instead of in the **TodoItem** table.
+次は、**TodoItem** テーブルの代わりにこの新しいテーブルにデータを格納するようにプッシュ通知アプリケーションを変更します。
 
-## <a name="update-app"></a>Update your app
+## <a name="update-app"></a>アプリケーションを更新する
 
-1. In Xcode, open the QSTodoService.h file and add the following method declaration: 
+1. Xcode で、QSTodoService.h ファイルを開き、次のメソッド宣言を追加します。
 
         // Declare method to register device token for other users
         - (void)registerDeviceToken:(NSString *)deviceToken;
 
-   	This enables the App Delegate to register a deviceToken with the Mobile Service.
+   	これにより、AppDelegate が deviceToken をモバイル サービスに登録できるようになります。
 
-2. In QSTodoService.m, add the following instance method:
+2. QSTodoService.m で、次のインスタンス メソッドを追加します。
 
         // Instance method to register deviceToken in Devices table.
         // Called in AppDelegate.m when APNS registration succeeds.
@@ -65,15 +65,15 @@ Next, you will modify the push notifications app to store data in this new table
             }];
         }
 
-   	This allows other callers to register the device token with Mobile Services.
+   	これにより、他の呼び出し元がデバイス トークンをモバイル サービスに登録できるようになります。
 
-3. In the QSAppDelegate.m file, add the following import statement:
+3. QSAppDelegate.m ファイルで、次の import ステートメントを追加します。
 
         #import "QSTodoService.h"
 
-     This code makes the AppDelegate aware of the TodoService implementation.
+     このコードにより、AppDelegate が TodoService の実装を認識できるようになります。
 
-4. In QSAppDelegate.m, replace the **didRegisterForRemoteNotificationsWithDeviceToken** method with the following code:
+4. QSAppDelegate.m で、**didRegisterForRemoteNotificationsWithDeviceToken** メソッドを次のコードに置き換えます。
 
         // We have registered, so now store the device token (as a string) on the AppDelegate instance
         // taking care to remove the angle brackets first.
@@ -88,7 +88,7 @@ Next, you will modify the push notifications app to store data in this new table
            [instance registerDeviceToken:token];
         }
 
-5. In QSTodoListViewController.m, locate the **(IBAction)onAdd** method and _remove_ the following code:
+5. QSTodoListViewController.m で、**(IBAction)onAdd** メソッドを見つけ、次の行を削除します。
 
         // Get a reference to the AppDelegate to easily retrieve the deviceToken
         QSAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
@@ -100,27 +100,27 @@ Next, you will modify the push notifications app to store data in this new table
             @"deviceToken" : delegate.deviceToken
         };
  
-   	Replace this with the following code:
+   	これを次のコードに置き換えます。
 
         // We removed the delegate; this application no longer passes the deviceToken here.
         // Remove the device token from the payload
         NSDictionary *item = @{ @"text" : itemText.text, @"complete" : @(NO) };
 
-Your app has now been updated to use the new Devices table to store device tokens that are used to send push notifications back to the device.
+アプリケーションは、プッシュ通知をデバイスに送り返すために使用されるデバイス トークンを、新しい Devices テーブルを使用して格納するように更新されました。
 
-## <a name="update-scripts"></a>Update server scripts
+## <a name="update-scripts"></a>サーバー スクリプトを更新する
 
-1. In the Management Portal, click the **Data** tab and then click the **Devices** table. 
+1. 管理ポータルで、**[データ]** タブをクリックし、**Devices** テーブルをクリックします。
 
    	![][3]
 
-2. In **devices**, click the **Script** tab and select **Insert**.
+2. **[devices]** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。
    
    	![][4]
 
-	This displays the function that is invoked when an insert occurs in the **Devices** table.
+	**Devices** テーブルで挿入が発生したときに呼び出される関数が表示されます。
 
-3. Replace the insert function with the following code, and then click **Save**:
+3. insert 関数を次のコードに置き換え、**[保存]** をクリックします。
 
         function insert(item, user, request) {
            var devicesTable = tables.getTable('Devices');
@@ -139,13 +139,13 @@ Your app has now been updated to use the new Devices table to store device token
            }
         }
 
-   	This script checks the **Devices** table for an existing device with the same token. The insert only proceeds when no matching device is found. This prevents duplicate device records.
+   	このスクリプトは、**Devices** テーブルに同じトークンを持つ既存のデバイスがないかチェックします。insert は、一致するデバイスが見つからないときだけ先に進みます。これにより、デバイス レコードの重複が防止されます。
 
-4. Click **TodoItem**, click **Script** and select **Insert**. 
+4. [**TodoItem**] をクリックし、**[スクリプト]** タブをクリックして、**[挿入]** を選択します。
 
    	![][5]
 
-5. Replace the insert function with the following code, and then click **Save**:
+5. insert 関数を次のコードに置き換え、**[保存]** をクリックします。
 
         function insert(item, user, request) {
           request.execute({
@@ -180,43 +180,43 @@ Your app has now been updated to use the new Devices table to store device token
           }
       }
 
-    This insert script sends a push notification (with the text of the inserted item) to all devices stored in the **Devices** table.
+    この挿入スクリプトは、**Devices** テーブルに格納されているすべてのデバイスにプッシュ通知 (挿入された項目のテキストと共に) を送信します。
 
-<h2><a name="test"></a><span class="short-header">Test the app</span>Test push notifications in your app</h2>
+<h2><a name="test"></a><span class="short-header">アプリケーションのテスト</span>アプリケーションでプッシュ通知をテストする</h2>
 
-1. Press the **Run** button to build the project and start the app in an iOS capable device, then in the app, type meaningful text, such as _A new Mobile Services task_ and then click the plus (**+**) icon.
+1. **[Run]** を押して、プロジェクトをビルドし、iOS 対応のデバイスでアプリケーションを開始します。アプリケーションで、意味のあるテキスト (たとえば、「新しいモバイル サービス タスク」) を入力し、プラス (**[+]**) アイコンをクリックします。
 
   	![][24]
 
-3. Verify that a notification is received, then click **OK** to dismiss the notification.
+3. 通知が受信されたことを確認し、**[OK]** をクリックして通知を破棄します。
 
   	![][25]
 
-4. Repeat step 2 and immediately close the app, then verify that the following toast is shown.
+4. 手順 2 を繰り返してすぐにアプリケーションを閉じ、次のトーストが表示されることを確認します。
 
   	![][26]
 
-You have successfully completed this tutorial.
+これで、このチュートリアルは終了です。
 
-## Next steps
+## 次のステップ
 
-This concludes the tutorials that demonstrate the basics of working with push notifications. Consider finding out more about the following Mobile Services topics:
+これで、プッシュ通知の基本について説明するチュートリアルは終了です。次のモバイル サービスのトピックの詳細を確認することをお勧めします。
 
-* [Get started with data]
-  <br/>Learn more about storing and querying data using Mobile Services.
+* [データの使用]
+  <br/>モバイル サービスを使用してデータの格納およびクエリを実行する方法について説明します。
 
-* [Get started with authentication]
-  <br/>Learn how to authenticate users of your app with Windows Account.
+* [認証の使用]
+  <br/>Windows アカウントを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [Mobile Services server script reference]
-  <br/>Learn more about registering and using server scripts.
+* [モバイル サービスのサーバー スクリプト リファレンス]
+  <br/>サーバー スクリプトの登録および使用について説明します。
 
 <!-- Anchors. -->
-[Create the Devices table]: #create-table
-[Update the app]: #update-app
-[Update server scripts]: #update-scripts
-[Verify the push notification behavior]: #test-app
-[Next Steps]: #next-steps
+[Devices テーブルを作成する]: #create-table
+[アプリケーションを更新する]: #update-app
+[サーバー スクリプトを更新する]: #update-scripts
+[プッシュ通知の動作を確認する]: #test-app
+[次のステップ]: #next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-ios-push-notifications-app-users/mobile-services-selection.png
@@ -233,10 +233,11 @@ This concludes the tutorials that demonstrate the basics of working with push no
 [26]: ./media/mobile-services-ios-push-notifications-app-users/mobile-quickstart-push4-ios.png
 
 <!-- URLs. -->
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-ios
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-ios
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-ios
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-ios
+[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-ios
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-ios
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-ios
+[モバイル サービスでのプッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-ios
 
-[Azure Management Portal]: https://manage.windowsazure.com/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
+

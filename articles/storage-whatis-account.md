@@ -1,41 +1,42 @@
-<properties linkid="manage-services-what-is-a-storage-account" urlDisplayName="What is a Storage Account" pageTitle="What is a storage account? | Microsoft Azure" metaKeywords="" description="Learn about the different types of storage accounts available in Azure, and get definitions for key storage terms." metaCanonical="" services="storage" documentationCenter="" title="What is a Storage Account?" authors="tamram" solutions="" manager="mbaldwin" editor="cgronlun" />
+<properties linkid="manage-services-what-is-a-storage-account" urlDisplayName="ストレージ アカウントとは" pageTitle="ストレージ アカウントとは| Microsoft Azure" metaKeywords="" description="Azure で使用できるさまざまな種類のストレージ アカウントについて説明し、ストレージ関連の主要な用語に関する定義を理解します。" metaCanonical="" services="storage" documentationCenter="" title="ストレージ アカウントとは" authors="tamram" solutions="" manager="mbaldwin" editor="cgronlun" />
 
 
 
 
 
-#What is a Storage Account?
+#ストレージ アカウントとは
 
-Azure Storage includes three services: Blob storage, Table storage, and Queue storage. These services are included in every storage account. A storage account provides your unique namespace for working with blobs, queues, and tables.
+Azure ストレージには、BLOB ストレージ、テーブル ストレージ、キュー ストレージという 3 つのサービスが含まれています。これらのサービスは、すべてのストレージ アカウントに含まれます。ストレージ アカウントでは、BLOB、キュー、およびテーブルを操作するための一意の名前空間が用意されています。
 
-A storage account can contain up to 200TB of blob, queue, and table data if it was created June 8th, 2012, or later; for storage accounts created before that date, total capacity is 100TB. You can create up to 20 uniquely named storage accounts beneath a single subscription. For more information about storage accounts, see [Azure Storage Scalability and Performance Targets](http://msdn.microsoft.com/en-us/library/dn249410.aspx).
+また、ストレージ アカウントが 2012 年 6 月 8 日以降に作成されている場合、1 つのストレージ アカウントには最大 200 TB の BLOB、キュー、およびテーブル データを格納できます。ストレージ アカウントがそれよりも前の日付で作成されている場合、容量の合計は 100 TB です。1 つのサブスクリプションの配下で、それぞれが一意の名前を持つ最大 20 のストレージ アカウントを作成できます。ストレージ アカウントの詳細については、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](http://msdn.microsoft.com/ja-jp/library/dn249410.aspx)」を参照してください。
 
-All of the information about your storage account, including when it was created, is available in the Management Portal, on the **Dashboard** page for **Storage**.
+作成日時を含め、ストレージ アカウントに関するすべての情報は、管理ポータルの **[ダッシュボード]** ページのうち **[ストレージ]** で使用できます。
 
-Storage costs are based on four factors: storage capacity, replication scheme, storage transactions, and data egress. Storage capacity refers to how much of your storage account allotment you are using to store data. The cost of simply storing your data is determined by how much data you are storing, and how it is replicated. Transactions refer to all read and write operations to Azure Storage. Data egress refers to data transferred out of an Azure region. When the data in your storage account is accessed by an application that is not running in the same region, whether that application is a cloud service or some other type of application, then you are charged for data egress. (For Azure services, you can take steps to group your data and services in the same data centers to reduce or eliminate data egress charges.)  
+ストレージのコストは、ストレージ容量、レプリケーション スキーム、ストレージ トランザクション、送信データ転送という 4 つの要因に基づいています。ストレージ容量とは、データの保存に使用するためにストレージ アカウントに割り当てられた容量を指します。単純にデータを保存する場合の料金は、保存するデータ量とレプリケーション方法によって決まります。トランザクションには、Azure ストレージに対するすべての読み取り操作と書き込み操作が含まれます。送信データ転送とは、Azure リージョンから転送されたデータを意味します。他のリージョンで動作しているアプリケーションがストレージ アカウント内のデータにアクセスした場合、そのアプリケーションがクラウド サービスであるか、その他の種類のアプリケーションであるかに関係なく、送信データ転送として課金されます (Azure サービスでは、同じデータ センター内のデータとサービスをグループ化して、送信データ転送処理とそれに伴う料金を削減または不要にする手順が用意されています)。
 
-The [Storage Pricing Details](http://www.windowsazure.com/en-us/pricing/details/#storage) page provides detailed pricing information for storage capacity, replication, and transactions. The [Data Transfers Pricing Details](http://www.windowsazure.com/en-us/pricing/details/data-transfers/) provides detailed pricing information for data egress.
+ストレージ容量、レプリケーション、トランザクションの料金の詳細については、「[Storage (ストレージ サービス) の料金詳細](http://www.windowsazure.com/ja-jp/pricing/details/#storage)」のページを参照してください。送信データ転送の料金の詳細については、「[データ転送の料金詳細](http://www.windowsazure.com/ja-jp/pricing/details/data-transfers/)」を参照してください。
 
-##Concepts
+##概念
 
-- **geo-redundant storage (GRS)**   Geo-redundant storage provides the highest level of storage durability by seamlessly replicating your data to a secondary location within the same region. This enables failover in case of a major failure in the primary location. The secondary location is hundreds of miles from the primary location. GRS is implemented through a feature called *geo-replication*, which is turned on for a storage account by default, but can be turned off if you don't want to use it (for example, if company policies prevent its use). For more information, see [Introducing Geo-Replication for Azure Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/introducing-geo-replication-for-windows-azure-storage.aspx). 
+- **Geo 冗長ストレージ (GRS)**   Geo 冗長ストレージでは、同じリージョン内の 2 次拠点にデータをシームレスに複製することにより、最も優れたレベルのストレージの持続性が実現されます。この結果、1 次拠点で大規模な障害が発生した場合でも、フェールオーバーが利用できます。2 次拠点は、1 次拠点から数百 km 離れています。GRS は、ストレージ アカウントで既定で有効になっている *Geo レプリケーション*と呼ばれる機能を使用して実装されますが、この機能を使用することを望まない (たとえば、会社のポリシーで使用が禁止されている) 場合は、無効にできます。詳細については、[Azure のストレージの Geo レプリケーションの概要に関するページ](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/introducing-geo-replication-for-windows-azure-storage.aspx)を参照してください。
 
-- **locally redundant storage (LRS)**   Locally redundant storage provides highly durable and available storage within a single location. For locally redundant storage, account data is replicated three times within the same data center. All storage in Azure is locally redundant. For added durability, you can turn on geo-replication. Locally redundant storage is offered at a discount. For pricing information, see [Pricing Details](http://www.windowsazure.com/en-us/pricing/details/#storage). 
+- **ローカル冗長ストレージ (LRS)**   単一拠点内にある、持続性と可用性に優れたローカル冗長ストレージです。ローカル冗長ストレージの場合、アカウント データは同じデータ センター内で 3 回複製されます。Azure 内のすべてのストレージは、ローカル冗長です。持続性を強化するために、Geo レプリケーションを有効にすることもできます。ローカル冗長ストレージは、割引価格で使用できます。料金情報については、「[Azure 料金早見表](http://www.windowsazure.com/ja-jp/pricing/details/#storage)」を参照してください。
 
-- **affinity group**   An *affinity group* is a geographic grouping of your cloud service deployments and storage accounts within Azure. An affinity group can improve service performance by locating computer workloads in the same data center or near the target user audience. Also, no charges are incurred for data egress when data in your storage account is accessed by a service running in the same affinity group.
+- **アフィニティ グループ**   *アフィニティ グループ*は、Azure 内でクラウド サービス デプロイとストレージ アカウントを地理的にまとめたグループです。アフィニティ グループは、コンピューティング ワークロードを同じデータ センター内または対象ユーザーの近くに配置することにより、サービス パフォーマンスを向上させることができます。また、ストレージ アカウント内のデータが、同じアフィニティ グループ内で実行されているサービスによってアクセスされる場合は、送信データ転送に関する料金は発生しません。
 
-- **storage account endpoints**   The *endpoints* for a storage account represent the highest level of the namespace for accessing blobs, tables, or queues. The default endpoints for a storage account have the following formats: 
+- **ストレージ アカウント エンドポイント**   BLOB、テーブル、またはキューにアクセスするための最高レベルの名前空間を表すストレージ アカウントの*エンドポイント*です。ストレージ アカウントに対応する既定のエンドポイントでは、次の書式を使用します。
 
-    - Blob service: http://*mystorageaccount*.blob.core.windows.net
+    - BLOB サービス: http://*mystorageaccount*.blob.core.windows.net
 
-    - Table service: http://*mystorageaccount*.table.core.windows.net
+    - テーブル サービス: http://*mystorageaccount*.table.core.windows.net
 
-    - Queue service: http://*mystorageaccount*.queue.core.windows.net
+    - キュー サービス: http://*mystorageaccount*.queue.core.windows.net
 
-- **storage account URLs**   The URL for accessing an object in a storage account is formed by appending the object's location in the storage account to the endpoint. For example, a blob address might have this format: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
+- **ストレージ アカウント URL**   ストレージ アカウント内にあるオブジェクトにアクセスするための URL を形成するには、ストレージ アカウント内でのオブジェクトの場所をエンドポイントに追加します。たとえば、BLOB アドレスは、http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob* のような形式になります。
 
-- **storage access keys**   When you create a storage account, Azure generates two 512-bit storage access keys, which are used for authentication when the storage account is accessed. By providing two storage access keys, Azure enables you to regenerate the keys with no interruption to your storage service or access to that service.
+- **ストレージ アクセス キー**   ストレージ アカウントを作成するときに、Azure によって 2 つの 512 ビット ストレージ アクセス キーが生成されます。これらは、ストレージ アカウントにアクセスするときに認証の目的で使用されます。Azure によって 2 つのストレージ アクセス キーが提供される結果、ストレージ サービスやサービスへのアクセスを中断することなく、これらのキーを再生成できます。
 
-- **minimal vs. verbose metrics**   You can configure minimal or verbose metrics in the monitoring settings for your storage account. *Minimal metrics* collects metrics on data such as ingress/egress, availability, latency, and success percentages, which are aggregated for the Blob, Table, and Queue services. *Verbose metrics* collects operations-level detail in addition to service-level aggregates for the same metrics. Verbose metrics enable closer analysis of issues that occur during application operations. For the full list of available metrics, see [Storage Analytics Metrics Table Schema](http://msdn.microsoft.com/en-us/library/windowsazure/hh343264.aspx). For more information about storage monitoring, see [About Storage Analytics Metrics](http://msdn.microsoft.com/en-us/library/windowsazure/hh343258.aspx).
+- **最小限のメトリックと詳細メトリックの比較**   ストレージ アカウントの監視設定で、最小限のメトリック、または詳細メトリックを構成できます。*最低限のメトリック*の場合は、Blob サービス、テーブル サービス、キュー サービスに関して集計される、受信/送信、可用性、遅延時間、成功のパーセンテージなどのデータを収集します。*詳細メトリック*の場合は、同じメトリックに関するサービス レベルの集計に加えて、オペレーションレベルの詳細を収集します。詳細メトリックにより、アプリケーションの操作中に発生する問題を詳しく分析できます。使用可能なメトリックの詳細なリストについては、「[Storage Analytics Metrics のテーブル スキーマ](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343264.aspx)」を参照してください。ストレージ監視の詳細については、「[Storage Analytics Metrics について](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343258.aspx)」を参照してください。
 
-- **logging**   Logging is a configurable feature of storage accounts that enables logging of requests to read, write, and delete blobs, tables, and queues. You configure logging in the Azure Management Portal, but you can't view the logs in the Management Portal. The logs are stored and accessed in the storage account, in the $logs container. For more information, see [Storage Analytics Overview](http://msdn.microsoft.com/en-us/library/windowsazure/hh343268.aspx).
+- **ログ**   ログはストレージ アカウントの構成可能な機能であり、BLOB、テーブル、およびキューへの読み取り、書き込み、削除の各要求をログに記録できます。Azure の管理ポータルでログを構成しますが、管理ポータルでログを表示することはできません。ログは、ストレージ アカウント内の $logs コンテナーに格納され、アクセスできます。詳細については、「[Storage Analytics Overview (Storage Analytics の概要)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343268.aspx)」を参照してください。
+

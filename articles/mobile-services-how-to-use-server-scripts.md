@@ -1,58 +1,58 @@
-<properties linkid="register-for-facebook-auth" urlDisplayName="Mobile Services" pageTitle="Work with server scripts in Mobile Services" metaKeywords="server scripts, mobile devices, Azure, scheduler" description="Provides examples on how to define, register, and use server scripts in Azure Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="Work with server scripts in Mobile Services" authors="ricksal" solutions="" manager="" editor="" />
+<properties linkid="register-for-facebook-auth" urlDisplayName="Mobile Services " pageTitle="Mobile Services のサーバー スクリプトの操作" metaKeywords="サーバー スクリプト, モバイル デバイス, Azure, スケジューラ" description="Azure Mobile Services でサーバー スクリプトを定義、登録、および使用する方法の例を提供します。" metaCanonical="" services="" documentationCenter="Mobile" title="Mobile Services のサーバー スクリプトの操作" authors="ricksal" solutions="" manager="" editor="" />
 
 
-# Work with server scripts in Mobile Services
+# モバイル サービスのサーバー スクリプトの操作
  
-This article provides detailed information about and examples of how to work with server scripts in Azure Mobile Services. This topic is divided into these sections:
+この記事では、Azure Mobile Services でサーバー スクリプトを使用する方法についての詳細な情報と例を提供します。このトピックのセクションは次のとおりです。
 
-+ [Introduction]
-+ [Table operations]
-	+ [How to: Register for table operations]
-	+ [How to: Override the default response]
-	+ [How to: Override execute success]
-	+ [How to: Override default error handling]
-	+ [How to: Add custom parameters]
-	+ [How to: Work with table users][How to: Work with users]
-+ [Custom API][Custom API anchor]
-	+ [How to: Define a custom API]
-	+ [How to: Implement HTTP methods]
-	+ [How to: Send and receive data as XML]
-	+ [How to: Work with users and headers in a custom API]
-	+ [How to: Define multiple routes in a custom API]
-+ [Job Scheduler]
-	+ [How to: Define scheduled job scripts]
-+ [Source control, shared code, and helper functions]
-	+ [How to: Load Node.js modules]
-	+ [How to: Use helper functions]
-	+ [How to: Share code by using source control]
-	+ [How to: Work with app settings] 
-+ [Using the command line tool]
-+ [Working with tables]
-	+ [How to: Access tables from scripts]
-	+ [How to: Perform Bulk Inserts]
-	+ [How to: Map JSON types to database types]
-	+ [Using Transact-SQL to access tables]
-+ [Debugging and troubleshooting]
-	+ [How to: Write output to the mobile service logs]
++ [はじめに]
++ [テーブル操作]
+	+ [方法: テーブル操作に登録する]
+	+ [方法: 既定の応答をオーバーライドする]
+	+ [方法: execute success をオーバーライドする]
+	+ [方法: 既定のエラー処理をオーバーライドする]
+	+ [方法: カスタム パラメーターを追加する]
+	+ [方法: テーブルのユーザーを処理する][How to: Work with users]
++ [カスタム API][Custom API anchor]
+	+ [方法: カスタム API を定義する]
+	+ [方法: HTTP メソッドを実装する]
+	+ [方法: データを XML として送受信する]
+	+ [方法: カスタム API でユーザーとヘッダーを操作する]
+	+ [方法: カスタム API で複数のルートを定義する]
++ [ジョブ スケジューラ]
+	+ [方法: スケジュールされたジョブ スクリプトを定義する]
++ [ソース管理、共有コード、およびヘルパー関数]
+	+ [方法: Node.js モジュールを読み込む]
+	+ [方法: ヘルパー関数を使用する]
+	+ [方法: ソース管理を使用してコードを共有する]
+	+ [方法: アプリケーションの設定を操作する]
++ [コマンド ライン ツールの使用]
++ [テーブルの操作]
+	+ [方法: スクリプトからテーブルにアクセスする]
+	+ [方法: 一括挿入を実行する]
+	+ [方法: JSON 型をデータベース型にマッピングする]
+	+ [テーブルにアクセスするための Transact-SQL の使用]
++ [デバッグおよびトラブルシューティング]
+	+ [方法: 出力をモバイル サービス ログに書き込む]
 
-##<a name="intro"></a>Introduction
+##<a name="intro"></a>はじめに
 
-In Mobile Services, you can define custom business logic as JavaScript code that's stored and executed on the server. This server script code is assigned to one of the following server functionalities:
+モバイル サービスを使用すると、サーバーに格納されて実行される JavaScript コードとして、カスタムのビジネス ロジックを定義できます。このサーバー スクリプト コードは、次のサーバー機能のいずれかに割り当てられます。
 
-+ [Insert, read, update, or delete operations on a given table][Table operations].
-+ [Scheduled jobs][Job Scheduler].
-+ [HTTP methods defined in a custom API][Custom API anchor]. 
++ [特定のテーブルの挿入、読み取り、更新、または削除操作][Table operations]。
++ [スケジュールされたジョブ][Job Scheduler]。
++ [カスタム API で定義された HTTP メソッド][Custom API anchor]。
 
-The signature of the main function in the server script depends on the context of where the script is used. You can also define common script code as nodes.js modules that are shared across scripts. For more information, see [Source control and shared code][Source control, shared code, and helper functions].
+サーバー スクリプトのメイン関数のシグネチャは、スクリプトが使用されるコンテキストによって異なります。スクリプト間で共有される共通スクリプト コードを nodes.js モジュールとして定義することもできます。詳細については、「[ソース管理と共有コード][Source control, shared code, and helper functions]」を参照してください。
 
-For descriptions of individual server script objects and functions, see [Mobile Services server script reference]. 
+個々のサーバー スクリプト オブジェクトおよび関数の詳細については、「[Mobile Services server script reference (モバイル サービスのサーバー スクリプト リファレンス)]」を参照してください。
 
 
-##<a name="table-scripts"></a>Table operations
+##<a name="table-scripts"></a>テーブル操作
 
-A table operation script is a server script that is registered to an operation on a table--insert, read, update, or delete (*del*). The name of the script must match the kind of operation for which it is registered. Only one script can be registered for a given table operation. The script is executed every time that the given operation is invoked by a REST request&mdash;for example, when a POST request is received to insert an item into the table. Mobile Services does not preserve state between script executions. Because a new global context is created every time a script is run, any state variables that are defined in the script are reinitialized. If you want to store state from one request to another, create a table in your mobile service, and then read and write the state to the table. For more information, see [How to: Access tables from scripts].
+テーブル操作スクリプトは、テーブルに対する操作 (insert、read、update、または delete (*del*)) に登録されたサーバー スクリプトです。スクリプトの名前は、登録されている操作の種類と一致する必要があります。1 つのテーブル操作に対して登録できるスクリプトは 1 つだけです。REST 要求によって特定の操作が呼び出されるたびに、スクリプトが実行されます。たとえば、テーブルに項目を挿入する POST 要求を受け取ると、そのたびに特定のスクリプトが実行されます。Mobile Services では、スクリプトの実行間で状態は保持されません。スクリプトが実行されるたびに新しいグローバル コンテキストが作成されるため、スクリプトで定義されている状態変数がすべて再初期化されます。要求間で状態を保存する必要がある場合は、モバイル サービス上でテーブルを作成し、そのテーブルに対して状態を読み書きします。詳細については、「[方法: スクリプトからテーブルにアクセスする]」を参照してください。
 
-You write table operation scripts if you need to enforce customized business logic when the operation is executed. For example, the following script rejects insert operations where the string length of the `text` field is greater than ten characters: 
+操作が実行されたときにカスタマイズされたビジネス ロジックを強制的に実行する必要がある場合は、テーブル操作スクリプトを作成します。たとえば、次のスクリプトでは、`text` フィールドの文字列の長さが 10 文字を超える挿入操作を拒否します。
 
 	function insert(item, user, request) {
 	    if (item.text.length > 10) {
@@ -63,62 +63,62 @@ You write table operation scripts if you need to enforce customized business log
 	    }
 	}
 
-A table script function always takes three arguments.
+テーブル スクリプト関数は、常に 3 つの引数を受け取ります。
 
-- The first argument varies depending on the table operation. 
+- 最初の引数は、テーブル操作によって異なります。
 
-	- For inserts and updates, it is an **item** object, which is a JSON representation of the row being affected by the operation. This allows you to access column values by name, for example, *item.Owner*, where *Owner* is one of the names in the JSON representation.
-	- For a delete, it is the ID of the record to delete. 
-	- And for a read, it is a [query object] that specifies the rowset to return.
+	- 挿入と更新では、**item** オブジェクトです。これは、操作の影響を受ける行の JSON 表現です。そのため、*item.Owner* のように、名前で列の値にアクセスできます。*Owner* は JSON 表現でのいずれかの名前です。
+	- 削除では、削除するレコードの ID です。
+	- 読み取りでは、返される行セットを指定する [query オブジェクト]です。
 
-- The second argument is always a [user object][User object] that represents the user that submitted the request. 
+- 2 番目の引数は、常に要求を送信したユーザーを表す [user オブジェクト][User object]です。
 
-- The third argument is always a [request object][Request object], by which you can control execution of the requested operation and the response that's sent to the client.
+- 3 番目の引数は、常に [request オブジェクト][request オブジェクト]です。このオブジェクトを使用すると、要求された操作の実行およびクライアントに送信される応答を制御できます。
 
-Here are the canonical main-function signatures for the table operations: 
+テーブル操作の正規のメイン関数署名は次のとおりです。
 
 + [Insert][insert function]: `function insert (item, user, request) { ... }`
 + [Update][update function]: `function update (item, user, request) { ... }`
 + [Delete][delete function]: `function del (id, user, request) { ... }`
 + [Read][read function]: `function read (query, user, request) { ... }`
 
->[WACOM.NOTE]A function that's registered to the delete operation must be named _del_ because delete is a reserved keyword in JavaScript. 
+>[WACOM.NOTE]delete は JavaScript の予約語であるため、削除操作に登録する関数には _del_ という名前を付ける必要があります。
 
-Every server script has a main function, and may have optional helper functions. Even though a server script may have been been created for a specific table, it can also reference other tables in the same database. You can also define common functions as modules that can be shared across scripts. For more information, see [Source control and shared code][Source control, shared code, and helper functions].
+サーバー スクリプトには必ずメインの関数が含まれ、必要に応じて省略可能なヘルパー関数が使用されます。サーバー スクリプトが特定のテーブル用に作成されていても、同じデータベース内の他のテーブルも参照することができます。スクリプト間で共有できる一般的な関数をモジュールとして定義することもできます。詳細については、「[ソース管理と共有コード][Source control, shared code, and helper functions]」を参照してください。
 
-###<a name="register-table-scripts"></a>How to: Register table scripts
+###<a name="register-table-scripts"></a>方法: テーブル スクリプトを登録する
 
-You can define server scripts that are registered to a table operation in one of the following ways:
+次のいずれかの方法で、テーブル操作に登録されるサーバー スクリプトを定義できます。
 
-+ In the [Azure Management Portal][Management Portal]. Scripts for table operations are accessed in the **Scripts** tab for a given table. The following shows the default code registered to the insert script for the `TodoItem` table. You can override this code with your own custom business logic.
++ [Azure 管理ポータル][Management Portal]で。テーブル操作用のスクリプトには、特定のテーブルの **[スクリプト]** タブでアクセスします。`TodoItem` テーブルの挿入スクリプトに登録されている既定のコードを次に示します。このコードを独自のカスタム ビジネス ロジックでオーバーライドできます。
 
 	![1][1]
 	
-	To learn how to do this, see [Validate and modify data in Mobile Services by using server scripts].  
+	この方法については、「[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]」を参照してください。
 
-+ By using source control. When you have source control enabled, simply create a file named <em>`<table>`</em>.<em>`<operation>`</em>.js in the .\service\table subfolder in your git repository, where <em>`<table>`</em> is the name of the table and <em>`<operation>`</em> is the table operation being registered. For more information, see [Source control and shared code][Source control, shared code, and helper functions].
++ ソース管理を使用して。ソース管理を有効にしている場合は、単に git リポジトリの .\service\table サブフォルダーに .<em>`<table>`</em>.<em>`<operation>`</em>.js という名前のファイルを作成します。ここで、<em>`<table>`</em> はテーブルの名前であり、<em>`<operation>`</em> は登録するテーブル操作です。詳細については、「[ソース管理と共有コード][Source control, shared code, and helper functions]」を参照してください。
 
-+ From the command prompt by using the Azure command line tool. For more information, see [Using the command line tool].
++ コマンド プロンプトから Azure コマンド ライン ツールを使用して。詳細については、「[コマンド ライン ツールの使用]」を参照してください。
 
 
-A table operation script must call at least one of the following functions of the [request object] to make sure that the client receives a response. 
+テーブル操作スクリプトでは、[request オブジェクト]の次の関数のうちの少なくとも 1 つを呼び出して、クライアントが応答を確実に受信するようにする必要があります。
  
-+ **execute function**: The operation is completed as requested and the standard response is returned.
++ **execute 関数**: 操作を要求されたとおりに完了し、標準の応答を返します。
  
-+ **respond function**: A custom response is returned.
++ **respond 関数**: カスタム応答を返します。
 
-<div class="dev-callout"><strong>Important</strong>
-<p>When a script has a code path in which neither <b>execute</b> nor <b>respond</b> is invoked, the operation may become unresponsive.</p></div>
+<div class="dev-callout"><strong>重要</strong>
+<p>スクリプトに、<b>execute</b> も <b>respond</b> も呼び出されないコード パスが含まれている場合、操作が応答しなくなることがあります。</p></div>
 
-The following script calls the **execute** function to complete the data operation requested by the client: 
+次のスクリプトでは、**execute** 関数を呼び出して、クライアントによって要求されたデータ操作を完了します。
 
 	function insert(item, user, request) { 
 	    request.execute(); 
 	}
 
-In this example, the item is inserted into the database and the appropriate status code is returned to the user. 
+この例では、データベースに項目を挿入し、適切なステータス コードをユーザーに返します。
 
-When the **execute** function is called, the `item`, [query][query object], or `id` value that was passed as the first argument into the script function is used to perform the operation. For an insert, update or query operation, you can modify the item or query before you call **execute**: 
+**execute** 関数が呼び出されると、スクリプト関数に最初の引数として渡された `item`、[query][query object]、または `id` 値を使用して、操作を実行します。挿入、更新、またはクエリ操作では、**execute** を呼び出す前に、item や query を変更できます。
 
 	function insert(item, user, request) { 
 	    item.scriptComment =
@@ -138,14 +138,14 @@ When the **execute** function is called, the `item`, [query][query object], or `
 	    request.execute(); 
 	}
  
->[WACOM.NOTE]In a delete script, changing the value of the supplied userId variable does not affect which record gets deleted.
+>[WACOM.NOTE]削除スクリプトでは、指定した userId 変数の値を変更しても、削除されるレコードには影響しません。
 
-For more examples, see [Read and write data], [Modify the request] and [Validate data].
+その他の例については、「[データの読み取りと書き込み]」、「[要求の変更]」、および「[データの検証]」を参照してください。
 
 
-###<a name="override-response"></a>How to: Override the default response
+###<a name="override-response"></a>方法: 既定の応答をオーバーライドする
 
-You can also use a script to implement validation logic that can override the default response behavior. If validation fails, just call the **respond** function instead of the **execute** function and write the response to the client: 
+スクリプトを使用して、既定の応答動作をオーバーライドできる検証ロジックを実装することもできます。検証が失敗したら、**execute** 関数の代わりに **respond** 関数を呼び出して、応答をクライアントに書き込みます。
 
 	function insert(item, user, request) {
 	    if (item.userId !== user.userId) {
@@ -156,13 +156,13 @@ You can also use a script to implement validation logic that can override the de
 	    }
 	}
 
-In this example, the request is rejected when the inserted item does not have a `userId` property that matches the `userId` of the [user object] that's supplied for the authenticated client. In this case, a database operation (*insert*) does not occur, and a response that has a 403 HTTP status code and a custom error message is returned to the client. For more examples, see [Modify the response].
+この例では、挿入する項目の `userId` プロパティが、認証されたクライアントに関連して渡された [user オブジェクト]の `userId` と一致しない場合に、要求が拒否されます。その場合、データベース操作 (*insert*) は実行されず、403 HTTP ステータス コードとカスタム エラー メッセージを含む応答がクライアントに返されます。その他の例については、「[応答の変更]」を参照してください。
 
-###<a name="override-success"></a>How to: Override execute success
+###<a name="override-success"></a>方法: execute success をオーバーライドする
 
-By default in a table operation, the **execute** function writes responses automatically. However, you can pass two optional parameters to the execute function that override its behavior on success and/or on error.
+テーブル操作の場合、既定では、**execute** 関数は応答を自動的に書き込みます。ただし、execute 関数に、成功および失敗時の動作をオーバーライドする 2 つのオプション パラメーターを渡すことができます。
 
-By passing in a **success** handler when you call execute, you can modify the results of a query before you write them to the response. The following example calls `execute({ success: function(results) { ... })` to perform additional work after data is read from the database but before the response is written:
+execute を呼び出すときに **success** ハンドラーを渡すことで、クエリの結果を変更した後でそれを応答に書き込むことができます。次の例では、`execute({ success: function(results) { ... })` を呼び出すことで、データをデータベースから読み取ってから応答を書き込むまでの間に、追加の作業を実行します。
 
 	function read(query, user, request) {
 	    request.execute({
@@ -176,15 +176,15 @@ By passing in a **success** handler when you call execute, you can modify the re
 	    });
 	}
 
-When you provide a **success** handler to the **execute** function, you must also call the **respond** function as part of the **success** handler so that the runtime knows that the script has completed and that a response can be written. When you call **respond** without passing any arguments, Mobile Services generates the default response. 
+**execute** 関数に **success** ハンドラーを渡す場合は、スクリプトが完了して応答を書き込むことができることをランタイムに通知するために、**success** ハンドラーの一部として **respond** 関数も呼び出す必要があります。引数を渡さずに **respond** を呼び出すと、既定の応答がモバイル サービスによって生成されます。
 
->[WACOM.NOTE]You can call **respond** without arguments to invoke the default response only after you first call the **execute** function.
+>[WACOM.NOTE]最初に **execute** 関数を呼び出した後でのみ、引数を指定せずに **respond** 関数を呼び出すと、既定の応答を呼び出すことができます。
  
-###<a name="override-error"></a>How to: Override default error handling
+###<a name="override-error"></a>方法: 既定のエラー処理をオーバーライドする
 
-The **execute** function can fail if there is a loss of connectivity to the database, an invalid object, or an incorrect query. By default when an error occurs, server scripts log the error and write an error result to the response. Because Mobile Services provides default error handling, you don't have to handle errors that may occur in the service. 
+**execute** 関数は、データベースへの接続が失われた場合、オブジェクトが無効である場合、クエリが間違っている場合に失敗することがあります。エラーが発生すると、サーバー スクリプトは既定でエラーをログに記録し、エラー結果を応答に書き込みます。モバイル サービスには既定のエラー処理が用意されているため、サービスで発生する可能性のあるそうしたエラーを処理する必要はありません。
 
-You can override the default error handling by implementing explicit error handling if you want a particular compensating action or when you want to use the global console object to write more detailed information to the log. Do this by supplying an **error** handler to the **execute** function:
+特定の修正操作を実行する場合や、グローバル console オブジェクトを使用して詳細な情報をログに書き込む場合は、明示的なエラー処理を実装して、既定のエラー処理をオーバーライドすることができます。それには、**execute** 関数に **error** ハンドラーを渡します。
 
 	function update(item, user, request) { 
 	  request.execute({ 
@@ -196,19 +196,19 @@ You can override the default error handling by implementing explicit error handl
 	}
  
 
-When you provide an error handler, Mobile Services returns an error result to the client when **respond** is called.
+error ハンドラーを渡した場合は、**respond** が呼び出されたときに、モバイル サービスからクライアントにエラー結果が返されます。
 
-You can also provide both a **success** and an **error** handler if you wish.
+必要であれば、**success** ハンドラーと **error** ハンドラーも渡すことができます。
 
-###<a name="access-headers"></a>How to: Access custom parameters
+###<a name="access-headers"></a>方法: カスタム パラメーターにアクセスする
 
-When you send a request to your mobile service, you can include custom parameters in the URI of the request to instruct your table operation scripts how to process a given request. You then modify your script to inspect the parameter to determine the processing path.
+モバイル サービスに要求を送信する際に、要求の URI に 1 つ以上のカスタム パラメーターを含めることで、特定の要求の処理方法をテーブル操作スクリプトに指定できます。その後、処理パスを判断するためにパラメーターを調べるようにスクリプトを変更します。
 
-For example, the following URI for a POST request tells the service to not permit the insertion of a new *TodoItem* that has the same text value:
+たとえば、POST 要求の次の URI では、同じテキスト値を持つ新しい *TodoItem* の挿入を許可しないようにサービスに指示します。
 
 		https://todolist.azure-mobile.net/tables/TodoItem?duplicateText=false
 
-These custom query parameters are accessed as JSON values from the **parameters** property of the [request object]. The **request** object is supplied by Mobile Services to any function registered to a table operation. The following server script for the insert operation checks the value of the `duplicateText` parameter before the insert operation is run:
+これらのカスタム クエリ パラメーターには、[request オブジェクト]の **parameters** プロパティから JSON 値としてアクセスします。**request** オブジェクトは、モバイル サービスからテーブル操作に登録されている関数に提供されます。次の挿入操作のサーバー スクリプトでは、挿入操作を実行する前に、`duplicateText` パラメーターの値を確認します。
 
 		function insert(item, user, request) {
 		    var todoItemTable = tables.getTable('TodoItem');
@@ -238,15 +238,15 @@ These custom query parameters are accessed as JSON values from the **parameters*
 		    }
 		}
 
-Note that in **insertItemIfNotComplete** the **execute** function of the [request object] is invoked to insert the item when there is no duplicate text; otherwise the **respond** function is invoked to notify the client of the duplicate. 
+**insertItemIfNotComplete** では、重複するテキストが存在しない場合は、[request オブジェクト]の **execute** 関数を呼び出して、項目を挿入します。それ以外の場合は、**respond** 関数を呼び出して、重複についてクライアントに通知します。
 
-Note the syntax of the call to the **success** function in the above code:
+前のコードでの **success** 関数への呼び出しの構文に注意してください。
 
  		        }).read({
 		            success: insertItemIfNotComplete
 		        });
 
-In JavaScript it is a compact version of the lengthier equivalent: 
+JavaScript では、これは次のようなより長い構文の短縮版です。
 
 		success: function(results) 
 		{ 
@@ -254,16 +254,16 @@ In JavaScript it is a compact version of the lengthier equivalent:
 		}
 
 
-###<a name="work-with-users"></a>How to: Work with users
+###<a name="work-with-users"></a>方法: ユーザーを処理する
 
-In Azure Mobile Services, you can use an identity provider to authenticate users. For more information, see [Get started with authentication]. When an authenticated user invokes a table operation, Mobile Services uses the [user object] to supply information about the user to the registered script function. The **userId** property can be used to store and retrieve user-specific information. The following example sets the owner property of an item based on the userId of an authenticated user:
+Azure Mobile Services では、ID プロバイダーを使用して、ユーザーを認証できます。詳細については、「[認証の使用]」を参照してください。認証されたユーザーがテーブル操作を呼び出したとき、モバイル サービスでは [user オブジェクト]を使用して、登録されたスクリプト関数にユーザーに関する情報を渡します。**userId** プロパティを使用すると、ユーザー固有の情報を保存および取得できます。次の例では、認証済みのユーザーの userId に基づいて、item の owner プロパティを設定します。
 
 	function insert(item, user, request) {
 	    item.owner = user.userId;
 	    request.execute();
 	}
 
-The next example adds an additional filter to the query based on the **userId** of an authenticated user. This filter restricts the result to only items that belong to the current user:  
+次の例では、認証されたユーザーの **userId** に基づいて、query にフィルターを追加します。このフィルターでは、結果が現在のユーザーに属する項目のみに制限されます。
 
 	function read(query, user, request) {
 	    query.where({
@@ -272,39 +272,39 @@ The next example adds an additional filter to the query based on the **userId** 
 	    request.execute();
 	}
 
-##<a name="custom-api"></a>Custom API
+##<a name="custom-api"></a>カスタム API
 
-A custom API is an endpoint in your mobile service that is accessed by one or more of the standard HTTP methods: GET, POST, PUT, PATCH, DELETE. A separate function export can be defined for each HTTP method supported by the custom API, all in a single script file. The registered script is invoked when a request to the custom API using the given method is received. For more information, see [Custom API].
+カスタム API は、GET、POST、PUT、PATCH、DELETE という 1 つ以上の標準 HTTP メソッドによってアクセスされる、モバイル サービスのエンドポイントです。カスタム API によってサポートされている各 HTTP メソッドに個別の関数 export を定義し、すべてを 1 つのスクリプト ファイルに含めることができます。特定のメソッドを使用するカスタム API への要求が受信されると、登録されたスクリプトが呼び出されます。詳細については、「[カスタム API]」を参照してください。
 
-When custom API functions are called by the Mobile Services runtime, both a [request][request object] and [response][response object] object are supplied. These objects expose the functionality of the [express.js library], which can be leveraged by your scripts. The following custom API named **hello** is a very simple example that returns _Hello, world!_ in response to a POST request:
+カスタム API 関数がモバイル サービス ランタイムによって呼び出される場合は、[request オブジェクト][request object]と [response オブジェクト][response object]の両方が提供されます。これらのオブジェクトは、[express.js ライブラリ]の機能を公開します。その機能をスクリプトで利用できます。次の **hello** という名前のカスタム API は、非常に単純な例で、POST 要求に対して "_Hello, world!_" を返します。
 
 		exports.post = function(request, response) {
 		    response.send(200, "{ message: 'Hello, world!' }");
 		} 
 
-The **send** function on the [response object] returns your desired response to the client. This code is invoked by sending a POST request to the following URL:
+[response オブジェクト]の **send** 関数は、指定された応答をクライアントに返します。このコードは、次の URL への POST 要求が送信されたときに呼び出されます。
 
 		https://todolist.azure-mobile.net/api/hello  
 
-The global state is maintained between executions. 
+グローバル状態は実行間で維持されます。
 
-###<a name="define-custom-api"></a>How to: Define a custom API
+###<a name="define-custom-api"></a>方法: カスタム API を定義する
 
-You can define server scripts that are registered to HTTP methods in a custom API endpoint in one of the following ways:
+次のいずれかの方法で、カスタム API エンドポイントの HTTP メソッドに登録されるサーバー スクリプトを定義できます。
 
-+ In the [Azure Management Portal][Management Portal]. Custom API scripts are created and modified in the **API** tab. The server script code is in the **Scripts** tab of a given custom API. The following shows the script that is invoked by a POST request to the `CompleteAll` custom API endpoint. 
++ [Azure 管理ポータル][Management Portal]で。カスタム API スクリプトは、**[API]** タブで作成および変更できます。サーバー スクリプト コードは、特定のカスタム API の **[スクリプト]** タブにあります。次の図は、`CompleteAll` というカスタム API エンドポイントへの POST 要求によって呼び出されるスクリプトを示しています。
 
 	![2][2]
 	
-	Access permissions to custom API methods are assigned in the Permissions tab. To see how this custom API was created, see [Call a custom API from the client].  
+	カスタム API メソッドに対するアクセス許可は、[アクセス許可] タブで割り当てます。このカスタム API がどのように作成されたかを確認するには、「[クライアントからのカスタム API 呼び出し]」を参照してください。
 
-+ By using source control. When you have source control enabled, simply create a file named <em>`<custom_api>`</em>.js in the .\service\api subfolder in your git repository, where <em>`<custom_api>`</em> is the name of the custom API being registered. This script file contains an _exported_ function for each HTTP method exposed by the custom API. Permissions are defined in a companion .json file. For more information, see [Source control and shared code][Source control, shared code, and helper functions].
++ ソース管理を使用して。ソース管理を有効にしている場合は、単に git リポジトリの .\service\api サブフォルダーに <em>`<custom_api>`</em>.js という名前のファイルを作成します。ここで、<em>`<custom_api>`</em> は登録するカスタム API の名前です。このスクリプト ファイルには、カスタム API によって公開されている各 HTTP メソッドの _exported_ 関数が含まれています。アクセス許可は、付属 .json ファイルで定義されます。詳細については、「[ソース管理と共有コード][Source control, shared code, and helper functions]」を参照してください。
 
-+ From the command prompt by using the Azure command line tool. For more information, see [Using the command line tool].
++ コマンド プロンプトから Azure コマンド ライン ツールを使用して。詳細については、「[コマンド ライン ツールの使用]」を参照してください。
 
-###<a name="handle-methods"></a>How to: Implement HTTP methods
+###<a name="handle-methods"></a>方法: HTTP メソッドを実装する
 
-A custom API can handle one or more of the HTTP methods, GET, POST, PUT, PATCH, and DELETE. An exported function is defined for each HTTP method handled by the custom API. A single custom API code file can export one or all of the following functions:
+カスタム API は、1 つ以上の HTTP メソッド (GET、POST、PUT、PATCH、および DELETE) を処理できます。カスタム API によって処理される HTTP メソッドごとに、エクスポートされる関数が定義されます。1 つのカスタム API コード ファイルは、次の関数の 1 つまたはすべてをエクスポートできます。
 
 		exports.get = function(request, response) { ... };
 		exports.post = function(request, response) { ... };
@@ -312,13 +312,13 @@ A custom API can handle one or more of the HTTP methods, GET, POST, PUT, PATCH, 
 		exports.put = function(request, response) { ... };
 		exports.delete = function(request, response) { ... };
 
-The custom API endpoint cannot be called using an HTTP method that has not been implemented in the server script, and a 405 (Method Not Allowed) error response is returned. Separate permission levels can be assigned to each support HTTP method.
+カスタム API エンドポイントは、サーバー スクリプトで実装されていない HTTP メソッドを使用して呼び出すことはできず、405 (許可されていないメソッド) エラー応答が返されます。各サポート HTTP メソッドに個別のアクセス許可レベルを割り当てることができます。
 
-###<a name="api-return-xml"></a>How to: Send and receive data as XML
+###<a name="api-return-xml"></a>方法: データを XML として送受信する
 
-When clients store and retrieve data, Mobile Services uses JavaScript Object Notation (JSON) to represent data in the message body. However, there are scenarios where you instead want to use an XML payload. For example, Windows Store apps have a built-in periodic notifications functionality that requires the service to emit XML. For more information, see [Define a custom API that supports periodic notifications].
+クライアントがデータを格納および取得するときに、モバイル サービスは JavaScript Object Notation (JSON) を使用してメッセージ本体のデータを表現します。ただし、そうするのではなく、XML ペイロードを使用したいシナリオもあります。たとえば、Windows ストア アプリには、サービスに XML の発行を要求する、組み込みの定期的な通知機能があります。詳細については、「[Define a custom API that supports periodic notifications (定期的な通知をサポートするカスタム API の定義)]」を参照してください。
 
-The following **OrderPizza** custom API function returns a simple XML document as the response payload:
+次の **OrderPizza** カスタム API 関数は、応答ペイロードとして単純な XML ドキュメントを返します。
 
 		exports.get = function(request, response) {
 		  response.set('content-type', 'application/xml');
@@ -326,15 +326,15 @@ The following **OrderPizza** custom API function returns a simple XML document a
 		  response.send(200, xml);
 		};
 
-This custom API function is invoked by an HTTP GET request to the following endpoint:
+このカスタム API 関数は、次のエンドポイントへの HTTP GET 要求によって呼び出されます。
 
 		https://todolist.azure-mobile.net/api/orderpizza
 
-###<a name="get-api-user"></a>How to: Work with users and headers in a custom API
+###<a name="get-api-user"></a>方法: カスタム API でユーザーとヘッダーを操作する
 
-In Azure Mobile Services, you can use an identity provider to authenticate users. For more information, see [Get started with authentication]. When an authenticated user requests a custom API, Mobile Services uses the [user object] to provide information about the user to custom API code. The [user object] is accessed from the user property of the [request object]. The **userId** property can be used to store and retrieve user-specific information. 
+Azure Mobile Services では、ID プロバイダーを使用して、ユーザーを認証できます。詳細については、「[認証の使用]」を参照してください。認証されたユーザーがカスタム API を要求すると、モバイル サービスは [user オブジェクト]を使用して、カスタム API コードにユーザーに関する情報を提供します。[user オブジェクト]には、[request オブジェクト]の user プロパティからアクセスします。**userId** プロパティを使用すると、ユーザー固有の情報を保存および取得できます。
 
-The following **OrderPizza** custom API function sets the owner property of an item based on the userId of an authenticated user:
+次の **OrderPizza** カスタム API 関数では、認証済みのユーザーの userId に基づいて、item の owner プロパティを設定します。
 
 		exports.post = function(request, response) {
 			var userTable = request.service.tables.getTable('user');
@@ -348,27 +348,27 @@ The following **OrderPizza** custom API function sets the owner property of an i
 		
 		};
 
-This custom API function is invoked by an HTTP POST request to the following endpoint:
+このカスタム API 関数は、次のエンドポイントへの HTTP POST 要求によって呼び出されます。
 
 		https://<service>.azure-mobile.net/api/orderpizza
 
-You can also access a specific HTTP header from the [request object], as shown in the following code:
+次のコードに示すように、[request オブジェクト]から特定の HTTP ヘッダーにアクセスすることもできます。
 
 		exports.get = function(request, response) {    
     		var header = request.header('my-custom-header');
     		response.send(200, "You sent: " + header);
 		};
 
-This simple example reads a custom header named `my-custom-header`, then returns the value in the response.
+この単純な例は、`my-custom-header` という名前のカスタム ヘッダーを読み取り、応答内で値を返します。
 
-###<a name="api-routes"></a>How to: Define multiple routes in a custom API
+###<a name="api-routes"></a>方法: カスタム API で複数のルートを定義する
 
-Mobile Services enables you to define multiple paths, or routes, in a custom API. For example, HTTP GET requests to the following URLs in a **calculator** custom API will invoke an **add** or **subtract** function, respectively: 
+モバイル サービスでは、カスタム API 内で複数のパス (ルート) を定義できます。たとえば、**calculator** カスタム API での次の URL への HTTP GET 要求は、それぞれ **add** 関数または **subtract** 関数を呼び出します。
 
 + `https://<service>.azure-mobile.net/api/calculator/add`
 + `https://<service>.azure-mobile.net/api/calculator/sub`
 
-Multiple routes are defined by exporting a **register** function, which is passed an **api** object (similar to the [express object in express.js]) that is used to register routes under the custom API endpoint. The following example implements the **add** and **sub** methods in the **calculator** custom API: 
+複数のルートは、**register** 関数をエクスポートすることによって定義されます。この関数は、ルートをカスタム API エンドポイントに登録するために使用される **api** オブジェクト ([express.js 内の express オブジェクト]に似たオブジェクト) を渡されます。次の例は、**calculator** カスタム API の **add** メソッドと **sub** メソッドを実装しています。
 
 		exports.register = function (api) {
 		    api.get('add', add);
@@ -385,9 +385,9 @@ Multiple routes are defined by exporting a **register** function, which is passe
 		    res.send(200, { result: result });
 		}
 
-The **api** object passed to the **register** function exposes a function for each HTTP method (**get**, **post**, **put**, **patch**, **delete**). These functions register a route to a defined function for a specific HTTP method. Each function takes two parameters, the first is the route name and the second is the function registered to the route. 
+**register** 関数に渡された **api** オブジェクトは、各 HTTP メソッド (**get**、**post**、**put**、**patch**、**delete**) の関数を公開します。これらの関数は、特定の HTTP メソッド用に定義された関数にルートを登録します。各関数は 2 つのパラメーターを受け取ります。最初のパラメーターはルート名で、2 つ目のパラメーターはルートに登録される関数です。
 
-The two routes in the above custom API example can be invoked by HTTP GET requests as follows (shown with the response):
+前のカスタム API の例での 2 つのルートは、次のような HTTP GET 要求で呼び出すことができます (応答と共に示します)。
 
 + `https://<service>.azure-mobile.net/api/calculator/add?a=1&b=2`
 
@@ -397,47 +397,47 @@ The two routes in the above custom API example can be invoked by HTTP GET reques
 
 		{"result":-2}
 
-##<a name="scheduler-scripts"></a>Job Scheduler
+##<a name="scheduler-scripts"></a>ジョブ スケジューラ
 
-Mobile Services enables you to define server scripts that are executed either as jobs on a fixed schedule or on-demand from the Management Portal. Scheduled jobs are useful for performing periodic tasks such as cleaning-up table data and batch processing. For more information, see [Schedule jobs].
+モバイル サービスを使用すると、決まったスケジュールでのジョブまたは管理ポータルからのオンデマンドとして実行できるサーバー スクリプトを定義できます。スケジュールされたジョブは、テーブル データのクリーンアップやバッチ処理のような定期的なタスクを実行する場合に便利です。詳細については、「[ジョブのスケジュール]」を参照してください。
 
-Scripts that are registered to scheduled jobs have a main function with the same name as the scheduled job. Because a scheduled script is not invoked by an HTTP request, there is no context that can be passed by the server runtime and the function takes no parameters. Like other kinds of scripts, you can have subroutine functions and require shared modules. For more information, see [Source control, shared code, and helper functions].
+スケジュールされたジョブに登録されているスクリプトには、スケジュールされたジョブと同じ名前のメイン関数があります。スケジュールされたスクリプトは HTTP 要求によって呼び出されないため、サーバー ランタイムによって渡すことができるコンテキストがなく、関数はパラメーターを受け取りません。他の種類のスクリプトと同様に、サブルーティン関数を使用したり、共有モジュールを要求したりすることができます。詳細については、「[ソース管理、共有コード、およびヘルパー関数]」を参照してください。
 
-###<a name="scheduler-scripts"></a>How to: Define scheduled job scripts
+###<a name="scheduler-scripts"></a>方法: スケジュールされたジョブ スクリプトを定義する
 
-A server script can be assigned to a job that's defined in the Mobile Services Scheduler. These scripts belong to the job and are executed according to the job schedule. (You can also use the [Management Portal] to run jobs on demand.) A script that defines a scheduled job has no parameters because Mobile Services doesn't pass it any data; it's executed as a regular JavaScript function and doesn't interact with Mobile Services directly. 
+サーバー スクリプトは、モバイル サービス スケジューラで定義されたジョブに割り当てることができます。これらのスクリプトは、ジョブに属し、ジョブ スケジュールに従って実行されます ([管理ポータル]を使用してジョブをオンデマンドで実行することもできます)。スケジュールされたジョブを定義するスクリプトでは、モバイル サービスからデータが渡されないため、パラメーターはありません。このようなスクリプトは通常の JavaScript 関数として実行され、モバイル サービスと直接データをやり取りすることはありません。
 
-You define scheduled jobs in one of the following ways: 
+スケジュールされたジョブは、次のいずれかの方法で定義できます。
 
-+ In the [Azure Management Portal][Management Portal] in the **Script** tab in the scheduler:
++ [Azure 管理ポータル][Management Portal]のスケジューラの **[スクリプト]** タブで。
 
 	![3][3]
 
-	For more information about how to do this, see [Schedule backend jobs in Mobile Services]. 
+	これを行う方法の詳細については、[モバイル サービスでのバックエンド ジョブの計画]に関するページを参照してください。
 
-+ From the command prompt by using the Azure command line tool. For more information, see [Using the command line tool].
++ コマンド プロンプトから Azure コマンド ライン ツールを使用して。詳細については、「[コマンド ライン ツールの使用]」を参照してください。
 
->[WACOM.NOTE]When you have source control enabled, you can edit scheduled job script files directly in the .\service\scheduler subfolder in your git repository. For more information, see [How to: Share code by using source control].
+>[WACOM.NOTE]ソース管理を有効にしている場合は、git リポジトリの .\service\scheduler サブフォルダーにあるスケジュールされたジョブのスクリプト ファイルを直接編集できます。詳細については、「[方法: ソース管理を使用してコードを共有する]」を参照してください。
 
-##<a name="shared-code"></a>Source control, shared code, and helper functions
+##<a name="shared-code"></a>ソース管理、共有コード、およびヘルパー関数
 
-Because Mobile Services uses Node.js on the server, your scripts already have access to the built-in Node.js modules. You can also use source control to define your own modules or add other Node.js modules to your service.
+モバイル サービスはサーバーの Node.js を使用するため、スクリプトは既に組み込みの Node.js モジュールへのアクセス許可を持っています。ソース管理を使用して独自のモジュールを定義したり、他の Node.js モジュールをサービスに追加したりすることもできます。
 
-The following are just some of the more useful modules that can be leveraged in your scripts by using the global **require** function:
+以下に、グローバルな **require** 関数を使用することによってスクリプトで利用できるいくつかのより便利なモジュールを示します。
 
-+ **azure**: Exposes the functionality of the Azure SDK for Node.js. For more information, see the [Azure SDK for Node.js]. 
-+ **crypto**: Provides crypto functionality of OpenSSL. For more information, see the [Node.js documentation][crypto API].
-+ **path**: Contains utilities for working with file paths. For more information, see the [Node.js documentation][path API].
-+ **querystring**: Contains utilities for working with query strings. For more information, see the [Node.js documentation][querystring API].
-+ **request**: Sends HTTP requests to external REST services, such as Twitter and Facebook. For more information, see [Send HTTP request].
-+ **sendgrid**: Sends email by using the Sendgrid email service in Azure. For more information, see [Send email from Mobile Services with SendGrid].
-+ **url**: Contains utilities to parse and resolve URLs. For more information, see the [Node.js documentation][url API].
-+ **util**: Contains various utilities, such as string formatting and object type checking. For more information, see the [Node.js documentation][util API]. 
-+ **zlib**: Exposes compression functionality, such as gzip and deflate. For more information, see the [Node.js documentation][zlib API]. 
++ **azure**: Node.js に対して Azure SDK の機能を公開します。詳細については、「[Azure SDK for Node.js]」を参照してください。
++ **crypto**: OpenSSL の暗号化機能を提供します。詳細については、[Node.js に関するドキュメント][crypto API]を参照してください。
++ **path**: ファイル パスを操作するためのユーティリティが含まれています。詳細については、[Node.js に関するドキュメント][path API]を参照してください。
++ **querystring**: クエリ文字列を操作するためのユーティリティが含まれています。詳細については、[Node.js に関するドキュメント][querystring API]を参照してください。
++ **request**: Twitter や Facebook などの外部 REST サービスに HTTP 要求を送信します。詳細については、「[HTTP 要求の送信]」を参照してください。
++ **sendgrid**: Azure の Sendgrid 電子メール サービスを使用して、電子メールを送信します。詳細については、「[Send email from Mobile Services with SendGrid (SendGrid を使用したモバイル サービスからの電子メールの送信)]」を参照してください。
++ **url**: URL を解析および解決するためのユーティリティが含まれています。詳細については、[Node.js に関するドキュメント][url API]を参照してください。
++ **util**: 文字列の書式設定やオブジェクトの種類の確認など、さまざまなユーティリティが含まれています。詳細については、[Node.js に関するドキュメント][util API]を参照してください。
++ **zlib**: gzip や deflate などの圧縮機能を公開します。詳細については、[Node.js に関するドキュメント][zlib API]を参照してください。
 
-###<a name="modules-helper-functions"></a>How to: Leverage modules
+###<a name="modules-helper-functions"></a>方法: モジュールを利用する
 
-Mobile Services exposes a set of modules that scripts can load by using the global **require** function. For example, a script can require **request** to make HTTP requests: 
+モバイル サービスでは、スクリプトで **require** グローバル関数を使用して読み込むことができる一連のモジュールを公開しています。たとえば、スクリプトから **request** で HTTP 要求を行うよう要求できます。
 
 	function update(item, user, request) { 
 	    var httpRequest = require('request'); 
@@ -447,25 +447,25 @@ Mobile Services exposes a set of modules that scripts can load by using the glob
 	} 
 
 
-###<a name="shared-code-source-control"></a>How to: Share code by using source control
+###<a name="shared-code-source-control"></a>方法: ソース管理を使用してコードを共有する
 
-You can use source control with the Node.js package manager (npm) to control which modules are available to your mobile service. There are two ways to do this:
+ソース管理で Node.js のパッケージ マネージャー (npm) を使用して、モバイル サービスで利用できるモジュールを制御することができます。この作業を実行する 2 つの方法があります。
 
-+ For modules that are published to and installed by npm, use the package.json file to declare which packages you want to be installed by your mobile service. In this way, your service always has access to the latest version of the required packages. The package.json file lives in the `.\service` directory. For more information, see [Support for package.json in Azure Mobile Services].
++ npm によって発行およびインストールされるモジュールでは、package.json ファイルを使用して、モバイル サービスからインストールしようとするパッケージを宣言します。この方法で、サービスは常に、必要なパッケージの最新バージョンにアクセスできます。package.json ファイルは、`.\service` フォルダー内に存在しています。詳細については、「[Azure Mobile Services 内での package.json のサポート]」を参照してください。
 
-+ For private or custom modules, you can use npm to manually install the module into the `.\service\node_modules` directory of your source control. For an example of how to manually upload a module, see [Leverage shared code and Node.js modules in your server scripts].
++ プライベート モジュールまたはカスタム モジュールの場合は、npm を使用して、ソース管理の `.\service\node_modules` ディレクトリにモジュールを手動でインストールすることができます。モジュールを手動でアップロードする方法の例については、「[サーバー スクリプトで共有コードと Node.js モジュールを活用する]」を参照してください。
 
-	>[WACOM.NOTE]When `node_modules` already exists in the directory hierarchy, NPM will create the `\node-uuid` subdirectory there instead of creating a new `node_modules` in the repository. In this case, just delete the existing `node_modules` directory.
+	>[WACOM.NOTE]ディレクトリ階層の中に `node_modules` ディレクトリが既に存在している場合、リポジトリ内に新しい `node_modules` が作成されるのではなく、その既存のディレクトリの中に `\node-uuid` サブディレクトリが作成されます。この場合、既存の `node_modules` ディレクトリを削除してください。
 
-After you commit the package.json file or custom modules to the repository for your mobile service, use **require** to reference the modules by name.   
+モバイル サービスに対応する package.json ファイルまたはカスタム モジュールをリポジトリにコミットした後、**require** を使用してそのモジュールを名前によって参照します。
 
->[WACOM.NOTE] Modules that you specify in package.json or upload to your mobile service are only used in your server script code. These modules are not used by the Mobile Services runtime.
+>[WACOM.NOTE] package.json 内で指定するモジュール、またはモバイル サービスにアップロードするモジュールは、サーバー スクリプト コード内でのみ使用されます。これらのモジュールは、モバイル サービス ランタイムによって使用されることはありません。
 
-###<a name="helper-functions"></a>How to: Use helper functions
+###<a name="helper-functions"></a>方法: ヘルパー関数を使用する
 
-In addition to requiring modules, individual server scripts can include helper functions. These are functions that are separate from the main function, which can be used to factor code in the script. 
+モジュールを要求する方法に加えて、個々のサーバー スクリプトにヘルパー関数を含めることもできます。これらはメイン関数から分離された関数であり、スクリプト内のコードを分割するために使用できます。
 
-In the following example, a table script is registered to the insert operation, which includes the helper function **handleUnapprovedItem**:
+次の例では、テーブル スクリプトが挿入操作に登録されます。この挿入操作に、ヘルパー関数 **handleUnapprovedItem** が含まれています。
 
 
 	function insert(item, user, request) {
@@ -480,9 +480,9 @@ In the following example, a table script is registered to the insert operation, 
 	    // Do something with the supplied item, user, or request objects.
 	}
  
-In a script, helper functions must be declared after the main function. You must declare all variables in your script. Undeclared variables cause an error.
+スクリプトでは、メインの関数の後にヘルパー関数を宣言する必要があります。スクリプトでは、すべての変数を定義する必要があります。宣言されていない変数があると、エラーが発生します。
 
-Helper functions can also be defined once and shared between server scripts. To share a function between scripts, functions must be exported and the script file must exist in the `.\service\shared\` directory. The following is a template for how to export a shared function in a file `.\services\shared\helpers.js`:
+ヘルパー関数は、1 回だけ定義して、複数のサーバー スクリプト間で共有することもできます。スクリプト間で関数を共有するには、関数をエクスポートし、スクリプト ファイルを `.\service\shared\` ディレクトリに保存する必要があります。次に示すのは、ファイル `.\services\shared\helpers.js` 内の共有関数をエクスポートするためのテンプレートです。
 
 		exports.handleUnapprovedItem = function (tables, user, callback) {
 		    
@@ -490,7 +490,7 @@ Helper functions can also be defined once and shared between server scripts. To 
 			// return a value to the callback function.
 		};
  
-You can then use a function like this in a table operation script:
+その後は、テーブル操作スクリプトで次のようにして関数を使用することができます。
 
 		function insert(item, user, request) {
 		    var helper = require('../shared/helper');
@@ -502,15 +502,15 @@ You can then use a function like this in a table operation script:
 		    }
 		}
 
-In this example, you must pass both a [tables object] and a [user object] to the shared function. This is because shared scripts cannot access the global [tables object], and the [user object] only exists in the context of a request.
+この例では、[tables オブジェクト]と [user オブジェクト]の両方を共有関数に渡す必要があります。これは、共有スクリプトがグローバルな [tables オブジェクト]にアクセスできず、[user オブジェクト]は要求のコンテキストだけに存在するためです。
 
-Script files are uploaded to the shared directory either by using [source control][How to: Share code by using source control] or by using the [command line tool][Using the command line tool].
+スクリプト ファイルは、[ソース管理][How to: Share code by using source control]を使用するか、[コマンド ライン ツール][Using the command line tool]を使用して、共有ディレクトリにアップロードされます。
 
-###<a name="app-settings"></a>How to: Work with app settings
+###<a name="app-settings"></a>方法: アプリケーションの設定を操作する
 
-Mobile Services enables you to securely store values as app settings, which can be accessed by your server scripts at runtime.  When you add data to the app settings of your mobile service, the name/value pairs are stored encrypted and you can access them in your server scripts without hard-coding them in the script file. For more information, see [App settings].
+モバイル サービスを使用すると、値をアプリケーション設定として安全に格納できます。アプリケーション設定には、実行時にサーバー スクリプトからアクセスできます。モバイル サービスのアプリケーション設定にデータを追加すると、名前/値ペアが暗号化されて格納され、サーバー スクリプトでそれらにアクセスできます。スクリプト ファイル内でそれらをハード コーディングする必要はありません。詳細については、「[アプリ設定]」を参照してください。
 
-The following custom API example uses the supplied [service object] to retrieve an app setting value.  
+次のカスタム API の例は、指定された [service オブジェクト]を使用してアプリケーション設定値を取得します。
 
 		exports.get = function(request, response) {
 		
@@ -522,7 +522,7 @@ The following custom API example uses the supplied [service object] to retrieve 
 
 		}
 
-The following code uses the configuration module to retrieve Twitter access token values, stored in app settings, that are used in a scheduled job script:
+次のコードは構成モジュールを使用して、アプリケーション設定に格納されている Twitter アクセス トークン値を取得します。この値が、スケジュールされたジョブのスクリプトで使用されます。
 
 		// Get the service configuration module.
 		var config = require('mobileservice-config');
@@ -534,23 +534,23 @@ The following code uses the configuration module to retrieve Twitter access toke
 		var accessToken= config.appSettings.TWITTER_ACCESS_TOKEN,
 		    accessTokenSecret = config.appSettings.TWITTER_ACCESS_TOKEN_SECRET;
 
-Note that this code also retrieves Twitter consumer key values stored in the **Identity** tab in the portal. Because a **config object** is not available in table operation and scheduled job scripts, you must require the configuration module to access app settings. For a complete example, see [Schedule backend jobs in Mobile Services].
+このコードは、ポータルの **[ID]** タブに格納されている Twitter コンシューマー キー値も取得します。**config オブジェクト**はテーブル操作とスケジュールされたジョブ スクリプトでは使用できないため、アプリケーション設定にアクセスするには構成モジュールを要求する必要があります。完全な例については、「[モバイル サービスでのバックエンド ジョブの計画]」を参照してください。
 
-<h2><a name="command-prompt"></a>Using the command line tool</h2>
+<h2><a name="command-prompt"></a>コマンド ライン ツールの使用</h2>
 
-In Mobile Services, you can create, modify, and delete server scripts by using the Azure command line tool. Before uploading your scripts, make sure that you are using the following directory structure:
+Mobile Services では、Azure コマンド ライン ツールを使用してサーバー スクリプトを作成、変更、および削除できます。スクリプトをアップロードする前に、次のディレクトリ構造を使用していることを確認してください。
 
 ![4][4]
 
-Note that this directory structure is the same as the git repository when using source control. 
+このディレクトリ構造は、ソース管理を使用する場合の git リポジトリと同じです。
 
-When uploading script files from the command line tool, you must first navigate to the `.\services\` directory. The following command uploads a script named `todoitem.insert.js` from the `table` subdirectory:
+コマンド ライン ツールでスクリプト ファイルをアップロードする場合は、まず、`.\services\` ディレクトリに移動する必要があります。次のコマンドを使用して、`table` サブフォルダーにある `todoitem.insert.js` という名前のスクリプトをアップロードします。
 
 		~$azure mobile script upload todolist table/todoitem.insert.js
 		info:    Executing command mobile script upload
 		info:    mobile script upload command OK
 
-The following command returns information about every script file maintained in your mobile service:
+次のコマンドは、モバイル サービスで管理されているすべてのスクリプト ファイルについての情報を返します。
 
 		~$ azure mobile script list todolist
 		info:    Executing command mobile script list
@@ -577,30 +577,30 @@ The following command returns information about every script file maintained in 
 		data:    register_notifications  application  application  user         application  application
 		info:    mobile script list command OK
 
-For more information, see [Commands to manage Azure Mobile Services]. 
+詳細については、「[Azure Mobile Services の管理用コマンド]」を参照してください。
 
-##<a name="working-with-tables"></a>Working with tables
+##<a name="working-with-tables"></a>テーブルの操作
 
-Many scenarios in Mobile Services require server scripts to access tables in the database. For example. because Mobile Services does not preserve state between script executions, any data that needs to be persisted between script executions must be stored in tables. You might also want to examine entries in a permissions table or store audit data instead of just writing to the log, where data has a limited duration and cannot be accessed programmatically. 
+モバイル サービスの多くのシナリオでは、サーバー スクリプトがデータベース内のテーブルにアクセスする必要があります。たとえば、モバイル サービスはスクリプトの実行間で状態を保持しないため、スクリプトの実行間で保持する必要があるデータはテーブルに格納しておかなければなりません。アクセス許可テーブルのエントリを調べたり、監査データを単にログに書き込むだけでなくテーブルに保存したりする場合もあります (ログではデータの保存期間に限定があり、プログラムでアクセスすることができません)。
 
-Mobile Services has two ways of accessing tables, either by using a [table object] proxy or by composing Transact-SQL queries using the [mssql object]. The [table object] makes it easy to access table data from your sever script code, but the [mssql object] supports more complex data operations and provides the most flexibility. 
+モバイル サービスには、テーブルにアクセスするための 2 つの方法があります。[table オブジェクト] プロキシを使用する方法と、[mssql オブジェクト]を使用して Transact-SQL クエリを作成する方法です。[table オブジェクト]を使用するとサーバー スクリプト コードからテーブル データに簡単にアクセスできるようになりますが、[mssql オブジェクト]はより複雑なデータ操作をサポートしており、最高レベルの柔軟性を提供します。
 
-###<a name="access-tables"></a>How to: Access tables from scripts
+###<a name="access-tables"></a>方法: スクリプトからテーブルにアクセスする
 
-The easiest way to access tables from your script is by using the [tables object]. The **getTable** function returns a [table object] instance that's a proxy for accessing the requested table. You can then call functions on the proxy to access and change data. 
+スクリプトからテーブルにアクセスする最も簡単な方法は、[tables オブジェクト]を使用する方法です。**getTable** 関数では、要求されたテーブルにアクセスするためのプロキシである [table オブジェクト] インスタンスが返されます。その後、プロキシで関数を呼び出すことで、データにアクセスして変更できます。
 
-Scripts registered to both table operations and scheduled jobs can access the [tables object] as a global object. This line of code gets a proxy for the *TodoItems* table from the global [tables object]: 
+テーブル操作とスケジュールされたジョブに登録されたスクリプトは、グローバル オブジェクトとして [tables オブジェクト]にアクセスできます。次のコード行では、グローバル [tables オブジェクト]から *TodoItems* テーブルのプロキシを取得します。
 
 		var todoItemsTable = tables.getTable('TodoItems');
 
-Custom API scripts can access the [tables object] from the <strong>service</strong> property of the supplied [request object]. This line of code gets [tables object] from the request:
+カスタム API スクリプトは、指定された [request オブジェクト]の <strong>service</strong> プロパティから [tables オブジェクト]にアクセスできます。次のコード行では、要求から [tables オブジェクト]を取得します。
 
 		var todoItemsTable = request.service.tables.getTable('TodoItem');
 
-<div class="dev-callout"><strong>Note</strong>
-<p>Shared functions cannot access the <strong>tables</strong> object directly. In a shared function, you must pass the tables object to the function.</p></div>
+<div class="dev-callout"><strong>注</strong>
+<p>共有関数は、<strong>tables</strong> オブジェクトに直接アクセスできません。共有関数内で tables オブジェクトを関数に渡す必要があります。</p></div>
 
-Once you have a [table object], you can call one or more table operation functions: insert, update, delete or read. This example reads user permissions from a permissions table:
+[table オブジェクト]を一度取得すると、1 つ以上のテーブル操作関数 (挿入、更新、削除、または読み取り) を呼び出すことができます。次の例では、permissions テーブルからユーザーのアクセス許可を読み取ります。
 
 	function insert(item, user, request) {
 		var permissionsTable = tables.getTable('permissions');
@@ -620,7 +620,7 @@ Once you have a [table object], you can call one or more table operation functio
 		}
 	}
 
-The next example writes auditing information to an **audit** table:
+次の例では、**audit** テーブルに監査情報を書き込みます。
 
 	function update(item, user, request) {
 		request.execute({ success: insertAuditEntry });
@@ -642,13 +642,13 @@ The next example writes auditing information to an **audit** table:
 		}
 	}
 
-A final example is in the code sample here: [How to: Access custom parameters][How to: Add custom parameters].
+コード サンプル内にある最後の例は、[方法: カスタム パラメーターにアクセスする][How to: Add custom parameters]に掲載されています。
 
-###<a name="bulk-inserts"></a>How to: Perform Bulk Inserts
+###<a name="bulk-inserts"></a>方法: 一括挿入を実行する
 
-If you use a **for** or **while** loop to directly insert a large number of items (1000, for example) into a  table , you may encounter a SQL connection limit that causes some of the inserts to fail. Your request may never complete or it may return a HTTP 500 Internal Server Error.  To avoid this problem, you can insert the items in batches of 10 or so. After the first batch is inserted, submit the next batch, and so on.
+厳密な **for** ループまたは **while** ループを使用して多数の項目 (1,000 個など) をテーブルに挿入すると、SQL 接続数の上限に達して一部の挿入に失敗する場合があります。要求が完了しないか、HTTP 500 内部サーバー エラーが返されます。この問題を回避するには、一度に 10 個程度の項目をバッチとして挿入します。1 つのバッチが挿入されるまで待ってから、次のバッチを挿入するようにします。
 
-By using the following script, you can set the size of a batch of records to insert in parallel. We recomend that you keep the number of records small. The function **insertItems** calls itself recursively when an async insert batch has completed. The for loop at the end inserts one record at a time, and calls **insertComplete** on success and **errorHandler** on error. **insertComplete**  controls whether **insertItems** will be called recursively for the next batch, or whether the job is done and the script should exit.
+次のスクリプトを使用すると、レコードのバッチのサイズを設定して、並列挿入することができます。レコードの数は大きくしないことをお勧めします。非同期挿入バッチが完了すると、**insertItems** 関数が自身を再帰的に呼び出します。末尾の for ループでは一度に 1 個のレコードを挿入し、成功時には **insertComplete** を呼び出し、失敗時には **errorHandler** を呼び出します。**insertComplete** によって、次のバッチで **insertItems** を再帰的に呼び出すか、ジョブを完了してスクリプトを終了するかを制御しています。
 
 		var todoTable = tables.getTable('TodoItem');
 		var recordsToInsert = 1000;
@@ -692,26 +692,26 @@ By using the following script, you can set the size of a batch of records to ins
 		insertItems(); 
 
 
-The entire code sample, and accompanying discussion, can be found in this [blog posting](http://blogs.msdn.com/b/jpsanders/archive/2013/03/20/server-script-to-insert-table-items-in-windows-azure-mobile-services.aspx). If you use this code, you can adapt it to your specific situation, and thoroughly test it.
+コード サンプルの全体と詳細な説明については、この[ブログの投稿](http://blogs.msdn.com/b/jpsanders/archive/2013/03/20/server-script-to-insert-table-items-in-windows-azure-mobile-services.aspx)を参照してください。このコードを使用する際には、使用する状況に合わせて修正したり、徹底的にテストしたりできます。
 
-###<a name="JSON-types"></a>How to: Map JSON types to database types
+###<a name="JSON-types"></a>方法: JSON 型をデータベース型にマッピングする
 
-The collections of data types on the client and in a Mobile Services database table are different. Sometimes they map easily to one another, and other times they don't. Mobile Services performs a number of type transformations in the mapping:
+クライアントとモバイル サービス データベース テーブルでは、データ型のコレクションが異なります。データ型を簡単にマッピングできる場合もあれば、難しい場合もあります。モバイル サービスでは、マッピングによってさまざまな型変換を実行します。
 
-- The client language-specific types are serialized into JSON.
-- The JSON representation is translated into JavaScript before it appears in server scripts.
-- The JavaScript data types are converted to SQL database types when saved using the [tables object].
+- クライアントの言語固有の型は JSON にシリアル化されます。
+- JSON の表現は JavaScript に変換された後でサーバー スクリプトに使用されます。
+- JavaScript のデータ型は、[tables オブジェクト]を使用して保存されるときに SQL データベースの型に変換されます。
 
-The transformation from client schema into JSON varies across platforms.  JSON.NET is used in Windows Store and Windows Phone clients. The Android client uses the gson library.  The iOS client uses the NSJSONSerialization class. The default serialization behavior of each of these libraries is used, except that date objects are converted to JSON strings that contain the date that's encoded by using ISO 8601.
+クライアント スキーマから JSON への変換方法は、プラットフォームによって異なります。Windows ストア クライアントと Windows Phone クライアントでは、JSON.NET が使用されます。Android クライアントでは gson ライブラリが使用されます。iOS クライアントでは NSJSONSerialization クラスが使用されます。このようなライブラリでは既定のシリアル化動作が使用されます。ただし、日付のオブジェクトを、ISO 8601 を使用してエンコードされた日付が含まれている JSON 文字列に変換する場合は例外です。
 
-When you are writing server scripts that use [insert], [update], [read] or [delete] functions, you can access the JavaScript representation of your data. Mobile Services uses the Node.js's deserialization function ([JSON.parse](http://es5.github.io/#x15.12)) to transform JSON on the wire into JavaScript objects. However Mobile Services does  a transformation to extract **Date** objects from ISO 8601 strings.
+[insert 関数]、[update 関数]、[read 関数]、または [delete 関数]を使用したサーバー スクリプトを作成する場合、データの JavaScript 表現にアクセスすることができます。モバイル サービスでは Node.js の逆シリアル化関数 ([JSON.parse](http://es5.github.io/#x15.12)) を使用して、ネットワーク上で JSON を JavaScript オブジェクトに変換します。ただし、ISO 8601 文字列から **Date** オブジェクトを取得する際には、変換を実行します。
 
-When you use the [tables object] or the [mssql object], or just let your table scripts execute, the deserialized JavaScript objects are inserted into your SQL database. In that process, object properties are mapped to T-SQL types:
+[tables オブジェクト]または [mssql オブジェクト]を使用するとき、または単純にテーブル スクリプトを実行するときに、逆シリアル化された JavaScript オブジェクトが SQL データベースに挿入されます。このプロセスでは、オブジェクトのプロパティが T-SQL 型にマッピングされます。
 
 <table border="1">
 <tr>
-<td>JavaScript property</td>
-<td>T-SQL type</td>
+<td>JavaScript のプロパティ</td>
+<td>T-SQL 型</td>
 </tr><tr>
 <td>Number</td>
 <td>Float(53)</td>
@@ -728,38 +728,38 @@ When you use the [tables object] or the [mssql object], or just let your table s
 </tr>
 <tr>
 <td>Buffer</td>
-<td>Not supported</td>
+<td>サポートされていません</td>
 </tr><tr>
-<td>Object</td>
-<td>Not supported</td>
+<td>オブジェクト</td>
+<td>サポートされていません</td>
 </tr><tr>
 <td>Array</td>
-<td>Not supported</td>
+<td>サポートされていません</td>
 </tr><tr>
 <td>Stream</td>
-<td>Not supported</td>
+<td>サポートされていません</td>
 </tr>
 </table> 
 
-###<a name="TSQL"></a>Using Transact-SQL to access tables
+###<a name="TSQL"></a>テーブルにアクセスするための Transact-SQL の使用
 
-The easiest way to work table data from server scripts is by using a [table object] proxy. However, there are more advanced scenarios that are not supported by the [table object], such as as join queries and other complex queries and invoking stored procedures. In these cases, you must execute Transact-SQL statements directly against the relational table by using the [mssql object]. This object provides the following functions:
+サーバー スクリプトからテーブル データを操作する最も簡単な方法は、[table オブジェクト] プロキシを使用する方法です。ただし、[table オブジェクト]ではサポートされていない、より高度なシナリオがあります。たとえば、結合クエリやその他の複雑なクエリや、ストアド プロシージャの呼び出しです。このような場合は、[mssql オブジェクト]を使用して、リレーショナル テーブルに対して Transact-SQL ステートメントを直接実行する必要があります。このオブジェクトには、以下の関数が用意されています。
 
-- **query**: executes a query, specified by a TSQL string; the results are returned to the **success** callback on the **options** object. The query can include parameters if the *params* parameter is present.
-- **queryRaw**: like *query* except that the result set returned from the query is in a "raw" format (see example below).
-- **open**: used to get a connection to your Mobile Services database, and you can then use the connection object to invoke database operations such as transactions.
+- **query**: TSQL 文字列で指定されたクエリを実行します。結果は **options** オブジェクトに対する **success** コールバックに返されます。*params* パラメーターがある場合、クエリにパラメーターを含めることができます。
+- **queryRaw**: *query* と同様ですが、クエリから返される結果セットが"未加工"形式である点が異なります (以下の例を参照)。
+- **open**: Mobile Services  データベースへの接続を取得する場合に使用します。この connection オブジェクトを使用して、トランザクションなどのデータベース操作を呼び出すことができます。
 
-These methods give you increasingly more low-level control over the query processing.
+以下の方法は、下のものほど、クエリ処理に対して低レベルの制御を行うことができます。
 
-+ [How to: Run a static query]
-+ [How to: Run a dynamic query]
-+ [How to: Join relational tables]
-+ [How to: Run a query that returns *raw* results]
-+ [How to: Get access to a database connection]	
++ [方法: 静的クエリを実行する]
++ [方法: 動的クエリを実行する]
++ [方法: リレーショナル テーブルを結合する]
++ [方法: *"未加工"* の結果を返すクエリを実行する]
++ [方法: データベース接続へのアクセスを取得する]	
 
-####<a name="static-query"></a>How to: Run a static query
+####<a name="static-query"></a>方法: 静的クエリを実行する
 
-The following query has no parameters and returns three records from the `statusupdate` table. The rowset is in standard JSON format.
+次のクエリにはパラメーターがなく、`statusupdate` テーブルから 3 つのレコードを返します。行セットは標準の JSON 形式です。
 
 		mssql.query('select top 3 * from statusupdates', {
 		    success: function(results) {
@@ -771,9 +771,9 @@ The following query has no parameters and returns three records from the `status
 		});
 
 
-####<a name="dynamic-query"></a>How to: Run a dynamic parameterized query
+####<a name="dynamic-query"></a>方法: 動的なパラメーター化されたクエリを実行する
 
-The following example implements custom authorization by reading permissions for each user from the permissions table. The placeholder (?) is replaced with the supplied parameter when the query is executed.
+次の例は、permissions テーブルから各ユーザーのアクセス許可を読み取ることによってカスタム承認を実装しています。プレースホルダー (?) は、クエリが実行されるときに、指定されたパラメーターに置き換えられます。
 
 		    var sql = "SELECT _id FROM permissions WHERE userId = ? AND permission = 'submit order'";
 		    mssql.query(sql, [user.userId], {
@@ -792,17 +792,17 @@ The following example implements custom authorization by reading permissions for
 		    });
 
 
-####<a name="joins"></a>How to: Join relational tables
+####<a name="joins"></a>方法: リレーショナル テーブルを結合する
 
-You can join two tables by using the **query** method of the [mssql object] to pass in the TSQL code that implements the join. Let's assume we have some items in our **ToDoItem** table and each item in the table has a **priority** property, which corresponds to a column in the table. An item may look like this:
+[mssql オブジェクト]の **query** メソッドを使用して、結合を実装する TSQL コードを渡すことで、2 個のテーブルを結合できます。**ToDoItem** テーブルにいくつかの項目があり、各項目には **priority** プロパティがあって、テーブルの列に対応しているとします。項目は次のようになります。
 
 		{ text: 'Take out the trash', complete: false, priority: 1}
 
-Let's also assume we have an additional table called **Priority** with rows that contain a priority **number** and a text **description**. For example, the priority number 1 might have the description of "Critical", with the object looking as follows:
+また、**Priority** という名前の追加のテーブルがあり、優先度の**番号**とテキストの**説明**を含む行があるとします。たとえば、優先度番号 1 の説明は "Critical" で、オブジェクトは次のようになります。
 
 		{ number: 1, description: 'Critical'}
 
-We can now replace the **priority** number in our item with the text description of the priority number. We do this with a relational join of the two tables.
+ここで、項目の**優先度**番号を、そのテキスト説明に置き換えることができます。そうするには、2 つのテーブルのリレーショナル結合を使用します。
 
 		mssql.query('SELECT t.text, t.complete, p.description FROM ToDoItem as t INNER JOIN Priority as p ON t.priority = p.number', {
 			success: function(results) {
@@ -812,14 +812,14 @@ We can now replace the **priority** number in our item with the text description
                 console.log("error is: " + err);
 		});
 	
-The script joins the two tables and writes the results to the log. The resulting objects could look like this:
+スクリプトは 2 つのテーブルを結合し、結果をログに書き込みます。結果のオブジェクトは、次のようになります。
 
 		{ text: 'Take out the trash', complete: false, description: 'Critical'}
 
 
-####<a name="raw"></a>How to: Run a query that returns *raw* results
+####<a name="raw"></a>方法: *"未加工"* の結果を返すクエリを実行する
 
-This example executes the query, as before, but returns the resultset in "raw" format which requires you to parse it, row by row, and column by column. A possible scenario for this is if you need access to data types that Mobile Services does not support. This code simply writes the output to the console log so you can inspect the raw format.
+この例は、前の例と同様にクエリを実行しますが、結果セットを "未加工" の形式で返します。そのため、行ごと、列ごとに解析する必要があります。このようなシナリオとして考えられるのは、モバイル サービスでサポートされていないデータ型にアクセスする必要がある場合です。次のコードは、単に出力をコンソール ログに書き込むので、未加工形式を調べることができます。
 
 		mssql.queryRaw('SELECT * FROM ToDoItem', {
 		    success: function(results) {
@@ -830,7 +830,7 @@ This example executes the query, as before, but returns the resultset in "raw" f
 			}
 		});
 
-Here is the output from running this query. It contains metadata about each column in the table, followed by a representation of the rows and columns.
+このクエリを実行したときの出力を次に示します。テーブルの各列についてのメタデータと、行および列の表現が含まれます。
 
 		{ meta: 
 		   [ { name: 'id',
@@ -860,11 +860,11 @@ Here is the output from running this query. It contains metadata about each colu
 		     [ 4, 'we need to fix this one real soon now', null, 1 ],
 		   ] }
 
-####<a name="connection"></a>How to: Get access to a database connection
+####<a name="connection"></a>方法: データベース接続へのアクセスを取得する
 
-You can use the **open** method to get access to the database connection. One reason to do this might be if you need to use database transactions.
+**open** メソッドを使用して、データベース接続にアクセスできます。このようにする理由の 1 つとして考えられるのは、データベース トランザクションを使用する必要がある場合です。
 
-Successful execution of the **open** causes the database connection to be passed into the **success** function as a parameter. You can invoke any of the following functions on the **connection** object: *close*, *queryRaw*, *query*, *beginTransaction*, *commit*, and *rollback*.
+**open** の実行が成功すると、データベース接続がパラメーターとして **success** 関数に渡されます。**connection** オブジェクトに対して呼び出すことができる関数は、*close*、*queryRaw*、*query*、*beginTransaction*、*commit*、および *rollback* です。
 
 		    mssql.open({
 		        success: function(connection) {
@@ -875,68 +875,68 @@ Successful execution of the **open** causes the database connection to be passed
 				}
 		    });
 
-##<a name="debugging"></a>Debugging and troubleshooting
+##<a name="debugging"></a>デバッグおよびトラブルシューティング
 
-The primary way to debug and troubleshoot your server scripts is by writing to the service log. By default, Mobile Services writes errors that occur during service script execution to the service logs. Your scripts can also write to the logs. Writing to logs is great way to debug your scripts and validate that they are behaving as desired.
+サーバー スクリプトをデバッグおよびトラブルシューティングするための主な方法は、サービス ログへの書き込みです。既定では、モバイル サービスは、サービス スクリプトの実行中に発生したエラーをサービス ログに書き込みます。また、スクリプトでログに書き込むこともできます。ログへの書き込みは、スクリプトをデバッグし、適切に動作しているかどうかを検証するための優れた方法です。
 
-###<a name="write-to-logs"></a>How to: Write output to the mobile service logs
+###<a name="write-to-logs"></a>方法: 出力をモバイル サービス ログに書き込む
 
-To write to the logs, use the global [console object]. Use the **log** or **info** function to log information-level warnings. The **warning** and **error** functions log their respective levels, which are called-out in the logs. 
+ログに書き込むには、グローバル [console オブジェクト]を使用します。情報レベルの警告をログに記録するには、**log** 関数または **info** 関数を使用します。**warning** 関数および **error** 関数では、それぞれのレベルをログに記録します。これらは、ログ内で強調されます。
 
-<div class="dev-callout"><strong>Note</strong>
-<p>To view the logs for your mobile service, log on to the <a href="https://manage.windowsazure.com/">Management Portal</a>, select your mobile service, and then choose the <strong>Logs</strong> tab.</p></div>
+<div class="dev-callout"><strong>注</strong>
+<p>モバイル サービスのログを表示するには、<a href="https://manage.windowsazure.com/">管理ポータル</a>にログオンし、モバイル サービスを選択して、[ログ]<strong></strong> タブをクリックします。</p></div>
 
-You can also use the logging functions of the [console object] to format your messages using parameters. The following example supplies a JSON object as a parameter to the message string:
+また、[console オブジェクト]のログ関数で、パラメーターを使用してメッセージを書式設定することもできます。次の例では、メッセージ文字列のパラメーターとして JSON オブジェクトを指定します。
 
 	function insert(item, user, request) {
 	    console.log("Inserting item '%j' for user '%j'.", item, user);  
 	    request.execute();
 	}
 
-Notice that the string `%j` is used as the placeholder for a JSON object and that parameters are supplied in sequential order. 
+文字列 `%j` は JSON オブジェクトのプレースホルダーとして使用されており、パラメーターを順番に指定していることに注意してください。
 
-To avoid overloading your log, you should remove or disable calls to console.log() that aren't needed for production use.
+ログが過大になることを避けるには、運用環境で使用する必要がない console.log() への呼び出しを削除または無効にする必要があります。
 
 <!-- Anchors. -->
-[Introduction]: #intro
-[Table operations]: #table-scripts
-[How to: Register for table operations]: #register-table-scripts
-[How to: Define table scripts]: #execute-operation
-[How to: override the default response]: #override-response
-[How to: Modify an operation]: #modify-operation
-[How to: Override success and error]: #override-success-error
-[How to: Override execute success]: #override-success
-[How to: Override default error handling]: #override-error
-[How to: Access tables from scripts]: #access-tables
-[How to: Add custom parameters]: #access-headers
-[How to: Work with users]: #work-with-users
-[How to: Define scheduled job scripts]: #scheduler-scripts
-[How to: Refine access to tables]: #authorize-tables
-[Using Transact-SQL to access tables]: #TSQL
-[How to: Run a static query]: #static-query
-[How to: Run a dynamic query]: #dynamic-query
-[How to: Run a query that returns *raw* results]: #raw
-[How to: Get access to a database connection]: #connection
-[How to: Join relational tables]: #joins
-[How to: Perform Bulk Inserts]: #bulk-inserts
-[How to: Map JSON types to database types]: #JSON-types
-[How to: Load Node.js modules]: #modules-helper-functions
-[How to: Write output to the mobile service logs]: #write-to-logs
-[Source control, shared code, and helper functions]: #shared-code
-[Using the command line tool]: #command-prompt
-[Working with tables]: #working-with-tables
-[Custom API anchor]: #custom-api
-[How to: Define a custom API]: #define-custom-api
-[How to: Share code by using source control]: #shared-code-source-control
-[How to: Use helper functions]: #helper-functions
-[Debugging and troubleshooting]: #debugging
-[How to: Implement HTTP methods]: #handle-methods
-[How to: Work with users and headers in a custom API]: #get-api-user
-[How to: Access custom API request headers]: #get-api-headers
-[Job Scheduler]: #scheduler-scripts
-[How to: Define multiple routes in a custom API]: #api-routes
-[How to: Send and receive data as XML]: #api-return-xml
-[How to: Work with app settings]: #app-settings
+[はじめに]: #intro
+[テーブル操作]: #table-scripts
+[方法: テーブル操作に登録する]: #register-table-scripts
+[方法: テーブル スクリプトを定義する]: #execute-operation
+[方法: 既定の応答をオーバーライドする]: #override-response
+[方法: 操作の変更]: #modify-operation
+[方法: success および error をオーバーライドする]: #override-success-error
+[方法: execute success をオーバーライドする]: #override-success
+[方法: 既定のエラー処理をオーバーライドする]: #override-error
+[方法: スクリプトからテーブルにアクセスする]: #access-tables
+[方法: カスタム パラメーターを追加する]: #access-headers
+[方法: ユーザーを処理する]: #work-with-users
+[方法: スケジュールされたジョブ スクリプトを定義する]: #scheduler-scripts
+[方法: テーブルへのアクセス方法を改善する]: #authorize-tables
+[テーブルにアクセスするための Transact-SQL の使用]: #TSQL
+[方法: 静的クエリを実行する]: #static-query
+[方法: 動的クエリを実行する]: #dynamic-query
+[方法: *"未加工"* の結果を返すクエリを実行する]: #raw
+[方法: データベース接続へのアクセスを取得する]: #connection
+[方法: リレーショナル テーブルを結合する]: #joins
+[方法: 一括挿入を実行する]: #bulk-inserts
+[方法: JSON 型をデータベース型にマッピングする]: #JSON-types
+[方法: Node.js モジュールを読み込む]: #modules-helper-functions
+[方法: 出力をモバイル サービス ログに書き込む]: #write-to-logs
+[ソース管理、共有コード、およびヘルパー関数]: #shared-code
+[コマンド ライン ツールの使用]: #command-prompt
+[テーブルの操作]: #working-with-tables
+[カスタム API アンカー]: #custom-api
+[方法: カスタム API を定義する]: #define-custom-api
+[方法: ソース管理を使用してコードを共有する]: #shared-code-source-control
+[方法: ヘルパー関数を使用する]: #helper-functions
+[デバッグおよびトラブルシューティング]: #debugging
+[方法: HTTP メソッドを実装する]: #handle-methods
+[方法: カスタム API でユーザーとヘッダーを操作する]: #get-api-user
+[方法: カスタム API の要求ヘッダーにアクセスする]: #get-api-headers
+[ジョブ スケジューラ]: #scheduler-scripts
+[方法: カスタム API で複数のルートを定義する]: #api-routes
+[方法: データを XML として送受信する]: #api-return-xml
+[方法: アプリケーションの設定を操作する]: #app-settings
 
 [1]: ./media/mobile-services-how-to-use-server-scripts/1-mobile-insert-script-users.png
 [2]: ./media/mobile-services-how-to-use-server-scripts/2-mobile-custom-api-script.png
@@ -944,58 +944,59 @@ To avoid overloading your log, you should remove or disable calls to console.log
 [4]: ./media/mobile-services-how-to-use-server-scripts/4-mobile-source-local-cli.png
 
 <!-- URLs. -->
-[Mobile Services server script reference]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554226.aspx
-[Schedule backend jobs in Mobile Services]: /en-us/develop/mobile/tutorials/schedule-backend-tasks/
-[request object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554218.aspx
-[response object]: http://msdn.microsoft.com/en-us/library/windowsazure/dn303373.aspx
-[User object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554220.aspx
-[push object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554217.aspx
-[insert function]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554229.aspx
-[insert]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554229.aspx
-[update function]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554214.aspx
-[delete function]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554215.aspx
-[read function]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554224.aspx
-[update]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554214.aspx
-[delete]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554215.aspx
-[read]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554224.aspx
-[query object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj613353.aspx
-[apns object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj839711.aspx
-[mpns object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj871025.aspx
-[wns object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj860484.aspx
-[table object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554210.aspx
-[tables object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj614364.aspx
-[mssql object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554212.aspx
-[console object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554209.aspx
-[Read and write data]: http://msdn.microsoft.com/en-us/library/windowsazure/jj631640.aspx
-[Validate data]: http://msdn.microsoft.com/en-us/library/windowsazure/jj631638.aspx
-[Modify the request]: http://msdn.microsoft.com/en-us/library/windowsazure/jj631635.aspx
-[Modify the response]: http://msdn.microsoft.com/en-us/library/windowsazure/jj631631.aspx
-[Management Portal]: https://manage.windowsazure.com/
-[Schedule jobs]: http://msdn.microsoft.com/en-us/library/windowsazure/jj860528.aspx
-[Validate and modify data in Mobile Services by using server scripts]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet/
-[Commands to manage Azure Mobile Services]: /en-us/manage/linux/other-resources/command-line-tools/#Commands_to_manage_mobile_services/#Mobile_Scripts
-[Windows Store Push]: /en-us/develop/mobile/tutorials/get-started-with-push-dotnet/
-[Windows Phone Push]: /en-us/develop/mobile/tutorials/get-started-with-push-wp8/
-[iOS Push]: /en-us/develop/mobile/tutorials/get-started-with-push-ios/
-[Android Push]: /en-us/develop/mobile/tutorials/get-started-with-push-android/
+[Mobile Services server script reference (モバイル サービスのサーバー スクリプト リファレンス)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554226.aspx
+[モバイル サービスでのバックエンド ジョブの計画]: /ja-jp/develop/mobile/tutorials/schedule-backend-tasks/
+[request オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554218.aspx
+[response オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn303373.aspx
+[User オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554220.aspx
+[push オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554217.aspx
+[insert 関数]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554229.aspx
+[insert]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554229.aspx
+[update 関数]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554214.aspx
+[delete 関数]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554215.aspx
+[read 関数]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554224.aspx
+[update]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554214.aspx
+[削除]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554215.aspx
+[read]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554224.aspx
+[query オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj613353.aspx
+[apns オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj839711.aspx
+[mpns オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj871025.aspx
+[wns オブジェクトに関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj860484.aspx
+[table オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554210.aspx
+[tables オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj614364.aspx
+[mssql オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554212.aspx
+[console オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554209.aspx
+[データの読み取りと書き込み]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj631640.aspx
+[データの検証]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj631638.aspx
+[要求の変更]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj631635.aspx
+[応答の変更]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj631631.aspx
+[管理ポータル]: https://manage.windowsazure.com/
+[ジョブのスケジュール]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj860528.aspx
+[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet/
+[Azure Mobile Services の管理用コマンド]: /ja-jp/manage/linux/other-resources/command-line-tools/#Commands_to_manage_mobile_services/#Mobile_Scripts
+[Windows ストアのプッシュ]: /ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet/
+[Windows Phone のプッシュ]: /ja-jp/develop/mobile/tutorials/get-started-with-push-wp8/
+[iOS のプッシュ]: /ja-jp/develop/mobile/tutorials/get-started-with-push-ios/
+[Android のプッシュ]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android/
 [Azure SDK for Node.js]: http://go.microsoft.com/fwlink/p/?LinkId=275539
-[Send HTTP request]: http://msdn.microsoft.com/en-us/library/windowsazure/jj631641.aspx
-[Send email from Mobile Services with SendGrid]: /en-us/develop/mobile/tutorials/send-email-with-sendgrid/
-[Get started with authentication]: http://go.microsoft.com/fwlink/p/?LinkId=287177
+[HTTP 要求の送信]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj631641.aspx
+[Send email from Mobile Services with SendGrid (SendGrid を使用したモバイル サービスからの電子メールの送信)]: /ja-jp/develop/mobile/tutorials/send-email-with-sendgrid/
+[認証の使用]: http://go.microsoft.com/fwlink/p/?LinkId=287177
 [crypto API]: http://go.microsoft.com/fwlink/p/?LinkId=288802
 [path API]: http://go.microsoft.com/fwlink/p/?LinkId=288803
 [querystring API]: http://go.microsoft.com/fwlink/p/?LinkId=288804
 [url API]: http://go.microsoft.com/fwlink/p/?LinkId=288805
 [util API]: http://go.microsoft.com/fwlink/p/?LinkId=288806
 [zlib API]: http://go.microsoft.com/fwlink/p/?LinkId=288807
-[Custom API]: http://msdn.microsoft.com/en-us/library/windowsazure/dn280974.aspx
-[Call a custom API from the client]: /en-us/develop/mobile/tutorials/call-custom-api-dotnet/#define-custom-api
-[express.js library]: http://go.microsoft.com/fwlink/p/?LinkId=309046
-[Define a custom API that supports periodic notifications]: /en-us/develop/mobile/tutorials/create-pull-notifications-dotnet/
-[express object in express.js]: http://expressjs.com/api.html#express
-[Store server scripts in source control]: /en-us/develop/mobile/tutorials/store-scripts-in-source-control/
-[Leverage shared code and Node.js modules in your server scripts]: /en-us/develop/mobile/tutorials/store-scripts-in-source-control/#use-npm
-[service object]: http://msdn.microsoft.com/en-us/library/windowsazure/dn303371.aspx
-[App settings]: http://msdn.microsoft.com/en-us/library/dn529070.aspx
-[config module]: http://msdn.microsoft.com/en-us/library/dn508125.aspx
-[Support for package.json in Azure Mobile Services]: http://go.microsoft.com/fwlink/p/?LinkId=391036
+[カスタム API]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn280974.aspx
+[クライアントからのカスタム API 呼び出し]: /ja-jp/develop/mobile/tutorials/call-custom-api-dotnet/#define-custom-api
+[express.js ライブラリ]: http://go.microsoft.com/fwlink/p/?LinkId=309046
+[Define a custom API that supports periodic notifications (定期的な通知をサポートするカスタム API の定義)]: /ja-jp/develop/mobile/tutorials/create-pull-notifications-dotnet/
+[express.js 内の express オブジェクト]: http://expressjs.com/api.html#express
+[ソース管理へのサーバー スクリプトの保存]: /ja-jp/develop/mobile/tutorials/store-scripts-in-source-control/
+[サーバー スクリプトで共有コードと Node.js モジュールを活用する]: /ja-jp/develop/mobile/tutorials/store-scripts-in-source-control/#use-npm
+[service オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn303371.aspx
+[アプリ設定]: http://msdn.microsoft.com/ja-jp/library/dn529070.aspx
+[config モジュール]: http://msdn.microsoft.com/ja-jp/library/dn508125.aspx
+[Azure Mobile Services 内での package.json のサポート]: http://go.microsoft.com/fwlink/p/?LinkId=391036
+

@@ -1,309 +1,309 @@
-<properties linkid="manage-services-how-to-monitor-websites" urlDisplayName="How to monitor" pageTitle="How to monitor web sites - Azure service management" metaKeywords="Azure monitoring web sites, Azure Management Portal Monitor, Azure monitoring" description="Learn how to monitor Azure web sites by using the Monitor page in the Management Portal." metaCanonical="" services="web-sites" documentationCenter="" title="How to Monitor Web Sites" authors="" solutions="" manager="" editor="" />
+<properties linkid="manage-services-how-to-monitor-websites" urlDisplayName="監視方法" pageTitle="Web サイトの監視方法 - Azure サービス管理" metaKeywords="Azure Web サイトの監視, Azure の管理ポータル監視, Azure 監視" description="管理ポータルの [監視] ページを使用して Azure の Web サイトを監視する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="Web サイトの監視方法" authors="" solutions="" manager="" editor="" />
 
 
 
-#<a name="howtomonitor"></a>How to Monitor Web Sites
+#<a name="howtomonitor"></a>Web サイトの監視方法
 
-Web sites provide monitoring functionality via the Monitor management page. The Monitor management page provides performance statistics for a web site as described below.
+Web サイトの監視は、[監視] 管理ページを使用して行うことができます。以下に示すように、[監視] 管理ページでは、Web サイトのパフォーマンス統計を確認できます。
 
-## Table of Contents ##
-- [How to: Add web site metrics](#websitemetrics)
-- [How to: Receive alerts from web site metrics](#howtoreceivealerts)
-- [How to: View usage quotas for a web site](#howtoviewusage)
-- [How to: Reduce resource usage](#resourceusage)
-- [What happens when a resource usage quota is exceeded](#exceeded)
-- [How to: Configure diagnostics and download logs for a web site](#howtoconfigdiagnostics)
-- [How to: Monitor web endpoint status](#webendpointstatus)
+## 目次##
+- [方法: Web サイト メトリックの追加](#websitemetrics)
+- [方法: Web サイトのメトリックからアラートを受信](#howtoreceivealerts)
+- [方法: Web サイトの使用量のクォータの表示](#howtoviewusage)
+- [方法: リソース使用量の削減](#resourceusage)
+- [リソース使用量クォータを超過した場合の処理](#exceeded)
+- [方法: Web サイトの診断の構成とログのダウンロード](#howtoconfigdiagnostics)
+- [方法: Web エンドポイントの状態の監視](#webendpointstatus)
 
-##<a name="websitemetrics"></a>How to: Add web site metrics
-1. In the [Azure Management Portal](http://manage.windowsazure.com/), from the web site's Management pages, click the **Monitor** tab to display the **Monitor** management page. By default the chart on the **Monitor** page displays the same metrics as the chart on the **Dashboard** page. 
+##<a name="websitemetrics"></a>方法: Web サイト メトリックの追加
+1. [Azure の管理ポータル](http://manage.windowsazure.com/)で、Web サイトの管理ページから **[監視]** タブをクリックして、**[監視]** 管理ページを表示します。既定では、**[監視]** ページのグラフには、**[ダッシュボード]** ページのグラフと同じメトリックが表示されます。
 
-2. To view additional metrics for the web site, click **Add Metrics** at the bottom of the page to display the **Choose Metrics** dialog box. 
+2. Web サイトのメトリックを追加するには、ページの下部にある **[メトリックの追加]** をクリックして、**[メトリックの選択]** ダイアログ ボックスを表示します。
 
-3. Click to select additional metrics for display on the **Monitor** page. 
+3. **[監視]** ページに表示する追加のメトリックをクリックして選択します。
 
-4. After selecting the metrics that you want to add to the **Monitor** page, click **Ok**. 
+4. **[監視]** ページに追加するメトリックを選択したら、**[OK]** をクリックします。
 
-5. After adding metrics to the **Monitor** page, click to enable / disable the option box next to each metric to add / remove the metric from the chart at the top of the page.
+5. **[監視]** ページにメトリックを追加した後、各メトリックの横にあるオプション ボックスをクリックして有効または無効にすることにより、ページの上部にあるグラフに対してメトリックを追加または削除することができます。
 
-6. To remove metrics from the **Monitor** page, select the metric that you want to remove and then click the **Delete Metric** icon at the bottom of the page.
+6. **[監視]** ページからメトリックを削除するには、削除対象のメトリックを選択し、ページの下部にある **[メトリックの削除]** アイコンをクリックします。
 
-The following list describes the metrics that you can view in the chart on the **Monitor** page:
+以下の一覧は、**[監視]** ページのグラフに表示できるメトリックを示しています。
 
-- **CPUTime** - A measure of the web site's CPU usage.
-- **Requests** - A count of client requests to the web site.
-- **Data Out** - A measure of data sent by the web site to clients.
-- **Data In** - A measure of data received by the web site from clients.
-- **Http Client Errors** - Number of Http "4xx Client Error" messages sent.
-- **Http Server Errors** - Number of Http "5xx Server Error" messages sent.
-- **Http Successes** - Number of Http "2xx Success" messages sent.
-- **Http Redirects** - Number of Http "3xx Redirection" messages sent.
-- **Http 401 errors** - Number of Http "401 Unauthorized" messages sent.
-- **Http 403 errors** - Number of Http "403 Forbidden" messages sent.
-- **Http 404 errors** - Number of Http "404 Not Found" messages sent.
-- **Http 406 errors** - Number of Http "406 Not Acceptable" messages sent.
+- **[CPU 時間]** - Web サイトの CPU 使用率の測定値。
+- **[要求]** - Web サイトに対するクライアント要求の数。
+- **[送信データ]** - Web サイトからクライアントに送信されたデータの量。
+- **[受信データ]** - Web サイトがクライアントから受信したデータの量。
+- **[HTTP クライアント エラー]** - 送信された HTTP "4xx クライアント エラー" メッセージの数。
+- **[HTTP サーバー エラー]** - 送信された HTTP "5xx サーバー エラー" メッセージの数。
+- **[HTTP 成功]** - 送信された HTTP "2xx 成功" メッセージの数。
+- **[HTTP リダイレクト]** - 送信された HTTP "3xx リダイレクト" メッセージの数。
+- **[HTTP 401 エラー]** - 送信された HTTP "401 認証エラー" メッセージの数。
+- **[HTTP 403 エラー]** - 送信された "403 アクセス不可" メッセージの数。
+- **[HTTP 404 エラー]** - 送信された HTTP "404 未検出" メッセージの数。
+- **[HTTP 406 エラー]** - 送信された HTTP "406 受信不可" メッセージの数。
 
-##<a name="howtoreceivealerts"></a>How to: Receive alerts from web site metrics
-In **Standard** web site mode, you can receive alerts based on your web site monitoring metrics. The alert feature requires that you first configure a web endpoint for monitoring, which you can do in the **Monitoring** section of the **Configure** page. On the **Settings** page of the Azure Management Portal, you can then create a rule to trigger an alert when the metric you choose reaches a value that you specify. You can also choose to have email sent when the alert is triggered. For more information, see [How to: Receive Alert Notifications and Manage Alert Rules in Azure](http://go.microsoft.com/fwlink/?LinkId=309356).  
+##<a name="howtoreceivealerts"></a>方法: Web サイトのメトリックからアラートを受信
+Web サイトの**標準**モードでは、Web サイトの監視メトリックに基づいてアラートを受け取ることができます。アラート機能では、まず監視する Web エンドポイントを構成する必要があります。これは **[構成]** ページの **[監視]** セクションで行うことができます。Azure の管理ポータルの **[設定]** ページで、選択したメトリックが指定した値に達したときにアラートをトリガーするルールを作成できます。アラートがトリガーされたときに電子メールが送信されるように指定することもできます。詳細については、「[方法: Azure でアラート通知を受け取り、アラート ルールを管理する](http://go.microsoft.com/fwlink/?LinkId=309356)」を参照してください。
 
-##<a name="howtoviewusage"></a>How to: View usage quotas for a web site
+##<a name="howtoviewusage"></a>方法: Web サイトの使用量のクォータの表示
 
-Web sites can be configured to run in either **Shared** or **Standard** web site mode from the web site's **Scale** management page. Each Azure subscription has access to a pool of resources provided for the purpose of running up to 100 web sites per region in **Shared** web site mode. The pool of resources available to each Web Site subscription for this purpose is shared by other web sites in the same geo-region that are configured to run in **Shared** mode. Because these resources are shared for use by other web sites, all subscriptions are limited in their use of these resources. Limits applied to a subscription's use of these resources are expressed as usage quotas listed under the usage overview section of each web site's **Dashboard** management page.
+Web サイトの **[スケール]** 管理ページでは、Web サイトが**共有**モードまたは**標準**モードで実行されるように構成できます。各 Azure サブスクリプションは、リージョンごとに最大 100 個の Web サイトを**共有** Web サイト モードで実行することを目的として提供されるリソース プールにアクセスできます。この目的で各 Web サイト サブスクリプションが使用できるリソース プールは、**共有**モードで実行するように構成されている同じ Geo リージョン内の他の Web サイトと共有されます。これらのリソースは他の Web サイトが使用できるように共有されるため、すべてのサブスクリプションで使用が制限されます。サブスクリプションによるこれらのリソースの使用に適用される制限は、各 Web サイトの **[ダッシュボード]** 管理ページの [使用状況の概要] セクションに、使用量のクォータとして表示されます。
 
-**Note**  
-When a web site is configured to run in **Standard** mode, it is allocated dedicated resources equivalent to the **Small** (default), **Medium** or **Large** virtual machine sizes in the table at [Virtual Machine and Cloud Service Sizes for Azure][vmsizes]. There are no limits to the resources a subscription can use for running web sites in **Standard** mode. However, the number of **Standard** mode web sites that can be created per region is 500.
+**注**
+Web サイトが**標準**モードで実行するように構成されている場合は、専用のリソースが割り当てられます。リソースのサイズは、[Azure での仮想マシンとクラウド サービスのサイズに関するページ][vmsizes]の表に示されている仮想マシン サイズ **S** (既定)、**M**、または **L** と同等です。サブスクリプションが**標準**モードで Web サイトを実行するときに使用できるリソースに制限はありません。ただし、リージョンごとに作成できる**標準**モードの Web サイトの数は 500 個です。
  
-### Viewing usage quotas for web sites configured for Shared web site mode ###
-To determine the extent that a web site is impacting resource usage quotas, follow these steps:
+### 共有 Web サイト モードに構成されている Web サイトの使用量クォータを表示する###
+Web サイトがリソースの使用量クォータをどの程度消費しているか確認するには、次の手順に従います。
 
-1. Open the web site's **Dashboard** management page.
-2. Under the **usage overview** section the usage quotas for **Data Out**, **CPU Time** and **File System Storage** are displayed. The green bar displayed for each resource indicates how much of a subscription's resource usage quota is being consumed by the current web site and the grey bar displayed for each resource indicates how much of a subscription's resource usage quota is being consumed by all other shared mode web sites associated with your Web Site subscription.
+1. Web サイトの **[ダッシュボード]** 管理ページを開きます。
+2. **[使用状況の概要]** セクションに、**[送信データ]**、**[CPU 時間]**、および **[ファイル システム ストレージ]** の使用量のクォータが表示されます。各リソースに対して表示される棒グラフの緑色の部分は、サブスクリプションのリソースの使用量クォータが現在の Web サイトでどの程度消費されているかを示します。各リソースに対して表示されるグレーの部分は、サブスクリプションのリソースの使用量クォータが、Web サイト サブスクリプションに関連付けられている共有モードの他のすべての Web サイトでどの程度消費されているかを示します。
 
-Resource usage quotas help prevent overuse of the following resources:
+リソースに使用量クォータが設定されていることで、以下のリソースに関する過剰使用の回避に役立ちます。
 
-- **Data Out** - a measure of the amount of data sent from web sites running in **Shared** mode to their clients in the current quota interval (24 hours).
-- **CPU Time** - the amount of CPU time used by web sites running in **Shared** mode for the current quota interval.
-- **File System Storage** - The amount of file system storage in use by web sites running in **Shared** mode.
+- **[送信データ]** - **共有**モードで実行中の Web サイトから、現在のクォータ期間 (24 時間) 内に他のクライアントに送信されたデータの量。
+- **[CPU 時間]** - **共有**モードで実行中の Web サイトによって、現在のクォータ期間に使用された CPU 時間。
+- **[ファイル システム ストレージ]** - **共有**モードで実行中の Web サイトによって使用されているファイル システム ストレージの量。
 
-When a subscription's usage quotas are exceeded, Azure takes action to stop overuse of resources. This is done to prevent any subscriber from exhausting resources to the detriment of other subscribers.
-
-
-##<a name="resourceusage"></a>How to: Reduce resource usage
-
-Since Azure calculates resource usage quotas by measuring the resources used by a subscription's shared mode web sites during a 24 hour quota interval, consider the following:
-
-- As the number of web sites configured to run in Shared mode is increased, so is the likelihood of exceeding shared mode resource usage quotas.
-Consider reducing the number of web sites that are configured to run in Shared mode if resource usage quotas are being exceeded.
-- Similarly, as the number of instances of any web site running in Shared mode is increased, so is the likelihood of exceeding shared mode resource usage quotas.
-Consider scaling back additional instances of shared mode web sites if resource usage quotas are being exceeded.
+サブスクリプションの使用量クォータを超過すると、Azure はリソースの過剰使用を止めるための措置を講じます。これは、サブスクライバーによってリソースが枯渇することで他のサブスクライバーに生じる不利益を回避するためです。
 
 
-##<a name="exceeded"></a>What happens when a resource usage quota is exceeded
+##<a name="resourceusage"></a>方法: リソース使用量の削減
 
-Azure takes the following actions if a subscription's resource usage quotas are exceeded in a quota interval (24 hours):
+Azure は、サブスクリプションの共有モードの Web サイトによって 24 時間のクォータ期間に使用されたリソースを測定することで、リソースの使用量クォータを計算します。次の点を検討してください。
 
- - **Data Out** - when this quota is exceeded, Azure stops all web sites for a subscription which are configured to run in **Shared** mode for the remainder of the current quota interval. Azure will start the web sites at the beginning of the next quota interval.
-
- - **CPU Time** - when this quota is exceeded, Azure stops all web sites for a subscription which are configured to run in **Shared** mode for the remainder of the current quota interval. Azure will start the web sites at the beginning of the next quota interval.
-
- - **File System Storage** - Azure prevents deployment of any web sites for a subscription which are configured to run in Shared mode if the deployment will cause the File System Storage usage quota to be exceeded. When the File System Storage resource has grown to the maximum size allowed by its quota, file system storage remains accessible for read operations, but all write operations, including those required for normal web site activity, are blocked. When this occurs, you can configure one or more web sites running in Shared web site mode to run in Standard web site mode, or reduce usage of file system storage below the File System Storage usage quota.
-
+- 共有モードで実行するように構成されている Web サイトの数が増加すると、共有モードのリソースの使用量クォータを超過する可能性も高くなります。
+このため、リソースの使用量クォータを超過した場合は、共有モードで実行するように構成されている Web サイトの数を減らすことを検討してください。
+- 同様に、共有モードで実行している Web サイトのインスタンス数が増加すると、共有モードのリソースの使用量クォータを超過する可能性も高くなります。
+このため、リソースの使用量クォータを超過した場合は、共有モードの Web サイトのインスタンス数を減らすことを検討してください。
 
 
+##<a name="exceeded"></a>リソース使用量クォータを超過した場合の処理
 
-##<a name="howtoconfigdiagnostics"></a>How to: Configure diagnostics and download logs for a web site
+クォータ期間 (24 時間) 内にサブスクリプションのリソースの使用量クォータを超過すると、Azure は次の措置を講じます。
 
-Diagnostics are enabled on the **Configure** management page for the web site. There are two types of diagnostics: **application diagnostics** and **site diagnostics**.
+ - **[送信データ]** - このクォータを超過すると、Azure は、現在のクォータ期間が終わるまで、**共有**モードで実行するように構成されているサブスクリプションの Web サイトをすべて停止します。これらの Web サイトは、次のクォータ期間の先頭から開始されます。
 
-####Application Diagnostics####
+ - **[CPU 時間]** - このクォータを超過すると、Azure は、現在のクォータ期間が終わるまで、**共有**モードで実行するように構成されているサブスクリプションの Web サイトをすべて停止します。これらの Web サイトは、次のクォータ期間の先頭から開始されます。
 
-The **application diagnostics** section of the **Configure** management page controls the logging of information produced by the application, which is useful when logging events that occur within an application. For example, when an error occurs in your application, you may wish to present the user with a friendly error while writing more detailed error information to the log for later analysis.
+ - **[ファイル システム ストレージ]** - 展開によってファイル システム ストレージの使用量クォータが超過する場合、Azure は、共有モードで実行するように構成されているサブスクリプションのすべての Web サイトについて、展開を阻止します。ファイル システム ストレージのリソースがクォータの最大許容サイズまで増加した場合、読み取り操作では引き続きファイル システム ストレージにアクセスできますが、通常の Web サイト アクティビティに必要な操作も含めて、すべての書き込み操作がブロックされます。この状況が発生した場合は、共有 Web サイト モードで実行中の 1 つ以上の Web サイトを標準 Web サイト モードで実行するように構成して、ファイル システム ストレージ使用量クォータを下回るように、ファイル システム ストレージの使用量を削減することができます。
 
-You can enable or disable the following application diagnostics:
 
-- **Application Logging (File System)** - Turns on logging of information produced by the application. The **Logging Level** field determines whether Error, Warning, or Information level information is logged. You may also select Verbose, which will log all information produced by the application.
 
-	Logs produced by this setting are stored on the file system of your web site, and can be downloaded using the steps in the **Downloading log files for a web site** section below.
 
-- **Application Logging (Table Storage)** - Turns on the logging of information produced by the application, similar to the Application Logging (File System) option. However, the log information is stored in an Azure Storage Account in a table.
+##<a name="howtoconfigdiagnostics"></a>方法: Web サイトの診断の構成とログのダウンロード
 
-	To specify the Azure Storage Account and table, choose **On**, select the **Logging Level**, and then choose **Manage Table Storage**. Specify the storage account and table to use, or create a new table.
+診断は、Web サイトの **[構成]** 管理ページで有効にします。診断には、**アプリケーション診断**と**サイト診断**という 2 種類の診断があります。
 
-	The log information stored in the table can be accessed using an Azure Storage client.
+####アプリケーション診断####
 
-- **Application Logging (Blob storage)** - Turns on the logging of information produced by the application, similar to the Application Logging (Table Storage) option. However, the log information is stored in a blob in an Azure Storage Account.
+**[構成]** 管理ページの **[アプリケーション診断]** セクションで、アプリケーションの生成する情報のログ記録をコントロールします。これはアプリケーション内で発生するイベントのログを作成する場合に便利です。たとえば、アプリケーションでエラーが発生したとき、ユーザーにはわかりやすいエラー メッセージを表示する一方で、分析に役立つ詳細なエラー情報をログに書き出すことができます。
 
-	To specify the Azure Storage Account and blob, choose **On**, select the **Logging Level**, and then choose **Manage Blob Storage**. Specify the storage account, blob container, and blob name to use, or create a new container and blob.
+次のアプリケーション診断を有効または無効にできます。
 
-For more information about Azure Storage Accounts, see [How to Manage Storage Accounts](https://www.windowsazure.com/en-us/manage/services/storage/how-to-manage-a-storage-account/).
+- **[アプリケーション ログ記録 (ファイル システム)]** - アプリケーションによって生成される情報をログに記録します。**[ログ レベル]** フィールドで [エラー]、[警告]、または [情報] レベルの情報をログに記録するかどうかを指定します。[詳細] を選択することもできます。この場合、アプリケーションが生成するすべての情報がログに記録されます。
 
-<div class="dev-callout"> 
-<b>Note</b> 
-<p>Application logging to table or blob storage is only supported for .NET applications.</p> </div>
+	この設定によって生成されるログは、Web サイトのファイル システムに格納され、下記の 「**Web サイトのファイルをダウンロードする**」セクションで説明された手順を使用してダウンロードすることができます。
 
-Since application logging to storage requires using a storage client to view the log data, it is most useful when you plan on using a service or application that understands how to read and process the data directly from Azure Table or Blob Storage. Logging to the file system produces files that can be downloaded to your local computer using FTP or other utilities as described later in this section.
+- **[アプリケーション ログ記録 (テーブル ストレージ)]** - [アプリケーション ログ記録 (ファイル システム)] オプションを選択した場合と同様、アプリケーションによって生成された情報をログに記録します。ただし、この場合、Azure のストレージ アカウントのテーブルにログ情報が保存されます。
+
+	Azure のストレージ アカウントとテーブルを指定するには、このオプションを **[オン]** に設定して **[ログ レベル]** を指定し、**[テーブル ストレージの管理]** を選択します。使用するストレージ アカウントとテーブルを指定するか、新しいテーブルを作成します。
+
+	テーブルに保存されたログ情報は、Azure のストレージ クライアントからアクセスできます。
+
+- **[アプリケーション ログ記録 (BLOB ストレージ)]** - [アプリケーション ログ記録 (テーブル ストレージ)] オプションと同様、アプリケーションによって生成された情報をログに記録します。ただし、この場合、Azure のストレージ アカウントの BLOB にログ情報が保存されます。
+
+	Azure のストレージ アカウントと BLOB を指定するには、このオプションを **[オン]** に設定して **[ログ レベル]** を指定し、**[BLOB ストレージの管理]** を選択します。使用する既存のストレージ アカウント、BLOB コンテナー、BLOB 名を指定するか、新しいコンテナーと BLOB を作成します。
+
+Azure のストレージ アカウントの詳細については、「[ストレージ アカウントの管理方法](https://www.windowsazure.com/ja-jp/manage/services/storage/how-to-manage-a-storage-account/)」を参照してください。
 
 <div class="dev-callout"> 
-	<b>Note</b> 
-	<p><b>Application diagnostics (file system)</b>, <b>Application diagnostics (table storage)</b>, and <b>Application diagnostics (blob storage)</b> can be enabled at the same time, and have individual log level configurations. For example, you may wish to log errors and warnings to storage as a long-term logging solution, while enabling file system logging with a level of verbose after instrumenting the application code in order to troubleshoot a problem.</p> </div>
+<b>メモ</b>
+<p>テーブルまたは BLOB ストレージに保存できるのは、.NET アプリケーションによって生成されたログ情報のみです。</p></div>
+
+アプリケーションのログ情報をストレージに記録した場合、ストレージ クライアントを使用してログ データを表示する必要があります。したがって、この方法は、Azure のテーブルや BLOB ストレージからデータを直接読み込んで処理するサービスまたはアプリケーションに適しています。ファイル システムにログを記録するとファイルが生成され、そのファイルを、このセクションで後述する FTP などのユーティリティを使用してローカル コンピューターにダウンロードできます。
 
 <div class="dev-callout"> 
-	<b>Note</b> 
-	<p>Diagnostics can also be enabled from Azure PowerShell using the <b>Set-AzureWebsite</b> cmdlet.</p><p>If you have not installed Azure PowerShell, or have not configured it to use your Azure Subscription, see <a href="http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/powershell-cmdlets/">How to Use Azure PowerShell</a>.</p></div>
+	<b>注</b>
+	<p><b>アプリケーション診断 (ファイル システム)</b>、<b>アプリケーション診断 (テーブル ストレージ)</b>、および<b>アプリケーション診断 (BLOB ストレージ)</b> は同時に有効にできます。また、それぞれ個別にログ レベルを設定できます。たとえば、エラーと警告をストレージに長期間保存すると同時に、アプリケーション コードを実装した後、問題解決に役立つ詳細ログをファイル システムに記録できます。</p></div>
 
 <div class="dev-callout"> 
-<b>Note</b> 
-<p>Application logging relies on log information generated by your application. The method used to generate log information, as well as the format of the information is specific to the language your application is written in. For language-specific information on using application logging, see the following articles:</p>
+	<b>注</b>
+	<p>診断を有効にするには、Azure PowerShell から <b>Set-AzureWebsite</b> コマンドレットを使用する方法もあります。</p><p>Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合、「<a href="http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/">How to Use Azure PowerShell (Azure PowerShell の使用方法)</a>」を参照してください。</p></div>
+
+<div class="dev-callout"> 
+<b>メモ</b>
+<p>アプリケーション ログ記録は、アプリケーションが生成するログ情報に依存しています。ログ情報を生成する方法およびログ情報の形式は、アプリケーションの開発言語によって異なります。各言語でのアプリケーション ログ記録の使用方法については、次の記事を参照してください。</p>
 <ul>
-<li><b>.NET</b> - <a href="/en-us/develop/net/common-tasks/diagnostics-logging-and-instrumentation/">Enable diagnostic logging for Azure Web Sites</a></li>
-<li><b>Node.js</b> - <a href="/en-us/develop/nodejs/how-to-guides/Debug-Website/">How to debug a Node.js application in Azure Web Sites</a></li>
+<li><b>.NET</b> - <a href="/ja-jp/develop/net/common-tasks/diagnostics-logging-and-instrumentation/">Enable diagnostic logging for Azure Web Sites (Azure の Web サイトの診断ログを有効にする)</a></li>
+<li><b>Node.js</b> - <a href="/ja-jp/develop/nodejs/how-to-guides/Debug-Website/">How to debug a Node.js application in Azure Web Sites (Azure の Web サイトでの Node.js アプリケーションのデバッグ方法)</a></li>
 </ul>
-<p>Application logging to table or blob storage is only supported for .NET applications.</p>
+<p>テーブルまたは BLOB ストレージに保存できるのは、.NET アプリケーションによって生成されたログ情報のみです。</p>
 </div>
 
-####Site Diagnostics####
+####サイト診断####
 
-The **site diagnostics** section of the **Configure** management page controls the logging performed by the web server, such as the logging of web requests, failure to serve pages, or how long it took to serve a page. You can enable or disable the following options:
+**[構成]** 管理ページの **[サイト診断]** セクションでは、Web 要求、ページ処理の失敗、ページ処理にかかった時間のログ記録など、Web サーバーで実行するログ記録をコントロールします。次のオプションを有効または無効にできます。
 
-- **Web Server Logging** - Turn on Web Server logging to save web site logs using the W3C extended log file format. Web server logging produces a record of all incoming requests to your web site, which contains information such as the client IP address, requested URI, HTTP status code of the response, and the user agent string of the client. You can save the logs to an Azure Storage Account or to the File System.
+- **[Web サーバーのログ記録]** - Web サーバーのログ記録を有効にして、W3C 拡張ログ ファイル形式で Web サイトのログを保存します。Web サーバーのログ記録では、Web サイトが受け取ったすべての要求を記録します。記録される情報は、クライアントの IP アドレス、要求された URI、応答の HTTP ステータス コード、クライアントのユーザー エージェント文字列などです。これらのログは、Azure のストレージ アカウントまたはファイル システムに保存できます。
 
- To save web server logs to an Azure Storage Account, choose **Storage**, and then choose **manage storage** to specify a storage account and an Azure Blob Container where the logs will be kept. For more information about Azure Storage Accounts, see [How to Manage Storage Accounts](https://www.windowsazure.com/en-us/manage/services/storage/how-to-manage-a-storage-account/).
+ Web サーバーのログを Azure のストレージ アカウントに保存するには、**[ストレージ]**、**[ストレージの管理]** の順に選択し、ログを保存するストレージ アカウントと Azure BLOB コンテナーを指定します。Azure のストレージ アカウントの詳細については、「[ストレージ アカウントの管理方法](https://www.windowsazure.com/ja-jp/manage/services/storage/how-to-manage-a-storage-account/)」を参照してください。
 
-   To save web server logs to the file system, choose **File System**. This enables the **Quota** box where you can set the maximum amount of disk space for the log files. The minimum size is 25MB and the maximum is 100MB. The default size is 35MB.
+   Web サーバーのログをファイル システムに保存するには、**[ファイル システム]** を選択します。**[クォータ]** ボックスに、ログ ファイルに割り当てる最大ディスク容量を設定できるようになります。指定可能な最小容量は 25 MB、最大容量は 100 MB。既定のサイズは 35 MB です。
 
- By default, web server logs are never deleted. To specify a period of time after which the logs will be automatically deleted, select **Set Retention** and enter the number of days to keep the logs in the **Retention Period** box. This setting is available for both the Azure Storage and File System options.
+ 既定では、Web サーバーのログは一切削除されません。ログが自動的に削除されるまでの期間を指定するには、**[保有期間の設定]** を選択し、ログを保持する日数を **[保有期間]** ボックスに入力します。Azure のストレージとファイル システム両方について、ログの保有期間を設定できます。
 
-- **Detailed Error Messages** - Turn on detailed error logging to log additional information about HTTP errors (status codes greater than 400).
+- **[詳細なエラー メッセージ]** - 詳細なエラー ログを有効にすると、HTTP エラーに関する追加情報 (400 を超える状態コード) がログに記録されます。
 
-- **Failed Request Tracing** - Turn on failed request tracing to capture information for failed client requests, such as a 400 series HTTP status code.  Failed request tracing produces an XML document that contains a trace of which modules the request passed through in IIS, details returned by the module, and the time the module was invoked. This information can be used to isolate which component the failure occurred in.
+- **[失敗した要求トレース]** - 失敗した要求トレースを有効にして、HTTP 状態コードが 400 番台の要求など、失敗したクライアント要求に関する情報を取得します。失敗した要求トレースでは、XML ドキュメントが生成され、IIS で要求が渡されたモジュールのトレース、モジュールの返した値の詳細、モジュールが呼び出された時刻が記録されます。この情報を参照して、障害が発生したコンポーネントを突き止めることができます。
 
 
-After enabling diagnostics for a web site, click the **Save** icon at the bottom of the **Configure** management page to apply the options that you have set.
+Web サイトの診断を有効にしたら、**[構成]** 管理ページの下部にある **[保存]** アイコンをクリックして、設定したオプションを適用します。
 
 <div class="dev-callout"> 
-<b>Important</b> 
-<p>Logging and tracing place significant demands on a web site. We recommend turning off logging and tracing once you have reproduced the problem(s) that you are troubleshooting.</p> 
+<b>重要</b>
+<p>ログ記録やトレースを行うと、Web サイトに対する負荷が大幅に増加します。トラブルシューティングを行っている対象の問題を再現した後は、ログ記録およびトレースをオフにしておくことをお勧めします。</p>
 </div>
 
-###Advanced configuration###
+###詳細な構成###
 
-Diagnostics can be further modified by adding key/value pairs to the **app settings** section of the **Configure** management page. The following settings can be configured from **app settings**:
+診断内容をさらに変更するには、**[構成]** 管理ページの **[アプリケーション設定]** セクションにキーと値のペアを追加します。**[アプリケーション設定]** で構成できる内容は次のとおりです。
 
 **DIAGNOSTICS_TEXTTRACELOGDIRECTORY**
 
-- The location in which application logs will be saved, relative to the web root.
+- アプリケーション ログを保存する場所。Web ルートを基準にして指定します。
 
-- Default value: ..\\..\\LogFiles\\Application
+- 既定値: ..\\..\\LogFiles\\Application
 
 **DIAGNOSTICS_TEXTTRACEMAXBUFFERSIZEBYTES**
 
-- The maximum buffer size to use when capturing application logs. Information is initially written to the buffer before being flushed to file or storage. If new information is written to the buffer before it can be flushed, you may lose previously logged information. If your application produces large bursts of log information, consider increasing the size of the buffer.
+- アプリケーション ログの収集時に使用する最大バッファー サイズ。ログ情報はまずバッファーに書き込まれ、その後でファイルまたはストレージに保存されます。バッファー内の情報がファイルやストレージに保存される前に新しい情報が書き込まれると、既存のログ情報が失われる可能性があります。アプリケーションで大量のログ情報が生成される場合は、バッファー サイズを大きくしてください。
 
-- Default value: 10MB
+- 既定値: 10 MB
 
 **DIAGNOSTICS_TEXTTRACEMAXLOGFOLDERSIZEBYTES**
 
-- The maximum size of the **Application** folder in which application diagnostics written to file are stored.
+- ファイルに書き込まれたアプリケーション診断を保存する **Application** フォルダーの最大サイズ。
 
-- Default value: 1MB
+- 既定値: 1 MB
 
-###Downloading log files for a web site###
+###Web サイトのログ ファイルをダウンロードする###
 
-Log files can be downloaded using either FTP, Azure PowerShell, or the Azure Command-Line tools.
+ログ ファイルは、FTP、Azure PowerShell、または Azure コマンド ライン ツールを使用してダウンロードすることができます。
 
 **FTP**
 
-1. Open the web site's **Dashboard** management page and make note of the FTP site listed under **Diagnostics Logs** and the account listed under **Deployment User**. The FTP site is where the log files are located and the account listed under Deployment User is used to authenticate to the FTP site.
-2. If you have not yet created deployment credentials, the account listed under **Deployment User** is listed as **Not set**. In this case you must create deployment credentials as described in the Reset Deployment Credentials section of the Dashboard because these credentials must be used to authenticate to the FTP site where the log files are stored. Azure does not support authenticating to this FTP site using Live ID credentials.
-3. Consider using an FTP client such as [FileZilla][fzilla] to connect to the FTP site. An FTP client provides greater ease of use for specifying credentials and viewing folders on an FTP site than is typically possible with a browser.
-4. Copy the log files from the FTP site to your local computer.
+1. Web サイトの **[ダッシュボード]** 管理ページを開き、**[診断ログ]** に表示されている FTP サイトと **[展開ユーザー]** に表示されているアカウントを書き留めます。この FTP サイトはログ ファイルが保存される場所であり、[展開ユーザー] に表示されるアカウントは FTP サイトに対する認証に使用されます。
+2. 展開資格情報をまだ作成していない場合、**[展開ユーザー]** のアカウントは **[未設定]** として表示されます。ログ ファイルが保存される FTP サイトに対する認証には展開資格情報が使用されるため、この場合は、[ダッシュボード] の [展開資格情報のリセット] セクションに記載されている説明に従って展開資格情報を作成する必要があります。Live ID 資格情報の使用によるこの FTP サイトへの認証は、サポートされていません。
+3. FTP サイトへの接続には、[FileZilla][fzilla] などの FTP クライアントの使用を検討します。一般的に、FTP クライアントを使用すると、ブラウザーを使用する場合よりも、資格情報の指定や FTP サイトにあるフォルダーの表示を容易に行うことができます。
+4. ログ ファイルを FTP サイトからローカル コンピューターにコピーします。
 
 **Azure PowerShell**
 
-1. From the **Start Screen** or the **Start Menu**, search for **Azure PowerShell**. Right-click the **Azure PowerShell** entry and select **Run as Administrator**.
+1. **スタート画面**または **[スタート] メニュー**で、「**Azure PowerShell**」を検索します。**[Azure PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
 
 	<div class="dev-callout"> 
-	<b>Note</b> 
-	<p>If <b>Azure PowerShell</b> is not installed, see <a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj554332.aspx">Getting Started with Azure PowerShell Cmdlets</a> for installation and configuration information.</p> 
+	<b>注</b>
+	<p><b>Azure PowerShell</b> がインストールされていない場合は、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554332.aspx">Azure コマンドレットの概要</a>」を参照して、インストールと構成を実行してください。</p>
 	</div>
 
-2. From the Azure PowerShell prompt, use the following command to download the log files:
+2. Azure PowerShell プロンプトで次のコマンドを使用して、ログ ファイルをダウンロードします。
 
 		Save-AzureWebSiteLog -Name websitename
 
-	This will download the log files for the website specified by **websitename** and save them to a **log.zip** file in the current directory.
+	これにより、**websitename** で指定された Web サイトのログ ファイルがダウンロードされ、現在のディレクトリにある **log.zip** ファイルに保存されます。
 	
-	You may also view a live stream of log events by using the following command:
+	次のコマンドを使用してログ イベントのライブ ストリームを表示することもできます。
 
 		Get-AzureWebSiteLog -Name websitename -Tail
 
-	This will display log information to the Azure PowerShell prompt as they occur.
+	これは Azure PowerShell プロンプトに、発生したログ情報を順次表示します。
 
-**Azure Command-line Tools**
+**Azure コマンド ライン ツール**
 
-Open a new command prompt, PowerShell, bash, or terminal session, and use the following command to download the log files:
+新しいコマンド プロンプト、PowerShell、bash、またはターミナル セッションを開き、次のコマンドを使用してログ ファイルをダウンロードします。
 
 	azure site log download websitename
 
-This will download the log files for the website specified by **websitename** and save them to a **log.zip** file in the current directory.
+これにより、**websitename** で指定された Web サイトのログ ファイルがダウンロードされ、現在のディレクトリにある **log.zip** ファイルに保存されます。
 
-You may also view a lie stream of log events by using the following command:
+次のコマンドを使用してログ イベントのライブ ストリームを表示することもできます。
 
 	azure site log tail websitename
 
-This will display log information to the command prompt, PowerShell, bash or terminal session that the command is ran from.
+これは、コマンドが実行されたコマンド プロンプト、PowerShell、bash、またはターミナル セッションにログ情報を表示します。
 
 <div class="dev-callout"> 
-<b>Note</b> 
-<p>If the <b>azure</b> command is not installed, see <a href="http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/">How to use the Azure Command-Line Tools</a> for installation and configuration information.</p>
+<b>メモ</b>
+<p><b>azure</b> コマンドがインストールされていない場合は、「<a href="http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/command-line-tools/">How to use the Azure Command-Line Tools (Azure コマンド ライン ツールの使用方法)</a>」を参照して、インストールと構成を実行してください。</p>
 </div>
 
-###Reading log files###
+###ログ ファイルの読み込み###
 
-The log files that are generated after you have enabled logging and / or tracing for a web site vary depending on the level of logging / tracing that is set on the Configure management page for the web site. Following are the location of the log files and how the log files may be analyzed:
+Web サイトに対するログ記録またはトレース、あるいはその両方を有効にした後に生成されるログ ファイルの内容は、Web サイトの [構成] 管理ページで設定したログ記録/トレースのレベルによって異なります。ログ ファイルの場所と分析方法を以下に示します。
 
-**Log File Type: Application Logging**
+**ログ ファイルの種類: アプリケーション ログ記録**
 
-- Location /LogFiles/Application/. This folder contains one or more text files containing information produced by application logging. The information logged includes the date and time, the Process ID (PID) of the application, and the value produced by the application instrumentation.
+- 場所: /LogFiles/Application/。このフォルダーには、アプリケーション ログによって生成された情報を含む 1 つ以上のテキスト ファイルが格納されます。ログに記録される情報には、日時、アプリケーションのプロセス ID (PID)、およびアプリケーションのインストルメンテーションによって生成された値が含まれます。
 
-- Read Files with: A text editor or parser that understands the values produced by your application
+- ファイルの閲覧に使用するツール: テキスト エディター、または、アプリケーションの生成した値を理解できるパーサー。
 
-**Log File Type: Failed Request Tracing**
+**ログ ファイルの種類: 失敗した要求トレース**
 
-- Location: /LogFiles/W3SVC#########/. This folder contains an XSL file and one or more XML files. Ensure that you download the XSL file into the same directory as the XML file(s) because the XSL file provides functionality for formatting and filtering the contents of the XML file(s) when viewed in Internet Explorer. 
+- 場所: /LogFiles/W3SVC#########/。このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。
 
-- Read Files with: Internet Explorer
+- ファイルの閲覧に使用するツール: Internet Explorer
 
-**Log File Type: Detailed Error Logging**
+**ログ ファイルの種類: 詳細なエラー ログ記録**
 
-- Location: /LogFiles/DetailedErrors/. The /LogFiles/DetailedErrors/ folder contains one or more .htm files that provide extensive information for any HTTP errors that have occurred. 
+- 場所: /LogFiles/DetailedErrors/。/LogFiles/DetailedErrors/ フォルダーには、発生した HTTP エラーに関する詳細な情報を記録した 1 つ以上の .htm ファイルが格納されます。
 
-- Read Files with: Web browser
+- ファイルの閲覧に使用するツール: Web ブラウザー
 
-The .htm files include the following sections:
+.htm ファイルには以下のセクションが含まれています。
 
-- **Detailed Error Information:** Includes information about the error such as <em>Module</em>, <em>Handler</em>, <em>Error Code</em>, and <em>Requested URL</em>.
+- **[エラー情報の詳細]**: <em>モジュール</em>、<em>ハンドラー</em>、<em>エラー コード</em>、<em>要求された URL</em> などのエラーに関する情報が含まれています。
 
-- **Most likely causes:** Lists several possible causes of the error.
+- **[可能性のある原因]**: エラーについて考えられる原因が一覧表示されます。
 
-- **Things you can try:** Lists possible solutions for resolving the problem reported by the error.
+- **[対処方法]**: エラーによって報告された問題を解決するために考えられるソリューションが一覧表示されます。
 
-- **Links and More Information**: Provides additional summary information about the error and may also include links to other resources such as Microsoft Knowledge Base articles.
+- **[リンクと詳細]**: エラーに関する追加の概要情報が示されます。Microsoft サポート技術情報の記事など、他のリソースへのリンクが含まれていることもあります。
 
-**Log File Type: Web Server Logging**
+**ログ ファイルの種類: Web サーバーのログ記録**
 
-- Location: /LogFiles/http/RawLogs. The information stored in the files is formatted using the [W3C extended log format](http://go.microsoft.com/fwlink/?LinkID=90561). The s-computername, s-ip and cs-version fields are not used by Azure Web Sites.
+- 場所: /LogFiles/http/RawLogs。このファイルに保存される情報は、[W3C 拡張ログ形式](http://go.microsoft.com/fwlink/?LinkID=90561)でフォーマットされます。Azure の Web サイトでは、s-computername、s-ip、cs-version の各フィールドを使用しません。
 
-- Read Files with: Log Parser. Used to parse and query IIS log files. Log Parser 2.2 is available on the Microsoft Download Center at <a href="http://go.microsoft.com/fwlink/?LinkId=246619">http://go.microsoft.com/fwlink/?LinkId=246619</a>.
-
-
-##<a name="webendpointstatus"></a>How to: Monitor web endpoint status
-
-This feature, available in **Standard** mode, lets you monitor up to 2 endpoints from up to 3 geographic locations. 
-
-Endpoint monitoring configures web tests from geo-distributed locations that test response time and uptime of web URLs. The test performs an HTTP get operation on the web URL to determine the response time and uptime from each location. Each configured location runs a test every five minutes.
-
-Uptime is monitored using HTTP response codes, and response time is measured in milliseconds. Uptime is considered 100% when the response time is less than 30 seconds and the HTTP status code is lower than 400. Uptime is 0% when the response time is greater than 30 seconds or the HTTP status code is greater than 400.
-
-After you configure endpoint monitoring, you can drill down into the individual endpoints to view details response time and uptime status over the monitoring interval from each of the test locations.
-
-**To configure endpoint monitoring:**
-
-1.	Open **Web Sites**. Click the name of the web site you want to configure.
-2.	Click the **Configure** tab. 
-3.     Go to the **Monitoring** section to enter your endpoint settings.
-4.	Enter a name for the endpoint.
-5.	Enter the URL for the service that you want to monitor. For example, [http://contoso.cloudapp.net](http://contoso.cloudapp.net). 
-6.	Select one or more geographic locations from the list.
-7.	Optionally, repeat the previous steps to create a second endpoint.
-8.	Click **Save**. It may take some time for the web endpoint monitoring data to be available on the **Dashboard** and **Monitor** tabs.
+- ファイルの閲覧に使用するツール: Log Parser。このツールは、IIS ログ ファイルの解析と照会に使用されるものです。Log Parser 2.2 は、Microsoft ダウンロード センター (<a href="http://go.microsoft.com/fwlink/?LinkId=246619">http://go.microsoft.com/fwlink/?LinkId=246619</a>) から入手できます。
 
 
-For more on web site endpoint monitoring, see the following videos:
+##<a name="webendpointstatus"></a>方法: Web エンドポイントの状態の監視
 
-- [Scott Guthrie introduces Azure Web Sites and sets up Endpoint Monitoring](http://www.windowsazure.com/en-us/documentation/videos/websites-and-endpoint-monitoring-scottgu/)
+この機能は、**標準**モードで使用でき、最大 3 か所にある最大 2 個のエンドポイントを監視できます。
 
-- [Keeping Azure Web Sites up plus Endpoint Monitoring - with Stefan Schackow](http://www.windowsazure.com/en-us/documentation/videos/azure-web-sites-endpoint-monitoring-and-staying-up/)
+エンドポイント監視では、地理的に分散した場所から Web URL の応答時間とアップタイムをテストする Web テストを構成します。このテストでは、Web URL に対して HTTP get 操作を実行し、各リージョンから応答時間とアップタイムを測定します。構成された各場所では、テストを 5 分ごとに実行します。
+
+アップタイムは HTTP 応答コードを使用して監視され、応答時間はミリ秒単位で測定されます。応答時間が 30 秒未満で HTTP 状態コードが 400 未満である場合、アップタイムは 100% と見なされます。応答時間が 30 秒以上で HTTP 状態コードが 400 以上である場合、アップタイムは 0% です。
+
+エンドポイント監視を構成した後、各テスト場所から個々のエンドポイントにドリルダウンして、監視期間内の応答時間とアップタイム状態の詳細を確認することができます。
+
+**エンドポイント監視を構成するには**
+
+1.	**[Web サイト]** を開きます。構成する Web サイトの名前をクリックします。
+2.	**[構成]** タブをクリックします。
+3.     **[監視]** セクションに移動して、エンドポイント設定を入力します。
+4.	エンドポイントの名前を入力します。
+5.	監視するサービスの URL を入力します。たとえば、「[http://contoso.cloudapp.net](http://contoso.cloudapp.net)」のように入力します。
+6.	1 つ以上の場所を一覧から選択します。
+7.	2 つ目のエンドポイントを構成する場合は、これまでの手順を繰り返します。
+8.	**[保存]** をクリックします。Web エンドポイントの監視データが **[ダッシュボード]** と **[監視]** タブに表示されるまでに、時間がかかることがあります。
+
+
+Web サイトのエンドポイントの監視の詳細については、次のビデオを参照してください。
+
+- [Scott Guthrie introduces Azure Web Sites and sets up Endpoint Monitoring (Scott Guthrie による Azure の Web サイトの紹介とエンドポイント監視の設定)](http://www.windowsazure.com/ja-jp/documentation/videos/websites-and-endpoint-monitoring-scottgu/)
+
+- [Keeping Azure Web Sites up plus Endpoint Monitoring - with Stefan Schackow (Azure の Web サイトの保持とエンドポイントの監視 - Stefan Schackow 共演)](http://www.windowsazure.com/ja-jp/documentation/videos/azure-web-sites-endpoint-monitoring-and-staying-up/)
 
 
 
@@ -311,6 +311,7 @@ For more on web site endpoint monitoring, see the following videos:
 
 [fzilla]:http://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:http://go.microsoft.com/fwlink/?LinkID=309169
+
 
 
 

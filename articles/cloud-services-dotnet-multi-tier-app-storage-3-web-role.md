@@ -1,80 +1,80 @@
-<properties linkid="develop-net-tutorials-multi-tier-web-site-3-web-role" urlDisplayName="Step 3: Web Role" pageTitle="ASP.NET Multi-tier Web Application with Azure - Step 3: Web role" metaKeywords="Azure tutorial, Email Service application, ASP.NET MVC web role, MVC controllers, Web API controller, Cloud Service project" description="The third tutorial in a series that teaches how to create and deploy the Email Service app in an Azure cloud service." metaCanonical="" services="cloud-services,storage" documentationCenter=".NET" title="Building the web role for the Azure Email Service application - 3 of 5." authors="tdykstra,riande" solutions="" manager="wpickett" editor="mollybos" />
+<properties linkid="develop-net-tutorials-multi-tier-web-site-3-web-role" urlDisplayName="ステップ 3: Web ロール" pageTitle="Azure を使用した ASP.NET 多層 Web アプリケーション - ステップ 3: Web ロール" metaKeywords="Azure チュートリアル, 電子メール サービス アプリケーション, ASP.NET MVC Web ロール, MVC コントローラー, Web API コントローラー, クラウド サービス プロジェクト" description="Azure クラウド サービス内で電子メール サービス アプリケーションを作成してデプロイする方法を学習する 3 番目のチュートリアル。" metaCanonical="" services="cloud-services,storage" documentationCenter=".NET" title="Azure Email Service アプリケーションで使用する Web ロールの作成 - 3/5。" authors="tdykstra,riande" solutions="" manager="wpickett" editor="mollybos" />
 
-# Building the web role for the Azure Email Service application - 3 of 5. 
+# Azure Email Service アプリケーションで使用する Web ロールの作成 - 3/5。
 
-This is the third tutorial in a series of five that show how to build and deploy the Azure Email Service sample application.  For information about the application and the tutorial series, see [the first tutorial in the series][firsttutorial].
+この 3 番目のチュートリアル (全 5 回シリーズ) では、Azure Email Service のサンプル アプリケーションを作成してデプロイする方法を説明します。このアプリケーションとチュートリアル シリーズの詳細については、[シリーズの最初のチュートリアル][firsttutorial]を参照してください。
 
-In this tutorial you'll learn:
+このチュートリアルでは、次のことについて説明します。
 
-* How to create a solution that contains a Cloud Service project with a web role and a worker role. 
-* How to work with Azure tables, blobs, and queues in MVC 4 controllers and views.
-* How to handle concurrency conflicts when you are working with Azure tables.
-* How to configure a web role or web project to use your Azure Storage account.
+* Web ロールとワーカー ロールを使用してクラウド サービス プロジェクトを含むソリューションを作成する方法
+* MVC 4 コントローラーとビューで Azure テーブル、BLOB、およびキューを操作する方法
+* Azure テーブルの操作時に同時実行の競合を処理する方法
+* Azure のストレージ アカウントを使用できるように Web ロールまたは Web プロジェクトを構成する方法
 
  
-<h2><a name="cloudproject"></a><span class="short-header">Create solution</span>Create the Visual Studio solution</h2>
+<h2><a name="cloudproject"></a><span class="short-header">ソリューションの作成</span>Visual Studio ソリューションの作成</h2>
 
-You begin by creating a Visual Studio solution with a project for the web front-end and a project for one of the back-end Azure worker roles. You'll add the second worker role later. 
+まず、Web フロントエンドに使用するプロジェクトと、バックエンドの Azure ワーカー ロールの 1 つに使用するプロジェクトで構成される Visual Studio ソリューションを作成します。後で、2 つ目のワーカー ロールを追加します。
 
-(If you want to run the web UI in an Azure Web Site instead of an Azure Cloud Service, see the [Alternative Architecture][alternativearchitecture] section later in this tutorial for changes to these instructions.)
+(Azure クラウド サービスではなく Azure の Web サイトで Web UI を実行する場合は、このチュートリアルの「[代替アーキテクチャ][alternativearchitecture]」で、手順の変更を確認してください。)
 
-### Create a cloud service project with a web role and a worker role
+### Web ロールとワーカー ロールを使用してクラウド サービス プロジェクトを作成する
 
-1. Start Visual Studio with elevated privileges.
+1. 昇格された特権を使用して Visual Studio を起動します。
 
-	>[WACOM.NOTE] For Visual Studio 2013, you don't have to use elevated privileges, because new projects use the compute emulator express by default.
+	>[WACOM.NOTE] Visual Studio 2013 の場合は、新しいプロジェクトは既定でコンピューティング エミュレーター Express を使用するため、昇格された特権を使用する必要はありません。
    
-2. From the **File** menu select **New Project**.
+2. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
 
-	![New Project menu][mtas-file-new-project]
+	![[新しいプロジェクト] メニュー][mtas-file-new-project]
 
-3. Expand **C#** and select **Cloud** under **Installed Templates**, and then select **Azure Cloud Service**.  
+3. **[インストールされたテンプレート]** の **C#** を展開して **[クラウド]** を選択し、**[Azure クラウド サービス]** を選択します。
 
-4. Name the application **AzureEmailService** and click **OK**.
+4. アプリケーションに「**AzureEmailService**」という名前を付けて、**[OK]** をクリックします。
 
-	![New Project dialog box][mtas-new-cloud-project]
+	![[新しいプロジェクト] ダイアログ ボックス][mtas-new-cloud-project]
 
-5. In the **New Azure Cloud Service** dialog box, select **ASP.NET Web Role** and click the arrow that points to the right.
+5. **[新しい Azure クラウド サービス]** ダイアログ ボックスで **[ASP.NET MVC 4 Web ロール]** を選択し、右矢印をクリックします。
 
-	>[WACOM.NOTE] The downloaded code that you use for this tutorial is MVC 4 but you can't create an MVC 4 Web Role in Visual Studio 2013 using instructions written for Visual Studio 2012. For Visual Studio 2013 do the following: (1) Skip the steps here for creating the web role and do the step for the worker role. (2) After the worker role is created, right-click the solution in **Solution Explorer**, and click **Add** -- **New Project**. In the left pane of the **Add New Project** dialog expand **Web** and select **Visual Studio 2012**.  (3) Choose **ASP.NET MVC 4 Web Application**, name the project **MvcWebRole**, and then click **OK**. (4) In the **New ASP.NET Project** dialog box, select the **Internet Application** template. (5) Right-click **Roles** under **AzureEmailService** in **Solution Explorer**, and then click **Add** - **Web Role Project in Solution**. (6) In the **Associate with Role Project** box, select the **MvcWebRole** project, and then click **OK**.
+	>[WACOM.NOTE]、このチュートリアルで使用するためにダウンロードするコードは MVC 4 形式ですが、Visual Studio 2012.  用に作成された手順を使用して、Visual Studio 2013 で MVC 4 Web ロールを作成することはできません。Visual Studio 2013 の場合は、次の手順を実行してください。(1) Web ロールを作成するためのこの手順をスキップし、ワーカー ロールに関連する手順を実行します。(2) ワーカー ロールを作成した後、**ソリューション エクスプローラー**でソリューションを右クリックし、**[追加]**、**[新しいプロジェクト]** の順にクリックします。**[新しいプロジェクトの追加]** ダイアログの左側のウィンドウで、**[Web]** を展開し、**[Visual Studio 2012]** を選択します。(3) **[ASP.NET MVC 4 Web アプリケーション]** を選択し、プロジェクトに「**MvcWebRole**」という名前を付け、**[OK]** をクリックします。(4) **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[インターネット アプリケーション]** テンプレートを選択します。(5) **ソリューション エクスプローラー**で、**AzureEmailService** の **[ロール]** を右クリックし、**[追加]**、**[ソリューション内の Web ロール プロジェクト]** の順にクリックします。(6) **[ロール プロジェクトとの関連付け]** ボックスで、**MvcWebRole** プロジェクトを選択し、**[OK]** をクリックします。
 
-	![New Azure Cloud Project dialog box][mtas-new-cloud-service-dialog]
+	![[新しい Azure クラウド サービス] ダイアログ ボックス][mtas-new-cloud-service-dialog]
 
-6. In the column on the right, hover the pointer over **MvcWebRole1**, and then click the pencil icon to change the name of the web role. 
+6. 右側の列でポインターを **[MvcWebRole1]** に合わせて鉛筆のアイコンをクリックすると、Web ロールの名前を変更できます。
 
-7. Enter MvcWebRole as the new name, and then press Enter.
+7. 新しい名前として「MvcWebRole」と入力し、Enter キーを押します。
 
-	![New Azure Cloud Project dialog box - renaming the web role][mtas-new-cloud-service-dialog-rename]
+	![[新しい Azure クラウド サービス] ダイアログ ボックス -  Web ロールの名前の変更][mtas-new-cloud-service-dialog-rename]
 
-8. Follow the same procedure to add a **Worker Role**, name it WorkerRoleA, and then click **OK**.
+8. 同じ手順で**ワーカー ロール**を追加し、「WorkerRoleA」という名前を付けて、**[OK]** をクリックします。
 
-	![New Azure Cloud Project dialog box - adding a worker role][mtas-new-cloud-service-add-worker-a]
+	![[新しいAzure クラウド サービス] ダイアログ ボックス - ワーカー ロールの追加][mtas-new-cloud-service-add-worker-a]
 
-5. In the **New ASP.NET Project** dialog box, select the **Internet Application** template.
+5. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[インターネット アプリケーション]** テンプレートを選択します。
 
-6. In the **View Engine** drop-down list make sure that **Razor** is selected, and then click **OK**.
+6. **[ビュー エンジン]** ボックスの一覧で **[Razor]** が選択されていることを確認し、**[OK]** をクリックします。
 
-	![New Project dialog box][mtas-new-mvc4-project]
+	![[新しいプロジェクト] ダイアログ ボックス][mtas-new-mvc4-project]
 
-### Set the page header, menu, and footer
+### ページのヘッダー、メニュー、フッターを設定する
 
-In this section you update the headers, footers, and menu items that are shown on every page for the administrator web UI.  The application will have three sets of administrator web pages:  one for Mailing Lists, one for Subscribers to mailing lists, and one for Messages.
+このセクションでは、管理者 Web UI の全ページに表示されるヘッダー、フッター、およびメニュー項目を更新します。このアプリケーションには、Mailing Lists 用、Subscribers 用、および Messages 用として、3 セットの管理者 Web ページを用意します。
 
-1. In **Solution Explorer**, expand the Views\Shared folder and open the &#95;Layout.cshtml file.
+1. **ソリューション エクスプローラー**で、Views\Shared フォルダーを展開し、&#95;Layout.cshtml ファイルを開きます。
 
-	![_Layout.cshtml in Solution Explorer][mtas-opening-layout-cshtml]
+	![_ソリューション エクスプローラーに表示されている Layout.cshtml ファイル][mtas-opening-layout-cshtml]
 
-2. In the **&lt;title&gt;** element, change "My ASP.NET MVC Application" to "Azure Email Service".
+2. **&lt;title&gt;** 要素で、"My ASP.NET MVC Application" を "Azure Email Service" に変更します。
 
-3. In the **&lt;p&gt;** element with class "site-title", change "your logo here" to "Azure Email Service", and change "Home" to "MailingList".
+3. "site-title" というクラス属性を持つ **&lt;p&gt;** 要素で、"your logo here" を "Azure Email Service" に変更し、"Home" を "MailingList" に変更します。
 
-	![title and header in _Layout.cshtml][mtas-title-and-logo-in-layout]
+	![_Layout.cshtml のタイトルとヘッダー][mtas-title-and-logo-in-layout]
 
-4. Delete the menu section:
+4. 次の menu セクションを削除します。
 
-	![menu in _Layout.cshtml][mtas-menu-in-layout]
+	![_Layout.cshtml の menu セクション][mtas-menu-in-layout]
 
-4. Insert a new menu section where the old one was:
+4. 削除した箇所に、新しい menu セクションを挿入します。
 
         <ul id="menu">
             <li>@Html.ActionLink("Mailing Lists", "Index", "MailingList")</li>
@@ -82,28 +82,28 @@ In this section you update the headers, footers, and menu items that are shown o
             <li>@Html.ActionLink("Subscribers", "Index", "Subscriber")</li>
         </ul>
 
-4. In the **&lt;footer&gt;** element, change "My ASP.NET MVC Application" to "Azure Email Service".<br/>
+4. **&lt;footer&gt;** 要素で、"My ASP.NET MVC Application" を "Azure Email Service" に変更します。<br/>
 
-	![footer in _Layout.cshtml][mtas-footer-in-layout]
+	![_Layout.cshtml のフッター][mtas-footer-in-layout]
 
-### Run the application locally
+### ローカルでアプリケーションを実行する
 
-1. Press CTRL+F5 to run the application.
+1. Ctrl + F5 キーを押して、アプリケーションを実行します。
 
-	The application home page appears in the default browser.
+	アプリケーションのホーム ページが既定のブラウザーに表示されます。
 
-	![home page][mtas-home-page-before-adding-controllers]
+	![ホーム ページ][mtas-home-page-before-adding-controllers]
 
-	The application runs in the Azure compute emulator.  You can see the compute emulator icon in the Windows system tray:
+	アプリケーションは Azure コンピューティング エミュレーターで実行されます。Windows システム トレイに、コンピューティング エミュレーター アイコンが表示されます。
 
-	![Compute emulator in system tray][mtas-compute-emulator-icon]
+	![システム トレイ内のコンピューティング エミュレーター][mtas-compute-emulator-icon]
 
 
-<h2><a name="tracing"></a><span class="short-header">Configure Tracing</span>Configure Tracing</h2>
+<h2><a name="tracing"></a><span class="short-header">トレースの構成</span>トレースの構成</h2>
 
-To enable tracing data to be saved, open the *WebRole.cs* file and add the following `ConfigureDiagnostics` method. Add code that calls the new method in the `OnStart` method.
+トレース データの保存を有効にするには、*WebRole.cs* ファイルを開き、次に示す `ConfigureDiagnostics` メソッドを追加します。`OnStart` メソッド内に、この新しいメソッドを呼び出すコードを追加します。
 
->[WACOM.NOTE] For Visual Studio 2013, in place of the following steps that manually change code in *WebRole.cs*, right-click the MvcWebRole project, click **Add Existing Item**, and add the *WebRole.cs* file from the downloaded project.
+>[WACOM.NOTE] Visual Studio 2013 の場合は、*WebRole.cs* 内のコードを手動で変更する次の手順の代わりに、MvcWebRole プロジェクトを右クリックし、**[既存項目の追加]** をクリックして、ダウンロードしたプロジェクトから *WebRole.cs* ファイルを追加します。
 
     private void ConfigureDiagnostics()
     {
@@ -123,17 +123,17 @@ To enable tracing data to be saved, open the *WebRole.cs* file and add the follo
         return base.OnStart();
     }
 
-The `ConfigureDiagnostics` method is explained in [the second tutorial][tut2].
+`ConfigureDiagnostics` メソッドについては、[2 番目のチュートリアル][tut2]で説明しています。
 
 
 
 
 
-<h2><a name="restarts"></a><span class="short-header">Restarts</span>Add code to efficiently handle restarts.</h2>
+<h2><a name="restarts"></a><span class="short-header">再起動</span>再起動を効率的に処理するコードの追加</h2>
 
-Azure Cloud Service applications  are restarted approximately twice per month for operating system updates. (For more information on OS updates, see [Role Instance Restarts Due to OS Upgrades](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx).) When a web application is going to be shut down, an `OnStop` event is raised. The web role boiler plate created by Visual Studio does not override the `OnStop` method, so the application will have only a few seconds to finish processing HTTP requests before it is shut down. You can add code to override the `OnStop` method in order to ensure that shutdowns are handled gracefully.
+Azure クラウド サービス アプリケーションは、オペレーティング システムの更新に伴い、月に約 2 回再起動されます (OS の更新の詳細については、「[Role Instance Restarts Due to OS Upgrades (OS のアップグレードに伴うロール インスタンスの再起動)](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)」を参照してください)。Web アプリケーションがシャットダウンされる際には、`OnStop` イベントが発生します。Visual Studio によって作成された Web ロール ボイラー プレートでは `OnStop` メソッドをオーバーライドしていないため、アプリケーションが HTTP 要求の処理を完了するための時間はシャットダウンまでに数秒しかありません。シャットダウンが正常に処理されるようにするには、コードを追加して `OnStop` メソッドをオーバーライドすることができます。
 
-To handle shutdowns and restarts, open the *WebRole.cs* file and add the following `OnStop` method override.
+シャットダウンと再起動を処理するには、*WebRole.cs* ファイルを開き、次に示す `OnStop` メソッドのオーバーライドを追加します。
 
       public override void OnStop()
       {
@@ -146,79 +146,81 @@ To handle shutdowns and restarts, open the *WebRole.cs* file and add the followi
           }           
       }
 
-This code requires an additional `using` statement:
+このコードには、次に示す追加の `using` ステートメントが必要です。
 
       using System.Diagnostics;
 
-The `OnStop` method has up to 5 minutes to exit before the application is shut down. You could add a sleep call for 5 minutes to the `OnStop` method to give your application the maximum amount of time to process the current requests, but if your application is scaled correctly, it should be able to process the remaining requests in much less than 5 minutes. It is best to stop as quickly as possible, so that the application can restart as quickly as possible and continue processing requests.
+`OnStop` メソッドが終了するための時間は、アプリケーションのシャットダウンまでに最長で 5 分間あります。5 分間の Sleep 呼び出しを `OnStop` メソッドに追加することにより、アプリケーションが現在の要求を処理するための時間として最長時間を設定することもできますが、アプリケーションが正しく拡張されていれば、残っている要求を 5 分よりずっと短い時間で処理できます。望ましいのは、アプリケーションができるだけ早く再起動し、要求の処理を続行できるように、できるだけ早く停止することです。
 
-Once a role is taken off-line by Azure, the load balancer stops sending requests to the role instance, and after that the `OnStop` method is called. If you don't have another instance of your role, no requests will be processed  until your role completes shutting down and is restarted (which typically takes several minutes). That is one reason why the Azure service level agreement requires you to have at least two instances of each role in order to take advantage of the up-time guarantee.
+Azure がロールをオフラインにすると、ロール インスタンスへの要求の送信がロード バランサーによって停止され、その後で、`OnStop` メソッドが呼び出されます。ロール インスタンスが他になければ、ロールのシャットダウンが完了して再起動されるまで (通常は数分かかります)、要求は処理されません。Azure サービス レベル アグリーメントでアップタイム保証を利用するためには、ロールごとに 2 つ以上のインスタンスが要求されていますが、その理由の 1 つはこの点です。
 
-In the code shown for the `OnStop` method, an ASP.NET performance counter is created for `Requests Current`. The `Requests Current` counter value contains the current number of requests, including those that are queued, currently executing, or waiting to be written to the client. The `Requests Current` value is checked every second, and once it falls to zero, the `OnStop` method returns. Once `OnStop` returns, the role shuts down.
+`OnStop` メソッド用に示したコードの中で、ASP.NET パフォーマンス カウンター `Requests Current` が作成されています。`Requests Current` カウンターの値には、現在の要求数が設定されます。これには、キューに登録済み、現在実行中、またはクライアントへの書き込み待ちの要求が含まれています。`Requests Current` 値は毎秒チェックされ、ゼロになると、`OnStop` メソッドが制御を返します。`OnStop` が制御を返した時点で、ロールがシャットダウンされます。
 
-Trace data is not saved when called from the `OnStop` method without performing an [On-Demand Transfer](http://msdn.microsoft.com/en-us/library/windowsazure/gg433075.aspx). You can view the `OnStop` trace information in real time with the  [dbgview](http://technet.microsoft.com/en-us/sysinternals/bb896647.aspx) utility from a remote desktop connection.
+[オンデマンド転送](http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433075.aspx)を実行せずに `OnStop` メソッドから呼び出された場合、トレース データは保存されません。リモート デスクトップ接続で [dbgview](http://technet.microsoft.com/ja-jp/sysinternals/bb896647.aspx) ユーティリティを使用すると、`OnStop` トレース情報をリアルタイムで確認できます。
 
-<h2><a name="updatescl"></a><span class="short-header">Update Storage Client Library</span>Update the Storage Client Library NuGet Package</h2>
+<h2><a name="updatescl"></a><span class="short-header">ストレージ クライアント ライブラリの更新</span>ストレージ クライアント ライブラリ NuGet パッケージの更新</h2>
 
->[WACOM.NOTE] This step may not be necessary. If the Azure Storage NuGet package does not show up in the Updates list, the installed version is current.
+>[WACOM.NOTE] この手順が必要ない場合があります。Azure ストレージ NuGet パッケージが [更新] の一覧に表示されていない場合は、インストール済みのバージョンは最新版です。
 
-The API framework that you use to work with Azure Storage tables, queues, and blobs is the Storage Client Library (SCL). This API is included in a NuGet package in the Cloud Service project template. However, as of the date this tutorial is being written, the project templates include the 1.7 version of SCL, not the current 2.0 version. Therefore, before you begin writing code you'll update the NuGet package.
+Azure のストレージのテーブル、キュー、および BLOB を操作するために使用する API フレームワークは、ストレージ クライアント ライブラリ (SCL) です。この API は、クラウド サービス プロジェクト テンプレート内の NuGet パッケージに含まれています。ただし、このチュートリアルの作成時点で、プロジェクト テンプレートに含まれているのは現在の 2.0 バージョンではなく 1.7 バージョンの SCL です。このため、コードの記述を開始する前に、NuGet パッケージを更新する必要があります。
 
-1. In the Visual Studio **Tools** menu, hover over **Library Package Manager**, and then click **Manage NuGet Packages for Solution**.
+1. Visual Studio の **[ツール]** メニューの **[ライブラリ パッケージ マネージャー]** にポインターを合わせて、**[ソリューションの NuGet パッケージの管理]** をクリックします。
 
-	![Manage NuGet Packages for Solution in menu][mtas-manage-nuget-for-solution]
+	![メニュー内の [ソリューションの NuGet パッケージの管理]][mtas-manage-nuget-for-solution]
 
-2. In the left pane of the **Manage NuGet Packages** dialog box, select **Updates**, then scroll down to the **Azure Storage** package and click **Update**.
+2. **[NuGet パッケージの管理]** ダイアログ ボックスの左側のウィンドウで、**[更新プログラム]** を選択して **[Azure のストレージ]** パッケージまで下方向へスクロールし、**[更新]** をクリックします。
 
-	![Azure Storage package in Manage NuGet Packages dialog box][mtas-update-storage-nuget-pkg]
+	![[NuGet パッケージの管理] ダイアログ ボックスに表示された Azure のストレージ パッケージ][mtas-update-storage-nuget-pkg]
 
-3. In the **Select Projects** dialog box, make sure both projects are selected, and then click **OK**.
+3. **[プロジェクトの選択]** ダイアログ ボックスで、両方のプロジェクトが選択されていることを確認し、**[OK]** をクリックします。
 
-	![Selecting both projects in the Select Projects dialog box][mtas-nuget-select-projects]
+	![[プロジェクトの選択] ダイアログ ボックスで両方のプロジェクトが選択されている][mtas-nuget-select-projects]
  
-4. Accept the license terms to complete installation of the package, and then close the **Manage NuGet Packages** dialog box.
+4. ライセンス条項に同意してパッケージのインストールを完了し、**[NuGet パッケージの管理]** ダイアログ ボックスを閉じます。
 
-5. In the WorkerRoleA project in *WorkerRole.cs*, if the following `using` statement is present, delete it because it is no longer needed:
+5. WorkerRoleA プロジェクトの *WorkerRoleA.cs* で、次に示す `using` ステートメントは不要になったため、削除します。
 
 		using Microsoft.WindowsAzure.StorageClient;
 
 
-The 1.7 version of the SCL includes a LINQ provider that simplifies coding for table queries. As of the date this tutorial is being written, the 2.0 Table Service Layer (TSL) does not yet have a LINQ provider. If you want to use LINQ, you still have access to the SCL 1.7 LINQ provider in the [Microsoft.WindowsAzure.Storage.Table.DataServices](http://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.table.dataservices.aspx) namespace. The 2.0 TSL was designed to improve performance, and the 1.7 LINQ provider does not benefit from all of these improvements. The sample application uses the 2.0 TSL, so it does not use LINQ for queries. For more information about SCL and TSL 2.0, see the resources at the end of [the last tutorial in this series][tut5].
+1.7 バージョンの SCL には LINQ プロバイダーが含まれており、これを使用するとテーブル クエリのコーディングが容易になります。このチュートリアルの作成時点では、2.0 テーブル サービス レイヤー (TSL) に LINQ プロバイダーは含まれていません。LINQ を使用する場合は、[Microsoft.WindowsAzure.Storage.Table.DataServices](http://msdn.microsoft.com/ja-jp/library/microsoft.windowsazure.storage.table.dataservices.aspx) 名前空間で SCL 1.7 LINQ プロバイダーにアクセスできます。2.0 TSL はパフォーマンスを向上する設計になっていますが、1.7 LINQ プロバイダーにはパフォーマンス向上によるメリットはありません。サンプル アプリケーションでは 2.0 TSL を使用しているため、クエリに LINQ は使用されません。SCL および TSL 2.0 の詳細については、[このシリーズの最終チュートリアル][tut5]の末尾で紹介されているリソースを参照してください。
 
->[WACOM.NOTE] Storage Client Library 2.1 added back LINQ support, but this tutorial does not use LINQ for storage table queries. The current SCL also supports asynchronous programming, but async code is not shown in this tutorial. For more information about asynchronous programming and an example of code that uses it with the Azure SCL, see the following e-book chapter and the downloadable project that goes with it: [Use .NET 4.5’s async support to avoid blocking calls](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices#async).
+>[WACOM.NOTE] ストレージ クライアント ライブラリ 2.1 では LINQ サポートが再度追加されましたが、このチュートリアルでは、ストレージ テーブルのクエリで LINQ を使用しません。現在の SCL では非同期プログラミングもサポートしていますが、このチュートリアルでは非同期コードを示しません。非同期プログラミングに関する詳細情報と Azure SCL でリースを使用するコードの例については、E-Book の次の章と、付属のダウンロード可能なプロジェクトを参照してください。[ブロッキング呼び出しを回避するための .NET 4.5 の非同期サポートの使用に関するページ](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices#async)。
 
 
-<h2><a name="addref2"></a><span class="short-header">Add SCL 1.7 reference</span>Add a reference to an SCL 1.7 assembly</h2>
+<h2><a name="addref2"></a><span class="short-header">SCL 1.7 参照の追加</span>SCL 1.7 アセンブリへの参照の追加</h2>
 
->[WACOM.NOTE] If you're using SCL 2.1 or later (Visual Studio 2013 with the latest SDK), skip this section.
+>[WACOM.NOTE] SCL 2.1 以降 (最新の SDK が付属している Visual Studio 2013) を使用している場合は、このセクションをスキップします。
 
-Version 2.0 of the Storage Client Library (SCL) 2.0 does not have everything needed for diagnostics, so you have to add a reference to a 1.7 assembly.
+ストレージ クライアント ライブラリ (SCL) Version 2.0 には、診断に必要なすべての機能が備わっていないため、1.7 アセンブリへの参照を追加する必要があります。
 
-4. Right-click the MvcWebRole project, and choose **Add Reference**.
+4. MvcWebRole プロジェクトを右クリックして、**[参照の追加]** を選択します。
 
-5. Click the **Browse...** button at the bottom of the dialog box.
+5. ダイアログ ボックスの下部にある **[参照]** ボタンをクリックします。
 
-6. Navigate to the following folder:
+6. 次のフォルダーへ移動します。
 
         C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\2012-10\ref
 
-7. Select *Microsoft.WindowsAzure.StorageClient.dll*, and then click **Add**.
+7. *Microsoft.WindowsAzure.StorageClient.dll* を選択して、**[追加]** をクリックします。
 
-8. In the **Reference Manager** dialog box, click **OK**.
+8. **[参照マネージャー]** ダイアログ ボックスで **[OK]** をクリックします。
 
-1. Repeat the process for the WorkerRoleA project.
+1. WorkerRoleA プロジェクトについても、同じプロセスを繰り返します。
 
 
 
-<h2><a name="createifnotexists"></a><span class="short-header">App_Start Code</span>Add code to create tables, queue, and blob container in the Application_Start method</h2>
+<h2><a name="createifnotexists"></a><span class="short-header">App_Start コード</span>Application_Start メソッドに対する、テーブル、キュー、および BLOB コンテナーを作成するコードの追加</h2>
 
-The web application will use the `MailingList` table, the `Message` table, the `azuremailsubscribequeue` queue, and the `azuremailblobcontainer` blob container. You could create these manually by using a tool such as Azure Storage Explorer, but then you would have to do that manually every time you started to use the application with a new storage account. In this section you'll add code that runs when the application starts, checks if the required tables, queues, and blob containers exist, and creates them if they don't. 
+この Web アプリケーションでは、`MailingList` テーブル、`Message` テーブル、`azuremailsubscribequeue` キュー、および `azuremailblobcontainer` BLOB コンテナーを使用します。Azure ストレージ エクスプローラーなどのツールを使用してこれらを手動で作成することもできますが、新しいストレージ アカウントでアプリケーションの使用を開始するたびに、その処理を手動で行う必要が生じます。このセクションでは、アプリケーションの開始時に実行され、必要なテーブル、キュー、および BLOB コンテナーが存在するかどうかを確認し、存在しない場合はこれらを作成するコードを追加します。
 
-You could add this one-time startup code to the `OnStart` method in the *WebRole.cs* file, or to the *Global.asax* file. For this tutorial you'll initialize Azure Storage in the *Global.asax* file since that works with Azure Web Sites as well as Azure Cloud Service web roles.
+この 1 回限りのスタートアップ コードは、*WebRole.cs* ファイル内の `OnStart` メソッドまたは *Global.asax* ファイルに追加できます。このチュートリアルでは、Azure の Web サイトおよび Azure クラウド サービス Web ロールを操作する *Global.asax* ファイルで Azure のストレージを初期化します。
 
-1. In **Solution Explorer**, expand *Global.asax* and then open *Global.asax.cs*.
+1. **ソリューション エクスプローラー**で、*Global.asax* を展開し、*Global.asax.cs* を開きます。
 
-2. Add a new `CreateTablesQueuesBlobContainers` method after the `Application_Start` method, and then call the new method from the `Application_Start` method, as shown in the following example:
+2. 次の例に示されているように、新しい `CreateTablesQueuesBlobContainers` 
+メソッドを `Application_Start` メソッドの後に追加し、新しい
+メソッドを `Application_Start` メソッドから呼び出します。
 
         protected void Application_Start()
         {
@@ -251,38 +253,38 @@ You could add this one-time startup code to the `OnStart` method in the *WebRole
             subscribeQueue.CreateIfNotExists();
         }
 	
-3. Right click on the blue squiggly line under `RoleEnvironment`, select **Resolve** then select **using Microsoft.WindowsAzure.ServiceRuntime**. 
+3. `RoleEnvironment` の下の波線を右クリックし、**[解決]**、**[using Microsoft.WindowsAzure.ServiceRuntime]** の順に選択します。
 
-	![rightClick][mtas-4]
+	![右クリック][mtas-4]
 
-1. Right click the blue squiggly line under `CloudStorageAccount`, select **Resolve**, and then select **using Microsoft.WindowsAzure.Storage**.  
+1. `CloudStorageAccount` の下の波線を右クリックし、**[解決]**、**[using Microsoft.WindowsAzure.Storage]** の順に選択します。
 
-1. Alternatively, you can manually add the following using statements:
+1. もう 1 つの方法として、次に示す using ステートメントを手動で追加することもできます。
 
 	    using Microsoft.WindowsAzure.ServiceRuntime;
 	    using Microsoft.WindowsAzure.Storage;
 	
-1. Build the application, which saves the file and verifies that you don't have any compile errors.
+1. アプリケーションをビルドします。これにより、ファイルが保存され、コンパイル エラーがないか確認が行われます。
 
-In the following sections you build the components of the web application, and you can test them with development storage or your storage account without having to manually create tables, queues, or blob container first.
+次の各セクションでは、Web アプリケーションの各コンポーネントを構築します。これらは、開発用ストレージまたは自分のストレージ アカウントを使用して、テーブル、キュー、または BLOB コンテナーを手動であらかじめ作成することなくテストすることができます。
 
 
 
-<h2><a name="mailinglist"></a><span class="short-header">Mailing List</span>Create and test the Mailing List controller and views</h2>
+<h2><a name="mailinglist"></a><span class="short-header">Mailing List</span>Mailing List コントローラーおよびビューの作成とテスト</h2>
 
-The **Mailing List** web UI is used by administrators to create, edit and display mailing lists, such as "Contoso University History Department announcements" and "Fabrikam Engineering job postings".
+**Mailing List** Web UI は、"Contoso University History Department announcements" や "Fabrikam Engineering job postings" などのメーリング リストを作成、編集、および表示するために、管理者によって使用されます。
 
-### Add the MailingList entity class to the Models folder
+### MailingList エンティティ クラスを Models フォルダーに追加する
 
-The `MailingList` entity class is used for the rows in the `MailingList` table that contain information about the list, such as its description and the "From" email address for emails sent to the list.  
+`MailingList` エンティティ クラスは、メーリング リストの説明やメーリング リストに送信される "差出人" の電子メール アドレスなど、メーリング リストに関する情報を格納する `MailingList` テーブル内の行に使用されます。
 
-1. In **Solution Explorer**, right-click the `Models` folder in the MVC project, and choose **Add Existing Item**.
+1. **ソリューション エクスプローラー**で MVC プロジェクトの `[Models]` フォルダーを右クリックし、**[既存項目の追加]** を選択します。
 
-	![Add existing item to Models folder][mtas-add-existing-item-to-models]
+	![既存の項目を Models フォルダーに追加][mtas-add-existing-item-to-models]
 
-2. Navigate to the folder where you downloaded the sample application, select the *MailingList.cs* file in the `Models` folder, and click **Add**.
+2. サンプル アプリケーションをダウンロードしたフォルダーに移動し、`[Models]` フォルダー内の *MailingList.cs* ファイルを選択して、**[追加]** をクリックします。
 
-3. Open *MailingList.cs* and examine the code.
+3. *MailingList.cs* を開いてコードを確認します。
 
 	    public class MailingList : TableEntity
 	    {
@@ -315,33 +317,33 @@ The `MailingList` entity class is used for the rows in the `MailingList` table t
 	    }
 			
 
-	The Azure Storage TSL 2.0 API requires that the entity classes that you use for table operations derive from [TableEntity][]. This class defines `PartitionKey`, `RowKey`, `TimeStamp`, and `ETag` fields. The `TimeStamp` and `ETag` properties are used by the system. You'll see how the `ETag` property is used for concurrency handling later in the tutorial. 
+	Azure ストレージ TSL 2.0 API では、テーブル操作に使用するエンティティ クラスが [TableEntity][] から派生していることが求められます。このクラスでは、`PartitionKey`、`RowKey`、`TimeStamp`、および `ETag` の各フィールドが定義されます。`TimeStamp` プロパティおよび `ETag` プロパティは、システムによって使用されます。このチュートリアルの後の方で、どのように `ETag` プロパティが同時実行処理に使用されるかを説明します。
 
-	(There is also a [DynamicTableEntity] class for use when you want to work with table rows as Dictionary collections of key value pairs instead of by using predefined model classes. For more information, see [Azure Storage Client Library 2.0 Tables Deep Dive][deepdive].)
+	(定義済みのモデル クラスを使用する代わりに、Dictionary コレクションのキー値ペアとしてテーブル行を操作する場合に使用する [DynamicTableEntity] クラスもあります。詳細については、[Azure のストレージ クライアント ライブラリ 2.0 テーブルの詳細に関するページ][deepdive]を参照してください。)
 
-	The `mailinglist` table partition key is the list name. In this entity class the partition key value can be accessed either by using the `PartitionKey` property (defined in the `TableEntity` class) or the `ListName` property (defined in the `MailingList` class).  The `ListName` property uses `PartitionKey` as its backing variable. Defining the `ListName` property enables you to use a more descriptive variable name in code and makes it easier to program the web UI, since formatting and validation DataAnnotations attributes can be added to the `ListName` property, but they can't be added directly to the `PartitionKey` property.
+	`mailinglist` テーブルのパーティション キーはメーリング リスト名です。このエンティティ クラスでは、`PartitionKey` プロパティ (`TableEntity` クラスで定義されます) または `ListName` プロパティ (`MailingList` クラスで定義されます) を使用してパーティション キー値にアクセスできます。`ListName` プロパティでは、バッキング変数として `PartitionKey` が使用されます。`ListName` プロパティを定義すると、わかりやすい変数名をコード内で使用でき、Web UI のプログラミングが容易になります。これは、書式設定と検証の DataAnnotations 属性を `ListName` プロパティに追加できるためですが、DataAnnotations 属性を `PartitionKey` プロパティに直接追加することはできません。
 
-	The `RegularExpression` attribute on the `ListName` property causes MVC to validate user input to ensure that the list name value entered only contains alphanumeric characters or underscores. This restriction was implemented in order to keep list names simple so that they can easily be used in query strings in URLs. 
+	`ListName` プロパティに `RegularExpression` 属性が追加されている場合、MVC はユーザー入力を検証して、入力されたリスト名の値に含まれている文字が英数字またはアンダースコアのみであることを確認します。この制約は、URL のクエリ文字列に容易に使用できるように、リスト名をシンプルに保つために実装されています。
 
-	**Note:**  If you wanted the list name format to be less restrictive, you could allow other characters and URL-encode list names when they are used in query strings. However, certain characters are not allowed in Azure Table partition keys or row keys, and you would have to exclude at least those characters. For information about characters that are not allowed or cause problems in the partition key or row key fields, see [Understanding the Table Service Data Model][tabledatamodel] and [% Character in PartitionKey or RowKey][percentinkeyfields].
+	**注:** リスト名の書式に対する制約を緩和するには、クエリ文字列で他の文字および URL エンコード リスト名の使用を許可することもできます。ただし、Azure テーブルのパーティション キーまたは行キーに使用できない特定の文字が存在するため、少なくともこれらの文字は除外する必要があります。パーティション キー フィールドまたは行キー フィールドで使用できない (使用すると問題の原因になる) 文字については、「[テーブル サービス データ モデルについて][tabledatamodel]」および [PartitionKey または RowKey にパーセント '%' 文字が含まれていると、一部の Azure テーブル API が失敗する動作に関するページ][percentinkeyfields]を参照してください。
 
-	The `MailingList` class defines a default constructor that sets `RowKey` to the hard-coded string "mailinglist", because all of the mailing list rows in this table have that value as their row key. (For an explanation of the table structure, see the [first tutorial in the series][firsttutorial].) Any constant value could have been chosen for this purpose, as long as it could never be the same as an email address, which is the row key for the subscriber rows in this table.
+	`MailingList` クラスで定義されている既定のコンストラクターでは、ハードコーディングされた文字列 "mailinglist" が `RowKey` に設定されます。これは、テーブル内のすべての MailingList 行で、行キーがこの値であるためです (テーブル構造の詳細については、[シリーズの最初のチュートリアル][firsttutorial]を参照してください)。この目的では、任意の定数値を選択することができます。ただし、このテーブルの Subscriber 行の行キーである電子メール アドレスと同じ値にすることはできません。
 
-	The list name and the "from" email address must always be entered when a new `MailingList` entity is created, so they have `Required` attributes.
+	新しい `MailingList` エンティティの作成時には、必ずリスト名と "差出人" の電子メール アドレスを入力して、`Required` 属性が指定されているフィールドの値を確保します。
 
-	The `Display` attributes specify the default caption to be used for a field in the MVC UI. 
+	`Display` 属性は、MVC UI のフィールドに、既定のキャプションを使用することを指定します。
 
-### Add the MailingList MVC controller
+### MailingList MVC コントローラーを追加する
 
-1. In **Solution Explorer**, right-click the Controllers folder in the MVC project, and choose **Add Existing Item**.
+1. **ソリューション エクスプローラー**で MVC プロジェクトの [Controllers] フォルダーを右クリックし、**[既存項目の追加]** を選択します。
 
 	![Add existing item to Controllers folder][mtas-add-existing-item-to-controllers]
 
-2. Navigate to the folder where you downloaded the sample application, select the *MailingListController.cs* file in the `Controllers` folder, and click **Add**.
+2. サンプル アプリケーションをダウンロードしたフォルダーに移動し、`[Controllers]` フォルダー内の *MailingListController.cs* ファイルを選択して、**[追加]** をクリックします。
 
-3. Open *MailingListController.cs* and examine the code.
+3. *MailingListController.cs* を開いてコードを確認します。
 
-	The default constructor creates a `CloudTable` object to use for working with the `mailinglist` table.
+	既定のコンストラクターでは、`mailinglist` テーブルを操作するために使用する `CloudTable` オブジェクトを作成します。
 
 	    public class MailingListController : Controller
 	    {
@@ -357,9 +359,9 @@ The `MailingList` entity class is used for the rows in the `MailingList` table t
 	            mailingListTable = tableClient.GetTableReference("mailinglist");
 	        }
 		
-	The code gets the credentials for your Azure Storage account from the Cloud Service project settings file in order to make a connection to the storage account. (You'll configure those settings later in this tutorial, before you test the controller.) If you are going to run the MVC project in an Azure Web Site, you can get the connection string from the Web.config file instead.
+	このコードでは、ストレージ アカウントに接続するために、クラウド サービス プロジェクトの設定ファイルから Azure のストレージ アカウントの資格情報を取得しています (このチュートリアルでは、コントローラーをテストする前に、これらの設定を後で構成します)。Azure の Web サイトで MVC プロジェクトを実行する場合、接続文字列は Web.config ファイルから取得できます。
 
-	Next is a `FindRow` method that is called whenever the controller needs to look up a specific mailing list entry of the `MailingList` table, for example to edit a mailing list entry. The code retrieves a single `MailingList` entity by using the partition key and row key values passed in to it. The rows that this controller edits are the ones that have "MailingList" as the row key, so "MailingList" could have been hard-coded for the row key, but specifying both partition key and row key is a pattern used for the `FindRow` methods in all of the controllers.
+	次の `FindRow` メソッドは、`MailingList` テーブルから特定のメーリング リスト エントリをコントローラーが検索する必要がある場合 (メーリング リスト エントリを編集する場合など) に呼び出されます。このメソッドは、渡されたパーティション キーおよび行キーの値を使用して、単一の `MailingList` エンティティを取得します。このコントローラーが編集する行は、行キーが "MailingList" の行であるため、"MailingList" を行キーとしてハードコーディングすることもできますが、パーティション キーと行キーの指定は、すべてのコントローラーの `FindRow` メソッドで使用されているパターンです。
 
         private MailingList FindRow(string partitionKey, string rowKey)
         {
@@ -374,7 +376,7 @@ The `MailingList` entity class is used for the rows in the `MailingList` table t
             return mailingList;
         }
 
-	It's instructive to compare the `FindRow` method in the `MailingList` controller, which returns a mailing list row, with the `FindRow` method in the `Subscriber` controller, which returns a subscriber row from the same `mailinglist` table.
+	`MailingList` コントローラーの `FindRow` メソッドでは MailingList 行が返されますが、`Subscriber` コントローラーの `FindRow` メソッドでは、同じ `mailinglist` テーブルから Subscriber 行が返されます。
 
         private Subscriber FindRow(string partitionKey, string rowKey)
         {
@@ -388,14 +390,14 @@ The `MailingList` entity class is used for the rows in the `MailingList` table t
             return subscriber;
         }
 
-	The only difference in the two queries is the model type that they pass to the [TableOperation.Retrieve](http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.storage.table.tableoperation.retrieve.aspx) method. The model type specifies the schema (the properties) of the row or rows that you expect the query to return. A single table may have different schemas in different rows. Typically you specify the same model type when reading a row that was used to create the row.
+	2 つのクエリにおける唯一の相違は、[TableOperation.Retrieve](http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.storage.table.tableoperation.retrieve.aspx) メソッドに渡されるモデルの種類です。モデルの種類は、クエリから返される 1 つまたは複数の行のスキーマ (プロパティ) を指定します。同じテーブルでも、行によって異なるスキーマを指定することができます。一般的に、行を読み取るときは、行を作成するために使用されたものと同じモデルの種類を指定します。
         
-	The **Index** page displays all of the mailing list rows, so the query in the `Index` method returns all `MailingList` entities that have "mailinglist" as the row key (the other rows in the table have email address as the row key, and they contain subscriber information).
+	**Index** ページには、すべての MailingList 行が表示されるため、`Index` メソッド内のクエリは、行キーが "mailinglist" であるすべての `MailingList` エンティティを返します (テーブル内の他の行では、行キーが電子メール アドレスであり、これらには登録者情報が格納されています)。
 
                 var query = new TableQuery<MailingList>().Where(TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, "mailinglist"));
                 lists = mailingListTable.ExecuteQuery(query, reqOptions).ToList();
 
-	The `Index` method surrounds this query with code that is designed to handle timeout conditions. 
+	`Index` メソッドには、このクエリと共に、タイムアウト条件を処理するために設計されたコードが含まれています。
 
         public ActionResult Index()
         {
@@ -420,9 +422,9 @@ The `MailingList` entity class is used for the rows in the `MailingList` table t
             return View(lists);
         }
 
-	If you don't specify timeout parameters, the API automatically retries three times with exponentially increasing timeout limits. For a web interface with a user waiting for a page to appear, this could result in unacceptably long wait times. Therefore, this code specifies linear retries (so the timeout limit doesn't increase each time) and a timeout limit that is reasonable for the user to wait. 
+	タイムアウト パラメーターを指定しなかった場合は、API により指数関数的にタイムアウト制限が延長され、試行が自動的に 3 回行われます。Web インターフェイスでユーザーがページの表示を待っている場合、この待ち時間は許容できない長さになる可能性があります。そのため、このコードでは、(タイムアウトが毎回延長されないように) 直線的な値が指定され、ユーザーの待ち時間として妥当なタイムアウト制限が指定されています。
 
-	When the user clicks the **Create** button on the **Create** page, the MVC model binder creates a `MailingList` entity from input entered in the view, and the `HttpPost Create` method adds the entity to the table.
+	ユーザーが **Create** ページで **[Create]** ボタンをクリックすると、MVC モデル バインダーによって、ビューでの入力に基づいて `MailingList` エンティティが作成され、`HttpPost Create` メソッドにより、このエンティティがテーブルに追加されます。
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -438,7 +440,7 @@ The `MailingList` entity class is used for the rows in the `MailingList` table t
             return View(mailingList);
         }
 
- For the **Edit** page, the `HttpGet Edit` method looks up the row, and the `HttpPost` method updates the row.
+ **Edit** ページでは、`HttpGet Edit` メソッドにより行の検索が行われ、`HttpPost` メソッドにより行が更新されます。
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -484,11 +486,11 @@ The `MailingList` entity class is used for the rows in the `MailingList` table t
             return View(editedMailingList);
         }
 
-	The try-catch block handles concurrency errors. A concurrency exception is raised if a user selects a mailing list for editing, then while the **Edit** page is displayed in the browser another user edits the same mailing list. When that happens, the code displays a warning message and indicates which fields were changed by the other user.  The TSL API uses the `ETag` to check for concurrency conflicts. Every time a table row is updated, the `ETag` value is changed.  When you get a row to edit, you save the `ETag` value, and when you execute an update or delete operation you pass in the `ETag` value that you saved. (The `Edit` view has a hidden field for the ETag value.) If the update operation finds that the `ETag` value on the record you are updating is different than the `ETag` value that you passed in to the update operation, it raises a concurrency exception. If you don't care about concurrency conflicts, you can set the ETag field to an asterisk ("*") in the entity that you pass in to the update operation, and conflicts are ignored. 
+	try-catch ブロックでは、同時実行エラーが処理されます。ユーザーが編集用にメーリング リストを選択し、ブラウザーに **Edit** ページが表示されている間に、別のユーザーが同じメーリング リストを編集すると、同時実行例外が発生します。この状況が発生すると、このコードでは警告メッセージが表示され、別のユーザーによって変更されたフィールドが示されます。TSL API では、`ETag` を使用して同時実行の競合チェックが行われます。テーブル行が更新されるたびに、`ETag` 値が変更されます。編集用に行を取得する際には `ETag` 値が保存され、更新操作または削除操作を実行する際には、保存した `ETag` 値が渡されます (`Edit` ビューには、ETag 値用の非表示フィールドがあります)。更新操作時に、更新対象のレコード上の `ETag` 値が、更新操作に渡された `ETag` 値と異なることが検出されると、同時実行例外が発生します。同時実行の競合が発生してもかまわない場合は、更新操作に渡すエンティティの ETag フィールドをアスタリスク ("*") に設定しておくと、競合が無視されます。
 
-	Note: The HTTP 412 error is not unique to concurrency errors. It can be raised for other errors by the SCL API.
+	注: HTTP 412 エラーは、同時実行エラーに特有のものではありません。SCL API から他のエラーを対象にして発生することもあります。
 
-	For the **Delete** page, the `HttpGet Delete` method looks up the row in order to display its contents, and the `HttpPost` method deletes the `MailingList` row along with any `Subscriber` rows that are associated with it in the `MailingList` table.
+	**Delete** ページでは、`HttpGet Delete` メソッドにより、内容を表示するために行の検索が行われ、`HttpPost` メソッドにより、`MailingList` 行と、`MailingList` テーブル内の関連する `Subscriber` 行が削除されます。
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -519,21 +521,21 @@ The `MailingList` entity class is used for the rows in the `MailingList` table t
             return RedirectToAction("Index");
         }
 
-	In case a large number of subscribers need to be deleted, the code deletes the records in batches. The transaction cost of deleting one row is the same as deleting 100 rows in a batch. The maximum number of operations that you can perform in one batch is 100. 
+	多数の登録者を削除する必要がある場合は、レコードがバッチで削除されます。1 行を削除する場合も、100 行をバッチで削除する場合も、トランザクション コストは同じです。1 バッチで実行できる操作の最大数は 100 です。
 
-	Although the loop processes both `MailingList` rows and `Subscriber` rows, it reads them all into the `MailingList` entity class because the only fields needed for the `Delete` operation are the `PartitionKey`, `RowKey`, and `ETag` fields.
+	このループでは、`MailingList` 行と `Subscriber` 行の両方が処理されますが、`Delete` 操作に必要なフィールドは `PartitionKey`、`RowKey`、および `ETag` のみであるため、これらはすべて `MailingList` エンティティ クラスに読み込まれます。
 
-### Add the MailingList MVC views
+### MailingList MVC ビューを追加する
 
-2. In **Solution Explorer**, create a new folder under the *Views* folder  in the MVC project, and name it *MailingList*.
+2. **ソリューション エクスプローラー**で、MVC プロジェクトの *[Views]* フォルダーの下に新しいフォルダーを作成し、「*MailingList*」という名前を付けます。
 
-1. Right-click the new *Views\MailingList* folder, and choose **Add Existing Item**.
+1. 新しい *Views\MailingList* フォルダーを右クリックして、**[既存項目の追加]** を選択します。
 
-	![Add existing item to Views folder][mtas-add-existing-item-to-views]
+	![既存の項目を Views フォルダーに追加][mtas-add-existing-item-to-views]
 
-2. Navigate to the folder where you downloaded the sample application, select all four of the .cshtml files in the *Views\MailingList* folder, and click **Add**.
+2. サンプル アプリケーションをダウンロードしたフォルダーに移動し、*Views\MailingList* フォルダー内にある 4 つの .cshtml ファイルをすべて選択して、**[追加]** をクリックします。
 
-3. Open the *Edit.cshtml* file and examine the code.
+3. *Edit.cshtml* ファイルを開いてコードを確認します。
 
 		@model MvcWebRole.Models.MailingList
 				@{
@@ -578,11 +580,11 @@ The `MailingList` entity class is used for the rows in the `MailingList` table t
 		    @Scripts.Render("~/bundles/jqueryval")
 		}
 				
-	This code is typical for MVC views.  Notice the hidden field that is included to preserve the `ETag` value which is used for handling concurrency conflicts. Notice also that the `ListName` field has a `DisplayFor` helper instead of an `EditorFor` helper. We didn't enable the **Edit** page to change the list name, because that would have required complex code in the controller:  the `HttpPost Edit` method would have had to delete the existing mailing list row and all associated subscriber rows, and re-insert them all with the new key value. In a production application you might decide that the additional complexity is worthwhile. As you'll see later, the `Subscriber` controller does allow list name changes, since only one row at a time is affected. 
+	このコードは、MVC ビューで使用される典型的なコードです。同時実行の競合処理に使用される `ETag` 値を保持するために、非表示フィールドが含まれています。また、`ListName` フィールドでは、`EditorFor` ヘルパーではなく `DisplayFor` ヘルパーが使用されています。**Edit** ページでリスト名の変更操作は有効になっていません。これは、コントローラーに複雑なコードが必要になるためです。`HttpPost Edit` メソッドで、既存の MailingList 行およびすべての関連する Subscriber 行を削除し、これらをすべて新しいキー値で再挿入する操作が必要になります。運用アプリケーションでは、このように複雑な操作が必要になることがあります。後でわかりますが、`Subscriber` コントローラーでは、メーリング リスト名の変更を許可しています。これは、一度に影響を受ける行が 1 行のみであるためです。
 
-	The *Create.cshtml* and *Delete.cshtml* code is similar to *Edit.cshtml*.
+	*Create.cshtml* および *Delete.cshtml* のコードは、*Edit.cshtml* と似ています。
 
-4. Open *Index.cshtml* and examine the code.
+4. *Index.cshtml* を開いてコードを確認します。
 
 	    @model IEnumerable<MvcWebRole.Models.MailingList>
 	    @{
@@ -624,13 +626,13 @@ The `MailingList` entity class is used for the rows in the `MailingList` table t
 	    }
 	    </table>
 	
-	This code is also typical for MVC views. The **Edit** and **Delete** hyperlinks specify partition key and row key query string parameters in order to identify a specific row.  For `MailingList` entities only the partition key is actually needed since row key is always "MailingList", but both are kept so that the MVC view code is consistent across all controllers and views.
+	このコードも MVC ビューでは典型的です。**[Edit]** ハイパーリンクおよび **[Delete]** ハイパーリンクでは、行を特定するために、クエリ文字列パラメーターとしてパーティション キーおよび行キーを指定します。`MailingList` エンティティでは、行キーは常に "MailingList" であるため、実際に必要なのはパーティション キーのみですが、MVC ビューのコードをすべてのコントローラーおよびビューで統一できるように、両方のキーを残しています。
 
-### Make MailingList the default controller
+### MailingList を既定のコントローラーにする
 
-1. Open *Route.config.cs* in the *App_Start* folder.
+1. *[App_Start]* フォルダー内の *Route.config.cs* を開きます。
 
-2. In the line that specifies defaults, change the default controller from "Home" to "MailingList".
+2. 既定値を指定する行で、既定のコントローラーを "Home" から "MailingList" に変更します。
 
          routes.MapRoute(
              name: "Default",
@@ -641,99 +643,99 @@ The `MailingList` entity class is used for the rows in the `MailingList` table t
 
 
 
-<h2><a name="configurestorage"></a><span class="short-header">Configure storage</span>Configure the web role to use your test Azure Storage account</h2>
+<h2><a name="configurestorage"></a><span class="short-header">ストレージの構成</span>テスト用 Azure のストレージ アカウントを使用するための Web ロールの構成</h2>
 
-You are going to enter settings for your test storage account, which you will use while running the project locally.  To add a new setting you have to add it for both cloud and local, but you can change the cloud value later. You'll add the same settings for worker role A later.
+プロジェクトをローカルで実行する場合に使用するテスト ストレージ アカウント用の設定を入力します。新しい設定を追加するには、クラウドとローカルの両方に追加する必要がありますが、クラウドの値は後で変更できます。同じ設定を後でワーカー ロール A にも追加します。
 
-(If you want to run the web UI in an Azure Web Site instead of an Azure Cloud Service, see the [Alternative Architecture][alternativearchitecture] section later in this tutorial for changes to these instructions.)
+(Azure クラウド サービスではなく Azure の Web サイトで Web UI を実行する場合は、このチュートリアルの「[代替アーキテクチャ][alternativearchitecture]」で、手順の変更を確認してください。)
 
-1. In **Solution Explorer**, right-click **MvcWebRole** under **Roles** in the **AzureEmailService** cloud project, and then choose **Properties**.
+1. **ソリューション エクスプローラー**で、**AzureEmailService** クラウド プロジェクトの **[Roles]** の下にある **[MvcWebRole]** を右クリックし、**[プロパティ]** を選択します。
 
-	![Web role properties][mtas-mvcwebrole-properties-menu]
+	![Web ロールのプロパティ][mtas-mvcwebrole-properties-menu]
 
-2. Make sure that **All Configurations** is selected in the **Service Configuration** drop-down list.
+2. **[サービス構成]** ボックスの一覧で **[すべての構成]** が選択されていることを確認します。
 
-2. Select the **Settings** tab and then click **Add Setting**.
+2. **[設定]** タブを選択し、**[設定の追加]** をクリックします。
 
-3. Enter "StorageConnectionString" in the **Name** column.
+3. **[名前]** 列に「StorageConnectionString」と入力します。
 
-4. Select **Connection String** in the **Type** drop-down list.  
+4. **[種類]** ボックスの一覧の **[接続文字列]** を選択します。
 
-6. Click the ellipsis (**...**) button at the right end of the line to open the **Storage Account Connection String** dialog box.
+6. その行の右端にある **[...]** ボタンをクリックして、**[ストレージ アカウント接続文字列]** ダイアログ ボックスを開きます。
 
-	![Right Click Properties][mtas-elip]<br/>
+	![[プロパティ] を右クリック][mtas-elip]<br/>
 
-7. In the **Create Storage Connection String** dialog, click the **Your subscription** radio button, and then click the **Download Publish Settings** link. 
+7. **[ストレージ接続文字列の作成]** ダイアログ ボックスで **[お使いのサブスクリプション]** をクリックし、**[発行設定のダウンロード]** リンクをクリックします。
 
-	>[WACOM.NOTE] With the latest SDK you don't need to download anything; you choose from available storage accounts in a drop-down list.
+	>[WACOM.NOTE] 最新の SDK を使用する場合は、何もダウンロードする必要はありません。ドロップダウン リスト内で使用できるストレージ アカウントのいずれかを選択します。
 
-	**Note:** If you configured storage settings for tutorial 2 and you're doing this tutorial on the same machine, you don't have to download the settings again, you just have to click **Your subscription** and then choose the correct **Subscription** and **Account Name**.
+	**注:** チュートリアル 2 でストレージ設定を構成し、同じコンピューターでこのチュートリアルを行っている場合は、設定を再度ダウンロードする必要はありません。**[お使いのサブスクリプション]** をクリックし、正しい **[サブスクリプション]** と **[アカウント名]** を選択するだけです。
 
-	![Right Click Properties][mtas-enter]<br/>
+	![[プロパティ] を右クリック][mtas-enter]<br/>
 
-	When you click the **Download Publish Settings** link, Visual Studio launches a new instance of your default browser with the URL for the Azure Management Portal download publish settings page. If you are not logged into the portal, you are prompted to log in. Once you are logged in your browser prompts you to save the publish settings. Make a note of where you save the settings.
+	**[発行設定のダウンロード]** リンクをクリックすると、Visual Studio により、既定のブラウザーの新しいインスタンスで Azure の管理ポータルの [発行設定のダウンロード] ページの URL が開かれます。ポータルにログインしていない場合は、ログインするように求められます。ログインすると、ブラウザーにより、発行設定を保存するように求められます。設定を保存した場所をメモしておきます。
 
-	![publish settings][mtas-3]
+	![発行の設定][mtas-3]
 
-1. In the **Create Storage Connection String** dialog, click  **Import**, and then navigate to the publish settings file that you saved in the previous step.
+1. **[ストレージ接続文字列の作成]** ダイアログで **[インポート]** をクリックし、前の手順で保存した発行設定ファイルに移動します。
 
-1. Select the subscription and storage account that you wish to use, and then click **OK**.
+1. 使用するサブスクリプションとストレージ アカウントを選択し、**[OK]** をクリックします。
 
-	![select storage account][mtas-5]
+	![ストレージ アカウントの選択][mtas-5]
 
-1. Follow the same procedure that you used for the `StorageConnectionString` connection string to set the `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` connection string.
+1. `StorageConnectionString` 接続文字列に使用した同じ手順に従って `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` 接続文字列を設定します。
 
-	You don't have to download the publish settings file again. When you click the ellipsis for the `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` connection string, you'll find that the **Create Storage Connection String** dialog box remembers your subscription information. When you click the **Your subscription** radio button, all you have to do is select the same **Subscription** and **Account Name** that you selected earlier, and then click **OK**. 
+	発行設定ファイルを再度ダウンロードする必要はありません。`Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` 接続文字列の [...] をクリックすると、**[ストレージ接続文字列の作成]** ダイアログ ボックスでは、サブスクリプション情報が記憶されていることがわかります。**[サブスクリプション]** ラジオ ボタンをクリックすると、前の手順で選択した同じ**サブスクリプション**と**アカウント名**を選択して **[OK]** をクリックするだけで済みます。
 
-2. Follow the same procedure that you used for the two connection strings for the MvcWebRole role to set the connection strings for the WorkerRoleA role.
+2. MvcWebRole ロールに対応する 2 つの接続文字列に使用したものと同じ手順に従って、WorkerRoleA ロールに接続文字列を設定します。
 
-When you added a new setting with the **Add Settings** button, the new setting was added to the XML in the *ServiceDefinition.csdf* file and in each of the two *.cscfg* configuration files. The following XML is added by Visual Studio to the *ServiceDefinition.csdf* file.
+**[設定の追加]** ボタンを使用して新しい設定を追加したときに、*ServiceDefinition.csdf* ファイルの XML と、2 つの *.cscfg* 設定ファイルにそれぞれ新しい設定が追加されました。Visual Studio によって *ServiceDefinition.csdf* ファイルに追加された XML は次のとおりです。
 
       <ConfigurationSettings>
         <Setting name="StorageConnectionString" />
       </ConfigurationSettings>
 
-The following XML is added to each *.cscfg* configuration file.
+各 *.cscfg* 構成ファイルに追加された XML は次のとおりです。
 
 	   <Setting name="StorageConnectionString"
 	   value="DefaultEndpointsProtocol=https;
 	   AccountName=azuremailstorage;
 	   AccountKey=[your account key]" />
 
-You can manually add settings to the *ServiceDefinition.csdf* file and the two *.cscfg* configuration files, but using the properties editor has the following advantages for connection strings:
+*ServiceDefinition.csdf* ファイルと 2 つの *.cscfg* 構成ファイルに設定を手動で追加することもできますが、プロパティ エディターを使用すると、接続文字列に関して次のような利点があります。
 
-- You only add the new setting in one place, and the correct setting XML is added to all three files.
-- The correct XML is generated for the three settings files. The *ServiceDefinition.csdf* file defines settings that must be in each *.cscfg* configuration file. If the *ServiceDefinition.csdf* file and the two *.cscfg* configuration files settings are inconsistent, you can get the following error message from Visual Studio: "The current service model is out of sync. Make sure both the service configuration and definition files are valid."
+- 新しい設定を 1 か所で追加すると、正しい設定の XML が 3 つのファイルすべてに追加される。
+- 3 つの設定ファイルについて、正しい XML が生成される。*ServiceDefinition.csdf* ファイルには、各 *.cscfg* 構成ファイルに含める必要のある設定が定義されています。*ServiceDefinition.csdf* ファイルと 2 つの *.cscfg* 構成ファイルの設定に矛盾があると、Visual Studio から "現在のサービス モデルは非同期です。サービス構成ファイルおよびサービス定義ファイルが有効であることを確認してください。" というエラー メッセージが表示されることがあります。
 
-	![Invalid service configuration and definition files error][mtas-er1]
+	![無効なサービス構成ファイルおよびサービス定義ファイル エラー][mtas-er1]
 
-If you get this error, the properties editor will not work until you resolve the inconsistency problem.
+このエラーが発生すると、矛盾の問題を解決するまでプロパティ エディターは動作しません。
 
-### Test the application
+### アプリケーションをテストします。
 
-1. Run the project by pressing CTRL+F5.
+1. Ctrl キーを押しながら F5 キーを押してプロジェクトを実行します。
 
-	![Empty MailingList Index page][mtas-mailing-list-empty-index-page]
+	![空の MailingList の Index ページ][mtas-mailing-list-empty-index-page]
 
-2. Use the **Create** function to add some mailing lists, and try the **Edit** and **Delete** functions to make sure they work.
+2. **Create** 機能を使用してメーリング リストを追加し、**Edit** 機能と **Delete** 機能を試して動作することを確認します。
 
-	![MailingList Index page with rows][mtas-mailing-list-index-page]
+	![行が表示されている MailingList の Index ページ][mtas-mailing-list-index-page]
 
 
 
-<h2><a name="subscriber"></a><span class="short-header">Subscriber</span>Create and test the Subscriber controller and views</h2>
+<h2><a name="subscriber"></a><span class="short-header">登録者</span>Subscriber コントローラーおよびビューの作成とテスト</h2>
 
-The **Subscriber** web UI is used by administrators to add new subscribers to a mailing list, and to edit, display, and delete existing subscribers. 
+**登録者** Web UI は、管理者が新しい登録者をメーリング リストに追加し、既存の登録者を編集、表示、および削除するために使用されます。
 
-### Add the Subscriber entity class to the Models folder
+### Subscriber エンティティ クラスを Models フォルダーに追加する
 
-The `Subscriber` entity class is used for the rows in the `MailingList` table that contain information about subscribers to a list. These rows contain information such as the person's email address and whether the address is verified.  
+`Subscriber` エンティティ クラスは、メーリング リストの登録者に関する情報を格納する `MailingList` テーブル内の行に使用されます。これらの行には、登録者の電子メール アドレスやアドレスが確認済みかどうかなどの情報が格納されます。
 
-1. In **Solution Explorer**, right-click the *Models* folder in the MVC project, and choose **Add Existing Item**.
+1. **ソリューション エクスプローラー**で MVC プロジェクトの *[Models]* フォルダーを右クリックし、**[既存項目の追加]** を選択します。
 
-2. Navigate to the folder where you downloaded the sample application, select the *Subscriber.cs* file in the *Models* folder, and click **Add**.
+2. サンプル アプリケーションをダウンロードしたフォルダーに移動し、*[Models]* フォルダー内の *Subscriber.cs* ファイルを選択して、**[追加]** をクリックします。
 
-3. Open *Subscriber.cs* and examine the code.
+3. *Subscriber.cs* を開いてコードを確認します。
 
 		    public class Subscriber : TableEntity
 		    {
@@ -770,22 +772,22 @@ The `Subscriber` entity class is used for the rows in the `MailingList` table th
 		    }
 		
 
-	Like the `MailingList` entity class, the `Subscriber` entity class is used to read and write rows in the `mailinglist` table. `Subscriber` rows use the email address instead of the constant "mailinglist" for the row key.  (For an explanation of the table structure, see the [first tutorial in the series][firsttutorial].) Therefore an `EmailAddress` property is defined that uses the `RowKey` property as its backing field, the same way that `ListName` uses `PartitionKey` as its backing field. As explained earlier, this enables you to put formatting and validation DataAnnotations attributes on the properties.
+	`MailingList` エンティティ クラスと同様、`Subscriber` エンティティ クラスも、`mailinglist` テーブル内の行の読み取りと書き込みに使用されます。`Subscriber` 行では、定数 "mailinglist" ではなく電子メール アドレスが行キーに使用されます (テーブル構造の詳細については、[シリーズの最初のチュートリアル][firsttutorial]を参照してください)。このため、`ListName` が `PartitionKey` をバッキング フィールドとして使用するように、`EmailAddress` プロパティは `RowKey` プロパティをバッキング フィールドとして使用することが定義されています。前に説明したように、これによって、書式設定と検証の DataAnnotations 属性をプロパティに追加できます。
 
-	The `SubscriberGUID` value is generated when a `Subscriber` entity is created. It is used in subscribe and unsubscribe links to help ensure that only authorized persons can subscribe or unsubscribe email addresses.
-	When a row is initially created for a new subscriber, the `Verified ` value is `false`. The `Verified` value changes to `true` only after the new subscriber clicks the **Confirm** hyperlink in the welcome email. If a message is sent to a list while a subscriber has `Verified` = `false`, no email is sent to that subscriber.
+	`SubscriberGUID` 値は、`Subscriber` エンティティの作成時に生成されます。この値は、許可されている人だけが電子メール アドレスを登録または登録解除できるようにするために、登録リンクと登録解除リンクで使用されます。
+	新しい登録者に対して行が最初に作成されたとき、`Verified` 値は `false` です。`Verified` 値が `true` に変化するのは、新しい登録者が "ようこそ" メール内の**Confirm** ハイパーリンクをクリックした後だけです。登録者の `Verified` 値が `false` である場合にメーリング リストにメッセージを送信しても、そのサブスクライバーには電子メールが送信されません。
 
-	The `Verified` property in the `Subscriber` entity is defined as nullable. When you specify that a query should return `Subscriber` entities, it is possible that some of the retrieved rows might not have a `Verified` property. Therefore the `Subscriber` entity defines its `Verified` property as nullable so that it can more accurately reflect the actual content of a row if table rows that don't have a *Verified* property are returned by a query. You might be accustomed to working with SQL Server tables, in which every row of a table has the same schema. In an Azure Storage table, each row is just a collection of properties, and each row can have a different set of properties. For example, in the Azure Email Service sample application, rows that have "MailingList" as the row key don't have a `Verified` property.  If a query returns a table row that doesn't have a `Verified` property, when the `Subscriber` entity class is instantiated, the `Verified` property in the entity object will be null.  If the property were not nullable, you would get the same value of `false` for rows that have `Verified` = `false` and for rows that don't have a `Verified` property at all. Therefore, a best practice for working with Azure Tables is to make each property of an entity class nullable in order to accurately read rows that were created by using different entity classes or different versions of the current entity class. 
+	`Subscriber` エンティティの `Verified` プロパティは、null 値を許容するように定義されています。クエリから `Subscriber` エンティティが返されるように指定した場合、取得した行の一部に `Verified` プロパティが設定されていない可能性もあります。このため、`Subscriber` エンティティでは、*Verified* プロパティのない行がクエリによって返された場合に行の実際の内容をより正確に反映できるように、`Verified` プロパティで null 値を許容するように定義されています。多くの人が、テーブルのすべての行に同じスキーマを使用する SQL Server テーブルの方に慣れているかもしれません。Azure のストレージ テーブルでは、各行はプロパティのコレクションに過ぎず、各行でそれぞれ異なるプロパティのセットが使用されます。たとえば、Azure Email Service サンプル アプリケーションの場合、行キーが "MailingList" である行には `Verified` プロパティがありません。`Verified` プロパティのないテーブル行がクエリから返された場合は、`Subscriber` エンティティ クラスがインスタンス化されるときに、エンティティ オブジェクト内の `Verified` プロパティが null になります。プロパティが null 許容ではない場合、`Verified` 値が `false` である行も `Verified` プロパティがない行も、同じ `false` 値になります。このため、Azure テーブルを使用する場合のベスト プラクティスは、行によって異なるエンティティ クラスまたは現在のエンティティ クラスの複数の異なるバージョンを使用して作成された行を正確に読み取ることができるように、エンティティ クラスの各プロパティを null 許容にすることです。
 
-### Add the Subscriber MVC controller
+### Subscriber MVC コントローラーを追加する
 
-1. In **Solution Explorer**, right-click the *Controllers* folder in the MVC project, and choose **Add Existing Item**.
+1. **ソリューション エクスプローラー**で MVC プロジェクトの *[Controllers]* フォルダーを右クリックし、**[既存項目の追加]** を選択します。
 
-2. Navigate to the folder where you downloaded the sample application, select the *SubscriberController.cs* file in the *Controllers* folder, and click **Add**. (Make sure that you get *Subscriber.cs* and not *Subscribe.cs*; you'll add *Subscribe.cs* later.)
+2. サンプル アプリケーションをダウンロードしたフォルダーに移動し、*[Controllers]* フォルダー内の *SubscriberController.cs* ファイルを選択して、**[追加]** をクリックします (*Subscribe.cs* ではなく *Subscriber.cs* を選択してください。*Subscribe.cs* は後で追加します)。
 
-3. Open *SubscriberController.cs* and examine the code.
+3. *SubscriberController.cs* を開いてコードを確認します。
 
-	Most of the code in this controller is similar to what you saw in the `MailingList` controller. Even the table name is the same because subscriber information is kept in the `MailingList` table. After the `FindRow` method you see a `GetListNames` method. This method gets the data for a drop-down list on the **Create** and **Edit** pages, from which you can select the mailing list to subscribe an email address to.
+	このコントローラーのコードは、`MailingList` コントローラーのコードと似ています。登録者情報は `MailingList` テーブルに保存されるため、テーブル名も同じです。`FindRow` メソッドの後に、`GetListNames` メソッドがあります。このメソッドでは、**Create** ページと **Edit** ページにある、電子メール アドレスを登録するメーリング リストを選択するためのドロップダウン リスト用のデータを取得します。
 
         private List<MailingList> GetListNames()
         {
@@ -794,9 +796,9 @@ The `Subscriber` entity class is used for the rows in the `MailingList` table th
             return lists;
         }
 
-	This is the same query you saw in the `MailingList` controller. For the drop-down list you want rows that have information about mailing lists, so you select only those that have RowKey = "mailinglist".
+	これは、`MailingList` コントローラーで確認したものと同じクエリです。このドロップダウン リストには、メーリング リストに関する情報が格納されている行が必要であるため、RowKey の値が "mailinglist" である行のみを選択します。
 
-	For the method that retrieves data for the **Index** page, you want rows that have subscriber information, so you select all rows that do not have RowKey = "MailingList".
+	**Index** ページ用のデータを取得するメソッドでは、登録者情報が格納されている行が必要であるため、RowKey 値が "MailingList" ではない行をすべて選択します。
 
         public ActionResult Index()
         {
@@ -805,11 +807,11 @@ The `Subscriber` entity class is used for the rows in the `MailingList` table th
             return View(subscribers);
         }
 
-	Notice that the query specifies that data will be read into `Subscriber` objects (by specifying `<Subscriber>`) but the data will be read from the `mailinglist` table.
+	このクエリでは、(`<Subscriber>` を指定することによって) データを `Subscriber` オブジェクトに読み込むことが指定されていますが、取得するデータは `mailinglist` テーブルから読み込みます。
 
-	**Note:** The number of subscribers could grow to be too large to handle this way in a single query. In a future release of the tutorial we hope to implement paging functionality and show how to handle continuation tokens. You need to handle continuation tokens when you execute queries that would return more than 1,000 rows: Azure returns 1,000 rows and a continuation token that you use to execute another query that starts where the previous one left off. (Azure Storage Explorer does not handle continuation tokens; therefore its queries will not return more than 1,000 rows.) For more information about large result sets and continuation tokens, see [How to get most out of Azure Tables][howtogetthemost] and [Azure Tables: Expect Continuation Tokens, Seriously](http://blog.smarx.com/posts/windows-azure-tables-expect-continuation-tokens-seriously). 
+	**注:** 登録者数が増加すると、このように単一のクエリで処理できなくなることがあります。このチュートリアルの今後のリリースではページング機能を実装し、継続トークンの処理方法を説明することも検討されています。返される行数が 1,000 を超えるクエリを実行する場合は、継続トークンの処理が必要になります。Azure では、1,000 行と継続トークンが返されます。これを使用すると、前のクエリが終了した箇所から継続して次のクエリを実行できます (Azure ストレージ エクスプローラーでは継続トークンが処理されません。このため、1,000 を超える行をクエリから返すことはできません)。大きな結果セットと継続トークンの詳細については、「[How to get most out of Microsoft Azure Tables (Microsoft Azure テーブルの最大活用)][howtogetthemost]」および「[Microsoft Azure Tables: Expect Continuation Tokens, Seriously (Microsoft Azure テーブル: 継続トークンの重要性)](http://blog.smarx.com/posts/windows-azure-tables-expect-continuation-tokens-seriously)」を参照してください。
 
-	In the `HttpGet Create` method, you set up data for the drop-down list; and in the `HttpPost` method, you set default values before saving the new entity.
+	`HttpGet Create` メソッドでは、ドロップダウン リストのデータをセットアップし、`HttpPost` メソッドでは、新しいエンティティを保存する前に既定値を設定します。
 
         public ActionResult Create()
         {
@@ -842,7 +844,7 @@ The `Subscriber` entity class is used for the rows in the `MailingList` table th
             return View(subscriber);
         }
 
-	The `HttpPost Edit` page is more complex than what you saw in the `MailingList` controller because the `Subscriber` page enables you to change the list name or email address, both of which are key fields. If the user changes one of these fields, you have to delete the existing record and add a new one instead of updating the existing record. The following code shows the part of the edit method that handles the different procedures for key versus non-key changes:
+	`Subscriber` ページでは、キー フィールドであるメーリング リスト名または電子メール アドレスを変更できるため、`HttpPost Edit` ページは、`MailingList` コントローラーで確認したものよりも複雑です。これらのうちいずれかのフィールドがユーザーによって変更された場合は、既存のレコードを更新するのではなく、既存のレコードを削除して新しいレコードを追加する必要があります。次のコードは、Edit メソッドのうち、キーの変更と非キーの変更で異なる手順を処理する部分を示しています。
      
             if (ModelState.IsValid)
             {
@@ -877,19 +879,19 @@ The `Subscriber` entity class is used for the rows in the `MailingList` table th
                     }
                     return RedirectToAction("Index");
 
-	The parameters that the MVC model binder passes to the `Edit` method include the original list name and email address values (in the `partitionKey` and `rowKey` parameters) and the values entered by the user (in the `listName` and `emailAddress` parameters): 
+	MVC モデル バインダーが `Edit` メソッドに渡すパラメーターには、元のメーリング リスト名と電子メール アドレスの値 (`partitionKey` パラメーターと `rowKey` パラメーター) およびユーザーが入力した値 (`listName` パラメーターと `emailAddress` パラメーター) があります。
 
         public ActionResult Edit(string partitionKey, string rowKey, string listName, string emailAddress)
 
-	The parameters passed to the `UpdateModel` method exclude `PartitionKey` and `RowKey` properties from model binding:
+	`UpdateModel` メソッドに渡されるパラメーターには、モデル バインディングからの `PartitionKey` プロパティと `RowKey` プロパティは含まれません。
 
             var excludeProperties = new string[] { "PartitionKey", "RowKey" };
             
-	The reason for this is that the `ListName` and `EmailAddress` properties use `PartitionKey` and `RowKey` as their backing properties, and the user might have changed one of these values. When the model binder updates the model by setting the `ListName` property, the `PartitionKey` property is automatically updated. If the model binder were to update the `PartitionKey` property with that property's original value after updating the `ListName` property, it would overwrite the new value that was set by the `ListName` property. The `EmailAddress` property automatically updates the `RowKey` property in the same way.  
+	その理由は、`ListName` プロパティと `EmailAddress` プロパティでは、バッキング プロパティとして `PartitionKey` と `RowKey` が使用されており、ユーザーによってこれらの値のいずれかが変更されている可能性があるためです。モデル バインダーが `ListName` プロパティを設定してモデルを更新すると、`PartitionKey` プロパティも自動的に更新されます。モデル バインダーが `ListName` プロパティの更新後に `PartitionKey` プロパティを元の値で更新する場合、`ListName` プロパティで設定された新しい値は上書きされます。同様に、`EmailAddress` プロパティによって自動的に `RowKey` プロパティも更新されます。
 
-	After updating the `editedSubscriber` model object, the code then determines whether the partition key or row key was changed. If either key value changed, the existing subscriber row has to be deleted and a new one inserted. If only the row key changed, the deletion and insertion can be done in an atomic batch transaction.
+	コードでは、`editedSubscriber` モデル オブジェクトを更新した後、パーティション キーまたは行キーが変更されているかどうかを判断します。いずれかのキーが変更されている場合は、既存の Subscriber 行を削除し、新しい Subscriber 行を挿入する必要があります。行キーのみが変更されている場合、削除と挿入はアトミック バッチ トランザクションで行うことができます。
 
-	Notice that the code creates a new entity to pass in to the `Delete` operation:
+	コードでは、新しいエンティティを作成して `Delete` 操作に渡しています。
 
             // RowKey changed, do delete/insert in a batch.
             var batchOperation = new TableBatchOperation();
@@ -897,21 +899,21 @@ The `Subscriber` entity class is used for the rows in the `MailingList` table th
             batchOperation.Insert(editedSubscriber);
             mailingListTable.ExecuteBatch(batchOperation);
 
-	Entities that you pass in to operations in a batch must be distinct entities. For example, you can't create a `Subscriber` entity, pass it in to a `Delete` operation, then change a value in the same `Subscriber` entity and pass it in to an `Insert` operation. If you did that, the state of the entity after the property change would be in effect for both the Delete and the Insert operation.
+	各バッチ操作に渡すエンティティは、別々のエンティティである必要があります。たとえば、`Subscriber` エンティティを作成して `Delete` 操作に渡し、同じ `Subscriber` エンティティ内の値を変更したものを `Insert` 操作に渡すことはできません。このようにした場合は、プロパティの変更後のエンティティの状態は、Delete 操作でも Insert 操作でも有効になります。
 
-	**Note:**  Operations in a batch must all be on the same partition. Because a change to the list name changes the partition key, it can't be done in a transaction.
+	**注意:** 1 つのバッチに含まれる操作はすべて、対象パーティションが同じである必要があります。メーリング リスト名の変更はパーティション キーの変更も伴うため、1 つのトランザクションでは実行できません。
 
 
 
-### Add the Subscriber MVC views
+### Subscriber MVC ビューを追加する
 
-2. In **Solution Explorer**, create a new folder under the *Views* folder in the MVC project, and name it *Subscriber*.
+2. **ソリューション エクスプローラー**で、MVC プロジェクトの *[Views]* フォルダーの下に新しいフォルダーを作成し、「*Subscriber*」という名前を付けます。
 
-1. Right-click the new *Views\Subscriber* folder, and choose **Add Existing Item**.
+1. 新しい *Views\Subscriber* フォルダーを右クリックして、**[既存項目の追加]** を選択します。
 
-2. Navigate to the folder where you downloaded the sample application, select all five of the .cshtml files in the *Views\Subscriber* folder, and click **Add**.
+2. サンプル アプリケーションをダウンロードしたフォルダーに移動し、*Views\Subscriber* フォルダー内にある 5 つの .cshtml ファイルをすべて選択して、**[追加]** をクリックします。
 
-3. Open the *Edit.cshtml* file and examine the code.
+3. *Edit.cshtml* ファイルを開いてコードを確認します。
 
 		@model MvcWebRole.Models.Subscriber
 		
@@ -962,35 +964,35 @@ The `Subscriber` entity class is used for the rows in the `MailingList` table th
 		    @Scripts.Render("~/bundles/jqueryval")
 		}
 						
-	This code is similar to what you saw earlier for the `MailingList` **Edit** view. The `SubscriberGUID` value is not shown, so the value is not automatically provided in a form field for the `HttpPost` controller method. Therefore, a hidden field is included in order to preserve this value.
+	このコードは、`MailingList` の **Edit** ビューで確認したコードと似ています。`SubscriberGUID` 値は表示されないため、`HttpPost` コントローラー メソッドのフォーム フィールドに値が自動的には設定されません。このため、この値を保持するために非表示フィールドが含まれています。
 
-	The other views contain code that is similar to what you already saw for the `MailingList` controller.
+	他のビューには、`MailingList` コントローラーで既に確認したものと似たコードが含まれています。
 
-### Test the application
+### アプリケーションをテストします。
 
-1. Run the project by pressing CTRL+F5, and then click **Subscribers**.
+1. Ctrl キーを押しながら F5 キーを押してプロジェクトを実行し、**[Subscribers]** をクリックします。
 
-	![Empty Subscriber Index page][mtas-subscribers-empty-index-page]
+	![空の登録者の Index ページ][mtas-subscribers-empty-index-page]
 
-2. Use the **Create** function to add some mailing lists, and try the **Edit** and **Delete** functions to make sure they work.
+2. **Create** 機能を使用してメーリング リストを追加し、**Edit** 機能と **Delete** 機能を試して動作することを確認します。
 
-	![Subscribers Index page with rows][mtas-subscribers-index-page]
+	![行が表示されている Subscribers の Index ページ][mtas-subscribers-index-page]
 
 
 
-<h2><a name="message"></a><span class="short-header">Message</span>Create and test the Message controller and views</h2>
+<h2><a name="message"></a><span class="short-header">メッセージ</span>Message コントローラーおよびビューの作成とテスト</h2>
 
-The **Message** web UI is used by administrators to create, edit, and display information about messages that are scheduled to be sent to mailing lists.
+**メッセージ** Web UI は、メーリング リストに送信するメッセージに関する情報を管理者が作成、編集、および表示するために使用されます。
 
-### Add the Message entity class to the Models folder
+### Message エンティティ クラスを Models フォルダーに追加する
 
-The `Message` entity class is used for the rows in the `Message` table that contain information about a message that is scheduled to be sent to a list. These rows include information such as the subject line, the list to send a message to, and the scheduled date to send it. 
+`Message` エンティティ クラスは、メーリング リストに送信するメッセージに関する情報を格納する `Message` テーブル内の行に使用されます。これらの行には、件名、メッセージの送信先リスト、送信予定日などの情報が格納されます。
 
-1. In **Solution Explorer**, right-click the *Models* folder in the MVC project, and choose **Add Existing Item**.
+1. **ソリューション エクスプローラー**で MVC プロジェクトの *[Models]* フォルダーを右クリックし、**[既存項目の追加]** を選択します。
 
-2. Navigate to the folder where you downloaded the sample application, select the *Message.cs* file in the Models folder, and click **Add**.
+2. サンプル アプリケーションをダウンロードしたフォルダーに移動し、[Models] フォルダー内の *Message.cs* ファイルを選択して、**[追加]** をクリックします。
 
-3. Open *Message.cs* and examine the code.
+3. *Message.cs* を開いてコードを確認します。
 
 	    public class Message : TableEntity
 	    {
@@ -1045,25 +1047,25 @@ The `Message` entity class is used for the rows in the `Message` table that cont
 	        public string Status { get; set; }
 	    }
 		
-	The `Message` class defines a default constructor that sets the `MessageRef` property to a unique value for the message. Since this value is part of the row key, the setter for the `MessageRef` property automatically sets the `RowKey` property also. The `MessageRef` property setter concatenates the "message" literal and the `MessageRef` value and puts that in the `RowKey` property.
+	`Message` クラスで定義されている既定のコンストラクターでは、メッセージを示す一意の値が `MessageRef` プロパティに設定されます。この値は行キーの一部であるため、`MessageRef` プロパティの setter は自動的に `RowKey` プロパティも設定します。`MessageRef` プロパティの setter は、"message" リテラルと `MessageRef` 値を連結し、それを `RowKey` プロパティに設定します。
 
-	The `MessageRef` value is created by getting the `Ticks` value from `DateTime.Now`. This ensures that by default when displaying messages in the web UI they will be displayed in the order in which they were created for a given scheduled date (`ScheduledDate` is the partition key). You could use a GUID to make message rows unique, but then the default retrieval order would be random.
+	`MessageRef` 値は、`DateTime.Now` から `Ticks` 値を取得することによって作成されます。これにより、Web UI にメッセージを表示する場合は、既定で、指定の予定日 (`ScheduledDate` はパーティション キー) に対して作成された順序で表示されるようになります。GUID を使用して Message 行を一意にすることもできますが、この場合は、既定の取得順序がランダムになります。
 
-	The default constructor also sets default status of Pending for new `message` rows.
+	既定のコンストラクターでは、新しい `Message` 行に既定のステータスとして "Pending" を設定する処理も行われます。
 
-	For more information about the `Message` table structure, see the [first tutorial in the series][firsttutorial].
+	`Message` テーブル構造の詳細については、[シリーズの最初のチュートリアル][firsttutorial]を参照してください。
 
-### Add the Message MVC controller
+### Message MVC コントローラーを追加する
 
-1. In **Solution Explorer**, right-click the Controllers folder in the MVC project, and choose **Add Existing Item**.
+1. **ソリューション エクスプローラー**で MVC プロジェクトの [Controllers] フォルダーを右クリックし、**[既存項目の追加]** を選択します。
 
-2. Navigate to the folder where you downloaded the sample application, select the *MessageController.cs* file in the *Controllers* folder, and click **Add**.
+2. サンプル アプリケーションをダウンロードしたフォルダーに移動し、*[Controllers]* フォルダー内の *MessageController.cs* ファイルを選択して、**[追加]** をクリックします。
 
-3. Open *MessageController.cs* and examine the code.
+3. *MessageController.cs* を開いてコードを確認します。
 
-	Most of the code in this controller is similar to what you saw in the `Subscriber` controller. What is new here is code for working with blobs. For each message, the HTML and plain text content of the email is uploaded in the form of .htm and .txt files and stored in blobs.
+	このコントローラーのコードの大半は、`Subscriber` コントローラーで確認したものと似ています。新しい部分は、BLOB を操作するコードです。各メッセージについて、電子メールの HTML コンテンツとプレーンテキスト コンテンツが .htm ファイルと .txt ファイルの形式でアップロードされ、BLOB に保存されます。
 
-	Blobs are stored in blob containers. The Azure Email Service application stores all of its blobs in a single blob container named "azuremailblobcontainer", and code in the controller constructor gets a reference to this blob container:
+	BLOB は BLOB コンテナーに保存されます。Azure Email Service アプリケーションでは、すべての BLOB が "azuremailblobcontainer" という名前の単一の BLOB コンテナーに格納されます。コントローラー コンストラクターのコードでは、この BLOB コンテナーの参照を取得しています。
 
 	    public class MessageController : Controller
 	    {
@@ -1083,9 +1085,9 @@ The `Message` entity class is used for the rows in the `Message` table that cont
 	            blobContainer = blobClient.GetContainerReference("azuremailblobcontainer");
 	        }
 	
-	For each file that a user selects to upload, the MVC view provides an `HttpPostedFile` object that contains information about the file. When the user creates a new message, the `HttpPostedFile` object is used to save the file to a blob. When the user edits a message, the user can choose to upload a replacement file or leave the blob unchanged.
+	ユーザーが選択してアップロードする各ファイルについて、MVC ビューでは、ファイルに関する情報が格納された `HttpPostedFile` オブジェクトを提供します。ユーザーが新しいメッセージを作成すると、`HttpPostedFile` オブジェクトを使用してファイルが BLOB に保存されます。ユーザーがメッセージを編集する際に、ユーザーは置換ファイルをアップロードすることまたは BLOB を変更せずに維持することを選択できます。
 
-	The controller includes a method that the `HttpPost Create` and `HttpPost Edit` methods call to save a blob:
+	このコントローラーには、`HttpPost Create` メソッドおよび `HttpPost Edit` メソッドから、BLOB を保存するために呼び出されるメソッドが含まれています。
 
         private void SaveBlob(string blobName, HttpPostedFileBase httpPostedFile)
         {
@@ -1098,7 +1100,7 @@ The `Message` entity class is used for the rows in the `Message` table that cont
             }
         }
 
-	The `HttpPost Create` method saves the two blobs and then adds the `Message` table row. Blobs are named by concatenating the `MessageRef` value with the file name extension ".htm" or ".txt". 
+	`HttpPost Create` メソッドは 2 つの BLOB を保存してから、`Message` テーブル行を追加します。BLOB の名前は、`MessageRef` 値にファイル名拡張子 ".htm" または ".txt" を連結したものになります。
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -1130,7 +1132,7 @@ The `Message` entity class is used for the rows in the `Message` table that cont
             return View(message);
         }
 
-	The `HttpGet Edit` method validates that the retrieved message is in `Pending` status so that the user can't change a message once worker role B has begun processing it.  Similar code is in the `HttpPost Edit` method and the `Delete` and `DeleteConfirmed` methods.
+	`HttpGet Edit` メソッドでは、ワーカー ロール B で処理が開始されたメッセージをユーザーが変更できないように、取得されたメッセージが `Pending` ステータスかどうかを検証します。`HttpPost Edit` メソッド、`Delete` メソッド、および `DeleteConfirmed` メソッドにも、同様のコードが含まれています。
 
         public ActionResult Edit(string partitionKey, string rowKey)
         {
@@ -1145,7 +1147,7 @@ The `Message` entity class is used for the rows in the `Message` table that cont
             return View(message);
         }
 
-	In the `HttpPost Edit` method, the code saves a new blob only if the user chose to upload a new file. The following code omits the concurrency handling part of the method, which is the same as what you saw earlier for the `MailingList` controller. 
+	`HttpPost Edit` メソッドでは、ユーザーが新しいファイルのアップロードを選択した場合のみ、新しい BLOB を保存しています。次のコードで、メソッドの同時実行処理部分は、`MailingList` コントローラーで確認したものと同じであるため、省略されています。
  
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -1202,9 +1204,9 @@ The `Message` entity class is used for the rows in the `Message` table that cont
                     return RedirectToAction("Index");
                 }
 
-	If the scheduled date is changed, the partition key is changed, and a row has to be deleted and inserted. This can't be done in a transaction because it affects more than one partition.
+	予定日が変更されると、パーティション キーが変更され、行の削除と挿入が必要になります。この操作は複数のパーティションが対象になるため、1 つのトランザクションでは実行できません。
 
-	The `HttpPost Delete` method deletes the blobs when it deletes the row in the table:
+	`HttpPost Delete` メソッドは、テーブル内の行を削除する際に、BLOB を削除します。
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(String partitionKey, string rowKey)
@@ -1229,15 +1231,15 @@ The `Message` entity class is used for the rows in the `Message` table that cont
             blob.Delete();
         }
 
-### Add the Message MVC views
+### Message MVC ビューを追加する
 
-2. In **Solution Explorer**, create a new folder under the *Views* folder  in the MVC project, and name it `Message`.
+2. **ソリューション エクスプローラー**で、MVC プロジェクトの *[Views]* フォルダーの下に新しいフォルダーを作成し、「`Message`」という名前を付けます。
 
-1. Right-click the new *Views\Message* folder, and choose **Add Existing Item**.
+1. 新しい *Views\Message* フォルダーを右クリックして、**[既存項目の追加]** を選択します。
 
-2. Navigate to the folder where you downloaded the sample application, select all five of the .cshtml files in the *Views\Message* folder, and click **Add**.
+2. サンプル アプリケーションをダウンロードしたフォルダーに移動し、*Views\Message* フォルダー内にある 5 つの .cshtml ファイルをすべて選択して、**[追加]** をクリックします。
 
-3. Open the *Edit.cshtml* file and examine the code.
+3. *Edit.cshtml* ファイルを開いてコードを確認します。
 
 		@model MvcWebRole.Models.Message
 		
@@ -1310,11 +1312,11 @@ The `Message` entity class is used for the rows in the `Message` table that cont
 		    @Scripts.Render("~/bundles/jqueryval")
 		}
 				
-	The `HttpPost Edit` method needs the partition key and row key, so the code provides these in hidden fields. The hidden fields were not needed in the `Subscriber` controller because (a) the `ListName` and `EmailAddress` properties in the `Subscriber` model update the `PartitionKey` and `RowKey` properties, and (b) the `ListName` and `EmailAddress` properties were included with `EditorFor` helpers in the Edit view. When the MVC model binder for the `Subscriber` model updates the `ListName` property, the `PartitionKey` property is automatically updated, and when the MVC model binder updates the `EmailAddress` property in the `Subscriber` model, the `RowKey` property is automatically updated. In the `Message` model, the fields that map to partition key and row key are not editable fields, so they don't get set that way.
+	`HttpPost Edit` メソッドではパーティション キーと行キーが必要であるため、これらが非表示フィールドで提供されています。`Subscriber` コントローラーでは、非表示フィールドは不要でした。これは、(a) `Subscriber` モデルの `ListName` プロパティと `EmailAddress` プロパティにより、`PartitionKey` プロパティと `RowKey` プロパティが更新され、(b) Edit ビューには `ListName` プロパティと `EmailAddress` プロパティが `EditorFor` ヘルパーと共に含まれているためです。`Subscriber` モデルの MVC モデル バインダーが `ListName` プロパティを更新する際には `PartitionKey` プロパティが自動的に更新され、MVC モデル バインダーが `Subscriber` モデルの `EmailAddress` プロパティを更新する際には `RowKey` プロパティが自動的に更新されます。`Message` モデルでは、パーティション キーと行キーにマップされるフィールドは編集可能フィールドではないため、設定方法が異なります。
 
-	A hidden field is also included for the `MessageRef` property. This is the same value as the partition key, but it is included in order to enable better code clarity in the `HttpPost Edit` method. Including the `MessageRef` hidden field enables the code in the `HttpPost Edit` method to refer to the `MessageRef` value by that name when it constructs file names for the blobs. 
+	`MessageRef` プロパティ用の非表示フィールドも含まれています。これはパーティション キーと同じ値ですが、`HttpPost Edit` メソッドのコードをわかりやすくするために含まれています。`MessageRef` 非表示フィールドを含めておくと、`HttpPost Edit` メソッドのコードは、BLOB のファイル名を作成するときに、その名前で`MessageRef` 値を参照することができます。
    
-3. Open the *Index.cshtml* file and examine the code.
+3. *Index.cshtml* ファイルを開いてコードを確認します。
 
 		@model IEnumerable<MvcWebRole.Models.Message>
 		
@@ -1371,7 +1373,7 @@ The `Message` entity class is used for the rows in the `Message` table that cont
 		
 		</table>
 				
-	A difference here from the other **Index** views is that the **Edit** and **Delete** links are shown only for messages that are in `Pending` status:
+	他の **Index** ビューと異なる点は、`Pending` ステータスのメッセージに対してのみ **[Edit]** リンクと **[Delete]** リンクが表示されることです。
 
         @if (item.Status == "Pending")
         {
@@ -1379,38 +1381,38 @@ The `Message` entity class is used for the rows in the `Message` table that cont
             @Html.ActionLink("Delete", "Delete", new { PartitionKey = item.PartitionKey, RowKey = item.RowKey }) @: |
         }
 
-	This helps prevent the user from making changes to a message after worker role A has begun to process it.
+	これによってユーザーは、ワーカー ロール A で処理が開始されたメッセージを変更できなくなります。
 
-	The other views contain code that is similar to the **Edit** view or the other views you saw for the other controllers.
+	他のビューには、他のコントローラーで確認した **Edit** ビューまたはその他のビューと似たコードが含まれています。
 
-### Test the application
+### アプリケーションをテストします。
 
-1. Run the project by pressing CTRL+F5, then click **Messages**.
+1. Ctrl キーを押しながら F5 キーを押してプロジェクトを実行し、**[Messages]** をクリックします。
 
-	![Empty Message Index page][mtas-message-empty-index-page]
+	![空のメッセージの Index ページ][mtas-message-empty-index-page]
 
-2. Use the **Create** function to add some mailing lists, and try the **Edit** and **Delete** functions to make sure they work.
+2. **Create** 機能を使用してメーリング リストを追加し、**Edit** 機能と **Delete** 機能を試して動作することを確認します。
 
-	![Subscribers Index page with rows][mtas-message-index-page]
-
-
+	![行が表示されている Subscribers の Index ページ][mtas-message-index-page]
 
 
-<h2><a name="unsubscribe"></a><span class="short-header">Unsubscribe</span>Create and test the Unsubscribe controller and view</h2>
 
-Next, you'll implement the UI for the unsubscribe process.
 
-**Note:**  This tutorial only builds the controller for the unsubscribe process, not the subscribe process. As was explained in [the first tutorial][firsttutorial], the UI and service method for the subscription process have been left out until we implement appropriate security for the service method. Until then, you can use the **Subscriber** administrator pages to subscribe email addresses to lists.
+<h2><a name="unsubscribe"></a><span class="short-header">登録解除</span>Unsubscribe コントローラーおよびビューの作成とテスト</h2>
 
-### Add the Unsubscribe view model to the Models folder
+次は、登録解除プロセスの UI を実装します。
 
-The `UnsubscribeVM` view model is used to pass data between the `Unsubscribe` controller and its view.  
+**注:** このチュートリアルでは、登録プロセスではなく登録解除プロセス用のコントローラーのみを構築します。[最初のチュートリアル][firsttutorial]で説明したように、登録プロセスの UI およびサービス メソッドは、サービス メソッドの適切なセキュリティを実装するまで除外されています。それまでは、**Subscriber** 管理者ページを使用して電子メール アドレスをメーリング リストに登録できます。
 
-1. In **Solution Explorer**, right-click the `Models` folder in the MVC project, and choose **Add Existing Item**.
+### Unsubscribe ビュー モデルを Models フォルダーに追加する
 
-2. Navigate to the folder where you downloaded the sample application, select the `UnsubscribeVM.cs` file in the Models folder, and click **Add**.
+`UnsubscribeVM` ビュー モデルは、`Unsubscribe` コントローラーとビューとの間でデータをやり取りするために使用されます。
 
-3. Open `UnsubscribeVM.cs` and examine the code.
+1. **ソリューション エクスプローラー**で MVC プロジェクトの `[Models]` フォルダーを右クリックし、**[既存項目の追加]** を選択します。
+
+2. サンプル アプリケーションをダウンロードしたフォルダーに移動し、[Models] フォルダー内の `UnsubscribeVM.cs` ファイルを選択して、**[追加]** をクリックします。
+
+3. `UnsubscribeVM.cs` を開いてコードを確認します。
 
 
 	    public class UnsubscribeVM
@@ -1422,19 +1424,19 @@ The `UnsubscribeVM` view model is used to pass data between the `Unsubscribe` co
 	        public bool? Confirmed { get; set; }
 	    }
 
-	Unsubscribe links contain the `SubscriberGUID`. That value is used to get the email address, list name, and list description from the `MailingList` table. The view displays the email address and the description of the list that is to be unsubscribed from, and it displays a **Confirm** button that the user must click to complete the unsubscription process.
+	登録解除リンクには、`SubscriberGUID` が含まれています。この値は、電子メール アドレス、メーリング リスト名、およびメーリング リストの説明を `MailingList` テーブルから取得するために使用されます。ビューでは、電子メール アドレスと、登録解除するメーリング リストの説明が表示され、**[Confirm]** ボタンが表示されます。ユーザーは、このボタンをクリックして登録解除プロセスを完了する必要があります。
 
-### Add the Unsubscribe controller
+### Unsubscribe コントローラーを追加する
 
-1. In **Solution Explorer**, right-click the `Controllers` folder in the MVC project, and choose **Add Existing Item**.
+1. **ソリューション エクスプローラー**で MVC プロジェクトの `[Controllers]` フォルダーを右クリックし、**[既存項目の追加]** を選択します。
 
-2. Navigate to the folder where you downloaded the sample application, select the *UnsubscribeController.cs* file in the *Controllers* folder, and click **Add**.
+2. サンプル アプリケーションをダウンロードしたフォルダーに移動し、*[Controllers]* フォルダー内の *UnsubscribeController.cs* ファイルを選択して、**[追加]** をクリックします。
 
-3. Open *UnsubscribeController.cs* and examine the code.
+3. *UnsubscribeController.cs* を開いてコードを確認します。
 
-	This controller has an `HttpGet Index` method that displays the initial unsubscribe page, and an `HttpPost Index` method that processes the **Confirm** or **Cancel** button.
+	このコントローラーに含まれている `HttpGet Index` メソッドは登録解除用の初期ページを表示し、`HttpPost Index` メソッドは **[Confirm]** ボタンまたは **[Cancel]** ボタンを処理します。
 
-	The `HttpGet Index` method uses the GUID and list name in the query string to get the `MailingList` table row for the subscriber. Then it puts all the information needed by the view into the view model and displays the **Unsubscribe** page. It sets the `Confirmed` property to null in order to tell the view to display the initial version of the **Unsubscribe** page.
+	`HttpGet Index` メソッドはクエリ文字列内で GUID およびメーリング リスト名を使用して、登録者に対応する `MailingList` テーブル行を取得します。次に、ビューに必要なすべての情報をビュー モデルに読み込み、**登録解除用**ページを表示します。さらに、**登録解除用**ページの初期バージョンが表示されるように、`Confirmed` プロパティを null に設定しています。
  
 	     public ActionResult Index(string id, string listName)
 	     {
@@ -1462,9 +1464,9 @@ The `UnsubscribeVM` view model is used to pass data between the `Unsubscribe` co
 	         return View(unsubscribeVM);
 	     }
 
-	Note: The SubscriberGUID is not in the partition key or row key, so the performance of this query will degrade as partition size (the number of email addresses in a mailing list) increases.  For more information about alternatives to make this query more scalable, see [the first tutorial in the series][firsttutorial].
+	注: SubscriberGUID がパーティション キーまたは行キーに含まれていないため、パーティション サイズ (メーリング リスト内の電子メール アドレス数) が大きくなると、このクエリのパフォーマンスは低下します。このクエリの拡張性を向上するための代替方法の詳細については、[シリーズの最初のチュートリアル][firsttutorial]を参照してください。
 
-	The `HttpPost Index` method again uses the GUID and list name to get the subscriber information and populates the view model properties. Then, if the **Confirm** button was clicked, it deletes the subscriber row in the `MailingList` table. If the **Confirm** button was pressed it also sets the `Confirm` property to `true`, otherwise it sets the `Confirm` property to `false`. The value of the `Confirm` property is what tells the view to display the confirmed or canceled version of the **Unsubscribe** page.
+	`HttpPost Index` メソッドは、GUID とメーリング リスト名を使用して登録者情報を取得し、ビュー モデルのプロパティに値を設定します。次に、**[Confirm]** ボタンがクリックされた場合は、`MailingList` テーブル内の該当する Subscriber 行を削除します。**[Confirm]** ボタンが押された場合は `Confirm` プロパティを `true` に設定し、それ以外の場合は `Confirm` プロパティを `false` に設定します。`Confirm` プロパティの値は、**登録解除用**ページの確認済みバージョンを表示するか取り消し済みバージョンを表示するかを指定する値です。
 
         [HttpPost] 
         [ValidateAntiForgeryToken]
@@ -1493,15 +1495,15 @@ The `UnsubscribeVM` view model is used to pass data between the `Unsubscribe` co
             return View(unsubscribeVM);
         }
 
-### Create the MVC views
+### MVC ビューを作成する
 
-2. In **Solution Explorer**, create a new folder under the *Views* folder in the MVC project, and name it *Unsubscribe*.
+2. **ソリューション エクスプローラー**で、MVC プロジェクトの *[Views]* フォルダーの下に新しいフォルダーを作成し、「*Unsubscribe*」という名前を付けます。
 
-1. Right-click the new *Views\Unsubscribe* folder, and choose **Add Existing Item**.
+1. 新しい *Views\Unsubscribe* フォルダーを右クリックして、**[既存項目の追加]** を選択します。
 
-2. Navigate to the folder where you downloaded the sample application, select the *Index.cshtml* file in the *Views\Unsubscribe* folder, and click **Add**.
+2. サンプル アプリケーションをダウンロードしたフォルダーに移動し、*Views\Unsubscribe* フォルダー内の *Index.cshtml* ファイルを選択して、**[追加]** をクリックします。
 
-3. Open the *Index.cshtml* file and examine the code.
+3. *Index.cshtml* ファイルを開いてコードを確認します。
 		
 		@model MvcWebRole.Models.UnsubscribeVM
 		
@@ -1548,105 +1550,105 @@ The `UnsubscribeVM` view model is used to pass data between the `Unsubscribe` co
 		    @Scripts.Render("~/bundles/jqueryval")
 		}
 						
-	The `Layout = null` line specifies that the _Layout.cshtml file should not be used to display this page. The **Unsubscribe** page displays a very simple UI without the headers and footers that are used for the administrator pages.
+	`Layout = null` 行では、このページの表示に _Layout.cshtml ファイルを使用しないことを指定しています。**登録解除用**ページには、非常にシンプルな UI が表示されます。管理ページに使用されているヘッダーやフッターはありません。
 
-	In the body of the page, the `Confirmed` property determines what will be displayed on the page:  **Confirm** and **Cancel** buttons if the property is null, unsubscribe-confirmed message if the property is true, unsubscribe-canceled message if the property is false.
+	ページの本体については、`Confirmed` プロパティによって表示内容が判断されます。このプロパティが null であれば **[Confirm]** ボタンと **[Cancel]** ボタン、プロパティが true であれば登録解除が確認されたことを示すメッセージ、プロパティが false であれば登録解除が取り消されたことを示すメッセージを表示します。
 
-### Test the application
+### アプリケーションをテストします。
 
-1. Run the project by pressing CTRL-F5, and then click **Subscribers**.
+1. Ctrl キーを押しながら F5 キーを押してプロジェクトを実行し、**[Subscribers]** をクリックします。
 
-2. Click **Create** and create a new subscriber for any mailing list that you created when you were testing earlier.
+2. **[Create]** をクリックして、テスト時に作成したメーリング リストに対応する新しい登録者を作成します。
 
-	Leave the browser window open on the **Subscribers** **Index** page.
+	ブラウザーのウィンドウで、**Subscribers** **Index** ページを開いたままにしておきます。
 
-3. Open Azure Storage Explorer, and then select your test storage account.
+3. Azure ストレージ エクスプローラーを開き、テスト用のストレージ アカウントを選択します。
 
-4. Click **Tables** under **Storage Type**, select the **MailingList** table, and then click **Query**.
+4. **[ストレージの種類]** の **[テーブル]** をクリックし、**MailingList** テーブルを選択して、**[クエリ]** をクリックします。
 
-5. Double-click the subscriber row that you added.
+5. 追加した Subscriber 行をダブルクリックします。
 
-	![Azure Storage Explorer][mtas-ase-unsubscribe]
+	![Azure ストレージ エクスプローラー][mtas-ase-unsubscribe]
 
-6. In the **Edit Entity** dialog box, select and copy the `SubscriberGUID` value.
+6. **[エンティティの編集]** ダイアログ ボックスで、`SubscriberGUID` の値を選択してコピーします。
 
-	![Azure Storage Explorer][mtas-ase-edit-entity-unsubscribe]
+	![Azure ストレージ エクスプローラー][mtas-ase-edit-entity-unsubscribe]
 
-7. Switch back to your browser window.  In the address bar of the browser, change "Subscriber" in the URL to "unsubscribe?ID=[guidvalue]&listName=[listname]" where [guidvalue] is the GUID that you copied from Azure Storage Explorer, and [listname] is the name of the mailing list.  For example:
+7. ブラウザー ウィンドウに戻ります。ブラウザーのアドレス バーで、URL に含まれる "Subscriber" を "unsubscribe?ID=[guidvalue]&listName=[listname]" ([guidvalue] は Azure ストレージ エクスプローラーからコピーした GUID、[listname] はメーリング リストの名前) に変更します。次に例を示します。
 
         http://127.0.0.1/unsubscribe?ID=b7860242-7c2f-48fb-9d27-d18908ddc9aa&listName=contoso1
 
-	The version of the **Unsubscribe** page that asks for confirmation is displayed:
+	確認を求めるバージョンの**登録解除用**ページが表示されます。
 
-	![Unsubscribe page][mtas-unsubscribe-page]
+	![登録解除用ページ][mtas-unsubscribe-page]
 
-2. Click **Confirm** and you see confirmation that the email address has been unsubscribed.
+2. **[Confirm]** をクリックすると、電子メール アドレスが登録解除されたという確認が表示されます。
 
-	![Unsubscribe confirmed page][mtas-unsubscribe-confirmed-page]
+	![登録解除完了のお知らせページ][mtas-unsubscribe-confirmed-page]
 
-3. Go back to the **Subscribers** **Index** page to verify that the subscriber row is no longer there.
-
-
+3. **Subscribers** **Index** ページに戻り、Subscriber 行が表示されていないことを確認します。
 
 
-<h2><a name="alternativearchitecture"></a><span class="short-header">Alternative Architecture</span>(Optional) Build the Alternative Architecture</h2>
 
-The following changes to the instructions apply if you want to build the alternative architecture -- that is, running the web UI in an Azure Web Site instead of an Azure Cloud Service web role.
 
-* When you create the solution, create the **ASP.NET MVC 4 Web Application** project first, and then add to the solution a **Azure Cloud Service** project with a worker role.
+<h2><a name="alternativearchitecture"></a><span class="short-header">代替アーキテクチャ</span>(省略可能) 代替アーキテクチャの構築</h2>
 
-* Store the Azure Storage connection string in the Web.config file instead of the cloud service settings file. (This only works for Azure Web Sites. If you try to use the Web.config file for the storage connection string in an Azure Cloud Service web role, you'll get an HTTP 500 error.) 
+次に示す手順の変更は、代替アーキテクチャを構築する場合に適用されます。その場合は、Azure クラウド サービス Web ロールではなく Azure の Web サイトで Web UI を実行します。
 
-Add a new connection string named `StorageConnectionString` to the *Web.config* file, as shown in the following example:
+* ソリューションを作成する際には、まず **ASP.NET MVC 4 Web アプリケーション** プロジェクトを作成してから、ワーカー ロールで **Azure クラウド サービス** プロジェクトにソリューションを追加します。
+
+* Azure のストレージ接続文字列はクラウド サービス設定ファイルではなく Web.config ファイルに保存します (これは、Azure の Web サイトを使用する場合のみに機能する手順です。Azure クラウド サービス Web ロールのストレージ接続文字列に Web.config ファイルを使用しようとすると、HTTP 500 エラーが発生します)。
+
+次の例のように、`StorageConnectionString` という名前の新しい接続文字列を *Web.config* ファイルに追加します。
 
 	       <connectionStrings>
 	          <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-MvcWebRole-20121010185535;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-MvcWebRole-20121010185535.mdf" providerName="System.Data.SqlClient" />
 	          <add name="StorageConnectionString" connectionString="DefaultEndpointsProtocol=https;AccountName=[accountname];AccountKey=[primarykey]" />
 	       </connectionStrings>
 	
-Get the values for the connection string from the [Azure Management Portal][managementportal]:  select the **Storage** tab and your storage account, and then click **Manage keys** at the bottom of the page.
+接続文字列の値は、[Azure 管理ポータル][managementportal]から取得します。これには、ストレージ アカウントの **[ストレージ]** タブを選択し、ページの下部にある **[キーの管理]** をクリックします。
 
-* Wherever you see `RoleEnvironment.GetConfigurationSettingValue("StorageConnectionString")` in the code, replace it with `ConfigurationManager.ConnectionStrings["StorageConnectionString"].ConnectionString`.
+*コード内の `RoleEnvironment.GetConfigurationSettingValue("StorageConnectionString")` は、すべて `ConfigurationManager.ConnectionStrings[["StorageConnectionString"]].ConnectionString` に置き換えてください。
 
 
 
 <h2><a name="nextsteps"></a><span class="short
--header">Next steps</span>Next steps</h2>
+-header">次のステップ</span>次のステップ</h2>
 
-As explained in [the first tutorial in the series][firsttutorial], we are not showing how to build the subscribe process in detail in this tutorial until we implement a shared secret to secure the ASP.NET Web API service method. However, the IP restriction also protects the service method and you can add the subscribe functionality by copying the following files from the downloaded project.
+[シリーズの最初のチュートリアル][firsttutorial]で説明したように、このチュートリアルでは、ASP.NET Web API サービス メソッドをセキュリティで保護するための共有シークレットが実装されるまで、登録プロセスの詳細な構築方法を示しません。ただし、サービス メソッドは IP 制限によっても保護されます。登録機能は、ダウンロードしたプロジェクトから次の各ファイルをコピーすることによって追加できます。
 
-For the ASP.NET Web API service method:
+ASP.NET Web API サービス メソッド:
 
 * Controllers\SubscribeAPI.cs
 
-For the web page that subscribers get when they click on the **Confirm** link in the email that is generated by the service method:
+サービス メソッドで生成された電子メールに含まれる **Confirm** リンクを登録者がクリックしたときに表示される Web ページ:
 
 * Models\SubscribeVM.cs
 * Controllers\SubscribeController.cs
 * Views\Subscribe\Index.cshtml
 
-In the [next tutorial][nexttutorial] you'll configure and program worker role A, the worker role that schedules emails.
+[次のチュートリアル][nexttutorial]では、電子メールのスケジュールを設定するワーカー ロール A の構成とプログラミングを行います。
 
-For links to additional resources for working with Azure Storage tables, queues, and blobs, see the end of [the last tutorial in this series][tut5].
+Azure のストレージのテーブル、キュー、BLOB に関する参考情報は、[このシリーズの最終チュートリアル][tut5]の末尾に記載されています。
 
-<div><a href="/en-us/develop/net/tutorials/multi-tier-web-site/4-worker-role-a/" class="site-arrowboxcta download-cta">Tutorial 4</a></div>
+<div><a href="/ja-jp/develop/net/tutorials/multi-tier-web-site/4-worker-role-a/" class="site-arrowboxcta download-cta">チュートリアル 4</a></div>
 
 
 
 [alternativearchitecture]: #alternativearchitecture
 
 
-[tut5]: /en-us/develop/net/tutorials/multi-tier-web-site/5-worker-role-b/
-[tut2]: /en-us/develop/net/tutorials/multi-tier-web-site/2-download-and-run/
-[firsttutorial]: /en-us/develop/net/tutorials/multi-tier-web-site/1-overview/
-[nexttutorial]: /en-us/develop/net/tutorials/multi-tier-web-site/4-worker-role-a/
+[tut5]: /ja-jp/develop/net/tutorials/multi-tier-web-site/5-worker-role-b/
+[tut2]: /ja-jp/develop/net/tutorials/multi-tier-web-site/2-download-and-run/
+[firsttutorial]: /ja-jp/develop/net/tutorials/multi-tier-web-site/1-overview/
+[nexttutorial]: /ja-jp/develop/net/tutorials/multi-tier-web-site/4-worker-role-a/
 
-[TableEntity]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.storage.table.tableentity.aspx
-[DynamicTableEntity]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.storage.table.dynamictableentity.aspx
+[TableEntity]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.storage.table.tableentity.aspx
+[DynamicTableEntity]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.storage.table.dynamictableentity.aspx
 [managementportal]: http://manage.windowsazure.com
 
 [percentinkeyfields]: http://blogs.msdn.com/b/windowsazurestorage/archive/2012/05/28/partitionkey-or-rowkey-containing-the-percent-character-causes-some-windows-azure-tables-apis-to-fail.aspx
-[tabledatamodel]: http://msdn.microsoft.com/en-us/library/windowsazure/dd179338.aspx 
+[tabledatamodel]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179338.aspx 
 [deepdive]: http://blogs.msdn.com/b/windowsazurestorage/archive/2012/11/06/windows-azure-storage-client-library-2-0-tables-deep-dive.aspx
 [howtogetthemost]: http://blogs.msdn.com/b/windowsazurestorage/archive/2010/11/06/how-to-get-most-out-of-windows-azure-tables.aspx
 
@@ -1690,4 +1692,6 @@ For links to additional resources for working with Azure Storage tables, queues,
 [mtas-update-storage-nuget-pkg]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-web-role/mtas-update-storage-nuget-pkg.png
 [mtas-nuget-select-projects]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-web-role/mtas-nuget-select-projects.png
 [mtas-compute-emulator-icon]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-web-role/mtas-compute-emulator-icon.png
+
+
 

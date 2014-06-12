@@ -1,36 +1,36 @@
-<properties title="Download the Azure SDK for PHP" pageTitle="Download the Azure SDK for PHP" metaKeywords="" description="Learn how to download and install the Azure SDK for PHP." documentationCenter="PHP" services="" solutions="web" authors="" />
+<properties title="Azure SDK for PHP をダウンロードする" pageTitle="Azure SDK for PHP をダウンロードする" metaKeywords="" description="Azure SDK for PHP をダウンロードおよびインストールする方法について説明します。" documentationCenter="PHP" services="" solutions="web" />
 
-#Download the Azure SDK for PHP
+#Azure SDK for PHP をダウンロードする
 
-The Azure SDK for PHP includes components that allow you to develop, deploy, and manage PHP applications for Azure. Specifically, the Azure SDK for PHP includes the following:
+Azure SDK for PHP には、Azure 向けの PHP アプリケーションを開発、展開、管理するためのコンポーネントが用意されています。Azure SDK for PHP には次のコンポーネントが用意されています。
 
-* **The PHP client libraries for Azure**. These class libraries provide an interface for accessing Azure features, such as data management services and cloud services.  
-* **The Azure Command-Line Tools for Mac and Linux**. This is a set of command-line tools for deploying and managing Azure services, such as Azure Web Sites and Azure Virtual Machines. These tools work on any platform, including Mac, Linux, and Windows.
-* **Azure PowerShell (Windows Only)**. This is a set of PowerShell cmdlets for deploying and managing Azure Services, such as Cloud Services and Virtual Machines.
-* **The Azure Emulators (Windows Only)**. The compute and storage emulators are local emulators of cloud services and data management services that allow you to test an application locally. The Azure Emulators run on Windows only.
+* **Azure 用 PHP クライアント ライブラリ**。これらのクラス ライブラリには、データ管理サービスやクラウド サービスなどの Azure の機能にアクセスするためのインターフェイスが用意されています。
+* **Mac および Linux 用 Azure コマンド ライン ツール**。これは、Azure の Web サイトや Azure の仮想マシンなどの Azure サービスを展開および管理するためのコマンド ライン ツールのセットです。これらのツールは、Mac、Linux、Windows など、すべてのプラットフォームで動作します。
+* **Azure PowerShell (Windows のみ)**。これは、クラウド サービスや仮想マシンなどの Azure サービスを展開および管理するための PowerShell コマンドレットのセットです。
+* **Azure エミュレーター (Windows のみ)**。コンピューティング エミュレーターとストレージ エミュレーターは、アプリケーションをローカルでテストできるようにするためのクラウド サービスおよびデータ管理サービスのローカル エミュレーターです。Azure エミュレーターは Windows 上でのみ動作します。
 
-The sections below describe how to download and install the components described above. 
+以下のセクションでは、上に示したコンポーネントをダウンロードおよびインストールする方法を説明します。
 
-The instructions in this topic assume that you have [PHP][install-php] installed.
+このトピックの手順では、[PHP][install-php] がインストールされていることを前提としています。
 
 > [WACOM.NOTE] 
-> You must have PHP 5.3 or higher to use the PHP client libraries for Azure. 
+> Azure 用 PHP クライアント ライブラリを使用するには、PHP 5.3 以上が必要です。
 
-##PHP client libraries for Azure
+##Azure 用 PHP クライアント ライブラリ
 
-The PHP Client Libraries for Azure provide an interface for accessing Azure features, such as data management services and cloud services, from any operating system. These libraries can be installed via the Composer or PEAR package managers or manually.
+Azure 用 PHP クライアント ライブラリには、任意のオペレーティング システムからデータ管理サービスやクラウド サービスなどの Azure の機能にアクセスするためのインターフェイスが用意されています。これらのライブラリは、Composer または PEAR パッケージ マネージャーを使用してインストールすることも、手動でインストールすることもできます。
 
-For information about how to use the PHP Client Libraries for Azure, see [How to Use the Blob Service][blob-service], [How to Use the Table Service][table-service] and [How to Use the Queue Service][queue-service].
+Azure 用 PHP クライアント ライブラリを使用する方法については、[BLOB サービスを使用する方法に関するページ][blob-service]、[テーブル サービスを使用する方法に関するページ][table-service]、および[キュー サービスを使用する方法に関するページ][queue-service]を参照してください。
 
-###Install via Composer
+###Composer 経由でインストールする
 
-1. [Install Git][install-git]. 
+1. [Git をインストールします][install-git]。
 
 
 	> [WACOM.NOTE] 
-	> On Windows, you will also need to add the Git executable to your PATH environment variable.
+	> Windows では、Git 実行可能ファイルを PATH 環境変数に追加する必要があります。
 
-2. Create a file named **composer.json** in the root of your project and add the following code to it:
+2. プロジェクトのルートに **composer.json** という名前のファイルを作成して、次のコードを追加します。
 
 		{
 			"require": {
@@ -45,60 +45,60 @@ For information about how to use the PHP Client Libraries for Azure, see [How to
 			"minimum-stability": "dev"
 		}
 
-3. Download **[composer.phar][composer-phar]** in your project root.
+3. **[composer.phar][composer-phar]** をプロジェクトのルートにダウンロードします。
 
-4. Open a command prompt and execute this in your project root
+4. コマンド プロンプトを開き、次のコマンドをプロジェクトのルートで実行します。
 
 		php composer.phar install
 
-###Install as a PEAR package
+###PEAR パッケージとしてインストールする
 
-To install the PHP Client Libraries for Azure as a PEAR package, follow these steps:
+Azure 向け PHP クライアント ライブラリを PEAR パッケージとしてインストールするには、次のステップに従います。
 
-1. [Install PEAR][install-pear].
-2. Set-up the Azure PEAR channel:
+1. [PEAR をインストールします][install-pear]。
+2. Azure PEAR チャネルをセットアップします。
 
 		pear channel-discover pear.windowsazure.com
-3. Install the PEAR package:
+3. PEAR パッケージをインストールします。
 
 		pear install pear.windowsazure.com/WindowsAzure-0.3.1
 
-After the installation completes, you can reference class libraries from your application.
+インストールが完了した後は、アプリケーションからクラス ライブラリを参照できます。
 
-###Install manually
+###手動でインストールする
 
-To download and install the PHP Client Libraries for Azure manually, follow these steps:
+Azure 向け PHP クライアント ライブラリを手動でダウンロードしてインストールするには、次のステップに従います。
 
-1. Download a .zip archive that contains the libraries from [GitHub][php-sdk-github]. Alternatively, fork the repository and clone it to your local machine. (The latter option requires a GitHub account and having Git installed locally.)
+1. ライブラリが含まれている .zip アーカイブを [GitHub][php-sdk-github] からダウンロードします。または、リポジトリをフォークして、ローカル コンピューターにその複製を作成します (この 2 つ目の方法では、GitHub アカウントが必要であるほか、Git がローカルにインストールされている必要があります)。
 
 	> [WACOM.NOTE] 
-	> The PHP Client Libraries for Azure have a dependency on the [HTTP_Request2](http://pear.php.net/package/HTTP_Request2), [Mail_mime](http://pear.php.net/package/Mail_mime), and [Mail_mimeDecode](http://pear.php.net/package/Mail_mimeDecode) PEAR packages. The recommended way to resolve these dependencies is to install these packages using the [PEAR package manager](http://pear.php.net/manual/en/installation.php)
+	>Azure 向け PHP クライアント ライブラリは、[HTTP_Request2](http://pear.php.net/package/HTTP_Request2)、[Mail_mime](http://pear.php.net/package/Mail_mime)、および [Mail_mimeDecode](http://pear.php.net/package/Mail_mimeDecode) の PEAR パッケージに依存しています。これらの依存関係を解決するには、[PEAR パッケージ マネージャー](http://pear.php.net/manual/en/installation.php)を使用してこれらのパッケージをインストールすることをお勧めします。
 
-2. Copy the `WindowsAzure` directory of the downloaded archive to your application directory structure and reference classes from your application.
+2. ダウンロードしたアーカイブの `WindowsAzure` ディレクトリをアプリケーションのディレクトリ構造にコピーし、アプリケーションからクラスを参照します。
 
-##Azure PowerShell and Azure Emulators
+##Azure PowerShell と Azure エミュレーター
 
-Azure PowerShell is a set of PowerShell cmdlets for deploying and managing Azure Services (such as Cloud Services and Virtual Machines). The Azure Emulators are emulators of cloud services and data management services that allow you to test an application locally. These components are supported Windows only.
+Azure PowerShell は、クラウド サービスや仮想マシンなどの Azure サービスを展開および管理するための PowerShell コマンドレットのセットです。Azure エミュレーターは、アプリケーションをローカルでテストできるようにするためのクラウド サービスおよびデータ管理サービスのエミュレーターです。これらのコンポーネントは、Windows のみでサポートされています。
 
-The recommended way to install Azure PowerShell and the Azure Emulators is to use the [Microsoft Web Platform Installer][download-wpi]. Note that you can also choose to install other development components, such as PHP, SQL Server, the Microsoft Drivers for SQL Server for PHP, and WebMatrix.
+Azure PowerShell と Azure エミュレーターは、[Microsoft Web Platform Installer][download-wpi] を使用してインストールすることをお勧めします。PHP、SQL Server、Microsoft Drivers for SQL Server for PHP、WebMatrix など、他の開発用コンポーネントをインストールすることもできます。
 
-For information about how to use Azure PowerShell, see [How to Use Azure PowerShell][powershell-tools].
+Azure PowerShell の使用方法については、「[Azure PowerShell の使用方法][powershell-tools]」を参照してください。
 
-##Azure Command-Line Tools for Mac and Linux
+##Mac および Linux 用 Azure コマンド ライン ツール
 
-The Azure Command-Line Tools for Mac and Linux are a set of command-line tools for deploying and managing Azure services, such as Azure Web Sites and Azure Virtual Machines. The following list describes how to install the tools, depending on your operating system:
+Mac および Linux 用 Azure コマンド ライン ツールは、Azure の Web サイトや Azure の仮想マシンなどの Azure サービスを展開および管理するためのコマンド ライン ツールのセットです。オペレーティング システムに応じた、ツールのインストール方法を次に示します。
 
-* **Mac**: Download the Azure SDK Installer here: [http://go.microsoft.com/fwlink/?LinkId=252249][mac-installer]. Open the downloaded .pkg file and complete the installation steps as your are prompted.
+* **Mac**: Azure SDK インストーラーをここからダウンロードします[http://go.microsoft.com/fwlink/?LinkId=252249][mac-installer]。ダウンロードした .pkg ファイルを開き、指示に従ってインストール手順を実行します。
 
-* **Linux**: Install the latest version of [Node.js][nodejs-org] (see [Install Node.js via Package Manager][install-node-linux]), then run the following command:
+* **Linux**: 最新バージョンの [Node.js][nodejs-org] をインストールし ([パッケージ マネージャーを使った Node.js のインストールに関するページ][install-node-linux]を参照)、次のコマンドを実行します。
 
 		npm install azure-cli -g
 
 	> [WACOM.NOTE] 
-	> You may need to run this command with elevated privileges:  `sudo npm install azure-cli -g`
+	> 昇格した特権で次のコマンドを実行することが必要になる場合があります。`sudo npm install azure-cli -g`
 
 
-For information about how to use the Azure Command-Line Tools for Mac and Linux, see [How to Use the Command-Line Tools for Mac and Linux][crossplat-tools].
+Mac および Linux 用 Azure コマンド ライン ツールの使用方法については、「[Mac および Linux 用 Azure コマンド ライン ツールの使用方法][crossplat-tools]」を参照してください。
 
 [install-php]: http://www.php.net/manual/en/install.php
 [composer-github]: https://github.com/composer/composer
@@ -119,3 +119,4 @@ For information about how to use the Azure Command-Line Tools for Mac and Linux,
 [powershell-tools]: http://go.microsoft.com/fwlink/?LinkId=252718
 [php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
+

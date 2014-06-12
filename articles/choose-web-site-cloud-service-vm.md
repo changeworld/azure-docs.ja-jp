@@ -1,279 +1,279 @@
-<properties linkid="manage-scenarios-choose-web-app-service" urlDisplayName="Web Options for Azure" pageTitle="When to Choose Azure Web Sites, Cloud Services, or Virtual Machines" metaKeywords="Cloud Services, Virtual Machines, Web Sites" description="Learn when to use Azure Web Sites, Cloud Services, and Virtual Machines for hosting web applications" metaCanonical="" services="web-sites,virtual-machines,cloud-services" documentationCenter="" title=" Cloud Services" authors="jroth" solutions="" manager="paulettm" editor="mollybos" />
+<properties linkid="manage-scenarios-choose-web-app-service" urlDisplayName="Azure の Web オプション" pageTitle="どういうときに Azure の Web サイト、クラウド サービス、または仮想マシンを選択するか" metaKeywords="クラウド サービス、仮想マシン、Web サイト" description="Web アプリケーションをホストするにあたり、どういうときにどのサービス (Azure の Web サイト、クラウド サービス、仮想マシン) を使用するかについて説明します" metaCanonical="" services="web-sites,virtual-machines,cloud-services" documentationCenter="" title="クラウド サービス" authors=""  solutions="" writer="jroth" manager="paulettm" editor="mollybos"  />
 
 
 
 
 
-# Azure Web Sites, Cloud Services and Virtual Machines comparison
+# Azure の Web サイト、クラウド サービス、および仮想マシンの比較
 
-Azure offers several ways to host your web applications, such as [Azure Web Sites][], [Cloud Services][], and [Virtual Machines][]. After looking at these various options, you might be unsure which one best fits your needs, or you might be unclear about concepts such as IaaS vs PaaS. This article helps you understand your options and helps you make the right choice for your web scenario. Although all three options allow you to run highly scalable web applications in Azure, there are differences which can help guide your decision.
+Azure には、Web アプリケーションをホストするための方法がいくつかあります ([Azure の Web サイト][]、[クラウド サービス][]、[仮想マシン][]など)。これらさまざまなオプションを検討しても、自分のニーズに最適な方法がどれなのかわからない場合や、IaaS と PaaS などの概念がはっきりしない場合があります。この記事では、オプションを理解するのに役立つ情報を提供し、自分の Web シナリオに適した選択を行うことができるようにします。これら 3 つのオプションのどれを使用しても、Azure で非常に拡張性の高い Web アプリケーションを実行することができますが、決定する際に考慮が必要な違いもあります。
 
-In many situations, Azure Web Sites is the best option. It provides simple and flexible options for deployment and management, and it is capable of hosting high-volume web sites. You can quickly create a new web site with popular software, such as WordPress, from the Web Application Gallery, or you can move an existing web site to Azure Web Sites. Using the [Azure WebJobs SDK][] (currently in preview) you can also add background job processing. 
+多くの場合、Azure の Web サイトが最良のオプションです。展開と管理のための簡単で柔軟なオプションが提供され、大量のデータがある web サイトをホストすることができます。Web アプリケーション ギャラリーにある WordPress などの一般的なソフトウェアを使用して新しい Web サイトをすばやく作成することも、既存の Web サイトを Azure の Web サイトに移動することもできます。[Azure の Web ジョブ SDK][] (現在はプレビュー) を使用して、バック グラウンド ジョブの処理を追加することもできます。
 
-You also have the option to host web applications on Azure Cloud Services or Azure Virtual Machines. These options are good choices when your web tier requires the additional level of control and customization that they provide; however, this increased control comes at a cost of increased complexity in application creation, management, and deployment. The following diagram illustrates the trade-offs among the three options.
+Azure のクラウド サービスまたは Azure の仮想マシンで、Web アプリケーションをホストするオプションもあります。これらのオプションは、Web 層にこれらが提供する追加のレベルの制御およびカスタマイズが必要な場合には適していますが、制御機能を増強するために、アプリケーションの作成、管理、および展開において複雑さが増します。次の図に、3 つのオプションの間でのトレードオフを示します。
 
 ![ChoicesDiagram][ChoicesDiagram]
 
-Web Sites are easier to set up, manage, and monitor, but you have fewer configuration options. The key point is that when you do not have a compelling reason to place your web front-end on Cloud Services or Virtual Machines, use Azure Web Sites. The remainder of this document provides the information needed to make an informed decision. This includes:
+Azure の Web サイトは、簡単に設定、管理、および監視できますが、少ない構成オプションしかありません。重要な点は、クラウド サービスまたは仮想マシンに Web フロント エンドを配置する特別な理由がないときは、Azure の Web サイトを使用するということです。このドキュメントの残りの部分では、十分な情報に基づいて決定を行うために必要な情報を提供します。次のトピックがあります。
 
-- [Scenarios](#scenarios)
-- [Service Summaries](#services)
-- [Feature Comparison](#features)
+- [シナリオ](#scenarios)
+- [サービスの概要](#services)
+- [機能の比較](#features)
 
-##<a name="scenarios"></a>Scenarios
+##<a name="scenarios"></a>シナリオ
 
-### I'm a small business owner, and I need an inexpensive way to host my site but with future growth in mind.
+### スモール ビジネスのオーナーです。サイトをホストするための安価な方法が必要ですが、将来の成長も考慮する必要があります。
 
-Azure Web Sites (WAWS) is a great solution for this scenario, because you can start using it for free and then add more capabilities when you need them. For example, each free web site comes with a domain provided by Azure (*your_company*.azurewebsites.net). When you’re ready to start using your own domain, you can add this for as low as $9.80 a month (as of 1/2014). There are many other services and scaling options that allow the site to evolve with increased user demand. With **Azure Web Sites**, you can:
+このシナリオでは、無料で使用を開始して必要なときにさらに機能を追加できる、Azure の Web サイト (WAWS) が最適なソリューションです。たとえば、無料の Web サイトごと、Azure によって提供されるドメインが付属しています (*your_company*.azurewebsites.net)。会社のドメインの使用を開始する準備ができたら、最低 9.80 ドル/月でそれを追加できます (2014 年 1 月現在)。他にも、ユーザーの要求が増えるにつれて拡大できる多くのサービスや拡張オプションがあります。**Azure の Web サイト**を使用すると、次のことができます。
 
-- Begin with the free tier and then scale up as needed.
-- Use the Application Gallery to quickly setup popular web applications, such as WordPress.
-- Add additional Azure services and features to your application as needed.
-- Secure your web site with HTTPS using the certificate provided with your *your_company*.azurewebsites.net domain name.
+- 無料の層から開始し、必要に応じてスケール アップできます。
+- アプリケーション ギャラリーを使用して、WordPress などの一般的な Web アプリケーションをすばやくセットアップできます。
+- 必要に応じて、Azure のその他のサービスや機能をアプリケーションに追加できます。
+- ドメイン名 *your_company*.azurewebsites.net で提供される証明書を使用して、HTTPS で Web サイトをセキュリティで保護できます。
 
-### I'm a web or graphic designer, and I want to design and build web sites for my customers
+### Web デザイナーまたはグラフィック デザイナーです。顧客の Web サイトをデザインおよび構築する必要があります。
 
-For web developers, Azure Web Sites gives you what you need to create sophisticated web applications. Web Sites offers tight integration with tools such as Visual Studio and SQL database. With **Web Sites**, developers can:
+Azure の Web サイトには、Web 開発者が洗練された Web アプリケーションを作成するために必要な機能があります。Azure の Web サイトは、Visual Studio や SQL データベースなどのツールとの緊密な統合を提供します。**Azure の Web サイト**を使用すると、開発者は次のことができます。
 
-- Use command-line tools for [automated tasks][scripting].
-- Work with popular languages such as [.Net][dotnet], [PHP][], [Node.js][nodejs], and [Python][].
-- Select three different scaling levels for scaling up to very high capacities.
-- Integrate with other Azure services, such as [SQL Database][sqldatabase], [Service Bus][servicebus] and [Storage][], or partner offerings from the [Azure Store][azurestore], such as MySQL and MongoDB.
-- Integrate with tools, such as Visual Studio, Git, WebMatrix, WebDeploy, TFS, and FTP.
+- [タスクの自動化][scripting]のためのコマンドライン ツールを使用できます。
+- [.Net][dotnet]、[PHP][]、[Node.js][nodejs]、[Python][] など、一般的な言語で作業できます。
+- 非常に高い容量に拡張するための 3 つの異なる拡張レベルを選択できます。
+- [SQL データベース][sqldatabase]、[サービス バス][servicebus]、[ストレージ][]などの他の Azure サービスや、MySQL、MongoDB など、[Azure ストア][azurestore]からのパートナーの製品と統合できます。
+- Visual Studio、Git、WebMatrix、WebDeploy、TFS、FTP などのツールと統合できます。
 
-### I'm migrating my multi-tier application with a web front-end to the Cloud
+### Web フロント エンドを含む多層アプリケーションをクラウドに移行しています。
 
-If you’re running a multi-tier application, such as a web server that talks to a database server to store and retrieve website data, you have several options for in Azure. These architectural options include Web Sites, Cloud Services, and Virtual Machines. First, **Web Sites** is a good option for the web tier of your solution and can be used with Azure SQL Database to create a two-tier architecture. Web Sites also allows you to run background or long running processes using the Azure WebJobs SDK preview. If you need more complex architecture or more flexible scaling options, Cloud Services or Virtual Machines are a better choice. 
+データベース サーバーと対話して Web サイトのデータを格納および取得する Web サーバーなどの多層アプリケーションを実行している場合は、Azure ではいくつかのオプションがあります。これらのアーキテクチャ オプションには、Web サイト、クラウド サービス、仮想マシンがあります。ます、**Web サイト**はソリューションの Web 層に適切なオプションであり、2 層アーキテクチャを作成する Azure SQL データベースで使用できます。また、Web サイトでは、Azure の Web ジョブ SDK のプレビューを使用して、バックグラウンド プロセスや実行時間の長いプロセスを実行することもできます。さらに複雑なアーキテクチャまたはより柔軟性のある拡張オプションが必要な場合は、クラウド サービスまたは仮想マシンを選択する方が適切です。
 
-**Cloud Services** enables you to:
+**クラウド サービス**を使用すると、次のことができます。
 
-- Host web, middle-tier, and backend services on scalable web and worker roles. 
-- Host only the middle-tier and backend services on worker roles, keeping the front-end on Azure Web Sites. 
-- Scale frontend and backend services independently.
+- スケーラブルな Web ロールと Worker ロールで、Web、中間層、およびバックエンド サービスをホストできます。
+- Worker ロールで中間層およびバックエンド サービスのみをホストし、Azure の Web サイトでフロント エンドを維持できます。
+- フロント エンド サービスとバックエンド サービスを個別に拡張できます。
 
-**Virtual Machines** enables you to: 
+**仮想マシン**を使用すると、次のことができます。
 
-- More easily migrate highly customized environments as a virtual machine image.
-- Run software or services that cannot be configured on Web Sites or Cloud Services.
+- 仮想マシン イメージとして高度にカスタマイズされた環境を、より簡単に移行できます。
+- Web サイトまたはクラウド サービスで構成できないソフトウェアまたはサービスを実行できます。
 
-### My application depends on highly customized Windows or Linux environments
+### 使用しているアプリケーションが、高度にカスタマイズされた Windows または Linux 環境に依存しています。
 
-If your application requires complex installation or configuration of software and the operating system, Virtual Machines is probably the best solution. With **Virtual Machines**, you can:
+アプリケーションを使用するために、ソフトウェアおよびオペレーティング システムの複雑なインストールまたは構成が必要な場合、仮想マシンが最良のソリューションであると思われます。**仮想マシン**を使用すると、次のことができます。
 
-- Use the Virtual Machine gallery to start with an operating system, such as Windows or Linux, and then customize it for your application requirements. 
-- Create and upload a custom image of an existing on-premises server to run on a virtual machine in Azure. 
+- 仮想マシン ギャラリーを使用して、Windows や Linux などのオペレーティング システムから始め、後でアプリケーションの要件に合わせてカスタマイズできます。
+- 既存の内部設置型サーバーのカスタム イメージを作成してアップロードすることで、Azure の仮想マシンで実行できます。
 
-### My site uses open source software, and I want to host it in Azure
+### 自分のサイトではオープン ソース ソフトウェアを使用しており、そのソフトウェアを Azure でホストする必要があります。
 
-All three options allow you to host open source languages and frameworks. **Cloud Services** requires you to use startup tasks to install and configure any required open source software that runs on Windows. With **Virtual Machines**, you install and configure the software on the machine image, which can be Windows or Linux-based. If your open source framework is support on Web Sites, this provides a simpler way to host these types of applications as Web Sites can be automatically configured with the languages and frameworks needed by your application. **Web Sites** enables you to:
+これら 3 つのオプションのいずれを使用しても、オープン ソースの言語やフレームワークをホストできます。**クラウド サービス**を使用するには、スタートアップ タスクを使用して、必要なオープン ソース ソフトウェア (Windows 上で動作) をインストールおよび構成する必要があります。**仮想マシン**を使用すると、Windows または Linux ベースのマシン イメージにソフトウェアをインストールして構成することができます。オープン ソース フレームワークが Web サイトでサポートされる場合、Web サイトではアプリケーションで必要な言語とフレームワークを自動的に構成できるため、この種のアプリケーションをホストするためのより簡単な方法が提供されます。**Web サイト**を使用すると、次のことができます。
 
-- Use many popular open source languages, such as [.NET][dotnet], [PHP][], [Node.js][nodejs], and [Python][]. 
-- Setup WordPress, Drupal, Umbraco, DNN, and many other third-party web applications. 
-- Migrate an existing application or create a new one from the Application Gallery. 
+- [.NET][dotnet]、[PHP][]、[Node.js][nodejs]、[Python][] など、多くの一般的なオープン ソース言語を使用できます。
+- WordPress、Drupal、Umbraco、DNN、および多くのサード パーティ製 Web アプリケーションをセットアップできます。
+- 既存のアプリケーションを移行することも、アプリケーション ギャラリーから新規アプリケーションを作成することもできます。
 
-### I have a line-of-business application that needs to connect to the corporate network
+### 社内ネットワークに接続する必要がある基幹業務アプリケーションがあります。
 
-If you want to create a line-of-business application, your web site might require direct access to services or data on the corporate network. This is possible on **Web Sites**, **Cloud Services**, and **Virtual Machines**. There are differences in the approach you take, which include the following:
+基幹業務アプリケーションを作成する場合は、Web サイトから社内ネットワーク上のサービスやデータに直接アクセスすることが必要な場合があります。**Web サイト**、**クラウド サービス**、および**仮想マシン**ではこれが可能です。それぞれのアプローチには、次のような違いがあります。
 
-- Web Sites can securely connect to on-premises resources through the use of Service Bus Relay. This allows services on the corporate network to perform tasks on behalf of the web application without moving everything to the Cloud or setting up a virtual network. 
-- Cloud Services and Virtual Machines can take advantage of Virtual Network. In effect, Virtual Network allows machines running in Azure to connect to an on-premises network. Azure then becomes an extension of your corporate datacenter.
+- Web サイトでは、サービス バス リレーを使用して内部設置型リソースに安全に接続できます。これによって、すべてをクラウドに移行したり、仮想ネットワークを設定しなくても、社内ネットワーク上のサービスは Web アプリケーションの代わりにタスクを実行できます。
+- クラウド サービスと仮想マシンでは、仮想ネットワークを利用できます。実際、仮想ネットワークでは、Azure で実行しているコンピューターが内部設置型ネットワークに接続できます。その後、Azure を社内データセンターの延長として扱うことができます。
 
-### I want to host a REST API or web service for mobile clients
+### モバイル クライアント向けの REST API や Web サービスをホストします。
 
-HTTP-based web services allows you to support a wide variety of clients, including mobile clients. Frameworks like the ASP.NET Web API integrate with Visual Studio to make it easier to create and consume REST services.  These services are exposed from a web endpoint, so it is possible to use any web hosting technique on Azure to support this scenario. However, **Web Sites** is a great choice for hosting REST APIs. With Web Sites, you can:
+HTTP ベースの Web サービスを使用すると、モバイル クライアントを含めて広範囲のクライアントをサポートすることができます。ASP.NET Web API のようなフレームワークは、REST サービスを作成および使用しやすくするために Visual Studio と統合されています。これらのサービスは Web エンドポイントから公開されるため、Azure での Web ホスト手法を使用してこのシナリオをサポートすることができます。ただし、REST API をホストするためには **Web サイト**が適切な選択です。Web サイトを使用すると、次のことができます。
 
-- Quickly create a Web Site to host the HTTP web service in one of Azure’s globally distributed datacenters.
-- Migrate existing services or create new ones, potentially taking advantage of the ASP.NET Web API in Visual Studio.
-- Achieve SLA for availability with a single instance, or scale out to multiple dedicated machines. 
-- Use the published site to provide REST APIs to any HTTP clients, including mobile clients.
+- Web サイトを迅速に作成して、Azure のグローバルに分散したデータ センターの 1 つで HTTP Web サービスをホストすることができます。
+- 既存のサービスを移行するか、新しいサービスを作成して、Visual Studio で ASP.NET Web API を利用できます。
+- 1 つのインスタンスで可用性の SLA を実現するか、または複数の専用コンピューターにスケール アウトします。
+- 発行済みのサイトを使用して、モバイル クライアントを含む HTTP クライアントに REST API を提供します。
 
-##<a name="services"></a>Service Summaries
+##<a name="services"></a>サービスの概要
 
-[Azure Web Sites][] enables you to build highly scalable web sites quickly on Azure. You can use the Azure Portal or the command-line tools to set up a web site with popular languages such as .NET, PHP, Node.js, and Python. Supported frameworks are already deployed and do not require more installation steps. The Azure Web Sites gallery contains many third-party applications, such as Drupal and WordPress as well as development frameworks such as Django and CakePHP. After creating a site, you can either migrate an existing web site or build a completely new web site. Web Sites eliminates the need to manage the physical hardware, and it also provides several scaling options. You can move from a shared multi-tenant model to a standard mode where dedicated machines service incoming traffic. Web Sites also enable you to integrate with other Azure services, such as SQL Database, Service Bus, and Storage. Using the [Azure WebJobs SDK][] preview, you can add background processing. In summary, Azure Web Sites make it easier to focus on application development by supporting a wide range of languages, open source applications, and deployment methodologies (FTP, Git, Web Deploy, or TFS). If you don’t have specialized requirements that require Cloud Services or Virtual Machines, an Azure Web Site is most likely the best choice.
+[Azure の Web サイト][]を使用すると、拡張性を備えた Web サイトを Azure に迅速に構築できます。Azure ポータルやコマンドライン ツールを使用して、.NET、PHP、Node.js、Python などの一般的な言語を使用して Web サイトをセットアップすることができます。サポートされているフレームワークは既に展開されていて、インストール作業は必要ありません。Azure の Web サイト ギャラリーには、Drupal や WordPress のようなサードパーティ アプリケーションのほか、Django や CakePHP のような開発フレームワークも多数登録されています。サイトの作成後、既存の Web サイトを移行することも、まったく新しい Web サイトを構築することもできます。Azure の Web サイトを使用すると、物理ハードウェアを管理する必要がなくなり、いくつかの拡張オプションも用意されています。共有マルチテナント モデルから、専用マシンが着信トラフィックを処理する標準モードに移行することができます。Web サイトは、SQL データベース、サービス バス、ストレージのような他の Azure サービスと統合することもできます。[Azure の Web ジョブ SDK][] プレビューを使用して、バック グラウンドの処理を追加することができます。まとめると、Azure の Web サイトでは、多様な言語、オープン ソース アプリケーション、展開方法 (FTP、Git、Web 展開、TFS) がサポートされているため、アプリケーション開発に重点を置くことができます。クラウド サービスや仮想マシンを必要とする特殊な要件がない場合、通常は、Azure の Web サイトが最善の選択肢です。
 
-[Cloud Services][] enable you to create highly-available, scalable web applications in a rich Platform as a Service (PaaS) environment. Unlike Web Sites, a cloud service is created first in a development environment, such as Visual Studio, before being deployed to Azure. Frameworks, such as PHP, require custom deployment steps or tasks that install the framework on role startup. The main advantage of Cloud Services is the ability to support more complex multitier architectures. A single cloud service could consist of a frontend web role and one or more worker roles. Each tier can be scaled independently. There is also an increased level of control over your web application infrastructure. For example, you can remote desktop onto the machines that are running the role instances. You can also script more advanced IIS and machine configuration changes that run at role startup, including tasks that require administrator control.
+[クラウド サービス][]を利用すると、高度な PaaS (Platform as a Service) 環境で、高い可用性と拡張性を備えた Web アプリケーションを作成できます。Web サイトとは違って、クラウド サービスはまず Visual Studio のような開発環境で作成され、その後、Azure に展開されます。PHP などのフレームワークは、ロールのスタートアップ時にフレームワークをインストールするというカスタム展開手順またはタスクが必要となります。クラウド サービスの主な利点は、複雑な多層アーキテクチャをサポートできるという点です。1 つのクラウド サービスは、1 つのフロントエンド Web ロールと 1 つ以上の Worker ロールで構成することができます。それぞれの層は独立して規模を変更することができます。また、Web アプリケーション インフラストラクチャに対するコントロール レベルも向上しています。たとえば、ロール インスタンスを実行しているマシンにリモート デスクトップ接続ができます。また、管理者のコントロールを必要とするタスクも含めて、ロールのスタートアップ時に IIS とマシンの詳細な構成変更を実施するスクリプトを作成することもできます。
 
-[Virtual Machines][] enable you to run web applications on virtual machines in Azure. This capability is also known as Infrastructure as a Service (IaaS). Create new Windows Server or Linux machines through the portal, or upload an existing virtual machine image. Virtual Machines give you the most control over the operating system, configuration, and installed software and services. This is a good option for quickly migrating complex on-premises web applications to the cloud, because the machines can be moved as a whole. With Virtual Networks, you can also connect these virtual machines to on-premises corporate networks. As with Cloud Services, you have remote access to these machines and the ability to perform configuration changes at the administrative level. However, unlike Web Sites and Cloud Services, you must manage your virtual machine images and application architecture completely at the infrastructure level. One basic example is that you have to apply your own patches to the operating system.
+[仮想マシン][]を使用すると、Azure の仮想マシンで Web アプリケーションを実行できます。この機能は IaaS (Infrastructure as a Service) としても知られています。ポータル経由で新しい Windows Server または Linux マシンを作成するか、既存の仮想マシン イメージをアップロードします。仮想マシンでは、オペレーティング システム、構成、インストールされたソフトウェアとサービスを最大限にコントロールできます。これは、マシンを全体的に移動できるため、複雑な内部設置型 Web アプリケーションをクラウドにすばやく移行する場合に適した選択肢です。仮想ネットワークを使用すると、内部設置型企業ネットワークにこれらの仮想マシンを接続することもできます。クラウド サービスと同様に、これらのマシンにリモート アクセスして、管理者レベルで構成変更を実施することができます。ただし、Web サイトやクラウド サービスとは異なり、インフラストラクチャ レベルで仮想マシン イメージとアプリケーション アーキテクチャを完全に管理する必要があります。1 つの基本的な例として、オペレーティング システムに独自のパッチを適用する必要があります。
 
-##<a name="features"></a>Feature Comparison
+##<a name="features"></a>機能の比較
 
-The following table compares the capabilities of Web Sites, Cloud Services, and Virtual Machines to help you make the best choice. Boxes with an asterisk are explained more in the notes following the table.
+次の表では、最善の選択ができるように、Web サイト、クラウド サービス、および仮想マシンの機能を比較しています。アスタリスクが付いたボックスについては、表の後のメモでさらに説明しています。
 
 <table cellspacing="0" border="1">
 <tr>
-   <th align="left" valign="middle">Feature</th>
-   <th align="left" valign="middle">Web Sites</th>
-   <th align="left" valign="middle">Cloud Services (web roles)</th>
-   <th align="left" valign="middle">Virtual Machines</th>
+   <th align="left" valign="middle">機能</th>
+   <th align="left" valign="middle">Web サイト</th>
+   <th align="left" valign="middle">クラウド サービス (Web ロール)</th>
+   <th align="left" valign="middle">仮想マシン</th>
 </tr>
 <tr>
-   <td valign="middle"><p>Access to services like Service Bus, Storage, SQL Database</p></td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
+   <td valign="middle"><p>サービス バス、ストレージ、SQL データベースのようなサービスへのアクセス</p></td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
 </tr>
 <tr>
-   <td valign="middle"><p>Host web or web services tier of a multi-tier architecture</p></td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
+   <td valign="middle"><p>多層アーキテクチャの Web 層または Web サービス層のホスト</p></td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
 </tr>
 <tr>
-   <td valign="middle"><p>Host middle tier of a multi-tier architecture</p></td>
+   <td valign="middle"><p>多層アーキテクチャの中間層のホスト</p></td>
    <td valign="middle"></td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
 </tr>
 <tr>
-   <td valign="middle"><p>Integrated MySQL-as-a-service support</p></td>
-   <td valign="middle">X</td>
+   <td valign="middle"><p>統合されたサービスとしての MySQL のサポート</p></td>
+   <td valign="middle">○</td>
    <td valign="middle">X <sup>1</sup></td>
-   <td valign="middle">X</td>
+   <td valign="middle">○</td>
 </tr>
 <tr>
-   <td valign="middle"><p>Support for ASP.NET, classic ASP, Node.js, PHP, Python</p></td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
+   <td valign="middle"><p>ASP.NET、クラシック ASP、Node.js、PHP、Python のサポート</p></td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
 </tr>
 <tr>
-   <td valign="middle"><p>Scale out to multiple instances without redeploy</p></td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
+   <td valign="middle"><p>再展開なしでの複数インスタンスへのスケール アウト</p></td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
    <td valign="middle">X <sup>2</sup></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Support for SSL</p></td>
+   <td valign="middle"><p>SSL のサポート</p></td>
    <td valign="middle">X <sup>3</sup></td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
 </tr>
 <tr>
-   <td valign="middle"><p>Visual Studio integration</p></td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
+   <td valign="middle"><p>Visual Studio 統合</p></td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
 </tr>
 <tr>
-   <td valign="middle"><p>Remote Debugging</p></td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
+   <td valign="middle"><p>リモート デバッグ</p></td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
 </tr>
 <tr>
-   <td valign="middle"><p>Deploy code with TFS</p></td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
+   <td valign="middle"><p>TFS によるコードの展開</p></td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
 </tr>
 <tr>
-   <td valign="middle"><p>Deploy code with GIT, FTP</p></td>
-   <td valign="middle">X</td>
+   <td valign="middle"><p>GIT、FTP によるコードの展開</p></td>
+   <td valign="middle">○</td>
    <td valign="middle"></td>
-   <td valign="middle">X</td>
+   <td valign="middle">○</td>
 </tr>
 <tr>
-   <td valign="middle"><p>Deploy code with Web Deploy</p></td>
-   <td valign="middle">X</td>
+   <td valign="middle"><p>Web 展開によるコードの展開</p></td>
+   <td valign="middle">○</td>
    <td valign="middle"><sup>4</sup></td>
-   <td valign="middle">X</td>
+   <td valign="middle">○</td>
 </tr>
 <tr>
-   <td valign="middle"><p>WebMatrix support</p></td>
-   <td valign="middle">X</td>
+   <td valign="middle"><p>WebMatrix サポート</p></td>
+   <td valign="middle">○</td>
    <td valign="middle"></td>
-   <td valign="middle">X</td>
+   <td valign="middle">○</td>
 </tr>
 <tr>
-   <td valign="middle"><p>Near-instant deployment</p></td>
-   <td valign="middle">X</td>
-   <td valign="middle"></td>
-   <td valign="middle"></td>
-</tr>
-<tr>
-   <td valign="middle"><p>Instances share content and configuration</p></td>
-   <td valign="middle">X</td>
+   <td valign="middle"><p>ほぼ即時の展開</p></td>
+   <td valign="middle">○</td>
    <td valign="middle"></td>
    <td valign="middle"></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Scale up to larger machines without redeploy</p></td>
-   <td valign="middle">X</td>
+   <td valign="middle"><p>インスタンスが内容と構成を共有</p></td>
+   <td valign="middle">○</td>
    <td valign="middle"></td>
    <td valign="middle"></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Multiple deployment environments (production and staging)</p></td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
+   <td valign="middle"><p>再展開なしでの大型マシンへのスケール アップ</p></td>
+   <td valign="middle">○</td>
+   <td valign="middle"></td>
    <td valign="middle"></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Network isolation with Azure Virtual Network</p></td>
-   <td valign="middle"></td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
-</tr>
-<tr>
-   <td valign="middle"><p>Support for Azure Traffic Manager</p></td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
-</tr>
-<tr>
-   <td valign="middle"><p>Remote desktop access to servers</p></td>
-   <td valign="middle"></td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
-</tr>
-<tr>
-   <td valign="middle"><p>Ability to define/execute start-up tasks</p></td>
-   <td valign="middle"></td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
-</tr>
-<tr>
-   <td valign="middle"><p>Automatic OS update management</p></td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
+   <td valign="middle"><p>複数の展開環境 (運用環境とステージング環境)</p></td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
    <td valign="middle"></td>
 </tr>
 <tr>
-   <td valign="middle"><p>Integrated Endpoint Monitoring</p></td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
+   <td valign="middle"><p>Azure の仮想ネットワークによるネットワークの分離</p></td>
+   <td valign="middle"></td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
 </tr>
 <tr>
-   <td valign="middle"><p>Seamless platform switching (32bit/64bit)</p></td>
-   <td valign="middle">X</td>
-   <td valign="middle">X</td>
+   <td valign="middle"><p>Azure のトラフィック マネージャーのサポート</p></td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
+</tr>
+<tr>
+   <td valign="middle"><p>サーバーへのリモート デスクトップ アクセス</p></td>
+   <td valign="middle"></td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
+</tr>
+<tr>
+   <td valign="middle"><p>スタートアップ タスクの定義と実行</p></td>
+   <td valign="middle"></td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
+</tr>
+<tr>
+   <td valign="middle"><p>OS の自動更新の管理</p></td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
+   <td valign="middle"></td>
+</tr>
+<tr>
+   <td valign="middle"><p>統合エンドポイント監視</p></td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
+</tr>
+<tr>
+   <td valign="middle"><p>シームレスなプラットフォームの切り替え (32 ビット/64 ビット)</p></td>
+   <td valign="middle">○</td>
+   <td valign="middle">○</td>
    <td valign="middle"></td>
 </tr>
 </table>
 
-<sup>1</sup> Web or worker roles can integrate MySQL-as-a-service through ClearDB's offerings, but not as part of the Management Portal workflow.
+<sup>1</sup> Web ロールまたは Worker ロールは、ClearDB のサービスを介してサービスとしての MySQL を統合できますが、管理ポータル ワークフローの一部として統合することはできません。
 
-<sup>2</sup> Although Virtual Machines can scale out to multiple instances, the services running on these machines must be written to handle this scale-out. An additional load balancer must be configured to route requests across the machines. Finally, an Affinity Group should be created for all machines participating in the same role to protect them from simultaneous restarts from maintenance or hardware failures.
+<sup>2</sup> 仮想マシンは複数のインスタンスにスケール アウトできますが、これらのマシン上で実行されるサービスは、このスケール アウトを処理できるように記述する必要があります。マシンの間で要求をルーティングするように、追加のロード バランサーを構成する必要があります。最後に、メンテナンスやハードウェア障害からの同時の再起動から保護するために、同じロールに参加しているすべてのマシンについてアフィニティ グループを作成してください。
 
-<sup>3</sup> For Web Sites, SSL for custom domain names is only supported for standard mode. For more information on using SSL with Web Sites, see [Configuring an SSL certificate for an Azure Web Site][].
+<sup>3</sup> Azure の Web サイトの場合、カスタム ドメイン名の SSL は標準モードでのみサポートされます。Web サイトでの SSL の使い方の詳細については、「[Azure の Web サイトの SSL 証明書の構成][]」を参照してください。
 
-<sup>4</sup> Web Deploy is supported for cloud services when deploying to single-instance roles. However, production roles require multiple instances to meet the Azure SLA. Therefore, Web Deploy is not a suitable deployment mechanism for cloud services in production.
+<sup>4</sup> Web 展開は、単一インスタンス ロールに展開するときにクラウド サービスでサポートされます。ただし、運用ロールでは複数のインスタンスが Azure SLA を満たす必要があります。そのため、Web 展開は、運用環境のクラウド サービスに適した展開のしくみではありません。
 
 
   [ChoicesDiagram]: ./media/choose-web-site-cloud-service-vm/Websites_CloudServices_VMs_2.png
-  [Azure Web Sites]: http://go.microsoft.com/fwlink/?LinkId=306051
-  [Cloud Services]: http://go.microsoft.com/fwlink/?LinkId=306052
-  [Virtual Machines]: http://go.microsoft.com/fwlink/?LinkID=306053
+  [Azure の Web サイト]: http://go.microsoft.com/fwlink/?LinkId=306051
+  [クラウド サービス]: http://go.microsoft.com/fwlink/?LinkId=306052
+  [仮想マシン]: http://go.microsoft.com/fwlink/?LinkID=306053
   [ClearDB]: http://www.cleardb.com/
-  [Azure WebJobs SDK]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs
-  [Configuring an SSL certificate for an Azure Web Site]: http://www.windowsazure.com/en-us/develop/net/common-tasks/enable-ssl-web-site/
-  [azurestore]: http://www.windowsazure.com/en-us/gallery/store/
-  [scripting]: http://www.windowsazure.com/en-us/documentation/scripts/?services=web-sites
-  [dotnet]: http://www.windowsazure.com/en-us/develop/net/
-  [nodejs]: http://www.windowsazure.com/en-us/develop/nodejs/
-  [PHP]: http://www.windowsazure.com/en-us/develop/php/
-  [Python]: http://www.windowsazure.com/en-us/develop/python/
-  [servicebus]: http://www.windowsazure.com/en-us/documentation/services/service-bus/
-  [sqldatabase]: http://www.windowsazure.com/en-us/documentation/services/sql-database/
-  [Storage]: http://www.windowsazure.com/en-us/documentation/services/storage/
+  [Azure の Web ジョブ SDK]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs
+  [Azure の Web サイトの SSL 証明書の構成]: http://www.windowsazure.com/ja-jp/develop/net/common-tasks/enable-ssl-web-site/
+  [Azure ストア]: http://www.windowsazure.com/ja-jp/gallery/store/
+  [スクリプト]: http://www.windowsazure.com/ja-jp/documentation/scripts/?services=web-sites
+  [dotnet]: http://www.windowsazure.com/ja-jp/develop/net/
+  [nodejs]: http://www.windowsazure.com/ja-jp/develop/nodejs/
+  [PHP]: http://www.windowsazure.com/ja-jp/develop/php/
+  [Python]: http://www.windowsazure.com/ja-jp/develop/python/
+  [サービス バス]: http://www.windowsazure.com/ja-jp/documentation/services/service-bus/
+  [SQL データベース]: http://www.windowsazure.com/ja-jp/documentation/services/sql-database/
+  [ストレージ]: http://www.windowsazure.com/ja-jp/documentation/services/storage/

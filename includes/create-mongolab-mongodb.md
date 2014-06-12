@@ -1,10 +1,10 @@
-#Windows Azure で MongoDB データベースを作成する方法
+#Azure で MongoDB データベースを作成する方法
 
-この記事では、[MongoLab] を使用して [Windows Azure ストア]から MongoDB データベースを作成する方法について説明します。[MongoLab] は、サービスとしての MongoDB プロバイダーであり、Windows Azure データセンターで MongoDB データベースを実行および管理し、どのアプリケーションからもデータベースに接続できるようにしています。
+この記事では、[MongoLab] を使用して [Azure ストア]から MongoDB データベースを作成する方法について説明します。[MongoLab] は、サービスとしての MongoDB プロバイダーであり、Azure データセンターで MongoDB データベースを実行および管理し、どのアプリケーションからもデータベースに接続できるようにしています。
 
-[Windows Azure ストア]から MongoDB データベースを作成するには、以下の手順を実行します。
+[Azure ストア]から MongoDB データベースを作成するには、以下の手順を実行します。
 
-1. [Windows Azure の管理ポータル][portal]にログインします。
+1. [Azure の管理ポータル][portal]にログインします。
 2. ページの下部にある **[+新規]** をクリックし、**[ストア]** を選択します。
 
 	![ストアからアドオンを選択](./media/create-mongolab-mongodb/select-store.png)
@@ -23,7 +23,7 @@
 
 6. データベースが作成されたら、管理ポータルの **[アドオン]** タブから管理できます。
 
-	![Windows Azure ポータルで MongoLab データベースを管理](./media/create-mongolab-mongodb/manage-mongolab-add-on.png)
+	![Azure ポータルで MongoLab データベースを管理](./media/create-mongolab-mongodb/manage-mongolab-add-on.png)
 
 7. ページの下部にある **[接続文字列]** をクリックして、データベース接続情報を取得できます (上図を参照)。
 
@@ -31,6 +31,6 @@
 
 [MongoLab]: https://mongolab.com/home
 [waws]: /ja-jp/manage/services/web-sites/
-[Windows Azure ストア]: /ja-jp/store/overview/
+[Azure ストア]: /ja-jp/store/overview/
 [ポータル]: http://windows.azure.com/
 

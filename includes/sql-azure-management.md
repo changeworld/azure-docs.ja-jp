@@ -1,8 +1,8 @@
 
-#SQL Server Management Studio を使用した Windows Azure SQL データベースの管理
+#SQL Server Management Studio を使用した Azure SQL データベースの管理
 
-Windows Azure SQL データベースの管理ポータルまたは SQL Server Management Studio (SSMS) クライアント アプリケーションを使用すると、SQL データベースのサブスクリプションを管理できます。また、関連付けられている論理サーバーやデータベースの作成および管理も行うことができます。以下のガイダンスでは、Management Studio を使用して SQL データベースの論理サーバーおよびデータベースを管理する方法について説明します。アプリケーション コードで 
-SQL データベース接続を使用する方法については、「[How to use Windows Azure SQL Database (Windows Azure SQL データベースの使用方法)][]」を参照してください。
+Azure SQL データベースの管理ポータルまたは SQL Server Management Studio (SSMS) クライアント アプリケーションを使用すると、SQL データベースのサブスクリプションを管理できます。また、関連付けられている論理サーバーやデータベースの作成および管理も行うことができます。以下のガイダンスでは、Management Studio を使用して SQL データベースの論理サーバーおよびデータベースを管理する方法について説明します。アプリケーション コードで 
+SQL データベース接続を使用する方法については、「[How to use Azure SQL Database (Azure SQL データベースの使用方法)][]」を参照してください。
 
 <div class="dev-callout-new-collapsed">
 <strong>注 <span>折りたたむにはクリック</span></strong>
@@ -23,7 +23,7 @@ SQL データベース接続を使用する方法については、「[How to us
 <h2><a id="Step1" name="Step1"> </a>ステップ 1. Management Studio を入手する</h2>
 
 Management Studio は、SQL データベースを
-管理するための統合環境です。Windows Azure で
+管理するための統合環境です。Azure で
 データベースを管理するときは、SQL Server と同時にインストールされる Management Studio 
 アプリケーションを使用するか、無料の SQL Server 2012 Management Studio Express (SSMSE) バージョンをダウンロードできます。以下の手順で、
 SSMSE のインストール方法を紹介します。
@@ -50,9 +50,9 @@ SSMSE のインストール方法を紹介します。
 
 <h2><a id="Step2" name="Step2"> </a>ステップ 2. SQL データベースに接続する</h2>
 
-SQL データベースに接続するには、Windows Azure 上のサーバー名が必要になります。この情報を入手するには、ポータルへのサインインが必要になる場合があります
+SQL データベースに接続するには、Azure 上のサーバー名が必要になります。この情報を入手するには、ポータルへのサインインが必要になる場合があります
 
-1. [Windows Azure の管理ポータル][]にサインインします。
+1. [Azure の管理ポータル][]にサインインします。
 
 2. 左のウィンドウで、**[SQL データベース]** をクリックします。
 
@@ -83,7 +83,7 @@ SQL データベースに接続するには、Windows Azure 上のサーバー�
     **[SQL Server Management Studio]** をクリックします。
 
 2. **[サーバーへの接続]** で、完全修飾サーバー名として 
-    *serverName*.database.windows.net と指定します。Windows Azure では、サーバー名は英数字から成る自動生成文字列です。
+    *serverName*.database.windows.net と指定します。Azure では、サーバー名は英数字から成る自動生成文字列です。
 
 3. **[SQL Server 認証]** を選択します。
 
@@ -96,17 +96,17 @@ SQL データベースに接続するには、Windows Azure 上のサーバー�
 
 8. **[接続]** をクリックして接続を確立します。
 
-Windows Azure では、各 SQL データベース論理サーバーはデータベースのグループを抽象的に定義したものです。各データベースの物理的な場所は、データ センター内の任意のコンピューター上になります。
+Azure では、各 SQL データベース論理サーバーはデータベースのグループを抽象的に定義したものです。各データベースの物理的な場所は、データ センター内の任意のコンピューター上になります。
 
 旧バージョンでは、Management Studio で接続をセットアップするときに **master** に直接接続する必要がありました。この手順はもう必要ではありません。サーバー名、認証の種類、管理者の資格情報に基づいて接続できるようになりました。
 
 SQL Server データベースでのログインとデータベースの
-作成や変更などのタスクに使う SSMS ウィザードの多くは Windows Azure 上の 
+作成や変更などのタスクに使う SSMS ウィザードの多くは Azure 上の 
 SQL データベースには利用できないため、代わりに Transact-SQL ステートメントを
 使用する必要があります。次のステップでは、
 こうしたステートメントの例を紹介します。サポートされているコマンドの
 詳細など、SQL データベースでの Transact-SQL の使用方法の詳細については、
-「[Transact-SQL リファレンス (Windows Azure SQL データベース)][]」を参照してください。
+「[Transact-SQL リファレンス (Azure SQL データベース)][]」を参照してください。
 
 <h2><a id="Step3" name="Step3"> </a>ステップ 3. データベースを作成および管理する</h2>
 
@@ -122,7 +122,7 @@ Management Studio でクエリ ウィンドウを開くには、データベー�
 **[実行]** をクリックしてクエリを実行します。
 
 -   新しいデータベースを作成するには、**CREATE DATABASE** ステートメントを使用します。詳細については、
-    「[CREATE DATABASE (Windows Azure SQL データベース)][]」を参照してください。以下のステートメントは、**myTestDB** という
+    「[CREATE DATABASE (Azure SQL データベース)][]」を参照してください。以下のステートメントは、**myTestDB** という
     データベースを新たに作成し、最大サイズが 1 GB の Web Edition データベース
     として指定します。
 
@@ -132,7 +132,7 @@ Management Studio でクエリ ウィンドウを開くには、データベー�
 
 -   データベースの名前、最大サイズ、エディション (Business または Web) を
     変更するなど、既存のデータベースを変更するには、**ALTER DATABASE** 
-    ステートメントを使用します。詳細については、「[ALTER DATABASE (Windows Azure SQL データベース)][]」を参照してください。以下の
+    ステートメントを使用します。詳細については、「[ALTER DATABASE (Azure SQL データベース)][]」を参照してください。以下の
     ステートメントは、前の手順で作成したデータベースの最大サイズを 
     5 GB に変更します。
 
@@ -142,7 +142,7 @@ Management Studio でクエリ ウィンドウを開くには、データベー�
          EDITION='web');
 
 -   既存のデータベースを削除するには、**DROP DATABASE** ステートメントを使用します。
-    詳細については、「[DROP DATABASE (Windows Azure SQL データベース)][]」を参照してください。以下のステートメントは、**myTestDB** 
+    詳細については、「[DROP DATABASE (Azure SQL データベース)][]」を参照してください。以下のステートメントは、**myTestDB** 
     データベースを削除します。ただし、次のステップでログインを作成するために使用するので、ここでは削除しないでください。
 
         DROP DATABASE myTestBase;
@@ -175,11 +175,11 @@ master データベースでは、ログインが記録されます。
 使用して **master** データベースに接続します。ステートメント 
 **CREATE LOGIN**、**ALTER LOGIN**、**DROP LOGIN** を使用すると、
 サーバー全体でログインを管理する master データベースに対して
-クエリを実行できます。詳細については、「[Windows Azure SQL データベースにおけるデータベースとログインの管理][]」を参照してください。
+クエリを実行できます。詳細については、「[Azure SQL データベースにおけるデータベースとログインの管理][]」を参照してください。
 
 
 -   新しいサーバー レベル ログインを作成するには、**CREATE LOGIN** ステートメントを
-    使用します。詳細については、「[CREATE LOGIN (Windows Azure SQL データベース)][]」を参照してください。以下のステートメントは、**login1** という
+    使用します。詳細については、「[CREATE LOGIN (Azure SQL データベース)][]」を参照してください。以下のステートメントは、**login1** という
     新しいログインを作成します。**password1** は適切なパスワードに
     置き換えてください。
 
@@ -189,7 +189,7 @@ master データベースでは、ログインが記録されます。
     **CREATE USER** ステートメントを使用します。ログインは必ず **master** データベースに作成する
     必要がありますが、別のデータベースに接続するための
     ログインに対しては、そのデータベースで **CREATE USER** ステートメントを
-    使用してデータベース レベルのアクセス許可を付与する必要があります。詳細については、「[CREATE USER (Windows Azure SQL データベース)][]」を参照してください。
+    使用してデータベース レベルのアクセス許可を付与する必要があります。詳細については、「[CREATE USER (Azure SQL データベース)][]」を参照してください。
 
 -   **myTestDB** という
     データベースにアクセス許可 login1 を付与するには、次のステップに
@@ -217,7 +217,7 @@ master データベースでは、ログインが記録されます。
 
 -   ログインのパスワードなど、既存のログインを必要に応じて変更するには、
     **ALTER LOGIN** ステートメントを使用します。詳細については、
-    「[ALTER LOGIN (Windows Azure SQL データベース)][]」を参照してください。**ALTER LOGIN** ステートメントは、**master** データベースに対して
+    「[ALTER LOGIN (Azure SQL データベース)][]」を参照してください。**ALTER LOGIN** ステートメントは、**master** データベースに対して
     実行する必要があります。そのデータベースに接続されているクエリ ウィンドウに切り替えてください。
 
     以下のステートメントは、ログイン **login1** を変更してパスワードをリセットします。
@@ -231,7 +231,7 @@ master データベースでは、ログインが記録されます。
 -   既存のログインを削除するには、**DROP LOGIN** ステートメントを使用します。
     サーバー レベルでログインを削除すると、それに関連付けられている
     データベース ユーザー アカウントも削除されます。詳細については、
-    「[DROP DATABASE (Windows Azure SQL データベース)][]」を参照してください。**DROP LOGIN** 
+    「[DROP DATABASE (Azure SQL データベース)][]」を参照してください。**DROP LOGIN** 
     ステートメントは、**master** データベースに対して実行する必要があります。以下の
     ステートメントは、**login1** というログインを削除します。
 
@@ -248,7 +248,7 @@ master データベースでは、ログインが記録されます。
 SQL データベースでは、個々のデータベースを監視するのに使用できる
 動的管理ビューがいくつかサポートされています。以下に、これらのビューで取得できる
 モニター データの種類の例を示します。すべての
-種類と詳しい使用例については、「[動的管理ビューを使用した Windows Azure SQL データベースの監視][]」を参照してください。
+種類と詳しい使用例については、「[動的管理ビューを使用した Azure SQL データベースの監視][]」を参照してください。
 
 -   動的管理ビューに対してクエリを実行するには、アクセス許可 
     **VIEW DATABASE STATE** が必要です。アクセス許可 **VIEW DATABASE STATE** を特定の
@@ -305,14 +305,14 @@ SQL データベースでは、個々のデータベースを監視するのに�
 
 <h2>その他のリソース</h2>
 
-* [Windows Azure SQL データベースの概要][]
-* [Windows Azure SQL データベースにおけるデータベースとログインの管理][]
-* [動的管理ビューを使用した Windows Azure SQL データベースの監視][]
-* [Windows Azure SQL データベース プロビジョニング モデル][]
+* [Azure SQL データベースの概要][]
+* [Azure SQL データベースにおけるデータベースとログインの管理][]
+* [動的管理ビューを使用した Azure SQL データベースの監視][]
+* [Azure SQL データベース プロビジョニング モデル][]
 * [SQL データベースへのユーザーの追加に関するページ][]
-* [Transact-SQL リファレンス (SQL データベース)][]
+* [Transact-SQL リファレンス (Azure SQL データベース)][]
 
-  [How to use Windows Azure SQL Database (Windows Azure SQL データベースの使用方法)]: http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/sql-azure/
+  [How to use Azure SQL Database (Azure SQL データベースの使用方法)]: http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/sql-azure/
   [ステップ 1. SQL Server Management Studio を入手する]: #Step1
   [ステップ 2. SQL データベースに接続する]: #Step2
   [ステップ 3. データベースを作成および管理する]: #Step3
@@ -323,21 +323,21 @@ SQL データベースでは、個々のデータベースを監視するのに�
   [SSMS Installer - Select installation type (SSMS インストーラー - インストールの種類の選択)]: /media/installer_installation_type.png
   [SSMS Installer - Select features (SSMS インストーラー - 機能の選択)]: /media/installer_feature_selection.png
   [SSMS Installer - Installation complete (SSMS インストーラー - インストールの完了)]: /media/installer_completed.png
-  [Windows Azure の管理ポータル]: http://manage.windowsazure.com/
+  [Azure の管理ポータル]: http://manage.windowsazure.com/
   [Get SQL Database server name from Management Portal (管理ポータルからの SQL データベース サーバー名の取得)]: /media/portal_get_database_name.png
   [Connect to SSMS (SSMS への接続)]: /media/ssms_connect.png
   [Connect to SSMS -- properties (SSMS への接続 -- プロパティ)]: /media/ssms_connect_properties.png
-  [Transact-SQL リファレンス (SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336281.aspx
-  [CREATE DATABASE (Windows Azure SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336274.aspx
-  [ALTER DATABASE (Windows Azure SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff394109.aspx
-  [DROP DATABASE (Windows Azure SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336259.aspx
-  [Windows Azure SQL データベースにおけるデータベースとログインの管理]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336235.aspx
-  [CREATE LOGIN (Windows Azure SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336268.aspx
-  [CREATE USER (Windows Azure SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/ee336277.aspx
+  [Transact-SQL リファレンス (Azure SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336281.aspx
+  [CREATE DATABASE (Azure SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336274.aspx
+  [ALTER DATABASE (Azure SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff394109.aspx
+  [DROP DATABASE (Azure SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336259.aspx
+  [Azure SQL データベースにおけるデータベースとログインの管理]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336235.aspx
+  [CREATE LOGIN (Azure SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336268.aspx
+  [CREATE USER (Azure SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/ee336277.aspx
   [sp_addrolemember (Transact-SQL)]: http://msdn.microsoft.com/ja-jp/library/ms187750.aspx
-  [ALTER LOGIN (Windows Azure SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336254.aspx
-  [動的管理ビューを使用した Windows Azure SQL データベースの監視]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff394114.aspx
-  [Windows Azure SQL データベースの概要]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336230.aspx
-  [Windows Azure SQL データベース プロビジョニング モデル]: http://msdn.microsoft.com/ja-jp/library/ee336227.aspx
+  [ALTER LOGIN (Azure SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336254.aspx
+  [動的管理ビューを使用した Azure SQL データベースの監視]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff394114.aspx
+  [Azure SQL データベースの概要]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336230.aspx
+  [Azure SQL データベース プロビジョニング モデル]: http://msdn.microsoft.com/ja-jp/library/ee336227.aspx
   [SQL データベースへのユーザーの追加に関するページ]: http://blogs.msdn.com/b/sqlazure/archive/2010/06/21/10028038.aspx
 

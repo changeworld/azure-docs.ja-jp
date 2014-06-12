@@ -1,291 +1,292 @@
-<properties linkid="manage-services-import-export" urlDisplayName="Azure Import/Export Service" pageTitle="Using import/export to transfer data to Blob Storage | Microsoft Azure" metaKeywords="" description="Learn how to create import and export jobs in the Azure Management Portal to transfer data to blob storage." metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Using the Azure Import/Export Service to Transfer Data to Blob Storage" authors="tamram" />
+<properties linkid="manage-services-import-export" urlDisplayName="Azure インポート/エクスポート サービス" pageTitle="インポート/エクスポート サービスを使用した BLOB ストレージへのデータの転送 | Microsoft Azure" metaKeywords="" description="BLOB ストレージにデータを転送するために、Azure の管理ポータルでインポート ジョブとエクスポート ジョブを作成する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Azure インポート/エクスポート サービスを使用した BLOB ストレージへのデータの転送" authors="tamram" />
 
 
-# Use the Azure Import/Export Service to Transfer Data to Blob Storage
+# Azure インポート/エクスポート サービスを使用した BLOB ストレージへのデータの転送
 
-You can use the Azure Import/Export service to transfer large amounts of file data to Azure Blob storage in situations where uploading over the network is prohibitively expensive or not feasible. You can also use the Import/Export service to transfer large quantities of data resident in Blob storage to your on-premises installations in a timely and cost-effective manner.
+ネットワーク経由のアップロードが実現不可能であるか、非常にコストがかかる場合には、Azure インポート/エクスポート サービスを使用して、ファイルの大量のデータを Azure BLOB ストレージに転送できます。また、インポート/エクスポート サービスを使用して、BLOB ストレージにある大量のデータを内部設置型インストールに、タイムリーでコスト効率の高い方法で転送することもできます。
 
-To transfer a large set of file data into Blob storage, you can send one or more hard drives containing that data to an Azure data center, where your data will be uploaded to your storage account. Similarly, to export data from Blob storage, you can send empty hard drives to an Azure data center, where the Blob data from your storage account will be copied to your hard drives and then returned to you. Before you send in a drive that contains data, you'll encrypt the data on the drive; when the Import/Export service exports your data to send to you, the data will also be encrypted before shipping.
+ファイルの大量のデータを BLOB ストレージに転送するために、そのデータを含む 1 台以上のハード ドライブを Azure データ センターに発送することができます。このデータ センターでデータがストレージ アカウントにアップロードされます。同様に、BLOB ストレージからデータをエクスポートするために、空のハード ドライブを Azure データ センターに発送することができます。このデータ センターで、ストレージ アカウントの BLOB データがハード ドライブにコピーされ、返送されます。データを含むドライブを発送する前に、ドライブにあるデータを暗号化してください。インポート/エクスポート サービスで、返送するデータをエクスポートするときにも、データは発送前に暗号化されます。
 
-You can create and manage import and export jobs in one of two ways:
+インポートおよびエクスポート ジョブは、2 つの方法のいずれかで作成し、管理できます。
 
-- By using the Azure Management Portal.
-- By using a REST interface to the service.
+- Azure の管理ポータルを使用する。
+- サービスへの REST インターフェイスを使用する。
 
-This article provides an overview of the Import/Export service and describes how to use the Management Portal to work with the Import/Export service. For information on the REST API, see the [Azure Import/Export Service REST API Reference](http://go.microsoft.com/fwlink/?LinkID=329099).
+この記事では、インポート/エクスポート サービスの概要を示し、管理ポータルを使用してインポート/エクスポート サービスを操作する方法を説明します。REST API の詳細については、「[インポート/エクスポート サービス REST API リファレンス](http://go.microsoft.com/fwlink/?LinkID=329099)」を参照してください。
 
-## Overview of the Import/Export Service ##
+## インポート/エクスポート サービスの概要##
 
-To begin the process of importing to or exporting from Blob storage, you first create a *job*. A job can be an *import job* or an *export job*:
+BLOB ストレージとの間でインポートまたはエクスポートの処理を開始するには、最初に "*ジョブ*" を作成します。ジョブは、"*インポート ジョブ*" または "*エクスポート ジョブ*" です。
 
-- Create an import job when you want to transfer data you have on-premise to blobs in your Azure storage account.
-- Create an export job when you want to transfer data currently stored as blobs in your storage account to hard drives that are shipped to you.
+- 内部設置型のデータを、Azure のストレージ アカウントの BLOB に転送する場合は、インポート ジョブを作成します。
+- ストレージ アカウントに現在、BLOB として格納されているデータを、返送されるハード ドライブに転送する場合は、エクスポート ジョブを作成します。
 
-When you create a job, you notify the Import/Export service that you will be shipping one or more hard drives to an Azure data center. For an import job, you'll be shipping hard drives containing file data. For an export job, you'll be shipping empty hard drives.
+ジョブを作成するときは、1 台以上のハード ドライブを Azure データ センターに発送することをインポート/エクスポート サービスに通知します。インポート ジョブの場合は、ファイル データを含むハード ドライブを発送します。エクスポート ジョブの場合は、空のハード ドライブを発送します。
 
-To prepare your drive to ship for an import job, you'll run the **WAImportExport** tool, which facilitates copying your data to the drive, encrypting the data on the drive with BitLocker, and generating the drive journal files, which are discussed below.
+インポート ジョブのために発送するドライブを準備するには、**WAImportExport** ツールを実行します。これによって、ドライブ上のデータが BitLocker で暗号化され、後述のドライブのジャーナル ファイルが作成されるため、ドライブへのデータのコピーが容易になります。
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>The data on the drive must be encrypted using BitLocker Drive Encryption. This protects your data while it is in transit. For an export job, the Import/Export service will encrypt your data before shipping the drive back to you.</p>
+<strong>注</strong>
+<p>ドライブ上のデータは、BitLocker ドライブ暗号化で暗号化する必要があります。こうすると、移送中にデータが保護されます。エクスポート ジョブの場合は、ドライブを返送する前にインポート/エクスポート サービスでデータが暗号化されます。</p>
 </div>
 
-When you create an import job or an export job, you'll also need the *drive ID*, which is the serial number assigned by the drive manufacturer to a specific hard disk. The drive ID is displayed on the exterior of the drive. 
+インポート ジョブまたはエクスポート ジョブの作成時には、*ドライブ ID* も必要になります。これは、ドライブの製造元によって特定のドライブに割り当てられたシリアル番号です。ドライブ ID は、ドライブの外側に表示されています。
 
-<h3>Requirements and Scope</h3>
+<h3>要件および適用範囲</h3>
 
-1.	**Subscription and storage accounts:** You must have an existing Azure subscription and one or more storage accounts to use the Import/Export service. Each job may be used to transfer data to or from only one storage account. In other words, a job cannot span across multiple storage accounts. For information on creating a new storage account, see [How to Create a Storage Account](http://www.windowsazure.com/en-us/manage/services/storage/how-to-create-a-storage-account/).
-2.	**Hard drives:** Only 3.5 inch SATA II hard drives are supported for use with the Import/Export service. Hard drives above 4TB are not supported with the preview release. For import jobs, only the first data volume on the drive will be processed. The data volume must be formatted with NTFS. You can attach a SATA II disk externally to most computers using a SATA II USB Adapter.
-3.	**BitLocker encryption:** All data stored on hard drives must be encrypted using BitLocker with encryption keys protected with numerical passwords.
-4.	**Blob storage targets:** Data may be uploaded to or downloaded from block blobs and page blobs. 
-5.	**Number of jobs:** A customer may have up to 20 jobs active per subscription.
-6.	**Maximum size of a job:** The size of a job is determined by the capacity of the hard drives used and the maximum amount of data that can be stored in a storage account. Each job may contain no more than 10 hard drives.
+1.	**サブスクリプションおよびストレージ アカウント:** 既存の Azure サブスクリプションと、インポート/エクスポート サービスを使用するための 1 つ以上のストレージ アカウントを持っている必要があります。各ジョブを使用できるのは、1 つのストレージ アカウントとの間でのデータ転送だけです。言い換えると、ジョブは、複数のストレージ アカウントに対して使用できません。新しいストレージ アカウントの作成については、「[ストレージ アカウントの作成方法](http://www.windowsazure.com/ja-jp/manage/services/storage/how-to-create-a-storage-account/)」を参照してください。
+2.	**ハード ドライブ:** インポート/エクスポート サービスで使用できるのは、3.5 インチ SATA II ハード ドライブだけです。4 TB を超えるハード ドライブは、プレビュー リリースではサポートされていません。インポート ジョブの場合は、ドライブの最初のデータ ボリュームだけが処理されます。データ ボリュームは NTFS でフォーマットされている必要があります。大部分のコンピューターには、SATA II ディスクを SATA II USB アダプターで外部接続できません。
+3.	**BitLocker 暗号化:** ハード ドライブに格納されたデータはすべて、数字のパスワードで保護された暗号化キーを使って、BitLocker で暗号化する必要があります。
+4.	**BLOB ストレージ ターゲット:** データは、ブロック blob およびページ blob との間で、アップロードまたはダウンロードが可能です。
+5.	**ジョブの数:** お客様は、サブスクリプションごとに 20 個までのアクティブなジョブを使用できます。
+6.	**ジョブの最大サイズ:** ジョブのサイズは、使用するハード ドライブの容量と、ストレージ アカウントに格納できるデータの最大量によって決まります。各ジョブは、10 台までのハード ドライブを含むことができます。
 
-## Create an Import Job in the Management Portal##
+## 管理ポータルでのインポート ジョブの作成##
 
-Create an import job to notify the Import/Export service that you'll be shipping one or more drives containing data to the data center to be imported into your storage account.
+インポート ジョブを作成し、ストレージ アカウントにインポートするデータを含む 1 台以上のドライブをデータ センターに発送することをインポート/エクスポート サービスに通知します。
 
-<h3>Prepare Your Drives</h3>
+<h3>ドライブの準備</h3>
 
-Before you create an import job, prepare your drives with the [WAImportExport tool](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409). For more details about using the WAImportExport tool, see [WAImportExport Tool Reference](http://go.microsoft.com/fwlink/?LinkId=329032).
+インポート ジョブを作成する前に、[WAImportExport ツール](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)でドライブを準備します。WAImportExport ツールの使用に関する詳細については、「[WAImportExport ツール リファレンス](http://go.microsoft.com/fwlink/?LinkId=329032)」を参照してください。
   
-To prepare your drives, follow these three steps: 
+ドライブを準備するには、次の 3 つの手順を実行します。
 
-1.	Determine the data to be imported, and the number of drives you'll need.
-2.	Identify the destination blobs for your data in the Azure Blob service.
-3.	Use the WAImportExport tool to copy your data to one or more hard drives.
+1.	インポートするデータと必要なドライブの数を決定します。
+2.	Azure BLOB サービスで、データのインポート先の BLOB を特定します。
+3.	WAImportExport ツールを使用して、1 台以上のハード ドライブにデータをコピーします。
 
-The WAImportExport tool generates a *drive journal* file for each drive as it is prepared. The drive journal file is stored on your local computer, not on the drive itself. You'll upload the journal file when you create the import job. A drive journal file includes the drive ID and the BitLocker key, as well as other information about the drive.  
+準備中に WAImportExport ツールで、各ドライブの*ドライブのジャーナル* ファイルが生成されます。ドライブのジャーナル ファイルは、ドライブ自体ではなく、ローカル コンピューターに格納されます。インポート ジョブの作成時には、ジャーナル ファイルをアップロードします。ドライブのジャーナル ファイルには、ドライブ ID と BitLocker キーのほかに、ドライブに関するその他の情報も含まれます。
 
-<h3>Create the Import Job</h3>
+<h3>インポート ジョブの作成</h3>
 
-1.	Once you have prepared your drive, navigate to your storage account in the Management Portal, and view the 	Dashboard. Under <strong>Quick Glance</strong>, click <strong>Create an Import Job</strong>. 
+1.	ドライブの準備ができたら、管理ポータルのストレージ アカウントに移動し、	ダッシュボードを表示します。<strong>[概要]</strong> の下で <strong>[インポート ジョブの作成]</strong> をクリックします。
  
-2.	In Step 1 of the wizard, indicate that you have prepared your drive and that you have the drive journal file 	available.
+2.	ウィザードのステップ 1. で、ドライブの準備ができており、ドライブのジャーナル ファイルが使用可能であることを	示します。
  
-3.	In Step 2, provide contact information for the person responsible for this import job. If you wish to save 	verbose log data for the import job, check the option to <strong>Save the verbose log in my 'waimportexport' 	blob container</strong>.
+3.	ステップ 2. で、このインポート ジョブの担当者の連絡先情報を入力します。インポート ジョブの	詳細なログ データを保存する場合は、<strong>['waimportexport' コンテナーに詳細ログを保存する]	</strong> オプションをオンにします。
 
-4.	In Step 3, upload the drive journal files that you obtained during the drive preparation step. You'll need 	to upload one file for each drive that you have prepared.
+4.	ステップ 3. で、ドライブの準備中に取得したドライブのジャーナル ファイルをアップロードします。準備した	ドライブごとに 1 つのファイルをアップロードする必要があります。
 
-	![Create import job - Step 3][import-job-03]
+	![インポート ジョブの作成 - ステップ 3][import-job-03]
 
-5.	In Step 4, enter a descriptive name for the import job. Note that the name you enter may contain only 	lowercase letters, numbers, hyphens, and underscores, must start with a letter, and may not contain spaces. 	You'll use the name you choose to track your jobs while they are in progress and once they are completed.
+5.	ステップ 4. で、インポート ジョブのわかりやすい名前を入力します。名前に含めることができるのは、	アルファベットの小文字、数字、ハイフン、アンダースコアだけです。また、先頭の文字はアルファベットにします。スペースを含めることはできません。	ここで入力した名前を使って、進行中および完了後にジョブを追跡します。
 
-	The data center region will indicate the data center to which you must ship your package. See the FAQ below for more information.
+	データ センターのリージョンに、パッケージの発送先となるデータ センターが示されます。詳細については、FAQ を参照してください。
 
-	If you already have your FedEx tracking number, select <strong>I have my tracking number and want to enter it now</strong>, and navigate to the next step. If you do not have a tracking number yet, choose <strong>I will provide my shipping information for this import job once I have shipped my package</strong>, then complete the import process.
+	既に FedEx の問い合わせ番号を持っている場合は、<strong>[問い合わせ番号を今すぐ入力します]</strong> を選択し、次のステップに進みます。まだ問い合わせ番号がない場合は、<strong>[パッケージの発送後、このインポート ジョブの発送情報を指定します]</strong> を選択してから、インポート処理を完了します。
 
-6. 	If you already have your tracking number, then in Step 5, enter the tracking number and confirm it. 
+6. 	既に問い合わせ番号を持っている場合は、手順 5 で問い合わせ番号を入力し、確認します。
 
-## Create an Export Job in the Management Portal##
+## 管理ポータルでのエクスポート ジョブの作成##
 
-Create an export job to notify the Import/Export service that you'll be shipping one or more empty drives to the data center, so that data can be exported from your storage account to the drives, and the drives then shipped to you.
+エクスポート ジョブを作成し、ストレージ アカウントからデータをエクスポートした後に返送してもらう 1 台以上の空のドライブをデータ センターに発送することをインポート/エクスポート サービスに通知します。
 
-1. 	To create an export job, navigate to your storage account in the Management Portal, and view the Dashboard. 	Under <strong>Quick Glance</strong>, click <strong>Create an Export Job</strong>, and proceed through the 	wizard.
+1. 	エクスポート ジョブを作成するには、管理ポータルのストレージ アカウントに移動し、ダッシュボードを表示します。	<strong>[概要]</strong> の下で <strong>[エクスポート ジョブの作成]</strong> をクリックし、ウィザードの指示に従って	続行します。
 
-2. 	In Step 2, provide contact information for the person responsible for this export job. If you wish to save 	verbose log data for the export job, check the option to <strong>Save the verbose log in my 'waimportexport' 	blob container</strong>.
+2. 	ステップ 2. で、このエクスポート ジョブの担当者の連絡先情報を入力します。エクスポート ジョブの	詳細なログ データを保存する場合は、<strong>['waimportexport' コンテナーに詳細ログを保存する]	</strong> オプションをオンにします。
 
-3.	In Step 3, specify which blob data you wish to export from your storage account to your blank drive or 	drives. You can choose to export all blob data in the storage account, or you can specify which blobs 	or 	sets of blobs to export.
+3.	ステップ 3. で、ストレージ アカウントから空のドライブにエクスポートする BLOB データを	指定します。ストレージ アカウントの BLOB データをすべてエクスポートことも、エクスポートする BLOB データ	または	そのセットを指定することもできます。
 
-	![Create export job - Step 3][export-job-03]
+	![エクスポート ジョブの作成 - ステップ 3][export-job-03]
 
-	- To specify a blob to export, use the **Equal To** selector, and specify the relative path to the blob, beginning with the container name. Use *$root* to specify the root container.
-	- To specify all blobs starting with a prefix, use the **Starts With** selector, and specify the prefix, beginning with a forward slash '/'. The prefix may be the prefix of the container name, the complete container name, or the complete container name followed by the prefix of the blob name.
+	- エクスポートする BLOB を指定するには、**[等しい]** セレクターを使用し、コンテナー名で始まる、BLOB への相対パスを指定します。ルート コンテナーを指定するには、"*$root*" を使用します。
+	- プレフィックスで始まるすべての BLOB を指定するには、**[指定値で始まる]** セレクターを使用し、スラッシュ "/" で始まるプレフィックスを指定します。プレフィックスには、コンテナー名のプレフィックス、コンテナー名全体、またはコンテナー名全体の後に BLOB 名のプレフィックスを付けた名前を指定できます。
 
-	The table shows examples of valid blob paths:
+	次の表は、有効な BLOB のパスの例を示します。
 
 	<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 		<tbody>
 			<tr>
-				<td><strong>Selector</strong></td>
-				<td><strong>Blob Path</strong></td>
-				<td><strong>Description</strong></td>
+				<td><strong>セレクター</strong></td>
+				<td><strong>BLOB パス</strong></td>
+				<td><strong>説明</strong></td>
 			</tr>
 			<tr>
-				<td>Starts With</td>
+				<td>指定値で始まる</td>
 				<td>/</td>
-				<td>Exports all blobs in the storage account</td>
+				<td>ストレージ アカウントのすべての BLOB をエクスポートする</td>
 			</tr>
 			<tr>
-				<td>Starts With</td>
+				<td>指定値で始まる</td>
 				<td>/$root/</td>
-				<td>Exports all blobs in the root container</td>
+				<td>ルート コンテナー内のすべての BLOB をエクスポートする</td>
 			</tr>
 			<tr>
-				<td>Starts With</td>
+				<td>指定値で始まる</td>
 				<td>/book</td>
-				<td>Exports all blobs in any container that begins with prefix <strong>book</strong></td>
+				<td>プレフィックス "<strong>book</strong>" で始まるすべてのコンテナー内のすべての BLOB をエクスポートする</td>
 			</tr>
 			<tr>
-				<td>Starts With</td>
+				<td>指定値で始まる</td>
 				<td>/music/</td>
-				<td>Exports all blobs in container <strong>music</strong></td>
+				<td>コンテナー "<strong>music</strong>" 内のすべての BLOB をエクスポートする</td>
 			</tr>
 			<tr>
-				<td>Starts With</td>
+				<td>指定値で始まる</td>
 				<td>/music/love</td>
-				<td>Exports all blobs in container <strong>music</strong> that begin with prefix <strong>love</strong></td>
+				<td>コンテナー "<strong>music</strong>" 内の、プレフィックス "<strong>love</strong>" で始まるすべての BLOB をエクスポートする</td>
 			</tr>
 			<tr>
-				<td>Equal To</td>
+				<td>等しい</td>
 				<td>$root/logo.bmp</td>
-				<td>Exports blob <strong>logo.bmp</strong> in the root container</td>
+				<td>ルート コンテナー内の BLOB "<strong>logo.bmp</strong>" をエクスポートする</td>
 			</tr>
 			<tr>
-				<td>Equal To</td>
+				<td>等しい</td>
 				<td>videos/story.mp4</td>
-				<td>Exports blob <strong>story.mp4</strong> in container <strong>videos</strong></td>
+				<td>コンテナー "<strong>videos</strong>" 内の BLOB "<strong>story.mp4</strong>" をエクスポートする</td>
 			</tr>
 		</tbody>
 	</table>
 
 
-4.	In Step 4, enter a descriptive name for the export job. The name you enter may contain only lowercase 	letters, numbers, hyphens, and underscores, must start with a letter, and may not contain spaces.
+4.	ステップ 4. で、エクスポート ジョブのわかりやすい名前を入力します。名前に含めることができるのは、	アルファベットの小文字、数字、ハイフン、アンダースコアだけです。また、先頭の文字はアルファベットにします。スペースを含めることはできません。
 
-	The data center region will indicate the data center to which you must ship your package. See the FAQ below for more information.
+	データ センターのリージョンに、パッケージの発送先となるデータ センターが示されます。詳細については、FAQ を参照してください。
 
-	If you already have your FedEx tracking number, select <strong>I have my tracking number and want to enter it now</strong>, and navigate to the next step. If you do not have a tracking number yet, choose <strong>I will provide my shipping information for this export job once I have shipped my package</strong>, then complete the import process.
+	既に FedEx の問い合わせ番号を持っている場合は、<strong>[問い合わせ番号を今すぐ入力します]</strong> を選択し、次のステップに進みます。まだ問い合わせ番号がない場合は、<strong>[パッケージの発送後、このエクスポート ジョブの発送情報を指定します]</strong> を選択してから、インポート処理を完了します。
 
-5. In Step 5, enter your tracking number, then confirm it. 
+5. ステップ 5. で、問い合わせ番号を入力し、確認します。
 
 
-## Track Job Status in the Management Portal##
+## 管理ポータルでのジョブの状態の追跡##
 
-You can track the status of your import or export jobs from the Management Portal. Navigate to your storage account in the Management Portal, and click the **Import/Export** tab. A list of your jobs will appear on the page. You can filter the list on job status, job name, job type, or tracking number.
+管理ポータルから、インポート ジョブまたはエクスポート ジョブの状態を追跡できます。管理ポータルで自分のストレージ アカウントに移動し、**[インポート/エクスポート]** タブをクリックします。ジョブの一覧がページに表示されます。この一覧は、ジョブの状態、ジョブ名、ジョブの種類、または問い合わせ番号でフィルター処理できます。
 
-The table describes what each job status designation means:
+次の表では、それぞれのジョブの状態の意味を説明しています。
 
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 	<tbody>
 		<tr>
-			<td><strong>Job Status</strong></td>
-			<td><strong>Description</strong></td>
+			<td><strong>ジョブの状態</strong></td>
+			<td><strong>説明</strong></td>
 		</tr>
 		<tr>
-			<td>Creating</td>
-			<td>Your job has been created, but you have not yet provided your shipping information.</td>
+			<td>作成</td>
+			<td>ジョブが作成されましたが、発送情報が入力されていません。</td>
 		</tr>
 		<tr>
-			<td>Shipping</td>
-			<td>Your job has been created and you have provided your shipping information.</td>
+			<td>発送</td>
+			<td>ジョブが作成され、発送情報が入力されています。</td>
 		</tr>
 		<tr>
-			<td>Transferring</td>
-			<td>Your data is being transferred from your hard drive (for an import job) or to your hard drive (for an export job).</td>
+			<td>転送</td>
+			<td>ハード ドライブから (インポート ジョブの場合)、またはハード ドライブに (エクスポート ジョブの場合) データを転送中です。</td>
 		</tr>
 		<tr>
-			<td>Packaging</td>
-			<td>The transfer of your data is complete, and your hard drive is being prepared for shipping back to you.</td>
+			<td>パッケージ</td>
+			<td>データの転送が完了し、返送のためにハード ドライブを準備しています。</td>
 		</tr>
 		<tr>
-			<td>Complete</td>
-			<td>Your hard drive has been shipped back to you.</td>
+			<td>完了</td>
+			<td>ハード ドライブが返送されました。</td>
 		</tr>
 	</tbody>
 </table>
 
-## View BitLocker Keys for an Export Job ##
+## エクスポート ジョブの BitLocker キーの表示##
 
-For export jobs, you can view and copy the BitLocker keys generated by the service for your drive, so that you can decrypt your exported data once you receive the drives from the Azure data center. Navigate to your storage account in the Management Portal, and click the **Import/Export** tab. Select your export job from the list, and click the **View Keys** button. The BitLocker keys appear as shown:
+エクスポート ジョブの場合は、ドライブのサービスで生成された BitLocker キーを表示し、コピーできます。これで、Azure データ センターからドライブを受け取った後、エクスポートされたデータを復号化できます。管理ポータルで自分のストレージ アカウントに移動し、**[インポート/エクスポート]** タブをクリックします。一覧からエクスポート ジョブを選択し、**[キーの表示]** ボタンをクリックします。BitLocker キーが、次のように表示されます。
 
-![View BitLocker keys for export job][export-job-bitlocker-keys]
+![エクスポート ジョブの BitLocker キーの表示][export-job-bitlocker-keys]
 
-## Frequently Asked Questions ##
+## よく寄せられる質問##
 
-<h3>General</h3>
+<h3>全般</h3>
 
-**What is the pricing for the Import/Export service?**
+**インポート/エクスポート サービスの料金はいくらですか。**
 
-- See the [pricing page](http://go.microsoft.com/fwlink/?LinkId=329033) for pricing information.
+- 料金情報については、「[インポート/エクスポートの料金詳細](http://go.microsoft.com/fwlink/?LinkId=329033)」を参照してください。
 
-**How long will it take to import or export my data?**
+**データのインポートまたはエクスポートには、どのくらいの時間がかかりますか。**
 
-- It will take the time to ship the disks, plus several hours per TB of data to copy the data.
+- ディスクの発送にかかる時間のほかに、データをコピーするために、TB あたり数時間がかかります。
  
-**What interface types are supported?**
+**サポートされるインターフェイスの種類を教えてください。**
 
-- The Import/Export service supports 3.5-inch SATA II hard drive disks (HDDs). You can use the following converters to transfer data in the devices in USB to SATA prior to shipping:
+- インポート/エクスポート サービスは、3.5 インチ SATA II ハード ドライブ ディスク (HDD) をサポートしています。発送前に、USB デバイスのデータを SATA に転送するには、次のコンバーターを使用できます。
 	- Anker 68UPSATAA-02BU
 	- Anker 68UPSHHDS-BU
 	- Startech SATADOCK22UE 
 
-**If I want to import or export more than 10 drives, what should I do?**
+**10 台を超えるドライブでインポートまたはエクスポートするには、どうすればよいでしょうか。**
 
-- One import or export job can reference only 10 drives in a single job during the preview release for the Import/Export service. If you want to ship more than 10 drives, you can create multiple jobs.
+- インポート/エクスポート サービスのプレビュー リリースで、1 つのインポート ジョブまたはエクスポート ジョブが参照できるのは、10 台のドライブまでです。10 台を超えるドライブを発送する必要がある場合は、複数のジョブを作成できます。
 
-**What happens if I accidentally send an HDD which does not conform to the supported requirements?**
+**サポートされる要件に適合しない HDD を誤って発送した場合は、どうなりますか。**
 
-- The Azure data center will return the drive that does not conform to the supported requirements to you. If only some of the drives in the package meet the support requirements, those drives will be processed, and the drives that do not meet the requirements will be returned to you.
+- Azure データ センターでは、サポートされる要件に適合しないドライブは返送されます。サポートされる要件を満たすのが、パッケージ内の一部のドライブだけである場合は、それらのドライブが処理され、要件を満たさないドライブは返送されます。
 
-<h3>Import/Export Job Management</h3>
+<h3>インポート/エクスポート ジョブの管理</h3>
 
-**What happens to my import and export jobs if I delete my Azure storage account?**
+**Azure のストレージ アカウントを削除した場合、インポート ジョブとエクスポート ジョブはどうなりますか。**
 
-- When you delete your storage account, all Azure Import/Export jobs are deleted along with your account.  
+- ストレージ アカウントを削除すると、すべての Azure インポート/エクスポート ジョブがアカウントと共に削除されます。
 
-**Can I cancel my job?**
+**ジョブを取り消すことはできますか。**
 
-- You can cancel a job when its status is Creating or Shipping.
+- ジョブの状態が "作成" または "発送" のときは、ジョブを取り消すことができます。
 
-**How long can I view the status of completed jobs in the Management Portal?**
+**管理ポータルでは、どのくらいの期間、完了したジョブの状態を確認できますか。**
 
-- You can view status for completed jobs for up to 90 days. All completed jobs will be archived after 90 days.  If you need to retrieve your completed job status after 90 days, you can contact customer support.
+- 完了したジョブの状態は、最大 90 日間、表示されます。90 日が経過すると、完了したすべてのジョブはアーカイブされます。90 日経過後に、完了したジョブの状態を取得する必要がある場合は、カスタマー サポートにご連絡ください。
 
-<h3>Shipping</h3>
+<h3>発送</h3>
 
-**What courier services are supported?**
+**利用できる宅配業者は何ですか。**
 
-- 	Only Federal Express (FedEx) is supported during the preview release.
-- 	Package(s) for an import job can be shipped either with FedEx Express or FedEx Ground.
-- 	All packages will be returned via FedEx Ground.
-
-	<div class="dev-callout">
-	<strong>Important</strong>
-	<p>You must provide your tracking number to the Azure Import/Export service; otherwise your job cannot be processed.</p>
-	</div>
-
-**Is there any cost associated with return shipping?**
-
-- Return shipping is free during the preview release.
-
-**Where can I ship my data from and to?**
-
-- The Import/Export service can only accept shipments that <strong>originate</strong> from U.S. locations, and can return packages only to U.S. addresses. The service supports importing data to and exporting data from storage accounts in the following regions:
-	- East US 
-	- West US 
-	- North Central US 
-	- South Central US 
-	- North Europe
-	- West Europe
-	- East Asia
-	- Southeast Asia
-
-- If your storage account resides in a U.S. data center, you may need to ship your drives to a data center in a different region, as not all data centers currently support the Import/Export service. You may incur egress charges if your job is processed in a region different from where your storage account resides.
-
-- If your storage account resides in a European or Asian data center, you must ship your drive to one of the supported regions in the U.S., and the shipment must originate from within the U.S. The Import/Export service will then copy the data to or from your storage account in Europe or Asia.  
-	- For an import job there is no ingress charge for the copy operation.
-	- For an export job, there will be data transfers fees for copying data between Azure data centers. For example, if your storage account resides in West Europe and you ship your drive to the East US data center, you will incur egress charges for moving the data from West Europe to East US in order to export it.
+- 	プレビュー リリースで利用できるのは、Federal Express (FedEx) だけです。
+- 	インポート ジョブのパッケージは、FedEx Express または FedEx Ground で発送できます。
+- 	すべてのパッケージは FedEx Ground で返送されます。
 
 	<div class="dev-callout">
-	<strong>Important</strong>
-	<p>Azure data centers cannot receive drives shipped from locations outside the U.S. and will refuse delivery of those packages.</p>
+	<strong>重要</strong>
+	<p>Azure インポート/エクスポート サービスに問い合わせ番号を通知する必要があります。通知しないと、ジョブは処理されません。</p>
 	</div>
 
-**Can I purchase drives for import/export jobs from Microsoft?**
+**返送には費用がかかりますか。**
 
-- 	No. You will need to ship your own drives for both import and export jobs.
+- プレビュー リリースでは、返送料金は無料です。
 
-<h3>Security</h3>
+**データを発送したり、返送されたデータを受領したりできるのは、どこですか。**
 
-**Is Bitlocker encryption a mandatory requirement?**
+- インポート/エクスポート サービスでは、発送元<strong></strong>が米国内の場所で、かつパッケージの返送先が米国内の住所である場合に限り、取り扱いを受け付けます。このサービスでは、次のリージョンのストレージ アカウントからのデータのインポートとエクスポートをサポートしています。
+	- 米国東部
+	- 米国西部
+	- 米国中北部
+	- 米国中南部
+	- 北ヨーロッパ
+	- 西ヨーロッパ
+	- 東アジア
+	- 東南アジア
 
-- Yes. All drives must be encrypted with a BitLocker key.
+- ストレージ アカウントの場所が米国のデータ センターである場合は、ドライブの発送先が別のリージョンのデータ センターになることがあります。現時点では、一部のデータ センターでインポート/エクスポート サービスがサポートされていないためです。ストレージ アカウントが存在するリージョンとは別のリージョンでジョブを処理する場合は、送信料金が発生することがあります。
 
-**Do you format the drives before returning them?**
+- ストレージ アカウントの場所がヨーロッパまたはアジアのデータ センターである場合は、米国内のサポート対象リージョンのいずれかにドライブを発送し、発送元が米国内である必要があります。そして、インポート/エクスポート サービスは、ヨーロッパまたはアジアにあるストレージ アカウントとの間でデータをコピーします。
+	- インポート ジョブの場合は、コピー操作の受信料金は発生しません
+	- エクスポート ジョブの場合は、Azure のデータ センターとの間でのデータのコピーにデータ転送料金が発生します。たとえば、ストレージ アカウントが西ヨーロッパにあり、ドライブを米国東部のデータ センターに発送した場合は、エクスポートするデータの西ヨーロッパから米国東部への移動に対して送信料金が発生します。
 
-- No. All drives must be BitLocker-prepared.
+	<div class="dev-callout">
+	<strong>重要</strong>
+	<p>Azure データ センターでは、米国外の場所から発送されたドライブを受け取ることができないため、このようなパッケージの配達は拒否されます。</p>
+	</div>
+
+**インポート/エクスポート ジョブのドライブを Microsoft から購入できますか。**
+
+- 	いいえ。インポート ジョブとエクスポート ジョブの両方で、自分のドライブを発送する必要があります。
+
+<h3>セキュリティ</h3>
+
+**Bitlocker 暗号化は必須の要件ですか**
+
+- はい。すべてのドライブを BitLocker キーで暗号化する必要があります。
+
+**ドライブは、返送前にフォーマットするのですか。**
+
+- いいえ。すべてのドライブは、BitLocker で準備する必要があります。
 
 
 [import-job-03]: ./media/storage-import-export-service/import-job-03.png
 [export-job-03]: ./media/storage-import-export-service/export-job-03.png
 [export-job-bitlocker-keys]: ./media/storage-import-export-service/export-job-bitlocker-keys.png
+

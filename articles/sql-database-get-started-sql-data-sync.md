@@ -1,183 +1,184 @@
-<properties linkid="manage-services-sql-databases-datasync" urlDisplayName="How to sync data" pageTitle="Getting started with SQL Databases Data Sync" metaKeywords="" description="" metaCanonical="" services="sql-database" documentationCenter="" title="Getting Started with Azure SQL Data Sync" authors="" solutions="" manager="" editor="" />
+<properties linkid="manage-services-sql-databases-datasync" urlDisplayName="データの同期方法" pageTitle="SQL データベース データ同期の概要" metaKeywords="" description="" metaCanonical="" services="sql-database" documentationCenter="" title="Azure SQL データ同期の概要" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
 
-#Getting Started with Azure SQL Data Sync
-In this tutorial, you learn the fundamentals of Azure SQL Data Sync using the Azure (Preview) portal. 
+#Azure SQL データ同期の概要
+このチュートリアルでは、Azure (プレビュー) ポータルを使用して、Azure SQL データ同期の基礎を学習します。
 
-This tutorial assumes minimal prior experience with SQL Server and Azure SQL Database. In this tutorial, you create a hybrid (SQL Server and SQL Database instances) sync group fully configured and synchronizing on the schedule you set.
+このチュートリアルは、SQL Server および Azure SQL データベースを使用した経験がほとんどない読者を対象に作成されています。このチュートリアルでは、ハイブリッド (SQL Server および SQL データベース インスタンス) 同期グループを作成し、全面的に構成して、設定したスケジュールに従って同期します。
 
-##Table of Contents##
+##目次##
 
-* [Step 1: Connect to the Azure SQL Database](#Connect)
-* [Step 2: Add a Client Agent ()](#AddAgent)
-* [Step 3: Register a SQL Server database with the Client Agent](#RegisterSSDB)
-* [Step 4: Create a Sync Group](#CreateSG)
-* [Step 5: Define the data to sync](#SyncRules)
-* [Step 6: Configure your sync group](#Configure)
+* [ステップ 1. Azure SQL データベースへの接続](#Connect)
+* [ステップ 2. クライアント エージェント () の追加](#AddAgent)
+* [ステップ 3. SQL Server データベースのクライアント エージェントへの登録](#RegisterSSDB)
+* [ステップ 4. 同期グループの作成](#CreateSG)
+* [ステップ 5. 同期するデータの定義](#SyncRules)
+* [ステップ 6. 同期グループの構成](#Configure)
 
-<h2><a id="Connect"></a>Step 1: Connect to the Azure SQL Database</h2>
+<h2><a id="Connect"></a>ステップ 1. Azure SQL データベースへの接続</h2>
 
-1. Sign in to the [Management Portal](http://manage.windowsazure.com).
+1. [管理ポータル](http://manage.windowsazure.com)にサインインします。
 
-2. Click **SQL DATABASES** in the left pane.
+2. 左のウィンドウで、**[SQL データベース]** をクリックします。
 
-3. Click **SYNC** at the bottom of the page. When you click SYNC, a list appears showing the things you can add - **New Sync Group** and **New Sync Agent**.
+3. ページの下部にある **[同期]** をクリックします。[同期] をクリックすると、追加できる項目である **[新しい同期グループ]** および **[新しい同期エージェント]** が一覧に表示されます。
 
-4. To launch the New SQL Data Sync Agent wizard, click **New Sync Agent**.
+4. 新しい SQL データ同期エージェント ウィザードを起動するには、**[新しい同期エージェント]** をクリックします。
 
-5. If you haven't added an agent before, **click download it here**.
+5. 以前にエージェントを追加したことがない場合は、**ここをクリックしてエージェントをダウンロードしてください**。
 
 	![Image1](./media/sql-database-get-started-data-sync/SQLDatabaseScreen-Figure1.PNG)
 
 
-<h2><a id="AddAgent"></a>Step 2: Add a Client Agent</h2>
-This step is required only if you are going to have an on-premises SQL Server database included in your sync group. You can skip to Step 4: Create a sync group if your sync group has only SQL Database instances.
+<h2><a id="AddAgent"></a>ステップ 2. クライアント エージェントの追加</h2>
+この手順が必要になるのは、同期グループに内部設置型 SQL Server データベースを含める場合だけです。同期グループに SQL データベース インスタンスしかない場合は、「ステップ 4. 同期グループの作成」までスキップできます。
 
-<h3><a id="InstallRequiredSoftware"></a>Step 2a: Install the required software</h3>
-Be sure that you have the following installed on the computer you install the Client Agent.
+<h3><a id="InstallRequiredSoftware"></a>ステップ 2a. 必要なソフトウェアのインストール</h3>
+クライアント エージェントをインストールするコンピューターに次のソフトウェアがインストールされていることを確認してください。
 
-- **.NET Framework 4.0** 
+- **.NET Framework 4**
 
- You can install .NET Framework 4.0 from [here](http://go.microsoft.com/fwlink/?linkid=205836).
+ .NET Framework 4 は[このページ](http://go.microsoft.com/fwlink/?linkid=205836)からインストールできます。
 
 - **Microsoft SQL Server 2008 R2 SP1 System CLR Types (x86)**
 
- You can install the Microsoft SQL Server 2008 R2 SP1 System CLR Types (x86) from [here](http://www.microsoft.com/download/en/details.aspx?id=26728)
+ Microsoft SQL Server 2008 R2 SP1 System CLR Types (x86) は[このページ](http://www.microsoft.com/download/en/details.aspx?id=26728)からインストールできます。
 
 - **Microsoft SQL Server 2008 R2 SP1 Shared Management Objects (x86)**
 
- You can install the Microsoft SQL Server 2008 R2 SP1 Shared Management Objects (x86) from [here](http://www.microsoft.com/download/en/details.aspx?id=26728)
+ Microsoft SQL Server 2008 R2 SP1 Shared Management Objects (x86) は[このページ](http://www.microsoft.com/download/en/details.aspx?id=26728)からインストールできます。
 
 
-<h3><a id="InstallClient"></a>Step 2b: Install a new Client Agent</h3>
+<h3><a id="InstallClient"></a>ステップ 2b. 新しいクライアント エージェントのインストール</h3>
 
-Follow the instruction at [Install a Client Agent (SQL Data Sync)](http://msdn.microsoft.com/en-us/library/jj823137.aspx) to install the agent. 
-
-
-<h3><a id="RegisterSSDb"></a>Step 2c: Finish the New SQL Data Sync Agent wizard</h3> 
-
-1. 	Return to the New SQL Data Sync Agent wizard.
-2.	Give the agent a meaningful name.
-3.	From the dropdown, select the **REGION** (data center) to host this agent.
-4.	From the dropdown, select the **SUBSCRIPTION** to host this agent.
-5.	Click the right-arrow.
+「[Install a Client Agent (SQL Data Sync) (クライアント エージェントのインストール (SQL データ同期))](http://msdn.microsoft.com/ja-jp/library/jj823137.aspx)」の指示に従って、エージェントをインストールします。
 
 
+<h3><a id="RegisterSSDb"></a>ステップ 2c. 新しい SQL データ同期エージェント ウィザードの完了</h3>
 
-<h2><a id="RegisterSSDB"></a>Step 3: Register a SQL Server database with the Client Agent</h2>
-
-After the Client Agent is installed, register every on-premises SQL Server database that you intend to include in a sync group with the agent.
-To register a database with the agent, follow the instructions at [Register a SQL Server Database with a Client Agent](http://msdn.microsoft.com/en-us/library/jj823138.aspx).
+1.	新しい SQL データ同期エージェント ウィザードに戻ります。
+2.	わかりやすいエージェント名を付けます。
+3.	ドロップダウン リストで、このエージェントをホストする **[リージョン]** (データ センター) を選択します。
+4.	ドロップダウン リストで、このエージェントをホストする **[サブスクリプション]** を選択します。
+5.	右矢印をクリックします。
 
 
 
-<h2><a id="CreateSG"></a>Step 4: Create a sync group</h2>
+<h2><a id="RegisterSSDB"></a>ステップ 3. SQL Server データベースのクライアント エージェントへの登録</h2>
 
-<h3><a id="StartNewSGWizard"></a>Step 4a: Start the New Sync Group wizard</h3>
-1.	Return to the [Management Portal](http://manage.windowsazure.com).
-2.	Click **SQL DATABASES**.
-3.	Click **ADD SYNC** at the bottom of the page then select New Sync Group from the drawer.
+クライアント エージェントをインストールした後、同期グループに含める内部設置型 SQL Server データベースをすべてエージェントに登録します。
+データベースをエージェントに登録するには、「[方法: SQL Server データベースをクライアント エージェントに登録する](http://msdn.microsoft.com/ja-jp/library/jj823138.aspx)」を参照してください。
+
+
+
+<h2><a id="CreateSG"></a>ステップ 4. 同期グループの作成</h2>
+
+<h3><a id="StartNewSGWizard"></a>ステップ 4a. 新しい同期グループ ウィザードの開始</h3>
+1.	[管理ポータル](http://manage.windowsazure.com)に戻ります。
+2.	**[SQL データベース]** をクリックします。
+3.	ページの下部にある **[同期の追加]** をクリックして、ドロワから [新しい同期グループ] を選択します。
 
 	![Image2](./media/sql-database-get-started-data-sync/NewSyncGroup-Figure2.png)
 
 
-<h3><a id=""></a>Step 4b: Enter the basic settings</h3>	
-1.	Enter a meaningful name for the sync group.
-2.	From the dropdown, select the **REGION** (Data Center) to host this sync group.
-3. Click the right-arrow.
+<h3><a id=""></a>ステップ 4b. 基本設定の入力</h3>	
+1.	わかりやすい同期グループ名を入力します。
+2.	ドロップダウン リストで、この同期グループをホストする **[リージョン]** (データ センター) を選択します。
+3.右矢印をクリックします。
 
 	![Image3](./media/sql-database-get-started-data-sync/NewSyncGroupName-Figure3.PNG)
  
-<h3><a id="DefineHubDB"></a>Step 4c: Define the sync hub</h3>
-1. From the dropdown, select the SQL Database instance to serve as the sync group hub.
-2. Enter the credentials for this SQL Database instance - **HUB USERNAME** and **HUB PASSWORD**.
-3. Wait for SQL Data Sync to confirm the USERNAME and PASSWORD. A green check mark appears to the right of the PASSWORD when the credentials are confirmed.
-4. From the dropdown, select the **CONFLICT RESOLUTION** policy.
+<h3><a id="DefineHubDB"></a>ステップ 4c. 同期ハブの定義</h3>
+1.ドロップダウン リストで、同期グループのハブとして機能する SQL データベース インスタンスを選択します。
+2.この SQL データベース インスタンスの資格情報を **[ハブ ユーザー名]** および **[ハブ パスワード]** に入力します。
+3.SQL データ同期によってユーザー名とパスワードが確認されるのを待ちます。資格情報が確認されると、[パスワード] ボックスの右側に緑色のチェック マークが表示されます。
+4.ドロップダウン リストで、**[競合の解決]** ポリシーを選択します。
 
- **Hub Wins** - any change written to the hub database is written to the reference databases, overwriting changes in the same reference database record. Functionally, this means that the first change written to the hub is propagated to the other databases.
+ **[ハブ側に合わせる]** – ハブ データベースに書き込まれた変更内容がすべて参照データベースに書き込まれ、同じ参照データベース レコードの変更内容は上書きされます。機能的には、ハブに書き込まれた最初の変更内容が他のデータベースに反映されることになります。
 
 
- **Client Wins** - changes written to the hub are overwritten by changes in reference databases. Functionally, this means that the last change written to the hub is the one kept and propagated to the other databases.
+ **[クライアント側に合わせる]** – ハブ データベースに書き込まれた変更内容は参照データベースの変更内容によって上書きされます。機能的には、ハブに書き込まれた最後の変更内容は、他のデータベースに保持され反映されている変更内容ということになります。
 
-5.	Click the right-arrow.
+5.	右矢印をクリックします。
 
 	![Image4](./media/sql-database-get-started-data-sync/NewSyncGroupHub-Figure4.PNG)
 
-<h3><a id="AddRefDB"></a>Step 4d: Add a reference database</h3>
+<h3><a id="AddRefDB"></a>ステップ 4d. 参照データベースの追加</h3>
 
-Repeat this step for each additional database you want to add to the sync group.
+同期グループに追加するデータベースごとに、この手順を繰り返します。
 
-1. From the dropdown, select the database to add.
+1. ドロップダウン リストで、追加するデータベースを選択します。
 
-	Databases in the dropdown include both SQL Server databases that have been registered with the agent and SQL Database instances.
-2.	Enter credentials for this database - **USERNAME** and **PASSWORD**.
-3.	From the dropdown, select the **SYNC DIRECTION** for this database.
+	ドロップダウン リストに表示されるデータベースは、エージェントに登録された SQL Server データベースと SQL データベース インスタンスの両方を含みます。
+2.	このデータベースの資格情報を **[ユーザー名]** および **[パスワード]** に入力します。
+3.	ドロップダウン リストで、このデータベースの **[同期の方向]** を選択します。
 
-	**Bi-directional** - changes in the reference database are written to the hub database, and changes to the hub database are written to the reference database.
+	**[双方向]** – 参照データベースの変更内容がハブ データベースに書き込まれ、ハブ データベースの変更内容が参照データベースに書き込まれます。
 
-	**Sync from the Hub** - The database receives updates from the Hub. It does not send changes to the Hub.
+	**[ハブから同期]** - データベースはハブから更新を受け取ります。変更内容をハブに送信しません。
 
-	**Sync to the Hub** - The database sends updates to the Hub. Changes in the Hub are not written to this database.
+	**[ハブに同期]** - データベースからハブに更新を送ります。ハブの変更内容はこのデータベースに書き込まれません。
 
-4.	To finish creating the sync group, click the check mark in the lower right of the wizard. Wait for the SQL Data Sync to confirm the credentials. A green check indicates that the credentials are confirmed.
+4.	同期グループの作成を終了するには、ウィザードの右下にあるチェック マークをクリックします。SQL データ同期によって資格情報が確認されるのを待ちます。資格情報が確認されると、緑色のチェック マークが表示されます。
 
-5.	Click the check mark a second time. This returns you to the **SYNC** page under SQL Databases. This sync group is now listed with your other sync groups and agents.
+5.	チェック マークをもう一度クリックします。これで [SQL データベース] の **[同期]** ページに戻ります。この同期グループが他の同期グループおよびエージェントと並んで一覧表示されています。
 
 	![Image5](./media/sql-database-get-started-data-sync/NewSyncGroupReference-Figure5.PNG)
 
 
-<h2><a id="SyncRules"></a>Step 5: Define the data to sync</h2>
+<h2><a id="SyncRules"></a>ステップ 5. 同期するデータの定義</h2>
 
-Azure SQL Data Sync allows you to select tables and columns to synchronize. If you also want to filter a column so that only rows with specific values (such as, Age>=65) are synchronized, use the SQL Data Sync portal at Azure and the documentation at Select the Tables, Columns, and Rows to Synchronize to define the data to sync.
+Azure SQL データ同期では、同期するテーブルと列を選択できます。また、列を絞り込んで、特定の値 (年齢 >= 65 など) を持つ行だけを同期する場合は、Azure の SQL データ同期ポータルを使用し、「同期するテーブル、列、および行の選択」の説明を参照して、同期するデータを定義します。
 
-1.	Return to the [Management Portal](http://manage.windowsazure.com).
-2.	Click **SQL DATABASES**.
-3.	Click the **SYNC** tab.
-4.	Click the name of this sync group.
-5.	Click the **SYNC RULES** tab.
-6.	Select the database you want to provide the sync group schema.
-7.	Click the right-arrow.
-8.	Click **REFRESH SCHEMA**.
-9.	For each table in the database, select the columns to include in the synchronizations. 
-	- Columns with unsupported data types cannot be selected. 
-	- If no columns in a table are selected, the table is not included in the sync group. 
-	- To select/unselect all the tables, click SELECT at the bottom of the screen.
-10.	Click **SAVE**, then wait for the sync group to finish provisioning.
-11.	To return to the Data Sync landing page, click the back-arrow in the upper left of the screen (above the sync group's name).
+1.	[管理ポータル](http://manage.windowsazure.com)に戻ります。
+2.	**[SQL データベース]** をクリックします。
+3.	**[同期]** タブをクリックします。
+4.	この同期グループの名前をクリックします。
+5.	**[同期規則]** タブをクリックします。
+6.	同期グループのスキーマを指定するデータベースを選択します。
+7.	右矢印をクリックします。
+8.	**[スキーマの更新]** をクリックします。
+9.	データベースの各テーブルで、同期の対象とする列を選択します。
+	- サポートされていないデータ型の列は選択できません。
+	- デーブルの列が選択されていない場合、そのテーブルは同期グループに含められません。
+	- すべてのテーブルの選択および選択解除を行うには、画面の下部にある [選択] をクリックします。
+10.	**[保存]** をクリックし、同期グループのプロビジョニングが完了するのを待ちます。
+11.	データ同期のランディング ページに戻るには、画面の左上 (同期グループ名の上) にある左向き矢印をクリックします。
 
 	![Image6](./media/sql-database-get-started-data-sync/NewSyncGroupSyncRules-Figure6.PNG)
 
-<h2><a id="Configure"></a>Step 6: Configure your sync group</h2>
+<h2><a id="Configure"></a>ステップ 6. 同期グループの構成</h2>
 
-You can always synchronize a sync group by clicking SYNC at the bottom of the Data Sync landing page.
-If you want a sync group to synchronize on a schedule, you configure the sync group.
+同期グループはいつでも、データ同期のランディング ページの下部にある [同期] をクリックして同期できます。
+同期グループを定期的に同期する場合は、同期グループを構成します。
 
-1.	Return to the [Management Portal](http://manage.windowsazure.com).
-2.	Click **SQL DATABASES**.
-3.	Click the **SYNC** tab.
-4.	Click the name of this sync group.
-5.	Click the **CONFIGURE** tab.
-6.	**AUTOMATIC SYNC**
-	- To configure the sync group to sync on a set frequency, click **ON**. You can still sync on demand by clicking SYNC.
-	- Click **OFF** to configure the sync group to sync only when you click SYNC.
-7.	**SYNC FREQUENCY**
-	- If AUTOMATIC SYNC is ON, set the synchronization frequency. The frequency must be between 5 Minutes and 1 Month.
-8.	Click **SAVE**.
+1.	[管理ポータル](http://manage.windowsazure.com)に戻ります。
+2.	**[SQL データベース]** をクリックします。
+3.	**[同期]** タブをクリックします。
+4.	この同期グループの名前をクリックします。
+5.	**[構成]** タブをクリックします。
+6.	**[自動同期]**
+	- 設定した頻度で同期グループを同期するには、**[オン]** をクリックします。この場合でも、[同期] をクリックして随時同期することができます。
+	- **[オフ]** をクリックすると、[同期] をクリックしたときだけ同期グループが同期されます。
+7.	**[同期の頻度]**
+	- [自動同期] が [オン] の場合は、同期の頻度を設定します。頻度は 5 分から 1 か月の範囲で指定します。
+8.	**[保存]** をクリックします。
 
 ![Image7](./media/sql-database-get-started-data-sync/NewSyncGroupConfigure-Figure7.PNG)
 
-Congratulations. You have created a sync group that includes both a SQL Database instance and a SQL Server database.
+おめでとうございます。SQL データベース インスタンスと SQL Server データベースの両方を含む同期グループを作成しました。
 
-<h2><a id="NextSteps"></a>Next Steps</h2>
-For additional information on SQL Database and SQL Data Sync see:
+<h2><a id="NextSteps"></a>次のステップ</h2>
+SQL データベースと SQL データ同期の詳細については、以下を参照してください。
 
-* [Sign up for the Premium Offer for SQL Database] (../sign-up-for-sql-database-premium/)
-* [SQL Data Sync (WA Portal)](http://msdn.microsoft.com/en-us/library/windowsazure/jj856263.aspx)
-* [Getting Started with Azure SQL Database](../getting-started-w-sql-databases/)
-* [SQL Server Database Lifecycle ](http://go.microsoft.com/fwlink/?LinkId=275193)
+* [SQL データベース プレミアムへのサインアップ] (../sign-up-for-sql-database-premium/)
+* [SQL Data Sync (WA Portal) (SQL データ同期 (WA ポータル))](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj856263.aspx)
+* [Azure SQL データベースの概要](../getting-started-w-sql-databases/)
+* [SQL Server データベースのライフサイクルに関するページ](http://go.microsoft.com/fwlink/?LinkId=275193)
+
 
 
 

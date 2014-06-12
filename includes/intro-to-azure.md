@@ -1,291 +1,292 @@
-# Introducing Azure
+# Azure の概要
 
-Azure is Microsoft's application platform for the public cloud. You can use this platform in many different ways. For instance, you can use Azure to build a web application that runs and stores its data in Azure datacenters. You can use Azure just to store data, with the applications that use this data running on-premises (that is, outside the public cloud). You can use Azure to create virtual machines for development and test or to run SharePoint and other applications. You can use Azure to build massively scalable applications with lots and lots of users. Because the platform offers a wide range of services, all of these things-and more-are possible.
+Azure は、パブリック クラウド向けの Microsoft のアプリケーション プラットフォームです。このプラットフォームは、さまざまな方法で使用できます。たとえば、Azure を使用して、Azure データ センターのデータ上で実行、格納する Web アプリケーションをビルドできます。データを格納するためにのみ Azure を使用し、このデータを使用するアプリケーションは内部 (つまり、パブリック クラウドの外部) で実行することもできます。Azure を使用して、開発およびテスト用の仮想マシンを作成したり、SharePoint やその他のアプリケーションを実行することもできます。さらに、Azure を使用して、多くのユーザーに対応できるきわめてスケーラブルなアプリケーションを作成できます。このプラットフォームが提供するサービスは多岐にわたるため、さらにさまざまなことが可能になります。
 
-To do any of them, though, you need to understand the basics. Even if you don't know anything about cloud computing, this article will walk you through the fundamentals of Azure. The goal is to give you a foundation for understanding and using this cloud platform.
+これらのいずれを行う場合でも、基本を理解する必要があります。クラウド コンピューティングに関する知識がまったくなくても、この記事をお読みいただくことで、Azure の基礎を理解することができます。この記事は、このクラウド プラットフォームを理解して使用するための基礎を身に付けていただくことを目的にしています。
 
 
-## Table of Contents
+## 目次
 
--   [The Components of Azure](#components)
--   [Execution Models/Compute](#models)
--   [Data Management](#data)
--   [Networking](#networking)
--   [Business Analytics](#analytics)
--   [Messaging](#messaging)
+-   [Azure のコンポーネント](#components)
+-   [実行モデル/コンピューティング](#models)
+-   [データ管理](#data)
+-   [ネットワーク](#networking)
+-   [ビジネス分析](#analytics)
+-   [メッセージング](#messaging)
 -   [Caching](#caching)
--   [Identity](#identity)
--   [High-Performance Computing (HPC)](#HPC)
--   [Media](#media)
--   [Commerce](#commerce)
--   [SDKs](#sdk)
--   [Getting Started](#start)
+-   [ID](#identity)
+-   [ハイパフォーマンス コンピューティング (HPC)](#HPC)
+-   [メディア](#media)
+-   [コマース](#commerce)
+-   [SDK](#sdk)
+-   [作業の開始](#start)
 
 
 
 
-<h2><a id="components"></a>The Components of Azure</h2>
+<h2><a id="components"></a>Azure のコンポーネント</h2>
 
-To understand what Azure offers, it's useful to group its
-services into distinct categories. Figure 1 shows one way to do this.
+Azure が提供する機能を理解するうえで、そのサービスを
+個々のカテゴリに分類するとわかりやすくなります。図 1 に、その一例を示します。
 
-![Azure components](./media/intro-to-azure/IntroAzure1.png)   
- **Figure 1: Azure provides Internet-accessible application services running in Azure datacenters.**
+![Azure のコンポーネント](./media/intro-to-azure/IntroAzure1.png)   
+**図 1: Azure には、Azure データセンターで実行される、インターネット経由でアクセスできるアプリケーション サービスが用意されている。**
 
-To get started with Azure, you need to know at least the basics about each of its components.You can also use the [What Is Azure Poster](http://www.microsoft.com/en-us/download/details.aspx?id=35473) for a quick, visual way to get an overview. The colors of the boxes in Figure 1 correspond to their grouping on the poster. 
+Azure を使用するには、少なくとも各コンポーネントの基本を理解する必要があります。[Azure ポスターに関するページ](http://www.microsoft.com/ja-jp/download/details.aspx?id=35473)では、簡単でビジュアルな概要を入手できます。図 1 のボックスの色は、ポスターのグループ化に対応しています。
 
-The rest of this article walks through the technologies shown in the figure, describing what each one offers and when you might use it.
-
-
-
-<h2><a id="models"></a>Execution Models / Compute</h2>
-
-One of the most basic things a cloud platform does is execute applications. Azure provides four options for doing this: Virtual Machines, Cloud Services, Web Sites, and Mobile Services.  Each of the Azure execution models has its own role to play. 
-
-Azure Virtual Machines provides a general-purpose on-demand computing environment. Cloud Services is a great choice for creating scalable, reliable applications with low administration costs. Azure Web Sites offers a range of applications, frameworks, and templates for you to build large, scalable web applications and presence web sites quickly, and then efficiently manage development, test, and operations. Similarly, Azure Mobile Services accelerates the development of apps for mobile devices, providing turnkey ways to store data in the cloud, authenticate users, and send push notifications.
-
-You can use these technologies separately or combine them as needed to create the right foundation for your application. The approach you choose depends on what problems you're trying to solve.
+以降では、図に示したテクノロジについて順に説明し、各テクノロジが提供する機能とその使用例を示します。
 
 
-###Virtual Machines###
 
-The ability to create a virtual machine on demand, whether from a standard image or from one you supply, can be very useful. Add the ability to pay for this VM by the minute and only while it's running, and it's even more useful. This approach, commonly known as Infrastructure as a Service (IaaS), is what Azure Virtual Machines provides. 
+<h2><a id="models"></a>実行モデル/コンピューティング</h2>
 
-To create a VM, you specify which VHD to use and the VM's size. You then pay for the time that the VM is running. Azure Virtual Machines offers a gallery of stock VHDs. These include Microsoft-provided options, such as Windows Server 2008 R2, Windows Server 2012, and Windows Server 2008 R2 with SQL Server, along with Linux images provided by Microsoft partners. You're free to create VMs from your own VHDs and add them to the gallery as well.
+クラウド プラットフォームで行われる最も基本的な項目に、アプリケーションの実行があります。Azure では、この目的で、Virtual Machines、Cloud Services、Web Sites、および Mobile Services という 4 つのオプションを用意しています。4 つの Azure 実行モデルには、それぞれの役割があります。
+
+Azure の Virtual Machines には、汎用的なオンデマンドのコンピューティング環境が用意されています。クラウド サービスは、スケーラブルで信頼性の高いアプリケーションを低い管理コストで作成するには最適な選択です。Azure の Web Sites には、幅広いアプリケーション、フレームワーク、テンプレートが用意されています。これらを利用することで、大規模でスケーラブルな Web アプリケーションや Web サイトのプレゼンスをすばやく作成し、開発、テスト、操作を効果的に管理できます。また、Azure の Mobile Services は、クラウドにデータを格納する、ユーザーを認証する、プッシュ通知を送信するなど、ターンキー型の手法を提供することにより、モバイル デバイス用のアプリケーション開発を迅速化します。
+
+必要に応じてこれらのテクノロジを単独で使用したり、組み合わせて使用することで、アプリケーションに適した基盤を構築できます。どのアプローチを選ぶかは、解決しようとしている問題によって異なります。
+
+
+###仮想マシン###
+
+標準イメージと独自のイメージのどちらからでも、必要に応じて仮想マシンを作成できる機能は非常に便利です。この VM は実行中の場合のみ課金され、分単位で料金をお支払いただけるので、さらに便利なものになっています。一般的にサービスとしてのインフラストラクチャ (IaaS) と呼ばれるこのアプローチは、Azure の Virtual Machines が提供する機能です。
+
+VM を作成するには、使用する VHD と VM のサイズを指定します。そして、VM を実行する料金を時間に応じてお支払いいただきます。Azure の Virtual Machines には、ストック VHD のギャラリーが用意されています。これには、Windows Server 2008 R2、Windows Server 2012、Windows Server 2008 R2 with SQL Server などのマイクロソフトが提供するオプションに加えて、マイクロソフト パートナーにより提供される Linux イメージも含まれています。さらに、独自の VHD から VM を作成して、それらの VM をギャラリーに追加することもできます。
  
-Wherever the image comes from, you can persistently store any changes made while a VM is running. The next time you create a VM from that VHD, things pick up where you left off. It's also possible to copy the changed VHD out of Azure, then run it locally.
+どこから提供されたイメージでも、VM の実行中に加えたあらゆる変更内容を永続的に格納することができます。次にその VHD から VM を作成するときには、保存した内容が取り込まれます。さらに、変更した VHD を Azure の外部にコピーしてローカルで実行することもできます。
 
-Azure VMs can be used in many different ways. You might use them to create an inexpensive development and test platform that you can shut down when you've finished using it. You might also create and run applications that use whatever languages and libraries you like. Those applications can use any of the data management options that Azure provides, and you can also choose to use SQL Server or another DBMS running in one or more virtual machines. Another option is to use Azure VMs as an extension of your on-premises datacenter, running SharePoint or other applications. To support this, it's possible to create Windows domains in the cloud by running Active Directory in Azure VMs. This quite general approach to cloud computing can be used to address many different problems. What you do is up to you.
+Azure VM はさまざまな方法で使用できます。Microsoft Azure VM を使用して開発とテスト用に低価格のプラットフォームを作成し、必要がなくなった時点で停止できます。さらに、どのような言語とライブラリを使用するアプリケーションでも作成して実行できます。これらのアプリケーションでは、Azure が提供するあらゆるデータ管理オプションを使用できるだけでなく、使用する SQL Server や他の DBMS を選択して、1 つ以上の仮想マシン上で実行することもできます。また、Azure VM を内部設置型のデータセンターの延長として使用して、SharePoint などのアプリケーションを実行することもできます。これをサポートするため、Azure VM で Active Directory を実行して、クラウド内に Windows ドメインを作成することができます。クラウド コンピューティングに対するこの一般的なアプローチを使用することで、さまざまな問題に対応できます。何をするかは、あなたしだいです。
 
-###Web Sites###
+###Web サイト###
 
-One of the most common things that people do in the cloud is run web sites and web applications. Azure Virtual Machines allows this, but it still leaves you with the responsibility of administering one or more VMs. What if you just want a web site where somebody else takes care of the administrative work for you?
+クラウドで行われる最も一般的なことの 1 つに、Web サイトと Web アプリケーションの実行があります。Azure の Virtual Machines でこれが可能ですが、この場合には 1 つ以上の VM をお客様が管理しなければなりません。Web サイトのみが必要で、その管理作業はだれかに任せたい場合はどうでしょうか。
 
-This is exactly what Azure Web Sites provides. This execution model offers a managed web environment using the Azure Management portal as well as APIs. You can move an existing web site into Azure Web Sites unchanged, or you can create a new one directly in the cloud. Once a web site is running, you can add or remove instances dynamically, relying on Azure Web Sites to load balance requests across them. Azure Web Sites offers both a shared option, where your web site runs in a virtual machine with other sites, and a standard option that allows a site to run in its own VM. The standard option also lets you increase the size (computing power) of your instances if needed.
+これこそ Azure の Web Sites が提供する機能です。この実行モデルには、Azure の管理ポータルおよび API を使用した、マネージされた Web 環境が用意されています。既存の Web サイトを変更せずに Azure の Web Sites に移行でき、またクラウドに直接新しいサイトを作成できます。Web サイトが稼動したら、インスタンスを動的に追加または削除し、複数の Azure の Web Sites で要求の負荷分散を行うことができます。Azure の Web Sites には、仮想マシン内で他の Web サイトと共に稼動する共有オプションと、専用の VM でサイトを実行する標準オプションが用意されています。標準オプションは、必要に応じてインスタンスのサイズ (コンピューティング能力) を増強することもできます。
 
-Azure Web Sites is intended to be useful for corporations, developers, and web design agencies. For corporations, it's an easy-to-manage, scalable, highly secure, and highly available solution for running presence web sites. For development, it supports .NET, PHP, Node.js, and Python along with SQL Database and MySQL (from ClearDB, a Microsoft partner) for relational storage. It also provides built-in support for several popular applications, including WordPress, Joomla, and Drupal. The goal is to provide a low-cost, scalable, and broadly useful platform for creating web sites and web applications in the public cloud.
+Azure の Web Sites は、企業、開発者、および Web デザイン代理店のいずれにも役立つように設計されています。企業にとっては、Web サイトのプレゼンスを実行するための、管理が簡単で、スケーラビリティに優れ、高度なセキュリティと可用性を備えたソリューションとして利用できます。開発を目的とする場合は、.NET、PHP、Node.js、Python に加え、リレーショナル ストレージのための SQL データベースと MySQL (マイクロソフト パートナーである ClearDB 製) をサポートします。さらに、WordPress、Joomla、Drupal など、一般的なアプリケーションのサポートも多数組み込まれています。パブリック クラウド内で Web サイトと Web アプリケーションを作成するための低価格でスケーラブル、広範な利便性を備えたプラットフォームを提供することが、その目的です。
 
-###Cloud Services###
+###クラウド サービス###
 
-Suppose you want to build a cloud application that can support lots of simultaneous users, doesn't require much administration, and never goes down. You might be an established software vendor, for example, that's decided to embrace Software as a Service (SaaS) by building a version of one of your applications in the cloud. Or you might be a start-up creating a consumer application that you expect will grow fast. If you're building on Azure, which execution model should you use?
+多数の同時ユーザーをサポートしながら、管理作業が少なく、停止することがないクラウド アプリケーションを作成したいとします。たとえば、既存のソフトウェア ベンダーが、クラウドに自社製アプリケーションのうちの 1 つのバージョンを作成して、サービスとしてのソフトウェア (SaaS) を導入する場合や、新興ベンダーとして、成長が期待されるコンシューマー アプリケーションを作成する場合が考えられます。Azure 上に作成する場合は、どの実行モデルを使用しますか。
 
-Azure Web Sites allows creating this kind of web application, but there are some constraints. You don't have administrative access, for example, which means that you can't install arbitrary software.  Azure Virtual Machines gives you lots of flexibility, including administrative access, and you certainly can use it to build a very scalable application, but you'll have to handle many aspects of reliability and administration yourself. What you'd like is an option that gives you the control you need but also handles most of the work required for reliability and administration.
+Azure の Web Sites でもこのような Web アプリケーションを作成できますが、一部の制約があります。たとえば、管理アクセス権がなければ、任意のソフトウェアをインストールできません。Azure の Virtual Machines を使用すると、管理アクセス権を含む高い柔軟性が得られ、これを使用してスケーラブルなアプリケーションを作成できますが、信頼性と管理に関する多くの事項をお客様自身が処理する必要があります。この場合に必要なのは、必要な制御性を提供する一方で、信頼性と管理に必要なほとんどの作業を処理するオプションです。
 
-This is exactly what's provided by Azure Cloud Services. This technology is designed expressly to support scalable, reliable, and low-admin applications, and it's an example of what's commonly called Platform as a Service (PaaS). To use it, you create an application using the technology you choose, such as C#, Java, PHP, Python, Node.js, or something else. Your code then executes in virtual machines (referred to as instances) running a version of Windows Server. 
+これはまさに Azure の Cloud Services が提供する機能です。このテクノロジは、信頼性が高くスケーラブルで管理作業の少ないアプリケーションをサポートするためのもので、一般的にサービスとしてのプラットフォーム (PaaS) と呼ばれるテクノロジです。これを使用するには、C#、Java、PHP、Python、Node.js など、目的に合ったテクノロジを使用してアプリケーションを作成します。次に、Windows Server のバージョンを実行する仮想マシン (インスタンスと呼ばれます) でコードを実行します。
 
-But these VMs are distinct from the ones you create with Azure Virtual Machines. For one thing, Azure itself manages them, doing things like installing operating system patches and automatically rolling out new patched images. (This implies that your application shouldn't maintain state in web or worker role instances; it should instead be kept in one of the Azure data management options described in the next section.) Azure also monitors the VMs, restarting any that fail. 
+しかし、これらの VM は Azure の Virtual Machines で作成する VM とは異なります。まず、Azure が VM を管理し、オペレーティング システム パッチのインストールやパッチを適用した新しいイメージの自動ロールアウトなどの作業を行います (これは、お客様のアプリケーションは Web ロールまたは Worker ロールのインスタンスで状態を維持せず、次のセクションで説明する Azure データ管理オプションの 1 つで維持する必要があることを意味します)。さらに、Azure が VM を監視し、障害が発生した VM を再起動します。
 
-You have two roles to choose from when you create an instance, both based on Windows Server. The main difference between the two is that an instance of a web role runs IIS, while an instance of a worker role does not. Both are managed in the same way, however, and it's common for an application to use both. For example, a web role instance might accept requests from users, then pass them to a worker role instance for processing. To scale your application up or down, you can request that Azure create more instances of either role or shut down existing instances. And similar to Azure Virtual Machines, you're charged only for the time that each web or worker role instance is running. 
+インスタンスの作成時に、Windows Server をベースとする 2 つのロールのいずれかを選択します。この 2 つのロールの主な違いは、Web ロールのインスタンスは IIS を実行しますが、Worker ロールのインスタンスは IIS を実行しないことです。しかし、どちらも同様に管理され、アプリケーションでは両方を使用することが一般的です。たとえば、Web ロールのインスタンスがユーザーからの要求を受信し、処理のために Worker ロールのインスタンスに渡すことが考えられます。アプリケーションの規模を拡大または縮小するために、Azure でいずれかのロールのインスタンスをさらに作成したり、既存のインスタンスを停止したりすることもできます。また、Azure の Virtual Machines の場合と同様に、Web ロールまたは Worker ロールの各インスタンスも使用時間に応じて課金されます。
 
 
 ###Mobile Services###
 
-If you are creating an app for a mobile device, Azure Mobile Services accelerates development by providing turnkey way to store data in the cloud, authenticate users, and send push notifications.  
-Native client libraries for Android, iOS, HTML/JavaScript, Windows Phone, and Windows Store make it easy to power apps available on all major mobile platforms.  An open and flexible REST API also enables you to use Mobile Services data and authentication functionality with apps on almost any platform.  A single Mobile Service can back multiple client apps so you can provide a consistent user experience across devices. 
+Azure の Mobile Services は、クラウドにデータを格納する、ユーザーを認証する、プッシュ通知を送信するなど、ターンキー型の手法を提供することにより、モバイル デバイス用のアプリケーション開発を迅速化します。
+アンドロイド、iOS、HTML/JavaScript、Windows Phone、および Windows ストアのネイティブ クライアント ライブラリは、主要なモバイル プラットフォームすべてで使用できるアプリケーションの作成を容易なものにします。オープンで柔軟性のある REST API によって、ほとんどすべてのプラットフォームのアプリケーションの、モバイル サービス データおよび認証機能も使用できます。1 つのモバイル サービスは、複数のクライアント アプリケーションをサポートできるため、デバイス全体に一貫したユーザー エクスペリエンスを提供できます。
 
-Mobile Services allows you to do simple provisioning and management of data stored in a SQL Database, authenticate users through well-known identity providers like Facebook, Twitter, Microsoft or Google account, and use notification services to deliver push notifications to your app. With server-side code you can easily use additional data storage options like blob storage or MongoDB, consume Add-Ons from the Azure Store like SendGrid or Pusher, use other Azure Services like Service Bus and worker roles, or even connect to on-premises systems.  A service can be scaled as an app becomes more popular, and monitoring and logging are supported.
+モバイル サービスによって、SQL データベースに格納されているデータの簡単なプロビジョニングと管理、Facebook、Twitter、Microsoft、Google アカウントなどの著名な ID プロバイダーを使用したユーザー認証、およびアプリケーションにプッシュ通知を配信する通知サービスが使用できます。サーバー側コードを使用すると、BLOB ストレージまたは MongoDB のような追加データ ストレージ オプションの使用、SendGrid または Pusher のような Azure ストアからのアドオンの使用、サービス バスや Worker ロールなどその他の Azure サービスの使用、さらに内部設置型にシステムへの接続が容易になります。アプリケーションがさらに普及し、監視およびロギングがサポートされると、サービスを拡張することができます。
 
-While you can certainly build the backend for a mobile app using Virtual Machines, Cloud Services or Web Sites, by opting for Mobile Services you can spend much less time writing the underlying service components.
-
-
-<h2><a id="data"></a>Data Management</h2>
-
-Applications need data, and different kinds of applications need different kinds of data. Because of this, Azure provides several different ways to store and manage data. 
-
-One of these has already been mentioned: the ability to run SQL Server or another DBMS in a VM created with Azure Virtual Machines. (It's important to realize that this option isn't limited to relational systems; you're also free to run NoSQL technologies such as MongoDB and Cassandra.) Running your own database system is straightforward-it replicates what we're used to in our own datacenters-but it also requires handling the administration of that DBMS. To make life easier, Azure provides three data management options that are largely managed for you. Figure 2 shows the choices.
+仮想マシン、クラウド サービスまたは Web サイトを使用して確実にモバイル アプリケーションのバックエンドをビルドすることもできますが、モバイル サービスを選択すると、このような基盤となるサービス コンポーネントの記述に要する時間を大幅に削減できます。
 
 
-![Azure data management](./media/intro-to-azure/IntroAzure3.png)   
- **Figure 2: For data management, Azure provides relational storage, scalable NoSQL tables, and unstructured binary storage.**
+<h2><a id="data"></a>データ管理</h2>
 
-Each of the three options addresses a different need: relational storage, fast access to potentially large amounts of simple typed data, and unstructured binary storage. In all three cases, data is automatically replicated across three different computers in an Azure datacenter to provide high availability. It's also worth pointing out that all three options can be accessed either by Azure applications or by applications running elsewhere, such as your on-premises datacenter, your laptop, or your phone. And however you apply them, you pay for all Azure data management services based on usage, including a gigabyte-per-month charge for stored data. 
+アプリケーションにはデータが必要です。そして、アプリケーションが異なれば必要なデータも異なります。このため、Azure にはデータの格納および管理を行うさまざまな方法が用意されています。
+
+その 1 つは、前に説明したように、Azure の Virtual Machines で作成した VM 内で SQL Server や他の DBMS を実行することです (この方法はリレーショナル システムに限定されません。MongoDB や Cassandra などの NoSQL テクノロジも実行できることに注意してください)。自社のデータベース システムの実行は簡単で、その機能はマイクロソフトのデータセンターで行う場合と同じですが、その DBMS の管理作業を処理しなければなりません。Azure には、作業を容易にするため、ほとんどを自動的に管理する 3 つのデータ管理オプションが用意されています。図 2 に、これらのオプションを示します。
+
+
+![Azure のデータ管理](./media/intro-to-azure/IntroAzure3.png)   
+**図 2: Azure には、データ管理のために、リレーショナル ストレージ、スケーラブルな NoSQL テーブル、および非構造化バイナリ ストレージが用意されている。**
+
+これら 3 つのオプションは、リレーショナル ストレージ、大量に発生する可能性のある単純型データへの高速アクセス、および非構造化バイナリ ストレージという異なるニーズにそれぞれ対応しています。これら 3 つのいずれのケースでも、高可用性を提供するために、Azure データセンター内の 3 種類のコンピューター間でデータが自動的に複製されます。さらに、3 つのオプションはすべて、Azure アプリケーションや、内部設置型のデータセンター、ノート PC、携帯電話などの他の場所で実行されるアプリケーションからアクセスできることに注目してください。また、どのような方法で利用する場合でも、すべての Azure データ管理サービスの料金は、格納されたデータの GB 単位の月額料金を含めて、使用量に基づいてお支払いいただきます。
 
 ###SQL Database###
 
-For relational storage, Azure provides SQL Database. Formerly called SQL Azure, SQL Database provides all of the key features of a relational database management system, including atomic transactions, concurrent data access by multiple users with data integrity, ANSI SQL queries, and a familiar programming model. Like SQL Server, SQL Database can be accessed using Entity Framework, ADO.NET, JDBC, and other familiar data access technologies. It also supports most of the T-SQL language, along with SQL Server tools such as SQL Server Management Studio. For anybody familiar with SQL Server (or another relational database), using SQL Database is straightforward.
+Azure には、リレーショナル ストレージのために SQL Database が用意されています。以前は SQL Azure と呼ばれていた SQL データベースは、アトミック トランザクション、データの整合性が確保された複数ユーザーによる同時データ アクセス、ANSI SQL クエリ、使い慣れたプログラミング モデルを含む、リレーショナル データベース管理システムのすべての主要機能を備えています。SQL Server と同様、SQL データベースには、Entity Framework、ADO.NET、JDBC、およびその他の使い慣れたデータ アクセス テクノロジを使用してアクセスできます。さらに、SQL データベースはほとんどの T-SQL 言語と、SQL Server Management Studio などの SQL Server ツールをサポートしています。SQL Server (または他のリレーショナル データベース) を使い慣れていれば、SQL データベースも簡単に使用できます。
 
-But SQL Database isn't just a DBMS in the cloud-it's a PaaS service. You still control your data and who can access it, but SQL Database takes care of the administrative grunt work, such as managing the hardware infrastructure and automatically keeping the database and operating system software up to date. SQL Database also provides a federation option that distributes data across multiple servers. This is useful for applications that work with large amounts of data or need to spread data access requests across multiple servers for better performance.
+しかし、SQL データベースは、クラウド内の単なる DBMS ではなく、PaaS サービスです。データとそれにアクセスするユーザーはお客様が管理しますが、ハードウェア インフラストラクチャの管理、データベースとオペレーティング システム ソフトウェアの自動更新などの単純な管理作業は SQL データベースが行います。さらに SQL データベースには、複数のサーバー間にデータを分散するフェデレーション オプションがあります。これは大量のデータを使用するアプリケーションや、複数のサーバーにデータ アクセス要求を分散してパフォーマンスを向上する必要のあるアプリケーションに有効です。
 
-If you're creating an Azure application (using any of the three execution models) that needs relational storage, SQL Database can be a good option. Applications running outside the cloud can also use this service, though, so there are plenty of other scenarios. For instance, data stored in SQL Database can be accessed from different client systems, including desktops, laptops, tablets, and phones. And because it provides built-in high availability through replication, using SQL Database can help minimize downtime.
+リレーショナル ストレージを必要とする Azure アプリケーションを (3 つのいずれかの実行モデルを使用して) 作成する場合には、SQL Database が適しています。しかし、クラウドの外部で実行されるアプリケーションもこのサービスを使用できるため、他にも多くのシナリオが存在します。たとえば、SQL データベースに格納されたデータは、デスクトップ、ノート PC、タブレット、携帯電話などのさまざまなクライアント システムからアクセスできます。さらに、レプリケーションによる高可用性が組み込まれているため、SQL データベースを使用することでダウンタイムを低減することができます。
 
-###Tables###
+###テーブル###
 
-Suppose you want to create an Azure application that needs fast access to typed data, maybe lots of it, but doesn't need to perform complex SQL queries on this data. For example, imagine you're creating a consumer application that needs to store customer profile information for each user. Your app is going to be very popular, so you need to allow for lots of data, but you won't do much with this data beyond storing it, then retrieving it in simple ways. This is exactly the kind of scenario where Azure Tables makes sense.
+大量に発生する可能性がある型指定データに高速アクセスする必要があるが、このデータに対して複雑な SQL クエリを実行する必要はない Azure アプリケーションを作成するとします。たとえば、各ユーザーの顧客プロファイル情報を格納する必要があるコンシューマー アプリケーションを作成する場合を考えてみましょう。このアプリケーションは広く利用されるため、大量のデータに対応する必要がありますが、データを格納して単純な方法で取得する以外は、特にデータを処理する必要がありません。このようなシナリオには、Azure テーブルが最適です。
 
-Don't be confused by the name: this technology doesn't provide relational storage. (In fact, it's an example of a NoSQL approach called a key/value store.) Instead, Azure Tables let an application store properties of various types, such as strings, integers, and dates. An application can then retrieve a group of properties by providing a unique key for that group. While complex operations like joins aren't supported, tables offer fast access to typed data. They're also very scalable, with a single table able to hold as much as a terabyte of data. And matching their simplicity, tables are usually less expensive to use than SQL Database's relational storage. 
+その名前が誤解を招く可能性がありますが、このテクノロジはリレーショナル ストレージを提供しません (実際には、キー/値ストアと呼ばれる NoSQL アプローチの一例です)。代わりに、Azure テーブルでは、アプリケーションが文字列、整数、日付などさまざまな型のプロパティを格納することができます。その後、アプリケーションはプロパティ グループの一意のキーを指定することで、そのグループを取得できます。結合などの複雑な操作はサポートされていませんが、テーブルを使用することで型指定されたデータに高速でアクセスすることができます。さらに、1 つのテーブルに 1 TB のデータを格納できるため、非常にスケーラブルです。また、テーブルはその簡素性に合わせて、通常は SQL データベースのリレーショナル ストレージを使用する場合よりも低価格です。
 
-###Blobs###
+###BLOB###
 
-The third option for data management, Azure Blobs, is designed to store unstructured binary data. Like Tables, Blobs provides inexpensive storage, and a single blob can be as large as one terabyte. An application that stores video, for example, or backup data or other binary information can use blobs for simple, cheap storage. Azure applications can also use Azure drives, which let blobs provide persistent storage for a Windows file system mounted in an Azure instance. The application sees ordinary Windows files, but the contents are actually stored in a blob.
+データ管理の 3 番目のオプションである Azure BLOB は、非構造化バイナリ データを格納するために設計されています。テーブルと同様に、BLOB は低価格のストレージを提供し、1 つの BLOB に 1 TB のデータを格納できます。たとえば、ビデオ、バックアップ データ、その他のバイナリ情報を格納するアプリケーションで、簡単な低価格のストレージを確保するために BLOB を使用することができます。Azure アプリケーションでは、Azure Drive も使用できるので、BLOB は Azure インスタンスにマウントされた Windows ファイル システムの永続的なストレージを提供できます。アプリケーションからは、通常の Windows ファイルのように見えますが、実際にはコンテンツは BLOB に格納されています。
 
 
-<h2><a id="networking"></a>Networking</h2>
+<h2><a id="networking"></a>ネットワーク</h2>
 
-Azure runs today in several datacenters spread across the United States, Europe, and Asia. When you run an application or store data, you can select one or more of these datacenters to use. You can also connect to these datacenters in various ways:
+Azure は、現在米国、ヨーロッパ、およびアジアに広がるいくつかのデータセンター内で実行されています。アプリケーションを実行したり、データを格納したりする際は、これらの中から使用するデータセンターを 1 つ以上選択できます。さらに、次に示すさまざまな手段でこれらのデータセンターに接続できます。
 
-- You can use Azure Virtual Network to connect your own on-premises local network to a defined set of Azure VMs.
+- Azure の Virtual Network を使用して、自社の内部設置型ローカル ネットワークを定義された Azure VM セットに接続できます。
 
-- If your Azure application is running in multiple datacenters, you can use Azure Traffic Manager to route requests from users intelligently across instances of the application.
+- Azure アプリケーションが複数のデータセンターで実行されている場合は、Azure の Traffic Manager を使用して、アプリケーションのインスタンスにユーザーからの要求をインテリジェントにルーティングできます。
 
-Figure 3 illustrates these options.
+図 3 にこれらのオプションを示します。
 
-![Azure networking](./media/intro-to-azure/IntroAzure4.png)   
- **Figure 3: Azure allows creating a cloud VPN, and intelligently distributing user requests across different datacenters.**
+![Azure のネットワーキング](./media/intro-to-azure/IntroAzure4.png)   
+**図 3: Azure では、クラウド VPN を作成し、異なるデータセンターにユーザー要求をインテリジェントに分散できます。**
 
-###Virtual Network###
+###仮想ネットワーク###
 
-One useful way to use a public cloud is to treat it as an extension of your own datacenter. Because you can create VMs on demand, then remove them (and stop paying) when they're no longer needed, you can have computing power only when you want it. And since Azure Virtual Machines lets you can create VMs running SharePoint, Active Directory, and other familiar on-premises software, this approach can work with the applications you already have.
+パブリック クラウドの便利な使用方法として、自社のデータセンターの延長として扱う方法があります。VM は必要に応じて作成し、不要になった時点で削除 (および料金のお支払いを停止) できるため、必要なときにのみコンピューティング能力を確保することができます。また、Azure の Virtual Machines により、SharePoint、Active Directory、その他の使い慣れた内部設置型ソフトウェアを実行する VM を作成できるため、既にあるアプリケーションでこのアプローチを利用することができます。
 
-To make this really useful, though, your users ought to be able to treat these applications as if they were running in your own datacenter. This is exactly what Azure Virtual Network allows. Using a VPN gateway device, an administrator can set up a virtual private network (VPN) between your local network and a defined group of VMs running in Azure. Because you assign your own IP v4 addresses to the cloud VMs, they appear to be on your own network. Users in your organization can access the applications those VMs contain as if they were running locally.
+この有用性を高めるためには、これらのアプリケーションがまるで自社のデータセンターで実行されているかのようにユーザーがアプリケーションを扱うことができる必要があります。これを Azure の Virtual Network で実現できます。管理者は、VPN ゲートウェイ デバイスを使用して、自社のローカル ネットワークと Azure で実行されている定義された VM グループの間に仮想プライベート ネットワーク (VPN) を設定できます。クラウド VM には独自の IP v4 アドレスを割り当てるため、VM は自社のネットワーク上にあるように見えます。組織内のユーザーは、ローカルで実行されているかのように、VM に含まれるアプリケーションにアクセスできます。
 
 ###Traffic Manager###
 
-an Azure application with users in just a single part of the world might run in only one Azure datacenter. An application with users scattered around the world, however, is more likely to run in multiple datacenters, maybe even all of them. In this second situation, you face a problem: How do you intelligently direct users to application instances? Most of the time, you probably want each user to access the datacenter closest to her, since it will likely give her the best response time. But what if that instance of the application is overloaded or unavailable? In this case, it would be nice to direct her request automatically to another datacenter. This is exactly what's done by Azure Traffic Manager. 
+ユーザーが世界の一地域に限定されている Azure アプリケーションは、1 つの Azure データセンターのみで実行されるでしょう。しかし、世界中にユーザーがいるアプリケーションは、複数のデータセンターか、場合によってはすべてのデータセンターで実行される可能性が高くなります。この 2 番目の状況では、どのようにしてユーザーをアプリケーション インスタンスにインテリジェントに転送するかという問題に直面します。ほとんどの場合は、最適な応答時間を確保するために、ユーザーがそれぞれ最も近いデータセンターにアクセスすることが求められます。しかし、そのアプリケーションのインスタンスがオーバーロード状態になったり、使用できない場合には、別のデータセンターにこのユーザーの要求を自動的に転送することが求められます。これを Azure の Traffic Manager が実現します。
 
-The owner of an application defines rules that specify how requests from users should be directed to datacenters, then relies on Traffic Manager to carry out these rules. For example, users might normally be directed to the closest Azure datacenter, but get sent to another one when the response time from their default datacenter exceeds the response time from other datacenters. For globally distributed applications with many users, having a built-in service to handle problems like these is useful.
+アプリケーションの所有者は、ユーザーからの要求をデータセンターに転送する方法を指定するルールを定義し、Traffic Manager を使用してこれらのルールを実施します。たとえば、通常は最も近い Azure データセンターにユーザーを転送しますが、既定のデータセンターからの応答時間が他のデータセンターからの応答時間を超過した場合には、別のデータセンターに送信します。多くのユーザーが世界各地に分散しているアプリケーションでは、組み込みのサービスでこのような問題に対処すると効果的です。
 
 
-<h2><a id="analytics"></a>Business Analytics</h2>
+<h2><a id="analytics"></a>ビジネス分析</h2>
 
-Analyzing data is a fundamental part of how businesses use information technology. A cloud platform provides a pool of on-demand, pay-per-use resources, which makes it a good foundation for this kind of computing. Accordingly, Azure provides two options for business analytics. Figure 4 illustrates the choices.
+企業の情報技術の活用方法において、データの分析は最も基本的なものです。クラウド プラットフォームでは、必要に応じて従量課金制のリソース プールを利用できるため、このようなコンピューティングに最適な基盤を確保できます。それに応じて、Azure には、2 つのビジネス分析オプションが用意されています。図 4 に、これらのオプションを示します。
 
-![Azure analytics](./media/intro-to-azure/IntroAzure5.png)   
- **Figure 4: For business analytics, Azure provides reporting and support for big data.**
+![Azure の分析](./media/intro-to-azure/IntroAzure5.png)   
+**図 4: Azure には、ビジネス分析用にビッグ データのレポート機能とサポートが用意されています。**
 
-Analyzing data can take many forms, and so these two options are quite different. It's worth looking at each one separately.
+データの分析には多くの形式があり、これら 2 つのオプションもそれに応じて非常に異なるため、それぞれについて、個別に見てみましょう。
 
-###Reporting with SQL Database###
-One of the most common ways to use stored data is to create reports based on that data.
+###SQL データベースを使用したレポート###
+格納されたデータを使用する最も一般的な方法に、そのデータからレポートを作成することが挙げられます。
  
-Running SQL Server Reporting Services (SSRS) on Azure Virtual Machines allows you to build easily accessible reporting capabilities into your Azure application. You can create reports with tables, charts, maps, gauges, and more in various formats, including HTML, XML, PDF, and Excel. 
+Azure の Virtual Machines で SQL Server レポート サービス (SSRS) を実行すると、簡単にアクセスできるレポート機能を Azure アプリケーションに組み込むことができます。HTML、XML、PDF、Excel のようなさまざまな形式で、テーブル、グラフ、マップ、ゲージなどを盛り込んだレポートを作成できます。
 
-You can also perform analytics with SQL Database data using on-premises business intelligence tools, including SSRS. To a client, SQL Database looks like SQL Server, and so the same technologies can work with both.  
+また、SSRS など内部設置型のビジネス インテリジェンス ツールを使用して、SQL データベースのデータを分析することもできます。クライアントには、SQL データベースが SQL Server のように見え、同じテクノロジでどちらも使用することができます。
  
 
 ###HDInsight (Hadoop)###
 
-For many years, the bulk of data analysis has been done on relational data stored in a data warehouse built with a relational DBMS. This kind of business analytics is still important, and it will be for a long time to come. But what if the data you want to analyze is so big that relational databases just can't handle it? And suppose the data isn't relational? It might be server logs in a datacenter, for example, or historical event data from sensors, or something else. In cases like this, you have what's known as a big data problem. You need another approach.
+長年にわたって、データ分析のほとんどは、リレーショナル DBMS で構築されたデータ ウェアハウスに格納されたリレーショナル データに対して行われてきました。このようなビジネス分析は現在も重要であり、それは今後も変わらないでしょう。しかし、リレーショナル データベースで対応できないような大量のデータを分析する場合や、データがリレーショナルでない場合はどうでしょうか。たとえば、データセンターのサーバー ログや、センサーからの履歴イベント データなどです。このような場合には、ビッグ データ問題と呼ばれる問題に直面するため、別のアプローチが必要です。
 
-The dominant technology today for analyzing big data is Hadoop. An Apache open source project, this technology stores data using the Hadoop Distributed File System (HDFS), then lets developers create MapReduce jobs to analyze that data. HDFS spreads data across multiple servers, then runs chunks of the MapReduce job on each one, letting the big data be processed in parallel.
+現在、ビッグ データの分析に最もよく使用されているテクノロジは Hadoop です。Apache オープン ソース プロジェクトであるこのテクノロジは、Hadoop 分散ファイル システム (HDFS) を使用してデータを格納し、開発者はデータを分析するための MapReduce ジョブを作成します。HDFS は複数のサーバーにデータを分散し、各サーバーで MapReduce ジョブのチャンクを実行して、ビッグ データを並列処理します。
 
-HDInsight is the name of the Azure's Apache Hadoop-based service. As Figure 4 suggests, HDInsight lets HDFS store data on the cluster and distribute it across multiple VMs. It also spreads the logic of a MapReduce job across those VMs. Just as with on-premises Hadoop, data is processed locally-the logic and the data it works on are in the same VM-and in parallel for better performance. HDInsight can also store data in Azure Storage Vault (ASV), which uses blobs.  Using ASV allows you to save money because you can delete your HDInsight cluster when not in use, but still keep your data in the cloud.
+HDInsight は、Azure の Apache Hadoop ベース サービスの名前です。図 4 が示すように、HDInsight は HDFS がクラスターにデータを格納してそれを複数の VM に分配することができます。また、これらの VM 全体 MapReduce ジョブのロジックを配布します。内部設置型 Hadoop と同様に、データはローカルで (ロジックとそのロジックが処理するデータは同じ VM 内に存在) 並列処理されるため、パフォーマンスが向上します。HDInsight は、BLOB を使用する Azure の Storage Vault (ASV) にデータを格納できます。ASV を使用すると、クラウドにデータを保持したまま使用していない HDInsight クラスターを削除できるため、コスト削減ができます。
  
-HDinsight supports other components of the Hadoop ecosystem as well, including Hive and Pig. Microsoft has also created components that make it easier to work with data produced by HDInsight using traditional BI tools, such as the HiveODBC adapter and Data Explorer that work with Excel.
+HDinsight は Hive および Pig を含めた Hadoop エコシステムのその他のコンポーネントも同様にサポートしています。Microsoft が作成したコンポーネントは、Excel を使用する HiveODBC アダプターや Data Explorer など、従来の BI ツールを使用して作成されたデータに対する作業を容易にします。
 
 
 
 
 
-<h2><a id="messaging"></a>Messaging</h2>
+<h2><a id="messaging"></a>メッセージング</h2>
 
-No matter what it's doing, code frequently needs to interact with other code.  In some situations, all that's needed is basic queued messaging. In other cases, more complex interactions are required. Azure provides a few different ways to solve these problems. Figure 5 illustrates the choices. 
+どのような処理を行う場合でも、コードは頻繁に他のコードと対話する必要があります。状況によって、基本的なキュー メッセージングのみが必要な場合と、より複雑な対話が必要になる場合があります。Azure には、これらの問題を解決するいくつかの手段が用意されています。図 5 に、これらのオプションを示します。
 
-![Azure messaging](./media/intro-to-azure/IntroAzure6.png)   
- **Figure 5: For connecting applications, Azure provides queues, publish/subscribe, and synchronous connections via the cloud.**
+![Azure のメッセージング](./media/intro-to-azure/IntroAzure6.png)   
+**図 5: Azure には、アプリケーションを接続するために、キュー、パブリッシュ/サブスクライブ、およびクラウドによる同期接続が用意されている。**
 
-###Queues###
+###キュー###
 
-Queuing is a simple idea: One application places a message in a queue, and that message is eventually read by another application. If your application needs just this straightforward service, Azure Queues might be the best choice. 
+キューは単純な概念で、あるアプリケーションがキューにメッセージを配置すると、そのメッセージがいずれ別のアプリケーションによって読み取られるというものです。アプリケーションにこのように単純なサービスが必要な場合は、Azure キューが最も適しているでしょう。
 
-One common use of Queues today is to let a web role instance communicate with a worker role instance within the same Cloud Services application. For example, suppose you create an Azure application for video sharing. The application consists of PHP code running in a web role that lets users upload and watch videos, together with a worker role implemented in C# that translates uploaded video into various formats. When a web role instance gets a new video from a user, it can store the video in a blob, then send a message to a worker role via a queue telling it where to find this new video. A worker role instance-it doesn't matter which one-will then read the message from the queue and carry out the required video translations in the background. Structuring an application in this way allows asynchronous processing, and it also makes the application easier to scale, since the number of web role instances and worker role instances can be varied independently.
+今日のキューの一般的な使用方法として、同じ Cloud Services アプリケーション内で Web ロールのインスタンスを Worker ロールのインスタンスと通信させることがあります。たとえば、ビデオを共有するために Azure アプリケーションを作成するとします。アプリケーションは、ユーザーがビデオのアップロードと視聴を行うために Web ロール内で実行される PHP コードと、アップロードされたビデオをさまざまな形式に変換する、C# で実装される Worker ロールで構成されています。Web ロールのインスタンスがユーザーから新しいビデオを取得すると、ビデオを BLOB に格納し、キューを介して Worker ロールにメッセージを送信してこの新しいビデオの格納場所を通知します。Worker ロールのインスタンス (どのインスタンスでもかまいません) は、その後、キューからメッセージを読み取り、バックグラウンドで必要なビデオ変換を実行します。アプリケーションをこのように構成することで、非同期処理が可能になるだけでなく、Web ロールと Worker ロールのインスタンス数を別々に変更できるため、アプリケーションの規模を簡単に変更できるようになります。
 
-###Service Bus###
+###サービス バス###
 
-Whether they run in the cloud, in your data center, on a mobile device, or somewhere else, applications need to interact. The goal of Azure Service Bus is to let applications running pretty much anywhere exchange data.
+クラウド、データセンター、モバイル デバイスなど、アプリケーションをどこで実行する場合でも、対話が必要です。Azure のサービス バスの目的は、データを交換するほとんどすべての場所でアプリケーションを実行できるようにすることです。
 
-As Figure 5 shows, Service Bus provides a queuing service. This service isn't identical to the Queues just described, however. Unlike Azure Queues, for example, Service Bus provides a both queues (one-to-one) and publish-and-subscribe mechanisms. With publish-subscribe, an application can send messages to a topic, while other applications can create subscriptions to this topic. This allows one-to-many communication among a set of applications, letting the same message be read by multiple recipients. And queuing isn't the only option: Service Bus also allows direct communication through its relay service, providing a secure way to interact through firewalls. Service Bus relays enable applications to communicate by exchanging messages through an endpoint hosted in the cloud, rather than locally.
+図 5 に示すように、サービス バスはキュー サービスを提供します。ただし、このサービスは、前に説明したキューとは異なります。Azure キューとの違いの例として、サービス バスは、キュー (1 対 1) および「発行とサブスクライブ」のメカニズムの両方が用意されています。発行/サブスクライブでは、アプリケーションはトピックにメッセージを送信でき、他のアプリケーションはこのトピックへのサブスクリプションを作成できます。これにより、アプリケーション セット内で 1 対多コミュニケーションが可能になり、複数の受信者が同じメッセージを読むことができます。さらに、キューが唯一のオプションではなく、サービス バスはリレー サービスを介した直接的なコミュニケーションも可能にし、ファイアウォールを介して安全に対話する手段を確保できます。サービス バス リレーは、ローカルではなくクラウドでホストされるエンドポイントを介してメッセージを交換することによって、アプリケーションの通信ができます。
 
-Applications that communicate through Service Bus might be Azure applications or software running on some other cloud platform. They can also be applications running outside the cloud, however. For example, think of an airline that implements reservation services in computers inside its own datacenter. The airline needs to expose these services to many clients, including check-in kiosks in airports, reservation agent terminals, and maybe even customers' phones. It might use Service Bus to do this, creating loosely coupled interactions among the various applications.
+Service Bus を介して通信するアプリケーションは、他のクラウド プラットフォーム上で実行される Azure アプリケーションやソフトウェアである場合も、クラウドの外部で実行されるアプリケーションである場合もあります。たとえば、自社のデータセンター内のコンピューターで予約サービスを実施する航空会社があるとします。この航空会社は、空港のチェックイン キオスク、予約代理店の端末、さらに顧客の携帯電話など、多くのクライアントにこのサービスを公開する必要があります。このためにサービス バスを使用して、さまざまなアプリケーション間で疎結合方式の対話を作成します。
 
 
 
 <h2><a id="caching"></a>Caching</h2>
 
-Applications tend to access the same data over and over. One way to improve performance is to keep a copy of that data closer to the application, minimizing the time needed to retrieve it. Azure provides two different services for doing this: in-memory caching of data used by Azure applications and a content delivery network (CDN) that caches blob data on disk closer to its users. Figure 6 shows both.
+アプリケーションは、同じデータに繰り返しアクセスする傾向があります。パフォーマンスを向上する 1 つの手段として、アプリケーションの近くにそのデータのコピーを保持して、データの取得に必要な時間を短縮する方法があります。Azure では、この目的のために、Azure アプリケーションによって使用されるデータのメモリ内キャッシュと、ユーザーの近くのディスクに BLOB データをキャッシュするコンテンツ配信ネットワーク (CDN) という 2 つのサービスを用意しています。図 6 に、その両方を示します。
 
-![Azure Caching](./media/intro-to-azure/IntroAzure7.png)   
- **Figure 6: an Azure application can cache data in memory, and copies of a blob can be cached at sites around the world.**
+![Azure のキャッシング](./media/intro-to-azure/IntroAzure7.png)   
+**図 6: Azure アプリケーションはメモリ内にデータをキャッシュでき、BLOB のコピーを世界中のサイトでキャッシュできる。**
 
 ###Caching###
 
-Accessing data stored in any of Azure's data management services-SQL Database, Tables, or Blobs-is quite fast. Yet accessing data stored in memory is even faster. Because of this, keeping an in-memory copy of frequently accessed data can improve application performance. You can use Azure's in-memory Caching to do this. 
+SQL Database、テーブル、BLOB という Azure のデータ管理サービスのいずれかに格納されたデータには高速アクセスできますが、メモリに格納されたデータへのアクセスはさらに高速です。このため、頻繁にアクセスするデータのコピーをメモリ内に維持することで、アプリケーション パフォーマンスを向上できます。これには、Azure のメモリ内 Caching を使用できます。
 
-A Cloud Services application can store data in this cache, then retrieve it directly without needing to access persistent storage. As Figure 6 shows, the cache can be maintained inside your application's VMs or be provided by VMs dedicated solely to caching. In either case, the cache can be distributed, with the data it contains spread across multiple VMs in an Azure datacenter. 
+クラウド サービス アプリケーションは、このキャッシュにデータを格納し、その後は永続的なストレージにアクセスしなくても、直接データを取得できます。図 6 に示すように、アプリケーションの VM 内にキャッシュを維持することも、Caching 専用の VM が提供するキャッシュを使用することもできます。いずれの場合も、キャッシュを分散して、中に含まれるデータを Azure データセンターの複数の VM に分散することができます。
 
-An application that repeatedly reads a product catalog might benefit from using this kind of caching, for example, since the data it needs will be available more quickly. The technology also supports locking, letting it be used with read/write as well as read-only data. And ASP.NET applications can use the service to store session data with just a configuration change. 
+たとえば、製品カタログを繰り返し読み取るアプリケーションでは、必要なデータをすばやく取得できるため、このようなキャッシュの使用が有効です。このテクノロジは、ロックもサポートしているため、読み取り/書き込みデータにも読み取り専用データにも使用できます。さらに、ASP.NET アプリケーションでは、構成を変更するだけで、サービスを使用してセッション データを格納できます。
 
 ###CDN###
 
-Suppose you need to store blob data that will be accessed by users around the world. Maybe it's a video of the latest World Cup match, for instance, or driver updates, or a popular e-book. Storing a copy of the data in multiple Azure datacenters will help, but if there are lots of users, it's probably not enough. For even better performance, you can use the Azure CDN.
+世界各地のユーザーがアクセスする BLOB データを格納する必要があるとします。例としては、ワールド カップの最新の試合のビデオ、ドライバーの更新プログラム、一般的な電子ブックなどがあります。このために、複数の Azure データセンターにデータのコピーを格納することができますが、ユーザーが多い場合は、十分でない可能性があります。より優れたパフォーマンスを得るには、Azure CDN を使用します。
 
-The CDN has dozens of sites around the world, each capable of storing copies of Azure blobs. The first time a user in some part of the world accesses a particular blob, the information it contains is copied from an Azure datacenter into local CDN storage in that geography. After this, accesses from that part of the world will use the blob copy cached in the CDN-they won't need to go all the way to the nearest Azure datacenter. The result is faster access to frequently accessed data by users anywhere in the world.
-
-
-
-<h2><a id="identity"></a>Identity</h2>
-
-Working with identity is part of most applications. For example, knowing who a user is lets an application decide how it should interact with that user. To help you do this, Microsoft provides Azure Active Directory.
-
-Like most directory services, Azure Active Directory stores information about users and the organizations they belong to. It lets users log in, then supplies them with tokens they can present to applications to prove their identity. It also allows synchronizing user information with Windows Server Active Directory running on premises in your local network. While the mechanisms and data formats used by Azure Active Directory aren't identical with those used in Windows Server Active Directory, the functions it performs are quite similar. 
-
-It's important to understand that Azure Active Directory is designed primarily for use by cloud applications. It can be used by applications running on Azure, for example, or on other cloud platforms. It's also used by Microsoft's own cloud applications, such as those in Office 365. If you want to extend your datacenter into the cloud using Azure Virtual Machines and Azure Virtual Network, however, Azure Active Directory isn't the right choice. Instead, you'll want to run Windows Server Active Directory in cloud VMs, as described earlier.
-
-To let applications access the information it contains, Azure Active Directory provides a RESTful API called Azure Active Directory Graph. This API lets applications running on any platform access directory objects and the relationships among them.  For example, an authorized application might use this API to learn about a user, the groups he belongs to, and other information. Applications can also see relationships between users-their social graph-letting them work more intelligently with the connections among people.
-
-Another capability of this service, Azure Active Directory Access Control, makes it easier for an application to accept identity information from Facebook, Google, Windows Live ID, and other popular identity providers. Rather than requiring the application to understand the diverse data formats and protocols used by each of these providers, Access Control translates all of them into a single common format. It also lets an application accept logins from one or more Active Directory domains. For example, a vendor providing a SaaS application might use Azure Active Directory Access Control to give users in each of its customers single sign-on to the application.
-
-Directory services are a core underpinning of on-premises computing. It shouldn't be surprising that they're also important in the cloud.
-
-<h2><a id="media"></a>Media</h2>
-
-Video makes up a large part of Internet traffic today, and that percentage will be even larger tomorrow. Yet providing video on the web isn't simple. There are lots of variables, such as the encoding algorithm and the display resolution of the user's screen. Video also tends to have bursts in demand, like a Saturday night spike when lots of people decide they'd like to watch an online movie. 
-
-Given its popularity, it's a safe bet that many new applications will be created that use video. Yet all of them will need to solve some of the same problems, and making each one solve those problems on its own makes no sense. A better approach is to create a platform that provides common solutions for many applications to use. And building this platform in the cloud has some clear advantages. It can be broadly available on a pay-as-you-go basis, and it can also handle the variability in demand that video applications often face.
-
-Azure Media Services addresses this problem. It provides a set of cloud components that make life easier for people creating and running applications using video and other media. Figure 7 illustrates the technology.
-
-![Azure Media Services](./media/intro-to-azure/IntroAzure8.png)   
- **Figure 7: Media Services is a platform for applications that provide video and other media to clients around the world.**
+世界中に数十の CDN サイトがあり、それぞれが Azure BLOB のコピーを格納できます。世界のある地域のユーザーが初めて特定の BLOB にアクセスすると、中に含まれている情報が Azure データセンターからその Geo のローカル CDN ストレージにコピーされます。それ以降のその地域からのアクセスには、CDN にキャッシュされた BLOB コピーが使用されるため、近くの Azure データセンターまでアクセスする必要がありません。この結果、ユーザーは世界中のどこからでも、頻繁にアクセスするデータに高速アクセスできるようになります。
 
 
-As the figure shows, Media Services provides a set of components for applications that work with video and other media. For example, it includes a media ingest component to upload video into Media Services (where it's stored in Azure Blobs), an encoding component that supports various video and audio formats, a content protection component that provides digital rights management, a component for inserting ads into a video stream, components for streaming, and more. Microsoft partners can also provide components for the platform, then have Microsoft distribute those components and bill on their behalf. 
 
-Applications that use this platform can run on Azure or elsewhere. For example, a desktop application for a video production house might let its users upload video to Media Services, then process it in various ways. Alternatively, a cloud-based content management service running on Azure might rely on Media Services to process and distribute video. Wherever it runs and whatever it does, each application chooses which components it needs to use, accessing them through RESTful interfaces. 
+<h2><a id="identity"></a>ID</h2>
 
-To distribute what it produces, an application can use the Azure CDN, another CDN, or just send bits directly to users. However it gets there, video created using Media Services can be consumed by various client systems, including Windows, Macintosh, HTML 5, iOS, Android, Windows Phone, Flash, and Silverlight. The goal is to make it easier to create modern media applications. 
+ほとんどのアプリケーションには、ID の処理が含まれます。たとえば、アプリケーションはユーザーがだれかを認識することで、そのユーザーとの対話方法を決定します。Microsoft では、このために Azure Active Directory を提供しています。
 
-For a more visual view of how Media Services works, download the [Azure Media Services Poster][Azure Media Services Poster].
+ほとんどのディレクトリ サービスと同様、Azure Active Directory は、ユーザーとユーザーが所属する組織に関する情報を格納しています。これにより、ユーザーはログインでき、ID を証明するためにアプリケーションに提示するトークンが提供されます。さらに、ローカル ネットワークで内部設置型として実行される Windows Server Active Directory とのユーザー情報の同期も可能です。Azure Active Directory により使用されるメカニズムとデータ形式は、Windows Server Active Directory とは異なりますが、実行する機能はきわめて似ています。
+
+ここで重要な点は、Azure Active Directory は主にクラウド アプリケーションで使用するために設計されているということです。Azure Active Directory は、Azure やその他のクラウド プラットフォームで実行するアプリケーションのほか、Office 365 など、Microsoft のクラウド アプリケーションでも使用されます。しかし、Azure の Virtual Machines や Azure の Virtual Network を使用してデータセンターをクラウドに拡張する場合には、Azure Active Directory は適していません。代わりに、既に説明したように、クラウド VM で Windows Server Active Directory を実行することをお勧めします。
+
+アプリケーションが中に含まれる情報にアクセスできるようにするため、Azure Active Directory には、Azure Active Directory Graph と呼ばれる REST ベースの API が用意されています。この API を使用すると、任意のプラットフォームで実行されるアプリケーションからディレクトリ オブジェクトとこれらオブジェクトのリレーションシップにアクセスすることができます。たとえば、承認されたアプリケーションは、ユーザー、ユーザーが属するグループ、およびその他の情報を得るために、この API を使用することが考えられます。アプリケーションは、ユーザー間のリレーションシップ (ソーシャル グラフ) を確認し、ユーザー間の接続をよりインテリジェントに処理することができます。
+
+このサービスのもう 1 つの機能である Azure Active Directory のアクセス制御は、アプリケーションが Facebook、Google、Windows Live ID やその他の一般的な ID プロバイダーから ID 情報を簡単に取得できるようにします。アプリケーションがこれらの各プロバイダーで使用されるさまざまなデータ形式とプロトコルを認識するのではなく、アクセス制御がこれらのすべてを 1 つの共通形式に変換します。さらに、アプリケーションは 1 つ以上の Active Directory ドメインからのログインを受け入れることができるようになります。たとえば、SaaS アプリケーションを提供するベンダーは、Azure Active Directory のアクセス制御を使用して、各顧客のユーザーにアプリケーションへのシングル サインオンを提供できます。
+
+ディレクトリ サービスは、内部設置型コンピューティングの中核的な土台を構成し、当然のことながら、クラウドでも重要な役割を担います。
+
+<h2><a id="media"></a>メディア</h2>
+
+ビデオは、現在のインターネット トラフィックの大きな部分を占めており、その割合はさらに大きくなっていきます。しかし、Web でビデオを提供するのは簡単ではありません。エンコーディング アルゴリズム、ユーザー画面のディスプレイ解像度など、一定しない要素がたくさんあります。さらに、多くの人がオンライン ムービーを観ようとする土曜の夜など、ビデオの需要は急増することがよくあります。
+
+その人気を考えると、今後はビデオを使用した新しいアプリケーションが数多く作成されることになるでしょう。しかし、どのアプリケーションでも同じ問題を解決する必要があり、アプリケーションごとにそれらの問題を解決するのは合理的ではありません。多くのアプリケーションにより使用される共通の解決策を提供するプラットフォームを作成するアプローチの方が優れています。そして、このプラットフォームをクラウドにビルドすることにはいくつかの明らかな利点があります。従量課金制で広範囲に利用してもらうことができ、ビデオ アプリケーションがよく直面する変動に対処することもできます。
+
+Azure の Media Services はこの問題に対処します。ビデオや他のメディアを使用するアプリケーションを作成および実行する担当者の業務をシンプルにする一連のクラウド コンポーネントが用意されています。図 7 に、テクノロジを示します。
+
+![Azure の Media Services](./media/intro-to-azure/IntroAzure8.png)   
+**図 7: Media Services は、世界中の顧客にビデオや他のメディアを提供するアプリケーションのプラットフォームです。**
 
 
-<h2><a id="HPC"></a>High-Performance Computing</h2>
+図が示すように、メディア サービスにはビデオや他のメディアと連動する一連のアプリケーション コンポーネントが用意されています。たとえば、ビデオを Media Services (Azure BLOB における格納場所) にアップロードするためのメディア取り込みコンポーネント、さまざまなビデオ形式やオーディオ形式をサポートするエンコーディング コンポーネント、デジタル権利管理を行うコンテンツ保護コンポーネント、ビデオ ストリームに広告を挿入するコンポーネント、ストリーミングを行うコンポーネントなどが用意されています。マイクロソフト パートナーがプラットフォーム向けのコンポーネントを提供し、マイクロソフトがそれらのコンポーネントを代理で配布して請求することもあります。
 
-One of the most attractive ways to use a cloud platform is for high-performance computing (HPC), The essence of HPC is executing code on many machines at the same time. On Azure, this means running many virtual machines simultaneously, all working in parallel to solve some problem. Doing this requires some way to schedule applications, i.e., to distribute their work across these instances. To allow this, Azure provides the HPC Scheduler. 
+このプラットフォームを使用するアプリケーションは、Azure などで実行できます。たとえば、ビデオ制作会社向けのデスクトップ アプリケーションでは、ユーザーがメディア サービスにメディアをアップロードし、さまざまな方法で処理できることがあります。または、Azure で実行されるクラウド ベースのコンテンツ管理サービスが、ビデオを処理および配信する点で Media Services に依存していることがあります。実行する場所や内容にかかわらず、各アプリケーションは使用する必要があるコンポーネントを選択し、RESTful インターフェイスを通してアクセスします。
 
-This component can work with HPC applications built to use the industry-standard Message Passing Interface (MPI). Software that does finite element analysis, such as car crash simulations, is one example of this type of application, and there are many others. The HPC Scheduler can also be used with so-called embarrassingly parallel applications, such as Monte Carlo simulations. Whatever problem is addressed, the value it provides is the same: The HPC Scheduler handles the complex problem of scheduling parallel computing work across many Azure virtual machines. The goal is to make it easier to build HPC applications running in the cloud. 
+アプリケーションは、生成データを配信するために、Azure CDN や他の CDN を使用したり、ユーザーに直接データを送信することができます。配信方法が何であれ、メディア サービスを使用して作成されたビデオは、Windows、Macintosh、HTML 5、iOS、Android、Windows Phone、Flash、Silverlight など、さまざまなクライアント システムにより使用される可能性があります。その目的は、最新のメディア アプリケーションの作成を容易にすることにあります。
 
-<h2><a id="commerce"></a>Commerce</h2>
+Media Services の詳細に関するビジュアルな表示については、[Azure の Media Services ポスター][Azure Media Services Poster]をダウンロードしてください。
 
-The rise of Software as a Service is transforming how we create applications. It's also transforming how we sell applications. Since a SaaS application lives in the cloud, it makes sense that its potential customers should look for solutions online. And this change applies to data as well as to applications. Why shouldn't people look to the cloud for commercially available datasets? Microsoft addresses both of these concerns with [Azure Marketplace](http://datamarket.azure.com/) and [Azure Store](/en-us/store/overview/), illustrated in Figure 8.
+
+<h2><a id="HPC"></a>ハイパフォーマンス コンピューティング</h2>
+
+クラウド プラットフォームを使用する最も魅力的な方法に、ハイパフォーマンス コンピューティング (HPC) があります。HPC の本質は、複数のマシンで同時にコードを実行することです。Azure では、これは、多くの仮想マシンを同時に実行し、すべてを並列で処理して問題を解決することを意味します。このためには、アプリケーションをスケジュールする、つまり、これらのインスタンス間に処理を分散するための手段が必要になります。Azure には、これを可能にするため HPC Scheduler が用意されています。
+
+このコンポーネントは、業界標準の Message Passing Interface (MPI) を使用するために構築された HPC アプリケーションに使用できます。このタイプのアプリケーションには、自動車の衝突シミュレーションなどの有限要素解析を行うソフトウェアをはじめとして、多くのものがあります。HPC Scheduler は、モンテ カルロ シミュレーションなどの、いわゆる驚異的並列アプリケーションにも使用できます。どのような問題に対応する場合でも、もたらされる価値は等しく、HPC Scheduler は、多数の Azure の仮想マシンの間で並列コンピューティング処理をスケジュールするという複雑な問題に対処します。その目的は、クラウド内で実行される HPC アプリケーションの作成を容易にすることにあります。
+
+<h2><a id="commerce"></a>コマース</h2>
+
+サービスとしてのソフトウェアの登場により、アプリケーションの作成方法が変わろうとしています。さらに、アプリケーションの販売方法も変わろうとしています。SaaS アプリケーションはクラウドに存在するため、当然ながら潜在的な顧客はソリューションをオンラインで探します。この変化は、アプリケーションだけでなくデータにも当てはまります。ユーザーは、商用データセットもクラウドで探すはずです。図 8 に示すように、Microsoft は、[Azure Marketplace](http://datamarket.azure.com/) および [Azure ストア](/ja-jp/store/overview/)によってどちらの懸念事項にも対応しています。
 
 ![Azure Commerce](./media/intro-to-azure/IntroAzure9.png)   
- **Figure 8: Azure Marketplace and Azure Store let you find and buy Azure applications and commercial datasets.**
+**図 8: Azure Marketplace および Azure ストアでは、Azure アプリケーションと商用データセットを検索して購入することができます。**
 
-The difference between the two is that Marketplace is outside of the Azure Management Portal, but the Store can be accessed from the portal. Potential customers can search either to find Azure applications that meet their needs, then sign up to use them either through the application's creator or directly through the Marketplace or Store. Customers can search either for commercial datasets as well, including demographic data, financial data, geographic data, and more. When they find something they like, they can access it either from the vendor, directly through the Marketplace or Store web locations or in some cases from the Management Portal. Applications can also use the Bing Search API through the Marketplace, giving them access to the results of web searches.
-
-
-<h2><a id="sdk"></a>SDKs</h2>
-
-Back in 2008, the very first pre-release version of Azure supported only .NET development. Today, however, you can create Azure applications in pretty much any language. Microsoft currently provides language-specific SDKs for .NET, Java, PHP, Node.js, Ruby, and Python. There's also a general Azure SDK that provides basic support for any language, such as C++. 
-
-These SDKs help you build, deploy, and manage Azure applications. They're available either from www.windowsazure.com or GitHub, and they can be used with Visual Studio and Eclipse. Azure also offers command line tools that developers can use with any editor or development environment, including tools for deploying applications to Azure from Linux and Macintosh systems. 
-
-Along with helping you build Azure applications, these SDKs also provide client libraries that help you create software running outside the cloud that uses Azure services. For example, you might build an application running at a hoster that relies on Azure blobs, or create a tool that deploys Azure applications through the Azure management interface. 
+これら 2 つの違いは、Marketplace が Azure の管理ポータルの外にあり、ストアはポータルからアクセスできることです。潜在的な顧客は、いずれかを検索してニーズに合う Azure アプリケーションを見つけ、サインアップ後アプリケーションの作成者、または直接 Marketplace またはストアから、アプリケーションを入手して使用することができます。顧客は、人口統計データ、財務データ、地図データなどの商用データセットも、いずれかで検索することができます。目的のデータが見つかった場合、そのベンダーから、または Marketplace やストアの Web サイト、場合によっては管理ポータルから直接そのデータにアクセスできます。アプリケーションで Marketplace 経由で Bing Search API を使用すると、顧客が Web 検索の結果にアクセスできるようにすることもできます。
 
 
-<h2><a id="start"></a>Getting Started</h2>
+<h2><a id="sdk"></a>SDK</h2>
 
-Now that you have the big-picture, the next step is to write your first Azure application. Choose your language, [get the appropriate SDK](/en-us/downloads/), and go for it. Cloud computing is the new default--get started now.
+2008 年、最初に発表されたプレリリース版の Azure では .NET 開発のみがサポートされていました。しかし、現在ではかなり多くの言語で Azure アプリケーションを作成できます。マイクロソフトでは現在、.NET、Java、PHP、Node.js、Ruby、Python 向けの言語固有の SDK を提供しています。C++ など、任意の言語の基本的なサポートを提供する汎用 Azure SDK も用意されています。
+
+これらの SDK では、Azure アプリケーションを構築、展開、および管理できます。www.windowsazure.com または GitHub から入手でき、Visual Studio や Eclipse と共に使用できます。Azure には、Linux システムおよび Macintosh システムから Azure にアプリケーションを展開するためのツールなど、開発者がエディターや開発環境で使用できるコマンド ライン ツールも用意されています。
+
+Azure アプリケーションを構築できるだけでなく、これらの SDK には、Azure サービスを使用するクラウドの外で実行されるソフトウェアを作成できるクライアント ライブラリも用意されています。たとえば、Azure BLOB に依存するホストで実行されるアプリケーションを構築したり、Azure 管理インターフェイスを通して Azure アプリケーションを展開するツールを作成したりすることができます。
+
+
+<h2><a id="start"></a>作業の開始</h2>
+
+これで全体像を把握できたため、次のステップは最初の Azure アプリケーションを記述することです。言語を選択して[適切な SDK を入手し](/ja-jp/downloads/)、作成してみましょう。クラウド コンピューティングはこれからの基本です。今すぐ始めましょう。
 
 
 
-[Azure Media Services Poster]: http://www.microsoft.com/en-us/download/details.aspx?id=38195
+[Azure の Media Services ポスター]: http://www.microsoft.com/ja-jp/download/details.aspx?id=38195
+

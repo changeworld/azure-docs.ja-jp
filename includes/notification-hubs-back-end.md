@@ -18,13 +18,13 @@
 
         Install-Package WindowsAzure.ServiceBus
  	
-	これにより、<a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet パッケージ</a>を使用して Windows Azure のサービス バス SDK へ参照が追加されます。
+	これにより、<a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet パッケージ</a>を使用して Azure のサービス バス SDK へ参照が追加されます。
 
-3. Program.cs ファイルを開き、次の "using" ステートメントを追加します。
+3. Program.cs ファイルを開き、次の `using` ステートメントを追加します。
 
         using Microsoft.ServiceBus.Notifications;
 
-4. "Program" クラス内で、次のメソッドを追加するか、既にメソッドが指定されている場合は置き換えます。
+4. `Program` クラス内で、次のメソッドを追加するか、既にメソッドが指定されている場合は置き換えます。
 
         private static async void SendNotificationAsync()
         {
@@ -78,7 +78,7 @@
 		<p>このバックエンド コードは、Windows ストア クライアント、Windows Phone クライアント、iOS クライアントをサポートします。send メソッドは、通知ハブが特定のクライアント プラットフォームに対してまだ構成されていない場合、エラー応答を返します。</p>
 	</div>
 
-6. 上のコードで、"<hub name>" と "<connection string with full access>" のプレースホルダーを、通知ハブの名前と既に取得してある *DefaultFullSharedAccessSignature* の接続文字列に置き換えます。
+6. 上のコードで、`<hub name>` と `<connection string with full access>` のプレースホルダーを、通知ハブの名前と既に取得してある *DefaultFullSharedAccessSignature* の接続文字列に置き換えます。
 
 7. **Main** メソッド内に、次の行を追加します。
 
@@ -91,9 +91,9 @@
 
 モバイル サービスを使用して通知を送信するには、次のステップを実行します。
 
-0.チュートリアル「[Get started with Mobile Services (モバイル サービスの使用)]」を実行して、モバイル サービスを作成します。
+0. チュートリアル「[Get started with Mobile Services (モバイル サービスの使用)]」を実行して、モバイル サービスを作成します。
 
-1. [Windows Azure の管理ポータル]にログオンし、[モバイル サービス] をクリックして、目的のモバイル サービスをクリックします。
+1. [Azure の管理ポータル]にログオンし、[モバイル サービス] をクリックして、目的のモバイル サービスをクリックします。
 
 2. **[スケジューラ]** タブをクリックし、**[作成]** をクリックします。
 
@@ -129,7 +129,7 @@
 
 	このコードにより、文字列配列内の 6 つのタグそれぞれに対応した通知が、Windows ストア デバイス、Windows Phone デバイス、iOS デバイスに送信されます。タグを使用することで、デバイスは登録されているカテゴリに関する通知のみを確実に受信できます。
 
-6. 上のコードで、"<hub name>" と "<connection string with full access>" のプレースホルダーを、通知ハブの名前と既に取得してある *DefaultFullSharedAccessSignature* の接続文字列に置き換えます。
+6. 上のコードで、`<hub name>` と `<connection string with full access>` のプレースホルダーを、通知ハブの名前と既に取得してある *DefaultFullSharedAccessSignature* の接続文字列に置き換えます。
 
 7. スケジュールされたジョブの関数の後に次のヘルパー関数を追加し、**[保存]** をクリックします。
 	
@@ -162,10 +162,10 @@
 <!-- URLs. -->
 [get-started (作業を開始する)]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Use Notification Hubs to send notifications to users (通知ハブを使用したユーザーへの通知の送信)]: ../notificationhubs/tutorial-notify-users-mobileservices.md
-[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
-[Windows Azure の管理ポータル]: https://manage.windowsazure.com/
+[Get started with Mobile Services (モバイル サービスの使用)]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
+[Azure の管理ポータル]: https://manage.windowsazure.com/
 [wns オブジェクトに関するページ]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store (方法: Windows Azure 通知ハブ (Windows ストア アプリ))]: http://msdn.microsoft.com/ja-jp/library/jj927172.aspx
-[通知ハブの REST API]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn223264.aspx
+[Notification Hubs How-To for Windows Store (方法: Azure 通知ハブ (Windows ストア アプリ))]: http://msdn.microsoft.com/ja-jp/library/jj927172.aspx
+[通知ハブ REST インターフェイス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn223264.aspx
 

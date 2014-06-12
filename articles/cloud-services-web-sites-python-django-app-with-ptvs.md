@@ -1,109 +1,109 @@
-<properties linkid="develop-python-tutorials-django-with-python-tools-for-visual-studio" urlDisplayName="Django with Python Tools for Visual Studio 2.0" pageTitle="Creating Django applications with Python Tools for Visual Studio 2.0" metaKeywords="" description="Learn how to use the Python Tools for Visual Studio to create a Django application that stores data in a SQL Database or MySQL database instance and can be deployed to a web site or cloud service." metaCanonical="" services="web-sites,cloud-services" documentationCenter="Python" title="Creating Django applications with Python Tools 2.0 for Visual Studio" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-python-tutorials-django-with-python-tools-for-visual-studio" urlDisplayName="Python Tools for Visual Studio 2.0 を使って Django を作成" pageTitle="Python Tools for Visual Studio 2.0 を使用して Django アプリケーションを作成する" metaKeywords="" description="Python Tools for Visual Studio を使って、SQL データベースまたは MySQL データベースにデータを保存する Django アプリケーションを作成し、それを Web サイトまたはクラウド サービスにデプロイする方法を学習します。" metaCanonical="" services="web-sites,cloud-services" documentationCenter="Python" title="Python Tools 2.0 for Visual Studio を使用して Django アプリケーションを作成する" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
 
-# Creating Django applications with Python Tools 2.0 for Visual Studio
+# Python Tools 2.0 for Visual Studio を使用して Django アプリケーションを作成する
 
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
-<p>In this tutorial, we'll use Python Tools 2.0 for Visual Studio to create a simple Django application. The application will allow users to vote on polls. We'll first use a local sqlite3 database, then move on to a SQL Server or MySQL database on Azure. We'll show how to enable the Django admin interface, and use it to add polls to our database. We'll also use the Django shell integrated in Visual Studio.  Finally, we'll deploy our application to an Azure Web Site and an Azure Cloud Service.</p>
-<p>If you prefer to watch a video, the clip to the right follows the same steps as this tutorial.</p>
+<p>このチュートリアルでは、Python Tools 2.0 for Visual Studio を使用して簡単な Django アプリケーションを作成します。ここで作成するのは、アンケート調査に投票してもらうためのアプリケーションです。まず、sqlite3 データベースをローカルに作成した後、Azure 上の SQL Server または MySQL データベースへ移行します。Django 管理インターフェイスを有効にし、このインターフェイスを使ってデータベースにアンケート項目を追加する方法を紹介します。また、Visual Studio に組み込まれている Djangoシェルも使用します。最後に、作成したアプリケーションを Azure の Web サイトと Azure のクラウド サービスにデプロイします。</p>
+<p>右側のクリップを見ると、このチュートリアルと同じ手順をビデオで確認できます。</p>
 </div>
-<div class="dev-onpage-video-wrapper"><a href="http://www.youtube.com/watch?v=wkqjafvvU5w" target="_blank" class="label">watch the tutorial</a> <a style="background-image: url('/media/devcenter/python/videos/django-tutorial-180x120.png') !important;" href="http://www.youtube.com/watch?v=wkqjafvvU5w" target="_blank" class="dev-onpage-video"><span class="icon">Play Video</span></a> <span class="time">33:08</span></div>
+<div class="dev-onpage-video-wrapper"><a href="http://www.youtube.com/watch?v=wkqjafvvU5w" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/devcenter/python/videos/django-tutorial-180x120.png') !important;" href="http://www.youtube.com/watch?v=wkqjafvvU5w" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">33:08</span></div>
 </div>
 
-This tutorial focuses on Python Tools for Visual Studio and Azure. For more details on Django and the polls application built in this tutorial, see [https://www.djangoproject.com/](https://www.djangoproject.com/).
+このチュートリアルでは、Python Tools for Visual Studio と Azure を使用する場合の手順を説明します。ここで作成するアンケートの投票アプリケーションおよび Django の詳細については、[https://www.djangoproject.com/](https://www.djangoproject.com/) を参照してください。
 
 [WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
-## Requirements
-To complete the tutorial, you'll need
+## 要件
+このチュートリアルを実行するには、次のコンポーネントが必要です。
 
 - [Python Tools 2.0 for Visual Studio](http://pytools.codeplex.com)
-- [Python 2.7 (32-bit)](http://www.python.org/download/)
-- Visual Studio and Azure SDK:
-  - VS 2010 Pro or higher with Azure SDK 2.1
-  - VS 2012 Pro or higher with Azure SDK 2.1, 2.2 or later
-  - VS 2013 Pro or higher with Azure SDK 2.2 or later
-  - Free VS 2013 Integrated Shell. **Azure SDK does not support the Integrated Shell**. You can develop, debug and run Django applications locally using the free Integrated Shell but you won't be able to publish to Azure Web Sites or Cloud Services using Visual Studio.
+- [Python 2.7 (32 ビット)](http://www.python.org/download/)
+- Visual Studio および Azure SDK:
+  - VS 2010 Pro 以上と Azure SDK 2.1
+  - VS 2012 Pro 以上と Azure SDK 2.1、2.2 またはそれ以降
+  - VS 2013 Pro 以上と Azure SDK 2.2 以降
+  - 無料の VS 2013 統合シェル。**Azure SDK では、統合シェルをサポートしていません**。Django アプリケーションは、無料の統合シェルを使用してローカルで開発、デバッグ、および実行できますが、Visual Studio を使用して Azure の Web サイトまたはクラウド サービスに発行することはできません。
 
-Use the Web Platform installer to install the Azure SDK. This will install the SDK, emulator, and Azure Tools for Visual Studio. In Web Platform installer, search for **Azure SDK for .NET** and select one of the supported versions of the SDK for your version of Visual Studio.
+Web Platform Installer を使用して Azure SDK をインストールします。これにより、SDK、エミュレーター、および Azure Tools for Visual Studio がインストールされます。Web Platform Installer で、**Azure SDK for .NET** を探し、お使いの Visual Studio のバージョンでサポートされている SDK のバージョンを 1 つ選択します。
 
-**Note:** In order to run this application successfully using an Azure Web Site or Cloud Service, you'll need to use the official CPython 2.7 distribution from [python.org](http://www.python.org/download/). Other distros may work, but are not officially supported.
+**メモ:** Azure の Web サイトまたはクラウド サービスを使用してこのアプリケーションを正常に実行するには、[python.org](http://www.python.org/download/) から入手した公式な CPython 2.7 ディストリビューションを使用する必要があります。他のディストリビューションは動作する場合がありますが、公式にサポートされていません。
 
-## Download an existing project
+## 既存のプロジェクトをダウンロードする
 
-If you'd like to skip ahead in the tutorial, you can [download the source code for this project](http://download-codeplex.sec.s-msft.com/Download?ProjectName=pytools&DownloadId=783376).
+このチュートリアルで先にスキップするには、[このプロジェクトのソース コードをダウンロードする](http://download-codeplex.sec.s-msft.com/Download?ProjectName=pytools&DownloadId=783376)ことができます。
 
-The sqlite3 database has already been created, with the following credentials for the superuser:
+sqlite3 データベースが既に作成されていて、次のスーパー ユーザー資格情報が設定されています。
 
 ```
 Username: tutorial
 Password: azure
 ```
 
-The download does NOT include a virtual environment. You should create one by following the steps in the [Creating a virtual environment](#creating-a-virtual-environment) section. Once this is done, your project will be ready for the [Debugging](#debugging) section.
+このダウンロードには、仮想環境は含まれていません。「[仮想環境を作成する](#creating-a-virtual-environment)」セクションの手順に従って、仮想環境を作成する必要があります。仮想環境を作成した時点で、「[デバッグ](#debugging)」セクションに進むためのプロジェクトの準備ができます。
 
-## Create the project
+## プロジェクトを作成する
 
-Python Tools for Visual Studio supports Python Virtual Environments.  We'll create a django project and use a Virtual Environment to install our dependencies.  This is the recommended way to set up projects that are published to Azure Web Sites or Cloud Services.
+Python Tools for Visual Studio は Python 仮想環境をサポートしています。ここでは django プロジェクトを作成し、仮想環境を使用して依存モジュールをインストールします。Azure の Web サイトまたはクラウド サービスに発行するプロジェクトを設定するときは、この方法をお勧めします。
 
-1. Open Visual Studio, File/New Project, Django application, with the name **tutorial**.
+1. Visual Studio を開き、[ファイル]、[新しいプロジェクト]、[Django アプリケーション] の順に選択して、「**tutorial**」という名前を付けます。
 
-	![New Project](./media/cloud-services-python-create-deploy-django-app/django-tutorial-001-new-project.png)
+	![[新しいプロジェクト]](./media/cloud-services-python-create-deploy-django-app/django-tutorial-001-new-project.png)
 
 
-**Note:** In solution explorer, under References, you'll see a node for Django 1.4. This is used for Azure Cloud Service deployment, to install Python and Django on the target machine. Don't delete the reference to Django 1.4 from the references note. Since we are using a virtual environment and installing our own Django package in it, the Django package installed in our virtual environment will be used.
+**メモ:** ソリューション エクスプローラーで、[参照設定] の下に Django 1.4 のノードが表示されます。これは Azure のクラウド サービスのデプロイで、ターゲット コンピューターに Python と Django をインストールするときに使用されます。Django 1.4 への参照を [参照設定] ノードから削除しないでください。ここでは、仮想環境を使って Django パッケージをインストールするので、仮想環境にインストールした Django パッケージが使用されます。
 
-##<a name="creating-a-virtual-environment"></a>Creating a virtual environment
+##<a name="creating-a-virtual-environment"></a>仮想環境を作成する
 
-We'll use a Virtual Environment to install our dependencies. This is a good practice for any Python application, and it's required when publishing to Azure.
+ここでは仮想環境を使用して依存モジュールをインストールします。これは、Python のアプリケーションで推奨される方法であり、Azure に対して発行する場合は必須です。
 
-1. Create a new virtual environment.  In solution explorer, right-click on **Python Environments** and select **Add Virtual Environment**.
+1. 新しい仮想環境を作成します。ソリューション エクスプローラーで **[Python 環境]** を右クリックし、**[仮想環境の追加]** を選択します。
 
-	![Add Virtual Environment](./media/cloud-services-python-create-deploy-django-app/django-tutorial-002-add-virtual-env.png)
+	![仮想環境の追加](./media/cloud-services-python-create-deploy-django-app/django-tutorial-002-add-virtual-env.png)
 
-1. Select Python 2.7 as the base Python Interpreter and accept the default name **env**. PTVS will install pip and/or virtualenv if you don't have them installed already.
+1. 基になる Python インタープリターとして Python 2.7 を選択し、既定の名前 (**env**) をそのまま使用します。pip または virtualenv がまだインストールされていない場合は、PTVS によってこれらがインストールされます。
 
-1. Right-click on **env** and **Install Python Package**: **django**
+1. **[env]** を右クリックし、**[Python パッケージのインストール]** をクリックして、「**django**」と入力します。
 
-	![Install Django](./media/cloud-services-python-create-deploy-django-app/django-tutorial-003-install-django.png)
+	![Django のインストール](./media/cloud-services-python-create-deploy-django-app/django-tutorial-003-install-django.png)
 
-1. Django has a large number of files, so it will take some time to install. You can view the progress in the output window.
+1. Django はファイル数が多いので、インストールに少し時間がかかります。その間、進捗状況が出力ウィンドウに表示されます。
 
-	![Install Django Output](./media/cloud-services-python-create-deploy-django-app/django-tutorial-004-install-django-output.png)
+	![Django のインストールに関する出力](./media/cloud-services-python-create-deploy-django-app/django-tutorial-004-install-django-output.png)
 
-	**Note:** In rare cases, you may see a failure in the output window. If this happens, check if the error is related to cleanup. Sometimes the cleanup will fail but installation will still be successful (scroll up in the output window to verify this). This is due to PTVS getting a lock on the newly created temporary files/folders, which prevents the pip cleanup step from deleting them.
+	**メモ:** まれに、出力ウィンドウにエラーが表示されることがあります。その場合は、エラーがクリーンアップに関連しているかどうか確認してください。クリーンアップには失敗しても、インストールは正常に行われる場合があります（出力ウィンドウを上方向にスクロールして確認してください)。これは、新しく作成した一時ファイルやフォルダーが PTVS によってロックされ、pip クリーンアップ処理で削除できなくなるためです。
 
-1. Right-click on **env** and **Install Python Package**: **pytz** (optional but recommended, used by django for timezone support)
+1. **[env]** を右クリックし、**[Python パッケージのインストール]** をクリックして、「**pytz**」と入力します (この作業はオプションですが、推奨される方法であり、tz つまりタイムゾーンをサポートするために django によって使用されます)。
 
-## Verify the virtual environment
+## 仮想環境を確認する
 
-1. Let's make sure that everything is installed properly. Start the web site with **F5** or **CTRL+F5**. This will launch the django development server and start your web browser. You should see the following page:
+1. すべてが正しくインストールされているかどうかを確認してみましょう。**F5** キーまたは **Ctrl + F5** キーを押して、Web サイトを開きます。django 開発用サーバーが起動し、Web ブラウザが表示されます。次のページが表示されます。
 
-	![Django Web Browser](./media/cloud-services-python-create-deploy-django-app/django-tutorial-004b-itworked.png)
+	![Django を示す Web ブラウザー](./media/cloud-services-python-create-deploy-django-app/django-tutorial-004b-itworked.png)
 
-## Create the polls application
+## 投票アプリケーションを作成する
 
-In this section we will add an application to handle voting in polls.
+このセクションでは、アンケートへの投票を処理するアプリケーションを追加します。
 
-A Django project can have multiple applications. In this tutorial, the name of our project is 'tutorial' and corresponds to the Visual Studio project. The name of the application we are adding is **polls** and will be a folder under our project node.
+Django プロジェクトには複数のアプリケーションを追加できます。このチュートリアルで作成したプロジェクトの名前は「tutorial」で、Visual Studio プロジェクトと同じです。これから追加するアプリケーションには **polls** という名前を付けます。このアプリケーションのフォルダーはプロジェクト ノードの下に作成されます。
 
-1. Select the **project node**, **Add**->**Django app**, with the name **polls**. This will create a folder for the application, with boilerplate code for commonly used application files.
+1. 該当する**プロジェクト ノード**、**[追加]**、**[Django アプリケーション]** の順に選択し、「**polls**」という名前を付けます。このアプリケーション用のフォルダーが作成されます。ここには、頻繁に使用するアプリケーション ファイルの定型コードが保存されます。
 
-	![Add Django App](./media/cloud-services-python-create-deploy-django-app/django-tutorial-005-add-django-app.png)
+	![Django アプリケーションの追加](./media/cloud-services-python-create-deploy-django-app/django-tutorial-005-add-django-app.png)
 
-1. In **tutorial/settings.py**, add the following to **INSTALLED\_APPS**:
+1. **tutorial/settings.py** で、次のコードを **INSTALLED\_APPS** に追加します。
 
 		'polls',
 
-1. and uncomment from **INSTALLED\_APPS**:
+1. また、**INSTALLED\_APPS** で、次のコードをコメント解除します。
 
 		'django.contrib.admin',
 
-1. Replace **tutorial/urls.py** with the following code:
+1. **tutorial/urls.py** を次のコードに置き換えます。
 
         from django.conf.urls import patterns, include, url
 
@@ -115,7 +115,7 @@ A Django project can have multiple applications. In this tutorial, the name of o
             url(r'^admin/', include(admin.site.urls)),
         )
 
-1. Replace **polls/models.py** with the following code:
+1. **polls/models.py** を次のコードに置き換えます。
 
         from django.db import models
 		
@@ -134,7 +134,7 @@ A Django project can have multiple applications. In this tutorial, the name of o
             def __unicode__(self):
                 return self.choice_text
 
-1. Replace **polls/views.py** with the following code:
+1. **polls/views.py** を次のコードに置き換えます。
 
 		from django.shortcuts import get_object_or_404, render
 		from django.http import HttpResponseRedirect
@@ -159,7 +159,7 @@ A Django project can have multiple applications. In this tutorial, the name of o
 		        # user hits the Back button.
 		        return HttpResponseRedirect(reverse('polls:results', args=(p.id,)))
 		
-1. Add a new Python file **polls/urls.py** with the following code:
+1. 次のコードを保持する新しい Python ファイル **polls/urls.py** を追加します。
 
 	    from django.conf.urls import patterns, url
 	    from django.views.generic import DetailView, ListView
@@ -185,7 +185,7 @@ A Django project can have multiple applications. In this tutorial, the name of o
 	        url(r'^(?P<poll_id>\d+)/vote/$', 'polls.views.vote', name='vote'),
 	    )
 	
-1. Create a new item **polls/admin.py** with the following code:
+1. 次のコードを保持する新しい項目 **polls/admin.py** を作成します。
 
 		from django.contrib import admin
 		from polls.models import Choice, Poll
@@ -207,11 +207,11 @@ A Django project can have multiple applications. In this tutorial, the name of o
 		
 		admin.site.register(Poll, PollAdmin)
 
-1. Under **polls/templates** folder, create a new folder named **polls**.
+1. **polls/templates** フォルダーの下に、**polls** という名前の新しいフォルダーを作成します。
 
-1. Move the file **polls/templates/index.html** to the **polls/templates/polls** folder using drag & drop or cut/paste.
+1. ドラッグ アンド ドロップ、または切り取りと貼り付けを使用して、**polls/templates/index.html** ファイルを **polls/templates/polls** フォルダーに移動します。
 
-1. Replace **polls/templates/polls/index.html** with the following markup:
+1. **polls/templates/polls/index.html** を次のマークアップに置き換えます。
 
         <html>
         <head></head>
@@ -223,12 +223,12 @@ A Django project can have multiple applications. In this tutorial, the name of o
             {% endfor %}
             </ul>
         {% else %}
-            <p>No polls are available.</p>
+            <p>アンケートへの投票は利用できません。</p>
         {% endif %}
         </body>
         </html>
 
-1. Create a new Django HTML template **polls/templates/polls/detail.html** with the following:
+1. 次のコードを保持する新しい Django HTML テンプレート **polls/templates/polls/detail.html** を作成します。
 
         <html>
         <head></head>
@@ -246,7 +246,7 @@ A Django project can have multiple applications. In this tutorial, the name of o
         </body>
         </html>
 
-1. Create a new Django HTML template **polls/templates/polls/results.html** with the following:
+1. 次のコードを保持する新しい Django HTML テンプレート **polls/templates/polls/results.html** を作成します。
 
         <html>
         <head></head>
@@ -257,27 +257,27 @@ A Django project can have multiple applications. In this tutorial, the name of o
             <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
         {% endfor %}
         </ul>
-        <a href="{% url 'polls:detail' poll.id %}">Vote again?</a>
+        <a href="{% url 'polls:detail' poll.id %}">再投票しますか?</a>
         </body>
         </html>
 
-1. You should now have the following files in your project:
+1. このプロジェクトのファイル構成は次のようになります。
 
-	![Solution Explorer](./media/cloud-services-python-create-deploy-django-app/django-tutorial-006-solution-explorer.png)
+	![ソリューション エクスプローラー](./media/cloud-services-python-create-deploy-django-app/django-tutorial-006-solution-explorer.png)
 
-## Create a sqlite3 database locally
+## sqlite3 データベースをローカルに作成する
 
-Our web application is almost ready to use, but first we need to configure a database.  To test our web site locally, we'll create a sqlite3 database.  This is a very lightweight database which doesn't require any additional installation.  The database file will be created in the project folder.
+これで、新しい Web アプリケーションの準備が整いました。ただし、使用する前にデータベースを構成する必要があります。Web サイトをローカルでテストするため、sqlite3 データベースを作成しましょう。非常に軽量のデータベースなので、他に何もインストールする必要はありません。データベース ファイルはプロジェクト フォルダー内に作成します。
 
-1. In **tutorial/settings.py**, add the following import to the top of the file:
+1. **tutorial/settings.py** で、次の import をファイルの先頭に追加します。
 
         from os import path
 
-1. Add the following definition near the top of the file, after the import:
+1. 同じファイルの最上部、import の後に、次の定義を追加します。
 
 		PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 
-1. Change the DATABASES section to the following code:
+1. DATABASES セクションを次のコードに書き換えます。
 
         DATABASES = {
             'default': {
@@ -290,119 +290,119 @@ Our web application is almost ready to use, but first we need to configure a dat
             }
         }
 
-1. Right-click on the project node and select **Django**->**Django Sync DB**.  A Django management interactive window will appear.  Since the database doesn't exist yet, it will prompt you to create administrator credentials.  Enter a user name and password. Email is optional.
+1. プロジェクト ノードを右クリックして、**[Django]**、**[Django Sync DB]** の順に選択します。対話型の Django 管理ウィンドウが表示されます。データベースがまだ存在していないので、管理者の資格情報を作成するよう求められます。ユーザー名とパスワードを入力します。メール アドレスは省略可能です。
 
-	![Django Sync DB](./media/cloud-services-python-create-deploy-django-app/django-tutorial-007-sqlite3.png)
+	![Django 同期データベース](./media/cloud-services-python-create-deploy-django-app/django-tutorial-007-sqlite3.png)
 
-1. Start the web site with F5 or CTRL-F5. This will launch the django development server and start your web browser. The root url for the web site displays the index of polls, but there aren't any in the database yet.
+1. F5 キーまたは Ctrl + F5 キーを押して、Web サイトを開きます。django 開発用サーバーが起動し、Web ブラウザが表示されます。Web サイトのルート URL にアンケート項目が一覧表示されます。ただし、データベースにはまだ何もありません。
 
-	![Web Browser](./media/cloud-services-python-create-deploy-django-app/django-tutorial-008-dev-server.png)
+	![Web ブラウザー](./media/cloud-services-python-create-deploy-django-app/django-tutorial-008-dev-server.png)
 
-1. Navigate to **http://localhost:{port}/admin**. You can get the port number from the development server console window. Login using the credentials you created in the previous step.
+1. **http://localhost:{port}/admin** に移動します。ポート番号は、開発用サーバーのコンソール ウィンドウから取得できます。前の手順で作成した資格情報を使用して、ログインします。
 
-	![Add Poll](./media/cloud-services-python-create-deploy-django-app/django-tutorial-009-admin-login.png)
+	![アンケート項目の追加](./media/cloud-services-python-create-deploy-django-app/django-tutorial-009-admin-login.png)
 
-1. Use the admin interface to add one or two polls.  Do not spend too much time adding polls to the local database. We'll switch to a cloud database later and repopulate the database then.
+1. 管理インターフェイスを使用して、アンケート項目を 1 ～ 2 件追加します。ローカル データベースにアンケート項目を追加する作業にあまり時間をかけないでください。この後、クラウド データベースに切り替えますが、その時点でもう一度データベースにアンケート項目を追加します。
 
-	![Poll Index](./media/cloud-services-python-create-deploy-django-app/django-tutorial-009-admin-add-poll.png)
+	![アンケート項目](./media/cloud-services-python-create-deploy-django-app/django-tutorial-009-admin-add-poll.png)
 
-1. Navigate to **http://localhost:{port}/**.  You'll see an index of the polls you've added.
+1. **http://localhost:{port}/** に移動します。追加したアンケート項目が一覧表示されます。
 
 	![](./media/cloud-services-python-create-deploy-django-app/django-tutorial-010-index.png)
 
-1. Click on one of the polls to go to the voting page.
+1. いずれかのアンケート項目をクリックして、投票ページへ進みます。
 
-	![Poll Detail](./media/cloud-services-python-create-deploy-django-app/django-tutorial-011-detail.png)
+	![アンケート項目の詳細](./media/cloud-services-python-create-deploy-django-app/django-tutorial-011-detail.png)
 
-1. Submit your vote, and you'll be redirected to the results page where you should see the vote count incremented.
+1. どちらかに投票すると、結果ページが表示されます。投票数が "1" 増えていることがわかります。
 
-	![Poll Results](./media/cloud-services-python-create-deploy-django-app/django-tutorial-012-results.png)
+	![アンケート項目の結果](./media/cloud-services-python-create-deploy-django-app/django-tutorial-012-results.png)
 
-## Use stylesheets and other static files
+## スタイルシートとその他の静的ファイルを使用する
 
-In this section, we'll update the look of our site to use a stylesheet. Static files such as stylesheets are treated differently so it's important to store them in the right location.
+このセクションでは、スタイルシートを使ってサイトの外観を変更します。スタイルシートなどの静的ファイルはそれぞれ扱いが異なるので、適切な場所に保存することが重要です。
 
-1. In **tutorial/settings.py**, find the assignment of **STATIC_ROOT** and change it to:
+1. **tutorial/settings.py** で、**STATIC_ROOT** の代入を見つけ、次のように変更します。
 
         STATIC_ROOT = path.join(PROJECT_ROOT, 'static').replace('\\','/')
 
-1. Under **polls** folder, create a new folder named **static**.
+1. **polls** フォルダーの下に、**static** という名前の新しいフォルダーを作成します。
 
-1. Under **polls/static** folder, create a new folder named **polls**.
+1. **polls/static** フォルダーの下に、**polls** という名前の新しいフォルダーを作成します。
 
-1. Under **polls/static/polls** folder, create a new folder named **images**.
+1. **polls/static/polls** フォルダーの下に、**images** という名前の新しいフォルダーを作成します。
 
-1. Add a new style sheet file **polls/static/polls/style.css** with the following:
+1. 次のコードを保持する新しいスタイル シート ファイル **polls/static/polls/style.css** を追加します。
 
         body {
             color: darkblue;
             background: white url("images/background.jpg");
         }
 		
-1. Add an existing image to the **polls/static/polls/images** folder, and name it **background.jpg**.
+1. 既存のイメージを **polls/static/polls/images** フォルダーに追加し、**background.jpg** という名前を付けます。
 
-1. You should now have the following files in your project:
+1. このプロジェクトのファイル構成は次のようになります。
 
-	![Solution Explorer](./media/cloud-services-python-create-deploy-django-app/django-tutorial-013-solution-explorer.png)
+	![ソリューション エクスプローラー](./media/cloud-services-python-create-deploy-django-app/django-tutorial-013-solution-explorer.png)
 
-1. Edit the header of all templates to refer to the stylesheet with the following markup:
+1. すべてのテンプレートのヘッダーを次のように編集し、スタイルシートを参照するように指定します。
 
         <head>
         {% load staticfiles %}
         <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
         </head>
 
-1. Run the web site again.  The index, poll and results pages will use the stylesheet we created, with dark blue text and a background image.
+1. Web サイトをもう一度実行します。作成したスタイルシート (青色のテキストと背景画像) がインデックス ページ、投票ページ、結果ページに反映されます。
 
-	![Poll Detail](./media/cloud-services-python-create-deploy-django-app/django-tutorial-014-detail-styled.png)
+	![アンケート項目の詳細](./media/cloud-services-python-create-deploy-django-app/django-tutorial-014-detail-styled.png)
 
-##<a name="debugging"></a>Debugging
+##<a name="debugging"></a>デバッグ
 
-Python Tools for Visual Studio has special support for debugging Django templates.
+Python Tools for Visual Studio には、Django テンプレートをデバッグするための特殊な機能が備わっています。
 
-1. Open **polls/templates/polls/index.html** and place a breakpoint using **F9** on this line:
+1. **polls/templates/polls/index.html** を開き、**F9** キーを使って次の行にブレークポイントを設定します。
 
         {% if latest_poll_list %}
 
-1. Start debugging using **F5**. Visual Studio will break in the template file.
+1. **F5** キーを押してデバッグを開始します。テンプレート ファイル内に設定したブレークポイントで Visual Studio が一時停止します。
 
-1. Open the **Locals Window** from **Debug->Windows->Locals** and you'll see the **latest\_poll\_list** variable and its value.
+1. **[デバッグ]、[ウィンドウ]、[ローカル]** の順に選択します。**[ローカル]** ウィンドウが開き、**latest\_poll\_list** 変数とその値が表示されます。
 
-1. You can press **F10** to step just like in regular Python code.  Inside the for loop, you can inspect the value of **poll**:
+1. **F10** キーを押すと、通常の Python コードと同じようにステップ実行されます。for ループ内では **poll** の値を確認できます。
 
-	![Debugging](./media/cloud-services-python-create-deploy-django-app/django-tutorial-015-debugging.png)
+	![デバッグ](./media/cloud-services-python-create-deploy-django-app/django-tutorial-015-debugging.png)
 
-## Create a database on Azure
+## Azure でデータベースを作成する
 
-Now that we've verified that our poll application works locally, let's switch to using a database hosted on Azure.
+投票アプリケーションがローカルで正常に動作することがわかったので、Azure 上でホストされるデータベースへ切り替えましょう。
 
-In the following 2 sections we'll show how to use a SQL database and a MySQL database.  Both of these are hosted services.
+この後の 2 つのセクションでは、SQL データベースと MySQL データベースの使用方法を説明します。これらはいずれもホステッド サービスです。
 
-Another option would be to create a Virtual Machine and install a database server.  See instructions [here](http://www.windowsazure.com/en-us/manage/linux/common-tasks/mysql-on-a-linux-vm/) for setting up MySQL on an Azure Linux VM.
+これとは別に、仮想マシンを作成してデータベース サーバーをインストールする方法もあります。Azure Linux VM 上に MySQL を設定する方法は、[こちら](http://www.windowsazure.com/ja-jp/manage/linux/common-tasks/mysql-on-a-linux-vm/)の説明を参照してください。
 
-**Note:** It's possible to use a sqlite3 database on Azure (for development purposes only, we do not recommend using it in production). You'll need to add the **db.sqlite3** file to your project in order to deploy the database with your django application.
+**メモ:** Azure 上で sqlite3 データベースを使用することもできます (開発目的のみ。運用環境では使用しないでください)。このデータベースをデプロイして django アプリケーションで使用するには、プロジェクトに **db.sqlite3** ファイルを追加する必要があります。
 
-### SQL Database
+### SQL データベース
 
-In this section, we'll create a SQL database on Azure, add the necessary packages to our virtual environment and change our settings to use the new database.
+このセクションでは、Azure 上に SQL データベースを作成し、必要なパッケージを仮想環境に追加した上で、新しいデータベースを使用できるように設定を変更します。
 
-1. In the WindowsAzure Management Portal, select **SQL DATABASES**.
+1. WindowsAzure 管理ポータルで **[SQL データベース]** を選択します。
 
-1. First create a server to host the database.  Select **SERVERS** and **ADD**.
+1. 最初に、このデータベースをホストするサーバーを作成します。**[サーバー]** を選択し、**[追加]** をクリックします。
 
-1. In the **CONFIGURE** tab of the newly created server, you'll see your current client IP address displayed. Next to it, click on **ADD TO THE ALLOWED IP ADDRESSES**.
+1. 新しく作成したサーバーの **[構成]** タブに、現在のクライアント IP アドレスが表示されます。その隣に表示される **[使用できる IP アドレスに追加します]** をクリックします。
 
-	**Note:** Sometimes Azure doesn't detect the client IP address correctly. If you get an error when you synchronize the database, you should copy/paste the IP address from the error message and add it to the allowed IP addresses.
+	**メモ:** Azure がクライアント IP アドレスを正しく検出しない場合もあります。データベースの同期時にエラーが表示された場合は、エラー メッセージの IP アドレスをコピーし、許可された IP アドレスに追加してください。
 
-1. Next, we'll create the database. In the **DATABASES** tab, click on **ADD** from the bottom bar.
+1. 次に、データベースを作成します。**[データベース]** タブの下部バーにある **[追加]** をクリックします。
 
-1. In Visual Studio, we'll install the packages required to access SQL Server databases from Django into our virtual environment.
+1. Visual Studio で、Django から SQL Server データベースへアクセスするためのパッケージを仮想環境にインストールします。
 
-1. Right-click on **env** and **Install Python Package**: **pyodbc** using **easy\_install**.
+1. **env** を右クリックし、**[Python パッケージのインストール]** を選択し、「**pyodbc**」と入力して、**easy_install** を使用します。
 
-1. Right-click on **env** and **Install Python Package**: **django-pyodbc-azure** using **pip**.
+1. **env** を右クリックし、**[Python パッケージのインストール]** を選択し、「**django-pyodbc-azure**」と入力して、**pip** を使用します。
 
-1. Edit **tutorial/settings.py** and change the **DATABASES** definition to the following, replacing **NAME**, **USER**, **PASSWORD**, and **HOST** to the values listed in the ClearDB control panel:
+1. **tutorial/settings.py** を編集し、**DATABASES** 定義を次のように変更します。**NAME**、**USER**、**PASSWORD**、**HOST** を、それぞれ ClearDB コントロール パネルに表示される値に書き換えてください。
 
         DATABASES = {
             'default': {
@@ -419,25 +419,25 @@ In this section, we'll create a SQL database on Azure, add the necessary package
             }
         }
 
-	You'll have to make sure to use a driver that you have installed on your machine.  Open **Administrative Tools** from the start menu/screen, **ODBC Data Sources (32-bit)**. The drivers are listed under the **Drivers** tab.
+	コンピューターにインストールしているドライバーが使用されるように設定する必要があります。スタート メニューまたはスタート画面から **[管理ツール]** を開き、**[ODBC データ ソース (32 ビット)]** を選択します。**[ドライバー]** タブにドライバーが一覧表示されます。
 	
-	When running on an Azure Web Site, both **SQL Server Native Client 10.0** and **SQL Server Native Client 11.0** will work.
+	Azure の Web サイトで実行する場合、**SQL Server Native Client 10.0** と **SQL Server Native Client 11.0** を両方使用できます。
 
-	When running on an Azure Cloud Service, only **SQL Server Native Client 11.0** will work.
+	Azure のクラウド サービスで実行する場合、**SQL Server Native Client 11.0** のみ使用できます。
 	
-1. Synchronize the database and create admin credentials like we did for the local sqlite3 database.
+1. データベースを同期し、ローカル sqlite3 データベースの場合と同じように管理者の資格情報を作成します。
 
-### MySQL Database
+### MySQL データベース
 
-In this section, we'll create a MySQL database on Azure, add the necessary packages to our virtual environment and change our settings to use the new database.
+このセクションでは、Azure 上に MySQL データベースを作成し、必要なパッケージを仮想環境に追加します。さらに、新しいデータベースを使用するように設定を変更します。
 
-In the Azure Store, you can add various services to your account, including a MySQL database.  We can create a trial account for free, and small databases are free up to a certain size.
+Azure ストアでは、MySQL データベースなどさまざまなサービスをアカウントに追加できます。試用アカウントを無料で作成でき、データベースも小規模 (特定のサイズまで) であれば無料です。
 
-1. In the Azure Management Portal, select **NEW**->**STORE**->**APP SERVICES**->**ClearDB MySQL Database**.  Create a database with the free plan.
+1. Azure の管理ポータルで、**[新規]**、**[ストア]**、**[アプリ サービス]**、**[ClearDB MySQL データベース]** の順に選択します。無料プランでデータベースを作成します。
 
-1. Next, we'll install the package required to access MySQL databases from Django into our virtual environment.  Right-click on **env** and **Install Python Package**: **mysql-python** using **easy\_install**.
+1. 次に、Django から MySQL データベースにアクセスするためのパッケージを仮想環境にインストールします。**env** を右クリックし、**[Python パッケージのインストール]** を選択し、「**mysql-python**」と入力して、**easy_install** を使用します。
 
-1. Edit **tutorial/settings.py** and change the **DATABASES** definition to the following, replacing **NAME**, **USER**, **PASSWORD**, and **HOST** to the values listed in the ClearDB control panel:
+1. **tutorial/settings.py** を編集し、**DATABASES** 定義を次のように変更します。**NAME**、**USER**、**PASSWORD**、**HOST** を、それぞれ ClearDB コントロール パネルに表示される値に書き換えてください。
 
         DATABASES = {
             'default': {
@@ -450,13 +450,13 @@ In the Azure Store, you can add various services to your account, including a My
             }
         }
 
-1. Synchronize the database and create admin credentials like we did for the local sqlite3 database.
+1. データベースを同期し、ローカル sqlite3 データベースの場合と同じように管理者の資格情報を作成します。
 
-## Using the Django Shell
+## Django シェルを使用する
 
-1. Right-click on the project node and select **Django** -> **Open Django Shell**.
+1. プロジェクト ノードを右クリックして、**[Django]**、**[Django シェルを開く]** の順に選択します。
 
-1. In this interactive window, we can access our database using our models.  Enter the following code to add a poll to the database:
+1. この対話型ウィンドウでは、モデルを使用してデータベースにアクセスできます。次のコードを入力して、データベースにアンケート項目を追加します。
 
 		from polls.models import Poll, Choice
 		from django.utils import timezone
@@ -468,9 +468,9 @@ In the Azure Store, you can add various services to your account, including a My
 		p.choice_set.create(choice_text='Cloud Service', votes=0)
 		p.choice_set.create(choice_text='Virtual Machine', votes=0)
 
-	![Django Shell Add Poll](./media/cloud-services-python-create-deploy-django-app/django-tutorial-018-shell-add-poll.png)
+	![Django シェルでのアンケート項目の追加](./media/cloud-services-python-create-deploy-django-app/django-tutorial-018-shell-add-poll.png)
 
-1. The static analysis of the models provides a limited view of the full API.  In the interactive window, you'll get IntelliSense against the live objects, so this is a great way to explore the API.  Here are some things to try in the interactive window:
+1. モデルの静的解析では、完全な API の一部のみが表示されます。対話型ウィンドウではライブ オブジェクトに対して IntelliSense が適用されるので、API の確認に役立ちます。対話型ウィンドウでの例を示します。
 
 		# all poll objects
 		Poll.objects.all()
@@ -484,86 +484,87 @@ In the Azure Store, you can add various services to your account, including a My
 		# get object by primary key
 		Poll.objects.get(pk=1)
 
-	![Django Shell Query Poll](./media/cloud-services-python-create-deploy-django-app/django-tutorial-019-shell-query.png)
+	![Django シェルでのクエリによるアンケート項目](./media/cloud-services-python-create-deploy-django-app/django-tutorial-019-shell-query.png)
 
-1. Start the web site.  You should see the poll we added using the Django shell.
+1. Web サイトを開きます。Django シェルを使って追加したアンケート項目が表示されます。
 
-## Publish to Azure
+## Azure に発行する
 
-Now that our database is on Azure, the next step is to host the web site itself on Azure.
+Azure 上にデータベースを作成したところで、次は Web サイト自体を Azure でホストします。
 
-Azure has a few options for hosting Django applications:
+Azure には、Django アプリケーションをホストするための方法がいくつか用意されています。
 
-- [Web Site](http://www.windowsazure.com/en-us/services/web-sites/)
-- [Cloud Service](http://www.windowsazure.com/en-us/services/cloud-services/)
-- [Virtual Machine](http://www.windowsazure.com/en-us/services/virtual-machines/)
+- [Web サイト](http://www.windowsazure.com/ja-jp/services/web-sites/)
+- [クラウド サービス](http://www.windowsazure.com/ja-jp/services/cloud-services/)
+- [仮想マシン名](http://www.windowsazure.com/ja-jp/services/virtual-machines/)
 
-Python Tools for Visual Studio has publishing capabilities to Azure Web Sites and Cloud Services.  The next 2 sections describe these, and you can choose to go through either or both of them.
+Python Tools for Visual Studio には、Azure の Web サイトとクラウド サービスを発行するための機能が備わっています。次の 2 つのセクションではこれらの発行方法を説明します。必要に応じて、どちらか一方または両方を選択してください。
 
-In both cases, PTVS takes care of configuring IIS for you, and will generate a web.config file for you if one is not already in the project.  Static files will be collected automatically (manage.py collectstatic) as long as you have set STATIC_ROOT in your settings.py.
+いずれの場合も、PVTS によって IIS が自動的に構成され、プロジェクト内にまだ web.config ファイルが存在しない場合は自動的に生成されます。settings.py で STATIC_ROOT を設定していれば、静的ファイルが自動的に収集されます (manage.py collectstatic)。
 
-Hosting Django in a Virtual Machine is out of scope for this tutorial.  It involves creating a VM with your desired operating system (Windows or Linux), installing Python and manually deploying the Django application. 
+仮想マシンで Django をホストする方法は、このチュートリアルでは詳しく説明しません。適切なオペレーティング システム (Windows または Linux) で VM を作成し、Python をインストールした後、Django アプリケーションを手動でデプロイします。
 
-### Azure Web Site
+### Azure Web サイト
 
-1. First we'll need to create a Web Site.  Using the Azure Management Portal, click on **NEW**->**COMPUTE**->**WEB SITE**->**QUICK CREATE**.  Pick any name that's available.
+1. まず、Web サイトを作成する必要があります。Azure の管理ポータルで、**[新規]**、**[コンピューティング]**、**[Web サイト]**、**[簡易作成]** の順にクリックします。適切な名前を選択します。
 
-1. Once it is created, download the publish profile for the web site.
+1. Web サイトを作成したら、その Web サイトの発行プロファイルをダウンロードします。
 
-	![Web Site Download Profile](./media/cloud-services-python-create-deploy-django-app/django-tutorial-020-website-download-profile.png)
+	![Web サイトのプロファイルのダウンロード](./media/cloud-services-python-create-deploy-django-app/django-tutorial-020-website-download-profile.png)
 
-1. In Visual Studio, right-click on the project node and select **Publish**.
+1. Visual Studio で、該当するプロジェクト ノードを右クリックして **[発行]** を選択します。
 
-	![Web Site Publish](./media/cloud-services-python-create-deploy-django-app/django-tutorial-020-website-publish.png)
+	![Web サイトを発行する](./media/cloud-services-python-create-deploy-django-app/django-tutorial-020-website-publish.png)
 
-1. Import the web site publish profile file you downloaded previously.
+1. 前にダウンロードした Web サイト発行プロファイル ファイルをインポートします。
 
-1. Accept the defaults and click **Publish** to initiate the publishing.
+1. 既定値をそのまま使用し、**[発行]** をクリックして発行処理を開始します。
 
-1. When publishing has completed, a web browser will open to the published web site.
+1. 発行が完了すると Web ブラウザが開き、発行した Web サイトが表示されます。
 
-	![Web Site Browser](./media/cloud-services-python-create-deploy-django-app/django-tutorial-020-website.png)
+	![Web サイト ブラウザー](./media/cloud-services-python-create-deploy-django-app/django-tutorial-020-website.png)
 
-### Azure Cloud Service
+### Azure のクラウド サービス
 
-1. Right-click on the project node and select **Add Azure Cloud Service Project** or **Convert -> Convert to Azure Cloud Service Project** (you'll see one or the other, depending on your version of Visual Studio).  This will add a new project to the solution, with the .Azure suffix. This new project is marked as the startup project in the solution.
+1. プロジェクト ノードを右クリックして、**[Azure クラウド サービス プロジェクトの追加]** を選択するか、**[変換]、[Azure クラウド サービス プロジェクトへの変換]** の順に選択します (お使いの Visual Studio のバージョンに応じてどちらかが表示されます)。新しいプロジェクト (拡張子 .Azure) がソリューションに追加されます。この新しいプロジェクトは、ソリューションのスタートアップ プロジェクトとなります。
 
-	**Note:** If you don't see the command to create the Azure Cloud Service Project in your project context menu, then you need to install the Azure Tools for Visual Studio. These are installed as part of the Azure SDK for .NET. See the requirements section at the beginning of this tutorial.
+	**メモ:** プロジェクトのコンテキスト メニューに Azure のクラウド サービス プロジェクトを作成するコマンドが表示されない場合は、Azure Tools for Visual Studio をインストールする必要があります。これは、Azure SDK for .NET の一部としてインストールされます。このチュートリアルの冒頭にある要件セクションを参照してください。
 
-	![Solution Explorer](./media/cloud-services-python-create-deploy-django-app/django-tutorial-021-cloudservice-solution-explorer.png)
+	![ソリューション エクスプローラー](./media/cloud-services-python-create-deploy-django-app/django-tutorial-021-cloudservice-solution-explorer.png)
 
-#### Run in Azure Emulator
+#### Azure エミュレーターで実行
 
-1. You'll need to **restart Visual Studio as an Administrator** to be able to run in the compute emulator.
+1. コンピューティング エミュレーターで実行するには、**管理者として Visual Studio を再起動**する必要があります。
 
-1. Start debugging with **F5** and the app will run and deploy in the compute emulator. Verify that the admin interface works and you can vote on polls.
+1. **F5** キーを押してデバッグを開始します。アプリケーションが実行され、コンピューティング エミュレーターにデプロイされます。管理インターフェイスが正常に機能し、アンケートに投票できることを確認します。
 
-	![Compute Emulator](./media/cloud-services-python-create-deploy-django-app/django-tutorial-021-cloudservice-emulator.png)
+	![コンピューティング エミュレーター](./media/cloud-services-python-create-deploy-django-app/django-tutorial-021-cloudservice-emulator.png)
 
-1. You can now restart Visual Studio if you do not wish to continue running as an administrator.
+1. 管理者としての操作を続行しない場合は、ここで Visual Studio を再起動します。
 
-#### Publish to Azure Cloud Service
+#### Azure のクラウド サービスへの発行
 
-1. Next you'll publish the Cloud Service to Azure. Right-click on the **tutorial.Azure** Cloud Service project and **Publish**.
+1. 次に、作成したクラウド サービスを Azure に発行します。**tutorial.Azure** クラウド サービス プロジェクトを右クリックし、**[発行]** を選択します。
 
-	**Note:** Make sure to select **Publish** on the Cloud Service project. This will launch the **Publish Azure Application** dialog, to publish to an Azure Cloud Service.  If you select **Publish** on the Django project, it will launch the **Publish Web** dialog used to publish to an Azure Web Site.  
+	**メモ:** 必ず該当するクラウド サービス プロジェクトで **[発行]** を選択してください。Azure クラウド サービスへの発行に使用する **[Azure アプリケーションの発行]** ダイアログ ボックスが表示されます。Django プロジェクトで **[発行]** を選択すると、Azure Web サイトへの発行に使用する **[Web の発行]** ダイアログ ボックスが表示されます。
 
-	![Cloud Service Publish](./media/cloud-services-python-create-deploy-django-app/django-tutorial-021-cloudservice-publish.png)
+	![クラウド サービスの発行](./media/cloud-services-python-create-deploy-django-app/django-tutorial-021-cloudservice-publish.png)
 
-1. You'll need to import your Azure subscription file.  Click the [Sign in to download credentials](https://manage.windowsazure.com/publishsettings/index?client=vs&schemaversion=2.0) link to download it from the Azure portal.
+1. Azure サブスクリプション ファイルをインポートする必要があります。[[サインインして資格情報をダウンロードする]](https://manage.windowsazure.com/publishsettings/index?client=vs&schemaversion=2.0) リンクをクリックして、Azure ポータルからファイルをダウンロードします。
 
-1. In the Settings page, select **Create New** in the Cloud Service combo box to create a new Cloud Service. You can use any name that is available.
+1. [設定] ページで、[クラウド サービス] ボックスの一覧の **[新規作成]** を選択して、新しいクラウド サービスを作成します。このクラウド サービスには自由に名前を付けることができます。
 
-	![Cloud Service Settings](./media/cloud-services-python-create-deploy-django-app/django-tutorial-021-cloudservice-settings.png)
+	![クラウド サービスの設定](./media/cloud-services-python-create-deploy-django-app/django-tutorial-021-cloudservice-settings.png)
 
-1. Accept the defaults and click **Publish**. This will take longer than publishing to a Web Site, as it needs to provision a VM for the Cloud Service. You can view the progress in the Azure Activity Log window:
+1. 既定値をそのまま使用し、**[発行]** をクリックします。クラウド サービスの VM を準備する必要があるため、この処理は Web サイトに発行する場合より長い時間がかかります。その間、進捗状況が [Azure のアクティビティ ログ] ウィンドウに表示されます。
 
-	![Cloud Service Publish](./media/cloud-services-python-create-deploy-django-app/django-tutorial-021-cloudservice-publish-progress.png)
+	![クラウド サービスの発行](./media/cloud-services-python-create-deploy-django-app/django-tutorial-021-cloudservice-publish-progress.png)
 
-1. When the operation has completed, click the Website URL in the Azure Activity Log window to open a web browser.
+1. 処理が完了したら、[Azure のアクティビティ ログ] ウィンドウで Web サイトの URL をクリックして Web ブラウザーを開きます。
 
-	![Cloud Service Browser](./media/cloud-services-python-create-deploy-django-app/django-tutorial-021-cloudservice.png)
+	![クラウド サービス ブラウザー](./media/cloud-services-python-create-deploy-django-app/django-tutorial-021-cloudservice.png)
 
-## Conclusion
+## まとめ
 
-In this tutorial, we've developed a Django application using [Python Tools for Visual Studio](http://pytools.codeplex.com).  We used 3 different databases: sqlite3, SQL Server and MySQL databases.  Finally, we published the application to Azure Web Sites and Cloud Services.
+このチュートリアルでは、[Python Tools for Visual Studio](http://pytools.codeplex.com) を使って Django アプリケーションを作成しました。sqlite3、SQL Server、MySQL という 3 つの異なるデータベースを使用しました。最後に、Azure の Web サイトとクラウド サービスにこのアプリケーションを発行しました。
+

@@ -1,5 +1,5 @@
 <h2><a id="AdditionalServices"></a><span class="short-header">その他の Twilio サービスを使用する</span>方法: その他の Twilio サービスを使用する</h2>
-ここに示す例以外にも、Twilio が提供する Web ベースの API を使用して、Windows Azure アプリケーションからその他の Twilio 機能を利用することができます。詳細については、[Twilio API に関するドキュメント][twilio_api_documentation]を参照してください。
+ここに示す例以外にも、Twilio が提供する Web ベースの API を使用して、Azure アプリケーションからその他の Twilio 機能を利用することができます。詳細については、[Twilio API に関するドキュメント][twilio_api_documentation]を参照してください。
 
 <h2><a id="NextSteps"></a><span class="short-header">次のステップ</span>次のステップ</h2>
 これで、Twilio サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。

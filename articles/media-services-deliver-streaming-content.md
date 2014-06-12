@@ -1,22 +1,22 @@
-<properties linkid="develop-media-services-how-to-guides-deliver-streaming-content" urlDisplayName="Deliver Streaming Content from Media Services" pageTitle="How to Deliver Streaming Content from Media Services – Azure" metaKeywords="" description="Learn how to deliver streaming content from Media Services using a direct URL. Code samples are written in C# and use the Media Services SDK for .NET." metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="How to: Deliver streaming content" authors="" />
+<properties linkid="develop-media-services-how-to-guides-deliver-streaming-content" urlDisplayName="メディア サービスからストリーミング コンテンツを配信する" pageTitle="メディア サービスからストリーミング コンテンツを配信する方法 - Azure" metaKeywords="" description="直接の URL を使用してメディア サービスからストリーミング コンテンツを配信する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" metaCanonical="" disqusComments="1" umbracoNaviHide="0" writer="migree" title="方法: ストリーミング コンテンツを配信する" />
 
 
-#How to: Deliver streaming content
+#方法: ストリーミング コンテンツを配信する
 
-This article is one in a series introducing Azure Media Services programming. The previous topic was [How to: Deliver an Asset by Download](http://go.microsoft.com/fwlink/?LinkID=301734&clcid=0x409).
+この記事は、Azure のメディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックは、[ダウンロードによってアセットを配信する方法](http://go.microsoft.com/fwlink/?LinkID=301734&clcid=0x409)です。
 
-In addition to downloading media content from Media Services, you can use adaptive bitrate streaming to deliver content. For example, you can create a direct URL, called a locator, to streaming content on a Media Services origin server. Client applications such as Microsoft Silverlight can play the streaming content directly from the locator.
+メディア コンテンツをメディア サービスからダウンロードする以外にも、アダプティブ ビットレート ストリーミングを使ってコンテンツを配信することができます。たとえば、直接の URL (ロケーター) を作成して、メディア サービスの配信元サーバー上のコンテンツをストリーミングすることができます。Microsoft Silverlight などのクライアント アプリケーションは、ロケーターからストリーミング コンテンツを直接再生できます。
 
-The following example shows how to create an origin locator for an output asset produced by a job. The example assumes that you have already obtained a reference to an asset that contains smooth streaming files, and the variable named **assetToStream** is referenced in the code. 
+以下の例は、ジョブによって生成された出力アセットの配信元ロケーターを作成する方法を示したものです。このコード例は、スムーズ ストリーミング ファイルを含んだアセットへの参照が取得済みであることを前提としています。コード中では、**assetToStream** という名前の変数で参照されます。
 
-To create an origin locator to streaming content:
+ストリーミング コンテンツの配信元ロケーターを作成するには、次の手順を実行します。
 
-   1. Get a reference to the streaming manifest file (.ism) in the asset 
-   2. Define an access policy
-   3. Create the origin locator by calling the CreateLocator method 
-   4. Build a URL to the manifest file 
+   1.アセット内のストリーミング マニフェスト ファイル (.ism) への参照を取得します。
+   2.アクセス ポリシーを定義します。
+   3.CreateLocator メソッドを呼び出して配信元ロケーターを作成します。
+   4.マニフェスト ファイルの URL を構築します。
 
-The following code shows how to implement the steps:
+この手順を実装したコード例を次に示します。
 <pre><code>
 private static ILocator GetStreamingOriginLocator( string targetAssetID)
 {
@@ -67,11 +67,12 @@ private static ILocator GetStreamingOriginLocator( string targetAssetID)
 }
 </code></pre>
 
-For more information about delivering assets, see:
+アセットの配信の詳細については、以下を参照してください。
 <ul>
-<li><a href="http://msdn.microsoft.com/en-us/library/jj129575.aspx">Deliver Assets with the Media Services for .NET</a></li>
-<li><a href="http://msdn.microsoft.com/en-us/library/jj129578.aspx">Deliver Assets with the Media Services REST API</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/jj129575.aspx">Media Services SDK for .NET を使用して資産を配信する</a></li>
+<li><a href="http://msdn.microsoft.com/ja-jp/library/jj129578.aspx">Media Services REST API を使って資産を配信する</a></li>
 </ul>
 
-<h2>Next Steps</h2>
-So far we have covered delivering media by downloading from Azure Storage and using Smooth Streaming. The next topic [How to Deliver HLS content](http://go.microsoft.com/fwlink/?LinkId=301817) discusses delivering streaming content using Apple HTTP Live Streaming (HLS).
+<h2>次のステップ</h2>
+これまで、Azure のストレージからのダウンロードとスムーズ ストリーミングの使用によるメディアの配信について説明しました。次の [HLS コンテンツを配信する方法](http://go.microsoft.com/fwlink/?LinkId=301817)に関するトピックでは、Apple HTTP Live Streaming (HLS) を使用したストリーミング コンテンツの配信について説明します。
+

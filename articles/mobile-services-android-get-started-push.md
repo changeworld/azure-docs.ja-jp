@@ -1,73 +1,73 @@
-<properties linkid="develop-mobile-tutorials-get-started-with-push-android" urlDisplayName="Get Started with Push (Android)" pageTitle="Get started with push notifications (Android) | Mobile Dev Center" metaKeywords="" description="Learn how to use Azure Mobile Services to send push notifications to your Android app." metaCanonical="" services="" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="ricksal" solutions="" manager="dwrede" editor="" />
+<properties linkid="develop-mobile-tutorials-get-started-with-push-android" urlDisplayName="プッシュの使用 (Android)" pageTitle="プッシュ通知の使用 (Android) | モバイル デベロッパー センター" metaKeywords="" description="Azure Mobile Services を使用して Android アプリケーションにプッシュ通知を送信する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="Mobile Services でのプッシュ通知の使用" authors="ricksal" solutions="" manager="dwrede" editor="" />
 
 
-# Get started with push notifications in Mobile Services
+# モバイル サービスでのプッシュ通知の使用
 
 <div class="dev-center-tutorial-selector sublanding">
-	<a href="/en-us/develop/mobile/tutorials/get-started-with-push-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-android" title="Android" class="current">Android</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android" title="Xamarin.Android">Xamarin.Android</a>
+	<a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-js" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-wp8" title="Windows Phone">Windows Phone</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-ios" title="iOS">iOS</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-android" title="Android" class="current">Android</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-android" title="Xamarin.Android">Xamarin.Android</a>
 </div>
 
 
-<p>This topic shows you how to use Azure Mobile Services to send push notifications to an Android app. In this tutorial you add push notifications using the Google Cloud Messaging (GCM) service to the quickstart project. When complete, your mobile service will send a push notification each time a record is inserted.</p>
+<p>このトピックでは、Azure Mobile Services を使用して Android アプリケーションにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Google Cloud Messaging (GCM) サービスを使用したプッシュ通知をクイック スタート プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。</p>
 
->[WACOM.NOTE] This topic shows how to enable push notifications by using the legacy support provided by Mobile Services. Azure Notification Hubs integrates with Mobile Services to enable you to send template-based and cross-platform push notifications to millions of devices. By default, push notifications using Notification Hubs is not enabled, and there is currently no Notification Hub support for Android in the Mobile Services libraries. However, you can send push notifications from your mobile service by using the Notification Hub libraries. For more information, see [Get started with Notification Hubs](/en-us/documentation/articles/notification-hubs-android-get-started/).
+>[WACOM.NOTE] このトピックでは、モバイル サービスによって提供される古いバージョンのサポートを使用してプッシュ通知を有効にする方法を示します。Azure Notification Hubs は、Mobile Services を統合し、数百万台のデバイスに対してテンプレート ベースとプラットフォームのプッシュ通知を送信できるようにします。既定では、通知ハブを使用したプッシュ通知は有効になっていません。また、現時点ではモバイル サービス ライブラリ内に、Android 用の通知ハブのサポートはありません。ただし、通知ハブ ライブラリを使用してモバイル サービスからプッシュ通知を送信することができます。詳細については、「[Notification Hubs の使用](/ja-jp/documentation/articles/notification-hubs-android-get-started/)」を参照してください。
 
-This tutorial walks you through these basic steps to enable push notifications:
+このチュートリアルでは、プッシュ通知を有効にするための、次の基本的な手順について説明します。
 
-* [Enable Google Cloud Messaging](#register)
-* [Configure Mobile Services](#configure)
-* [Add push notifications to your app](#add-push)
-* [Update scripts to send push notifications](#update-scripts)
-* [Insert data to receive notifications](#test)
+* [Google Cloud Messaging を有効にする](#register)
+* [モバイル サービスを構成する](#configure)
+* [アプリケーションにプッシュ通知を追加する](#add-push)
+* [プッシュ通知を送信するようにスクリプトを更新する](#update-scripts)
+* [データを挿入して通知を受け取る](#test)
 
-This tutorial requires the following:
+このチュートリアルには、次のものが必要です。
 
-+ [Mobile Services Android SDK]
-+ An active Google account
++ [モバイル サービス Android SDK]
++ アクティブな Google アカウント
 
-This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete [Get started with Mobile Services]. 
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。
 
-##<a id="register"></a>Enable Google Cloud Messaging
+##<a id="register"></a>Google Cloud Messaging を有効にする
 
 
 [WACOM.INCLUDE [Enable GCM](../includes/mobile-services-enable-Google-cloud-messaging.md)]
 
-Next, you will use this API key value to enable Mobile Services to authenticate with GCM and send push notifications on behalf of you app.
+次に、この API キー値を使用して、モバイル サービスが GCM で認証し、アプリケーションの代わりにプッシュ通知を送信できるようにします。
 
-##<a id="configure"></a>Configure Mobile Services to send push requests
+##<a id="configure"></a>プッシュ要求を送信するようにモバイル サービスを構成する
 
-1. Log on to the [Azure Management Portal], click **Mobile Services**, and then click your app.
+1. [Azure 管理ポータル]にログオンし、**[Mobile Services ]** をクリックして、アプリケーションをクリックします。
 
    	![][18]
 
-2. Click the **Push** tab, enter the **API Key** value obtained from GCM in the previous procedure, and then click **Save**.
+2. **[プッシュ]** タブをクリックし、前の手順で GCM から取得した **API キー**値を入力して、**[保存]** をクリックします。
 
    	![][19]
 
-You mobile service is now configured to work with GCM to send push notifications.
+これで、GCM と連係してプッシュ通知を送信するようにモバイル サービスが構成されました。
 
-##<a id="add-push"></a>Add push notifications to your app
+##<a id="add-push"></a>アプリケーションにプッシュ通知を追加する
 
 
-###Add Google Play Services to the project
+###プロジェクトへの Google Play Services の追加
 
 [WACOM.INCLUDE [Add Play Services](../includes/mobile-services-add-Google-play-services.md)]
 
-###Add code
+###コードの追加
 
-1. Open the project file **AndroidManifest.xml**. Google Cloud Messaging has some minimum API level requirements for development and testing, which the **minSdkVersion** property in the Manifest must conform to. Consult [Set Up Google Play Services SDK] to determine how low you can set this value, if you need to set it below 16 because you are using an older device. Set the property appropriately.
+1. プロジェクト ファイル **AndroidManifest.xml** を開きます。Google Cloud Messaging には、マニフェストの **minSdkVersion** プロパティが準拠する必要がある、開発およびテストに関する最小 API レベル要件があります。古いデバイスを使用しているためにこの値を 16 より小さい値に設定する必要がある場合は、「[Set Up Google Play Services SDK (Google Play Services SDK のセットアップ)]」を参考に、どれだけ小さな値を設定できるか判断してください。プロパティを適切に設定します。
 
-2. Ensure that in the `uses-sdk` element, the **targetSdkVersion** is set to the number of an SDK platform that has been installed (step 1). It is preferable to set it to the newest version available. 
+2. `uses-sdk` 要素で、**targetSdkVersion** が、手順 1. でインストールした SDK プラットフォームの値に設定されていることを確認します。使用可能な最も新しいバージョンに設定することをお勧めします。
 
-3. The **uses-sdk** tag might look like this, depending on the choices you made in the preceding steps:
+3. 前の手順の選択内容に応じて、**uses-sdk** タグは次のようになります。
 
 	    <uses-sdk
 	        android:minSdkVersion="17"
 	        android:targetSdkVersion="19" />
 	
-4. In the code in the next two steps, replace _`**my_app_package**`_ with the name of the app package for your project, which is the value of the `package` attribute of the `manifest` tag. 
+4. 続く 2 つの手順で、コード内の _`**my_app_package**`_ を、プロジェクトのアプリケーション パッケージの名前 (`manifest` タグの `package` 属性の値) に置き換えます。
 
-5. Add the following new permissions after the existing `uses-permission` element:
+5. 既存の `uses-permission` 要素の後に次の新しいアクセス許可を追加します。
 
         <permission android:name="**my_app_package**.permission.C2D_MESSAGE" 
             android:protectionLevel="signature" />
@@ -76,7 +76,7 @@ You mobile service is now configured to work with GCM to send push notifications
         <uses-permission android:name="android.permission.GET_ACCOUNTS" />
         <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-6. Add the following code after the `application` opening tag: 
+6. `application` 開始タグの後に次のコードを追加します。
 
         <receiver android:name="com.microsoft.windowsazure.notifications.NotificationsBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">
@@ -88,7 +88,7 @@ You mobile service is now configured to work with GCM to send push notifications
 
 
 
-7. Open the file ToDoItem.java, add the following code to the **TodoItem** class:
+7. ファイル ToDoItem.java を開き、次のコードを **TodoItem** クラスに追加します。
 
 			@com.google.gson.annotations.SerializedName("handle")
 			private String mHandle;
@@ -101,54 +101,54 @@ You mobile service is now configured to work with GCM to send push notifications
 				mHandle = handle;
 			}
 		
-	This code creates a new property that holds the registration ID.
+	このコードは、登録 ID を保持する新しいプロパティを作成します。
 
-    <div class="dev-callout"><b>Note</b>
-	<p>When dynamic schema is enabled on your mobile service, a new <strong>handle</strong> column is automatically added to the <strong>TodoItem</strong> table when a new item that contains this property is inserted.</p>
+    <div class="dev-callout"><b>メモ</b>
+	<p>モバイル サービスで動的スキーマが有効になっていると、このプロパティを含む新しい項目が挿入されたときに、新しい "<strong>handle</strong>" 列が自動的に <strong>TodoItem</strong> テーブルに追加されます。</p>
     </div>
 
-8. Download and unzip the [Mobile Services Android SDK], open the **notifications** folder, copy the **notifications-1.0.1.jar** file to the *libs* folder of your Eclipse project, and refresh the *libs* folder.
+8. [Mobile Services Android SDK] をダウンロードし、解凍します。**notifications** フォルダーを開き、**notifications-n.jar** ファイルを Eclipse プロジェクトの *libs* フォルダーにコピーした後、*libs* フォルダーを最新の情報に更新します。
 
-    <div class="dev-callout"><b>Note</b>
-	<p>The numbers at the end of the file name may change in subsequent SDK releases.</p>
+    <div class="dev-callout"><b>メモ</b>
+	<p>ファイル名の末尾にある数値は、今後の SDK リリースで変更される可能性があります。</p>
     </div>
 
-9.  Open the file *ToDoItemActivity.java*, and add the following import statement:
+9. ファイル *ToDoItemActivity.java* を開き、次の import ステートメントを追加します。
 
 		import com.microsoft.windowsazure.notifications.NotificationsManager;
 
-10. Add the following private variable to the class, where _`<PROJECT_NUMBER>`_ is the Project Number assigned by Google to your app in the preceding procedure:
+10. 次のプライベート変数をクラスに追加します。ここで、_`<PROJECT_NUMBER>`_ は、最初の手順で Google によってアプリケーションに割り当てられたプロジェクト番号です。
 
 		public static final String SENDER_ID = "<PROJECT_NUMBER>";
 
-11. In the **onCreate** method, before the MobileServiceClient is instantiated, add this code which registers the Notification Handler for the device:
+11. **OnCreate** メソッドで、MobileServiceClient をインスタンス化する前に、デバイスに対応する通知ハンドラーを登録する次のコードを追加します。
 
 		NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
 
 
 
-12. Add the following line of code to the **addItem** method, before the item is inserted into the table:
+12. 項目がテーブルに追加される前に、次のコード行を **addItem** メソッドに追加します。
 
 		item.setHandle(MyHandler.getHandle());
 
-	This code sets the `handle` property of the item to the registration ID of the device.
+	このコードは、項目の `handle` プロパティにデバイスの登録 ID を設定します。
 
-13. In the Package Explorer, right-click the package (under the `src` node), click **New**, click **Class**.
+13. Package Explorer で (`src` ノードの下にある) パッケージを右クリックし、**[New]**、**[Class]** の順にクリックします。
 
-14. In **Name** type `MyHandler`, in **Superclass** type `com.microsoft.windowsazure.notifications.NotificationsHandler`, then click **Finish**
+14. **[Name]** に「`MyHandler`」と入力し、**[Superclass]** に `com.microsoft.windowsazure.notifications.NotificationsHandler` と入力して、**[Finish]** をクリックします。
 
 	![][6]
 
-	This creates the new MyHandler class.
+	これで、新しい MyHandler クラスが作成されます。
 
-15. Add the following import statements:
+15. 次の import ステートメントを追加します。
 
 		import android.content.Context;
 		
 		import com.microsoft.windowsazure.notifications.NotificationsHandler;
 		
 
-16. Add the following code:
+16. 次のコードを追加します。
 
 		@com.google.gson.annotations.SerializedName("handle")
 		private static String mHandle;
@@ -162,7 +162,7 @@ You mobile service is now configured to work with GCM to send push notifications
 		}
 	
 
-17. Replace the existing **onRegistered** method override with the following code:
+17. 既存の **onRegistered** メソッドのオーバーライドを次のコードに置き換えます。
 
 		@Override
 		public void onRegistered(Context context, String gcmRegistrationId) {
@@ -172,22 +172,22 @@ You mobile service is now configured to work with GCM to send push notifications
 		}
 		
 
-Your app is now updated to support push notifications.
+これで、アプリケーションがプッシュ通知をサポートするように更新されました。
 
 
-##<a id="update-scripts"></a>Update the registered insert script in the Management Portal
+##<a id="update-scripts"></a>管理ポータルで登録されている挿入スクリプトを更新する
 
-1. In the Management Portal, click the **Data** tab and then click the **TodoItem** table. 
+1. 管理ポータルで、**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
    	![][21]
 
-2. In **todoitem**, click the **Script** tab and select **Insert**.
+2. **[todoitem]** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。
    
   	![][22]
 
-   	This displays the function that is invoked when an insert occurs in the **TodoItem** table.
+   	**TodoItem** テーブルで挿入が発生したときに呼び出される関数が表示されます。
 
-3. Replace the insert function with the following code, and then click **Save**:
+3. insert 関数を次のコードに置き換え、**[保存]** をクリックします。
 
 		function insert(item, user, request) {
 			request.execute({
@@ -205,37 +205,37 @@ Your app is now updated to support push notifications.
 			});
 		}
 
-   	This registers a new insert script, which uses the [gcm object] to send a push notification (the inserted text) to the device provided in the insert request. 
+   	これで、新しい insert スクリプトが登録されます。このスクリプトは [gcm オブジェクト]を使用して、挿入要求で指定されたデバイスにプッシュ通知 (挿入されたテキスト) を送信します。
 
-##<a id="test"></a>Test push notifications in your app
+##<a id="test"></a>アプリケーションでプッシュ通知をテストする
 
-<div class="dev-callout"><b>Note</b>
-	<p>When you run this app in the emulator, make sure that you use an Android Virtual Device (AVD) that supports Google APIs.</p>
+<div class="dev-callout"><b>メモ</b>
+	<p>このアプリケーションをエミュレーターで実行する場合は、Google API をサポートしている Android Virtual Device (AVD) を使用してください。</p>
 </div>
 
-1. Restart Eclipse, then in Package Explorer, right-click the project, click **Properties**, click **Android**, check **Google APIs**, then click **OK**.
+1. Eclipse を再起動し、Package Explorer でプロジェクトを右クリックして、**[Properties]**、**[Android]** の順にクリックし、[**Google APIs**] をオンにしてから **[OK]** をクリックします。
 
 	![][23]
 
-  	This targets the project for the Google APIs.
+  	これで、プロジェクトの対象が Google API になります。
 
-2. From **Window**, select **Android Virtual Device Manager**, select your device, click **Edit**.
+2. **[Window]** で **[Android Virtual Device Manager]** を選択し、デバイスを選択してから **[Edit]** をクリックします。
 
 	![][24]
 
-3. Select **Google APIs** in **Target**, then click OK.
+3. **[Target]** で [**Google APIs**] を選択し、[OK] をクリックします。
 
    	![][25]
 
-	This targets the AVD to use Google APIs.
+	これで、AVD が Google API を使用するようになります。
 
-4. From the **Run** menu, then click **Run** to start the app.
+4. **[Run]** メニューの **[Run]** をクリックして、アプリケーションを開始します。
 
-5. In the app, type meaningful text, such as _A new Mobile Services task_ and then click the **Add** button.
+5. アプリケーションで、わかりやすいテキスト (たとえば、「_新しいモバイル サービス タスク_」) を入力し、**[Add]** ボタンをクリックします。
 
   	![][26]
 
-6. You will see a black notification box appear briefly in the lower part of the screen. 
+6. 画面の下部に、一時的に黒い通知ボックスが表示されます。
 
   	![][28]
 
@@ -243,11 +243,11 @@ Your app is now updated to support push notifications.
 
   ![][27]-->
 
-You have successfully completed this tutorial.
+これで、このチュートリアルは終了です。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次のステップ
 
-In this simple example a user receives a push notification with the data that was just inserted. The device token used by GCM is supplied to the mobile service by the client in the request. In the next tutorial, [Push notifications to app users], you will create a separate Devices table in which to store device tokens and send a push notification out to all stored channels when an insert occurs. 
+この単純な例では、ユーザーは挿入したばかりのデータのプッシュ通知を受け取ります。GCM によって使用されるデバイス トークンは、要求のクライアントによってモバイル サービスに提供されます。次のチュートリアル、「[Push notifications to app users (アプリケーション ユーザーへのプッシュ通知)]」では、デバイス トークンを格納するための個別の Devices テーブルを作成し、挿入が発生したときに、すべての格納されているチャネルにプッシュ通知を送信します。
 
 
 <!-- Images. -->
@@ -275,21 +275,22 @@ In this simple example a user receives a push notification with the data that wa
 [29]: ./media/mobile-services-android-get-started-push/mobile-eclipse-import-Play-library.png
 
 <!-- URLs. -->
-[Google Cloud Console]: https://cloud.google.com/console
-[Google apis]: http://go.microsoft.com/fwlink/p/?LinkId=268303
-[Android Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
-[Set Up Google Play Services SDK]: http://go.microsoft.com/fwlink/?LinkId=389801
-[Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
-[Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-android
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-android
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-android
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-android
-[Push notifications to app users]: /en-us/develop/mobile/tutorials/push-notifications-to-users-android
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-android
+[Google Cloud コンソール]: https://cloud.google.com/console
+[Google API]: http://go.microsoft.com/fwlink/p/?LinkId=268303
+[Android プロビジョニング ポータル]: http://go.microsoft.com/fwlink/p/?LinkId=272456
+[Set Up Google Play Services SDK (Google Play Services SDK のセットアップ)]: http://go.microsoft.com/fwlink/?LinkId=389801
+[ライブラリ プロジェクトの参照]: http://go.microsoft.com/fwlink/?LinkId=389800
+[モバイル サービス Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-android
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-android
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-android
+[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android
+[Push notifications to app users (アプリケーション ユーザーへのプッシュ通知)]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-android
+[スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-android
 
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[Mobile Services android conceptual]: /en-us/develop/mobile/how-to-guides/work-with-android-client-library/
-[gcm object]: http://go.microsoft.com/fwlink/p/?LinkId=282645
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
+[モバイル サービスに関連する Android の概念]: /ja-jp/develop/mobile/how-to-guides/work-with-android-client-library/
+[gcm オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=282645
+
 

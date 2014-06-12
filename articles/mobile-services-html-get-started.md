@@ -1,142 +1,142 @@
-<properties pageTitle="Get Started with Azure Mobile Services for HTML 5 apps" metaKeywords="" description="Follow this tutorial to get started using Azure Mobile Services for HTML development. " metaCanonical="" services="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="" editor="" />
+<properties pageTitle="HTML 5 アプリケーション向けの Azure のモバイル サービスの使用" metaKeywords="" description="このチュートリアルでは、HTML 用の開発を行う場合に Azure のモバイル サービスを使用する方法を示します。" metaCanonical="" services="" documentationCenter="Mobile" title="モバイル サービスの使用" authors="" solutions="" writer="glenga" manager="" editor=""  />
 
 
-# <a name="getting-started"> </a>Get started with Mobile Services
+# <a name="getting-started"> </a>モバイル サービスの使用
 
 <div class="dev-center-tutorial-selector sublanding">
-	<a href="/en-us/documentation/articles/mobile-services-windows-store-get-started" title="Windows Store">Windows Store</a>
-	<a href="/en-us/documentation/articles/mobile-services-windows-phone-get-started" title="Windows Phone">Windows Phone</a>
-	<a href="/en-us/documentation/articles/mobile-services-ios-get-started" title="iOS">iOS</a>
-	<a href="/en-us/documentation/articles/mobile-services-android-get-started" title="Android">Android</a>
-	<a href="/en-us/documentation/articles/mobile-services-html-get-started" title="HTML" class="current">HTML</a>
-	<a href="/en-us/documentation/articles/partner-xamarin-mobile-services-ios-get-started" title="Xamarin.iOS">Xamarin.iOS</a>
-	<a href="/en-us/documentation/articles/partner-xamarin-mobile-services-android-get-started" title="Xamarin.Android">Xamarin.Android</a>
-	<a href="/en-us/documentation/articles/partner-sencha-mobile-services-get-started/" title="Sencha">Sencha</a>
-	<a href="/en-us/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/" title="PhoneGap">PhoneGap</a>
+	<a href="/ja-jp/documentation/articles/mobile-services-windows-store-get-started" title="Windows ストア">Windows ストア</a>
+	<a href="/ja-jp/documentation/articles/mobile-services-windows-phone-get-started" title="Windows Phone">Windows Phone</a>
+	<a href="/ja-jp/documentation/articles/mobile-services-ios-get-started" title="iOS">iOS</a>
+	<a href="/ja-jp/documentation/articles/mobile-services-android-get-started" title="Android">Android</a>
+	<a href="/ja-jp/documentation/articles/mobile-services-html-get-started" title="HTML" class="current">HTML</a>
+	<a href="/ja-jp/documentation/articles/partner-xamarin-mobile-services-ios-get-started" title="Xamarin.iOS">Xamarin.iOS</a>
+	<a href="/ja-jp/documentation/articles/partner-xamarin-mobile-services-android-get-started" title="Xamarin.Android">Xamarin.Android</a>
+	<a href="/ja-jp/documentation/articles/partner-sencha-mobile-services-get-started/" title="Sencha">Sencha</a>
+	<a href="/ja-jp/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/" title="PhoneGap">PhoneGap</a>
 </div>
 
 <!--<div class="dev-center-tutorial-subselector">
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-html-get-started/" title=".NET backend">.NET backend</a> | 
-	<a href="/en-us/documentation/articles/mobile-services-html-get-started/"  title="JavaScript backend" class="current">JavaScript backend</a>
+	<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-html-get-started/" title=".NET バックエンド">.NET バックエンド</a> |
+	<a href="/ja-jp/documentation/articles/mobile-services-html-get-started/"  title="JavaScript バックエンド" class="current">JavaScript バックエンド</a>
 </div>-->
 
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
-<p>This tutorial shows you how to add a cloud-based backend service to an HTML app using Azure Mobile Services. In this tutorial, you will create both a new mobile service and a simple <em>To do list</em> app that stores app data in the new mobile service. You can view a video version of this tutorial by clicking the clip to the right.</p>
+<p>このチュートリアルでは、Azure のモバイル サービスを使用して HTML アプリケーションにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な <em>To do list</em> アプリケーションの両方を作成します。このチュートリアルのビデオ バージョンを表示するには、右側のクリップをクリックします。</p>
 </div>
-<div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkId=287040" target="_blank" class="label">watch the tutorial</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-html-get-started-180x120.png') !important;" href="http://go.microsoft.com/fwlink/?LinkId=287040" target="_blank" class="dev-onpage-video"><span class="icon">Play Video</span></a> <span class="time">3:51</span></div>
+<div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkId=287040" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-html-get-started-180x120.png') !important;" href="http://go.microsoft.com/fwlink/?LinkId=287040" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">3:51</span></div>
 </div>
  
-A screenshot from the completed app is below:
+完成したアプリケーションのスクリーンショットは次のようになります。
 
 ![][0]
 
-Completing this tutorial is a prerequisite for all other Mobile Services tutorials for HTML apps. 
+このチュートリアルを完了することは、HTML アプリの他のすべてのモバイル サービス チュートリアルの前提条件です。
 
-<div class="dev-callout"><strong>Note</strong> <p>To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F" target="_blank">Azure Free Trial</a>.</p></div>
+<div class="dev-callout"><strong></strong>注<p> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
 
-###Additional requirements
+###その他の要件
 
-+ This tutorial requires that you have one of the following web servers running on your local computer:
++ このチュートリアルでは、ローカル コンピューター上で次のいずれかの Web サーバーが実行されている必要があります。
 
-	+  **On Windows**: IIS Express. IIS Express is installed by the [Microsoft Web Platform Installer].   
-	+  **On MacOS X**: Python, which should already be installed.
-	+  **On Linux**: Python. You must install the [latest version of Python]. 
+	+  **Windows**: IIS ExpressIIS Express は、[Microsoft Web プラットフォーム インストーラー]によってインストールされます。
+	+  **MacOS X**: Python。既にインストールされています。
+	+  **Linux**: Python。[最新バージョンの Python] をインストールする必要があります。
 	
-	You can use any web server to host the app, but these are the web servers that are supported by the downloaded scripts.  
+	このアプリケーションは任意の Web サーバーを使用してホストすることができますが、これらの Web サーバーは、ダウンロードしたスクリプトでサポートされています。
 
-+ A web browser that supports HTML5.
++ HTML5 をサポートする Web ブラウザー。
 
 
-## <a name="create-new-service"> </a>Create a new mobile service
+## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
 
 [WACOM.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
 
-## <h2><span class="short-header">Create a new app</span>Create a new HTML app</h2>
+## <h2>新しいアプリケーションを作成する<span class="short-header">新しい HTML アプリケーションを作成する</span></h2>
 
-Once you have created your mobile service, you can follow an easy quickstart in the Management Portal to either create a new app or modify an existing app to connect to your mobile service. 
+モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、新しいアプリケーションを作成するか、既存のアプリケーションを変更してモバイル サービスに接続することができます。
 
-In this section you will create a new HTML app that is connected to your mobile service.
+ここでは、モバイル サービスに接続された新しい HTML アプリを作成します。
 
-1.  In the Management Portal, click **Mobile Services**, and then click the mobile service that you just created.
+1. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
    
-2. In the quickstart tab, click **Windows** under **Choose platform** and expand **Create a new HTML app**.
+2. [クイック スタート] タブの **[プラットフォームの選択]** で **[Windows]** を選択し、**[新しい HTML アプリを作成する]** を展開します。
 
    	![][6]
 
-   	This displays the three easy steps to create and host an HTML app connected to your mobile service.
+   	これにより、モバイル サービスに接続された HTML アプリを作成し、ホストするための簡単な 3 つの手順が表示されます。
 
   	![][7]
 
-3. Click **Create TodoItems table** to create a table to store app data.
+3. **[TodoItems テーブルを作成する]** をクリックして、アプリケーション データを格納するテーブルを作成します。
 
-4. Under **Download and run your app**, click **Download**. 
+4. **[アプリケーションをダウンロードして実行する]** の下の **[ダウンロード]** をクリックします。
 
-  	This downloads the web site files for the sample _To do list_ application that is connected to your mobile service. Save the compressed file to your local computer, and make a note of where you save it.
+  	これにより、モバイル サービスに接続されている To do list サンプル アプリケーションの Web サイト ファイルがダウンロードされます。圧縮されたファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
-5. In the **Configure** tab, verify that `localhost` is already listed in the **Allow requests from host names** list under **Cross-Origin Resource Sharing (CORS)**. If it's not, type `localhost` in the **Host name** field and then click **Save**.
+5. **[構成]** タブで、**[クロス オリジン リソース共有 (CORS)]** の **[ホスト名からの要求を許可する]** に  `localhost` が既に表示されていることを確認します。表示されていない場合は、**[ホスト名]** フィールドに「`localhost`」と入力し、**[保存]** をクリックします。
 
   	![][9]
 
-	<div class="dev-callout"><b>Note</b>
-		<p>If you deploy the quickstart app to a web server other than localhost, you must add the host name of the web server to the <strong>Allow requests from host names</strong> list. For more information, see <a href="http://msdn.microsoft.com/en-us/library/windowsazure/dn155871.aspx" target="_blank">Cross-origin resource sharing</a>.</p>
+	<div class="dev-callout"><b>注:</b>
+		<p>localhost 以外の Web サーバーにクイック スタート アプリケーションを展開する場合は、<strong>[ホスト名からの要求を許可する]</strong> の一覧に Web サーバーのホスト名を追加する必要があります。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dn155871.aspx" target="_blank">クロス オリジン リソース共有</a>」を参照してください。</p>
 	</div>
 
-## Host and run your HTML app
+## HTML アプリケーションのホストと実行
 
-The final stage of this tutorial is to host and run your new app on your local computer.
+このチュートリアルの最後に、ローカル コンピューターの新しいアプリケーションをホストして実行します。
 
-1. Browse to the location where you saved the compressed project files, expand the files on your computer, and launch one of the following command files from the **server** subfolder.
+1. 圧縮されたプロジェクト ファイルの保存場所を参照し、ファイルをコンピューター上に展開して、**server** サブフォルダーから次のコマンド ファイルの 1 つを開始します。
 
-	+ **launch-windows** (Windows computers) 
-	+ **launch-mac.command** (Mac OS X computers)
-	+ **launch-linux.sh** (Linux computers)
+	+ **launch-windows** (Windows コンピューター)
+	+ **launch-mac.command** (Mac OS X コンピューター)
+	+ **launch-linux.sh** (Linux コンピューター)
 
-	<div class="dev-callout"><b>Note</b>
-		<p>On a Windows computer, type `R` when PowerShell asks you to confirm that you want to run the script. Your web browser might warn you to not run the script because it was downloaded from the internet. When this happens, you must request that the browser proceed to load the script.</p>
+	<div class="dev-callout"><b>注:</b>
+		<p>Windows コンピューターでは、PowerShell からスクリプトの実行の確認を求められた場合は、`R`と入力します。Web ブラウザーでは、インターネットからダウンロードしたスクリプトであるため、実行しないよう警告されることがあります。その場合は、ブラウザーがスクリプトの読み込みを開始するよう要求する必要があります。</p>
 	</div>
 
-	This starts a web server on your local computer to host the new app.
+	これにより、新しいアプリケーションをホストする Web サーバーがローカル コンピューター上で起動します。
 
-2. Open the URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> in a web browser to start the app.
+2. Web ブラウザーで URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> を開いて、アプリケーションを開始します。
 
-3. In the app, type meaningful text, such as _Complete the tutorial_, in **Enter new task**, and then click **Add**.
+3. アプリケーションで、意味のあるテキスト (たとえば、チュートリアルの完了) を **[Enter new task]** に入力し、**[Add]** をクリックします。
 
    	![][10]
 
-   	This sends a POST request to the new mobile service hosted in Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile service, and the data is displayed in the second column in the app.
+   	これにより、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目はモバイル サービスによって返され、データはアプリケーションの 2 番目の列に表示されます。
 
 	<div class="dev-callout"> 
-	<b>Note</b> 
-   	<p>You can review the code that accesses your mobile service to query and insert data, which is found in the app.js file.</p> 
+	<b>注:</b>
+   	<p>モバイル サービスにアクセスして app.js ファイルにあるデータを照会および挿入するコードを確認できます。</p>
  	</div>
 
-4. Back in the Management Portal, click the **Data** tab and then click the **TodoItems** table.
+4. 管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
 
    	![][11]
 
-   	This lets you browse the data inserted by the app into the table.
+   	これで、アプリケーションによってテーブルに挿入されたデータを参照できます。
 
    	![][12]
 
-## <a name="next-steps"> </a>Next Steps
-Now that you have completed the quickstart, learn how to perform additional important tasks in Mobile Services: 
+## <a name="next-steps"> </a>次のステップ
+クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。
 
-* **[Get started with data]**
-  <br/>Learn more about storing and querying data using Mobile Services.
+* **[データの使用]**
+  <br/>モバイル サービスを使用してデータの格納およびクエリを実行する方法について説明します。
 
-* **[Get started with authentication]**
-  <br/>Learn how to authenticate users of your app with an identity provider.
+* **[認証の使用]**
+  <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* **[Mobile Services HTML/JavaScript How-to Conceptual Reference]**
-  <br/>Learn more about how to use Mobile Services with HTML/JavaScript 
+* **[モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]**
+  <br/>HTML/JavaScript でモバイル サービスを使用する方法について説明します。
 
 <!-- Anchors. -->
-[Getting started with Mobile Services]:#getting-started
-[Create a new mobile service]:#create-new-service
-[Define the mobile service instance]:#define-mobile-service-instance
-[Next Steps]:#next-steps
+[モバイル サービスの使用]:#getting-started
+[新しいモバイル サービスを作成する]:#create-new-service
+[モバイル サービス インスタンスの定義]:#define-mobile-service-instance
+[次のステップ]:#next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-html-get-started/mobile-quickstart-completed-html.png
@@ -155,11 +155,12 @@ Now that you have completed the quickstart, learn how to perform additional impo
 
 
 <!-- URLs. -->
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-html
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-html
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-html
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-html
 
-[Management Portal]: https://manage.windowsazure.com/
-[Microsoft Web Platform Installer]:  http://go.microsoft.com/fwlink/p/?LinkId=286333
-[latest version of Python]: http://go.microsoft.com/fwlink/p/?LinkId=286342
-[Mobile Services HTML/JavaScript How-to Conceptual Reference]: /en-us/develop/mobile/how-to-guides/work-with-html-js-client
-[Cross-origin resource sharing]: http://msdn.microsoft.com/en-us/library/windowsazure/dn155871.aspx
+[管理ポータル]: https://manage.windowsazure.com/
+[Microsoft Web プラットフォーム インストーラー]:  http://go.microsoft.com/fwlink/p/?LinkId=286333
+[最新バージョンの Python]: http://go.microsoft.com/fwlink/p/?LinkId=286342
+[モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-html-js-client
+[クロス オリジン リソース共有]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn155871.aspx
+

@@ -1,28 +1,28 @@
-<properties linkid="manage-services-recovery-configure-backup-vault" urlDisplayName="バックアップ資格情報コンテナーの構成" pageTitle="Windows Server のバックアップをすばやく簡単に行うための Windows Azure 復旧サービスの構成" metaKeywords="障害復旧" description="このチュートリアルを使用し、Microsoft の Windows Azure クラウド ソリューションのバックアップ サービスを使って、Windows Server をクラウドにバックアップする方法について学習します。" metaCanonical="" services="recovery-services" documentationCenter="" title="Windows Server のバックアップをすばやく簡単に行うための Windows Azure のバックアップの構成" authors=""  solutions="" writer="starra" manager="cynthn" editor="tysonn"  />
+<properties linkid="manage-services-recovery-configure-backup-vault" urlDisplayName="バックアップ資格情報コンテナーの構成" pageTitle="Windows Server のバックアップをすばやく簡単に行うための Azure 復旧サービスの構成" metaKeywords="障害復旧" description="このチュートリアルを使用し、Microsoft の Azure クラウド ソリューションのバックアップ サービスを使って、Windows Server をクラウドにバックアップする方法について学習します。" metaCanonical="" services="recovery-services" documentationCenter="" title="Windows Server のバックアップをすばやく簡単に行うための Azure のバックアップの構成" authors=""  solutions="" writer="starra" manager="cynthn" editor="tysonn"  />
 
 
 
-<h1><a id="configure-a-backup-vault-tutorial"></a>Windows Server のバックアップをすばやく簡単に行うための Windows Azure のバックアップの構成</h1>
+<h1><a id="configure-a-backup-vault-tutorial"></a>Windows Server のバックアップをすばやく簡単に行うための Azure のバックアップの構成</h1>
 <div class="dev-callout"> 
 <strong>注</strong>
  
-<p>このチュートリアルを実行するには、Windows Azure アカウントで Windows Azure のバックアップ機能を有効にする必要があります。</p>
+<p>このチュートリアルを実行するには、Azure アカウントで Azure のバックアップ機能を有効にする必要があります。</p>
 <ul> 
-<li>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="/en-us/pricing/free-trial/">Windows Azure の無料評価版サイト</a>を参照してください。</li>
+<li>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="/ja-jp/pricing/free-trial/">Azure の無料評価版サイト</a>を参照してください。</li>
  
-<li>所有しているアカウントで Windows Azure のバックアップ プレビューを有効にする必要がある場合は、「<a href="/en-us/develop/net/tutorials/create-a-windows-azure-account/#enable" target="_blank">Windows Azure アカウントを作成してプレビュー機能を有効にする</a>」を参照してください。</li>
+<li>所有しているアカウントで Azure のバックアップ プレビューを有効にする必要がある場合は、「<a href="/ja-jp/develop/net/tutorials/create-a-windows-azure-account/#enable" target="_blank">Enable Azure preview features (Azure アカウントを作成してプレビュー機能を有効にする)</a>」を参照してください。</li>
 </ul>
  
 <p>バックアップ プレビュー プログラムへの参加を要求した後、自分の状態がアクティブになるのを待ちます。マイクロソフトはすべてのユーザーを自動的に承認しているため、承認に時間はかかりません。</p>
 </div>
   
 
-Windows Azure に Windows Server のファイルとデータをバックアップするには、データを保存するリージョンにバックアップ資格情報コンテナーを作成する必要があります。このチュートリアルでは、バックアップの保存に使用する資格情報コンテナーの作成、資格情報コンテナーへの証明書のアップロード、バックアップ エージェントのインストール、および管理ポータルで使用できるバックアップ管理タスクの概要について説明します。
+Azure に Windows Server のファイルとデータをバックアップするには、データを保存するリージョンにバックアップ資格情報コンテナーを作成する必要があります。このチュートリアルでは、バックアップの保存に使用する資格情報コンテナーの作成、資格情報コンテナーへの証明書のアップロード、バックアップ エージェントのインストール、および管理ポータルで使用できるバックアップ管理タスクの概要について説明します。
 
 <div class="dev-callout"> 
 <strong>開始する前に</strong>
 <p>このチュートリアルを完了するには、サーバーをバック
-アップ資格情報コンテナーに登録するための X.509 v3 証明書が必要です。この証明書はキー長が 2048 ビット以上で、ローカル コンピューターの Personal 証明書ストアに存在します。サーバーに証明書がインストールされている場合、そのサーバーには証明書の秘密キーが含まれています。Windows Azure の管理ポータルに証明書をアップロードするには、公開キーを .cer 形式ファイルとしてエクスポートする必要があります。</p>
+アップ資格情報コンテナーに登録するための X.509 v3 証明書が必要です。この証明書はキー長が 2048 ビット以上で、ローカル コンピューターの Personal 証明書ストアに存在します。サーバーに証明書がインストールされている場合、そのサーバーには証明書の秘密キーが含まれています。Azure の管理ポータルに証明書をアップロードするには、公開キーを .cer 形式ファイルとしてエクスポートする必要があります。</p>
 
 <p>次のいずれかを使用できます。</p>
 <ul>
@@ -39,7 +39,7 @@ Windows Azure に Windows Server のファイルとデータをバックアッ�
 <li>現在有効であること (有効期間内にあり、3 年を超えていない)</li>
 </ul>
 
-<p>独自の自己署名証明書を使用するには、次の手順に従います。</p>
+<p>独自の自己署名証明書を使用するには、次のステップに従います。</p>
 <ol>
 <li><a href="http://go.microsoft.com/fwlink/p/?LinkID=294662">証明書作成ツール (MakeCert.exe)</a> をダウンロードします。</li>
 
@@ -59,7 +59,7 @@ makecert.exe -r -pe -n CN=CertificateName -ss my -sr localmachine -eku 1.3.6.1.5
 
 1. [管理ポータル](https://manage.windowsazure.com)にサインインします。
 
-	[WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
+	[WACOM.INCLUDE [免責事項](../includes/disclaimer.md)]
 
 2. **[復旧サービス]**、**[新規作成]** の順にクリックし、**[バックアップ資格情報コンテナー]** をポイントして、**[簡易作成]** をクリックします。
 
@@ -69,7 +69,7 @@ makecert.exe -r -pe -n CN=CertificateName -ss my -sr localmachine -eku 1.3.6.1.5
 
 4. **[リージョン]** ボックスで、バックアップ資格情報コンテナーのリージョンを選択します。
 
-5. **[サブスクリプション]** ボックスに、バックアップ資格情報コンテナーを使用する Windows Azure サブスクリプションを入力します。
+5. **[サブスクリプション]** ボックスに、バックアップ資格情報コンテナーを使用する Azure サブスクリプションを入力します。
 
 
 6. **[バックアップ資格情報コンテナーの作成]** をクリックします。
@@ -91,16 +91,16 @@ makecert.exe -r -pe -n CN=CertificateName -ss my -sr localmachine -eku 1.3.6.1.5
 
 2. **[復旧サービス]** をクリックし、バックアップ資格情報コンテナーの名前をクリックして、資格情報コンテナー ダッシュボードを表示します。
 
-3.  **[エージェントのインストール]** をクリックします。
+3. **[エージェントのインストール]** をクリックします。
 	
 	![エージェントのインストール][install-agent]
 4. ダウンロードするエージェントを選択できるダイアログが表示されます。
 	* Windows Server 2012 および System Center 2012 SP1 - Data Protection Manager のエージェント
-	* Windows Server 2012 Essentials 用エージェント
+	* Windows Server 2012 Essentials のエージェント
 5. 適切なエージェントを選択します。エージェント ソフトウェアをダウンロードする Microsoft ダウンロード センターにリダイレクトされます。詳細情報
 
-	* [Windows Server 2012 および System Center 2012 SP1 - Data Protection Manager の Windows Azure のバックアップ エージェントのインストール](http://technet.microsoft.com/en-us/library/hh831761.aspx#BKMK_installagent)
-	* [Windows Server 2012 Essentials の Windows Azure のバックアップ エージェントのインストール](http://technet.microsoft.com/en-us/library/jj884318.aspx)
+	* [Windows Server 2012 および System Center 2012 SP1 - Data Protection Manager の Azure のバックアップ エージェントのインストール](http://technet.microsoft.com/ja-jp/library/hh831761.aspx#BKMK_installagent)
+	* [Windows Server 2012 Essentials の Azure のバックアップ エージェントのインストール](http://technet.microsoft.com/ja-jp/library/jj884318.aspx)
 
 エージェントがインストールされたら、適切なローカル管理インターフェイス (Microsoft 管理コンソール スナップイン、System Center Data Protection Manager コンソール、Windows Server Essentials ダッシュボードなど) を使用して、サーバーのバックアップ ポリシーを構成できます。
 
@@ -114,17 +114,17 @@ makecert.exe -r -pe -n CN=CertificateName -ss my -sr localmachine -eku 1.3.6.1.5
 3. **[保護された項目]** をクリックして、サーバーからバックアップされた項目を表示します。この一覧は、情報の提供のみを目的としています。
 ![保護された項目][protected-itmes]
 
-4. **[サーバー]** をクリックして、この資格情報コンテナーに登録されたサーバーの名前を表示します。ここでは、次のタスクを実行できます。
+4 .**[サーバー]** をクリックして、この資格情報コンテナーに登録されたサーバーの名前を表示します。ここでは、次のタスクを実行できます。
 	* **再登録を許可**。サーバーに対してこのオプションが選択されている場合、エージェントで登録ウィザードを使用して、サーバーをバックアップ コンテナーにもう一度登録できます。証明書でエラーが発生したとき、またはサーバーを再構築する必要があった場合などに、再登録が必要になる可能性があります。再登録を行えるのは、サーバー名ごとに 1 回だけです。
 	* **削除**。バックアップ コンテナーからサーバーを削除します。サーバーに関連付けられている保存されたデータすべてがすぐに削除されます。
 
 		![削除されたサーバー][deleted-server]
 
-<h2><a id="next"></a>次の手順</h2>
+<h2><a id="next"></a>次のステップ</h2>
 
-- Windows Azure のバックアップの詳細については、「[Windows Azure のバックアップの概要](http://go.microsoft.com/fwlink/p/?LinkId=222425)」を参照してください。
+- Azure のバックアップの詳細については、「[Azure Backup の概要](http://go.microsoft.com/fwlink/p/?LinkId=222425)」を参照してください。
 
-- [Windows Azure のバックアップ フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
+- [Azure のバックアップ フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)にアクセスします。
 
 [new-backup-vault]: ./media/backup-configure-vault/RS_howtobackup1.png
 [backup-vault-create]: ./media/backup-configure-vault/RS_howtobackup2.png

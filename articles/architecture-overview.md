@@ -1,49 +1,49 @@
-<properties linkid="" urlDisplayName="" pageTitle="Architecture" metaKeywords="" description="Architecture overview that covers common design patterns" metaCanonical="" services="" documentationCenter="" videoId="" scriptId="" title="Architecture Overview" authors="waltpo" solutions="" manager="bjsmith" editor="mattshel" />
+<properties linkid="" urlDisplayName="" pageTitle="アーキテクチャ" metaKeywords="" description="一般的な設計パターンを対象とするアーキテクチャの概要" metaCanonical="" services="" documentationCenter="" videoId="" scriptId="" title="アーキテクチャの概要" authors="" solutions="" writer="waltpo" manager="bjsmith" editor="mattshel"  />
 
-#Architecture
-Learn how to implement common design patterns in Azure.
+#アーキテクチャ
+Azure で一般的な設計パターンを実装する方法について説明します。
 
-###Azure Symbol/Icon set
+###Azure のシンボル/アイコン セット
 
-[Download the Azure Symbol/Icon set](http://www.microsoft.com/en-us/download/details.aspx?id=41937) to create technical materials that describe (or use) Azure—things like architecture diagrams, training materials, presentations, datasheets, infographics, and whitepapers. You can download the symbols in PPT, Visio, or PNG formats. We’d like to know what you think, so there are instructions for providing feedback in the download.
+[Azure のシンボル/アイコン セットをダウンロード](http://www.microsoft.com/ja-jp/download/details.aspx?id=41937)して、Azure を説明 (または使用) するための技術資料 (アーキテクチャ図、トレーニング資料、プレゼンテーション、データシート、インフォグラフィックス、ホワイト ペーパーなど) を作成してください。シンボルは、PPT、Visio、または PNG 形式でダウンロードできます。ダウンロード中にフィードバックを送付する手順も示していますので、ぜひご感想をお知らせください。
 
-![Azure Symbol/Icon set][azure_symbols]
+![Azure のシンボル/アイコン セット][azure_symbols]
 
-##Design patterns
+##設計パターン
 
-###[Competing Consumers](http://msdn.microsoft.com/en-us/library/dn568101.aspx)
+###[Competing Consumers (競合コンシューマー)](http://msdn.microsoft.com/ja-jp/library/dn568101.aspx)
 
-![Competing Consumers][competing_consumers]
+![競合コンシューマー][competing_consumers]
 
-Enable multiple concurrent consumers to process messages received on the same messaging channel. This pattern enables a system to process multiple messages concurrently to optimize throughput, to improve scalability and availability, and to balance the workload. 
+複数のコンシューマーが、同じメッセージング チャネルで受信したメッセージを同時に処理できるようにします。システムでこのパターンを使用することで、複数のメッセージを同時に処理して、スループットを最適化し、スケーラビリティと可用性を向上させ、ワークロードのバランスを取ることができます。
 
-###[Command and Query Responsibility Segregation](http://msdn.microsoft.com/en-us/library/dn568103.aspx)
+###[Command and Query Responsibility Segregation (コマンドとクエリの責務分離)](http://msdn.microsoft.com/ja-jp/library/dn568103.aspx)
 
-![Command and Query Responsibility Segregation][cqrs]
+![コマンドとクエリの責務分離][cqrs]
 
-Segregate operations that read data from operations that update data by using separate interfaces. This pattern can maximize performance, scalability, and security; support evolution of the system over time through higher flexibility; and prevent update commands from causing merge conflicts at the domain level.
+別のインターフェイスを使用することで、データを更新する操作からデータを読み取る操作を分離します。このパターンにより、パフォーマンス、スケーラビリティ、およびセキュリティが最大化され、より高い柔軟性で時の経過と共にシステムを進展させることができ、更新コマンドによってドメイン レベルでマージの競合が発生することを防止できます。
 
-###[Leader Election](http://msdn.microsoft.com/en-us/library/dn568104.aspx)
+###[Leader Election (リーダー選定)](http://msdn.microsoft.com/ja-jp/library/dn568104.aspx)
 
-![Leader Election][leader_election]
+![リーダー選定][leader_election]
 
-Coordinate the actions performed by a collection of collaborating task instances in a distributed application by electing one instance as the leader that assumes responsibility for managing the other instances. This pattern can help to ensure that task instances do not conflict with each other, cause contention for shared resources, or inadvertently interfere with the work that other task instances are performing.
+他のインスタンスの管理を担当するリーダーとして 1 つのインスタンスを選定することで、分散アプリケーションで協調するタスク インスタンスのコレクションによって実行されるアクションを調整します。このパターンを使用すると、タスク インスタンスが互いに競合したり、共有リソースの競合が発生したり、他のタスク インスタンスが実行している作業を妨げたりすることを防止できます。
 
-###[Pipes and Filters](http://msdn.microsoft.com/en-us/library/dn568100.aspx)
+###[Pipes and Filters (パイプとフィルター)](http://msdn.microsoft.com/ja-jp/library/dn568100.aspx)
 
-![Pipes and Filters][pipes_and_filters]
+![パイプとフィルター][pipes_and_filters]
 
-Decompose a task that performs complex processing into a series of discrete elements that can be reused. This pattern can improve performance, scalability, and reusability by allowing task elements that perform the processing to be deployed and scaled independently.
+複雑な処理を実行するタスクを、再利用できる一連の要素に分解します。このパターンを使用すると、処理を実行する複数のタスク要素を別々に展開および拡張することにより、パフォーマンス、スケーラビリティ、および再利用性を向上させることができます。
 
-###[Valet Key](http://msdn.microsoft.com/en-us/library/dn568102.aspx)
+###[Valet Key (バレット キー)](http://msdn.microsoft.com/ja-jp/library/dn568102.aspx)
 
-![Valet Key][valet_key]
+![バレット キー][valet_key]
 
-Use a token or key that provides clients with restricted direct access to a specific resource or service in order to offload data transfer operations from the application code. This pattern is particularly useful in applications that use cloud-hosted storage systems or queues, and can minimize cost and maximize scalability and performance.
+クライアントに特定のリソースまたはサービスへの制限付き直接アクセスを提供するトークンまたはキーを使用して、アプリケーション コードからのデータ転送処理の負荷を軽減します。このパターンは、クラウドでホストされるストレージ システムまたはキューを使用するアプリケーションで特に有用です。これを使用すると、コストを最小限に抑え、スケーラビリティとパフォーマンスを最大化することができます。
 
-### Additional Guidance
+### その他のガイダンス
 
-For information on more common design patterns in Azure, see [Cloud Design Patterns](http://msdn.microsoft.com/en-us/library/dn568099.aspx).
+Azure のその他の一般的な設計パターンについては、「 [Cloud Design Patterns (クラウドの設計パターン)](http://msdn.microsoft.com/ja-jp/library/dn568099.aspx).」を参照してください。
 
 
 [competing_consumers]: ./media/architecture-overview/CompetingConsumers.png
@@ -52,3 +52,5 @@ For information on more common design patterns in Azure, see [Cloud Design Patte
 [pipes_and_filters]: ./media/architecture-overview/PipesAndFilters.png
 [valet_key]: ./media/architecture-overview/ValetKey.png
 [azure_symbols]: ./media/architecture-overview/AzureSymbols.png
+
+

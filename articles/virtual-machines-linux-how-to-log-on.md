@@ -1,31 +1,32 @@
-<properties linkid="manage-linux-howto-logon-linux-vm" urlDisplayName="Log on to a VM" pageTitle="Log on to a virtual machine running Linux in Azure" metaKeywords="Azure Linux vm, Linux SSH" description="Learn how to log on to an Azure virtual machine running Linux by using a Secure Shell (SSH) client." metaCanonical="" services="virtual-machines" documentationCenter="" title="How to Log on to a Virtual Machine Running Linux" authors="" solutions="" manager="" editor="" />
+<properties linkid="manage-linux-howto-logon-linux-vm" urlDisplayName="VM へのログオン" pageTitle="Azure 上で Linux を実行する仮想マシンへのログオン" metaKeywords="Azure Linux vm, Linux SSH" description="Linux を実行する Azure の仮想マシンに Secure Shell (SSH) クライアントを使用してログオンする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Linux を実行する仮想マシンにログオンする方法" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
-#How to Log on to a Virtual Machine Running Linux #
+#Linux を実行する仮想マシンにログオンする方法#
 
-For a virtual machine that is running the Linux operating system, you use a Secure Shell (SSH) client to logon.
+Linux オペレーティング システムを実行する仮想マシンへのログオンには、Secure Shell (SSH) クライアントを使用します。
 
-You must install an SSH client on your computer that you want to use to log on to the virtual machine. There are many SSH client programs that you can choose from. The following are possible choices:
+仮想マシンにログオンするときに使用するコンピューターには、SSH クライアントをインストールする必要があります。SSH クライアント プログラムの選択肢は多数あります。たとえば、次のプログラムを選択できます。
 
-- If you are using a computer that is running a Windows operating system, you might want to use an SSH client such as PuTTY. For more information, see the [PuTTY Download Page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
-- If you are using a computer that is running a Linux operating system, you might want to use an SSH client such as OpenSSH. For more information, see [OpenSSH](http://www.openssh.org/).
+- Windows オペレーティング システムが実行されているコンピューターを使用している場合は、PuTTY などの SSH クライアントを使用できます。詳細については、[PuTTY Download Page (PuTTY のダウンロード ページ)](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) を参照してください。
+- Linux オペレーティング システムが実行されているコンピューターを使用している場合は、OpenSSH などの SSH クライアントを使用できます。詳細については、「[OpenSSH (英語)](http://www.openssh.org/)」を参照してください。
 
-This procedure shows you how to use the PuTTY program to access the virtual machine.
+ここでは、PuTTY プログラムを使用して仮想マシンにアクセスする手順を示します。
 
-1. Find the **Host Name** and **Port information** from the [Management Portal](http://manage.windowsazure.com). You can find the information that you need from the dashboard of the virtual machine. Click the virtual machine name and look for the **SSH Details** in the **Quick Glance** section of the dashboard.
+1. [管理ポータル](http://manage.windowsazure.com)で**ホスト名**と**ポート情報**を検索します。仮想マシンのダッシュボードから必要な情報を見つけることができます。仮想マシン名をクリックし、ダッシュボードの **[概要]** セクションで **[SSH の詳細]** を探します。
 
-	![Obtain SSH details](./media/virtual-machines-linux-how-to-log-on/sshdetails.png)
+	![SSH の詳細の取得](./media/virtual-machines-linux-how-to-log-on/sshdetails.png)
 
-2. Open the PuTTY program.
+2. PuTTY プログラムを開きます。
 
-3. Enter the Host Name and the Port information that you collected from the dashboard, and then click **Open**.
+3. ダッシュボードから収集したホスト名とポート情報を入力し、**[開く]** をクリックします。
 
-	![Open PuTTY](./media/virtual-machines-linux-how-to-log-on/putty.png)
+	![PuTTY を開く](./media/virtual-machines-linux-how-to-log-on/putty.png)
 
-4. Log on to the virtual machine using the account that you specified when the machine was created.
+4. マシンの作成時に指定したアカウントを使用して仮想マシンにログオンします。
 
-	![Log on to the virtual machine](./media/virtual-machines-linux-how-to-log-on/sshlogin.png)
+	![仮想マシンへのログオン](./media/virtual-machines-linux-how-to-log-on/sshlogin.png)
 
-	You can now work with the virtual machine just as you would with any other server.
+	これで、仮想マシンを他のサーバーとまったく同様に扱うことができます。
+

@@ -1,133 +1,127 @@
-<properties linkid="dev-nodejs-how-to-table-services" urlDisplayName="Table Service" pageTitle="How to use table storage (Node.js) | Microsoft Azure" metaKeywords="Azure table storage service, Azure table service Node.js, table storage Node.js" description="Learn how to use the table storage service in Azure. Code samples are written using the Node.js API." metaCanonical="" services="storage" documentationCenter="Node.js" title="How to Use the Table Service from Node.js" authors="" solutions="" manager="" editor="" />
+<properties linkid="dev-nodejs-how-to-table-services" urlDisplayName="テーブル サービス" pageTitle="テーブル ストレージの使用方法 (Node.js) | Microsoft Azure" metaKeywords="Azure テーブル ストレージ サービス, Azure テーブル サービス Node.js, テーブル ストレージ Node.js" description="Azure でのテーブル ストレージ サービスの使用方法について説明します。コード サンプルは Node.js API を使用して記述されています。" metaCanonical="" services="storage" documentationCenter="Node.js" title="Node.js からテーブル サービスを使用する方法" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
+# Node.js からテーブル サービスを使用する方法
 
-# How to Use the Table Service from Node.js
+このガイドでは、Microsoft Azure テーブル サービスを使用して一般的なシナリオを
+実行する方法について説明します。サンプルは Node.js API を使用して
+記述されています。紹介するシナリオは、**テーブルの作成と削除、
+テーブルのエンティティの挿入とクエリ実行**などです。テーブルの
+詳細については、「[次のステップ][]」のセクションを参照してください。
 
-This guide shows you how to perform common scenarios using the Windows
-Azure Table service. The samples are written written using the
-Node.js API. The scenarios covered include **creating and deleting a
-table, inserting and querying entities in a table**. For more
-information on tables, see the [Next Steps][] section.
+## 目次
 
-## Table of Contents
+* [テーブル サービスとは][]
+* [概念][]
+* [Azure のストレージ アカウントの作成][]
+* [Node.js アプリケーションの作成][]
+* [アプリケーションからストレージへのアクセスの構成][]
+* [Azure のストレージ接続文字列の設定][]
+* [方法: テーブルを作成する][]
+* [方法: エンティティをテーブルに追加する][]
+* [方法: エンティティを更新する][]
+* [方法: エンティティのグループを操作する][]
+* [方法: エンティティを照会する][]
+* [方法: エンティティのセットを照会する][]
+* [方法: エンティティ プロパティのサブセットを照会する][]
+* [方法: エンティティを削除する][]
+* [方法: テーブルを削除する][]
+* [次のステップ][]
 
-* [What is the Table Service?][]   
-* [Concepts][]   
-* [Create an Azure Storage Account][]   
-* [Create a Node.js Application][]   
-* [Configure your Application to Access Storage][]   
-* [Setup an Azure Storage Connection][]   
-* [How To: Create a Table][]   
-* [How To: Add an Entity to a Table][]   
-* [How To: Update an Entity][]   
-* [How to: Work with Groups of Entities][]   
-* [How to: Query for an Entity][]   
-* [How to: Query a Set of Entities][]   
-* [How To: Query a Subset of Entity Properties][]   
-* [How To: Delete an Entity][]   
-* [How To: Delete a Table][]   
-* [Next Steps][]
+## <a name="what-is"> </a>テーブル サービスとは
 
-## <a name="what-is"> </a>What is the Table Service?
+Azure テーブル サービスは、大量の構造化データを
+格納します。このサービスは、Azure クラウドの内部および外部からの
+認証された呼び出しを受け付けます。Azure テーブルは、構造化された
+非リレーショナル データを格納するのに最適です。テーブル サービスの一般的な使用法を
+次に示します。
 
-The Azure Table service stores large amounts of
-structured data. The service accepts authenticated calls from inside and
-outside the Azure cloud. Azure tables are ideal for
-storing structured, non-relational data. Common uses of Table services
-include:
+-   スループットの需要に合わせて自動的に拡張される大量の (数 TB の)
+    構造化データを格納する
+-   複雑な結合、外部キー、またはストアド プロシージャを必要とせず、
+    高速アクセスのために非正規化できるデータセットを格納する
+-   クラスター化インデックスを使用してデータ (ユーザー プロファイルなど) をすばやく照会する
 
--   Storing a huge amount of structured data (many TB) that is
-    automatically scaled to meet throughput demands
--   Storing datasets that don't require complex joins, foreign keys, or
-    stored procedures and can be denormalized for fast access
--   Quickly querying data such as user profiles using a clustered index
+テーブル サービスを使用して、構造化された非リレーショナル データの
+膨大なセットを格納してクエリを実行することができ、テーブルはデータ量が
+増加すると拡張されます。
 
-You can use the Table service to store and query huge sets of
-structured, non-relational data, and your tables scale when volume
-increases.
+## <a name="concepts"> </a>概念
 
-## <a name="concepts"> </a>Concepts
-
-The Table service contains the following components:
+テーブル サービスには、次のコンポーネントが含まれます。
 
 ![Table1][Table1]
 
--   **URL format:** Code addresses tables in an account using this
-    address format:
+-   **URL 形式**: 次のアドレス形式を使用してアカウントのテーブルの
+    アドレスを記述します。
    
 	    http://storageaccount.table.core.windows.net/table  
       
-    You can address Azure tables directly using this address with the
-    OData protocol. For more information, see [OData.org][]
+    このアドレスを OData プロトコルで使用して、Azure テーブルを直接アドレス指定できます。詳細については、[OData.org の Web サイト][]を参照してください。
 
--   **Storage Account:** All access to Azure Storage is done
-    through a storage account. The total size of blob, table, and queue
-    contents in a storage account cannot exceed 100TB.
+-   **ストレージ アカウント:** Azure のストレージにアクセス
+    する場合には必ず、ストレージ アカウントを使用します。ストレージ アカウント内の BLOB、テーブル、
+    およびキューの内容の合計サイズが 100 TB を超えることはできません。
 
--   **Table**: A table is an unlimited collection of entities. Tables
-    don't enforce a schema on entities, which means a single table can
-    contain entities that have different sets of properties. An account
-    can contain many tables.
+-   **テーブル**: 無制限のエンティティのコレクションです。テーブルでは
+    エンティティにスキーマを設定しないため、1 つのテーブルに異なるプロパティの
+    セットを持つエンティティが含まれている場合があります。1 つのアカウントには、
+    複数のテーブルを格納できます。
 
--   **Entity**: An entity is a set of properties, similar to a database
-    row. An entity can be up to 1MB in size.
+-   **エンティティ**: エンティティは、プロパティのセットで、データベース
+    の行に似ています。エンティティの最大サイズは 1 MB です。
 
--   **Properties**: A property is a name-value pair. Each entity can
-    include up to 252 properties to store data. Each entity also has
-    three system properties that specify a partition key, a row key, and
-    a timestamp. Entities with the same partition key can be queried
-    more quickly, and inserted/updated in atomic operations. An entity's
-    row key is its unique identifier within a partition.
+-   **プロパティ**: プロパティは、名前と値のペアです。それぞれのエンティティは、データを格納するために最大で 252 個のプロパティを含むことができます。さらに、それぞれのエンティティは、
+    パーティション キー、行キー、およびタイムスタンプを指定する、
+    3 つのシステム プロパティを持ちます。同じパーティション キーを持つエンティティは、
+    アトミック操作でより迅速な照会と挿入/更新が可能です。エンティティの
+    行キーは、パーティション内の一意の識別子です。
 
-## <a name="create-account"> </a>Create an Azure Storage Account
+## <a name="create-account"> </a>Azure のストレージ アカウントの作成
 
-To use storage operations, you need an Azure storage account. You
-can create a storage account by following these steps. (You can also
-create a storage account [using the REST API][].)
+ストレージ操作を行うには、Azure のストレージ アカウントが必要です。ストレージ アカウントを
+作成するには、次の手順に従います。([REST API を使用して][]
+ストレージ アカウントを作成することもできます)。
 
-1.  Log into the [Azure Management Portal].
+1. [Azure 管理ポータル]にログインします。
 
-2.  At the bottom of the navigation pane, click **+NEW**.
+2. ナビゲーション ウィンドウの下部にある **[新規]** をクリックします。
 
-	![+new][plus-new]
+	![[+ 新規]][plus-new]
 
-3.  Click **Storage Account**, and then click **Quick Create**.
+3. **[ストレージ アカウント]**、**[簡易作成]** の順にクリックします。
 
-	![Quick create dialog][quick-create-storage]
+	![[簡易作成] ダイアログ][quick-create-storage]
 
-4.  In URL, type a subdomain name to use in the URI for the
-    storage account. The entry can contain from 3-24 lowercase letters
-    and numbers. This value becomes the host name within the URI that is
-    used to address Blob, Queue, or Table resources for the
-    subscription.
+4. [URL] で、ストレージ アカウントの URI で使用する
+    サブドメイン名を入力します。文字数は 3 ～ 24 文字で、アルファベット小文字と数字を使用できます。この名前は、対応するサブスクリプションの BLOB リソース、キュー リソース、またはテーブル リソースのアドレス指定に使用される URL のホスト名になります。
 
-5.  Choose a Region/Affinity Group in which to locate the
-    storage. If you will be using storage from your Azure
-    application, select the same region where you will deploy your
-    application.
+5. ストレージの配置先となるリージョンまたは
+    アフィニティ グループを選択します。Azure アプリケーションから
+    ストレージを使用する場合は、アプリケーションを展開する
+    リージョンと同じリージョンを選択します。
 
-6.  Click **Create Storage Account**.
+6. **[ストレージ アカウントの作成]** をクリックします。
 
-## <a name="create-app"> </a>Create a Node.js Application
+## <a name="create-app"> </a>Node.js アプリケーションの作成
 
-Create a blank Node.js application. For instructions creating a Node.js application, see [Create and deploy a Node.js application to an Azure Web Site], [Node.js Cloud Service] (using Windows PowerShell), or [Web Site with WebMatrix].
+空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービスへのデプロイ] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ]に関するページを参照してください。
 
-## <a name="configure-access"> </a>Configure Your Application to Access Storage
+## <a name="configure-access"> </a>アプリケーションのストレージへのアクセスの構成
 
-To use Azure storage, you need to download and use the Node.js
-azure package, which includes a set of convenience libraries that
-communicate with the storage REST services.
+Azure ストレージを使用するには、Node.js azure パッケージをダウンロード
+して使用する必要があります。このパッケージには、ストレージ REST サービス
+と通信するための便利なライブラリのセットが含まれています。
 
-### Use Node Package Manager (NPM) to obtain the package
+### ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
 
-1.  Use a command-line interface such as **PowerShell** (Windows,) **Terminal** (Mac,) or **Bash** (Unix), navigate to the folder where you created your sample application.
+1.  **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
 
-2.  Type **npm install azure** in the command window, which should
-    result in the following output:
+2.  コマンド ウィンドウに「**npm install azure**」と入力すると、
+    次のような出力が生成されます。
 
         azure@0.7.5 node_modules\azure
 		├── dateformat@1.0.2-1.2.3
@@ -141,36 +135,36 @@ communicate with the storage REST services.
 		├── xml2js@0.2.7 (sax@0.5.2)
 		└── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
 
-3.  You can manually run the **ls** command to verify that a
-    **node\_modules** folder was created. Inside that folder you will
-    find the **azure** package, which contains the libraries you need to
-    access storage.
+3.  手動で **ls** コマンドを実行して、**node\_modules** 
+       フォルダーが作成されたことを確認することもできます。このフォルダーに
+    **azure** パッケージがあります。このパッケージには、ストレージに
+    アクセスするために必要なライブラリが含まれています。
 
-### Import the package
+### パッケージをインポートする
 
-Using Notepad or another text editor, add the following to the top the
-**server.js** file of the application where you intend to use storage:
+メモ帳などのテキスト エディターを使用して、ストレージを使用するアプリケーションの
+**server.js** ファイルの先頭に次の内容を追加します。
 
     var azure = require('azure');
 
-## <a name="setup-connection-string"> </a>Setup an Azure Storage Connection
+## <a name="setup-connection-string"> </a>Azure のストレージ接続文字列の設定
 
-The azure module will read the environment variables AZURE\_STORAGE\_ACCOUNT and AZURE\_STORAGE\_ACCESS\_KEY for information required to connect to your Azure storage account. If these environment variables are not set, you must specify the account information when calling **TableService**.
+azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT および AZURE\_STORAGE\_ACCESS\_KEY を読み取ります。これらの環境変数が設定されていない場合、**TableService** を呼び出すときにアカウント情報を指定する必要があります。
 
-For an example of setting the environment variables in a configuration file for an Azure Cloud Service, see [Node.js Cloud Service with Storage].
+Azure クラウド サービスの構成ファイルで環境変数を設定する例については、[ストレージを使用する Node.js クラウド サービスに関するトピック]を参照してください。
 
-For an example of setting the environment variables in the management portal for an Azure Web Site, see [Node.js Web Application with Storage]
+Azure Web サイトの管理ポータルで環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーションに関するトピック]を参照してください。
 
-## <a name="create-table"> </a>How to Create a Table
+## <a name="create-table"> </a>方法: テーブルを作成する
 
-The following code creates a **TableService** object and uses it to
-create a new table. Add the following near the top of **server.js**.
+次のコードは、**TableService** オブジェクトを作成し、これを使用して
+新しいテーブルを作成します。**server.js** ファイルの先頭付近に次の内容を追加します。
 
     var tableService = azure.createTableService();
 
-The call to **createTableIfNotExists** will return the specified table
-if it exists or create a new table with the specified name if it does
-not already exist. The following example creates a new table named 'mytable' if it does not already exist:
+**createTableIfNotExists** の呼び出しは、指定されたテーブルが存在
+する場合、そのテーブルを返します。指定されたキューが存在しない場合
+は、指定された名前で新しいテーブルを作成します。次の例では、"mytable" という名前のテーブルが存在しない場合、このテーブルを作成します。
 
     tableService.createTableIfNotExists('mytable', function(error){
 		if(!error){
@@ -178,35 +172,35 @@ not already exist. The following example creates a new table named 'mytable' if 
 		}
 	});
 
-###Filters
+###フィルター
 
-Optional filtering operations can be applied to operations performed using **TableService**. Filtering operations can include logging, automatically retrying, etc. Filters are objects that implement a method with the signature:
+オプションのフィルター操作は、**TableService** を使用して行われる操作に適用できます。フィルター操作には、ログ、自動的な再試行などが含まれる場合があります。フィルターは、次のようなシグネチャを実装するオブジェクトです。
 
 		function handle (requestOptions, next)
 
-After doing its preprocessing on the request options, the method needs to call "next" passing a callback with the following signature:
+要求オプションに対するプリプロセスを行った後で、このメソッドは "next" を呼び出して、次のシグネチャのコールバックを渡す必要があります。
 
 		function (returnObject, finalCallback, next)
 
-In this callback, and after processing the returnObject (the response from the request to the server), the callback needs to either invoke next if it exists to continue processing other filters or simply invoke finalCallback otherwise to end up the service invocation.
+このコールバックで、returnObject (サーバーへの要求からの応答) の処理の後に、コールバックは next を呼び出すか (他のフィルターの処理を続けるために next が存在する場合)、単に finalCallback を呼び出す必要があります (サービス呼び出しを終了する場合)。
 
-Two filters that implement retry logic are included with the Azure SDK for Node.js, **ExponentialRetryPolicyFilter** and **LinearRetryPolicyFilter**. The following creates a **TableService** object that uses the **ExponentialRetryPolicyFilter**:
+再試行のロジックを実装する 2 つのフィルター (**ExponentialRetryPolicyFilter** と **LinearRetryPolicyFilter**) が、Azure SDK for Node.js に含まれています。次のコードは、**ExponentialRetryPolicyFilter** を使用する **TableService** オブジェクトを作成します。
 
 	var retryOperations = new azure.ExponentialRetryPolicyFilter();
 	var tableService = azure.createTableService().withFilter(retryOperations);
 
-## <a name="add-entity"> </a>How to Add an Entity to a Table
+## <a name="add-entity"> </a>方法: エンティティをテーブルに追加する
 
-To add an entity, first create an object that defines your entity
-properties and their data types. Note that for every entity you must
-specify a **PartitionKey** and **RowKey**. These are the unique
-identifiers of your entities, and are values that can be queried much
-faster than your other properties. The system uses **PartitionKey** to
-automatically distribute the table's entities over many storage nodes.
-Entities with the same **PartitionKey** are stored on the same node. The
-**RowKey** is the unique ID of the entity within the partition it
-belongs to. To add an entity to your table, pass the entity object to
-the **insertEntity** method.
+エンティティを追加するには、最初に、エンティティのプロパティと
+そのデータ型を定義するオブジェクトを作成します。すべてのエンティティについて、**PartitionKey** と 
+**RowKey** を指定する必要があることに注意してください。これらはエンティティの
+一意の識別子であり、他のエンティティのプロパティよりはるかに高速に
+照会できる値です。システムでは **PartitionKey** が使用
+されて多くのストレージ ノードにテーブルのエンティティが自動的に配布されます。
+**PartitionKey** が同じエンティティは同じノードに格納されます。
+**RowKey** は、エンティティが属するパーティション内のエンティティ
+の一意の ID です。エンティティをテーブルに追加するには、エンティティ 
+オブジェクトを **insertEntity** メソッドに渡します。
 
     var task = {
 		PartitionKey : 'hometasks'
@@ -220,19 +214,19 @@ the **insertEntity** method.
 		}
 	});
 
-## <a name="update-entity"> </a>How to Update an Entity
+## <a name="update-entity"> </a>方法: エンティティを更新する
 
-There are multiple methods available to update an existing entity:
+既存のエンティティを更新するには、複数のメソッドがあります。
 
-* **updateEntity** - Updates an existing entity by replacing it.
+* **updateEntity** - 既存のエンティティを、置換することで更新します。
 
-* **mergeEntity** - Updates an existing entity by merging new property values into the existing entity.
+* **mergeEntity** - 既存のエンティティを、新しいプロパティ値を既存のエンティティにマージすることで更新します。
 
-* **insertOrReplaceEntity** - Updates an existing entity by replacing it. If no entity exists, a new one will be inserted.
+* **insertOrReplaceEntity** - 既存のエンティティを、置換することで更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
 
-* **insertOrMergeEntity** - Updates an existing entity by merging new property values into the existing. If no entity exists, a new one will be inserted.
+* **insertOrMergeEntity** - 既存のエンティティを、新しいプロパティ値を既存のエンティティにマージすることで更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
 
-The following example demonstrates updating an entity using **updateEntity**:
+次の例に、**updateEntity** を使用してエンティティを更新する方法を示します。
 
 	var task = {
 		PartitionKey : 'hometasks'
@@ -245,18 +239,18 @@ The following example demonstrates updating an entity using **updateEntity**:
 		}
 	});
     
-With **updateEntity** and **mergeEntity**, if the entity that is being updated doesn't exist then the update operation will fail. Therefore if you wish to store an entity regardless of whether it already exists, you should instead use **insertOrReplaceEntity** or **insertOrMergeEntity**.
+**updateEntity** と **mergeEntity** では、更新されるエンティティが存在しない場合、更新操作は失敗します。したがって、既に存在しているかどうかに関係なくエンティティを格納するには、代わりに **insertOrReplaceEntity** または **insertOrMergeEntity** を使用する必要があります。
 
-## <a name="change-entities"> </a>How to Work with Groups of Entities
+## <a name="change-entities"> </a>エンティティのグループを操作する方法
 
-Sometimes it makes sense to submit multiple operations together in a
-batch to ensure atomic processing by the server. To accomplish that, you
-use the **beginBatch** method on **TableService** and then call the
-series of operations as usual. The difference is that the callback
-functions of these operators will indicate that the operation was
-batched, not submitted to the server. When you do want to submit the
-batch, you call **commitBatch**. The callback supplied to that method
-will indicate if the entire batch was submitted successfully. The following example demonstrates submitting two entities in a batch:
+状況によって、複数の操作をバッチとして送信し、サーバーによる
+アトミック処理を行うことが合理的である場合があります。これを実現するには、
+**TableService** の **beginBatch** メソッドを使用した後、一連の操作を
+通常どおり呼び出します。異なるのは、これらの演算子のコールバック関数が、
+操作がサーバーに送信されたのではなく、バッチに追加されたことを
+示す点です。バッチを送信するときは、
+**commitBatch** を呼び出します。このメソッドに対して提供されるコールバックは、
+バッチ全体が正常に送信されたかどうかを示します。次の例に、2 つのエンティティをバッチで送信する方法を示します。
 
     var tasks=[
 		{
@@ -298,14 +292,14 @@ will indicate if the entire batch was submitted successfully. The following exam
 		});
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>The above example uses the 'async' module to ensure that the entities have all been successfully submitted before calling **commitBatch**.</p>
+<strong>注</strong>
+<p>前の例では、"async" モジュールを使用して、**commitBatch** を呼び出す前に、エンティティがすべて正常に送信されるようにしています。</p>
 </div>
 
-## <a name="query-for-entity"> </a>How to Query for an Entity
+## <a name="query-for-entity"> </a>エンティティを照会する方法
 
-To query an entity in a table, use the **queryEntity** method, by
-passing the **PartitionKey** and **RowKey**.
+テーブル内のエンティティを照会するには、**queryEntity** メソッドを
+使用して、**PartitionKey** と **RowKey** を渡します。
 
     tableService.queryEntity('mytable'
 		, 'hometasks'
@@ -316,17 +310,17 @@ passing the **PartitionKey** and **RowKey**.
 			}
 		});
 
-## <a name="query-set-entities"> </a>How to Query a Set of Entities
+## <a name="query-set-entities"> </a>方法: エンティティのセットを照会する
 
-To query a table, use the **TableQuery** object to build up a query
-expression using clauses such as **select**, **from**, **where**
-(including convenience clauses such as **wherePartitionKey**,
-**whereRowKey**, **whereNextPartitionKey**, and **whereNextRowKey**),
-**and**, **or**, and **top**. Then pass the query
-expression to the **queryEntities** method. You can use the results in a
-**for** loop inside the callback.
+テーブルを照会するには、**TableQuery** オブジェクトを使用し、
+**select**、**from**、**where** (**wherePartitionKey**、
+**whereRowKey**、**whereNextPartitionKey**、
+**whereNextRowKey** などの便利な句を含む)、**and**、**or**、**top** などの
+句を使用してクエリ式を作成します。次に、このクエリ式を 
+**queryEntities** メソッドに渡します。この結果を、コールバック内の 
+**for** ループで使用できます。
 
-This example finds all tasks in Seattle based on the **PartitionKey**.
+次の例では、**PartitionKey** に基づいて、Seattle 内のすべてのタスクを検索します。
 
     var query = azure.TableQuery
 		.select()
@@ -338,23 +332,23 @@ This example finds all tasks in Seattle based on the **PartitionKey**.
 		}
 	});
 
-## <a name="query-entity-properties"> </a>How to Query a Subset of Entity Properties
+## <a name="query-entity-properties"> </a>方法: エンティティ プロパティのサブセットを照会する
 
-A query to a table can retrieve just a few properties from an entity.
-This technique, called *projection*, reduces bandwidth and can improve
-query performance, especially for large entities. Use the **select**
-clause and pass the names of the properties you would like to bring over
-to the client.
+テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。
+プロジェクション**と呼ばれるこの方法では、帯域幅の使用が削減され、クエリの
+パフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。**select** 句を使用して、
+クライアントに渡すプロパティの名前を
+指定します。
 
-The query in the following code only returns the **Descriptions** of
-entities in the table, note that in the program output, the **DueDate**
-will show as **undefined** because it was not sent by the server.
+次のコードのクエリでは、テーブル内のエンティティの **Descriptions** 
+のみを返します。プログラムの出力では、**DueDate** はサーバーによって
+送信されなかったため、**undefined** と表示されています。
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>Please note that the following snippet only works against the cloud
-storage service, the <b>select</b> keyword is not supported by the Storage
-Emulator.</p>
+<strong>注</strong>
+<p>次のスニペットはクラウド ストレージ サービスに対してのみ機能します。
+<b>select</b> キーワードはストレージ エミュレーターではサポートされて
+いません。</p>
 </div>
 
     var query = azure.TableQuery
@@ -367,12 +361,12 @@ Emulator.</p>
 		}
 	});
 
-## <a name="delete-entity"> </a>How to Delete an Entity
+## <a name="delete-entity"> </a>方法: エンティティを削除する
 
-You can delete an entity using its partition and row keys. In this
-example, the **task1** object contains the **RowKey** and
-**PartitionKey** values of the entity to be deleted. Then the object is
-passed to the **deleteEntity** method.
+パーティション キーと行キーを使用してエンティティを削除できます。次の例
+では、**task1** オブジェクトに、削除するエンティティの 
+**RowKey** と **PartitionKey** の値が格納されます。次に、
+このオブジェクトが **deleteEntity** メソッドに渡されます。
 
     tableService.deleteEntity('mytable'
 		, {
@@ -385,9 +379,9 @@ passed to the **deleteEntity** method.
 			}
 		});
 
-## <a name="delete-table"> </a>How to Delete a Table
+## <a name="delete-table"> </a>方法: テーブルを削除する
 
-The following code deletes a table from a storage account.
+次のコードは、ストレージ アカウントからテーブルを削除します。
 
     tableService.deleteTable('mytable', function(error){
 		if(!error){
@@ -395,46 +389,46 @@ The following code deletes a table from a storage account.
 		}
 	});
 
-## <a name="next-steps"> </a>Next Steps
+## <a name="next-steps"> </a>次のステップ
 
-Now that you've learned the basics of table storage, follow these links
-to learn how to do more complex storage tasks.
+これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   See the MSDN Reference: [Storing and Accessing Data in Azure][].
--   [Visit the Azure Storage Team Blog][].
--   Visit the [Azure SDK for Node] repository on GitHub.
+-   MSDN リファレンス: [Azure のデータの格納とアクセス][]
+-   [Azure のストレージ チーム ブログ][]
+-   GitHub の [Azure SDK for Node] リポジトリ
 
   [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
-  [Next Steps]: #next-steps
-  [What is the Table Service?]: #what-is
-  [Concepts]: #concepts
-  [Create an Azure Storage Account]: #create-account
-  [Create a Node.js Application]: #create-app
-  [Configure your Application to Access Storage]: #configure-access
-  [Setup an Azure Storage Connection]: #setup-connection-string
-  [How To: Create a Table]: #create-table
-  [How To: Add an Entity to a Table]: #add-entity
-  [How To: Update an Entity]: #update-entity
-  [How to: Work with Groups of Entities]: #change-entities
-  [How to: Query for an Entity]: #query-for-entity
-  [How to: Query a Set of Entities]: #query-set-entities
-  [How To: Query a Subset of Entity Properties]: #query-entity-properties
-  [How To: Delete an Entity]: #delete-entity
-  [How To: Delete a Table]: #delete-table
+  [次のステップ]: #next-steps
+  [テーブル サービスとは]: #what-is
+  [概念]: #concepts
+  [Azure のストレージ アカウントの作成]: #create-account
+  [Node.js アプリケーションの作成]: #create-app
+  [アプリケーションからストレージへのアクセスの構成]: #configure-access
+  [Azure のストレージ接続文字列の設定]: #setup-connection-string
+  [方法: テーブルを作成する]: #create-table
+  [方法: エンティティをテーブルに追加する]: #add-entity
+  [方法: エンティティを更新する]: #update-entity
+  [方法: エンティティのグループを操作する]: #change-entities
+  [方法: エンティティを照会する]: #query-for-entity
+  [方法: エンティティのセットを照会する]: #query-set-entities
+  [方法: エンティティ プロパティのサブセットを照会する]: #query-entity-properties
+  [方法: エンティティを削除する]: #delete-entity
+  [方法: テーブルを削除する]: #delete-table
   [Table1]: ./media/storage-nodejs-how-to-use-table-storage/table1.png
-  [OData.org]: http://www.odata.org/
-  [using the REST API]: http://msdn.microsoft.com/en-us/library/windowsazure/hh264518.aspx
-  [Azure Management Portal]: http://manage.windowsazure.com
+  [OData.org の Web サイト]: http://www.odata.org/
+  [REST API を使用して]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh264518.aspx
+  [Azure 管理ポータル]: http://manage.windowsazure.com
 
   [plus-new]: ./media/storage-nodejs-how-to-use-table-storage/plus-new.png
   [quick-create-storage]: ./media/storage-nodejs-how-to-use-table-storage/quick-storage.png
   
   
   
-  [Node.js Cloud Service]: {localLink:2221} "Web App with Express"
-  [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
-  [Visit the Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-  [Web Site with WebMatrix]: /en-us/develop/nodejs/tutorials/web-site-with-webmatrix/
-[Node.js Cloud Service with Storage]: /en-us/develop/nodejs/tutorials/web-app-with-storage/
-  [Node.js Web Application with Storage]: /en-us/develop/nodejs/tutorials/web-site-with-storage/
- [Create and deploy a Node.js application to an Azure Web Site]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)/
+  [Node.js クラウド サービスへのデプロイ]: {localLink:2221} "Express を使用した Web アプリケーション"
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+  [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+  [WebMatrix による Web サイトの作成とデプロイ]: /ja-jp/develop/nodejs/tutorials/web-site-with-webmatrix/
+[ストレージを使用する Node.js クラウド サービスに関するトピック]: /ja-jp/develop/nodejs/tutorials/web-app-with-storage/
+  [ストレージを使用する Node.js Web アプリケーションに関するトピック]: /ja-jp/develop/nodejs/tutorials/web-site-with-storage/
+ [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: /ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
+

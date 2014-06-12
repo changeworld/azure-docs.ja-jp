@@ -1,197 +1,197 @@
-<properties linkid="manage-scenarios-how-to-scale-websites" urlDisplayName="How to scale" pageTitle="How to scale web sites - Microsoft Azure service management" metaKeywords="Azure scaling web sites" description="Learn how to scale web sites in Azure to use Free, Shared, Basic and Standard web hosting plans." metaCanonical="" services="web-sites" documentationCenter="" title="How to Scale Web Sites" authors="timamm"  solutions="" writer="timamm" manager="paulettm" editor="mollybos"  />
+<properties linkid="manage-scenarios-how-to-scale-websites" urlDisplayName="規模の設定方法" pageTitle="Web サイトの規模の設定方法 - Microsoft Azure サービス管理" metaKeywords="Azure Web サイトの規模の設定" description="無料、共有、基本、および標準 Web ホスティング プランを使用するために、Azure 内の Web サイトの規模の設定方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="Web サイトの規模の設定方法" authors="timamm"  solutions="" writer="timamm" manager="paulettm" editor="mollybos"  />
 
-# How to Scale Web Sites #
+# Web サイトの規模の設定方法#
 
-For increased performance and throughput for your web sites on Microsoft Azure, you can use the Azure Management Portal to scale your Web Hosting Plan mode from Free to Shared, Basic, or Standard. 
+Microsoft Azure 上の Web サイトのパフォーマンスおよびスループットを向上するために、Azure の管理ポータルを使用して、Web ホスティング プランのモードを無料から共有、基本、または標準に変更できます。
 
-Scaling up on Azure Web Sites involves two related things: one is changing your Web Hosting Plan mode to a higher level of service, and the other is configuring certain settings after you have switched to the higher level of service. Both topics are covered in this article. Higher service tiers like Standard mode offer greater robustness and flexibility in determining how your resources on Azure are used.
+Azure の Web サイトの規模を拡大するには、Web ホスティング プランのモードをより高いレベルのサービスに変更することと、高いレベルのサービスに切り替えた後に特定の設定を構成することの 2 点が必要になります。この記事では、この 2 つのトピックについて説明します。標準モードのようにサービス レベルを高くすると、Azure 上のリソースの使用方法を決定する際の堅牢性と柔軟性が向上します。
 
-Changing modes and configuring them is easily done in the Scale tab of the management portal. You can scale up or down as required. These changes take only seconds to apply and affect all web sites in your Web Hosting Plan. They do not require your code to be changed or your applications to be redeployed.
+モードの変更と構成は、管理ポータルの [規模の設定] タブで簡単に実行できます。必要に応じて、規模の拡大または縮小が可能です。これらの変更は適用に数秒を要するのみで、Web ホスティング プランに含まれるすべての Web サイトに反映されます。コードの変更やアプリケーションの再展開は必要ありません。
 
-For information about Web Hosting Plans, see [Azure Web Sites Web Hosting Plans ](http://go.microsoft.com/fwlink/?LinkId=9845584). For information the pricing and features of individual Web Hosting Plans, see [Web Sites Pricing Details](http://www.windowsazure.com/en-us/pricing/details/web-sites/).  
+Web ホスティング プランについては、[Azure の Web サイトの Web ホスティング プランに関するページ](http://go.microsoft.com/fwlink/?LinkId=9845584)を参照してください。各 Web ホスティング プランの料金や機能については、「[Web サイトの料金詳細](http://www.windowsazure.com/ja-jp/pricing/details/web-sites/)」を参照してください。
 
-> [WACOM.NOTE] Before switching a web site from a **Free** Web Hosting Plan mode to **Basic** or **Standard** Web Hosting Plan mode, you must first remove the spending caps in place for your Web Site subscription. To view or change options for your Microsoft Azure Web Sites subscription, see [Microsoft Azure Subscriptions][azuresubscriptions].
+> [WACOM.NOTE] Web サイトの Web ホスティング プランのモードを**無料**から**基本**または**標準**に切り替える前に、まず Web サイト サブスクリプションに設定されている使用制限を解除する必要があります。Microsoft Azure の Web サイト サブスクリプションのオプションを表示または変更するには、[Microsoft Azure サブスクリプションに関するページ][azuresubscriptions]を参照してください。
 
-In this article:
+この記事の内容:
 
-- [Scaling to Shared or Basic Plan mode](#scalingsharedorbasic)
-- [Scaling to Standard Plan mode](#scalingstandard)
-- [Scaling a SQL Server Database connected to your site](#ScalingSQLServer)
-- [Developer Features](#devfeatures)
-- [Other Features](#OtherFeatures)
+- [共有または基本プラン モードへの規模の変更](#scalingsharedorbasic)
+- [標準プラン モードへの規模の変更](#scalingstandard)
+- [サイトに接続されている SQL Server データベースの規模の変更](#ScalingSQLServer)
+- [開発者機能](#devfeatures)
+- [その他の機能](#OtherFeatures)
 
 <a name="scalingsharedorbasic"></a>
 <!-- ===================================== -->
-## Scaling to Shared or Basic Plan mode
+## 共有または基本プラン モードへの規模の変更
 <!-- ===================================== -->
 
-1. In your browser, open the [Management Portal][portal].
+1. ブラウザーで、[管理ポータル][portal]を開きます。
 	
-2. In the **Web Sites** tab, select your web site.
+2. **[Web サイト]** タブで Web サイトを選択します。
 	
-	![Selecting a web site][SelectWebsite]
+	![Web サイトの選択][SelectWebsite]
 	
-3. Click the **Scale** tab.
+3. **[規模の設定]** タブをクリックします。
 	
-	![The scale tab][SelectScaleTab]
+	![スケール タブ][SelectScaleTab]
 	
-4. In the **Web Hosting Plan Mode** section, choose either **SHARED** or **BASIC**. The example in the image chooses Basic.
+4. **[Web ホスティング プランのモード]** セクションで、**[共有]** または **[基本]** を選択します。図の例では、[基本] を選択しています。
 	
-	![Choose Web Hosting Plan][ChooseWHP]
+	![Web ホスティング プランの選択][ChooseWHP]
 	
-	The **Web Hosting Plan Sites** section shows a short list of sites in the current plan. All sites in the current plan will be changed to the Web Hosting Plan Mode that you select.
+	**[Web ホスティング プラン サイト]** セクションには、現在のプランに含まれるサイトの簡単な一覧が表示されます。現在のプランに含まれるすべてのサイトは、選択した Web ホスティング プランのモードに変更されます。
 	
-5. In the **Capacity** section, choose the **Instance Size**. The available options are **Small**, **Medium** or **Large**. The instance size option is not available in Shared mode. For more information about these instance sizes, see [Virtual Machine and Cloud Service Sizes for Microsoft Azure][vmsizes].
+5. **[容量]** セクションで **[インスタンス サイズ]** を選択します。**[S]**、**[M]**、または **[L]** のオプションを使用できます。共有モードでは、インスタンス サイズのオプションは利用できません。これらのインスタンス サイズの詳細については、「[Virtual Machine and Cloud Service Sizes for Microsoft Azure (Microsoft Azure の仮想マシンおよびクラウド サービスのサイズ)][vmsizes]」を参照してください。
 	
-	![Instance size for Basic mode][ChooseBasicInstanceSize]
+	![基本モードのインスタンス サイズ][ChooseBasicInstanceSize]
 	
-6. Use the slider to choose the **Instance Count** that you want.
+6. スライダーを使用して、**[インスタンス数]** で必要な数を選択します。
 	
-	![Instance count for Basic mode][ChooseBasicInstanceCount]
+	![基本モードのインスタンス数][ChooseBasicInstanceCount]
 	
-7. In the command bar, choose **Save**. 
+7. コマンド バーで **[保存]** を選択します。
 	
-	![Save button][SaveButton]
+	![保存ボタン][SaveButton]
  	
-	> [WACOM.NOTE] You can configure and save the **Web Hosting Plan**, **Instance Size**, and **Instance Count** settings separately if you wish.
+	> [WACOM.NOTE] 必要に応じて、**[Web ホスティング プラン]**、**[インスタンス サイズ]**、および **[インスタンス数]** の設定を個別に構成して保存できます。
 	
-8. A confirmation message reminds you that sites in the same Web Hosting Plan as the current web site will also change to the new mode. Choose **Yes** to complete the change. 
+8. 確認メッセージにより、現在の Web サイトと同じ Web ホスティング プランに含まれるサイトも新しいモードに変更されることが通知されます。**[はい]** を選択して変更を完了します。
 	
-	In the example, the plan mode has been changed to **Basic**:
+	この例では、プラン モードを**基本**に変更しました。
 	
-	![Plan change complete][BasicComplete]
+	![プランの変更が完了][BasicComplete]
 	
 <a name="scalingstandard"></a>
 <!-- ================================= -->
-## Scaling to Standard Plan Mode
+## 標準プラン モードへの規模の変更
 <!-- ================================= -->
 
-> [WACOM.NOTE] Before switching a Web Hosting Plan to Standard mode, you should remove spending caps in place for your Microsoft Azure Web Sites subscription. Otherwise, you risk your site becoming unavailable if you reach your caps before the billing period ends. To view or change options for your Microsoft Azure Web Sites subscription, see [Microsoft Azure Subscriptions][azuresubscriptions].
+> [WACOM.NOTE] Web ホスティング プランを標準モードに切り替える前に、Microsoft Azure の Web サイト サブスクリプションに設定されている使用制限を解除する必要があります。解除しないと、請求期間が終了する前に使用制限に達した場合に、サイトが使用できなくなるおそれがあります。Microsoft Azure の Web サイト サブスクリプションのオプションを表示または変更するには、[Microsoft Azure サブスクリプションに関するページ][azuresubscriptions]を参照してください。
 
-1. To scale to Standard, follow the same initial steps as when scaling to Shared or Basic, and then choose **Standard** for **Web Hosting Plan Mode**. 
+1. 規模を標準に変更するには、まず共有または基本に規模を変更する場合と同じ手順を実行し、**[Web ホスティング プランのモード]** で **[標準]** を選択します。
 	
-	![Choose Standard Plan][ChooseStandard]
+	![標準プランの選択][ChooseStandard]
 	
-	As before, the **Web Hosting Plan Sites** section shows a short list of sites in the current plan. In this case, all sites in the current plan will be changed to Standard mode.
+	前回と同様に、**[Web ホスティング プラン サイト]** セクションには、現在のプランに含まれるサイトの簡単な一覧が表示されます。この例では、現在のプランに含まれるすべてのサイトが標準モードに変更されます。
 	
-2. Selecting **Standard** expands the **Capacity** section to reveal the **Instance Size** and **Instance Count** options, which are also available in Basic mode. The **Edit Scale Settings for Schedule** and **Scale by Metric** options are available only in Standard mode.
+2. **[標準]** を選択すると、**[容量]** セクションが展開され、**[インスタンス サイズ]** オプションと **[インスタンス数]** オプションが表示されます。これらのオプションは基本モードでも使用できます。**[スケジュールのスケール設定の編集]** オプションと **[メトリックによるスケール]** オプションは、標準モードでのみ使用できます。
 	
-	![Capacity section in Standard][CapacitySectionStandard]
+	![標準モードでの [容量] セクション][CapacitySectionStandard]
 	
-3. Configure the **Instance Size**. The available options are **Small**, **Medium** or **Large**.
+3. **[インスタンス サイズ]** を構成します。**[S]**、**[M]**、または **[L]** のオプションを使用できます。
 	
-	![Choose instance size][ChooseInstanceSize]
+	![インスタンス サイズの選択][ChooseInstanceSize]
 	
-	For more information about these instance sizes, see [Virtual Machine and Cloud Service Sizes for Microsoft Azure][vmsizes].
+	これらのインスタンス サイズの詳細については、「[Virtual Machine and Cloud Service Sizes for Microsoft Azure (Microsoft Azure の仮想マシンおよびクラウド サービスのサイズ)][vmsizes]」を参照してください。
 	
-4. If you want to automatically scale (autoscale) resources based on daytime versus nighttime,  weekday versus weekend, and/or specific dates and times, choose **Set up schedule times** in the **Edit Scale Settings for Schedule** option.
+4. 日中か夜間か、平日か週末か、または特定の日時に応じてリソースの規模を自動的に調整 (自動スケール) する場合は、**[スケジュールのスケール設定の編集]** オプションで **[スケジュール時間の設定]** を選択します。
 	
-	![Set up schedule times][SetUpScheduleTimesButton]
+	![スケジュール時間の設定][SetUpScheduleTimesButton]
 	
-5. The **Set up schedule times** dialog provides a number of useful configuration choices.
+5. **[スケジュール時間の設定]** ダイアログ ボックスには、構成に関するいくつかの選択肢が表示されます。
 	
-	![SetUpScheduleTimesDialog][SetUpScheduleTimesDialog]
+	![[スケジュール時間の設定] ダイアログ][SetUpScheduleTimesDialog]
 	
-6. Under **Recurring Schedules**, select **Differing scale between Day and Night** and/or **Differing Scale between Weekday and Weekend** to scale resources based on separate daytime and nighttime schedules and/or separate weekday and weekend schedules.
+6. 日中と夜間、または週末と平日で異なるスケジュールに基づいてリソースの規模を調整するには、**[定期的なスケジュール]** で **[日中と夜間で異なるスケールを設定する]** または **[平日と週末で異なるスケールを設定する]** を選択します。
 	
-	> [WACOM.NOTE] For the purposes of this feature, the weekend starts at the end of day Friday (8:00 PM by default), and ends at the beginning of the day on Monday (8:00 AM by default). The weekend profile uses the same day start and end that you will define in the **Time** setting.
+	> [WACOM.NOTE] この場合、金曜日の終了時刻 (既定では午後 8 時) から月曜日の開始時刻 (既定では午前 8 時) までが週末となります。いつからいつまでを週末と見なすかは、**[時間]** セクションで定義した 1 日の開始時刻と終了時刻に基づいて決定されます。
 	
-7. Under **Time**, choose a start and end time for the day in half-hour increments, and a time zone. By default, the day starts at 8:00 AM and ends at 8:00 PM. Daylight Savings Time is respected for the time zone that you select. 
+7. **[時間]** で、1 日の開始時刻と終了時刻を 30 分刻みで指定し、タイム ゾーンを選択します。既定では、午前 8 時から午後 8 時までが日中と見なされます。選択したタイム ゾーンの夏時間が適用されます。
 	
-8. Under **Specific Dates**, you can create one or more named time frames for which you want to scale resources. For example, you may want to provide additional resources for a sales or launch event during which you might have large peaks in web traffic.
+8. **[特定の日付]** では、リソースの規模を設定する名前付きの時間範囲を 1 つ以上作成できます。たとえば、Web トラフィックが大幅に増大する時間帯に、販売用のリソースを追加したりイベントを開始したりすることができます。
 	
-9. After you have made your choices, click **OK** to close the **Schedule Times** dialog box.
+9. 変更が終わったら、**[OK]** をクリックして **[スケジュール時間の設定]** ダイアログ ボックスを閉じます。
 	
-10.   The **Edit Scale Settings for Schedule** box now displays configurable schedules or events based on the changes you made. Select one of the recurring schedules or specific dates to configure it. 
+10.   **[スケジュールのスケール設定の編集]** ボックスに、変更に基づいた構成可能なスケジュールまたはイベントが表示されます。スケジュールやイベントを構成するには、定期的なスケジュールまたは特定の日付から 1 つ選択します。
 	
-	![Edit scale settings for schedule][EditScaleSettingsForSchedule]
+	![スケジュールのスケール設定の編集][EditScaleSettingsForSchedule]
 	
-	You can now use the **Scale by Metric** and the **Instance Count** features to fine tune the scaling of resources for each schedule that you choose. 
+	**[メトリックによるスケール]** と **[インスタンス数]** を使用して、選択した各スケジュールのリソースの規模を調整します。
 	
-11.  To dynamically adjust the number of instances that your web site uses if its load changes, enable the **Scale by Metric** option by choosing **CPU**.
+11.  負荷が変化する場合に Web サイトで使用するインスタンス数を動的に調整するには、**[CPU]** を選択して **[メトリックによるスケール]** オプションを有効にします。
 	
-	![Scale By Metric][ScaleByMetric]
+	![メトリックによるスケール][ScaleByMetric]
 	
-	The graph shows the number of instances that have been used over the past week. You can use the graph to monitor scaling activity.
+	過去 1 週間に使用されたインスタンスの数がグラフに表示されます。このグラフを使用すると、規模設定のアクティビティを監視できます。
 	
-12. **Scale by Metric** modifies the **Instance Count** feature so that you can set the minimum and maximum number of virtual machines to be used for automatic scaling. Azure will never go above or below the limits that you set.
+12. **[メトリックによるスケール]** では、**[インスタンス数]** 機能を変更して、自動規模設定に使用する仮想マシンの最小数と最大数を設定できます。設定した制限を上回ることも下回ることもありません。
 	
-	![Instance count][InstanceCount]
+	![インスタンス数][InstanceCount]
 	
-13. **Scale by Metric** also enables the **Target CPU** option so that you can specify a target range for CPU usage. This range represents average CPU usage for your web site. Windows Azure will add or remove Standard instances to keep your web site in this range.
+13. **[メトリックによるスケール]** では、**[ターゲット CPU]** オプションを有効にして CPU 使用率の範囲を指定することもできます。この範囲は、Web サイトの平均 CPU 使用率を表します。Microsoft Azure は、標準インスタンスの追加や削除を行うことで、Web サイトをこの範囲内に維持します。
 	
-	![Target CPU][TargetCPU]
+	![ターゲット CPU][TargetCPU]
 	
-	**Note**: When **Scale by Metric** is enabled, Microsoft Azure checks the CPU of your web site once every five minutes and adds instances as needed at that point in time. If CPU usage is low, Microsoft Azure will remove instances once every two hours to ensure that your website remains performant. Generally, putting the minimum instance count at 1 is appropriate. However, if you have sudden usage spikes on your web site, be sure that you have a sufficient minimum number of instances to handle the load. For example, if you have a sudden spike of traffic during the 5 minute interval before Microsoft Azure checks your CPU usage, your site might not be responsive during that time. If you expect sudden, large amounts of traffic, set the minimum instance count higher to anticipate these bursts. 
+	**注**: **[メトリックによるスケール]** を有効にすると、Web サイトの CPU が 5 分ごとにチェックされ、その時点で必要であればインスタンスが追加されます。CPU 使用率が低い場合、Microsoft Azure は 2 時間おきにインスタンスを削除して、Web サイトのパフォーマンスが維持されるようにします。一般に、最少インスタンス数は 1 に設定するのが適切です。ただし、Web サイトの使用率が突然急増する場合は、インスタンスの最低数がその負荷を処理するのに十分であることを確認します。たとえば、Microsoft Azure が CPU 使用率をチェックする前の 5 分間にトラフィックが突然急増した場合、その間、サイトは反応が鈍くなります。大量のトラフィックが突然発生することが想定される場合は、最小インスタンス数を多めに設定して、負荷の急増に備えます。
 	
-14. After you have finished making changes to the items in the **Edit Scale Settings for Schedule** list, click the **Save** icon in the command bar at the bottom of the page to save all schedule settings at once (you do not have to save each schedule individually).
+14. **[スケジュールのスケール設定の編集]** ボックスの項目を変更したら、ページ下部のコマンド バーにある **[保存]** アイコンをクリックします。すべてのスケジュール設定が一度に保存されます (各スケジュールを個別に保存する必要はありません)。
 
 <a name="ScalingSQLServer"></a>
-##Scaling a SQL Server Database connected to your site	
-If you have one or more SQL Server databases linked to your web site (regardless of web hosting plan mode), they will be listed under a **Linked Resources** section at the bottom of the Scaling page.
+##サイトに接続されている SQL Server データベースの規模の変更	
+(Web ホスティング プランのモードに関係なく) 1 つ以上の SQL Server データベースを Web サイトにリンクしている場合、これらのデータベースは、[スケール] ページ下部にある **[リンク済みリソース]** セクションに表示されます。
 
-1. To scale one of the databases, in the **Linked Resources** section, click the **Manage scale for this database** link next to the name of the database.
+1. 1 つのデータベースの規模を設定するには、**[リンク済みリソース]** セクションで、データベース名の横にある **[このデータベースのスケールを管理する]** リンクをクリックします。
 	
-	![Linked database][LinkedResources]
+	![リンクされたデータベース][LinkedResources]
 	
-2. The link takes you to the SQL Server tab of the Azure Management Portal, where you can configure the **Edition** and **Maximum Size** of the database:
+2. Azure の管理ポータルの [SQL サーバー] タブが表示されます。ここでは、データベースの **[エディション]** と **[最大サイズ]** を構成できます。
 	
-	![Scale your SQL Server database][ScaleDatabase]
+	![SQL Server データベースの規模の設定][ScaleDatabase]
 	
-	For **Edition**, choose **Web** or **Business** depending on the storage capacity that you require. The **Web** edition offers a range of smaller capacities, while the **Business** edition offers a range of larger capacities. 
+	**[エディション]** で、必要なストレージ容量に応じて **[Web]** または **[Business]** を選択します。**[Web]** エディションは容量が少なめで、**[Business]** エディションは容量が多めです。
 	
-	The value you choose for **Max Size** specifies an upper limit for the database. Database charges are based on the amount of data that you actually store, so changing the **Max Size** property does not by itself affect your database charges. For more information, see [Accounts and Billing in Microsoft Azure SQL Database][SQLaccountsbilling].
+	**[最大サイズ]** で選択した値により、データベースの上限が指定されます。データベース料金は、実際に保存するデータの量に基づいて決定されます。そのため、**[最大サイズ]** プロパティを変更するだけではデータベース料金に影響はありません。詳細については、「[Accounts and Billing in Microsoft Azure SQL Database (Microsoft Azure SQL データベースのアカウントと課金)][SQLaccountsbilling]」を参照してください。
 
 <a name="devfeatures"></a>
-## Developer Features
-Depending on the web hosting plan mode, the following developer-oriented features are available:
+## 開発者機能
+Web ホスティング プランのモードに応じて、次の開発者向け機能を使用できます。
 
-**Bitness**
+**ビット**
 
-- The Basic and Standard plan modes support 64-bit and 32-bit applications.
-- The Free and Shared plan modes support 32-bit applications only.
+- 基本プラン モードと標準プラン モードでは、64 ビットおよび 32 ビットのアプリケーションがサポートされます。
+- 無料プラン モードと共有プラン モードでは、32 ビットのアプリケーションのみがサポートされます。
 
-**Debugger Support**
+**デバッガー サポート**
 
-- Debugger support is available for the Free, Shared, and Basic web hosting plan modes at 1 concurrent connection per application.
-- Debugger support is available for the Standard web hosting plan mode at 5 concurrent connections per application.
+- Web ホスティング プランの無料、共有、および基本モードでは、アプリケーションあたり 1 つの同時接続でデバッガー サポートを利用できます。
+- Web ホスティング プランの標準モードでは、アプリケーションあたり 5 つの同時接続でデバッガー サポートを利用できます。
 
 <a name="OtherFeatures"></a>
-## Other Features
+## その他の機能
 
-**Web Endpoint Monitoring**
+**Web エンドポイントの監視**
 
-- Web endpoint monitoring is available in the Basic and Standard web hosting plan modes. For more information about web endpoint monitoring, see [How to Monitor Web Sites](http://www.windowsazure.com/en-us/documentation/articles/web-sites-monitor/).
+- Web エンドポイントの監視機能は、Web ホスティング プランの基本および標準モードで使用できます。Web エンドポイントの監視の詳細については、「[Web サイトの監視方法](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-monitor/)」を参照してください。
 
-- For detailed information about all of the remaining features in the web hosting plans, including pricing and features of interest to all users (including developers), see [Web Sites Pricing Details](http://www.windowsazure.com/en-us/pricing/details/web-sites/).
+- すべてのユーザー (開発者を含む) が関心のある料金や機能など、Web ホスティング プランのその他すべての機能の詳細については、「[Web サイトの料金詳細](http://www.windowsazure.com/ja-jp/pricing/details/web-sites/)」を参照してください。
 
 <a name="Next Steps"></a>	
-## Next Steps
-- For information on Azure Web Sites best practices, including building a scalable and resilient architecture, see [Best Practices: Windows Azure Websites (WAWS)](http://blogs.msdn.com/b/windowsazure/archive/2014/02/10/best-practices-windows-azure-websites-waws.aspx).
+## 次のステップ
+- スケーラビリティと回復力に優れたアーキテクチャの構築など、Azure の Web サイトにおけるベスト プラクティスについては、「[Best Practices: Microsoft Azure Websites (WAWS) (ベスト プラクティス: Microsoft Azure の Web サイト (WAWS))](http://blogs.msdn.com/b/windowsazure/archive/2014/02/10/best-practices-windows-azure-websites-waws.aspx)」を参照してください。
 
-- For information on pricing, support, and SLA, visit the following links.
+- 料金、サポート、および SLA については、次のリンクを参照してください。
 	
-	[Data Transfers Pricing Details](http://www.windowsazure.com/en-us/pricing/details/data-transfers/)
+	[データ転送の料金詳細](http://www.windowsazure.com/ja-jp/pricing/details/data-transfers/)
 	
-	[Microsoft Azure Support Plans](http://www.windowsazure.com/en-us/support/plans/)
+	[Azure のサポート プラン](http://www.windowsazure.com/ja-jp/support/plans/)
 	
-	[Service Level Agreements](http://www.windowsazure.com/en-us/support/legal/sla/)
+	[サービス レベル アグリーメント](http://www.windowsazure.com/ja-jp/support/legal/sla/)
 	
-	[SQL Database Pricing Details](http://www.windowsazure.com/en-us/pricing/details/sql-database/)
+	[SQL データベースの料金詳細](http://www.windowsazure.com/ja-jp/pricing/details/sql-database/)
 	
-	[Virtual Machine and Cloud Service Sizes for Microsoft Azure][vmsizes]
+	[Virtual Machine and Cloud Service Sizes for Microsoft Azure (Microsoft Azure の仮想マシンおよびクラウド サービスのサイズ)][vmsizes]
 	
-	[Web Sites Pricing Details](http://www.windowsazure.com/en-us/pricing/details/web-sites/)
+	[Web サイトの料金詳細](http://www.windowsazure.com/ja-jp/pricing/details/web-sites/)
 	
-	[Web Sites Pricing Details - SSL Connections](http://www.windowsazure.com/en-us/pricing/details/web-sites/#ssl-connections)
+	[Web サイトの料金詳細 - SSL 接続](http://www.windowsazure.com/ja-jp/pricing/details/web-sites/#ssl-connections)
 
-- The following links are to videos on scaling Azure Web Sites:
+- 次のリンク先は、Azure の Web サイトの規模設定に関するビデオです。
 	
-	[When to Scale Azure Web Sites - with Stefan Schackow](http://www.windowsazure.com/en-us/documentation/videos/azure-web-sites-free-vs-standard-scaling/)
+	[When to Scale Azure Web Sites - with Stefan Schackow (Azure の Web サイトの規模を設定するタイミング - Stefan Schackow 共演)](http://www.windowsazure.com/ja-jp/documentation/videos/azure-web-sites-free-vs-standard-scaling/)
 	
-	[Auto Scaling Azure Web Sites, CPU or Scheduled - with Stefan Schackow](http://www.windowsazure.com/en-us/documentation/videos/auto-scaling-azure-web-sites/)
+	[Auto Scaling Azure Web Sites, CPU or Scheduled - with Stefan Schackow (Azure の Web サイト、CPU、またはスケジュールの自動スケール - Stefan Schackow 共演)](http://www.windowsazure.com/ja-jp/documentation/videos/auto-scaling-azure-web-sites/)
 
-	[How Azure Web Sites Scale - with Stefan Schackow](http://www.windowsazure.com/en-us/documentation/videos/how-azure-web-sites-scale/)
+	[How Azure Web Sites Scale - with Stefan Schackow (Azure の Web サイトの規模を設定する方法 - Stefan Schackow 共演)](http://www.windowsazure.com/ja-jp/documentation/videos/how-azure-web-sites-scale/)
 
 
 
@@ -221,3 +221,4 @@ Depending on the web hosting plan mode, the following developer-oriented feature
 [TargetCPU]: ./media/web-sites-scale/15TargetCPU.png
 [LinkedResources]: ./media/web-sites-scale/16LinkedResources.png
 [ScaleDatabase]: ./media/web-sites-scale/17ScaleDatabase.png
+

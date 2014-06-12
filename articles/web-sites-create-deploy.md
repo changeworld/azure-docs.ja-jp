@@ -1,10 +1,10 @@
-<properties linkid="manage-services-how-to-create-websites" urlDisplayName="作成方法" pageTitle="Web サイトの作成方法 - Windows Azure サービス管理" metaKeywords="Azure の Web サイトの作成, Azure の Web サイトの削除" description="Windows Azure の管理ポータルを使用して Web サイトを作成する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="Web サイトの作成/展開方法" authors=""  solutions="" writer="timamm" manager="" editor=""  />
+<properties linkid="manage-services-how-to-create-websites" urlDisplayName="作成方法" pageTitle="Web サイトの作成方法 - Azure サービス管理" metaKeywords="Azure の Web サイトの作成, Azure の Web サイトの削除" description="Azure の管理ポータルを使用して Web サイトを作成する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="Web サイトの作成/展開方法" authors=""  solutions="" writer="timamm" manager="" editor=""  />
 
 #Web サイトの作成方法
 
 このトピックでは、管理ポータルを使用してギャラリーから Web サイトを作成する方法について説明します。
 
-作成した Windows Azure の Web サイトにコンテンツを展開する方法については、「[Windows Azure Web Sites (Windows Azure の Web サイト)](/ja-jp/documentation/services/web-sites/)」の「**Deploy (展開)**」を参照してください。
+作成した Azure の Web サイトにコンテンツを展開する方法については、「[Azure Web Sites (Azure の Web サイト)](/ja-jp/documentation/services/web-sites/)」の「**Deploy (展開)**」を参照してください。
 
 ## 目次##
 
@@ -15,9 +15,9 @@
 
 ##<a name="createawebsiteportal"></a>方法: 管理ポータルの使用による Web サイトの作成
 
-Windows Azure で Web サイトを作成するには、次のステップに従います。
+Azure で Web サイトを作成するには、次のステップに従います。
 	
-1. [Windows Azure の管理ポータル](http://manage.windowsazure.com/)にログインします。
+1. [Azure の管理ポータル](http://manage.windowsazure.com/)にログインします。
 
 2. 管理ポータルの左下にある **[新規作成]** アイコンをクリックします。
 
@@ -60,9 +60,9 @@ Windows Azure で Web サイトを作成するには、次のステップに従�
 [WACOM.INCLUDE [website-from-gallery](../includes/website-from-gallery.md)]
 
 ##<a name="deleteawebsite"></a>方法: Web サイトの削除
-Web サイトは、Windows Azure の管理ポータルの **[削除]** アイコンを使用して削除します。**[削除]** アイコンは、Windows Azure ポータル (**[Web サイト]** をクリックして Web サイトをすべて表示したとき) と各 Web サイトの管理ページの下部に表示されます。
+Web サイトは、Azure の管理ポータルの **[削除]** アイコンを使用して削除します。**[削除]** アイコンは、Azure ポータル (**[Web サイト]** をクリックして Web サイトをすべて表示したとき) と各 Web サイトの管理ページの下部に表示されます。
 
 ##<a name="nextsteps"></a>次のステップ
 
-詳細については、「[Windows Azure Web Sites (Windows Azure の Web サイト)](/ja-jp/documentation/services/web-sites/)」を参照してください。
+詳細については、「[Azure Web Sites (Azure の Web サイト)](/ja-jp/documentation/services/web-sites/)」を参照してください。
 

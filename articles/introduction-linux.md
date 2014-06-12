@@ -1,80 +1,81 @@
-<properties linkid="manage-linux-fundamentals-intro-to-linux" urlDisplayName="Intro to Linux" pageTitle="Introduction to Linux in Azure - Azure Tutorial" metaKeywords="Azure Linux vm, Linux vm" description="Learn about using Linux virtual machines on Azure." metaCanonical="" services="virtual-machines" documentationCenter="Python" title="Introduction to Linux on Azure" authors="" solutions="" manager="" editor="" />
+<properties linkid="manage-linux-fundamentals-intro-to-linux" urlDisplayName="Linux 入門" pageTitle="Azure での Linux 入門 - Azure チュートリアル" metaKeywords="Azure Linux vm, Linux vm" description="Azure での仮想マシンの使用に関する詳細です。" metaCanonical="" services="virtual-machines" documentationCenter="Python" title="Azure での Linux 入門" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
 
-#Introduction to Linux on Azure
+#Azure での Linux 入門
 
-This topic provides an overview of some aspects of using Linux virtual machines in the Azure cloud. Deploying a Linux virtual machine is a straightforward process when using a pre-existing image in the gallery. 
+このトピックでは、Azure クラウドで Linux 仮想マシンを使用するさまざまな局面について概説します。Linux 仮想マシンのデプロイは、ギャラリー内に既に存在するイメージを使用する際に簡単に使用できるプロセスです。
 
-## Table of Contents ##
+## 目次##
 
-* [Authentication: Usernames, Passwords and SSH keys.](#authentication)
-* [Generation and use of SSH keys for logging into Linux virtual machines.](#keygeneration)
-* [Obtaining superuser privileges using sudo](#superuserprivileges)
-* [Firewall configuration](#firewallconfiguration)
-* [Hostname changes](#hostnamechanges)
-* [Virtual machine image capture](#virtualmachine)
-* [Attaching Disks](#attachingdisks)
+* [認証: ユーザー名、パスワード、SSH 鍵。](#authentication)
+* [Linux 仮想マシンへのログイン用の SSH 鍵の生成と使用。](#keygeneration)
+* [sudo を使用したスーパーユーザー権限の取得](#superuserprivileges)
+* [ファイアウォールの構成](#firewallconfiguration)
+* [ホスト名の変更](#hostnamechanges)
+* [仮想マシン イメージのキャプチャ](#virtualmachine)
+* [ディスクの接続](#attachingdisks)
 
-<h2><a id="authentication"></a>Authentication: Usernames, Passwords and SSH Keys </h2>
+<h2><a id="authentication"></a>認証: ユーザー名、パスワード、SSH 鍵。</h2>
 
-When creating a Linux virtual machine using the Azure Management Portal, you are asked to provide a username, password and (optionally) an SSH public key. The choice of a username for deploying a Linux virtual machine on Azure is subject to the following constraint: names of system accounts already present in the virtual machine are not allowed - root for example.  If you don't provide the SSH public key, you will be able to log in to the virtual machine using the specified username and password. If you elect to upload an SSH public key in the Management Portal, password-based authentication will be disabled and you will be required to use the corresponding SSH private key to authenticate with the virtual machine and log in.
+Azure の管理ポータルを使用して Linux 仮想マシンを作成すると、ユーザー名、パスワード、および (任意で) SSH 公開キーの入力が求められます。Azure で Linux 仮想マシンをデプロイするユーザー名を選択する場合、既に仮想マシン内に存在するシステム アカウントの名前 (たとえば root) は許可されない、という制約があります。SSH 公開キーを設定しない場合は、指定したユーザー名とパスワードを使用して仮想マシンにログインできます。管理ポータルで SSH 公開キーをアップロードすることを選択した場合は、パスワード ベースの認証は無効となり、対応する SSH 秘密キーを使用して仮想マシンで認証を行い、ログインする必要があります。
 
-<h2><a id="keygeneration"></a>SSH Key Generation </h2>
+<h2><a id="keygeneration"></a>SSH 鍵の生成</h2>
 
-The current version of the Management Portal only accepts SSH public keys that are encapsulated in an X509 certificate. Please follow the steps below to generate and use SSH keys with Azure.
+管理ポータルの現在のバージョンのみが、X509 証明書にカプセル化された SSH 公開キーを受領します。以下に示す、Azure で SSH 鍵を生成および使用する手順に従ってください。
 
-1. Use openssl to generate an X509 certificate with a 2048-bit RSA keypair.
+1. openssl を使用して、2048 ビットの RSA 公開キーと秘密キーで X509 証明書を作成します。
 		
 		openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout myPrivateKey.key -out myCert.pem
 
-	Please answer the few questions that the openssl prompts for (you may leave them blank). The content in these fields is not used by the platform.
+	openssl からの質問に答えてください (空白のままにしてもかまいません)。これらのフィールドの内容はプラットフォームでは使用されません。
 
-2. Change the permissions on the private key to secure it.
+2. 公開キーのアクセス許可を変更して安全を確保します。
 
 		chmod 600 myPrivateKey.key
 
-3. Convert the  myCert.pem to myCert.cer (DER encoded X509 certificate)
+3. myCert.pem を myCert.cer に変換します (DER 形式でエンコードされた x509 証明書)
 
 		openssl  x509 -outform der -in myCert.pem -out myCert.cer
 
-4. Upload the myCert.cer while creating the Linux virtual machine. The provisioning process will automatically install the public key in this certificate into the authorized_keys file for the specified user in the virtual machine.
+4. Linux 仮想マシンの作成中に myCert.cer をアップロードします。プロビジョニング中に、仮想マシン内の指定されたユーザーに対応する authorized_keys ファイルにこの証明書の公開キーが自動的にインストールされます。
 
-5. Connect to the Linux virtual machine using ssh.
+5. ssh を使用して Linux 仮想マシンに接続します。
 
 		ssh -i  myPrivateKey.key -p port  username@servicename.cloudapp.net
 
-	You will be prompted to accept the fingerprint of the host's public key the first time you log in.
+	最初にログインすると、ホストの公開キーの指紋に同意するように求められます。
 
-6. You may optionally copy myPrivateKey.key to ~/.ssh/id_rsa so that your openssh client can automatically pick this up without the use of the -i option.
+6. openssh クライアントが -i オプションを使用しないで自動的に myPrivateKey.key を選択できるように、myPrivateKey.key を ~/.ssh/id_rsa にコピーできます。
 
-<h2><a id="superuserprivileges"></a>Obtaining Superuser Privileges Using Sudo</h2> 
+<h2><a id="superuserprivileges"></a>sudo を使用したスーパーユーザー権限の取得</h2>
 
-The user account that is specified during virtual machine instance deployment on Azure is a privileged account. This account is configured by the Azure Linux Agent to be able to elevate privileges to root (superuser account) using the sudo tool. Once you're logged in using this user account, you will be able to run commands as root using "sudo command". You can optionally obtain a root shell using **sudo -s**.
+Azure での仮想マシン インスタンス デプロイ中に指定されたユーザー アカウントは、特権を持つアカウントです。このアカウントは、Azure Linux エージェントにより、sudo ツールを使用して権限を root (スーパーユーザー アカウント) に昇格できるように構成されています。このユーザー アカウントを使用してログインしたら、sudo コマンドを使用して、root としてコマンドを実行できます。**sudo -s** を使用して root シェルを取得することもできます。
 
-<h2><a id="firewallconfiguration"></a>Firewall Configuration </h2>
+<h2><a id="firewallconfiguration"></a>ファイアウォールの構成</h2>
 
-Azure provides an inbound packet filter that restricts connectivity to ports specified in the Management Portal. By default, the only allowed port is SSH. You may open up access to additional ports on your Linux virtual machine by adding rules in the Management Portal.
+Azure では、接続を管理ポータルで指定されたポートに制限する受信パケット フィルターを提供します。既定では、許可されている唯一のポートは SSH です。管理ポータルでルールを追加することで、Linux 仮想マシンの追加ポートへのアクセスを設定できます。
 
-The Linux images in the gallery do not enable the iptables firewall inside the Linux virtual machines. If desired, the IPtables firewall may be configured to provide additional capabilities.
+ギャラリー内の Linux イメージを使用して、Linux 仮想マシン内部で iptables ファイアウォールを有効にすることはできません。有効にしたい場合は、追加の機能を提供するように iptables ファイアウォールを構成できます。
 
-<h2><a id="hostnamechanges"></a>Hostname Changes </h2>
+<h2><a id="hostnamechanges"></a>ホスト名の変更</h2>
 
-When you initially deploy an instance of a Linux image, you are required to provide a host name for the virtual machine. Once the virtual machine is running, this hostname is published to the platform DNS servers so that multiple virtual machines connected to each other can perform IP address lookups using hostnames. If hostname changes are desired after a virtual machine has been deployed, please use the **hostname newname** command. The Azure Linux Agent includes functionality to automatically detect this name change and appropriately configure the virtual machine to persist this change and additionally, publish this change to the platform DNS servers. Please refer to the README file for the Azure Linux Agent for additional details and configuration options related to this functionality.
+最初に Linux イメージのインスタンスをデプロイするときに、仮想マシンのホスト名を提供するように求められます。仮想マシンが実行されると、このホスト名はプラットフォーム DNS サーバーに公開されます。相互に接続された複数の仮想マシンがホスト名を使用して IP アドレス検索を実行できるようになります。仮想マシンがデプロイされた後でホスト名を変更する場合は、**hostname newname** コマンドを使用してください。Azure Linux エージェントには、この名前の変更を自動的に検出する機能、この変更を保持するように仮想マシンを構成する機能、この変更をプラットフォーム DNS サーバーに公開する機能があります。この機能に関する詳細と構成オプションについては、Azure Linux エージェントの README ファイルを参照してください。
 
-<h2><a id="virtualmachine"></a>Virtual Machine Image Capture </h2>
+<h2><a id="virtualmachine"></a>仮想マシン イメージのキャプチャ</h2>
 
-Azure provides the ability to capture the state of an existing virtual machine into an image that can be subsequently be used to deploy additional virtual machine instances. The Azure Linux Agent may be used to rollback some of the customization that was performed during the provisioning process. You may follow the steps below to capture a virtual machine as an image:
+Azure には、既存の仮想マシンの状態をイメージにキャプチャする機能があります。イメージは、後で追加の仮想マシンのインスタンスをデプロイするために使用できます。Azure Linux エージェントを使用して、プロビジョニング中に実行したカスタマイズをロールバックできます。仮想マシンをイメージとしてキャプチャする手順は次のとおりです。
 
-1. Run **waagent -deprovision** to undo provisioning customization. Or **waagent -deprovision+user** to optionally, delete the user account specified during provisioning and all associated data.
+1. **waagent -deprovision** を実行してプロビジョニング中のカスタマイズを元に戻します。または、**waagent -deprovision+user** を実行して、プロビジョニング中に指定したユーザー アカウントとすべての関連データを削除します。
 
-2. Shut down/power off the virtual machine using the Management Portal/tools.
+2. 管理ポータル/ツールを使用して仮想マシンをシャットダウン/電源オフします。
 
-3. Click capture in the Management Portal or use the tools to capture the virtual machine as an image.
+3. 管理ポータルで [キャプチャ] をクリックするか、ツールを使用して仮想マシンをイメージとしてキャプチャします。
 
-<h2><a id="attachingdisks"></a>Attaching Disks </h2>
+<h2><a id="attachingdisks"></a>ディスクの接続</h2>
 
-This is covered step-by-step in the tutorial on how to [create a Linux virtual machine](../virtual-machine-from-gallery/).
+ディスクの接続については、[Linux 仮想マシンを作成する](../virtual-machine-from-gallery/)チュートリアルで詳しく説明しています。
+
 

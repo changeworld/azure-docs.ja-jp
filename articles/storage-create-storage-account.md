@@ -1,66 +1,67 @@
-<properties linkid="manage-services-how-to-create-a-storage-account" urlDisplayName="How to create" pageTitle="How to create a storage account | Azure" metaKeywords="" description="Learn how to create a storage account in the Azure management portal." metaCanonical="" services="storage" documentationCenter="" title="How To Create a Storage Account" authors="tysonn" solutions="" manager="paulettm" editor="cgronlun" />
+<properties linkid="manage-services-how-to-create-a-storage-account" urlDisplayName="作成方法" pageTitle="ストレージ アカウントを作成する方法 | Azure" metaKeywords="" description="Azure 管理ポータルでストレージ アカウントを作成する方法を説明します。" metaCanonical="" services="storage" documentationCenter="" title="ストレージ アカウントを作成する方法" authors="tysonn" solutions="" manager="paulettm" editor="cgronlun" />
 
 
 
 
-<h1><a id="createstorageaccount"></a>How To Create a Storage Account</h1>
+<h1><a id="createstorageaccount"></a>ストレージ アカウントの作成方法</h1>
 
-To store files and data in the Blob, Table, and Queue services in Azure, you must create a storage account in the geographic region where you want to store the data. A storage account can contain up to 200 TB of data, and you can create up to twenty storage accounts for each Azure subscription. See [Azure Storage Scalability and Performance Targets](http://msdn.microsoft.com/en-us/library/dn249410.aspx) for more information.
+Azure の BLOB、テーブル、およびキュー サービスでファイルとデータを保存するには、データを保存するリージョンにストレージ アカウントを作成する必要があります。1 つのストレージ アカウントには最大 200 TB のデータを格納でき、各 Azure サブスクリプションに対して最大 20 個のストレージ アカウントを作成できます。詳細については、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](http://msdn.microsoft.com/ja-jp/library/dn249410.aspx)」を参照してください。
 
-This topic describes how to create a storage account in the Azure Management Portal.
+このトピックでは、Azure 管理ポータルでストレージ アカウントを作成する方法について説明します。
 
 <div class="dev-callout"> 
-<b>Note</b> 
-<p>For an Azure virtual machine, a storage account is created automatically in the deployment location if you do not already have a storage account in that location. The storage account name will be based on the virtual machine name.</p> 
+<b>メモ</b>
+<p>Azure の仮想マシンの場合、デプロイ場所にまだストレージ アカウントがない状況では、その場所に自動的にストレージ アカウントが作成されます。ストレージ アカウント名は仮想マシン名を基にして付けられます。</p>
 </div>
 
-##Table of Contents##
+##目次##
 
-* [How to: Create a storage account](#create)
-* [Next steps](#next)
+* [方法: ストレージ アカウントを作成する](#create)
+* [次の手順](#next)
 
-<h2><a id="create"></a>How to: Create a storage account</h2>
+<h2><a id="create"></a>方法: ストレージ アカウントを作成する</h2>
 
-1. Sign in to the [Management Portal](https://manage.windowsazure.com).
+1. [管理ポータル](https://manage.windowsazure.com)にサインインします。
 
-2. Click **Create New**, click **Storage**, and then click **Quick Create**.
+2. **[新規作成]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
 
 	![NewStorageAccount](./media/storage-create-storage-account/storage_NewStorageAccount.png)
 
-3. In **URL**, enter a subdomain name to use in the storage account URL. To access an object in storage, you will append the object's location to the endpoint. For example, the URL for accessing a blob might be http://*myaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
+3. **[URL]** ボックスに、ストレージ アカウントの URL で使用するサブドメイン名を入力します。ストレージにあるオブジェクトにアクセスするには、オブジェクトの場所をエンドポイントに追加します。たとえば、BLOB にアクセスする URL は、http://*myaccount*.blob.core.windows.net/*mycontainer*/*myblob* のようになります。
 
-4. In **Region/Affinity Group**, select a region or affinity group for the storage.  Select an affinity group instead of a region if you want your storage services to be in the same data center with other Azure services that you are using. This can improve performance, and no charges are incurred for egress.
-
-	> [WACOM.NOTE]
-        > To create an affinity group, open the <b>Networks</b> area of the Management Portal, click <b>Affinity Groups</b>, and then click either <b>Create a new affinity group</b> or <b>Create</b>. You can use affinity groups that you create in the previous Management Portal. To open the other portal, click <b>Preview</b> on the title bar, and then click <b>Take me to the previous portal</b>. (To return to this portal, click <b>View the Preview Portal</b> at the bottom of the portal.) You can also create and manage affinity groups using the Azure Service Management API. See <a href="http://msdn.microsoft.com/en-us/library/windowsazure/ee460798.aspx">Operations on Affinity Groups</a> for more information.
-
-5. If you have more than one Azure subscription, then the **Subscription** field is displayed. In **Subscription**, enter the Azure subscription that you want to use the storage account with. You can create up to five storage accounts for a subscription.
-
-6. In **Replication**, select the level of replication that you desire for your storage account.
-
-	By default, replication is set to **Geo-Redundant**. With geo-redundant replication, your storage account and all data in it fails over to a secondary location in the event of a major disaster in the primary location. Azure assigns a secondary location in the same region, which cannot be changed. After a failover, the secondary location becomes the primary location for the storage account, and your data is replicated to a new secondary location.
-
-	If you want to be able to read data from the secondary location, you can select **Read-Access Geo-Redundant** replication. This option provides geo-redundant replication and enables read-only access to the replicated data in the secondary location. Read-access geo-redundant replication allows you to access your data from either the primary or the secondary location, in the event that one location becomes unavailable.
-
-	A third replication option, **Read Access Geo-Redundant**, is currently in preview. This option enables read-only access to the replicated data in the secondary location. Read-access geo-redundant replication allows you to access your data from either the primary or the secondary location, in the event that one location becomes unavailable.
+4. **[リージョン/アフィニティ グループ]** で、ストレージのリージョンまたはアフィニティ グループを選択します。使用している他の Azure サービスと同じデータ センターにストレージ サービスを配置する場合は、リージョンの代わりにアフィニティ グループを選択します。これによりパフォーマンスが向上し、送信料金も発生しません。
 
 	> [WACOM.NOTE]
-        > In order to use read-access geo-redundant replication while it is in preview, you must manually request that the feature be enabled for your subscription. Visit the <a href="https://account.windowsazure.com/PreviewFeatures">Azure Preview Features</a> page to request read-access geo-redundant replication for your subscription. For more details about read-access geo-redundant replication, see the <a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/04/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx">Azure Storage Team Blog</a>.
-	> If read-access geo-redundant replication is not enabled as a preview feature on your subscription, the option to select it for your storage account will be disabled.
+        > アフィニティ グループを作成するには、管理ポータルの <b>[ネットワーク]</b> 領域を開き、<b>[アフィニティ グループ]</b> をクリックして、<b>[新しいアフィニティ グループの作成]</b> または <b>[作成]</b> をクリックします。以前の管理ポータルで作成したアフィニティ グループを使用できます。他のポータルを開くには、タイトル バーの <b>[プレビュー]</b> をクリックし、<b>[前のポータルへ移動]</b> をクリックします (このポータルに戻るには、ポータルの下部にある <b>[プレビュー ポータルの表示]</b> をクリックします)。また、Azure サービス管理 API を使用してアフィニティ グループを作成し管理することもできます。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/ee460798.aspx">アフィニティ グループに対する操作</a>」を参照してください。
 
-	For pricing information for storage account replication, see [Storage Pricing Details](http://www.windowsazure.com/en-us/pricing/details/storage/).
+5. 複数の Azure サブスクリプションを所有している場合は、**[サブスクリプション]** フィールドが表示されます。**[サブスクリプション]** ボックスに、ストレージ アカウントを使用する Azure サブスクリプションを入力します。1 つのサブスクリプションに最大 5 個のストレージ アカウントを作成できます。
 
-6. Click **Create Storage Account**.
+6. **[レプリケーション]** で、ストレージ アカウントで使用するレプリケーションのレベルを選択します。
 
-	It may take a few minutes to create your storage account. To check the status, you can monitor the notifications at the bottom of the portal. After the storage account has been created, your new storage account has **Online** status and is ready for use. 
+	既定では、レプリケーションは **[Geo 冗長]** に設定されます。Geo 冗長レプリケーションを使用する場合は、1 次拠点で重大な障害が発生したときに、ストレージ アカウントとその中にあるすべてのデータは 2 次拠点にフェールオーバーされます。2 次拠点は Azure によって同じリージョンに割り当てられ、変更することはできません。フェールオーバーの後は、2 次拠点がストレージ アカウントの 1 次拠点になり、データは新しい 2 次拠点に複製されます。
+
+	2 次拠点からのデータを読み取れるようにする場合は、**読み取りアクセスの Geo 冗長**レプリケーションを選択できます。このオプションにより、Geo 冗長レプリケーションが実現され、2 次拠点にレプリケートされたデータへの読み取り専用アクセスが有効になります。読み取りアクセスの Geo 冗長レプリケーションにより、どちらかの場所が使用不可能になった場合でも、1 次拠点または 2 次拠点にあるデータにアクセスできるようになります。
+
+	3 番目のレプリケーション オプションである**読み取りアクセスの Geo 冗長**は、現在プレビュー段階です。このオプションにより、2 次拠点にレプリケートされたデータへの読み取り専用アクセスが有効になります。読み取りアクセスの Geo 冗長レプリケーションにより、どちらかの場所が使用不可能になった場合でも、1 次拠点または 2 次拠点にあるデータにアクセスできるようになります。
+
+	> [WACOM.NOTE]
+        > プレビュー段階にある読み取りアクセスの Geo 冗長レプリケーションを使用するには、サブスクリプションに対してこの機能を有効にするように手動で要求する必要があります。サブスクリプションに対して読み取りアクセスの Geo 冗長レプリケーションを要求するには、<a href="https://account.windowsazure.com/PreviewFeatures">Azure プレビュー機能に関するページ</a>を参照してください。読み取りアクセスの Geo 冗長の詳細については、<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/04/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx">Azure のストレージ チーム ブログ</a>を参照してください。
+	> 読み取りアクセスの Geo 冗長レプリケーションが、サブスクリプションのプレビュー機能として有効になっていない場合は、ストレージ アカウントでこの機能を選択するためのオプションは無効になります。
+
+	ストレージ アカウントのレプリケーションに関する料金情報については、「[料金詳細](http://www.windowsazure.com/ja-jp/pricing/details/storage/)」を参照してください。
+
+6. **[ストレージ アカウントの作成]** をクリックします。
+
+	ストレージ アカウントを作成するには数分かかる場合があります。状態を確認するには、ポータルの下部にある通知を監視します。ストレージ アカウントが作成されると、新しいストレージ アカウントの状態が "**オンライン**" になって、使用できるようになります。
 
 	![StoragePage](./media/storage-create-storage-account/Storage_StoragePage.png)
 
-<h2><a id="next"></a>Next steps</h2>
+<h2><a id="next"></a>次の手順</h2>
 
-- To learn more about Azure storage services, see [Understanding Cloud Storage](http://www.windowsazure.com/en-us/develop/net/fundamentals/cloud-storage/) and [Blobs, Queues, and Tables](http://msdn.microsoft.com/en-us/library/gg433040.aspx). 
+- Azure ストレージ サービスの詳細については、「[Understanding Cloud Storage (クラウド ストレージについて)](http://www.windowsazure.com/ja-jp/develop/net/fundamentals/cloud-storage/)」および「[BLOB、キュー、テーブル](http://msdn.microsoft.com/ja-jp/library/gg433040.aspx)」を参照してください。
 
-- Visit the [Azure Storage Team Blog](http://blogs.msdn.com/b/windowsazurestorage/).
+-  [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
-- Configure your apps to use Azure Blob, Table, and Queue services. The [Azure Developer Center](http://www.windowsazure.com/en-us/develop/overview/) provides How To Guides for using the Blob, Table, and Queue storage services with your .NET, Node.js, Java, and PHP applications. For instructions specific to a programming language, see the How To Guides for that language.
+- Azure の BLOB、テーブル、キュー サービスを使用するようアプリケーションを構成します。[Azure デベロッパー センター](http://www.windowsazure.com/ja-jp/develop/overview/)には、.NET、Node.js、Java、および PHP アプリケーションで BLOB、テーブル、およびキュー ストレージ サービスを使用するハウツー ガイドが用意されています。プログラミング言語固有の操作手順については、その言語のハウツー ガイドを参照してください。
+
 

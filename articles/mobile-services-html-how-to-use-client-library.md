@@ -1,64 +1,64 @@
-<properties linkid="mobile-services-how-to-html-client" urlDisplayName="HTML Client" pageTitle="How to use an HTML client - Azure Mobile Services" metaKeywords="Azure Mobile Services, Mobile Service HTML client, HTML client" description="Learn how to use an HTML client for Azure Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="How to use an HTML/JavaScript client for Azure Mobile Services" authors="krisragh" solutions="" manager="" editor="" />
+<properties linkid="mobile-services-how-to-html-client" urlDisplayName="HTML クライアント" pageTitle="HTML クライアントの使用方法 - Azure モバイル サービス" metaKeywords="Azure モバイル サービス, モバイル サービス HTML クライアント, HTML クライアント" description="Azure のモバイル サービス向け HTML クライアントを使用する方法を説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="Azure のモバイル サービス向け HTML/JavaScript クライアントを使用する方法" authors=""  solutions="" writer="krisragh" manager="" editor=""  />
 
 
-# How to use an HTML/JavaScript client for Azure Mobile Services
+# Azure のモバイル サービス向け HTML/JavaScript クライアントを使用する方法
 
 <div class="dev-center-tutorial-selector sublanding"> 
-  <a href="/en-us/develop/mobile/how-to-guides/work-with-net-client-library/" title=".NET Framework">.NET Framework</a><a href="/en-us/develop/mobile/how-to-guides/work-with-html-js-client/" title="HTML/JavaScript" class="current">HTML/JavaScript</a><a href="/en-us/develop/mobile/how-to-guides/work-with-ios-client-library/" title="iOS">iOS</a><a href="/en-us/develop/mobile/how-to-guides/work-with-android-client-library/" title="Android">Android</a><a href="/en-us/develop/mobile/how-to-guides/work-with-xamarin-client-library/" title="Xamarin">Xamarin</a>
+  <a href="/ja-jp/develop/mobile/how-to-guides/work-with-net-client-library/" title=".NET Framework">.NET Framework</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-html-js-client/" title="HTML/JavaScript" class="current">HTML/JavaScript</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-ios-client-library/" title="iOS">iOS</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-android-client-library/" title="Android">Android</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-xamarin-client-library/" title="Xamarin">Xamarin</a>
 </div>
 
 
-This guide shows you how to perform common scenarios using an HTML/JavaScript client for Azure Mobile Services. The scenarios covered include querying for data, inserting, updating, and deleting data, authenticating users, and handling errors. If you are new to Mobile Services, you should consider first completing the Mobile Services [Windows Store JavaScript quickstart] or [HTML quickstart]. The quickstart tutorial helps you configure your account and create your first mobile service.
+このガイドでは、Azure のモバイル サービス向け HTML/JavaScript クライアントを使用して一般的なシナリオを実行する方法について説明します。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。モバイル サービスを初めて使用する場合は、まずモバイル サービスの [Windows ストア JavaScript に関するクイック スタート]または [HTML に関するクイック スタート]を完了することを検討してください。このクイック スタート チュートリアルでは、アカウントを構成し、初めてのモバイル サービスを作成します。
 
 
-## Table of Contents
+## 目次
 
-- [What is Mobile Services]
-- [Concepts]
-- [How to: Create the Mobile Services client]
-- [How to: Query data from a mobile service]
-	- [Filter returned data]
-    - [Sort returned data]
-	- [Return data in pages]
-	- [Select specific columns]
-	- [Look up data by ID]
-- [How to: Insert data into a mobile service]
-- [How to: Modify data in a mobile service]
-- [How to: Delete data in a mobile service]
-- [How to: Display data in the user interface]
-- [How to: Authenticate users]
-- [How to: Handle errors]
-- [How to: Use promises]
-- [How to: Customize request headers]
-- [How to: Use cross-origin resource sharing]
-- [Next steps]
+- [モバイル サービスとは]
+- [概念]
+- [方法: モバイル サービス クライアントを作成する]
+- [方法: モバイル サービスのデータを照会する]
+	- [返されるデータをフィルター処理する]
+    - [返されるデータを並べ替える]
+	- [ページにデータを返す]
+	- [特定の列を選択する]
+	- [ID でデータを検索する]
+- [方法: モバイル サービスにデータを挿入する]
+- [方法: モバイル サービスのデータを変更する]
+- [方法: モバイル サービスのデータを削除する]
+- [方法: ユーザー インターフェイスにデータを表示する]
+- [方法: ユーザーを認証する]
+- [方法: エラーを処理する]
+- [方法: promise を使用する]
+- [方法: 要求ヘッダーをカスタマイズする]
+- [方法: クロス オリジン リソース共有を使用する]
+- [次のステップ]
 
 [WACOM.INCLUDE [mobile-services-concepts](../includes/mobile-services-concepts.md)]
 
-<h2><a name="create-client"></a><span class="short-header">Create the Mobile Services Client</span>How to: Create the Mobile Services Client</h2>
+<h2><a name="create-client"></a><span class="short-header">モバイル サービス クライアントの作成</span>方法: モバイル サービス クライアントの作成</h2>
 
-The following code instantiates the mobile service client object. 
+次のコードは、モバイル サービス クライアント オブジェクトをインスタンス化します。
 
-In your web editor, open the HTML file and add the following to the script references for the page:
+Web エディターで、HTML ファイルを開き、次のコードをページのスクリプト参照に追加します。
 
 	        <script src='http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.1.2.min.js'></script>
 
-In the editor, open or create a JavaScript file, and add the following code that defines the `MobileServiceClient` variable, and supply the application URL and application key from the mobile service in the `MobileServiceClient` constructor, in that order. You must replace the placeholder `AppUrl` with the application URL of your mobile service and `AppKey` with the application key. To learn how to obtain the application URL and application key for the mobile service, consult the tutorial [Getting Started with Data in Windows Store JavaScript] or [Getting Started with Data in HTML/JavaScript].
+エディターで、JavaScript ファイルを開くか作成し、`MobileServiceClient` 変数を定義する次のコードを追加します。さらに、モバイル サービスからのアプリケーション URL とアプリケーション キーを `MobileServiceClient` コンストラクターに順に指定します。プレースホルダーの `AppUrl` と `AppKey` を、モバイル サービスのアプリケーション URL とアプリケーション キーでそれぞれ置き換える必要があります。モバイル サービスのアプリケーション URL とアプリケーション キーを取得する方法については、「[Windows ストア JavaScript でのデータの使用]」または「[HTML/JavaScript でのデータの使用]」を参照してください。
 
 			var MobileServiceClient = WindowsAzure.MobileServiceClient;
 		    var client = new MobileServiceClient('AppUrl', 'AppKey');
 
-<h2><a name="querying"></a><span class="short-header">Querying data</span>How to: Query data from a mobile service</h2>
+<h2><a name="querying"></a><span class="short-header">データの照会</span>方法: モバイル サービスのデータを照会する</h2>
 
-All of the code that accesses or modifies data in the SQL Database table calls functions on the `MobileServiceTable` object. You get a reference to the table by calling the `getTable()` function on an instance of the `MobileServiceClient`.
+SQL データベース テーブルのデータにアクセスまたは変更するすべてのコードは、`MobileServiceTable` オブジェクトに対して関数を呼び出します。`MobileServiceClient` のインスタンスに対して `getTable()` 関数を呼び出して、テーブルへの参照を取得します。
 	
 		    var todoItemTable = client.getTable('todoitem');
 
 
 
-### <a name="filtering"></a>How to: Filter returned data
+### <a name="filtering"></a>方法: 返されるデータをフィルター処理する
 
-The following code illustrates how to filter data by including a `where` clause in a query. It returns all items from `todoItemTable` whose complete field is equal to `false`. `todoItemTable` is the reference to the mobile service table that we created previously. The where function applies a row filtering predicate to the query against the table. It accepts as its argument a JSON object or function that defines the row filter, and returns a query that can be further composed. 
+次のコードは、クエリに `where` 句を含めることによってデータをフィルター処理する方法を示しています。このコードは、`todoItemTable` から、complete フィールドが `false` に等しいすべての項目を返します。`todoItemTable` は、既に作成したモバイル サービス テーブルへの参照です。where 関数は、行のフィルタリング述語をテーブルに対するクエリに適用します。この関数は、引数として JSON オブジェクトを受け取るかまたは行フィルターを定義する関数を受け取り、詳細に構成可能なクエリを返します。
 	
 			var query = todoItemTable.where({
 			    complete: false
@@ -68,19 +68,19 @@ The following code illustrates how to filter data by including a `where` clause 
 			    alert("Error: " + err);
 			});
 
-By adding calling `where` on the Query object and passing an object as a parameter, we are  instructing Mobile Services to return only the rows whose `complete` column contains the `false` value. Also, look at the request URI below, and notice that we are modifying the query string  itself:
+Query オブジェクトに呼び出し元の `where` を追加し、オブジェクトをパラメーターとして渡すことにより、`complete` 列に `false` 値が含まれる行のみを返すようにモバイル サービスに指示しています。また、次の要求 URI からわかるように、クエリ文字列自体にも変更を加えています。
 
 			GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1			
 
-You can view the URI of the request sent to the mobile service by using message inspection software, such as browser developer tools or Fiddler.
+ブラウザー開発者ツールや Fiddler などのメッセージ検査ソフトウェアを使用して、モバイル サービスに送信された要求の URI を表示できます。
 
-This request would normally be translated roughly into the following SQL query on the server side:
+通常、この要求は、サーバー側で次のような SQL クエリに変換されます。
 			
 			SELECT * 
 			FROM TodoItem 			
 			WHERE ISNULL(complete, 0) = 0
 
-The object which is passed to the `where` method can have an arbitrary number of parameters, and they'll all be interpreted as AND clauses to the query. For example, the line below:
+`where` メソッドに渡されるオブジェクトは任意の数のパラメーターを持つことができます。これらのパラメーターは、クエリに対してすべて AND 句として解釈されます。たとえば、次のコードがあるとします。
 
 			query.where({
 			   complete: false,
@@ -92,7 +92,7 @@ The object which is passed to the `where` method can have an arbitrary number of
 			   alert("Error: " + err);
 			});
 
-Would be roughly translated (for the same request shown before) as
+このコードは、ほぼ次のように変換できます (前と同じ要求)。
 			
 			SELECT * 
 			FROM TodoItem 
@@ -100,9 +100,9 @@ Would be roughly translated (for the same request shown before) as
 			      AND assignee = 'david'
 			      AND difficulty = 'medium'
 
-The `where` statement above and the SQL query above find incomplete items assigned to "david" of "medium" difficulty.
+上記の `where` ステートメントと上記の SQL クエリでは、"david" に割り当てられた、難易度 (difficulty) が "medium" である未完了の項目が検索されます。
 
-There is, however, another way to write the same query. A `.where` call on the Query object will add an `AND` expression to the `WHERE` clause, so we could have written that in three lines instead:
+ただし、別の方法で同じクエリを作成することもできます。Query オブジェクトに対する `.where` 呼び出しは `WHERE` 句に `AND` 式を追加します。そこで、これを 3 行で記述することもできます。
 
 			query.where({
 			   complete: false
@@ -114,7 +114,7 @@ There is, however, another way to write the same query. A `.where` call on the Q
 			   difficulty: "medium"
 			});
 
-Or using the fluent API:
+または、次のように fluent API を使用することもできます。
 
 			query.where({
 			   complete: false
@@ -126,9 +126,9 @@ Or using the fluent API:
 			   difficulty: "medium"
 			});
 
-The two methods are equivalent and may be used interchangeably. All the `where` calls so far take an object with some parameters, and are compared for equality against the data from the database. There is, however, another overload for the query method, which takes a function instead of the object. In this function we can then write more complex expressions, using operators such as inequality and other relational operations. In these functions, the keyword `this` binds to the server object.
+この 2 つの方法は等価であり、区別しないで使用できます。これまでのすべての `where` 呼び出しは、いくつかのパラメーターを持つオブジェクトを受け取り、データベースからのデータに対して同等性を調べるために比較を実行しました。しかし、オブジェクトの代わりに関数を受け取る、クエリ メソッドの別のオーバーロードがあります。この関数では、非同等性やその他の関係演算のための演算子を使用して、より複雑な式を書くことができます。これらの関数では、`this` キーワードがサーバー オブジェクトにバインドされます。
 
-The body of the function is translated into an OData boolean expression which is passed to a query string parameter. It is possible to pass in a function that takes no parameters, like so:
+関数の本文は、クエリ文字列パラメーターに渡される OData のブール式に変換されます。次に示すように、パラメーターを受け取らない関数を渡すこともできます。
 
 		    query.where(function () {
 		       return this.assignee == "david" && (this.difficulty == "medium" || this.difficulty == "low");
@@ -139,7 +139,7 @@ The body of the function is translated into an OData boolean expression which is
 		    });
 
 
-If passing in a function with parameters, any arguments after the `where` clause are bound to the function parameters in order. Any objects which come from the outside of the function scope MUST be passed as parameters - the function cannot capture any external variables. In the next two examples, the argument "david" is bound to the parameter `name` and in the first example, the argument "medium" is also bound to the parameter `level`. Also, the function must consist of a single `return` statement with a supported expression, like so:
+パラメーターを持つ関数を渡した場合、`where` 句以降のすべての引数は指定された順に関数パラメーターに適用されます。関数スコープ外からのすべてのオブジェクトは、パラメーターとして渡す必要があります (関数は、外部変数をキャプチャできません)。次の 2 つの例では、引数 "david" が `name` パラメーターにバインドされています。最初の例では、引数 "medium" も `level` パラメーターにバインドされています。さらに、関数は、次に示すように、サポートされている式を含む単一の `return` ステートメントで構成されている必要があります。
 					
 			 query.where(function (name, level) {
 			    return this.assignee == name && this.difficulty == level;
@@ -149,7 +149,7 @@ If passing in a function with parameters, any arguments after the `where` clause
 			    alert("Error: " + err);
 			 });
 
-So, as long as we follow the rules, we can add more complex filters to our database queries, like so:
+このように、規則に従っている限り、より複雑なフィルターをデータベース クエリに追加できます。
 
 		    query.where(function (name) {
 		       return this.assignee == name &&
@@ -160,15 +160,15 @@ So, as long as we follow the rules, we can add more complex filters to our datab
 		       alert("Error: " + err);
 		    });
 
-It is possible to combine `where` with `orderBy`, `take`, and `skip`. See the next section for details.
+`where` は、`orderBy`、`take`、および `skip` を組み合わせることができます。詳細については、次のセクションを参照してください。
 
-### <a name="sorting"></a>How to: Sort returned data
+### <a name="sorting"></a>方法: 返されるデータを並べ替える
 
-The following code illustrates how to sort data by including an `orderBy` or `orderByDescending` function in the query. It returns items from `todoItemTable` sorted ascending by the `text` field. By default, the server returns only the first 50 elements. 
+次のコードは、クエリに `orderBy` または `orderByDescending` 関数を含めることによってデータを並べ替える方法を示しています。次のコードは、`todoItemTable` から、`text` フィールドの値に基づいて昇順に並べ替えられた項目を返します。既定では、サーバーは最初の 50 個の要素のみを返します。
 
-<div class="dev-callout"><strong>Note</strong> <p>A server-driven page size us used by default to prevent all elements from being returned. This keeps default requests for large data sets from negatively impacting the service. </p> </div>
+<div class="dev-callout"><strong>メモ</strong> <p>すべての要素が返されるのを防ぐために、サーバー側で設定されたページ サイズが既定で使用されます。これにより、大きなデータ セットの既定の要求がサービスに悪影響を与えないようにします。</p> </div>
 >
-You may increase the number of items to be returned by calling `take` as described in the next section. `todoItemTable` is the reference to the mobile service table that we created previously.
+次のセクションで説明する `take` を呼び出すことにより、返される項目の数を増やすことができます。`todoItemTable` は、既に作成したモバイル サービス テーブルへの参照です。
 
 			var ascendingSortedTable = todoItemTable.orderBy("text").read().done(function (results) {
 			   alert(JSON.stringify(results));
@@ -188,9 +188,9 @@ You may increase the number of items to be returned by calling `take` as describ
 			   alert("Error: " + err);
 			});
 
-### <a name="paging"></a>How to: Return data in pages
+### <a name="paging"></a>方法: ページにデータを返す
 
-The following code shows how to implement paging in returned data by using the `take` and `skip` clauses in the query.  The following query, when executed, returns the top three items in the table. 
+次のコードでは、クエリで `take` 句と `skip` 句を使用して、返されたデータにページングを実装する方法を示しています。次のクエリを実行すると、テーブルの最初の上位 3 つの項目が返されます。
 
 			var query = todoItemTable.take(3).read().done(function (results) {
 			   alert(JSON.stringify(results));
@@ -198,9 +198,9 @@ The following code shows how to implement paging in returned data by using the `
 			   alert("Error: " + err);
 			});
 
-Notice that the `take(3)` method was translated into the query option `$top=3` in the query URI.
+クエリの URI では、`take(3)` メソッドがクエリ オプション `$top=3` に変換されていることに注目してください。
 
-The following revised query skips the first three results and returns the next three after that. This is effectively the second "page" of data, where the page size is three items.
+次の変更されたクエリは、最初の 3 つの結果をスキップし、その後の 3 つを返します。ページ サイズが 3 つの項目である場合、これは実質的にデータの 2 番目の "ページ" になります。
 
 			var query = todoItemTable.skip(3).take(3).read().done(function (results) {
 			   alert(JSON.stringify(results));
@@ -208,13 +208,13 @@ The following revised query skips the first three results and returns the next t
 			   alert("Error: " + err);
 			});
 
-Again, you can view the URI of the request sent to the mobile service. Notice that the `skip(3)` method was translated into the query option `$skip=3` in the query URI.
+繰り返しになりますが、モバイル サービスに送信された要求の URI を表示できます。クエリの URI では、`skip(3)` メソッドがクエリ オプション `$skip=3` に変換されていることに注目してください。
 
-This is a simplified scenario of passing hard-coded paging values to the `take` and `skip` functions. In a real-world app, you can use queries similar to the above with a pager control or comparable UI to let users navigate to previous and next pages. 
+これは、ハードコーディングされたページング値を `take` 関数および `skip` 関数に渡す、簡略化したシナリオです。実際のアプリケーションでは、ユーザーが前後のページに移動できるように、ページャー コントロールまたは同等の UI と共に上記と同様のクエリを使用することができます。
 
-### <a name="selecting"></a>How to: Select specific columns
+### <a name="selecting"></a>方法: 特定の列を選択する
 
-You can specify which set of properties to include in the results by adding a `select` clause to your query. For example, the following code returns the `id`, `complete`, and `text` properties from each row in the `todoItemTable`:
+クエリに `select` 句を追加し、結果に含める一連のプロパティを指定できます。たとえば、次のコードは、`todoItemTable` のそれぞれの行から、`id`、`complete`、および `text` の各プロパティを返します。
 
 			var query = todoItemTable.select("id", "complete", "text").read().done(function (results) {
 			   alert(JSON.stringify(results));
@@ -222,10 +222,10 @@ You can specify which set of properties to include in the results by adding a `s
 			   alert("Error: " + err);
 			})
 	
-Here the parameters to the select function are the names of the table's columns that you want to return. 
+select 関数のパラメーターは、取得するテーブルの列の名です。
 
 
-All the functions described so far are additive, so we can just keep calling them and we'll each time affect more of the query. One more example:
+これまでに説明した関数はいずれも付加的なものであるため、この後も呼び出すようにし、クエリに活用することにします。次の例も参照してください。
 
 
 		    query.where({
@@ -239,9 +239,9 @@ All the functions described so far are additive, so we can just keep calling the
 		    }, function (err) {
 		       alert("Error: " + err);
 
-### <a name="lookingup"></a>How to: Look up data by ID
+### <a name="lookingup"></a>方法: ID でデータを検索する
 
-The `lookup` function takes only the `id` value, and returns the object from the database with that ID. Database tables are created with either an integer or string `id` column. A string `id` column is the default.
+`lookup` 関数は、`id` 値のみを受け取り、データベースからその `ID` を持つオブジェクトを返します。整数型または文字列の `id` 列を持つデータベース テーブルが作成されます。既定では文字列の id 列になります。
 
 			todoItemTable.lookup("37BBF396-11F0-4B39-85C8-B319C729AF6D").done(function (result) {
 			   alert(JSON.stringify(result));
@@ -251,16 +251,16 @@ The `lookup` function takes only the `id` value, and returns the object from the
 
 
 
-<h2><a name="inserting"></a><span class="short-header">Inserting data</span>How to: Insert data into a mobile service</h2>
+<h2><a name="inserting"></a><span class="short-header">データの挿入</span>方法: モバイル サービスにデータを挿入する</h2>
 
-The following code illustrates how to insert new rows into a table. The client requests that a row of data be inserted by sending a POST request to the mobile service. The request body contains the data to be inserted, as a JSON object. 
+次のコードは、テーブルに新しい行を挿入する方法を示しています。クライアントは、モバイル サービスに POST 要求を送信して、データ行を挿入することを要求します。要求の本文には、挿入するデータが JSON オブジェクトとして含まれます。
 
 			todoItemTable.insert({
 			   text: "New Item",
 			   complete: false
 			})
 
-This inserts data from the supplied JSON object into the table. You can also specify a callback function to be invoked when the insertion is complete:
+このコードは、指定された JSON オブジェクトからのデータをテーブルに挿入します。挿入操作が完了したときに呼び出されるコールバック関数を指定することもできます。
 
 			todoItemTable.insert({
 			   text: "New Item",
@@ -272,7 +272,7 @@ This inserts data from the supplied JSON object into the table. You can also spe
 			});
 
 
-Mobile Services supports unique custom string values for the table id. This allows applications to use custom values such as email addresses or usernames for the id column of a Mobile Services table. For example if you wanted to identify each record by an email address, you could use the following JSON object.
+モバイル サービスでは、テーブル ID として一意のカスタム文字列値がサポートされています。これによって、アプリケーションはモバイル サービス テーブルの ID 列に電子メール アドレスやユーザー名などのカスタム値を使用できます。たとえば、各レコードを電子メール アドレスで識別する場合は、次の JSON オブジェクトを使用できます。
 
 			todoItemTable.insert({
 			   id: "myemail@domain.com",				
@@ -280,18 +280,18 @@ Mobile Services supports unique custom string values for the table id. This allo
 			   complete: false
 			})
 
-If a string id value is not provided when inserting new records into a table, Mobile Services will generate a unique value for the id.
+新しいレコードをテーブルに挿入するときに文字列 ID 値が指定されない場合は、モバイル サービスによって ID 用の一意の値が生成されます。
 
-Supporting string ids provides the following advantages to developers
+文字列 ID のサポートは、開発者にとって次のような利点があります。
 
-+ Ids can be generated without making a roundtrip to the database.
-+ Records are easier to merge from different tables or databases.
-+ Ids values can integrate better with an application's logic.
++ データベースへの往復を行わずに ID が生成されます。
++ 他のテーブルやデータベースのレコードをより簡単にマージできます。
++ ID 値をより適切にアプリケーションのロジックに統合できます。
 
-You can also use server scripts to set id values. The script example below generates a custom GUID and assigns it to a new record's id. This is similar to the id value that Mobile Services would generate if you didn't pass in a value for a record's id.
+サーバー スクリプトを使用して ID 値を設定することもできます。次のスクリプト例は、カスタム GUID を生成し、新しいレコードの ID に割り当てます。これは、レコードの ID として値を渡さなかった場合に、モバイル サービスによって生成される ID 値に似ています。
 
-	//Example of generating an id. This is not required since Mobile Services
-	//will generate an id if one is not passed in.
+	// ID を生成する例。これは必須ではありません。モバイル サービスは
+	// 値が渡されなかった場合にのみ、ID を生成するからです。
 	item.id = item.id || newGuid();
 	request.execute();
 
@@ -302,29 +302,29 @@ You can also use server scripts to set id values. The script example below gener
 	}
 
 
-If an application provides a value for an id, Mobile Services will store it as is. This includes leading or trailing white spaces. White space will not be trimmed from value.
+アプリケーションが ID の値を指定すると、モバイル サービスはそれをそのまま格納します。これには、前後の空白文字も含まれます。値から空白文字が除去されることはありません。
 
-The value for the `id` must be unique and it must not include characters from the following sets:
+`ID` の値は一意である必要があり、次のセット内の文字を含まないようにする必要があります。
 
-+ Control characters: [0x0000-0x001F] and [0x007F-0x009F]. For more information, see [ASCII control codes C0 and C1].
-+  Printable characters: **"**(0x0022), **\+** (0x002B), **/** (0x002F), **?** (0x003F), **\\** (0x005C), **`** (0x0060)
-+  The ids "." and ".."
++ 制御文字: [0x0000-0x001F] と [0x007F-0x009F]。詳細については、[ASCII 制御コード C0 および C1 に関するページ]を参照してください。
++  印刷可能文字: **"**(0x0022)、**\+** (0x002B)、**/** (0x002F)、**?** (0x003F)、**\\** (0x005C)、**`** (0x0060)
++  "." および ".." という ID
 
-You can alternatively use integer Ids for your tables. In order to use an integer Id you must create your table with the `mobile table create` command using the `--integerId` option. This command is used with the Command-line Interface (CLI) for Azure. For more information on using the CLI, see [CLI to manage Mobile Services tables].
+また、テーブルに整数 ID を使用することもできます。整数 ID を使用するには、`mobile table create` コマンドで `--integerId` オプションを使用してテーブルを作成する必要があります。このコマンドは、Azure のコマンド ライン インターフェイス (CLI) で使用されます。CLI の使い方の詳細については、「[モバイル サービス テーブルの管理用コマンド]」を参照してください。
 
 
-<h2><a name="modifying"></a><span class="short-header">Modifying data</span>How to: Modify data in a mobile service</h2>
+<h2><a name="modifying"></a><span class="short-header">データの変更</span>方法: モバイル サービスのデータを変更する</h2>
 
-The following code illustrates how to update data in a table. The client requests that a row of data be updated by sending a PATCH request to the mobile service. The request body contains the specific fields to be updated, as a JSON object. It updates an existing item in the table `todoItemTable`. 
+次のコードは、テーブルのデータを更新する方法を示しています。クライアントは、モバイル サービスに PATCH 要求を送信して、データ行を更新することを要求します。要求の本文には、更新する特定のフィールドが JSON オブジェクトとして含まれます。このコードは、テーブル `todoItemTable` 内の既存の項目を更新します。
 
 			todoItemTable.update({
 			   id: idToUpdate,
 			   text: newText
 			})
 
-The first parameter specifies the instance to update in the table, as specified by its ID. 
+1 つ目のパラメーターは、テーブル内の更新するインスタンスを ID で指定します。
 
-You can also specify a callback function to be invoked when the update is complete:
+更新操作が完了したときに呼び出されるコールバック関数を指定することもできます。
 
 			todoItemTable.update({
 			   id: idToUpdate,
@@ -335,17 +335,17 @@ You can also specify a callback function to be invoked when the update is comple
 			   alert("Error: " + err);
 			});
 	
-<h2><a name="deleting"></a><span class="short-header">Deleting data</span>How to: Delete data in a mobile service</h2>
+<h2><a name="deleting"></a><span class="short-header">データの削除</span>方法: モバイル サービスのデータを削除する</h2>
 
-The following code illustrates how to delete data from a table. The client requests that a row of data be deleted by sending a DELETE request to the mobile service. It deletes an existing item in the table todoItemTable. 
+次のコードは、テーブルからデータを削除する方法を示しています。クライアントは、モバイル サービスに DELETE 要求を送信して、データ行を削除することを要求します。このコードは、テーブル todoItemTable 内の既存の項目を削除します。
 
 			todoItemTable.del({
 			   id: idToDelete
 			})
 
-The first parameter specifies the instance to delete in the table, as specified by its ID. 
+1 つ目のパラメーターは、テーブル内の削除するインスタンスを ID で指定します。
 
-You can also specify a callback function to be invoked when the delete is complete:	
+削除操作が完了したときに呼び出されるコールバック関数を指定することもできます。	
 	
 			todoItemTable.del({
 			   id: idToDelete
@@ -355,9 +355,9 @@ You can also specify a callback function to be invoked when the delete is comple
 			   alert("Error: " + err);
 			});	
 
-<h2><a name="binding"></a><span class="short-header">Displaying data</span>How to: Display data in the user interface</h2>
+<h2><a name="binding"></a><span class="short-header">データの表示</span>方法: ユーザー インターフェイスにデータを表示する</h2>
 
-This section shows how to display returned data objects using UI elements. To query items in `todoItemTable` and display it in a very simple list, you can run the following example code. No selection, filtering or sorting of any kind is done. 
+このセクションでは、返されたデータ オブジェクトを UI 要素を使用して表示する方法について説明します。次のサンプル コードを実行すると、`todoItemTable` 内の項目を照会し、それを単純なリストに表示できます。ここでは、どのような種類の選択、フィルター処理、または並べ替えも行われません。
 
 			var query = todoItemTable;
 		
@@ -377,19 +377,18 @@ This section shows how to display returned data objects using UI elements. To qu
 			   alert("Error: " + err);
 			});
 
-In a Windows Store app, the results of a query can be used to create a [WinJS.Binding.List] object, which can be bound as the data source for a [ListView] object. For more information, see [Data binding (Windows Store apps using JavaScript and HTML)].
+Windows ストア アプリでは、クエリの結果を使用して、ListView オブジェクトのデータ ソースとしてバインドできる WinJS.Binding.List オブジェクトを作成できます。詳細については、「[データ バインディング (JavaScript と HTML を使った Windows ストア アプリ)]」を参照してください。
 
-<h2><a name="caching"></a><span class="short-header">Authentication</span>How to: Authenticate users</h2>
+<h2><a name="caching"></a><span class="short-header">認証</span>方法: ユーザーを認証する</h2>
 
-Mobile Services supports authenticating and authorizing app users using a variety of external identity providers: Facebook, Google, Microsoft Account, and Twitter. You can set permissions on tables to restrict access for specific operations to only authenticated users. You can also use the identity of authenticated users to implement authorization rules in server scripts. For more information, see the [Get started with authentication] tutorial.
+モバイル サービスは、Facebook、Google、Microsoft アカウント、Twitter などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。詳細については、チュートリアル「[モバイル サービスでの認証の使用]」を参照してください。
 
-Two authentication flows are supported: a _server flow_ and a _client flow_. The server flow provides the simplest authentication experience, as it relies on the provider's web authentication interface. The client flow allows for deeper integration with device-specific capabilities such as single-sign-on as it relies on provider-specific device-specific SDKs.
+_server フローおよび _client フローという 2 つの認証フローがサポートされます。サーバー フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。クライアント フローでは、プロバイダー固有およびデバイス固有の SDK を利用することから、シングル サインオンなどのデバイス固有の機能との統合がさらに進みます。
 
-<h3>Server flow</h3>
-To have Mobile Services manage the authentication process in your Windows Store or HTML5 app, 
-you must register your app with your identity provider. Then in your mobile service, you need to configure the application ID and secret provided by your provider. For more information, see the "Get started with authentication" tutorial ([Windows Store][Get started with authentication Windows Store]/[HTML][Get started with authentication]).
+<h3>サーバー フロー</h3>
+モバイル サービスによって Windows ストア アプリまたは HTML5 アプリの認証プロセスが管理されるようにするには、アプリケーションを ID プロバイダーに登録する必要があります。その後、モバイル サービス内で、プロバイダーから提供されたアプリケーション ID とシークレットを構成する必要があります。詳細については、チュートリアル「認証の使用」([Windows ストア][認証と Windows ストアの使用]/[HTML][モバイル サービスでの認証の使用]) を参照してください。
 
-Once you have registered your identity provider, simply call the [LoginAsync method] with the [MobileServiceAuthenticationProvider] value of your provider. For example, to login with Facebook use the following code. 
+ID プロバイダーを登録した後は、単純に [LoginAsync メソッド] を呼び出し、[MobileServiceAuthenticationProvider] でプロバイダーの値を指定するだけです。たとえば、Facebook にログインするには、次のコードを使用します。
 
 		client.login("facebook").done(function (results) {
 		     alert("You are now logged in as: " + results.userId);
@@ -397,18 +396,18 @@ Once you have registered your identity provider, simply call the [LoginAsync met
 		     alert("Error: " + err);
 		});
 
-If you are using an identity provider other than Facebook, change the value passed to the `login` method above to one of the following: `microsoftaccount`, `facebook`, `twitter`, `google`, or `windowsazureactivedirectory`.
+Facebook 以外の ID プロバイダーを使用している場合は、上の `login` メソッドに渡す値を `microsoftaccount`、`facebook`、`twitter`、`google`、`windowsazureactivedirectory` のいずれかに変更します。
 
-In this case, Mobile Services manages the OAuth 2.0 authentication flow by displaying the login page of the selected provider and generating a Mobile Services authentication token after successful login with the identity provider. The [login] function, when complete, returns a JSON object (**user**) that exposes both the user ID and Mobile Services authentication token in the **userId** and **authenticationToken** fields, respectively. This token can be cached and re-used until it expires. For more information, see [Caching the authentication token].
+この場合、モバイル サービスは、選択されたプロバイダーのログイン ページを表示し、ID プロバイダーでのログインが成功した後でモバイル サービス認証トークンを生成することで、OAuth 2.0 認証フローを管理します。[login] 関数は、完了すると、**userId** フィールドのユーザー ID と **authenticationToken** フィールドのモバイル サービス認証トークンの両方を公開する JSON オブジェクト (**user**) を返します。このトークンはキャッシュして、期限が切れるまで再利用することができます。詳細については、「[認証トークンをキャッシュする]」を参照してください。
 
-<div class="dev-callout"><b>Windows Store app</b>
-<p>When you use the Microsoft Account login provider to authenticate users of your Windows Store app, you should also register the app package with Mobile Services. When you register your Windows Store app package information with Mobile Services, the client is able to re-use Microsoft Account login credentials for a single sign-on experience. If you do not do this, your Microsoft Account login users will be presented with a login prompt every time that the login method is called. To learn how to register your Windows Store app package, see <a href="/en-us/develop/mobile/how-to-guides/register-windows-store-app-package/" target="_blank">Register your Windows Store app package for Microsoft authentication</a>. After the package information is registered with Mobile Services, call the <a href="http://go.microsoft.com/fwlink/p/?LinkId=322050" target="_blank">login</a> method by supplying a value of <strong>true</strong> for the <em>useSingleSignOn</em> parameter to re-use the credentials.</p>
+<div class="dev-callout"><b>Windows ストア アプリ</b>
+<p>Windows ストア アプリケーションのユーザーの認証に Microsoft アカウント ログイン プロバイダーを使用する場合は、アプリケーション パッケージもモバイル サービスに登録する必要があります。Windows ストア アプリケーションのパッケージ情報をモバイル サービスに登録すると、クライアントはシングル サインオン サービス エクスペリエンスを実現するために Microsoft アカウント ログイン資格情報を再利用できます。この操作を行わない場合、login メソッドが呼び出されるたびに、Microsoft アカウント ログイン ユーザーにログイン プロンプトが表示されます。Windows ストア アプリケーション パッケージの登録方法の詳細については、「<a href="/ja-jp/develop/mobile/how-to-guides/register-windows-store-app-package/" target="_blank">Windows ストア アプリケーション パッケージを Microsoft 認証に登録する</a>」を参照してください。パッケージ情報がモバイル サービスに登録された後、資格情報を再利用するには、<em>useSingleSignOn</em> パラメーターに値 <strong>true</strong> を指定して <a href="http://go.microsoft.com/fwlink/p/?LinkId=322050" target="_blank">login</a> メソッドを呼び出します。</p>
 </div>
 
-<h3>Client flow</h3>
-Your app can also independently contact the identity provider and then provide the returned token to Mobile Services for authentication. This client flow enables you to provide a single sign-in experience for users or to retrieve additional user data from the identity provider. 
+<h3>クライアント フロー</h3>
+アプリケーションは個別に ID プロバイダーにアクセスして、返されたトークンを認証のためにモバイル サービスに提供することもできます。このクライアント フローでは、ユーザーにシングル サインイン エクスペリエンスを提供したり、ID プロバイダーから追加のユーザー データを取得したりすることができます。
 
-The following example uses the Live SDK, which supports single-sign-on for Windows Store apps by using Microsoft Account:
+次の例では、Windows ストア アプリケーションのシングル サインオンを Microsoft アカウントによってサポートしている Live SDK を使用します。
 
 		WL.login({ scope: "wl.basic"}).then(function (result) {
 		      client.login(
@@ -422,9 +421,9 @@ The following example uses the Live SDK, which supports single-sign-on for Windo
 		      });
 		});
 
-This simplified example gets a token from Live Connect, which is supplied to Mobile Services by calling the [login] function. For a more complete example of how to use Microsoft Account to provide a single sign-in experience, see [Authenticate your app with single sign-in].
+この簡略化された例では、トークンを Live Connect から取得します。このトークンは、[login] 関数を呼び出すことによって、モバイル サービスに渡されます。シングル サインイン エクスペリエンスを提供するために Microsoft アカウントを使用する方法のより完全な例については、「[Live Connect シングル サインオンによる Windows ストア アプリの認証]」を参照してください。
 
-When you are using the Facebook or Google APIs for client authentication, the example changes slightly. 
+クライアント認証に Facebook または Google API を使用している場合は、例が少し異なります。
 
 		client.login(
 		     "facebook", 
@@ -435,32 +434,32 @@ When you are using the Facebook or Google APIs for client authentication, the ex
 		     alert("Error: " + err);
 		});
 
-This example assumes that the token provided by the respective provider SDK is stored in the `token` variable.
-Twitter cannot be used for client authentication at this time. 
+この例では、それぞれのプロバイダー SDK で提供されるトークンが変数 `token` に格納されるとします。
+現時点では、クライアント認証に Twitter を使用することはできません。
 
-<h3>Caching the authentication token</h3>
-In some cases, the call to the login method can be avoided after the first time the user authenticates. We can use [sessionStorage] or [localStorage] to cache the current user identity the first time they log in and every subsequent time we check whether we already have the user identity in our cache. If the cache is empty or calls fail (meaning the current login session has expired), we still need to go through the login process. 
+<h3>認証トークンをキャッシュする</h3>
+場合によっては、最初のユーザー認証の後の login メソッドの呼び出しを避けることができます。そのためには、[sessionStorage] または [localStorage] を使用して、ユーザーが初めてログインするときに使用した現在のユーザー ID をキャッシュし、それ以降はユーザー ID がキャッシュに保存されているかどうかをチェックします。キャッシュが空の場合や呼び出しが失敗した場合 (現在のログイン セッションが期限切れになったことを示します) は、ログオン プロセスを実行する必要があります。
 
-        // After logging in
+        //  ログインの後
         sessionStorage.loggedInUser = JSON.stringify(client.currentUser);
 
-        // Log in 
+        //  ログイン
         if (sessionStorage.loggedInUser) {
            client.currentUser = JSON.parse(sessionStorage.loggedInUser);
         } else {
-           // Regular login flow
+           //  通常のログイン フロー
        }
 
-         // Log out
+         //  ログアウト
         client.logout();
         sessionStorage.loggedInUser = null;
 
 
-<h2><a name="errors"></a><span class="short-header">Error handling</span>How to: Handle errors</h2>
+<h2><a name="errors"></a><span class="short-header">エラー処理</span>方法: エラーを処理する</h2>
 
-There are several ways to encounter, validate, and work around errors in Mobile Services. 
+モバイル サービスには、エラーの検出、検証、回避のためのさまざまな方法があります。
 
-As an example, server scripts are registered in a mobile service and can be used to perform a wide range of operations on data being inserted and updated, including validation and data modification. Imagine defining and registering a server script that validate and modify data, like so:
+たとえば、サーバー スクリプトは、モバイル サービスに登録され、挿入や更新が行われるデータでの広範な操作 (検証やデータの修正を含む) の実行に使用できます。次のようにデータを検証および変更するサーバー スクリプトを定義し、登録するとします。
 
 			function insert(item, user, request) {
 			   if (item.text.length > 10) {
@@ -470,9 +469,9 @@ As an example, server scripts are registered in a mobile service and can be used
 			   }
 			}
 
-This server-side script validates the length of string data sent to the mobile service and rejects strings that are too long, in this case longer than 10 characters.
+サーバー側スクリプトは、モバイル サービスに送信された文字列データの長さを検証し、長すぎる文字列 (この場合は 10 文字を超える) を拒否します。
 
-Now that the mobile service is validating data and sending error responses on the server-side, you can update your HTML app to be able to handle error responses from validation.
+モバイル サービスはデータを検証してエラー応答をサーバー側に送信するため、検証からのエラー応答を処理できるように HTML アプリケーションを更新することができます。
 
 		todoItemTable.insert({
 		   text: itemText,
@@ -485,7 +484,7 @@ Now that the mobile service is validating data and sending error responses on th
 		});
 
 
-To tease this out even further, you pass in the error handler as the second argument each time you perform data access: 
+これをさらに詳しく見ると、データ アクセスを実行するたびに 2 つ目の引数としてエラー ハンドラーを渡します。
 			
 			function handleError(message) {
 			   if (window.console && window.console.error) {
@@ -495,15 +494,15 @@ To tease this out even further, you pass in the error handler as the second argu
 
 			client.getTable("tablename").read().then(function (data) { /* do something */ }, handleError);
 
-<h2><a name="promises"></a><span class="short-header">Promises</span>How to: Use promises</h2>
+<h2><a name="promises"></a><span class="short-header">promise</span>方法: promise を使用する</h2>
 
-Promises provide a mechanism to schedule work to be done on a value that has not yet been computed. It is an abstraction for managing interactions with asynchronous APIs. 
+promise は、まだ計算されていない値の操作を完了するスケジュールを設定するためのメカニズムを提供します。promise は、非同期 API を使用して相互作用を管理するための抽象化です。
 
-The `done` promise is executed as soon as the function provided to it has either successfully completed or has gotten an error. Unlike the `then` promise, it is guaranteed to throw any error that is not handled inside the function, and after the handlers have finished executing, this function throws any error that would have been returned from then as a promise in the error state. For more information, see [done].
+`done` promise は、指定された関数が正常に完了した時点またはエラーが発生した時点で、すぐに実行されます。then promise とは異なり、関数内で処理されないエラーをスローすることが保証されます。この関数は、ハンドラーの実行が完了した後、`then` の場合であれば返されたすべてのエラーをエラー状態の promise としてスローします。詳細については、[Promise.done メソッドに関するページ]を参照してください。
 
 			promise.done(onComplete, onError);
 
-Like so:
+次に例を示します。
 	
 			var query = todoItemTable;
 			query.read().done(function (results) {
@@ -512,11 +511,11 @@ Like so:
 			   alert("Error: " + err);
 			});
 
-The `then` promise is the same as the as the `done` promise, but unlike the `then` promise, `done` is guaranteed to throw any error that is not handled inside the function. If you do not provide an error handler to `then` and the operation has an error, it does not throw an exception but rather returns a promise in the error state. For more information, see [then].
+`then` promise は `done` promise と同じです。ただし、`done` promise では、`then` promise とは異なり、関数内で処理されないエラーがスローされることが保証されます。`then` にエラー ハンドラーを提供しなかった場合、操作でエラーが発生すると、例外はスローされず、代わりにエラー状態の promise が返されます。詳細については、[Promise.then メソッドに関するページ]を参照してください。
 
 			promise.then(onComplete, onError).done( /* Your success and error handlers */ );
 
-Like so:
+次に例を示します。
 
 			var query = todoItemTable;
 			query.read().done(function (results) {
@@ -525,7 +524,7 @@ Like so:
 			   alert("Error: " + err);
 			});
 
-You can use promises in a number of different ways. You can chain promise operations by calling `then` or `done` on the promise that is returned by the previous `then` function. Use `then` for an intermediate stage of the operation (for example `.then().then()`), and `done` for the final stage of the operation (for example `.then().then().done()`).  You can chain multiple `then` functions, because `then` returns a promise. You cannot chain more than one `done` method, because it returns undefined. [Learn more about the  differences between then and done].
+promise はいくつかの異なる方法で使用することができます。前の `then` 関数から返される promise で `then` または `done` を呼び出すことにより、promise 操作を連結できます。then は操作の中間ステージ (たとえば、`.then().then()`) に使用し、`done` は操作の最終ステージ (たとえば、`.then().then().done()`) に使用します。`then` は promise を返すため、複数の `then` 関数を連結できます。`done` メソッドは undefined を返すため、このメソッドを複数個連結することはできません。[then と done の違いについてはこのページを参照してください]。
 	
  			todoItemTable.insert({
  			   text: "foo"
@@ -536,9 +535,9 @@ You can use promises in a number of different ways. You can chain promise operat
  			   alert(JSON.stringify(insertedAndUpdated));
  			})
 
-<h2><a name="customizing"></a><span class="short-header">Customize request headers</span>How to: Customize client request headers</h2>
+<h2><a name="customizing"></a><span class="short-header">要求ヘッダーのカスタマイズ</span>方法: クライアント要求のヘッダーをカスタマイズする</h2>
 
-You can send custom request headers using the `withFilter` function, reading and writing arbitrary properties of the request about to be sent within the filter. You may want to add such a custom HTTP header if a server-side script needs it or may be enhanced by it. 
+カスタムの要求ヘッダーを送信できます。そのためには、`withFilter` 関数を使用し、フィルター内で送信される要求の任意のプロパティの読み取りと書き込みを行います。このようなカスタム HTTP ヘッダーを追加するケースとしては、サーバー側スクリプトで必要とされる場合や、カスタム HTTP ヘッダーによってサーバー側スクリプトを拡張できる場合があります。
 
 			var client = new WindowsAzure.MobileServiceClient('https://your-app-url', 'your-key')
 			   .withFilter(function (request, next, callback) {
@@ -546,83 +545,84 @@ You can send custom request headers using the `withFilter` function, reading and
 			   next(request, callback);
 			});
 
-Filters are used for a lot more than customizing request headers. They can be used to examine or change requests, examine or change  responses, bypass networking calls, send multiple calls, etc.
+フィルターを使用する機会は要求ヘッダーをカスタマイズする機会よりもたくさんあります。フィルターを使用すると、要求の検査または変更、応答の検査または変更、ネットワーキング呼び出しのバイパス、複数の呼び出しの送信などの操作を実行できます。
 
-<h2><a name="hostnames"></a><span class="short-header">Use CORS</span>How to: Use cross-origin resource sharing</h2>
+<h2><a name="hostnames"></a><span class="short-header">CORS の使用</span>方法: クロス オリジン リソース共有を使用する</h2>
 
-To control which web sites are allowed to interact with and send requests to your mobile service, make sure to add the host name of the website you use to host it to the Cross-Origin Resource Sharing (CORS) whitelist using the Configure tab. You can use wildcards if required. By default, new Mobile Services instruct browsers to permit access only from `localhost`, and Cross-Origin Resource Sharing (CORS) allows JavaScript code running in a browser on an external hostname to interact with your Mobile Service.  This configuration is not necessary for WinJS applications.
+モバイル サービスとの対話やモバイル サービスへの要求の送信を許可する Web サイトを制御するには、[構成] タブを使用して、ホストする Web サイトのホスト名をクロス オリジン リソース共有 (CORS) ホワイトリストに追加してください。必要に応じて、ワイルドカードを使用できます。既定では、新しいモバイル サービスは `localhost` からのアクセスのみを許可するようブラウザーに指示します。クロス オリジン リソース共有 (CORS) により、外部ホスト名のブラウザーで実行されている JavaScript コードがモバイル サービスと対話できるようになります。この構成は、WinJS アプリケーションには必要ありません。
 
-<h2><a name="nextsteps"></a>Next steps</h2>
+<h2><a name="nextsteps"></a>次のステップ</h2>
 
-Now that you have completed this how-to conceptual reference topic, learn how to perform important tasks in Mobile Services in detail:
+使用方法の概念リファレンス トピックを完了した後は、モバイル サービスで重要なタスクを実行する方法について詳しく確認してください。
 
-* [Get started with Mobile Services]
-  <br/>Learn the basics of how to use Mobile Services.
+* [モバイル サービスの使用]
+  <br/>モバイル サービスを使用する方法の基本について説明します。
 
-* [Get started with data]
-  <br/>Learn more about storing and querying data using Mobile Services.
+* [データの使用]
+  <br/>モバイル サービスを使用してデータの格納およびクエリを実行する方法について説明します。
 
-* [Get started with authentication]
-  <br/>Learn how to authenticate users of your app with an identity provider.
+* [モバイル サービスでの認証の使用]
+  <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [Validate and modify data with scripts]
-  <br/>Learn more about using server scripts in Mobile Services to validate and change data sent from your app.
+* [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]
+  <br/>モバイル サービスでサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
-* [Refine queries with paging]
-  <br/>Learn how to use paging in queries to control the amount of data handled in a single request.
+* [ページングを使用したモバイル サービス クエリの改善]
+  <br/>クエリ内でページングを使用して、単一の要求で渡されるデータの量を制御する方法について説明します。
 
-* [Authorize users with scripts]
-  <br/>Learn how to take the user ID value provided by Mobile Services based on an authenticated user and use it to filter the data returned by Mobile Services. 
+* [スクリプトを使用したユーザーの承認]
+  <br/>認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理する方法について説明します。
 
 <!-- Anchors. -->
-[What is Mobile Services]: #what-is
-[Concepts]: #concepts
-[How to: Create the Mobile Services client]: #create-client
-[How to: Query data from a mobile service]: #querying
-[Filter returned data]: #filtering
-[Sort returned data]: #sorting
-[Return data in pages]: #paging
-[Select specific columns]: #selecting
-[Look up data by ID]: #lookingup
-[How to: Display data in the user interface]: #binding
-[How to: Insert data into a mobile service]: #inserting
-[How to: Modify data in a mobile service]: #modifying
-[How to: Delete data in a mobile service]: #deleting
-[How to: Authenticate users]: #caching
-[How to: Handle errors]: #errors
-[How to: Use promises]: #promises
-[How to: Customize request headers]: #customizing
-[How to: Use cross-origin resource sharing]: #hostnames
-[Next steps]: #nextsteps
+[モバイル サービスとは]: #what-is
+[概念]: #concepts
+[方法: モバイル サービス クライアントを作成する]: #create-client
+[方法: モバイル サービスのデータを照会する]: #querying
+[返されるデータをフィルター処理する]: #filtering
+[返されるデータを並べ替える]: #sorting
+[ページにデータを返す]: #paging
+[特定の列を選択する]: #selecting
+[ID でデータを検索する]: #lookingup
+[方法: ユーザー インターフェイスにデータを表示する]: #binding
+[方法: モバイル サービスにデータを挿入する]: #inserting
+[方法: モバイル サービスのデータを変更する]: #modifying
+[方法: モバイル サービスのデータを削除する]: #deleting
+[方法: ユーザーを認証する]: #caching
+[方法: エラーを処理する]: #errors
+[方法: promise を使用する]: #promises
+[方法: 要求ヘッダーをカスタマイズする]: #customizing
+[方法: クロス オリジン リソース共有を使用する]: #hostnames
+[次のステップ]: #nextsteps
 
 
 
 <!-- URLs. -->
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-html
-[Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[Getting Started with Data]: http://www.windowsazure.com/en-us/develop/mobile/tutorials/get-started-with-data-html/
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-html
-[Get started with authentication Windows Store]: /en-us/develop/mobile/tutorials/get-started-with-users-js
-[then]: http://msdn.microsoft.com/en-us/library/windows/apps/br229728.aspx
-[done]: http://msdn.microsoft.com/en-us/library/windows/apps/hh701079.aspx
-[Learn more about the  differences between then and done]: http://msdn.microsoft.com/en-us/library/windows/apps/hh700334.aspx
-[how to handle errors in promises]: http://msdn.microsoft.com/en-us/library/windows/apps/hh700337.aspx
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-html
+[モバイル サービス SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
+[データの使用]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-data-html/
+[モバイル サービスでの認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-html
+[認証と Windows ストアの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-js
+[Promise.then メソッドに関するページ]: http://msdn.microsoft.com/ja-jp/library/windows/apps/br229728.aspx
+[Promise.done メソッドに関するページ]: http://msdn.microsoft.com/ja-jp/library/windows/apps/hh701079.aspx
+[then と done の違いについてはこのページを参照してください]: http://msdn.microsoft.com/ja-jp/library/windows/apps/hh700334.aspx
+[promise でエラーを処理する方法]: http://msdn.microsoft.com/ja-jp/library/windows/apps/hh700337.aspx
 
-[sessionStorage]: http://msdn.microsoft.com/en-us/library/cc197062(v=vs.85).aspx
-[localStorage]: http://msdn.microsoft.com/en-us/library/cc197062(v=vs.85).aspx
+[sessionStorage]: http://msdn.microsoft.com/ja-jp/library/cc197062(v=vs.85).aspx
+[localStorage]: http://msdn.microsoft.com/ja-jp/library/cc197062(v=vs.85).aspx
 
-[ListView]: http://msdn.microsoft.com/en-us/library/windows/apps/br211837.aspx
-[Data binding (Windows Store apps using JavaScript and HTML)]: http://msdn.microsoft.com/en-us/library/windows/apps/hh758311.aspx
-[Windows Store JavaScript quickstart]: http://www.windowsazure.com/en-us/develop/mobile/tutorials/get-started
-[HTML quickstart]: http://www.windowsazure.com/en-us/develop/mobile/tutorials/get-started-html
-[Getting Started with Data in Windows Store JavaScript]: http://www.windowsazure.com/en-us/develop/mobile/tutorials/get-started-with-data-js
-[Getting Started with Data in HTML/JavaScript]: http://www.windowsazure.com/en-us/develop/mobile/tutorials/get-started-with-data-html/
-[You can see a full example of how to set up this scenario here]: http://www.windowsazure.com/en-us/develop/mobile/tutorials/single-sign-on-windows-8-js/
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-html
-[Validate and modify data with scripts]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-html
-[Refine queries with paging]: /en-us/develop/mobile/tutorials/add-paging-to-data-html
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-html
-[login]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554236.aspx
-[Authenticate your app with single sign-in]: /en-us/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/
-[ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-[CLI to manage Mobile Services tables]: http://www.windowsazure.com/en-us/manage/linux/other-resources/command-line-tools/#Mobile_Tables
+[ListView]: http://msdn.microsoft.com/ja-jp/library/windows/apps/br211837.aspx
+[データ バインディング (JavaScript と HTML を使った Windows ストア アプリ)]: http://msdn.microsoft.com/ja-jp/library/windows/apps/hh758311.aspx
+[Windows ストア JavaScript に関するクイック スタート]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started
+[HTML に関するクイック スタート]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-html
+[Windows ストア JavaScript でのデータの使用]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-data-js
+[HTML/JavaScript でのデータの使用]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-data-html/
+[このシナリオを設定する方法の例については、このページを参照してください。]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-js/
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-html
+[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-html
+[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-html
+[スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-html
+[login]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554236.aspx
+[シングル サインオンによるアプリの認証]: /ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/
+[ASCII 制御コード C0 および C1 に関するページ]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
+[モバイル サービス テーブルの管理用コマンド]: http://www.windowsazure.com/ja-jp/manage/linux/other-resources/command-line-tools/#Mobile_Tables
+

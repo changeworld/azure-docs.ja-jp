@@ -1,102 +1,102 @@
-<properties pageTitle="Get Started with Azure Mobile Services for iOS apps" metaKeywords="Azure iOS application, mobile service iOS, getting started Azure iOS" description="Follow this tutorial to get started using Azure Mobile Services for iOS development. " metaCanonical="" services="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="" editor="" />
+<properties pageTitle="iOS アプリケーション向け Azure のモバイル サービスの使用" metaKeywords="Azure iOS アプリケーション, モバイル サービス iOS, 概要 Azure iOS" description="このチュートリアルでは、iOS 用の開発を行う場合に Azure のモバイル サービスを使用する方法を示します。" metaCanonical="" services="" documentationCenter="Mobile" title="モバイル サービスの使用" authors=""  solutions="" writer="glenga" manager="" editor=""  />
 
-# <a name="getting-started"> </a>Get started with Mobile Services
+# <a name="getting-started"> </a>モバイル サービスの使用
 <div class="dev-center-tutorial-selector sublanding">
-	<a href="/en-us/documentation/articles/mobile-services-windows-store-get-started" title="Windows Store">Windows Store</a>
-	<a href="/en-us/documentation/articles/mobile-services-windows-phone-get-started" title="Windows Phone">Windows Phone</a>
-	<a href="/en-us/documentation/articles/mobile-services-ios-get-started" title="iOS" class="current">iOS</a>
-	<a href="/en-us/documentation/articles/mobile-services-android-get-started" title="Android">Android</a>
-	<a href="/en-us/documentation/articles/mobile-services-html-get-started" title="HTML">HTML</a>
-	<a href="/en-us/documentation/articles/partner-xamarin-mobile-services-ios-get-started" title="Xamarin.iOS">Xamarin.iOS</a>
-	<a href="/en-us/documentation/articles/partner-xamarin-mobile-services-android-get-started" title="Xamarin.Android">Xamarin.Android</a>
-	<a href="/en-us/documentation/articles/partner-sencha-mobile-services-get-started/" title="Sencha">Sencha</a>
-	<a href="/en-us/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/" title="PhoneGap">PhoneGap</a>
+	<a href="/ja-jp/documentation/articles/mobile-services-windows-store-get-started" title="Windows ストア">Windows ストア</a>
+	<a href="/ja-jp/documentation/articles/mobile-services-windows-phone-get-started" title="Windows Phone">Windows Phone</a>
+	<a href="/ja-jp/documentation/articles/mobile-services-ios-get-started" title="iOS" class="current">iOS</a>
+	<a href="/ja-jp/documentation/articles/mobile-services-android-get-started" title="Android">Android</a>
+	<a href="/ja-jp/documentation/articles/mobile-services-html-get-started" title="HTML">HTML</a>
+	<a href="/ja-jp/documentation/articles/partner-xamarin-mobile-services-ios-get-started" title="Xamarin.iOS">Xamarin.iOS</a>
+	<a href="/ja-jp/documentation/articles/partner-xamarin-mobile-services-android-get-started" title="Xamarin.Android">Xamarin.Android</a>
+	<a href="/ja-jp/documentation/articles/partner-sencha-mobile-services-get-started/" title="Sencha">Sencha</a>
+	<a href="/ja-jp/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/" title="PhoneGap">PhoneGap</a>
 </div>
 
 <div class="dev-center-tutorial-subselector">
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started/" title=".NET backend">.NET backend</a> | 
-	<a href="/en-us/documentation/articles/mobile-services-ios-get-started/"  title="JavaScript backend" class="current">JavaScript backend</a>
+	<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started/" title=".NET バックエンド">.NET バックエンド</a> |
+	<a href="/ja-jp/documentation/articles/mobile-services-ios-get-started/"  title="JavaScript バックエンド" class="current">JavaScript バックエンド</a>
 </div>
 
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
-<p>This tutorial shows you how to add a cloud-based backend service to an iOS app using Azure Mobile Services.</p>
-<p>If you prefer to watch a video, the clip to the right follows the same steps as this tutorial.</p>
+<p>このチュートリアルでは、Azure のモバイル サービスを使用して iOS アプリにクラウドベースのバックエンド サービスを追加する方法を示します。</p>
+<p>右側のクリップを見ると、このチュートリアルと同じ手順をビデオで確認できます。</p>
 </div>
-<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/iOS-Creating-your-first-app-using-the-Windows-Azure-Mobile-Services-Quickstart" target="_blank" class="label">watch the tutorial</a> <a style="background-image: url('/media/devcenter/mobile/videos/get-started-ios-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/iOS-Creating-your-first-app-using-the-Windows-Azure-Mobile-Services-Quickstart" target="_blank" class="dev-onpage-video"><span class="icon">Play Video</span></a> <span class="time">9:38</span></div>
+<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/iOS-Creating-your-first-app-using-the-Windows-Azure-Mobile-Services-Quickstart" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/devcenter/mobile/videos/get-started-ios-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/iOS-Creating-your-first-app-using-the-Windows-Azure-Mobile-Services-Quickstart" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">9:38</span></div>
 </div>
 
-In this tutorial, you will create both a new mobile service and a simple _To do list_ app that stores app data in the new mobile service. The mobile service that you will create uses JavaScript for server-side business logic. To create a mobile service that lets you write your server-side business logic in the supported .NET languages using Visual Studio, see the [.NET backend version] of this topic.
+このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリ データを保存する簡単な _To do list_ アプリの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために JavaScript を使用します。Visual Studio を使用してサポートされる .NET 言語でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[.NET バックエンド バージョン]」を参照してください。
 
-A screenshot from the completed app is below:
+完成したアプリケーションのスクリーンショットは次のようになります。
 
 ![][0]
 
-Completing this tutorial requires XCode 4.5 and iOS 5.0 or later versions. 
+このチュートリアルを完了するには、XCode 4.5 および iOS 5.0 以降のバージョンが必要です。
 
-<div class="dev-callout"><strong>Note</strong> <p>To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F" target="_blank">Azure Free Trial</a>.</p></div>
+<div class="dev-callout"><strong></strong>注<p> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
 
-## <a name="create-new-service"> </a>Create a new mobile service
+## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
 
 [WACOM.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
 
-<h2><span class="short-header">Create a new app</span>Create a new iOS app</h2>
+<h2><span class="short-header">新しいアプリケーションを作成する</span>新しい iOS アプリケーションを作成する</h2>
 
-Once you have created your mobile service, you can follow an easy quickstart in the Management Portal to either create a new app or modify an existing app to connect to your mobile service. 
+モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、新しいアプリケーションを作成するか、既存のアプリケーションを変更してモバイル サービスに接続することができます。
 
-In this section you will create a new iOS app that is connected to your mobile service.
+ここでは、モバイル サービスに接続された新しい iOS アプリを作成します。
 
-1.  In the Management Portal, click **Mobile Services**, and then click the mobile service that you just created.
+1. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
-2. In the quickstart tab, click **iOS** under **Choose platform** and expand **Create a new iOS app**.
+2. [クイック スタート] タブの **[プラットフォームの選択]** で **[iOS]** を選択し、**[新しい iOS アプリを作成する]** を展開します。
 
    	![][6]
 
-   	This displays the three easy steps to create an iOS app connected to your mobile service.
+   	これにより、モバイル サービスに接続された iOS アプリを作成するための簡単な 3 つの手順が表示されます。
 
   	![][7]
 
-3. If you haven't already done so, download and install [Xcode] v4.4 or a later version.
+3. [Xcode] v4.4 以降をダウンロードしてインストールします (まだインストールしていない場合)。
 
-4. Click **Create TodoItems table** to create a table to store app data.
+4. **[TodoItems テーブルを作成する]** をクリックして、アプリケーション データを格納するテーブルを作成します。
 
-5. Under **Download and run your app**, click **Download**. 
+5. **[アプリケーションをダウンロードして実行する]** の下の **[ダウンロード]** をクリックします。
 
-  	This downloads the project for the sample _To do list_ application that is connected to your mobile service, along with the Mobile Services iOS SDK. Save the compressed project file to your local computer, and make a note of where you saved it.
+  	これにより、モバイル サービスに接続されている _To do list_ サンプル アプリケーションのプロジェクトが、モバイル サービス iOS SDK と共にダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
-## Run your new iOS app
+## 新しい iOS アプリを実行する
 
 [WACOM.INCLUDE [mobile-services-ios-run-app](../includes/mobile-services-ios-run-app.md)]
 
 <ol start="4">
-<li><p>Back in the Management Portal, click the <strong>Data</strong> tab and then click the <strong>TodoItems</strong> table.<p>
+<li><p>管理ポータルに戻り、[データ]<strong></strong> タブ、<strong>TodoItems</strong> テーブルの順にクリックします。<p>
 
 <p><img src="./media/mobile-services-ios-get-started/mobile-data-tab.png" alt=""></p>
 
-   	<p>This lets you browse the data inserted by the app into the table.</p>
+   	<p>これで、アプリケーションによってテーブルに挿入されたデータを参照できます。</p>
 
    	<p><img src="./media/mobile-services-ios-get-started/mobile-data-browse.png" alt=""></p></li>
 </ol>
 
 
-## <a name="next-steps"> </a>Next Steps
-Now that you have completed the quickstart, learn how to perform additional important tasks in Mobile Services: 
+## <a name="next-steps"> </a>次のステップ
+クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。
 
-* [Get started with data]
-  <br/>Learn more about storing and querying data using Mobile Services.
+* [データの使用]
+  <br/>モバイル サービスを使用してデータの格納およびクエリを実行する方法について説明します。
 
-* [Get started with authentication]
-  <br/>Learn how to authenticate users of your app with an identity provider.
+* [認証の使用]
+  <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app.
+* [プッシュ通知の使用] 
+  <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
 
 <!-- Anchors. -->
-[Getting started with Mobile Services]:#getting-started
-[Create a new mobile service]:#create-new-service
-[Define the mobile service instance]:#define-mobile-service-instance
-[Next Steps]:#next-steps
+[モバイル サービスの使用]:#getting-started
+[新しいモバイル サービスを作成する]:#create-new-service
+[モバイル サービス インスタンスの定義]:#define-mobile-service-instance
+[次のステップ]:#next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-ios-get-started/mobile-quickstart-completed-ios.png
@@ -111,11 +111,12 @@ Now that you have completed the quickstart, learn how to perform additional impo
 
 
 <!-- URLs. -->
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-ios
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-ios
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-ios
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-ios
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-ios
+[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-ios
 
-[Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
-[Management Portal]: https://manage.windowsazure.com/
+[モバイル サービス iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
+[管理ポータル]: https://manage.windowsazure.com/
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-[.NET backend version]: /en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started
+[.NET バックエンド バージョン]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started
+

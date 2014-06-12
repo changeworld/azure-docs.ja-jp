@@ -1,8 +1,8 @@
-<properties linkid="web-sites-create-web-jobs" urlDisplayName="Windows Azure で Web ジョブを作成する方法" pageTitle="Windows Azure の Web サイトで Web ジョブを作成する方法" metaKeywords="Windows Azure の Web サイト, Web ジョブ" description="Windows Azure の Web サイトで Web ジョブを作成する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="Windows Azure の Web サイトで Web ジョブを作成する方法" authors=""  solutions="" writer="timamm" manager="paulettm" editor="mollybos"  />
+<properties linkid="web-sites-create-web-jobs" urlDisplayName="Microsoft Azure で Web ジョブを作成する方法" pageTitle="Microsoft Azure Web Sites で Web ジョブを作成する方法" metaKeywords="Microsoft Azure Web Sites , Web ジョブ" description="Microsoft Azure Web Sites で Web ジョブを作成する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="Microsoft Azure Web Sites で Web ジョブを作成する方法" authors="timamm"  solutions="" writer="timamm" manager="paulettm" editor="mollybos"  />
 
-#Windows Azure の Web サイトで Web ジョブ機能を使用する方法#
+#Microsoft Azure Web Sites で Web ジョブ機能を使用する方法#
 
-Windows Azure の Web サイトを使用すると、Web サイト内でプログラムやスクリプトを "オンデマンドで実行"、"連続的に実行"、および "スケジュールに従って実行" のうちいずれかの方法で実行できます。後で説明する常時接続機能を有効にしない限り、Windows Azure の Web ジョブの使用に追加コストはかかりません。
+Microsoft Azure Web Sites を使用すると、Web サイト内でプログラムやスクリプトを "オンデマンドで実行"、"連続的に実行"、および "スケジュールに従って実行" のうちいずれかの方法で実行できます。後で説明する常時接続機能を有効にしない限り、Microsoft Azure の Web ジョブの使用に追加コストはかかりません。
 
 
 ## 目次##
@@ -10,9 +10,11 @@ Windows Azure の Web サイトを使用すると、Web サイト内でプログ
 - [オンデマンドで実行するタスクを作成する](#CreateOnDemand)
 - [連続的に実行するタスクを作成する](#CreateContinuous)
 - [スケジュールに従って実行するタスクを作成する](#CreateScheduled)
-- [履歴を確認する](#ViewJobHistory)
-- [次の手順](#NextSteps)
-	- [Windows Azure の Web ジョブ SDK を活用する](#WebJobsSDK)
+	- [スケジュールされたジョブと Azure スケジューラ](#Scheduler)
+- [ジョブ履歴を表示する](#ViewJobHistory)
+- [メモ](#WHPNotes)
+- [次のステップ](#NextSteps)
+	- [Microsoft Azure の Web ジョブ SDK を活用する](#WebJobsSDK)
 	- [別の方法で展開する](#AlternateDeployments)
 	- [その他のリソース](#AdditionalResources)
 
@@ -35,13 +37,13 @@ Windows Azure の Web サイトを使用すると、Web サイト内でプログ
 <a name="CreateOnDemand"></a>
 ##オンデマンドで実行するタスクを作成する##
 
-1. **[Web ジョブ]** ページのコマンド バーで、**[追加]** をクリックします。**[新しい Web ジョブ]** ダイアログ ボックスが表示されます。
+1. **[Web ジョブ]** ページのコマンド バーで、**[追加]** をクリックします。**[新しいジョブ]** ダイアログ ボックスが表示されます。
 	
 	![オンデマンドで実行するタスク][OnDemandWebJob]
 	
 2. **[名前]** ボックスに、タスクの名前を入力します。名前は、先頭を文字または数字にする必要があります。"-" と "_" 以外の特殊文字を使用することはできません。
 	
-3. **[コンテンツ (zip ファイル - 最大 200 MB)]** ボックスで、スクリプトが含まれている zip ファイルを指定します。この zip ファイルには、実行可能ファイル (.exe .cmd .bat .sh .php .py .js) のほか、プログラムまたはスクリプトの実行に必要な補助ファイルもすべて含まれている必要があります。
+3. **[コンテンツ (zip ファイル -  最大 200 MB)]** ボックスで、スクリプトが含まれている zip ファイルを指定します。この zip ファイルには、実行可能ファイル (.exe .cmd .bat .sh .php .py .js) のほか、プログラムまたはスクリプトの実行に必要な補助ファイルもすべて含まれている必要があります。
 	
 4. **[実行方法]** ボックスの一覧の **[オンデマンドで実行]** をクリックします。
 	
@@ -62,10 +64,10 @@ Windows Azure の Web サイトを使用すると、Web サイト内でプログ
 	
 2. 連続的に実行するタスクを開始または停止するには、一覧でタスクを選択し、コマンド バーの **[開始]** または **[停止]** をクリックします。
 
-> [WACOM.NOTE] Web サイトが複数のインスタンスで実行される場合、連続的に実行するタスクはすべてのインスタンス上で実行されます。オンデマンドで実行するタスクおよびスケジュールに従って実行するタスクは、負荷分散目的で Windows Azure によって選択された単一のインスタンス上で実行されます。
+> [WACOM.NOTE] Web サイトが複数のインスタンスで実行される場合、連続的に実行するタスクはすべてのインスタンス上で実行されます。オンデマンドで実行するタスクおよびスケジュールに従って実行するタスクは、負荷分散目的で Microsoft Azure によって選択された単一のインスタンス上で実行されます。
 
 > [WACOM.NOTE]
-> 連続的に実行するタスクについては、Web サイトの [構成] ページで **[常時接続]** を有効にすることをお勧めします。常時接続は標準モードでのみ使用できる機能で、これにより、アイドル状態がしばらく続いても Web サイトのアンロードを防止することができます。Web サイトが常に読み込まれていれば、連続的に実行するタスクをより高い信頼性で実行できます。
+> 連続的に実行するタスクについては、Web サイトの [構成] ページで **[常時接続]** を有効にすることをお勧めします。[常時接続] は [基本] と [標準] のモードで使用できる機能であり、この機能を有効にすると、アイドル状態がしばらく続いても Web サイトがアンロードされなくなります。Web サイトが常に読み込まれていれば、連続的に実行するタスクをより高い信頼性で実行できます。
 
 <a name="CreateScheduled"></a>
 ##スケジュールに従って実行するタスクを作成する##
@@ -91,67 +93,111 @@ Windows Azure の Web サイトを使用すると、Web サイト内でプログ
 	
 	![繰り返しのスケジュール設定][SchdRecurEvery]
 	
-7. **[週]** を選択した場合は **[特定のスケジュールに従って]** チェック ボックスをオンにし、ジョブを実行する曜日 (複数も可能) を指定することができます。
+7. **[週]** を選択した場合は **[特定のスケジュールに従って]** チェック ボックスをオンにし、ジョブを実行する曜日 (複数可) を指定することができます。
 	
 	![曜日の指定][SchdWeeksOnParticular]
 	
-8. **[月]** を選択して **[特定のスケジュールに従って]** チェック ボックスをオンにした場合は、**[日]** をクリックして、1 か月のうちジョブを実行する日 (複数も可能) を指定することができます。
+8. **[月]** を選択して **[特定のスケジュールに従って]** チェック ボックスをオンにした場合は、**[日]** をクリックして、1 か月のうちジョブを実行する日 (複数可) を指定することができます。
 	
 	![1 か月のうち特定の日を指定][SchdMonthsOnPartDays]
 	
-9. **[平日]** を選択した場合は、1 か月のうちジョブを実行する曜日 (複数も可能) を指定することができます。
+9. **[平日]** を選択した場合は、1 か月のうちジョブを実行する曜日 (複数可) を指定することができます。
 	
 	![1 か月のうち特定の曜日を指定][SchdMonthsOnPartWeekDays]
 	
 10. 最後に、**[発生回数]** を併せて使用すると、1 か月のうち指定した曜日にジョブを実行する週 (1 週目、2 週目、3 週目など) を選択することができます。
 	
 	![1 か月のうち特定の週の特定の曜日を指定][SchdMonthsOnPartWeekDaysOccurences]
+	
+11. ジョブ (複数可) を作成したら、それらの名前が状態、スケジュールの種類、その他の情報と共に [Web ジョブ] タブに表示されます。最近実行された 30 件のタスクに関する履歴情報が管理されます。
+	
+	![ジョブの一覧][WebJobsListWithSeveralJobs]
+	
+<a name="Scheduler"></a>
+###スケジュールされたジョブと Azure スケジューラ
+スケジュールされたジョブは Azure スケジューラ ポータルでさらに構成できます。
+
+1.	[Web ジョブ] ページで、ジョブの **[スケジュール]** リンクをクリックして Azure スケジューラ ポータル ページに移動します。
+	
+	![Azure スケジューラへのリンク][LinkToScheduler]
+	
+2. スケジューラ ページで、ジョブをクリックします。
+	
+	![スケジューラ ポータル ページ上のジョブ][SchedulerPortal]
+	
+3. **[ジョブの操作]** ページが開き、ここでジョブをさらに構成できます。
+	
+	![スケジューラの [ジョブの操作] ページ][JobActionPageInScheduler]
+	
+
+<!-- ================ ViewJobHistory ================= -->
 
 <a name="ViewJobHistory"></a>
-##タスク履歴の確認##
-タスクの実行履歴を確認するには、ダッシュボードの **[ログ]** 列にある、該当するリンクをクリックします (クリップボード アイコンを使用して、ログ ファイル ページの URL をクリップボードにコピーすることもできます)。
-
-![ログのリンク][WebJobLogs]
+##ジョブ履歴を表示する##
+1. Web ジョブ SDK で作成したジョブを含め、ジョブの実行履歴を表示するには、**[ログ]** 列で対応するリンクをクリックします。(必要に応じて、クリップボード アイコンを使用して、ログ ファイル ページの URL をクリップボードにコピーできます)。
 	
-リンクをクリックすると、タスクの履歴ページが開きます。
+	![ログのリンク][WebJobLogs]
+		
+2. リンクをクリックすると、タスクの Web ジョブ詳細ページが開きます。このページには、実行されたコマンド、そのコマンドを最後に実行した時間、その実行が成功したか失敗したかが表示されます。**[最近実行されたジョブ]** で、さらに詳細を表示する時間をクリックします。
+	
+	![Web ジョブ詳細][WebJobDetails]
+	
+3. **[Web ジョブ実行の詳細]** ページが表示されます。ログの内容のテキストを表示するには、**[出力切り替え]** をクリックします。ログ出力がテキスト形式で表示されます。
+	
+	![Web ジョブ実行の詳細][WebJobRunDetails]
+	
+4. 出力されたテキストを別のブラウザー ウィンドウで確認するには、**[ダウンロード]** リンクをクリックします。テキスト自体をダウンロードするには、リンクを右クリックしてから、ブラウザーのオプションを使用してファイルの内容を保存します。
+	
+	![ログ出力のダウンロード][DownloadLogOutput]
+	
+5. ページの上部にある **[Web ジョブ]** リンクを使用すると、履歴ダッシュボードに Web ジョブの一覧を簡単に表示できます。
+	
+	![Web ジョブの一覧へのリンク][WebJobsLinkToDashboardList]
+	
+	![履歴ダッシュボードに表示されたジョブの一覧][WebJobsListInJobsDashboard]
+	
+	これらのリンクのいずれかをクリックすると、選択したジョブの Web ジョブ詳細ページに移動します。
 
-![ジョブの実行履歴][TriggeredHistory]
+<a name="WHPNotes"></a>
+##注
+	
+- 2014 年 3 月の時点では、scm (展開) サイトへの要求がなく Azure で Web サイトのポータルが開かれていない場合、[無料] モードの Web サイトは 20 分後にタイムアウトすることがあります。実際のサイトへの要求があっても、この状態はリセットされません。
 
-ログの内容を確認するには、**[出力ファイル]** 列の **[ダウンロード]** リンクをクリックします。
+- 連続するジョブのコードは、無限ループで実行されるように記述する必要があります。
 
-出力ログはテキスト形式で、次のような内容が含まれています。
+- 連続するジョブが連続的に実行されるのは、サイトが稼働状態になっているときのみです。
 
-	[01/08/2014 03:12:27 > 543efe: SYS INFO] Status changed to Initializing
-	[01/08/2014 03:12:27 > 543efe: SYS INFO] Run script 'run.cmd' with script host - 'WindowsScriptHost'
-	[01/08/2014 03:12:28 > 543efe: SYS INFO] Status changed to Running
-	[01/08/2014 03:12:28] 
-	[01/08/2014 03:12:28] C:\DWASFiles\Sites\Contoso\Temp\jobs\triggered\OnDemandWebJob1\knvcab4m.522>ECHO "On Demand Task Test" 
-	[01/08/2014 03:12:28] "On Demand Task Test"
-	[01/08/2014 03:12:28 > 543efe: SYS INFO] Status changed to Success
-
-最近実行された 30 件のタスクに関する履歴情報が管理されます。
+- [基本] モードと [標準] モードには [常時接続] 機能が用意されており、この機能を有効にすると、Web サイトがアイドル状態にならなくなります。
 
 <a name="NextSteps"></a>
-##次の手順##
-
-<a name="WebJobsSDK"></a>
-###Windows Azure の Web ジョブ SDK を活用する###
-Windows Azure の Web ジョブ SDK を使用すると、Windows Azure の Web サイトにバックグラウンド プロセスを追加するタスクが容易になります。この SDK は Windows Azure のストレージを統合し、キュー、BLOB、またはテーブルに項目が追加されると、プログラム内の関数を呼び出します。ダッシュボードでは、この SDK を使用して作成したプログラムを対象として、豊富な監視機能および診断機能が提供されます。監視機能および診断機能 SDK に組み込まれており、プログラムに特別なコードを追加する必要はありません。
+##次のステップ##
  
-詳細については、チュートリアル「[Getting Started with Windows Azure の Web ジョブ SDK (Windows Azure の Web ジョブ SDK の概要)](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs)」を参照してください。このチュートリアルでは、Web ジョブ SDK の機能概要を示し、Hello World という単純なバックグラウンド プロセスを作成して実行する方法を説明します。
+<a name="WebJobsSDK"></a>
+###Microsoft Azure の Web ジョブ SDK を活用する###
+Microsoft Azure の Web ジョブ SDK を使用すると、Microsoft Azure Web Sites にバックグラウンド プロセスを追加するタスクが容易になります。この SDK は Microsoft Azure のストレージを統合し、キュー、BLOB、またはテーブルに項目が追加されると、プログラム内の関数を呼び出します。Azure ポータルに新たに統合されたダッシュボードでは、この SDK を使用して作成したプログラムを対象として、豊富な監視機能および診断機能が提供されます。監視機能および診断機能 SDK に組み込まれており、プログラムに特別なコードを追加する必要はありません。
+ 
+詳細については、チュートリアル「[Getting Started with Microsoft Azure WebJobs SDK (Microsoft Azure の Web ジョブ SDK の概要)](http://asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs)」を参照してください。このチュートリアルでは、Web ジョブ SDK の機能概要を示し、Hello World という単純なバックグラウンド プロセスを作成して実行する方法を説明します。
 
-Windows Azure の Web ジョブ SDK で作成されたコマンド ライン アプリのサンプルの使用例については、「[Introducing Windows Azure の Web ジョブ (Windows Azure の Web ジョブ の紹介)][HanselIntro]」を参照してください。
+Microsoft Azure の Web ジョブ SDK で作成されたコマンド ライン アプリケーションのサンプルの使用例については、「[Introducing Microsoft Azure WebJobs (Microsoft Azure の Web ジョブ の紹介)][HanselIntro]」を参照してください。
 
 <a name="AlternateDeployments"></a>
 ###別の方法で展開する###
-スクリプトのアップロードに Web ジョブ ポータル ページを使用しない場合は、FTP、git、または Web 展開を使用できます。詳細については、「[How to deploy Windows Azure の Web ジョブ (Windows Azure の Web ジョブ を展開する方法)][AmitDeploy]」および「[Git deploying a .NET console app to Azure using Web ジョブ (Web ジョブの使用による Azure への .NET コンソール アプリの Git 展開)][AmitConsole]」を参照してください。
+スクリプトのアップロードに Web ジョブ ポータル ページを使用しない場合は、FTP、git、または Web 展開を使用できます。詳細については、「[How to deploy Microsoft Azure WebJobs (Microsoft Azure の Web ジョブ を展開する方法)][AmitDeploy]」および「[Git deploying a .NET console app to Azure using WebJobs (Web ジョブの使用による Azure への .NET コンソール アプリケーションの Git 展開)][AmitConsole]」を参照してください。
 
 <a name="AdditionalResources"></a>
 ###その他のリソース###
-その他のリソースについては、注釈付きのリンク一覧を参照してください: [Using the WebJobs feature of Windows Azure Web Sites (Windows Azure の Web サイトの Web ジョブ機能の使用)][RickWebJobsCurah]
+- Web ジョブ機能の注釈付きのリンク一覧については、「[Using the WebJobs feature of Microsoft Azure Web Sites (Microsoft Azure Web Sites の Web ジョブ機能の使用)][RickWebJobsCurah]」を参照してください。
+	
+- Web ジョブ関連のビデオ:
+
+	[Azure WebJobs 101 - Basic WebJobs with Jamie Espinosa (Azure Web ジョブ 101 - 基本的な Web ジョブ機能に関する Jamie Espinosa のビデオ)](http://www.windowsazure.com/ja-jp/documentation/videos/azure-webjobs-basics/)
+	
+	[Azure WebJobs 102 - Scheduled WebJobs and the WebJobs Dashboard with Jamie Espinosa (Azure Web ジョブ 102 - スケジュールされた Web ジョブと Web ジョブ ダッシュボードに関する Jamie Espinosa のビデオ)](http://www.windowsazure.com/ja-jp/documentation/videos/azure-webjobs-schedule-and-dashboard/)
+	
+	[Azure Scheduler 101 - Kevin Lam explains how to schedule stuff (Azure スケジューラ 101 - スケジュール全般に関する Kevin Lam のビデオ)](http://www.windowsazure.com/ja-jp/documentation/videos/azure-scheduler-how-to/)
 
 
-
+<!-- LINKS -->
 [PSonWebJobs]:http://blogs.msdn.com/b/nicktrog/archive/2014/01/22/running-powershell-web-jobs-on-azure-websites.aspx
 
 [HanselIntro]:http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx
@@ -162,7 +208,7 @@ Windows Azure の Web ジョブ SDK で作成されたコマンド ライン ア
 
 [RickWebJobsCurah]:http://go.microsoft.com/fwlink/?LinkId=390226
 
-
+<!-- IMAGES -->
 [OnDemandWebJob]: ./media/web-sites-create-web-jobs/01aOnDemandWebJob.png
 [WebJobsList]: ./media/web-sites-create-web-jobs/02aWebJobsList.png
 [NewContinuousJob]: ./media/web-sites-create-web-jobs/03aNewContinuousJob.png
@@ -176,7 +222,15 @@ Windows Azure の Web ジョブ SDK で作成されたコマンド ライン ア
 [SchdMonthsOnPartWeekDays]: ./media/web-sites-create-web-jobs/11SchdMonthsOnPartWeekDays.png
 [SchdMonthsOnPartWeekDaysOccurences]: ./media/web-sites-create-web-jobs/12SchdMonthsOnPartWeekDaysOccurences.png
 [RunOnce]: ./media/web-sites-create-web-jobs/13RunOnce.png
+[WebJobsListWithSeveralJobs]: ./media/web-sites-create-web-jobs/13WebJobsListWithSeveralJobs.png
 [WebJobLogs]: ./media/web-sites-create-web-jobs/14WebJobLogs.png
-[TriggeredHistory]: ./media/web-sites-create-web-jobs/15aTriggeredHistory.png
+[WebJobDetails]: ./media/web-sites-create-web-jobs/15WebJobDetails.png
+[WebJobRunDetails]: ./media/web-sites-create-web-jobs/16WebJobRunDetails.png
+[DownloadLogOutput]: ./media/web-sites-create-web-jobs/17DownloadLogOutput.png
+[WebJobsLinkToDashboardList]: ./media/web-sites-create-web-jobs/18WebJobsLinkToDashboardList.png
+[WebJobsListInJobsDashboard]: ./media/web-sites-create-web-jobs/19WebJobsListInJobsDashboard.png
+[LinkToScheduler]: ./media/web-sites-create-web-jobs/31LinkToScheduler.png
+[SchedulerPortal]: ./media/web-sites-create-web-jobs/32SchedulerPortal.png
+[JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
 
 

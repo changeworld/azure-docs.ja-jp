@@ -2,7 +2,7 @@
 
 ### Pusher アカウントにサインアップするには
 
-1. [Windows Azure の管理ポータル][]にログインします。
+1. [Azure の管理ポータル][]にログインします。
 
 2. 管理ポータルの下のウィンドウの **[新規]** をクリックします。
 
@@ -16,7 +16,7 @@
 
 5. **[個人用サービス]** ダイアログで、サインアップする **Pusher** プランを選択します。
 
-6. Windows Azure 設定で **Pusher** サービスを特定する名前を入力するか、**Pusher** の既定値を使用します。名前は 1 ～ 100 文字にする必要があります。また、名前に含めることができるのは英数字、ダッシュ、ピリオド、およびアンダースコアのみです。名前は、Windows Azure ストアのサブスクライブ項目の一覧で一意になっている必要があります。
+6. Azure 設定で **Pusher** サービスを特定する名前を入力するか、**Pusher** の既定値を使用します。名前は 1 ～ 100 文字にする必要があります。また、名前に含めることができるのは英数字、ダッシュ、ピリオド、およびアンダースコアのみです。名前は、Azure ストアのサブスクライブ項目の一覧で一意になっている必要があります。
 
 	![store-screen-1][store-screen-1]
 
@@ -50,7 +50,7 @@ Pusher を使用する場合、Pusher アプリケーション接続の設定を
 
 	![pusher-connection-info][pusher-connection-info]
 
-Pusher の概要については、「[Understanding Pusher (Pusher について)」][]を参照してください。
+Pusher の概要については、「[Understanding Pusher (Pusher について)][]」を参照してください。
 
 <!--images-->
 
@@ -65,7 +65,7 @@ Pusher の概要については、「[Understanding Pusher (Pusher について)
 
 <!--Links-->
 
-[Windows Azure の管理ポータル]: https://manage.windowsazure.com
+[Azure の管理ポータル]: https://manage.windowsazure.com
 [Understanding Pusher (Pusher について)]: http://pusher.com/docs
 
 

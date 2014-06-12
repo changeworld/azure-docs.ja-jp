@@ -1,110 +1,99 @@
-<properties linkid="dev-net-how-to-sendgrid-email-service" urlDisplayName="SendGrid Email Service" pageTitle="How to use the SendGrid email service (.NET) - Azure" metaKeywords="Azure SendGrid, Azure email service, Azure SendGrid .NET, Azure email .NET, Azure SendGrid C#, Azure email C#" description="Learn how send email with the SendGrid email service on Azure. Code samples written in C# and use the .NET API." metaCanonical="" services="" documentationCenter=".NET" title="How to Send Email Using SendGrid with Azure" authors="" solutions="" manager="" editor="" />
+<properties linkid="dev-net-how-to-sendgrid-email-service" urlDisplayName="SendGrid 電子メール サービス" pageTitle="SendGrid 電子メール サービスの使用方法 (.NET) - Azure" metaKeywords="Azure SendGrid, Azure 電子メール サービス, Azure SendGrid .NET, Azure 電子メール .NET, Azure SendGrid C#, Azure 電子メール C#" description="Azure の SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。コード サンプルは C# で記述され、.NET API を使用しています。" metaCanonical="" services="" documentationCenter=".NET" title="SendGrid を使用した Azure での電子メールの送信方法" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
 
-# How to Send Email Using SendGrid with Azure
+# SendGrid を使用した Azure での電子メールの送信方法
 
-This guide demonstrates how to perform common programming tasks with the
-SendGrid email service on Azure. The samples are written in C\#
-and use the .NET API. The scenarios covered include **constructing
-email**, **sending email**, **adding attachments**, and **using
-filters**. For more information on SendGrid and sending email, see the
-[Next steps][] section.
+このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。サンプルは C# で記述され、
+.NET API を利用しています。紹介するシナリオは、**電子メールの作成**、
+**電子メールの送信**、**添付ファイルの追加**、および
+**フィルターの使用**です。SendGrid と電子メールの送信の詳細については、「[次のステップ][]」を参照してください。
 
-<h2><a name="toc"></a>Table of contents</h2>
+<h2><a name="toc"></a>目次</h2>
 
-[What is the SendGrid Email Service?][]   
-[Create a SendGrid account][]   
-[Reference the SendGrid .NET class library][]   
-[How to: Create an email][]   
-[How to: Send an email][]   
-[How to: Add an attachment][]   
-[How to: Use filters to enable footers, tracking, and analytics][]   
-[How to: Use additional SendGrid services][]   
-[Next steps][]
+[SendGrid 電子メール サービスとは][]   
+[SendGrid アカウントを作成する][]   
+[SendGrid .NET クラス ライブラリを参照する][]   
+[方法: 電子メールを作成する][]   
+[方法: 電子メールを送信する][]   
+[方法: 添付ファイルを追加する][]   
+[方法: フィルターを使用してフッター、追跡、および分析を有効にする][]   
+[方法: その他の SendGrid サービスを使用する][]   
+[次のステップ][]
 
-<h2><a name="whatis"></a><span  class="short-header">What is the SendGrid Email Service?</span>What is the SendGrid Email Service?</h2>
+<h2><a name="whatis"></a><span  class="short-header">SendGrid 電子メール サービスとは</span>SendGrid 電子メール サービスとは</h2>
 
-SendGrid is a [cloud-based email service] that provides reliable
-[transactional email delivery], scalability, and real-time analytics along with flexible APIs
-that make custom integration easy. Common SendGrid usage scenarios
-include:
+SendGrid は、信頼性の高い[トランザクション電子メール配信]、
+拡張性、およびリアルタイム分析の機能を備えた[クラウドベース電子メール サービス]であり、
+柔軟な API を備えているためカスタム統合も容易です。SendGrid の一般的な使用シナリオを
+次に示します。
 
--   Automatically sending receipts to customers.
--   Administering distribution lists for sending customers monthly
-    e-fliers and special offers.
--   Collecting real-time metrics for things like blocked e-mail, and
-    customer responsiveness.
--   Generating reports to help identify trends.
--   Forwarding customer inquiries.
+-   顧客に受信通知を自動送信する。
+-   顧客に広告メールを月 1 回送信するための配布リストを
+    管理する。
+-   ブロックされた電子メールや顧客の応答性などを表す測定値を
+    リアルタイムで収集する。
+-   傾向を認識するために役立つレポートを生成する。
+-   顧客の問い合わせを転送する。
 
-For more information, see [http://sendgrid.com](http://sendgrid.com).
+詳細については、[http://sendgrid.com](http://sendgrid.com) を参照してください。
 
-<h2><a name="createaccount"></a><span  class="short-header">Create a SendGrid account</span>Create a SendGrid account</h2>
+<h2><a name="createaccount"></a><span  class="short-header">SendGrid アカウントの作成</span>SendGrid アカウントの作成</h2>
 
 [WACOM.INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-<h2><a name="reference"></a><span  class="short-header">Reference the SendGrid .NET class library</span>Reference the SendGrid .NET class library</h2>
+<h2><a name="reference"></a><span  class="short-header">SendGrid .NET クラス ライブラリの参照</span>SendGrid .NET クラス ライブラリの参照</h2>
 
-The SendGrid NuGet package is the easiest way to get the SendGrid API
-and to configure your application with all dependencies. NuGet is a
-Visual Studio extension included with Microsoft Visual Studio 2012 that makes it easy to install and update
-libraries and tools. 
+SendGrid NuGet パッケージは、SendGrid API を取得し、すべての依存関係を
+備えたアプリケーションを構成する最も簡単な方法です。NuGet は
+Microsoft Visual Studio 2012 に含まれる Visual Studio 拡張機能であり、これを使用してライブラリおよびツールの
+インストールと更新を簡単に行うことができます。
 
 <div class="dev-callout">
-<b>Note</b>
-<p>To
-install NuGet if you are running a version of Visual Studio earlier than Visual Studio 2012, visit <a href="http://www.nuget.org">http://www.nuget.org</a>, and click the <b>Install
-NuGet</b> button.</p>
+<b>注:</b>
+<p>Visual Studio 2012 よりも
+前のバージョンの Visual Studio を利用している場合、NuGet をインストールするには、http://www.nuget.org<a href="http://www.nuget.org"></a> にアクセスして、<b>[Install NuGet]</b> をクリックしてください。</p>
 </div>
 
-To install the SendGrid NuGet package in your application, do the following:
+アプリケーションに SendGrid NuGet パッケージをインストールするには、次のステップを行います。
 
-1.  In **Solution Explorer**, right-click **References**, then click
-    **Manage NuGet Packages**.
+1. **ソリューション エクスプローラー**で **[参照]** を右クリックし、
+    **[NuGet パッケージの管理]** をクリックします。
 
-2.  In the left-hand pane of the **Manage NuGet Packages** dialog, click **Online**.
+2. **[NuGet パッケージの管理]** ダイアログ ボックスの左側のウィンドウで、**[オンライン]** をクリックします。
 
-3.  Search for **SendGrid** and select the **SendGrid** item in the
-    results list.
+3. 「**SendGrid**」を検索し、検索結果の一覧から **SendGrid** を選択します。
 
-    ![SendGrid NuGet package][SendGrid-NuGet-package]
+    ![SendGrid NuGet パッケージ][SendGrid-NuGet-package]
 
-4.  Click **Install** to complete the installation, and then close this
-    dialog.
+4. **[インストール]** をクリックしてインストールを実行した後、このダイアログを閉じます。
 
-SendGrid's .NET class library is called **SendGridMail**. It contains
-the following namespaces:
+SendGrid の .NET クラス ライブラリは、**SendGridMail** という名前です。これには
+次の名前空間が含まれます。
 
--   **SendGridMail** for creating and working with email items.
--   **SendGridMail.Transport** for sending email using either the
-    **SMTP** protocol, or the HTTP 1.1 protocol with **Web/REST**.
+-  **SendGridMail**: 電子メール アイテムの作成と処理の際に使用する名前空間です。
+-  **SendGridMail.Transport**: **SMTP** プロトコルまたは **Web/REST** を使用した HTTP 1.1 プロトコルを使用して電子メールを送信する際の名前空間です。
 
-Add the following code namespace declarations to the top of any C\# file
-in which you want to programmatically access the SendGrid email service.
-**System.Net** and **System.Net.Mail** are .NET Framework namespaces
-that are included because they include types you will commonly use with
-the SendGrid APIs.
+プログラムを使用して SendGrid 電子メール サービスにアクセスするすべての C\# ファイルの冒頭部分に、名前空間を宣言する次のコードを追加します。
+**System.Net** と **System.Net.Mail** は、.NET Framework 名前空間です。この 2 つが宣言されているのは、SendGrid API で一般的に使用される型が含まれているためです。
 
     using System.Net;
     using System.Net.Mail;
     using SendGridMail;
     using SendGridMail.Transport;
 
-<h2><a name="createemail"></a><span  class="short-header">How to: Create an email</span>How to: Create an email</h2>
+<h2><a name="createemail"></a><span  class="short-header">方法: 電子メールを作成する</span>方法: 電子メールを作成する</h2>
 
-Use the static **SendGrid.GetInstance** method to create an email
-message that is of type **SendGrid**. Once the message is created, you
-can use **SendGrid** properties and methods to set values including the
-email sender, the email recipient, and the subject and body of the
-email.
+**SendGrid.GetInstance** 静的メソッドを使用して、**SendGrid** 型の
+電子メール メッセージを作成します。メッセージが作成されたら、
+**SendGrid**プロパティとメソッドを使用して、電子メール送信者、
+電子メール受信者、件名、電子メール本文などの値を設定できます。
 
-The following example demonstrates how to create a fully populated email
-object:
+次の例に、すべての値が設定された電子メール オブジェクトの作成方法を示します。
 
-    // Setup the email properties.
+    // 電子メールのプロパティをセットアップします。
     var from = new MailAddress("john@contoso.com");
     var to   = new MailAddress[] { new MailAddress("jeff@contoso.com") };
     var cc   = new MailAddress[] { new MailAddress("anna@contoso.com") };
@@ -114,19 +103,19 @@ object:
     var text = "Hello World plain text!";
     var transport = SendGridMail.TransportType.SMTP;
 
-    // Create an email, passing in the the eight properties as arguments.
+    // 電子メールを作成し、8 個のプロパティを引数として渡します。
     SendGrid myMessage = SendGrid.GetInstance(from, to, cc, bcc, subject, html, text, transport);
 
-The following example demonstrates how to create an empty email object:
+次の例に、空の電子メール オブジェクトの作成方法を示します。
 
-    // Create the email object first, then add the properties.
+    // 先に電子メール オブジェクトを作成した後でプロパティを追加します。
     SendGrid myMessage = SendGrid.GetInstance();
      
-    // Add the message properties.
+    // メッセージのプロパティを追加します。
     MailAddress sender = new MailAddress(@"John Smith <john@contoso.com>");
     myMessage.From = sender;
      
-    // Add multiple addresses to the To field.
+    // 宛先のフィールドに複数のアドレスを追加します。
     List<String> recipients = new List<String>
     {
         @"Jeff Smith <jeff@contoso.com>",
@@ -139,81 +128,77 @@ The following example demonstrates how to create an empty email object:
         myMessage.AddTo(recipient);
     }
      
-    // Add a message body in HTML format.
+    // メッセージの本文を HTML 形式で追加します。
     myMessage.Html = "<p>Hello World!</p>";
 
-    // Add the subject.
+    // 件名を追加します。
     myMessage.Subject = "Testing the SendGrid Library";
 
-For more information on all properties and methods supported by the
-**SendGrid** type, see [sendgrid-csharp][] on GitHub.
+**SendGrid** 型でサポートされるすべてのプロパティとメソッドの詳細については、GitHub の [sendgrid-csharp][] に関するページを参照してください。
 
-<h2><a name="sendemail"></a><span  class="short-header">How to: Send an email</span>How to: Send an email</h2>
+<h2><a name="sendemail"></a><span  class="short-header">方法: 電子メールを送信する</span>方法: 電子メールを送信する</h2>
 
-After creating an email message, you can send it using either SMTP or
-the Web API provided by SendGrid. For details about the benefits and
-drawbacks of each API, see [SMTP vs. Web API][] in the SendGrid
-documentation.
+電子メール メッセージを作成した後で、SMTP、または SendGrid の
+Web API を使用してメッセージを送信することができます。各 API の長所と欠点の詳細については、[SMTP と Web API を比較した SendGrid ドキュメント][]を参照してください。
 
-Sending email with either protocol requires that you supply your
-SendGrid account credentials (username and password). The following code
-demonstrates how to wrap your credentials in a **NetworkCredential**
-object:
+どちらのプロトコルを使用して電子メールを送信する場合も、
+SendGrid アカウントの資格情報 (ユーザー名とパスワード) を指定する必要があります。次のコードに、
+**NetworkCredential** オブジェクトで資格情報をラップする方法を示します。
 
-    // Create network credentials to access your SendGrid account.
+    // SendGrid アカウントにアクセスするためのネットワーク資格情報を作成します。
     var username = "your_sendgrid_username";
     var pswd = "your_sendgrid_password";
 
     var credentials = new NetworkCredential(username, pswd);
 
-To send an email message, use the **Deliver** method on either the
-**SMTP** class, which uses the SMTP protocol, or the **REST** transport
-class, which calls the SendGrid Web API. The following examples show how
-to send a message using both SMTP and the Web API.
+電子メール メッセージを送信するには、SMTP プロトコルを使用する
+**SMTP** クラスか、SendGrid Web API を呼び出す **REST** トランスポート クラスに
+対して、**Deliver** メソッドを使用します。次の例に、SMTP と Web API で
+メッセージを送信する方法を示します。
 
 ### SMTP
 
-    // Create the email object first, then add the properties.
+    // 先に電子メール オブジェクトを作成した後でプロパティを追加します。
     SendGrid myMessage = SendGrid.GetInstance();
     myMessage.AddTo("anna@contoso.com");
     myMessage.From = new MailAddress("john@contoso.com", "John Smith");
     myMessage.Subject = "Testing the SendGrid Library";
     myMessage.Text = "Hello World!";
 
-    // Create credentials, specifying your user name and password.
+    // 資格情報を作成し、ユーザー名とパスワードを指定します。
     var credentials = new NetworkCredential("username", "password");
 
-    // Create an SMTP transport for sending email.
+    // 電子メールを送信するための SMTP トランスポートを作成します。
     var transportSMTP = SMTP.GetInstance(credentials);
 
-    // Send the email.
+    // 電子メールを送信します。
     transportSMTP.Deliver(myMessage);
 
 ### Web API
 
-    // Create the email object first, then add the properties.
+    // 先に電子メール オブジェクトを作成した後でプロパティを追加します。
     SendGrid myMessage = SendGrid.GetInstance();
     myMessage.AddTo("anna@contoso.com");
     myMessage.From = new MailAddress("john@contoso.com", "John Smith");
     myMessage.Subject = "Testing the SendGrid Library";
     myMessage.Text = "Hello World!";
 
-    // Create credentials, specifying your user name and password.
+    // 資格情報を作成し、ユーザー名とパスワードを指定します。
     var credentials = new NetworkCredential("username", "password");
 
-    // Create a REST transport for sending email.
+    // 電子メールを送信するための REST トランスポートを作成します。
     var transportREST = Web.GetInstance(credentials);
 
-    // Send the email.
+    // 電子メールを送信します。
     transportREST.Deliver(myMessage);
 
-<h2><a name="addattachment"></a><span  class="short-header">How to: Add an attachment</span>How to: Add an attachment</h2>
+<h2><a name="addattachment"></a><span  class="short-header">方法: 添付ファイルを追加する</span>方法: 添付ファイルを追加する</h2>
 
-Attachments can be added to a message by calling the **AddAttachment**
-method and specifying the name and path of the file you want to attach.
-You can include multiple attachments by calling this method once for
-each file you wish to attach. The following example demonstrates adding
-an attachment to a message:
+添付ファイルをメッセージに追加するには、**AddAttachment** メソッドを呼び出し、
+添付するファイルの名前とパスを指定します。
+複数のファイルを添付するには、添付する各ファイルにつき 1 回このメソッドを
+呼び出します。次の例に、メッセージに添付ファイルを追加する
+方法を示します。
 
     SendGrid myMessage = SendGrid.GetInstance();
     myMessage.AddTo("anna@contoso.com");
@@ -223,25 +208,25 @@ an attachment to a message:
 
     myMessage.AddAttachment(@"C:\file1.txt");
 
-<h2><a name="usefilters"></a><span  class="short-header">How to: Use filters to enable footers, tracking, and analytics</span>How to: Use filters to enable footers, tracking, and analytics</h2>
+<h2><a name="usefilters"></a><span  class="short-header">方法: フィルターを使用して、フッター、トラッキング、および分析機能を有効にする</span>方法: フィルターを使用して、フッター、トラッキング、および分析機能を有効にする</h2>
 
-SendGrid provides additional email functionality through the use of
-filters. These are settings that can be added to an email message to
-enable specific functionality such as click tracking, Google analytics,
-subscription tracking, and so on. For a full list of filters, see
-[Filter Settings][].
+SendGrid では、"フィルター" を使用することでその他の電子メール機能も
+利用することができます。その設定を電子メール メッセージに追加することで、クリック追跡、
+Google 分析、サブスクリプション追跡などの独自の機能を
+有効にすることができます。すべてのフィルターの一覧に
+ついては、[フィルター設定に関するページ][]を参照してください。
 
-Filters can be applied to **SendGrid** email messages using methods
-implemented as part of the **SendGrid** class. Before you can enable
-filters on an email message, you must first initialize the list of
-available filters by calling the **InitalizeFilters** method.
+フィルターは、**SendGrid** クラスの一部として実装されたメソッドを使用する
+**SendGrid** 電子メール メッセージに適用できます。電子メール メッセージに対するフィルターを有効にする前に、
+**InitalizeFilters** メソッドを呼び出して、使用できるフィルターの
+一覧を初期化しておく必要があります。
 
-The following examples demonstrate the footer and click tracking
-filters:
+次の例に、フッター フィルターとクリック追跡フィルターの使用方法を
+示します。
 
-### Footer
+### フッター
 
-    // Create the email object first, then add the properties.
+    // 先に電子メール オブジェクトを作成した後でプロパティを追加します。
     SendGrid myMessage = SendGrid.GetInstance();
     myMessage.AddTo("anna@contoso.com");
     myMessage.From = new MailAddress("john@contoso.com", "John Smith");
@@ -249,12 +234,12 @@ filters:
     myMessage.Text = "Hello World!";
 
     myMessage.InitializeFilters();
-    // Add a footer to the message.
+    // メッセージにフッターを追加します。
     myMessage.EnableFooter("PLAIN TEXT FOOTER", "<p><em>HTML FOOTER</em></p>");
 
-### Click tracking
+### クリック追跡
 
-    // Create the email object first, then add the properties.
+    // 先に電子メール オブジェクトを作成した後でプロパティを追加します。
     SendGrid myMessage = SendGrid.GetInstance();
     myMessage.AddTo("anna@contoso.com");
     myMessage.From = new MailAddress("john@contoso.com", "John Smith");
@@ -263,45 +248,46 @@ filters:
     myMessage.Text = "Hello World!";
 
     myMessage.InitializeFilters();
-    // true indicates that links in plain text portions of the email 
-    // should also be overwritten for link tracking purposes. 
+    // true は、電子メールのプレーンテキスト部分のリンクも
+    // リンク追跡のために上書きする必要があることを示します。
     myMessage.EnableClickTracking(true);
 
-<h2><a name="useservices"></a><span  class="short-header">How to: Use additional SendGrid services</span>How to: Use additional SendGrid services</h2>
+<h2><a name="useservices"></a><span  class="short-header">方法: その他の SendGrid サービスを使用する</span>方法: その他の SendGrid サービスを使用する</h2>
 
-SendGrid offers web-based APIs that you can use to leverage additional
-SendGrid functionality from your Azure application. For full
-details, see the [SendGrid API documentation][].
+SendGrid の Web ベース API を使用して、Azure アプリケーション
+からその他の SendGrid 機能を利用することができます。詳細については、
+[SendGrid API に関するドキュメント][]を参照してください。
 
-<h2><a name="nextsteps"></a><span  class="short-header">Next steps</span>Next steps</h2>
+<h2><a name="nextsteps"></a><span  class="short-header">次のステップ</span>次のステップ</h2>
 
-Now that you've learned the basics of the SendGrid Email service, follow
-these links to learn more.
+これで、SendGrid 電子メール サービスの基本を学習できました。
+さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
-* SendGrid C\# library repo: [sendgrid-csharp][]
-*   SendGrid API documentation: <http://docs.sendgrid.com/documentation/api/>
-*   SendGrid special offer for Azure customers: [http://sendgrid.com](http://sendgrid.com)
+*   SendGrid C\# ライブラリ レポート: [sendgrid-csharp][]
+*   SendGrid API に関するドキュメント: <http://docs.sendgrid.com/documentation/api/>
+*   Azure ユーザー向けの SendGrid 特別プラン: [http://sendgrid.com](http://sendgrid.com)
 
-  [Next steps]: #nextsteps
-  [What is the SendGrid Email Service?]: #whatis
-  [Create a SendGrid Account]: #createaccount
-  [Reference the SendGrid .NET Class Library]: #reference
-  [How to: Create an Email]: #createemail
-  [How to: Send an Email]: #sendemail
-  [How to: Add an Attachment]: #addattachment
-  [How to: Use Filters to Enable Footers, Tracking, and Analytics]: #usefilters
-  [How to: Use Additional SendGrid Services]: #useservices
+  [次のステップ]: #nextsteps
+  [SendGrid 電子メール サービスとは]: #whatis
+  [SendGrid アカウントを作成する]: #createaccount
+  [SendGrid .NET クラス ライブラリを参照する]: #reference
+  [方法: 電子メールを作成する]: #createemail
+  [方法: 電子メールを送信する]: #sendemail
+  [方法: 添付ファイルを追加する]: #addattachment
+  [方法: フィルターを使用してフッター、追跡、および分析を有効にする]: #usefilters
+  [方法: その他の SendGrid サービスを使用する]: #useservices
   
   
-  [special offer]: http://www.sendgrid.com/azure.html
+  [特別プラン]: http://www.sendgrid.com/azure.html
   
   
   
   [SendGrid-NuGet-package]: ./media/sendgrid-dotnet-how-to-send-email/sendgrid01.png
   [sendgrid-csharp]: https://github.com/sendgrid/sendgrid-csharp
-  [SMTP vs. Web API]: http://docs.sendgrid.com/documentation/get-started/integrate/examples/smtp-vs-rest/
-  [Filter Settings]: http://docs.sendgrid.com/documentation/api/smtp-api/filter-settings/
-  [SendGrid API documentation]: http://docs.sendgrid.com/documentation/api/
+  [SMTP と Web API を比較した SendGrid ドキュメント]: http://docs.sendgrid.com/documentation/get-started/integrate/examples/smtp-vs-rest/
+  [フィルター設定に関するページ]: http://docs.sendgrid.com/documentation/api/smtp-api/filter-settings/
+  [SendGrid API に関するドキュメント]: http://docs.sendgrid.com/documentation/api/
   
-  [cloud-based email service]: http://sendgrid.com/solutions
-  [transactional email delivery]: http://sendgrid.com/transactional-email
+  [トランザクション電子メール配信]: http://sendgrid.com/solutions
+  [クラウドベース電子メール サービス]: http://sendgrid.com/transactional-email
+

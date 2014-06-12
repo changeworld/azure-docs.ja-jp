@@ -1,11 +1,11 @@
-﻿<properties linkid="manage-services-networking-replica-domain-controller" urlDisplayName="レプリカ ドメイン コントローラー" pageTitle="Windows Azure でのレプリカ ドメイン コントローラーのインストール" metaKeywords="" description="このチュートリアルでは、Windows Azure の仮想マシンに会社の Active Directory フォレストからドメイン コントローラーをインストールする手順について説明します。" metaCanonical="" services="virtual-network" documentationCenter="" title="Windows Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール" authors=""  solutions="" writer="" manager="" editor=""  />
+<properties linkid="manage-services-networking-replica-domain-controller" urlDisplayName="レプリカ ドメイン コントローラー" pageTitle="Azure でのレプリカ ドメイン コントローラーのインストール" metaKeywords="" description="このチュートリアルでは、Azure の仮想マシンに会社の Active Directory フォレストからドメイン コントローラーをインストールする手順について説明します。" metaCanonical="" services="virtual-network" documentationCenter="" title="Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
-#Windows Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール
+#Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール
 
-このチュートリアルでは、[Windows Azure の仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx) 上の仮想マシン (VM) に会社の Active Directory フォレストから追加のドメイン コントローラーをインストールする手順について詳しく説明します。このチュートリアルでは、VM の仮想ネットワークが会社のネットワークに接続されます。Windows Azure の仮想ネットワークに Active Directory ドメイン サービス (AD DS) をインストールする方法に関する概念的なガイダンスについては、「[Windows Azure の仮想マシンでの Windows Server Active Directory の展開ガイドライン](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090.aspx)」を参照してください。
+このチュートリアルでは、[Azure の仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx) 上の仮想マシン (VM) に会社の Active Directory フォレストから追加のドメイン コントローラーをインストールする手順について詳しく説明します。このチュートリアルでは、VM の仮想ネットワークが会社のネットワークに接続されます。Azure の仮想ネットワークに Active Directory ドメイン サービス (AD DS) をインストールする方法に関する概念的なガイダンスについては、「[Azure の仮想マシンでの Windows Server Active Directory の展開ガイドライン](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090.aspx)」を参照してください。
 
 ##目次##
 
@@ -22,25 +22,25 @@
 
 <h2><a id="Prerequisites"></a>前提条件</h2>
 
--	Windows Azure の仮想ネットワークと会社のネットワークとの間で構成された[クロスプレミス接続用に仮想ネットワークを作成する](http://www.windowsazure.com/ja-jp/manage/services/networking/cross-premises-connectivity/)。
+-	Azure の仮想ネットワークと会社のネットワークとの間で構成された[クロスプレミス接続用に仮想ネットワークを作成する](http://www.windowsazure.com/ja-jp/manage/services/networking/cross-premises-connectivity/)。
 -	仮想ネットワークにクラウド サービスを作成する。
 -	仮想ネットワーク内のクラウド サービスに 2 つの VM を展開する (VM を配置するサブネットを指定)。詳細については、「[仮想ネットワークへの仮想マシンの追加](http://www.windowsazure.com/ja-jp/manage/services/networking/add-a-vm-to-a-virtual-network/)」を参照してください。いずれかの VM は、2 つのデータ ディスクを接続するために、そのサイズが L 以上であることが必要です。データ ディスクには次の情報が保存される必要があります。
 	- Active Directory のデータベースとログ。
 	- システム状態のバックアップ。
 -	1 つの会社のネットワークと 2 つの VM (YourPrimaryDC と FileServer)。
 -	ドメイン ネーム システム (DNS) インフラストラクチャ。外部ユーザーの名前を Active Directory 内のアカウントに解決する必要がある場合に展開する必要があります。この場合、ドメイン コントローラーに DNS サーバーをインストールする前に、DNS ゾーン委任を作成する必要があります。Active Directory ドメイン サービス インストール ウィザードを使用してもこの委任を作成できます。DNS ゾーン委任の作成方法の詳細については、「[ゾーンの委任を作成する](http://technet.microsoft.com/ja-jp/library/cc753500.aspx)」を参照してください
--	Windows Azure VM にインストールする DC で、DNS クライアント リゾルバーの設定を次のように構成する。
+-	Azure VM にインストールする DC で、DNS クライアント リゾルバーの設定を次のように構成する。
 	- 優先 DNS サーバー: 内部設置型の DNS サーバー
 	- 代替 DNS サーバー: ループ バック アドレス、または可能であれば、同じ仮想ネットワークにある DC 上で実行されている別の DNS サーバー。
 
 <div class="dev-callout"> 
 <b>メモ</b>
-<p>独自の DNS インフラストラクチャを用意して Windows Azure の仮想ネットワーク上の AD DS をサポートする必要があります。このリリースの Windows Azure で提供される DNS インフラストラクチャは、AD DS に必要ないくつかの機能 (SRV リソース レコードの動的登録など) をサポートしていません。</p>
+<p>独自の DNS インフラストラクチャを用意して Azure の仮想ネットワーク上の AD DS をサポートする必要があります。このリリースの Azure で提供される DNS インフラストラクチャは、AD DS に必要ないくつかの機能 (SRV リソース レコードの動的登録など) をサポートしていません。</p>
 </div>
 
 <div class="dev-callout"> 
 <b>メモ</b>
-<p>「<a href="/ja-jp/manage/services/networking/active-directory-forest/">Windows Azure での新しい Active Directory フォレストのインストール</a>」の手順を完了していれば、このチュートリアルを開始する前に、Windows Azure の仮想ネットワーク上のドメイン コントローラーから AD DS を削除することが必要になる場合があります。AD DS の削除方法の詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/cc771844(v=WS.10).aspx">ドメインから Windows Server 2008 ドメイン コントローラーを削除する</a>」を参照してください。</p>
+<p>「<a href="/ja-jp/manage/services/networking/active-directory-forest/">Azure での新しい Active Directory フォレストのインストール</a>」の手順を完了していれば、このチュートリアルを開始する前に、Azure の仮想ネットワーク上のドメイン コントローラーから AD DS を削除することが必要になる場合があります。AD DS の削除方法の詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/cc771844(v=WS.10).aspx">ドメインから Windows Server 2008 ドメイン コントローラーを削除する</a>」を参照してください。</p>
 </div>
 
 
@@ -196,7 +196,7 @@
 
 	**重要**
 
-	Windows Azure の仮想ネットワークの IP アドレスは動的ですが、そのリース期間は VM の存続期間です。したがって、仮想ネットワークにインストールするドメイン コントローラーに静的 IP アドレスを設定する必要はありません。VM に静的 IP アドレスを設定すると、通信障害の原因になります。
+	Azure の仮想ネットワークの IP アドレスは動的ですが、そのリース期間は VM の存続期間です。したがって、仮想ネットワークにインストールするドメイン コントローラーに静的 IP アドレスを設定する必要はありません。VM に静的 IP アドレスを設定すると、通信障害の原因になります。
 
 
 	![AddDC9](./media/virtual-networks-install-replica-active-directory-domain-controller/AddDC9.png)
@@ -235,12 +235,12 @@
 
 ドメイン コントローラーを構成したら、次の Windows PowerShell コマンドレットを実行して、追加の仮想マシンをプロビジョニングし、プロビジョニング後に自動的にドメインに参加させるようにします。VM の DNS クライアント リゾルバーの設定は、VM のプロビジョニング時に構成する必要があります。ドメイン名、VM 名などを正しい名前に置き換えます。
 
-Windows PowerShell の使い方の詳細については、「[Windows Azure PowerShell](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156055.aspx)」および「[Windows Azure Management Cmdlets (Windows Azure 管理コマンドレット)](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841)」を参照してください。
+Windows PowerShell の使い方の詳細については、「[Azure PowerShell](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156055.aspx)」および「[Azure Management Cmdlets (Azure 管理コマンドレット)](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841)」を参照してください。
 
 
 <h2><a id="provisionvm"></a>ステップ 6: 起動時にドメインに参加させる仮想マシンをプロビジョニングする</h2>
 
-1. 最初の起動時にドメインに参加させる仮想マシンを追加作成するには、Windows Azure PowerShell ISE を開き、次のスクリプトを貼り付けて、プレースホルダーを実際の値に置き換えて実行します。
+1. 最初の起動時にドメインに参加させる仮想マシンを追加作成するには、Azure PowerShell ISE を開き、次のスクリプトを貼り付けて、プレースホルダーを実際の値に置き換えて実行します。
 
 	ドメイン コントローラーの内部 IP アドレスを確認するには、ドメイン コントローラーが実行されている仮想ネットワークの名前をクリックします。
 
@@ -301,9 +301,9 @@ Windows PowerShell の使い方の詳細については、「[Windows Azure Powe
 
 ##関連項目
 
--  [Windows Azure の仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)
+-  [Azure の仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)
 
--  [Windows Azure PowerShell](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156055.aspx)
+-  [Azure PowerShell](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156055.aspx)
 
--  [Windows Azure 管理コマンドレット](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841)
+-  [Azure 管理コマンドレット](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841)
 

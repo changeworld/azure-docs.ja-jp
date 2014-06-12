@@ -1,4 +1,4 @@
-﻿<properties linkid="manage-services-cross-premises-connectivity" urlDisplayName="クロスプレミス接続" pageTitle="クロスプレミス接続用の仮想ネットワークの作成 - Windows Azure" metaKeywords="" description="クロスプレミス接続が可能な Windows Azure の仮想ネットワークを作成する方法について説明します。" metaCanonical="" services="virtual-network" documentationCenter="" title="サイト間クロスプレミス接続用の仮想ネットワークの作成" authors=""  solutions="" writer="" manager="" editor=""  />
+<properties linkid="manage-services-cross-premises-connectivity" urlDisplayName="クロスプレミス接続" pageTitle="クロスプレミス接続用の仮想ネットワークの作成 - Azure" metaKeywords="" description="クロスプレミス接続が可能な Azure の仮想ネットワークを作成する方法について説明します。" metaCanonical="" services="virtual-network" documentationCenter="" title="サイト間クロスプレミス接続用の仮想ネットワークの作成" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
@@ -8,25 +8,25 @@
 
 このチュートリアルでは、クロスプレミス仮想ネットワークを作成する手順について説明します。作成する接続の種類はサイト間接続です。証明書と VPN クライアントを使用してポイント対サイト VPN を作成する場合は、「[管理ポータル ウィザードを使用したポイント対サイト VPN の構成](http://go.microsoft.com/fwlink/?LinkId=296653)」を参照してください。
 
-このチュートリアルは、Windows Azure を使用した経験がない読者を対象に作成されています。目的は、読者がサイト間仮想ネットワークの作成に必要な手順を習得できるようにすることです。仮想ネットワークのデザイン シナリオや詳細情報については、「[仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)」を参照してください。
+このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。目的は、読者がサイト間仮想ネットワークの作成に必要な手順を習得できるようにすることです。仮想ネットワークのデザイン シナリオや詳細情報については、「[仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)」を参照してください。
 
-このチュートリアルを完了すると、Windows Azure サービスと仮想マシンを展開できる仮想ネットワークが作成され、会社のネットワークと直接通信できます。
+このチュートリアルを完了すると、Azure サービスと仮想マシンを展開できる仮想ネットワークが作成され、会社のネットワークと直接通信できます。
 
-仮想マシンを追加し、内部設置型の Active Directory を Windows Azure の仮想ネットワークに拡張する方法については、次のページを参照してください。
+仮想マシンを追加し、内部設置型の Active Directory を Azure の仮想ネットワークに拡張する方法については、次のページを参照してください。
 
 -  [カスタム仮想マシンを作成する方法](http://go.microsoft.com/fwlink/?LinkID=294356)
 
--  [Windows Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](http://go.microsoft.com/fwlink/?LinkId=299877)
+-  [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](http://go.microsoft.com/fwlink/?LinkId=299877)
 
-AD DS を Windows Azure の仮想マシンに展開する方法に関するガイダンスについては、「[Windows Azure の仮想マシンでの Windows Server Active Directory の展開ガイドライン](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090.aspx)」を参照してください。
+AD DS を Azure の仮想マシンに展開する方法に関するガイダンスについては、「[Azure の仮想マシンでの Windows Server Active Directory の展開ガイドライン](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090.aspx)」を参照してください。
 
-仮想ネットワーク構成のその他の手順と設定については、「[Windows Azure の仮想ネットワークの構成タスク](http://go.microsoft.com/fwlink/?LinkId=296652)」を参照してください。
+仮想ネットワーク構成のその他の手順と設定については、「[Azure の仮想ネットワークの構成タスク](http://go.microsoft.com/fwlink/?LinkId=296652)」を参照してください。
 
 ##  目標
 
 このチュートリアルでは、次の事項について説明します。
 
--  Windows Azure サービスを追加できる基本的な Windows Azure の仮想ネットワークを設定する方法
+-  Azure サービスを追加できる基本的な Azure の仮想ネットワークを設定する方法
 
 -  会社のネットワークと通信するように仮想ネットワークを構成する方法
 
@@ -61,7 +61,7 @@ AD DS を Windows Azure の仮想マシンに展開する方法に関するガ�
 
 **会社のネットワークに接続する仮想ネットワークを作成するには: **
 
-1.	[Windows Azure の管理ポータル](http://manage.windowsazure.com/)にログインします。
+1.	[Azure の管理ポータル](http://manage.windowsazure.com/)にログインします。
 
 2.	画面の左下隅で **[新規]** をクリックします。ナビゲーション ウィンドウで、**[ネットワーク]**、**[仮想ネットワーク]** の順にクリックします。**[カスタム作成]** をクリックして、構成ウィザードを開始します。
 
@@ -71,7 +71,7 @@ AD DS を Windows Azure の仮想マシンに展開する方法に関するガ�
 
 -  **[名前]:** 仮想ネットワークの名前を指定します。「*YourVirtualNetwork*」と入力します。
 
--  **[アフィニティ グループ]:** ドロップダウン リストから **[新しいアフィニティ グループの作成]** を選択します。アフィニティ グループでは、Windows Azure サービスを同じデータ センターに物理的にグループ化してパフォーマンスを向上させます。1 つのアフィニティ グループに割り当てることができる仮想ネットワークは 1 つのみです。
+-  **[アフィニティ グループ]:** ドロップダウン リストから **[新しいアフィニティ グループの作成]** を選択します。アフィニティ グループでは、Azure サービスを同じデータ センターに物理的にグループ化してパフォーマンスを向上させます。1 つのアフィニティ グループに割り当てることができる仮想ネットワークは 1 つのみです。
 
 -  **[リージョン]:** ドロップダウン リストからリージョンを選択します。仮想ネットワークは、指定したリージョンにあるデータ センターに作成されます。
 
@@ -126,7 +126,7 @@ AD DS を Windows Azure の仮想マシンに展開する方法に関するガ�
 
 ##  <a name="StartGateway">ゲートウェイの起動</a>
 
-Windows Azure の仮想ネットワークを作成した後、サイト間 VPN を作成するために、次の手順で仮想ネットワーク ゲートウェイを構成します。この手順では、最小要件を満たす VPN デバイスが必要です。VPN デバイスとデバイスの構成の詳細については、「[仮想ネットワークに使用する VPN デバイスについて](http://go.microsoft.com/fwlink/?LinkID=248098)」を参照してください。
+Azure の仮想ネットワークを作成した後、サイト間 VPN を作成するために、次の手順で仮想ネットワーク ゲートウェイを構成します。この手順では、最小要件を満たす VPN デバイスが必要です。VPN デバイスとデバイスの構成の詳細については、「[仮想ネットワークに使用する VPN デバイスについて](http://go.microsoft.com/fwlink/?LinkID=248098)」を参照してください。
 
 **ゲートウェイを起動するには: **
 
@@ -232,13 +232,13 @@ VPN デバイスごとに異なるため、ここでは大まかな手順を示�
 
 -  [カスタム仮想マシンを作成する方法](http://go.microsoft.com/fwlink/?LinkID=294356)
 
--  [Windows Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](http://go.microsoft.com/fwlink/?LinkId=299877)
+-  [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](http://go.microsoft.com/fwlink/?LinkId=299877)
 
 構成をバックアップしたりテンプレートとして使用したりするために、仮想ネットワークの設定をネットワーク構成ファイルにエクスポートする場合は、「[ネットワーク構成ファイルへの仮想ネットワーク設定のエクスポート](http://go.microsoft.com/fwlink/?LinkID=299880)」を参照してください。
 
 ## 関連項目
 
--  [Windows Azure の仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)
+-  [Azure の仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)
 
 -  [仮想ネットワーク FAQ](http://msdn.microsoft.com/library/windowsazure/dn133803.aspx)
 

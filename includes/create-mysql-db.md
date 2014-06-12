@@ -1,21 +1,21 @@
-#Windows Azure で MySQL データベースを作成する方法
+#Azure で MySQL データベースを作成する方法
 
-このガイドでは、[ClearDB] を使用して [Windows Azure ストア]から MySQL データベースを作成する方法と、[Windows Azure の Web サイト][waws]を作成するときに MySQL データベースをリンク済みリソースとして作成する方法について説明します。[ClearDB] は、サービスとしてのフォルト トレラント データベース プロバイダーであり、Windows Azure データセンターで MySQL データベースを実行および管理し、どのアプリケーションからもデータベースに接続できるようにしています。
+このガイドでは、[ClearDB] を使用して [Azure ストア]から MySQL データベースを作成する方法と、[Azure の Web サイト][waws]を作成するときに MySQL データベースをリンク済みリソースとして作成する方法について説明します。[ClearDB] は、サービスとしてのフォルト トレラント データベース プロバイダーであり、Azure データセンターで MySQL データベースを実行および管理し、どのアプリケーションからもデータベースに接続できるようにしています。
 
 ##目次
-* [方法: Windows Azure ストアからの MySQL データベースの作成](#CreateFromStore)
-* [方法: Windows Azure の Web サイトのリンク済みリソースとしての MySQL データベースの作成](#CreateForWebSite)
+* [方法: Azure ストアからの MySQL データベースの作成](#CreateFromStore)
+* [方法: Azure の Web サイトのリンク済みリソースとしての MySQL データベースの作成](#CreateForWebSite)
 
 <div class="dev-callout"> 
 <b>メモ</b> 
-<p>MySQL データベースを Web サイト作成プロセスの一部として作成するときは、無料データベースを作成するだけでかまいません。Windows Azure ストアから MySQL データベースを作成すると、無料データベースを作成するか、有料オプションから選択することができます。</p>
+<p>MySQL データベースを Web サイト作成プロセスの一部として作成するときは、無料データベースを作成するだけでかまいません。Azure ストアから MySQL データベースを作成すると、無料データベースを作成するか、有料オプションから選択することができます。</p>
 </div>
 
-<h2><a id="CreateFromStore"></a>方法: Windows Azure ストアからの MySQL データベースの作成</h2>
+<h2><a id="CreateFromStore"></a>方法: Azure ストアからの MySQL データベースの作成</h2>
 
-[Windows Azure ストア]から MySQL データベースを作成するには、以下の手順を実行します。
+[Azure ストア]から MySQL データベースを作成するには、以下の手順を実行します。
 
-1. [Windows Azure の管理ポータル][portal]にログインします。
+1. [Azure の管理ポータル][portal]にログインします。
 2. ページの下部にある **[+新規]** をクリックし、**[ストア]** を選択します。
 
 	![ストアからアドオンを選択](./media/create-mysql-db/select-store.png)
@@ -34,18 +34,18 @@
 
 6. データベースが作成されたら、管理ポータルの **[アドオン]** タブから管理できます。
 
-	![Windows Azure ポータルで MySQL データベースを管理](./media/create-mysql-db/manage-mysql-add-on.png)
+	![Azure ポータルで MySQL データベースを管理](./media/create-mysql-db/manage-mysql-add-on.png)
 
 7. ページの下部にある **[接続文字列]** をクリックして、データベース接続情報を取得できます (上図を参照)。
 
 	![MySql の接続情報](./media/create-mysql-db/mysql-conn-info.png)
 
 
-<h2><a id="CreateForWebSite"></a>方法: Windows Azure の Web サイトのリンク済みリソースとしての MySQL データベースの作成</h2>
+<h2><a id="CreateForWebSite"></a>方法: Azure の Web サイトのリンク済みリソースとしての MySQL データベースの作成</h2>
 
-[Windows Azure の Web サイト][waws]を作成するときに MySQL データベースをリンク済みリソースとして作成するには、以下の手順を実行します。
+[Azure の Web サイト][waws]を作成するときに MySQL データベースをリンク済みリソースとして作成するには、以下の手順を実行します。
 
-1. [Windows Azure の管理ポータル][portal]にログインします。
+1. [Azure の管理ポータル][portal]にログインします。
 2. ページの下部にある **[+新規]** をクリックし、**[コンピューティング]**、**[Web サイト]**、**[データベースとともに作成]** の順に選択します。
 
 	![データベースを使用する Web サイトの作成](./media/create-mysql-db/custom_create.png)
@@ -81,6 +81,6 @@
 
 [ClearDB]: http://www.cleardb.com/
 [waws]: /ja-jp/manage/services/web-sites/
-[Windows Azure ストア]: /ja-jp/store/overview/
+[Azure ストア]: /ja-jp/store/overview/
 [ポータル]: http://manage.windowsazure.com
 

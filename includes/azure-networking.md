@@ -1,64 +1,65 @@
-#Azure Networking
+#Azure のネットワーク
 
-The easiest way to connect to Azure applications and data is through an ordinary Internet connection. But this simple solution isn't always the best approach. Azure also provides technologies for connecting users to Azure datacenters.  This article takes a look at these technologies. 
+Azure のアプリケーションおよびデータに最も簡単に接続する方法は、通常のインターネット接続を使用する方法です。ただし、この簡単なソリューションが常に最良のアプローチであるとは限りません。Azure には、Azure データセンターにユーザー接続するためのテクノロジも用意されています。この記事では、これらのテクノロジを見ていきます。
 
-##Table of Contents      
-- [Azure Virtual Network](#Vnet)
-- [Azure Traffic Manager](#TrafficMngr)
+##目次
+- [Azure 仮想ネットワーク ](#Vnet)
+- [Azure の Traffic Manager](#TrafficMngr)
 
 <a name="Vnet"></a>
-##Azure Virtual Network
+##Azure の Virtual Network
 
-Azure lets you create virtual machines (VMs) that run in Microsoft datacenters. Suppose your organization wants to use those VMs to run enterprise applications or other software that will be used by the employees in your firm. Maybe you want to create a SharePoint farm in the cloud, for example, or run an inventory management application. To make life as easy as possible for your users, you would like these applications to be accessible just as if they were running in your own datacenter.
+Azure を使用すると、Microsoft データセンターで実行可能な仮想マシン (VM) を作成できます。自分の会社で、従業員が使用するエンタープライズ アプリケーションやその他のソフトウェアを実行するために、このような VM を使用する場合を考えてみましょう。たとえば、SharePoint ファームをクラウドに作成したり、在庫管理アプリケーションを実行したりする必要があるかもしれません。また、社内のユーザーができるだけ仕事をしやすいように、これらのアプリケーションには自社のデータセンターで実行されているかのようにアクセスできる必要があります。
 
-There is a standard solution to this kind of problem: create a virtual private network (VPN). Organizations of all sizes do this today to link, say, branch office computers to the main company datacenter. This same approach can work with Azure VMs, as Figure 1 shows.
+このような種類の問題には、仮想プライベート ネットワーク (VPN) を作成するという標準的なソリューションがあります。今日では、あらゆる規模の組織でこのソリューションが使用され、たとえば、支社のコンピューターを本社データセンターにリンクするために使用されています。これと同じアプローチを、図 1 で示すように、Azure の VM で実現することもできます。
 
 <a name="Fig1"></a>
   
 ![01_Networking][01_Networking]
 
-**Figure 1: Azure Virtual Network allows creating a virtual network in the cloud that is connected to your on-premises datacenter.**
+**図 1: Azure の Virtual Network を使用すると、内部設置型データセンターに接続された仮想ネットワークをクラウド内に作成できる。**
 
-As the figure shows, Azure Virtual Network lets you create a logical boundary around a group of VMs, called a *virtual network or VNET*, in an Azure datacenter. It then lets you establish an IPsec connection between this VNET and your local network.  The VMs in a VNET can be created using Azure Virtual Machines, Azure Cloud Services, or both. In other words, they can be VMs created using either the Azure Infrastructure as a Service (IaaS) technology or its Platform as a Service (PaaS) technology.
-Whatever choice you make, creating the IPsec connection requires a VPN gateway device, specialized hardware that is attached to your local network, and it also requires the services of your network administrator. Once this connection is in place, the Azure VMs running in your VNET look like just another part of the network in your organization.
+図で示すように、Azure の Virtual Network を使用すると、Azure データセンター内の *"仮想ネットワーク" または "VNET"*と呼ばれる VM のグループの周囲に論理境界を作成できます。これにより、この VNET とローカル ネットワークの間の IPsec 接続を確立できます。VNET 内の VM は、Azure Virtual Machines または Azure Cloud Services、あるいはその両方を使用して作成できます。つまり、これらの VM は、Azure のサービスとしてのインフラストラクチャ (IaaS) テクノロジまたはサービスとしてのプラットフォーム (PaaS) テクノロジを使用して作成できます。
+いずれを選ぶ場合でも、IPsec 接続を作成するには、ローカル ネットワークに接続された特殊なハードウェアである VPN ゲートウェイ デバイスが必要になります。また、ネットワーク管理者による作業も必要です。この接続が確立すると、VNET で実行されている Azure VM は、単純に組織のネットワークの一部として扱うことができるようになります。
 
-As [Figure 1](#Fig1) suggests, you allocate IP addresses for the Azure VMs from the same IP address space used in your own network. In the scenario shown here, which uses private IP addresses, the VMs in the cloud are just another IP subnet. Software running on your local network will see these VMs as if they were local, just as they do with traditional VPNs. And it is important to note that because this connection happens at the IP level, the virtual and physical machines on both sides can be running any operating system. Azure VMs running Windows Server or Linux can interact with on-premises machines running Windows, Linux, or other systems. It is also possible to use mainstream management tools, including System Center and others, to manage the cloud VMs and the applications they contain.
+[図 1](#Fig1) に示すように、Azure VM の IP アドレスは、自社ネットワークで使用しているものと同じ IP アドレス空間から割り当てます。ここで示されているプライベート IP アドレスを使用するシナリオでは、クラウド内の VM は、単にもう 1 つの IP サブネットです。ローカル ネットワーク上で実行中のソフトウェアは、従来の VPN で使用している場合と同様に、これらの VM がまるでローカルであるかのように認識します。さらに、この接続は IP レベルで確立されるため、両側の仮想マシンと物理マシンでは、どのようなオペレーティング システムが実行されている可能性もある点に注意が必要です。Windows Server または Linux を実行中の Azure VM は、Windows、Linux、またはその他のシステムを実行している内部設置型のマシンと対話できます。また、クラウド VM およびその VM に含まれるアプリケーションを管理するために、System Center などの広く使用されている管理ツールを使用することもできます。
 
-Using Azure Virtual Network makes sense in many situations. As already mentioned, this approach lets enterprise users more easily access cloud applications. An important aspect of this ease of use is the ability to make the Azure VMs part of an existing on-premises Active Directory domain to give users single sign-on to the applications they run. You can also create an Active Directory domain in the cloud if you prefer, then connect this domain to your on-premises network.
+Azure の Virtual Network の使用は、さまざまな状況で役立ちます。既に説明したとおり、このアプローチでは、エンタープライズ ユーザーがクラウド アプリケーションに簡単にアクセスできます。この使いやすさの重要な側面として、Azure VM を既存の内部設置型 Active Directory ドメインの一部にすることで、実行するアプリケーションへのシングル サインオンをユーザーに提供できることが挙げられます。また、必要に応じて、クラウド内に Active Directory ドメインを作成し、このドメインを内部設置型ネットワークに接続することもできます。
 
-Creating a VNET in an Azure datacenter effectively gives you access to a large pool of on-demand resources. You can create VMs on demand, pay for them while they are running, then remove them (and stop paying) when you no longer need them. This can be useful for scenarios that need fast access to a preconfigured machine, such as development teams building new software. Rather than wait for a local administrator to set up the resources they need, they can create these resources themselves in the public cloud. 
+Azure データセンターに VNET を作成することで、オンデマンド リソースの大規模なプールに効率的にアクセスできます。VM はオンデマンドで作成し、使用時間分の料金を支払い、不要になったら削除できます。削除後は課金されません。これは、新しいソフトウェアを作成中の開発チームなどで、事前に構成済みのマシンにすばやくアクセスする必要があるシナリオに便利です。ローカル管理者が必要なリソースを設定するのを待つのではなく、自分達でパブリック クラウド内にこれらのリソースを作成できます。
 
-And just as Virtual Network makes Azure VMs appear local to on-premises resources, the reverse is also true: Software running in your local network now appears to be local to applications running in your Azure VNET. Suppose you would like to move an existing on-premises application to Azure, for example, because you have determined that it will be less expensive to operate in the cloud. But what if the data that application uses is required by law to be stored on premises? In a situation like this, using Virtual Network lets the cloud application see an on-premises database system as if it were local, and accessing it becomes straightforward. Whatever scenario you choose, the result is the same: Azure becomes an extension of your own datacenter.
+Virtual Network では Azure VM が内部設置型のリソースに対してローカルであると認識されますが、その逆も同じです。ローカル ネットワークで実行中のソフトウェアは、Azure VNET で実行中のアプリケーションに対してローカルであると認識されます。たとえば、クラウドで運用した方が費用を抑えられるため、既存の内部設置型アプリケーションを Azure に移行する場合を考えてみます。ここで、アプリケーションが使用するデータが、法的に、内部設置型での保存を規定されている場合はどうでしょうか。このような状況でも、仮想ネットワークを使用することで、クラウド アプリケーションは内部設置型データベース システムがローカルであるように認識するため、システムへのアクセスは容易です。どのようなシナリオでも、結果は同じです。Azure を自社のデータセンターの延長として扱うことができます。
 
 <a name="TrafficMngr"></a>
-##Azure Traffic Manager
+##Azure の Traffic Manager
 
-Imagine that you have built a successful Azure application. Your application is used by many people in many countries around the world. This is a great thing, but as is so often the case, success brings new problems. For instance, your application most likely runs in multiple Azure datacenters in different parts of the world. How can you intelligently direct user request traffic across these datacenters so that your users always get the best experience?
+Azure アプリケーションの作成に成功したとします。そのアプリケーションは、世界中のさまざまな国の多くの人々によって使用されます。これはすばらしいことですが、多くの場合そうであるように、成功は新しい問題を引き起こします。たとえば、アプリケーションが、世界に散在する複数の Azure データセンターで実行される可能性が高くなります。常に最適なユーザー エクスペリエンスを提供できるように、これらのデータセンター間でインテリジェントにユーザー要求のトラフィックを転送するにはどうしたらよいでしょうか。
 
-Azure Traffic Manager is designed to solve this problem. Figure 2 shows how.
+Azure の Traffic Manager は、このような問題を解決するためにあります。図 2 に、そのしくみを示します。
 
 <a name="Fig3"></a>
    
 ![03_TrafficManager][03_TrafficManager]
    
-**Figure 2: Azure Traffic Manager intelligently directs requests from users across instances of an application running in different Azure datacenters.**
+**図 2: Azure の Traffic Manager が、異なる Azure データセンターで実行されているアプリケーション インスタンス間で、ユーザーからの要求をインテリジェントに転送する。**
 
-In this example, your application is running in VMs spread across four datacenters: two in the US, one in Europe, and one in Asia. Suppose a user in Berlin wishes to access the application. If you are using Traffic Manager, here is what happens.
+この例では、アメリカ合衆国内に 2 か所、ヨーロッパに 1 か所、アジアに 1 か所ある合計 4 か所のデータセンターに分散された VM でアプリケーションが実行されています。ベルリンのユーザーがアプリケーションにアクセスする場合を考えてみましょう。トラフィック マネージャーを使用している場合は次のようになります。
 
-As usual, the user system looks up the DNS name of the application (Step 1). This query is directed to the Azure DNS system (Step 2), which then looks up the Traffic Manager policy for the application. Each policy is created by the owner of a particular Azure application, either through a graphical interface or a REST API. However it is created, the policy specifies one of three load balancing options:
+通常どおり、ユーザーのシステムは、アプリケーションの DNS 名を検索します (ステップ 1)。このクエリは、Azure DNS システムに転送されます (ステップ 2)。ここで、このアプリケーションに対する Traffic Manager ポリシーが検索されます。各ポリシーは、グラフィック インターフェイスまたは REST API を使用して個別の Azure アプリケーションの所有者によって作成されています。どのように作成された場合でも、ポリシーでは次の 3 つの負荷分散オプションのいずれかが指定されています。
 
-- **Performance:** All requests are sent to the datacenter with the lowest latency from the user system. 
-- **Failover:** All requests are sent to the datacenter specified by the creator of this policy, unless that datacenter is unavailable. In this case, requests are directed to other datacenters in the priority order defined by the creator of the policy.
-- **Round Robin:** All requests are spread equally across all datacenters in which the application is running.
+- **パフォーマンス:** ユーザー システムから待機時間が最も短いデータセンターにすべての要求が送信されます。
+- **フェールオーバー:** ポリシーの作成者によって指定されたデータセンターにすべての要求が送信されます。ただし、そのデータセンターが使用できない場合は、ポリシーの作成者によって定義された優先順位に基づいて、他のデータセンターに要求が転送されます。
+- **ラウンド ロビン:** アプリケーションを実行中のすべてのデータセンターで、すべての要求が均等に配分されます。
 
-Once it has the right policy, Traffic Manager figures out which datacenter this request should go to based on which of the three options is specified (Step 3). It then returns the location of the chosen datacenter to the user (Step 4), who accesses that instance of the application (Step 5).
+適切なポリシーがある場合、トラフィック マネージャーは、3 つのオプションのうちいずれが指定されているかによって、要求をどのデータセンターに送信するかを判断します (ステップ 3)。選択したデータセンターの場所をトラフィック マネージャーがユーザーに返し (ステップ 4)、アプリケーションのそのインスタンスにユーザーがアクセスします (ステップ 5)。
 
-For this to work, Traffic Manager must have a current picture of which instances of the application are up and running in each datacenter. To make this possible, Traffic Manager periodically pings each copy of the application via an HTTP GET, then records whether it receives a response. If an application instance stops responding, Traffic Manager will stop directing users to that instance until it resumes responding to pings. 
+このしくみが機能するには、各データセンターで実行中のアプリケーション インスタンスをトラフィック マネージャーが把握している必要があります。これを可能にするため、トラフィック マネージャーは、HTTP GET を使用してアプリケーションの各コピーを定期的に ping し、応答を受信したかどうかを記録しています。アプリケーションのインスタンスが応答を停止した場合、Traffic Manager は、ping への応答が再開されるまで、そのインスタンスへのユーザーの転送を停止します。
 
-Not every application is big enough or global enough to need Traffic Manager. For those that do, however, this can be a very useful service.
+すべてのアプリケーションが、トラフィック マネージャーを必要とするほど大規模またはグローバルであるわけではありませんが、該当するアプリケーションに対しては、Traffic Manager は非常に役立つサービスです。
 
 [01_Networking]: ./media/azure-networking/Networking_01Networking.png
 [03_TrafficManager]: ./media/azure-networking/Networking_03TrafficManager.png
+
 
 
 

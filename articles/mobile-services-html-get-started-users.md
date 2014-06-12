@@ -1,109 +1,109 @@
-<properties linkid="develop-mobile-tutorials-get-started-with-users-html" urlDisplayName="Get Started with Authentication (HTML5)" pageTitle="Get started with authentication (HTML 5) | Mobile Dev Center" metaKeywords="" description="Learn how to use Mobile Services to authenticate users of your HTML app through a variety of identity providers, including Google, Facebook, Twitter, and Microsoft." metaCanonical="" services="" documentationCenter="Mobile" title="Get started with authentication in Mobile Services" authors="glenga" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-tutorials-get-started-with-users-html" urlDisplayName="認証の使用 (HTML5)" pageTitle="認証の使用 (HTML5) | モバイル デベロッパー センター" metaKeywords="" description="モバイル サービスを使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを介して HTML アプリのユーザーを認証する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="モバイル サービスでの認証の使用" authors=""  solutions="" writer="glenga" manager="" editor=""  />
 
 
 
 
-# Get started with authentication in Mobile Services
+# モバイル サービスでの認証の使用
 <div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/en-us/develop/mobile/tutorials/get-started-with-users-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-android" title="Android">Android</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-html" title="HTML" class="current">HTML</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android" title="Xamarin.Android">Xamarin.Android</a>
+	<a href="/ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet" title="Windows ストア C#">Windows ストア C##</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-users-js" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-users-wp8" title="Windows Phone">Windows Phone</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-users-ios" title="iOS">iOS</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-users-android" title="Android">Android</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-users-html" title="HTML" class="current">HTML</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-android" title="Xamarin.Android">Xamarin.Android</a>
 </div>
 
 
-This topic shows you how to authenticate users in Azure Mobile Services from your HTML app.  In this tutorial, you add authentication to the quickstart project using an identity provider that is supported by Mobile Services. After being successfully authenticated and authorized by Mobile Services, the user ID value is displayed.  
+このトピックでは、HTML アプリケーションから Azure のモバイル サービスのユーザーを認証する方法を示します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
 
-This tutorial walks you through these basic steps to enable authentication in your app:
+このチュートリアルでは、アプリケーションでの認証を有効にするための、次の基本的な手順について説明します。
 
-1. [Register your app for authentication and configure Mobile Services]
-2. [Restrict table permissions to authenticated users]
-3. [Add authentication to the app]
+1. [アプリケーションを認証に登録し、モバイル サービスを構成する]
+2. [テーブルのアクセス許可を、認証されたユーザーだけに制限する]
+3. [アプリケーションに認証を追加する]
 
-This tutorial is based on the Mobile Services quickstart. You must also first complete the tutorial [Get started with Mobile Services]. 
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。先にチュートリアル「[モバイル サービスの使用]」を完了している必要があります。
 
-<h2><a name="register"></a><span class="short-header">Register your app</span>Register your app for authentication and configure Mobile Services</h2>
+<h2><a name="register"></a><span class="short-header">アプリの登録</span>アプリを認証に登録し、モバイル サービスを構成する</h2>
 
-To be able to authenticate users, you must register your app with an identity provider. You must then register the provider-generated client secret with Mobile Services.
+ユーザーを認証できるようにするには、アプリケーションを ID プロバイダーに登録する必要があります。その後、プロバイダーによって生成されたクライアント シークレットをモバイル サービスに登録する必要があります。
 
-1. Log on to the [Azure Management Portal], click **Mobile Services**, and then click your mobile service.
+1. [Azure 管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。
 
    	![][4]
 
-2. Click the **Dashboard** tab and make a note of the **Mobile Service URL** value.
+2. **[ダッシュボード]** タブをクリックし、**[モバイル サービス URL]** の値をメモしておきます。
 
    	![][5]
 
-    You may need to provide this value to the identity provider when you register your app.
+    アプリケーションを登録するときに、この値を ID プロバイダーに指定する必要が生じる場合があります。
 
-3. Choose a supported identity provider from the list below and follow the steps to register your app with that provider:
+3. 以下の一覧から、サポートされている ID プロバイダーを選択し、手順に従ってそのプロバイダーにアプリケーションを登録します。
 
- - <a href="/en-us/develop/mobile/how-to-guides/register-for-microsoft-authentication/" target="_blank">Microsoft Account</a>
- - <a href="/en-us/develop/mobile/how-to-guides/register-for-facebook-authentication/" target="_blank">Facebook login</a>
- - <a href="/en-us/develop/mobile/how-to-guides/register-for-twitter-authentication/" target="_blank">Twitter login</a>
- - <a href="/en-us/develop/mobile/how-to-guides/register-for-google-authentication/" target="_blank">Google login</a>
- - <a href="/en-us/documentation/articles/mobile-services-how-to-register-active-directory-authentication/" target="_blank">Azure Active Directory</a>
+ - <a href="/ja-jp/develop/mobile/how-to-guides/register-for-microsoft-authentication/" target="_blank">Microsoft アカウント</a>
+ - <a href="/ja-jp/develop/mobile/how-to-guides/register-for-facebook-authentication/" target="_blank">Facebook ログイン</a>
+ - <a href="/ja-jp/develop/mobile/how-to-guides/register-for-twitter-authentication/" target="_blank">Twitter ログイン</a>
+ - <a href="/ja-jp/develop/mobile/how-to-guides/register-for-google-authentication/" target="_blank">Google ログイン</a>
+ - <a href="/ja-jp/documentation/articles/mobile-services-how-to-register-active-directory-authentication/" target="_blank">Azure Active Directory</a>
 
 
-    Remember to make a note of the client identity and secret values generated by the provider.
+    プロバイダーによって生成されるクライアント ID およびシークレット値をメモしておいてください。
 
-    <div class="dev-callout"><b>Security Note</b>
-	<p>The provider-generated secret is an important security credential. Do not share this secret with anyone or distribute it with your app.</p>
+    <div class="dev-callout"><b>セキュリティに関する注意</b>
+	<p>プロバイダーによって生成されるシークレットは、重要なセキュリティ資格情報です。このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。</p>
     </div>
 
-4. Back in the Management Portal, click the **Identity** tab, enter the app identifier and shared secret values obtained from your identity provider, and click **Save**.
+4.管理ポータルに戻って **[識別]** タブをクリックし、アプリケーションの識別子と、ID プロバイダーから取得した共有シークレット値を入力して、**[保存]** をクリックします。
 
    	![][13]
 
-Both your mobile service and your app are now configured to work with your chosen authentication provider.
+これで、モバイル サービスとアプリケーションの両方が、選択した認証プロバイダーと連係するように構成されました。
 
-<h2><a name="permissions"></a><span class="short-header">Restrict permissions</span>Restrict permissions to authenticated users</h2>
+<h2><a name="permissions"></a><span class="short-header">アクセス許可の制限</span>アクセス許可を認証されたユーザーだけに制限する</h2>
 
-1. In the Management Portal, click the **Data** tab, and then click the **TodoItem** table. 
+1. 管理ポータルで、**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
    	![][14]
 
-2. Click the **Permissions** tab, set all permissions to **Only authenticated users**, and then click **Save**. This will ensure that all operations against the **TodoItem** table require an authenticated user. This also simplifies the scripts in the next tutorial because they will not have to allow for the possibility of anonymous users.
+2. **[アクセス許可]** タブで、すべてのアクセス許可を **[認証されたユーザーのみ]** に設定し、**[保存]** をクリックします。これにより、**TodoItem** テーブルに対するすべての操作には、認証されたユーザーが必要になります。また、次のチュートリアルのスクリプトは、匿名ユーザーの可能性を考慮する必要がなくなるため、簡素化されます。
 
    	![][15]
 
-3. In the app directory, launch one of the following command files from the **server** subfolder.
+3. app ディレクトリで、**server** サブフォルダーから次のいずれかのコマンド ファイルを実行します。
 
-	+ **launch-windows** (Windows computers) 
-	+ **launch-mac.command** (Mac OS X computers)
-	+ **launch-linux.sh** (Linux computers)
+	+ **launch-windows** (Windows コンピューター)
+	+ **launch-mac.command** (Mac OS X コンピューター)
+	+ **launch-linux.sh** (Linux コンピューター)
 
-	<div class="dev-callout"><b>Note</b>
-		<p>On a Windows computer, type `R` when PowerShell asks you to confirm that you want to run the script. Your web browser might warn you to not run the script because it was downloaded from the internet. When this happens, you must request that the browser proceed to load the script.</p>
+	<div class="dev-callout"><b>注</b>
+		<p>Windows コンピューターでは、PowerShell からスクリプトの実行の確認を求められた場合は、「`R`」と入力します。Web ブラウザーでは、インターネットからダウンロードしたスクリプトであるため、実行しないよう警告されることがあります。その場合は、ブラウザーがスクリプトの読み込みを開始するよう要求する必要があります。</p>
 	</div>
 
-	This starts a web server on your local computer to host the new app.
+	これにより、新しいアプリケーションをホストする Web サーバーがローカル コンピューター上で起動します。
 
-2. Open the URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> in a web browser to start the app. 
+2. Web ブラウザーで URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> を開いて、アプリケーションを開始します。
 
-	The data fails to load. This happens because the app attempts to access Mobile Services as an unauthenticated user, but the _TodoItem_ table now requires authentication.
+	データの読み込みに失敗します。この問題は、非認証ユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしているのに、_TodoItem_ テーブルでは認証が要求されるために発生します。
 
-3. (Optional) Open the script debugger for your web browser and reload the page. Verify that an access denied error occurs. 
+3. (省略可能) Web ブラウザーのスクリプト デバッガーを開き、ページを再読み込みします。アクセス拒否エラーが発生することを確認します。
 
-Next, you will update the app to allow authentication before requesting resources from the mobile service.
+次に、モバイル サービスのリソースを要求する前に認証を許可するようにアプリケーションを更新します。
 
-<h2><a name="add-authentication"></a><span class="short-header">Add authentication</span>Add authentication to the app</h2>
+<h2><a name="add-authentication"></a><span class="short-header">認証の追加</span>アプリに認証を追加する</h2>
 
-<div class="dev-callout"><b>Note</b>
-		<p>Because the login is performed in a popup, you should invoke the <strong>login</strong> method from a button's click event. Otherwise, many browsers will suppress the login window.</p>
+<div class="dev-callout"><b>メモ</b>
+		<p>ログインはポップアップで行われるため、<strong>login</strong> メソッドはボタンのクリック イベントから呼び出す必要があります。そうしないと、多くのブラウザーではログイン ウィンドウが表示されません。</p>
 </div>
 
-1. Open the project file index.html, locate the H1 element and under it add the following code snippet:
+1. プロジェクト ファイル index.html を開き、H1 要素を探して、その下に次のコード スニペットを追加します。
 
 	    <div id="logged-in">
-            You are logged in as <span id="login-name"></span>.
-            <button id="log-out">Log out</button>
+            現在のログイン名: <span id="login-name"></span>。
+            <button id="log-out">ログアウト</button>
         </div>
         <div id="logged-out">
-            You are not logged in.
-            <button>Log in</button>
+            現在ログインしていません。
+            <button>ログイン</button>
         </div>
 
-	This enables you to login to Mobile Services from the page.
+	これで、ページからモバイル サービスにログインできるようになります。
 
-2. In the app.js file, locate the line of code at the very bottom of the file that calls to the refreshTodoItems function, and replace it with the following code: 
+2. app.js ファイルの末尾で refreshTodoItems 関数を呼び出しているコード行を探し、次のコードに置き換えます。
 	
 		function refreshAuthDisplay() {
 			var isLoggedIn = client.currentUser !== null;
@@ -136,29 +136,29 @@ Next, you will update the app to allow authentication before requesting resource
 			$("#logged-in button").click(logOut);
 		});
 
-    This creates a set of functions to handle the authentication process. The user is authenticated by using a Facebook login.
+    これで、認証プロセスを処理する関数のセットが作成されます。ユーザーは、Facebook ログインを使用して認証されます。
 
-    <div class="dev-callout"><b>Note</b>
-	<p>If you are using an identity provider other than Facebook, change the value passed to the <strong>login</strong> method above to one of the following: <em>microsoftaccount</em>, <em>facebook</em>, <em>twitter</em>, or <em>google</em>.</p>
+    <div class="dev-callout"><b>メモ</b>
+	<p>Facebook 以外の ID プロバイダーを使用している場合は、上の <strong>login</strong> メソッドに渡す値を <em>microsoftaccount</em>、<em>facebook</em>、<em>twitter</em>、<em>google</em> のいずれかに変更します。</p>
     </div>
 
-9. Go back to the browser where your app is running, and refresh the page. 
+9. アプリケーションが実行されているブラウザーに戻り、ページを更新します。
 
-   When you are successfully logged-in, the app should run without errors, and you should be able to query Mobile Services and make updates to data.
+   ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
 
-	<div class="dev-callout"><b>Note</b>
-		<p>When you use Internet Explorer, you may receive the error after login: <code>Cannot reach window opener. It may be on a different Internet Explorer zone</code>. This occurs because the pop-up runs in a different security zone (internet) from localhost (intranet). This only affects apps during development using localhost. As a workaround, open the <strong>Security</strong> tab of <strong>Internet Options</strong>, click <strong>Local Intranet</strong>, click <strong>Sites</strong>, and disable <strong>Automatically detect intranet network</strong>. Remember to change this setting back when you are done testing.</p>
+	<div class="dev-callout"><b>メモ</b>
+		<p>Internet Explorer を使用している場合は、ログイン後に、<code>Cannot reach window opener. It may be on a different Internet Explorer zone</code> というエラーが表示されることがあります。これは、ポップアップが localhost (イントラネット) とは異なるセキュリティ ゾーン (インターネット) で実行されているためです。このことがアプリケーションに影響するのは、localhost を使用する開発時だけです。回避策として、<strong>[インターネット オプション]</strong> の <strong>[セキュリティ]</strong> タブを開き、<strong>[ローカル イントラネット]</strong>、<strong>[サイト]</strong> の順にクリックして、<strong>[イントラネットのネットワークを自動的に検出する]</strong> をオフにします。テストが終了したら、この設定を必ず元に戻します。</p>
 	</div>
 
-## <a name="next-steps"> </a>Next steps
+## <a name="next-steps"> </a>次のステップ
 
-In the next tutorial, [Authorize users with scripts], you will take the user ID value provided by Mobile Services based on an authenticated user and use it to filter the data returned by Mobile Services. Learn more about how to use Mobile Services with HTML/JavaScript in [Mobile Services HTML/JavaScript How-to Conceptual Reference]
+[スクリプトを使用したユーザーの認証]に関する次のチュートリアルでは、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。[モバイル サービス HTML/JavaScript の使用方法の概念リファレンス] で、HTML/JavaScript でモバイル サービスを使用する方法について説明します。
 
 <!-- Anchors. -->
-[Register your app for authentication and configure Mobile Services]: #register
-[Restrict table permissions to authenticated users]: #permissions
-[Add authentication to the app]: #add-authentication
-[Next Steps]:#next-steps
+[アプリケーションを認証に登録し、モバイル サービスを構成する]: #register
+[テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
+[アプリケーションに認証を追加する]: #add-authentication
+[次のステップ]:#next-steps
 
 <!-- Images. -->
 
@@ -169,13 +169,14 @@ In the next tutorial, [Authorize users with scripts], you will take the user ID 
 [15]: ./media/mobile-services-html-get-started-users/mobile-portal-change-table-perms.png
 
 <!-- URLs. -->
-[Microsoft Account login]: /en-us/develop/mobile/how-to-guides/register-for-microsoft-authentication
-[Facebook login]: /en-us/develop/mobile/how-to-guides/register-for-facebook-authentication
-[Twitter login]: /en-us/develop/mobile/how-to-guides/register-for-twitter-authentication
-[Google login]: /en-us/develop/mobile/how-to-guides/register-for-google-authentication
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-html
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-html
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-html
+[Microsoft アカウント ログイン]: /ja-jp/develop/mobile/how-to-guides/register-for-microsoft-authentication
+[Facebook ログイン]: /ja-jp/develop/mobile/how-to-guides/register-for-facebook-authentication
+[Twitter ログイン]: /ja-jp/develop/mobile/how-to-guides/register-for-twitter-authentication
+[Google ログイン]: /ja-jp/develop/mobile/how-to-guides/register-for-google-authentication
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-html
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-html
+[スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-html
 
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Mobile Services HTML/JavaScript How-to Conceptual Reference]: /en-us/develop/mobile/how-to-guides/work-with-html-js-client
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-html-js-client
+

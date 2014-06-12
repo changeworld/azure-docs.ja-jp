@@ -7,14 +7,14 @@
 
 仮想マシンを作成すると、そのマシンを含めるクラウド サービスが自動的に作成されます。同じクラウド サービス内に複数の仮想マシンを作成すると、仮想マシン間の相互通信、仮想マシン間での負荷分散、仮想マシンの高可用性を有効にできます。
 
-仮想マシンの負荷分散の詳細については、「[仮想マシンの負荷分散][Load balancing virtual machines]」を参照してください。アプリケーションの可用性管理の詳細については、「[仮想マシンの可用性管理][Manage the availability of virtual machines]」を参照してください。
+仮想マシンの負荷分散の詳細については、「[仮想マシンの負荷分散](../load-balancing-vms/)」を参照してください。アプリケーションの可用性管理の詳細については、「[仮想マシンの可用性管理][Manage the availability of virtual machines](../manage-vm-availability/)」を参照してください。
 
 
 まず、新しいクラウド サービスで仮想マシンを作成する必要があります。その後、そのクラウド サービスの最初の仮想マシンに追加の仮想マシンを接続できます。
 
 
 
-1. 「Create a virtual machine using the steps in [カスタム仮想マシンを作成する方法][How to create a custom virtual machine]」に示された手順に従って仮想マシンを作成します。
+1. 「Create a virtual machine using the steps in [カスタム仮想マシンを作成する方法](../howto-custom-create-vm/)」に示された手順に従って仮想マシンを作成します。
 
 
 2. 最初のカスタム仮想マシンを作成したら、[管理ポータル](http://manage.windowsazure.com) コマンド バーで、**[新規]** をクリックします。
@@ -51,19 +51,11 @@
 
 10. **[クラウド サービス]** で、新しい仮想マシンを含めるクラウド サービスを選択します。
 
-11. **[リージョン/アフィニティ グループ/仮想ネットワーク]** で、仮想マシンを含めるリージョンを選択します。
-
-12. **[ストレージ アカウント]** で、.vhd ファイルを保存するストレージ アカウントを選択します。または、フィールドの値を既定のままにして、ストレージ アカウントを自動的に作成することもできます。自動的に作成されるストレージ アカウントは 1 つだけです。この設定で作成する他のすべての仮想マシンがこのストレージ アカウントに配置されます。ストレージ アカウントは 20 個に制限されています。
+11. **[ストレージ アカウント]** で、.vhd ファイルを保存するストレージ アカウントを選択します。または、フィールドの値を既定のままにして、ストレージ アカウントを自動的に作成することもできます。自動的に作成されるストレージ アカウントは 1 つだけです。この設定で作成する他のすべての仮想マシンがこのストレージ アカウントに配置されます。ストレージ アカウントは 20 個に制限されています。
 
 
-13. 可用性セットを使用するには、最初の仮想マシンを作成したときに作成された可用性セットを選択します。
+12. 可用性セットを使用するには、最初の仮想マシンを作成したときに作成された可用性セットを選択します。
 
-14. 既定のエンドポイントの構成を確認し、必要に応じて変更します。
+13. 既定のエンドポイントの構成を確認し、必要に応じて変更します。
 
-15. チェック マークをクリックして、接続された仮想マシンを作成します。
-
-
-[How to create a custom virtual machine]: http://windowsazure.com/ja-jp/documentation/articles/virtual-machines-create-custom/
-[Load balancing virtual machines]: http://windowsazure.com/ja-jp/documentation/articles/load-balance-virtual-machines/
-[Manage the availability of virtual machines]: http://windowsazure.com/ja-jp/documentation/articles/virtual-machines-manage-availability/
-
+14. チェック マークをクリックして、接続された仮想マシンを作成します。

@@ -1,311 +1,312 @@
-<properties linkid="develop-net-common-tasks-diagnostics-logging-and-instrumentation" urlDisplayName="Enable diagnostic logging" pageTitle="Enable diagnostic logging - Azure Web Sites" metaKeywords="Azure diagnostics web sites, Azure Management Portal diagnostics, Azure diagnostics, web site diagnostics, web site debug" description="Learn how to enable diagnostic logging and add instrumentation to your application, as well as how to access the information logged by Azure." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Enable diagnostic logging for Azure Web Sites" authors="larryfr" solutions="" manager="" editor="" />
+<properties linkid="develop-net-common-tasks-diagnostics-logging-and-instrumentation" urlDisplayName="診断ログの有効化" pageTitle="診断ログの有効化: Azure の Web サイト" metaKeywords="Azure 診断 Web サイト, Azure 管理ポータル診断, Azure 診断, Web サイト診断, Web サイト デバッグ" description="診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログに記録された情報にアクセスする方法について説明します。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Azure の Web サイトの診断ログを有効にする" authors=""  solutions="" writer="larryfr" manager="" editor=""  />
 
 
 
 
 
-#Enable diagnostic logging for Azure Web Sites
+#Azure の Web サイトの診断ログを有効にする
 
-Azure provides built-in diagnostics to assist with debugging an application hosted in Azure Web Sites. In this article you will learn how to enable diagnostic logging and add instrumentation to your application, as well as how to access the information logged by Azure.
+Azure では、ビルトインの診断機能により、Azure の Web サイトでホストされるアプリケーションのデバッグが支援されます。この記事では、診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログに記録された情報にアクセスする方法について説明します。
 
-> [WACOM.NOTE] This article describes using the Azure Management Portal, Azure PowerShell, and the Azure Cross-Platform Command-Line Interface to work with diagnostic logs. For information on working with diagnostic logs using Visual Studio, see [Troubleshooting Azure Web Sites in Visual Studio](/en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/).
+> [WACOM.NOTE] この記事では、Azure の管理ポータル、Azure PowerShell、および Azure クロスプラットフォーム コマンド ライン インターフェイスで診断ログを使用する方法を示します。Visual Studio で診断ログを使用する方法の詳細については、「[Visual Studio での Azure の Web サイトのトラブルシューティング](/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)」を参照してください。
 
-##Table of Contents##
+##目次##
 
-- [What is: Web Site diagnostics?](#whatisdiag)
-- [How to: Enable diagnostics](#enablediag)
-- [How to: Download logs](#download)
-- [How to: Stream logs](#streamlogs)
-- [How to: Understand diagnostics logs](#understandlogs)
-- [Next Steps](#nextsteps)
+- [Web サイト診断とは](#whatisdiag)
+- [方法: 診断を有効にする](#enablediag)
+- [方法: ログをダウンロードする](#download)
+- [方法: ログをストリーミングする](#streamlogs)
+- [方法: 診断ログを読む](#understandlogs)
+- [次のステップ](#nextsteps)
 
-<a name="whatisdiag"></a><h2>What is Web Site diagnostics?</h2>
+<a name="whatisdiag"></a><h2>Web サイト診断とは</h2>
 
-Azure Web Sites provide diagnostic functionality for logging information from both the web server as well as the web application. These are logically separated into **site diagnostics** and **application diagnostics**.
+Azure の Web サイトには、Web サーバーと Web アプリケーション両方からのログ情報の診断機能が備わっています。これらは論理的に**サイト診断**と**アプリケーション診断**に分けられます。
 
-###Site diagnostics
+###サイト診断
 
-Site diagnostics allow to you enable or disable the following:
+サイト診断では、次の機能を有効または無効にできます。
 
-- **Detailed Error Logging** - Logs detailed error information for HTTP status codes that indicate a failure (status code 400 or greater). This may contain information that can help determine why the server returned the error code.
-- **Failed Request Tracing** - Logs detailed information on failed requests, including a trace of the IIS components used to process the request and the time taken in each component. This can be useful if you are attempting to increase site performance or isolate what is causing a specific HTTP error to be returned.
-- **Web Server Logging** - Logs all HTTP transactions on a web site using the [W3C extended log file format](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). This report is useful when determining overall site metrics such as the number of requests handled or how many requests are from a specific IP address
+- **詳細なエラー ログ**: 障害 (ステータス コード 400 以上) を示す HTTP ステータス コードの詳細なエラー情報をログに記録します。このログには、サーバーがエラー コードを返した理由を特定するために役立つ情報が記録されている場合があります。
+- **失敗した要求トレース**: 要求の処理に使用されたコンポーネントのトレースや各コンポーネントにかかった時間など、失敗した要求の詳細情報をログに記録します。このログが便利なのは、サイトのパフォーマンスを向上させたり、特定の HTTP エラーが返される理由を特定したりする場合です。
+- **Web サーバーのログ記録**: [W3C 拡張ログ ファイル フォーマット](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)を使用して、Web サイト上のすべての HTTP トランザクションをログに記録します。このレポートが便利なのは、全体的なサイト メトリック、たとえば、サイトで処理された要求の数や、特定の IP アドレスからの要求の数を特定するときです。
 
-###Application diagnostics
+###アプリケーション診断
 
-Application diagnostics allows you to capture information produced by a web application. ASP.NET applications can use the [System.Diagnostics.Trace](http://msdn.microsoft.com/en-us/library/36hhw2t6.aspx) class to log information to the application diagnostics log. For example:
+アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。ASP.NET アプリケーションは、[System.Diagnostics.Trace](http://msdn.microsoft.com/ja-jp/library/36hhw2t6.aspx) クラスを使用して、情報をアプリケーション診断ログに記録できます。次に例を示します。
 
 	System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
-Application diagnostics allows you to troubleshoot your running application by emitting information when certain pieces of code are used. This is most useful when you are trying to determine why a specific path is being taken by the code, usually when the path results in an error or other undesirable behavior.
+アプリケーション診断では、コードの特定の部分が使用されるときの情報を取り込むことにより、実行中のアプリケーションのトラブルシューティングを行うことができます。この診断が便利なのは、特定のパスがコードによって取られる理由を特定するときです。そのパスの多くは、エラーやその他の望ましくない動作につながるものです。
 
-For information on working with Application Diagnostics using Visual Studio, see [Troubleshooting Azure Web Sites in Visual Studio](http://www.windowsazure.com/en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/).
+Visual Studio でアプリケーション診断を使用する方法の詳細については、「[Visual Studio での Azure の Web サイトのトラブルシューティング](http://www.windowsazure.com/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)」を参照してください。
 
-> [WACOM.NOTE] Unlike changing the web.config file, enabling Application diagnostics or changing diagnostic log levels does not recycle the app domain that the application runs within.
+> [WACOM.NOTE] web.config ファイルを変更する場合と異なり、アプリケーション診断を有効にしたり、診断ログ レベルを変更したりしても、アプリケーションが実行されているアプリケーション ドメインがリサイクルされることはありません。
 
-Azure Web Sites also logs deployment information when you publish an application to a web site. This happens automatically and there are no configuration settings for deployment logging. Deployment logging allows you to determine why a deployment failed. For example, if you are using a custom deployment script, you might use deployment logging to determine why the script is failing.
+Azure の Web サイトでは、Web サイトにアプリケーションを発行したときに展開情報もログに記録されます。これは自動的に行われ、展開ログの構成設定はありません。展開ログでは、展開が失敗した理由を特定できます。たとえば、カスタムの展開スクリプトを使用している場合は、展開ログを使用して、スクリプトでエラーが発生する理由を特定できることがあります。
 
-<a name="enablediag"></a><h2>How to: Enable diagnostics</h2>
+<a name="enablediag"></a><h2>方法: 診断を有効にする</h2>
 
-Diagnostics can be enabled by visiting the **Configure** page of your Azure Web Site in the [Azure Management Portal](https://manage.microsoft.com). On the **Configure** page, use the **application diagnostics** and **site diagnostics** sections to enable logging.
+診断は、[Azure の管理ポータル](https://manage.microsoft.com)の Azure の Web サイトにある **[構成]** ページにアクセスすることで有効にできます。**[構成]** ページで、**アプリケーション診断**と**サイト診断**を使用してログを有効にします。
 
-When enabling **application diagnostics** you must also select the **logging level** and whether to enable logging to the **file system**, **table storage**, or **blob storage**. While all three storage locations provide the same basic information for logged events, **table storage** and **blob storage** log additional information such as the instance ID, thread ID, and a more granular timestamp (tick format) than logging to **file system**.
+**アプリケーション診断**を有効にした場合、**ログ レベル**と、**ファイル システム**、**テーブル ストレージ**、または **BLOB ストレージ**へのログを有効にするかどうかも選択する必要があります。ログ書き込み先の 3 つの場所のいずれでも、ログ記録されたイベントについて同じ基本的な情報が得られますが、**テーブル ストレージ**と **BLOB ストレージ**には、インスタンス ID、スレッド ID、より詳細なタイムスタンプ (目盛り形式) など、追加の情報がログ記録されます。**ファイル システム**には、このような情報はログ記録されません。
 
-When enabling **site diagnostics**, you must select **storage** or **file system** for **web server logging**. Selecting **storage** allows you to select a storage account, and then a blob container that the logs will be written to. All other logs for **site diagnostics** are written to the file system only.
+**サイト診断**を有効にすると、**[Web サーバーのログ記録]** で **[ストレージ]** または **[ファイル システム]** を選択する必要があります。**[ストレージ]** を選択すると、ストレージ アカウントを選択でき、ログ書き込み先の BLOB コンテナーを指定できます。**サイト診断**用のその他のすべてのログはファイル システムにのみ書き込まれます。
 
-> [WACOM.NOTE] Information stored in **table storage** or **blob  storage** can only be accessed using a storage client or an application that can directly work with these storage systems. For example, Visual Studio 2013 contains a Storage Explorer that can be used to explore table or blob storage, and HDInsight can access data stored in blob storage. You can also write an application that accesses Azure Storage by using one of the [Azure SDKs](http://www.windowsazure.com/en-us/downloads/#).
+> [WACOM.NOTE] **テーブル ストレージ**または **BLOB ストレージ**に格納されている情報には、これらのストレージ システムを直接操作できるストレージ クライアントまたはアプリケーションからアクセスできます。たとえば、Visual Studio 2013 のストレージ エクスプローラーを使用すると、テーブル ストレージまたは BLOB ストレージを操作できます。HDInsight を使用すると、BLOB ストレージに格納されているデータにアクセスできます。[Azure SDK](http://www.windowsazure.com/ja-jp/downloads/#) のいずれかを使用して、Azure のストレージにアクセスするアプリケーションを書くこともできます。
 
-The following are the settings available when enabling **application diagnostics**:
+次に示しているのは、**アプリケーション診断**を有効にすると使用できる設定です。
 
-* **Logging level** - allows you to filter the information captured to **informational**, **warning** or **error** information. Setting this to **verbose** will log all information produced by the application. **Logging level** can be set differently for **file system**, **table storage**, and **blob storage** logging.
-* **File system** - stores the application diagnostics information to the web site file system. These files can be accessed by FTP, or downloaded as a Zip archive by using the Azure PowerShell or Azure Command-Line Tools.
-* **Table storage** - stores the application diagnostics information in the specified Azure Storage Account and table name.
-* **Blob storage** - stores the application diagnostics information in the specified Azure Storage Account and blob container.
-* **Retention period** - by default, logs are not automatically deleted from **blob storage**. Select **set retention** and enter the number of days to keep logs if you wish to automatically delete logs.
+* **ログ レベル** - 取得された情報を、**情報**、**警告**、**エラー**情報にフィルター処理できます。これを**詳細**に設定すると、アプリケーションにより生成されるすべての情報がログに記録されます。**ログ レベル**は、**ファイル システム**、**テーブル ストレージ**、および **BLOB ストレージ**に対して、それぞれ異なるレベルを設定できます。
+* **ファイル システム** - アプリケーション診断情報が Web サイトのファイル システムに保存されます。これらのファイルは、FTP によってアクセスするか、Azure PowerShell または Azure コマンド ライン ツールを使用して Zip アーカイブとしてダウンロードできます。
+* **テーブル ストレージ** - 指定された Azure のストレージ アカウントおよびテーブル名にアプリケーション診断情報が保存されます。
+* **BLOB ストレージ** - 指定された Azure のストレージ アカウントおよび BLOB コンテナーにアプリケーション診断情報が保存されます。
+* **保有期間** - 既定では、**BLOB ストレージ**からログが自動的に削除されることはありません。ログを自動的に削除するには、**[保有期間の設定]** を選択して、ログを保有する日数を入力します。
 
-> [WACOM.NOTE] Any combination of file system, table storage, or blob storage can be enabled at the same time, and have individual log level configurations. For example, you may wish to log errors and warnings to blob storage as a long-term logging solution, while enabling file system logging with a level of verbose.
+> [WACOM.NOTE] ファイル システム、テーブル ストレージ、BLOB ストレージへのログ記録は、任意に組み合わせて同時に有効にすることができます。また、それぞれ個別にログ レベルを設定できます。たとえば、BLOB ストレージへのエラーと警告の長期間のログ記録、ファイル システムへの詳細レベルのログ記録を同時に有効にすることができます。
 
-> [WACOM.NOTE] Diagnostics can also be enabled from Azure PowerShell using the **Set-AzureWebsite** cmdlet. If you have not installed Azure PowerShell, or have not configured it to use your Azure Subscription, see [How to Use Azure PowerShell](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/powershell-cmdlets/).
+> [WACOM.NOTE] 診断を有効にするには、Azure PowerShell から **Set-AzureWebsite** コマンドレットを使用する方法もあります。Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/)」を参照してください。
 
-<a name="download"></a><h2>How to: Download logs</h2>
+<a name="download"></a><h2>方法: ログをダウンロードする</h2>
 
-Diagnostic information stored to the web site file system can be accessed directly using FTP. It can also be downloaded as a Zip archive using Azure PowerShell or the Azure Command-Line Tools.
+Web サイト ファイル システムに保存された診断情報には、FTP を使用して直接アクセスできます。さらに、Azure PowerShell または Azure コマンド ライン ツールを使用して Zip アーカイブとしてダウンロードすることもできます。
 
-The directory structure that the logs are stored in is as follows:
+ログが保存されるディレクトリ構造は次のとおりです。
 
-* **Application logs** - /LogFiles/Application/. This folder contains one or more text files containing information produced by application logging.
+* **アプリケーション ログ** - /LogFiles/Application/。このフォルダーには、アプリケーション ログによって生成された情報を含む 1 つ以上のテキスト ファイルが格納されます。
 
-* **Failed Request Traces** - /LogFiles/W3SVC#########/. This folder contains an XSL file and one or more XML files. Ensure that you download the XSL file into the same directory as the XML file(s) because the XSL file provides functionality for formatting and filtering the contents of the XML file(s) when viewed in Internet Explorer.
+* **失敗した要求トレース** - /LogFiles/W3SVC#########/。このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。
 
-* **Detailed Error Logs** - /LogFiles/DetailedErrors/. This folder contains one or more .htm files that provide extensive information for any HTTP errors that have occurred. 
+* **詳細なエラー ログ** - /LogFiles/DetailedErrors/。このフォルダーには、発生した HTTP エラーに関する詳細な情報を記録した 1 つ以上の .htm ファイルが格納されます。
 
-* **Web Server Logs** - /LogFiles/http/RawLogs. This folder contains one or more text files formatted using the [W3C extended log file format](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). 
+* **Web サーバーのログ** - /LogFiles/http/RawLogs。このフォルダーには、[W3C 拡張ログ ファイル形式](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)を使用して形式が設定された 1 つ以上のテキスト ファイルが格納されます。
 
-* **Deployment logs** - /LogFiles/Git. This folder contains logs generated by the internal deployment processes used by Azure Web Sites, as well as logs for Git deployments.
+* **展開ログ** - /LogFiles/Git。このフォルダーには、Git 展開のログだけでなく、Azure の Web サイトが使用する内部展開プロセスによって生成されたログも格納されます。
 
 ###FTP
 
-To access diagnostic information using FTP, visit the **Dashboard** of your web site in the Azure Management Portal. In the **quick glance** section, use the **FTP Diagnostic Logs** link to access the log files using FTP. The **Deployment/FTP User** entry lists the user name that should be used to access the FTP site.
+FTP を使用して診断情報にアクセスするには、Azure の管理ポータルで Web サイトの**ダッシュボード**にアクセスします。**[概要]** セクションで、**[FTP 診断ログ]** リンクを使用し、FTP を使用してログ ファイルにアクセスします。**[展開/FTP ユーザー]** エントリには、FTP サイトへのアクセスに使用するユーザー名が一覧表示されます。
 
-> [WACOM.NOTE] If the **Deployment/FTP User** entry is not set, or you have forgotten the password for this user, you can create a new user and password by using the **Reset deployment credentials** link in the **quick glance** section of the **Dashboard**.
+> [WACOM.NOTE] **[展開/FTP ユーザー]** エントリが設定されていない場合や、このユーザーのパスワードを忘れた場合は、**ダッシュボード**の **[概要]** セクションで **[展開資格情報のリセット]** リンクを使用することで、新しいユーザーとパスワードを作成できます。
 
-###Download with Azure PowerShell
+###Azure PowerShell を使用してダウンロードする
 
-To download the log files, start a new instance of Azure PowerShell and use the following command:
+ログ ファイルをダウンロードするには、Azure PowerShell の新しいインスタンスを開始し、次のコマンドを使用します。
 
 	Save-AzureWebSiteLog -Name websitename
 
-This will save the logs for the web site specified by the **-Name** parameter to a file named **logs.zip** in the current directory.
+これにより、**-Name** パラメーターにより指定された Web サイトのログが、現在のディレクトリにある **logs.zip** というファイルに保存されます。
 
-> [WACOM.NOTE] If you have not installed Azure PowerShell, or have not configured it to use your Azure Subscription, see [How to Use Azure PowerShell](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/powershell-cmdlets/).
+> [WACOM.NOTE] Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合、「[Azure PowerShell の使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/)」を参照してください。
 
-###Download with Azure Command-Line Tools
+###Azure コマンド ライン ツールを使用してダウンロードする
 
-To download the log files using the Azure Command Line Tools, open a new command prompt, PowerShell, Bash, or Terminal session and enter the following command:
+Azure コマンド ライン ツールを使用してログ ファイルをダウンロードするには、新しいコマンド プロンプト、PowerShell、Bash、またはターミナル セッションを開き、次のコマンドを入力します。
 
 	azure site log download websitename
 
-This will save the logs for the web site named 'websitename' to a file named **diagnostics.zip** in the current directory.
+これにより、'websitename' という名前の Web サイトのログが、現在のディレクトリにある **diagnostics.zip** というファイルに保存されます。
 
-> [WACOM.NOTE] If you have not installed the Azure Command-Line Tools, or have not configured it to use your Azure Subscription, see [How to Use Azure Command-Line Tools](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/).
+> [WACOM.NOTE] Azure コマンド ライン ツールをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合、「[Mac および Linux 用 Azure コマンド ライン ツールの使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/command-line-tools/)」を参照してください。
 
-<a name="streamlogs"></a><h2>How to: Stream logs</h2>
+<a name="streamlogs"></a><h2>方法: ログをストリーミングする</h2>
 
-While developing an application, it is often useful to see logging information in near-real time. This can be accomplished by streaming logging information to your development environment using either Azure PowerShell or the Azure Command-Line Tools.
+アプリケーションの開発中に、ログ情報をほぼリアルタイムで参照すると役立つことがよくあります。これは、Azure PowerShell または Azure コマンド ライン ツールを使用して開発環境にログ情報をストリーミングすることで実現できます。
 
-> [WACOM.NOTE] Some types of logging buffer writes to the log file, which can result in out of order events in the stream. For example, an application log entry that occurs when a user visits a page may be displayed in the stream before the corresponding HTTP log entry for the page request.
+> [WACOM.NOTE] 一部の種類のログ バッファーはログ ファイルに書き込まれるため、ストリーミング中に無効な順序エラーが発生する可能性があります。たとえば、ユーザーがページにアクセスしたときに発生するアプリケーション ログ エントリは、ページ要求の該当する HTTP ログ エントリより前のストリームに表示されることがあります。
 
-> [WACOM.NOTE] Log streaming will also stream information written to any text file stored in the **D:\\home\\LogFiles\\** folder.
+> [WACOM.NOTE]  ログのストリーミングでは、**D:\\home\\LogFiles\\** に格納されているテキスト ファイルに書き込まれた情報もすべてストリーミングされます。
 
-###Streaming with Azure PowerShell
+###Azure PowerShell を使用してストリーミングする
 
-To stream logging information, start a new of Azure PowerShell and use the following command:
+ログ情報をストリーミングするには、Azure PowerShell を新たに起動して次のコマンドを使用します。
 
 	Get-AzureWebSiteLog -Name websitename -Tail
 
-This will connect to the web site specified by the **-Name** parameter and begin streaming information to the PowerShell window as log events occur on the web site. Any information written to files ending in .txt, .log, or .htm that are stored in the /LogFiles directory (d:/home/logfiles) will be streamed to the local console.
+**-Name** パラメーターにより指定された Web サイトに接続され、ログ イベントが Web サイトで発生したら、PowerShell ウィンドウへの情報のストリーミングが開始されます。/LogFiles ディレクトリ (d:/home/logfiles) に格納されており、末尾が .txt、.log、.htm のいずれかになっているファイルに書き込まれた情報は、ローカル コンソールにストリーミングされます。
 
-To filter specific events, such as errors, use the **-Message** parameter. For example:
+特定のイベント (エラーなど) をフィルター処理するには、**-Message** パラメーターを使用します。次に例を示します。
 
 	Get-AzureWebSiteLog -Name websitename -Tail -Message Error
 
-To filter specific log types, such as HTTP, use the **-Path** parameter. For example:
+特定のログの種類 (HTTP など) をフィルター処理するには、**-Path** パラメーターを使用します。次に例を示します。
 
 	Get-AzureWebSiteLog -Name websitename -Tail -Path http
 
-To see a list of available paths, use the -ListPath parameter.
+使用可能なパスの一覧を表示するには、-ListPath パラメーターを使用します。
 
-> [WACOM.NOTE] If you have not installed Azure PowerShell, or have not configured it to use your Azure Subscription, see [How to Use Azure PowerShell](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/powershell-cmdlets/).
+> [WACOM.NOTE] Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合、「[Azure PowerShell の使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/)」を参照してください。
 
-###Streaming with Azure Command-Line Tools
+###Azure コマンド ライン ツールを使用してストリーミングする
 
-To stream logging information, open a new command prompt, PowerShell, Bash, or Terminal session and enter the following command:
+ログ情報をストリーミングするには、新しいコマンド プロンプト、PowerShell、Bash、またはターミナル セッションを開き、次のコマンドを入力します。
 
 	azure site log tail websitename
 
-This will connect to the web site named 'websitename' and begin streaming information to the window as log events occur on the web site. Any information written to files ending in .txt, .log, or .htm that are stored in the /LogFiles directory (d:/home/logfiles) will be streamed to the local console.
+"'websitename'" という名前の Web サイトに接続され、ログ イベントが Web サイトで発生したら、ウィンドウへの情報のストリーミングが開始されます。/LogFiles ディレクトリ (d:/home/logfiles) に格納されており、末尾が .txt、.log、.htm のいずれかになっているファイルに書き込まれた情報は、ローカル コンソールにストリーミングされます。
 
-To filter specific events, such as errors, use the **--Filter** parameter. For example:
+特定のイベント (エラーなど) をフィルター処理するには、**--Filter** パラメーターを使用します。次に例を示します。
 
 	azure site log tail websitename --filter Error
 
-To filter specific log types, such as HTTP, use the **--Path** parameter. For example:
+特定のログの種類 (HTTP など) をフィルター処理するには、**--Path** パラメーターを使用します。次に例を示します。
 
 	azure site log tail websitename --path http
 
-> [WACOM.NOTE] If you have not installed the Azure Command-Line Tools, or have not configured it to use your Azure Subscription, see [How to Use Azure Command-Line Tools](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/command-line-tools/).
+> [WACOM.NOTE] Azure コマンド ライン ツールをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合、「[Mac および Linux 用 Azure コマンド ライン ツールの使用方法](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/command-line-tools/)」を参照してください。
 
-<a name="understandlogs"></a><h2>How to: Understand diagnostics logs</h2>
+<a name="understandlogs"></a><h2>方法: 診断ログを読む</h2>
 
-###Application diagnostics logs
+###アプリケーション診断ログ
 
-Application diagnostics stores information in a specific format for .NET applications, depending on whether you store logs to the file system, table storage, or blob storage. The base set of data stored is the same across all three storage types - the date and time the event occurred, the process ID that produced the event, the event type (information, warning, error,) and the event message.
+アプリケーション診断では、ファイル システム、テーブル ストレージ、BLOB ストレージのうち、どれにログを保存するかに応じて、.NET アプリケーション向けの一定の形式で情報が保存されます。格納される一連の基本的なデータは、3 種類のすべてのストレージ間で同じで、イベントが発生した日時、イベントを生成したプロセスの ID、イベントの種類 (情報、警告、エラー)、イベントのメッセージです。
 
-__File system__
+__ファイル システム__
 
-Each line logged to the file system or received using streaming will be in the following format:
+ファイル システムにログが記録される行またはストリーミングによって受信する行は、それぞれ以下の形式になります。
 
-	{Date}  PID[{process id}] {event type/level} {message}
+	{日付}  PID[{プロセス ID}] {イベントの種類/レベル} {メッセージ}
 
-For example, an error event would appear similar to the following:
+たとえば、エラー イベントは次のようになります。
 
 	2014-01-30T16:36:59  PID[3096] Error       Fatal error on the page!
 
-Logging to the file system provides the most basic information of the three available methods, providing only the time, process id, event level, and message.
+ファイル システムにログ記録する場合は、使用できる 3 つのログ記録方法のうちで最も基本的な情報が提供され、時間、プロセス ID、イベント レベル、メッセージのみを確認できます。
 
-__Table storage__
+__テーブル ストレージ__
 
-When logging to table storage, additional properties are used to facilitate searching the data stored in the table as well as more granular information on the event. The following properties (columns) are used for each entity (row) stored in the table.
+テーブル ストレージにログ記録する場合は、追加のプロパティを使用して、テーブルに格納されているデータだけでなく、イベントに関するより詳細な情報も簡単に検索できます。テーブルに格納される各エンティティ (行) に次のプロパティ (列) が使用されます。
 
 <table style="width:100%;border-collapse:collapse">
 <thead>
 <tr>
-<th style="width:45%;border:1px solid black;background-color:#0099dd">Property name</th>
-<th style="border:1px solid black;vertical-align:top;background-color:#0099dd">Value/format</th>
+<th style="width:45%;border:1px solid black;background-color:#0099dd">プロパティ名</th>
+<th style="border:1px solid black;vertical-align:top;background-color:#0099dd">値/形式</th>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top">PartitionKey</td>
-<td style="border:1px solid black;vertical-align:top">Date/time of the event in yyyyMMddHH format</td>
+<td style="border:1px solid black;vertical-align:top">yyyyMMddHH の形式によるイベントの日時</td>
 </tr>
 </thead>
 <tr>
 <td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">RowKey</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">A GUID value that uniquely identifies this entity</td>
+<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">このエンティティを一意に識別する GUID 値</td>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top">Timestamp</td>
-<td style="border:1px solid black;vertical-align:top">The date and time that the event occurred</td>
+<td style="border:1px solid black;vertical-align:top">イベントが発生した日時</td>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">EventTickCount</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">The date and time that the event occurred, in Tick format (greater precision)</td>
+<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">イベントが発生した目盛り形式 (高精度) の日時</td>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top">ApplicationName</td>
-<td style="border:1px solid black;vertical-align:top">The web site name</td>
+<td style="border:1px solid black;vertical-align:top">Web サイト名</td>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">Level</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">Event level (e.g. error, warning, information)</td>
+<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">イベント レベル (例: エラー、警告、情報)</td>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top">EventId</td>
-<td style="border:1px solid black;vertical-align:top">The event ID of this event<br>Defaults to 0 if none specified</td>
+<td style="border:1px solid black;vertical-align:top"></td>このイベントの ID<br>何も指定しない場合は既定で 0
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">InstanceId</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">Instance of the web site that the even occurred on</td>
+<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">イベントが発生した Web サイトのインスタンス</td>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top">Pid</td>
-<td style="border:1px solid black;vertical-align:top">Process ID</td>
+<td style="border:1px solid black;vertical-align:top">プロセス ID</td>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">Tid</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">The thread ID of the thread that produced the event</td>
+<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">イベントを生成したスレッドの ID</td>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top">Message</td>
-<td style="border:1px solid black;vertical-align:top">Event detail message</td>
+<td style="border:1px solid black;vertical-align:top">イベントの詳細メッセージ</td>
 </tr>
 </table>
 
-__Blob storage__
+__BLOB ストレージ__
 
-When logging to blob storage, data is stored in comma-separated values (CSV) format. Similar to table storage, additional fields are logged to provide more granular information about the event. The following properties are used for each row in the CSV:
+BLOB ストレージにログを記録するときには、値をコンマで区切った (CSV) 形式で格納されます。テーブル ストレージと同様、追加のフィールドがログに記録されて、イベントについてより詳細な情報が提供されます。CSV 内の各行に次のプロパティが使用されます。
 
 <table style="width:100%;border-collapse:collapse">
 <thead>
 <tr>
-<th style="width:45%;border:1px solid black;background-color:#0099dd">Property name</th>
-<th style="border:1px solid black;vertical-align:top;background-color:#0099dd">Value/format</th>
+<th style="width:45%;border:1px solid black;background-color:#0099dd">プロパティ名</th>
+<th style="border:1px solid black;vertical-align:top;background-color:#0099dd">値/形式</th>
 </tr>
 </thead>
 <tr>
 <td style="border:1px solid black;vertical-align:top">Date</td>
-<td style="border:1px solid black;vertical-align:top">The date and time that the event occurred</td>
+<td style="border:1px solid black;vertical-align:top">イベントが発生した日時</td>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">Level</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">Event level (e.g. error, warning, information)</td>
+<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">イベント レベル (例: エラー、警告、情報)</td>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top">ApplicationName</td>
-<td style="border:1px solid black;vertical-align:top">The web site name</td>
+<td style="border:1px solid black;vertical-align:top">Web サイト名</td>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">InstanceId</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">Instance of the web site that the even occurred on</td>
+<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">イベントが発生した Web サイトのインスタンス</td>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">EventTickCount</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">The date and time that the event occurred, in Tick format (greater precision)</td>
+<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">イベントが発生した目盛り形式 (高精度) の日時</td>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top">EventId</td>
-<td style="border:1px solid black;vertical-align:top">The event ID of this event<br>Defaults to 0 if none specified</td>
+<td style="border:1px solid black;vertical-align:top"></td>このイベントの ID<br>何も指定しない場合は既定で 0
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top">Pid</td>
-<td style="border:1px solid black;vertical-align:top">Process ID</td>
+<td style="border:1px solid black;vertical-align:top">プロセス ID</td>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">Tid</td>
-<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">The thread ID of the thread that produced the event</td>
+<td style="border:1px solid black;vertical-align:top;background-color:#8ddaf6">イベントを生成したスレッドの ID</td>
 </tr>
 <tr>
 <td style="border:1px solid black;vertical-align:top">Message</td>
-<td style="border:1px solid black;vertical-align:top">Event detail message</td>
+<td style="border:1px solid black;vertical-align:top">イベントの詳細メッセージ</td>
 </tr>
 </table>
 
-The data stored in a blob would similar to the following:
+BLOB に格納されるデータは次のようになります。
 
 	date,level,applicationName,instanceId,eventTickCount,eventId,pid,tid,message
 	2014-01-30T16:36:52,Error,mywebsite,6ee38a,635266966128818593,0,3096,9,An error occurred
 
-> [WACOM.NOTE] The first line of the log will contain the column headers as represented in this example.
+> [WACOM.NOTE] この例に示しているように、ログの最初の行は列ヘッダーになります。
 
-###Failed request traces
+###失敗した要求トレース
 
-Failed request traces are stored in XML files named __fr######.xml__. To make it easier to view the logged information, an XSL stylesheet named __freb.xsl__ is provided in the same directory as the XML files. Opening one of the XML files in Internet Explorer will use the XSL stylesheet to provide a formatted display of the trace information. This will appear similar to the following:
+失敗した要求トレースは __fr######.xml__ という名前の XML ファイルに保存されます。ログに記録された情報を見やすくするには、__freb.xsl__ という名前の XSL スタイルシートを XML ファイルと同じディレクトリに配置します。Internet Explorer でいずれかの XML ファイルを開くと、トレース情報が XSL スタイルシートを使用して書式設定されて表示されます。たとえば、次のように表示されます。
 
-![failed request viewed in the browser](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
+![失敗した要求をブラウザーで表示したところ](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 
-###Detailed error logs
+###詳細なエラー ログ
 
-Detailed error logs are HTML documents that provide more detailed information on HTTP errors that have occurred. Since they are simply HTML documents, they can be viewed using a web browser.
+詳細なエラー ログは、発生した HTTP エラーに関する詳細な情報を提供する HTML ドキュメントです。単なる HTML ドキュメントであるため、Web ブラウザーを使用して表示できます。
 
-###Web server logs
+###Web サーバーのログ
 
-The web server logs are formatted using the [W3C extended log file format](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). This information can be read using a text editor or parsed using utilities such as [Log Parser](http://go.microsoft.com/fwlink/?LinkId=246619).
+Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/ja-jp/library/windows/desktop/aa814385(v=vs.85) (.aspx) で書式設定されます。この情報は、テキスト エディターを使用して表示したり、[Log Parser](http://go.microsoft.com/fwlink/?LinkId=246619) などのユーティリティで解析したりできます。
 
-> [WACOM.NOTE] The logs produced by Azure Web Sites do not support the __s-computername__, __s-ip__, or __cs-version__ fields.
+> [WACOM.NOTE] Azure の Web サイトによって生成されるログでは、__s-computername__、__s-ip__、__cs-version__ のフィールドはサポートされていません。
 
-<a name="nextsteps"></a><h2>Next steps</h2>
+<a name="nextsteps"></a><h2>次のステップ</h2>
 
-- [How to Monitor Web Sites](/en-us/manage/services/web-sites/how-to-monitor-websites/)
-- [Tutorial - Troubleshooting Web Sites](/en-us/develop/net/best-practices/troubleshooting-web-sites/)
-- [Troubleshooting Azure Web Sites in Visual Studio](/en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)
-- [Analyze Web Site Logs in HDInsight](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
+- [Web サイトの監視方法](/ja-jp/manage/services/web-sites/how-to-monitor-websites/)
+- [チュートリアル: Web サイトのトラブルシューティング](/ja-jp/develop/net/best-practices/troubleshooting-web-sites/)
+- [Visual Studio での Azure の Web サイトのトラブルシューティング](/ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)
+- [HDInsight での Web サイト ログの分析](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
+
 

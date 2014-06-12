@@ -1,126 +1,121 @@
-<properties linkid="dev-nodejs-how-to-blob-storage" urlDisplayName="Blob Service" pageTitle="How to use blob storage (Node.js) | Microsoft Azure" metaKeywords="Get started Azure blob, Azure unstructured data, Azure unstructured storage, Azure blob, Azure blob storage, Azure blob Node.js" description="Learn how to use the Azure blob service to upload, download, list, and delete blob content. Samples written in Node.js." metaCanonical="" services="storage" documentationCenter="Node.js" title="How to Use the Blob Service from Node.js" authors="" solutions="" manager="" editor="" />
+<properties linkid="dev-nodejs-how-to-blob-storage" urlDisplayName="BLOB サービス" pageTitle="BLOB ストレージの使用方法 (Node.js) | Microsoft Azure" metaKeywords="Azure BLOB の概要, Azure 非構造化データ, Azure 非構造化ストレージ, Azure BLOB, Azure BLOB ストレージ, Azure BLOB Node.js" description="Azure BLOB サービスを使用して BLOB のコンテンツをアップロード、ダウンロード、一覧表示、および削除する方法を説明します。サンプルは Node.js で記述されています。" metaCanonical="" services="storage" documentationCenter="Node.js" title="Node.js から BLOB サービスを使用する方法" authors="" solutions="" manager="" editor="" />
 
 
 
 
 
-# How to Use the Blob Service from Node.js
+# Node.js から BLOB サービスを使用する方法
 
-This guide will show you how to perform common scenarios using the
-Azure Blob service. The samples are written using the
-Node.js API. The scenarios covered include **uploading**, **listing**,
-**downloading**, and **deleting** blobs. For more information on blobs,
-see the [Next Steps][] section.
+このガイドでは、Azure BLOB サービスを使用して一般的なシナリオを実行する
+方法について説明します。サンプルは Node.js API を使用して
+記述されています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、
+**ダウンロード**、および**削除**です。BLOB の詳細については、
+「[次のステップ][]」のセクションを参照してください。
 
-## Table of Contents
+## 目次
 
-* [What is the Blob Service?][]    
-* [Concepts][]    
-* [Create an Azure Storage Account][]   
-* [Create a Node.js Application][]   
-* [Configure your Application to Access Storage][]   
-* [Setup an Azure Storage Connection String][]   
-* [How To: Create a Container][]   
-* [How To: Upload a Blob into a Container][]   
-* [How To: List the Blobs in a Container][]   
-* [How To: Download Blobs][]   
-* [How To: Delete a Blob][]   
-* [Next Steps][]
+* [BLOB サービスとは][]
+* [概念][]
+* [Azure のストレージ アカウントの作成][]
+* [Node.js アプリケーションの作成][]
+* [アプリケーションからストレージへのアクセスの構成][]
+* [Azure のストレージ接続文字列の設定][]
+* [方法: コンテナーを作成する][]
+* [方法: コンテナーに BLOB をアップロードする][]
+* [方法: コンテナー内の BLOB を一覧表示する][]
+* [方法: BLOB をダウンロードする][]
+* [方法: BLOB を削除する][]
+* [次のステップ][]
 
-## <a name="what-is"> </a>What is the Blob Service?
+## <a name="what-is"> </a>BLOB サービスとは
 
-The Azure Blob service is for storing large amounts of
-unstructured data that can be accessed from anywhere in the world via
-HTTP or HTTPS. A single blob can be hundreds of gigabytes in size, and a
-single storage account can contain up to 100TB of blobs. Common uses of
-Blobs include:
+Azure BLOB サービスは、大量の非構造化データの格納に
+使用されます。これらのデータは、HTTP または HTTPS を使用して世界中の
+どこからでもアクセスできます。1 つの BLOB のサイズが数百 GB になることもあり、1 つの
+ストレージ アカウントには最大で 100 TB の BLOB を格納できます。BLOB の一般的な用途には、
+次のようなものがあります。
 
--   Serving images or documents directly to a browser
--   Storing files for distributed access
--   Streaming video and audio
--   Performing secure backup and disaster recovery
--   Storing data for analysis by an on-premises or Azure-hosted
-    service
+-   画像またはドキュメントをブラウザーに直接配信する
+-   分散アクセス用にファイルを格納する
+-   ビデオおよびオーディオをストリーミング配信する
+-   セキュリティで保護されたバックアップおよび障害復旧を実行する
+-   内部設置型サービスまたは Azure ホステッド サービスで分析する
+    データを格納する
 
-You can use Blobs to expose data publicly to the world or
-privately for internal application storage.
+BLOB ストレージを使用すると、データを一般に公開することも、
+内部アプリケーション ストレージ用にプライベートに公開することもできます。
 
-## <a name="concepts"> </a>Concepts
+## <a name="concepts"> </a>概念
 
-The Blob service contains the following components:
+BLOB サービスには、次のコンポーネントが含まれます。
 
 ![Blob1](./media/storage-nodejs-how-to-use-blob-storage/blob1.jpg)
 
--   **URL format:** Blobs are addressable using the following URL
-    format:
+-   **URL 形式:** BLOB は、次の URL 形式を使用してアドレスを指定し、
+    アクセスできます。
    
     	http://storageaccount.blob.core.windows.net/container/blob  
       
-    The following URL addresses one of the blobs in the diagram: 
+    次の URL を使用すると、図のいずれかの BLOB をアドレス指定できます。
  
 	    http://sally.blob.core.windows.net/movies/MOV1.AVI
 
--   **Storage Account:** All access to Azure Storage is done
-    through a storage account. This is the highest level of the
-    namespace for accessing blobs. An account can contain an unlimited
-    number of containers, as long as their total size is under 100TB.
+-   **ストレージ アカウント:** Azure のストレージにアクセス
+    する場合には必ず、ストレージ アカウントを使用します。これは、アクセスする BLOB の名前空間の
+    中でも最高レベルに位置するものです。アカウントに格納できるコンテナーの数は、
+    コンテナーの合計サイズが 100 TB 未満である限り無制限です。
 
--   **Container:** A container provides a grouping of a set of blobs.
-    All blobs must be in a container. An account can contain an
-    unlimited number of containers. A container can store an unlimited
-    number of blobs.
+-   **コンテナー:** コンテナーは、一連の BLOB をグループ化します。
+    すべての BLOB はコンテナーに格納されている必要があります。1 つのアカウントに格納できるコンテナーの数は無制限です。また、1 つのコンテナーに保存できる BLOB の数も無制限です。
 
--   **Blob:** A file of any type and size. There are two types of blobs; block and page. Most files are block
-    blobs. A single block blob can be up to 200GB in size. This tutorial
-    uses block blobs. Page blobs, another blob type, can be up to 1TB in
-    size, and are more efficient when ranges of bytes in a file are
-    modified frequently.
+-   **BLOB:** 任意の種類およびサイズのファイルです。BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。ほとんどのファイルは
+    ブロック BLOB です。1 つのブロック BLOB には、最大で 200 GB までのデータを格納できます。このチュートリアルでは、
+    ブロック BLOB を使用します。もう 1 つの種類の BLOB であるページ BLOB には、最大 1 TB までの
+    データを格納できます。ファイルのバイト数の範囲が頻繁に変更される
+    場合には、こちらの方が効率的です。
 
-## <a name="create-account"> </a>Create an Azure Storage Account
+## <a name="create-account"> </a>Azure のストレージ アカウントの作成
 
-To use storage operations, you need an Azure storage account. You
-can create a storage account by following these steps. (You can also
-create a storage account [using the REST API][].)
+ストレージ操作を行うには、Azure のストレージ アカウントが必要です。ストレージ アカウントを
+作成するには、次の手順に従います。([REST API を使用して][]
+ストレージ アカウントを作成することもできます)。
 
-1.  Log into the [Azure Management Portal].
+1. [Azure 管理ポータル]にログインします。
 
-2.  At the bottom of the navigation pane, click **+NEW**.
+2. ナビゲーション ウィンドウの下部にある **[新規]** をクリックします。
 
-	![+new](./media/storage-nodejs-how-to-use-blob-storage/plus-new.png)
+	![+ 新規](./media/storage-nodejs-how-to-use-blob-storage/plus-new.png)
 
-3.  Click **Storage Account**, and then click **Quick Create**.
+3. **[ストレージ アカウント]**、**[簡易作成]** の順にクリックします。
 
-	![Quick create dialog](./media/storage-nodejs-how-to-use-blob-storage/quick-storage.png)
+	![[簡易作成] ダイアログ](./media/storage-nodejs-how-to-use-blob-storage/quick-storage.png)
 
-4.  In URL, type a subdomain name to use in the URI for the
-    storage account. The entry can contain from 3-24 lowercase letters
-    and numbers. This value becomes the host name within the URI that is
-    used to address Blob, Queue, or Table resources for the
-    subscription.
+4. [URL] で、ストレージ アカウントの URI で使用する
+    サブドメイン名を入力します。文字数は 3 ～ 24 文字で、アルファベット小文字と数字を使用できます。この名前は、対応するサブスクリプションの BLOB リソース、キュー リソース、またはテーブル リソースのアドレス指定に使用される URL のホスト名になります。
 
-5.  Choose a Region/Affinity Group in which to locate the
-    storage. If you will be using storage from your Azure
-    application, select the same region where you will deploy your
-    application.
+5. ストレージの配置先となるリージョンまたは
+    アフィニティ グループを選択します。Azure アプリケーションから
+    ストレージを使用する場合は、アプリケーションを展開する
+    リージョンと同じリージョンを選択します。
 
-6.  Click **Create Storage Account**.
+6. **[ストレージ アカウントの作成]** をクリックします。
 
-## <a name="create-app"> </a>Create a Node.js Application
+## <a name="create-app"> </a>Node.js アプリケーションの作成
 
-Create a blank Node.js application. For instructions creating a Node.js application, see [Create and deploy a Node.js application to an Azure Web Site], [Node.js Cloud Service] (using Windows PowerShell), or [Web Site with WebMatrix].
+空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービスへのデプロイ] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ]に関するページを参照してください。
 
-## <a name="configure-access"> </a>Configure Your Application to Access Storage
+## <a name="configure-access"> </a>アプリケーションのストレージへのアクセスの構成
 
-To use Azure storage, you need to download and use the Node.js
-azure package, which includes a set of convenience libraries that
-communicate with the storage REST services.
+Azure ストレージを使用するには、Node.js azure パッケージをダウンロード
+して使用する必要があります。このパッケージには、ストレージ REST サービス
+と通信するための便利なライブラリのセットが含まれています。
 
-### Use Node Package Manager (NPM) to obtain the package
+### ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
 
-1.  Use a command-line interface such as **PowerShell** (Windows,) **Terminal** (Mac,) or **Bash** (Unix), navigate to the folder where you created your sample application.
+1.  **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
 
-2.  Type **npm install azure** in the command window, which should
-    result in the following output:
+2.  コマンド ウィンドウに「**npm install azure**」と入力すると、
+    次のような出力が生成されます。
 
         azure@0.7.5 node_modules\azure
 		├── dateformat@1.0.2-1.2.3
@@ -134,39 +129,39 @@ communicate with the storage REST services.
 		├── xml2js@0.2.7 (sax@0.5.2)
 		└── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
 
-3.  You can manually run the **ls** command to verify that a
-    **node\_modules** folder was created. Inside that folder find the
-    **azure** package, which contains the libraries you need to access
-    storage.
+3.  手動で **ls** コマンドを実行して、**node\_modules** 
+       フォルダーが作成されたことを確認することもできます。そのフォルダーで 
+    **azure** パッケージを検索します。このパッケージには、ストレージに
+    アクセスするために必要なライブラリが含まれています。
 
-### Import the package
+### パッケージをインポートする
 
-Using Notepad or another text editor, add the following to the top the
-**server.js** file of the application where you intend to use storage:
+メモ帳などのテキスト エディターを使用して、ストレージを使用するアプリケーションの
+**server.js** ファイルの先頭に次の内容を追加します。
 
     var azure = require('azure');
 
-## <a name="setup-connection-string"> </a>Setup an Azure Storage Connection
+## <a name="setup-connection-string"> </a>Azure のストレージ接続文字列の設定
 
-The azure module will read the environment variables AZURE\_STORAGE\_ACCOUNT and AZURE\_STORAGE\_ACCESS\_KEY for information required to connect to your Azure storage account. If these environment variables are not set, you must specify the account information when calling **createBlobService**.
+azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT および AZURE\_STORAGE\_ACCESS\_KEY を読み取ります。これらの環境変数が設定されていない場合は、**createBlobService** を呼び出すときにアカウント情報を指定する必要があります。
 
-For an example of setting the environment variables in a configuration file for an Azure Cloud Service, see [Node.js Cloud Service with Storage].
+Azure クラウド サービスの構成ファイルで環境変数を設定する例については、[ストレージを使用する Node.js クラウド サービスに関するトピック]を参照してください。
 
-For an example of setting the environment variables in the management portal for an Azure Web Site, see [Node.js Web Application with Storage]
+Azure Web サイトの管理ポータルで環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーションに関するトピック]を参照してください。
 
-## <a name="create-container"> </a>How to: Create a Container
+## <a name="create-container"> </a>方法: コンテナーを作成する
 
-The **BlobService** object lets you work with containers and blobs. The
-following code creates a **BlobService** object. Add the following near
-the top of **server.js**:
+**BlobService** オブジェクトを使用して、コンテナーおよび BLOB を操作でき
+ます。次のコードでは、**BlobService** オブジェクトを作成します。**server.js** ファイル
+の先頭付近に次の内容を追加します。
 
     var blobService = azure.createBlobService();
 
-All blobs reside in a container. The call to
-**createContainerIfNotExists** on the **BlobService** object will return
-the specified container if it exists or create a new container with the
-specified name if it does not already exist. By default, the new
-container is private and requires the use of the access key to download blobs from this container.
+BLOB はすべてコンテナー内に格納されます。**BlobService** 
+オブジェクトでの **createContainerIfNotExists** の呼び出しは、指定された
+コンテナーが存在する場合はそのコンテナーを返します。指定された
+コンテナーが存在しない場合は、指定された名前で新しいコンテナーを作成します。既定では、新しいコンテナーはプライベートであるため、
+このコンテナーから BLOB をダウンロードするにはストレージ アクセス キーを使用する必要があります。
 
 	blobService.createContainerIfNotExists(containerName, function(error){
     	if(!error){
@@ -175,8 +170,8 @@ container is private and requires the use of the access key to download blobs fr
 	});
 
 
-If you want to make the files in the container public so that they can be accessed without requiring the access key, you can set the
-container's access level to **blob** or **container**. Setting the access level to **blob** allows anonymous read access to blob content and metadata within this container, but not to container metadata such as listing all blobs within a container. Setting the access level to **container** allows anonymous read access to blob content and metadata as well as container metadata. The following example demonstrates setting the access level to **blob**: 
+コンテナー内のファイルをパブリックに設定し、アクセス キーを使用せずにアクセスできるようにする場合は、コンテナーのアクセス レベルを
+**blob** または **container** に設定できます。アクセス レベルを **blob** に設定すると、このコンテナー内の BLOB の内容とメタデータに対する匿名読み取りが許可されますが、コンテナー内のすべての BLOB のリストなど、コンテナーのメタデータに対する匿名読み取りは許可されません。アクセス レベルを **container** に設定すると、BLOB の内容とメタデータおよびコンテナーのメタデータに対する匿名読み取りが許可されます。次の例では、アクセス レベルを **blob** に設定する方法を示します。
 
     blobService.createContainerIfNotExists(containerName
 		, {publicAccessLevel : 'blob'}
@@ -186,7 +181,7 @@ container's access level to **blob** or **container**. Setting the access level 
 			}
 		});
 
-Alternatively, you can modify the access level of a container by using **setContainerAcl** to specify the access level. The following example changes the access level to container:
+代わりに、**setContainerAcl** を使用してアクセス レベルを指定することによって、コンテナーのアクセス レベルを変更できます。次の例では、アクセス レベルを container に変更します。
 
     blobService.setContainerAcl(containerName
 		, 'container'
@@ -196,28 +191,28 @@ Alternatively, you can modify the access level of a container by using **setCont
 			}
 		});
 
-###Filters
+###フィルター
 
-Optional filtering operations can be applied to operations performed using **BlobService**. Filtering operations can include logging, automatically retrying, etc. Filters are objects that implement a method with the signature:
+オプションのフィルター操作は、**BlobService** を使用して行われる操作に適用できます。フィルター操作には、ログ、自動的な再試行などが含まれる場合があります。フィルターは、次のようなシグネチャを実装するオブジェクトです。
 
 		function handle (requestOptions, next)
 
-After doing its preprocessing on the request options, the method needs to call "next" passing a callback with the following signature:
+要求オプションに対するプリプロセスを行った後で、このメソッドは "next" を呼び出して、次のシグネチャのコールバックを渡す必要があります。
 
 		function (returnObject, finalCallback, next)
 
-In this callback, and after processing the returnObject (the response from the request to the server), the callback needs to either invoke next if it exists to continue processing other filters or simply invoke finalCallback otherwise to end up the service invocation.
+このコールバックで、returnObject (サーバーへの要求からの応答) の処理の後に、コールバックは next を呼び出すか (他のフィルターの処理を続けるために next が存在する場合)、単に finalCallback を呼び出す必要があります (サービス呼び出しを終了する場合)。
 
-Two filters that implement retry logic are included with the Azure SDK for Node.js, **ExponentialRetryPolicyFilter** and **LinearRetryPolicyFilter**. The following creates a **BlobService** object that uses the **ExponentialRetryPolicyFilter**:
+再試行のロジックを実装する 2 つのフィルター (**ExponentialRetryPolicyFilter** と **LinearRetryPolicyFilter**) が、Azure SDK for Node.js に含まれています。次のコードは、**ExponentialRetryPolicyFilter** を使用する **BlobService** オブジェクトを作成します。
 
 	var retryOperations = new azure.ExponentialRetryPolicyFilter();
 	var blobService = azure.createBlobService().withFilter(retryOperations);
 
-## <a name="upload-blob"> </a>How to: Upload a Blob into a Container
+## <a name="upload-blob"> </a>方法: コンテナーに BLOB をアップロードする
 
-To upload data to a blob, use the **createBlockBlobFromFile**, **createBlockBlobFromStream** or **createBlockBlobFromText** methods. **createBlockBlobFromFile** uploads the contents of a file, while **createBlockBlobFromStream** uploads the contents of a stream.  **createBlockBlobFromText** uploads the specified text value.
+データを BLOB にアップロードするには、**createBlockBlobFromFile**、**createBlockBlobFromStream**、または **createBlockBlobFromText** メソッドを使用します。**createBlockBlobFromFile** はファイルの内容をアップロードし、**createBlockBlobFromStream** はストリームの内容をアップロードします。**createBlockBlobFromText** は指定されたテキスト値をアップロードします。
 
-The following example uploads the contents of the **test1.txt** file into the 'test1' blob.
+次の例では、**test1.txt** ファイルの内容を 'test1' BLOB にアップロードします。
 
 	blobService.createBlockBlobFromFile(containerName
 		, 'test1'
@@ -228,12 +223,12 @@ The following example uploads the contents of the **test1.txt** file into the 't
 			}
 		});
 
-## <a name="list-blob"> </a>How to: List the Blobs in a Container
+## <a name="list-blob"> </a>方法: コンテナー内の BLOB を一覧表示する
 
-To list the blobs in a container, use the **listBlobs** method with a
-**for** loop to display the name of each blob in the container. The
-following code outputs the **name** of each blob in a container to the
-console.
+コンテナー内の BLOB を一覧表示するには、**listBlobs** メソッドを 
+**for** ループで使用して、コンテナー内の各 BLOB の名前を表示します。次の
+コードでは、コンテナー内の各 BLOB の名前 (**name**) をコンソールに
+出力しています。
 
     blobService.listBlobs(containerName, function(error, blobs){
 		if(!error){
@@ -243,9 +238,9 @@ console.
 		}
 	});
 
-## <a name="download-blobs"> </a>How to: Download Blobs
+## <a name="download-blobs"> </a>方法: BLOB をダウンロードする
 
-To download data from a blob, use **getBlobToFile**, **getBlobToStream**, or **getBlobToText**. The following example demonstrates using **getBlobToStream** to download the contents of the **test1** blob and store it to the **output.txt** file using a stream:
+BLOB からデータをダウンロードするには、**getBlobToFile**、**getBlobToStream**、または **getBlobToText** を使用します。次の例は、**getBlobToStream** を使用して **test1** BLOB の内容をダウンロードし、ストリームを使用して **output.txt** ファイルに格納する方法を示しています。
 
     var fs=require('fs');
 	blobService.getBlobToStream(containerName
@@ -257,9 +252,9 @@ To download data from a blob, use **getBlobToFile**, **getBlobToStream**, or **g
 			}
 		});
 
-## <a name="delete-blobs"> </a>How to: Delete a Blob
+## <a name="delete-blobs"> </a>方法: BLOB を削除する
 
-Finally, to delete a blob, call **deleteBlob**. The following example deletes the blob named 'blob1'.
+最後に、BLOB を削除するには、**deleteBlob** を呼び出します。次の例では、'blob1' という名前の BLOB を削除します。
 
     blobService.deleteBlob(containerName
 		, 'blob1'
@@ -269,34 +264,34 @@ Finally, to delete a blob, call **deleteBlob**. The following example deletes th
 			}
 		});
 
-## <a name="next-steps"> </a>Next Steps
+## <a name="next-steps"> </a>次のステップ
 
-Now that you've learned the basics of blob storage, follow these links
-to learn how to do more complex storage tasks.
+これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   See the MSDN Reference: [Storing and Accessing Data in Azure][].
--   Visit the [Azure Storage Team Blog][].
--   Visit the [Azure SDK for Node] repository on GitHub.
+-   MSDN リファレンス: [Azure のデータの格納とアクセス][]
+-   [Azure のストレージ チーム ブログ][]
+-   GitHub の [Azure SDK for Node] リポジトリ
 
   [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
-  [Next Steps]: #next-steps
-  [What is the Blob Service?]: #what-is
-  [Concepts]: #concepts
-  [Create an Azure Storage Account]: #create-account
-  [Create a Node.js Application]: #create-app
-  [Configure your Application to Access Storage]: #configure-access
-  [Setup an Azure Storage Connection String]: #setup-connection-string
-  [How To: Create a Container]: #create-container
-  [How To: Upload a Blob into a Container]: #upload-blob
-  [How To: List the Blobs in a Container]: #list-blob
-  [How To: Download Blobs]: #download-blobs
-  [How To: Delete a Blob]: #delete-blobs
-[Create and deploy a Node.js application to an Azure Web Site]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)/
-  [Node.js Cloud Service with Storage]: /en-us/develop/nodejs/tutorials/web-app-with-storage/
-  [Node.js Web Application with Storage]: /en-us/develop/nodejs/tutorials/web-site-with-storage/
- [Web Site with WebMatrix]: /en-us/develop/nodejs/tutorials/web-site-with-webmatrix/
-  [using the REST API]: http://msdn.microsoft.com/en-us/library/windowsazure/hh264518.aspx
-  [Azure Management Portal]: http://manage.windowsazure.com
-  [Node.js Cloud Service]: {localLink:2221} "Node.js Web Application"
-  [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
-  [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
+  [次のステップ]: #next-steps
+  [BLOB サービスとは]: #what-is
+  [概念]: #concepts
+  [Azure のストレージ アカウントの作成]: #create-account
+  [Node.js アプリケーションの作成]: #create-app
+  [アプリケーションのストレージへのアクセスの構成]: #configure-access
+  [Azure のストレージ接続文字列の設定]: #setup-connection-string
+  [方法: コンテナーを作成する]: #create-container
+  [方法: コンテナーに BLOB をアップロードする]: #upload-blob
+  [方法: コンテナー内の BLOB を一覧表示する]: #list-blob
+  [方法: BLOB をダウンロードする]: #download-blobs
+  [方法: BLOB を削除する]: #delete-blobs
+[Node.js アプリケーションの作成と Azure の Web サイトへの展開]: /ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
+  [ストレージを使用する Node.js クラウド サービス]: /ja-jp/develop/nodejs/tutorials/web-app-with-storage/
+  [ストレージを使用する Node.js Web アプリケーション]: /ja-jp/develop/nodejs/tutorials/web-site-with-storage/
+ [WebMatrix を使用した Web サイト]: /ja-jp/develop/nodejs/tutorials/web-site-with-webmatrix/
+  [REST API を使用する]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh264518.aspx
+  [Azure 管理ポータル]: http://manage.windowsazure.com
+  [Node.js クラウド サービス]: {localLink:2221} "Node.js Web アプリケーション"
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+  [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+

@@ -1,168 +1,166 @@
-<properties linkid="" urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="How to Use Azure Cache Service (Preview)" authors="" solutions="" manager="" editor="" />
+<properties linkid="" urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Azure のキャッシュ サービス (プレビュー) の使用方法" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
-# How to Use Azure Cache Service (Preview)
+#Azure のキャッシュ サービス (プレビュー) の使用方法
 
-This guide shows you how to get started using 
-**Azure Cache Service (Preview)**. The samples are written in C\# code and
-use the .NET API. The scenarios covered include **creating and configuring a cache**, **configuring cache clients**, **adding and removing
-objects from the cache, storing ASP.NET session state in the cache**,
-and **enabling ASP.NET page output caching using the cache**. For more
-information on using Azure Cache, refer to the [Next Steps][] section.
+このガイドでは、**Azure のキャッシュ サービス 
+(プレビュー)**の基本的な使用方法について説明します。サンプルは C\# コードで記述され、
+.NET API を利用しています。紹介するシナリオは、**キャッシュの作成と構成**、**キャッシュ クライアントの構成**、**キャッシュでのオブジェクトの追加と削除、キャッシュへの ASP.NET セッション状態の格納**、**キャッシュの使用による ASP.NET ページ出力キャッシュの有効化**などです。Azure の
+キャッシュの使い方の詳細については、「[次のステップ][]」を参照してください。
 
-## Table of Contents
+## 目次
 
--   [What is Azure Cache?][]
--	[Getting Started with Cache Service (Preview)]
-	-	[Create the cache][]
-	-	[Configure the cache][]
-	-	[Configure the cache clients][]
--	[Working with caches][]
-	-	[How To: Create a DataCache Object][]
-	-   [How To: Add and Retrieve an Object from the Cache][]
-	-   [How To: Specify the Expiration of an Object in the Cache][]
-	-   [How To: Store ASP.NET Session State in the Cache][]
-	-   [How To: Store ASP.NET Page Output Caching in the Cache][]
--   [Next Steps][]
+-   [Azure のキャッシュとは][]
+-	[キャッシュ サービス (プレビュー) を使い始める方法]
+	-	[キャッシュの作成][]
+	-	[キャッシュの構成][]
+	-	[キャッシュ クライアントの構成][]
+-	[キャッシュの操作][]
+	-	[方法: DataCache オブジェクトを作成する][]
+	-   [方法: キャッシュでオブジェクトを追加および削除する][]
+	-   [方法: キャッシュ内のオブジェクトの有効期限を指定する][]
+	-   [方法: ASP.NET セッション状態をキャッシュに格納する][]
+	-   [方法: ASP.NET ページ出力キャッシュをキャッシュに格納する][]
+-   [次のステップ][]
 
 <a name="what-is"></a>
-## What is Azure Cache?
+## Azure のキャッシュとは
 
-Azure Cache Service (Preview) is a distributed, in-memory, scalable solution that enables you to build highly scalable and responsive applications by providing super-fast access to data.
+Azure のキャッシュ サービス (プレビュー) とは、拡張性の高い分散型メモリ内ソリューションです。これを使用すると、データへの超高速アクセスを提供することで、拡張性や応答性の高いアプリケーションを作成できます。
 
-Azure Cache Service (Preview) includes the following
-features:
+Azure のキャッシュ サービス (プレビュー) には、
+次のような機能があります。
 
--   Pre-built ASP.NET providers for session state and page output
-    caching, enabling acceleration of web applications without having to
-    modify application code.
--   Caches any serializable managed object - for example: CLR objects, rows, XML,
-    binary data.
--   Consistent development model across both Azure and Windows
-    Server AppFabric.
+-   セッション状態とページ出力キャッシュに対応した、
+    構築済みの ASP.NET プロバイダーにより、アプリケーション コードを
+    変更しなくても Web アプリケーションの機能を強化できます。
+-   任意のシリアル化可能なマネージ オブジェクトをキャッシュできます。たとえば、
+    CLR オブジェクト、行、XML、バイナリ データなどです。
+-   Azure と Windows Server AppFabric の両方で、
+    開発モデルの一貫性を確保できます。
 
-Cache Service (Preview) gives you access to a secure, dedicated cache that is managed by Microsoft. A cache created using the Cache Service (Preview) is accessible from applications within Azure running on Azure Web Sites, Web & Worker Roles and Virtual Machines.
+キャッシュ サービス (プレビュー) を使用すると、マイクロソフトによって管理されている、セキュリティで保護された専用キャッシュにアクセスできます。キャッシュ サービス (プレビュー) を使用して作成されたキャッシュには、Azure Web サイト、Web ロールとワーカー ロール、および仮想マシンで実行されている Azure 内のアプリケーションからアクセスできます。
 
-Cache Service (Preview) is available in three tiers:
+キャッシュ サービス (プレビュー) は、次の 3 つのレベルで利用できます。
 
--	Basic - Cache in sizes from 128MB to 1GB
--	Standard - Cache in sizes from 1GB to 10GB
--	Premium - Cache in sizes from 5GB to 150GB
+-	基本 - 128 MB ～ 1 GB のキャッシュ
+-	標準 - 1 GB ～ 10 GB のキャッシュ
+-	プレミアム - 5 GB ～ 150 GB のキャッシュ
 
-Each tier differs in terms of features and pricing. The features are covered later in this guide, and for more information on pricing, see [Cache Pricing Details][].
+各レベルは、機能と料金ごとに異なります。機能については、このガイドで後述します。料金の詳細については、「[キャッシュの料金詳細][]」を参照してください。
 
-This guide provides an overview of getting started with Cache Service (Preview). For more detailed information on these features that are beyond the scope of this getting started guide, see [Overview of Azure Cache Service (Preview)][].
+このガイドでは、キャッシュ サービス (プレビュー) の基本的な概要について説明します。この概要ガイドでは扱われていない機能の詳細については、「[Azure のキャッシュ サービス (プレビュー)][]」を参照してください。
 
 <a name="getting-started-cache-service"></a>
-## Getting Started with Cache Service (Preview)
+## キャッシュ サービス (プレビュー) を使い始める方法
 
-Getting started with Cache Service (Preview) is easy. To get started, you provision and configure a cache. Next, you configure the cache clients so they can access the cache. Once the cache clients are configured, you can begin working with them.
+キャッシュ サービス (プレビュー) は、簡単に使い始めることができます。使い始めるには、キャッシュをプロビジョニングして構成します。次に、キャッシュ クライアントを構成してキャッシュにアクセスできるようにします。キャッシュ クライアントを構成すると、使い始めることができます。
 
--	[Create the cache][]
--	[Configure the cache][]
--	[Configure the cache clients][]
+-	[キャッシュの作成][]
+-	[キャッシュの構成][]
+-	[キャッシュ クライアントの構成][]
 
 <a name="create-cache"></a>
-## Create a cache
+## キャッシュの作成
 
-To create a cache, first sign in to the [Management Portal][].
+キャッシュを作成するには、まず[管理ポータル][]にサインインします。
 
->If this is your first time working with Cache Service (Preview) then you need to request access to the Cache Service preview program. To sign up for the preview program, click **New**, **Data Services**, **Cache Preview**, **Preview Program**. Follow the prompts to request access to the Cache Service preview program, and when access is granted, proceed to the next steps.
+>初めてキャッシュ サービス (プレビュー) を使用する場合、キャッシュ サービス プレビュー プログラムへのアクセスを要求する必要があります。プレビュー プログラムにサインアップするには、**[新規]**、**[データ サービス]**、**[Cache プレビュー]**、**[プレビュー プログラム]** の順にクリックします。表示される手順に従ってキャッシュ サービス プレビュー プログラムへのアクセスを要求し、アクセスが許可されたら、次に手順に進みます。
 
-Click **New**, **Data Services**, **Cache Preview**, **Quick Create**.
+**[新規]**、**[データ サービス]**、**[Cache プレビュー]**、**[簡易作成]** の順にクリックします。
 
 ![NewCacheMenu][NewCacheMenu]
 
 ![QuickCreate][QuickCreate]
 
-In **Endpoint**, enter a subdomain name to use for the cache endpoint. The endpoint must be a string between six and twenty characters, contain only lowercase numbers and letters, and must start with a letter.
+**Endpoint** に、キャッシュ エンドポイントに使用するサブドメイン名を入力します。エンドポイントは、数字と小文字のみを含む、先頭が文字の 6 ～ 12 文字の文字列にしてください。
 
-In **Region**, select a region for the cache. For the best performance, create the cache in the same region as the cache client application.
+**[リージョン]** ボックスで、キャッシュのリージョンを選択します。パフォーマンスを最高にするには、キャッシュ クライアント アプリケーションと同じリージョンにキャッシュを作成します。
 
-In **Subscription**, select the Azure subscription that you want to use for the cache.
+**[サブスクリプション]** で、キャッシュに使用する Azure サブスクリプションを選択します。
 
->If your account has only one subscription, it will be automatically selected and the Subscription drop-down will not be displayed.
+>アカウントにサブスクリプションが 1 つしかない場合、自動的に選択されるため、[サブスクリプション] ドロップダウン リストは表示されません。
 
-**Cache Offering** and **Cache Memory** work together to determine the size of the cache. Cache Service (Preview) is available in the three following tiers.
+**キャッシュ オファリング**と**キャッシュ メモリ**の組み合わせにより、キャッシュのサイズが決定されます。キャッシュ サービス (プレビュー) は、次の 3 つのレベルで利用できます。
 
--	Basic - Cache in sizes from 128MB to 1GB in 128MB increments, with one default named cache
--	Standard - Cache in sizes from 1GB to 10GB in 1GB increments, with support for notifications and up to ten named caches
+-	基本 - キャッシュ サイズ 128 MB ～ 1 GB (128 MB ずつ増分)、既定で名前付きキャッシュ 1 つ
+-	標準 - キャッシュ サイズ 1 GB ～ 10 GB (1 GB ずつ増分)、通知と最大 10 の名前付きキャッシュのサポート
 
--	Premium - Cache in sizes from 5GB to 150GB in 5GB increments, with support for notifications, high availability, and up to ten named caches
+-	プレミアム - キャッシュ サイズ 5 GB ～ 150 GB (5 GB ずつ増分)、通知、高可用性、および最大 10 の名前付きキャッシュのサポート
 
 
-Choose the **Cache Offering** and **Cache Memory** that meets the needs of your application. Note that some cache features, such as notifications and high availability, are only available with certain cache offerings. For more information on choosing the cache offering and size that's best for your application, see [Cache offerings][] and [Capacity planning][].
+アプリケーションの必要を満たす**キャッシュ オファリング**と**キャッシュ メモリ**を選択します。一部のキャッシュ機能 (通知や高可用性など) は、特定のキャッシュ オファリングでのみ使用できる点に注意してください。アプリケーションに最適なキャッシュ オファリングとサイズを選択する方法の詳細については、「[Azure のキャッシュ サービス (プレビュー) のキャッシュ オファリング][]」と「[Azure のキャッシュ サービス (プレビュー) の容量計画][]」を参照してください。
 
-Once the new cache options are configured, click **Create a New Cache**. It can take a few minutes for the cache to be created. To check the status, you can monitor the notifications at the bottom of the portal. After the cache has been created, your new cache has a Running status and is ready for use with default settings. To customize the configuration of your cache, see the following [Configure the cache][] section.
+新しいキャッシュ オプションが構成されたら、**[新しいキャッシュの作成]** をクリックします。キャッシュが作成されるまで数分かかる場合があります。状態を確認するには、ポータルの下部にある通知を監視します。キャッシュが作成されると、新しいキャッシュの状態が "実行中" になって、既定の設定で使用できるようになります。キャッシュの構成をカスタマイズするには、次の「[キャッシュの構成][]」セクションを参照してください。
 
 
 <a name="enable-caching"></a>
-## Configure the cache
+## キャッシュの構成
 
-The **Configure** tab for Cache in the Management Portal is where you configure the options for your cache. Each cache has a **default** named cache, and the Standard and Premium cache offerings support up to nine additional named caches, for a total of ten. Each named cache has its own set of options which allow you to configure your cache in a highly flexible manner.
+管理ポータルにあるキャッシュの **[構成]** タブでは、キャッシュのオプションを構成できます。各キャッシュには**既定の**名前付きキャッシュがあり、標準およびプレミアム キャッシュ オファリングでは最大 9 つの名前付きキャッシュ (合計 10) がサポートされます。名前付きキャッシュにはそれぞれ独自のオプション セットがあり、柔軟性の高い方法でキャッシュを構成できます。
 
 ![NamedCaches][NamedCaches]
 
-To create a named cache, type the name of the new cache into the **Name** box, specify the desired options, click **Save**, and click **Yes** to confirm. To cancel any changes, click **Discard**.
+名前付きキャッシュを作成するには、新しいキャッシュの名前を **[名前]** ボックスに入力して必要なオプションを指定し、**[保存]** をクリックした後、**[はい]** をクリックして確認します。変更を取り消すには、**[破棄]** をクリックします。
 
-## Expiry Policy and Time (min) ##
+## [有効期限ポリシー] と [時間 (分)] ##
 
-The **Expiry Policy** works in conjunction with the **Time (min)** setting to determine when cached items expire. There are three types of expiration policies: **Absolute**, **Sliding**, and **Never**. 
+**[有効期限ポリシー]** と **[時間 (分)]** 設定の組み合わせにより、キャッシュされた項目の有効期限が決まります。有効期限ポリシーには、**[絶対]**、**[スライド]**、および **[なし]** の 3 つの種類があります。
 
-When **Absolute** is specified, the expiration interval specified by **Time (min)** begins when an item is added to the cache. After the interval specified by **Time (min)** elapses, the item expires. 
+**[絶対]** が指定されている場合、項目がキャッシュに追加されると、**[時間 (分)]** により指定された有効期間が始まります。**[時間 (分)]** により指定された期間が経過すると、項目は期限切れになります。
 
-When **Sliding** is specified, the expiration interval specified by **Time (min)** is reset each time an item is accessed in the cache. The item does not expire until the interval specified by **Time (min)** elapses after the last access to the item.
+**[スライド]** が指定されている場合、キャッシュ内の項目にアクセスがあるたびに、**[時間 (分)]** により指定された有効期間がリセットされます。項目への最後のアクセスから、**[時間 (分)]** により指定された期間が経過するまで、項目は期限切れになりません。
 
-When **Never** is specified, **Time (min)** must be set to **0**, and items do not expire.
+**[なし]** が指定されている場合、**[時間 (分)]** は **0** に設定する必要があります。項目は期限切れになりません。
 
-**Absolute** is the default expiration policy and 10 minutes is the default setting for **Time (min)**. The expiration policy is fixed for each item in a named cache, but the **Time (min)** can be customized for each item by using **Add** and **Put** overloads that take a timeout parameter.
+既定の有効期限ポリシーは **[絶対]** で、**[時間 (分)]** の既定の設定は 10 分です。有効期限ポリシーは、名前付きキャッシュ内の項目ごとに固定されますが、**[時間 (分)]** は、タイムアウト パラメーターを受け取る **Add** オーバーロードと **Put** オーバーロードを使用することで項目ごとにカスタマイズできます。
 
-For more information about eviction and expiration policies, see [Expiration and Eviction][].
+削除ポリシーと有効期限ポリシーの詳細については、「[Azure のキャッシュ サービス (プレビュー) の有効期限と削除][]」を参照してください。
 
-## Notifications ##
+## 通知 ##
 
-Cache notifications that allow your applications to receive asynchronous notifications when a variety of cache operations occur on the cache cluster. Cache notifications also provide automatic invalidation of locally cached objects. For more information, see [Notifications][].
+キャッシュ クラスターでさまざまなキャッシュ操作が発生したときに、アプリケーションが非同期通知を受け取ることができるようにするキャッシュ通知です。キャッシュ通知は、ローカルにキャッシュされた自動無効化も行います。詳細については、「[Azure のキャッシュ サービス (プレビュー) の通知][]」を参照してください。
 
->Notifications are only available in the Standard and Premium cache offerings, and are not available in the Basic cache offering. For more information, see [Cache offerings][].
+>通知は、標準およびプレミアム キャッシュ オファリングでのみ使用できます。基本キャッシュ オファリングでは使用できません。詳細については、「[Azure のキャッシュ サービス (プレビュー) のキャッシュ オファリング][]」を参照してください。
 
-## High Availability ##
+## 高可用性 ##
 
-When high availability is enabled, a backup copy is made of each item added to the cache. If an unexpected failure occurs to the primary copy of the item, the backup copy is still available.
+高可用性が有効な場合、バックアップ コピーはキャッシュに追加された各項目で作成されます。項目のプライマリ コピーで予期しないエラーが発生した場合でも、バックアップ コピーを使用できます。
 
-By definition, the use of high availability multiplies the amount of required memory for each cached item by two. Consider this memory impact during capacity planning tasks. For more information, see [High Availability][].
+その名が示すとおり、高可用性を使用すると、各キャッシュ項目に必要なメモリの量が 2 倍に増えます。容量計画を行うときは、このメモリの影響を考慮に入れてください。詳細については、「[Azure のキャッシュ サービス (プレビュー) の高可用性][]」を参照してください。
 
->High availability is only available in the Premium cache offering, and is not available in the Basic or Standard cache offerings. For more information, see [Cache offerings][].
+>高可用性は、プレミアム キャッシュ オファリングでのみ使用できます。基本および標準 キャッシュ オファリングでは使用できません。詳細については、「[Azure のキャッシュ サービス (プレビュー) のキャッシュ オファリング][]」を参照してください。
 
-## Eviction ##
+## 削除 ##
 
-To maintain the memory capacity available within a cache, least recently used (LRU) eviction is supported. When memory consumption exceeds the memory threshold, objects are evicted from memory, regardless of whether they have expired or not, until the memory pressure is relieved.
-Eviction is enabled by default. If eviction is disabled, items will not be evicted from the cache when the capacity is reached, and instead Put and Add operations will fail.
+キャッシュ内で使用可能なメモリ容量を維持するため、Least Recently Used (LRU) 削除がサポートされています。メモリ消費量がメモリしきい値を超えると、メモリ容量に余裕が出るまで、期限切れかどうかに関係なくオブジェクトがメモリから削除されます。
+削除は、既定で有効です。削除が無効な場合、容量に到達しても項目はキャッシュから削除されないため、Put 操作と Add 操作に失敗します。
 
-For more information about eviction and expiration policies, see [Expiration and Eviction][].
+削除ポリシーと有効期限ポリシーの詳細については、「[Azure のキャッシュ サービス (プレビュー) の有効期限と削除][]」を参照してください。
 
-Once the cache is configured, you can configure the cache clients to allow access to the cache.
+キャッシュの構成が済んだら、キャッシュにアクセスできるようにキャッシュ クライアントを構成できます。
 
 <a name="NuGet"></a>
-## Configure the cache clients
+## キャッシュ クライアントの構成
 
-A cache created using the Cache Service (Preview) is accessible from Azure applications running on Azure Web Sites, Web & Worker Roles and Virtual Machines. A NuGet package is provided that simplifies the configuration of cache client applications. 
+キャッシュ サービス (プレビュー) を使用して作成されたキャッシュには、Azure Web サイト、Web ロールとワーカー ロール、および仮想マシンで実行されている Azure アプリケーションからアクセスできます。キャッシュ クライアント アプリケーションの構成を容易にする NuGet パッケージが用意されています。
 
-To configure a client application using the Cache NuGet package, right-click the project in **Solution Explorer** and choose **Manage NuGet Packages**. 
+Cache NuGet パッケージを使用してクライアント アプリケーションを構成するには、**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
 ![NuGetPackageMenu][NuGetPackageMenu]
 
-Select **Azure Caching**, click **Install**, and then click I Accept.
+**[Azure の Caching]** を選択し、**[インストール]**、[同意する] の順にクリックします。
 
->If **Azure Caching** does not appear in the list type **WindowsAzure.Caching** into the **Search Online** text box and select it from the results.
+>一覧に **[Azure の Caching]** が表示されない場合は、**[オンライン検索]** ボックスに「**WindowsAzure.Caching**」と入力し、結果の中から選択します。
 
 ![NuGetPackage][NuGetPackage]
 
-The NuGet package does several things: it adds the required configuration to the config file of the application, and it adds the required assembly references. For Cloud Services projects, it also adds a cache client diagnostic level setting to the ServiceConfiguration.cscfg file of the Cloud Service.
+NuGet パッケージは、いくつかの処理を行います。アプリケーションの構成ファイルに必要な構成を追加したり、必要なアセンブリ参照を追加したりします。クラウド サービス プロジェクトの場合、クラウド サービスの ServiceConfiguration.cscfg ファイルにキャッシュ クライアント診断レベル設定も追加します。
 
->For ASP.NET web projects, the Cache NuGet package also adds two commented out sections to web.config. The first section enables session state to be stored in the cache, and the second section enables ASP.NET page output caching. For more information, see [How To: Store ASP.NET Session State in the Cache] and [How To: Store ASP.NET Page Output Caching in the Cache][].
+>ASP.NET Web プロジェクトでは、Cache NuGet パッケージは 2 つのコメント アウトされたセクションも web.config に追加します。1 つ目のセクションはセッション状態をキャッシュに格納できるようにし、2 つ目のセクションは ASP.NET ページがキャッシュを出力できるようにします。詳細については、「[方法: ASP.NET セッション状態をキャッシュに格納する]」および「[方法: ASP.NET ページ出力キャッシュをキャッシュに格納する][]」を参照してください。
 
-The NuGet package adds the following configuration elements into your application's web.config or app.config. A **dataCacheClients** section and a **cacheDiagnostics** section are added under the **configSections** element. If there is no **configSections** element present, one is created as a child of the **configuration** element.
+NuGet パッケージは、次の構成要素をアプリケーションの web.config または app.config に追加します。**dataCacheClients** セクションおよび **cacheDiagnostics** セクションは、**configSections** 要素の下に追加されます。**configSections** 要素が存在しない場合は、**configuration** 要素の子として作成されます。
 
     <configSections>
       <!-- Existing sections omitted for clarity. -->
@@ -179,7 +177,7 @@ The NuGet package adds the following configuration elements into your applicatio
         allowDefinition="Everywhere" />
 
 
-These new sections include references to a **dataCacheClients** element, which is also added to the **configuration** element.
+これらの新しいセクションには、**configuration** 要素にも追加された **dataCacheClients** 要素への参照が含まれています。
 
     <dataCacheClients>
       <dataCacheClient name="default">
@@ -199,19 +197,19 @@ These new sections include references to a **dataCacheClients** element, which i
     </dataCacheClients>
 
 
-After the configuration is added, replace the following two items in the newly added configuration.
+構成が追加されたら、新たに追加された構成で次の 2 つの項目を置き換えます。
 
-1. Replace **[Cache role name or Service Endpoint]** with the endpoint, which is displayed on the Dashboard in the Management Portal.
+1.**[[Cache role name or Service Endpoint]]** を、管理ポータルのダッシュボードに表示されるエンドポイントに置き換えます。
 
 	![Endpoint][Endpoint]
 
-2. Uncomment the securityProperties section, and replace **[Authentication Key]** with the authentication key, which can be found in the Management Portal by clicking **Manage Keys** from the cache dashboard.
+2.securityProperties セクションをコメント解除し、**[[Authentication Key]]** を認証キーに置き換えます。認証キーは、キャッシュ ダッシュボードから **[キーの管理]** をクリックすることで管理ポータルに表示されます。
 
 	![AccessKeys][AccessKeys]
 
->These settings must be configured properly or clients will not be able to access the cache.
+>これらの設定を適切に構成しないと、クライアントはキャッシュにアクセスできません。
 
-For Cloud Services projects, the NuGet package also adds a **ClientDiagnosticLevel** setting to the **ConfigurationSettings** of the cache client role in ServiceConfiguration.cscfg. The following example is the **WebRole1** section from a ServiceConfiguration.cscfg file with a **ClientDiagnosticLevel** of 1, which is the default **ClientDiagnosticLevel**.
+クラウド サービス プロジェクトの場合、NuGet パッケージは、キャッシュ クライアント ロールの ServiceConfiguration.cscfg 内の **ConfigurationSettings** に、**ClientDiagnosticLevel** 設定も追加します。次の例は、ServiceConfiguration.cscfg ファイルの **WebRole1** セクションで、**ClientDiagnosticLevel** は 1 になっています (**ClientDiagnosticLevel** の既定値)。
 
     <Role name="WebRole1">
       <Instances count="1" />
@@ -222,9 +220,9 @@ For Cloud Services projects, the NuGet package also adds a **ClientDiagnosticLev
       </ConfigurationSettings>
     </Role>
 
->The client diagnostic level configures the level of caching diagnostic information collected for cache clients. For more information, see [Troubleshooting and Diagnostics][]
+>クライアント診断レベルは、キャッシュ クライアントのために収集されるキャッシュ診断情報のレベルを構成します。詳細については、「[Azure のキャッシュ サービス (プレビュー) の ClientDiagnosticLevel について][]」を参照してください。
 
-The NuGet package also adds references to the following assemblies:
+NuGet パッケージは、次のアセンブリへの参照も追加します。
 
 -   Microsoft.ApplicationServer.Caching.Client.dll
 -   Microsoft.ApplicationServer.Caching.Core.dll
@@ -233,44 +231,42 @@ The NuGet package also adds references to the following assemblies:
 -   Microsoft.ApplicationServer.Caching.AzureCommon.dll
 -   Microsoft.ApplicationServer.Caching.AzureClientHelper.dll
 
-If your project is a web project, the following assembly reference is also added:
+プロジェクトが Web プロジェクトである場合は、次のアセンブリ参照も追加されます。
 
 -	Microsoft.Web.DistributedCache.dll.
 
->These assemblies are located in the C:\\Program Files\\Microsoft SDKs\\Windows Azure\\.NET SDK\\[sdk version]\\ref\\Caching\\ folder.
+>これらのアセンブリは、C:\\Program Files\\Microsoft SDKs\\Windows Azure\\.NET SDK\\[SDK バージョン]\\ref\\Caching\\ フォルダーにあります。
 
-Once your client project is configured for caching, you can use the techniques described in the following sections for working with your cache.
+クライアント プロジェクトをキャッシュ用に構成できたら、以降のセクションで説明されている、キャッシュを操作するための技法を使用できます。
 
 <a name="working-with-caches"></a>
-## Working with Caches
+## キャッシュの操作
 
-The steps in this section describe how to perform common tasks with Cache.
+このセクションの手順では、キャッシュに対する一般的なタスクを行う方法について説明します。
 
--	[How To: Create a DataCache Object][]
--   [How To: Add and Retrieve an Object from the Cache][]
--   [How To: Specify the Expiration of an Object in the Cache][]
--   [How To: Store ASP.NET Session State in the Cache][]
--   [How To: Store ASP.NET Page Output Caching in the Cache][]
+-	[方法: DataCache オブジェクトを作成する][]
+-   [方法: キャッシュでオブジェクトを追加および削除する][]
+-   [方法: キャッシュ内のオブジェクトの有効期限を指定する][]
+-   [方法: ASP.NET セッション状態をキャッシュに格納する][]
+-   [方法: ASP.NET ページ出力キャッシュをキャッシュに格納する][]
 
 <a name="create-cache-object"></a>
-## How To: Create a DataCache Object
+## 方法: DataCache オブジェクトを作成する
 
-In order to programatically work with a cache, you need a reference to the cache. Add the following to the top of any file from which you want to use
-Azure Cache:
+プログラムでキャッシュを操作するには、キャッシュへの参照が必要です。Azure のキャッシュを使用するファイルの先頭に、
+次の内容を追加します。
 
     using Microsoft.ApplicationServer.Caching;
 
->If Visual Studio doesn't recognize the types in the using
-statement even after installing the Cache NuGet package, which adds the necessary references, ensure that the target
-profile for the project is .NET Framework 4 or higher, and be sure to select one of the profiles that does not specify **Client Profile**. For instructions on configuring cache clients, see [Configure the cache clients][].
+>Cache NuGet パッケージをインストールして、必要な参照が追加された後も、Visual Studio が using ステートメント内の型を認識しない場合は、プロジェクトのターゲット プロファイルが .NET Framework 4 以降であることを確認し、**クライアント プロファイル**と指定されていないプロファイルを選択するようにしてください。キャッシュ クライアントを構成する手順については、「[キャッシュ クライアントの構成][]」を参照してください。
 
-There are two ways to create a **DataCache** object. The first way is to simply create a **DataCache**, passing in the name of the desired cache.
+**DataCache** オブジェクトを作成する方法は、2 つあります。1 つ目の方法では、目的のキャッシュの名前を渡して、単純に **DataCache** を作成します。
 
     DataCache cache = new DataCache("default");
 
-Once the **DataCache** is instantiated, you can use it to interact with the cache, as described in the following sections.
+**DataCache** がインスタンス化されたら、以降のセクションで説明されているように、それを使ってキャッシュを操作できます。
 
-To use the second way, create a new **DataCacheFactory** object in your application using the default constructor. This causes the cache client to use the settings in the configuration file. Call either the **GetDefaultCache** method of the new **DataCacheFactory** instance which returns a **DataCache** object, or the **GetCache** method and pass in the name of your cache. These methods return a **DataCache** object that can then be used to programmatically access the cache.
+2 つ目の方法では、既定のコンストラクターを使用して、アプリケーション内に新しい **DataCacheFactory** オブジェクトを作成します。このようにすると、キャッシュ クライアントが構成ファイル内の設定を使うようになります。**DataCache** オブジェクトを返す、新しい **DataCacheFactory** インスタンスの **GetDefaultCache** メソッドを呼び出すか、**GetCache** メソッドを呼び出してキャッシュの名前を渡します。これらのメソッドは、プログラムでキャッシュにアクセスするために使用できる **DataCache** オブジェクトを返します。
 
     // Cache client configured by settings in application configuration file.
     DataCacheFactory cacheFactory = new DataCacheFactory();
@@ -279,24 +275,23 @@ To use the second way, create a new **DataCacheFactory** object in your applicat
     // cache can now be used to add and retrieve items.	
 
 <a name="add-object"></a>
-## How To: Add and Retrieve an Object from the Cache
+## 方法: キャッシュでオブジェクトを追加および削除する
 
-To add an item to the cache, the **Add** method or the **Put** method
-can be used. The **Add** method adds the specified object to the cache,
-keyed by the value of the key parameter.
+キャッシュに項目を追加するには、**Add** メソッド
+または **Put** メソッドを使用できます。**Add** メソッドは、指定されたオブジェクトを、キー パラメーター
+の値でキー付けして、キャッシュに追加します。
 
     // Add the string "value" to the cache, keyed by "item"
     cache.Add("item", "value");
 
-If an object with the same key is already in the cache, a
-**DataCacheException** will be thrown with the following message:
+キャッシュに同じキーのオブジェクトが既にある場合、**DataCacheException** がスローされ、次のメッセージが表示されます。
 
-> ErrorCode:SubStatus: An attempt is being made to create an object with
-> a Key that already exists in the cache. Caching will only accept
-> unique Key values for objects.
+> ErrorCode:SubStatus: Cache に既に存在するキーを使用してオブジェクトを
+> 作成しようとしています。Cache はオブジェクトの
+> 一意のキー値のみを受け入れます。
 
-To retrieve an object with a specific key, the **Get** method can be used. If the object exists, it is
-returned, and if it does not, null is returned.
+特定のキーのオブジェクトを取得するには、**Get** メソッドを使用できます。オブジェクトが存在する場合は
+それが返され、存在しない場合は null が返されます。
 
     // Add the string "value" to the cache, keyed by "key"
     object result = cache.Get("Item");
@@ -312,34 +307,33 @@ returned, and if it does not, null is returned.
         // "Item" is in cache, cast result to correct type.
     }
 
-The **Put** method adds the object with the specified key to the cache
-if it does not exist, or replaces the object if it does exist.
+**Put** メソッドは、指定されたキーを持つオブジェクトがキャッシュに
+存在しなければそれを追加し、存在すればそのオブジェクトを置き換えます。
 
     // Add the string "value" to the cache, keyed by "item". If it exists,
     // replace it.
     cache.Put("item", "value");
 
 <a name="specify-expiration"></a>
-## How To: Specify the Expiration of an Object in the Cache
+## 方法: キャッシュ内のオブジェクトの有効期限を指定する
 
-By default items in the cache expire 10 minutes after they are placed in the cache. This can be configured in the **Time (min)** setting on the Configure tab for Cache in the Management Portal.
+既定では、キャッシュ内の項目はキャッシュに置かれてから 10 分で期限切れになります。これは、管理ポータルのキャッシュの [構成] タブにある **[時間 (分)]** 設定で構成できます。
 
 ![NamedCaches][NamedCaches]
 
-There are three types of **Expiry Policy**: **Never**, **Absolute**, and **Sliding**. These configure how **Time (min)** is used to determine expiration. The default **Expiration Type** is **Absolute**, which means that the countdown timer for an item's expiration begins when the item is placed into the cache. Once the specified amount of time has elapsed for an item, the item expires. If **Sliding** is specified, then the expiration countdown for an item is reset each time the item is accessed in the cache, and the item will not expire until the specified amount of time has elapsed since its last access. If **Never** is specified, then **Time (min)** must be set to **0**, and items will not expire, and will remain valid as long as they are in the cache.
+**有効期限ポリシー**には、**[なし]**、**[絶対]**、および **[スライド]** の 3 つの種類があります。これらは、**[時間 (分)]** を使用して有効期限を決定する方法を構成します。既定の **[有効期限の種類]** は **[絶対]** であり、キャッシュの項目の有効期限のカウントダウン タイマーは、キャッシュに項目が置かれたときに始まります。指定された時間が経過すると、項目は期限切れになります。**[スライド]** が指定されている場合、項目の有効期限のカウントダウンはキャッシュ内の項目がアクセスされるたびにリセットされ、最後のアクセス以降に指定の時間が経過するまでは期限切れになりません。**[なし]** が指定されている場合、**[時間 (分)]** は **0** に設定されている必要があります。項目は期限切れにならずに、キャッシュ内にある限り有効のままになります。
 
-If a longer or shorter timeout interval than what is configured in the cache properties is desired, a specific duration can be specified when an item is added or updated in the cache by using the
-overload of **Add** and **Put** that take a **TimeSpan** parameter. In
-the following example, the string **value** is added to cache, keyed by
-**item**, with a timeout of 30 minutes.
+キャッシュ プロパティで構成されているよりも長いまたは短いタイムアウト間隔にする場合は、キャッシュ内の項目を追加または更新するときに、**TimeSpan** パラメーターを取る **Add** および **Put** のオーバーロードを使用して、特定の期間を指定できます。次の
+例では、文字列 **value** が **item** でキー付けされ、
+30 分のタイムアウトでキャッシュに追加されます。
 
     // Add the string "value" to the cache, keyed by "item"
     cache.Add("item", "value", TimeSpan.FromMinutes(30));
 
-To view the remaining timeout interval of an item in the cache, the
-**GetCacheItem** method can be used to retrieve a **DataCacheItem**
-object that contains information about the item in the cache, including
-the remaining timeout interval.
+キャッシュ内の項目の残りのタイムアウト間隔を確認するには、
+**GetCacheItem** メソッドを使用して、キャッシュ内の項目についての
+情報 (残りのタイムアウト間隔など) が含まれている **DataCacheItem** 
+オブジェクトを取得できます。
 
     // Get a DataCacheItem object that contains information about
     // "item" in the cache. If there is no object keyed by "item" null
@@ -348,13 +342,13 @@ the remaining timeout interval.
     TimeSpan timeRemaining = item.Timeout;
 
 <a name="store-session"></a>
-## How To: Store ASP.NET Session State in the Cache
+## 方法: ASP.NET セッション状態をキャッシュに格納する
 
-The Session State Provider for Azure Cache is an
-out-of-process storage mechanism for ASP.NET applications. This provider
-enables you to store your session state in an Azure cache rather
-than in-memory or in a SQL Server database. To use the caching session
-state provider, first configure your cache, and then configure your ASP.NET application for Cache using the Cache NuGet package as described in [Getting Started with Cache Service (Preview)][]. When the Cache NuGet package is installed, it adds a commented out section in web.config that contains the required configuration for your ASP.NET application to use the Session State Provider for Azure Cache.
+Azure のキャッシュのセッション状態プロバイダーは、
+ASP.NET アプリケーション用のプロセス外ストレージ メカニズムです。このプロバイダー
+を使用すると、セッション状態をメモリ内や SQL Server データベース内ではなく、
+Azure のキャッシュ内に格納できます。キャッシュ セッション状態
+プロバイダーを使用するには、まずキャッシュを構成し、次に「[キャッシュ サービス (プレビュー) を使い始める方法][]」で説明されているように Cache NuGet パッケージを使用して ASP.NET アプリケーションをキャッシュ用に構成します。Cache NuGet パッケージをインストールすると、コメント アウトされたセクションが web.config に追加されます。これには、ASP.NET アプリケーションが Azure のキャッシュ用のセッション状態プロバイダーを使用するために必要な構成が含まれています。
 
     <!--Uncomment this section to use Azure Caching for session state caching
     <system.web>
@@ -369,20 +363,20 @@ state provider, first configure your cache, and then configure your ASP.NET appl
       </sessionState>
     </system.web>-->
 
->If your web.config does not contain this commented out section after installing the Cache NuGet package, ensure that the latest NuGet Package Manager is installed from [NuGet Package Manager Installation][], and then uninstall and reinstall the package.
+>Cache NuGet パッケージのインストール後も、web.config にこのコメント アウトされたセクションが含まれていない場合は、最新の NuGet パッケージ マネージャーが [NuGet パッケージ マネージャーのインストールのページ][]からインストールされていることを確認し、パッケージをアンインストールしてから再インストールします。
 
-To enable the Session State Provider for Azure Cache, uncomment the specified section. The default cache is specified in the provided snippet. To use a different cache, specify the desired cache in the **cacheName** attribute.
+Azure のキャッシュ用のセッション状態プロバイダーを有効にするには、指定されたセクションをコメント解除します。既定のキャッシュは、提供されるスニペットで指定されています。別のキャッシュを使用するには、目的のキャッシュを **cacheName** 属性で指定します。
 
-For more information about using the Cache service session state
-provider, see [Session State Provider for Azure Cache][].
+キャッシュ サービス セッション状態プロバイダーの使い方の詳細については、
+[Azure のキャッシュのセッション状態プロバイダーに関するページ][]を参照してください。
 
 <a name="store-page"></a>
-## How To: Store ASP.NET Page Output Caching in the Cache
+## 方法: ASP.NET ページ出力キャッシュをキャッシュに格納する
 
-The Output Cache Provider for Azure Cache is an out-of-process storage mechanism for output cache data. This data is specifically for full HTTP
-responses (page output caching). The provider plugs into the new output
-cache provider extensibility point that was introduced in ASP.NET 4. To
-use the output cache provider, first configure your cache cluster, and then configure your ASP.NET application for caching using the Cache NuGet package, as described in [Getting Started with Cache Service (Preview)][]. When the Caching NuGet package is installed, it adds the following commented out section in web.config that contains the required configuration for your ASP.NET application to use the Output Cache Provider for Azure Caching.
+Azure のキャッシュの出力キャッシュ プロバイダーは、出力キャッシュ データ用のプロセス外ストレージ メカニズムです。このデータは、完全な HTTP 応答
+専用です (ページ出力キャッシュ)。プロバイダーは、ASP.NET 4 で導入された
+新しい出力キャッシュ プロバイダー機能拡張ポイントに接続されます。
+出力キャッシュ プロバイダーを使用するには、まずキャッシュ クラスターを構成し、次に、「[キャッシュ サービス (プレビュー) を使い始める方法][]」で説明されているように Cache NuGet パッケージを使用して ASP.NET アプリケーションをキャッシュ用に構成します。Caching NuGet パッケージをインストールすると、次のコメント アウトされたセクションが web.config に追加されます。これには、ASP.NET アプリケーションが Azure の Caching 用の出力キャッシュ プロバイダーを使用するために必要な構成が含まれています。
 
     <!--Uncomment this section to use Azure Caching for output caching
     <caching>
@@ -397,46 +391,46 @@ use the output cache provider, first configure your cache cluster, and then conf
       </outputCache>
     </caching>-->
 
->If your web.config does not contain this commented out section after installing the Cache NuGet package, ensure that the latest NuGet Package Manager is installed from [NuGet Package Manager Installation][], and then uninstall and reinstall the package.
+>Cache NuGet パッケージのインストール後も、web.config にこのコメント アウトされたセクションが含まれていない場合は、最新の NuGet パッケージ マネージャーが [NuGet パッケージ マネージャーのインストールのページ][]からインストールされていることを確認し、パッケージをアンインストールしてから再インストールします。
 
-To enable the Output Cache Provider for Azure Cache, uncomment the specified section. The default cache is specified in the provided snippet. To use a different cache, specify the desired cache in the **cacheName** attribute.
+Azure のキャッシュ用の出力キャッシュ プロバイダーを有効にするには、指定されたセクションをコメント解除します。既定のキャッシュは、提供されるスニペットで指定されています。別のキャッシュを使用するには、目的のキャッシュを **cacheName** 属性で指定します。
 
-Add an **OutputCache** directive to each page for which you wish to cache the output.
+出力をキャッシュする各ページに、**OutputCache** ディレクティブを追加します。
 
     <%@ OutputCache Duration="60" VaryByParam="*" %>
 
-In this example the cached page data will remain in the cache for 60 seconds, and a different version of the page will be cached for each parameter combination. For more information on the available options, see [OutputCache Directive][].
+この例では、キャッシュされたページ データが 60 秒間キャッシュに保持され、パラメーターの組み合わせごとに異なるバージョンのページがキャッシュされます。使用できるオプションの詳細については、[OutputCache ディレクティブに関するページ][]を参照してください。
 
-For more information about using the Output Cache Provider for Azure Cache, see [Output Cache Provider for Azure Cache][].
+Azure のキャッシュの出力キャッシュ プロバイダーの使い方の詳細については、「[Azure のキャッシュ サービス (プレビュー) 用のページ出力キャッシュ プロバイダー][]」を参照してください。
 
 <a name="next-steps"></a>
-## Next Steps
+## 次のステップ
 
-Now that you've learned the basics of Cache Service (Preview),
-follow these links to learn how to do more complex caching tasks.
+これで、キャッシュ サービス (プレビュー) の基本を学習できました。
+さらに複雑なキャッシュ タスクを実行する方法については、次のリンク先を参照してください。
 
--   See the MSDN Reference: [Cache Service (Preview)][]
--	Learn how to migrate to Cache Service (Preview): [Migrate to Cache Service (Preview)][]
--   Check out the samples: [Cache Service (Preview) Samples][]
+-   MSDN リファレンス: [キャッシュ サービス (プレビュー)][]
+-	キャッシュ サービス (プレビュー) への移行方法を確認する: [Azure のキャッシュ サービス (プレビュー) への移行][]
+-   サンプルをチェックする: [Azure のキャッシュ サービス (プレビュー) のサンプル][]
 
 <!-- INTRA-TOPIC LINKS -->
-[Next Steps]: #next-steps
-[What is Azure Cache?]: #what-is
-[Create an Azure Cache]: #create-cache
-[Which type of caching is right for me?]: #choosing-cache
-[Prepare Your Visual Studio Project to Use Azure Caching]: #prepare-vs
-[Configure Your Application to Use Caching]: #configure-app
-[Getting Started with Cache Service (Preview)]: #getting-started-cache-service
-[Create the cache]: #create-cache
-[Configure the cache]: #enable-caching
-[Configure the cache clients]: #NuGet
-[Working with Caches]: #working-with-caches
-[How To: Create a DataCache Object]: #create-cache-object
-[How To: Add and Retrieve an Object from the Cache]: #add-object
-[How To: Specify the Expiration of an Object in the Cache]: #specify-expiration
-[How To: Store ASP.NET Session State in the Cache]: #store-session
-[How To: Store ASP.NET Page Output Caching in the Cache]: #store-page
-[Target a Supported .NET Framework Profile]: #prepare-vs-target-net
+[次のステップ]: #next-steps
+[Azure のキャッシュとは]: #what-is
+[Azure のキャッシュの作成]: #create-cache
+[最適なキャッシュの種類?]: #choosing-cache
+[Azure の Caching を使用するための Visual Studio プロジェクトの準備]: #prepare-vs
+[Caching を使用するようにアプリケーションを構成する]: #configure-app
+[キャッシュ サービス (プレビュー) を使い始める方法]: #getting-started-cache-service
+[キャッシュの作成]: #create-cache
+[キャッシュの構成]: #enable-caching
+[キャッシュ クライアントの構成]: #NuGet
+[キャッシュの操作]: #working-with-caches
+[方法: DataCache オブジェクトを作成する]: #create-cache-object
+[方法: キャッシュでオブジェクトを追加および削除する]: #add-object
+[方法: キャッシュ内のオブジェクトの有効期限を指定する]: #specify-expiration
+[方法: ASP.NET セッション状態をキャッシュに格納する]: #store-session
+[方法: ASP.NET ページ出力キャッシュをキャッシュに格納する]: #store-page
+[サポートされている .NET Framework プロファイル]: #prepare-vs-target-net
   
 <!-- IMAGES -->
 [NewCacheMenu]: ./media/cache-dotnet-how-to-use-service/CacheServiceNewCacheMenu.png
@@ -455,31 +449,31 @@ follow these links to learn how to do more complex caching tasks.
   
    
 <!-- LINKS -->
-[Azure Management Portal]: http://windows.azure.com/
-[How to: Configure a Cache Client Programmatically]: http://msdn.microsoft.com/en-us/library/windowsazure/gg618003.aspx
-[Session State Provider for Azure Cache]: http://go.microsoft.com/fwlink/?LinkId=320835
-[Azure AppFabric Cache: Caching Session State]: http://www.microsoft.com/en-us/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
-[Output Cache Provider for Azure Cache]: http://go.microsoft.com/fwlink/?LinkId=320837
-[Azure Shared Caching]: http://msdn.microsoft.com/en-us/library/windowsazure/gg278356.aspx
-[Team Blog]: http://blogs.msdn.com/b/windowsazure/
-[Azure Caching]: http://www.microsoft.com/en-us/showcase/Search.aspx?phrase=azure+caching
-[How to Configure Virtual Machine Sizes]: http://go.microsoft.com/fwlink/?LinkId=164387
-[Azure Caching Capacity Planning Considerations]: http://go.microsoft.com/fwlink/?LinkId=320167
-[Azure Caching]: http://go.microsoft.com/fwlink/?LinkId=252658
-[How to: Set the Cacheability of an ASP.NET Page Declaratively]: http://msdn.microsoft.com/en-us/library/zd1ysf1y.aspx
-[How to: Set a Page's Cacheability Programmatically]: http://msdn.microsoft.com/en-us/library/z852zf6b.aspx
-[Overview of Azure Cache Service (Preview)]: http://go.microsoft.com/fwlink/?LinkId=320830
-[Cache Service (Preview)]: http://go.microsoft.com/fwlink/?LinkId=320830
-[OutputCache Directive]: http://go.microsoft.com/fwlink/?LinkId=251979
-[Troubleshooting and Diagnostics]: http://go.microsoft.com/fwlink/?LinkId=320839
-[NuGet Package Manager Installation]: http://go.microsoft.com/fwlink/?LinkId=240311
-[Cache Pricing Details]: http://www.windowsazure.com/en-us/pricing/details/cache/
-[Management Portal]: https://manage.windowsazure.com/
-[Cache offerings]: http://go.microsoft.com/fwlink/?LinkId=317277
-[Capacity planning]: http://go.microsoft.com/fwlink/?LinkId=320167
-[Expiration and Eviction]: http://go.microsoft.com/fwlink/?LinkId=317278
-[High Availability]: http://go.microsoft.com/fwlink/?LinkId=317329
-[Notifications]: http://go.microsoft.com/fwlink/?LinkId=317276
-[Migrate to Cache Service (Preview)]: http://go.microsoft.com/fwlink/?LinkId=317347
-[Cache Service (Preview) Samples]: http://go.microsoft.com/fwlink/?LinkId=320840
+[Azure の管理ポータル]: http://windows.azure.com/
+[方法: プログラムによってキャッシュ クライアントを構成する]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg618003.aspx
+[Azure のキャッシュのセッション状態プロバイダーに関するページ]: http://go.microsoft.com/fwlink/?LinkId=320835
+[Azure AppFabric キャッシュ: Caching のセッション状態]: http://www.microsoft.com/ja-jp/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
+[Azure のキャッシュ サービス (プレビュー) 用のページ出力キャッシュ プロバイダー]: http://go.microsoft.com/fwlink/?LinkId=320837
+[Azure の共有キャッシュ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg278356.aspx
+[チーム ブログ]: http://blogs.msdn.com/b/windowsazure/
+[Azure の Caching]: http://www.microsoft.com/ja-jp/showcase/Search.aspx?phrase=azure+caching
+[仮想マシンのサイズの構成方法]: http://go.microsoft.com/fwlink/?LinkId=164387
+[Azure の Caching の容量計画に関する考慮事項]: http://go.microsoft.com/fwlink/?LinkId=320167
+[Azure の Caching]: http://go.microsoft.com/fwlink/?LinkId=252658
+[方法: 宣言によって ASP.NET ページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/ja-jp/library/zd1ysf1y.aspx
+[方法: プログラムによってページのキャッシュ可能性を設定する]: http://msdn.microsoft.com/ja-jp/library/z852zf6b.aspx
+[Azure のキャッシュ サービス (プレビュー)]: http://go.microsoft.com/fwlink/?LinkId=320830
+[キャッシュ サービス (プレビュー)]: http://go.microsoft.com/fwlink/?LinkId=320830
+[OutputCache ディレクティブに関するページ]: http://go.microsoft.com/fwlink/?LinkId=251979
+[Azure のキャッシュ サービス (プレビュー) の ClientDiagnosticLevel について]: http://go.microsoft.com/fwlink/?LinkId=320839
+[NuGet パッケージ マネージャーのインストールのページ]: http://go.microsoft.com/fwlink/?LinkId=240311
+[キャッシュの料金詳細]: http://www.windowsazure.com/ja-jp/pricing/details/cache/
+[管理ポータル]: https://manage.windowsazure.com/
+[Azure のキャッシュ サービス (プレビュー) のキャッシュ オファリング]: http://go.microsoft.com/fwlink/?LinkId=317277
+[Azure のキャッシュ サービス (プレビュー) の容量計画]: http://go.microsoft.com/fwlink/?LinkId=320167
+[Azure のキャッシュ サービス (プレビュー) の有効期限と削除]: http://go.microsoft.com/fwlink/?LinkId=317278
+[高可用性]: http://go.microsoft.com/fwlink/?LinkId=317329
+[Azure のキャッシュ サービス (プレビュー) の通知]: http://go.microsoft.com/fwlink/?LinkId=317276
+[Azure のキャッシュ サービス (プレビュー) への移行]: http://go.microsoft.com/fwlink/?LinkId=317347
+[Azure のキャッシュ サービス (プレビュー) のサンプル]: http://go.microsoft.com/fwlink/?LinkId=320840
 

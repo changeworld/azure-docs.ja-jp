@@ -1,54 +1,54 @@
-<properties linkid="manage-services-how-to-configure-websites" urlDisplayName="How to configure" pageTitle="How to configure web sites - Azure service management" metaKeywords="Azure websites, configuring Azure websites, Azure SQL database, Azure MySQL" description="Learn how to configure web sites in Azure, including how to configure a web site to use a SQL Database or MySQL database." metaCanonical="" services="web-sites" documentationCenter="" title="How to Configure Web Sites" authors="timamm" solutions="" manager="" editor="mollybos" />
+<properties linkid="manage-services-how-to-configure-websites" urlDisplayName="構成方法" pageTitle="Web サイトの構成方法 - Azure サービス管理" metaKeywords="Azure の Web サイト, Azure の Web サイトの構成, Azure SQL データベース, Azure MySQL" description="SQL データベースまたは MySQL データベースを使用するように Web サイトを構成する方法を含めて、Azure の Web サイトの構成方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="Web サイトの構成方法" authors="timamm" solutions="" manager="" editor="mollybos" />
 
 
 
 
 
-# How to Configure Web Sites #
-In the Azure Management Portal you can change the configuration options for web sites and you can link web site to other Azure resources. For example, you can link web sites to a SQL Database to provide additional functionality. You can also configure web sites to use a new or existing MySQL database.
+# Web サイトの構成方法#
+Azure の管理ポータルでは、Web サイトの構成オプションを変更し、Web サイトを他の Azure リソースにリンクすることができます。たとえば、Web サイトを SQL データベースにリンクし、追加機能を提供することができます。新規または既存の MySQL データベースを使用できるように Web サイトを構成することもできます。
 
-## Table of Contents ##
-- [How to: Change configuration options for a web site](#howtochangeconfig)
-- [How to: Configure a web site to use a SQL database](#howtoconfigSQL)
-- [How to: Configure a web site to use a MySQL database](#howtoconfigMySQL)
-- [How to: Configure a custom domain name](#howtodomain)
-- [How to: Configure a web site to use SSL](#howtoconfigSSL)
-- [Next steps](#next)
+## 目次##
+- [方法: Web サイトの構成オプションを変更する](#howtochangeconfig)
+- [方法: SQL データベースを使用する Web サイトを構成する](#howtoconfigSQL)
+- [方法: MySQL データベースを使用する Web サイトを構成する](#howtoconfigMySQL)
+- [方法: カスタム ドメイン名を構成する](#howtodomain)
+- [方法: SSL を使用する Web サイトを構成する](#howtoconfigSSL)
+- [次のステップ](#next)
 
 
 
-##<a name="howtochangeconfig"></a>How to: Change configuration options for a web site
+##<a name="howtochangeconfig"></a>方法: Web サイトの構成オプションを変更する
 
 <!-- HOW TO: CHANGE CONFIGURATION OPTIONS FOR A WEB SITE -->
 
-Follow these steps to change configuration options for a web site.
+Web サイトの構成オプションを変更するには、次の手順に従います。
 
 <ol>
-	<li>In the Management Portal, open the web site's management pages.</li>
-	<li>Click the <strong>Configure</strong> tab to open the <strong>Configure</strong> management page.</li>
-	<li>Set the following configuration options for the web site as appropriate:
+	<li>管理ポータルで、Web サイトの管理ページを開きます。</li>
+	<li><strong>[構成]</strong> タブをクリックして <strong>[構成]</strong> 管理ページを開きます。</li>
+	<li>必要に応じて、次の構成オプションを Web サイトに設定します。
 	<ul>
 
 	<!-- GENERAL -->
-	<li><strong>general</strong>
+	<li><strong>全般</strong>
 <ul>
-<li><strong>.NET Framework Version</strong> - If your web application uses the .NET Framework, set the version of the framework that the web application requires.</li>
+<li><strong>[.NET Framework バージョン]</strong> - Web アプリケーションで .NET Framework を使用する場合、Web アプリケーションが必要とする .NET Framework のバージョンを設定します。</li>
 
-<li><strong>PHP Version</strong> - If your web application uses PHP, set the version of PHP that the web application requires.</li>
-<li><strong>Java Version</strong> - Select the displayed version of Java to enable it for your web application, or <strong>OFF</strong> to disable Java. If you enable Java for your web application, the <strong>Web Container</strong> option lets you choose between Tomcat and Jetty versions.
-<p><strong>Note</strong>: For technical reasons, enabling Java for your web site disables the .NET, PHP, and Python options.</p>
+<li><strong>[PHP バージョン]</strong> - Web アプリケーションで PHP を使用する場合、Web アプリケーションが必要とする PHP のバージョンを設定します。</li>
+<li><strong>[Java バージョン]</strong> - 表示されている Java のバージョンを選択して Web アプリケーションで有効にするか、<strong>[オフ]</strong> を選択して Java を無効にします。Web アプリケーションで Java を有効にすると、<strong>[Web コンテナー]</strong> オプションでは Tomcat や Jetty のバージョンを選択できます。
+<p><strong>注</strong>: 技術的な理由で、Web サイトで Java を有効にすると、.NET、PHP、Python オプションが無効になります。</p>
 </li>
-<li><strong>Python  Version</strong> - Shows the Python version (non-configurable).</li>
-<li><strong>Managed Pipeline Mode</strong> - Of the two choices, <strong>Classic</strong> and <strong>Integrated</strong>, Integrated is the default. You should use the Classic option only if you have legacy web sites that run exclusively on older versions of IIS.</li>
+<li><strong>[Python バージョン]</strong> - Python バージョンを表示します (構成不可能)。</li>
+<li><strong>[マネージ パイプライン モード]</strong> - <strong>[クラシック]</strong> または <strong>[統合]</strong> を選択します。既定値は [統合] です。従来の Web サイトを古いバージョンの IIS 上で実行する必要がある場合のみ、[クラシック] オプションを選択してください。</li>
 
-<li><strong>Platform</strong> - For sites in Standard mode, you can choose whether you want your application to run in a 32-bit or 64-bit environment. Sites in the Free and Shared modes always run in a 32-bit environment.</li>
+<li><strong>[プラットフォーム]</strong> - 標準モードのサイトについて、アプリケーションの実行環境 (32 ビットまたは 64 ビット) を選択できます。無料モードおよび共有モードのサイトは常に 32 ビット環境で実行されます。</li>
 
-<li><strong>Web Sockets</strong> - Choose <strong>On</strong> to enable your web site to use real time request pattern applications such as chat.</li>
+<li><strong>[Web Socket]</strong> - <strong>[オン]</strong> を選択すると、チャットなどのリアルタイム要求パターン アプリケーションを Web サイトで使用できるようになります。</li>
 
-<li><strong>Always On</strong> - By default, web sites are unloaded if they have been idle for some period of time. This lets the system conserve resources. You can enable the <strong>Always On</strong> setting for a site in Standard mode if the site needs to be loaded all the time. Because continuous web jobs may not run reliably if <strong>Always On</strong> is disabled, you should enable <strong>Always On</strong> when you have continuous web jobs running on the site.</li>
+<li><strong>[常時接続]</strong> - 既定では、アイドル状態がしばらく続いている Web サイトがアンロードされます。これにより、システムではリソースを節約できます。<strong>[常時接続]</strong> 設定は標準モードのサイトでのみ使用でき、サイトが常にロードされている必要がある場合にオンにします。<strong>[常時接続]</strong> を無効にした場合、連続的に動作する Web ジョブが確実に実行されない可能性があるため、サイト上で連続的に動作する Web ジョブがあるときは、<strong>[常時接続]</strong> を有効にする必要があります。</li>
 
-<li><strong>Edit in Visual Studio Online</strong> - Select <strong>On</strong> to enable live code editing with Visual Studio Online. After you save this configuration change, the DASHBOARD tab's <strong>Quick Glance</strong> section will display a link called <strong>Edit in Visual Studio Online</strong>. Click the link to edit your web site directly online. If you need to authenticate, you can use your basic deployment credentials. 
-<p><strong>Note</strong>: If you have 'deployment from source control' enabled, it is possible for a deployment to overwrite changes the changes you make in the Visual Studio Online editor. It is therefore best not to use 'deployment from source control' if you want to edit the site contents directly with Visual Studio Online.</p>
+<li><strong>[Visual Studio Online での編集]</strong> - <strong>[オン]</strong> を選択すると、Visual Studio Online でコードを編集できるようになります。この構成変更を保存すると、[ダッシュボード] タブの <strong>[概要]</strong> セクションに <strong>[Visual Studio Online での編集]</strong> リンクが表示されます。Web サイトをオンラインで直接変更するには、このリンクをクリックします。認証が必要な場合は、基本的なデプロイの資格情報を使用できます。
+<p><strong>注</strong>: "ソース管理からの展開" を有効にしている場合、Visual Studio オンライン エディターで行った変更を展開で上書きできるようになります。そのため、Visual Studio Online でサイト コンテンツを直接編集する場合は、"ソース管理からの展開" を使用しないことをお勧めします。</p>
 </li>
 
 
@@ -56,166 +56,167 @@ Follow these steps to change configuration options for a web site.
 </ul></li>
 
 <!-- CERTIFICATES -->
-<li><strong>certificates</strong> - In Standard mode only, you can click <strong>upload</strong> to upload an SSL certificate for a custom domain. The certificates you upload are listed here. Wildcard ("star") certificates (certificates with an asterisk) are supported. After you upload a certificate, you can assign it to any web site in your subscription and region. A star certificate only has to be uploaded once, but can be used for any site within the domain for which it is valid. A certificate can be deleted only if no bindings in any site are active for the given certificate.
-<br /><strong>Note:</strong>
-Custom domains are available only in Shared and Standard modes, and SSL support for custom domains is available in Standard mode only. For information about configuring SSL for a custom domain on Azure, see <a href="http://www.windowsazure.com/en-us/documentation/articles/web-sites-configure-ssl-certificate/">Enable HTTPS for an Azure web site</a>.
+<li><strong>[証明書]</strong> - 標準モードでのみ、<strong>[アップロード]</strong> をクリックして、カスタム ドメインの SSL 証明書をアップロードすることができます。アップロードする証明書はここに一覧表示されます。ワイルドカード ("スター") 証明書 (アスタリスク "*" を使った証明書) がサポートされています。証明書をアップロードすると、サブスクリプションとリージョンのすべての Web サイトにそれを割り当てることができます。スター証明書は 1 回アップロードするだけで、有効なドメイン内のすべてのサイトに使用できます。証明書を削除できるのは、その証明書についてサイトのアクティブなバインドがない場合だけです。
+<br /><strong>注: </strong>
+カスタム ドメインは共有モードと標準モードでのみ使用でき、カスタム ドメインの SSL サポートは標準モードでのみ使用できます。Azure でカスタム ドメインの SSL を構成する方法については、「<a href="http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-configure-ssl-certificate/">Enable HTTPS for an Azure web site (Azure の Web サイトでの HTTPS の有効化)</a>」を参照してください。
 </li>
 
 <!-- DOMAIN NAMES -->
-<li><strong>domain names</strong> - View or add additional domain names for the web site here. You can add custom domains by clicking <strong>Manage Domains</strong>. Custom domains are available only in <strong>Shared</strong> and <strong>Standard</strong> modes. You can change the web site mode on the <strong>Scale</strong> management page. Custom domains are not available in Free mode. For more information on configuring custom domains, see <a href="http://www.windowsazure.com/en-us/documentation/articles/web-sites-custom-domain-name/">Configuring a custom domain name for an Azure web site</a>.</li>
+<li><strong>[ドメイン名]</strong> - Web サイトの追加のドメイン名をここで表示または追加します。<strong>[ドメインの管理]</strong> をクリックして、カスタム ドメインを追加できます。カスタム ドメインは、<strong>共有</strong>モードと<strong>標準</strong>モードでのみ使用できます。Web サイトのモードは、<strong>[スケール]</strong> 管理ページで変更できます。カスタム ドメインは無料モードでは使用できません。カスタム ドメインの構成の詳細については、「<a href="http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-custom-domain-name/">Configuring a custom domain name for an Azure web site (Azure の Web サイトのカスタム ドメイン名の構成)</a>」を参照してください。</li>
 
 <!-- SSL BINDINGS -->
-<li><strong>SSL Bindings</strong> - SSL bindings to custom domains are available only in Standard mode. Choose an SSL mode (<strong>SNI</strong>, <strong>IP</strong>, or <strong>No SSL</strong>) for a particular domain name. If you choose SNI or IP, you can specify a certificate for the domain from the certificates you have uploaded. For information about configuring SSL for a custom domain on Azure, see <a href="http://www.windowsazure.com/en-us/documentation/articles/web-sites-configure-ssl-certificate/">Enable HTTPS for an Azure web site</a>. For more information about SNI, see <a href="http://en.wikipedia.org/wiki/Server_Name_Indication">Server Name Indication</a>.</li>
+<li><strong>[SSL バインド]</strong> - カスタム ドメインの SSL バインドは標準モードでのみ使用できます。特定のドメイン名の SSL モード (<strong>SNI</strong>、<strong>IP</strong> または <strong>SSL なし</strong>) を選択します。SNI または IP を選択する場合は、アップロードした証明書からドメインの証明書を指定できます。Azure でカスタム ドメインの SSL を構成する方法については、「<a href="http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-configure-ssl-certificate/">Enable HTTPS for an Azure web site (Azure の Web サイトでの HTTPS の有効化)</a>」を参照してください。SNI の詳細については、「<a href="http://en.wikipedia.org/wiki/Server_Name_Indication">Server Name Indication</a>」を参照してください。</li>
 
 <!-- DEPLOYMENTS  -->
-<li><strong>deployments</strong> - Use these settings to configure deployments.
+<li><strong>[展開]</strong> - これらの設定を使用して展開を構成します。
 <ul>
-<li><strong>Git URL</strong> - If you have created a Git repository on your Azure web site, this is its URL - the location to which you push your content.</li>
-<li><strong>Deployment Trigger URL</strong> - This URL can be set on a GitHub, CodePlex, Bitbucket, or other repository to trigger the deployment when a commit is pushed to the repository.</li>
-<li><strong>Branch to Deploy</strong> - This lets you specify the branch that will be deployed when you push content to it.</li>
+<li><strong>[Git URL]</strong> - Azure の Web サイトに Git リポジトリを作成した場合は、これがその URL で、コンテンツをプッシュする場所です。</li>
+<li><strong>[展開の開始 URL]</strong> - この URL は、GitHub、CodePlex、Bitbucket などのリポジトリに設定して、リポジトリにコミットがプッシュされたときに展開を開始することができます。</li>
+<li><strong>[展開する分岐]</strong> - コンテンツがプッシュされたときに展開される分岐を指定できます。</li>
 </ul>
 </li>
 
 <!-- APPLICATION DIAGNOSTICS  -->
-<li><strong>application diagnostics</strong> - Set options for gathering diagnostic traces from a web application whose code has been instrumented with traces. The logging options for application diagnostics include:
+<li><strong>[アプリケーション診断]</strong> - コードがトレースを使ってインストルメント化された Web アプリケーションから診断トレースを収集するためのオプションを設定します。アプリケーション診断のログ オプションは次のとおりです。
 <ul>
 <!-- APPLICATION LOGGING (FILE SYSTEM) -->
-<li><strong>Application Logging (File System)</strong> - Choose <strong>On</strong> to have the application logs written to the web site's file system. When enabled, file system logging lasts for a period of 12 hours. You can access the logs from the FTP share for the web site. The link to the FTP share can be found on the <strong>Dashboard</strong>. Under <strong>Quick Glance</strong>, choose <strong>FTP Diagnostic Logs</strong> or <strong>FTPS Diagnostic Logs</strong>.</li>
+<li><strong>[アプリケーション ログ記録 (ファイル システム)]</strong> - アプリケーション ログを Web サイトのファイル システムに書き込む場合、<strong>[オン]</strong> を選択します。有効にした場合、ファイル システム ログは 12 時間記録されます。Web サイトの FTP 共有からログにアクセスできます。FTP 共有へのリンクは <strong>ダッシュボード</strong>にあります。<strong>[概要]</strong> で、<strong>[FTP 診断ログ]</strong> または <strong>[FTPS 診断ログ]</strong> を選択します。</li>
 
 <!-- APPLICATION LOGGING (STORAGE) -->
-<li><strong>Application Logging (Storage)</strong> - Choose <strong>On</strong> to have your application logs written to an Azure storage account. Logging to a storage account has no time limit and stays enabled until you disable it. By default, the logs are stored in a table called WAWSAppLogTable.</li>
-<li><strong>Logging Level</strong> - When logging is enabled, this option specifies the amount of information that will be recorded (Error, Warning, Information, or Verbose).</li>
+<li><strong>[アプリケーション ログ記録 (ストレージ)]</strong> - アプリケーション ログを Azure のストレージ アカウントに書き込む場合、<strong>[オン]</strong> を選択します。ストレージ アカウントへのログ記録には時間制限がなく、無効にするまで有効なままです。既定では、ログは WAWSAppLogTable と呼ばれるテーブルに格納されます。</li>
+<li><strong>[ログ レベル]</strong> - ログが有効な場合、このオプションは記録する情報のレベルを指定します (エラー、警告、情報、または詳細)。</li>
 
 <!-- DIAGNOSTIC STORAGE -->
-<li><strong>Diagnostic Storage</strong> - Clicking <strong>Manage Connection</strong> opens the <strong>Manage diagnostic storage</strong> dialog with the following options for saving logs to your Azure storage account:
+<li><strong>[診断ストレージ]</strong> - <strong>[接続の管理]</strong> をクリックすると、<strong>[診断ストレージの管理]</strong> ダイアログが開き、Azure ストレージ アカウントにログを保存するための次のオプションが表示されます。
 <ul>
-<li><strong>Storage Account Name</strong> - Choose the storage account to which you would like to have the logs saved.</li>
-<li><strong>Storage Access Key</strong> - Displays the key for the chosen storage account. If you have regenerated the key for the storage account, type the new key here manually, or use one of the <strong>Synchronize</strong> buttons. The synchronize buttons are available only if the currently logged on user has access to the selected storage account.
+<li><strong>[ストレージ アカウント名]</strong> - ログの保存先となるストレージ アカウントを選択します。</li>
+<li><strong>[ストレージ アクセス キー]</strong> - 選択したストレージ アカウントのキーが表示されます。ストレージ アカウントのキーを再生成した場合は、ここに新しいキーを手動で入力するか、<strong>同期</strong>ボタンの 1 つを使用します。同期ボタンは、現在ログオンしているユーザーが、選択したストレージ アカウントにアクセスできる場合にのみ使用できます。
 </li>
-<li><strong>Synchronize Primary Key</strong> - Retrieves the latest primary key of your Azure Storage account.
+<li><strong>[プライマリ キーの同期]</strong> - Azure ストレージ アカウントの最新のプライマリ キーを取得します。
 </li>
-<li><strong>Synchronize Secondary Key</strong> - Retrieves the latest secondary key of your Azure Storage account.
-<br /><strong>Note:</strong> For more information about Azure Storage Access Keys, see <a href="http://www.windowsazure.com/en-us/documentation/articles/storage-manage-storage-account/#regeneratestoragekeys">How to: View, copy, and regenerate storage access keys</a>.
+<li><strong>[セカンダリ キーの同期]</strong> - Azure のストレージ アカウントの最新のセカンダリ キーを取得します。
+<br /><strong>注:</strong> Azure ストレージ アクセス キーの詳細については、「<a href="http://www.windowsazure.com/ja-jp/documentation/articles/storage-manage-storage-account/#regeneratestoragekeys">方法: ストレージ アクセス キーの表示、コピーおよび再生成</a>」を参照してください。
 </li></ul></li></ul></li>
 
 <!-- SITE DIAGNOSTICS  -->
-<li><strong>site diagnostics</strong> - Set options for gathering diagnostic 
-	information for your web site, including:
+<li><strong>[サイト診断]</strong> - Web サイトの診断情報を収集するための
+	次のオプションを設定します。
 <ul>
 <!-- WEB SERVER LOGGING -->
-	<li><strong>Web Server Logging</strong> - Specify whether to enable web server logging for the web site. Web server logs are saved in the W3C extended log file format. You can save the logs to Azure Storage or to the File System. 
-<br /><strong>Tip</strong>: The maximum size of log storage in the file system is 100 megabytes. If you need to retain more history than that, use Azure Storage, which has a much greater storage capacity.
+	<li><strong>[Web サーバーのログ記録]</strong> - Web サイトに対して Web サーバーのログ記録を有効にするかどうかを指定します。Web サーバーのログは W3C 拡張ログ ファイル形式で保存されます。これらのログは Azure のストレージまたはファイル システムに保存できます。
+<br /><strong>ヒント</strong>: ファイル システムに保存できるログ ストレージの最大サイズは 100 MB です。このサイズを超える履歴を保存する場合は、ストレージ容量が大きい Azure のストレージを使用してください。
 	<ul>
-		<li>To save web server logs to an Azure Storage Account, choose <strong>Storage</strong>, and then choose <strong>manage storage</strong>. In the <strong>Manage Storage for Site Diagnostics</strong> dialog box, use the <strong>Storage Account</strong> option to choose the Azure Storage Account for the container that will hold the logs. Use the <strong>Azure Blob Container</strong> option to choose the container that will hold the logs, or select <strong>Create a new blob container</strong> to enable the <strong>Blob Name</strong> box where you can specify a name for the new container.
-<br /><strong>Note</strong>: If you do not yet have a storage account, go to the <strong>Storage</strong> section of the Azure portal where you can click <strong>New</strong> to create an account. 
+		<li>Web サーバーのログを Azure のストレージ アカウントに保存するには、<strong>[ストレージ]</strong>、<strong>[ストレージの管理]</strong> の順にクリックします。<strong>[サイト診断用のストレージの管理]</strong> ダイアログ ボックスで、<strong>[ストレージ アカウント]</strong> オプションを使用して、ログを保持するコンテナーの Azure のストレージ アカウントを選択します。<strong>[Azure BLOB コンテナー]</strong> オプションを使用して、ログを保持するコンテナーを選択します。または、<strong>[新しい BLOB コンテナーを作成する]</strong> を選択して、<strong>[BLOB 名]</strong> ボックスを有効にし、新しいコンテナーの名前を指定します。
+<br /><strong>注</strong>: まだストレージ アカウントを取得していない場合は、Azure ポータルの <strong>[ストレージ]</strong> セクションに移動し、<strong>[新規]</strong> をクリックして、アカウントを作成できます。
 </li>
-		<li>If you choose <strong>File System</strong>, the logs are saved to the FTP site listed under <strong>FTP Diagnostic Logs</strong> on the Dashboard management page. Enabling File System storage also enables the <strong>Quota</strong> box where you can set the maximum amount of disk space for the log files. The minimum is 25MB and the maximum is 100MB. The default is 35MB. When the quota is reached, the oldest files are successively overwritten by the newest ones.</li>
-		<li>By default, web server logs in an Azure Storage Account are never deleted. To specify a period of time after which the logs will be automatically deleted, select <strong>Set Retention</strong> and enter the number of days to keep the logs in the <strong>Retention Period</strong> box. You can also use the <strong>Set Retention</strong> option for File System storage.</li></ul>
+		<li><strong>[ファイル システム]</strong> を選択した場合、[ダッシュボード] 管理ページの <strong>[FTP 診断ログ]</strong> に表示される FTP サイトにログが保存されます。ファイル システム ストレージを選択した場合は <strong>[クォータ]</strong> ボックスも有効になります。ここで、ログ ファイルに割り当てる最大ディスク容量を設定できます。指定可能な最小容量は 25 MB、最大容量は 100 MB。既定値は 35MB. です。設定したクォータに達すると、最も古いファイルから順に最新ファイルで上書きされます。</li>
+		<li>既定では、Azure のストレージ アカウントの Web サーバー ログは削除されません。ログが自動的に削除されるまでの期間を指定するには、<strong>[保有期間の設定]</strong> を選択し、ログを保持する日数を <strong>[保有期間]</strong> ボックスに入力します。ファイル システム ストレージで <strong>[保有期間の設定]</strong> オプションを使用することもできます。</li></ul>
 </li>
 
 <!-- DETAILED ERROR MESSAGES -->
-	<li><strong>Detailed Error Messages</strong> - Specify whether to log detailed error messages for the web site. 
-	If enabled, detailed error messages are saved as .htm files to the FTP site listed under FTP Diagnostic Logs on the Dashboard management page. 
-	After connecting to the specified FTP site navigate to /LogFiles/DetailedErrors/ to retrieve the .htm files which contain detailed error messages.</li>
+	<li><strong>[詳細なエラー メッセージ]</strong> - Web サイトに関する詳細なエラー メッセージをログに記録するかどうかを指定します。
+	有効にすると、[ダッシュボード] 管理ページの [FTP 診断ログ] に示されている FTP サイトに、詳細なエラー メッセージが .htm ファイルとして保存されます。
+	詳細なエラー メッセージが含まれた .htm ファイルを取得するには、指定されている FTP サイトに接続してから、/LogFiles/DetailedErrors/ に移動します。</li>
 
 <!-- FAILED REQUEST TRACING -->
-	<li><strong>Failed Request Tracing</strong> - Specify whether to enable failed request tracing. If enabled, 
-	failed request tracing output is written to XML files and saved to the FTP site listed under FTP Diagnostic Logs on the Dashboard management page. 
-	After connecting to the specified FTP site navigate to /LogFiles/W3SVC######### (where ######### represent a unique identifier for the web site) 
-	to retrieve the XML files that contain the failed request tracing output.<br /><strong>Important</strong><br />The /LogFiles/W3SVC#########/ 
-	folder contains an XSL file and one or more XML files. Ensure that you download the XSL file into the same directory as the XML file(s) because 
-	the XSL file provides functionality for formatting and filtering the contents of the XML file(s) when viewed in Internet Explorer.</li>
+	<li><strong>[失敗した要求トレース]</strong> - 失敗した要求トレースを有効にするかどうかを指定します。有効にすると、
+	失敗した要求トレースの出力が XML ファイルに書き込まれ、[ダッシュボード] 管理ページの [FTP 診断ログ] に示されている FTP サイトに保存されます。
+	失敗した要求トレースの出力が含まれた XML ファイルを取得するには、指定されている FTP サイトに接続してから、/LogFiles/W3SVC######### (######### は、
+	Web サイトを示す一意の識別子) に移動します。<br /><strong>重要</strong><br />/LogFiles/W3SVC#########/ 
+	フォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、
+	コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。</li>
 
 <!-- REMOTE DEBUGGING -->
-<li><strong>Remote Debugging</strong> - Set this option to <strong>On</strong> to enable remote debugging in your choice of Visual Studio 2012 or Visual Studio 2013. When enabled, you can use the remote debugger in Visual Studio to connect directly to your Azure web site.
+<li><strong>[リモート デバッグ]</strong> - このオプションを <strong>[オン]</strong> に設定すると Visual Studio 2012 または Visual Studio 2013 のリモート デバッグが有効になり、Visual Studio のリモート デバッガーを使用して Azure の Web サイトへ直接接続できます。
 <br />
-<strong>Note</strong>:  Remote debugging will be enabled only for 48 hours and will not work with a site name or user name that is longer than 20 characters. 
+<strong>注</strong>: リモート デバッグが有効なのは 48 時間のみです。また、20 文字を超えるサイト名やユーザー名は使用できません。
 </li>
 	</ul>
 	</li>
 
 <!-- MONITORING  -->
-<li><strong>monitoring</strong> - For web sites in Standard mode, test the availability of HTTP or HTTPS endpoints. You can test an endpoint from up to three geo-distributed locations. A monitoring test fails if the HTTP response code is greater than or equal to 400 or if the response takes more than 30 seconds. An endpoint is considered available if its monitoring tests succeed from all the specified locations.
+<li><strong>[監視]</strong> - 標準モードの Web サイトの場合、HTTP または HTTPS エンドポイントの可用性をテストします。最大 3 か所の地理的に分散した場所からエンドポイントをテストできます。HTTP 応答コードが 400 以上である場合、または、応答に 30 秒以上かかる場合、監視テストは失敗します。すべての指定した場所から監視テストが成功した場合、エンドポイントは利用可能と見なされます。
 </li>
 
 <!-- DEVELOPER ANALYTICS -->
-<li><strong>developer analytics</strong> - Choose <strong>Add-on</strong> to select an analytics add-on from a list, or to go to the Azure store to choose one. Choose <strong>Custom</strong> to select an analytics provider such as New Relic from a list. If you use a custom provider, you must enter the license key in the<strong> Provider Key</strong> box. 
-<br /> <strong>Note</strong>: For more information on using New Relic with Azure Web Sites, see <a href="http://www.windowsazure.com/en-us/documentation/articles/store-new-relic-web-sites-dotnet-application-performance-management/">New Relic Application Performance Management on Azure Web Sites</a>.
+<li><strong>[開発者分析]</strong> - <strong>[アドオン]</strong> を指定した場合、分析アドオンを一覧から選択するか、Azure ストアへ移動して分析アドオンを選択します。<strong>[カスタム]</strong> を指定した場合は、New Relic などの分析プロバイダーを一覧から選択します。カスタム プロバイダーを使用する場合、<strong>[プロバイダー キー]</strong> ボックスにライセンス キーを入力する必要があります。
+<br /> <strong>注</strong>: Azure の Web サイトで New Relic を使用する方法の詳細については、「<a href="http://www.windowsazure.com/ja-jp/documentation/articles/store-new-relic-web-sites-dotnet-application-performance-management/">Azure の Web サイトの New Relic によるアプリケーション パフォーマンス管理</a>」を参照してください。
 </li>
 
 <!-- APP SETTINGS -->
-	<li><strong>app settings</strong> - Specify name/value pairs that will be loaded by your web application on start up. For .NET sites, these settings will be 
-	injected into your .NET configuration AppSettings at runtime, overriding existing settings. For PHP and Node sites these settings will be 
-	available as environment variables at runtime.</li>
+	<li><strong>[アプリケーション設定]</strong> - 起動時に Web アプリケーションに読み込まれる名前と値を指定します。.NET サイトの場合、実行時にこれらの設定が
+	.NET 構成 AppSettings に挿入され、既存の設定がオーバーライドされます。PHP サイトおよび Node サイトの場合、
+	実行時にこれらの設定が環境変数として使用できるようになります。</li>
 
 <!-- CONNECTION STRINGS -->
-	<li><strong>connection strings</strong> - View connection strings for linked resources. For .NET sites, these connection strings will be injected into your .NET configuration connectionStrings settings at runtime, overriding existing entries where the key equals the linked database name. For PHP 
-	and Node sites these settings will be available as environment variables at runtime, prefixed with the connection type. The environment variable prefixes are as follows: <br />
+	<li><strong>[接続文字列]</strong> - リンク済みリソースの接続文字列が表示されます。.NET サイトの場合、実行時にこれらの接続文字列が .NET 構成 connectionStrings 設定に挿入され、リンクされたデータベース名とキーが等しい既存のエントリがオーバーライドされます。PHP サイト
+	および Node サイトの場合、実行時にこれらの設定が環境変数として使用できるようになり、環境変数にはプレフィックスとして接続の種類が付加されます。環境変数使用されるプレフィックスは次のとおりです。<br />
 <ul><li>SQL Server: SQLCONNSTR_</li>
 <li>MySQL: MYSQLCONNSTR_</li>
-<li>SQL Database: SQLAZURECONNSTR_</li>
-<li>Custom: CUSTOMCONNSTR_</li></ul>For example, if a MySql connection string were named connectionstring1, it would be accessed through the environment variable <code>MYSQLCONNSTR_connectionString1</code>.
-	<br /><strong>Note</strong>: Connection strings are created when you link a database resource to a web site and are read only when viewed on the 
-	configuration management page.</li>
+<li>SQL データベース: SQLAZURECONNSTR_</li>
+<li>カスタム: CUSTOMCONNSTR_</li></ul>たとえば、MySql の接続文字列が connectionstring1 という名前の場合、<code>MYSQLCONNSTR_connectionString1</code> という環境変数でアクセスされます。
+	<br /><strong>注</strong>: 接続文字列は、データベース リソースを Web サイトにリンクするときに作成され、
+	[構成] 管理ページには読み取り専用で表示されます。</li>
 
 <!-- DEFAULT DOCUMENTS -->
-	<li><strong>default documents</strong> - Add your web site's default document to this list if it is not already in the list. A web site's default 
-	document is the web page that is displayed when a user navigates to a web site and does not specify a particular page on the web site. So given the 
-	web site http://contoso.com, if the default document is set to default.htm, a user would be routed to http://www.contoso.com/default.htm when pointing 
-	their browser to http://www.contoso.com. If your web site contains more than one of the files in the list, then make sure your web site's default document 
-	is at the top of the list by changing the order of the files in the list.</li>
+	<li><strong>[既定のドキュメント]</strong> - Web サイトの既定のドキュメントがこの一覧になければ追加します。Web サイトの既定の
+	ドキュメントは、ユーザーが Web サイトの特定のページを指定せずに Web サイトを開いたときに表示される Web ページです。たとえば、
+	Web サイト http://contoso.com で既定のドキュメントが default.htm に設定されている場合、ブラウザーから http://www.contoso.com を開いたユーザーは、
+	http://www.contoso.com/default.htm にルーティングされます。この一覧内の複数のファイルが Web サイトに含まれている場合は、一覧内のファイルの順序を変更して、
+	Web サイトの既定のドキュメントが一覧の先頭になるようにしてください。</li>
 
 <!-- HANDLER MAPPINGS -->
-<li><strong>handler mappings</strong> -  Add custom script processors to handle requests for specific file extensions. Specify the file extension to be handled in the <strong>Extension</strong> box (for example, *.php or handler.fcgi). Requests to files that match this pattern will be processed by the script processor specified in the <strong>Script Processor Path</strong> box. An absolute path is required for the script processor (the path D:\home\site\wwwroot can be used to refer to your site's root directory). Optional command-line arguments for the script processor may be specified in the <strong>Additional Arguments (Optional)</strong> box.
+<li><strong>[ハンドラー マッピング]</strong> - 特定のファイル拡張子に関する要求を処理するカスタム スクリプト プロセッサを追加します。処理するファイル拡張子を <strong>[拡張子]</strong> ボックスで指定します (たとえば、*.php や handler.fcgi)。このパターンに一致するファイルに対する要求は、<strong>[スクリプト プロセッサ パス]</strong> ボックスで指定されたスクリプト プロセッサによって処理されます。スクリプト プロセッサは絶対パスで指定する必要があります (サイトのルート ディレクトリは D:\home\site\wwwroot というパスを使って参照できます)。スクリプト プロセッサのオプションのコマンド ライン引数を <strong>[追加の引数 (省略可能)]</strong> ボックスで指定することもできます。
 </li>
 
 <!-- VIRTUAL APPLICATIONS AND DIRECTORIES -->
-<li><strong>virtual applications and directories </strong> -  To configure virtual applications and directories associated with your web site, specify each virtual directory and its corresponding physical path relative to the site root. Optionally, you can select the <strong>Application</strong> checkbox to mark a virtual directory as an application in site configuration.
+<li><strong>[仮想アプリケーションとディレクトリ]</strong> - Web サイトに関連付けられた仮想アプリケーションとディレクトリを構成するには、各仮想ディレクトリとそれに対応する物理パス (サイトのルートに対する相対パス) を指定します。必要に応じて、<strong>[アプリケーション]</strong> チェック ボックスをオンにして、サイト構成で仮想ディレクトリをアプリケーションとしてマークすることもできます。
 </li>
 
 	
 </ul></li>
-<li>Click <strong>Save</strong> at the bottom of the <strong>Configure</strong> management page to save configuration changes.</li>
+<li><strong>[構成]</strong> 管理ページの下部にある <strong>[保存]</strong> をクリックして、構成の変更を保存します。</li>
 </ol>
 
 <!-- HOW TO: CONFIGURE A WEB SITE TO USE A SQL DATABASE -->
-##<a name="howtoconfigSQL"></a>How to: Configure a web site to use a SQL database
+##<a name="howtoconfigSQL"></a>方法: SQL データベースを使用する Web サイトを構成する
 
-Follow these steps to link a web site to a SQL Database:
+Web サイトを SQL データベースにリンクするには、次の手順に従います。
 
-1. In the [Management Portal](http://manage.windowsazure.com), select **Web Sites** to display the list of web sites created by the currently logged on account.
+1. [管理ポータル](http://manage.windowsazure.com)で **[Web サイト]** を選択して、現在ログオン中のアカウントによって作成された Web サイトの一覧を表示します。
 
-2. Select a web site from the list of web sites to open the web site's **Management** pages.
+2. Web サイトの一覧から Web サイトを選択して、Web サイトの**管理**ページを開きます。
 
-3. Click the **Linked Resources** tab and a message will be displayed on the **Linked Resources** page indicating **You have no linked resources**.
+3. **[リンク済みリソース]** タブをクリックすると、**[リンク済みリソース]** ページに、"**リンク済みリソースがありません**" というメッセージが表示されます。
 
-4. Click **Link a Resource** to open the **Link a Resource** wizard.
+4. **[リソースをリンクします]** をクリックして、**リソースのリンク** ウィザードを開きます。
 
-5. Click **Create a new resource** to display a list of resources types that can be linked to your web site.
+5. **[新しいリソースを作成する]** をクリックして、Web サイトにリンクできるリソースの種類の一覧を表示します。
 
-6. Click **SQL Database** to display the **Link Database** wizard.
+6. **[SQL データベース]** をクリックして、**データベースのリンク** ウィザードを開きます。
 
-7. Complete required fields on pages 3 and 4 of the **Link Database** wizard and then click the **Finish** checkmark on page 4.
+7. **データベースのリンク** ウィザードの 3 ページ目と 4 ページ目にある必須フィールドに値を指定し、4 ページ目の **[完了]** チェック マークをクリックします。
 
-Azure will create a SQL database with the specified parameters and link the database to the web site.
+Azure により、指定したパラメーターで SQL データベースが作成され、データベースが Web サイトにリンクされます。
 
 <!-- HOW TO: CONFIGURE A WEB SITE TO USE A MYSQL DATABASE -->
-##<a name="howtoconfigMySQL"></a>How to: Configure a web site to use a MySQL database##
-To configure a web site to use a MySQL database, follow the same steps to use a SQL database, but in the **Link a Resource** wizard, choose **MySQL Database** instead of **SQL Database**. 
+##<a name="howtoconfigMySQL"></a>方法: MySQL データベースを使用する Web サイトを構成する##
+MySQL データベースを使用するように Web サイトを構成するには、SQL データベースを使用するときと同じ手順に従います。ただし、**リソースのリンク ウィザード**で、**[SQL データベース]** の代わりに **[MySQL データベース]** を選択します。
 
-Alternatively, you can create the web site with the **Custom Create** option. In the **Database** dropdown, choose either **Create a new MySQL database** or **Use an existing MySQL database**. 
+別の方法として、**[カスタム作成]** オプションを使って Web サイトを作成することもできます。**[データベース]** ボックスで **[新しい MySQL データベースを作成します]** または **[既存の MySQL データベースを使用します]** を選択します。
 
-##<a name="howtodomain"></a>How to: Configure a custom domain name
+##<a name="howtodomain"></a>方法: カスタム ドメイン名を構成する
 
-For information about configuring your web site to use a custom domain name, see [Configuring a custom domain name for an Azure Web Site](http://www.windowsazure.com/en-us/documentation/articles/web-sites-custom-domain-name/).
+Azure の Web サイトのカスタム ドメイン名の構成の詳細については、「[Azure の Web サイトのカスタム ドメイン名の構成](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-custom-domain-name/)」を参照してください。
 
-##<a name="howtoconfigSSL"></a>How to: Configure a web site to use SSL##
+##<a name="howtoconfigSSL"></a>方法: SSL を使用する Web サイトを構成する##
 
-For information about configuring SSL for a custom domain on Azure, see [Enable HTTPS for an Azure web site](http://www.windowsazure.com/en-us/documentation/articles/web-sites-configure-ssl-certificate/). 
+Azure でカスタム ドメインの SSL を構成する方法については、「[Enable HTTPS for an Azure web site (Azure の Web サイトでの HTTPS の有効化)](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-configure-ssl-certificate/)」を参照してください。
 
-##<a name="next"></a>Next steps
+##<a name="next"></a>次のステップ
 
-* [How to Scale Web Sites](http://www.windowsazure.com/en-us/documentation/articles/web-sites-scale/)
+* [Web サイトの規模の設定方法](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-scale/)
 
-* [How to Monitor Web Sites](http://www.windowsazure.com/en-us/documentation/articles/web-sites-monitor/)
+* [Web サイトの監視方法](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-monitor/)
+
 

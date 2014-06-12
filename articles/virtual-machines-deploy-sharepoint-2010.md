@@ -1,230 +1,230 @@
-<properties linkid="manage-windows-other-resource-sharepoint-wp" urlDisplayName="SharePoint on Azure" pageTitle="SharePoint 2010 Deployment on Azure Virtual Machines" metaKeywords="" description="Understand the supported scenarios for using SharePoint 2010 on Azure virtual machines." metaCanonical="" services="virtual-machines" documentationCenter="" title="SharePoint Deployment on Azure Virtual Machines" authors="" solutions="" manager="" editor="" />
+<properties linkid="manage-windows-other-resource-sharepoint-wp" urlDisplayName="Azure 上の SharePoint" pageTitle="Azure の仮想マシン上の SharePoint 2010 の展開" metaKeywords="" description="Azure の仮想マシンで SharePoint 2010 を使用するときにサポートされるシナリオを理解します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure の仮想マシンへの SharePoint の展開" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
-<h1>SharePoint Deployment on Azure Virtual Machines</h1>
-<h2>Executive Summary</h2>
+<h1>Azure の仮想マシンへの SharePoint のデプロイ</h1>
+<h2>概要</h2>
 
-Microsoft SharePoint Server 2010 provides rich deployment flexibility, which can help organizations determine the right deployment scenarios to align with their business needs and objectives. Hosted and managed in the cloud, the Azure Virtual Machines offering provides complete, reliable, and available infrastructure to support various on-demand application and database workloads, such as Microsoft SQL Server and SharePoint deployments.
+Microsoft SharePoint Server 2010 は高度に柔軟な展開が可能で、ビジネスのニーズと目標に沿った適切な展開シナリオを決定するのに役立ちます。クラウドでホストされ管理される Azure の仮想マシンは、Microsoft SQL Server や SharePoint 展開のように、さまざまなオンデマンド アプリケーションおよびデータベース ワークロードをサポートする信頼性が高く実際に利用できる総合的なインフラストラクチャを実現します。
 
 
-While Azure Virtual Machines support multiple workloads, this paper focuses on SharePoint deployments. Azure Virtual Machines enable organizations to create and manage their SharePoint infrastructure quickly-provisioning and accessing nearly any host universally. It allows full control and management over processors, RAM, CPU ranges, and other resources of SharePoint virtual machines (VMs).
+Azure の仮想マシンは複数のワークロードをサポートしますが、このペーパーでは SharePoint の展開を取り上げます。Azure の仮想マシンを使用すると、SharePoint インフラストラクチャをすばやく作成して管理できるだけでなく、ほぼすべてのホストを対象として汎用的にプロビジョニングとアクセスができます。プロセッサ、RAM、CPU 範囲などの SharePoint 仮想マシン (VM) リソースを全面的にコントロールして管理できます。
 
-Azure Virtual Machines mitigate the need for hardware, so organizations can turn attention from handling high upfront cost and complexity to building and managing infrastructure at scale. This means that they can innovate, experiment, and iterate in hours-as opposed to days and weeks with traditional deployments.
+Azure の仮想マシンを活用すると、ハードウェアの必要性が減少するため、高くつく前払いのコストや複雑さの処理ではなく、インフラストラクチャを規模に応じて構築し管理することに目を向けることができます。つまり、従来の展開のように日単位や週単位ではなく、時間単位で技術革新、実験、反復作業ができるようになります。
 
-<h3>Who Should Read This Paper?</h3>
+<h3>対象読者</h3>
 
-This paper is intended for IT professionals. Furthermore, technical decision makers, such as architects and system administrators, can use this information and the provided scenarios to plan and design a virtualized SharePoint infrastructure on Azure.
+このペーパーの想定読者は IT の専門家です。さらに、アーキテクトやシステム管理者のような技術的意思決定の担当者も、ここに記載した情報とシナリオを利用して Azure 上で仮想化した SharePoint インフラストラクチャを計画し設計することができます。
 
-<h3>Why Read This Paper?</h3>
+<h3>このペーパーを読む理由</h3>
 
-This paper explains how organizations can set up and deploy SharePoint within Azure Virtual Machines. It also discusses why this type of deployment can be beneficial to organizations of many sizes.
+このペーパーでは、Azure の仮想マシン内に SharePoint をセットアップして展開する方法について説明します。また、この種の展開がさまざまな規模の組織にとって利点がある理由についても取り上げます。
 
-<h2>Shift to Cloud Computing</h2>
+<h2>クラウド コンピューティングへの転換</h2>
 
-According to Gartner, cloud computing is defined as a "style of computing where massively scalable IT-enabled capabilities are delivered 'as a service' to external customers using Internet technologies." The significant words in this definition are scalable, service, and Internet. In short, cloud computing can be defined as IT services that are <strong>deployed and delivered over the Internet</strong> and are <strong>scalable on demand</strong>.
+Gartner によれば、クラウド コンピューティングは「インターネット技術を利用して外部の顧客にきわめて拡張性の高い IT 対応機能を "サービスとして" 提供するコンピューティングのスタイル」と定義されています。この定義で重要な単語は、拡張性、サービス、そしてインターネットです。簡単に言えば、クラウド コンピューティングは、<strong>インターネット経由で展開されて提供</strong>される、<strong>オンデマンドで拡張可能</strong>な IT サービスと定義できます。
 
-Undeniably, cloud computing represents a major shift happening in IT today. Yesterday, the conversation was about consolidation and cost. Today, it's about the new class of benefits that cloud computing can deliver. It's all about transforming the way IT serves organizations by harnessing a new breed of power. Cloud computing is fundamentally changing the world of IT, impacting every role-from service providers and system architects to developers and end users.
+クラウド コンピューティングが、現在 IT の世界に起きている大転換の象徴であることは否定できません。昨日は、集約とコストが話題でした。今日は、クラウド コンピューティングによって実現される新しい種類の利点が話題です。問題になっているのは、新しい種類の力を活用して、組織における IT の方法を変革することです。クラウド コンピューティングは、IT の世界を本質的に変えつつあり、サービス プロバイダーやシステム アーキテクトから開発者やエンド ユーザーまで、あらゆる役割に影響を及ぼしています。
 
-Research shows that agility, focus, and economics are three top drivers for cloud adoption:
-
-<ul>
-<li><p><strong>Agility</strong>: Cloud computing can speed an organization's ability to capitalize on new opportunities and respond to changes in business demands.</p></li>
-<li><p><strong>Focus</strong>: Cloud computing enables IT departments to cut infrastructure costs dramatically. Infrastructure is abstracted and resources are pooled, so IT runs more like a utility than a collection of complicated services and systems. Plus, IT now can be transitioned to more innovative and strategic roles.</p></li>
-<li><p><strong>Economics</strong>: Cloud computing reduces the cost of delivering IT and increases the utilization and efficiency of the data center. Delivery costs go down because with cloud computing, applications and resources become self-service, and use of those resources becomes measurable in new and precise ways. Hardware utilization also increases because infrastructure resources (storage, compute, and network) are now pooled and abstracted.</p></li>
-</ul>
-
-<h2>Delivery Models for Cloud Services</h2>
-
-In simple terms, cloud computing is the abstraction of IT services. These services can range from basic infrastructure to complete applications. End users request and consume abstracted services without the need to manage (or even completely know about) what constitutes those services. Today, the industry recognizes three delivery models for cloud services, each providing a distinct trade-off between control/flexibility and total cost:
+調査によれば、俊敏性、集中性、経済性がクラウドを採用する理由のトップ 3 です。
 
 <ul>
-<li><p><strong>Infrastructure as a Service</strong> (IaaS): Virtual infrastructure that hosts virtual machines and mostly existing applications.</p></li>
-<li><p><strong>Platform as a Service</strong> (PaaS): Cloud application infrastructure that provides an on-demand application-hosting environment.</p></li>
-<li><p><strong>Software as a Service</strong> (SaaS): Cloud services model where an application is delivered over the Internet and customers pay on a per-use basis (for example, Microsoft Office 365 or Microsoft CRM Online).</p></li>
+<li><p><strong>俊敏性</strong>: クラウド コンピューティングを利用すると、新しいチャンスを迅速に活用し、ビジネスの需要の変化に迅速に対応できるようになります。</p></li>
+<li><p><strong>集中性</strong>: クラウド コンピューティングを利用すると、IT 部門はインフラストラクチャ コストを大幅に削減できます。インフラストラクチャが抽象化され、リソースがプールされることで、IT は複雑なサービスとシステムの集合というよりは、電気や水道の公共サービスのように実行されます。さらに、IT にもっと革新的で戦略的な役割を持たせることができるようになります。</p></li>
+<li><p><strong>経済性</strong>: クラウド コンピューティングは IT の提供コストを削減し、データ センターの利用率と効率を高めます。提供コストが低下するのは、クラウド コンピューティングを利用すると、アプリケーションとリソースがセルフサービス方式になり、リソースの利用状況を新しい正確な方法で測定できるようになるためです。インフラストラクチャ リソース (ストレージ、コンピューティング、およびネットワーク) がプールされて抽象化されるため、ハードウェアの利用率も向上します。</p></li>
 </ul>
 
-Figure 1 depicts the cloud services taxonomy and how it maps to the components in an IT infrastructure. With an on-premises model, the customer is responsible for managing the entire stack-ranging from network connectivity to applications. With IaaS, the lower levels of the stack are managed by a vendor, while the customer is responsible for managing the operating system through applications. With PaaS, a platform vendor provides and manages everything from network connectivity through runtime. The customer only needs to manage applications and data. (The Azure offering best fits in this model.) Finally, with SaaS, a vendor provides the applications and abstracts all services from all underlying components.
+<h2>クラウド サービスの提供モデル</h2>
 
-<p class="caption">Figure 1: Cloud services taxonomy</p>
+単純な言葉で言えば、クラウド コンピューティングとは IT サービスの抽象化です。サービスの範囲は、基本的なインフラストラクチャから完全なアプリケーションまで多岐にわたります。エンド ユーザーは、抽象化されたサービスを要求して利用すればよく、サービスの構成要素を管理する必要はありません (完全に知っている必要さえありません)。現在、業界ではクラウド サービスの提供モデルが 3 種類認知されていて、それぞれ、コントロール (柔軟性) と総費用との間に明白なトレードオフが存在します。
+
+<ul>
+<li><p><strong>サービスとしてのインフラストラクチャ</strong> (IaaS): 仮想マシンおよび、ほとんどが既存のアプリケーションをホストする仮想インフラストラクチャ。</p></li>
+<li><p><strong>サービスとしてのプラットフォーム</strong> (PaaS): オンデマンドのアプリケーション ホスティング環境を実現するクラウド アプリケーション インフラストラクチャ。</p></li>
+<li><p><strong>サービスとしてのソフトウェア</strong> (SaaS): アプリケーションがインターネット経由で配信され、顧客が利用状況に応じて料金を支払うクラウド サービス モデル (たとえば、Microsoft Office 365 や Microsoft CRM Online)。</p></li>
+</ul>
+
+図 1 は、クラウド サービスの分類と IT インフラストラクチャの構成要素との対応関係を示しています。内部設置型モデルの場合、ネットワーク接続からアプリケーションまで、システム全体の管理を顧客が担当します。IaaS の場合、システムの下層は業者が管理し、顧客はオペレーティング システムからアプリケーションまでの管理を担当します。PaaS の場合、プラットフォーム業者がネットワーク接続からランタイムまでのすべてを提供し管理します。顧客に必要なのは、アプリケーションとデータを管理することだけです (Azure はこのモデルが一番よく当てはまります)。最後に、SaaS の場合、業者がアプリケーションを提供して、土台となるすべての構成要素によるサービスをすべて抽象化します。
+
+<p class="caption">図 1: クラウド サービスの分類</p>
 
 ![azure-sharepoint-wp-1](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-1.png)
 
-<h2>Azure Virtual Machines</h2>
+<h2>Azure の仮想マシン</h2>
 
-Azure Virtual Machines introduce functionality that allows full control and management of VMs, along with extensive virtual networking. This offering can provide organizations with robust benefits, such as:
-
-<ul>
-<li><p><strong>Management</strong>: Centrally manage VMs in the cloud with full control to configure and maintain the infrastructure.</p></li>
-<li><p><strong>Application mobility</strong>: Move virtual hard drives (VHDs) back and forth between on-premises and cloud-based environments. There is no need to rebuild applications to run in the cloud.</p></li>
-<li><p><strong>Access to Microsoft server applications</strong>: Run the same on-premises applications and infrastructure in the cloud, including Microsoft SQL Server, SharePoint Server, Windows Server, and Active Directory.</p></li>
-</ul>
-
-Azure Virtual Machines is an easy, open and flexible, and powerful platform that allows organizations to deploy and run Windows Server and Linux VMs in minutes:
+Azure の仮想マシンは、広範な仮想ネットワーキングと並んで VM を全面的にコントロールし管理する機能を備えています。組織にとっては次のような堅固なメリットがあります。
 
 <ul>
-<li><p><strong>Easy</strong>: With Azure Virtual Machines, it is easy and simple to build, migrate, deploy, and manage VMs in the cloud. Organizations can migrate workloads to Azure without having to change existing code, or they can set up new VMs in Azure in only a few clicks. The offering also provides assistance for new cloud application development by integrating the IaaS and PaaS functionalities of Azure.</p></li>
-
-<li><p><strong>Open and flexible</strong>: Azure is an open platform that gives organizations flexibility. They can start from a prebuilt image in the image library, or they can create and use customized and on-premises VHDs and upload them to the image library. Community and commercial versions of Linux also are available.</p></li>
-
-<li><p><strong>Powerful</strong>: Azure is an enterprise-ready cloud platform for running applications such as SQL Server, SharePoint Server, or Active Directory in the cloud. Organizations can create hybrid on-premises and cloud solutions with VPN connectivity between the Azure data center and their own networks.</p></li>
+<li><p><strong>管理</strong>: クラウドの VM を集中管理して、インフラストラクチャの構成と保守を全面的にコントロールできます。</p></li>
+<li><p><strong>アプリケーションの機動性</strong>: 内部設置型の環境とクラウド ベースの環境の間で仮想ハード ドライブ (VHD) を移動できます。クラウドで実行するためにアプリケーションをリビルドする必要はありません。</p></li>
+<li><p><strong>Microsoft サーバー アプリケーションへのアクセス</strong>: Microsoft SQL Server、SharePoint Server、Windows Server、Active Directory など、内部設置型と同じアプリケーションとインフラストラクチャをクラウドでも実行できます。</p></li>
 </ul>
 
-<h2>SharePoint on Azure Virtual Machines</h2>
+Azure の仮想マシンは、Windows Server と Linux の VM を数分でデプロイして実行できる、簡単で、オープンかつ柔軟で、強力なプラットフォームです。
 
-SharePoint 2010 flexibly supports most of the workloads in an Azure Virtual Machines deployment. Azure Virtual Machines are an optimal fit for FIS (SharePoint Server for Internet Sites) and development scenarios. Likewise, core SharePoint workloads are also supported. If an organization wants to manage and control its own SharePoint 2010 implementation while capitalizing on options for virtualization in the cloud, Azure Virtual Machines are ideal for deployment.
+<ul>
+<li><p><strong>簡単</strong>: Azure の仮想マシンを使用すると、クラウドの VM の構築、移行、展開、および管理を簡単かつシンプルに実行できます。既存のコードを変更することなくワークロードを Azure に移行することも、わずか数クリックで Azure に新しい VM をセットアップすることもできます。また、Azure の IaaS 機能と PaaS 機能を統合することで、新しいクラウド アプリケーションの開発を支援します。</p></li>
 
-The Azure Virtual Machines offering is hosted and managed in the cloud. It provides deployment flexibility and reduces cost by mitigating capital expenditures due to hardware procurement. With increased infrastructure agility, organizations can deploy SharePoint Server in hours-as opposed to days or weeks. Azure Virtual Machines also enables organizations to deploy SharePoint workloads in the cloud using a "pay-as-you-go" model. As SharePoint workloads grow, an organization can rapidly expand infrastructure; then, when computing needs decline, it can return the resources that are no longer needed'thereby paying only for what is used.
+<li><p><strong>オープンで柔軟</strong>: Azure は、柔軟性を備えたオープンなプラットフォームです。イメージ ライブラリにある構築済みのイメージから開始することも、カスタマイズした内部設置型の VHD を作成して使用し、それをイメージ ライブラリにアップロードすることもできます。Linux のコミュニティと商用バージョンも利用できます。</p></li>
 
-<h3>Shift in IT Focus</h3>
+<li><p><strong>強力</strong>: Azure は、クラウドで SQL Server や SharePoint Server、Active Directory のようなアプリケーションを実行して、大企業にも対応できるクラウド プラットフォームです。Azure データ センターと自社ネットワークとの間の VPN 接続を使用して、内部設置型ソリューションとクラウド ソリューションを組み合わせたハイブリッド ソリューションを作成できます。</p></li>
+</ul>
 
-Many organizations contract out the common components of their IT infrastructure and management, such as hardware, operating systems, security, data storage, and backup-while maintaining control of mission-critical applications, such as SharePoint Server. By delegating all non-mission-critical service layers of their IT platforms to a virtual provider, organizations can shift their IT focus to core, mission-critical SharePoint services and deliver business value with SharePoint projects, instead of spending more time on setting up infrastructure.
+<h2>Azure の仮想マシンにおける SharePoint</h2>
 
-<h3>Faster Deployment</h3>
+SharePoint 2010 は、Azure の仮想マシンに展開しても、ほとんどのワークロードを柔軟にサポートします。Azure の仮想マシンは、FIS (SharePoint Server for Internet Sites) シナリオおよび開発シナリオに最も適しています。同様に、中核的な SharePoint ワークロードもサポートされています。クラウドの仮想化オプションを利用しながら独自の SharePoint 2010 実装を管理してコントロールする場合は、Azure の仮想マシンが展開先として最適です。
 
-Supporting and deploying a large SharePoint infrastructure can hamper IT's ability to move rapidly to support business requirements. The time that is required to build, test, and prepare SharePoint servers and farms and deploy them into a production environment can take weeks or even months, depending on the processes and constraints of the organization. Azure Virtual Machines allow organizations to quickly deploy their SharePoint workloads without capital expenditures for hardware. In this way, organizations can capitalize on infrastructure agility to deploy in hours instead of days or weeks.
+Azure の仮想マシンはクラウドでホストされ管理されます。柔軟にデプロイでき、ハードウェア調達に伴う設備投資が減るために、コストが削減されます。インフラストラクチャの俊敏性が向上するため、SharePoint Server を数日や数週間ではなく、数時間で展開できます。Azure の仮想マシンでは、"従量料金制" モデルを使ってクラウドに SharePoint ワークロードを展開することもできます。SharePoint ワークロードが増加するにつれて、インフラストラクチャを急速に拡張することができます。コンピューティングのニーズが減少したら、使用しなくなったリソースを返却して、使用する分についてだけ料金を支払えばいいのです。
 
-<h3>Scalability</h3>
+<h3>IT の焦点の推移</h3>
 
-Without the need to deploy, test, and prepare physical SharePoint servers and farms, organizations can expand and contract compute capacity on demand, at a moment's notice. As SharePoint workload requirements grow, an organization can rapidly expand its infrastructure in the cloud. Likewise, when computing needs decrease, the organization can diminish resources, paying only for what it uses. Azure Virtual Machines reduces upfront expenses and long-term commitments, enabling organizations to build and manage SharePoint infrastructures at scale. Again, this means that these organizations can innovate, experiment, and iterate in hours-as opposed to days and weeks with traditional deployments.
+多くの組織は、ハードウェアやオペレーティング システム、セキュリティ、データ ストレージ、バックアップのような IT インフラストラクチャの共通コンポーネントおよび管理を外注しても、SharePoint Server のような基幹業務系アプリケーションの管理は組織内に残します。IT プラットフォームの基幹業務系でないサービス レイヤーをすべて仮想プロバイダーに委任することで、IT の焦点を中核的な基幹業務系の SharePoint サービスに移し、インフラストラクチャのセットアップに時間をかける代わりに、SharePoint プロジェクトを使ってビジネス価値を実現できます。
 
-<h3>Metered Usage</h3>
+<h3>デプロイの高速化</h3>
 
-Azure Virtual Machines provide computing power, memory, and storage for SharePoint scenarios, whose prices are typically based on resource consumption. Organizations pay only for what they use, and the service provides all capacity needed for running the SharePoint infrastructure. For more information on pricing and billing, go to <a href="/en-us/pricing/details/">Azure Pricing Details</a>. Note that there are nominal charges for storage and data moving out of the Azure cloud from an on-premises network. However, Azure does not charge for uploading data.
+大規模な SharePoint インフラストラクチャをサポートして展開すると、IT 部門が迅速に行動してビジネス要件をサポートできなくなることがあります。SharePoint サーバーおよびファームの構築、テスト、準備を実行し、運用環境にデプロイするのに必要な時間は、組織のプロセスおよび制約に応じて数週間、ときには数か月かかることがあります。Azure の仮想マシンでは、ハードウェアに設備投資をすることなく SharePoint ワークロードを迅速にデプロイすることができます。こうすることでインフラストラクチャの俊敏性を利用して、数日や数週間ではなく、数時間で展開できます。
 
-<h3>Flexibility</h3>
+<h3>拡張性</h3>
 
-Azure Virtual Machines provide developers with the flexibility to pick their desired language or runtime environment, with official support for .NET, Node.js, Java, and PHP. Developers also can choose their tools, with support for Microsoft Visual Studio, WebMatrix, Eclipse, and text editors. Further, Microsoft delivers a low-cost, low-risk path to the cloud and offers cost-effective, easy provisioning and deployment for cloud reporting needs-providing access to business intelligence (BI) across devices and locations. Finally, with the Azure offering, users not only can move VHDs to the cloud, but also can copy a VHD back down and run it locally or through another cloud provider, as long as they have the appropriate license.
+SharePoint の物理サーバーとファームを展開、テスト、および準備しなくても、コンピューティング容量を一瞬のうちにオンデマンドで拡張して契約できます。SharePoint のワークロード要件の増大にあわせて、クラウドのインフラストラクチャを急速に拡張できます。同様に、コンピューティングのニーズが減少すれば、リソースを縮小して使用している分だけ料金を支払うことができます。Azure の仮想マシンを使用すると、前払いの経費と長期契約が減り、SharePoint インフラストラクチャを規模に応じて構築して管理できます。この場合も、従来の展開のように日単位や週単位ではなく、時間単位で技術革新、実験、反復作業ができるようになります。
 
-<h2>Provisioning Process</h2>
+<h3>使用量の測定</h3>
 
-This subsection discusses the basic strong in Azure. The <strong>image library</strong> in Azure provides the list of available preconfigured VMs. Users can publish SharePoint Server, SQL Server, Windows Server, and other ISO/VHDs to the image library. To simplify the creation of VMs, base images are created and published to the library. Authorized users can use these images to generate the desired VM. For more information, go to <a href="/en-us/manage/windows/tutorials/virtual-machine-from-gallery/">Create a Virtual Machine Running Windows Server 2008 R2</a> on the Azure site. Figure 2 shows the basic steps for creating a VM using the Azure Management Portal:
+Azure の仮想マシンには、SharePoint シナリオ用のコンピューティング パワー、メモリ、ストレージが用意されていて、その価格は一般にリソースの消費量に基づいて決められます。使用した分だけ料金を支払えばよく、SharePoint インフラストラクチャを実行するのに必要な容量はすべて提供されます。料金と課金の詳細については、<a href="/ja-jp/pricing/details/">料金の概要ページ</a>を参照してください。Azure クラウドから内部設置型ネットワークにストレージとデータを移動すると、形ばかりの料金がかかることに注意してください。ただし Azure の場合、データのアップロードには料金がかかりません。
 
-<p class="caption">Figure 2: Overview of steps for creating a VM</p>
+<h3>柔軟性</h3>
+
+Azure の仮想マシンでは、開発者が目的の言語またはランタイム環境を柔軟に選択でき、.NET、Node.js、Java、および PHP が正式にサポートされています。開発者はツールを選択することもでき、Microsoft Visual Studio、WebMatrix、Eclipse、およびテキスト エディターがサポートされています。さらに、Microsoft は低コストで低リスクのクラウド移行パスを用意しており、クラウド レポートのニーズを満たす経済的で簡単なプロビジョニングと展開が可能で、各種デバイスと場所にまたがってビジネス インテリジェンス (BI) にアクセスすることができます。最後に、Azure では、ユーザーは VHD をクラウドに移動できるだけでなく、適切なラインセンスを持っている限り、VHD をコピーして、それをローカルに実行したり、別のクラウド プロバイダー経由で実行したりできます。
+
+<h2>プロビジョニング プロセス</h2>
+
+ここでは Azure の基本について説明します。Azure の<strong>イメージ ライブラリ</strong>には、利用できる構成済みの VM が一覧表示されています。ユーザーは、SharePoint Server、SQL Server、Windows Server などの ISO/VHD をイメージ ライブラリに発行できます。VM の作成を単純にするために、作成された基本イメージはライブラリに発行されます。正規ユーザーはこのイメージを使用して目的の VM を生成できます。詳細については、Azure サイトにある「<a href="/ja-jp/manage/windows/tutorials/virtual-machine-from-gallery/">Windows Server 2008 R2 を実行する仮想マシンの作成</a>」を参照してください。図 2 は、Azure の管理ポータルを使用して VM を作成する基本的な手順を示しています。
+
+<p class="caption">図 2: VM の作成手順の概要</p>
 ![azure-sharepoint-wp-2](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-2.png)
 
-Users also can upload a sysprepped image on the Azure Management Portal. For more information, go to <a href="/en-us/manage/windows/common-tasks/upload-a-vhd/">Creating and Uploading a Virtual Hard Disk</a>. Figure 3 shows the basic steps for uploading an image to create a VM:
+ユーザーは Azure の管理ポータルに sysprep 済みイメージをアップロードすることもできます。詳細については、「<a href="/ja-jp/manage/windows/common-tasks/upload-a-vhd/">Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード</a>」を参照してください。図 3 は、イメージをアップロードして VM を作成する基本的な手順を示しています。
 
-<p class="caption">Figure 3: Overview of steps for uploading an image</p>
+<p class="caption">図 3: イメージのアップロード手順の概要</p>
 ![azure-sharepoint-wp-3](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-3.png)
 
-<h3>Deploying SharePoint 2010 on Azure</h3>
+<h3>Azure への SharePoint 2010 のデプロイ</h3>
 
-You can deploy SharePoint 2010 on Azure by following these steps:
+SharePoint 2010 を Azure にデプロイするには、次の手順に従います。
 
 <ol>
-<li>Log on to the <a href="http://manage.windowsazure.com/">Azure Management Portal</a> through your account.
+<li>アカウントを使用して <a href="http://manage.windowsazure.com/">Azure の管理ポータル</a>にログオンします。
 <ul>
 
-<li>If you do not have an Azure account, <a href="http://www.windowsazure.com/en-us/pricing/free-trial/">sign up for a free trial of Azure</a>.</li>
+<li>Azure アカウントを持っていない場合は、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/">Azure の無料評価版にサインアップ</a>してください。</li>
 </ul>
 </li>
 
-<li>Create a VM with base operating system: On the Azure Management Portal, click <strong>+NEW</strong>, then click <strong>VIRTUAL MACHINE</strong>, and then click <strong>FROM GALLERY</strong>. ![azure-sharepoint-wp-4](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-4.png)</li>
+<li>基本オペレーティング システムの VM を作成します。Azure の管理ポータルで、Web ページの左下にある <strong>[+ 新規]</strong> をクリックし、<strong>[仮想マシン]</strong>、<strong>[ギャラリーから]</strong> の順にクリックします。![azure-sharepoint-wp-4](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-4.png)</li>
 
-<li>The <strong>VM OS Selection</strong> dialog box appears. Click <strong>Platform Images</strong>, select the <strong>Windows Server 2008 R2 SP1</strong> platform image. ![azure-sharepoint-wp-5](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-5.png)</li>
+<li><strong>[VM OS の選択]</strong> ダイアログ ボックスが表示されます。<strong>[プラットフォーム イメージ]</strong> をクリックし、<strong>[Windows Server 2008 R2 SP1]</strong> プラットフォーム イメージを選択します。![azure-sharepoint-wp-5](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-5.png)</li>
 
-<li>The <strong><em>VM Configuration </em></strong>dialog box appears. Provide the following information:
+<li><strong><em>[VM 構成]</em></strong> ダイアログ ボックスが表示されます。次の情報を指定します。
 
 <ul>
-<li>Enter a <strong>VIRTUAL MACHINE NAME</strong>.
+<li> <strong>[仮想マシン名]</strong> ボックスに入力します。
 <ul>
-<li>This machine name should be globally unique.</li>
+<li>このマシン名はグローバルに一意である必要があります。</li>
 </ul>
 </li>
-<li>Leave the <strong>NEW USER NAME</strong> box as Administrator.</li>
-<li>In the <strong>NEW PASSWORD</strong> box, type a strong password.</li>
-<li>In the <strong>CONFIRM PASSWORD</strong> box, retype the password.</li>
-<li>Select the appropriate <strong>SIZE</strong>.
+<li><strong>[新しいユーザー名]</strong> ボックスは、Administrator のままにしておきます。</li>
+<li><strong>[新しいパスワード]</strong> ボックスに、強力なパスワードを入力します。</li>
+<li><strong>[パスワードの確認]</strong> ボックスに、パスワードを再度入力します。</li>
+<li>適切な <strong>[サイズ]</strong> を選択します。
 <ul>
-<li>For a production environment (SharePoint application server and database), it is recommended to use Large <em>(4 Core, 7GB memory)</em>.</li>
+<li>運用環境の場合 (SharePoint アプリケーション サーバーおよびデータベース)、[大] <em>(4 コア, 7 GB メモリ)</em> を使用することをお勧めします。</li>
 </ul>
 </li>
 </ul>
 ![azure-sharepoint-wp-6](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-6.png)</li>
-<li>The <strong><em>VM Mode </em></strong>dialog box appears. Provide the following information:
+<li><strong><em>[VM モード]</em></strong> ダイアログ ボックスが表示されます。次の情報を指定します。
 <ul>
-<li>Select Standalone Virtual Machine.</li>
-<li>In the <strong>DNS NAME </strong>box, provide the first portion of a DNS name of your choice.
+<li>[スタンドアロンの仮想マシン] をクリックします。</li>
+<li><strong>[DNS 名]</strong> ボックスに、選択した DNS 名の先頭部分を指定します。
 <ul>
-<li>This portion will complete a name in the format MyService1.cloudapp.net.</li>
+<li>完全な DNS 名は MyService1.cloudapp.net という形式になります。</li>
 </ul>
 </li>
-<li>In the <strong>STORAGE ACCOUNT </strong>box, choose one of the following:
+<li><strong>[ストレージ アカウント]</strong> ボックスで、次の 1 つを選択します。
 <ul>
-<li>Select a storage account where the VHD file is stored.</li>
-<li>Choose to have a storage account automatically created.
+<li>VHD ファイルが保存されているストレージ アカウントを選択します。</li>
+<li>ストレージ アカウントを自動的に作成します。
 <ul>
-<li>Only one storage account per region is automatically created. All other VMs created with this setting are located in this storage account.</li>
-<li>You are limited to 20 storage accounts.</li>
-<li>For more information, go to <a href="/en-us/manage/windows/common-tasks/upload-a-vhd/#createstorage">Create a Storage Account in Azure</a>.</li>
+<li>自動的に作成されるストレージ アカウントはリージョンあたり 1 つだけです。この設定で作成する他のすべての VM がこのストレージ アカウントに配置されます。</li>
+<li>ストレージ アカウントは 20 個に制限されています。</li>
+<li>詳細については、「<a href="/ja-jp/manage/windows/common-tasks/upload-a-vhd/#createstorage">Azure にストレージ アカウントを作成する</a>」を参照してください。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>In the <strong>REGION/AFFINITY GROUP/VIRTUAL NETWORK</strong> box, select the region where the virtual image will be hosted.</li>
+<li><strong>[リージョン/アフィニティ グループ/仮想ネットワーク]</strong> ボックスで、仮想イメージをホストするリージョンを選択します。</li>
 </ul>
 ![azure-sharepoint-wp-7](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-7.png)</li>
-<li>The <strong><em>VM Options </em></strong>dialog box appears. Provide the following information:
+<li><strong><em>[VM オプション]</em></strong> ダイアログ ボックスが表示されます。次の情報を指定します。
 <ul>
-<li>In the <strong>AVAILABILITY SET</strong> box, select (none).</li>
-<li>Read and accept the legal terms.</li>
-<li>Click the checkmark to create the VM.</li>
+<li><strong>[可用性セット]</strong> ボックスの一覧の [(なし)] を選択します。</li>
+<li>法律条項を読み、同意します。</li>
+<li>チェック マークをクリックして VM を作成します。</li>
 </ul>
 ![azure-sharepoint-wp-8](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-8.png)</li>
-<li>The <strong><em>VM Instances</em></strong> page appears. Verify that your VM was created successfully. 
+<li><strong><em>[VM インスタンス]</em></strong> ページが表示されます。VM が正常に作成されたことを確認します。
 
 ![azure-sharepoint-wp-9](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-9.png)</li>
 
-<li>Complete VM setup:
+<li>VM のセットアップを完了します。
 <ul>
-<li>Open the VM using Remote Desktop.</li>
-<li>On the Azure Management Portal, select your VM, and then select the <strong>DASHBOARD</strong> page.</li>
-<li>Click <strong>Connect</strong>.</li>
+<li>リモート デスクトップを使用して VM を開きます。</li>
+<li>Azure の管理ポータルで、VM を選択し、<strong>[ダッシュボード]</strong> ページをクリックします。</li>
+<li><strong>[接続]</strong> をクリックします。</li>
 </ul>
 ![azure-sharepoint-wp-10](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-10.png)</li>
-<li>Build the SQL Server VM using any of the following options:
+<li>次のいずれかのオプションを使用して、SQL Server VM を構築します。
 <ul>
-<li>Create a SQL Server 2012 VM by following steps 1 to 7 above-except in <strong>step 3</strong>, use the SQL Server 2012 image instead of the Windows Server 2008 R2 SP1 image. For more information, go to <a href="/en-us/manage/windows/common-tasks/install-sql-server/">Provisioning a SQL Server Virtual Machine on Azure</a>.
+<li>前に示している手順 1. から手順 7. に従って、SQL Server 2012 VM を作成します。ただし、<strong>手順 3.</strong> では、Windows Server 2008 R2 SP1 イメージの代わりに SQL Server 2012 イメージを使用します。詳細については、「<a href="/ja-jp/manage/windows/common-tasks/install-sql-server/">Azure での SQL Server 仮想マシンのプロビジョニング</a>」を参照してください。
 <ul>
-<li>When you choose this option, the provisioning process keeps a copy of SQL Server 2012 setup files in the <em>C:\SQLServer_11.0_Full</em> directory path so that you can customize the installation. For example, you can convert the evaluation installation of SQL Server 2012 to a licensed version by using your license key.</li>
+<li>このオプションを選択した場合は、プロビジョニング プロセスで SQL Server 2012 セットアップ ファイルのコピーが <em>C:\SQLServer_11.0_Full</em> ディレクトリに残されるため、インストールをカスタマイズできます。たとえば、ライセンス キーを使用して SQL Server 2012 の評価版をライセンス版に変換できます。</li>
 </ul>
 </li>
-<li>Use the SQL Server System Preparation (SysPrep) tool to install SQL Server on the VM with base operating system (as shown above in steps 1 to 7). For more information, go to <a href="http://msdn.microsoft.com/en-us/library/ee210664.aspx">Install SQL Server 2012 Using SysPrep</a>.</li>
-<li>Use the Command Prompt to install SQL Server. For more information, go to <a href="http://msdn.microsoft.com/en-us/library/ms144259.aspx#SysPrep">Install SQL Server 2012 from the Command Prompt</a>.</li>
-<li>Use supported SQL Server media and your license key to install SQL Server on the VM with base operating system (as shown above in steps 1 to 7).</li>
+<li>SQL Server システム準備 (SysPrep) ツールを使用して、基本オペレーティング システムの VM に SQL Server をインストールします (上記の手順 1. ～ 7. を参照)。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/ee210664.aspx">SysPrep を使用した SQL Server 2012 のインストール</a>」を参照してください。</li>
+<li>コマンド プロンプトを使用して SQL Server をインストールします。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/ms144259.aspx#SysPrep">コマンド プロンプトからの SQL Server 2012 のインストール</a>」を参照してください。</li>
+<li>サポートされている SQL Server メディアとライセンス キーを使用して、基本オペレーティング システムの VM に SQL Server をインストールします (上記の手順 1. ～ 7. を参照)。</li>
 </ul>
 </li>
-<li>Build the SharePoint farm using the following substeps:
+<li>次のサブ手順に従って、SharePoint ファームを構築します。
 <ul>
-<li>Substep 1: Configure the Azure subscription using script files.</li>
-<li>Substep 2: Provision SharePoint servers by creating another VM with base operating system (as shown above in steps 1 to 7). To build a SharePoint server on this VM, choose one of the following options:
+<li>サブ手順 1. スクリプト ファイルを使用して Azure サブスクリプションを構成します。</li>
+<li>サブ手順 2. 基本オペレーティング システムの別の VM を作成して (前に示している手順 1. ～ 7. を参照)、SharePoint Server をプロビジョニングします。この VM 上に SharePoint Server を構築するには、次のいずれかのオプションを選択します。
 <ul>
-<li>Provision using SharePoint GUI:
+<li>SharePoint GUI を使用してプロビジョニングします。
 <ul>
-<li>To create and provision a SharePoint farm, go to <a href="http://technet.microsoft.com/en-us/library/ee805948.aspx#CreateConfigure">Create a Microsoft SharePoint Server Farm</a>.</li>
-<li>To add a web or application server to the farm, go to <a href="http://technet.microsoft.com/en-us/library/cc261752.aspx">Add a Web or Application Server to the Farm (SharePoint Server 2010)</a>.</li>
+<li>SharePoint ファームを作成してプロビジョニングするには、<a href="http://technet.microsoft.com/ja-jp/library/ee805948.aspx#CreateConfigure">Microsoft SharePoint Server ファームの作成に関するページ</a>を参照してください。</li>
+<li>ファームに Web またはアプリケーション サーバーを追加するには、「<a href="http://technet.microsoft.com/ja-jp/library/cc261752.aspx">SharePoint 2013 で Web サーバーまたはアプリケーション サーバーをファームに追加する</a>」を参照してください。</li>
 <li>
-<p>To add a database server to an existing farm, go to <a href="http://technet.microsoft.com/en-us/library/cc262781">Add a Database Server to an Existing Farm</a>.</p>
+<p>データベース サーバーを既存のファームに追加するには、「<a href="http://technet.microsoft.com/ja-jp/library/cc262781">Add a Database Server to an Existing Farm (既存のファームへのデータベース サーバーの追加)</a>」を参照してください。</p>
 <ul>
-<li>To use SQL Server 2012 for your SharePoint farm, you must download and install Service Pack 1 for SharePoint Server 2010 after installing the application and choosing not to configure the server. For more information, go to <a href="http://www.microsoft.com/en-us/download/details.aspx?id=26623">Service Pack 1 for SharePoint Server 2010</a>.</li>
-<li>To take advantage of SQL Server BI features, it is recommended to install SharePoint Server as a server farm instead of a standalone server. For more information, go to <a href="http://technet.microsoft.com/en-us/library/hh231681(v=sql.110).aspx">Install SQL Server 2012 Business Intelligence Features</a>.</li>
+<li>SharePoint ファームで SQL Server 2012 を使用するには、アプリケーションをインストールした後、サーバーの構成はしないで、SharePoint Server 2010 の Service Pack 1 をダウンロードしてインストールする必要があります。詳細については、「<a href="http://www.microsoft.com/ja-jp/download/details.aspx?id=26623">SharePoint Server 2010 Service Pack 1</a>」を参照してください。</li>
+<li>SQL Server の BI 機能を活用するには、SharePoint Server をスタンドアロン サーバーではなくサーバー ファームとしてインストールすることをお勧めします。詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/hh231681(v=sql.110).aspx">SQL Server 2012 のビジネス インテリジェンス機能のインストール</a>」を参照してください。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>Provision using Microsoft Windows PowerShell: You can use the Psconfig command-line tool as an alternative interface to perform several operations that control how SharePoint 2010 products are provisioned. For more information, go to <a href="http://technet.microsoft.com/en-us/library/cc263093.aspx">Psconfig Command-line Reference</a>.</li>
+<li>Microsoft Windows PowerShell を使用してプロビジョニングします。Psconfig コマンド ライン ツールを代わりに使用して、SharePoint 2010 製品のプロビジョニング方法を制御するいくつかの操作を実行できます。詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/cc263093.aspx">Psconfig コマンドライン リファレンス</a>」を参照してください。</li>
 </ul>
 </li>
-<li>Substep 3: Configure SharePoint. After each SharePoint VM is in the ready state, configure SharePoint Server on each server by using one of the following options:
+<li>サブ手順 3. 画面で SharePoint を構成します。各 SharePoint VM の準備が完了したら、次のいずれかの方法で各 VM の SharePoint Server を構成します。
 <ul>
-<li>Configure SharePoint from the GUI.</li>
-<li>Configure SharePoint using Windows PowerShell. For more information, go to <a href="http://technet.microsoft.com/en-us/library/cc262839.aspx">Install SharePoint Server 2010 by Using Windows PowerShell</a>.
+<li>GUI 画面で SharePoint を構成します。</li>
+<li>Windows PowerShell を使用して SharePoint を構成します。詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/cc262839.aspx">Windows PowerShell を使用して SharePoint Server 2010 をインストールする</a>」を参照してください。
 <ul>
-<li>You also can use the CodePlex Project's AutoSPInstaller, which consists of Windows PowerShell scripts, an XML input file, and a standard Microsoft Windows batch file. AutoSPInstaller provides a framework for a SharePoint 2010 installation script based on Windows PowerShell. For more information, go to <a href="http://autospinstaller.codeplex.com/">CodePlex: AutoSPInstaller</a>.
+<li>CodePlex プロジェクトの AutoSPInstaller を使用することもできます。これは Windows PowerShell スクリプト、XML 入力ファイル、Microsoft Windows 標準バッチ ファイルから構成されています。AutoSPInstaller は、Windows PowerShell に基づいた SharePoint 2010 インストール スクリプトのフレームワークです。詳細については、<a href="http://autospinstaller.codeplex.com/">CodePlex の AutoSPInstaller のページ</a>を参照してください。
 
-<strong>Note</strong>: Be sure to configure security on the Management Portal endpoint and set an inbound port on the VM's Windows Firewall. Then, confirm that you can start a remote Windows PowerShell session to one of the SharePoint application servers by opening a Windows PowerShell session with Administrator credentials.
+<strong>注</strong>: 管理ポータル エンドポイントでセキュリティを構成し、VM の Windows ファイアウォールで着信ポートを設定してください。その後、管理者の資格情報で Windows PowerShell セッションを開いて、SharePoint アプリケーション サーバーの 1 つに対してリモート Windows PowerShell セッションを開始できることを確認します。
 </li>
 </ul>
 </li>
@@ -232,303 +232,304 @@ You can deploy SharePoint 2010 on Azure by following these steps:
 </li>
 </ul>
 </li>
-<li>After the script gets completed, connect to the VM using the VM Dashboard.</li>
-<li>Verify SharePoint configuration: Log on to the SharePoint server, and then use Central Administration to verify the configuration.</li>
+<li>スクリプトの処理が完了したら、VM のダッシュボードを使用して VM に接続します。</li>
+<li>SharePoint の構成を確認します。SharePoint Server にログオンして、[サーバーの全体管理] を使用して構成を確認します。</li>
 </ol>
 
-<h3>Creating and Uploading a Virtual Hard Disk</h3>
+<h3>仮想ハード ディスクの作成とアップロード</h3>
 
-You also can create your own images and upload them to Azure as a VHD file. To create and upload a VHD file on Azure, follow these steps:
+独自のイメージを作成してそれを Azure に VHD ファイルとしてアップロードすることもできます。VHD ファイルを作成して Azure にアップロードするには、次の手順に従います。
 
 <ol>
-<li>Create the Hyper-V-enabled image: Use Hyper-V Manager to create the Hyper-V-enabled VHD. For more information, go to <a href="http://technet.microsoft.com/en-us/library/cc742509">Create Virtual Hard Disks</a>.</li>
-<li>Create a storage account in Azure: A storage account in Azure is required to upload a VHD file that can be used for creating a VM. This account can be created using the Azure Management Portal. For more information, go to <a href="/en-us/manage/windows/common-tasks/upload-a-vhd/">Create a Storage Account in Azure</a>.</li>
-<li>Prepare the image to be uploaded: Before the image can be uploaded to Azure, it must be generalized using the SysPrep command. For more information, go to <a href="http://technet.microsoft.com/en-us/library/bb457073.aspx">How to Use SysPrep: An Introduction</a>.</li>
-<li>Upload the image to Azure: To upload an image contained in a VHD file, you must create and install a management certificate. Obtain the thumbprint of the certificate and the subscription ID. Set the connection and upload the VHD file using the CSUpload command-line tool. For more information, go to <a href="/en-us/manage/windows/common-tasks/upload-a-vhd/">Upload the Image to Azure</a>.</li>
+<li>Hyper-V 対応のイメージを作成します。Hyper-V マネージャーを使用して Hyper-V 対応の VHD を作成します。詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/cc742509">仮想ハード ディスクを作成する</a>」を参照してください。</li>
+<li>Azure にストレージ アカウントを作成します。VM の作成に使用できる VHD ファイルを Azure にアップロードするには、Azure のストレージ アカウントが必要です。このストレージ アカウントは、Azure の管理ポータルを使って作成できます。詳細については、「<a href="/ja-jp/manage/windows/common-tasks/upload-a-vhd/">Azure にストレージ アカウントを作成する</a>」を参照してください。</li>
+<li>アップロードするイメージを準備します。イメージを Azure にアップロードする前に、SysPrep コマンドを使用してイメージを一般化する必要があります。詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/bb457073.aspx">Sysprep の使用方法: 紹介</a>」を参照してください。</li>
+<li>Azure にイメージをアップロードします。VHD ファイルに格納されたイメージをアップロードするには、管理証明書を作成してインストールする必要があります。証明書のサムプリントとサブスクリプション ID を取得する接続を設定し、CSUpload コマンド ライン ツールを使用して、VHD ファイルをアップロードします。詳細については、「<a href="/ja-jp/manage/windows/common-tasks/upload-a-vhd/">Upload the Image to Azure (Azure にイメージをアップロードする)</a>」を参照してください。</li>
 </ol>
 
-<h2>Usage Scenarios</h2>
+<h2>使用シナリオ</h2>
 
-This section discusses some leading customer scenarios for SharePoint deployments using Azure Virtual Machines. Each scenario is divided into two parts-a brief description about the scenario followed by steps for getting started.
+このセクションでは、Azure の仮想マシンを使用した SharePoint 展開の主な顧客シナリオについて説明します。各シナリオは 2 つに分けられています。シナリオに関する短い説明の後に、作業開始手順が続きます。
 
-<h3>Scenario 1: Simple SharePoint Development and Test Environment</h3>
+<h3>シナリオ 1: 単純な SharePoint 開発およびテスト環境</h3>
 
-<h4>Description</h4>
+<h4>説明</h4>
 
-Organizations are looking for more agile ways to create SharePoint applications and set up SharePoint environments for onshore/offshore development and testing. Fundamentally, they want to shorten the time required to set up SharePoint application development projects, and decrease cost by increasing the use of their test environments. For example, an organization might want to perform on-demand load testing on SharePoint Server and execute user acceptance testing (UAT) with more concurrent users in different geographic locations. Similarly, integrating onshore/offshore teams is an increasingly important business need for many of today's organizations.
+オンショアまたはオフショア開発とテストのために、SharePoint アプリケーションを作成して SharePoint 環境をセットアップするもっと俊敏な方法が求められています。基本的に、求められているのは、SharePoint アプリケーション開発プロジェクトをセットアップするのにかかる時間を短縮し、テスト環境の利用を増やしてコストを削減することです。たとえば、異なる地域にいる同時ユーザー数を増やして、SharePoint Server でオンデマンド負荷テストを実行し、ユーザー受け入れテスト (UAT) を実行する場合です。同様に、オンショアまたはオフショアのチームを統合することが、現代の多くの企業にとってますます重要なビジネス ニーズになっています。
 
-This scenario explains how organizations can use preconfigured SharePoint farms for development and test workloads. A SharePoint deployment topology looks and feels exactly as it would in an on-premises virtualized deployment. Existing IT skills translate 1:1 to an Azure Virtual Machines deployment, with the major benefit being an almost complete cost shift from capital expenditures to operational expenditures-no upfront physical server purchase is required. Organizations can eliminate the capital cost for server hardware and achieve flexibility by greatly reducing the provisioning time required to create, set up, or extend a SharePoint farm for a testing and development environment. IT can dynamically add and remove capacity to support the changing needs of testing and development. Plus, IT can focus more on delivering business value with SharePoint projects and less on managing infrastructure.
+このシナリオでは、開発およびテスト ワークロードのために構成済み SharePoint ファームをどのように利用できるかを説明します。SharePoint デプロイ トポロジは、内部設置型の仮想化されたデプロイと見かけはまったく同じです。既存の IT スキルは 1 対 1 で Azure の仮想マシンの展開に応用でき、設備投資から運用経費にコストをほぼ完全に移転できるというのが大きな利点です。物理サーバーを前払いで購入する必要はありません。サーバー ハードウェアの設備投資をゼロにして、テストおよび開発環境向けに SharePoint ファームを作成しセットアップし拡張するのに必要なプロビジョニング時間を大幅に短縮することで柔軟性を実現できます。IT 部門は容量を大幅に増減して、テストおよび開発の変化するニーズに対応できます。さらに、IT 部門は SharePoint プロジェクトによってビジネス価値を実現することにいっそう力を注ぎ、インフラストラクチャの管理に手をかけないで済ますことができます。
 
-To fully utilize load-testing machines, organizations can configure SharePoint virtualized development and test machines on Azure with operating system support for Windows Sever 2008 R2. This enables development teams to create and test applications and easily migrate to on-premises or cloud production environments without code changes. The same frameworks and toolsets can be used on premises and in the cloud, allowing distributed team access to the same environment. Users also can access on-premises data and applications by establishing a direct VPN connection.
+負荷テスト マシンを全面的に活用するために、Azure で Windows Sever 2008 R2 オペレーティング システムをサポートする SharePoint の仮想化された開発およびテスト マシンを構成することができます。これにより開発チームは、アプリケーションを作成してテストし、コードを変更することなく、内部設置型またはクラウドの運用環境に簡単に移行できるようになります。同じフレームワークとツールセットを内部設置型環境でもクラウド環境でも利用できるため、分散したチームが同じ環境にアクセスできます。また、VPN 接続を直接確立して、内部設置型システムのデータとアプリケーションにアクセスすることもできます。
 
-<h4>Getting Started</h4>
+<h4>作業の開始</h4>
 
-Figure 4 shows a SharePoint development and testing environment in an Azure VM. To build this deployment, start by using the same on-premises SharePoint development and testing environment used to develop applications. Then, upload and deploy the applications to the Azure VM for testing and development. If your organization decides to move the application back on-premises, it can do so without having to modify the application.
+図 4 は、Azure VM の SharePoint 開発環境とテスト環境を示しています。このデプロイを構築するには、まず、アプリケーション開発に使用している内部設置型環境と同じ SharePoint 開発環境およびテスト環境を使用します。次に、テストと開発のためにアプリケーションを Azure VM にアップロードしてデプロイします。アプリケーションを内部設置型環境に戻すことを決めた場合は、アプリケーションを修正しなくても戻すことができます。
 
-<p class="caption">Figure 4: SharePoint development and testing environment in Azure Virtual Machines</p>
+<p class="caption">図 4: Azure の仮想マシンの SharePoint 開発環境とテスト環境</p>
 
 ![azure-sharepoint-wp-11](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-11.png)
 
-<h4>Setting Up the Scenario Environment</h4>
+<h4>シナリオ環境のセットアップ</h4>
 
-To implement a SharePoint development and testing environment on Azure, follow these steps:
+SharePoint 開発環境とテスト環境を Azure に実装するには、次の手順に従います。
 
 <ol>
-<li><em>Provision</em>: First, provision a VPN connection between on-premises and Azure using Azure Virtual Network. (Because Active Directory is not being used here, a VPN tunnel is needed.) For more information, go to <a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj156007.aspx">Azure Virtual Network (Design Considerations and Secure Connection Scenarios)</a>. Then, use the Management Portal to provision a new VM using a stock image from the image library.
+<li><em>プロビジョニング</em>: まず、Azure の仮想ネットワークを使用して内部設置型システムおよび Azure との VPN 接続をプロビジョニングします (ここでは Active Directory を使用していないため、VPN トンネルが必要です)。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx">Azure Virtual Network (Design Considerations and Secure Connection Scenarios) (Azure の仮想ネットワーク (設計上の考慮事項と安全な接続シナリオ))</a>」を参照してください。次に、管理ポータルで、イメージ ギャラリーにあるストック イメージを使用して、新しい VM をプロビジョニングします。
 <ul>
-<li>You can upload the on-premises SharePoint development and testing VMs to your Azure storage account and reference those VMs through the image library for building the required environment.</li>
-<li>You can use the SQL Server 2012 image instead of the Windows Server 2008 R2 SP1 image. For more information, go to <a href="/en-us/manage/windows/common-tasks/install-sql-server/">Provisioning a SQL Server Virtual Machine on Azure</a>.</li>
+<li>内部設置型 SharePoint 開発およびテスト VM を Azure のストレージ アカウントにアップロードして、その VM をイメージ ライブラリから参照して必要な環境を構築することができます。</li>
+<li>Windows Server 2008 R2 SP1 イメージの代わりに SQL Server 2012 イメージを使用できます。詳細については、「<a href="/ja-jp/manage/windows/common-tasks/install-sql-server/">Azure での SQL Server 仮想マシンのプロビジョニング</a>」を参照してください。</li>
 </ul>
 </li>
-<li><em>Install</em>: Install SharePoint Server, Visual Studio, and SQL Server on the VMs using a Remote Desktop connection.
+<li><em>インストール</em>: リモート デスクトップ接続を使用して、SharePoint Server、Visual Studio、および SQL Server を VM にインストールします。
 <ul>
-<li>Choose an option for installing SharePoint Server:
+<li>SharePoint Server のインストール オプションを選択します。
 <ul>
-<li>Use the SharePoint 2010 Easy Setup Script to build a SharePoint developer machine. For more information, go to <a href="http://www.microsoft.com/en-us/download/details.aspx?id=23415">SharePoint 2010 Easy Setup Script</a>.</li>
-<li>Use Windows PowerShell. For more information, go to <a href="http://technet.microsoft.com/en-us/library/cc262839.aspx">Install SharePoint Server 2010 by Using Windows PowerShell</a>.</li>
-<li>Use the CodePlex Project's AutoSPInstaller. For more information, go to <a href="http://autospinstaller.codeplex.com/">CodePlex: AutoSPInstaller</a>.</li>
+<li>SharePoint 2010 簡易セットアップ スクリプトを使用して、SharePoint 開発マシンを構築します。詳細については、「<a href="http://www.microsoft.com/ja-jp/download/details.aspx?id=23415">SharePoint 2010 Easy Setup Script (SharePoint 2010 簡易セットアップ スクリプト)</a>」を参照してください。</li>
+<li>Windows PowerShell を使用します。詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/cc262839.aspx">Windows PowerShell を使用して SharePoint Server 2010 をインストールする</a>」を参照してください。</li>
+<li>CodePlex プロジェクトの AutoSPInstaller を使用します。詳細については、<a href="http://autospinstaller.codeplex.com/">CodePlex の AutoSPInstaller のページ</a>を参照してください。</li>
 </ul>
 </li>
-<li>Install Visual Studio. For more information, go to <a href="http://msdn.microsoft.com/en-us/library/e2h7fzkw.aspx">Visual Studio Installation</a>.</li>
-<li>Install SQL Server. For more information, go to <a href="http://msdn.microsoft.com/en-us/library/ee210664.aspx">Install SQL Server Using SysPrep</a>.
+<li>Visual Studio をインストールします。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/e2h7fzkw.aspx">Visual Studio のインストール</a>」を参照してください。</li>
+<li>SQL Server をインストールします。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/ee210664.aspx">SysPrep を使用した SQL Server 2012 のインストール</a>」を参照してください。
 <ul>
-<li>Refer to the hands-on lab for creating and configuring SQL Server 2012 for a SharePoint farm deployment: <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingSQLServerForSharePoint">Configuring SQL Server 2012 for SharePoint in Azure</a>.</li>
-<li>Refer to the hands-on lab for creating a SharePoint farm by configuring Active Directory and using a single SQL Server database: <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeploySharePointVMs">Deploying a SharePoint Farm with Azure Virtual Machines</a>.</li>
+<li>SharePoint ファーム展開用の SQL Server 2012 の作成と構成については、「<a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingSQLServerForSharePoint">Configuring SQL Server 2012 for SharePoint in Azure (Azure で SharePoint 用に SQL Server 2012 を構成)</a>」ハンズオン ラボを参照してください。</li>
+<li>Active Directory を構成しシングル SQL Server データベースを使用する SharePoint ファームの作成については、「<a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeploySharePointVMs">Deploying a SharePoint Farm with Azure Virtual Machines (Azure の仮想マシンを備えた SharePoint ファームの展開)</a>」ハンズオン ラボを参照してください。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><em>Develop deployment packages and scripts for applications and databases</em>: If you plan to use an available VM from the image library, the desired on-premises applications and databases can be deployed on Azure Virtual Machines:
+<li><em>アプリケーションとデータベースのための展開パッケージとスクリプトの開発</em>: イメージ ライブラリにある VM を使用する場合は、目的の内部設置型アプリケーションとデータベースを Azure の仮想マシンに展開できます。
 <ul>
-<li>Create deployment packages for the existing on-premises applications and databases using SQL Server Data Tools and Visual Studio.</li>
-<li>Use these packages to deploy the applications and databases on Azure Virtual Machines.</li>
+<li>SQL Server Data Tools と Visual Studio を使用して、既存の内部設置型アプリケーションとデータベースのためのデプロイ パッケージを作成します。</li>
+<li>このパッケージを使用して、アプリケーションとデータベースを Azure の仮想マシンにデプロイします。</li>
 </ul>
 </li>
-<li><em>Deploy SharePoint applications and databases</em>:
+<li><em>SharePoint アプリケーションとデータベースのデプロイ</em>: 
 <ul>
-<li>Configure security on the Management Portal endpoint and set an inbound port in the VM's Windows Firewall.</li>
-<li>Deploy SharePoint applications and databases to Azure Virtual Machines using the deployment packages and scripts created in step 3.</li>
-<li>Test deployed applications and databases.</li>
+<li>管理ポータル エンドポイントでセキュリティを構成し、VM の Windows ファイアウォールで着信ポートを設定します。</li>
+<li>手順 3. で作成したデプロイ パッケージとスクリプトを使用して、SharePoint アプリケーションとデータベースを Azure の仮想マシンにデプロイします。</li>
+<li>デプロイしたアプリケーションとデータベースをテストします。</li>
 </ul>
 </li>
-<li><em>Manage VMs</em>:
+<li><em>VM の管理</em>: 
 <ul>
-<li>Monitor the VMs using the Management Portal.</li>
-<li>Monitor the applications using Visual Studio and SQL Server Management Studio.</li>
-<li>You also can monitor and manage the VMs using on-premises management software, like Microsoft System Center - Operations Manager.</li>
+<li>管理ポータルを使用して VM を監視します。</li>
+<li>Visual Studio と SQL Server Management Studio を使用してアプリケーションを監視します。</li>
+<li>Microsoft System Center - Operations Manager のような内部設置型管理ソフトウェアを使用して VM を監視し管理することもできます。</li>
 </ul>
 </li>
 </ol>
-<h3>Scenario 2: Public-facing SharePoint Farm with Customization</h3>
+<h3>シナリオ 2: カスタマイズして公開された SharePoint ファーム</h3>
 
-<h4>Description</h4>
+<h4>説明</h4>
 
-Organizations want to create an Internet presence that is hosted in the cloud and is easily scalable based on need and demand. They also want to create partner extranet websites for collaboration and implement an easy process for distributed authoring and approval of website content. Finally, to handle increasing loads, these organizations want to provide capacity on demand to their websites.
+組織は、クラウドでホストされ、ニーズと需要に応じて簡単に拡張できるインターネット サイトを作成したいと考えています。また、コラボレーションのためにパートナー用のエクストラネット Web サイトを作成して、分散型オーサリングと Web サイト コンテンツ承認のための簡単なプロセスを導入したいとも考えています。最後に、増大する負荷を処理するために、Web サイトの容量をオンデマンドで増やしたいと考えています。
 
-In this scenario, SharePoint Server is used as the basis for hosting a public-facing website. It enables organizations to rapidly deploy, customize, and host their business websites on a secure, scalable cloud infrastructure. With SharePoint public-facing websites on Azure, organizations can scale as traffic grows and pay only for what they use. Common tools, similar to those used on premises, can be used for content authoring, workflow, and approval with SharePoint on Azure.
+このシナリオの場合、SharePoint Server は公開された Web サイトをホストする土台として使用されます。安全で拡張性の高いクラウド インフラストラクチャ上で、ビジネス Web サイトの迅速なデプロイ、カスタマイズ、およびホストができます。Azure で SharePoint の公開 Web サイトを使用すると、トラフィックの増大に応じてサイズを変更し、使用した分だけ料金を支払うことができます。内部設置型と同様の一般的ツールを、Azure 上の SharePoint でもコンテンツのオーサリング、ワークフロー、および承認に使用できます。
 
-Further, using Azure Virtual Machines, organizations can easily configure staging and production environments running on VMs. SharePoint public-facing VMs created in Azure can be backed up to virtual storage. In addition, for disaster recovery purposes, the Continuous Geo-Replication feature allows organizations to automatically back up VMs operating in one data center to another data center miles away. (For more information on geo-replication, go to <a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/introducing-geo-replication-for-windows-azure-storage.aspx">Introducing Geo-replication for Azure Storage</a>).
+さらに、Azure の仮想マシンを使用すると、VM 上で動作しているステージング環境と運用環境を簡単に構成できます。Azure で作成した SharePoint の公開 VM は、仮想ストレージにバックアップできます。さらに、災害復旧目的で、連続的なジオ (主要地域) レプリケーション機能を利用して、あるデータ センターで実行されている VM を遠く離れた別のデータ センターに自動的にバックアップすることができます (geo (主要地域) レプリケーションの詳細については、「<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/introducing-geo-replication-for-windows-azure-storage.aspx">Introducing Geo-replication for Azure Storage (Azure のストレージの geo (主要地域) レプリケーション入門)</a>」を参照してください)。
 
-VMs in Azure infrastructure are validated and supported for working with other Microsoft products, such as SQL Server and SharePoint Server. Azure and SharePoint Server are better together: Both are part of the Microsoft family and are thoroughly integrated, supported, and tested together to provide an optimal experience. They both have a single point of support for the SharePoint application and the Azure infrastructure.
+Azure インフラストラクチャの VM は、SQL Server や SharePoint Server など他の Microsoft 製品でも動作することが検証されサポートされています。Azure および SharePoint Server は連携して利用すると一段と便利です。どちらも Microsoft ファミリであり、最適な体験を提供できるように両方をあわせて徹底的に統合、サポート、テストされています。どちらも SharePoint アプリケーションと Azure インフラストラクチャのサポートが一元化されています。
 
-<h4>Getting Started</h4>
+<h4>作業の開始</h4>
 
-In this scenario, more front-end web servers for SharePoint Server must be added to support extra traffic. These servers require enhanced security and Active Directory Domain Services domain controllers to support user authentication and authorization. Figure 5 shows the layout for this scenario.
+このシナリオでは、余分なトラフィックをサポートするために SharePoint Server にフロントエンドの Web サーバーを追加する必要があります。追加するサーバーは、ユーザー認証とアクセス制御をサポートするために、セキュリティの強化、および、Active Directory Domain Services ドメイン コントローラーが必要です。図 5 に、このシナリオのレイアウトを示します。
 
-<p class="caption">Figure 5: Public-facing SharePoint farm with customization</p>
+<p class="caption">図 5: カスタマイズして公開された SharePoint ファーム</p>
 ![azure-sharepoint-wp-12](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-12.png)
 
-<h4>Setting Up the Scenario Environment</h4>
+<h4>シナリオ環境のセットアップ</h4>
 
-To implement a public-facing SharePoint farm on Azure, follow these steps:
+公開された SharePoint ファームを Azure に実装するには、次の手順に従います。
 
 <ol>
-<li><em>Deploy Active Directory</em>: The fundamental requirements for deploying Active Directory on Azure Virtual Machines are similar"but not identical"to deploying it on VMs (and, to some extent, physical machines) on-premises. For more information about the differences, as well as guidelines and other considerations, go to <a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj156090">Guidelines for Deploying Active Directory on Azure Virtual Machines</a>. To deploy Active Directory in Azure:
+<li><em>Active Directory の展開</em>: Active Directory を Azure の仮想マシンに展開するときに必要な基本的要件は、内部設置型の VM (そしてある程度は物理マシン) に展開するときと同様です。ただし同一ではありません。この違いの詳細、および指針などの考慮事項については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090">Azure の仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン</a>」を参照してください。Azure で Active Directory をデプロイするには、以下の手順を実行します。
 <ul>
-<li>Define and create a virtual network where the VMs can be assigned to specific subnets. For more information, go to <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectory/blob/master/HOL.md">Configure Virtual Networking</a>.</li>
-<li>Use the Management Portal to create and deploy the domain controller on a new VM on Azure. For more information, go to <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectory/blob/master/HOL.md">Deploying and Creating the Domain Controller</a>.
+<li>VM を特定のサブネットに割り当てることのできる仮想ネットワークを定義して作成します。詳細については、「<a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectory/blob/master/HOL.md">Configure Virtual Networking (仮想ネットワークの構成)</a>」を参照してください。</li>
+<li>管理ポータルを使用して、Azure の新しい VM にドメイン コントローラーを作成してデプロイします。詳細については、「<a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectory/blob/master/HOL.md">Deploying and Creating the Domain Controller (ドメイン コントローラーのデプロイと作成)</a>」を参照してください。
 <ul>
-<li>You also can refer to the Windows PowerShell script to deploy a stand-alone domain in the cloud using Azure Virtual Machines and Virtual Network. For more information, go to <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectoryPS">Deploying Active Directory in Azure (Windows PowerShell)</a>.</li>
-<li>For more information about creating a new Active Directory forest on a VM on Azure Virtual Network, go to <a href="/en-us/manage/services/networking/active-directory-forest/">Install a New Active Directory Forest in Azure</a>.</li>
+<li>Windows PowerShell スクリプトを参照し、Azure の仮想マシンと仮想ネットワークを使用して、クラウドにスタンドアロン ドメインをデプロイすることもできます。詳細については、「<a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectoryPS">Deploying Active Directory in Azure (Windows PowerShell) (Azure での Active Directory のデプロイ (Windows PowerShell))</a>」を参照してください。</li>
+<li>Azure の仮想ネットワーク上の VM に新しい Active Directory フォレストを作成する方法の詳細については、「<a href="/ja-jp/manage/services/networking/active-directory-forest/">Azure での新しい Active Directory フォレストのインストール</a>」を参照してください。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><em>Provision a VM</em>: Use the Management Portal to provision a new VM from a stock image in the image library.</li>
-<li><em>Deploy a SharePoint farm</em>:
+<li><em>VM のプロビジョニング</em>: 管理ポータルを使用して、イメージ ギャラリーにあるストック イメージから新しい VM をプロビジョニングします。</li>
+<li><em>SharePoint ファームのデプロイ</em>: 
 <ul>
-<li>Use the newly provisioned VM to install SharePoint and generate a reusable image. For more information about installing SharePoint Server, go to <a href="http://technet.microsoft.com/en-us/library/cc262839.aspx">Install and Configure SharePoint Server 2010 by Using Windows PowerShell</a> or <a href="http://autospinstaller.codeplex.com/">CodePlex: AutoSPInstaller</a>.</li>
-<li>Configure the SharePoint VM to create and connect to the SharePoint farm.</li>
-<li>Use the Management Portal to configure the load balancing.
+<li>新しくプロビジョニングした VM を使用して SharePoint をインストールし、再利用可能なイメージを生成します。SharePoint Server のインストールの詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/cc262839.aspx">Windows PowerShell を使用して SharePoint Server 2010 をインストールする</a>」または <a href="http://autospinstaller.codeplex.com/">CodePlex の AutoSPInstaller のページ</a>を参照してください。</li>
+<li>SharePoint VM を構成して SharePoint ファームを作成し、このファームに接続します。</li>
+<li>管理ポータルを使用してロード バランサーを構成します。
 <ul>
-<li>Configure the VM endpoints, select the option to load balance traffic on an existing endpoint, and then specify the name of the load-balanced VM.</li>
-<li>Add another front-end web VM to the existing SharePoint farm for extra traffic.</li>
+<li>VM エンドポイントを構成し、既存のエンドポイントでトラフィックを負荷分散するオプションを選択し、負荷分散された VM の名前を指定します。</li>
+<li>余分なトラフィック用として既存の SharePoint ファームに別のフロントエンド Web VM を追加します。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><em>Manage VMs</em>:
+<li><em>VM の管理</em>: 
 <ul>
-<li>Monitor the VMs using the Management Portal.</li>
-<li>Monitor the SharePoint farm using Central Administration.</li>
+<li>管理ポータルを使用して VM を監視します。</li>
+<li>[サーバーの全体管理] を使用して SharePoint ファームを監視します。</li>
 </ul>
 </li>
 </ol>
 
-<h3>Scenario 3: Scaled-out Farm for Additional BI Services</h3>
+<h3>シナリオ 3: BI サービスを追加するためにスケール アウトしたファーム</h3>
 
-<h4>Description</h4>
+<h4>説明</h4>
 
-Business intelligence is essential to gaining key insights and making rapid, sound decisions. As organizations transition from an on-premises approach, they do not want to make changes to the BI environment while deploying existing BI applications to the cloud. They want to host reports from SQL Server Analysis Services (SSAS) or SQL Server Reporting Services (SSRS) in a highly durable and available environment, while keeping full control of the BI application-all without spending much time and budget on maintenance.
+ビジネス インテリジェンスは、重要な洞察を得て、迅速で健全な意思決定を行うには不可欠です。企業は、内部設置型から移行するにつれて、既存の BI アプリケーションをクラウドにデプロイしながらも、BI 環境自体は変更したくないと考えています。企業が望んでいるのは、SQL Server Analysis Services (SSAS) または SQL Server Reporting Services (SSRS) のレポートを耐久性と可用性が高い環境でホストしながら、保守に大きな時間と予算をかけることなく、BI アプリケーションを全面的にコントロールすることです。
 
-This scenario describes how organizations can use Azure Virtual Machines to host mission-critical BI applications. Organizations can deploy SharePoint farms in Azure Virtual Machines and scale out the application server VM's BI components, like SSRS or Excel Services. By scaling resource-intensive components in the cloud, they can better and more easily support specialized workloads. Note that SQL Server in Azure Virtual Machines performs well, as it is easy to scale SQL Server instances, ranging from small to extra-large installations. This provides elasticity, enabling organizations to dynamically provision (expand) or deprovision (shrink) BI instances based on immediate workload requirements.
+このシナリオでは、Azure の仮想マシンを使用して基幹業務系の BI アプリケーションをホストする方法について説明しています。SharePoint ファームの Azure の仮想マシンに展開して、アプリケーション サーバー VM の BI コンポーネント (SSRS や Excel Services など) をスケール アウトできます。クラウドでリソース集約的なコンポーネントを拡張することで、特殊なワークロードをもっと簡単にうまくサポートできるようになります。小規模から超大規模まで、SQL Server インスタンスのサイズを簡単に変更できるため、Azure の仮想マシンの SQL Server はパフォーマンスが向上することに注意してください。これがシステムの弾力性となり、直近のワークロード要件に基づいて BI インスタンスを動的にプロビジョニング (拡大) したりプロビジョニングを解除 (縮小) したりできるようになります。
 
-Migrating existing BI applications to Azure provides better scaling. With the power of SSAS, SSRS, and SharePoint Server, organizations can create powerful BI and reporting applications and dashboards that scale up or down. These applications and dashboards also can be more securely integrated with on-premises data and applications. Azure ensures data center compliance with support for ISO 27001. For more information, go to the <a href="/en-us/support/trust-center/compliance/">Azure Trust Center</a>.
+既存の BI アプリケーションを Azure に移行すると拡張性が向上します。SSAS、SSRS、および SharePoint Server の力を活用すると、サイズを増減できる強力な BI およびレポート アプリケーションおよびダッシュボードを作成できます。このようなアプリケーションとダッシュボードは、内部設置型のデータおよびアプリケーションとさらに安全に統合することもできます。Azure では、データ センターのコンプライアンスが ISO 27001 対応であることが保証されています。詳細については、<a href="/ja-jp/support/trust-center/compliance/">Azure のトラスト センター</a>を参照してください。
 
-<h4>Getting Started</h4>
+<h4>作業の開始</h4>
 
-To scale out the deployment of BI components, a new application server with services such as PowerPivot, Power View, Excel Services, or PerformancePoint Services must be installed. Or, SQL Server BI instances like SSAS or SSRS must be added to the existing farm to support additional query processing. The server can be added as a new Azure VM with SharePoint 2010 Server or SQL Server installed. Then, the BI components can be installed, deployed, and configured on that server (Figure 6).
+BI コンポーネントの展開をスケール アウトするには、PowerPivot、Power View、Excel Services、PerformancePoint Services のようなサービスを実行する新しいアプリケーション サーバーをインストールする必要があります。または、SSAS や SSRS のような SQL Server BI インスタンスを既存のファームに追加して、追加のクエリ処理をサポートする必要があります。サーバーは、SharePoint 2010 Server または SQL Server がインストールされた新しい Azure VM として追加できます。その後、そのサーバーに BI コンポーネントをインストールし、展開して構成できます (図 6)。
 
-<p class="caption">Figure 6: Scaled-out SharePoint farm for additional BI services</p>
+<p class="caption">図 6: BI サービスを追加するためにスケール アウトした SharePoint ファーム</p>
 
 ![azure-sharepoint-wp-13](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-13.png)
 
-<h4>Setting Up the Scenario Environment</h4>
+<h4>シナリオ環境のセットアップ</h4>
 
-To scale out a BI environment on Azure, follow these steps:
+Azure で BI 環境をスケール アウトするには、次の手順に従います。
 
 <ol>
-<li><em>Provision</em>:
+<li><em>プロビジョニング</em>: 
 <ul>
-<li>Provision a VPN connection between on premises and Azure using Azure Virtual Network. For more information, go to <a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj156007.aspx">Azure Virtual Network (Design Considerations and Secure Connection Scenarios)</a>.</li>
-<li>Use the Management Portal to provision a new VM from a stock image in the image library.
+<li>Azure の仮想ネットワークを使用して内部設置型システムおよび Azure との VPN 接続をプロビジョニングします。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx">Azure Virtual Network (Design Considerations and Secure Connection Scenarios) (Azure の仮想ネットワーク (設計上の考慮事項と安全な接続シナリオ))</a>」を参照してください。</li>
+<li>管理ポータルを使用して、イメージ ギャラリーにあるストック イメージから新しい VM をプロビジョニングします。
 <ul>
-<li>You can upload SharePoint Server or SQL Server BI workload images to the image library, and any authorized user can pick those BI component VMs to build the scaled-out environment.</li>
+<li>SharePoint Server または SQL Server の BI ワークロード イメージをイメージ ライブラリにアップロードすると、権限のあるユーザーがその BI コンポーネント VM を選択してスケール アウトした環境を構築できます。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><em>Install</em>: If your organization does not have prebuilt images of SharePoint Server or SQL Server BI components, install SharePoint Server and SQL Server on the VMs using a Remote Desktop connection.
+<li><em>インストール</em>: SharePoint Server または SQL Server の BI コンポーネントの構築済みイメージがない場合は、リモート デスクトップ接続を使用して、SharePoint Server および SQL Server を VM にインストールします。
 <ul>
-<li>For more information about installing SharePoint, go to <a href="http://technet.microsoft.com/en-us/library/cc262839.aspx">Install SharePoint Server 2010 by Using Windows PowerShell</a> or <a href="http://autospinstaller.codeplex.com/">CodePlex: AutoSPInstaller</a>.</li>
-<li>For more information about installing SQL Server, go to <a href="http://msdn.microsoft.com/en-us/library/ee210664.aspx">Install SQL Server using SysPrep</a>.</li>
-<li>Refer to the hands-on lab for creating and configuring SQL Server 2012 for a SharePoint farm deployment: <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingSQLServerForSharePoint">Configuring SQL Server 2012 for SharePoint in Azure</a>.</li>
-<li>Refer to the hands-on lab for creating a SharePoint farm by configuring Active Directory and using a single SQL Server database: <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeploySharePointVMs">Deploying a SharePoint Farm with Azure Virtual Machines</a>.</li>
+<li>SharePoint Server のインストールの詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/cc262839.aspx">Windows PowerShell を使用して SharePoint Server 2010 をインストールする</a>」または <a href="http://autospinstaller.codeplex.com/">CodePlex の AutoSPInstaller のページ</a>を参照してください。</li>
+<li>SQL Server のインストールの詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/ee210664.aspx">SysPrep を使用した SQL Server 2012 のインストール</a>」を参照してください。</li>
+<li>SharePoint ファーム展開用の SQL Server 2012 の作成と構成については、「<a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingSQLServerForSharePoint">Configuring SQL Server 2012 for SharePoint in Azure (Azure で SharePoint 用に SQL Server 2012 を構成)</a>」ハンズオン ラボを参照してください。</li>
+<li>Active Directory を構成しシングル SQL Server データベースを使用する SharePoint ファームの作成については、「<a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeploySharePointVMs">Deploying a SharePoint Farm with Azure Virtual Machines (Azure の仮想マシンを備えた SharePoint ファームの展開)</a>」ハンズオン ラボを参照してください。</li>
 </ul>
 </li>
-<li><em>Add the BI VM</em>:
+<li><em>BI VM の追加</em>:
 <ul>
-<li>Configure security on the Management Portal endpoint and set an inbound port in the VM's Windows Firewall.</li>
-<li>Add the newly created BI VM to the existing SharePoint or SQL Server farm.</li>
+<li>管理ポータル エンドポイントでセキュリティを構成し、VM の Windows ファイアウォールで着信ポートを設定します。</li>
+<li>既存の SharePoint または SQL Server ファームに新しく作成した BI VM を追加します。</li>
 </ul>
 </li>
-<li><em>Manage VMs</em>:
+<li><em>VM の管理</em>: 
 <ul>
-<li>Monitor the VMs using the Management Portal.</li>
-<li>Monitor the SharePoint farm using Central Administration.</li>
-<li>Monitor and manage the VMs using on-premises management software like Microsoft System Center - Operations Manager.</li>
+<li>管理ポータルを使用して VM を監視します。</li>
+<li>[サーバーの全体管理] を使用して SharePoint ファームを監視します。</li>
+<li>Microsoft System Center - Operations Manager のような内部設置型管理ソフトウェアを使用して VM を監視し管理します。</li>
 </ul>
 </li>
 </ol>
-<h3>Scenario 4: Completely Customized SharePoint-based Website</h3>
+<h3>シナリオ 4: 完全にカスタマイズした SharePoint ベースの Web サイト</h3>
 
-<h4>Description</h4>
+<h4>説明</h4>
 
-Increasingly, organizations want to create fully customized SharePoint websites in the cloud. They need a highly durable and available environment that offers full control to maintain complex applications running in the cloud, but they do not want to spend a large amount of time and budget.
+全面的にカスタマイズした SharePoint Web サイトをクラウドに作成したいと考えている組織が増えています。必要とされているのは、クラウドで実行されている複雑なアプリケーションを全面的にコントロールして保守できる耐久性と可用性の高い環境です。しかし、大量の時間と予算をかけることは望まれていません。
 
-In this scenario, an organization can deploy its entire SharePoint farm in the cloud and dynamically scale all components to get additional capacity, or it can extend its on-premises deployment to the cloud to increase capacity and improve performance, when needed. The scenario focuses on organizations that want the full "SharePoint experience" for application development and enterprise content management. The more complex sites also can include enhanced reporting, Power View, PerformancePoint, PowerPivot, in-depth charts, and most other SharePoint site capabilities for end-to-end, full functionality.
+このシナリオの場合、クラウドに SharePoint ファーム全体を展開して、すべてのコンポーネントを動的にスケール アウトして容量を増やすことも、内部設置型展開をクラウドに拡張して、必要に応じて容量を増やしパフォーマンスを高めることもできます。このシナリオの対象は、アプリケーション開発と企業コンテンツ管理に関して全面的な "SharePoint 体験" を必要とする組織です。もっと複雑なサイトでも、エンド ツー エンドのフル機能のために、強化されたレポート機能、Power View、PerformancePoint、PowerPivot、詳細なグラフ、その他の SharePoint サイト機能を含めることができます。
 
-Organizations can use Azure Virtual Machines to host customized applications and associated components on a cost-effective and highly secure cloud infrastructure. They also can use on-premises Microsoft System Center as a common management tool for on-premises and cloud applications.
+Azure の仮想マシンを使用すると、経済的で高度なセキュリティで保護されたクラウド インフラストラクチャ上で、カスタマイズしたアプリケーションおよび関連コンポーネントをホストできます。また、内部設置型の Microsoft System Center を、内部設置型アプリケーションとクラウド アプリケーションに共通の管理ツールとして使用することもできます。
 
-<h4>Getting Started</h4>
+<h4>作業の開始</h4>
 
-To implement a completely customized SharePoint website on Azure, an organization must deploy an Active Directory domain in the cloud and provision new VMs into this domain. Then, a VM running SQL Server 2012 must be created and configured as part of a SharePoint farm. Finally, the SharePoint farm must be created, load balanced, and connected to Active Directory and SQL Server (Figure 7).
+完全にカスタマイズした SharePoint Web サイトを Azure で実装するには、クラウドに Active Directory ドメインを展開して、このドメインに新しい VM をプロビジョニングする必要があります。次に、SQL Server 2012 を実行している VM を作成して SharePoint ファームの一部として構成する必要があります。最後に、SharePoint ファームを作成して、負荷分散し、Active Directory および SQL Server に接続する必要があります (図 7)。
 
-<p class="caption">Figure 7: Completely customized SharePoint-based website</p>
+<p class="caption">図 7: 完全にカスタマイズした SharePoint ベースの Web サイト</p>
 
 ![azure-sharepoint-wp-14](./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-14.png)
 
-<h4>Setting Up the Scenario Environment</h4>
+<h4>シナリオ環境のセットアップ</h4>
 
-The following steps show how to create a customized SharePoint farm environment from prebuilt images available in the image library. Note, however, that you also can upload SharePoint farm VMs to the image library, and authorized users can choose those VMs to build the required SharePoint farm on Azure.
+次に示しているのは、イメージ ライブラリにある構築済みイメージから、カスタマイズした SharePoint ファーム環境を作成する手順です。ただし、SharePoint ファーム VM をイメージ ライブラリにアップロードして、権限のあるユーザーがその VM を選択して、必要な SharePoint ファームを Azure 上に構築することもできます。
 
 <ol>
-<li>Deploy Active Directory<em>: The fundamental requirements for deploying Active Directory on Azure Virtual Machines are similar"but not identical"to deploying it on VMs (and, to some extent, physical machines) on premises. For more information about the differences, as well as guidelines and other considerations, go to <a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj156090">Guidelines for Deploying Active Directory on Azure Virtual Machines</a>. To deploy Active Directory in Azure:</em>
+<li>Active Directory の展開<em>: Active Directory を Azure の仮想マシンに展開するときに必要な基本的要件は、内部設置型の VM (そしてある程度は物理マシン) に展開するときと同様です。ただし同一ではありません。この違いの詳細、および指針などの考慮事項については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090">Azure の仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン</a>」を参照してください。Azure で Active Directory をデプロイするには、以下の手順を実行します。</em>
 <ul>
-<li>Define and create a virtual network where the VMs can be assigned to specific subnets. For more information, go to <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectory/blob/master/HOL.md">Configure Virtual Networking</a>.</li>
-<li>Use the Management Portal to create and deploy the domain controller on a new VM on Azure. For more information, go to <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectory/blob/master/HOL.md">Deploying and Creating the Domain Controller</a>.
+<li>VM を特定のサブネットに割り当てることのできる仮想ネットワークを定義して作成します。詳細については、「<a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectory/blob/master/HOL.md">Configure Virtual Networking (仮想ネットワークの構成)</a>」を参照してください。</li>
+<li>管理ポータルを使用して、Azure の新しい VM にドメイン コントローラーを作成してデプロイします。詳細については、「<a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectory/blob/master/HOL.md">Deploying and Creating the Domain Controller (ドメイン コントローラーのデプロイと作成)</a>」を参照してください。
 <ul>
-<li>You also can refer to the Windows PowerShell script to deploy a stand-alone domain in the cloud using Azure Virtual Machines and Virtual Network. For more information, go to <a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectoryPS">Deploying Active Directory in Azure (Windows PowerShell)</a>.</li>
-<li>For more information about creating a new Active Directory forest on a VM on Azure Virtual Network, go to <a href="/en-us/manage/services/networking/active-directory-forest/">Install a New Active Directory Forest in Azure</a>.</li>
+<li>Windows PowerShell スクリプトを参照し、Azure の仮想マシンと仮想ネットワークを使用して、クラウドにスタンドアロン ドメインをデプロイすることもできます。詳細については、「<a href="https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectoryPS">Deploying Active Directory in Azure (Windows PowerShell) (Azure での Active Directory のデプロイ (Windows PowerShell))</a>」を参照してください。</li>
+<li>Azure の仮想ネットワーク上の VM に新しい Active Directory フォレストを作成する方法の詳細については、「<a href="/ja-jp/manage/services/networking/active-directory-forest/">Azure での新しい Active Directory フォレストのインストール</a>」を参照してください。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><em>Deploy SQL Server</em>:
+<li><em>SQL Server のデプロイ</em>: 
 <ul>
-<li>Use the Management Portal to provision a new VM from a stock image in the image library.</li>
-<li>Configure SQL Server on the VM. For more information, go to <a href="http://msdn.microsoft.com/en-us/library/ee210664.aspx">Install SQL Server Using SysPrep</a>.</li>
-<li>Join the VM to the newly created Active Directory domain.</li>
+<li>管理ポータルを使用して、イメージ ギャラリーにあるストック イメージから新しい VM をプロビジョニングします。</li>
+<li>VM で SQL Server を構成します。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/ee210664.aspx">SysPrep を使用した SQL Server 2012 のインストール</a>」を参照してください。</li>
+<li>新しく作成した Active Directory ドメインに VM を結合します。</li>
 </ul>
 </li>
-<li><em>Deploy a multiserver SharePoint farm</em>:
+<li><em>マルチサーバー SharePoint ファームのデプロイ</em>: 
 <ul>
-<li>Create a virtual network. For more information, go to <a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj156007.aspx">Azure Virtual Network (Design Considerations and Secure Connection Scenarios)</a>.
+<li>仮想ネットワークを作成します。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx">Azure Virtual Network (Design Considerations and Secure Connection Scenarios) (Azure の仮想ネットワーク (設計上の考慮事項と安全な接続シナリオ))</a>」を参照してください。
 <ul>
-<li>When deploying the SharePoint VMs, you need subnets provided for SharePoint Server so that the DNS addresses in the local Active Directory box are available during provisioning.</li>
+<li>SharePoint VM のデプロイ時には、プロビジョニング時にローカル Active Directory ボックスの DNS アドレスが使用できるように、SharePoint Server のサブネットを指定する必要があります。</li>
 </ul>
 </li>
-<li>Use the Management Portal to create a VM.</li>
-<li>Install SharePoint Server on this VM and generate a reusable image. For more information about installing SharePoint Server, go to <a href="http://technet.microsoft.com/en-us/library/cc262839.aspx">Install and Configure SharePoint Server 2010 by Using Windows PowerShell</a> or <a href="http://autospinstaller.codeplex.com/">CodePlex: AutoSPInstaller</a>.</li>
-<li>Configure the SharePoint VM to create and connect to the SharePoint farm using the <a href="http://technet.microsoft.com/en-us/library/ff607979.aspx">Join-SharePointFarm</a> command.</li>
-<li>Use the Management Portal to configure the load balancing:
+<li>管理ポータルを使用して VM を作成します。</li>
+<li>SharePoint Server をこの VM にインストールして、再利用可能なイメージを生成します。SharePoint Server のインストールの詳細については、「<a href="http://technet.microsoft.com/ja-jp/library/cc262839.aspx">Windows PowerShell を使用して SharePoint Server 2010 をインストールする</a>」または <a href="http://autospinstaller.codeplex.com/">CodePlex の AutoSPInstaller のページ</a>を参照してください。</li>
+<li>SharePoint VM を構成して SharePoint ファームを作成し、<a href="http://technet.microsoft.com/ja-jp/library/ff607979.aspx">Join-SharePointFarm</a> コマンドを使用してこのファームに接続します。</li>
+<li>管理ポータルを使用してロード バランサーを構成します。
 <ul>
-<li>Configure the VM endpoints, select the option to load balance traffic on an existing endpoint, and then specify the name of the load-balanced VM.
+<li>VM エンドポイントを構成し、既存のエンドポイントでトラフィックを負荷分散するオプションを選択し、負荷分散された VM の名前を指定します。
 <ul>
-<li>For more information about deploying SharePoint farms on Azure Virtual Machines, view this <a href="http://channel9.msdn.com/Events/TechEd/NorthAmerica/2012/AZR327">TechEd North America 2012 video</a>.</li>
+<li>SharePoint ファームを Azure の仮想マシンにデプロイする方法の詳細については、この <a href="http://channel9.msdn.com/Events/TechEd/NorthAmerica/2012/AZR327">TechEd North America 2012 のビデオ</a>を参照してください。</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><em>Manage the SharePoint farm through System Center</em>:
+<li><em>System Center による SharePoint ファームの管理</em>:
 <ul>
-<li>Use the Operations Manager agent and new Azure Integration Pack to connect your on-premises System Center to Azure Virtual Machines.</li>
-<li>Use on-premises App Controller and Orchestrator for management functions.</li>
+<li>Operations Manager エージェントおよび新しい Azure Integration Pack を使用して、内部設置型の System Center を Azure の仮想マシンに接続します。</li>
+<li>管理機能としては、内部設置型の App Controller および Orchestrator を使用します。</li>
 </ul>
 </li>
 </ol>
 
-<h2>Conclusion</h2>
-Cloud computing is transforming the way IT serves organizations. This is because cloud computing can harness a new class of benefits, including dramatically decreased cost coupled with increased IT focus, agility, and flexibility. Azure is leading the way in cloud computing by delivering easy, open, flexible, and powerful virtual infrastructure. Azure Virtual Machines mitigate the need for hardware, so organizations can reduce cost and complexity by building infrastructure at scale-with full control and streamlined management.
+<h2>まとめ</h2>
+クラウド コンピューティングは、組織における IT の方法に変革をもたらしています。これはクラウド コンピューティングが、コストの劇的な減少と並んで、IT の集中性、俊敏性、柔軟性の増加という新しい種類の利点をもたらすことができるためです。Azure は、クラウド コンピューティングの先頭に立って、簡単でオープンで柔軟で強力な仮想インフラストラクチャを実現しています。Azure の仮想マシンを活用すると、ハードウェアの必要性が減少するため、インフラストラクチャを規模に応じて構築することで、全面的なコントロールと合理的な管理を維持したまま、コストと複雑さを減らすことができます。
 
-Azure Virtual Machines provide a full continuum of SharePoint deployments. It is fully supported and tested to provide an optimal experience with other Microsoft applications. As such, organizations can easily set up and deploy SharePoint Server within Azure, either to provision infrastructure for a new SharePoint deployment or to expand an existing one. As business workloads grow, organizations can rapidly expand their SharePoint infrastructure. Likewise, if workload needs decline, organizations can contract resources on demand, paying only for what they use. Azure Virtual Machines deliver an exceptional infrastructure for a wide range of business requirements, as shown in the four SharePoint-based scenarios discussed in this paper.
+Azure の仮想マシンはありとあらゆる種類の SharePoint 展開を実現できます。他の Microsoft アプリケーションで最適な体験を提供できるように、全面的にサポートされ、テストがなされています。そのため、新しい SharePoint デプロイ用にインフラストラクチャをプロビジョニングする場合でも、または既存のインフラストラクチャを拡張する場合でも、SharePoint Server を Azure 内に簡単にセットアップしてデプロイできます。SharePoint インフラストラクチャは、ビジネス ワークロードが増大するにつれて迅速に拡張できます。同様に、ワークロードを減らす必要がある場合も、リソースをオンデマンドで契約して、使用する分だけ料金を支払うことができます。このペーパーで説明した 4 つの SharePoint ベースのシナリオで示したように、Azure の仮想マシンは、広範なビジネス要件を満たす並外れたインフラストラクチャになります。
 
-Successful deployment of SharePoint Server on Azure Virtual Machines requires solid planning, especially considering the range of critical farm architecture and deployment options. The insights and best practices outlined in this paper can help to guide decisions for implementing an informed SharePoint deployment.
+SharePoint Server を Azure の仮想マシンに展開して成功するには、堅実な計画が必要であり、特に重大なファーム アーキテクチャと展開オプションの範囲を検討する必要があります。このペーパーで概略を示した洞察とベスト プラクティスは、情報を得たうえで SharePoint 展開を実装するにあたって意思決定の指針として役立ちます。
 
-<h2>Additional Resources</h2>
+<h2>その他のリソース</h2>
 
 <ul>
 <li>
-<p>Azure Training Kit: Hands-on lab and presentation</p>
+<p>Azure トレーニング キット - ハンズオン ラボとプレゼンテーション</p>
 <p><a href="http://windowsazure-trainingkit.github.com/labs.htm">http://windowsazure-trainingkit.github.com/labs.htm</a></p>
 </li>
 <li>
-<p>Getting Started with Azure PowerShell</p>
-<p><a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj156055">http://msdn.microsoft.com/en-us/library/windowsazure/jj156055</a></p>
+<p>Azure PowerShell の概要</p>
+<p><a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156055">http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156055</a></p>
 </li>
 <li>
-<p>Azure Management Cmdlets</p>
-<p><a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj152841">http://msdn.microsoft.com/en-us/library/windowsazure/jj152841</a></p>
+<p>Azure の管理コマンドレットに関するページ</p>
+<p><a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841">http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841</a></p>
 </li>
 <li>
-<p>Command-line Tools and PowerShell Cmdlets for Different Operating Systems</p>
-<p><a href="/en-us/manage/downloads/">https://www.windowsazure.com/en-us/manage/downloads/</a></p>
+<p>さまざまなオペレーティング システム用のコマンド ライン ツールおよび PowerShell コマンドレット</p>
+<p><a href="/ja-jp/manage/downloads/">https://www.windowsazure.com/ja-jp/manage/downloads/</a></p>
 </li>
 <li>
-<p>How-to Guides and Best Practices Documentation</p>
-<p><a href="/en-us/manage/windows/">https://www.windowsazure.com/en-us/manage/windows/</a></p>
+<p>ハウツー ガイドおよびベスト プラクティスのドキュメント</p>
+<p><a href="/ja-jp/manage/windows/">https://www.windowsazure.com/ja-jp/manage/windows/</a></p>
 </li>
 </ul>
+
 

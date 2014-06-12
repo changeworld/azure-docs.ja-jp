@@ -2,7 +2,7 @@
 
 次に、データ ストレージのメモリ内のリストを置き換える新しいモバイル サービスを作成します。新しいモバイル サービスを作成するには、次のステップに従います。
 
-1. [Windows Azure の管理ポータル](https://manage.windowsazure.com/)にログインします。
+1. [Azure の管理ポータル](https://manage.windowsazure.com/)にログインします。
 2.	ナビゲーション ウィンドウの下部にある **[新規]** をクリックします。
 
 	![plus-new](./media/mobile-services-create-new-service-data/plus-new.png)

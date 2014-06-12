@@ -1,8 +1,8 @@
-MongoLab データベースをプロビジョニングすると、MongoLab により Windows Azure に MongoDB の標準接続文字列形式で URI が送信されます。この値は、選択した MongoDB ドライバーをとおして MongoDB 接続を初期化するために使用されます。接続文字列の詳細については、mongodb.org の[接続に関するページ](http://www.mongodb.org/display/DOCS/Connections)を参照してください。
+MongoLab データベースをプロビジョニングすると、MongoLab により Azure に MongoDB の標準接続文字列形式で URI が送信されます。この値は、選択した MongoDB ドライバーをとおして MongoDB 接続を初期化するために使用されます。接続文字列の詳細については、mongodb.org の[接続に関するページ](http://www.mongodb.org/display/DOCS/Connections)を参照してください。
 
 **この URI は、データベース ユーザー名とパスワードを含んでいます。機密情報として扱い、他人と共有しないでください。**
 
-この URI は、Windows Azure ポータルで次のステップを使用して取得できます。
+この URI は、Azure ポータルで次のステップを使用して取得できます。
 
 1. **[アドオン]** を選択します。
 ![AddonsButton][button-addons]

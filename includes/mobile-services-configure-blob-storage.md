@@ -4,24 +4,24 @@
 
 1. 管理ポータルで、**[ストレージ]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
 
-  	![][0]
+  	![](./media/mobile-services-configure-blob-storage/mobile-blob-storage-account.png)
 
 2. **ストレージ アカウント名**と**アクセス キー**をメモします。
 
-   	![][1]
+   	![](./media/mobile-services-configure-blob-storage/mobile-blob-storage-account-keys.png)
 
 3. モバイル サービスで、**[構成]** タブをクリックし、**[アプリケーション設定]** まで下へスクロールします。次に、ストレージ アカウントから取得した次の項目の名前と値をそれぞれ **[名前]** と **[値]** に入力して、**[保存]** をクリックします。
 
 	+ `STORAGE_ACCOUNT_NAME`
 	+ `STORAGE_ACCOUNT_ACCESS_KEY`
 
-	![][10]
+	![](./media/mobile-services-configure-blob-storage/mobile-blob-storage-app-settings.png)
 
 	ストレージ アカウントのアクセス キーは暗号化された状態でアプリケーション設定に保存されます。このキーには、実行時にどのサーバー スクリプトからでもアクセスできます。詳細については、「[アプリ設定]」を参照してください。
 
 4. **[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
-   	![][3]
+   	![](./media/mobile-services-configure-blob-storage/mobile-portal-data-tables.png)
 
 5. **todoitem** で、**[スクリプト]** タブをクリックし、**[挿入]** を選択します。insert 関数を次のコードに置き換え、**[保存]** をクリックします。
 
@@ -78,9 +78,9 @@
 		    }
 		}
 
- 	![][4]
+ 	![](./media/mobile-services-configure-blob-storage/mobile-insert-script-blob.png)
 
-   	この操作により、TodoItem テーブルで挿入が発生したときに呼び出される関数が、新しいスクリプトに置き換わります。この新しいスクリプトは、挿入のための新しい SAS を生成し (5 分間有効)、生成された SAS の値を返された項目の "sasQueryString" プロパティに割り当てます。"imageUri" プロパティに新しい BLOB のリソース パスが設定され、クライント UI でのバインド中にイメージを表示できるようになります。
+   	この操作により、TodoItem テーブルで挿入が発生したときに呼び出される関数が、新しいスクリプトに置き換わります。この新しいスクリプトは、挿入のための新しい SAS を生成し (5 分間有効)、生成された SAS の値を返された項目の `sasQueryString` プロパティに割り当てます。`imageUri` プロパティに新しい BLOB のリソース パスが設定され、クライント UI でのバインド中にイメージを表示できるようになります。
 
 	>[WACOM.NOTE] このコードでは、個々 の BLOB に対して SAS が作成されます。同じ SAS を使用してコンテナーに複数の BLOB をアップロードする場合は、代わりに、空の BLOB リソース名を使って <a href="http://go.microsoft.com/fwlink/?LinkId=390455" target="_blank">generateSharedAccessSignature メソッド</a>を呼び出すことができます。次に例を示します。
 	<pre><code>blobService.generateSharedAccessSignature(containerName, '', sharedAccessPolicy);</code></pre>
@@ -90,17 +90,6 @@
 <!-- Anchors. -->
 
 <!-- Images. -->
-[0]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-account.png
-[1]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-account-keys.png
-
-[3]: ./media/mobile-services-configure-blob-storage/mobile-portal-data-tables.png
-[4]: ./media/mobile-services-configure-blob-storage/mobile-insert-script-blob.png
-
-
-
-
-
-[10]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-app-settings.png
 
 <!-- URLs. -->
 [How To Create a Storage Account (ストレージ アカウントの作成方法)]: /ja-jp/manage/services/storage/how-to-create-a-storage-account

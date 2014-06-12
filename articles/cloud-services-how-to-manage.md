@@ -1,150 +1,151 @@
-<properties linkid="manage-services-how-to-manage-a-cloud-service" urlDisplayName="How to manage" pageTitle="How to manage a cloud service - Azure" metaKeywords="Azure manage cloud services, Azure Management Portal cloud services" description="Learn how to manage cloud services in the Azure Management Portal." metaCanonical="" services="cloud-services" documentationCenter="" title="How to Manage Cloud Services" authors="ryanwi" solutions="" manager="" editor="" />
+<properties linkid="manage-services-how-to-manage-a-cloud-service" urlDisplayName="管理方法" pageTitle="クラウド サービスの管理方法 - Azure" metaKeywords="Azure 管理クラウド サービス, Azure の管理ポータル クラウド サービス" description="、Azure の管理ポータルでクラウド サービスを監視する方法について説明します。" metaCanonical="" services="cloud-services" documentationCenter="" title="クラウド サービスの管理方法" authors=""  solutions="" writer="ryanwi" manager="" editor=""  />
 
 
 
 
 
-#How to Manage Cloud Services
+#クラウド サービスの管理方法
 
-[WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
+[WACOM.INCLUDE [免責事項](../includes/disclaimer.md)]
 
-In the **Cloud Services** area of the Azure Management Portal, you can update a service role or a deployment, promote a staged deployment to production, link resources to your cloud service so that you can see the resource dependencies and scale the resources together, and delete a cloud service or a deployment.
+Azure の管理ポータルの **[クラウド サービス]** 領域では、サービス ロールまたは展開の更新、ステージングされた展開の運用環境への昇格、クラウド サービスに対するリソースのリンク (リソースの依存関係を把握してリソースの規模をまとめて設定するため)、およびクラウド サービスまたは展開の削除ができます。
 
-##Table of Contents##
+##目次##
 
-* [How to: Update a cloud service role or deployment](#updaterole)
-* [How to: Swap deployments to promote a staged deployment to production](#swap)
-* [How to: Link a resource to a cloud service](#linkresources)
-* [How to: Delete deployments and a cloud service](#deletecloudservice)
-
-
-<h2><a id="updaterole"></a>How to: Update a cloud service role or deployment</h2>
-
-If you need to update the application code for your cloud service, use **Update** on the dashboard, **Cloud Services** page, or **Instances** page. You can update a single role or all roles. You'll need to upload a new service package and service configuration file.
-
-1. In the [Azure Management Portal](https://manage.windowsazure.com/), on the dashboard, **Cloud Services** page, or **Instances** page, click **Update**.
-
-	**Update Deployment** opens.
-
-	![UpdateDeployment](./media/cloud-services-how-to-manage/CloudServices_UpdateDeployment.png)
-
-2. In **Deployment label**, enter a name to identify the deployment (for example, mycloudservicev2). You'll find the deployment name under **quick start** on the dashboard.
-
-3. In **Package file**, use **Browse** to upload the service package file (.cspkg).
-
-4. In **Configuration file**, use **Browse** to upload the service configuration file (.cscfg).
-
-5. In **Role**, select **All** if you want to upgrade all roles in the cloud service. To perform a role upgrade, select the role you want to upgrade. Even if you select a specific role to update, the updates in the service configuration file are applied to all roles.
-
-6. If the upgrade will change the number of roles or the size of any role, select the **Allow update if role sizes or number of roles changes** check box to enable the update to proceed. 
-
-	Be aware that if you change the size of a role (that is, the size of a virtual machine that hosts a role instance) or the number of roles, each role instance (virtual machine) must be re-imaged, and any local data will be lost.
-
-7. If any service roles have only one role instance, select the **Update even if one or more role contain a single instance check box** to enable the upgrade to proceed. 
-
-	Azure can only guarantee 99.95 percent service availability during a cloud service update if each role has at least two role instances (virtual machines). That enables one virtual machine to process client requests while the other is being updated.
-
-8. Click OK (checkmark) to begin updating the service.
+* [方法: クラウド サービス ロールまたは展開の更新](#updaterole)
+* [方法: 展開をスワップしてステージングされた展開を運用環境に昇格](#swap)
+* [方法: クラウド サービスに対するリソースのリンク](#linkresources)
+* [方法: 展開とクラウド サービスの削除](#deletecloudservice)
 
 
+<h2><a id="updaterole"></a>方法: クラウド サービス ロールまたは展開の更新</h2>
 
-<h2><a id="swap"></a>How to: Swap deployments to promote a staged deployment to production</h2>
+クラウド サービスのアプリケーション コードを更新する必要がある場合は、ダッシュボード、**[クラウド サービス]** ページ、または **[インスタンス]** ページの **[更新]** を使用します。1 つのロールを更新することも、すべてのロールを更新することもできます。新しいサービス パッケージとサービス構成ファイルをアップロードする必要があります。
 
-Use **Swap** to promote a staging deployment of a cloud service to production. When you decide to deploy a new release of a cloud service, you can stage and test your new release in your cloud service staging environment while your customers are using the current release in production. When you're ready to promote the new release to production, you can use **Swap** to switch the URLs by which the two deployments are addressed. 
+1. [Azure の管理ポータル](https://manage.windowsazure.com/)のダッシュボード、**[クラウド サービス]** ページ、または **[インスタンス]** ページで、**[更新]** をクリックします。
 
-You can swap deployments from the **Cloud Services** page or the dashboard.
+	**[展開を更新する]** が開きます。
 
-1. In the [Management Portal](https://manage.windowsazure.com/), click **Cloud Services**.
+	![展開の更新](./media/cloud-services-how-to-manage/CloudServices_UpdateDeployment.png)
 
-2. In the list of cloud services, click the cloud service to select it.
+2. **[展開ラベル]** ボックスに、展開を識別する名前を入力します (たとえば、mycloudservicev2)。展開名はダッシュボードの **[クイック スタート]** に表示されます。
 
-3. Click **Swap**.
+3. **[パッケージ ファイル]** で、**[参照]** を使ってサービス パッケージ ファイル (.cspkg) をアップロードします。
 
-	The following confirmation prompt opens.
+4. **[構成ファイル]** で、**[参照]** を使ってサービス構成ファイル (.cscfg) をアップロードします。
 
-	![Cloud Services Swap](./media/cloud-services-how-to-manage/CloudServices_Swap.png)
+5. **[ロール]** で、クラウド サービスのすべてのロールをアップグレードする場合は、**[すべて]** をクリックします。あるロールのアップグレードを実行するには、アップグレードするロールを選択します。特定のロールを選択して更新した場合でも、サービス構成ファイルの更新内容はすべてのロールに適用されます。
 
-4. After you verify the deployment information, click **Yes** to swap the deployments.
+6. アップグレードによってロールの数またはロールのサイズが変わる場合は、**[ロールのサイズまたは数が変更された場合に更新を許可する]** チェック ボックスをオンにしないと更新を続行できません。
 
-	The deployment swap happens quickly because the only thing that changes is the virtual IP addresses (VIPs) for the deployments.
+	ロールのサイズ (つまり、ロール インスタンスをホスティングする仮想マシンのサイズ) またはロールの数を変更した場合、各ロール インスタンス (仮想マシン) にイメージを再適用する必要があり、ローカル データがすべて失われることに注意してください。
 
-	To save compute costs, you can delete the deployment in the staging environment when you're sure the new production deployment is performing as expected.
+7. ロール インスタンスが 1 つしかないサービス ロールがある場合は、**[1 つ以上のロールに単一のインスタンスが含まれている場合でも更新する]** チェック ボックスをオンにして、アップグレードを続行できるようにします。
 
-<h2><a id="linkresources"></a>How to: Link a resource to a cloud service</h2>
+	Azure でクラウド サービスの更新中に 99.95% の可用性を保証できるのは、各ロールに少なくとも 2 つのロール インスタンス (仮想マシン) がある場合だけです。この場合、1 台の仮想マシンでクライアントからの要求を処理し、もう 1 台で更新を行うことができます。
 
-To show your cloud service's dependencies on other resources, you can link an Azure SQL Database instance or a storage account to the cloud service. You an link and unlink resources on the **Linked Resources** page. Then monitor their usage on the cloud service dashboard. If a linked storage account has monitoring turned on, you can monitor Total Requests on the cloud service dashboard.
+8. [OK] (チェックマーク) をクリックして、サービスの更新を開始します。
 
-Use **Link** to link a new or existing SQL Database instance or storage account to your cloud service. You can then scale the database along with the cloud service role that is using it on the **Scale** page. (A storage account scales automatically as usage increases.) For more information, see [How to Scale a Cloud Service and Linked Resources](https://www.windowsazure.com/en-us/manage/services/cloud-services/how-to-scale-a-cloud-service/). 
 
-You also can monitor, manage, and scale the database in the **Databases** node of the Management Portal. 
 
-"Linking" a resource in this sense doesn't connect your app to the resource. If you create a new database using **Link**, you'll need to add the connection strings to your application code and then upgrade the cloud service. You'll also need to add connection strings if your app uses resources in a linked storage account.
+<h2><a id="swap"></a>方法: 展開をスワップしてステージングされた展開を運用環境に昇格</h2>
 
-The following procedure describes how to link a new SQL Database instance, deployed on a new SQL Database server, to a cloud service.
+**[スワップ]** を使用して、クラウド サービスのステージング展開を運用環境に昇格します。クラウド サービスの新しいリリースを展開するときは、顧客が運用環境で現在のリリースを使用しながら、クラウド サービスのステージング環境で新しいリリースをステージングしテストできます。新しいリリースを運用環境に昇格する準備ができたら、**[スワップ]** を使用して 2 つの展開のアドレスである URL を切り替えることができます。
 
-###To link a SQL Database instance to a cloud service###
+展開のスワップは、**[クラウド サービス]** ページまたはダッシュボードから実行できます。
 
-1. In the [Management Portal](http://manage.windowsazure.com/), click **Cloud Services**. Then click the name of the cloud service to open the dashboard.
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[クラウド サービス]** をクリックします。
 
-2. Click **Linked Resources**.
+2. クラウド サービスの一覧で、クラウド サービスをクリックして選択します。
 
-	The **Linked Resources** page opens.
+3. **[スワップ]** をクリックします。
+
+	次のような確認ダイアログが表示されます。
+
+	![クラウド サービスのスワップ](./media/cloud-services-how-to-manage/CloudServices_Swap.png)
+
+4. 展開情報を確認した後、**[はい]** をクリックして展開をスワップします。
+
+	変更されるのは展開の仮想 IP アドレス (VIP) だけであるため、展開のスワップは直ちに実行されます。
+
+	コンピューティング費用を節約するために、新しい運用展開が予想どおりに動作することが確認できたら、ステージング環境の展開を削除することができます。
+
+<h2><a id="linkresources"></a>方法: クラウド サービスに対するリソースのリンク</h2>
+
+使用しているクラウド サービスと他のリソースとの依存関係を示すために、Azure SQL データベース インスタンスまたはストレージ アカウントをクラウド サービスにリンクすることができます。リソースのリンクとリンク解除は **[リンク済みリソース]** ページで実行できます。利用状況はクラウド サービスのダッシュボードで監視します。リンクされているストレージ アカウントで監視が有効になっている場合は、クラウド サービスのダッシュボードで要求数合計を監視できます。
+
+**[リンク]** を使用して、新規または既存の SQL データベース インスタンスまたはストレージ アカウントをクラウド サービスにリンクします。その後、**[スケール]** ページで、クラウド サービスのロールと共にデータベースの規模を変更できます (ストレージ アカウントは、使用量の変動に伴い自動的に規模が変更されます)。詳細については、「[クラウド サービスおよびリンクされたリソースの規模の設定方法](https://www.windowsazure.com/ja-jp/manage/services/cloud-services/how-to-scale-a-cloud-service/)」を参照してください。
+
+また、管理ポータルの **[データベース]** ノードでデータベースの監視、管理、および規模の設定ができます。
+
+この意味でリソースの "リンク" を行ってもアプリケーションはリソースに接続されません。**[リンク]** を使用して新しいデータベースを作成した場合、アプリケーション コードに接続文字列を追加して、クラウド サービスをアップグレードする必要があります。また、リンクされたストレージ アカウントのリソースをアプリケーションで使用している場合も、接続文字列を追加する必要があります。
+
+以下の手順では、新しい SQL データベース サーバーに展開された新しい SQL データベース インスタンスをクラウド サービスにリンクする方法を説明しています。
+
+###クラウド サービスに SQL データベース インスタンスをリンクするには###
+
+1. [管理ポータル](http://manage.windowsazure.com/)で、**[クラウド サービス]** をクリックします。目的のクラウド サービスの名前をクリックして、ダッシュボードを開きます。
+
+2. **[リンク済みリソース]** をクリックします。
+
+	**[リンク済みリソース]** ページが開きます。
 
 	![LinkedResourcesPage](./media/cloud-services-how-to-manage/CloudServices_LinkedResourcesPage.png)
 
-3. Click either **Link a Resource** or **Link**.
+3. **[リソースをリンクします]** または **[リンク]** をクリックします。
 
-	The **Link Resource** wizard starts.
+	**リソースのリンク** ウィザードが起動します。
 
-	![Link Page1](./media/cloud-services-how-to-manage/CloudServices_LinkedResources_LinkPage1.png)
+	![リンク ページ 1](./media/cloud-services-how-to-manage/CloudServices_LinkedResources_LinkPage1.png)
 
-4. Click **Create a new resource** or **Link an existing resource**.
+4. **[新しいリソースを作成する]** または **[既存のリソースをリンクする]** をクリックします。
 
-5. Choose the type of resource to link. In the [Management Portal](http://manage.windowsazure.com/), click **SQL Database**. (The Preview Management Portal does not support linking a storage account to a cloud service.)
+5. リンクするリソースの種類を選択します。[管理ポータル](http://manage.windowsazure.com/)で **[SQL データベース]** をクリックします (プレビュー管理ポータルは、ストレージ アカウントをクラウド サービスにリンクする機能をサポートしていません)。
 
-6. To complete the database configuration, follow instructions in help for the **SQL Databases** area of the Management Portal.
+6. データベースの構成を完了するには、管理ポータルの **[SQL データベース]** 領域のヘルプに記載された指示に従ってください。
 
-	You can follow the progress of the linking operation in the message area.
+	リンク操作の進捗状況はメッセージ領域で知ることができます。
 
-	![Link Progress](./media/cloud-services-how-to-manage/CloudServices_LinkedResources_LinkProgress.png)
+	![リンクの進捗状況](./media/cloud-services-how-to-manage/CloudServices_LinkedResources_LinkProgress.png)
 
-	When linking is complete, you can monitor the status of the linked resource on the cloud service dashboard. For information about scaling a linked SQL Database, see [How to Scale a Cloud Service and Linked Resources](../how-to-scale-a-cloud-service/).
+	リンク操作が完了すると、リンクされたリソースの状態をクラウド サービスのダッシュボードで監視できます。リンクされた SQL データベースの規模設定の詳細については、「[クラウド サービスおよびリンクされたリソースの規模の設定方法](../how-to-scale-a-cloud-service/)」を参照してください。
 
-###To unlink a linked resource###
+###リンク済みリソースのリンクを解除するには###
 
-1. In the [Management Portal](http://manage.windowsazure.com/), click **Cloud Services**. Then click the name of the cloud service to open the dashboard.
+1. [管理ポータル](http://manage.windowsazure.com/)で、**[クラウド サービス]** をクリックします。目的のクラウド サービスの名前をクリックして、ダッシュボードを開きます。
 
-2. Click **Linked Resources**, and then select the resource.
+2. **[リンク済みリソース]** をクリックして、リソースを選択します。
 
-3. Click **Unlink**. Then click **Yes** at the confirmation prompt.
+3. **[リンクの解除]** をクリックします。次に、確認ダイアログで **[はい]** をクリックします。
 
-	Unlinking a SQL Database has no effect on the database or the application's connections to the database. You can still manage the database in the **SQL Databases** area of the Management Portal.
-
-
-
-<h2><a id="deletecloudservice"></a>How to: Delete deployments and a cloud service</h2>
-
-Before you can delete a cloud service, you must delete each existing deployment.
-
-To save compute costs, you can delete your staging deployment after you verify that your production deployment is working as expected. You are billed compute costs for role instances even if a cloud service is not running.
-
-Use the following procedure to delete a deployment or your cloud service. 
-
-1. In the [Management Portal](http://manage.windowsazure.com/), click **Cloud Services**.
-
-2. Select the cloud service, and then click **Delete**. (To select a cloud service without opening the dashboard, click anywhere except the name in the cloud service entry.)
-
-	If you have a deployment in staging or production, you will see a menu of choices similar to the following one at the bottom of the window. Before you can delete the cloud service, you must delete any existing deployments.
-
-	![Delete Menu](./media/cloud-services-how-to-manage/CloudServices_DeleteMenu.png)
+	SQL データベースのリンクを解除しても、データベースまたはデータベースに対するアプリケーションの接続は影響を受けません。引き続き、管理ポータルの **[SQL データベース]** 領域でデータベースを管理できます。
 
 
-3. To delete a deployment, click **Delete production deployment** or **Delete staging deployment**. Then, at the confirmation prompt, click **Yes**. 
 
-4. If you plan to delete the cloud service, repeat step??3, if needed, to delete your other deployment.
+<h2><a id="deletecloudservice"></a>方法: 展開とクラウド サービスの削除</h2>
 
-5. To delete the cloud service, click **Delete cloud service**. Then, at the confirmation prompt, click **Yes**.
+クラウド サービスを削除する前に、既存の展開をそれぞれ削除する必要があります。
+
+コンピューティング費用を節約するために、運用展開が予想どおりに動作することが確認できたら、ステージング環境の展開を削除することができます。クラウド サービスが実行中でない場合でも、ロール インスタンスのコンピューティング費用は請求されます。
+
+以下の手順を使用して、展開またはクラウド サービスを削除します。
+
+1. [管理ポータル](http://manage.windowsazure.com/)で、**[クラウド サービス]** をクリックします。
+
+2. 目的のクラウド サービスを選択して、**[削除]** をクリックします (ダッシュボードを開かないでクラウド サービスを選択するには、クラウド サービスの名前以外の場所をクリックします)。
+
+	ステージング環境または運用環境の展開がある場合、ウィンドウの下部に次のような選択肢のメニューが表示されます。クラウド サービスを削除する前に、既存の展開をすべて削除する必要があります。
+
+	![削除メニュー](./media/cloud-services-how-to-manage/CloudServices_DeleteMenu.png)
+
+
+3. 展開を削除するには、**[運用環境の展開を削除する]** または **[ステージング環境の展開を削除する]** をクリックします。次に、確認ダイアログで **[はい]** をクリックします。
+
+4. クラウド サービスの削除を予定している場合は、必要に応じてステップ 3. を繰り返して、その他の展開もすべて削除します。
+
+5. クラウド サービスを削除するには、**[クラウド サービスの削除]** をクリックします。次に、確認ダイアログで **[はい]** をクリックします。
 
 > [WACOM.NOTE]
-> If verbose monitoring is configured for your cloud service, Azure does not delete the monitoring data from your storage account when you delete the cloud service. You will need to delete the data manually. For information about where to find the metrics tables, see "How to: Access verbose monitoring data outside the Management Portal" in <a href="https://www.windowsazure.com/en-us/manage/services/cloud-services/how-to-monitor-a-cloud-service/">How to Monitor Cloud Services</a>.
+> Azure でクラウド サービスに詳細監視が構成されている場合、クラウド サービスを削除しても、ストレージ アカウントから監視データは削除されません。データは手作業で削除する必要があります。メトリック テーブルのある場所については、「<a href="https://www.windowsazure.com/ja-jp/manage/services/cloud-services/how-to-monitor-a-cloud-service/">クラウド サービスの監視方法</a>」の「方法: 管理ポータル外で詳細監視データにアクセス」を参照してください。
+
 

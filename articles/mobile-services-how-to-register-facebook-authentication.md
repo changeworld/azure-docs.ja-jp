@@ -1,8 +1,8 @@
-<properties linkid="develop-mobile-how-to-guides-register-for-facebook-authentication" urlDisplayName="Facebook 認証用の登録" pageTitle="Facebook 認証用の登録 - モバイル サービス" metaKeywords="Windows Azure Facebook, Azure Facebook, モバイル サービス Azure 認証" description="Windows Azure モバイル サービス アプリケーションで Facebook 認証を使用する方法について説明します。" metaCanonical="" services="" documentationCenter="" title="モバイル サービスでの Facebook 認証用のアプリケーションの登録" authors=""  solutions="" writer="glenga" manager="" editor=""  />
+<properties linkid="develop-mobile-how-to-guides-register-for-facebook-authentication" urlDisplayName="Facebook 認証用の登録" pageTitle="Facebook 認証用の登録 - モバイル サービス" metaKeywords="Azure Facebook, Azure Facebook, モバイル サービス Azure 認証" description="Azure のモバイル サービス アプリケーションで Facebook 認証を使用する方法について説明します。" metaCanonical="" services="" documentationCenter="" title="モバイル サービスでの Facebook 認証用のアプリケーションの登録" authors=""  solutions="" writer="glenga" manager="" editor=""  />
 
 # モバイル サービスでの Facebook 認証用のアプリケーションの登録
 
-このトピックでは、Facebook を使用して Windows Azure モバイル サービスで認証できるようにアプリケーションを登録する方法について説明します。
+このトピックでは、Facebook を使用して Azure のモバイル サービスで認証できるようにアプリケーションを登録する方法について説明します。
 
 <div class="dev-callout"><b>メモ</b>
 <p>このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Facebook アカウントおよび携帯電話番号が必要になります。新しい Facebook アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268285" target="_blank">facebook.com</a> にアクセスしてください。</p>
@@ -54,7 +54,6 @@
 
 <!-- URLs. -->
 [Facebook Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268286
-[認証の使用]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Windows Azure の管理ポータル]: https://manage.windowsazure.com/
-
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
 

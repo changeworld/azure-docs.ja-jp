@@ -1,104 +1,105 @@
-<properties linkid="develop-php-website-with-mysql-and-git" urlDisplayName="Web w/ MySQL + Git" pageTitle="PHP web site with MySQL and Git - Azure tutorial" metaKeywords="" description="A tutorial that demonstrates how to create a PHP web site that stores data in MySQL and use Git deployment to Azure." metaCanonical="" services="web-sites" documentationCenter="PHP" title="Create a PHP-MySQL Azure web site and deploy using Git" authors="waltpo" solutions="" manager="" editor="mollybos" />
+<properties linkid="develop-php-website-with-mysql-and-git" urlDisplayName="MySQL と Git を使用した Web サイト" pageTitle="MySQL と Git を使用した PHP Web サイト - Azure チュートリアル" metaKeywords="" description="MySQL にデータを保存する PHP Web サイトを作成し、Azure への Git 展開を使用する方法を示すチュートリアル。" metaCanonical="" services="web-sites" documentationCenter="PHP" title="PHP-MySQL Azure の Web サイトを作成して Git で展開する" authors=""  solutions="" writer="waltpo" manager="" editor="mollybos"  />
 
-#Create a PHP-MySQL Azure web site and deploy using Git
+#PHP-MySQL Azure の Web サイトを作成して Git で展開する
 
-This tutorial shows you how to create a PHP-MySQL Azure web site and how to deploy it using Git. You will use [PHP][install-php], the MySQL Command-Line Tool (part of [MySQL][install-mysql]), a web server, and [Git][install-git] installed on your computer. The instructions in this tutorial can be followed on any operating system, including Windows, Mac, and  Linux. Upon completing this guide, you will have a PHP/MySQL web site running in Azure.
+このチュートリアルでは、PHP-MySQL Azure の Web サイトを作成する方法と、Git を使用してそれを展開する方法を説明します。コンピューターにインストールされている [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、Web サーバー、および [Git][install-git] を使用します。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web サイトが完成します。
  
-You will learn:
+学習内容: 
 
-* How to create an Azure web site and a MySQL database using the Azure Management Portal. Because PHP is enabled in Azure Web Sites by default, nothing special is required to run your PHP code.
-* How to publish and re-publish your application to Azure using Git.
+* Azure の管理ポータルを使用して Azure の Web サイトと MySQL データベースを作成する方法。Azure の Web サイトでは PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます。
+* Git を使用して Azure にアプリケーションを発行および再発行する方法。
  
-By following this tutorial, you will build a simple registration web application in PHP. The application will be hosted in an Azure web site. A screenshot of the completed application is below:
+このチュートリアルでは、登録用の単純な Web アプリケーションを PHP で作成します。このアプリケーションは Azure の Web サイトでホストします。完成したアプリケーションのスクリーンショットは次のようになります。
 
-![Azure PHP web site][running-app]
+![Azure PHP Web サイト][running-app]
 
-<div class="dev-callout"><strong>Note</strong> <p>To complete this tutorial, you need an Azure account that has the Azure Web Sites feature enabled. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A74E0F923" target="_blank">Azure Free Trial</a>.</p> </div>
+<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、Azure の Web サイトの機能を有効にした Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A74E0F923" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
 
-##Set up the development environment
+##開発環境を設定する
 
-This tutorial assumes you have [PHP][install-php], the MySQL Command-Line Tool (part of [MySQL][install-mysql]), a web server, and [Git][install-git] installed on your computer.
+このチュートリアルは、コンピューターに [PHP][install-php]、MySQL コマンド ライン ツール ([MySQL][install-mysql] の一部)、Web サーバー、および [Git][install-git] がインストールされていることを前提としています。
 
 > [WACOM.NOTE]
-> If you are performing this tutorial on Windows, you can set up your machine for PHP and automatically configure IIS (the built-in web server in Windows) by installing the <a href="http://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/azurephpsdk.appids">Azure SDK for PHP</a>.
+> このチュートリアルを Windows で実行する場合は、<a href="http://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/azurephpsdk.appids">Azure SDK for PHP</a> をインストールすることで、コンピューターを PHP 用に設定し、自動的に IIS (Windows のビルトイン Web サーバー) を構成することができます。
 
-##<a id="create-web-site-and-set-up-git"></a>Create an Azure web site and set up Git publishing
+##<a id="create-web-site-and-set-up-git"></a>Azure の Web サイトを作成し、Git 発行を設定する
 
-Follow these steps to create an Azure web site and a MySQL database:
+Azure の Web サイトと MySQL データベースを作成するには、次のステップに従います。
 
-1. Login to the [Azure Management Portal][management-portal].
-2. Click the **New** icon on the bottom left of the portal.
+1. [Azure の管理ポータル][management-portal]にログインします。
 
-	![Create New Azure web site][new-website]
+2. ポータルの左下にある **[新規]** アイコンをクリックします。
 
-3. Click **Web Site**, then **Custom Create**.
+	![新しい Azure の Web サイトの作成][new-website]
 
-	![Custom Create a new web site][custom-create]
+3. **[Web サイト]** をクリックし、**[カスタム作成]** をクリックします。
+
+	![新しい Web サイトのカスタム作成][custom-create]
 	
-	Enter a value for **URL**, select **Create a New MySQL Database** from the **Database** dropdown,  and select the data center for your web site in the **Region** dropdown. Click the arrow at the bottom of the dialog.
+	**[URL]** ボックスに値を入力し、**[データベース]** ボックスの一覧の **[新しい MySQL データベースを作成します]** を選択して、**[リージョン]** ボックスの一覧で Web サイトのデータ センターを選択します。ダイアログの下部にある矢印をクリックします。
 
-	![Fill in web site details][website-details]
+	![Web サイトの詳細の入力][website-details]
 
-4. Enter a value for the **Name** of your database, select the data center for your database in the **Region** dropdown, and check the box that indicates you agree with the legal terms. Click the checkmark at the bottom of the dialog.
+4. データベースの **[名前]** ボックスに値を入力し、**[リージョン]** ボックスの一覧でデータベースのデータ センターを選択して、法律条項に同意することを示すチェック ボックスをオンにします。ダイアログの下部にあるチェックマークをクリックします。
 
-	![Create new MySQL database][new-mysql-db]
+	![新しい MySQL データベースの作成][new-mysql-db]
 
-	When the web site has been created you will see the text **Creation of Web Site "[SITENAME]" completed successfully**. Now, you can enable Git publishing.
+	Web サイトが作成されると、"**Web サイト "[サイト名]" の作成が正常に完了しました**" というテキストが表示されます。これで、Git 発行を有効にする準備ができました。
 
-6. Click the name of the web site displayed in the list of web sites to open the web site's **QuickStart** dashboard.
+5. Web サイトの一覧に表示されている Web サイトの名前をクリックして、Web サイトの**クイック スタート** ダッシュボードを開きます。
 
-	![Open web site dashboard][go-to-dashboard]
+	![Web サイトのダッシュボードを開く][go-to-dashboard]
 
 
-7. At the bottom of the **QuickStart** page, click **Set up Git publishing**. 
+1. **クイック スタート** ページの下部で、**[Git 発行の設定]** をクリックします。
 
-	![Set up Git publishing][setup-git-publishing]
+	![Git 発行の設定][setup-git-publishing]
 
-8. To enable Git publishing, you must provide a user name and password. Make a note of the user name and password you create. (If you have set up a Git repository before, this step will be skipped.)
+2. Git 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。作成するユーザー名とパスワードはメモしておいてください (Git リポジトリを設定したことがある場合は、この手順をスキップできます)。
 
-	![Create publishing credentials][credentials]
+	![発行資格情報の作成][credentials]
 
-	It will take a few seconds to set up your repository.
+	リポジトリの設定にかかる時間はわずかです。
 
-9. When your repository is ready, you will see instructions for pushing your application files to the repository. Make note of these instructions - they will be needed later.
+3. リポジトリの準備ができると、アプリケーション ファイルをリポジトリにプッシュするための手順が表示されます。これらの手順は後で必要になるため、メモしておいてください。
 
-	![Git instructions][git-instructions]
+	![Git の手順][git-instructions]
 
-##Get remote MySQL connection information
+##MySQL のリモート接続情報の取得
 
-To connect to the MySQL database that is running in Azure Web Sites, your will need the connection information. To get MySQL connection information, follow these steps:
+Azure の Web サイトで実行されている MySQL データベースに接続するには、接続情報が必要になります。MySQL の接続情報を取得するには、次のステップに従います。
 
-1. From your web site's dashboard, click the **View connection strings** link on the right side of the page:
+1. Web サイトのダッシュボードで、ページの右側にある **[接続文字列の表示]** リンクをクリックします。
 
-	![Get database connection information][connection-string-info]
+	![データベース接続情報を取得する][connection-string-info]
 	
-2. Make note of the values for `Database`, `Data Source`, `User Id`, and `Password`.
+2. `Database`、`Data Source`、`User Id`、`Password`の各値をメモします。
 
-##Build and test your application locally
+##アプリケーションの作成とローカル テスト
 
-Now that you have created an Azure Web Site, you can develop your application locally, then deploy it after testing. 
+Azure の Web サイトを作成したので、アプリケーションをローカルで作成し、それをテストした後に展開することができます。
 
-The Registration application is a simple PHP application that allows you to register for an event by providing your name and email address. Information about previous registrants is displayed in a table. Registration information is stored in a MySQL database. The application consists of one file (copy/paste code available below):
+Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。それまでの登録者情報がテーブルに表示されます。登録情報は MySQL データベースに保存されます。アプリケーションを構成するファイルは 1 つです (下にあるコードをコピーし、貼り付けて使用できます)。
 
-* **index.php**: Displays a form for registration and a table containing registrant information.
+* **index.php**: 登録用のフォームと登録者情報が含まれたテーブルを表示します。
 
-To build and run the application locally, follow the steps below. Note that these steps assume you have PHP, the MySQL Command-Line Tool (part of MySQL), and a web server set up on your local machine, and that you have enabled the [PDO extension for MySQL][pdo-mysql].
+アプリケーションを作成してローカルで実行するには、次のステップに従います。ここに示す手順は、ローカル コンピューターに PHP、MySQL コマンド ライン ツール (MySQL の一部)、および Web サーバーがセットアップされており、[MySQL 用 PDO 拡張機能][pdo-mysql]が有効になっていることを前提としています。
 
-1. Connect to the remote MySQL server, using the value for `Data Source`, `User Id`, `Password`, and `Database` that you retrieved earlier:
+1. 先ほどメモしておいた `Data Source`、`User Id`、`Password`、`Database` の各値を使用して、リモートの MySQL サーバーに接続します。
 
 		mysql -h{Data Source] -u[User Id] -p[Password] -D[Database]
 
-2. The MySQL command prompt will appear:
+2. MySQL コマンド プロンプトが表示されます。
 
 		mysql>
 
-3. Paste in the following `CREATE TABLE` command to create the `registration_tbl` table in your database:
+3. 次の `CREATE TABLE` コマンドを貼り付けます。これにより、データベース内に `registration_tbl` テーブルが作成されます。
 
 		mysql> CREATE TABLE registration_tbl(id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(id), name VARCHAR(30), email VARCHAR(30), date DATE);
 
-4. In your web server's root directory, create a folder called `registration` and create a file in it called `index.php`.
+4. Web サーバーのルート ディレクトリで、`registration` というフォルダーを作成し、その中に `index.php` というファイルを作成します。
 
-5. Open the **index.php** file in a text editor or IDE and add the following code, and complete the necessary changes marked with `//TODO:` comments.
+5. テキスト エディターまたは IDE で **index.php** ファイルを開き、次のコードを追加します。`//TODO:` コメントの箇所を必要に応じて変更します。
 
 
 		<html>
@@ -127,14 +128,14 @@ To build and run the application locally, follow the steps below. Note that thes
 		      <input type="submit" name="submit" value="Submit" />
 		</form>
 		<?php
-			// DB connection info
-			//TODO: Update the values for $host, $user, $pwd, and $db
-			//using the values you retrieved earlier from the portal.
+			// DB 接続情報
+			//TODO: $host、$user、$pwd、$db の各値を更新するために
+			//前にポータルからメモしておいた値を使用する
 			$host = "value of Data Source";
 			$user = "value of User Id";
 			$pwd = "value of Password";
 			$db = "value of Database";
-			// Connect to database.
+			// データベースに接続する
 			try {
 				$conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
 				$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
@@ -142,7 +143,7 @@ To build and run the application locally, follow the steps below. Note that thes
 			catch(Exception $e){
 				die(var_dump($e));
 			}
-			// Insert registration info
+			// 登録情報を挿入する
 			if(!empty($_POST)) {
 			try {
 				$name = $_POST['name'];
@@ -185,21 +186,21 @@ To build and run the application locally, follow the steps below. Note that thes
 		</body>
 		</html>
 
-You can now browse to **http://localhost/registration/index.php** to test the application.
+これで、**http://localhost/registration/index.php** に移動してアプリケーションをテストできるようになりました。
 
 
-##Publish your application
+##アプリケーションの発行
 
-After you have tested your application locally, you can publish it to your Azure web site using Git. You will initialize your local Git repository and publish the application.
+アプリケーションをローカルでテストした後、Git を使用してそのアプリケーションを Azure の Web サイトに発行できます。ローカルの Git リポジトリを初期化して、アプリケーションを発行します。
 
 > [WACOM.NOTE]
-> These are the same steps shown in the portal at the end of the Create an Azure web site and Set up Git Publishing section above.
+> これらは、上の「Azure の Web サイトの作成と Git 発行の設定」セクションの最後でポータルに示された手順と同じです。
 
-1. (Optional)  If you've forgotten or misplaced your Git remote repostitory URL, navigate to the Deployment tab on the portal.
+1. (省略可能) Git リモート リポジトリの URL を忘れた場合やスペルを誤った場合は、ポータルの [展開] タブに移動します。
 	
-	![Get Git URL][git-instructions]
+	![Git URL を取得する][git-instructions]
 
-1. Open GitBash (or a terminal, if Git is in your `PATH`), change directories to the root directory of your application, and run the following commands:
+1. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
 
 		git init
 		git add .
@@ -207,42 +208,42 @@ After you have tested your application locally, you can publish it to your Azure
 		git remote add azure [URL for remote repository]
 		git push azure master
 
-	You will be prompted for the password you created earlier.
+	先ほど作成したパスワードを入力するように求められます。
 
-	![Initial Push to Azure via Git][git-initial-push]
+	![Git 経由による Azure への初期プッシュ][git-initial-push]
 
-2. Browse to **http://[site name].azurewebsites.net/index.php** to begin using the application (this information will be stored on your account dashboard):
+2. アプリケーションの使用を開始できるように、**http://[site name].azurewebsites.net/index.php** に移動します (この情報はアカウント ダッシュボードに保存されます)。
 
-	![Azure PHP web site][running-app]
+	![Azure PHP Web サイト][running-app]
 
-After you have published your application, you can begin making changes to it and use Git to publish them. 
+アプリケーションを発行した後、アプリケーションへの変更を開始し、Git を使用してその変更を発行することもできます。
 
-##Publish changes to your application
+##アプリケーションへの変更の発行
 
-To publish changes to application, follow these steps:
+アプリケーションへの変更を発行するには、次のステップに従います。
 
-1. Make changes to your application locally.
-2. Open GitBash (or a terminal, it Git is in your `PATH`), change directories to the root directory of your application, and run the following commands:
+1. ローカルでアプリケーションへの変更を行います。
+2. GitBash (Git が `PATH` にある場合はターミナル) を開き、ディレクトリをアプリケーションのルート ディレクトリに変更して、次のコマンドを実行します。
 
 		git add .
 		git commit -m "comment describing changes"
 		git push azure master
 
-	You will be prompted for the password you created earlier.
+	先ほど作成したパスワードを入力するように求められます。
 
-	![Pushing site changes to Azure via Git][git-change-push]
+	![サイト変更の Git 経由による Azure へのプッシュ][git-change-push]
 
-3. Browse to **http://[site name].azurewebsites.net/index.php** to see your application and any changes you may have made:
+3. アプリケーションとその変更内容を確認できるように、**http://[site name].azurewebsites.net/index.php** に移動します。
 
-	![Azure PHP web site][running-app]
+	![Azure PHP Web サイト][running-app]
 
-4. You can also see the new deployment in the 'Deployments' tab on the Azure Management Portal:
+4. Azure の管理ポータルの [展開] タブで、新しい展開を確認することもできます。
 
-	![List of web site deployments][deployments-list]
+	![Web サイトの展開一覧][deployments-list]
 
 [install-php]: http://www.php.net/manual/en/install.php
-[install-SQLExpress]: http://www.microsoft.com/en-us/download/details.aspx?id=29062
-[install-Drivers]: http://www.microsoft.com/en-us/download/details.aspx?id=20098
+[install-SQLExpress]: http://www.microsoft.com/ja-jp/download/details.aspx?id=29062
+[install-Drivers]: http://www.microsoft.com/ja-jp/download/details.aspx?id=20098
 [install-git]: http://git-scm.com/
 
 [pdo-mysql]: http://www.php.net/manual/en/ref.pdo-mysql.php
@@ -262,4 +263,5 @@ To publish changes to application, follow these steps:
 [deployments-list]: ./media/web-sites-php-mysql-deploy-use-git/php-deployments-list.png
 [connection-string-info]: ./media/web-sites-php-mysql-deploy-use-git/connection_string_info.png
 [management-portal]: https://manage.windowsazure.com
-[sql-database-editions]: http://msdn.microsoft.com/en-us/library/windowsazure/ee621788.aspx
+[sql-database-editions]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee621788.aspx
+

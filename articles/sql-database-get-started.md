@@ -1,165 +1,165 @@
-<properties linkid="manage-services-getting-started-with-sqldbs" urlDisplayName="How to create & provision" pageTitle="Getting started with SQL Database - Azure" metaKeywords="" description="Get started creating and managing SQL Databases in Azure." metaCanonical="" services="sql-database" documentationCenter="" title="Getting Started with Azure SQL Database" authors=""  solutions="" writer="" manager="" editor=""  />
+<properties linkid="manage-services-getting-started-with-sqldbs" urlDisplayName="作成およびプロビジョニングの方法" pageTitle="SQL データベースの概要 - Azure" metaKeywords="" description="Azure での SQL データベースの作成および管理を開始します。" metaCanonical="" services="sql-database" documentationCenter="" title="Azure SQL データベースの概要" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
 
-#Getting Started with Azure SQL Database
+#Azure SQL データベースの概要
 
-In this tutorial you will learn the fundamentals of Azure SQL Database administration using the Azure Management portal. If you are new to database administration, you can follow these lessons to learn essential skills in about 30 minutes.
+このチュートリアルでは、Azure の管理ポータルを使用して、Azure SQL データベース管理の基礎を学習します。データベース管理に慣れていない場合は、このレッスンを通じて基本的なスキルを約 30 分で学ぶことができます。
  
 
-This tutorial does not assume prior experience with SQL Server or Azure SQL Database. Upon completing this tutorial, you will have a sample database on Azure and an understanding of how to perform basic administration tasks using the Management Portal.
+このチュートリアルは、SQL Server または Azure SQL データベースを使用した経験がない読者を対象に作成されています。このチュートリアルを完了すると、Azure にサンプル データベースが作成され、管理ポータルを使用して基本的な管理タスクを実行する方法を理解できます。
 
-You will create and provision a sample database on Azure and query system and user data using Excel and other applications.
-
-
-##Table of Contents##
-
-* [Step 1: Create an Azure account](#Subscribe)
-* [Step 2: Connect to Azure and create a database](#Connect)
-* [Step 3: Configure the firewall](#ConfigFirewall)
-* [Step 4: Add data and a schema using Transact-SQL script](#AddData)
-* [Step 5: Create the schema](#createschema)
-* [Step 6: Insert data](#insertData)
-* [Step 7: Query sample and system data in the Management Portal for SQL Database](#QueryDBSysData)
-* [Step 8: Create a database login and assign permissions](#DBLogin)
-* [Step 9: Connect from other applications](#ClientConnection)
-* [Step 10: Configure SQL Data Sync](#ConfigureDataSync)
+Azure にサンプル データベースを作成して準備し、Excel などのアプリケーションを使用してシステム データとユーザー データを照会します。
 
 
-<h2><a id="Subscribe"></a>Step 1: Create an Azure account</h2>
+##目次##
 
-1. Open a web browser, and browse to [http://www.windowsazure.com](http://www.windowsazure.com).
-To get started with a free account, click free trial in the upper right corner and follow the steps.
+* [ステップ 1.: Azure のアカウントを作成する](#Subscribe)
+* [ステップ 2.: Azure に接続してデータベースを作成する](#Connect)
+* [ステップ 3.: ファイアウォールを構成する](#ConfigFirewall)
+* [ステップ 4.: Transact-SQL スクリプトを使用してデータとスキーマを追加する](#AddData)
+* [ステップ 5.: スキーマを作成する](#createschema)
+* [ステップ 6.: データを挿入する](#insertData)
+* [ステップ 7.: SQL データベースの管理ポータルでサンプル データとシステム データを照会する](#QueryDBSysData)
+* [ステップ 8.: データベース ログインを作成してアクセス許可を割り当てる](#DBLogin)
+* [ステップ 9.: 他のアプリケーションから接続する](#ClientConnection)
+* [ステップ 10.: SQL データ同期を構成する](#ConfigureDataSync)
 
-2. Your account is now created. You are ready to get started.
+
+<h2><a id="Subscribe"></a>ステップ 1.: Azure のアカウントを作成する</h2>
+
+1. Web ブラウザーを開いて、[http://www.windowsazure.com](http://www.windowsazure.com) にアクセスします。
+無料アカウントを取得するには、右上にある [無料評価版] をクリックして、表示される手順に従います。
+
+2. アカウントが作成されました。これで使用開始する準備が整いました。
 
 
-<h2><a id="Connect"></a>Step 2: Connect to Azure and create a database</h2>
+<h2><a id="Connect"></a>ステップ 2.: Azure に接続してデータベースを作成する</h2>
 
 
-1. Sign in to the [Management Portal](http://manage.windowsazure.com). You should see a navigation pane that looks like this. 
+1. [管理ポータル](http://manage.windowsazure.com)にサインインします。次のようなナビゲーション ウィンドウが表示されます。
 
 	![Image1](./media/sql-database-get-started/1NavPaneDBSelected_SQLTut.png)
 
-2. Click **New** at the bottom of the page. When you click **New**, a list rolls up the screen showing things you can create.
+2. ページの下部にある **[新規]** をクリックします。**[新規]** をクリックすると、作成できる項目が一覧に表示されます。
 
-3. Click **SQL Database** and then click **Custom Create**. 
+3. **[SQL データベース]**、**[カスタム作成]** の順にクリックします。
 
 	![Image2](./media/sql-database-get-started/2MainPageCustomCreateDB_SQLTut.png)
 
-	Choosing this option lets you create a new server at the same time, with you as the administrator. As the system administrator, you can perform more tasks, including connecting to the Management Portal for SQL Database, which you will do later in this tutorial.  
+	このオプションを選択すると、自分を管理者として新しいサーバーを同時に作成できます。システム管理者として、このチュートリアルで後で実行する SQL データベースの管理ポータルへの接続など、さまざまなタスクを実行できます。
 
-4.  The Database Settings page appears when you click **Custom Create**. In this page, you provide basic information that creates an empty database on the server. Adding tables and data will come in a later step. 
+4. **[カスタム作成]** をクリックすると、[データベースの設定] ページが表示されます。このページで、サーバーに空のデータベースを作成するのに必要な基本情報を指定します。テーブルとデータの追加は、後の手順で行います。
 
-	Fill out the Database Settings page as follows:
+	[データベースの設定] ページで、次のように指定します。
 
 	![Image3](./media/sql-database-get-started/3DatabaseSettings_SQLTut.PNG)
 
-	* Enter **School** for the database name. 
+	* データベース名として「**School**」と入力します。
 
-	* Use the default settings for edition, max size, and collation. 
+	* エディション、最大サイズ、照合順序は既定の設定を使用します。
 
-	* Choose **New SQL Database Server**. Selecting a new server adds a second page that we'll use to set the administrator account and region. 
+	* **[新しい SQL データベース サーバー]** をクリックします。新しいサーバーを選択すると、2 ページ目が追加され、このページで Administrator アカウントとリージョンを設定します。
 
-	* When you are through, click the arrow to go to next page.
+	* 指定が完了したら、矢印をクリックして、次のページに進みます。
 
 
-5. Fill out the Server Settings as follows: 
+5. [サーバーの設定] ページで、次のように指定します。
 
 	![Image4](./media/sql-database-get-started/4ServerSettings_SQLTut.PNG)
 
-	* Enter an administrator name as one word with no spaces. SQL Database uses SQL Authentication over an encrypted connection to validate user identity. A new SQL Server authentication login that has administrator permissions will be created using the name you provide. The administrator name cannot be a Windows user, nor should it be a Windows Live ID. Windows authentication is not supported on SQL Database.
+	* 空白を含まない 1 語で管理者名を入力します。SQL データベースでは、暗号化された接続による SQL 認証を使用してユーザー ID を検証します。管理者アクセス許可を持つ新しい SQL Server 認証のログインが、入力した名前を使用して作成されます。管理者名には、Windows ユーザーまたは Windows Live ID は使用できません。Windows 認証は SQL データベースではサポートされません。
 
-	* Provide a strong password that is over eight characters, using a combination of upper and lower case values, and a number or symbol.
+	* 大文字、小文字、および数字または記号を組み合わせた 9 文字以上のパスワードを指定します。
 
-	* Choose a region. Region determines the geographical location of the server. Regions cannot be easily switched, so choose one that makes sense for this server. Choose a location that is closest to you or your users. Keeping your Azure application and database in the same region saves you on egress bandwidth cost and data latency.
+	* リージョンを選択します。リージョンによって、サーバーの Geo が決まります。リージョンは簡単に切り替えることができないので、このサーバーに最適なリージョンを選択してください。自分またはユーザーに最も近い場所を選択します。Azure アプリケーションとデータベースを同じリージョンに置くことで、送信帯域幅コストおよびデータ遅延を削減できます。
 
-	* Be sure to keep the **Allow Azure Services to access this server**  checkbox selected so that you can connect to this database using the Management Portal for SQL Database, Excel in Office 365, or Azure SQL Reporting.
+	* **[Azure サービスにサーバーへのアクセスを許可します]** チェック ボックスをオンのままにしておいてください。そうすれば、SQL データベースの管理ポータル、Office 365 の Excel、または Azure SQL レポートを使用してこのデータベースに接続できます。
 
-	* Click the checkmark at the bottom of the page when you are finished.
+	* 終了したら、ページの下部にあるチェックマークをクリックします。
 
-	Notice that you did not specify a server name. Because the SQL Database server must be accessible worldwide, SQL Database configures the appropriate DNS entries when the server is created. The generated name ensures that there are no name collisions with other DNS entries. You cannot change the name of your SQL Database server.
+	サーバー名を指定しなかったことに注意してください。SQL データベース サーバーは世界各地からアクセスできる必要があるため、サーバーが作成されたときに SQL データベースによって適切な DNS エントリが構成されます。他の DNS エントリと衝突しないように名前が生成されます。SQL データベース サーバーの名前は変更できません。
 
-	In the next step, you will configure the firewall so that connections from applications running on your computer are allowed to access the databases on your SQL Database server.
-
-
-
-<h2><a id="ConfigFirewall"></a>Step 3: Configure the firewall</h2>
-
-To configure the firewall so that connections are allowed through, you'll enter information on the server page.
-
-**Note:** The SQL Database service is only available with TCP port 1433 used by the TDS protocol, so make sure that the firewall on your network and local computer allows outgoing TCP communication on port 1433. For more information, see [SQL Database Firewall](http://social.technet.microsoft.com/wiki/contents/articles/2677.sql-azure-firewall-en-us.aspx).
+	次のステップでは、コンピューターで実行中のアプリケーションから接続して、SQL データベース サーバー上のデータベースにアクセスできるようにファイアウォールを構成します。
 
 
-1. In the navigation pane on the left, click **SQL Databases**.
 
-2. Click **Servers** at the top of the page. Next, click on the server you just created so that you see a white arrow to the right. Click on the arrow to open the server page.
+<h2><a id="ConfigFirewall"></a>ステップ 3.: ファイアウォールを構成する</h2>
+
+ファイアウォールを構成して接続が許可されるようにするために、サーバーのページで情報を入力します。
+
+**注:** SQL データベース サービスは、TDS プロトコルの使用する TCP ポート 1433 だけで使用できます。そのため、ネットワークとローカル コンピューターのファイアウォールがポート 1433 で発信 TCP 通信を許可するようにします。詳細については、「[SQL Database Firewall (SQL データベースのファイアウォール)](http://social.technet.microsoft.com/wiki/contents/articles/2677.sql-azure-firewall-en-us.aspx)」を参照してください。
+
+
+1. 左のナビゲーション ウィンドウで、**[SQL データベース]** をクリックします。
+
+2. ページの上部にある **[サーバー]** をクリックします。次に、作成したサーバーをクリックします。右側に白い矢印が表示されます。矢印をクリックして、サーバーのページを開きます。
 
 	![Image5](./media/sql-database-get-started/5DBPortalDatabasesServers_SQLTut.PNG)
 
-3. On the server page, click **Configure** to open the firewall configuration settings and specify the rule as follows: 
+3. サーバーのページで **[構成]** をクリックしてファイアウォールの構成設定を開き、次のようにルールを指定します。
 
 	![Image6](./media/sql-database-get-started/6DBConfigFirewall_SQLTut.png)
 
 
-	* Copy the current client IP address. This is the IP address that your  router or proxy server is listening on. SQL Database detects the IP address used by the current connection so that you can create a firewall rule to accept connection requests from this device. 
+	* 現在のクライアント IP アドレスをコピーします。これは使用するルーターまたはプロキシ サーバーがリッスンしている IP アドレスです。SQL データベースが現在の接続で使用されている IP アドレスを検出すると、このデバイスからの接続要求を受け入れるためのファイアウォール ルールを作成できます。
 	
-	* Paste the IP address into both the beginning and end range. Later, if you encounter connection errors indicating that the range is too narrow, you can edit this rule to widen the range.
+	* 開始範囲と終了範囲の両方に IP アドレスを貼り付けます。その後、この範囲が狭すぎることを示す接続エラーが発生した場合は、このルールを編集して範囲を広げることができます。
 
-	* Enter a name for the firewall rule, such as the name of your computer or company.
+	* 使用するコンピューターや会社の名前など、ファイアウォール ルールの名前を入力します。
 
-	* Click the checkmark to save the rule.
+	* チェックマークをクリックして、ルールを保存します。
 
-	After you save the rule, your page will look similar to the following screenshot.
+	ルールを保存すると、ページは次のスクリーンショットに似た表示になります。
 
 	![Image7](./media/sql-database-get-started/7DBConfigFirewallSAVE_SQLTut.png)
 
 
-4. Click **Save** at the bottom of the page to complete the step. If you do not see **Save**, refresh the browser page.
+4. ページの下部にある **[保存]** をクリックして、手順を完了します。**[保存]** が表示されない場合は、ブラウザーのページを更新します。
 
-You now have a SQL Database server on Azure, a firewall rule that enables access to the server, a database object, and an administrator login. Next, you will use the query window in the Management Portal for SQL Database to run a Transact-SQL script to create a predefined database.
+これで、Azure 上の SQL データベース サーバー、サーバーへのアクセスを許可するファイアウォール ルール、データベース オブジェクト、および管理者ログインが用意できました。次は、SQL データベースの管理ポータルでクエリ ウィンドウを使用して、Transact-SQL スクリプトを実行し、定義済みのデータベースを作成します。
 
-As your skills increase, you will want to explore additional ways of creating a database, including programmatic approaches or the designer in SQL Server Data Tools. If you already have an existing SQL Server database that runs on a local server, you can easily migrate that database to the Azure server that you just set up. Use the links at the end of this tutorial to find out how. 
+スキルが向上するにつれて、プログラムによる手法や SQL Server Data Tools のデザイナーなど、データベースを作成する別の方法にも興味がわいてきます。ローカル サーバーで実行される既存の SQL Server データベースが既にある場合は、設定した Azure サーバーにそのデータベースを簡単に移行することができます。方法については、このチュートリアルの末尾にあるリンクを参照してください。
 
 
 
-<h2><a id="AddData"></a>Step 4: Add data and a schema using Transact-SQL script</h2>
+<h2><a id="AddData"></a>ステップ 4.: Transact-SQL スクリプトを使用してデータとスキーマを追加する</h2>
 
-In this step, you run two scripts. The first one creates a schema that defines tables, columns, and relationships. The second script adds the data. Each step is performed independently on a separate connection. If you've built databases in SQL Server before, one of the differences you'll notice in SQL Database is that CREATE and INSERT commands must run in separate batches. SQL Database imposes this requirement to minimize attacks against the data while it is in transit. 
+この手順では、2 つのスクリプトを実行します。最初のスクリプトは、テーブル、列、リレーションシップを定義するスキーマを作成します。2 つ目のスクリプトは、データを追加します。それぞれの手順は、別々の接続で独立して実行されます。以前に SQL Server でデータベースを構築したことがある場合は、SQL データベースでは CREATE コマンドと INSERT コマンドを別々のバッチで実行する必要があるという点が異なることに注意してください。SQL データベースでは、転送中のデータに対する攻撃を最小限に抑えるために、この要件が課されています。
 
-**Note:** The schema and data values are taken from this [MSDN article](http://msdn.microsoft.com/en-us/library/windowsazure/ee621790.aspx "MSDN article") and have been modified to work with SQL Database.
+** 注:** スキーマとデータの値はこの [MSDN の記事](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee621790.aspx "MSDN article")からとられていて、SQL データベースで動作するように変更されています。
 
-1. Go to the home page. In the [Management Portal](http://manage.windowsazure.com), the **School** database appears in the list of items on the home page. 
+1. ホーム ページに移動します。[管理ポータル](http://manage.windowsazure.com)で、ホーム ページの項目の一覧に **School** データベースが表示されます。
 
 	![Image8](./media/sql-database-get-started/8MainPageHome_SQLTut.png)
 
 
-2. Click on **School** so that you see a white arrow to the right. Click on the arrow to open the database page.
+2. **[School]** をクリックします。右側に白い矢印が表示されます。矢印をクリックして、データベースのページを開きます。
 
 	![Image9](./media/sql-database-get-started/9DBListSchool_SQLTut.png)
 
-3. Click **Manage** at the bottom of the page. If it is not visible, refresh the browser window. This will open the Management Portal for SQL Database. This portal is separate from the Azure Management Portal. You'll use this portal to run Transact-SQL commands and queries. 
+3. ページの下部にある **[管理]** をクリックします。表示されていない場合は、ブラウザーのウィンドウを更新します。これにより、SQL データベースの管理ポータルが開きます。このポータルは Azure の管理ポータルとは別物です。このポータルを使用して、Transact-SQL コマンドとクエリを実行します。
 	
 	![Image10](./media/sql-database-get-started/10DBPortalManageButton_SQLTut.png)
 
 
-4. Enter the administrator login name and password. This is the administrator login that you specified when you created the server.
+4. 管理者のログイン名とパスワードを入力します。これは、サーバーの作成時に指定した管理者ログインです。
 
 	![Image11](./media/sql-database-get-started/11ManageDatabaseLogin_SQLTut.png)
 
 
-5. Click **New Query** in Management Portal for SQL Database. An empty query window opens in the workspace. In the next step, you will use this window to copy in a series of predefined scripts that will add structure and data to your empty database.
+5. SQL データベースの管理ポータルで **[新しいクエリ]** をクリックします。ワークスペースに空のクエリ ウィンドウが開きます。次のステップでは、このウィンドウを使用して、空のデータベースに構造とデータを追加する一連の定義済みスクリプトをコピーします。
 
 	![Image12](./media/sql-database-get-started/12DBPortalNewQuery_SQLTut.PNG)
 	 
 
-<h2><a id="createschema"></a>Step 5: Create the schema</h2>
+<h2><a id="createschema"></a>ステップ 5.: スキーマを作成する</h2>
 
-In this step, you will create the schema using the following script. The script first checks for an existing table of the same name to ensure there won't be a name collision, and creates the table using the [CREATE TABLE](http://msdn.microsoft.com/en-us/library/windowsazure/ee336258.aspx) statement. Further on, this script uses the [ALTER TABLE](http://msdn.microsoft.com/en-us/library/windowsazure/ee336286.aspx) statement to specify the primary key and table relationships.
+この手順では、以下のスクリプトを使用してスキーマを作成します。スクリプトは、まず、同じ名前の既存のテーブルがないかチェックして名前の衝突がないことを確認し、[CREATE TABLE](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336258.aspx) ステートメントを使用してテーブルを作成します。さらに、このスクリプトは [ALTER TABLE](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336286.aspx) ステートメントを使用してプライマリ キーとテーブルのリレーションシップを指定します。
 
-Copy the script and paste it into the query window. Click **Run** at the top of the window to execute the script.
+スクリプトをコピーしてクエリ ウィンドウに貼り付けます。ウィンドウの上部にある **[実行]** をクリックして、スクリプトを実行します。
 
 <div style="width:auto; height:600px; overflow:auto"><pre>
 	-- Create the Department table.
@@ -401,9 +401,9 @@ Copy the script and paste it into the query window. Click **Run** at the top of 
 
 
 
-<h2><a id="insertData"></a>Step 6: Insert data</h2>
+<h2><a id="insertData"></a>ステップ 6.: データを挿入する</h2>
 
-Open a new query window and then paste in the following script. Run the script to insert data. This script uses the [INSERT](http://msdn.microsoft.com/en-us/library/windowsazure/ee336284.aspx) statement to add values to each column.
+新しいクエリ ウィンドウを開いて、以下のスクリプトを貼り付けます。スクリプトを実行してデータを挿入します。このスクリプトは [INSERT](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336284.aspx) ステートメントを使用して各列に値を追加しています。
 
 <div style="width:auto; height:600px; overflow:auto"><pre>
 	-- Insert data into the Person table.
@@ -658,13 +658,13 @@ Open a new query window and then paste in the following script. Run the script t
 </pre></div>
 
 
-<h2><a id="QueryDBSysData"></a>Step 7: Query sample and system data in the Management Portal for SQL Database</h2>
+<h2><a id="QueryDBSysData"></a>ステップ 7.: SQL データベースの管理ポータルでサンプル データとシステム データを照会する</h2>
 
-To check your work, run a query that returns the data you just entered. You can also run built-in stored procedures and data management views that provide information about the databases running on your SQL Database server.
+作業をチェックするために、入力したデータを返すクエリを実行します。また、組み込みストアド プロシージャを実行して、SQL データベース サーバーで実行されているデータベースの情報を示すデータ管理ビューを表示することもできます。
 
-<h4><a id="QueryDB"></a>Query sample data</h4>
+<h4><a id="QueryDB"></a>サンプル データのクエリ</h4>
 
-In a new query window, copy and run the following Transact-SQL script to retrieve some of the data you just added.
+新しいクエリ ウィンドウで、以下の Transact-SQL スクリプトをコピーして実行し、追加したデータの一部を取得します。
 
 
 <div style="width:auto; height:auto; overflow:auto"><pre>
@@ -687,154 +687,154 @@ In a new query window, copy and run the following Transact-SQL script to retriev
 		ON OnsiteCourse.CourseID = CourseInstructor.CourseID;
 </pre></div>
 
-You should see a result set that looks like the following illustration.
+下図のような結果セットが表示されます。
 
 ![Image13](./media/sql-database-get-started/13DBQueryResults_SQLTut.PNG)
 
 
-<h4><a id="QuerySys"></a>Query system data</h4>
+<h4><a id="QuerySys"></a>システム データのクエリ</h4>
 
-You can also use system views and built-in stored procedures to get information from the server. For the purposes of this tutorial, you will try out just a few commands.
+システム ビューと組み込みストアド プロシージャを使用してサーバーから情報を取得することもできます。このチュートリアルでは、いくつかのコマンドだけを試します。
 
-Run the following command to find out which databases are available on the server. 
+次のコマンドを実行して、サーバーでどのデータベースが使用できるか確認します。
 
 	SELECT * FROM sys.databases  
 
-Run this command to return a list of users currently connected to the server.
+このコマンドを実行して、現在サーバーに接続中のユーザーの一覧を返します。
 
 	SELECT user_name(),suser_sname()
 
-Run this stored procedure to return a list of all of the objects in the **School** database.
+このストアド プロシージャを実行して、**School** データベースにあるすべてのオブジェクトの一覧を返します。
 
 	EXEC SP_help
 
-Do not close the portal connection to the **School** database. You will need it again in a few minutes.
+**School** データベースに対するポータル接続は閉じないでください。少し後にまた必要になります。
 
 
 
-<h2><a id="DBLogin"></a>Step 8: Create a database login and assign permissions</h2>
+<h2><a id="DBLogin"></a>ステップ 8.: データベース ログインを作成してアクセス許可を割り当てる</h2>
 
-In SQL Database, you can create logins and grant permissions using Transact-SQL. In this lesson, using Transact-SQL, you will do three things: create a SQL Server authentication login, create  a database user, and grant permissions via role membership.
+SQL データベースでは、Transact-SQL を使用してログインを作成しアクセス許可を付与することができます。このレッスンでは、Transact-SQL を使用して 3 つの作業を実行します。SQL Server 認証ログインの作成、データベース ユーザーの作成、およびロール メンバーシップを介したアクセス許可の付与です。
 
-A SQL Server authentication login is used for server connections. All users who access a database on a SQL Database server do so by providing a SQL Server authentication login name and password. 
+SQL Server 認証ログインはサーバー接続時に使用されます。SQL データベース サーバー上のデータベースにアクセスするユーザーは全員、SQL Server 認証のログイン名とパスワードを指定してサーバーに接続します。
 
-To create a login, you must first connect to the **master** database.
+ログインを作成するには、まず **master** データベースに接続する必要があります。
 
-<h4><a id="CreateLogin"></a>Create a SQL Server authentication login</h4>
+<h4><a id="CreateLogin"></a>SQL Server 認証ログインを作成する</h4>
 
-1. In the [Management Portal](http://manage.windowsazure.com), select **SQL Databases**, click **Servers**, choose the server and then click the white arrow to open the
-server page. 
+1. [管理ポータル](http://manage.windowsazure.com)で、**[SQL データベース]**、**[サーバー]** の順にクリックし、サーバーを選択し、白い矢印をクリックして、サーバーのページを開きます。
 
 	![Image5](./media/sql-database-get-started/5DBPortalDatabasesServers_SQLTut.PNG)
 
-2. On the Quick Start page, click **Manage Server** to open a new connection to the Management Portal for SQL Database. 
+2. [クイック スタート] ページで、**[サーバーの管理]** をクリックして、SQL データベースの管理ポータルに対する新しい接続を開きます。
 
-3. Enter the administrator name and password. This is the administrator login that you specified when you created the server.
+3. 管理者の名前とパスワードを入力します。これは、サーバーの作成時に指定した管理者ログインです。
 
 	![Image20](./media/sql-database-get-started/11ManageDatabaseLogin_SQLTut.png)
 
 
-4. The SQL Database management portal opens in a new browser window. Click **Select a Database** at the top, and click **master**.
+4. 新しいブラウザー ウィンドウに、SQL データベース管理ポータルが表示されます。上部にある **[データベースの選択]** をクリックし、**[master]** をクリックします。
 
 	![Image14](./media/sql-database-get-started/14DBPortalConnectMaster_SQLTut.PNG)
 
-5. If you see an error on the page similar to the following, ignore it. Click **New Query** to open a query window that lets you execute Transact-SQL commands on the **master** database.
+5. 下図のようなエラーがページに表示された場合は、無視してください。**[新しいクエリ]** をクリックします。**master** データベースに対して Transact-SQL コマンドを実行できるクエリ ウィンドウが開きます。
 
 	![Image15](./media/sql-database-get-started/15DBPortalConnectMasterErr_SQLTut.PNG)
 
-6. Copy and paste the following command into the query window.
+6. 次のコマンドをコピーしてクエリ ウィンドウに貼り付けます。
 
         CREATE LOGIN SQLDBLogin WITH password='Password1';
 
-7. Run the command to create a new SQL Server login named 'SQLDBLogin'.
+7. コマンドを実行して、SQLDBLogin という名前の新しい SQL Server ログインを作成します。
 
 
-<h4><a id="CreateDBuser"></a>Create a database user and assign permissions</h4>
+<h4><a id="CreateDBuser"></a>データベース ユーザーを作成してアクセス許可を割り当てる</h4>
 
-After you create a SQL Server authentication login, the next step is to assign the database and permission levels associated with the login. You do this by creating a **database user** on each database.
+SQL Server 認証ログインを作成した後、次のステップは、ログインに関連付けられたデータベースとアクセス許可レベルを割り当てることです。そのために、各データベースに**データベース ユーザー**を作成します。
 
-1. Go back to the SQL Database management portal page that connects to the **School** database. If you closed the browser window, start a new connection to **School** database using the steps from the previous lesson, "Add data and a schema using Transact-SQL script". 
+1. **School** データベースに接続する SQL データベース管理ポータルのページに戻ります。ブラウザー ウィンドウを閉じた場合は、先の「Transact-SQL スクリプトを使用してデータとスキーマを追加する」の手順を使用して **School** データベースに対する新しい接続を開始します。
 
-	On the SQL Database management portal page, the **School** database name is visible in the top left corner.
+	SQL データベース管理ポータルのページでは、左上隅に **School** データベースの名前が表示されます。
 
 	![Image12](./media/sql-database-get-started/12DBPortalNewQuery_SQLTut.PNG)
 
-2. Click **New Query** to open a new query window and copy in the following statement. 
+2. **[新しいクエリ]** をクリックして新しいクエリ ウィンドウを開き、次のステートメントをコピーします。
 
 	    CREATE USER SQLDBUser FROM LOGIN SQLDBLogin;
 
-3. Run the script. This script creates a new database user based on the login.
+3. スクリプトを実行します。このスクリプトは、ログインに基づいて新しいデータベース ユーザーを作成します。
 
-	Next, you'll assign permissions using the db_datareader role. Database users assigned to this role can read all data from all user tables in the database. 
+	次に、db_datareader ロールを使用してアクセス許可を割り当てます。このロールに割り当てられたデータベース ユーザーは、データベースのすべてのユーザー テーブルからすべてのデータを読み取ることができます。
 
-4. Open a new query window and then enter and run the next statement. This statement runs a built-in stored procedure that assigns the db_datareader role to the new user you just created. 
+4. 新しいクエリ ウィンドウを開いて、以下のステートメントを入力して実行します。このステートメントは組み込みストアド プロシージャを実行して、作成した新しいユーザーに db_datareader ロールを割り当てます。
 
         EXEC sp_addrolemember 'db_datareader', 'SQLDBUser';
 
-	You now have a new SQL Server authentication login that has read-only permission to the **School** database. Using these steps, you can create other SQL Server authentication logins to allow different levels of access to your data.
+	これで、**School** データベースに対する読み取り専用アクセス許可を持つ新しい SQL Server 認証ログインが準備されました。この手順を使用して、データに対するアクセス レベルが異なる別の SQL Server 認証ログインを作成することもできます。
 
 
 
 
-<h2><a id="ClientConnection"></a>Step 9: Connect from other applications</h2>
+<h2><a id="ClientConnection"></a>ステップ 9.: 他のアプリケーションから接続する</h2>
 
-Now that you have an operational database, you can connect to it from an Excel workbook.
+動作するデータベースが作成できたので、Excel のブックからこのデータベースに接続できます。
 
-<h4>Connect from Excel</h4>
+<h4>Excel から接続する</h4>
 
 
-If Excel 2010 is installed on your computer, you can use the following steps to connect to your sample database.
+コンピューターに Excel 2010 がインストールされている場合、以下の手順に従ってサンプル データベースに接続できます。
 
-1. In Excel, on the Data tab, click **From Other Sources**, and then click **From SQL Server**.
+1. Excel で、[データ] タブの **[その他のデータ ソース]** をクリックし、**[SQL Server]** をクリックします。
 
-2. In the Data Connection wizard, enter the fully-qualified domain name of your SQL Database server, followed by a SQL Server authentication login that has permission to access the database. 
+2. データ接続ウィザードで、SQL データベース サーバーの完全修飾ドメイン名、および、データベースにアクセスするアクセス許可を持つ SQL Server 認証ログインを入力します。
 
-  You can find the server name on the **Database** page under **Quick Links**. The server name can also be found on the Azure management portal, on SQL Database, on Server page, on the Dashboard, in **Manage URL**.
+  サーバー名は、**[データベース]** ページの **[クイック リンク]** に表示されます。サーバー名は、Azure の管理ポータルの [SQL データベース] の [サーバー] ページで、[ダッシュボード] の **[URL の管理]** にも表示されます。
 
-  The server name consists of a series of letters and numbers, followed by '.database.windows.net'. Specify this name in the Database Connection wizard. Do not include the http:// or https:// prefix when specifying the name.
+  サーバー名は、一連の英字と数字の後に .database.windows.net が付きます。データベース接続ウィザードではこの名前を指定します。名前を指定するときは、http:// または https:// プレフィックスを付けないでください。
 
-  Enter a SQL Server authentication login. For testing purposes, you can use the administrator login that you created when you set up the server. For regular data access, use a database user login similar to the one you just created.
+  SQL Server 認証ログインを入力します。テスト目的の場合、サーバーのセットアップ時に作成した管理者ログインを使用できます。通常のデータ アクセスの場合は、先ほど作成したようなデータベース ユーザー ログインを使用します。
 
 	![Image16](./media/sql-database-get-started/16ExcelConnect_SQLTut.png)
 
 
-3.  On the next page, choose the **School** database, and then choose **Course**. Click **Finish**.
+3. 次のページで、**[School]** データベースを選択し、**[Course]** を選択します。**[完了]** をクリックします。
 
 	![Image17](./media/sql-database-get-started/17ExcelSelect_SQLTut.png)
 
-4. The Import Data dialog box appears that prompts you to select how and where to import your data. With the default options selected, click **OK**.
+4. [データのインポート] ダイアログ ボックスが表示され、データのインポート方法と場所を選択します。既定のオプションを選択したままで、**[OK]** をクリックします。
 
 	![Image19](./media/sql-database-get-started/19ExcelImport_SQLTut.png)
 
 
-5. In the worksheet, you should see a table similar to the following. 
+5. ワークシートに、次のようなテーブルが表示されます。
 	
 	![Image18](./media/sql-database-get-started/18ExcelTable_SQLTut.PNG)
 
-Using just Excel, you can import only one table at a time. A better approach is to use the PowerPivot for Excel add-in, which lets you import and work with multiple tables as a single data set. Working with PowerPivot is beyond the scope of this tutorial, but you can get more information on this [Microsoft web site](http://www.microsoft.com/en-us/bi/powerpivot.aspx).
+Excel だけを使用すると、一度に 1 つのテーブルしかインポートできません。もっと優れた方法は、PowerPivot for Excel アドインを使用して、複数のテーブルを 1 つのデータセットとしてインポートし操作することです。PowerPivot の操作方法はこのチュートリアルの範囲を超えていますが、詳細な情報はこの [Microsoft Web サイト](http://www.microsoft.com/ja-jp/bi/powerpivot.aspx)で入手できます。
 
-<h2><a id="ConfigureDataSync"></a>Step 10: Configure SQL Data Sync</h2>
+<h2><a id="ConfigureDataSync"></a>ステップ 10.: SQL データ同期を構成する</h2>
 
-<h4>SQL Data Sync</h4>
+<h4>SQL データ同期</h4>
 
-Now that you've created your SQL Database instances, you can leverage SQL Data Sync to keep your high value data synchronized across multiple locations.
+SQL データベース インスタンスを作成したので、SQL データ同期を活用して、複数の場所にある価値の高いデータを同期することができます。
 
-SQL Data Sync is a feature of SQL Database that enables you to synchronize selected data, either on a schedule or on-demand, without writing any code or scripts. SQL Data Sync supports synchronization between SQL Database instances or hybrid topologies that include SQL Databases and instances of SQL Server.
+SQL データ同期は、コードやスクリプトを作成することなく、選択したデータを定期的にまたは随時、同期できる SQL データベースの機能です。SQL データ同期は、SQL データベース インスタンス間の同期、または SQL データベースと SQL Server インスタンスを含むハイブリッド トポロジの同期をサポートしています。
 
-For more information about SQL Data Sync, see [Getting Started with SQL Data Sync](http://go.microsoft.com/fwlink/?LinkId=274959).
+SQL データ同期の詳細については、[SQL データ同期の概要](http://go.microsoft.com/fwlink/?LinkId=274959)ページを参照してください。
 
-<h2><a id="NextSteps"></a>Next steps</h2>
+<h2><a id="NextSteps"></a>次のステップ</h2>
 
-Now that you are familiar with SQL Database and the management portals, you can try out other tools and techniques used by SQL Server database administrators.
+これで SQL データベースと管理ポータルに慣れたので、SQL Server データベース管理者が使用する他のツールや技法も試すことができます。
 
-To actively manage your new database, consider installing and using SQL Server Management Studio. Management Studio is the primary database administration tool for managing SQL Server databases, including those running on Azure. Using Management Studio, you can save queries for future use, add new tables and stored procedures, and hone your Transact-SQL skills in a rich scripting environment that includes a syntax checker, intellisense, and templates. To get started, follow the instructions in [Managing SQL Databases Using SQL Server Management Studio](http://www.windowsazure.com/en-us/develop/net/common-tasks/sql-azure-management/).
+新しいデータベースを積極的に管理するには、SQL Server Management Studio をインストールして使用することを検討してください。Management Studio は、Azure 上で動作しているものも含め、SQL Server データベースを管理する主なデータベース管理ツールです。Management Studio を使用すると、将来のためにクエリを保存し、新しいテーブルとストアド プロシージャを追加し、構文チェッカーや Intellisense、テンプレートを含む豊富なスクリプト作成環境で Transact-SQL のスキルを磨くことができます。手始めに、「[Managing SQL Databases Using SQL Server Management Studio (SQL Server Management Studio を使用した SQL データベースの管理)](http://www.windowsazure.com/ja-jp/develop/net/common-tasks/sql-azure-management/)」の指示に従ってください。
 
-Fluency in the Transact-SQL query and data definition language is essential for database administrators. If you are new to Transact-SQL, start with the [Tutorial: Writing Transact-SQL Statements](http://msdn.microsoft.com/en-us/library/ms365303.aspx) to learn some basic skills.
+Transact-SQL クエリとデータ定義言語を自在に操作できることが、データベース管理者には不可欠です。Transact-SQL の経験がない場合は、「[チュートリアル: Transact-SQL ステートメントの作成](http://msdn.microsoft.com/ja-jp/library/ms365303.aspx)」から始めて、基本的なスキルを習得してください。
 
-There are other methods for moving an on-premise database to SQL Database. If you have existing databases, or if you downloaded sample databases to practice with, try the following alternative approaches:
+内部設置型データベースを SQL データベースに移動する方法は他にもあります。既存のデータベースがある場合、または、実習のためにサンプル データベースをダウンロードした場合は、次の方法を試してください。
 
-* [Migrating Databases to SQL Database](http://msdn.microsoft.com/en-us/library/windowsazure/ee730904.aspx)
-* [Copying Databases in SQL Database](http://msdn.microsoft.com/en-us/library/windowsazure/ff951624.aspx)
+* [Migrating Databases to SQL Database (データベースの SQL データベースへの移行)](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee730904.aspx)
+* [Copying Databases in SQL Database (データベースの SQL データベースへのコピー)](http://msdn.microsoft.com/ja-jp/library/windowsazure/ff951624.aspx)
+
 
 
 

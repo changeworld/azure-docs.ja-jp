@@ -1,41 +1,41 @@
-<properties linkid="manage-linux-other-resources-command-line-tools" urlDisplayName="Command-Line Tools" pageTitle="Azure Command-Line Tools for Mac and Linux" metaKeywords="Azure command-line, Azure tools Mac, Azure tools Linux" description="Learn about using the command-line tool for Mac and Linux in Azure." metaCanonical="" services="web-sites,virtual-machines,mobile-services,cloud-services" documentationCenter="" title="" authors="larryfr" solutions="" manager="" editor="" />
+<properties linkid="manage-linux-other-resources-command-line-tools" urlDisplayName="コマンド ライン ツール" pageTitle="Mac および Linux 用 Azure コマンド ライン ツール" metaKeywords="Azure コマンドライン, Azure ツール Mac, Azure ツール Linux" description="Azure での Mac および Linux 用コマンド ライン ツールの使用について説明します。" metaCanonical="" services="web-sites,virtual-machines,mobile-services,cloud-services" documentationCenter="" title="" authors=""  solutions="" writer="larryfr" manager="" editor=""  />
 
-#Azure command-line tool for Mac and Linux
+#Mac および Linux 用 Azure コマンド ライン ツール
 
-This tool provides functionality for creating, deploying, and managing virtual machines, websites and Azure Mobile Services from Mac and Linux desktops. This functionality is similar to that provided by the Windows PowerShell cmdlets that are installed with the Azure SDKs for .NET, Node.JS, and PHP.
+このツールには、Mac および Linux デスクトップから、仮想マシン、Web サイトおよび Azure のモバイル サービスを、作成、展開、管理するための機能があります。これらの機能は、.NET、Node.JS、および PHP 向けの Azure SDK と共にインストールされる Windows PowerShell コマンドレットに備わっている機能と似ています。
 
-To install the tool on a Mac, download and run the [Azure SDK installer](http://go.microsoft.com/fwlink/?LinkId=252249).
+このツールを Mac にインストールするには、[Azure SDK インストーラー](http://go.microsoft.com/fwlink/?LinkId=252249)をダウンロードして実行します。
 
-To install the tool on Linux, install the latest version of Node.JS and then use NPM to install:
+Linux にインストールするには、最新バージョンの Node.JS をインストールしてから、NPM を使用してインストールします。
 
     npm install azure-cli -g
 
-Optional parameters are shown in square brackets (for example, [parameter]). All other parameters are required.
+オプション パラメーターは、ブラケットで囲んで表記しています (例 [parameter])。その他のパラメーターはすべて指定する必要があります。
 
-In addition to command-specific optional parameters documented here, there are three optional parameters that can be used to display detailed output such as request options and status codes. The -v parameter provides verbose output, and the -vv parameter provides even more detailed verbose output. The --json option will output the result in raw json format.
+ここに記載している、コマンド固有のオプション パラメーターに加えて、要求オプションやステータス コードなどの詳細出力の表示に使用できるオプション パラメーターが 3 つあります。-v パラメーターでは詳細な出力を、-vv パラメーターではより詳細な出力を得ることができます。--json オプションを使用すると、結果が raw json 形式で出力されます。
 
-**Table of Contents:**
+**目次:**
 
-* [Manage your account information and publish settings](#Manage_your_account_information_and_publish_settings)
-* [Commands to manage your Azure virtual machines](#Commands_to_manage_your_Azure_virtual_machines)
-* [Commands to manage your Azure virtual machine endpoints](#Commands_to_manage_your_Azure_virtual_machine_endpoints)
-* [Commands to manage your Azure virtual machine images](#Commands_to_manage_your_Azure_virtual_machine_images)
-* [Commands to manage your Azure virtual machine data disks](#Commands_to_manage_your_Azure_virtual_machine_data_disks)
-* [Commands to manage your Azure cloud services](#Commands_to_manage_your_Azure_cloud_services)
-* [Commands to manage your Azure certificates](#Commands_to_manage_your_Azure_certificates)
-* [Commands to manage your web sites](#Commands_to_manage_your_web_sites)
-* [Commands to manage Azure Mobile Services](#Commands_to_manage_mobile_services)
-* [Manage tool local settings](#Manage_tool_local_settings)
-* [Commands to manage Service Bus](#Commands_to_manage_service_bus)
-* [Commands to manage SQL Databases](#Commands_to_manage_sql)
-* [Commands to manage your Virtual Networks](#Commands_to_manage_vnet)
+* [アカウント情報および発行設定の管理](#Manage_your_account_information_and_publish_settings)
+* [Azure の仮想マシンの管理用コマンド](#Commands_to_manage_your_Azure_virtual_machines)
+* [Azure の仮想マシン エンドポイントの管理用コマンド](#Commands_to_manage_your_Azure_virtual_machine_endpoints)
+* [Azure の仮想マシン イメージの管理用コマンド](#Commands_to_manage_your_Azure_virtual_machine_images)
+* [Azure の仮想マシン データ ディスクの管理用コマンド](#Commands_to_manage_your_Azure_virtual_machine_data_disks)
+* [Azure クラウド サービスの管理用コマンド](#Commands_to_manage_your_Azure_cloud_services)
+* [Azure 証明書の管理用コマンド](#Commands_to_manage_your_Azure_certificates)
+* [Web サイトの管理用コマンド](#Commands_to_manage_your_web_sites)
+* [Azure のモバイル サービスの管理用コマンド](#Commands_to_manage_mobile_services)
+* [ツールのローカル設定の管理](#Manage_tool_local_settings)
+* [サービス バスの管理用コマンド](#Commands_to_manage_service_bus)
+* [SQL データベースの管理用コマンド](#Commands_to_manage_sql)
+* [仮想ネットワークの管理用コマンド](#Commands_to_manage_vnet)
 
-##<a name="Manage_your_account_information_and_publish_settings"></a>Manage your account information and publish settings
-Your Azure subscription information is used by the tool to connect to your account. This information can be obtained from the Azure portal in a publish settings file as described here. The publish settings file can then be imported as a persistent local config setting that the tool will use for subsequent operations. You only need to import your publish settings once.
+##<a name="Manage_your_account_information_and_publish_settings"></a>アカウント情報および発行設定の管理
+Azure のサブスクリプション情報は、ツールがアカウントにアクセスする際に使用されます。この情報は、以下に説明するとおり、Azure ポータルから発行設定ファイルとして入手できます。発行設定ファイルは永続的なローカル構成設定としてインポートすることができます。インポートすると、ツールの以降の操作にはこの発行設定ファイルが使用されます。発行設定のインポートは 1 回だけ行う必要があります。
 
 **account download [options]**
 
-This command launches a browser to download your .publishsettings file from the Azure portal.
+このコマンドは、ブラウザーを起動して、Azure ポータルから .publishsettings ファイルをダウンロードします。
 
 	~$ azure account download
 	info:   Executing command account download
@@ -46,7 +46,7 @@ This command launches a browser to download your .publishsettings file from the 
 
 **account import [options] &lt;file>**
 
-This command imports a publishsettings file or certificate so that it can be used by the tool going forward.
+このコマンドは、publishsettings ファイルまたは証明書をインポートして、ツールで使用できるようにします。
 
 	~$ azure account import publishsettings.publishsettings
 	info:   Importing publish settings file publishsettings.publishsettings
@@ -57,14 +57,14 @@ This command imports a publishsettings file or certificate so that it can be use
 	warn:   Remember to delete it now that it has been imported.
 	info:   Account publish settings imported successfully
 
-<div class="dev-callout"><b>Note</b>
-   <p>The publishsettings file can contain details (that is, subscription name and ID) about more than one subscription. When you import the publishsettings file, the first subscription is used as the default description. To use a different subscription, run the following command.</p>
+<div class="dev-callout"><b>メモ</b>
+   <p>publishsettings ファイルには、複数のサブスクリプションの詳細 (サブスクリプション名と ID) を含めることができます。publishsettings ファイルをインポートすると、最初のサブスクリプションが既定の説明として使用されます。別のサブスクリプションを使用するには、次のコマンドを実行します。</p>
 <code>~$ azure config set subscription &lt;other-subscription-id&gt;</code>
 </div>
 
 **account clear [options]**
 
-This command removes the stored publish settings that have been imported. Use this command if you're finished using the tool on this machine and want to assure that the tool cannot be used with your account going forward.
+このコマンドは、インポート済みの保存されている発行設定を削除します。このマシンでのツールの使用を完了し、今後は自分のアカウントによってツールが使われないようにする場合に、このコマンドを使用します。
 
 	~$ azure account clear
 	Clearing account info.
@@ -72,7 +72,7 @@ This command removes the stored publish settings that have been imported. Use th
 
 **account list [options]**
 
-List the imported subscriptions
+インポートされたサブスクリプションの一覧を表示します。
 
 	~$ azure account list
 	info:    Executing command account list
@@ -86,15 +86,15 @@ List the imported subscriptions
 
 **account set [options] &lt;subscription&gt;**
 
-Set the current subscription
+現在のサブスクリプションを設定します。
 
-###Commands to manage your affinity groups
+###アフィニティ グループの管理用コマンド
 
 **account affinity-group list [options]**
 
-This command lists your Azure affinity groups.
+このコマンドは、Azure のアフィニティ グループを一覧表示します。
 
-Affinity groups can be set when a group of virtual machines spans multiple physical machines. The affinity group specifies that the physical machines should be as close to each other as possible, to reduce network latency.
+アフィニティ グループは、仮想マシンのグループが複数の物理マシン上にわたって存在する場合に設定できます。アフィニティ グループでは、ネットワークの待ち時間を減らすため、複数の物理マシンをできる限り近くに配置します。
  
 	~$ azure account affinity-group list
 	+ Fetching affinity groups
@@ -105,7 +105,7 @@ Affinity groups can be set when a group of virtual machines spans multiple physi
 
 **account affinity-group create [options] &lt;name&gt;**
 
-This command creates a new affinity group
+このコマンドは、新しいアフィニティ グループを作成します。
 
 	~$ azure account affinity-group create opentec -l "West US"
 	info:    Executing command account affinity-group create
@@ -114,7 +114,7 @@ This command creates a new affinity group
 
 **account affinity-group show [options] &lt;name&gt;**
 
-This command shows the details of the affinity group
+このコマンドは、アフィニティ グループの詳細を表示します。
 
 	~$ azure account affinity-group show opentec
 	info:    Executing command account affinity-group show
@@ -133,7 +133,7 @@ This command shows the details of the affinity group
 
 **account affinity-group delete [options] &lt;name&gt;**
 
-This command deletes the specified affinity group
+このコマンドは、指定されたアフィニティ グループを削除します。
 
 	~$ azure account affinity-group delete opentec
 	info:    Executing command account affinity-group delete
@@ -141,11 +141,11 @@ This command deletes the specified affinity group
 	+ Deleting affinity group
 	info:    account affinity-group delete command OK
 
-###Commands to manage your account environment
+###アカウント環境の管理用コマンド
 
 **account env list [options]**
 
-List of the account environments
+アカウント環境の一覧です。
 
 	C:\windows\system32>azure account env list
 	info:    Executing command account env list
@@ -157,7 +157,7 @@ List of the account environments
 
 **account env show [options] [environment]**
 
-Show account environment details
+アカウント環境の詳細を表示します。
 
 	~$ azure account env show
 	info:    Executing command account env show
@@ -168,97 +168,97 @@ Show account environment details
 
 **account env add [options] [environment]**
 
-This command adds an environment to the account
+このコマンドは、アカウントに環境を追加します。
 
 **account env set [options] [environment]**
 
-This command sets the account environment
+このコマンドは、アカウント環境を設定します。
 
 **account env delete [options] [environment]**
 
-This command deletes the specified environment from the account
+このコマンドは、指定された環境をアカウントから削除します。
 
-##<a name="Commands_to_manage_your_Azure_virtual_machines"></a>Commands to manage your Azure virtual machines
-The following diagram shows how Azure virtual machines are hosted in the production deployment environment of an Azure cloud service.
+##<a name="Commands_to_manage_your_Azure_virtual_machines"></a>Azure の仮想マシンの管理用コマンド
+次の図は、Azure の仮想マシンが Azure クラウド サービスの運用展開環境でホストされるしくみを示しています。
  
-![Azure Technical Diagram](./media/command-line-tools/architecturediagram.jpg)	
+![Azure の技術解説図](./media/command-line-tools/architecturediagram.jpg)	
 
-**create-new** creates the drive in blob storage (that is, e:\ in the diagram); **attach** attaches an already created but unattached disk to a virtual machine.
+**create-new** BLOB ストレージ (この図では e:\) にドライブを作成します。**attach** 作成済みでまだ接続していないディスクを、仮想マシンに接続します。
 
 **vm create [options] &lt;dns-name> &lt;image> &lt;userName> [password]**
 
-This command creates a new Azure virtual machine. By default, each virtual machine is created in its own cloud service; however, you can specify that a virtual machine should be added to an existing cloud service through use of the -c option as documented here.
+このコマンドは、新しい Azure の仮想マシンを作成します。既定では、各仮想マシンはそれぞれのクラウド サービス上に作成されます。ただし、ここで説明しているように -c オプションを使用すると、仮想マシンが既存のクラウド サービスに追加されるように指定できます。
 
-Note that the vm create command, like the Azure portal, only creates virtual machines in the production deployment environment. There is currently no option for creating a virtual machine in the staging deployment environment of a cloud service. Note that an Azure storage account is created by this command if one does not already exist for your subscription.
+vm create コマンドは、Azure ポータルのように、特定の運用展開環境上にのみ仮想マシンを作成することに注意してください。現在のところ、クラウド サービスのステージング展開環境に仮想マシンを作成するオプションはありません。また、サブスクリプション用のアカウントをまだ持っていない場合は、このコマンドの実行によって、Azure のストレージ アカウントが作成されることにも注意してください。
 
-You can specify a location through the --location parameter, or you can specify an affinity group through the --affinity-group parameter. If neither is provided, you are prompted to provide one from a list of valid locations.
+--location パラメーターで場所を指定するか、--affinity-group パラメーターでアフィニティ グループを指定します。どちらも指定しない場合は、有効な場所の一覧から 1 つを選択するように求められます。
 
-The supplied password must be 8-123 characters long and meet the password complexity requirements of the operating system that you are using for this virtual machine.
+パスワードは、8 文字以上 123 以下で指定し、仮想マシンで使用しているオペレーティング システムに適用されているパスワードの複雑さの要件を満たす必要があります。
 
-If you anticipate the need to use SSH to manage a deployed Linux virtual machine (as is usually the case), you must enable SSH via the -e option when you create the virtual machine. It is not possible enable SSH after the virtual machine has been created.
+展開した Linux 仮想マシンの管理に SSH を使用する可能性がある場合 (一般的な想定です)、仮想マシンを作成するときに、-e オプションを使用して SSH を有効にします。仮想マシンを作成した後に SSH を有効にすることはできません。
 
-Windows virtual machines can enable RDP later by adding port 3389 as an endpoint.
+Windows 仮想マシンでは、エンドポイントとしてポート 3389 を追加することによって、後から RDP を有効にできます。
 
-The following optional parameters are supported for this command:
+このコマンドでは、次のオプション パラメーターがサポートされています。
 
-**-c, --connect** create the virtual machine inside an already created deployment in a hosting service. If -vmname is not used with this option, the name of the new virtual machine will be generated automatically.<br />
-**-n, --vm-name** Specify the name of the virtual machine. This parameter takes hosting service name by default. If -vmname is not specified, the name for the new virtual machine is generated as &lt;service-name>&lt;id>, where &lt;id> is the number of existing virtual machines in the service plus 1 For example, if you use this command to add a new virtual machine to a hosting service MyService that has one existing virtual machine, the new virtual machine is named MyService2.<br /> 
-**-u, --blob-url** Specify the blob storage URL from which to create the virtual machine system disk. <br />
-**-z, --vm-size** Specify the size of the virtual machine. Valid values are "extrasmall", "small", "medium", "large", "extralarge". The default value is "small". <br />
-**-r** Adds RDP connectivity to a Windows virtual machine. <br />
-**-e, --ssh** Adds SSH connectivity to a Windows virtual machine. <br />
-**-t, --ssh-cert** Specifies the SSh certificate. <br />
-**-s** The subscription <br />
-**-o, --community** The specified image is a community image <br />
-**-w** The virtual network name <br/>
-**-l, --location** specifies the location (for example, "North Central US"). <br />
-**-a, --affinity-group** specifies the affinity group.<br />
-**-w, --virtual-network-name** Specify the virtual network on which to add the new vitual machine. Virtual networks can be set up and managed from the Azure portal.<br />
-**-b, --subnet-names** Specifies the subnet names to assign the virtual machine.
+**-c, --connect** ホスティング サービスで作成済みの展開内に仮想マシンを作成します。-vmname をこのオプションと使用しない場合、新しい仮想マシンの名前が自動的に生成されます。<br />
+**-n, --vm-name** 仮想マシンの名前を指定します。このパラメーターは既定でホスティング サービス名を参照します。-vmname を指定しない場合、新しい仮想マシンの名前が &lt;service-name>&lt;id> の形式で生成されます。この &lt;id> はサービス内の既存の仮想マシンに 1 を足した数です。たとえば、既存の仮想マシンが 1 つだけのホスティング サービス MyService に、新しい仮想マシンを追加すると、MyService2 という名前になります。<br />
+**-u, --blob-url** 仮想マシン システム ディスクの作成元となる BLOB ストレージの URL を指定します。<br />
+**-z, --vm-size** 仮想マシンのサイズを指定します。有効な値は、「extrasmall」、「small」、「medium」、「large」、および「extralarge」です。既定値は「small」です。<br />
+**-r** RDP 接続を Windows 仮想マシンに追加します。<br />
+**-e, --ssh** SSH 接続を Windows 仮想マシンに追加します。<br />
+**-t, --ssh-cert** SSH 証明書を指定します。<br />
+**-s** サブスクリプションです。<br />
+**-o, --community** 指定されるイメージはコミュニティのイメージです。<br />
+**-w** 仮想ネットワーク名です。<br/>
+**-l, --location** 場所を指定します (たとえば、「North Central US」)。<br />
+**-a, --affinity-group** アフィニティ グループを指定します。<br />
+**-w, --virtual-network-name** 新しい仮想マシンを追加する仮想ネットワークを指定します。仮想ネットワークは、Azure ポータルから設定および管理できます。<br />
+**-b, --subnet-names** 仮想マシンを割り当てるサブネット名を指定します。
 
-In this example, MSFT__Win2K8R2SP1-120514-1520-141205-01-en-us-30GB is an image provided by the platform. For more information about operating system images, see vm image list.
+この例では、MSFT__Win2K8R2SP1-120514-1520-141205-01-en-us-30GB が、プラットフォームによって提供されるイメージです。オペレーティング システムのイメージの詳細については、「vm image list」を参照してください。
 
 	~$ azure vm create my-vm-name MSFT__Windows-Server-2008-R2-SP1.11-29-2011 username --location "Western US" -r
 	info:   Executing command vm create
-	Enter VM 'my-vm-name' password: ************                                     
+	Enter VM 'my-vm-name' password: ************
 	info:   vm create command OK
 
 **vm create-from &lt;dns-name> &lt;role-file>**
 
-This command creates a new Azure virtual machine from a JSON role file.
+このコマンドは、JSON ロール ファイルから新しい Azure の仮想マシンを作成します。
 
 	~$ azure vm create-from my-vm example.json
 	info:   OK
 
 **vm list [options]**
 
-This command lists Azure virtual machines. The -json option specifies that the results are returned in raw JSON format. 
+このコマンドは、Azure の仮想マシンの一覧を表示します。-json オプションは、結果が raw JSON 形式で返されるように指定します。
 
 	~$ azure vm list
 	info:   Executing command vm list
-	data:   DNS Name                          VM Name      Status                  
+	data:   DNS Name                          VM Name      Status
 	data:   --------------------------------  -----------  ---------
 	data:   my-vm-name.cloudapp-preview.net        my-vm        ReadyRole
 	info:   vm list command OK
 
 **vm location list [options]**
 
-This command lists all available Azure account locations.
+このコマンドは、Azure アカウントの使用可能な場所の一覧を表示します。
 
 	~$ azure vm location list
 	info:   Executing command vm location list
-	data:   Name                   Display Name                                    
+	data:   Name                   Display Name
 	data:   ---------------------  ------------
-	data:   Azure Preview  West US     
+	data:   Azure Preview  West US
 	info:   account location list command OK
 
 **vm show [options] &lt;name>**
 
-This command shows details about an Azure virtual machine. The -json option specifies that the results are returned in raw JSON format. 
+このコマンドは、Azure の仮想マシンの詳細を表示します。-json オプションは、結果が raw JSON 形式で返されるように指定します。
 
 	~$ azure vm show my-vm
 	info:   Executing command vm show
-	data:   {                                                                      
+	data:   {
 	data:       InstanceSize: 'Small',
 	data:       InstanceStatus: 'ReadyRole',
 	data:       DataDisks: [],
@@ -279,12 +279,12 @@ This command shows details about an Azure virtual machine. The -json option spec
 	data:       },
 	data:       Image: 'MSFT__Windows-Server-2008-R2-SP1.11-29-2011',
 	data:       OSVersion: 'WA-GUEST-OS-1.18_201203-01'
-	data:   } 
+	data:   }
 	info:   vm show command OK
 
 **vm delete [options] &lt;name>**
 
-This command deletes an Azure virtual machine. By default, this command does not delete the Azure blob from which the the operating system disk and the data disk are created. To delete the blob as well as the virtual machine on which it is based, specify the -b option.
+このコマンドは、Azure の仮想マシンを削除します。既定では、オペレーティング システム ディスクとデータ ディスクを作成した Azure BLOB は削除されません。元の仮想マシンと共に BLOB も削除するには、-b オプションを指定します。
 
 	~$ azure vm delete my-vm 
 	info:   Executing command vm delete
@@ -292,7 +292,7 @@ This command deletes an Azure virtual machine. By default, this command does not
 
 **vm start [options] &lt;name>**
 
-This command starts an Azure virtual machine.
+このコマンドは、Azure の仮想マシンを起動します。
 
 	~$ azure vm start my-vm
 	info:   Executing command vm start
@@ -300,7 +300,7 @@ This command starts an Azure virtual machine.
 
 **vm restart [options] &lt;name>**
 
-This command restarts an Azure virtual machine.
+このコマンドは、Azure の仮想マシンを再起動します。
 
 	~$ azure vm restart my-vm
 	info:   Executing command vm restart
@@ -308,7 +308,7 @@ This command restarts an Azure virtual machine.
 
 **vm shutdown [options] &lt;name>**
 
-This command shuts down an Azure virtual machine. You may use the -p option to specify that the compute resource not be released on shutdown.
+このコマンドは、Azure の仮想マシンをシャットダウンします。-p オプションを使用して、シャットダウン時にコンピューティング リソースが解放されないように指定することができます。
 
 ```
 ~$ azure vm shutdown my-vm
@@ -318,9 +318,9 @@ info:   vm shutdown command OK
 
 **vm capture &lt;vm-name> &lt;target-image-name>**
 
-This command captures an Azure virtual machine image.
+このコマンドは、Azure の仮想マシン イメージを取得します。
 
-A virtual machine image cannot be captured while the virtual machine state unless the virtual machine state is Stopped .
+仮想マシン イメージは、仮想マシンの状態が Stopped の場合にのみ、取得できます。
 
 	~$ azure.cmd vm capture my-vm mycaptureimagename --delete
 	info:   Executing command vm capture
@@ -330,7 +330,7 @@ A virtual machine image cannot be captured while the virtual machine state unles
 
 **vm export [options] &lt;vm-name> &lt;file-path>**
 
-This command exports an Azure virtual machine image to a file
+このコマンドは、Azure の仮想マシン イメージをファイルにエクスポートします。
 
 	~$ azure vm export "myvm" "C:\"
 	info:    Executing command vm export
@@ -338,16 +338,16 @@ This command exports an Azure virtual machine image to a file
 	+ Exporting the VM
 	info:   vm export command OK
 
-##<a name="Commands_to_manage_your_Azure_virtual_machine_endpoints"></a>Commands to manage your Azure virtual machine endpoints
-The following diagram shows the architecture of a typical deployment of multiple instances of a virtual machine. Note that in this example port 3389 is open on each virtual machine (for RDP access), and there is also an internal IP address (for example, 168.55.11.1) on each virtual machine that is used by the load balancer to route traffic to the virtual machine. This internal IP address can also be used for communication between virtual machines.
+##<a name="Commands_to_manage_your_Azure_virtual_machine_endpoints"></a>Azure の仮想マシン エンドポイントの管理用コマンド
+次の図は、仮想マシンのインスタンスが複数ある一般的な展開のアーキテクチャを示しています。この例では、ポート 3389 が各仮想マシン上で開いています (RDP アクセス用)。また、ロード バランサーがトラフィックを仮想マシンにルーティングするために使用する内部 IP アドレス (たとえば、168.55.11.1) が、仮想サーバーごとに設定されています。この内部 IP アドレスは、仮想マシン間の通信にも使用されます。
 
 ![azurenetworkdiagram](./media/command-line-tools/networkdiagram.jpg)
  
-External requests to virtual machines go through a load balancer. Because of this, requests cannot be specified against a particular virtual machine on deployments with multiple virtual machines. For deployments with multiple virtual machines, port mapping must be configured between the virtual machines (vm-port) and the load balancer (lb-port).
+仮想マシンへの外部要求は、ロード バランサーを経由します。そのため、複数の仮想マシンの展開においては、特定の仮想マシンに対する要求は指定できません。複数の仮想マシンがある展開については、仮想マシン (vm-port) とロード バランサー (lb-port) 間のポート マッピングを構成する必要があります。
 
 **vm endpoint create &lt;vm-name> &lt;lb-port> [vm-port]**
 
-This command creates a virtual machine endpoint. You may also use -u or --enable-direct-server-return to specify whether to enable direct server return on this endpoint, disabled by default.
+このコマンドは、仮想マシンのエンドポイントを作成します。-u または --enable-direct-server-return を使用して、このエンドポイントで Direct Server Return を有効にするかどうかを指定することもできます。既定では無効です。
 
 	~$ azure vm endpoint create my-vm 8888 8888
 	azure vm endpoint create my-vm 8888 8888
@@ -359,11 +359,11 @@ This command creates a virtual machine endpoint. You may also use -u or --enable
 
 **vm endpoint create-multiple [options] &lt;vm-name> &lt;lb-port>[:&lt;vm-port>[:&lt;protocol>[:&lt;lb-set-name>[:&lt;prob-protocol>:&lt;lb-prob-port>[:&lt;prob-path>]]]]] ]{1-*}**
 
-Create multiple vm endpoints. You may also use -u or --enable-direct-server-return to specify whether to enable direct server return on this endpoint, disabled by default.
+複数の VM エンドポイントを作成します。-u または --enable-direct-server-return を使用して、このエンドポイントで Direct Server Return を有効にするかどうかを指定することもできます。既定では無効です。
 
 **vm endpoint delete &lt;vm-name> &lt;lb-port>**
 
-This command deletes a virtual machine endpoint.
+このコマンドは、仮想マシンのエンドポイントを削除します。
 
 	~$ azure vm endpoint delete my-vm 8888
 	azure vm endpoint delete my-vm 8888
@@ -375,25 +375,25 @@ This command deletes a virtual machine endpoint.
 
 **vm endpoint list &lt;vm-name>**
 
-This command lists all virtual machine endpoints. The -json option specifies that the results are returned in raw JSON format. 
+このコマンドは、仮想マシンのエンドポイントをすべて列挙します。-json オプションは、結果が raw JSON 形式で返されるように指定します。
 
 	~$ azure vm endpoint list my-linux-vm
-	data:   Name  External Port  Local Port                                        
+	data:   Name  External Port  Local Port
 	data:   ----  -------------  ----------
 	data:   ssh   22             22
 
 **vm endpoint update [options] &lt;vm-name> &lt;endpoint-name>**
 
-This command updates a vm endpoint to new values using these options.
+このコマンドは、以下のオプションを使用して、VM エンドポイントを新しい値に更新します。
 
-    -n, --endpoint-name <name>          the new endpoint name
-    -t, --lb-port <port>                the new load balancer port
-    -t, --vm-port <port>                the new local port port
-    -o, --endpoint-protocol <protocol>  the new transport layer protocol for port (tcp or udp) 
+    -n、--endpoint-name <name>          新しいエンドポイント名
+    -t、--lb-port <port>                新しいロード バランサー ポート
+    -t、--vm-port <port>                新しいローカル ポート
+    -o、--endpoint-protocol <protocol>  ポートの新しいトランスポート レイヤー プロトコル (tcp または udp)
 
 **vm endpoint show [options] &lt;vm-name>**
 
-This command shows the details of the endpoints on a vm
+このコマンドは、VM 上のエンドポイントの詳細を表示します。
 
 	~$ azure vm endpoint show "mycouchvm"
 	info:    Executing command vm endpoint show
@@ -417,14 +417,14 @@ This command shows the details of the endpoints on a vm
 	data:    Network Endpoints 2 Vip "168.61.9.97"
 	info:    vm endpoint show command OK
 
-##<a name="Commands_to_manage_your_Azure_virtual_machine_images"></a>Commands to manage your Azure virtual machine images
+##<a name="Commands_to_manage_your_Azure_virtual_machine_images"></a>Azure の仮想マシン イメージの管理用コマンド
 
-Virtual machine images are captures of already configured virtual machines that can be replicated as required.
+仮想マシン イメージは、構成済みの仮想マシンのキャプチャしたものであり、必要に応じて複製できます。
 
 **vm image list [options]**
 
-This command gets a list of virtual machine images. There are three types of images: images created by Microsoft, which are prefixed with "MSFT", images created by third parties, which are usually prefixed with the name of the vendor, and images you create. To create images, you can either capture an existing virtual machine or create an image from a custom .vhd uploaded to blob storage. For more information about using a custom .vhd, see vm image create.
-The -json option specifies that the results are returned in raw JSON format. 
+このコマンドは、仮想マシン イメージの一覧を表示します。イメージは 3 種類あります。Microsoft が作成したイメージ (プレフィックスは MSFT)、サード パーティが作成したイメージ (通常は、プレフィックスはベンダーの名前)、およびユーザーが作成したイメージです。イメージを作成するには、既存の仮想マシンをキャプチャするか、BLOB ストレージにアップロードされているカスタム .vhd からイメージを作成します。カスタム .vhd の詳細については、「vm image create」を参照してください。
+-json オプションは、結果が raw JSON 形式で返されるように指定します。
 
 	~$ azure vm image list
 	data:   Name                                                                   Category   OS
@@ -439,16 +439,16 @@ The -json option specifies that the results are returned in raw JSON format.
 	data:   SUSE__SUSE-Linux-Enterprise-Server-11SP2-20120521-en-us-30GB.vhd       SUSE       Linux
 	data:   SUSE__OpenSUSE64121-03192012-en-us-15GB.vhd                            SUSE       Linux
 	data:   WIN2K8-R2-WINRM                                                        User       Windows
-	info:   vm image list command OK   
+	info:   vm image list command OK
 
 **vm image show [options] &lt;name>**
 
-This command shows the details of of a virtual machine image.
+このコマンドは、仮想マシン イメージの詳細を表示します。
 
 	~$ azure vm image show MSFT__Windows-Server-2008-R2-SP1.11-29-2011
 	+ Fetching VM image
 	info:   Executing command vm image show
-	data:   {                                                                      
+	data:   {
 	data:       Label: 'Windows Server 2008 R2 SP1, Nov 2011',
 	data:       Name: 'MSFT__Windows-Server-2008-R2-SP1.11-29-2011',
 	data:       Description: 'Microsoft Windows Server 2008 R2 SP1',
@@ -458,22 +458,22 @@ This command shows the details of of a virtual machine image.
 	data:       Eula: 'http://www.microsoft.com',
 	data:       LogicalSizeInGB: '30'
 	data:   }
-	info:   vm image show command OK 
+	info:   vm image show command OK
 
 **vm image delete [options] &lt;name>**
 
-This command deletes a virtual machine image.
+このコマンドは、仮想マシン イメージを削除します。
 
 	~$ azure vm image delete my-vm-image
 	info:   Executing command vm image delete
-	info:   VM image deleted: my-vm-image                                         
+	info:   VM image deleted: my-vm-image
 	info:   vm image delete command OK
 
 **vm image create &lt;name> [source-path]**
 
-This command creates a virtual machine image. Your custom .vhd files are uploaded to blob storage, and then the virtual machine image is created from there. You then use this virtual machine image to create a virtual machine. The Location and OS parameters are required.
+このコマンドは、仮想マシン イメージを作成します。ユーザーがカスタム .vhd ファイルを BLOB ストレージにアップロードした後、そこから仮想マシン イメージが作成されます。この仮想マシン イメージを使って、仮想マシンを作成できます。Location パラメーターと OS パラメーターは必須です。
 
-Some systems impose per-process file descriptor limits. If this limit is exceeded, the tool displays a file descriptor limit error. You can run the command again using the -p &lt;number> parameter to reduce the maximum number of parallel uploads. The default maximum number of parallel uploads is 96.
+一部のシステムでは、プロセスごとにファイル記述子の制限が適用されます。制限を超えると、ファイル記述子の制限エラーが表示されます。-p &lt;number> パラメーターを使用してコマンドを再度実行し、並列アップロードの最大数を減らすことができます。並列アップロードの既定の最大数は 96 です。
 
 	~$ azure vm image create mytestimage ./Sample.vhd -o windows -l "West US"
 	info:   Executing command vm image create
@@ -484,21 +484,21 @@ Some systems impose per-process file descriptor limits. If this limit is exceede
 	info:   http://myaccount.blob.core.azure.com/vm-images/Sample.vhd is uploaded successfully
 	info:   vm image create command OK
 
-##<a name="Commands_to_manage_your_Azure_virtual_machine_data_disks"></a>Commands to manage your Azure virtual machine data disks
+##<a name="Commands_to_manage_your_Azure_virtual_machine_data_disks"></a>Azure の仮想マシン データ ディスクの管理用コマンド
 
-Data disks are .vhd files in blob storage that can be used by a virtual machine. For more information about how data disks are deployed to blob storage, see the Azure technical diagram shown earlier. 
+データ ディスクとは、仮想マシンが使用できる、BLOB ストレージ内の .vhd ファイルのことです。BLOB ストレージへのデータ ディスクの展開に関する詳細については、前の Azure 技術解説図を参照してください。
 
-The commands for attaching data disks (azure vm disk attach and azure vm disk attach-new) assign a Logical Unit Number (LUN) to the attached data disk, as required by the SCSI protocol. The first data disk attached to a virtual machine is assigned LUN 0, the next is assigned LUN 1, and so on.
+データ ディスクの接続用コマンド (azure vm disk attach および azure vm disk attach-new) は、SCSI プロトコルで求められているように、接続されるデータ ディスクに論理ユニット番号 (LUN) を割り当てます。仮想マシンに接続されている最初のデータ ディスクには LUN 0、次のデータ ディスクには LUN 1 のように、順に割り当てられます。
 
-When you detach a data disk with the azure vm disk detach command, use the &lt;lun&gt; parameter to indicate which disk to detach. 
+azure vm disk detach コマンドでデータ ディスクを切断する場合、&lt;lun&gt; パラメーターを使用して、切断するディスクを指定します。
 
-<div class="dev-callout"><b>Note</b>
-   <p>Note that you should always detach data disks in reverse order, starting with the highest-numbered LUN that has been assigned. The Linux SCSI layer does not support detaching a lower-numbered LUN while a higher-numbered LUN is still attached. For example, you should not detach LUN 0 if LUN 1 is still attached.</p>
+<div class="dev-callout"><b>メモ</b>
+   <p>ディスクの切断は、必ず逆の順序で行ってください。割り当てられている LUN の番号が最大のものから切断していきます。Linux SCSI レイヤーでは、番号が大きい LUN が接続されている場合、それより小さい番号の LUN を切断することはできません。たとえば、LUN 1 が接続されていると、LUN 0 は切断できません。</p>
 </div>
 
 **vm disk show [options] &lt;name>**
 
-This command shows details about an Azure disk.
+このコマンドは、Azure ディスクの詳細を表示します。
 
 	~$ azure vm disk show anucentos-anucentos-0-20120524070008
 	info:   Executing command vm disk show
@@ -515,7 +515,7 @@ This command shows details about an Azure disk.
 
 **vm disk list [options] [vm-name]**
 
-This command lists Azure disks, or disks attached to a specified virtual machine. if it is run with a virtual machine name parameter, it returns all disks attached to the virtual machine. Lun 1 is created with the virtual machine, and any other listed disks are attached separately.
+このコマンドは、Azure ディスク、または特定の仮想マシンに接続されているディスクの一覧を表示します。仮想マシン名のパラメーターを指定して実行すると、その仮想マシンに接続されているすべてのディスクが返されます。Lun 1 がこの仮想マシンで作成されており、一覧上の他のディスクはすべて、個別に接続されています。
 
 	~$ azure vm disk list mycentos
 	info:   Executing command vm disk list
@@ -523,9 +523,9 @@ This command lists Azure disks, or disks attached to a specified virtual machine
 	data:   ---  --------  --------------------------------
 	data:   1    30        mycentos-cb39b8223b01f95c.vhd
 	data:   2    10        mycentos-e3f0d717950bb78d.vhd
-	info:   vm disk list command OK                                               
+	info:   vm disk list command OK
 
-Executing this command without a virtual machine name parameter returns all disks.
+仮想マシン名のパラメーターを指定せずに実行すると、すべてのディスクが返されます。
 
 	~$ azure vm disk list 
 	data:   Name                                        OS
@@ -537,39 +537,39 @@ Executing this command without a virtual machine name parameter returns all disk
 
 **vm disk delete [options] &lt;name>**
 
-This command deletes an Azure disk from a personal repository. The disk must be detached from the virtual machine before it is deleted.
+このコマンドは、Azure ディスクを個人用リポジトリから削除します。仮想マシンを削除する前に、接続されているディスクを削除する必要があります。
 
 	~$ azure vm disk delete mycentos-mycentos-2-20120525055052
 	info:   Executing command vm disk delete
-	info:   Disk deleted: mycentos-mycentos-2-20120525055052                  
+	info:   Disk deleted: mycentos-mycentos-2-20120525055052
 	info:   vm disk delete command OK
 
 **vm disk create &lt;name> [source-path]**
 
-This command uploads and registers an Azure disk. --blob-url, --location, or --affinity-group must be specified. If you use this command with [source-path], the .vhd file specified is uploaded and a new image is created. You can then attach this image to a virtual machine by using vm disk attach.
+このコマンドは、Azure ディスクをアップロードして登録します。--blob-url、--location、または --affinity-group を指定する必要があります。[source-path] と共に使用すると、指定した .vhd ファイルがアップロードされ、新しいイメージが作成されます。その後、vm disk attach を使用して、このイメージを仮想マシンに接続できます。
 
-Some systems impose per-process file descriptor limits. If this limit is exceeded, the tool displays a file descriptor limit error. You can run the command again using the -p &lt;number> parameter to reduce the maximum number of parallel uploads. The default maximum number of parallel uploads is 96. 
+一部のシステムでは、プロセスごとにファイル記述子の制限が適用されます。制限を超えると、ファイル記述子の制限エラーが表示されます。-p &lt;number> パラメーターを使用してコマンドを再度実行し、並列アップロードの最大数を減らすことができます。並列アップロードの既定の最大数は 96 です。
 
 	~$ azure vm disk create my-data-disk ~/test.vhd --location "Western US"
 	info:   Executing command vm disk create
-	info:   VHD size : 10 MB                                                       
+	info:   VHD size : 10 MB
 	info:   Uploading 10240.5 KB
-	Requested:100.0% Completed:100.0% Running:  81 Time:   11s Speed:   952 KB/s 
+	Requested:100.0% Completed:100.0% Running:  81 Time:   11s Speed:   952 KB/s
 	info:   http://account.blob.core.azure.com/disks/test.vhd is uploaded successfully
 	info:   vm disk create command OK
 
 **vm disk upload [options] &lt;source-path> &lt;blob-url> &lt;storage-account-key>**
 
-This command allows you to upload a vm disk
+このコマンドでは、VM ディスクをアップロードすることができます。
 
 	~$ azure vm disk upload "http://sourcestorage.blob.core.windows.net/vhds/sample.vhd" "http://destinationstorage.blob.core.windows.net/vhds/sample.vhd" "DESTINATIONSTORAGEACCOUNTKEY"
-	info:   Executing command vm disk upload                                                      
+	info:   Executing command vm disk upload
 	info:   Uploading 12351.5 KB
 	info:   vm disk upload command OK
 
 **vm disk attach &lt;vm-name> &lt;disk-image-name>**
 
-This command attaches an existing disk in blob storage to an existing virtual machine deployed in a cloud service.
+このコマンドは、BLOB ストレージ内の既存のディスクを、クラウド サービスに展開済みの仮想マシンに接続します。
 
 	~$ azure vm disk attach my-vm my-vm-my-vm-2-201242418259
 	info:   Executing command vm disk attach
@@ -577,27 +577,27 @@ This command attaches an existing disk in blob storage to an existing virtual ma
 
 **vm disk attach-new &lt;vm-name> &lt;size-in-gb> [blob-url]**
 
-This command attaches a data disk to an Azure virtual machine. In this example, 20 is the size of the new disk, in gigabytes, to be attached. You can optionally use a blob URL as the last argument to explicitly specify the target blob to create. If you do not specify a blob URL, a blob object will be automatically generated.
+このコマンドは、データ ディスクを Azure の仮想マシンに接続します。この例では、20 ギガバイドの新しいディスクを接続しています。必要に応じて、BLOB の URL を最後の引数として使用し、作成するターゲット BLOB を明示的に指定することもできます。BLOB の URL を指定しないと、BLOB オブジェクトが自動的に生成されます。
 
 	~$ azure vm disk attach-new nick-test36 20 http://nghinazz.blob.core.azure-preview.com/vhds/vmdisk1.vhd
 	info:   Executing command vm disk attach-new
-	info:   vm disk attach-new command OK  
+	info:   vm disk attach-new command OK
 
 **vm disk detach &lt;vm-name> &lt;lun>**
 
-This command detaches a data disk attached to an Azure virtual machine. &lt;lun> identifies the disk to be detached. To get a list of disks associated with a disk before you detach it, use vm disk-list &lt;vm-name>.
+このコマンドは、Azure の仮想マシンに接続されているデータ ディスクを切断します。&lt;lun> で、切断するディスクを指定します。切断する前に、関連付けられているディスクの一覧を表示するには、vm disk-list &lt;vm-name> を使用します。
 
 	~$ azure vm disk detach my-vm 2
 	info:   Executing command vm disk detach
 	info:   vm disk detach command OK
 
-##<a name="Commands_to_manage_your_Azure_cloud_services"></a>Commands to manage your Azure cloud services
+##<a name="Commands_to_manage_your_Azure_cloud_services"></a>Azure クラウド サービスの管理用コマンド
 
-Azure cloud services are applications and services hosted on web roles and worker roles. The following commands can be used to manage Azure cloud services.
+Azure クラウド サービスは、Web ロールや Worker ロールでホストされるアプリケーションおよびサービスです。Azure クラウド サービスの管理には、次のコマンドを使用できます。
 
 **service create [options] &lt;serviceName>**
 
-This command creates a new cloud service
+このコマンドは、新しいクラウド サービスを作成します。
 
 	~$ azure service create newservicemsopentech
 	info:    Executing command service create
@@ -616,7 +616,7 @@ This command creates a new cloud service
 
 **service show [options] &lt;serviceName>**
 
-This command shows the details of an Azure cloud service
+このコマンドは、Azure クラウド サービスの詳細を表示します。
 
 	~$ azure service show newservicemsopentech
 	info:    Executing command service show
@@ -632,11 +632,11 @@ This command shows the details of an Azure cloud service
 
 **service list [options]**
 
-This command lists Azure cloud services.
+このコマンドは、Azure クラウド サービスの一覧を表示します。
 
 	~$ azure service list
 	info:   Executing command service list
-	data:   Name         Status                                                    
+	data:   Name         Status
 	data:   -----------  -------
 	data:   service1     Created
 	data:   service2     Created
@@ -644,71 +644,71 @@ This command lists Azure cloud services.
 
 **service delete [options] &lt;name>**
 
-This command deletes an Azure cloud service.
+このコマンドは、Azure クラウド サービスを削除します。
 
 	~$ azure cloud-service delete myservice
-	info:   Executing command cloud-service delete myservice 
+	info:   Executing command cloud-service delete myservice
 	info:   cloud-service delete command OK
 
 
-##<a name="Commands_to_manage_your_Azure_certificates"></a>Commands to manage your Azure certificates
+##<a name="Commands_to_manage_your_Azure_certificates"></a>Azure 証明書の管理用コマンド
 
-Azure certificates are cerificates (that is, SSL certificates) connected to your Azure account.
+Azure 証明書は、Azure アカウントに接続される証明書です。
 
 **service cert list [options]**
 
-This command lists Azure certificates.
+このコマンドは、Azure 証明書の一覧を表示します。
 
 	~$ azure service cert list
 	info:   Executing command service cert list
-	+ Fetching cloud services                                                      
-	+ Fetching certificates                                                        
+	+ Fetching cloud services
+	+ Fetching certificates
 	data:   Service   Thumbprint                                Algorithm
 	data:   --------  ----------------------------------------  ---------
-	data:   myservice  262DBF95B5E61375FA27F1E74AC7D9EAE842916C  sha1     
+	data:   myservice  262DBF95B5E61375FA27F1E74AC7D9EAE842916C  sha1
 	info:   service cert list command OK
 
 **service cert create &lt;dns-prefix> &lt;file> [password]**
 
-This command uploads a certificate. Leave the password prompt blank for certificates that are not password protected.
+このコマンドは、証明書をアップロードします。パスワードで保護されていない証明書の場合は、パスワードの入力ダイアログを空白のままにします。
 
 	~$ azure service cert create nghinazz ~/publishSet.pfx
 	info:   Executing command service cert create
-	Cert password: 
-	+ Creating certificate                                                         
+	Cert password:
+	+ Creating certificate
 	info:   service cert create command OK
 
 **service cert delete [options] &lt;thumbprint>**
 
-This command deletes a certificate.
+このコマンドは、証明書を削除します。
 
 	~$ azure service cert delete 262DBF95B5E61375FA27F1E74AC7D9EAE842916C
 	info:   Executing command service cert delete
-	+ Deleting certificate                                                         
+	+ Deleting certificate
 	info:   nghinazz : cert deleted
 	info:   service cert delete command OK
 
 
-##<a name="Commands_to_manage_your_web_sites"></a>Commands to manage your web sites
+##<a name="Commands_to_manage_your_web_sites"></a>Web サイトの管理用コマンド
 
-An Azure web site is a web configuration accessible by URI. Web sites are hosted in virtual machines, but you do not need to think about the details of creating and deploying the virtual machine yourself. Those details are handled for you by Azure.
+Azure の Web サイトは、URI でアクセスできる Web 構成です。Web サイトは仮想マシンでホストされますが、仮想マシン自体の作成と展開については詳細を考慮する必要はありません。これらの詳細は、Azure によって処理されます。
 
 **site list [options]**
 
-This command lists your web sites.
+このコマンドは、Web サイトの一覧を表示します。
 
 	~$ azure site list
 	info:   Executing command site list
-	data:   Name            State    Host names                                        
+	data:   Name            State    Host names
 	data:   --------------  -------  --------------------------------------------------
-	data:   mongosite       Running  mongosite.antdf0.antares.windows.net     
-	data:   myphpsite       Running  myphpsite.antdf0.antares.windows.net     
+	data:   mongosite       Running  mongosite.antdf0.antares.windows.net
+	data:   myphpsite       Running  myphpsite.antdf0.antares.windows.net
 	data:   mydrupalsite36  Running  mydrupalsite36.antdf0.antares.windows.net
 	info:   site list command OK
 
 **site set [options] [name]**
 
-This command will set configuration options for your web site [name]
+このコマンドは、Web サイト [name] の構成オプションを設定します。
 
 	~$ azure site set
 	info:    Executing command site set
@@ -719,7 +719,7 @@ This command will set configuration options for your web site [name]
 
 **site deploymentscript [options]**
 
-This command will generate a custom deployment script
+このコマンドは、カスタム配置スクリプトを生成します。
 
 	~$ azure site deploymentscript --node
 	info:    Executing command site deploymentscript
@@ -729,7 +729,7 @@ This command will generate a custom deployment script
 
 **site create [options] [name]**
 
-This command creates a new web site and local directory. 
+このコマンドは、新しい Web サイトとローカル ディレクトリを作成します。
 
 	~$ azure site create mysite
 	info:   Executing command site create
@@ -740,13 +740,13 @@ This command creates a new web site and local directory.
 	info:   Repository initialized
 	info:   site create command OK
 
-<div class="dev-callout"><b>Note</b>
-   <p>The site name must be unique. You cannot create a site with the same DNS name as an existing site.</p>
+<div class="dev-callout"><b>メモ</b>
+   <p>サイトの名前は一意に指定する必要があります。既存のサイトと同じ DNS 名のサイトは作成できません。</p>
 </div>
 
 **site portal [options] [name]**
 
-This command opens the portal in a browser so you can manage your web sites.
+このコマンドは、ブラウザーでポータルを開きます。開いたポータルから、Web サイトを管理できます。
 
 	~$ azure site portal mysite
 	info:   Executing command site portal
@@ -755,7 +755,7 @@ This command opens the portal in a browser so you can manage your web sites.
 
 **site browse [options] [name]**
 
-This command opens your web site in a browser.
+このコマンドは、Web サイトをブラウザーで開きます。
 
 	~$ azure site browse mysite
 	info:   Executing command site browse
@@ -764,7 +764,7 @@ This command opens your web site in a browser.
 
 **site show [options] [name]**
 
-This command shows details for a web site.
+このコマンドは、Web サイトの詳細を表示します。
 
 	~$ azure site show mysite
 	info:   Executing command site show
@@ -794,7 +794,7 @@ This command shows details for a web site.
 
 **site delete [options] [name]**
 
-This command deletes a web site.
+このコマンドは、Web サイトを削除します。
 
 	~$ azure site delete mysite
 	info:   Executing command site delete
@@ -804,7 +804,7 @@ This command deletes a web site.
 
 **site start [options] [name]**
 
-This command starts a web site.
+このコマンドは、Web サイトを開始します。
 
 	~$ azure site start mysite
 	info:   Executing command site start
@@ -814,7 +814,7 @@ This command starts a web site.
 
 **site stop [options] [name]**
 
-This command stops a web site.
+このコマンドは、Web サイトを停止します。
 
 	~$ azure site stop mysite
 	info:   Executing command site stop
@@ -824,7 +824,7 @@ This command stops a web site.
 
 **site location list [options]**
 
-This command lists your Web Site locations
+このコマンドは、Web サイトの場所の一覧を表示します。
 
 	~$ azure site location list
 	info:    Executing command site location list
@@ -839,11 +839,11 @@ This command lists your Web Site locations
 	data:    East US
 	info:    site location list command OK
 
-###Commands to manage your Web Site application settings
+###Web サイトのアプリケーション設定の管理用コマンド
 
 **site appsetting list [options] [name]**
 
-This command lists the app setting added to the website
+このコマンドは Web サイトに追加されたアプリケーション設定の一覧を表示します。
 
 	~$ azure site appsetting list
 	info:    Executing command site appsetting list
@@ -857,7 +857,7 @@ This command lists the app setting added to the website
 
 **site appsetting add [options] &lt;keyvaluepair> [name]**
 
-This command adds an app setting to your website as a key value pair
+このコマンドは、アプリケーション設定をキーと値のペアとして Web サイトに追加します。
 
 	~$ azure site appsetting add test=value
 	info:    Executing command site appsetting add
@@ -869,7 +869,7 @@ This command adds an app setting to your website as a key value pair
 
 **site appsetting delete [options] &lt;key> [name]**
 
-This command delete the specified app setting from the website
+このコマンドは、指定されたアプリケーション設定を Web サイトから削除します。
 
 	~$ azure site appsetting delete test
 	info:    Executing command site appsetting delete
@@ -882,7 +882,7 @@ This command delete the specified app setting from the website
 
 **site appsetting show [options] &lt;key> [name]**
 
-This command displays details of the specified app setting
+このコマンドは、指定されたアプリケーション設定の詳細を表示します。
 
 	~$ azure site appsetting show test
 	info:    Executing command site appsetting show
@@ -892,11 +892,11 @@ This command displays details of the specified app setting
 	data:    Value:  value
 	info:    site appsetting show command OK
 
-###Commands to manage your Web Site certificates
+###Web サイト証明書の管理用コマンド
 
 **site cert list [options] [name]**
 
-This command displays a list of the website certs
+このコマンドは、Web サイト証明書の一覧を表示します。
 
 	~$ azure site cert list
 	info:    Executing command site cert list
@@ -916,7 +916,7 @@ This command displays a list of the website certs
 
 **site cert show [options] &lt;thumbprint> [name]**
 
-This command shows the cert details
+このコマンドは、証明書の詳細を表示します。
 
 	~$ azure site cert show CE1CD65852B38DC32001C2E0E8F7A526A29B541F
 	info:    Executing command site cert show
@@ -932,7 +932,7 @@ This command shows the cert details
 	data:    Certificate thumbprint CE1CD65852B38DC32001C2E0E8F7A526A29B541F
 	info:    site cert show command OK
 
-###Commands to manage your Web Site connection strings
+###Web サイトの接続文字列の管理用コマンド
 
 **site connectionstring list [options] [name]**
 
@@ -942,7 +942,7 @@ This command shows the cert details
 
 **site connectionstring show [options] &lt;connectionname> [name]**
 
-###Commands to manage your Web Site default documents
+###Web サイトの既定のドキュメントの管理用コマンド
 
 **site defaultdocument list [options] [name]**
 
@@ -950,7 +950,7 @@ This command shows the cert details
 
 **site defaultdocument delete [options] &lt;document> [name]**
 
-###Commands to manage your Web Site deployments
+###Web サイトの展開の管理用コマンド
 
 **site deployment list [options] [name]**
 
@@ -962,7 +962,7 @@ This command shows the cert details
 
 **site deployment user set [options] [username] [pass]**
 
-###Commands to manage your Web Site domains
+###Web サイト ドメインの管理用コマンド
 
 **site domain list [options] [name]**
 
@@ -970,7 +970,7 @@ This command shows the cert details
 
 **site domain delete [options] &lt;dn> [name]**
 
-###Commands to manage your Web Site handler mappings
+###Web サイトのハンドラー マッピングの管理用コマンド
 
 **site handler list [options] [name]**
 
@@ -978,11 +978,11 @@ This command shows the cert details
 
 **site handler delete [options] &lt;extension> [name]**
 
-###Commands to manage your Web Site diagnostics
+###Web サイト診断の管理用コマンド
 
 **site log download [options] [name]**
 
-Download a .zip file of your website diagnostics
+Web サイト診断の .zip ファイルをダウンロードします。
 
 	~$ azure site log download
 	info:    Executing command site log download
@@ -994,7 +994,7 @@ Download a .zip file of your website diagnostics
 
 **site log tail [options] [name]**
 
-This command connects your terminal to the log-streaming service
+このコマンドは、ターミナルをログ ストリーミング サービスに接続します。
 
 	~$ azure site log tail
 	info:    Executing command site log tail
@@ -1005,7 +1005,7 @@ This command connects your terminal to the log-streaming service
 
 **site log set [options] [name]**
 
-This command configures the diagnistic options
+このコマンドは、診断オプションを構成します。
 
 	~$ azure site log set -a
 	info:    Executing command site log set
@@ -1022,7 +1022,7 @@ This command configures the diagnistic options
 	+ Updating diagnostic settings
 	info:    site log set command OK
 
-###Commands to manage your Web Site repositories
+###Web サイト リポジトリの管理用コマンド
 
 **site repository branch [options] &lt;branch> [name]**
 
@@ -1030,36 +1030,36 @@ This command configures the diagnistic options
 
 **site repository sync [options] [name]**
 
-###Commands to manage your Web Site scaling
+###Web サイトの規模設定の管理用コマンド
 
 **site scale mode [options] &lt;mode> [name]**
 
 **site scale instances [options] &lt;instances> [name]**
 
 
-##<a name="Commands_to_manage_mobile_services"></a>Commands to manage Azure Mobile Services
+##<a name="Commands_to_manage_mobile_services"></a>Azure のモバイル サービスの管理用コマンド
 
-Azure Mobile Services brings together a set of Azure services that enable backend capabilities for your apps. Mobile Services commands are divided into the following categories:
+Azure のモバイル サービスは、アプリケーションのバックエンド機能を有効にする Azure サービスのセットです。モバイル サービスのコマンドは以下のように分類されます。
 
-+ [Commands to manage mobile service instances](#Mobile_Services)
-+ [Commands to manage mobile service configuration](#Mobile_Configuration)
-+ [Commands to manage mobile service tables](#Mobile_Tables)
-+ [Commands to manage mobile service scripts](#Mobile_Scripts)
-+ [Commands to manage scheduled jobs](#Mobile_Jobs)
-+ [Commands to scale a mobile service](#Mobile_Scale)
++ [モバイル サービス インスタンスの管理用コマンド](#Mobile_Services)
++ [モバイル サービス構成の管理用コマンド](#Mobile_Configuration)
++ [モバイル サービス テーブルの管理用コマンド](#Mobile_Tables)
++ [モバイル サービス スクリプトの管理用コマンド](#Mobile_Scripts)
++ [スケジュールされたジョブの管理用コマンド](#Mobile_Jobs)
++ [モバイル サービスの規模設定用コマンド](#Mobile_Scale)
 
-The following options apply to most Mobile Services commands:
+以下のオプションはほとんどのモバイル サービス用のコマンドで使用できます。
 
-+ **-h** or **--help**: Display output usage information.
-+ **-s `<id>`** or **--subscription `<id>`**: Use a specific subscription, specified as `<id>`.
-+ **-v** or **--verbose**: Write verbose output.
-+ **--json**: Write JSON output.
++ **-h** または **--help**: 出力の使用法を表示します。
++ **-s `<id>`** または **--subscription `<id>`**: `<id>` で指定された特定のサブスクリプションを使用します。
++ **-v** または **--verbose**: 詳細な出力を書き込みます。
++ **--json**: JSON の出力を書き込みます。
 
-###<a name="Mobile_Services"></a>Commands to manage mobile service instances
+###<a name="Mobile_Services"></a>モバイル サービス インスタンスの管理用コマンド
 
 **mobile locations [options]**
 
-This command lists geographic locations supported by Mobile Services.
+このコマンドは、モバイル サービスがサポートする場所の一覧を表示します。
 
 	~$ azure mobile locations
 	info:    Executing command mobile locations
@@ -1069,7 +1069,7 @@ This command lists geographic locations supported by Mobile Services.
 
 **mobile create [options] [servicename] [sqlAdminUsername] [sqlAdminPassword]**
 
-This command creates a mobile service along with a SQL Database and server.
+このコマンドは、モバイル サービスを SQL データベースおよびサーバーと共に作成します。
 
 	~$ azure mobile create todolist your_login_name Secure$Password
 	info:    Executing command mobile create
@@ -1080,16 +1080,16 @@ This command creates a mobile service along with a SQL Database and server.
 	info:    SQL server (e96ean1c6v) state: ProvisionConfigured
 	info:    mobile create command OK
 
-This command supports the following additional options:
+このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-r `<sqlServer>`**  or **--sqlServer `<sqlServer>`**:  Use an existing SQL Database server, specified as `<sqlServer>`.
-+ **-d `<sqlDb>`** or **--sqlDb `<sqlDb>`**: Use existing SQL database, specified as `<sqlDb>`.
-+ **-l `<location>`** or **--location `<location>`**: Create the service in a specific location, specified as `<location>`. Run azure mobile locations to get available locations.	
-+ **--sqlLocation `<location>`**: Create the SQL server in a specific `<location>`; defaults to the location of the mobile service.
++ **-r `<sqlServer>`** または **--sqlServer `<sqlServer>`**: `<sqlServer>` で指定された既存の SQL データベース サーバーを使用します。
++ **-d `<sqlDb>`** または **--sqlDb `<sqlDb>`**: `<sqlDb>` で指定された既存の SQL データベースを使用します。
++ **-l `<location>`** または **--location `<location>`**: `<location>` で指定された特定の場所にサービスを作成します。利用可能な場所の一覧を取得するには、azure mobile locations を実行します。	
++ **--sqlLocation `<location>`**: `<location>` の場所に SQL Server を作成します。この場所がモバイル サービスの既定の場所になります。
 
 **mobile delete [options] [servicename]**
 
-This command deletes a mobile service along with its SQL Database and server.
+このコマンドは、モバイル サービスを SQL データベースおよびサーバーと共に削除します。
 
 	~$ azure mobile delete todolist -a -q
 	info:    Executing command mobile delete
@@ -1104,15 +1104,15 @@ This command deletes a mobile service along with its SQL Database and server.
 	info:    Deleted mobile application
 	info:    mobile delete command OK
 
-This command supports the following additional options:
+このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-d** or **--deleteData**: Delete all data from this mobile service from the database.
-+ **-a** or **--deleteAll**: Delete the SQL Database and server.
-+ **-q or **--quiet**: Do not prompt for confirmation. Use this option in automated scripts.
++ **-d** または **--deleteData**: データベースからこのモバイル サービスのデータをすべて削除します。
++ **-a** または **--deleteAll**: SQL データベースとサーバーを削除します。
++ **-q または **--quiet**: 確認のダイアログを表示しません。このオプションは自動スクリプトに使用します。
 
 **mobile list [options]**
 
-This command lists your mobile services.
+このコマンドは、モバイル サービスの一覧を表示します。
 
 	~$ azure mobile list
 	info:    Executing command mobile list
@@ -1124,7 +1124,7 @@ This command lists your mobile services.
 
 **mobile show [options] [servicename]**
 
-This command displays details about a mobile service.
+このコマンドは、モバイル サービスの詳細を表示します。
 
 	~$ azure mobile show todolist
 	info:    Executing command mobile show
@@ -1150,7 +1150,7 @@ This command displays details about a mobile service.
 
 **mobile restart [options] [servicename]**
 
-This command restarts a mobile service instance.
+モバイル サービス インスタンスを再起動します。
 
 	~$ azure mobile restart todolist
 	info:    Executing command mobile restart
@@ -1160,7 +1160,7 @@ This command restarts a mobile service instance.
 
 **mobile log [options] [servicename]**
 
-This command returns mobile service logs, filtering out all log types but `error`.
+このコマンドは、`error` 以外のすべての種類のログをフィルターで除いたモバイル サービス ログを返します。
 
 	~$ azure mobile log todolist -t error
 	info:    Executing command mobile log
@@ -1172,37 +1172,37 @@ This command returns mobile service logs, filtering out all log types but `error
 	data:
 	info:    mobile log command OK
 
-This command supports the following additional options:
+このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-r `<query>`** or **--query `<query>`**: Executes the specified log query.
-+ **-t `<type>`** or **--type `<type>`**:  Filter the returned logs by entry `<type>`, which can be `information`, `warning`, or `error`.
-+ **-k `<skip>`** or **--skip `<skip>`**: Skips the number of rows specified by `<skip>`.
-+ **-p `<top>`** or **--top `<top>`**: Returns a specific number of rows, specified by `<top>`.
++ **-r `<query>`** または **--query `<query>`**: 指定されたログ クエリを実行します。
++ **-t `<type>`** または **--type `<type>`**: 返されたログをエントリ `<type>` によってフィルター処理します。`information`、`warning`、または `error` を指定できます。
++ **-k `<skip>`** または **--skip `<skip>`**: `<skip>` で指定された数の行をスキップします。
++ **-p `<top>`** または **--top `<top>`**: `<top>` で指定された数の行を返します。
 
-<div class="dev-callout"><b>Note</b>
-   <p>The **--query** parameter takes precedence over **--type**, **--skip**, and **--top**.</p>
+<div class="dev-callout"><b>メモ</b>
+   <p>**--query** パラメーターが **--type**、**--skip**、および **--top** よりも優先されます。</p>
 </div>
 
 **mobile key regenerate [options] [servicename] [type]**
 
-This command regenerates the mobile service application key.
+このコマンドは、モバイル サービス アプリケーション キーを再生成します。
 
 	~$ azure mobile key regenerate todolist application
 	info:    Executing command mobile key regenerate
 	info:    New application key is SmLorAWVfslMcOKWSsuJvuzdJkfUpt40
 	info:    mobile key regenerate command OK
 
-Key types are `master` and `application`.
+キーの種類は `master` と `application` です。
 
-<div class="dev-callout"><b>Note</b>
-   <p>When you regenerate keys, clients that use the old key may be unable to access your mobile service. When you regenerate the application key, you should update your app with the new key value. </p>
+<div class="dev-callout"><b>メモ</b>
+   <p>キーを再生成すると、古いキーを使用するクライアントはモバイル サービスにアクセスできなくなります。アプリケーション キーを再生成する場合、アプリケーションを新しいキーで更新する必要があります。</p>
 </div> 
 
-###<a name="Mobile_Configuration"></a>Commands to manage mobile service configuration
+###<a name="Mobile_Configuration"></a>モバイル サービス構成の管理用コマンド
 
 **mobile config list [options] [servicename]**
 
-This command lists configuration options for a mobile service.
+このコマンドは、モバイル サービスの構成オプションの一覧を表示します。
 
 	~$ azure mobile config list todolist
 	info:    Executing command mobile config list
@@ -1224,7 +1224,7 @@ This command lists configuration options for a mobile service.
 
 **mobile config get [options] [servicename] [key]**
 
-This command gets a specific configuration option for a mobile service, in this case dynamic schema.
+このコマンドは、モバイル サービスの特定の構成オプション (この例では動的スキーマ) を取得します。
 
 	~$ azure mobile config get todolist dynamicSchemaEnabled
 	info:    Executing command mobile config get
@@ -1233,18 +1233,18 @@ This command gets a specific configuration option for a mobile service, in this 
 
 **mobile config set [options] [servicename] [key] [value]**
 
-This command sets a specific configuration option for a mobile service, in this case dynamic schema.
+このコマンドは、モバイル サービスの特定の構成オプション (この例では動的スキーマ) を設定します。
 
 	~$ azure mobile config set todolist dynamicSchemaEnabled false
 	info:    Executing command mobile config set
 	info:    mobile config set command OK
 
 
-###<a name="Mobile_Tables"></a>Commands to manage mobile service tables
+###<a name="Mobile_Tables"></a>モバイル サービス テーブルの管理用コマンド
 
 **mobile table list [options] [servicename]**
 
-This command lists all tables in your mobile service.
+このコマンドは、モバイル サービスの全テーブルの一覧を表示します。
 
 	~$azure mobile table list todolist
 	info:    Executing command mobile table list
@@ -1256,7 +1256,7 @@ This command lists all tables in your mobile service.
 
 **mobile table show [options] [servicename] [tablename]**
 
-This command shows returns details about a specific table.
+このコマンドは、特定のテーブルの詳細を表示します。
 
 	~$azure mobile table show todolist
 	info:    Executing command mobile table show
@@ -1280,20 +1280,20 @@ This command shows returns details about a specific table.
 
 **mobile table create [options] [servicename] [tablename]**
 
-This command creates a table.
+このコマンドは、テーブルを作成します。
 
 	~$azure mobile table create todolist Channels
 	info:    Executing command mobile table create
 	+ Creating table
 	info:    mobile table create command OK
 
-This command supports the following additional option:
+このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-p `<permissions>`** or **--permissions `<permissions>`**: Comma-delimited list of `<operation>`=`<permission>` pairs, where `<operation>` is `insert`, `read`, `update`, or `delete` and `<permissions>` is `public`, `application` (default), `user`, or `admin`.
++ **-p `<permissions>`** または **--permissions `<permissions>`**: `<operation>`=`<permission>` のペアのコンマ区切りリストです。`<operation>` には `insert`、`read`、`update`、または `delete` を、`<permissions>` には `public`、`application` (既定)、`user`、または `admin` をそれぞれ指定できます。
 
 **mobile data read [options] [servicename] [tablename] [query]**
 
-This command reads data from a table.
+このコマンドは、データをテーブルから読み取ります。
 
 	~$azure mobile data read todolist TodoItem
 	info:    Executing command mobile data read
@@ -1305,15 +1305,15 @@ This command reads data from a table.
 	data:    4   item #4  true
 	info:    mobile data read command OK
 
-This command supports the following additional options:
+このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-k `<skip>`** or **--skip `<skip>`**: Skips the number of rows specified by `<skip>`.
-+ **-t `<top>`** or **--top `<top>`**: Returns a specific number of rows, specified by `<top>`.
-+ **-l** or **--list**: Returns data in a list format.
++ **-k `<skip>`** または **--skip `<skip>`**: `<skip>` で指定された数の行をスキップします。
++ **-t `<top>`** または **--top `<top>`**: `<top>` で指定された数の行を返します。
++ **-l** または **--list**: 表形式でデータを返します。
 
 **mobile table update [options] [servicename] [tablename]**
 
-This command changes delete permissions on a table to administrators only.
+このコマンドは、テーブルの削除権限を管理者のみが持つように変更します。
 
 	~$azure mobile table update todolist Channels -p delete=admin
 	info:    Executing command mobile table update
@@ -1321,17 +1321,17 @@ This command changes delete permissions on a table to administrators only.
 	info:    Updated permissions
 	info:    mobile table update command OK
 
-This command supports the following additional options:
+このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-p `<permissions>`** or **--permissions `<permissions>`**: Comma-delimited list of `<operation>`=`<permission>` pairs, where `<operation>` is `insert`, `read`, `update`, or `delete` and `<permissions>` is `public`, `application` (default), `user`, or `admin`.
-+ **--deleteColumn `<columns>`**: Comma-delimited list of columns to delete, as `<columns>`.
-+ **-q** or **--quiet**: Deletes columns without prompting for confirmation.
-+ **--addIndex `<columns>`**: Comma-delimited list of columns to include in the index.
-+ **--deleteIndex `<columns>`**: Comma-delimited list of columns to exclude from the index.
++ **-p `<permissions>`** または **--permissions `<permissions>`**: `<operation>`=`<permission>` のペアのコンマ区切りリストです。`<operation>` には `insert`、`read`、`update`、または `delete` を、`<permissions>` には `public`、`application` (既定)、`user`、または `admin` をそれぞれ指定できます。
++ **--deleteColumn `<columns>`**: 削除する列のコンマ区切りリスト。`<columns>` として指定します。
++ **-q** または **--quiet**: 確認メッセージを表示せずに列を削除します。
++ **--addIndex `<columns>`**: インデックスに含める列のコンマ区切りリスト。
++ **--deleteIndex `<columns>`**: インデックスから除外する列のコンマ区切りリスト。
 
 **mobile table delete [options] [servicename] [tablename]**
 
-This command deletes a table.
+このコマンドは、テーブルを削除します。
 
 	~$azure mobile table delete todolist Channels
 	info:    Executing command mobile table delete
@@ -1339,27 +1339,27 @@ This command deletes a table.
 	+ Deleting table
 	info:    mobile table delete command OK
 
-Specify the -q parameter to delete the table without confirmation. Do this to prevent blocking of automation scripts.
+確認なしでテーブルを削除するには、-q パラメーターを指定します。このパラメーターは、自動スクリプトがブロックされるのを防ぐために指定します。
 
 **mobile data truncate [options] [servicename] [tablename]**
 
-This commands removes all rows of data from the table.
+このコマンドは、テーブルからすべてのデータの行を削除します。
 
 	~$azure mobile data truncate todolist TodoItem
 	info:    Executing command mobile data truncate
 	info:    There are 7 data rows in the table.
-	Do you really want to delete all data from the table? (y/n): y
+	Do you really want to delete all data from the table?(y/n): y
 	info:    Deleted 7 rows.
 	info:    mobile data truncate command OK
 
 
-###<a name="Mobile_Scripts"></a>Commands to manage scripts
+###<a name="Mobile_Scripts"></a>スクリプトの管理用コマンド
 
-Commands in this section are used to manage the server scripts that belong to a mobile service. For more information, see [Work with server scripts in Mobile Services](http://www.windowsazure.com/en-us/develop/mobile/how-to-guides/work-with-server-scripts/).
+このセクションのコマンドは、モバイル サービスに属するサーバー スクリプトの管理に使用します。詳細については、[モバイル サービスのサーバー スクリプトの操作に関するページ](http://www.windowsazure.com/ja-jp/develop/mobile/how-to-guides/work-with-server-scripts/)を参照してください。
 
 **mobile script list [options] [servicename]**
 
-This command lists registered scripts, including both table and scheduler scripts.
+このコマンドは、テーブル スクリプトとスケジューラ スクリプト両方を含め、登録済みのスクリプトの一覧を表示します。
 
 	~$azure mobile script list todolist
 	info:    Executing command mobile script list
@@ -1379,45 +1379,45 @@ This command lists registered scripts, including both table and scheduler script
 
 **mobile script upload [options] [servicename] [scriptname]**
 
-This command uploads a new script named `todoitem.insert.js` from the `table` subfolder.
+このコマンドは、`todoitem.insert.js` という新しいスクリプトを、`table` サブフォルダーからアップロードします。
 
 	~$azure mobile script upload todolist table/todoitem.insert.js
 	info:    Executing command mobile script upload
 	info:    mobile script upload command OK
 
-The name of the file must be composed from the table and operation names, and it must be located in the table subfolder relative to the location where the command is executed. You can also use the **-f `<file>`** or **--file `<file>`** parameter to specify a different filename and path to the file that contains the script to register.
+ファイル名はテーブル名と操作名で構成し、ファイルは、コマンドを実行する場所の table サブフォルダーに配置する必要があります。**-f `<file>`** パラメーターまたは **--file `<file>`** パラメーターを使用して、別のファイル名を指定したり、登録するスクリプトを含んでいるファイルへのパスを指定したりすることもできます。
 
 **mobile script download [options] [servicename] [scriptname]**
 
-This command downloads the insert script from the TodoItem table to a file named `todoitem.insert.js` in the `table` subfolder.
+このコマンドは、挿入スクリプトを、TodoItem テーブルから `table` サブフォルダーの `todoitem.insert.js` というファイルにダウンロードします。
 
 	~$azure mobile script download todolist table/todoitem.insert.js
 	info:    Executing command mobile script download
 	info:    Saved script to ./table/todoitem.insert.js
 	info:    mobile script download command OK
 
-This command supports the following additional options:
+このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-p `<path>`** or **--path `<path>`**: The location in the file in which to save the script, where the current working directory is the default.
-+ **-f `<file>`** or **--file `<file>`**: The name of the file in which to save the script.
-+ **-o** or **--override**: Overwrite an existing file.
-+ **-c** or **--console**: Write the script to the console instead of to a file.
++ **-p `<path>`** または **--path `<path>`**: スクリプトを保存するファイル内の場所。既定では、現在の作業ディレクトリです。
++ **-f `<file>`** または **--file `<file>`**: スクリプトを保存するファイルの名前。
++ **-o** or **--override**: 既存のファイルを上書きします。
++ **-c** or **--console**: ファイルではなくコンソールにスクリプトを書き込みます。
 
 **mobile script delete [options] [servicename] [scriptname]**
 
-This command removes the existing insert script from the TodoItem table.
+このコマンドは、既存の挿入スクリプトを TodoItem テーブルから削除します。
 
 	~$azure mobile script delete todolist table/todoitem.insert.js
 	info:    Executing command mobile script delete
 	info:    mobile script delete command OK
 
-###<a name="Mobile_Jobs"></a>Commands to manage scheduled jobs
+###<a name="Mobile_Jobs"></a>スケジュールされたジョブの管理用コマンド
 
-Commands in this section are used to manage scheduled jobs that belong to a mobile service. For more information, see [Schedule jobs](http://msdn.microsoft.com/en-us/library/windowsazure/jj860528.aspx).
+このセクションのコマンドは、モバイル サービスに属するスケジュールされたジョブの管理に使用します。詳細については、「[ジョブのスケジュール](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj860528.aspx)」を参照してください。
 
 **mobile job list [options] [servicename]**
 
-This command lists scheduled jobs.
+このコマンドはスケジュールされたジョブを一覧します。
 
 	~$azure mobile job list todolist
 	info:    Executing command mobile job list
@@ -1430,68 +1430,68 @@ This command lists scheduled jobs.
 
 **mobile job create [options] [servicename] [jobname]**
 
-This command creates a new job named `getUpdates` that is scheduled to run hourly.
+このコマンドは 1 時間ごとに実行するようにスケジュールされた `getUpdates` という名前の新しいジョブを作成します。
 
 	~$azure mobile job create -i 1 -u hour todolist getUpdates 
 	info:    Executing command mobile job create
-	info:    Job was created in disabled state. You can enable the job using the 'azure mobile job update' command.
+	info:    Job was created in disabled state.You can enable the job using the 'azure mobile job update' command.
 	info:    You can manipulate the scheduled job script using the 'azure mobile script' command.
 	info:    mobile job create command OK
 
-This command supports the following additional options:
+このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-i `<number>`** or **--interval `<number>`**: The job interval, as an integer; the default value is `15`.
-+ **-u `<unit>`** or **--intervalUnit `<unit>`**: The unit for the _interval_, which can be one of the following values: 
-	+ **minute** (default)
++ **-i `<number>`** または **--interval `<number>`**: このジョブの実行間隔を示す整数値で、既定値は `15` です。
++ **-u `<unit>`** または **--intervalUnit `<unit>`**: _interval_ の単位で、次の値のいずれか 1 つです。
+	+ **minute** (既定)
 	+ **hour**
 	+ **day**
-	+ **month** 
-	+ **none** (on-demand jobs)
-+ **-t `<time>`** **--startTime `<time>`** The start time of the first run for the script, in ISO format; the default value is `now`.
+	+ **month**
+	+ **none** (オンデマンド ジョブ)
++ **-t `<time>`** **--startTime `<time>`** ISO 形式によるスクリプトの最初の実行開始時刻で、既定値は `now` です。
 
-<div class="dev-callout"><b>Note</b>
-   <p>New jobs are created in a disabled state because a script must still be uploaded. Use the <strong>mobile script upload</strong> command to upload a script and the <strong>mobile job update</strong> command to enable the job.</p>
+<div class="dev-callout"><b>メモ</b>
+   <p>スクリプトをアップロードする必要があるため、新しいジョブは無効な状態で作成されます。<strong>mobile script upload</strong> コマンドを使用してスクリプトをアップロードして、<strong>mobile job update</strong> コマンドでジョブを有効にします。</p>
 </div> 
 
 **mobile job update [options] [servicename] [jobname]**
 
-The following command enables the disabled `getUpdates` job.
+次のコマンドは、無効な状態の `getUpdates` ジョブを有効にします。
 
 	~$azure mobile job update -a enabled todolist getUpdates 
 	info:    Executing command mobile job update
 	info:    mobile job update command OK
 
-This command supports the following additional options:
+このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-i `<number>`** or **--interval `<number>`**: The job interval, as an integer; the default value is `15`.
-+ **-u `<unit>`** or **--intervalUnit `<unit>`**: The unit for the _interval_, which can be one of the following values: 
-	+ **minute** (default)
++ **-i `<number>`** または **--interval `<number>`**: このジョブの実行間隔を示す整数値で、既定値は `15` です。
++ **-u `<unit>`** または **--intervalUnit `<unit>`**: _interval_ の単位で、次の値のいずれか 1 つです。
+	+ **minute** (既定)
 	+ **hour**
 	+ **day**
-	+ **month** 
-	+ **none** (on-demand jobs)
-+ **-t `<time>`** **--startTime `<time>`** The start time of the first run for the script, in ISO format; the default value is `now`.
-+ **-a `<status>`** or **--status `<status>`**: The job status, which can be either `enabled` or `disabled`.
+	+ **month**
+	+ **none** (オンデマンド ジョブ)
++ **-t `<time>`** **--startTime `<time>`** ISO 形式によるスクリプトの最初の実行開始時刻で、既定値は `now` です。
++ **-a `<status>`** または **--status `<status>`**: `enabled` または `disabled` で指定されるジョブの状態です。
 
 **mobile job delete [options] [servicename] [jobname]**
 
-This command removes the getUpdates scheduled job from the TodoList server.
+このコマンドは、スケジュールされたジョブである getUpdates を TodoList サーバーから削除します。
 
 	~$azure mobile job delete todolist getUpdates
 	info:    Executing command mobile job delete
 	info:    mobile job delete command OK
 
-<div class="dev-callout"><b>Note</b>
-   <p>Deleting a job also deletes the uploaded script.</p>
+<div class="dev-callout"><b>メモ</b>
+   <p>ジョブを削除すると、アップロードされたスクリプトも削除されます。</p>
 </div> 
 
-###<a name="Mobile_Scale"></a>Commands to scale a mobile service
+###<a name="Mobile_Scale"></a>モバイル サービスの規模設定用コマンド
 
-Commands in this section are used to scale a mobile service. For more information, see [Scaling a mobile service](http://msdn.microsoft.com/en-us/library/windowsazure/jj193178.aspx).
+このセクションのコマンドは、モバイル サービスの規模を設定するために使用されます。詳細については、「[モバイル サービスの拡張](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193178.aspx)」を参照してください。
 
 **mobile scale show [options] [servicename]**
 
-This command displays scale information, including current compute mode and number of instances.
+このコマンドは、現在のコンピューティング モード、インスタンスの数など、規模の情報を表示します。
 
 	~$azure mobile scale show todolist
 	info:    Executing command mobile scale show
@@ -1502,52 +1502,52 @@ This command displays scale information, including current compute mode and numb
 
 **mobile scale change [options] [servicename]**
 
-This command changes the scale of the mobile service from free to premium mode.
+このコマンドは、モバイル サービスの規模を無料モードからプレミアム モードに変更します。
 
 	~$azure mobile scale change -c Reserved -i 1 todolist
 	info:    Executing command mobile scale change
 	+ Rescaling the mobile service
 	info:    mobile scale change command OK
 
-This command supports the following additional options:
+このコマンドでは、次の追加のオプションがサポートされています。
 
-+ **-c `<mode>`** or **--computeMode `<mode>`**: The compute mode must be either `Free` or `Reserved`.
-+ **-i `<count>` or **--numberOfInstances `<count>`**: The number of instances used when running in reserved mode.
++ **-c `<mode>`** または **--computeMode `<mode>`**: コンピューティング モードは `Free` または `Reserved` である必要があります。
++ **-i `<count>` または **--numberOfInstances `<count>`**: 占有モードで実行時のインスタンスの数です。
 
-<div class="dev-callout"><b>Note</b>
-   <p>When you set compute mode to `Reserved`, all of your mobile services in the same region run in premium mode.</p>
+<div class="dev-callout"><b>メモ</b>
+   <p>コンピューティング モードを占有に設定すると、同じリージョンのモバイル サービスすべてがプレミアム モードで実行されます。</p>
 </div>  
 
-##<a name="Manage_tool_local_settings"></a>Manage tool local settings
+##<a name="Manage_tool_local_settings"></a>ツールのローカル設定の管理
 
-Local settings are your subscription ID and Default Storage Account Name.
+ローカル設定とは、サブスクリプション ID と既定のストレージ アカウント名です。
 
 **config list [options]**
 
-This command displays config settings.
+このコマンドは、構成設定を表示します。
 
 	~$ azure config list
 	info:   Displaying config settings
-	data:   Setting                Value                               
+	data:   Setting                Value
 	data:   ---------------------  ------------------------------------
 	data:   subscription           32-digit-subscription-key
 	data:   defaultStorageAccount  name
 
 **config set [options] &lt;name&gt;,&lt;value&gt;**
 
-This command changes a config setting.
+このコマンドは、構成設定を変更します。
 
 	~$ azure config set defaultStorageAccount myname
 	info:   Setting 'defaultStorageAccount' to value 'myname'
 	info:   Changes saved.
 
-##<a name ="Commands_to_manage_service_bus"></a>Commands to manage Service Bus
+##<a name ="Commands_to_manage_service_bus"></a>サービス バスの管理用コマンド
 
-Use these commands to manage your Service Bus account
+これらのコマンドを使用して、サービス バス アカウントを管理します。
 
 **sb namespace create &lt;name> &lt;location>**
 
-Creates a new Service Bus namespace
+新しいサービス バス名前空間を作成します。
 
 	~$ azure sb namespace create mysbnamespacea-test "West US"
 	info:    Executing command sb namespace create
@@ -1570,7 +1570,7 @@ Creates a new Service Bus namespace
 
 **sb namespace show &lt;name>**
 
-Display details about a specific namespace
+特定の名前空間に関する詳細を表示します。
 
 	~$ azure sb namespace show mysbnamespacea-test
 	info:    Executing command sb namespace show
@@ -1593,7 +1593,7 @@ Display details about a specific namespace
 
 **sb namespace list**
 
-List all namespaces created for your account
+自分のアカウント用に作成されたすべての名前空間の一覧を表示します。
 
 	~$ azure sb namespace list
 	info:    Executing command sb namespace list
@@ -1605,7 +1605,7 @@ List all namespaces created for your account
 
 **sb namespace delete &lt;name>**
 
-Remove a namespace
+名前空間を削除します。
 
 	~$ azure sb namespace delete mysbnamespacea-test
 	info:    Executing command sb namespace delete
@@ -1615,7 +1615,7 @@ Remove a namespace
 
 **sb namespace location list**
 
-Display a list of all available namespace locations
+使用できるすべての名前空間の場所の一覧を表示します。
 
 	~$ azure sb namespace location list
 	info:    Executing command sb namespace location list
@@ -1634,19 +1634,19 @@ Display a list of all available namespace locations
 
 **sb namespace verify &lt;name>**
 
-Check whether the namespace is available
+名前空間が使用可能かどうかを確認します。
 
-##<a name ="Commands_to_manage_sql"></a>Commands to manage SQL Databases
+##<a name ="Commands_to_manage_sql"></a>SQL データベースの管理用コマンド
 
-Use these commands to manage your Azure SQL Databases
+これらのコマンドを使用して、Azure SQL データベースを管理します。
 
-###Commands to manage SQL Servers
+###SQL サーバーの管理用コマンド
 
-Use these commands to manage your SQL Servers
+これらのコマンドを使用して、SQL サーバーを管理します。
 
 **sql server create &lt;administratorLogin> &lt;administratorPassword> &lt;location>**
 
-Create a new database server
+新しいデータベース サーバーを作成します。
 
 	~$ azure sql server create test T3stte$t "West US"
 	info:    Executing command sql server create
@@ -1656,7 +1656,7 @@ Create a new database server
 
 **sql server show &lt;name>**
 
-Display server details
+サーバーの詳細を表示します。
 
 	~$ azure sql server show xclfgcndfg
 	info:    Executing command sql server show
@@ -1669,7 +1669,7 @@ Display server details
 
 **sql server list**
 
-Get the list of servers
+サーバーの一覧を取得します。
 
 	~$ azure sql server list
 	info:    Executing command sql server list
@@ -1681,7 +1681,7 @@ Get the list of servers
 
 **sql server delete &lt;name>**
 
-Deletes a server 
+サーバーを削除します。
 
 	~$ azure sql server delete i1qwc540ts
 	info:    Executing command sql server delete
@@ -1689,13 +1689,13 @@ Deletes a server
 	+ Removing SQL Server
 	info:    sql server delete command OK
 
-###Commands to manage SQL Databases
+###SQL データベースの管理用コマンド
 
-Use these commands to manage your SQL Databases
+これらのコマンドを使用して、SQL データベースを管理します。
 
 **sql db create [options] &lt;serverName> &lt;databaseName> &lt;administratorPassword>**
 
-Creates a new database instance
+新しいデータベース インスタンスを作成します。
 
 	~$ azure sql db create fr8aelne00 newdb test
 	info:    Executing command sql db create
@@ -1705,7 +1705,7 @@ Creates a new database instance
 
 **sql db show [options] &lt;serverName> &lt;databaseName> &lt;administratorPassword>**
 
-Display database details
+データベースの詳細を表示します。
 
 	C:\windows\system32>azure sql db show fr8aelne00 newdb test
 	info:    Executing command sql db show
@@ -1758,7 +1758,7 @@ Display database details
 
 **sql db list [options] &lt;serverName> &lt;administratorPassword>**
 
-List the databases
+データベースの一覧を表示します。
 
 	~$ azure sql db list fr8aelne00 test
 	info:    Executing command sql db list
@@ -1771,7 +1771,7 @@ List the databases
 
 **sql db delete [options] &lt;serverName> &lt;databaseName> &lt;administratorPassword>**
 
-Deletes a database 
+データベースを削除します。
 
 	~$ azure sql db delete fr8aelne00 newdb test
 	info:    Executing command sql db delete
@@ -1781,13 +1781,13 @@ Deletes a database
 	+ Removing database
 	info:    sql db delete command OK
 
-###Commands to manage your SQL Server firewall rules
+###SQL Server のファイアウォール ルールの管理用コマンド
 
-Use these commands to manage your SQL Server firewall rules
+これらのコマンドを使用して、SQL Server のファイアウォール ルールを管理します。
 
 **sql firewallrule create [options] &lt;serverName> &lt;ruleName> &lt;startIPAddress> &lt;endIPAddress>**
 
-Create a new firewall rule for a SQL Server
+SQL Server の新しいファイアウォール ルールを作成します。
 
 	~$ azure sql firewallrule create fr8aelne00 allowed 131.107.0.0 131.107.255.255
 	info:    Executing command sql firewallrule create
@@ -1796,7 +1796,7 @@ Create a new firewall rule for a SQL Server
 
 **sql firewallrule show [options] &lt;serverName> &lt;ruleName>**
 
-Show firewall rule details
+ファイアウォール ルールの詳細を表示します。
 
 	~$ azure sql firewallrule show fr8aelne00 allowed
 	info:    Executing command sql firewallrule show
@@ -1814,7 +1814,7 @@ Show firewall rule details
 
 **sql firewallrule list [options] &lt;serverName>**
 
-List the firewall rules
+ファイアウォール ルールの一覧を表示します。
 
 	~$ azure sql firewallrule list fr8aelne00
 	info:    Executing command sql firewallrule list
@@ -1826,7 +1826,7 @@ List the firewall rules
 
 **sql firewallrule delete [options] &lt;serverName> &lt;ruleName>**
 
-This command will delete a firewall rule
+このコマンドは、ファイアウォール ルールを削除します。
 
 	~$ azure sql firewallrule delete fr8aelne00 allowed
 	info:    Executing command sql firewallrule delete
@@ -1834,13 +1834,13 @@ This command will delete a firewall rule
 	+ Removing firewall rule
 	info:    sql firewallrule delete command OK
 
-##<a name ="Commands_to_manage_vnet"></a>Commands to manage your Virtual Networks
+##<a name ="Commands_to_manage_vnet"></a>仮想ネットワークの管理用コマンド
 
-Use these commands to manage your Virtual Networks
+これらのコマンドを使用して、仮想ネットワークを管理します。
 
 **network vnet create [options] &lt;location>**
 
-Create a new Virtual Network
+新しい仮想ネットワークを作成します。
 
 	~$ azure network vnet create vnet1 --location "West US" -v
 	info:    Executing command network vnet create
@@ -1861,7 +1861,7 @@ Create a new Virtual Network
 
 **network vnet show &lt;name>**
 
-Show details of a Virtual Network
+仮想ネットワークの詳細を表示します。
 
 	~$ azure network vnet show vnet1
 	info:    Executing command network vnet show
@@ -1877,7 +1877,7 @@ Show details of a Virtual Network
 
 **vnet list**
 
-List all existing Virtual Networks
+既存のすべての仮想ネットワークの一覧を表示します。
 
 	~$ azure network vnet list
 	info:    Executing command network vnet list
@@ -1892,7 +1892,7 @@ List all existing Virtual Networks
 
 **network vnet show &lt;name>**
 
-Show details of the specified Virtual Network
+指定された仮想ネットワークの詳細を表示します。
 
 	~$ azure network vnet show opentechvn1
 	info:    Executing command network vnet show
@@ -1908,26 +1908,26 @@ Show details of the specified Virtual Network
 
 **network vnet delete &lt;name>**
 
-Deletes the specified Virtual Network
+指定された仮想ネットワークを削除します。
 
 	~$ azure network vnet delete opentechvn1
 	info:    Executing command network vnet delete
 	+ Fetching Network Configuration
-	Delete the virtual network opentechvn1 ?  (y/n) y
+	Delete the virtual network opentechvn1 ?(y/n) y
 	+ Deleting the virtual network opentechvn1
 	info:    network vnet delete command OK
 
 **network export [file-path]**
 
-For advanced network configuration, you can export your network configuration locally. Note that the exported network configuration includes DNS server settings, virtual network settings, local network site settings, and other settings.
+高度なネットワーク構成では、ネットワーク構成をローカルにエクスポートできます。エクスポートされるネットワーク構成には、DNS サーバー設定、仮想ネットワーク設定、ローカル ネットワーク サイト設定などが含まれます。
 
 **network import [file-path]**
 
-Import a local network configuration.
+ローカル ネットワーク構成をインポートします。
 
 **network dnsserver register [options] &lt;dnsIP>**
 
-Register a DNS server that you plan to use for name resolution in your network configuration
+ネットワーク構成で名前解決に使用する予定の DNS サーバーを登録します。
 
 	~$ azure network dnsserver register 98.138.253.109 --dns-id FrontEndDnsServer
 	info:    Executing command network dnsserver register
@@ -1937,7 +1937,7 @@ Register a DNS server that you plan to use for name resolution in your network c
 
 **network dnsserver list**
 
-List all the DNS servers registered in your network configuration
+ネットワーク構成に登録されているすべての DNS サーバーの一覧を表示します。
 
 	~$ azure network dnsserver list
 	info:    Executing command network dnsserver list
@@ -1950,12 +1950,13 @@ List all the DNS servers registered in your network configuration
 
 **network dnsserver unregister [options] &lt;dnsIP>**
 
-Removes a DNS server entry from the network configuration
+ネットワーク構成から DNS サーバー エントリを削除します。
 
 	~$ azure network dnsserver unregister 77.88.99.11
 	info:    Executing command network dnsserver unregister
 	+ Fetching Network Configuration
-	Delete the DNS server entry dns-4 ( 77.88.99.11 ) %s ? (y/n) y
+	Delete the DNS server entry dns-4 ( 77.88.99.11 ) %s ?(y/n) y
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
+
 

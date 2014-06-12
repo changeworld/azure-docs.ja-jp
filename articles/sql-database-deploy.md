@@ -1,32 +1,32 @@
-<properties linkid="manage-services-how-to-deploy-a-sqldb" urlDisplayName="How to deploy" pageTitle="How to deploy a SQL Database - Azure" metaKeywords="" description="Learn how to deploy a SQL Server database to Azure. You will use the Deploy Database to SQL Database wizard to upload a sample database." metaCanonical="" services="sql-database" documentationCenter="" title="How to Deploy a Database to Azure" authors="" solutions="" manager="" editor="" />
+<properties linkid="manage-services-how-to-deploy-a-sqldb" urlDisplayName="デプロイ方法" pageTitle="SQL データベースをデプロイする方法 - Azure" metaKeywords="" description="SQL Server データベースを Azure にデプロイする方法について説明します。データベースの SQL データベースへのデプロイ ウィザードを使用して、サンプル データベースをアップロードします。" metaCanonical="" services="sql-database" documentationCenter="" title="データベースを Azure にデプロイする方法" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
 
 
-<h1><a id="howtodeploySQLdb"></a>How to Deploy a Database to Azure</h1>
+<h1><a id="howtodeploySQLdb"></a>データベースを Azure にデプロイする方法</h1>
 
-There are several different ways you can move an on-premises SQL Server database to Azure. In this task, you'll use the Deploy Database to SQL Database wizard to upload a sample database.
+内部設置型 SQL Server データベースを Azure に移動する方法はいくつかあります。このタスクでは、データベースの SQL データベースへのデプロイ ウィザードを使用して、サンプル データベースをアップロードします。
 
-The School sample database is conveniently simple; all of its objects are compatible with SQL Database, eliminating the need to modify or prepare a database for migration. As a new administrator, try deploying a simple database first to learn the steps before using your own databases. 
+School サンプル データベースはシンブルで便利です。オブジェクトはすべて SQL データベースと互換性があり、移行のためにデータベースを変更または準備する必要がありません。新しい管理者として、まずシンプルなデータベースのデプロイを試して手順を学んだ後で、自分のデータベースを使用してください。
 
-**Note:** Review the SQL Database Migration Guide for detailed instructions on how to prepare an on-premises database for migration to Azure. Also, consider downloading the Azure Training Kit. It includes a lab that shows an alternative approach to migrating an on-premises database.
+**メモ:** 内部設置型データベースを Azure に移行するにあたっての準備方法の詳細な作業手順については、SQL データベース移行ガイドを参照してください。また、Azure トレーニング キットをダウンロードすることも検討してください。内部設置型データベースを移行する別の手法を示す演習が含まれています。
 
-##Table of Contents##
-* [How to: Create the school database on an on-premises server](#schooldb)
-* [How to: Deploy to SQL Database](#deploydb)
-* [How to: Verify database deployment](#verify)
+##目次##
+* [方法: 内部設置型サーバーに school データベースを作成する](#schooldb)
+* [方法: SQL データベースにデプロイする](#deploydb)
+* [方法: データベース デプロイを確認する](#verify)
 
-<h2><a id="schooldb"></a>How to: Create the school database on an on-premises server</h2>
+<h2><a id="schooldb"></a>方法: 内部設置型サーバーに school データベースを作成する</h2>
 
-Scripts for creating this database can be found in the [Getting Started with SQL Database Administration][]. In this guide, you'll run these scripts in Management Studio to create an on-premises version of the school database.
+このデータベースを作成するスクリプトは、[SQL データベース管理の概要に関するページ][]にあります。このガイドでは、Management Studio でこれらのスクリプトを実行して、school データベースの内部設置型バージョンを作成します。
 
-1. In Management Studio, connect to an on-premises server. Right-click **Databases**, click **New Database**, and enter *school*.
+1. Management Studio で、内部設置型サーバーに接続します。**[データベース]** を右クリックし、**[新しいデータベース]** をクリックして、「*school*」と入力します。
 
-2. Right-click on *school*, click **New Query**. 
+2. *[school]* を右クリックし、**[新しいクエリ]** をクリックします。
 
-3. Copy and then execute the Create Schema script from the tutorial. 
+3. チュートリアルからスキーマ作成スクリプトをコピーして実行します。
 
 <div style="width:auto; height:300px; overflow:auto"><pre>
 	-- Create the Department table.
@@ -266,7 +266,7 @@ Scripts for creating this database can be found in the [Getting Started with SQL
 	GO
 </pre></div>
 
-Next, copy and execute the Insert Data script.
+次に、データ挿入スクリプトをコピーして実行します。
 
 <div style="width:auto; height:300px; overflow:auto"><pre>
 	-- Insert data into the Person table.
@@ -520,44 +520,44 @@ Next, copy and execute the Insert Data script.
 	GO
 </pre></div>
 
-   You now have an on-premises database that you can export to Azure. Next, you'll run a wizard that creates a .bacpac file, loads it onto Azure, and imports it into SQL Database.
+   これで、Azure にエクスポートできる内部設置型データベースができました。次はウィザードを実行して .bacpac ファイルを作成し、それを Azure に読み込んで SQL データベースにインポートします。
 
 
-<h2><a id="deploydb"></a>How to: Deploy to SQL Database</h2>
+<h2><a id="deploydb"></a>方法: SQL データベースにデプロイする</h2>
 
-1. In Management Studio, connect to an on-premises SQL Server instance that has a database you want to migrate.
+1. Management Studio で、移行するデータベースがある内部設置型 SQL Server インスタンスに接続します。
 
-2. Right-click the school database that you just created, point to **Tasks**, and click **Deploy Database to SQL Azure**.
+2. 作成した school データベースを右クリックして、**[タスク]** をポイントし、**[SQL Azure へのデータベースのデプロイ]** をクリックします。
 
-3. In Deployment Settings, enter a name for the database, such as *school*. 
+3. [デプロイの設定] で、データベースの名前を「*school*」のように入力します。
 
-4. Click **Connect**.
+4. **[接続]** をクリックします。
 
-5. In Server name, enter the 10-character server name, followed by .database.windows.net.
+5. [サーバー名] ボックスに、10 文字のサーバー名の後に .database.windows.net を付けて入力します。
 
-6. In Authentication, choose **SQL Server Authentication**.
+6. [認証] ボックスで、**[SQL Server 認証]** を選択します。
 
-7. Enter the administrator login name and password that you provisioned when creating the SQL Database logical server.
+7. SQL データベース論理サーバーの作成時に準備した管理者ログイン名とパスワードを入力します。
 
-8. Click **Options**.
+8. **[オプション]** をクリックします。
 
-9. In Connection Properties, in Connect to database, type **master**.
+9. [接続プロパティ] の [データベースへの接続] で、「**master**」と入力します。
 
-10. Click **Connect**. This step concludes the connection specification and takes you back to the wizard.
-
-
-11. Click **Next** and click **Finish** to run the wizard.
+10. **[接続]** をクリックします。これで接続指定が完了し、ウィザードに戻ります。
 
 
-<h2><a id="verify"></a>How to: Verify database deployment</h2>
+11. **[次へ]** をクリックし、**[完了]** をクリックしてウィザードを実行します。
 
-1. In Management Studio, in Object Explorer refresh the databases to view the new one you just created.
 
-2. Expand the Databases folder. You should see the **school** database in the list.
+<h2><a id="verify"></a>方法: データベース デプロイを確認する</h2>
 
-3. Right-click on the school database and click **New Query**.
+1. Management Studio のオブジェクト エクスプローラーで、データベースを最新の状態に更新して、作成した新しいデータベースを表示します。
 
-4. Execute the following query to verify that data is accessible.
+2. データベース フォルダーを展開します。一覧に **school** データベースが表示されます。
+
+3. school データベースを右クリックして、**[新しいクエリ]** をクリックします。
+
+4. 以下のクエリを実行して、データがアクセス可能であることを確認します。
 
 <div style="width:auto; height:auto; overflow:auto"><pre>
 	SELECT
@@ -579,5 +579,6 @@ Next, copy and execute the Insert Data script.
 		ON OnsiteCourse.CourseID = CourseInstructor.CourseID;
 </pre></div>
 
-[Getting Started with SQL Database Administration]: /en-us/manage/services/sql-databases/getting-started-w-sql-databases/  
+[SQL データベース管理の概要に関するページ]: /ja-jp/manage/services/sql-databases/getting-started-w-sql-databases/  
+
 

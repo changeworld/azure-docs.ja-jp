@@ -1,110 +1,110 @@
-<properties linkid="manage-services-hdinsight-submit-hadoop-jobs-programmatically" urlDisplayName="HDInsight Administration" pageTitle="Submit Hadoop jobs programmatically | Azure" metaKeywords="hdinsight, hdinsight administration, hdinsight administration azure, hive, mapreduce, HDInsight .NET SDK, powershell, submit mapreduce jobs, submit hive jobs, development, hadoop, apache" description="Learn how to programmatically submit Hadoop jobs to Azure HDInsight." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="Submit Hadoop jobs programmatically" authors="jgao" />
+<properties linkid="manage-services-hdinsight-submit-hadoop-jobs-programmatically" urlDisplayName="HDInsight の管理" pageTitle="プログラムによる Hadoop ジョブの送信 | Azure" metaKeywords="hdinsight, hdinsight の管理, hdinsight の管理と azure, Hive, MapReduce, HDInsight .NET SDK, PowerShell, MapReduce ジョブの送信, Hive ジョブの送信, 開発, Hadoop, Apache" description="プログラムにより Hadoop ジョブを Azure の HDInsight に送信する方法を学習します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="プログラムによる Hadoop ジョブの送信" authors="jgao" />
 
-# Submit Hadoop jobs programmatically
+# プログラムによる Hadoop ジョブの送信
 
-In this article, you will learn how to submit MapReduce and Hive jobs using PowerShell and HDInsight .NET SDK.
+この記事では、PowerShell と HDInsight .NET SDK を使用して MapReduce ジョブと Hive ジョブを送信する方法について説明します。
 
-**Prerequisites:**
+**前提条件:**
 
-Before you begin this article, you must have the following:
+この記事を読み始める前に、次の項目を用意する必要があります。
 
-* An Azure HDInsight cluster. For instructions, see [Get started with HDInsight][hdinsight-getting-started] or [Provision HDInsight clusters][hdinsight-provision].
-* Install and configure Azure PowerShell. For instructions, see [Install and configure Azure PowerShell][powershell-install-configure].
+* Azure HDInsight クラスター。手順については、「[Azure HDInsight の概要][hdinsight-getting-started]」または「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」を参照してください。
+* Azure PowerShell のインストールおよび構成。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install-configure]を参照してください。
 
 
-##In this article
+##この記事の内容
 
-* [Submit MapReduce jobs using PowerShell](#mapreduce-powershell)
-* [Submit Hive jobs using PowerShell](#hive-powershell)
-* [Submit Sqoop jobs using PowerShell](#sqoop-powershell)
-* [Submit MapReduce jobs using HDInsight .NET SDK](#mapreduce-sdk)
-* [Submit Hive Jobs using HDInsight .NET SDK](#hive-sdk)
-* [Next steps](#nextsteps)
+* [PowerShell を使用して MapReduce ジョブを送信する](#mapreduce-powershell)
+* [PowerShell を使用して Hive ジョブを送信する](#hive-powershell)
+* [PowerShell を使用して Sqoop ジョブを送信する](#sqoop-powershell)
+* [HDInsight .NET SDK を使用して MapReduce ジョブを送信する](#mapreduce-sdk)
+* [HDInsight .NET SDK を使用して Hive ジョブを送信する](#hive-sdk)
+* [次のステップ](#nextsteps)
 
-##<a id="mapreduce-powershell"></a> Submit MapReduce jobs using PowerShell
-Azure PowerShell is a powerful scripting environment that you can use to control and automate the deployment and management of your workloads in Azure. For more information on using PowerShell with HDInsight, see [Administer HDInsight using PowerShell][hdinsight-admin-powershell].
+##<a id="mapreduce-powershell"></a>PowerShell を使用して MapReduce ジョブを送信する
+Azure PowerShell は、Azure のワークロードの展開と管理を制御し自動化するために使用できる強力なスクリプティング環境です。HDInsight で PowerShell を使用する方法の詳細については、「[PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]」を参照してください。
 
-Hadoop MapReduce is a software framework for writing applications which process vast amounts of data. HDInsight clusters come with a jar file, located at *\example\jars\hadoop-examples.jar*, which contains several MapReduce examples. This file has been renamed to hadoop-mapreduce-examples.jar on version 3.0 HDInsight clusters. One of the examples is for counting word frequencies in source files. In this session, you will learn how to use PowerShell from a workstation to run the word count sample. For more information on developing and running MapReduce jobs, see [Use MapReduce with HDInsight][hdinsight-mapreduce].
+Hadoop MapReduce は、膨大なデータを処理するアプリケーションを記述するためのソフトウェア フレームワークです。HDInsight クラスターには jar ファイル (*\example\jars\hadoop-examples.jar*) が付属していて、MapReduce サンプルがいくつか格納されています。Version 3.0 の HDInsight クラスターで、このファイルは hadoop-mapreduce-examples.jar という名前に変更されましたサンプルの 1 つは、ソース ファイルに出現する単語の頻度を算出します。ここでは、コンピューターから PowerShell を使用して、ワード カウント サンプルを実行する方法を説明します。MapReduce ジョブの開発と実行の詳細については、「[HDInsight での MapReduce の使用][hdinsight-mapreduce]」を参照してください。
 
-**To run the word count MapReduce program using PowerShell**
+**PowerShell を使用してワード カウント MapReduce プログラムを実行するには**
 
-1.	Open **Azure PowerShell**. For instructions on opening the Azure PowerShell console window, see the [Install and configure Azure PowerShell][powershell-install-configure].
+1.	**Azure PowerShell** を開きます。Azure PowerShell コンソール ウィンドウを開く手順については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」を参照してください。
 
-3. Set these two variables by running the following PowerShell commands:
+3. 次の PowerShell コマンドを実行して、この 2 つの変数を設定します。
 		
 		$subscriptionName = "<SubscriptionName>"   
 		$clusterName = "<HDInsightClusterName>"    
 
-	The subscription is the one you used to create the HDInsight cluster. And the HDInsight cluster is the one you want to use to run the MapReduce job.
+	サブスクリプションは、HDInsight クラスターの作成時に使用したサブスクリプションです。HDInsight クラスターは、MapReduce ジョブの実行に使用するクラスターです。
 	
-5. Run the following commands to create a MapReduce job definition:
+5. 次のコマンドを実行して、MapReduce ジョブ定義を作成します。
 
 		# Define the word count MapReduce job
 		$wordCountJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/hadoop-examples.jar" -ClassName "wordcount" -Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data/WordCountOutput"
 
-	There are two arguments. The first one is the source file name, and the second is the output file path. For more information of the wasb prefix, see [Use Azure Blob storage with HDInsight][hdinsight-storage].
+	引数が 2 つあります。最初の引数はソース ファイル名で、2 つ目の引数は出力ファイル パスです。wasb プレフィックスの詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
 
-6. Run the following command to run the MapReduce job:
+6. 次のコマンドを実行して、MapReduce ジョブを実行します。
 
 		# Submit the MapReduce job
 		Select-AzureSubscription $subscriptionName
 		$wordCountJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $wordCountJobDefinition 
 
-	In addition to the MapReduce job definition, you also provide the HDInsight cluster name where you want to run the MapReduce job. 
+	MapReduce ジョブ定義に加えて、MapReduce ジョブを実行する HDInsight クラスター名も指定します。
 
-7. Run the following command to check the completion of the MapReduce job:
+7. 次のコマンドを実行して、MapReduce ジョブの完了を確認します。
 
 		# Wait for the job to complete
 		Wait-AzureHDInsightJob -Job $wordCountJob -WaitTimeoutInSeconds 3600 
 		
 
-8. Run the following command to check any errors with running the MapReduce job:	
+8. 次のコマンドを実行して、MapReduce ジョブの実行中に発生したエラーを確認します。	
 
 		# Get the job standard error output
 		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $wordCountJob.JobId -StandardError 
 					
-	The following screenshot shows the output of a successful run. Otherwise, you will see some error messages.
+	次のスクリーンショットは、正常実行時の出力を示しています。正常でない場合は、エラー メッセージが表示されます。
 
 	![HDI.GettingStarted.RunMRJob][image-hdi-gettingstarted-runmrjob]
 
 		
-**To retrieve the results of the MapReduce job**
+**MapReduce ジョブの結果を取得するには**
 
-1. Open **Azure PowerShell**.
-2. Set these three variables by running teh following PowerShell commands:
+1. **Azure PowerShell** を開きます。
+2. 次の PowerShell コマンドを実行して、この 3 つの変数を設定します。
 
 		$subscriptionName = "<SubscriptionName>"       
 		$storageAccountName = "<StorageAccountName>"
 		$containerName = "<ContainerName>"			
 
-	The Azure Storage account is the one you specified during the HDInsight cluster provision. The storage account is used to host the Blob container that is used as the default HDInsight cluster file system.  The Blob storage container name usually share the same name as the HDInsight cluster unless you specify a different name when you provision the cluster.
+	Azure のストレージ アカウントは、HDInsight クラスターのプロビジョニング時に指定したアカウントです。ストレージ アカウントは、既定の HDInsight クラスター ファイル システムとして使用する BLOB コンテナーをホストするために使用されます。BLOB ストレージ コンテナー名は、クラスターのプロビジョニング時に別の名前を指定しない限り、通常、HDInsight クラスターと同じ名前です。
 
-3. Run the following commands to create an Azure storage context object:
+3. 次のコマンドを実行して、Azure のストレージ コンテキスト オブジェクトを作成します。
 
 		# Create the storage account context object
 		Select-AzureSubscription $subscriptionName
 		$storageAccountKey = Get-AzureStorageKey $storageAccountName | %{ $_.Primary }
 		$storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
 
-	The Select-AzureSubscription is used to set the current subscription in case you have multiple subscriptions, and the default subscription is not the one to use. 
+	Select-AzureSubscription は、サブスクリプションが複数あり、使用するサブスクリプションが既定のサブスクリプションではない場合に備えて、現在のサブスクリプションを設定するために使用されます。
 
-4. Run the following command to download the MapReduce job output from the Blob container to the workstation:
+4. 次のコマンドを実行して、MapReduce ジョブの出力を BLOB コンテナーからワークステーションにダウンロードします。
 
 		# Get the blob content
 		Get-AzureStorageBlobContent -Container $ContainerName -Blob example/data/WordCountOutput/part-r-00000 -Context $storageContext -Force
 
-	The *example/data/WordCountOutput* folder is the output folder specified when you run the MapReduce job. *part-r-00000* is the default file name for MapReduce job output.  The file will be download to the same folder structure on the local folder. For example, in the following sreenshoot, the current folder is the C root folder.  The file will be downloaded to the *C:\example\data\WordCountOutput\* folder.
+	*example/data/WordCountOutput* フォルダーは、MapReduce ジョブの実行時に指定した出力フォルダーです。*part-r-00000* は MapReduce ジョブの出力の既定のファイル名です。ファイルはフォルダー構造を保ったままローカル フォルダーにダウンロードされます。たとえば、次のスクリーンショットでは、現在のフォルダーが C ドライブのルート フォルダーです。ファイルは *C:\example\data\WordCountOutput* フォルダーにダウンロードされます。
 
-5. Run the following command to print the MapReduce job output file:
+5. 次のコマンドを実行して、MapReduce ジョブの出力ファイルの内容を表示します。
 
 		cat ./example/data/WordCountOutput/part-r-00000 | findstr "there"
 
 	![HDI.GettingStarted.MRJobOutput][image-hdi-gettingstarted-mrjoboutput]
 
-	The MapReduce job produces a file named *part-r-00000* with the words and the counts.  The script uses the findstr command to list all of the words that contains "there".
+	MapReduce ジョブは、単語と出現回数が記録された *part-r-00000* という名前のファイルを作成します。スクリプトでは findstr コマンドを使用して、"there" を含む単語をすべて表示しています。
 
 
-> [WACOM.NOTE] If you open ./example/data/WordCountOutput/part-r-00000, a multi-line output from a MapReduce job, in Notepad, you will notice the line breaks are not renter correctly. This is expected.
+> [WACOM.NOTE] MapReduce ジョブで出力された複数行を含む ./example/data/WordCountOutput/part-r-00000 ファイルをメモ帳で開いた場合、改行が正しく表示されません。これは予期されることです。
 
 
 
@@ -242,61 +242,61 @@ Hadoop MapReduce is a software framework for writing applications which process 
 
 
 
-##<a id="hive-powershell"></a> Submit Hive jobs using PowerShell
-Apache [Hive][apache-hive] provides a means of running MapReduce job through an SQL-like scripting language, called *HiveQL*, which can be applied towards summarization, querying, and analysis of large volumes of data. 
+##<a id="hive-powershell"></a> PowerShell を使用して Hive ジョブを送信する
+Apache [Hive][apache-hive] では、*HiveQL* と呼ばれる SQL に似たスクリプト言語を使用して MapReduce ジョブを実行します。大規模なデータの集約、照会、分析でも Hive を利用できます。
 
-HDInsight clusters come with a sample Hive table called *hivesampletable*. In this session, you will use PowerShell to run a Hive job for listing some data from the Hive table. 
+HDInsight クラスターには、*hivesampletable* という Hive テーブルのサンプルが付属します。ここでは、PowerShell を使用して Hive ジョブを実行して、Hive テーブルのデータを表示する方法を説明します。
 
-**To run a Hive job using PowerShell**
+**PowerShell を使用して Hive ジョブを実行するには**
 
-1.	Open **Azure PowerShell**. For instructions of opening Azure PowerShell console window, see [Install and configure Azure PowerShell][powershell-install-configure].
+1.	**Azure PowerShell** を開きます。Azure PowerShell コンソール ウィンドウを開く手順については、[Azure PowerShell のインストールと構成に関するページ][powershell-install-configure]を参照してください。
 
-2. Set the first two variables in the following commands, and then run the commands:
+2. 次のコマンドで最初の 2 つの変数を設定して、コマンドを実行します。
 		
 		$subscriptionName = "<SubscriptionName>"   
 		$clusterName = "<HDInsightClusterName>"             
 		$querystring = "SELECT * FROM hivesampletable WHERE Country='United Kingdom';"
 
-	The $querystring is the HiveQL query.
+	$querystring は HiveQL クエリです。
 
-3. Run the following commands to select Azure subscription and the cluster to run the Hive job:
+3. 次のコマンドを実行して、Hive ジョブを実行する Azure サブスクリプションとクラスターを選択します。
 
 		Select-AzureSubscription -SubscriptionName $subscriptionName
 
-4. Submit the hive job:
+4. Hive ジョブを送信します。
 
 		Use-AzureHDInsightCluster $clusterName
 		Invoke-Hive -Query $queryString
 
-	You can use the -File switch to specify a HiveQL script file on HDFS.
+	-File スイッチを使用して、HDFS 上の HiveQL スクリプト ファイルを指定できます。
 
-For more information about Hive, see [Use Hive with HDInsight][hdinsight-hive].
+Hive の詳細については、「[HDInsight での Hive の使用][hdinsight-hive]」を参照してください。
 
-##<a id=""></a>Submit Sqoop jobs using PowerShell
+##<a id=""></a>PowerShell を使用して Sqoop ジョブを送信する
 
-See [Use Sqoop with HDInsight][hdinsight-sqoop].
+「[Hadoop .NET SDK と HDInsight の使用][hdinsight-sqoop]」を参照してください。
 
-##<a id="mapreduce-sdk"></a> Submit MapReduce jobs using HDInsight .NET SDK
-The HDInsight .NET SDK provides .NET client libraries that makes it easier to work with HDInsight clusters from .NET. HDInsight clusters come with a jar file, located at *\example\jars\hadoop-examples.jar*, which contains several MapReduce examples. One of the examples is for counting word frequencies in source files. In this session, you will learn how to create a .NET application to run the word count sample. For more information on developing and running MapReduce jobs, see [Use MapReduce with HDInsight][hdinsight-mapreduce].
-
-
-The following procedures are needed to provision an HDInsight cluster using the SDK:
-
-- Install the HDInsight .NET SDK
-- Create a console application
-- Run the application
+##<a id="mapreduce-sdk"></a> HDInsight .NET SDK を使用して MapReduce ジョブを送信する
+HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。HDInsight クラスターには jar ファイル (*\example\jars\hadoop-examples.jar*) が付属していて、MapReduce サンプルがいくつか格納されています。サンプルの 1 つは、ソース ファイルに出現する単語の頻度を算出します。ここでは、.NET アプリケーションを作成して、ワード カウント サンプルを実行する方法を説明します。MapReduce ジョブの開発と実行の詳細については、「[HDInsight での MapReduce の使用][hdinsight-mapreduce]」を参照してください。
 
 
-**To install the HDInsight .NET SDK**
-You can install latest published build of the SDK from [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started). The instructions will be shown in the next procedure.
+SDK を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
 
-**To create a Visual Studio console application**
+- HDInsight .NET SDK のインストール
+- コンソール アプリケーションの作成
+- アプリケーションの実行
 
-1. Open Visual Studio 2012.
 
-2. From the File menu, click **New**, and then click **Project**.
+**HDInsight .NET SDK をインストールするには**
+公開されている最新の SDK を [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) からインストールできます。次の手順で、具体的な方法を説明します。
 
-3. From New Project, type or select the following values:
+**Visual Studio コンソール アプリケーションを作成するには**
+
+1. Visual Studio 2012 を開きます。
+
+2. [ファイル] メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
+
+3. [新しいプロジェクト] で、次の値を入力または選択します。
 
 	<table style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse;">
 	<tr>
@@ -313,21 +313,21 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
 	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">SubmitMapReduceJob</td></tr>
 	</table>
 
-4. Click **OK** to create the project.
+4. **[OK]** をクリックしてプロジェクトを作成します。
 
 
-5. From the **Tools** menu, click **Library Package Manager**, click **Package Manager Console**.
+5. **[ツール]** メニューで **[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
 
-6. Run the following commands in the console to install the packages.
+6. コンソールで次のコマンドを実行して、パッケージをインストールします。
 
 		Install-Package Microsoft.WindowsAzure.Management.HDInsight
 
 
-	This command adds .NET libraries and references to them to the current Visual Studio project. The version shall be 0.11.0.1 or newer.
+	このコマンドは、.NET ライブラリおよび .NET ライブラリへの参照を現在の Visual Studio プロジェクトに追加します。バージョンは 0.11.0.1 またはそれ以降になります。
 
-7. From Solution Explorer, double-click **Program.cs** to open it.
+7. ソリューション エクスプローラーで **Program.cs** をダブルクリックして、このファイルを開きます。
 
-8. Add the following using statements to the top of the file:
+8. 次の using ステートメントをファイルの先頭に追加します。
 
 		using System.IO;
 		using System.Threading;
@@ -339,7 +339,7 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
 		using Microsoft.WindowsAzure.Management.HDInsight;
 		using Microsoft.Hadoop.Client;
 
-9. Add the following function definition to the class. This function is used to wait for a Hadoop job to complete.
+9. 次の関数定義をクラスに追加します。この関数は Hadoop ジョブの完了を待機するために使用されます。
 
         private static void WaitForJobCompletion(JobCreationResults jobResults, IJobSubmissionClient client)
         {
@@ -351,7 +351,7 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
             }
         }
 	
-10. In the Main() function, copy and paste the following code:
+10. Main() 関数で、次のコードをコピーしてファイルに貼り付けます。
 		
 		// Set the variables
 		string subscriptionID = "<Azure subscription ID>";
@@ -364,13 +364,13 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
 		string containerName = "<Blob container name>";
 		
 	
-	These are all of the variables you need to set for the program. You can get the Azure Subscription name from the [Azure Management Portal][azure-management-portal]. 
+	これがプログラムで設定する必要のある変数のすべてです。Azure のサブスクリプション名は [Azure の管理ポータル][azure-management-portal]で確認できます。
 
-	For information on certificate, see [Create and Upload a Management Certificate for Azure][azure-certificate]. An easy way to configure the certificate is to run *Get-AzurePublishSettingsFile* and *Import-AzurePublishSettingsFile* PowerShell cmdlets. They will create and upload the management certificate automatically. After you run the PowerShell cmdlets, you can open *certmgr.msc* from the workstation, and find the certificate by expanding *Personal/Certificates*. The certificate created by the PowerShell cmdlets has *Azure Tools* for both the *Issued To* and the *Issued By* fields.
+	証明書については、「[Create and Upload a Management Certificate for Azure (Azure の管理証明書の作成とアップロード)][azure-certificate]」を参照してください。証明書を構成する簡単な方法は、PowerShell コマンドレットの *Get-AzurePublishSettingsFile* および *Import-AzurePublishSettingsFile* を実行することです。管理証明書が自動的に作成されアップロードされます。この PowerShell コマンドレットを実行した後、ワークステーションから *certmgr.msc* を開いて *[個人]、[証明書]* の順に展開すると、証明書が表示されます。PowerShell コマンドレットによって作成された証明書は、*[発行先]* と *[発行元]* の両方が *[Azure Tools]* になります。
 
-	The Azure Storage account name is the account you specify when you provision the HDInsight cluster. The default container name is the same as the HDInsight cluster name.
+	Azure のストレージ アカウント名は、HDInsight クラスターのプロビジョニング時に指定するアカウントです。既定のコンテナー名は、HDInsight クラスター名と同じです。
 	
-11. In the Main() function, append the following code to define the MapReduce job:
+11. Main() 関数の最後に次のコードをコピーして、MapReduce ジョブを定義します。
 
 
         // Define the MapReduce job
@@ -383,9 +383,9 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
         mrJobDefinition.Arguments.Add("wasb:///example/data/gutenberg/davinci.txt");
         mrJobDefinition.Arguments.Add("wasb:///example/data/WordCountOutput");
 
-	There are two arguments. The first one is the source file name, and the second is the output file path. For more information of the wasb prefix, see [Use Azure Blob storage with HDInsight][hdinsight-storage].
+	引数が 2 つあります。最初の引数はソース ファイル名で、2 つ目の引数は出力ファイル パスです。wasb プレフィックスの詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
 		
-12. 	In the Main() function, append the following code to create a JobSubmissionCertificateCredential object:
+12. 	Main() 関数の最後に次のコードをコピーして、JobSubmissionCertificateCredential オブジェクトを作成します。
 
         // Get the certificate object from certificate store using the friendly name to identify it
         X509Store store = new X509Store();
@@ -393,7 +393,7 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
         X509Certificate2 cert = store.Certificates.Cast<X509Certificate2>().First(item => item.FriendlyName == certFriendlyName);
         JobSubmissionCertificateCredential creds = new JobSubmissionCertificateCredential(new Guid(subscriptionID), cert, clusterName);
 		
-13. In the Main() function, append the following code to run the job and wait the job to complete:
+13. Main() 関数の最後に次のコードをコピーして、ジョブを実行し、ジョブの完了を待ちます。
 
         // Create a hadoop client to connect to HDInsight
         var jobClient = JobSubmissionClientFactory.Connect(creds);
@@ -404,7 +404,7 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
         // Wait for the job to complete
         WaitForJobCompletion(mrJobResults, jobClient);
 
-14. In the Main() function, append the following code to print the MapReduce job output:
+14. Main() 関数の最後に次のコードをコピーして、MapReduce ジョブの出力を表示します。
 
 		// Print the MapReduce job output
 		Stream stream = new MemoryStream();
@@ -423,33 +423,33 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
         Console.WriteLine("Press ENTER to continue.");
 		Console.ReadLine();
 
-	The output folder is specified when you define the MapReduce job. The default file name is *part-r-00000*.
+	出力フォルダーは MapReduce ジョブの定義時に指定します。既定のファイル名は *part-r-00000* です。
 
-**To run the application**
+**アプリケーションを実行するには**
 
-While the application is open in Visual Studio, press **F5** to run the application. A console window should open and display the status of the application and the application output. 
-
-
-##<a id="hive-sdk"></a> Submit Hive jobs using HDInsight .NET SDK 
-HDInsight clusters come with a sample Hive table called *hivesampletable*. In this session, you will create a .NET application to run a Hive job for listing the Hive tables created on HDInsight cluster. For a more information on using Hive, see [Use Hive with HDInsight][hdinsight-hive].
-
-The following procedures are needed to provision an HDInsight cluster using the SDK:
-
-- Install the HDInsight .NET SDK
-- Create a console application
-- Run the application
+アプリケーションを Visual Studio で開いている間に、**F5** キーを押してアプリケーションを実行します。コンソール ウィンドウが開き、アプリケーションの状態とアプリケーションの出力が表示されます。
 
 
-**To install the HDInsight .NET SDK**
-You can install latest published build of the SDK from [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started). The instructions will be shown in the next procedure.
+##<a id="hive-sdk"></a> HDInsight .NET SDK を使用して Hive ジョブを送信する
+HDInsight クラスターには、*hivesampletable* という Hive テーブルのサンプルが付属します。ここでは、.NET アプリケーションを作成して Hive ジョブを実行して、HDInsight クラスター上に作成された Hive テーブルを一覧表示する方法を説明します。Hive の使用法の詳細については、「[HDInsight での Hive の使用][hdinsight-hive]」を参照してください。
 
-**To create a Visual Studio console application**
+SDK を使用して HDInsight クラスターをプロビジョニングするには、以下の手順が必要です。
 
-1. Open Visual Studio 2012.
+- HDInsight .NET SDK のインストール
+- コンソール アプリケーションの作成
+- アプリケーションの実行
 
-2. From the File menu, click **New**, and then click **Project**.
 
-3. From New Project, type or select the following values:
+**HDInsight .NET SDK をインストールするには**
+公開されている最新の SDK を [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started) からインストールできます。次の手順で、具体的な方法を説明します。
+
+**Visual Studio コンソール アプリケーションを作成するには**
+
+1. Visual Studio 2012 を開きます。
+
+2. [ファイル] メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
+
+3. [新しいプロジェクト] で、次の値を入力または選択します。
 
 	<table style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse;">
 	<tr>
@@ -466,21 +466,21 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
 	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">SubmitHiveJob</td></tr>
 	</table>
 
-4. Click **OK** to create the project.
+4. **[OK]** をクリックしてプロジェクトを作成します。
 
 
-5. From the **Tools** menu, click **Library Package Manager**, click **Package Manager Console**.
+5. **[ツール]** メニューで **[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
 
-6. Run the following commands in the console to install the packages.
+6. コンソールで次のコマンドを実行して、パッケージをインストールします。
 
 		Install-Package Microsoft.WindowsAzure.Management.HDInsight
 
 
-	This command adds .NET libraries and references to them to the current Visual Studio project.
+	このコマンドは、.NET ライブラリおよび .NET ライブラリへの参照を現在の Visual Studio プロジェクトに追加します。
 
-7. From Solution Explorer, double-click **Program.cs** to open it.
+7. ソリューション エクスプローラーで **Program.cs** をダブルクリックして、このファイルを開きます。
 
-8. Add the following using statements to the top of the file:
+8. 次の using ステートメントをファイルの先頭に追加します。
 
 		using System.IO;
 		using System.Threading;
@@ -489,7 +489,7 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
 		using Microsoft.WindowsAzure.Management.HDInsight;
 		using Microsoft.Hadoop.Client;
 
-9. Add the following function definition to the class. This function is used to wait for a Hadoop job to complete.
+9. 次の関数定義をクラスに追加します。この関数は Hadoop ジョブの完了を待機するために使用されます。
 
         private static void WaitForJobCompletion(JobCreationResults jobResults, IJobSubmissionClient client)
         {
@@ -501,7 +501,7 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
             }
         }
 	
-10. In the Main() function, copy and paste the following code:
+10. Main() 関数で、次のコードをコピーしてファイルに貼り付けます。
 		
 		// Set the variables
 		string subscriptionID = "<Azure subscription ID>";
@@ -509,11 +509,11 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
 		string certFriendlyName = "<certificate friendly name>";		
 		
 	
-	These are all of the variables you need to set for the program. You can get the Azure Subscription ID from you system administrator. 
+	これがプログラムで設定する必要のある変数のすべてです。Azure のサブスクリプション ID はシステム管理者から入手できます。
 
-	For information on certificate, see [Create and Upload a Management Certificate for Azure][azure-certificate]. An easy way to configure the certificate is to run *Get-AzurePublishSettingsFile* and *Import-AzurePublishSettingsFile* PowerShell cmdlets. They will create and upload the management certificate automatically. After you run the PowerShell cmdlets, you can open *certmgr.msc* from the workstation, and find the certificate by expanding *Personal/Certificates*. The certificate created by the PowerShell cmdlets has *Azure Tools* for both the *Issued To* and the *Issued By* fields.
+	証明書については、「[Create and Upload a Management Certificate for Azure (Azure の管理証明書の作成とアップロード)][azure-certificate]」を参照してください。証明書を構成する簡単な方法は、PowerShell コマンドレットの *Get-AzurePublishSettingsFile* および *Import-AzurePublishSettingsFile* を実行することです。管理証明書が自動的に作成されアップロードされます。この PowerShell コマンドレットを実行した後、ワークステーションから *certmgr.msc* を開いて *[個人]、[証明書]* の順に展開すると、証明書が表示されます。PowerShell コマンドレットによって作成された証明書は、*[発行先]* と *[発行元]* の両方が *[Azure Tools]* になります。
 	
-11. In the Main() function, append the following code to define the Hive job:
+11. Main() 関数の最後に次のコードをコピーして、Hive ジョブを定義します。
 
         // define the Hive job
         HiveJobCreateParameters hiveJobDefinition = new HiveJobCreateParameters()
@@ -523,7 +523,7 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
             Query = "show tables;"
         };
 
-	You can also use the File parameter to specify a HiveQL script file on HDFS. For example
+	File パラメーターを使用して、HDFS 上の HiveQL スクリプト ファイルを指定することもできます。たとえば、次のように入力します。
 
         // define the Hive job
         HiveJobCreateParameters hiveJobDefinition = new HiveJobCreateParameters()
@@ -534,7 +534,7 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
         };
 
 		
-12. 	In the Main() function, append the following code to create a JobSubmissionCertificateCredential object:
+12. 	Main() 関数の最後に次のコードをコピーして、JobSubmissionCertificateCredential オブジェクトを作成します。
 	
         // Get the certificate object from certificate store using the friendly name to identify it
         X509Store store = new X509Store();
@@ -542,7 +542,7 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
         X509Certificate2 cert = store.Certificates.Cast<X509Certificate2>().First(item => item.FriendlyName == certFriendlyName);
         JobSubmissionCertificateCredential creds = new JobSubmissionCertificateCredential(new Guid(subscriptionID), cert, clusterName);
 		
-13. In the Main() function, append the following code to run the job and wait the job to complete:
+13. Main() 関数の最後に次のコードをコピーして、ジョブを実行し、ジョブの完了を待ちます。
 
         // Submit the Hive job
         var jobClient = JobSubmissionClientFactory.Connect(creds);
@@ -551,7 +551,7 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
         // Wait for the job to complete
         WaitForJobCompletion(jobResults, jobClient);
 		
-14. In the Main() function, append the following code to print the Hive job output:
+14. Main() 関数の最後に次のコードをコピーして、Hive ジョブの出力を表示します。
 
         // Print the Hive job output
         System.IO.Stream stream = jobClient.GetJobOutput(jobResults.JobId);
@@ -562,24 +562,24 @@ You can install latest published build of the SDK from [NuGet](http://nuget.code
         Console.WriteLine("Press ENTER to continue.");
         Console.ReadLine();
 
-**To run the application**
+**アプリケーションを実行するには**
 
-While the application is open in Visual Studio, press **F5** to run the application. A console window should open and display the status of the application. The output shall be:
+アプリケーションを Visual Studio で開いている間に、**F5** キーを押してアプリケーションを実行します。コンソール ウィンドウが開き、アプリケーションの状態が表示されます。出力は次のようになります。
 
 	hivesampletable
 
 
 
 
-##<a id="nextsteps"></a> Next steps
-In this article, you have learned several ways to provision an HDInsight cluster. To learn more, see the following articles:
+##<a id="nextsteps"></a> 次のステップ
+この記事では、HDInsight クラスターをプロビジョニングする方法をいくつか説明しました。詳細については、次の記事を参照してください。
 
-* [Get started with Azure HDInsight][hdinsight-getting-started]
-* [Provision HDInsight clusters][hdinsight-provision]
-* [Administer HDInsight using PowerShell][hdinsight-admin-powershell]
-* [HDInsight Cmdlet Reference Documentation][hdinsight-powershell-reference]
-* [Use Hive with HDInsight][hdinsight-hive]
-* [Use Pig with HDInsight][hdinsight-pig]
+* [Azure HDInsight の概要][hdinsight-getting-started]
+* [HDInsight クラスターのプロビジョニング][hdinsight-provision]
+* [PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
+* [HDInsight Cmdlet Reference Documentation (HDInsight コマンドレット リファレンス ドキュメント)][hdinsight-powershell-reference]
+* [HDInsight での Hive の使用][hdinsight-hive]
+* [HDInsight での Pig の使用][hdinsight-pig]
 
 
 
@@ -587,22 +587,23 @@ In this article, you have learned several ways to provision an HDInsight cluster
 
 
 
-[azure-certificate]: http://msdn.microsoft.com/en-us/library/windowsazure/gg551722.aspx
+[azure-certificate]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg551722.aspx
 [azure-management-portal]: http://manage.windowsazure.com/
 
-[hdinsight-provision]: /en-us/manage/services/hdinsight/provision-hdinsight-clusters/
-[hdinsight-mapreduce]: /en-us/manage/services/hdinsight/using-mapreduce-with-hdinsight/
-[hdinsight-hive]:/en-us/manage/services/hdinsight/using-hive-with-hdinsight/
-[hdinsight-pig]: /en-us/manage/services/hdinsight/using-pig-with-hdinsight/
-[hdinsight-getting-started]: /en-us/manage/services/hdinsight/get-started-hdinsight/
-[hdinsight-storage]: /en-us/manage/services/hdinsight/howto-blob-store/
-[hdinsight-admin-powershell]: /en-us/manage/services/hdinsight/administer-hdinsight-using-powershell/
-[hdinsight-configure-powershell]: /en-us/manage/services/hdinsight/install-and-configure-powershell-for-hdinsight/ 
-[hdinsight-powershell-reference]: http://msdn.microsoft.com/en-us/library/windowsazure/dn479228.aspx
+[hdinsight-provision]: /ja-jp/manage/services/hdinsight/provision-hdinsight-clusters/
+[hdinsight-mapreduce]: /ja-jp/manage/services/hdinsight/using-mapreduce-with-hdinsight/
+[hdinsight-hive]:/ja-jp/manage/services/hdinsight/using-hive-with-hdinsight/
+[hdinsight-pig]: /ja-jp/manage/services/hdinsight/using-pig-with-hdinsight/
+[hdinsight-getting-started]: /ja-jp/manage/services/hdinsight/get-started-hdinsight/
+[hdinsight-storage]: /ja-jp/manage/services/hdinsight/howto-blob-store/
+[hdinsight-admin-powershell]: /ja-jp/manage/services/hdinsight/administer-hdinsight-using-powershell/
+[hdinsight-configure-powershell]: /ja-jp/manage/services/hdinsight/install-and-configure-powershell-for-hdinsight/ 
+[hdinsight-powershell-reference]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn479228.aspx
 
-[Powershell-install-configure]: /en-us/documentation/articles/install-configure-powershell/
+[Powershell-install-configure]: /ja-jp/documentation/articles/install-configure-powershell/
 
 [image-hdi-gettingstarted-runmrjob]: ./media/hdinsight-submit-hadoop-jobs-programmatically/HDI.GettingStarted.RunMRJob.png 
 [image-hdi-gettingstarted-mrjoboutput]: ./media/hdinsight-submit-hadoop-jobs-programmatically/HDI.GettingStarted.MRJobOutput.png
 
 [apache-hive]: http://hive.apache.org/
+

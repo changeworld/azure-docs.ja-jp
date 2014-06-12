@@ -1,50 +1,48 @@
-<properties linkid="manage-services-hdinsight-howto-hive" urlDisplayName="Use Hive with HDInsight" pageTitle="Use Hive with HDInsight | Azure" metaKeywords="" description="Learn how to use Hive with HDInsight. You'll use a log file as input into an HDInsight table, and use HiveQL to query the data and report basic statistics." metaCanonical="" services="hdinsight" documentationCenter="" title="Use Hive with HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
+<properties linkid="manage-services-hdinsight-howto-hive" urlDisplayName="HDInsight での Hive の使用" pageTitle="HDInsight での Hive の使用 | Azure" metaKeywords="" description="HDInsight で Hive を使用する方法を学習します。HDInsight テーブルへの入力としてログ ファイルを使用します。また、HiveQL を使用してデータを照会し、基本的な統計情報レポートを生成します。" metaCanonical="" services="hdinsight" documentationCenter="" title="HDInsight での Hive の使用" authors=""  solutions="" writer="jgao" manager="paulettm" editor="mollybos"  />
 
 
 
 
 
-# Use Hive with HDInsight #
+# HDInsight での Hive の使用#
 
-[Apache Hive][apache-hive] provides a means of running MapReduce job through an SQL-like scripting language, called *HiveQL*, which can be applied towards summarization, querying, and analysis of large volumes of data. In this article, you will use HiveQL to query the data in an Apache log4j log file and report basic statistics. 
+[Apache Hive][apache-hive] では、*HiveQL* と呼ばれる SQL に似たスクリプト言語を使用して MapReduce ジョブを実行します。大規模なデータの集約、照会、分析でも Hive を利用できます。この記事では、HiveQL を使用して、Apache log4j ログ ファイルのデータを照会し、基本的な統計情報レポートを生成します。
 
-**Prerequisites:**
+**前提条件:**
 
-- You must have provisioned an **HDInsight cluster**. For a walkthrough on how to do this with the Azure portal, see [Get started with HDInsight][hdinsight-getting-started]. For instructions on the various other ways in which such clusters can be created, see [Provision HDInsight Clusters][hdinsight-provision]. 
+- **HDInsight クラスター**のプロビジョニングを終えている必要があります。Azure ポータルを使用してこれを実行する手順については、「[Azure の HDInsight の概要][hdinsight-getting-started]」を参照してください。クラスターを作成するその他のさまざまな方法については、「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」を参照してください。
 
-- You must have installed **Azure PowerShell** on your workstation. For instructions on how to do this, see [Install and configure Azure PowerShell][powershell-install-configure].
+- **Azure PowerShell** をコンピューターにインストールしておく必要があります。その手順については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」を参照してください。
 
-**Estimated time to complete:** 30 minutes
-
-
-
-##In this article
-
-* [The Hive usage case](#usage)
-* [Upload data files to Azure Blob storage](#uploaddata)
-* [Run Hive queries using PowerShell](#runhivequeries)
-* [Next steps](#nextsteps)
-
-##<a id="usage"></a>The Hive usage case
+**所要時間: ** 30 分
 
 
 
+##この記事の内容
 
-Databases are appropriate when managing smaller sets of data for which low latency queries are possible. However, when it comes to big data sets that contain terabytes of data, traditional SQL databases are often not an ideal solution. Database administrators have habitually scaling up to deal with these larger data sets, buying bigger hardware as database load increased and performance degraded.  
+* [Hive の利用例](#usage)
+* [Azure BLOB ストレージへデータ ファイルをアップロード](#uploaddata)
+* [PowerShell を使用して Hive クエリを実行](#runhivequeries)
+* [次のステップ](#nextsteps)
 
-Hive solves the problems associated with big data by allowing users to scale out when querying large data sets. Hive queries data in parallel across multiple nodes using MapReduce, distributing the database across on an increasing number of hosts as load increases.
+##<a id="usage"></a>Hive の利用例
 
-Hive and HiveQL also offer an alternative to writing MapReduce jobs in Java when querying data. It provides a simple SQL-like wrapper that allows queries to be written in HiveQL that are then compiled to MapReduce for you by HDInsight and run on the cluster.
+
+
+
+データベースは、量がそれほど多くなく、クエリの待ち時間が短いデータを管理する場合に適しています。数テラバイトもあるビッグ データ セットとなると、多くの場合、従来の SQL データベースでは十分に対応できません。これまでデータベース管理者は、このような大規模なデータ セットに対処するためにスケールアップを図り、データベースの負荷が増大してパフォーマンスが低下すると、大型のハードウェアを購入してきました。
+
+Hive は、大規模なデータ セットの照会時にユーザーによるスケールアウトを可能にすることでビッグ データに関連する問題を解決します。Hive は、MapReduce を使用して、増加するノードに対して同時にデータを照会し、負荷が増大したときは複数のホストにデータベースを配布します。
+
+Hive と HiveQL には、データの照会時に Java で MapReduce ジョブを記述する以外の手段も用意されています。単純な SQL 風のラッパーにより、HiveQL でクエリを記述できます。これは HDInsight によって MapReduce にコンパイルされて、クラスター上で実行されます。
  
-Hive also allows programmers who are familiar with the MapReduce framework to plug in custom mappers and reducers to perform more sophisticated analysis that may not be supported by the built-in capabilities of the HiveQL language.  
+さらに、MapReduce フレームワークに慣れているプログラマは mapper と reducer を自分で作成し、HiveQL 言語の標準機能では実現できない高度な分析を実行することもできます。
 
-Hive is best suited for the batch processing of large amounts of immutable data (such as web logs). It is not appropriate for transaction applications that need very fast response times, such as database management systems. Hive is optimized for scalability (more machines can be added dynamically to the Hadoop cluster), extensibility (within the MapReduce framework and with other programming interfaces), and fault-tolerance. Latency is not a key design consideration.   
+Hive は、膨大な不変データ (Web ログなど) のバッチ処理に最も適しています。データベース管理システムなど、極めて迅速な応答を求められるトランザクション アプリケーションには適していません。Hive は、優れた柔軟性 (Hadoop クラスターにコンピューターを動的に追加できる)、拡張性 (MapReduce フレームワーク内とその他のプログラミング インターフェイス)、耐障害性を実現するように最適化されています。ただし、遅延時間は設計上の優先事項ではありません。
 
-Generally, applications save errors, exceptions and other coded issues in a log file, so administrators can use the data in the log files to review problems that may arise and to generate metrics that are relevant to errors or other issues like performance. These log files usually get quite large in size and contain a wealth of data that must be processed and mined for intelligence on the application. 
+通常、アプリケーションで発生したエラー、例外、その他のコーディングの問題はログ ファイルに保存されます。管理者はログ ファイルのデータを使用して、発生する可能性のある問題点を確認したり、エラーやパフォーマンスのような問題に関係する指標を生成したりできます。多くの場合、これらのログ ファイルはサイズが非常に大きくなり、さらにその膨大なログ データをアプリケーションで処理、分析しなければなりません。
 
-Log files are therefore a paradigmatic example of big data. HDInsight provides a Hive data warehouse system that facilitates easy data summarization, ad-hoc queries, and the analysis of these big datasets stored in Hadoop compatible file systems such as Azure Blob Storage.
-
-
+ログ ファイルはまさにビッグ データの好例といえます。HDInsight に備わっている Hive データ ウェアハウス システムを使用すれば、Azure BLOB ストレージのような Hadoop 互換のファイル システムに保存されたこれらのビッグ データ セットを容易に集約し、非定型クエリを実行して分析することができます。
 
 
 
@@ -59,31 +57,33 @@ Log files are therefore a paradigmatic example of big data. HDInsight provides a
 
 
 
-##<a id="uploaddata"></a>Upload data files to the Blob storage
 
-HDInsight uses Azure Blob storage container as the default file system.  For more information, see [Use Azure Blob Storage with HDInsight][hdinsight-storage]. 
 
-In this article, you use a log4j sample file distributed with the HDInsight cluster that is stored in *\example\data\sample.log*. Each log inside the file consists of a line of fields that contains a `[LOG LEVEL]` field to show the type and the severity. For example:
+##<a id="uploaddata"></a>BLOB ストレージへのデータ ファイルのアップロード
+
+HDInsight は、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-storage]」を参照してください。
+
+この記事では、HDInsight クラスターと一緒に配布されている log4j サンプル ファイル (*\example\data\sample.log*) を使用します。ファイル内の各ログは 1 行で、ログの種類と重要度を表す `[LOG LEVEL]` フィールドを含みます。次に例を示します。
 
 	2012-02-03 20:26:41 SampleClass3 [ERROR] verbose detail for id 1527353937 
 
 
-To access files, use the following syntax: 
+ファイルにアクセスするには、次の構文を使用します。
 
 	wasb://<containerName>@<AzureStorageName>.blob.core.windows.net
 
-For example:
+次に例を示します。
 
 	wasb://mycontainer@mystorage.blob.core.windows.net/example/data/sample.log
 
-replace *mycontainer* with the container name, and *mystorage* with the Blob storage account name. 
+*mycontainer* を実際のコンテナー名に置き換え、*mystorage* を BLOB ストレージ アカウント名に置き換えてください。
 
-Because the file is stored in the default file system, you can also access the file using the following:
+ファイルは既定のファイル システムに保存されるので、次のように指定してファイルにアクセスすることもできます。
 
 	wasb:///example/data/sample.log
 	/example/data/sample.log
 
-To generate your own log4j files, use the [Apache Log4j][apache-log4j] logging utility. For information on uploading data to Azure Blob Storage, see [Upload Data to HDInsight][hdinsight-upload-data].
+独自の log4j ファイルを生成するには、[Apache Log4j ログ ユーティリティ][apache-log4j]を使用します。Azure BLOB ストレージにデータをアップロードする方法については、「[データを HDInsight にアップロードする方法][hdinsight-upload-data]」を参照してください。
 
 
 
@@ -105,23 +105,23 @@ To generate your own log4j files, use the [Apache Log4j][apache-log4j] logging u
 
 
 
-##<a id="runhivequeries"></a> Run Hive queries using PowerShell
-In the last section, you uploaded a log4j file called sample.log to the default file system container.  In this section, you will run HiveQL to create a hive table, load data to the hive table, and then query the data to find out how many error logs there were.
+##<a id="runhivequeries"></a> PowerShell を使用して Hive クエリを実行
+先のセクションでは、sample.log という log4j ファイルを既定のファイル システム コンテナーにアップロードしました。このセクションでは、HiveQL を実行して Hive テーブルを作成し、データを Hive テーブルに読み込み、データを照会してエラー ログの件数を確認します。
 
-This article provides the instructions for using Azure PowerShell cmdlets to run a Hive query. Before you go through this section, you must first setup the local environment, and configure the connection to Azure as explained in the **Prerequisites** section at the beginning of this topic.
+この記事では、Azure PowerShell コマンドレットを使用して Hive クエリを実行する手順を示します。このセクションを読み進める前に、このトピックの冒頭にある「**前提条件**」セクションで説明されているように、まずローカル環境をセットアップし、Azure への接続を構成する必要があります。
 
-Hive queries can be run in PowerShell either using the **Start-AzureHDInsightJob** cmdlet or the **Invoke-Hive** cmdlet
+Hive クエリは、**Start-AzureHDInsightJob** コマンドレットまたは **Invoke-Hive** コマンドレットを使用して PowerShell で実行できます。
 
-**To run the Hive queries using Start-AzureHDInsightJob**
+**Start-AzureHDInsightJob を使用して Hive クエリを実行するにはStart-AzureHDInsightJob**
 
-1. Open an Azure PowerShell console windows. The instructions can be found in [Install and configure Azure PowerShell][powershell-install-configure].
-2. Run the following command to connect to your Azure subscription:
+1. Azure PowerShell コンソール ウィンドウを開きます。手順については、「[Azure PowerShell のインストールおよび構成][powershell-install-configure]」を参照してください。
+2. 次のコマンドを実行して、Azure サブスクリプションに接続します。
 
 		Add-AzureAccount
 
-	You will be prompted to enter your Azure account credentials.
+	Azure アカウント資格情報の入力を求められます。
 
-2. Set the variables in the following script and run it:
+2. 次のスクリプトで変数を設定して、スクリプトを実行します。
 
 		# Provide Azure subscription name, and the Azure Storage account and container that is used for the default HDInsight file system.
 		$subscriptionName = "<SubscriptionName>"
@@ -131,7 +131,7 @@ Hive queries can be run in PowerShell either using the **Start-AzureHDInsightJob
 		# Provide HDInsight cluster name Where you want to run the Hive job
 		$clusterName = "<HDInsightClusterName>"
 
-3. Run the following script to define the HiveQL queries:
+3. 次のスクリプトを実行して、HiveQL クエリを定義します。
 
 		# HiveQL queries
 		# Use the internal table option. 
@@ -145,31 +145,31 @@ Hive queries can be run in PowerShell either using the **Start-AzureHDInsightJob
 		                "CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ' ' STORED AS TEXTFILE LOCATION 'wasb://$containerName@$storageAccountName.blob.core.windows.net/example/data/';" +
 				        "SELECT t4 AS sev, COUNT(*) AS cnt FROM log4jLogs WHERE t4 = '[ERROR]' GROUP BY t4;"
 
-	The LOAD DATA HiveQL command will result in moving the data file to the \hive\warehouse\ folder.  The DROP TABLE command will delete the table and the data file.  If you use the internal table option and want to run the script again, you must upload the sample.log file again. If you want to keep the data file, you must use the CREATE EXTERNAL TABLE command as shown in the script.
+	LOAD DATA HiveQL コマンドは、結果としてデータ ファイルを \hive\warehouse\ フォルダーに移動します。DROP TABLE コマンドはテーブルとデータ ファイルを削除します。内部テーブル オプションを使用して、スクリプトを再び実行する場合は、sample.log ファイルを再びアップロードする必要があります。データ ファイルを残す場合は、スクリプトにあるように、CREATE EXTERNAL TABLE コマンドを使用する必要があります。
 	
-	You can also use the external table for the situation where the data file is located in a different container or storage account.
+	データ ファイルが別のコンテナーまたはストレージ アカウントにある場合にも、外部テーブルを使用することができます。
 
-	Use the DROP TABLE first in case you run the script again and the log4jlogs table already exists.
+	スクリプトを再実行して、log4jlogs テーブルが既に存在する場合に備えて、まず DROP TABLE を使用します。
 
-4. Run the following script to create a Hive job definition:
+4. 次のスクリプトを実行して、Hive ジョブ定義を作成します。
 		
 		# Create a Hive job definition 
 		$hiveJobDefinition = New-AzureHDInsightHiveJobDefinition -Query $queryString 
 
-	You can also use the -File switch to specify a HiveQL script file on HDFS.
+	-File スイッチを使用して、HDFS 上の HiveQL スクリプト ファイルを指定することもできます。
 		
-5. Run the following script to submit the Hive job:
+5. 次のスクリプトを実行して、Hive ジョブを送信します。
 
 		# Submit the job to the cluster 
 		Select-AzureSubscription $subscriptionName
 		$hiveJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $hiveJobDefinition
 		
-6. Run the following script to wait for the Hive job to complete:
+6. 次のスクリプトを実行して、Hive ジョブを送信し、ジョブの完了を待ちます。
 
 		# Wait for the Hive job to complete
 		Wait-AzureHDInsightJob -Job $hiveJob -WaitTimeoutInSeconds 3600
 		
-7. Run the following script to print the standard output:
+7. 次のスクリプトを実行して、標準出力を表示します。
 8. 
 		# Print the standard error and the standard output of the Hive job.
 		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $hiveJob.JobId -StandardOutput
@@ -177,23 +177,23 @@ Hive queries can be run in PowerShell either using the **Start-AzureHDInsightJob
 
  	![HDI.HIVE.PowerShell][image-hdi-hive-powershell]
 
-	The results is:
+	結果は次のようになります。
 
 		[ERROR] 3
 
-**To submit Hive queries using Invoke-Hive**
+**Invoke-Hive を使用して Hive クエリを送信するには**
 
-1. Open an Azure PowerShell console window.
-2. Run the following command to connect to your Azure subscription:
+1. Azure PowerShell コンソール ウィンドウを開きます。
+2. 次のコマンドを実行して、Azure サブスクリプションに接続します。
 
 		Add-AzureAccount
 
-	You will be prompted to enter your Azure account credentials.
-2. Set the variable, and then run it:
+	Azure アカウント資格情報の入力を求められます。
+2. 変数を設定し、実行します。
 
 		$clusterName = "<HDInsightClusterName>"
 
-3. Run the following script to invoke HiveQL queries:
+3. 次のスクリプトを実行して、HiveQL クエリを呼び出します。
 
 		Use-AzureHDInsightCluster $clusterName 
 		$response = Invoke-Hive -Query @"
@@ -204,52 +204,54 @@ Hive queries can be run in PowerShell either using the **Start-AzureHDInsightJob
 		
 		Write-Host $response
 
-	The output is:
+	出力は次のようになります。
 
-	![PowerShell Invoke-Hive output][img-hdi-hive-powershell-output]
+	![PowerShell の Invoke-Hive の出力][img-hdi-hive-powershell-output]
 
-	For longer HiveQL queries, it is recommended to use PowerShell Here-Strings or HiveQL script file. The following samples shows how to use the Invoke-Hive cmdlet to run a HiveQL script file.  The HiveQL script file must be uploaded to WASB.
+	より長い HiveQL クエリの場合は、PowerShell の Here-Strings または HiveQL スクリプト ファイルを使用することをお勧めします。次の例では、Invoke-Hive コマンドレットを使用して HiveQL スクリプト ファイルを実行する方法を示します。HiveQL スクリプト ファイルは、WASB にアップロードする必要があります。
 
 		Invoke-Hive -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"
 
-	For more information about Here-Strings, see [Using Windows PowerShell Here-Strings][powershell-here-strings].
+	Here-Strings の詳細については、[Windows PowerShell Here-Strings の使用][powershell-here-strings]を参照してください。
 	
-##<a id="nextsteps"></a>Next steps
+##<a id="nextsteps"></a>次のステップ
 
-While Hive makes it easy to query data using a SQL-like query language, other components available with HDInsight provide complementary functionality such as data movement and transformation. To learn more, see the following articles:
+Hive では、SQL に似たクエリ言語を使用してデータを容易に照会できます。さらに、HDInsight の他のコンポーネントを使用すれば、データ移動や変換などを行うこともできます。詳細については、次の記事を参照してください。
 
-* [Get started with Azure HDInsight](/en-us/manage/services/hdinsight/get-started-hdinsight/)
-* [Analyze flight delay data using HDInsight][hdinsight-analyze-flight-delay-data]
-* [Use Oozie with HDInsight][hdinsight-oozie]
-* [Submit Hadoop jobs programmatically][hdinsight-submit-jobs]
-* [Upload data to HDInsight][hdinsight-upload-data]
-* [Using Pig with HDInsight](/en-us/manage/services/hdinsight/using-pig-with-hdinsight/)
-* [Azure HDInsight SDK documentation][hdinsight-sdk-documentation]
+* [Azure の HDInsight の概要](/ja-jp/manage/services/hdinsight/get-started-hdinsight/)
+* [HDInsight を使用したフライトの遅延データの分析][hdinsight-analyze-flight-delay-data]
+* [Use Oozie with HDInsight (HDInsight での Oozie の使用)][hdinsight-oozie]
+* [プログラムによる Hadoop ジョブの送信][hdinsight-submit-jobs]
+* [データを HDInsight にアップロードする方法][hdinsight-upload-data]
+* [HDInsight での Pig の使用](/ja-jp/manage/services/hdinsight/using-pig-with-hdinsight/)
+* [Azure の HDInsight SDK ドキュメントに関するページ][hdinsight-sdk-documentation]
 
-[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/en-us/library/dn479185.aspx
-[azure-purchase-options]: https://www.windowsazure.com/en-us/pricing/purchase-options/
-[azure-member-offers]: https://www.windowsazure.com/en-us/pricing/member-offers/
-[azure-free-trial]: https://www.windowsazure.com/en-us/pricing/free-trial/
+[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/ja-jp/library/dn479185.aspx
+[azure-purchase-options]: https://www.windowsazure.com/ja-jp/pricing/purchase-options/
+[azure-member-offers]: https://www.windowsazure.com/ja-jp/pricing/member-offers/
+[azure-free-trial]: https://www.windowsazure.com/ja-jp/pricing/free-trial/
 
 
 [apache-hive]: http://hive.apache.org/
 [apache-log4j]: http://en.wikipedia.org/wiki/Log4j
 
 
-[hdinsight-oozie]: /en-us/documentation/articles/hdinsight-use-oozie/
-[hdinsight-analyze-flight-delay-data]: /en-us/documentation/articles/hdinsight-analyze-flight-delay-data/
+[hdinsight-oozie]: /ja-jp/documentation/articles/hdinsight-use-oozie/
+[hdinsight-analyze-flight-delay-data]: /ja-jp/documentation/articles/hdinsight-analyze-flight-delay-data/
 
 
-[hdinsight-storage]: /en-us/manage/services/hdinsight/howto-blob-store
+[hdinsight-storage]: /ja-jp/manage/services/hdinsight/howto-blob-store
 
-[hdinsight-provision]: /en-us/manage/services/hdinsight/provision-hdinsight-clusters/
-[hdinsight-submit-jobs]: /en-us/manage/services/hdinsight/submit-hadoop-jobs-programmatically/
-[hdinsight-upload-data]: /en-us/manage/services/hdinsight/howto-upload-data-to-hdinsight/
-[hdinsight-configure-powershell]: /en-us/manage/services/hdinsight/install-and-configure-powershell-for-hdinsight/ 
-[hdinsight-getting-started]: /en-us/manage/services/hdinsight/get-started-hdinsight/
+[hdinsight-provision]: /ja-jp/manage/services/hdinsight/provision-hdinsight-clusters/
+[hdinsight-submit-jobs]: /ja-jp/manage/services/hdinsight/submit-hadoop-jobs-programmatically/
+[hdinsight-upload-data]: /ja-jp/manage/services/hdinsight/howto-upload-data-to-hdinsight/
+[hdinsight-configure-powershell]: /ja-jp/manage/services/hdinsight/install-and-configure-powershell-for-hdinsight/ 
+[hdinsight-getting-started]: /ja-jp/manage/services/hdinsight/get-started-hdinsight/
 
-[Powershell-install-configure]: /en-us/documentation/articles/install-configure-powershell/
-[powershell-here-strings]: http://technet.microsoft.com/en-us/library/ee692792.aspx
+[Powershell-install-configure]: /ja-jp/documentation/articles/install-configure-powershell/
+[powershell-here-strings]: http://technet.microsoft.com/ja-jp/library/ee692792.aspx
 
 [image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png 
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png 
+
+

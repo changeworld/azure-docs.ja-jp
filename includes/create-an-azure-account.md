@@ -1,26 +1,28 @@
-# Create an Azure account and enable preview features
+# Azure アカウントを作成してプレビュー機能を有効にする
 
-In order to deploy applications to Azure, you need an account. This article describes how to create a free trial account and how to enable Azure preview features, including BizTalk Services, HDInsight, and Azure Back, for the account.
+アプリケーションを Azure に展開するには、アカウントが必要です。ここでは、無料の試用アカウントを作成する方法と、BizTalk サービス、HDInsight、Azure Back を含む Azure プレビュー機能をアカウントに対して有効にする方法について説明します。
 
-## Create an Azure account
+## Azure アカウントを作成する
 
-1.  Open a web browser and browse to <a href="http://www.windowsazure.com">http://www.windowsazure.com</a>
-2.  If you have an MSDN subscription, navigate to the <a href="/en-us/pricing/member-offers/msdn-benefits-details/" target="_blank">Azure Benefit for MSDN Subscribers</a> page and follow the steps to create an account by activating your MSDN subscriber benefits.
+1. Web ブラウザーを開いて、<a href="http://www.windowsazure.com">http://www.windowsazure.com</a> にアクセスします。
+2. MSDN サブスクリプションがある場合は、<a href="/ja-jp/pricing/member-offers/msdn-benefits-details/" target="_blank">MSDN サブスクライバー向けの Azure の特典</a>ページに移動し、MSDN サブスクライバーの特典を有効にすることでアカウントを作成する手順を実行します。
 
-   Otherwise, navigate to the <a href="/en-us/pricing/free-trial/" target="_blank">create a free trial account</a> page and follow the steps to create a trial account. You'll need a credit card number and a mobile phone number for proof of identity, but you will not be billed.
+   それ以外の場合は、<a href="/ja-jp/pricing/free-trial/" target="_blank">無料評価版
+</a>のページに移動し、試用アカウントを作成する手順に従います。身分証明としてクレジット カード番号と携帯電話番号が必要になりますが、料金が請求されることはありません。
 
-<h2><a id="enable"></a>Enable Azure preview features</h2>
+<h2><a id="enable"></a>Azure プレビュー機能を有効にする</h2>
 
-1.  Navigate to [https://account.windowsazure.com/](https://account.windowsazure.com/) and sign in with your Azure account.
-2.  Click **preview features** to view the available previews.<br />
-    ![open preview features tab][1]
-3.  Scroll down to the feature you want to enable and click **try it now**.<br />
-    ![select a preview feature][2]
-4.  Select your subscription and click the check.<br />
-    ![select subscription][3]
+1. [https://account.windowsazure.com/](https://account.windowsazure.com/) に移動し、Azure のアカウントを使用してサインインします。
+2. **[プレビュー機能]** をクリックして、使用できるプレビューを表示します。<br />
+    ![プレビュー機能タブを開く][1]
+3. 有効にする機能にスクロールして、**[今すぐ試す]** をクリックします。<br />
+    ![プレビュー機能を選択する][2]
+4. サブスクリプションを選択し、チェックをクリックします。<br />
+    ![サブスクリプションを選択する][3]
 
 
 
 [1]: ./media/create-an-azure-account/antares-iaas-preview-01.png
 [2]: ./media/create-an-azure-account/antares-iaas-preview-05.png
 [3]: ./media/create-an-azure-account/antares-iaas-preview-06.png
+

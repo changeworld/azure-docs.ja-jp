@@ -1,243 +1,239 @@
-<properties linkid="dev-net-tutorials-hybrid-solution" urlDisplayName="Hybrid Application" pageTitle="Hybrid On-Premises/ Cloud Application (.NET) - Azure" metaKeywords="Azure Service Bus tutorial,hybrid .NET" description="Learn how to create a .NET On-Premises/Cloud Hybrid Application Using the Azure Service Bus Relay." metaCanonical="" services="service-bus" documentationCenter=".NET" title=".NET On-Premises/Cloud Hybrid Application Using Service Bus Relay" authors="sethm" solutions="" manager="dwrede" editor="mattshel" />
+<properties linkid="dev-net-tutorials-hybrid-solution" urlDisplayName="ハイブリッド アプリケーション" pageTitle="内部設置型/クラウドのハイブリッド アプリケーション (.NET) - Azure" metaKeywords="Azure のサービス バスのチュートリアル,ハイブリッド .NET" description="Azure のサービス バス リレーを使用して .NET 内部設置型/クラウド ハイブリッド アプリケーションを作成する方法を説明します。" metaCanonical="" services="service-bus" documentationCenter=".NET" title="サービス バス リレーを使用する .NET 内部設置型/クラウド ハイブリッド アプリケーション" authors="sethm" solutions="" manager="dwrede" editor="mattshel" />
 
 
 
 
 
+# サービス バス リレーを使用する .NET 内部設置型/クラウド ハイブリッド アプリケーション
 
-# .NET On-Premises/Cloud Hybrid Application Using Service Bus Relay
+<h2><span class="short-header">はじめに</span>はじめに</h2>
 
-<h2><span class="short-header">INTRODUCTION</span>INTRODUCTION</h2>
+Azure を利用するハイブリッド クラウド アプリケーションは、Visual Studio 2013
+および無料の Azure SDK for .NET を使用して簡単に開発できます。このガイドは、
+Azure を初めて使用するユーザーを対象としています。複数の 
+Azure リソースを
+クラウドで運用するアプリケーションを 30 分未満で作成できます。
 
-Developing hybrid cloud applications with Azure is easy using
-Visual Studio 2013 and the free Azure SDK for .NET. This guide
-assumes you have no prior experience using Azure. In less than
-30 minutes, you will have an application that uses multiple Windows
-Azure resources up and running in the cloud.
+学習内容:
 
-You will learn:
-
--   How to create or adapt an existing web service for consumption by a
-    web solution.
--   How to use the Azure Service Bus relay to share data between
-    an Azure application and a web service hosted elsewhere.
+- -   Web ソリューションによって使用される Web サービスを作成するか、
+    既存の Web サービスを適合させる方法。
+- -   Azure アプリケーションと別の場所でホストされている Web サービスの間で、
+    Azure のサービス バス リレーを使用してデータを共有する方法。
 
 [WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
-### HOW THE SERVICE BUS RELAY HELPS WITH HYBRID SOLUTIONS
+### サービス バス リレーがハイブリッド ソリューションで役立つ理由
 
-Business solutions are typically composed of a combination of custom
-code written to tackle new and unique business requirements and existing
-functionality provided by solutions and systems that are already in
-place.
+ビジネス ソリューションは、通常、新しい独自のビジネス要件に
+対処するために記述されるカスタム コードと、既に配置されている
+ソリューションおよびシステムによって提供される既存の機能の
+組み合わせによって構成されます。
 
-Solution architects are starting to use the cloud for easier handling of
-scale requirements and lower operational costs. In doing so, they find
-that existing service assets they'd like to leverage as building blocks
-for their solutions are inside the corporate firewall and out of easy
-reach for access by the cloud solution. Many internal services are not
-built or hosted in a way that they can be easily exposed at the
-corporate network edge.
+ソリューション アーキテクトたちは、スケーラビリティが高く
+運用コストが低いクラウドを使い始めています。その中で、
+ソリューションの構成要素として利用する既存のサービス資産は
+企業ファイアウォールの内部にあり、クラウド ソリューションからの
+アクセスが難しいということがわかってきました。多くの内部
+サービスは、企業ネットワークと外部との境界で簡単に
+公開できるような方法では構築およびホストされていません。
 
-The *Service Bus Relay* is designed for the use-case of taking existing
-Windows Communication Foundation (WCF) web services and making those
-services securely accessible to solutions that reside outside the
-corporate perimeter without requiring intrusive changes to the corporate
-network infrastructure. Such Service Bus relay services are still hosted
-inside their existing environment, but they delegate listening for
-incoming sessions and requests to the cloud-hosted Service Bus. The
-Service Bus also protects those services from unauthorized access by
-using Azure Active Directory Access Control.
+*サービス バス リレー*は、既存の Windows Communication Foundation (WCF) 
+Web サービスを使用し、企業ネットワークのインフラストラクチャの内部を変更せずに、
+企業の境界の外部にあるソリューションからそれらのサービスに安全にアクセスできる
+使用事例として設計されています。このようなサービス バス リレー サービスは既存の環境内でも
+ホストされていますが、受信セッションや要求のリッスンは、
+クラウドでホストされているサービス バスにデリゲートしています。さらに
+サービス バスは、Azure Active Directory Access Control を使用して、
+これらのサービスを未承認のアクセスから保護します。
 
-### THE SOLUTION SCENARIO
+### ソリューション シナリオ
 
-In this tutorial, you will create an ASP.NET MVC 4 web site that will
-allow you to see a list of products on the product inventory page.
+このチュートリアルでは、商品在庫ページに商品の一覧を表示する 
+ASP.NET MVC 4 Web サイトを作成します。
 
 ![][0]
 
-The tutorial assumes that you have product information in an existing
-on-premises system, and uses the Service Bus relay to reach into that
-system. This is simulated by a web service that is running in a simple
-console application and is backed by an in-memory set of products. You
-will be able to run this console application on your own computer and
-deploy the web role into Azure. By doing so, you will see how
-the web role running in the Azure datacenter will indeed call
-into your computer, even though your computer will almost certainly
-reside behind at least one firewall and a network address translation
-(NAT) layer.
+このチュートリアルでは、既存の内部設置型システムに商品情報が
+格納されているものとし、サービス バス リレーを使用してそのシステムに
+アクセスします。これを、単純なコンソール アプリケーションで実行され、
+メモリ内の商品のセットによってバックアップされる Web サービスで
+シミュレートします。この
+コンソール アプリケーションをユーザー自身のコンピューターで実行し、
+Web ロールを Azure に展開することができます。そうすることで、Azure データセンターで
+実行されている Web ロールが実際にどのようにコンピューターを
+呼び出すかを確認できます。ただし、ユーザーのコンピューターは、
+ほぼ確実に少なくとも 1 つのファイアウォールとネットワーク アドレス
+変換 (NAT) レイヤーの背後に配置されます。
 
-The following is a screen shot of the start page of the completed web application.
+次に、完成した Web アプリケーションの開始ページのスクリーンショットを示します。
 
 ![][1]
 
-<h2><span class="short-header">SET UP THE ENVIRONMENT</span>SET UP THE DEVELOPMENT ENVIRONMENT</h2>
+<h2><span class="short-header">環境の設定</span>開発環境の設定</h2>
 
-Before you can begin developing your Azure application, you need
-to get the tools and set-up your development environment.
+Azure アプリケーションを開発する前に、ツールを入手して、
+開発環境を設定する必要があります。
 
-1.  To install the Azure SDK for .NET, click the button below:
+1. Azure SDK for .NET をインストールするには、次のボタンをクリックします。
 
-    [Get Tools and SDK][]
+    [ツールと SDK の入手][]
 
-2. 	Click **install the SDK**.
+2. 	**[SDK のインストール]** をクリックします。
 
-3. 	Choose the link for the version of Visual Studio you are using. The steps in this tutorial use Visual Studio 2013:
+3. 	使用している Visual Studio のバージョンに対応するリンクを選択します。このチュートリアルの手順では、Visual Studio 2013 を使用します。
 
 	![][42]
 
-4.  When prompted to run or save **WindowsAzureSDKForNet.exe**, click
-    **Run**:
+4. **WindowsAzureSDKForNet.exe** を実行するか、保存するかを確認する
+    メッセージが表示されたら、**[実行]** をクリックします。
 
     ![][2]
 
-5.  In the Web Platform Installer, click **Install** and proceed with the installation:
+5.  Web プラットフォーム インストーラーの **[インストール]** をクリックし、インストールの手順を進めます。
 
     ![][3]
 
-6.  Once the installation is complete, you will have everything
-    necessary to start developing. The SDK includes tools that let you
-    easily develop Azure applications in Visual Studio. If you
-    do not have Visual Studio installed, it also installs the free
-    Visual Studio Express.
+6.  インストールが完了すると、開発に必要なツールがすべて
+    揃います。SDK には、Visual Studio で Azure アプリケーションを
+    簡単に開発するためのツールが用意されています。Visual Studio 
+    がインストールされていない場合、無料の Visual Studio 
+    Express もインストールされます。
 
-<h2><span class="short-header">CREATE A NAMESPACE</span>CREATE A SERVICE NAMESPACE</h2>
+<h2><span class="short-header">名前空間の作成</span>サービス名前空間の作成</h2>
 
-To begin using Service Bus features in Azure, you must first
-create a service namespace. A service namespace provides a scoping
-container for addressing Service Bus resources within your application. 
+Azure でサービス バス機能を使用するには、最初に
+サービス名前空間を作成する必要があります。サービス名前空間は、アプリケーション内で
+サービス バス リソースをアドレス指定するためのスコープ コンテナーを提供します。
 
-You can manage namespaces and Service Bus messaging entities using either the [Azure Management Portal][] or the Visual Studio Server Explorer, but you can only create new namespaces from within the portal.
+[Azure 管理ポータル][]または Visual Studio のサーバー エクスプローラー を使用して名前空間と Service Bus のメッセージ エンティティを管理できますが、新しい名前空間を作成できるのは、ポータル内のみです。
 
-###To create a service namespace using the portal:
+###ポータルを使用してサービス名前空間を作成するには:
 
-1.  Log on to the [Azure Management Portal][].
+1. [Azure 管理ポータル][]にログオンします。
 
-2.  In the left navigation pane of the Management Portal, click
-    **Service Bus**.
+2. 管理ポータルの左のナビゲーション ウィンドウで、
+    **[Service Bus]** をクリックします。
 
-3.  In the lower pane of the Management Portal, click **Create**.   
+3. 管理ポータルの下のウィンドウの **[作成]** をクリックします。
     ![][5]
 
-4.  In the **Add a new namespace** dialog, enter a namespace name.
-    The system immediately checks to see if the name is available.   
+4.  **[新しい名前空間を追加する]** ダイアログで、名前空間の名前を入力します。
+    その名前が使用できるかどうかがすぐに自動で確認されます。
     ![][6]
 
-5.  After making sure the namespace name is available, choose the
-    country or region in which your namespace should be hosted (make
-    sure you use the same country/region in which you are deploying your
-    compute resources).
+5. 入力した名前が利用できることを確認できたら、名前空間を
+    ホストする国またはリージョンを選択します (コンピューティング 
+    リソースのデプロイ先となる国またはリージョンと同じ
+    国またはリージョンを必ず使用してください)。
 
-    IMPORTANT: Pick the **same region** that you intend to choose for
-    deploying your application. This will give you the best performance.
+    重要: アプリケーションを展開する予定の国またはリージョンと**同じ国/リージョン**
+    を選択してください。そうすることで、パフォーマンスが最高になります。
 
-6.	Click the check mark. The system now creates your service
-    namespace and enables it. You might have to wait several minutes as
-    the system provisions resources for your account.
+6.	チェック マークをクリックします。これで、システムによってサービス名前空間が
+    作成および有効化されます。システムがアカウントのリソースを準備し
+    終わるまでに、数分間かかる場合があります。
 
 	![][38]
 
-The namespace you created will then appear in the Management Portal and
-takes a moment to activate. Wait until the status is **Active** before
-moving on.
+作成した名前空間が管理ポータルに表示され、アクティブになります。これには
+少し時間がかかります。ステータスが **[アクティブ]** になるのを待ってから、次に進みます。
 
-<h2><span class="short-header">OBTAIN MANAGEMENT CREDENTIALS</span>OBTAIN THE DEFAULT MANAGEMENT CREDENTIALS FOR THE NAMESPACE</h2>
+<h2><span class="short-header">管理資格情報の取得</span>名前空間の既定の管理資格情報を取得</h2>
 
-In order to perform management operations, such as creating a queue, on
-the new namespace, you must obtain the management credentials for the
-namespace.
+新しく作成した名前空間に対してキューの作成などの管理操作を実行するには、
+名前空間の管理資格情報を取得する必要があります。
 
-1.  In the main window, click the name of your service namespace.   
+1.  メイン ウィンドウで、使用するサービス名前空間の名前をクリックします。
 
 	![][39]
   
 
-2.  Click **Connection Information**.   
+2.  **[接続情報]** をクリックします。
 
 	![][40]
 
 
-3.  In the **Access connection information** pane, find the **Default Issuer** and **Default Key** entries.   
+3. **[接続情報へのアクセス]** ウィンドウで、**[既定の発行者]** と **[既定のキー]** のエントリを探します。
     
 
-4.  Make a note of the key, or copy it to the clipboard.
+4. キーを書き留めておくか、クリップボードにコピーしておいてください。
 
-###Manage a service namespace using the Visual Studio Server Explorer:
+###Visual Studio のサーバー エクスプローラーを使用したサービス名前空間の管理:
 
-To manage a namespace and obtain connection information using Visual Studio instead of the Management Portal, follow the procedure described [here](http://http://msdn.microsoft.com/en-us/library/windowsazure/ff687127.aspx), in the section titled **To connect to Azure from Visual Studio**. When you sign in to Azure, the **Service Bus** node under the **Microsoft Azure** tree in Server Explorer is automatically populated with any namespaces you've already created. Right-click any namespace, and then click **Properties** to see the connection string and other metadata associated with this namespace displayed in the Visual Studio **Properties** pane. 
+管理ポータルの代わりに Visual Studio を使用して名前空間を管理し、接続情報を取得するには、「[Azure Tools for Visual Studio の概要](http://msdn.microsoft.com/ja-jp/library/windowsazure/ff687127.aspx)」の「**Visual Studio から Azure に接続するには**」で説明されている 手順に従ってください。Azure にサインインすると、サーバー エクスプローラーの **[Microsoft Azure]** ツリーの下にある **[サービス バス]** ノードが、既に作成したすべての名前空間を使用して自動的に設定されます。いずれかの名前空間を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウで表示される、この名前空間に関連付けられている接続文字列と他のメタデータを確認できます。
 
 ![][44]
 
-Make a note of the **SharedAccessKey** value, or copy it to the clipboard.
+**SharedAccessKey** の値を書き留めておくか、クリップボードにコピーしておいてください。
 
 
-<h2><span class="short-header">CREATE AN ON-PREMISES SERVER</span>CREATE AN ON-PREMISES SERVER</h2>
+<h2><span class="short-header">内部設置型サーバーの作成</span>内部設置型サーバーの作成</h2>
 
-First, you will build a (mock) on-premises product catalog system. It
-will be fairly simple; you can see this as representing an actual
-on-premises product catalog system with a complete service surface that
-we're trying to integrate.
+まず、仮の内部設置型商品カタログ システムを構築します。かなり
+単純なものですが、これがこれから統合しようとしている完全な
+サービス機能を備えた実際の内部設置型商品カタログ システムであると
+考えてください。
 
-This project will start as a Visual Studio console application. The
-project uses the Service Bus NuGet package to include the service bus
-libraries and configuration settings. The NuGet Visual Studio extension
-makes it easy to install and update libraries and tools in Visual Studio
-and Visual Studio Express. The Service Bus NuGet package is the easiest
-way to get the Service Bus API and to configure your application with
-all of the Service Bus dependencies. For details about using NuGet and
-the Service Bus package, see [Using the NuGet Service Bus Package][].
+このプロジェクトは、Visual Studio コンソール アプリケーションとして開始します。サービス バス 
+NuGet パッケージを使用して、サービス バス ライブラリと構成設定を
+組み込みます。NuGet Visual Studio 拡張機能を使用すると、
+Visual Studio および Visual Studio Express 2012 でのライブラリやツールの
+インストールと更新を簡単に行うことができます。サービス バス NuGet パッケージは、サービス バス API を
+取得し、サービス バス依存関係をすべて備えたアプリケーションを
+構成する最も簡単な方法です。NuGet およびサービス バス パッケージの使用方法の詳細については、「[Using the NuGet Service Bus Package (NuGet サービス バス パッケージの使用)][]」を参照してください。
 
-### CREATE THE PROJECT
+### プロジェクトの作成
 
-1.  Using administrator privileges, launch either Microsoft Visual
-    Studio 2013 or Microsoft Visual Studio Express. To
-    launch Visual Studio with administrator privileges, right-click
-    **Microsoft Visual Studio 2013 (or Microsoft Visual Studio Express)** and then click **Run as administrator**.
-2.  In Visual Studio, on the **File** menu, click **New**, and then
-    click **Project**.
+1. 管理者特権を使用して、Microsoft Visual Studio 2013 または 
+    Microsoft Visual Studio Express を起動します。管理特権で 
+    Visual Studio を起動するには、**[Microsoft Visual Studio 2013 
+    (または Microsoft Visual Studio Express)]** を右クリックし、**[管理者として実行]** を
+    クリックします。
+2.  Visual Studio で、**[ファイル]** メニューの **[新規作成]** をクリックした後、
+    **[プロジェクト]** をクリックします。
 
     ![][10]
 
-3.  From **Installed Templates**, under **Visual C#**, click **Console
-    Application**. In the **Name** box, type the name
-    **ProductsServer**:
+3.  **[インストールされたテンプレート]** で **[Visual C#]#** をクリックし、
+    **[コンソール アプリケーション]** をクリックします。**[名前]** ボックスに名前として
+    「**ProductsServer**」と入力します。
 
     ![][11]
 
-4.  Click **OK** to create the **ProductsServer** project.
+4.  **[OK]** をクリックして **ProductsServer** プロジェクトを作成します。
 
-5.  In **Solution Explorer**, right-click **ProductsServer**, then
-    click **Properties**.
-6.  Click the **Application** tab on the left, then ensure that **.NET
-    Framework 4** or **.NET Framework 4.5** appears in the **Target framework:** dropdown. If not, select it from the dropdown and then click **Yes**
-    when prompted to reload the project.
+5.  **ソリューション エクスプローラー**で **[ProductsServer]** を
+    右クリックし、**[プロパティ]** をクリックします。
+6.  画面左側で **[アプリケーション]** タブをクリックし、**[ターゲット フレームワーク]** 
+    ボックスの一覧に **[.NET Framework 4]** または **[.NET Framework 4.5]** が表示されていることを確認します。表示されていない場合は、このボックスの一覧の [.NET Framework 4] を選択します。プロジェクトを読み込み直すかどうかを確認するメッセージが表示されたら、**[はい]** をクリックします。
 
     ![][12]
 
-7.  If you have already installed the NuGet package manager for Visual Studio, skip to the next step. Otherwise, visit [NuGet][] and click [Install NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c). Follow the prompts to install the NuGet package manager, then re-start Visual Studio.
+7.  既に Visual Studio 用の NuGet パッケージ マネージャーをインストールしている場合は、次の手順に進みます。まだインストールしていない場合は、[NuGet][] にアクセスし、[[Install NuGet]](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) をクリックします。メッセージに従って NuGet パッケージ マネージャーをインストールし、Visual Studio を再起動します。
 
-7.  In **Solution Explorer**, right-click **References**, then click
-    **Manage NuGet Packages**...
-8.  In the left-hand column of the NuGet dialog, click **Online**.
+7.  **ソリューション エクスプローラー**で **[参照]** を右クリックし、
+    **[NuGet パッケージの管理]** をクリックします。
+8.  NuGet ダイアログ ボックスの左側の列で、**[オンライン]** をクリックします。
 
-9. 	In the right-hand column, click the **Search** box, type "**WindowsAzure**" and select the **Windows
-    Azure Service Bus** item. Click **Install** to complete the
-    installation, then close this dialog.
+9. 	右側の列で、**[検索]** ボックスをクリックして「**WindowsAzure**」と
+    入力し、**[Azure のサービス バス]** 項目をクリックします。**[インストール]** をクリックし、インストールが
+    完了したら、このダイアログを閉じます。
 
     ![][13]
 
-    Note that the required client assemblies are now referenced.
+    これで、必要なクライアント アセンブリを参照できるようになりました。
 
-9.  Add a new class for your product contract. In **Solution Explorer**,
-    right click the **ProductsServer** project and click **Add**, then click
-    **Class**.
+9.  商品のコントラクト用に新しいクラスを追加します。**ソリューション エクスプローラー**で、
+    **[ProductsServer]** プロジェクトを右クリックし、**[追加]** を
+    クリックしてから **[クラス]** をクリックします。
 
     ![][14]
 
-10. In the **Name** box, type the name **ProductsContract.cs**. Then
-    click **Add**.
-11. In **ProductsContract.cs**, replace the namespace definition with
-    the following code, which defines the contract for the service:
+10. **[名前]** ボックスに**「ProductsContract.cs」**と入力します。**[追加]** を
+    クリックします。
+11. **ProductsContract.cs** で、名前空間の定義を次のコードに書き換えます。
+    このコードはサービスのコントラクトを定義します。
 
         namespace ProductsServer
         {
@@ -272,8 +268,8 @@ the Service Bus package, see [Using the NuGet Service Bus Package][].
             }
         }
 
-12. In Program.cs, replace the namespace definition with the following
-    code, which adds the profile service and the host for it:
+12. Program.cs で、名前空間の定義を次のコードに書き換えます。このコードは、
+    プロファイル サービスとそのホストを追加します。
 
         namespace ProductsServer
         {
@@ -326,12 +322,12 @@ the Service Bus package, see [Using the NuGet Service Bus Package][].
             }
         }
 
-13. In **Solution Explorer**, double click the **app.config** file to
-    open it in the **Visual Studio** editor. Replace the contents of
-    **&lt;system.ServiceModel>** with the following XML code. Be sure to
-    replace *yourServiceNamespace* with the name of your service
-    namespace, and *yourIssuerSecret* with the key you retrieved earlier
-    from the Azure Management Portal:
+13. **ソリューション エクスプローラー**で **app.config** ファイルを
+    ダブルクリックします。**Visual Studio** エディターが開き、このファイルが表示されます。**&lt;system.ServiceModel>** の
+    内容を次の XML コードに書き換えます。*yourServiceNamespace* は
+    実際のサービス名前空間の名前に、*yourIssuerSecret* は、
+    前の手順で Azure の管理ポータルから取得した実際のキーに
+    置き換えてください。
 
         <system.serviceModel>
           <extensions>
@@ -361,44 +357,45 @@ the Service Bus package, see [Using the NuGet Service Bus Package][].
           </behaviors>
         </system.serviceModel>
 
-14. Press **F6** or from the **Build** menu, click **Build Solution** to build the application to verify the accuracy of your work so far.
+14. **F6** キーを押すか、**[ビルド]** メニューの **[ソリューションのビルド]** をクリックしてアプリケーションをビルドし、ここまでの作業に問題がないことを確認します。
 
-<h2><span class="short-header">CREATE AN ASP.NET MVC APPLICATION</span>CREATE AN ASP.NET MVC APPLICATION</h2>
+<h2><span class="short-header">ASP.NET MVC アプリケーションの作成</span>ASP.NET MVC アプリケーションの作成</h2>
 
-In this section you will build a simple ASP.NET application that will
-display data retrieved from your product service.
+このセクションでは、商品サービスから取得したデータを
+表示する単純な ASP.NET アプリケーションを構築します。
 
-### CREATE THE PROJECT
+### プロジェクトの作成
 
-1.  Ensure that Microsoft Visual Studio 2013 is running with administrator privileges. If not, to
-    launch Visual Studio with administrator privileges, right-click
-    **Microsoft Visual Studio 2013 (or Microsoft Visual Studio Express)** and then click **Run as administrator**. The Windows
-    Azure compute emulator, discussed later in this guide, requires that
-    Visual Studio be launched with administrator privileges.
+1.  Microsoft Visual Studio 2013 が管理者特権によって実行されていることを確認します。それ以外の場合、
+    管理特権で Visual Studio を起動するには、**[Microsoft Visual Studio 2013 
+    (または Microsoft Visual Studio Express)]** を右クリックし、**[管理者として実行]** を
+    クリックします。Windows 
+    Azure コンピューティング エミュレーター (このガイドで解説します) を
+    使用するには、管理者特権で Visual Studio を起動する必要があります。
 
-2.  In Visual Studio, on the **File** menu, click **New**, and then
-    click **Project**.
+2.  Visual Studio で、**[ファイル]** メニューの **[新規作成]** をクリックした後、
+    **[プロジェクト]** をクリックします。
 
-3.  From **Installed Templates**, under **Visual C#**, click **ASP.NET Web Application**. Name the project **ProductsPortal**. Then
-    click **OK**.
+3.  **[インストールされたテンプレート]** で **[Visual C#]#** をクリックし、**[ASP.NET MVC 4 Web アプリケーション]** をクリックします。プロジェクト名として、「**ProductsPortal**」と入力します。次に、
+    **[OK]** をクリックします 
 
     ![][15]
 
-4.  From the **Select a template** list, click **MVC**,
-    then click **OK**.
+4. **[テンプレートの選択]** ボックスの一覧で **[MVC]** を 
+    クリックし、**[OK]** をクリックします。
 
     ![][16]
 
-5.  In **Solution Explorer**, right click **Models** and click **Add**,
-    then click **Class**. In the **Name** box, type the name
-    **Product.cs**. Then click **Add**.
+5.  **ソリューション エクスプローラー**で **[Models]** を右クリックし、
+    **[追加]**、**[クラス]** の順にクリックします。**[名前]** ボックスに
+    「**Product.cs**」と入力します。**[追加]** をクリックします。
 
     ![][17]
 
-### MODIFY THE WEB APPLICATION
+### Web アプリケーションの変更
 
-1.  In the Product.cs file in Visual Studio, replace the existing
-    namespace definition with the following code:
+1. Visual Studio で、Product.cs ファイルの既存の
+    名前空間定義を、次のコードに置き換えます。
 
         // Declare properties for the products inventory
         namespace ProductsWeb.Models
@@ -411,8 +408,8 @@ display data retrieved from your product service.
             }
         }
 
-2.  In the HomeController.cs file in Visual Studio, replace the existing
-    namespace definition with the following code:
+2.  Visual Studio で、HomeController.cs ファイルの既存の名前空間定義を、
+    次のコードに書き換えます。
 
         namespace ProductsWeb.Controllers
         {
@@ -433,24 +430,25 @@ display data retrieved from your product service.
             }
         }
 
-3.  In **Solution Explorer**, expand Views\Shared:
+3.  **ソリューション エクスプローラー**で Views\Shared を展開します。
 
     ![][18]
 
-4.  Next, double-click _Layout.cshtml to open it in the Visual Studio editor.
+4.  次に、_Layout.cshtml をダブルクリックします。Visual Studio エディターが開き、このファイルが表示されます。
 
-5.  Change all occurrences of **My ASP.NET Application** to **LITWARE's Products**.
+5.  **My ASP.NET MVC Application** となっている箇所をすべて 
+    **LITWARE's Products** に置き換えます。
 
-6. Remove the **Home**, **About**, and **Contact** links. Delete the highlighted code:
+6. **Home**、**About**、**Contact** の各リンクを削除します。以下の強調表示されたコードを削除してください。
 
 	![][41]
 
-7.  In **Solution Explorer**, expand Views\Home:
+7.  **ソリューション エクスプローラー**で Views\Home を展開します。
 
     ![][20]
 
-8.  Double-click Index.cshtml to open it in the Visual Studio editor.
-    Replace the entire contents of the file with the following code:
+8.  Index.cshtml をダブルクリックして、Visual Studio エディターで開きます。
+    ファイルの内容全体を次のコードに置き換えます。
 	
 		@model IEnumerable<ProductsWeb.Models.Product>
 
@@ -485,83 +483,83 @@ display data retrieved from your product service.
 		</table>
 
 
-9.  To verify the accuracy of your work so far, you can press **F6** or
-    **Ctrl+Shift+B** to build the project.
+9.  ここまでの作業が正確にできていることを確認するために、**F6** キーか 
+    **Ctrl + Shift + B** キーを押して、プロジェクトをビルドします。
 
 
-### RUN YOUR APPLICATION LOCALLY
+### ローカルでのアプリケーションの実行
 
-Run the application to verify that it works.
+アプリケーションを実行して、動作を確認します。
 
-1.  Ensure that **ProductsPortal** is the active project. Right-click
-    the project name in **Solution Explorer** and select **Set As
-    Startup Project**
-2.  Within **Visual Studio**, press **F5**.
-3.  Your application should appear running in a browser:
+1.  **ProductsPortal** がアクティブなプロジェクトであることを確認します。**ソリューション エクスプローラー**で、
+    プロジェクト名を右クリックし、**[スタートアップ プロジェクトに設定]** を
+    クリックします。
+2.  **Visual Studio** で、**F5** キーを押します。
+3.  アプリケーションがブラウザーに表示され、実行されます。
 
     ![][21]
 
-    <h2><span class="short-header">DEPLOY TO AZURE</span>MAKE YOUR APPLICATION READY TO DEPLOY TO AZURE</h2>
+    <h2><span class="short-header">Azure へのデプロイ</span>アプリケーションを Azure にデプロイするための準備</h2>
 
-    You can deploy your application to an Azure Cloud Service or to an Azure Web Site. To learn more about the difference between web sites and cloud services, see [Azure Execution Models][executionmodels]. To learn how to deploy the application to an Azure Web Site, see [Deploying an ASP.NET Web Application to an Azure Web Site](http://www.windowsazure.com/en-us/develop/net/tutorials/get-started/). This section contains detailed steps for deploying the application to an Azure Cloud Service.
+    アプリケーションは、Azure クラウド サービスまたは Azure の Web サイトにデプロイできます。Web サイトとクラウド サービスの違いについては、Azure 実行モデルに関するページを参照してください。Azure の Web サイトにアプリケーションをデプロイする方法については、[ASP.NET Web アプリケーションを Azure の Web サイトにデプロイするためのページ](http://www.windowsazure.com/ja-jp/develop/net/tutorials/get-started/) を参照してください。このセクションには、アプリケーションを Azure クラウド サービスにデプロイする詳細な手順が記載されています。
 
-    To deploy your application to a cloud service, you'll add a cloud service project deployment project to the solution.
-    The deployment project contains configuration
-    information that is needed to properly run your application in the
-    cloud.
+    アプリケーションをクラウド サービスにデプロイするには、クラウド サービス プロジェクトのデプロイ プロジェクトをソリューションに追加します。
+    このデプロイ プロジェクトには、アプリケーションを
+    クラウドで適切に実行するために必要な構成情報が
+    含まれています。
 
-    1.  To make your application deployable to the cloud, right-click
-        the **ProductsPortal** project in **Solution Explorer** and
-        click **Convert**, then click **Convert to Azure Cloud Service Project**.
+    1.  アプリケーションをクラウドにデプロイできるようにするには、
+        **ソリューション エクスプローラー**で **ProductsPortal** プロジェクトを
+        右クリックし、**[変換]**、**[Azure クラウド サービス プロジェクトへの変換]** の順にクリックします。
 
         ![][22]
 
-    2.  To test your application, press **F5**.
-    3.  This will start the Azure compute emulator. The compute
-        emulator uses the local computer to emulate your application
-        running in Azure. You can confirm the emulator has
-        started by looking at the system tray:
+    2.  アプリケーションをテストするには、**F5** キーを押します。
+    3.  これにより、Azure コンピューティング エミュレーターが起動します。コンピューティング 
+        エミュレーターでは、Azure でのアプリケーションの実行を
+        ローカル コンピューターでエミュレートします。エミュレーターが起動されたことは、
+        システム トレイの表示によって確認できます。:
 
         ![][23]
 
-    4.  A browser will still display your application running locally,
-        and it will look and function the same way it did when you ran
-        it earlier as a regular ASP.NET MVC 4 application.
+    4. この場合も、ブラウザーにはローカルで実行中のアプリケーションが
+        表示されます。これは、先ほど通常の ASP.NET MVC 4 アプリケーションとして
+        実行したときと同じように表示され、動作します。
 
-    <h2><span class="short-header">PUT THE PIECES TOGETHER</span>PUT THE PIECES TOGETHER</h2>
+    <h2><span class="short-header">各部分の統合</span>各部分の統合</h2>
 
-    The next step is to hook up the on-premises products server with the
-    ASP.NET MVC application.
+    次の手順では、内部設置型の商品サーバーと ASP.NET MVC 
+    アプリケーションを連結します。
 
-    1.  If it is not already open, in Visual Studio re-open the
-        **ProductsPortal** project you created in the "Creating an
-        ASP.NET MVC Application" section.
+    1. 「ASP.NET MVC 4 アプリケーションの作成」セクションで作成した 
+        **ProductsPortal** プロジェクトを閉じている場合は、
+        Visual Studio でもう一度開きます。
 
-    2.  Similar to the step in the "Create an On-Premises Server"
-        section, add the NuGet package to the project References. In
-        Solution Explorer, right-click **References**, then click
-        **Manage NuGet Packages**.
+    2. 「内部設置型サーバーの作成」セクションに記載されている手順に従い、
+        NuGet パッケージを Reference プロジェクトに追加します。ソリューション 
+        エクスプローラーで **[参照]** を右クリックし、
+        **[NuGet パッケージの管理]** をクリックします。
 
-    3.  Search for "WindowsAzure.ServiceBus" and select the **Windows
-        Azure Service Bus** item. Then complete the installation and
-        close this dialog.
+    3.  "WindowsAzure.ServiceBus" を検索し、
+        **[Azure Service Bus]** 項目をクリックします。次に、インストールを完了し、
+        このダイアログを閉じます。
 
-    4.  In Solution Explorer, right-click the **ProductsPortal**
-        project, then click **Add**, then **Existing Item**.
+    4.  ソリューション エクスプローラーで **ProductsPortal** 
+        プロジェクトを右クリックし、**[追加]** をクリックしてから **[既存の項目]** をクリックします。
 
-    5.  Navigate to the **ProductsContract.cs** file from the
-        **ProductsServer** console project. Click to highlight
-        ProductsContract.cs. Click the down arrow next to **Add**, then
-        click **Add as Link**.
+    5. **ProductsServer** コンソール プロジェクトの 
+        **ProductsContract.cs** ファイルに移動します。ProductsContract.cs を
+        クリックして強調表示します。**[追加]** の横の下向き矢印をクリックし、
+        **[リンクとして追加]** をクリックします。
 
         ![][24]
 
-    6.  Now open the **HomeController.cs** file in the Visual Studio
-        editor and replace the namespace definition with the following
-        code. Be sure to replace *yourServiceNamespace* with the name of
-        your service namespace, and *yourIssuerSecret* with your key.
-        This will enable the client to call the on-premises service,
-        returning the result of the call.
+    6.  次に、Visual Studio エディターで **HomeController.cs** 
+        ファイルを開き、名前空間定義を次のコードに
+        書き換えます。*yourServiceNamespace* は実際のサービス名前空間の名前、
+        *yourIssuerSecret* は実際のキーに置き換えてください。
+        これで、クライアントから内部設置型サービスを呼び出し、
+        その結果を返すことができます。
 
             namespace ProductsWeb.Controllers
             {
@@ -601,160 +599,162 @@ Run the application to verify that it works.
                 }
             }
 
-    7.  In Solution Explorer, right-click on the **ProductsPortal**
-        solution, click **Add**, then click **Existing Project**.
+    7. ソリューション エクスプローラーで **ProductsPortal** ソリューションを
+        右クリックし、**[追加]**、**[既存のプロジェクト]** の順にクリックします。
 
-    8.  Navigate to the **ProductsServer** project, then double-click
-        the **ProductsServer.csproj** solution file to add it.
+    8.  **ProductsServer** プロジェクトに移動し、**ProductsServer.csproj** 
+        ソリューション ファイルをダブルクリックして追加します。
 
-    9.  In Solution Explorer, right-click the **ProductsPortal**
-        solution and click **Properties**.
+    9.  ソリューション エクスプローラーで **ProductsPortal** 
+        ソリューションを右クリックし、**[プロパティ]** をクリックします。
 
-    10. On the left-hand side, click **Startup Project**. On the
-        right-hand side, cick **Multiple startup projects**. Ensure that
-        **ProductsServer**, **ProductsPortal.Azure**, and
-        **ProductsPortal** appear, in that order, with **Start** set as
-        the action for **ProductsServer** and **ProductsPortal.Azure**,
-        and **None** set as the action for **ProductsPortal**. For
-        example:
+    10. 左側で、**[スタートアップ プロジェクト]** をクリックします。右側で、
+        **[マルチ スタートアップ プロジェクト]** をクリックします。**ProductsServer**、
+        **ProductsPortal.Azure**、および **ProductsPortal** がこの順序で
+        表示され、**ProductsServer** および **ProductsPortal.Azure** の
+        動作としては **[開始]** が設定され、**ProductsPortal** の動作としては 
+        **[なし]** が設定されているようにしてください。次に
+        例を示します。
 
         ![][25]
 
-    11. Still in the Properties dialog, click **ProjectDependencies** on
-        the left-hand side.
+    11. 引き続き、[プロパティ] ダイアログ ボックスの左側で、
+        **[ProjectDependencies]** をクリックします。
 
-    12. In the **Projects** dropdown, click
-        **ProductsServer**. Ensure that **ProductsPortal** is unchecked,
-        and **ProductsPortal.Azure** is checked. Then click **OK**:
+    12. **[プロジェクト]** ボックスの一覧の 
+        **[ProductsServer]** をクリックします。**[ProductsPortal]** がオフ、**[ProductsPortal.Azure]** が
+        オンになっていることを確認します。次に、**[OK]** をクリックします。
 
         ![][26]
 
-    <h2><span class="short-header">RUN THE APPLICATION</span>RUN THE APPLICATION</h2>
+    <h2><span class="short-header">アプリケーションの実行</span>アプリケーションの実行</h2>
 
-    1.  From the **File** menu in Visual Studio, click **Save All**.
+    1.  Visual Studio の **[ファイル]** メニューで **[すべて保存]** をクリックします。
 
-    2.  Press **F5** to build and run the application. The on-premises
-        server (the **ProductsServer** console application) should start
-        first, then the **ProductsWeb** application should start in a
-        browser window, as shown in the screenshot below. This time, you
-        will see that the product inventory lists data retrieved from
-        the product service on-premises system.
+    2.  **F5** キーを押して、アプリケーションをビルドおよび実行します。まず、
+        内部設置型サーバー (**ProductsServer** コンソール アプリケーション) を
+        開始し、次に **ProductsWeb** アプリケーションをブラウザー ウィンドウで
+        開始する必要があります。次に示すスクリーンショットを参照してください。この時点で、
+        商品サービスの内部設置型システムから取得された商品在庫一覧データが
+        表示されます。
 
         ![][1]
 
-    <h2><span class="short-header">DEPLOY THE APPLICATION</span>DEPLOY YOUR APPLICATION TO AZURE</h2>
+    <h2><span class="short-header">アプリケーションの展開</span>アプリケーションを Azure に展開</h2>
 
-    1.  Right-click on the **ProductsPortal** project in **Solution
-        Explorer** and click **Publish to Azure**.
+    1.  **ソリューション エクスプローラー**で **ProductsPortal** プロジェクトを
+        右クリックし、**[Azure への発行]** をクリックします。
 
-    2.  You might have to sign in to see all your subscriptions.
+    2.  すべてのサブスクリプションを表示するために、サインインする必要が生じることがあります。
 
-        Click **Sign in to see more subscriptions**:
+        **[他のサブスクリプションを表示するためにサインイン]** をクリックします。
 
         ![][27]
 
-    3.  Sign-in using your Microsoft Account.
+    3.  Microsoft アカウントを使用してサインインします。
 
 
-    8.  Click **Next**. If your subscription doesn't already contain any hosted
-        services, you will be asked to create one. The hosted service
-        acts as a container for your application within your Windows
-        Azure subscription. Enter a name that identifies your
-        application and choose the region for which the application
-        should be optimized. (You can expect faster loading times for
-        users accessing it from this region.)
+    8.  **[次へ]** をクリックします。サブスクリプションにホステッド サービスがまだ含まれていない場合は、
+        ホステッド サービスの作成を求めるメッセージが表示されます。ホステッド サービスは、
+        Azure サブスクリプションにおけるアプリケーションの
+        コンテナーとして機能します。アプリケーションを
+        識別する名前を入力し、アプリケーションが最適化される対象リージョンを
+        選択します (このリージョンからアプリケーションにアクセスする
+        ユーザーは、読み込み時間が短くなることが期待できます)。
 
         ![][32]
 
-    9.  Select the hosted service you would like to publish your
-        application to. Keep the defaults as shown below for the
-        remaining settings. Click **Next**:
+    9.  アプリケーションの発行先のホステッド サービスを
+        選択します。その他の設定については、次の図に示す既定の
+        ままにします。**[次へ]** をクリックします。
 
         ![][33]
 
-    10. On the last page, click **Publish** to start the deployment
-        process:
+    10. 最後のページで **[発行]** をクリックして、デプロイ プロセスを
+        開始します。
 
         ![][34]
 
-        This will take approximately 5-7 minutes. Since this is the
-        first time you are publishing, Azure provisions a
-        virtual machine (VM), performs security hardening, creates a Web
-        role on the VM to host your application, deploys your code to
-        that Web role, and finally configures the load balancer and
-        networking so your application is available to the public.
+        これには約 5 ～ 7 分かかります。これは最初の発行であるため、
+        Azure が仮想マシン (VM) を準備して、
+        セキュリティを強化し、アプリケーションをホストするための 
+        Web ロールを VM 上に作成して、その Web ロールにコードを
+        展開します。最後に、ロード バランサーと
+        ネットワークを構成して、アプリケーションを公開します。
 
-    11. While publishing is in progress you will be able to monitor the
-        activity in the **Azure Activity Log** window, which is
-        typically docked to the bottom of Visual Studio or Visual Web
-        Developer:
+    11. 発行の処理中は、**[Azure のアクティビティ ログ]** 
+        ウィンドウでアクティビティを監視できます。通常、
+        このウィンドウは Visual Studio または Visual Web Developer の
+        下部にドッキングされています。
 
         ![][35]
 
-    12. When deployment is complete, you can view your Web site by
-        clicking the **Web site URL** link in the monitoring window.
+    12. 展開が完了した後、監視ウィンドウで **[Web サイトの URL]** 
+        リンクをクリックすると、作成した Web サイトが表示されます。
 
         ![][36]
 
-        Your Web site depends on your on-premises server, so you must
-        run the **ProductsServer** application locally for the Web site
-        to function properly. As you perform requests on the cloud Web
-        site, you will see requests coming into your on-premises console
-        application, as indicated by the "GetProducts called" output
-        displayed in the screenshot below.
+        Web サイトは内部設置型サーバーに依存するため、この Web サイトを
+        正しく機能させるには、**ProductsServer** アプリケーションを
+        ローカルに実行する必要があります。クラウドの Web サイトで要求を実行すると、
+        次のスクリーンショットに表示された "GetProducts" の出力に
+        示すように、内部設置型コンソール アプリケーションで要求が呼び出される
+        ことを確認できます。
 
         ![][37]
 
-To learn more about the difference between web sites and cloud services, see [Azure Execution Models][executionmodels].
+Web サイトとクラウド サービスの違いについては、「[Azure 実行モデル][executionmodels]」を参照してください。
 
-<h2><span class="short-header">DELETE THE APPLICATION</span>STOP AND DELETE YOUR APPLICATION</h2>
+<h2><span class="short-header">アプリケーションの削除</span>アプリケーションの停止と削除</h2>
 
-After deploying your application, you may want to disable it so you
-can build and deploy other applications within the free 750
-hours/month (31 days/month) of server time.
+アプリケーションのデプロイ後に、無料サーバー時間である 
+750 時間/月 (31 日/月) の範囲内で他のアプリケーションを
+作成してデプロイするには、そのアプリケーションを
+無効にする必要があります。
 
-Azure bills web role instances per hour of server time
-consumed. Server time is consumed once your application is deployed,
-even if the instances are not running and are in the stopped state.
-A free account includes 750 hours/month (31 days/month) of dedicated
-virtual machine server time for hosting these web role instances.
+Azure では、消費されたサーバー時間の 1 時間単位の
+料金が Web ロール インスタンスに課金されます。インスタンスが実行されていない
+場合や停止状態の場合でも、アプリケーションを展開した直後から
+サーバー時間が消費されます。
+無料アカウントには、専用仮想マシンで Web ロール インスタンスをホストするサーバー時間として 1 か月あたり 750 時間 (1 か月は 31 日換算) が含まれています。
 
-The following steps show you how to stop and delete your
-application.
+次のステップでは、アプリケーションの停止と削除の方法を
+示します。
 
-1.  Login to the [Azure Management Portal],
-        click on Cloud Services, then click the name of your service.
+1.  [Azure 管理ポータル][]にログオンします
+        [クラウド サービス] をクリックして、クラウド サービス名をクリックします。
 
-2.  Click the **Dashboard** tab, and then click on **Stop** to temporarily suspend your application. You will
-        be able to start it again just by clicking on Start. Click **Delete** to completely remove your application from Azure
-        with no ability to restore it.
+2.  **[ダッシュボード]** タブをクリックし、**[停止]** をクリックすると、アプリケーションが一時的に停止されます。[開始] を
+        クリックするだけで、再度開始することができます。**[削除]** を
+        クリックすると、アプリケーションが Azure から完全に削除されます。
+        復元することはできません。
 
 	![][43]
 
-<h2><a name="nextsteps"></a><span class="short-header">Next steps</span>Next steps</h2>  
+<h2><a name="nextsteps"></a><span class="short-header">次のステップ</span>次のステップ</h2>
 
-To learn more about Service Bus, see the following resources:  
+サービス バスの詳細については、次のリソースを参照してください。
   
-* [Azure Service Bus][sbmsdn]  
-* [Service Bus How To's][sbwacom]  
-* [How to Use Service Bus Queues][sbwacomqhowto]  
+* [Azure のサービス バス][sbmsdn]
+* [サービス バスの利用方法に関するページ][sbwacom]
+* [サービス バス キューの使用方法][sbwacomqhowto]
 
 
   [0]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
   [1]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/App2.png
-  [Get Tools and SDK]: http://go.microsoft.com/fwlink/?LinkId=271920
+  [ツールと SDK の入手]: http://go.microsoft.com/fwlink/?LinkId=271920
   [NuGet]: http://nuget.org
   [2]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/getting-started-3.png
   [3]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/getting-started-4-2-WebPI.png
   
   
-  [Azure Management Portal]: http://manage.windowsazure.com
+  [Azure 管理ポータル]: http://manage.windowsazure.com
   [5]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/sb-queues-03.png
   [6]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/sb-queues-04.png
   
   
   
-  [Using the NuGet Service Bus Package]: http://go.microsoft.com/fwlink/?LinkId=234589
+  [Using the NuGet Service Bus Package (NuGet サービス バス パッケージの使用)]: http://go.microsoft.com/fwlink/?LinkId=234589
   [10]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/hy-web-1.png
   [11]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/hy-con-1.png
   [12]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/hy-con-3.png
@@ -791,7 +791,8 @@ To learn more about Service Bus, see the following resources:
   [43]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-43.png
   [44]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/VSProperties.png
 
-  [sbmsdn]: http://msdn.microsoft.com/en-us/library/windowsazure/ee732537.aspx  
-  [sbwacom]: /en-us/manage/services/service-bus/  
-  [sbwacomqhowto]: /en-us/develop/net/how-to-guides/service-bus-queues/
-  [executionmodels]: http://www.windowsazure.com/en-us/develop/net/fundamentals/compute/
+  [sbmsdn]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee732537.aspx  
+  [sbwacom]: /ja-jp/manage/services/service-bus/  
+  [sbwacomqhowto]: /ja-jp/develop/net/how-to-guides/service-bus-queues/
+  [executionmodels]: http://www.windowsazure.com/ja-jp/develop/net/fundamentals/compute/
+

@@ -1,80 +1,80 @@
-<properties title="How to use blob storage (PHP) - Azure feature guide" pageTitle="How to use blob storage (PHP) | Microsoft Azure" metaKeywords="Azure blob service PHP, Azure blobs PHP" description="Learn how to use the Azure Blob service to upload, list, download, and delete blobs. Code samples are written in PHP." documentationCenter="PHP" services="storage" videoId="" scriptId="" solutions="" authors="waltpo" manager="bjsmith" editor="mollybos" />
+<properties title="BLOB ストレージの使用方法 (PHP) - Azure の機能ガイド" pageTitle="BLOB ストレージの使用方法 (PHP) | Microsoft Azure" metaKeywords="Azure BLOB サービス PHP, Azure BLOB PHP" description="Azure BLOB サービスを使用して、BLOB をアップロード、列挙、ダウンロード、削除する方法について説明します。コード サンプルは PHP で記述されています。" documentationCenter="PHP" services="storage" videoId="" scriptId="" solutions="" authors="waltpo" manager="bjsmith" editor="mollybos" />
 
-#How to use the Blob service from PHP
+#PHP から BLOB サービスを使用する方法
 
-This guide will show you how to perform common scenarios using the Azure Blob service. The samples are written in PHP and use the [Azure SDK for PHP] [download]. The scenarios covered include **uploading**, **listing**, **downloading**, and **deleting** blobs. For more information on blobs, see the [Next Steps](#NextSteps) section.
+このガイドでは、Azure BLOB サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは PHP で記述され、[Azure SDK for PHP] [ダウンロード]を利用しています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。BLOB の詳細については、「[次のステップ](#NextSteps)」のセクションを参照してください。
 
-##Table of Contents
+##目次
 
-* [What is Blob Storage](#what-is)
-* [Concepts](#concepts)
-* [Create an Azure storage account](#CreateAccount)
-* [Create a PHP application](#CreateApplication)
-* [Configure your application to access the Blob Service](#ConfigureStorage)
-* [Setup an Azure storage connection](#ConnectionString)
-* [How to: Create a container](#CreateContainer)
-* [How to: Upload a Blob into a Container](#UploadBlob)
-* [How to: List the Blobs in a container](#ListBlobs)
-* [How to: Download a Blob](#DownloadBlob)
-* [How to: Delete a Blob](#DeleteBlob)
-* [How to: Delete a Blob container](#DeleteContainer)
-* [Next steps](#NextSteps)
+* [BLOB ストレージとは](#what-is)
+* [概念](#concepts)
+* [Azure のストレージ アカウントの作成](#CreateAccount)
+* [PHP アプリケーションの作成](#CreateApplication)
+* [BLOB サービスにアクセスするようにアプリケーションを構成する](#ConfigureStorage)
+* [Azure のストレージ接続文字列の設定](#ConnectionString)
+* [方法: コンテナーを作成する](#CreateContainer)
+* [方法: コンテナーに BLOB をアップロードする](#UploadBlob)
+* [方法: コンテナー内の BLOB を一覧表示する](#ListBlobs)
+* [方法: BLOB をダウンロードする](#DownloadBlob)
+* [方法: BLOB を削除する](#DeleteBlob)
+* [方法: BLOB コンテナーを削除する](#DeleteContainer)
+* [次の手順](#NextSteps)
 
 [WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
-<h2><a id="CreateAccount"></a>Create an Azure storage account</h2>
+<h2><a id="CreateAccount"></a>Azure のストレージ アカウントの作成</h2>
 
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-<h2><a id="CreateApplication"></a>Create a PHP application</h2>
+<h2><a id="CreateApplication"></a>PHP アプリケーションの作成</h2>
 
-The only requirement for creating a PHP application that accesses the Azure Blob service is the referencing of classes in the Azure SDK for PHP from within your code. You can use any development tools to create your application, including Notepad.
+Azure BLOB サービスにアクセスする PHP アプリケーションを作成するための要件は、コード内から Azure SDK for PHP のクラスを参照することのみです。アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。
 
-In this guide, you will use service features which can be called within a PHP application locally, or in code running within an Azure web role, worker role, or web site.
+このガイドで使用するサービス機能は、PHP アプリケーション内でローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト上で実行されるコード内で呼び出すこともできます。
 
-<h2><a id="GetClientLibrary"></a>Get the Azure Client Libraries</h2>
+<h2><a id="GetClientLibrary"></a>Azure クライアント ライブラリの入手</h2>
 
 [WACOM.INCLUDE [get-client-libraries](../includes/get-client-libraries.md)]
 
-<h2><a id="ConfigureStorage"></a>Configure your application to access the Blob service</h2>
+<h2><a id="ConfigureStorage"></a>BLOB サービスにアクセスするようにアプリケーションを構成する</h2>
 
-To use the Azure Blob service APIs, you need to:
+Azure BLOB サービス API を使用するには、次の要件があります。
 
-1. Reference the autoloader file using the [require_once][require_once] statement, and
-2. Reference any classes you might use.
+1. [require_once][require_once] ステートメントを使用してオートローダー ファイルを参照する
+2. 使用する可能性のあるクラスを参照する
 
-The following example shows how to include the autoloader file and reference the **ServicesBuilder** class.
+次の例では、オートローダー ファイルをインクルードし、**ServicesBuilder** クラスを参照する方法を示しています。
 
 > [WACOM.NOTE]
-> This example (and other examples in this article) assume you have installed the PHP Client Libraries for Azure via Composer. If you installed the libraries manually or as a PEAR package, you will need to reference the `WindowsAzure.php` autoloader file.
+>  この例 (およびこの記事のその他の例) では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。ライブラリを手動でまたは PEAR パッケージとしてインストールした場合は、`WindowsAzure.php` オートローダー ファイルを参照する必要があります。
 
 	require_once 'vendor\autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
 
 
-In the examples below, the `require_once` statement will be shown always, but only the classes necessary for the example to execute will be referenced.
+この後のコード例では、`require_once` ステートメントが常に記述されていますが、コード例の実行に必要なクラスのみ参照されます。
 
-<h2><a id="ConnectionString"></a>Setup an Azure storage connection</h2>
+<h2><a id="ConnectionString"></a>Azure のストレージ接続文字列の設定</h2>
 
-To instantiate an Azure Blob service client you must first have a valid connection string. The format for the blob service connection string is:
+Azure BLOB サービス クライアントをインスタンス化するには、まず有効な接続文字列が必要です。BLOB サービスの接続文字列の形式は次のとおりです。
 
-For accessing a live service:
+ライブ サービスにアクセスする場合: 
 
 	DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]
 
-For accessing the emulator storage:
+エミュレーター ストレージにアクセスする場合: 
 
 	UseDevelopmentStorage=true
 
 
-To create any Azure service client you need to use the **ServicesBuilder** class. You can:
+いずれの Azure サービス クライアントを作成するにも、**ServicesBuilder** クラスを使用する必要があります。そのための方法は次のとおりです。
 
-* pass the connection string directly to it or
-* use the **CloudConfigurationManager (CCM)** to check multiple external sources for the connection string:
-	* by default it comes with support for one external source - environmental variables
-	* you can add new sources by extending the **ConnectionStringSource** class
+* 接続文字列を直接渡す
+* **CloudConfigurationManager (CCM)** を使用して複数の外部ソースに対して接続文字列を確認する
+	* 既定では、1 つの外部ソース (環境変数) のみサポートされています。- 
+	* **ConnectionStringSource** クラスを継承して新しいソースを追加できます。
 
-For the examples outlined here, the connection string will be passed directly.
+ここで概説している例では、接続文字列を直接渡します。
 
 	require_once 'vendor\autoload.php';
 
@@ -82,9 +82,9 @@ For the examples outlined here, the connection string will be passed directly.
 
 	$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
 
-<h2><a id="CreateContainer"></a>How to: Create a container</h2>
+<h2><a id="CreateContainer"></a>方法: コンテナーを作成する</h2>
 
-A **BlobRestProxy** object lets you create a blob container with the **createContainer** method. When creating a container, you can set options on the container, but doing so is not required. (The example below shows how to set the container ACL and container metadata.)
+**BlobRestProxy** オブジェクトの **createContainer** メソッドを使用して BLOB コンテナーを作成できます。コンテナーの作成時にコンテナーのオプションを設定できますが、この設定は必須ではありません (次の例では、コンテナーの ACL とメタデータを設定する方法を示しています)。
 
 	require_once 'vendor\autoload.php';
 
@@ -128,19 +128,19 @@ A **BlobRestProxy** object lets you create a blob container with the **createCon
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179439.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179439.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-Calling **setPublicAccess(PublicAccessType::CONTAINER\_AND\_BLOBS)** makes the container and blob data accessible via anonymous requests. Calling **setPublicAccess(PublicAccessType::BLOBS_ONLY)** makes only blob data accessible via anonymous requests. For more information about container ACLs, see [Set Container ACL (REST API)][container-acl].
+**setPublicAccess(PublicAccessType::CONTAINER\_AND\_BLOBS)** の呼び出しにより、匿名の要求でコンテナーと BLOB データにアクセス可能になります。**setPublicAccess(PublicAccessType::BLOBS_ONLY)** の呼び出しにより、匿名の要求で BLOB データにのみアクセス可能になります。コンテナー ACL の詳細については、「[Set Container ACL (REST API)][container-acl]」を参照してください。
 
-For more information about Blob service error codes, see [Blob Service Error Codes][error-codes].
+BLOB サービスのエラー コードの詳細については、「[BLOB サービスのエラー コード][error-codes]」を参照してください。
 
-<h2><a id="UploadBlob"></a>How to: Upload a Blob into a container</h2>
+<h2><a id="UploadBlob"></a>方法: コンテナーに BLOB をアップロードする</h2>
 
-To upload a file as a blob, use the **BlobRestProxy->createBlockBlob** method. This operation will create the blob if it doesn�t exist, or overwrite it if it does. The code example below assumes that the container has already been created and uses [fopen][fopen] to open the file as a stream.
+BLOB としてファイルをアップロードするには、**BlobRestProxy->createBlockBlob** メソッドを使用します。この処理により、BLOB が存在しない場合は作成され、存在する場合は上書きされます。次のコード例では、コンテナーが既に作成されていることを前提として、[fopen][fopen] を使用してストリームとしてファイルを開いています。
 
 	require_once 'vendor\autoload.php';
 
@@ -161,17 +161,17 @@ To upload a file as a blob, use the **BlobRestProxy->createBlockBlob** method. T
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179439.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179439.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-Note that the example above uploads a blob as a stream. However, a blob can also be uploaded as a string using, for example, the [file\_get\_contents][file_get_contents] function. To do this, change `$content = fopen("c:\myfile.txt", "r");` in the example above to `$content = file_get_contents("c:\myfile.txt");`.
+この例では、ストリームとして BLOB をアップロードしていることに注意してください。ただし BLOB は、[file\_get\_contents][file_get_contents] 関数などを使用して、文字列としてアップロードすることもできます。そのためには、この例で `$content = fopen("c:\myfile.txt", "r");` を `$content = file_get_contents("c:\myfile.txt");` に変更します。
 
-<h2><a id="ListBlobs"></a>How to: List the Blobs in a container</h2>
+<h2><a id="ListBlobs"></a>方法: コンテナー内の BLOB を一覧表示する</h2>
 
-To list the blobs in a container, use the **BlobRestProxy->listBlobs** method with a **foreach** loop to loop through the result. The following code outputs the name of each blob in a container and its URI to the browser.
+コンテナー内の BLOB を列挙するには、**BlobRestProxy->listBlobs** メソッドを **foreach** ループで使用して、結果をループ処理します。次のコードでは、コンテナー内の各 BLOB の名前とその URI をブラウザーに出力しています。
 
 	require_once 'vendor\autoload.php';
 
@@ -195,16 +195,16 @@ To list the blobs in a container, use the **BlobRestProxy->listBlobs** method wi
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179439.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179439.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
 
-<h2><a id="DownloadBlob"></a>How to: download a Blob</h2>
+<h2><a id="DownloadBlob"></a>方法: BLOB をダウンロードする</h2>
 
-To download a blob, call the **BlobRestProxy->getBlob** method, then call the **getContentStream** method on the resulting **GetBlobResult** object.
+BLOB をダウンロードするには、**BlobRestProxy->getBlob** メソッドを呼び出し、結果として返された **GetBlobResult** オブジェクトの **getContentStream** メソッドを呼び出します。
 
 	require_once 'vendor\autoload.php';
 
@@ -223,17 +223,17 @@ To download a blob, call the **BlobRestProxy->getBlob** method, then call the **
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179439.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179439.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-Note that the example above gets a blob as a stream resource (the default behavior). However, you can use the [stream\_get\_contents][stream-get-contents] function to convert the returned stream to a string.
+この例では、ストリーム リソースとして BLOB を取得していることに注意してください (既定の動作)。ただし [stream\_get\_contents][stream-get-contents] 関数を使用して、返されたストリームを文字列に変換できます。
 
-<h2><a id="DeleteBlob"></a>How to: Delete a Blob</h2>
+<h2><a id="DeleteBlob"></a>方法: BLOB を削除する</h2>
 
-To delete a blob, pass the container name and blob name to **BlobRestProxy->deleteBlob**. 
+BLOB を削除するには、コンテナー名と BLOB 名を **BlobRestProxy->deleteBlob** に渡します。
 
 	require_once 'vendor\autoload.php';
 
@@ -251,15 +251,15 @@ To delete a blob, pass the container name and blob name to **BlobRestProxy->dele
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179439.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179439.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-<h2><a id="DeleteContainer"></a>How to: Delete a Blob container</h2>
+<h2><a id="DeleteContainer"></a>方法: BLOB コンテナーを削除する</h2>
 
-Finally, to delete a blob container, pass the container name to **BlobRestProxy->deleteContainer**.
+最後に、BLOB コンテナーを削除するには、コンテナー名を **BlobRestProxy->deleteContainer** に渡します。
 
 	require_once 'vendor\autoload.php';
 
@@ -277,26 +277,27 @@ Finally, to delete a blob container, pass the container name to **BlobRestProxy-
 	catch(ServiceException $e){
 		// Handle exception based on error codes and messages.
 		// Error codes and messages are here: 
-		// http://msdn.microsoft.com/en-us/library/windowsazure/dd179439.aspx
+		// http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179439.aspx
 		$code = $e->getCode();
 		$error_message = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
 	}
 
-<h2><a id="NextSteps"></a>Next steps</h2>
+<h2><a id="NextSteps"></a>次の手順</h2>
 
-Now that you've learned the basics of the Azure Blob service, follow these links to learn how to do more complex storage tasks.
+これで、Azure BLOB サービスの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
-- See the MSDN Reference: [Storing and Accessing Data in Azure] []
-- Visit the Azure Storage Team Blog: <http://blogs.msdn.com/b/windowsazurestorage/>
-- See the PHP block blob example at <https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php>.
-- See the PHP page blob example at <https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php>
+- MSDN リファレンス: [Azure のデータの格納とアクセス] []
+- Azure のストレージ チーム ブログ: <http://blogs.msdn.com/b/windowsazurestorage/>
+- PHP ブロック BLOB の例: <https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php>.
+- PHP ページ BLOB の例: <https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php>
 
-[download]: http://go.microsoft.com/fwlink/?LinkID=252473
-[Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
-[container-acl]: http://msdn.microsoft.com/en-us/library/windowsazure/dd179391.aspx
-[error-codes]: http://msdn.microsoft.com/en-us/library/windowsazure/dd179439.aspx
+[ダウンロード]: http://go.microsoft.com/fwlink/?LinkID=252473
+[Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+[container-acl]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179391.aspx
+[error-codes]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179439.aspx
 [file_get_contents]: http://php.net/file_get_contents
 [require_once]: http://php.net/require_once
 [fopen]: http://www.php.net/fopen
 [stream-get-contents]: http://www.php.net/stream_get_contents
+

@@ -1,16 +1,16 @@
-<properties linkid="develop-mobile-tutorials-schedule-backend-tasks" urlDisplayName="Schedule Backend Tasks" pageTitle="Schedule Backend Tasks with Scheduler - Mobile Services" metaKeywords="" description="Use the Azure Mobile Services Scheduler to schedule jobs for your mobile app." metaCanonical="" services="" documentationCenter="Mobile" title="Schedule recurring jobs in Mobile Services" authors="glenga" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-tutorials-schedule-backend-tasks" urlDisplayName="バックエンド タスクのスケジュール" pageTitle="スケジューラを使用したバックエンド タスクのスケジュール - モバイル サービス" metaKeywords="" description="Azure のモバイル サービス スケジューラを使用して、モバイル アプリケーション用のジョブをスケジュールします。" metaCanonical="" services="" documentationCenter="Mobile" title="モバイル サービスでの定期的なジョブのスケジュール" authors="glenga" solutions="" manager="" editor="" />
 
-# Schedule recurring jobs in Mobile Services 
+# モバイル サービスでの繰り返し発生するジョブのスケジュール
 
 <!--<div class="dev-center-tutorial-subselector">
-	<a href="/en-us/documentation/articles/articles/mobile-services-dotnet-backend-schedule-recurring-tasks/" title=".NET backend">.NET backend</a> | <a href="/en-us/documentation/articles/articles/mobile-services-schedule-recurring-tasks/"  title="JavaScript backend" class="current">JavaScript backend</a>
+	<a href="/ja-jp/documentation/articles/articles/mobile-services-dotnet-backend-schedule-recurring-tasks/" title=".NET バックエンド">.NET バックエンド</a> | <a href="/ja-jp/documentation/articles/articles/mobile-services-schedule-recurring-tasks/"  title="JavaScript バックエンド" class="current">JavaScript バックエンド</a>
 </div>-->
  
-This topic shows you how to use the job scheduler functionality in the Management Portal to define server script code that is executed based on a schedule that you define. In this case, the script periodically check with a remote service, in this case Twitter, and stores the results in a new table. Some other periodic tasks that can be scheduled include:
+このトピックでは、管理ポータルのジョブ スケジューラ機能を使用して、定義したスケジュールに基づいて実行されるサーバー スクリプト コードを定義する方法について説明します。このスクリプトは、リモート サービス (ここでは Twitter) に対する確認を定期的に行い、結果を新しいテーブルに格納します。スケジュールできる定期的なタスクには、次のようなものがあります。
 
-+ Archiving old or duplicate data records.
-+ Requesting and storing external data, such as tweets, RSS entries, and location information.
-+ Processing or resizing stored images.
++ 古いデータ レコードまたは重複しているデータ レコードのアーカイブ。
++ 外部データ (ツイート、RSS エントリ、場所情報など) の要求と格納。
++ 格納されている画像の処理とサイズ変更。
 
 <!-- // Removed because this shortcode b/c it's old and doesn't use the new Twitter v1.1. APIs
 >[WACOM.VIDEO Windows-Store-app-Getting-Started-with-the-Windows-Azure-Mobile-Services-Scheduler]
@@ -24,53 +24,53 @@ This topic shows you how to use the job scheduler functionality in the Managemen
 <div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Windows-Store-app-Getting-Started-with-the-Windows-Azure-Mobile-Services-Scheduler" target="_blank" class="label">watch the tutorial</a> <a style="background-image: url('/media/devcenter/mobile/videos/get-started-with-scheduler-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Windows-Store-app-Getting-Started-with-the-Windows-Azure-Mobile-Services-Scheduler" target="_blank" class="dev-onpage-video"><span class="icon">Play Video</span></a> <span class="time">5:22</span></div>
 </div>-->
 
-This tutorial walks you through the following steps of how to use the job scheduler to create a scheduled job that requests tweet data from Twitter and stores the tweets in a new Updates table:
+このチュートリアルでは、ジョブ スケジューラを使用してスケジュールされたジョブを作成する手順について以降に説明します。このジョブでは、Twitter からのツイート データを要求し、新しい Updates テーブルにツイートを格納します。
 
-+ [Register for Twitter access and store credentials]
-+ [Create the new Updates table]
-+ [Create a new scheduled job]
++ [Twitter アクセスを登録して資格情報を保存する]
++ [新しい Updates テーブルを作成する]
++ [新しいスケジュール済みジョブを作成する]
 
-##<a name="get-oauth-credentials"></a>Register for access to Twitter v1.1 APIs and store credentials
+##<a name="get-oauth-credentials"></a>Twitter v1.1 API へのアクセスを登録して資格情報を保存する
 
 [WACOM.INCLUDE [mobile-services-register-twitter-access](../includes/mobile-services-register-twitter-access.md)]
 
-##<a name="create-table"></a>Create the new Updates table
+##<a name="create-table"></a>新しい Updates テーブルを作成する
 
-Next, you need to create a new table in which to store tweets.
+次に、ツイートを格納するための新しいテーブルを作成する必要があります。
 
-2. In the Management Portal, click the **Data** tab for your mobile service, then click **+Create**.
+2. 管理ポータルで、モバイル サービスの **[データ]** タブをクリックし、**[作成]** をクリックします。
 
    	![][2]
 
-   	This displays the **Create new table** dialog.
+   	**[新しいテーブルの作成]** ダイアログ ボックスが表示されます。
 
-3. In **Table name** type _Updates_, then click the check button.
+3. **[テーブル名]** に「_Updates_」と入力し、チェック ボタンをクリックします。
 
    	![][3]
 
-  	This creates a new storage table **Updates**. 
+  	これにより、**Updates** という新しいストレージ テーブルが作成されます。
 
-##<a name="add-job"></a>Create a new scheduled job  
+##<a name="add-job"></a>新しいスケジュール済みジョブを作成する
 
-Now, you can create the scheduled job that accesses Twitter and stores tweet data in the new Updates table.
+次に、Twitter にアクセスしてツイート データを新しい Updates テーブルに格納するための、スケジュールされたジョブを作成します。
 
-2. Click the **Scheduler** tab, then click **+Create**. 
+2. **[スケジューラ]** タブをクリックし、**[作成]** をクリックします。
 
    	![][4]
 
-    >[WACOM.NOTE]When you run your mobile service in <em>Free</em> tier, you are only able to run one scheduled job at a time. In paid tiers, you can run up to ten scheduled jobs at a time.
+    >[WACOM.NOTE]モバイル サービスを<em>無料</em>レベルで運用している場合は、スケジュールされた複数のジョブを同時に実行することはできません。有料レベルでは、同時に 10 個までのスケジュールされたジョブを実行できます。
 
-3. In the scheduler dialog, enter _getUpdates_ for the **Job Name**, set the schedule interval and units, then click the check button. 
+3. [スケジューラ] ダイアログ ボックスで、**[ジョブ名]** に「_getUpdates_」と入力し、スケジュールの間隔と単位を設定して、チェック ボタンをクリックします。
    
    	![][5]
 
-   	This creates a new job named **getUpdates**. 
+   	これにより、**getUpdates** という名前の新しいジョブが作成されます。
 
-4. Click the new job you just created, then click the **Script** tab.
+4. 作成した新しいジョブをクリックし、**[スクリプト]** タブをクリックします。
 
    	![][6] 
 
-5. Replace the placeholder function **getUpdates** with the following code:
+5. プレースホルダー関数である **getUpdates** を次のコードに置き換えます。
 
 		var updatesTable = tables.getTable('Updates');
 		var request = require('request');
@@ -146,38 +146,38 @@ Now, you can create the scheduled job that accesses Twitter and stores tweet dat
 		}
 
 
-   	This script calls the Twitter query API using stored credentials to request recent tweets that contain the hashtag `#mobileservices`. Duplicate tweets and replies are removed from the results before they are stored in the table.
+   	このスクリプトでは、保存された資格情報を使用して Twitter クエリ API を呼び出し、`#mobileservices` というハッシュタグが含まれる最近のツイートを要求します。テーブルに格納される前に、重複しているツイートやリプライが結果から削除されます。
 
-    >[WACOM.NOTE]This sample assumes that only a few rows are inserted into the table during each scheduled run. In cases where many rows are inserted in a loop you may run out of connections when running on the Free tier. In this case, you should perform inserts in batches. For more information, see <a href="/en-us/develop/mobile/how-to-guides/work-with-server-scripts/#bulk-inserts">How to: Perform bulk inserts</a>.
+    >[WACOM.NOTE]このサンプルでは、スケジュールされた実行が行われるたびに、テーブルに数行のみ挿入されることを想定しています。ループで多数の行が挿入される場合には、無料レベルで実行すると、接続数を使い果たす可能性があります。このような場合、挿入をバッチで実行する必要があります。詳細については、「<a href="/ja-jp/develop/mobile/how-to-guides/work-with-server-scripts/#bulk-inserts">方法: 一括挿入を実行する</a>」を参照してください。
 
-6. Click **Run Once** to test the script. 
+6. スクリプトをテストするには、**[一度だけ実行する]** をクリックします。
 
   	![][7]
 
-   	This saves and executes the job while it remains disabled in the scheduler.
+   	これにより、ジョブが保存され、実行されます。ただし、スケジューラ内では無効の状態のままです。
 
-7. Click the back button, click **Data**, click the **Updates** table, click **Browse**, and verify that Twitter data has been inserted into the table.
+7. [戻る] ボタンをクリックし、**[データ]**、**Updates** テーブル、**[参照]** の順にクリックして、Twitter データがテーブルに挿入されたことを確認します。
 
    	![][8]
 
-8. Click the back button, click **Scheduler**, select **getUpdates**, then click **Enable**.
+8. [戻る] ボタン、**[スケジューラ]** の順にクリックし、**getUpdates** を選択して、**[有効化]** をクリックします。
 
    	![][9]
 
-   	This enables the job to run on the specified schedule, in this case every hour.
+   	これにより、指定されたスケジュール (ここでは 1 時間ごと) でジョブが実行されるようになります。
 
-Congratulations, you have successfully created a new scheduled job in your mobile service. This job will be executed as scheduled until you disable or modify it.
+これで、スケジュールされた新しいジョブがモバイル サービスに作成されました。このジョブは、無効化または変更するまで、スケジュールに従って実行されます。
 
-## <a name="nextsteps"> </a>Next Steps
+## <a name="nextsteps"> </a>次のステップ
 
-* [Mobile Services server script reference]
-  <br/>Learn more about registering and using server scripts.
+* [モバイル サービスのサーバー スクリプト リファレンス]
+  <br/>サーバー スクリプトの登録および使用について説明します。
 
 <!-- Anchors. -->
-[Register for Twitter access and store credentials]: #get-oauth-credentials
-[Create the new Updates table]: #create-table
-[Create a new scheduled job]: #add-job
-[Next steps]: #next-steps
+[Twitter アクセスを登録して資格情報を保存する]: #get-oauth-credentials
+[新しい Updates テーブルを作成する]: #create-table
+[新しいスケジュール済みジョブを作成する]: #add-job
+[次のステップ]: #next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-schedule-recurring-tasks/mobile-twitter-my-apps.png
@@ -194,9 +194,10 @@ Congratulations, you have successfully created a new scheduled job in your mobil
 [11]: ./media/mobile-services-schedule-recurring-tasks/mobile-identity-tab-twitter-only.png
 
 <!-- URLs. -->
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
+[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [WindowsAzure.com]: http://www.windowsazure.com/
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Register your apps for Twitter login with Mobile Services]: /en-us/develop/mobile/how-to-guides/register-for-twitter-authentication
-[Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
-[App settings]: http://msdn.microsoft.com/en-us/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+[Azure 管理ポータル]: https://manage.windowsazure.com/
+[モバイル サービスでの Twitter ログイン用のアプリケーションの登録]: /ja-jp/develop/mobile/how-to-guides/register-for-twitter-authentication
+[Twitter デベロッパー]: http://go.microsoft.com/fwlink/p/?LinkId=268300
+[アプリケーション設定]: http://msdn.microsoft.com/ja-jp/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+

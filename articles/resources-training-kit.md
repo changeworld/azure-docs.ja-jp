@@ -1,8 +1,8 @@
-<properties linkid="dev-net-training-kit" urlDisplayName="Training Kit" pageTitle="Azure Training Kit - Azure resources" metaKeywords="Azure training kit, Azure trainingkit, Azure training download" description="Download and install the Azure training kit which provides a comprehensive set of technical content to help you learn about Azure." metaCanonical="" services="" documentationCenter=".NET" title="" authors="" solutions="" manager="" editor="" />
-
+<properties linkid="dev-net-training-kit" urlDisplayName="トレーニング キット" pageTitle="Azure のトレーニング キット - Azure リソース" metaKeywords="Azure トレーニング キット, Azure trainingkit, Azure トレーニング ダウンロード" description="Azure の学習に役立つ総合的な一連のテクニカル コンテンツが含まれる Azure トレーニング キットをダウンロードしてインストールします。" metaCanonical="" services="" documentationCenter=".NET" title="" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
 
 [WACOM.INCLUDE [training-kit](../includes/training-kit.md)]
+

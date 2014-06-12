@@ -1,93 +1,84 @@
-<properties linkid="dev-net-2-how-to-blob-storage" urlDisplayName="Blob Service (2.0)" pageTitle="How to use blob storage in .NET | Microsoft Azure" metaKeywords="Get started Azure blob, Azure unstructured data, Azure unstructured storage, Azure blob, Azure blob storage, Azure blob .NET, Azure blob C#, Azure blob C#" description="Learn how to use the Azure blob service to upload,,download, list, and delete blob content. Samples are written in C#." metaCanonical="" services="storage" documentationCenter=".NET" title="How to use the Azure Blob Storage Service in .NET" authors="" solutions="" manager="paulettm" editor="cgronlun" />
+<properties linkid="dev-net-2-how-to-blob-storage" urlDisplayName="BLOB サービス (2.0)" pageTitle="BLOB ストレージの使用方法 - Azure の機能ガイド" metaKeywords="Azure BLOB の概要、Azure 非構造化データ、Azure 非構造化ストレージ、Azure BLOB、Azure BLOB ストレージ、Azure BLOB .NET、Azure BLOB C#、Azure BLOB C#" description="Azure BLOB サービスを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、および削除する方法を学習します。サンプルは C# で記述されています。" metaCanonical="" services="" documentationCenter="" title=".NET での Azure BLOB ストレージ サービスの使用方法" authors=""  solutions="" writer="" manager="" editor=""  />
 
-# How to use the Azure Blob Storage Service in .NET
+#.NET での Azure BLOB ストレージ サービスの使用方法
 
 <div class="dev-center-tutorial-selector">
-<a href="/en-us/develop/net/how-to-guides/blob-storage-v17/" title="version 1.7" class="current">version 1.7</a>
-<a href="/en-us/develop/net/how-to-guides/blob-storage/" title="version 2.0">version 2.0</a> 
+<a href="/ja-jp/develop/net/how-to-guides/blob-storage-v17/" title="バージョン 1.7" class="current">バージョン 1.7</a>
+<a href="/ja-jp/develop/net/how-to-guides/blob-storage/" title="バージョン 2.0">バージョン 2.0</a>
 </div>
 
 
-This guide will demonstrate how to perform common scenarios using the
-Azure Blob storage service. The samples are written in C\# and
-use the .NET API. The scenarios covered include
-**uploading**, **listing**, **downloading**, and **deleting** blobs. For
-more information on blobs, see the [Next steps][] section.
+このガイドでは、Azure BLOB ストレージ サービスを使用して一般的なシナリオを実行する方法のデモンストレーションを行います。サンプルは C\# で記述され、
+.NET API を利用しています。紹介するシナリオは、
+BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。BLOB の詳細については、「[次の手順][]」のセクションを参照してください。
 
-<h2>Table of contents</h2>
+<h2>目次</h2>
 
--   [What is Blob Storage][]
--   [Concepts][]
--   [Create an Azure Storage account][]
--   [Setup a storage connection string][]
--   [How to: Programmatically access blob storage][]
--   [How to: Create a container][]
--   [How to: Upload a blob into a container][]
--   [How to: List the blobs in a container][]
--   [How to: Download blobs][]
--   [How to: Delete blobs][]
--   [Next steps][]
+-   [BLOB ストレージとは][]
+-   [概念][]
+-   [Azure のストレージ アカウントの作成][]
+-   [ストレージ接続文字列の設定][]
+-   [方法: プログラムで BLOB ストレージにアクセスする][]
+-   [方法: コンテナーを作成する][]
+-   [方法: コンテナーに BLOB をアップロードする][]
+-   [方法: コンテナー内の BLOB を一覧表示する][]
+-   [方法: BLOB をダウンロードする][]
+-   [方法: BLOB を削除する][]
+-   [次のステップ][]
 
 [WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
-<h2><a name="create-account"></a><span  class="short-header">Create an account</span>Create an Azure Storage account</h2>
+<h2><a name="create-account"></a><span  class="short-header">アカウントの作成</span>Azure のストレージ アカウントの作成</h2>
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-<h2><a name="setup-connection-string"></a><span  class="short-header">Setup a connection string</span>Setup a storage connection string</h2>
+<h2><a name="setup-connection-string"></a><span  class="short-header">接続文字列の設定</span>ストレージ接続文字列の設定</h2>
 
-The Azure .NET storage API supports using a storage connection
-string to configure endpoints and credentials for accessing storage
-services. You can put your storage connection string in a configuration
-file, rather than hard-coding it in code:
+Azure .NET ストレージ API では、ストレージ接続文字列を使用して、
+ストレージ サービスにアクセスするためのエンドポイントおよび資格情報を
+構成できます。ストレージ接続文字列は、コード内にハードコーディングするのではなく、構成ファイルの中で指定します。
 
-- When using Azure Cloud Services, it is recommended you store your connection string using the Azure service configuration system (`*.csdef` and `*.cscfg` files).
-- When using Azure Web Sites or Azure Virtual Machines, it is recommended you store your connection string using the .NET configuration system (e.g. `web.config` file).
+- Azure のクラウド サービスを使用するときには、Azure サービス構成システム (`*.csdef` ファイルおよび `*.cscfg` ファイル) を使用して接続文字列を格納することをお勧めします。
+- Azure の Web サイトまたは Azure の仮想マシンを使用する場合には、.NET 構成システム (`web.config` ファイルなど) を使用して接続文字列を格納することをお勧めします。
 
-In both cases, you can retrieve your connection string using the `CloudConfigurationManager.GetSetting` method, as shown later in this guide.
+いずれの場合でも、このガイドで後ほど説明する `CloudConfigurationManager.GetSetting` メソッドを使用して接続文字列を取得できます。
 
-### Configuring your connection string when using Cloud Services
+### クラウド サービスを使用する場合の接続文字列の構成
 
-The service configuration mechanism is unique to Azure Cloud Services
-projects and enables you to dynamically change configuration settings
-from the Azure Management Portal without redeploying your
-application.
+サービス構成メカニズムは、Azure のクラウド サービスのプロジェクトに特有のものであり、これを使用すると、アプリケーションを再展開することなく Azure の管理ポータルから構成設定を動的に変更できます。
 
-To configure your connection string in the Azure service
-configuration:
+Azure サービス構成で接続文字列を構成するには:
 
-1.  Within the Solution Explorer of Visual Studio, in the **Roles**
-    folder of your Azure Deployment Project, right-click your
-    web role or worker role and click **Properties**.  
-    ![Select the properties on a Cloud Service role in Visual Studio][Blob5]
+1.  Visual Studio のソリューション エクスプローラーで、Azure 
+    デプロイ プロジェクトの **[ロール]** フォルダー内の Web ロールまたは
+    worker ロールを右クリックし、**[プロパティ]** をクリックします。
+    ![Visual Studio で、クラウド サービス ロールのプロパティを選択します。][Blob5]
 
-2.  Click the **Settings** tab and press the **Add Setting** button.  
-    ![Add a Cloud Service setting in visual Studio][Blob6]
+2.  **[設定]** タブをクリックし、**[設定の追加]** をクリックします。
+    ![Visual Studio でのクラウド サービス設定の追加][Blob6]
 
-    A new **Setting1** entry will then show up in the settings grid.
+    新しい [**Setting1**] エントリが設定グリッドに表示されます。
 
-3.  In the **Type** drop-down of the new **Setting1** entry, choose
-    **Connection String**.  
+3.  新しい **[Setting1]** エントリの **[種類]** ボックスの一覧で、
+    **[接続文字列]** をクリックします。
     ![Blob7][Blob7]
 
-4.  Click the **...** button at the right end of the **Setting1** entry.
-    The **Storage Account Connection String** dialog will open.
+4.  [**Setting1**] エントリの右端にある [**...**] をクリックします。
+    **[ストレージ アカウント接続文字列]** ダイアログ ボックスが開きます。
 
-5.  Choose whether you want to target the storage emulator (Windows
-    Azure storage simulated on your local machine) or an actual storage
-    account in the cloud. The code in this guide works with either
-    option. Enter the **Primary Access Key** value copied from the
-    earlier step in this tutorial if you wish to store blob data in the
-    storage account we created earlier on Azure.   
+5.  ストレージ エミュレーター (ローカル コンピューターでシミュレートされた
+    Azure のストレージ) をターゲットとするか、クラウド内の実際の
+    ストレージ アカウントをターゲットとするかを選択します。このガイドに記載されているコードは、どちらのオプションにも対応しています。以前に Azure で作成したストレージ アカウントに 
+BLOB データを格納する場合は、このチュートリアルの前の手順から
+コピーした**プライマリ アクセス キー**の値を入力します。
     ![Blob8][Blob8]
 
-6.  Change the entry **Name** from **Setting1** to a friendlier name
-    like **StorageConnectionString**. You will reference this
-    connection string later in the code in this guide.  
+6.  エントリの **[名前]** を **Setting1** から **StorageConnectionString**
+    などのわかりやすい名前に変更します。この接続文字列は、このガイドの後半のコードで参照します。
     ![Blob9][Blob9]
 	
-### Configuring your connection string when using Web Sites or Virtual Machines
+### Web サイトまたは仮想マシンを使用する場合の接続文字列の構成
 
-When using Web Sites or Virtual Machines, it is recommended you use the .NET configuration system (e.g. `web.config`).  You store the connection string using the `<appSettings>` element:
+Web サイトまたは仮想マシンを使用する場合には、.NET 構成システム (`web.config` など) を使用することをお勧めします。`<appSettings>` 要素を使用して接続文字列を格納します。
 
 	<configuration>
 	    <appSettings>
@@ -96,219 +87,214 @@ When using Web Sites or Virtual Machines, it is recommended you use the .NET con
 		</appSettings>
 	</configuration>
 
-Read [Configuring Connection Strings][] for more information on storage connection strings.
+ストレージ接続文字列の詳細については、「[接続文字列の構成方法][]」を参照してください。
 	
-You are now ready to perform the how-to tasks in this guide.
+これで、このガイドのハウツー タスクを実行する準備が整いました。
 
-<h2> <a name="configure-access"> </a><span  class="short-header">Access programmatically</span>How to: Programmatically access blob storage</h2>
+<h2> <a name="configure-access"> </a><span  class="short-header">プログラムでのアクセス</span>方法: プログラムで BLOB ストレージにアクセスする</h2>
 
-Add the following code namespace declarations to the top of any C\# file
-in which you wish to programmatically access Azure Storage:
+プログラムを使用して Azure のストレージにアクセスするすべての C\# ファイルの冒頭部分に、名前空間を宣言する次のコードを追加します。
 
     using Microsoft.WindowsAzure;
     using Microsoft.WindowsAzure.StorageClient;
 
-You can use the **CloudStorageAccount** type and
-**CloudConfigurationManager** type
-to retrieve your storage connection string and storage account
-information from the Azure service configuration:
+**CloudStorageAccount** 型と
+**CloudConfigurationManager** 型を使用すると、
+Azure サービス構成からストレージ接続文字列と
+ストレージ アカウント情報を取得できます。
 
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-A **CloudBlobClient** type allows you to retrieve objects that represent
-containers and blobs stored within the Blob Storage Service. The
-following code creates a **CloudBlobClient** object using the storage
-account object we retrieved above:
+**CloudBlobClient** 型では、Blob ストレージ サービス内に格納されている
+コンテナーと BLOB を表すオブジェクトを取得できます。次の
+コードは、前に取得したストレージ アカウント オブジェクトを使用して、
+**CloudBlobClient** オブジェクトを作成します。
 
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-<h2> <a name="create-container"> </a><span  class="short-header">Create a container</span>How to: Create a container</h2>
+<h2> <a name="create-container"> </a><span  class="short-header">コンテナーを作成する</span>方法: コンテナーを作成する</h2>
 
-All storage blobs reside in a container. You can use a
-**CloudBlobClient** object to get a reference to the container you want
-to use. You can create the container if it doesn't exist:
+ストレージの BLOB はすべてコンテナー内に格納されます。**CloudBlobClient** オブジェクトを
+使用すると、使用するコンテナーへの参照を
+取得できます。コンテナーが存在しない場合は、次のようにして作成できます。
 
-    // Retrieve storage account from connection string
+    // 接続文字列からストレージ アカウントを取得します
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the blob client 
+    // BLOB クライアントを作成します
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Retrieve a reference to a container 
+    // コンテナーへの参照を取得します
     CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-    // Create the container if it doesn't already exist
+    // コンテナーがまだ存在しない場合、コンテナーを作成します
     container.CreateIfNotExist();
 
-By default, the new container is private, so you must specify your
-storage access key (as you did above) to download blobs from this
-container. If you want to make the files within the container available
-to everyone, you can set the container to be public using the following
-code:
+既定では、新しいコンテナーはプライベートなので、このコンテナーから
+BLOB をダウンロードするにはストレージ アクセス キーを指定する必要が
+あります (前と同じ方法で)。コンテナー内のファイルをだれでも利用できるようにする場合は、
+次のコードを使ってコンテナーをパブリックに設定できます。
 
     container.SetPermissions(
         new BlobContainerPermissions { PublicAccess = 
  	    BlobContainerPublicAccessType.Blob }); 
 
-Anyone on the Internet can see blobs in a public container, but you can
-modify or delete them only if you have the appropriate access key.
+パブリック コンテナー内の BLOB は、インターネットに接続しているすべてのユーザーが
+表示できますが、変更または削除できるのは、適切なアクセス キーを持っているユーザーだけです。
 
-<h2> <a name="upload-blob"> </a><span  class="short-header">Upload to a container</span>How to: Upload a blob into a container</h2>
+<h2> <a name="upload-blob"> </a><span  class="short-header">コンテナーにアップロードする</span>方法: コンテナーに BLOB をアップロードする</h2>
 
-To upload a file to a blob, get a container reference and use it to get
-a blob reference. Once you have a blob reference, you can upload any
-stream of data to it by calling the **UploadFromStream** method on the
-blob reference. This operation will create the blob if it didn't exist,
-or overwrite it if it did. The below code sample shows this, and assumes
-that the container was already created.
+ファイルを BLOB にアップロードするには、コンテナーの参照を取得し、
+それを使用して BLOB の参照を取得します。BLOB の参照を取得したら、その **UploadFromStream**
+メソッドを呼び出すことによって、データの任意のストリームを BLOB に
+アップロードできます。この操作により、BLOB が存在しない場合は作成され、
+存在する場合は上書きされます。次のコード サンプルはこのことを示しており、既に
+コンテナーが作成されていることを前提としています。
 
-    // Retrieve storage account from connection string
+    // 接続文字列からストレージ アカウントを取得します
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the blob client
+    // BLOB クライアントを作成します
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Retrieve reference to a previously created container
+    // 前に作成したコンテナーへの参照を取得します
     CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-    // Retrieve reference to a blob named "myblob"
+    // "myblob" という名前の BLOB への参照を取得します
     CloudBlob blob = container.GetBlobReference("myblob");
 
-    // Create or overwrite the "myblob" blob with contents from a local file
+    // "myblob" BLOB を作成するか、ローカル ファイルの内容で上書きします
     using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
     {
         blob.UploadFromStream(fileStream);
     } 
 
-<h2> <a name="list-blob"> </a><span  class="short-header">List blobs in a container</span>How to: List the blobs in a container</h2>
+<h2> <a name="list-blob"> </a><span  class="short-header">コンテナー内の BLOB を一覧表示する</span>方法: コンテナー内の BLOB を一覧表示する</h2>
 
-To list the blobs in a container, first get a container reference. You
-can then use the container's **ListBlobs** method to retrieve the blobs
-within it. The following code demonstrates how to retrieve and output
-the **Uri** of each blob in a container:
+コンテナー内の BLOB を一覧表示するには、まず、コンテナーの参照を取得します。次に、
+コンテナーの **ListBlobs** メソッドを使って、その中の BLOB を
+取得します。次のコードは、コンテナー内の各 BLOB の **Uri** を取得して
+出力する方法を示しています。
 
-    // Retrieve storage account from connection string
+    // 接続文字列からストレージ アカウントを取得します
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the blob client
+    // BLOB クライアントを作成します
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Retrieve reference to a previously created container
+    // 前に作成したコンテナーへの参照を取得します
     CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-    // Loop over blobs within the container and output the URI to each of them
+    // コンテナー内の BLOB をループ処理して、各 BLOB の URI を出力します
     foreach (var blobItem in container.ListBlobs())
     {
         Console.WriteLine(blobItem.Uri);
     } 
 
-The blob service has the concept of directories within containers, as
-well. This is so that you can organize your blobs in a more folder-like
-structure. For example, you could have a container named 'photos', in
-which you might upload blobs named 'rootphoto1', '2010/photo1',
-'2010/photo2', and '2011/photo1'. This would virtually create the
-directories '2010' and '2011' within the 'photos' container. When you
-call **ListBlobs** on the 'photos' container, the collection returned
-will contain **CloudBlobDirectory** and **CloudBlob** objects
-representing the directories and blobs contained at the top level. In
-this case, directories '2010' and '2011', as well as photo 'rootphoto1'
-would be returned. Optionally, you can pass in a new
-**BlobRequestOptions** class with **UseFlatBlobListing** set to
-**true**. This would result in every blob being returned, regardless of
-directory. For more information, see [CloudBlobContainer.ListBlobs][].
+BLOB サービスには、コンテナー内のディレクトリの概念も
+あります。これは、BLOB をよりフォルダーに近い構造で整理できるように
+するためです。たとえば、"photos" という名前のコンテナーを作成して、その中に
+'rootphoto1'、'2010/photo1'、'2010/photo2'、および '2011/photo1' という
+名前の BLOB をアップロードすることができます。このようにすると、実際には 'photos' コンテナー内
+に '2010' および '2011' というディレクトリが作成されます。'photos' コンテナーの
+**ListBlobs** を呼び出すと、返されるコレクションには最上位レベルに
+あるディレクトリおよび BLOB を表す **CloudBlobDirectory** および
+**CloudBlob** オブジェクトが含まれています。この
+例の場合は、ディレクトリ '2010' および '2011' と、写真 'rootphoto1' が
+返されます。必要に応じて、**UseFlatBlobListing** を **true** に
+設定した新しい **BlobRequestOptions** クラスを渡すことが
+できます。そうすると、ディレクトリに関係なく、すべての BLOB が返されるようになります。詳細については、[CloudBlobContainer.ListBlobs][] を参照してください。
 
-<h2> <a name="download-blobs"> </a><span  class="short-header">Download blobs</span>How to: Download blobs</h2>
+<h2> <a name="download-blobs"> </a><span  class="short-header">BLOB をダウンロードする</span>方法: BLOB をダウンロードする</h2>
 
-To download blobs, first retrieve a blob reference. The following
-example uses the **DownloadToStream** method to transfer the blob
-contents to a stream object that you can then persist to a local file.
-You could also call the blob's **DownloadToFile**, **DownloadByteArray**,
-or **DownloadText** methods.
+BLOB をダウンロードするには、まず、BLOB の参照を取得します。次の例は、
+**DownloadToStream** メソッドを使用して、ローカル ファイルに
+保存できるストリーム オブジェクトに BLOB の内容を転送します。
+BLOB の **DownloadToFile**、**DownloadByteArray**、または **DownloadText** メソッドを呼び出すこともできます。
 
-    // Retrieve storage account from connection string
+    // 接続文字列からストレージ アカウントを取得します
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the blob client
+    // BLOB クライアントを作成します
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Retrieve reference to a previously created container
+    // 前に作成したコンテナーへの参照を取得します
     CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-    // Retrieve reference to a blob named "myblob"
+    // "myblob" という名前の BLOB への参照を取得します
     CloudBlob blob = container.GetBlobReference("myblob");
 
-    // Save blob contents to disk
+    // BLOB の内容をディスクに保存します
     using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
     {
         blob.DownloadToStream(fileStream);
     } 
 
-<h2> <a name="delete-blobs"> </a><span  class="short-header">Delete blobs</span>How to: Delete blobs</h2>
+<h2> <a name="delete-blobs"> </a><span  class="short-header">BLOB を削除する</span>方法: BLOB を削除する</h2>
 
-Finally, to delete a blob, get a blob reference, and then call the
-**Delete** method on it.
+最後に、BLOB を削除するには、BLOB の参照を取得し、その **Delete** メソッドを呼び出します。
 
-    // Retrieve storage account from connection string
+    // 接続文字列からストレージ アカウントを取得します
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the blob client
+    // BLOB クライアントを作成します
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Retrieve reference to a previously created container
+    // 前に作成したコンテナーへの参照を取得します
     CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-    // Retrieve reference to a blob named "myblob"
+    // "myblob" という名前の BLOB への参照を取得します
     CloudBlob blob = container.GetBlobReference("myblob");
 
-    // Delete the blob
+    // BLOB を削除します
     blob.Delete(); 
 
-<h2> <a name="next-steps"></a><span  class="short-header">Next steps</span>Next steps</h2>
+<h2> <a name="next-steps"></a><span  class="short-header">次のステップ</span>次のステップ</h2>
 
-Now that you've learned the basics of blob storage, follow these links
-to learn how to do more complex storage tasks.
+これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 <ul>
-<li>View the blob service reference documentation for complete details about available APIs:
+<li>利用可能な API の詳細については、BLOB サービスのリファレンス ドキュメントを参照してください。
   <ul>
-    <li><a href="http://msdn.microsoft.com/en-us/library/windowsazure/wl_svchosting_mref_reference_home">.NET client library reference</a>
+    <li><a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/wl_svchosting_mref_reference_home">.NET クライアント ライブラリ リファレンス</a>
     </li>
-    <li><a href="http://msdn.microsoft.com/en-us/library/windowsazure/dd179355">REST API reference</a></li>
+    <li><a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179355">REST API リファレンス</a></li>
   </ul>
 </li>
-<li>Learn about more advanced tasks you can perform with Azure Storage at <a href="http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx">Storing and Accessing Data in Azure</a>.</li>
-<li>View more feature guides to learn about additional options for storing data in Azure.
+<li>Azure のストレージを使用して実行できるさらに高度なタスクについては、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx">Azure のデータの格納とアクセス</a>」を参照してください。</li>
+<li>Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
   <ul>
-    <li>Use <a href="/en-us/develop/net/how-to-guides/table-services/">Table Storage</a> to store structured data.</li>
-    <li>Use <a href="/en-us/develop/net/how-to-guides/sql-database/">SQL Database</a> to store relational data.</li>
+    <li>構造化データの格納には、<a href="/ja-jp/develop/net/how-to-guides/table-services/">テーブル ストレージ</a>を使用します。</li>
+    <li>リレーショナル データの格納には、<a href="/ja-jp/develop/net/how-to-guides/sql-database/">SQL データベース</a>を使用します。</li>
   </ul>
 </li>
 </ul>
 
-  [Next Steps]: #next-steps
-  [What is Blob Storage]: #what-is
-  [Concepts]: #concepts
-  [Create an Azure Storage Account]: #create-account
-  [Setup a storage Connection String]: #setup-connection-string
-  [How To: Programmatically access Blob Storage]: #configure-access
-  [How To: Create a Container]: #create-container
-  [How To: Upload a Blob into a Container]: #upload-blob
-  [How To: List the Blobs in a Container]: #list-blob
-  [How To: Download Blobs]: #download-blobs
-  [How To: Delete blobs]: #delete-blobs
+  [次の手順]: #next-steps
+  [BLOB ストレージとは]: #what-is
+  [概念]: #concepts
+  [Azure のストレージ アカウントの作成]: #create-account
+  [ストレージ接続文字列の設定]: #setup-connection-string
+  [方法: プログラムで BLOB ストレージにアクセスする]: #configure-access
+  [方法: コンテナーを作成する]: #create-container
+  [方法: コンテナーに BLOB をアップロードする]: #upload-blob
+  [方法: コンテナー内の BLOB を一覧表示する]: #list-blob
+  [方法: BLOB をダウンロードする]: #download-blobs
+  [方法: BLOB を削除する]: #delete-blobs
   [Blob5]: ./media/storage-dotnet-how-to-use-blobs-17/blob5.png
   [Blob6]: ./media/storage-dotnet-how-to-use-blobs-17/blob6.png
   [Blob7]: ./media/storage-dotnet-how-to-use-blobs-20/blob7.png
   [Blob8]: ./media/storage-dotnet-how-to-use-blobs-20/blob8.png
   [Blob9]: ./media/storage-dotnet-how-to-use-blobs-20/blob9.png
   
-  [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
-  [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-  [Configuring Connection Strings]: http://msdn.microsoft.com/en-us/library/windowsazure/ee758697.aspx
-  [.NET client library reference]: http://msdn.microsoft.com/en-us/library/windowsazure/wl_svchosting_mref_reference_home
-  [REST API reference]: http://msdn.microsoft.com/en-us/library/windowsazure/dd179355
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+  [Azure のストレージ チーム ブログ (このページは英語の場合があります)]: http://blogs.msdn.com/b/windowsazurestorage/
+  [接続文字列の構成方法]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758697.aspx
+  [.NET クライアント ライブラリ リファレンス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/wl_svchosting_mref_reference_home
+  [REST API リファレンス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179355
+

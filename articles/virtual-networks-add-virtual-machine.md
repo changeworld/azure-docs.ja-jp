@@ -1,4 +1,4 @@
-﻿<properties linkid="manage-services-add-a-vm-to-a-virtual-network" urlDisplayName="仮想ネットワークへの VM の追加" pageTitle="仮想ネットワークへの仮想マシンの追加 - Windows Azure" metaKeywords="" description="ストレージ アカウントおよび Windows Azure の仮想ネットワークに追加する仮想マシン (VM) を作成する手順について説明するチュートリアルです。" metaCanonical="" services="virtual-machines,virtual-network" documentationCenter="" title="仮想ネットワークへの仮想マシンの追加" authors=""  solutions="" writer="" manager="" editor=""  />
+<properties linkid="manage-services-add-a-vm-to-a-virtual-network" urlDisplayName="仮想ネットワークへの VM の追加" pageTitle="仮想ネットワークへの仮想マシンの追加 - Azure" metaKeywords="" description="ストレージ アカウントおよび Azure の仮想ネットワークに追加する仮想マシン (VM) を作成する手順について説明するチュートリアルです。" metaCanonical="" services="virtual-machines,virtual-network" documentationCenter="" title="仮想ネットワークへの仮想マシンの追加" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
@@ -8,14 +8,14 @@
 
 <!--SOMEWHERE IN THIS TUTORIAL I NEED TO XREF TO THE OTHER VMACHINE TUTORIAL -->
 
-このチュートリアルでは、Windows Azure のストレージ アカウントおよび[仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)に追加する仮想マシン (VM) を作成する手順について詳しく説明します。
+このチュートリアルでは、Azure のストレージ アカウントおよび[仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)に追加する仮想マシン (VM) を作成する手順について詳しく説明します。
 
-このチュートリアルは、Windows Azure を使用した経験がない読者を対象に作成されています。
+このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。
 
 <div class="dev-callout"> 
 <b>重要</b>
 
-<p>新しい Active Directory フォレストをインストールするために VM を作成する場合は、「<a href="../active-directory-forest/">Windows Azure での新しい Active Directory フォレストのインストール</a>」の手順に従ってください。</p>
+<p>新しい Active Directory フォレストをインストールするために VM を作成する場合は、「<a href="../active-directory-forest/">Azure での新しい Active Directory フォレストのインストール</a>」の手順に従ってください。</p>
 </div>
 
 
@@ -31,14 +31,14 @@
 
 -  次のチュートリアルのいずれかを完了します。
 
-	-  [Windows Azure での仮想ネットワークの作成](/ja-jp/manage/services/networking/create-a-virtual-network/)
+	-  [Azure での仮想ネットワークの作成](/ja-jp/manage/services/networking/create-a-virtual-network/)
 
 		-または-
 	-  [クロスプレミス接続用の仮想ネットワークの作成](/ja-jp/manage/services/networking/cross-premises-connectivity/)
 
 -  少なくとも 1 つのサブスクリプションが有効でアクティブな Windows Live アカウント。	
 
--  [「Windows Azure での仮想ネットワークの作成](/ja-jp/manage/services/networking/create-a-virtual-network/)」または「[クロスプレミス接続用の仮想ネットワークの作成](/ja-jp/manage/services/networking/cross-premises-connectivity/)」で設定した次の名前。
+-  [「Azure での仮想ネットワークの作成](/ja-jp/manage/services/networking/create-a-virtual-network/)」または「[クロスプレミス接続用の仮想ネットワークの作成](/ja-jp/manage/services/networking/cross-premises-connectivity/)」で設定した次の名前。
 
 	-	仮想ネットワークに割り当てたアフィニティ グループ
 
@@ -48,7 +48,7 @@
 
 ## <a name="CreateStorageAcct">ストレージ アカウントの作成</a> ##
 
-1.	[Windows Azure の管理ポータル](http://manage.windowsazure.com/)で仮想ネットワークを作成した後、画面の左下隅にある **[新規]** をクリックします。
+1.	[Azure の管理ポータル](http://manage.windowsazure.com/)で仮想ネットワークを作成した後、画面の左下隅にある **[新規]** をクリックします。
 
 	![NewStorAcct](./media/virtual-networks-add-virtual-machine/VNTut3_01_NewStorageAccount.png)
 
@@ -143,11 +143,11 @@
 	![AllTab](./media/virtual-networks-add-virtual-machine/VNTut3_12_AllTab.png)
 
 ## 次のステップ ##
-作成したばかりの VM の内部設置型 Active Directory ドメインに追加のドメイン コントローラーをインストールするには、「[Windows Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](/ja-jp/manage/services/networking/replica-domain-controller/)」を参照してください。
+作成したばかりの VM の内部設置型 Active Directory ドメインに追加のドメイン コントローラーをインストールするには、「[Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](/ja-jp/manage/services/networking/replica-domain-controller/)」を参照してください。
 
 ## 関連項目
 
--  [Windows Azure の仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)
+-  [Azure の仮想ネットワーク](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx)
 
 -  [ネットワーク構成ファイルを使用した仮想ネットワークの構成](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156097.aspx)
 

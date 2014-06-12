@@ -1,4 +1,4 @@
-﻿<properties linkid="manage-windows-howto-logon" urlDisplayName="VM へのログオン" pageTitle="Windows Server を実行する仮想マシンへのログオン" metaKeywords="Azure VM へのログオン, VM ポータル" description="Windows Server 2008 R2 を実行する仮想マシンに Windows Azure の管理ポータルを使用してログオンする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Windows Server が実行されている仮想マシンにログオンする方法" authors=""  solutions="" writer="kathydav" manager="jeffreyg" editor="tysonn"  />
+<properties linkid="manage-windows-howto-logon" urlDisplayName="VM へのログオン" pageTitle="Windows Server を実行する仮想マシンへのログオン" metaKeywords="Azure VM へのログオン, VM ポータル" description="Windows Server 2008 R2 を実行する仮想マシンに Azure の管理ポータルを使用してログオンする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Windows Server が実行されている仮想マシンにログオンする方法" authors=""  solutions="" writer="kathydav" manager="jeffreyg" editor="tysonn"  />
 
 
 
@@ -7,7 +7,7 @@
 
 Windows Server オペレーティング システムが実行されている仮想マシンについては、管理ポータルの [接続] ボタンを使用して、リモート デスクトップ接続を開始します。
 
-1. まだサインインしていない場合は、[Windows Azure の管理ポータル](http://manage.windowsazure.com)にサインインします。
+1. まだサインインしていない場合は、[Azure の管理ポータル](http://manage.windowsazure.com)にサインインします。
 
 2. **[仮想マシン]** をクリックし、適切な仮想マシンを選択します。
 

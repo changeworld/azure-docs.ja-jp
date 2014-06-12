@@ -1,341 +1,341 @@
-<properties linkid="develop-dotnet-performance" urlDisplayName="Performance" pageTitle="Performance best practices - Azure" metaKeywords="Azure optimization, Azure best practice performance" description="Learn about best practices for performance in Azure." metaCanonical="" services="cloud-services,sql-database,storage,service-bus,virtual-network" documentationCenter=".NET" title="" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-dotnet-performance" urlDisplayName="パフォーマンス" pageTitle="パフォーマンスのベスト プラクティス - Azure" metaKeywords="Azure の最適化, Azure のベスト プラクティス パフォーマンス" description="Azure でのパフォーマンスのベスト プラクティスについて学習します。" metaCanonical="" services="cloud-services,sql-database,storage,service-bus,virtual-network" documentationCenter=".NET" title="" authors=""  solutions="" writer="" manager="" editor=""  />
 
-# Best Practices for Performance in Azure Applications  #
+# Azure アプリケーションのパフォーマンスのベスト プラクティス#
 
-This guide provides prescriptive guidance on the best practices and techniques that should be followed to optimize Azure application performance. 
+このガイドでは、Azure アプリケーションのパフォーマンスを最適化するためのベスト プラクティスと手法に関する規範的なガイダンスについて説明しています。
 
-Note that there are many advantages to using Azure: performance is only one of them. The recommendations in this paper focus primarily on performance. There are other scenarios where performance is not as critical: for example, you may wish to take advantage of off-loading physical hardware management to Azure, or the "pay as you go" feature may be particularly attractive. This paper does not attempt to evaluate scenarios where performance is a lesser priority. 
+Azure にはさまざまな利点があります。パフォーマンスは、その 1 つです。このホワイト ペーパーでは、主にパフォーマンスに焦点を当てます。パフォーマンスがそれほど重要ではないシナリオも複数あります。たとえば、Azure に物理ハードウェア管理をオフロードするシナリオや、「従量課金」の機能がより重要なシナリオがあります。このホワイト ペーパーでは、パフォーマンスの優先度が低いシナリオについては検討しません。
 
-## Overview ##
- Performance can be defined as ["the amount of useful work accomplished' compared to the time and resources used."](http://go.microsoft.com/fwlink/?LinkId=252650) 
-
-
-The definition has two sides to it: metrics and resources. Performance metrics are numbers that must be achieved in order to satisfy business requirements. They include things like response time, throughput, availability, etc. Performance also includes the level of resource usage required to reach a given level of performance metrics. Since cost is almost always a business requirement, and resources cost money, performance implies using resources as efficiently as possible. 
-
-### Performance Life Cycle
-You can affect performance at two different points in the application life cycle:
-
-- during design, where you make fundamental architectural decisions that can affect performance; and
-- at run-time, where you identify bottlenecks, carry out monitoring and measurement, etc.
-
-Both activities are necessary. This whitepaper focuses mainly on the design phase, because architectural mistakes are harder to fix at runtime.
-
-#### Application modeling
-It is important to build a model of your application's most important customer scenarios. Here, "important" means having the largest impact on performance. Identifying these scenarios, and the required application activities, will enable you to carry out proof of concept testing.
-
-#### Proof of Concept Performance Testing ###
-
-Full end-to-end performance testing is a critical step during application design and deployment. Azure applications consist of many parts, which may include custom-built components as well as those provided by Microsoft. Microsoft cannot performance test every possible combination of these components. Therefore, fully and properly performance testing your application is a critical step of any deployment. 
-
-Based on the application model you built, next you should carry out proof of concept testing of your application as soon as possible, and load test it to validate the application architecture, to make sure that your application meets performance requirements in terms of scalability and latency. It is extremely important to validate your initial architecture and assumptions. You don't want to find out that your application is unable to sustain the expected load when it goes live! Visual Studio provides facilities for carrying out load testing, described in [Visual Studio Load Test in Azure Overview](http://www.visualstudio.com/get-started/load-test-your-app-vs). 
-
-### What's Different about Performance in Azure ###
-
-The most dramatic performance improvements achievable in Azure applications come from the scaling out and partitioning of resources. Building scalable applications in Azure requires leveraging the scale-out of resources by their physical partitioning: SQL databases, storage, compute nodes, etc. This partitioning enables parallel execution of application tasks, and is thus the basis for high performance, because Azure has the resources of an entire data center available, and handles the physical partitioning for you. To achieve this level of overall performance requires the use of proper scale-out design patterns. 
+## 概要##
+ パフォーマンスは、「[使用される時間とリソースに比較して、達成された有用な処理の量](http://go.microsoft.com/fwlink/?LinkId=252650)」のように定義することができます。
 
 
-Paradoxically, while achieving this high performance for the application as a whole, each individual operation is less performant in Azure than its on-premise equivalent, because of increased network latency, increased reliability due to fail-over operations etc. But parallelism, enabled by the proper use of partitioning resources, more than makes up for the individual performance shortfall. 
+この定義には 2 つの側面があります。メトリックとリソースです。パフォーマンス メトリックとは、ビジネス要件を満たすために達成しなければならない数値です。応答時間、スループット、可用性などがメトリックとして数値化されます。また、パフォーマンスには、特定のレベルのパフォーマンス メトリックに達するために必要なリソース使用量も含まれます。コストは常にビジネス要件となり、リソースにはコストが発生するため、パフォーマンスを高めるには、リソースをできるだけ効率的に使用する必要があります。
 
-### Required Design Activities ###
+### パフォーマンスのライフ サイクル
+アプリケーションのライフ サイクルにおいては、2 つの点からパフォーマンスに影響を及ぼすことができます。
 
-Some performance factors change depending on your application scenario. The next chapter deals with these things: scaling and partitioning of resources, locating data appropriately, and optimizing use of Azure services. 
+- パフォーマンスに影響を及ぼす基盤のアーキテクチャを決定する、設計時。
+- ボトルネックを特定し、監視や測定などを実行する、実行時。
+
+どちらのアクティビティも欠かすことはできません。このホワイト ペーパーでは、主に設計フェーズに焦点を当てます。アーキテクチャに関する誤りは、実行時には修正が難しいためです。
+
+#### アプリケーションのモデリング
+アプリケーションの最も重要な顧客シナリオに対してモデルを構築することが重要です。ここでいう「重要」とは、パフォーマンスに対して大きなの影響を持つ、というとです。これらのシナリオを区別し、そして必要なアプリケーション アクティビティを特定することで、概念実証テストを実行できるようになります。
+
+#### 概念実証のパフォーマンス テスト###
+
+アプリケーションの設計と展開のフェーズにおいて、完全なエンド ツー エンドのパフォーマンス テストはクリティカルなステップです。Azure アプリケーションは多くのパーツで構成されています。Microsoft が提供するコンポーネントに加えて、カスタムビルドのコンポーネントも使用されています。Microsoft が、これらのコンポーネントすべての組み合わせに対してパフォーマンス テストを実施することはできません。したがって、どのような展開であっても、アプリケーションの完全かつ適切なパフォーマンス テストを実施することはクリティカルなステップです。
+
+作成したモデルに基づき、次のステップとして、できるだけ早い段階でアプリケーションの概念実証テストを実施する必要があります。また、ロード テストでアプリケーション アーキテクチャを検証し、スケーラビリティと遅延の面で、そのアプリケーションがパフォーマンス要件を満たしていることを確認します。初期の段階でアーキテクチャと想定を検証することがきわめて重要です。運用を開始してから、アプリケーションが予想される負荷に耐えられないことが判明するような事態は避けなければなりません。「[Azure の Visual Studio ロード テストの概要](http://www.visualstudio.com/get-started/load-test-your-app-vs)」で説明しているように、Visual Studio にはロード テスト用の機能があります。
+
+### Azure のパフォーマンスの特徴###
+
+Azure アプリケーションのパフォーマンスに関する大幅な改良は、リソースのスケール アウトとパーティション分割に関する点です。Azure でスケーラブルなアプリケーションを作成するには、物理パーティションによるリソースのスケール アウトを活用する必要があります (SQL データベース、ストレージ、計算ノードなどのリソース)。Azure では、データ センター全体のリソースを利用でき、パーティション分割をユーザーに代わって管理します。パーティション分割によって、アプリケーション タスクを並行に実行できるようになるため、パーティション分割は高パフォーマンスの基本となります。このようなレベルの全体的なパフォーマンスを実現するには、適切なスケールアウトの設計パターンを使用する必要があります。
 
 
-The chapter after that deals with performance factors that pertain to any Azure application: network latency, transient connections, etc. 
+逆説的になりますが、Azure では、データセンター全体でアプリケーションの高パフォーマンスを実現する一方、個々の処理のパフォーマンスは、内部設置型の同等製品のパフォーマンスよりも低下します。ネットワーク待ち時間の増加、フェールオーバー処理による信頼性の強化などのためです。しかし、リソースのパーティション分割を適切に使用することによって、個々のパフォーマンスの低下を上回る利点を得られます。
 
-## Designing for Performance in a Cloud Environment ##
+### 必要な設計アクティビティ###
 
-You must consider the following scenario-dependent areas when designing an Azure application, or migrating an on-premises application to Azure: 
+一部のパフォーマンス要素は、アプリケーション シナリオによって変化します。次の章では、これらについて説明します。具体的には、リソースの拡張とパーティション分割、適切なデータ配置、Azure サービスの仕様の最適化についてです。
 
-- Resource scale out and partitioning: this is the fundamental mechanism for achieving parallelism, and thus high performance. 
-* Data architecture: what kind of data storage to use for the different parts of your application's data 
-* Individual Azure Service Optimizations 
 
-Azure gains its maximum performance advantage from being able to scale out and partition resources, which enables massive parallelization of activities. This is pretty obvious when thinking about a massive Azure SQL database, but it is also true of any resource that can become a bottleneck. 
+その次の章では、Azure アプリケーションに関するパフォーマンス要素について説明します。ネットワーク待ち時間、一時接続などです。
 
-Azure offers the following choices for data storage, and making the correct choice has a big impact on performance: 
+## クラウド環境におけるパフォーマンスのための設計##
 
-* Azure SQL database 
-* Azure Caching 
-* Azure table storage 
-* Azure blob storage 
-* Azure Drives 
-* Azure queues 
-* Azure Service Bus Brokered Messaging 
-* "Big Data" storage solutions such as Hadoop 
+Azure アプリケーションを設計するとき、または内部設置型アプリケーションを Azure に移行するときは、シナリオに依存する次の領域について検討する必要があります。
 
-Since specifics vary, we will discuss how to do these in terms of the following scenarios: 
+- リソースのスケール アウトとパーティション分割: 並列化し、高パフォーマンスを実現する上で基盤となるメカニズムです。
+* データ アーキテクチャ: アプリケーションのさまざまデータに対してどの種類のデータ ストレージを使用するかを検討します。
+* 個々の Azure サービスの最適化
 
-* Azure Cloud Service using a SQL database 
-* Azure Cloud Service heavily using storage queues 
-* Azure Web Site using MySQL as a backend database 
-* "Big Data" applications 
-* Applications using a MySQL backend database 
+Azure では、リソースのスケール アウトとパーティション分割を活用することで多数のアクティビティが並列化され、最大限のパフォーマンスが実現します。この特徴は、Azure SQL データベースの大量処理を見れば明らかですが、いずれかのリソースがボトルネックになる可能性があることも事実です。
 
-### Scenario: SQL Database in a Cloud Service ###
+Azure では、データ ストレージに関して次の選択肢があり、適切に選択することによって、パフォーマンスが大幅に向上します。
 
-Most principles of good database design still apply to Azure SQL Database. There is an immense body of material describing how to design effective SQL Server or Azure SQL Database schemas. Several references on SQL database schema design are: 
+* Azure SQL データベース
+* Azure の Caching
+* Azure テーブル ストレージ
+* Azure BLOB ストレージ
+* Azure ドライブ
+* Azure キュー
+* Azure のサービス バス仲介型メッセージング
+* Hadoop などの「Big Data」ストレージ ソリューション
 
-* [Database Design and Modeling Fundamentals]( http://go.microsoft.com/fwlink/?LinkId=252675) 
-* [Stairway to Database Design](http://go.microsoft.com/fwlink/?LinkId=252676) 
-* [Database Design](http://go.microsoft.com/fwlink/?LinkId=252677) 
+仕様はさまざまに異なるため、次のシナリオを対象として検討します。
 
-There are two key design activities that are different with Azure: 
+* SQL データベースを使用する Azure クラウド サービス
+* 大量のストレージ キューを使用する Azure クラウド サービス
+* MySQL をバックエンド データベースとして使用する Azure の Web サイト
+* 「Big Data」アプリケーション
+* MySQL バックエンド データベースを使用するアプリケーション
 
-* Locating data appropriately: this may entail moving some relational data into Azure Blobs, or Azure Tables when appropriate. 
-* Ensuring maximum scalability: deciding whether, and how to partition your data. 
+### シナリオ: クラウド サービスの SQL データベース###
 
-#### Data Architecture: Moving Data out of a SQL Database ####
+優れたデータベース設計に関する多くの原則は、Azure SQL データベースにも適用されます。効果的な SQL Server スキーマや Azure SQL データベース スキーマの設計方法を説明した資料は多数あります。SQL データベース スキーマ設計に関する参照資料は次のとおりです。
 
-Some data which often resides in an on-premises SQL Server should be moved elsewhere in Azure. 
+* [Database Design and Modeling Fundamentals (データベース設計およびモデリングの基礎)](http://go.microsoft.com/fwlink/?LinkId=252675)
+* [Stairway to Database Design (データベース設計の段階)](http://go.microsoft.com/fwlink/?LinkId=252676)
+* [Database Design (データベース設計)](http://go.microsoft.com/fwlink/?LinkId=252677)
 
-##### Moving Data into Azure Blobs ####
+Azure とは異なる重要な設計アクティビティが 2 つあります。
 
-Blob data such as images or documents should not be stored in a SQL database, but in Azure Blob storage. Although such data is often stored in on-premises SQL Server, in the cloud it is much cheaper to use Blob Storage. Typically you would replace foreign keys that pointed to the blob data with Blob Storage identifiers, to maintain the ability to retrieve the blob data, and queries that referenced the data would require modification. 
+* 適切なデータ配置: これには、一部のリレーショナル データを Azure BLOB、または Azure テーブルに適切に移動する作業が伴います。
+* 最大限のスケーラビリティの保証: データをパーティション分割するか、パーティション分割する場合はその方法を決定します。
 
-##### Moving SQL Tables into Azure Table Storage #####
+#### データ アーキテクチャ: SQL データベースからのデータの移動####
 
-In deciding whether to use Azure Table Storage, you must look at cost and performance. Table Storage is much more economical than the same data stored in a SQL database. However you must carefully consider to what extent the data makes use of SQL's relational features such as joins, filtering, queries, etc. If the data makes little use of such features then it is a good candidate for storage in an Azure Table. 
+内部設置型の SQL Server 上の一部のデータを、Azure 上に移動する必要があります。
 
-One common design pattern where you can consider Table Storage involves a table with many rows, such as the Customers table in the common AdventureWorks sample database, where a number of columns are not used by a majority of Customers, but only by a small subset of Customers. It is a common design pattern to split the columns off into a second table (perhaps named CustomerMiscellany), with an optional 1-to-0 relationship between Customer and the second table. You could consider moving the second table to Table Storage. You would have to assess whether the size of the table, and the access patterns, made this cost-effective. 
+##### Azure BLOB へのデータの移動####
 
-For more discussion of Table Storage, see: 
+イメージやドキュメントなどの BLOB データは、SQL データベースには保存せず、Azure BLOB ストレージに保存する必要があります。このようなデータが内部設置型 SQL Server に保存されることは珍しくありませんが、クラウドでは、BLOB ストレージを使用した方が低コストです。BLOB データを取得できる状態を維持するため、一般的に、BLOB データを指す外部キーを BLOB ストレージの識別子に置換し、データを参照するクエリを変更する必要があります。
 
-* [Azure Table Storage and Azure SQL Database - Compared and Contrasted](http://msdn.microsoft.com/en-us/library/jj553018.aspx)
-* [Azure Table Storage Performance Considerations](http://go.microsoft.com/fwlink/?LinkId=252663) 
-* [SQL Database and Azure Table Storage](http://go.microsoft.com/fwlink/?LinkId=252664) 
-* [Improving Performance by Batching Azure Table Storage Inserts](http://go.microsoft.com/fwlink/?LinkID=252665), which discusses some performance results. 
-* [SQL Database Performance and Elasticity Guide](http://go.microsoft.com/fwlink/?LinkId=221876) 
+##### Azure テーブル ストレージへの SQL テーブルの移動#####
 
-#### Data Partitioning ####
+Azure テーブル ストレージを使用するかどうかを決定するときには、コストとパフォーマンスを検討する必要があります。テーブル ストレージは、SQL データベースに保存された同じデータよりも経済的です。ただしデータが、結合、フィルタリング、クエリなどの SQL のリレーショナル機能をどの程度使用するかを慎重に考慮する必要があります。これらの機能をほとんど使用しないデータの場合は、Azure テーブルのストレージは良い候補となります。
 
-One of the most frequently partitioned resources is data. If you are creating an Azure Cloud Service, then you should consider the use of SQL Database's built-in sharding available via Federations. 
+テーブル ストレージの使用を検討する一般的な設計パターンの 1 つが、Adventure Works サンプル データベースの Customers テーブルのように、大部分の Customer は使用せず、ほんの少数の Customers が使用する列が多数あるテーブルの場合です。列を (CustomerMiscellany のような名前の) 2 つ目のテーブルに分割するのは、一般的な設計パターンです。必要に応じて、Customer と 2 つ目のテーブルの間に 1 対 0 のリレーションシップを定義します。2 つ目のテーブルをテーブル ストレージに移動することを検討してください。コスト効率に優れた方法を選択するには、テーブルのサイズを評価し、評価パターンについて検討する必要があります。
 
-For an overview of SQL Database Federations, see [Federations in SQL Database]( http://go.microsoft.com/fwlink/?LinkId=252668).  
+テーブル ストレージの詳細については、次の資料を参照してください。
 
-##### Design Tasks for SQL Federations #####
+* [Azure テーブル ストレージと Azure SQL データベースの比較](http://msdn.microsoft.com/ja-jp/library/jj553018.aspx)
+* [Azure Table Storage Performance Considerations (Azure テーブル ストレージ)](http://go.microsoft.com/fwlink/?LinkId=252663)
+* [SQL データベースと Azure テーブル ストレージ](http://go.microsoft.com/fwlink/?LinkId=252664)
+* [Azure テーブル ストレージ挿入のバッチ処理によるパフォーマンスの向上に関するページ](http://go.microsoft.com/fwlink/?LinkID=252665)。一部のパフォーマンス結果について説明しています。
+* [SQL データベースのパフォーマンスと弾力性に関するガイド](http://go.microsoft.com/fwlink/?LinkId=221876)
 
-Use of SQL Database Federations in an Azure Cloud Service requires some modification of classic design principles. However, most things true of good design for an on-premises SQL Server database are a necessary starting point for designing SQL Database Federations. There are two major design tasks, deciding: 
+#### データのパーティション分割####
 
-* what to federate on; and 
+最も頻繁にパーティション分割されるリソースの 1 つはデータです。Azure クラウド サービスを作成する場合、フェデレーションから利用できる、SQL データベースのビルトイン シャーディングを使用すること検討してください。
 
-* where to place non-federated tables. 
+SQL データベースのフェデレーションの概要については、「[Azure SQL データベースでのフェデレーション]( http://go.microsoft.com/fwlink/?LinkId=252668)」を参照してください。
 
-In order to decide what to federate on, you need to examine your database schema and identify aggregations of related tables. An aggregate is a set of tables, all of which are related by 1-to-many relationships through their foreign keys, except for the root of the aggregate. 
+##### SQL フェデレーションのための設計タスク#####
 
-For example, in the well-known AdventureWorks sample database, one possible aggregate is the set {Customer, Order, OrderLine, and possibly a few more}. Another possible aggregate is {Supplier, Product, OrderLine, Order}. 
+Azure クラウド サービスで SQL データベースのフェデレーションを使用するには、従来の設計原理を一部変更する必要があります。ただし、内部設置型 SQL Server データベースの優れた設計に該当する原理は、SQL データベースのフェデレーションを設計するために必要な開始点です。2 つの重要な設計タスクがあり、次の項目を決定します。
 
-Each aggregate is a candidate for federating. You must evaluate where you expect growth in size, and also examine your application's work load: queries that "align well" with the federating scheme, i.e. which don't require data from more than one federation member, will run well. Those that don't align well will require logic in the application layer, because SQL Database does not currently support cross-database joins. 
+* 何を統合するか
 
-To see an example of a design analysis that examines the AdventureWorks database in order to federate it, and shows you step-by-step the considerations involved in the design, see [Scale-First Approach to Database Design with Federations: Part 1 - Picking Federations and Picking the Federation Key](http://go.microsoft.com/fwlink/?LinkId=252671). 
+* 非フェデレーション テーブルをどこに配置するか
 
-Once you decide which tables to federate, you must add the primary key of the aggregate root table as a column to each of the related tables. 
+何を統合するかを決定するには、データベース スキーマを調査し、関連テーブルの集計を識別する必要があります。集計はテーブルのセットであり、それらのテーブルはすべて、外部キーによって 1 対多のリレーションシップに関連付けられます (集計のルートを除く)。
 
-After deciding what tables to federate on, another issue is the location of reference tables, as well as other database objects. There is a thorough discussion of this subject at [Scale-First Approach to Database Design with Federations: Part 2 - Annotating and Deploying Schema for Federations](http://go.microsoft.com/fwlink/?LinkId=252672). Doing more advanced queries is described in [Part 2]( http://go.microsoft.com/fwlink/?LinkId=252673). 
+たとえば、AdventureWorks サンプル データベースの場合に考えられる集計の 1 つは、{Customer, Order, OrderLine, およびその他いくつか} というセットです。もう 1 つ考えられる集計の例が、{Supplier, Product, OrderLine, Order} です。
+
+各集計がフェデレーションの候補となります。どの場所でサイズの増加が予測されるかを評価し、アプリケーションのワーク ロードを調査する必要があります。フェデレーション スキームに「よく適合する」クエリ、つまり、複数のフェデレーション メンバーからのデータを必要としないデータは、うまく機能します。適合しない場合は、アプリケーション レベルでロジックが必要となります。現在のところ、SQL データベースでは、複数データベースの結合がサポートされていないためです。
+
+設計分析の例について、「[Scale-First Approach to Database Design with Federations: Part 1 – Picking Federations and Picking the Federation Key (フェデレーションを使用したデータベース設計に対するスケール優先のアプローチ: パート 1 - フェデレーションのピッキングとフェデレーション キーのピッキング)](http://go.microsoft.com/fwlink/?LinkId=252671)」を参照してください。フェデレーションを行うために AdventureWorks データベースについて調査し、設計に関する考慮事項を、手順をおって説明しています。
+
+フェデレーションを行うテーブルを決定したら、集計のルート テーブルのプライマリ キーを、各関連テーブルに列として追加します。
+
+フェデレーションを行うテーブルを決定した後、次の課題は、他のデータベース オブジェクトと参照テーブルの場所です。これについては、「[Scale-First Approach to Database Design with Federations: Part 2 - Annotating and Deploying Schema for Federations](http://go.microsoft.com/fwlink/?LinkId=252672)」で詳しく説明しています。高度なクエリの実行については、[パート 2]( http://go.microsoft.com/fwlink/?LinkId=252673) のページで詳しく説明しています。
 
                                             
-##### Do-It-Yourself Partitioning #####
+##### 手動によるパーティション分割#####
 
-There are a number of samples that show ways of partitioning data. If you decide not to use Federations to partition your SQL Database instance, you must choose a method of partitioning that is appropriate to your application. Here are some examples: 
+データをパーティション分割する方法について、たくさんの例が用意されています。SQL データベース インスタンスのパーティション分割にフェデレーションを使用しない場合は、アプリケーションに対して適切なパーティション分割の方法を選択する必要があります。次に例をいくつか示します。
 
-* A comprehensive account written before the release of Federations is [How to Shard with SQL Database](http://go.microsoft.com/fwlink/?LinkId=252678). 
-* [SQL Server and SQL Database Shard Library]( http://go.microsoft.com/fwlink/?LinkId=252679) 
+* 「[How to Shard with Azure SQL Database (Azure SQL データベースでのシャードの方法)](http://go.microsoft.com/fwlink/?LinkId=252678)」は、フェデレーションのリリース前に書かれた包括的な説明です。
+* [SQL Server and SQL Database Shard Library (SQL Server と SQL データベースのシャード ライブラリ)]( http://go.microsoft.com/fwlink/?LinkId=252679)
 
-##### Partitioning Other Resources #####
+##### その他のリソースのパーティション分割#####
 
-You can partition other resources besides SQL Database. For example you might wish to partition application servers and dedicate them to specific databases. Let's assume your application contained N app servers, and also N databases. If each app server is allowed to access each database, that will consume N squared database connections which in some cases may hit a hard Azure limit. But if you restrict each app server to only a few databases, then you will significantly reduce the number of connections used. 
+SQL データベース以外のリソースをパーティション分割することができます。例として、アプリケーション サーバーをパーティション分割して、特定のデータベースに専用のパーティションを作成する場合で考えてみましょう。N 個アプリケーション サーバーを含むアプリケーションがあり、データベースが N 個あるとします。各アプリケーション サーバーがそれぞれのデータベースにアクセスできる場合、使用されるデータベース接続数は N の 2 乗個となり、環境によっては Azure のハードウェアの上限に達します。ただし、各アプリケーション サーバーのデータベース数を少数に制限すれば、使用される接続数を大幅に削減できます。
 
-Depending on your application you may be able to apply similar reasoning to other resources. 
+アプリケーションによっては、他のリソースにも同様の考え方を適用できます。
 
 
-#### Caching ####
+#### Caching####
 
-The Azure Caching Service provides distributed elastic memory for caching things like ASP.net session state, or commonly referenced values from SQL Database reference tables. Because the objects are in distributed memory, there is a considerable performance gain possible. Because Azure handles the caching infrastructure, there is little development cost in implementing it. 
+Azure の Caching サービスは、ASP.NET セッション状態のキャッシュや、SQL データベース参照テーブルから一般的に参照される値に対して、分散型の柔軟なメモリを提供します。オブジェクトが分散型メモリに格納されるため、パフォーマンスをかなり向上させることができます。キャッシング用のインフラストラクチャは Azure にょって処理されるため、実装するときの展開コストはごくわずかです。
 
-Plan to provide enough caching capacity so that you can cache frequently accessed objects. In SQL Database there are frequently reference tables used to convert numeric codes into longer descriptive character strings. These tables often include data such as Country and City names, valid Postal Code values, names of Departments within your company, etc. For smaller tables it may make sense to store the entire table in cache, for others you might only store the most frequently used values. The performance gain comes in multi-join queries that involve this data: for each value that is found in the cache, several disk accesses are saved. A good introduction and discussion of performance and caching in Azure is [Introducing the Azure Caching Service](http://go.microsoft.com/fwlink/?LinkId=252680). A more recent blog post on the subject is at [Windows #Azure Caching Performance Considerations](http://go.microsoft.com/fwlink/?LinkId=252681). 
+頻繁にアクセスされるオブジェクトをキャッシングできるように、キャッシング用の十分な容量を確保するように計画します。SQL データベースの場合、数値コードをわかりやすい長い文字列に変換するために、参照テーブルがよく使用されます。これらのテーブルには、通常、Country 名および City 名、有効な Postal Code 値、会社内の Departments 名などのデータが含まれます。小さいテーブルの場合は、テーブル全体をキャッシュに保存することが合理的です。それ以外のテーブルの場合は、最も頻繁に使用される値のみを保存するとよいでしょう。このデータに関するマルチ結合クエリでは、パフォーマンスが向上します。キャッシュにある値に関して、複数のディスク アクセスが節約されます。「[Azure AppFabric キャッシュ サービスの概要](http://go.microsoft.com/fwlink/?LinkId=252680)」は、Azure のパフォーマンスとキャッシングに関するお勧めの手引き書です。技術的な詳しい説明も記載されています。キャッシングに関する最新のブログ投稿については、「[Windows #Azure Caching – Performance considerations (Windows #Azure の Caching – パフォーマンスの考慮事項)](http://go.microsoft.com/fwlink/?LinkId=252681)」を参照してください。
 
-#### Scenario: Using Queuing in Azure Applications ####
+#### シナリオ: Azure アプリケーションでのキューの使用####
 
-An example of this scenario is using StreamInsight to populate queues with messages that will be processed later. 
+このシナリオの例では、StreamInsight を使用して、後で処理するメッセージのキューを生成します。
 
-Azure Queues are used to pass messages, temporally decouple subsystems, and to provide load balancing and load leveling. 
+Azure キューはメッセージを渡すために使用されます。一時的にサブシステムの結合を解除し、負荷分散と負荷平準化を行います。
 
-Azure has two alternative queue technologies: Azure Storage Queues, and Service Bus. 
+Azure には 2 種類のキュー テクノロジがあります。Azure のストレージ キューとサービス バスです。
 
-Azure Storage Queues provide features such as large queue size, progress tracking, and more. Service Bus provides features such as publish/subscribe, full integration with Windows Communication Foundation ("WCF"), automatic duplicate detection, guaranteed first-in first-out ("FIFO") delivery, and more. 
+Azure のストレージ キューには、大きなサイズのキュー、進行状況の追跡などの機能があります。サービス バスには、発行/サブスクライブ、Windows Communication Foundation (WCF) との完全統合、重複データの自動排除、先入れ先出し型 (FIFO) の配信機能などがあります。
 
-For a more complete and detailed comparison of the two technologies, see [Azure Queues and Azure Service Bus Queues - Compared and Contrasted](http://go.microsoft.com/fwlink/?LinkId=252682). 
+2 つのテクノロジ全体の詳細な比較については、「[Azure キューと Azure のサービス バス キューの比較](http://go.microsoft.com/fwlink/?LinkId=252682)」を参照してください。
 
-For a discussion of Service Bus performance, see [Best Practices for Performance Improvements Using Service Bus Brokered Messaging](http://go.microsoft.com/fwlink/?LinkID=252683). 
+サービス バスのパフォーマンスについては、「[サービス バスで仲介型メッセージングを使用したパフォーマンス向上のヒント集](http://go.microsoft.com/fwlink/?LinkID=252683)」を参照してください。
 
-#### Scenario: "Big Data" Applications ####
+#### シナリオ:「Big Data」アプリケーション####
 
-"Big Data" is often found as a by-product of another system or application. Examples include: 
+「Big Data」という言葉は、他のシステムやアプリケーションの副産物を表す場合に使用されることがよくあります。たとえば、次のような文脈で使用されています。
 
-* Web logs 
+* Web ログ
 
-* Other diagnostic, audit, and monitoring files 
+* 他の診断、監査、および監視ファイル
 
-* Oil company seismic logs 
+* 石油会社の地震記録
 
-* Click-data and other information left by people traversing the Internet 
+* インターネット上を渡り歩くユーザーが残すクリック データなどの情報
 
-"Big Data" can be identified by the following criteria: 
+「Big Data」の判断基準は次のとおりです。
 
-* Size (typically, hundreds of terabytes or larger) 
+* サイズ (通常は数百テラバイト以上)
 
-* Type: non-relational, variable schema, files in a file system 
+* 種類: 非リレーショナル、可変スキーマ、ファイル システムのファイル
 
-The data is generally not suited for processing in a relational database. 
+この種のデータは、通常は、リレーショナル データベースでの処理に向いていません。
 
-There are four major kinds of non-SQL data storage: 
+非 SQL データ ストレージは主に 4 つの種類があります。
 
-* Key-value 
+* キー値
 
-* Document 
+* ドキュメント
 
-* Graph 
+* グラフ
 
-* Column-Family 
+* 列ファミリ
 
-Azure provides direct support for Hadoop, and also enables use of other technologies. For information about Azure HDInsight Service, see: 
+Azure は Hadoop を直接サポートしており、他のテクノロジも利用することができます。Azure の HDInsight サービスについては、以下の項目を参照してください。
 
-* [Big Data](/en-us/solutions/big-data/) 
-* [Azure HDInsight Service](/en-us/documentation/services/hdinsight/)
-* [Getting Started with Azure HDInsight Service](/en-us/documentation/articles/hdinsight-get-started/)
+* [ビッグ データ](/ja-jp/solutions/big-data/)
+* [Azure の HDInsight サービス](/ja-jp/documentation/services/hdinsight/)
+* [Azure の HDInsight サービスの概要](/ja-jp/documentation/articles/hdinsight-get-started/)
 
-For some discussion of issues involved with various noSQL storage methods, see: 
+さまざまな noSQL ストレージに関する話題については、以下の資料を参照してください。
 
-* [Getting Acquainted with NoSQL on Azure](http://go.microsoft.com/fwlink/?LinkId=252729) 
+* [Getting Acquainted with NoSQL on Azure (Azure での NoSQL の利用について)](http://go.microsoft.com/fwlink/?LinkId=252729)
 * [AggregateOrientedDatabase](http://go.microsoft.com/fwlink/?LinkID=252731)
-* [PolyglotPersistence](http://go.microsoft.com/fwlink/?LinkId=252732) 
+* [PolyglotPersistence](http://go.microsoft.com/fwlink/?LinkId=252732)
 
-#### Other Azure Individual Service Performance Optimizations ####
+#### Azure のその他のサービスのパフォーマンス最適化####
 
-Many of the individual Azure services have features and settings that can impact performance significantly, and so must be analyzed. 
+Azure の多くのサービスには、パフォーマンスを大幅に改善できる機能や設定がそれぞれ用意されています。個別に見ていきましょう。
 
-##### Azure Drives #####
+##### Azure ドライブ#####
 
-You can simulate an existing application's hard drive usage by an Azure Drive, which is backed by a Windows Blob and is thus persistent across individual machine failure. 
+Azure ドライブを使用すると、既存のアプリケーションのハード ドライブ使用量をシミュレートすることができます。Windows BLOB が基盤となっているため、個々のマシンに障害が発生しても、全体的な永続性が実現します。
 
-##### Local Storage #####
+##### ローカル ストレージ#####
 
-Although it isn't persistent across machine failure, it can be used to hold frequently accessed information, or to hold intermediate results that will be used elsewhere. This is cost effective since there is no charge for its use. 
+マシンの故障が発生したときの永続性はありませんが、頻繁にアクセスされる情報の保存や、別の場所で使用される中間的な結果の保存に使用できます。使用しても課金されないため、コスト効率に優れた方法です。
 
-##### Azure Access Control Service (ACS) #####
+##### Azure の Access Control サービス (ACS)#####
 
-The two main factors affecting ACS resource usage, and thus performance, are the token size, and encryption. Further discussion is at [ACS Performance Guidelines](http://go.microsoft.com/fwlink/?LinkId=252747). 
+ACS のリソース使用量とパフォーマンスに影響する 2 つの主な要素は、トークン サイズと暗号化です。詳細については、[ACS のパフォーマンスに関するガイドライン](http://go.microsoft.com/fwlink/?LinkId=252747)を参照してください。
 
-##### Serialization #####
+##### シリアル化#####
 
-Serialization is not an obvious part of performance optimization, but reducing network traffic can be significant, in some application scenarios. For an example of how serialization sizes can vary depending on the protocol, see the reductions demonstrated in [Azure Web Applications and Serialization](http://go.microsoft.com/fwlink/?LinkId=252749). 
+シリアル化は、パフォーマンス最適化の明確な要素ではありませんが、アプリケーション シナリオによっては、ネットワーク トラフィックを大幅に減らすことができます。シリアル化のサイズがプロトコルごとにどのように変化するかについては、「[Azure 対応の Web アプリケーションとシリアル化](http://go.microsoft.com/fwlink/?LinkId=252749)」を参照してください。
 
-If the amount of data being moved is a performance issue, then use the smallest available serialization available. In the event that serialization performance isn't sufficient, consider using custom or non-Microsoft third party serialization formats. As always, proof of concept testing is key. 
-
-
-### Azure Web Sites using mySQL ###
-
-The following links provide performance advice for MySQL: 
-
-* Searching on *performance* at [http://mysql.com]( http://go.microsoft.com/fwlink/?LinkId=252775) turns up many resources. 
-* The forums at[ http://forums.mysql.com/list.php?24]( http://go.microsoft.com/fwlink/?LinkId=252776) are other resources to consult. 
+移動するデータの量がパフォーマンス上の問題となる場合は、利用可能な最小サイズのシリアル化を使用します。シリアル化のパフォーマンスが十分でない場合は、カスタムのシリアル化形式やサード パーティのシリアル化形式を使用することを検討してください。シリアル化を使用する場合も、概念実証のパフォーマンス テストが重要です。
 
 
+### mySQL を使用する Azure の Web サイト###
 
-## Designing for Shared Systems ##
+以下のリンク先では、MySQL のパフォーマンスに関するヒントを紹介しています。
 
-Azure is designed to run multiple concurrent applications, replicated for fail-over on multiple machines. This affects application performance in a number of ways: 
-
-* Transient connections 
-
-* Resource throttles that limit maximum usage 
-
-* Network latency 
-
-* Physical location of services 
-
-These considerations apply to all application architectures, because they are determined by the physical infrastructure of Azure data centers. For detailed discussion, see the [SQL Database Performance and Elasticity Guide](http://go.microsoft.com/fwlink/?LinkID=252666). 
-
-### Network latency ###
-
-Azure is a service-based platform of shared resources, and this means that two types of latencies or interruptions regularly occur. The first is the time taken to make a request and receive a response over the internet. Since those requests and responses can travel through any number of routers before they return to the client, timeouts and disconnections are more frequent than in local, fixed networks. The second is the time it takes for a shared-resource system like Azure to create backup versions of data for durability and to replace and reroute requests to any removed instances. These latencies and failures are important to understand how to compensate to achieve any performance requirements in the application. Load testing at a real-world level will give you more information about the latencies that you see. 
-
-Take into account that there probably will be more, since the cloud data center is likely physically further away than your on-premises server. 
-
-### Physical location of services ###
-
-If possible, co-locate different nodes or application layers within the same data center. Otherwise network latency and cost will be greater. 
-
-For example, locate the web application in the same data center as the SQL Database instance that it accesses, rather than in a different data center, or on-premises. 
-
-### Transient connections ###
-
-Your application MUST be able to handle dropped connections. Dropped connections are inevitable and intrinsic to the cloud architecture (e.g. ops like replacing a dead node, splitting a Federation member in SQL Database, etc). The best framework for doing this right now is [The Transient Fault Handling Application Block](http://go.microsoft.com/fwlink/?LinkID=236901). 
-
-### Throttling ###
-
-In the service world, resources can be very granular and you pay only for what you use. However, for all resources there is a minimum guarantee of size, speed, or throughput - important if you need more than a certain size database, for example - but also in some cases are outer limits to a service that is important. Because Azure applications run in a shared environment with other applications, Azure applies a number of resource throttles that you must take into account. If you exceed the throttle limit for a resource, a further request for that resource will result in an exception. 
-
-### Physical Capacity ###
-
-One necessary piece of performance planning is capacity planning: if you fail to provide enough storage of various kinds, your application may fail to run at all. Likewise inadequate memory or processor capacity can dramatically slow the execution of your application. 
-
-
-Azure dramatically reduces the effort involved in capacity planning because many old activities - particularly obtaining and provisioning computers -- have changed dramatically. In Azure, capacity planning no longer focuses on the physical elements of computing, but instead works at a higher level of abstraction, asking rather, how many of the following are needed: 
-
-* Compute nodes 
-* Blob storage 
-* Table storage 
-* Queues etc. 
-
-And because of Azure's scalability, the initial capacity decisions are not cast in stone: it is relatively easy to scale up (or down) Azure resources. Even so, it is important to do accurate capacity planning, since that will ensure that when the application goes live there is not a period of trial and error regarding capacity. 
-
-For applications whose resource needs fluctuate dramatically over time, consider using [The Autoscaling Application Block](http://go.microsoft.com/fwlink/?LinkId=252873). This Block allows you to set rules for the scaling up and down of role instances. There are two kinds of rules defined: 
-
-* Constraint rules, which set maximum/minimum number of instances by time of day 
-
-* Reactive rules which take effect when some condition such as CPU usage % occurs 
-
-You can also define custom rules. For more information, see [The Autoscaling Application Block](http://go.microsoft.com/fwlink/?LinkId=252873). 
+* [http://mysql.com]( http://go.microsoft.com/fwlink/?LinkId=252775) で「*パフォーマンス*」を検索すると、さまざまなリソースが表示されます。
+* [http://forums.mysql.com/list.php?24](http://go.microsoft.com/fwlink/?LinkId=252776) のフォーラムからも、さまざまなリソースを利用できます。
 
 
 
-Capacity planning is an entire specialty of its own, and this paper assumes that you have already done it. For a detailed discussion of capacity planning in Azure, see [Capacity Planning for Service Bus Queues and Topics](http://go.microsoft.com/fwlink/?LinkId=252875).
+## 共有システムのための設計##
+
+Azure は、フェールオーバー用に複数のマシン上に複製された複数のアプリケーションの同時実行向けに設計されています。これは、さまざまな点でアプリケーションのパフォーマンスに影響します。
+
+* 一時接続
+
+* 最大使用量を制限するリソース調整
+
+* ネットワーク待ち時間
+
+* サービスの物理的な場所
+
+これらの考慮事項はすべてのアプリケーション アーキテクチャに適用されます。いずれの項目も Azure データ センターの物理インフラストラクチャによって決まるからです。詳細については、[SQL データベースのパフォーマンスと弾力性に関するガイド](http://go.microsoft.com/fwlink/?LinkID=252666)を参照してください。
+
+### ネットワーク待ち時間###
+
+Azure は、共有リソースのサービスベースのプラットフォームであり、2 種類の待ち時間または中断が定期的に発生します。最初の待ち時間は、要求を作成し、インターネット上で応答を受信ときにかかる時間です。これらの要求と応答は、クライアントに戻る前に多数のルーターを経由することがあり、ローカルの固定ネットワークよりもタイムアウトや切断が頻繁に発生します。2 つ目の待ち時間は、Azure のような共有リソース システムが持続性を確保するためにデータのバックアップを作成するのにかかる時間、および削除済みのインスタンスに対する要求の置換と経路変更にかかる時間です。これらの待ち時間と障害は、アプリケーションにおけるパフォーマンス要件を満たす状況を理解するにあたって重要です。実際の環境レベルでロード テストを実行すると、待ち時間に関してより多くの情報を得ることができます。
+
+クラウド データ センターは内部設置型サーバーよりも物理的に遠い場所にあるため、これらがより重要です。
+
+### サービスの物理的な場所###
+
+可能であれば、異なるノードまたはアプリケーション レイヤーを同一のデータ センター内に配置します。そうしないと、ネットワーク待ち時間およびコストが増加します。
+
+たとえば、Web アプリケーションを、別のデータ センターではなく、アクセス対象の SQL データベースと同じデータ センターに、または内部設置で配置します。
+
+### 一時接続###
+
+ドロップされた接続は、アプリケーションで処理できなければなりません。クラウド アーキテクチャの性質上、接続のドロップは避けられません (たとえば、機能停止のノードの置き換え、SQL データベースでのフェデレーション メンバーの分割などの操作で接続がドロップされます)。現時点での最適なフレームワークは、[Transient Fault Handling Application Block (一時的なエラー処理アプリケーション ブロック)](http://go.microsoft.com/fwlink/?LinkID=236901) です。
+
+### 調整###
+
+サービスの世界では、リソースは細分化が進んでおり、ユーザーは必要なサービスにのみ料金を支払います。ただし、いずれのリソースも、サイズ、速度、またはスループット (たとえば、特定のサイズより大きいデータベースを使用する場合に重要です) について最小限の保証が存在します。一方で、重要なサービスには上限が設けられていることがあります。Azure アプリケーションは他のアプリケーションと共有の環境で実行されるため、Azure は、多数のリソース調整を適用します。これを考慮する必要があります。リソースの調整限度を超えると、リソースに対する以降の要求では、例外が発生します。
+
+### 物理容量###
+
+パフォーマンス計画の必須項目の 1 つが、容量計画です。各種のストレージを十分に提供できない場合、アプリケーションはまったく機能しません。メモリやプロセッサが不十分な場合と同様、容量の不足はアプリケーションの実行速度を大幅に低下させます。
+
+
+Azure は、容量計画に関する作業を劇的に減少させます。従来からある多くのアクティビティ (特にコンピューターの取得とプロビジョニング) は劇的に変化しているからです。Azure の容量計画では、コンピューティングの物理要素はもはや重要ではありません。その代わりに、より抽象的なレベルで、次の項目がそれぞれいくつ必要であるかを検討します。
+
+* 計算ノード
+* BLOB ストレージ
+* テーブル ストレージ
+* キューなど
+
+Azure はスケーラビリティに優れているため、初期の容量決定が確定となるわけではありません。Azure リソースの拡張/縮小は比較的簡単です。とはいうものの、容量計画は正確に行うことが重要です。アプリケーションの運用を開始するときに、容量について試行錯誤する時間はないからです。
+
+時間の経過と共にリソースを増減する必要があるアプリケーションについては、[オートスケーリング アプリケーション ブロック](http://go.microsoft.com/fwlink/?LinkId=252873)の使用を検討してください。このブロックでは、ロール インスタンスの拡張/縮小に関するルールを設定できます。次の 2 種類のルールを設定します。
+
+* 時間内のインスタンスの最大/最小数を設定する制約規則
+
+* CPU 使用率などの条件に従って有効になるリアクティブ規則
+
+カスタム ルールも定義できます。詳細については、[オートスケーリング アプリケーション ブロック](http://go.microsoft.com/fwlink/?LinkId=252873)のページを参照してください。
 
 
 
-## Performance Monitoring and Tuning at Runtime ##
-
-Even the most careful design cannot guarantee zero performance problems at run-time, so it is necessary to monitor application performance on an on-going basis, to verify that it is achieving the required performance metrics, and to correct situations in which it fails to achieve those metrics. Even well designed applications are subject to unanticipated events such as exponential growth in usage or possible changes to the run-time environment, which can result in performance problems where tuning is required. Often identifying and resolving bottlenecks is a significant part of the process. 
+容量計画には、独自の専門知識が必要です。このホワイト ペーパーでは、容量計画は作成済みであることを前提としています。Azure の容量計画の詳細については、「[サービス バスのキューおよびトピックのキャパシティ プランニング](http://go.microsoft.com/fwlink/?LinkId=252875)」を参照してください。
 
 
-Being able to trouble shoot performance problems at runtime requires up-front work to build in logging and proper exception handling, so that trouble-shooting can be done whenever problems may arise. For a comprehensive treatment of this area, see [Troubleshooting Best Practices for Developing Azure Applications](http://go.microsoft.com/fwlink/?LinkID=252876). 
 
-There are tools available for monitoring the on-going performance of every Azure service. In addition logging facilities should be built into applications that provide detailed information needed for trouble-shooting and resolving performance issues. 
+## 実行時のパフォーマンス監視およびチューニング##
 
-### SQL Database ###
+どれほど慎重に設計しても、実行時に発生するパフォーマンスの問題をゼロにすることはできません。そのため、アプリケーション パフォーマンスを継続的に監視して、所定のパフォーマンス メトリックを達成していることを確認し、未達の場合は状況を修正する必要があります。適切に設計されたアプリケーションであっても、使用量の急増などの予測できないイベントが発生したり、実行時の環境が変更することがあり、その結果、チューニングが必要なパフォーマンスの問題が発生します。多くの場合、ボトルネックの特定と解決は、このプロセスにおいて重要です。
 
-Note that the SQL Profiler is not currently available in Azure. There are several work-arounds to gain the needed performance information.One alternative during development is to do initial testing in an on-premises version of the database, where SQL Profiler is available. 
 
-You can also use the SET STATISTICS Transact-SQL command, and use SQL Server Management Studio to view the execution plan generated by a query, since coding efficient queries is a key to performance. For a detailed discussion, and a step-by-step explanation of how to do this, see [Gaining Performance Insight into SQL Database](http://go.microsoft.com/fwlink/?LinkId=252877). Another interesting approach is at Analyze performance between [SQL Database and SQL Server on premise](http://go.microsoft.com/fwlink/?LinkId=252878). 
+実行時に発生するパフォーマンスの問題をトラブルシューティングするには、ログを作成し、例外を適切に処理するための事前作業が必要です。問題が発生した時点でトラブルシューティングできるようにします。この領域に関する包括的な手順については、[Azure アプリケーション開発のトラブルシューティングに関するベスト プラクティスのページ](http://go.microsoft.com/fwlink/?LinkID=252876)を参照してください。
 
-Two topics about Dynamic Management Views are: 
+すべての Azure サービスのパフォーマンスを継続的に監視できるツールがあります。ログに加えて、トラブルシューティングおよびパフォーマンスの問題を解決するのに必要な詳細情報を提供するアプリケーションを施設に導入する必要があります。
 
-* [Monitoring SQL Database Using Dynamic Management Views](http://go.microsoft.com/fwlink/?LinkId=236195) 
-* [Useful DMV's for SQL Database to analyze if you miss SQL Profiler](http://go.microsoft.com/fwlink/?LinkId=252879) 
+### SQL データベース###
 
-### Analysis Resources and Tools ###
+現時点では、Azure では SQL Profiler を使用できません。必要なパフォーマンス情報を得るための代替方法は複数あります。1 つは、開発中に、SQL Profiler が利用できるデータベースの内部設置型バージョンで初期テストを実施する方法です。
 
-A number of third-party non-Microsoft tools are available for analyzing Azure performance: 
+Transact-SQL コマンド SET STATISTICS を使用し、SQL Server Management Studio で、クエリによって生成された実行プランを表示する方法です。効率的なクエリをコーディングすることは、パフォーマンスにとって重要であるからです。詳細な説明と手順については、[SQL データベースのパフォーマンスに関する考察のページ](http://go.microsoft.com/fwlink/?LinkId=252877)を参照してください。もう 1 つの興味深い方法は、[内部設置型 SQL データベースと SQL Server](http://go.microsoft.com/fwlink/?LinkId=252878) 間のパフォーマンスを分析する方法です。
+
+動的管理ビューについては次の 2 つのトピックを参照してください。
+
+* [動的管理ビューを使用した Azure SQL データベースの監視](http://go.microsoft.com/fwlink/?LinkId=236195)
+* [Useful DMV’s for SQL Database to analyze if you miss SQL Profiler (SQL Profiler がない場合に SQL データベースを分析するのに便利な DMV)](http://go.microsoft.com/fwlink/?LinkId=252879)
+
+### 分析リソースとツール###
+
+さまざまなサード パーティから Azure のパフォーマンス監視用ツールが提供されています。
 
 - [Cerebrata](http://go.microsoft.com/fwlink/?LinkId=252880) 
-- [SQL Server and SQL Database Performance Testing: Enzo SQL Baseline](http://enzosqlbaseline.codeplex.com/) 
+- [SQL Server and SQL Database Performance Testing: Enzo SQL Baseline (SQL Server および SQL データベース パフォーマンスのテスト: Enzo SQL Baseline)](http://enzosqlbaseline.codeplex.com/)
 
-Other Resources 
+その他のリソース
 
-* [SQL Database Performance and Elasticity Guide](http://go.microsoft.com/fwlink/?LinkID=252666) 
-* [SQL Database](http://go.microsoft.com/fwlink/?LinkId=246930) 
-* [Storage](http://go.microsoft.com/fwlink/?LinkId=246933) 
-* [Networking]( http://go.microsoft.com/fwlink/?LinkId=252882) 
-* [Service Bus]( http://go.microsoft.com/fwlink/?LinkId=246934) 
-* [Azure Planning - A Post-decision Guide to Integrate Azure in Your Environment](http://go.microsoft.com/fwlink/?LinkId=252884) 
+* [SQL データベースのパフォーマンスと弾力性に関するガイド](http://go.microsoft.com/fwlink/?LinkID=252666)
+* [SQL データベース](http://go.microsoft.com/fwlink/?LinkId=246930)
+* [ストレージ](http://go.microsoft.com/fwlink/?LinkId=246933)
+* [ネットワーク]( http://go.microsoft.com/fwlink/?LinkId=252882)
+* [サービス バス]( http://go.microsoft.com/fwlink/?LinkId=246934)
+* [Azure Planning – A Post-decision Guide to Integrate Azure in Your Environment (Azure のプランニング – Azure を既存環境に統合するための決定後ガイド)]( http://go.microsoft.com/fwlink/?LinkId=252884)

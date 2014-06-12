@@ -1,49 +1,49 @@
-<properties linkid="develop-media-services-tutorials-get-started" urlDisplayName="Get Started with Media Services" pageTitle="Get Started with Media Services - Azure" metaKeywords="Azure media services" description="An introduction to using Media Services with Azure." metaCanonical="" services="media-services" documentationCenter="" title="Get started with Media Services" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-media-services-tutorials-get-started" urlDisplayName="メディア サービスの使用" pageTitle="メディア サービスの使用 - Azure" metaKeywords="Azure メディア サービス" description="Azure でメディア サービスを使用する方法を紹介します。" metaCanonical="" services="media-services" documentationCenter="" title="メディア サービスの使用" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
 
-# <a name="getting-started"></a>Get started with Media Services
+# <a name="getting-started"></a>メディア サービスの使用
 
-This tutorial shows you how to start developing with Azure Media Services. It introduces the basic Media Services workflow and the most common programming objects and tasks required for Media Services development. At the completion of the tutorial, you will be able to play back a sample media file that you uploaded, encoded, and downloaded. Or you can browse to the encoded asset and play it back on the server. 
+このチュートリアルでは、Azure のメディア サービスを使用した開発の基礎について説明します。メディア サービスの基本的なワークフローを示し、メディア サービス開発に必要となる一般的なプログラミング オブジェクトおよびタスクについても紹介します。このチュートリアルを完了すると、サンプル メディア ファイルをアップロード、エンコード、およびダウンロードして再生できるようになります。サーバーでエンコード済みのアセットを参照して再生することもできます。
 
-A C# Visual Studio project that contains the code for this tutorial is available here: [Download](http://go.microsoft.com/fwlink/?linkid=253275).
+このチュートリアルで使用するコードが格納されている Visual Studio の C## プロジェクトは、こちらから[ダウンロード](http://go.microsoft.com/fwlink/?linkid=253275)できます。
 
-This tutorial walks you through these basic steps:
+このチュートリアルでは、次の基本的な手順について説明します。
 
-* [Setting up your project](#Step1)
-* [Getting the Media Services server context](#Step2)
-* [Creating an asset and uploading files that are associated with the asset into Media Services](#Step3)
-* [Encoding an asset and downloading an output asset](#Step4)
+* [プロジェクトのセットアップ](#Step1)
+* [メディア サービス サーバー コンテキストの取得](#Step2)
+* [アセットの作成と、アセットに関連付けられたファイルのメディア サービスへのアップロード](#Step3)
+* [アセットのエンコードと、出力されたアセットのダウンロード](#Step4)
 
-## Prerequisites
-The following prerequisites are required for the walkthrough and for development based on the Azure Media Services SDK.
+## 前提条件
+次の前提条件は、Azure Media Services SDK に基づくチュートリアルおよび開発で必要になります。
 
-- A Media Services account in a new or existing Azure subscription. For details, see [How to Create a Media Services Account](http://go.microsoft.com/fwlink/?LinkId=256662).
-- Operating Systems: Windows 7, Windows 2008 R2, or Windows 8.
-- .NET Framework 4.5 or .NET Framework 4.
-- Visual Studio 2012 or Visual Studio 2010 SP1 (Professional, Premium, Ultimate, or Express).
-- Install **Azure SDK for .NET.**, **Azure Media Services SDK for .NET**, and **WCF Data Services 5.0 for OData V3 libraries** and add references to your project using the [windowsazure.mediaservices Nuget](http://nuget.org/packages/windowsazure.mediaservices) package. The following section demonstrates how to install and add these references.
+- 新規または既存の Azure サブスクリプションで作成したメディア サービス アカウント。詳細については、「[メディア サービス アカウントの作成方法](http://go.microsoft.com/fwlink/?LinkId=256662)」を参照してください。
+- オペレーティング システム: Windows 7、Windows Server 2008 R2 または Windows 8。
+- .NET Framework 4.5 または .NET Framework 4。
+- Visual Studio 2012 または Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express)。
+- [windowsazure.mediaservices Nuget](http://nuget.org/packages/windowsazure.mediaservices) パッケージを使用して、**Azure SDK for .NET**、**Azure Media Services SDK for .NET**、および **WCF Data Services 5.0 for OData V3 ライブラリ**をインストールし、プロジェクトに参照を追加します。次のセクションでは、インストールの方法と参照の追加方法を示します。
 
-<div class="dev-callout"><strong>Note</strong> <p>To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure Free Trial</a>.</p></div>
+<div class="dev-callout"><strong></strong>注<p> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
 
-<h2><a id="Step1"></a>Setting up your project</h2>
+<h2><a id="Step1"></a>プロジェクトのセットアップ</h2>
 
-1. Create a new C# Console Application in Visual Studio 2012 or Visual Studio 2010 SP1. Enter the **Name**, **Location**, and **Solution name**, and then click OK. 
+1. Visual Studio 2012 または Visual Studio 2010 SP1 で、C## の新しいコンソール アプリケーションを作成します。**[名前]**、**[場所]**、**[ソリューション名]** を入力し、[OK] をクリックします。
 
-2. Add a reference to System.Configuration assembly.
+2. System.Configuration アセンブリへの参照を追加します。
 
-	To add references using the **Manage References** dialog, do the following. Right-click on 	the **References** node in **Solution Explorer** and select **Add Reference**. In the 	**Manage References** dialog, select the appropriate assemblies (in this case 	System.Configuration.)
+	**[参照の管理]** ダイアログを使用して参照を追加するには、次の操作を行います。次に、	**ソリューション エクスプローラー**で **[参照]** ノードを右クリックし、**[参照の追加]** を選択します。	**[参照の管理]** ダイアログで、適切なアセンブリ (ここでは 	System.Configuration) を選択します。
 
-3. If you have not done so yet, add references to **Azure SDK for .NET**.(Microsoft.WindowsAzure.StorageClient.dll), **Azure Media Services SDK for .NET** (Microsoft.WindowsAzure.MediaServices.Client.dll), and **WCF Data Services 5.0 for OData V3** (Microsoft.Data.OData.dll) libraries using the <a href="http://nuget.org/packages/windowsazure.mediaservices">windowsazure.mediaservices Nuget</a> package. 
+3. まだ参照を追加していない場合は、<a href="http://nuget.org/packages/windowsazure.mediaservices">windowsazure.mediaservices Nuget</a> パッケージを使用して、**Azure SDK for .NET**.(Microsoft.WindowsAzure.StorageClient.dll)、**Azure Media Services SDK for .NET** (Microsoft.WindowsAzure.MediaServices.Client.dll)、および **WCF Data Services 5.0 for OData V3** (Microsoft.Data.OData.dll) ライブラリへの参照を追加します。
 
-	To add references using Nuget, do the following. In Visual Studio Main Menu, select TOOLS -> Library Package Manager -> Package Manager Console. In the console window type <i>Install-Package [package name]</i> and press enter (in this case use the following command: <i>Install-Package windowsazure.mediaservices</i>.)
+	Nuget を使用して参照を追加するには、次の操作を行います。Visual Studio のメイン メニューで、[ツール]、[ライブラリ パッケージ マネージャー]、[パッケージ マネージャー コンソール] の順に選択します。コンソール ウィンドウで「<i>Install-Package []</i>パッケージ名」と入力し、Enter キーを押します (この場合は、<i>Install-Package windowsazure.mediaservices</i> コマンドを使用します)。
 
-4. Add an *appSettings* section to the **app.config** file, and set the values for your Azure Media Services account name and account key. You obtained the Media Services account name and account key during the account setup process. Add these values to the value attribute for each setting in the app.config file in the Visual Studio project.
+4. **app.config** ファイルに *appSettings* セクションを追加し、Azure のメディア サービスのアカウント名とアカウント キーに値を設定します。メディア サービスのアカウント名とアカウント キーは、アカウント設定プロセスで取得済みです。Visual Studio プロジェクトに含まれる app.config ファイル内で、各設定の value 属性にこれらの値を追加します。
 
 	> [WACOM.NOTE]
-	>In Visual Studio 2012, the App.config file is added by default. In Visual Studio 2010, you have to manually add the Application Configuration file.
+	>Visual Studio 2012 では、App.config ファイルが既定で追加されます。Visual Studio 2010 では、アプリケーション構成ファイルを手動で追加する必要があります。
 
 	<pre><code>
 	&lt;configuration&gt;
@@ -55,9 +55,9 @@ The following prerequisites are required for the walkthrough and for development
 	&lt;/configuration&gt;
 	</code></pre>
 
-5. Create a new folder on your local machine and name it supportFiles (in this example supportFiles is located under the MediaServicesGettingStarted project directory.) The <a href="http://go.microsoft.com/fwlink/?linkid=253275">Project</a> that accompanies this walkthrough contains the supportFiles directory. You can copy the content of this directory into your supportFiles folder.
+5. ローカル コンピューターに新しいフォルダーを作成して、supportFiles という名前を付けます (この例では、MediaServicesGettingStarted プロジェクト ディレクトリ内に supportFiles があります)。このチュートリアル用の<a href="http://go.microsoft.com/fwlink/?linkid=253275">プロジェクト</a>には、supportFiles ディレクトリが含まれています。このディレクトリの内容を自分の supportFiles フォルダーにコピーして使用できます。
 
-6. Overwrite the existing using statements at the beginning of the Program.cs file with the following code.
+6. Program.cs ファイルの先頭にある既存のステートメントを次のコードで上書きします。
 
 		using System;
 		using System.Linq;
@@ -71,7 +71,7 @@ The following prerequisites are required for the walkthrough and for development
 		using Microsoft.WindowsAzure.MediaServices.Client;
 
 
-7. Add the following class-level path variables. The **_supportFiles** path should point to the folder you created in a previous step. 
+7. 次のクラスレベル パス変数を追加します。**_supportFiles** パスは、先ほどの手順で作成したフォルダーを指す必要があります。
 
 		// Base support files path.  Update this field to point to the base path  
 		// for the local support files folder that you create. 
@@ -86,47 +86,47 @@ The following prerequisites are required for the walkthrough and for development
 		private static readonly string _outputFilesFolder =
 		    Path.GetFullPath(_supportFiles + @"\outputfiles");
 		
-8. Add the following class-level variables to retrieve authentication and connection settings.  These settings are pulled from the App.Config file and are required to connect to Media Services, authenticate, and get a token so that you can access the server context. The code in the project references these variables to create an instance of the server context.
+8. 認証設定と接続設定を取得できるように、次のクラスレベル パス変数を追加します。これらは、メディア サービスへの接続、認証、およびトークンの取得に必要な設定であり、App.Config ファイルからプルされ、サーバー コンテキストへのアクセスに使用されます。プロジェクトのコードでは、サーバー コンテキストのインスタンスを作成するために、これらの変数が参照されます。
 	
 		private static readonly string _accountKey = ConfigurationManager.AppSettings["accountKey"];
 		private static readonly string _accountName = ConfigurationManager.AppSettings["accountName"];
 
-9. Add the following class-level variable that is used as a static reference to the server context.
+9. 次のクラスレベル パス変数を追加します。これは、サーバー コンテキストへの静的な参照として使用されます。
 
 		// Field for service context.
 		private static CloudMediaContext _context = null;
 		
-<h2><a id="Step2"></a>Getting the Media Services Context</h2>
+<h2><a id="Step2"></a>メディア サービス コンテキストを取得する</h2>
 
-The Media Services context object contains all the fundamental objects and collections to access for Media Services programming. The context includes references to important collections including jobs, assets, files, access policies, locators, and other objects. You must get the server context for most Media Services programming tasks.
+メディア サービス コンテキスト オブジェクトには、メディア サービス プログラミングでアクセスする基本的なオブジェクトおよびコレクションがすべて含まれます。コンテキストには、ジョブ、アセット、ファイル、アクセス ポリシー、ロケーター、その他のオブジェクトなど、重要なコレクションへの参照が含まれています。ほとんどのメディア サービス プログラミング タスクでは、サーバー コンテキストの取得が必要になります。
 
-In the Program.cs file, add the following code as the first item in your **Main** method. This code uses your Media Services account name and account key values from the app.config file to create an instance of the server context. The instance is assigned to the **_context** variable you created at the class level.
+Program.cs ファイルで、**Main** メソッド内の最初のアイテムとして次のコードを追加します。このコードでは、app.config ファイルに指定されているメディア サービス アカウント名とアカウント キーの値を使用して、サーバー コンテキストのインスタンスを作成しています。このインスタンスが、クラス レベルで作成した **_context** 変数に割り当てられています。
 
 	// Get the service context.
 	_context = new CloudMediaContext(_accountName, _accountKey);
 	
-<h2><a id="Step3"></a>Creating an Asset and Uploading a File</h2>
+<h2><a id="Step3"></a>アセットの作成とファイルのアップロード</h2>
 
-The code in this section does the following: 
+このセクションのコードでは、次のことが行われます。
 
-1. Creates an empty Asset<br/>
-When you create assets, you can specify three different options for encrypting them. 
+1. 空のアセットを作成します。<br/>
+アセットを作成する際には、これらの暗号化に関する 3 つのオプションを指定できます。
 
-	- **AssetCreationOptions.None**: no encryption. If you want to create an unencrypted asset, you must set this option.
-	- **AssetCreationOptions.CommonEncryptionProtected**: for Common Encryption Protected (CENC) files. An example is a set of files that are already PlayReady encrypted. 
-	- **AssetCreationOptions.StorageEncrypted**: storage encryption. Encrypts a clear input file before it is uploaded to Azure storage.
+	- **AssetCreationOptions.None**: 暗号化されません。暗号化されていないアセットを作成するには、このオプションを設定する必要があります。
+	- **AssetCreationOptions.CommonEncryptionProtected**: Common Encryption Protected (CENC) ファイル用。既に PlayReady で暗号化されている一連のファイルは、その例です
+	- **AssetCreationOptions.StorageEncrypted**: ストレージ暗号化。Azure のストレージへのアップロード前にクリア入力ファイルを暗号化します。
 
 		<div class="dev-callout"> 
-	<strong>Note</strong> 
-	<p>Media Services provide on-disk storage encryption, not over the wire like Digital Rights Manager (DRM.)</p> 
+	<strong>注</strong>
+	<p>メディア サービスでは、Digital Rights Manager (DRM) のようにネットワーク経由ではなく、オンディスクのストレージ暗号化を提供します。</p>
 	</div>
 
-2. Creates an AssetFile instance that we want to associate with the asset.
-3. Creates an AccessPolicy instance that defines the permissions and duration of access to the asset.
-4. Creates a Locator instance that provides access to the asset.
-5. Uploads a single media file into Media Services. The process of creating and uploading is also called ingesting assets.
+2. アセットに関連付ける AssetFile インスタンスを作成します。
+3. アセットへのアクセス許可とアクセス期間を定義する AccessPolicy インスタンスを作成します。
+4. アセットへのアクセスを提供する Locator インスタンスを作成します。
+5. 単一のメディア ファイルをメディア サービスにアップロードします。作成とアップロードのプロセスのことを "アセットの取り込み" ともいいます。
 
-Add the following methods to the class.
+次のメソッドをクラスに追加します。
 
 <pre><code>
 static private IAsset CreateEmptyAsset(string assetName, AssetCreationOptions assetCreationOptions)
@@ -168,39 +168,39 @@ static public IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCr
 
 </code></pre>
 
-Add a call to the method after the **\_context = new CloudMediaContext(_accountName, _accountKey);** line in your Main method. 
+メソッドの呼び出しを Main メソッド内の **\_context = new CloudMediaContext(_accountName, _accountKey);** 行の後に追加します。
 
 	IAsset asset = CreateAssetAndUploadSingleFile(AssetCreationOptions.None, _singleInputFilePath)
 
-<h2><a id="Step4"></a>Encoding the Asset on the Server and Downloading an Output Asset</h2>
+<h2><a id="Step4"></a>サーバー上のアセットのエンコードと、出力されたアセットのダウンロード</h2>
 
-In Media Services, you can create jobs that process media content in several ways: encoding, encrypting, doing format conversions, and so on. A Media Services job always contains one or more tasks that specify the details of the processing work. In this section you create a basic encoding task, and then run a job that performs it using Azure Media Encoder. The task uses a preset string to specify the type of encoding to perform. To see the available preset encoding values, see [Task Preset Strings for Azure Media Encoder](http://msdn.microsoft.com/en-us/library/windowsazure/jj129582.aspx) . Media Services support the same media file input and output formats as Microsoft Expression Encoder. For a list of supported formats, see [Supported File Types for Media Services](http://msdn.microsoft.com/en-us/library/windowsazure/hh973634.aspx).
+メディア サービスでは、エンコード、暗号化、形式変換など、複数の方法でメディア コンテンツを処理するジョブを作成できます。メディア サービスのジョブには、処理作業の詳細を指定したタスクが必ず 1 つ以上含まれています。このセクションでは、基本的なエンコード タスクを作成し、Azure メディア エンコーダーを使用してこのタスクを行うジョブを実行します。このタスクでは、プリセットの文字列を使用して、実行するエンコードの種類を指定します。使用できるプリセットのエンコード値を確認するには、「[Azure Media Encoder 用のタスク プリセット文字列](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj129582.aspx)」を参照してください。メディア サービスでは、Microsoft Expression Encoder と同じメディア ファイル入力形式および出力形式をサポートされています。サポートされている形式の一覧については、「[Azure Media Encoder でサポートされているコーデックとファイルの種類](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh973634.aspx)」を参照してください。
 
 <ol>
 <li>
-Add the following <strong>CreateEncodingJob</strong> method definition to your class. This method demonstrates how to accomplish several required tasks for an encoding job:
+次の <strong>CreateEncodingJob</strong> メソッド定義をクラスに追加します。このメソッドは、エンコード ジョブに必要ないくつかのタスクを実行する方法を示しています。
 <ul>
 <li>
-Declare a new job.
+新しいジョブを宣言します。
 </li>
 <li>
-Declare a media processor to handle the job. A media processor is a component that handles encoding, encrypting, format conversion, and other related processing jobs. There are several types of available media processors (you can iterate through all of them using _context.MediaProcessors.) The GetLatestMediaProcessorByName method, shown later in this walkthrough, returns the Azure Media Encoder processor.
+そのジョブを扱うメディア プロセッサを宣言します。メディア プロセッサは、エンコード、暗号化、形式変換など、関連する処理のジョブを扱うするコンポーネントです。使用可能なメディア プロセッサには、いくつかの種類があります (_context.MediaProcessors を使用して、これらをすべて反復処理することができます)。後で紹介する GetLatestMediaProcessorByName メソッドは、Azure メディア エンコーダー プロセッサを返します。
 </li>
 <li>
-Declare a new task. Every job has one or more tasks. Notice that with the task, you pass to it a friendly name, a media processor instance, a task configuration string, and task creation options. The configuration string specifies encoding settings. This example uses the <strong>H264 Broadband 720p</strong> setting. This preset produces a single MP4 file. For more information about this and other presets, see <a href="http://msdn.microsoft.com/library/windowsazure/jj129582.aspx">Task Preset Strings for Azure Media Encoder</a>.
+新しいタスクを宣言します。すべてのジョブには 1 つ以上のタスクが含まれています。タスクには、フレンドリ名、メディア プロセッサ インスタンス、タスク構成文字列、およびタスク作成オプションを渡します。構成文字列ではエンコード設定を指定します。この例では <strong>H264 Broadband 720p</strong> 設定を使用しています。このプリセットでは、単一の MP4 ファイルが生成されます。このプリセットおよびその他のプリセットの詳細については、「<a href="http://msdn.microsoft.com/library/windowsazure/jj129582.aspx">Azure Media Encoder 用のタスク プリセット文字列</a>」を参照してください。
 </li>
 <li>
-Add an input asset to the task. In this example, the input asset is the one you created in the previous section.
+入力アセットをタスクに追加します。この例の入力アセットは、前のセクションで作成済みです。
 </li>
 <li>
-Add an output asset to the task. For an output asset, specify a friendly name, a Boolean value to indicate whether to save the output on the server after job completion, and an <strong>AssetCreationOptions.None</strong> value to indicate that the output is not encrypted for storage and transport. 
+出力アセットをタスクに追加します。出力アセットについては、フレンドリ名、ジョブの完了後に出力をサーバーに保存するかどうかを示すブール値、ストレージ用および送信用に出力を暗号化しないことを示す <strong>AssetCreationOptions.None</strong> 値を指定します。
 </li>
 <li>
-Submit the job.<br/>
-Submitting a job is the last step that is required to do an encoding job.
+ジョブを送信します。<br/>
+ジョブの送信は、エンコード ジョブを行うために必要な最後の手順です。
 </li>
 </ul>
-The method also demonstrates how to perform other useful (but optional) tasks such as tracking job progress and accessing the asset that your encoding job creates.
+このメソッドでは、ジョブの進行状況の追跡や、エンコード ジョブで作成されたアセットへのアクセスなど、他の便利な (ただし省略可能な) タスクの実行方法についても示しています。
 <pre><code>
 static IJob CreateEncodingJob(IAsset asset, string inputMediaFilePath, string outputFolder)
 {
@@ -307,16 +307,16 @@ static IJob CreateEncodingJob(IAsset asset, string inputMediaFilePath, string ou
 </code></pre>
 </li>
 <li>
-Add a call to the <strong>CreateEncodingJob</strong> method in your <strong>Main</strong> method, after the lines you previously added.
+<strong>Main</strong> メソッド内で前に追加した行の後に、<strong>CreateEncodingJob</strong> メソッドへの呼び出しを追加します。
 <pre><code>
 CreateEncodingJob(asset, _singleInputFilePath, _outputFilesFolder);
 </code></pre>
 </li>
 <li>
-Add the following helper methods to the class. These are required to support the <strong>CreateEncodingJob</strong> method. Following is a summary of the helper methods.
+次のヘルパー メソッドをクラスに追加します。これらは、<strong>CreateEncodingJob</strong> メソッドをサポートするために必要です。各ヘルパー メソッドの概要を次に示します。
 <ul>
 <li>
-The <strong>GetLatestMediaProcessorByName</strong> method returns an appropriate media processor to handle an encoding, encryption, or other related processing task. You create a media processor using the appropriate string name of the processor you want to create. The possible strings that can be passed into the method for the mediaProcessor parameter are: <strong>Azure Media Encoder</strong>, <strong>Azure Media Packager</strong>, <strong>Azure Media Encryptor</strong>, <strong>Storage Decryption</strong>.
+<strong>GetLatestMediaProcessorByName</strong> メソッドは、エンコード、暗号化など、関連する処理タスクを扱う適切なメディア プロセッサを返します。メディア プロセッサを作成するには、作成するプロセッサの適切な文字列名を使用します。このメソッドに mediaProcessor パラメーターとして渡すことができる文字列は、<strong>Azure Media Encoder</strong>、<strong>Azure Media Packager</strong>、<strong>Azure Media Encryptor</strong>、<strong>Storage Decryption</strong> です。
 <pre><code>
 private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
 {
@@ -339,7 +339,7 @@ private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcess
 </code></pre>
 </li>
 <li>
-When you run jobs, you often require a way to track job progress. The following code example defines the StateChanged event handler. This event handler tracks job progress and provides updated status, depending on the state. The code also defines the LogJobStop method. This helper method logs error details.
+ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。次のコード例では、StateChanged イベント ハンドラーを定義しています。このイベント ハンドラーはジョブの進行状況を追跡し、状態によってステータスを更新します。このコードでは、LogJobStop メソッドも定義しています。このヘルパー メソッドは、エラー詳細のログ記録を行います。
 
 <pre><code>
 private static void StateChanged(object sender, JobStateChangedEventArgs e)
@@ -435,7 +435,7 @@ private static string JobIdAsFileName(string jobID)
 </code></pre>
 </li>
 <li>
-The WriteToFile method writes a file to the specified output folder.
+WriteToFile メソッドは、指定された出力フォルダーにファイルを書き込みます。
 <pre><code>
 static void WriteToFile(string outFilePath, string fileContent)
 {
@@ -447,16 +447,16 @@ static void WriteToFile(string outFilePath, string fileContent)
 </code></pre>
 </li>
 <li>
-After you have encoded assets in Media Services, you can access the output assets that result from an encoding job. This walkthrough shows you two ways to access the output of an encoding job:
+メディア サービスでアセットをエンコードした後、エンコード ジョブの結果として出力されたアセットにアクセスできます。このチュートリアルでは、エンコード ジョブの出力にアクセスする方法を 2 つ示します。
 <ul>
 <li>
-Creating a SAS URL to an asset on the server. 
+サーバー上のアセットに対する SAS URL を作成する。
 </li>
 <li>
-Downloading the output asset from the server.
+出力アセットをサーバーからダウンロードする。
 </li>
 </ul>
-The GetAssetSasUrlList method creates a list of SAS URLs to all files in an asset. 
+GetAssetSasUrlList メソッドは、アセット内のすべてのファイルに対する SAS URL のリストを作成します。
 <pre><code>
 static List&lt;String&gt; GetAssetSasUrlList(IAsset asset, ILocator locator)
 {
@@ -501,7 +501,7 @@ static string BuildFileSasUrl(IAssetFile file, ILocator locator)
 </code></pre>
 </li>
 <li>
-The <strong>DownloadAssetToLocal</strong> method downloads each file in the asset to a local folder. In this example, because the asset was created with one input media file, the output asset files collection contains two files: the encoded media file (an .mp4 file), and an .xml file with metadata about the asset. The method downloads both files.
+<strong>DownloadAssetToLocal</strong> メソッドは、アセット内の各ファイルをローカル フォルダーにダウンロードします。この例では、アセットが 1 つの入力メディア ファイルを使用して作成されているため、出力アセット ファイルのコレクションに含まれているファイルはエンコード メディア ファイル (.mp4 ファイル) とアセットに関するメタデータが記述された .xml ファイルの 2 つです。このメソッドは、両方のファイルをダウンロードします。
 <pre><code>
 static IAsset DownloadAssetToLocal(string jobId, string outputFolder)
 {
@@ -550,7 +550,7 @@ static void DownloadProgress(object sender, DownloadProgressChangedEventArgs e)
 </code></pre>
 </li>
 <li>
-The GetJob and GetAsset helper methods query for and return a reference to a job object and an asset object with given IDs. You can use a similar type of LINQ query to return references to other Media Services objects on the server.
+GetJob および GetAsset ヘルパー メソッドは、指定の ID を持つジョブ オブジェクトとアセット オブジェクトへの参照を照会して返します。これと似たタイプの LINQ クエリを使用して、サーバー上にある他のメディア サービス オブジェクトへの参照を返すこともできます。
 <pre><code>
 static IJob GetJob(string jobId)
 {
@@ -583,8 +583,8 @@ static IAsset GetAsset(string assetId)
 </li>
 </ol>
 
-## Testing the Code
-Run the program (press F5). The console displays output similar to the following:
+## コードのテスト
+プログラムを実行します (F5 キーを押します)。次のような出力がコンソールに表示されます。
 
 <pre><code>
 Asset name: UploadSingleFile_11/14/2012 10:09:11 PM
@@ -650,33 +650,34 @@ File download path:  C:\supportFiles\outputfiles\interview2_metadata.xml
 
 </code></pre>
 
-1. As a result of running this application the following happens:
+1. このアプリケーションを実行した結果は次のようになります。
 
-2. An .wmv file is uploaded into Media Services. 
+2. .wmv ファイルがメディア サービスにアップロードされます。
 
-3. The file is then encoded using the **H264 Broadband 720p** preset of the **Azure Media Encoder**.
+3. **Azure メディア エンコーダー**の **H264 Broadband 720p** プリセットを使用して、ファイルがエンコードされます。
 
-4. The FileSasUrlList.txt file is created in the \supportFiles\outputFiles folder. The file contains the URL to the encoded asset. 
+4. \supportFiles\outputFiles フォルダー内に FileSasUrlList.txt ファイルが作成されます。このファイルには、エンコード済みアセットの URL が含まれています。
 
-	To play back the media file, copy the URL to the asset from the text file and paste the URL into a browser. 
+	メディアファイルを再生するには、アセットの URL をテキスト ファイルからコピーし、URL をブラウザーに貼り付けます。
 
-5. The .mp4 media file and the _metadata.xml file are downloaded into the outputFiles folder.
+5. .mp4 メディア ファイルと _metadata.xml ファイルが outputFiles フォルダーにダウンロードされます。
 
 <div class="dev-callout"> 
-<strong>Note</strong> 
-<p>In the Media Services object model, an asset is a Media Services content collection object that represents one to many files. The locator path provides an Azure blob URL which is the base path to this asset in Azure Storage. To access specific files within the asset, add a file name to the base locator path.</p> 
+<strong>注</strong>
+<p>メディア サービス オブジェクト モデルのアセットとは、1 対多のファイルを表すメディア サービス コンテンツのコレクション オブジェクトです。Azure のストレージ内にあるこのアセットへのベース パスである Azure BLOB URL が、ロケーター パスによって提供されます。アセット内の特定のファイルにアクセスするには、ベース ロケーター パスにファイル名を追加します。</p>
 </div>
 
-<h2>Next Steps</h2>
-This walkthrough has demonstrated a sequence of programming tasks to build a simple Media Services application. You learned the fundamental Media Services programming tasks including getting the server context, creating assets, encoding assets, and downloading or accessing assets on the server. For next steps and more advanced development tasks, see the following:
+<h2>次のステップ</h2>
+このチュートリアルでは、単純なメディア サービス アプリケーションを作成するための一連のプログラミング タスクについて説明しました。サーバー コンテキストの取得、アセットの作成、サーバー上のアセットのダウンロードまたはアクセスなど、メディア サービスの基本的なプログラミング タスクを学習しました。次の手順およびさらに高度な開発タスクについては、次のリソースを参照してください。
 
-- <a href="http://www.windowsazure.com/en-us/develop/net/how-to-guides/media-services/">How to Use Media Services</a>
-- <a href="http://msdn.microsoft.com/en-us/library/windowsazure/hh973618.aspx">Building Applications with the Media Services REST API</a>
+- <a href="http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/media-services/">メディア サービスを使用する方法</a>
+- <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/hh973618.aspx">Azure Media Services REST API を使用したアプリケーション構築</a>
 
 
 <!-- Anchors. -->
-[Getting started with Mobile Services]:#getting-started
-[Create a new mobile service]:#create-new-service
-[Define the mobile service instance]:#define-mobile-service-instance
-[Next Steps]:#next-steps
+[モバイル サービスの使用]:#getting-started
+[新しいモバイル サービスを作成する]:#create-new-service
+[モバイル サービス インスタンスの定義]:#define-mobile-service-instance
+[次のステップ]:#next-steps
+
 

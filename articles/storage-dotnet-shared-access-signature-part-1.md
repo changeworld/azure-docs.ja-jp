@@ -1,44 +1,44 @@
-<properties linkid="manage-services-storage-net-shared-access-signature-part-1" urlDisplayName="" pageTitle="Shared access signatures: Understanding the SAS Model | Microsoft Azure" metaKeywords="Azure blob, Azure table, Azure queue, shared access signatures" description="Learn about delegating access to blob, queue, and table resources with shared access signatures" metaCanonical="" services="storage" documentationCenter="" title="Part 1: Understanding the SAS Model" authors="tamram" solutions="" manager="mbaldwin" editor="cgronlun" />
+<properties linkid="manage-services-storage-net-shared-access-signature-part-1" urlDisplayName="" pageTitle="共有アクセス署名: SAS モデルについて | Microsoft Azure" metaKeywords="Azure BLOB, Azure テーブル, Azure キュー, 共有アクセス署名" description="共有アクセス署名を使用して BLOB、キュー、およびテーブル リソースへのアクセスを委任する方法について説明します" metaCanonical="" services="storage" documentationCenter="" title="第 1 部: SAS モデルについて" authors="tamram" solutions="" manager="mbaldwin" editor="cgronlun" />
 
 
 
-# Shared Access Signatures, Part 1: Understanding the SAS Model
+# 共有アクセス署名、第 1 部: SAS モデルについて
 
-Using a shared access signature (SAS) is a powerful way to grant limited access to blobs, tables, and queues in your storage account to other clients, without having to expose your account key. In Part 1 of this tutorial on shared access signatures, we'll provide an overview of the SAS model and review SAS best practices. [Part 2](../storage-dotnet-shared-access-signature-part-2/) of the tutorial walks you through the process of creating shared access signatures with the Blob service.
+共有アクセス署名 (SAS) の使用は、アカウント キーを知らせずに、自分のストレージ アカウントの BLOB、テーブル、およびキューへの制限付きアクセスを他のクライアントに許可するための優れた方法です。共有アクセス署名についてのこのチュートリアルの第 1 部では、SAS モデルの概要と SAS のベスト プラクティスについて説明します。チュートリアルの[第 2 部](../storage-dotnet-shared-access-signature-part-2/)では、BLOB サービスで共有アクセス署名を作成するプロセスを詳しく説明します。
 
-## What Is a Shared Access Signature? ##
+## 共有アクセス署名とは##
 
-A shared access signature provides delegated access to resources in your storage account. This means that you can grant a client limited permissions to your blobs, queues, or tables for a specified period of time and with a specified set of permissions, without having to share your account access keys. The SAS is a URI that encompasses in its query parameters all of the information necessary for authenticated access to a storage resource. To access storage resources with the SAS, the client only needs to pass in the SAS to the appropriate constructor or method.
+共有アクセス署名を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。つまり、自分の BLOB、キュー、またはテーブルへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。SAS とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。クライアントは、SAS 内で適切なコンストラクターまたはメソッドに渡すだけで、SAS でストレージ リソースにアクセスできます。
 
-## When Should You Use a Shared Access Signature? ##
+## 共有アクセス署名を使用するタイミング##
 
-You can use a SAS when you want to provide access to resources in your storage account to a client that can't be trusted with the account key. Your storage account keys include both a primary and secondary key, both of which grant administrative access to your account and all of the resources in it. Exposing either of your account keys opens your account to the possibility of malicious or negligent use. Shared access signatures provide a safe alternative that allows other clients to read, write, and delete data in your storage account according to the permissions you've granted, and without need for the account key.
+SAS は、自分のアカウント キーを知らせたくないクライアントに、自分のストレージ アカウント内のリソースへのアクセスを許可する場合に使用できます。ストレージ アカウント キーには、プライマリ キーとセカンダリ キーの両方が含まれており、これらによって、アカウントとそのすべてのリソースへの管理アクセスが付与されます。これらのアカウント キーのいずれかを知らせると、悪意で、または誤ってアカウントが使用される可能性が生じます。共有アクセス署名は、アカウント キーが不要で安全な代替方法です。この方法で、他のクライアントは、付与されたアクセス許可に従ってストレージ アカウント内のデータの読み取り、書き込み、削除を実行できます。
 
-A common scenario where a SAS is useful is a service where users read and write their own data to your storage account. In a scenario where a storage account stores user data, there are two typical design patterns:
+SAS が役立つ一般的なシナリオは、ストレージ アカウント内でユーザーが自分のデータの読み取りや書き込みを行うサービスです。ストレージ アカウントにユーザー データが格納されるシナリオには、2 種類の典型的な設計パターンがあります。
 
 
-1\. Clients upload and download data via a front-end proxy service, which performs authentication. This front-end proxy service has the advantage of allowing validation of business rules, but for large amounts of data or high-volume transactions, creating a service that can scale to match demand may be expensive or difficult.
+1\. 認証を実行するフロントエンド プロキシ サービス経由で、クライアントがデータのアップロードとダウンロードを行います。このフロントエンド プロキシ サービスには、ビジネス ルールの検証が可能であるという利点がありますが、データやトランザクションが大量である場合は、需要に応じて拡張可能なサービスの作成にコストがかかったり、困難が生じたりする可能性があります。
 
 ![sas-storage-fe-proxy-service][sas-storage-fe-proxy-service]
 
-2\.	A lightweight service authenticates the client as needed and then generates a SAS. Once the client receives the SAS, they can access storage account resources directly with the permissions defined by the SAS and for the interval allowed by the SAS. The SAS mitigates the need for routing all data through the front-end proxy service.
+2\.	軽量サービスが、必要に応じてクライアントを認証してから、SAS を生成します。クライアントは、SAS を受信すると、SAS で定義されたアクセス許可と SAS で許可された期間で、ストレージ アカウントのリソースに直接アクセスできるようになります。SAS によって、すべてのデータをフロントエンド プロキシ サービス経由でルーティングする必要性が減少します。
 
 ![sas-storage-provider-service][sas-storage-provider-service]
 
-Many real-world services may use a hybrid of these two approaches, depending on the scenario involved, with some data processed and validated via the front-end proxy while other data is saved and/or read directly using SAS.
+実際のサービスの多くでは、関連するシナリオに応じて、この 2 種類のアプローチのハイブリッドを使用できます。つまり、一部のデータをフロントエンド プロキシで処理および検証し、それ以外のデータを SAS で直接保存したり、読み取ったりします。
 
-## How a Shared Access Signature Works ##
+## 共有アクセス署名の機能##
 
-A shared access signature is a URI that points to a storage resource and includes a special set of query parameters that indicate how the resource may be accessed by the client. One of these parameters, the signature, is constructed from the SAS parameters and signed with the account key. This signature is used by Azure Storage to authenticate the SAS.
+共有アクセス署名は、ストレージ リソースを指す URI であり、クライアントがリソースにアクセスする方法を示すクエリ パラメーターの特殊なセットを含んでいます。これらのパラメーターの 1 つである署名は、SAS パラメーターで作成されており、アカウント キーで署名されています。この署名を使用して、Azure のストレージが SAS を認証します。
 
-A shared access signature has the following constraints that define it, each of which is represented as a parameter on the URI:
+共有アクセス署名は、その定義である、次の制約を含んでいます。各制約は、URI でパラメーターとして表示されます。
 
-- **The storage resource.** Storage resources for which you can delegate access include containers, blobs, queues, tables, and ranges of table entities.
-- **Start time.** This is the time at which the SAS becomes valid. The start time for a shared access signature is optional; if omitted, the SAS is effective immediately. 
-- **Expiry time.** This is the time after which the SAS is no longer valid. Best practices recommend that you either specify an expiry time for a SAS, or associate it with a stored access policy (see more below).
-- **Permissions.** The permissions specified on the SAS indicate what operations the client can perform against the storage resource using the SAS. 
+- **ストレージ リソース。**そのアクセスを委任できるストレージ リソースには、コンテナー、BLOB、キュー、テーブル、およびテーブル エンティティの範囲があります。
+- **開始時刻。**この時刻に SAS が有効になります。共有アクセス署名の開始時刻は省略可能です。省略した場合は、SAS がすぐに有効になります。
+- **有効期限。**この時刻の後、SAS が有効ではなくなります。ベスト プラクティスでは、SAS の有効期限を指定するか、保存されているアクセス ポリシーに SAS を関連付けることを推奨しています (以下を参照)。
+- **アクセス許可。**SAS に指定されたアクセス許可は、クライアントが SAS を使用して、ストレージ リソースに対して実行できる操作を示します。
 
-Here is an example of a SAS URI that provides read and write permissions to a blob. The table breaks down each part of the URI to understand how it contributes to the SAS:
+BLOB に読み書きアクセス許可を付与する SAS URI の例を、次に示します。表では、SAS での機能がわかりやすいように、URI の部分ごとに説明しています。
 
 https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&st=2013-04-29T22%3A18%3A26Z&se=2013-04-30T02%3A23%3A26Z&sr=b&sp=rw&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
 
@@ -57,14 +57,14 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&s
             </td>
             <td valign="top" width="213">
                 <p>
-                    The address of the blob. Note that using HTTPS is highly recommended.
+                    BLOB のアドレス。HTTPS の使用を強くお勧めします。
                 </p>
             </td>
         </tr>
         <tr>
             <td valign="top" width="213">
                 <p>
-                    Storage services version
+                    ストレージ サービスのバージョン
                 </p>
             </td>
             <td valign="top" width="213">
@@ -74,14 +74,14 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&s
             </td>
             <td valign="top" width="213">
                 <p>
-                    For storage services version 2012-02-12 and later, this parameter indicates the version to use.
+                    ストレージ サービス バージョン 2012-02-12 以降では、このパラメーターは、使用するバージョンを示します。
                 </p>
             </td>
         </tr>
         <tr>
             <td valign="top" width="213">
                 <p>
-                    Start time
+                    開始時刻
                 </p>
             </td>
             <td valign="top" width="213">
@@ -91,14 +91,14 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&s
             </td>
             <td valign="top" width="213">
                 <p>
-                    Specified in an ISO 8061 format. If you want the SAS to be valid immediately, omit the start time.
+                    ISO 8061 形式で指定されます。SAS をすぐに有効にする場合は、開始時刻を省略します。
                 </p>
             </td>
         </tr>
         <tr>
             <td valign="top" width="213">
                 <p>
-                    Expiry time
+                    有効期限
                 </p>
             </td>
             <td valign="top" width="213">
@@ -108,14 +108,14 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&s
             </td>
             <td valign="top" width="213">
                 <p>
-                    Specified in an ISO 8061 format.
+                    ISO 8061 形式で指定されます。
                 </p>
             </td>
         </tr>
         <tr>
             <td valign="top" width="213">
                 <p>
-                    Resource
+                    リソース
                 </p>
             </td>
             <td valign="top" width="213">
@@ -125,14 +125,14 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&s
             </td>
             <td valign="top" width="213">
                 <p>
-                    The resource is a blob.
+                    リソースは BLOB です。
                 </p>
             </td>
         </tr>
         <tr>
             <td valign="top" width="213">
                 <p>
-                    Permissions
+                    アクセス許可
                 </p>
             </td>
             <td valign="top" width="213">
@@ -142,14 +142,14 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&s
             </td>
             <td valign="top" width="213">
                 <p>
-                    The permissions granted by the SAS include Read (r) and Write (w).
+                    SAS で付与されるアクセス許可には、読み取り (r) および書き込み (w) が含まれます。
                 </p>
             </td>
         </tr>
         <tr>
             <td valign="top" width="213">
                 <p>
-                    Signature
+                    署名
                 </p>
             </td>
             <td valign="top" width="213">
@@ -159,8 +159,8 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&s
             </td>
             <td valign="top" width="213">
                 <p>
-                    Used to authenticate access to the blob. The signature is an HMAC computed over a string-to-sign and key using the SHA256 algorithm, and
-                    then encoded using Base64 encoding.
+                    BLOB へのアクセスを認証するために使用します。署名は、SHA256 アルゴリズムを使用して署名対象文字列とキーを計算した後に、
+                    Base 64 エンコードを使用してエンコードした HMAC 値です。
                 </p>
             </td>
         </tr>
@@ -168,54 +168,55 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&s
 </table>
 
 
-## Controlling Shared Access Signatures with a Stored Access Policy ##
+## 保存されているアクセス ポリシーによる共有アクセス署名の制御##
 
-A shared access signature can take one of two forms:
+共有アクセス署名の形式は、次の 2 つのいずれかです。
 
-- **Ad hoc SAS:** When you create an ad hoc SAS, the start time, expiry time, and permissions for the SAS are all specified on the SAS URI (or implied, in the case where start time is omitted). This type of SAS may be created on a container, blob, table, or queue.
-- **SAS with stored access policy:** A stored access policy is defined on a resource container - a blob container, table, or queue - and can be used to manage constraints for one or more shared access signatures. When you associate a SAS with a stored access policy, the SAS inherits the constraints - the start time, expiry time, and permissions - defined for the stored access policy.
+- **アドホック SAS:** アドホック SAS を作成すると、開始時刻、有効期限、および SAS へのアクセス許可がすべて、SAS URI で指定されます (または、開始時刻を省略した場合は、暗黙で指定されます)。この種類の SAS は、コンテナー、BLOB、テーブル、またはキューで作成できます。
+- **保存されているアクセス ポリシーのある SAS:** 保存されているアクセス ポリシーは、リソース コンテナー (BLOB コンテナー、テーブル、またはキュー) で定義されており、これを使用して、1 つ以上の共有アクセス署名のコンテナーを管理できます。保存されているアクセス ポリシーに SAS を関連付けると、SAS は、保存されているアクセス ポリシーに定義されている制約 (開始時刻、有効期限、およびアクセス許可) を継承します。
 
-The difference between the two forms is important for one key scenario: revocation. A SAS is a URL, so anyone who obtains the SAS can use it, regardless of who requested it to begin with. If a SAS is published publically, it can be used by anyone in the world. A SAS that is distributed is valid until one of four things happens:
+1 つの重要なシナリオ、失効 では、この 2 つの形式の相違点が重要です。SAS は URL であるため、取得したユーザーはだれでも、どのユーザーが最初に要求したかに関係なく、SAS を使用できます。SAS が一般ユーザーに発行された場合は、世界中のだれでも使用できます。配布された SAS は、次の 4 つの状況のいずれかになるまで有効です。
 
-1.	The expiry time specified on the SAS is reached.
-2.	The expiry time specified on the stored access policy referenced by the SAS is reached (if a stored access policy is referenced, and if it specifies an expiry time). This can either occur because the interval elapses, or because you have modified the stored access policy to have an expiry time in the past, which is one way to revoke the SAS.
-3.	The stored access policy referenced by the SAS is deleted, which is another way to revoke the SAS. Note that if you recreate the stored access policy with exactly the same name, all existing SAS tokens will again be valid according to the permissions associated with that stored access policy (assuming that the expiry time on the SAS has not passed). If you are intending to revoke the SAS, be sure to use a different name if you recreate the access policy with an expiry time in the future.
-4.	The account key that was used to create the SAS is regenerated.  Note that doing this will cause all application components using that account key to fail to authenticate until they are updated to use either the other valid account key or the newly regenerated account key.
+1.	SAS に指定された有効期限に達した。
+2.	保存されているアクセス ポリシーに指定された、SAS が参照する有効期限に達した (保存されているアクセス ポリシーが参照される場合、かつ有効期限が指定されている場合)。これは、期間が経過したため、または保存されているアクセス ポリシーの有効期限を過去の日時に変更したために発生します。このような有効期限の変更は、SAS を失効させる方法の 1 つです。
+3.	SAS の参照先である保存されているアクセス ポリシーが削除されている。これは、SAS を失効させる、もう 1 つの方法です。保存されているアクセス ポリシーを、完全に同じ名前で再作成すると、そのアクセス ポリシーに関連付けられたアクセス許可に従って、すべての既存の SAS トークンが再び有効になります (SAS の有効期限が過ぎていないことが前提です)。SAS を失効させるつもりで、将来の時間を有効期限に指定してアクセス ポリシーを再作成する場合は必ず、異なる名前を使用してください。
+4.	SAS の作成に使用したアカウント キーが再度生成された。これを行うと、そのアカウント キーを使用するすべてのアプリケーション コンポーネントが、別の有効なアカウント キー、または新しく再生成されたアカウント キーを使用するよう更新されるまで、認証に失敗します。
  
-## Best Practices for Using Shared Access Signatures ##
+## 共有アクセス署名の使用のベスト プラクティス##
 
-When you use shared access signatures in your applications, you need to be aware of two potential risks:
+アプリケーションで共有アクセス署名を使用する場合は、次の 2 つの潜在的なリスクに注意する必要があります。
 
-- If a SAS is leaked, it can be used by anyone who obtains it, which can potentially compromise your storage account.
-- If a SAS provided to a client application expires and the application is unable to retrieve a new SAS from your service, then the application's functionality may be hindered.  
+- SAS が漏えいすると、取得した人はだれでも使用できるため、ストレージ アカウントの安全性が損なわれるおそれがあります。
+- クライアント アプリケーションに提供された SAS の期限切れになり、アプリケーションがサービスから新しい SAS を取得できない場合は、アプリケーションの機能が損なわれる可能性があります。
 
-The following recommendations for using shared access signatures will help balance these risks:
+共有アクセス署名の使用に関する次の推奨事項に従うと、これらのリスクが軽減されます。
 
-1. **Always use HTTPS** to create a SAS or to distribute a SAS.  If a SAS is passed over HTTP and intercepted, an attacker performing a man-in-the-middle attack will be able to read the SAS and then use it just as the intended user could have, potentially compromising sensitive data or allowing for data corruption by the malicious user.
-2. **Reference stored access policies where possible.** Stored access policies give you the option to revoke permissions without having to regenerate the storage account keys.  Set the expiration on these to be a very long time (or infinite)  and make sure that it is regularly updated to move it farther into the future.
-3. **Use near-term expiration times on an ad hoc SAS.** In this way, even if a SAS is compromised unknowingly, it will only be viable for a short time duration. This practice is especially important if you cannot reference a stored access policy. This practice also helps limit the amount of data that can be written to a blob by limiting the time available to upload to it.
-4. **Have clients automatically renew the SAS if necessary.** Clients should renew the SAS well before the expected expiration, in order to allow time for retries if the service providing the SAS is unavailable.  If your SAS is meant to be used for a small number of immediate, short-lived operations, which are expected to be completed within the expiration time given, then this may not be necessary, as the SAS is not expected be renewed.  However, if you have client that is routinely making requests via SAS, then the possibility of expiration comes into play.  The key consideration is to balance the need for the SAS to be short-lived (as stated above) with the need to ensure that the client is requesting renewal early enough to avoid disruption due to the SAS expiring prior to successful renewal.
-5. **Be careful with SAS start time.** If you set the start time for a SAS to **now**, then due to clock skew (differences in current time according to different machines), failures may be observed intermittently for the first few minutes.  In general, set the start time to be at least 15 minutes ago, or don't set it at all, which will make it valid immediately in all cases.  The same generally applies to expiry time as well - remember that you may observe up to 15 minutes of clock skew in either direction on any request.  Note for clients using a REST version prior to 2012-02-12, the maximum duration for a SAS that does not reference a stored access policy is 1 hour, and any policies specifying longer term than that will fail.
-6.	**Be specific with the resource to be accessed.** A typical security best practice is to provide a user with the minimum required privileges.  If a user only needs read access to a single entity, then grant them read access to that single entity, and not read/write/delete access to all entities.  This also helps mitigate the threat of the SAS being compromised, as the SAS has less power in the hands of an attacker.
-7.	**Understand that your account will be billed for any usage, including that done with SAS.** If you provide write access to a blob, a user may choose to upload a 200GB blob.  If you've given them read access as well, they may choose do download it 10 times, incurring 2TB in egress costs for you.  Again, provide limited permissions, to help mitigate the potential of malicious users.  Use short-lived SAS to reduce this threat (but be mindful of clock skew on the end time).
-8.	**Validate data written using SAS.** When a client application writes data to your storage account, keep in mind that there can be problems with that data. If your application requires that that data be validated or authorized before it is ready to use, you should perform this validation after the data is written and before it is used by your application. This practice also protects against corrupt or malicious data being written to your account, either by a user who properly acquired the SAS, or by a user exploiting a leaked SAS.
-9. **Don't always use SAS.** Sometimes the risks associated with a particular operation against your storage account outweigh the benefits of SAS.  For such operations, create a middle-tier service that writes to your storage account after performing business rule validation, authentication, and auditing. Also, sometimes it's simpler to manage access in other ways. For example, if you want to make all blobs in a container publically readable, you can make the container Public, rather than providing a SAS to every client for access.
-10.	**Use Storage Analytics to monitor your application.** You can use logging and metrics to observe any spike in authentication failures due to an outage in your SAS provider service or or to the inadvertent removal of a stored access policy. See the [Azure Storage Team Blog](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) for additional information.
+1. **常に HTTPS を使用**して SAS を作成または配布します。SAS が HTTP で渡され、傍受された場合、中間者攻撃を実行している攻撃者は、SAS を読み取って、宛先のユーザーと同様に使用することができます。このため、機密データの安全性が損なわれたり、悪意のあるユーザーによるデータ破損が発生したりする可能性があります。
+2. **可能な場合は、保存されているアクセス ポリシーを参照します。**保存されているアクセス ポリシーを使用すると、ストレージ アカウント キーを再生成せずに、アクセス許可を失効させることが可能になります。これらの有効期限を非常に長い期間 (または無期限) に設定し、それがさらに将来へ移動するように、定期的に更新されるようにします。
+3. **アドホック SAS には、短期間の有効期限を使用します。**こうすると、知らないうちに SAS の安全性が損なわれていても、有効であるのは短期間だけになります。この方法は、保存されているアクセス ポリシーを参照できない場合に特に重要です。また、この方法では、BLOB にアップロード可能な時間が制限されるので、BLOB に書き込むことのできるデータの量を制限するために役立ちます。
+4. **必要に応じて、クライアントに SAS を自動更新させます。**クライアントは、SAS を提供するサービスが利用不可である場合に再試行する時間を考慮して、予期される有効期限までに余裕を持って SAS を更新する必要があります。使用する SAS が、すぐに実行する短期間の少数の操作用であり、操作が、指定された有効期限の前に完了する予定である場合は、SAS が更新されないため、この方法は必要ありません。ただし、クライアントが SAS 経由で日常的に要求を実行する場合は、有効期限に注意が必要になる可能性があります。重要な考慮事項は、SAS の有効期限を短くする必要性 (前述のように) と、更新の完了前に SAS の期限が切れることによる中断を避けるためにクライアントが早めに更新を要求する必要性とのバランスです。
+5. **SAS の開始時刻に注意します。**SAS の開始時刻を **[現在]** に設定すると、クロック スキュー (さまざまなコンピューター間での現在時刻の差) により、最初の数分間にエラーが断続的に表示される場合があります。一般に、開始時刻を少なくとも 15 分前に設定するか、まったく設定しないようにします。設定しないと、すべての場合に、すぐに有効になります。同じことが、一般的には有効期限にも適用されます。どの要求でも、前後 15 分以内のクロック スキューが発生する可能性があることを憶えておいてください。2012-02-12 より前の REST バージョンを使用するクライアントの場合、保存されているアクセス ポリシーを参照しない SAS の最長期間は 1 時間であり、それより長い期間を指定するポリシーはすべて失敗します。
+6.	**アクセス先のリソースを具体的に指定します。**一般的なセキュリティのベスト プラクティスは、必要最小限の権限をユーザーに付与することです。ユーザーに必要なのは、1 つのエンティティへの読み取りアクセスだけの場合は、すべてのエンティティへの読み取り/書き込み/削除アクセスではなく、その 1 つのエンティティへの読み取りアクセスだけをユーザーに許可します。こうすると、SAS の安全性に対する脅威の軽減にも役立ちます。攻撃者が入手した場合でも、SAS の効力が小さいためです。
+7.	**アカウントは、SAS によるものも含め、すべての使用について課金されます。**BLOB への書き込みアクセスを許可した場合は、ユーザーが 200 GB の BLOB をアップロードする可能性があります。ユーザーに読み取りアクセスも許可すると、この BLOB を 10 回ダウンロードする可能性があります。この場合、2 TB の送信料金が発生します。したがって、悪意のあるユーザーによるリスクが軽減されるように、制限付きアクセス許可を付与してください。このような脅威が軽減されるように、短期間の SAS を使用してください (ただし、終了時刻のクロック スキューには注意してください)。
+8.	**SAS を使用して書き込まれたデータを検証します。**クライアント アプリケーションがストレージ アカウントにデータを書き込む場合は、そのデータに問題がある可能性に注意してください。データが検証後または認証後に使用可能になることをアプリケーションが要求する場合は、書き込まれたデータをアプリケーションが使用する前に、この検証を実行する必要があります。これを実行すると、ユーザーが SAS を正当に入手している場合でも、漏えいした SAS を利用している場合でも、破損データまたは悪意によるデータの書き込みからアカウントが保護されます。
+9. **場合によっては SAS を使用しないようにします。**ストレージ アカウントに対する特定の操作に関連するリスクが、SAS の利点より重大である場合もあります。このような操作については、ビジネス ルールの検証、認証、および監査を実行した後にストレージ アカウントに書き込む中間層サービスを作成します。また、別の方法でアクセスを管理した方が容易である場合もあります。たとえば、コンテナー内のすべての BLOB が一般ユーザーに読み取り可能である場合は、すべてのクライアントにアクセス用の SAS を提供するのではなく、コンテナーをパブリックにします。
+10.	**Storage Analytics を使用してアプリケーションを管理します。**SAS プロバイダー サービスが中断したり、保存されているアクセス ポリシーを不注意で削除したりしたために発生する認証失敗の急増を、ログやメトリックを使用して監視できます。詳細については、[Microsoft Azure のストレージ チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx)を参照してください。
 
-## Conclusion ##
+## まとめ##
 
-Shared access signatures are useful for providing limited permissions to your storage account to clients that should not have the account key.  As such, they are a vital part of the security model for any application using Azure Storage.  If you follow the best practices listed here, you can use SAS to provide greater flexibility of access to resources in your storage account, without compromising the security of your application.
+共有アクセス署名は、アカウント キーを知らせずに、ストレージ アカウントへの制限付きアクセス許可をクライアントに付与する場合に便利です。したがって、Azure のストレージを使用するあらゆるアプリケーションのセキュリティ モデルの重要な部分となります。ここに示すベスト プラクティスに従うと、アプリケーションのセキュリティを損なうことなく、SAS を使用して、ストレージ アカウントのリソースへのアクセスの柔軟性を高めることができます。
 
-## Next Steps ##
+## 次のステップ##
 
-[Shared Access Signatures, Part 2: Create and Use a SAS with the Blob Service](../storage-dotnet-shared-access-signature-part-2/)
+[共有アクセス署名、第 2 部 : BLOB サービスによる SAS の作成および使用](../storage-dotnet-shared-access-signature-part-2/)
 
-[Manage Access to Azure Storage Resources](http://msdn.microsoft.com/en-us/library/windowsazure/ee393343.aspx)
+[Microsoft Azure ストレージ リソースへのアクセスの管理](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee393343.aspx)
 
-[Delegating Access with a Shared Access Signature (REST API)](http://msdn.microsoft.com/en-us/library/windowsazure/ee395415.aspx)
+[共有アクセス署名によるアクセスの委任 (REST API) に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee395415.aspx)
 
-[Introducing Table and Queue SAS](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
+[テーブルおよびキュー SAS についての MSDN ブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
 [sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png
 [sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
+
 
 

@@ -2,7 +2,7 @@
 
 0.この操作をまだ行っていない場合は、「[Import your publishsettings file in Visual Studio 2013 (Visual Studio 2013 での publishsettings ファイルのインポート)]」の手順を実行して、Visual Studio に publishersettings ファイルをインポートします。
 
-	既に Visual Studio を使用して Windows Azure サブスクリプションでモバイル サービスを作成または管理している場合は、この操作を行う必要はありません。
+	既に Visual Studio を使用して Azure サブスクリプションでモバイル サービスを作成または管理している場合は、この操作を行う必要はありません。
 
 1. Visual Studio 2013 で、ソリューション エクスプローラーを開き、プロジェクトを右クリックして、**[追加]**、**[プッシュ通知]** の順にクリックします。
 
@@ -31,6 +31,6 @@
 
 <!-- URLs. -->
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/
-[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet/
+[モバイル サービスでのデータの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet/
 [Import your publishsettings file in Visual Studio 2013 (Visual Studio 2013 での publishsettings ファイルのインポート)]: /ja-jp/documentation/articles/mobile-services-windows-how-to-import-publishsettings/
 

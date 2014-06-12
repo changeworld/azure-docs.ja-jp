@@ -1,123 +1,122 @@
-<properties linkid="manage-scenarios-how-to-manage-websites" urlDisplayName="How to manage" pageTitle="How to manage web sites - Microsoft Azure service management" metaKeywords="Azure portal website management" description="A reference for the Portal web site management pages in Microsoft Azure. Details are provided for each web site management page." metaCanonical="" services="web-sites" documentationCenter="" title="How to Manage Web Sites" authors="timamm"  solutions="" writer="timamm" manager="" editor=""  />
+<properties linkid="manage-scenarios-how-to-manage-websites" urlDisplayName="管理方法" pageTitle="Web サイトの管理方法 - Microsoft Azure サービス管理" metaKeywords="Azure ポータル Web サイト管理" description="Microsoft Azure のポータル Web サイト管理ページのリファレンスです。各 Web サイト管理ページの詳細を説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="Web サイトの管理方法" authors="timamm"  solutions="" writer="timamm" manager="" editor=""  />
 
 
 
 
 
+#<a name="howtomanage"></a>Web サイトの管理方法
 
-#<a name="howtomanage"></a>How to Manage Web Sites
+Azure ポータルでの Web サイトの管理は、一連のページまたは "タブ" で行います。Web サイト管理ページそれぞれについて以下で説明します。
 
-You manage your web sites in the Azure portal with a set of pages or "tabs". Each Web Site management page is described below.
+## クイック スタート##
+**[クイック スタート]** 管理ページには、次のセクションが含まれています。
 
-## QuickStart ##
-The **QuickStart** management page includes the following sections:
+- **[ツールの入手]** - [WebMatrix のインストール][mswebmatrix]と [Microsoft Azure SDK][azuresdk] のインストールを行うためのリンクが表示されます。
+- **[アプリケーションの発行]** - Web サイトの発行プロファイルをダウンロードするためのリンク、Web サイトの展開資格情報をリセットするためのリンク、ステージングされていないサイトでステージングされた発行 (展開) スロットを追加するためのリンク、およびステージングされた発行について知るためのリンクが表示されます。
+- **[ソース管理の統合]** - TFS、CodePlex、GitHub、ドロップボックス、Bitbucket、ローカル Git などのソース管理ツールまたは Web サイトからの展開を設定し管理します。
 
-- **Get the tools** - Provides links to [Install WebMatrix][mswebmatrix] and the [Microsoft Azure SDK][azuresdk].
-- **Publish your app** - Provides links to download the web site's publishing profile, reset deployment credentials for the web site, add a staged publishing (deployment) slot to on a non-staged site, and learn about staged publishing.
-- **Integrate source control** - Set up and manage deployment from source control tools or web sites like TFS, CodePlex, GitHub, Dropbox, Bitbucket, or Local Git.
+## ダッシュボード##
+**[ダッシュボード]** 管理ページには、次のセクションが含まれています。
 
-## Dashboard ##
-The **Dashboard** management page includes the following:
+- 以下のメトリックを使用して、Web サイトの使用状況を集計したグラフ。
+ - **[CPU 時間]** - Web サイトの CPU 使用率の測定値。
+ - **[受信データ]** - Web サイトがクライアントから受信したデータの量。
+ - **[送信データ]** - Web サイトからクライアントに送信されたデータの量。
+ - **[HTTP サーバー エラー]** - 送信された HTTP "5xx サーバー エラー" メッセージの数。
+ - **[要求]** - Web サイトに対するすべてのクライアント要求の数。
+ <br />**注: **
+**[監視]** 管理ページの下部にある **[メトリックの追加]** を選択すると、パフォーマンス メトリックを追加できます。詳細については、「[Web サイトの監視方法][Monitor]」を参照してください。
 
-- A chart which summarizes web site usage as measurements of certain metrics.
- - **CPU Time** - a measure of the web site's CPU usage.
- - **Data In** - a measure of data received by the web site from clients.
- - **Data Out** - a measure of data sent by the web site to clients.
- - **HTTP Server Errors** - the number of HTTP "5xx Server Error" messages sent.
- - **Requests** - a count of all client requests to the web site.
- <br />**Note:**
-You can add additional performance metrics on the the **Monitor** management page by choosing **Add Metrics** on the bottom of that page. For more information, see [How to Monitor Web Sites][Monitor].
+- **[Web エンドポイントの状態]** - 監視が構成された Web エンドポイントの一覧。どのエンドポイントも構成されていない場合、**[Web エンドポイント監視の構成]** をクリックし、**[構成]** 管理ページの **[監視]** セクションに移動します。詳細については、「[Web サイトの監視方法][Monitor]」を参照してください。
 
-- **Web Endpoint Status** - A list of web endpoints that have been configured for monitoring. If no endpoints have been configured, click **Configure Web Endpoint Monitoring** and go to the **Monitoring** section of the **Configure** management page. For more information, see [How to Monitor Web Sites][Monitor].
+- **[自動スケールの状態]** - 標準モードでは、リソースを自動的にスケールして、必要なだけの金額を支払うようにすることができます。自動スケールを有効にするには、**[自動スケールの構成]** を選択します。**[スケール]** ページが表示されます。Web サイトが無料モードまたは共有モードである場合、自動スケールを構成する前に、標準モードに変更する必要があります (これは **[スケール]** ページで実行できます)。**[自動スケール操作のログ]** から **[管理サービス]** ポータルを開き、Web サイトの自動スケールの履歴を確認することができます。既定のクエリの範囲は過去 24 時間ですが、既定のクエリは変更することができます。
 
-- **Autoscale Status** - In Standard mode, you can automatically scale your resources so you'll only spend as much as you need. To enable autoscaling, choose **Configure Autoscale**, which takes you to the **Scale** page. If your web site is in Free or Shared mode, you will need to change it to Standard mode (you can do this on the **Scale** page) before you can configure autoscaling. **Autoscale Operation Logs** takes you to the **Management Services** portal where you can view the autoscale history of your web site. The default query is for the last 24 hours, but you can modify the query.
-
-- **Usage Overview** - this section shows statistics for the web site's CPU, file system, and memory usage.
-- **Linked Resources** - this section that shows a list of resources such as a SQL or MySQL database, or a Microsoft Azure storage account, that are connected to your web site. Click the name of the resource to manage the resource. If you have a MySQL database, clicking its name will take you to the ClearDB management page. There you can see your performance metrics, or go to the ClearDB dashboard, where you can upgrade your MySQL database if required. If no resources are listed , click **Manage Linked Resources** to go to the **Linked Resources** page, where you can add a link to a resource for your web site.
-- A **Quick Glance** section which includes the following summary information and links (depending on your settings, some of the options listed below may not appear):
- - **View Applicable Add-ons** - Opens the **Purchase from Store** dialog box where you can choose add-ons for purchase that provide additional functionality for your web site. Some add-ons may not be available in your region or environment.
- - **View connection strings** - View your web site's database connection strings.
- - **Download the publish profile** - Click this link to download your publish profile for your web site. The publish profile contains your credentials (user name and password) and the URLs  for uploading content to your web site with FTP and Git. The profile file is in XML format and can be viewed in a text editor.
- - **Set up deployment credentials** - Click this option to create a user name and password for uploading content to your web site with FTP or Git. After you have created your FTP/Git deployment credentials, you can use them to push content to any web site in your subscription by using FTP or Git.  To view the credentials after you have created them, click **Download the publish profile**. The publish profile that you download is a text file in XML format and can be viewed in a text editor. **Note**: Authentication to an FTP host or Git repository by using Microsoft Account (Live ID) credentials is not supported.
- - **Reset your publish profile credentials** - Resets the publish profile for your web site. Previously downloaded publish profiles will become invalid.
- - **Set up deployment from source control** - Displays a dialog box where you can set up continuous publishing from Team Foundation Service, CodePlex, GitHub, Dropbox, Bitbucket, or Local Git.
- - **Add a new deployment slot** - For sites in Standard mode, use this feature to create a staging slot for the site. The staging slot (staged site) lets you validate the site's content and configuration before swapping it into production. You can also use the staged version of the site to gradually add content updates, and then swap the site into production when the updates have been completed on the staging slot. (You cannot add a slot to a site that is already in staging.)
- - **Edit in Visual Studio Online** - Click this link to edit your web site directly online by using Visual Studio Online from the Microsoft Azure portal. This option will not appear unless you enable it on the **Configure** page.
- - **Disconnect from Dropbox** - If you have set up a connection to Dropbox for deployment purposes, this link allows you to disconnect it.
- - **Delete Git repository** - If you have set up a Git repository, this link allows you to delete it.
- - **Status** - Indicates whether the web site is running.
- - **Management Services** - Click the **Operation Logs** link to view operation logs for your web site from the Microsoft Azure Management Services portal.
- - **Virtual IP Address** - Shows the virtual IP address of the web site if you have configured an IP-based SSL binding for the web site in the **SSL Bindings** section of the **Configure** tab. 
- - **Site URL** - Specifies the publicly accessible address of the web site on the internet.
- - **Compute Mode** - Specifies whether the web site is running in Free, Shared, Basic, or Standard mode. For more information about web scale group modes, see [How to Scale a Web Site][Scale].
- - **FTP Hostname** - Specifies the URL to use when publishing to the web site over FTP.
- - **FTPS Hostname** - Specifies the URL to use when publishing to the web site over FTPS.
- - **Deployment User / FTP User** - Indicates the account used when deploying the web site to Microsoft Azure over FTP or Git.
- - **FTP Diagnostic Logs** - Specifies the FTP location of the web site's diagnostic logs if diagnostic logging is enabled on the **Configure** management page.
- - **FTPS Diagnostic Logs** - Specifies the FTPS location of the web site's diagnostic logs if diagnostic logging is enabled on the **Configure** management page.
- - **Location** - Specifies the region of the datacenter that hosts the web site.
- - **Subscription Name** - Specifies the subscription name that the web site is associated with.
- - **Subscription ID** - Specifies the unique subscription ID (GUID) of the subscription that the web site is associated with.
-
-
-##Deployments##
- This tab appears only if you have set up deployment from source control. The **Deployments** management page provides a summary of all deployments made to the web site using your publishing method of choice. If Git publishing has been configured for the web site but no deployments have been made, the **Deployments** management page provides information describing how to use GIT to deploy your web application to the web site.
-
-##Monitor##
-The **Monitor** management page provides a chart that displays usage information for the web site. By default this chart displays the same metrics as the chart on the **Dashboard** page as described above in the Dashboard section. The chart can also be configured to display the metrics HTTP Successes, HTTP Redirects, HTTP 401 errors, HTTP 403 errors, HTTP 404 errors and HTTP 406 errors. For more information about these metrics, see [How to Monitor Web Sites][Monitor].
-
-##WebJobs##
-The WebJobs management page lets you create on demand, scheduled, or continuously running tasks for your web site. For more information, see [How to Use the WebJobs feature in Microsoft Azure Web Sites](http://www.windowsazure.com/en-us/documentation/articles/web-sites-create-web-jobs/).
-
-##Configure##
-The **Configure** management page is used to set application specific settings including:
-
-- **General** - Set the version of the .NET framework, PHP, Python, or Java required by your web application. For sites in Standard or Basic mode, there is an option to choose a 64-bit platform. Set **Managed Pipeline Mode**  to **Classic** only if you have legacy web sites that run exclusively on older versions of IIS (**Integrated** is the default.) To enable your web site to use real time request pattern applications such as chat, you can set **Web Sockets** to **On**. To enable editing of your web site directly online, set **Edit in Visual Studio Online** to **On**.
-- **Certificates** - Upload an SSL certificate for a custom domain. SSL certificates can be uploaded only in Standard or Basic mode. The certificates you upload are listed here and can be assigned to any web site in your subscription and region. Wildcard certificates (certificates with an asterisk) are supported.
-- **Domain Names** - View or add additional custom domain names for a web site. Custom domain names can only be used in Shared, Basic, or Standard mode.
-- **SSL Bindings** - SSL bindings to custom domains can only be used in Basic or Standard mode. Choose an SSL mode (**SNI**, **IP**, or **No SSL**) for a particular domain name. If you choose SNI or IP, you can specify a certificate for the domain from the certificates you have uploaded.  
-- **Deployments** - This section appears only if you have enabled deployment from source control. Use these settings to configure deployments.
-- **Application Diagnostics** - Set options for gathering diagnostic information for a web application that supports logging. You can choose to log to the file system or to a Microsoft Azure Storage account, and choose a logging level to specify the amount of information gathered.
-- **Site Diagnostics** - Set logging options for gathering diagnostic information for your web site, or enable Visual Studio 2012 or Visual Studio 2013 to debug your web site remotely for a maximum of 48 hours.
-- **Monitoring** - For web sites in Standard mode, test the availability of HTTP or HTTPS endpoints from geo-distributed locations.
-- **Developer Analytics** - Analytics monitor the performance of your web application. Choose an analytics add-on from the Microsoft Azure store, or choose a custom analytics provider such as New Relic.
-- **App Settings** - Specify name/value pairs that will be loaded by your web application on start up. For .NET sites, these settings will be injected into the web site's .NET configuration AppSettings at runtime, overriding existing settings. For PHP and Node web sites, these settings will be available as environment variables at runtime.
-- **Connection Strings** - View connection strings to linked resources. For .NET sites, these connection strings will be injected into the web site's .NET configuration connectionStrings settings at runtime, overriding any existing entries where the key equals the linked database name. For PHP and Node web sites, these settings will be available as environment variables at runtime.
-- **Default Documents** - Add your web site's default document to this list if it is not already in the list. If your web site contains more than one of the files in the list then make sure your web site's default document appears at the top of the list by changing the order of the files in the list.
-- **Handler Mappings** - Add custom script processors that handle requests for specific file types (for example, *.php).
-- **Virtual Applications and Directories**  - Configure virtual applications and directories associated with your web site. You also have the option to mark a virtual directory as an application in site configuration.
-
-For more information about how to configure a Web Site, see [How to Configure Web Sites][Configure].
+- **[使用状況の概要]** - Web サイトの CPU、ファイル システム、メモリ使用量の統計が表示されます。
+- **[リンク済みリソース]** - Web サイトに接続されている、SQL データベース、MySQL データベース、Microsoft Azure のストレージ アカウントなどのリソースの一覧が表示されます。リソースを管理するにはリソースの名前をクリックします。MySQL データベースがある場合、その名前をクリックすると、ClearDB 管理ページに移動します。そこでパフォーマンス メトリックを確認することも、ClearDB ダッシュボードに移動して必要に応じて MySQL データベースをアップグレードすることもできます。一覧にリソースが 1 つもない場合は、**[リンク済みリソースの管理]** をクリックして **[リンク済みリソース]** ページに移動し、Web サイトのリソースに対するリンクを追加します。
+- **[概要]** セクションに次の概要情報とリンクが表示されます (設定によっては、一部のオプションが表示されない場合もあります)。
+ - **[適用可能なアドオンの表示]** - **[ストアから購入]** ダイアログ ボックスを開き、Web サイトに追加機能を提供するアドオンを選択して購入することができます。リージョンや環境によっては、一部のアドオンが利用できない場合があります。
+ - **[接続文字列の表示]** - Web サイトのデータベース接続文字列を表示します。
+ - **[発行プロファイルのダウンロード]** - Web サイトの発行プロファイルをダウンロードするときに、このリンクをクリックします。発行プロファイルには、FTP や Git を使用してコンテンツを Web サイトにアップロードするために必要な資格情報 (ユーザー名とパスワード) および URL が含まれます。発行プロファイル ファイルは XML 形式であり、テキスト エディターで表示できます。
+ - **[展開資格情報を設定する]** - FTP や Git を使用してコンテンツを Web サイトにアップロードするために必要なユーザー名とパスワードを作成する場合に、このオプションをクリックします。FTP や Git の展開資格情報を作成し、その資格情報を使用して、FTP や Git によってサブスクリプション内の任意の Web サイトにコンテンツをプッシュすることができます。作成した資格情報を表示するには、**[発行プロファイルのダウンロード]** をクリックします。ダウンロードされる発行プロファイル ファイルは XML 形式のテキスト ファイルであり、テキスト エディターで表示できます。**注**: Microsoft アカウント (Live ID) の資格情報を使用した FTP ホストや Git リポジトリに対する認証はサポートされていません。
+ - **[発行プロファイルの資格情報のリセット]** - Web サイトの発行プロファイルをリセットします。以前にダウンロードした発行プロファイルは無効になります。
+ - **[ソース管理からの展開の設定]** - Team Foundation Service、CodePlex、GitHub、ドロップボックス、Bitbucket、ローカル Git からの継続的発行を設定できるダイアログ ボックスが表示されます。
+ - **[新しい展開スロットの追加]** - 標準モードのサイトで、サイトをステージング スロットに作成する場合、この機能を使用します。ステージング スロット (ステージング サイト) を使用してサイトのコンテンツと構成を検証した後で、それを運用環境にスワップすることができます。サイトのステージングを利用してコンテンツ更新を段階的に追加し、ステージング スロットでの更新が完了したら、サイトを運用環境にスワップすることもできます (既にステージング環境に存在するサイトにスロットを追加することはできません)。
+ - **[Visual Studio Online での編集]** - Microsoft Azure ポータルから Visual Studio Online を使用して Web サイトを直接編集するときに、このリンクをクリックします。このオプションは、**[構成]** ページで有効にしておかないと表示されません。
+ - **[ドロップボックスから切断]** - 展開目的でドロップボックスへの接続を設定している場合、このリンクを使って接続を切断することができます。
+ - **[Git リポジトリの削除]** - Git リポジトリを設定している場合、このリンクを使って削除することができます。
+ - **[状態]** - Web サイトが実行中かどうかを示します。
+ - **[管理サービス]** - **[操作ログ]** リンクをクリックすると、Microsoft Azure 管理サービス ポータルで Web サイトの操作ログを表示できます。
+ - **[仮想 IP アドレス]** - **[構成]** タブの **[SSL バインド]** セクションで IP ベースの SSL バインドを構成していた場合に、Web サイトの仮想 IP アドレスを表示します。
+ - **[サイトの URL]** - インターネット上の Web サイトについて、だれもがアクセスできるアドレスを指定します。
+ - **[コンピューティング モード]** - Web サイトが無料、共有、基本、標準のどのモードで実行されているかを示します。Web スケール グループ モードの詳細については、「[Web サイトの規模変更方法][Scale]」を参照してください。
+ - **[FTP ホスト名]** - FTP 経由での Web サイトへの発行に使用する URL を指定します。
+ - **[FTPS ホスト名]** - FTPS 経由での Web サイトへの発行に使用する URL を指定します。
+ - **[展開ユーザー/FTP ユーザー]** - FTP または Git 経由で Web サイトを Microsoft Azure に展開する際に使用されるアカウントを指定します。
+ - **[FTP 診断ログ]** - **[構成]** 管理ページで診断ログが有効になっている場合に Web サイトの診断ログの FTP 場所を指定します。
+ - **[FTPS 診断ログ]** - **[構成]** 管理ページで診断ログが有効になっている場合に Web サイトの診断ログの FTPS 場所を指定します。
+ - **[場所]** - Web サイトをホストするデータセンターのリージョンを指定します。
+ - **[サブスクリプション名]** - Web サイトが関連付けられているサブスクリプション名を指定します。
+ - **[サブスクリプション ID]** - Web サイトが関連付けられているサブスクリプションの一意なサブスクリプション ID (GUID) を指定します。
 
 
-##Scale##
-On the **Scale** management page, you can specify the web scale group mode (**Free**, **Shared**, **Basic**, or **Standard**). **Shared**, **Basic**, and **Standard** modes provide better throughput and performance. **Shared**, **Basic**, and **Standard** modes allow you to increase the **Instance Count**, which is the number of virtual machines used by your web site and your other web sites in the same web scale group.
+##展開##
+ このタブは、ソース管理からの展開を設定した場合にのみ表示されます。**[展開]** 管理ページには、好みの発行方法を使用して Web サイトに行われたすべての展開の概要が示されます。Web サイトに対する Git 発行が構成されていて、まだ展開が行われていない場合、**[展開]** 管理ページには、Git を使用して Web アプリケーションを Web サイトに展開する方法が表示されます。
+
+##監視##
+**[監視]** 管理ページには、Web サイトの使用状況を示すグラフが表示されます。このグラフには、「ダッシュボード」で説明した **[ダッシュボード]** ページのグラフと同じメトリックが既定で表示されます。グラフは、メトリック [HTTP 成功]、[HTTP リダイレクト]、[HTTP 401 エラー]、[HTTP 403 エラー]、[HTTP 404 エラー]、および [HTTP 406 エラー] が表示されるように構成することもできます。これらのメトリックの詳細については、「[Web サイトの監視方法][Monitor]」を参照してください。
+
+##Web ジョブ##
+[Web ジョブ] 管理ページでは、Web サイトに対してオンデマンドで実行するタスク、スケジュールに従って実行するタスク、または連続的に実行するタスクを作成できます。詳細については、「[How to Use the WebJobs feature in Microsoft Azure Web Sites (Microsoft Azure の Web サイトで Web ジョブ機能を使用する方法)](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-create-web-jobs/)」を参照してください。
+
+##構成##
+**[構成]** 管理ページでは、アプリケーション固有の設定を行います。
+
+- **[全般]** - Web アプリケーションに必要な .NET Framework、PHP、Python、または Java のバージョンを設定します。標準モードまたは基本モードのサイトでは 64 ビットのプラットフォームを選択できます。従来の Web サイトを古いバージョンの IIS 上で実行する必要がある場合のみ、**[マネージ パイプライン モード]** を **[クラシック]** に設定してください (既定は **[統合]**)。チャットなど、リアルタイム要求パターン アプリケーションを Web サイトで使用できるようにするには、**[Web Socket]** を **[オン]** に設定します。Web サイトをオンラインで直接編集できるようにするには、**[Visual Studio Online での編集]** を **[オン]** に設定します。
+- **[証明書]** - カスタム ドメインの SSL 証明書をアップロードします。SSL 証明書は、標準モードまたは基本モードの場合にのみアップロードできます。アップロードした証明書はここに表示され、サブスクリプションとリージョンのすべての Web サイトに割り当てることができます。ワイルドカード証明書 (アスタリスク "*" を使った証明書) がサポートされています。
+- **[ドメイン名]** - Web サイトの追加のカスタム ドメイン名を表示または追加します。カスタム ドメイン名は、共有モード、基本モード、または標準モードでのみ使用できます。
+- **[SSL バインド]** - カスタム ドメインの SSL バインドは基本モードまたは標準モードでのみ使用できます。特定のドメイン名の SSL モード (**SNI**、**IP** または **SSL なし**) を選択します。SNI または IP を選択する場合は、アップロードした証明書からドメインの証明書を指定できます。
+- **[展開]** - このセクションは、ソース管理からの展開を有効にした場合にのみ表示されます。これらの設定は、展開の構成に使用します。
+- **[アプリケーション診断]** - ログ記録をサポートする Web アプリケーションの診断情報を収集するためのオプションを設定します。ログの記録先としてファイル システムまたは Microsoft Azure のストレージ アカウントを選択でき、ログ レベルを選択して収集する情報量を指定することができます。
+- **[サイト診断]** - Web サイトの診断情報を収集するためのログ オプションを設定します。Visual Studio 2012 または Visual Studio 2013 を使用し、最長 48 時間、Web サイトをリモートからデバッグできます。
+- **[監視]** - 標準モードの Web サイトの場合、地理的に分散した場所から HTTP または HTTPS エンドポイントの可用性をテストします。
+- **[開発者分析]** - Web アプリケーションのパフォーマンスを分析します。Microsoft Azure ストアで分析アドオンを選択するか、New Relic などのカスタム分析プロバイダーを選択します。
+- **[アプリケーション設定]** - 起動時に Web アプリケーションに読み込まれる名前と値を指定します。.NET サイトの場合、実行時にこれらの設定が Web サイトの .NET 構成 AppSettings に挿入され、既存の設定がオーバーライドされます。PHP サイトおよび Node の Web サイトの場合、実行時にこれらの設定が環境変数として使用できるようになります。
+- **[接続文字列]** - リンク済みリソースの接続文字列が表示されます。.NET サイトの場合、実行時にこれらの接続文字列が Web サイトの .NET 構成 connectionStrings 設定に挿入され、リンクされたデータベース名とキーが等しい既存のエントリがオーバーライドされます。PHP サイトおよび Node の Web サイトの場合、実行時にこれらの設定が環境変数として使用できるようになります。
+- **[既定のドキュメント]** - Web サイトの既定のドキュメントがこの一覧になければ追加します。この一覧内の複数のファイルが Web サイトに含まれている場合は、一覧内のファイルの順序を変更して、Web サイトの既定のドキュメントが一覧の先頭になるようにしてください。
+- **[ハンドラー マッピング]** - 特定のファイルの種類 (*.php など) に関する要求を処理するカスタム スクリプト プロセッサを追加します。
+- **[仮想アプリケーションとディレクトリ]** - Web サイトに関連付けられている仮想アプリケーションとディレクトリを構成します。サイトの構成で、仮想ディレクトリをアプリケーションとしてマークすることもできます。
+
+Web サイトを構成する方法の詳細については、「[Web サイトの構成方法][Configure]」を参照してください。
+
+
+##スケール##
+**[スケール]** 管理ページで、Web スケール グループ モード (**[無料]**、**[共有]**、**[基本]**、または **[標準]**) を指定できます。**[共有]**、**[基本]**、および **[標準]** の各モードでは、スループットとパフォーマンスが向上します。**[共有]**、**[基本]**、および **[標準]** の各モードでは、Web サイト、および同じ Web スケール グループ内の他の Web サイトで使用する仮想マシンの数である **[インスタンス数]** を増やすことができます。
  
-In **Standard** mode, you can also increase the core count and memory capacity of each instance by changing the **Instance Size**.  For greater cost effectiveness, you can choose the **Autoscale** option to have Microsoft Azure allocate resources for your web site dynamically. 
+**[標準]** モードでは、**[インスタンス サイズ]** を変更して、各インスタンスのコア数とメモリ容量を増やすこともできます。費用対効果を高めるために、**[自動スケール]** を選択して、Microsoft Azure が Web サイトのリソースを動的に配分するよう設定することもできます。
 
-For more information about configuring scale options for a web site, see [How to Scale a Web Site][Scale].
+Web サイトのスケール オプションを構成する方法の詳細については、「[Web サイトの規模変更方法][Scale]」を参照してください。
 
-##Linked Resources##
-The **Linked Resources** management page provides a list of Microsoft Azure resources that your web site is using, including SQL databases, MySQL databases, and Azure storage accounts. Click the name of the resource to manage it.
+##リンク済みリソース##
+**[リンク済みリソース]** 管理ページでは、SQL データベース、MySQL データベース、Azure ストレージ アカウントなど、Web サイトで使用している Microsoft Azure リソースが一覧表示されます。リソースを管理するにはリソースの名前をクリックします。
 
-##Backups##
-The **Backups** management page lets you create automated or manual backups of your web site, restore your web site to a previous state, or create a new web site based on one of your backups. For more information, see [Microsoft Azure Web Sites Backups](http://www.windowsazure.com/en-us/documentation/articles/web-sites-backup/) and [Restore a Microsoft Azure web site](http://www.windowsazure.com/en-us/documentation/articles/web-sites-restore/).
+##バックアップ##
+**バックアップ**管理ページでは、Web サイトの自動バックアップや手動バックアップの作成、以前の状態への Web サイトの復元、またはいずれかのバックアップに基づいた新しい Web サイトの作成が可能です。詳細については、[Microsoft Azure の Web サイトのバックアップに関するページ](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-backup/)および「[Microsoft Azure の Web サイトの復元](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-restore/)」を参照してください。
 
-##Management Page Icons##
-Icons are displayed at the bottom of each of the web site's Management pages. Several of these icons appear on multiple pages, and a few icons are displayed only on specific pages.  The following icons are displayed at the bottom of the **Dashboard** management page:
+##管理ページのアイコン##
+アイコンは、Web サイトの管理ページそれぞれの下部に表示されます。これらのアイコンのうち一部は複数のページに表示され、いくつかのアイコンは特定の 1 ページだけに表示されます。以下のアイコンは、**[ダッシュボード]** 管理ページの下部に表示されます。
 
-- **Browse** - Opens the default page for the web site.
-- **Stop** - Stops the web site.
-- **Restart** - Restarts the web site.
-- **Manage Domains** - Maps a domain to this web site. Not available for sites in **Free** scaling mode.
-- **Delete** - Deletes the web site.
-- **WebMatrix** - Opens supported web sites in WebMatrix, allowing you to make changes to the web site and publish those changes back to the web site on Microsoft Azure.
+- **[参照]** - Web サイトの既定ページを開きます。
+- **[停止]** - Web サイトを停止します。
+- **[再起動]** - Web サイトを再起動します。
+- **[ドメインの管理]** - ドメインをこの Web サイトにマップします。**[無料]** スケール モードのサイトでは使用できません。
+- **[削除]** - Web サイトを削除します。
+- **[WebMatrix]** - サポートされている Web サイトを WebMatrix で開きます。これにより、Web サイトへの変更を行い、その変更を Microsoft Azure 上にある元の Web サイトに発行できます。
 
-The following icons are not displayed at the bottom of the **Dashboard** management page, but are on the bottom of other management pages to accomplish particular tasks:
+以下のアイコンは、特定のタスクを実行するために、**[ダッシュボード]** 以外の管理ページの下部に表示されます。
 
-- **Add Metrics** - At the bottom of the **Monitor** management page, allows you to add metrics to the chart displayed on the Monitor management page.
-- **Link** - At the bottom of the **Linked Resources** management page, allows you to create management links to other Microsoft
--  Azure resources. For example, if your web site accesses a SQL database, you can create a management link to the database resource by clicking **Link**.
+- **[メトリックの追加]** - **[監視]** 管理ページの下部に表示されます。これにより、[監視] 管理ページに表示されるグラフにメトリックを追加することができます。
+- **[リンク]** - **[リンク済みリソース]** 管理ページの下部に表示され、他の Microsoft Azure リソースに対する管理リンクを作成することができます。
+- Azure のリソース。たとえば、Web サイトで SQL データベースにアクセスする場合、**[リンク]** をクリックして、データベース リソースに対する管理リンクを作成できます。
 
 
 <!-- LINKS -->
@@ -125,9 +124,10 @@ The following icons are not displayed at the bottom of the **Dashboard** managem
 
 [azuresdk]:http://go.microsoft.com/fwlink/?LinkId=246928
 
-[Configure]: http://www.windowsazure.com/en-us/manage/services/web-sites/how-to-configure-websites
+[Configure]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-configure-websites
 
-[Monitor]: http://www.windowsazure.com/en-us/manage/services/web-sites/how-to-monitor-websites/
+[Monitor]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-monitor-websites/
 
-[Scale]: http://www.windowsazure.com/en-us/manage/services/web-sites/how-to-scale-websites
+[Scale]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-scale-websites
+
 

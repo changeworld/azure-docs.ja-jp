@@ -1,323 +1,323 @@
-<properties linkid="develop-net-tutorials-multi-tier-web-site-2-download-and-run" urlDisplayName="Step 2: Download and Run" pageTitle="ASP.NET Multi-tier Web Application with Azure - Step 2: Download and run" metaKeywords="Azure tutorial, deploying email service app, publishing email service" description="The second tutorial in a series that teaches how to configure your computer for Azure development and deploy the Email Service app." metaCanonical="" services="cloud-services,storage" documentationCenter=".NET" title="Configuring and Deploying the Azure Email Service application - 2 of 5" authors="riande,tdykstra" solutions="" manager="wpickett" editor="mollybos" />
+<properties linkid="develop-net-tutorials-multi-tier-web-site-2-download-and-run" urlDisplayName="ステップ 2: ダウンロードと実行" pageTitle="Azure での ASP.NET 多層 Web アプリケーション - ステップ 2: ダウンロードと実行" metaKeywords="Azure チュートリアル, 電子メール サービス アプリケーションのデプロイ, 電子メール サービスの発行" description="Azure 向け開発用にコンピューターを構成し、電子メール サービス アプリケーションをデプロイする方法について説明する 2 番目のチュートリアル。" metaCanonical="" services="cloud-services,storage" documentationCenter=".NET" title="Azure Email Service アプリケーションの構成とデプロイ - 2/5" authors="riande,tdykstra" solutions="" manager="wpickett" editor="mollybos" />
 
-# Configuring and Deploying the Azure Email Service application - 2 of 5
+# Azure Email Service アプリケーションの構成とデプロイ - 2/5
 
-This is the second tutorial in a series of five that show how to build and deploy the Azure Email Service sample application.  For information about the application and the tutorial series, see the [first tutorial in the series][firsttutorial].
+この 2 番目のチュートリアル (全 5 回シリーズ) では、Azure Email Service サンプル アプリケーションをビルドしてデプロイする方法について説明します。このアプリケーションとチュートリアル シリーズの詳細については、[シリーズの最初のチュートリアル][firsttutorial]を参照してください。
 
-This tutorial shows how to configure your computer for Azure development and how to deploy the Windows Azure Email Service application to a Windows Azure Cloud Service by using  any of the following products:
+このチュートリアルでは、Microsoft Azure 向け開発用にコンピューターを構成する方法と、次のいずれかの製品を使用して Microsoft Azure Email Service アプリケーションを Microsoft Azure クラウド サービスに展開する方法について説明します。
 
 * Visual Studio 2012
 * Visual Studio 2012 Express for Web
 * Visual Studio 2010
 * Visual Web Developer Express 2010.
 
->[WACOM.NOTE] After this tutorial was written, Visual Studio 2013 was released, and the Azure Management Portal and SDK were updated. Notes like this one have been added at points where you have to do things differently if you are using Visual Studio 2013 and the latest SDK. The notes were written in March, 2014, and the revised procedures have been tested with SDK version 2.3.
+>[WACOM.NOTE] このチュートリアルを作成した後、Visual Studio 2013 がリリースされ、Azure 管理ポータルと SDK が更新されました。Visual Studio 2013 と最新の SDK を使用している場合に異なる操作を実行する必要がある状況では、このような注が追加されています。これらの注は 2014 年 3 年に加筆されたもので、改定後の手順は、SDK のバージョン 2.3 を使用してテスト済みです。
 
-You can open an Azure account for free, and if you don't already have Visual Studio 2013, the SDK automatically installs Visual Studio 2013 for Web Express. So you can start developing for Azure entirely for free.
+Azure アカウントは無料で開くことができます。また、まだ Visual Studio 2013 を持っていない場合は、SDK によって Visual Studio 2013 for Web Express が自動的にインストールされます。これで、Azure 向けの開発を完全に無料で始めることができます。
 
-In this tutorial you'll learn:
+このチュートリアルでは、次のことについて説明します。
 
-* How to set up your computer for Azure development by installing the Azure SDK.
-* How to configure and test the Azure Email Service application on your local machine.
-* How to publish the application to Azure.
-* How to view and edit Azure tables, queues, and blobs by using Visual Studio or Azure Storage Explorer.
-* How to configure tracing and view trace data.
-* How to scale the application by increasing the number of worker role instances.
+* Azure SDK をインストールして、Azure 向け開発用にコンピューターを構成する方法
+* ローカル コンピューター上で Azure Email Service アプリケーションを構成してテストする方法
+* Azure にアプリケーションを発行する方法
+* Visual Studio または Azure ストレージ エクスプローラーを使用して、Azure のテーブル、キュー、BLOB を表示および編集する方法
+* トレース機能を構成し、トレース データを表示する方法
+* ワーカー ロール インスタンスの数を増やすことによって、アプリケーションの規模を拡張する方法
 
-<div class="dev-callout"><strong>Note</strong>
-<p>To complete this tutorial, you need an Azure account. You can create a <a href="/en-us/pricing/free-trial/" target="_blank">free trial account</a> or <a href="/en-us/pricing/member-offers/msdn-benefits/" target="_blank">activate MSDN subscriber benefits</a>.</p>
+<div class="dev-callout"><strong>注</strong>
+<p>このチュートリアルを完了するには、Azure アカウントが必要です。<a href="/ja-jp/pricing/free-trial/" target="_blank">無料評価版アカウント</a>を作成するか、<a href="/ja-jp/pricing/member-offers/msdn-benefits/" target="_blank">MSDN サブスクライバーの特典を有効にする</a>ことができます。</p>
 </div>
 <br />
 
-### Tutorial segments
+### チュートリアル セグメント
 
-- [Set up the development environment][]
-- [Set up a free Azure account][]
-- [Create an Azure Storage account][]
-- [Install Azure Storage Explorer][]
-- [Create a Cloud Service][]
-- [Download and run the completed solution][]
-- [View developer storage in Visual Studio][]
-- [Configure the application for Azure Storage][]
-- [Deploy the application to Azure][]
-- [Promote the application from staging to production][]
-- [Configure the application to use SendGrid][]
-- [Configure and view trace data][]
-- [Add another worker role instance to handle increased load][]
+- [開発環境を設定する][]
+- [無料 Azure アカウントを設定する][]
+- [Azure のストレージ アカウントの作成][]
+- [Azure ストレージ エクスプローラーをインストールする][]
+- [クラウド サービスを作成する][]
+- [完成したソリューションをダウンロードして実行する][]
+- [Visual Studio で開発ストレージを表示する][]
+- [Azure ストレージを使用するためにアプリケーションを構成する][]
+- [Azure にアプリケーションを展開する][]
+- [ステージング環境から運用環境にアプリケーションを昇格する][]
+- [SendGrid を使用するようにアプリケーションを構成する][]
+- [トレース データを構成および表示する][]
+- [増加した負荷の処理用に別のワーカー ロール インスタンスを追加する][]
 
 
->[WACOM.NOTE] In the following section about SDK installation, the correct link if you are using Visual Studio 2013 is [http://go.microsoft.com/fwlink/?LinkID=324322](http://go.microsoft.com/fwlink/?LinkID=324322). 
+>[WACOM.NOTE] SDK のインストールに関する以下のセクションでは、Visual Studio 2013 を使用している場合の正しいリンクは次のとおりです。[http://go.microsoft.com/fwlink/?LinkID=324322](http://go.microsoft.com/fwlink/?LinkID=324322)。
 
 
 [WACOM.INCLUDE [install-sdk-2012-only](../includes/install-sdk-2012-only.md)]
 
 
 
-<h2><a name="createWASA"></a><span class="short-header">Create Storage account</span>Create an Azure Storage account</h2>
+<h2><a name="createWASA"></a><span class="short-header">ストレージ アカウントの作成</span>Azure のストレージ アカウントの作成</h2>
 
-When you run the sample application in Visual Studio, you can access tables, queues, and blobs in Azure development storage or in an Azure Storage account in the cloud. Development storage uses a SQL Server Express LocalDB database to emulate the way Azure Storage works in the cloud.  In this tutorial you'll start by using development storage, and then you'll learn how to configure the application to use a cloud storage account when it runs in Visual Studio. In this section of the tutorial you create the Azure Storage account that you'll configure Visual Studio to use later in the tutorial.    
+Visual Studio でサンプル アプリケーションを実行するとき、Azure 開発ストレージで、またはクラウド内の Azure のストレージ アカウントで、テーブル、キュー、BLOB にアクセスできます。開発ストレージでは、SQL Server Express の LocalDB データベースを使用して、クラウド内での Azure のストレージの機能をエミュレートします。このチュートリアルでは、開発ストレージの使用から始めます。その後、Visual Studio での実行時にクラウド ストレージ アカウントを使用するようにアプリケーションを構成する方法について説明します。チュートリアルのこのセクションでは、Azure のストレージ アカウントを作成します。後のセクションで、Visual Studio での実行時にこのアカウントを使用するようにアプリケーションを構成します。
 
-1. In your browser, open the [Azure Management Portal][NewPortal].
+1. ブラウザーで、[Azure 管理ポータル][NewPortal]を開きます。
 
-2. In the [Azure Management Portal][NewPortal], click **Storage**, then click **New**.
+2. [Azure 管理ポータル][NewPortal]で、**[ストレージ]** をクリックし、**[新規]** をクリックします。
 
-   ![New Storage][mtas-portal-new-storage]
+   ![新しいストレージ][mtas-portal-new-storage]
 
-3. Click **Quick Create**.
+3. **[簡易作成]** をクリックします。
    
-   ![Quick Create][mtas-storage-quick]
+   ![簡易作成][mtas-storage-quick]
 
-4. In the URL input box, enter a URL prefix. 
+4. [URL] 入力ボックスに、URL のプレフィックスを入力します。
 
-	This prefix plus the text you see under the box will be the unique URL to your storage account. If the prefix you enter has already been used by someone else, you'll see "The storage name is already in use" above the text box and you'll have to choose a different prefix.
+	このプレフィックスに、このボックスの下に表示されているテキストを連結したものが、ストレージ アカウントに固有の URL になります。入力したプレフィックスが他のだれかによって既に使用されている場合は、"そのストレージ名は既に使用中です" がこのボックスの上に表示されます。その場合は、別のプレフィックスを選択する必要があります。
 
-5. Set the region to the area where you want to deploy the application.
+5. リージョンのボックスで、アプリケーションをデプロイする場所を設定します。
 
-6. Set the **Replication** drop-down box to **Locally redundant**. 
+6. **[レプリケーション]** ボックスを **[ローカル冗長]** に設定します。
 
-	When geo-replication is enabled for a storage account, the stored content is replicated to a secondary location to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [How To Manage Storage Accounts][managestorage].
+	Geo レプリケーションをストレージ アカウントに対して有効にすると、1 次拠点で重大な障害が発生した場合に備えて、保存したコンテンツは 2 次拠点に複製されて、フェイルオーバーが可能になります。Geo レプリケーションには追加費用が発生する場合があります。また、テストおよび開発アカウントの場合は、一般的に Geo レプリケーションに対する課金は避けたいと考えるでしょう。詳細については、[ストレージ アカウントの管理方法に関するページ][managestorage]を参照してください。
 
-5. Click **Create Storage Account**. 
+5. **[ストレージ アカウントの作成]** をクリックします。
 
-	In the image below, a storage account is created with the URL `aestest3.core.windows.net`.
+	次の画像では、ストレージ アカウントは `aestest3.core.windows.net` という URL で作成されます。
 
-	![create storage with URL prefix][mtas-create-storage-url-test]
+	![URL プレフィックスでのストレージ アカウントの作成][mtas-create-storage-url-test]
 
-	This step can take several minutes to complete. While you are waiting, you can repeat these steps and create a production storage account. It's often convenient to have a test storage account to use for local development, another test storage account for testing in Azure, and a production storage account.
+	この手順は完了までに数分かかる場合があります。完了を待つ間にここまでの手順を繰り返して、運用ストレージ アカウントを作成できます。多くの場合に便利なのは、ローカル開発用にテスト ストレージ アカウントを、Azure 上でのテスト用に別のテスト ストレージ アカウントを作成し、さらに運用ストレージ アカウントを作成することです。
 
-5. Click the test account that you created in the previous step, then click the **Manage Access Keys** icon.
+5. 前の手順で作成したテスト アカウントをクリックし、**[アクセス キーの管理]** アイコンをクリックします。
 
-	![Manage Keys][mtas-manage-keys]<br/>
+	![キーの管理][mtas-manage-keys]<br/>
 
-	![Keys GUID][mtas-guid-keys]<br/>
+	![GUID キー][mtas-guid-keys]<br/>
 
-	You'll need the **Primary Access Key** or **Secondary Access Key** access key throughout this tutorial. You can use either one of these keys in a storage connection string. 
+	このチュートリアルでは**プライマリ アクセス キー**または**セカンダリ アクセス キー**が必要になります。これらのキーのいずれかをストレージ接続文字列で使用できます。
 
-	There are two keys so that you can periodically change the key that you use without causing an interruption in service to a live application. You regenerate the key that you're not using, then you can change the connection string in your application to use the regenerated key. If there were only one key, the application would lose connectivity to the storage account when you regenerated the key. The keys that are shown in the image are no longer valid because they were regenerated after the image was captured.
+	キーが 2 つあるのは、ライブ アプリケーションのサービスを中断することなく、使用中のキーを定期的に変更できるようにするためです。使用中でないキーを再生成した後、アプリケーションの接続文字列を、再生成したキーを使用するように変更できます。キーが 1 つのみの場合では、キーの再生成時にアプリケーションでストレージ アカウントへの接続が失われることになります。画像に示しているキーは既に有効ではありません。画像のキャプチャ後に再生成されたためです。
 
-6. Copy one of these keys into your clipboard for use in the next section.
-
-
-
-
-
-<h2><a name="installASE"></a><span class="short-header">Install ASE</span>Install Azure Storage Explorer</h2>
-
-**Azure Storage Explorer** (ASE) is a tool that you can use to query and update Azure storage tables, queues, and blobs. You will use it throughout these tutorials to verify that data is updated correctly and to create test data.
-
-1. Install  [Azure Storage Explorer](http://azurestorageexplorer.codeplex.com/ ).
-
-	Screenshots show ASE 4, but you can install ASE 5 if you prefer.
-
-2. Launch **Azure Storage Explorer** and click **Add Account**.
-
-	![Add ASE Account][mtas-ase-add]
-
-3. Enter the name of the test storage account and paste the key that you copied previously.
-
-4. Click **Add Storage Account**.
-
-	![Add ASE Account][mtas-ase-add2]
-
-Other tools are also available that work with Azure Storage. For more information, see [Windows Azure Storage Explorers (2014)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx).
-
-
-
-
-<h2><a name="createcloudsvc"></a><span class="short-header">Create Cloud Service</span>Create a Cloud Service</h2>
-
-1. In your browser, open the [Azure Management Portal][NewPortal].
-
-2. Click **Cloud Services** then click the **New** icon.
-
-	![Quick Cloud][mtas-new-cloud]
-
-3. Click **Quick Create**.
-
-4. In the URL input box, enter a URL prefix. 
-
-	Like the storage URL, this URL has to be unique, and you will get an error message if the prefix you choose is already in use by someone else.
-
-5. Set the region to the area where you want to deploy the application.
-
-	You should create the cloud service in the same region that you created the storage account. When the cloud service and storage account are in different datacenters (different regions), latency will increase and you will be charged for bandwidth outside the data center. Bandwidth within a data center is free.
-
-	Azure affinity groups provide a mechanism to minimize the distance between resources in a data center, which can reduce latency. This tutorial does not use affinity groups. For more information, see [How to Create an Affinity Group in Azure](http://msdn.microsoft.com/en-us/library/jj156209.aspx).
-
-6. Click **Create Cloud Service**. 
-
-	In the following image, a cloud service is created with the URL aescloud.cloudapp.net.
-
-	![create storage with URL prefix][mtas-create-cloud]
-
-	You can move on to the next step without waiting for this step to complete.
+6. 次のセクションで使用するため、これらのキーのいずれかをクリップボードにコピーします。
 
 
 
 
 
-<h2><a name="downloadcnfg"></a><span class="short-header">Download and run</span>Download and run the completed solution</h2>
+<h2><a name="installASE"></a><span class="short-header">ASE のインストール</span>Azure ストレージ エクスプローラーをインストールする</h2>
 
-1. Download and unzip the [completed solution](http://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36).
+**Azure ストレージ エクスプローラー** (ASE) は、Azure のストレージのテーブル、キュー、BLOB を照会および更新するために使用できるツールです。このチュートリアルではこのツールを使用して、データが正しく更新されていることを確認したり、テスト データを作成したりします。
 
-2. Start Visual Studio with elevated permissions.
+1. [Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com/ )をインストールします。
 
-	The compute emulator that enables Visual Studio to run a Windows Azure project locally requires elevated permissions.
+	スクリーンショットでは ASE 4 を示していますが、希望する場合は ASE 5 をインストールすることもできます。
 
-	>[WACOM.NOTE] With SDK 2.3 and later, the default Azure compute emulator doesn't require elevated permissions, but this project is still configured to use the original compute emulator, so it still requires elevated permissions.
+2. **Azure ストレージ エクスプローラー**を起動し、**[アカウントの追加]** をクリックします。
+
+	![ASE アカウントの追加][mtas-ase-add]
+
+3. テスト ストレージ アカウントの名前を入力し、前の手順でコピーしたキーを貼り付けます。
+
+4. **[ストレージ アカウントの追加]** をクリックします。
+
+	![ASE アカウントの追加][mtas-ase-add2]
+
+Azure のストレージと連携するその他のツールも入手可能です。詳細については、[Microsoft Azure ストレージ エクスプローラーに関するページ](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)を参照してください。
+
+
+
+
+<h2><a name="createcloudsvc"></a><span class="short-header">クラウド サービスの作成</span>クラウド サービスを作成する</h2>
+
+1. ブラウザーで、[Azure 管理ポータル][NewPortal]を開きます。
+
+2. **[クラウド サービス]** をクリックし、**[新規]** アイコンをクリックします。
+
+	![クラウドの簡易作成][mtas-new-cloud]
+
+3. **[簡易作成]** をクリックします。
+
+4. [URL] 入力ボックスに、URL のプレフィックスを入力します。
+
+	ストレージの URL と同様、この URL は一意であることが必要です。選択したプレフィックスが他のだれかによって既に使用されている場合は、エラー メッセージが表示されます。
+
+5. リージョンのボックスで、アプリケーションをデプロイする場所を設定します。
+
+	ストレージ アカウントを作成した同じリージョンでクラウド サービスを作成する必要があります。クラウド サービスとストレージ アカウントが異なるデータ センター (異なるリージョン) にあると、遅延時間が長くなり、データ センター外の帯域幅に対して課金されることになります。データ センター内の帯域幅は無料です。
+
+	Azure アフィニティ グループには、データ センター内のリソース間の距離を最短にする機能が備わっており、それにより遅延時間を短縮できます。このチュートリアルでは、アフィニティ グループを使用しません。詳細については、[Azure でアフィニティ グループを作成する方法に関するページ](http://msdn.microsoft.com/ja-jp/library/jj156209.aspx)を参照してください。
+
+6. [**クラウド サービスを作成する**] をクリックします。
+
+	次の画像では、クラウド サービスは aescloud.cloudapp.net という URL で作成されます。
+
+	![URL プレフィックスでのストレージ アカウントの作成][mtas-create-cloud]
+
+	この手順の完了を待たずに、次の手順に進むことができます。
+
+
+
+
+
+<h2><a name="downloadcnfg"></a><span class="short-header">ダウンロードと実行</span>完成したソリューションをダウンロードして実行する</h2>
+
+1. [完成したソリューション](http://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36)をダウンロードして解凍します。
+
+2. 昇格されたアクセス許可を使用して Visual Studio を起動します。
+
+	コンピューティング エミュレーターを使用して Visual Studio で Microsoft Azure プロジェクトを実行するには、昇格されたアクセス許可がローカルで必要です。
+
+	>[WACOM.NOTE] SDK 2.3 以降を使用する場合は、既定の Azure コンピューティング エミュレーターでは昇格されたアクセス許可が必要ありませんが、このプロジェクトは引き続き、元のコンピューティング エミュレーターを使用するように構成されています。したがって、昇格されたアクセス許可が必要です。
 	
-3. Restore the NuGet packages.
+3. NuGet パッケージを復元します。
 
-	To keep the download size small, the completed solution is provided without the assemblies or other content for the installed NuGet packages. When you open and build the solution, NuGet automatically gets all of the package content. In order for this to work, you have to enable the NuGet package restore option in Visual Studio. If you haven't already enabled NuGet package restore, do the following steps.
+	ダウンロード サイズが小さくなるように、完成したソリューションは、インストール済みの NuGet パッケージのアセンブリなどのコンテンツなしで提供されます。ソリューションを開いてビルドすると、NuGet によってパッケージのすべてのコンテンツが自動的に取得されます。この処理が実行されるように、Visual Studio で NuGet パッケージの復元オプションを有効にしておく必要があります。NuGet パッケージの復元オプションをまだ有効にしていない場合は、次のステップを実行します。
 
-	>[WACOM.NOTE] In Visual Studio 2013, the default setting is to enable automatic package restore, but because you're opening a Visual Studio 2012 project the restore won't happen automatically.  Wait until after you open the solution, and then open the **Manage NuGet Packages** dialog as instructed below. You'll see a **Restore** button at the top right: click that button to restore the packages. 
+	>[WACOM.NOTE] Visual Studio 2013 では、既定の設定はパッケージの自動的な復元を有効にすることですが、Visual Studio 2012 のプロジェクトを開く場合は、復元が自動的に実行されることはありません。ソリューションを開き終わるまで待ち、その後、以下の説明に従って **[NuGet パッケージの管理]** ダイアログ ボックスを開きます。右上に **[復元]** ボタンが表示されます。そのボタンをクリックしてパッケージを復元します。
 
-		1. From the **Tools** menu, click **Library Package Manager**, and then click **Manage NuGet Packages for Solution**. 
+		1. **[ツール]** メニューの **[ライブラリ パッケージ マネージャー]** をクリックし、**[ソリューションの NuGet パッケージの管理]** をクリックします。
 
-		2. In the lower left corner of the **Manage NuGet Packages** dialog, click **Settings**.
+		2. **[NuGet パッケージの管理]** ダイアログ ボックスの左下隅で、**[設定]** をクリックします。
 
-		3. In the left pane of the **Options** dialog box, select **General** under **Package Manager**.
+		3. **[オプション]** ダイアログ ボックスの左側のウィンドウで、**[パッケージ マネージャー]** の下にある **[全般]** を選択します。
 
-		4. Select **Allow NuGet to download missing packages during build**.
+		4. **[ビルド中に足りないパッケージをダウンロードすることを NuGet に許可]** を選択します。
 
-	![Enabling NuGet package restore](./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/NuGetPkgRestore.png)
+	![NuGet パッケージの復元の有効化](./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/NuGetPkgRestore.png)
 
-3. From the **File** menu choose **Open Project**, navigate to where you downloaded the solution, and then open the solution file.
+3. **[ファイル]** メニューの **[プロジェクトを開く]** を選択し、ソリューションをダウンロードした場所に移動して、ソリューション ファイルを開きます。
 
-3. In **Solution Explorer**, make sure that **AzureEmailService** is selected as the startup project.
+3. **ソリューション エクスプローラー**で、**AzureEmailService** がスタートアップ プロジェクトとして選択されていることを確認します。
 
-1. Press CTRL+F5 to run the application.
+1. Ctrl + F5 キーを押して、アプリケーションを実行します。
 
-	>[WACOM.NOTE] In order to enable the solution to build you'll need to add references to the current SDK assemblies. In Solution Explorer, right-click the MvcWebRole project, and then click **Add** -- **Reference**. Under **Assemblies** click **Extensions**. Select *Microsoft.WindowsAzure.Diagnostics* and *Microsoft.WindowsAzure.ServiceRuntime*, and then click **OK**. Do the same for the WorkerRoleA and WorkerRoleB projects.
+	>[WACOM.NOTE] ソリューションを作成できるようにするには、現在の SDK アセンブリへの参照を追加する必要があります。ソリューション エクスプローラーで、[MvcWebRole] プロジェクトを右クリックし、**[追加]** をクリックしてから **[参照]** をクリックします。**[アセンブリ]** の下にある **[拡張]** をクリックします。*Microsoft.WindowsAzure.Diagnostics* と *Microsoft.WindowsAzure.ServiceRuntime* を選択し、**[OK]**をクリックします。WorkerRoleA と WorkerRoleB の各プロジェクトでも、同じ作業を実行します。
 
-	The application home page appears in your browser.
+	アプリケーションのホーム ページがブラウザーに表示されます。
 
-	![Run the App.][mtas-mailinglist1]
+	![アプリケーションの実行][mtas-mailinglist1]
 
-2. Click  **Create New**.
+2. **[Create New]** をクリックします。
 
-2. Enter some test data, and then click **Create**.
+2. 何かテスト データを入力し、**[Create]** をクリックします。
 
-	![Run the App.][mtas-create1]
+	![アプリケーションの実行][mtas-create1]
 
-3. Create a couple more mailing list entries.
+3. いくつかの追加のメーリング リスト エントリを作成します。
 
-	![Mailing List Index Page][mtas-mailing-list-index-page]
+	![Mailing List の Index ページ][mtas-mailing-list-index-page]
 
-4. Click **Subscribers**, and then add some subscribers. Set **Verified** to `true`.
+4. **[Subscribers]** をクリックし、数人の登録者を追加します。**[Verified]** を `true` に設定します。
 
-	![Subscriber Index Page][mtas-subscribers-index-page]
+	![登録者の Index ページ][mtas-subscribers-index-page]
 
-4. Prepare to add messages by creating a *.txt* file that contains the body of an email that you want to send. Then create an *.htm* file that contains the same text but with some HTML (for example, make one of the words in the message bold or italicized). You'll use these files in the next step.
+4. 送信する電子メールの本文を保存した *.txt* ファイルを作成して、メッセージを追加する準備をします。その後、同じテキストといくつかの HTML (メッセージのいずれかの単語を太字や斜体にするタグなど) を保存した *.htm* ファイルを作成します。これらのファイルはこの後の手順で使用します。
 
-4. Click **Messages**, and then add some messages. Select the files that you created in the previous step. Don't change the scheduled date which defaults to one week in the future. The application can't send messages until you configure SendGrid.
+4. **[Messages]** をクリックし、何かメッセージを追加します。前の手順で作成したファイルを選択します。[Scheduled Date] の値を変更しないでください。既定で 1 週間後の日付に設定されています。SendGrid を構成するまで、このアプリケーションでメッセージを送信することはできません。
 
-   ![Message Create Page][mtas-message-create-page]
+   ![メッセージ作成ページ][mtas-message-create-page]
 	<br/><br/>
-   ![Message Index Page][mtas-message-index-page]
+   ![メッセージのインデックス ページ][mtas-message-index-page]
 
-The data that you have been entering and viewing is being stored in Azure development storage. Development storage uses a SQL Server Express LocalDB database to emulate the way Azure Storage works in the cloud.  The application is using development storage because that is what the project was configured to use when you downloaded it. This setting is stored in *.cscfg* files in the **AzureEmailService** project.  The *ServiceConfiguration.Local.cscfg* file determines what is used when you run the application locally in Visual Studio, and the *ServiceConfiguration.Cloud.cscfg* file determines what is used when you deploy the application to the cloud. Later you'll see how to configure the application to use the Azure Storage account that you created earlier.
-
-
+入力および表示しているデータは Azure 開発ストレージに保存されています。開発ストレージでは、SQL Server Express の LocalDB データベースを使用して、クラウド内での Azure のストレージの機能をエミュレートします。このアプリケーションで開発ストレージが使用されているのは、ダウンロード時にそのストレージを使用するようにプロジェクトを構成したためです。この設定は **AzureEmailService** プロジェクトの *.cscfg* ファイルに保存されています。*ServiceConfiguration.Local.cscfg* ファイルにより、Visual Studio でアプリケーションをローカルで実行するときに使用される設定が決まります。*ServiceConfiguration.Cloud.cscfg* ファイルにより、アプリケーションをクラウドに展開するときに使用される設定が決まります。この後で、前の手順で作成した Azure のストレージ アカウントを使用するようにアプリケーションを構成する方法について説明します。
 
 
 
-<h2><a name="StorageExpVS"></a><span class="short-header">Developer storage</span>Viewing developer storage in Visual Studio</h2>
-
-The **Azure Storage** browser in **Server Explorer** provides a convenient read-only view of Azure Storage resources.
-
-1. From the **View** menu in Visual Studio, choose **Server Explorer**.
-
-2. Expand the **(Development)** node underneath the **Azure Storage** node.
-
-	>[WACOM.NOTE] With the current SDK, expand **Windows Azure** / **Storage** / **(Development)**.
-
-3. Expand **Tables** to see the tables that you created in the previous steps.
-
-	![Server Explorer][mtas-serverExplorer]
-
-3. Double click the **MailingList** table.
-
-   ![VS storage explorer][mtas-wasVSdata]
-
-	Notice how the window shows the different schemas in the table. `MailingList` entities have `Description` and `FromEmailAddress` property, and `Subscriber` entities have the `Verified` property (plus `SubscriberGUID` which isn't shown because the image isn't wide enough). The table has columns for all of the properties, and if a given table row is for an entity that doesn't have a given property, that cell is blank.
-
-You can't use the storage browser in Visual Studio to update or delete Azure Storage resources. You can use [Azure Storage Explorer](http://azurestorageexplorer.codeplex.com/ ) to update or delete development storage resources. (To configure Azure Storage Explorer to use development storage, click the **Developer Storage** check box in the **Add Storage Account** dialog box.)
-
->[WACOM.NOTE] With the latest SDK, you can update development storage in **Server Explorer**. 
 
 
+<h2><a name="StorageExpVS"></a><span class="short-header">開発ストレージ</span>Visual Studio で開発ストレージを表示する</h2>
 
-<h2><a name="conf4azureStorage"></a><span class="short-header">Use your storage account</span>Configure the application to use your Azure Storage account</h2>
+**サーバー エクスプローラー**の **Azure のストレージ** ブラウザーに、Azure のストレージ リソースの使いやすい読み取り専用ビューが表示されます。
 
-Next, you'll see how to configure the application so that it uses your Azure Storage account when it runs in Visual Studio, instead of development storage. There is a newer way to do this in Visual Studio that was introduced in version 1.8 of the SDK, and an older way that involves copying and pasting settings from the Azure management portal. The following steps show the newer way to configure storage account settings.
+1. Visual Studio で **[表示]** メニューの **[サーバー エクスプローラー]** を選択します。
 
-4. In **Solution Explorer**, right-click **MvcWebRole** under **Roles** in the **AzureEmailService** project, and click **Properties**.
+2. **[Azure のストレージ]** ノードの下にある **[(開発)]** ノードを展開します。
 
-	![Right Click Properties][mtas-rt-prop]<br/>
+	>[WACOM.NOTE] 現在の SDK では、**[Microsoft Azure]**、**[ストレージ]**、**[(開発)]** の順に展開 します。
 
-5. Click the **Settings** tab. In the **Service Configuration** drop down box, select **Local**.
+3. **[テーブル]** を展開して、前の手順で作成したテーブルを表示します。
 
-6. Select the **StorageConnectionString** entry, and you'll see an ellipsis (**...**) button at the right end of the line. Click the ellipsis button to open the **Storage Account Connection String** dialog box.
+	![サーバー エクスプローラー][mtas-serverExplorer]
 
-	![Right Click Properties][mtas-elip]<br/>
+3. **[MailingList]** テーブルをダブルクリックします。
 
-7. In the **Create Storage Connection String** dialog, click **Your subscription**, and then click **Download Publish Settings**.
+   ![VS ストレージ エクスプローラー][mtas-wasVSdata]
 
-	>[WACOM.NOTE] With the latest SDK, this dialog enables you to sign in to Azure and simply select the storage account that you want to use. 
+	このウィンドウにテーブル内のさまざまなスキーマがどのように表示されているかに注目します。`MailingList` エンティティには、`Description` および `FromEmailAddress` プロパティがあります。また、`Subscriber` エンティティには、`Verified` プロパティがあります (この画像では見えていませんが `SubscriberGUID` プロパティもあります)。テーブルにはすべてのプロパティに対応する列があります。指定したテーブルの行に対応するエンティティにプロパティがない場合、そのセルは空白になります。
 
-	![Right Click Properties][mtas-enter]<br/>
+Visual Studio のストレージ ブラウザーでは、Azure のストレージ リソースの更新も削除もできません。[Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com/ )では、開発ストレージ リソースの更新も削除もできます (Azure ストレージ エクスプローラーで開発ストレージを使用するように構成するには、**[ストレージ アカウントの追加]** ダイアログ ボックスで **[開発ストレージ]** チェック ボックスをオンにします)。
 
-	Visual Studio launches a new instance of your default browser with the URL for the Azure portal download publish settings page. If you are not logged into the portal, you will be prompted to log in. Once you are logged in, your browser will prompt you to save the publish settings. Make a note of where you save the settings.
-
-   ![publish settings][mtas-3]
-
-1. In the **Create Storage Connection String** dialog, click  **Import**, and then navigate to the publish settings file that you saved in the previous step.
-
-1. Select the subscription and storage account that you wish to use, and then click **OK**.
-
-	![select storage account][mtas-5]
-
-1. Follow the same procedure that you used for the `StorageConnectionString` connection string to set the `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` connection string.
-
-	You don't have to download the publish settings file again. When you click the ellipsis for the `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` connection string, you'll find that the **Create Storage Connection String** dialog box remembers your subscription information. When you click the **Your subscription** radio button, all you have to do is select the same **Subscription** and **Account Name** that you selected earlier, and then click **OK**. 
-
-2. Follow the same procedure that you used for the two connection strings for the MvcWebRole role to set the connection strings for the WorkerRoleA role and the workerRoleB role.
-
-### The manual method for configuring storage account credentials
-
-The following procedure shows what the manual way to configure storage account settings. If you used the automatic method that was shown in the previous procedure, you can skip this procedure, or you can read through it to see what the automatic method did for you behind the scenes.
-
-1. In your browser, open the [Azure Management Portal][NewPortal].
-
-2. Click the **Storage** Tab, then click the test account that you created in the previous step, and then click the **Manage Keys** icon.
-
-   ![Manage Keys][mtas-manage-keys]<br/>
-
-   ![Keys GUID][mtas-guid-keys]<br/>
-
-3. Copy the primary or secondary access key.
+>[WACOM.NOTE] 最新の SDK を使用すると、**サーバー エクスプローラー**で開発ストレージを更新できます。
 
 
-4. In **Solution Explorer**, right-click **MvcWebRole** under **Roles** in the **AzureEmailService** project, and click **Properties**.
 
-   ![Right Click Properties][mtas-rt-prop]<br/>
+<h2><a name="conf4azureStorage"></a><span class="short-header">ストレージ アカウントの使用</span>Azure のストレージ アカウントを使用するようにアプリケーションを構成する</h2>
 
-5. Click the **Settings** tab. In the **Service Configuration** drop down box, select **Local**.
+次のステップでは、Visual Studio での実行時に開発ストレージではなく Azure のストレージ アカウントを使用するようにアプリケーションを構成する方法について説明します。Visual Studio では、そのための新しい方法が SDK のバージョン 1.8 で導入されました。以前の方法では、Azure の管理ポータルから設定をコピーして貼り付けていました。次のステップでは、ストレージ アカウントの設定を構成する新しい方法を示します。
 
-6. Select the **StorageConnectionString** entry, and you'll see an ellipsis (**...**) button at the right end of the line. Click the ellipsis button to open the **Storage Account Connection String** dialog box.
+4. **ソリューション エクスプローラー**で、**AzureEmailService** プロジェクトの **[ロール]** の下にある **MvcWebRole** を右クリックし、**[プロパティ]** をクリックします。
 
-   ![Right Click Properties][mtas-elip]<br/>
+	![[プロパティ] を右クリック][mtas-rt-prop]<br/>
 
-7. In the **Create Storage Connection String** dialog, select the **Manually entered credentials** radio button. Enter the name of your storage account and the primary or secondary access key you copied from the portal. 
+5. **[設定]** タブをクリックします。**[サービス構成]** ボックスの一覧で **[ローカル]** を選択します。
 
-7. Click **OK**.
+6. **StorageConnectionString** エントリを選択すると、行の右端に省略記号 (**...**) ボタンが表示されます。省略記号ボタンをクリックすると、**[ストレージ アカウント接続文字列]** ダイアログ ボックスが開きます。
 
-You can use the same procedure to configure settings for the worker roles, or you can propagate the web role settings to the worker roles by editing the configuration file. The following steps explain how to edit the configuration file. (This is still part of the manual method for setting storage credentials, which you don't have to do if you already propagated the settings to the worker roles by using the automatic method.)
+	![[プロパティ] を右クリック][mtas-elip]<br/>
 
-8. Open the **ServiceConfiguration.Local.cscfg** file that is located in the **AzureEmailService** project.
+7. **[ストレージ接続文字列の作成]** ダイアログで、**[サブスクリプション]** をクリックし、**[発行設定のダウンロード]** をクリックします。
 
-	In the `Role` element for `MvcWebRole` you'll see a `ConfigurationSettings` element that has the settings that you updated by using the Visual Studio UI.
+	>[WACOM.NOTE] 最新の SDK では、この]ダイアログ ボックスから Azure にサインインし、使用するストレージ アカウントを選択することができます。
+
+	![[プロパティ] を右クリック][mtas-enter]<br/>
+
+	Visual Studio によって、既定のブラウザーの新しいインスタンスが起動され、Azure ポータルの発行設定のダウンロード ページの URL が指定されます。ポータルにログインしていない場合は、ログインを求められます。ログインしたら、ブラウザーで発行設定の保存を求められます。設定を保存した場所をメモしておきます。
+
+   ![発行の設定][mtas-3]
+
+1. **[ストレージ接続文字列の作成]** ダイアログで **[インポート]** をクリックし、前の手順で保存した発行設定ファイルに移動します。
+
+1. 使用するサブスクリプションとストレージ アカウントを選択し、**[OK]** をクリックします。
+
+	![ストレージ アカウントの選択][mtas-5]
+
+1. `StorageConnectionString` 接続文字列に使用した同じ手順に従って `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` 接続文字列を設定します。
+
+	発行設定ファイルを再度ダウンロードする必要はありません。`Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` 接続文字列の [...] をクリックすると、**[ストレージ接続文字列の作成]** ダイアログ ボックスでは、サブスクリプション情報が記憶されていることがわかります。**[サブスクリプション]** ラジオ ボタンをクリックすると、前の手順で選択した同じ**サブスクリプション**と**アカウント名**を選択して **[OK]** をクリックするだけで済みます。
+
+2. MvcWebRole ロールの 2 つの接続文字列に使用した同じ手順に従って、WorkerRoleA ロールと WorkerRoleB ロールの接続文字列を設定します。
+
+### ストレージ アカウントの資格情報を手動で構成する方法
+
+次のステップでは、ストレージ アカウントの設定を手動で構成する方法について説明します。前の手順で示した自動による方法を使用した場合は、この手順をスキップしてもかまいません。この手順の説明を読むことで、自動による方法によりバックグラウンドで実行されていた処理を確認することもできます。
+
+1. ブラウザーで、[Azure 管理ポータル][NewPortal]を開きます。
+
+2. **[ストレージ]** タブをクリックしてから、前の手順で作成したテスト アカウントをクリックし、**[キーの管理]** アイコンをクリックします。
+
+   ![キーの管理][mtas-manage-keys]<br/>
+
+   ![GUID キー][mtas-guid-keys]<br/>
+
+3. プライマリまたはセカンダリ アクセス キーをコピーします。
+
+
+4. **ソリューション エクスプローラー**で、**AzureEmailService** プロジェクトの **[ロール]** の下にある **MvcWebRole** を右クリックし、**[プロパティ]** をクリックします。
+
+   ![[プロパティ] を右クリック][mtas-rt-prop]<br/>
+
+5. **[設定]** タブをクリックします。**[サービス構成]** ボックスの一覧で **[ローカル]** を選択します。
+
+6. **StorageConnectionString** エントリを選択すると、行の右端に省略記号 (**...**) ボタンが表示されます。省略記号ボタンをクリックすると、**[ストレージ アカウント接続文字列]** ダイアログ ボックスが開きます。
+
+   ![[プロパティ] を右クリック][mtas-elip]<br/>
+
+7. **[ストレージ接続文字列の作成]** ダイアログ ボックスで、**[手動で入力された資格情報]** ラジオ ボタンを選択します。ストレージ アカウント名と、ポータルからコピーしたプライマリまたはセカンダリ アクセス キーを入力します。
+
+7. **[OK]** をクリックします。
+
+Web ロールの設定に使用した同じ手順を使用してワーカー ロールの設定を構成するか、構成ファイルの編集により Web ロールの設定をワーカー ロールに反映できます。次のステップでは、構成ファイルの編集による方法について説明します (この手順もストレージの資格情報を手動で設定する方法に含まれます。自動による方法を使用してワーカー ロールに設定を既に反映した場合は、この手順を実行する必要はありません)。
+
+8. **AzureEmailService** プロジェクトにある **ServiceConfiguration.Local.cscfg** ファイルを開きます。
+
+	`MvcWebRole` の `Role` 要素の中で、Visual Studio の UI を使用して更新した設定を含む `ConfigurationSettings` 要素が表示されます。
 
 		  <Role name="MvcWebRole">
 		    <Instances count="1" />
@@ -327,59 +327,59 @@ You can use the same procedure to configure settings for the worker roles, or yo
 		    </ConfigurationSettings>
 		  </Role>
 		
-	In the `Role` elements for the two worker roles you'll see the same two connection strings.
+	2 つのワーカー ロールの `Role` 要素には、同じ 2 つの接続文字列が表示されます。
 
-9. Delete the `Setting` elements for these two connection strings from the `WorkerRoleA` and `WorkerRoleB` elements, and then copy and paste in their place the `Setting` elements from the `MvcWebRole` element.
+9. `WorkerRoleA` 要素と `WorkerRoleB` 要素からこれらの 2 つの接続文字列の `Setting` 要素を削除し、`MvcWebRole` 要素から `Setting` 要素をコピーして、削除した要素があった場所に貼り付けます。
 
-For more information on the configuration files, see [Configuring an Azure Project ](http://msdn.microsoft.com/en-us/library/windowsazure/ee405486.aspx)
+構成ファイルの詳細については、「[Azure プロジェクトの構成](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405486.aspx)」を参照してください。
 
-### Test the application configured to use your storage account
+### ストレージ アカウントを使用するように構成されたアプリケーションをテストする
 
-9. Press CTRL+F5 to run the application. Enter some data by clicking the **Mailing Lists**, **Subscribers**, and **Messages** links as you did previously in this tutorial.
+9. Ctrl + F5 キーを押して、アプリケーションを実行します。このチュートリアルの前の手順で行ったように、**[Mailing Lists]**、**[Subscribers]**、**[Messages]** のリンクをクリックして、何らかのデータを入力します。
 
-You can now use either **Azure Storage Explorer** or **Server Explorer** to view the data that the application entered in the Azure tables.
+これで、**Azure ストレージ エクスプローラー**と**サーバー エクスプローラー**のどちらかを使用して、アプリケーションによって Azure のテーブルに入力されたデータを表示できます。
 
-### Use Azure Storage Explorer to view data entered into your storage account
+### ストレージ アカウントに入力されたデータを Azure ストレージ エクスプローラーで表示する
 
-10. Open **Azure Storage Explorer**.
+10. **Azure ストレージ エクスプローラー**を開きます。
 
-11. Select the storage account that you entered credentials for earlier.
+11. 前の手順で入力した資格情報に対応するストレージ アカウントを選択します。
 
-12. Under **Storage Type**, select **Tables**.
+12. **[ストレージの種類]** で **[テーブル]** を選択します。
 
-12. Select the `MailingList` table, and then click **Query** to see the data that you entered on the **Mailing List** and **Subscriber** pages of the application.
+12. `MailingList` テーブルを選択し、**[クエリ]** をクリックすると、アプリケーションの **[Mailing List]** および **[Subscriber]** ページで入力したデータが表示されます。
 
    ![ASE][mtas-ase1]<br/>
 
-### Use Server Explorer to view data entered into your storage account
+### ストレージ アカウントに入力したデータをサーバー エクスプローラーで表示する
 
-11. In **Server Explorer** (or **Database Explorer**), right-click **Azure Storage** and click **Add New Storage Account**.
+11. **サーバー エクスプローラー** (または**データベース エクスプローラー**) で、**[Azure のストレージ]** を右クリックし、**[新しいストレージ アカウントの追加]** をクリックします。
 
-12. Follow the same procedure you used earlier to set up your storage account credentials.
+12. 前に説明した同じ手順に従って、ストレージ アカウントの資格情報を設定します。
 
-13. Expand the new node under **Azure Storage** to view data stored in your Azure storage account.
+13. **[Azure のストレージ]** の下にある新しいノードを展開して、Azure のストレージ アカウントに保存されたデータを表示します。
 
 	![ASE][mtas-se3]<br/>
 
-### Optional steps to disable Azure Storage Emulator automatic startup 
+### Azure ストレージ エミュレーターの自動起動を無効にする (省略可能な手順)
 
-If you are not using the storage emulator, you can decrease project start-up time and use less local resources by disabling automatic startup for the Azure storage emulator.
+ストレージ エミュレーターを使用しない場合は、Azure のストレージ エミュレーターの自動起動を無効にすることで、プロジェクトの起動時間を短縮し、使用するローカル リソースを節約できます。
 
-11. In **Solution Explorer**, right click the **AzureEmailService** cloud project and select **Properties**.
+11. **ソリューション エクスプローラー**で **AzureEmailService** クラウド プロジェクトを右クリックし、**[プロパティ]** をクリックします。
 
-	![Selecting cloud project properties][mtas-aesp]<br/>
+	![クラウド プロジェクトのプロパティの選択][mtas-aesp]<br/>
 
-11. Select the **Development** tab.
+11. **[開発]** タブを選択します。
 
-12. Set **Start Azure storage emulator** to **False**.
+12. **[Azure のストレージ エミュレーターの起動]** を **[False]** に設定します。
 
-	![Disabling the storage emulator automatic startup][mtas-1]<br/>
+	![ストレージ エミュレーターの自動起動の無効化][mtas-1]<br/>
 
-	**Note**: You should only set this to false if you are not using the storage emulator. 
+	**注**: [False] に設定する必要があるのは、ストレージ エミュレーターを使用しない場合のみです。
 
-	This window also provides a way to change the **Service Configuration** file that is used when you run the application locally from **Local** to **Cloud** (from *ServiceConfiguration.Local.cscfg* to *ServiceConfiguration.Cloud.cscfg*).
+	このウィンドウでは、アプリケーションをローカル実行するときに使用される **[サービス構成]** ファイルを **[ローカル]** から **[クラウド]** に (*ServiceConfiguration.Local.cscfg* から *ServiceConfiguration.Cloud.cscfg* に) 変更することもできます。
 
-13. In the Windows system tray, right click on the compute emulator icon and click **Shutdown Storage Emulator**.
+13. Windows システム トレイで、コンピューティング エミュレーターのアイコンを右クリックし、**[ストレージ エミュレーターのシャットダウン]** をクリックします。
 
 	![ASE][mtas-se4]<br/>
 
@@ -387,158 +387,158 @@ If you are not using the storage emulator, you can decrease project start-up tim
 
 
 
-<h2><a name="sendGrid"></a><span class="short-header">SendGrid</span>Configure the application to use SendGrid</h2>
+<h2><a name="sendGrid"></a><span class="short-header">SendGrid</span>SendGrid を使用するようにアプリケーションを構成する</h2>
 
-The sample application uses SendGrid to send emails.  In order to send emails by using SendGrid, you have to set up a SendGrid account, and then you have to update a configuration file with your SendGrid credentials.
+サンプル アプリケーションでは、SendGrid を使用して電子メールを送信します。SendGrid を使用して電子メールを送信するには、SendGrid アカウントを設定し、SendGrid 資格情報で構成ファイルを更新する必要があります。
 
-<div class="note"><p><strong>Note:</strong> If you don't want to use SendGrid, or can't use SendGrid, you can easily substitute your own email service. The code that uses SendGrid is isolated in two methods in worker role B.  [Tutorial 5][tut5] explains what you have to change in order to implement a different method of sending emails. If you want to do that, you can skip this procedure and continue with this tutorial; everything else in the application will work (web pages, email scheduling, etc.) except  for the actual sending of emails.</p></div>
+<div class="note"><p><strong>注:</strong> SendGrid を使用したくない場合や使用できない場合は、任意の電子メール サービスに簡単に置き換えることができます。SendGrid を使用するコードは Worker ロール B の 2 つのメソッド内に分離されています。[Tutorial 5][tut5] で、別の方法を使用して電子メールを送信するために必要な変更点について説明しています。別の方法を使用する場合は、この手順をスキップして、このチュートリアルを続行してもかまいません。電子メールの実際の送信以外、アプリケーションの他のすべての機能 (Web ページ、電子メール スケジューラなど) は動作します。</p></div>
 
-### Create a SendGrid account
+### SendGrid アカウントの作成
  
-1. Follow the instructions in [How to Send Email Using SendGrid with Azure](http://www.windowsazure.com/en-us/develop/net/how-to-guides/sendgrid-email-service/ "SendGrid") to sign up for a free account.
+1. 「[SendGrid を使用した Microsoft Azure での電子メールの送信方法](http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/sendgrid-email-service/ "SendGrid")」の指示に従って、無料アカウントにサインアップします。
 
-### Update SendGrid credentials in worker role properties
+### SendGrid 資格情報でワーカー ロールのプロパティを更新する
  
-Earlier in the tutorial when you set the storage account credentials for the web role and the two worker roles, you may have noticed that worker role B had three settings that were not in the web role or worker role A. You can use that same UI now to configure those three settings (select **Cloud** in the **Service Configuration** drop-down list).
+このチュートリアルの前の手順で、Web ロールと 2 つのワーカー ロールのストレージ アカウントの資格情報を設定するとき、ワーカー ロール B に、Web ロールまたはワーカー ロール A にはない 3 つの設定がありました。同じ UI を使用して (**[サービス構成]** ドロップダウン リストで **[クラウド]** を選択して) これらの 3 つの設定を構成できます。
 
-The following steps show an alternative method for setting the properties, by editing the configuration file.
+次の手順ではその代替方法として、構成ファイルを編集してそれらのプロパティを設定する方法について説明します。
 
-2. Edit the *ServiceConfiguration.Cloud.cscfg* file in the `AzureEmailService` project and enter the SendGrid user name and password values that you obtained in the previous step into the `WorkerRoleB` element that has these settings. The following code shows the WorkerRoleB element.
+2. `AzureEmailService` プロジェクトで *ServiceConfiguration.Cloud.cscfg* ファイルを編集し、前の手順で取得した SendGrid ユーザー名とパスワードの値を、これらの設定がある `WorkerRoleB` 要素に入力します。次のコードは WorkerRoleB 要素のものです。
 
 	![SendGridSettings][mtas-sg]<br/>
 
-3. There is also an AzureMailServiceURL setting. Set this value to the URL that you selected when you created your Azure Cloud Service, for example:  "http://aescloud.cloudapp.net".
+3. AzureMailServiceURL 設定もあります。この値には Azure クラウド サービスの作成時に選択した URL を設定します。たとえば、"http://aescloud.cloudapp.net" を設定します。
 
-By updating the cloud configuration file, you are configuring settings that will be used when the application runs in the cloud. If you wanted the application to send emails while it runs locally, you would also have to update the *ServiceConfiguration.Local.cscfg* file.
-
-
+クラウド構成ファイルを更新することで、アプリケーションがクラウド内で実行されるときに使用される設定を構成することになります。ローカルでの実行中に電子メールを送信するようにアプリケーションを構成する場合は、*ServiceConfiguration.Local.cscfg* ファイルも更新する必要があります。
 
 
-<h2><a name="deployAz"></a><span class="short-header">Deploy to Azure</span>Deploy the Application to Azure</h2>
 
-To deploy the application you can create a package in Visual Studio and upload it by using the Azure Management Portal, or you can publish directly from Visual Studio. In this tutorial you'll use the publish method.
 
-You'll publish the application to the staging environment first, and  later you'll promote the staging deployment to production.
+<h2><a name="deployAz"></a><span class="short-header">Azure へのデプロイ</span>アプリケーションを Azure にデプロイする</h2>
 
-### Implement IP restrictions
+アプリケーションをデプロイするには、Visual Studio でパッケージを作成し、Azure の管理ポータルからアップロードできます。または、Visual Studio から直接発行することもできます。このチュートリアルでは発行による方法を使用します。
 
-When you deploy to staging, the application will be publicly accessible to anyone who knows the URL. Therefore, your first step is to implement IP restrictions to ensure that no unauthorized persons can use it. In a production application you would implement an authentication and authorization mechanism like the ASP.NET membership system, but these functions have been omitted from the sample application to keep it simple to set up, deploy, and test.
+まずアプリケーションをステージング環境に発行し、後で展開をステージングから運用に昇格します。
 
-1. Open the *Web.Release.config* file that is located in the root folder of the `MvcWebRole` project, and replace the **ipAddress** attribute value 127.0.0.1 with your IP address. (To see the **Web.Release.config** file in **Solution Explorer** you have to expand the *Web.config* file.) 
+### IP 制限を実装する
 
-	You can find your IP address by searching for "Find my IP" with  [Bing](http://www.bing.com/search?q=find+my+IP&qs=n&form=QBLH&pq=find+my+ip&sc=8-10&sp=-1&sk= "find my IP") or another search engine. 
+ステージングに展開すると、そのアプリケーションには URL を知っているだれもがパブリックにアクセスできるようになります。したがって、最初の手順は IP 制限を実装して、許可されていない人がそのアプリケーションを使用できないようにすることです。運用アプリケーションでは、ASP.NET メンバーシップ システムのような認証と権限承認のメカニズムを実装します。ただしこれらの機能は、セットアップ、展開、テストがシンプルになるように、サンプル アプリケーションからは省略されています。
 
-	When the application is published, the transformations specified in the *Web.release.config* file are applied, and the IP restriction elements are updated in the *web.config* file that is deployed to the cloud. You can view the transformed *web.config* file in the *AzureEmailService\MvcWebRole\obj\Release\TransformWebConfig\transformed* folder after the package is created.
+1. `MvcWebRole` プロジェクトの root フォルダーにある *Web.Release.config* ファイルを開き、**IPAddress** 属性値 127.0.0.1 を自身の IP アドレスに置き換えます (**ソリューション エクスプローラー**で **Web.Release.config** ファイルを参照するには、*Web.config* ファイルを展開する必要があります)。
 
-### Configure the application to use your storage account when it runs in the cloud
+	[Bing](http://www.bing.com/search?q=find+my+IP&qs=n&form=QBLH&pq=find+my+ip&sc=8-10&sp=-1&sk= "find my IP") やその他の検索エンジンで "Find my IP" を検索することで、自身の IP アドレスを調べることができます。
 
-Earlier in the tutorial when you set the storage account credentials for the web role and the two worker roles, you set the credentials to use when you run the application locally. Now you need to set the storage account credentials to use when you run the application in the cloud.
+	アプリケーションが発行されると、*Web.release.config* ファイルで指定した変換が適用され、クラウド内に展開されている *web.config* ファイルの IP 制限要素が更新されます。変換された *web.config* ファイルは、パッケージの作成後、*AzureEmailService\MvcWebRole\obj\Release\TransformWebConfig\transformed* フォルダーで確認できます。
 
-For this test run you'll use the same credentials for the cloud that you have been using for running locally. If you were deploying a production application, you would typically use a different account for production than you use for testing. Also a best practice for production would be to use a different account for the diagnostics connectionString than the storage connection string, but for this test run you'll use the same account.
+### クラウド内での実行時にストレージ アカウントを使用するようにアプリケーションを構成する
 
-You can use the same UI to configure the connection strings (just make sure that you select **Cloud** in the **Service Configuration** drop-down list). As an alternative, you can edit the configuration file, as explained in the following steps.
+このチュートリアルの前の手順で、Web ロールと 2 つの Worker ロールのストレージ アカウントの資格情報を設定するとき、アプリケーションのローカルでの実行に使用する資格情報を設定しました。次のステップでは、アプリケーションのクラウド内での実行に使用するストレージ アカウントの資格情報を設定する必要があります。
 
-1. Open the *ServiceConfiguration.Local.cscfg* file in the **AzureEmailService** project, and copy the `Setting` elements for `StorageConnectionString` and `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`.  
+このテストの実行には、ローカルでの実行に使用しているクラウド用の同じ資格情報を使用します。運用アプリケーションを展開する場合は通常、テストに使用するものとは別のアカウントを運用に使用することになります。また、運用に関するベスト プラクティスは、診断 connectionString にストレージ接続文字列とは別のアカウントを使用することです。ただしこのテストの実行では、同じアカウントを使用します。
 
-2. Open the *ServiceConfiguration.Cloud.cscfg* file in the **AzureEmailService** project, and paste the copied elements into the `Configuration Settings` element for `MvcWebRole`, `WorkerRoleA`, and `WorkerRoleB`, replacing the `Setting` elements that are already there.
+同じ UI を使用して (**[サービス構成]** ドロップダウン リストで **[クラウド]** を選択して) 接続文字列を構成できます。次のステップではその代替方法として、構成ファイルを編集してそれらの接続文字列を構成する方法について説明します。
 
-2. Verify that the web role and two worker role elements all define the same connection strings.
+1. **AzureEmailService** プロジェクトで *ServiceConfiguration.Local.cscfg* ファイルを開き、`StorageConnectionString` と `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` の `Setting` 要素をコピーします。
 
-### Publish the application
+2. **AzureEmailService** プロジェクトで *ServiceConfiguration.Cloud.cscfg* ファイルを開き、コピーした要素を `MvcWebRole`、`WorkerRoleA`、`WorkerRoleB` の `Configuration Settings` 要素に貼り付けて、既存の `Setting` 要素を置き換えます。
 
-2. If it is not already open, launch Visual Studio as administrator and open the **AzureEmailService** solution.
+2. Web ロールと 2 つのワーカー ロール要素がすべて同じ接続文字列を定義していることを確認します。
 
-3.	Right-click the **AzureEmailService** cloud project and select **Publish**.
+### アプリケーションを発行する
 
-	![Package][mtas-6]
+2. Visual Studio をまだ開いていない場合は、管理者として起動し、**AzureEmailService** ソリューションを開きます。
 
-	The **Publish Azure Application** dialog appears. 
+3.	**AzureEmailService** クラウド プロジェクトを右クリックし、**[発行]** を選択します。
 
-	![Cloud Package][mtas-16]
+	![パッケージ][mtas-6]
 
-4. If you used the automatic method for importing storage account credentials earlier, your Azure subscription is in the drop-down list and you can select it and then click **Next**. Otherwise, click **Sign in to download credentials** and follow the instructions in [Configure the application for Azure Storage][] to download and import your publish settings.
+	**[Azure アプリケーションの発行]** ダイアログ ボックスが表示されます。
 
-1. In the **Common Settings** tab, verify the setting in the **Cloud Service** drop-down list.
+	![クラウド パッケージ][mtas-16]
 
-2. In the **Environment** drop-down list, change **Production** to **Staging**.
+4. 前の手順でストレージ アカウントの資格情報のインポートに自動による方法を使用した場合は、Azure サブスクリプションがドロップダウン リストにあります。そのサブスクリプションを選択し、**[次へ]** をクリックすることができます。それ以外の場合は、**[サインインして資格情報をダウンロードする]** をクリックし、「[Azure のストレージ用にアプリケーションを構成する][Azure ストレージを使用するためにアプリケーションを構成する]」の指示に従って、発行設定をダウンロードしてインポートします。
 
-	![Dashboard][mtas-7]
+1. **[共通設定]** タブで、**[クラウド サービス]** ボックスの一覧の設定を確認します。
 
-3. Keep the default **Release** setting for **Build configuration** and **Cloud** for **Service configuration**.
+2. **[環境]** ボックスの一覧の **[運用]** を **[ステージング]** に変更します。
 
-	The default settings in the **Advanced** tab are fine for this tutorial. On the **Advanced** tab are a couple of settings that are useful for development and testing. For more information on the advanced tab, see [Publish Azure Application Wizard](http://msdn.microsoft.com/library/windowsazure/hh535756.aspx "pub wiz").
+	![ダッシュボード][mtas-7]
+
+3. **[ビルド構成]** には既定の **[リリース]** 設定を、**[サービス構成]** には **[クラウド]** をそのまま使用します。
+
+	**[詳細設定]** タブの既定の設定はこのチュートリアルではそのまま使用します。**[詳細設定]** タブには開発やテストに便利な設定がいくつかあります。[詳細設定] タブの詳細については、「[Microsoft Azure アプリケーションの発行ウィザード](http://msdn.microsoft.com/library/windowsazure/hh535756.aspx "pub wiz")」を参照してください。
    
-1. Click **Next**.
+1. **[次へ]** をクリックします。
 
-1. In the **Summary** step of the wizard, click the **save** icon (the diskette icon shown to the right of the Target profile drop-down list) to save the publish settings. 
+1. ウィザードの **[概要]** 手順で、**[保存]** アイコン ([ターゲット プロファイル] ドロップダウン リストの右側に表示されているフロッピー ディスクのアイコン) をクリックして、発行設定を保存します。
 
-	The next time you publish the application, the saved settings will be used and you won't need to go through the publish wizard again. 
+	次回にアプリケーションを発行するときは、保存した設定が使用されるため、発行ウィザードの一連の手順を再度実行する必要はありません。
 
-1. Review the settings, then click **Publish**.
+1. 設定を確認し、**[発行]** をクリックします。
 
-	![pub][mtas-8]
+	![発行][mtas-8]
 
-   The **Azure Activity Log** window is opened in Visual Studio. 
+   **[Azure のアクティビティ ログ]** ウィンドウが Visual Studio で開きます。
 
-2. Click the right arrow icon to expand the deployment details.
+2. 右矢印のアイコンをクリックしてデプロイの詳細を展開します。
 
-	![pub][mtas-11]
+	![発行][mtas-11]
 	<br/><br/>
-	![pub][mtas-9]
+	![発行][mtas-9]
 
-	The deployment can take about 5 minutes or more to complete.
+	展開は完了までに 5 分程度かかる場合があります。
 
-1. When the deployment status is complete, click the **Website URL** to launch the application.
+1. デプロイが完了したら、**Web サイトの URL** をクリックしてアプリケーションを起動します。
 
-	![Dashboard][mtas-c55]
+	![ダッシュボード][mtas-c55]
 
-9. Enter some data in the **Mailing List**, **Subscriber**, and **Message** web pages to test the application.
+9. **[Mailing List]**、**[Subscriber]**、**[Message]** の Web ページで何かデータを入力して、アプリケーションをテストします。
 
-	**Note**: Delete the application after you have finished testing it to avoid paying for resources that you aren't using. If you are using a [Azure free trial account](http://www.windowsazure.com/en-us/pricing/free-trial/ "free-trial account"), the three deployed roles will use up your monthly limit in a couple of weeks. 	To delete a deployment by using the Azure management portal, select the cloud service and click **DELETE** at the bottom of the page, and then select the production or staging deployment.
+	**注**: アプリケーションはテストの終了後に削除して、使用していないリソースに対して課金されないようにしてください。[Azure の無料評価版のアカウント](http://www.windowsazure.com/ja-jp/pricing/free-trial/ "free-trial account")を使用している場合、3 つのデプロイされたロールは数週間で月間の上限に達します。	Azure 管理ポータルを使用してデプロイを削除するには、クラウド サービスを選択し、ページの下部にある **[削除]** をクリックしてから、運用またはステージングのデプロイを選択します。
 
-	![pub][mtas-19]
+	![発行][mtas-19]
 
-1. In the Azure Activity Log in Visual studio, select **Open in Server Explorer**.
+1. Visual Studio の [Azure のアクティビティ ログ] で、**[サーバー エクスプローラーで開く]** を選択します。
 
-	Under **Azure Compute** in **Server Explorer** you can monitor the deployment. If you selected **Enable Remote Desktop for all roles** in the **Publish Azure Application** wizard, you can right click on a role instance and select **Connect using Remote Desktop**. 
+	**サーバー エクスプローラー**の **[Azure コンピューティング]** でデプロイを監視できます。**Azure アプリケーションの発行**ウィザードで **[すべてのロールのリモート デスクトップを有効にする]** を選択した場合は、ロール インスタンスを右クリックし、**[リモート デスクトップを使用して接続]** を選択できます。
 
-	![pub][mtas-12]
-
-
-<h2><a name="swap"></a><span class="short-header">Production</span>Promote the Application from Staging to Production</h2>
-
-1. In the [Azure Management Portal][NewPortal], click the **Cloud Services** icon in the left pane, and then select your cloud service.
-
-2. Click  **Swap**.
-
-2. Click **Yes** to complete the VIP (virtual IP) swap. This step can take several minutes to complete.
-
-	![Dashboard][mtas-c6]
-
-3. When the swap has completed, click the **Cloud Services** icon in the left pane, and then select  your cloud service.
-
-4. Scroll down the **Dashboard** tab for the **Production** deployment to the **quick glance** section on the lower right part of the page. Notice that the **Site URL** has changed from a GUID prefix to the name of your cloud service. 
-
-	![Dashboard][mtas-c7]
-
-5. Click the link under **Site URL** or copy and paste it to a browser to test the application in production. 
-
-	If you haven't changed the storage account settings, the data you entered while testing the staged version of the application is shown when you run the application in the cloud.
+	![発行][mtas-12]
 
 
+<h2><a name="swap"></a><span class="short-header">運用</span>ステージング環境から運用環境にアプリケーションを昇格する</h2>
+
+1. [Azure 管理ポータル][NewPortal]の左側のウィンドウで **[クラウド サービス]** アイコンをクリックし、目的のクラウド サービスを選択します。
+
+2. **[スワップ]** をクリックします。
+
+2. **[はい]** をクリックして VIP (仮想 IP) スワップを完了します。この手順は完了までに数分かかる場合があります。
+
+	![ダッシュボード][mtas-c6]
+
+3. スワップが完了した時点で、左側のウィンドウで **[クラウド サービス]** アイコンをクリックし、目的のクラウド サービスを選択します。
+
+4. **[運用]** デプロイの **[ダッシュボード]** タブで、ページの右下部分にある **[概要]** セクションまで下にスクロールします。**[サイトの URL]** で GUID プレフィックスからクラウド サービスの名前に変更されていることに注目してください。
+
+	![ダッシュボード][mtas-c7]
+
+5. **[サイトの URL]** の下に表示されているリンクをクリックするか、ブラウザーにコピーして貼り付けて、運用環境でアプリケーションをテストします。
+
+	ストレージ アカウントの設定を変更しなかった場合、クラウド内でアプリケーションを実行すると、アプリケーションのステージング バージョンのテスト中に入力したデータが表示されます。
 
 
-<h2><a name="trace"></a><span class="short-header">Tracing</span>Configure and View Tracing Data</h2>
 
-Tracing is an invaluable tool for debugging a cloud application. In this section of the tutorial you'll see how to view tracing data.
 
-1. Verify that the diagnostics connection string is configured to use your Azure Storage account and not development storage. 
+<h2><a name="trace"></a><span class="short-header">トレース</span>トレース データを構成および表示する</h2>
 
-	If you followed the instructions earlier in the tutorial, they will be the same. You can verify that they are the same either using the Visual Studio UI (the **Settings** tab in **Properties** for the roles), or by looking at the *ServiceConfiguration.\*.cscfg* files.
+トレースはクラウド アプリケーションのデバッグに便利なツールです。チュートリアルのこのセクションでは、トレース データの表示方法について説明します。
+
+1. 開発ストレージではなく Azure ストレージ アカウントを使用するように診断接続文字列が構成されていることを確認します。
+
+	このチュートリアルでの前の手順に従うと、ストレージ アカウントは同一になります。Visual Studio の UI (ロールの **[プロパティ]** の **[設定]** タブ) を使用するか、*ServiceConfiguration.\*.cscfg* を参照すると、ストレージ アカウントが同一になっていることを確認できます。
  
-   **Note:** A best practice is to use a different storage account for tracing data than the storage account used for production data, but for simplicity in this tutorial you have been configuring the same account for tracing.
+   **注:** ベスト プラクティスは、運用データに使用されるストレージ アカウントとは別のストレージ アカウントをデータのトレースに使用することです。ただしこのチュートリアルでは、シンプルになるように、トレースに同じアカウントを構成しています。
 
-1. In Visual Studio, open *WorkerRoleA.cs* in the **WorkerRoleA** project, search for `ConfigureDiagnostics`, and examine the `ConfigureDiagnostics` method. 
+1. Visual Studio で、**WorkerRoleA** プロジェクトの *WorkerRoleA.cs* を開き、`ConfigureDiagnostics` を検索して、`ConfigureDiagnostics` メソッドを調べます。
 
         private void ConfigureDiagnostics()
         {
@@ -553,88 +553,88 @@ Tracing is an invaluable tool for debugging a cloud application. In this section
                 config);
         }
 
-	In this code, the `DiagnosticMonitor` is configured to store up to 500 MB of trace information (after 500 MB, the oldest data is overwritten) and to store all trace messages (LogLevel.Verbose). The `ScheduledTransferPeriod` transfers the trace data to storage every minute. You must set the `ScheduledTransferPeriod` to save trace data. 
+	このコードで、`DiagnosticMonitor` は、トレース情報を 500 MB まで保存するように構成されています (500 MB を超えた後は、最も古いデータから上書きされます)。また、すべてのトレース メッセージを保存するように構成されています (LogLevel.Verbose)。`ScheduledTransferPeriod` は、トレース データを 1 分単位でストレージに転送するように構成されています。トレース データを保存するには、`ScheduledTransferPeriod` を設定する必要があります。
 
-	The `ConfigureDiagnostics` method in each of the worker and web roles configures the trace listener to record data when you call the Trace API. For more information, see [Using Trace in Windows Azure Cloud Applications](http://blogs.msdn.com/b/windowsazure/archive/2012/10/24/using-trace-in-windows-azure-cloud-applications-1.aspx "Using Trace in Windows Azure")
+	ワーカー ロールと Web ロールのそれぞれの `ConfigureDiagnostics` メソッドで、Trace API の呼び出し時にデータを記録するようにトレース リスナーを構成します。詳細については、[Microsoft Azure クラウド アプリケーションでのトレースの使用に関するページ](http://blogs.msdn.com/b/windowsazure/archive/2012/10/24/using-trace-in-windows-azure-cloud-applications-1.aspx "Using Trace in Windows Azure")を参照してください。
 
-1. In **Server Explorer**, double-click **WADLogsTable** (expand **Storage** / **yourstorageaccountname** / **Tables**) for the storage account that you added previously. You can enter a [WCF Data Services filter](http://msdn.microsoft.com/en-us/library/windowsazure/ff683669.aspx "WCF filter") to limit the entities displayed. In the following image, only warning and error messages are displayed.
+1. **サーバー エクスプローラー**で、前に追加したストレージ アカウントに対応する **WADLogsTable** (**[ストレージ]** / **yourstorageaccountname** / **[テーブル]** を展開) をダブルクリックします。[WCF Data Services フィルター](http://msdn.microsoft.com/ja-jp/library/windowsazure/ff683669.aspx "WCF filter")を入力して、表示されるエンティティを制限できます。次の画像では、警告およびエラー メッセージのみ表示されています。
 
-	![Dashboard][mtas-trc]
-
-
+	![ダッシュボード][mtas-trc]
 
 
 
-<h2><a name="addRole"></a><span class="short-header">Add a Role Instance</span>Add another worker role instance to handle increased load</h2>
 
-There are two approaches to scaling compute resources in Azure roles, by specifying the [virtual machine size](http://msdn.microsoft.com/en-us/library/windowsazure/ee814754.aspx "VM sizes") and/or by specifying the instance count of running virtual machines. 
 
-The virtual machine (VM) size is specified in the `vmsize` attribute of the `WebRole` or `WorkerRole` element in the *ServiceDefinition.csdef* file. The default setting is `Small` which provides you with one core and 1.75 GB of RAM. For applications that are multi-threaded and use lots of memory, disk, and bandwidth, you can increase the VM size for increased performance. For example, an `ExtraLarge` VM has 8 CPU cores and 14 GB of RAM. Increasing memory, cpu cores, disk, and bandwidth on a single machine is known as *scale up*. Good candidates for scale up include ASP.NET web applications that use [asynchronous methods](http://www.asp.net/mvc/tutorials/mvc-4/using-asynchronous-methods-in-aspnet-mvc-4 "Async MVC"). See [Virtual Machine Sizes](http://msdn.microsoft.com/en-us/library/windowsazure/ee814754.aspx "VM sizes") for a description of the resources provided by each VM size.
+<h2><a name="addRole"></a><span class="short-header">ロール インスタンスの追加</span>増加した負荷の処理用に別のワーカー ロール インスタンスを追加する</h2>
 
-Worker role B in this application is the limiting component under high load because it does the work of sending emails. (Worker role A just creates queue messages, which is not resource-intensive.) Because worker role B is not multi-threaded and does not have a large memory footprint, it's not a good candidate for scale up. Worker role B can scale linearly (that is, nearly double performance when you double the instances) by increasing the instance count. Increasing the number of compute instances is known as *scale out*. There is a cost for each instance, so you should only scale out when your application requires it. 
+Azure ロール内のコンピューティング リソースのスケーリングには 2 つの方法があります。[仮想マシンのサイズを指定する](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee814754.aspx "VM sizes")ことと、実行中の仮想マシンのインスタンス数を指定することです。
 
-You can scale out a web or worker role by updating the setting in the Visual Studio UI or by editing the *ServiceConfiguration.\*.cscfg* files directly. The instance count is specified in the **Configuration** tab of the role **Properties** window and in the `Instances` element in the *.cscfg* files. When you update the setting, you have to deploy the updated configuration file to make the change take effect. Alternatively, for transient increases in load, you can change the number of role instances in the Azure Management Portal. You can also configure the number of instances using the Azure Management API. Finally, you can use the [Autoscaling Application Block][autoscalingappblock] to automatically scale out to meet increased load. For more information on autoscaling, see the links at the end of [the last tutorial in this series][tut5].
+仮想マシン (VM) のサイズは、*ServiceDefinition.csdef* ファイル内の `WebRole` または `WorkerRole` 要素の `vmsize` 属性で指定します。既定の設定は `[小]` で、1 コアと 1.75 GB RAM の VM が提供されます。マルチスレッドのアプリケーションや、大量のメモリ、ディスク、帯域幅を使用するアプリケーションでは、パフォーマンスの向上のために VM のサイズを増やすことができます。たとえば `[特大]` では、8 CPU コアと 14 GB RAM の VM が提供されます。1 つのマシン上のメモリ、CPU コア、ディスク、帯域幅を増やすことは、*スケール アップ*として知られています。スケール アップの良い候補は、[非同期メソッド](http://www.asp.net/mvc/tutorials/mvc-4/using-asynchronous-methods-in-aspnet-mvc-4 "Async MVC")を使用する ASP.NET Web アプリケーションなどです。VM のサイズ別に提供されるリソースの説明については、「[クラウド サービスのサイズを構成する](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee814754.aspx "VM sizes")」を参照してください。
 
-In this section of the tutorial you'll scale out worker role B by using the management portal, but first you'll see how it's done in Visual Studio.
+このアプリケーションの Worker ロール B は、電子メールの送信処理を行うため高負荷下にある限定コンポーネントです (ワーカー ロール A は、リソースを集中的に使用しないキュー メッセージの作成処理のみ行います)。ワーカー ロール B はマルチスレッドではなく、メモリ フットプリントも大きくないため、スケール アップの良い候補ではありません。ワーカー ロール B は、インスタンス数を増やすことで直線的にスケーリングできます (インスタンス数を 2 倍にすると、パフォーマンスもほぼ 2 倍になります)。コンピューティング インスタンスの数を増やすことは、*スケール アウト*として知られています。各インスタンスにはコストがあるため、スケール アウトはアプリケーションに必要なときのみ行う必要があります。
 
-To do it in Visual Studio, you would right-click the role under **Roles** in the cloud project and select **Properties**.
+Visual Studio の UI で設定を更新するか、*ServiceConfiguration.\*.cscfg* ファイルを直接編集することで、Web ロールまたは Worker ロールをスケール アウトできます。インスタンス数はロールの**プロパティ** ウィンドウの **[構成]** タブ、および *.cscfg* ファイルの `Instances` 要素で指定します。設定を更新するときは、更新した構成ファイルをデプロイして、変更を有効にする必要があります。または、負荷の増加が一時的な場合は、Azure 管理ポータルでロール インスタンスの数を変更できます。Azure 管理 API を使用してインスタンスの数を構成することもできます。最後に、[オートスケーリング アプリケーション ブロック][autoscalingappblock]を使用して、負荷の増加に合わせて自動的にスケール アウトされるようにもできます。オートスケーリングの詳細については、[このシリーズの最終チュートリアル][tut5]の末尾で紹介されている関連情報を参照してください。
 
-   ![Right Click Properties][mtas-rt-prop]
+チュートリアルのこのセクションでは、管理ポータルを使用してワーカー ロール B をスケール アウトする方法について説明しますが、その前に Visual Studio でスケール アウトする方法を紹介します。
+
+Visual Studio でスケール アウトを行うには、クラウド プロジェクトの **[ロール]** の下にある目的のロールを右クリックし、**[プロパティ]** を選択します。
+
+   ![[プロパティ] を右クリック][mtas-rt-prop]
  
-You would then select the **Configuration** tab on the left, and select **Cloud** in the **Service Configuration** drop down. 
+その後、左側の **[構成]** タブを選択し、**[サービス構成]** ボックスの一覧の **[クラウド]** を選択します。
 
-  ![Instance Count][mtas-instanceCnt]
+  ![インスタンス数][mtas-instanceCnt]
 
-Notice that you can also configure the VM size in this tab.
+このタブで VM のサイズも構成できることに注目してください。
 
-The following steps explain how to scale out by using the Azure Management Portal.
+次のステップでは、Azure 管理ポータルを使用してスケール アウトする方法について説明します。
 
-1. In the Azure Management Portal, select your cloud service, then click **Scale**.
+1. Azure 管理ポータルで、目的のクラウド サービスを選択し、**[スケール]** をクリックします。
 
-1. Increase the number of instances for worker role B, and then click **Save**.
+1. ワーカー ロール B のインスタンスの数を増やし、**[保存]** をクリックします。
 
-	![increase instances][mtas-in3]
+	![インスタンス数の増加][mtas-in3]
 
-	It can take a few minutes for the new VMs to be provisioned.
+	新しい VM がプロビジョニングされるまで数分かかる場合があります。
 
-1. Select the **Instances** tab to see your each role instance in your application.
+1. **[インスタンス]** タブを選択して、アプリケーションの各ロール インスタンスを表示します。
 
-	![view instances][mtas-in2]
-
-
-
-
-<h2><a name="nextsteps"></a><span class="short-header">Next steps</span>Next steps</h2>
-
-You have now seen how to configure, deploy, and scale the completed application. The following tutorials show how to build the application from scratch. In the [next tutorial][tut3] you'll build the web role.
-
-For links to additional resources for working with Azure Storage tables, queues, and blobs, see the end of [the last tutorial in this series][tut5].
+	![インスタンスの表示][mtas-in2]
 
 
 
-<div><a href="/en-us/develop/net/tutorials/multi-tier-web-site/3-web-role/" class="site-arrowboxcta download-cta">Tutorial 3</a></div>
 
-[Set up the development environment]: #setupdevenv
-[Set up a free Azure account]: #setupwindowsazure
-[Create an Azure Storage account]: #createWASA
-[Install Azure Storage Explorer]: #installASE
-[Create a Cloud Service]: #createcloudsvc
-[Download and run the completed solution]: #downloadcnfg
-[View developer storage in Visual Studio]: #StorageExpVS
-[Configure the application for Azure Storage]: #conf4azureStorage
-[Deploy the application to Azure]: #deployAz
-[Promote the application from staging to production]: #swap
-[Configure the application to use SendGrid]: #sendGrid
-[Configure and view trace data]: #trace
-[Add another worker role instance to handle increased load]: #addRole
+<h2><a name="nextsteps"></a><span class="short-header">次のステップ</span>次のステップ</h2>
 
-[firsttutorial]: /en-us/develop/net/tutorials/multi-tier-web-site/1-overview/
+ここまで、完成したアプリケーションの構成、展開、スケーリング方法を見てきました。この後の一連のチュートリアルでは、アプリケーションを新しくビルドする方法について説明します。[次のチュートリアル][tut3]では、Web ロールを作成します。
 
-[tut3]: /en-us/develop/net/tutorials/multi-tier-web-site/3-web-role/
-[tut5]: /en-us/develop/net/tutorials/multi-tier-web-site/5-worker-role-b/
+Azure のストレージのテーブル、キュー、BLOB に関する参考情報は、[このシリーズの最終チュートリアル][tut5]の末尾に記載されています。
+
+
+
+<div><a href="/ja-jp/develop/net/tutorials/multi-tier-web-site/3-web-role/" class="site-arrowboxcta download-cta">チュートリアル 3</a></div>
+
+[開発環境を設定する]: #setupdevenv
+[無料 Azure アカウントを設定する]: #setupwindowsazure
+[Azure のストレージ アカウントの作成]: #createWASA
+[Azure ストレージ エクスプローラーをインストールする]: #installASE
+[クラウド サービスを作成する]: #createcloudsvc
+[完成したソリューションをダウンロードして実行する]: #downloadcnfg
+[Visual Studio で開発ストレージを表示する]: #StorageExpVS
+[Azure ストレージを使用するためにアプリケーションを構成する]: #conf4azureStorage
+[Azure にアプリケーションを展開する]: #deployAz
+[ステージング環境から運用環境にアプリケーションを昇格する]: #swap
+[SendGrid を使用するようにアプリケーションを構成する]: #sendGrid
+[トレース データを構成および表示する]: #trace
+[増加した負荷の処理用に別のワーカー ロール インスタンスを追加する]: #addRole
+
+[firsttutorial]: /ja-jp/develop/net/tutorials/multi-tier-web-site/1-overview/
+
+[tut3]: /ja-jp/develop/net/tutorials/multi-tier-web-site/3-web-role/
+[tut5]: /ja-jp/develop/net/tutorials/multi-tier-web-site/5-worker-role-b/
 [NewPortal]: http://manage.windowsazure.com
-[managestorage]: /en-us/manage/services/storage/how-to-manage-a-storage-account/
-[autoscalingappblock]: /en-us/develop/net/how-to-guides/autoscaling/
+[managestorage]: /ja-jp/manage/services/storage/how-to-manage-a-storage-account/
+[autoscalingappblock]: /ja-jp/develop/net/how-to-guides/autoscaling/
 
 
 [mtas-portal-new-storage]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-portal-new-storage.png
@@ -695,6 +695,7 @@ For links to additional resources for working with Azure Storage tables, queues,
 [mtas-c55]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-c55.png
 
 [mtas-19]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-19.png
+
 
 
 

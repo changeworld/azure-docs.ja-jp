@@ -1,463 +1,464 @@
-<properties linkid="configure-hyper-v-recovery-vault" urlDisplayName="configure-hyper-v-recovery-vault" pageTitle="Configure Hyper-V Recovery Manager to protect virtual machines in VMM clouds" metaKeywords="hyper-v recovery, VMM, clouds, disaster recovery" description="Azure Hyper-V Recovery Manager can help you protect applications and services by coordinating the replication and recovery of virtual machines located in System Center 2012 VMM private clouds." metaCanonical="" umbracoNaviHide="0" disqusComments="1" title="Configure Azure Hyper-V Recovery Manager" editor="jimbe" manager="cfreeman" authors="" />
+<properties linkid="configure-hyper-v-recovery-vault" urlDisplayName="configure-hyper-v-recovery-vault" pageTitle="VMM クラウド内で仮想マシンを保護するための Hyper-V 回復マネージャーの構成" metaKeywords="hyper-v recovery, VMM, クラウド, 障害復旧" description="Azure の Hyper-V 回復マネージャーを使用して、System Center 2012 の VMM プライベート クラウド内に配置されている仮想マシンのレプリケーションと回復を調整することで、アプリケーションとサービスを保護することができます。" metaCanonical="" umbracoNaviHide="0" disqusComments="1" title="Azure の Hyper-V 回復マネージャーの構成" writer="raynew" editor="jimbe" manager="cfreeman" />
 
 
-# Configure Azure Hyper-V Recovery Manager
+# Azure の Hyper-V 回復マネージャーの構成
 
 
 
 <div class="dev-callout"> 
 
-<P>Azure Hyper-V Recovery Manager coordinates and manages the protection of Hyper-V virtual machines located in private clouds on Virtual Machine Manager (VMM) servers in System Center 2012 Service Pack 1 (SP1), or System Center 2012 R2. Hyper-V Recovery Manager orchestrates failover of these virtual machines from one on-premise Hyper-V host server to another. Hyper-V Recovery Manager vaults in Azure are used to store your protection configuration.</P>
+<P>Azure の Hyper-V 回復マネージャーは、System Center 2012 Service Pack 1 (SP1) または System Center 2012 R2 の Virtual Machine Manager (VMM) サーバーのプライベート クラウドに配置された Hyper-V 仮想マシンの保護の調整および管理を行います。Hyper-V 回復マネージャーは、ある内部設置型 Hyper-V ホスト サーバーから、他のホスト サーバーへの仮想マシンのフェールオーバーを調整します。Azure 内にある Hyper-V 回復マネージャー コンテナーを使用して、保護された構成を格納します。</P>
 
-<h2><a id="about"></a>About this tutorial</h2>
-<P>This tutorial provides a quick walkthrough for Hyper-V Recovery Manager deployment. For more detailed information read the following:</P>
+<h2><a id="about"></a>このチュートリアルについて</h2>
+<P>このチュートリアルでは、Hyper-V 回復マネージャーの展開について簡潔に説明します。詳細については、次のトピックを参照してください。</P>
 <UL>
-<LI><a href="http://go.microsoft.com/fwlink/?LinkId=321294">Planning Guide for Hyper-V Recovery Manager</a>—Provides detailed information about the planning steps you should complete before a starting a full deployment.</LI>
-<LI><a href="http://go.microsoft.com/fwlink/?LinkId=321295">Deployment Guide for Hyper-V Recovery Manager</a>—Provides step-by-step instructions for a full deployment.</LI>
-<LI>If you run into problems during this tutorial, take a look at <a href="http://go.microsoft.com/fwlink/?LinkId=389879">Hyper-V Recovery Manager: Common Error Scenarios and Resolutions</a> or post your questions on the <a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services Forum</a></LI>
+<LI><a href="http://go.microsoft.com/fwlink/?LinkId=321294">Hyper-V 回復マネージャーのプランニング ガイド</a> - 完全な展開を開始する前に完了する必要のあるプランニングのステップの詳細情報を示します。</LI>
+<LI><a href="http://go.microsoft.com/fwlink/?LinkId=321295">Hyper-V 回復マネージャーの展開ガイド</a> - 完全な展開を行うための手順を説明しています。</LI>
+<LI>このチュートリアルを使用している場合に問題が発生した場合は、<a href="http://go.microsoft.com/fwlink/?LinkId=389879">Hyper-V 回復マネージャーのエラーの一般的なシナリオと解決策に関するページ</a>を参照するか、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services Forum</a></LI> に質問を投稿してください。
 </UL>
 </div>
 
 
-<h2><a id="before"></a>Before you begin</h2> 
+<h2><a id="before"></a>開始する前に</h2>
 <div class="dev-callout"> 
-<P>Before you start this tutorial verify the prerequisites.</P>
+<P>このチュートリアルを開始する前に、前提条件を確認してください。</P>
 
-<h3><a id="HVRMPrereq"></a>Hyper-V Recovery Manager prerequisites</h3>
+<h3><a id="HVRMPrereq"></a>Hyper-V 回復マネージャーの前提条件</h3>
 
 <UL>
-<LI>**Azure account**—You'll need an Azure account with the Azure Recovery Services feature enabled. If you don't have an account or the feature isn't registered, see the <a href="http://aka.ms/try-azure">Azure free trial</a> and <a href="http://go.microsoft.com/fwlink/?LinkId=378268">Hyper-V Recovery Manager Pricing Details</a>.</LI>
-<LI>**Certificate (.cer)**—To register VMM servers in a Hyper-V Recovery Manager vault you'll need to upload a management certificate (.cer) containing the public key to the vault. Note the following:<UL>
-	<LI>For tutorial purposes you can use a self-signed certificate that you create using the Makecert.exe tool. For a full deployment you can use any valid SSL certificate that complies with the certificate prerequisites described in <a href=" http://go.microsoft.com/fwlink/?LinkId=386485">Prerequisites and Support</a> in the Planning Guide.</LI>
-	<LI>Each vault has only a single .cer certificate associated with it at any time. You can upload a new certificate to overwrite an existing one as required.</LI>
+<LI>**Azure アカウント** - Azure 復旧サービスの機能を有効にした Azure アカウントが必要です。アカウントがない場合や、機能が登録されていない場合は、<a href="http://aka.ms/try-azure">Azure の無料評価版に関するページ</a>と「<a href="http://go.microsoft.com/fwlink/?LinkId=378268">Hyper-V 回復マネージャーの料金の詳細</a>」を参照してください。</LI>
+<LI>**証明書 (.cer)** - VMM サーバーを Hyper-V 回復マネージャー コンテナーに登録するには、公開キーを含む管理証明書 (.cer) をコンテナーにアップロードする必要があります。以下の点に注意してください。<UL>
+	<LI>チュートリアルの目的で、Makecert.exe ツールを使用して作成した自己署名証明書を使用することもできます。完全な展開を実行する場合は、プランニング ガイドの「<a href=" http://go.microsoft.com/fwlink/?LinkId=386485">前提条件とサポート</a>」で説明されている証明書の前提条件に従っている、任意の有効な SSL 証明書を使用できます。</LI>
+	<LI>各コンテナーには、常に単一の .cer 証明書が関連付けられています。必要に応じて、新しい証明書をアップロードし、既存の証明書を上書きすることもできます。</LI>
 </UL></LI>
-<LI>**Certificate (.pfx file)**—The .cer certificate must be exported as a .pfx file (containing the private key) You import this file on each VMM server that contains virtual machines you want to protect. Then during deployment, when you install the Hyper-V Recovery Manager Provider agent on each VMM server, you select the .pfx file in order to register the VMM server with the vault.</LI>
+<LI>**証明書 (.pfx ファイル)** - .cer 証明書は、(秘密キーを含む) .pfx ファイルとしてエクスポートされていることが必要です。保護する仮想マシンを含む各 VMM サーバーに、このファイルをインポートします。次に、展開を実行して各 VMM サーバーに Hyper-V 回復マネージャー プロバイダー エージェントをインストールするときに、VMM サーバーをコンテナーに登録するためにその .pfx ファイルを選択します。</LI>
 
 </UL>
 
-<h3><a id="VMMPrereq"></a>VMM prerequisites</h3>
+<h3><a id="VMMPrereq"></a>VMM の前提条件</h3>
 
 <UL>
-<LI>At least one VMM server running on System Center 2012 SP1 or System Center 2012 R2.</LI>
-<LI>VMM private clouds. If you're running one VMM server it'll need two clouds configured. For two or more VMM servers, you'll need at least one cloud on the source VMM server you want to protect, and one cloud on the destination VMM server that you'll use for recovery. The primary cloud you want to protect must contain the following:<UL>
-	<LI>One or more VMM host groups</LI>
-	<LI>One or more Hyper-V host servers in each host group.</LI>
+<LI>System Center 2012 SP1 または System Center 2012 R2 で実行されている、少なくとも 1 つの VMM サーバー。</LI>
+<LI>VMM のプライベート クラウド。1 つの VMM サーバーを実行している場合は、2 つのクラウドを構成しておく必要があります。複数の VMM サーバーを使用している場合は、保護するソース VMM サーバー上で少なくとも 1 つのクラウドが必要であり、復旧に使用するターゲット VMM サーバー上でも 1 つのクラウドが必要です。保護するプライマリ クラウドには、次のものが含まれている必要があります。<UL>
+	<LI>1 つ以上の VMM ホスト グループ</LI>
+	<LI>各ホスト グループ内に 1 つ以上の Hyper-V ホスト サーバー。</LI>
 		</UL></LI>
-<LI>If you want virtual machines be connected to a VM network after failover, you configure network mapping in Hyper-V Recovery Manager. Before beginning deployment verify the following:<UL>
-	<LI>The virtual machine in the cloud on the source VMM server is connected to a VM network. That VM network should be linked to a logical network that is associated with the cloud.</LI>
-	<LI>The target cloud on the destination VMM server has a corresponding VM network. That VM network should be linked to a corresponding logical network that is associated with the target cloud.</LI>
+<LI>フェールオーバー後に仮想マシンが VM ネットワークに接続されるようにするには、Hyper-V 回復マネージャーでネットワーク マッピングを構成します。展開を開始する前に、次の項目を確認します。<UL>
+	<LI>ソース VMM サーバー上のクラウド内にある仮想マシンが、VM ネットワークに接続されています。その VM ネットワークは、クラウドに関連付けられた論理ネットワークにリンクされている必要があります。</LI>
+	<LI>ターゲット VMM サーバー上のターゲット クラウドには、対応する VM ネットワークがあります。その VM ネットワークは、ターゲット クラウドに関連付けられた、対応する論理ネットワークにリンクされている必要があります。</LI>
 	</UL></LI>
 	
-	<P>To learn more about network mapping read <a href="http://go.microsoft.com/fwlink/?LinkId=324817">Prepare for network mapping</a> in the Planning Guide.</P>
+	<P>ネットワーク マッピングの詳細については、プランニング ガイドの<a href="http://go.microsoft.com/fwlink/?LinkId=324817">ネットワーク マッピングの準備に関するページ</a>を参照してください。</P>
 </UL>
 
 
-<h2><a id="tutorial"></a>Tutorial steps</h2> 
+<h2><a id="tutorial"></a>チュートリアルの手順</h2>
 
-After verifying the prerequisites, do the following:
+前提条件を確認した後、以下の手順を実行します。
 <UL>
-<LI><a href="#createcert">Obtain and configure certificates</a>—Obtain a .cer certificate, export it as a .pfx file, and import the .pfx file to VMM servers.</LI>
-<LI><a href="#vault">Step 1: Create a vault</a>—Create a Hyper-V Recovery Manager vault in Azure.</LI>
-<LI><a href="#upload">Step 2: Upload the certificate</a>—Upload the management certificate to the vault.</LI>
-<LI><a href="#download">Step 3: Download and install the Provider</a>—Download and install the Hyper-V Recovery Manager Provider on VMM servers you want to protect. Then register the VMM servers with the vault.</LI>
-<LI><a href="#clouds">Step 4: Configure cloud protection</a>—Configure protection settings for VMM clouds.</LI>
-<LI><a href="#networks">Step 5: Configure network mapping</a>—Map VM networks from source VMM servers to target VMM servers.</LI>
-<LI><a href="#virtualmachines">Step 6: Enable protection for virtual machines</a>—Enable protection for Hyper-V virtual machines located in the VMM clouds.</LI>
-<LI><a href="#recovery plans">Step 7: Configure and run recovery plans</a>—Create and customize recovery plans that group together virtual machines for failover. Then run the recovery plan.</LI>
-<LI><a href="#jobs">Step 8: Monitor</a>—Monitor settings, status, and progress using the **Jobs** and **Dashboard** tabs.</LI>
+<LI><a href="#createcert">証明書の取得と構成</a> - .cer 証明書を取得し、.pfx ファイルとしてエクスポートして、その .pfx ファイルを VMM サーバーにインポートします。</LI>
+<LI><a href="#vault">ステップ 1: コンテナーの作成</a> - Azure 内で Hyper-V 回復マネージャー コンテナーを作成します。</LI>
+<LI><a href="#upload">ステップ 2: 証明書のアップロード</a> - コンテナーに管理証明書をアップロードします。</LI>
+<LI><a href="#download">ステップ 3: プロバイダーのダウンロードとインストール</a> - 保護する VMM サーバーに、Hyper-V 回復マネージャー プロバイダーをダウンロードしてインストールします。その後、VMM サーバーをコンテナーに登録します。</LI>
+<LI><a href="#clouds">ステップ 4: クラウドの保護の構成</a> - VMM クラウドの保護設定を構成します。</LI>
+<LI><a href="#networks">ステップ 5: ネットワーク マッピングの構成</a> - ソース VMM サーバーからターゲット VMM サーバーに VM ネットワークをマッピングします。</LI>
+<LI><a href="#virtualmachines">ステップ 6: 仮想マシンに対する保護の有効化</a> - VMM クラウド内に配置された Hyper-V 仮想マシンに対する保護を有効にします。</LI>
+<LI><a href="#recovery plans">ステップ 7: 復旧計画の構成と実行</a> - 複数の仮想マシンをグループ化する復旧計画を作成してカスタマイズします。次に、その復旧計画を実行します。</LI>
+<LI><a href="#jobs">ステップ 8: 監視</a> - **[ジョブ]** タブと **[ダッシュボード]** タブを使用して、設定、状態、進捗を監視します。</LI>
 </UL>
 
 
 
-<a name="createcert"></a> <h2>Obtain and configure certificates</h2>
+<a name="createcert"></a> <h2>証明書の取得と構成</h2>
 
-Obtain and configure certificates as follows:
-<OL>
-<LI><a href="#obtaincert">Obtain a certificate for the walkthrough</a>—Obtain a certificate using the MakeCert tool, or use an existing certificate that complies with the <a href="http://go.microsoft.com/fwlink/?LinkId=321294">certificate requirements</a>.</LI>
-<LI><a href="#exportcert">Export the certificate in .pfx format</a>—On the server on which the certificate resides or was created, export the .cer file as a .pfx file (with the private key). </LI>
-<LI><a href="#importcert">Import the .pfx certificate to VMM servers</a>—After export of the .pfx file is complete, import it to the Personal certificate store on each VMM server that you want to register with the vault.</LI>
+次のステップで、証明書を取得して構成します。<OL>
+<LI><a href="#obtaincert">チュートリアルで使用する証明書の取得</a> - MakeCert ツールを使用して証明書を取得するか、<a href="http://go.microsoft.com/fwlink/?LinkId=321294">Hyper-V 回復マネージャー計画ガイド</a>で規定されている証明書の要件を満たす既存の証明書を使用します。</LI>
+<LI><a href="#exportcert">.pfx 形式での証明書のエクスポート</a> - 証明書の配置先または作成元であるサーバーで、.cer ファイルを、(秘密キーを含む) .pfx ファイルとしてエクスポートします。</LI>
+<LI><a href="#importcert">VMM サーバーへの .pfx 証明書のインポート</a> - .pfx ファイルのエクスポートが完了した後、そのファイルを、コンテナーに登録する各 VMM サーバーの Personal 証明書ストアにインポートします。</LI>
 </OL>
 
 
-<h3><a id="obtaincert"></a>Obtain a self-signed certificate (.cer)</h3>
-<P>Use the MakeCert tool to create a .cer x.509 certificate that complies with all certificate requirements, as follows:</P>
+<h3><a id="obtaincert"></a>自己署名証明書 (.cer) の取得</h3>
+<P>次のように MakeCert ツールを使用して、証明書のすべての要件に準拠している .cer 形式の x.509 証明書を作成します。</P>
 <ol>
 <LI>
-On the computer on which you want to run MakeCert, download the latest version of the <a href="http://go.microsoft.com/fwlink/?LinkId=378269">Windows SDK</a>. Note that the makecert.exe command is part of the core Windows Software Development Kit so you don't need to download and install the entire SDK.</LI>
-<LI>On the Specify Location page, select **Install the Windows Software Development Kit for Windows 8.1 to this computer**.</LI>
-<LI>On the Join the Customer Experience Improvement Program (CEIP) page, select your preferred setting.</LI>
-<LI>On the License Agreement page, click **Accept** to accept the terms.</LI>
-<LI>On the Select the features you want to install page, clear all options except **Windows Software Development Kit**.</LI>
-<LI>After the installation is complete, verify that makecert.exe appears in the folder C:\ProgramFiles (x86)\Windows Kits\<i>WindowsVersion</i>\bin\x64.</LI>
-<LI>Open a command prompt(cmd.exe) with Administrator privileges and navigate to the makecert.exe folder.</LI> 
-<LI>>Run the following command to create your self-signed certificate. Replace CertificateName with the name you want to use for the certificate, and specify the actual expiration date of your certificate after -e:</LI>
+MakeCert を実行するコンピューターに、<a href="http://go.microsoft.com/fwlink/?LinkId=378269">Windows SDK</a> の最新バージョンをダウンロードします。Makecert.exe コマンドが、Core Windows ソフトウェア開発キット (Core SDK) の一部であることに注意してください。そのため、SDK 全体をダウンロードしてインストールする必要はありません。</LI>
+<LI>[場所の指定] ページで、**[Windows Software Development Kit for Windows 8.1 をこのコンピューターにインストールします]** を選択します。</LI>
+<LI>[カスタマー エクスペリエンス向上プログラムに参加します] (CEIP) ページで、希望する設定を選択します。</LI>
+<LI>[使用許諾契約書] ページで、**[同意する]** をクリックして条項に同意します。</LI>
+<LI>[インストールする機能を選択してください] ページで、**[Windows ソフトウェア開発キット]** を除き、他のすべてのオプションをオフにします。</LI>
+<LI>インストールが完了した後、makecert.exe が C:\ProgramFiles (x86)\Windows Kits\<i>WindowsVersion</i>\bin\x64 フォルダーに表示されていることを確認します。</LI>
+<LI>管理者特権でコマンド プロンプト (cmd.exe) を開き、makecert.exe フォルダーに移動します。</LI>
+<LI>> 次のコマンドを実行して、自己署名証明書を作成します。CertificateName を、その証明書で使用する名前に置き換えます。また、-e: の後に、証明書の実際の有効期限を指定します。</LI>
 <code>
 makecert.exe -r -pe -n CN=CertificateName -ss my -sr localmachine -eku 1.3.6.1.5.5.7.3.2 -len 2048 -e 01/01/2016 CertificateName.cer</code>
 </ol>
-<P>The certificate will be created and stored in the same folder. You might want to move it to a more accessible location, in order to export it during the next step.</P>
+<P>証明書が作成され、同じフォルダーに格納されます。次のステップで証明書をエクスポートするために、よりアクセスしやすい場所に、その証明書を移動することもできます。</P>
 
-<h3><a id="exportcert"></a>Export the certificate in .pfx format</h3>
-<P>Complete the steps in this procedure to export the .cer file in .pfx format.</P>
+<h3><a id="exportcert"></a>.pfx 形式での証明書のエクスポート</h3>
+<P>次のステップを完了して、.cer ファイルを .pfx 形式にエクスポートします。</P>
 <ol>
-<li>From the Start screen type **mmc.exe** to start the Microsoft Management Console (MMC).</li>
-<li>On the **File** menu, click **Add/Remove Snap-in**. The **Add or Remove Snap-ins** dialog box appears.</li>
-<li>In **Available snap-ins**, click **Certificates**, and then click **Add**.</li>
-<li>Select **Computer account**, and then click **Next**.</li>
-<li>Select **Local computer**, and then click **Finish**.</li>
-<li>In the MMC, in the console tree, expand **Certificates**, and then expand **Personal**.</li>
-<li>In the details pane, click the certificate you want to manage.</li>
-<li>On the **Action** menu, point to **All Tasks**, and then click **Export**. The Certificate Export Wizard appears. Click **Next**.</li>
-<li>On the **Export Private Key** page, click **Yes** to export the private key. Click **Next**. Note that this is only required if you want to export the private key to other servers after the installation.</li>
-<li>On the Export File Format page, select **Personal Information Exchange – PKCS #12 (.PFX)**. Click **Next**.</li>
-<li>On the **Password** page, type and confirm the password that is used to encrypt the private key. Click **Next**.</li>
-<li>Follow the pages of the wizard to export the certificate in .pfx format.</li>
+<li>スタート画面で「**mmc.exe**」と入力して、Microsoft 管理コンソール (MMC) を開始します。</li>
+<li>**[ファイル]** メニューの **[スナップインの追加と削除]** をクリックします。**[スナップインの追加と削除]** ダイアログ ボックスが表示されます。</li>
+<li>**[利用できるスナップイン]** で、**[証明書]** をクリックし、**[追加]** をクリックします。</li>
+<li>**[コンピューター アカウント]** を選択し、**[次へ]** をクリックします。</li>
+<li>**[ローカル コンピューター]** を選択し、**[完了]** をクリックします。</li>
+<li>MMC のコンソール ツリーで、**[証明書]** を展開し、**[Personal]** を展開します。</li>
+<li>詳細ウィンドウで、管理する証明書をクリックします。</li>
+<li>**[アクション]** メニューの **[すべてのタスク]** をポイントし、**[エクスポート]** をクリックします。証明書のエクスポート ウィザードが表示されます。**[次へ]** をクリックします。</li>
+<li>**[秘密キーのエクスポート]** ページで **[はい]** をクリックして秘密キーをエクスポートします。**[次へ]** をクリックします。この操作は、インストール後に別のサーバーに秘密キーをエクスポートする場合にのみ必要です。</li>
+<li>[エクスポート ファイル形式] ページで、**[Personal Information Exchange – PKCS #12 (.PFX)]** を選択します。**[次へ]** をクリックします。</li>
+<li>**[パスワード]** ページで、秘密キーの暗号化時に使用するパスワードを入力し、確認のためにもう一度パスワードを入力します。**[次へ]** をクリックします。</li>
+<li>ウィザードの指示に従って、証明書を .pfx 形式でエクスポートします。</li>
 </ol>
 
 
-<h3><a id="importcert"></a>Import the .pfx certificate to VMM servers</h3>
-<p>After exporting the server, copy it to each VMM server you want to register in the vault, and then import it as follows. Note that if you ran MakeCert.exe on a VMM server, you don't need to import the certificate on that server.</p>
+<h3><a id="importcert"></a>VMM サーバーへの .pfx 証明書のインポート</h3>
+<p>サーバーをエクスポートしたら、それを、コンテナーに登録する各 VMM サーバーにコピーし、次のステップでインポートします。VMM サーバーで MakeCert.exe を実行した場合は、そのサーバーに証明書をインポートする必要はありません。</p>
  
 <ol>
-<li>Copy the private-key (.pfx) certificate files to a location on the local server.</li>
-<li>In the Certificates MMC snap-in select** Computer account** and then click Next.</li>
-<li>Select Local Computer, and click **Finish**. In the **Add/Remove Snap-ins** dialog box, click **OK**. </li>
-<li>In the MMC, expand **Certificates**, right-click **Personal**, point to All Tasks, and then click **Import** to start the Certificate Import Wizard.</li>
-<li>On the Certificate Import Wizard Welcome page, click **Next**.</li>
-<li>On the File to Import page, click **Browse** and locate the folder that contains the .pfx certificate file that contains the certificate that you want to import. Select the appropriate file, and then click **Open**.</li>
-<li>On the Password page, in the **Password** box, type the password for the private-key file that you specified in the previous procedure and then click **Next**.</li>
-<li>On the Certificate Store page, select **Place all certificates in the following store**, click **Browse**, select the **Personal** store, click **OK**, and then click Next.</li>
-<li>On the Completing the Certificate Import Wizard page, click **Finish**.</li>
+<li>ローカル サーバーに秘密キー (.pfx) 証明書ファイルをコピーします。</li>
+<li>証明書 MMC スナップインで **[コンピューター アカウント]** を選択し、[次へ] をクリックします。</li>
+<li>[ローカル コンピューター] を選択し、**[完了]** をクリックします。**[スナップインの追加と削除]** ダイアログ ボックスで **[OK]** をクリックします。</li>
+<li>MMC で **[証明書]** を展開し、**[Personal]** を右クリックして、[すべてのタスク] をポイントし **[インポート]** をクリックして、証明書のインポート ウィザードを開始します。</li>
+<li>証明書のインポート ウィザードの [ようこそ] ページで、**[次へ]** をクリックします。</li>
+<li>[インポートするファイル] ページで、**[参照]** をクリックし、インポートする証明書を含む .pfx 証明書ファイルが格納されたフォルダーを見つけます。適切なファイルを選択し、**[開く]** をクリックします。</li>
+<li>[パスワード] ページの **[パスワード]** ボックスに、先の手順で指定した秘密キー ファイル用のパスワードを入力して、**[次へ]** をクリックします。</li>
+<li>[証明書ストア] ページで、**[証明書をすべて次のストアに配置する]** を選択し、**[参照]** をクリックして、**[Personal]** ストアを選択し、**[OK]** をクリックして、[次へ] をクリックします。</li>
+<li>[証明書のインポート ウィザードの完了] ページで **[完了]** をクリックします。</li>
 </ol>
 
-After you complete these steps, you'll be able to choose the .cer certificate for upload to the vault, and to select the .pfx certificate when you register a VMM server during Provider installation.
+これらのステップを完了した後、コンテナーにアップロードする .cer 証明書を選択し、プロバイダーのインストール時に VMM サーバーを登録するときに .pfx 証明書を選択することができます。
 </div>
 
 
-<a name="vault"></a> <h2>Step 1: Create a vault</h2>
+<a name="vault"></a> <h2>ステップ 1: コンテナーの作成</h2>
 
-1. Sign in to the [Management Portal](https://manage.windowsazure.com).
+1. [管理ポータル](https://manage.windowsazure.com)にサインインします。
 
 
-2. Click **Data Services**, and then click **Recovery Services**.  
+2. **[データ サービス]** をクリックし、**[復旧サービス]** をクリックします。
 
-	![Preview Program](./media/hyper-v-recovery-manager-configure-vault/RS_PreviewProgram.png)
+	![プレビュー プログラム](./media/hyper-v-recovery-manager-configure-vault/RS_PreviewProgram.png)
 
-3. Click **Recovery Services**, click **Create New**,  point to **Hyper-V Recovery Manager Vault**, and then click **Quick Create**.
+3. **[復旧サービス]**、**[新規作成]** の順にクリックし、**[Hyper-V 回復マネージャー コンテナー]** をポイントして、**[簡易作成]** をクリックします。
 	
-	![New Vault](./media/hyper-v-recovery-manager-configure-vault/RS_hvvault.png)
+	![新しいコンテナー](./media/hyper-v-recovery-manager-configure-vault/RS_hvvault.png)
 
-3. In **Name**, enter a friendly name to identify the vault.
+3. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。
 
-4. In **Region**, select the geographic region for the vault. Available geographic regions include Asia Pacific Southeast, Europe North, and US East.****
+4. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。利用可能な地域には、アジア太平洋南東部、北ヨーロッパ、および米国東部が含まれています。****
 
-5. In **Subscription**, type in your subscription details.
+5. **[サブスクリプション]** に、サブスクリプションの詳細を入力します。
 
-5. Click **Create vault**. 
+5. **[コンテナーの作成]** をクリックします。
 
-<P>Check vault status in the notifications at the bottom of the portal. A message will confirm that the vault has been successfully created. It will be listed as **Online** in the Recovery Services page.</P>
+<P>ポータルの下部にある通知で、コンテナーの状態を確認します。コンテナーが正常に作成されたことを確認するメッセージが表示されています。[復旧サービス] ページで、コンテナーは **[オンライン]** と表示されています。</P>
 
-<a name="upload"></a> <h2>Step 2: Upload a certificate (.cer)</h2>
-
-
-2. In the **Recovery Services** page, open the required vault.
-3. Click the Quick Start icon to open the Quick Start page.
-
-	![Quick Start Icon](./media/hyper-v-recovery-manager-configure-vault/RS_QuickStartIcon.png)
-
-2. Click **Manage Certificate**.
-
-	![Quick Start](./media/hyper-v-recovery-manager-configure-vault/RS_QuickStart.png)
-
-3. In the **Manage Certificate** dialog box, click **Browse For File** to locate the .cer file you want to upload to the vault.
+<a name="upload"></a> <h2>ステップ 2: 証明書 (.cer) のアップロード</h2>
 
 
-	![Manage Certificate](./media/hyper-v-recovery-manager-configure-vault/RS_ManageCert.png)
+2. **[復旧サービス]** ページで、必要なコンテナーを開きます。
+3. [クイック スタート] アイコンをクリックして、[クイック スタート] ページを開きます。
+
+	![[クイック スタート] アイコン](./media/hyper-v-recovery-manager-configure-vault/RS_QuickStartIcon.png)
+
+2. **[証明書の管理]** をクリックします。
+
+	![クイック スタート](./media/hyper-v-recovery-manager-configure-vault/RS_QuickStart.png)
+
+3. **[証明書の管理]** ダイアログ ボックスで **[ファイルの参照]** をクリックして、コンテナーにアップロードする .cer ファイルを見つけます。
 
 
-<a name="download"></a> <h2>Step 3: Download and install the Provider</h2>
-Install the Hyper-V Recovery Manager Provider on each VMM server you want to register in the vault. The latest version of the Provider installation file is stored in the Azure Download Center. When you run the file on a VMM server the Provider is installed, and the VMM server is registered with the vault.
+	![証明書の管理](./media/hyper-v-recovery-manager-configure-vault/RS_ManageCert.png)
 
-1. On the **Quick Start** page, click **Download Provider** to obtain the Provider installation .exe file. Run this file on the VMM server to begin Provider Setup.
 
-	![Download Agent](./media/hyper-v-recovery-manager-configure-vault/RS_installwiz.png)
+<a name="download"></a> <h2>ステップ 3: プロバイダーのダウンロードとインストール</h2>
+コンテナーに登録する各 VMM サーバーに、Hyper-V 回復マネージャー プロバイダーをインストールします。最新バージョンのプロバイダーのインストール ファイルは、Azure ダウンロード センターにあります。VMM サーバーでこのファイルを実行すると、プロバイダーがインストールされ、VMM サーバーがコンテナーに登録されます。
 
-2. Follow the steps to complete the Provider installation.
+1. **[クイック スタート]** ページで **[プロバイダーのダウンロード]** をクリックして、プロバイダーをインストールする .exe ファイルを取得します。VMM サーバーでこのファイルを実行し、プロバイダーのセットアップを開始します。
 
-	![Setup Complete](./media/hyper-v-recovery-manager-configure-vault/RS_SetupComplete.png)
+	![エージェントのダウンロード](./media/hyper-v-recovery-manager-configure-vault/RS_installwiz.png)
 
-3. After the Provider installation is complete, follow the wizard steps to register the VMM server with the vault.
-4. On the Internet Connection page, specify how the Provider running on the VMM server connects to the Internet. The Provider can use the default Internet connection settings on the server, or click **Use a proxy server for Internet requests** to use custom settings.
+2. 表示される指示に従って、プロバイダーのインストールを完了します。
+
+	![セットアップの完了](./media/hyper-v-recovery-manager-configure-vault/RS_SetupComplete.png)
+
+3. プロバイダーのインストールが完了したら、ウィザードの指示に従って、VMM サーバーをコンテナーに登録します。
+4. [インターネット接続] ページで、VMM サーバーで実行中のプロバイダーがインターネットに接続する方法を指定します。プロバイダーは、サーバー上にある既定のインターネット接続設定を使用できます。または、**[インターネット要求にプロキシ サーバーを使用]** をクリックして、カスタム設定を使用するように指定することもできます。
 	
-	![Internet Settings](./media/hyper-v-recovery-manager-configure-vault/RS_ProviderProxy.png)
+	![インターネット設定](./media/hyper-v-recovery-manager-configure-vault/RS_ProviderProxy.png)
 
-	If you want to use custom settings during this walkthrough, read the information in <a href="http://go.microsoft.com/fwlink/?LinkId=378266">Step 2: Install the Provider and register the VMM servers</a> of the Deployment guide.
-
-
-5. On the Certificate Registration page, select the .pfx file that corresponds to the .cer you uploaded to the vault. 
-
-	![Certificate Register](./media/hyper-v-recovery-manager-configure-vault/RS_CertReg1.png)
-
-	![Certificate Vault](./media/hyper-v-recovery-manager-configure-vault/RS_CertReg2.png)
-
-1. On the VMM Server page, specify a friendly name for the VMM server. This name is used to identify the server in the Hyper-V Recovery Manager console.
-2. Select **Synchronize cloud data with the vault** to synchronize the data on all private clouds located on the VMM server with the Hyper-V Recovery Manager vault. This action only needs to happen once on each server. If you don't want to synchronize all clouds, you can publish each cloud individually to synchronize it, before you configure cloud protection settings.  
-3. Click **Register** to complete the process. 
-
-	![Internet Settings](./media/hyper-v-recovery-manager-configure-vault/RS_PublishCloudSetup.png)
-
-<P>At this stage, metadata from the VMM server is retrieved by Hyper-V Recovery Manager, in order to orchestrate failover and recovery. After a server has been successfully registered its friendly name will be displayed on the **Resources** tab of the Servers page in the vault.</P>
+	このチュートリアルでカスタム設定を使用する場合は、展開ガイドの「<a href="http://go.microsoft.com/fwlink/?LinkId=378266">ステップ 2. プロバイダーのインストールと VMM サーバーの登録</a>」を参照してください。
 
 
-<h2><a id="clouds"></a>Step 4: Configure cloud protection settings</h2>
+5. [証明書の登録] ページで、コンテナーにアップロードした .cer ファイルに相当する .pfx ファイルを選択します。
 
-After VMM servers are registered, you can configure cloud protection settings. If you didn't enable the option **Synchronize cloud data with the vault** when you installed the Provider on the VMM server, you'll need to publish the cloud to Hyper-V Recovery Manager from the VMM console. After clouds are detected by Hyper-V Recovery Manager you can configure protection settings. 
+	![証明書の登録](./media/hyper-v-recovery-manager-configure-vault/RS_CertReg1.png)
 
-<h3><a id="publishclouds"></a>Publish a cloud</h3>
+	![証明書コンテナー](./media/hyper-v-recovery-manager-configure-vault/RS_CertReg2.png)
 
-1. In the VMM console, open the **VMs and Services** workspace.
-2. in the **VMs and Services** pane, open the cloud you want to publish.
-3. On the **General** page of the cloud properties, to publish the cloud, select **Send configuration data about this cloud to the Azure Hyper-V Recovery Manager**. After the cloud is published it's displayed in the vault.
+1. [VMM サーバー] ページで、VMM サーバーの表示名を指定します。この名前は、Hyper-V 回復マネージャー コンソールでサーバーを識別するために使用されます。
+2. VMM サーバー上に配置されているすべてのプライベート クラウドに存在するデータを Hyper-V 回復マネージャー コンテナーに同期するには、**[コンテナーとのクラウド データの同期]** を選択します。この操作は、各サーバーで 1 回のみ実行する必要があります。すべてのクラウドを同期することを希望しない場合は、クラウドの保護設定を構成する前に、各クラウドを個別に発行して同期することができます。
+3. **[登録]** をクリックしてプロセスを完了します。
 
-	![Clouds](./media/hyper-v-recovery-manager-configure-vault/RS_PublishCloud.png)
+	![インターネット設定](./media/hyper-v-recovery-manager-configure-vault/RS_PublishCloudSetup.png)
 
-	![Published Cloud](./media/hyper-v-recovery-manager-configure-vault/RS_Clouds.png)
-
-<h3><a id="configureclouds"></a>Configure clouds</h3>
-
-To configure clouds for protection, do the following: 
-
-1. On the Quick Start page, click **Configure Protection Settings**.
-2. On the **Protected Items** tab, select the cloud that you want to configure and go to the **Configuration** tab.
-
-	![Cloud Configuration](./media/hyper-v-recovery-manager-configure-vault/RS_CloudConfig.png)
+<P>この段階で、VMM サーバーからのメタデータが Hyper-V 回復マネージャーによって取得され、フェールオーバーと復旧の調整に使用されます。サーバーが正常に登録されると、その表示名が、コンテナーの [サーバー] ページの **[リソース]** タブに表示されます。</P>
 
 
-3. In **Target Location**, specify the VMM server that manages the cloud you want to use for recovery.
-4. In **Target Cloud**, specify the target cloud you want to use for failover of virtual machines in the source cloud.
-5. In **Copy Frequency** leave the default setting. This value specifies how frequently data should be synchronized between source and target locations. It's only relevant when the Hyper-V host is running Windows Server 2012 R2. For other servers a default setting of five minutes is used.
-6. In **Additional Recovery Points**, leave the default setting. This value specify whether you want to create addition recovery points. With a default value of zero only the latest recovery point for a primary virtual machine is stored on a replica host server. 
-7. In **Application-Consistent Snapshot Frequency**, leave the default setting. This value specifies how often to create snapshots. Snapshots use Volume Shadow Copy Service (VSS) to ensure that applications are in a consistent state when the snapshot is taken.  If you do want to set this value for the tutorial walkthrough, ensure that it is set to less than the number of additional recovery points you configure.
-8. In **Data Transfer Compression**, specify whether replicated data that is transferred should be compressed. 
-9. In **Authentication**, specify how traffic is authenticated between the primary and recovery Hyper-V host servers. Unless you have a working Kerberos environment configured, we recommend you select HTTPS for the purpose of this walkthrough. With HTTPS selected the host servers will authenticate each other using a server certificate, and traffic will be encrypted. Hyper-V Recovery Manager configures certificates to be used for HTTPS authentication automatically. No manual configuration is required. Note that this setting is only relevant for Hyper-V host servers running on Windows Server 2012 R2.
-10. In **Port**, leave the default setting. This value sets the port number on which the source and target Hyper-V host computers listen for replication traffic. 
-11. In **Initial Replication Settings**, specify how the initial replication of data from source to target locations will be handled, before regular replication starts. 
-	- **Over the network**—Copying data over the network can be time-consuming and resource-intensive. We recommend that you use this option if the cloud contains virtual machines with relatively small virtual hard disks, and if the primary VMM server is connected to the secondary VMM server over a connection with wide bandwidth. You can specify that the copy should start immediately, or select a time. If you use network replication, we recommend that you schedule it during off-peak hours.
-	- **Offline**—This method specifies that the initial replication will be performed using external media. It's useful if you want to avoid degradation in network performance, or for geographically remote locations. To use this method you specify the export location on the source cloud, and the import location on the target cloud. When you enable protection for a virtual machine, the virtual hard disk is copied to the specified export location. You send it to the target site, and copy it to the import location. The system copies the imported information to the replica virtual machines. For a complete list of offline replication prerequisites, see <a href="http://go.microsoft.com/fwlink/?LinkId=323469">Step 3: Configure protection settings for VMM clouds</a> in the Deployment Guide.
+<h2><a id="clouds"></a>ステップ 4: クラウドの保護設定の構成</h2>
 
-<h4><a id="cloudsettingd"></a>Settings after configuring protection</h4>
-After you configure a cloud, all clusters and host servers that are configured in the source and target clouds are configured for replication. Specifically, the following are configured:
+VMM サーバーを登録した後、クラウドの保護設定を構成することができます。VMM サーバーにプロバイダーをインストールしたときに **[コンテナーとのクラウド データの同期]** オプションをオンにしなかった場合は、VMM コンソールを使用してそのクラウドを Hyper-V 回復マネージャーに発行する必要があります。Hyper-V 回復マネージャーによってそのクラウドが検出された後、保護設定を構成することができます。
 
-- Firewall rules used by Hyper-V Replica so that ports for replication traffic are opened. 
-- Certificates required for replication are installed.
-- Hyper-V Replica settings are configured.
+<h3><a id="publishclouds"></a>クラウドの発行</h3>
 
-Cloud settings can be modified on the **Configure** tab. Note that:
+1. VMM コンソールで **[VM とサービス]** ワークスペースを開きます。
+2. **[VM とサービス]** ウィンドウで、発行するクラウドを開きます。
+3. クラウドのプロパティの **[全般]** ページで、クラウドを発行するために、**[このクラウドに関する構成データを Azure の Hyper-V 回復マネージャーに送信]** を選択します。クラウドが発行されると、クラウドがコンテナーに表示されます。
 
-- We recommend that you select a target cloud that meets recovery requirements for the virtual machines you'll protect. 
-- A cloud can only belong to a single cloud pair — either as a primary or a target cloud.
-- After saving the cloud configuration, a job will be created, and can be monitored on the **Jobs** tab. After saving the configuration, to modify the target location or target cloud you must remove the cloud configuration, and then reconfigure the cloud.
+	![クラウド](./media/hyper-v-recovery-manager-configure-vault/RS_PublishCloud.png)
+
+	![発行済みのクラウド](./media/hyper-v-recovery-manager-configure-vault/RS_Clouds.png)
+
+<h3><a id="configureclouds"></a>クラウドの構成</h3>
+
+クラウドの保護方法を構成するには、以下の手順を実行します。
+
+1. [クイック スタート] ページで、**[保護設定の構成]** をクリックします。
+2. **[保護された項目]** タブで、構成するクラウドを選択し、**[構成]** タブに移動します。
+
+	![クラウド構成](./media/hyper-v-recovery-manager-configure-vault/RS_CloudConfig.png)
 
 
+3. **[ターゲットの場所]** で、復旧時に使用するクラウドを管理する VMM サーバーを指定します。
+4. **[ターゲット クラウド]** で、ソース クラウド内の仮想マシンのフェールオーバー時に使用するターゲット クラウドを指定します。
+5. **[コピーの頻度]** で、既定の設定をそのまま使用します。この値は、ソースとターゲットの場所の間でデータが同期される頻度を指定します。この設定は、Hyper-V ホストが Windows Server 2012 R2 を実行している場合にのみ該当します。他のサーバーでは、5 分間という既定の設定が使用されます。
+6. **[追加の復旧ポイント]** で、規定の設定をそのまま使用します。この値は、追加の復旧ポイントを作成するかどうかを指定します。既定値である 0 を使用する場合は、プライマリ仮想マシンに対応する最新の復旧ポイントのみが、レプリカのホスト サーバーに格納されます。
+7. **[アプリケーションの整合性スナップショットの頻度]** で、既定の設定をそのまま使用します。この値は、スナップショットを作成する頻度を指定します。スナップショットは、ボリューム シャドウ コピー サービス (VSS) を使用して、スナップショットを作成するときにアプリケーションを一貫性のある状態に保ちます。チュートリアルでこの値を設定する場合は、構成する追加の復旧ポイントの値より小さくするように注意してください。
+8. **[データ転送の圧縮]** で、転送されるレプリケート済みデータを圧縮するかどうかを指定します。
+9. **[認証]** で、プライマリおよび復旧用の Hyper-V ホスト サーバー間でトラフィックを認証する方法を指定します。動作している Kerberos 環境が既に構成済みの場合を除き、このチュートリアルで使用する目的で [HTTPS] を選択することをお勧めします。HTTPS を選択した場合は、ホスト サーバーはサーバー証明書を使用して相互を認証し、トラフィックは暗号化されます。Hyper-V 回復マネージャーは、HTTPS 認証に使用する証明書を自動的に構成します。手動で構成する必要はありません。この設定は、Windows Server 2012 R2 で実行されている Hyper-V ホスト サーバーだけに関連することに注意してください。
+10. **[ポート]** で、既定の設定をそのまま使用します。この値は、ソースとターゲットの Hyper-V ホスト コンピューターがレプリケーション トラフィックをリッスンするポートの番号を設定します。
+11. **[初期レプリケーションの設定]** で、通常のレプリケーションを開始する前に実行する初期レプリケーションで、ソースからターゲットにデータを複製する際の処理方法を指定します。
+	- **[ネットワーク経由]** - ネットワーク経由でデータをコピーすると、時間がかかり大量のリソースを消費します。クラウドの仮想マシンで使用する仮想ハード ディスクの容量が比較的小さい場合、そして、プライマリ VMM サーバーがセカンダリ VMM サーバーに高速回線で接続されている場合に、このオプションを使用することをお勧めします。コピーを直ちに開始することも、実行時刻を選択することもできます。ネットワーク レプリケーションを使用する場合は、ピーク時間以外に実行することをお勧めします。
+	- **[オフライン]** - この方法は、外部メディアを使用して初期レプリケーションを実行することを指定します。これは、ネットワーク性能の低下を避ける場合、または、場所が地理的に離れている場合に便利です。この方法を使用するには、ソース クラウド上のエクスポート場所と、ターゲット クラウド上のインポート場所を指定します。仮想マシンの保護を有効にすると、指定されたエクスポート場所に仮想ハード ディスクがコピーされます。それをターゲット サイトに送信して、インポート場所にコピーします。インポートされた情報はレプリカ仮想マシンに自動的にコピーされます。オフライン レプリケーションの前提条件の一覧については、展開ガイドの「<a href="http://go.microsoft.com/fwlink/?LinkId=323469">ステップ 3. VMM クラウドの保護設定の構成</a>」を参照してください。
+
+<h4><a id="cloudsettingd"></a>保護を構成した後の設定</h4>
+クラウドを構成すると、ソース クラウドおよびターゲット クラウドで構成されているすべてのクラスターとホスト サーバーがレプリケーション用に構成されます。具体的には、次のように構成されます。
+
+- Hyper-V Replica が使用するファイアウォール ルールが構成され、レプリケーション トラフィック用のポートが開かれます。
+- レプリケーションに必要な証明書がインストールされます。
+- Hyper-V Replica 設定が構成されます。
+
+クラウド設定は **[構成]** タブで変更できます。以下の点に注意してください。
+
+- 保護する仮想マシンの復旧要件を満たしたターゲット クラウドを選択することをお勧めします。
+- クラウドは、プライマリ クラウドまたはターゲット クラウドとして、ただ 1 つのクラウド ペアに属することができます。
+- クラウド構成を保存すると、ジョブが作成され、これを **[ジョブ]** タブで監視できます。構成を保存した後でターゲットの場所やターゲット クラウドを変更する場合は、クラウド構成を削除して、クラウドを再構成する必要があります。
 
 
-<h2><a id="networks"></a>Step 5: Configure network mapping</h2>
 
-On the **Networks** tab you configure mapping between VM networks on source and target VMM servers. Network mapping ensures that after failover replica virtual machines are connected to appropriate networks, and to ensure that replica virtual machines are placed on hosts that can access the VM networks. Verify VMM network requirements in <a href=" http://go.microsoft.com/fwlink/?LinkId=386485">Prerequisites and Support</a> in the Planning Guide. We recommend you map networks as follows: 
 
-- Map networks used by each cloud that is configured for protection.
-- Perform network mapping before enabling virtual machines for protection, because mapping is used during placement of replica virtual machines. Mapping will work correctly if you configure it after enabling protection, but you might need to migrate some replica virtual machines.  
+<h2><a id="networks"></a>ステップ 5: ネットワーク マッピングの構成</h2>
 
-To map networks, do the following:
+**[ネットワーク]** タブで、ソースおよびターゲット VMM サーバー上にある VM ネットワーク間のマッピングを構成します。ネットワーク マッピングにより、フェールオーバー後に、レプリカ仮想マシンが適切なネットワークに接続されること、およびレプリカ仮想マシンが、VM ネットワークにアクセスできるホストに配置されることが確実になります。VMM ネットワークの要件については、プランニング ガイドの「<a href=" http://go.microsoft.com/fwlink/?LinkId=386485">前提条件とサポート</a>」を参照してください。ネットワークは次のようにマッピングすることをお勧めします。
 
-1. On the Quick Start page, click **Configure Network Mapping**.
-4. In **Source Location**, select the source VMM server. 
-5. In **Target Location**, select the target VMM server. If you are deploying Hyper-V Recovery Manager with a single VMM server then the source and target will be the same.
-The list of source VM networks and their associated target VM networks is displayed. A blank value is shown for networks that are not mapped.
-6. Select an unmapped entry in the source and target list,  and click **Map**. The service detects the VM networks on the target server and displays them.  
+- 保護を構成した各クラウドで、使用するネットワークをマッピングします。
+- ネットワーク マッピングは、仮想マシンで保護を有効にする前に実行します。この結果、レプリカ仮想マシンを配置するときにマッピングが使用されるようになります。保護を有効にした後にマッピングを構成する場合も、マッピングは正常に機能しますが、一部のレプリカ仮想マシンの移行が必要になることがあります。
 
-	![Manage certificate](./media/hyper-v-recovery-manager-configure-vault/RS_networks.png)
+ネットワークをマッピングするには、以下の手順を実行します。
 
-7. On the Select a Target Network page, select the target VM network you want to use on the target VMM server.
-	![Target Network](./media/hyper-v-recovery-manager-configure-vault/RS_TargetNetwork.png) 
+1. [クイック スタート] ページで、**[ネットワーク マッピングの構成]** をクリックします。
+4. **[ソースの場所]** で、ソース VMM サーバーを選択します。
+5. **[ターゲットの場所]** で、ターゲット VMM サーバーを選択します。単一の VMM サーバーで Hyper-V 回復マネージャーを展開している場合は、ソースとターゲットが同じです。
+ソース VM ネットワークと、それに関連付けられたターゲット VM ネットワークの一覧が表示されます。マッピングされていないネットワークには、空白の値が表示されます。
+6. ソースとターゲットのリストで、マッピングされていないエントリを選択し、**[マップ]** をクリックします。サービスによってターゲット サーバー上の VM ネットワークが検出され、表示されます。
 
-8. Click the information icons next to the source and target network names to view the subnets and type for each network.
+	![証明書の管理](./media/hyper-v-recovery-manager-configure-vault/RS_networks.png)
 
-	When you select a target network, the protected clouds that use the source network are displayed, and the availability of the target VM networks associated with the clouds is also displayed. We recommend that you select a target network that is available to all clouds used for protection.
+7. [ターゲット ネットワークの選択] ページで、ターゲット VMM サーバーで使用するターゲット VM ネットワークを選択します。
+	![ターゲット ネットワーク](./media/hyper-v-recovery-manager-configure-vault/RS_TargetNetwork.png)
 
-8. Click the check mark to complete the mapping process. A job starts to track the mapping progress. This can be viewed on the **Jobs** tab.
+8. ソース ネットワーク名とターゲット ネットワーク名の横にある情報アイコンをクリックして、各ネットワークのサブネットと種類を表示します。
 
-	This will connect any existing replica virtual machines corresponding to the virtual machines connected to the source VM network to the target VM network. This will also connect new replica virtual machines that are created after enabling replication on the virtual machines connected to the source VM network to the target VM network.
+	ターゲット ネットワークを選択すると、ソース ネットワークを使用する保護対象のクラウドが表示され、クラウドに関連付けられたターゲット VM ネットワークの可用性も表示されます。保護に使用するすべてのクラウドで使用できるターゲット ネットワークを選択することをお勧めします。
 
-<h3><a id="modifynetworks"></a>Modify network mappings</h3>
-Network mappings can be modified or removed on the **Networks** tab. Note the following:
+8. チェック マークをクリックして、マッピング処理を完了します。ジョブが開始され、マッピングの進行状況を追跡します。これは、**[ジョブ]** タブに表示されます。
+
+	これで、ソース VM ネットワークに接続されている仮想マシンに対応する既存のレプリカ仮想マシンが、ターゲット VM ネットワークに接続されます。また、ソース VM ネットワークに接続されている仮想マシンでレプリケーションを有効にした後に作成された新しいレプリカ仮想マシンも、ターゲット VM ネットワークに接続されます。
+
+<h3><a id="modifynetworks"></a>ネットワーク マッピングの変更</h3>
+ネットワーク マッピングは、**[ネットワーク]** タブで変更したり、削除したりできます。以下の点に注意してください。
 <UL>
-<LI>If you unmap a selected mapping, the mapping is removed and the replica virtual machines are disconnected from the network they were connected to at the time of mapping.</LI>
-<LI>When you modify a selected mapping, changes are updated, and the replica virtual machines are connected to the new network settings provided.</LI>
+<LI>選択したマッピングを解除すると、マッピングが削除され、マッピング時に接続されていたネットワークからレプリカ仮想マシンが切断されます。</LI>
+<LI>選択したマッピングを変更すると、変更が更新され、提供された新しい設定にレプリカ仮想マシンが接続されます。</LI>
 </UL>
 
-<h2><a id="virtualmachines"></a>Step 6: Enable protection for virtual machines</h2>
+<h2><a id="virtualmachines"></a>ステップ 6: 仮想マシンの保護の有効化</h2>
 
-<p>After servers, clouds, and networks are configured correctly, you can enable protection for virtual machines in the cloud. You enable protection in the VMM console, by right-clicking each virtual machine you want to protect and selecting **Enable Recovery**.</p>
+<p>サーバー、クラウド、およびネットワークを正しく構成した後で、クラウド内の仮想マシンで保護を有効にすることができます。VMM コンソールで保護を有効にするには、保護する各仮想マシンを右クリックし、**[復旧を有効にする]** を選択します。</p>
 
-<p>After protection is enabled, you can see the virtual machine in the virtual machines list of the cloud. You can view progress of the enable protection action in the **Jobs** tab.</p>
+<p>保護を有効にした後、クラウド内にある仮想マシンの一覧で、仮想マシンを表示できます。保護を有効化するアクションの進行状況は、**[ジョブ]** タブに表示されます。</p>
 
-![Virtual Machines](./media/hyper-v-recovery-manager-configure-vault/RS_Clouds.png)
+![仮想マシン](./media/hyper-v-recovery-manager-configure-vault/RS_Clouds.png)
 
-<P>Three jobs are created when you enable protection of virtual machines. The Enable Protection job runs. Then after the initial replication completes two more Finalize Protection jobs run. The virtual machine is ready for failover only after these three jobs have completed successfully.</P>
+<P>仮想マシンの保護を有効にすると、3 つのジョブが作成されます。Enable Protection ジョブが実行されます。そして、初期レプリケーションが完了した後に、さらに 2 つの Finalize Protection ジョブが実行されます。仮想マシンは、これらの 3 つのジョブが正常に完了するまでは、フェールオーバーできる状態になりません。</P>
 
-<h2><a id="recoveryplans"></a>Step 7: Configure and run recovery plans</h2>
-A recovery plan gathers virtual machines together into groups so that they can be processed as a single unit, and specifies the order in which groups should fail over. In addition to defining groups of virtual machines, you can customize recovery plans to run automatic scripts, or to wait for confirmation of manual actions. To create a recovery plan, do the following: 
+<h2><a id="recoveryplans"></a>ステップ 7: 復旧計画の構成と実行</h2>
+復旧計画では、複数の仮想マシンをグループ化し、その結果、これらの仮想マシンは 1 つのユニットとして処理できるようになります。また、このグループがフェールオーバーされる順序も指定します。仮想マシンのグループ化に加えて、復旧計画をカスタマイズして、自動スクリプトを実行することや、手動アクションの確認画面が表示されるまで待つように設定することができます。復旧計画を作成するには、以下の手順を実行します。
 
-1. On the Quick Start page, click **Create Recovery Plan**.
-2. On the Specify the Recovery Page Name and Target page, type in a name and the source and target VMM servers. If you are deploying Hyper-V Recovery Manager on a single VMM server then the source and target server will be the same. The source VMM server must contain virtual machines with protection enabled.
+1. [クイック スタート] ページで **[復旧計画の作成]** をクリックします。
+2. [復旧計画の名前とターゲットを指定します] ページで、名前と、ソース VMM サーバーおよびターゲット VMM サーバーを入力します。単一の VMM サーバーで Hyper-V 回復マネージャーを展開している場合は、ソースとターゲットのサーバーが同一になります。ソース VMM サーバーには、保護が有効になっている仮想マシンを含める必要があります。
 
-	![Create Recovery Plan](./media/hyper-v-recovery-manager-configure-vault/RS_RecoveryPlan1.png)
-3. In the Select Virtual Machines page, select virtual machines to add to the recovery plan. These are added to the recovery plan default group (Group 1).
-4. Click the check mark to create the recovery plan. Recovery plans you create can be deleted on the **Recovery Plans** tab.
+	![復旧計画の作成](./media/hyper-v-recovery-manager-configure-vault/RS_RecoveryPlan1.png)
+3. [仮想マシンの選択] ページで、復旧計画に追加する仮想マシンを選択します。これらは、復旧計画の既定のグループ (グループ 1) に追加されます。
+4. チェック マークをクリックして、復旧計画を作成します。**[復旧計画]** タブで、作成した復旧計画を削除することもできます。
 
-	![Recovery Plan VMs](./media/hyper-v-recovery-manager-configure-vault/RS_RecoveryPlan2.png)
-
-
-After creating a recovery plan, you can perform the following actions:
-
-- Customize the plan. You can add new groups to a recovery plan, or add virtual machines to a group. You can define custom actions in the form of scripts and manual actions that are completed before and after specified groups. Group names are incremental. After the default recovery plan Group 1, you create Group 2, and then Group 3, and so on. Virtual machines fail over according to group order. For more information about customizing recovery plans, see <a href="http://go.microsoft.com/fwlink/?LinkId=378271">Step 6: Create and customize recovery plans</a> in the Deployment Guide.
-- Run a test failover.
+	![復旧計画の VM](./media/hyper-v-recovery-manager-configure-vault/RS_RecoveryPlan2.png)
 
 
-<h3><a id="run"></a>Run recovery plans</h3>
-Recovery plans can run as part of a proactive test or planned failover, or during an unplanned failover. This walkthrough describes how to run a test failover. For information about the other types of failover, read the <a href="hhttp://go.microsoft.com/fwlink/?LinkId=378272">Operations and monitoring guide</a>.
+復旧計画を作成すると、次の操作を実行できます。
 
-<h3><a id="protect"></a>Run the plan.</h3>
+- 計画をカスタマイズします。新しいグループを復旧計画に追加したり、グループに仮想マシンを追加したりできます。指定したグループの前後に完了するスクリプトと手動アクションという形式で、カスタム アクションを定義できます。グループ名は番号が自動的に増加します。既定の復旧計画グループ 1 の後は、グループ 2、グループ 3 の順に作成されます。仮想マシンは、グループの順序に従ってフェールオーバーされます。復旧計画をカスタマイズする方法の詳細については、展開ガイドの「<a href="http://go.microsoft.com/fwlink/?LinkId=378271">ステップ 6. 復旧計画の作成とカスタマイズ</a>」を参照してください 。
+- テスト フェールオーバーを実行します。
 
-Run a test failover to verify your recovery plan in a test environment. A test failover is useful to verify that your recovery plan and virtual machine failover strategy are working as expected.  Test failover simulates your failover and recovery mechanism in an isolated network. 
 
-<h5><a id="networkrecommendations"></a>Before you start</h5>
-When a test failover is triggered, you are requested to specify how test virtual machines should be connected to networks after the failover. 
+<h3><a id="run"></a>復旧計画の実行</h3>
+復旧計画は、事前対応的なテストまたは計画されたフェールオーバーの一部として実行することも、計画されていないフェールオーバー時に実行することもできます。このチュートリアルでは、テスト フェイル オーバーを実行する方法について説明します。他の種類のフェイル オーバーの詳細については、「<a href="hhttp://go.microsoft.com/fwlink/?LinkId=378272">Operations and monitoring guide</a>」を参照してください。
+
+<h3><a id="protect"></a>計画を実行します。</h3>
+
+復旧計画を確認するために、テスト環境でテスト フェールオーバーを実行します。テスト フェールオーバーは、復旧計画と仮想マシンのフェールオーバー戦略が想定どおりに動作することを確認する場合に便利です。テスト フェールオーバーは、孤立したネットワークでフェールオーバーと復旧のシミュレーションを実行します。
+
+<h5><a id="networkrecommendations"></a>開始する前に</h5>
+テスト フェールオーバーがトリガーされると、フェールオーバー後のテスト仮想マシンのネットワークへの接続方法を指定するよう要求されます。
 <UL>
-<LI>If you want to use an existing network we recommend that you create a separate logical network  that is not used in production for this purpose.</LI>
-<LI>If you select the option to automatically create a test VM network, the temporary networks and test virtual machines are cleaned up automatically after the test failover is complete.</LI>
-<LI>If you are using a virtual LAN (VLAN) based logical network, ensure that the network sites you add to the logical network are isolated. </LI>
-<LI>If you are using a Windows Network Virtualization-based logical network, Hyper-V Recovery Manager will automatically create isolated VM networks.</LI>
+<LI>既存のネットワークを使用する場合は、このテストを実行する目的で、運用環境で使用していない独立した論理ネットワークを作成することをお勧めします。</LI>
+<LI>テスト VM ネットワークを自動的に作成するオプションを選択した場合は、テスト フェールオーバーが完了した後、一時的なネットワークとテスト仮想マシンが自動的にクリーンアップされます。</LI>
+<LI>仮想 LAN (VLAN) ベースの論理ネットワークを使用している場合は、論理ネットワークに追加するネットワーク サイトが孤立していることを確認します。</LI>
+<LI>Windows ネットワーク仮想化ベースの論理ネットワークを使用している場合、Hyper-V 回復マネージャーによって孤立した VM ネットワークが自動的に作成されます。</LI>
 </UL>
 
 
-<h5><a id="runtest"></a>Run a test failover</h5>
-Run a test failover for a recovery plan as follows:
+<h5><a id="runtest"></a>テスト フェールオーバーの実行</h5>
+復旧計画のテスト フェールオーバーを、次のように実行します。
 
 <OL>
-<LI>On the **Recovery Plans** tab, select the required recovery plan.</LI>
-<LI>To initiate the failover, click the **Test Failover** button.</LI>
-<LI>On the Confirm Test Failover page, specify how virtual machines should be connected to networks after the test failover, as follows:</LI>
+<LI>**[復旧計画]** タブで、必要な復旧計画をクリックします。</LI>
+<LI>フェールオーバーを開始するには、**[テスト フェールオーバー]** ボタンをクリックします。</LI>
+<LI>[テスト フェールオーバーの確認] ページで、テスト フェールオーバー後の仮想マシンのネットワークへの接続方法を、次のように指定します。</LI>
 <UL>
-<LI>**None**—Select this setting to specify that VM networks should not be used in the test failover. Use this option if you want to test individual virtual machines rather than your network configuration. It also provides a quick glance of how test failover functionality works. Test virtual machines will not be connected to networks after a failover.</LI>
-<LI>**Use existing**—Use this option if you have already created and isolated a VM network to use for test failover. After the failover all test virtual machines used in the test failover will be connected to the network specified in **VM Network**.</LI>
-<LI>**Create automatically**—Select this setting to specify that Hyper-V Recovery Manager should automatically create a VM network based on the setting you specify in Logical Network, and its related network sites. Use this option if the recovery plan uses more than one VM network. In the case of Windows Network Virtualization networks, this option can be used to automatically create VM networks with the same settings (subnets and IP address pools) of those in the network of the replica virtual machine. These VM networks are cleaned up automatically after the test failover is complete.</LI>
+<LI>**[なし]** - テスト フェールオーバーで VM ネットワークを使用しないように指定するには、この設定を選択します。このオプションは、ネットワーク構成ではなく、個々の仮想マシンをテストする場合に使用します。これを選択すると、テスト フェールオーバーが機能するしくみの概要が表示されます。テスト仮想マシンは、フェールオーバー後にネットワークに接続されません。</LI>
+<LI>**既存のものを使用** - このオプションは、テスト フェールオーバーに使用する VM ネットワークを既に作成し、孤立させた場合に使用します。フェールオーバー後に、テスト フェールオーバーで使用したすべてのテスト仮想マシンは、**[VM ネットワーク]** で指定したネットワークに接続されます。</LI>
+<LI>**自動的に作成** - [論理ネットワーク] で指定した設定と、それに関連するネットワーク サイトに基づいて、Hyper-V 回復マネージャーが VM ネットワークを自動的に作成するよう指定する場合は、この設定を選択します。このオプションは、復旧計画で複数の VM ネットワークを使用する場合に使用します。Windows ネットワーク仮想化ネットワークの場合は、このオプションを使用して、レプリカ仮想マシンのネットワーク内のものと同じ設定 (サブネットおよび IP アドレス プール) の VM ネットワークを自動的に作成できます。これらの VM ネットワークは、テスト フェールオーバーの完了後に自動的にクリーンアップされます。</LI>
 </UL>
 </OL>
 
 
-<P>After the test failover is complete, do the following:</P>
+<P>テスト フェールオーバーが完了したら、以下の手順を実行します。</P>
 <OL>
-<LI>Verify that the virtual machines start successfully.</LI>
-<LI>After verifying that virtual machines start successfully, complete the test failover to clean up the isolated environment. If you selected to automatically create VM networks, clean up deletes all the test virtual machines and test networks.</LI>
-<LI>Click **Notes** to record and save any observations associated with the test failover.</LI>
-<LI>When a test failover is initiated for a recovery plan, the failover process is displayed on the details page of the recovery plan. You can see individual test failover steps and their status, and view or create notes associated with the test failover. In addition, details of failover jobs can be viewed by looking at the failover job on the **Jobs** tab. The details display each job associated with the failover, its status, when it was started, and its duration. You can export a job in the failover list into an Excel spreadsheet.</LI>
+<LI>仮想マシンが正常に起動することを確認します。</LI>
+<LI>仮想マシンが正常に起動することを確認したら、テスト フェールオーバーを完了して、孤立した環境をクリーンアップします。VM ネットワークの自動作成を選択した場合は、クリーンアップにより、すべてのテスト仮想マシンとテスト ネットワークが削除されます。</LI>
+<LI>**[メモ]** をクリックして、テスト フェールオーバーに関連する監察結果をすべて記録し、保存します。</LI>
+<LI>復旧計画に対応するテスト フェールオーバーを開始すると、フェールオーバー プロセスが、復旧計画の詳細ページに表示されます。テスト フェールオーバーの個々のステップとその状態を確認し、テスト フェールオーバーに関連するメモを表示したり、作成したりできます。また、フェールオーバー ジョブの詳細を、**[ジョブ]** タブのフェールオーバー ジョブで確認することもできます。詳細には、フェールオーバーに関連する各ジョブ、その状態、開始日時、期間が表示されます。フェールオーバーの一覧にあるジョブは、Excel スプレッドシートにエクスポートできます。</LI>
 </OL>
 
 
-Note the following:
+以下の点に注意してください。
 
-- On the Confirm Test Failover page, details of the VMM server on which the test virtual machines will be created are displayed.  
-- You can follow the progress of test failover jobs on the **Jobs** tab. 
-
-
+- [テスト フェールオーバーの確認] ページには、テスト仮想マシンの作成先になる VMM サーバーの詳細が表示されます。
+- テスト フェールオーバー ジョブの進行状況は、**[ジョブ]** タブで確認できます。
 
 
 
 
-<h2><a id="jobsdashboard"></a>Step 8:Monitoring</h2>
-<h3><a id="jobsdashboard"></a>Using the Jobs tab and Dashboard</h3>
-
-<h4><a id="jobs"></a>Jobs</h4>
-The **Jobs** tab displays the main tasks performed by the Hyper-V Recovery Manager vault, including configuring protection for a cloud; enabling and disabling protection for a virtual machine; running a failover (planned, unplanned, or test); committing an unplanned failover; and configuring reverse replication. 
-
-On the **Jobs** tab, you can do the following tasks:
 
 
+<h2><a id="jobsdashboard"></a>ステップ 8: 監視</h2>
+<h3><a id="jobsdashboard"></a>[ジョブ] タブとダッシュボードの使用</h3>
 
-- **Run a job query**— You can run a query to retrieve jobs that match specified criteria. You can filter for jobs using the following parameters:
+<h4><a id="jobs"></a>ジョブ</h4>
+**[ジョブ]** タブには、Hyper-V 回復マネージャー コンテナーで実行されるメイン タスクが表示されます。これには、クラウドに対する保護の構成、仮想マシンに対する保護の有効化と無効化、フェールオーバー (計画された、計画されていない、またはテスト) の実行、計画されていないフェールオーバーのコミット、およびレプリケーションの反転の構成が含まれます。
 
-- 	Find jobs that ran on a specific VMM server.
-- 	Find jobs that were performed on a cloud, virtual machine, network, recovery plan in a cloud, or on all of these.
-- 	Identify jobs that happened during a specific date and time range.
-
-Note that a query can return a maximum of 200 jobs, so we recommend you narrow query parameters to return less than the maximum.
-
-- **Get job details**—You can click on a job in the **Jobs** list in order to get more details. The details include the job name, its status, when it started and how long it lasted. On the Job details tab you can export the job details to an Excel spreadsheet, or attempt to restart a failed, skipped, or cancelled job. 
-- **Export Jobs**—You can export the results of a job query to an Excel spreadsheet.
-- **Restart**—You can restart jobs that failed to attempt to run them again.
-- **Error Details**—For failed jobs you can click **Error Details** to get a list of errors for the job. Possible causes and recommendations are displayed for each error. The error description can be copied to the clipboard for troubleshooting.
+**[ジョブ]** タブでは、次のタスクを実行できます。
 
 
->The **Jobs** tab provides the following information:
+
+- **ジョブ クエリの実行** - 指定した条件に一致するジョブを取得するクエリを実行できます。次のパラメーターを使用して、ジョブをフィルター処理することもできます。
+
+-	特定の VMM サーバーで実行されたジョブを見つけます。
+-	クラウド、仮想マシン、ネットワーク、クラウドの復旧計画、またはこれらすべてで実行されたジョブを見つけます。
+-	特定の日付および時刻の範囲内に発生したジョブを特定します。
+
+クエリでは最大 200 件のジョブが返されるため、この最大値より少ないジョブが返されるようにパラメーターを絞り込むことをお勧めします。
+
+- **ジョブの詳細の取得** - **[ジョブ]** リストでジョブをクリックして詳細を取得できます。ジョブの詳細には、ジョブ名、そのステータス、開始日時、および継続期間が含まれます。[ジョブの詳細] タブで、ジョブの詳細を Excel スプレッドシートにエクスポートできます。また、失敗、スキップ済み、または取り消し済みのジョブの再開を試みることができます。
+- **ジョブのエクスポート** - ジョブ クエリの結果を Excel スプレッドシートにエクスポートできます。
+- **再開** - 失敗したジョブを再開して再実行を試みることができます。
+- **エラーの詳細** - 失敗したジョブについては、**[エラーの詳細]** をクリックして、ジョブのエラーのリストを取得できます。各エラーについて、考えられる原因と推奨される対処方法が表示されます。エラーの説明をクリップボードにコピーして、トラブルシューティングに利用することができます。
+
+
+>**[ジョブ]** タブには、次の情報が表示されます。
 <UL>
-<LI>**Name**—The job name</LI>
-<LI>**Item**—The name of the cloud, recovery plan, VMM server, or virtual machine on which the job ran.</LI>
-<LI>**Status**—Job status - completed, canceled, failed, or other</LI>
-<LI>**Type**—Job type</LI>
-<LI>**Started At**—When the job started</LI>
-<LI>**Task Time**—The job duration</LI>
+<LI>**名前** - ジョブ名</LI>
+<LI>**項目** - クラウド、復旧計画、VMM サーバー、またはジョブが実行された仮想マシン。</LI>
+<LI>**状態** - ジョブの状態 (完了、取り消し済み、失敗、その他)</LI>
+<LI>**種類** - ジョブの種類</LI>
+<LI>**開始日時** - ジョブが開始された日時</LI>
+<LI>**タスク時間** - ジョブの期間</LI>
 </UL>
 
-![Jobs tab](./media/hyper-v-recovery-manager-configure-vault/RS_Jobs.png)
+![[ジョブ] タブ](./media/hyper-v-recovery-manager-configure-vault/RS_Jobs.png)
 
 
 
-<h4><a id="protect"></a>Run a job query</h4>
+<h4><a id="protect"></a>ジョブ クエリの実行</h4>
 
-You can run queries to retrieve jobs that match specified criteria, including:
+以下のような条件を指定して、その条件に一致するジョブを取得するクエリを実行できます。
 <UL>
-	<LI>Jobs that ran on a specific VMM server.</LI>
-	<LI>Jobs that were performed on a specific cloud, virtual machine, network, recovery plan, or all of these.</LI>
-	<LI>Jobs that happened during a specific time range.</LI>
+	<LI>特定の VMM サーバーで実行されたジョブ。</LI>
+	<LI>特定のクラウド、仮想マシン、ネットワーク、復旧計画、またはこれらすべてで実行されたジョブ。</LI>
+	<LI>特定の期間に発生したジョブ。</LI>
 </UL>
 	
 
-To run a job query do the following:
+ジョブ クエリを実行するには、以下の手順に従います。
 <OL>
-<LI>Open the **Jobs** tab</LI>
-<LI>In **Server**, specify the VMM server on which the job ran</LI>
-<LI>In **Type**, specify whether the job was performed on a cloud, virtual machine, network, or recovery plan in a cloud.</LI>
-<LI>In **Status**, specify the job status.</LI>
-<LI>In **Duration**, specify the time range in which the job occurred.</LI>
+<LI>**[ジョブ]** タブを開きます</LI>
+<LI>**[サーバー]** で、ジョブの実行に使用した VMM サーバーを指定します。</LI>
+<LI>**[種類]** で、クラウド、仮想マシン、ネットワーク、クラウドの復旧計画のどれがジョブの実行対象であったかを指定します。</LI>
+<LI>**[状態]** で、ジョブの状態を指定します。</LI>
+<LI>**[期間]** で、ジョブが発生した期間を指定します。</LI>
 </OL>
 
 
-<h4><a id="dashboard"></a>Dashboard</h4>
-<P>The **Dashboard** tab provides a quick overview of Hyper-V Recovery Manager usage in your organization.  It provides a centralized gateway to view virtual machines protected by Hyper-V Recovery Manager vaults. The Dashboard provided the following functionality:</P>
+<h4><a id="dashboard"></a>ダッシュボード</h4>
+<P>**[ダッシュボード]** タブには、組織における Hyper-V 回復マネージャー使用状況の概要が表示されます。これは、Hyper-V 回復マネージャー コンテナーで保護される仮想マシンを表示する一元的ゲートウェイです。ダッシュボードでは、次の機能を使用できます。</P>
 
-On the **Dashboard** tab you can do the following tasks:
-
-
-
-- **Download Provider**—Download the Hyper-V Recovery Manager provider for installation on a VMM server.
-- **Manage Certificate**—Modify settings for the certificate associated with the vault.
-- **Delete—**Delete a vault.
-- **Resynchronize virtual machines**—If Hyper-V Recovery Manager detects that any primary and recovery virtual machines are not synchronized as expected, you can view a list of the relevant virtual machines and select any that you want to attempt to resynchronize from the Dashboard. 
+**[ダッシュボード]** タブで、次のタスクを実行できます。
 
 
-The **Dashboard** tab provides the following information:
+
+- **[プロバイダーのダウンロード]** - VMM サーバーにインストールする Hyper-V 回復マネージャー プロバイダーをダウンロードします。
+- **証明書の管理** - コンテナーに関連付けられた証明書の設定を変更します。
+- **削除** - コンテナーを削除します。
+- **仮想マシンの再同期化** - Hyper-V 回復マネージャーで、プライマリおよび復旧仮想マシンが想定どおりに同期されていないことを検出した場合は、関連する仮想マシンの一覧を表示し、ダッシュボードで再同期するものを選択できます。
+
+
+**[ダッシュボード]** タブには、次の情報が表示されます。
 <UL>
-<LI**>Usage Overview**—Shows the number of virtual machines that have protection managed by Hyper-V Recovery Manager.</LI>
-<LI>**Quick Glance**—Displays crucial configuration information for recovery services and the Hyper-V Recovery Manager vault. It tells you whether the vault is online, which certificate is assigned to it, when the certificate expires, and subscription details for the service.</LI>
-<LI>**Recent Jobs**—Shows jobs that have succeeded or failed in the last 24 hours, or jobs that are in progress or waiting for action.</LI>
-<LI>**Issues**—The dashboard shows information about issues with VMM server connections, and issues with cloud configuration settings or synchronization of virtual machine replication. You can get more details of an issue, view jobs associated with the issue, or try to resynchronize virtual machines.</LI>
+<LI**>使用状況の概要** - Hyper-V 回復マネージャーで保護された仮想マシンの数が表示されます。</LI>
+<LI>**概要** - 復旧サービスと Hyper-V 回復マネージャー コンテナーに関する重大な構成情報が表示されます。コンテナーがオンラインかどうか、コンテナーに割り当てられている証明書、証明書の有効期限、サービスのサブスクリプションの詳細を確認できます。</LI>
+<LI>**最近のジョブ** - 最近 24 時間以内に成功または失敗したジョブ、あるいは進行中またはアクションの待機中であるジョブが表示されます。</LI>
+<LI>**問題点** - ダッシュボードには、VMM サーバー接続の問題や、クラウド構成設定または仮想マシン レプリケーションの同期の問題に関する情報が表示されます。問題の詳細情報や、問題に関連付けられたジョブを表示したり、仮想マシンの再同期を試みたりできます。</LI>
 </UL>
 
-![Dashboard](./media/hyper-v-recovery-manager-configure-vault/RS_Dashboard.png)
+![ダッシュボード](./media/hyper-v-recovery-manager-configure-vault/RS_Dashboard.png)
 
-<h2><a id="next"></a>Next steps</h2>
+<h2><a id="next"></a>次のステップ</h2>
 <UL>
-<LI>To plan and deploy Hyper-V Recovery Manager in a full production environment, see <a href="http://go.microsoft.com/fwlink/?LinkId=321294">Planning Guide for Hyper-V Recovery Manager</a> and <a href="http://go.microsoft.com/fwlink/?LinkId=321295">Deployment Guide for Hyper-V Recovery Manager</a>.</LI>
-<LI>For questions, visit the <a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services Forum</a>.</LI> 
+<LI>完全な運用環境で Hyper-V 回復マネージャーの計画と展開を実行するには、「<a href="http://go.microsoft.com/fwlink/?LinkId=321294">Hyper-V 回復マネージャー計画ガイド
+</a>」と「<a href="http://go.microsoft.com/fwlink/?LinkId=321295">Hyper-V 回復マネージャー展開ガイド</a>」を参照してください。</LI>
+<LI>疑問がある場合は、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure 復旧サービス フォーラム</a>にアクセスします。</LI>
 </UL>
+

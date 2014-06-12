@@ -1,117 +1,117 @@
-<properties linkid="develop-node-how-to-sql-database" urlDisplayName="SQL Database" pageTitle="How to use SQL Database (Node.js) - Azure feature guide" metaKeywords="" description="Learn how to use Azure SQL Database from Node.js." metaCanonical="" services="sql-database" documentationCenter="Node.js" title="How to Access Azure SQL Database from Node.js" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-node-how-to-sql-database" urlDisplayName="SQL データベース" pageTitle="SQL データベースの使用方法 (Node.js) - Azure の機能のガイド" metaKeywords="" description="Node.js から Azure SQL データベースを使用する方法について説明します。" metaCanonical="" services="sql-database" documentationCenter="Node.js" title="Node.js から Azure SQL データベースにアクセスする方法" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
 
-#How to Access Azure SQL Database from Node.js
+#Node.js から Azure SQL データベースにアクセスする方法
 
-This guide will show you the basics of using the Microsoft Driver for Node.JS for SQL Server to access an Azure SQL Database. The scenarios covered include **creating a SQL Database** and **connecting to a SQL Database**. This guide covers creating a SQL Database from the [Preview Management Portal][preview-portal].
+このガイドでは、Microsoft Driver for Node.JS for SQL Server を使用して Azure SQL データベースにアクセスする方法の基本について説明します。紹介するシナリオは、**SQL データベースの作成**および **SQL データベースへの接続**です。このガイドでは、[プレビュー管理ポータル][preview-portal]からの SQL データベースの作成を取り上げます。
 
-##Table of contents
+##目次
 
-* [Concepts](#Concepts)
-* [How to: Setup your environment](#Setup)
-* [How to: Create a SQL Database](#CreateServer)
-* [How to: Get SQL Database connection information](#ConnectionInfo)
-* [How to: Connect to a SQL Database instance](#Connect)
-* [Azure deployment considerations](#Deploy)
-* [Next steps](#NextSteps)
+* [概念](#Concepts)
+* [方法: 環境を設定する](#Setup)
+* [方法: SQL データベースを作成する](#CreateServer)
+* [方法: SQL データベース接続情報を取得する](#ConnectionInfo)
+* [方法: SQL データベース インスタンスに接続する](#Connect)
+* [Azure の展開に関する考慮事項](#Deploy)
+* [次のステップ](#NextSteps)
 
-<h2><a id="Concepts"></a>Concepts</h2>
+<h2><a id="Concepts"></a>概念</h2>
 
-###What is Azure SQL Database
+###Azure SQL データベースとは
 
-Azure SQL Database provides a relational database management system for Azure, and is based on SQL Server technology. With SQL Database, you can easily provision and deploy relational database solutions to the cloud, and take advantage of a distributed data center that provides enterprise-class availability, scalability, and security with the benefits of built-in data protection and self-healing.
+Azure SQL データベースは、Azure 用のリレーショナル データベース管理システムを提供し、SQL Server テクノロジを基盤としています。SQL データベースを使用すると、リレーショナル データベース ソリューションを簡単に準備してクラウドに展開することができ、分散したデータ センターを活用して、組み込みのデータ保護と自己復旧機能のメリットによるエンタープライズ クラスの可用性、拡張性、およびセキュリティを確保できます。
 
-##What is the Microsoft Driver for Node.JS for SQL Server
+##Microsoft Drivers for Node.js for SQL Server とは
 
-The Microsoft Driver for Node.JS for SQL Server allows developers to access data stored in Microsoft SQL Server or Azure SQL Database from a Node.js application. The driver is currently a preview release only; additional features will be integrated into the project as they are completed. For more information on the driver, see the Microsoft Driver for Node.JS for SQL Server project's [Github page] and the associated [Wiki].
-
-<div class="dev-callout">
-<b>Note</b>
-<p>The Microsoft Driver for Node.JS for SQL Server is currently available as a preview release, and relies on run-time components that are only available on the Microsoft Windows and Azure operating systems.</p>
-</div>
-
-<h2><a id="Setup"></a>How to: Setup your environment</h2>
-
-###Install the SQL Server Native Client
-
-The Microsoft SQL Server Driver for Node.js relies on the SQL Server Native Client. While the native client is automatically available when the application is deployed to Azure, it may not be present in your local development environment. You can install the SQL Server Native Client from the [Microsoft SQL Server 2012 Feature Pack] download page.
+Microsoft Driver for Node.JS for SQL Server によって、開発者は Node.js アプリケーションから、Microsoft SQL Server または Azure SQL Database に格納されたデータにアクセスできます。このドライバーは現在プレビュー リリースのみです。完成時には追加の機能がプロジェクトに組み込まれます。このドライバーの詳細については、Microsoft Driver for Node.JS for SQL Server プロジェクトの [Github ページ]および関連する [Wiki] を参照してください。
 
 <div class="dev-callout">
-<b>Note</b>
-<p>The SQL Server Native Client is only available for the Microsoft Windows operating system. While this driver is available natively on Azure, you will be unable to test your application locally using the information in this article if you are developing on an operating system other than Microsoft Windows.</p>
+<b>注:</b>
+<p>Microsoft Driver for Node.JS for SQL Server は現在、プレビュー リリースとして利用することができ、Microsoft Windows および Azure オペレーティング システムでのみ利用可能なランタイム コンポーネントに依存しています。</p>
 </div>
 
-###Install Node.js
+<h2><a id="Setup"></a>方法: 環境を設定する</h2>
 
-Node.js can be installed from [http://nodejs.org/#download](http://nodejs.org/#download). If an installation package is not available for your operating system, you can build Node.js from source.
+###SQL Server Native Client をインストールする
 
-<h2><a id="CreateServer"></a>How to: Create a SQL Database</h2>
+Microsoft SQL Server Driver for Node.js は SQL Server Native Client に依存しています。この Native Client は、アプリケーションを Azure に展開したときに自動的に利用できるようになりますが、ローカルの開発環境には存在していない可能性があります。SQL Server Native Client は、[Microsoft SQL Server 2012 Feature Pack] のダウンロード ページからインストールできます。
 
-Follow these steps to create an Azure SQL Database:
+<div class="dev-callout">
+<b>注:</b>
+<p>SQL Server Native Client は Microsoft Windows オペレーティング システムでのみ利用できます。このドライバーは Azure でネイティブに利用できますが、Microsoft Windows 以外のオペレーティング システムで開発を行っている場合、この記事の情報に従って、アプリケーションをローカルでテストすることはできません。</p>
+</div>
 
-1. Login to the [Preview Management Portal][preview-portal].
-2. Click the **+ New** icon on the bottom left of the portal.
+###Node.js をインストールする
 
-	![Create New Azure Website][new-website]
+Node.js は [http://nodejs.org/#download](http://nodejs.org/#download) からインストールできます。お使いのオペレーティング システムのインストール パッケージが利用できない場合は、ソースから Node.js を構築できます。
 
-3. Click **SQL Database**, then **Custom Create**.
+<h2><a id="CreateServer"></a>方法: SQL データベースを作成する</h2>
 
-	![Custom Create a new SQL Database][custom-create]
+Azure SQL データベースを作成するには、次のステップに従います。
 
-4. Enter a value for the **NAME** of your database, select the **EDITION** (WEB or BUSINESS), select the **MAX SIZE** for your database, choose the **COLLATION**, and select **NEW SQL Database Server**. Click the arrow at the bottom of the dialog. (Note that if you have created a SQL Database before, you can choose an existing server from the **Choose a server** dropdown.)
+1. [プレビュー管理ポータル][preview-portal]にログインします。
+2. ポータルの左下にある **[+ 新規]** アイコンをクリックします。
 
-	![Fill in SQL Database settings][database-settings]
+	![新しい Azure の Web サイトの作成][new-website]
 
-5. Enter an administrator name and password (and confirm the password), choose the region in which your new SQL Database will be created, and check the `Allow Azure Services to access the server` box.
+3. **[SQL データベース]**、**[カスタム作成]** の順にクリックします。
 
-	![Create new SQL Database server][create-server]
+	![新しい SQL データベースのカスタム作成][custom-create]
 
-To see server and database information, click **SQL Databases** in the Preview Management Portal. You can then click on **DATABASES** or **SERVERS** to see relevant information.
+4. データベースの **NAME** の値を入力し、**EDITION** (WEB または BUSINESS) を選択します。データベースの **MAX SIZE** を選択し、**COLLATION** を選択します。**[新しい SQL データベース サーバー]** を選択します ダイアログの下部にある矢印をクリックします。(以前に SQL データベースを作成した場合は、**[サーバー]** ボックスの一覧から既存のサーバーを選択できることに注意してください)
 
-![View server and database information][sql-dbs-servers]
+	![SQL データベースの設定の指定][database-settings]
 
-<h2><a id="ConnectionInfo"></a>How to: Get SQL Database connection information</h2>
+5. 管理者の名前とパスワードを入力 (およびパスワードを確認) し、新しい SQL データベースを作成するリージョンを選択して、`Azure サービスにサーバーへのアクセスを許可します` チェック ボックスをオンにします。
 
-To get SQL Database connection information, click on **SQL DATABASES** in the portal, then click on the name of the database.
+	![新しい SQL データベース サーバーの作成][create-server]
 
-![View database information][go-to-db-info]
+サーバーとデータベースの情報を表示するには、プレビュー管理ポータルで **[SQL データベース]** をクリックします。**DATABASES** または **SERVERS** をクリックすると、該当する情報が表示されます。
 
-Then, click on **Show connection strings**.
+![サーバーとデータベースの情報の表示][sql-dbs-servers]
 
-![Show connection strings][show-connection-string]
+<h2><a id="ConnectionInfo"></a>方法: SQL データベース接続情報を取得する</h2>
 
-In the ODBC section of the resulting window, make note of the values for connection string. This is the connection string you will use when connecting to the SQL Database from your node application. Your password will be the password you used when creating the SQL Database.
+SQL データベースの接続情報を取得するには、ポータルで **[SQL データベース]** をクリックし、データベースの名前をクリックします。
 
-<h2><a id="Connect"></a>How to: Connect to a SQL Database instance</h2>
+![データベース情報の表示][go-to-db-info]
 
-###Install node-sqlserver
+次に、**[接続文字列の表示]** をクリックします。
 
-The Microsoft Driver for Node.JS for SQL Server is available as the node-sqlserver native module. A binary version of this module is available from the [download center]. To use the binary version, perform these steps:
+![接続文字列の表示][show-connection-string]
 
-1. Extract the binary archive to the **node\_modules** directory for your application.
-2. Run the **node-sqlserver-install.cmd** file extracted from the archive. This will create a **node-sqlserver** subdirectory under **node\_modules** and move the driver files into this new directory structure.
-3. Delete the **node-sqlserver-install.cmd** file, as it is no longer needed.
+表示されたウィンドウの [ODBC] セクションで、接続文字列の値を書き留めます。これは、ノード アプリケーションから SQL データベースに接続するときに使用する接続文字列です。パスワードは SQL データベースの作成時に使用したパスワードになります。
+
+<h2><a id="Connect"></a>方法: SQL データベース インスタンスに接続する</h2>
+
+###node-sqlserver をインストールする
+
+Microsoft Driver for Node.JS for SQL Server は node-sqlserver ネイティブ モジュールとして入手できます。このモジュールのバイナリ バージョンは[ダウンロード センター]から入手できます。バイナリ バージョンを使用するには、次のステップに従う必要があります。
+
+1. バイナリ アーカイブをアプリケーションの **node\_modules** ディレクトリに展開します。
+2. アーカイブから展開された **node-sqlserver-install.cmd** ファイルを実行します。これにより、**node\_modules** の下に **node-sqlserver** サブディレクトリが作成され、ドライバー ファイルがこの新しいディレクトリ構造に移動されます。
+3. **node-sqlserver-install.cmd** ファイルは不要になったため削除します。
 
   
 
 <div class="dev-callout">
-<b>Note</b>
-<p>You can also install the node-sqlserver module using the npm utility; however this will invoke node-gyp to build a binary version of the module on your system.</p>
+<b>注:</b>
+<p>npm ユーティリティを使用して node-sqlserver モジュールをインストールすることもできますが、この場合は node-gyp を呼び出してシステム上にモジュールのバイナリ バージョンを構築します。</p>
 </div>
 
-###Specify the connection string
+###接続文字列を指定する
 
-To use the node-sqlserver, you must require it in your application and specify a connection string. The connection string should be the ODBC value returned in the [How to: Get SQL Database connection information](#ConnectionInfo) section of this article. The code should appear similar to the following:
+node-sqlserver を使用するには、アプリケーション内にこのモジュールがあり、接続文字列を指定する必要があります。接続文字列は、この記事の「[方法: SQL データベース接続情報を取得する](#ConnectionInfo)」で返される ODBC 値です。コードは次のようになります。
 
     var sql = require('node-sqlserver');
 	var conn_str = "Driver={SQL Server Native Client 10.0};Server=tcp:{dbservername}.database.windows.net,1433;Database={database};Uid={username};Pwd={password};Encrypt=yes;Connection Timeout=30;";
 
-###Query the database
+###データベースのクエリを実行する
 
-Queries can be performed by specifying a Transact-SQL statement with the **query** method. The following code creates an HTTP server and returns data from the **ID**, **Column1**, and **Column2** rows in the **Test** table when you view the web page:
+クエリを実行するには、Transact-SQL ステートメントを **query** メソッドと共に指定します。次のコードは、HTTP サーバーを作成し、Web ページを表示するときに、**Test** テーブルの **ID**、**Column1**、および **Column2** 行からデータを返します。
 
 	var http = require('http')
 	var port = process.env.port||3000;
@@ -131,7 +131,7 @@ Queries can be performed by specifying a Transact-SQL statement with the **query
 	    });
 	}).listen(port);
 
-While the above example illustrates how to return all rows at once in the results collection, you can also return a statement object that allows you to subscribe to events. This allows you to receive individual rows and columns as they are returned. The following example demonstrates how to do this:
+前の例では、結果のコレクションで一度にすべての行を返す方法を示しましたが、イベントをサブスクライブできるようにするステートメント オブジェクトを返すこともできます。これにより、返されたときに個々の行および列を受け取ることができます。次の例に、この方法を示します。
 
 	var stmt = sql.query(conn_str, "SELECT * FROM TestTable");
 	stmt.on('meta', function (meta) { console.log("We've received the metadata"); });
@@ -140,39 +140,39 @@ While the above example illustrates how to return all rows at once in the result
 	stmt.on('done', function () { console.log("All done!"); });
 	stmt.on('error', function (err) { console.log("We had an error: " + err); });
 
-<h2><a id="Deploy"></a>Azure deployment considerations</h2>
+<h2><a id="Deploy"></a>Azure の展開に関する考慮事項</h2>
 
 <div class="dev-callout">
-<b>Note</b>
-<p>The following information is based off of a preview release of the Microsoft Driver for Node.JS for SQL Server. The information in this section may not be the most recent information on using the node-sqlserver module with Azure. For the most recent information on the <a href="https://github.com/WindowsAzure/node-sqlserver">Microsoft Driver for Node.JS for SQL Server project page</a> on Github.</p>
+<b>注:</b>
+<p>次の情報は、Microsoft Driver for Node.JS for SQL Server のプレビュー リリースに基づいています。このセクションの情報は、Azure での node-sqlserver モジュールの使用に関する最新情報ではない可能性があります。最新情報については、Github の <a href="https://github.com/WindowsAzure/node-sqlserver">Microsoft Driver for Node.JS for SQL Server プロジェクトのページ</a>を参照してください。</p>
 </div>
 
-Azure will not dynamically install the node-sqlserver module at runtime, so you must ensure that your application deployment includes a binary version of the module. You can verify that your deployment does contain a binary version of the module by ensuring that the following directory structure exists, and contains the files described below:
+Azure では、実行時に node-sqlserver モジュールを動的にインストールしないため、アプリケーションの展開にバイナリ バージョンのモジュールが含まれていることを確認する必要があります。次のディレクトリ構造が存在し、以下に示すファイルが格納されていることを確認することによって、展開にこのモジュールのバイナリ バージョンが含まれていることを確認できます。
 
 	application directory
 		node_modules
 			node-sqlserver
 				lib
 
-The **node-sqlserver** directory should contain a **package.json** file. The **lib** directory should contain a **sql.js** and a **sqlserver.node** file, which is the compiled form of the node-sqlserver module.
+**node-sqlserver**ディレクトリに **package.json** ファイルを含める必要があります。**lib** ディレクトリに **sql.js** ファイルと **sqlserver.node** ファイル (node-sqlserver モジュールのコンパイル済みの形式) が格納されている必要があります。
 
-For more information on deploying a Node.js application to Azure, see [Create and deploy a Node.js application to an Azure Web Site] and [Node.js Cloud Service].
+Node.js アプリケーションの Azure への展開の詳細については、[Node.js アプリケーションの作成と Azure の Web サイトへの展開]、および [Node.js クラウド サービスへの展開]に関するページを参照してください。
 
-<h2><a id="NextSteps"></a>Next steps</h2>
+<h2><a id="NextSteps"></a>次のステップ</h2>
 
-* [Introducing the Microsoft Driver for Node.JS for SQL Server]
-* [Microsoft Driver for Node.js for SQL Server on Github.com]
+* [Microsoft Drivers for Node.js for SQL Server の概要]
+* [Github.com 上の Microsoft Driver for Node.js for SQL Server の概要]
 
-[Node.js Cloud Service]: /en-us/develop/nodejs/tutorials/getting-started/
-[Create and deploy a Node.js application to an Azure Web Site]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)/
-[Introducing the Microsoft Driver for Node.JS for SQL Server]: http://blogs.msdn.com/b/sqlphp/archive/2012/06/08/introducing-the-microsoft-driver-for-node-js-for-sql-server.aspx
-[Github page]: https://github.com/WindowsAzure/node-sqlserver
-[Microsoft Driver for Node.js for SQL Server on Github.com]: https://github.com/WindowsAzure/node-sqlserver
+[Node.js クラウド サービス]: /ja-jp/develop/nodejs/tutorials/getting-started/
+[Node.js アプリケーションの作成と Azure の Web サイトへの展開]: /ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
+[Microsoft Drivers for Node.js for SQL Server の概要]: http://blogs.msdn.com/b/sqlphp/archive/2012/06/08/introducing-the-microsoft-driver-for-node-js-for-sql-server.aspx
+[Github ページ]: https://github.com/WindowsAzure/node-sqlserver
+[Github.com 上の Microsoft Driver for Node.js for SQL Server の概要]: https://github.com/WindowsAzure/node-sqlserver
 [Wiki]: https://github.com/WindowsAzure/node-sqlserver/wiki
-[Installing Python and the SDK]: /en-us/develop/python/common-tasks/install-python/
-[Microsoft SQL Server 2012 Feature Pack]: http://www.microsoft.com/en-us/download/details.aspx?id=29065
+[Python と SDK のインストール]: /ja-jp/develop/python/common-tasks/install-python/
+[Microsoft SQL Server 2012 Feature Pack]: http://www.microsoft.com/ja-jp/download/details.aspx?id=29065
 [preview-portal]: https://manage.windowsazure.com
-[download center]: http://www.microsoft.com/en-us/download/details.aspx?id=29995
+[ダウンロード センター]: http://www.microsoft.com/ja-jp/download/details.aspx?id=29995
 
 [new-website]: ./media/sql-database-nodejs-how-to-use/new_website.jpg
 [custom-create]: ./media/sql-database-nodejs-how-to-use/create_custom_sql_db.jpg
@@ -184,3 +184,4 @@ For more information on deploying a Node.js application to Azure, see [Create an
 
 [go-to-db-info]: ./media/sql-database-nodejs-how-to-use/go-to-db-info.png
 [show-connection-string]: ./media/sql-database-nodejs-how-to-use/show-connection-string.png
+

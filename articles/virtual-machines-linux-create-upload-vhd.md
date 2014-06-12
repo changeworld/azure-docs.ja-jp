@@ -1,75 +1,75 @@
-<properties linkid="manage-linux-common-task-upload-vhd" urlDisplayName="Upload a VHD" pageTitle="Create and upload a Linux VHD in Azure" metaKeywords="Azure VHD, uploading Linux VHD" description="Learn to create and upload an Azure virtual hard disk (VHD) that has the Linux operating system." metaCanonical="" services="virtual-machines" documentationCenter="" title="Creating and Uploading a Virtual Hard Disk that Contains the Linux Operating System" authors="kathydav" solutions="" manager="jeffreyg" editor="tysonn" />
+<properties linkid="manage-linux-common-task-upload-vhd" urlDisplayName="VHD のアップロード" pageTitle="Azure 上での Linux VHD の作成とアップロード" metaKeywords="Azure VHD, Linux VHD のアップロード" description="Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード" authors="kathydav" solutions="" manager="jeffreyg" editor="tysonn" />
 
 
 
 
 
-# Creating and Uploading a Virtual Hard Disk that Contains the Linux Operating System 
+# Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード
 
-A virtual machine in Azure runs the operating system that you choose when you create the virtual machine. Azure stores a virtual machine's operating system in a virtual hard disk in VHD format (a .vhd file). A VHD of an operating system that has been prepared for duplication is called an image. This article shows you how to create your own image by uploading a .vhd file with an operating system you've installed and generalized. For more information about disks and images in Azure, see [Manage Disks and Images](http://msdn.microsoft.com/en-us/library/windowsazure/jj672979.aspx).
+Azure の仮想マシンでは、仮想マシンの作成時に選択したオペレーティング システムが実行されます。Azure は、仮想マシンのオペレーティング システムを VHD 形式 (.vhd ファイル) で仮想ハード ディスクに格納します。複製用に準備されたオペレーティング システムの VHD はイメージと呼ばれます。この記事では、インストールおよび一般化したオペレーティング システムの .vhd ファイルをアップロードすることで、独自のイメージを作成する方法について説明します。Azure でのディスクとイメージの詳細については、「[ディスクおよびイメージの管理](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj672979.aspx)」を参照してください。
 
-**Note**: When you create a virtual machine, you can customize the operating system settings to facilitate running your application. The configuration that you set is stored on disk for that virtual machine. For instructions, see [How to Create a Custom Virtual Machine](/en-us/manage/windows/how-to-guides/custom-create-a-vm/).
+**注**: 仮想マシンを作成するときに、オペレーティング システムの設定をカスタマイズして、アプリケーションを実行しやすくできます。設定した構成は、その仮想マシンのディスクに格納されます。手順については、「[カスタム仮想マシンの作成方法](/ja-jp/manage/windows/how-to-guides/custom-create-a-vm/)」を参照してください。
 
-**Important**: The Azure platform SLA applies to virtual machines running the Linux OS only when one of the endorsed distributions is used with the configuration details as specified in [this article](http://support.microsoft.com/kb/2805216). All Linux distributions that are provided in the Azure image gallery are endorsed distributions with the required configuration.
-
-
-##Prerequisites##
-This article assumes that you have the following items:
-
-- **A management certificate** - You have created a management certificate for the subscription for which you want to upload a VHD, and exported the certificate to a .cer file. For more information about creating certificates, see [Create a Management Certificate for Azure](http://msdn.microsoft.com/library/windowsazure/gg551722.aspx). 
-
-- **Linux operating system installed in a .vhd file.**  - You have installed a supported Linux operating system to a virtual hard disk. Multiple tools exist to create .vhd files. You can use a virtualization solutions such as Hyper-V to create the .vhd file and install the operating system. For instructions, see [Install the Hyper-V Role and Configure a Virtual Machine](http://technet.microsoft.com/library/hh846766.aspx). 
-
-	**Important**: The newer VHDX format is not supported in Azure. You can convert the disk to VHD format using Hyper-V Manager or the convert-vhd cmdlet.
-
-	For a list of endorsed distributions, see [Linux on Azure-Endorsed Distributions](../linux-endorsed-distributions). Alternatively, see the section at the end of this article for [Information for Non Endorsed Distributions][].
-
-- **Linux Azure command-line tool.** If you are using a Linux operating system to create your image, you use this tool to upload the VHD file. To download the tool, see [Azure Command-Line Tools for Linux and Mac](http://go.microsoft.com/fwlink/?LinkID=253691&clcid=0x409).
-
-- **Add-AzureVhd cmdlet**, which is part of the Azure PowerShell module. To download the module, see [Azure Downloads](/en-us/develop/downloads/). For reference information, see [Add-AzureVhd](http://msdn.microsoft.com/library/windowsazure/dn495173.aspx).
-
-**For all distributions please note the following:**
-
-- When installing the Linux system it is recommended to utilize standard partitions rather than LVM (often the default for many installations). This will avoid LVM name conflicts with cloned VMs, particularly if an OS disk ever needs to be attached to another VM for troubleshooting.
-
-- The Azure Linux Agent (waagent) is not compatible with NetworkManager. Networking configuration should be controllable via the ifup/ifdown scripts.  Most of the RPM/Deb packages provided by distributions configure NetworkManager as a conflict to the waagent package, and thus will uninstall NetworkManager when you install the Linux agent package.  The Azure Linux Agent also requires that the python-pyasn1 package is installed.
-
-- NUMA is not supported for larger VM sizes due to a bug in Linux kernel versions below 2.6.37. Manual installation of waagent will automatically disable NUMA in the GRUB configuration for the Linux kernel. This issue primarily impacts distributions using the upstream Red Hat 2.6.32 kernel.
-
-- It is recommended that you do not create a SWAP partition at installation time. You may configure SWAP space by using the Azure Linux Agent. It is also not recommended to use the mainstream Linux kernel with an Azure virtual machine without the patch available at the [Microsoft web site](http://go.microsoft.com/fwlink/?LinkID=253692&clcid=0x409) (many current distributions/kernels may already include this fix).
-
-- All of the VHDs must have sizes that are multiples of 1 MB.
+**重要**: Azure プラットフォームの SLA は、動作保証済みディストリビューションのいずれか 1 つを[この記事](http://support.microsoft.com/kb/2805216)で指定されている構成で使用した場合にのみ、Linux OS を実行する仮想マシンに適用されます。Azure イメージ ギャラリーにあるすべての Linux ディストリビューションは、必須の構成による動作保証済みディストリビューションです。
 
 
-This task includes the following steps:
+##前提条件##
+この記事では、次の項目があることを前提としています。
 
-- [Step 1: Prepare the image to be uploaded] []
-- [Step 2: Create a storage account in Azure] []
-- [Step 3: Prepare the connection to Azure] []
-- [Step 4: Upload the image to Azure] []
+- **管理証明書** - VHD をアップロードするサブスクリプションの管理証明書を作成し、その証明書を .cer ファイルにエクスポートしました。証明書の作成方法の詳細については、「[Azure の管理証明書の作成とアップロード](http://msdn.microsoft.com/library/windowsazure/gg551722.aspx)」を参照してください。
 
-## <a id="prepimage"> </a>Step 1: Prepare the image to be uploaded ##
+- **.vhd ファイルにインストールされている Linux オペレーティング システム。**- サポートされている Linux オペレーティング システムを仮想ハード ディスクにインストールしています。.vhd ファイルを作成するツールはいくつかあります。Hyper-V などの仮想化ソリューションを使用して .vhd ファイルを作成し、オペレーティング システムをインストールすることができます。詳細については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
 
-### Prepare CentOS 6.2+ ###
+	**重要**: 新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 
-You must complete specific configuration steps in the operating system for the virtual machine to run in Azure.
+	動作保証済みディストリビューションの一覧については、「[Azure での動作保証済み Linux ディストリビューション](../linux-endorsed-distributions)」を参照してください。または、この記事の末尾の「[動作保証外のディストリビューションに関する情報][]」のセクションを参照してください。
 
-1. In the center pane of Hyper-V Manager, select the virtual machine.
+- **Linux Azure コマンド ライン ツール。**Linux オペレーティング システムを使用してイメージを作成する場合は、このツールを使用して VHD ファイルをアップロードします。[Mac および Linux 用 Azure コマンド ライン ツール](http://go.microsoft.com/fwlink/?LinkID=253691&clcid=0x409)をダウンロードしてください。
 
-2. Click **Connect** to open the window for the virtual machine.
+- **Add-AzureVHD コマンドレット**。これは Azure PowerShell モジュールの一部です。このモジュールをダウンロードするには、[Azure のダウンロード ページ] (/ja-jp/develop/downloads/) にアクセスしてください。詳細については、[Add-AzureVhd に関するページ](http://msdn.microsoft.com/library/windowsazure/dn495173.aspx)を参照してください。
 
-3. Uninstall NetworkManager by running the following command:
+**すべてのディストリビューションについて次の点に注意してください。**
+
+- Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。
+
+- Azure Linux エージェント (waagent) は NetworkManager と互換性がありません。ネットワーク構成は ifup/ifdown スクリプトから制御できる必要があります。ディストリビューションによって提供される多くの RPM/Deb パッケージでは、NetworkManager が waagent パッケージに対する競合として構成されるため、Linux エージェント パッケージをインストールすると NetworkManager がアンインストールされます。また、Azure Linux エージェントを使用するには、python-pyasn1 パッケージがインストールされている必要があります。
+
+- VM サイズが大きい場合は NUMA がサポートされません。2.6.37 未満のバージョンの Linux カーネルにバグがあるためです。waagent を手動でインストールすると、Linux カーネルの GRUB 構成で NUMA が自動的に無効になります。この問題は、主に、アップストリームの Red Hat 2.6.32 カーネルを使用したディストリビューションに影響します。
+
+- インストール時にスワップ パーティションを作成することは避けてください。Azure Linux エージェントを使用してスワップ領域を構成することはできます。また、[Microsoft Web サイト](http://go.microsoft.com/fwlink/?LinkID=253692&clcid=0x409)から入手可能な修正プログラムを適用せずに、広く使用されている Linux カーネルを Azure の仮想マシンで使用することも避けてください (最新のディストリビューション/カーネルの多くには、この修正が含まれています)。
+
+- すべての VHD のサイズは 1 MB の倍数であることが必要です。
+
+
+このタスクの手順は次のとおりです。
+
+- [手順 1. アップロードするイメージを準備する] []
+- [手順 2. Azure にストレージ アカウントを作成する] []
+- [手順 3. Azure への接続を準備する] []
+- [手順 4. Azure にイメージをアップロードする] []
+
+## <a id="prepimage"> </a>手順 1. アップロードするイメージを準備する##
+
+### CentOS 6.2 以上を準備する###
+
+Azure 上で実行する仮想マシンのオペレーティング システムで固有の構成手順を完了する必要があります。
+
+1. Hyper-V マネージャーの中央のウィンドウで仮想マシンを選択します。
+
+2. **[接続]** をクリックすると、仮想マシンのウィンドウが開きます。
+
+3. 次のコマンドを実行して NetworkManager をアンインストールします。
 
 		rpm -e --nodeps NetworkManager
 
-	**Note:** If the package is not already installed, this command will fail with an error message. This is expected.
+	**注意:** パッケージがまだインストールされていない場合、このコマンドは失敗してエラー メッセージが表示されます。これは予期されることです。
 
-4.	Create a file named **network** in the `/etc/sysconfig/` directory that contains the following text:
+4.	`/etc/sysconfig/` ディレクトリに **network** という名前のファイルを作成し、次のテキストを追加します。
 
 		NETWORKING=yes
 		HOSTNAME=localhost.localdomain
 
-5.	Create a file named **ifcfg-eth0** in the `/etc/sysconfig/network-scripts/` directory that contains the following text:
+5.	`/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前のファイルを作成し、次のテキストを追加します。
 
 		DEVICE=eth0
 		ONBOOT=yes
@@ -79,49 +79,49 @@ You must complete specific configuration steps in the operating system for the v
 		PEERDNS=yes
 		IPV6INIT=no
 
-6.	Move (or remove) udev rules to avoid generating static rules for the Ethernet interface.  These rules cause problems when cloning a virtual machine in Windows Azure or Hyper-V:
+6.	udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。これらのルールは、Azure または Hyper-V で仮想マシンを複製する際に問題の原因となります。
 
 		# sudo mkdir -m 0700 /var/lib/waagent
 		# sudo mv /lib/udev/rules.d/75-persistent-net-generator.rules /var/lib/waagent/
 		# sudo mv /etc/udev/rules.d/70-persistent-net.rules /var/lib/waagent/
 
-7. Ensure the network service will start at boot time by running the following command:
+7. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
 		# chkconfig network on
 
-8.	**CentOS 6.2 or 6.3 Only**: Install the drivers for the Linux Integration Services
+8.	**CentOS 6.2 または 6.3 のみ**: Linux Integration Services 用ドライバーをインストールします。
 
-	**Note:** The step is only valid for CentOS 6.2 and 6.3.  In CentOS 6.4+ the Linux Integration Services are already available in the kernel.
+	**注:** この手順は CentOS 6.2 および CentOS 6.3 にのみ有効です。CentOS 6.4 以上では、Linux Integration Services はカーネルに組み込み済みです。
 
-	a) Obtain the .iso file that contains the drivers for the Linux Integration Services from [Download Center](http://www.microsoft.com/en-us/download/details.aspx?id=34603).
+	a) [ダウンロード センター](http://www.microsoft.com/ja-jp/download/details.aspx?id=34603)から Linux Integration Services 用ドライバーが格納されている .iso ファイルを入手します。
 
-	b) In Hyper-V Manager, in the **Actions** pane, click **Settings**.
+	b) Hyper-V マネージャーの **[アクション]** ウィンドウで **[設定]** をクリックします。
 
-	![Open Hyper-V settings](./media/virtual-machines-linux-create-upload-vhd/settings.png)
+	![Hyper-V の設定を開く](./media/virtual-machines-linux-create-upload-vhd/settings.png)
 
-	c) In the **Hardware** pane, click **IDE Controller 1**.
+	c) **[ハードウェア]** ウィンドウで **[IDE コントローラー 1]** をクリックします。
 
-	![Add DVD drive with install media](./media/virtual-machines-linux-create-upload-vhd/installiso.png)
+	![インストール メディアがセットされた DVD ドライブの追加](./media/virtual-machines-linux-create-upload-vhd/installiso.png)
 
-	d) In the **IDE Controller** box, click **DVD Drive**, and then click **Add**.
+	d) **[IDE コントローラー]** ボックスで、**[DVD ドライブ]** をクリックし、**[追加]** をクリックします。
 
-	e) Select **Image file**, browse to **Linux IC v3.2.iso**, and then click **Open**.
+	e) **[イメージ ファイル]** を選択し、**Linux IC v3.2.iso** を参照して、**[開く]** をクリックします。
 
-	f) In the **Settings** page, click **OK**.
+	f) **[設定]** ページで **[OK]** をクリックします。
 
-	g) Click **Connect** to open the window for the virtual machine.
+	g) **[接続]** をクリックして仮想マシンのウィンドウを開きます。
 
-	h) In the Command Prompt window, type the following commands:
+	h) コマンド プロンプト ウィンドウに次のコマンドを入力します。
 
 		mount /dev/cdrom /media
 		/media/install.sh
 		reboot
 
-9. Install python-pyasn1 by running the following command:
+9. 次のコマンドを実行して python-pyasn1 をインストールします。
 
 		# sudo yum install python-pyasn1
 
-10. Replace their /etc/yum.repos.d/CentOS-Base.repo file with the following text
+10. /etc/yum.repos.d/CentOS-Base.repo ファイルの内容を次のテキストに置き換えます。
 
 		[openlogic]
 		name=CentOS-$releasever - openlogic packages for $basearch
@@ -165,54 +165,54 @@ You must complete specific configuration steps in the operating system for the v
 		enabled=0
 		gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-11.	Add the following line to /etc/yum.conf:
+11.	/etc/yum.conf ファイルに次の行を追加します。
 
 		http_caching=packages
 
-	And on CentOS 6.2 & 6.3 only add the following line:
+	さらに、CentOS 6.2 および 6.3 でのみ、次の行を追加します。
 
 		exclude=kernel*
 
-12. Disable the yum module "fastestmirror" by editing the file "/etc/yum/pluginconf.d/fastestmirror.conf", and under [main] type the following
+12. "/etc/yum/pluginconf.d/fastestmirror.conf" ファイルの [main] で次のように入力して、yum モジュール "fastestmirror" を無効にします。
 
 		set enabled=0
 
-13.	Run the following commend to clear the current yum metadata:
+13.	次のコマンドを実行して、現在の Yum メタデータをクリアします。
 
 		yum clean all
 
-14. For CentOS 6.2 and 6.3, update a running VM's kernel by running the following commands
+14. CentOS 6.2 および 6.3 の場合、次のコマンドを実行して、実行中の VM のカーネルを更新します。
 
-	For CentOS 6.2, run the following commands:
+	CentOS 6.2 の場合、次のコマンドを実行します。
 
 		sudo yum remove kernel-firmware
 		sudo yum --disableexcludes=all install kernel
 
-	For CentOS 6.3+ type the following:
+	CentOS 6.3 以上の場合、次のコマンドを入力します。
 
 		sudo yum --disableexcludes=all install kernel
 
-15.	Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure. To do this open /boot/grub/menu.lst in a text editor and ensure that the default kernel includes the following parameters:
+15.	GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで /boot/grub/menu.lst を開き、既定のカーネルに次のパラメーターが含まれていることを確認します。
 
 		console=ttyS0 earlyprintk=ttyS0 rootdelay=300 numa=off
 
-	This will also ensure all console messages are sent to the first serial port, which can assist Azure support with debugging issues. In addition this will disable NUMA due to a bug in the kernel version used by CentOS 6.
+	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。さらに、これにより、CentOS 6 で使用されているカーネル バージョンのバグが原因で NUMA が無効になります。
 
-16.	In /etc/sudoers, comment out the following line, if it exists:
+16.	/etc/sudoers で、次のコード行をコメント アウトします (ある場合)。
 
 		Defaults targetpw
 
-17.	Ensure that the SSH server is installed and configured to start at boot time.
+17.	SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。
 
-18. Install the Azure Linux Agent by running the following command:
+18. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
 		yum install WALinuxAgent
 
-	Note that installing the WALinuxAgent package will remove the NetworkManager and NetworkManager-gnome packages if they were not already removed as described in step 2.
+	手順 2. で説明したように NetworkManager パッケージおよび NetworkManager-gnome パッケージがまだ削除されていない場合、WALinuxAgent パッケージをインストールすると、これらのパッケージが削除されることに注意してください。
 
-19.	Do not create swap space on the OS disk.
+19.	OS ディスクにスワップ領域を作成しないでください。
 
-	The Azure Linux Agent can automatically configure swap space using the local resource disk that is attached to the VM after provisioning on Azure.  After installing the Azure Linux Agent (see previous step), modify the following parameters in /etc/waagent.conf appropriately:
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
 		ResourceDisk.Format=y
 		ResourceDisk.Filesystem=ext4
@@ -220,98 +220,98 @@ You must complete specific configuration steps in the operating system for the v
 		ResourceDisk.EnableSwap=y
 		ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-20.	Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure:
+20.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
 		waagent -force -deprovision
 		export HISTSIZE=0
 		logout
 
-21. Click **Shutdown** in Hyper-V Manager.
+21. Hyper-V マネージャーで **[シャットダウン]** をクリックします。
 
 
-### Prepare Ubuntu 12.04+ ###
+### Ubuntu 12.04 以上を準備する###
 
-1. In the center pane of Hyper-V Manager, select the virtual machine.
+1. Hyper-V マネージャーの中央のウィンドウで仮想マシンを選択します。
 
-2. Click **Connect** to open the window for the virtual machine.
+2. **[接続]** をクリックすると、仮想マシンのウィンドウが開きます。
 
-3.	Replace the current repositories in your image to use the azure repositories that carry the kernel and agent package that you will need to upgrade the VM.  The steps vary slightly depending on the Ubuntu version.
+3.	イメージ上の現在のリポジトリを、VM のアップグレードに必要になるカーネルとエージェント パッケージが格納されている Azure リポジトリに置き換えます。この手順は、Ubuntu のバージョンによって多少異なります。
 
-	Before editing /etc/apt/sources.list, it is recommended to make a backup
+	/etc/apt/sources.list を編集する前に、バックアップを作成することをお勧めします。
 		sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
-	Ubuntu 12.04:
+	Ubuntu 12.04: 
 
 		sudo sed -i "s/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g" /etc/apt/sources.list
 		sudo apt-add-repository 'http://archive.canonical.com/ubuntu precise-backports main'
 		sudo apt-get update
 
-	Ubuntu 12.10:
+	Ubuntu 12.10: 
 
 		sudo sed -i "s/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g" /etc/apt/sources.list
 		sudo apt-add-repository 'http://archive.canonical.com/ubuntu quantal-backports main'
 		sudo apt-get update
 
-	Ubuntu 13.04+:
+	Ubuntu 13.04 以上: 
 
 		sudo sed -i "s/[a-z][a-z].archive.ubuntu.com/azure.archive.ubuntu.com/g" /etc/apt/sources.list
 		sudo apt-get update
 
-4. Update the operating system to the latest kernel by running the following commands : 
+4. 次のコマンドを実行してオペレーティング システムを最新のカーネルに更新します。
 
-	Ubuntu 12.04:
+	Ubuntu 12.04: 
 
 		sudo apt-get update
 		sudo apt-get install hv-kvp-daemon-init linux-backports-modules-hv-precise-virtual
 		(recommended) sudo apt-get dist-upgrade
 		sudo reboot
 
-	Ubuntu 12.10:
+	Ubuntu 12.10: 
 
 		sudo apt-get update
 		sudo apt-get install hv-kvp-daemon-init linux-backports-modules-hv-quantal-virtual
 		(recommended) sudo apt-get dist-upgrade
 		sudo reboot
 	
-	Ubuntu 13.04, 13.10 and 14.04:
+	Ubuntu 13.04、13.10、および 14.04:
 
 		sudo apt-get update
 		sudo apt-get install hv-kvp-daemon-init
 		(recommended) sudo apt-get dist-upgrade
 		sudo reboot
 
-5.	Ubuntu will wait at the Grub prompt for user input after a system crash. To prevent this, complete the following steps:
+5.	Ubuntu はシステムのクラッシュ後に Grub のプロンプトでユーザー入力を待ちます。この動作を回避するために、次の手順を実行します。
 
-	a) Open the /etc/grub.d/00_header file.
+	a) /etc/grub.d/00_header ファイルを開きます。
 
-	b) In the function **make_timeout()**, search for **if ["\${recordfail}" = 1 ]; then**
+	b) **make_timeout()** 関数内で **if ["\${recordfail}" = 1 ]; then** を検索します。
 
-	c) Change the statement below this line to **set timeout=5**.
+	c) この行の下の文を **set timeout=5** に変更します。
 
-	d) Run 'sudo update-grub'.
+	d) 'sudo update-grub' を実行します。
 
-6. Modify the kernel boot line for Grub to include additional kernel parameters for Azure. To do this open /etc/default/grub in a text editor, find the variable called "GRUB_CMDLINE_LINUX_DEFAULT" (or add it if needed) and edit it to include the following parameters:
+6. Grub のカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで /etc/default/grub を開き、"GRUB_CMDLINE_LINUX_DEFAULT" という変数を探して (または、必要であれば追加して)、次のパラメーターが含まれるように編集します。
 
 		GRUB_CMDLINE_LINUX_DEFAULT="console=ttyS0 earlyprintk=ttyS0 rootdelay=300"
 
-	Save and close this file, and then run 'sudo update-grub'. This will ensure all console messages are sent to the first serial port, which can assist Azure technical support with debugging issues. 
+	このファイルを保存して閉じ、'sudo update-grub' を実行します。これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。
 
-7.	In /etc/sudoers, comment out the following line, if it exists:
+7.	/etc/sudoers で、次のコード行をコメント アウトします (ある場合)。
 
 		Defaults targetpw
 
-8.	Ensure that the SSH server is installed and configured to start at boot time.
+8.	SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。
 
-9.	Install the agent by running the following commands with sudo:
+9.	sudo で次のコマンドを実行してエージェントをインストールします。
 
 		apt-get update
 		apt-get install walinuxagent
 
-	Note that installing the walinuxagent package will remove the NetworkManager and NetworkManager-gnome packages, if they are installed.
+	NetworkManager パッケージおよび NetworkManager-gnome パッケージがインストールされている場合、walinuxagent パッケージをインストールするとこれらのパッケージが削除されることに注意してください。
 
-10.	Do not create swap space on the OS disk.
+10.	OS ディスクにスワップ領域を作成しないでください。
 
-	The Azure Linux Agent can automatically configure swap space using the local resource disk that is attached to the VM after provisioning on Azure.  After installing the Azure Linux Agent (see previous step), modify the following parameters in /etc/waagent.conf appropriately:
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
 		ResourceDisk.Format=y
 		ResourceDisk.Filesystem=ext4
@@ -319,35 +319,35 @@ You must complete specific configuration steps in the operating system for the v
 		ResourceDisk.EnableSwap=y
 		ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-11.	Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure:
+11.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
 		waagent -force -deprovision
 		export HISTSIZE=0
 		logout
 
-12. Click **Shutdown** in Hyper-V Manager.
+12. Hyper-V マネージャーで **[シャットダウン]** をクリックします。
 
 
-### Prepare Oracle Linux 6.4+ ###
+### Oracle Linux 6.4 以上を準備する###
 
-You must complete specific configuration steps in the operating system for the virtual machine to run in Azure.
+Azure 上で実行する仮想マシンのオペレーティング システムで固有の構成手順を完了する必要があります。
 
-1. In the center pane of Hyper-V Manager, select the virtual machine.
+1. Hyper-V マネージャーの中央のウィンドウで仮想マシンを選択します。
 
-2. Click **Connect** to open the window for the virtual machine.
+2. **[接続]** をクリックすると、仮想マシンのウィンドウが開きます。
 
-3. Uninstall NetworkManager by running the following command:
+3. 次のコマンドを実行して NetworkManager をアンインストールします。
 
 		rpm -e --nodeps NetworkManager
 
-	**Note:** If the package is not already installed, this command will fail with an error message. This is expected.
+	**注意:** パッケージがまだインストールされていない場合、このコマンドは失敗してエラー メッセージが表示されます。これは予期されることです。
 
-4.	Create a file named **network** in the `/etc/sysconfig/` directory that contains the following text:
+4.	`/etc/sysconfig/` ディレクトリに **network** という名前のファイルを作成し、次のテキストを追加します。
 
 		NETWORKING=yes
 		HOSTNAME=localhost.localdomain
 
-5.	Create a file named **ifcfg-eth0** in the `/etc/sysconfig/network-scripts/` directory that contains the following text:
+5.	`/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前のファイルを作成し、次のテキストを追加します。
 
 		DEVICE=eth0
 		ONBOOT=yes
@@ -357,41 +357,41 @@ You must complete specific configuration steps in the operating system for the v
 		PEERDNS=yes
 		IPV6INIT=no
 
-6.	Move (or remove) udev rules to avoid generating static rules for the Ethernet interface.  These rules cause problems when cloning a virtual machine in Windows Azure or Hyper-V:
+6.	udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。これらのルールは、Azure または Hyper-V で仮想マシンを複製する際に問題の原因となります。
 
 		# sudo mkdir -m 0700 /var/lib/waagent
 		# sudo mv /lib/udev/rules.d/75-persistent-net-generator.rules /var/lib/waagent/
 		# sudo mv /etc/udev/rules.d/70-persistent-net.rules /var/lib/waagent/
 
-7. Ensure the network service will start at boot time by running the following command:
+7. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
 		# chkconfig network on
 
-8. Install python-pyasn1 by running the following command:
+8. 次のコマンドを実行して python-pyasn1 をインストールします。
 
 		# sudo yum install python-pyasn1
 
-9.	Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure. To do this open /boot/grub/menu.lst in a text editor and ensure that the default kernel includes the following parameters:
+9.	GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで /boot/grub/menu.lst を開き、既定のカーネルに次のパラメーターが含まれていることを確認します。
 
 		console=ttyS0 earlyprintk=ttyS0 rootdelay=300 numa=off
 
-	This will also ensure all console messages are sent to the first serial port, which can assist Azure support with debugging issues. In addition this will disable NUMA due to a bug in the kernel version used by CentOS 6.
+	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。さらに、これにより、CentOS 6 で使用されているカーネル バージョンのバグが原因で NUMA が無効になります。
 
-10.	In /etc/sudoers, comment out the following line, if it exists:
+10.	/etc/sudoers で、次のコード行をコメント アウトします (ある場合)。
 
 		Defaults targetpw
 
-11.	Ensure that the SSH server is installed and configured to start at boot time.
+11.	SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。
 
-12. Install the Azure Linux Agent by running the following command:
+12. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
 		yum install WALinuxAgent
 
-	Note that installing the WALinuxAgent package will remove the NetworkManager and NetworkManager-gnome packages, if they are installed.
+	NetworkManager パッケージおよび NetworkManager-gnome パッケージがインストールされている場合、WALinuxAgent パッケージをインストールするとこれらのパッケージが削除されることに注意してください。
 
-13.	Do not create swap space on the OS disk.
+13.	OS ディスクにスワップ領域を作成しないでください。
 
-	The Azure Linux Agent can automatically configure swap space using the local resource disk that is attached to the VM after provisioning on Azure.  After installing the Azure Linux Agent (see previous step), modify the following parameters in /etc/waagent.conf appropriately:
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
 		ResourceDisk.Format=y
 		ResourceDisk.Filesystem=ext4
@@ -399,26 +399,26 @@ You must complete specific configuration steps in the operating system for the v
 		ResourceDisk.EnableSwap=y
 		ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-14.	Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure:
+14.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
 		waagent -force -deprovision
 		export HISTSIZE=0
 		logout
 
-15. Click **Shutdown** in Hyper-V Manager.
+15. Hyper-V マネージャーで **[シャットダウン]** をクリックします。
 
 
-### Prepare SUSE Linux Enterprise Server 11 SP2 & SP3 ###
+### SUSE Linux Enterprise Server 11 SP2 および SP3 を準備する###
 
-**NOTE:** [SUSE Studio](http://www.susestudio.com) can easily create and manage your SLES/opeSUSE images for Azure and Hyper-V. In addition, the following official images in the SUSE Studio Gallery can be downloaded or cloned into your own SUSE Studio account for easy customization:
+**注:** [SUSE Studio](http://www.susestudio.com) では、Azure および Hyper-V 用の SLES/opeSUSE イメージを簡単に作成、管理できます。さらに、SUSE Studio ギャラリーにある次の公式イメージをダウンロードまたは SUSE Studio アカウントに複製して、簡単にカスタマイズできます。
 
-> - [SLES 11 SP3 for Azure on SUSE Studio Gallery](http://susestudio.com/a/02kbT4/sles-11-sp3-for-windows-azure)
+> - [SUSE Studio ギャラリーの Azure 向け SLES 11 SP3](http://susestudio.com/a/02kbT4/sles-11-sp3-for-windows-azure)
 
-1. In the center pane of Hyper-V Manager, select the virtual machine.
+1. Hyper-V マネージャーの中央のウィンドウで仮想マシンを選択します。
 
-2. Click **Connect** to open the window for the virtual machine.
+2. **[接続]** をクリックすると、仮想マシンのウィンドウが開きます。
 
-3. Add the repository containing the latest kernel and Azure Linux Agent. Run the command `zypper lr`. For example, with SLES 11 SP3 the output should look similar to the following:
+3. 最新のカーネルおよび Azure Linux エージェントが格納されているリポジトリを追加します。コマンド `zypper lr` を実行します。たとえば、SLES 11 SP3 の出力は次のようになります。
 
 		# | Alias                        | Name               | Enabled | Refresh
 		--+------------------------------+--------------------+---------+--------
@@ -429,54 +429,54 @@ You must complete specific configuration steps in the operating system for the v
 		5 | susecloud:SLES11-SP3-Pool    | SLES11-SP3-Pool    | Yes     | Yes
 		6 | susecloud:SLES11-SP3-Updates | SLES11-SP3-Updates | Yes     | Yes
 
- 	In case the command returns an error message such as the following:
+ 	このコマンドでは、次のようなエラー メッセージが返されます。
 
-		"No repositories defined. Use the 'zypper addrepo' command to add one or more repositories."
+		"No repositories defined.Use the 'zypper addrepo' command to add one or more repositories."
 
-	then the repositories may need to be re-enabled or the system registered.  This can be done via the suse_register utility.  For more information, please see the [SLES documentation](https://www.suse.com/documentation/sles11/).
+	この場合、リポジトリを再度有効にするか、システムを登録する必要があります。これには、suse_register ユーティリティを使用します。詳細については、[SLES のドキュメント](https://www.suse.com/documentation/sles11/)を参照してください。
 
-   In case one of the relevant update repositories is not enabled, enable it with following command:
+   更新したリポジトリのいずれかが有効になっていない場合は、次のコマンドを使用して有効にします。
 
 		zypper mr -e [REPOSITORY NUMBER]
 
-   In the above case, the command proper command would be
+   この例では、適切なコマンドは次のようになります。
 
 		zypper mr -e 1 2 3 4
 
-4. Update the kernel to the latest available version:
+4. カーネルを最新のバージョンに更新します。
 
 		zypper up kernel-default
 
-5. Install the Azure Linux Agent:
+5. Azure Linux エージェントをインストールします。
 
 		zypper up WALinuxAgent
 		
-	You may see message similar to the following:
+	次のようなメッセージが表示されます。
 
 		"There is an update candidate for 'WALinuxAgent', but it is from different vendor.
 		Use 'zypper install WALinuxAgent-1.2-1.1.noarch' to install this candidate."
 
-	As the vendor of the package has changed from "Microsoft Corporation" to "SUSE LINUX Products GmbH, Nuernberg, Germany", one has to explicitely install the package as mentioned in the message.
+	パッケージのベンダーが "Microsoft Corporation" から "SUSE LINUX Products GmbH, Nuernberg, Germany" に変更されたため、メッセージで示されているパッケージを明示的にインストールする必要があります。
 
-	Note: The version of the WALinuxAgent package might be slightly different.
+	注意: WALinuxAgent パッケージのバージョンは多少異なる場合があります。
 
-6. Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure. To do this open /boot/grub/menu.lst in a text editor and ensure that the default kernel includes the following parameters:
+6. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで /boot/grub/menu.lst を開き、既定のカーネルに次のパラメーターが含まれていることを確認します。
 
 		console=ttyS0 earlyprintk=ttyS0 rootdelay=300
 
-	This will ensure all console messages are sent to the first serial port, which can assist Azure support with debugging issues.
+	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。
 
-7.	It is recommended that you set /etc/sysconfig/network/dhcp or equivalent from DHCLIENT_SET_HOSTNAME="yes" to DHCLIENT_SET_HOSTNAME="no"
+7.	/etc/sysconfig/network/dhcp または同等のファイルで DHCLIENT_SET_HOSTNAME="yes" を DHCLIENT_SET_HOSTNAME="no" に変更することをお勧めします。
 
-8.	In /etc/sudoers, comment out the following line, if it exists:
+8.	/etc/sudoers で、次のコード行をコメント アウトします (ある場合)。
 
 		Defaults targetpw
 
-9.	Ensure that the SSH server is installed and configured to start at boot time
+9.	SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。
 
-10.	Do not create swap space on the OS disk
+10.	OS ディスクにスワップ領域を作成しないでください。
 
-	The Azure Linux Agent can automatically configure swap space using the local resource disk that is attached to the VM after provisioning on Azure.  After installing the Azure Linux Agent (see previous step), modify the following parameters in /etc/waagent.conf appropriately:
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
 		ResourceDisk.Format=y
 		ResourceDisk.Filesystem=ext4
@@ -484,28 +484,28 @@ You must complete specific configuration steps in the operating system for the v
 		ResourceDisk.EnableSwap=y
 		ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-11.	Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure:
+11.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
 		waagent -force -deprovision
 		export HISTSIZE=0
 		logout
 
-12. Click **Shutdown** in Hyper-V Manager.
+12. Hyper-V マネージャーで **[シャットダウン]** をクリックします。
 
 
-### Prepare openSUSE 12.3+ ###
+### openSUSE 12.3 以上を準備する###
 
-**NOTE:** [SUSE Studio](http://www.susestudio.com) can easily create and manage your SLES/opeSUSE images for Azure and Hyper-V. In addition, the following official images in the SUSE Studio Gallery can be downloaded or cloned into your own SUSE Studio account for easy customization:
+**注:** [SUSE Studio](http://www.susestudio.com) では、Azure および Hyper-V 用の SLES/opeSUSE イメージを簡単に作成、管理できます。さらに、SUSE Studio ギャラリーにある次の公式イメージをダウンロードまたは SUSE Studio アカウントに複製して、簡単にカスタマイズできます。
 
-> - [openSUSE 13.1 for Azure on SUSE Studio Gallery](https://susestudio.com/a/02kbT4/opensuse-13-1-for-windows-azure)
+> - [SUSE Studio ギャラリーの Azure 向け openSUSE 13.1](https://susestudio.com/a/02kbT4/opensuse-13-1-for-windows-azure)
 
-1. In the center pane of Hyper-V Manager, select the virtual machine.
+1. Hyper-V マネージャーの中央のウィンドウで仮想マシンを選択します。
 
-2. Click **Connect** to open the window for the virtual machine.
+2. **[接続]** をクリックすると、仮想マシンのウィンドウが開きます。
 
-3. Update the operating system to the latest available kernel and patches
+3.  オペレーティング システムを最新のカーネルに更新し、更新プログラムを適用します。
 
-4. On the shell, run the command '`zypper lr`'. If this command returns output similar to the following (note that version numbers may vary):
+4. シェルでコマンド '`zypper lr`' を実行します。このコマンドによって次のような出力が返されます (バージョン番号は異なる場合があります)。
 
 		# | Alias                     | Name                      | Enabled | Refresh
 		--+---------------------------+---------------------------+---------+--------
@@ -513,58 +513,58 @@ You must complete specific configuration steps in the operating system for the v
 		2 | openSUSE_12.3_OSS         | openSUSE_12.3_OSS         | Yes     | Yes
 		3 | openSUSE_12.3_Updates     | openSUSE_12.3_Updates     | Yes     | Yes
 
-   then the repositories are configured as expected, no adjustments are necessary.
+   この場合、リポジトリは予期したとおりに構成されているため、調整は不要です。
 
-   In case the command returns "No repositories defined. Use the 'zypper addrepo' command to add one 
-   or more repositories". then the repositories need to be re-enabled:
+   コマンドによって "No repositories defined. Use the 'zypper addrepo' command to add one 
+   or more repositories" と返された場合は、次のようにリポジトリを再度有効にする必要があります。
 
 		zypper ar -f http://download.opensuse.org/distribution/12.3/repo/oss openSUSE_12.3_OSS
 		zypper ar -f http://download.opensuse.org/update/12.3 openSUSE_12.3_Updates
 
-   Verify your repositories have been added by calling 'zypper lr' again.
+   'zypper lr' をもう一度呼び出してリポジトリが追加されたことを確認します。次の出力が予期されます。
 
-   In case one of the relevant update repositories is not enabled, enable it with following command:
+   更新したリポジトリのいずれかが有効になっていない場合は、次のコマンドを使用して有効にします。
 
 		zypper mr -e [NUMBER OF REPOSITORY]
 
-5.	Disable automatic DVD ROM probing.
+5.	DVD ROM の自動プローブを無効にします。
 
-6.	Install the Azure Linux Agent:
+6.	Azure Linux エージェントをインストールします。
 
-	First, add the repository containing the new WALinuxAgent:
+	まず、新しい WALinuxAgent が格納されているリポジトリを追加します。
 
 		zypper ar -f -r http://download.opensuse.org/repositories/Cloud:/Tools/openSUSE_12.3/Cloud:Tools.repo
 
-	Then, run the following command:
+	次に、次のコマンドを実行します。
  
 		zypper up WALinuxAgent
 
-	After you run this command, you may a similar message like the following:
+	このコマンドを実行すると、次のようなメッセージが表示されます。
 
 		"There is an update candidate for 'WALinuxAgent', but it is from different vendor. 
 		Use 'zypper install WALinuxAgent' to install this candidate."
 
-	This message is expected. As the vendor of the package has changed from "Microsoft Corporation" to "obs://build.opensuse.org/Cloud," one has to explicitely install the package as mentioned in the message.
+	このメッセージは予測されるものです。パッケージのベンダーが "Microsoft Corporation" から "obs://build.opensuse.org/Cloud" に変更されたため、メッセージで示されているパッケージを明示的にインストールする必要があります。
 
-7.	Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure. To do this open /boot/grub/menu.lst in a text editor and ensure that the default kernel includes the following parameters:
+7.	GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで /boot/grub/menu.lst を開き、既定のカーネルに次のパラメーターが含まれていることを確認します。
 
 		console=ttyS0 earlyprintk=ttyS0 rootdelay=300
 
-	This will ensure all console messages are sent to the first serial port, which can assist Azure support with debugging issues.  In addition, remove the following parameters from the kernel boot line if they exist:
+	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。また、カーネルのブート行に次のパラメーターがある場合は削除します。
 
 		libata.atapi_enabled=0 reserve=0x1f0,0x8
 
-9.	It is recommended that you set /etc/sysconfig/network/dhcp or equivalent from DHCLIENT_SET_HOSTNAME="yes" to DHCLIENT_SET_HOSTNAME="no"
+9.	/etc/sysconfig/network/dhcp または同等のファイルで DHCLIENT_SET_HOSTNAME="yes" を DHCLIENT_SET_HOSTNAME="no" に変更することをお勧めします。
 
-10.	In /etc/sudoers, comment out the following line, if it exists:
+10.	/etc/sudoers で、次のコード行をコメント アウトします (ある場合)。
 
 		Defaults targetpw
 
-11.	Ensure that the SSH server is installed and configured to start at boot time
+11.	SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。
 
-12.	Do not create swap space on the OS disk
+12.	OS ディスクにスワップ領域を作成しないでください。
 
-	The Azure Linux Agent can automatically configure swap space using the local resource disk that is attached to the VM after provisioning on Azure.  After installing the Azure Linux Agent (see previous step), modify the following parameters in /etc/waagent.conf appropriately:
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
 		ResourceDisk.Format=y
 		ResourceDisk.Filesystem=ext4
@@ -572,123 +572,123 @@ You must complete specific configuration steps in the operating system for the v
 		ResourceDisk.EnableSwap=y
 		ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-13.	Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure:
+13.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
 		waagent -force -deprovision
 		export HISTSIZE=0
 		logout
 
-14. Ensure the Azure Linux Agent runs at startup:
+14. 起動時に Azure Linux エージェントが実行されるようにします。
 
 		systemctl enable waagent.service
 
-14. Click **Shutdown** in Hyper-V Manager.
+14. Hyper-V マネージャーで **[シャットダウン]** をクリックします。
 
 
-## <a id="createstorage"> </a>Step 2: Create a storage account in Azure ##
+## <a id="createstorage"> </a>手順 2. Azure にストレージ アカウントを作成する##
 
-A storage account represents the highest level of the namespace for accessing the storage services and is associated with your Azure subscription. You need a storage account in Azure to upload a .vhd file to Azure that can be used for creating a virtual machine. You can create a storage account by using the Azure Management Portal.
+ストレージ アカウントは、ストレージ サービスにアクセスするための最高レベルの名前空間を表し、Azure サブスクリプションに関連付けられています。仮想マシンの作成に使用できる .vhd ファイルを Azure にアップロードするには、Azure のストレージ アカウントが必要です。ストレージ アカウントは、Azure の管理ポータルを使って作成できます。
 
-1. Sign in to the Azure Management Portal.
+1. Azure 管理ポータルにサインインします。
 
-2. On the command bar, click **New**.
+2. コマンド バーで、**[新規]** をクリックします。
 
-	![Create storage account](./media/virtual-machines-linux-create-upload-vhd/create.png)
+	![ストレージ アカウントの作成](./media/virtual-machines-linux-create-upload-vhd/create.png)
 
-3. Click **Storage Account**, and then click **Quick Create**.
+3. **[ストレージ アカウント]**、**[簡易作成]** の順にクリックします。
 
-	![Quick create a storage account](./media/virtual-machines-linux-create-upload-vhd/storage-quick-create.png)
+	![ストレージ アカウントの簡易作成](./media/virtual-machines-linux-create-upload-vhd/storage-quick-create.png)
 
-4. Fill out the fields as follows:
+4. 次のようにフィールドを指定します。
 
-	![Enter storage account details](./media/virtual-machines-linux-create-upload-vhd/storage-create-account.png)
+	![ストレージ アカウントの詳細の入力](./media/virtual-machines-linux-create-upload-vhd/storage-create-account.png)
 
-- Under **URL**, type a subdomain name to use in the URL for the storage account. The entry can contain from 3-24 lowercase letters and numbers. This name becomes the host name within the URL that is used to address Blob, Queue, or Table resources for the subscription.
+- **[URL]** で、ストレージ アカウントの URL で使用するサブドメイン名を入力します。文字数は 3 ～ 24 文字で、アルファベット小文字と数字を使用できます。この名前は、対応するサブスクリプションの BLOB リソース、キュー リソース、またはテーブル リソースのアドレス指定に使用される URL のホスト名になります。
 	
-- Choose the location or affinity group for the storage account. By specifying an affinity group, you can co-locate your cloud services in the same data center with your storage.
+- ストレージ アカウントの場所またはアフィニティ グループを選択します。アフィニティ グループを指定することで、ストレージと同じデータ センターにクラウド サービスを配置できます。
  
-- Decide whether to use geo-replication for the storage account. Geo-replication is turned on by default. This option replicates your data to a secondary location, at no cost to you, so that your storage fails over to a secondary location if a major failure occurs that can't be handled in the primary location. The secondary location is assigned automatically, and can't be changed. If legal requirements or organizational policy requires tighter control over the location of your cloud-based storage, you can turn off geo-replication. However, be aware that if you later turn on geo-replication, you will be charged a one-time data transfer fee to replicate your existing data to the secondary location. Storage services without geo-replication are offered at a discount.
+- ストレージ アカウントのジオ (主要地域) レプリケーションを使用するかどうかを決定します。Geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で対処できない大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーすることができます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、Geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。
 
-5. Click **Create Storage Account**.
+5. **[ストレージ アカウントの作成]** をクリックします。
 
-	The account is now listed under **Storage Accounts**.
+	作成したアカウントが **[ストレージ アカウント]** に表示されます。
 
-	![Storage account successfully created](./media/virtual-machines-linux-create-upload-vhd/Storagenewaccount.png)
+	![ストレージ アカウントの作成に成功](./media/virtual-machines-linux-create-upload-vhd/Storagenewaccount.png)
 
 
-## <a id="#connect"> </a>Step 3: Prepare the connection to Azure ##
+## <a id="#connect"> </a>手順 3. Azure への接続を準備する##
 
-Before you can upload a .vhd file, you need to establish a secure connection between your computer and your subscription in Azure. 
+.vhd ファイルをアップロードする前に、コンピューターと Azure のサブスクリプションの間にセキュリティで保護された接続を確立する必要があります。
 
-1. Open an Azure PowerShell window.
+1. Azure PowerShell ウィンドウを開きます。
 
-2. Type: 
+2. 次のコマンドを入力します。
 
 	`Get-AzurePublishSettingsFile`
 
-	This command opens a browser window and automatically downloads a .publishsettings file that contains information and a certificate for your Azure subscription. 
+	このコマンドにより、ブラウザー ウィンドウが開き、Azure サブスクリプションの情報と証明書を含む .publishsettings ファイルが自動的にダウンロードされます。
 
-3. Save the .publishsettings file. 
+3. .publishsettings ファイルを保存します。
 
-4. Type:
+4. 次のコマンドを入力します。
 
 	`Import-AzurePublishSettingsFile <PathToFile>`
 
-	Where `<PathToFile>` is the full path to the .publishsettings file. 
+	ここで、`<PathToFile>` は .publishsettings ファイルへの完全なパスです。
 
-	For more information, see [Get Started with Azure Cmdlets](http://msdn.microsoft.com/en-us/library/windowsazure/jj554332.aspx) 
+	詳細については、「[Azure コマンドレットの概要](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554332.aspx)」を参照してください。
 
 
-## <a id="upload"> </a>Step 4: Upload the image to Azure ##
+## <a id="upload"> </a>手順 4. Azure にイメージをアップロードする##
 
-When you upload the .vhd file, you can place the .vhd file anywhere within your blob storage. In the following command examples, **BlobStorageURL** is the URL for the storage account that you created in Step 2, **YourImagesFolder** is the container within blob storage where you want to store your images. **VHDName** is the label that appears in the Management Portal to identify the virtual hard disk. **PathToVHDFile** is the full path and name of the .vhd file. 
+.vhd ファイルをアップロードするときは、BLOB ストレージ内であればどこにでも .vhd ファイルを置くことができます。以下のコマンドの例では、**BlobStorageURL** はステップ 2 で作成したストレージ アカウントの URL であり、**YourImagesFolder** は BLOB ストレージ内でイメージを格納するコンテナーです。**VHDName** は、仮想ハード ディスクを識別するために管理ポータルに表示されるラベルです。**PathToVHDFile** は、.vhd ファイルの完全なパスとファイル名です。
 
-Do one of the following:
+次のいずれかを実行します。
 
-- From the Azure PowerShell window you used in the previous step, type:
+- 前の手順で使用した Azure PowerShell ウィンドウで、次のように入力します。
 
 	`Add-AzureVhd -Destination <BlobStorageURL>/<YourImagesFolder>/<VHDName> -LocalFilePath <PathToVHDFile>`
 
-	For more information, see [Add-AzureVhd](http://msdn.microsoft.com/en-us/library/windowsazure/dn205185.aspx).
+	詳細については、[Add-AzureVhd に関するページ](http://msdn.microsoft.com/ja-jp/library/windowsazure/dn205185.aspx)を参照してください。
 
-- Use the Linux command-line tool to upload the image. You can upload an image by using the following command:
+- Linux コマンド ライン ツールを使用してイメージをアップロードします。次のコマンドを使用してイメージをアップロードできます。
 
 		Azure vm image create <image name> --location <Location of the data center> --OS Linux <Sourcepath to the vhd>
 
-## <a id="nonendorsed"> </a>Information for Non Endorsed Distributions ##
-In essence all distributions running on Azure will need to meet the following prerequisites to have a chance to properly run in the platform. 
+## <a id="nonendorsed"> </a>動作保証外のディストリビューションに関する情報##
+基本的に、Azure 上で動作するすべてのディストリビューションは、プラットフォーム上で適切に実行できるように、次の前提条件を満たす必要があります。
 
-This list is by no means comprehensive as every distribution is different; and it is quite possible that even if you meet all the criteria below you will still need to significantly tweak your image to ensure that it properly runs on top of the platform.
+この一覧は決して包括的なものではありません。前提条件はディストリビューションによって異なるためです。次に示している条件をすべて満たす場合でも、プラットフォーム上で適切に動作するようにイメージを微調整する必要があります。
 
-It is for this reason that we recommend that you start with one of our [partners endorsed images](https://www.windowsazure.com/en-us/manage/linux/other-resources/endorsed-distributions/).
+この理由から[パートナー動作保証済みイメージ](https://www.windowsazure.com/ja-jp/manage/linux/other-resources/endorsed-distributions/)のいずれかで開始することをお勧めします。
 
-The list below replaces step 1 of the process to create your own VHD:
+次の手順は、独自の VHD を作成する「手順 1」に置き換わるものです。
 
-1.	You will need to ensure that you are running a kernel that either incorporates the latest LIS drivers for Hyper V or that you have successfully compiled them ( They have been Open Sourced). The Drivers can be found [at this location](http://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409)
+1.	実行しているカーネルに Hyper-V の最新の LIS ドライバーが組み込まれていること、または、それらのドライバーを正常にコンパイルしたことを確認する必要があります (これらのドライバーはオープン ソース化されています)。必要なドライバーは[この場所](http://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409)で見つかります。
 
-2.	Your kernel should also include the latest version of the ATA PiiX driver that is used to to provision the iamges and has the fixes committed to the kernel with commit cd006086fa5d91414d8ff9ff2b78fbb593878e3c Date:   Fri May 4 22:15:11 2012 +0100   ata_piix: defer disks to the Hyper-V drivers by default
+2.	カーネルに ATA PiiX ドライバーの最新バージョンが組み込まれていることも必要です。そのドライバーを使用してイメージがプロビジョニングされます。また、修正プログラムがカーネルにコミットされている必要もあります (commit cd006086fa5d91414d8ff9ff2b78fbb593878e3c Date:   Fri May 4 22:15:11 2012 +0100   ata_piix: defer disks to the Hyper-V drivers by default)。
 
-3.	Your compressed intird should be less than 40 MB (* we are continuously workign to increase this number so it might be outdated by now)
+3.	圧縮後の initrd は 40 MB 未満であることが必要です (* このサイズは継続的に改善されているため、現状の数値と異なる場合があります)。
 
-4.	Modify the kernel boot line in Grub or Grub2 to include the following parameters. This will also ensure all console messages are sent to the first serial port, which can assist Azure support with debugging issues:
+4.	Grub または Grub2 でカーネルのブート行を変更して次のパラメーターを含めます。これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。
 
 		console=ttyS0 earlyprintk=ttyS0 rootdelay=300
 
-5.	It is recommended that you set /etc/sysconfig/network/dhcp or equivalent from DHCLIENT_SET_HOSTNAME="yes" to DHCLIENT_SET_HOSTNAME="no"
+5.	/etc/sysconfig/network/dhcp または同等のファイルで DHCLIENT_SET_HOSTNAME="yes" を DHCLIENT_SET_HOSTNAME="no" に変更することをお勧めします。
 
-6.	You should Ensure that all SCSI devices mounted in your kernel include an I/O timeout of  300 seconds or more.
+6.	カーネルでマウントされているすべての SCSI デバイスの I/O タイムアウトが 300 秒以上であることを確認する必要があります。
 
-7.	You will need to install the Azure Linux Agent following the steps in the [Linux Agent Guide](https://www.windowsazure.com/en-us/manage/linux/how-to-guides/linux-agent-guide/). The agent has been released under the Apache 2 license and you can get the latest bits at the [Agent GitHub Location](http://go.microsoft.com/fwlink/p/?LinkID=250998&clcid=0x409)
+7.	[Linux エージェント ガイド](https://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/linux-agent-guide/)の手順に従って Azure Linux エージェントをインストールする必要があります。エージェントは Apache 2 のライセンス下でリリースされており、最新バージョンは[エージェントの GitHub サイト](http://go.microsoft.com/fwlink/p/?LinkID=250998&clcid=0x409)で入手できます。
 
-8.	In /etc/sudoers, comment out the following line, if it exists:
+8.	/etc/sudoers で、次のコード行をコメント アウトします (ある場合)。
 
 		Defaults targetpw
 
-9.	Ensure that the SSH server is installed and configured to start at boot time
+9.	SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。
 
-10.	Do not create swap space on the OS disk
+10.	OS ディスクにスワップ領域を作成しないでください。
 
-	The Azure Linux Agent can automatically configure swap space using the local resource disk that is attached to the VM after provisioning on Azure.  After installing the Azure Linux Agent (see previous step), modify the following parameters in /etc/waagent.conf appropriately:
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
 		ResourceDisk.Format=y
 		ResourceDisk.Filesystem=ext4
@@ -696,17 +696,18 @@ The list below replaces step 1 of the process to create your own VHD:
 		ResourceDisk.EnableSwap=y
 		ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-11.	You will need to run the following commands to deprovision the virtual machine:
+11.	次のコマンドを実行して仮想マシンをプロビジョニング解除することが必要になります。
 
         waagent -force -deprovision
         export HISTSIZE=0
         logout
 
-12.	You will then need to shut down the virtual machine and proceed with the upload.
+12.	その後、仮想マシンをシャットダウンし、アップロードの手順に進みます。
 
 
-[Step 1: Prepare the image to be uploaded]: #prepimage
-[Step 2: Create a storage account in Azure]: #createstorage
-[Step 3: Prepare the connection to Azure]: #connect
-[Step 4: Upload the image to Azure]: #upload
-[Information for Non Endorsed Distributions]: #nonendorsed
+[手順 1. アップロードするイメージを準備する]: #prepimage
+[手順 2. Azure にストレージ アカウントを作成する]: #createstorage
+[手順 3. Azure への接続を準備する]: #connect
+[手順 4. Azure にイメージをアップロードする]: #upload
+[動作保証外のディストリビューションに関する情報]: #nonendorsed
+

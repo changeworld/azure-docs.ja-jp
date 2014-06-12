@@ -1,4 +1,4 @@
-<properties linkid="dev-net-2-how-to-table-services" urlDisplayName="Table Service (2.0)" pageTitle="How to use table storage | Microsoft Azure" metaKeywords="Get started Azure table, Azure nosql, Azure large structured data store, Azure table, Azure table storage, Azure table .NET, Azure table storage .NET, Azure table C#, Azure table storage C#" description="Learn how to use table storage to create and delete tables and insert and query entities in a table." metaCanonical="" services="storage" documentationCenter=".NET" title="How to use the Table Storage Service" authors="" solutions="" manager="paulettm" editor="cgronlun" />
+<properties linkid="dev-net-2-how-to-table-services" urlDisplayName="テーブル サービス (2.0)" pageTitle="テーブル ストレージの使用方法 | Microsoft Azure" metaKeywords="Azure テーブルの使用、Azure nosql、Azure 大容量構造化データ ストア、Azure テーブル、Azure テーブル ストレージ、Azure テーブル .NET、Azure テーブル ストレージ .NET、Azure テーブル C#、Azure テーブル ストレージ C#" description="テーブル ストレージを使用してテーブルを作成および削除する方法、さらにテーブル内のエンティティを挿入および照会する方法について説明します。" metaCanonical="" services="storage" documentationCenter=".NET" title="テーブル ストレージ サービスを使用する方法" authors="" solutions="" manager="paulettm" editor="cgronlun" />
 
 
 
@@ -7,101 +7,98 @@
 
 
 
-# How to use the Table Storage Service
+# テーブル ストレージ サービスを使用する方法
 
 <div class="dev-center-tutorial-selector">
-<a href="/en-us/develop/net/how-to-guides/table-services-v17/" title="version 1.7" class="current">version 1.7</a>
-<a href="/en-us/develop/net/how-to-guides/table-services/" title="version 2.0">version 2.0</a> 
+<a href="/ja-jp/develop/net/how-to-guides/table-services-v17/" title="バージョン 1.7" class="current">バージョン 1.7</a>
+<a href="/ja-jp/develop/net/how-to-guides/table-services/" title="バージョン 2.0">バージョン 2.0</a> 
 </div>
 
 
-This guide will show you how to perform common scenarios using the
-Azure Table storage service. The samples are written in C\# code
-and use the .NET API. The scenarios covered include **creating and
-deleting a table, inserting and querying entities in a table**. For more
-information on tables, see the [Next steps][] section.
+このガイドでは、Azure テーブル ストレージ サービスを使用して
+一般的なシナリオを実行する方法について説明します。サンプルは C\# コードで記述され、
+.NET API を利用しています。紹介するシナリオは、**テーブルの作成と削除、
+テーブルのエンティティの挿入とクエリ実行**などです。テーブルの
+詳細については、「[次のステップ][]」のセクションを参照してください。
 
-## Table of Contents
+## 目次
 
--   [What is the Table Service][]
--   [Concepts][]
--   [Create an Azure Storage account][]
--   [Setup a storage connection string][]
--   [How to: Programmatically access table storage][]
--   [How to: Create a table][]
--   [How to: Add an entity to a table][]
--   [How to: Insert a batch of entities][]
--   [How to: Retrieve all entities in a partition][]
--   [How to: Retrieve a range of entities in a partition][]
--   [How to: Retrieve a single entity][]
--   [How to: Update an entity][]
--   [How to: Query a subset of entity properties][]
--   [How to: Insert-or-replace an entity][]
--   [How to: Delete an entity][]
--   [How to: Delete a table][]
--   [Next steps][]
+-   [テーブル サービスとは][]
+-   [概念][]
+-   [Azure のストレージ アカウントの作成][]
+-   [ストレージ接続文字列の設定][]
+-   [方法: プログラムでテーブル ストレージにアクセスする][]
+-   [方法: テーブルを作成する][]
+-   [方法: エンティティをテーブルに追加する][]
+-   [方法: エンティティのバッチを挿入する][]
+-   [方法: パーティション内のすべてのエンティティを取得する][]
+-   [方法: パーティション内の一定範囲のエンティティを取得する][]
+-   [方法: 単一のエンティティを取得する][]
+-   [方法: エンティティを更新する][]
+-   [方法: エンティティ プロパティのサブセットを照会する][]
+-   [方法: エンティティを挿入または置換する][]
+-   [方法: エンティティを削除する][]
+-   [方法: テーブルを削除する][]
+-   [次のステップ][]
 
 [WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
-<h2><a name="create-account"></a><span class="short-header">Create an account</span>Create an Azure Storage account</h2>
+<h2><a name="create-account"></a><span class="short-header">アカウントの作成</span>Azure のストレージ アカウントの作成</h2>
 
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-<h2><a name="setup-connection-string"></a><span class="short-header">Setup a connection string</span>Setup a storage connection string</h2>
+<h2><a name="setup-connection-string"></a><span class="short-header">接続文字列の設定</span>ストレージ接続文字列の設定</h2>
 
-The Azure .NET storage API supports using a storage connection
-string to configure endpoints and credentials for accessing storage
-services. You can put your storage connection string in a configuration
-file, rather than hard-coding it in code:
+Azure .NET ストレージ API では、ストレージ接続文字列を使用して、
+ストレージ サービスにアクセスするためのエンドポイントおよび資格情報を
+構成できます。ストレージ接続文字列は、コード内にハードコーディングするのではなく、構成ファイルの中で指定します。
 
-- When using Azure Cloud Services, it is recommended you store your connection string using the Azure service configuration system (`*.csdef` and `*.cscfg` files).
-- When using Azure Web Sites or Azure Virtual Machines, it is recommended you store your connection string using the .NET configuration system (e.g. `web.config` file).
+- Azure のクラウド サービスを使用するときには、Azure サービス構成システム (`*.csdef` ファイルおよび `*.cscfg` ファイル) を使用して接続文字列を格納することをお勧めします。
+- Azure の Web サイトまたは Azure の仮想マシンを使用する場合には、.NET 構成システム (`web.config` ファイルなど) を使用して接続文字列を格納することをお勧めします。
 
-In both cases, you can retrieve your connection string using the `CloudConfigurationManager.GetSetting` method as shown later in this guide.
+いずれの場合でも、このガイドで後ほど説明する `CloudConfigurationManager.GetSetting` メソッドを使用して接続文字列を取得できます。
 
-### Configuring your connection string when using Cloud Services
+### クラウド サービスを使用する場合の接続文字列の構成
 
-The service configuration mechanism is unique to Azure Cloud Services
-projects and enables you to dynamically change configuration settings
-from the Azure Management Portal without redeploying your
-application.
+サービス構成メカニズムは、Azure のクラウド サービスのプロジェクトに
+特有のものであり、これを使用すると、アプリケーションを再展開する
+ことなく Azure の管理ポータルから構成設定を動的に変更
+できます。
 
-To configure your connection string in the Azure service
-configuration:
+Azure サービス構成で接続文字列を
+構成するには:
 
-1.  Within the Solution Explorer of Visual Studio, in the **Roles**
-    folder of your Azure Deployment Project, right-click your
-    web role or worker role and click **Properties**.  
+1.  Visual Studio のソリューション エクスプローラーで、Azure 展開
+    プロジェクトの **[ロール]** フォルダー内の Web ロールまたは
+    worker ロールを右クリックし、**[プロパティ]** をクリックします。  
     ![Blob5][Blob5]
 
-2.  Click the **Settings** tab and press the **Add Setting** button.  
+2.  **[設定]** タブをクリックし、**[設定の追加]** をクリックします。  
     ![Blob6][Blob6]
 
-    A new **Setting1** entry will then show up in the settings grid.
+    新しい **[Setting1]** エントリが設定グリッドに表示されます。
 
-3.  In the **Type** drop-down of the new **Setting1** entry, choose
-    **Connection String**.  
+3.  新しい **[Setting1]** エントリの **[種類]** ボックスの一覧で、
+    **[接続文字列]** をクリックします。  
     ![Blob7][Blob7]
 
-4.  Click the **...** button at the right end of the **Setting1** entry.
-    The **Storage Account Connection String** dialog will open.
+4.  **[Setting1]** エントリの右端にある **[...]** をクリックします。
+    **[ストレージ アカウント接続文字列]** ダイアログ ボックスが開きます。
 
-5.  Choose whether you want to target the storage emulator (the Windows
-    Azure storage simulated on your local machine) or an actual storage
-    account in the cloud. The code in this guide works with either
-    option. Enter the **Primary Access Key** value copied from the
-    earlier step in this tutorial if you wish to store blob data in the
-    storage account we created earlier on Azure.   
+5.  ストレージ エミュレーター (ローカル コンピューターでシミュレートされた 
+    Microsoft Azure のストレージ) をターゲットとするか、クラウド内の実際の
+    ストレージ アカウントをターゲットとするかを選択します。このガイドに記載されているコードは、どちらのオプションにも対応しています。以前に Azure で作成したストレージ アカウントに BLOB データを
+    格納する場合は、このチュートリアルの前の手順からコピーした
+    **プライマリ アクセス キー**の値を入力します。   
     ![Blob8][Blob8]
 
-6.  Change the entry **Name** from **Setting1** to a "friendlier" name
-    like **StorageConnectionString**. You will reference this
-    connection string later in the code in this guide.  
+6.  エントリの **[名前]** を **Setting1** から **StorageConnectionString**
+    などの "わかりやすい" 名前に変更します。この接続文字列は、このガイドの後半のコードで参照します。  
     ![Blob9][Blob9]
 	
-### Configuring your connection string when using Web Sites or Virtual Machines
+### Web サイトまたは仮想マシンを使用する場合の接続文字列の構成
 
-When using Web Sites or Virtual Machines, it is recommended you use the .NET configuration system (e.g. `web.config`).  You store the connection string using the `<appSettings>` element:
+Web サイトまたは仮想マシンを使用する場合には、.NET 構成システム (`web.config` など) を使用することをお勧めします。`<appSettings>` 要素を使用して接続文字列を格納します。
 
 	<configuration>
 	    <appSettings>
@@ -110,36 +107,34 @@ When using Web Sites or Virtual Machines, it is recommended you use the .NET con
 		</appSettings>
 	</configuration>
 
-Read [Configuring Connection Strings][] for more information on storage connection strings.
+ストレージ接続文字列の詳細については、「[接続文字列の構成][]」を参照してください。
 	
-You are now ready to perform the how-to tasks in this guide.
+これで、このガイドのハウツー タスクを実行する準備が整いました。
 
 
-<h2> <a name="configure-access"> </a><span  class="short-header">Access programmatically</span>How to: Programmatically access table storage</h2>
+<h2> <a name="configure-access"> </a><span  class="short-header">プログラムでのアクセス</span>方法: プログラムでテーブル ストレージにアクセスする</h2>
 
-Add the following code namespace declarations to the top of any C\# file
-in which you wish to programmatically access Azure Storage:
+プログラムを使用して Azure ストレージにアクセスするすべての C\# ファイルの
+冒頭部分に、名前空間を宣言する次のコードを追加します。
 
     using Microsoft.WindowsAzure;
     using Microsoft.WindowsAzure.StorageClient;
 
-You can use the **CloudStorageAccount** type and
-**CloudConfigurationManager** type
-to retrieve your storage connection string and storage account
-information from the Azure service configuration:
+**CloudStorageAccount** 型と
+**CloudConfigurationManager** 型を
+使用すると、Azure サービス構成からストレージ接続文字列と
+ストレージ アカウント情報を取得できます。
 
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
 
-<h2><a name="create-table"></a><span class="short-header">Create a table</span>How to: Create a table</h2>
+<h2><a name="create-table"></a><span class="short-header">テーブルの作成</span>方法: テーブルを作成する</h2>
 
-A **CloudTableClient** object lets you get reference objects for tables
-and entities. The following code creates a **CloudTableClient** object
-and uses it to create a new table. All code in this guide uses a storage
-connection string stored in the Azure application's service
-configuration. There are also other ways to create
-**CloudStorageAccount** object.
+**CloudTableClient** オブジェクトを使用すると、テーブルとエンティティの参照オブジェクトを取得できます。次のコードは、**CloudTableClient** オブジェクトを作成し、これを使用して新しいテーブルを作成します。このガイドのすべてのコードでは、
+Azure アプリケーションのサービス構成に格納されている
+ストレージ接続文字列を使用します。そのほかにも 
+**CloudStorageAccount** オブジェクトを作成する方法はあります。
 
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -152,16 +147,15 @@ configuration. There are also other ways to create
     string tableName = "people";
     tableClient.CreateTableIfNotExist(tableName);
 
-<h2><a name="add-entity"></a><span class="short-header">Add an entity to a table</span>How to: Add an entity to a table</h2>
+<h2><a name="add-entity"></a><span class="short-header">テーブルへのエンティティの追加</span>方法: テーブルにエンティティを追加する</h2>
 
-Entities map to C\# objects using a custom class derived from
-**TableServiceEntity**. To add an entity to a table, first create a
-class that defines the properties of your entity. The following code
-defines an entity class that uses the customer's first name as the row
-key, and last name as the partition key. Together, an entity's partition
-and row key uniquely identify the entity in the table. Entities with the
-same partition key can be queried faster than those with different
-partition keys.
+エンティティは、**TableServiceEntity** から派生する
+カスタム クラスを使用して C\# オブジェクトにマップされます。エンティティをテーブルに追加するには、最初に、
+エンティティのプロパティを定義するクラスを作成します。次のコードは、
+ユーザーの名を行キーとして、姓をパーティション キーとして
+使用するエンティティ クラスを定義します。エンティティのパーティション キーと行キーの組み合わせで、テーブル内のエンティティを一意に識別します。同じパーティション キーを
+持つエンティティは、異なるパーティション キーを持つエンティティよりも
+迅速に照会できます。
 
     public class CustomerEntity : TableServiceEntity
     {
@@ -178,19 +172,19 @@ partition keys.
         public string PhoneNumber { get; set; }
     }
 
-Table operations involving entities require a **TableServiceContext**
-object. This object tracks the client-side state of all table entities
-created and accessed in client code. Maintaining a client-side object
-representing each entity makes write operations more efficient because
-only objects with changes are updated on the table service when save
-operations are executed. The following code creates a
-**TableServiceContext** object by calling the **GetDataServiceContext**
-method. Then the code creates an instance of the **CustomerEntity**
-class. The code calls **serviceContext.AddObject** to insert the new
-entity into the table. This adds the entity object to the
-**serviceContext**, but no service operations occur. Finally, the code
-sends the new entity to the table service when the
-**SaveChangesWithRetries** method is called.
+エンティティに関連するテーブル操作には **TableServiceContext** 
+オブジェクトが必要です。このオブジェクトは、クライアント コードで作成してアクセスできるすべての
+テーブル エンティティのクライアント側の状態を追跡します。クライアント側のオブジェクトが
+各エンティティを表すようにしておくことで、書き込み操作の効率性が高まります。
+これは、保存操作の実行時に、変更のあるオブジェクトだけがテーブル サービスで
+更新されるためです。次のコードでは、
+**GetDataServiceContext** メソッドを呼び出すことで、**TableServiceContext** 
+オブジェクトを作成します。次に、このコードは、**CustomerEntity** クラスのインスタンスを
+作成します。また、このコードは、**serviceContext.AddObject** を呼び出して、
+新しいエンティティをテーブルに挿入します。エンティティ オブジェクトが 
+**serviceContext** に追加されますが、サービスの操作は発生しません。最後に、このコードは、
+**SaveChangesWithRetries** メソッドの呼び出し時に、
+新しいエンティティをテーブル サービスに送信します。
 
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -213,20 +207,20 @@ sends the new entity to the table service when the
     // Submit the operation to the table service
     serviceContext.SaveChangesWithRetries();
 
-<h2><a name="insert-batch"></a><span class="short-header">Insert a batch of entities</span>How to: Insert a batch of entities</h2>
+<h2><a name="insert-batch"></a><span class="short-header">エンティティのバッチの挿入</span>方法: エンティティのバッチを挿入する</h2>
 
-You can insert a batch of entities to the table service in one write
-operation. The following code creates three entity objects and adds each
-to the service context using the **AddObject** method. Then the code
-calls **SaveChangesWithRetries** with the **SaveChangesOptions.Batch**
-parameter. If you omit **SaveChangesOptions.Batch**, three separate
-calls to the table service would occur. Some other notes on batch
-operations:
+1 回の書き込み操作でエンティティのバッチをテーブル サービスに
+挿入できます。次のコードは、3 つのエンティティ オブジェクトを作成し、**AddObject**
+メソッドを使用してそれぞれをサービス コンテキストに追加します。次に、このコードは
+**SaveChangesOptions.Batch** パラメーターを指定して
+**SaveChangesWithRetries** を呼び出します。**SaveChangesOptions.Batch** を省略すると、
+テーブル サービスに対して 3 つの個別の呼び出しが発生します。バッチ操作に関しては、次の
+事項にも留意してください。
 
-1.  You can perform batch updates, deletes, or inserts.
-2.  A single batch operation can include up to 100 entities.
-3.  All entities in a single batch operation must have the same
-    partition key.
+1.  バッチ更新、バッチ削除、またはバッチ挿入を実行できます。
+2.  1 つのバッチ操作には、最大 100 個のエンティティを含めることができます。
+3.  1 つのバッチ操作に含まれるすべてのエンティティの
+    パーティション キーが同じである必要があります。
 
 <!-- -->
 
@@ -262,16 +256,15 @@ operations:
     // Submit the operation to the table service
     serviceContext.SaveChangesWithRetries(SaveChangesOptions.Batch);
 
-<h2><a name="retrieve-all-entities"></a><span class="short-header">Retrieve all entities</span>How to: Retrieve all entities in a partition</h2>
+<h2><a name="retrieve-all-entities"></a><span class="short-header">すべてのエンティティの取得</span>方法: パーティション内のすべてのエンティティを取得する</h2>
 
-To query a table for entities in a partition, you can use a LINQ query.
-Call **serviceContext.CreateQuery** to create a query from your data
-source. The following code specifies a filter for entities where 'Smith'
-is the partition key. Call **AsTableServiceQuery&lt;CustomerEntity&gt;** on
-the result of the LINQ query to finish creating the **CloudTableQuery**
-object. You can then use the **partitionQuery** object you created in a
-**foreach** loop to consume the results. This code prints the fields of
-each entity in the query results to the console.
+テーブルに対してパーティション内のエンティティを照会する場合は、LINQ クエリを使用できます。
+**serviceContext.CreateQuery** を呼び出して、データ ソースのクエリを
+作成します。次のコードは、'Smith' がパーティション キーであるエンティティに
+対してフィルターを指定します。LINQ クエリの結果で **AsTableServiceQuery&lt;CustomerEntity&gt;** 
+を呼び出し、**CloudTableQuery** オブジェクトの作成を終了します。その後、**foreach** ループに作成した **partitionQuery** オブジェクトを
+使用して、結果を処理します。このコードは、クエリ結果の各エンティティの
+フィールドをコンソールに出力します。
 
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -296,17 +289,17 @@ each entity in the query results to the console.
             entity.Email, entity.PhoneNumber);
     }
 
-<h2><a name="retrieve-range-entities"></a><span class="short-header">Retrieve a range of entities</span>How to: Retrieve a range of entities in a partition</h2>
+<h2><a name="retrieve-range-entities"></a><span class="short-header">一定範囲のエンティティの取得</span>方法: パーティション内の一定範囲のエンティティを取得する</h2>
 
-If you don't want to query all the entities in a partition, you can
-specify a range by using the **CompareTo** method instead of using the
-usual greater-than (&gt;) and less-than (&lt;) operators. This is because the
-latter will result in improper query construction. The following code
-uses two filters to get all entities in partition 'Smith' where the row
-key (first name) starts with a letter up to 'E' in the alphabet. Then it
-prints the query results. If you use the entities added to the table in
-the batch insert section of this guide, only two entities are returned
-this time (Ben and Denise Smith); Jeff Smith is not included.
+パーティション内の一部のエンティティのみを照会する場合、一般的な 
+greater-than (&gt;) 演算子と less-than (&lt;) 演算子を使用する代わりに 
+**CompareTo** メソッドを使用することで、範囲を指定できます。これは、前者の
+場合にはクエリの構造が不適切になるためです。次のコードは、
+2 つのフィルターを使用して、行キー (名) がアルファベットの "E" までの文字で始まる、
+"Smith" というパーティション内のすべてのエントリを取得します。その後、
+クエリ結果が出力されます。このガイドのバッチ挿入に関するセクションでテーブルに追加した
+エンティティを使用すると、この場合は 2 つのエンティティ (Ben Smith と Denise Smith) だけが
+返されます。Jeff Smith は返されません。
 
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -332,17 +325,17 @@ this time (Ben and Denise Smith); Jeff Smith is not included.
             entity.Email, entity.PhoneNumber);
     }
 
-<h2><a name="retrieve-single-entity"></a><span class="short-header">Retrieve a single entity</span>How to: Retrieve a single entity</h2>
+<h2><a name="retrieve-single-entity"></a><span class="short-header">単一のエンティティの取得</span>方法: 単一のエンティティを取得する</h2>
 
-You can write a query to retrieve a single, specific entity. The
-following code uses two filters to specify the customer 'Jeff Smith'.
-Instead of calling **AsTableServiceQuery**, this code calls
-**FirstOrDefault**. This method returns just one entity, rather than a
-collection, so the code assigns the return value directly to a
-**CustomerEntity** object. A null value is returned if no entity has an
-exact partition and row key match. Specifying both partition and row
-keys in a query is the fastest way to retrieve a single entity from the
-Table service.
+単一の特定のエンティティを取得するクエリを記述することができます。次のコードは、
+2 つのフィルターを使用して、"Jeff Smith" というユーザーを指定します。
+**AsTableServiceQuery** を呼び出す代わりに、このコードは 
+**FirstOrDefault** を呼び出します。この方法で返されるのは、エンティティのコレクション
+ではなく、単一のエンティティのみです。このコードは、
+戻り値を **CustomerEntity** オブジェクトに直接割り当てます。パーティション キーおよび行キーが正確に一致する
+エンティティがない場合は、null 値が返されます。クエリでパーティション キーと行キーの両方を
+指定することが、テーブル サービスから単一のエンティティを取得するための
+最速の方法です。
 
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -360,18 +353,17 @@ Table service.
          where e.PartitionKey == "Smith" && e.RowKey == "Jeff"
          select e).FirstOrDefault();
 
-<h2><a name="update-entity"></a><span class="short-header">Update an entity</span>How to: Update an entity</h2>
+<h2><a name="update-entity"></a><span class="short-header">エンティティを更新する</span>方法: エンティティを更新する</h2>
 
-To update an entity, retrieve it from the table service, modify the
-entity object, and save the changes back to the table service. The
-following code changes an existing customer's phone number. Instead of
-calling **AddObject** like we did to insert, this code calls
-**UpdateObject**. The **SaveChangesWithRetries** method calls the table
-service, and the entity is updated, unless another application changed
-it in the time since this application retrieved it. When that happens,
-an exception is thrown, and the entity must be retrieved, modified, and
-saved again. This retry pattern is common in a distributed storage
-system.
+エンティティを更新するには、そのエンティティをテーブル サービスから取得し、
+エンティティ オブジェクトを変更して、変更をテーブル サービスに戻して保存します。次のコードは、既存のユーザーの電話番号を変更します。挿入の場合
+のように **AddObject** を呼び出すのではなく、このコードは 
+**UpdateObject** を呼び出します。このアプリケーションがエンティティを取得した後で別のアプリケーションが
+変更を加えていない限り、**SaveChangesWithRetries** メソッドは
+テーブル サービスを呼び出し、このエンティティは更新されます。別のアプリケーションが変更を加えた場合は、
+例外がスローされるので、このエンティティを取得して変更し、
+もう一度保存する必要があります。この再試行パターンは、分散したストレージ システムでは
+一般的です。
 
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -398,15 +390,15 @@ system.
     // Submit the operation to the table service
     serviceContext.SaveChangesWithRetries();
 
-<h2><a name="query-entity-properties"></a><span class="short-header">Query a subset of properties</span>How to: Query a subset of entity properties</h2>
+<h2><a name="query-entity-properties"></a><span class="short-header">プロパティのサブセットの照会</span>方法: エンティティ プロパティのサブセットを照会する</h2>
 
-A query to a table can retrieve just a few properties from an entity.
-This technique, called projection, reduces bandwidth and can improve
-query performance, especially for large entities. The query in the
-following code returns only the email addresses of entities in the
-table. You can learn more about projection in this [blog post][]. Note
-that projection is not supported on the local storage emulator, so this
-code runs only when using an account on the table service.
+テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。
+プロジェクションと呼ばれるこの方法では、帯域幅の使用が削減され、クエリの
+パフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。次のコードのクエリは、
+テーブル内のエンティティの電子メール アドレスだけを
+返します。プロジェクションの詳細については、この[ブログの記事][]を参照してください。プロジェクションは
+ローカル ストレージ エミュレーターではサポートされていません。したがって、
+このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。
 
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -433,22 +425,21 @@ code runs only when using an account on the table service.
         Console.WriteLine(person.Email);
     }
 
-<h2><a name="insert-entity"></a><span class="short-header">Insert-or-replace an entity</span>How to: Insert-or-replace an entity</h2>
+<h2><a name="insert-entity"></a><span class="short-header">エンティティを挿入または置換する</span>方法: エンティティを挿入または置換する</h2>
 
-Often you want to add an entity to a table without knowing if it already
-exists in the table. An insert-or-replace operation allows you to make a
-single request which will insert the entity if it does not exist or
-replace the existing one if it does. Building on prior examples, the
-following code inserts or replaces the entity for 'Walter Harp'. After
-creating a new entity, this code calls the **serviceContext.AttachTo**
-method. This code then calls **UpdateObject**, and finally calls
-**SaveChangesWithRetries** with the
-**SaveChangesOptions.ReplaceOnUpdate** parameter. Omitting the
-**SaveChangesOptions.ReplaceOnUpdate** parameter causes an
-insert-or-merge operation. Note that insert-or-replace is not supported
-on the local storage emulator, so this code runs only when using an
-account on the table service. You can learn more about insert-or-replace
-and insert-or-merge in this [blog post][].
+エントリをテーブルに追加するときは、多くの場合、そのエントリがテーブル内に
+既に存在しているかどうかを把握していません。エンティティの挿入または置換操作では、エンティティが存在しない場合に
+そのエンティティを挿入し、エンティティが存在する場合はその既存のエンティティを
+置き換えるという操作を 1 つの要求で処理することができます。これまでの例に対して、
+次のコードは "Walter Harp" のエンティティを挿入または置換します。新しい
+エンティティを作成すると、このコードは **serviceContext.AttachTo** 
+メソッドを呼び出します。次に、このコードは **UpdateObject** を呼び出し、
+最後に **SaveChangesOptions.ReplaceOnUpdate** パラメーターを
+指定して **SaveChangesWithRetries** を呼び出します。**SaveChangesOptions.ReplaceOnUpdate** パラメーターを
+省略すると、挿入またはマージ操作が発生します。挿入または置換はローカル ストレージ エミュレーターでは
+サポートされていません。したがって、このコードはテーブル サービスのアカウントを
+使用している場合にのみ機能します。挿入または置換、および挿入またはマージの詳細については、
+この[ブログの記事][]を参照してください。
 
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -474,14 +465,14 @@ and insert-or-merge in this [blog post][].
     // Submit the operation the table service, using the ReplaceOnUpdate option
     serviceContext.SaveChangesWithRetries(SaveChangesOptions.ReplaceOnUpdate);
 
-<h2><a name="delete-entity"></a><span class="short-header">Delete an entity</span>How to: Delete an entity</h2>
+<h2><a name="delete-entity"></a><span class="short-header">エンティティの削除</span>方法: エンティティを削除する</h2>
 
-You can easily delete an entity after you have retrieved it. You can
-also use the **AttachTo** method to begin tracking it without retrieving
-it from the server (see insert-or-replace above). Once the entity is
-tracked with **serviceContext**, call **DeleteObject** with the entity
-to delete. Then call **SaveChangesWithRetries**. The following code
-retrieves and deletes a customer entity.
+エンティティは、取得後に簡単に削除できます。**AttachTo** 
+メソッドを使用することで、エンティティをサーバーから取得せずに、エンティティ
+の追跡を開始することもできます (上の "挿入または置換" の説明を参照してください)。
+**serviceContext** でエンティティを追跡したら、削除するエンティティを
+指定して **DeleteObject** を呼び出します。次に、**SaveChangesWithRetries** を呼び出します。次のコードは、
+ユーザー エンティティを取得して削除します。
 
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -504,11 +495,9 @@ retrieves and deletes a customer entity.
     // Submit the operation to the table service
     serviceContext.SaveChangesWithRetries();
 
-<h2><a name="delete-table"></a><span class="short-header">Delete a table</span>How to: Delete a table</h2>
+<h2><a name="delete-table"></a><span class="short-header">テーブルの削除</span>方法: テーブルを削除する</h2>
 
-Finally, the following code deletes a table from a storage account. A
-table which has been deleted will be unavailable to be recreated for a
-period of time following the deletion.
+最後に、次のコードは、ストレージ アカウントからテーブルを削除します。削除されたテーブルは、削除後の一定期間は再作成できなくなります。
 
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -520,49 +509,48 @@ period of time following the deletion.
     // Delete the table it if exists
     tableClient.DeleteTableIfExist("people");
 
-<h2><a name="next-steps"></a><span class="short-header">Next steps</span>Next steps</h2>
+<h2><a name="next-steps"></a><span class="short-header">次のステップ</span>次のステップ</h2>
 
-Now that you've learned the basics of table storage, follow these links
-to learn how to do more complex storage tasks.
+これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
 <ul>
-<li>View the blob service reference documentation for complete details about available APIs:
+<li>利用可能な API の詳細については、BLOB サービスのリファレンス ドキュメントを参照してください。
   <ul>
-    <li><a href="http://msdn.microsoft.com/en-us/library/windowsazure/wl_svchosting_mref_reference_home">.NET client library reference</a>
+    <li><a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/wl_svchosting_mref_reference_home">.NET クライアント ライブラリ リファレンス</a>
     </li>
-    <li><a href="http://msdn.microsoft.com/en-us/library/windowsazure/dd179355">REST API reference</a></li>
+    <li><a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179355">REST API リファレンス</a></li>
   </ul>
 </li>
-<li>Learn about more advanced tasks you can perform with Azure Storage at <a href="http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx">Storing and Accessing Data in Azure</a>.</li>
-<li>View more feature guides to learn about additional options for storing data in Azure.
+<li>Azure のストレージを使用して実行できるさらに高度なタスクについては、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx">Azure のデータの格納とアクセス</a>」を参照してください。</li>
+<li>Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
   <ul>
-    <li>Use <a href="/en-us/develop/net/how-to-guides/blob-storage/">Blob Storage</a> to store unstructured data.</li>
-    <li>Use <a href="/en-us/develop/net/how-to-guides/sql-database/">SQL Database</a> to store relational data.</li>
+    <li>非構造化データの格納には、<a href="/ja-jp/develop/net/how-to-guides/blob-storage/">BLOB ストレージ</a>を使用します。</li>
+    <li>リレーショナル データの格納には、<a href="/ja-jp/develop/net/how-to-guides/sql-database/">SQL データベース</a>を使用します。</li>
   </ul>
 </li>
 </ul>
 
-  [Next Steps]: #next-steps
-  [What is the Table Service]: #what-is
-  [Concepts]: #concepts
-  [Create an Azure Storage Account]: #create-account
-  [Create an Azure Project in Visual Studio]: #create-project
-  [Configure your Application to Access Storage]: #configure-access
-  [Setup a storage Connection String]: #setup-connection-string
-  [How to: Programmatically access table storage]: #configure-access
-  [How To: Create a Table]: #create-table
-  [How To: Add an Entity to a Table]: #add-entity
-  [How To: Insert a Batch of Entities]: #insert-batch
-  [How To: Retrieve All Entities in a Partition]: #retrieve-all-entities
-  [How To: Retrieve a Range of Entities in a Partition]: #retrieve-range-entities
-  [How To: Retrieve a Single Entity]: #retrieve-single-entity
-  [How To: Update an Entity]: #update-entity
-  [How To: Query a Subset of Entity Properties]: #query-entity-properties
-  [How To: Insert-or-Replace an Entity]: #insert-entity
-  [How To: Delete an Entity]: #delete-entity
-  [How To: Delete a Table]: #delete-table
-  [Download and install the Azure SDK for .NET]: /en-us/develop/net/
-  [Creating an Azure Project in Visual Studio]: http://msdn.microsoft.com/en-us/library/windowsazure/ee405487.aspx
+  [次のステップ]: #next-steps
+  [テーブル サービスとは]: #what-is
+  [概念]: #concepts
+  [Azure のストレージ アカウントの作成]: #create-account
+  [Visual Studio を使用した Azure プロジェクトの作成]: #create-project
+  [アプリケーションのストレージへのアクセスの構成]: #configure-access
+  [ストレージ接続文字列の設定]: #setup-connection-string
+  [方法: プログラムでテーブル ストレージにアクセスする]: #configure-access
+  [方法: テーブルを作成する]: #create-table
+  [方法: エンティティをテーブルに追加する]: #add-entity
+  [方法: エンティティのバッチを挿入する]: #insert-batch
+  [方法: パーティション内のすべてのエンティティを取得する]: #retrieve-all-entities
+  [方法: パーティション内の一定範囲のエンティティを取得する]: #retrieve-range-entities
+  [方法: 単一のエンティティを取得する]: #retrieve-single-entity
+  [方法: エンティティを更新する]: #update-entity
+  [方法: エンティティ プロパティのサブセットを照会する]: #query-entity-properties
+  [方法: エンティティを挿入または置換する]: #insert-entity
+  [方法: エンティティを削除する]: #delete-entity
+  [方法: テーブルを削除する]: #delete-table
+  [Azure SDK for .NET をダウンロードしてインストールする]: /ja-jp/develop/net/
+  [Visual Studio を使用した Azure プロジェクトの作成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405487.aspx
   
   [Blob5]: ./media/storage-dotnet-how-to-use-table-storage-17/blob5.png
   [Blob6]: ./media/storage-dotnet-how-to-use-table-storage-17/blob6.png
@@ -570,7 +558,8 @@ to learn how to do more complex storage tasks.
   [Blob8]: ./media/storage-dotnet-how-to-use-table-storage-17/blob8.png
   [Blob9]: ./media/storage-dotnet-how-to-use-table-storage-17/blob9.png
   
-  [blog post]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
-  [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
-  [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-  [Configuring Connection Strings]: http://msdn.microsoft.com/en-us/library/windowsazure/ee758697.aspx
+  [ブログの記事]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+  [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
+  [接続文字列の構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758697.aspx
+

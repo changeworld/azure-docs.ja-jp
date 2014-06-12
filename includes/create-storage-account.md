@@ -1,6 +1,6 @@
-ストレージ操作を行うには、Windows Azure のストレージ アカウントが必要です。ストレージ アカウントを作成するには、次のステップを実行します ([REST API を使用して]ストレージ アカウントを作成することもできます)。
+ストレージ操作を行うには、Azure のストレージ アカウントが必要です。ストレージ アカウントを作成するには、次のステップを実行します ([REST API を使用して]ストレージ アカウントを作成することもできます)。
 
-1. [Windows Azure の管理ポータル]にログインします。
+1. [Azure の管理ポータル]にログインします。
 
 2. ナビゲーション ウィンドウの下部にある **[+新規]** をクリックします。
 
@@ -12,14 +12,14 @@
 
 4. [URL] で、ストレージ アカウントの URI で使用するサブドメイン名を入力します。文字数は 3 ～ 24 文字で、アルファベット小文字と数字を使用できます。この名前は、対応するサブスクリプションの BLOB リソース、キュー リソース、またはテーブル リソースのアドレス指定に使用される URL のホスト名になります。
 
-5. ストレージの配置先となるリージョンまたはアフィニティ グループを選択します。Windows Azure アプリケーションからストレージを使用する場合は、アプリケーションを展開するリージョンと同じリージョンを選択します。
+5. ストレージの配置先となるリージョンまたはアフィニティ グループを選択します。Azure アプリケーションからストレージを使用する場合は、アプリケーションを展開するリージョンと同じリージョンを選択します。
 
 6. 必要に応じて、Geo レプリケーションを有効にできます。
 
 6. **[ストレージ アカウントの作成]** をクリックします。
 
-[メンバーシップ API を使用する]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh264518.aspx
-[Windows Azure の管理ポータル]: http://manage.windowsazure.com
+[REST API を使用して]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh264518.aspx
+[Azure の管理ポータル]: http://manage.windowsazure.com
 [plus-new]: ./media/create-storage-account/plus-new.png
 [quick-create-storage]: ./media/create-storage-account/quick-storage-2.png
 

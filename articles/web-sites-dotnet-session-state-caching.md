@@ -1,93 +1,93 @@
-<properties linkid="video-center-index" urlDisplayName="index" pageTitle="Video Center Index" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="How to Use ASP.NET Session State with Azure Web Sites" authors="jroth" solutions="" manager="" editor="" />
+<properties linkid="video-center-index" urlDisplayName="索引" pageTitle="ビデオ センターの索引" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Azure の Web サイトで ASP.NET セッション状態を使用する方法" authors=""  solutions="" writer="jroth" manager="" editor=""  />
 
 
 
 
-# How to Use ASP.NET Session State with Azure Web Sites
+# Azure の Web サイトで ASP.NET セッション状態を使用する方法
 
-This topic explains how to use the Azure Cache Service (Preview) to support ASP.NET session state caching.
+ここでは、Azure のキャッシュ サービス (プレビュー) を使用して、ASP.NET セッション状態キャッシュをサポートする方法を説明します。
 
-Without an external provider, session state is stored in-process on the web server hosting the site. For Azure Web Sites, there are two problems with in-process session state. First, for sites with multiple instances, session state stored on one instance is not accessible to other instances. Because a user request can be routed to any instance, the session information is not guaranteed to be there. Second, any changes in configuration could result in the web site running on a completely different server.
+外部プロバイダーがない場合、セッション状態は、そのサイトをホストしている Web サーバー上のインプロセスに格納されます。Azure の Web サイトでは、インプロセスのセッション状態には 2 つの問題があります。まず、複数のインスタンスを持つサイトで、1 つのインスタンスに保存されているセッション状態は他のインスタンスからアクセスできません。ユーザー要求はどのインスタンスに割り当てられるかわらかないので、そのインスタンスにセッション情報があるとは限りません。次に、構成を変更すると、まったく別のサーバー上で Web サイトが実行されるようになります。
 
-The Cache Service (Preview) provides a distributed caching service that is external to the web site. This solves the problem with in-process session state. For more information about how to use session state, see [ASP.NET Session State Overview][].
+キャッシュ サービス (プレビュー) は、Web サイトの外部に分散キャッシュ サービスを提供します。これにより、インプロセス セッション状態の問題を解決できます。セッション状態の詳しい使用方法については、「[ASP.NET セッション状態の概要][]」を参照してください。
 
-The basic steps to use the Cache Service (Preview) for session state caching include:
+キャッシュ サービス (プレビュー) を使用してセッション状態キャッシュをサポートする基本的な手順は次のとおりです。
 
-* [Create the cache.](#createcache)
-* [Configure the ASP.NET project to use Azure Cache.](#configureproject)
-* [Modify the web.config file.](#configurewebconfig)
-* [Use the Session object to store and retrieve cached items.](#usesessionobject)
+* [キャッシュを作成します。](#createcache)
+* [Azure のキャッシュを使用するように ASP.NET プロジェクトを構成します。](#configureproject)
+* [web.config ファイルを修正します。](#configurewebconfig)
+* [セッション オブジェクトを使用して、キャッシュされたアイテムを保存および取得します。](#usesessionobject)
 
-<h2><a id="createcache"></a>Create the Cache</h2>
-1. At the bottom of the Azure Management Portal, click on the **New** icon.
+<h2><a id="createcache"></a>キャッシュを作成する</h2>
+1. Azure の管理ポータルの下部にある **[新規]** アイコンをクリックします。
 
 	![NewIcon][NewIcon]
 
-2. Select **Data Services**, **Cache**, and then click **Quick Create**.
+2. **[データ サービス]**、**[キャッシュ]** の順に選択し、**[簡易作成]** をクリックします。
 
 	![NewCacheDialog][NewCacheDialog]
 
-3. Type a unique name for the cache in the **Endpoint** text box. Then select appropriate values for the other cache properties, and click **Create a New Cache**.
+3. キャッシュの一意な名前を **[エンドポイント]** ボックスに入力します。キャッシュに関するその他のプロパティを設定し、**[新しいキャッシュの作成]** をクリックします。
 
-4. Select the **Cache** icon in the Management Portal to view all of your Cache Service endpoints.
+4. 管理ポータルで **[キャッシュ]** アイコンを選択します。すべてのキャッシュ サービス エンドポイントが表示されます。
 
 	![CacheIcon][CacheIcon]
 
-5. You can then select one of the Cache Service endpoints to view its properties. The following sections will use settings from the **Dashboard** tab to configure Caching for an ASP.NET project.
+5. いずれかのキャッシュ サービス エンドポイントを選択すると、そのプロパティが表示されます。この後のセクションでは、**[ダッシュボード]** タブを使用して ASP.NET プロジェクトのキャッシュを構成します。
 
-<h2><a id="configureproject"></a>Configure the ASP.NET project</h2>
-1. First, ensure that you have [installed the latest][]  **Azure SDK for .NET**.
+<h2><a id="configureproject"></a>ASP.NET プロジェクトを構成する</h2>
+1. まず、**Azure SDK for .NET** の[最新バージョンをインストール][]していることを確認します。
 
-2. In Visual Studio, right-click the ASP.NET project in **Solution Explorer**, and then select **Manage NuGet Packages**. (If you are using WebMatrix, click the **NuGet** button on the toolbar instead)
+2. Visual Studio の**ソリューション エクスプローラー**で目的の ASP.NET プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します (WebMatrix を使用している場合は、ツール バーの [**NuGet**] をクリックします)。
 
-3. Type **WindowsAzure.Caching** in the **Search Online** edit box.
+3. **[オンライン検索]** ボックスに、「**WindowsAzure.Caching**」と入力します。
 
 	![NuGetDialog][NuGetDialog]
 
-4. Select the **Azure Caching** package, and then click the **Install** button.
+4. **[Azure Caching]** パッケージを選択し、**[インストール]** をクリックします。
 
-<h2><a id="configurewebconfig"></a>Modify the Web.Config File</h2>
-In addition to making assembly references for Cache, the NuGet package adds stub entries in the web.config file. To use Cache for session state, several modifications must be made to the web.config.
+<h2><a id="configurewebconfig"></a>Web.Config ファイルを修正する</h2>
+キャッシュに必要なアセンブリ参照の作成に加え、NuGet パッケージは web.config ファイルにスタブ エントリを追加します。キャッシュ サービスを使用してセッション状態にアクセスするには、web.config を一部修正する必要があります。
 
-1. Open the **web.config** file for the ASP.NET project.
+1. ASP.NET プロジェクトの **web.config** を開きます。
 
-2. Find the existing **sessionState** element and comment it out (or remove it).
+2. **sessionState** 要素が既に存在する場合は、これをコメント アウト (または削除) します。
 
-3. Then uncomment the **sessionState** element that was added by the Azure Caching NuGet package. The end result should look similar to the following screenshot.
+3. Azure Caching NuGet パッケージによって追加された **sessionState** 要素をコメント解除します。次のスクリーン ショットのようになります。
 
 	![SessionStateConfig][SessionStateConfig]
 
-4. Next, find the **dataCacheClients** section. Uncomment the **securityProperties** child element.
+4. 次に、**dataCacheClients** セクションを探します。**securityProperties** 子要素をコメント解除します。
 
 	![CacheConfig][CacheConfig]
 
-5. In the **autoDiscover** element, set the **identifier** attribute to your cache's endpoint URL. To find your endpoint URL, go to the cache properties in the Azure Management Portal. On the **Dashboard** tab, copy the **ENDPOINT URL** value in the **quick glance** section.
+5. **autoDiscover** 要素で、**identifier** 属性にキャッシュのエンドポイント URL を設定します。エンドポイント URL を確認するには、Azure の管理ポータルでキャッシュのプロパティを参照します。**[ダッシュボード]** タブを開き、**[概要]** セクションの **[エンドポイント URL]** の値をコピーします。
 
 	![EndpointURL][EndpointURL]
 
-6. In the **messageSecurity** element, set the **authorizationInfo** attribute to your cache's access key. To find the access key, select your cache in the Azure Management Portal. Then click the **Manage Keys** icon on the bottom bar. Click the copy button next to the **PRIMARY ACCESS KEY** text box.
+6. **messageSecurity** 要素で、**authorizationInfo** 属性にキャッシュのアクセス キーを設定します。アクセス キーを確認するには、Azure の管理ポータルで該当するキャッシュを選択します。下部のバーにある **[キーの管理]** アイコンをクリックします。**[プライマリ アクセス キー]** ボックスの横にあるコピー ボタンをクリックします。
 
 	![ManageKeys][ManageKeys]
 
-<h2><a id="usesessionobject"></a>Use the Session Object in Code</h2>
-The final step is to begin using the Session object in your ASP.NET code. You add objects to session state by using the **Session.Add** method. This method uses key-value pairs to store items in the session state cache.
+<h2><a id="usesessionobject"></a>コードでセッション オブジェクトを使用する</h2>
+最後に、ASP.NET コードでセッション オブジェクトを使用します。**Session.Add** メソッドを使用して、セッション状態にオブジェクトを追加します。このメソッドではキーと値のペアに基づいて、セッション状態キャッシュにアイテムが格納されます。
 
     string strValue = "yourvalue";
 	Session.Add("yourkey", strValue);
 
-The following code retrieves this value from session state.
+次のコードは、セッション状態からこの値を取得します。
 
     object objValue = Session["yourkey"];
     if (objValue != null)
        strValue = (string)obj;	
 
-For more details about how to use ASP.NET session state, see [ASP.NET Session State Overview][].
+ASP.NET セッション状態の詳しい使用方法については、「[ASP.NET セッション状態の概要][]」を参照してください。
 
   
   
   
-  [installed the latest]: http://www.windowsazure.com/en-us/downloads/?sdk=net  
-  [ASP.NET Session State Overview]: http://msdn.microsoft.com/en-us/library/ms178581.aspx
+  [最新バージョンをインストール]: http://www.windowsazure.com/ja-jp/downloads/?sdk=net  
+  [ASP.NET セッション状態の概要]: http://msdn.microsoft.com/ja-jp/library/ms178581.aspx
 
   [NewIcon]: ./media/web-sites-dotnet-session-state-caching/CacheScreenshot_NewButton.png
   [NewCacheDialog]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CreateOptions.png
@@ -97,3 +97,4 @@ For more details about how to use ASP.NET session state, see [ASP.NET Session St
   [CacheConfig]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CacheConfig.png
   [EndpointURL]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_EndpointURL.png
   [ManageKeys]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_ManageAccessKeys.png
+

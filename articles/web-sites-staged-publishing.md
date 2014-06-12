@@ -1,176 +1,176 @@
-<properties linkid="web-sites-staged-publishing" urlDisplayName="How to stage sites on Microsoft Azure" pageTitle="Staged Deployment on Microsoft Azure Web Sites" metaKeywords="Microsoft Azure Web Sites, Staged Deployment, Site Slots" description="Learn how to use staged publishing on Microsoft Azure Web Sites." metaCanonical="" services="web-sites" documentationCenter="" title="Staged Deployment on Microsoft Azure Web Sites" authors="timamm"  solutions="" writer="timamm" manager="paulettm" editor="mollybos"  />
+<properties linkid="web-sites-staged-publishing" urlDisplayName="Microsoft Azure のサイトのステージング方法" pageTitle="Microsoft Azure の Web サイトのステージングされた展開" metaKeywords="Microsoft Azure の Web サイト, ステージングされた展開, サイト スロット" description="Microsoft Azure の Web サイトでステージングされた発行を使用する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="Microsoft Azure の Web サイトのステージングされた展開" authors="timamm"  solutions="" writer="timamm" manager="paulettm" editor="mollybos"  />
 
-#Staged Deployment on Microsoft Azure Web Sites#
+#Microsoft Azure の Web サイトのステージングされた展開#
 
-## Table of Contents ##
-- [Overview](#Overview)
-- [To Add a Deployment Slot to a Web Site](#Add)
-- [About Configuration for Deployment Slots](#AboutConfiguration)
-- [To Swap Deployment Slots](#Swap)
-- [To Rollback a Production Site to Staging](#Rollback)
-- [To Delete a Site Slot](#Delete)
-- [Azure PowerShell cmdlets for Site Slots](#PowerShell)
-- [Azure Cross-Platform Command-Line Interface (xplat-cli) commands for Site Slots](#CLI)
+## 目次##
+- [概要](#Overview)
+- [展開スロットを Web サイトに追加するには](#Add)
+- [展開スロットの構成について](#AboutConfiguration)
+- [展開スロットをスワップするには](#Swap)
+- [運用サイトをステージング サイトにロールバックするには](#Rollback)
+- [サイト スロットを削除するには](#Delete)
+- [サイト スロットに対する Azure PowerShell コマンドレット](#PowerShell)
+- [サイト スロットに対する Azure クロス プラットフォーム コマンド ライン インターフェイス (xplat-cli) のコマンド](#CLI)
 
 <a name="Overview"></a>
-##Overview##
-The option to create site slots for Standard mode sites running on Microsoft Azure Web Sites enables a staged deployment workflow. Create a development or staging site slot for each default production site (which now becomes a production slot) and swap these slots with no down time. Staged deployment is invaluable for the following scenarios:
+##概要##
+Microsoft Azure の Web サイトで実行されている標準モードのサイト用にサイト スロットを作成することで、ステージングされた展開ワークフローが有効になります。既定の各運用サイトに展開またはステージング サイト スロットを作成し (この時点で運用サイト スロットになります)、これらのスロットをダウン タイムなしでスワップします。ステージングされた展開は次のシナリオに重要です。
 
-- **Validating before deployment** - After you deploy content or configuration to a staging site slot, you can validate changes before swapping these changes to production.
+- **展開前の検証** - ステージング サイト スロットにコンテンツや構成を展開した後、変更を検証してから、それらの変更を運用サイトにスワップできます。
 
-- **Building and integrating site content** - You can incrementally add content updates to your staging deployment slot, and then swap the deployment slot into production when your updates are  completed.
+- **サイト コンテンツのビルドと統合** - コンテンツの更新をステージング展開スロットに段階的に追加し、更新が完了したら、展開スロットを運用サイトにスワップできます。
 
-- **Rolling back a production site** - If the changes swapped into production are not as you expected, you can swap the original content back to production right away. 
+- **運用サイトのロールバック** - 運用サイトにスワップした変更が想定どおりでない場合は、元のコンテンツを運用サイトにすぐにスワップして戻すことができます。
 
-Microsoft Azure warms up all instances of the source site slot before the swap to production, eliminating cold starts when you deploy content. The traffic redirection is seamless, and no requests are dropped as a result of swap operations. Currently, only one deployment slot in addition to the default production slot is supported per Standard web site.   
+Microsoft Azure では、運用サイトへのスワップ前にソース サイト スロットのすべてのインスタンスが準備されるため、コンテンツの展開時のコールド スタートは必要なくなります。トラフィックのリダイレクトはシームレスであるため、スワップ操作によりドロップされる要求はありません。現在、標準モードの Web サイトあたり、既定の運用サイト スロットに加えて、1 つの展開スロットのみがサポートされています。
 
 <a name="Add"></a>
-##To Add a Deployment Slot to a Web Site##
+##展開スロットを Web サイトに追加するには##
 
-The site must be running in Standard mode to enable site slot creation.
+Web サイトに対してサイト スロットの作成を有効にするには、そのサイトを標準モードで実行する必要があります。
 
-1. On the Quick Start page, or in the Quick Glance section of the Dashboard page for your web site, click **Add a new deployment slot**. 
+1. [クイック スタート] ページ、または Web サイトの [ダッシュボード] ページの [概要] セクションで、**[新しい展開スロットの追加]** をクリックします。
 	
-	![Add a new deployment slot][QGAddNewDeploymentSlot]
+	![新しい展開スロットの追加][QGAddNewDeploymentSlot]
 	
 	> [WACOM.NOTE]
-	> If the web site is not already in Standard mode, you will receive the message **You must be in the standard mode to enable staged publishing**. At this point, you have the option to select **Upgrade** and navigate to the **Scale** tab of your web site before continuing.
+	> Web サイトが標準モードになっていない場合は、"**ステージングされた発行を有効にするには、標準モードになっている必要があります**" というメッセージが表示されます。この時点で、**[アップグレード]** を選択して Web サイトの **[スケールの設定]** タブに移動してから、操作を続行することもできます。
 	
-2. The **Add New Deployment Slot** dialog appears.
+2. **[新しい展開スロットの追加]** ダイアログが表示されます。
 	
-	![Add New Deployment Slot dialog][AddNewDeploymentSlotDialog]
+	![[新しい展開スロットの追加] ダイアログ][AddNewDeploymentSlotDialog]
 	
-	Provide a name for the deployment slot. The name cannot exceed 60 alphanumeric characters. No special characters or spaces are allowed.
+	展開スロットの名前を指定します。名前は 60 文字以内の英数字で指定してください。特殊文字または空白文字は使用できません。
 	
-3. In the list of web sites, expand the mark to the left of your web site name to reveal the deployment slot. It will have the name of your production site followed in parentheses by the deployment slot name that you provided. 
+3. Web サイトの一覧で、Web サイト名の左にあるマークを展開して、展開スロットを表示します。運用サイトの名前の後に、指定した展開スロット名がかっこ内に表示されます。
 	
-	![Site List with Deployment Slot][SiteListWithStagedSite]
+	![サイトの一覧で展開スロットが表示されたところ][SiteListWithStagedSite]
 	
-4. When you select the name of the deployment site slot, a page will open with a set of tabs just like any other web site. <strong><i>your-website-name</i>(<i>deployment-slot-name</i>)</strong> will appear at the top of the portal page to remind you that you are viewing the deployment site slot.
+4. 展開サイト スロットの名前を選択すると、他の Web サイトと同様に、一連のタブのあるページが開きます。"<strong><i>Web サイト名</i>(<i>展開スロット名</i>)</strong>" がポータル ページの上部に示され、展開サイト スロットが表示されていることがわかります。
 	
-	![Deployment Slot Title][StagingTitle]
+	![展開スロットのタイトル][StagingTitle]
 	
-You can now update content and configuration for the deployment site slot. Use the publish profile or deployment credentials associated with the deployment site slot for content updates. 
+これで、展開サイト スロットのコンテンツと構成を更新できます。コンテンツの更新には、展開サイト スロットに関連付けられた発行プロファイルまたは展開資格情報を使用してください。
 
 <a name="AboutConfiguration"></a>
-##About Configuration for Deployment Slots##
-When a deployment slot is created, the configuration for the deployment slot is cloned from the production site slot by default. Configuration for all site slots is editable.
+##展開スロットの構成について##
+展開スロットが作成されると、既定ではそのスロットの構成は運用サイト スロットから複製されます。すべてのサイト スロットの構成は編集可能です。
 
-**Configuration that will change on slot swap**:
+**スロットのスワップ時に変更される構成**:
 
-- General settings
-- Connection strings
-- Handler mappings
-- Monitoring and diagnostic settings
+- 全般設定
+- 接続文字列
+- ハンドラー マッピング
+- 監視と診断の設定
 
-**Configuration that will not change on slot swap**:
+**スロットのスワップ時に変更されない構成**:
 
-- Publishing endpoints
-- Custom Domain Names
-- SSL certificates and bindings
-- Scale settings
+- 発行エンドポイント
+- カスタム ドメイン名
+- SSL 証明書とバインド
+- スケールの設定
 
-**Notes**:
+**注**:
 
-- Deployment slots are only available for sites in Standard mode.
+- 展開スロットは標準モードのサイトにのみ使用できます。
 
-- If you change a site to Free, Shared, or Basic mode, it will no longer be swappable.
+- サイトを無料モード、共有モード、または基本モードに変更すると、スワップできなくなります。
 
-- A deployment slot that you intend to swap into production needs to be configured exactly as you want to have it in production.
+- 運用環境にスワップする展開スロットと運用サイトの構成は一致している必要があります。
 
-- By default, a deployment slot will point to the same database as the production site. However, you can configure the deployment slot to point to an alternate database by changing the database connection string(s) for the deployment slot. You can then restore the original database connection string(s) on the deployment slot right before you swap it into production.
+- 既定では、展開スロットは運用サイトと同じデータベースを指定します。ただし、展開スロットのデータベース接続文字列を変更することで、代替データベースを指定するように展開スロットを構成できます。その後、運用環境にスワップする前に、展開スロットで元のデータベース接続文字列を復元できます。
 
 
 <a name="Swap"></a>
-##To Swap Deployment Slots##
+##展開スロットをスワップするには##
 
-1. To swap deployment slots, select the deployment slot in the web sites list and click the **Swap** button in the command bar. 
+1. 展開スロットをスワップするには、Web サイトの一覧で展開スロットを選択し、コマンド バーで **[スワップ]** ボタンをクリックします。
 	
-	![Swap Button][SwapButtonBar]
+	![[スワップ] ボタン][SwapButtonBar]
 	
-2. The Swap Deployments dialog appears. The dialog lets you choose which site slot should be the source and which site should be the destination.
+2. [展開のスワップ] ダイアログが表示されます。このダイアログでは、スワップ元およびスワップ先となるサイト スロットを選択できます。
 	
-	![Swap Deployments Dialog][SwapDeploymentsDialog]
+	![[展開のスワップ] ダイアログ][SwapDeploymentsDialog]
 	
-3. Click the checkmark to complete the operation. When the operation finishes, the site slots have been swapped.
+3. チェックマークをクリックして操作を完了します。操作が完了すると、サイト スロットはスワップされています。
 
 
 <a name="Rollback"></a>
-##To Rollback a Production Site to Staging##
-If any errors are identified for the content or configuration swapped to production, you can simply swap a deployment slot (formerly your production site) back into production, and then make further fixes to the new version of your site while it is in staging mode. 
+##運用サイトをステージング サイトにロールバックするには##
+運用サイトにスワップしたコンテンツや構成でエラーが見つかった場合は、展開スロット (以前の運用サイト スロット) を運用サイトに簡単にスワップして戻し、ステージング モードでサイトの新しいバージョンに修正を加えることができます。
 
 > [WACOM.NOTE]
-> For a rollback to be successful, the deployment site slot must still contain the unaltered content and configuration of the previous production site.
+> ロールバックが成功するには、展開サイト スロットに、以前の運用サイトの変更されていないコンテンツと構成が残っている必要があります。
 
 <a name="Delete"></a>
-##To Delete a Site Slot##
+##サイト スロットを削除するには##
 
-In the command bar at the bottom of the Azure Web Sites portal page, click **Delete**. You will be given the option to delete the web site and all deployment slots, or delete only the deployment slot. 
+Azure の Web サイトのポータル ページの下部にあるコマンド バーで、**[削除]** をクリックします。Web サイトとすべての展開スロットを削除するか、展開スロットのみを削除することができます。
 
-![Delete a Site Slot][DeleteStagingSiteButton]
+![サイト スロットの削除][DeleteStagingSiteButton]
 
-After you answer **Yes** to the confirmation message, one or all slots will be deleted, depending on the option that you chose.
+確認メッセージで **[はい]** をクリックすると、選択したオプションに応じて 1 つまたはすべてのスロットが削除されます。
 
-**Notes**:
+**注**:
 
-- Scaling is not available for non-production site slots. It is only available for production site slots.
+- スケーリングは運用サイト スロットにのみ使用できます。
 
-- Linked resource management is not supported for non-production site slots. 
+- リンク済みリソースの管理は運用サイト スロットでのみサポートされています。
 
-- You can still publish directly to your production site slot if you wish.
+- 必要に応じて運用サイト スロットに直接発行することもできます。
 
-- Currently, your deployment slots (sites) share the same resources as your production slots (sites) and run on the same VMs. If you run stress testing on a stage slot, your production environment will experience a comparable stress load. 
+- 現在、展開スロット (サイト) と運用スロット (サイト) は同じリソースを共有し、同じ VM 上で実行されます。ステージング スロットで負荷テストを実行すると、運用環境にも同等の負荷がかかります。
 
 <!-- ======== AZURE POWERSHELL CMDLETS =========== -->
 
 <a name="PowerShell"></a>
-##Azure PowerShell cmdlets for Site Slots 
+##サイト スロットに対する Azure PowerShell コマンドレット
 
-Azure PowerShell is a module that provides cmdlets to manage Azure through Windows PowerShell, including support for managing Azure Web Sites deployment slots. 
+Azure PowerShell は、Azure の Web サイトの展開スロットの管理のサポートを含む、Windows PowerShell から Azure を管理するためのコマンドレットを提供するモジュールです。
 
-- For information on installing and configuring Azure PowerShell, and on authenticating Azure PowerShell with your Windows Azure subscription, see [How to install and configure Windows Azure PowerShell](http://www.windowsazure.com/en-us/documentation/articles/install-configure-powershell).  
+- Azure PowerShell のインストールと構成、Windows Azure サブスクリプションを使用した Azure PowerShell の認証については、「[Windows Azure PowerShell のインストールおよび構成方法](http://www.windowsazure.com/ja-jp/documentation/articles/install-configure-powershell)」を参照してください。
 
-- To list the cmdlets available for Azure Web Sites in PowerShell, call `help AzureWebsite`. 
+- PowerShell で Azure の Web サイトに使用できるコマンドレットの一覧を表示するには、`help AzureWebsite` を呼び出してください。
 
 ----------
 
 ###Get-AzureWebsite
-The **Get-AzureWebsite** cmdlet presents information about Azure web sites for the current subscription, as in the following example. 
+**Get-AzureWebsite** コマンドレットは、次の例に示すように、現在のサブスクリプションの Azure の Web サイトに関する情報を表示します。
 
 `Get-AzureWebsite siteslotstest`
 
 ----------
 
 ###New-AzureWebsite
-You can create a site slot for any web site in Standard mode by using the **New-AzureWebsite** cmdlet and specifying the names of both the site and slot. Also indicate the same region as the site for deployment slot creation, as in the following example. 
+**New-AzureWebsite** コマンドレットを使用し、サイトとスロット両方の名前を指定することで、標準モードの任意の Web サイトにサイト スロットを作成できます。また、次の例に示すように、展開スロットの作成ではサイトと同じリージョンを指定します。
 
 `New-AzureWebsite siteslotstest –Slot staging –Location “West US”`
 
 ----------
 
 ###Publish-AzureWebsiteProject
-You can use the **Publish-AzureWebsiteProject** cmdlet for content deployment, as in the following example. 
+次の例に示すように、コンテンツの展開には **Publish-AzureWebsiteProject** コマンドレットを使用できます。
 
 `Publish-AzureWebsiteProject -Name siteslotstest -Slot staging -Package [path].zip`
 
 ----------
 
 ###Show-AzureWebsite
-After content and configuration updates have been applied to the new slot, you can validate the updates by browsing to the slot using the **Show-AzureWebsite** cmdlet, as in the following example.
+コンテンツと構成の更新が新しいスロットに適用されたら、次の例に示すように、**Show-AzureWebsite** コマンドレットを使用してスロットを表示することで、更新を検証できます。
 
 `Show-AzureWebsite -Name siteslotstest -Slot staging`
 
 ----------
 
 ###Switch-AzureWebsiteSlot
-The **Switch-AzureWebsiteSlot** cmdlet can perform a swap operation to make the updated deployment slot the production site, as in the following example. The production site will not experience any down time, nor will it undergo a cold start. 
+**Switch-AzureWebsiteSlot** コマンドレットでは、次の例に示すように、スワップ操作を実行して、更新された展開スロットを運用サイトにすることができます。運用サイトではダウン タイムは発生せず、コールド スタートが行われることもありません。
 
 `Switch-AzureWebsiteSlot -Name siteslotstest`
 
 ----------
 
 ###Remove-AzureWebsite
-If a deployment slot is no longer needed, it can be deleted by using the **Remove-AzureWebsite** cmdlet, as in the following example.
+展開スロットが不要になった場合は、次の例に示すように、**Remove-AzureWebsite** コマンドレットを使用して削除できます。
 
 `Remove-AzureWebsite -Name siteslotstest -Slot staging` 
 
@@ -179,39 +179,39 @@ If a deployment slot is no longer needed, it can be deleted by using the **Remov
 <!-- ======== XPLAT-CLI =========== -->
 
 <a name="CLI"></a>
-##Azure Cross-Platform Command-Line Interface (xplat-cli) commands for Site Slots
+##サイト スロットに対する Azure クロス プラットフォーム コマンド ライン インターフェイス (xplat-cli) のコマンド
 
-The Azure Cross-Platform Command-Line Interface (xplat-cli) provides cross-platform commands for working with Azure, including support for managing deployment slots on Azure Web Sites. 
+Azure クロス プラットフォーム コマンド ライン インターフェイス (xplat-cli) には、Azure の Web サイトでの展開スロットの管理のサポートなど、Azure を使用するためのクロス プラットフォーム コマンドが用意されています。
 
-- For instructions on installing and configuring the xplat-cli, including information on how to connect xplat-cli to your Azure subscription, see [Install and Configure the Azure Cross-Platform Command-Line Interface](http://www.windowsazure.com/en-us/documentation/articles/xplat-cli). 
+- Azure サブスクリプションへの xplat-cli の接続方法に関する情報など、xplat-cli のインストールと構成手順については、「[Install and Configure the Azure Cross-Platform Command-Line Interface (Azure クロス プラットフォーム コマンド ライン インターフェイスのインストールと構成)](http://www.windowsazure.com/ja-jp/documentation/articles/xplat-cli)」を参照してください。
 
--  To list the commands available for Azure Web Sites in the xplat-cli, call `azure site -h`. 
+- xplat-cli で Azure の Web サイトに使用できるコマンドの一覧を表示するには、`azure site -h` を呼び出してください。
 
 ----------
 ###azure site list
-For information about the Azure web sites in the current subscription, call **azure site list**, as in the following example.
+現在のサブスクリプションの Azure の Web サイトに関する情報については、次の例に示すように、**azure site list** を呼び出します。
  
 `azure site list siteslotstest`
 
 ----------
 ###azure site create
-To create a site slot for any web site in Standard mode, call **azure site create** and specify the name of an existing site and the name of the slot to create, as in the following example.
+標準モードの任意の Web サイトにサイト スロットを作成するには、次の例に示すように、**azure site create** を呼び出し、既存のサイトの名前と作成するスロットの名前を指定します。
 
 `azure site create siteslotstest --slot staging`
 
-To enable source control for the new slot, use the **--git** option, as in the following example.
+新しいスロットのソース管理を有効にするには、次の例に示すように、**--git** オプションを使用します。
  
-`azure site create –-git siteslotstest --slot staging`
+`azure site create â€“-git siteslotstest --slot staging`
 
 ----------
 ###azure site swap
-To make the updated deployment slot the production site, use the **azure site swap** command to perform a swap operation, as in the following example. The production site will not experience any down time, nor will it undergo a cold start. 
+更新した展開スロットを運用サイトにするには、次の例に示すように、**azure site swap** コマンドを使用してスワップ操作を実行します。運用サイトではダウン タイムは発生せず、コールド スタートが行われることもありません。
 
 `azure site swap siteslotstest`
 
 ----------
 ###azure site delete
-To delete a deployment slot that is no longer needed, use the **azure site delete** command, as in the following example.
+不要になった展開スロットを削除するには、次の例に示すように、**azure site delete** コマンドを使用します。
 
 `azure site delete siteslotstest --slot staging`
 
@@ -227,3 +227,4 @@ To delete a deployment slot that is no longer needed, use the **azure site delet
 [SwapConfirmationDialog]:  ./media/web-sites-staged-publishing/SwapConfirmationDialog.png
 [DeleteStagingSiteButton]: ./media/web-sites-staged-publishing/DeleteStagingSiteButton.png
 [SwapDeploymentsDialog]: ./media/web-sites-staged-publishing/SwapDeploymentsDialog.png
+

@@ -1,129 +1,129 @@
-<properties linkid="develop-dotnet-rest-service-using-web-api" urlDisplayName="REST service using Web API" pageTitle=".NET REST service using Web API - Azure tutorial" metaKeywords="Azure tutorial web site, ASP.NET API web site, Azure VS" description="A tutorial that teaches you how to deploy an app that uses the ASP.NET Web API to an Azure web site by using Visual Studio." metaCanonical="" services="web-sites" documentationCenter=".NET" title="REST service using ASP.NET Web API and SQL Database" authors="riande" solutions="" manager="" editor="" />
+<properties linkid="develop-dotnet-rest-service-using-web-api" urlDisplayName="Web API を使用する REST サービス" pageTitle="Web API を使用する REST サービス - Azure チュートリアル" metaKeywords="Azure チュートリアル Web サイト, ASP.NET API Web サイト, Azure VS" description="Visual Studio により ASP.NET Web API を使用するアプリケーションを Azure の Web サイトに展開する方法を示すチュートリアル。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="ASP.NET Web API と SQL データベースを使用した REST サービス" authors="riande" solutions="" manager="" editor="" />
 
 
 
 
-# REST service using ASP.NET Web API and SQL Database 
+# ASP.NET Web API と SQL データベースを使用した REST サービス
 
-***By [Rick Anderson](https://twitter.com/RickAndMSFT) and Tom Dykstra. Updated  March 2014.***
+***執筆: [Rick Anderson](https://twitter.com/RickAndMSFT) および Tom Dykstra。更新: 2014 年 3 月***
 
-This tutorial shows how to deploy an ASP.NET web application to an Azure Web Site by using the Publish Web wizard in Visual Studio 2013 or Visual Studio 2013 for Web Express. (If you prefer to use Visual Studio 2012, see [the previous version of this tutorial](/en-us/develop/net/tutorials/get-started-vs2012/).)
+このチュートリアルでは、Visual Studio 2013 または Visual Studio 2013 for Web Express の Web の発行ウィザードを使用して、ASP.NET Web アプリケーションを Azure の Web サイトに展開する方法を示します (Visual Studio 2012 を使用する場合は、[このチュートリアルの前のバージョン](/ja-jp/develop/net/tutorials/get-started-vs2012/)を参照)。
 
-You can open an Azure account for free, and if you don't already have Visual Studio 2013, the SDK automatically installs Visual Studio 2013 for Web Express. So you can start developing for Azure entirely for free.
+Azure アカウントは無料で開くことができます。また、まだ Visual Studio 2013 を持っていない場合は、SDK によって Visual Studio 2013 for Web Express が自動的にインストールされます。これで、Azure 向けの開発を完全に無料で始めることができます。
 
-This tutorial assumes that you have no prior experience using Azure. On completing this tutorial, you'll have a simple web application up and running in the cloud.
+このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルでは、クラウドで動作する単純な Web アプリケーションを作成します。
  
-You'll learn:
+学習内容: 
 
-* How to enable your machine for Azure development by installing the Azure SDK.
-* How to create a Visual Studio ASP.NET MVC 5 project and publish it to an Azure Web Site.
-* How to use the ASP.NET Web API to enable Restful API calls.
-* How to use a SQL database to store data in Azure.
-* How to publish application updates to Azure.
+* Azure SDK をインストールして、Azure 向け開発用にコンピューターを準備する方法
+* Visual Studio の ASP.NET MVC 5 プロジェクトを作成して Azure の Web サイトに発行する方法
+*  ASP.NET Web API を使用して REST ベースの API 呼び出しを可能にする方法
+*  SQL データベースを使用して Azure にデータを保存する方法
+* Azure にアプリケーションの更新を発行する方法
 
-You'll build a simple contact list web application that is built on ASP.NET MVC 5 and uses the ADO.NET Entity Framework for database access. The following illustration shows the completed application:
+ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity Framework を使用する、簡単な連絡先リスト Web アプリケーションをビルドします。次の図に、完成したアプリケーションを示します。
 
-![screenshot of web site][intro001]
-In this tutorial:
+![Web サイトのスクリーンショット][intro001]
+このチュートリアルの内容: 
 
-* [Set up the development environment][setupdbenv]
-* [Set up the Azure environment][setupwindowsazureenv]
-* [Create an ASP.NET MVC 5 application][createapplication]
-* [Deploy the application to Azure][deployapp1]
-* [Add a database to the application][adddb]
-* [Add a Controller and a view for the data][addcontroller]
-* [Add a Web API Restful interface][addwebapi]
-* [Add XSRF Protection][]
-* [Publish the application update to Azure and SQL Database][deploy2]
+* [開発環境を設定する][setupdbenv]
+* [Azure 環境を設定する][setupwindowsazureenv]
+* [ASP.NET MVC 5 アプリケーションを作成する][createapplication]
+* [Azure にアプリケーションを展開する][deployapp1]
+* [アプリケーションにデータベースを追加する][adddb]
+* [データのコントローラーとビューを追加する][addcontroller]
+* [Web API を使用する REST ベースのインターフェイスを追加する][addwebapi]
+* [XSRF 保護を追加する][]
+* [Azure および SQL データベースにアプリケーションの更新を発行する][deploy2]
 
 <a name="bkmk_setupdevenv"></a>
-<!-- the next line produces the "Set up the development environment" section as see at http://www.windowsazure.com/en-us/documentation/articles/web-sites-dotnet-get-started/ -->
+<!-- the next line produces the "Set up the development environment" section as see at http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-dotnet-get-started/ -->
 [WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
-<h2><a name="bkmk_setupwindowsazure"></a>Set up the Azure environment</h2>
+<h2><a name="bkmk_setupwindowsazure"></a>Azure 環境を設定する</h2>
 
-Next, set up the Azure environment by creating an Azure Web Site and a SQL database.
+次のステップでは、Azure の Web サイトと SQL データベースを作成することで Azure 環境をセットアップします。
 
-### Create a web site and a SQL database in Azure
+### Azure で Web サイトと SQL データベースを作成する
 
-The next step is to create the Azure web site and the SQL database that your application will use.
+次のステップでは、アプリケーションで使用する Azure の Web サイトと SQL データベースを作成します。
 
-Your Azure Web Site will run in a shared hosting environment, which means it runs on virtual machines (VMs) that are shared with other Azure clients. A shared hosting environment is a low-cost way to get started in the cloud. Later, if your web traffic increases, the application can scale to meet the need by running on dedicated VMs. If you need a more complex architecture, you can migrate to an Azure Cloud Service. Cloud services run on dedicated VMs that you can configure according to your needs.
+Azure の Web サイトは、共有ホスティング環境で実行されます。つまり、他の Azure クライアントと共有する仮想マシン (VM) 上で実行されます。共有ホスティング環境は、低コストでクラウドの利用を開始できる方法です。後で Web トラフィックが増加したら、アプリケーションの規模を変更して専用 VM 上で実行するように設定してニーズを満たすことができます。もっと複雑なアーキテクチャが必要な場合は、Azure のクラウド サービスに移行できます。クラウド サービスは専用 VM 上で実行され、ユーザーのニーズに応じて構成できます。
 
-SQL Database is a cloud-based relational database service that is built on SQL Server technologies. The tools and applications that work with SQL Server also work with SQL Database.
+SQL データベースは、SQL Server テクノロジに基づいて構築されたクラウドベースのリレーショナル データベース サービスです。SQL Server で動作するツールおよびアプリケーションは、SQL データベースでも動作します。
 
-1. In the [Azure Management Portal](https://manage.windowsazure.com), click **Web Sites** in the left tab, and then click  **New**.
+1. [Azure 管理ポータル](https://manage.windowsazure.com)で、左側のタブにある **[Web サイト]** をクリックし、**[新規]** をクリックします。
 
-2. Click **CUSTOM CREATE**.
+2. **[カスタム作成]** をクリックします。
 
-	![Create with Database link in Management Portal](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr6.PNG)
+	![管理ポータルの [データベースとともに作成] リンク](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr6.PNG)
 
-	The **New Web Site - Custom Create** wizard opens. 
+	**新しい Web Site - カスタム作成**ウィザードが開きます。
 
-3. In the **New Web Site** step of the wizard, enter a string in the **URL** box to use as the unique URL for your application. The complete URL will consist of what you enter here plus the suffix that you see below the text box. The illustration shows "contactmgr11", but that URL is probably taken so you'll have to choose a different one.
+3. ウィザードの **[新しい Web サイトを作成する]** 手順で、アプリケーションの一意の URL として使用する文字列を **[URL]** ボックスに入力します。URL 全体は、ここで入力した内容に、テキスト ボックスの下に表示されるサフィックスを追加して構成されます。図には "contactmgr11" と表示されていますが、その URL は既に取得されている可能性が高いため、別の URL の選択が必要になります。
 
-1. In the **Region** drop-down list, choose the region that is closest to you.
+1. **[リージョン]** ボックスの一覧で、現在の所在地に最も近いリージョンを選択します。
 
-1. In the **Database** drop-down list, choose **Create a free 20 MB SQL database**.
+1. **[データベース]** ボックスの一覧の **[無料の 20 MB SQL データベースの作成]** を選択します。
 
-	![Create a New Web Site step of New Web Site - Create with Database wizard](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rrCWS.png)
+	![新しい Web サイト - データベースとともに作成ウィザードの新しい Web サイトを作成する手順](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rrCWS.png)
 
-6. Click the arrow that points to the right at the bottom of the box.
+6. ボックスの下部にある右矢印をクリックします。
 
-	The wizard advances to the **Database Settings** step.
+	ウィザードの **[データベースの設定]** 手順に進みます。
 
-7. In the **Name** box, enter *ContactDB*.
+7. **[名前]** ボックスに「*ContactDB*」と入力します。
 
-8. In the **Server** box, select **New SQL Database server**. Alternatively, if you previously created a SQL Server database, you can select that SQL Server from the dropdown control.
+8. **[サーバー]** ボックスで、**[新しい SQL データベース サーバー]** を選択します。または、以前に SQL Server データベースを作成した場合は、ボックスの一覧からその SQL Server を選択できます。
 
-9. Click the arrow that points to the right at the bottom of the box.
+9. ボックスの下部にある右矢印をクリックします。
 
-10. Enter an administrator **LOGIN NAME** and **PASSWORD**. If you selected **New SQL Database server** you aren't entering an existing name and password here, you're entering a new name and password that you're defining now to use later when you access the database. If you selected a SQL Server you've created previously, you'll be prompted for the password to the previous SQL Server account name you created. For this tutorial, we won't check the **Advanced ** box. The **Advanced ** box allows you to set the DB size (the default is 1 GB but you can increase this to 150 GB) and the collation.
+10. 管理者の**ログイン名**と**パスワード**を入力します。**[新しい SQL データベース サーバー]** を選択した場合は、既存の名前とパスワードではなく、このデータベースへのアクセス時に使用する新しい名前とパスワードを入力してください。以前に作成した SQL Server を選択した場合は、その SQL Server の作成時に設定したパスワードを入力します。このチュートリアルでは、**[データベースの詳細設定を構成します]** チェック ボックスをオンにしません。**詳細設定**では、DB サイズ (既定値は 1 GB ですが 150 GB まで拡張可能) と照合順序を指定できます。
 
-11. Click the check mark at the bottom of the box to indicate you're finished.
+11. 終了したら、ダイアログ ボックスの下部にあるチェック マークをクリックします。
 
-	![Database Settings step of New Web Site - Create with Database wizard][setup007]
+	![新しい Web Site -  データベースとともに作成ウィザードのデータベースの設定手順][setup007]
 
-	 The following image shows using an existing SQL Server and Login.
+	 次の画像では、既存の SQL Server を選択した場合のログインを示しています。
 	
-	![Database Settings step of New Web Site - Create with Database wizard][rxPrevDB]
+	![新しい Web Site -  データベースとともに作成ウィザードのデータベースの設定手順][rxPrevDB]
 
-	The Management Portal returns to the Web Sites page, and the **Status** column shows that the site is being created. After a while (typically less than a minute), the **Status** column shows that the site was successfully created. In the navigation bar at the left, the number of sites you have in your account appears next to the **Web Sites** icon, and the number of databases appears next to the **SQL Databases** icon.
+	管理ポータルが [Web サイト] ページに戻り、**[状態]** 列にサイトが作成中であることが示されます。しばらくすると (通常は 1 分未満)、サイトの作成に成功したことが **[状態]** 列に示されます。左側にあるナビゲーション バーでは、アカウントで所有するサイト数が **[Web サイト]** アイコンの横に表示され、データベース数が **[SQL データベース]** アイコンの横に表示されます。
 
 <!-- [Web Sites page of Management Portal, web site created][setup009] -->
 
-<h2><a name="bkmk_createmvc4app"></a>Create an ASP.NET MVC 5 application</h2>
+<h2><a name="bkmk_createmvc4app"></a>ASP.NET MVC 5 アプリケーションを作成する</h2>
 
-You have created an Azure Web Site, but there is no content in it yet. Your next step is to create the Visual Studio web application project that you'll publish to Azure.
+Azure の Web サイトを作成しましたが、まだその中にコンテンツがありません。次の手順では、Azure に発行する Visual Studio Web アプリケーション プロジェクトを作成します。
 
-### Create the project
+### プロジェクトを作成する
 
-1. Start Visual Studio 2013.
-1. From the **File** menu click **New Project**.
-3. In the **New Project** dialog box, expand **Visual C#** and select **Web**  and then select **ASP.NET MVC 5 Web Application**. Keep the default **.NET Framework 4.5**. Name the application **ContactManager** and click **OK**.
-	![New Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr4.PNG)]
-1. In the **New ASP.NET Project** dialog box, select the **MVC** template, check **Web API** and then click **Change Authentication**.
+1. Visual Studio 2013 を起動します。
+1. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
+3. **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]** を展開して **[Web]** を選択し、**[ASP.NET MVC 5 Web アプリケーション]** を選択します。既定の **[.NET Framework 4.5]** をそのまま使用します。アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
+	![[新しいプロジェクト] ダイアログ ボックス](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr4.PNG)]
+1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[MVC]** テンプレートを選択し、**[Web API]** チェック ボックスをオンにして、**[認証の変更]** をクリックします。
 
-	![New ASP.NET Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt3.PNG)
+	![[新しい ASP.NET プロジェクト] ダイアログ ボックス](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt3.PNG)
 
-1. In the **Change Authentication** dialog box, click **No Authentication**, and then click **OK**.
+1. **[認証の変更]** ダイアログ ボックスで、**[認証なし]** をクリックし、**[OK]** をクリックします。
 
-	![No Authentication](./media/web-sites-dotnet-get-started-vs2013/GS13noauth.png)
+	![[認証なし]](./media/web-sites-dotnet-get-started-vs2013/GS13noauth.png)
 
-	The sample application you're creating won't have features that require users to log in. For information about how to implement authentication and authorization features, see the [Next Steps](#nextsteps) section at the end of this tutorial. 
+	作成中のサンプル アプリケーションには、ユーザーのログインが必要な機能は実装されません。認証と承認の機能を実装する方法については、このチュートリアルの最後にある「[次のステップ](#nextsteps)」セクションを参照してください。
 
-1. In the **New ASP.NET Project** dialog box, click **OK**.
+1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで **[OK]** をクリックします。
 
-	![New ASP.NET Project dialog box](./media/web-sites-dotnet-get-started-vs2013/GS13newaspnetprojdb.png)
+	![[新しい ASP.NET プロジェクト] ダイアログ ボックス](./media/web-sites-dotnet-get-started-vs2013/GS13newaspnetprojdb.png)
 
-### Set the page header and footer
+### ページのヘッダーとフッターを設定する
 
 
-1. In **Solution Explorer**, expand the *Views\Shared* folder and open the *_Layout.cshtml* file.
+1. **ソリューション エクスプローラー**で、*Views\Shared* フォルダーを展開し、*_Layout.cshtml* ファイルを開きます。
 
-	![_Layout.cshtml in Solution Explorer][newapp004]
+	![_ソリューション エクスプローラーに表示されている Layout.cshtml ファイル][newapp004]
 
-1. Replace the contents of the *_Layout.cshtml* file with the following code:
+1. *_Layout.cshtml* ファイルの内容を次のコードに置き換えます。
 
 
 		<!DOCTYPE html>
@@ -162,85 +162,85 @@ You have created an Azure Web Site, but there is no content in it yet. Your next
 		</body>
 		</html>
 			
-The markup above changes the app name from "My ASP.NET App" to "Contact Manager", and it removes the links to **Home**, **About** and **Contact**.
+前に示しているマークアップにより、アプリケーション名が "My ASP.NET App" から "Contact Manager" に変更され、**Home**、**About**、**Contact** へのリンクが削除されます。
 
-### Run the application locally
+### ローカルでアプリケーションを実行する
 
-1. Press CTRL+F5 to run the application.
-The application home page appears in the default browser.
-	![To Do List home page](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr5.PNG)
+1. Ctrl + F5 キーを押して、アプリケーションを実行します。
+アプリケーションのホーム ページが既定のブラウザーに表示されます。
+	![To Do List のホーム ページ](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr5.PNG)
 
-This is all you need to do for now to create the application that you'll deploy to Azure. Later you'll add database functionality.
+これで、Azure に展開するアプリケーションを作成するために必要な操作が完了しました。データベース機能は後で追加します。
 
-<h2><a name="bkmk_deploytowindowsazure1"></a>Deploy the application to Azure</h2>
+<h2><a name="bkmk_deploytowindowsazure1"></a>Azure にアプリケーションを展開する</h2>
 
-1. In Visual Studio, right-click the project in **Solution Explorer** and select **Publish** from the context menu.
+1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
 
-	![Publish in project context menu][PublishVSSolution]
+	![プロジェクトのコンテキスト メニューの [発行]][PublishVSSolution]
 
-	The **Publish Web** wizard opens.
+	**Web の発行**ウィザードが開きます。
 
-2. In the **Profile** tab of the **Publish Web** wizard, click **Import**.
+2. **Web の発行**ウィザードの **[プロファイル]** タブで、**[インポート]** をクリックします。
 
-	![Import publish settings][ImportPublishSettings]
+	![発行設定のインポート][ImportPublishSettings]
 
-	The **Import Publish Profile** dialog box appears.
+	**[発行プロファイルのインポート]** ダイアログ ボックスが表示されます。
 
- 3.	Select Import from an Azure Web Site. You must first sign in if you have not previously done so. Click **Sign In**. Enter the user associated with your subscription and follow the steps to sign in.
+ 3.	Azure の Web サイトで [インポート] を選択します。まだサインインしていない場合は、まずサインインする必要があります。**[サインイン]** をクリックします。サブスクリプションに関連付けられているユーザーを入力し、サインインの手順に従います。
 
-	![sign in](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr7.png)
+	![サインイン](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr7.png)
 
-	Select your web site from the drop-down list, and then click **OK**.
+	ドロップダウン リストから Web サイトを選択し、**[OK]** をクリックします。
 
-	![Import Publish Profile](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr8.png)
+	![発行プロファイルのインポート](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr8.png)
 
-8. In the **Connection** tab, click **Validate Connection** to make sure that the settings are correct.
+8. **[接続]** タブの **[接続の検証]** をクリックし、設定が正しいことを確認します。
 
-	![Validate connection][ValidateConnection]
+	![接続の検証][ValidateConnection]
 
-9. When the connection has been validated, a green check mark is shown next to the **Validate Connection** button.
+9. 接続が検証されると、**[接続の検証]** ボタンの横に緑色のチェック マークが表示されます。
 
-	![connection successful icon and Next button in Connection tab][firsdeploy007]
+	![[接続] タブの [接続成功] アイコンと [次へ] ボタン][firsdeploy007]
 
-1. Click **Next**.
+1. **[次へ]** をクリックします。
 
-	![Settings tab](./media/web-sites-dotnet-get-started-vs2013/GS13SettingsTab.png)
+	![[設定] タブ](./media/web-sites-dotnet-get-started-vs2013/GS13SettingsTab.png)
 
-	You can accept the default settings on this tab.  You're deploying a Release build configuration and you don't need to delete files at the destination server, precompile the application, or exclude files in the App_Data folder. If you want to debug on the live Azure site, you will need to deploy a debug configuration (not release). See the [Next Steps](#nextsteps) section at the end of this tutorial.
+	このタブでは、既定の設定をそのまま使用できます。リリース ビルド構成を展開しているため、展開先サーバーでファイルを削除したり、アプリケーションをプリコンパイルしたり、App_Data フォルダーでファイルを除外したりする必要はありません。Azure のライブ サイトでデバッグする場合は、デバッグ構成をリリースではなく展開する必要があります。このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。
 
-12. In the **Preview** tab, click **Start Preview**.
+12. **[プレビュー]** タブで、**[プレビューの開始]** をクリックします。
 
-	The tab displays a list of the files that will be copied to the server. Displaying the preview isn't required to publish the application but is a useful function to be aware of. In this case, you don't need to do anything with the list of files that is displayed. The next time you publish, only the files that have changed will be in the preview list.
+	このタブに、サーバーにコピーされるファイルの一覧が表示されます。プレビューの表示は、アプリケーションの発行に必要ではありませんが、知っておくと便利な機能です。この場合、表示されるファイルの一覧で操作を行う必要はありません。次に発行するときは、変更されたファイルだけがプレビュー一覧に示されます。
 
-	![StartPreview button in the Preview tab][firsdeploy009]
+	![[プレビュー] タブの [プレビューの開始] ボタン][firsdeploy009]
 
-12. Click **Publish**.
+12. **[発行]** をクリックします。
 
-	Visual Studio begins the process of copying the files to the Azure server. The **Output** window shows what deployment actions were taken and reports successful completion of the deployment.
+	Azure サーバーにファイルをコピーする処理が開始されます。**出力**ウィンドウでは、実行された展開操作が表示され、展開が問題なく完了したことが報告されます。
 
-14. The default browser automatically opens to the URL of the deployed site.
+14. 自動的に既定のブラウザーが開き、展開先のサイトの URL にアクセスします。
 
-	The application you created is now running in the cloud.
+	これで、作成したアプリケーションはクラウドで実行されています。
 	
-	![To Do List home page running in Azure][rxz2]
+	![Azure で実行されている連絡先リストのホーム ページ][rxz2]
 
-<h2><a name="bkmk_addadatabase"></a>Add a database to the application</h2>
+<h2><a name="bkmk_addadatabase"></a>アプリケーションにデータベースを追加する</h2>
 
-Next, you'll update the MVC application to add the ability to display and update contacts and store the data in a database. The application will use the Entity Framework to create the database and to read and update data in the database.
+次に、MVC アプリケーションを更新して、連絡先を表示および更新してデータをデータベースに保存する機能を追加します。アプリケーションでは、データベースの作成およびデータベース内のデータの読み取りと更新に Entity Framework を使用します。
 
-### Add data model classes for the contacts
+### 連絡先のデータ モデル クラスを追加する
 
-You begin by creating a simple data model in code.
+まず、コードで単純なデータ モデルを作成します。
 
-1. In **Solution Explorer**, right-click the Models folder, click **Add**, and then **Class**.
+1. **ソリューション エクスプローラー**で、Models フォルダーを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
 
-	![Add Class in Models folder context menu][adddb001]
+	![Models フォルダーのコンテキスト メニューの [クラスの追加]][adddb001]
 
-2. In the **Add New Item** dialog box, name the new class file *Contact.cs*, and then click **Add**.
+2. **[新しい項目の追加]** ダイアログ ボックスで、新しいクラス ファイルに「*Contact.cs*」という名前を付け、**[追加]** をクリックします。
 
-	![Add New Item dialog box][adddb002]
+	![[新しい項目の追加] ダイアログ ボックス][adddb002]
 
-3. Replace the contents of the Contacts.cs file with the following code.
+3. Contacts.cs ファイルの内容を次のコードに置き換えます。
 
 		using System.Globalization;
 		namespace ContactManager.Models
@@ -264,63 +264,63 @@ You begin by creating a simple data model in code.
     		}
 		}
 
-The **Contacts** class defines the data that you will store for each contact, plus a primary key, ContactID, that is needed by the database. You can get more information about data models in the [Next Steps](#nextsteps) section at the end of this tutorial.
+**Contacts** クラスでは、各連絡先について保存するデータと、データベースが必要とする主キー (ContactID) を定義します。データ モデルの詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。
 
-### Create web pages that enable app users to work with the contacts
+### アプリケーション ユーザーが連絡先を操作できる Web ページを作成する
 
-The ASP.NET MVC the scaffolding feature can automatically generate code that performs create, read, update, and delete (CRUD) actions.
+ASP.NET MVC では、スキャフォールディング機能によって、作成、読み取り、更新、および削除 (CRUD) の各操作を実行するコードを自動的に生成できます。
 
-<h2><a name="bkmk_addcontroller"></a>Add a Controller and a view for the data</h2>
+<h2><a name="bkmk_addcontroller"></a>データのコントローラーとビューを追加する</h2>
 
-1. In **Solution Explorer**, expand the Controllers folder.
+1. **ソリューション エクスプローラー**で、Controllers フォルダーを展開します。
 
-3. Build the project **(Ctrl+Shift+B)**. (You must build the project before using scaffolding mechanism.) 
+3. プロジェクトをビルドします **(Ctrl + Shift + B)**。(スキャフォールディング機能の使用前にプロジェクトをビルドする必要があります。)
 
-4. Right-click the Controllers folder and click **Add**, and then click **Controller**.
+4. Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。
 
-	![Add Controller in Controllers folder context menu][addcode001]
+	![Controllers フォルダーのコンテキスト メニューの [コントローラーの追加]][addcode001]
 
-1. In the **Add Scaffold** dialog box, select **MVC Controller with views, using Entity Framework** and click **Add**.
+1. **[スキャフォールディングの追加]** ダイアログ ボックスで、**[Entity Framework を使用した、ビューのある MVC コントローラー]** を選択し、**[追加]** をクリックします。
 
- ![Add controller](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rrAC.PNG)
+ ![コントローラーの追加](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rrAC.PNG)
 
-6. Set the controller name to **HomeController**. Select **Contact** as your model class. Click the **New data context** button and accept the default "ContactManager.Models.ContactManagerContext" for the **New data context type**. Click **Add**.
+6. コントローラー名を **HomeController** に設定します。モデル クラスとして **[Contact]** を選択します。**[新しいデータ コンテキスト]** ボタンをクリックし、**[新しいデータ コンテキストの種類]** で既定の "ContactManager.Models.ContactManagerContext" をそのまま使用します。**[追加]** をクリックします。
 
-	![Add Controller dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr9.PNG)
+	![[コントローラーの追加] ダイアログ ボックス](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr9.PNG)
 
-	A dialog box will prompt you: "A file with the name HomeController already exits. Do you want to replace it?". Click **Yes**. We are overwriting the Home Controller that was created with the new project. We will use the new Home Controller for our contact list.
+	ダイアログ ボックスで、"HomeController という名前のファイルは既に存在します。ファイルを置き換えますか?" とたずねられます。**[はい]** をクリックします。新しいプロジェクトで作成した home コントローラーで上書きされます。連絡先リストに新しい home コントローラーが使用されるようになります。
 
-	Visual Studio creates a controller methods and views for CRUD database operations for **Contact** objects.
+	Visual Studio によって、**Contact** オブジェクトの CRUD データベース操作に対応したコントローラー メソッドとビューが作成されます。
 
-## Enable Migrations, create the database, add sample data and a data initializer ##
+## Migrations の有効化、データベースの作成、サンプル データとデータ初期化子の追加##
 
-The next task is to enable the [Code First Migrations](http://curah.microsoft.com/55220) feature in order to create the database based on the data model you created.
+次の作業では、作成したデータ モデルに基づいてデータベースを作成するために、[Code First Migrations](http://curah.microsoft.com/55220) 機能を有効にします。
 
-1. In the **Tools** menu, select **Library Package Manager** and then **Package Manager Console**.
+1. **[ツール]** メニューの **[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。
 
-	![Package Manager Console in Tools menu][addcode008]
+	![[ツール] メニューの [パッケージ マネージャー コンソール]][addcode008]
 
-2. In the **Package Manager Console** window, enter the following command:
+2. **[パッケージ マネージャー コンソール]** ウィンドウで、次のコマンドを入力します。
 
 		enable-migrations 
   
-	The **enable-migrations** command creates a *Migrations* folder and it puts in that folder a *Configuration.cs* file that you can edit to configure Migrations. 
+	**enable-migrations** コマンドによって *Migrations* フォルダーが作成され、そのフォルダーに *Configuration.cs* ファイルが保存されます。このファイルを編集して Migration を構成できます。
 
-2. In the **Package Manager Console** window, enter the following command:
+2. **[パッケージ マネージャー コンソール]** ウィンドウで、次のコマンドを入力します。
 
 		add-migration Initial
 
-	The **add-migration Initial** command generates a class named **&lt;date_stamp&gt;Initial** that creates the database. The first parameter ( *Initial* ) is arbitrary and used to create the name of the file. You can see the new class files in **Solution Explorer**.
+	**add-migration Initial** コマンドによって、**&lt;date_stamp&gt;Initial** という名前のクラスが生成されて、データベースの作成に使用されます。最初のパラメーター (*Initial*) は任意であり、このファイルの名前の作成に使用されます。新しいクラス ファイルは**ソリューション エクスプローラー**で表示できます。
 
-	In the **Initial** class, the **Up** method creates the Contacts table, and the **Down** method (used when you want to return to the previous state) drops it.
+	**Initial** クラスでは、**Up** メソッドを使用して Contacts テーブルを作成し、**Down** メソッドを使用してそのテーブルを削除します (前の状態に戻します)。
 
-3. Open the *Migrations\Configuration.cs* file. 
+3.  *Migrations\Configuration.cs* ファイルを開きます。
 
-4. Add the following namespaces. 
+4.  次の名前空間を追加します。
 
     	 using ContactManager.Models;
 
-5. Replace the *Seed* method with the following code:
+5. *Seed* メソッドを次のコードに置き換えます。
 		
         protected override void Seed(ContactManager.Models.ContactManagerContext context)
         {
@@ -378,29 +378,29 @@ The next task is to enable the [Code First Migrations](http://curah.microsoft.co
                 );
         }
 
-	This code above will initialize the database with the contact information. For more information on seeding the database, see [Debugging Entity Framework (EF) DBs](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx).
+	このコードでは、連絡先情報を使用してデータベースを初期化します。Seed メソッドによるデータベースへのデータの登録の詳細については、「[Debugging Entity Framework (EF) DBs (Entity Framework (EF) DB のデバッグ)](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)」を参照してください。
 
 
-1. In the **Package Manager Console** enter the command:
+1. **[パッケージ マネージャー コンソール]** で、次のコマンドを入力します。
 
 		update-database
 
-	![Package Manager Console commands][addcode009]
+	![パッケージ マネージャー コンソールのコマンド][addcode009]
 
-	The **update-database** runs the first migration which creates the database. By default, the database is created as a SQL Server Express LocalDB database.
+	**update-database** によって、データベースを作成する最初の Migration が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます 
 
-1. Press CTRL+F5 to run the application. 
+1. Ctrl + F5 キーを押して、アプリケーションを実行します。
 
-The application shows the seed data and provides edit, details and delete links.
+アプリケーションでは、登録されたデータが表示され、編集、詳細、削除のリンクが示されます。
 
-![MVC view of data][rxz3]
+![データの MVC ビュー][rxz3]
 
-<h2><a name="bkmk_addview"></a>Edit the View</h2>
+<h2><a name="bkmk_addview"></a>ビューの編集</h2>
 
-1. Open the *Views\Home\Index.cshtml* file. In the next step, we will replace the generated markup with code that uses [jQuery](http://jquery.com/) and [Knockout.js](http://knockoutjs.com/). This new code retrieves the list of contacts from using web API and JSON and then binds the contact data to the UI using knockout.js. For more information, see the [Next Steps](#nextsteps) section at the end of this tutorial. 
+1. *Views\Home\Index.cshtml* ファイルを開きます。次の手順では、生成されたマークアップを、[jQuery](http://jquery.com/) と [Knockout.js](http://knockoutjs.com/) を使用するコードに置き換えます。この新しいコードは、Web API と JSON を使用して連絡先リストを取得し、knockout.js を使用して連絡先データを UI にバインドします。詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。
 
 
-2. Replace the contents of the file with the following code.
+2. ファイルの内容を次のコードに置き換えます。
 
 		@model IEnumerable<ContactManager.Models.Contact>
 		@{
@@ -490,14 +490,14 @@ The application shows the seed data and provides edit, details and delete links.
 		    </fieldset>
 		</form>
 
-3. Right-click the Content folder and click **Add**, and then click **New Item...**.
+3. Content フォルダーを右クリックし、**[追加]** をクリックして、**[新しい項目]** をクリックします。
 
-	![Add style sheet in Content folder context menu][addcode005]
+	![Content フォルダーのコンテキスト メニューの [スタイル シートの追加]][addcode005]
 
-4. In the **Add New Item** dialog box, enter **Style** in the upper right search box and then select **Style Sheet**.
-	![Add New Item dialog box][rxStyle]
+4. **[新しい項目の追加]** ダイアログ ボックスで、右上の検索ボックスに「**スタイル**」と入力し、[**スタイル シート**] を選択します。
+	![[新しい項目の追加] ダイアログ ボックス][rxStyle]
 
-5. Name the file *Contacts.css* and click **Add**. Replace the contents of the file with the following code.
+5. ファイルに *Contacts.css* という名前を付け、**[追加]** をクリックします。このファイルの内容を次のコードに置き換えます。
     
         .column {
             float: left;
@@ -553,86 +553,86 @@ The application shows the seed data and provides edit, details and delete links.
             text-decoration: none;
         }
 
-	We will use this style sheet for the layout, colors and styles used in the contact manager app.
+	このスタイル シートは Contact Manager アプリケーションで使用されるレイアウト、色、スタイルに適用されます。
 
-6. Open the *App_Start\BundleConfig.cs* file.
+6. *App_Start\BundleConfig.cs* ファイルを開きます。
 
 
-7. Add the following code to register the [Knockout](http://knockoutjs.com/index.html "KO") plugin.
+7. 次のコードを追加して [Knockout](http://knockoutjs.com/index.html "KO") プラグインを登録します。
 
 		bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
 		            "~/Scripts/knockout-{version}.js"));
-	This sample using knockout to simplify dynamic JavaScript code that handles the screen templates.
+	このサンプルでは Knockout を使用して、画面テンプレートを処理する動的な JavaScript コードを簡略化します。
 
-8. Modify the contents/css entry to register the *contacts.css* style sheet. Change the following line:
+8. contents/css エントリを変更して *contacts.css* スタイル シートを登録します。次の行を変更します。
 
                  bundles.Add(new StyleBundle("~/Content/css").Include(
                    "~/Content/bootstrap.css",
                    "~/Content/site.css"));
-To:
+変更後:
 
         bundles.Add(new StyleBundle("~/Content/css").Include(
                    "~/Content/bootstrap.css",
                    "~/Content/contacts.css",
                    "~/Content/site.css"));
 
-1. In the Package Manager Console, run the following command to install Knockout.
+1. パッケージ マネージャー コンソールで、次のコマンドを実行して Knockout をインストールします。
 
 	Install-Package knockoutjs
 
-<h2><a name="bkmk_addwebapi"></a>Add a controller for the Web API Restful interface</h2>
+<h2><a name="bkmk_addwebapi"></a>Web API を使用する REST ベースのインターフェイスに対応したコントローラーを追加する</h2>
 
-1. In **Solution Explorer**, right-click Controllers and click **Add** and then **Controller....** 
+1. **ソリューション エクスプローラー**で、Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。
 
-1. In the **Add Scaffold** dialog box, enter **Web API 2 Controller with actions, using Entity Framework** and then click **Add**.
+1. **[スキャフォールディングの追加]** ダイアログ ボックスで、「**Entity Framework を使用した、読み取り/書き込み操作のある Web API 2 コントローラー**」と入力し、**[追加]** をクリックします。
 
-	![Add API controller](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt1.PNG)
+	![API コントローラーの追加](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt1.PNG)
 
-4. In the **Add Controller** dialog box, enter "ContactsController" as your controller name. Select "Contact (ContactManager.Models)" for the **Model class**.  Keep the default value for the **Data context class**. 
+4. **[コントローラーの追加]** ダイアログ ボックスで、コントローラー名として「ContactsController」と入力します。**[モデル クラス]** で [Contact (ContactManager.Models)] を選択します。**[データ コンテキスト クラス]** で既定値をそのまま使用します。
 
-6. Click **Add**.
+6. **[追加]** をクリックします。
 
-### Run the application locally
+### ローカルでアプリケーションを実行する
 
-1. Press CTRL+F5 to run the application.
+1. Ctrl + F5 キーを押して、アプリケーションを実行します。
 
-	![Index page][intro001]
+	![Index ページ][intro001]
 
-2. Enter a contact and click **Add**. The app returns to the home page and displays the contact you entered.
+2. 連絡先を入力し、**[Add]** をクリックします。アプリケーションはホーム ページに戻り、入力した連絡先が表示されます。
 
-	![Index page with to-do list items][addwebapi004]
+	![連絡先が表示された Index ページ][addwebapi004]
 
-3. In the browser, append **/api/contacts** to the URL.
+3. ブラウザーで **/api/contacts** を URL に追加します。
 
-	The resulting URL will resemble http://localhost:1234/api/contacts. The RESTful web API you added returns the stored contacts. Firefox and Chrome will display the data in XML format.
+	追加後の URL は http://localhost:1234/api/contacts のようになります。追加した REST ベースの Web API によって、保存されている連絡先が返されます。Firefox と Chrome では、それらのデータが XML 形式で表示されます。
 
-	![Index page with to-do list items][rxFFchrome]
+	![連絡先が表示された Index ページ][rxFFchrome]
 	
 
-	IE will prompt you to open or save the contacts.
+	IE では、連絡先を開くか保存するように求められます。
 
-	![Web API save dialog][addwebapi006]
+	![Web API の保存確認のダイアログ ボックス][addwebapi006]
 	
 	
-	You can open the returned contacts in notepad or a browser.
+	返された連絡先はメモ帳やブラウザーで開くことができます。
 	
-	This output can be consumed by another application such as mobile web page or application.
+	この出力は、モバイルの Web ページやアプリケーションのような別のアプリケーションで使用できます。
 
-	![Web API save dialog][addwebapi007]
+	![Web API の保存確認のダイアログ ボックス][addwebapi007]
 
-	**Security Warning**: At this point, your application is insecure and vulnerable to CSRF attack. Later in the tutorial we will remove this vulnerability. For more information see [Preventing Cross-Site Request Forgery (CSRF) Attacks][prevent-csrf-attacks].
+	**セキュリティ警告**: この時点で、アプリケーションは安全ではなく CSRF 攻撃に対して脆弱です。このチュートリアルの後半では、この脆弱性を排除します。詳細については、「[クロスサイト リクエスト フォージェリ (CSRF) 攻撃の防止][prevent-csrf-attacks]」を参照してください。
 
-<h2><a name="xsrf"></a><span class="short-header">XSRF</span>Add XSRF Protection</h2>
+<h2><a name="xsrf"></a><span class="short-header">XSRF</span>XSRF 保護を追加する</h2>
 
-Cross-site request forgery (also known as XSRF or CSRF) is an attack against web-hosted applications whereby a malicious web site can influence the interaction between a client browser and a web site trusted by that browser. These attacks are made possible because web browsers will send authentication tokens automatically with every request to a web site. The canonical example is an authentication cookie, such as ASP.NET's Forms Authentication ticket. However, web sites which use any persistent authentication mechanism (such as Windows Authentication, Basic, and so forth) can be targeted by these attacks.
+クロスサイト リクエスト フォージェリ (XSRF または CSRF) は、Web でホストされるアプリケーションに対する攻撃であり、それによって悪意のある Web サイトが、クライアント ブラウザーとそのブラウザーが信頼する Web サイトの間のやり取りに影響を及ぼすことができます。これらの攻撃が可能になるのは、要求ごとに Web ブラウザーが自動的に認証トークンを Web サイトに送信するからです。標準的な例は、ASP.NET のフォーム認証チケットなどの認証クッキーです。ただし、永続的な認証メカニズム (Windows 認証や基本認証など) を使用する Web サイトも、これらの攻撃の対象になることがあります。
 
-An XSRF attack is distinct from a phishing attack. Phishing attacks require interaction from the victim. In a phishing attack, a malicious web site will mimic the target web site, and the victim is fooled into providing sensitive information to the attacker. In an XSRF attack, there is often no interaction necessary from the victim. Rather, the attacker is relying on the browser automatically sending all relevant cookies to the destination web site.
+XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング攻撃には攻撃対象とのやり取りが必要です。フィッシング攻撃では、悪意のある Web サイトがターゲット Web サイトを模擬し、攻撃対象は重要な情報を攻撃者に提供するようにだまされます。XSRF 攻撃では、多くの場合に攻撃対象とのやり取りは必要ありません。むしろ攻撃者が利用するのは、ブラウザーがすべての関連クッキーを模擬 Web サイトに自動的に送信することです。
 
-For more information, see the [Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) (OWASP) [XSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)).
+詳細については、「[Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page)」および「[XSRF (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)」を参照してください。
 
-1. In **Solution Explorer**, right **ContactManager** project and click **Add** and then click **Class**.
+1. **ソリューション エクスプローラー**で、**[ContactManager]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
 
-2. Name the file *ValidateHttpAntiForgeryTokenAttribute.cs* and add the following code:
+2. ファイルに「*ValidateHttpAntiForgeryTokenAttribute.cs*」という名前を付け、次のコードを追加します。
 
         using System;
         using System.Collections.Generic;
@@ -702,17 +702,17 @@ For more information, see the [Open Web Application Security Project](https://ww
             }
         }
 
-1. Add the following *using* statement to the contracts controller so you have access to the **[ValidateHttpAntiForgeryToken]** attribute.
+1. 次の *using* ステートメントを contracts コントローラーに追加します。これにより **[[ValidateHttpAntiForgeryToken]]** 属性にアクセスできるようになります。
 
 	using ContactManager.Filters;
 
-1. Add the **[ValidateHttpAntiForgeryToken]** attribute to the Post methods of the **ContactsController** to protect it from XSRF threats. You will add it to the "PutContact",  "PostContact" and **DeleteContact** action methods.
+1. **[ValidateHttpAntiForgeryToken]** 属性を **ContactsController** の Post メソッドに追加して、XSRF の脅威から保護します。そのコードを "PutContact"、"PostContact"、**DeleteContact** の各アクション メソッドに追加します。
 
 	[ValidateHttpAntiForgeryToken]
         public IHttpActionResult PutContact(int id, Contact contact)
         {
 
-1. Update the *Scripts* section of the *Views\Home\Index.cshtml* file to include code to get the XSRF tokens.
+1. *Views\Home\Index.cshtml* ファイルの *[Scripts]* セクションを更新して、XSRF トークンを取得するコードを含めます。
 
          @section Scripts {
             @Scripts.Render("~/bundles/knockout")
@@ -767,57 +767,57 @@ For more information, see the [Open Web Application Security Project](https://ww
             </script>
 
 
-<h2><a name="bkmk_deploydatabaseupdate"></a>Publish the application update to Azure and SQL Database</h2>
+<h2><a name="bkmk_deploydatabaseupdate"></a>Azure および SQL データベースにアプリケーションの更新を発行する</h2>
 
-To publish the application, you repeat the procedure you followed earlier.
+アプリケーションを発行するには、前に説明した手順を繰り返します。
 
-1. In **Solution Explorer**, right click the project and select **Publish**.
+1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[発行]** をクリックします。
 
-	![Publish][rxP]
+	![発行][rxP]
 
-5. Click the **Settings** tab.
+5. **[設定]** タブをクリックします。
 	
 
-1. Under **ContactsManagerContext(ContactsManagerContext)**, click the **v** icon to change *Remote connection string* to the connection string for the contact database. Click **ContactDB**.
+1. **[ContactsManagerContext(ContactsManagerContext)]** の下で、**v** アイコンをクリックして、*リモート接続文字列*を連絡先データベースの接続文字列に変更します。**[ContactDB]** をクリックします。
 
-	![Settings](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt5.png)
+	![設定](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt5.png)
 
-7. Check the box for **Execute Code First Migrations (runs on application start)**.
+7. **[Code First Migrations の実行 (アプリケーションの起動時に実行)]** チェック ボックスをオンにします。
 
-1. Click **Next** and then click **Preview**. Visual Studio displays a list of the files that will be added or updated.
+1. **[次へ]** をクリックし、**[プレビュー]** をクリックします。Visual Studio で、追加または更新されるファイルの一覧が表示されます。
 
-8. Click **Publish**.
-After the deployment completes, the browser opens to the home page of the application.
+8. **[発行]** をクリックします。
+展開が完了すると、ブラウザーでアプリケーションのホーム ページが開かれます。
 
-	![Index page with no contacts][intro001]
+	![連絡先が表示されていない Index ページ][intro001]
 
-	The Visual Studio publish process automatically configured the connection string in the deployed *Web.config* file to point to the SQL database. It also configured Code First Migrations to automatically upgrade the database to the latest version the first time the application accesses the database after deployment.
+	Visual Studio の発行プロセスにより、展開された *Web.config* ファイル内の接続文字列は SQL データベースを指すよう自動的に構成されました。また、Code First Migrations は、展開後にアプリケーションが初めてデータベースに接続するときに、データベースを最新バージョンに自動的にアップグレードするよう構成されました。
 
-	As a result of this configuration, Code First created the database by running the code in the **Initial** class that you created earlier. It did this the first time the application tried to access the database after deployment.
+	この構成の結果、前の手順で作成した **Initial** クラスのコードが実行されて、Code First によってデータベースが作成されました。この処理は、展開後にアプリケーションが初めてデータベースにアクセスしようとしたときに行われました。
 
-9. Enter a contact as you did when you ran the app locally, to verify that database deployment succeeded.
+9. アプリケーションをローカルで実行したときと同様に連絡先を入力して、データベースの展開が成功したことを確認します。
 
-When you see that the item you enter is saved and appears on the contact manager page, you know that it has been stored in the database.
+入力した項目が保存され、Contact Manager のページに表示されることを確認すると、その項目がデータベースに保存されたことがわかります。
 
-![Index page with contacts][addwebapi004]
+![連絡先が表示された Index ページ][addwebapi004]
 
-The application is now running in the cloud, using SQL Database to store its data. After you finish testing the application in Azure, delete it. The application is public and doesn't have a mechanism to limit access.
+これで、データの保存先に SQL データベースを使用して、アプリケーションがクラウドで実行されるようになりました。Azure 上でアプリケーションのテストを終えたら、そのアプリケーションを削除します。アプリケーションはパブリックであり、アクセスを制限するメカニズムを備えていません。
 
-<h2><a name="nextsteps"></a>Next Steps</h2>
+<h2><a name="nextsteps"></a>次のステップ</h2>
 
-A real application would require authentication and authorization, and you would use the membership database for that purpose. The tutorial [Deploy a Secure ASP.NET MVC application with OAuth, Membership and SQL Database](http://www.windowsazure.com/en-us/develop/net/tutorials/web-site-with-sql-database/) is based on this tutorial and shows how to deploy a web application with the membership database.
+実際のアプリケーションでは認証と権限承認が必要になるため、その目的でメンバーシップ データベースを使用します。「[Deploy a Secure ASP.NET MVC application with OAuth, Membership and SQL Database (OAuth、メンバーシップ、SQL データベースを使用するセキュリティで保護された ASP.NET MVC アプリケーションの展開)](http://www.windowsazure.com/ja-jp/develop/net/tutorials/web-site-with-sql-database/)」は、このチュートリアルに基づいており、メンバーシップ データベースを使用する Web アプリケーションを展開する方法について説明しています。
 
-Another way to store data in an Azure application is to use Azure storage, which provide non-relational data storage in the form of blobs and tables. The following links provide more information on Web API, ASP.NET MVC and Window Azure.
+Azure アプリケーションにデータを保存するには、Azure ストレージを使用する方法もあります。Azure ストレージには、非リレーショナル データを BLOB 形式とテーブル形式で保存できます。Web API、ASP.NET MVC、および Window Azure の詳細については、次の Web ページを参照してください。
  
 
-* [Getting Started with Entity Framework using MVC][EFCodeFirstMVCTutorial]
-* [Intro to ASP.NET MVC 5](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
-* [Your First ASP.NET Web API](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api)
-* [Debugging WAWS](http://www.windowsazure.com/en-us/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/)
+* [MVC を使用した Entity Framework の概要に関するページ][EFCodeFirstMVCTutorial]
+* [ASP.NET MVC 5 の入門ページ](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
+* [ASP.NET Web API の入門ページ](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api)
+* [Debugging WAWS (WAWS のデバッグ)](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/)
 
-This tutorial and the sample application was written by [Rick Anderson](http://blogs.msdn.com/b/rickandy/) (Twitter [@RickAndMSFT](https://twitter.com/RickAndMSFT)) with assistance from Tom Dykstra and Barry Dorrans (Twitter [@blowdart](https://twitter.com/blowdart)). 
+このチュートリアルとサンプル アプリケーションは、Tom Dykstra と Barry Dorrans (Twitter [@blowdart](https://twitter.com/blowdart)) の協力の下、[Rick Anderson](http://blogs.msdn.com/b/rickandy/) (Twitter [@RickAndMSFT](https://twitter.com/RickAndMSFT)) が執筆しました。
 
-Please leave feedback on what you liked or what you would like to see improved, not only about the tutorial itself but also about the products that it demonstrates. Your feedback will help us prioritize improvements. We are especially interested in finding out how much interest there is in more automation for the process of configuring and deploying the membership database. 
+役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。特に、メンバーシップ データベースの構成と展開の自動化に関するご意見をお待ちしております。
 
 <!-- bookmarks -->
 [Add an OAuth Provider]: #addOauth
@@ -835,7 +835,7 @@ Please leave feedback on what you liked or what you would like to see improved, 
 
 <!-- links -->
 [EFCodeFirstMVCTutorial]: http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
-[dbcontext-link]: http://msdn.microsoft.com/en-us/library/system.data.entity.dbcontext(v=VS.103).aspx
+[dbcontext-link]: http://msdn.microsoft.com/ja-jp/library/system.data.entity.dbcontext(v=VS.103).aspx
 
 
 <!-- images-->
@@ -877,9 +877,9 @@ Please leave feedback on what you liked or what you would like to see improved, 
 [addwebapi004]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-added-contact.png
 [addwebapi006]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-save-returned-contacts.png
 [addwebapi007]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-contacts-in-notepad.png
-[Add XSRF Protection]: #xsrf
+[XSRF 保護を追加する]: #xsrf
 [WebPIAzureSdk20NetVS12]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/WebPIAzureSdk20NetVS12.png
-[Add XSRF Protection]: #xsrf
+[XSRF 保護を追加する]: #xsrf
 [ImportPublishSettings]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/ImportPublishSettings.png
 [ImportPublishProfile]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/ImportPublishProfile.png
 [PublishVSSolution]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/PublishVSSolution.png

@@ -1,6 +1,6 @@
-Windows Azure ストアでは、Azure にホストされ、完全に管理された MongoDB データベースにサブスクライブできます。これを行うには、次のステップに従います。
+Azure ストアでは、Azure にホストされ、完全に管理された MongoDB データベースにサブスクライブできます。これを行うには、次のステップに従います。
 
-1. Windows Azure の管理ポータルにログインします。
+1. Azure の管理ポータルにログインします。
 1. **[新規]** をクリックします。
 ![新規][button-new]
 1. **[ストア]** を選択します。
@@ -23,7 +23,7 @@ Windows Azure ストアでは、Azure にホストされ、完全に管理され
 プロビジョニングが完了すると、成功メッセージが表示されます。
 ![SuccessMessage][message-success]
 
-ご利用ありがとうございます。MongoLab により、選択した Windows Azure のリージョンで MongoDB データベースがプロビジョニングされました。管理 UI と 24 時間 365 日のサポートをご利用いただけます。
+ご利用ありがとうございます。MongoLab により、選択した Azure のリージョンで MongoDB データベースがプロビジョニングされました。管理 UI と 24 時間 365 日のサポートをご利用いただけます。
 
 [button-new]: ./media/howto-provision-mongolab/button-new.png
 [button-store]: ./media/howto-provision-mongolab/button-store.png

@@ -1,67 +1,67 @@
-<properties linkid="notification-hubs-how-to-guides-howto-notify-users-mobileservices" urlDisplayName="Notify Users" pageTitle="Notify Users of your mobile service with Notification Hubs" metaKeywords="" description="Follow this tutorial to register to receive notifications from your mobile service by using Notification Hubs" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Notify users with Notification Hubs" authors="glenga" solutions="" manager="" editor="" />
-# <a name="getting-started"> </a>Notify users with Notification Hubs
+<properties linkid="notification-hubs-how-to-guides-howto-notify-users-mobileservices" urlDisplayName="ユーザーへの通知" pageTitle="通知ハブによるモバイル サービスのユーザーへの通知" metaKeywords="" description="このチュートリアルでは、通知ハブを使用してモバイル サービスからの通知を受け取るように登録を行う方法を示します。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="通知ハブによるユーザーへの通知" authors=""  solutions="" writer="glenga" manager="" editor=""  />
+# <a name="getting-started"> </a>通知ハブによるユーザーへの通知
 
 <div class="dev-center-tutorial-selector sublanding">
-    <a href="/en-us/manage/services/notification-hubs/notify-users" title="Mobile Services" class="current">Mobile Services</a><a href="/en-us/manage/services/notification-hubs/notify-users-aspnet" title="ASP.NET">ASP.NET</a>
+    <a href="/ja-jp/manage/services/notification-hubs/notify-users" title="モバイル サービス" class="current">モバイル サービス</a><a href="/ja-jp/manage/services/notification-hubs/notify-users-aspnet" title="ASP.NET">ASP.NET</a>
 </div> 
 
-This tutorial shows you how to use Azure Notification Hubs to send push notifications to a specific app user on a specific device. An Azure Mobile Services backend is used to authenticate clients and to generate notifications. This tutorial builds on the notification hub that you created in the previous **Get started with Notification Hubs** tutorial. The notification registration code is moved from the client to the backend service. This ensures that registration is only completed after a client has been positively authenticated by the service. It also means that notification hub credentials aren't distributed with the client app. The service also controls the tags requested during registration.
+このチュートリアルでは、Azure 通知ハブを使用して特定のデバイスの特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。Azure のモバイル サービス バックエンドを使用して、クライアントを認証し、通知を生成します。このチュートリアルは、1 つ前のチュートリアル「**通知ハブの使用**」で作成した通知ハブが基になっています。通知登録コードは、クライアントからバックエンド サービスに移動します。これにより、クライアントがサービスによって正しく認証された後のみ登録が完了するようになります。さらに、通知ハブの資格情報がクライアント アプリケーションに配布されることもありません。登録時に要求されたタグも、このサービスによって制御されます。
 
-This tutorial walks you through the following basic steps: 
+このチュートリアルでは、次の基本的な手順について説明します。
 
-+ [Update your mobile service to register for notifications]
-+ [Update the app to log in and request registration]
-+ [Update your mobile service to send notifications]
++ [通知に登録できるようにモバイル サービスを更新する]
++ [ログインして登録を要求できるようにアプリケーションを更新する]
++ [通知を送信できるようにモバイル サービスを更新する]
 
-## Prerequisites
+## 前提条件
 
-Before you start this tutorial, you must first complete the following tutorials:
+このチュートリアルの前に、次のチュートリアルを完了している必要があります。
 
-+ **Get started with Notification Hubs** ([Windows Store C#][Get started Windows Store]/[iOS][Get started iOS]/[Android][Get started Android]). 
++ **通知ハブの使用** ([Windows ストア C##][Get started Windows Store]/[iOS][Get started iOS]/[Android][Get started Android])
 
-+ **Get started with authentication in Mobile Services** ([Windows Store C#][Get started auth Windows Store]/[iOS][Get started auth iOS]/[Android][Get started auth Android])
++ **モバイル サービスでの認証の使用** ([Windows ストア C##][Get started auth Windows Store]/[iOS][Get started auth iOS]/[Android][Get started auth Android])
 
-This tutorial builds upon the app and notification hub that you created in **Get started with Notification Hubs**. It also leverages the authenticated mobile service that you configured in **Get started with authentication in Mobile Services**. 
+このチュートリアルは、「**通知ハブの使用**」で作成したアプリケーションと通知ハブが基になっています。「**モバイル サービスでの認証の使用**」で構成した、認証されたモバイル サービスも使用します。
 
-<div class="dev-callout"><b>Note</b>
-	<p>By default, the <strong>Get started with authentication in Mobile Services</strong> tutorial uses Facebook authentication. You cannot use Microsoft Account authentication in this tutorial, because two Windows Store apps cannot share a single Live Connect registration. To use Microsoft Account authentication, the mobile service and notification hub must be registered to the same app in Live Connect.</p>
+<div class="dev-callout"><b>メモ</b>
+	<p>既定では、「<strong>モバイル サービスでの認証の使用</strong>」のチュートリアルでは Facebook 認証が使用されます。2 つの Windows ストア アプリケーションが 1 つの Live Connect 登録を共有することはできないため、このチュートリアルでは Microsoft アカウント認証を使用することができません。Microsoft アカウント認証を使用するには、Live Connect でモバイル サービスと通知ハブを同じアプリケーションに登録する必要があります。</p>
 </div>
 
-<h2><a name="register-notification"></a><span class="short-header">Register for notifications</span>Update your mobile service to register for notifications</h2>
+<h2><a name="register-notification"></a><span class="short-header">通知への登録</span>通知に登録できるようにモバイル サービスを更新する</h2>
 
-Because notification registration must only be completed after a client has been positively authenticated by the service, the registration is performed a custom API defined in the mobile service. This custom API is called by an authenticated client to request notification registration. In this section, you will update the authenticated mobile service that you defined when you completed the **Get started with authentication in Mobile Services** tutorial. 
+通知への登録は、クライアントがサービスによって正しく認証された後のみ実行する必要があるため、モバイル サービスで定義されたカスタム API を使用して登録が実行されます。このカスタム API は、通知登録を要求するため、認証されたクライアントにより呼び出されます。このセクションでは、「**モバイル サービスでの認証の使用**」のチュートリアルを実行したときに定義した、認証されたモバイル サービスを更新します。
 
-1. Log into the [Azure Management Portal][Management Portal], click **Service Bus**, your namespace, **Notification Hubs**, then choose your notification hub and click **Connection Information**.  
+1. [Azure の管理ポータル][Management Portal]にログインして、**[Service Bus]**、名前空間、**[通知ハブ]** の順にクリックし、通知ハブを選択して **[接続情報]** をクリックします。
 
 	![][6]
 
-2. Note the name of your notification hub and copy the connection string for the **DefaultFullSharedAccessSignature**.
+2. 通知ハブの名前をメモし、**DefaultFullSharedAccessSignature** の接続文字列をコピーします。
 
 	![][7]
 
-	You will use this connection string, along with the notification hub name, to both register for and send notifications.
+	この接続文字列は、通知への登録の通知の送信の両方で、通知ハブ名と共に使用します。
 
-2. Still in the Management Portal, click **Mobile Services**, and then click your app.
+2. 管理ポータルを表示したまま、**[モバイル サービス]** をクリックしてアプリをクリックします。
 
    	![][0]
 
-2. Click the **API** tab, and then click **Create a custom API**.
+2. **[API]** タブをクリックし、**[カスタム API の作成]** をクリックします。
 
    	![][1]
 
-   	This displays the **Create a new custom API** dialog.
+   	**[新しいカスタム API の作成]** ダイアログ ボックスが表示されます。
 
-3. Type <em>register_notifications</em> in **API name**, select **Only Authenticated Users** for **POST Permissions**, then click the check button.
+3. **[API 名]** に「<em>register_notifications</em>」と入力し、**[POST アクセス許可]** で **[認証されたユーザーのみ]** を選択して、チェック ボタンをオンにします。
 
    	![][2]
 
-  	This creates the API that requires users to be authenticated before calling by using the HTTP POST method. We don't need to set the other HTTP methods because we won't implement them.
+  	この結果、HTTP POST メソッドを使用して呼び出す前にユーザーの認証を求める API が作成されます。他の HTTP メソッドは実装しないため、設定する必要はありません。
 
-4. Click the new **register_notifications** entry in the API table.
+4. API テーブル内の新しい **register_notifications** エントリをクリックします。
 
 	![][3]
 
-5. Click the **Script** tab and replace the existing code with the following:
+5. **[スクリプト]** タブをクリックし、既存のコードを次のコードに置き換えます。
 
 		exports.post = function(request, response) {
 
@@ -127,40 +127,40 @@ Because notification registration must only be completed after a client has been
             });
         }
 
-	This code gets platform and deviceID information from the message body. This data, along with the installation ID from the request header and the user ID of the logged-in user, is used to update a registration, if it exists, or create a new registration. This registration is tagged with the user ID and installation ID.
+	このコードは、メッセージ本文からプラットフォームおよび deviceID 情報を取得します。このデータは、要求ヘッダーから取得されたインストール ID およびログインしているユーザーのユーザー ID と共に、登録の更新 (登録が存在する場合) または新しい登録の作成に使用されます。この登録には、ユーザー ID とインストール ID がタグ付けされます。
 
-6. Update the script to replace _`<NOTIFICATION_HUB_NAME>`_ and _`<FULL_SAS_CONNECTION_STRING>`_ with values for your notification hub, then click **Save**.
+6. スクリプトを更新して _`<NOTIFICATION_HUB_NAME>`_ と _`<FULL_SAS_CONNECTION_STRING>`_ を通知ハブ用の値に置き換え、**[保存]** をクリックします。
 
-	<div class="dev-callout"><b>Note</b>
-		<p>Make sure to use the <strong>DefaultFullSharedAccessSignature</strong> for <em><code>&lt;FULL_SAS_CONNECTION_STRING&gt;</code></em>. This claim allows your custom API method to create and update registrations.</p>
+	<div class="dev-callout"><b>メモ</b>
+		<p><em><code>&lt;FULL_SAS_CONNECTION_STRING&gt;</code></em> で必ず <strong>DefaultFullSharedAccessSignature</strong> を使用してください。この要求により、カスタム API メソッドが登録を作成および更新できるようになります。</p>
 	</div>
 
-<h2><a name="update-app"></a><span class="short-header">Update the app</span>Update the app to log in and request registration</h2>
+<h2><a name="update-app"></a><span class="short-header">アプリケーションの更新</span>ログインして登録を要求できるようにアプリケーションを更新する</h2>
 
-Next, you need to update the TodoList app to request registration for notification by calling the new custom API.
+次に、TodoList アプリケーションを更新し、新しいカスタム API を呼び出すことで通知の登録を要求する必要があります。
 
-1. Follow the steps in one of the following versions of **Register the current user for push notifications by using a mobile service**, depending on your client platform:
+1. 使用しているクライアント プラットフォームに応じて、「**モバイル サービスを使用した現在のユーザーのプッシュ通知への登録**」で説明されている次のいずれかのバージョンの手順に従います。
 
-	+ [Windows Store C# version][Client topic Windows Store C# version]
-	+ [iOS version][Client topic iOS version]
+	+ [Windows ストア C# バージョン][Client topic Windows Store C# version]
+	+ [iOS バージョン][Client topic iOS version]
 
-2. Run the updated app, login using Facebook, and then verify that the registration ID assigned to the notification is displayed.
+2. 更新されたアプリケーションを実行し、Facebook を使用してログインした後、通知に割り当てられた登録 ID が表示されることを確認します。
 
-<h2><a name="send-notifications"></a><span class="short-header">Send notifications</span>Update your mobile service to send notifications</h2>
+<h2><a name="send-notifications"></a><span class="short-header">通知の送信</span>通知を送信できるようにモバイル サービスを更新する</h2>
 
-The final step is to add code that sends notifications in the mobile service. This notification code is added to the server script registered to the insert handler of the **TodoItem** table.
+最後の手順では、モバイル サービスで通知を送信するコードを追加します。この通知コードは、**TodoItem** テーブルの挿入ハンドラーに登録されたサーバー スクリプトに追加されます。
 
-1. Back in the Management Portal, click the **Data** tab and then click the **TodoItem** table. 
+1. 管理ポータルに戻り、**[データ]** タブ、**TodoItem** テーブルの順にクリックします。
 
    	![][4]
 
-2. In **todoitem**, click the **Script** tab and select **Insert**.
+2. **todoitem** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。
    
   	![][5]
 
-   	This displays the function that is invoked when an insert occurs in the **TodoItem** table.
+   	**TodoItem** テーブルで挿入が発生したときに呼び出される関数が表示されます。
 
-3. Replace the insert function with the following code:
+3. insert 関数を次のコードに置き換えます。
 
 		function insert(item, user, request) {
 		    var azure = require('azure');
@@ -194,49 +194,49 @@ The final step is to add code that sends notifications in the mobile service. Th
 		    });
 		}
 	
-	This attempts to send notifications to the tag for the current logged-in user in both Windows Store and iOS apps.
+	Windows ストア アプリケーションと iOS アプリケーションの両方の現在ログインしているユーザーのタグに対して、通知の送信が試みられます。
 		
-4. Update the script to replace _`<NOTIFICATION_HUB_NAME>`_ and _`<FULL_SAS_CONNECTION_STRING>`_ with values for your notification hub, then click **Save**.
+4. スクリプトを更新して _`<NOTIFICATION_HUB_NAME>`_ と _`<FULL_SAS_CONNECTION_STRING>`_ を通知ハブ用の値に置き換え、**[保存]** をクリックします。
 
-   	This registers a new insert script, which uses Notification Hubs to send a push notification (the inserted text) to the channel provided in the insert request.
+   	これで、新しい insert スクリプトが登録されます。このスクリプトは通知ハブを使用して、挿入要求で指定されたチャネルにプッシュ通知 (挿入されたテキスト) を送信します。
 
-	<div class="dev-callout"><b>Note</b>
-		<p>Make sure to use the <strong>DefaultFullSharedAccessSignature</strong> for <em><code>&lt;FULL_SAS_CONNECTION_STRING&gt;</code></em>. This claim provides your insert script with full access, including the ability to send notifications to registered clients.</p>
+	<div class="dev-callout"><b>メモ</b>
+		<p><em><code>&lt;FULL_SAS_CONNECTION_STRING&gt;</code></em> で必ず <strong>DefaultFullSharedAccessSignature</strong> を使用してください。この要求により、フル アクセス権 (登録されたクライアントに通知を送信することも可能) を持つ insert スクリプトが生成されます。</p>
 	</div>
 
-<h2><a name="test"></a><span class="short-header">Test the app</span>Test push notifications in your app</h2>
+<h2><a name="test"></a><span class="short-header">アプリケーションのテスト</span>アプリケーションでプッシュ通知をテストする</h2>
 
-Now that the notifications are configured, it's time to test the app by inserting data to generate a notification.
+通知が構成されたので、データを挿入して通知を生成することでアプリケーションをテストします。
 
-1. Run the app. 
+1. アプリケーションを実行します。
 
-	A registration notification is again displayed on start-up.
+	起動時に登録通知がもう一度表示されます。
 
-2. Enter text as before and add the new item.
+2. 前回と同様にテキストを入力し、新しい項目を追加します。
 
-	Note that after the insert completes, the app receives a push notification from Notification Hubs.
+	挿入が完了すると、アプリケーションは通知ハブからプッシュ通知を受け取ります。
 
-	<div class="dev-callout"><b>Note</b>
-		<p>An error is raised on the backend when there is no registration for a platform to which a notification is requested to be sent. In this case, this error can be ignored. To see how to use templates to avoid this situation, see <a href="/en-us/manage/services/notification-hubs/notify-users-xplat-mobile-services/" target="_blank">Send cross-platform notifications to users with Notification Hubs</a>.</p>
+	<div class="dev-callout"><b>メモ</b>
+		<p>要求された通信の送信先プラットフォームに登録がない場合、バックエンドでエラーが発生します。その場合、このエラーは無視できます。テンプレートを使用してこの状況を回避する方法については、「<a href="/ja-jp/manage/services/notification-hubs/notify-users-xplat-mobile-services/" target="_blank">通知ハブによるユーザーへのクロスプラットフォーム通知の送信</a>」を参照してください。</p>
 	</div>
 
-3. (Optional) Deploy the client app to a second device, then run the app and insert text. 
+3. (省略可能) クライアント アプリケーションを 2 つ目のデバイスにデプロイし、アプリケーションを実行してテキストを挿入します。
 
-	A notification is displayed on each device.
+	各デバイスに通知が表示されます。
 
-## <a name="next-steps"> </a>Next Steps
-Now that you have completed this tutorial, consider completing the following tutorials:
+## <a name="next-steps"> </a>次のステップ
+このチュートリアルが完了したら、次のチュートリアルを実行することをお勧めします。
 
-+ **Use Notification Hubs to send breaking news ([Windows Store C#][Breaking news .NET] / [iOS][Breaking news iOS])**<br/>This platform-specific tutorial shows you how to use tags to enable users to subscribe to types of notifications in which they are interested. 
++ **通知ハブを使用したニュース速報の送信 ([Windows ストア C#][Breaking news .NET] / [iOS][Breaking news iOS])** <br/>このプラットフォーム固有のチュートリアルでは、タグを使用して、ユーザーが興味を持つ種類の通知を購読できるようにする方法について説明します。
 
-+ **[Send cross-platform notifications to users with Notification Hubs]**<br/>This tutorial extends the current **Notify users with Notification Hubs** tutorial to use platform-specific templates to register for notifications. This enables you to send notifications from a single method in your server-side code.
++ **[通知ハブによるユーザーへのクロスプラットフォーム通知の送信]**<br/>このチュートリアルでは、この「**通知ハブによるユーザーへの通知**」のチュートリアルを拡張し、プラットフォーム固有のテンプレートを使用して通知に登録します。これにより、サーバー側コードの 1 つのメソッドから通知を送信できるようになります。
 
-For more information about Notification Hubs, see [Azure Notification Hubs].
+通知ハブの詳細については、「[Azure 通知ハブ]」を参照してください。
 
 <!-- Anchors. -->
-[Update your mobile service to register for notifications]: #register-notification
-[Update the app to log in and request registration]: #update-app
-[Update your mobile service to send notifications]: #send-notifications
+[通知に登録できるようにモバイル サービスを更新する]: #register-notification
+[ログインして登録を要求できるようにアプリケーションを更新する]: #update-app
+[通知を送信できるようにモバイル サービスを更新する]: #send-notifications
 
 <!-- Images. -->
 [0]: ./media/notification-hubs-mobile-services-notify-users/mobile-services-selection.png
@@ -249,18 +249,19 @@ For more information about Notification Hubs, see [Azure Notification Hubs].
 [7]: ./media/notification-hubs-mobile-services-notify-users/notification-hub-connection-strings.png
 
 <!-- URLs. -->
-[Get started Windows Store]: /en-us/manage/services/notification-hubs/getting-started-windows-dotnet
-[Get started iOS]: /en-us/manage/services/notification-hubs/get-started-notification-hubs-ios
-[Get started Android]: /en-us/manage/services/notification-hubs/get-started-notification-hubs-android
-[Get started auth Windows Store]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Get started auth iOS]: /en-us/develop/mobile/tutorials/get-started-with-users-ios/
-[Get started auth Android]: /en-us/develop/mobile/tutorials/get-started-with-users-android/
-[Client topic Windows Store C# version]: /en-us/manage/services/notification-hubs/register-users-mobile-services-dotnet 
-[Client topic iOS version]: /en-us/manage/services/notification-hubs/register-users-ios 
+[Get started Windows Store]: /ja-jp/manage/services/notification-hubs/getting-started-windows-dotnet
+[Get started iOS]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-ios
+[Get started Android]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-android
+[Get started auth Windows Store]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet/
+[Get started auth iOS]: /ja-jp/develop/mobile/tutorials/get-started-with-users-ios/
+[Get started auth Android]: /ja-jp/develop/mobile/tutorials/get-started-with-users-android/
+[Client topic Windows Store C# version]: /ja-jp/manage/services/notification-hubs/register-users-mobile-services-dotnet 
+[Client topic iOS version]: /ja-jp/manage/services/notification-hubs/register-users-ios 
 [Visual Studio 2012 Express for Windows 8]: http://go.microsoft.com/fwlink/?LinkId=257546
 
 [Management Portal]: https://manage.windowsazure.com/
-[Send cross-platform notifications to users with Notification Hubs]: /en-us/manage/services/notification-hubs/notify-users-xplat-mobile-services
-[Breaking news .NET]: /en-us/manage/services/notification-hubs/breaking-news-dotnet
-[Breaking news iOS]: /en-us/manage/services/notification-hubs/breaking-news-ios
-[Azure Notification Hubs]: http://msdn.microsoft.com/en-us/library/windowsazure/jj927170.aspx
+[通知ハブによるユーザーへのクロスプラットフォーム通知の送信]: /ja-jp/manage/services/notification-hubs/notify-users-xplat-mobile-services
+[Breaking news .NET]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet
+[Breaking news iOS]: /ja-jp/manage/services/notification-hubs/breaking-news-ios
+[Azure 通知ハブ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj927170.aspx
+

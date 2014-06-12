@@ -1,117 +1,117 @@
-<properties linkid="manage-services-hdinsight-get-started-hdinsight" urlDisplayName="Get Started" pageTitle="Get started with the HDInsight Emulator | Azure" metaKeywords="hdinsight, Azure hdinsight, hdinsight azure, get started hdinsight, emulator, hdinsight emulator" description="Learn how to use HDInsight Emulator for Azure." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" title="Get started with the HDInsight Emulator" authors="" />
+<properties linkid="manage-services-hdinsight-get-started-hdinsight" urlDisplayName="作業の開始" pageTitle="HDInsight Emulator for Azure の概要" metaKeywords="HDInsight, Azure の HDInsight, HDInsight Azure, HDInsight の作業の開始, エミュレーター, HDInsight Emulator" description="HDInsight Emulator for Azure の使用方法について説明します。" umbracoNaviHide="0" disqusComments="1" writer="jgao" editor="cgronlun" manager="paulettm" title="HDInsight Emulator の概要"/>
 
 
 
-# Get started with the HDInsight Emulator 
+# HDInsight Emulator の概要
 
-This tutorial gets you started using the Microsoft HDInsight Emulator for Azure (formerly HDInsight Server Developer Preview). The HDInsight Emulator comes with the same components from the Hadoop ecosystem as Azure HDInsight. For details, including information on the versions deployed, see [What version of Hadoop is in Azure HDInsight?](http://www.windowsazure.com/en-us/manage/services/hdinsight/howto-hadoop-version/ "HDInsight components and versions"). 
+このチュートリアルでは、Microsoft HDInsight Emulator for Azure (旧 HDInsight サーバー開発者プレビュー) の概要を紹介します。HDInsight Emulator には、Azure の HDInsight と同じ Hadoop エコシステムのコンポーネントが付属します。展開されたバージョンの情報も含めて、詳細については、「[Azure の HDInsight でサポートされている Hadoop のバージョン](http://www.windowsazure.com/ja-jp/manage/services/hdinsight/howto-hadoop-version/ "HDInsight components and versions")」を参照してください。
 
-HDInsight Emulator provides a local development environment for the Azure HDInsight. If you are familiar with Hadoop, you can get started with the Emulator using HDFS. But, in HDInsight, the default file system is Azure Blob storage (WASB, aka Azure Storage - Blobs), so eventually, you will want to develop your jobs using WASB. You can get started developing against WASB by using the Azure Storage Emulator - probably only want to use a small subset of your data (no config changes required in the HDInsight Emulator, just a different storage account name). Then, you test your jobs locally against Windows  Azure Storage - again, only using a subset of your data (requires a config change in the HDInsight Emulator). Finally, you are ready to move the compute portion of your job to HDInsight and run a job against production data.
+HDInsight Emulator は、Azure の HDInsight 用のローカル開発環境を提供します。Hadoop に慣れている場合は、HDFS を使用して Emulator を使い始めることができます。しかし、HDInsight では、既定のファイル システムが Azure BLOB ストレージ (WASB: Azure Storage - Blobs) であるため、最終的には WASB を使用してジョブを開発することになります。Azure のストレージ エミュレーターを使用して WASB に対して開発を開始できます。ここでは、おそらくデータの一部しか使いません (HDInsight Emulator では構成の変更が不要で、ストレージ アカウント名を変えるだけで済みます)。次に、Azure のストレージに対してローカルでジョブをテストします。今度もデータの一部だけを使用します (HDInsight Emulator で構成を変更する必要があります)。これで、ジョブの計算部分を HDInsight に移動して、運用データに対してジョブを実行する準備が整いました。
 
-> [WACOM.NOTE] The HDInsight Emulator can use only a single node deployment. 
+> [WACOM.NOTE] HDInsight Emulator では 1 つのノードでの展開のみが使用できます。
 
-For a tutorial using HDInsight, see [Get started using Azure HDInsight][hdinsight-get-started].
+HDInsight を使用したチュートリアルについては、[Azure の HDInsight の概要][hdinsight-get-started]を参照してください。
 
-**Prerequisites**	
-Before you begin this tutorial, you must have the following:
+**前提条件**	
+このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- The HDInsight Emulator requires a 64-bit version of Windows. One of the following requirements must be satisfied:
+- HDInsight Emulator には 64 ビット版 Windows が必要です。次の要件のうち 1 つを満たしている必要があります。
 
 	- Windows 7 Service Pack 1
-	- Windows Server 2008 R2 Service Pack1
-	- Windows 8 
-	- Windows Server 2012.
+	- Windows Server 2008 R2 Service Pack 1
+	- Windows 8
+	- Windows Server 2012
 
-- Install and configure Azure PowerShell. For instructions, see [Install and configure Azure PowerShell][powershell-install-configure]. 
+- Azure PowerShell のインストールおよび構成手順については、[Azure PowerShell のインストールと構成に関するページ][powershell-install-configure]を参照してください。
 
-## In this tutorial
+## このチュートリアルの内容
 
-* [Install the HDInsight Emulator](#install)
-* [Run the word count sample](#runwordcount)
-* [Run the getting started samples](#rungetstartedsamples)
-* [Connect to Azure Blob storage](#blobstorage)
-* [Run HDInsight PowerShell](#powershell)
-* [Next steps](#nextsteps)
+* [HDInsight Emulator のインストール](#install)
+* [ワード カウント サンプルの実行](#runwordcount)
+* [入門サンプルの実行](#rungetstartedsamples)
+* [Azure BLOB ストレージへの接続](#blobstorage)
+* [HDInsight PowerShell の実行](#powershell)
+* [次のステップ](#nextsteps)
 
-##<a name="install"></a>Install the HDInsight Emulator
+##<a name="install"></a>HDInsight Emulator のインストール
 
-The Microsoft HDInsight Emulator is installable via the Microsoft Web Platform Installer.  
+Microsoft HDInsight Emulator は、Microsoft Web Platform Installer を使用してインストールします。
 
-> [WACOM.NOTE] The HDInsight Emulator currently only supports English OS. 
+> [WACOM.NOTE] 現時点で HDInsight Emulator がサポートしているのは英語版 OS のみです。
 
 
-> [WACOM.NOTE] If you have had Microsoft HDInsight Developer Preview installed, you must uninstall the following two components from Control Panel/Program and Features first.
+> [WACOM.NOTE] Microsoft HDInsight 開発者プレビューをインストールしている場合は、まず、次の 2 つのコンポーネントを [コントロール パネル] の [プログラムと機能] からアンインストールする必要があります。
 ><ul>
-<li>HDInsight Developer Preview</li>
-<li>Hortonworks Data Platform Developer Preview</li>
+<li>HDInsight 開発者プレビュー</li>
+<li>Hortonworks Data Platform 開発者プレビュー</li>
 </ul>
 
 
-**To install HDInsight Emulator**
+**HDInsight Emulator をインストールするには**
 
-1. Open Internet Explorer, and then browse to the [Microsoft HDInsight Emulator for Azure installation page][hdinsight-emulator-install].
-2. Click **Install Now**. 
-3. Click **Run** when prompted for the installation of HDINSIGHT.exe at the bottom of the page. 
-4. Click the **Yes** button in the **User Account Control** window that pops up to complete the installation. You shall see the Web Platform Installer 4.6 window.
-6. Click **Install** on the bottom of the page.
-7. Click **I Accept** to agree to the licensing terms.
-8. Verify the Web Platform Installer shows **the following products were successfully installed**, and then click **Finish**.
-9. Click **Exit** to close the Web Platform Installer 4.6 window.
+1. Internet Explorer を開き、[Microsoft HDInsight Emulator for Azure インストール ページ][hdinsight-emulator-install]にアクセスします。
+2. **[今すぐインストール]** をクリックします。
+3. ページ下部に HDINSIGHT.exe のインストールに関するメッセージが表示されたら、**[実行]** をクリックします。
+4. **[ユーザー アカウント制御]** ウィンドウで **[はい]** をクリックして、インストールを完了します。[Web Platform Installer 4.6] ウィンドウが表示されます。
+6. ページの下部にある **[インストール]** をクリックします。
+7. **[同意する]** をクリックして、ライセンス条項に同意します。
+8. Web Platform Installer に **[次の製品が正常にインストールされました]** と表示されるのを確認して、**[完了]** をクリックします。
+9. **[終了]** をクリックして [Web Platform Installer 4.6] ウィンドウを閉じます。
 
-	The installation should have installed three icons on your desktop. The three icons are linked as follows: 
+	インストールが終わると、デスクトップにアイコンが 3 つインストールされます。3 つのアイコンは次のようにリンクされています。
 	
-	- **Hadoop Command Line**: The Hadoop command prompt from which MapReduce, Pig and Hive jobs are run in the HDInsight Emulator.
+	- **Hadoop コマンド ライン**: HDInsight Emulator で MapReduce、Pig、および Hive のジョブを実行する Hadoop コマンド プロンプト。
 
-	- **Hadoop Name Node Status**: The NameNode maintains a tree-based directory for all the files in HDFS. It also keep tracks of where the data for all the files are kept in a Hadoop cluster. Clients communicate with the NameNode in order to figure out where the data nodes for all the files are stored.
+	- **Hadoop 名前ノードのステータス**: NameNode は HDFS のすべてのファイルを含むツリー式ディレクトリを維持します。また、Hadoop クラスターに保持されたすべてのファイルのデータの場所も追跡されます。クライアントは、すべてのファイルのデータ ノードがどこに格納されているか見つけるために、NameNode と通信します。
 	
-	- **Hadoop MapReduce Status**: The job tracker that allocates MapReduce tasks to nodes in a cluster.
+	- **Hadoop MapReduce のステータス**: クラスターのノードに MapReduce タスクを配分するジョブ トラッカー。
 
-	The installation should have also installed several local services. The following is a screenshot of the Services window:
+	インストールが終わると、いくつかのローカル サービスもインストールされます。[サービス] ウィンドウのスクリーンショットは次のようになります。
 
 	![HDI.Emulator.Services][image-hdi-emulator-services]
 
-	For known issues with installing and running HDInsight Server, see the [HDInsight Emulator Release Notes][hdinsight-emulator-release-notes]. The installation log is located at **C:\HadoopFeaturePackSetup\HadoopFeaturePackSetupTools\gettingStarted.winpkg.install.log**.
+	HDInsight Server のインストールと実行に関する既知の問題については、[HDInsight Emulator のリリース ノート][hdinsight-emulator-release-notes]を参照してください。インストール ログは **C:\HadoopFeaturePackSetup\HadoopFeaturePackSetupTools\gettingStarted.winpkg.install.log** にあります。
 
 
 
 
-##<a name="runwordcount"></a>Run a word count MapReduce job
+##<a name="runwordcount"></a>ワード カウント MapReduce ジョブの実行
 
-Now you have the HDInsight emulator configured on your workstation. You can run a MapReduce job to test the installation. You will first upload some text files to HDFS, and then run a word count MapReduce job to count the word frequencies of those files. 
+使っているコンピューター上に HDInsight Emulator が構成されました。MapReduce ジョブを実行して、正しくインストールされているかテストできます。まず、HDFS にテキスト ファイルをいくつかアップロードして、それらのファイルに登場する単語の頻度を計算するワード カウント MapReduce ジョブを実行します。
 
-The word counting MapReduce program has been packaged into *hadoop-examples.jar*.  The jar file is located at the *C:\Hadoop\hadoop-1.1.0-SNAPSHOT* folder.
+ワード カウント MapReduce プログラムは *hadoop-examples.jar* にパッケージ化されています。jar ファイルは *C:\Hadoop\hadoop-1.1.0-SNAPSHOT* フォルダーにあります。
 
-The syntax for the jar command is:
+jar コマンドの構文は次のとおりです。
 
 	hadoop jar <jar> [mainClass] args...
 
-You will also use some fs commands. For more information on Hadoop commands, see [Hadoop commands manual][hadoop-commands-manual].
+また、いくつかの fs コマンドも使用します。Hadoop コマンドの詳細については、[Hadoop コマンド マニュアル][hadoop-commands-manual]を参照してください。
 
-The word counting MapReduce job takes two arguments: an input folder and an output folder.  You will use *hdfs://localhost/user/HDIUser* as the input folder, and *hdfs://localhost/user/HDIUser/WordCount_Output* as the output directory. The output folder can not be an existing folder, otherwise the MapReduce job will fail. If you want to run the MapReduce job for the second time, you must either specify a different output folder or delete the existing output folder. 
+ワード カウント MapReduce ジョブは、入力フォルダーと出力フォルダーの 2 つの引数をとります。*hdfs://localhost/user/HDIUser* を入力フォルダーとして、*hdfs://localhost/user/HDIUser/WordCount_Output* を出力ディレクトリとして使用します。出力フォルダーは既存のフォルダーにすることはできません。既存のフォルダーの場合、MapReduce ジョブは失敗します。2 回目に MapReduce ジョブを実行する場合は、別の出力フォルダーを指定するか、既存の出力フォルダーを削除します。
 
-**To run the word count MapReduce job**
+**ワード カウント MapReduce ジョブを実行するには**
 
-1. From the desktop, double-click **Hadoop Command Line** to open the Hadoop command line window.  The current folder should be:
+1. デスクトップで **[Hadoop コマンド ライン]** をダブルクリックして、[Hadoop コマンド ライン] ウィンドウを開きます。現在のフォルダーは次のようになっているはずです。
 
 		c:\Hadoop\hadoop-1.1.0-SNAPSHOT>
 
-	If not, run the following command:
+	そうでない場合は、次のコマンドを実行します。
 
 		cd %hadoop_home%
 
-2. Run the following Hadoop command to make a HDFS folder for storing the input and output files:
+2. 次の Hadoop コマンドを実行して、入出力ファイルを格納する HDFS フォルダーを作成します。
 
 		hadoop fs -mkdir /user/HDIUser
 	
-3. Run the following Hadoop command to copy some local files to HDFS:
+3. 次の Hadoop コマンドを実行して、ローカル ファイルを HDFS にコピーします。
 
 		hadoop fs -copyFromLocal *.txt /user/HDIUser/
 
-4. Run the following command to list the files in the /user/HDIUser folder:
+4. 次のコマンドを実行して、/user/HDIUser フォルダーにあるファイルを一覧表示します。
 
 		hadoop fs -ls /user/HDIUser
 
-	You should see the following files:
+	次のようにファイルが表示されます。
 
 		c:\Hadoop\hadoop-1.1.0-SNAPSHOT>hadoop fs -ls /user/HDIUser
 		Found 8 items
@@ -124,15 +124,15 @@ The word counting MapReduce job takes two arguments: an input folder and an outp
 		-rw-r--r--   1 username supergroup       2295 2013-10-30 12:07 /user/HDIUser/README.Monarch.txt
 		-rw-r--r--   1 username supergroup       1397 2013-10-30 12:07 /user/HDIUser/README.txt
 
-5. Run the following command to run the word count MapReduce job:
+5. 次のコマンドを実行して、ワード カウント MapReduce ジョブを実行します。
 
 		hadoop jar hadoop-examples.jar wordcount /user/HDIUser/*.txt /user/HDIUser/WordCount_Output
 
-6. Run the following command to list the words with "windows" in them from the output file:
+6. 次のコマンドを実行して、出力ファイルから "windows" を含む単語を一覧表示します。
 
 		hadoop fs -cat /user/HDIUser/WordCount_Output/part-r-00000 | findstr "windows"
 
-	The output should be:
+	出力は次のようになります。
 
 		c:\Hadoop\hadoop-1.1.0-SNAPSHOT>hadoop fs -cat /user/HDIUser/WordCount_Output/pa
 		rt-r-00000 | findstr "windows"
@@ -141,53 +141,53 @@ The word counting MapReduce job takes two arguments: an input folder and an outp
 		windows.        3
 
 
-##<a name="rungetstartedsamples"></a> Run the get started samples
+##<a name="rungetstartedsamples"></a> 入門サンプルの実行
 
-The HDInsight Emulator installation provides some samples to get new users started learning Apache Hadoop-based Services on Windows quickly. These samples covers some tasks that are typically needed when processing a big data set. Going through the samples can familiarize yourself with concepts associated with the MapReduce programming model and its ecosystem.
+HDInsight Emulator をインストールすると、Windows 上の Apache Hadoop ベースのサービスについて新しいユーザーがすばやく学習できるサンプルもインストールされます。これらのサンプルは、通常、ビッグ データ セットを処理する際に必要なタスクを対象としています。サンプルを試すと、MapReduce プログラミング モデルとそのエコシステムに関連した概念に慣れることができます。
 
-The samples are organized around the processing IIS W3C log data scenarios. A data generation tool is provided to create and import the data sets in various sizes to HDFS or WASB (Azure Blob storage). See [Use Azure Blob storage for HDInsight][hdinsight-blob-store] for more information). MapReduce, Pig or Hive jobs may then be run on the pages of data generated by the PowerShell script. Note that the Pig and Hive scripts used both compile to MapReduce programs. Users may run a series of jobs to observe, for themselves, the effects of using these different technologies and the effects of the size of the data on the execution of the processing tasks. 
+サンプルは、処理する IIS W3C ログ データ シナリオを軸として整理されています。データ生成ツールが用意されていて、さまざまなサイズのデータ セットを HDFS または WASB (Azure BLOB ストレージ) に作成しインポートできます。詳細については、[HDInsight で Azure BLOB ストレージを使用][hdinsight-blob-store]を参照してください。その後、PowerShell スクリプトによって生成されたデータのページ上で MapReduce、Pig または Hive ジョブを実行できます。使用する Pig スクリプトと Hive スクリプトはどちらも、コンパイルすると MapReduce プログラムになります。ユーザーは一連のジョブを実行して、これらの異なる技術を使用する効果と、処理タスクの実行にデータ サイズが及ぼす影響を自分の目で確認することができます。
 
-### In this section
+### このセクションの内容
 
-- [The IIS w3c log data scenarios](#scenarios)
-- [Load sample w3c log data](#loaddata)
-- [Run Java MapReduce jobs](#javamapreduce)
-- [Run Hive jobs](#hive)
-- [Run Pig jobs](#pig)
-- [Rebuild the samples](#rebuild)
+- [IIS W3C ログ データのシナリオ](#scenarios)
+- [サンプル W3C ログ データの読み込み](#loaddata)
+- [Java MapReduce ジョブの実行](#javamapreduce)
+- [Hive ジョブの実行](#hive)
+- [Pig ジョブの実行](#pig)
+- [サンプルのリビルド](#rebuild)
 
-###<a name="scenarios"></a>The IIS w3c log data scenarios
+###<a name="scenarios"></a> IIS W3C ログ データのシナリオ
 
-The w3c scenario generates and imports IIS W3C log data in three sizes into HDFS or WASB: 1MB, 500MB, and 2GB. It provides three job types and implements each of them in C#, Java, Pig and Hive.
+W3C シナリオは、IIS W3C ログ データを 3 つのサイズ (1 MB、500 MB、2 GB) で生成し、HDFS または WASB にインポートします。3 種類のジョブがあり、それぞれを C#、Java、Pig、および Hive で実装します。
 
-- **totalhits**: Calculates the total number of requests for a given page 
-- **avgtime**: Calculates the average time taken (in seconds) for a request per page 
-- **errors**: Calculates the number of errors per page, per hour, for requests whose status was 404 or 500 
+- **totalhits**: 所定のページに対する要求の総数を計算します。
+- **avgtime**: ページあたりの要求にかかった平均時間 (秒単位) を計算します。
+- **errors**: 状態が 404 または 500 であった要求について、ページあたり、時間あたりのエラー数を計算します。
 
-These samples and their documentation do not provide an in-depth study or full implementation of the key Hadoop technologies. The cluster used has only a single node and so the effect of adding more nodes cannot, with this release, be observed. 
+これらのサンプルとそのドキュメントは、主要な Hadoop テクノロジを詳細に調査したり全面的に実装したりするものではありません。使用するクラスターはノードを 1 つしかもたないため、ノードを増やす効果は、今回のリリースでは確認できません。
 
-###<a name="loaddata"></a>Load sample W3c log data
+###<a name="loaddata"></a>サンプル W3C ログ データの読み込み
 
-Generating and importing the data to HDFS is done using the PowerShell script importdata.ps1.
+PowerShell スクリプトの importdata.ps1 を使用して、データを生成し HDFS にインポートします。
 
-**To import sample w3c log data:**
+**サンプル W3C ログ データをインポートするには**
 
-1. Open Hadoop command line from desktop.
-2. Run the following command to change directory to **C:\Hadoop\GettingStarted**:
+1. デスクトップから Hadoop コマンド ラインを開きます。
+2. 次のコマンドを実行して、ディレクトリを **C:\Hadoop\GettingStarted** に変更します。
 
 		cd \Hadoop\GettingStarted
 
-3. Run the following command to generate and import data to HDFS:
+3. 次のコマンドを実行して、データを生成し HDFS にインポートします。
 
 		powershell -File importdata.ps1 w3c -ExecutionPolicy unrestricted 
 
-	If you want to load data into WASB instead, see [Connect to Azure Blob storage](#blobstorage).
+	代わりに WASB にデータを読み込む場合は、[Azure BLOB ストレージへの接続](#blobstorage)を参照してください。
 
-4. Run the following command from Hadoop command line to list the imported files on the HDFS:
+4. Hadoop コマンド ラインから次のコマンドを実行して、HDFS にインポートしたファイルの一覧を表示します。
 
 		hadoop fs -lsr /w3c
 
-	The output should be similar to the following: 
+	出力は次のようになります。
 
 		c:\Hadoop\GettingStarted\w3c>hadoop fs -lsr /w3c
 		drwxr-xr-x   - username supergroup          0 2013-10-30 13:29 /w3c/input
@@ -198,86 +198,86 @@ Generating and importing the data to HDFS is done using the PowerShell script im
 		drwxr-xr-x   - username supergroup          0 2013-10-30 13:28 /w3c/input/small
 		-rw-r--r--   1 username supergroup    1058328 2013-10-30 13:28 /w3c/input/small/data_w3c_small.txt
 
-5. Run the following command to display one of the data files to the console window:
+5. 次のコマンドを実行して、データ ファイルの 1 つの内容をコンソール ウィンドウに表示します。
 
 		hadoop fs -cat /w3c/input/small/data_w3c_small.txt
 
-Now you have the data file created and imported to HDFS.  You can run different Hadoop jobs.
+これでデータ ファイルが作成されて HDFS にインポートされました。別の Hadoop ジョブを実行できます。
 
-###<a name="javamapreduce"></a> Run Java MapReduce jobs
+###<a name="javamapreduce"></a> Java MapReduce ジョブの実行
 
-MapReduce is the basic compute engine for Hadoop. By default, it is implemented in Java, but there are also examples that leverage .NET and Hadoop Streaming that use C#. The syntax for running a MapReduce job is:
+MapReduce は Hadoop の基本的計算エンジンです。既定で Java で実装されていますが、C# を使用する .NET および Hadoop Streaming を活用した例もあります。MapReduce ジョブを実行する構文は次のとおりです。
 
 	hadoop jar <jarFileName>.jar <className> <inputFiles> <outputFolder>
 
-The jar file and the source files are located in the C:\Hadoop\GettingStarted\Java folder.
+jar ファイルとソース ファイルは C:\Hadoop\GettingStarted\Java フォルダーにあります。
 
-**To run a MapReduce job for calculating web page hits**
+**Web ページのヒット数を計算する MapReduce ジョブを実行するには**
 
-1. Open the Hadoop command line.
-2. Run the following command to change directory to **C:\Hadoop\GettingStarted**:
+1. Hadoop コマンド ラインを開きます。
+2. 次のコマンドを実行して、ディレクトリを **C:\Hadoop\GettingStarted** に変更します。
 
 		cd \Hadoop\GettingStarted
 
-3. Run the following command to remove the output directory in case the folder exists.  The MapReduce job will fail if the output folder already exists.
+3. 次のコマンドを実行して、出力ディレクトリが存在している場合は削除します。出力ディレクトリが既に存在していると、MapReduce ジョブは失敗します。
 
 		hadoop fs -rmr /w3c/output
 
-3. Run the following command:
+3. 次のコマンドを実行します。
 
 		hadoop jar .\Java\w3c_scenarios.jar "microsoft.hadoop.w3c.TotalHitsForPage" "/w3c/input/small/data_w3c_small.txt" "/w3c/output"
 
-	The following table describes the elements of the command:
+	コマンドの要素を次の表に示します。
 	<table border="1">
-	<tr><td>Parameter</td><td>Note</td></tr>
-	<tr><td>w3c_scenarios.jar</td><td>The jar file is located in the C:\Hadoop\GettingStarted\Java folder.</td></tr>
-	<tr><td>microsoft.hadoop.w3c.TotalHitsForPage</td><td>The type can be substituted by one of the following: 
+	<tr><td>パラメーター</td><td>注</td></tr>
+	<tr><td>w3c_scenarios.jar</td><td>この jar ファイルは C:\Hadoop\GettingStarted\Java フォルダーにあります。</td></tr>
+	<tr><td>microsoft.hadoop.w3c.TotalHitsForPage</td><td>型は、次のどちらかに置き換えることができます。
 	<ul>
 	<li>microsoft.hadoop.w3c.AverageTimeTaken</li>
 	<li>microsoft.hadoop.w3c.ErrorsByPage</li>
 	</ul></td></tr>
-	<tr><td>/w3c/input/small/data_w3c_small.txt</td><td>The input file can be substituted by the following:
+	<tr><td>/w3c/input/small/data_w3c_small.txt</td><td>入力ファイルは、次のどちらかに置き換えることができます。
 	<ul>
 	<li>/w3c/input/medium/data_w3c_medium.txt</li>
 	<li>/w3c/input/large/data_w3c_large.txt</li>
 	</ul></td></tr>
-	<tr><td>/w3c/output</td><td>This is the output folder name.</td></tr>
+	<tr><td>/w3c/output</td><td>これは、出力フォルダー名です。</td></tr>
 	</table>
 
-4. Run the following command to display the output file:
+4. 次のコマンドを実行して、出力ファイルの内容を表示します。
 
 		hadoop fs -cat /w3c/output/part-00000
 
-	The output shall be similar to:
+	次のように出力されます。
 
 		c:\Hadoop\GettingStarted\Java>hadoop fs -cat /w3c/output/part-00000
 		/Default.aspx   3409
 		/Info.aspx      1115
 		/UserService    1130
 
-	So, the Default.aspx page gets 3409 hits and so on. 
+	これで、たとえば Default.aspx ページは 3409 ヒットということがわかります。
 
-### <a name="hive"></a>Run Hive jobs
-The Hive query engine will feel familiar to analysts with strong SQL skills. It provides a SQL-like interface and a relational data model for HDFS. Hive uses a language called HiveQL (or HQL), which is a dialect of SQL.
+### <a name="hive"></a>Hive ジョブの実行
+Hive クエリ エンジンは、SQL の達人であれば戸惑うことはありません。SQL と同様のインターフェイスと HDFS のリレーショナル データ モデルを提供します。Hive では、HiveQL (または HQL) と呼ばれる言語を使用します。これは SQL の方言です。
 
-**To run a Hive job**
+**Hive ジョブを実行するには**
 
-1. Open Hadoop command line.
-2. Change directory to the **C:\Hadoop\GettingStarted** folder
-3. Run the following command to remove the **/w3c/hive/input** folder in case the folder exists.  The hive job will fail if the folder exists.
+1. Hadoop コマンド ラインを開きます。
+2. ディレクトリを **C:\Hadoop\GettingStarted** フォルダーに変更します。
+3. 次のコマンドを実行して、**/w3c/hive/input** フォルダーが存在している場合は削除します。このフォルダーが存在していると、Hive ジョブは失敗します。
 
 		hadoop fs -rmr /w3c/hive/input
 
-4. Run the following command to create the **/w3c/hive/input** folder and copy the data file from the workstation to HDFS:
+4. 次のコマンドを実行して、**/w3c/hive/input** フォルダーを作成し、データ ファイルをコンピューターから HDFS にコピーします。
 
         hadoop fs -mkdir /w3c/hive/input
         hadoop fs -cp /w3c/input/small/data_w3c_small.txt /w3c/hive/input
 
-5. Run the following command to execute the **w3ccreate.hql** script file.  The script creates a Hive table, and loads data to the Hive table:
+5. 次のコマンドを実行して、**w3ccreate.hql** スクリプト ファイルを実行します。このスクリプトは Hive テーブルを作成し、データを Hive テーブルに読み込みます。
         
 		C:\Hadoop\hive-0.9.0\bin\hive.cmd -f ./Hive/w3c/w3ccreate.hql -hiveconf "input=/w3c/hive/input/data_w3c_small.txt"
 
-	The HiveQL script is:
+	HiveQL スクリプトの内容は次のとおりです。
 		
 		DROP TABLE w3c;
 
@@ -302,7 +302,7 @@ The Hive query engine will feel familiar to analysts with strong SQL skills. It 
 
 		LOAD DATA INPATH '${hiveconf:input}' OVERWRITE INTO TABLE w3c;
 
-	The output shall be similar to the following:
+	次のように出力されます。
 
 		c:\Hadoop\GettingStarted>C:\Hadoop\hive-0.9.0\bin\hive.cmd -f ./Hive/w3c/w3ccrea	te.hql -hiveconf "input=/w3c/hive/input/data_w3c_small.txt"
 		Hive history file=c:\hadoop\hive-0.9.0\logs\history/hive_job_log_username_201310311452_1053491002.txt
@@ -316,15 +316,15 @@ The Hive query engine will feel familiar to analysts with strong SQL skills. It 
 		OK
 		Time taken: 0.573 seconds
 
-6. Run the following command to run the **w3ctotalhitsbypate.hql** HiveQL script file.  
+6. 次のコマンドを実行して、**w3ctotalhitsbypate.hql** HiveQL スクリプト ファイルを実行します。
 
         C:\Hadoop\hive-0.9.0\bin\hive.cmd -f ./Hive/w3c/w3ctotalhitsbypage.hql
 
-	The following table describes the elements of the command:
+	コマンドの要素を次の表に示します。
 	<table border="1">
-	<tr><td>File</td><td>Description</td></tr>
-	<tr><td>C:\Hadoop\hive-0.9.0\bin\hive.cmd</td><td>The Hive command script.</td></tr>
-	<tr><td>C:\Hadoop\GettingStarted\Hive\w3c\w3ctotalhitsbypage.hql</td><td> You can substitute the Hive script file with one of the following:
+	<tr><td>ファイル</td><td>説明</td></tr>
+	<tr><td>C:\Hadoop\hive-0.9.0\bin\hive.cmd</td><td>Hive コマンド スクリプト。</td></tr>
+	<tr><td>C:\Hadoop\GettingStarted\Hive\w3c\w3ctotalhitsbypage.hql</td><td>Hive スクリプト ファイルは、次のいずれかに置き換えることができます。
 	<ul>
 	<li>C:\Hadoop\GettingStarted\Hive\w3c\w3caveragetimetaken.hql</li>
 	<li>C:\Hadoop\GettingStarted\Hive\w3c\w3cerrorsbypage.hql</li>
@@ -333,7 +333,7 @@ The Hive query engine will feel familiar to analysts with strong SQL skills. It 
 
 	</table>
 
-	The w3ctotalhitsbypage.hql HiveQL script is:
+	w3ctotalhitsbypage.hql HiveQL スクリプトの内容は次のとおりです。
 
 		SELECT filtered.cs_uri_stem,COUNT(*) 
 		FROM (
@@ -341,7 +341,7 @@ The Hive query engine will feel familiar to analysts with strong SQL skills. It 
 		) filtered
 		GROUP BY (filtered.cs_uri_stem);
 
-	The end of the output shall be similar to the following:
+	出力の最後は次のようになります。
 		
 		MapReduce Total cumulative CPU time: 3 seconds 47 msec
 		Ended Job = job_201310291309_0006
@@ -355,7 +355,7 @@ The Hive query engine will feel familiar to analysts with strong SQL skills. It 
 		/UserService    1130
 		Time taken: 34.68 seconds
 
-Note that as a first step in each of the jobs, a table will be created and data will be loaded into the table from the file created earlier. You can browse the file that was created by looking under the /Hive node in HDFS using the following command:
+各ジョブの最初の手順として、テーブルが作成され、先に作成したファイルからそのテーブルにデータが読み込まれています。作成されたファイルは、次のコマンドを使用して HDFS の /Hive ノードの下を探すと見つかります。
 
 	hadoop fs -lsr /apps/hive/
 
@@ -365,31 +365,31 @@ Note that as a first step in each of the jobs, a table will be created and data 
 
 
 
-### <a name="pig"></a>Run Pig jobs
+### <a name="pig"></a>Pig ジョブの実行
 
-Pig processing uses a data flow language, called *Pig Latin*. Pig Latin abstractions provide richer data structures than MapReduce, and perform for Hadoop what SQL performs for RDBMS systems. 
+Pig 処理では、*Pig Latin* と呼ばれるデータ フロー言語が使用されます。Pig Latin 抽象化は MapReduce より高度なデータ構造を提供し、SQL で RDBMS システムを操作する場合と同じように Hadoop を操作できます。
 
 
 
-**To run the pig jobs:**
+**Pig ジョブを実行するには**
 
-1. Open Hadoop command line.
-2. Change directory to the C:\Hadoop\GettingStarted folder.
-3. Run the following command to submit a Pig job:
+1. Hadoop コマンド ラインを開きます。
+2. ディレクトリを C:\Hadoop\GettingStarted フォルダーに変更します。
+3. 次のコマンドを実行して、Pig ジョブを送信します。
 
 		C:\Hadoop\pig-0.9.3-SNAPSHOT\bin\pig.cmd -f ".\Pig\w3c\TotalHitsForPage.pig" -p "input=/w3c/input/small/data_w3c_small.txt"
 
-	The following table shows the elements of the command:
+	コマンドの要素を次の表に示します。
 	<table border="1">
-	<tr><td>File</td><td>Description</td></tr>
-	<tr><td>C:\Hadoop\pig-0.9.3-SNAPSHOT\bin\pig.cmd</td><td>The Pig command script.</td></tr>
-	<tr><td>C:\Hadoop\GettingStarted\Pig\w3c\TotalHitsForPage.pig</td><td> You can substitute the Pig Latin script file with one of the following:
+	<tr><td>ファイル</td><td>説明</td></tr>
+	<tr><td>C:\Hadoop\pig-0.9.3-SNAPSHOT\bin\pig.cmd</td><td>Pig コマンド スクリプト。</td></tr>
+	<tr><td>C:\Hadoop\GettingStarted\Pig\w3c\TotalHitsForPage.pig</td><td>Pig Latin スクリプト ファイルは、次のいずれかに置き換えることができます。
 	<ul>
 	<li>C:\Hadoop\GettingStarted\Pig\w3c\AverageTimeTaken.pig</li>
 	<li>C:\Hadoop\GettingStarted\Pig\w3c\ErrorsByPage.pig</li>
 	</ul>
 	</td></tr>
-	<tr><td>/w3c/input/small/data_w3c_small.txt</td><td> You can substitute the parameter with a larger file:
+	<tr><td>/w3c/input/small/data_w3c_small.txt</td><td>このパラメーターはもっと大きなファイルに置き換えることができます。
 	
 	<ul>
 	<li>/w3c/input/medium/data_w3c_medium.txt</li>
@@ -399,22 +399,22 @@ Pig processing uses a data flow language, called *Pig Latin*. Pig Latin abstract
 	</td></tr>
 	</table>
 
-	The output should be similar to the following:
+	出力は次のようになります。
 
 		(/Info.aspx,1115)
 		(/UserService,1130)
 		(/Default.aspx,3409)
 		
-Note that since Pig scripts compile to MapReduce jobs, and potentially to more than one such job, users may see multiple MapReduce jobs executing in the course of processing a Pig job.
+Pig スクリプトはコンパイルすると MapReduce ジョブになり、その際、複数のジョブが生成される可能性があるため、Pig ジョブの実行中に複数の MapReduce ジョブが実行されることがあります。
 
 
-### <a name="rebuild"></a>Rebuild the samples
-The samples currently contain all of the required binaries, so building is not required. If you'd like to make changes to the Java or .NET samples, you can rebuild them using either msbuild, or the included PowerShell script.
+### <a name="rebuild"></a>サンプルのリビルド
+サンプルは現在、必要なバイナリをすべて含んでいるため、ビルド作業は不要です。Java または .NET サンプルを変更する場合は、msbuild または付属の PowerShell スクリプトを使用してリビルドすることができます。
 
-**To rebuilt the samples**
+**サンプルをリビルドするには**
 
-1. Open Hadoop command line.
-2. Run the following command:
+1. Hadoop コマンド ラインを開きます。
+2. 次のコマンドを実行します。
 
 		powershell -F buildsamples.ps1
 
@@ -423,150 +423,150 @@ The samples currently contain all of the required binaries, so building is not r
 
 
 
-##<a name="blobstorage"></a>Connect to Azure Blob storage
-Azure HDInsight uses Azure Blob storage as the default file system. For more information, see [Use Azure blob Storage with HDInsight][hdinsight-blob-store]. 
+##<a name="blobstorage"></a>Azure BLOB ストレージへの接続
+Azure の HDInsight は、既定のファイル システムとして Azure BLOB ストレージを使用します。詳細については、「[HDInsight での Azure BLOB ストレージの使用][hdinsight-blob-store]」を参照してください。
 
-It is possible to configure a local cluster in the HDInsight Emulator to use Azure Blob storage instead of local storage. The section covers:
+ローカル ストレージの代わりに Azure BLOB ストレージを使用して、HDInsight Emulator でローカル クラスターを構成することができます。このセクションでは次の項目を取り上げます。
 
-- connect to the storage emulator
-- connect to an Azure Blob storage
-- configure an Azure Blob storage as the default file system for the HDInsight Emulator
+- ストレージ エミュレーターへの接続
+- Azure BLOB ストレージへの接続
+- HDInsight Emulator の既定のファイル システムとして Azure BLOB ストレージを構成
 
-### Connect to the storage emulator
+### ストレージ エミュレーターへの接続
 
-The Azure Storage emulator comes with [Azure SDK for .NET][azure-sdk]. The storage emulator don't start automatically. You must manually start it.  The application name is *Azure Storage Emulator*. To start/stop the emulators, right-click the blue Azure icon in the Windows System Tray, and then click Show Storage Emulator UI.
+Azure のストレージ エミュレーターには [Azure SDK for .NET][azure-sdk] が付属しています。ストレージ エミュレーターは自動的に開始されることはありません。手動で開始する必要があります。アプリケーション名は *Azure のストレージ エミュレーター*です。エミュレーターを開始または終了するには、Windows システム トレイにある青色の [Azure] アイコンを右クリックし、[Show Storage Emulator UI] (ストレージ エミュレーター UI の表示) をクリックします。
 
-> [WACOM.NOTE] You might get the following error message when you start the storage emulator:
+> [WACOM.NOTE] ストレージ エミュレーターを開始すると、次のようなエラー メッセージが表示されることがあります。
 
 ><pre><code>The process cannot access the file because it is being used by another process.
 </code></pre>
 
-><p>This is because one of the Hadoop Hive services also uses port 10000. To work around the problem, use the following procedure:</p>
+><p>これは、ユーザー ポート 10000 を Hadoop Hive サービスの 1 つも使用しているためです。問題を回避するには、次のステップを実行します。</p>
 
 ><ol>
-<li>Stop the two Hadoop Hive services using services.msc: Apache Hadoop hiveserver and Apache Hadoop Hiveserver2.</li>
-<li>Start the Blob storage emulator. </li>
-<li>Restart the two Hadoop Hive services. </li>
+<li>services.msc を使用する 2 つの Hadoop Hive サービス (Apache Hadoop hiveserver と Apache Hadoop Hiveserver2) を停止します。</li>
+<li>BLOB ストレージ エミュレーターを開始します。</li>
+<li>2 つの Hadoop Hive サービスを再起動します。</li>
 </ol>
 
 
 
-The syntax for access the storage emulator is: 
+ストレージ エミュレーターにアクセスする構文は次のとおりです。
 
 	wasb://<ContainerName>@storageemulator
 
-For example:
+次に例を示します。
 
 	hadoop fs -ls wasb://myContainer@storageemulator
 
-> [WACOM.NOTE] If you get the following error message:
+> [WACOM.NOTE] 次のようなエラー メッセージが表示されることがあります。
 
 ><pre><code>ls: No FileSystem for scheme: wasb</code></pre>
 
->It is because you are still using the Developer Preview version. Please follow the instructions found in the Install the HDInsight Emulator section of this article to uninstall the developer preview version, and then reinstall the application.
+>これは、まだ開発者プレビュー バージョンを使用しているためです。この記事の「HDInsight Emulator のインストール」セクションで説明されている手順に従って、開発者プレビュー バージョンをアンインストールし、アプリケーションを再インストールしてください。
 
-### Connect to Azure Blob storage
-For the instructions of creating a storage account, see [How To Create a Storage Account][azure-create-storage-account].
+### Azure BLOB ストレージへの接続
+ストレージ アカウントの作成方法については、「[ストレージ アカウントの作成方法][azure-create-storage-account]」を参照してください。
 
-**To create a container**
+**コンテナーを作成するには**
 
-1. Sign in to the [Management Portal][azure-management-portal].
-2. Click **STORAGE** on the left. You shall see a list of storage accounts under your subscription.
-3. Click the storage account where you want to create the container from the list.
-4. Click **CONTAINERS** from the top of the page.
-5. Click **ADD** on the bottom of the page.
-6. Enter **NAME** and select **ACCESS**. You can use any of the three access level.  The default is **Private**.
-7. Click **OK** to save the changes. You shall see the new container listed on the portal.
+1. [管理ポータル][azure-management-portal]にサインインします。
+2. 左側の **[ストレージ]** をクリックします。サブスクリプションの下にストレージ アカウントの一覧が表示されます。
+3. コンテナーを作成するストレージ アカウントを一覧からクリックします。
+4. ページの上部にある **[コンテナー]** をクリックします。
+5. ページの下部にある **[追加]** をクリックします。
+6. **[名前]** に値を入力して、**[アクセス]** をクリックします。3 つのアクセス レベルのどれでも使用できます。既定値は **[プライベート]** です。
+7. **[OK]** をクリックして変更を保存します。ポータルの一覧に新しいコンテナーが表示されます。
 
-Before you can access an Azure Storage account, you must add the account name and the account key to the configuration file.
+Azure のストレージ アカウントにアクセスする前に、構成ファイルにアカウント名とアカウント キーを追加する必要があります。
 
-**To configure the connection to an Azure Storage account**
+**Azure のストレージ アカウントへの接続を構成するには**
 
-1. Open **C:\Hadoop\hadoop-1.1.0-SNAPSHOT\conf\core-site.xml** in Notepad.
-2. Add the following &lt;property> tag next to the other &lt;property> tags:
+1. メモ帳で **C:\Hadoop\hadoop-1.1.0-SNAPSHOT\conf\core-site.xml** を開きます。
+2. 次の &lt;property> タグを他の &lt;property> タグの横に追加します。
 
 		<property>
 		    <name>fs.azure.account.key.<StorageAccountName>.blob.core.windows.net</name>
 		    <value><StorageAccountKey></value>
 		</property>
 
-	You must substitute &lt;StorageAccountName> and &lt;StorageAccountKey> with the values that match your storage account information.
+	&lt;StorageAccountName> と &lt;StorageAccountKey> は、ストレージ アカウント情報に一致する値に置き換える必要があります。
 
-3. Save the change.  You don't need to restart the Hadoop services.
+3. 変更を保存します。Hadoop サービスを再起動する必要はありません。
 
-Use the following syntax to access the storage account:
+ストレージ アカウントにアクセスするには次の構文を使用します。
 
 	wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/
 
-For example:
+次に例を示します。
 
 	hadoop fs -ls wasb://myContainer@myStorage.blob.core.windows.net/
 
 
-### Use an Azure Blob storage container as the default file system
+### 既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用
 
-It is also possible to use an Azure Blob storage container as the default file system, as is the case in Azure HDInsight.  
+既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用することもできます。Azure の HDInsight の場合がそうです。
 
 
 
-**To configure the default file system using an Azure Blob storage container**
+**Azure BLOB ストレージ コンテナーを使用して既定のファイル システムを構成するには**
 
-1. Open **C:\Hadoop\hadoop-1.1.0-SNAPSHOT\conf\core-site.xml** in Notepad.
-2. Locate the following &lt;property> tag:
+1. メモ帳で **C:\Hadoop\hadoop-1.1.0-SNAPSHOT\conf\core-site.xml** を開きます。
+2. 次の &lt;property> タグを見つけます。
 
 		<property>
 		  <name>fs.default.name</name>
 		  <!-- cluster variant -->
 		  <value>hdfs://localhost:8020</value>
-		  <description>The name of the default file system.  Either the	literal string "local" or a host:port for NDFS.</description>
+		  <description>既定のファイル システムの名前です。リテラル文字 "local" 	または NDFS の host:port のいずれかです。</description>
 		  <final>true</final>
 		</property>
 	
-3. Replace it with the following two &lt;property> tags:
+3. 次の 2 つの &lt;property> タグに置き換えます。
 
 		<property>
 		  <name>fs.default.name</name>
 		  <!-- cluster variant -->
 		  <!--<value>hdfs://localhost:8020</value>-->
 		  <value>wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net</value>
-		  <description>The name of the default file system.  Either the	literal string "local" or a host:port for NDFS.</description>
+		  <description>既定のファイル システムの名前です。リテラル文字 "local" 	または NDFS の host:port のいずれかです。</description>
 		  <final>true</final>
 		</property>
 		
 		<property>
 		  <name>dfs.namenode.rpc-address</name>
 		  <value>hdfs://localhost:8020</value>
-		  <description>A base for other temporary directories.</description>
+		  <description>その他の一時的なディレクトリのベースです。</description>
 		</property>
 
-	You must substitute &lt;StorageAccountName> and &lt;StorageAccountKey> with the values that match your storage account information.
+	&lt;StorageAccountName> と &lt;StorageAccountKey> は、ストレージ アカウント情報に一致する値に置き換える必要があります。
 
-4. Save the changes.
-5. Open the Hadoop command line on your desktop in elevated mode (Run as administrator)
-6. Run the following commands to restart the Hadoop services:
+4. 変更を保存します。
+5. デスクトップから Hadoop コマンド ラインを昇格モードで開きます ([管理者として実行])。
+6. 次のコマンドを実行して、Hadoop サービスを再起動します。
 
 		C:\Hadoop\stop-onebox.cmd
 		C:\Hadoop\start-onebox.cmd
 
-7. Run the following command to test the connection to the default file system:
+7. 次のコマンドを実行して、既定のファイル システムへの接続をテストします。
 
 		hadoop fs -ls /
 
-	The following commands list the contents in the same folder:
+	次のコマンドは同じフォルダーの内容を一覧表示します。
 	
 		hadoop fs -ls wasb:///
 		hadoop fs -ls wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/
 		hadoop fs -ls wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/
 	
-	To access HDFS, use the following command:
+	HDFS にアクセスするには、次のコマンドを使用します。
 	
 		hadoop fs -ls hdfs://localhost:8020/
 	
 
-##<a name="powershell"></a> Run HDInsight PowerShell
-Some of the HDInsight PowerShell cmdlets are supported on HDInsight Emulator.  These cmdlets include:
+##<a name="powershell"></a> HDInsight PowerShell の実行
+HDInsight PowerShell コマンドレットの一部は HDInsight Emulator でサポートされています。サポートされているコマンドレットは次のとおりです。
 
-- HDInsight job definition cmdlets
+- HDInsight ジョブ定義コマンドレット
 	
 	- New-AzureHDInsightSqoopJobDefinition
 	- New-AzureHDInsightStreamingMapReduceJobDefinition
@@ -577,47 +577,48 @@ Some of the HDInsight PowerShell cmdlets are supported on HDInsight Emulator.  T
 - Get-AzureHDInsightJob
 - Wait-AzureHDInsightJob
 
-Here is a sample for submitting a Hadoop job:
+Hadoop ジョブを送信する例を次に示します。
 
 	$creds = Get-Credential (hadoop as username, password can be anything)
 	$hdinsightJob = <JobDefinition>
 	Start-AzureHDInsightJob -Cluster http://localhost:50111 -Credential $creds -JobDefinition $hdinsightJob
 
-You will get a prompt when calling Get-Credential. You must use **hadoop** as the username. The password can be any string. The cluster name is always **http://localhost:50111**.
+Get-Credential を呼び出すと入力画面が表示されます。ユーザー名として **hadoop** を使用する必要があります。パスワードは任意の文字列でかまいません。クラスター名は、常に **http://localhost:50111** です。
 
-For more information for submitting Hadoop jobs, see [Submit Hadoop jobs programmatically][hdinsight-submit-jobs]. For more information about the HDInsight PowerShell cmdlets, see [HDInsight cmdlet reference][hdinsight-powershell-reference].
-
-
-
-##<a name="nextsteps"></a> Next steps
-In this tutorial, you have an HDInsight Emulator installed, and have ran some Hadoop jobs. To learn more, see the following articles:
-
-- [Get started using Azure HDInsight][hdinsight-get-started]
-- [Develop Java MapReduce programs for HDInsight][hdinsight-develop-mapreduce]
-- [Develop C# Hadoop streaming MapReduce programs for HDInsight][hdinsight-develop-deploy-streaming]
-- [HDInsight emulator release notes](https://gettingstarted.hadooponazure.com/releaseNotes.html)
-- [MSDN forum for discussing HDInsight](http://social.msdn.microsoft.com/Forums/en-US/hdinsight)
+Hadoop ジョブの送信方法の詳細については、「[プログラムによる Hadoop ジョブの送信][hdinsight-submit-jobs]」を参照してください。HDInsight PowerShell コマンドレットの詳細については、「[HDInsight cmdlet reference (HDInsight コマンドレット リファレンス)][hdinsight-powershell-reference]」を参照してください。
 
 
 
-[azure-sdk]: http://www.windowsazure.com/en-us/downloads/
-[azure-create-storage-account]: /en-us/manage/services/storage/how-to-create-a-storage-account/
+##<a name="nextsteps"></a> 次のステップ
+このチュートリアルでは、HDInsight Emulator をインストールして、Hadoop ジョブをいくつか実行しました。詳細については、次の記事を参照してください。
+
+- [ Azure の HDInsight の概要][hdinsight-get-started]
+- [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][hdinsight-develop-mapreduce]
+- [Develop C# Hadoop streaming MapReduce programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発)][hdinsight-develop-deploy-streaming]
+- [HDInsight Emulator リリース ノート](https://gettingstarted.hadooponazure.com/releaseNotes.html)
+- [HDInsight について議論する MSDN フォーラム](http://social.msdn.microsoft.com/Forums/ja-jp/hdinsight)
+
+
+
+[azure-sdk]: http://www.windowsazure.com/ja-jp/downloads/
+[azure-create-storage-account]: /ja-jp/manage/services/storage/how-to-create-a-storage-account/
 [azure-management-portal]: https://manage.windowsazure.com/
 
-[hdinsight-develop-mapreduce]: /en-us/documentation/articles/hdinsight-develop-deploy-java-mapreduce/
+[hdinsight-develop-mapreduce]: /ja-jp/documentation/articles/hdinsight-develop-deploy-java-mapreduce/
 
 [hdinsight-emulator-install]: http://www.microsoft.com/web/gallery/install.aspx?appid=HDINSIGHT
 [hdinsight-emulator-release-notes]: http://gettingstarted.hadooponazure.com/releaseNotes.html
 
-[hdinsight-blob-store]: /en-us/manage/services/hdinsight/howto-blob-store/
-[hdinsight-configure-powershell]: /en-us/manage/services/hdinsight/install-and-configure-powershell-for-hdinsight/ 
-[hdinsight-submit-jobs]: /en-us/manage/services/hdinsight/submit-hadoop-jobs-programmatically/
-[hdinsight-powershell-reference]: http://msdn.microsoft.com/en-us/library/windowsazure/dn479228.aspx
-[hdinsight-get-started]: /en-us/manage/services/hdinsight/get-started-hdinsight/
-[hdinsight-develop-deploy-streaming]: /en-us/manage/services/hdinsight/develop-deploy-hadoop-streaming-jobs/
+[hdinsight-blob-store]: /ja-jp/manage/services/hdinsight/howto-blob-store/
+[hdinsight-configure-powershell]: /ja-jp/manage/services/hdinsight/install-and-configure-powershell-for-hdinsight/ 
+[hdinsight-submit-jobs]: /ja-jp/manage/services/hdinsight/submit-hadoop-jobs-programmatically/
+[hdinsight-powershell-reference]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn479228.aspx
+[hdinsight-get-started]: /ja-jp/manage/services/hdinsight/get-started-hdinsight/
+[hdinsight-develop-deploy-streaming]: /ja-jp/manage/services/hdinsight/develop-deploy-hadoop-streaming-jobs/
 
-[Powershell-install-configure]: /en-us/documentation/articles/install-configure-powershell/
+[Powershell-install-configure]: /ja-jp/documentation/articles/install-configure-powershell/
 
 [hadoop-commands-manual]: http://hadoop.apache.org/docs/r1.1.1/commands_manual.html
 
 [image-hdi-emulator-services]: ./media/hdinsight-get-started-emulator/HDI.Emulator.Services.png 
+

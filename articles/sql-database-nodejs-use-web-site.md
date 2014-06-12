@@ -1,165 +1,165 @@
-<properties linkid="develop-nodejs-tutorials-web-site-with-sql-database" urlDisplayName="Web site with SQL Database" pageTitle="Node.js web site with SQL Database - Azure tutorial" metaKeywords="" description="Learn how to create a Node.js website that accesses a SQL Database and is deployed to Azure" metaCanonical="" services="web-sites,sql-database" documentationCenter="Node.js" title="Node.js Web Application using the Azure SQL Database" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-nodejs-tutorials-web-site-with-sql-database" urlDisplayName="SQL データベースを使用する Web サイト" pageTitle="SQL データベースを使用する Node.js Web サイト - Azure チュートリアル" metaKeywords="" description="SQL データベースにアクセスする Node.js Web サイトを作成し、Azure にデプロイする方法を説明します。" metaCanonical="" services="web-sites,sql-database" documentationCenter="Node.js" title="Azure SQL データベースを使用する Node.js Web アプリケーション" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
 
-# Node.js Web Application using the Azure SQL Database
+# Azure SQL データベースを使用する Node.js Web アプリケーション
 
-This tutorial shows you how to use SQL Database provided by Azure Data Management to store and access data from a [node] application hosted on Azure. This tutorial assumes that you have some prior experience using node and [Git].
+このチュートリアルでは、Azure データ管理で提供される SQL データベースを使用して、Azure でホストされる[ノード] アプリケーションのデータを格納する方法やデータにアクセスする方法を示します。このチュートリアルは、ノードおよび [Git] を使用した経験があることを前提としています。
 
-You will learn:
+学習内容: 
 
-* How to use the Azure Management Portal to create an Azure Web Site and SQL Database
+* Azure の管理ポータルを使用して Azure の Web サイトおよび SQL データベースを作成する方法
 
-* How to use npm (node package manager) to install the node modules
+* npm (ノード パッケージ マネージャー) を使用してノード モジュールをインストールする方法
 
-* How to work with a SQL Database using the node-sqlserver module
+* node-sqlserver モジュールを使用して SQL データベースを操作する方法
 
-* How to use app settings to specify run-time values for an application
+* アプリ設定を使用してアプリケーションの実行時の値を指定する方法
 
-By following this tutorial, you will build a simple web-based task-management application that allows creating, retrieving and completing tasks. The tasks are stored in SQL Database.
+このチュートリアルでは、タスクを作成、取得、完了する機能を備えた、単純な Web ベースのタスク管理アプリケーションを作成します。タスクは SQL データベースに格納されます。
  
-The project files for this tutorial will be stored in a directory named **tasklist** and the completed application will look similar to the following:
+このチュートリアルのプロジェクト ファイルは **tasklist** という名前のディレクトリに保存され、作成されるアプリケーションは次のようになります。
 
-![A web page displaying an empty tasklist][node-sql-finished]
+![空のタスク一覧が表示されている Web ページ][node-sql-finished]
 
 <div class="dev-callout">
-<b>Note</b>
-<p>The Microsoft Driver for Node.JS for SQL Server used in this tutorial is currently available as a preview release, and relies on run-time components that are only available on the Microsoft Windows and Azure operating systems.</p>
+<b>メモ</b>
+<p>このチュートリアルで使用する Microsoft Driver for Node.JS for SQL Server は現在、プレビュー リリースとして利用することができ、Microsoft Windows および Azure オペレーティング システムでのみ利用可能なランタイム コンポーネントに依存しています。</p>
 </div>
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>This tutorial makes reference to the <strong>tasklist</strong> folder. The full path to this folder is omitted, as path semantics differ between operating systems. You should create this folder in a location that is easy for you to access on your local file system, such as <strong>~/node/tasklist</strong> or <strong>c:\node\tasklist</strong></p>
+<strong>メモ</strong>
+<p>このチュートリアルでは、<strong>tasklist</strong> フォルダーを参照します。パスのセマンティクスはオペレーティング システムによって異なるので、このフォルダーへの完全なパスは省略しています。このフォルダーは、ローカル ファイル システムのアクセスしやすい場所 (<strong>~/node/tasklist</strong> や <strong>c:\node\tasklist</strong></p> など) に作成してください。
 </div>
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>Many of the steps below mention using the command-line. For these steps, use the command-line for your operating system, such as <strong>cmd.exe</strong> (Windows) or <strong>Bash</strong> (Unix Shell). On OS X systems you can access the command-line through the Terminal application.</p>
+<strong>メモ</strong>
+<p>以下に示す手順の多くでは、コマンド ラインを使用します。これらの手順では、<strong>cmd.exe</strong> (Windows) や <strong>Bash</strong> (Unix Shell) など、お使いのオペレーティング システムのコマンド ラインを使用してください。OS X システムでは、ターミナル アプリケーションを使用してコマンド ラインにアクセスできます。</p>
 </div>
 
-##Prerequisites
+##前提条件
 
-Before following the instructions in this article, you should ensure that you have the following installed:
+この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
-* [node] version 0.6.14 or higher
+* [node] Version 0.6.14 以上
 
 * [Git]
 
-* Microsoft SQL Server Native Client libraries - available as part of the [Microsoft SQL Server 2012 Feature Pack]
+* Microsoft SQL Server Native Client ライブラリ: [Microsoft SQL Server 2012 Feature Pack] の一部として入手できます。
 
-* A text editor
+* テキスト エディター
 
-* A web browser
+* Web ブラウザー
 
 <!--div chunk="../../Shared/Chunks/create-account-and-websites-note.md" /-->
 
-##Create a web site with database
+##データベースを使用する Web サイトの作成
 
-Follow these steps to create an Azure Web Site and a SQL Database:
+Azure の Web サイトと SQL データベースを作成するには、次の手順に従います。
 
-1. Login to the [Azure Management Portal][management-portal].
-2. Click the **+ New** icon on the bottom left of the portal.
+1. [Azure の管理ポータル][management-portal]にログインします。
+2. ポータルの左下にある **[新規]** アイコンをクリックします。
 
-	![Create New Azure Website][new-website]
+	![新しい Azure の Web サイトの作成][new-website]
 
-3. Click **WEB SITE**, then **CUSTOM CREATE**.
+3. **[Web サイト]** をクリックし、**[カスタム作成]** をクリックします。
 
-	![Custom Create a new Website][custom-create]
+	![新しい Web サイトのカスタム作成][custom-create]
 
-	Enter a value for **URL**, select **Create a New SQL Database** from the **DATABASE** dropdown,  and select the data center for your web site in the **REGION** dropdown. Click the arrow at the bottom of the dialog.
+	**[URL]** ボックスに値を入力し、**[データベース]** ボックスの一覧の **[新しい SQL データベースを作成する]** を選択して、**[リージョン]** ボックスの一覧で Web サイトのデータ センターを選択します。ダイアログの下部にある矢印をクリックします。
 
-	![Fill in Website details][website-details-sqlazure]
+	![Web サイトの詳細の入力][website-details-sqlazure]
 
-4. Enter a value for the **NAME** of your database, select the **EDITION** [(WEB or BUSINESS)][sql-database-editions], select the **MAX SIZE** for your database, choose the **COLLATION**, and select **NEW SQL Database server**. Click the arrow at the bottom of the dialog.
+4. **[名前]** ボックスにデータベースの名前を入力し、**[エディション]** [(WEB または BUSINESS)][sql-database-editions] を選択して、データベースの **[最大サイズ]** を選択します。**[照合順序]** を選択し、**[新しい SQL データベース サーバー]** を選択します。ダイアログの下部にある矢印をクリックします。
 
-	![Fill in SQL Database settings][database-settings]
+	![SQL データベースの設定の指定][database-settings]
 
-5. Enter an administrator name and password (and confirm the password), choose the region in which your new SQL Database server will be created, and check the **Allow Azure Services to access the server** box.
+5. 管理者の名前とパスワードを入力 (およびパスワードを確認) し、新しい SQL データベース サーバーを作成するリージョンを選択して、**[Azure サービスにサーバーへのアクセスを許可します]** チェック ボックスをオンにします。
 
-	![Create new SQL Database server][create-server]
+	![新しい SQL データベース サーバーの作成][create-server]
 
-	When the web site has been created you will see the text **Creation of Web Site '[SITENAME]' completed successfully**. Now, you can enable Git publishing.
+	Web サイトが作成されると、"**Web サイト '[SITENAME]' の作成が正常に完了しました**" というテキストが表示されます。これで、Git 発行を有効にする準備ができました。
 
-6. Click the name of the web site displayed in the list of web sites to open the web site's Quick Start dashboard.
+6. Web サイトの一覧に表示されている Web サイトの名前をクリックして、Web サイトのクイック スタート ダッシュボードを開きます。
 
-	![Open website dashboard][go-to-dashboard]
-
-
-7. At the bottom of the Quick Start page, click **Set up Git publishing**. 
-
-	![Set up Git publishing][setup-git-publishing]
-
-8. To enable Git publishing, you must provide a user name and password. Make a note of the user name and password you create. (If you have set up a Git repository before, this step will be skipped.)
-
-	![Create publishing credentials][portal-git-username-password]
-
-	It will take a few seconds to set up your repository.
+	![Web サイトのダッシュボードを開く][go-to-dashboard]
 
 
-9. When your repository is ready, you will see instructions for pushing your application files to the repository. Make note of these instructions - they will be needed later.
+7. クイック スタート ページの下部で、**[Git 発行の設定]** をクリックします。
 
-	![Git instructions][git-instructions]
+	![Git 発行の設定][setup-git-publishing]
 
-##Get SQL Database connection information
+8. Git 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。作成するユーザー名とパスワードはメモしておいてください (Git リポジトリを設定したことがある場合は、この手順をスキップできます)。
 
-To connect to the SQL Database instance that is running in Azure Web Sites, your will need the connection information. To get SQL Database connection information, follow these steps:
+	![発行資格情報の作成][portal-git-username-password]
 
-1. From the Azure Management Portal, click **LINKED RESOURCES**, then click the database name.
+	リポジトリの設定にかかる時間はわずかです。
 
-	![Linked Resources][linked-resources]
 
-2. Click **View connection strings**.
+9. リポジトリの準備ができると、アプリケーション ファイルをリポジトリにプッシュするための手順が表示されます。これらの手順は後で必要になるため、メモしておいてください。
 
-	![Connection string][connection-string]
+	![Git の手順][git-instructions]
+
+##SQL データベース接続情報を取得する
+
+Azure の Web サイトで実行されている SQL データベース インスタンスに接続するには、接続情報が必要になります。SQL データベースの接続情報を取得するには、次の手順に従います。
+
+1. Azure の管理ポータルで、**[リンク済みリソース]** をクリックし、目的のデータベース名をクリックします。
+
+	![リンク済みリソース][linked-resources]
+
+2. **[接続文字列の表示]** をクリックします。
+
+	![接続文字列][connection-string]
 	
-3. From the **ODBC** section of the resulting dialog, make note of the connection string as this will be used later.
+3. 表示されたダイアログの **[ODBC]** セクションから、後で必要になる接続文字列をメモします。
 
-##Design the task table
+##タスク テーブルの設計
 
-To create the database table used to store items for the tasklist application, perform the following steps:
+tasklist アプリケーションのアイテムを格納するために使用するデータベース テーブルを作成するには、次の手順を実行します。
 
-1. From the Azure Management Portal, select your SQL Database and then click **MANAGE** from the bottom of the page. If you receive a message stating that the current IP is not part of the firewall rules, select **OK** to add the IP address.
+1. Azure の管理ポータルで、お使いの SQL データベースを選択し、ページの下部の **[管理]** をクリックします。現在の IP がファイアウォール ルールに含まれていないことを示すメッセージが表示された場合は、**[OK]** をクリックして IP アドレスを追加します。
 
-	![manage button][sql-azure-manage]
+	![[管理] ボタン][sql-azure-manage]
 
-2. Login using the login name and password you selected when creating the database server earlier.
+2. 先ほどデータベース サーバーを作成するときに選択したログイン名とパスワードを使用してログインします。
 
-	![database manage login][sql-azure-login]
+	![データベース管理のログイン][sql-azure-login]
 
-3. From the bottom left of the page, select **Design** and then select **New Table**.
+3. ページの左下にある **[設計]** を選択し、**[新しいテーブル]** を選択します。
 
-	![New table][sql-new-table]
+	![新しいテーブル][sql-new-table]
 
-4. Enter 'tasks' as the **Table Name** and check **Is Identity?** for the **ID** column.
+4. **[テーブル名]** として「tasks」と入力し、**[ID]** 列の **[ID?]** チェック ボックスをオンにします。
 
-	![table name set to tasks and is identity checked][table-name-identity]
+	![テーブル名を tasks に設定し、ID をオンに設定][table-name-identity]
 
-5. Change **Column1** to **name** and **Column2** to **category**. Add two new columns by clicking the **Add column** button. The first new column should be named **created** and have a type of **date**. The second new column should be named **completed** and have a type of **bit**. Both new columns should be marked as **Is Required?**.
+5. **Column1** を **name** に変更し、**Column2** を **category** に変更します。**[列の追加]** をクリックして 2 つの新しい列を追加します。最初の新しい列は **created** という名前で、型は **date** です。2 番目の新しい列は **completed** という名前で、型は **bit** です。どちらの列も **[必須?]** をオンにする必要があります。
 
-	![completed table design][completed-table]
+	![完成したテーブルの設計][completed-table]
 
-6. Click the **Save** button to save your changes to the table. You can now close the SQL Database management page.
+6. **[保存]** をクリックしてテーブルに対する変更内容を保存します。これで SQL データベース管理ページを閉じてかまいません。
 
-##Install modules and generate scaffolding
+##モジュールのインストールとスキャフォールディングの生成
 
-In this section you will create a new Node application and use npm to add module packages. For the task-list application you will use the [express] and [node-sqlserver] modules. The Express module provides a Model View Controller framework for node, while the node-sqlserver module provides connectivity to Azure SQL Database.
+ここでは、新しい Node アプリケーションを作成し、npm を使用してモジュール パッケージを追加します。タスク一覧アプリケーションの場合は、[express] モジュールと [node-sqlserver] モジュールを使用します。Express モジュールは node の Model View Controller フレームワークを提供し、node-sqlserver モジュールは Azure SQL データベースへの接続を提供します。
 
-###Install express and generate scaffolding
+###express のインストールとスキャフォールディングの生成
 
-1. From the command-line, change directories to the **tasklist** directory. If the **tasklist** directory does not exist, create it.
+1. コマンド ラインで、**tasklist** ディレクトリに移動します。**tasklist** ディレクトリがない場合は作成します。
 
-2. Enter the following command to install express.
+2. 次のコマンドを入力して、express をインストールします。
 
 		npm install express -g
 
     <div class="dev-callout">
-	<strong>Note</strong>
-	<p>When using the '-g' parameter on some operating systems, you may receive an error of <strong>Error: EPERM, chmod '/usr/local/bin/express'</strong> and a request to try running the account as an administrator. If this occurs, use the <strong>sudo</strong> command to run npm at a higher privilege level.</p>
+	<strong>注</strong>
+	<p>一部のオペレーティング システムで "-g" パラメーターを使用する場合、"<strong>Error: EPERM, chmod '/usr/local/bin/express'</strong>" というエラーが表示され、管理者としてアカウントを実行することを要求されることがあります。このような場合は、<strong>sudo</strong> コマンドを使用して、より高い権限レベルで npm を実行します。</p>
 	</div>
 
-    The output of this command should appear similar to the following:
+    このコマンドの出力は次のように表示されます。
 
 		express@2.5.9 /usr/local/lib/node_modules/express
 		├── mime@1.2.4
@@ -168,15 +168,15 @@ In this section you will create a new Node application and use npm to add module
 		└── connect@1.8.7
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>The '-g' parameter used when installing the express module installs it globally. This is done so that we can access the <strong>express</strong> command to generate web site scaffolding without having to type in additional path information.</p>
+	<strong>注</strong>
+	<p>express モジュールのインストール時に "-g" パラメーターを使用すると、モジュールはグローバルにインストールされます。これは、追加のパス情報を入力することなく <strong>express</strong> コマンドにアクセスして、Web サイトのスキャフォールディングを生成できるようにするためです。</p>
 	</div>
 
-4. To create the scaffolding which will be used for this application, use the **express** command:
+4. このアプリケーションで使用するスキャフォールディングを作成するには、**express** コマンドを使用します。
 
         express
 
-	The output of this command should appear similar to the following:
+	このコマンドの出力は次のように表示されます。
 
 		create : .
    		create : ./package.json
@@ -195,15 +195,15 @@ In this section you will create a new Node application and use npm to add module
    		dont forget to install dependencies:
    		$ cd . && npm install
 
-	After this command completes, you should have several new directories and files in the **tasklist** directory.
+	このコマンドが完了すると、**tasklist** ディレクトリ内に複数の新しいディレクトリやファイルが作成されています。
 
-###Install additional modules
+###追加モジュールのインストール
 
-1. From the command-line, change directories to the **tasklist** folder and enter the following to install the modules described in the **package.json** file:
+1. コマンド ラインで **tasklist** フォルダーに移動し、次のコマンドを入力して **package.json** ファイルに記述されたモジュールをインストールします。
 
         npm install
 
-    The output of this command should appear similar to the following:
+    このコマンドの出力は次のように表示されます。
 
 		express@2.5.8 ./node_modules/express
 		├── mime@1.2.4
@@ -214,29 +214,29 @@ In this section you will create a new Node application and use npm to add module
 		├── commander@0.5.2
 		└── mkdirp@0.3.0
 
-	This installs all of the default modules that Express needs.
+	これによって、Express で必要な既定のモジュールがすべてインストールされます。
 
-2. Next, use the following command to add the nconf module. This module will be used by the application to read the database connection string from a configuration file.
+2. 次に、次のコマンドを使用して、nconf モジュールを追加します。このモジュールは、構成ファイルからデータベース接続文字列を読み取るアプリケーションによって使用されます。
 
 	npm install nconf -save
 
-2. Next, download the binary version of the Microsoft Driver for Node.JS for SQL Server from the [download center].
+2. 次に、Microsoft Driver for Node.JS for SQL Server のバイナリ バージョンを[ダウンロード センター]からダウンロードします。
 
-3. Extract the archive to the **tasklist\\node\_modules** directory.
+3. アーカイブを **tasklist\\node\_modules** ディレクトリに展開します。
 
-4. Run the **msnodesql-install.cmd** file in the **tasklist\\node\_modules** directory. This will create a **msnodesql** subdirectory under **node\_modules** and move the driver files into this new directory structure.
+4. **tasklist\\node\_modules** ディレクトリ内の **msnodesql-install.cmd** ファイルを、テキスト エディターで開きます。これにより、**node\_modules** の下に **msnodesql** サブディレクトリが作成され、ドライバー ファイルがこの新しいディレクトリ構造に移動されます。
 
-5. Delete the **msnodesql-install.cmd** file, as it is no longer needed.
+5. **msnodesql-install.cmd** ファイルは不要になったため削除します。
 
-##Use SQL Database in a node application
+##ノード アプリケーションでの SQL データベースの使用
 
-In this section you will extend the basic application created by the **express** command modifying the existing **app.js** and create a new **index.js** files to use the database created earlier.
+ここでは、**express** コマンドで作成された基本的なアプリケーションを、既存の **app.js** を変更することによって拡張し、先ほど作成したデータベースを使用するための新しい **index.js** ファイルを作成します。
 
-###Modify the controller
+###コントローラーの変更
 
-1. In the **tasklist/routes** directory, open the **index.js** file in a text editor.
+1. **tasklist/routes** ディレクトリ内の **index.js** ファイルを、テキスト エディターで開きます。
 
-2. Replace the existing code in the **index.js** file with the following code. This loads the msnodesql, and nconf modules, then uses nconf to load the connection string from either an environment variable named **SQL\_CONN** or an **SQL\_CONN** value in the **config.json** file.
+2. **index.js** ファイルで、既存のコードを次のコードに置き換えます。これによって、msnodesql モジュールと nconf モジュールが読み込まれ、nconf を使用して **SQL\_CONN** という名前の環境変数または **config.json** ファイル内の **SQL\_CONN** 値から接続文字列が読み込まれます。
 
 		var sql = require('msnodesql')
 		    , nconf = require('nconf');
@@ -245,7 +245,7 @@ In this section you will extend the basic application created by the **express**
 	         .file({ file: 'config.json' });
 		var conn = nconf.get("SQL_CONN");
 
-2. Continue adding to the **index.js** file by adding the **index** and **updateItem** methods. The **index** method returns all uncompleted tasks from the database, while **updateItem** will mark selected tasks as completed.
+2. **index.js** ファイルへの内容の追加を続行し、**index** および **updateItem** メソッドを追加します。**index** メソッドは、データベースから完了していないタスクをすべて返し、**updateItem** メソッドは、選択されたタスクを完了済みとしてマークします。
 
 		exports.index = function(req, res) {
 		    var select = "select * from tasks where completed = 0";
@@ -278,35 +278,35 @@ In this section you will extend the basic application created by the **express**
 		    }
 		}
 
-3. Save the **index.js** file.
+3. **index.js** ファイルを保存します。
 
-###Modify app.js
+###変更app.js
 
-1. In the **tasklist** directory, open the **app.js** file in a text editor. This file was created earlier by running the **express** command.
+1. **tasklist** ディレクトリ内の **app.js** ファイルを、テキスト エディターで開きます。このファイルは、先ほど **express** コマンドを実行することによって作成されたものです。
 
-2. In the app.js file, scroll down to where you see below code.
+2. app.js ファイル内で、次のコードが表示されるまで下へスクロールします。
 
 		app.configure('development', function(){
   		app.use(express.errorHandler());
 		});
 
-3. Now insert the following code.
+3. ここで、次のコードを挿入します。
 
 
         app.get('/', routes.index);
 		app.post('/', routes.updateItem);
 
 
- This will add a new route to the **updateItem** method you added previously in the **index.js** file. 
+ これによって、先ほど **index.js** ファイルに追加した **updateItem** メソッドへの新しいルートが追加されます。
 
        		
-3. Save the **app.js** file.
+3. **app.js** ファイルを保存します。
 
-###Modify the index view
+###index ビューの変更
 
-1. Change directories to the **views** directory and open the **index.jade** file in a text editor.
+1. **views** ディレクトリに移動し、テキスト エディターで **index.jade** ファイルを開きます。
 
-2. Replace the contents of the **index.jade** file with the code below. This defines the view for displaying existing tasks, as well as a form for adding new tasks and marking existing ones as completed.
+2. **index.jade** ファイルの内容を次のコードに置き換えます。これにより、既存のタスクを表示するビューと、新しいタスクの追加とタスクの完了済みのマーク付けを実行するためのフォームを定義します。
 
 		h1= title
 		br
@@ -338,15 +338,15 @@ In this section you will extend the basic application created by the **express**
 		  br
 		  button(type="submit", class="btn") Add Item
 
-3. Save and close **index.jade** file.
+3. **index.jade** ファイルを保存して閉じます。
 
-###Modify the global layout
+###グローバル レイアウトの変更
 
-The **layout.jade** file in the **views** directory is used as a global template for other **.jade** files. In this step you will modify it to use [Twitter Bootstrap](https://github.com/twbs/bootstrap), which is a toolkit that makes it easy to design a nice looking web site.
+**views** ディレクトリ内の **layout.jade** ファイルは、他の .**.jade** ファイルのグローバル テンプレートとして使用されます。この手順では、[Twitter Bootstrap](https://github.com/twbs/bootstrap) を使用するようにこのファイルを変更します。Twitter Bootstrap は、見栄えのよい Web サイトを簡単にデザインできるツールキットです。
 
-1. Download and extract the files for [Twitter Bootstrap](http://getbootstrap.com/). Copy the **bootstrap.min.css** file from the **bootstrap\\css** folder to the **public\\stylesheets** directory of your tasklist application.
+1. [Twitter Bootstrap](http://getbootstrap.com/) のファイルをダウンロードして展開します。**bootstrap\\css** フォルダーから **bootstrap.min.css** ファイルを tasklist アプリケーションの **public\\stylesheets** ディレクトリにコピーします。
 
-2. From the **views** folder, open the **layout.jade** in your text editor and replace the contents with the following:
+2. **views** フォルダーから、テキスト エディターで **layout.jade** を開き、内容を次の内容に置き換えます。
 
 		!!!html
 		html
@@ -362,57 +362,57 @@ The **layout.jade** file in the **views** directory is used as a global template
 		          a(class='brand', href='/') My Tasks
 		    .container!= body
 
-3. Save the **layout.jade** file.
+3. **layout.jade** ファイルを保存します。
 
-###Create configuration file
+###構成ファイルの作成
 
-The **config.json** file contains the connection string used to connect to the SQL Database, and is read by the **index.js** file at run-time. To create this file, perform the following steps:
+**config.json** ファイルには、SQL データベースに接続するために使用される接続文字列が含まれており、実行時に **index.js** ファイルによって読み取られます。このファイルを作成するには、次の手順を実行します。
 
-1. In the **tasklist** directory, create a new file named **config.json** and open it in a text editor.
+1. **tasklist** ディレクトリに **config.json** という名前の新しいファイルを作成し、テキスト エディターで開きます。
 
-2. The contents of the **config.json** file should appear similiar to the following:
+2. **config.json** ファイルの内容は、次のように設定する必要があります。
 
 		{
 		  "SQL_CONN" : "connection_string"
 		}
 
-	Replace the **connection_string** with the ODBC connection string value returned earlier.
+	**connection_string** を、先ほど返された ODBC 接続文字列の値に置き換えます。
 
-3. Save the file.
+3. ファイルを保存します。
 
-##Run your application locally
+##ローカルでのアプリケーションの実行
 
-To test the application on your local machine, perform the following steps:
+ローカル コンピューターでアプリケーションをテストするには、次の手順を実行します。
 
-1. From the command-line, change directories to the **tasklist** directory.
+1. コマンド ラインで、**tasklist** ディレクトリに移動します。
 
-2. Use the following command to launch the application locally:
+2. 次のコマンドを使用して、ローカルでアプリケーションを起動します。
 
         node app.js
 
-3. Open a web browser and navigate to http://127.0.0.1:3000. This should display a web page similar to the following:
+3. Web ブラウザーを開いて、http://127.0.0.1:3000 にアクセスします。次のような Web ページが表示されます。
 
-    ![A webpage displaying an empty tasklist][node-sql-empty]
+    ![空のタスク一覧が表示されている Web ページ][node-sql-empty]
 
-4. Use the provided fields for **Item Name** and **Item Category** to enter information, and then click **Add item**.
+4. 表示された **[Item Name]** と **[Item Category]** のフィールドを使用して情報を入力し、**[Add item]** をクリックします。
 
-5. The page should update to display the item in the ToDo List.
+5. ページが更新され、ToDo List にアイテムが表示されるようになります。
 
-    ![An image of the new item in the list of tasks][node-sql-list-items]
+    ![タスク一覧の新しいアイテムの画像][node-sql-list-items]
 
-6. To complete a task, simply check the checkbox in the Complete column, and then click **Update tasks**.
+6. タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、**[Update tasks]** をクリックします。
 
-7. To stop the node process, go to the command-line and press the **CTRL** and **C** keys.
+7. ノード プロセスを停止するには、コマンド ラインで、**Ctrl** キーを押しながら **C** キーを押します。
 
-##Deploy your application to Azure
+##Azure へのアプリケーションの展開
 
-In this section, you will use the deployment steps you received after creating the web site to publish your application to Azure.
+ここでは、Web サイトを作成した後のデプロイの手順を使用して、アプリケーションを Azure に発行します。
 
-###Publish the application
+###アプリケーションの発行
 
-1. At the command-line, change directories to the **tasklist** directory if you are not already there.
+1. コマンド ラインで、**tasklist** ディレクトリに移動します (現在のディレクトリがこのディレクトリではない場合)。
 
-2. Use the following commands to initialize a local git repository for your application, add the application files to it, and finally push the files to Azure
+2. 次のコマンドを使用して、アプリケーションのローカルの git リポジトリを初期化し、リポジトリにアプリケーション ファイルを追加し、最後にファイルを Azure にプッシュします。
 
 		git init
 		git add .
@@ -420,74 +420,74 @@ In this section, you will use the deployment steps you received after creating t
 		git remote add azure [URL for remote repository]
 		git push azure master
 	
-	At the end of the deployment, you should see a statement similar to the following:
+	デプロイの最後に、次のようなステートメントが表示されます。
 	
 		To https://username@tabletasklist.azurewebsites.net/TableTasklist.git
  		 * [new branch]      master -> master
 
-4. Once the push operation has completed, browse to **http://[site name].azurewebsites.net/** to view your application.
+4. プッシュ操作が完了したら、**http://[site name].azurewebsites.net/** に移動してアプリケーションを表示します。
 
-###Switch to an environment variable
+###環境変数への切り替え
 
-Earlier we implemented code that looks for a **SQL_CONN** environment variable for the connection string or loads the value from the **config.json** file. In the following steps you will create a key/value pair in your web site configuration that the application real access through an environment variable.
+前の手順で、**SQL_CONN** 環境変数の接続文字列を検索するか、**config.json** ファイルから接続文字列の値を読み込むコードを実装しました。次の手順では、実際のアプリケーションが環境変数を使ってアクセスする、Web サイト構成に含まれるキー/値のペアを作成します。
 
-1. From the Azure Management Portal, click **Web Sites** and then select your web site.
+1. Azure の管理ポータルで、**[Web サイト]** をクリックし、対象となる Web サイトを選択します。
 
-	![Open website dashboard][go-to-dashboard]
+	![Web サイトのダッシュボードを開く][go-to-dashboard]
 
-2. Click **CONFIGURE** and then find the **app settings** section of the page. 
+2. **[構成]** をクリックし、ページの **[アプリ設定]** セクションを探します。
 
-	![configure link][web-configure]
+	![構成リンク][web-configure]
 
-3. In the **app settings** section, enter **SQL_CONN** in the **KEY** field, and the ODBC connection string in the **VALUE** field. Finally, click the checkmark.
+3. **[アプリ設定]** で、**[キー]** フィールドに「**SQL_CONN**」と入力し、**[値]** フィールドに ODBC 接続文字列を入力します。最後に、チェック マークをクリックします。
 
-	![app settings][app-settings]
+	![アプリケーション設定][app-settings]
 
-4. Finally, click the **SAVE** icon at the bottom of the page to commit this change to the run-time environment.
+4. ページの下部にある **[保存]** アイコンをクリックし、この変更を実行時環境にコミットします。
 
-	![app settings save][app-settings-save]
+	![アプリケーション設定の保存][app-settings-save]
 
-5. From the command-line, change directories to the **tasklist** directory and enter the following command to remove the **config.json** file:
+5. コマンド ラインで、**tasklist** ディレクトリに移動し、次のコマンドを入力して **config.json** ファイルを削除します。
 
 		git rm config.json
 		git commit -m "Removing config file"
 
-6. Perform the following command to deploy the changes to Azure:
+6. 次のコマンドを実行して、変更内容を Azure にデプロイします。
 
 		git push azure master
 
-Once the changes have been deployed to Azure, your web application should continue to work as it is now reading the connection string from the **app settings** entry. To verify this, change the value for the **SQL_CONN** entry in **app settings** to an invalid value. Once you have saved this value, the web site should fail due to the invalid connection string.
+変更内容を Azure にデプロイした後も、Web アプリケーションは **[アプリ設定]** のエントリから接続文字列を読み取って動作し続けます。これを確認するために、**[アプリ設定]** の **SQL_CONN** のエントリを無効な値に変更します。この値を保存すると、無効な接続文字列のために Web サイトは動作しなくなります。
 
-##Next steps
+##次のステップ
 
-* [Node.js Web Application with MongoDB]
+* [MongoDB を使用する Node.js Web アプリケーション]
 
-* [Node.js Web Application with Table Storage]
+* [テーブル ストレージを使用する node.js Web アプリケーション]
 
-##Additional resources
+##その他のリソース
 
-[Azure command-line tool for Mac and Linux]    
-[Create and deploy a Node.js application to Azure Web Sites]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)/
-[Publishing to Azure Web Sites with Git]: /en-us/develop/nodejs/common-tasks/publishing-with-git/
-[Azure Developer Center]: /en-us/develop/nodejs/
-[Node.js Web Application with Table Storage]: /en-us/develop/nodejs/tutorials/web-site-with-storage/
+[Mac および Linux 用 Azure コマンド ライン ツール]    
+[Node.js アプリケーションの作成と Azure の Web サイトへの展開]: /ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
+[Git を使用した Azure の Web サイトへの発行]: /ja-jp/develop/nodejs/common-tasks/publishing-with-git/
+[Azure デベロッパー センター]: /ja-jp/develop/nodejs/
+[テーブル ストレージを使用する node.js Web アプリケーション]: /ja-jp/develop/nodejs/tutorials/web-site-with-storage/
 
-[node]: http://nodejs.org
+[ノード]: http://nodejs.org
 [Git]: http://git-scm.com
 [express]: http://expressjs.com
-[for free]: http://windowsazure.com
-[Git remote]: http://git-scm.com/docs/git-remote
+[無料評価版]: http://windowsazure.com
+[Git リモート]: http://git-scm.com/docs/git-remote
 
-[Node.js Web Application with MongoDB]: ../store-mongolab-web-sites-nodejs-store-data-mongodb/
-[Azure command-line tool for Mac and Linux]: /en-us/develop/nodejs/how-to-guides/command-line-tools/
-[Create and deploy a Node.js application to an Azure Web Site]: ./web-site-with-mongodb-Mac
-[Publishing to Azure Web Sites with Git]: ../CommonTasks/publishing-with-git
-[Azure Portal]: http://windowsazure.com
+[MongoDB を使用する Node.js Web アプリケーション]: ../store-mongolab-web-sites-nodejs-store-data-mongodb/
+[Mac および Linux 用 Azure コマンド ライン ツール]: /ja-jp/develop/nodejs/how-to-guides/command-line-tools/
+[Node.js アプリケーションの作成と Azure の Web サイトへの展開]: ./web-site-with-mongodb-Mac
+[Git を使用した Azure の Web サイトへの発行]: ../CommonTasks/publishing-with-git
+[Azure ポータル: ]: http://windowsazure.com
 [management-portal]: https://manage.windowsazure.com/
 [node-sqlserver]: https://github.com/WindowsAzure/node-sqlserver
-[Microsoft SQL Server 2012 Feature Pack]: http://www.microsoft.com/en-us/download/details.aspx?id=29065
-[sql-database-editions]: http://msdn.microsoft.com/en-us/library/windowsazure/ee621788.aspx
-[download center]: http://www.microsoft.com/en-us/download/details.aspx?id=29995
+[Microsoft SQL Server 2012 Feature Pack]: http://www.microsoft.com/ja-jp/download/details.aspx?id=29065
+[sql-database-editions]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee621788.aspx
+[ダウンロード センター]: http://www.microsoft.com/ja-jp/download/details.aspx?id=29995
 [Twitter Bootstrap]: http://twitter.github.com/bootstrap/
 
 [app-settings-save]: ./media/sql-database-nodejs-use-web-site/savebutton.png
@@ -515,9 +515,9 @@ Once the changes have been deployed to Azure, your web application should contin
 
 
 
-
 [sql-azure-manage]: ./media/sql-database-nodejs-use-web-site/sql-manage.png
 [sql-azure-login]: ./media/sql-database-nodejs-use-web-site/sqlazurelogin.png
 [sql-new-table]: ./media/sql-database-nodejs-use-web-site/new-table.png
 [table-name-identity]: ./media/sql-database-nodejs-use-web-site/table-name-identity.png
 [completed-table]: ./media/sql-database-nodejs-use-web-site/table-columns.png
+

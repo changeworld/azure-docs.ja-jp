@@ -1,64 +1,63 @@
-<properties linkid="develop-node-create-a-website-mac" urlDisplayName="Web site" pageTitle="Create a Node.js web site on Mac - Azure tutorials" metaKeywords="Azure create website Node, Azure deploy website Node, website Node.js, Node website" description="Learn how to build and deploy a Node.js web site in Azure. Sample code is written in Java." metaCanonical="" services="web-sites" documentationCenter="Node.js" title="Build and deploy a Node.js web site to Azure" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-node-create-a-website-mac" urlDisplayName="Web サイト" pageTitle="Mac での Node.js Web サイトの作成 - Azure チュートリアル" metaKeywords="Azure Web サイト作成 Node, Azure Web サイト展開 Node, Web サイト Node.js, Node Web サイト" description="Azure で Node.js Web サイトを構築して展開する方法について説明します。サンプル コードは Java で記述されています。" metaCanonical="" services="web-sites" documentationCenter="Node.js" title="Node.js Web サイトの構築と Azure への展開" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
 
+# Node.js Web サイトの構築と Azure への展開
 
-# Build and deploy a Node.js web site to Azure
+このチュートリアルでは、[Node] アプリケーションを作成し、[Git] を使用して Azure の Web サイトに展開する方法を説明します。このチュートリアルの手順は、Node を実行できる任意のオペレーティング システムで使用できます。
 
-This tutorial shows you how to create a [Node] application and deploy it to an Azure Web Site using [Git]. The instructions in this tutorial can be followed on any operating system that is capable of running Node.
-
-If you prefer to watch a video, the clip in the right follows the same steps as this tutorial.
+このチュートリアルのビデオを見る場合は、右側のクリップでこのチュートリアルと同じ手順が表示されます。
  
-A screenshot of the completed application is below:
+完成したアプリケーションのスクリーンショットは次のようになります。
 
-![A browser displaying the 'Hello World' message.][helloworld-completed]
+!["Hello World" メッセージを表示しているブラウザー][helloworld-completed]
 
-##Create an Azure Web Site and enable Git publishing
+##Azure の Web サイトの作成と Git 発行の有効化
 
-Follow these steps to create an Azure Web Site, and then enable Git publishing for the web site.
+Azure の Web サイトを作成し、Web サイトの Git 発行を有効にするには、次のステップに従います。
 
-<div class="dev-callout"><strong>Note</strong>
-<p>To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account  in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A7171371E" target="_blank">Azure Free Trial</a>.</p>
+<div class="dev-callout"><strong>注</strong>
+<p>このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A7171371E" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p>
 </div>
 
-1. Login to the [Azure Management Portal].
+1. [Azure の管理ポータル]にログインします。
 
-2. Click the **+ NEW** icon on the bottom left of the portal
+2. ポータルの左下にある **[+ 新規]** アイコンをクリックします。
 
-    ![The Azure Portal with the +NEW link highlighted.][portal-new-website]
+    ![[+ 新規] リンクが強調表示された Azure ポータル][portal-new-website]
 
-3. Click **WEB SITE**, then **QUICK CREATE**. Enter a value for **URL** and select the datacenter for your web site in the **REGION** dropdown. Click the checkmark at the bottom of the dialog.
+3. **[Web サイト]** をクリックし、**[簡易作成]** をクリックします。**[URL]** ボックスに値を入力し、**[リージョン]** ボックスの一覧で Web サイトのデータセンターを選択します。ダイアログの下部にあるチェックマークをクリックします。
 
-    ![The Quick Create dialog][portal-quick-create]
+    ![[簡易作成] ダイアログ][portal-quick-create]
 
-4. Once the web site status changes to **Running**, click on the name of the web site to access the **Dashboard**
+4. Web サイトの状況が **[実行中]** に変わったら、Web サイトの名前をクリックして**ダッシュボード**にアクセスします。
 
-	![Open web site dashboard][go-to-dashboard]
+	![Web サイトのダッシュボードを開く][go-to-dashboard]
 
-6. At the bottom right of the Quickstart page, select **Set up a deployment from source control**.
+5. クイックスタート ページの右下隅で、**[ソース管理からの展開の設定]** を選択します。
 
-	![Set up Git publishing][setup-git-publishing]
+	![Git 発行の設定][setup-git-publishing]
 
-6. When asked "Where is your source code?" select **Local Git repository**, and then click the arrow.
+6. ソース コードの位置をたずねるメッセージが表示されたら、**[ローカル Git リポジトリ]** を選択し、矢印をクリックします。
 
-	![where is your source code][where-is-code]
+	![ソース コードの位置][where-is-code]
 
-7. To enable Git publishing, you must provide a user name and password. If you have previously enabled publishing for an Azure Web Site, you will not be prompted for the user name or password. Instead, a Git repository will be created using the user name and password you previously specified. Make a note of the user name and password, as they will be used for Git publishing to all Azure Web Sites you create.
+7. Git 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。以前に Azure の Web サイトの発行を有効にしたことがある場合、ユーザー名やパスワードの入力は要求されません。代わりに、以前に指定したユーザー名とパスワードを使用して Git リポジトリが作成されます。このユーザー名とパスワードは、作成するすべての Azure の Web サイトへの Git 発行に使用されるのでメモしておきます。
 
-	![The dialog prompting for user name and password.][portal-git-username-password]
+	![ユーザー名とパスワードの入力を求めるダイアログ][portal-git-username-password]
 
-8. Once the Git repository is ready, you will be presented with instructions on the Git commands to use in order to setup a local repository and then push the files to Azure.
+8. Git リポジトリの準備ができると、ローカル リポジトリを設定し、ファイルを Azure にプッシュするために使用する Git コマンドに関する手順が表示されます。
 
-	![Git deployment instructions returned after creating a repository for the web site.][git-instructions]
+	![Web サイトのリポジトリの作成後に返される Git 展開の手順][git-instructions]
 
-##Build and test your application locally
+##アプリケーションの作成とローカル テスト
 
-In this section, you will create a **server.js** file containing the 'hello world' example from [nodejs.org]. This example has been modified from the original example by adding process.env.PORT as the port to listen on when running in an Azure Web Site.
+ここでは、[nodejs.org] から入手した 'hello world' の例を含む **server.js** ファイルを作成します。この例は、Azure の Web サイトで実行するときにリッスンするポートとして process.env.PORT を追加することで、元の例から変更されています。
 
-1. Using a text editor, create a new file named **server.js** in the **helloworld** directory. If the **helloworld** directory does not exist, create it.
-2. Add the following as the contents of the **server.js** file, and then save it:
+1. テキスト エディターを使用して、**helloworld** ディレクトリに **server.js** という名前の新しいファイルを作成します。**helloworld** ディレクトリがない場合は作成します。
+2. **server.js** ファイルの内容として次の内容を追加し、ファイルを保存します。
 
         var http = require('http')
         var port = process.env.PORT || 1337;
@@ -67,41 +66,41 @@ In this section, you will create a **server.js** file containing the 'hello worl
           res.end('Hello World\n');
         }).listen(port);
 
-3. Open the command-line, and use the following command to start the web page locally:
+3. コマンド ラインを開き、次のコマンドを使用してローカルで Web ページを開始します。
 
         node server.js
     [WACOM.INCLUDE [install-dev-tools](../includes/install-dev-tools.md)]
 
-4. Open your web browser and navigate to http://localhost:1337. A web page displaying "Hello World" will appear as shown in the screenshot below:
+4. Web ブラウザーを開き、http://localhost:1337/ に移動します。次のスクリーンショットのように、Web ページが開き "Hello World" と表示されます。
 
-    ![A browser displaying the 'Hello World' message.][helloworld-localhost]
+    !["Hello World" メッセージを表示しているブラウザー][helloworld-localhost]
 
-##Publish your application
+##アプリケーションの発行
 
-1. From the command-line, change directories to the **helloworld** directory and enter the following commands to initialize a local Git repository. 
+1. コマンド ラインから、**helloworld** ディレクトリに移動し、次のコマンドを入力してローカル Git リポジトリを初期化します。
 
 		git init
 
-	<div class="dev-callout"><strong>Git command unavailable?</strong>
-	<p><a href="http://git-scm.com/" target="_blank">Git</a> is a distributed version control system that you can use to deploy your Azure Web Site. For installation instructions for your platform, see <a href="http://git-scm.com/download" target="_blank">the Git download page</a>.</p>
+	<div class="dev-callout"><strong>Git コマンドが使用できない場合</strong>
+	<p><a href="http://git-scm.com/" target="_blank">Git</a> は、Azure の Web サイトを展開するために使用できる分散型バージョン コントロール システムです。お使いのプラットフォームでのインストールの手順については、<a href="http://git-scm.com/download" target="_blank">Git のダウンロード ページ</a>を参照してください。</p>
 	</div>
 
-2. Use the following commands to add files to the repository:
+2. 次のコマンドを使用して、リポジトリにファイルを追加します。
 
 		git add .
 		git commit -m "initial commit"
 
-3. Add a Git remote for pushing updates to the Azure Web Site you created previously, using the following command:
+3. 次のコマンドを使用して、先ほど作成した Azure の Web サイトに更新をプッシュするために Git リモートを追加します。
 
 		git remote add azure [URL for remote repository]
 
-    ![Git deployment instructions returned after creating a repository for the web site.][git-instructions]
+    ![Web サイトのリポジトリの作成後に返される Git 展開の手順][git-instructions]
  
-4. Push your changes to Azure using the following command:
+4. 次のコマンドを使用して、変更内容を Azure にプッシュします。
 
 		git push azure master
 
-	You will be prompted for the password you created earlier and will see the following output:
+	先ほど作成したパスワードを入力するように求められ、次のような出力が表示されます。
 
 		Password for 'testsite.scm.azurewebsites.net':
 		Counting objects: 3, done.
@@ -118,53 +117,53 @@ In this section, you will create a **server.js** file containing the 'hello worl
 		To https://user@testsite.scm.azurewebsites.net/testsite.git
 		 * [new branch]      master -> master
     
-	If you navigate to the deployments tab of your Azure Web Site within the management portal, you will see your first deployment in the deployment history:
+	管理ポータル内で Azure の Web サイトの [展開] タブに移動すると、展開履歴に最初の展開が表示されます。
 
-	![Git deployment status on the portal][git-deployments-first] 
+	![ポータルでの Git 展開の状態][git-deployments-first]
 
-5. Browse to your site using the **Browse** button on your Azure Web Site page within the management portal.
+5. 管理ポータル内で、Azure の Web サイトのページの **[参照]** ボタンを使用してサイトに移動します。
 
-##Publish changes to your application
+##アプリケーションへの変更の発行
 
-1. Open the **server.js** file in a text editor, and change 'Hello World\n' to 'Hello Azure\n'. Save the file.
-2. From the command-line, change directories to the **helloworld** directory and run the following commands:
+1. テキスト エディターで **server.js** ファイルを開き、'Hello World\n' を 'Hello Azure\n' に変更します。ファイルを保存します。
+2. コマンド ラインから、**helloworld** ディレクトリに移動し、次のコマンドを実行します。
 
 		git add .
 		git commit -m "changing to hello azure"
 		git push azure master
 
-	You will be prompted for the password you created earlier. If you navigate to the deployments tab of your Azure Web Site within the management portal, you will see your updated deployment history:
+	先ほど作成したパスワードを入力するように求められます。管理ポータル内で Azure の Web サイトの [展開] タブに移動すると、更新された展開履歴が表示されます。
 	
-	![Git deployment status updated on the portal][git-deployments-second]
+	![ポータルで更新された Git 展開の状態][git-deployments-second]
 
-3. Browse to your site by using the **Browse** button and note that the updates have been applied.
+3. **[参照]** ボタンを使用してサイトに移動し、更新が適用されたことを確認します。
 
-	![A web page displaying 'Hello Azure'][helloworld-completed]
+	!["Hello Azure" と表示している Web ページ][helloworld-completed]
 
-4. You can revert to the previous deployment by selecting it in the "Deployments" tab of your Azure Web Site within the management portal and using the **Redeploy** button.
+4. 管理ポータル内で、Azure の Web サイトの [展開] タブで前の展開を選択し、**[再展開]** ボタンを使用して、前の展開に戻すことができます。
 
-##Next steps
+##次のステップ
 
-While the steps in this article use the Azure Portal to create a web site, you can also use the [Azure Command-Line Tools for Mac and Linux] to perform the same operations.
+この記事の手順では、Azure ポータルを使用して Web サイトを作成しましたが、[Mac および Linux 用 Azure コマンド ライン ツール]を使用して同じ操作を行うこともできます。
 
-Node.js provides a rich ecosystem of modules that can be used by your applications. To learn how Azure Web Sites work with modules, see [Using Node.js Modules with Azure Applications](http://www.windowsazure.com/en-us/develop/nodejs/common-tasks/working-with-node-modules/).
+Node.js は、アプリケーションで使用できるモジュールのリッチなエコシステムを実現します。Azure の Web サイトでモジュールを使用する方法については、「[Azure アプリケーションでの Node.js モジュールの使用](http://www.windowsazure.com/ja-jp/develop/nodejs/common-tasks/working-with-node-modules/)」を参照してください。
 
-To learn more about the versions of Node.js that are provided with Azure and how to specify the version to be used with your application, see [Specifying a Node.js version in an Azure application](http://www.windowsazure.com/en-us/develop/nodejs/common-tasks/specifying-a-node-version/).
+Azure に付属している Node.js のバージョンの詳細については、「[Azure アプリケーションでの Node.js のバージョンの指定](http://www.windowsazure.com/ja-jp/develop/nodejs/common-tasks/specifying-a-node-version/)」を参照してください。
 
-If you encounter problems with your application after it has been deployed to Azure, see [How to debug a Node.js application in Azure Web Sites](http://www.windowsazure.com/en-us/develop/nodejs/how-to-guides/Debug-Website/) for information on diagnosing the problem.
+Azure の展開後にアプリケーションに問題が発生した場合、問題の診断については、「[How to debug a Node.js application in Azure Web Sites (Azure の Web サイトでの Node.js アプリケーションのデバッグ方法)](http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/Debug-Website/)」を参照してください。
 
 
-##Additional Resources
+##その他のリソース
 
 * [Azure PowerShell]
-* [Azure Command-Line Tools for Mac and Linux]
+* [Mac および Linux 用 Azure コマンド ライン ツール]
 
-[Azure PowerShell]: /en-us/develop/nodejs/how-to-guides/powershell-cmdlets/
+[Azure PowerShell]: /ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/
 
 
 
-[Azure Management Portal]: http://manage.windowsazure.com
-[Azure Command-Line Tools for Mac and Linux]: /en-us/develop/nodejs/how-to-guides/command-line-tools/
+[Azure の管理ポータル]: http://manage.windowsazure.com
+[Mac および Linux 用 Azure コマンド ライン ツール]: /ja-jp/develop/nodejs/how-to-guides/command-line-tools/
 
 [helloworld-completed]: ./media/web-sites-nodejs-develop-deploy-mac/helloazure.png
 [helloworld-localhost]: ./media/web-sites-nodejs-develop-deploy-mac/helloworldlocal.png
@@ -180,3 +179,4 @@ If you encounter problems with your application after it has been deployed to Az
 [setup-git-publishing]: ./media/web-sites-nodejs-develop-deploy-mac/setup_git_publishing.png
 [go-to-dashboard]: ./media/web-sites-nodejs-develop-deploy-mac/go_to_dashboard.png
 [where-is-code]: ./media/web-sites-nodejs-develop-deploy-mac/where_is_code.png
+

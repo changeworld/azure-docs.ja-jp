@@ -1,200 +1,200 @@
-<properties linkid="manage-services-how-to-scale-a-cloud-service" urlDisplayName="How to scale" pageTitle="How to scale a cloud service - Azure" metaKeywords="Azure link resource, scaling cloud service" description="Learn how to scale a cloud service and linked resources in Azure." metaCanonical="" services="cloud-services" documentationCenter="" title="How to Scale an Application" authors="davidmu" solutions="" manager="jeffreyg" editor="mattshel" />
+<properties linkid="manage-services-how-to-scale-a-cloud-service" urlDisplayName="規模の設定方法" pageTitle="クラウド サービスの規模の設定方法 - Azure" metaKeywords="Azure リンク リソース, クラウド サービスの規模の設定" description="Azure でクラウド サービスおよびリンクされたリソースの規模を設定する方法について説明します。" metaCanonical="" services="cloud-services" documentationCenter="" title="アプリケーションの規模の設定方法" authors=""  solutions="" writer="davidmu" manager="jeffreyg" editor="mattshel"  />
 
 
 
 
 
-#How to Scale an Application
+#アプリケーションの規模の設定方法
 
 [WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
 
 
-On the Scale page of the Azure Management Portal, you can manually scale your application or you can set parameters to automatically scale it. You can scale applications that are running Web Roles, Worker Roles, or Virtual Machines. To scale an application that is running instances of Web Roles or Worker Roles, you add or remove role instances to accommodate the work load.
+Azure の管理ポータルの [スケール] ページで、アプリケーションの規模を手動で設定するか、パラメーターを指定して自動的に規模を設定することができます。Web ロール、ワーカー ロール、または仮想マシンを実行しているアプリケーションの規模を設定できます。Web ロールまたは Worker ロールのインスタンスを実行しているアプリケーションの規模を設定するには、ロール インスタンスを追加または削除してワーク ロードを調整します。
 
-When you scale an application up or down that is running Virtual Machines, new machines are not created or deleted, but are but are turned on or turned off from an availability set of previously created machines. You can specify scaling based on average percentage of CPU usage or based on the number of messages in a queue.
+仮想マシンを実行しているアプリケーションの規模を増減しても、マシンが新たに作成されたり削除されたりすることはなく、以前に作成された仮想マシンの可用性セットでオン/オフされるだけです。平均 CPU 使用率 (%)、またはキュー内のメッセージの数に基づいて規模の設定を指定できます。
 
-You should consider the following information before you configure scaling for your application:
+アプリケーションの規模の設定を構成する前に、以下に示す情報を考慮してください。
 
-- You must add Virtual Machines that you create to an availability set to scale an application that uses them. The Virtual Machines that you add can be initially turned on or turned off, but they will be turned on in a scale-up action and turned off in a scale-down action. For more information about Virtual Machines and availability sets, see [Manage the Availability of Virtual Machines](http://www.windowsazure.com/en-us/manage/windows/common-tasks/manage-vm-availability/).
-- Scaling is affected by core usage. Larger role instances or Virtual Machines use more cores. You can only scale an application within the limit of cores for your subscription. For example, if your subscription has a limit of twenty cores and you run an application with two medium sized Virtual Machines (a total of four cores), you can only scale up other cloud service deployments in your subscription by sixteen cores. All Virtual Machines in an availability set that are used in scaling an application must be the same size. For more information about core usage and machine sizes, see [Virtual Machine and Cloud Service Sizes for Azure](http://msdn.microsoft.com/en-us/library/dn197896.aspx).
-- You must create a queue and associate it with a role or availability set before you can scale an application based on a message threshold. For more information, see [How to use the Queue Storage Service](http://www.windowsazure.com/en-us/develop/net/how-to-guides/queue-service).
-- You can scale resources that are linked to your cloud service. For more information about linking resources, see [How to: Link a resource to a cloud service](http://www.windowsazure.com/en-us/manage/services/cloud-services/how-to-manage-a-cloud-service/#linkresources).
-- To enable high availability of your application, you should ensure that it is deployed with two or more role instances or Virtual Machines. For more information, see [Service Level Agreements](https://www.windowsazure.com/en-us/support/legal/sla/).
+- 仮想マシンを使用するアプリケーションの規模を設定するには、作成するマシンを可用性セットに追加する必要があります。追加する仮想マシンは最初はオンでもオフでもかまいませんが、規模拡大操作ではオンに、規模縮小操作ではオフに設定されます。仮想マシンと可用性セットの詳細については、「[Manage the Availability of Virtual Machines (仮想マシンの可用性の管理)](http://www.windowsazure.com/ja-jp/manage/windows/common-tasks/manage-vm-availability/)」を参照してください。
+- 規模設定はコア使用量の影響を受けます。より大きいロール インスタンスまたは仮想マシンは、より多くのコアを使用します。アプリケーションの規模の設定は、サブスクリプションのコア数の制限内でのみ行うことができます。たとえば、サブスクリプションにコア数 20 の制限があり、アプリケーションを 2 つの中規模の仮想マシンで実行している場合 (合計 4 コア)、サブスクリプション内の他のクラウド サービスの展開は 16 コアまでしか規模を拡大できません。アプリケーションの規模の設定に使用される可用性セット内のすべての仮想マシンは、同じサイズである必要があります。コア使用量とマシンのサイズの詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/ja-jp/library/dn197896.aspx)」を参照してください。
+- メッセージのしきい値に基づいてアプリケーションの規模を設定する前に、キューを作成してロールまたは可用性セットに関連付ける必要があります。詳細については、「[How to use the Queue Storage Service (キュー ストレージ サービスの使用方法)](http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/queue-service)」を参照してください。
+- クラウド サービスにリンクされたリソースの規模を設定できます。リソースのリンクの詳細については、「[方法: クラウド サービスに対するリソースのリンク](http://www.windowsazure.com/ja-jp/manage/services/cloud-services/how-to-manage-a-cloud-service/#linkresources)」を参照してください。
+- アプリケーションの高可用性を可能にするには、アプリケーションを 2 つ以上のロール インスタンスまたは仮想マシンと共に展開する必要があります。詳細については、「[サービス レベル アグリーメント](https://www.windowsazure.com/ja-jp/support/legal/sla/)」を参照してください。
 
-You can perform the following scaling actions for a cloud service:
+クラウド サービスに対して次の規模設定操作を実行できます。
 
-- [Manually scale an application running Web Roles or Worker Roles](#manualscale)
-- [Automatically scale an application running Web Roles, Worker Roles, or Virtual Machines](#autoscale)
-- [Scale linked resources](#scalelink)
-- [Schedule the scaling of your application](#schedule)
-
-
-<h2><a id="manualscale"></a>Manually scale an application running Web Roles or Worker Roles</h2>
-
-On the Scale page, you can manually increase or decrease the number of running instances in a cloud service.
-
-1. In the [Management Portal](https://manage.windowsazure.com/), click **Cloud Services**, and then click the name of the cloud service to open the dashboard.
-
-2. Click **Scale**. Automatic scaling is disabled by default for all roles, which means that you can manually change the number of instances that are used by your application.
-
-	![Scale page][manual_scale]
-
-3. Each role in the cloud service has a slider for changing the number of instances to use. To add a role instance, drag the bar right. To remove an instance, drag the bar left.
-
-	![Scale role][slider_role] 
+- [Web ロールまたは Worker ロールを実行しているアプリケーションの規模の手動設定](#manualscale)
+- [Web ロール、Worker ロール、または仮想マシンを実行しているアプリケーションの規模の自動設定](#autoscale)
+- [リンクされたリソースの規模の設定](#scalelink)
+- [アプリケーションの規模設定のスケジュール](#schedule)
 
 
-	You can only increase the number of instances that are used if the appropriate number of cores are available to support the instances. The colors of the slider represent the used and available cores in your subscription:
+<h2><a id="manualscale"></a>Web ロールまたはワーカー ロールを実行しているアプリケーションの規模の手動設定</h2>
 
-	- Blue represents the cores that are used by the selected role
-	- Dark grey represents the cores that are used by all roles and Virtual Machines in the subscription
-	- Light grey represents the cores that are available to use for scaling
-	- Pink represents a change made that has not been saved
+[スケール] ページで、クラウド サービスで実行中のインスタンスの数を手動で増減できます。
 
-4. Click **Save**. Role instances will be added or removed based on your selections.
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[クラウド サービス]** をクリックし、クラウド サービスの名前をクリックしてダッシュボードを開きます。
 
-<h2><a id="autoscale"></a>Automatically scale an application running Web Roles, Worker Roles, or Virtual Machines</h2>
+2. **[スケール]** をクリックします。既定では、すべてのロールに対して自動的な規模の設定は無効になっていますが、アプリケーションで使用するインスタンスの数を手動で変更できます。
 
-On the Scale page, you can configure your cloud service to automatically increase or decrease the number of instances or Virtual Machines that are used by your application. You can configure scaling based on the following parameters:
+	![[スケール] ページ][manual_scale]
 
-- [Average CPU usage](#averagecpu) - If the average percentage of CPU usage goes above or below specified thresholds, role instances are created or deleted, or Virtual Machines are are turned on or turned off from an availability set.
-- [Queue messages](#queuemessages) - If the number of messages in a queue goes above or below a specified threshold, role instances are created or deleted, or Virtual Machines are are turned on or turned off from an availability set.
+3. クラウド サービス内の各ロールには、使用するインスタンスの数を変更するスライダーがあります。ロール インスタンスを追加するには、垂直バーを右にドラッグします。インスタンスを削除するには、バーを左にドラッグします。
 
-<h3><a id="averagecpu"></a>Average CPU usage</h3>
+	![ロールの規模の設定][slider_role]
 
-1. In the [Management Portal](https://manage.windowsazure.com/), click **Cloud Services**, and then click the name of the cloud service to open the dashboard.
-2. Click **Scale**.
-3. Scroll to the section for the role or availability set, and then click **CPU**. This enables automatic scaling of your application based on the average percentage of CPU resources that it uses.
 
-	![Autoscale on][autoscale_on]
+	増やすことができるのは、インスタンスをサポートするために適切な数のコアを使用できる場合に使用されるインスタンスの数だけです。スライダーの色は、サブスクリプションで使用しているコアと使用できるコアを表します。
 
-4. Each role or availability set has a slider for changing the number of instances that can be used. To set the maximum number of instances that can be used, drag the bar on the right to the right. To set the minimum number of instances that can be used, drag the bar on the left to the left.
+	- ブルーは、選択したロールで使用されているコアを表します
+	- ダーク グレーは、サブスクリプションのすべてのロールと仮想マシンで使用されているコアを表します
+	- ライト グレーは、規模の設定に使用できるコアを表します
+	- ピンクは、保存されていない変更を表します
 
-	**Note:** On the Scale page, **Instance** represents either a role instance or an instance of a Virtual Machine.
+4. **[保存]** をクリックします。選択に応じて、ロール インスタンスが追加または削除されます。
 
-	![Instance range][instance_range]
+<h2><a id="autoscale"></a>Web ロール、ワーカー ロール、または仮想マシンを実行しているアプリケーションの規模の自動設定</h2>
 
-	The maximum number of instances is limited by the cores that are available in the subscription. The colors of the slider represent the used and available cores in your subscription:
+[スケール] ページで、アプリケーションで使用するインスタンスまたは仮想マシンの数を自動的に増減するようにクラウド サービスを構成できます。以下のパラメーターに基づいて、規模の設定を構成できます。
 
-	- Blue represents the maximum number of cores that the role can use.
-	- Dark grey represents the cores that are used by all roles and Virtual Machines in the subscription. When this value overlaps the cores used by the role, the color turns to dark blue.
-	- Light grey represents the cores that are available to use for scaling.
-	- Pink represents a change has been made that has not been saved.
+- [平均 CPU 使用率](#averagecpu) - 平均 CPU 使用率 (%) が指定されたしきい値を上回った場合、または下回った場合に、ロール インスタンスが作成または削除されるか、可用性セットで仮想マシンがオンまたはオフになります。
+- [キュー メッセージ](#queuemessages) – キュー内のメッセージの数が指定されたしきい値を上回った場合、または下回った場合に、ロール インスタンスが作成または削除されるか、可用性セットで仮想マシンがオンまたはオフになります。
 
-5. A slider is used for specifying the range of average percentage of CPU usage. When the average percentage of CPU usage goes above the maximum setting, more role instances are created or Virtual Machines are turned on. When the average percentage of CPU usage goes below the minimum setting, role instances are deleted or Virtual Machines are turned off. To set the maximum average CPU percentage, drag the bar on the right to the right. To set the minimum average CPU percentage, drag the bar on the left to the left.
+<h3><a id="averagecpu"></a>平均 CPU 使用率</h3>
 
-	![Target cpu][target_cpu]
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[クラウド サービス]** をクリックし、クラウド サービスの名前をクリックしてダッシュボードを開きます。
+2. **[スケール]** をクリックします。
+3. ロールまたは可用性セットのセクションにスクロールし、**[CPU]** をクリックします。これで、アプリケーションが使用する CPU リソースの平均パーセンテージに基づいて、アプリケーションの規模が自動的に設定されます。
 
-6. You can specify the number of instances to add or turn on each time your application is scaled up. To increase the number of instances that are created or turned on when your application is scaled up, drag the bar right. To decrease the number, drag the bar left.
+	![規模の自動設定オン][autoscale_on]
 
-	![Scale cpu up][scale_cpuup]
+4. 各ロールまたは可用性セットには、使用できるインスタンスの数を変更するスライダーがあります。使用できるインスタンスの最大数を設定するには、右側のバーを右にドラッグします。使用できるインスタンスの最小数を設定するには、左側のバーを左にドラッグします。
 
-7. Set the number of minutes to wait between the last scaling action and the next scale-up action. The last scaling action can be either scale-up or scale-down.
+	**注:** [スケール] ページの **[インスタンス]** は、ロール インスタンスまたは仮想マシンのインスタンスを表します。
 
-	![Up time][scale_uptime]
+	![インスタンス範囲][instance_range]
 
-	All instances are included when calculating the average percentage of CPU usage and the average is based on use over the previous hour. Depending on the number of instances that your application is using, it can take longer than the specified wait time for the scale action to occur if the wait time is set very low. The minimum time between scaling actions is five minutes. Scaling actions cannot occur if any of the instances are in a transitioning state.
+	インスタンスの最大数は、サブスクリプションで使用できるコア数で制限されます。スライダーの色は、サブスクリプションで使用しているコアと使用できるコアを表します。
 
-8. You can also specify the number of instances to delete or turn off when your application is scaled down.  To increase the number of instances that are deleted or turned off when your application is scaled down, drag the bar right. To decrease the number, drag the bar left.
+	- ブルーは、ロールが使用できる最大コア数を表します。
+	- ダーク グレーは、サブスクリプションのすべてのロールと仮想マシンで使用されているコアを表します。この値がロールで使用するコア数と重なると、色はダーク ブルーに変わります。
+	- ライト グレーは、規模の設定に使用できるコアを表します。
+	- ピンクは、保存されていない変更を表します。
 
-	![Scale cpu down][scale_cpudown]
+5. スライダーが、平均 CPU 使用率 (%) の範囲を指定するために使用されます。平均 CPU 使用率 (%) が最大設定を上回った場合、より多くのロール インスタンスが作成されるか、仮想マシンがオンになります。平均 CPU 使用率 (%) が最小設定を下回った場合、ロール インスタンスが削除されるか、仮想マシンがオフになります。平均 CPU 使用率の最大値を設定するには、右側のバーを右にドラッグします。平均 CPU 使用率の最小値を設定するには、左側のバーを左にドラッグします。
 
-	If your application can have sudden increases in CPU usage, you must make sure that you have a sufficient minimum number of instances to handle them.
+	![ターゲット CPU][target_cpu]
 
-9. Set the number of minutes to wait between the last scaling action and the next scale-down action. The last scaling action can be either scale-up or scale-down.
+6. アプリケーションの規模が拡大するたびに追加またはオンにするインスタンスの数を指定できます。アプリケーションの規模が拡大したときに作成またはオンにするインスタンスの数を増やすには、バーを右にドラッグします。数を減らすには、バーを左にドラッグします。
 
-	![Down time][scale_downtime]
+	![CPU の規模拡大][scale_cpuup]
 
-10. Click **Save**. The scaling action can take up to five minutes to finish.
+7. 最後の規模設定操作と次の規模拡大操作の間の待機時間 (分) を設定します。最後の規模設定操作は、規模拡大または規模縮小です。
 
-<h3><a id="queuemessages"></a>Queue messages</h3>
+	![稼働時間][scale_uptime]
 
-1. In the [Management Portal](https://manage.windowsazure.com/), click **Cloud Services**, and then click the name of the cloud service to open the dashboard.
-2. Click **Scale**.
-3. Scroll to the section for the role or availability set, and then click **Queue**. This enables automatic scaling of your application based on a target number of queue messages.
+	平均 CPU 使用率 (%) の計算時にはすべてのインスタンスが含まれ、平均はその前の 1 時間の使用状況に基づきます。アプリケーションで使用しているインスタンスの数によっては、待機時間が非常に低く設定されている場合、規模設定操作が行われるまでに指定した待機時間よりも長い時間がかかることがあります。規模設定操作の間の最小時間は 5 分です。いずれかのインスタンスが移行中の状態にある場合、規模設定操作は実行できません。
 
-	![Scale queue][scale_queue]
+8. アプリケーションの規模が縮小したときに削除またはオフにするインスタンスの数も指定できます。アプリケーションの規模が縮小したときに削除またはオフにするインスタンスの数を増やすには、バーを右にドラッグします。数を減らすには、バーを左にドラッグします。
 
-4. Each role or availability set in the cloud service has a slider for changing the number of instances that can be used. To set the maximum number of instances that can be used, drag the bar on the right to the right. To set the minimum number of instances that can be used, drag the bar on the left to the left.
+	![CPU の規模縮小][scale_cpudown]
 
-	![Queue range][queue_range]
+	アプリケーションで CPU 使用率の突然の増加がある場合は、インスタンスの最低数がそれらを処理するために十分であることを確認する必要があります。
 
-	**Note:** On the Scale page, **Instance** represents either a role instance or an instance of a Virtual Machine.
+9. 最後の規模設定操作と次の規模縮小操作の間の待機時間 (分) を設定します。最後の規模設定操作は、規模拡大または規模縮小です。
+
+	![休止時間][scale_downtime]
+
+10. **[保存]** をクリックします。規模設定操作は、終了までに最大で 5 分かかります。
+
+<h3><a id="queuemessages"></a>キュー メッセージ</h3>
+
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[クラウド サービス]** をクリックし、クラウド サービスの名前をクリックしてダッシュボードを開きます。
+2. **[スケール]** をクリックします。
+3. ロールまたは可用性セットのセクションにスクロールし、**[キュー]** をクリックします。これで、キュー メッセージの目標数に基づいて、アプリケーションの規模が自動的に設定されます。
+
+	![キューの規模の設定][scale_queue]
+
+4. クラウド サービス内の各ロールまたは可用性セットには、使用できるインスタンスの数を変更するスライダーがあります。使用できるインスタンスの最大数を設定するには、右側のバーを右にドラッグします。使用できるインスタンスの最小数を設定するには、左側のバーを左にドラッグします。
+
+	![キューの範囲][queue_range]
+
+	**注:** [スケール] ページの **[インスタンス]** は、ロール インスタンスまたは仮想マシンのインスタンスを表します。
 	
-	The maximum number of instances is limited by the cores that are available in the subscription. The colors of the slider represent the used and available cores in your subscription:
-	- Blue represents the maximum number of cores that the role can use.
-	- Dark grey represents the cores that are used by all roles and Virtual Machines in the subscription. When this value overlaps the cores used by the role, the color turns to dark blue.
-	- Light grey represents the cores that are available to use for scaling.
-	- Pink represents a change has been made that has not been saved.
+	インスタンスの最大数は、サブスクリプションで使用できるコア数で制限されます。スライダーの色は、サブスクリプションで使用しているコアと使用できるコアを表します。
+	- ブルーは、ロールが使用できる最大コア数を表します。
+	- ダーク グレーは、サブスクリプションのすべてのロールと仮想マシンで使用されているコアを表します。この値がロールで使用するコア数と重なると、色はダーク ブルーに変わります。
+	- ライト グレーは、規模の設定に使用できるコアを表します。
+	- ピンクは、保存されていない変更を表します。
 
-5. Select the storage account that is associated with the queue that you want to use.
+5. 使用するキューに関連付けられたストレージ アカウントを選択します。
 
-	![Storage name][storage_name]	
+	![ストレージ名][storage_name]	
 
-6. Select the queue.
+6. キューを選択します
 
-	![Queue name][queue_name]
+	![キュー名][queue_name]
 
-7. Specify the number of messages that you expect each instance to support. Instances will scale based on the total number of messages divided by the target number of messages per machine.
+7. 各インスタンスがサポートするメッセージ数を指定します。インスタンスは、マシンあたりの目標メッセージ数で割られた合計メッセージ数に基づいて規模が設定されます。
 
-	![Message number][message_number]
+	![メッセージ数][message_number]
 
-8. You can specify the number of instances to add or turn on each time your application is scaled up. To increase the number of instances that are added or turned on when your application is scaled up, drag the bar right. To decrease the number, drag the bar left.
+8. アプリケーションの規模が拡大するたびに追加またはオンにするインスタンスの数を指定できます。アプリケーションの規模が拡大したときに追加またはオンにするインスタンスの数を増やすには、バーを右にドラッグします。数を減らすには、バーを左にドラッグします。
 
-	![Scale cpu up][scale_cpuup]
+	![CPU の規模拡大][scale_cpuup]
 
-9. Set the number of minutes to wait between the last scaling action and the next scale-up action. The last scaling action can be either scale-up or scale-down.
+9. 最後の規模設定操作と次の規模拡大操作の間の待機時間 (分) を設定します。最後の規模設定操作は、規模拡大または規模縮小です。
 
-	![Up time][scale_uptime]
+	![稼働時間][scale_uptime]
 
-	The minimum time between scaling actions is five minutes. Scaling actions cannot occur if any of the instances are in a transitioning state.
+	規模設定操作の間の最小時間は 5 分です。いずれかのインスタンスが移行中の状態にある場合、規模設定操作は実行できません。
 
-10. You can also specify the number of instances to delete or not use when your application is scaled down.  A slider is used to specify the scaling increment. To increase the number of instances that are deleted or not used when your application is scaled down, drag the bar right. To decrease the number, drag the bar left.
+10. アプリケーションの規模が縮小したときに削除するインスタンス、または使用しないインスタンスの数も指定できます。スライダーを使用して、規模設定の増分を指定します。アプリケーションの規模が縮小したときに削除するインスタンス、または使用しないインスタンスの数を増やすには、バーを右にドラッグします。数を減らすには、バーを左にドラッグします。
 
-	![Scale cpu down][scale_cpudown]
+	![CPU の規模縮小][scale_cpudown]
 
-11.	Set the number of minutes to wait between the last scaling action and the next scale-down action. The last scaling action can be either scale-up or scale-down.
+11.	最後の規模設定操作と次の規模縮小操作の間の待機時間 (分) を設定します。最後の規模設定操作は、規模拡大または規模縮小です。
 
-	![Down time][scale_downtime]
+	![休止時間][scale_downtime]
 
-12. Click **Save**. The scaling action can take up to five minutes to finish.
+12. **[保存]** をクリックします。規模設定操作は、終了までに最大で 5 分かかります。
 
-<h2><a id="scalelink"></a>Scale linked resources</h2>
+<h2><a id="scalelink"></a>リンク済みリソースの規模の設定</h2>
 
-Often when you scale a role, it's beneficial to scale the database that the application is using also. If you link the database to the cloud service, you change the SQL Database edition and resize the database on the Scale page.
+多くの場合、ロールの規模を設定するときに、アプリケーションが使用しているデータベースの規模もあわせて変更するのが得策です。データベースをクラウド サービスにリンクする場合、[スケール] ページで SQL データベースのエディションを変更し、データベースの規模を変更します。
 
-1. In the [Management Portal](https://manage.windowsazure.com/), click **Cloud Services**, and then click the name of the cloud service to open the dashboard.
-2. Click **Scale**.
-3. In the Linked Resources section, select the edition to use for the database.
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[クラウド サービス]** をクリックし、クラウド サービスの名前をクリックしてダッシュボードを開きます。
+2. **[スケール]** をクリックします。
+3. [リンク済みリソース] セクションで、データベースに使用するエディションを選択します。
 
-	![Linked resources][linked_resources]
+	![リンク済みリソース][linked_resources]
 
-4. Select the size of the database.
-5. Click **Save** to update the linked resources.
+4. データベースのサイズを選択します。
+5. ****[保存] をクリックして、リンクされたリソースを更新します。
 
-<h2><a id="schedule"></a>Schedule the scaling of your application</h2>
+<h2><a id="schedule"></a>アプリケーションのスケールのスケジュール</h2>
 
-You can schedule automatic scaling of your application by configuring schedules for different times. The following options are available to you for automatic scaling:
+さまざまな時間のスケジュールを構成することで、アプリケーションの自動規模設定をスケジュールできます。自動規模設定では、次のオプションを使用できます。
 
-- **No schedule** - This is the default option and enables your application to be automatically scaled the same way at all times.
+- **スケジュールなし**: これは既定のオプションで、常に同じ方法でアプリケーションを自動的に規模設定できるようにします。
 
-- **Day and night** - This option enables you to specify scaling for specific times of day and night.
+- **昼夜**: このオプションを使用すると、昼夜の特定の時刻に規模設定を指定できます。
 
-**Note:** Schedules are currently not available for applications that use Virtual Machines.
+**注:** 仮想マシンを使用するアプリケーションには、現在のところスケジュールを使用できません。
 
-1. In the [Management Portal](https://manage.windowsazure.com/), click **Cloud Services**, and then click the name of the cloud service to open the dashboard.
-2. Click **Scale**.
-3. On the Scale page, click **set up schedule times**.
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[クラウド サービス]** をクリックし、クラウド サービスの名前をクリックしてダッシュボードを開きます。
+2. **[スケール]** をクリックします。
+3. [スケール] ページで、**[スケジュール時間の設定]** をクリックします。
 
-	![Schedule scaling][scale_schedule]
+	![スケールのスケジュール][scale_schedule]
 
-4. Select the type of scaling schedule that you want to set up.
+4. 設定するスケール スケジュールの種類を選択します。
 
-5. Specify the times that the day starts and ends and set the time zone. For day and night scheduling, the times represent the start and end of the day with the remaining time representing night.
+5. 昼の開始時刻と終了時刻を指定し、タイム ゾーンを設定します。昼夜スケジュールの場合、これらの時刻は昼の開始と終了を表し、残りの時間は夜を表します。
 
-6. Click the check mark at the bottom of the page to save the schedules.
+6. ページの下部にあるチェック マークをオンにして、スケジュールを保存します。
 
-7. After you save the schedules, they will appear in the list. You can select the time schedule that you want to use and then modify your scale settings. The scale settings will only apply during the schedule that you selected. You can edit the schedules by clicking **set up schedule times**.
+7. スケジュールは、保存すると一覧に表示されます。使用する時間スケジュールを選択すると、スケール設定を変更できます。スケール設定は、選択したスケジュール中のみ適用されます。スケジュールは、**[スケジュール時間の設定]** をクリックすることで編集できます。
 
 [manual_scale]: ./media/cloud-services-how-to-scale/CloudServices_ManualScaleRoles.png
 [slider_role]: ./media/cloud-services-how-to-scale/CloudServices_SliderRole.png
@@ -212,3 +212,4 @@ You can schedule automatic scaling of your application by configuring schedules 
 [message_number]: ./media/cloud-services-how-to-scale/CloudServices_TargetMessageNumber.png
 [linked_resources]: ./media/cloud-services-how-to-scale/CloudServices_ScaleLinkedResources.png
 [scale_schedule]: ./media/cloud-services-how-to-scale/CloudServices_SetUpSchedule.png
+

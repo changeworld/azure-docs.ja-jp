@@ -1,18 +1,18 @@
-#Windows Azure の Web サイトでの HTTPS の有効化
+#Azure の Web サイトでの HTTPS の有効化
 
-訪問者が HTTPS を使用して Web サイトにアクセスしてきた場合は、Web サイトとブラウザーの間の通信は Secure Socket Layer (SSL) 暗号化を使用してセキュリティで保護されます。この SSL 暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法で、またサイトの訪問者に対し、そのサイト上でのトランザクションの安全性を保証します。この記事では、Windows Azure の Web サイトに対して SSL を有効にする方法を説明します。
+訪問者が HTTPS を使用して Web サイトにアクセスしてきた場合は、Web サイトとブラウザーの間の通信は Secure Socket Layer (SSL) 暗号化を使用してセキュリティで保護されます。この SSL 暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法で、またサイトの訪問者に対し、そのサイト上でのトランザクションの安全性を保証します。この記事では、Azure の Web サイトに対して SSL を有効にする方法を説明します。
 
 > [WACOM.NOTE]カスタム ドメイン名に対して SSL を有効にするには、標準モードで Web サイトを構成する必要があります。現在無料モードまたは共有モードを使用している場合、このモードで構成を行うと追加料金が発生する場合があります。共有モードと標準モードの料金の詳細については、「[料金の詳細][pricing]」を参照してください。
 
 <a href="bkmk_azurewebsites"></a><h2>\*.azurewebsites.net ドメイン</h2>
 
-カスタム ドメイン名を使用する計画がなく、代わりに Windows Azure によってサイトに割り当てられた \*.azurewebsites.net ドメイン (たとえば、contoso.azurewebsites.net) を使用することを計画している場合は、サイトは既に、Microsoft から提供される証明書によってセキュリティで保護されています。**https://mywebsite.azurewebsites.net** を使用して Web サイトに安全にアクセスすることができます。
+カスタム ドメイン名を使用する計画がなく、代わりに Azure によってサイトに割り当てられた \*.azurewebsites.net ドメイン (たとえば、contoso.azurewebsites.net) を使用することを計画している場合は、サイトは既に、Microsoft から提供される証明書によってセキュリティで保護されています。**https://mywebsite.azurewebsites.net** を使用して Web サイトに安全にアクセスすることができます。
 
 このドキュメントの残りの部分では、**contoso.com**、**www.contoso.com**、または **\*.contoso.com** のようなカスタム ドメイン名に対して HTTPS を有効にする方法を詳細に説明します。
 
 <a href="bkmk_domainname"></a><h2>カスタム ドメイン名</h2>
 
-**contoso.com** のようなカスタム ドメイン名に対して HTTPS を有効にするには、ドメイン名レジストラーにカスタム ドメイン名を登録する必要があります。Windows Azure の Web サイトに対応するカスタム ドメイン名を構成する方法の詳細については、Windows Azure の Web サイトに対応するカスタム ドメイン名の構成に関するページ (/ja-jp/develop/net/common-tasks/custom-dns-web-site/) を参照してください。カスタム ドメイン名を登録し、そのカスタム名に応答するように Web サイトを構成した後、そのドメインに対応する SSL 証明書を要求する必要があります。
+**contoso.com** のようなカスタム ドメイン名に対して HTTPS を有効にするには、ドメイン名レジストラーにカスタム ドメイン名を登録する必要があります。Azure の Web サイトに対応するカスタム ドメイン名を構成する方法の詳細については、[Azure の Web サイトに対応するカスタム ドメイン名の構成に関するページ](/ja-jp/develop/net/common-tasks/custom-dns-web-site/) を参照してください。カスタム ドメイン名を登録し、そのカスタム名に応答するように Web サイトを構成した後、そのドメインに対応する SSL 証明書を要求する必要があります。
 
 また、ドメイン名を登録した後は、**www.contoso.com** や **mail.contoso.com** のようなサブドメインを作成することもできます。SSL 証明書を要求する前に、その証明書により、どのドメイン名をセキュリティで保護するかを最初に決定する必要があります。この結果、どのような種類の証明書を取得する必要があるかが決まります。**contoso.com** または **www.contoso.com** のように、ただ 1 つのドメイン名を保護する必要がある場合は、通常は基本的な証明書で十分です。**contoso.com**、**www.contoso.com**、および **mail.contoso.com** のように複数のドメイン名を保護する必要がある場合は、ワイルドカード証明書、つまりサブジェクト代替名 (subjectAltName、SAN) を使用した証明書が必要になります。
 
@@ -30,9 +30,9 @@
 
 <a href="bkmk_getcert"></a><h2>証明書の取得</h2>
 
-Windows Azure の Web サイトで使用する SSL 証明書は、この目的で証明書を発行する、信頼されたサード パーティである証明機関 (CA) によって署名されている必要があります。まだ SSL 証明書がない場合は、SSL 証明書を販売する会社から取得する必要があります。証明機関の一覧については、Microsoft TechNet Wiki の [Windows および Windows Phone 8 SSL ルート証明書プログラム (メンバー CA) に関するページ][cas]を参照してください。
+Azure の Web サイトで使用する SSL 証明書は、この目的で証明書を発行する、信頼されたサード パーティである証明機関 (CA) によって署名されている必要があります。まだ SSL 証明書がない場合は、SSL 証明書を販売する会社から取得する必要があります。証明機関の一覧については、Microsoft TechNet Wiki の [Windows および Windows Phone 8 SSL ルート証明書プログラム (メンバー CA) に関するページ][cas]を参照してください。
 
-証明書は、Windows Azure における SSL 証明書の次の要件を満たす必要があります。
+証明書は、Azure における SSL 証明書の次の要件を満たす必要があります。
 
 * 証明書は秘密キーを含む必要があります。
 
@@ -40,22 +40,22 @@ Windows Azure の Web サイトで使用する SSL 証明書は、この目的�
 
 * 証明書の件名は Web サイトへのアクセスに使用されるドメインと一致する必要があります。この証明書で複数のドメインを扱う場合は、前に説明したように、ワイルドカードの値を使用するか、subjectAltName の値を指定する必要があります。
 
-	* Windows Azure の Web サイトのカスタム ドメイン名の構成の詳細については、「[Windows Azure の Web サイトのカスタム ドメイン名の構成に関するページ][customdomain]を参照してください。
+	* Azure の Web サイトのカスタム ドメイン名の構成の詳細については、「[Azure の Web サイトのカスタム ドメイン名の構成に関するページ][customdomain]を参照してください。
 	
 	> [WACOM.NOTE] azurewebsites.net ドメインに対応する証明書の取得や生成を試みないでください。
 
 * 証明書では、2,048 ビット以上の暗号化を使用する必要があります。
 
-> [WACOM.NOTE] プライベート CA サーバーから発行された証明書は、Windows Azure の Web サイトではサポートされていません。
+> [WACOM.NOTE] プライベート CA サーバーから発行された証明書は、Azure の Web サイトではサポートされていません。
 
 証明機関 (CA) から SSL 証明書を取得するには、CA に送信される証明書署名要求 (CSR) を生成する必要があります。その後 CA は、CSR を完了するために使用する証明書を返します。CSR を生成する一般的な 2 つの方法は、certmgr.exe または [OpenSSL][openssl] アプリケーションを使用することです。Certmgr.exe は Windows のみで使用でき、OpenSSL はほとんどのプラットフォームで使用できます。この 2 つのユーティリティを使用する手順は次のとおりです。
 
-CA が **中間証明書** (チェーン証明書とも呼びます) を使用している場合は、中間証明書も取得する必要があります。中間証明書を使用すると、"チェーンされていない証明書" を使用する場合よりセキュリティが強化されると見なされるため、CA で一般的に使用されています。中間証明書は、多くの場合、CA の Web サイトから個別にダウンロードする形で提供されています。この記事では、Windows Azure の Web サイトにアップロードする証明書に対して任意の中間証明書が確実にマージされるようにする手順について説明します。
+CA が **中間証明書** (チェーン証明書とも呼びます) を使用している場合は、中間証明書も取得する必要があります。中間証明書を使用すると、"チェーンされていない証明書" を使用する場合よりセキュリティが強化されると見なされるため、CA で一般的に使用されています。中間証明書は、多くの場合、CA の Web サイトから個別にダウンロードする形で提供されています。この記事では、Azure の Web サイトにアップロードする証明書に対して任意の中間証明書が確実にマージされるようにする手順について説明します。
 
 > [WACOM.NOTE] どちらの手順でも、**共通名**の入力が必要です。複数のドメイン (www.contoso.com、sales.contoso.com) で使用するためのワイルドカード証明書を取得する場合、この値を \*.domainname (たとえば \*.contoso.com) とする必要があります。1 つのドメイン名に対応した証明書を取得する場合、この値は、Web サイトを参照するときにユーザーがブラウザーに入力する値と完全に一致する値にする必要があります。たとえば、www.contoso.com となります。
 >
 > ワイルドカード名 (\*.contoso.com など) とルート ドメイン名 (contoso.com など) の両方をサポートする必要がある場合、ワイルドカードを含んだサブジェクト代替名 (SAN) 証明書を使用できます。SubjectAltName 拡張機能を使用する証明書要求の作成例については、「[SubjectAltName 証明書](#bkmk_subjectaltname)」を参照してください。
-> > Windows Azure の Web サイトのカスタム ドメイン名の構成方法の詳細については、<a href="/ja-jp/develop/net/common-tasks/custom-dns-web-site/">Windows Azure の Web サイトのカスタム ドメイン名の構成に関するページ</a>を参照してください。
+> > Azure の Web サイトのカスタム ドメイン名の構成方法の詳細については、<a href="/ja-jp/develop/net/common-tasks/custom-dns-web-site/">Azure の Web サイトのカスタム ドメイン名の構成に関するページ</a>を参照してください。
 
 ###Certreq.exe を使用した証明書の取得 （Windows のみ）
 
@@ -127,7 +127,7 @@ IIS マネージャーを使用して証明書の要求を作成する場合は�
 
 	![ファイル パスを指定する][certwiz4]
 
-ここで、エクスポートした PFX ファイルを Windows Azure の Web サイトにアップロードすることができます。
+ここで、エクスポートした PFX ファイルを Azure の Web サイトにアップロードすることができます。
 
 ###OpenSSL を使用した証明書の取得
 
@@ -141,7 +141,7 @@ IIS マネージャーを使用して証明書の要求を作成する場合は�
         State or Province Name (full name) []: Washington
         Locality Name (eg, city) []: Redmond
         Organization Name (eg, company) []: Microsoft
-        Organizational Unit Name (eg, section) []: Windows Azure
+        Organizational Unit Name (eg, section) []: Azure
         Common Name (eg, YOUR name) []: www.microsoft.com
         Email Address []:
 
@@ -177,7 +177,7 @@ IIS マネージャーを使用して証明書の要求を作成する場合は�
 
 	ファイルを保存します。
 
-5. コマンド ライン、bash、またはターミナル セッションから、次のコマンドを使用して **myserver.key** および **myserver.crt** を Windows Azure の Web サイトが必要とする形式である **myserver.pfx** に変換します。
+5. コマンド ライン、bash、またはターミナル セッションから、次のコマンドを使用して **myserver.key** および **myserver.crt** を Azure の Web サイトが必要とする形式である **myserver.pfx** に変換します。
 
 		openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
@@ -192,11 +192,11 @@ IIS マネージャーを使用して証明書の要求を作成する場合は�
 	</code></pre>
 	</div>
 
-	このコマンドを実行すると、Windows Azure の Web サイトでの使用に適した **myserver.pfx** ファイルが生成されます。
+	このコマンドを実行すると、Azure の Web サイトでの使用に適した **myserver.pfx** ファイルが生成されます。
 
 <a href="bkmk_standardmode"></a><h2>標準モードの構成</h2>
 
-カスタム ドメインに対して HTTPS を有効にできるのは、Windows Azure の Web サイトで標準モードを使用している場合のみです。標準モードに切り替えるには、次のステップを使用します。
+カスタム ドメインに対して HTTPS を有効にできるのは、Azure の Web サイトで標準モードを使用している場合のみです。標準モードに切り替えるには、次のステップを使用します。
 
 > [WACOM.NOTE] Web サイトを無料 Web サイト モードから標準モードに切り替える前に、Web サイト サブスクリプションに設定されている使用制限を解除する必要があります。この作業を実行しないと、請求期間が終了する前に制限に到達した場合に、サイトが使用できなくなるおそれがあります。共有モードと標準モードの料金の詳細については、「[料金の詳細][pricing]」を参照してください。
 
@@ -216,13 +216,13 @@ IIS マネージャーを使用して証明書の要求を作成する場合は�
 
 5. **[保存]** をクリックします。メッセージが表示されたら、**[はい]** をクリックします。
 
-	> [WACOM.NOTE] "Web サイト '&lt;サイト名&gt;' のスケールの構成に失敗しました" エラーが発生する場合は、詳細ボタンを使用して詳細情報を表示できます。"この要求を満たす、利用可能な標準インスタンス サーバーが足りません。" というエラーが発生する場合があります。このエラーが発生した場合は、[Windows Azure サポート](http://www.windowsazure.com/ja-jp/support/options/)にお問い合わせください。
+	> [WACOM.NOTE] "Web サイト '&lt;サイト名&gt;' のスケールの構成に失敗しました" エラーが発生する場合は、詳細ボタンを使用して詳細情報を表示できます。"この要求を満たす、利用可能な標準インスタンス サーバーが足りません。" というエラーが発生する場合があります。このエラーが発生した場合は、[Azure サポート](http://www.windowsazure.com/ja-jp/support/options/)にお問い合わせください。
 
 <a href="bkmk_configuressl"></a><h2>SSL の構成</h2>
 
-このセクションの手順を実行する前に、Windows Azure の Web サイトにカスタム ドメイン名が関連付けられている必要があります。詳細については、[Windows Azure の Web サイトのカスタム ドメイン名の構成に関するページ][customdomain]を参照してください。
+このセクションの手順を実行する前に、Azure の Web サイトにカスタム ドメイン名が関連付けられている必要があります。詳細については、[Azure の Web サイトのカスタム ドメイン名の構成に関するページ][customdomain]を参照してください。
 
-1. ブラウザーで、[Windows Azure の管理ポータル][portal]を開きます。
+1. ブラウザーで、[Azure の管理ポータル][portal]を開きます。
 
 2. **[Web サイト]** タブ上で、サイトの名前をクリックし、**[構成]** タブをクリックします。
 
@@ -307,7 +307,7 @@ OpenSSL を使用して、1 つの証明書で複数のドメイン名をサポ�
  		Country Name (2 letter code) []: US
         State or Province Name (full name) []: Washington
         Locality Name (eg, city) []: Redmond
-        Organizational Unit Name (eg, section) []: Windows Azure
+        Organizational Unit Name (eg, section) []: Azure
         Your common name (eg, domain name) []: www.microsoft.com
  
 
@@ -339,7 +339,7 @@ OpenSSL を使用して、1 つの証明書で複数のドメイン名をサポ�
 
 	ファイルを保存します。
 
-5. コマンド ライン、bash、またはターミナル セッションから、次のコマンドを使用して **myserver.key** および **myserver.crt** を Windows Azure の Web サイトが必要とする形式である **myserver.pfx** に変換します。
+5. コマンド ライン、bash、またはターミナル セッションから、次のコマンドを使用して **myserver.key** および **myserver.crt** を Azure の Web サイトが必要とする形式である **myserver.pfx** に変換します。
 
 		openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
@@ -354,11 +354,11 @@ OpenSSL を使用して、1 つの証明書で複数のドメイン名をサポ�
 	</code></pre>
 	</div>
 
-	このコマンドを実行すると、Windows Azure の Web サイトでの使用に適した **myserver.pfx** ファイルが生成されます。
+	このコマンドを実行すると、Azure の Web サイトでの使用に適した **myserver.pfx** ファイルが生成されます。
 
 ##<a name="bkmk_iismgr"></a>IIS マネージャーを使用した証明書の取得 (省略可能)
 
-IIS マネージャーに慣れている場合は、IIS マネージャーを使用して、Windows Azure の Web サイトで使用できる証明書を生成することができます。
+IIS マネージャーに慣れている場合は、IIS マネージャーを使用して、Azure の Web サイトで使用できる証明書を生成することができます。
 
 1. IIS マネージャーで、証明機関に送信する証明書の署名要求 (CSR: Certificate Signing Request) を生成します。CSR 生成の詳細については、「[インターネット サーバー証明書を要求する (IIS 7)][iiscsr]」を参照してください。
 
@@ -370,7 +370,7 @@ IIS マネージャーに慣れている場合は、IIS マネージャーを使
 
 	証明書をダウンロードした後、エクスプローラーで証明書を右クリックし、**[証明書のインストール]** をクリックします。**証明書のインポート ウィザード**で既定値を使用し、インポートが完了するまで、**[次]**  のクリックを続けます。
 
-4. IIS マネージャから証明書をエクスポートします。証明書のエクスポートの詳細については、「[サーバー証明書をエクスポートする (IIS 7)][exportcertiis]」を参照してください。エクスポートしたファイルは、Windows Azure の Web サイトで使用するために、後の手順で Windows Azure にアップロードする場合に使用されます。
+4. IIS マネージャから証明書をエクスポートします。証明書のエクスポートの詳細については、「[サーバー証明書をエクスポートする (IIS 7)][exportcertiis]」を参照してください。エクスポートしたファイルは、Azure の Web サイトで使用するために、後の手順で Azure にアップロードする場合に使用されます。
 
 	<div class="dev-callout"> 
 	<b>メモ</b>
@@ -447,7 +447,7 @@ Visual Studio がインストールされている Windows システムからテ
          keyUsage=nonRepudiation, digitalSignature, keyEncipherment
          extendedKeyUsage = serverAuth
 
-	これは、Windows Azure の Web サイトで使用できる SSL 証明書の生成に必要な構成設定を指定します。
+	これは、Azure の Web サイトで使用できる SSL 証明書の生成に必要な構成設定を指定します。
 
 2. コマンド ライン、bash、またはターミナル セッションから次を入力し、新しい自己署名証明書を生成します:
 
@@ -455,13 +455,13 @@ Visual Studio がインストールされている Windows システムからテ
 
 	これは **serverauth.cnf** ファイルで指定された構成設定を使用して、新しい証明書を作成します。
 
-3. Windows Azure の Web サイトにアップロードできる .PFX に証明書をエクスポートするには、次のコマンドを使用します:
+3. Azure の Web サイトにアップロードできる .PFX に証明書をエクスポートするには、次のコマンドを使用します:
 
 		openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
 	メッセージが表示されたら、パスワードを入力して .pfx ファイルをセキュリティ保護します。
 
-	このコマンドによって作成された **myserver.pfx** は、Windows Azure の Web サイトをテスト目的でセキュリティ保護するために使用できます。
+	このコマンドによって作成された **myserver.pfx** は、Azure の Web サイトをテスト目的でセキュリティ保護するために使用できます。
 
 [customdomain]: /ja-jp/develop/net/common-tasks/custom-dns-web-site/
 [iiscsr]: http://technet.microsoft.com/ja-jp/library/cc732906(WS.10).aspx

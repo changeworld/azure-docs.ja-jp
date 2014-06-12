@@ -1,57 +1,58 @@
-<properties linkid="manage-windows-howto-capture-an-image" urlDisplayName="Capture an image" pageTitle="Capture an image of a virtual machine running Windows Server" metaKeywords="Azure capture image vm, capturing vm" description="Learn how to capture an image of an Azure virtual machine (VM) running Windows Server 2008 R2. " metaCanonical="" services="virtual-machines" documentationCenter="" title="How to Capture an Image of a Virtual Machine Running Windows Server" authors="kathydav" solutions="" manager="jeffreyg" editor="tysonn" />
+<properties linkid="manage-windows-howto-capture-an-image" urlDisplayName="イメージのキャプチャ" pageTitle="Azure で Windows Server を実行する仮想マシンのイメージのキャプチャ" metaKeywords="Azure キャプチャ イメージ VM, VM のキャプチャ" description="Windows Server 2008 R2 を実行する Azure の仮想マシン (VM) のイメージをキャプチャする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Windows Server が実行されている仮想マシンのイメージをキャプチャする方法" authors=""  solutions="" writer="kathydav" manager="jeffreyg" editor="tysonn"  />
 
 
 
 
-#How to Capture an Image of a Virtual Machine Running Windows Server#
+#Windows Server が実行されている仮想マシンのイメージをキャプチャする方法#
 
-You can use images from the Image Gallery to easily create virtual machines, or you can capture and use your own images to create customized virtual machines. An image is a virtual hard disk (.vhd) file that is used as a template for creating a virtual machine. An image is a template because it doesn’t have the specific settings that a configured virtual machine has, such as the computer name and user account settings. If you want to create multiple virtual machines that are set up the same way, you can capture an image of a configured virtual machine and use that image as a template.
-
-
-1. Connect to the virtual machine by using the steps listed in [How to Log on to a Virtual Machine Running Windows Server] [].
-
-2.	Open a Command Prompt window as an administrator.
+イメージ ギャラリーにあるイメージを使って簡単に仮想マシンを作成できます。または、独自のイメージをキャプチャしてそれを使ってカスタム仮想マシンを作成することもできます。イメージとは、仮想マシンの作成時にテンプレートとして使用される仮想ハード ディスク (.vhd) ファイルです。イメージはテンプレートです。イメージには、コンピューター名、ユーザー アカウント設定など、構成された仮想マシンにある特定の設定がないからです。同じ形態でセットアップされた仮想マシンを複数作成する場合は、構成済みの仮想マシンのイメージをキャプチャして、そのイメージをテンプレートとして使用することができます。
 
 
-3.	Change the directory to `%windir%\system32\sysprep`, and then run sysprep.exe.
+1. 「[Windows Server を実行する仮想マシンにログオンする方法][]」に示された手順に従って仮想マシンに接続します。
+
+2.	管理者としてコマンド プロンプト ウィンドウを開きます。
 
 
-4. 	The **System Preparation Tool** dialog box appears.
+3.	ディレクトリを `%windir%\system32\sysprep` に変更し、sysprep.exe を実行します。
 
 
-	In **System Cleanup Action**, select **Enter System Out-of-Box Experience (OOBE)** and make sure that **Generalize** is checked. For more information about using Sysprep, see [How to Use Sysprep: An Introduction][].
-
-5.	In **Shutdown Options**, select **Shutdown**.
-
-6.	Click **OK**.
-
-7.	Sysprep shuts down the virtual machine, which changes the status of the machine in the [Management Portal](http://manage.windowsazure.com) to **Stopped**.
+4. 	**[システム準備ツール]** ダイアログ ボックスが表示されます。
 
 
-8.	Click **Virtual Machines**, and then select the virtual machine you want to capture.
+	**[システム クリーンアップ アクション]** で **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、**[一般化する]** チェック ボックスがオンになっていることを確認します。Sysprep の使い方の詳細については、「[Sysprep の使用方法: 紹介][]」を参照してください。
 
-9.	On the command bar, click **Capture**.
+5.	**[シャットダウン オプション]** の **[シャットダウン]** を選択します。
 
-	The **Capture an Image from a Virtual Machine** dialog box appears.
+6.	**[OK]** をクリックします。
 
-10.	In **Image Name**, type a name for the new image.
+7.	Sysprep コマンドにより仮想マシンがシャットダウンされます。これにより、[管理ポータル](http://manage.windowsazure.com)のマシンの状態が **[停止済み]** に変わります。
 
-11.	Before you add a Windows Server image to your set of custom images, it must be generalized by running Sysprep as instructed in the previous steps. Click **I have run Sysprep on the virtual machine** to indicate that you have done this.
 
-12.	Click the check mark to capture the image. When you capture an image of a virtual machine, the machine is deleted.
+8.	**[仮想マシン]** をクリックし、キャプチャする仮想マシンを選択します。
 
-	The new image is now available under **Images**.
+9.	コマンド バーで、**[取り込み]** をクリックします。
 
-	When you create a virtual machine by using the **From Gallery** method, you can use the image that you captured by clicking **My Images** on the **Choose an Image** page.
+	**[仮想マシンからイメージをキャプチャします]** ダイアログ ボックスが表示されます。
+
+10.	**[イメージの名前]** に新しいイメージの名前を入力します。
+
+11.	一連のカスタム イメージを Windows Server のイメージを追加する前に、前の手順で指示されたとおりに Sysprep を実行して一般化する必要があります。**[仮想マシンで Sysprep を実行しました]** をクリックして、この一般化が完了したことを通知します。
+
+12.	チェック マークをクリックしてイメージをキャプチャします。仮想マシンのイメージをキャプチャしたら、そのマシンは削除されます。
+
+	これで **[イメージ]** で新しいイメージが使用可能になりました。
+
+	**[ギャラリーから]** を使用して仮想マシンを作成すると、**[イメージの選択]** ページで **[マイ イメージ]** をクリックすることで、キャプチャしたイメージを使用できます。
 
 	
 
-[How to Log on to a Virtual Machine Running Windows Server]:http://www.windowsazure.com/en-us/manage/windows/how-to-guides/log-on-a-windows-vm/
-[How to Use Sysprep: An Introduction]:http://technet.microsoft.com/en-us/library/bb457073.aspx
-[Run Sysprep.exe]: ./media/virtual-machines-capture-image-windows-server/SysprepCommand.png
-[Enter Sysprep.exe options]: ./media/virtual-machines-capture-image-windows-server/SysprepGeneral.png
-[The virtual machine is stopped]: ./media/virtual-machines-capture-image-windows-server/SysprepStopped.png
-[Capture an image of the virtual machine]: ./media/virtual-machines-capture-image-windows-server/CaptureVM.png
-[Enter the image name]: ./media/virtual-machines-capture-image-windows-server/Capture.png
-[Image capture successful]: ./media/virtual-machines-capture-image-windows-server/CaptureSuccess.png
-[Use the captured image]: ./media/virtual-machines-capture-image-windows-server/MyImagesWindows.png
+[Windows Server を実行する仮想マシンにログオンする方法]:http://www.windowsazure.com/ja-jp/manage/windows/how-to-guides/log-on-a-windows-vm/
+[Sysprep の使用方法: 紹介]:http://technet.microsoft.com/ja-jp/library/bb457073.aspx
+[Sysprep.exe の実行]: ./media/virtual-machines-capture-image-windows-server/SysprepCommand.png
+[Sysprep.exe オプションの入力]: ./media/virtual-machines-capture-image-windows-server/SysprepGeneral.png
+[仮想マシンの停止]: ./media/virtual-machines-capture-image-windows-server/SysprepStopped.png
+[仮想マシンのイメージのキャプチャ]: ./media/virtual-machines-capture-image-windows-server/CaptureVM.png
+[イメージの名前の入力]: ./media/virtual-machines-capture-image-windows-server/Capture.png
+[イメージのキャプチャの成功]: ./media/virtual-machines-capture-image-windows-server/CaptureSuccess.png
+[キャプチャしたイメージの使用]: ./media/virtual-machines-capture-image-windows-server/MyImagesWindows.png
+

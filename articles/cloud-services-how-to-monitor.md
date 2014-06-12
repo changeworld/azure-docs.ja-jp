@@ -1,182 +1,182 @@
-<properties linkid="manage-services-how-to-monitor-a-cloud-service" urlDisplayName="How to monitor" pageTitle="How to monitor a cloud service - Azure" metaKeywords="Azure monitoring cloud services, Azure Management Portal cloud services" description="Learn how to monitor cloud services by using the Azure Management Portal." metaCanonical="" services="cloud-services" documentationCenter="" title="How to Monitor Cloud Services" authors="ryanwi" solutions="" manager="" editor="" />
+<properties linkid="manage-services-how-to-monitor-a-cloud-service" urlDisplayName="監視方法" pageTitle="クラウド サービスの監視方法 - Azure" metaKeywords="Azure 監視クラウド サービス, Azure の管理ポータル クラウド サービス" description="、Azure の管理ポータルを使用して、クラウド サービスを監視する方法について説明します。" metaCanonical="" services="cloud-services" documentationCenter="" title="クラウド サービスの監視方法" authors=""  solutions="" writer="ryanwi" manager="" editor=""  />
 
 
-#How to Monitor Cloud Services
+#クラウド サービスの監視方法
 
 [WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
 
-You can monitor key performance metrics for your cloud services in the Azure Management Portal. You can set the level of monitoring to minimal and verbose for each service role, and can customize the monitoring displays. Verbose monitoring data is stored in a storage account, which you can access outside the portal. 
+クラウド サービスの主要パフォーマンス メトリックは Azure の管理ポータルで監視できます。監視レベルは、サービス ロールごとに最小および詳細に設定でき、監視画面をカスタマイズできます。詳細監視データはストレージ アカウントに保存され、ポータル外からもアクセスできます。
 
-Monitoring displays in the Management Portal are highly configurable. You can choose the metrics you want to monitor in the metrics list on the **Monitor** page, and you can choose which metrics to plot in metrics charts on the **Monitor** page and the dashboard. 
+管理ポータルの監視画面は非常に自由に設定できます。**[監視]** ページでメトリック一覧から監視するメトリックを選択でき、**[監視]** ページとダッシュボードのメトリック チャートにプロットするメトリックを選択できます。
 
-##Table of Contents##
-* [Concepts](#concepts)
-* [How to: Configure monitoring for cloud services](#verbose)
-* [How to: Receive alerts for cloud services metrics](#receivealerts)
-* [How to: Add metrics to the metrics table](#addmetrics)
-* [How to: Customize the metrics chart](#customizechart)
-* [How to: Access verbose monitoring data outside the Management Portal](#accessverbose)
+##目次##
+* [概念](#concepts)
+* [How to: クラウド サービスの監視の構成](#verbose)
+* [How to: クラウド サービスのメトリックに関するアラートの受信](#receivealerts)
+* [How to: メトリック テーブルへのメトリックの追加](#addmetrics)
+* [How to: メトリック チャートのカスタマイズ](#customizechart)
+* [How to: 管理ポータル外で詳細監視データにアクセス](#accessverbose)
 
-<h2><a id="concepts"></a>Concepts</h2>
+<h2><a id="concepts"></a>概念</h2>
 
-By default, minimal monitoring is provided for a new cloud service using performance counters gathered from the host operating system for the roles instances (virtual machines). The minimal metrics are limited to CPU Percentage, Data In, Data Out, Disk Read Throughput, and Disk Write Throughput. By configuring verbose monitoring, you can receive additional metrics based on performance data within the virtual machines (role instances). The verbose metrics enable closer analysis of issues that occur during application operations.
+既定では、新しいクラウド サービス用に最小監視が用意されており、ロール インスタンス (仮想マシン) のホスト オペレーティング システムから収集したパフォーマンス カウンターが使用されます。最小メトリックは、CPU 使用率、受信データ、送信データ、ディスク読み取りのスループット、およびディスク書き込みのスループットに限定されます。詳細監視を構成することで、仮想マシン (ロール インスタンス) 内のパフォーマンス データに基づいた追加のメトリックが使用できます。詳細メトリックを使用すると、アプリケーションの操作中に発生する問題を詳しく分析できます。
 
 > [WACOM.NOTE]
-> If you use verbose monitoring, you can add more performance counters at role instance startup, through a diagnostics configuration file, or remotely using the Azure Diagnostics API. To be able to monitor these metrics in the Management Portal, you must add the performance counters before you configure verbose monitoring. For more information, see <a href="http://msdn.microsoft.com/en-us/library/gg433048.aspx">Collect Logging Data by Using Azure Diagnostics</a> and <a href="http://msdn.microsoft.com/en-us/library/hh411542.aspx">Create and Use Performance Counters in an Azure Application</a>.
+> 詳細監視を使用した場合、ロール インスタンスの起動時に、診断構成ファイルを使用するか Azure 診断 API をリモートで使用して、さらに多くのパフォーマンス カウンターを追加できます。管理ポータルでこれらのメトリックを監視するには、詳細監視を構成する前にパフォーマンス カウンターを追加する必要があります。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/gg433048.aspx">Azure 診断を使用したログ データの収集</a>」と「<a href="http://msdn.microsoft.com/ja-jp/library/hh411542.aspx">Azure アプリケーションでのパフォーマンス カウンターの作成と使用</a>」を参照してください。
 
-By default performance counter data from role instances is sampled and transferred from the role instance at 3-minute intervals. When you enable verbose monitoring, the raw performance counter data is aggregated for each role instance and across role instances for each role at intervals of 5 minutes, 1 hour, and 12 hours. The aggregated data is  purged after 10 days.
+既定では、ロール インスタンスから得られるパフォーマンス カウンター データは、3 分間隔でサンプリングされてロール インスタンスから転送されます。詳細監視を有効にすると、生のパフォーマンス カウンター データが、5 分、1 時間、および 12 時間間隔で、ロール インスタンスごとに、および各ロールのロール インスタンス全体で集計されます。集計されたデータは 10 日後に消去されます。
 
-After you enable verbose monitoring, the aggregated monitoring data is stored in tables in your storage account. To enable verbose monitoring for a role, you must configure a diagnostics connection string that links to the storage account. You can use different storage accounts for different roles.
+詳細監視を有効にすると、集計された監視データはストレージ アカウントのテーブルに保存されます。ロールの詳細監視を有効にするには、ストレージ アカウントにリンクする診断接続文字列を構成する必要があります。異なるロールには異なるストレージ アカウントを使用できます。
 
-Note that enabling verbose monitoring will increase your storage costs related to data storage, data transfer, and storage transactions. Minimal monitoring does not require a storage account. The data for the metrics that are exposed at the minimal monitoring level are not stored in your storage account, even if you set the monitoring level to verbose.
-
-
-<h2><a id="verbose"></a>How to: Configure monitoring for cloud services</h2>
-
-Use the following procedures to configure verbose or minimal monitoring in the Management Portal. You cannot turn on verbose monitoring until you enable Azure Diagnostics and configure diagnostics connection strings to enable Azure Diagnostics to access storage accounts to store the verbose monitoring data.
-
-###Before you begin###
-
-- Create a storage account to store the monitoring data. You can use different storage accounts for different roles. For more information, see help for **Storage Accounts**, or see [How To Create a Storage Account](/en-us/manage/services/storage/how-to-create-a-storage-account/).
+詳細監視を有効にすると、データ ストレージ、データ転送、およびストレージ トランザクションに関連したストレージ コストが増加することに注意してください。最小監視の場合、ストレージ アカウントは不要です。最小監視レベルで公開されるメトリック用のデータは、監視レベルを詳細に設定した場合でも、ストレージ アカウントには保存されません。
 
 
-- Enable Azure Diagnostics for your cloud service roles. <br /><br />You must update the cloud service definition file (.csdef) and the cloud service configuration file (.cscfg). For more information, see [Configuring Azure Diagnostics](http://msdn.microsoft.com/en-us/library/windowsazure/dn186185.aspx).
+<h2><a id="verbose"></a>How to: クラウド サービスの監視の構成</h2>
 
-In the Management Portal, you can add or modify the diagnostics connection strings that Azure Diagnostics uses to access the storage accounts that store verbose monitoring data, and you can set the level of monitoring to verbose or minimal. Because verbose monitoring stores data in a storage account, you must configure the diagnostics connection strings before you set the monitoring level to verbose.
+以下の手順を使用して、管理ポータルの詳細監視または最小監視を構成します。詳細監視を有効にする前に、Azure 診断を有効にし、診断接続文字列を設定して、Azure 診断がストレージ アカウントにアクセスして詳細監視データを保存できるようにしておく必要があります。
 
-###To configure diagnostics connections strings for verbose monitoring###
+###開始する前に###
 
-1. Copy a storage access key for the storage accont that that you'll use to storage the verbose monitoring data. In the [Azure Management Portal](https://manage.windowsazure.com/), you can use **Manage Keys** on the **Storage Accounts** page. For more information, see [How to Manage Cloud Services](http://www.windowsazure.com/en-us/manage/services/cloud-services/how-to-manage-a-cloud-service/), or see help for the **Storage Accounts** page. 
+- 監視データを保存するストレージ アカウントを作成します。異なるロールには異なるストレージ アカウントを使用できます。詳細については、**ストレージ アカウント**のヘルプを参照するか、「[How To Create a Storage Account (ストレージ アカウントの作成方法)](/ja-jp/manage/services/storage/how-to-create-a-storage-account/)」を参照してください。
 
-2. Open **Cloud Services**. Then, to open the dashboard, click the name of the cloud service you want to configure.
 
-3. Click **Production** or **Staging** to display the deployment you want to configure.
+- クラウド サービス ロールの Azure 診断を有効にします。<br /><br />クラウド サービス定義ファイル (.csdef) およびクラウド サービス構成ファイル (.cscfg) を更新する必要があります。詳細については、「[Azure 診断の構成](http://msdn.microsoft.com/ja-jp/library/windowsazure/dn186185.aspx)」を参照してください。
 
-4. Click **Configure**.
+管理ポータルで、詳細監視データを保存するストレージ アカウントに Azure 診断がアクセスするときに使用する診断接続文字列を追加または修正でき、監視レベルを詳細または最小に設定できます。詳細監視データはストレージ アカウントに保存されるため、監視レベルを詳細に設定する前に、診断接続文字列を構成する必要があります。
 
-	You will edit the **monitoring** settings at the top of the **Configure** page, shown below. If you have not enabled Azure Diagnostics for the cloud service, the **Level** option is not available. You can't change the data retention policy. Verbose monitoring data for a cloud service is stored for 10 days.
+###詳細監視用の診断接続文字列を構成するには###
 
-	![Monitoring options](./media/cloud-services-how-to-monitor/CloudServices_MonitoringOptions.png)
+1. 詳細監視データの保存に使用するストレージ アカウント用のストレージ アクセス キーをコピーします。[Azure の管理ポータル](https://manage.windowsazure.com/)で、**[ストレージ アカウント]** ページの **[キーの管理]** を使用します。詳細については、「[How to Manage Cloud Services (クラウド サービスの管理方法)](http://www.windowsazure.com/ja-jp/manage/services/cloud-services/how-to-manage-a-cloud-service/)」を参照するか、**[ストレージ アカウント]** ページのヘルプを参照してください。
 
-5. In **Diagnostics Connection Strings**, complete the diagnostics connection string for each role for which you want verbose monitoring.
+2. **[クラウド サービス]** を開きます。次に、構成するクラウド サービスの名前をクリックして、ダッシュボードを開きます。
+
+3. **[運用]** または **[ステージング]** をクリックして、構成する展開を表示します。
+
+4. **[構成]** をクリックします。
+
+	下図に示すように、**[構成]** ページの上部で **[監視]** 設定を編集できます。クラウド サービス用に Azure 診断を有効にしていない場合は、**[レベル]** オプションが使用できません。データ保持ポリシーは変更できません。クラウド サービス用の詳細監視データは 10 日間保存されます。
+
+	![監視オプション](./media/cloud-services-how-to-monitor/CloudServices_MonitoringOptions.png)
+
+5. **[診断接続文字列]** で、詳細監視の対象とする各ロールの診断接続文字列を指定します。
 	
-	The connection strings have the following format. (The sample is for a cloud service that uses default endpoints.) To update a connection string, enter a valid storage account name and storage access key for the storage account that you want to use.
+	接続文字列の形式は次のとおりです (この例は、既定のエンドポイントを使用するクラウド サービス用です)。接続文字列を更新するには、有効なストレージ アカウント名と、使用するストレージ アカウント用のストレージ アクセス キーを入力します。
          
  	DefaultEndpointsProtocol=https;AccountName=StorageAccountName;AccountKey=StorageAccountKey  
 
-6. Click **Save**.
+6. **[保存]** をクリックします。
 
-If you're turning on verbose monitoring, perform the next procedure after you configure diagnostics connection strings for service roles. 
+詳細監視を有効にする場合は、サービス ロール用の診断接続文字列を構成した後、次のステップを実行します。
 
 
-###To change the monitoring level to verbose or minimal###
+###監視レベルを詳細または最小に変更するには###
 
-1. In the [Management Portal](https://manage.windowsazure.com/), open the **Configure** page for the cloud service deployment.
+1. [管理ポータル](https://manage.windowsazure.com/)で、クラウド サービスの展開の **[構成]** ページを開きます。
 
-2. In **Level**, click **Verbose** or **Minimal**. 
+2. **[レベル]** で、**[詳細]** または **[最小]** をクリックします。
 
-3. Click **Save**.
+3. **[保存]** をクリックします。
 
-After you turn on verbose monitoring, you should start seeing the monitoring data in the Management Portal within the hour.
+詳細監視を有効にした後、1 時間以内に管理ポータルに監視データが表示され始めます。
 
-The raw performance counter data and aggregated monitoring data are stored in the storage account in tables qualified by the deployment ID for the roles. 
+生のパフォーマンス カウンター データと集計した監視データは、ストレージ アカウントのテーブルに保存され、テーブル名はロールの展開 ID で修飾されます。
 
-<h2><a id="receivealerts"></a>How to: Receive alerts for cloud service metrics</h2>
+<h2><a id="receivealerts"></a>How to: クラウド サービスのメトリックに関するアラートの受信</h2>
 
-You can receive alerts based on your cloud service monitoring metrics. On the **Management Services** page of the Azure Management Portal, you can create a rule to trigger an alert when the metric you choose reaches a value that you specify. You can also choose to have email sent when the alert is triggered. For more information, see [How to: Receive Alert Notifications and Manage Alert Rules in Azure](http://go.microsoft.com/fwlink/?LinkId=309356).
+クラウド サービスの監視メトリックに基づいてアラートを受け取ることができます。Azure の管理ポータルの **[管理サービス]** ページで、選択したメトリックが指定した値に達したときにアラートをトリガーするルールを作成できます。アラートがトリガーされたときに電子メールが送信されるように指定することもできます。詳細については、「[How to: Receive Alert Notifications and Manage Alert Rules in Azure (How to: Azure でアラート通知を受け取り、アラート ルールを管理する)- ](http://go.microsoft.com/fwlink/?LinkId=309356)」を参照してください。
 
-<h2><a id="addmetrics"></a>How to: Add metrics to the metrics table</h2>
+<h2><a id="addmetrics"></a>How to: メトリック テーブルへのメトリックの追加</h2>
 
-1. In the [Management Portal](http://manage.windowsazure.com/), open the **Monitor** page for the cloud service.
+1. [管理ポータル](http://manage.windowsazure.com/)で、クラウド サービスの **[監視]** ページを開きます。
 
-	By default, the metrics table displays a subset of the available metrics. The illustration shows the default verbose metrics for a cloud service, which is limited to the Memory\Available MBytes performance counter, with data aggregated at the role level. Use **Add Metrics** to select additional aggregate and role-level metrics to monitor in the Management Portal.
+	既定で、メトリック テーブルには使用可能なメトリックのサブセットが表示されます。図はクラウド サービス用の既定の詳細メトリックを示しています。これは "メモリ/利用可能な MB" パフォーマンス カウンターに限定されており、データはロール レベルで集計されます。**[メトリックの追加]** を使用して、管理ポータルで監視する追加の集計およびロール レベル メトリックを選択します。
 
-	![Verbose display](./media/cloud-services-how-to-monitor/CloudServices_DefaultVerboseDisplay.png)
+	![詳細表示](./media/cloud-services-how-to-monitor/CloudServices_DefaultVerboseDisplay.png)
  
-2. To add metrics to the metrics table:
+2. メトリック テーブルにメトリックを追加するには、以下の手順を実行します。
 
-	a. Click **Add Metrics** to open **Choose Metrics**, shown below.
-	The first available metric is expanded to show options that are available. For each metric, the top option displays aggregated monitoring data for all roles. In addition, you can choose individual roles to display data for.
+	a. **[メトリックの追加]** をクリックすると、下図のような **[メトリックの選択]** ダイアログ ボックスが開きます。
+	最初に利用可能なメトリックは展開され、利用可能なオプションが表示されています。メトリックごとに、一番上のオプションはすべてのロールの集計監視データを表示します。さらに、データを表示する個々のロールを選択することもできます。
 
-	![Add metrics](./media/cloud-services-how-to-monitor/CloudServices_AddMetrics.png)
+	![メトリックの追加](./media/cloud-services-how-to-monitor/CloudServices_AddMetrics.png)
 
 
-	b. To select metrics to display:
+	b. 表示するメトリックを選択するには、以下を実行します。
 
-	- Click the down arrow by the metric to expand the monitoring options.
-	- Select the check box for each monitoring option you want to display.
+	- メトリックの横にある下向き矢印をクリックして、監視オプションを展開します。
+	- 表示する各監視オプションのチェック ボックスをオンにします。
 
-	You can display up to 50 metrics in the metrics table.
+	メトリック テーブルには最大 50 個のメトリックを表示できます。
 
 	<div class="dev-callout"> 
-	<b>Hint</b> 
-	<p>In verbose monitoring, the metrics list can contain dozens of metrics. To display a scrollbar, hover over the right side of the dialog box. To filter the list, click the search icon, and enter text in the search box, as shown below.</p> 
+	<b>ヒント</b>
+	<p>詳細監視の場合、メトリック一覧に数十個のメトリックが表示されることがあります。スクロールバーを表示するには、ダイアログ ボックスの右側をポイントします。一覧を絞り込むには、検索アイコンをクリックして、下図の検索ボックスにテキストを入力します。</p>
 </div>
  
-	![Add metrics search](./media/cloud-services-how-to-monitor/CloudServices_AddMetrics_Search.png)
+	![[メトリックの追加] の検索](./media/cloud-services-how-to-monitor/CloudServices_AddMetrics_Search.png)
 
-3. After you finish selecting metrics, click OK (checkmark).
+3. メトリックの選択が終了したら [OK] (チェックマーク) をクリックします。
 
-	The selected metrics are added to the metrics table, as shown below.
+	下図のように、選択したメトリックがメトリック テーブルに追加されます。
 
-	![monitor metrics](./media/cloud-services-how-to-monitor/CloudServices_Monitor_UpdatedMetrics.png)
-
- 
-4. To delete a metric from the metrics table, click the metric to select it, and then click **Delete Metric**. (You only see **Delete Metric** when you have a metric selected.)
-
-
-<h2><a id="customizechart"></a>How to: Customize the metrics chart</h2>
-
-1. In the metrics table, select up to 6 metrics to plot on the metrics chart. To select a metric, click the check box on its left side. To remove a metric from the metrics chart, clear its check box in the metrics table.
-
-	As you select metrics in the metrics table, the metrics are added to the metrics   chart. On a narrow display, an **n more** drop-down list contains metric headers that won't fit the display.
+	![監視メトリック](./media/cloud-services-how-to-monitor/CloudServices_Monitor_UpdatedMetrics.png)
 
  
-2. To switch between displaying relative values (final value only for each metric) and absolute values (Y axis displayed), select Relative or Absolute at the top of the chart.
+4. メトリック テーブルからメトリックを削除するには、メトリックをクリックして選択し、**[メトリックの削除]** をクリックします (**[メトリックの削除]** が表示されるのは、メトリックを選択しているときだけです)。
 
-	![Relative or Absolute](./media/cloud-services-how-to-monitor/CloudServices_Monitor_RelativeAbsolute.png)
 
-3. To change the time range the metrics chart displays, select 1 hour, 24 hours, or 7 days at the top of the chart.
+<h2><a id="customizechart"></a>How to: メトリック チャートのカスタマイズ</h2>
 
-	![Monitor display period](./media/cloud-services-how-to-monitor/CloudServices_Monitor_DisplayPeriod.png)
+1. メトリック テーブルで、メトリック チャートにプロットするメトリックを最大 6 個選択します。メトリックを選択するには、メトリックの左側にあるチェック ボックスをオンにします。メトリック チャートからメトリックを削除するには、メトリック テーブルのチェック ボックスをオフにします。
 
-	On the dashboard metrics chart, the method for plotting metrics is different. A standard set of metrics is available, and metrics are added or removed by selecting the metric header.
+	メトリック テーブルでメトリックを選択すると、そのメトリックがメトリック チャートに追加されます。幅の狭い画面では、**[残り n 項目]** ドロップダウン リストに、画面におさまりきらなかったメトリックのヘッダーが表示されます。
 
-###To customize the metrics chart on the dashboard###
+ 
+2. 相対値 (最終値は各メトリックにだけ) と絶対値 (Y 軸を表示) の表示を切り替えるには、チャートの上部で [相対] または [絶対] をクリックします。
 
-1. Open the dashboard for the cloud service.
+	![相対または絶対](./media/cloud-services-how-to-monitor/CloudServices_Monitor_RelativeAbsolute.png)
 
-2. Add or remove metrics from the chart:
+3. メトリック チャートに表示する期間を変更するには、チャートの上部で 1 時間、24 時間、または 7 日を選択します。
 
-	- To plot a new metric, select the check box for the metric in the chart headers. On a narrow display, click the down arrow by ***n*??metrics** to plot a metric the chart header area can't display.
+	![監視の表示期間](./media/cloud-services-how-to-monitor/CloudServices_Monitor_DisplayPeriod.png)
 
-	- To delete a metric that is plotted on the chart, clear the check box by its header.
+	ダッシュボードのメトリック チャートでは、メトリックのプロット方法が異なります。メトリックの標準セットが使用でき、メトリックのヘッダーを選択することでメトリックを追加または削除できます。
 
-3. Switch between **Relative** and **Absolute** displays.
+###ダッシュボードでメトリック チャートをカスタマイズするには###
 
-4. Choose 1 hour, 24 hours, or 7 days of data to display.
+1. クラウド サービスのダッシュボードを開きます。
 
-<h2><a id="accessverbose"></a>How to: Access verbose monitoring data outside the Management Portal</h2>
+2. チャートのメトリックを追加または削除します。
 
-Verbose monitoring data is stored in tables in the storage accounts that you specify for each role. For each cloud service deployment, six tables are created for the role. Two tables are created for each (5 minutes, 1 hour, and 12 hours). One of these tables stores role-level aggregations; the other table stores aggregations for role instances. 
+	- 新しいメトリックをプロットするには、チャートのヘッダー部でメトリックのチェック ボックスをオンにします。幅の狭い画面では、***[残り n* 項目]** ボックスの横にある下向き矢印をクリックして、チャートのヘッダー部に表示できないメトリックをプロットします。
 
-The table names have the following format:
+	- チャートにプロットされているメトリックを削除するには、そのヘッダーにあるチェック ボックスをオフにします。
+
+3. **[相対]** 表示と **[絶対]** 表示を切り替えます。
+
+4. 表示するデータの期間を 1 時間、24 時間、または 7 日に設定します。
+
+<h2><a id="accessverbose"></a>How to: 管理ポータル外で詳細監視データにアクセス</h2>
+
+詳細監視データは、各ロールに指定したストレージ アカウントのテーブルに保存されます。クラウド サービス展開ごとに、ロールに対して 6 つのテーブルが作成されます。間隔 (5 分、1 時間、および 12 時間) のそれぞれにテーブルが 2 つ作成されます。片方のテーブルはロール レベルの集計を保存し、もう片方のテーブルはロール インスタンスごとの集計を保存します。
+
+テーブル名は次の形式です。
 
 	WAD*deploymentID*PT*aggregation_interval*[R|RI]Table
 
-where:
+各値の説明:
 
-- *deploymentID* is the GUID assigned to the cloud service deployment
+- *deploymentID* は、クラウド サービスの展開に割り当てた GUID です。
 
-- *aggregation_interval* = 5M, 1H, or 12H
+- *aggregation_interval* = 5M、1H、または 12H
 
-- role-level aggregations = R
+- ロール レベルの集計 = R
 
-- aggregations for role instances = RI
+- ロール インスタンスの集計 = RI
 
-For example, the following tables would store verbose monitoring data aggregated at 1-hour intervals:
+たとえば、次のテーブルには 1 時間間隔で集計された詳細監視データが保存されます。
 
-	WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRTable (hourly aggregations for the role)
+	WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRTable (ロールの時間ごとの集計)
 
-	WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRITable (hourly aggregations for role instances)
+	WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRITable (ロール インスタンスの時間ごとの集計)
 

@@ -5,7 +5,7 @@
 
 仮想マシンを作成するには、次のステップに従います。
 
-1. Windows Azure アカウントを使用して、[Windows Azure の管理ポータル](http://manage.windowsazure.com)にログインします。
+1. Azure アカウントを使用して、[Azure の管理ポータル](http://manage.windowsazure.com)にログインします。
 
 2. 管理ポータルで、Web ページの左下にある **[+ 新規]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 	![新しい仮想マシンの作成][Image1]
@@ -35,7 +35,7 @@
 6. **[仮想マシン オプション]** ページの **[可用性セット]** ボックスの一覧で **[(なし)]** を選択します。チェック マークをクリックして続行します。
 	
 
-7. Windows Azure によって仮想マシンの準備が行われるまで待ちます。
+7. Azure によって仮想マシンの準備が行われるまで待ちます。
 
 
 [Image1]: ./media/create-and-configure-windows-server-2008-vm-in-portal/CreateWinVM.png

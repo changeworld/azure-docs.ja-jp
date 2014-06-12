@@ -1,432 +1,432 @@
-<properties linkid="manage-services-manage-acs" urlDisplayName="Manage ACS" pageTitle="Access Control Service - Azure service management" metaKeywords="" description="Learn how to manage your Azure Access Control Service (ACS) using certificates and keys." metaCanonical="" services="active-directory" documentationCenter="" title="Managing Your ACS Namespace" authors="" solutions="" manager="" editor="" />
+<properties linkid="manage-services-manage-acs" urlDisplayName="ACS の管理" pageTitle="Access Control サービス - Azure サービス管理" metaKeywords="" description="証明書とキーを使用して Azure の Access Control サービス (ACS) を管理する方法について説明します。" metaCanonical="" services="active-directory" documentationCenter="" title="ACS 名前空間の管理" authors=""  solutions="" writer="" manager="" editor=""  />
 
 
 
 
 
-# Managing Your ACS Namespace #
+# ACS 名前空間の管理#
 
-This topic outlines management tasks that it is recommended you perform regularly so that your applications that use the Azure Acccess Control Service (ACS) continue to function properly and without interruptions. These management tasks are as follows:
-
-
-1. Important: track expiry and carry out rollover for certificates, keys and passwords used by the ACS namespace, relying party applications, service identities, identity providers, and the ACS Management Service account. See Certificates and Key Management Guidelines below for more information.
-
-2. Review your identity providers, service identities, rules, and portal administrators and remove the outdated ones. 
-
-For more information about ACS, see [Access Control Service 2.0](http://msdn.microsoft.com/en-us/library/gg429786.aspx).
+このトピックでは、Azure の Access Control サービス (ACS) を使用するアプリケーションが適切に中断なく動作するように、定期的に実行することが推奨される管理タスクについて概要を説明します。この管理タスクは次のとおりです。
 
 
+1. 重要: ACS 名前空間、証明書利用者のアプリケーション、サービス ID、ID プロバイダー、および ACS 管理サービス アカウントで使用する、証明書、キー、パスワードに関する有効期限の追跡とロールオーバーの実行。詳細については、以下の「証明書とキーの管理のガイドライン」を参照してください。
 
-## Certificates and Keys Management Guidelines ##
+2. ID プロバイダー、サービス ID、ルール、およびポータル管理者の見直し、および古くなった項目の削除。
 
-For security reasons, certificates and keys that are used in ACS are guaranteed to expire. It is important to keep track of the expiration dates so these certificates and keys can be renewed.
+ACS の詳細については、[アクセス制御サービス 2.0 に関するページ](http://msdn.microsoft.com/ja-jp/library/gg429786.aspx)を参照してください。
 
-The high-level steps for rolling over a token signing (symmetric key or X.509 certificate) or token decryption certificate are:
 
-1.	Configure the new certificate or key in ACS as a "secondary" key, alongside the existing certificate or key that will expire.
-2.	Notify the partners that use the service that they need to update their corresponding keys before a certain deadline.
-3.	Partners should update the corresponding certificate or key for their relying parties or identity providers. For example, import the updated WS-Federation metadata for the ACS namespace that contains the new token signature validation certificate, or manually configure the symmetric key in the application config.
-4.	After all applications have been updated (or after a deadline has elapsed), mark the new certificate or key as primary in the ACS configuration. 
-5.	After a reasonable grace period, remove the old certificate or key from the ACS configuration.
 
-The high-level steps for rolling over token encryption certifcates are:
+## 証明書とキーの管理のガイドライン##
 
-1.	You (or your partners) update the corresponding certificate or key that is used for token decryption in the relying party applications.
-2.	Configure the new encryption certificate in ACS, alongside the existing certificate that will expire.
-3.	Remove the old encryption certificate.
+セキュリティ上の理由から、ACS で使用する証明書とキーには有効期限が設定されています。有効期限を常時監視して、証明書とキーを更新できるようにすることが重要です。
 
-The high-level steps for rolling over service identity or management service keys:
+トークン署名 (対称キーまたは X.509 証明書) またはトークン復号化証明書をロールオーバーする高水準の手順は次のとおりです。
 
-1.	Configure the new certificate or key in ACS, alongside the existing certificate or key that will expire.
-2.	You (or your partners) update the corresponding certificate or key that is used for token requests in the client applications.
-3.	After all clients have been updated (or after a reasonable grace period), remove the old certificate or key.
+1.	有効期限の切れる既存の証明書またはキーと並行して、ACS の新しい証明書またはキーを "セカンダリ" キーとして構成します。
+2.	サービスを利用するパートナーに、該当するキーを特定の期日までに更新する必要があることを通知します。
+3.	パートナーは、証明書利用者または ID プロバイダーの該当する証明書またはキーを更新する必要があります。たとえば、新しいトークン署名検証証明書を含む、ACS 名前空間の更新された WS-Federation メタデータをインポートします。または、アプリケーション構成の対称キーを手作業で構成します。
+4.	すべてのアプリケーションが更新された後 (または期日を過ぎた後)、ACS 構成で新しい証明書またはキーをプライマリとしてマークします。
+5.	妥当な猶予期間が経過した後、ACS 構成から古い証明書またはキーを削除します。
+
+トークン暗号化証明書をロールオーバーする高水準の手順は次のとおりです。
+
+1.	ユーザー (またはパートナー) は、証明書利用者のアプリケーションでトークン復号化に使用される該当する証明書またはキーを更新します。
+2.	有効期限の切れる既存の証明書と並行して、ACS の新しい暗号化証明書を構成します。
+3.	古い暗号化証明書を削除します。
+
+サービス ID または管理サービス キーをロールオーバーする高水準の手順は次のとおりです。
+
+1.	有効期限の切れる既存の証明書またはキーと並行して、ACS の新しい証明書またはキーを構成します。
+2.	ユーザー (またはパートナー) は、クライアント アプリケーションでトークン要求に使用される該当する証明書またはキーを更新します。
+3.	すべてのクライアントが更新された後 (または妥当な猶予期間が経過した後)、古い証明書またはキーを削除します。
 
  
 
-When a certificate or a key expires, ACS will fail issuing tokens preventing your relying party from operating normally. Expired certificates and keys will be ignored by ACS, effectively causing exceptions as if no certificate or key was configured in first place. In the following sections you will find information for each certificate and key managed by ACS, how to renew it and how to recognize if it is expired and needs to be renewed. 
+証明書またはキーの有効期限が切れると、ACS によるトークンの発行が失敗し、証明書利用者は通常の運用ができなくなります。有効期限の切れた証明書とキーは、ACS によって無視され、そもそも証明書またはキーが構成されていないかのように例外が発生します。以下のセクションでは、ACS によって管理される各証明書とキーの情報、その更新方法、および有効期限が切れて更新が必要であることを認識する方法について説明しています。
 
-- Use the Certificates and Keys section in the ACS Management Portal to manage certificates and keys related to service namespace and relying party applications. For more information about these credential types, see [Certificates and Keys](http://msdn.microsoft.com/en-us/library/gg185932.aspx).
-- Use the Service identities section in the ACS Management Portal to manage credentials (certificates, keys or passwords) related to service identities. For more information about service identities, see [Service Identities](http://msdn.microsoft.com/en-us/library/gg185945.aspx).
-- Use the Management Service section in the ACS Management Portal to manage credentials (certificates, keys or passwords) related to the ACS Management Service accounts. For more information about the ACS Management Service, see [ACS Management Service](http://msdn.microsoft.com/en-us/library/gg185972.aspx).
+- ACS 管理ポータルの [証明書とキー] セクションを使用して、サービス名前空間と証明書利用者のアプリケーションに関連する証明書とキーを管理します。資格情報の種類の詳細については、「[証明書とキー](http://msdn.microsoft.com/ja-jp/library/gg185932.aspx)」を参照してください。
+- ACS 管理ポータルの [サービス ID] セクションを使用して、サービス ID に関連する資格情報 (証明書、キー、またはパスワード) を管理します。サービス ID の詳細については、「[サービス ID](http://msdn.microsoft.com/ja-jp/library/gg185945.aspx)」を参照してください。
+- ACS 管理ポータルの [管理サービス] セクションを使用して、ACS 管理サービス アカウントに関連する資格情報 (証明書、キー、またはパスワード) を管理します。ACS 管理サービスの詳細については、「[ACS 管理サービス](http://msdn.microsoft.com/ja-jp/library/gg185972.aspx)」を参照してください。
 
-There are some certificate and key types that are not visible in the ACS management portal. Specifically for WS-Federation identity providers such as AD FS, you must proactively check the validity of the certificates that the identity providers use. Currently, certificates available through WS-Federation identity providers' metadata are not visible on the ACS management portal. To verify the validity of the certificates you must use the management service to inspect the Effective and Expiration dates for the [IdentityProviderKey](http://msdn.microsoft.com/en-us/library/hh124084.aspx)'s StartDate and EndDate properties. When the certificate or a key expires, and therefore becomes invalid, ACS will start throwing exceptions [ACS Error Codes](http://msdn.microsoft.com/en-us/library/gg185949.aspx) specific to the certificate or key. Consult the sections below for specific error codes.
+ACS 管理ポータルには、表示されない証明書とキーの種類がいくつかあります。特に AD FS などの WS-Federation ID プロバイダーの場合、ID プロバイダーが使用する証明書の有効性を事前にチェックする必要があります。現在、WS-Federation ID プロバイダーのメタデータを介して利用できる証明書は、ACS 管理ポータルに表示されません。証明書の有効性を確認するには、管理サービスを使用して、[IdentityProviderKey](http://msdn.microsoft.com/ja-jp/library/hh124084.aspx) の StartDate および EndDate プロパティで発効日および有効期限を調べる必要があります。証明書またはキーの有効期限が切れて無効になると、ACS は証明書またはキーに特有の例外をスローし始めます (「[ACS エラー コード](http://msdn.microsoft.com/ja-jp/library/gg185949.aspx)」参照)。具体的なエラー コードについては以下のセクションを参照してください。
 
-You can update the certificates and keys programmatically using [ACS Management Service](http://msdn.microsoft.com/en-us/library/gg185972.aspx). Consider reviewing KeyManagement code sample available for download as part of the [Code Sample: Management Service](http://msdn.microsoft.com/en-us/library/gg185970.aspx).
+証明書とキーは、[ACS 管理サービス](http://msdn.microsoft.com/ja-jp/library/gg185972.aspx)を使用してプログラムから更新できます。[サンプル コード: Management Service](http://msdn.microsoft.com/ja-jp/library/gg185970.aspx) の一部としてダウンロードできる KeyManagement サンプル コードを参照することを考慮してください。
 
-## Available certificates and keys ##
+## 利用できる証明書とキー##
 
-The following list displays the available certificates and keys that are used in ACS and must be tracked for expiration dates:
+以下に、ACS で使用され有効期限を追跡する必要のある、利用できる証明書とキーの一覧を示します。
 
-- Token signing certificates
-- Token signing keys
-- Token encryption certificates
-- Token decryption certificates
-- Service identity credentials
-- ACS Management Service account credentials
-- Identity provider signing and encryption certificates
+- トークン署名証明書
+- トークン署名キー
+- トークン暗号化証明書
+- トークン復号化証明書
+- サービス ID 資格情報
+- ACS 管理サービス アカウント資格情報
+- ID プロバイダー署名証明書および暗号化証明書
 
-The rest of this topic covers each certificate and key in detail.
+このトピックの残りでは、証明書とキーのそれぞれについて詳細に取り上げます。
 
-## Token signing certificates ##
+## トークン署名証明書##
 
-ACS signs all security tokens it issues. X.509 certificates are used for signing when you build an application that consumes SAML tokens issued by ACS. 
+ACS は発行するすべてのセキュリティ トークンに署名します。X.509 証明書は、ACS が発行する SAML トークンを使用するアプリケーションをビルドするときに署名のために使用されます。
 
-You can manage token signing certificates via the Certificates and Key section of the ACS Management Portal. 
+トークン署名証明書は、ACS 管理ポータルの [証明書とキー] セクションで管理できます。
 
-**To Manage token signing certificates**
+**トークン署名証明書を管理するには**
 
-1. Open an Internet browser and visit the Azure Management Portal ([http://go.microsoft.com/fwlink/?LinkID=129428](http://go.microsoft.com/fwlink/?LinkID=129428)).
+1. [http://go.microsoft.com/fwlink/?LinkID=129428](http://go.microsoft.com/fwlink/?LinkID=129428)Web ブラウザーを開き、Azure の管理ポータルにアクセスします。
 
-2. Log on to the web site using a Windows Live ID. If you do not have a Windows Live ID, click Sign up to create one for yourself.
+2. Windows Live ID を使用して Web サイトにログオンします。Windows Live ID がない場合は、[サインアップ] をクリックして、自分用の Windows Live ID を作成します。
 
-3. After you are signed in with your Windows Live ID, you are redirected to the Management Portal page. On the lower-left-hand side of this page, click **Service Bus and Access Control**.
+3. Windows Live ID を使ってサインインすると、管理ポータルのページにリダイレクトされます。このページの左下で、**[Service Bus と Access Control]** をクリックします。
 
 	![][ACS1]
 
-4. To launch the ACS Management Portal, click **Access Control** in the tree on the left-hand side, select the ACS service namespace that you want to configure, and then click the **Access Control Service** button from the toolbar at the top of the page. 
+4. ACS 管理ポータルを開くには、左側にあるツリーで **[Access Control]** をクリックし、構成する ACS サービス名前空間を選択して、ページ上部にあるツール バーの **[Access Control サービス]** をクリックします。
 
 	![][ACS2]
 
-	At this point your screen should look like this:
+	この時点で、画面は次の図のようになります。
 
 	![][ACS3]
 
-5. Click **Certificates and Keys** in the tree on the left-hand side under the Service Settings section.
+5. 左側のツリーで [サービスの設定] セクションにある **[証明書とキー]** をクリックします。
 
     ![][ACS4]
    
-    At this point, your screen should look like this:
+    この時点で、画面は次の図のようになります。
 
     ![][ACS5]
 
-6. Under the Token Signing section, use the Add button to configure the new certificate in ACS as a "secondary" key, alongside the existing certificate that will expire.
+6. [トークン署名] セクションで [追加] ボタンを使用し、有効期限の切れる既存の証明書と並行して、ACS の新しい証明書を "セカンダリ" キーとして構成します。
 
-7. Notify the partners that use the service that they need to update their corresponding keys before a certain deadline.
+7. サービスを利用するパートナーに、該当するキーを特定の期日までに更新する必要があることを通知します。
 
-8. Partners should update the corresponding certificate for their relying parties or identity providers. For example, import the updated WS-Federation metadata for the ACS namespace that contains the new token signature validation certificate, or manually configure the symmetric key in the application config.
+8. パートナーは、証明書利用者または ID プロバイダーの該当する証明書を更新する必要があります。たとえば、新しいトークン署名検証証明書を含む、ACS 名前空間の更新された WS-Federation メタデータをインポートします。または、アプリケーション構成の対称キーを手作業で構成します。
 
-9. After all applications have been updated (or after a deadline has elapsed), mark the new certificate as primary in the ACS configuration. 
+9. すべてのアプリケーションが更新された後 (または期日を過ぎた後)、ACS 構成で新しい証明書をプライマリとしてマークします。
 
-10. After a reasonable grace period, use the Delete button under the Token Signing section of the Certificates and Keys page to remove the old certificate from the ACS configuration.
+10. 妥当な猶予期間が過ぎた後、[証明書とキー] ページの [トークン署名] セクションにある [削除] ボタンを使用して、ACS 構成から古い証明書を削除します。
 
 
-For more information, see [Certificates and Keys](http://msdn.microsoft.com/en-us/library/gg185932.aspx).
+詳細については、「[証明書とキー](http://msdn.microsoft.com/ja-jp/library/gg185932.aspx)」を参照してください。
 
-When signing certificates expire you will receive the following errors when trying to request a token:
+署名証明書の有効期限が切れると、トークンの要求時に次のエラーが発生します。
 
-<table><tr><td><b>Error Code</b></td>
-<td><b>Message</b></td>
-<td><b>Action required to fix the message</b></td>
+<table><tr><td><b>エラー コード</b></td>
+<td><b>メッセージ</b></td>
+<td><b>対策</b></td>
 </tr>
 <tr>
 <td>ACS50004</td>
-<td>No primary X.509 signing certificate is configured. A signing certificate is required for SAML.</td>
-<td>If the chosen relying party uses SAML as its token type, ensure that a valid X.509 certificate is configured for the relying party or the service namespace. The certificate must be set to primary and must be within its validity period.</td></tr>
+<td>プライマリ X.509 署名証明書が構成されていません。SAML には署名証明書が必要です。</td>
+<td>選択した証明書利用者がトークンの種類として SAML を使用している場合、証明書利用者またはサービス名前空間に有効な X.509 証明書が構成されていることを確認します。その証明書は、プライマリに設定されていて、有効期間内である必要があります。</td></tr>
 </table> 
 
-## Token signing key ##
+## トークン署名キー##
 
-ACS signs all security tokens it issues. 256-bit symmetric signing keys are used when you build an application that consumes SWT tokens issued by ACS. 
+ACS は発行するすべてのセキュリティ トークンに署名します。256 ビット対称署名キーは、ACS が発行する SWT トークンを使用するアプリケーションをビルドするときに署名のために使用されます。
 
-You can manage token signing keys via the Certificates and Key section of the ACS Management Portal. 
+トークン署名キーは、ACS 管理ポータルの [証明書とキー] セクションで管理できます。
 
-**To manage token signing key**
+**トークン署名キーを管理するには**
 
-1. Open an Internet browser and visit the Azure Management Portal ([http://go.microsoft.com/fwlink/?LinkID=129428](http://go.microsoft.com/fwlink/?LinkID=129428)).
+1. [http://go.microsoft.com/fwlink/?LinkID=129428](http://go.microsoft.com/fwlink/?LinkID=129428)Web ブラウザーを開き、Azure の管理ポータルにアクセスします。
 
-2. Log on to the web site using a Windows Live ID. If you do not have a Windows Live ID, click Sign up to create one for yourself.
+2. Windows Live ID を使用して Web サイトにログオンします。Windows Live ID がない場合は、[サインアップ] をクリックして、自分用の Windows Live ID を作成します。
 
-3. After you are signed in with your Windows Live ID, you are redirected to the Management Portal page. On the lower-left-hand side of this page, click **Service Bus and Access Control**.
+3. Windows Live ID を使ってサインインすると、管理ポータルのページにリダイレクトされます。このページの左下で、**[Service Bus と Access Control]** をクリックします。
 
 	![][ACS1]
 
-4. To launch the ACS Management Portal, click **Access Control** in the tree on the left-hand side, select the ACS service namespace that you want to configure, and then click the **Access Control Service** button from the toolbar at the top of the page. 
+4. ACS 管理ポータルを開くには、左側にあるツリーで **[Access Control]** をクリックし、構成する ACS サービス名前空間を選択して、ページ上部にあるツール バーの **[Access Control サービス]** をクリックします。
 
 	![][ACS2]
 
-	At this point your screen should look like this:
+	この時点で、画面は次の図のようになります。
 
 	![][ACS3]
 
-5. Click **Certificates and Keys** in the tree on the left-hand side under the Service Settings section.
+5. 左側のツリーで [サービスの設定] セクションにある **[証明書とキー]** をクリックします。
 
     ![][ACS4]
     
-    At this point, your screen should look like this:
+    この時点で、画面は次の図のようになります。
 
     ![][ACS5]
 
-6. Under the Token Signing section, use the Add button to configure the new key in ACS as a "secondary" key, alongside the existing key that will expire.
+6. [トークン署名] セクションで [追加] ボタンを使用し、有効期限の切れる既存のキーと並行して、ACS の新しいキーを "セカンダリ" キーとして構成します。
 
-7. Notify the partners that use the service that they need to update their corresponding keys before a certain deadline.
+7. サービスを利用するパートナーに、該当するキーを特定の期日までに更新する必要があることを通知します。
 
-8. Partners should update the corresponding key for their relying parties or identity providers. For example, import the updated WS-Federation metadata for the ACS namespace that contains the new token signature validation certificate, or manually configure the symmetric key in the application config.
+8. パートナーは、証明書利用者または ID プロバイダーの該当するキーを更新する必要があります。たとえば、新しいトークン署名検証証明書を含む、ACS 名前空間の更新された WS-Federation メタデータをインポートします。または、アプリケーション構成の対称キーを手作業で構成します。
 
-9. After all applications have been updated (or after a deadline has elapsed), mark the new key as primary in the ACS configuration. 
+9. すべてのアプリケーションが更新された後 (または期日を過ぎた後)、ACS 構成で新しいキーをプライマリとしてマークします。
 
-10. After a reasonable grace period, use the Delete button under the Token Signing section of the Certificates and Keys page to remove the old key from the ACS configuration.
+10. 妥当な猶予期間が過ぎた後、[証明書とキー] ページの [トークン署名] セクションにある [削除] ボタンを使用して、ACS 構成から古いキーを削除します。
 
-For more information, see [Certificates and Keys](http://msdn.microsoft.com/en-us/library/gg185932.aspx).
+詳細については、「[証明書とキー](http://msdn.microsoft.com/ja-jp/library/gg185932.aspx)」を参照してください。
 
-When signing keys expire you will receive the following errors when trying to request a token:
+署名キーの有効期限が切れると、トークンの要求時に次のエラーが発生します。
 
-<table><tr><td><b>Error Code</b></td>
-<td><b>Message</b></td>
-<td><b>Action required to fix the message</b></td>
+<table><tr><td><b>エラー コード</b></td>
+<td><b>メッセージ</b></td>
+<td><b>対策</b></td>
 </tr>
 <tr>
 <td>ACS50003</td>
-<td>No primary symmetric signing key is configured. A symmetric signing key is required for SWT.</td>
-<td>If the chosen relying party uses SWT as its token type, ensure that a symmetric key is configured for the relying party or the service namespace, and that the key is set to primary and within its validity period.</td></tr>
+<td>プライマリ対称署名キーが構成されていません。SWT には対称署名キーが必要です。</td>
+<td>選択した証明書利用者がトークンの種類として SWT を使用している場合、証明書利用者またはサービス名前空間に対称キーが構成されていること、およびキーがプライマリに設定されていて有効期間内であることを確認します。</td></tr>
 </table> 
 
-## Token encryption certificates ##
+## トークン暗号化証明書##
 
-Token encryption is required if a relying party application is a web service using proof-of-possession tokens over the WS-Trust protocol, in other cases token encryption is optional.  
+トークン暗号化は、証明書利用者のアプリケーションが WS-Trust プロトコル上の proof-of-possession トークンを使用する Web サービスである場合に必須になります。それ以外の場合、トークン暗号化は任意です。
 
-You can manage token encryption certificates via the Certificates and Key section of the ACS Management Portal. 
+トークン暗号化証明書は、ACS 管理ポータルの [証明書とキー] セクションで管理できます。
 
-**To manage token encryption certificates**
+**トークン暗号化証明書を管理するには**
 
-1. Open an Internet browser and visit the Azure Management Portal ([http://go.microsoft.com/fwlink/?LinkID=129428](http://go.microsoft.com/fwlink/?LinkID=129428)).
+1. [http://go.microsoft.com/fwlink/?LinkID=129428](http://go.microsoft.com/fwlink/?LinkID=129428)Web ブラウザーを開き、Azure の管理ポータルにアクセスします。
 
-2. Log on to the web site using a Windows Live ID. If you do not have a Windows Live ID, click Sign up to create one for yourself.
+2. Windows Live ID を使用して Web サイトにログオンします。Windows Live ID がない場合は、[サインアップ] をクリックして、自分用の Windows Live ID を作成します。
 
-3. After you are signed in with your Windows Live ID, you are redirected to the Management Portal page. On the lower-left-hand side of this page, click **Service Bus and Access Control**.
+3. Windows Live ID を使ってサインインすると、管理ポータルのページにリダイレクトされます。このページの左下で、**[Service Bus と Access Control]** をクリックします。
 
 	![][ACS1]
 
-4. To launch the ACS Management Portal, click **Access Control** in the tree on the left-hand side, select the ACS service namespace that you want to configure, and then click the **Access Control Service** button from the toolbar at the top of the page. 
+4. ACS 管理ポータルを開くには、左側にあるツリーで **[Access Control]** をクリックし、構成する ACS サービス名前空間を選択して、ページ上部にあるツール バーの **[Access Control サービス]** をクリックします。
 
 	![][ACS2]
 
-	At this point your screen should look like this:
+	この時点で、画面は次の図のようになります。
 
 	![][ACS3]
 
-5. Click **Certificates and Keys** in the tree on the left-hand side under the Service Settings section.
+5. 左側のツリーで [サービスの設定] セクションにある **[証明書とキー]** をクリックします。
 
     ![][ACS4]
 
-    At this point, your screen should look like this:
+    この時点で、画面は次の図のようになります。
 
     ![][ACS7]
 
-6. You (or your partners) update the corresponding certificate or key that is used for token decryption in the relying party applications
-7. Use the Add button to configure the new encryption certificate in ACS, alongside the existing certificate that will expire.
-8. Use the Delete to remove the old encryption certificate.
+6. ユーザー (またはパートナー) は、証明書利用者のアプリケーションでトークン復号化に使用される該当する証明書またはキーを更新します。
+7. [追加] ボタンを使用して、有効期限の切れる既存の証明書と並行して、ACS の新しい暗号化証明書を構成します。
+8. [削除] ボタンを使用して、古い暗号化証明書を削除します。
 
 
 
-For more information, see [Certificates and Keys](http://msdn.microsoft.com/en-us/library/gg185932.aspx).
+詳細については、「[証明書とキー](http://msdn.microsoft.com/ja-jp/library/gg185932.aspx)」を参照してください。
 
-When encryption certificates expire you will receive the following errors when trying to request a token:
+暗号化証明書の有効期限が切れると、トークンの要求時に次のエラーが発生します。
 
-<table><tr><td><b>Error Code</b></td>
-<td><b>Message</b></td>
-<td><b>Action required to fix the message</b></td>
+<table><tr><td><b>エラー コード</b></td>
+<td><b>メッセージ</b></td>
+<td><b>対策</b></td>
 </tr>
 <tr>
 <td>ACS50005</td>
-<td>Token encryption is required but no encrypting certificate is configured for the relying party.</td>
-<td>Either disable token encryption for the chosen relying party or upload an X.509 certificate to be used for token encryption.</td></tr>
+<td>トークン暗号化が必須ですが、証明書利用者に暗号化証明書が構成されていません。</td>
+<td>選択した証明書利用者のトークン暗号化を無効にするか、トークン暗号化に使用する X.509 証明書をアップロードします。</td></tr>
 </table> 
 
-## Token decryption certificates ##
+## トークン復号化証明書##
 
-ACS can accept encrypted tokens from WS-Federation identity providers (for example, AD FS 2.0). An X.509 certificate hosted in ACS is used for decryption. 
+ACS は WS-Federation ID プロバイダー (たとえば AD FS 2.0) の暗号化されたトークンを受け付けることができます。ACS でホストされる X.509 証明書は、復号化に使用されます。
 
-You can manage token decryption certificates via the Certificates and Key section of the ACS Management Portal. 
+トークン復号化証明書は、ACS 管理ポータルの [証明書とキー] セクションで管理できます。
 
-**To manage token decryption certificates**
+**トークン復号化証明書を管理するには**
 
-1. Open an Internet browser and visit the Azure Management Portal ([http://go.microsoft.com/fwlink/?LinkID=129428](http://go.microsoft.com/fwlink/?LinkID=129428)).
+1. [http://go.microsoft.com/fwlink/?LinkID=129428](http://go.microsoft.com/fwlink/?LinkID=129428)Web ブラウザーを開き、Azure の管理ポータルにアクセスします。
 
-2. Log on to the web site using a Windows Live ID. If you do not have a Windows Live ID, click Sign up to create one for yourself.
+2. Windows Live ID を使用して Web サイトにログオンします。Windows Live ID がない場合は、[サインアップ] をクリックして、自分用の Windows Live ID を作成します。
 
-3. After you are signed in with your Windows Live ID, you are redirected to the Management Portal page. On the lower-left-hand side of this page, click **Service Bus and Access Control**.
+3. Windows Live ID を使ってサインインすると、管理ポータルのページにリダイレクトされます。このページの左下で、**[Service Bus と Access Control]** をクリックします。
 
 	![][ACS1]
 
-4. To launch the ACS Management Portal, click **Access Control** in the tree on the left-hand side, select the ACS service namespace that you want to configure, and then click the **Access Control Service** button from the toolbar at the top of the page. 
+4. ACS 管理ポータルを開くには、左側にあるツリーで **[Access Control]** をクリックし、構成する ACS サービス名前空間を選択して、ページ上部にあるツール バーの **[Access Control サービス]** をクリックします。
 
 	![][ACS2]
 
-	At this point your screen should look like this:
+	この時点で、画面は次の図のようになります。
 
 	![][ACS3]
 
-5. Click **Certificates and Keys** in the tree on the left-hand side under the Service Settings section.
+5. 左側のツリーで [サービスの設定] セクションにある **[証明書とキー]** をクリックします。
 
     ![][ACS4]
 
-    At this point, your screen should look like this:
+    この時点で、画面は次の図のようになります。
 
     ![][ACS9]
 
-6. Under the Token decryption section, use the Add bu tton to configure the new certificate in ACS as a "secondary" key, alongside the existing certificate that will expire.
+6. [トークン復号化] セクションで [追加] ボタンを使用し、有効期限の切れる既存の証明書と並行して、ACS の新しい証明書を "セカンダリ" キーとして構成します。
 
-7. Notify the partners that use the service that they need to update their corresponding keys before a certain deadline.
+7. サービスを利用するパートナーに、該当するキーを特定の期日までに更新する必要があることを通知します。
 
-8. Partners should update the corresponding certificate for their relying parties or identity providers. For example, import the updated WS-Federation metadata for the ACS namespace that contains the new token signature validation certificate, or manually configure the symmetric key in the application config.
+8. パートナーは、証明書利用者または ID プロバイダーの該当する証明書を更新する必要があります。たとえば、新しいトークン署名検証証明書を含む、ACS 名前空間の更新された WS-Federation メタデータをインポートします。または、アプリケーション構成の対称キーを手作業で構成します。
 
-9. After all applications have been updated (or after a deadline has elapsed), mark the new certificate as primary in the ACS configuration. 
+9. すべてのアプリケーションが更新された後 (または期日を過ぎた後)、ACS 構成で新しい証明書をプライマリとしてマークします。
 
-10. After a reasonable grace period, use the Delete button under the Token Signing section of the Certificates and Keys page to remove the old certificate from the ACS configuration.
+10. 妥当な猶予期間が過ぎた後、[証明書とキー] ページの [トークン署名] セクションにある [削除] ボタンを使用して、ACS 構成から古い証明書を削除します。
 
-For more information, see [Certificates and Keys](http://msdn.microsoft.com/en-us/library/gg185932.aspx).
+詳細については、「[証明書とキー](http://msdn.microsoft.com/ja-jp/library/gg185932.aspx)」を参照してください。
 
-When decryption certificates expire you will receive the following errors when trying to request a token:
+復号化証明書の有効期限が切れると、トークンの要求時に次のエラーが発生します。
 
-<table><tr><td><b>Error Code</b></td>
-<td><b>Message</b></td>
+<table><tr><td><b>エラー コード</b></td>
+<td><b>メッセージ</b></td>
 </tr>
 <tr>
 <td>ACS10001</td>
-<td>An error occurred while processing the SOAP header.</td>
+<td>SOAP ヘッダーの処理中にエラーが発生しました。</td>
 </tr>
 <tr><td>ACS20001</td>
-<td>An error occurred while processing a WS-Federation sign-in response.</td></tr>
+<td>WS-Federation サインイン応答の処理中にエラーが発生しました。</td></tr>
 </table> 
 
-## Service identity credentials ##
+## サービス ID 資格情報##
 
-Service identities are credentials that are configured globally for the ACS namespace that allow applications or clients to authenticate directly with ACS and receive a token. There are three credential types that an ACS service identity can be associated with Symmetric key, Password, and X.509 certificate. 
+サービス ID とは、ACS 名前空間でグローバルに構成される資格情報で、これを使ってアプリケーションまたはクライアントは ACS で直接認証してトークンを受け取ることができます。ACS のサービス ID 資格情報には、対称キー、パスワード、および X.509 証明書という 3 つの種類があります。
 
-You can manage service identity credentials via the Service identities page of the ACS Management Portal. 
+サービス ID 資格情報は、ACS 管理ポータルの [サービス ID] ページで管理できます。
 
-**To manage service identity credentials**
+**サービス ID 資格情報を管理するには**
 
-1. Open an Internet browser and visit the Azure Management Portal ([http://go.microsoft.com/fwlink/?LinkID=129428](http://go.microsoft.com/fwlink/?LinkID=129428)).
+1. [http://go.microsoft.com/fwlink/?LinkID=129428](http://go.microsoft.com/fwlink/?LinkID=129428)Web ブラウザーを開き、Azure の管理ポータルにアクセスします。
 
-2. Log on to the web site using a Windows Live ID. If you do not have a Windows Live ID, click Sign up to create one for yourself.
+2. Windows Live ID を使用して Web サイトにログオンします。Windows Live ID がない場合は、[サインアップ] をクリックして、自分用の Windows Live ID を作成します。
 
-3. After you are signed in with your Windows Live ID, you are redirected to the Management Portal page. On the lower-left-hand side of this page, click **Service Bus and Access Control**.
+3. Windows Live ID を使ってサインインすると、管理ポータルのページにリダイレクトされます。このページの左下で、**[Service Bus と Access Control]** をクリックします。
 
 	![][ACS1]
 
-4. To launch the ACS Management Portal, click **Access Control** in the tree on the left-hand side, select the ACS service namespace that you want to configure, and then click the **Access Control Service** button from the toolbar at the top of the page. 
+4. ACS 管理ポータルを開くには、左側にあるツリーで **[Access Control]** をクリックし、構成する ACS サービス名前空間を選択して、ページ上部にあるツール バーの **[Access Control サービス]** をクリックします。
 
 	![][ACS2]
 
-	At this point your screen should look like this:
+	この時点で、画面は次の図のようになります。
 
 	![][ACS3]
 
-5.  Click **Service identities** in the tree on the left-hand side under the Service Settings section.
+5. 左側のツリーで [サービスの設定] セクションにある **[サービス ID]** をクリックします。
 
     ![][ACS11]
 
-6. Click the service identity which you want to edit.
+6. 編集するサービス ID をクリックします。
 
     ![][ACS112]
 
-7.	In the Credentials section, use the Add button to configure the new certificate or key in ACS, alongside the existing certificate or key that will expire.
+7.	[資格情報] セクションで [追加] ボタンを使用して、有効期限の切れる既存の証明書またはキーと並行して、ACS の新しい証明書またはキーを "セカンダリ" キーとして構成します。
 
-8.	You (or your partners) update the corresponding certificate or key that is used for token requests in the client applications.
+8.	ユーザー (またはパートナー) は、クライアント アプリケーションでトークン要求に使用される該当する証明書またはキーを更新します。
 
-9.	After all clients have been updated (or after a reasonable grace period), use the Delete button to remove the old certificate or key.
+9.	すべてのクライアントが更新された後 (または妥当な猶予期間が経過した後)、[削除] ボタンを使用して古い証明書またはキーを削除します。
 
 
-For more information, see [Service Identities](http://msdn.microsoft.com/en-us/library/gg185945.aspx).
+詳細については、「[サービス ID](http://msdn.microsoft.com/ja-jp/library/gg185945.aspx)」を参照してください。
 
-Following are the exception that ACS will throw if the credentials are expired:
+以下は資格情報の有効期限が切れた場合に ACS がスローする例外です。
 
-<table><tr><td><b>Credential></b></td><td><b>Error Code</b></td>
-<td><b>Message</b></td><td><b>Action required to fix the message</b></td>
+<table><tr><td><b>資格情報></b></td><td><b>エラー コード</b></td>
+<td><b>メッセージ</b></td><td><b>対策</b></td>
 </tr>
 <tr>
-<td>Symmetric key, Password</td>
+<td>対称キー、パスワード</td>
 <td>ACS50006</td>
-<td>Signature verification failed. (There may be more details in the message.)</td>
+<td>署名の確認に失敗しました。(メッセージに詳細が示される場合があります)</td>
 <td></td>
 </tr>
-<tr><td>X.509 Certificate</td>
+<tr><td>X.509 証明書</td>
 <td>ACS50016</td>
-<td>X509Certificate with subject '&lt;Certificate subject name&gt;' and thumbprint '&lt;Certificate thumbprint&gt;' does not match any configured certificate.</td>
-<td>Ensure that the requested certificate has been uploaded to ACS.</td>
+<td>件名 '&lt;Certificate subject name&gt;' およびサムプリント '&lt;Certificate thumbprint&gt;' の X509Certificate と一致する構成済みの証明書がありません。</td>
+<td>要求された証明書が ACS にアップロードされていることを確認します。</td>
 </tr>
 </table> 
 
-To verify and update expiration dates of symmetric keys or password, or to upload new certificate as service identity credentials follow instructions outlined in [How To: Add Service Identities with an X.509 Certificate, Password, or Symmetric Key](http://msdn.microsoft.com/en-us/library/gg185924.aspx). List of service identity credentials available in the Edit Service Identity page.
+対称キーまたはパスワードの有効期限を確認し更新するには、または、新しい証明書をサービス ID 資格情報としてアップロードするには、「[方法: X.509 証明書、パスワード、または対称キーを使用してサービス ID を追加する](http://msdn.microsoft.com/ja-jp/library/gg185924.aspx)」の指示に従ってください。サービス ID 資格情報の一覧は、[サービス ID の編集] ページにあります。
 
-## Management Service Credentials ##
+## 管理サービス資格情報##
 
-The ACS Management Service is a key component of ACS that allows you to programmatically manage and configure settings in an ACS namespace. There are three credential types that the ACS Management service account can be associated with. These are symmetric key, password, and an X.509 certificate. 
+ACS 管理サービスは、ACS 名前空間の設定をプログラムによって管理し構成することを可能にする ACS の重要なコンポーネントです。ACS 管理サービス アカウントに関連付けることのできる資格情報は 3 種類あります。それは、対称キー、パスワード、および X.509 証明書です。
 
-You can manage the management service credentials via the Management service page of the ACS Management Portal. 
+管理サービス資格情報は、ACS 管理ポータルの [管理サービス] ページで管理できます。
 
-**To manage the ACS Management Service credentials**
+**ACS 管理サービス資格情報を管理するには**
 
-1. Open an Internet browser and visit the Azure Management Portal ([http://go.microsoft.com/fwlink/?LinkID=129428](http://go.microsoft.com/fwlink/?LinkID=129428)).
+1. [http://go.microsoft.com/fwlink/?LinkID=129428](http://go.microsoft.com/fwlink/?LinkID=129428)Web ブラウザーを開き、Azure の管理ポータルにアクセスします。
 
-2. Log on to the web site using a Windows Live ID. If you do not have a Windows Live ID, click Sign up to create one for yourself.
+2. Windows Live ID を使用して Web サイトにログオンします。Windows Live ID がない場合は、[サインアップ] をクリックして、自分用の Windows Live ID を作成します。
 
-3. After you are signed in with your Windows Live ID, you are redirected to the Management Portal page. On the lower-left-hand side of this page, click **Service Bus and Access Control**.
+3. Windows Live ID を使ってサインインすると、管理ポータルのページにリダイレクトされます。このページの左下で、**[Service Bus と Access Control]** をクリックします。
 
 	![][ACS1]
 
-4. To launch the ACS Management Portal, click **Access Control** in the tree on the left-hand side, select the ACS service namespace that you want to configure, and then click the **Access Control Service** button from the toolbar at the top of the page. 
+4. ACS 管理ポータルを開くには、左側にあるツリーで **[Access Control]** をクリックし、構成する ACS サービス名前空間を選択して、ページ上部にあるツール バーの **[Access Control サービス]** をクリックします。
 
 	![][ACS2]
 
-	At this point your screen should look like this:
+	この時点で、画面は次の図のようになります。
 
 	![][ACS3]
 
-5. Click **Management service** in the tree on the left-hand side under the Administration section.
+5. 左側のツリーで [管理] セクションにある **[管理サービス]** をクリックします。
 
     ![][ACS14]
         
-6. Click the management service account.
+6. 管理サービス アカウントをクリックします。
 
     ![][ACS15]
 
-7. In the Credentials section, use the Add button to configure the new certificate or key in ACS, alongside the existing certificate or key that will expire.
+7. [資格情報] セクションで [追加] ボタンを使用して、有効期限の切れる既存の証明書またはキーと並行して、ACS の新しい証明書またはキーを "セカンダリ" キーとして構成します。
 
-8.	You (or your partners) update the corresponding certificate or key that is used for token requests in the client applications.
+8.	ユーザー (またはパートナー) は、クライアント アプリケーションでトークン要求に使用される該当する証明書またはキーを更新します。
 
-9.	After all clients have been updated (or after a reasonable grace period), use the delete button to remove the old certificate or key.
+9.	すべてのクライアントが更新された後 (または妥当な猶予期間が経過した後)、[削除] ボタンを使用して古い証明書またはキーを削除します。
 
 
-For more information, see [ACS Management Service](http://msdn.microsoft.com/en-us/library/gg185972.aspx).
+詳細については、「[ACS 管理サービス](http://msdn.microsoft.com/ja-jp/library/gg185972.aspx)」を参照してください。
 
-ACS will throw out the following exceptions if these credentials are expired:
+資格情報の有効期限が切れた場合、ACS は以下の例外をスローします。
 
-<table><tr><td><b>Credential></b></td><td><b>Error Code</b></td>
-<td><b>Message</b></td><td><b>Action required to fix the message</b></td>
+<table><tr><td><b>資格情報></b></td><td><b>エラー コード</b></td>
+<td><b>メッセージ</b></td><td><b>対策</b></td>
 </tr>
 <tr>
-<td>Symmetric key, Password</td>
+<td>対称キー、パスワード</td>
 <td>ACS50006</td>
-<td>Signature verification failed. (There may be more details in the message.)</td>
+<td>署名の確認に失敗しました。(メッセージに詳細が示される場合があります)</td>
 <td></td>
 </tr>
-<tr><td>X.509 Certificate</td>
+<tr><td>X.509 証明書</td>
 <td>ACS50016</td>
-<td>X509Certificate with subject '&lt;Certificate subject name&gt;' and thumbprint '&lt;Certificate thumbprint&gt;' does not match any configured certificate.</td>
-<td>Ensure that the requested certificate has been uploaded to ACS.</td>
+<td>件名 '&lt;Certificate subject name&gt;' およびサムプリント '&lt;Certificate thumbprint&gt;' の X509Certificate と一致する構成済みの証明書がありません。</td>
+<td>要求された証明書が ACS にアップロードされていることを確認します。</td>
 </tr>
 </table> 
 
-The List of the ACS Management Service account credentials is available on the Edit Management Service Account page in the ACS Management Portal.
+ACS 管理サービス アカウント資格情報の一覧は、ACS 管理ポータルの [管理サービス アカウントの編集] ページにあります。
 
-## WS-Federation identity provider certificate ##
+## WS-Federation ID プロバイダー証明書##
 
-WS-Federation identity provider certificate is available through its metadata. When configuring WS-Federation identity provider, such as AD FS, the WS-Federation signing certificate is configured through WS-Federation metadata available via URL or as a file, read [WS-Federation Identity Providers](http://msdn.microsoft.com/en-us/library/gg185933.aspx) and [How To: Configure AD FS 2.0 as an Identity Provider](http://msdn.microsoft.com/en-us/library/gg185961.aspx) for more information. After the WS-Federation identity provider configured in ACS use ACS management service to query it for its certificates validness. Note that for each consecutive upload of the metadata via the ACS Management Portal or the ACS Management Service, the keys will be replaced. 
+WS-Federation ID プロバイダー証明書は、そのメタデータを介して利用できます。AD FS などの WS-Federation ID プロバイダーの構成時に、WS-Federation 署名証明書は、URL の一部またはファイルとして利用できる WS-Federation メタデータを介して構成されます。詳細については、「[WS-Federation ID プロバイダー](http://msdn.microsoft.com/ja-jp/library/gg185933.aspx)」および「[方法: AD FS 2.0 を ID プロバイダーとして構成する](http://msdn.microsoft.com/ja-jp/library/gg185961.aspx)」を参照してください。WS-Federation ID プロバイダーを ACS で構成した後、ACS 管理サービスを使用してその証明書の有効性を照会します。ACS 管理ポータルまたは ACS 管理サービスを介してメタデータを連続アップロードすると、アップロードのたびにキーが置き換えられることに注意してください。
 
-Following are the exceptions that ACS will throw if the certificate is expired:
+以下は証明書の有効期限が切れた場合に ACS がスローする例外です。
 
-<table><tr><td><b>Error Code</b></td>
-<td><b>Message</b></td>
+<table><tr><td><b>エラー コード</b></td>
+<td><b>メッセージ</b></td>
 </tr>
 <tr>
 <td>ACS10001</td>
-<td>An error occurred while processing the SOAP header.</td>
+<td>SOAP ヘッダーの処理中にエラーが発生しました。</td>
 </tr>
 <tr><td>ACS20001</td>
-<td>An error occurred while processing a WS-Federation sign-in response.</td></tr>
-<tr><td>ACS50006</td><td>Signature verification failed. (There may be more details in the message.)</td></tr>
+<td>WS-Federation サインイン応答の処理中にエラーが発生しました。</td></tr>
+<tr><td>ACS50006</td><td>署名の確認に失敗しました。(メッセージに詳細が示される場合があります)</td></tr>
 </table> 
 
 [ACS1]:./media/manage-acs-namespace/ACS1.png
@@ -440,3 +440,4 @@ Following are the exceptions that ACS will throw if the certificate is expired:
 [ACS112]:./media/manage-acs-namespace/ACS112.png
 [ACS14]:./media/manage-acs-namespace/ACS14.png
 [ACS15]:./media/manage-acs-namespace/ACS15.png
+

@@ -1,72 +1,72 @@
-<properties title="How to use the SendGrid email service (PHP) - Azure" pageTitle="How to use the SendGrid email service (PHP) - Azure" metaKeywords="Azure SendGrid, Azure email service, Azure SendGrid PHP, Azure email PHP" description="Learn how send email with the SendGrid email service on Azure. Code samples written in PHP." documentationCenter="PHP" services="" authors="" />
+<properties title="SendGrid 電子メール サービスの使用方法 (PHP) - Azure" pageTitle="SendGrid 電子メール サービスの使用方法 (PHP) - Azure" metaKeywords="Azure SendGrid, Azure 電子メール サービス, Azure SendGrid PHP, Azure 電子メール PHP" description="Azure の SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。コード サンプルは PHP で記述されています。" documentationCenter="PHP" services="" />
 
-# How to Use the SendGrid Email Service from PHP
+# PHP から SendGrid 電子メール サービスを使用する方法
 
-This guide demonstrates how to perform common programming tasks with the SendGrid email service on Azure. The samples are written in PHP.
-The scenarios covered include **constructing email**, **sending email**, and **adding attachments**. For more information on SendGrid and sending email, see the [Next Steps][] section.
+このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。サンプルは PHP で記述されています。
+紹介するシナリオは、**電子メールの作成**、**電子メールの送信**、および**添付ファイルの追加**です。SendGrid と電子メールの送信の詳細については、「[次のステップ][]」を参照してください。
 
-## Table of Contents
+## 目次
 
--   [What is the SendGrid Email Service][]
--   [Create a SendGrid Account][]
--   [Using SendGrid from your PHP Application][]
--   [How To: Send an Email][]
--   [How To: Add an Attachment][]
--   [How to: Use Filters to Enable Footers, Tracking, and Analytics][]
--   [How to: Use Additional SendGrid Services][]
--   [Next Steps][]
+-   [SendGrid 電子メール サービスとは][]
+-   [SendGrid アカウントの作成][]
+-   [PHP アプリケーションからの SendGrid の使用][]
+-   [方法: 電子メールを送信する][]
+-   [方法: 添付ファイルを追加する][]
+-   [方法: フィルターを使用してフッター、追跡、および分析を有効にする][]
+-   [方法: その他の SendGrid サービスを使用する][]
+-   [次のステップ][]
 
-## <a name="bkmk_WhatIsSendGrid"> </a>What is the SendGrid Email Service?
+## <a name="bkmk_WhatIsSendGrid"> </a>SendGrid 電子メール サービスとは
 
-SendGrid is a [cloud-based email service] that provides reliable
-[transactional email delivery], scalability, and real-time analytics along with flexible APIs
-that make custom integration easy. Common SendGrid usage scenarios
-include:
+SendGrid は、信頼性の高い[トランザクション電子メール配信]、
+拡張性、およびリアルタイム分析の機能を備えた[クラウドベース電子メール サービス]であり、
+柔軟な API を備えているためカスタム統合も容易です。SendGrid の一般的な使用シナリオを
+次に示します。
 
--   Automatically sending receipts to customers
--   Administering distribution lists for sending customers monthly
-    e-fliers and special offers
--   Collecting real-time metrics for things like blocked e-mail, and
-    customer responsiveness
--   Generating reports to help identify trends
--   Forwarding customer inquiries
-- Email notifications from your application
+-   顧客に受信通知を自動送信する
+-   顧客に広告メールを月 1 回送信するための配布リストを
+    管理する
+-   ブロックされた電子メールや顧客の応答性などを表す測定値を
+    リアルタイムで収集する
+-   傾向を認識するために役立つレポートを生成する
+-   顧客の問い合わせを転送する
+- アプリケーションからの電子メール通知
 
-For more information, see [http://sendgrid.com][].
+詳細については、[http://sendgrid.com][] を参照してください。
 
-## <a name="bkmk_CreateSendGrid"> </a>Create a SendGrid Account
+## <a name="bkmk_CreateSendGrid"> </a>SendGrid アカウントの作成
 
 [WACOM.INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-## <a name="bkmk_UsingSendGridfromPHP"> </a>Using SendGrid from your PHP Application
+## <a name="bkmk_UsingSendGridfromPHP"> </a>PHP アプリケーションからの SendGrid の使用
 
-Using SendGrid in an Azure PHP application requires no special
-configuration or coding. Because SendGrid is a service, it can be
-accessed in exactly the same way from a cloud application as it can from
-an on-premises application.
+Azure PHP アプリケーションで SendGrid を使用する際に、
+特別な構成やコーディングは不要です。SendGrid はサービスであるため、
+内部設置型アプリケーションからとまったく同じ方法で、クラウド アプリケーション
+からアクセスできます。
 
-After adding email support to your application, you can package and
-deploy your application by following the methods outlined here:
-[Packaging and Deploying PHP Applications for Azure][].
+電子メール サポートをアプリケーションに追加した後、アプリケーションを
+パッケージ化して展開できます (その方法の概要については
+「[Azure に対する PHP アプリケーションのパッケージ化と配置][]」を参照してください。
 
-## <a name="bkmk_HowToSendEmail"> </a>How to: Send an Email
+## <a name="bkmk_HowToSendEmail"> </a>方法: 電子メールを送信する
 
-You can send email using either SMTP or the Web API provided by
-SendGrid. For details about the benefits and differences of each API, see
-[SMTP vs. Web API][] in the SendGrid documentation.
+SMTP、または SendGrid の Web API を使用して電子メールを
+送信できます。各 API の長所と API 間の違いの詳細については、[SMTP と Web API を
+比較した SendGrid ドキュメント][]を参照してください。
 
 ### SMTP API
 
-To send email using the SendGrid SMTP API, use *Swift Mailer*, a
-component-based library for sending emails from PHP applications. You
-can download the *Swift Mailer* library from
-[http://swiftmailer.org/download][]. Sending email with the library
-involves creating instances of the
-<span class="auto-style2">Swift\_SmtpTransport</span>,
-<span class="auto-style2">Swift\_Mailer</span>, and
-<span class="auto-style2">Swift\_Message</span> classes, setting the
-appropriate properties, and calling the
-<span class="auto-style2">Swift\_Mailer::send</span> method.
+SendGrid SMTP API を使用して電子メールを送信するには、*Swift Mailer* を使用します。
+Swift Mailer は、PHP アプリケーションから電子メールを送信するためのコンポーネントベースのライブラリです。*Swift Mailer* 
+ライブラリは [http://swiftmailer.org/download][] から
+ダウンロードできます。このライブラリを使用して
+電子メールを送信するには、
+<span class="auto-style2">Swift\_SmtpTransport</span>、
+<span class="auto-style2">Swift\_Mailer</span>、および
+<span class="auto-style2">Swift\_Message</span> クラスの
+インスタンスを作成し、適切なプロパティを設定して、
+<span class="auto-style2">Swift\_Mailer::send</span> メソッドを呼び出します。
 
     <?php
      include_once "lib/swift_required.php";
@@ -130,20 +130,19 @@ appropriate properties, and calling the
          print_r($failures);
      }
 
-**Note:**The example script above is taken from the SendGrid
-documentation here:
-[http://docs.sendgrid.com/documentation/get-started/integrate/examples/php-email-example-using-smtp/][].
+**メモ**: この例のスクリプトは SendGrid ドキュメント (
+[http://docs.sendgrid.com/documentation/get-started/integrate/examples/php-email-example-using-smtp/][]
+) からの抜粋です。
 
-For more information about the SMTP API and the X-SMTPAPI header, see
-the SMTP API Developer�s Guide in the SendGrid documentation here:
+SMTP API および X-SMTPAPI ヘッダーの詳細については、
+SendGrid ドキュメントの SMTP API 開発者ガイド 
 [http://docs.sendgrid.com/documentation/api/smtp-api/developers-guide/][].
-For more examples of using the SMTP API with PHP, see the SendGrid
-documentation here:
+PHP で SMTP API を使用するその他の例については、SendGrid ドキュメント 
 [http://docs.sendgrid.com/documentation/api/smtp-api/php-example/][].
 
 ### Web API
 
-Use PHP�s [curl function][] to send email using the SendGrid Web API.
+PHP の [curl 関数][]で SendGrid Web API を使用して電子メールを送信します。
 
     <?php
 
@@ -183,26 +182,25 @@ Use PHP�s [curl function][] to send email using the SendGrid Web API.
      // print everything out
      print_r($response);
 
-**Note:**The example script above is taken from the SendGrid
-documentation here:
+**メモ: **この例のスクリプトは SendGrid 
+ドキュメント 
 [http://docs.sendgrid.com/documentation/get-started/integrate/examples/php-example-using-the-web-api/][].
 
-**Note:**SendGrid�s Web API is very similar to a REST API, though it is
-not truly a RESTful API since, in most calls, both GET and POST verbs
-can be used interchangeably.
+**メモ**: SendGrid の Web API は REST API と非常に似ていますが、
+実際は REST ベースの API ではありません。ほとんどの呼び出しで GET と POST の
+両方の動詞を区別しないで使用できるためです。
 
-For an overview of the Web API, see the SendGrid documentation here:
+Web API の概要については、SendGrid ドキュメント 
 [http://docs.sendgrid.com/documentation/api/web-api/][].
 
-For a complete list of parameters and generic examples for the send mail
-API, see [http://docs.sendgrid.com/documentation/api/web-api/mail/][].
+送信メール API のすべてのパラメーターと一般的な例の一覧については、
+[http://docs.sendgrid.com/documentation/api/web-api/mail/][] を参照してください。
 
-## <a name="bkmk_HowToAddAttachment"> </a>How to: Add an Attachment
+## <a name="bkmk_HowToAddAttachment"> </a>方法: 添付ファイルを追加する
 
 ### SMTP API
 
-Sending an attachment using the SMTP API involves one additional line of
-code to the example script for sending an email with Swift Mailer.
+SMTP API を使用して添付ファイルを送信するには、この例のスクリプトに、Swift Mailer を使用して電子メールを送信するコード行を追加する必要があります。
 
     <?php
      include_once "lib/swift_required.php";
@@ -269,25 +267,25 @@ code to the example script for sending an email with Swift Mailer.
           print_r($failures);
      }
 
-**Note:**The example script above is taken from the SendGrid
-documentation here:
+**メモ: **この例のスクリプトは SendGrid 
+ドキュメント 
 [http://docs.sendgrid.com/documentation/get-started/integrate/examples/php-email-example-using-smtp/][].
 
-The additional line of code is as follows:
+追加するコード行は次のとおりです。
 
-     $message->attach(Swift_Attachment::fromPath("path\to\file")->setFileName(�file_name�));
+     $message->attach(Swift_Attachment::fromPath("path\to\file")->setFileName(ï¿½file_nameï¿½));
 
-This line of code calls the attach method on the
-<span class="auto-style2">Swift\_Message</span> object and uses static
-method <span class="auto-style2">fromPath</span> on the
-<span class="auto-style2">Swift\_Attachment</span> class to get and
-attach a file to a message.
+このコード行では、
+<span class="auto-style2">Swift\_Message</span> オブジェクトの attach メソッドを呼び出し、
+<span class="auto-style2">Swift\_Attachment</span> クラスの
+静的メソッド <span class="auto-style2">fromPath</span> を使用して
+ファイルを取得してメッセージに添付しています。
 
 ### Web API
 
-Sending an attachment using the Web API is very similar to sending an
-email using the Web API. However, note that in the example that follows,
-the parameter array must contain this element:
+Web API を使用した添付ファイルの送信は、Web API を使用した電子メールの
+送信と非常によく似ています。ただし、次の例では、パラメーターの配列に次の要素を
+格納する必要があることに注意してください。
 
      'files['.$fileName.']' => '@'.$filePath.'/'.$fileName
 
@@ -335,22 +333,22 @@ the parameter array must contain this element:
      // print everything out
      print_r($response);
 
-**Note:**The example script above is taken from the SendGrid
-documentation here:
+**メモ: **この例のスクリプトは SendGrid 
+ドキュメント 
 [http://docs.sendgrid.com/documentation/get-started/integrate/examples/php-example-using-the-web-api/][].
 
-## <a name="bkmk_HowToUseFilters"> </a>How to: Use Filters to Enable Footers, Tracking, and Analytics
+## <a name="bkmk_HowToUseFilters"> </a>方法: フィルターを使用してフッター、追跡、および分析を有効にする
 
-SendGrid provides additional email functionality through the use of
-�filters�. These are settings that can be added to an email message to
-enable specific functionality such as enabling click tracking, Google
-analytics, subscription tracking, and so on. For a full list of filters,
-see [Filter Settings][].
+SendGrid では、"フィルター" を使用することでその他の電子メール機能も
+利用することができます。その設定を電子メール メッセージに追加することで、
+クリック追跡、Google 分析、サブスクリプション追跡などの
+独自の機能を有効にすることができます。すべてのフィルターの一覧については、
+[フィルター設定に関するページ][]を参照してください。
 
-Filters can be applied to a message by using the filters property. Each
-filter is specified by a hash containing filter-specific settings. The
-following example enables the footer filter and specifies a text message
-that will be appended to the bottom of the email message:
+フィルターは、フィルターのプロパティを使用してメッセージに適用できます。各フィルターは、
+フィルター固有の設定を格納したハッシュで指定します。次の例では、
+フッター フィルターを有効にし、電子メール メッセージの下部に追加される
+テキスト メッセージを指定しています。
 
     <?php
      /*
@@ -387,15 +385,15 @@ that will be appended to the bottom of the email message:
      // The subject of your email
      $subject = 'Example SendGrid Email';
      
-     // Where is this message coming from. For example, this message can be from support@yourcompany.com, info@yourcompany.com
+     // Where is this message coming from.For example, this message can be from support@yourcompany.com, info@yourcompany.com
      $from = array('someone@example.com' =&gt; 'Name Of Your Company');
      
-     // If you do not specify a sender list above, you can specifiy the user here. If 
+     // If you do not specify a sender list above, you can specifiy the user here.If 
      // a sender list IS specified above, this email address becomes irrelevant.
      $to = array('john@contoso.com'=&gt;'Personal Name Of Recipient');
      
-     # Create the body of the message (a plain-text and an HTML version). 
-     # text is your plain-text email 
+     # Create the body of the message (a plain-text and an HTML version).
+     # text is your plain-text email
      # html is your html version of the email
      # if the receiver is able to view html emails then only the html
      # email will be displayed
@@ -405,7 +403,7 @@ that will be appended to the bottom of the email message:
      */
      $text = <<<EOM 
      Hello -name-,
-     Thank you for your interest in our products. We have set up an appointment to call you at -time- EST to discuss your needs in more detail.
+     Thank you for your interest in our products.We have set up an appointment to call you at -time- EST to discuss your needs in more detail.
      Regards,
      Fred
      EOM;
@@ -415,7 +413,7 @@ that will be appended to the bottom of the email message:
      <head></head>
      <body>
      <p>Hello -name-,<br>
-     Thank you for your interest in our products. We have set up an appointment
+     Thank you for your interest in our products.We have set up an appointment
      to call you at -time- EST to discuss your needs in more detail.
      
      Regards,
@@ -441,7 +439,7 @@ that will be appended to the bottom of the email message:
      
      // add SMTPAPI header to the message
      // *****IMPORTANT NOTE*****
-     // SendGrid's asJSON function escapes characters. If you are using Swift 
+     // SendGrid's asJSON function escapes characters.If you are using Swift 
      Mailer's
      // PHP Mailer functions, the getTextHeader function will also escape characters.
      // This can cause the filter to be dropped.
@@ -462,58 +460,59 @@ that will be appended to the bottom of the email message:
      echo 'Message sent out to '.$recipients.' users';
      }
 
-     // something went wrong =(
+     // something went wrong=(
      else
      {
-     echo "Something went wrong - ";
+     echo "Something went wrong -";
      print_r($failures);
      }
 
-**Note:**The example script above is taken from the SendGrid
-documentation here:
+**メモ: **この例のスクリプトは SendGrid 
+ドキュメント 
 [http://docs.sendgrid.com/documentation/api/smtp-api/php-example/][].
 
-## <a name="bkmk_HowToUseAdditionalSvcs"> </a>How to: Use Additional SendGrid Services
+## <a name="bkmk_HowToUseAdditionalSvcs"> </a>方法: その他の SendGrid サービスを使用する
 
-SendGrid offers web-based APIs that you can use to leverage additional
-SendGrid functionality from your Azure application. For full
-details, see the [SendGrid API documentation][].
+SendGrid の Web ベース API を使用して、Azure アプリケーション
+からその他の SendGrid 機能を利用することができます。詳細については、
+[SendGrid API に関するドキュメント][]を参照してください。
 
-## <a name="bkmk_NextSteps"> </a>Next Steps
+## <a name="bkmk_NextSteps"> </a>次のステップ
 
-Now that you've learned the basics of the SendGrid Email service, follow
-these links to learn more.
+これで、SendGrid 電子メール サービスの基本を学習できました。
+さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
--   SendGrid API documentation: <http://docs.sendgrid.com/documentation/api/>
--   SendGrid special offer for Azure customers:
+-   SendGrid API に関するドキュメント: <http://docs.sendgrid.com/documentation/api/>
+-   Azure ユーザー向けの SendGrid 特別プラン: 
     [http://sendgrid.com/azure.html][]
 
-  [Next Steps]: #bkmk_NextSteps
-  [What is the SendGrid Email Service]: #bkmk_WhatIsSendGrid
-  [Create a SendGrid Account]: #bkmk_CreateSendGrid
-  [Using SendGrid from your PHP Application]: #bkmk_UsingSendGridfromPHP
-  [How To: Send an Email]: #bkmk_HowToSendEmail
-  [How To: Add an Attachment]: #bkmk_HowToAddAttachment
-  [How to: Use Filters to Enable Footers, Tracking, and Analytics]: #bkmk_HowToUseFilters
-  [How to: Use Additional SendGrid Services]: #bkmk_HowToUseAdditionalSvcs
+  [次のステップ]: #bkmk_NextSteps
+  [SendGrid 電子メール サービスとは]: #bkmk_WhatIsSendGrid
+  [SendGrid アカウントの作成]: #bkmk_CreateSendGrid
+  [PHP アプリケーションからの SendGrid の使用]: #bkmk_UsingSendGridfromPHP
+  [方法: 電子メールを送信する]: #bkmk_HowToSendEmail
+  [方法: 添付ファイルを追加する]: #bkmk_HowToAddAttachment
+  [方法: フィルターを使用してフッター、追跡、および分析を有効にする]: #bkmk_HowToUseFilters
+  [方法: その他の SendGrid サービスを使用する]: #bkmk_HowToUseAdditionalSvcs
 
   [http://sendgrid.com]: http://sendgrid.com
   [http://sendgrid.com/pricing.html]: http://sendgrid.com/pricing.html
-  [special offer]: http://www.sendgrid.com/azure.html
+  [特別プラン]: http://www.sendgrid.com/azure.html
   [http://docs.sendgrid.com/documentation/get-started/]: http://docs.sendgrid.com/documentation/get-started/
   [http://sendgrid.com/features]: http://sendgrid.com/features
-  [Packaging and Deploying PHP Applications for Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/hh674499(v=VS.103).aspx
-  [SMTP vs. Web API]: http://docs.sendgrid.com/documentation/get-started/integrate/examples/smtp-vs-rest/
+  [Azure に対する PHP アプリケーションのパッケージ化と配置]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh674499(v=VS.103).aspx
+  [SMTP と Web API を 比較した SendGrid ドキュメント]: http://docs.sendgrid.com/documentation/get-started/integrate/examples/smtp-vs-rest/
   [http://swiftmailer.org/download]: http://swiftmailer.org/download
   [http://docs.sendgrid.com/documentation/get-started/integrate/examples/php-email-example-using-smtp/]: http://docs.sendgrid.com/documentation/get-started/integrate/examples/php-email-example-using-smtp/
   [http://docs.sendgrid.com/documentation/api/smtp-api/developers-guide/]: http://docs.sendgrid.com/documentation/api/smtp-api/developers-guide/
   [http://docs.sendgrid.com/documentation/api/smtp-api/php-example/]: http://docs.sendgrid.com/documentation/api/smtp-api/php-example/
-  [curl function]: http://php.net/curl
+  [curl 関数]: http://php.net/curl
   [http://docs.sendgrid.com/documentation/get-started/integrate/examples/php-example-using-the-web-api/]: http://docs.sendgrid.com/documentation/get-started/integrate/examples/php-example-using-the-web-api/
   [http://docs.sendgrid.com/documentation/api/web-api/]: http://docs.sendgrid.com/documentation/api/web-api/
   [http://docs.sendgrid.com/documentation/api/web-api/mail/]: http://docs.sendgrid.com/documentation/api/web-api/mail/
-  [Filter Settings]: http://docs.sendgrid.com/documentation/api/smtp-api/filter-settings/
-  [SendGrid API documentation]: http://docs.sendgrid.com/documentation/api/
+  [フィルター設定に関するページ]: http://docs.sendgrid.com/documentation/api/smtp-api/filter-settings/
+  [SendGrid API に関するドキュメント]: http://docs.sendgrid.com/documentation/api/
   [http://sendgrid.com/azure.html]: http://sendgrid.com/azure.html
-  [cloud-based email service]: http://sendgrid.com/solutions
-  [transactional email delivery]: http://sendgrid.com/transactional-email
+  [クラウドベース電子メール サービス]: http://sendgrid.com/solutions
+  [トランザクション電子メール配信]: http://sendgrid.com/transactional-email
+

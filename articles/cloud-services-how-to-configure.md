@@ -1,147 +1,148 @@
-<properties linkid="manage-services-how-to-configure-a-cloud-service" urlDisplayName="How to configure" pageTitle="How to configure a cloud service - Azure" metaKeywords="Configuring cloud services" description="Learn how to configure cloud services in Azure. Learn to update the cloud service configuration and configure remote access to role instances." metaCanonical="" services="cloud-services" documentationCenter="" title="How to Configure Cloud Services" authors="davidmu" solutions="" manager="" editor="" />
+<properties linkid="manage-services-how-to-configure-a-cloud-service" urlDisplayName="構成方法" pageTitle="クラウド サービスの構成方法 - Azure" metaKeywords="クラウド サービスの構成" description="Azure のクラウド サービスの構成方法について説明します。クラウド サービスの構成の更新方法と、ロール インスタンスへのリモート アクセスの構成方法を紹介します。" metaCanonical="" services="cloud-services" documentationCenter="" title="クラウド サービスの構成方法" authors=""  solutions="" writer="davidmu" manager="" editor=""  />
 
 
 
 
-<h1><a id="configurecloudservice"></a>How to Configure Cloud Services</h1>
+<h1><a id="configurecloudservice"></a>クラウド サービスの構成方法</h1>
 
 [WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
 
-You can configure the most commonly used settings for a cloud service in the Azure Management Portal. Or, if you like to update your configuration files directly, download a service configuration file to update, and then upload the updated file and update the cloud service with the configuration changes. Either way, the configuration updates are pushed out to all role instances.
+クラウド サービスで最もよく使用される設定は Azure の管理ポータルで構成できます。また、構成ファイルを直接更新する場合は、サービス構成ファイルをダウンロードして内容を更新し、更新したファイルをアップロードして、クラウド サービスの構成を更新します。どちらの方法でも、構成の更新はすべてのロール インスタンスに適用されます。
 
-You can also enable a Remote Desktop connection to one or all roles running in your cloud service.  Remote Desktop allows you to access the desktop of your application while it is running and troubleshoot and diagnose problems.  You can enable a Remote Desktop connection to your role even if you did not configure the service definition file (.csdef) for Remote Desktop during application development.  There is no need to redeploy your application in order to enable a Remote Desktop connection.
+クラウド サービスで実行中の 1 つまたはすべてのロールへのリモート デスクトップ接続を有効にすることもできます。リモート デスクトップを使用すると、アプリケーションの実行中にそのデスクトップにアクセスし、問題のトラブルシューティングや診断を行うことができます。アプリケーション開発時にリモート デスクトップのサービス定義ファイル (.csdef) を構成しなかった場合でも、ロールへのリモート デスクトップ接続を有効にできます。リモート デスクトップ接続を有効にするために、アプリケーションを再展開する必要はありません。
 
-Azure can only ensure 99.95 percent service availability during the configuration updates if you have at least two role instances (virtual machines) for every role. That enables one virtual machine to process client requests while the other is being updated. For more information, see [Service Level Agreements](https://www.windowsazure.com/en-us/support/legal/sla/).
+Azure で構成の更新中に 99.95% の可用性を保証できるのは、各ロールに少なくとも 2 つのロール インスタンス (仮想マシン) がある場合だけです。この場合、1 台の仮想マシンでクライアントからの要求を処理し、もう 1 台で更新を行うことができます。詳細については、「[サービス レベル アグリーメント](https://www.windowsazure.com/ja-jp/support/legal/sla/)」を参照してください。
 
-##Table of Contents##
+##目次##
 
-* [How to: Update the cloud service configuration](#update)
-* [How to: Configure remote access to role instances](#remoteaccess)
-
-
-<h2><a id="update"></a>How to: Update the cloud service configuration</h2>
-
-1. In the [Azure Management Portal](http://manage.windowsazure.com/), click **Cloud Services**. Then click the name of the cloud service to open the dashboard.
+* [方法: クラウド サービス構成の更新](#update)
+* [方法: ロール インスタンスへのリモート アクセスの構成](#remoteaccess)
 
 
-2. Click **Configure**.
+<h2><a id="update"></a>方法: クラウド サービス構成の更新</h2>
 
-	On the **Configure** page, you can configure monitoring, update role settings, and choose the guest operating system and family for role instances (virtual machines). 
-
-	![Configuration Page](./media/cloud-services-how-to-configure/CloudServices_ConfigurePage1.png)
-
-3. In monitoring settings, set the monitoring level to Verbose or Minimal, and configure the diagnostics connection strings that are required for verbose monitoring. For instructions, see [How to Monitor Cloud Services](../how-to-monitor-a-cloud-service/).
+1. [Azure の管理ポータル](http://manage.windowsazure.com/)で、**[クラウド サービス]** をクリックします。目的のクラウド サービスの名前をクリックして、ダッシュボードを開きます。
 
 
-4. For service roles (grouped by role), you can update the following settings:
+2. **[構成]** をクリックします。
 
-	>- **Settings**   Modify the values of miscellaneous configuration settings that are specified in the *ConfigurationSettings* elements of the service configuration (.cscfg) file.
+	**[構成]** ページでは、監視の構成、ロール設定の更新、およびロール インスタンス (仮想マシン) のゲスト オペレーティング システムとファミリの選択ができます。
+
+	![[構成] ページ](./media/cloud-services-how-to-configure/CloudServices_ConfigurePage1.png)
+
+3. 監視設定では、監視レベルの設定 ([詳細] または [最小])、および詳細監視に必要な診断接続文字列の構成を行います。手順については、「[クラウド サービスの監視方法](../how-to-monitor-a-cloud-service/)」を参照してください。
+
+
+4. サービス ロールについては (ロールによりグループ分け)、次の設定を更新できます。
+
+	>-**[設定]** - サービス構成ファイル (.cscfg) の *ConfigurationSettings* 要素で指定された各種構成設定値を変更します。
 	
-	>- **Certificates**   Change the certificate thumbprint that's being used in SSL encryption for a role. To change a certificate, you must first upload the new certificate (on the **Certificates** page). Then update the thumbprint in the certificate string displayed in the role settings.
+	>-**[証明書]** - ロールの SSL 暗号化で使用されている証明書のサムプリントを変更します。証明書を変更するには、まず、**[証明書]** ページで新しい証明書をアップロードする必要があります。次に、ロール設定に表示される証明書文字列のサムプリントを更新します。
 
-5. In **operating system settings**, you can change the operating system family or version for role instances (virtual machines), or choose **Automatic** to resume automatic updates of the current operating system version. The operating system settings apply to web roles and worker roles, but do not affect VM roles that were added to hosted services in the previous Azure Management Portal.
+5. **[オペレーティング システムの設定]** で、ロール インスタンス (仮想マシン) のオペレーティング システム ファミリまたはバージョンを変更することも、**[自動]** を選択して、現在のオペレーティング システム バージョンの自動更新を再開することもできます。オペレーティング システムの設定は、Web ロールと Worker ロールに適用されますが、以前の Azure の管理ポータルでホステッド サービスに追加された VM ロールは影響を受けません。
 
-	When you deploy a new cloud service, you can choose either the Windows Server 2008 R2,  Windows Server 2008 with Service Pack 2 (SP2), or Windows Server 2012 operating system. During deployment, the most recent operating system version is installed on all role instances, and the operating systems are updated automatically by default. 
+	新しいクラウド サービスを展開するときは、オペレーティング システムとして Windows Server 2008 R2、Windows Server 2008 with Service Pack 2 (SP2)、または Windows Server 2012 を選択できます。展開中に、すべてのロール インスタンスに最新のオペレーティング システムがインストールされ、オペレーティング システムは既定で自動更新されます。
 
-	If you need for your cloud service to run on a different operating system version because of compatibility requirements in your code, you can choose an operating system family and version. When you choose a specific operating system version, automatic operating system updates for the cloud service are suspended. You will need to ensure the operating systems receive updates.
+	コードの互換性を維持するために異なるバージョンのオペレーティング システムでクラウド サービスを実行する必要がある場合は、オペレーティング システム ファミリおよびバージョンを選択できます。特定のバージョンのオペレーティング システムを選択すると、クラウド サービスで使用するオペレーティング システムの自動更新は中断されます。オペレーティング システムに更新プログラムが適用されるようユーザーが責任を持つ必要があります。
 
-	If you resolve all compatibility issues that your apps have with the most recent operating system version, you can resume automatic operating system updates by setting the operating system version to **Automatic**. 
+	最新バージョンのオペレーティング システムでアプリケーションに生じる互換性の問題がすべて解決された場合、オペレーティング システムのバージョンを **[自動]** に設定して、オペレーティング システムの自動更新を再開できます。
 
-	![OS Settings](./media/cloud-services-how-to-configure/CloudServices_ConfigurePage_OSSettings.png)
+	![OS 設定](./media/cloud-services-how-to-configure/CloudServices_ConfigurePage_OSSettings.png)
 
-6. To save your configuration settings, and push them to the role instances, click **Save**. (Click **Discard** to cancel the changes.) **Save** and **Discard** are added to the command bar after you change a setting.
+6. 構成設定を保存してロール インスタンスに適用するには、**[保存]** をクリックします (変更を取り消すには、**[破棄]** をクリックします)。**[保存]** および **[破棄]** は、設定を変更するとコマンド バーに追加されます。
 
-###To update a cloud service configuration file manually###
+###クラウド サービス構成ファイルを手作業で更新するには###
 
-1. Download a cloud service configuration file (.cscfg) with the current configuration. On the **Configure** page for the cloud service, click **Download**. Then click **Save**, or click **Save As** to save the file.
+1. 現在の構成を含むクラウド サービス構成ファイル (.cscfg) をダウンロードします。クラウド サービスの **[構成]** ページで、**[ダウンロード]** をクリックします。続いて **[保存]** または **[名前を付けて保存]** をクリックして、ファイルを保存します。
 
-2. After you update the service configuration file, upload and apply the configuration updates:
+2. サービス構成ファイルを更新した後、次のステップでファイルをアップロードして構成の更新内容を適用します。
 
-	a. On the **Configure** page, click **Upload**.
+	a. **[構成]** ページで、**[アップロード]** をクリックします。
 	
-	**Upload a New Configuration File** opens.
+	**[新しい構成ファイルのアップロード]** が開きます。
 
-	![Upload Configuration](./media/cloud-services-how-to-configure/CloudServices_UploadConfigFile.png)
+	![構成のアップロード](./media/cloud-services-how-to-configure/CloudServices_UploadConfigFile.png)
 
-	b. In **Configuration file**, use **Browse** to select the updated .cscfg file.
+	b. **[構成ファイル]** で、**[参照]** を使って、更新した .cscfg ファイルを選択します。
 
-	c. If your cloud service contains any roles that have only one instance, select the **Apply configuration even if one or more roles contain a single instance** check box to enable the configuration updates for the roles to proceed.
+	c. クラウド サービスにインスタンスが 1 つしかないロールがある場合は、**[1 つ以上のロールに単一のインスタンスが含まれている場合でも更新する]** チェック ボックスをオンにして、ロールの構成を更新できるようにして続行します。
 
-	Unless you define at least two instances of every role, Azure cannot guarantee at least 99.95 percent availability of your cloud service during service configuration updates. For more information, see [Service Level Agreements](http://www.windowsazure.com/en-us/support/legal/sla/).
+	Azure では、各ロールに少なくとも 2 つのインスタンスを定義しない限り、サービス構成の更新中にクラウド サービスの最低 99.95% の可用性を保証することはできません。詳細については、「[サービス レベル アグリーメント](http://www.windowsazure.com/ja-jp/support/legal/sla/)」を参照してください。
 
-	d. Click OK (checkmark). 
+	d. [OK] (チェックマーク) をクリックします。
 
 
-<h2><a id="remoteaccess"></a>How to: Configure remote access to role instances</h2>
+<h2><a id="remoteaccess"></a>方法: ロール インスタンスへのリモート アクセスの構成</h2>
 
-Remote Desktop enables you to access the desktop of a role running in Azure. You can use a Remote Desktop connection to troubleshoot and diagnose problems with your application while it is running. You can enable a Remote Desktop connection in your role during application design or after you have deployed the application to Azure (while the role is running).  Enabling a Remote Desktop connection in a running role through the Management Portal does not require you to redeploy your application.  To authenticate the Remote Desktop connection you can use a previously uploaded certificate or you can create a new certificate.
+リモート デスクトップを使用して、Azure で実行されているロールのデスクトップにアクセスできます。リモート デスクトップ接続を使用すると、アプリケーションの実行中にそのアプリケーションの問題のトラブルシューティングや診断を行うことができます。アプリケーションの設計時、またはアプリケーションを Azure に展開した後で、ロールでのリモート デスクトップ接続を有効にできます (ロールの実行中)。管理ポータルを通じて実行中のロールでリモート デスクトップ接続を有効にしても、アプリケーションを再展開する必要はありません。リモート デスクトップ接続を認証するには、前にアップロードした証明書を使用するか、新しい証明書を作成することができます。
 
-On the **Configure** page for your cloud service, you can enable Remote Desktop or change the local Administrator account or password used to connect to the virtual machines, the certificate used in authentication, or the expiration date.
+クラウド サービスの **[構成]** ページで、リモート デスクトップを有効にしたり、仮想マシンへの接続に使用するローカルな管理者アカウントまたはパスワード、認証に使用する証明書、または有効期限を変更したりできます。
 
 <div class="dev-callout"> 
-<b>Note</b> 
-<p>If your cloud service consists of two or more connected Windows Server-based virtual machines, you don't have to configure remote access, as these virtual machines are configured automatically for Remote Desktop.</p> 
+<b>注</b>
+<p>クラウド サービスが複数の接続済みの Windows Server ベースの仮想マシンで構成されている場合、リモート アクセスを構成する必要はありません。この場合、仮想マシンはリモート デスクトップ用に自動的に構成されています。</p>
 </div>
 
 
-###To configure Remote Access in the service definition file###
+###サービス定義ファイルでリモート アクセスを構成するには###
 
-Add **Import** elements to the service definition file (.csdef) to import the RemoteAccess and RemoteForwarder modules into the service model. When those modules are present, Azure adds the configuration settings for Remote Desktop to the service configuration file. To complete the Remote Desktop configuration, you will need to import a certificate to Azure, and specify the certificate in the service configuration file. For more information, see [Set Up a Remote Desktop Connection for a Role in Azure][].
+サービス定義ファイル (.csdef) に **Import** 要素を追加して、RemoteAccess および RemoteForwarder モジュールをサービス モデルにインポートします。これらのモジュールが存在すると、Azure によってリモート デスクトップ用の構成設定がサービス構成ファイルに追加されます。リモート デスクトップの構成を完了するには、Azure に証明書をインポートして、サービス構成ファイルでその証明書を指定する必要があります。詳細については、「[Azure ロールのリモート デスクトップ接続をセットアップする][]」を参照してください。
 
-###To enable or modify Remote Access for role instances in the Management Portal###
+###管理ポータルでロール インスタンスのリモート アクセスを有効にする、または変更するには###
 
-1. Log in to the [Management Portal](http://manage.windowsazure.com/) and click **Cloud Services**. Then click the name of the cloud service to open the dashboard.
+1. [管理ポータル](http://manage.windowsazure.com/)にログインし、**[クラウド サービス]** をクリックします。目的のクラウド サービスの名前をクリックして、ダッシュボードを開きます。
 
-2. Open the **Configure** page for the cloud service, and click **Remote**.
+2. クラウド サービスの **[構成]** ページを開き、**[リモート]** をクリックします。
 
-	 **Configure Remote Desktop** displays the settings (if any) that were added to the service configuration file when the cloud service was deployed, as shown below.
+	 **[リモート デスクトップ設定を構成する]** に、クラウド サービスの展開時にサービス構成ファイルに追加された設定が下図のように表示されます (ある場合)。
 
-	![Cloud services remote](./media/cloud-services-how-to-configure/CloudServices_Remote.png)
+	![クラウド サービス リモート](./media/cloud-services-how-to-configure/CloudServices_Remote.png)
 
 > [WACOM.NOTE]
-> **Warning:** All role instances will be restarted when you first enable Remote Desktop and click OK (checkmark). To prevent a reboot, the certificate used to encrypt the password must be installed on the role. If no certificate is installed you will see this option: ![CloudServices_CreateNewCertDropDown](./media/cloud-services-how-to-configure/CloudServices_CreateNewCertDropDown.png)
+> **警告:** 初めてリモート デスクトップを有効にして [OK] (チェックマーク) をクリックしたときは、すべてのロール インスタンスが再起動されます。再起動を防止するには、パスワードの暗号化に使用した証明書がロールにインストールされている必要があります。証明書がインストールされていない場合、以下のオプションが表示されます。![CloudServices_CreateNewCertDropDown](./media/cloud-services-how-to-configure/CloudServices_CreateNewCertDropDown.png)
 
-	To prevent a restart, install a certificate and then return to this dialog (see [Using Remote Desktop with Azure Roles][] for more information). If you choose an existing certificate, then a configuration update will be sent to all the instances in the role.
+	再起動を防止するには、証明書をインストールしてからこのダイアログに戻ってください (詳細については、「[Azure ロールでのリモート デスクトップの使用][]」を参照してください)。既存の証明書を選択すると、構成の更新がロール内のすべてのインスタンスに送信されます。
 
-3. In **Roles**, select the service role you want to update or select **All** for all roles.
+3. **[ロール]** で、更新するサービス ロールを選択します。すべてのロールの場合は、**[すべて]** をクリックします。
 
-4. Make any of the following changes:
+4. 必要に応じて次の変更を行います。
 
-- To enable Remote Desktop, select the **Enable Remote Desktop** check box. To disable Remote Desktop, clear the check box.
+- リモート デスクトップを有効にするには、**[リモート デスクトップを有効にする]** チェック ボックスをオンにします。リモート デスクトップを無効にするには、チェック ボックスをオフにします。
 
-- Create an account to use in Remote Desktop connections to the role instances.
+- ロール インスタンスへのリモート デスクトップ接続で使用するアカウントを作成します。
 
-- Update the password for the existing account.
+- 既存のアカウントのパスワードを更新します。
 
-- Select an uploaded certificate to use for authentication (upload the certificate using **Upload** on the **Certificates** page) or create a new certificate. 
+- 認証に使用するために、アップロードした証明書を選択するか (**[証明書]** ページの **[アップロード]** を使用して証明書をアップロードします)、新しい証明書を作成します。
 
-- Change the expiration date for the Remote Desktop configuration.
+- リモート デスクトップ構成の有効期限を変更します。
 
-5. When you finish your configuration updates, click OK (checkmark).
+5. 構成の更新が完了したら、[OK] (チェックマーク) をクリックします。
 
-6. To connect to a role instance:
+6. ロール インスタンスに接続するには:
 
-	a. Click **Instances** to open the **Instances** page.
+	a. **[インスタンス]** をクリックして、**[インスタンス]** ページを開きます。
 
-	b. Select a role instance that has Remote Desktop configured.
+	b. リモート デスクトップが構成されたロール インスタンスを選択します。
 
-	c. Click **Connect**, and follow the instructions to open the desktop of the virtual machine. 
+	c. **[接続]** をクリックし、指示に従って仮想マシンのデスクトップを開きます。
 
-	d. Click **Open** and then **Connect** to start the Remote Desktop connection.
+	d. **[開く]**、**[接続]** の順にクリックして、リモート デスクトップ接続を開始します。
 
-###To disable Remote Access for role instances in the Management Portal###
+###管理ポータルでロール インスタンスのリモート アクセスを無効にするには###
 
-1. Log in to the [Management Portal](http://manage.windowsazure.com/) and click **Cloud Services**. Then click the name of the cloud service to open the dashboard.
+1. [管理ポータル](http://manage.windowsazure.com/)にログインし、**[クラウド サービス]** をクリックします。目的のクラウド サービスの名前をクリックして、ダッシュボードを開きます。
 
-2. Open the **Configure** page for the cloud service, and click **Remote**.
+2. クラウド サービスの **[構成]** ページを開き、**[リモート]** をクリックします。
 
-3. In **Roles**, select the service role you want to update or select **All** for all roles.
+3. **[ロール]** で、更新するサービス ロールを選択します。すべてのロールの場合は、**[すべて]** をクリックします。
 
-4. Un-check, or clear, the **Enable Remote Desktop** check box.
+4. **[リモート デスクトップを有効にする]** チェック ボックスをオフにします。
 
-5. Click OK (checkmark).
+5. [OK] (チェックマーク) をクリックします。
 
-[Set Up a Remote Desktop Connection for a Role in Azure]: http://msdn.microsoft.com/en-us/library/windowsazure/hh124107.aspx
+[Azure ロールのリモート デスクトップ接続をセットアップする]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh124107.aspx
 
-[Using Remote Desktop with Azure Roles]: http://msdn.microsoft.com/en-us/library/windowsazure/gg443832.aspx
+[Azure ロールでのリモート デスクトップの使用]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg443832.aspx
 			
+

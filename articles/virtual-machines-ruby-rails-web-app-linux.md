@@ -1,107 +1,107 @@
-<properties linkid="dev-ruby-web-app-with-linux-vm" urlDisplayName="Ruby on Rails Web App on Azure using Linux VM" pageTitle="Ruby on Rails Web App on Azure using Linux VM" metaKeywords="Azure Ruby web application, Azure Ruby application, Ruby app Azure, Ruby azure vm, ruby virthal machine, ruby linux vm" description="Host a Ruby on Rails-based web site on Azure using a Linux virtual machine. " metaCanonical="" services="virtual-machines" documentationCenter="Ruby" title="Ruby on Rails Web application on an Azure VM" authors="larryfr" solutions="" manager="" editor="" />
+<properties linkid="dev-ruby-web-app-with-linux-vm" urlDisplayName="Linux VM を使用した Azure での Ruby on Rails Web アプリケーション" pageTitle="Linux VM を使用した Azure での Ruby on Rails Web アプリケーション" metaKeywords="Azure Ruby Web アプリケーション, Azure Ruby アプリケーション, Ruby アプリ Azure, Ruby azure vm, ruby 仮想マシン, ruby linux vm" description="Linux 仮想マシンを使用して、Azure で Ruby on Rails ベースの Web サイトをホストします。" metaCanonical="" services="virtual-machines" documentationCenter="Ruby" title="Azure VM での Ruby on Rails Web アプリケーション" authors=""  solutions="" writer="larryfr" manager="" editor=""  />
 
 
 
 
 
-#Ruby on Rails Web application on an Azure VM
+#Azure VM での Ruby on Rails Web アプリケーション
 
-This tutorial describes how to host a Ruby on Rails-based web site on Azure using a Linux virtual machine. This tutorial assumes you have no prior experience using Azure. Upon completing this tutorial, you will have a Ruby on Rails-based application up and running in the cloud.
+このチュートリアルでは、Linux 仮想マシンを使用して、Azure で Ruby on Rails ベースの Web サイトをホストする方法について説明します。このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルを完了すると、クラウドで動作する Ruby on Rails ベースのアプリケーションが完成します。
 
-You will learn how to:
+学習内容:
 
-* Setup your development environment
+* 開発環境を設定する
 
-* Setup an Azure virtual machine to host Ruby on Rails.
+* Ruby on Rails をホストするように Azure の仮想マシンを設定する
 
-* Create a new Rails application
+* 新しい Rails アプリケーションを作成する
 
-* Copy files to the virtual machine using scp 
+* scp を使用してファイルを仮想マシンにコピーする
 
-The following is a screenshot of the completed application:
+完成したアプリケーションのスクリーンショットは次のようになります。
 
-![a browser displaying Listing Posts][blog-rails-cloud]
+![ブラウザーに表示された [Listing Posts]][blog-rails-cloud]
 
-##In this article
+##この記事の内容
 
-* [Set up your development environment](#setup)
+* [開発環境を設定する](#setup)
 
-* [Create a Rails application](#create)
+* [Rails アプリケーションを作成する](#create)
 
-* [Test the application](#test)
+* [アプリケーションをテストする](#test)
 
-* [Create an Azure Virtual Machine](#createvm)
+* [Azure の仮想マシンを作成する](#createvm)
 
-* [Copy the application to the VM](#copy)
+* [アプリケーションを VM にコピーする](#copy)
 
-* [Install gems and start the application](#start)
+* [gem をインストールしてアプリケーションを起動する](#start)
 
-* [Next steps](#next)
+* [次のステップ](#next)
 
-##<a id="setup"></a>Set up your development environment
+##<a id="setup"></a>開発環境を設定する
 
-1. Install Ruby in your development environment. Depending on your operating system, the steps may vary.
+1. 開発環境に Ruby をインストールします。この手順は、使用しているオペレーティング システムによって異なる場合があります。
 
-	* **Apple OS X** - There are several Ruby distributions for OS X. This tutorial was validated on OS X by using [Homebrew](http://brew.sh/) to install **rbenv** and **ruby-build**. Installation information can be found at [https://github.com/sstephenson/rbenv/](https://github.com/sstephenson/rbenv/).
+	* **Apple OS X** - OS X 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証には、OS X で [Homebrew](http://brew.sh/) を使用して **rbenv** と **ruby-build** をインストールしました。インストールに関する情報は、[https://github.com/sstephenson/rbenv/](https://github.com/sstephenson/rbenv/) で確認できます。
 
-	* **Linux** - Use your distributions package management system. This tutorial was validated on Ubuntu 12.10 using the ruby1.9.1 and ruby1.9.1-dev packages.
+	* **Linux** - ディストリビューションのパッケージ管理システムを使用します。このチュートリアルは、Ubuntu 12.10 で ruby1.9.1 および ruby1.9.1-dev パッケージを使用して検証されました。
 
-	* **Windows** - There are several Ruby distributions for Windows. This tutorial was validated using [RailsInstaller](http://railsinstaller.org/) 1.9.3-p392.
+	* **Windows** - Windows 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルは、[RailsInstaller](http://railsinstaller.org/) 1.9.3-p392 を使用して検証されました。
 
-2. Open a new command-line or terminal session and enter the following command to install Ruby on Rails:
+2. 新しいコマンド ラインまたはターミナル セッションを開き、次のコマンドを入力して Ruby on Rails をインストールします。
 
 		gem install rails --no-rdoc --no-ri
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>This command may require administrator or root privileges on some operating systems. If you receive an error while running this command, try using 'sudo' as follows:</p>
+	<strong>注</strong>
+	<p>オペレーティング システムによっては、このコマンドには管理者特権または root 権限が必要となる場合があります。このコマンドの実行中にエラーが発生した場合は、次のように 'sudo' を使用してください。</p>
 	<pre class="prettyprint">sudo gem install rails</pre>
 	</div>
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>Version 3.2.12 of the Rails gem was used for this tutorial.</p>
+	<strong>注</strong>
+	<p>このチュートリアルでは、Rails gem Version 3.2.12 を使用しました。</p>
 
 	</div>
 
-3. You must also install a JavaScript interpreter, which will be used by Rails to compile CoffeeScript assets used by your Rails application. A list of supported interpreters is available at [https://github.com/sstephenson/execjs#readme](https://github.com/sstephenson/execjs#readme).
+3. JavaScript インタープリターもインストールする必要があります。これは、Rails アプリケーションで使われる CoffeeScript アセットをコンパイルするために Rails によって使用されます。サポートされているインタープリターの一覧は、[https://github.com/sstephenson/execjs#readme](https://github.com/sstephenson/execjs#readme) で確認できます。
 	
-	[Node.js](http://nodejs.org/) was used during validation of this tutorial, as it is available for OS X, Linux and Windows operating systems.
+	[Node.js](http://nodejs.org/) をこのチュートリアルの検証中には使用しました。このインタープリターは OS X、Linux、Windows の各オペレーティング システムで利用できるためです。
 
-##<a id="create"></a>Create a Rails application
+##<a id="create"></a>Rails アプリケーションを作成する
 
-1. From the command-line or terminal session, create a new Rails application named "blog_app" by using the following command:
+1. コマンド ラインまたはターミナル セッションから、次のコマンドを使用して、"blog_app" という名前の新しい Rails アプリケーションを作成します。
 
 		rails new blog_app
 
-	This command creates a new directory named **blog_app**, and populates it with the files and sub-directories required by a Rails application.
+	このコマンドは、**blog_app** という新しいディレクトリを作成し、Rails アプリケーションに必要なファイルとサブディレクトリをそこに格納します。
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>This command may take a minute or longer to complete. It performs a silent installation of the gems required for a default application, and during this time may appear to hang.</p>
+	<strong>注</strong>
+	<p>このコマンドが完了するまでには、しばらく時間がかかることがあります。このコマンドによって既定のアプリケーションに必要な gem のサイレント インストールが実行されますが、その間にハングしたように見える場合があります。</p>
 	</div>
 
-2. Change directories to the the **blog_app** directory, and then use the following command to create a basic blog scaffolding:
+2. ディレクトリを **blog_app** に変更し、次のコマンドを使用して、基本的なブログ スキャフォールディングを作成します。
 
 		rails generate scaffold Post name:string title:string content:text
 
-	This will create the controller, view, model, and database migrations used to hold posts to the blog. Each post will have an author name, title for the post, and text content.
+	これにより、コントローラー、ビュー、モデル、およびブログへの投稿を保持するためのデータベースの移行が作成されます。各投稿には、作者名、記事のタイトル、およびテキスト コンテンツが含められます。
 
-3. To create the database that will store the blog posts, use the following command:
+3. 次のコマンドを実行して、ブログへの投稿を保存するデータベースを作成します。
 
 		rake db:migrate
 
-	This will use the default database provider for Rails, which is the [SQLite3 Database][sqlite3]. While you may wish to use a different database for a production application, SQLite is sufficient for the purposes of this tutorial.
+	この場合、Rails の既定のデータベース プロバイダーである [SQLite3 データベース][sqlite3]が使用されます。運用アプリケーションでは別のデータベースを使用する方が適している場合もありますが、このチュートリアルの目的では SQLite で十分です。
 
-##<a id="test"></a>Test the application
+##<a id="test"></a>アプリケーションをテストする
 
-Perform the following steps to start the Rails server in your development environment
+次の手順を実行して、開発環境で Rails サーバーを開始します。
 
-1. From the command-line or terminal session, start the rails server using the following command:
+1. コマンド ラインまたはターミナル セッションから、次のコマンドを使用して rails サーバーを開始します。
 
 		rails s
 
-	You should see output similar to the following. Note the port that the web server is listening on. In the example below, it is listening on port 3000.
+	次のような出力が表示されます。Web サーバーがリッスンしているポートに注目してください。下の例では、ポート 3000 をリッスンしています。
 
 		=> Booting WEBrick
 		=> Rails 3.2.12 application starting in development on http://0.0.0.0:3000
@@ -111,112 +111,112 @@ Perform the following steps to start the Rails server in your development enviro
 		[2013-03-12 19:11:31] INFO  ruby 1.9.3 (2012-04-20) [x86_64-linux]
 		[2013-03-12 19:11:31] INFO  WEBrick::HTTPServer#start: pid=9789 port=3000
 
-2. Open your browser and navigate to http://localhost:3000/. You should see a page similar to the following:
+2. ブラウザーを開き、http://localhost:3000/ に移動します。次のようなページが表示されます。
 
-	![default rails page][default-rails]
+	![既定の rails ページ][default-rails]
 
-	This page is a static welcome page. To see the forms generated by the scaffolding command, navigate to http://localhost:3000/posts. You should see a page similar to the following:
+	これは静的な開始ページです。スキャフォールディング コマンドによって生成されたフォームを表示するには、http://localhost:3000/posts に移動します。次のようなページが表示されます。
 
-	![a page listing posts][blog-rails]
+	![投稿の一覧のページ][blog-rails]
 
-	To stop the server process, enter CTRL+C in the command-line
+	サーバー プロセスを停止するには、コマンド ラインで Ctrl + C キーを押します。
 
-##<a id="createvm"></a>Create an Azure Virtual Machine
+##<a id="createvm"></a>Azure の仮想マシンを作成する
 
-Follow the instructions given [here][vm-instructions] to create an Azure virtual machine that hosts Linux.
+[ここ][vm-instructions]に記載されている指示に従って、Linux をホストする Azure の仮想マシンを作成します。
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>the steps in this tutorial were performed on an Azure Virtual Machine hosing Ubuntu 12.10. If you are using a different Linux distribution, different steps may be required to accomplish the same tasks.</p>
+<strong>注</strong>
+<p>このチュートリアルの手順は、Ubuntu 12.10 をホストする Azure の仮想マシンで実行されました。他の Linux ディストリビューションを使用する場合は、同じタスクを完了するために別の手順が必要になることがあります。</p>
 </div>
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>You <strong>only</strong> need to create the virtual machine. Stop after learning how to connect to the virtual machine using SSH.</p>
+<strong>注</strong>
+<p>ここで作成する必要があるのは、仮想マシンだけ<strong></strong>です。SSH を使用して仮想マシンに接続する方法を確認したら戻ってください。</p>
 </div> 
 
-After creating the Azure Virtual Machine, perform the following steps to install Ruby and Rails on the virtual machine:
+Azure の仮想マシンを作成したら、次の手順を実行して、仮想マシンに Ruby および Rails をインストールします。
 
-1. From the command-line or terminal session, use the following command to connect to the virtual machine using SSH:
+1. コマンド ラインまたはターミナル セッションから、次のコマンドを使用して SSH で仮想マシンに接続します。
 
 		ssh username@vmdns -p port
 
-	Substitute the user name specified during the creation of the VM, the DNS address of the VM, and the port of the SSH endpoint. For example:
+	各パラメーターは、VM の作成時に指定したユーザー名、VM の DNS アドレス、および SSH エンドポイントに置き換えてください。次に例を示します。
 
 		ssh railsdev@railsvm.cloudapp.net -p 61830
 
 	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>If you are using Windows as your development environment, you can use a utility such as <b>PuTTY</b> for SSH functionality. PuTTY can be obtained from the <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY download page</a>.</p>
+	<strong>注</strong>
+	<p>開発環境として Windows を使用している場合、SSH 機能には <b>PuTTY</b> などのユーティリティを使用できます。PuTTY は、<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY のダウンロード ページ</a>から入手できます。</p>
 	</div>
 
-2. From the SSH session, use the following commands to install Ruby on the VM:
+2. SSH セッションから、次のコマンドを使用して VM に Ruby をインストールします。
 
 		sudo apt-get update -y
 		sudo apt-get upgrade -y
 		sudo apt-get install ruby1.9.1 ruby1.9.l-dev build-essential libsqlite3-dev nodejs -y
 
-	After the installation completes, use the following command to verify that Ruby has been successfully installed:
+	インストールが完了したら、次のコマンドを使用して Ruby が正常にインストールされたことを確認します。
 
 		ruby -v
 
-	This should return the version of Ruby that is installed on the virtual machine, which may be different than 1.9.1. For example, **ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-linux]**.
+	このコマンドは、仮想マシンにインストールされている Ruby のバージョンを返します。これは 1.9.1 ではない可能性もあります。たとえば、「**ruby 1.9.3p194 (2012-04-20 revision 35410) [x86_64-linux]**」のように入力します。
 
-2. Use the following command to install Bundler:
+2. 次のコマンドを使用して Bundler をインストールします。
 
 		sudo gem install bundler --no-rdoc --no-ri
 
-	Bundler will be used to install the gems required by your rails application once it has been copied to the server.
+	Bundler は、いったんサーバーにコピーされると、rails アプリケーションに必要な gem をインストールするために使用されます。
 
-##<a id="copy"></a>Copy the application to the VM
+##<a id="copy"></a>アプリケーションを VM にコピーする
 
-From your development envirionment, open a new command-line or terminal session and use the **scp** command to copy the **blog_app** directory to the virtual machine. The format for this command is as follows:
+開発環境から、新しいコマンド ラインまたはターミナル セッションを開き、**scp** コマンドを使用して、**blog_app** ディレクトリを仮想マシンにコピーします。このコマンドの形式は次のとおりです。
 
 	scp -r -P 54822 -C directory-to-copy user@vmdns:
 
-For example:
+たとえば、次のように実行します。
 
 	scp -r -P 54822 -C ~/blog_app railsdev@railsvm.cloudapp.net:
 
 <div class="dev-callout">
-<strong>Note</strong>
-<p>If you are using Windows as your development environment, you can use a utility such as <b>pscp</b> for scp functionality. Pscp can be obtained from the <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY download page</a>.</p>
+<strong>注</strong>
+<p>開発環境として Windows を使用している場合、scp 機能には <b>pscp</b> などのユーティリティを使用できます。pscp は、<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY のダウンロード ページ</a>から入手できます。</p>
 </div>
 
-The parameters used for this command have the following effect:
+このコマンドで使用されるパラメーターの意味は次のとおりです。
 
-* **-r**: Recursively copies the contents of the specified directory and all sub-directories
+* **-r**: 指定したディレクトリとそのサブディレクトリの内容を再帰的にコピーします
 
-* **-P**: Use the specified port for SSH communication
+* **-P**: 指定したポートを SSH 通信に使用します
 
-* **-C**: Enable compression
+* **-C**: 圧縮を有効にします
 
-* **directory-to-copy**: The local directory to be copied
+* **directory-to-copy**: コピーするローカル ディレクトリ
 
-* **user@vmdns**: The address of the machine to copy the files to, as well as the user account to log in with
+* **user@vmdns**: ファイルのコピー先となるコンピューターのアドレスと、ログインに使用するユーザー アカウント
 
-After the copy operation, the **blog_app** directory will be located in the users home directory. Use the following commands in the SSH session with the virtual machine to view the files that were copied:
+コピー操作が完了すると、**blog_app** ディレクトリがユーザーのホーム ディレクトリに配置されます。仮想マシンへの SSH セッションで次のコマンドを使用して、コピーされたファイルを表示します。
 
 	cd ~/blog_app
 	ls
 
-The list of files returned should match the files contained in the **blog_app** directory in your development environment.
+返されるファイルの一覧は、開発環境の **blog_app** ディレクトリに含まれているファイルに一致します。
 
-##<a id="start"></a>Install gems and start Rails
+##<a id="start"></a>gem をインストールして Rails を開始する
 
-1. On the virtual machine, change directories to the **blog_app** directory and use the following command to install the gems specified in the **Gemfile**:
+1. 仮想マシンで、ディレクトリを **blog_app** に変更し、次のコマンドを使用して **Gemfile** に指定されている gem をインストールします。
 
 		sudo bundle install
 
-2. To create the database, use the following command:
+2. 次のコマンドを使用してデータベースを作成します。
 
 		rake db:migrate
 
-3. Use the following command to start the server:
+3. 次のコマンドを使用してサーバーを開始します。
 	
 		rails s
 
-	You should see output similar to the following. Note the port that the web server is listening on. In the example below, it is listening on port 3000.
+	次のような出力が表示されます。Web サーバーがリッスンしているポートに注目してください。下の例では、ポート 3000 をリッスンしています。
 
 		=> Booting WEBrick
 		=> Rails 3.2.12 application starting in development on http://0.0.0.0:3000
@@ -226,68 +226,68 @@ The list of files returned should match the files contained in the **blog_app** 
 		[2013-03-12 19:11:31] INFO  ruby 1.9.3 (2012-04-20) [x86_64-linux]
 		[2013-03-12 19:11:31] INFO  WEBrick::HTTPServer#start: pid=9789 port=3000
 
-2. In your browser, navigate to the [Azure Management Portal][management-portal] and select your Virtual Machine.
+2. ブラウザーで [Azure の管理ポータル][management-portal]に移動し、適切な仮想マシンを選択します。
 
-	![virtual machine list][vmlist]
+	![仮想マシンの一覧][vmlist]
 
-3. Select **ENDPOINTS** at the top of the page, and then click **+ ADD ENDPOINT** at the bottom of the page.
+3. ページの上部にある **[エンドポイント]** を選択し、ページの下部にある **[エンドポイントの追加]** をクリックします。
 
-	![endpoints page][endpoints]
+	![エンドポイント ページ][endpoints]
 
-4. In the **ADD ENDPOINT** dialog, click the arrow in the bottom left to continue to the second page, and enter the following information in the form:
+4. **[エンドポイントの追加]** ダイアログで、左下にある矢印をクリックして次のページへ進み、フォームに次の情報を入力します。
 
-	* **NAME**: HTTP
+	* **名前**: HTTP
 
-	* **PROTOCOL**: TCP
+	* **プロトコル**: TCP
 
-	* **PUBLIC PORT**: 80
+	* **パブリック ポート**: 80
 
-	* **PRIVATE PORT**: &lt;port information from step 3 above&gt;
+	* **プライベート ポート**: &lt;前の手順 3 で確認したポート情報&gt;
 
-	This will create a public port of 80 that will route traffic to the private port of 300 - where the Rails server is listening.
+	これにより、プライベート ポート 300 にトラフィックをルーティングするパブリック ポート 80 が作成されます。ルーティング先のプライベート ポートは、Rails がリッスンしています。
 
-	![new endpoint dialog][new-endpoint]
+	![新しいエンドポイントのダイアログ][new-endpoint]
 
-5. Click the checkmark to save the endpoint.
+5. チェックマークをクリックして、エンドポイントを保存します。
 
-6. A message should appear that states **UPDATE IN PROGRESS**. Once this message disappears, the endpoint is active. You may now test your application by navigating to the DNS name of your virtual machine. The web site should appear similar to the following:
+6. **"更新が進行中です"** というメッセージが表示されます。このメッセージが消えると、エンドポイントがアクティブになります。この時点で仮想マシンの DNS 名に移動すると、アプリケーションをテストできます。Web サイトは次のように表示されます。
 
-	![default rails page][default-rails-cloud]
+	![既定の rails ページ][default-rails-cloud]
 
-	Appending **/posts** to the URL should display the pages generated by the scaffolding command.
+	URL に **/posts** を追加すると、スキャフォールディング コマンドで生成されたページが表示されます。
 
-	![posts page][blog-rails-cloud]
+	![投稿のページ][blog-rails-cloud]
 
-##<a id="next"></a>Next steps
+##<a id="next"></a>次のステップ
 
-In this article you have learned how to create and publish a basic forms-based Rails application to an Azure Virtual Machine. Most of the actions we performed were manual, and in a production environment it would be desirable to automate. Also, most production environments host the Rails application in conjunction with another server process such as Apache or NginX, which handles request routing to multiple instances of the Rails application and serving static resources.
+この記事では、基本的なフォーム ベースの Rails アプリケーションを作成し、Azure の仮想マシンに発行する方法について説明しました。ほとんどの操作は手動で実行しましたが、通常、運用環境では自動化が求められます。また、運用環境では、Apache や NginX などの別のサーバー プロセスと組み合わせて Rails アプリケーションをホストすることがほとんどです。これらのサーバーは、複数の Rails アプリケーション インスタンスへの要求のルーティングを処理すると共に、静的リソースを提供します。
 
-For information on automating deployment of your Rails application, as well as using the Unicorn web server and NginX, see [Unicorn+NginX+Capistrano with an Azure Virtual Machine][unicorn-nginx-capistrano].
+Rails アプリケーションの展開の自動化や、Unicorn Web サーバーと NginX の使用方法については、「[Capistrano を使用して Azure VM に Ruby on Rails Web アプリケーションを展開する][unicorn-nginx-capistrano]」を参照してください。
 
-If you would like to learn more about Ruby on Rails, visit the [Ruby on Rails Guides][rails-guides].
+Ruby on Rails の詳細について学習するには、[Ruby on Rails のガイド][rails-guides]を参照してください。
 
-To learn how to use the Azure SDK for Ruby to access Azure services from your Ruby application, see:
+Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サービスにアクセスする方法については、次のリンクを参照してください。
 
-* [Store unstructured data using blobs][blobs]
+* [BLOB を使用して非構造化データを保存する][blobs]
 
-* [Store key/value pairs using tables][tables]
+* [テーブルを使用してキー/値のペアを保存する][tables]
 
-* [Serve high bandwidth content with the Content Delivery Network][cdn-howto]
+* [コンテンツ配信ネットワークを使用して高帯域幅コンテンツを配信する][cdn-howto]
 
 
 
 <!-- WA.com links -->
-[blobs]: http://windowsazure.com/en-us/documentation/articles/storage-ruby-how-to-use-blob-storage
+[blobs]: http://windowsazure.com/ja-jp/documentation/articles/storage-ruby-how-to-use-blob-storage
 
-[cdn-howto]: http://www.windowsazure.com/en-us/develop/ruby/app-services/
+[cdn-howto]: http://www.windowsazure.com/ja-jp/develop/ruby/app-services/
 
 [management-portal]: https://manage.windowsazure.com/
 
-[tables]: http://www.windowsazure.com/en-us/develop/ruby/how-to-guides/table-service/
+[tables]: http://www.windowsazure.com/ja-jp/develop/ruby/how-to-guides/table-service/
 
-[unicorn-nginx-capistrano]: http://windowsazure.com/en-us/documentation/articles/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/
+[unicorn-nginx-capistrano]: http://windowsazure.com/ja-jp/documentation/articles/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/
 
-[vm-instructions]: http://windowsazure.com/en-us/documentation/articles/virtual-machines-linux-tutorial
+[vm-instructions]: http://windowsazure.com/ja-jp/documentation/articles/virtual-machines-linux-tutorial
 
 
 <!-- External Links -->
@@ -309,4 +309,5 @@ To learn how to use the Azure SDK for Ruby to access Azure services from your Ru
 [endpoints]: ./media/virtual-machines-ruby-rails-web-app-linux/endpoints.png
 
 [new-endpoint]: ./media/virtual-machines-ruby-rails-web-app-linux/newendpoint.png
+
 

@@ -1,109 +1,110 @@
-<properties linkid="manage-services-how-to-manage-a-storage-account" urlDisplayName="How to manage" pageTitle="How to manage storage accounts | Microsoft Azure" metaKeywords="Azure manage storage accounts, storage account management portal, storage account geo-replication, Azure geo-replication, Azure access keys" description="Learn how to manage storage accounts in Azure by using the Management Portal." metaCanonical="" services="storage" documentationCenter="" title="How To Manage Storage Accounts" authors="tamram" solutions="" manager="mbaldwin" editor="cgronlun" />
+<properties linkid="manage-services-how-to-manage-a-storage-account" urlDisplayName="管理方法" pageTitle="ストレージ アカウントの管理方法 | Microsoft Azure" metaKeywords="Azure 管理 ストレージ アカウント, ストレージ アカウント管理ポータル, ストレージ アカウント Geo レプリケーション, Azure Geo レプリケーション, Azure アクセス キー" description="管理ポータルを使用して Azure でストレージ アカウントを管理する方法について説明します。" metaCanonical="" services="storage" documentationCenter="" title="ストレージ アカウントの管理方法" authors="tamram" solutions="" manager="mbaldwin" editor="cgronlun" />
 
 
 
-<h1><a id="managestorageaccounts"></a>How To Manage Storage Accounts</h1>
+<h1><a id="managestorageaccounts"></a>ストレージ アカウントの管理方法</h1>
 
-##Table of Contents##
+##目次##
 
-* [How to: Manage storage account replication](#georeplication)
-* [How to: View, copy, and regenerate storage access keys](#regeneratestoragekeys)
-* [How to: Delete a storage account](#deletestorageaccount)
+* [方法: ストレージ アカウント レプリケーションの管理](#georeplication)
+* [方法: ストレージ アクセス キーの表示、コピーおよび再生成](#regeneratestoragekeys)
+* [方法: ストレージ アカウントの削除](#deletestorageaccount)
 
-<h2><a id="georeplication"></a>How to: Manage storage account replication</h2>
+<h2><a id="georeplication"></a>方法: ストレージ アカウント レプリケーションの管理</h2>
 
-You have three options for replicating your storage account:
+ストレージ アカウントに関するレプリケーションには、3 つのオプションがあります。
 
-- 	**Geo-redundant replication.** Geo-redundant replication is enabled for your storage account by default. With geo-redundant replication, your data is replicated to a secondary geographic location to enable failover to that location in case of a major disaster in the primary location. The secondary location is in the same region, but is hundreds of miles from the primary location. 
+- 	**Geo 冗長レプリケーション。**Geo 冗長レプリケーションは、ストレージ アカウントに対して既定で有効になっています。Geo 冗長レプリケーションを使用すると、データは地理的に異なる場所にある 2 次拠点に複製されて、1 次拠点で重大な障害が発生した場合にフェールオーバーが可能になります。2 次拠点は同じリージョンにありますが、1 次拠点から数百 km 離れています。
 
-- **Read access geo-redundant replication.** Read access geo-redundant replication replicates your data to a secondary geographic location, and also provides read access to your data in the secondary location. Read-access geo-redundant replication allows you to access your data from either the primary or the secondary location, in the event that one location becomes unavailable.
+- **読み取りアクセスの Geo 冗長レプリケーション**読み取りアクセスの Geo 冗長レプリケーションは、データを地理的に異なる場所にある 2 次拠点にコピーし、2 次拠点にあるデータへの読み取りアクセスも実現します。読み取りアクセスの Geo 冗長レプリケーションにより、どちらかの場所が使用不可能になった場合でも、1 次拠点または 2 次拠点にあるデータにアクセスできるようになります。
 
-- 	**Locally redundant replication**. With locally redundant replication, your storage account data is replicated three times within the same data center. Locally redundant replication is offered at discounted rates. 
+- 	**ローカル冗長レプリケーション**。ローカル冗長レプリケーションを使用すると、ストレージ アカウント データは同じデータ センター内で 3 回複製されます。ローカル冗長レプリケーションは、割引料金で使用できます。
 	
-	Be aware that if you specify locally redundant replication for your storage account, and you later decide to enable geo-redundant replication, you will incur a one-time data cost to replicate your existing data to the secondary location. 
+	ストレージ アカウントに対してローカル冗長レプリケーションを指定した後、Geo 冗長レプリケーションを有効にする場合は、既存データを 2 次拠点に複製するためにデータ費用が 1 回だけ発生することに注意してください。
 
-- **Read access geo-redundant replication (preview only).** Read access geo-redundant replication replicates your data to a secondary geographic location, and also provides read access to your data in the secondary location. Read-access geo-redundant replication allows you to access your data from either the primary or the secondary location, in the event that one location becomes unavailable.
+- **読み取りアクセスの Geo 冗長レプリケーション (プレビューのみ)。**読み取りアクセスの Geo 冗長レプリケーションは、データを地理的に異なる場所にある 2 次拠点にコピーし、2 次拠点にあるデータへの読み取りアクセスも実現します。読み取りアクセスの Geo 冗長レプリケーションにより、どちらかの場所が使用不可能になった場合でも、1 次拠点または 2 次拠点にあるデータにアクセスできるようになります。
 
-For pricing information for storage account replication, see [Storage Pricing Details](http://www.windowsazure.com/en-us/pricing/details/storage/).
+ストレージ アカウントのレプリケーションに関する料金情報については、「[料金詳細](http://www.windowsazure.com/ja-jp/pricing/details/storage/)」を参照してください。
 
-### To specify replication settings for a storage account ###
+### ストレージ アカウントに対してレプリケーションの設定を指定するには###
 
-1. In the [Azure Management Portal](https://manage.windowsazure.com), click **Storage**, and then click the name of your storage account to display the dashboard.
+1. [Azure 管理ポータル](https://manage.windowsazure.com)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを表示します。
 
-2. Click **Configure**.
+2. **[構成]** をクリックします。
 
-3. In the **Replication**, field, select the type of replication you want for your storage account.
+3. **[レプリケーション]** フィールドで、ストレージ アカウントで使用するレプリケーションのレベルを選択します。
 
-4. Click **Save**, and confirm your choice if prompted.
+4. **[保存]** をクリックし、メッセージが表示された場合は選択内容を確認します。
 
 
-<h2><a id="regeneratestoragekeys"></a>How to: View, copy, and regenerate storage access keys</h2>
-When you create a storage account, Azure generates two 512-bit storage access keys, which are used for authentication when the storage account is accessed. By providing two storage access keys, Azure enables you to regenerate the keys with no interruption to your storage service or access to that service.
+<h2><a id="regeneratestoragekeys"></a>方法: ストレージ アクセス キーの表示、コピーおよび再生成</h2>
+ストレージ アカウントを作成するときに、Azure によって 2 つの 512 ビット ストレージ アクセス キーが生成されます。これらは、ストレージ アカウントにアクセスするときに認証の目的で使用されます。Azure によって 2 つのストレージ アクセス キーが提供される結果、ストレージ サービスやサービスへのアクセスを中断することなく、これらのキーを再生成できます。
 
-In the [Management Portal](http://manage.windowsazure.com), use **Manage Keys** on the dashboard or the **Storage** page to view, copy, and regenerate the storage access keys that are used to access the Blob, Table, and Queue services. 
+[管理ポータル](http://manage.windowsazure.com)で、ダッシュボードまたは **[ストレージ]** ページの **[キーの管理]** を使用して、BLOB、テーブル、およびキュー サービスのアクセスに使用するストレージ アクセス キーを表示、コピー、および再生成します。
 
-### Copy a storage access key ###
+### ストレージ アクセス キーのコピー###
 
-You can use **Manage Keys** to copy a storage access key to use in a connection string. The connection string requires the storage account name and a key to use in authentication. For information about configuring connection strings to access Azure storage services, see [Configuring Connection Strings](http://msdn.microsoft.com/en-us/library/ee758697.aspx).
+**[キーの管理]** を使用してストレージ アクセス キーをコピーし、接続文字列で使用することができます。接続文字列には、ストレージ アカウント名および認証で使用するキーが必要です。Azure ストレージ サービスにアクセスする接続文字列の構成方法の詳細については、「[Azure 接続文字列の構成方法](http://msdn.microsoft.com/ja-jp/library/ee758697.aspx)」を参照してください。
 
-1. In the [Management Portal](http://manage.windowsazure.com), click **Storage**, and then click the name of the storage account to open the dashboard.
+1. [管理ポータル](http://manage.windowsazure.com)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
-2. Click **Manage Keys**.
+2. **[キーの管理]** をクリックします。
 
- 	**Manage Access Keys** opens.
+ 	**[アクセス キーの管理]** が開きます。
 
 	![Managekeys](./media/storage-manage-storage-account/Storage_ManageKeys.png)
 
  
-3. To copy a storage access key, select the key text. Then right-click, and click **Copy**.
+3. ストレージ アクセス キーをコピーするには、キー文字列を選択します。右クリックして **[コピー]** をクリックします。
 
-### Regenerate storage access keys ###
-You should change the access keys to your storage account periodically to help keep your storage connections more secure. Two access keys are assigned to enable you to maintain connections to the storage account using one access key while you regenerate the other access key. 
+### ストレージ アクセス キーの再生成###
+ストレージ接続のセキュリティを高めるために、ストレージ アカウントのアクセス キーは定期的に変更する必要があります。片方のアクセス キーでストレージ アカウントに接続したまま、もう片方のアクセス キーを再生成できるように、アクセス キーは 2 つ割り当てられます。
 
 <div class="dev-callout"> 
-    <b>Warning</b> 
-    <p>Regenerating your access keys affects virtual machines, media services, and any applications that are dependent on the storage account.
+    <b>警告</b>
+    <p>アクセス キーを再生成すると、そのストレージ アカウントに依存する仮想マシン、メディア サービス、およびアプリケーションが影響を受けます。
     </p> 
     </div>
 
-**Virtual machines** - If your storage account contains any virtual machines that are running, you will have to redeploy all virtual machines after you regenerate the access keys. To avoid redeployment, shut down the virtual machines before you regenerate the access keys.
+**仮想マシン** - ストレージ アカウントに実行中の仮想マシンが含まれる場合は、アクセス キーの再生成後、すべての仮想マシンを再デプロイする必要があります。再デプロイを回避するには、アクセス キーを生成する前に仮想マシンをシャットダウンします。
  
-**Media services** - If you have media services dependent on your storage account, you must re-sync the access keys with your media service after you regenerate the keys.
+**メディア サービス** - ストレージ アカウントに依存するメディア サービスがある場合は、キーを再生成した後で、アクセス キーをメディア サービスに再同期する必要があります。
  
-**Applications** - If you have web applications or cloud services using the storage account, you will lose the connections if you regenerate keys, unless you roll your keys. Here is the process:
+**アプリケーション** - ストレージ アカウントを使用する Web アプリケーションまたはクラウド サービスがある場合は、キーを切り替えない限り、キーを再生成すると接続が失われます。キーを切り替える手順は次のとおりです。
 
-1. Update the connection strings in your application code to reference the secondary access key of the storage account. 
+1. ストレージ アカウントのセカンダリ アクセス キーを参照するようにアプリケーション コードの接続文字列を更新します。
 
-2. Regenerate the primary access key for your storage account. In the [Management Portal](http://manage.windowsazure.com), from the dashboard or the **Configure** page, click **Manage Keys**. Click **Regenerate** under the primary access key, and then click **Yes** to confirm you want to generate a new key.
+2. ストレージ アカウントのプライマリ アクセス キーを再生成します。[管理ポータル](http://manage.windowsazure.com)で、ダッシュボードまたは **[構成]** ページの **[キーの管理]** をクリックします。プライマリ アクセス キーの **[再生成]** をクリックし、確認画面で **[はい]** をクリックして新しいキーを生成します。
 
-3. Update the connection strings in your code to reference the new primary access key.
+3. 新しいプライマリ アクセス キーを参照するようにアプリケーション コードの接続文字列を更新します。
 
-4. Regenerate the secondary access key.
+4. セカンダリ アクセス キーを再生成します。
 
 
-<h2><a id="deletestorageaccount"></a>How to: Delete a storage account</h2>
+<h2><a id="deletestorageaccount"></a>方法: ストレージ アカウントの削除</h2>
 
-To remove a storage account that you are no longer using, use **Delete** on the dashboard or the **Configure** page. **Delete** deletes the entire storage account, including all of the blobs, tables, and queues in the account. 
+使わなくなったストレージ アカウントを削除するには、ダッシュボードまたは **[構成]** ページの **[削除]** を使用します。**[削除]** をクリックすると、アカウントにあるすべての BLOB、テーブル、キューを含めて、ストレージ アカウント全体が削除されます。
 
 <div class="dev-callout">
-	<b>Warning</b>
-	<p>There's no way to restore the content from a deleted storage account. Make 
-	sure you back up anything you want to save before you delete the account.
+	<b>警告</b>
+	<p>削除したストレージ アカウントのコンテンツを復元する手段はありません。保存する
+	必要のあるデータは、アカウントを削除する前にバックアップを取っておいてください。
 	</p>
 	<p>
-	If your storage account contains any VHD files or disks for an Azure 
-	virtual machine, then you must delete any images and disks that are using those VHD files 
-	before you can delete the storage account. First, stop the virtual machine if it is running, and then delete it. To delete disks, navigate to the Disks tab and delete any disks contained in the storage account. To delete images, navigate to the Images tab and delete any images stored in the account.
+	ストレージ アカウントに Azure 仮想マシンの VHD ファイルまたはディスクが格納されている場合
+	は、これらの VHD ファイルを使用しているすべてのイメージとディスクを削除する必要があります。
+	その後、ストレージ アカウントを削除することができます。最初に、実行中の場合は仮想マシンを停止してから削除します。ディスクを削除するには、[ディスク] タブに移動し、ストレージ アカウントに格納されているディスクを削除します。イメージを削除するには、[イメージ] タブに移動し、アカウントに含まれているイメージを削除します。
 	</p>
 </div>
 
 
-1. In the [Management Portal](http://manage.windowsazure.com), click **Storage**.
+1. [管理ポータル](http://manage.windowsazure.com)で、**[ストレージ]** をクリックします。
 
-2. Click anywhere in the storage account entry except the name, and then click **Delete**.
+2. ストレージ アカウント項目の名前以外の部分をクリックして、**[削除]** をクリックします。
 
-	 -Or-
+	 または
 
-	Click the name of the storage account to open the dashboard, and then click **Delete**.
+	ストレージ アカウントの名前をクリックしてダッシュボードを開き、**[削除]** をクリックします。
 
-3. Click **Yes** to confirm you want to delete the storage account.
+3. 確認画面で **[はい]** をクリックして、ストレージ アカウントを削除します。
+
