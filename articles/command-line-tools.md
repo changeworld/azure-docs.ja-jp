@@ -4,7 +4,7 @@
 
 このツールには、Mac および Linux デスクトップから、仮想マシン、Web サイトおよび Azure のモバイル サービスを、作成、展開、管理するための機能があります。これらの機能は、.NET、Node.JS、および PHP 向けの Azure SDK と共にインストールされる Windows PowerShell コマンドレットに備わっている機能と似ています。
 
-このツールを Mac にインストールするには、[Azure SDK インストーラー](http://go.microsoft.com/fwlink/?LinkId=252249)をダウンロードして実行します。
+このツールを Mac にインストールするには、[Azure SDK インストーラー](http://go.microsoft.com/fwlink/?LinkId=252249)をダウンロードして実行します。 
 
 Linux にインストールするには、最新バージョンの Node.JS をインストールしてから、NPM を使用してインストールします。
 
