@@ -1,4 +1,4 @@
-<properties linkid="" urlDisplayName="" pageTitle="アーキテクチャ" metaKeywords="" description="一般的な設計パターンを対象とするアーキテクチャの概要" metaCanonical="" services="" documentationCenter="" videoId="" scriptId="" title="アーキテクチャの概要" authors="" solutions="" writer="waltpo" manager="bjsmith" editor="mattshel"  />
+<properties linkid="" urlDisplayName="" pageTitle="アーキテクチャ" metaKeywords="" description="一般的な設計パターンを対象とするアーキテクチャの概要" metaCanonical="" services="" documentationCenter="" videoId="" scriptId="" title="アーキテクチャの概要" authors="waltpo" solutions="" manager="bjsmith" editor="mattshel" />
 
 #アーキテクチャ
 Azure で一般的な設計パターンを実装する方法について説明します。
