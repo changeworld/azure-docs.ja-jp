@@ -50,6 +50,6 @@
 
 - **Azure サービス レベル アグリーメント (SLA)**: Azure コンピューティング SLA では、各ロール用に複数のインスタンスを展開している場合、クラウド サービスへのアクセスが 99.95% 以上の時間、維持されることが保証されます。また、ロール インスタンスのプロセスが実行されていないときに、その検出作業と是正措置が開始されることが 99.9% の時間、保証されます。詳細については、「[サービス レベル アグリーメント][SLA]」を参照してください。
 
-[HTMonitorCloudServicesm]:https://www.windowsazure.com/ja-jp/manage/services/cloud-services/how-to-monitor-a-cloud-service/
+[HTMonitorCloudServices]:https://www.windowsazure.com/ja-jp/manage/services/cloud-services/how-to-monitor-a-cloud-service/
 [SLA]: https://www.windowsazure.com/ja-jp/support/legal/sla/
 
