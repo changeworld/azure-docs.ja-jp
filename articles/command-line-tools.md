@@ -1,4 +1,4 @@
-<properties linkid="manage-linux-other-resources-command-line-tools" urlDisplayName="コマンド ライン ツール" pageTitle="Mac および Linux 用 Azure コマンド ライン ツール" metaKeywords="Azure コマンドライン, Azure ツール Mac, Azure ツール Linux" description="Azure での Mac および Linux 用コマンド ライン ツールの使用について説明します。" metaCanonical="" services="web-sites,virtual-machines,mobile-services,cloud-services" documentationCenter="" title="" authors=""  solutions="" writer="larryfr" manager="" editor=""  />
+<properties linkid="manage-linux-other-resources-command-line-tools" urlDisplayName="コマンド ライン ツール" pageTitle="Mac および Linux 用 Azure コマンド ライン ツール" metaKeywords="Azure コマンドライン, Azure ツール Mac, Azure ツール Linux" description="Azure での Mac および Linux 用コマンド ライン ツールの使用について説明します。" metaCanonical="" services="web-sites,virtual-machines,mobile-services,cloud-services" documentationCenter="" title="" authors="larryfr" solutions="" manager="" editor="" />
 
 #Mac および Linux 用 Azure コマンド ライン ツール
 
