@@ -172,21 +172,22 @@ Waagent が正しく機能するには次の該当するシステム パッケ�
 ブール型の構成オプションは "y" または "n" として指定できます。
 特別なキーワード "None" は、次に詳述しているように、一部の文字列型の構成オプションに使用できます。
 
-**Role.StateConsumer: **
+**Role.StateConsumer:**
 
-型: 文字列
-既定値: None
+Type: String  
+Default: None
+
 
 実行可能プログラムへのパスを指定した場合は、waagent がイメージのプロビジョニングを完了し、"Ready" 状態がファブリックにレポートされようとするときに呼び出されます。プログラムに指定された引数が "Ready" になります。エージェントはプログラムから制御が返るのを待たずに処理を続行します。
 
-**Role.ConfigurationConsumer: **
+**Role.ConfigurationConsumer:**
 
 型: 文字列
 既定値: None
 
 実行可能プログラムへのパスを指定した場合、構成ファイルが仮想マシンに使用可能であることがファブリックによって通知されると、そのプログラムは呼び出されます。XML 構成ファイルへのパスは引数として実行可能プログラムに渡されます。このプログラムは、構成ファイルが変更されるたびに複数回呼び出すことができます。「付録」にサンプル ファイルを示しています。このファイルの現在のパスは /var/lib/waagent/HostingEnvironmentConfig.xml です。
 
-**Role.TopologyConsumer: **
+**Role.TopologyConsumer:**
 
 型: 文字列
 既定値: None

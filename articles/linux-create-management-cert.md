@@ -64,7 +64,7 @@ Azure の account import コマンドを実行することで、証明書をイ�
 
  	openssl.exe pkcs12 -in publicAndprivate.pfx -nocerts -out privateKey.pem 
 
-Windows では、PowerShell または無料の Windows Base64 デコーダー ([http://www.fourmilab.ch/webtools/base64/base64.zip] など) を使用してデコードして、PFX ファイルを抽出できます。そのためには次のコマンドを実行します。
+Windows では、PowerShell または無料の Windows Base64 デコーダー [http://www.fourmilab.ch/webtools/base64/base64.zip]() を使用してデコードして、PFX ファイルを抽出できます。そのためには次のコマンドを実行します。
 
 	base64 -d key.txt ->key.pfx
 

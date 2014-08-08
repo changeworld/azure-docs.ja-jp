@@ -115,7 +115,7 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
 
 	**[監視] の [概要]** ダッシュボードが自動的に表示されます。
 
-	![New Relic の監視ダッシュボード](./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelic_app.png
+	![New Relic monitoring dashboard](./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelic_app.png)
 
 	**[アプリケーション]** メニューの一覧からアプリを選択すると、**[概要]** ダッシュボードに、現在のアプリ サーバーとブラウザーの情報が表示されます。
 
