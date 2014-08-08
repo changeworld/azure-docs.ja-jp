@@ -66,7 +66,8 @@ Hadoop ストリーミング インターフェイスの詳細については、
 
 		$subscriptionName = "<SubscriptionName>"   
 		$storageAccountName = "<StorageAccountName>" 
-		$containerName = "<ContainerName>"
+		$containerName = "<ContainerName>
+      "
 
 		# Select the current subscription
 		Select-AzureSubscription $subscriptionName

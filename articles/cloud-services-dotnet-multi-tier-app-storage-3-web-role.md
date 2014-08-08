@@ -1608,7 +1608,7 @@ Azure のストレージのテーブル、キュー、および BLOB を操作�
 	
 接続文字列の値は、[Azure 管理ポータル][managementportal]から取得します。これには、ストレージ アカウントの **[ストレージ]** タブを選択し、ページの下部にある **[キーの管理]** をクリックします。
 
-*コード内の `RoleEnvironment.GetConfigurationSettingValue("StorageConnectionString")` は、すべて `ConfigurationManager.ConnectionStrings[["StorageConnectionString"]].ConnectionString` に置き換えてください。
+* コード内の `RoleEnvironment.GetConfigurationSettingValue("StorageConnectionString")` は、すべて `ConfigurationManager.ConnectionStrings[["StorageConnectionString"]].ConnectionString` に置き換えてください。
 
 
 
