@@ -185,6 +185,7 @@ e.	2 つ目の VM を選択し、前に示している手順を繰り返して�
 **手順 1. 前提条件のインストール**
 
 Cassandra には Java 仮想マシンが必要であり、そのため、Ubuntu を含む Debian 系 Linux では、次のコマンドを使用して最新の JRE をインストールする必要があります。         
+         
 	sudo add-apt-repository ppa:webupd8team/java
     sudo apt-get update
     sudo apt-get install oracle-java7-installer
