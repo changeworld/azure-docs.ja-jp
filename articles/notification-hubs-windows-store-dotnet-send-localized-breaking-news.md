@@ -102,9 +102,9 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
         <Button Content="Subscribe" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="Button_Click" />
     </Grid>
 
-<h2><a name="building-client"></a><span class="building app">App ui</span>Building the Windows Store client app</h2>
+<h2><a name="building-client"></a><span class="building app">アプリケーションの UI</span>Windows ストア クライアント アプリケーションを構築する</h2>
 
-1. In your Notifications class, add a locale parameter to your  *StoreCategoriesAndSubscribe* and *SubscribeToCateories* methods.
+1. あなたの通知クラスより、 *StoreCategoriesAndSubscribe* と *SubscribeToCateories* メソッドのロケールパラメータを追加してください。
 
 		public async Task StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
         {
