@@ -45,8 +45,8 @@
     このスクリプトは、**text** プロパティの長さを調べ、長さが 10 文字を超えた場合にエラー応答を送信します。それ以外の場合、**execute** メソッドが呼び出されて挿入を完了します。
 
     <div class="dev-callout"> 
-	<b>Note</b> 
-	<p>You can remove a registered script on the <strong>Script</strong> tab by clicking <strong>Clear</strong> and then <strong>Save</strong>.</p></div>
+	<b>注</b> 
+	<p>登録したスクリプトを <strong>[スクリプト]</strong> タブで削除できます。<strong>[クリア]</strong> をクリックし、<strong>[保存]</strong> をクリックします。</p></div>
 
 ## <a name="update-client-validation"></a>クライアントの更新
 
@@ -106,8 +106,8 @@
         [DataMember(Name = "createdAt")]
         public DateTime? CreatedAt { get; set; }
   
-    <div class="dev-callout"><b>Note</b>
-	<p>The <code>DataMember's Name</code> annotation tells the client to map the new <code>CreatedAt</code> property in the app to the <code>createdAt</code> column defined in the TodoItem table, which has a different name. By using this annotation, your app can have property names on objects that differ from column names in the SQL Database. Without this annotation, an error occurs because of the casing differences.</p>
+    <div class="dev-callout"><b>注</b>
+	<p><code>DataMember's Name</code> 注釈は、アプリケーション内の新しい <code>CreatedAt</code> プロパティを、別の名前を持つ TodoItem テーブルに定義された [<code>createdAt</code>] 列にマップするように、クライアントに指示しますこの注釈を使用することにより、使用しているアプリケーションで、SQL データベース内の列名と異なるオブジェクトにプロパティ名を持つことができます。この注釈がない場合は、大文字と小文字が区別されるため、エラーが発生します。</p>
     </div>
 
 2. GetView メソッドで、<code>checkBox.Text</code> を <code>currentItem.Text</code> に設定する現在のコードの直前に、次のコードを追加します。

@@ -83,8 +83,8 @@
 
 	クライアントは、GET 要求を送信してタイル テンプレートにアクセスすることになるため、**exports.get** 関数が使用されます。
 
-   	<div class="dev-callout"><b>Note</b>
-   		<p>This custom API script uses the Node.js <a href="http://go.microsoft.com/fwlink/p/?LinkId=306750">wns module</a>, which is referenced by using the <strong>require</strong> function. This module is different from the <a href="http://go.microsoft.com/fwlink/p/?LinkId=260591">wns object</a> returned by the <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554217.aspx">push object</a>, which is used to send push notifications from server scripts.</p>
+   	<div class="dev-callout"><b>注</b>
+   		<p>このカスタム API スクリプトには、Node.js の <a href="http://go.microsoft.com/fwlink/p/?LinkId=306750">wns モジュール</a>が使用されており、<strong>require</strong> 関数を使って参照されています。このモジュールは、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554217.aspx">push オブジェクト</a>から返される <a href="http://go.microsoft.com/fwlink/p/?LinkId=260591">wns オブジェクト</a>とは異なります。push オブジェクトから返される wns オブジェクトは、サーバー スクリプトから push 通知を送信する目的に使用されます。</p>
    	</div>
 
 次に、クイック スタート アプリケーションに変更を加えます。ライブ タイルを更新する定期的な通知を開始するために、新しいカスタム API を要求します。

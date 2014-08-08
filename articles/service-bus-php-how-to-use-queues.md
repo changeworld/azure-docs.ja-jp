@@ -234,7 +234,7 @@ Azure のサービス バス クライアントをインスタンス化するに
 
 ##<a id="NextSteps"></a>次のステップ
 
-これで、サービス バス キューの基本を学習できました。詳細については、MSDN のトピック「[サービス バス キュー、トピックおよびサブスクリプション][]」を参照してください。
+これで、サービス バス キューの基本を学習できました。詳細については、MSDN のトピック [Queues, Topics, and Subscriptions][] を参照してください。
 
 [download-sdk (SDK のダウンロード)]: http://go.microsoft.com/fwlink/?LinkId=252473
 [サービス バス キューの図]: ../../../DevCenter/Java/Media/SvcBusQueues_01_FlowDiagram.jpg

@@ -151,8 +151,7 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
          dialog.Commands.Add(new UICommand("OK"));
          await dialog.ShowAsync();
 
-4. Finally, in your App.xaml.cs file, make sure to update your call to the 
-Notifications singleton in the *OnLaunched* method:
+4. 最後に、App.xaml.csファイルから、* OnLaunched*方式で通知シングルトンを作るために、コールを更新してください：
 
 		Notifications.SubscribeToCategories(Notifications.RetrieveLocale(), Notifications.RetrieveCategories());
 

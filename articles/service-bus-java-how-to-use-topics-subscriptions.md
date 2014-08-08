@@ -327,7 +327,7 @@ SQL92 のサブセットを実装する **SqlFilter** です。SQL フィルタ�
 # <a name="bkmk_NextSteps"> </a>次のステップ
 
 これで、サービス バス キューの基本を学習できました。詳細については、
-MSDN のトピック「[サービス バス キュー、トピック、およびサブスクリプション][]」を参照してください。
+MSDN のトピック「[Service Bus Queues, Topics, and Subscriptions][]」を参照してください。
 
   [Azure SDK for Java]: http://www.windowsazure.com/ja-jp/develop/java/
   [サービス バス トピックとサブスクリプションとは]: #what-are-service-bus-topics

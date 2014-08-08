@@ -87,7 +87,7 @@
 
 
 <!-- URLs. -->
-[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=262293
+[モバイル サービスのサーバー スクリプト リファレンス]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-how-to-use-server-scripts/
 [マイ アプリ ダッシュボード]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-android
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-android

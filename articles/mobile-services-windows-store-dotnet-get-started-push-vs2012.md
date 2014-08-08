@@ -57,7 +57,7 @@
 	        public string Handle { get; set; }
 	    }
 	
-	The Handle property is used to store the channel URI.
+	Handleプロパティは、URIチャネルを格納するために使用されます。
 
 2. App.xaml.cs ファイルを開き、次の using ステートメントを追加します。
 

@@ -199,11 +199,11 @@ NuGet パッケージは、次の構成要素をアプリケーションの web.
 
 構成が追加されたら、新たに追加された構成で次の 2 つの項目を置き換えます。
 
-1.**[Cache role name or Service Endpoint]** を、管理ポータルのダッシュボードに表示されるエンドポイントに置き換えます。
+1. **[Cache role name or Service Endpoint]** を、管理ポータルのダッシュボードに表示されるエンドポイントに置き換えます。
 
 	![Endpoint][Endpoint]
 
-2.securityProperties セクションをコメント解除し、**[Authentication Key]** を認証キーに置き換えます。認証キーは、キャッシュ ダッシュボードから **[キーの管理]** をクリックすることで管理ポータルに表示されます。
+2. securityProperties セクションをコメント解除し、**[Authentication Key]** を認証キーに置き換えます。認証キーは、キャッシュ ダッシュボードから **[キーの管理]** をクリックすることで管理ポータルに表示されます。
 
 	![AccessKeys][AccessKeys]
 

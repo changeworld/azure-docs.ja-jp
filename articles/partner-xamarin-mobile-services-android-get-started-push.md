@@ -33,11 +33,11 @@
 	> [WACOM.NOTE]
 	> 既にプロジェクトがある場合は、ログイン後に **[Dashboard]** ページが表示されます。ダッシュボードで新しいプロジェクトを作成するには、**[API Project]<**, click **Create...** under **Other projects**, then enter a project name and click **Create project**.
 
-2. Click the Overview button in the left column, and make a note of the Project Number in the Dashboard section. 
+2. 左の列にある[概要]ボタンをクリックし、ダッシュボードセクションにあるプロジェクト番号をメモしてください。 
 
-	Later in the tutorial you set this value as the **PROJECT_ID** variable in the client.
+後ほどのチュートリアルで、クライアントにある** PROJECT_ID**変数の値を設定します。
 
-3. On the <a href="http://go.microsoft.com/fwlink/p/?LinkId=268303" target="_blank">Google apis</a> ページで **[Services]** をクリックし、トグルをクリックして **[Google Cloud Messaging for Android]** をオンにし、サービスの条件に同意します。
+3. <a href="http://go.microsoft.com/fwlink/p/?LinkId=268303" target="_blank">Google apis</a> ページで **[Services]** をクリックし、トグルをクリックして **[Google Cloud Messaging for Android]** をオンにし、サービスの条件に同意します。
 
 4. **[API Access]** をクリックし、**[Create new Server key...]** をクリックします。
 

@@ -174,122 +174,122 @@ Waagent が正しく機能するには次の該当するシステム パッケ�
 
 **Role.StateConsumer:**
 
-Type: String  
-Default: None
+型: 文字列  
+既定値: None
 
 
 実行可能プログラムへのパスを指定した場合は、waagent がイメージのプロビジョニングを完了し、"Ready" 状態がファブリックにレポートされようとするときに呼び出されます。プログラムに指定された引数が "Ready" になります。エージェントはプログラムから制御が返るのを待たずに処理を続行します。
 
 **Role.ConfigurationConsumer:**
 
-型: 文字列
+型: 文字列  
 既定値: None
 
 実行可能プログラムへのパスを指定した場合、構成ファイルが仮想マシンに使用可能であることがファブリックによって通知されると、そのプログラムは呼び出されます。XML 構成ファイルへのパスは引数として実行可能プログラムに渡されます。このプログラムは、構成ファイルが変更されるたびに複数回呼び出すことができます。「付録」にサンプル ファイルを示しています。このファイルの現在のパスは /var/lib/waagent/HostingEnvironmentConfig.xml です。
 
 **Role.TopologyConsumer:**
 
-型: 文字列
+型: 文字列  
 既定値: None
 
 実行可能プログラムへのパスを指定した場合、新しいネットワーク トポロジ レイアウトが仮想マシンに使用可能であることがファブリックによって通知されると、そのプログラムは呼び出されます。XML 構成ファイルへのパスは引数として実行可能プログラムに渡されます。このプログラムは、ネットワーク トポロジが変更されるたびに (サービス復旧のためなど) 複数回呼び出すことができます。「付録」にサンプル ファイルを示しています。このファイルの現在の場所は /var/lib/waagent/SharedConfig.xml です。
 
-**Provisioning.Enabled: **
+**Provisioning.Enabled:**
 
-型: ブール
+型: ブール  
 既定: y
 
 エージェントのプロビジョニング機能を有効または無効にすることができます。有効な値は "y" または "n" です。プロビジョニングを無効にした場合、イメージ上の SSH ホストとユーザー キーが保持され、Azure プロビジョニング API で指定した構成はすべて無視されます。
 
-**Provisioning.DeleteRootPassword: **
+**Provisioning.DeleteRootPassword:**
 
-型: ブール
+型: ブール  
 既定: n
 
 設定した場合、/etc/shadow 内の root パスワードがプロビジョニング プロセス中に消去されます。
 
-**Provisioning.RegenerateSshHostKeyPair: **
+**Provisioning.RegenerateSshHostKeyPair:**
 
-型: ブール
+型: ブール  
 既定: y
 
 設定した場合、すべての SSH ホスト キー ペア (ecdsa、dsa、rsa) がプロビジョニング プロセス中に /etc/ssh/ から削除されます。1 つの新しいキー ペアが生成されます。
 
 新しいキー ペアの暗号化の種類は Provisioning.SshHostKeyPairType オプションで構成できます。一部のディストリビューションでは、SSH デーモンの再起動時 (再起動プロセス中など)、不足している暗号化の種類用に SSH キー ペアが再作成されることに注意してください。
 
-**Provisioning.SshHostKeyPairType: **
+**Provisioning.SshHostKeyPairType:**
 
-型: 文字列
+型: 文字列  
 既定: rsa
 
 仮想マシンの SSH デーモンによってサポートされている暗号化アルゴリズムの種類を設定できます。一般的にサポートされている値は "rsa"、"dsa"、"ecdsa" です。Windows の "putty.exe" は "ecdsa" をサポートしていないことに注意してください。そのため、Windows の putty.exe を使用して Linux の展開に接続する場合は、"rsa" または "dsa" を使用してください。
 
-**Provisioning.MonitorHostName: **
+**Provisioning.MonitorHostName:**
 
-型: ブール
+型: ブール  
 既定: y
 
 設定した場合、waagent は Linux 仮想マシンに対してホスト名の変更があるかどうか ("hostname" コマンドによって返される値) を監視し、変更があればイメージ上のネットワーク構成を自動的に更新して反映します。DNS サーバーに名前の変更をプッシュするために、仮想マシンでネットワークが再起動されます。これによりインターネット接続は短時間失われます。
 
-**ResourceDisk.Format: **
+**ResourceDisk.Format:**
 
-型: ブール
+型: ブール  
 既定: y
 
 設定した場合、"ResourceDisk.Filesystem" でユーザーによって要求されたファイル システムの種類が "ntfs" 以外であると、プラットフォームに用意されたリソース ディスクが waagent によってフォーマットされてマウントされます。ファイルシステムの種類が Linux (83) の 1 つのパーティションがディスク上で使用可能になります。このパーティションは、正常にマウント可能な場合、フォーマットされないことに注意してください。
 
-**ResourceDisk.Filesystem: **
+**ResourceDisk.Filesystem:**
 
-型: 文字列
+型: 文字列  
 既定: ext4
 
 リソース ディスクのファイルシステムの種類を指定します。サポートされている値は Linux ディストリビューションによって異なります。文字列が X の場合、mkfs.X は Linux イメージ上に存在する必要があります。SLES 11 イメージでは通常は 'ext3' を使用する必要があります。FreeBSD イメージではここで 'ufs2' を使用する必要があります。
 
-**ResourceDisk.MountPoint: **
+**ResourceDisk.MountPoint:**
 
-型: 文字列
+型: 文字列  
 既定: /mnt/resource
 
 リソース ディスクがマウントされるパスを指定します。
 
-**ResourceDisk.EnableSwap: **
+**ResourceDisk.EnableSwap:**
 
-型: ブール
+型: ブール  
 既定: n
 
 設定した場合、スワップ ファイル (/swapfile) がリソース ディスク上に作成され、システムのスワップ領域に追加されます。
 
-**ResourceDisk.SwapSizeMB: **
+**ResourceDisk.SwapSizeMB:**
 
-型: 整数
+型: 整数  
 既定: 0
 
 スワップ ファイルのサイズを MB 単位で指定します。
 
-**LBProbeResponder: **
+**LBProbeResponder:**
 
-型: ブール
+型: ブール  
 既定: y
 
 設定した場合、waagent はプラットフォームのロード バランサー プローブ (存在する場合) に応答します。
 
-**Logs.Verbose: **
+**Logs.Verbose:**
 
-型: ブール
+型: ブール  
 既定: n
 
 設定した場合、ログの詳細度が上がります。Waagent は /var/log/waagent.log にログを記録し、システムの logrotate 機能を利用してログをローテーションさせます。
 
-**OS.RootDeviceScsiTimeout: **
+**OS.RootDeviceScsiTimeout:**
 
-型: 整数
+型: 整数  
 既定: 300
 
 OS ディスクおよびデータ ドライブの SCSI タイムアウトを秒単位で構成します。設定しない場合、システムの既定値が使用されます。
 
-**OS.OpensslPath: **
+**OS.OpensslPath:**
 
-型: 文字列
+型: 文字列  
 既定値: None
 
 暗号化処理に使用する openssl バイナリの代替パスを指定します。
