@@ -88,7 +88,7 @@
 1.	わかりやすい同期グループ名を入力します。
 2.	ドロップダウン リストで、この同期グループをホストする **リージョン** (データ センター) を選択します。
 
-3.右矢印をクリックします。
+3. 右矢印をクリックします。
 
 	![Image3](./media/sql-database-get-started-data-sync/NewSyncGroupName-Figure3.PNG)
  
