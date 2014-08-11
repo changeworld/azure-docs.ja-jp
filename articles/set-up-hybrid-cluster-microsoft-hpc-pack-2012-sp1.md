@@ -307,7 +307,7 @@ HPC Pack の **clusrun** コマンドを使用すると、1 つ以上のクラ�
 * [Azure 仮想マシンでの Microsoft HPC Pack](http://go.microsoft.com/fwlink/p/?linkid=330375)
 
 
-[概要]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/hybrid_クラスター_overview.png
+[Overview]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/hybrid_クラスター_overview.png
 [install_hpc1]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/install_hpc1.png
 [install_hpc2]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/install_hpc2.png
 [install_hpc3]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/install_hpc3.png
