@@ -8,7 +8,7 @@
 
 # オートスケーリング アプリケーション ブロックの使用方法
 
-このガイドでは、[Microsoft Enterprise Library 5.0Integration Pack for Azure][] の
+このガイドでは、[Microsoft Enterprise Library 5.0 Integration Pack for Azure][] の
 オートスケーリング アプリケーション ブロックを使用して一般的なシナリオを実行する方法の
 デモンストレーションを行います。サンプルは C# で記述され、
 .NET API を利用しています。紹介するシナリオは、**ブロックのホスティング**、
