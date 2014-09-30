@@ -9,7 +9,7 @@
 ## データ ディスクをアタッチする
 2 つ以上の空のデータ ディスクが通常、RAID デバイスの構成に必要になります。この記事では、データ ディスクを Linux 仮想マシンにアタッチする方法については詳しく説明しません。Azure 内の Linux 仮想マシンに空のデータ ディスクをアタッチする方法の詳細については、Windows Azure の記事「[Attach an empty disk (空のディスクをアタッチする)](http://www.windowsazure.com/ja-jp/documentation/articles/storage-windows-attach-disk/#attachempty)」を参照してください。
 
-	>[WACOM.NOTE] XS の VM サイズでは、仮想マシンへの複数のデータ ディスクのアタッチはサポートされていません。サポートされている VM のサイズとデータ ディスクの数の詳細については、「[Virtual Machine and Cloud Service Sizes for Azure (Azure の仮想マシンとクラウド サービスのサイズ)](http://msdn.microsoft.com/ja-jp/library/windowsazure/dn197896.aspx)」を参照してください。
+>[WACOM.NOTE] XS の VM サイズでは、仮想マシンへの複数のデータ ディスクのアタッチはサポートされていません。サポートされている VM のサイズとデータ ディスクの数の詳細については、「[Virtual Machine and Cloud Service Sizes for Azure (Azure の仮想マシンとクラウド サービスのサイズ)](http://msdn.microsoft.com/ja-jp/library/windowsazure/dn197896.aspx)」を参照してください。
 
 
 ## mdadm ユーティリティをインストールする
