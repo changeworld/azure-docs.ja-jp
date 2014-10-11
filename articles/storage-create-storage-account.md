@@ -1,67 +1,60 @@
-<properties linkid="manage-services-how-to-create-a-storage-account" urlDisplayName="作成方法" pageTitle="ストレージ アカウントを作成する方法 | Azure" metaKeywords="" description="Azure 管理ポータルでストレージ アカウントを作成する方法を説明します。" metaCanonical="" services="storage" documentationCenter="" title="ストレージ アカウントを作成する方法" authors="tysonn" solutions="" manager="paulettm" editor="cgronlun" />
+<properties linkid="manage-services-how-to-create-a-storage-account" urlDisplayName="How to create" pageTitle="How to create a storage account | Azure" metaKeywords="" description="Learn how to create a storage account in the Azure management portal." metaCanonical="" services="storage" documentationCenter="" title="How To Create a Storage Account" solutions="" authors="tamram" manager="mbaldwin" editor="cgronlun" />
 
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="tamram"></tags>
 
+# <span id="createstorageaccount"></span></a>ストレージ アカウントの作成方法
 
+Azure の BLOB、テーブル、キュー、およびファイル サービスでファイルとデータを保存するには、データを保存するリージョンにストレージ アカウントを作成する必要があります。このトピックでは、Azure 管理ポータルでストレージ アカウントを作成する方法について説明します。
 
-<h1><a id="createstorageaccount"></a>ストレージ アカウントの作成方法</h1>
+ストレージ アカウントの容量とスループットの詳細については、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット][]」を参照してください。
 
-Azure の BLOB、テーブル、およびキュー サービスでファイルとデータを保存するには、データを保存するリージョンにストレージ アカウントを作成する必要があります。1 つのストレージ アカウントには最大 200 TB のデータを格納でき、各 Azure サブスクリプションに対して最大 20 個のストレージ アカウントを作成できます。詳細については、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](http://msdn.microsoft.com/ja-jp/library/dn249410.aspx)」を参照してください。
+> [WACOM.NOTE] Azure の仮想マシンの場合、デプロイ場所にまだストレージ アカウントがない状況では、その場所に自動的にストレージ アカウントが作成されます。ストレージ アカウント名は仮想マシン名を基にして付けられます。
 
-このトピックでは、Azure 管理ポータルでストレージ アカウントを作成する方法について説明します。
+## 目次
 
-<div class="dev-callout"> 
-<b>メモ</b>
-<p>Azure の仮想マシンの場合、デプロイ場所にまだストレージ アカウントがない状況では、その場所に自動的にストレージ アカウントが作成されます。ストレージ アカウント名は仮想マシン名を基にして付けられます。</p>
-</div>
+-   [方法: ストレージ アカウントを作成する][]
+-   [次のステップ][]
 
-##目次##
+## <span id="create"></span></a>方法: ストレージ アカウントの作成
 
-* [方法: ストレージ アカウントを作成する](#create)
-* [次の手順](#next)
+1.  [管理ポータル][]にサインインします。
 
-<h2><a id="create"></a>方法: ストレージ アカウントを作成する</h2>
+2.  **[新規作成]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
 
-1. [管理ポータル](https://manage.windowsazure.com)にサインインします。
+    ![NewStorageAccount][]
 
-2. **[新規作成]**、**[ストレージ]**、**[簡易作成]** の順にクリックします。
+3.  **[URL]** ボックスに、ストレージ アカウントの URL で使用するサブドメイン名を入力します。ストレージにあるオブジェクトにアクセスするには、オブジェクトの場所をエンドポイントに追加します。たとえば、BLOB にアクセスする URL は、http://*myaccount*.blob.core.windows.net/*mycontainer*/*myblob\* のようになります。
 
-	![NewStorageAccount](./media/storage-create-storage-account/storage_NewStorageAccount.png)
+4.  **[リージョン/アフィニティ グループ]** で、ストレージのリージョンまたはアフィニティ グループを選択します。使用している他の Azure サービスと同じデータ センターにストレージ サービスを配置する場合は、リージョンの代わりにアフィニティ グループを選択します。これによりパフォーマンスが向上し、送信料金も発生しません。
 
-3. **[URL]** ボックスに、ストレージ アカウントの URL で使用するサブドメイン名を入力します。ストレージにあるオブジェクトにアクセスするには、オブジェクトの場所をエンドポイントに追加します。たとえば、BLOB にアクセスする URL は、http://*myaccount*.blob.core.windows.net/*mycontainer*/*myblob* のようになります。
+    > [WACOM.NOTE] アフィニティ グループを作成するには、管理ポータルの **[設定]** 領域を開き、**[アフィニティ グループ]** をクリックして、**[アフィニティ グループの追加]** または **[追加]** をクリックします。また、Azure サービス管理 API を使用してアフィニティ グループを作成し管理することもできます。詳細については、「[アフィニティ グループに対する操作][]」を参照してください。
 
-4. **[リージョン/アフィニティ グループ]** で、ストレージのリージョンまたはアフィニティ グループを選択します。使用している他の Azure サービスと同じデータ センターにストレージ サービスを配置する場合は、リージョンの代わりにアフィニティ グループを選択します。これによりパフォーマンスが向上し、送信料金も発生しません。
+5.  複数の Azure サブスクリプションを所有している場合は、**[サブスクリプション]** フィールドが表示されます。**[サブスクリプション]** ボックスに、ストレージ アカウントを使用する Azure サブスクリプションを入力します。1 つのサブスクリプションに最大 5 個のストレージ アカウントを作成できます。
 
-	> [WACOM.NOTE]
-        > アフィニティ グループを作成するには、管理ポータルの <b>[ネットワーク]</b> 領域を開き、<b>[アフィニティ グループ]</b> をクリックして、<b>[新しいアフィニティ グループの作成]</b> または <b>[作成]</b> をクリックします。以前の管理ポータルで作成したアフィニティ グループを使用できます。他のポータルを開くには、タイトル バーの <b>[プレビュー]</b> をクリックし、<b>[前のポータルへ移動]</b> をクリックします (このポータルに戻るには、ポータルの下部にある <b>[プレビュー ポータルの表示]</b> をクリックします)。また、Azure サービス管理 API を使用してアフィニティ グループを作成し管理することもできます。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/ee460798.aspx">アフィニティ グループに対する操作</a>」を参照してください。
+6.  **[レプリケーション]** で、ストレージ アカウントで使用するレプリケーションのレベルを選択します。
 
-5. 複数の Azure サブスクリプションを所有している場合は、**[サブスクリプション]** フィールドが表示されます。**[サブスクリプション]** ボックスに、ストレージ アカウントを使用する Azure サブスクリプションを入力します。1 つのサブスクリプションに最大 5 個のストレージ アカウントを作成できます。
+    [WACOM.INCLUDE [storage-replication-options][]]
 
-6. **[レプリケーション]** で、ストレージ アカウントで使用するレプリケーションのレベルを選択します。
+7.  **[ストレージ アカウントの作成]** をクリックします。
 
-	既定では、レプリケーションは **[Geo 冗長]** に設定されます。Geo 冗長レプリケーションを使用する場合は、1 次拠点で重大な障害が発生したときに、ストレージ アカウントとその中にあるすべてのデータは 2 次拠点にフェールオーバーされます。2 次拠点は Azure によって同じリージョンに割り当てられ、変更することはできません。フェールオーバーの後は、2 次拠点がストレージ アカウントの 1 次拠点になり、データは新しい 2 次拠点に複製されます。
+    ストレージ アカウントを作成するには数分かかる場合があります。状態を確認するには、ポータルの下部にある通知を監視します。ストレージ アカウントが作成されると、新しいストレージ アカウントの状態が "**オンライン**" になって、使用できるようになります。
 
-	2 次拠点からのデータを読み取れるようにする場合は、**読み取りアクセスの Geo 冗長**レプリケーションを選択できます。このオプションにより、Geo 冗長レプリケーションが実現され、2 次拠点にレプリケートされたデータへの読み取り専用アクセスが有効になります。読み取りアクセスの Geo 冗長レプリケーションにより、どちらかの場所が使用不可能になった場合でも、1 次拠点または 2 次拠点にあるデータにアクセスできるようになります。
+    ![StoragePage][]
 
-	3 番目のレプリケーション オプションである**読み取りアクセスの Geo 冗長**は、現在プレビュー段階です。このオプションにより、2 次拠点にレプリケートされたデータへの読み取り専用アクセスが有効になります。読み取りアクセスの Geo 冗長レプリケーションにより、どちらかの場所が使用不可能になった場合でも、1 次拠点または 2 次拠点にあるデータにアクセスできるようになります。
+## <span id="next"></span></a>次のステップ
 
-	> [WACOM.NOTE]
-        > プレビュー段階にある読み取りアクセスの Geo 冗長レプリケーションを使用するには、サブスクリプションに対してこの機能を有効にするように手動で要求する必要があります。サブスクリプションに対して読み取りアクセスの Geo 冗長レプリケーションを要求するには、<a href="https://account.windowsazure.com/PreviewFeatures">Azure プレビュー機能に関するページ</a>を参照してください。読み取りアクセスの Geo 冗長の詳細については、<a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/04/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx">Azure のストレージ チーム ブログ</a>を参照してください。
-	> 読み取りアクセスの Geo 冗長レプリケーションが、サブスクリプションのプレビュー機能として有効になっていない場合は、ストレージ アカウントでこの機能を選択するためのオプションは無効になります。
+-   Azure Storage の詳細については、[azure.com][] および [MSDN][] で Azure Storage のドキュメントを参照してください。
 
-	ストレージ アカウントのレプリケーションに関する料金情報については、「[料金詳細](http://www.windowsazure.com/ja-jp/pricing/details/storage/)」を参照してください。
+-   [Azure のストレージ チーム ブログ][]を参照してください。
 
-6. **[ストレージ アカウントの作成]** をクリックします。
-
-	ストレージ アカウントを作成するには数分かかる場合があります。状態を確認するには、ポータルの下部にある通知を監視します。ストレージ アカウントが作成されると、新しいストレージ アカウントの状態が "**オンライン**" になって、使用できるようになります。
-
-	![StoragePage](./media/storage-create-storage-account/Storage_StoragePage.png)
-
-<h2><a id="next"></a>次の手順</h2>
-
-- Azure ストレージ サービスの詳細については、「[Understanding Cloud Storage (クラウド ストレージについて)](http://www.windowsazure.com/ja-jp/develop/net/fundamentals/cloud-storage/)」および「[BLOB、キュー、テーブル](http://msdn.microsoft.com/ja-jp/library/gg433040.aspx)」を参照してください。
-
--  [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
-
-- Azure の BLOB、テーブル、キュー サービスを使用するようアプリケーションを構成します。[Azure デベロッパー センター](http://www.windowsazure.com/ja-jp/develop/overview/)には、.NET、Node.js、Java、および PHP アプリケーションで BLOB、テーブル、およびキュー ストレージ サービスを使用するハウツー ガイドが用意されています。プログラミング言語固有の操作手順については、その言語のハウツー ガイドを参照してください。
-
-
+  [Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット]: http://msdn.microsoft.com/en-us/library/dn249410.aspx
+  [方法: ストレージ アカウントを作成する]: #create
+  [次のステップ]: #next
+  [管理ポータル]: https://manage.windowsazure.com
+  [NewStorageAccount]: ./media/storage-create-storage-account/storage_NewStorageAccount.png
+  [アフィニティ グループに対する操作]: http://msdn.microsoft.com/en-us/library/windowsazure/ee460798.aspx
+  [storage-replication-options]: ../includes/storage-replication-options.md
+  [StoragePage]: ./media/storage-create-storage-account/Storage_StoragePage.png
+  [azure.com]: http://azure.microsoft.com/en-us/documentation/services/storage/
+  [MSDN]: http://msdn.microsoft.com/en-us/library/gg433040.aspx
+  [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/

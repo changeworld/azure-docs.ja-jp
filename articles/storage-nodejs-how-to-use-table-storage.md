@@ -1,434 +1,444 @@
-<properties linkid="dev-nodejs-how-to-table-services" urlDisplayName="テーブル サービス" pageTitle="テーブル ストレージの使用方法 (Node.js) | Microsoft Azure" metaKeywords="Azure テーブル ストレージ サービス, Azure テーブル サービス Node.js, テーブル ストレージ Node.js" description="Azure でのテーブル ストレージ サービスの使用方法について説明します。コード サンプルは Node.js API を使用して記述されています。" metaCanonical="" services="storage" documentationCenter="Node.js" title="Node.js からテーブル サービスを使用する方法" authors="" solutions="" manager="" editor="" />
+<properties linkid="dev-nodejs-how-to-table-services" urlDisplayName="Table Service" pageTitle="How to use table storage (Node.js) | Microsoft Azure" metaKeywords="Azure table storage service, Azure table service Node.js, table storage Node.js" description="Learn how to use the table storage service in Azure. Code samples are written using the Node.js API." metaCanonical="" services="storage" documentationCenter="Node.js" title="How to Use the Table Service from Node.js" authors="larryfr" solutions="" manager="" editor="" />
 
-
-
-
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr"></tags>
 
 # Node.js からテーブル サービスを使用する方法
 
-このガイドでは、Microsoft Azure テーブル サービスを使用して一般的なシナリオを
+このガイドでは、Windows Azure テーブル サービスを使用して一般的なシナリオを
 実行する方法について説明します。サンプルは Node.js API を使用して
-記述されています。紹介するシナリオは、**テーブルの作成と削除、
-テーブルのエンティティの挿入とクエリ実行**などです。テーブルの
+記述されています。紹介するシナリオは、**テーブルの作成と削除、テーブルのエンティティの挿入とクエリ実行**などです。
+テーブルの
 詳細については、「[次のステップ][]」のセクションを参照してください。
 
 ## 目次
 
-* [テーブル サービスとは][]
-* [概念][]
-* [Azure のストレージ アカウントの作成][]
-* [Node.js アプリケーションの作成][]
-* [アプリケーションからストレージへのアクセスの構成][]
-* [Azure のストレージ接続文字列の設定][]
-* [方法: テーブルを作成する][]
-* [方法: エンティティをテーブルに追加する][]
-* [方法: エンティティを更新する][]
-* [方法: エンティティのグループを操作する][]
-* [方法: エンティティを照会する][]
-* [方法: エンティティのセットを照会する][]
-* [方法: エンティティ プロパティのサブセットを照会する][]
-* [方法: エンティティを削除する][]
-* [方法: テーブルを削除する][]
-* [次のステップ][]
+-   [テーブル サービスとは][]
+-   [概念][]
+-   [Azure のストレージ アカウントの作成][]
+-   [Node.js アプリケーションの作成][]
+-   [アプリケーションのストレージへのアクセスの構成][]
+-   [Azure のストレージ接続文字列の設定][]
+-   [方法: テーブルを作成する][]
+-   [方法: エンティティをテーブルに追加する][]
+-   [方法: エンティティを更新する][]
+-   [方法: エンティティのグループを操作する][]
+-   [方法: エンティティを取得する][]
+-   [方法: エンティティのセットを照会する][]
+-   [方法: エンティティを削除する][]
+-   [方法: テーブルを削除する][]
+-   [方法: 共有アクセス署名を操作する][]
+-   [次のステップ][]
 
-## <a name="what-is"> </a>テーブル サービスとは
+[WACOM.INCLUDE [howto-table-storage][]]
 
-Azure テーブル サービスは、大量の構造化データを
-格納します。このサービスは、Azure クラウドの内部および外部からの
-認証された呼び出しを受け付けます。Azure テーブルは、構造化された
-非リレーショナル データを格納するのに最適です。テーブル サービスの一般的な使用法を
-次に示します。
+## <a name="create-account"></a>Azure ストレージ アカウントの作成
 
--   スループットの需要に合わせて自動的に拡張される大量の (数 TB の)
-    構造化データを格納する
--   複雑な結合、外部キー、またはストアド プロシージャを必要とせず、
-    高速アクセスのために非正規化できるデータセットを格納する
--   クラスター化インデックスを使用してデータ (ユーザー プロファイルなど) をすばやく照会する
-
-テーブル サービスを使用して、構造化された非リレーショナル データの
-膨大なセットを格納してクエリを実行することができ、テーブルはデータ量が
-増加すると拡張されます。
-
-## <a name="concepts"> </a>概念
-
-テーブル サービスには、次のコンポーネントが含まれます。
-
-![Table1][Table1]
-
--   **URL 形式**: 次のアドレス形式を使用してアカウントのテーブルの
-    アドレスを記述します。
-   
-	    http://storageaccount.table.core.windows.net/table  
-      
-    このアドレスを OData プロトコルで使用して、Azure テーブルを直接アドレス指定できます。詳細については、[OData.org の Web サイト][]を参照してください。
-
--   **ストレージ アカウント:** Azure のストレージにアクセス
-    する場合には必ず、ストレージ アカウントを使用します。ストレージ アカウント内の BLOB、テーブル、
-    およびキューの内容の合計サイズが 100 TB を超えることはできません。
-
--   **テーブル**: 無制限のエンティティのコレクションです。テーブルでは
-    エンティティにスキーマを設定しないため、1 つのテーブルに異なるプロパティの
-    セットを持つエンティティが含まれている場合があります。1 つのアカウントには、
-    複数のテーブルを格納できます。
-
--   **エンティティ**: エンティティは、プロパティのセットで、データベース
-    の行に似ています。エンティティの最大サイズは 1 MB です。
-
--   **プロパティ**: プロパティは、名前と値のペアです。それぞれのエンティティは、データを格納するために最大で 252 個のプロパティを含むことができます。さらに、それぞれのエンティティは、
-    パーティション キー、行キー、およびタイムスタンプを指定する、
-    3 つのシステム プロパティを持ちます。同じパーティション キーを持つエンティティは、
-    アトミック操作でより迅速な照会と挿入/更新が可能です。エンティティの
-    行キーは、パーティション内の一意の識別子です。
-
-## <a name="create-account"> </a>Azure のストレージ アカウントの作成
-
-ストレージ操作を行うには、Azure のストレージ アカウントが必要です。ストレージ アカウントを
-作成するには、次の手順に従います。([REST API を使用して][]
-ストレージ アカウントを作成することもできます)。
-
-1. [Azure 管理ポータル]にログインします。
-
-2. ナビゲーション ウィンドウの下部にある **[新規]** をクリックします。
-
-	![[+ 新規]][plus-new]
-
-3. **[ストレージ アカウント]**、**[簡易作成]** の順にクリックします。
-
-	![[簡易作成] ダイアログ][quick-create-storage]
-
-4. [URL] で、ストレージ アカウントの URI で使用する
-    サブドメイン名を入力します。文字数は 3 ～ 24 文字で、アルファベット小文字と数字を使用できます。この名前は、対応するサブスクリプションの BLOB リソース、キュー リソース、またはテーブル リソースのアドレス指定に使用される URL のホスト名になります。
-
-5. ストレージの配置先となるリージョンまたは
-    アフィニティ グループを選択します。Azure アプリケーションから
-    ストレージを使用する場合は、アプリケーションを展開する
-    リージョンと同じリージョンを選択します。
-
-6. **[ストレージ アカウントの作成]** をクリックします。
+[WACOM.INCLUDE [create-storage-account][]]
 
 ## <a name="create-app"> </a>Node.js アプリケーションの作成
 
-空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービスへのデプロイ] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ]に関するページを参照してください。
+空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][]、[Node.js クラウド サービスへのデプロイ][] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ][]に関するページを参照してください。
 
-## <a name="configure-access"> </a>アプリケーションのストレージへのアクセスの構成
+## <a name="configure-access"> </a>アプリケーションからストレージへのアクセスの構成
 
-Azure ストレージを使用するには、Node.js azure パッケージをダウンロード
-して使用する必要があります。このパッケージには、ストレージ REST サービス
-と通信するための便利なライブラリのセットが含まれています。
+Azure Storage を使用するには、Azure Storage SDK for Node.js が必要です。ここには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
 
 ### ノード パッケージ マネージャー (NPM) を使用してパッケージを取得する
 
 1.  **PowerShell** (Windows)、**Terminal** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用して、サンプル アプリケーションを作成したフォルダーに移動します。
 
-2.  コマンド ウィンドウに「**npm install azure**」と入力すると、
-    次のような出力が生成されます。
+2.  コマンド ウィンドウに「**npm install azure-storage**」と入力すると、次のような出力が生成されます。
 
-        azure@0.7.5 node_modules\azure
-		├── dateformat@1.0.2-1.2.3
-		├── xmlbuilder@0.4.2
-		├── node-uuid@1.2.0
-		├── mime@1.2.9
-		├── underscore@1.4.4
-		├── validator@1.1.1
-		├── tunnel@0.0.2
-		├── wns@0.5.3
-		├── xml2js@0.2.7 (sax@0.5.2)
-		└── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
+        azure-storage@0.1.0 node_modules\azure-storage
+        ├── extend@1.2.1
+        ├── xmlbuilder@0.4.3
+        ├── mime@1.2.11
+        ├── underscore@1.4.4
+        ├── validator@3.1.0
+        ├── node-uuid@1.4.1
+        ├── xml2js@0.2.7 (sax@0.5.2)
+        └── request@2.27.0 (json-stringify-safe@5.0.0, tunnel-agent@0.3.0, aws-sign@0.3.0, forever-agent@0.5.2, qs@0.6.6, oauth-sign@0.3.0, cookie-jar@0.3.0, hawk@1.0.0, form-data@0.1.3, http-signature@0.10.0)
 
-3.  手動で **ls** コマンドを実行して、**node\_modules** 
-       フォルダーが作成されたことを確認することもできます。このフォルダーに
-    **azure** パッケージがあります。このパッケージには、ストレージに
-    アクセスするために必要なライブラリが含まれています。
+3.  手動で **ls** コマンドを実行して、**node\_modules** フォルダーが作成されたことを確認することもできます。
+    このフォルダーに **azure-storage** パッケージがあります。このパッケージには、ストレージにアクセスするために必要なライブラリが含まれています。
 
 ### パッケージをインポートする
 
-メモ帳などのテキスト エディターを使用して、ストレージを使用するアプリケーションの
-**server.js** ファイルの先頭に次の内容を追加します。
+メモ帳などのテキスト エディターを使用して、ストレージを使用するアプリケーションの **server.js** ファイルの先頭に次の内容を追加します。
 
-    var azure = require('azure');
+    var azure = require('azure-storage');
 
 ## <a name="setup-connection-string"> </a>Azure のストレージ接続文字列の設定
 
-azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT および AZURE\_STORAGE\_ACCESS\_KEY を読み取ります。これらの環境変数が設定されていない場合、**TableService** を呼び出すときにアカウント情報を指定する必要があります。
+azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT、AZURE\_STORAGE\_ACCESS\_KEY、および AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。これらの環境変数が設定されていない場合、**TableService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure クラウド サービスの構成ファイルで環境変数を設定する例については、[ストレージを使用する Node.js クラウド サービスに関するトピック]を参照してください。
+Azure Web サイトの管理ポータルで環境変数を設定する例については、「[Azure テーブル サービスを使用する Node.js Web アプリケーション][]」を参照してください。
 
-Azure Web サイトの管理ポータルで環境変数を設定する例については、[ストレージを使用する Node.js Web アプリケーションに関するトピック]を参照してください。
-
-## <a name="create-table"> </a>方法: テーブルを作成する
+## <a name="create-table"> </a>テーブルの作成方法
 
 次のコードは、**TableService** オブジェクトを作成し、これを使用して
 新しいテーブルを作成します。**server.js** ファイルの先頭付近に次の内容を追加します。
 
-    var tableService = azure.createTableService();
+    var tableSvc = azure.createTableService();
 
-**createTableIfNotExists** の呼び出しは、指定されたテーブルが存在
-する場合、そのテーブルを返します。指定されたキューが存在しない場合
-は、指定された名前で新しいテーブルを作成します。次の例では、"mytable" という名前のテーブルが存在しない場合、このテーブルを作成します。
+**createTableIfNotExists** の呼び出しにより、指定した名前の新しいテーブルが (まだ存在していない場合は)
+ 作成されます。次の例では、"mytable" という名前のテーブルが存在しない場合、このテーブルを作成します。
 
-    tableService.createTableIfNotExists('mytable', function(error){
-		if(!error){
-			// Table exists or created
-		}
-	});
+    tableSvc.createTableIfNotExists('mytable', function(error, result, response){
+        if(!error){
+            // Table exists or created
+        }
+    });
 
-###フィルター
+新しいテーブルが作成される場合、`result` は `true` になり、テーブルが既に存在する場合には `false` になります。`response` には要求に関する情報が含まれます。
+
+### フィルター
 
 オプションのフィルター操作は、**TableService** を使用して行われる操作に適用できます。フィルター操作には、ログ、自動的な再試行などが含まれる場合があります。フィルターは、次のようなシグネチャを実装するオブジェクトです。
 
-		function handle (requestOptions, next)
+        function handle (requestOptions, next)
 
 要求オプションに対するプリプロセスを行った後で、このメソッドは "next" を呼び出して、次のシグネチャのコールバックを渡す必要があります。
 
-		function (returnObject, finalCallback, next)
+        function (returnObject, finalCallback, next)
 
 このコールバックで、returnObject (サーバーへの要求からの応答) の処理の後に、コールバックは next を呼び出すか (他のフィルターの処理を続けるために next が存在する場合)、単に finalCallback を呼び出す必要があります (サービス呼び出しを終了する場合)。
 
 再試行のロジックを実装する 2 つのフィルター (**ExponentialRetryPolicyFilter** と **LinearRetryPolicyFilter**) が、Azure SDK for Node.js に含まれています。次のコードは、**ExponentialRetryPolicyFilter** を使用する **TableService** オブジェクトを作成します。
 
-	var retryOperations = new azure.ExponentialRetryPolicyFilter();
-	var tableService = azure.createTableService().withFilter(retryOperations);
+    var retryOperations = new azure.ExponentialRetryPolicyFilter();
+    var tableSvc = azure.createTableService().withFilter(retryOperations);
 
-## <a name="add-entity"> </a>方法: エンティティをテーブルに追加する
+## <a name="add-entity"> </a>エンティティをテーブルに追加する方法
 
-エンティティを追加するには、最初に、エンティティのプロパティと
-そのデータ型を定義するオブジェクトを作成します。すべてのエンティティについて、**PartitionKey** と 
-**RowKey** を指定する必要があることに注意してください。これらはエンティティの
-一意の識別子であり、他のエンティティのプロパティよりはるかに高速に
-照会できる値です。システムでは **PartitionKey** が使用
-されて多くのストレージ ノードにテーブルのエンティティが自動的に配布されます。
-**PartitionKey** が同じエンティティは同じノードに格納されます。
-**RowKey** は、エンティティが属するパーティション内のエンティティ
-の一意の ID です。エンティティをテーブルに追加するには、エンティティ 
-オブジェクトを **insertEntity** メソッドに渡します。
+エンティティを追加するには、エンティティのプロパティを定義するオブジェクトを
+最初に作成します。すべてのエンティティには、エンティティの一意の識別子である **PartitionKey** と **RowKey** が含まれます。
 
+-   **PartitionKey** - エンティティが格納されるパーティションを決定します。
+
+-   **RowKey** - パーティション内のエンティティを一意に識別します。
+
+**PartitionKey** と **RowKey** は両方とも文字列値にする必要があります。詳細については、「[テーブル サービス データ モデルについて][]」を参照してください。
+
+エンティティを定義する例を次に示します。**dueDate** が **Edm.DateTime** の型として定義されている点に注意してください。型の指定は省略可能です。型を指定しなかった場合、型は推測されます。
+
+    var task = { 
+      PartitionKey: {'_':'hometasks'},
+      RowKey: {'_': '1'},
+      description: {'_':'take out the trash'},
+      dueDate: {'_':new Date(2015, 6, 20), '$':'Edm.DateTime'}
+    };
+
+> [WACOM.NOTE] 各レコードに対して、エンティティが挿入または更新される場合に Azure により設定される **Timestamp** フィールドもあります。
+
+**entityGenerator** を使用してエンティティを作成することもできます。次の例では、**entityGenerator** を使用して同じタスク エンティティを作成しています。
+
+    var entGen = azure.TableUtilities.entityGenerator;
     var task = {
-		PartitionKey : 'hometasks'
-		, RowKey : '1'
-		, Description : 'Take out the trash'
-		, DueDate: new Date(2012, 6, 20)
-	};
-	tableService.insertEntity('mytable', task, function(error){
-		if(!error){
-			// Entity inserted
-		}
-	});
+      PartitionKey: entGen.String('hometasks'),
+      RowKey: entGen.String('1'),
+      description: entGen.String('take out the trash'),
+      dueDate: entGen.DateTime(new Date(Date.UTC(2015, 6, 20))),
+    };
 
-## <a name="update-entity"> </a>方法: エンティティを更新する
+エンティティをテーブルに追加するには、エンティティ オブジェクトを
+**insertEntity** メソッドに渡します。
+
+    tableSvc.insertEntity('mytable',task, function (error, result, response) {
+        if(!error){
+            // Entity inserted
+        }
+    });
+
+操作が成功した場合、`result` には挿入されたレコードの [ETag][] が含まれ、`response` には操作に関する情報が含まれます。
+
+> [WACOM.NOTE] 既定では、**insertEntity** は、`response` 情報の一部として、挿入されたエンティティを返しません。このエンティティに対して他の操作を実行する予定がある場合、または情報をキャッシュする場合は、`result` の一部として返されるようにすると便利です。そのためには、次のように **echoContent** を有効にします。
+>
+> `tableSvc.insertEntity('mytable', task, {echoContent: true}, function (error, result, response) {...}`
+
+## <a name="update-entity"> </a>エンティティを更新する方法
 
 既存のエンティティを更新するには、複数のメソッドがあります。
 
-* **updateEntity** - 既存のエンティティを、置換することで更新します。
+-   **updateEntity** - 既存のエンティティを置換することで更新します。
 
-* **mergeEntity** - 既存のエンティティを、新しいプロパティ値を既存のエンティティにマージすることで更新します。
+-   **mergeEntity** - 新しいプロパティ値を既存のエンティティにマージすることで既存のエンティティを更新します。
 
-* **insertOrReplaceEntity** - 既存のエンティティを、置換することで更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
+-   **insertOrReplaceEntity**: 既存のエンティティを、置換することで更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
 
-* **insertOrMergeEntity** - 既存のエンティティを、新しいプロパティ値を既存のエンティティにマージすることで更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
+-   **insertOrMergeEntity**: 既存のエンティティを、新しいプロパティ値を既存のエンティティにマージすることで更新します。エンティティが存在しない場合は、新しいエンティティが挿入されます。
 
 次の例に、**updateEntity** を使用してエンティティを更新する方法を示します。
 
-	var task = {
-		PartitionKey : 'hometasks'
-		, RowKey : '1'
-		, Description : 'Wash Dishes'
-	}
-	tableService.updateEntity('mytable', task, function(error){
-		if(!error){
-			// Entity has been updated
-		}
-	});
-    
+    tableSvc.updateEntity('mytable', updatedTask, function(error, result, response){
+      if(!error) {
+        // Entity updated
+      }
+    });
+
+> [WACOM.NOTE] 既定では、エンティティを更新するときに、更新対象のデータが以前に別のプロセスにより変更されているかどうかは確認されません。同時更新をサポートするには、次の手順を実行します。
+>
+> 1.  更新するオブジェクトの ETag を取得します。これは、任意のエンティティに関連する操作の `response` の一部として返され、`response['.metadata'].etag` を通じて取得できます。
+>
+> 2.  エンティティで更新操作を実行する場合は、以前に取得した ETag 情報を新しいエンティティに追加します。次に例を示します。
+>
+>     `entity2['.metadata'].etag = currentEtag;`
+>
+> 3.  更新操作を実行します。アプリケーションの別のインスタンスなど、ETag 値を取得した後でエンティティが更新されている場合は、要求で指定された更新の条件が満たされていないことを示す `error` が返されます。
+>
 **updateEntity** と **mergeEntity** では、更新されるエンティティが存在しない場合、更新操作は失敗します。したがって、既に存在しているかどうかに関係なくエンティティを格納するには、代わりに **insertOrReplaceEntity** または **insertOrMergeEntity** を使用する必要があります。
+
+成功した更新操作の `result` には、更新されたエンティティの **Etag** が含まれます。
 
 ## <a name="change-entities"> </a>エンティティのグループを操作する方法
 
-状況によって、複数の操作をバッチとして送信し、サーバーによる
-アトミック処理を行うことが合理的である場合があります。これを実現するには、
-**TableService** の **beginBatch** メソッドを使用した後、一連の操作を
-通常どおり呼び出します。異なるのは、これらの演算子のコールバック関数が、
-操作がサーバーに送信されたのではなく、バッチに追加されたことを
-示す点です。バッチを送信するときは、
-**commitBatch** を呼び出します。このメソッドに対して提供されるコールバックは、
-バッチ全体が正常に送信されたかどうかを示します。次の例に、2 つのエンティティをバッチで送信する方法を示します。
+状況によって、複数の操作をバッチとして送信し、サーバーによるアトミック処理を行うことが合理的である場合があります。
+これを実現するには、
+**TableBatch** クラスを使用してバッチを作成し、**TableService** の **executeBatch** メソッドを使用してバッチ操作を実行します。
 
-    var tasks=[
-		{
-			PartitionKey : 'hometasks'
-			, RowKey : '1'
-			, Description : 'Take out the trash.'
-			, DueDate : new Date(2012, 6, 20)
-		}
-		, {
-			PartitionKey : 'hometasks'
-			, RowKey : '2'
-			, Description : 'Wash the dishes.'
-			, DueDate : new Date(2012, 6, 20)
-		}
-	]
-	tableService.beginBatch();
-	var async=require('async');
+次の例に、2 つのエンティティをバッチで送信する方法を示します。
 
-	async.forEach(tasks
-		, function taskIterator(task, callback){
-			tableService.insertEntity('mytable', task, function(error){
-				if(!error){
-					// Entity inserted
-					callback(null);
-				} else {
-					callback(error);
-				}
-			});
-		}
-		, function(error){
-			if(!error){
-				// All inserts completed
-				tableService.commitBatch(function(error){
-					if(!error){
-						// Batch successfully commited
-					}
-				});
-			}
-		});
+    var task1 = { 
+      PartitionKey: {'_':'hometasks'},
+      RowKey: {'_': '1'},
+      description: {'_':'Take out the trash'},
+      dueDate: {'_':new Date(2015, 6, 20)}
+    };
+    var task2 = { 
+      PartitionKey: {'_':'hometasks'},
+      RowKey: {'_': '2'},
+      description: {'_':'Wash the dishes'},
+      dueDate: {'_':new Date(2015, 6, 20)}
+    };
 
-<div class="dev-callout">
-<strong>注</strong>
-<p>前の例では、"async" モジュールを使用して、**commitBatch** を呼び出す前に、エンティティがすべて正常に送信されるようにしています。</p>
-</div>
+    var batch = new azure.TableBatch();
 
-## <a name="query-for-entity"> </a>エンティティを照会する方法
+    batch.insertEntity(task1, {echoContent: true});
+    batch.insertEntity(task2, {echoContent: true});
 
-テーブル内のエンティティを照会するには、**queryEntity** メソッドを
-使用して、**PartitionKey** と **RowKey** を渡します。
+    tableSvc.executeBatch('mytable', batch, function (error, result, response) {
+      if(!error) {
+        // Batch completed
+      }
+    });
 
-    tableService.queryEntity('mytable'
-		, 'hometasks'
-		, '1'
-		, function(error, entity){
-			if(!error){
-				// entity contains the returned entity
-			}
-		});
+バッチ操作が成功した場合、`result` にはバッチ内の各操作の情報が含まれます。
 
-## <a name="query-set-entities"> </a>方法: エンティティのセットを照会する
+### バッチ操作の処理
+
+バッチに追加された操作は、`operations` プロパティで確認できます。次のメソッドを使用して操作を処理できます。
+
+-   **clear** - バッチのすべての操作をクリアします。
+
+-   **getOperations** - バッチから操作を取得します。
+
+-   **hasOperations** - バッチに操作が含まれている場合は true を返します。
+
+-   **removeOperations** - 操作を削除します。
+
+-   **size** - バッチ内の操作の数を返します。
+
+## <a name="query-for-entity"> </a>エンティティを取得する方法
+
+**PartitionKey** および **RowKey** に基づいて特定のエンティティを返すには、**retrieveEntity** メソッドを使用します。
+
+    tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, response){
+      if(!error){
+        // result contains the entity
+      }
+    });
+
+この操作を完了すると、`result` にはエンティティが含まれます。
+
+## <a name="query-set-entities"> </a>エンティティのセットを照会する方法
 
 テーブルを照会するには、**TableQuery** オブジェクトを使用し、
-**select**、**from**、**where** (**wherePartitionKey**、
-**whereRowKey**、**whereNextPartitionKey**、
-**whereNextRowKey** などの便利な句を含む)、**and**、**or**、**top** などの
-句を使用してクエリ式を作成します。次に、このクエリ式を 
-**queryEntities** メソッドに渡します。この結果を、コールバック内の 
-**for** ループで使用できます。
+以下の句を使用してクエリ式を作成します。
 
-次の例では、**PartitionKey** に基づいて、Seattle 内のすべてのタスクを検索します。
+-   **select** - クエリから返されるフィールド。
 
-    var query = azure.TableQuery
-		.select()
-		.from('mytable')
-		.where('PartitionKey eq ?', 'hometasks');
-	tableService.queryEntities(query, function(error, entities){
-		if(!error){
-			//entities contains an array of entities
-		}
-	});
+-   **where** - where 句。
 
-## <a name="query-entity-properties"> </a>方法: エンティティ プロパティのサブセットを照会する
+    -   **and** - `and` where 条件
 
-テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。
-プロジェクション**と呼ばれるこの方法では、帯域幅の使用が削減され、クエリの
-パフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。**select** 句を使用して、
-クライアントに渡すプロパティの名前を
-指定します。
+    -   **or** - `or` where 条件。
 
-次のコードのクエリでは、テーブル内のエンティティの **Descriptions** 
-のみを返します。プログラムの出力では、**DueDate** はサーバーによって
-送信されなかったため、**undefined** と表示されています。
+-   **top** - 取得する項目の数。
 
-<div class="dev-callout">
-<strong>注</strong>
-<p>次のスニペットはクラウド ストレージ サービスに対してのみ機能します。
-<b>select</b> キーワードはストレージ エミュレーターではサポートされて
-いません。</p>
-</div>
+次の例では、"hometasks" の PartitionKey で最初の 5 つの項目を返すクエリを作成します。
 
-    var query = azure.TableQuery
-		.select('Description')
-		.from('mytable')
-		.where('PartitionKey eq ?', 'hometasks');
-	tableService.queryEntities(query, function(error, entities){
-		if(!error){
-			//entities contains an array of entities
-		}
-	});
+    var query = new azure.TableQuery()
+      .top(5)
+      .where('PartitionKey eq ?', 'hometasks');
 
-## <a name="delete-entity"> </a>方法: エンティティを削除する
+**select** が使用されていないため、すべてのフィールドが返されます。テーブルでクエリを実行するには、**queryEntities** を使用します。次の例では、このクエリを使用して "mytable" からエンティティを返します。
 
-パーティション キーと行キーを使用してエンティティを削除できます。次の例
-では、**task1** オブジェクトに、削除するエンティティの 
-**RowKey** と **PartitionKey** の値が格納されます。次に、
+    tableSvc.queryEntities('mytable',query, null, function(error, result, response) {
+      if(!error) {
+        // query was successful
+      }
+    });
+
+成功した場合は、`result.entries` にはクエリに一致するエンティティの配列が含まれます。クエリですべてのエンティティを返すことができなかった場合、さらに結果を取得するには、`result.continuationToken` を **queryEntities** の 3 番目のパラメーターとして使用できます。最初のクエリに対して、2 番目のパラメーターは *null* にする必要があります。
+
+### エンティティ プロパティのサブセットを照会する方法
+
+テーブルのクエリにより、いくつかのフィールドをエンティティから取得できます。
+これにより帯域幅が削減され、特に大量のエンティティの場合にはクエリのパフォーマンスを向上させることができます。**select** 句を使用して、返されるフィールドの名前を渡します。たとえば、次のクエリでは **description** フィールドと **dueDate** フィールドのみを返します。
+
+    var query = new azure.TableQuery()
+      .select(['description', 'dueDate'])
+      .top(5)
+      .where('PartitionKey eq ?', 'hometasks');
+
+## <a name="delete-entity"> </a>エンティティを削除する方法
+
+パーティション キーと行キーを使用してエンティティを削除できます。次の例では、
+**task1** オブジェクトに、削除するエンティティの **RowKey** と
+**PartitionKey** の値が格納されます。次に、
 このオブジェクトが **deleteEntity** メソッドに渡されます。
 
-    tableService.deleteEntity('mytable'
-		, {
-			PartitionKey : 'hometasks'
-			, RowKey : '1'
-		}
-		, function(error){
-			if(!error){
-				// Entity deleted
-			}
-		});
+    var task = { 
+      PartitionKey: {'_':'hometasks'},
+      RowKey: {'_': '1'}
+    };
 
-## <a name="delete-table"> </a>方法: テーブルを削除する
+    tableSvc.deleteEntity('mytable', task, function(error, response){
+      if(!error) {
+        // Entity deleted
+      }
+    });
+
+> [WACOM.NOTE] 項目を削除する場合は、項目が別のプロセスによって変更されていないことを確認するために ETag を使用することを検討してください。ETag の使用の詳細については、「[方法: エンティティを更新する][]」を参照してください。
+
+## <a name="delete-table"> </a>テーブルを削除する方法
 
 次のコードは、ストレージ アカウントからテーブルを削除します。
 
-    tableService.deleteTable('mytable', function(error){
-		if(!error){
-			// Table deleted
-		}
-	});
+    tableSvc.deleteTable('mytable', function(error, response){
+        if(!error){
+            // Table deleted
+        }
+    });
 
-## <a name="next-steps"> </a>次のステップ
+テーブルが存在するかどうかが不明な場合は、**deleteTableIfExists** を使用します。
 
-これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
+## <a name="sas"></a>方法: 共有アクセス署名を操作する
+
+共有アクセス署名 (SAS) は、ストレージ アカウントの名前またはキーを指定せずにテーブルへの細密なアクセスを提供する安全な方法です。多くの場合、SAS は、モバイル アプリでのレコードの照会などデータへの限定的なアクセスのために使用されます。
+
+クラウドベースのサービスなど信頼されたアプリケーションは、**TableService** の **generateSharedAccessSignature** を使用して SAS を生成し、信頼されていない、または信頼性の低いアプリケーションに提供します。たとえば、モバイル アプリなどです。SAS は、SAS が有効である期間の開始日と終了日のほか、SAS の保有者に付与されたアクセス レベルを示したポリシーを使用して生成されます。
+
+次の例では、SAS の保有者に対してテーブルのクエリ ('r') を許可し、作成時から 100 分後に期限が切れる、新しい共有アクセス ポリシーを作成しています。
+
+    var startDate = new Date();
+    var expiryDate = new Date(startDate);
+    expiryDate.setMinutes(startDate.getMinutes() + 100);
+    startDate.setMinutes(startDate.getMinutes() - 100);
+        
+    var sharedAccessPolicy = {
+      AccessPolicy: {
+        Permissions: azure.TableUtilities.SharedAccessPermissions.QUERY,
+        Start: startDate,
+        Expiry: expiryDate
+      },
+    };
+
+    var tableSAS = tableSvc.generateSharedAccessSignature('mytable', sharedAccessPolicy);
+    var host = tableSvc.host;
+
+SAS の保有者がテーブルにアクセスするときに必要なホスト情報も提供する必要があることに注意してください。
+
+クライアント アプリケーションは、この SAS と **TableServiceWithSAS** を使用してテーブルに対する操作を実行します。次の例では、テーブルに接続してクエリを実行しています。
+
+    var sharedTableService = azure.createTableServiceWithSas(host, tableSAS);
+    var query = azure.TableQuery()
+      .where('PartitionKey eq ?', 'hometasks');
+        
+    sharedTableService.queryEntities(query, null, function(error, result, response) {
+      if(!error) {
+        // result contains the entities
+      }
+    });
+
+SAS がクエリ アクセスのみで生成された場合は、エンティティの挿入、更新、または削除を試行するとエラーが返されます。
+
+### アクセス制御リスト
+
+SAS のアクセス ポリシーを設定するために、アクセス制御リスト (ACL) も使用できます。複数のクライアントにテーブルへのアクセスを許可し、各クライアントに異なるアクセス ポリシーを提供する場合に便利です。
+
+ACL は、アクセス ポリシーの配列と、各ポリシーに関連付けられた ID を使用して実装されます。次の例では、2 つのポリシーを定義しています。1 つは "user1" 用、もう 1 つは "user2" 用です。
+
+    var sharedAccessPolicy = [
+      {
+        AccessPolicy: {
+          Permissions: azure.TableUtilities.SharedAccessPermissions.QUERY,
+          Start: startDate,
+          Expiry: expiryDate
+        },
+        Id: 'user1'
+      },
+      {
+        AccessPolicy: {
+          Permissions: azure.TableUtilities.SharedAccessPermissions.ADD,
+          Start: startDate,
+          Expiry: expiryDate
+        },
+        Id: 'user2'
+      }
+    ];
+
+次の例では、現在の **hometasks** テーブルの ACL を取得し、**setTableAcl** を使用して新しいポリシーを追加しています。この手法で以下を実行できます。
+
+    tableSvc.getTableAcl('hometasks', function(error, result, response) {
+      if(!error){
+        //push the new policy into signedIdentifiers
+        result.signedIdentifiers.push(sharedAccessPolicy);
+        tableSvc.setTableAcl('hometasks', result, function(error, result, response){
+          if(!error){
+            // ACL set
+          }
+        });
+      }
+    });
+
+ACL を設定した後で、ポリシーの ID に基づいて SAS を作成できます。次の例では、"user2" 用に新しい SAS を作成しています。
+
+    tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
+
+## <a name="next-steps"> </a> 次のステップ
+
+これで、テーブル ストレージの基本を学習できました。さらに複雑な
+ストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
 -   MSDN リファレンス: [Azure のデータの格納とアクセス][]
 -   [Azure のストレージ チーム ブログ][]
--   GitHub の [Azure SDK for Node] リポジトリ
+-   GitHub の [Azure Storage SDK for Node][] リポジトリ
 
-  [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
   [次のステップ]: #next-steps
   [テーブル サービスとは]: #what-is
   [概念]: #concepts
   [Azure のストレージ アカウントの作成]: #create-account
   [Node.js アプリケーションの作成]: #create-app
-  [アプリケーションからストレージへのアクセスの構成]: #configure-access
+  [アプリケーションのストレージへのアクセスの構成]: #configure-access
   [Azure のストレージ接続文字列の設定]: #setup-connection-string
   [方法: テーブルを作成する]: #create-table
   [方法: エンティティをテーブルに追加する]: #add-entity
   [方法: エンティティを更新する]: #update-entity
   [方法: エンティティのグループを操作する]: #change-entities
-  [方法: エンティティを照会する]: #query-for-entity
+  [方法: エンティティを取得する]: #query-for-entity
   [方法: エンティティのセットを照会する]: #query-set-entities
-  [方法: エンティティ プロパティのサブセットを照会する]: #query-entity-properties
   [方法: エンティティを削除する]: #delete-entity
   [方法: テーブルを削除する]: #delete-table
-  [Table1]: ./media/storage-nodejs-how-to-use-table-storage/table1.png
-  [OData.org の Web サイト]: http://www.odata.org/
-  [REST API を使用して]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh264518.aspx
-  [Azure 管理ポータル]: http://manage.windowsazure.com
-
-  [plus-new]: ./media/storage-nodejs-how-to-use-table-storage/plus-new.png
-  [quick-create-storage]: ./media/storage-nodejs-how-to-use-table-storage/quick-storage.png
-  
-  
-  
-  [Node.js クラウド サービスへのデプロイ]: {localLink:2221} "Express を使用した Web アプリケーション"
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+  [方法: 共有アクセス署名を操作する]: #sas
+  [howto-table-storage]: ../includes/howto-table-storage.md
+  [create-storage-account]: ../includes/create-storage-account.md
+  [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: /en-us/documentation/articles/web-sites-nodejs-develop-deploy-mac/
+  [Node.js クラウド サービスへのデプロイ]: /en-us/documentation/articles/cloud-services-nodejs-develop-deploy-app/
+  [WebMatrix による Web サイトの作成とデプロイ]: /en-us/documentation/articles/web-sites-nodejs-use-webmatrix/
+  [Azure テーブル サービスを使用する Node.js Web アプリケーション]: /en-us/documentation/articles/storage-nodejs-use-table-storage-web-site/
+  [テーブル サービス データ モデルについて]: http://msdn.microsoft.com/library/azure/dd179338.aspx
+  [ETag]: http://en.wikipedia.org/wiki/HTTP_ETag
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
-  [WebMatrix による Web サイトの作成とデプロイ]: /ja-jp/develop/nodejs/tutorials/web-site-with-webmatrix/
-[ストレージを使用する Node.js クラウド サービスに関するトピック]: /ja-jp/develop/nodejs/tutorials/web-app-with-storage/
-  [ストレージを使用する Node.js Web アプリケーションに関するトピック]: /ja-jp/develop/nodejs/tutorials/web-site-with-storage/
- [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: /ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
-
+  [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
