@@ -72,4 +72,4 @@ SharePoint Server Farm は、Azure リソース マネージャーとスクリ�
   [SharePoint Server Farm Configuration Details (SharePoint Server ファームの構成の詳細)]: ../virtual-machines-sharepoint-farm-config-azure-preview/
   [SharePoint 2013 を構成する]: http://technet.microsoft.com/library/ee836142.aspx
   [Microsoft Azure プレビュー ポータル]: https://portal.azure.com/
-  [リソース マネージャーでの Windows PowerShell の使用]: http://azure.microsoft.com/en-us/documentation/articles/powershell-azure-resource-manager/
+  [リソース マネージャーでの Windows PowerShell の使用]: http://azure.microsoft.com/ja-jp/documentation/articles/powershell-azure-resource-manager/

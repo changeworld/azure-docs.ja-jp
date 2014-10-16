@@ -269,7 +269,7 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
   [HDFS]: http://go.microsoft.com/fwlink/?LinkId=510087
   [Hive]: http://go.microsoft.com/fwlink/?LinkId=510085
   [HDInsight Emulator の概要]: ../hdinsight-get-started-emulator/
-  [Get started using HBase with Hadoop in HDInsight (HDInsight で HBase と Hadoop を使用する)]: http://azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-get-started/
+  [Get started using HBase with Hadoop in HDInsight (HDInsight で HBase と Hadoop を使用する)]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-get-started/
   [What Is The Difference Between HBase and Hadoop/HDFS? (HBase と Hadoop/HDFS の違い)]: http://go.microsoft.com/fwlink/?LinkId=510237
   [HDI.GetStartedFlow]: ./media/hdinsight-get-started/HDI.GetStartedFlow.png
   [購入オプション]: http://azure.microsoft.com/en-us/pricing/purchase-options/
@@ -285,7 +285,7 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
   [Azure 管理ポータル]: https://manage.windowsazure.com/
   [HDI.StorageAccount.QuickCreate]: ./media/hdinsight-get-started/HDI.StorageAccount.QuickCreate.png
   [How to Create a Storage Account (ストレージ アカウントの作成方法)]: ../storage-create-storage-account/
-  [HDInsight コンポーネントのバージョン]: http://azure.microsoft.com/en-us/documentation/articles/hdinsight-component-versioning/
+  [HDInsight コンポーネントのバージョン]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/
   [HDI.ClusterStatus]: ./media/hdinsight-get-started/HDI.ClusterStatus.png
   [HDI.CustomCreateCluster]: ./media/hdinsight-get-started/HDI.CustomCreateCluster.png
   [HDI.CustomCreateCluster.ClusterUser]: ./media/hdinsight-get-started/HDI.CustomCreateCluster.ClusterUser.png

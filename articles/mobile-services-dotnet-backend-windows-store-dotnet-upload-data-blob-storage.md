@@ -4,9 +4,9 @@
 
 # モバイル サービスを使用した Azure ストレージへのイメージのアップロード
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage" title="Windows ストア C#" class="current">Windows ストア C#</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-upload-data-blob-storage" title="Windows Phone">Windows Phone</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage" title="Windows ストア C#" class="current">Windows ストア C#</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-upload-data-blob-storage" title="Windows Phone">Windows Phone</a></div>
 
-<div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage" title=".NET バックエンド" class="current">.NET バックエンド</a> |  <a href="/en-us/documentation/articles/mobile-services-windows-store-dotnet-upload-data-blob-storage"  title="JavaScript バックエンド">JavaScript バックエンド</a></div>
+<div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage" title=".NET バックエンド" class="current">.NET バックエンド</a> |  <a href="/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-upload-data-blob-storage"  title="JavaScript バックエンド">JavaScript バックエンド</a></div>
 
 このトピックでは、Azure モバイル サービスを使用して、ユーザーが生成したイメージをアプリケーションが Azure ストレージにアップロードおよび保存する方法を紹介します。モバイル サービスでは、SQL データベースを使用してデータを保存します。ただし、BLOB (Binary Large Object) データは、Azure BLOB ストレージ サービスに、より効率的に保存されます。
 
@@ -51,18 +51,18 @@ SAS を使用してアプリケーションから BLOB ストレージにイメ�
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Windows ストア C\#]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage "Windows ストア C#"
-  [Windows Phone]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-upload-data-blob-storage "Windows Phone"
-  [.NET バックエンド]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage ".NET バックエンド"
-  [JavaScript バックエンド]: /en-us/documentation/articles/mobile-services-windows-store-dotnet-upload-data-blob-storage "JavaScript バックエンド"
+  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage "Windows ストア C#"
+  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-upload-data-blob-storage "Windows Phone"
+  [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage ".NET バックエンド"
+  [JavaScript バックエンド]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-upload-data-blob-storage "JavaScript バックエンド"
   [ストレージ クライアント ライブラリのインストール]: #install-storage-client
   [イメージをキャプチャするためのクライアント アプリケーションの更新]: #add-select-images
   [モバイル サービス プロジェクトでのストレージ クライアントのインストール]: #storage-client-server
   [データ モデルでの TodoItem 定義の更新]: #update-data-model
   [SAS を生成するテーブル コントローラーの更新]: #update-scripts
   [アプリケーションをテストするイメージのアップロード]: #test
-  [Azure ストレージ アカウント]: /en-us/documentation/articles/storage-create-storage-account/
-  [モバイル サービスの使用]: /en-us/documentation/articles/mobile-services-windows-store-dotnet-get-started
+  [Azure ストレージ アカウント]: /ja-jp/documentation/articles/storage-create-storage-account/
+  [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started
   [mobile-services-dotnet-backend-configure-blob-storage]: ../includes/mobile-services-dotnet-backend-configure-blob-storage.md
   []: ./media/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage/mobile-add-storage-nuget-package-dotnet.png
   [mobile-services-windows-store-dotnet-upload-to-blob-storage]: ../includes/mobile-services-windows-store-dotnet-upload-to-blob-storage.md

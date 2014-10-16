@@ -90,5 +90,5 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその De
     // Delete the blob.
     blockBlob.Delete();
 
-  [.NET から BLOB ストレージを使用する方法]: http://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-blobs/#list-blob
-  [1]: http://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-blobs/#download-blobs
+  [.NET から BLOB ストレージを使用する方法]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/#list-blob
+  [1]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/#download-blobs

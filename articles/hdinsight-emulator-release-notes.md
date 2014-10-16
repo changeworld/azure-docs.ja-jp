@@ -63,7 +63,7 @@
 
 -   ローカル インストールのほか、Azure HDInsight サービスを使用してリモート実行されているクラスターも含めて、複数のクラスターに接続します。
 
--   HDInsight サービスの詳細については、[][]<http://azure.microsoft.com/en-us/documentation/services/hdinsight/></a> を参照してください。
+-   HDInsight サービスの詳細については、[][]<http://azure.microsoft.com/ja-jp/documentation/services/hdinsight/></a> を参照してください。
 
 -   ローカル クラスター上の WASB を構成します。
 
@@ -245,6 +245,6 @@
 
 -   [HDInsight Emulator の概要][]
 
-  []: http://azure.microsoft.com/en-us/documentation/services/hdinsight/
+  []: http://azure.microsoft.com/ja-jp/documentation/services/hdinsight/
   [//{container}@{account}/{path]: mailto://{container}@{account}/{path
   [HDInsight Emulator の概要]: ../hdinsight-get-started-emulator/

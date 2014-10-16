@@ -475,7 +475,7 @@ Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サ
   [ここ]: /en-us/manage/linux/tutorials/virtual-machine-from-gallery/
   [Azure 管理ポータル]: https://manage.windowsazure.com/
   [2]: http://capistranorb.com
-  [How to use SSH with Linux on Azure (Azure 上の Linux における SSH の使用方法)]: http://azure.microsoft.com/en-us/documentation/articles/linux-use-ssh-key/
+  [How to use SSH with Linux on Azure (Azure 上の Linux における SSH の使用方法)]: http://azure.microsoft.com/ja-jp/documentation/articles/linux-use-ssh-key/
   [nginx welcome page]: ./media/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/welcomenginx.png
   [Azure, Ruby on Rails, Capistrano 3, & PostgreSQL]: http://wootstudio.ca/articles/tutorial-windows-azure-ruby-on-rails-capistrano-3-postgresql
   [Capistrano 3 tutorial (Capistrano 3 チュートリアル)]: http://www.talkingquickly.co.uk/2014/01/deploying-rails-apps-to-a-vps-with-capistrano-v3/

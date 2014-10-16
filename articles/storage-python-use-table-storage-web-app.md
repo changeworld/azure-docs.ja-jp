@@ -175,9 +175,9 @@
 -   MSDN リファレンス: [Azure のデータの格納とアクセス][]
 -   Azure のストレージ チーム ブログ: <http://blogs.msdn.com/b/windowsazurestorage/>
 
-  [Django Hello World Web アプリケーション]: http://windowsazure.com/en-us/documentation/articles/virtual-machines-python-django-web-app-windows-server
+  [Django Hello World Web アプリケーション]: http://windowsazure.com/ja-jp/documentation/articles/virtual-machines-python-django-web-app-windows-server
   [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
   []: ./media/storage-python-use-table-storage-web-app/web-app-with-storage-Finaloutput-mac.png
   [create-account-note]: ../includes/create-account-note.md
-  [Python インストール ガイド]: http://windowsazure.com/en-us/documentation/articles/python-how-to-install
+  [Python インストール ガイド]: http://windowsazure.com/ja-jp/documentation/articles/python-how-to-install
   [create-storage-account]: ../includes/create-storage-account.md

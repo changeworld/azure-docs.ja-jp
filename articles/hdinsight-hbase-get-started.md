@@ -198,7 +198,7 @@ Marlin は、REST API 上のシン レイヤーで、C\# の ProtoBuf を使用�
   [購入オプション]: http://azure.microsoft.com/en-us/pricing/purchase-options/
   [メンバー プラン]: http://azure.microsoft.com/en-us/pricing/member-offers/
   [無料評価版]: http://azure.microsoft.com/en-us/pricing/free-trial/
-  [ストレージ アカウントの作成方法]: http://azure.microsoft.com/en-us/documentation/articles/storage-create-storage-account/
+  [ストレージ アカウントの作成方法]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-create-storage-account/
   [Azure ポータルで HBase クラスターをプロビジョニングする]: #create-hbase-cluster
   [HBase シェルから HBase サンプル テーブルを作成する]: #create-sample-table
   [Hive を使用して HBase テーブルを照会する]: #hive-query

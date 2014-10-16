@@ -794,7 +794,7 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 -   [How to use Blob Storage from .NET (.NET から BLOB ストレージを使用する方法)][]
 -   [How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)][]
 
-  [Azure Cloud Services]: /en-us/documentation/articles/fundamentals-application-models/#CloudServices
+  [Azure Cloud Services]: /ja-jp/documentation/articles/fundamentals-application-models/#CloudServices
   [Azure SQL Database]: http://msdn.microsoft.com/library/azure/ee336279
   [Azure BLOB サービス]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage
   [Azure Queue サービス]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern
@@ -802,9 +802,9 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
   [Ad list]: ./media/cloud-services-dotnet-get-started/list.png
   [Azure Web サイト]: /en-us/services/web-sites/
   [Web ジョブ]: http://go.microsoft.com/fwlink/?LinkId=390226
-  [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)]: /en-us/documentation/articles/websites-dotnet-webjobs-sdk-get-started/
-  [Azure の Web サイト、クラウド サービス、および仮想マシンの比較]: http://azure.microsoft.com/en-us/documentation/articles/choose-web-site-cloud-service-vm/
-  [Azure Cloud Services の基本概念]: http://azure.microsoft.com/en-us/documentation/articles/fundamentals-application-models/#CloudServices
+  [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)]: /ja-jp/documentation/articles/websites-dotnet-webjobs-sdk-get-started/
+  [Azure の Web サイト、クラウド サービス、および仮想マシンの比較]: http://azure.microsoft.com/ja-jp/documentation/articles/choose-web-site-cloud-service-vm/
+  [Azure Cloud Services の基本概念]: http://azure.microsoft.com/ja-jp/documentation/articles/fundamentals-application-models/#CloudServices
   [ASP.NET MVC]: http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started
   [Web フォーム]: http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview
   [MSDN サブスクライバーの特典を有効にする]: /en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668
@@ -827,7 +827,7 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
   [New Cloud Service]: ./media/cloud-services-dotnet-get-started/newcs.png
   [New SQL Database]: ./media/cloud-services-dotnet-get-started/newdb.png
   [Azure でアフィニティ グループを作成する方法に関するページ]: http://msdn.microsoft.com/en-us/library/jj156209.aspx
-  [ストレージ アカウントの管理方法に関するページ]: /en-us/documentation/articles/storage-manage-storage-account/
+  [ストレージ アカウントの管理方法に関するページ]: /ja-jp/documentation/articles/storage-manage-storage-account/
   [New storage account]: ./media/cloud-services-dotnet-get-started/newstorage.png
   [Web.config の変換]: http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations
   [機密データは、パブリックなソース コード リポジトリに格納しないでください]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control#secrets
@@ -861,12 +861,12 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
   [Entity Framework の接続の回復性]: http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application
   [PhluffyFotos]: http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31
   [Azure Cloud Service Multi-Tier Application with Tables, Queues, and Blobs (テーブル、キュー、BLOB を使用する Azure クラウド サービス多層アプリケーション)]: http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36
-  [手順を紹介するチュートリアル シリーズ]: http://azure.microsoft.com/en-us/documentation/articles/cloud-services-dotnet-multi-tier-app-storage-1-overview/
+  [手順を紹介するチュートリアル シリーズ]: http://azure.microsoft.com/ja-jp/documentation/articles/cloud-services-dotnet-multi-tier-app-storage-1-overview/
   [Cloud Service Fundamentals in Windows Azure (Windows Azure のクラウド サービスの基礎)]: http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649
   [Building Real-World Cloud Apps with Azure (Azure を使用した実際のクラウド アプリケーションの作成)]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction
   [Microsoft Azure Storage - What's New, Best Practices and Patterns (Microsoft Azure Storage - 新機能、ベスト プラクティス、パターン)]: http://channel9.msdn.com/Events/Build/2014/3-628
   [Azure Cloud Services Part 1: Introduction (Azure Cloud Services パート 1: 概要)]: http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/
-  [Azure Cloud Services (Azure Cloud Services)]: /en-us/documentation/services/cloud-services/
-  [Azure Storage (Azure Storage)]: /en-us/documentation/services/storage/
-  [How to use Blob Storage from .NET (.NET から BLOB ストレージを使用する方法)]: /en-us/documentation/articles/storage-dotnet-how-to-use-blobs/
-  [How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)]: /en-us/documentation/articles/storage-dotnet-how-to-use-queues/
+  [Azure Cloud Services (Azure Cloud Services)]: /ja-jp/documentation/services/cloud-services/
+  [Azure Storage (Azure Storage)]: /ja-jp/documentation/services/storage/
+  [How to use Blob Storage from .NET (.NET から BLOB ストレージを使用する方法)]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/
+  [How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-queues/

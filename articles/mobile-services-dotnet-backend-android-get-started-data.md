@@ -5,15 +5,15 @@
 # モバイル サービスでのデータの使用
 
 <div class="dev-center-tutorial-selector sublanding">
-<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/" title="Windows ストア C#">Windows ストア C#</a>
-<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/" title="Windows ストア JavaScript">Windows ストア JavaScript</a>
-<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/" title="Windows Phone">Windows Phone</a>
-<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data/" title="iOS">iOS</a>
-<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/" title="Android" class="current">Android</a>
+<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/" title="Windows ストア C#">Windows ストア C#</a>
+<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/" title="Windows ストア JavaScript">Windows ストア JavaScript</a>
+<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/" title="Windows Phone">Windows Phone</a>
+<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data/" title="iOS">iOS</a>
+<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/" title="Android" class="current">Android</a>
 </div>
 
 <div class="dev-center-tutorial-subselector">
-<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/" title=".NET バックエンド" class="current">.NET バックエンド</a> | 
+<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/" title=".NET バックエンド" class="current">.NET バックエンド</a> | 
 <a href="/en-us/develop/mobile/tutorials/get-started-with-data-android/"  title="JavaScript バックエンド">JavaScript バックエンド</a>
 </div>
 
@@ -120,12 +120,12 @@
 
 <!-- URLs. -->
 
-  [Windows ストア C\#]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/ "Windows ストア C#"
-  [Windows ストア JavaScript]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/ "Windows ストア JavaScript"
-  [Windows Phone]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/ "Windows Phone"
-  [iOS]: /en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data/ "iOS"
-  [Android]: /en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/ "Android"
-  [.NET バックエンド]: /en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/ ".NET バックエンド"
+  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/ "Windows ストア C#"
+  [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/ "Windows ストア JavaScript"
+  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/ "Windows Phone"
+  [iOS]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data/ "iOS"
+  [Android]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/ "Android"
+  [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/ ".NET バックエンド"
   [JavaScript バックエンド]: /en-us/develop/mobile/tutorials/get-started-with-data-android/ "JavaScript バックエンド"
   [JavaScript バックエンド バージョン]: /en-us/develop/mobile/tutorials/get-started-with-data-android
   [新しいモバイル サービスを作成する]: #create-service
@@ -148,4 +148,4 @@
   [2]: ./media/mobile-services-dotnet-backend-android-get-started-data/sql-azure-query.png
   [認証の使用]: /en-us/develop/mobile/tutorials/get-started-with-users-android
   [プッシュ通知の使用]: /en-us/develop/mobile/tutorials/get-started-with-push-android
-  [モバイル サービス .NET の使用方法の概念リファレンス]: /en-us/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
+  [モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library

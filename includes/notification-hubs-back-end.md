@@ -85,9 +85,9 @@ Mobile Services を使用する場合は、[プッシュ通知の使用][]チュ
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [プッシュ通知の使用]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/
-  [How to use Notification Hubs from Java/PHP (Java/PHP から Notification Hubs を使用する方法)]: /en-us/documentation/articles/notification-hubs-java-backend-how-to/
+  [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/
+  [How to use Notification Hubs from Java/PHP (Java/PHP から Notification Hubs を使用する方法)]: /ja-jp/documentation/articles/notification-hubs-java-backend-how-to/
   [通知ハブ REST インターフェイス]: http://msdn.microsoft.com/en-us/library/windowsazure/dn223264.aspx
-  [Get started with Notification Hubs (通知ハブの使用)]: /en-us/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+  [Get started with Notification Hubs (通知ハブの使用)]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
   []: ./media/notification-hubs-back-end/notification-hub-create-console-app.png
   [WindowsAzure.ServiceBus NuGet パッケージ]: http://nuget.org/packages/WindowsAzure.ServiceBus/

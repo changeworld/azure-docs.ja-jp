@@ -134,7 +134,7 @@ Azure 向けの Docker VM 拡張機能は、特殊な動作を提供する VM �
 
   [Docker]: https://www.docker.com/
   [Linux コンテナー]: http://en.wikipedia.org/wiki/LXC
-  [Azure Linux エージェント]: http://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-agent-user-guide/
+  [Azure Linux エージェント]: http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-linux-agent-user-guide/
   [MS Open Tech ブログのお知らせ]: http://msopentech.com/blog/2014/08/15/getting_started_docker_on_microsoft_azure/
   [Docker と Linux コンテナー]: #Docker-and-Linux-Containers
   [Azure で Docker VM 拡張機能を使用する方法]: #How-to-use-the-Docker-VM-Extension-with-Azure
@@ -149,11 +149,11 @@ Azure 向けの Docker VM 拡張機能は、特殊な動作を提供する VM �
   [Docker で推奨されています]: https://docs.docker.com/articles/security/
   [azure-cli]: https://github.com/Azure/azure-sdk-tools-xplat
   [Boot2Docker]: https://docs.docker.com/installation/windows/
-  [こちら]: http://azure.microsoft.com/en-us/documentation/articles/xplat-cli/#install
+  [こちら]: http://azure.microsoft.com/ja-jp/documentation/articles/xplat-cli/#install
   [ノード パッケージ マネージャー (npm)]: http://en.wikipedia.org/wiki/Npm_%28software%29
   [1]: https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server
   [Mac インストーラー]: http://go.microsoft.com/fwlink/?linkid=252249&clcid=0x409
-  [方法: Azure サブスクリプションに接続する]: http://azure.microsoft.com/en-us/documentation/articles/xplat-cli/#configure
+  [方法: Azure サブスクリプションに接続する]: http://azure.microsoft.com/ja-jp/documentation/articles/xplat-cli/#configure
   [Docker のインストール手順]: https://docs.docker.com/installation/#installation
   [!@\#$%^&+=]: mailto:!@#$%^&+=
   []: ./media/virtual-machines-docker/dockercreateresults.png

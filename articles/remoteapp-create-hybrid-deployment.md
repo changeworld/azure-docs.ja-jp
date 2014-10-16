@@ -192,7 +192,7 @@ RemoteApp サービスには複数のプログラムを発行できます。[Rem
 
   [必須の更新]: http://support.microsoft.com/kb/2977219
   [RemoteApp のプレビュー]: http://azure.microsoft.com/en-us/services/remoteapp/
-  [Azure PowerShell]: http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/
+  [Azure PowerShell]: http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/
   [Azure の管理ポータル]: http://manage.windowsazure.com
   [管理ポータルでのサイト間 VPN の構成]: http://msdn.microsoft.com/library/azure/dn133795.aspx
   [ディレクトリ同期のロードマップ]: http://msdn.microsoft.com//library/azure/hh967642.aspx

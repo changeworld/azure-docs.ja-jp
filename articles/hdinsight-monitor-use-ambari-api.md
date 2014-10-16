@@ -221,4 +221,4 @@ Curl を使用してクラスター情報を取得する例を以下に示しま
   [管理ポータルを使用した HDInsight クラスターの管理]: ../hdinsight-administer-use-management-portal/
   [Azure PowerShell を使用した HDInsight クラスターの管理]: ../hdinsight-administer-use-powershell/
   [コマンド ライン インターフェイスを使用した HDInsight クラスターの管理]: ../hdinsight-administer-use-command-line/
-  [HDInsight のドキュメント]: /en-us/documentation/services/hdinsight/
+  [HDInsight のドキュメント]: /ja-jp/documentation/services/hdinsight/

@@ -340,23 +340,23 @@ Azure アカウントは無料で開くことができます。また、まだ V
   []: 
   [Portal home page with new web site called out]: ./media/web-sites-dotnet-get-started-vs2013/portalhome.png
   [Portal web site dashboard tab]: ./media/web-sites-dotnet-get-started-vs2013/portaldashboard.png
-  [[構成]]: /en-us/documentation/articles/web-sites-configure//
+  [[構成]]: /ja-jp/documentation/articles/web-sites-configure//
   [WebSockets]: /blog/2013/11/14/introduction-to-websockets-on-windows-azure-web-sites/
-  [診断ログ]: /en-us/documentation/articles/web-sites-enable-diagnostic-log/
+  [診断ログ]: /ja-jp/documentation/articles/web-sites-enable-diagnostic-log/
   [接続文字列]: /blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/
   [Portal web site configure tab]: ./media/web-sites-dotnet-get-started-vs2013/portalconfigure.png
-  [[規模の設定]]: /en-us/documentation/articles/web-sites-scale/
+  [[規模の設定]]: /ja-jp/documentation/articles/web-sites-scale/
   [Portal website scale tab]: ./media/web-sites-dotnet-get-started-vs2013/portalscale.png
   [Azure プレビュー ポータル]: /en-us/overview/preview-portal/
   [ソース管理システム]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control
   [デプロイメントの自動化]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery
-  [Azure の Web サイトをデプロイする方法]: /en-us/documentation/articles/web-sites-deploy/"
+  [Azure の Web サイトをデプロイする方法]: /ja-jp/documentation/articles/web-sites-deploy/"
   [Automate Everything (Building Real-World Cloud Apps with Azure) (すべてを自動化 - Azure での実際のクラウド アプリケーションのビルド)]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
   [Visual Studio での Azure の Web サイトのトラブルシューティング]: /en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/
   [メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET MVC アプリケーションを Azure の Web サイトに展開する]: /en-us/develop/net/tutorials/web-site-with-sql-database/
-  [Azure の Web サイトのカスタム ドメイン名の構成]: /en-us/documentation/articles/web-sites-custom-domain-name/
-  [Azure の Web サイトでの HTTPS の有効化]: http://azure.microsoft.com/en-us/documentation/articles/web-sites-configure-ssl-certificate/
-  [Web サイトの構成方法]: http://azure.microsoft.com/en-us/documentation/articles/web-sites-configure/
+  [Azure の Web サイトのカスタム ドメイン名の構成]: /ja-jp/documentation/articles/web-sites-custom-domain-name/
+  [Azure の Web サイトでの HTTPS の有効化]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-configure-ssl-certificate/
+  [Web サイトの構成方法]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-configure/
   [ASP.NET SignalR]: http://www.asp.net/signalr
   [Using SignalR with Windows Azure Websites (Windows Azure Websites で SignalR を使用する)]: http://www.asp.net/signalr/overview/signalr-20/getting-started-with-signalr-20/using-signalr-with-windows-azure-web-sites
   [Azure 実行モデル]: /en-us/develop/net/fundamentals/compute/

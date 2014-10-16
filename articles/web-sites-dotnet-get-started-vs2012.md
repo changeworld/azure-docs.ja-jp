@@ -254,5 +254,5 @@ Web サイトを削除するには、Azure の管理ポータルを使用でき�
 [Visual Studio での Azure の Web Sites のトラブルシューティング]: /en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/
 [メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET MVC アプリケーションを Azure の Web Site に展開する]: /en-us/develop/net/tutorials/web-site-with-sql-database/
 [Azure 実行モデル]: /en-us/develop/net/fundamentals/compute/
-[Azure の Web サイト、クラウド サービス、および仮想マシンの比較]: http://azure.microsoft.com/en-us/documentation/articles/choose-web-site-cloud-service-vm/
+[Azure の Web サイト、クラウド サービス、および仮想マシンの比較]: http://azure.microsoft.com/ja-jp/documentation/articles/choose-web-site-cloud-service-vm/
 [ストレージ テーブル、キュー、および BLOB を使用する .NET 多層アプリケーション]: /en-us/develop/net/tutorials/multi-tier-web-site/1-overview/

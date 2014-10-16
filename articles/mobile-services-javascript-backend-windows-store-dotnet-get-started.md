@@ -75,7 +75,7 @@
   [mobile-services-selector-get-started]: ../includes/mobile-services-selector-get-started.md
   [Windows と Windows Phone を対象とするユニバーサル Windows アプリの構築]: http://msdn.microsoft.com/en-us/library/windows/apps/xaml/dn609832.aspx
   [クイック スタート: モバイル サービスの追加 (JavaScript バックエンド)]: http://msdn.microsoft.com/en-us/library/windows/apps/xaml/dn263180.aspx
-  [Windows Phone 向けデータの使用]: /en-us/documentation/articles/mobile-services-windows-phone-get-started-data
+  [Windows Phone 向けデータの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data
   [mobile-services-windows-universal-get-started]: ../includes/mobile-services-windows-universal-get-started.md
   [Azure の無料評価版サイト]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-javascript-backend-windows-store-javascript-get-started%2F
   [Visual Studio 2013 Express for Windows]: http://go.microsoft.com/fwlink/?LinkId=257546
@@ -83,7 +83,7 @@
   []: ./media/mobile-services-javascript-backend-windows-store-dotnet-get-started/mobile-portal-quickstart.png
   [1]: ./media/mobile-services-javascript-backend-windows-store-dotnet-get-started/mobile-quickstart-steps.png
   [mobile-services-javascript-backend-run-app]: ../includes/mobile-services-javascript-backend-run-app.md
-  [データの使用]: /en-us/documentation/articles/mobile-services-windows-store-dotnet-get-started-data
-  [認証の使用]: /en-us/documentation/articles/mobile-services-windows-store-dotnet-get-started-users
-  [プッシュ通知の使用]: /en-us/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push
-  [Supporting multiple device platforms from a single mobile service (単一のモバイル サービスから複数のデバイス プラットフォームをサポートする)]: /en-us/documentation/articles/mobile-services-how-to-use-multiple-clients-single-service#shared-vs
+  [データの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-data
+  [認証の使用]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-users
+  [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push
+  [Supporting multiple device platforms from a single mobile service (単一のモバイル サービスから複数のデバイス プラットフォームをサポートする)]: /ja-jp/documentation/articles/mobile-services-how-to-use-multiple-clients-single-service#shared-vs

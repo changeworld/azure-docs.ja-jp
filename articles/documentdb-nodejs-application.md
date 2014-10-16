@@ -505,7 +505,7 @@ Visual Studio によって Azure サブスクリプションに接続され、
   [Git]: http://git-scm.com/
   [Visual Studio 2013]: http://msdn.microsoft.com/en-us/vstudio/cc136611.aspx
   [Node.js Tools for Visual Studio]: https://nodejstools.codeplex.com/
-  [Azure CLI]: http://azure.microsoft.com/en-us/documentation/articles/xplat-cli/
+  [Azure CLI]: http://azure.microsoft.com/ja-jp/documentation/articles/xplat-cli/
   [Azure の管理ポータル]: http://portal.azure.com
   [1]: ./media/documentdb-nodejs-application/image2.png
   [2]: ./media/documentdb-nodejs-application/image3.png

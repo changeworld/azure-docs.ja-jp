@@ -773,5 +773,5 @@ Azure では、消費されたサーバー時間の 1 時間単位の
   [33]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/hy-service1.png
   [34]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-43.png
   [Azure のサービス バス]: http://msdn.microsoft.com/en-us/library/windowsazure/ee732537.aspx
-  [サービス バスの利用方法に関するページ]: /en-us/documentation/services/service-bus/
+  [サービス バスの利用方法に関するページ]: /ja-jp/documentation/services/service-bus/
   [サービス バス キューの使用方法]: /en-us/develop/net/how-to-guides/service-bus-queues/

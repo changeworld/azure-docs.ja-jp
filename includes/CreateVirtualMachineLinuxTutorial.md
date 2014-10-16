@@ -227,7 +227,7 @@ Azure 上の Linux の詳細については、次の記事を参照してくだ�
   [Azure 入門]: http://go.microsoft.com/fwlink/p/?LinkId=311926
   [Azure 管理ポータル]: http://manage.windowsazure.com
   [拡張機能の管理]: http://go.microsoft.com/FWLink/p/?LinkID=390493
-  [仮想マシンに対してエンドポイントを設定する方法]: http://azure.microsoft.com/en-us/documentation/articles/virtual-machines-set-up-endpoints/
+  [仮想マシンに対してエンドポイントを設定する方法]: http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-set-up-endpoints/
   [PuTTY のダウンロード ページ]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
   [OpenSSH (英語)]: http://www.openssh.org/
   [Find SSH details]: ./media/CreateVirtualMachineLinuxTutorial/SSHdetails.png
@@ -242,5 +242,5 @@ Azure 上の Linux の詳細については、次の記事を参照してくだ�
   [ディスク情報の表示]: ./media/CreateVirtualMachineLinuxTutorial/diskinfo.png
   [Write the disk changes]: ./media/CreateVirtualMachineLinuxTutorial/diskwrite.png
   [Create file system]: ./media/CreateVirtualMachineLinuxTutorial/diskfilesystem.png
-  [Azure での Linux 入門]: http://www.windowsazure.com/en-us/documentation/articles/introduction-linux/
-  [Mac および Linux 用 Azure コマンド ライン ツールの使用方法]: http://www.windowsazure.com/en-us/documentation/articles/xplat-cli/
+  [Azure での Linux 入門]: http://www.windowsazure.com/ja-jp/documentation/articles/introduction-linux/
+  [Mac および Linux 用 Azure コマンド ライン ツールの使用方法]: http://www.windowsazure.com/ja-jp/documentation/articles/xplat-cli/

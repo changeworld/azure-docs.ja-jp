@@ -4,7 +4,7 @@
 
 # HTML アプリケーションからのカスタム API 呼び出し
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/mobile-services-windows-store-dotnet-call-custom-api" title="Windows ストア C#">Windows ストア C#</a><a href="/en-us/documentation/articles/mobile-services-windows-store-javascript-call-custom-api" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/en-us/documentation/articles/mobile-services-windows-phone-call-custom-api" title="Windows Phone">Windows Phone</a><a href="/en-us/documentation/articles/mobile-services-ios-call-custom-api" title="iOS" >iOS</a><a href="/en-us/documentation/articles/mobile-services-android-call-custom-api" title="Android" >Android</a><a href="/en-us/documentation/articles/mobile-services-html-call-custom-api" title="HTML" class="current">HTML</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-call-custom-api" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/documentation/articles/mobile-services-windows-store-javascript-call-custom-api" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/documentation/articles/mobile-services-windows-phone-call-custom-api" title="Windows Phone">Windows Phone</a><a href="/ja-jp/documentation/articles/mobile-services-ios-call-custom-api" title="iOS" >iOS</a><a href="/ja-jp/documentation/articles/mobile-services-android-call-custom-api" title="Android" >Android</a><a href="/ja-jp/documentation/articles/mobile-services-html-call-custom-api" title="HTML" class="current">HTML</a></div>
 
 このトピックでは、HTML アプリケーションからカスタム API を呼び出す方法について説明します。カスタム API を使用してカスタム エンドポイントを定義することにより、insert、update、delete、read のいずれの操作にも関連しないサーバー機能を公開することができます。カスタム API を使用することによって、HTTP メッセージ ヘッダーの読み取りや設定、JSON 以外のメッセージ本文形式の定義など、メッセージングをより柔軟に制御することができます。
 
@@ -71,14 +71,14 @@
 
 <!-- Anchors. --> <!-- URLs. -->
 
-  [Windows ストア C\#]: /en-us/documentation/articles/mobile-services-windows-store-dotnet-call-custom-api "Windows ストア C#"
-  [Windows ストア JavaScript]: /en-us/documentation/articles/mobile-services-windows-store-javascript-call-custom-api "Windows ストア JavaScript"
-  [Windows Phone]: /en-us/documentation/articles/mobile-services-windows-phone-call-custom-api "Windows Phone"
-  [iOS]: /en-us/documentation/articles/mobile-services-ios-call-custom-api "iOS"
-  [Android]: /en-us/documentation/articles/mobile-services-android-call-custom-api "Android"
-  [HTML]: /en-us/documentation/articles/mobile-services-html-call-custom-api "HTML"
-  [モバイル サービスの使用]: /en-us/documentation/articles/mobile-services-html-get-started
-  [データの使用]: /en-us/documentation/articles/mobile-services-html-get-started-data
+  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-call-custom-api "Windows ストア C#"
+  [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-call-custom-api "Windows ストア JavaScript"
+  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-call-custom-api "Windows Phone"
+  [iOS]: /ja-jp/documentation/articles/mobile-services-ios-call-custom-api "iOS"
+  [Android]: /ja-jp/documentation/articles/mobile-services-android-call-custom-api "Android"
+  [HTML]: /ja-jp/documentation/articles/mobile-services-html-call-custom-api "HTML"
+  [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-html-get-started
+  [データの使用]: /ja-jp/documentation/articles/mobile-services-html-get-started-data
   [カスタム API を定義する]: #define-custom-api
   [カスタム API を呼び出すようにアプリケーションを更新する]: #update-app
   [アプリケーションをテストする]: #test-app

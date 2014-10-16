@@ -303,7 +303,7 @@ Azure Redis Session State プロバイダーの構成と使用の詳細につい
   [キャッシュの構成]: #enable-caching
   [New cache]: ./media/cache-dotnet-how-to-use-azure-redis-cache/redis-cache-new-cache-menu.png
   [Create cache]: ./media/cache-dotnet-how-to-use-azure-redis-cache/redis-cache-cache-create.png
-  [リソース グループを使用した Azure リソースの管理]: http://azure.microsoft.com/en-us/documentation/articles/azure-preview-portal-using-resource-groups/
+  [リソース グループを使用した Azure リソースの管理]: http://azure.microsoft.com/ja-jp/documentation/articles/azure-preview-portal-using-resource-groups/
   [Cache created]: ./media/cache-dotnet-how-to-use-azure-redis-cache/redis-cache-cache-created.png
   [Browse blade]: ./media/cache-dotnet-how-to-use-azure-redis-cache/redis-cache-browse-caches.png
   [Caches]: ./media/cache-dotnet-how-to-use-azure-redis-cache/redis-cache-caches.png

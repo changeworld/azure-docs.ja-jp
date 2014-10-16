@@ -58,7 +58,7 @@ HBase をデータストアとして使用することで、アプリケーシ�
 [Bigtable: A Distributed Storage System for Structured Data (Bigtable: 構造化データ用分散ストレージ システム)][]
 
   [Azure Virtual Network での HDInsight クラスターのプロビジョニング]: ../hdinsight-hbase-provision-vnet/
-  [Get started using HBase with Hadoop in HDInsight (HDInsight の Hadoop 環境で HBase を使用する)]: http://azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-get-started/
+  [Get started using HBase with Hadoop in HDInsight (HDInsight の Hadoop 環境で HBase を使用する)]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-get-started/
   [Phoenix]: http://phoenix.apache.org/
   [Analyze real-time Twitter sentiment with HBase in HDInsight (HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析)]: ../hdinsight-hbase-analyze-twitter-sentiment/
   [Use Maven to build Java applications that use HBase with HDInsight (Hadoop) (HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築)]: ../hdinsight-hbase-build-java-maven/

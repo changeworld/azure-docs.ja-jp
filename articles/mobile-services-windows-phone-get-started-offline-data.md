@@ -5,11 +5,11 @@
 # モバイル サービスでのオフライン データの同期の使用
 
 <div class="dev-center-tutorial-selector sublanding">
-<a href="/en-us/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data" title="Windows ストア C#">Windows ストア C#</a>
-<a href="/en-us/documentation/articles/mobile-services-windows-phone-get-started-offline-data" title="Windows Phone" class="current">Windows Phone</a>
-<a href="/en-us/documentation/articles/mobile-services-ios-get-started-offline-data" title="iOS">iOS</a>
-<a href="/en-us/documentation/articles/mobile-services-xamarin-ios-get-started-offline-data" title="Xamarin.iOS">Xamarin.iOS</a>
-<a href="/en-us/documentation/articles/mobile-services-xamarin-android-get-started-offline-data" title="Xamarin.Android">Xamarin.Android</a>
+<a href="/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data" title="Windows ストア C#">Windows ストア C#</a>
+<a href="/ja-jp/documentation/articles/mobile-services-windows-phone-get-started-offline-data" title="Windows Phone" class="current">Windows Phone</a>
+<a href="/ja-jp/documentation/articles/mobile-services-ios-get-started-offline-data" title="iOS">iOS</a>
+<a href="/ja-jp/documentation/articles/mobile-services-xamarin-ios-get-started-offline-data" title="Xamarin.iOS">Xamarin.iOS</a>
+<a href="/ja-jp/documentation/articles/mobile-services-xamarin-android-get-started-offline-data" title="Xamarin.Android">Xamarin.Android</a>
 </div>
 
 このトピックでは、Azure モバイル サービスのオフライン機能を使用する方法を説明します。Azure モバイル サービスのオフライン機能を使用すると、モバイル サービスに対してオフラインになっている状況でも、ローカル データベースとやり取りすることができます。再びオンライン状態に復帰したときに、オフライン機能により、ローカルの変更をモバイル サービスに同期させることができます。
@@ -245,13 +245,13 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 <!-- Images --> 
 <!-- URLs. -->
 
-[Windows ストア C\#]: /en-us/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data "Windows ストア C#"
-[Windows Phone]: /en-us/documentation/articles/mobile-services-windows-phone-get-started-offline-data "Windows Phone"
-[iOS]: /en-us/documentation/articles/mobile-services-ios-get-started-offline-data "iOS"
-[Xamarin.iOS]: /en-us/documentation/articles/mobile-services-xamarin-ios-get-started-offline-data "Xamarin.iOS"
-[Xamarin.Android]: /en-us/documentation/articles/mobile-services-xamarin-android-get-started-offline-data "Xamarin.Android"
-[モバイル サービスの使用]: /en-us/documentation/articles/mobile-services-windows-phone-get-started/
-[データの使用]: /en-us/documentation/articles/mobile-services-windows-phone-get-started-data/
+[Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data "Windows ストア C#"
+[Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-offline-data "Windows Phone"
+[iOS]: /ja-jp/documentation/articles/mobile-services-ios-get-started-offline-data "iOS"
+[Xamarin.iOS]: /ja-jp/documentation/articles/mobile-services-xamarin-ios-get-started-offline-data "Xamarin.iOS"
+[Xamarin.Android]: /ja-jp/documentation/articles/mobile-services-xamarin-android-get-started-offline-data "Xamarin.Android"
+[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started/
+[データの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data/
 [オフライン機能をサポートするようにアプリケーションを更新する]: #enable-offline-app
 [オフラインの状況でアプリケーションをテストする]: #test-offline-app
 [モバイル サービスに再接続するようにアプリケーションを更新する]: #update-online-app
@@ -272,4 +272,4 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 [7]: ./media/mobile-services-windows-phone-get-started-offline-data/mobile-services-online-app-run2.png
 [8]: ./media/mobile-services-windows-phone-get-started-offline-data/mobile-services-online-app-run3.png
 [9]: ./media/mobile-services-windows-phone-get-started-offline-data/mobile-data-browse3.png
-[モバイル サービスのオフライン サポートでの競合を処理する]: /en-us/documentation/articles/mobile-services-windows-phone-handling-conflicts-offline-data/
+[モバイル サービスのオフライン サポートでの競合を処理する]: /ja-jp/documentation/articles/mobile-services-windows-phone-handling-conflicts-offline-data/

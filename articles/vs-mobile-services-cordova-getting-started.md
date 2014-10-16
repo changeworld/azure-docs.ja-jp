@@ -82,6 +82,6 @@ del メソッドを使用してデータ テーブルを削除します。返さ
         items.splice(items.indexOf(todoItem), 1);
     });
 
-  [Add authentication to your Mobile Services app (Mobile Services アプリケーションに認証を追加する)]: http://azure.microsoft.com/en-us/documentation/articles/mobile-services-html-get-started-users/
+  [Add authentication to your Mobile Services app (Mobile Services アプリケーションに認証を追加する)]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-html-get-started-users/
   
   [query オブジェクト]: (http://msdn.microsoft.com/library/azure/jj613353.aspx)

@@ -178,7 +178,7 @@ Azure ストレージを導入するには、次のリソースを参照して�
   [無料評価版]: /en-us/pricing/free-trial/
   [購入オプション]: /en-us/pricing/purchase-options/
   [MSDN サブスクライバー]: /en-us/pricing/member-offers/msdn-benefits-details/
-  [Azure インポート/エクスポート サービス]: http://azure.microsoft.com/en-us/documentation/articles/storage-import-export-service/
+  [Azure インポート/エクスポート サービス]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-import-export-service/
   [共有アクセス署名]: ../storage-dotnet-shared-access-signature-part-1/
   [storage-replication-options]: ../includes/storage-replication-options.md
   [Storage (ストレージ サービス) の料金詳細]: /en-us/pricing/details/storage/
@@ -193,7 +193,7 @@ Azure ストレージを導入するには、次のリソースを参照して�
   [Ruby]: /en-us/develop/ruby/
   [Python]: /en-us/develop/python/
   [PowerShell]: http://msdn.microsoft.com/library/dn495240.aspx
-  [Azure ストレージのドキュメント]: /en-us/documentation/services/storage/
+  [Azure ストレージのドキュメント]: /ja-jp/documentation/services/storage/
   [How to use Blob Storage from .NET (.NET から BLOB ストレージを使用する方法)]: ../storage-dotnet-how-to-use-blobs/
   [How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)]: ../storage-dotnet-how-to-use-tables/
   [How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)]: ../storage-dotnet-how-to-use-queues/

@@ -121,7 +121,7 @@ Cloud Services は、Azure Websites が提供する以上にプラットフォ�
 
 #### コンピューティング モデルの選択
 
-Azure Websites、Cloud Services、および Virtual Machines を比較したページ (<http://azure.microsoft.com/en-us/documentation/articles/choose-web-site-cloud-service-vm/>) に、コンピューティング モデルの選択方法について詳細が記載されています。
+Azure Websites、Cloud Services、および Virtual Machines を比較したページ (<http://azure.microsoft.com/ja-jp/documentation/articles/choose-web-site-cloud-service-vm/>) に、コンピューティング モデルの選択方法について詳細が記載されています。
 
 ## <span id="data"></span></a>データ管理
 
@@ -563,7 +563,7 @@ SendGrid は、電子メールを送信できる Azure ストア内のアプリ�
   [メディア]: #media
   [コマース]: #commerce
   [Getting Started (概要)]: #start
-  [What Is Windows Azure Infographic (Windows Azure ポスター インフォグラフィックとは)]: http://azure.microsoft.com/en-us/documentation/infographics/azure/ "What Is Microsoft Azure Poster Infographic (Microsoft Azure ポスター インフォグラフィックとは)"
+  [What Is Windows Azure Infographic (Windows Azure ポスター インフォグラフィックとは)]: http://azure.microsoft.com/ja-jp/documentation/infographics/azure/ "What Is Microsoft Azure Poster Infographic (Microsoft Azure ポスター インフォグラフィックとは)"
   [Azure components]: ./media/intro-to-azure/AzureComponentsIntroNew800.png
   [Azure Virtual Machines]: ./media/intro-to-azure/VirtualMachinesIntroNew.png
   [Azure Websites]: ./media/intro-to-azure/AzureWebsitesIntroNew.png
@@ -592,7 +592,7 @@ SendGrid は、電子メールを送信できる Azure ストア内のアプリ�
   [Azure CDN]: ./media/intro-to-azure/CDNIntroNew.png
   [HDInsight]: ./media/intro-to-azure/HDInsightIntroNew.png
   [Azure Media Services]: ./media/intro-to-azure/MediaServicesIntroNew.png
-  [Azure の Media Services ポスター]: http://azure.microsoft.com/en-us/documentation/infographics/media-services/
+  [Azure の Media Services ポスター]: http://azure.microsoft.com/ja-jp/documentation/infographics/media-services/
   [Azure Marketplace]: http://datamarket.azure.com/
   [Azure ストア]: /en-us/store/overview/
   [Azure Commerce]: ./media/intro-to-azure/CommerceIntroNew.png

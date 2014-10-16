@@ -42,12 +42,12 @@
 <td align="left"><p>200</p></td>
 </tr>
 <tr class="odd">
-<td align="left"><p>サブスクリプションあたりの<a href="http://azure.microsoft.com/en-us/documentation/articles/storage-whatis-account/">ストレージ アカウント</a>数</p></td>
+<td align="left"><p>サブスクリプションあたりの<a href="http://azure.microsoft.com/ja-jp/documentation/articles/storage-whatis-account/">ストレージ アカウント</a>数</p></td>
 <td align="left"><p>20</p></td>
 <td align="left"><p>50</p></td>
 </tr>
 <tr class="even">
-<td align="left"><p>サブスクリプションあたりの<a href="http://azure.microsoft.com/en-us/documentation/articles/cloud-services-what-is/">クラウド サービス</a>数</p></td>
+<td align="left"><p>サブスクリプションあたりの<a href="http://azure.microsoft.com/ja-jp/documentation/articles/cloud-services-what-is/">クラウド サービス</a>数</p></td>
 <td align="left"><p>20</p></td>
 <td align="left"><p>200</p></td>
 </tr>
@@ -105,7 +105,7 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><p><a href="http://azure.microsoft.com/en-us/documentation/articles/cloud-services-what-is/">デプロイあたりの Web/worker ロール数<sup>1</sup></a></p></td>
+<td align="left"><p><a href="http://azure.microsoft.com/ja-jp/documentation/articles/cloud-services-what-is/">デプロイあたりの Web/worker ロール数<sup>1</sup></a></p></td>
 <td align="left"><p>25</p></td>
 <td align="left"><p>25</p></td>
 </tr>
@@ -146,7 +146,7 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><p>クラウド サービスあたりの<a href="http://azure.microsoft.com/en-us/documentation/services/virtual-machines/">仮想マシン</a>数<sup>1</sup></p></td>
+<td align="left"><p>クラウド サービスあたりの<a href="http://azure.microsoft.com/ja-jp/documentation/services/virtual-machines/">仮想マシン</a>数<sup>1</sup></p></td>
 <td align="left"><p>50</p></td>
 <td align="left"><p>50</p></td>
 </tr>
@@ -289,15 +289,15 @@ SQL Database の制限については、以下のトピックを参照してく�
   [カスタマー サポート]: http://azure.microsoft.com/en-us/support/faq/
   [サブスクリプション]: http://msdn.microsoft.com/en-us/library/azure/hh531793.aspx
   [共同管理者]: http://msdn.microsoft.com/en-us/library/azure/gg456328.aspx
-  [ストレージ アカウント]: http://azure.microsoft.com/en-us/documentation/articles/storage-whatis-account/
-  [クラウド サービス]: http://azure.microsoft.com/en-us/documentation/articles/cloud-services-what-is/
+  [ストレージ アカウント]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-whatis-account/
+  [クラウド サービス]: http://azure.microsoft.com/ja-jp/documentation/articles/cloud-services-what-is/
   [仮想ネットワーク]: http://msdn.microsoft.com/library/azure/jj156007.aspx
   [ローカル ネットワーク]: http://msdn.microsoft.com/en-us/library/jj157100.aspx
   [アフィニティ グループ]: http://msdn.microsoft.com/en-us/library/azure/jj156085.aspx
   [インスタンスの入力エンドポイント]: http://msdn.microsoft.com/en-us/library/gg557552.aspx#InstanceInputEndpoint
   [入力エンドポイント]: http://msdn.microsoft.com/en-us/library/gg557552.aspx#InputEndpoint
   [内部エンドポイント]: http://msdn.microsoft.com/en-us/library/gg557552.aspx#InternalEndpoint
-  [仮想マシン]: http://azure.microsoft.com/en-us/documentation/services/virtual-machines/
+  [仮想マシン]: http://azure.microsoft.com/ja-jp/documentation/services/virtual-machines/
   [仮想ネットワーク ゲートウェイ]: http://msdn.microsoft.com/en-us/library/azure/jj156210.aspx
   [Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット]: http://msdn.microsoft.com/library/azure/dn249410.aspx
   [Azure SQL データベースのサービス階層 (エディション)]: http://msdn.microsoft.com/en-us/library/azure/dn741340.aspx

@@ -541,7 +541,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 -   [プログラムによる Hadoop ジョブの送信][]
 -   [Azure HDInsight SDK のドキュメント][]
 
-  [Provision HBase cluster in HDInsight (HDInsight での HBase クラスターのプロビジョニング)]: http://azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-get-started/
+  [Provision HBase cluster in HDInsight (HDInsight での HBase クラスターのプロビジョニング)]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-get-started/
   [What Is The Difference Between HBase and Hadoop/HDFS? (HBase と Hadoop/HDFS の違い)]: http://go.microsoft.com/fwlink/?LinkId=510237
   [Apache Hadoop に関する Web ページ]: http://go.microsoft.com/fwlink/?LinkId=510084
   [HDInsight での Hadoop 入門]: ../hdinsight-introduction/

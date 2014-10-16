@@ -6,7 +6,7 @@
 
 ### Azure Storage の使用
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/vs-storage-aspnet-vnext-getting-started-blobs" title="BLOB" class="current">BLOB</a><a href="/en-us/documentation/articles/vs-storage-aspnet-vnext-getting-started-queues" title="キュー">キュー</a><a href="/en-us/documentation/articles/vs-storage-aspnet-vnext-getting-started-tables" title="テーブル">テーブル</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/vs-storage-aspnet-vnext-getting-started-blobs" title="BLOB" class="current">BLOB</a><a href="/ja-jp/documentation/articles/vs-storage-aspnet-vnext-getting-started-queues" title="キュー">キュー</a><a href="/ja-jp/documentation/articles/vs-storage-aspnet-vnext-getting-started-tables" title="テーブル">テーブル</a></div>
 
 Azure BLOB ストレージは、大量の非構造化データを格納して HTTP または HTTPS を介して世界中のどこからでもアクセスできるようにするサービスです。1 つの BLOB は任意のサイズにできます。BLOB として扱えるのは、画像、オーディオ ファイル、ビデオ ファイル、生データ、およびドキュメント ファイルのようなデータです。
 
@@ -35,8 +35,8 @@ BLOB を使用した操作を行うには、BLOB を使用するストレージ 
 [WACOM.INCLUDE [vs-storage-getting-started-blobs-include][vs-storage-getting-started-blobs-include]]
 
   [vs-storage-aspnet-vnext-getting-started-intro]: ../includes/vs-storage-aspnet-vnext-getting-started-intro.md
-  [BLOB]: /en-us/documentation/articles/vs-storage-aspnet-vnext-getting-started-blobs "BLOB"
-  [キュー]: /en-us/documentation/articles/vs-storage-aspnet-vnext-getting-started-queues "キュー"
-  [テーブル]: /en-us/documentation/articles/vs-storage-aspnet-vnext-getting-started-tables "テーブル"
-  [How to use Blob Storage from .NET (.NET から BLOB ストレージを使用する方法)]: http://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-how-to-use-blobs/ "How to use Blob Storage from .NET"
+  [BLOB]: /ja-jp/documentation/articles/vs-storage-aspnet-vnext-getting-started-blobs "BLOB"
+  [キュー]: /ja-jp/documentation/articles/vs-storage-aspnet-vnext-getting-started-queues "キュー"
+  [テーブル]: /ja-jp/documentation/articles/vs-storage-aspnet-vnext-getting-started-tables "テーブル"
+  [How to use Blob Storage from .NET (.NET から BLOB ストレージを使用する方法)]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/ "How to use Blob Storage from .NET"
   [vs-storage-getting-started-blobs-include]: ../includes/vs-storage-getting-started-blobs-include.md

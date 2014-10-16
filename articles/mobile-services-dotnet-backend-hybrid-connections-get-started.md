@@ -178,8 +178,8 @@ Hybrid Connection Manager を使用すると、内部設置型のコンピュー
   [接続を使用するようにモバイル サービスを変更する]: #CreateService
   [Visual Studio のダウンロード]: http://www.visualstudio.com/downloads/download-visual-studio-vs
   [Microsoft Web プラットフォーム データベースのページ]: http://www.microsoft.com/web/platform/database.aspx
-  [1]: /en-us/documentation/articles/web-sites-hybrid-connection-connect-on-premises-sql-server#InstallSQL
-  [内部設置型の SQL Server を作成する]: /en-us/documentation/articles/web-sites-hybrid-connection-connect-on-premises-sql-server#CreateSQLDB
+  [1]: /ja-jp/documentation/articles/web-sites-hybrid-connection-connect-on-premises-sql-server#InstallSQL
+  [内部設置型の SQL Server を作成する]: /ja-jp/documentation/articles/web-sites-hybrid-connection-connect-on-premises-sql-server#CreateSQLDB
   [Azure の管理ポータル]: http://go.microsoft.com/fwlink/p/?linkid=213885&clcid=0x409
   [Create BizTalk Service]: ./media/mobile-services-dotnet-backend-hybrid-connections-get-started/1.png
   [Configure new BizTalk Service]: ./media/mobile-services-dotnet-backend-hybrid-connections-get-started/2.png
@@ -190,11 +190,11 @@ Hybrid Connection Manager を使用すると、内部設置型のコンピュー
   [Install Hybrid Connection Manager]: ./media/mobile-services-dotnet-backend-hybrid-connections-get-started/6.png
   [Hybrid Connection Manager setup]: ./media/mobile-services-dotnet-backend-hybrid-connections-get-started/7.png
   [Hybrid Connection connected]: ./media/mobile-services-dotnet-backend-hybrid-connections-get-started/8.png
-  [モバイル サービスの使用]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
+  [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
   [Associate Hybrid Connection]: ./media/mobile-services-dotnet-backend-hybrid-connections-get-started/9.png
   [Pick associated Hybrid Connection]: ./media/mobile-services-dotnet-backend-hybrid-connections-get-started/10.png
   [App setting for connection string]: ./media/mobile-services-dotnet-backend-hybrid-connections-get-started/11.png
   [SQL Management Studio]: ./media/mobile-services-dotnet-backend-hybrid-connections-get-started/12.png
   [ハイブリッド接続の Web サイト]: http://azure.microsoft.com/en-us/services/biztalk-services/
   [ハイブリッド接続の概要]: http://go.microsoft.com/fwlink/p/?LinkID=397274
-  [BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ]: http://azure.microsoft.com/en-us/documentation/articles/biztalk-dashboard-monitor-scale-tabs/
+  [BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ]: http://azure.microsoft.com/ja-jp/documentation/articles/biztalk-dashboard-monitor-scale-tabs/

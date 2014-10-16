@@ -76,7 +76,7 @@
   []: ./media/mobile-services-javascript-backend-windows-store-javascript-get-started/mobile-portal-quickstart.png
   [1]: ./media/mobile-services-javascript-backend-windows-store-javascript-get-started/mobile-quickstart-steps.png
   [mobile-services-javascript-backend-run-app]: ../includes/mobile-services-javascript-backend-run-app.md
-  [データの使用]: /en-us/documentation/articles/mobile-services-windows-store-javascript-get-started-data
-  [認証の使用]: /en-us/documentation/articles/mobile-services-windows-store-javascript-get-started-users
-  [プッシュ通知の使用]: /en-us/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push
-  [Supporting multiple device platforms from a single mobile service (単一のモバイル サービスから複数のデバイス プラットフォームをサポートする)]: /en-us/documentation/articles/mobile-services-how-to-use-multiple-clients-single-service#shared-vs
+  [データの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-data
+  [認証の使用]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-users
+  [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push
+  [Supporting multiple device platforms from a single mobile service (単一のモバイル サービスから複数のデバイス プラットフォームをサポートする)]: /ja-jp/documentation/articles/mobile-services-how-to-use-multiple-clients-single-service#shared-vs

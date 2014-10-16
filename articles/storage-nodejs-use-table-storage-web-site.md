@@ -636,8 +636,8 @@ Azure でコマンド ライン ツールを使用する前に、自分のサブ
 
 ## その他のリソース
 
-[Mac および Linux 用 Azure コマンド ライン ツール] [Build and deploy a Node.js website to Azure (Node.js Web サイトの構築と Azure への展開)]: /en-us/documentation/articles/web-sites-nodejs-develop-deploy-mac/
-[ソース管理から Azure の Web サイトへの発行][]: /en-us/documentation/articles/web-sites-publish-source-control/
+[Mac および Linux 用 Azure コマンド ライン ツール] [Build and deploy a Node.js website to Azure (Node.js Web サイトの構築と Azure への展開)]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
+[ソース管理から Azure の Web サイトへの発行][]: /ja-jp/documentation/articles/web-sites-publish-source-control/
 [Node.js Developer Center (Node.js デベロッパー センター)]: en-us/develop/nodejs/
 
   [ノード]: http://nodejs.org
@@ -654,15 +654,15 @@ Azure でコマンド ライン ツールを使用する前に、自分のサブ
   [Twitter Bootstrap]: https://github.com/twbs/bootstrap
   [1]: http://getbootstrap.com/
   [タスク一覧の新しいアイテムの画像]: ./media/storage-nodejs-use-table-storage-web-site/table_todo_list.png
-  [Node.js アプリケーションの作成と Azure の Web サイトへの展開]: /en-us/documentation/articles/web-sites-nodejs-develop-deploy-mac/
+  [Node.js アプリケーションの作成と Azure の Web サイトへの展開]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
   [antares-iaas-signup]: ../includes/antares-iaas-signup.md
-  [Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成]: /en-us/documentation/articles/xplat-cli/
+  [Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成]: /ja-jp/documentation/articles/xplat-cli/
   [ダウンロード ページ]: ./media/storage-nodejs-use-table-storage-web-site/azure-account-download-cli.png
   [Git リモート]: http://git-scm.com/docs/git-remote
   [Web サイトのダッシュボードを開く]: ./media/storage-nodejs-use-table-storage-web-site/go_to_dashboard.png
   [構成リンク]: ./media/storage-nodejs-use-table-storage-web-site/sql-task-configure.png
   [アプリケーション設定]: ./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png
   [アプリケーション設定の保存]: ./media/storage-nodejs-use-table-storage-web-site/savebutton.png
-  [MongoDB を使用する Node.js Web アプリケーション]: /en-us/documentation/articles/web-sites-nodejs-store-data-mongodb/
-  [ソース管理から Azure の Web サイトへの発行]: /en-us/documentation/articles/web-sites-publish-source-control/
+  [MongoDB を使用する Node.js Web アプリケーション]: /ja-jp/documentation/articles/web-sites-nodejs-store-data-mongodb/
+  [ソース管理から Azure の Web サイトへの発行]: /ja-jp/documentation/articles/web-sites-publish-source-control/
   [portal-new]: ./media/storage-nodejs-use-table-storage-web-site/plus-new.png

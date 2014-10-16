@@ -54,5 +54,5 @@ IP アドレスだけでなく、Web サイトの **awverify** 名と **.azurewe
   [IETF Domain Names - Implementation and Specification (IETF ドメイン名 - 実装と仕様書)]: http://tools.ietf.org/html/rfc1035
   [Azure の管理ポータル]: https://manage.windowsazure.com
   []: ./media/custom-dns-web-site/dncmntask-cname-6.png
-  [Web サイトの規模の設定方法]: http://www.windowsazure.com/en-us/documentation/articles/web-sites-scale/
+  [Web サイトの規模の設定方法]: http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-scale/
   [1]: ./media/custom-dns-web-site/managecustomdomains.png

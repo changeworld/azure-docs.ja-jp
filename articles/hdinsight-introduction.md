@@ -169,7 +169,7 @@ HDInsight (および Hadoop 技術全般) は、いったん書き込んだ後�
   [SQL Server 2012 Analysis Services]: http://www.microsoft.com/sqlserver/en/us/solutions-technologies/business-intelligence/SQL-Server-2012-analysis-services.aspx
   [SQL Server 2012 Reporting]: http://www.microsoft.com/en-us/sqlserver/solutions-technologies/business-intelligence/reporting.aspx
   [HDInsight のドキュメント]: http://go.microsoft.com/fwlink/?LinkID=285601
-  [HDInsight Release Notes (HDInsight リリース ノート)]: http://azure.microsoft.com/en-us/documentation/articles/hdinsight-release-notes/
+  [HDInsight Release Notes (HDInsight リリース ノート)]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-release-notes/
   [Azure HDInsight の概要]: ../hdinsight-get-started/
   [HDInsight のサンプルの実行]: ../hdinsight-run-samples/
   [Big Data と Azure]: http://azure.microsoft.com/en-us/solutions/big-data/

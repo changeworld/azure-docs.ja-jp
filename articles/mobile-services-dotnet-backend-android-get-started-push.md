@@ -4,11 +4,11 @@
 
 # モバイル サービスでのプッシュ通知の使用
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/" title="Windows ストア C#">Windows ストア C#</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push/" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push/" title="Windows Phone">Windows Phone</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started-push/" title="iOS">iOS</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/" title="Android" class="current">Android</a>
-<!---<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-xamarin-ios-get-started-push" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-xamarin-android-get-started-push" title="Xamarin.Android">Xamarin.Android</a>-->
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push/" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push/" title="Windows Phone">Windows Phone</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-push/" title="iOS">iOS</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/" title="Android" class="current">Android</a>
+<!---<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-xamarin-ios-get-started-push" title="Xamarin.iOS">Xamarin.iOS</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-xamarin-android-get-started-push" title="Xamarin.Android">Xamarin.Android</a>-->
 </div>
 
-<div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/" title=".NET バックエンド" class="current">.NET バックエンド</a> |  <a href="/en-us/documentation/articles/mobile-services-javascript-backend-android-get-started-push/"  title="JavaScript バックエンド">JavaScript バックエンド</a></div>
+<div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/" title=".NET バックエンド" class="current">.NET バックエンド</a> |  <a href="/ja-jp/documentation/articles/mobile-services-javascript-backend-android-get-started-push/"  title="JavaScript バックエンド">JavaScript バックエンド</a></div>
 
 このトピックでは、Azure モバイル サービスを使用して Android アプリにプッシュ通知を送信する方法について説明します。このチュートリアルでは、Google Cloud Messaging (GCM) を使用したプッシュ通知をクイック スタート プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
 
@@ -166,21 +166,21 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 
 <!-- URLs. -->
 
-  [Windows ストア C\#]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/ "Windows ストア C#"
-  [Windows ストア JavaScript]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push/ "Windows ストア JavaScript"
-  [Windows Phone]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push/ "Windows Phone"
-  [iOS]: /en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started-push/ "iOS"
-  [Android]: /en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/ "Android"
-  [.NET バックエンド]: /en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/ ".NET バックエンド"
-  [JavaScript バックエンド]: /en-us/documentation/articles/mobile-services-javascript-backend-android-get-started-push/ "JavaScript バックエンド"
+  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/ "Windows ストア C#"
+  [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push/ "Windows ストア JavaScript"
+  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push/ "Windows Phone"
+  [iOS]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-push/ "iOS"
+  [Android]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/ "Android"
+  [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/ ".NET バックエンド"
+  [JavaScript バックエンド]: /ja-jp/documentation/articles/mobile-services-javascript-backend-android-get-started-push/ "JavaScript バックエンド"
   [Google Cloud Messaging を有効にする]: #register
   [プッシュ要求を送信するようにモバイル サービスを構成する]: #configure
   [サーバーを更新してプッシュ通知を送信する]: #update-server
   [アプリケーションにプッシュ通知を追加する]: #update
   [ローカル テストのためにプッシュ通知を有効にする]: #local-testing
   [発行されたモバイル サービスに対してアプリケーションをテストする]: #test-app
-  [モバイル サービスの使用]: /en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started
-  [モバイル サービスでのデータの使用]: /en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started-data
+  [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started
+  [モバイル サービスでのデータの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-data
   [Azure の無料評価版サイト]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AE564AB28&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F
   [Enable GCM]: ../includes/mobile-services-enable-Google-cloud-messaging.md
   [Azure の管理ポータル]: https://manage.windowsazure.com/
@@ -196,6 +196,6 @@ Mobile Services と通知ハブについては次のトピックを参照して�
   [3]: ./media/mobile-services-android-get-started-push/mobile-services-android-virtual-device-manager-edit.png
   [mobile-services-dotnet-backend-configure-local-push]: ../includes/mobile-services-dotnet-backend-configure-local-push.md
   [4]: ./media/mobile-services-android-get-started-push/mobile-quickstart-push1-android.png
-  [認証の使用]: /en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started-users
-  [Windows Azure 通知ハブとは]: /en-us/documentation/articles/notification-hubs-overview/
-  [モバイル サービス向け Android クライアント ライブラリの使用方法]: /en-us/documentation/articles/mobile-services-android-how-to-use-client-library
+  [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-users
+  [Windows Azure 通知ハブとは]: /ja-jp/documentation/articles/notification-hubs-overview/
+  [モバイル サービス向け Android クライアント ライブラリの使用方法]: /ja-jp/documentation/articles/mobile-services-android-how-to-use-client-library

@@ -336,7 +336,7 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
   [Azure HDInsight]: http://go.microsoft.com/fwlink/?LinkID=285601
   [Ambari のドキュメント]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
-  [HDInsight Release Notes (HDInsight のリリース ノート)]: http://azure.microsoft.com/en-us/documentation/articles/hdinsight-release-notes/
+  [HDInsight Release Notes (HDInsight のリリース ノート)]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-release-notes/
   [New-AzureHDInsightCluster]: http://msdn.microsoft.com/en-us/library/dn593744.aspx
   [ファミリ 4]: http://msdn.microsoft.com/en-us/library/azure/ee924680.aspx#explanation
   [Hortonworks Data Platform 2.1]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.1/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.1.html

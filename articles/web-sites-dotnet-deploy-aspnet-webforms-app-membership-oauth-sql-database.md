@@ -709,7 +709,7 @@ ASP.NET Web フォームの詳細については、ASP.NET Web サイトの「 [
 
 役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。新しいトピックについては、「[Show Me How With Code (コードの使用方法)][]」で要求および投票することもできます。
 
-  [メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC 5 アプリケーションを Azure の Web サイトにデプロイする]: http://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/
+  [メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC 5 アプリケーションを Azure の Web サイトにデプロイする]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/
   [Contacts - Edit Page]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms00.png
   [MSDN サブスクライバーの特典を有効にする]: /en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
   [無料評価版にサインアップ]: /en-us/pricing/free-trial/?WT.mc_id=A261C142F
@@ -783,7 +783,7 @@ ASP.NET Web フォームの詳細については、ASP.NET Web サイトの「 [
   [AspNetUserRoles data]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms36.png
   [14]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms37.png
   [Learn About ASP.NET Web Forms (ASP.NET Web フォームについて学習する)]: http://www.asp.net/web-forms
-  [Microsoft Azure のチュートリアルとガイド]: http://azure.microsoft.com/en-us/documentation/services/web-sites/#net
+  [Microsoft Azure のチュートリアルとガイド]: http://azure.microsoft.com/ja-jp/documentation/services/web-sites/#net
   [@RickAndMSFT]: https://twitter.com/RickAndMSFT
   [@blowdart]: https://twitter.com/blowdart
   [Show Me How With Code (コードの使用方法)]: http://aspnet.uservoice.com/forums/228522-show-me-how-with-code

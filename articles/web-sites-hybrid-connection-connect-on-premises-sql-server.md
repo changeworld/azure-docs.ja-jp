@@ -446,8 +446,8 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
   [Registered users in on-premises database]: ./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F11HCTestShowMemberDb.png
   [Josh Twist introduces hybrid connections (Josh Twist によるハイブリッド接続の紹介) (チャネル 9 ビデオ)]: http://channel9.msdn.com/Shows/Azure-Friday/Josh-Twist-introduces-hybrid-connections
   [ハイブリッド接続の Web サイト]: http://azure.microsoft.com/en-us/services/biztalk-services/
-  [BizTalk サービス: ダッシュボード、監視、および スケール タブ]: http://azure.microsoft.com/en-us/documentation/articles/biztalk-dashboard-monitor-scale-tabs/
+  [BizTalk サービス: ダッシュボード、監視、および スケール タブ]: http://azure.microsoft.com/ja-jp/documentation/articles/biztalk-dashboard-monitor-scale-tabs/
   [Building a Real-World Hybrid Cloud with Seamless Application Portability (シームレスなアプリケーションの移植性を使用して実際のハイブリッド クラウドをビルドする) (チャネル 9 ビデオ)]: http://channel9.msdn.com/events/TechEd/NorthAmerica/2014/DCIM-B323#fbid=
-  [ハイブリッド接続を使用して Azure のモバイル サービスから内部設置型の SQL Server に接続する]: http://azure.microsoft.com/en-us/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started/
+  [ハイブリッド接続を使用して Azure のモバイル サービスから内部設置型の SQL Server に接続する]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started/
   [Connect to an on-premises SQL Server from Azure Mobile Services using Hybrid Connections (ハイブリッド接続を使用して Azure Mobile Services から内部設置型の SQL Server に接続する) (チャネル 9 ビデオ)]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Connect-to-an-on-premises-SQL-Server-from-Azure-Mobile-Services-using-Hybrid-Connections
   [ASP.NET の Id の概要]: http://www.asp.net/identity

@@ -43,6 +43,6 @@
 
 <!-- URLs. -->
 
-  [How to Register with the Azure Active Directory (Azure Active Directory に登録する方法)]: /en-us/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
+  [How to Register with the Azure Active Directory (Azure Active Directory に登録する方法)]: /ja-jp/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   []: ./media/mobile-services-dotnet-adal-register-service/mobile-services-aad-app-manage-manifest.png

@@ -136,7 +136,7 @@ TodoItem クラスはデータ オブジェクトを定義し、このクラス�
 <!-- URLs. -->
 
   []: ./media/mobile-services-configure-blob-storage/mobile-add-storage-nuget-package-dotnet.png
-  [Code First Migrations を使用してデータ モデルを更新する方法に関するページ]: /en-us/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations
+  [Code First Migrations を使用してデータ モデルを更新する方法に関するページ]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations
   [How To Create a Storage Account (ストレージ アカウントの作成方法)]: /en-us/manage/services/storage/how-to-create-a-storage-account
   [1]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-account.png
   [2]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-account-keys.png

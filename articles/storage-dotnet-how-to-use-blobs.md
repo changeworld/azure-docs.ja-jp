@@ -346,7 +346,7 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその
   [.NET 用ストレージ クライアント ライブラリ リファレンス]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API リファレンス]: http://msdn.microsoft.com/en-us/library/windowsazure/dd179355
   [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
-  [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)]: /en-us/documentation/articles/websites-dotnet-webjobs-sdk-get-started/
-  [テーブル ストレージ]: /en-us/documentation/articles/storage-dotnet-how-to-use-tables/
-  [キュー ストレージ]: /en-us/documentation/articles/storage-dotnet-how-to-use-queues/
-  [SQL データベース]: /en-us/documentation/articles/sql-database-dotnet-how-to-use/
+  [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)]: /ja-jp/documentation/articles/websites-dotnet-webjobs-sdk-get-started/
+  [テーブル ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/
+  [キュー ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-queues/
+  [SQL データベース]: /ja-jp/documentation/articles/sql-database-dotnet-how-to-use/

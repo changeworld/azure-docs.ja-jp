@@ -4,7 +4,7 @@
 
 # Windows Server を実行する仮想マシンの作成
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/virtual-machines-windows-tutorial/" title="Azure ポータル" class="current">Azure ポータル</a><a href="/en-us/documentation/articles/virtual-machines-windows-tutorial-azure-preview/" title="Azure プレビュー ポータル">Azure プレビュー ポータル</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/virtual-machines-windows-tutorial/" title="Azure ポータル" class="current">Azure ポータル</a><a href="/ja-jp/documentation/articles/virtual-machines-windows-tutorial-azure-preview/" title="Azure プレビュー ポータル">Azure プレビュー ポータル</a></div>
 
 このチュートリアルは、Azure の管理ポータルのイメージ ギャラリーを使用すると Windows Server を実行する Azure 仮想マシン (VM) を簡単に作成できることを示します。イメージ ギャラリーは、Windows オペレーティング システム、Linux ベースのオペレーティング システム、アプリケーション イメージなどさまざまなイメージを提供します。
 
@@ -102,8 +102,8 @@ Azure での Windows 仮想マシンの構成に関する詳細については�
 
 [仮想マシンの可用性管理][]
 
-  [Azure ポータル]: /en-us/documentation/articles/virtual-machines-windows-tutorial/ "Azure ポータル"
-  [Azure プレビュー ポータル]: /en-us/documentation/articles/virtual-machines-windows-tutorial-azure-preview/ "Azure プレビュー ポータル"
+  [Azure ポータル]: /ja-jp/documentation/articles/virtual-machines-windows-tutorial/ "Azure ポータル"
+  [Azure プレビュー ポータル]: /ja-jp/documentation/articles/virtual-machines-windows-tutorial-azure-preview/ "Azure プレビュー ポータル"
   [Azure アカウントの作成に関するページ]: http://www.windowsazure.com/en-us/develop/php/tutorials/create-a-windows-azure-account/
   [仮想マシンの作成方法]: #createvirtualmachine
   [仮想マシンを作成後、ログオンする方法]: #logon
@@ -112,7 +112,7 @@ Azure での Windows 仮想マシンの構成に関する詳細については�
   [1]: https://portal.azure.com
   [virtual-machines-create-WindowsVM]: ../includes/virtual-machines-create-WindowsVM.md
   [virtual-machines-log-on-win-server]: ../includes/virtual-machines-log-on-win-server.md
-  [データ ディスクを Virtual Machine に接続する方法]: http://www.windowsazure.com/en-us/documentation/articles/storage-windows-attach-disk/
+  [データ ディスクを Virtual Machine に接続する方法]: http://www.windowsazure.com/ja-jp/documentation/articles/storage-windows-attach-disk/
   [Azure 管理ポータル]: http://manage.windowsazure.com
   [Select MyTestVM]: ./media/virtual-machines-windows-tutorial/selectvm.png
   [Select Dashboard]: ./media/virtual-machines-windows-tutorial/dashboard.png
@@ -125,6 +125,6 @@ Azure での Windows 仮想マシンの構成に関する詳細については�
   [Continue initialization]: ./media/virtual-machines-windows-tutorial/yesinitialize.png
   [Create the volume]: ./media/virtual-machines-windows-tutorial/initializediskvolume.png
   [3]: ./media/virtual-machines-windows-tutorial/newvolumecreated.png
-  [クラウド サービス内の仮想マシンを相互に接続する方法]: http://www.windowsazure.com/en-us/documentation/articles/cloud-services-connect-virtual-machine/
-  [Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード]: http://www.windowsazure.com/en-us/documentation/articles/virtual-machines-create-upload-vhd-windows-server/
-  [仮想マシンの可用性管理]: http://www.windowsazure.com/en-us/documentation/articles/manage-availability-virtual-machines/
+  [クラウド サービス内の仮想マシンを相互に接続する方法]: http://www.windowsazure.com/ja-jp/documentation/articles/cloud-services-connect-virtual-machine/
+  [Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード]: http://www.windowsazure.com/ja-jp/documentation/articles/virtual-machines-create-upload-vhd-windows-server/
+  [仮想マシンの可用性管理]: http://www.windowsazure.com/ja-jp/documentation/articles/manage-availability-virtual-machines/

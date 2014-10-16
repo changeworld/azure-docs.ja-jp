@@ -433,10 +433,10 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [方法: 共有アクセス署名を操作する]: #sas
   [howto-table-storage]: ../includes/howto-table-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
-  [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: /en-us/documentation/articles/web-sites-nodejs-develop-deploy-mac/
-  [Node.js クラウド サービスへのデプロイ]: /en-us/documentation/articles/cloud-services-nodejs-develop-deploy-app/
-  [WebMatrix による Web サイトの作成とデプロイ]: /en-us/documentation/articles/web-sites-nodejs-use-webmatrix/
-  [Azure テーブル サービスを使用する Node.js Web アプリケーション]: /en-us/documentation/articles/storage-nodejs-use-table-storage-web-site/
+  [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
+  [Node.js クラウド サービスへのデプロイ]: /ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/
+  [WebMatrix による Web サイトの作成とデプロイ]: /ja-jp/documentation/articles/web-sites-nodejs-use-webmatrix/
+  [Azure テーブル サービスを使用する Node.js Web アプリケーション]: /ja-jp/documentation/articles/storage-nodejs-use-table-storage-web-site/
   [テーブル サービス データ モデルについて]: http://msdn.microsoft.com/library/azure/dd179338.aspx
   [ETag]: http://en.wikipedia.org/wiki/HTTP_ETag
   [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx

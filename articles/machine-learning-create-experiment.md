@@ -192,4 +192,4 @@ ML Studio には、多数のサンプル データセットが含まれており
   [Score Model module]: ./media/machine-learning-create-experiment/screen8a.png
   [Evaluation results]: ./media/machine-learning-create-experiment/screen9.png
   [Complete experiment]: ./media/machine-learning-create-experiment/screen10.png
-  [チュートリアル: Azure Machine Learning を使用した予測ソリューションの開発]: http://azure.microsoft.com/en-us/documentation/articles/machine-learning-walkthrough-develop-predictive-solution/
+  [チュートリアル: Azure Machine Learning を使用した予測ソリューションの開発]: http://azure.microsoft.com/ja-jp/documentation/articles/machine-learning-walkthrough-develop-predictive-solution/

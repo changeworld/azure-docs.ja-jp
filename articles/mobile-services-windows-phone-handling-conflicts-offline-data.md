@@ -5,8 +5,8 @@
 # モバイル サービスでのオフライン データの同期との競合の処理
 
 <div class="dev-center-tutorial-selector sublanding">
-<a href="/en-us/documentation/articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data" title="Windows ストア C#">Windows ストア C#</a>
-<a href="/en-us/documentation/articles/mobile-services-windows-phone-handling-conflicts-offline-data" title="Windows Phone" class="current">Windows Phone</a>
+<a href="/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data" title="Windows ストア C#">Windows ストア C#</a>
+<a href="/ja-jp/documentation/articles/mobile-services-windows-phone-handling-conflicts-offline-data" title="Windows Phone" class="current">Windows Phone</a>
 </div>
 
 このトピックでは、Azure Mobile Services のオフライン機能を使用しているときに、データを同期し、競合を処理する方法について説明します。このチュートリアルでは、オフライン データとオンライン データの両方をサポートするアプリケーションをダウンロードして、モバイル サービスをそのアプリケーションに統合します。その後に、Azure の管理ポータルにログインして、アプリケーションの実行中にデータベースを表示および更新します。
@@ -195,9 +195,9 @@ JavaScript バックエンド モバイル サービスでは、**TodoWithDate**
 <!-- Anchors. --> 
 <!-- URLs -->
 
-[Windows ストア C\#]: /en-us/documentation/articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data "Windows ストア C#"
-[Windows Phone]: /en-us/documentation/articles/mobile-services-windows-phone-handling-conflicts-offline-data "Windows Phone"
-[オフライン データの使用]: /en-us/documentation/articles/mobile-services-windows-phone-get-started-offline-data
+[Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data "Windows ストア C#"
+[Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-handling-conflicts-offline-data "Windows Phone"
+[オフライン データの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-offline-data
 [Windows Phone プロジェクトのダウンロード]: #download-app
 [期日列のデータベースへの追加]: #add-column
 [.NET バックエンド モバイル サービスのデータベースの更新]: #dotnet-backend
@@ -208,7 +208,7 @@ JavaScript バックエンド モバイル サービスでは、**TodoWithDate**
 [競合コード サンプルの処理]: http://go.microsoft.com/fwlink/?LinkId=398257
 
 [SQLite for Windows Phone 8]: http://go.microsoft.com/fwlink/?LinkId=397953
-[Code First Migrations を使用してデータ モデルを更新する方法に関するページ]: /en-us/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations
+[Code First Migrations を使用してデータ モデルを更新する方法に関するページ]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 
 <!-- Images -->

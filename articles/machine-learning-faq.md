@@ -113,7 +113,7 @@ Azure ML は、Azure のサポート サービスの提供の一環としてサ�
 Azure Machine Learning については、MSDN にコミュニティ フォーラムがあり、ここで、Azure ML に関連する質問をすることができます。このフォーラムは Azure ML チームが監視しています。[Azure フォーラム][]にアクセスしてください。
 
   [Azure Machine Learning を利用する]: http://go.microsoft.com/fwlink/?LinkId=404226
-  [Azure Machine Learning Center]: http://azure.microsoft.com/en-us/documentation/services/machine-learning/
+  [Azure Machine Learning Center]: http://azure.microsoft.com/ja-jp/documentation/services/machine-learning/
   [ユーザー フィードバック フォーラム]: http://go.microsoft.com/fwlink/?LinkId=404231
   [1]: https://windowsazure.uservoice.com/forums/257792-machine-learning
   [Azure フォーラム]: http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=MachineLearning
