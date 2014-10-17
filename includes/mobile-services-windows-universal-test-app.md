@@ -1,0 +1,16 @@
+1.  F5 キーを押してプロジェクトをリビルドし、Windows ストア アプリを開始します。
+
+2.  アプリケーションで、**[Insert a TodoItem]** ボックスに意味のあるテキスト (たとえば、「*チュートリアルの完了*」) を入力し、**[Save]** をクリックします。
+
+    ![][]
+
+    これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。
+
+3.  デバッグを停止して、ユニバーサル Windows ソリューションにある既定のスタートアップ プロジェクトを Windows Phone ストア アプリに変更し、もう一度 F5 キーを押します。
+
+    ![][1]
+
+    アプリケーションが開始すると、前の手順で保存したデータが、モバイル サービスから読み込まれる点に注目してください。
+
+  []: ./media/mobile-services-windows-universal-test-app/mobile-quickstart-startup.png
+  [1]: ./media/mobile-services-windows-universal-test-app/mobile-quickstart-completed-wp8.png

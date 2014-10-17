@@ -1,0 +1,11 @@
+> [AZURE.SELECTOR-LIST (プラットフォーム | バックエンド)]
+- [(iOS | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-push/)
+- [(iOS | JavaScript)](/ja-jp/documentation/articles/mobile-services-javascript-backend-ios-get-started-push/)
+- [(Windows ストア C# | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/)
+- [(Windows ストア C# | JavaScript)](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push/)
+- [(Windows ストア JavaScript | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push/)
+- [(Windows ストア JavaScript | JavaScript)](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push/)
+- - [(Windows Phone | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push/)
+- [(Windows Phone | Javascript)](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push/)
+- [(Android | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/)
+- [(Android | JavaScript)](/ja-jp/documentation/articles/mobile-services-javascript-backend-android-get-started-push/)
