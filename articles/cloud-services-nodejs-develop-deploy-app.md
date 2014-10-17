@@ -26,7 +26,7 @@
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
-<p><img src="https://wacomdpsstablestorage.blob.core.windows.net/articlesmedia/demo-ppe.windowsazure.com/ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/20140107035927/node21.png" alt="hello world ページを表示しているブラウザー ウィンドウこの URL は、ページが Azure でホストされていることを示します。">
+<p><img src="https://wacomdpsstablestorage.blob.core.windows.net/articlesmedia/demo-ppe.windowsazure.com/en-us/documentation/articles/cloud-services-nodejs-develop-deploy-app/20140107035927/node21.png" alt="hello world ページを表示しているブラウザー ウィンドウこの URL は、ページが Azure でホストされていることを示します。">
 </p>
 
 
