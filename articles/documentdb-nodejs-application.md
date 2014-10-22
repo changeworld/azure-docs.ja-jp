@@ -24,7 +24,7 @@
 作成します。対象となるタスクは、JSON ドキュメントとして Azure
 DocumentDB に保存するものとします。
 
-![Alt text][]
+![Alt text][0]
 
 ## <a name="_Toc395783176">前提条件</a>
 
@@ -442,7 +442,8 @@ Node (および後で Azure) に通知されます。
 アプリケーションが動作するために必要なコードはこれですべてです。
 
 </h1>
-# <a name="_Toc395783181">ローカルでのアプリケーションの実行</a>
+<a name="_Toc395783181">ローカルでのアプリケーションの実行</a>
+========================================================
 
 ローカル コンピューターでアプリケーションをテストするには、
 Visual Studio で F5 キーを押します。アプリがビルドされた後、
@@ -450,18 +451,20 @@ Node.js が起動され、次のようなページがブラウザーに表示さ
 
 ![Alt text][17]
 
-1. 表示された [Item]、[Item Name]、および [Item Category] の
+
+1\. 表示された [Item]、[Item Name]、および [Item Category] の
 フィールドを使用して情報を入力し、**[Add item]** をクリックします。
 
-2. ページが更新され、ToDo List に新しく作成された項目が表示されます。
+2\. ページが更新され、ToDo List に新しく作成された項目が表示されます。
 
 ![Alt text][18]
 
-3. タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、
+3\. タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、
 **[Update tasks]** をクリックします。
 
 </h1>
-# <a name="_Toc395783182">Azure Websites へのアプリケーションのデプロイ</a>
+<a name="_Toc395783182">Azure Websites へのアプリケーションのデプロイ</a>
+=====================================================================
 
 Node.js Tools for Visual Studio がインストールされていると、
 数ステップで簡単に Azure Websites にアプリケーションをデプロイできます。
@@ -500,7 +503,7 @@ Visual Studio によって Azure サブスクリプションに接続され、
 
 </h1>
 
-  [Alt text]: ./media/documentdb-nodejs-application/image1.png
+  [0]: ./media/documentdb-nodejs-application/image1.png
   [Node.js]: http://nodejs.org/
   [Git]: http://git-scm.com/
   [Visual Studio 2013]: http://msdn.microsoft.com/en-us/vstudio/cc136611.aspx
