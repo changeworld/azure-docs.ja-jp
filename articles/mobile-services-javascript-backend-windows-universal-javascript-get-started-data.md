@@ -1,10 +1,10 @@
-<properties linkid="develop-mobile-tutorials-get-started-with-data-js-vs2013" urlDisplayName="Get Started with Data" pageTitle="Get started with data (Windows Store JavaScript) | Mobile Dev Center" metaKeywords="" description="Learn how to get started using Mobile Services to leverage data in your Windows Store JavaScript app." metaCanonical="https://www.windowsazure.com/en-us/develop/mobile/tutorials/get-started-with-data-dotnet/" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="glenga" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-tutorials-get-started-with-data-js-vs2013" urlDisplayName="Get Started with Data" pageTitle="Get started with data (Windows Store JavaScript) | Mobile Dev Center" metaKeywords="" description="Learn how to get started using Mobile Services to leverage data in your Windows Store JavaScript app." metaCanonical="https://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet/" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="glenga" solutions="" manager="" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
 
 # モバイル サービスでのデータの使用
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-data][mobile-services-selector-get-started-data]]
+[WACOM.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
 
 このトピックでは、Azure のモバイル サービスを使用してユニバーサル Windows アプリのデータを活用する方法について説明します。ユニバーサル Windows アプリ ソリューションには、Windows ストア 8.1 と Windows Phone ストア 8.1 の両方のアプリのプロジェクトと、共通の共有プロジェクトが含まれます。詳細については、「[Windows と Windows Phone を対象とするユニバーサル Windows アプリの構築][Windows と Windows Phone を対象とするユニバーサル Windows アプリの構築]」を参照してください。
 
@@ -27,11 +27,11 @@
 
 ## <a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする
 
-[WACOM.INCLUDE [mobile-services-windows-universal-javascript-download-project][mobile-services-windows-universal-javascript-download-project]]
+[WACOM.INCLUDE [mobile-services-windows-universal-javascript-download-project](../includes/mobile-services-windows-universal-dotnet-download-project.md)]
 
 ## <a name="create-service"></a>Visual Studio からの新しいモバイル サービスの作成
 
-[WACOM.INCLUDE [mobile-services-create-new-service-vs2013][mobile-services-create-new-service-vs2013]]
+[WACOM.INCLUDE [mobile-services-create-new-service-vs2013](../includes/mobile-services-create-new-service-vs2013.md)]
 
 1.  Solution Explorer で、**services\\mobileService\\scripts** サブフォルダーに移動し、service.js スクリプト ファイルを開き、次のような新しいグローバル変数があることを確認します。
 
@@ -53,19 +53,19 @@
 
 ## <a name="add-table"></a>新しいテーブルをモバイル サービスに追加する
 
-[WACOM.INCLUDE [mobile-services-create-new-table-vs2013][mobile-services-create-new-table-vs2013]]
+[WACOM.INCLUDE [mobile-services-create-new-table-vs2013](../includes/mobile-services-create-new-table-vs2013.md)]
 
 > [WACOM.NOTE] Id、\_\_createdAt、\_\_updatedAt、および \_\_version の列を持つ新しいテーブルが作成されます。動的スキーマが有効な場合、挿入または更新の要求に含まれる JSON オブジェクトに基づいて、モバイル サービスによって自動的に新しい列が生成されます。詳細については、「[動的スキーマ][動的スキーマ]」を参照してください。
 
 # <a name="update-app"></a>モバイル サービスを使用するためのアプリケーションの更新
 
-[WACOM.INCLUDE [mobile-services-windows-javascript-update-data-app][mobile-services-windows-javascript-update-data-app]]
+[WACOM.INCLUDE [mobile-services-windows-javascript-update-data-app](../includes/mobile-services-windows-javascript-update-data-app.md)]
 
 ## <a name="test-azure-hosted"></a>Azure でホストされているモバイル サービスをテストする
 
 これで、Azure でホストされているモバイル サービスに対して両方のバージョンのユニバーサル Windows アプリをテストできます。
 
-[WACOM.INCLUDE [mobile-services-windows-universal-test-app][mobile-services-windows-universal-test-app]]
+[WACOM.INCLUDE [mobile-services-windows-universal-test-app](../includes/mobile-services-windows-universal-test-app.md)]
 
 1.  [管理ポータル][管理ポータル]で、**[モバイル サービス]** をクリックし、対象のモバイル サービスをクリックします。
 
@@ -101,19 +101,19 @@
 
 
   [mobile-services-selector-get-started-data]: ../includes/mobile-services-selector-get-started-data.md
-  [Windows と Windows Phone を対象とするユニバーサル Windows アプリの構築]: http://msdn.microsoft.com/en-us/library/windows/apps/xaml/dn609832.aspx
+  [Windows と Windows Phone を対象とするユニバーサル Windows アプリの構築]: http://msdn.microsoft.com/ja-jp/library/windows/apps/xaml/dn609832.aspx
   [Windows Phone 向けデータの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data
   [Windows ストア アプリ プロジェクトのダウンロード]: #download-app
   [モバイル サービスの作成]: #create-service
   [ストレージのデータ テーブルの追加]: #add-table
   [モバイル サービスを使用するためのアプリケーションの更新]: #update-app
   [モバイル サービスに対するアプリケーションのテスト]: #test-app
-  [Azure の無料評価版サイト]: http://azure.microsoft.com/en-us/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-javascript-backend-windows-universal-javascript-get-started-data%2F
+  [Azure の無料評価版サイト]: http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-javascript-backend-windows-universal-javascript-get-started-data%2F
   [Visual Studio Express 2013 for Windows]: https://go.microsoft.com/fwLink/p/?LinkID=257546
   [mobile-services-windows-universal-javascript-download-project]: ../includes/mobile-services-windows-universal-dotnet-download-project.md
   [mobile-services-create-new-service-vs2013]: ../includes/mobile-services-create-new-service-vs2013.md
   [mobile-services-create-new-table-vs2013]: ../includes/mobile-services-create-new-table-vs2013.md
-  [動的スキーマ]: http://msdn.microsoft.com/en-us/library/windowsazure/jj193175.aspx
+  [動的スキーマ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193175.aspx
   [mobile-services-windows-javascript-update-data-app]: ../includes/mobile-services-windows-javascript-update-data-app.md
   [mobile-services-windows-universal-test-app]: ../includes/mobile-services-windows-universal-test-app.md
   [管理ポータル]: https://manage.windowsazure.com/

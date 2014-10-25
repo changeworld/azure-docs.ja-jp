@@ -4,40 +4,40 @@
 
 # Azure Search を使用した地理空間検索アプリの作成
 
--   [前提条件][前提条件]
--   [Bing Maps][Bing Maps]
--   [Bing Maps DataFlow API を使用して C# で住所をジオコーディングする][Bing Maps DataFlow API を使用して C# で住所をジオコーディングする]
--   [Azure Search および Bing Maps を使用して MVC4 アプリケーションにマッピングを追加する][Azure Search および Bing Maps を使用して MVC4 アプリケーションにマッピングを追加する]
--   [AdventureWorksWebGeo を探索する][AdventureWorksWebGeo を探索する]
--   [次のステップ][次のステップ]
+-   [前提条件](#sub-1)
+-   [Bing Maps](#sub-2)
+-   [Bing Maps DataFlow API を使用して C# で住所をジオコーディングする](#sub-3)
+-   [Azure Search および Bing Maps を使用して MVC4 アプリケーションにマッピングを追加する](#sub-4)
+-   [AdventureWorksWebGeo を探索する](#sub-5)
+-   [次のステップ](#next-steps)
 
 ## 概要
 
 このチュートリアルでは、Azure Search および Bing Maps を使用して地理空間検索を Web アプリケーションに追加する方法を説明します。地理空間検索を使用すると、ある地点から特定の距離内にある検索対象を見つけることができます (現在位置から 5 KM 以内にあるすべてのレストランを検索するなど)。Azure Search の地理空間機能は、一般的に使用されているマッピング技術をサポートしています。たとえば、不動産業のアプリで多角形の範囲内にある売家を多角形を使用して表す必要がある場合は、OData または単純な検索構文を使用して簡単に実現できます。
 
-さらに概要を理解するには、Channel 9 のビデオ「[Azure Search and Geospatial Data (Azure Search および地理空間データ)][Azure Search and Geospatial Data (Azure Search および地理空間データ)]」を参照してください。
+さらに概要を理解するには、Channel 9 のビデオ「[Azure Search and Geospatial Data (Azure Search および地理空間データ)](http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data)」を参照してください。
 
-![][]
+![][7]
 
 アプリケーションを作成するには、Bing のマッピング サービスを活用して、CSV ファイルからロードした住所をジオコーディングし、生成されたデータを Search インデックスに保管します。
 
-このチュートリアルは、[Azure Search – Adventure Works Demo][Azure Search – Adventure Works Demo] を基に作成されています。このデモをまだ実行していない場合は、まず、このデモでインデックスを作成したり Web アプリから Azure Search API を呼び出したりしてみてください。
+このチュートリアルは、[Azure Search – Adventure Works Demo](http://azuresearchadventureworksdemo.codeplex.com) を基に作成されています。このデモをまだ実行していない場合は、まず、このデモでインデックスを作成したり Web アプリから Azure Search API を呼び出したりしてみてください。
 
 ## 前提条件
 
--   Visual Studio 2012 以上および ASP.NET MVC 4 と SQL Server がインストールされていること。Visual Studio 2013 Express は、[Download Center][Download Center] の Web から入手できます。
--   Azure Search サービス。Search サービス名および管理キーが必要です。詳細については、「[Configure Search on Azure Preview portal (Azure プレビュー ポータルでの Search の構成)][Configure Search on Azure Preview portal (Azure プレビュー ポータルでの Search の構成)]」を参照してください。
+-   Visual Studio 2012 以上および ASP.NET MVC 4 と SQL Server がインストールされていること。Visual Studio 2013 Express は、[Download Center](http://www.microsoft.com/ja-jp/download/details.aspx?id=40747) の Web から入手できます。
+-   Azure Search サービス。Search サービス名および管理キーが必要です。詳細については、「[Configure Search on Azure Preview portal (Azure プレビュー ポータルでの Search の構成)](../search-configure/) 」を参照してください。
 -   Bing マップ サービスおよびこのサービスを利用するためのキー。次のセクションで手順について説明します。
--   [CodePlex の Azure Search GeoSearch Sample][CodePlex の Azure Search GeoSearch Sample]。[SOURCE CODE] タブで、**[Download]** をクリックしてソリューションの zip ファイルを取得してください。
+-   [CodePlex の Azure Search GeoSearch Sample](https://azuresearchgeospatial.codeplex.com/)。[SOURCE CODE] タブで、**[Download]** をクリックしてソリューションの zip ファイルを取得してください。
 
-    ![][1]
+    ![][12]
 
 このソリューションには次の 2 つのプロジェクトが含まれています。
 
 -   **StoreIndexer** は、Azure Search インデックスを作成してデータをロードします。
 -   **AdventureWorksWebGeo** は、Azure Search インデックスに対してクエリを実行して店舗の場所を Bing マップ上に表示する MVC4 ベースのアプリケーションです。
 
-[WACOM.INCLUDE [このチュートリアルを完了するには、Azure アカウントが必要です。][このチュートリアルを完了するには、Azure アカウントが必要です。]]
+[WACOM.INCLUDE [このチュートリアルを完了するには、Azure アカウントが必要です。](../includes/free-trial-note.md)]
 
 ## Bing Maps
 
@@ -49,7 +49,7 @@
 
 ### Bing Maps のアカウントの作成
 
-1.  [Bing Maps のポータル][Bing Maps のポータル]にアクセスし、新規アカウントを作成します。詳細な情報を入力してアカウントを作成します。
+1.  [Bing Maps のポータル](https://www.bingmapsportal.com/)にアクセスし、新規アカウントを作成します。詳細な情報を入力してアカウントを作成します。
 
 2.  アカウントが作成されたら、**[Create or view keys]** を選択し、詳細な情報を入力してキーを作成します。このデモでは、**[Trial Key]** を選択してかまいません。
 
@@ -63,7 +63,7 @@
 
 コードを見ながら、どのように動作するのか説明していきます。
 
-1.  Visual Studio で AdventureWorksGeo ソリューションを開き、ソリューション エクスプローラーでプロジェクト **StoreIndexer** を展開し、Program.cs を開きます。インデックスの作成は「[Azure Search – Adventure Works Demo][2]」で既にカバーされているので、Program.cs におけるインデックスの作成に関する説明は省略します。
+1.  Visual Studio で AdventureWorksGeo ソリューションを開き、ソリューション エクスプローラーでプロジェクト **StoreIndexer** を展開し、Program.cs を開きます。インデックスの作成は「[Azure Search – Adventure Works Demo](http://azuresearchadventureworksdemo.codeplex.com/)」で既にカバーされているので、Program.cs におけるインデックスの作成に関する説明は省略します。
 
 2.  **Main** 関数で **ApplyStoreData** を呼び出していることに注目してください。この関数に移動してコードを見てみましょう。
 
@@ -97,7 +97,7 @@
 
 4.  Web.config を保存します。
 
-5.  **F5** キーを押して、プロジェクトを起動します。ビルド エラーが出た場合は、[トラブルシューティング][トラブルシューティング]の手順に従ってください。
+5.  **F5** キーを押して、プロジェクトを起動します。ビルド エラーが出た場合は、[トラブルシューティング](#err-mvc)の手順に従ってください。
 
 各店舗がマップ上に点として表示されます。いずれかの店舗をクリックすると、その店舗の詳細をまとめたポップアップが表示されます。この情報はすべて、前のステップで作成した "stores" という Azure Search インデックスから得られた情報です。
 
@@ -141,20 +141,16 @@ AdventureWorksWeb をビルドするときに、「ファイルまたはアセ�
 -   ユーザーが描画する選択領域。これにより、マップ上に領域を描画して検索領域を指定できるようにする。そして、地理的交差 API を使用して、この領域を Azure Search でフィルタリングし、マップ上にプロットする。
 
 
-  [前提条件]: #sub-1
-  [Bing Maps]: #sub-2
-  [Bing Maps DataFlow API を使用して C# で住所をジオコーディングする]: #sub-3
-  [Azure Search および Bing Maps を使用して MVC4 アプリケーションにマッピングを追加する]: #sub-4
-  [AdventureWorksWebGeo を探索する]: #sub-5
-  [次のステップ]: #next-steps
-  [Azure Search and Geospatial Data (Azure Search および地理空間データ)]: http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data
-  []: ./media/search-create-geospatial/AzureSearch-geo1-App.PNG
-  [Azure Search – Adventure Works Demo]: http://azuresearchadventureworksdemo.codeplex.com
-  [Download Center]: http://www.microsoft.com/en-us/download/details.aspx?id=40747
-  [Configure Search on Azure Preview portal (Azure プレビュー ポータルでの Search の構成)]: ../search-configure/
-  [CodePlex の Azure Search GeoSearch Sample]: https://azuresearchgeospatial.codeplex.com/
-  [1]: ./media/search-create-geospatial/AzureSearch_Create2_CodeplexDownload.PNG
-  [このチュートリアルを完了するには、Azure アカウントが必要です。]: ../includes/free-trial-note.md
-  [Bing Maps のポータル]: https://www.bingmapsportal.com/
-  [2]: http://azuresearchadventureworksdemo.codeplex.com/
+<!--Anchors-->
+[Prerequisites]: #sub-1
+[Bing Maps]: #sub-2
+[Geocode Addresses in C# using Bing Maps DataFlow API]: #sub-3
+[Add Mapping to an MVC4 Application using Azure Search and Bing Maps]: #sub-4
+[Explore AdventureWorksWebGeo]: #sub-5
+[Next steps]: #next-steps
+
+
+<!--Image references-->
+[7]: ./media/search-create-geospatial/AzureSearch-geo1-App.PNG
+[12]: ./media/search-create-geospatial/AzureSearch_Create2_CodeplexDownload.PNG
   [トラブルシューティング]: #err-mvc

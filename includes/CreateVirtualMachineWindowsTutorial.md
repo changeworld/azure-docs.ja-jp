@@ -1,146 +1,148 @@
-# Windows Server を実行する仮想マシンの作成#
+<properties title="Create a Virtual Machine Running Windows Server" pageTitle="How to create a Virtual Machine Running Windows Server" description="Describes how to create a Windows virtual machine, add a data disk, and log on remotely" metaKeywords="" services="virtual machines" solutions="" documentationCenter="" authors="kathydav" videoId="" scriptId="" />
 
-Azure の管理ポータルのイメージ ギャラリーを使用すると、Windows Server オペレーティング システムを実行する仮想マシンを簡単に作成できます。このチュートリアルでは、Windows Server を実行する仮想マシンをクラウドに作成し、それにアクセスしてカスタマイズする方法について説明します。このチュートリアルを利用するにあたって、Azure の使用経験は不要です。
+# Windows Server を実行する仮想マシンの作成
 
-学習内容:
+このチュートリアルは、Windows Azure の管理ポータルのイメージ ギャラリーを使用すると Server を実行する Azure 仮想マシン (VM) を簡単に作成できることを示します。イメージ ギャラリーは、Windows オペレーティング システム、Linux ベースのオペレーティング システム、アプリケーション イメージなどさまざまなイメージを提供します。
 
-- [Azure での仮想マシンについて] []
-- [仮想マシンの作成方法] []
-- [仮想マシンを作成後、ログオンする方法] []
-- [新しい仮想マシンにデータ ディスクを接続する方法] []
+> [WACOM.NOTE] このチュートリアルは、Azure VM の使用経験がなくても完了できます。ただし、Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、[Azure アカウントの作成に関するページ][Azure アカウントの作成に関するページ]を参照してください。
 
-**注:** このチュートリアルでは、仮想ネットワークに接続されていない仮想マシンを作成します。仮想マシンが仮想ネットワークを使用する場合、仮想マシンの作成時に仮想ネットワークを指定する必要があります。仮想ネットワークの詳細については、「[仮想ネットワークの概要](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
+このチュートリアルは、以下について説明します。
 
-##<a id="virtualmachine"> </a>Azure での仮想マシンについて##
+-   [仮想マシンの作成方法][仮想マシンの作成方法]
+-   [仮想マシンを作成後、ログオンする方法][仮想マシンを作成後、ログオンする方法]
+-   [新しい仮想マシンにデータ ディスクを接続する方法][新しい仮想マシンにデータ ディスクを接続する方法]
 
-Azure の仮想マシンは、制御と管理が可能なクラウド上のサーバーです。Azure で仮想マシンを作成した後、仮想マシンは必要に応じていつでも削除と再作成が可能で、他のサーバーとまったく同様に仮想マシンにアクセスできます。詳細については、「[Virtual Machines](http://go.microsoft.com/fwlink/p/?LinkID=271224)」を参照してください。
+さらに詳しい内容は、「[仮想マシン][仮想マシン]」を参照してください。
 
-##<a id="custommachine"> </a>仮想マシンの作成方法##
+## <span id="createvirtualmachine"></span> </a>仮想マシンの作成方法
 
-このチュートリアルでは、管理ポータルの **[ギャラリーから]** を使用してカスタム仮想マシンを作成する方法について説明します。この方法には、仮想マシンを作成するときにこれを構成するための **簡易作成**方法より多くのオプションが用意されています。
+このセクションでは、管理ポータルのオプションの **[ギャラリーから]** を使用して仮想マシンを作成する方法について説明します。このオプションは、**[簡易作成]** オプションよりも多数の構成の選択肢があります。たとえば、仮想マシンを仮想ネットワークに参加させる場合、**[ギャラリーから]** オプションを使用する必要があります。
 
+[WACOM.INCLUDE [virtual-machines-create-WindowsVM][virtual-machines-create-WindowsVM]]
 
-1. サブスクリプションにサインインし、Azure の[管理ポータル](http://manage.windowsazure.com)を使用します。サブスクリプションがない場合でも、[無料評価版](http://go.microsoft.com/fwlink/p/?LinkID=23435)にサインアップできます。
+## <span id="logon"></span> </a>仮想マシンを作成後、ログオンする方法
 
-2. コマンド バーで、**[新規]** をクリックします。
+このセクションでは、仮想マシンをログオンする方法について説明します。これによって、仮想マシン上で実行する設定とアプリケーションを管理できます。
 
-3. **[Virtual Machine]**、**[ギャラリーから]** の順にクリックします。
-	
-4. **[イメージの選択]** から、**[Windows Server 2012 R2 Datacenter]** を選択します。(利用できるイメージは使用しているサブスクリプションによって異なる場合があります)。矢印をクリックして続行します。
-	
-5. 複数のバージョンのイメージが利用できる場合、**[バージョンのリリース日]** で、使用するバージョンを選択します。
+1.  [Azure 管理ポータル][Azure 管理ポータル]にサインインします。
 
-6. **[Virtual Machine 名]** ボックスに、仮想マシンに使用する名前を入力します。この仮想マシンの場合は、「**MyTestVM1**」と入力します。
+2.  **[仮想マシン]** をクリックし、次に **[MyTestVM]** 仮想マシンを選択します。
 
-7. **[サイズ]** ボックスで、仮想マシンのサイズを選択します。選択するサイズは、アプリケーションの実行に必要なコアの数に応じて変わります。この仮想マシンの場合は、利用可能な最小サイズを選択します。
+    ![Select MyTestVM][Select MyTestVM]
 
-8. **[新しいユーザー名]** に、サーバーの管理に使用する管理アカウントの名前を入力します。この仮想マシンの場合は、「**MyTestVM1Admin**」と入力します。
+3.  コマンド バーで、**[接続]** をクリックします。
 
-9. **[新しいパスワード]** ボックスに、仮想マシンの管理アカウントの強力なパスワードを入力します。**[パスワードの確認]** に、パスワードを再度入力します。矢印をクリックして続行します。
+    ![MyTestVM に接続する][MyTestVM に接続する]
 
-10. クラウド サービスに複数の仮想マシンをまとめて配置して信頼性の高いアプリケーションを実現することもできますが、このチュートリアルでは仮想マシンを 1 台だけ作成します。そのためには、**[新しいクラウド サービスの作成]** を選択します。
+4.  **[開く]** をクリックして、仮想マシン用に自動的に作成されたリモート デスクトップ プロトコル ファイルを使用します。
 
-11. **[Cloud Service DNS 名]** に DNS 名を入力します。DNS 名の長さは 3 ～ 24 文字で、小文字と数字を使用できます。この名前は、クラウド サービスを介して仮想マシンにアクセスするときに使用する URI の一部になります。この仮想マシンの場合は、「**MyService1**」と入力します。
+    ![rdp ファイルを開く][rdp ファイルを開く]
 
-12. **[リージョン]/[アフィニティ グループ]/[Virtual Network]** で、仮想マシンを含めるリージョンを選択します。
+5.  **[接続]** をクリックします。
 
-13. 仮想マシンを使用する VHD を保存するために、既定の **[自動的に生成されたストレージ アカウントを使用]** をそのまま使用します。
+    ![接続の続行][接続の続行]
 
-14. **[可用性セット]** では、このチュートリアルの目的に合わせて、既定の設定である **[なし]** を使用します。矢印をクリックして続行します。
+6.  仮想マシンの作成時に指定したユーザー名とパスワードを入力し、**[OK]** をクリックします。
 
-15. **[VM エージェント]** では、VM エージェントをインストールするかどうかを決定します。このエージェントには、仮想マシンの操作に役立つ拡張機能をインストールするための環境が用意されています。詳細については、[拡張機能の使用に関するページ](http://go.microsoft.com/FWLink/p/?LinkID=390493)を参照してください。
- 
-16. **[エンドポイント]** で、リモート デスクトップや Windows PowerShell リモート処理などを使用した仮想マシンへの接続を許可するために作成される新しいエンドポイントを確認します。ここでエンドポイントを追加したり、後でエンドポイントを作成することもできます。後でエンドポイントを作成する手順については、「[How to Set Up Communication with a Virtual Machine (仮想マシンとの通信をセットアップする方法)](http://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/setup-endpoints/)」を参照してください。
+7.  **[はい]** をクリックして、目的の仮想マシンであることを確認します。
 
-17. チェック マークをクリックして、仮想マシンを作成します。
-    
-	仮想マシンとクラウド サービスが作成されると、管理ポータルでは、**[Virtual Machines]** の下に新しい仮想マシンが表示され、**[Cloud Services]** の下にクラウド サービスが表示されます。仮想マシンとクラウド サービスはどちらも自動的に開始されます。
+    ![目的の仮想マシンであることを確認][目的の仮想マシンであることを確認]
 
+    これで仮想マシンをオフィス内のサーバーとまったく同様に扱うことができます。
 
-## <a id="logon"> </a>仮想マシンを作成後、ログオンする方法##
+## <span id="attachdisk"></span> </a>新しい仮想マシンにデータ ディスクを接続する方法
 
-作成した仮想マシンにログオンして、仮想マシンの設定と、仮想マシン上で実行されるアプリケーションの両方を管理できます。
+このセクションでは、空のデータ ディスクを仮想マシンに接続する方法について説明します。空のディスクおよび既存のディスクの接続の詳細については、「データ ディスクを Virtual Machine に接続する方法」(<http://www.windowsazure.com/ja-jp/documentation/articles/storage-windows-attach-disk/>) を参照してください。
 
-1. Azure [管理ポータル](http://manage.windowsazure.com)にサインインします。
+1.  [Azure 管理ポータル][Azure 管理ポータル]にサインインします。
 
-2. **[Virtual Machines]** をクリックし、**[MyTestVM1]** 仮想マシンを選択します。
+2.  **[仮想マシン]** をクリックし、次に **[MyTestVM]** 仮想マシンを選択します。
 
-3. コマンド バーで、**[接続]** をクリックします。
+    ![Select MyTestVM][Select MyTestVM]
 
-4. **[開く]** をクリックして、仮想マシン用に自動的に作成されたリモート デスクトップ プロトコル ファイルを使用します。
+3.  最初にクイック スタート ページが表示される場合があります。その場合は、上部にある **[ダッシュボード]** を選択します。
 
-5. **[接続]** をクリックします。
+    ![Select Dashboard][Select Dashboard]
 
-	![接続の続行](./media/CreateVirtualMachineWindowsTutorial/connectpublisher.png)
+4.  コマンド バーで、**[ディスクの接続]** をクリックし、表示される **[空のディスクの接続]** をクリックします。
 
-6. 仮想マシンの作成時に指定したユーザー名とパスワードを入力し、**[OK]** をクリックします。
+    ![Select Attach from the command bar][Select Attach from the command bar]
 
-7. **[はい]** をクリックして、目的の仮想マシンであることを確認します。
+5.  **[仮想マシン名]**、**[ストレージの場所]**、**[ファイル名]**、**[ホスト キャッシュの設定]** の値は既に定義されています。必要なのは、ディスクのサイズを入力することだけです。**[サイズ]** ボックスに「**5**」と入力します。次にチェック マークをクリックして、仮想マシンに空のデータ ディスクを接続します。
 
-	![目的の仮想マシンであることを確認](./media/CreateVirtualMachineWindowsTutorial/connectverify.png)
+    ![Specify the size of the empty disk][Specify the size of the empty disk]
 
-	これで仮想マシンをオフィス内のサーバーとまったく同様に扱うことができます。
+    > [WACOM.NOTE] ディスクはすべて、VHD ファイルから Windows Azure のストレージに作成されます。ストレージに追加する VHD ファイルの名前は **[ファイル名]** で指定できますが、ディスクの名前は Azure によって自動的に生成されます。
 
-## <a id="attachdisk"> </a>新しい仮想マシンにデータ ディスクを接続する方法##
+6.  ダッシュボードに戻り、空のデータ ディスクが仮想マシンに正常に接続されたことを確認します。空のディスクは 2 番目のディスクとして **[ディスク]** 一覧に OS ディスクと共に表示されます。
 
-アプリケーションによってはデータの保存が必要になる場合があります。その場合は、仮想マシンにデータ ディスクを接続します。最も簡単な方法は、仮想マシンに空のデータ ディスクを接続することです。
+    ![空のディスクの接続][空のディスクの接続]
 
-1. Azure [管理ポータル](http://manage.windowsazure.com)にサインインします。
+    仮想マシンにデータ ディスクを接続した後も、ディスクはオフラインで初期化されていません。データ ディスクを使ってデータを保存する前に、仮想マシンにログオンして、ディスクを初期化する必要があります。
 
-2. **[Virtual Machines]** をクリックし、**[MyTestVM1]** 仮想マシンを選択します。
+7.  仮想マシンに接続するには、前のセクション「[仮想マシンを作成後、ログオンする方法][仮想マシンを作成後、ログオンする方法]」(\#logon) の手順を使用します。
 
-3. コマンド バーで、**[ディスクの接続]**、**[空のディスクの接続]** の順にクリックします。
+8.  仮想マシンにログオンした後、**サーバー マネージャー**を開きます。左側のウィンドウで、**[ファイル サービスと記憶域サービス]** を選択します。
 
-	**[空のディスクの接続]** ダイアログ ボックスが表示されます。
+    ![Expand File and Storage Services in Server Manager][Expand File and Storage Services in Server Manager]
 
-	> [WACOM.NOTE] クイック スタート ページが、ダッシュボードおよびコマンド バーの代わりに表示される場合があります。その場合は、上部にある **[ダッシュボード]** をクリックします。
+9.  展開したメニューの **[ディスク]** を選択します。
 
-4. **[Virtual Machine 名]**、**[ストレージの場所]**、**[ファイル名]**、**[ホスト キャッシュの設定]** の値は既に定義されています。必要なのは、ディスクのサイズを入力することだけです。**[サイズ]** ボックスに「**5**」と入力します。
+    ![Expand File and Storage Services in Server Manager][1]
 
-	**注:** ディスクはすべて、VHD ファイルから Azure のストレージに作成されます。ストレージに追加する VHD ファイルの名前は指定できますが、ディスクの名前は Azure によって自動的に生成されます。
+10. **[ディスク]** セクションには、一覧の disk 0、disk 1、disk 2 の 3 つのディスクがあります。disk 0 は OS ディスクで、disk 1 は一時的なリソース ディスク (データ ストレージ用には使用できない) です。disk 2 は仮想マシンに接続したデータ ディスクです。以前に指定したように、データ ディスクは 5 GB の容量があります。disk 2 を右クリックし、**[初期化]** を選択します。
 
-5. チェック マークをクリックして、仮想マシンにデータ ディスクを接続します。
+    ![Start initialization][Start initialization]
 
-6. 仮想マシンの名前をクリックします。ここでダッシュボードが表示されるので、データ ディスクが仮想マシンに正しく接続されたか確認できます
+11. **[はい]** をクリックして初期化処理を開始します。
 
-	この仮想マシンには、2 つのディスクがあります。接続したディスクは、**ディスク** テーブルに表示されます。
+    ![Continue initialization][Continue initialization]
 
-	![空のディスクの接続](./media/CreateVirtualMachineWindowsTutorial/attachemptysuccess.png)
+12. もう一度、disk 2 を右クリックし、**[ボリューム]** を選択します。
 
-	仮想マシンにデータ ディスクを接続した後も、ディスクはオフラインで初期化されていません。データ ディスクを使ってデータを保存する前に、仮想マシンにログオンして、ディスクを初期化する必要があります。
+    ![Create the volume][Create the volume]
 
-7. 仮想マシンに接続するには、前のセクション「**仮想マシンを作成後、ログオンする方法**」の手順を使用します。
+13. 提供される既定の値を使用してウィザードを完了します。ウィザードを終了すると、新しいボリュームが **[ボリューム]** セクションに一覧表示されます。
 
-8. 仮想マシンにログオンした後、**サーバー マネージャー**を開きます。左のウィンドウで **[Storage]** を展開し、**[ディスクの管理]** をクリックします。
+    ![Create the volume][2]
 
-	![サーバー マネージャーでディスクを初期化](./media/CreateVirtualMachineWindowsTutorial/servermanager.png)
+    これでディスクがオンラインになり、新しいドライブ文字が使用できるようになりました。
 
-9. **[ディスク 2]** を右クリックして、**[ディスクの初期化]** をクリックします。
-
-	![初期化の開始](./media/CreateVirtualMachineWindowsTutorial/initializedisk.png)
-
-10. **[OK]** をクリックして初期化処理を開始します。
-
-11. ディスク 2 のスペース割り当て領域を右クリックして、**[新しいシンプル ボリューム]** をクリックし、既定値を使ってウィザードを終了します。
-
-	![ボリュームの作成](./media/CreateVirtualMachineWindowsTutorial/initializediskvolume.png)
-
-	これでディスクがオンラインになり、新しいドライブ文字が使用できるようになりました。
-
-	![初期化の成功](./media/CreateVirtualMachineWindowsTutorial/initializesuccess.png)
-
-
-##次のステップ
+## 次のステップ
 
 Azure での Windows 仮想マシンの構成に関する詳細については、次の記事を参照してください。
 
--[How to Connect Virtual Machines in a Cloud Service (Cloud Service 内の Virtual Machines を接続する方法)](http://www.windowsazure.com/ja-jp/documentation/articles/cloud-services-connect-virtual-machine/)
+[クラウド サービス内の仮想マシンを相互に接続する方法][クラウド サービス内の仮想マシンを相互に接続する方法]
 
--[Manage the Availability of Virtual Machines (Virtual Machines の可用性管理)](http://www.windowsazure.com/ja-jp/documentation/articles/manage-availability-virtual-machines/)
+[Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード][Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード]
 
-[Azure での仮想マシンについて]: #virtualmachine
-[仮想マシンの作成方法]: #custommachine
-[仮想マシンを作成後、ログオンする方法]: #logon
-[新しい仮想マシンにデータ ディスクを接続する方法]: #attachdisk
-[仮想マシン間の通信をセットアップする方法]: #endpoints
+[データ ディスクを Virtual Machine に接続する方法][データ ディスクを Virtual Machine に接続する方法]
 
+[仮想マシンの可用性管理][仮想マシンの可用性管理]
+
+  [Azure アカウントの作成に関するページ]: http://www.windowsazure.com/ja-jp/develop/php/tutorials/create-a-windows-azure-account/
+  [仮想マシンの作成方法]: #createvirtualmachine
+  [仮想マシンを作成後、ログオンする方法]: #logon
+  [新しい仮想マシンにデータ ディスクを接続する方法]: #attachdisk
+  [仮想マシン]: http://go.microsoft.com/fwlink/p/?LinkID=271224
+  [virtual-machines-create-WindowsVM]: ../includes/virtual-machines-create-WindowsVM.md
+  [Azure 管理ポータル]: http://manage.windowsazure.com
+  [Select MyTestVM]: ./media/CreateVirtualMachineWindowsTutorial/selectvm.png
+  [MyTestVM に接続する]: ./media/CreateVirtualMachineWindowsTutorial/commandbarconnect.png
+  [rdp ファイルを開く]: ./media/CreateVirtualMachineWindowsTutorial/openrdp.png
+  [接続の続行]: ./media/CreateVirtualMachineWindowsTutorial/connectrdc.png
+  [目的の仮想マシンであることを確認]: ./media/CreateVirtualMachineWindowsTutorial/certificate.png
+  [Select Dashboard]: ./media/CreateVirtualMachineWindowsTutorial/dashboard.png
+  [Select Attach from the command bar]: ./media/CreateVirtualMachineWindowsTutorial/commandbarattach.png
+  [Specify the size of the empty disk]: ./media/CreateVirtualMachineWindowsTutorial/emptydisksize.png
+  [空のディスクの接続]: ./media/CreateVirtualMachineWindowsTutorial/disklistwithdatadisk.png
+  [Expand File and Storage Services in Server Manager]: ./media/CreateVirtualMachineWindowsTutorial/fileandstorageservices.png
+  [1]: ./media/CreateVirtualMachineWindowsTutorial/selectdisks.png
+  [Start initialization]: ./media/CreateVirtualMachineWindowsTutorial/initializedisk.png
+  [Continue initialization]: ./media/CreateVirtualMachineWindowsTutorial/yesinitialize.png
+  [Create the volume]: ./media/CreateVirtualMachineWindowsTutorial/initializediskvolume.png
+  [2]: ./media/CreateVirtualMachineWindowsTutorial/newvolumecreated.png
+  [クラウド サービス内の仮想マシンを相互に接続する方法]: http://www.windowsazure.com/ja-jp/documentation/articles/cloud-services-connect-virtual-machine/
+  [Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード]: http://www.windowsazure.com/ja-jp/documentation/articles/virtual-machines-create-upload-vhd-windows-server/
+  [データ ディスクを Virtual Machine に接続する方法]: http://www.windowsazure.com/ja-jp/documentation/articles/storage-windows-attach-disk/
+  [仮想マシンの可用性管理]: http://www.windowsazure.com/ja-jp/documentation/articles/manage-availability-virtual-machines/

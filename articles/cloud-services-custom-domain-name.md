@@ -1,7 +1,7 @@
-<properties linkid="dev-net-commons-tasks-custom-dns" urlDisplayName="カスタム DNS" pageTitle="カスタム ドメイン名の構成 - Azure" metaKeywords="DNS Azure, Azure カスタム ドメイン, .NET DNS Azure, .NET Azure カスタム ドメイン, C# DNS Azure, C# Azure カスタム ドメイン, VB DNS Azure, VB Azure カスタム ドメイン" description="DNS 設定を構成して、カスタム ドメインで Azure のアプリケーションやデータを公開する方法について説明します。" metaCanonical="" services="cloud-services" documentationCenter=".NET" title="" authors=""  solutions="" writer="" manager="" editor=""  />
+<properties linkid="dev-net-commons-tasks-custom-dns" urlDisplayName="Custom DNS" pageTitle="Configure a custom domain name - Azure" metaKeywords="DNS Azure, Azure custom domain, .NET DNS Azure, .NET Azure custom domain, C# DNS Azure, C# Azure custom domain, VB DNS Azure, VB Azure custom domain" description="Learn how to expose your Azure application or data on a custom domain by configuring DNS settings." metaCanonical="" services="cloud-services" documentationCenter=".NET" title="" authors="timlt" solutions="" manager="timlt" editor="" />
 
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="timlt"></tags>
 
+[WACOM.INCLUDE [custom-dns][custom-dns]]
 
-
-[WACOM.INCLUDE [custom-dns](../includes/custom-dns.md)]
-
+  [custom-dns]: ../includes/custom-dns.md

@@ -1,56 +1,47 @@
-<properties pageTitle="ページングを使用したモバイル サービス クエリの改善 (Windows Store) | モバイル デベロッパー センター" metaKeywords="" description="ページングを使用して、モバイル サービスから Windows ストア アプリケーションに返されるデータの量を管理する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="ページングを使用したモバイル サービス クエリの改善" authors="glenga" solutions="" manager="" editor="" />
+<properties pageTitle="Refine Mobile Services queries with paging (Windows Store) | Mobile Dev Center" metaKeywords="" description="Learn how to use paging to manage the amount of data returned to your Windows Store app from Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="Refine Mobile Services queries with paging" authors="glenga" solutions="" manager="" editor="" />
 
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
 
 # ページングを使用したモバイル サービス クエリの改善
 
-> [AZURE.SELECTOR-LIST (プラットフォーム | バックエンド)]
-- [(Windows ストア C# | .NET)](mobile-services-dotnet-backend-windows-store-dotnet-add-paging-data.md)
-- [(Windows ストア C# | JavaScript)](mobile-services-windows-store-dotnet-add-paging-data.md)
-- [(Windows ストア JavaScript | .NET)](mobile-services-dotnet-backend-windows-store-javascript-add-paging-data.md)
-- [(Windows ストア JavaScript | JavaScript)](mobile-services-windows-store-javascript-add-paging-data.md)
-- [(Windows Phone | .NET)](mobile-services-dotnet-backend-windows-phone-add-paging-data)
-- [(Windows Phone | JavaScript)](mobile-services-windows-phone-add-paging-data)
-- [(iOS | JavaScript)](mobile-services-ios-add-paging-data)
-- [(Android | JavaScript)](mobile-services-android-add-paging-data)
-- [(HTML | .NET)](mobile-services-html-add-paging-data)
-- [(Xamarin iOS | .NET)](partner-xamarin-mobile-services-ios-add-paging-data)
-- [(Xamarin Android | .NET)](partner-xamarin-mobile-services-android-add-paging-data)
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-add-paging-data" title="Windows ストア C#" class="current">Windows ストア C#</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-add-paging-data" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-add-paging-data" title="Windows Phone" class="current">Windows Phone</a>
+<!--<a href="/ja-jp/documentation/articles/mobile-services-ios-add-paging-data" title="iOS">iOS</a><a href="/ja-jp/documentation/articles/mobile-services-android-add-paging-data" title="Android">Android</a>-->
+</div>
 
+<div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-add-paging-data" title=".NET バックエンド" class="current">.NET バックエンド</a> |  <a href="/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-add-paging-data"  title="JavaScript バックエンド">JavaScript バックエンド</a></div>
 
 このトピックでは、ページングを使用して、Azure モバイル サービスから Windows ストア アプリケーションに返されるデータの量を管理する方法について説明します。このチュートリアルでは、クライアントで **Take** および **Skip** クエリ メソッドを使用して、データの特定の "ページ" を要求します。
 
->[WACOM.NOTE]モバイル デバイス クライアントでデータがオーバーフローしないように、モバイル サービスでは、自動ページ制限を実装しています。既定では、1 つの応答で最大 50 項目に設定されます。ページ サイズを指定することで、1 つの応答で 1,000 項目まで明示的に要求できます。
+> [WACOM.NOTE] モバイル デバイス クライアントでデータがオーバーフローしないように、モバイル サービスでは、自動ページ制限を実装しています。既定では、1 つの応答で最大 50 項目に設定されます。ページ サイズを指定することで、1 つの応答で 1,000 項目まで明示的に要求できます。
 
-このチュートリアルは、前の[データの使用]に関するチュートリアルの手順およびサンプル アプリケーションを基に作成されています。このチュートリアルを開始する前に、少なくとも、データ操作シリーズの最初のチュートリアル (「[データの使用]」) を完了している必要があります。
+このチュートリアルは、前の[データの使用][データの使用]に関するチュートリアルの手順およびサンプル アプリケーションを基に作成されています。このチュートリアルを開始する前に、少なくとも、データ操作シリーズの最初のチュートリアル (「[データの使用][データの使用]」) を完了している必要があります。
 
-[WACOM.INCLUDE [mobile-services-windows-dotnet-paging](../includes/mobile-services-windows-dotnet-paging.md)]
+[WACOM.INCLUDE [mobile-services-windows-dotnet-paging][mobile-services-windows-dotnet-paging]]
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"> </a> 次のステップ
 
 これで、モバイル サービスのデータを操作するための基本について説明する一連のチュートリアルは終了です。次のモバイル サービスのトピックの詳細を確認することをお勧めします。
 
-* [認証の使用]
-  <br/>Windows アカウントを使用してアプリケーションのユーザーを認証する方法について説明します。
+-   [認証の使用][認証の使用]
+    Windows アカウントを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [プッシュ通知の使用]
-  <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
-  
-* [モバイル サービス .NET の使用方法の概念リファレンス]
-  <br/>.NET でモバイル サービスを使用する方法について説明します
-  
-<!-- Anchors. -->
+-   [プッシュ通知の使用][プッシュ通知の使用]
+    アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-[次のステップ]:#next-steps
+-   [モバイル サービス .NET の使用方法の概念リファレンス][モバイル サービス .NET の使用方法の概念リファレンス]
+    .NET で Mobile Services を使用する方法について説明します。
 
-<!-- Images. -->
-
-
+<!-- Anchors. --> 
+<!-- Images. --> 
 <!-- URLs. -->
-[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-get-started/
-[データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/
-[認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/
-[プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/
 
-[管理ポータル]: https://manage.windowsazure.com/
-[モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library
-
+  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-add-paging-data "Windows ストア C#"
+  [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-add-paging-data "Windows ストア JavaScript"
+  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-add-paging-data "Windows Phone"
+  [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-add-paging-data ".NET バックエンド"
+  [JavaScript バックエンド]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-add-paging-data "JavaScript バックエンド"
+  [データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/
+  [mobile-services-windows-dotnet-paging]: ../includes/mobile-services-windows-dotnet-paging.md
+  [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/
+  [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/
+  [モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library

@@ -81,7 +81,7 @@ API Management サービスをバックアップするには、次の HTTP 要�
 -   復元先のサービスの**層**は、復元されるバックアップ サービスの層と**一致しなければなりません**。
 -   復元処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われる**変更**は、**上書きされることがあります**。
 
-  [Azure リソース マネージャーの要求の認証]: http://msdn.microsoft.com/en-us/library/dn790557.aspx
+  [Azure リソース マネージャーの要求の認証]: http://msdn.microsoft.com/ja-jp/library/dn790557.aspx
   [API Management サービスのバックアップ]: #step1
   [API Management サービスの復元]: #step2
-  [Azure API Management REST API]: http://msdn.microsoft.com/en-us/library/azure/dn781421.aspx
+  [Azure API Management REST API]: http://msdn.microsoft.com/ja-jp/library/azure/dn781421.aspx

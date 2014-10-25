@@ -6,13 +6,13 @@
 
 ## <a name="webclient"></a>Web 利用状況分析を設定する
 
-まだ実行していない場合には、[ご使用の Web プロジェクトに Application Insights を追加][ご使用の Web プロジェクトに Application Insights を追加]してください。
+まだ実行していない場合には、[ご使用の Web プロジェクトに Application Insights を追加][start]してください。
 
 ## <a name="usage"></a>利用状況分析
 
 [アプリケーション概要] ブレードには、以下の利用状況タイルが表示されます。
 
-![][]
+![](./media/appinsights/appinsights-47usage.png)
 
 ### ブラウザーごとのセッション数
 
@@ -26,13 +26,13 @@
 
 [ページ ビュー] タイルをクリックして、詳細履歴を取得します。
 
-![][1]
+![](./media/appinsights/appinsights-49usage.png)
 
 [時間の範囲] をクリックして、最長で 7 日間の履歴を表示します。
 
 グラフをクリックし、表示可能な他のメトリックを表示します。
 
-![][2]
+![](./media/appinsights/appinsights-63usermetrics.png)
 
 ## ページ カウントのカスタマイズ
 
@@ -50,13 +50,13 @@
 
 [診断検索] ブレードで、[フィルター] を [ページ ビュー] に設定します。
 
-![][3]
+![](./media/appinsights/appinsights-51searchpageviews.png)
 
 いずれかのイベントをクリックして、詳細を表示します。
 
-> [WACOM.NOTE] [検索][検索]を使用する場合、単語全体が完全に一致しなければなりません。「Abou」と「bout」は「About」とは一致しませんが、「Abou\*」は一致します。検索語をワイルドカードで始めることもできません。たとえば、「\*bou」を検索しても「About」とは一致しません。
+> [WACOM.NOTE] [検索][diagnostic]を使用する場合、単語全体が完全に一致しなければなりません。「Abou」と「bout」は「About」とは一致しませんが、「Abou\*」は一致します。検索語をワイルドカードで始めることもできません。たとえば、「\*bou」を検索しても「About」とは一致しません。
 
-> [診断検索の詳細][検索]
+> [診断検索の詳細][diagnostic]
 
 ## 利用状況を追跡する
 
@@ -64,24 +64,24 @@
 
 ## 詳細情報
 
--   [Application Insights - 開始する][ご使用の Web プロジェクトに Application Insights を追加]
--   [ライブ Web サーバーを監視する][ライブ Web サーバーを監視する]
--   [Web アプリケーションのパフォーマンスを監視する][Web アプリケーションのパフォーマンスを監視する]
--   [診断ログを検索する][検索]
--   [Web テストで可用性を追跡する][Web テストで可用性を追跡する]
--   [利用状況を追跡する][利用状況を追跡する]
--   [Q & A およびトラブルシューティング][Q & A およびトラブルシューティング]
+-   [Application Insights - 開始する][start]
+-   [ライブ Web サーバーを監視する][redfield]
+-   [Web アプリケーションのパフォーマンスを監視する][perf]
+-   [診断ログを検索する][diagnostic]
+-   [Web テストで可用性を追跡する][availability]
+-   [利用状況を追跡する][usage]
+-   [Q & A およびトラブルシューティング][qna]
 
 <!--Link references-->
 
-  [ご使用の Web プロジェクトに Application Insights を追加]: ../app-insights-start-monitoring-app-health-usage/
+  [start]: ../app-insights-start-monitoring-app-health-usage/
   []: ./media/appinsights/appinsights-47usage.png
   [1]: ./media/appinsights/appinsights-49usage.png
   [2]: ./media/appinsights/appinsights-63usermetrics.png
   [3]: ./media/appinsights/appinsights-51searchpageviews.png
-  [検索]: ../app-insights-search-diagnostic-logs/
-  [ライブ Web サーバーを監視する]: ../app-insights-monitor-performance-live-website-now/
-  [Web アプリケーションのパフォーマンスを監視する]: ../app-insights-web-monitor-performance/
-  [Web テストで可用性を追跡する]: ../app-insights-monitor-web-app-availability/
-  [利用状況を追跡する]: ../app-insights-web-track-usage/
-  [Q & A およびトラブルシューティング]: ../app-insights-troubleshoot-faq/
+  [diagnostic]: ../app-insights-search-diagnostic-logs/
+  [redfield]: ../app-insights-monitor-performance-live-website-now/
+  [perf]: ../app-insights-web-monitor-performance/
+  [availability]: ../app-insights-monitor-web-app-availability/
+  [usage]: ../app-insights-web-track-usage/
+  [qna]: ../app-insights-troubleshoot-faq/

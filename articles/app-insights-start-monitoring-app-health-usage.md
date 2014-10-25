@@ -14,24 +14,24 @@ Application Insights を使用すると、ライブ アプリケーションの�
 
 構成は非常に簡単で、数分で結果を確認できます。現在、(サーバーまたは Azure 上の) ASP.NET Web アプリケーションをサポートしています。
 
-[Microsoft Azure][Microsoft Azure] (無料のお試し期間があります) のアカウントが必要になります。
+[Microsoft Azure](http://azure.com) (無料のお試し期間があります) のアカウントが必要になります。
 
 Application Insights を開始するには、次に示す 2 とおりの方法があります。
 
--   (推奨) [Visual Studio のプロジェクトに Application Insights を追加][Visual Studio のプロジェクトに Application Insights を追加]して、アプリケーションのパフォーマンスと利用状況を監視します。
--   [再デプロイしないでサーバーにエージェントをインストールする][再デプロイしないでサーバーにエージェントをインストールする] - ライブ Web サイトを監視します。その際、再デプロイすることも、ソース コードに変更を加えることもありません。そうすることで、パフォーマンスと例外を監視できます。利用状況の監視機能は後で追加できます。
+-   (推奨) [Visual Studio のプロジェクトに Application Insights を追加](#add)して、アプリケーションのパフォーマンスと利用状況を監視します。
+-   [再デプロイしないでサーバーにエージェントをインストールする][redfield] - ライブ Web サイトを監視します。その際、再デプロイすることも、ソース コードに変更を加えることもありません。そうすることで、パフォーマンスと例外を監視できます。利用状況の監視機能は後で追加できます。
 
-> [WACOM.NOTE] Visual Studio Online には[旧バージョンの Application Insights][旧バージョンの Application Insights] があり、アプリケーションのより広い範囲の種類をサポートしています。それを Microsoft Azure の一部として徹底的に再構成しました。ここでは新しいバージョンについて取り上げます。
+> [WACOM.NOTE] Visual Studio Online には[旧バージョンの Application Insights](http://msdn.microsoft.com/ja-jp/library/dn481095.aspx) があり、アプリケーションのより広い範囲の種類をサポートしています。それを Microsoft Azure の一部として徹底的に再構成しました。ここでは新しいバージョンについて取り上げます。
 
 ## <a name="add"></a>プロジェクトに Application Insights を追加する
 
-[Visual Studio 2013 更新プログラム 3][Visual Studio 2013 更新プログラム 3] 以降が必要です。
+[Visual Studio 2013 更新プログラム 3](http://go.microsoft.com/fwlink/?linkid=397827&clcid=0x409) 以降が必要です。
 
 ### 新しいプロジェクトの場合
 
 Visual Studio 2013 に新しいプロジェクトを作成するとき、Application Insights が選択されていることを確認してください。
 
-![ASP.NET プロジェクトを作成する][ASP.NET プロジェクトを作成する]
+![ASP.NET プロジェクトを作成する](./media/appinsights/appinsights-01-vsnewp1.png)
 
 初めての場合には、Microsoft Azure プレビュー版にログインまたはサインインするように求められます (Visual Studio Online アカウントとは異なります)。
 
@@ -53,19 +53,19 @@ F5 を使用してアプリケーションを実行して、試します。別�
 
 Visual Studio で、受け取ったイベント数を確認できます。
 
-![][]
+![](./media/appinsights/appinsights-09eventcount.png)
 
 ### <a name="monitor"></a>3. モニター データを表示する
 
 プロジェクトから Application Insights を開きます。
 
-![プロジェクトを右クリックして Azure ポータルを開く][プロジェクトを右クリックして Azure ポータルを開く]
+![プロジェクトを右クリックして Azure ポータルを開く](./media/appinsights/appinsights-04-openPortal.png)
 
 **[アプリケーションの使用状況]** タイル内でデータを探します。最初、1 つまたは 2 つのポイントだけが表示されます。次に例を示します。
 
-![クリックしてより多くのデータを表示する][クリックしてより多くのデータを表示する]
+![クリックしてより多くのデータを表示する](./media/appinsights/appinsights-41firstHealth.png)
 
-いずれかのタイルをクリックして、詳細を表示します。レポート内の表示内容を変更できます。[アプリケーションの使用状況レポートの構成方法の詳細について参照してください。][アプリケーションの使用状況レポートの構成方法の詳細について参照してください。]
+いずれかのタイルをクリックして、詳細を表示します。レポート内の表示内容を変更できます。[アプリケーションの使用状況レポートの構成方法の詳細について参照してください。][perf]
 
 ### <a name="webclient"></a>4. Web 利用状況分析を設定する
 
@@ -79,17 +79,17 @@ JavaScript コードを、監視する Web ページにある \</head\> 終了�
 
 アプリケーションを再実行すると、データが **[利用状況分析]** に表示されます。
 
-![クリックしてより多くのデータを表示する][1]
+![クリックしてより多くのデータを表示する](./media/appinsights/appinsights-05-usageTiles.png)
 
-[グラフをクリックして、詳細を表示します。][アプリケーションの使用状況レポートの構成方法の詳細について参照してください。]
+[グラフをクリックして、詳細を表示します。][perf]
 
 ### <a name="deploy"></a>5. アプリケーションをデプロイする
 
 アプリケーションをデプロイし、データ累積を確認します。
 
-ライブ アプリケーションになった後、[Web テストを設定][Web テストを設定]し、引き続きライブ状態であることを確認します。
+ライブ アプリケーションになった後、[Web テストを設定][availability]し、引き続きライブ状態であることを確認します。
 
-![Application Insights におけるアプリケーション監視の例][Application Insights におけるアプリケーション監視の例]
+![Application Insights におけるアプリケーション監視の例](./media/appinsights/appinsights-00-appblade.png)
 
 ### ポータルでアプリケーションの名前を変更しますか
 
@@ -113,40 +113,31 @@ JavaScript コードを、監視する Web ページにある \</head\> 終了�
 
 ## <a name="next"></a>次のステップ
 
-[Web アプリケーションの利用状況を追跡する][Web アプリケーションの利用状況を追跡する]
+[Web アプリケーションの利用状況を追跡する][usage]
 
-[Web アプリケーションのパフォーマンスを監視する][アプリケーションの使用状況レポートの構成方法の詳細について参照してください。]
+[Web アプリケーションのパフォーマンスを監視する][perf]
 
-[診断ログを取得して検索する][診断ログを取得して検索する]
+[診断ログを取得して検索する][diagnostic]
 
-[トラブルシューティング][トラブルシューティング]
+[トラブルシューティング][qna]
 
 ## 詳細情報
 
--   [Application Insights - 開始する][Application Insights - 開始する]
--   [ライブ Web サーバーを監視する][再デプロイしないでサーバーにエージェントをインストールする]
--   [Web アプリケーションのパフォーマンスを監視する][アプリケーションの使用状況レポートの構成方法の詳細について参照してください。]
--   [診断ログを検索する][診断ログを取得して検索する]
--   [Web テストで可用性を追跡する][Web テストを設定]
--   [利用状況を追跡する][Web アプリケーションの利用状況を追跡する]
--   [Q & A およびトラブルシューティング][トラブルシューティング]
+-   [Application Insights - 開始する][start]
+-   [ライブ Web サーバーを監視する][redfield]
+-   [Web アプリケーションのパフォーマンスを監視する][perf]
+-   [診断ログを検索する][diagnostic]
+-   [Web テストで可用性を追跡する][availability]
+-   [利用状況を追跡する][usage]
+-   [Q & A およびトラブルシューティング][qna]
 
 <!--Link references-->
 
-  [Microsoft Azure]: http://azure.com
-  [Visual Studio のプロジェクトに Application Insights を追加]: #add
-  [再デプロイしないでサーバーにエージェントをインストールする]: ../app-insights-monitor-performance-live-website-now/
-  [旧バージョンの Application Insights]: http://msdn.microsoft.com/en-us/library/dn481095.aspx
-  [Visual Studio 2013 更新プログラム 3]: http://go.microsoft.com/fwlink/?linkid=397827&clcid=0x409
-  [ASP.NET プロジェクトを作成する]: ./media/appinsights/appinsights-01-vsnewp1.png
-  []: ./media/appinsights/appinsights-09eventcount.png
-  [プロジェクトを右クリックして Azure ポータルを開く]: ./media/appinsights/appinsights-04-openPortal.png
-  [クリックしてより多くのデータを表示する]: ./media/appinsights/appinsights-41firstHealth.png
-  [アプリケーションの使用状況レポートの構成方法の詳細について参照してください。]: ../app-insights-web-monitor-performance/
-  [1]: ./media/appinsights/appinsights-05-usageTiles.png
-  [Web テストを設定]: ../app-insights-monitor-web-app-availability/
-  [Application Insights におけるアプリケーション監視の例]: ./media/appinsights/appinsights-00-appblade.png
-  [Web アプリケーションの利用状況を追跡する]: ../app-insights-web-track-usage/
-  [診断ログを取得して検索する]: ../app-insights-search-diagnostic-logs/
-  [トラブルシューティング]: ../app-insights-troubleshoot-faq/
-  [Application Insights - 開始する]: ../app-insights-start-monitoring-app-health-usage/
+[start]: ../app-insights-start-monitoring-app-health-usage/
+[redfield]: ../app-insights-monitor-performance-live-website-now/
+[perf]: ../app-insights-web-monitor-performance/
+[diagnostic]: ../app-insights-search-diagnostic-logs/ 
+[availability]: ../app-insights-monitor-web-app-availability/
+[usage]: ../app-insights-web-track-usage/
+[qna]: ../app-insights-troubleshoot-faq/
+

@@ -4,7 +4,7 @@
 
 # モバイル サービスでのデータの使用
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-data][mobile-services-selector-get-started-data]]
+[WACOM.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
 
 このトピックでは、Azure のモバイル サービスを Windows ストア アプリのバックエンド データソースとして使用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションの Visual Studio 2013 プロジェクトをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合し、アプリケーションの実行時にデータに加えられた変更を表示します。
 
@@ -29,11 +29,11 @@
 
 ## <a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする
 
-[WACOM.INCLUDE [mobile-services-windows-universal-javascript-download-project][mobile-services-windows-universal-javascript-download-project]]
+[WACOM.INCLUDE [mobile-services-windows-universal-javascript-download-project](../includes/mobile-services-windows-universal-javascript-download-project.md)]
 
 ## <a name="create-service"></a>Visual Studio からの新しいモバイル サービスの作成
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service-vs2013][mobile-services-dotnet-backend-create-new-service-vs2013]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service-vs2013](../includes/mobile-services-dotnet-backend-create-new-service-vs2013.md)]
 
 1.  Solution Explorer で、**services\\mobileService\\scripts** サブフォルダーに移動し、service.js スクリプト ファイルを開き、次のような新しいグローバル変数があることを確認します。
 
@@ -57,27 +57,27 @@
 
 ## <a name="test-the-service-locally"></a>モバイル サービス プロジェクトをローカルにテストする
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service-api-documentation][mobile-services-dotnet-backend-test-local-service-api-documentation]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service-api-documentation](../includes/mobile-services-dotnet-backend-test-local-service-api-documentation.md)]
 
 ## <a name="update-app"></a>モバイル サービスを使用するためのアプリケーションの更新
 
 このセクションでは、ユニバーサル Windows アプリを更新してモバイル サービスをアプリケーションのバックエンド サービスとして使用します。変更する必要があるのは、GetStartedWithData.Shared プロジェクト フォルダーの default.js プロジェクト ファイルだけです。
 
-[WACOM.INCLUDE [mobile-services-windows-javascript-update-data-app][mobile-services-windows-javascript-update-data-app]]
+[WACOM.INCLUDE [mobile-services-windows-javascript-update-data-app](../includes/mobile-services-windows-javascript-update-data-app.md)]
 
 ## <a name="publish-mobile-service"></a>モバイル サービスを Azure に発行する
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service][mobile-services-dotnet-backend-publish-service]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
 
 ## <a name="test-azure-hosted"></a>Azure でホストされているモバイル サービスをテストする
 
 これで、Azure でホストされているモバイル サービスに対して両方のバージョンのユニバーサル Windows アプリをテストできます。
 
-[WACOM.INCLUDE [mobile-services-windows-universal-test-app][mobile-services-windows-universal-test-app]]
+[WACOM.INCLUDE [mobile-services-windows-universal-test-app](../includes/mobile-services-windows-universal-test-app.md)]
 
 ## <a name="view-stored-data"></a>SQL データベースに格納されているデータの表示
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-view-sql-data][mobile-services-dotnet-backend-view-sql-data]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-view-sql-data](../includes/mobile-services-dotnet-backend-view-sql-data.md)]
 
 これで、**データの使用**に関するチュートリアルはおしまいです。
 
@@ -112,7 +112,7 @@
   [モバイル サービスを Azure に発行する]: #publish-mobile-service
   [Azure でホストされるサービスに対するアプリのテスト]: #test-azure-hosted
   [SQL データベースに格納されているデータの表示]: #view-stored-data
-  [Azure の無料評価版サイト]: http://azure.microsoft.com/en-us/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-universal-javascript-get-started-data%2F
+  [Azure の無料評価版サイト]: http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-universal-javascript-get-started-data%2F
   [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
   [mobile-services-windows-universal-javascript-download-project]: ../includes/mobile-services-windows-universal-javascript-download-project.md
   [mobile-services-dotnet-backend-create-new-service-vs2013]: ../includes/mobile-services-dotnet-backend-create-new-service-vs2013.md
@@ -121,8 +121,8 @@
   [mobile-services-dotnet-backend-publish-service]: ../includes/mobile-services-dotnet-backend-publish-service.md
   [mobile-services-windows-universal-test-app]: ../includes/mobile-services-windows-universal-test-app.md
   [mobile-services-dotnet-backend-view-sql-data]: ../includes/mobile-services-dotnet-backend-view-sql-data.md
-  [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-js
-  [ページングを使用したモバイル サービス クエリの改善]: /en-us/develop/mobile/tutorials/add-paging-to-data-js
+  [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-js
+  [ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-js
   [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/
   [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push/
   [モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/documentation/articles/mobile-services-html-how-to-use-client-library/

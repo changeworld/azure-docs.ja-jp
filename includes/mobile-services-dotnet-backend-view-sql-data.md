@@ -14,4 +14,4 @@
 
   [サインインして SQL データベースを管理する]: ./media/mobile-services-dotnet-backend-view-sql-data/manage-sql-azure-database.png
   [SQL データベースに格納された項目をクエリする]: ./media/mobile-services-dotnet-backend-view-sql-data/sql-azure-query.png
-  [EntityData]: http://msdn.microsoft.com/en-us/library/microsoft.windowsazure.mobile.service.entitydata.aspx
+  [EntityData]: http://msdn.microsoft.com/ja-jp/library/microsoft.windowsazure.mobile.service.entitydata.aspx

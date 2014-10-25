@@ -1,4 +1,6 @@
-<properties linkid="develop-mobile-how-to-guides-register-for-google-authentication" urlDisplayName="Google 認証用の登録" pageTitle="Google 認証用の登録 - モバイル サービス" metaKeywords="Azure アプリケーションの登録, Azure 認証, Google アプリケーション認証, モバイル サービスの認証" description="Google を使用して Azure のモバイル サービスで認証できるようにアプリケーションを登録する方法について説明します。" metaCanonical="" services="" documentationCenter="" title="モバイル サービスでの Google ログイン用のアプリケーションの登録" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-how-to-guides-register-for-google-authentication" urlDisplayName="Register for Google Authentication" pageTitle="Register for Google authentication - Mobile Services" metaKeywords="Azure registering application, Azure authentication, Google application authenticate, authenticate mobile services" description="Learn how to register your apps to use Google to authenticate with Azure Mobile Services." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Register your apps for Google login with Mobile Services" authors="glenga" solutions="" manager="" editor="" />
+
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
 
 # モバイル サービスでの Google ログイン用のアプリケーションの登録
 
@@ -6,49 +8,39 @@
 
 <div class="dev-callout"><b>注</b>
 <p>このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> にアクセスしてください。</p>
-</div> 
+</div>
 
-1. <a href="http://go.microsoft.com/fwlink/p/?LinkId=268303" target="_blank">Google apis</a> Web サイトに移動し、Google アカウント資格情報でサインインして、**[Create project...]** をクリックします。
+1.  [Google apis][Google apis] Web サイトに移動して、Google アカウント資格情報でサインインします。**[プロジェクトの作成]** をクリックして**プロジェクト名**を入力し、**[作成]** をクリックします。
 
-   	![][1]   
+    ![][]
 
-2. **[API Access]** をクリックし、**[Create an OAuth 2.0 client ID]** をクリックします。
+2.  **[API & Auth]**、**[Credentials]**、**[Create new Client ID]** の順にクリックします。
 
-   	![][2]
+    ![][1]
 
-3. **[Branding Information]** で **[Product name]** に名前を入力し、**[Next]** をクリックします。
+3.  **[Web アプリケーション]** を選択して、**[Authorized JavaScript Origins]** にモバイル サービスの URL を入力し、**[Authorized Redirect URI]** で生成された URL をモバイル サービスの URL の末尾に */login/google* を付けたものと置き換えて、**[Create client ID]** をクリックします。
 
-   	![][3]
+    > [WACOM.NOTE] Visual Studio を使用して Azure に発行された .NET バックエンド モバイル サービスについては、モバイル サービスのリダイレクト URL は、そのモバイル サービスの URL の末尾に .NET サービスとしてパス *signin-google* を付加したものです。例：`https://todolist.azure-mobile.net/signin-google`.
 
-4. **[Client ID Settings]** で **[Web application]** を選択し、**[Your site or hostname]** にモバイル サービスの URL を入力して、**[more options]** をクリックします。**[Authorized Redirect URIs]** に生成された URL を、モバイル サービス URL の末尾にパス _/login/google_ を付加したものに置き換えて、**[Create client ID]** をクリックします。
+    ![][2]
 
-   	![][4]
+4.  **[Client ID for web applications]** で、**[クライアント ID]** と **[クライアント シークレット]** の値を書き留めます。
 
-	>[WACOM.NOTE]Visual Studio を使用して Azure に発行された .NET バックエンド モバイル サービスについては、リダイレクト URL はユーザーのモバイル サービスの URL の末尾にパス __Hlk384692799signin-google__Hlk384692799 .NET サービスとしてのユーザーのモバイル サービス (<code>https://todolist.azure-mobile.net/signin-google</code> など) を付加したものです。
-
-6. **[Client ID for web applications]** で、**[Client ID]** と **[Client secret]** の値を書き留めます。
-
-   	![][5]
+    ![][3]
 
     <div class="dev-callout"><b>セキュリティに関する注意</b>
-	<p>クライアント シークレットは、重要なセキュリティ資格情報です。このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。</p>
-    </div>
+<p>クライアント シークレットは、重要なセキュリティ資格情報です。このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。</p>
+</div>
 
 これで、クライアント ID とクライアント シークレットの値をモバイル サービスに渡すことにより、Google ログインを使用してアプリケーションで認証を使用する準備ができました。
 
-<!-- Anchors. -->
-
-<!-- Images. -->
-[1]: ./media/mobile-services-how-to-register-google-authentication/mobile-services-google-developers.png
-[2]: ./media/mobile-services-how-to-register-google-authentication/mobile-services-google-create-client.png
-[3]: ./media/mobile-services-how-to-register-google-authentication/mobile-services-google-create-client2.png
-[4]: ./media/mobile-services-how-to-register-google-authentication/mobile-services-google-create-client3.png
-[5]: ./media/mobile-services-how-to-register-google-authentication/mobile-services-google-app-details.png
-
+<!-- Anchors. --> 
+<!-- Images. --> 
 <!-- URLs. -->
 
-[Google API]: http://go.microsoft.com/fwlink/p/?LinkId=268303
-[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet/
-
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-
+  [accounts.google.com]: http://go.microsoft.com/fwlink/p/?LinkId=268302
+  [Google apis]: http://go.microsoft.com/fwlink/p/?LinkId=268303
+  []: ./media/mobile-services-how-to-register-google-authentication/mobile-services-google-new-project.png
+  [1]: ./media/mobile-services-how-to-register-google-authentication/mobile-services-google-create-client.png
+  [2]: ./media/mobile-services-how-to-register-google-authentication/mobile-services-google-create-client2.png
+  [3]: ./media/mobile-services-how-to-register-google-authentication/mobile-services-google-create-client3.png

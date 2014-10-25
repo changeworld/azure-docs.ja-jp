@@ -150,10 +150,10 @@ Windows PowerShell を使用した役割ベースのアクセス制御の管理�
 
   [Windows PowerShell]: /ja-jp/documentation/articles/powershell-rbac.md "Windows PowerShell"
   [クロスプラットフォーム CLI]: /ja-jp/documentation/articles/xplat-cli-rbac.md "クロスプラットフォーム CLI"
-  [Windows Management Framework 3.0]: http://www.microsoft.com/en-us/download/details.aspx?id=34595
-  [Windows Management Framework 4.0]: http://www.microsoft.com/en-us/download/details.aspx?id=40855
+  [Windows Management Framework 3.0]: http://www.microsoft.com/ja-jp/download/details.aspx?id=34595
+  [Windows Management Framework 4.0]: http://www.microsoft.com/ja-jp/download/details.aspx?id=40855
   [How to install and configure Windows Azure PowerShell (Windows Azure PowerShell のインストールおよび構成方法)]: http://www.windowsazure.com/ja-jp/documentation/articles/install-configure-powershell/
-  [Getting Started with Windows PowerShell (Windows PowerShell の概要)]: http://technet.microsoft.com/en-us/library/hh857337.aspx
+  [Getting Started with Windows PowerShell (Windows PowerShell の概要)]: http://technet.microsoft.com/ja-jp/library/hh857337.aspx
   [Azure PowerShell のインストールおよび構成方法]: http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/
   [リソース マネージャーでの Windows PowerShell の使用]: http://azure.microsoft.com/ja-jp/documentation/articles/powershell-azure-resource-manager/
   [サブスクリプションへの接続]: #connect

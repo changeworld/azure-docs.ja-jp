@@ -4,7 +4,7 @@
 
 # モバイル サービスでのデータの使用
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-data][mobile-services-selector-get-started-data]]
+[WACOM.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
 
 このトピックでは、Azure のモバイル サービスを使用してユニバーサル Windows アプリのデータを活用する方法について説明します。ユニバーサル Windows アプリ ソリューションには、Windows ストア 8.1 と Windows Phone ストア 8.1 の両方のアプリのプロジェクトと、共通の共有プロジェクトが含まれます。詳細については、「[Windows と Windows Phone を対象とするユニバーサル Windows アプリの構築][Windows と Windows Phone を対象とするユニバーサル Windows アプリの構築]」を参照してください。
 
@@ -30,11 +30,11 @@
 
 ## <a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする
 
-[WACOM.INCLUDE [mobile-services-windows-universal-dotnet-download-project][mobile-services-windows-universal-dotnet-download-project]]
+[WACOM.INCLUDE [mobile-services-windows-universal-dotnet-download-project](../includes/mobile-services-windows-universal-dotnet-download-project.md)]
 
 ## <a name="create-service"></a>Visual Studio からの新しいモバイル サービスの作成
 
-[WACOM.INCLUDE [mobile-services-create-new-service-vs2013][mobile-services-create-new-service-vs2013]]
+[WACOM.INCLUDE [mobile-services-create-new-service-vs2013](../includes/mobile-services-create-new-service-vs2013.md)]
 
 1.  Solution Explorer で、GetStartedWithData.Shared プロジェクト フォルダーの App.xaml.cs コード ファイルを開き、Windows ストア アプリの条件付きコンパイル ブロック内の **App** クラスに追加された新しい静的フィールドを確認します。これは、次のように表示されます。
 
@@ -54,19 +54,19 @@
 
 ## <a name="add-table"></a>新しいテーブルをモバイル サービスに追加する
 
-[WACOM.INCLUDE [mobile-services-create-new-table-vs2013][mobile-services-create-new-table-vs2013]]
+[WACOM.INCLUDE [mobile-services-create-new-table-vs2013](../includes/mobile-services-create-new-table-vs2013.md)]
 
 > [WACOM.NOTE] Id、\_\_createdAt、\_\_updatedAt、および \_\_version の列を持つ新しいテーブルが作成されます。動的スキーマが有効な場合、挿入または更新の要求に含まれる JSON オブジェクトに基づいて、モバイル サービスによって自動的に新しい列が生成されます。詳細については、「[動的スキーマ][動的スキーマ]」を参照してください。
 
 # <a name="update-app"></a>モバイル サービスを使用するためのアプリケーションの更新
 
-[WACOM.INCLUDE [mobile-services-windows-dotnet-update-data-app][mobile-services-windows-dotnet-update-data-app]]
+[WACOM.INCLUDE [mobile-services-windows-dotnet-update-data-app](../includes/mobile-services-windows-dotnet-update-data-app.md)]
 
 ## <a name="test-azure-hosted"></a>Azure でホストされているモバイル サービスをテストする
 
 これで、Azure でホストされているモバイル サービスに対して両方のバージョンのユニバーサル Windows アプリをテストできます。
 
-[WACOM.INCLUDE [mobile-services-windows-universal-test-app][mobile-services-windows-universal-test-app]]
+[WACOM.INCLUDE [mobile-services-windows-universal-test-app](../includes/mobile-services-windows-universal-test-app.md)]
 
 1.  [管理ポータル][管理ポータル]で、**[モバイル サービス]** をクリックし、対象のモバイル サービスをクリックします。
 
@@ -102,7 +102,7 @@
 
 
   [mobile-services-selector-get-started-data]: ../includes/mobile-services-selector-get-started-data.md
-  [Windows と Windows Phone を対象とするユニバーサル Windows アプリの構築]: http://msdn.microsoft.com/en-us/library/windows/apps/xaml/dn609832.aspx
+  [Windows と Windows Phone を対象とするユニバーサル Windows アプリの構築]: http://msdn.microsoft.com/ja-jp/library/windows/apps/xaml/dn609832.aspx
   [Windows Phone 向けデータの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data
   [このバージョン]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-data
   [Windows ストア アプリ プロジェクトのダウンロード]: #download-app
@@ -111,13 +111,13 @@
   [モバイル サービスを使用するためのアプリケーションの更新]: #update-app
   [モバイル サービスに対するアプリケーションのテスト]: #test-app
   [Azure 管理ポータルでのアップロード済みデータの表示]: #view-data
-  [Azure の無料評価版サイト]: http://azure.microsoft.com/en-us/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-javascript-backend-windows-universal-dotnet-get-started-data%2F
+  [Azure の無料評価版サイト]: http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-javascript-backend-windows-universal-dotnet-get-started-data%2F
   [Visual Studio Express 2013 for Windows]: https://go.microsoft.com/fwLink/p/?LinkID=257546
   [mobile-services-windows-universal-dotnet-download-project]: ../includes/mobile-services-windows-universal-dotnet-download-project.md
   [mobile-services-create-new-service-vs2013]: ../includes/mobile-services-create-new-service-vs2013.md
   [MobileServiceClient クラス]: http://go.microsoft.com/fwlink/p/?LinkId=302030
   [mobile-services-create-new-table-vs2013]: ../includes/mobile-services-create-new-table-vs2013.md
-  [動的スキーマ]: http://msdn.microsoft.com/en-us/library/windowsazure/jj193175.aspx
+  [動的スキーマ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193175.aspx
   [mobile-services-windows-dotnet-update-data-app]: ../includes/mobile-services-windows-dotnet-update-data-app.md
   [mobile-services-windows-universal-test-app]: ../includes/mobile-services-windows-universal-test-app.md
   [管理ポータル]: https://manage.windowsazure.com/

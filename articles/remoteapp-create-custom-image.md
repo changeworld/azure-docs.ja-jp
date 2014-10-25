@@ -106,7 +106,7 @@ Azure RemoteApp では、ユーザーと共有するすべてのプログラム�
 -   [RemoteApp のハイブリッド デプロイメントの作成方法][RemoteApp のハイブリッド デプロイメントの作成方法]
 -   [RemoteApp のクラウドのデプロイメントの作成方法][RemoteApp のクラウドのデプロイメントの作成方法]
 
-  []: http://azure.microsoft.com/en-us/services/remoteapp/
+  []: http://azure.microsoft.com/ja-jp/services/remoteapp/
   [Azure PowerShell]: http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/
   [RemoteApp のハイブリッド デプロイメントの作成方法]: http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-hybrid-deployment/
   [RemoteApp のクラウドのデプロイメントの作成方法]: http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-cloud-deployment/

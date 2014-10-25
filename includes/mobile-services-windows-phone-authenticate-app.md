@@ -1,5 +1,5 @@
-1. mainpage.xaml.cs プロジェクト ファイルを開き、次のコード スニペットを MainPage クラスに追加します。
-	
+1.  mainpage.xaml.cs プロジェクト ファイルを開き、次のコード スニペットを MainPage クラスに追加します。
+
         private MobileServiceUser user;
         private async System.Threading.Tasks.Task Authenticate()
         {
@@ -24,10 +24,12 @@
 
     これにより、現在のユーザーを格納するためのメンバー変数と認証プロセスを処理するためのメソッドが作成されます。ユーザーは、Facebook ログインを使用して認証されます。
 
-    >[WACOM.NOTE]Facebook 以外の ID プロバイダーを使用している場合は、上の <strong>MobileServiceAuthenticationProvider</strong> の値をプロバイダーに対応する値に変更してください。</p>
-    </div>
+    > [WACOM.NOTE]Facebook 以外の ID プロバイダーを使用している場合は、上の **MobileServiceAuthenticationProvider** の値をプロバイダーに対応する値に変更してください。
+    >
+    > </div>
+    > </p>
 
-2. 既存の **OnNavigatedTo** メソッド オーバーライドを削除またはコメントアウトして、ページの **Loaded** イベントを処理する次のメソッドに置き換えます。
+2.  既存の **OnNavigatedTo** メソッド オーバーライドを削除またはコメントアウトして、ページの **Loaded** イベントを処理する次のメソッドに置き換えます。
 
         async void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
@@ -35,9 +37,9 @@
             RefreshTodoItems();
         }
 
-   	このメソッドでは、新しい **Authenticate** メソッドが呼び出されます。
+    このメソッドでは、新しい **Authenticate** メソッドが呼び出されます。
 
-3. MainPage コンストラクターを次のコードに置き換えます。
+3.  MainPage コンストラクターを次のコードに置き換えます。
 
         // Constructor
         public MainPage()
@@ -46,9 +48,10 @@
             this.Loaded += MainPage_Loaded;
         }
 
-   	このコンストラクターでは、Loaded イベントのハンドラーも登録されます。
-		
-4. F5 キーを押してアプリケーションを実行し、選択した ID プロバイダーでアプリケーションにサインインします。
+    このコンストラクターでは、Loaded イベントのハンドラーも登録されます。
 
-   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
+4.  F5 キーを押してアプリケーションを実行し、選択した ID プロバイダーでアプリケーションにサインインします。
+
+    ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
+
 

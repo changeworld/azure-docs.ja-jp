@@ -1,31 +1,33 @@
-<properties linkid="manage-linux-common-task-mysql-virtual-machine" urlDisplayName="MySQL のインストール" pageTitle="Azure 上の Linux 仮想マシンへの MySQL のインストール" metaKeywords="Azure vm OpenSUSE, Linux vm" description="OpenSUSE Linux を実行する Azure の仮想マシンを作成し、SSH または PuTTY を使用して MySQL をその仮想マシンにインストールする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure 上で OpenSUSE Linux を実行する仮想マシンへの MySQL のインストール" authors="" solutions="" manager="" editor="" />
+<properties linkid="manage-linux-common-task-mysql-virtual-machine" urlDisplayName="Install MySQL" pageTitle="Install MySQL on a Linux virtual machine in Azure" metaKeywords="Azure vm OpenSUSE, Linux vm" description="Learn how to create an Azure virtual machine with OpenSUSE Linux, and then use SSH or PuTTY to install MySQL." metaCanonical="" services="virtual-machines" documentationCenter="" title="Install MySQL on a virtual machine running OpenSUSE Linux in Azure" authors="timlt" solutions="" manager="timlt" editor="" />
 
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="timlt"></tags>
 
+# Azure 上で OpenSUSE Linux を実行する仮想マシンへの MySQL のインストール
 
-
-#Azure 上で OpenSUSE Linux を実行する仮想マシンへの MySQL のインストール
-
-[MySQL](http://www.mysql.com) は広く普及しているオープン ソースの SQL データベースです。[Azure の管理ポータル][AzurePreviewPortal]では、OpenSUSE Linux を実行する仮想マシンをイメージ ギャラリーから作成できます。この仮想マシンには、MySQL データベースをインストールして構成することができます。
+[MySQL][MySQL] は広く普及しているオープン ソースの SQL データベースです。[Azure の管理ポータル][Azure の管理ポータル]では、OpenSUSE Linux を実行する仮想マシンをイメージ ギャラリーから作成できます。この仮想マシンには、MySQL データベースをインストールして構成することができます。
 
 このチュートリアルでは、次のことを説明します。
 
-- 管理ポータルを使用してギャラリーから OpenSUSE Linux 仮想マシンを作成する方法。
+-   管理ポータルを使用してギャラリーから OpenSUSE Linux 仮想マシンを作成する方法。
 
-- SSH または PuTTY を使用して仮想マシンに接続する方法。
+-   SSH または PuTTY を使用して仮想マシンに接続する方法。
 
-- 仮想マシンに MySQL をインストールする方法。
+-   仮想マシンに MySQL をインストールする方法。
 
-##OpenSUSE Linux を実行する仮想マシンの作成
+## OpenSUSE Linux を実行する仮想マシンの作成
 
-[WACOM.INCLUDE [create-and-configure-opensuse-vm-in-portal](../includes/create-and-configure-opensuse-vm-in-portal.md)]
+[WACOM.INCLUDE [create-and-configure-opensuse-vm-in-portal][create-and-configure-opensuse-vm-in-portal]]
 
-##仮想マシンへの MySQL のインストールと実行
+## 仮想マシンへの MySQL のインストールと実行
 
-[WACOM.INCLUDE [install-and-run-mysql-on-opensuse-vm](../includes/install-and-run-mysql-on-opensuse-vm.md)]
+[WACOM.INCLUDE [install-and-run-mysql-on-opensuse-vm][install-and-run-mysql-on-opensuse-vm]]
 
-##まとめ
+## まとめ
 
-このチュートリアルでは、OpenSUSE Linux 仮想マシンを作成し、SSH または PuTTY を使用してその仮想マシンにリモート接続する方法について説明しました。Linux 仮想マシンに MySQL をインストールして構成する方法についても説明しました。MySQL の詳細については、[MySQL のドキュメント](http://dev.mysql.com/doc/)を参照してください。
+このチュートリアルでは、OpenSUSE Linux 仮想マシンを作成し、SSH または PuTTY を使用してその仮想マシンにリモート接続する方法について説明しました。Linux 仮想マシンに MySQL をインストールして構成する方法についても説明しました。MySQL の詳細については、[MySQL のドキュメント][MySQL のドキュメント]を参照してください。
 
-[AzurePreviewPortal]: http://manage.windowsazure.com
-
+  [MySQL]: http://www.mysql.com
+  [Azure の管理ポータル]: http://manage.windowsazure.com
+  [create-and-configure-opensuse-vm-in-portal]: ../includes/create-and-configure-opensuse-vm-in-portal.md
+  [install-and-run-mysql-on-opensuse-vm]: ../includes/install-and-run-mysql-on-opensuse-vm.md
+  [MySQL のドキュメント]: http://dev.mysql.com/doc/

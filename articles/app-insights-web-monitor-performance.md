@@ -6,22 +6,22 @@
 
 *Application Insights はプレビュー段階です。*
 
-アプリケーションが正常に実行されていること、および障害がすぐに検出されることを確認します。[Application Insights][Application Insights] はパフォーマンス上の問題や例外を通知し、問題の原因を把握して診断するのに役立ちます。
+アプリケーションが正常に実行されていること、および障害がすぐに検出されることを確認します。[Application Insights][start] はパフォーマンス上の問題や例外を通知し、問題の原因を把握して診断するのに役立ちます。
 
 Application Insights が監視できるのは、オンプレミスのマシンまたは仮想マシンでホストされている ASP.NET Web アプリケーション、および Microsoft Azure Websites です。
 
--   [パフォーマンス モニターを設定する][パフォーマンス モニターを設定する]
--   [データを表示する][データを表示する]
--   [どのような意味がありますか?][どのような意味がありますか?]
--   [問題を診断する][問題を診断する]
--   [次のステップ][次のステップ]
+-   [パフォーマンス モニターを設定する](#setup)
+-   [データを表示する](#view)
+-   [どのような意味がありますか?](#metrics)
+-   [問題を診断する](#diagnosis)
+-   [次のステップ](#next)
 
 ## <a name="setup"></a>パフォーマンス モニターを設定する
 
 プロジェクトに Application Insights を追加していない場合 (つまり、ApplicationInsights.config がない場合)、以下のいずれかの方法で開始します。
 
--   [Visual Studio のアプリケーション プロジェクトに Application Insights を追加する][Application Insights] - 推奨されている方法です。パッシブなパフォーマンス モニターに加え、診断ログを挿入したり、利用状況を追跡したりできます。
--   [ライブ Websites のパフォーマンスを監視する][ライブ Websites のパフォーマンスを監視する] - この場合、アプリケーション プロジェクトを更新したり、Web サイトを再デプロイしたりする必要はありません。
+-   [Visual Studio のアプリケーション プロジェクトに Application Insights を追加する][start] - 推奨されている方法です。パッシブなパフォーマンス モニターに加え、診断ログを挿入したり、利用状況を追跡したりできます。
+-   [ライブ Websites のパフォーマンスを監視する][redfield] - この場合、アプリケーション プロジェクトを更新したり、Web サイトを再デプロイしたりする必要はありません。
 
 ## <a name="view"></a>レポートを表示する
 
@@ -29,15 +29,15 @@ F5 を使用してアプリケーションを実行して、試します。別�
 
 Visual Studio で、受け取ったイベント数を確認できます。
 
-![][]
+![](./media/appinsights/appinsights-09eventcount.png)
 
 プロジェクトから Application Insights を開きます。
 
-![プロジェクトを右クリックして Azure ポータルを開く][プロジェクトを右クリックして Azure ポータルを開く]
+![プロジェクトを右クリックして Azure ポータルを開く](./media/appinsights/appinsights-04-openPortal.png)
 
 **[アプリケーションの使用状況]** タイル内でデータを探します。最初、1 つまたは 2 つのポイントだけが表示されます。次に例を示します。
 
-![クリックしてより多くのデータを表示する][クリックしてより多くのデータを表示する]
+![クリックしてより多くのデータを表示する](./media/appinsights/appinsights-41firstHealth.png)
 
 デバッグ モードで実行している場合、利用統計情報はパイプラインにより時間が短縮されるので、数秒でデータが表示されます。アプリケーションをデプロイすると、データ累積速度は遅くなります。
 
@@ -47,11 +47,11 @@ Visual Studio で、受け取ったイベント数を確認できます。
 
 いずれかのタイルをクリックして、詳細を表示したり、より長い期間の結果を表示したりします。たとえば、[要求] タイルをクリックして、次の時間範囲を選択します。
 
-![クリックしてより多くのデータを表示し、時間範囲を選択する][クリックしてより多くのデータを表示し、時間範囲を選択する]
+![クリックしてより多くのデータを表示し、時間範囲を選択する](./media/appinsights/appinsights-48metrics.png)
 
 グラフをクリックし、表示するメトリックを選択します。
 
-![グラフをクリックし、メトリックを選択する][グラフをクリックし、メトリックを選択する]
+![グラフをクリックし、メトリックを選択する](./media/appinsights/appinsights-61perfchoices.png)
 
 > [AZURE.NOTE] 利用可能なすべての選択項目を表示するには、**メトリックすべてのチェック ボックスをオフにしてください**。メトリックはグループに分けられ、グループ内のあるメンバーが選択されると、そのグループのメンバーのみが表示されます。
 
@@ -77,17 +77,17 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 タイルをクリックして、特定の URL の時間を取得します。
 
-![][1]
+![](./media/appinsights/appinsights-42reqs.png)
 
 ### 最も遅い要求
 
-![][2]
+![](./media/appinsights/appinsights-44slowest.png)
 
 パフォーマンス チューニングが必要となる可能性がある要求を示します。
 
 ### 失敗した要求
 
-![][3]
+![](./media/appinsights/appinsights-46failed.png)
 
 受信できない例外がスローされた要求の数。
 
@@ -99,7 +99,7 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 表示できる他のメトリックを確認するには、グラフをクリックし、すべてのメトリックを選択解除してすべてのメトリック セットを表示します。(i) をクリックし、各メトリック定義を表示します。
 
-![すべてのメトリックを選択解除し、全セットを表示する][すべてのメトリックを選択解除し、全セットを表示する]
+![すべてのメトリックを選択解除し、全セットを表示する](./media/appinsights/appinsights-62allchoices.png)
 
 いずれかのメトリックを選択すると、同じグラフ上に表示できない他のメトリックは非表示になります。
 
@@ -107,50 +107,37 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 パフォーマンス上の問題を検出して診断するためのいくつかのヒントを以下に記します。
 
--   [Web テスト][Web テスト]を設定し、Web サイトが停止したり、間違って応答したり、応答速度が低下したりする場合にアラートを送信するようにします。
+-   [Web テスト][availability]を設定し、Web サイトが停止したり、間違って応答したり、応答速度が低下したりする場合にアラートを送信するようにします。
 -   要求の数を他のメトリックと比較し、障害や応答速度の低下が負荷と関連しているかどうかを確認します。
--   コード内に[トレース ステートメントを挿入して、そうしたステートメントを検索する][トレース ステートメントを挿入して、そうしたステートメントを検索する]ことにより、問題の特定に役立てます。
+-   コード内に[トレース ステートメントを挿入して、そうしたステートメントを検索する][diagnostic]ことにより、問題の特定に役立てます。
 
 ## <a name="next"></a>次のステップ
 
-[Web テスト][Web テスト] - 世界中から定期的に、Web 要求をご使用のアプリケーションに送信します。
+[Web テスト][availability] - 世界中から定期的に、Web 要求をご使用のアプリケーションに送信します。
 
-[診断トレースを収集して検索する][トレース ステートメントを挿入して、そうしたステートメントを検索する] - トレース呼び出しを挿入し、結果を詳しく調べて問題を特定します。
+[診断トレースを収集して検索する][diagnostic] - トレース呼び出しを挿入し、結果を詳しく調べて問題を特定します。
 
-[利用状況を追跡する][利用状況を追跡する] - ご使用のアプリケーションをどれほどのユーザーが使用しているかを調べます。
+[利用状況を追跡する][usage] - ご使用のアプリケーションをどれほどのユーザーが使用しているかを調べます。
 
-[トラブルシューティング][トラブルシューティング] - および Q & A
+[トラブルシューティング][qna] - および Q & A
 
 ## 詳細情報
 
--   [Application Insights - 開始する][Application Insights]
--   [ライブ Web サーバーを監視する][ライブ Websites のパフォーマンスを監視する]
--   [Web アプリケーションのパフォーマンスを監視する][Web アプリケーションのパフォーマンスを監視する]
--   [診断ログを検索する][トレース ステートメントを挿入して、そうしたステートメントを検索する]
--   [Web テストで可用性を追跡する][Web テスト]
--   [利用状況を追跡する][利用状況を追跡する]
--   [Q & A およびトラブルシューティング][トラブルシューティング]
+-   [Application Insights - 開始する][start]
+-   [ライブ Web サーバーを監視する][redfield]
+-   [Web アプリケーションのパフォーマンスを監視する][perf]
+-   [診断ログを検索する][diagnostic]
+-   [Web テストで可用性を追跡する][availability]
+-   [利用状況を追跡する][usage]
+-   [Q & A およびトラブルシューティング][qna]
 
 <!--Link references-->
 
-  [Application Insights]: ../app-insights-start-monitoring-app-health-usage/
-  [パフォーマンス モニターを設定する]: #setup
-  [データを表示する]: #view
-  [どのような意味がありますか?]: #metrics
-  [問題を診断する]: #diagnosis
-  [次のステップ]: #next
-  [ライブ Websites のパフォーマンスを監視する]: ../app-insights-monitor-performance-live-website-now/
-  []: ./media/appinsights/appinsights-09eventcount.png
-  [プロジェクトを右クリックして Azure ポータルを開く]: ./media/appinsights/appinsights-04-openPortal.png
-  [クリックしてより多くのデータを表示する]: ./media/appinsights/appinsights-41firstHealth.png
-  [クリックしてより多くのデータを表示し、時間範囲を選択する]: ./media/appinsights/appinsights-48metrics.png
-  [グラフをクリックし、メトリックを選択する]: ./media/appinsights/appinsights-61perfchoices.png
-  [1]: ./media/appinsights/appinsights-42reqs.png
-  [2]: ./media/appinsights/appinsights-44slowest.png
-  [3]: ./media/appinsights/appinsights-46failed.png
-  [すべてのメトリックを選択解除し、全セットを表示する]: ./media/appinsights/appinsights-62allchoices.png
-  [Web テスト]: ../app-insights-monitor-web-app-availability/
-  [トレース ステートメントを挿入して、そうしたステートメントを検索する]: ../app-insights-search-diagnostic-logs/
-  [利用状況を追跡する]: ../app-insights-web-track-usage/
-  [トラブルシューティング]: ../app-insights-troubleshoot-faq/
-  [Web アプリケーションのパフォーマンスを監視する]: ../app-insights-web-monitor-performance/
+[start]: ../app-insights-start-monitoring-app-health-usage/
+[redfield]: ../app-insights-monitor-performance-live-website-now/
+[perf]: ../app-insights-web-monitor-performance/
+[diagnostic]: ../app-insights-search-diagnostic-logs/ 
+[availability]: ../app-insights-monitor-web-app-availability/
+[usage]: ../app-insights-web-track-usage/
+[qna]: ../app-insights-troubleshoot-faq/
+[webclient]: ../app-insights-start-monitoring-app-health-usage/#webclient

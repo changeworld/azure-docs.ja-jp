@@ -1,80 +1,68 @@
-<properties pageTitle="認証の使用 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="認証, FAcebook, GOogle, Twitter, Microsoft アカウント, ログイン" description="モバイル サービスを使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを介して Windows ストア アプリのユーザーを認証する方法について説明します。" metaCanonical="" services="mobile" documentationCenter="Mobile" title="モバイル サービスでの認証の使用" authors="Glenn Gailey" solutions="" manager="" editor="" />
+<properties pageTitle="Get started with authentication (Windows Store) | Mobile Dev Center" metaKeywords="authentication, FAcebook, Google, Twitter, Microsoft Account, login" description="Learn how to use Mobile Services to authenticate users of your Windows Store app through a variety of identity providers, including Google, Facebook, Twitter, and Microsoft." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with authentication in Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
+
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="09/18/2014" ms.author="glenga"></tags>
 
 # モバイル サービスでの認証の使用
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users" title="Windows ストア JavaScript" class="current">Windows ストア JavaScript</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-users" title="Windows Phone">Windows Phone</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users" title="iOS">iOS</a> <!--<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-users" title="Android">Android</a>-->
-</div>
+[WACOM.INCLUDE [mobile-services-selector-get-started-users][mobile-services-selector-get-started-users]]
 
-<div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/" title=".NET バックエンド" class="current">.NET バックエンド</a> | <a href="/ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-users/"  title="JavaScript バックエンド">JavaScript バックエンド</a></div>
+このトピックでは、Windows ストア アプリケーションから Azure モバイル サービスのユーザーを認証する方法を示します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
 
-このトピックでは、アプリケーションから Azure モバイル サービスのユーザーを認証する方法について説明します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
+> [WACOM.NOTE] モバイル サービス JavaScript クライアント ライブラリを使用する場合、現時点では Windows Phone Store 8.1 アプリで認証はサポートされません。JavaScript クライアントを使用するユニバーサル Windows アプリがある場合、現時点では Windows Phone でユーザーを認証できません。
 
 このチュートリアルでは、アプリケーションでの認証を有効にするための、次の基本的な手順について説明します。
 
-1. [アプリケーションを認証に登録し、モバイル サービスを構成する]
-2. [テーブルのアクセス許可を、認証されたユーザーだけに制限する]
-3. [アプリケーションに認証を追加する]
+1.  [アプリケーションを認証に登録し、モバイル サービスを構成する][アプリケーションを認証に登録し、モバイル サービスを構成する]
+2.  [テーブルのアクセス許可を、認証されたユーザーだけに制限する][テーブルのアクセス許可を、認証されたユーザーだけに制限する]
+3.  [アプリケーションに認証を追加する][アプリケーションに認証を追加する]
+4.  [クライアントに認証トークンを保存する][クライアントに認証トークンを保存する]
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。先にチュートリアル「[モバイル サービスの使用]」を完了している必要があります。
-
->[WACOM.NOTE]このチュートリアルでは、さまざまな ID プロバイダーを使用してユーザーを認証するためにモバイル サービスに用意されている基本的な方法を示します。この方法は構成が容易で、複数のプロバイダーをサポートしています。ただし、アプリケーションが開始されるたびに、ユーザーはログインする必要があります。Windows ストア アプリでシングル サインオンできるように Live Connect を使用するには、トピック「[Live Connect を使用した Windows ストア アプリへのシングル サインオン]」を参照してください。
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。先にチュートリアル「[モバイル サービスの使用][モバイル サービスの使用]」を完了している必要があります。
 
 ## <a name="register"></a>アプリケーションを認証に登録し、モバイル サービスを構成する
 
-[WACOM.INCLUDE [mobile-services-register-authentication](../includes/mobile-services-register-authentication.md)] 
+[WACOM.INCLUDE [mobile-services-register-authentication][mobile-services-register-authentication]]
 
-<ol start="5">
-<li><p>Visual Studio でモバイル サービス プロジェクトの Web.config ファイルを開き、appSettings セクションで、アプリケーションの識別子と ID プロバイダーから取得した共有シークレット値を設定します。</p>
-<p>これらの設定は、ローカル開発中に使用されます。モバイル サービス プロジェクトを Azure に発行すると、これらの設定はポータルで設定された値で上書きされます。</p></li>
-<li><p>(省略可能)「<a href="/ja-jp/documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication/">Windows ストア アプリケーション パッケージを Microsoft 認証に登録する</a>」の手順を実行します。</p>
+[WACOM.INCLUDE [mobile-services-dotnet-backend-aad-server-extension][mobile-services-dotnet-backend-aad-server-extension]]
 
-    <div class="dev-callout"><b>メモ</b>
-	<p>この手順は Microsoft アカウント ログイン プロバイダーのみに適用されるため、省略可能です。Windows ストア アプリのパッケージ情報をモバイル サービスに登録すると、クライアントはシングル サインオン サービス エクスペリエンスを実現するために Microsoft アカウント ログイン資格情報を再利用できます。この操作を行わない場合、login メソッドが呼び出されるたびに、Microsoft アカウント ログイン ユーザーにログイン プロンプトが表示されます。Microsoft アカウント ID プロバイダーを使用する場合は、この手順を実行してください。</p>
-    </div>
-</li>
-</ol>
+## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 
-## <a name="permissions"></a>アクセス許可を認証されたユーザーだけに制限する
+[WACOM.INCLUDE [mobile-services-restrict-permissions-dotnet-backend][mobile-services-restrict-permissions-dotnet-backend]]
 
-[WACOM.INCLUDE [mobile-services-restrict-permissions-dotnet-backend](../includes/mobile-services-restrict-permissions-dotnet-backend.md)] 
+1.  Visual Studio 2013 で、チュートリアル「[モバイル サービスの使用][1]」を実行したときに作成したプロジェクトを開きます。
 
-<ol start="3">
-<li><p>Visual Studio 2013 で、チュートリアル「<a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/">モバイル サービスの使用</a>」を実行したときに作成したプロジェクトを開きます。</p></li>
-<li><p>F5 キーを押して、このクイック スタート ベースのアプリケーションを実行します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。</p>
-   
-   	<p>この問題は、認証されないユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしているのに、<em>TodoItem</em> テーブルでは認証が要求されるために発生します。</p></li>
-</ol>
+2.  F5 キーを押して、このクイック スタート ベースのアプリケーションを実行します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。
+
+    この問題は、認証されないユーザーとしてアプリケーションがモバイル サービスにアクセスしようとしても、*TodoItem* テーブルでは認証が要求されるために発生します。
 
 次に、モバイル サービスのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
-##<a name="add-authentication"></a>アプリケーションに認証を追加する
+## <a name="add-authentication"></a>アプリケーションに認証を追加する
 
-[WACOM.INCLUDE [mobile-services-windows-store-javascript-authenticate-app](../includes/mobile-services-windows-store-javascript-authenticate-app.md)] 
+[WACOM.INCLUDE [mobile-services-windows-store-javascript-authenticate-app][mobile-services-windows-store-javascript-authenticate-app]]
+
+## <a name="tokens"></a>クライアントに認証トークンを保存する
+
+[WACOM.INCLUDE [mobile-services-windows-store-javascript-authenticate-app-with-token][mobile-services-windows-store-javascript-authenticate-app-with-token]]
 
 ## <a name="next-steps"> </a>次のステップ
 
-次の[モバイル サービス ユーザーのサービス側の認証][Authorize users with scripts]チュートリアルでは、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。.NET でモバイル サービスを使用する方法の詳細については、「[モバイル サービス .NET の使用方法の概念リファレンス]」を参照してください。
+次の[モバイル サービス ユーザーのサービス側の認証][モバイル サービス ユーザーのサービス側の認証]チュートリアルでは、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。.NET でモバイル サービスを使用する方法の詳細については、「[モバイル サービス .NET の使用方法の概念リファレンス][モバイル サービス .NET の使用方法の概念リファレンス]」を参照してください。
 
-<!-- Anchors. -->
-[アプリケーションを認証に登録し、モバイル サービスを構成する]: #register
-[テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
-[アプリケーションに認証を追加する]: #add-authentication
-[次のステップ]:#next-steps
-
-
+<!-- Anchors. --> 
 <!-- URLs. -->
-[アプリケーションの提出に関するページ: ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Live Connect を使用した Windows ストア アプリへのシングル サインオン]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-single-sign-on
-[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started/
-[データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/
-[認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/
-[プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push/
-[スクリプトを使用したユーザーの承認]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-authorize-users-in-scripts
-[JavaScript と HTML]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-[モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library
-[Windows ストア アプリ パッケージを Microsoft 認証に登録する]: /ja-jp/documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication
-
+  [mobile-services-selector-get-started-users]: ../includes/mobile-services-selector-get-started-users.md
+  [アプリケーションを認証に登録し、モバイル サービスを構成する]: #register
+  [テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
+  [アプリケーションに認証を追加する]: #add-authentication
+  [クライアントに認証トークンを保存する]: #tokens
+  [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started/
+  [mobile-services-register-authentication]: ../includes/mobile-services-register-authentication.md
+  [mobile-services-dotnet-backend-aad-server-extension]: ../includes/mobile-services-dotnet-backend-aad-server-extension.md
+  [mobile-services-restrict-permissions-dotnet-backend]: ../includes/mobile-services-restrict-permissions-dotnet-backend.md
+  [1]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
+  [mobile-services-windows-store-javascript-authenticate-app]: ../includes/mobile-services-windows-store-javascript-authenticate-app.md
+  [mobile-services-windows-store-javascript-authenticate-app-with-token]: ../includes/mobile-services-windows-store-javascript-authenticate-app-with-token.md
+  [モバイル サービス ユーザーのサービス側の認証]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-authorize-users-in-scripts
+  [モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library

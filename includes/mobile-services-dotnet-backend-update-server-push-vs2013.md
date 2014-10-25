@@ -47,4 +47,4 @@
     > [WACOM.NOTE]この POST メソッドは、いずれかの安全ではないアプリケーション キーを持つクライアントによって呼び出されます。エンドポイントをセキュリティで保護するには、認証を求めるメソッドまたはクラスに属性 `[AuthorizeLevel(AuthorizationLevel.User)]` を適用します。
 
   [ApiController]: http://go.microsoft.com/fwlink/p/?LinkId=512673
-  [TableController]: http://msdn.microsoft.com/en-us/library/azure/dn643359.aspx
+  [TableController]: http://msdn.microsoft.com/ja-jp/library/azure/dn643359.aspx

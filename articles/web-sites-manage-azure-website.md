@@ -84,7 +84,7 @@ Visual Studio Online を使用する場合は、ソース管理から継続的�
   [Web サイトの運用中]: #while-your-website-is-running
   [Web サイトの更新時]: #when-you-update-your-website
   [Azure 管理ポータルによる Web サイトの管理]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-manage/
-  [料金の詳細]: http://azure.microsoft.com/en-us/pricing/details/websites/
+  [料金の詳細]: http://azure.microsoft.com/ja-jp/pricing/details/websites/
   [Web ホスティング プラン]: http://azure.microsoft.com/ja-jp/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview
   [レベルの切り替え]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-scale/
   [Azure 管理ポータル]: https://manage.windowsazure.com/
@@ -99,7 +99,7 @@ Visual Studio Online を使用する場合は、ソース管理から継続的�
   [Azure Websites の New Relic によるアプリケーション パフォーマンス管理]: http://azure.microsoft.com/ja-jp/documentation/articles/store-new-relic-web-sites-dotnet-application-performance-management/
   [自動バックアップ]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-backup/
   [このビデオ]: http://azure.microsoft.com/ja-jp/documentation/videos/azure-websites-automatic-and-easy-backup/
-  [データベース復旧]: http://msdn.microsoft.com/en-us/library/azure/hh852669.aspx
+  [データベース復旧]: http://msdn.microsoft.com/ja-jp/library/azure/hh852669.aspx
   [Visual Studio でのトラブルシューティング]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/#remotedebug
   [診断ログの有効化: Azure Websites]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-enable-diagnostic-log/
   [Azure Websites での Node.js アプリケーションのデバッグ方法]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-nodejs-debug/

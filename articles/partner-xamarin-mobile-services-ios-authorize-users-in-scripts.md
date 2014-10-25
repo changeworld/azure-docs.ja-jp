@@ -1,30 +1,35 @@
-<properties linkid="develop-mobile-tutorials-authorize-users-in-scripts-xamarin-ios" urlDisplayName="スクリプトを使用したユーザーの承認 (Xamarin iOS)" pageTitle="スクリプトを使用したユーザーの承認 (Xamarin iOS) - Azure モバイル サービス" metaKeywords="Azure によるユーザー承認, Xamarin.iOS スクリプト承認, モバイル サービスの承認" description="Xamarin.iOS 向け Azure モバイル サービス アプリケーションでスクリプトを使用してユーザーを承認する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="モバイル サービスでユーザー承認にスクリプトを使用する" documentationCenter="Mobile" authors="" />
+<properties linkid="develop-mobile-tutorials-authorize-users-in-scripts-xamarin-ios" urlDisplayName="Authorize Users in Scripts (Xamarin.iOS)" pageTitle="Authorize users in scripts (Xamarin.iOS) - Azure Mobile Services" metaKeywords="Azure authorizing user, Xamarin.iOS scripts authorization, authorize mobile services" description="Learn how to authorize users with scripts in your Azure Mobile Services app for Xamarin.iOS." metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Use scripts to authorize users in Mobile Services" documentationCenter="Mobile" authors="donnam" manager="dwrede" />
+
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="donnam"></tags>
 
 # モバイル サービスでユーザー承認にスクリプトを使用する
-<div class="dev-center-tutorial-selector sublanding">
-	<a href="/ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-dotnet" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-js" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-wp8" title="Windows Phone">Windows Phone</a><a href="/ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-ios" title="iOS">iOS</a><a href="/ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-android" title="Android">Android</a><a href="/ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-html" title="HTML">HTML</a><a href="/ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios" title="Xamarin.iOS" class="current">iOS C#</a><a href="/ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android" title="Xamarin.Android">Android C#</a>
-</div>	
+
+<div class="dev-center-tutorial-selector sublanding"> 
+<a href="/ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-dotnet" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-js" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-wp8" title="Windows Phone">Windows Phone</a><a href="/ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-ios" title="iOS">iOS</a><a href="/ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-android" title="Android">Android</a><a href="/ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-html" title="HTML">HTML</a><a href="/ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios" title="Xamarin.iOS" class="current">iOS C#</a><a href="/ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android" title="Xamarin.Android">Android C#</a>
+</div>
+
 
 このトピックでは、認証済みのユーザーをサーバー スクリプトで承認し、Azure モバイル サービスのデータに Xamarin.iOS アプリケーションからアクセスできるようにする方法を説明します。このチュートリアルでは、認証済みのユーザーの ID に基づいてクエリにフィルター処理を実施するスクリプトをモバイル サービスに登録します。これによって、それぞれのユーザーが自分のデータのみを閲覧できる状態を実現できます。
 
-このチュートリアルは、モバイル サービスのクイック スタートと、1 つ前の[認証の使用]に関するチュートリアルの内容を前提としています。このため、このチュートリアルの前に、[認証の使用]に関するチュートリアルを完了している必要があります。
+このチュートリアルは、モバイル サービスのクイック スタートと、1 つ前の[認証の使用][認証の使用]に関するチュートリアルの内容を前提としています。このため、このチュートリアルの前に、[認証の使用][認証の使用]に関するチュートリアルを完了している必要があります。
 
 ## <a name="register-scripts"></a>スクリプトを登録する
+
 クイック スタート アプリケーションでは、データの読み取りおよび挿入を実行します。このため、TodoItem テーブルにそのような操作を実行するためのスクリプトを登録する必要があります。
 
-1. [Azure 管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
-   	![][0]
+    ![][]
 
-2. **[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
+2.  **[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
-   	![][1]
+    ![][1]
 
-3. **[スクリプト]** をクリックし、**[挿入]** 操作を選択します。
+3.  **[スクリプト]** をクリックし、**[挿入]** 操作を選択します。
 
-   	![][2]
+    ![][2]
 
-4. 既存のスクリプトを次の関数に置き換え、**[保存]** をクリックします。
+4.  既存のスクリプトを次の関数に置き換え、**[保存]** をクリックします。
 
         function insert(item, user, request) {
           item.userId = user.userId;    
@@ -33,70 +38,71 @@
 
     このスクリプトは、ユーザー ID の値 (認証済みのユーザーの ID) を TodoItem テーブルに挿入する前に、項目に追加するためのものです。
 
-    <div class="dev-callout"><b>注</b>
-	<p>挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマが有効になっていると、挿入スクリプトを最初に実行した時点でモバイル サービスによって <strong>TodoItem</strong> テーブルに <strong>[ユーザー ID]</strong> 列が自動で追加されます。動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションを Windows ストアに発行する前に無効にする必要があります。</p>
+    <div class="dev-callout">
+
+    <b>注</b>
+    <p>挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマが有効になっていると、挿入スクリプトを最初に実行した時点でモバイル サービスによって <b>TodoItem</b> テーブルに <b>[ユーザー ID]</b> 列が自動で追加されます。動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションを Windows ストアに発行する前に無効にする必要があります。
+
     </div>
 
-
-5. 手順 3. および 4. を繰り返し、既存の**読み取り**操作を以下の関数で置き換えます。
+5.  手順 3. および 4. を繰り返し、既存の**読み取り**操作を以下の関数で置き換えます。
 
         function read(query, user, request) {
            query.where({ userId: user.userId });    
            request.execute();
         }
 
-   	このスクリプトは、返される TodoItem オブジェクトにフィルター処理を実施して、それぞれのユーザーが自分で挿入した項目のみを受け取るようにするためのものです。
+    このスクリプトは、返される TodoItem オブジェクトにフィルター処理を実施して、それぞれのユーザーが自分で挿入した項目のみを受け取るようにするためのものです。
 
 ## アプリケーションをテストする
 
-1. Xamarin Studio または Visual Studio で、「[認証の使用]」チュートリアルを実行したときに変更したプロジェクトを開きます。
+1.  Xamarin Studio または Visual Studio で、「[認証の使用][認証の使用]」チュートリアルを実行したときに変更したプロジェクトを開きます。
 
-2. **[実行]** を押してプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを起動して、選択した ID プロバイダーでログオンします。
+2.  **[Run]** を押してプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを起動して、選択した ID プロバイダーでログオンします。
 
-   	このとき、前のチュートリアルで TodoItem テーブルに項目を挿入していても、項目が返されることはない点に注意してください。このようなことが起こるのは、その項目がユーザー ID 列のない状態で挿入されており、ユーザー ID の値が null になっているためです。
+    このとき、前のチュートリアルで TodoItem テーブルに項目を挿入していても、項目が返されることはない点に注意してください。このようなことが起こるのは、その項目がユーザー ID 列のない状態で挿入されており、ユーザー ID の値が null になっているためです。
 
-3. そのアプリケーションで、**[Insert a TodoItem]** にテキストを入力し、**[Save]** をクリックします。
+3.  そのアプリケーションで、**[Insert a TodoItem]** にテキストを入力し、**[Save]** をクリックします。
 
-   	![][3]
+    ![][3]
 
-   	この操作によって、モバイル サービスの TodoItem テーブルにテキストおよびユーザー ID が挿入されます。新しい項目に正しいユーザー ID が設定されたため、モバイル サービスでその項目が返され、2 番目の列に表示されるようになります。
+    この操作によって、モバイル サービスの TodoItem テーブルにテキストおよびユーザー ID が挿入されます。新しい項目に正しいユーザー ID が設定されたため、モバイル サービスでその項目が返され、2 番目の列に表示されるようになります。
 
-5. [管理ポータル][Azure Management Portal]の **todoitem** テーブルに戻り、**[参照]** をクリックして、新しく追加された項目に対してユーザー ID の値が設定されているかどうかを確認します。
+4.  [管理ポータル][Azure の管理ポータル]の **TodoItem** テーブルに戻り、**[参照]** をクリックして、新しく追加された項目に対してユーザー ID の値が設定されているかどうかを確認します。
 
-6. (省略可能) ログイン アカウントが他にある場合には、ユーザーがそれぞれ自分のデータのみを閲覧できる状態になっていることを確認できます。これにはまず、アプリケーションを終了して再度実行します。ログイン資格情報の入力を求めるダイアログが表示されたら別のログインを入力し、前のアカウントで入力した項目が表示されないことを確認してください。
+5.  (省略可能) ログイン アカウントが他にある場合には、ユーザーがそれぞれ自分のデータのみを閲覧できる状態になっていることを確認できます。これにはまず、アプリケーションを終了して再度実行します。ログイン資格情報の入力を求めるダイアログが表示されたら別のログインを入力し、前のアカウントで入力した項目が表示されないことを確認してください。
 
 ## 次のステップ
 
 これで、認証の基本について説明するチュートリアルは終了です。次のモバイル サービスのトピックの詳細を確認することをお勧めします。
 
-* [データの使用]
-  <br/>モバイル サービスを使用してデータの格納およびクエリを実行する方法について説明します。
+-   [データの使用][データの使用]
+    <br/>Mobile Services を使用してデータの格納およびクエリを実行する方法について説明します。
 
-* [プッシュ通知の使用] 
-  <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
+-   [プッシュ通知の使用][プッシュ通知の使用]
+    <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-* [モバイル サービスのサーバー スクリプト リファレンス]
-  <br/>サーバー スクリプトの登録および使用について説明します。
+-   [モバイル サービスのサーバー スクリプト リファレンス][モバイル サービスのサーバー スクリプト リファレンス]
+    <br/>サーバー スクリプトの登録および使用について説明します。
 
 <!-- Anchors. -->
-[サーバー スクリプトを登録する]: #register-scripts
-[次のステップ]:#next-steps
-
 <!-- Images. -->
-[0]: ./media/partner-xamarin-mobile-services-ios-authorize-users-in-scripts/mobile-services-selection.png
-[1]: ./media/partner-xamarin-mobile-services-ios-authorize-users-in-scripts/mobile-portal-data-tables.png
-[2]: ./media/partner-xamarin-mobile-services-ios-authorize-users-in-scripts/mobile-insert-script-users.png
-[3]: ./media/partner-xamarin-mobile-services-ios-authorize-users-in-scripts/mobile-quickstart-startup-ios.png
-
 <!-- URLs. -->
 
-[Windows プッシュ通知および Live Connect]: http://go.microsoft.com/fwlink/p/?LinkID=257677
-[モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=262293
-[マイ アプリ ダッシュボード]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
-[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-ios
-[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-ios
-[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-ios
-
-[Azure 管理ポータル]: https://manage.windowsazure.com/
-
+  [Windows ストア C#]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-dotnet "Windows ストア C#"
+  [Windows ストア JavaScript]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-js "Windows ストア JavaScript"
+  [Windows Phone]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-wp8 "Windows Phone"
+  [iOS]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-ios "iOS"
+  [Android]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-android "Android"
+  [HTML]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-html "HTML"
+  [iOS C#]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios "Xamarin.iOS"
+  [Android C#]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android "Xamarin.Android"
+  [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-ios
+  [Azure の管理ポータル]: https://manage.windowsazure.com/
+  []: ./media/partner-xamarin-mobile-services-ios-authorize-users-in-scripts/mobile-services-selection.png
+  [1]: ./media/partner-xamarin-mobile-services-ios-authorize-users-in-scripts/mobile-portal-data-tables.png
+  [2]: ./media/partner-xamarin-mobile-services-ios-authorize-users-in-scripts/mobile-insert-script-users.png
+  [3]: ./media/partner-xamarin-mobile-services-ios-authorize-users-in-scripts/mobile-quickstart-startup-ios.png
+  [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-ios
+  [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-ios
+  [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=262293

@@ -10,25 +10,25 @@
 
 # Azure プレビュー ポータルでの役割ベースのアクセス制御
 
-Azure プレビュー ポータルでの役割ベースのアクセス制御 (RBAC) のサポートが追加されたので、組織がアクセス管理の要件を簡単かつ正確に満たせるようになりました。[ブログの記事][ブログの記事]に、機能が簡単に紹介されているので、すぐに使い始めることができます。このトピックでは、概念について詳しく説明し、追加の使用事例も記載しています。
+Azure プレビュー ポータルでの役割ベースのアクセス制御 (RBAC) のサポートが追加されたので、組織がアクセス管理の要件を簡単かつ正確に満たせるようになりました。<a href="http://go.microsoft.com/fwlink/?LinkId=511576" target="_blank">ブログの記事</a>に、機能が簡単に紹介されているので、すぐに使い始めることができます。このトピックでは、概念について詳しく説明し、追加の使用事例も記載しています。
 
 <!--Table of contents for topic, the words in brackets must match the heading wording exactly-->
 
 ## 目次
 
--   [Azure での RBAC][Azure での RBAC]
--   [RBAC とサブスクリプションの共同管理者の共存][RBAC とサブスクリプションの共同管理者の共存]
--   [管理用の承認とデータ操作][管理用の承認とデータ操作]
--   [アクセス権の追加と削除の方法][アクセス権の追加と削除の方法]
--   [役割ベースのアクセス制御を使用する際の既知の問題][役割ベースのアクセス制御を使用する際の既知の問題]
--   [フィードバックを提供する方法][フィードバックを提供する方法]
--   [次のステップ][次のステップ]
+-   [Azure での RBAC](#whatisrbac) 
+-   [RBAC とサブスクリプションの共同管理者の共存](#coexist)
+-   [管理用の承認とデータ操作](#authmgmt)
+-   [アクセス権の追加と削除の方法](#addremoveaccess)
+-   [役割ベースのアクセス制御を使用する際の既知の問題](#knownissues)
+-   [フィードバックを提供する方法](#feedback)
+-   [次のステップ](#next)
 
 ## <span id="whatisrbac"></span></a>Azure での RBAC
 
 各 Azure サブスクリプションは Azure Active Directory と関連付けられます。Azure 管理ポータルか Azure リソース マネージャーの API を使ってサブスクリプションのリソースにアクセスするユーザーやサービスは、最初に Azure Active Directory での認証を実行する必要があります。
 
-![][]
+![][1] 
 
 Azure の役割ベースのアクセス制御を利用すると、サブスクリプション、リソース グループ、または個々のリソースのレベルで役割を割り当てて、該当するアクセス権を Azure AD のユーザー、グループ、サービスに付与できます。役割を割り当てると、Azure リソースに対するユーザー、グループ、サービスのアクセス権のレベルが定義されます。
 
@@ -66,14 +66,14 @@ Azure AD のユーザーやサービスにアクセス権を付与するには�
 
 -   **ユーザー**:Azure サブスクリプションが関連付けられている Azure AD の組織内ユーザーに役割を割り当てることができます。Azure プレビュー ポータルで招待アクションを使ってユーザーに役割を割り当てることにより、外部 Microsoft アカウント ユーザー (<joe@outlook.com> など) に役割を割り当てることもできます。役割を外部 Microsoft アカウント ユーザーに割り当てると、そのユーザーに関するゲスト アカウントが Azure AD 内に作成されます。ディレクトリ内でこのゲスト アカウントを無効にすると、外部ユーザーはアクセス権を付与されている Azure リソースへのアクセスが許可されなくなります。
 -   **グループ**:Azure AD セキュリティ グループに役割を割り当てることができます。アクセス権を付与されたグループのメンバーになったユーザーには、リソースに対するアクセス権を自動的に付与されます。同様にユーザーがグループから削除されると、リソースに対するアクセス権が自動的に失われます。役割を直接ユーザーに割り当てるより、役割をグループに割り当て、そのグループにユーザーを追加して、グループ単位でアクセスを管理する方がベスト プラクティスです。Azure RBAC は配布リストへの役割の割り当てを許可しません。
-    役割をグループに割り当てる機能により、組織は既存のアクセス制御モデルをオンプレミスのディレクトリからクラウドへと拡張できるので、オンプレミスのアクセスを制御するために既に確立しているセキュリティ グループを再利用して Azure プレビュー ポータル内のリソースに対するアクセスを制御できます。オンプレミスのディレクトリからユーザーやグループを同期化するさまざまなオプションの詳細については、「[ディレクトリ統合の概要][ディレクトリ統合の概要]」を参照してください。Azure AD プレミアムは、[委任されたグループ管理機能][委任されたグループ管理機能]も提供しており、グループを作成して管理する機能を Azure AD から管理者以外のユーザーに委任できます。
+    役割をグループに割り当てる機能により、組織は既存のアクセス制御モデルをオンプレミスのディレクトリからクラウドへと拡張できるので、オンプレミスのアクセスを制御するために既に確立しているセキュリティ グループを再利用して Azure プレビュー ポータル内のリソースに対するアクセスを制御できます。オンプレミスのディレクトリからユーザーやグループを同期化するさまざまなオプションの詳細については、「[ディレクトリ統合の概要](http://technet.microsoft.com/library/jj573653.aspx)」を参照してください。Azure AD プレミアムは、[委任されたグループ管理機能](http://msdn.microsoft.com/library/azure/dn641267.aspx)も提供しており、グループを作成して管理する機能を Azure AD から管理者以外のユーザーに委任できます。
 -   **サービス プリンシパル**:サービス ID はディレクトリ内でサービス プリンシパルとして表されます。サービス プリンシパルは Azure AD での認証を実施し、相互に安全に通信できます。Azure リソースに対するアクセス権をサービスに付与するには、Windows PowerShell 用の Azure モジュールで、そのサービスを表す Azure AD サービス プリンシパルに役割を割り当てます。
 
 #### リソースのスコープ
 
 サブスクリプション全体に対するアクセス権を付与する必要はありません。個々のリソースに加えて、リソース グループに関する役割を割り当てることもできます。Azure RBAC では、リソースは役割の割り当てを親のリソースから継承します。したがって、ユーザー、グループ、サービスがサブスクリプション内の 1 つのリソース グループのみに対するアクセス権を付与されている場合、そのリソース グループと含まれているリソースのみにアクセスでき、サブスクリプション内の他のリソース グループにはアクセスできません。別の例として、リソース グループについてはセキュリティ グループを閲覧者役割に追加しますが、そのリソース グループ内のデータベースについては共同作成者役割に追加することができます。
 
-![][1]
+![][2]
 
 ## <span id="coexist"></span></a>RBAC とサブスクリプションの共同管理者の共存
 
@@ -90,9 +90,9 @@ Azure AD のユーザーやサービスにアクセス権を付与するには�
 
 組織内のリソース所有者がアクセスを管理する方法の例を見てみましょう。このシナリオでは、Azure リソースを使って構築されているさまざまなテスト プロジェクトと実働プロジェクトで複数の人が作業しています。アクセス権の付与に関するベスト プラクティスに従おうと思っています。ユーザーはすべての必須リソースに対するアクセス権を持っている必要がありますが、追加のアクセス権がありません。プロセスやツールに対する投資をすべて再利用することにより、オンプレミスの Active Directory で確立したセキュリティ グループを使用します。以下のセクションでは、これらのリソースに対するアクセス権をセットアップする方法について説明します。
 
--   [アクセス権の追加][アクセス権の追加]
--   [アクセス権の削除][アクセス権の削除]
--   [外部ユーザーに関するアクセス権の追加または削除][外部ユーザーに関するアクセス権の追加または削除]
+-   [アクセス権の追加](#add)
+-   [アクセス権の削除](#remove)
+-   [外部ユーザーに関するアクセス権の追加または削除](#addremoveext)
 
 <h3><a id="add"></a>アクセス権の追加</h2>
 
@@ -106,31 +106,31 @@ Azure AD のユーザーやサービスにアクセス権を付与するには�
 
 最初に、サブスクリプションのすべてのリソースに関する読み取りアクセス権を追加しましょう。**[参照] \> [すべて] \> [サブスクリプション]** をクリックします。
 
-![][2]
+![][3] 
 
 *ご使用のサブスクリプションの名前* \*\* \> [閲覧者] \> [追加]\*\* をクリックします。ユーザーとグループのリストから、Active Directory グループの名前を選択するか入力します。
 
-![][3]
+![][4]
 
 次に、同じチームをテスト リソース グループの共同作業者役割に追加します。このリソース グループをクリックしてプロパティ ブレードを開きます。**[役割]** の下で、**[共同作業者] \> [追加]** をクリックし、チームの名前を入力します。
 
-![][4]
+![][5]
 
 Brock を実働リソース グループの共同作業者役割に追加するには、このリソース グループをクリックし、**[共同作業者] \> [追加]** をクリックして、Brock の名前を入力します。
 
-![][5]
+![][6]
 
 Windows PowerShell 用の Microsoft Azure モジュールを使って役割の割り当てを管理することもできます。ポータルではなく New-AzureRoleAssignment コマンドレットを使って Brock のアカウントを追加する例を以下に示します。
 
 	PS C:\> New-AzureRoleAssignment -Mail brockh@contoso.com -RoleDefinitionName Contributor -ResourceGroupName ProdDB
 
-Windows PowerShell を使ったアクセス権の追加や削除の詳細については、「[Windows PowerShell を使用した役割ベースのアクセス制御の管理][Windows PowerShell を使用した役割ベースのアクセス制御の管理]」を参照してください。
+Windows PowerShell を使ったアクセス権の追加や削除の詳細については、「[Windows PowerShell を使用した役割ベースのアクセス制御の管理](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-powershell/)」を参照してください。
 
 <h3><a id="remove"></a>アクセス権の削除</h2>
 
 割り当ての削除も簡単です。Brad Adams という名前のユーザーを TestDB という名前のリソース グループに関する閲覧者役割から削除するとします。リソース グループ ブレードを開き、**[閲覧者] \> [Brad Adams] \> [削除]** をクリックします。
 
-![][6]
+![][7]
 
 Remove-AzureRoleAssignment コマンドレットを使って Brad Adams を削除する方法の例を以下に示します。
 
@@ -141,7 +141,7 @@ Remove-AzureRoleAssignment コマンドレットを使って Brad Adams を削�
 ディレクトリの **[構成]** タブには、外部ユーザーに関するアクセスを制御するオプションが含まれています。これらのオプションを変更できるのは、ディレクトリのグローバル管理者が完全版の Azure ポータルの UI においてだけです (Windows PowerShell や API による方法はありません)。
 完全版の Azure ポータル内で **[構成]** タブを開くには、**[Active Directory]** をクリックしてから、ディレクトリの名前をクリックします。
 
-![][7]
+![][10]
 
 次に、外部ユーザーに関するアクセスを制御するオプションを編集できます。
 
@@ -165,54 +165,32 @@ Remove-AzureRoleAssignment コマンドレットを使って Brad Adams を削�
 
 ## <span id="knownissues"></span></a>役割ベースのアクセス制御を使用する際の既知の問題
 
-プレビュー版で役割ベースのアクセス制御機能の使用時に問題が発生した場合は、その問題に関連している可能性がある既知の問題について「[役割ベースのアクセス制御のトラブルシューティング][役割ベースのアクセス制御のトラブルシューティング]」を参照してください。
+プレビュー版で役割ベースのアクセス制御機能の使用時に問題が発生した場合は、その問題に関連している可能性がある既知の問題について「[役割ベースのアクセス制御のトラブルシューティング](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-troubleshooting/)」を参照してください。
 
 ## <span id="feedback"></span></a>フィードバックを提供する方法
 
-Azure RBAC を試用して、[フィードバック][フィードバック]をお送りください。
+Azure RBAC を試用して、[フィードバック](http://aka.ms/azurerbacfeedback)をお送りください。
 
 ## <span id="next"></span></a>次のステップ
 
 役割ベースのアクセス制御の使用法に関するその他のリソースを以下に示します。
 
--   [Windows PowerShell を使用した役割ベースのアクセス制御の管理][Windows PowerShell を使用した役割ベースのアクセス制御の管理]
--   [XPLAT CLI を使用した役割ベースのアクセス制御の管理][XPLAT CLI を使用した役割ベースのアクセス制御の管理]
--   [役割ベースのアクセス制御のトラブルシューティング][役割ベースのアクセス制御のトラブルシューティング]
--   [Azure Active Directory][Azure Active Directory]
--   [Azure Active Directory Premium および Basic][Azure Active Directory Premium および Basic]
--   [Azure サブスクリプションを Azure AD に関連付ける方法][Azure サブスクリプションを Azure AD に関連付ける方法]
--   セキュリティ グループに関するセルフサービス グループ管理の概要については、「[Active Directory チームのブログ][Active Directory チームのブログ]」を参照してください。
+-   [Windows PowerShell を使用した役割ベースのアクセス制御の管理](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-powershell/)
+-   [XPLAT CLI を使用した役割ベースのアクセス制御の管理](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-xplat-cli/)
+-   [役割ベースのアクセス制御のトラブルシューティング](http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-troubleshooting/)
+-   [Azure Active Directory](http://msdn.microsoft.com/library/azure/jj673460.aspx)
+-   [Azure Active Directory Premium および Basic](http://msdn.microsoft.com/ja-jp/library/azure/dn532272.aspx)
+-   [Azure サブスクリプションを Azure AD に関連付ける方法](http://msdn.microsoft.com/ja-jp/library/azure/dn629581.aspx)
+-   セキュリティ グループに関するセルフサービス グループ管理の概要については、「[Active Directory チームのブログ](http://blogs.technet.com/b/ad/archive/2014/02/24/more-preview-enhancements-for-windows-azure-ad-premium.aspx)」を参照してください。
 
 <!--Image references-->
-
-  [ブログの記事]: http://go.microsoft.com/fwlink/?LinkId=511576
-  [Azure での RBAC]: #whatisrbac
-  [RBAC とサブスクリプションの共同管理者の共存]: #coexist
-  [管理用の承認とデータ操作]: #authmgmt
-  [アクセス権の追加と削除の方法]: #addremoveaccess
-  [役割ベースのアクセス制御を使用する際の既知の問題]: #knownissues
-  [フィードバックを提供する方法]: #feedback
-  [次のステップ]: #next
-  []: ./media/role-based-access-control-configure/RBACSubAuthDir.png
-  [ディレクトリ統合の概要]: http://technet.microsoft.com/library/jj573653.aspx
-  [委任されたグループ管理機能]: http://msdn.microsoft.com/library/azure/dn641267.aspx
-  [1]: ./media/role-based-access-control-configure/RBACAssignmentScopes.png
-  [アクセス権の追加]: #add
-  [アクセス権の削除]: #remove
-  [外部ユーザーに関するアクセス権の追加または削除]: #addremoveext
-  [2]: ./media/role-based-access-control-configure/RBACSubscriptionBlade.png
-  [3]: ./media/role-based-access-control-configure/RBACAddSubReader_NEW.png
-  [4]: ./media/role-based-access-control-configure/RBACAddRGContributor_NEW.png
-  [5]: ./media/role-based-access-control-configure/RBACAddProdContributor_NEW.png
-  [Windows PowerShell を使用した役割ベースのアクセス制御の管理]: http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-powershell/
-  [6]: ./media/role-based-access-control-configure/RBACRemoveRole.png
-  [7]: ./media/role-based-access-control-configure/RBACDirConfigTab.png
-  [8]: ./media/role-based-access-control-configure/RBACGuestAccessControls.png
-  [9]: ./media/role-based-access-control-configure/RBACInviteExtUser_NEW.png
-  [役割ベースのアクセス制御のトラブルシューティング]: http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-troubleshooting/
-  [フィードバック]: http://aka.ms/azurerbacfeedback
-  [XPLAT CLI を使用した役割ベースのアクセス制御の管理]: http://azure.microsoft.com/ja-jp/documentation/articles/role-based-access-control-xplat-cli/
-  [Azure Active Directory]: http://msdn.microsoft.com/library/azure/jj673460.aspx
-  [Azure Active Directory Premium および Basic]: http://msdn.microsoft.com/en-us/library/azure/dn532272.aspx
-  [Azure サブスクリプションを Azure AD に関連付ける方法]: http://msdn.microsoft.com/en-us/library/azure/dn629581.aspx
-  [Active Directory チームのブログ]: http://blogs.technet.com/b/ad/archive/2014/02/24/more-preview-enhancements-for-windows-azure-ad-premium.aspx
+[1]: ./media/role-based-access-control-configure/RBACSubAuthDir.png
+[2]: ./media/role-based-access-control-configure/RBACAssignmentScopes.png
+[3]: ./media/role-based-access-control-configure/RBACSubscriptionBlade.png
+[4]: ./media/role-based-access-control-configure/RBACAddSubReader_NEW.png
+[5]: ./media/role-based-access-control-configure/RBACAddRGContributor_NEW.png
+[6]: ./media/role-based-access-control-configure/RBACAddProdContributor_NEW.png
+[7]: ./media/role-based-access-control-configure/RBACRemoveRole.png
+[8]: ./media/role-based-access-control-configure/RBACGuestAccessControls.png
+[9]: ./media/role-based-access-control-configure/RBACInviteExtUser_NEW.png
+[10]: ./media/role-based-access-control-configure/RBACDirConfigTab.png

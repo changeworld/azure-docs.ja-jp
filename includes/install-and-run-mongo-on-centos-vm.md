@@ -5,67 +5,65 @@
 <p>認証、IP アドレス バインドなどの MongoDB セキュリティ機能は既定では有効になっていません。MongoDB を運用環境に展開する前に、セキュリティ機能を有効にすることをお勧めします。詳細については、「<a href="http://www.mongodb.org/display/DOCS/Security+and+Authentication">Security and Authentication (セキュリティと認証)</a>」を参照してください。</p>
 </div>
 
-1. MongoDB をインストールできるようにパッケージ管理システム (YUM) を構成します。*/etc/yum.repos.d/10gen.repo* ファイルを作成し、リポジトリの情報を保存して、以下を追加します。
+1.  MongoDB をインストールできるようにパッケージ管理システム (YUM) を構成します。*/etc/yum.repos.d/10gen.repo* ファイルを作成し、リポジトリの情報を保存して、以下を追加します。
 
-		[10gen]
-		name=10gen Repository
-		baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64
-		gpgcheck=0
-		enabled=1
+        [10gen]
+        name=10gen Repository
+        baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64
+        gpgcheck=0
+        enabled=1
 
-2. repo ファイルを保存し、次のコマンドを実行して、ローカル パッケージ データベースを更新します。
+2.  repo ファイルを保存し、次のコマンドを実行して、ローカル パッケージ データベースを更新します。
 
-		$ sudo yum update
-3. パッケージをインストールするには、次のコマンドを実行し、MongoDB の最新の安定バージョンと関連ツールをインストールします。
+        $ sudo yum update
 
-		$ sudo yum install mongo-10gen mongo-10gen-server
+3.  パッケージをインストールするには、次のコマンドを実行し、MongoDB の最新の安定バージョンと関連ツールをインストールします。
 
-	MongoDB がダウンロードおよびインストールされるまで待ちます。
+        $ sudo yum install mongo-10gen mongo-10gen-server
 
-4. データ ディレクトリを作成します。MongoDB では */data/db* ディレクトリにデータが保存されるように既定で設定されていますが、このディレクトリは作成する必要があります。作成するには、次のように実行します。
+    MongoDB がダウンロードおよびインストールされるまで待ちます。
 
-		$ sudo mkdir -p /mnt/datadrive/data
-		$ sudo chown `id -u` /mnt/datadrive/data
+4.  データ ディレクトリを作成します。MongoDB では */data/db* ディレクトリにデータが保存されるように既定で設定されていますが、このディレクトリは作成する必要があります。作成するには、次のように実行します。
 
-	Linux への MongoDB のインストールの詳細については、「[Install MongoDB on Linux (Linux への MongoDB のインストール)][QuickstartUnix]」を参照してください。
+        $ sudo mkdir -p /srv/datadrive/data
+        $ sudo chown `id -u` /srv/datadrive/data
 
-5. データベースを開始するには、次を実行します。
+    Linux への MongoDB のインストールの詳細については、「[Install MongoDB on Linux (Linux への MongoDB のインストール)][Install MongoDB on Linux (Linux への MongoDB のインストール)]」を参照してください。
 
-		$ mongod --dbpath /mnt/datadrive/data --logpath /mnt/datadrive/data/mongod.log
+5.  データベースを開始するには、次を実行します。
 
-	MongoDB サーバーがジャーナル ファイルを開始して事前に割り当てると、すべてのログ メッセージが */mnt/datadrive/data/mongod.log* ファイルにダイレクトされます。MongoDB がジャーナル ファイルを事前に割り当てて、接続のリッスンを開始するには、数分かかる場合があります。
+        $ mongod --dbpath /srv/datadrive/data --logpath /srv/datadrive/data/mongod.log
 
-6. MongoDB 管理シェルを開始するには、個別の SSH または PuTTY ウィンドウを開いて実行します。
+    MongoDB サーバーがジャーナル ファイルを開始して事前に割り当てると、すべてのログ メッセージが */srv/datadrive/data/mongod.log* ファイルにダイレクトされます。MongoDB がジャーナル ファイルを事前に割り当てて、接続のリッスンを開始するには、数分かかる場合があります。
 
-		$ mongo
-		> db.foo.save ( { a:1 } )
-		> db.foo.find()
-		{ _id : ..., a : 1 }
-		> show dbs  
-		...
-		> show collections  
-		...  
-		> help  
+6.  MongoDB 管理シェルを開始するには、個別の SSH または PuTTY ウィンドウを開いて実行します。
 
-	データベースは挿入によって作成されます。
+        $ mongo
+        > db.foo.save ( { a:1 } )
+        > db.foo.find()
+        { _id : ..., a : 1 }
+        > show dbs  
+        ...
+        > show collections  
+        ...  
+        > help  
 
-7. MongoDB をインストールしたら、MongoDB にリモートでアクセスできるように、エンドポイントを構成する必要があります。管理ポータルで、**[仮想マシン]**、新しい仮想マシンの名前、**[エンドポイント]** の順にクリックします。
-	
-	![エンドポイント][Image7]
+    データベースは挿入によって作成されます。
 
-8. ページの下部にある **[エンドポイントの追加]** をクリックします。
-	
-	![エンドポイント][Image8]
+7.  MongoDB をインストールしたら、MongoDB にリモートでアクセスできるように、エンドポイントを構成する必要があります。管理ポータルで、**[仮想マシン]**、新しい仮想マシンの名前、**[エンドポイント]** の順にクリックします。
 
-9. エンドポイントを追加します。名前に「Mongo」、プロトコルに **[TCP]** を指定し、**[パブリック ポート]** と **[プライベート ポート]** の両方に「27017」を指定します。これにより、MongoDB へのリモート アクセスが可能になります。
-	
-	![エンドポイント][Image9]
+    ![エンドポイント][エンドポイント]
 
+8.  ページの下部にある **[エンドポイントの追加]** をクリックします。
 
-[QuickStartUnix]: http://www.mongodb.org/display/DOCS/Quickstart+Unix
+    ![エンドポイント][1]
 
+9.  エンドポイントを追加します。名前に「Mongo」、プロトコルに **[TCP]** を指定し、**[パブリック ポート]** と **[プライベート ポート]** に「27017」を指定します。これにより、MongoDB へのリモート アクセスが可能になります。
 
-[Image7]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint.png
-[Image8]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint2.png
-[Image9]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint3.png
+    ![エンドポイント][2]
 
+  [Security and Authentication (セキュリティと認証)]: http://www.mongodb.org/display/DOCS/Security+and+Authentication
+  [Install MongoDB on Linux (Linux への MongoDB のインストール)]: http://www.mongodb.org/display/DOCS/Quickstart+Unix
+  [エンドポイント]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint.png
+  [1]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint2.png
+  [2]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint3.png

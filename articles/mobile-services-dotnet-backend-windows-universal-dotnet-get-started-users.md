@@ -4,7 +4,7 @@
 
 # モバイル サービスでの認証の使用
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-users][mobile-services-selector-get-started-users]]
+[WACOM.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
 
 このトピックでは、ユニバーサル Windows アプリから Azure モバイル サービスのユーザーを認証する方法を示します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
 
@@ -21,13 +21,13 @@
 
 ## <a name="register"></a>アプリケーションを認証に登録し、モバイル サービスを構成する
 
-[WACOM.INCLUDE [mobile-services-register-authentication][mobile-services-register-authentication]]
+[WACOM.INCLUDE [mobile-services-register-authentication](../includes/mobile-services-register-authentication.md)]
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-aad-server-extension][mobile-services-dotnet-backend-aad-server-extension]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-aad-server-extension](../includes/mobile-services-dotnet-backend-aad-server-extension.md)]
 
 ## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 
-[WACOM.INCLUDE [mobile-services-restrict-permissions-dotnet-backend][mobile-services-restrict-permissions-dotnet-backend]]
+[WACOM.INCLUDE [mobile-services-restrict-permissions-dotnet-backend](../includes/mobile-services-restrict-permissions-dotnet-backend.md)]
 
 1.  Visual Studio で、TodoList アプリの Windows ストア プロジェクトを右クリックして、**[スタートアップ プロジェクトに設定]** をクリックします。
 
@@ -43,13 +43,13 @@
 
 ## <a name="add-authentication"></a>アプリケーションに認証を追加する
 
-[WACOM.INCLUDE [mobile-services-windows-universal-dotnet-authenticate-app][mobile-services-windows-universal-dotnet-authenticate-app]]
+[WACOM.INCLUDE [mobile-services-windows-universal-dotnet-authenticate-app](../includes/mobile-services-windows-universal-dotnet-authenticate-app.md)]
 
 <!-- Currently not supported [WACOM.NOTE]If you registered your Windows Store app package information with Mobile Services, you should call the <a href="http://go.microsoft.com/fwlink/p/?LinkId=311594" target="_blank">LoginAsync</a> method by supplying a value of <strong>true</strong> for the <em>useSingleSignOn</em> parameter. If you do not do this, your users will still be    ` presented with a login prompt every time that the login method is called. -->
 
 ## <a name="tokens"></a>クライアント側で認証トークンを保存する
 
-[WACOM.INCLUDE [mobile-services-windows-store-dotnet-authenticate-app-with-token][mobile-services-windows-store-dotnet-authenticate-app-with-token]]
+[WACOM.INCLUDE [mobile-services-windows-store-dotnet-authenticate-app-with-token](../includes/mobile-services-windows-store-dotnet-authenticate-app-with-token.md)]
 
 ## <a name="next-steps"> </a>次のステップ
 
@@ -66,7 +66,7 @@
   [mobile-services-register-authentication]: ../includes/mobile-services-register-authentication.md
   [mobile-services-dotnet-backend-aad-server-extension]: ../includes/mobile-services-dotnet-backend-aad-server-extension.md
   [mobile-services-restrict-permissions-dotnet-backend]: ../includes/mobile-services-restrict-permissions-dotnet-backend.md
-  [MobileServiceClient]: http://msdn.microsoft.com/en-us/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx
+  [MobileServiceClient]: http://msdn.microsoft.com/ja-jp/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx
   [mobile-services-windows-universal-dotnet-authenticate-app]: ../includes/mobile-services-windows-universal-dotnet-authenticate-app.md
   [mobile-services-windows-store-dotnet-authenticate-app-with-token]: ../includes/mobile-services-windows-store-dotnet-authenticate-app-with-token.md
   [モバイル サービス ユーザーのサービス側の認証]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-authorize-users-in-scripts

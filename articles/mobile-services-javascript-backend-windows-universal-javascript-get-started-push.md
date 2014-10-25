@@ -4,7 +4,7 @@
 
 # モバイル サービスでのプッシュ通知の使用
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-push][mobile-services-selector-get-started-push]]
+[WACOM.INCLUDE [mobile-services-selector-get-started-push](../includes/mobile-services-selector-get-started-push.md)]
 
 このトピックでは、Azure のモバイル サービスを JavaScript バックエンドで使用してユニバーサル Windows アプリにプッシュ通知を送信する方法について説明します。このチュートリアルでは、ユニバーサル Windows アプリ プロジェクトの Azure 通知ハブを使用したプッシュ通知を有効にします。完了すると、TodoList テーブルにレコードが挿入されるたびに、モバイル サービスは、JavaScript バックエンドから、登録されたすべての Windows ストア アプリおよび Windows Phone ストア アプリにプッシュ通知を送信します。作成する通知ハブはモバイル サービスでは無料で、モバイル サービスから独立して管理することができ、他のアプリケーションおよびサービスで使用できます。
 
@@ -23,7 +23,7 @@
 
 ## <span id="register"></span></a> アプリケーションをプッシュ通知に登録する
 
-[WACOM.INCLUDE [mobile-services-create-new-push-vs2013][mobile-services-create-new-push-vs2013]]
+[WACOM.INCLUDE [mobile-services-create-new-push-vs2013](../includes/mobile-services-create-new-push-vs2013.md)]
 
 1.  `\services\mobileServices\scripts` プロジェクト フォルダーに移動し、生成された \<*your\_service\_name*\>.push.register.js スクリプト ファイルを共有 `\js` フォルダーにコピーしてから、Windows アプリ プロジェクトと WindowsPhone アプリ プロジェクトの両方からこのファイルを削除します。
 
@@ -45,11 +45,11 @@
 
 次の手順では、TodoItem テーブルに登録されている挿入スクリプトを更新します。同様のコードを任意のサーバー スクリプトまたはバックエンド サービスの任意の場所に実装することができます。
 
-[WACOM.INCLUDE [mobile-services-javascript-update-script-notification-hubs][mobile-services-javascript-update-script-notification-hubs]]
+[WACOM.INCLUDE [mobile-services-javascript-update-script-notification-hubs](../includes/mobile-services-javascript-update-script-notification-hubs.md)]
 
 ## <span id="test"></span></a>アプリケーションでプッシュ通知をテストする
 
-[WACOM.INCLUDE [mobile-services-javascript-backend-windows-universal-test-push][mobile-services-javascript-backend-windows-universal-test-push]]
+[WACOM.INCLUDE [mobile-services-javascript-backend-windows-universal-test-push](../includes/mobile-services-javascript-backend-windows-universal-test-push.md)]
 
 ## <a name="next-steps"> </a>次のステップ
 
