@@ -2,11 +2,11 @@
 
 <tags ms.service="storage" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/10/2014" ms.author="ghogen, kempb"></tags>
 
-[WACOM.INCLUDE [vs-storage-aspnet-getting-started-intro][vs-storage-aspnet-getting-started-intro]]
+[WACOM.INCLUDE [vs-storage-aspnet-getting-started-intro](../includes/vs-storage-aspnet-getting-started-intro.md)]
 
 ### Azure Storage の使用
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/vs-storage-cloud-services-getting-started-blobs" title="Blobs" class="current">BLOB</a><a href="/ja-jp/documentation/articles/vs-storage-cloud-services-getting-started-queues" title="Queues">キュー</a><a href="/ja-jp/documentation/articles/vs-storage-cloud-services-getting-started-tables" title="Tables">テーブル</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-ja/documentation/articles/vs-storage-cloud-services-getting-started-blobs" title="Blobs" class="current">BLOB</a><a href="/ja-ja/documentation/articles/vs-storage-cloud-services-getting-started-queues" title="Queues">キュー</a><a href="/ja-ja/documentation/articles/vs-storage-cloud-services-getting-started-tables" title="Tables">テーブル</a></div>
 
 Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。詳細については、「[How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)][How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)]」を参照してください。
 
@@ -26,11 +26,11 @@ Azure キュー ストレージは、HTTP または HTTPS を使用した認証�
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
       CloudConfigurationManager.GetSetting("<storageAccountName>_AzureStorageConnectionString"));
 
-[WACOM.INCLUDE [vs-storage-getting-started-queues-include][vs-storage-getting-started-queues-include]]
+[WACOM.INCLUDE [vs-storage-getting-started-queues-include](../includes/vs-storage-getting-started-queues-include.md)]
 
   [vs-storage-aspnet-getting-started-intro]: ../includes/vs-storage-aspnet-getting-started-intro.md
-  [BLOB]: /ja-jp/documentation/articles/vs-storage-cloud-services-getting-started-blobs "Blobs"
-  [キュー]: /ja-jp/documentation/articles/vs-storage-cloud-services-getting-started-queues "Queues"
-  [テーブル]: /ja-jp/documentation/articles/vs-storage-cloud-services-getting-started-tables "Tables"
-  [How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-queues/ "How to use Queue Storage from .NET"
+  [BLOB]: /ja-ja/documentation/articles/vs-storage-cloud-services-getting-started-blobs "Blobs"
+  [キュー]: /ja-ja/documentation/articles/vs-storage-cloud-services-getting-started-queues "Queues"
+  [テーブル]: /ja-ja/documentation/articles/vs-storage-cloud-services-getting-started-tables "Tables"
+  [How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)]: http://azure.microsoft.com/ja-ja/documentation/articles/storage-dotnet-how-to-use-queues/ "How to use Queue Storage from .NET"
   [vs-storage-getting-started-queues-include]: ../includes/vs-storage-getting-started-queues-include.md

@@ -2,11 +2,11 @@
 
 <tags ms.service="storage" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/10/2014" ms.author="ghogen, kempb"></tags>
 
-[WACOM.INCLUDE [vs-storage-aspnet-vnext-getting-started-intro][vs-storage-aspnet-vnext-getting-started-intro]]
+[WACOM.INCLUDE [vs-storage-aspnet-vnext-getting-started-intro](../includes/vs-storage-aspnet-vnext-getting-started-intro.md)]
 
 # Azure Storage の使用
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/vs-storage-aspnet-vnext-getting-started-blobs" title="BLOB" class="current">BLOB</a><a href="/ja-jp/documentation/articles/vs-storage-aspnet-vnext-getting-started-queues" title="キュー">キュー</a><a href="/ja-jp/documentation/articles/vs-storage-aspnet-vnext-getting-started-tables" title="テーブル">テーブル</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-ja/documentation/articles/vs-storage-aspnet-vnext-getting-started-blobs" title="BLOB" class="current">BLOB</a><a href="/ja-ja/documentation/articles/vs-storage-aspnet-vnext-getting-started-queues" title="キュー">キュー</a><a href="/ja-ja/documentation/articles/vs-storage-aspnet-vnext-getting-started-tables" title="テーブル">テーブル</a></div>
 
 Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。詳細については、「[How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)][How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)]」を参照してください。
 
@@ -30,11 +30,11 @@ ASP.NET vNext プロジェクトのキューにプログラムを使用してア
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
       config.get("MicrosoftAzureStorage:<storageAccountName>_AzureStorageConnectionString"));
 
-[WACOM.INCLUDE [vs-storage-getting-started-queues-include][vs-storage-getting-started-queues-include]]
+[WACOM.INCLUDE [vs-storage-getting-started-queues-include](../includes/vs-storage-getting-started-queues-include.md)]
 
   [vs-storage-aspnet-vnext-getting-started-intro]: ../includes/vs-storage-aspnet-vnext-getting-started-intro.md
-  [BLOB]: /ja-jp/documentation/articles/vs-storage-aspnet-vnext-getting-started-blobs "BLOB"
-  [キュー]: /ja-jp/documentation/articles/vs-storage-aspnet-vnext-getting-started-queues "キュー"
-  [テーブル]: /ja-jp/documentation/articles/vs-storage-aspnet-vnext-getting-started-tables "テーブル"
-  [How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-queues/ "How to use Queue Storage from .NET"
+  [BLOB]: /ja-ja/documentation/articles/vs-storage-aspnet-vnext-getting-started-blobs "BLOB"
+  [キュー]: /ja-ja/documentation/articles/vs-storage-aspnet-vnext-getting-started-queues "キュー"
+  [テーブル]: /ja-ja/documentation/articles/vs-storage-aspnet-vnext-getting-started-tables "テーブル"
+  [How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)]: http://azure.microsoft.com/ja-ja/documentation/articles/storage-dotnet-how-to-use-queues/ "How to use Queue Storage from .NET"
   [vs-storage-getting-started-queues-include]: ../includes/vs-storage-getting-started-queues-include.md

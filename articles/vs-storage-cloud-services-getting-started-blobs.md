@@ -2,11 +2,11 @@
 
 <tags ms.service="storage" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/10/2014" ms.author="ghogen, kempb"></tags>
 
-[WACOM.INCLUDE [vs-storage-cloud-services-getting-started-intro][vs-storage-cloud-services-getting-started-intro]]
+[WACOM.INCLUDE [vs-storage-cloud-services-getting-started-intro](../includes/vs-storage-cloud-services-getting-started-intro.md)]
 
 # Azure Storage の使用
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/vs-storage-cloud-services-getting-started-blobs" title="Blobs" class="current">BLOB</a><a href="/ja-jp/documentation/articles/vs-storage-cloud-services-getting-started-queues" title="Queues">キュー</a><a href="/ja-jp/documentation/articles/vs-storage-cloud-services-getting-started-tables" title="Tables">テーブル</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-ja/documentation/articles/vs-storage-cloud-services-getting-started-blobs" title="Blobs" class="current">BLOB</a><a href="/ja-ja/documentation/articles/vs-storage-cloud-services-getting-started-queues" title="Queues">キュー</a><a href="/ja-ja/documentation/articles/vs-storage-cloud-services-getting-started-tables" title="Tables">テーブル</a></div>
 
 Azure BLOB ストレージは、大量の非構造化データを格納して HTTP または HTTPS を介して世界中のどこからでもアクセスできるようにするサービスです。1 つの BLOB は任意のサイズにできます。BLOB として扱えるのは、画像、オーディオ ファイル、ビデオ ファイル、生データ、およびドキュメント ファイルのようなデータです。
 
@@ -28,11 +28,11 @@ BLOB を使用した操作を行うには、BLOB を使用するストレージ 
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
       CloudConfigurationManager.GetSetting("<storageAccountName>_AzureStorageConnectionString"));
 
-[WACOM.INCLUDE [vs-storage-getting-started-blobs-include][vs-storage-getting-started-blobs-include]]
+[WACOM.INCLUDE [vs-storage-getting-started-blobs-include](../includes/vs-storage-getting-started-blobs-include.md)]
 
   [vs-storage-cloud-services-getting-started-intro]: ../includes/vs-storage-cloud-services-getting-started-intro.md
-  [BLOB]: /ja-jp/documentation/articles/vs-storage-cloud-services-getting-started-blobs "Blobs"
-  [キュー]: /ja-jp/documentation/articles/vs-storage-cloud-services-getting-started-queues "Queues"
-  [テーブル]: /ja-jp/documentation/articles/vs-storage-cloud-services-getting-started-tables "Tables"
-  [How to use Blob Storage from .NET (.NET から BLOB ストレージを使用する方法)]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/ "How to use Blob Storage from .NET"
+  [BLOB]: /ja-ja/documentation/articles/vs-storage-cloud-services-getting-started-blobs "Blobs"
+  [キュー]: /ja-ja/documentation/articles/vs-storage-cloud-services-getting-started-queues "Queues"
+  [テーブル]: /ja-ja/documentation/articles/vs-storage-cloud-services-getting-started-tables "Tables"
+  [How to use Blob Storage from .NET (.NET から BLOB ストレージを使用する方法)]: http://azure.microsoft.com/ja-ja/documentation/articles/storage-dotnet-how-to-use-blobs/ "How to use Blob Storage from .NET"
   [vs-storage-getting-started-blobs-include]: ../includes/vs-storage-getting-started-blobs-include.md
