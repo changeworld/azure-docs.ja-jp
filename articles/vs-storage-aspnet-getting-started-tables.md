@@ -6,7 +6,7 @@
 
 ### Azure Storage の使用
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/ja-ja/documentation/articles/vs-storage-aspnet-getting-started-blobs" title="BLOB" class="current">BLOB</a><a href="/ja-ja/documentation/articles/vs-storage-aspnet-getting-started-queues" title="キュー">キュー</a><a href="/ja-ja/documentation/articles/vs-storage-aspnet-getting-started-tables" title="テーブル">テーブル</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/vs-storage-aspnet-getting-started-blobs" title="BLOB" class="current">BLOB</a><a href="/ja-jp/documentation/articles/vs-storage-aspnet-getting-started-queues" title="キュー">キュー</a><a href="/ja-jp/documentation/articles/vs-storage-aspnet-getting-started-tables" title="テーブル">テーブル</a></div>
 
 Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。詳細については、「[How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)][How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)]」を参照してください。
 
@@ -29,8 +29,8 @@ ASP.NET プロジェクトのテーブルにプログラムを使用してアク
 [WACOM.INCLUDE [vs-storage-getting-started-tables-include](../includes/vs-storage-getting-started-tables-include.md)]
 
   [vs-storage-aspnet-getting-started-intro]: ../includes/vs-storage-aspnet-getting-started-intro.md
-  [BLOB]: /ja-ja/documentation/articles/vs-storage-aspnet-getting-started-blobs "BLOB"
-  [キュー]: /ja-ja/documentation/articles/vs-storage-aspnet-getting-started-queues "キュー"
-  [テーブル]: /ja-ja/documentation/articles/vs-storage-aspnet-getting-started-tables "テーブル"
-  [How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)]: http://azure.microsoft.com/ja-ja/documentation/articles/storage-dotnet-how-to-use-tables/#create-table "How to use Table Storage from .NET"
+  [BLOB]: /ja-jp/documentation/articles/vs-storage-aspnet-getting-started-blobs "BLOB"
+  [キュー]: /ja-jp/documentation/articles/vs-storage-aspnet-getting-started-queues "キュー"
+  [テーブル]: /ja-jp/documentation/articles/vs-storage-aspnet-getting-started-tables "テーブル"
+  [How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/#create-table "How to use Table Storage from .NET"
   [vs-storage-getting-started-tables-include]: ../includes/vs-storage-getting-started-tables-include.md
