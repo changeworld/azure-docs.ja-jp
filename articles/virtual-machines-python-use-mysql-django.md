@@ -18,9 +18,9 @@ MySQL データベースを利用し、Azure VM でホストすることによ�
 
 このチュートリアルのプロジェクト ファイルは **C:\\django\\helloworld** に保存され、作成されるアプリケーションは次のようになります。
 
-![][]
+![][0]
 
-[WACOM.INCLUDE [create-account-and-vms-note][create-account-and-vms-note]]
+[WACOM.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
 
 ## MySQL と Django をホストするように Windows Azure の仮想マシンを設定する
 
@@ -72,15 +72,15 @@ MySQL データベースを利用し、Azure VM でホストすることによ�
 
     次のような応答画面が表示されます。
 
-    ![][1]
+  ![][2]
 
-1.  Django アプリケーションを開発する前に、仮想マシンに Python と Django をインストールする必要があります。そのためには、[Web Platform Installer][Web Platform Installer] を使用します。Web PI をインストール後に使用して、"Django" を検索し Django (Python) 製品をインストールします。
+1.  Django アプリケーションを開発する前に、仮想マシンに Python と Django をインストールする必要があります。そのためには、[Web Platform Installer](http://www.microsoft.com/web/downloads/platform.aspx) を使用します。Web PI をインストール後に使用して、"Django" を検索し Django (Python) 製品をインストールします。
 
      **注:** このチュートリアルに従って Python と Django をインストールをするには、WebPI から Django 製品だけをインストールしてください。*Python Tools for Visual Studio* は必要がありません。また、Azure Python SDK もインストールする**必要はありません**。
 
 1.  MySQL Python クライアント パッケージをインストールします。このパッケージは、[このリンク][このリンク]から直接インストールできます。パッケージのインストールが完了したら、次のコマンドを実行してインストールを確認します。
 
-![][2]
+  ![][1]
 
 ## Django Hello World Web アプリケーションの拡張
 
@@ -222,7 +222,7 @@ MySQL データベースを利用し、Azure VM でホストすることによ�
 
 2.  ローカルの Web ブラウザーで、**http://*yourVmName*.cloudapp.net** を開きます (*yourVmName* は仮想マシンの作成手順で使用した名前です)。以下のスクリーンショットに示すように、"Hello ...!" が表示されます。これは、Django が仮想マシンで実行され、正常に動作していることを表しています。
 
-    ![][]
+    ![][5]
 
     Web ブラウザーの表示を数回更新すると、メッセージが *"Hello **\<国名 abc\>**"* から *"Hello **\<別の国名\>**"* に変わります。
 
@@ -235,14 +235,15 @@ MySQL データベースを利用し、Azure VM でホストすることによ�
   [Django Hello World]: http://windowsazure.com/ja-jp/documentation/articles/virtual-machines-python-django-web-app-windows-server
   [MySQL の Web サイト]: http://dev.mysql.com/doc/
   [MySQL ドライバー]: http://pypi.python.org/pypi/MySQL-python/1.2.3
-  []: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01.png
-  [create-account-and-vms-note]: ../includes/create-account-and-vms-note.md
   [ここ]: /ja-jp/manage/windows/tutorials/virtual-machine-from-gallery/
   [MySQL Community Server]: http://dev.mysql.com/downloads/mysql/
   ["world" データベース]: http://dev.mysql.com/doc/index-other.html
   [この]: http://downloads.mysql.com/docs/world.sql.zip
-  [1]: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01-2.png
-  [Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
   [このリンク]: http://code.google.com/p/soemin/downloads/detail?name=MySQL-python-1.2.3.win32-py2.7.exe&can=2&q=
-  [2]: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01-1.png
   [http://yourVmName]: http://*yourVmName
+
+
+[0]: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01.png
+[1]: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01-1.png
+[2]: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01-2.png
+[5]: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01.png

@@ -14,31 +14,31 @@
 
 このチュートリアルでは、クイック スタート アプリケーションに機能を追加して、TodoItem データベースを更新するときに発生する競合を処理します。このチュートリアルでは、次の基本的な手順について説明します。
 
-1.  [更新を実行できるようにアプリケーションを更新する][更新を実行できるようにアプリケーションを更新する]
-2.  [アプリケーションでの競合検出を有効にする][アプリケーションでの競合検出を有効にする]
-3.  [アプリケーションでデータベース書き込み競合をテストする][アプリケーションでデータベース書き込み競合をテストする]
-4.  [サーバー スクリプトで競合の解決を自動的に処理する][サーバー スクリプトで競合の解決を自動的に処理する]
+1.  [更新を実行できるようにアプリケーションを更新する]
+2.  [アプリケーションでの競合検出を有効にする]
+3.  [アプリケーションでデータベース書き込み競合をテストする]
+4.  [サーバー スクリプトで競合の解決を自動的に処理する]
 
 このチュートリアルには、次のものが必要です。
 
 -   Microsoft Visual Studio 2012 Express for Windows 以降。
--   このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用][モバイル サービスの使用]」を完了している必要があります。
--   [Azure アカウント][Azure アカウント]
+-   このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。
+-   [Azure アカウント]
 -   Azure モバイル サービス NuGet パッケージ 1.1.0 以降。最新バージョンを入手するには、次の手順に従います。
 
     1.  Visual Studio のソリューション エクスプローラーで、プロジェクトを開いて右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-        ![][]
+        ![][19]
 
     2.  **[オンライン]** を展開し、**[Microsoft and .NET]** をクリックします。検索ボックスに「**Azure Mobile Services**」と入力します。**[Azure Mobile Services]** NuGet パッケージで **[インストール]** をクリックします。
 
-        ![][1]
+        ![][20]
 
 ## <a name="uiupdate"></a><span class="short-header">UI の更新</span>更新を実行できるようにアプリケーションを更新する
 
 このセクションでは、TodoList ユーザー インターフェイスを更新して、ListBox コントロールの各項目のテキストを更新できるようにします。ListBox にはデータベース テーブルの各項目に対応する CheckBox コントロールと TextBox コントロールが含まれます。TodoItem のテキスト フィールドを更新できるようになります。アプリケーションで TextBox の `LostFocus` イベントを処理して、データベース内の項目を更新できるようになります。
 
-1.  Visual Studio で、「[モバイル サービスの使用][モバイル サービスの使用]」チュートリアルでダウンロードした TodoList プロジェクトを開きます。
+1.  Visual Studio で、「[モバイル サービスの使用]」チュートリアルでダウンロードした TodoList プロジェクトを開きます。
 2.  Visual Studio ソリューション エクスプローラーで MainPage.xaml を開き、その中の `ListView` 定義を次に示す `ListView` で置き換えて、変更を保存します。
 
         <ListView Name="ListItems" Margin="62,10,0,0" Grid.Row="1">
@@ -94,9 +94,9 @@
 
 ## <a name="enableOC"></a><span class="short-header">オプティミスティック同時実行制御の有効化</span>アプリケーションでの競合検出を有効にする
 
-シナリオによっては、複数のクライアントが同じ項目に対して同時に変更を書き込む場合があります。競合を検知しない場合、それを意図していなくても、最後に行われた書き込みによってそれ以前の更新がすべて上書きされます。[オプティミスティック同時実行制御][オプティミスティック同時実行制御]では、それぞれのトランザクションがコミットでき、そのためリソース ロックが一切使用されないことを前提としています。オプティミスティック同時実行制御ではトランザクションをコミットする前に、他のトランザクションがそのデータを変更していないことを確認します。データが変更されている場合、トランザクションのコミットはロール バックされます。Azure のモバイル サービスはオプティミスティック同時実行制御をサポートしており、各テーブルに追加されている `__version` システム プロパティ列を使用して各項目の変更を追跡します。このセクションでは、アプリケーションで `__version` システム プロパティを利用してこのような書き込み競合を検出できるようにします。前回のクエリ以降にレコードが変更されていた場合、アプリケーションで更新しようとしたときに `MobileServicePreconditionFailedException` が通知されます。その際、データベースに変更をコミットするか、前回の変更をそのままデータベースに残すかというどちらかの処理を選択することができます。モバイル サービスのシステム プロパティの詳細については、[システム プロパティ][システム プロパティ]に関するページを参照してください。
+シナリオによっては、複数のクライアントが同じ項目に対して同時に変更を書き込む場合があります。競合を検知しない場合、それを意図していなくても、最後に行われた書き込みによってそれ以前の更新がすべて上書きされます。[オプティミスティック同時実行制御]では、それぞれのトランザクションがコミットでき、そのためリソース ロックが一切使用されないことを前提としています。オプティミスティック同時実行制御ではトランザクションをコミットする前に、他のトランザクションがそのデータを変更していないことを確認します。データが変更されている場合、トランザクションのコミットはロール バックされます。Azure のモバイル サービスはオプティミスティック同時実行制御をサポートしており、各テーブルに追加されている `__version` システム プロパティ列を使用して各項目の変更を追跡します。このセクションでは、アプリケーションで `__version` システム プロパティを利用してこのような書き込み競合を検出できるようにします。前回のクエリ以降にレコードが変更されていた場合、アプリケーションで更新しようとしたときに `MobileServicePreconditionFailedException` が通知されます。その際、データベースに変更をコミットするか、前回の変更をそのままデータベースに残すかというどちらかの処理を選択することができます。モバイル サービスのシステム プロパティの詳細については、[システム プロパティ]に関するページを参照してください。
 
-1.  MainPage.xaml.cs で、**TodoItem** クラスの定義を次のコードに更新します。このコードには \*\*\_\_version\*\* システム プロパティが含まれており、書き込み競合の検出がサポートされます。
+1.  MainPage.xaml.cs で、**TodoItem** クラスの定義を次のコードに更新します。このコードには **__version** システム プロパティが含まれており、書き込み競合の検出がサポートされます。
 
         public class TodoItem
         {
@@ -189,63 +189,63 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
 1.  Windows ストア アプリケーション パッケージを作成し、2 台目のコンピューターまたは仮想マシンにインストールします。それには、Visual Studio で **[プロジェクト]**、**[ストア]**、**[アプリケーション パッケージの作成]** の順にクリックします。
 
-    ![][2]
+    ![][0]
 
 2.  [パッケージの作成] 画面で、Windows ストアにこのパッケージをアップロードするかどうかを確認する質問に対して **[いいえ]** をクリックします。その後、**[次へ]** をクリックします。
 
-    ![][3]
+    ![][1]
 
 3.  [パッケージの選択と構成] 画面で、既定の設定をそのまま適用し、**[作成]** をクリックします。
 
-    ![][4]
+    ![][10]
 
 4.  [パッケージの作成が完了しました] 画面で、**[出力場所]** リンクをクリックして、パッケージの出力場所を開きます。
 
-    ![][5]
+    ![][11]
 
 5.  パッケージ フォルダー "todolist\_1.0.0.0\_AnyCPU\_Debug\_Test" を 2 台目のコンピューターにコピーします。このコンピューター上でこのパッケージ フォルダーを開き、次に示すように、**Add-AppDevPackage.ps1** PowerShell スクリプトを右クリックして **[PowerShell で実行]** をクリックします。表示される手順に従ってアプリケーションをインストールします。
 
-    ![][6]
+    ![][12]
 
 6.  Visual Studio で **[デバッグ]**、**[デバッグの開始]** の順にクリックして、アプリケーション インスタンス 1 を実行します。2 台目のコンピューターの [スタート] 画面で、下向きの矢印ボタンをクリックし、[アプリ 名前順] を表示します。**todolist** アプリケーションをクリックして、アプリケーション インスタンス 2 を実行します。
 
     アプリケーション インスタンス 1
 
-    ![][7]
+    ![][2]
 
     アプリケーション インスタンス 2
 
-    ![][7]
+    ![][2]
 
 7.  アプリケーション インスタンス 1 で、最後の項目のテキストを「**Test Write 1**」に更新した後、`LostFocus` イベント ハンドラーによってデータベースが更新されるように、別のテキスト ボックスをクリックします。次のスクリーンショットのようになります。
 
     アプリケーション インスタンス 1
 
-    ![][8]
+    ![][3]
 
     アプリケーション インスタンス 2
 
-    ![][7]
+    ![][2]
 
 8.  この時点で、アプリケーション インスタンス 2 内の対応する項目には古いバージョンが含まれています。このアプリケーション インスタンスで、`text` プロパティに「**Test Write 2**」と入力します。その後で別のテキスト ボックスをクリックすると、`LostFocus` イベント ハンドラーは古い `_version` プロパティでデータベースを更新しようとします。
 
     アプリケーション インスタンス 1
 
-    ![][9]
+    ![][4]
 
     アプリケーション インスタンス 2
 
-    ![][10]
+    ![][5]
 
 9.  この更新の試行で使用された `__version` の値がサーバー側の `__version` の値と一致していないため、アプリケーションでこの競合を解決できるようにモバイル サービス SDK から `MobileServicePreconditionFailedException` がスローされます。競合を解決するには、**[Commit Local Text]** をクリックしてインスタンス 2 の値をコミットします。または、**[Leave Server Text]** をクリックしてインスタンス 2 の値を破棄し、アプリケーションのインスタンス 1 でコミットされた値を残します。
 
     アプリケーション インスタンス 1
 
-    ![][9]
+    ![][4]
 
     アプリケーション インスタンス 2
 
-    ![][11]
+    ![][6]
 
 ## <a name="scriptsexample"></a><span class="short-header">スクリプトを使用した競合処理</span>サーバー スクリプトで競合の解決を自動的に処理する
 
@@ -256,17 +256,17 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
 次の手順で、サーバー更新スクリプトの追加とテストの方法を説明します。
 
-1.  [Azure の管理ポータル][Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
+1.  [Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
-    ![][12]
+    ![][7]
 
 2.  **[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
-    ![][13]
+    ![][8]
 
 3.  **[スクリプト]** をクリックし、**[更新]** 操作を選択します。
 
-    ![][14]
+    ![][9]
 
 4.  既存のスクリプトを次の関数に置き換え、**[保存]** をクリックします。
 
@@ -288,15 +288,25 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
 5.  両方のコンピューターで **todolist** アプリケーションを実行します。インスタンス 2 で、最後の項目の TodoItem `text` を変更します。次に、`LostFocus` イベント ハンドラーによってデータベースが更新されるように、別のテキスト ボックスをクリックします。
 
-    アプリケーション インスタンス 1
+    アプリケーション インスタンス 1	
 
-    ![][9]
+    ![][4]
 
-    アプリケーション インスタンス 2
+    アプリケーション インスタンス 2	
 
-    ![][10]
+    ![][5]
 
 6.  アプリケーション インスタンス 1 で、最後の text プロパティに別の値を入力します。その後で別のテキスト ボックスをクリックすると、`LostFocus` イベント ハンドラーは不適切な `__version` プロパティでデータベースを更新しようとします。
+
+    アプリケーション インスタンス 1	
+
+    ![][13]
+
+    アプリケーション インスタンス 2	
+
+    ![][14]
+
+7.  この項目は完了としてマークされていないため、サーバー側スクリプトによって更新が許可され、競合が解決されることから、アプリケーション内では例外が発生しません。更新が本当に成功したかどうか確認するには、インスタンス 2 の **[Refresh]** をクリックして、データベースに再びクエリを実行してください。
 
     アプリケーション インスタンス 1
 
@@ -304,57 +314,47 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
     アプリケーション インスタンス 2
 
-    ![][16]
-
-7.  この項目は完了としてマークされていないため、サーバー側スクリプトによって更新が許可され、競合が解決されることから、アプリケーション内では例外が発生しません。更新が本当に成功したかどうか確認するには、インスタンス 2 の **[Refresh]** をクリックして、データベースに再びクエリを実行してください。
-
-    アプリケーション インスタンス 1
-
-    ![][17]
-
-    アプリケーション インスタンス 2
-
-    ![][17]
+    ![][15]
 
 8.  インスタンス 1 で、最後の Todo 項目のチェック ボックスをオンにして、完了としてマークします。
 
     アプリケーション インスタンス 1
 
-    ![][18]
+    ![][16]
 
     アプリケーション インスタンス 2
 
-    ![][17]
+    ![][15]
 
 9.  インスタンス 2 で、最後の TodoItem のテキストを更新し、`LostFocus` イベントを発生させます。この項目は既に完了しているため、スクリプトが更新を拒否することで競合が解決されます。
 
-    アプリケーション インスタンス 1
+    アプリケーション インスタンス 1	
 
-    ![][19]
+    ![][17]
 
-    アプリケーション インスタンス 2
+    アプリケーション インスタンス 2	
 
-    ![][20]
+    ![][18]
 
 ## <a name="next-steps"> </a>次のステップ
 
 このチュートリアルでは、Windows ストア アプリケーションでモバイル サービスのデータを操作する際の書き込み競合を処理できるようにする方法について説明しました。次に、データ シリーズの次のチュートリアルのいずれかを行うことをお勧めします。
 
--   [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更][サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]
+-   [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]
 
     Mobile Services でサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
--   [ページングを使用したモバイル サービス クエリの改善][ページングを使用したモバイル サービス クエリの改善]
+-   [ページングを使用したモバイル サービス クエリの改善]
 
     クエリ内でページングを使用して、1 回の要求で渡されるデータの量を制御する方法について説明します。
 
 データ シリーズを完了した後は、次に示すいずれかの Windows ストア チュートリアルを行うことができます。
 
--   [認証の使用][認証の使用]
+-   [認証の使用]
 
     アプリケーションのユーザーを認証する方法について説明します。
 
--   [プッシュ通知の使用][プッシュ通知の使用]
+-   [プッシュ通知の使用]
 
     Mobile Services を使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
@@ -369,31 +369,32 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
   [サーバー スクリプトで競合の解決を自動的に処理する]: #scriptsexample
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started
   [Azure アカウント]: http://www.windowsazure.com/ja-jp/pricing/free-trial/
-  []: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-manage-nuget-packages-VS.png
-  [1]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-manage-nuget-packages-dialog.png
   [オプティミスティック同時実行制御]: http://go.microsoft.com/fwlink/?LinkId=330935
   [システム プロパティ]: http://go.microsoft.com/fwlink/?LinkId=331143
-  [2]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package1.png
-  [3]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package2.png
-  [4]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package3.png
-  [5]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package4.png
-  [6]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-install-app-package.png
-  [7]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app1.png
-  [8]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app1-write1.png
-  [9]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app1-write2.png
-  [10]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app2-write2.png
-  [11]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app2-write2-conflict.png
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  [12]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-services-selection.png
-  [13]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-portal-data-tables.png
-  [14]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-insert-script-users.png
-  [15]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app1-write3.png
-  [16]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app2-write3.png
-  [17]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-write3.png
-  [18]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-checkbox.png
-  [19]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-2-items.png
-  [20]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-already-complete.png
   [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
   [ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
   [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet
   [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet
+<!-- Images. -->
+[0]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package1.png
+[1]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package2.png
+[2]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app1.png 
+[3]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app1-write1.png
+[4]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app1-write2.png
+[5]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app2-write2.png
+[6]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app2-write2-conflict.png
+[7]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-services-selection.png
+[8]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-portal-data-tables.png
+[9]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-insert-script-users.png
+[10]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package3.png
+[11]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package4.png
+[12]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-install-app-package.png
+[13]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app1-write3.png
+[14]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app2-write3.png
+[15]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-write3.png
+[16]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-checkbox.png
+[17]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-2-items.png
+[18]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-already-complete.png
+[19]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-manage-nuget-packages-VS.png
+[20]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/mobile-manage-nuget-packages-dialog.png

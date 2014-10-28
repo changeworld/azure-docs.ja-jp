@@ -12,33 +12,33 @@ Azure にサンプル データベースを作成して準備し、Excel を使�
 
 ## 目次
 
--   [手順 1.Microsoft Azure アカウントを作成する][手順 1.Microsoft Azure アカウントを作成する]
--   [手順 2.Azure に接続してデータベースを作成する][手順 1.Microsoft Azure アカウントを作成する]
--   [手順 3.ファイアウォールを構成する][手順 3.ファイアウォールを構成する]
--   [手順 4.Transact-SQL スクリプトを使用してデータとスキーマを追加する][手順 4.Transact-SQL スクリプトを使用してデータとスキーマを追加する]
--   [手順 5.スキーマを作成する][手順 5.スキーマを作成する]
--   [手順 6.データを挿入する][手順 6.データを挿入する]
--   [手順 7.SQL データベースの管理ポータルでサンプル データとシステム データを照会する][手順 7.SQL データベースの管理ポータルでサンプル データとシステム データを照会する]
--   [手順 8.データベース ログインを作成してアクセス許可を割り当てる][手順 8.データベース ログインを作成してアクセス許可を割り当てる]
--   [手順 9.他のアプリケーションから接続する][手順 9.他のアプリケーションから接続する]
+-   [手順 1.Microsoft Azure アカウントを作成する](#Subscribe)
+-   [手順 2.Azure に接続してデータベースを作成する](#Subscribe)
+-   [手順 3.ファイアウォールを構成する](#ConfigFirewall)
+-   [手順 4.Transact-SQL スクリプトを使用してデータとスキーマを追加する](#AddData)
+-   [手順 5.スキーマを作成する](#createschema)
+-   [手順 6.データを挿入する](#insertData)
+-   [手順 7.SQL データベースの管理ポータルでサンプル データとシステム データを照会する](#QueryDBSysData)
+-   [手順 8.データベース ログインを作成してアクセス許可を割り当てる](#DBLogin)
+-   [手順 9.他のアプリケーションから接続する](#ClientConnection)
 
 ## 手順 1.Microsoft Azure アカウントを作成する
 
-1.  Web ブラウザーを開いて、[][]<http://azure.microsoft.com></a> にアクセスします。無料アカウントを取得するには、右上にある [無料評価版] をクリックして、表示される手順に従います。
+1.  Web ブラウザーを開いて、[http://azure.microsoft.com](http://azure.microsoft.com) にアクセスします。無料アカウントを取得するには、右上にある [無料評価版] をクリックして、表示される手順に従います。
 
 2.  アカウントが作成されました。これで使用開始する準備が整いました。
 
 ## 手順 2.Azure に接続してデータベースを作成する
 
-1.  [管理ポータル][管理ポータル]にサインインします。次のようなナビゲーション ウィンドウが表示されます。
+1.  [管理ポータル](http://manage.windowsazure.com)にサインインします。次のようなナビゲーション ウィンドウが表示されます。
 
-    ![ナビゲーション ウィンドウ][ナビゲーション ウィンドウ]
+    ![ナビゲーション ウィンドウ][Image1]
 
 2.  ページの下部にある **[新規]** をクリックします。**[新規]** をクリックすると、作成できる項目が一覧に表示されます。
 
 3.  **[SQL データベース]**、**[カスタム作成]** の順にクリックします。
 
-    ![ナビゲーション ウィンドウ][1]
+    ![ナビゲーション ウィンドウ][Image2]
 
 このオプションを選択すると、自分を管理者として新しいサーバーと SQL データベースを同時に作成できます。システム管理者として、このチュートリアルで後で実行する SQL データベースの管理ポータルへの接続など、さまざまなタスクを実行できます。
 
@@ -46,7 +46,7 @@ Azure にサンプル データベースを作成して準備し、Excel を使�
 
     [データベースの設定] ページで、次のように指定します。
 
-    ![ナビゲーション ウィンドウ][2]
+    ![ナビゲーション ウィンドウ][Image3]
 
 -   データベース名として「**School**」と入力します。
 
@@ -58,7 +58,7 @@ Azure にサンプル データベースを作成して準備し、Excel を使�
 
 1.  [サーバーの設定] ページで、次のように指定します。
 
-    ![ナビゲーション ウィンドウ][3]
+    ![ナビゲーション ウィンドウ][Image4]
 
 -   空白を含まない 1 語で管理者名を入力します。SQL データベースでは、暗号化された接続による SQL 認証を使用してユーザー ID を検証します。管理者アクセス許可を持つ新しい SQL Server 認証のログインが、入力した名前を使用して作成されます。管理者名には、Windows ユーザーまたは Live ID ユーザー名は使用できません。Windows 認証は SQL データベースではサポートされません。
 
@@ -80,7 +80,7 @@ Azure にサンプル データベースを作成して準備し、Excel を使�
 
 ファイアウォールを構成して接続が許可されるようにするために、サーバーのページで情報を入力します。
 
-**注:** SQL データベース サービスは、TDS プロトコルの使用する TCP ポート 1433 だけで使用できます。そのため、ネットワークとローカル コンピューターのファイアウォールがポート 1433 で発信 TCP 通信を許可するようにします。詳細については、[SQL データベースのファイアウォールに関する記事][SQL データベースのファイアウォールに関する記事]を参照してください。
+**注:** SQL データベース サービスは、TDS プロトコルの使用する TCP ポート 1433 だけで使用できます。そのため、ネットワークとローカル コンピューターのファイアウォールがポート 1433 で発信 TCP 通信を許可するようにします。詳細については、[SQL データベースのファイアウォールに関する記事](http://social.technet.microsoft.com/wiki/contents/articles/2677.sql-azure-firewall-ja-jp.aspx)を参照してください。
 
 1.  左のナビゲーション ウィンドウで、**[SQL データベース]** をクリックします。
 
@@ -96,7 +96,7 @@ Azure にサンプル データベースを作成して準備し、Excel を使�
 
 7.  ルールを保存すると、ページは次のスクリーンショットに似た表示になります。
 
-    ![ナビゲーション ウィンドウ][4]
+    ![ナビゲーション ウィンドウ][Image7]
 
 これで、Azure 上の SQL データベース サーバー、サーバーへのアクセスを許可するファイアウォール ルール、データベース オブジェクト、および管理者ログインが用意できました。ただし、照会を行う作業データベースがまだありません。それには、データベースにスキーマと実際のデータを設定する必要があります。
 
@@ -108,11 +108,11 @@ Azure にサンプル データベースを作成して準備し、Excel を使�
 
 この手順では、2 つのスクリプトを実行します。最初のスクリプトは、テーブル、列、リレーションシップを定義するスキーマを作成します。2 つ目のスクリプトは、データを追加します。それぞれの手順は、別々の接続で独立して実行されます。以前に SQL Server でデータベースを構築したことがある場合は、SQL データベースでは CREATE コマンドと INSERT コマンドを別々のバッチで実行する必要があるという点が異なることに注意してください。SQL データベースでは、転送中のデータに対する攻撃を最小限に抑えるために、この要件が課されています。
 
-**注:** スキーマとデータの値はこの [MSDN の記事][MSDN の記事]からとられていて、SQL データベースで動作するように変更されています。
+**注:** スキーマとデータの値はこの [MSDN の記事](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee621790.aspx "MSDN の記事")からとられていて、SQL データベースで動作するように変更されています。
 
-1.  ホーム ページに移動します。[管理ポータル][管理ポータル]で、ホーム ページの項目の一覧に **School** データベースが表示されます。
+1.  ホーム ページに移動します。[管理ポータル](http://manage.windowsazure.com)で、ホーム ページの項目の一覧に **School** データベースが表示されます。
 
-    ![ナビゲーション ウィンドウ][5]
+    ![ナビゲーション ウィンドウ][Image8]
 
 2.  **[School]** をクリックして選択し、ページの下部にある **[管理]** をクリックします。これにより、SQL データベースの管理ポータルが開きます。このポータルは Azure の管理ポータルとは別物です。このポータルを使用して、Transact-SQL コマンドとクエリを実行します。
 
@@ -122,7 +122,7 @@ Azure にサンプル データベースを作成して準備し、Excel を使�
 
 ## 手順 5.スキーマを作成する
 
-この手順では、以下のスクリプトを使用してスキーマを作成します。スクリプトは、まず、同じ名前の既存のテーブルがないかチェックして名前の衝突がないことを確認し、[CREATE TABLE][CREATE TABLE] ステートメントを使用してテーブルを作成します。さらに、このスクリプトは [ALTER TABLE][ALTER TABLE] ステートメントを使用してプライマリ キーとテーブルのリレーションシップを指定します。
+この手順では、以下のスクリプトを使用してスキーマを作成します。スクリプトは、まず、同じ名前の既存のテーブルがないかチェックして名前の衝突がないことを確認し、[CREATE TABLE](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336258.aspx) ステートメントを使用してテーブルを作成します。さらに、このスクリプトは [ALTER TABLE](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336286.aspx) ステートメントを使用してプライマリ キーとテーブルのリレーションシップを指定します。
 
 スクリプトをコピーしてクエリ ウィンドウに貼り付けます。ウィンドウの上部にある **[実行]** をクリックして、スクリプトを実行します。
 
@@ -366,7 +366,7 @@ GO
 
 ## 手順 6.データを挿入する
 
-新しいクエリ ウィンドウを開いて、以下のスクリプトを貼り付けます。スクリプトを実行してデータを挿入します。このスクリプトは [INSERT][INSERT] ステートメントを使用して各列に値を追加しています。
+新しいクエリ ウィンドウを開いて、以下のスクリプトを貼り付けます。スクリプトを実行してデータを挿入します。このスクリプトは [INSERT](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336284.aspx) ステートメントを使用して各列に値を追加しています。
 
 <div style="width:auto; height:600px; overflow:auto"><pre>
 -- Person テーブルにデータを挿入します。
@@ -492,7 +492,7 @@ SQL Server 認証ログインはサーバー接続時に使用されます。SQL
 
 #### SQL Server 認証ログインを作成する
 
-1.  [管理ポータル][管理ポータル]で、**[SQL データベース]**、**[サーバー]** の順にクリックし、サーバーを選択し、白い矢印をクリックして、サーバーのページを開きます。
+1.  [管理ポータル](http://manage.windowsazure.com)で、**[SQL データベース]**、**[サーバー]** の順にクリックし、サーバーを選択し、白い矢印をクリックして、サーバーのページを開きます。
 
 2.  [クイック スタート] ページで、**[サーバーの管理]** をクリックして、SQL データベースの管理ポータルに対する新しい接続を開きます。
 
@@ -502,7 +502,7 @@ SQL Server 認証ログインはサーバー接続時に使用されます。SQL
 
 5.  下図のようなエラーがページに表示された場合は、無視してください。**[新しいクエリ]** をクリックします。**master** データベースに対して Transact-SQL コマンドを実行できるクエリ ウィンドウが開きます。
 
-    ![ナビゲーション ウィンドウ][6]
+    ![ナビゲーション ウィンドウ][Image15]
 
 6.  次のコマンドをコピーしてクエリ ウィンドウに貼り付けます。
 
@@ -518,7 +518,7 @@ SQL Server 認証ログインを作成した後、次のステップは、ログ
 
     SQL データベース管理ポータルのページでは、左上隅に **School** データベースの名前が表示されます。
 
-    ![ナビゲーション ウィンドウ][7]
+    ![ナビゲーション ウィンドウ][Image12]
 
 2.  **[新しいクエリ]** をクリックして新しいクエリ ウィンドウを開き、次のステートメントをコピーします。
 
@@ -550,60 +550,50 @@ SQL Server 認証ログインを作成した後、次のステップは、ログ
 
 	SQL Server 認証ログインを入力します。テスト目的の場合、サーバーのセットアップ時に作成した管理者ログインを使用できます。通常のデータ アクセスの場合は、先ほど作成したようなデータベース ユーザー ログインを使用します。
 
-	![ナビゲーション ウィンドウ][8]
+	![ナビゲーション ウィンドウ][Image16]
 
 1.  次のページで、**[School]** データベースを選択し、**[Person]** を選択します。**[完了]** をクリックします。ログイン情報を求めるメッセージが表示されたら、それらを入力して **[OK]** をクリックします。
 
 2.  [データのインポート] ダイアログ ボックスが表示され、データのインポート方法と場所を選択します。既定のオプションを選択したままで、**[OK]** をクリックします。
 
-    ![ナビゲーション ウィンドウ][9]
+    ![ナビゲーション ウィンドウ][Image19]
 
 3.  ステップ 7. の結果と同じように、ワークシートには、Person テーブルから、PersonID、LastName、FirstName、HireDate、EnrollmentDate を含む 34 行の結果セットが表示されます。
 
-Excel だけを使用すると、一度に 1 つのテーブルしかインポートできません。もっと優れた方法は、PowerPivot for Excel アドインを使用して、複数のテーブルを 1 つのデータセットとしてインポートし操作することです。PowerPivot の操作方法はこのチュートリアルの範囲を超えていますが、詳細な情報はこの [PowerPivot for Excel][PowerPivot for Excel] に関するトピックで入手できます。
+Excel だけを使用すると、一度に 1 つのテーブルしかインポートできません。もっと優れた方法は、PowerPivot for Excel アドインを使用して、複数のテーブルを 1 つのデータセットとしてインポートし操作することです。PowerPivot の操作方法はこのチュートリアルの範囲を超えていますが、詳細な情報はこの [PowerPivot for Excel](http://go.microsoft.com/fwlink/?LinkId=396969) に関するトピックで入手できます。
 
 ## 次のステップ
 
 これで SQL データベースと管理ポータルに慣れたので、SQL Server データベース管理者が使用する他のツールや技法も試すことができます。
 
-新しいデータベースを積極的に管理するには、SQL Server Management Studio をインストールして使用することを検討してください。Management Studio は、Azure 上で動作しているものも含め、SQL Server データベースを管理する主なデータベース管理ツールです。Management Studio を使用すると、将来のためにクエリを保存し、新しいテーブルとストアド プロシージャを追加し、構文チェッカーや Intellisense、テンプレートを含む豊富なスクリプト作成環境で Transact-SQL のスキルを磨くことができます。手始めに、「[Managing SQL Databases Using SQL Server Management Studio (SQL Server Management Studio を使用した SQL データベースの管理)][Managing SQL Databases Using SQL Server Management Studio (SQL Server Management Studio を使用した SQL データベースの管理)]」の指示に従ってください。
+新しいデータベースを積極的に管理するには、SQL Server Management Studio をインストールして使用することを検討してください。Management Studio は、Azure 上で動作しているものも含め、SQL Server データベースを管理する主なデータベース管理ツールです。Management Studio を使用すると、将来のためにクエリを保存し、新しいテーブルとストアド プロシージャを追加し、構文チェッカーや Intellisense、テンプレートを含む豊富なスクリプト作成環境で Transact-SQL のスキルを磨くことができます。手始めに、「[Managing SQL Databases Using SQL Server Management Studio (SQL Server Management Studio を使用した SQL データベースの管理)](http://www.azure.microsoft.com/ja-jp/documentation/articles/sql-database-manage-azure-ssms/)」の指示に従ってください。
 
-Transact-SQL クエリとデータ定義言語を自在に操作できることが、データベース管理者には不可欠です。Transact-SQL の経験がない場合は、「[チュートリアル: Transact-SQL ステートメントの作成][チュートリアル: Transact-SQL ステートメントの作成]」から始めて、基本的なスキルを習得してください。
+Transact-SQL クエリとデータ定義言語を自在に操作できることが、データベース管理者には不可欠です。Transact-SQL の経験がない場合は、「[チュートリアル: Transact-SQL ステートメントの作成](http://msdn.microsoft.com/ja-jp/library/ms365303.aspx)」から始めて、基本的なスキルを習得してください。
 
 内部設置型データベースを SQL データベースに移動する方法は他にもあります。既存のデータベースがある場合、または、実習のためにサンプル データベースをダウンロードした場合は、次の方法を試してください。
 
--   [Migrating Databases to SQL Database (データベースの SQL データベースへの移行)][Migrating Databases to SQL Database (データベースの SQL データベースへの移行)]
--   [Copying Databases in SQL Database (データベースの SQL データベースへのコピー)][Copying Databases in SQL Database (データベースの SQL データベースへのコピー)]
--   [Azure 仮想マシンへの SQL Server データベースの配置][Azure 仮想マシンへの SQL Server データベースの配置]
+-   [Migrating Databases to SQL Database (データベースの SQL データベースへの移行)](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee730904.aspx)
+-   [Copying Databases in SQL Database (データベースの SQL データベースへのコピー)](http://msdn.microsoft.com/ja-jp/library/windowsazure/ff951624.aspx)
+-   [Azure 仮想マシンへの SQL Server データベースの配置](http://msdn.microsoft.com/ja-jp/library/dn195938(v=sql.120).aspx)
 
-  [手順 1.Microsoft Azure アカウントを作成する]: #Subscribe
-  [手順 3.ファイアウォールを構成する]: #ConfigFirewall
-  [手順 4.Transact-SQL スクリプトを使用してデータとスキーマを追加する]: #AddData
-  [手順 5.スキーマを作成する]: #createschema
-  [手順 6.データを挿入する]: #insertData
-  [手順 7.SQL データベースの管理ポータルでサンプル データとシステム データを照会する]: #QueryDBSysData
-  [手順 8.データベース ログインを作成してアクセス許可を割り当てる]: #DBLogin
-  [手順 9.他のアプリケーションから接続する]: #ClientConnection
-  []: http://azure.microsoft.com
-  [管理ポータル]: http://manage.windowsazure.com
-  [ナビゲーション ウィンドウ]: ./media/sql-database-get-started/1NavPaneDBSelected_SQLTut.png
-  [1]: ./media/sql-database-get-started/2MainPageCustomCreateDB_SQLTut.png
-  [2]: ./media/sql-database-get-started/3DatabaseSettings_SQLTut.PNG
-  [3]: ./media/sql-database-get-started/4ServerSettings_SQLTut.PNG
-  [SQL データベースのファイアウォールに関する記事]: http://social.technet.microsoft.com/wiki/contents/articles/2677.sql-azure-firewall-ja-jp.aspx
-  [4]: ./media/sql-database-get-started/7DBConfigFirewallSAVE_SQLTut.png
-  [MSDN の記事]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee621790.aspx "MSDN の記事"
-  [5]: ./media/sql-database-get-started/20MainPageHome_SQLTut.PNG
-  [CREATE TABLE]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336258.aspx
-  [ALTER TABLE]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336286.aspx
-  [INSERT]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336284.aspx
-  [6]: ./media/sql-database-get-started/15DBPortalConnectMasterErr_SQLTut.PNG
-  [7]: ./media/sql-database-get-started/12DBPortalNewQuery_SQLTut.PNG
-  [8]: ./media/sql-database-get-started/16ExcelConnect_SQLTut.png
-  [9]: ./media/sql-database-get-started/19ExcelImport_SQLTut.png
-  [PowerPivot for Excel]: http://go.microsoft.com/fwlink/?LinkId=396969
-  [Managing SQL Databases Using SQL Server Management Studio (SQL Server Management Studio を使用した SQL データベースの管理)]: http://www.azure.microsoft.com/ja-jp/documentation/articles/sql-database-manage-azure-ssms/
-  [チュートリアル: Transact-SQL ステートメントの作成]: http://msdn.microsoft.com/ja-jp/library/ms365303.aspx
-  [Migrating Databases to SQL Database (データベースの SQL データベースへの移行)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee730904.aspx
-  [Copying Databases in SQL Database (データベースの SQL データベースへのコピー)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff951624.aspx
-  [Azure 仮想マシンへの SQL Server データベースの配置]: http://msdn.microsoft.com/ja-jp/library/dn195938(v=sql.120).aspx
+
+[Image1]: ./media/sql-database-get-started/1NavPaneDBSelected_SQLTut.png
+[Image2]: ./media/sql-database-get-started/2MainPageCustomCreateDB_SQLTut.png
+[Image3]: ./media/sql-database-get-started/3DatabaseSettings_SQLTut.PNG
+[Image4]: ./media/sql-database-get-started/4ServerSettings_SQLTut.PNG
+[Image5]: ./media/sql-database-get-started/5DBPortalDatabasesServers_SQLTut.PNG
+[Image6]: ./media/sql-database-get-started/6DBConfigFirewall_SQLTut.PNG
+[Image7]: ./media/sql-database-get-started/7DBConfigFirewallSAVE_SQLTut.png
+[Image8]: ./media/sql-database-get-started/20MainPageHome_SQLTut.PNG
+[Image9]: ./media/sql-database-get-started/9dblistschool_SQLTut.PNG
+[Image10]: ./media/sql-database-get-started/10dbportalmanagebutton_SQLTut.PNG
+[Image11]: ./media/sql-database-get-started/11ManageDatabaseLogin_SQLTut.PNG
+[Image12]: ./media/sql-database-get-started/12DBPortalNewQuery_SQLTut.PNG
+[Image13]: ./media/sql-database-get-started/13DBQueryResults_SQLTut.PNG
+[Image14]: ./media/sql-database-get-started/14DBPortalConnectMaster_SQLTut.PNG
+[Image15]: ./media/sql-database-get-started/15DBPortalConnectMasterErr_SQLTut.PNG
+[Image16]: ./media/sql-database-get-started/16ExcelConnect_SQLTut.png
+[Image17]: ./media/sql-database-get-started/17ExcelSelect_SQLTut.PNG
+[Image18]: ./media/sql-database-get-started/18ExcelTable_SQLTut.PNG
+[Image19]: ./media/sql-database-get-started/19ExcelImport_SQLTut.png
+[Image20]: ./media/sql-database-get-started/11ManageDatabaseLogin_SQLTut.PNG
