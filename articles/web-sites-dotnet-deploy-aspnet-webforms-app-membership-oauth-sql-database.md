@@ -7,7 +7,7 @@
 このチュートリアルでは、SQL データベースと連動するセキュリティ保護された ASP.NET 4.5 Web フォーム Web アプリケーションを開発する方法と、このアプリケーションを Azure にデプロイする方法について説明します。
 
 > [WACOM.NOTE]
-> このチュートリアルの MVC バージョンを読むには、「[メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC 5 アプリケーションを Azure の Web サイトにデプロイする][]」を参照してください。
+> このチュートリアルの MVC バージョンを読むには、「[メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC 5 アプリケーションを Azure の Web サイトにデプロイする][メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC 5 アプリケーションを Azure の Web サイトにデプロイする]」を参照してください。
 
 Azure アカウントは無料で開くことができます。また、まだ Visual Studio 2013 を持っていない場合は、SDK によって Visual Studio 2013 for Web Express が自動的にインストールされます。これで、Azure 向けのアプリケーションを無料で開発できます。
 
@@ -24,42 +24,42 @@ Azure アカウントは無料で開くことができます。また、まだ V
 
 今回は、Entity Framework を使用してデータベースにアクセスするシンプルな連絡先リスト Web アプリケーションを、ASP.NET 4.5 Web フォームを基盤に開発します。以下は、データベースへの読み取り/書き込みアクセスを許可する Web フォーム ページの画像です。
 
-![Contacts - Edit Page][]
+![Contacts - Edit Page][Contacts - Edit Page]
 
 > [WACOM.NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする][]か、[無料評価版にサインアップ][]してください。
+> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする][MSDN サブスクライバーの特典を有効にする]か、[無料評価版にサインアップ][無料評価版にサインアップ]してください。
 
 このチュートリアルで取り上げる内容は次のとおりです。
 
--   [開発環境を設定する][]
--   [Azure 環境を設定する][]
--   [ASP.NET Web フォーム アプリケーションを作成する][]
--   [アプリケーションにデータベースを追加する][]
--   [プロジェクトに対して SSL を有効にする][]
--   [OAuth 2.0 プロバイダーを追加する][]
--   [メンバーシップ API を使用してアクセスを制限する][]
--   [データベースが関連付けられたアプリケーションを Azure にデプロイする][]
--   [データベースを確認する][]
--   [次のステップ][]
+-   [開発環境を設定する][開発環境を設定する]
+-   [Azure 環境を設定する][Azure 環境を設定する]
+-   [ASP.NET Web フォーム アプリケーションを作成する][ASP.NET Web フォーム アプリケーションを作成する]
+-   [アプリケーションにデータベースを追加する][アプリケーションにデータベースを追加する]
+-   [プロジェクトに対して SSL を有効にする][プロジェクトに対して SSL を有効にする]
+-   [OAuth 2.0 プロバイダーを追加する][OAuth 2.0 プロバイダーを追加する]
+-   [メンバーシップ API を使用してアクセスを制限する][メンバーシップ API を使用してアクセスを制限する]
+-   [データベースが関連付けられたアプリケーションを Azure にデプロイする][データベースが関連付けられたアプリケーションを Azure にデプロイする]
+-   [データベースを確認する][データベースを確認する]
+-   [次のステップ][次のステップ]
 
 ## 開発環境を設定する
 
 最初に、Visual Studio 2013 と Azure SDK for .NET をインストールして開発環境を設定します。
 
-1.  まだインストールしていない場合は [Visual Studio 2013][] をインストールします。
-2.  [Azure SDK for Visual Studio 2013][] をインストールします。このチュートリアルでは、Azure SDK for Visual Studio 2013 の前に Visual Studio 2013 をインストールする必要があります。
+1.  まだインストールしていない場合は [Visual Studio 2013][Visual Studio 2013] をインストールします。
+2.  [Azure SDK for Visual Studio 2013][Azure SDK for Visual Studio 2013] をインストールします。このチュートリアルでは、Azure SDK for Visual Studio 2013 の前に Visual Studio 2013 をインストールする必要があります。
 
     > [WACOM.NOTE]
     >  マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から 30 分以上) かかる場合があります。
 
 3.  インストール プログラムの実行または保存を求めるメッセージが表示されたら、**[実行]** をクリックします。
 4.  **Web Platform Installer** のウィンドウで、**[インストール]** をクリックし、インストールの手順を進めます。
-    ![Web Platform Installer][]
+    ![Web Platform Installer][Web Platform Installer]
 
     > [WACOM.NOTE]
     >  この SDK をインストール済みの場合、インストールされる項目の数は 0 になります。インストールされる項目の数は **[Web Platform Installer]** ウィンドウの左下に表示されます。
 
-5.  **Visual Studio Update 2** をインストールしていない場合は、**[Visual Studio 2013 Update 2][]** 以降をダウンロードしてインストールします。
+5.  **Visual Studio Update 2** をインストールしていない場合は、**[Visual Studio 2013 Update 2][Visual Studio 2013 Update 2]** 以降をダウンロードしてインストールします。
 
     > [WACOM.NOTE]
     >  Goggle OAuth 2.0 を使用するには、また、警告を表示させずに SSL をローカルで使用するには、Visual Studio 2013 Update 2 以降をインストールする必要があります。また、Web フォームのスキャフォールディングを使用するには Update 2 が必要です。
@@ -76,21 +76,21 @@ Azure アカウントは無料で開くことができます。また、まだ V
 
 Azure SQL データベースは、SQL Server テクノロジに基づいて構築されたクラウドベースのリレーショナル データベース サービスです。SQL Server で動作するツールおよびアプリケーションは、SQL データベースでも動作します。
 
-1.  [Azure の管理ポータル][]で、左側のタブにある **[Web サイト]** をクリックし、**[新規]** をクリックします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]で、左側のタブにある **[Web サイト]** をクリックし、**[新規]** をクリックします。
     ![Web Platform Installer][1]
 2.  **[Web サイト]** をクリックし、**[カスタム作成]** をクリックします。
-    ![Custom Create][]
+    ![Custom Create][Custom Create]
     **新しい Web サイト - カスタム作成**ウィザードが開きます。
 
 3.  ウィザードの **[Web サイトの作成]** 手順で、アプリケーションの一意の URL として使用する文字列を **[URL]** ボックスに入力します。ここに入力した文字列と、このテキスト ボックスの右側に表示されている文字列を組み合わせたものが実際の URL になります。この図に表示されている URL は既に取得されている可能性が高いため、**別の URL を選択する**必要があります。
-    ![Contacts - Create New Web Site][]
+    ![Contacts - Create New Web Site][Contacts - Create New Web Site]
 4.  [Web ホスティング プラン] ドロップダウン リストで、現在の所在地に最も近いリージョンを選択します。この設定によって、使用する VM が実行されるデータ センターが指定されます。
 5.  **[データベース]** ボックスの一覧の **[無料の 20 MB SQL データベースの作成]** を選択します。
 6.  **[DB 接続文字列名]** ボックスは、既定値の *DefaultConnection* をそのまま使用します。
 7.  ボックスの下部にある矢印をクリックします。
     ウィザードの **[データベースの設定の指定]** 手順に進みます。
 8.  **[名前]** ボックスに「*`ContactDB`*.
-    ![Database Settings][]
+    ![Database Settings][Database Settings]
 9.  **[サーバー]** ボックスで、**[新しい SQL データベース サーバー]** を選択します。
     または、以前に SQL Server データベースを作成した場合は、ボックスの一覧からその SQL Server を選択できます。
 10. **[リージョン]** は、作成した Web サイトと同じエリアに設定します。
@@ -107,17 +107,17 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 ### プロジェクトを作成する
 
 1.  Visual Studio の **[ファイル]** メニューで **[新しいプロジェクト]** を選択します。
-    ![File Menu - New Project][]
-2.  左側で、**[テンプレート]**、**[Visual C\#]**、**[Web]** テンプレート グループの順に選択します。
+    ![File Menu - New Project][File Menu - New Project]
+2.  左側で、**[テンプレート]**、**[Visual C#]**、**[Web]** テンプレート グループの順に選択します。
 3.  中央の列で **[ASP.NET Web アプリケーション]** を選択します。
 4.  プロジェクトに「*ContactManager*」という名前を付けて、**[OK]** をクリックします。
-    ![New Project Dialog][]
+    ![New Project Dialog][New Project Dialog]
 
     > [WACOM.NOTE]
     >  このチュートリアル シリーズでは、プロジェクトの名前を「**ContactManager**」としています。チュートリアル シリーズのさまざまな場面で提供されるコードを説明どおりに動作させるため、まったく同じ名前を使用することをお勧めします。
 
 5.  **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[Web フォーム]** テンプレートを選択します。**[クラウドでのホスト]** チェック ボックスをオフにして (オンになっている場合)、**[OK]** をクリックします。
-    ![New ASP.NET Project dialog box][]
+    ![New ASP.NET Project dialog box][New ASP.NET Project dialog box]
     Web フォーム アプリケーションが作成されます。
 
     ### マスター ページを更新する
@@ -234,21 +234,21 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 現在、アプリケーションを作成してローカルで実行しています。このアプリケーションを Azure にデプロイします。
 
 1.  Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
-    ![Select Publish][]
+    ![Select Publish][Select Publish]
     **[Web の発行]** ダイアログ ボックスが表示されます。
 
 2.  **[Web の発行]** ダイアログ ボックスの **[プロファイル]** タブで、**[Windows Azure Web Sites]** をクリックします。
-    ![Publish Web dialog box][]
+    ![Publish Web dialog box][Publish Web dialog box]
 3.  まだサインインしていない場合、**[既存の Web サイトを選択]** ダイアログ ボックスの **[サインイン]** をクリックします。サインインしたら、このチュートリアルの最初に作成した Web サイトを選択します。**[OK]** をクリックして続行します。
-    ![Select Existing Web Site dialog box][]
+    ![Select Existing Web Site dialog box][Select Existing Web Site dialog box]
     Visual Studio によって発行設定がダウンロードされます。
 4.  **[Web の発行]** ダイアログ ボックスの **[発行]** をクリックします。
     ![Publish Web dialog box][3]
     Visual Studio の **[Web 発行アクティビティ]** ウィンドウに、発行の全体的なステータスが表示されます。
-    ![Web Publishing Activity][]
+    ![Web Publishing Activity][Web Publishing Activity]
 
 これで、作成したアプリケーションはクラウドで実行されています。このアプリケーションを次に Visual Studio からデプロイするときは、変更したファイル (または新しいファイル) のみがデプロイされます。
-![App in Browser][]
+![App in Browser][App in Browser]
 
 > [WACOM.NOTE]
 > 既に存在する Web サイトへの発行でエラーが発生した場合、その発行先を消去してから新しいファイルを追加します。
@@ -264,11 +264,11 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 まず、コードを使ってシンプルなデータ モデルを作成します。このデータ モデルが `Contacts` というクラスに格納されます。`Contacts` というクラス名にした理由は、Web Forms テンプレートが作成した Contact.aspx.cs ファイルに格納されている `Contact` クラスとのクラス名の競合を避けるためです。
 
 1.  **ソリューション エクスプローラー**で *Models* フォルダーを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
-    ![Select Class][]
+    ![Select Class][Select Class]
     **[新しい項目の追加]** ダイアログ ボックスが表示されます。
 
 2.  新しいクラスに「*Contacts.cs*」という名前を付けます。
-    ![Add New Item dialog box][]
+    ![Add New Item dialog box][Add New Item dialog box]
 3.  既定のコードを以下のコードに置き換えます。
 
     ``` prettyprint
@@ -291,17 +291,17 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 2.  ダイアログ ボックスの左側のウィンドウで、**[オンライン]**、**[Visual Studio ギャラリー]**、**[ツール]**、**[スキャフォールディング]** の順に選択します。
 3.  「Web Forms Scaffolding」が一覧に表示されない場合は、ダイアログ ボックス右側の検索ボックスに「Web Forms Scaffolding」と入力します。
 4.  Forms Scaffolder がインストールされていない場合は、**[ダウンロード]** を選択して Web Forms Scaffolding をインストールします。必要に応じて Visual Studio を再起動します。確認された場合は、プロジェクトへの変更を必ず保存してください。
-    ![Extensions and Updates dialog box][]
+    ![Extensions and Updates dialog box][Extensions and Updates dialog box]
 5.  プロジェクトをビルドします (**Ctrl + Shift + B**)。
     プロジェクトは、スキャフォールディング機能を使用する前にビルドする必要があります。
 6.  **ソリューション エクスプローラー**で*プロジェクト*を右クリックし、**[追加]**、**[新しいスキャフォールディング項目]** の順に選択します。
     **[スキャフォールディングの追加]** ダイアログ ボックスが表示されます。
 7.  左側のウィンドウで **[Web フォーム]** を選択し、中央のウィンドウで **[Entity Framework を使用している Web フォーム]** を選択して、**[追加]** をクリックします。
-    ![Add Scaffold dialog box][]
+    ![Add Scaffold dialog box][Add Scaffold dialog box]
     **[Web フォーム ページの追加]** ダイアログ ボックスが表示されます。
 
 8.  **[Web フォーム ページの追加]** ダイアログ ボックスで、**[モデル クラス]** を `Contact (ContactManager.Models)` に設定します。**[データ コンテキスト クラス]** を `ApplicationDbContext (ContactManager.Models)` に設定します。**[追加]** をクリックします。
-    ![Add Web Forms Pages dialog box][]
+    ![Add Web Forms Pages dialog box][Add Web Forms Pages dialog box]
 
 Web Forms Scaffolder によって、*Default.aspx*、*Delete.aspx*、*Edit.aspx*、*Insert.aspx* の各ページを格納する新しいフォルダーが作成されます。また、*DynamicData* フォルダーも作成されます。このフォルダーには *EntityTemplates* フォルダーと *FieldTemplates* フォルダーが格納されています。`ApplicationDbContext` はメンバーシップ データベースと連絡先データの両方に使用されます。
 
@@ -340,7 +340,7 @@ Web Forms Scaffolder によって、*Default.aspx*、*Delete.aspx*、*Edit.aspx*
     protected override void Seed(ContactManager.Models.ApplicationDbContext context){ context.Contacts.AddOrUpdate(p => p.Name, new Contacts { ContactId = 1, Name = "Ivan Irons", Address = "One Microsoft Way", City = "Redmond", State = "WA", Zip = "10999", Email = "ivani@wideworldimporters.com", }, new Contacts { ContactId = 2, Name = "Brent Scholl", Address = "5678 1st Ave W", City = "Redmond", State = "WA", Zip = "10999", Email = "brents@wideworldimporters.com", }, new Contacts { ContactId = 3, Name = "Terrell Bettis", Address = "9012 State St", City = "Redmond", State = "WA", Zip = "10999", Email = "terrellb@wideworldimporters.com", }, new Contacts { ContactId = 4, Name = "Jo Cooper", Address = "3456 Maple St", City = "Redmond", State = "WA", Zip = "10999", Email = "joc@wideworldimporters.com", }, new Contacts { ContactId = 5, Name = "Ines Burnett", Address = "7890 2nd Ave E", City = "Redmond", State = "WA", Zip = "10999", Email = "inesb@wideworldimporters.com", } );}
     ```
 
-    このコードでは、連絡先情報を使用してデータベースを初期化 (初期データ投入) します。シード データベースの生成の詳細については、「[Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)][]」を参照してください。
+    このコードでは、連絡先情報を使用してデータベースを初期化 (初期データ投入) します。シード データベースの生成の詳細については、「[Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)][Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)]」を参照してください。
 
 7.  **[パッケージ マネージャー コンソール]** で、次のコマンドを入力します。
 
@@ -349,7 +349,7 @@ Web Forms Scaffolder によって、*Default.aspx*、*Delete.aspx*、*Edit.aspx*
     ```
 
     `update-database` によって、データベースを作成する最初の Migration が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます。
-    ![Package Manager Console][]
+    ![Package Manager Console][Package Manager Console]
 
 ### アプリケーションをローカルで実行してデータを表示する
 
@@ -359,7 +359,7 @@ Web Forms Scaffolder によって、*Default.aspx*、*Delete.aspx*、*Edit.aspx*
 2.  **Ctrl キーを押しながら F5 キーを押して**アプリケーションを実行します。
     ブラウザーが開き、*Default.aspx* ページが表示されます。
 3.  ページ最上部の **Contact Demo** リンクを選択して *Contact List* ページを表示します。
-    ![Contacts List Page][]
+    ![Contacts List Page][Contacts List Page]
 
 ## プロジェクトに対して SSL を有効にする
 
@@ -369,20 +369,20 @@ Secure Sockets Layer (SSL) は、Web サーバーと Web クライアント間�
 2.  **[SSL Enabled]** を `true` に変更します。
 3.  後で使用するための **SSL URL** をコピーします。
     過去に SSL Web サイトを作成したことがなければ、SSL URL は `https://localhost:44300/` になります (下記参照)。
-    ![Project Properties][]
+    ![Project Properties][Project Properties]
 4.  **ソリューション エクスプローラー**で **Contact Manager** プロジェクトを右クリックし、**[プロパティ]** をクリックします。
 5.  左側のタブで **[Web]** をクリックします。
 6.  先ほど保存した **SSL URL** を使用するように **[Project Url]** を変更します。
-    ![Project Web Properties][]
+    ![Project Web Properties][Project Web Properties]
 7.  **CTRL + S キーを押して**ページを保存します。
 8.  **Ctrl キーを押しながら F5 キーを押して**アプリケーションを実行します。
     Visual Studio により、SSL の警告を回避するためのオプションが表示されます。
 9.  IIS Express SSL 証明書を信頼する場合は **[はい]** をクリックして続行します。
-    ![IIS Express SSL certificate details][]
+    ![IIS Express SSL certificate details][IIS Express SSL certificate details]
     セキュリティ警告が表示されます。
 
 10. **[はい]** をクリックしてローカルホストに証明書をインストールします。
-    ![Security Warning dialog box][]
+    ![Security Warning dialog box][Security Warning dialog box]
     ブラウザー ウィンドウが表示されます。
 
 ローカルで SSL を使用して Web アプリケーションを簡単にテストできるようになりました。
@@ -402,17 +402,17 @@ ASP.NET Web フォームは、メンバーシップと認証のオプション�
      app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions() { ClientId = "", ClientSecret = "" });
     ```
 
-3.  [Google Developers Console][] にアクセスします。Google デベロッパーの電子メール アカウント (gmail.com) でサインインする必要があります。Google アカウントを持っていない場合は、**[Create an account]** リンクを選択します。
+3.  [Google Developers Console][Google Developers Console] にアクセスします。Google デベロッパーの電子メール アカウント (gmail.com) でサインインする必要があります。Google アカウントを持っていない場合は、**[Create an account]** リンクを選択します。
     **Google Developers Console** が表示されます。
     ![Google Developers Console][6]
 
 4.  **[Create Project]** ボタンをクリックして、プロジェクトの名前と ID を入力します (既定値を使用できます)。**同意のチェック ボックス**をオンにして、**[Create]** ボタンをクリックします。
-    ![Google - New Project][]
+    ![Google - New Project][Google - New Project]
     新しいプロジェクトが数秒で作成され、新しいプロジェクトのページがブラウザーに表示されます。
 5.  左側のタブで **[APIs & auth]**、**[Credentials]** の順にクリックします。
 6.  **[OAuth]** にある **[Create New Client ID]** をクリックします。
     **[Create Client ID]** ダイアログ ボックスが表示されます。
-    ![Google - Create Client ID][]
+    ![Google - Create Client ID][Google - Create Client ID]
 7.  **[Create Client ID]** ダイアログでは、アプリケーションの種類を既定の **[Web application]** のままにします。
 8.  **[Authorized JavaScript Origins]** には、このチュートリアルで既に使用した SSL URL (**<https://localhost:44300/>**) を設定します (その他の SSL プロジェクトを作成している場合を除く)。
     この URL がアプリケーションのオリジンです。このサンプルではローカルホストのテスト URL を入力するだけですが、アカウントには複数の URL を入力できます (ローカルホストおよび本稼働用)。
@@ -483,13 +483,13 @@ ASP.NET Web フォームは、メンバーシップと認証のオプション�
 
 12. **Ctrl キーを押しながら F5 キーを押して**アプリケーションをビルドし、実行します。**[Log in]** リンクをクリックします。
 13. **[Use another service to log in]** の **[Google]** をクリックします。
-    ![Log in][]
+    ![Log in][Log in]
 14. 資格情報の入力が必要な場合、Google のサイトにリダイレクトされるので、リダイレクト先のサイトで資格情報を入力します。
-    ![Google - Sign in][]
+    ![Google - Sign in][Google - Sign in]
 15. 資格情報を入力すると、先ほど作成した Web アプリケーションへの権限の付与が求められます。
-    ![Project Default Service Account][]
+    ![Project Default Service Account][Project Default Service Account]
 16. **[Accept]** をクリックします。クリックすると、リダイレクトによって **ContactManager** アプリケーションの **[Register]** ページに戻ります。このページで Google アカウントを登録することができます。
-    ![Register with your Google Account][]
+    ![Register with your Google Account][Register with your Google Account]
 17. Google アカウントに使用するローカルの電子メール登録名を変更できますが、通常は既定の電子メール エイリアス (認証に使用したエイリアス) を変更しません。**[Log in]** をクリックします。
 
 ## メンバーシップ API を使用してアクセスを制限する
@@ -553,7 +553,7 @@ ASP.NET Identity を使用すると、管理者ロールの追加および管理
     Update-Database
     ```
 
-    このコードによって `canEdit` という新しいロールが作成され、<canEditUser@wideworldimporters.com> の電子メールが割り当てられた新しいローカル ユーザーが作成されます。その後、コードによって <canEditUser@wideworldimporters.com> が `canEdit` ロールに追加されます。詳細については、「[ASP.NET Identity resource page (ASP.NET Identity リソース ページ)][]」を参照してください。
+    このコードによって `canEdit` という新しいロールが作成され、<canEditUser@wideworldimporters.com> の電子メールが割り当てられた新しいローカル ユーザーが作成されます。その後、コードによって <canEditUser@wideworldimporters.com> が `canEdit` ロールに追加されます。詳細については、「[ASP.NET Identity resource page (ASP.NET Identity リソース ページ)][ASP.NET Identity resource page (ASP.NET Identity リソース ページ)]」を参照してください。
 
     </p>
 
@@ -606,7 +606,7 @@ Web アプリケーションが完成したら、Azure に発行することが�
 
 1.  Visual Studio でプロジェクトをビルドします (**Ctrl + Shift + B**)。
 2.  **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[発行]** をクリックします。
-    ![Publish menu option][]
+    ![Publish menu option][Publish menu option]
     **[Web の発行]** ダイアログ ボックスが表示されます。
     ![Publish Web dialog box][7]
 3.  **[プロファイル]** タブで発行先に **[Windows Azure Web Sites]** をクリックします (選択されていない場合)。
@@ -633,7 +633,7 @@ Web アプリケーションが完成したら、Azure に発行することが�
 
 1.  ブラウザーで **[Contact Demo]** リンクをクリックします。
     [Contacts List] が表示されます。
-    ![Contacts listed in Browser][]
+    ![Contacts listed in Browser][Contacts listed in Browser]
 
 2.  **[Contacts List]** ページで **[Create New]** を選択します。
     ![Contacts listed in Browser][11]
@@ -641,10 +641,10 @@ Web アプリケーションが完成したら、Azure に発行することが�
 3.  次の電子メール アドレスとパスワードを入力して **[Log in]** ボタンをクリックします。
     **Email**:`canEditUser@wideworldimporters.com`
     **Password**:`Pa$$word1`
-    ![Log in Page][]
+    ![Log in Page][Log in Page]
 
 4.  各フィールドに新しいデータを入力して **[Insert]** ボタンをクリックします。
-    ![Add New Contact Page][]
+    ![Add New Contact Page][Add New Contact Page]
     新しいレコードが追加された *EditContactList.aspx* ページが表示されます。
     ![Add New Contact Page][12]
 
@@ -657,7 +657,7 @@ Web アプリケーションが完成したら、Azure に発行することが�
 1.  Visual Studio の **[表示]** メニューで **[サーバー エクスプローラー]** を選択します。
 2.  **サーバー エクスプローラー**で **[Web サイト]** に移動します。
 3.  各 Web サイトのインスタンスを右クリックし、**[Web サイトの停止]** を選択します。
-    ![Stop Web Site menu item][]
+    ![Stop Web Site menu item][Stop Web Site menu item]
 
     Microsoft Azure の管理ポータルから Web サイトを選択し、ページ下部の **[停止]** アイコンをクリックする方法もあります。
     ![Add New Contact Page][13]
@@ -670,7 +670,7 @@ Web アプリケーションが完成したら、Azure に発行することが�
 
 1.  Visual Studio で**サーバー エクスプローラー**を開き、**[ContactDB]** に移動します。
 2.  **[ContactDB]** を右クリックし、**[SQL Server オブジェクト エクスプローラーで開く]** を選択します。
-    ![Open in SQL Server Object Explorer menu item][]
+    ![Open in SQL Server Object Explorer menu item][Open in SQL Server Object Explorer menu item]
 3.  **[ファイアウォール ルールの追加]** ダイアログ ボックスが表示されたら、**[ファイアウォール ルールを追加]** をクリックします。
 
     > [WACOM.NOTE]
@@ -683,16 +683,16 @@ Web アプリケーションが完成したら、Azure に発行することが�
 
 5.  **[contactDB]** データベース、**[テーブル]** の順に展開します。
 6.  **[dbo.AspNetUsers]** テーブルを右クリックし、**[データの表示]** を選択します。
-    ![View Data menu item][]
+    ![View Data menu item][View Data menu item]
     <canEditUser@contoso.com> ユーザーに関連付けられているデータが表示されます。
-    ![ContactManager window][]
+    ![ContactManager window][ContactManager window]
 
 ### データベースを編集して、管理者ロールにユーザーを追加する
 
 先ほどは、コードを使用してユーザーを canEdit ロールに追加しました。それ以外にも、メンバーシップ テーブル内のデータを直接操作する方法もあります。以下の手順では、その方法を使用してロールにユーザーを追加します。
 
 1.  **SQL Server オブジェクト エクスプローラー**で **[dbo.AspNetUserRoles]** を右クリックし、**[データの表示]** を選択します。
-    ![AspNetUserRoles data][]
+    ![AspNetUserRoles data][AspNetUserRoles data]
 2.  *RoleId* をコピーして空の (新しい) 行に貼り付けます。
     ![AspNetUserRoles data][14]
 3.  **dbo.AspNetUsers** テーブルで、ロールを割り当てるユーザーを特定し、ユーザーの *ID* をコピーします。
@@ -703,16 +703,16 @@ Web アプリケーションが完成したら、Azure に発行することが�
 
 ## 次のステップ
 
-ASP.NET Web フォームの詳細については、ASP.NET Web サイトの「 [Learn About ASP.NET Web Forms (ASP.NET Web フォームについて学習する)][]」や、[Microsoft Azure のチュートリアルとガイド][]を参照してください。
+ASP.NET Web フォームの詳細については、ASP.NET Web サイトの「 [Learn About ASP.NET Web Forms (ASP.NET Web フォームについて学習する)][Learn About ASP.NET Web Forms (ASP.NET Web フォームについて学習する)]」や、[Microsoft Azure のチュートリアルとガイド][Microsoft Azure のチュートリアルとガイド]を参照してください。
 
-このチュートリアルは、Rick Anderson (Twitter [@RickAndMSFT][]) が Tom Dykstra と Barry Dorrans (Twitter [@blowdart][]) の協力を得て執筆した「[メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET MVC 5 アプリケーションを Azure の Web Site に展開する][メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC 5 アプリケーションを Azure の Web サイトにデプロイする]」の内容に基づいています。
+このチュートリアルは、Rick Anderson (Twitter [@RickAndMSFT][@RickAndMSFT]) が Tom Dykstra と Barry Dorrans (Twitter [@blowdart][@blowdart]) の協力を得て執筆した「[メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET MVC 5 アプリケーションを Azure の Web Site に展開する][メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC 5 アプリケーションを Azure の Web サイトにデプロイする]」の内容に基づいています。
 
-役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。新しいトピックについては、「[Show Me How With Code (コードの使用方法)][]」で要求および投票することもできます。
+役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。新しいトピックについては、「[Show Me How With Code (コードの使用方法)][Show Me How With Code (コードの使用方法)]」で要求および投票することもできます。
 
   [メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC 5 アプリケーションを Azure の Web サイトにデプロイする]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/
   [Contacts - Edit Page]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms00.png
-  [MSDN サブスクライバーの特典を有効にする]: /en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
-  [無料評価版にサインアップ]: /en-us/pricing/free-trial/?WT.mc_id=A261C142F
+  [MSDN サブスクライバーの特典を有効にする]: /ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
+  [無料評価版にサインアップ]: /ja-jp/pricing/free-trial/?WT.mc_id=A261C142F
   [開発環境を設定する]: #set-up-the-development-environment
   [Azure 環境を設定する]: #Set-up-the-Azure-environment
   [ASP.NET Web フォーム アプリケーションを作成する]: #Create-an-ASP.NET-Web-Forms-Application

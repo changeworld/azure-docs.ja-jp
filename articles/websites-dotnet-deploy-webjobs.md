@@ -214,7 +214,7 @@ Azure Web ジョブと Web ジョブ SDK の詳細については、「[Azure We
   [New Azure WebJob Project menu entry]: ./media/websites-dotnet-deploy-webjobs/nawj.png
   [New Project dialog showing WebJob template]: ./media/websites-dotnet-deploy-webjobs/np.png
   [Add Azure WebJob dialog]: ./media/websites-dotnet-deploy-webjobs/aaw2.png
-  [Azure Scheduler]: /en-us/services/scheduler/
+  [Azure Scheduler]: /ja-jp/services/scheduler/
   []: http://schemastore.org/schemas/json/webjob-publish-settings.json
   [1]: http://schemastore.org/schemas/json/webjobs-list.json
   [Azure の Web サイトをデプロイする方法]: /ja-jp/documentation/articles/websites-dotnet-deploy/

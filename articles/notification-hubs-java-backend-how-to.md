@@ -358,14 +358,14 @@ Java コードを実行すると、ターゲット デバイスに表示され�
 
   [Java]: /ja-jp/documentation/articles/notification-hubs-java-backend-how-to/ "Java"
   [PHP]: /ja-jp/documentation/articles/notification-hubs-php-backend-how-to/ "PHP"
-  [通知ハブの REST API]: http://msdn.microsoft.com/en-us/library/dn223264.aspx
+  [通知ハブの REST API]: http://msdn.microsoft.com/ja-jp/library/dn223264.aspx
   [Notification Hubs の使用]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-ios-get-started/
-  [.NET 通知ハブの SDK]: http://msdn.microsoft.com/en-us/library/jj933431.aspx
+  [.NET 通知ハブの SDK]: http://msdn.microsoft.com/ja-jp/library/jj933431.aspx
   [Java REST wrapper sample (Java REST ラッパー サンプル)]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-java
   [チュートリアルを完了する]: #complete-tutorial
-  [MSDN の記事]: http://msdn.microsoft.com/en-us/library/dn530746.aspx
+  [MSDN の記事]: http://msdn.microsoft.com/ja-jp/library/dn530746.aspx
   [Apache HttpComponents]: http://hc.apache.org/httpcomponents-client-ga/
   [Apache Commons-Codec]: http://commons.apache.org/proper/commons-codec/
   [Apache Commons-Io]: http://commons.apache.org/proper/commons-io/
-  [ここ]: http://msdn.microsoft.com/en-us/library/dn495627.aspx
-  [REST API のメソッド]: http://msdn.microsoft.com/en-us/library/dn495827.aspx
+  [ここ]: http://msdn.microsoft.com/ja-jp/library/dn495627.aspx
+  [REST API のメソッド]: http://msdn.microsoft.com/ja-jp/library/dn495827.aspx

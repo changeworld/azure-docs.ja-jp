@@ -8,15 +8,15 @@
 
 このチュートリアルは、Azure の管理ポータルのイメージ ギャラリーを使用すると Windows Server を実行する Azure 仮想マシン (VM) を簡単に作成できることを示します。イメージ ギャラリーは、Windows オペレーティング システム、Linux ベースのオペレーティング システム、アプリケーション イメージなどさまざまなイメージを提供します。
 
-> [WACOM.NOTE] このチュートリアルは、Azure VM の使用経験がなくても完了できます。ただし、Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、[Azure アカウントの作成に関するページ][]を参照してください。
+> [WACOM.NOTE] このチュートリアルは、Azure VM の使用経験がなくても完了できます。ただし、Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、[Azure アカウントの作成に関するページ][Azure アカウントの作成に関するページ]を参照してください。
 
 このチュートリアルは、以下について説明します。
 
--   [仮想マシンの作成方法][]
--   [仮想マシンを作成後、ログオンする方法][]
--   [新しい仮想マシンにデータ ディスクを接続する方法][]
+-   [仮想マシンの作成方法][仮想マシンの作成方法]
+-   [仮想マシンを作成後、ログオンする方法][仮想マシンを作成後、ログオンする方法]
+-   [新しい仮想マシンにデータ ディスクを接続する方法][新しい仮想マシンにデータ ディスクを接続する方法]
 
-さらに詳しい内容は、「[仮想マシン][]」を参照してください。
+さらに詳しい内容は、「[仮想マシン][仮想マシン]」を参照してください。
 
 ## <span id="createvirtualmachine"></span> </a>仮想マシンの作成方法
 
@@ -24,49 +24,49 @@
 
 > [WACOM.NOTE] さらに、より高度でカスタマイズが可能な [Azure プレビュー ポータル][1]を試すことによって、仮想マシンの作成、複数マシンのアプリケーション テンプレートのデプロイメントの自動化、VM の強化された監視や診断の機能の使用など、さまざまなことが実行できます。この 2 つのポータルにある利用可能な VM の構成オプションには、性質上、重複するものもありますが、まったく同じではありません。
 
-[WACOM.INCLUDE [virtual-machines-create-WindowsVM][]]
+[WACOM.INCLUDE [virtual-machines-create-WindowsVM][virtual-machines-create-WindowsVM]]
 
 ## <span id="logon"></span> </a>仮想マシンを作成後、ログオンする方法
 
 このセクションでは、仮想マシンをログオンする方法について説明します。これによって、仮想マシン上で実行する設定とアプリケーションを管理できます。
 
-[WACOM.INCLUDE [virtual-machines-log-on-win-server][]]
+[WACOM.INCLUDE [virtual-machines-log-on-win-server][virtual-machines-log-on-win-server]]
 
 ## <span id="attachdisk"></span> </a>新しい仮想マシンにデータ ディスクを接続する方法
 
-このセクションでは、空のデータ ディスクを仮想マシンに接続する方法について説明します。空のディスクの接続方法と、既存のディスクの接続方法の詳細については、「[データ ディスクを Virtual Machine に接続する方法][]」を参照してください。
+このセクションでは、空のデータ ディスクを仮想マシンに接続する方法について説明します。空のディスクの接続方法と、既存のディスクの接続方法の詳細については、「[データ ディスクを Virtual Machine に接続する方法][データ ディスクを Virtual Machine に接続する方法]」を参照してください。
 
-1.  [Azure 管理ポータル][]にサインインします。
+1.  [Azure 管理ポータル][Azure 管理ポータル]にサインインします。
 
 2.  **\[仮想マシン\]** をクリックし、次に **[MyTestVM]** 仮想マシンを選択します。
 
-    ![Select MyTestVM][]
+    ![Select MyTestVM][Select MyTestVM]
 
 3.  最初にクイック スタート ページが表示される場合があります。その場合は、上部にある **[ダッシュボード]** を選択します。
 
-    ![Select Dashboard][]
+    ![Select Dashboard][Select Dashboard]
 
 4.  コマンド バーで、**[ディスクの接続]** をクリックし、表示される **\[空のディスクの接続\]** をクリックします。
 
-    ![Select Attach from the command bar][]
+    ![Select Attach from the command bar][Select Attach from the command bar]
 
 5.  **[仮想マシン名]**、**[ストレージの場所]**、**[ファイル名]**、**[ホスト キャッシュの設定]** の値は既に定義されています。必要なのは、ディスクのサイズを入力することだけです。**[サイズ]** ボックスに「**5**」と入力します。次にチェック マークをクリックして、仮想マシンに空のデータ ディスクを接続します。
 
-    ![Specify the size of the empty disk][]
+    ![Specify the size of the empty disk][Specify the size of the empty disk]
 
     > [WACOM.NOTE] ディスクはすべて、VHD ファイルから Windows Azure のストレージに作成されます。ストレージに追加する VHD ファイルの名前は **[ファイル名]** で指定できますが、ディスクの名前は Azure によって自動的に生成されます。
 
 6.  ダッシュボードに戻り、空のデータ ディスクが仮想マシンに正常に接続されたことを確認します。空のディスクは 2 番目のディスクとして **[ディスク]** 一覧に OS ディスクと共に表示されます。
 
-    ![空のディスクの接続][]
+    ![空のディスクの接続][空のディスクの接続]
 
     仮想マシンにデータ ディスクを接続した後も、ディスクはオフラインで初期化されていません。データ ディスクを使ってデータを保存する前に、仮想マシンにログオンして、ディスクを初期化する必要があります。
 
-7.  仮想マシンに接続するには、前のセクション「[仮想マシンを作成後、ログオンする方法][]」(\#logon) の手順を使用します。
+7.  仮想マシンに接続するには、前のセクション「[仮想マシンを作成後、ログオンする方法][仮想マシンを作成後、ログオンする方法]」(\#logon) の手順を使用します。
 
 8.  仮想マシンにログオンした後、**サーバー マネージャー**を開きます。左側のウィンドウで、**[ファイル サービスと記憶域サービス]** を選択します。
 
-    ![Expand File and Storage Services in Server Manager][]
+    ![Expand File and Storage Services in Server Manager][Expand File and Storage Services in Server Manager]
 
 9.  展開したメニューの **[ディスク]** を選択します。
 
@@ -74,15 +74,15 @@
 
 10. **[ディスク]** セクションには、一覧の disk 0、disk 1、disk 2 の 3 つのディスクがあります。disk 0 は OS ディスクで、disk 1 は一時的なリソース ディスク (データ ストレージ用には使用できない) です。disk 2 は仮想マシンに接続したデータ ディスクです。以前に指定したように、データ ディスクは 5 GB の容量があります。disk 2 を右クリックし、**[初期化]** を選択します。
 
-    ![Start initialization][]
+    ![Start initialization][Start initialization]
 
 11. **[はい]** をクリックして初期化処理を開始します。
 
-    ![Continue initialization][]
+    ![Continue initialization][Continue initialization]
 
 12. もう一度、disk 2 を右クリックし、**[ボリューム]** を選択します。
 
-    ![Create the volume][]
+    ![Create the volume][Create the volume]
 
 13. 提供される既定の値を使用してウィザードを完了します。ウィザードを終了すると、新しいボリュームが **[ボリューム]** セクションに一覧表示されます。
 
@@ -94,13 +94,13 @@
 
 Azure での Windows 仮想マシンの構成に関する詳細については、次の記事を参照してください。
 
-[クラウド サービス内の仮想マシンを相互に接続する方法][]
+[クラウド サービス内の仮想マシンを相互に接続する方法][クラウド サービス内の仮想マシンを相互に接続する方法]
 
-[Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード][]
+[Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード][Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード]
 
-[データ ディスクを Virtual Machine に接続する方法][]
+[データ ディスクを Virtual Machine に接続する方法][データ ディスクを Virtual Machine に接続する方法]
 
-[仮想マシンの可用性管理][]
+[仮想マシンの可用性管理][仮想マシンの可用性管理]
 
   [Azure ポータル]: /ja-jp/documentation/articles/virtual-machines-windows-tutorial/ "Azure ポータル"
   [Azure プレビュー ポータル]: /ja-jp/documentation/articles/virtual-machines-windows-tutorial-azure-preview/ "Azure プレビュー ポータル"

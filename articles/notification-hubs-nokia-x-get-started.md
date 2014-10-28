@@ -16,7 +16,7 @@
 -   [アプリケーションへの通知の送信方法][アプリケーションへの通知の送信方法]
 -   [アプリケーションのテスト][アプリケーションのテスト]
 
-<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
+<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
 
 このチュートリアルには、次のものが必要です。
 
@@ -298,7 +298,7 @@
 
 通知は、[REST インターフェイス][REST インターフェイス]を使用するどのバックエンドからも通知ハブを使用して送信できます。このチュートリアルでは、.NET コンソール アプリケーションを使用して表示します。
 
-1.  Visual C\# の新しいコンソール アプリケーションを作成します。
+1.  Visual C# の新しいコンソール アプリケーションを作成します。
 
     ![][14]
 
@@ -358,7 +358,7 @@ Android アプリケーションが通知ハブへの登録を完了すると、
   [通知ハブにアプリケーションを接続する]: #connect-hub
   [アプリケーションへの通知の送信方法]: #send
   [アプリケーションのテスト]: #test-app
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F
+  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F
   [ここ]: http://developer.nokia.com/resources/library/nokia-x/getting-started/environment-setup.html
   [1]: http://developer.nokia.com/resources/library/nokia-x/getting-started/device-setup.html
   [2]: http://go.microsoft.com/fwlink/?linkid=389797&clcid=0x409
@@ -377,6 +377,6 @@ Android アプリケーションが通知ハブへの登録を完了すると、
   [11]: ./media/notification-hubs-nokia-x-get-started/NewAndroidApp.png
   [12]: ./media/notification-hubs-nokia-x-get-started/AndroidBuildTarget.png
   [13]: ./media/notification-hubs-nokia-x-get-started/NewJavaClass.png
-  [REST インターフェイス]: http://msdn.microsoft.com/en-us/library/windowsazure/dn223264.aspx
+  [REST インターフェイス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn223264.aspx
   [14]: ./media/notification-hubs-nokia-x-get-started/ConsoleProject.png
   [WindowsAzure.ServiceBus NuGet パッケージ]: http://nuget.org/packages/WindowsAzure.ServiceBus/

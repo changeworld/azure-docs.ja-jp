@@ -158,14 +158,14 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 
 <!-- Anchors. --> <!-- Images --> <!-- URLs. -->
 
-  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data "Windows ストア C#"
+  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data "Windows ストア C#"
   [Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-offline-data "Windows Phone"
   [iOS]: /ja-jp/documentation/articles/mobile-services-ios-get-started-offline-data "iOS"
   [Xamarin.iOS]: /ja-jp/documentation/articles/mobile-services-xamarin-ios-get-started-offline-data "Xamarin.iOS"
   [Xamarin.Android]: /ja-jp/documentation/articles/mobile-services-xamarin-android-get-started-offline-data "Xamarin.Android"
   [モバイル サービスの使用]: /ja-jp/documentation/articles/partner-xamarin-mobile-services-android-get-started/
   [データの使用]: /ja-jp/documentation/articles/partner-xamarin-mobile-services-android-get-started-data/
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AE564AB28
+  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28
   [オフライン機能をサポートするようにアプリケーションを更新する]: #enable-offline-app
   [モバイル サービスに接続されているアプリケーションをテストする]: #test-online-app
   [Xamarin 拡張機能]: http://xamarin.com/visual-studio

@@ -241,7 +241,7 @@ Git でモバイル サービスにスクリプトをデプロイすることに
 
 
 
-  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac/ "Windows ストア C#"
+  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac/ "Windows ストア C#"
   [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-aad-rbac/ ".NET バックエンド"
   [JavaScript バックエンド]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac/ "JavaScript バックエンド"
   [Graph API]: http://msdn.microsoft.com/library/azure/hh974478.aspx
@@ -255,8 +255,8 @@ Git でモバイル サービスにスクリプトをデプロイすることに
   [mobile-services-aad-rbac-create-sales-group]: ../includes/mobile-services-aad-rbac-create-sales-group.md
   [Register to use an Azure Active Directory Login (Azure Active Directory のログインの使用を登録する)]: /ja-jp/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
   [mobile-services-generate-aad-app-registration-access-key]: ../includes/mobile-services-generate-aad-app-registration-access-key.md
-  [Windows Azure AD Graph のエラー コード]: http://msdn.microsoft.com/en-us/library/azure/hh974480.aspx
-  [IsMemberOf]: http://msdn.microsoft.com/en-us/library/azure/dn151601.aspx
+  [Windows Azure AD Graph のエラー コード]: http://msdn.microsoft.com/ja-jp/library/azure/hh974480.aspx
+  [IsMemberOf]: http://msdn.microsoft.com/ja-jp/library/azure/dn151601.aspx
   []: ./media/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac/table-perms.png
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   [1]: ./media/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac/insert-table-op-view.png

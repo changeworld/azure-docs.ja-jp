@@ -23,11 +23,11 @@ RemoteApp のデプロイメントには、次の 2 種類の方法がありま�
 
 サービスを作成する前に、以下の操作が必要です。
 
--   Azure RemoteApp のパフォーマンスを高めるために[必須の更新][]をインストールします。
--   [RemoteApp のプレビュー][]にサインアップします。
+-   Azure RemoteApp のパフォーマンスを高めるために[必須の更新][必須の更新]をインストールします。
+-   [RemoteApp のプレビュー][RemoteApp のプレビュー]にサインアップします。
 -   RemoteApp サービス アカウントとして使用するためのユーザー アカウントを Active Directory に作成します。ドメインへのマシンの参加のみが実行可能になるように、このアカウントのアクセス許可を制限します。
 -   内部設置型ネットワークに関する情報、つまり IP アドレス情報と VPN デバイスの詳細情報を収集します。
--   [Azure PowerShell][] モジュールをインストールします。
+-   [Azure PowerShell][Azure PowerShell] モジュールをインストールします。
 -   アクセス権を付与するユーザーとグループに関する情報を集めます。この情報とは、ユーザーまたはグループの Microsoft アカウントの情報または Active Directory の組織アカウントの情報です。
 
 ## **手順 1.テンプレート イメージの作成**
@@ -121,7 +121,7 @@ Azure RemoteApp では、ユーザーと共有するすべてのプログラム�
 
 ## **手順 2.RemoteApp サービスの作成**
 
-1.  [Azure の管理ポータル][]で、[RemoteApp] ページに移動します。
+1.  [Azure の管理ポータル][Azure の管理ポータル]で、[RemoteApp] ページに移動します。
 2.  **[新規] \> [VPN で作成]** の順にクリックします。
 3.  サービスの名前を入力してから、**[RemoteApp サービスの作成]** をクリックします。
 
@@ -141,7 +141,7 @@ RemoteApp サービスが作成されたら、RemoteApp の **[クイック ス�
     -   DNS サーバーの IP アドレス
     -   VPN の IP アドレス
 
-    詳しくは、「[管理ポータルでのサイト間 VPN の構成][]」を参照してください。
+    詳しくは、「[管理ポータルでのサイト間 VPN の構成][管理ポータルでのサイト間 VPN の構成]」を参照してください。
 
 4.  次に、[クイック スタート] ページに戻り、**[スクリプトを取得]** をクリックして、先ほど作成した仮想ネットワークに VPN デバイスを接続する構成のためのスクリプトをダウンロードします。VPN デバイスに関する次の情報が必要になります。
 
@@ -165,7 +165,7 @@ RemoteApp テンプレート イメージにはユーザーと共有するプロ
 
 ## **手順 5.Active Directory ディレクトリの同期の構成**
 
-RemoteApp では、Azure Active Directory と内部設置型 Active Directory との間でディレクトリの同期が必要になります。これにより、ユーザー、グループ、連絡先、およびパスワードが Azure Active Directory テナントと同期します。計画に関する情報、および詳しい手順については、「[ディレクトリ同期のロードマップ][]」を参照してください。
+RemoteApp では、Azure Active Directory と内部設置型 Active Directory との間でディレクトリの同期が必要になります。これにより、ユーザー、グループ、連絡先、およびパスワードが Azure Active Directory テナントと同期します。計画に関する情報、および詳しい手順については、「[ディレクトリ同期のロードマップ][ディレクトリ同期のロードマップ]」を参照してください。
 
 ## **手順 6.RemoteApp プログラムの発行**
 
@@ -191,7 +191,7 @@ RemoteApp サービスには複数のプログラムを発行できます。[Rem
 これで、RemoteApp ハイブリッドのデプロイメントの作成とデプロイが正常に完了しました。次のステップは、ユーザーによるリモート デスクトップ クライアントのダウンロードとインストールです。このクライアントの URL は、RemoteApp の [クイック スタート] ページにあります。次に、ユーザーが Azure にログインし、発行した RemoteApp プログラムにアクセスします。
 
   [必須の更新]: http://support.microsoft.com/kb/2977219
-  [RemoteApp のプレビュー]: http://azure.microsoft.com/en-us/services/remoteapp/
+  [RemoteApp のプレビュー]: http://azure.microsoft.com/ja-jp/services/remoteapp/
   [Azure PowerShell]: http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/
   [Azure の管理ポータル]: http://manage.windowsazure.com
   [管理ポータルでのサイト間 VPN の構成]: http://msdn.microsoft.com/library/azure/dn133795.aspx

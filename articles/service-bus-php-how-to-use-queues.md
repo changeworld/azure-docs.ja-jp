@@ -107,7 +107,7 @@ Azure のサービス バス クライアントをインスタンス化するに
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179357
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179357
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -141,7 +141,7 @@ Azure のサービス バス クライアントをインスタンス化するに
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/hh780775
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/hh780775
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -201,7 +201,7 @@ Service Bus キューでは、最大 256 KB までのメッセージをサポー
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here:
-        // http://msdn.microsoft.com/en-us/library/windowsazure/hh780735
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/hh780735
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -254,4 +254,4 @@ MSDN のトピック「[Service Bus キュー、トピックおよびサブス�
   [OpenSSL 拡張機能]: http://php.net/openssl
   [get-client-libraries]: ../includes/get-client-libraries.md
   [require\_once]: http://php.net/require_once
-  [Service Bus キュー、トピックおよびサブスクリプション]: http://msdn.microsoft.com/en-us/library/windowsazure/hh367516.aspx
+  [Service Bus キュー、トピックおよびサブスクリプション]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367516.aspx

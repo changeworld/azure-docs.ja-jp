@@ -140,7 +140,7 @@ Azure Web サイトの **web.config** または **applicationhost.config** フ�
   [次のステップ]: #next
   [カスタム ドメイン名]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-custom-domain-name/
   [Azure の Web サイトでの HTTPS の有効化]: /ja-jp/documentation/articles/web-sites-configure-ssl-certificate/
-  [RequireHttps]: http://msdn.microsoft.com/en-us/library/system.web.mvc.requirehttpsattribute.aspx
+  [RequireHttps]: http://msdn.microsoft.com/ja-jp/library/system.web.mvc.requirehttpsattribute.aspx
   [安全な ASP.NET MVC 5 アプリケーションを Azure の Web サイトにデプロイする]: /ja-jp/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/
   [例]: #example
   [Uploading/downloading files over FTP and collecting diagnostics logs (FTP を介したファイルのアップロード/ダウンロードおよび診断ログの収集)]: http://blogs.msdn.com/b/avkashchauhan/archive/2012/06/19/windows-azure-website-uploading-downloading-files-over-ftp-and-collecting-diagnostics-logs.aspx
@@ -148,6 +148,6 @@ Azure Web サイトの **web.config** または **applicationhost.config** フ�
   [Web サイトの構成方法]: /ja-jp/documentation/articles/web-sites-configure/
   [Azure の管理ポータル]: https://manage.windowsazure.com
   [File Transfer Protocol]: http://en.wikipedia.org/wiki/File_Transfer_Protocol
-  [Microsoft Azure のトラスト センター]: /en-us/support/trust-center/security/
+  [Microsoft Azure のトラスト センター]: /ja-jp/support/trust-center/security/
   [Configuration options unlocked in Azure Web Sites (Azure Web サイトでロック解除される構成オプション)]: http://azure.microsoft.com/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/
   [Azure の Web サイトの診断ログを有効にする]: /ja-jp/documentation/articles/web-sites-enable-diagnostic-log/

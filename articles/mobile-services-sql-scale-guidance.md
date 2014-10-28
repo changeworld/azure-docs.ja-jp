@@ -474,49 +474,49 @@ JavaScript バックエンドでは、SQL Server Management Studio または Azu
   [高度な診断]: #AdvancedDiagnosing
   [インデックスの作成]: #CreatingIndexes
   [Mobile Services Portal - Set Index]: ./media/mobile-services-sql-scale-guidance/set-index-portal-ui.png
-  [Entity Framework のインデックス注釈に関するページ]: http://msdn.microsoft.com/en-us/data/jj591583.aspx#Index
+  [Entity Framework のインデックス注釈に関するページ]: http://msdn.microsoft.com/ja-jp/data/jj591583.aspx#Index
   [高度なインデックス]: #AdvancedIndexing
-  [テーブル オブジェクト]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554210.aspx
-  [mssql オブジェクト]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554212.aspx
+  [テーブル オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554210.aspx
+  [mssql オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554212.aspx
   [リレーショナル テーブルを結合する]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-how-to-use-server-scripts/#joins
   [Windows ストア]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library/#paging
   [iOS]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-ios-how-to-use-client-library/#paging
   [Android]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-android-how-to-use-client-library/#paging
   [HTML/JavaScript]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-html-how-to-use-client-library/#paging
   [Xamarin]: http://azure.microsoft.com/ja-jp/documentation/articles/partner-xamarin-mobile-services-how-to-use-client-library/#paging
-  [クエリ オブジェクト]: http://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
-  [Take メソッド]: http://msdn.microsoft.com/en-us/library/vstudio/bb503062(v=vs.110).aspx
+  [クエリ オブジェクト]: http://msdn.microsoft.com/ja-jp/library/azure/jj613353.aspx
+  [Take メソッド]: http://msdn.microsoft.com/ja-jp/library/vstudio/bb503062(v=vs.110).aspx
   [高度なクエリの設計]: #AdvancedQuery
   [通知ハブを使用したニュース速報の送信]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
   [Upload images to Azure Storage by using Mobile Services (Mobile Services を使用した Azure ストレージへのイメージのアップロード)]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage/
-  [Azure Cache]: http://azure.microsoft.com/en-us/services/cache/
+  [Azure Cache]: http://azure.microsoft.com/ja-jp/services/cache/
   [Windows Server を実行する仮想マシンの作成]: http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-windows-tutorial/
-  [SQL Server Express Edition に関するページ]: http://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/sql-server-express.aspx
+  [SQL Server Express Edition に関するページ]: http://www.microsoft.com/ja-jp/server-cloud/products/sql-server-editions/sql-server-express.aspx
   [SQL Server Management Studio]: ./media/mobile-services-sql-scale-guidance/1.png
   [Azure Management Portal - SQL Database]: ./media/mobile-services-sql-scale-guidance/2.png
   [動的管理ビューを使用した SQL データベースの監視]: http://go.microsoft.com/fwlink/p/?linkid=309725&clcid=0x409
   [SQL Server management Studio - dynamic management views]: ./media/mobile-services-sql-scale-guidance/8.png
   [SQL Database Management Portal - new query]: ./media/mobile-services-sql-scale-guidance/9.png
   [SQL Database Management Portal - run query]: ./media/mobile-services-sql-scale-guidance/10.png
-  [sys.resource\_stats]: http://msdn.microsoft.com/en-us/library/dn269979.aspx
-  [sys.event\_log]: http://msdn.microsoft.com/en-us/library/azure/jj819229.aspx
+  [sys.resource\_stats]: http://msdn.microsoft.com/ja-jp/library/dn269979.aspx
+  [sys.event\_log]: http://msdn.microsoft.com/ja-jp/library/azure/jj819229.aspx
   [クラスター化インデックスの設計ガイドライン]: #ClusteredIndexes
-  [複合キー]: http://msdn.microsoft.com/en-us/library/ms179610(v=sql.120).aspx
-  [PRIMARY KEY 制約の作成と変更]: http://technet.microsoft.com/en-us/library/ms181043(v=sql.105).aspx
-  [非クラスター化インデックスの作成]: http://technet.microsoft.com/en-us/library/ms189280.aspx
-  [クラスター化インデックスの作成]: http://technet.microsoft.com/en-us/library/ms186342(v=sql.120).aspx
-  [一意のインデックスの作成]: http://technet.microsoft.com/en-us/library/ms187019.aspx
+  [複合キー]: http://msdn.microsoft.com/ja-jp/library/ms179610(v=sql.120).aspx
+  [PRIMARY KEY 制約の作成と変更]: http://technet.microsoft.com/ja-jp/library/ms181043(v=sql.105).aspx
+  [非クラスター化インデックスの作成]: http://technet.microsoft.com/ja-jp/library/ms189280.aspx
+  [クラスター化インデックスの作成]: http://technet.microsoft.com/ja-jp/library/ms186342(v=sql.120).aspx
+  [一意のインデックスの作成]: http://technet.microsoft.com/ja-jp/library/ms187019.aspx
   [Missing Index Dynamic Management Views (不足しているインデックスの動的管理ビュー)]: sys-missing-index-stats
   [SQL Database Management Portal - query performance]: ./media/mobile-services-sql-scale-guidance/11.png
   [SQL Server Management Studio - query plan]: ./media/mobile-services-sql-scale-guidance/12.png
   [SQL Database Management Portal - query plan]: ./media/mobile-services-sql-scale-guidance/13.png
   [Azure SQL Database のドキュメント]: http://azure.microsoft.com/ja-jp/documentation/services/sql-database/
   [Azure SQL データベースのパフォーマンスとスケーリング]: http://go.microsoft.com/fwlink/p/?linkid=397217&clcid=0x409
-  [Troubleshooting Azure SQL Database (Azure SQL データベースのトラブルシューティング)]: http://msdn.microsoft.com/en-us/library/azure/ee730906.aspx
-  [インデックスの基礎]: http://technet.microsoft.com/en-us/library/ms190457(v=sql.105).aspx
-  [インデックスの設計の全般的なガイドライン]: http://technet.microsoft.com/en-us/library/ms191195(v=sql.105).aspx
-  [一意インデックスのデザイン ガイドライン]: http://technet.microsoft.com/en-us/library/ms187019(v=sql.105).aspx
-  [1]: http://technet.microsoft.com/en-us/library/ms190639(v=sql.105).aspx
+  [Troubleshooting Azure SQL Database (Azure SQL データベースのトラブルシューティング)]: http://msdn.microsoft.com/ja-jp/library/azure/ee730906.aspx
+  [インデックスの基礎]: http://technet.microsoft.com/ja-jp/library/ms190457(v=sql.105).aspx
+  [インデックスの設計の全般的なガイドライン]: http://technet.microsoft.com/ja-jp/library/ms191195(v=sql.105).aspx
+  [一意インデックスのデザイン ガイドライン]: http://technet.microsoft.com/ja-jp/library/ms187019(v=sql.105).aspx
+  [1]: http://technet.microsoft.com/ja-jp/library/ms190639(v=sql.105).aspx
   [How much does that key cost? (そのキーのコスト)]: http://www.sqlskills.com/blogs/kimberly/how-much-does-that-key-cost-plus-sp_helpindex9/
-  [Entity Framework 5 のパフォーマンスに関する考慮事項]: http://msdn.microsoft.com/en-us/data/hh949853
-  [Code First Data Annotations (Code First のデータ注釈)]: http://msdn.microsoft.com/en-us/data/jj591583.aspx
+  [Entity Framework 5 のパフォーマンスに関する考慮事項]: http://msdn.microsoft.com/ja-jp/data/hh949853
+  [Code First Data Annotations (Code First のデータ注釈)]: http://msdn.microsoft.com/ja-jp/data/jj591583.aspx

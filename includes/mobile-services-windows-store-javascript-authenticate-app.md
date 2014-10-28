@@ -1,7 +1,5 @@
+1.  default.js プロジェクト ファイルを開き、**app.OnActivated** メソッドのオーバーロード内で、**refreshTodoItems** メソッドの最後の呼び出しを次のコードで置き換えます。
 
-
-1. default.js プロジェクト ファイルを開き、**app.OnActivated** メソッド オーバーロード内で、**refreshTodoItems** メソッドに対する最後の呼び出しを次のコードで置き換えます。
-	
         var userId = null;
 
         // Request authentication from Mobile Services using a Facebook login.
@@ -34,12 +32,12 @@
 
         authenticate();
 
-    これにより、現在のユーザーを格納するためのメンバー変数と認証プロセスを処理するためのメソッドが作成されます。ユーザーは、Facebook ログインを使用して認証されます。Facebook 以外の ID プロバイダーを使用している場合は、上の <strong>login</strong> メソッドに渡す値を _microsoftaccount_、_twitter_、_google_ のいずれかに変更します。
+    これにより、現在のユーザーを格納するためのメンバー変数と認証プロセスを処理するためのメソッドが作成されます。ユーザーは、Facebook ログインを使用して認証されます。Facebook 以外の ID プロバイダーを使用している場合は、上の **login** メソッドに渡される値を *microsoftaccount*、*twitter*、*google*、または *windowsazureactivedirectory* のいずれかに変更します。
 
-    >[WACOM.NOTE]Windows ストア アプリ パッケージ情報をモバイル サービスに既に登録している場合は、<em>useSingleSignOn</em> パラメーターに値 <strong>true</strong> を指定して <a href="http://go.microsoft.com/fwlink/p/?LinkId=322050" target="_blank">login</a> メソッドを呼び出す必要があります。この操作を行わない場合、login メソッドが呼び出されるたびに、ユーザーにログイン プロンプトが表示されます。
+    > [WACOM.NOTE] Windows ストア アプリ パッケージ情報をモバイル サービスに登録している場合は、*useSingleSignOn* パラメーターに値 **true** を指定して [login][login] メソッドを呼び出す必要があります。この操作を行わない場合、login メソッドが呼び出されるたびに、ユーザーにログイン プロンプトが表示されます。
 
-9. F5 キーを押してアプリケーションを実行し、選択した ID プロバイダーでアプリケーションにサインインします。
+2.  F5 キーを押してアプリケーションを実行し、選択した ID プロバイダーでアプリケーションにサインインします。
 
-   	ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
+    ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
 
-
+  [login]: http://go.microsoft.com/fwlink/p/?LinkId=322050

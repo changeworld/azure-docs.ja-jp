@@ -97,7 +97,7 @@
     ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
 
 
-  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-users "Windows ストア C#"
+  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-users "Windows ストア C#"
   [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-users "Windows ストア JavaScript"
   [Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-users "Windows Phone"
   [iOS]: /ja-jp/documentation/articles/mobile-services-ios-get-started-users "iOS"

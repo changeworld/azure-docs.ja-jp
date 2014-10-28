@@ -22,9 +22,9 @@
 -   [ストレージ][ストレージ]
 -   [HDInsight][HDInsight]
 
-  [Event Hubs]: http://msdn.microsoft.com/en-us/library/dn789973.aspx
-  [Event Hubs の料金詳細]: http://azure.microsoft.com/en-us/pricing/details/event-hubs/
-  [Event Sourcing Pattern (イベント ソーシング パターン)]: http://msdn.microsoft.com/en-us/library/dn589792.aspx
+  [Event Hubs]: http://msdn.microsoft.com/ja-jp/library/dn789973.aspx
+  [Event Hubs の料金詳細]: http://azure.microsoft.com/ja-jp/pricing/details/event-hubs/
+  [Event Sourcing Pattern (イベント ソーシング パターン)]: http://msdn.microsoft.com/ja-jp/library/dn589792.aspx
   [Event Hubs の REST API リファレンス]: http://go.microsoft.com/fwlink/?LinkId=403977
   [Event Hubs のコード サンプル]: http://go.microsoft.com/fwlink/?LinkID=402449
   [ストレージ]: http://azure.microsoft.com/ja-jp/documentation/services/storage/

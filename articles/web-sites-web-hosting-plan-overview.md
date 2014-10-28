@@ -1,19 +1,24 @@
-<properties pageTitle="Web ホスティング プランとは" description="Web ホスティングの概要" title="Web ホスティング プランとは" authors="adamab" />
-# Web ホスティング プランとは#
+<properties pageTitle="What is a web hosting plan?" description="Web hosting plan overview" title="What is a web hosting plan?" services="web-sites" authors="adamab" />
+
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="adamab"></tags>
+
+# Web ホスティング プランとは
 
 Web ホスティング プランは、Web サイト間で共有できる一連の機能と容量を表します。Web ホスティング プランでは、いくつかの料金レベル (無料、共有、基本、標準) がサポートされています。料金レベルごとに利用できる機能は異なります。サブスクリプション、リソース グループ、リージョンが同じサイト間では、Web ホスティング プランを共有できます。
 
-## Web ホスティング プランの機能##
+## Web ホスティング プランの機能
 
-料金レベル (無料、共有、基本、標準) ごとに利用できる機能は異なります。最新の機能と料金の詳細については、[こちら](http://go.microsoft.com/fwlink/?LinkID=394421)を参照してください。
+料金レベル (無料、共有、基本、標準) ごとに利用できる機能は異なります。最新の機能と料金の詳細については、[こちら][こちら]を参照してください。
 
 ここでは、Web ホスティング プランと機能について役立つヒントをいくつか示します。
 
-- Web ホスティング プランの料金レベルはダウンタイム ゼロでいつでも変更できます。
-- サブスクリプション、リージョン、リソース グループが同じサイト間では、Web ホスティング プランを共有できます。
-- 自動スケールなどの機能は Web ホスティング プランを対象として動作します。個々のサイトを自動スケールする場合は、それぞれのサイトに Web ホスティング プランを関連付ける必要があります。
+-   Web ホスティング プランの料金レベルはダウンタイム ゼロでいつでも変更できます。
+-   サブスクリプション、リージョン、リソース グループが同じサイト間では、Web ホスティング プランを共有できます。
+-   自動スケールなどの機能は Web ホスティング プランを対象として動作します。個々のサイトを自動スケールする場合は、それぞれのサイトに Web ホスティング プランを関連付ける必要があります。
 
-## Web ホスティング プランと容量##
+Web ホスティング プランの管理の詳細については、[こちら][1]を参照してください。
+
+## Web ホスティング プランと容量
 
 無料レベルと共有レベルの Web ホスティング プランの場合、サイトには共有インフラストラクチャが用意されます。つまり、お客様のサイトは他のお客様のサイトとリソースを共有することになります。
 
@@ -21,28 +26,35 @@ Web ホスティング プランは、Web サイト間で共有できる一連�
 
 共有 (プレビュー) レベルについては次の点に注意してください。共有を除くすべてのレベルの場合、そのレベルと選択した容量に基づいて、Web ホスティング プランごとに課金されます。プランを使用するサイトごとに追加で課金されることはありません。共有 Web ホスティング プランは異なります。共有インフラストラクチャの性質上、プランを使用するサイトごとに個別に課金されます。
 
-### Web ホスティング プランと新しい Azure プレビュー ポータル###
+### Web ホスティング プランと新しい Azure プレビュー ポータル
 
 新しい Azure プレビュー ポータルでは、既存の Web サイトまたは新しい Web サイトを Web ホスティング プランに関連付けることができます。実際、すべての既存の Web サイトはサブスクリプション、リージョン、現在の料金レベルに基づいて、Web ホスティング プランに自動的に割り当てられています。
 
-新しいサイトを作成すると、ポータルでは、そのサイトに関連付ける Web ホスティング プランをたずねられます。新しい Web ホスティング プランを作成するか、既存のプランを選択します。新しいサイトで既存のプランを使用するには、既存のプランと同じサブスクリプション、リージョン、リソース グループがアクティブになっている必要があります。Azure では、新しい空の Web サイトを作成すると、最後に使用した Web ホスティング プランが既定で設定されて、既存のプランを最大限に活用するために役立ちます。データベースと連動する Web サイトを作成するときは、既存のプランを再利用するためのオプションは使用できません。
+新しいサイトを作成すると、ポータルでは、そのサイトに関連付ける Web ホスティング プランをたずねられます。新しい Web ホスティング プランを作成するか、既存のプランを選択します。新しいサイトで既存のプランを使用するには、既存のプランと同じサブスクリプション、リージョン、リソース グループがアクティブになっている必要があります。Azure では、新しい空の Web サイトを作成すると、最後に使用した Web ホスティング プランが既定で設定されるので、既存のプランを最大限に活用するために役立ちます。データベースと連動する Web サイトを作成するときは、既存のプランを再利用するためのオプションは使用できません。
 
 すべてのサブスクリプションにまたがって関連付けられている Web ホスティング プランを確認できます。そのためには、左側のメニュー バーにある **[参照]** をクリックし、画面に表示される [アクティビティ] パネルの右上にある **[すべて]** をクリックします。
 
-![][BrowseEverythingScreenshot]
-![][BrowseWebHostingPlansScreenshot]
+![][]
+![][2]
 
 各 Web サイトに関連付けられている Web ホスティング プランを確認することもできます。そのためには、Web サイト ブレードの上部に表示されるリソース グループのグラフィカルな表示を使用します。
 
-![][WebHostingPlanResourceMapScreenshot]
+![][3]
 
-プランをクリックすると、Web ホスティング プランを管理できるブレードが開きます。Web ホスティング プランの管理の詳細については、[こちら](http://go.microsoft.com/fwlink/?LinkID=394411)を参照してください。
+プランをクリックすると、Web ホスティング プランを管理できるブレードが開きます。Web ホスティング プランの管理の詳細については、[こちら][1]を参照してください。
 
-![][WebHostingPlanBladeScreenshot]
+![][4]
+
+### 次のステップ
+
+Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイト][Microsoft Azure の無料評価版サイト]」を参照してください。
 
 <!-- Images. -->
-[BrowseEverythingScreenshot]: ./media/web-sites-web-hosting-plan-overview/browse-everything.png
-[WebHostingPlanResourceMapScreenshot]: ./media/web-sites-web-hosting-plan-overview/web-hosting-plan-resource-map.png
-[WebHostingPlanBladeScreenshot]: ./media/web-sites-web-hosting-plan-overview/web-hosting-plan-blade.png
-[BrowseWebHostingPlansScreenshot]: ./media/web-sites-web-hosting-plan-overview/browse-web-hosting-plans.png
 
+  [こちら]: http://go.microsoft.com/fwlink/?LinkID=394421
+  [1]: http://go.microsoft.com/fwlink/?LinkID=394411
+  []: ./media/web-sites-web-hosting-plan-overview/browse-everything.png
+  [2]: ./media/web-sites-web-hosting-plan-overview/browse-web-hosting-plans.png
+  [3]: ./media/web-sites-web-hosting-plan-overview/web-hosting-plan-resource-map.png
+  [4]: ./media/web-sites-web-hosting-plan-overview/web-hosting-plan-blade.png
+  [Microsoft Azure の無料評価版サイト]: http://azure.microsoft.com/ja-jp/pricing/free-trial/

@@ -193,7 +193,7 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
   [アクセス トークンを取得し、SharePoint API を呼び出す]: #obtain-token
   [Word 文書を作成し、アップロードする]: #create-document
   [アプリケーションをテストする]: #test-application
-  [SharePoint Online]: http://office.microsoft.com/en-us/sharepoint/
+  [SharePoint Online]: http://office.microsoft.com/ja-jp/sharepoint/
   [Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/
   [Azure 管理ポータル]: https://manage.windowsazure.com/
   []: ./media/mobile-services-dotnet-backend-calling-sharepoint-on-behalf-of-user/aad-web-application.png

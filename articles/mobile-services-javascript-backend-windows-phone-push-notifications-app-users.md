@@ -87,7 +87,7 @@ In the next tutorial, [Service-side authorization of Mobile Services users][Auth
 
 
 
-  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-push-notifications-app-users "Windows ストア C#"
+  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-push-notifications-app-users "Windows ストア C#"
   [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-push-notifications-app-users "Windows ストア JavaScript"
   [Windows Phone]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-phone-push-notifications-app-users "Windows Phone"
   [iOS]: /ja-jp/documentation/articles/mobile-services-javascript-backend-ios-push-notifications-app-users "iOS"

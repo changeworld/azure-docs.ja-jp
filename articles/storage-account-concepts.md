@@ -6,7 +6,7 @@
 
 ## ストレージ アカウント レプリケーションのオプション
 
-[WACOM.INCLUDE [storage-replication-options][]]
+[WACOM.INCLUDE [storage-replication-options](../includes/storage-replication-options.md)]
 
 ## ストレージ アカウント エンドポイント
 
@@ -28,13 +28,13 @@
 
 ストレージ アカウント アクセス キーは、他の人と共有しないことをお勧めします。アカウントが侵害されていると感じたときは、ポータル内からアクセス キーを再生成できます。自分のストレージ アカウントを選択し、**[アクセス キーの管理]** を選択してください。
 
-アクセス キーを入力しないでストレージ リソースにアクセスする場合は、*共有アクセス署名*が利用できます。共有アクセス署名を使用すると、指定した期間、指定した権限で、アカウント内のリソースにアクセスできるようになります。詳細については、「[共有アクセス署名、第 1 部: SAS モデルについて][]」を参照してください。
+アクセス キーを入力しないでストレージ リソースにアクセスする場合は、*共有アクセス署名*が利用できます。共有アクセス署名を使用すると、指定した期間、指定した権限で、アカウント内のリソースにアクセスできるようになります。詳細については、「[共有アクセス署名、第 1 部: SAS モデルについて][共有アクセス署名、第 1 部: SAS モデルについて]」を参照してください。
 
 ## ストレージ アカウントのメトリックとログ
 
--   **最小限のメトリックと詳細メトリックの比較** ストレージ アカウントの監視設定で、最小限のメトリック、または詳細メトリックを構成できます。*最低限のメトリック*の場合は、Blob サービス、テーブル サービス、キュー サービスに関して集計される、受信/送信、可用性、遅延時間、成功のパーセンテージなどのデータを収集します。*詳細メトリック*の場合は、同じメトリックに関するサービス レベルの集計に加えて、オペレーションレベルの詳細を収集します。詳細メトリックにより、アプリケーションの操作中に発生する問題を詳しく分析できます。使用可能なメトリックの詳細なリストについては、「[Storage Analytics Metrics のテーブル スキーマ][]」を参照してください。ストレージ監視の詳細については、「[Storage Analytics Metrics について][]」を参照してください。
+-   **最小限のメトリックと詳細メトリックの比較** ストレージ アカウントの監視設定で、最小限のメトリック、または詳細メトリックを構成できます。*最低限のメトリック*の場合は、Blob サービス、テーブル サービス、キュー サービスに関して集計される、受信/送信、可用性、遅延時間、成功のパーセンテージなどのデータを収集します。*詳細メトリック*の場合は、同じメトリックに関するサービス レベルの集計に加えて、オペレーションレベルの詳細を収集します。詳細メトリックにより、アプリケーションの操作中に発生する問題を詳しく分析できます。使用可能なメトリックの詳細なリストについては、「[Storage Analytics Metrics のテーブル スキーマ][Storage Analytics Metrics のテーブル スキーマ]」を参照してください。ストレージ監視の詳細については、「[Storage Analytics Metrics について][Storage Analytics Metrics について]」を参照してください。
 
--   **ログ** ログはストレージ アカウントの構成可能な機能であり、BLOB、テーブル、およびキューへの読み取り、書き込み、削除の各要求をログに記録できます。Azure の管理ポータルでログを構成しますが、管理ポータルでログを表示することはできません。ログは、ストレージ アカウント内の $logs コンテナーに格納され、アクセスできます。詳細については、「[Storage Analytics Overview (Storage Analytics の概要)][]」を参照してください。
+-   **ログ** ログはストレージ アカウントの構成可能な機能であり、BLOB、テーブル、およびキューへの読み取り、書き込み、削除の各要求をログに記録できます。Azure の管理ポータルでログを構成しますが、管理ポータルでログを表示することはできません。ログは、ストレージ アカウント内の $logs コンテナーに格納され、アクセスできます。詳細については、「[Storage Analytics Overview (Storage Analytics の概要)][Storage Analytics Overview (Storage Analytics の概要)]」を参照してください。
 
 ## Azure ストレージと他のサービスを併置するためのアフィニティ グループ
 
@@ -42,6 +42,6 @@
 
   [storage-replication-options]: ../includes/storage-replication-options.md
   [共有アクセス署名、第 1 部: SAS モデルについて]: ../storage-dotnet-shared-access-signature-part-1/
-  [Storage Analytics Metrics のテーブル スキーマ]: http://msdn.microsoft.com/en-us/library/windowsazure/hh343264.aspx
-  [Storage Analytics Metrics について]: http://msdn.microsoft.com/en-us/library/windowsazure/hh343258.aspx
-  [Storage Analytics Overview (Storage Analytics の概要)]: http://msdn.microsoft.com/en-us/library/windowsazure/hh343268.aspx
+  [Storage Analytics Metrics のテーブル スキーマ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343264.aspx
+  [Storage Analytics Metrics について]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343258.aspx
+  [Storage Analytics Overview (Storage Analytics の概要)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343268.aspx

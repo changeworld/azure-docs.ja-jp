@@ -36,8 +36,8 @@
   <span class="wa-icon-bulb"></span>
 <h5><a name="note"></a>このチュートリアルを完了するには、Azure アカウントが必要です。</h5>
   <ul>
-<li><a href="http://azure.microsoft.com/en-us/pricing/free-trial/?WT.mc_id=A261C142F">無料で Azure アカウントを開く</a>ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。</li>
-<li><a href="http://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F">MSDN サブスクライバーの特典を有効にする</a>こともできます - MSDN サブスクリプションにより、有料の Azure のサービスを使用できるクレジットが毎月与えられます。</li>
+<li><a href="http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F">無料で Azure アカウントを開く</a>ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。</li>
+<li><a href="http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F">MSDN サブスクライバーの特典を有効にする</a>こともできます - MSDN サブスクリプションにより、有料の Azure のサービスを使用できるクレジットが毎月与えられます。</li>
   <ul>
 </div>
 
@@ -273,11 +273,11 @@ Azure CDN と Azure Cloud Services との統合の詳細については、「[Ho
   [ASP.NET アプリケーションから CDN エンドポイントへのコンテンツのアップロードを自動化する]: #upload
   [必要なコンテンツの更新が反映されるように CDN キャッシュを構成する]: #update
   [クエリ文字列を使用して即座に最新コンテンツを配信する]: #query
-  [Microsoft Azure アカウント]: http://azure.microsoft.com/en-us/account/
+  [Microsoft Azure アカウント]: http://azure.microsoft.com/ja-jp/account/
   [Azure SDK]: http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409
   [Azure PowerShell]: http://go.microsoft.com/?linkid=9811175&clcid=0x409
-  [無料で Azure アカウントを開く]: http://azure.microsoft.com/en-us/pricing/free-trial/?WT.mc_id=A261C142F
-  [MSDN サブスクライバーの特典を有効にする]: http://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
+  [無料で Azure アカウントを開く]: http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F
+  [MSDN サブスクライバーの特典を有効にする]: http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
   [Azure 管理ポータル]: http://manage.windowsazure.com/
   []: media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-1.PNG
   [1]: media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-2.PNG
@@ -285,7 +285,7 @@ Azure CDN と Azure Cloud Services との統合の詳細については、「[Ho
   [3]: media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-3-succeed.PNG
   [www.ip-address.org]: http://www.ip-address.org
   [4]: media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-4.PNG
-  [Azure コンテンツ配信ネットワーク (CDN) ノードの場所]: http://msdn.microsoft.com/en-us/library/azure/gg680302.aspx
+  [Azure コンテンツ配信ネットワーク (CDN) ノードの場所]: http://msdn.microsoft.com/ja-jp/library/azure/gg680302.aspx
   [5]: media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-2-enablequerya.PNG
   [6]: media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-2-enablequeryb.PNG
   [7]: media/cdn-serve-content-from-cdn-in-your-web-application/cdn-static-5.PNG
@@ -299,9 +299,9 @@ Azure CDN と Azure Cloud Services との統合の詳細については、「[Ho
   [Azure でのクラウド サービスの継続的な配信]: http://azure.microsoft.com/ja-jp/documentation/articles/cloud-services-dotnet-continuous-delivery/
   [Upload Content Files from ASP.NET Application to Azure Blobs (ASP.NET アプリケーションから Azure BLOB へのコンテンツ ファイルのアップロード)]: http://gallery.technet.microsoft.com/scriptcenter/Upload-Content-Files-from-41c2142a
   [15]: media/cdn-serve-content-from-cdn-in-your-web-application/cdn-updates-1.PNG
-  [Azure Cloud Services]: http://azure.microsoft.com/en-us/services/cloud-services/
+  [Azure Cloud Services]: http://azure.microsoft.com/ja-jp/services/cloud-services/
   [stackoverflow]: http://stackoverflow.com/a/13736433
   [How to Create and Deploy a Cloud Service (クラウド サービスを作成して展開する方法)]: http://azure.microsoft.com/ja-jp/documentation/articles/cloud-services-how-to-create-deploy/
   [Azure コンテンツ配信ネットワーク (CDN) の概要]: http://msdn.microsoft.com/library/azure/ff919703.aspx
-  [Integrate a cloud service with Azure CDN (クラウド サービスと Azure CDN との統合)]: http://azure.microsoft.com/ja-jp/documentation/Articles/cdn-cloud-service-with-cdn/
+  [Integrate a cloud service with Azure CDN (クラウド サービスと Azure CDN との統合)]: http://azure.microsoft.com/ja-jp/Documentation/Articles/cdn-cloud-service-with-cdn/
   [Azure 用 CDN の使用]: http://azure.microsoft.com/ja-jp/documentation/articles/cdn-how-to-use/

@@ -115,7 +115,7 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
   [Published web site page]: ./media/web-sites-gallery-umbraco/17MyPage.PNG
   [Umbraco Documentation (Umbraco のドキュメント)]: http://our.umbraco.org/documentation
   [Umbraco Video Tutorials (Umbraco ビデオ チュートリアル)]: https://umbraco.com/help-and-support/video-tutorials.aspx
-  [DevOps は最高 (Microsoft Azure プレビュー ポータルの概要)]: http://azure.microsoft.com/en-us/overview/preview-portal/
+  [DevOps は最高 (Microsoft Azure プレビュー ポータルの概要)]: http://azure.microsoft.com/ja-jp/overview/preview-portal/
   [これまでになかったクラウド ポータル (Microsoft Azure プレビュー ポータルのドキュメント)]: http://azure.microsoft.com/ja-jp/documentation/preview-portal/
   [Azure Preview Portal (Channel 9) (Azure プレビュー ポータル (チャネル 9))]: http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Preview-portal
   [Web サイト (Microsoft Azure Web サイトのドキュメント)]: http://azure.microsoft.com/ja-jp/documentation/services/web-sites/

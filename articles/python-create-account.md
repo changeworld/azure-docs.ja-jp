@@ -1,4 +1,7 @@
-<properties title="Python 作成アカウント" pageTitle="Python 作成アカウント" metaKeywords="" description="Azure でアカウントを作成します。" documentationCenter="" services="" solutions="" authors="" />
+<properties title="Python create account" pageTitle="Python create account" metaKeywords="" description="Create an account on Azure." documentationCenter="" services="" solutions="" authors="huvalo" />
 
-[WACOM.INCLUDE [create-an-azure-account](../includes/create-an-azure-account.md)]
+<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo"></tags>
 
+[WACOM.INCLUDE [create-an-azure-account][create-an-azure-account]]
+
+  [create-an-azure-account]: ../includes/create-an-azure-account.md

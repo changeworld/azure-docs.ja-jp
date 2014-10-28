@@ -4,7 +4,7 @@
 
 # <a name="getting-started"> </a>モバイル サービスおよび Sencha Touch の使用
 
-[WACOM.INCLUDE [mobile-services-selector-get-started][]]
+[WACOM.INCLUDE [mobile-services-selector-get-started][mobile-services-selector-get-started]]
 
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
@@ -22,15 +22,15 @@
 
 ## 要件
 
--   [Sencha Touch][] のダウンロードとインストール。
+-   [Sencha Touch][Sencha Touch] のダウンロードとインストール。
 
--   [Sencha Cmd Tool][] のダウンロードとインストール。
+-   [Sencha Cmd Tool][Sencha Cmd Tool] のダウンロードとインストール。
 
 -   Java Runtime Environment (JRE) または Java Development Kit (Android アプリケーションを作成している場合)。
 
 ## <a name="create-new-service"> </a> 新しいモバイル サービスを作成する
 
-[WACOM.INCLUDE [mobile-services-create-new-service][]]
+[WACOM.INCLUDE [mobile-services-create-new-service][mobile-services-create-new-service]]
 
 ## TodoItems テーブルの作成
 
@@ -41,7 +41,7 @@
 
 2.  [クイック スタート] タブの **[プラットフォームの選択]** で **[HTML]** をクリックし、**[新しい HTML アプリを作成する]** を展開します。
 
-    ![Mobile quickstart html][]
+    ![Mobile quickstart html][Mobile quickstart html]
 
     これにより、モバイル サービスに接続された HTML アプリを作成し、ホストするための簡単な 3 つの手順が表示されます。
 
@@ -55,11 +55,11 @@
 
 4.  管理ポータルの **appKey** と **appUrl** をメモします。これらは、このチュートリアルの他のセクションで使用します。
 
-    ![app key][]
+    ![app key][app key]
 
 5.  **[構成]** タブで、**[クロス オリジン リソース共有 (CORS)]** の **[ホスト名からの要求を許可する]** に `localhost` が既に表示されていることを確認します。表示されていない場合は、**[ホスト名]** フィールドに「`localhost`」と入力して、**[保存]** をクリックします。
 
-    ![Setup CORS for localhost][]
+    ![Setup CORS for localhost][Setup CORS for localhost]
 
 ## Touch アプリケーションの生成
 
@@ -81,7 +81,7 @@ Azure 用の拡張機能は、手動または Sencha パッケージとしてイ
 
 次の手順に従って、アプリケーションに Azure 拡張機能を手動で追加できます。
 
-1.  [ここ][]から Azure 拡張機能パッケージをダウンロードします (この領域にアクセスするために Sencha Forums ID を使用できます)。
+1.  [ここ][ここ]から Azure 拡張機能パッケージをダウンロードします (この領域にアクセスするために Sencha Forums ID を使用できます)。
 
 2.  ダウンロード ディレクトリから最終的に配置および展開する場所に Azure 拡張機能パッケージをコピーします。
 
@@ -99,7 +99,7 @@ Azure 用の拡張機能は、手動または Sencha パッケージとしてイ
 
 Sencha Cmd によって生成されるすべてのアプリケーションで、ルートに "パッケージ" フォルダーがあります。このフォルダーの場所は構成可能ですが、その場所にかかわらず packages フォルダーの役割は、アプリケーション (または Sencha ワークスペースを作成している場合は複数のアプリケーション) によって使用されるすべてのパッケージのストレージとして機能することです。
 
-Azure は Sencha Cmd "パッケージ" であるため、ソース コードは Sencha Cmd を使用して簡単にアプリケーションにインストールし、含めることができます(詳細については、[Sencha Cmd パッケージ][] を参照してください)。
+Azure は Sencha Cmd "パッケージ" であるため、ソース コードは Sencha Cmd を使用して簡単にアプリケーションにインストールし、含めることができます(詳細については、[Sencha Cmd パッケージ][Sencha Cmd パッケージ] を参照してください)。
 
 Sencha パッケージ リポジトリから Azure 拡張機能パッケージをダウンロードおよびインストールするには、**app.json** ファイルにパッケージ名を追加し、アプリケーションをビルドする必要があります。
 
@@ -152,7 +152,7 @@ Azure 拡張機能がダウンロードされ、アプリケーション ディ�
 
     構成オブジェクトは直接 init メソッドに渡すことができますが、**azure** という Sencha アプリケーション構成プロパティを作成し、そこに該当する情報すべてを格納することをお勧めします。次に、このプロパティ値を Ext. Azure.init メソッドに渡すことができます。
 
-    Azure でモバイル サービスを作成する場合 (「[Azure の概要][]」を参照してください)、アプリケーション キーおよび URL がサービスに割り当てられます。この情報は、サービスに接続できるように Azure パッケージに提供する必要があります。
+    Azure でモバイル サービスを作成する場合 (「[Azure の概要][Azure の概要]」を参照してください)、アプリケーション キーおよび URL がサービスに割り当てられます。この情報は、サービスに接続できるように Azure パッケージに提供する必要があります。
 
     この例では、アプリケーション キーと URL のみを提供する非常に簡単な Azure の構成と初期化を示しています。
 
@@ -649,47 +649,47 @@ Sencha Touch ストアでは、さまざまな方法でレコードを表示す�
 
     -   *sencha web start*: これによって、アプリケーションをテストするためにローカル Web サーバーが起動されます。
 
-    ![sencha web start][]
+    ![sencha web start][sencha web start]
 
 3.  アプリケーションを開始するために、ターミナルに示された URL を Web ブラウザーで開きます (たとえば、<http://localhost:1841> など)。
 
 4.  アプリケーションで、意味のあるテキスト (たとえば、"チュートリアルの完了") を入力し、**[Add]** をクリックします。
 
-    ![new todo item][]
+    ![new todo item][new todo item]
 
     これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。
 
 5.  管理ポータルに戻り、**[データ]** タブ、TodoItems テーブルの順にクリックします。
 
-    ![Todo Items table][]
+    ![Todo Items table][Todo Items table]
 
     これで、アプリケーションによってテーブルに挿入されたデータを参照できます。
 
-    ![browse todo table][]
+    ![browse todo table][browse todo table]
 
 ## 次のステップ
 
 ファースト ステップ ガイドはこれで完了です。Sencha によるモバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。
 
-その他のスタイル、および Sencha Touch で可能なその他の機能については、全サンプル アプリケーションを[ダウンロード][]してください。
+その他のスタイル、および Sencha Touch で可能なその他の機能については、全サンプル アプリケーションを[ダウンロード][ダウンロード]してください。
 
 さらに、Azure 用 Sencha Touch Extensions の詳細について参照してください。
 
--   サンプル アプリケーションの[チュートリアル][]
--   [Sencha Forums][] でサポートを得てください
--   [Sencha][] のドキュメントを参照してください
--   Azure Mobile Services での Sencha の使用: [(ビデオ)][]
+-   サンプル アプリケーションの[チュートリアル][チュートリアル]
+-   [Sencha Forums][Sencha Forums] でサポートを得てください
+-   [Sencha][Sencha] のドキュメントを参照してください
+-   Azure Mobile Services での Sencha の使用: [(ビデオ)][(ビデオ)]
 
 ## その他のリソース
 
--   [Sencha Touch のダウンロード][]
+-   [Sencha Touch のダウンロード][Sencha Touch のダウンロード]
 -   [Azure 用 Sencha Touch 拡張機能][ここ]
 
 ## まとめ
 
 ここで概要を示した例は、Azure パッケージ用 Sencha Touch 拡張機能で提供されており、例のディレクトリに基本データ例として格納されています。詳細なコメントおよび説明と共に、この拡張機能の他の機能をデモするいくつかの例も提供されています。
 
-Sencha Touch のさらなる概要については、全[ガイド][] セットを参照してください。
+Sencha Touch のさらなる概要については、全[ガイド][ガイド] セットを参照してください。
 
 <!-- images -->
 

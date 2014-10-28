@@ -1,55 +1,19 @@
-<properties linkid="develop-java-tutorials-web-site-add-app" urlDisplayName="Java Web サイトへのアプリケーションの追加" pageTitle="Java Web サイトへのアプリケーションの追加" metaKeywords="" description="このチュートリアルでは、Microsoft Azure の Java Web サイトに Web ページやアプリケーションに追加する方法を示します。" metaCanonical="" services="web-sites" documentationCenter="Java" title="Java Web サイトへのアプリケーションの追加" videoId="" scriptId="" authors="waltpo" solutions="" manager="keboyd" editor="mollybos" />
+<properties linkid="develop-java-tutorials-web-site-add-app" urlDisplayName="Add an application to your Java website" pageTitle="Add an application to your Java website" metaKeywords="" description="This tutorial shows you how to add a page or application to your Java website on Microsoft Azure." metaCanonical="" services="web-sites" documentationCenter="Java" title="Add an application to your Java website" videoId="" scriptId="" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" />
+
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm"></tags>
 
 # Azure の Java Web サイトへのアプリケーションの追加
 
-このチュートリアルでは、前に Azure のギャラリーまたは Azure の構成 UI を利用して作成した Java Web サイトに Web ページやアプリケーションを追加する方法を示します。
+「[Microsoft Azure Web サイトと Java の概要][Microsoft Azure Web サイトと Java の概要]」の説明にあるように Java Web サイトを初期設定した後、WAR を **webapps** フォルダーに配置してアプリケーションをアップロードすることができます。
 
-継続的な統合シナリオなどで、ソース管理を使用してアプリケーションや Web ページをアップロードできます。Web サイトでのソース管理の使用手順については、「[ソース管理から Azure の Web サイトへの発行](../web-sites-publish-source-control)」を参照してください。この記事では、ソース管理の代わりに FTP を使用してアプリケーションをアップロードする方法を示します。
+**webapps** フォルダーへのナビゲーション パスは Web サイトの設定方法によって異なります。
 
-このチュートリアルでは、「[Azure の Web サイトと Java の概要](../web-sites-java-get-started)」の手順を完了しているものとします。
+-   Azure のアプリケーション ギャラリーを使用して Web サイトを設定した場合、**webapps** フォルダーへのパスは、**d:\\home\\site\\wwwroot\\bin\\application\_server\\webapps** という形式になります (**application\_server** は、Web サイトで有効になっているアプリケーション サーバーの名前です)。
+-   Azure の構成 UI を使用して Web サイトを設定した場合、**webapps** フォルダーへのパスは、**d:\\home\\site\\wwwroot\\webapps** という形式になります。
 
-# FTP を使用した Web サイトのカスタマイズ
-FTP 資格情報を調べ、その情報を使用して Web サイトのコンテンツにアクセスする必要があります。その後、アプリケーションを実行するようにコンテンツを変更できます。ここで示している例では、エクスプローラー内から FTP を簡単に使用できるようにしていますが、他の方法を使用することもできます。
+継続的な統合シナリオなどで、ソース管理を使用してアプリケーションや Web ページをアップロードできます。Web サイトでのソース管理の使用手順については、「[ソース管理から Azure Web サイトへの発行][ソース管理から Azure Web サイトへの発行]」を参照してください。FTP も、アプリケーションまたは Web ページをアップロードするためのオプションです。
 
-## FTP 資格情報を使用してサイトのコンテンツにアクセスする
+Tomcat Web サイトに関する注意: WAR ファイルを **webapps** フォルダーにアップロードすると、Tomcat アプリケーション サーバーで WAR ファイルの追加が検出され、WAR ファイルが自動的に読み込まれます。ルート ディレクトリにファイル (WAR ファイル以外) をコピーした場合は、それらのファイルを使用する前に、アプリケーション サーバーの再起動が必要になります。Azure で実行されている Tomcat Java Web サイトの自動読み込み機能は、**webapps** フォルダーに追加される新しい WAR ファイル、または新しいファイルやディレクトリに基づいて動作します。
 
-1. Microsoft Azure 管理ポータルで、**[Web サイト]** ビューに移動します。
-2. **[Web サイト]** ビューで、Web サイトの名前をクリックします。
-3. **[ダッシュボード]** をクリックします。
-4. **[ダッシュボード]** ビューの **[概要]** で、**[発行プロファイルのダウンロード]** をクリックします。このファイルをローカルに保存します。このファイルは安全な場所に保管してください。このファイル内のユーザー名とパスワードを使用すると、サイトへの発行もサイトからのコンテンツのコピーも可能になるためです。
-5. テキスト エディターを使用して、ダウンロードした発行設定ファイルを開きます。そのファイル内の **userName** と **userPwd** の値を書き留めておきます。それらの値はユーザー名とパスワードを表しており、サイトのファイルにアクセスするために使用します。
-6. Web サイトのファイルにアクセスします。プロンプトが表示されたら、ユーザー名とパスワードを入力します。この例では、Internet Explorer 内から FTP を使用しますが、他の方法を使用することもできます。FTP の使用を続行するには、**[ダッシュボード]** ビューの **[FTP ホスト名]** ボックスの一覧で URL をクリックします (発行設定ファイルで FTP ホスト名を調べることもできます。**publishUrl** に割り当てられた値になっています)。
-7. ユーザー名とパスワードの入力を求められたら、発行設定ファイルで **userName** と **userPwd** に指定された値を使用します。
-8. そのまま Internet Explorer で、エクスプローラー ビューに切り替えるために、**[表示]** をクリックし、**[エクスプローラーで FTP サイトを開く]** をクリックします。
-
-## Web サイトの webapps フォルダーにアクセスする
-
-Azure の Web サイトのエクスプローラー ビューで、Web サイトをカスタマイズできるようになりました。Web サイトの **webapps** フォルダーにアプリケーションをコピーする必要があります。そのフォルダーへのナビゲーション パスは Web サイトの設定方法によって異なります。
-
-- Azure のアプリケーション ギャラリーを使用して Web サイトを設定している場合は、エクスプローラーで **[site]**、**[wwwroot]**、**[bin]** の順にダブルクリックし、Web サイトで使用しているアプリケーション サーバーのバージョンをダブルクリックして、**[webapps]** をダブルクリックします。
-- Azure の構成 UI を使用して Web サイトを設定している場合は、エクスプローラーで **[site]**、**[wwwroot]**、**[webapps]** の順にダブルクリックします。
-- カスタム アップロードを使用して Web サイトを設定している場合は、必要に応じたパスをたどって **webapps** フォルダーに移動します。
-
-## FTP を使用して WAR ファイルを Web サイトに追加するには
-
-1. 前に説明しているように、Web サイトに適した方法で **webapps** フォルダーに移動します。
-2. WAR ファイルを **webapps** フォルダーにコピーします。
-
-アプリケーション サーバーによって、WAR ファイルが追加されたことが検出され、自動的に読み込まれます。その後、Web サイトの URL に続けて WAR ファイルの名前を指定することで、ブラウザーでアプリケーションを実行できます。
-
-たとえば、http://*mysitename*.azurewebsites.net/*mywar* と指定します。ここで、*mysitename* は、URL に指定した名前であり、*mywar* は、コピーした WAR の大文字と小文字が区別される名前 (後続の **.war** は不要) です。
-
-## FTP を使用して Web ページを Web サイトに追加するには
-1. **webapps** フォルダーに移動します。
-2. **webapps** フォルダー内に新しいフォルダーを作成します。
-3. 新しいフォルダーを開きます。
-4. Web ページを新しいフォルダーに追加します。
- 
-アプリケーション サーバーによって、新しいフォルダーと Web ファイルが追加されたことが検出され、自動的に読み込まれます。
-その後、http://*mysitename*.azurewebsites.net/*myfolder*/*myfile.jsp* という形式の URL を使用して、JSP ファイルを実行します。ここで、*mysitename* は、URL で指定した名前であり、*myfolder* は、**webapps** 内に作成したフォルダーであり、*myfile.jsp* は、作成した JSP ファイルの名前です。
-
-ルート ディレクトリにファイル (WAR ファイル以外) をコピーした場合は、それらのファイルを使用する前に、アプリケーション サーバーの再起動が必要になります。Azure で実行されている Java Web サイトの自動読み込み機能は、**webapps** フォルダーに追加される新しい WAR ファイル、または新しいファイルやディレクトリに基づいて動作します。
-
-
-  
-
+  [Microsoft Azure Web サイトと Java の概要]: ../web-sites-java-get-started
+  [ソース管理から Azure Web サイトへの発行]: ../web-sites-publish-source-control

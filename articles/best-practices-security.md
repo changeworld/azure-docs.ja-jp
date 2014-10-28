@@ -1,11 +1,7 @@
-<properties linkid="develop-dotnet-security" urlDisplayName="セキュリティ" pageTitle="セキュリティのベスト プラクティス (.NET) - Azure" metaKeywords="Azure のセキュリティ, 入門 セキュリティ Azure, 概要 Azure セキュリティ, Azure セキュリティ 基本" description="Azure のセキュリティの紹介です。" metaCanonical="" services="web-sites,virtual-machines,sql-database,storage,service-bus,active-directory" documentationCenter=".NET" title="" authors=""  solutions="" writer="" manager="" editor=""  />
+<properties linkid="develop-dotnet-security" urlDisplayName="Security" pageTitle="Security best practices (.NET) - Azure" metaKeywords="Azure security, intro security Azure, overview Azure security, Azure security basics" description="An introduction to security in Azure." metaCanonical="" services="web-sites,virtual-machines,sql-database,storage,service-bus,active-directory" documentationCenter=".NET" title="" authors="robb" solutions="" manager="johndaw" editor="" />
 
+<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="robb"></tags>
 
+[WACOM.INCLUDE [SecurityRX][SecurityRX]]
 
-
-
-
-
-[WACOM.INCLUDE [SecurityRX](../includes/SecurityRX.md)]
-
-
+  [SecurityRX]: ../includes/SecurityRX.md

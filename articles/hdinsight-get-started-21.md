@@ -18,7 +18,7 @@ HDInsight は、[Apache Hadoop][Apache Hadoop] をクラウドのサービスと
 
 この記事のライブ デモ:
 <center>
-    ![img-hdi-getstarted-video][]
+    ![img-hdi-getstarted-video][img-hdi-getstarted-video]
 </center>
 Azure の HDInsight を一般に利用可能にすると共に、Microsoft は HDInsight Emulator for Azure (旧称 *Microsoft HDInsight 開発者プレビュー*) もリリースしました。この製品は開発者シナリオを対象としており、そのため単一ノード展開のみをサポートします。HDInsight Emulator の使用法については、「[HDInsight Emulator の概要][HDInsight Emulator の概要]」を参照してください。
 
@@ -194,7 +194,7 @@ Power Query for Excel アドインを使用すると、Excel に HDInsight の�
 -   [HDInsight での Hive の使用][HDInsight での Hive の使用]
 -   [HDInsight での Pig の使用][HDInsight での Pig の使用]
 -   [Use Oozie with HDInsight (HDInsight での Oozie の使用)][Use Oozie with HDInsight (HDInsight での Oozie の使用)]
--   [Develop C\# Hadoop streaming programs for HDInsight (HDInsight 用 C\# Hadoop ストリーミング プログラムの開発)][Develop C\# Hadoop streaming programs for HDInsight (HDInsight 用 C\# Hadoop ストリーミング プログラムの開発)]
+-   [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)][Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)]
 -   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]
 
   [Hadoop 2.2]: ../hdinsight-get-started "HDInsight で Hadoop 2.2 を使用する"
@@ -204,9 +204,9 @@ Power Query for Excel アドインを使用すると、Excel に HDInsight の�
   [HDInsight で提供されるクラスター バージョンの新機能]: ../hdinsight-component-versioning/
   [img-hdi-getstarted-video]: https://www.youtube.com/watch?v=Y4aNjnoeaHA&list=PLDrz-Fkcb9WWdY-Yp6D4fTC1ll_3lU-QS
   [HDInsight Emulator の概要]: ../hdinsight-get-started-emulator/
-  [購入オプション]: http://azure.microsoft.com/en-us/pricing/purchase-options/
-  [メンバー プラン]: http://azure.microsoft.com/en-us/pricing/member-offers/
-  [無料評価版]: http://azure.microsoft.com/en-us/pricing/free-trial/
+  [購入オプション]: http://azure.microsoft.com/ja-jp/pricing/purchase-options/
+  [メンバー プラン]: http://azure.microsoft.com/ja-jp/pricing/member-offers/
+  [無料評価版]: http://azure.microsoft.com/ja-jp/pricing/free-trial/
   [HDInsight クラスターをプロビジョニングする]: #provision
   [Hive ジョブを実行する]: #sample
   [Microsoft Business Intelligence ツールに接続する]: #powerquery
@@ -221,7 +221,7 @@ Power Query for Excel アドインを使用すると、Excel に HDInsight の�
   [hdi.dashboard]: ./media/hdinsight-get-started/HDI.dashboard.png
   [hdi.dashboard.query.select]: ./media/hdinsight-get-started/HDI.dashboard.query.select.png
   [hdi.dashboard.query.select.result]: ./media/hdinsight-get-started/HDI.dashboard.query.select.result.png
-  [Microsoft ダウンロード センター]: http://www.microsoft.com/en-us/download/details.aspx?id=39379
+  [Microsoft ダウンロード センター]: http://www.microsoft.com/ja-jp/download/details.aspx?id=39379
   [HDI.GettingStarted.PowerQuery.ImportData]: ./media/hdinsight-get-started/HDI.GettingStarted.PowerQuery.ImportData.png
   [HDI.GettingStarted.PowerQuery.ImportData2]: ./media/hdinsight-get-started/HDI.GettingStarted.PowerQuery.ImportData2.png
   [PowerShell を使用した HDInsight の管理]: ../hdinsight-administer-use-powershell/
@@ -230,5 +230,5 @@ Power Query for Excel アドインを使用すると、Excel に HDInsight の�
   [HDInsight での Hive の使用]: ../hdinsight-use-hive/
   [HDInsight での Pig の使用]: ../hdinsight-use-pig/
   [Use Oozie with HDInsight (HDInsight での Oozie の使用)]: ../hdinsight-use-oozie/
-  [Develop C\# Hadoop streaming programs for HDInsight (HDInsight 用 C\# Hadoop ストリーミング プログラムの開発)]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
+  [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]: ../hdinsight-develop-deploy-java-mapreduce/

@@ -158,5 +158,5 @@ SQL データベースと共に Mobile Services .NET バックエンドを使用
   [Logs in Azure Management Portal]: ./media/mobile-services-dotnet-backend-how-to-troubleshoot/13.png
   [.NET バックエンド NuGet パッケージ]: http://www.nuget.org/packages?q=%22mobile+services+.net+backend%22
   [Help page indicating assembly loading conflict]: ./media/mobile-services-dotnet-backend-how-to-troubleshoot/14.png
-  [Code First Migrations]: http://msdn.microsoft.com/en-us/data/jj591621
+  [Code First Migrations]: http://msdn.microsoft.com/ja-jp/data/jj591621
   [データ モデルの変更を .NET バックエンド モバイル サービスに加える方法]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations/

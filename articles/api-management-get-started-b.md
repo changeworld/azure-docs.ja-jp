@@ -144,7 +144,7 @@ Administrator ユーザーには、すべての成果物に対するサブスク
 -   開発者ポータルのカスタマイズ
 -   API Inspector を使用した呼び出しのトレース
 
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/en-us/pricing/free-trial/
+  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/
   [管理ポータル]: https://manage.windowsazure.com/
   [API Management new instance]: ./media/api-management-get-started/api-management-create-instance-menu.png
   [New API Management service]: ./media/api-management-get-started/api-management-create-instance-step1.png

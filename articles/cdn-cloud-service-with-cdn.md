@@ -41,8 +41,8 @@ Azure CDN をクラウド サービスと統合して、クラウド サービ�
   <span class="wa-icon-bulb"></span>
 <h5><a name="note"></a>このチュートリアルを完了するには、Azure アカウントが必要です。</h5>
   <ul>
-<li><a href="http://azure.microsoft.com/en-us/pricing/free-trial/?WT.mc_id=A261C142F">無料で Azure アカウントを開く</a>ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。</li>
-<li><a href="http://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F">MSDN サブスクライバーの特典を有効にする</a>こともできます - MSDN サブスクリプションにより、有料の Azure のサービスを使用できるクレジットが毎月与えられます。</li>
+<li><a href="http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F">無料で Azure アカウントを開く</a>ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。</li>
+<li><a href="http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F">MSDN サブスクライバーの特典を有効にする</a>こともできます - MSDN サブスクリプションにより、有料の Azure のサービスを使用できるクレジットが毎月与えられます。</li>
   <ul>
 </div>
 
@@ -635,10 +635,10 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
   [Azure CDN を介してコントローラー アクションからコンテンツを配信する]: #controller
   [Visual Studio のスクリプトのデバッグ エクスペリエンスを維持しながらバンドルされたコンテンツおよび縮小されたコンテンツを配信する]: #bundling
   [Azure CDN がオフラインのときのスクリプトおよび CSS のフォールバックを構成する]: #fallback
-  [Microsoft Azure アカウント]: http://azure.microsoft.com/en-us/account/
+  [Microsoft Azure アカウント]: http://azure.microsoft.com/ja-jp/account/
   [Azure SDK]: http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409
-  [無料で Azure アカウントを開く]: http://azure.microsoft.com/en-us/pricing/free-trial/?WT.mc_id=A261C142F
-  [MSDN サブスクライバーの特典を有効にする]: http://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
+  [無料で Azure アカウントを開く]: http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F
+  [MSDN サブスクライバーの特典を有効にする]: http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
   []: media/cdn-cloud-service-with-cdn/cdn-cs-1-new-project.PNG
   [1]: media/cdn-cloud-service-with-cdn/cdn-cs-2-select-role.PNG
   [2]: media/cdn-cloud-service-with-cdn/cdn-cs-3-mvc-template.PNG
@@ -647,7 +647,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
   [5]: media/cdn-cloud-service-with-cdn/cdn-cs-6-publish-signedin.png
   [6]: media/cdn-cloud-service-with-cdn/cdn-cs-7-publish-createserviceandstorage.png
   [7]: media/cdn-cloud-service-with-cdn/cdn-cs-8-publish-finalize.png
-  [Azure Tools を使用したクラウド サービスの発行]: http://msdn.microsoft.com/en-us/library/ff683672.aspx
+  [Azure Tools を使用したクラウド サービスの発行]: http://msdn.microsoft.com/ja-jp/library/ff683672.aspx
   [Azure 管理ポータル]: http://manage.windowsazure.com/
   [[http://]: http://
   [8]: media/cdn-cloud-service-with-cdn/cdn-cs-10-createcdn.png
@@ -664,14 +664,14 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
   [15]: media/cdn-cloud-service-with-cdn/cdn-6-addview.PNG
   [16]: media/cdn-cloud-service-with-cdn/cdn-7-configureview.PNG
   [TODO]: #integrate
-  [Bundle コンストラクター]: http://msdn.microsoft.com/en-us/library/jj646464.aspx
-  [Bundle]: http://msdn.microsoft.com/en-us/library/system.web.optimization.bundle.aspx
-  [CdnFallbackExpression]: http://msdn.microsoft.com/en-us/library/system.web.optimization.bundle.cdnfallbackexpression.aspx
+  [Bundle コンストラクター]: http://msdn.microsoft.com/ja-jp/library/jj646464.aspx
+  [Bundle]: http://msdn.microsoft.com/ja-jp/library/system.web.optimization.bundle.aspx
+  [CdnFallbackExpression]: http://msdn.microsoft.com/ja-jp/library/system.web.optimization.bundle.cdnfallbackexpression.aspx
   [System.Web.Optimization のバグ]: https://aspnetoptimization.codeplex.com/workitem/104
   [Ember Consulting Group]: https://github.com/EmberConsultingGroup
   [スタイル バンドルのフォールバック]: https://github.com/EmberConsultingGroup/StyleBundleFallback
   [GitHub に公開されているコード]: https://github.com/EmberConsultingGroup/StyleBundleFallback/blob/master/Website/App_Start/StyleBundleExtensions.cs
   [Azure コンテンツ配信ネットワーク (CDN) の概要]: http://msdn.microsoft.com/library/azure/ff919703.aspx
-  [Web アプリケーションで Azure CDN からコンテンツを配信する]: http://azure.microsoft.com/ja-jp/documentation/Articles/cdn-serve-content-from-cdn-in-your-web-application/
+  [Web アプリケーションで Azure CDN からコンテンツを配信する]: http://azure.microsoft.com/ja-jp/Documentation/Articles/cdn-serve-content-from-cdn-in-your-web-application/
   [Bundling and Minification (バンドルおよび縮小)]: http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification
   [Using CDN for Azure (Azure 用 CDN の使用)]: http://azure.microsoft.com/ja-jp/documentation/articles/cdn-how-to-use/

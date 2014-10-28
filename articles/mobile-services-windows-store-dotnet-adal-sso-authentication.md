@@ -14,24 +14,24 @@
 
 ユーザーを認証できるようにするには、Azure Active Directory (AAD) にアプリケーションを登録する必要があります。この処理は 2 段階の手順で実行されます。まず、モバイル サービスを登録し、モバイル サービスに対するアクセス許可を公開する必要があります。次に、Windows ストア アプリを登録してこれらのアクセス許可へのアクセス権を付与する必要があります。
 
-> [WACOM.NOTE] このチュートリアルの目的は、Windows ストア アプリのシングル サインオン Azure Active Directory 認証をできるようにするための Mobile Services のしくみを説明することにあります。Mobile Services を初めて使用する場合は、チュートリアル「[モバイル サービスの使用][]」を完了することをお勧めします。
+> [WACOM.NOTE] このチュートリアルの目的は、Windows ストア アプリのシングル サインオン Azure Active Directory 認証をできるようにするための Mobile Services のしくみを説明することにあります。Mobile Services を初めて使用する場合は、チュートリアル「[モバイル サービスの使用][モバイル サービスの使用]」を完了することをお勧めします。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
-1.  [モバイル サービスを Azure Active Directory に登録する][]
-2.  [Azure Active Directory にアプリケーションを登録する][]
-3.  [認証を要求するようにモバイル サービスを構成する][]
-4.  [クライアント アプリケーションに認証コードを追加する][]
-5.  [認証を使用してクライアントをテストする][]
+1.  [モバイル サービスを Azure Active Directory に登録する][モバイル サービスを Azure Active Directory に登録する]
+2.  [Azure Active Directory にアプリケーションを登録する][Azure Active Directory にアプリケーションを登録する]
+3.  [認証を要求するようにモバイル サービスを構成する][認証を要求するようにモバイル サービスを構成する]
+4.  [クライアント アプリケーションに認証コードを追加する][クライアント アプリケーションに認証コードを追加する]
+5.  [認証を使用してクライアントをテストする][認証を使用してクライアントをテストする]
 
 このチュートリアルには、次のものが必要です。
 
 -   Windows 8.1 で実行されている Visual Studio 2013。
--   「[モバイル サービスの使用][]」または「[データの使用][]」チュートリアルを完了している。
+-   「[モバイル サービスの使用][モバイル サービスの使用]」または「[データの使用][データの使用]」チュートリアルを完了している。
 -   Microsoft Azure Mobile Services SDK の NuGet パッケージ
 -   Active Directory 認証ライブラリの NuGet パッケージ
 
-[WACOM.INCLUDE [mobile-services-dotnet-adal-register-service][]]
+[WACOM.INCLUDE [mobile-services-dotnet-adal-register-service][mobile-services-dotnet-adal-register-service]]
 
 ## <a name="register-app-aad"></a>Azure Active Directory にアプリケーションを登録する
 
@@ -57,7 +57,7 @@
 
 ここで、ネイティブ アプリケーション設定で構成されるパッケージ SID を取得する必要があります。
 
-1.  [Windows デベロッパー センター ダッシュボード][] にログインし、アプリケーションで **[編集]** をクリックします。
+1.  [Windows デベロッパー センター ダッシュボード][Windows デベロッパー センター ダッシュボード] にログインし、アプリケーションで **[編集]** をクリックします。
 
     ![][2]
 
@@ -75,7 +75,7 @@
 
 ### ネイティブ アプリケーション登録の作成
 
-1.  [Azure の管理ポータル][]の **[Active Directory]** に移動し、目的のディレクトリをクリックします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]の **[Active Directory]** に移動し、目的のディレクトリをクリックします。
 
     ![][6]
 
@@ -105,13 +105,13 @@
 
 ## <a name="require-authentication"></a>認証を要求するようにモバイル サービスを構成する
 
-[WACOM.INCLUDE [mobile-services-restrict-permissions-dotnet-backend][]]
+[WACOM.INCLUDE [mobile-services-restrict-permissions-dotnet-backend][mobile-services-restrict-permissions-dotnet-backend]]
 
 ## <a name="add-authentication-code"></a>クライアント アプリケーションに認証コードを追加する
 
 1.  Visual Studio で、Windows ストア クライアント アプリケーション プロジェクトを開きます。
 
-[WACOM.INCLUDE [mobile-services-dotnet-adal-install-nuget][]]
+[WACOM.INCLUDE [mobile-services-dotnet-adal-install-nuget][mobile-services-dotnet-adal-install-nuget]]
 
 1.  Visual Studio のソリューション エクスプローラー ウィンドウで MainPage.xaml.cs を開き、次の using ステートメントを追加します。
 
@@ -149,9 +149,9 @@
             } 
         }
 
-3.  前の `AuthenticateAsync` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前と置き換えます。形式は、<https://login.windows.net/tenant-name.onmicrosoft.com> である必要があります。この値は、[Azure の管理ポータル][]の Azure Active Directory の [ドメイン] タブからコピーできます。
+3.  前の `AuthenticateAsync` メソッドのコードで、**INSERT-AUTHORITY-HERE** をアプリケーションをプロビジョニングしたテナントの名前と置き換えます。形式は、<https://login.windows.net/tenant-name.onmicrosoft.com> である必要があります。この値は、[Azure の管理ポータル][Azure の管理ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
 
-4.  前の `AuthenticateAsync` メソッドのコードで、**INSERT-RESOURCE-URI-HERE** をモバイル サービスの **App ID URI** に置き換えます。「[How to Register with the Azure Active Directory (Azure Active Directory に登録する方法)][]」トピックに従った場合は、アプリケーション ID URI が <https://todolist.azure-mobile.net/login/aad> と同様になる必要があります。
+4.  前の `AuthenticateAsync` メソッドのコードで、**INSERT-RESOURCE-URI-HERE** をモバイル サービスの **App ID URI** に置き換えます。「[How to Register with the Azure Active Directory (Azure Active Directory に登録する方法)][How to Register with the Azure Active Directory (Azure Active Directory に登録する方法)]」トピックに従った場合は、アプリケーション ID URI が <https://todolist.azure-mobile.net/login/aad> と同様になる必要があります。
 
 5.  前の `AuthenticateAsync` メソッドのコードで、**INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
 

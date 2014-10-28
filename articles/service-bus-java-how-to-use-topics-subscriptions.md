@@ -323,7 +323,7 @@ ServiceBus ではメッセージのロックが自動的に解除され、
 これで、サービス バス キューの基本を学習できました。詳細については、MSDN
 のトピック「[サービス バス キュー、トピック、およびサブスクリプション][サービス バス キュー、トピック、およびサブスクリプション]」を参照してください。
 
-  [Azure SDK for Java]: http://www.windowsazure.com/en-us/develop/java/
+  [Azure SDK for Java]: http://www.windowsazure.com/ja-jp/develop/java/
   [サービス バス トピックとサブスクリプションとは]: #what-are-service-bus-topics
   [サービス名前空間の作成]: #create-a-service-namespace
   [名前空間の既定の管理資格情報の取得]: #obtain-default-credentials

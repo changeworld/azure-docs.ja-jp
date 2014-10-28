@@ -34,14 +34,14 @@
 
   [Service Bus キューを使用する .NET 多層アプリケーションをビルドする]: /ja-jp/documentation/articles/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/
   [Windows Azure Service Bus - David Chappell]: http://azure.microsoft.com/ja-jp/documentation/articles/fundamentals-service-bus-hybrid-solutions/
-  [キュー ベースの負荷平準化プラットフォーム]: http://msdn.microsoft.com/en-us/library/dn589783.aspx
-  [競合コンシューマー]: http://msdn.microsoft.com/en-us/library/dn568101.aspx
+  [キュー ベースの負荷平準化プラットフォーム]: http://msdn.microsoft.com/ja-jp/library/dn589783.aspx
+  [競合コンシューマー]: http://msdn.microsoft.com/ja-jp/library/dn568101.aspx
   [Transportation Solution Provider Screens Commercial Vehicles - Xerox (輸送ソリューション プロバイダーが商用車をふるいにかける - Xerox)]: http://www.microsoft.com/casestudies/Case_Study_Detail.aspx?CaseStudyID=710000000945
   [サービス バス キューの使用方法]: http://azure.microsoft.com/ja-jp/documentation/articles/service-bus-dotnet-how-to-use-queues/
   [Deadlettering in Service Bus Brokered Messaging (Service Bus の仲介型メッセージングでの配信不能) (2011 年 10 月 21 日のブログ投稿)]: http://geekswithblogs.net/asmith/articles/147398.aspx
-  [Best Practices for Insulating Service Bus Applications Against Service Bus Outages and Disasters (Service Bus の停止と障害に対する Service Bus アプリケーションを隔離するベスト プラクティス)]: http://sandboxmsdnstage.redmond.corp.microsoft.com/en-us/library/azure/jj554355.aspx
+  [Best Practices for Insulating Service Bus Applications Against Service Bus Outages and Disasters (Service Bus の停止と障害に対する Service Bus アプリケーションを隔離するベスト プラクティス)]: http://sandboxmsdnstage.redmond.corp.microsoft.com/ja-jp/library/azure/jj554355.aspx
   [Brokered Messaging: Request Response (仲介型メッセージング: 要求応答)]: http://code.msdn.microsoft.com/windowsazure/Brokered-Messaging-Request-2b4ff5d8
   [Service Bus キューを使用する .NET 多層アプリケーション]: http://azure.microsoft.com/ja-jp/documentation/articles/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/
-  [Windows Azure キューと Windows Azure サービス バス キューの比較]: http://msdn.microsoft.com/en-us/library/azure/hh767287.aspx
-  [Service Bus REST API リファレンス]: http://msdn.microsoft.com/en-us/library/azure/hh780717.aspx
+  [Windows Azure キューと Windows Azure サービス バス キューの比較]: http://msdn.microsoft.com/ja-jp/library/azure/hh767287.aspx
+  [Service Bus REST API リファレンス]: http://msdn.microsoft.com/ja-jp/library/azure/hh780717.aspx
   [Cloud Services]: http://azure.microsoft.com/ja-jp/documentation/services/cloud-services/

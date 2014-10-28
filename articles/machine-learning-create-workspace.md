@@ -11,7 +11,7 @@ Microsoft Azure Machine Learning ワークスペース (ML ワークスペース
 1.  Microsoft Azure のアカウントを使用してサインインします。
 2.  Microsoft Azure サービス パネルで、**[MACHINE LEARNING]** をクリックします。
 
-![][]
+![][0]
 
 1.  **[ML ワークスペースを作成]** をクリックします。
 2.  **[簡易作成]** ページで次の手順を実行します。
@@ -26,5 +26,5 @@ Microsoft Azure Machine Learning ワークスペース (ML ワークスペース
 
 <!--Anchors--> <!--Image references--> <!--Link references-->
 
-  []: ./media/machine-learning-create-workspace/cw1.png
+  [0]: ./media/machine-learning-create-workspace/cw1.png
   [1]: ./media/machine-learning-create-workspace/cw2.png

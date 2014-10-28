@@ -55,7 +55,7 @@ Application Insights を使うと、ライブ アプリケーションの可用�
 
   [Application Insights を Visual Studio のプロジェクトに追加する]: ../app-insights-monitor-application-health-usage/
   [ライブ Web サービスの問題を今すぐ診断する]: ../app-insights-monitor-performance-live-website-now/
-  [Application Insights の以前のバージョン]: http://msdn.microsoft.com/en-us/library/dn481095.aspx
+  [Application Insights の以前のバージョン]: http://msdn.microsoft.com/ja-jp/library/dn481095.aspx
   [Example application monitor in Application Insights]: ./media/appinsights/appinsights-00-appblade.png
   [Application Insights - 概要]: ../app-insights-get-started/
   [メトリックの探索]: ../app-insights-explore-metrics/

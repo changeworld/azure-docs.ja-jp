@@ -279,7 +279,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
   [Windows ユニバーサル]: /ja-jp/documentation/articles/notification-hubs-windows-dotnet-notify-users/ "Windows ユニバーサル"
   [iOS]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-notify-users/ "iOS"
   [Android]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-notify-users/ "Android"
-  [アプリ バックエンドからの登録]: http://msdn.microsoft.com/en-us/library/dn743807.aspx
+  [アプリ バックエンドからの登録]: http://msdn.microsoft.com/ja-jp/library/dn743807.aspx
   [Getting Started with Notification Hubs (Android) (Notification Hubs (Android) の使用)]: /ja-jp/documentation/articles/notification-hubs-android-get-started/
   [notification-hubs-aspnet-backend-notifyusers]: ../includes/notification-hubs-aspnet-backend-notifyusers.md
   []: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users1.PNG

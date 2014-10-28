@@ -415,11 +415,11 @@ Azure Storage アカウントは、キューおよび BLOB データをクラウ
 
 1.  Visual Studio で、**[ファイル]** メニューから **[新規]**、**[プロジェクト]** の順に選択します。
 
-2.  **\[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C\#]**、**[Web]**、**[ASP.NET Web アプリケーション]** の順にクリックします。
+2.  **\[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]**、**[Web]**、**[ASP.NET Web アプリケーション]** の順にクリックします。
 
 3.  プロジェクトに ContosoAdsWeb と名前を付け、ソリューションに ContosoAdsWebJobsSDK と名前を付けて (ダウンロードしたソリューションと同じフォルダーに入れる場合は、ソリューション名を変更します)、**[OK]** をクリックします。
 
-    ![新しいプロジェクト][]
+    ![新しいプロジェクト][新しいプロジェクト]
 
 4.  **[新しい ASP.NET プロジェクト]** ダイアログで、MVC テンプレートを選択し、**[Microsoft Azure]** の下の **[クラウドでのホスト]** チェック ボックスをオフにします。
 
@@ -431,7 +431,7 @@ Azure Storage アカウントは、キューおよび BLOB データをクラウ
 
 6.  **[認証の変更]** ダイアログで、**\[認証なし]** をクリックし、**[OK]** をクリックします。
 
-    ![認証なし][]
+    ![認証なし][認証なし]
 
 7.  **[新しい ASP.NET プロジェクト]** ダイアログで **[OK]** をクリックします。
 
@@ -439,7 +439,7 @@ Azure Storage アカウントは、キューおよび BLOB データをクラウ
 
 8.  **ソリューション エクスプローラー**で (プロジェクトではなく) ソリューションを右クリックし、**[追加]**、**\[新しいプロジェクト]** の順に選択します。
 
-9.  **[新しいプロジェクトの追加]** ダイアログ ボックスで、**[Visual C\#]**、**[Windows デスクトップ]**、**[クラス ライブラリ]** テンプレートの順にクリックします。
+9.  **[新しいプロジェクトの追加]** ダイアログ ボックスで、**[Visual C#]**、**[Windows デスクトップ]**、**[クラス ライブラリ]** テンプレートの順にクリックします。
 
 10. プロジェクトに *ContosoAdsCommon* という名前を付けて **[OK]** をクリックします。
 
@@ -886,7 +886,7 @@ Web ジョブを Web サイトで実行する場合は、Web サイトの場合�
   [Azure 管理ポータル]: http://manage.windowsazure.com
   [ストレージ アカウントの管理方法に関するページ]: /ja-jp/documentation/articles/storage-manage-storage-account/
   [New storage account]: ./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png
-  [SQL Server Express LocalDB]: http://msdn.microsoft.com/en-us/library/hh510202.aspx
+  [SQL Server Express LocalDB]: http://msdn.microsoft.com/ja-jp/library/hh510202.aspx
   [1]: http://manage.windowsazure.com/
   [Manage Access Keys button]: ./media/websites-dotnet-webjobs-sdk-get-started/mak.png
   [Manage Access Keys dialog]: ./media/websites-dotnet-webjobs-sdk-get-started/cpak.png
@@ -920,7 +920,7 @@ Web ジョブを Web サイトで実行する場合は、Web サイトの場合�
   [「Program.cs」のセクション]: #programcs
   [ResolveBlobName]: #resolveblobname
   [再試行ポリシー]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling
-  [HttpPostedFileBase]: http://msdn.microsoft.com/en-us/library/system.web.httppostedfilebase.aspx
+  [HttpPostedFileBase]: http://msdn.microsoft.com/ja-jp/library/system.web.httppostedfilebase.aspx
   [Web ジョブ SDK 0.3.0 ベータの発表]: http://azure.microsoft.com/blog/2014/06/18/announcing-the-0-3-0-beta-preview-of-microsoft-azure-webjobs-sdk/http://azure.microsoft.com/blog/2014/06/18/announcing-the-0-3-0-beta-preview-of-microsoft-azure-webjobs-sdk/
   [アプリケーションのクラウド サービス版]: /ja-jp/documentation/articles/cloud-services-dotnet-get-started/
   [https://{websitename}.scm.azurewebsites.net/azurejobs/\#/functions]: https://{websitename}.scm.azurewebsites.net/azurejobs/#/functions

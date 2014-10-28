@@ -1,4 +1,7 @@
-<properties title="Git を使用した発行 (PHP) - Azure" pageTitle="Git を使用した発行 (PHP) - Azure" keywords="publishing Git Azure, publish website Azure" description="Git を使用して Azure の Web サイトに発行した後、GitHub および CodePlex からの継続的な展開を有効にする方法について説明します。" services="Web Sites" documentationCenter="PHP" authors="" />
+<properties title="Publishing with Git (PHP) - Azure" pageTitle="Publishing with Git (PHP) - Azure" keywords="publishing Git Azure, publish website Azure" description="Learn how to use Git to publish an Azure website, and then enable continuous deployment from GitHub and CodePlex." services="Web Sites" documentationCenter="PHP" authors="larryf" />
 
-[WACOM.INCLUDE [publishing-with-git](../includes/publishing-with-git.md)]
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryf"></tags>
 
+[WACOM.INCLUDE [publishing-with-git][publishing-with-git]]
+
+  [publishing-with-git]: ../includes/publishing-with-git.md

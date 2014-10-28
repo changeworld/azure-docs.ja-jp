@@ -444,7 +444,7 @@ Android NDK をインストールする必要があります。[][]<http://devel
 
 
 
-  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-push "Windows ストア C#"
+  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-push "Windows ストア C#"
   [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-push "Windows ストア JavaScript"
   [Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-push "Windows Phone"
   [iOS]: /ja-jp/documentation/articles/mobile-services-ios-get-started-push "iOS"

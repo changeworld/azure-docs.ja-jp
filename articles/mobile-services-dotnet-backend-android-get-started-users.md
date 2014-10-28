@@ -65,7 +65,7 @@
 
 
 
-  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users "Windows ストア C#"
+  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users "Windows ストア C#"
   [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users "Windows ストア JavaScript"
   [Windows Phone]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-users "Windows Phone"
   [iOS]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users "iOS"

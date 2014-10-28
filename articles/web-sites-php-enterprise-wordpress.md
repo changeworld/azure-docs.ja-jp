@@ -72,7 +72,7 @@ BLOB ストレージは、既定では複数のリージョンにまたがって
 </tr>
 <tr class="even">
 <td align="left"><strong>電子メールの送信</strong></td>
-<td align="left"><a href="http://azure.microsoft.com/en-us/gallery/store/sendgrid/sendgrid-azure/">SendGrid</a>、<a href="http://wordpress.org/plugins/sendgrid-email-delivery-simplified/">SendGrid を使うための WordPress プラグイン</a>についての説明</td>
+<td align="left"><a href="http://azure.microsoft.com/ja-jp/gallery/store/sendgrid/sendgrid-azure/">SendGrid</a>、<a href="http://wordpress.org/plugins/sendgrid-email-delivery-simplified/">SendGrid を使うための WordPress プラグイン</a>についての説明</td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>カスタム ドメイン名</strong></td>
@@ -243,7 +243,7 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 <td align="left"><strong>パフォーマンスの向上</strong></td>
 <td align="left"><ul>
 <li><p><a href="http://blogs.msdn.com/b/windowsazure/archive/2013/11/18/disabling-arr-s-instance-affinity-in-windows-azure-web-sites.aspx">ARR クッキーの無効化</a> - 複数の Websites のインスタンスで WordPress を実行している場合に、パフォーマンスを向上させる方法です。</p></li>
-<li><p>キャッシュの有効化。<a href="http://msdn.microsoft.com/en-us/library/azure/dn690470.aspx">Redis Cache</a> (プレビュー) は、<a href="https://wordpress.org/plugins/redis-object-cache/">WordPress プラグインの Redis Object Cache</a> で使用できます。また、<a href="http://azure.microsoft.com/en-us/gallery/store/">Azure ストア</a>から入手できる他のキャッシュ オファリングも使用できます。</p></li>
+<li><p>キャッシュの有効化。<a href="http://msdn.microsoft.com/ja-jp/library/azure/dn690470.aspx">Redis Cache</a> (プレビュー) は、<a href="https://wordpress.org/plugins/redis-object-cache/">WordPress プラグインの Redis Object Cache</a> で使用できます。また、<a href="http://azure.microsoft.com/ja-jp/gallery/store/">Azure ストア</a>から入手できる他のキャッシュ オファリングも使用できます。</p></li>
 <li><p><a href="http://ruslany.net/2010/03/make-wordpress-faster-on-iis-with-wincache-1-1/">WordPress を WinCache で高速化する方法</a> - WinCache は既定で Websites 用に有効になっています。</p></li>
 <li><p><a href="http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-scale/">Web サイトの規模の設定</a>を実施し、<a href="http://www.cleardb.com/developers/cdbr/introduction">ClearDB High Availability ルーティング</a>または <a href="http://www.mysql.com/products/cluster/">MySQL Cluster CGE</a> を使用します。</p></li>
 </ul></td>
@@ -260,7 +260,7 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 <tr class="odd">
 <td align="left"><strong>電子メールの有効化</strong></td>
 <td align="left"><ol>
-<li><p><a href="http://azure.microsoft.com/en-us/gallery/store/sendgrid/sendgrid-azure/">Azure ストアで SendGrid を有効にします。</a></p></li>
+<li><p><a href="http://azure.microsoft.com/ja-jp/gallery/store/sendgrid/sendgrid-azure/">Azure ストアで SendGrid を有効にします。</a></p></li>
 <li><p><a href="http://wordpress.org/plugins/sendgrid-email-delivery-simplified/">WordPress 用の SendGrid プラグインをインストールします。</a></p></li>
 </ol></td>
 </tr>
@@ -341,14 +341,14 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
   [an Azure Website, hosted in multiple regions, using CDBR High Availability router to route to MySQL across regions]: ./media/web-sites-enterprise-wordpress/multi-region-diagram.png
   [CDBR High Availability Router]: http://www.cleardb.com/developers/cdbr/introduction
   [MySQL Cluster CGE]: http://www.mysql.com/products/cluster/
-  [Redis Cache]: http://msdn.microsoft.com/en-us/library/azure/dn690470.aspx
-  [Memcached Cloud]: http://azure.microsoft.com/en-us/gallery/store/garantiadata/memcached/
-  [MemCachier]: http://azure.microsoft.com/en-us/gallery/store/memcachier/memcachier/
-  [Azure ストア]: http://azure.microsoft.com/en-us/gallery/store/
+  [Redis Cache]: http://msdn.microsoft.com/ja-jp/library/azure/dn690470.aspx
+  [Memcached Cloud]: http://azure.microsoft.com/ja-jp/gallery/store/garantiadata/memcached/
+  [MemCachier]: http://azure.microsoft.com/ja-jp/gallery/store/memcachier/memcachier/
+  [Azure ストア]: http://azure.microsoft.com/ja-jp/gallery/store/
   [an Azure Website, hosted in multiple regions, using CDBR High Availability router for MySQL, with Managed Cache, Blob storage, and CDN]: ./media/web-sites-enterprise-wordpress/performance-diagram.png
   [コンテンツ配信ネットワーク (CDN)]: http://azure.microsoft.com/ja-jp/documentation/articles/cdn-how-to-use/
   [WordPress plugin for using Blob storage (BLOB ストレージを使うための WordPress プラグイン)]: https://wordpress.org/plugins/windows-azure-storage/
-  [SendGrid]: http://azure.microsoft.com/en-us/gallery/store/sendgrid/sendgrid-azure/
+  [SendGrid]: http://azure.microsoft.com/ja-jp/gallery/store/sendgrid/sendgrid-azure/
   [SendGrid を使うための WordPress プラグイン]: http://wordpress.org/plugins/sendgrid-email-delivery-simplified/
   [Azure の Web Site のカスタム ドメイン名の構成]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-custom-domain-name/
   [Azure の Web サイトでの HTTPS の有効化]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-configure-ssl-certificate/
@@ -358,7 +358,7 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
   [Azure の Web サイトのデプロイ方法]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-deploy/
   [Azure の Web サイトのバックアップ]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-backup/
   [Microsoft Azure の Web サイトの復元]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-restore/
-  [Websites の各サイズやモードでの機能と料金の詳細]: https://azure.microsoft.com/en-us/pricing/details/web-sites/
+  [Websites の各サイズやモードでの機能と料金の詳細]: https://azure.microsoft.com/ja-jp/pricing/details/web-sites/
   [Web サイトの規模の設定方法]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-scale/
   [WordPress のエクスポート]: http://en.support.wordpress.com/export/
   [WordPress Importer プラグイン]: http://wordpress.org/plugins/wordpress-importer/

@@ -20,13 +20,13 @@ RemoteApp のデプロイメントには、次の 2 種類の方法がありま�
 
 サービスを作成する前に、以下の操作が必要です。
 
--   RemoteApp のプレビューにサインアップします。これは、[][][http://azure.microsoft.com/ja-jp/services/remoteapp/][]</a> で行うことができます。
+-   RemoteApp のプレビューにサインアップします。これは、[][][http://azure.microsoft.com/ja-jp/services/remoteapp/][http://azure.microsoft.com/ja-jp/services/remoteapp/]</a> で行うことができます。
 -   アクセス権を付与するユーザーとグループに関する情報を集めます。この情報とは、ユーザーまたはグループの Microsoft アカウントの情報または Active Directory の組織アカウントの情報です。
 -   この手順は、サブスクリプションの一部として提供されたテンプレートのイメージを使用しようとしているか、使用するテンプレートのイメージが既にアップロード済みであることが前提となっています。別のテンプレート イメージをアップロードする必要がある場合は、[テンプレート イメージ] ページから実行できます。**[テンプレート イメージのアップロード]** をクリックして、ウィザードで表示される手順に従います。
 
 ## **手順 1.RemoteApp サービスの作成**
 
-1.  [Windows Azure の管理ポータル][]で、[RemoteApp] ページに移動します。
+1.  [Windows Azure の管理ポータル][Windows Azure の管理ポータル]で、[RemoteApp] ページに移動します。
 2.  **[新規] \> [簡易作成]** をクリックします。
 
 3.  サービスの名前を入力し、リージョンを選択します。
@@ -43,7 +43,7 @@ RemoteApp サービスが作成されたら、RemoteApp の **[クイック ス�
 
 ## **手順 2.Active Directory ディレクトリの同期の構成 (オプション)**
 
-Active Directory を使用する場合、RemoteApp では、Azure Active Directory と内部設置型 Active Directory との間でディレクトリの同期が必要になります。これにより、ユーザー、グループ、連絡先、およびパスワードが Azure Active Directory テナントと同期します。計画に関する情報、および詳しい手順については、「[ディレクトリ同期のロードマップ][]」を参照してください。
+Active Directory を使用する場合、RemoteApp では、Azure Active Directory と内部設置型 Active Directory との間でディレクトリの同期が必要になります。これにより、ユーザー、グループ、連絡先、およびパスワードが Azure Active Directory テナントと同期します。計画に関する情報、および詳しい手順については、「[ディレクトリ同期のロードマップ][ディレクトリ同期のロードマップ]」を参照してください。
 
 ## **手順 3.RemoteApp プログラムの発行**
 
@@ -68,6 +68,6 @@ RemoteApp サービスには複数のプログラムを発行できます。[Rem
 
 これで、RemoteApp クラウドのデプロイメントの作成とデプロイが正常に完了しました。次のステップは、ユーザーによるリモート デスクトップ クライアントのダウンロードとインストールです。このクライアントの URL は、RemoteApp の [クイック スタート] ページにあります。次に、ユーザーが Azure にログインし、発行した RemoteApp プログラムにアクセスします。
 
-  []: http://azure.microsoft.com/en-us/services/remoteapp/
+  []: http://azure.microsoft.com/ja-jp/services/remoteapp/
   [Windows Azure の管理ポータル]: http://manage.windowsazure.com
-  [ディレクトリ同期のロードマップ]: http://msdn.microsoft.com/en-us/library/azure/hh967642.aspx
+  [ディレクトリ同期のロードマップ]: http://msdn.microsoft.com/ja-jp/library/azure/hh967642.aspx

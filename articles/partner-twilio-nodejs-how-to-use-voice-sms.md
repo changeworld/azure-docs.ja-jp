@@ -248,7 +248,7 @@ Azure で node.js と Twilio を活用してください。
   [TwiML]: https://www.twilio.com/docs/api/twiml
   [Twilio 開発ブログ]: http://www.twilio.com/blog/2013/04/introduction-to-twilio-client-with-node-js.html
   [アカウントにサインアップ]: http://ahoy.twilio.com/azure
-  [そのための公式なドキュメントは、ここにあります]: http://www.windowsazure.com/en-us/develop/nodejs/tutorials/create-a-website-(mac)/
+  [そのための公式なドキュメントは、ここにあります]: http://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
   [Twilio ダッシュボードで確認できます]: https://www.twilio.com/user/account
   [Azure 管理コンソール]: ./media/partner-twilio-nodejs-how-to-use-voice-sms/twilio_1.png
   [npm]: http://npmjs.org

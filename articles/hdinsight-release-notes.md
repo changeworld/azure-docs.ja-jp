@@ -423,8 +423,8 @@ SQL Server JDBC ドライバーは HDInsight によって内部的に使用さ�
 
 -   HDInsight クラスター Version 1.6 は、[Hortonworks Data Platform 1.1][Hortonworks Data Platform 1.1] を基盤とする Hadoop ディストリビューションを使用します。
 
-  [New-AzureHDInsightCluster]: http://msdn.microsoft.com/en-us/library/dn593744.aspx
-  [HDInsight SDK]: http://msdn.microsoft.com/en-us/library/azure/dn469975.aspx
+  [New-AzureHDInsightCluster]: http://msdn.microsoft.com/ja-jp/library/dn593744.aspx
+  [HDInsight SDK]: http://msdn.microsoft.com/ja-jp/library/azure/dn469975.aspx
   [HDInsight で提供されるクラスター バージョンの新機能]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/
   []: http://i.imgur.com/cmOl5fM.png
   [Mahout]: http://hortonworks.com/hadoop/mahout/

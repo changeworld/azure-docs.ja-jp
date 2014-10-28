@@ -1,4 +1,7 @@
-<properties title="Azure アカウントを作成する" pageTitle="Azure アカウントを作成する" description="アカウントを作成する" authors="waltpo" manager="bjsmith" editor="mollybos"  videoId="" scriptId="" />
+<properties title="Create an Azure account" pageTitle="Create an Azure account" description="Create an account" authors="robmcm" manager="wpickett" editor="mollybos"  videoId="" scriptId="" />
 
-[WACOM.INCLUDE [create-an-azure-account](../includes/create-an-azure-account.md)]
+<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm"></tags>
 
+[WACOM.INCLUDE [create-an-azure-account][create-an-azure-account]]
+
+  [create-an-azure-account]: ../includes/create-an-azure-account.md

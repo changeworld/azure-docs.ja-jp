@@ -1,100 +1,74 @@
-<properties linkid="video-center-index" urlDisplayName="索引" pageTitle="ビデオ センターの索引" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Azure の Web サイトで ASP.NET セッション状態を使用する方法" authors=""  solutions="" writer="jroth" manager="" editor=""  />
+<properties linkid="video-center-index" urlDisplayName="index" pageTitle="Use ASP.NET session state with Azure Websites" metaKeywords="azure cache service session state" description="Learn how to use the Azure Cache Service to support ASP.NET session state caching." metaCanonical="" services="cache" documentationCenter=".NET" title="How to Use ASP.NET Session State with Azure Websites" authors="tdykstra"  solutions="" manager="wpickett" editor="mollybos"  />
 
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tdykstra"></tags>
 
+# Azure Websites で ASP.NET セッション状態を使用する方法
 
+著者 [Rick Anderson][Rick Anderson](更新日: 2014 年 7 月 1 日)
 
-# Azure の Web サイトで ASP.NET セッション状態を使用する方法
+このトピックでは、Azure Redis Cache Service (プレビュー) を使用してセッション状態をサポートする方法について説明します。
 
-ここでは、Azure のキャッシュ サービス (プレビュー) を使用して、ASP.NET セッション状態キャッシュをサポートする方法を説明します。
-
-外部プロバイダーがない場合、セッション状態は、そのサイトをホストしている Web サーバー上のインプロセスに格納されます。Azure の Web サイトでは、インプロセスのセッション状態には 2 つの問題があります。まず、複数のインスタンスを持つサイトで、1 つのインスタンスに保存されているセッション状態は他のインスタンスからアクセスできません。ユーザー要求はどのインスタンスに割り当てられるかわらかないので、そのインスタンスにセッション情報があるとは限りません。次に、構成を変更すると、まったく別のサーバー上で Web サイトが実行されるようになります。
-
-キャッシュ サービス (プレビュー) は、Web サイトの外部に分散キャッシュ サービスを提供します。これにより、インプロセス セッション状態の問題を解決できます。セッション状態の詳しい使用方法については、「[ASP.NET セッション状態の概要][]」を参照してください。
+ASP.NET Web アプリケーションでセッション状態を使用している場合は、外部セッション状態プロバイダー (Redis Cache Service または SQL Server セッション状態プロバイダー) を構成する必要があります。セッション状態を使用し、外部プロバイダーを使用しない場合は、Web アプリケーションの 1 つのインスタンスに制限されます。Redis Cache Service は、最も高速で最も簡単に実現できるキャッシュ サービスです。
 
 キャッシュ サービス (プレビュー) を使用してセッション状態キャッシュをサポートする基本的な手順は次のとおりです。
 
-* [キャッシュを作成します。](#createcache)
-* [Azure のキャッシュを使用するように ASP.NET プロジェクトを構成します。](#configureproject)
-* [web.config ファイルを修正します。](#configurewebconfig)
-* [セッション オブジェクトを使用して、キャッシュされたアイテムを保存および取得します。](#usesessionobject)
+-   [キャッシュを作成します。][キャッシュを作成します。]
+-   [RedisSessionStateProvider NuGet パッケージを Web アプリケーションに追加します。][RedisSessionStateProvider NuGet パッケージを Web アプリケーションに追加します。]
+-   [web.config ファイルを修正します。][web.config ファイルを修正します。]
+-   [セッション オブジェクトを使用して、キャッシュされたアイテムを保存および取得します。][セッション オブジェクトを使用して、キャッシュされたアイテムを保存および取得します。]
 
-<h2><a id="createcache"></a>キャッシュを作成する</h2>
-1. Azure の管理ポータルの下部にある **[新規]** アイコンをクリックします。
+## <span id="createcache"></span></a>キャッシュを作成する
 
-	![NewIcon][NewIcon]
+[ここにある手順][ここにある手順]に従ってキャッシュを作成します。
 
-2. **[データ サービス]**、**[キャッシュ]** の順に選択し、**[簡易作成]** をクリックします。
+## <span id="configureproject"></span></a>RedisSessionStateProvider NuGet パッケージを Web アプリケーションに追加する
 
-	![NewCacheDialog][NewCacheDialog]
+NuGet `RedisSessionStateProvider` パッケージをインストールします。パッケージ マネージャー コンソールからインストールするには、**[ツール]** \> **[NuGet パッケージ マネージャー]** \> **[パッケージ マネージャー コンソール]** コマンドを使用します。
 
-3. キャッシュの一意な名前を **[エンドポイント]** ボックスに入力します。キャッシュに関するその他のプロパティを設定し、**[新しいキャッシュの作成]** をクリックします。
+`PM> Install-Package RedisSessionStateProvider -IncludePrerelease`
 
-4. 管理ポータルで **[キャッシュ]** アイコンを選択します。すべてのキャッシュ サービス エンドポイントが表示されます。
+**[ツール]** \> **[NuGet パッケージ マネージャー]** \> **[ソリューションの NugGet パッケージの管理]** からインストールするには、`RedisSessionStateProvider` を検索し、**[プレリリースを含める]** を必ず指定します。
 
-	![CacheIcon][CacheIcon]
+詳細については、[NuGet RedisSessionStateProvider のページ][NuGet RedisSessionStateProvider のページ]および「[キャッシュ クライアントの構成][キャッシュ クライアントの構成]」を参照してください。
 
-5. いずれかのキャッシュ サービス エンドポイントを選択すると、そのプロパティが表示されます。この後のセクションでは、**[ダッシュボード]** タブを使用して ASP.NET プロジェクトのキャッシュを構成します。
+## <span id="configurewebconfig"></span></a>Web.Config ファイルを修正する
 
-<h2><a id="configureproject"></a>ASP.NET プロジェクトを構成する</h2>
-1. まず、**Azure SDK for .NET** の[最新バージョンをインストール][]していることを確認します。
+キャッシュに必要なアセンブリ参照の作成に加え、NuGet パッケージは *web.config* ファイルにスタブ エントリを追加します。
 
-2. Visual Studio の**ソリューション エクスプローラー**で目的の ASP.NET プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します (WebMatrix を使用している場合は、ツール バーの [**NuGet**] をクリックします)。
+1.  *web.config* を開き、**sessionState** 要素を見つけます。
 
-3. **[オンライン検索]** ボックスに、「**WindowsAzure.Caching**」と入力します。
+2.  `host`、`accessKey`、`port` (SSL ポートは 6380 とする必要があります) の値を入力し、`SSL` を `true` に設定します。これらの値は、ご利用のキャッシュ インスタンスの Azure 管理プレビュー ポータル ブレードから取得できます。詳細については、「[キャッシュに接続する][キャッシュに接続する]」を参照してください。
+    次のマークアップは、*web.config* ファイルに対する変更を示しています。
 
-	![NuGetDialog][NuGetDialog]
+<pre class="prettyprint">
+ &lt;system.web&gt; &lt;customErrors mode=&quot;Off&quot; /&gt; &lt;authentication mode=&quot;None&quot; /&gt; &lt;compilation debug=&quot;true&quot; targetFramework=&quot;4.5&quot; /&gt; &lt;httpRuntime targetFramework=&quot;4.5&quot; /&gt; &lt;sessionState mode=&quot;Custom&quot; customProvider=&quot;RedisSessionProvider&quot;&gt; &lt;providers&gt; &lt;!--&lt;add name=&quot;RedisSessionProvider&quot; host = &quot;127.0.0.1&quot; [String] port = &quot;&quot; [number] accessKey = &quot;&quot; [String] ssl = &quot;false&quot; [true|false] throwOnError = &quot;true&quot; [true|false] retryTimeoutInMilliseconds = &quot;0&quot; [number] databaseId = &quot;0&quot; [number] applicationName = &quot;&quot; [String] /&gt;--&gt; &lt;add name=&quot;RedisSessionProvider&quot; type=&quot;Microsoft.Web.Redis.RedisSessionStateProvider&quot; port=&quot;6380&quot; host=&quot;movie2.redis.cache.windows.net&quot; accessKey=&quot;m7PNV60CrvKpLqMUxosC3dSe6kx9nQ6jP5del8TmADk=&quot; ssl=&quot;true&quot; /&gt; &lt;!--&lt;add name=&quot;MySessionStateStore&quot; type=&quot;Microsoft.Web.Redis.RedisSessionStateProvider&quot; host=&quot;127.0.0.1&quot; accessKey=&quot;&quot; ssl=&quot;false&quot; /&gt;--&gt; &lt;/providers&gt; &lt;/sessionState&gt; &lt;/system.web&gt;
+</pre>
 
-4. **[Azure Caching]** パッケージを選択し、**[インストール]** をクリックします。
+</p>
+## <span id="usesessionobject"></span></a>コードでセッション オブジェクトを使用する
 
-<h2><a id="configurewebconfig"></a>Web.Config ファイルを修正する</h2>
-キャッシュに必要なアセンブリ参照の作成に加え、NuGet パッケージは web.config ファイルにスタブ エントリを追加します。キャッシュ サービスを使用してセッション状態にアクセスするには、web.config を一部修正する必要があります。
-
-1. ASP.NET プロジェクトの **web.config** を開きます。
-
-2. **sessionState** 要素が既に存在する場合は、これをコメント アウト (または削除) します。
-
-3. Azure Caching NuGet パッケージによって追加された **sessionState** 要素をコメント解除します。次のスクリーン ショットのようになります。
-
-	![SessionStateConfig][SessionStateConfig]
-
-4. 次に、**dataCacheClients** セクションを探します。**securityProperties** 子要素をコメント解除します。
-
-	![CacheConfig][CacheConfig]
-
-5. **autoDiscover** 要素で、**identifier** 属性にキャッシュのエンドポイント URL を設定します。エンドポイント URL を確認するには、Azure の管理ポータルでキャッシュのプロパティを参照します。**[ダッシュボード]** タブを開き、**[概要]** セクションの **[エンドポイント URL]** の値をコピーします。
-
-	![EndpointURL][EndpointURL]
-
-6. **messageSecurity** 要素で、**authorizationInfo** 属性にキャッシュのアクセス キーを設定します。アクセス キーを確認するには、Azure の管理ポータルで該当するキャッシュを選択します。下部のバーにある **[キーの管理]** アイコンをクリックします。**[プライマリ アクセス キー]** ボックスの横にあるコピー ボタンをクリックします。
-
-	![ManageKeys][ManageKeys]
-
-<h2><a id="usesessionobject"></a>コードでセッション オブジェクトを使用する</h2>
 最後に、ASP.NET コードでセッション オブジェクトを使用します。**Session.Add** メソッドを使用して、セッション状態にオブジェクトを追加します。このメソッドではキーと値のペアに基づいて、セッション状態キャッシュにアイテムが格納されます。
 
     string strValue = "yourvalue";
-	Session.Add("yourkey", strValue);
+    Session.Add("yourkey", strValue);
 
 次のコードは、セッション状態からこの値を取得します。
 
     object objValue = Session["yourkey"];
     if (objValue != null)
-       strValue = (string)obj;	
+       strValue = (string)obj;  
 
-ASP.NET セッション状態の詳しい使用方法については、「[ASP.NET セッション状態の概要][]」を参照してください。
+Redis Cache を使用して、Web アプリケーションのオブジェクトをキャッシュすることもできます。詳細については、「[MVC movie app with Azure Redis Cache in 15 minutes (Azure Redis Cache を使用した MVC ムービー アプリを 15 分でデプロイする)][MVC movie app with Azure Redis Cache in 15 minutes (Azure Redis Cache を使用した MVC ムービー アプリを 15 分でデプロイする)]」を参照してください。
+ASP.NET セッション状態の使用方法の詳細については、「[ASP.NET セッション状態の概要][ASP.NET セッション状態の概要]」を参照してください。
 
-  
-  
-  
-  [最新バージョンをインストール]: http://www.windowsazure.com/ja-jp/downloads/?sdk=net  
+  [Rick Anderson]: https://twitter.com/RickAndMSFT
+  [キャッシュを作成します。]: #createcache
+  [RedisSessionStateProvider NuGet パッケージを Web アプリケーションに追加します。]: #configureproject
+  [web.config ファイルを修正します。]: #configurewebconfig
+  [セッション オブジェクトを使用して、キャッシュされたアイテムを保存および取得します。]: #usesessionobject
+  [ここにある手順]: http://azure.microsoft.com/ja-jp/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/#create-cache
+  [NuGet RedisSessionStateProvider のページ]: http://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider/
+  [キャッシュ クライアントの構成]: http://azure.microsoft.com/ja-jp/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/#NuGet
+  [キャッシュに接続する]: http://azure.microsoft.com/ja-jp/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/#connect-to-cache
+  [MVC movie app with Azure Redis Cache in 15 minutes (Azure Redis Cache を使用した MVC ムービー アプリを 15 分でデプロイする)]: http://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/
   [ASP.NET セッション状態の概要]: http://msdn.microsoft.com/ja-jp/library/ms178581.aspx
-
-  [NewIcon]: ./media/web-sites-dotnet-session-state-caching/CacheScreenshot_NewButton.png
-  [NewCacheDialog]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CreateOptions.png
-  [CacheIcon]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CacheIcon.png
-  [NuGetDialog]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_NuGet.png
-  [OutputConfig]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_OC_WebConfig.png
-  [CacheConfig]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_CacheConfig.png
-  [EndpointURL]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_EndpointURL.png
-  [ManageKeys]: ./media/web-sites-dotnet-session-state-caching/CachingScreenshot_ManageAccessKeys.png
-

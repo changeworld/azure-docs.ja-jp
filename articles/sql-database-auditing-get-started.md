@@ -84,7 +84,7 @@ Azure プレビュー ポータルで監査を設定しますが、データベ�
 
 
   [プレビューにサインアップ]: http://go.microsoft.com/fwlink/?LinkId=404163
-  [Azure Trust Center (Azure トラスト センター)]: http://azure.microsoft.com/en-us/support/trust-center/compliance/
+  [Azure Trust Center (Azure トラスト センター)]: http://azure.microsoft.com/ja-jp/support/trust-center/compliance/
   [Azure SQL Database の監査の基本]: #subheading-1
   [データベースに対する監査を設定する]: #subheading-2
   [監査ログとレポートを分析する]: #subheading-3
@@ -98,6 +98,6 @@ Azure プレビュー ポータルで監査を設定しますが、データベ�
   [4]: ./media/sql-database-auditing-get-started/sql-database-get-started-connectionstring.png
   [Azure ストレージ エクスプローラー]: http://azurestorageexplorer.codeplex.com/
   [ダウンロードできる Excel スプレッドシート]: http://go.microsoft.com/fwlink/?LinkId=403540
-  [ここ]: http://www.microsoft.com/en-us/download/details.aspx?id=39379
+  [ここ]: http://www.microsoft.com/ja-jp/download/details.aspx?id=39379
   [How To (doc download) (使用方法 (doc のダウンロード))]: http://go.microsoft.com/fwlink/?LinkId=506731
   [5]: ./media/sql-database-auditing-get-started/sql-database-auditing-dashboard.png

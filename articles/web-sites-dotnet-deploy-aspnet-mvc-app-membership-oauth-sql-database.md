@@ -8,38 +8,38 @@
 
 このチュートリアルでは、ユーザーが Facebook や Google の資格情報を使用してログインできる、安全な ASP.NET MVC 5 Web アプリケーションを構築する方法を説明します。さらに、作成したアプリケーションを Azure に展開する方法についても学習します。
 
-Azure アカウントは無料で開くことができます。また、まだ Visual Studio 2013 を持っていない場合は、SDK によって Visual Studio 2013 for Web Express が自動的にインストールされます。これで、Azure 向けのアプリケーションを無料で開発できます。Visual Studio 2012 を使用する場合は、[前のチュートリアル][]を参照してください。このバージョンのチュートリアルは、前のバージョンと比べてはるかに単純です。
+Azure アカウントは無料で開くことができます。また、まだ Visual Studio 2013 を持っていない場合は、SDK によって Visual Studio 2013 for Web Express が自動的にインストールされます。これで、Azure 向けのアプリケーションを無料で開発できます。Visual Studio 2012 を使用する場合は、[前のチュートリアル][前のチュートリアル]を参照してください。このバージョンのチュートリアルは、前のバージョンと比べてはるかに単純です。
 
 このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルでは、安全なデータ主導型 Web アプリケーションを作成し、クラウド データベースを使用してクラウド上で実行します。
 
 学習内容:
 
 -   安全な ASP.NET MVC 5 プロジェクトを作成して Azure の Web サイトに発行する方法
--   [OAuth][]、[OpenID][]、および ASP.NET メンバーシップ データベースを使用してアプリケーションを保護する方法
+-   [OAuth][OAuth]、[OpenID][OpenID]、および ASP.NET メンバーシップ データベースを使用してアプリケーションを保護する方法
 -   新しいメンバーシップ API を使用してユーザーおよびロールを追加する方法
 -   SQL データベースを使用して Azure にデータを保存する方法
 
 ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity Framework を使用する、簡単な連絡先リスト Web アプリケーションをビルドします。次の図は、完成したアプリケーションのログイン ページです。
 
-![login page][]
+![login page][login page]
 
-> [WACOM.NOTE] このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする][]か、[無料評価版にサインアップ][]してください。
+> [WACOM.NOTE] このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[MSDN サブスクライバーの特典を有効にする][MSDN サブスクライバーの特典を有効にする]か、[無料評価版にサインアップ][無料評価版にサインアップ]してください。
 
 このチュートリアルの内容:
 
--   [開発環境を設定する][]
--   [Azure 環境を設定する][]
--   [ASP.NET MVC 5 アプリケーションを作成する][]
--   [Azure にアプリケーションを展開する][]
--   [アプリケーションにデータベースを追加する][]
--   [OAuth プロバイダーを追加する][]
--   [メンバーシップ API を使用する][]
+-   [開発環境を設定する][開発環境を設定する]
+-   [Azure 環境を設定する][Azure 環境を設定する]
+-   [ASP.NET MVC 5 アプリケーションを作成する][ASP.NET MVC 5 アプリケーションを作成する]
+-   [Azure にアプリケーションを展開する][Azure にアプリケーションを展開する]
+-   [アプリケーションにデータベースを追加する][アプリケーションにデータベースを追加する]
+-   [OAuth プロバイダーを追加する][OAuth プロバイダーを追加する]
+-   [メンバーシップ API を使用する][メンバーシップ API を使用する]
 -   [Azure にアプリケーションを展開する][1]
--   [次のステップ][]
+-   [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [install-sdk-2013-only][]]
+[WACOM.INCLUDE [install-sdk-2013-only][install-sdk-2013-only]]
 
-localhost に新しい SSL 証明書を使用するには、[Visual Studio 2013 Update 2 RC][] 以上をインストールする必要があります。
+localhost に新しい SSL 証明書を使用するには、[Visual Studio 2013 Update 2 RC][Visual Studio 2013 Update 2 RC] 以上をインストールする必要があります。
 
 ## <a name="bkmk_setupwindowsazure"></a>Azure 環境を設定する
 
@@ -51,13 +51,13 @@ Azure の Web サイトは、共有ホスティング環境で実行されます
 
 Azure SQL データベースは、SQL Server テクノロジに基づいて構築されたクラウドベースのリレーショナル データベース サービスです。SQL Server で動作するツールおよびアプリケーションは、SQL データベースでも動作します。
 
-1.  [Azure の管理ポータル][]で、左側のタブにある **[Web サイト]** をクリックし、**[新規]** をクリックします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]で、左側のタブにある **[Web サイト]** をクリックし、**[新規]** をクリックします。
 
-    ![New button in Management Portal][]
+    ![New button in Management Portal][New button in Management Portal]
 
 2.  **[Web サイト]** をクリックし、**[カスタム作成]** をクリックします。
 
-    ![Create with Database link in Management Portal][]
+    ![Create with Database link in Management Portal][Create with Database link in Management Portal]
 
     **新しい Web サイト - カスタム作成**ウィザードが開きます。
 
@@ -79,7 +79,7 @@ Azure SQL データベースは、SQL Server テクノロジに基づいて構�
 11. 管理者の**ログイン名**と**パスワード**を入力します。**[新しい SQL データベース サーバー]** を選択した場合は、既存の名前とパスワードではなく、このデータベースへのアクセス時に使用する新しい名前とパスワードを入力してください。以前に作成した SQL Server を選択した場合は、その SQL Server の作成時に設定したパスワードを入力します。このチュートリアルでは、**[データベースの詳細設定を構成します]** チェック ボックスをオンにしません。無料の DB の場合、設定できるのは照合順序のみです。
 12. 終了したら、ダイアログ ボックスの右下にあるチェック マークをクリックします。
 
-    ![Database Settings step of New Website - Create with Database wizard][]
+    ![Database Settings step of New Website - Create with Database wizard][Database Settings step of New Website - Create with Database wizard]
 
     次の画像では、既存の SQL Server を選択した場合のログインを示しています。
 
@@ -95,32 +95,32 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 
 1.  **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
 
- ![New Project in File menu][]
+ ![New Project in File menu][New Project in File menu]
 
 1.  **[新しいプロジェクト]** ダイアログ ボックスで、**[インストールされているテンプレート]** の下にある **[Visual C\#]** を展開して **[Web]** を選択し、**[ASP.NET Web アプリケーション]** を選択します。
 
 2.  アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
 
- ![New Project dialog box][]
+ ![New Project dialog box][New Project dialog box]
 
  **注:** この画像では、名前が "MyExample" となっていますが、必ず「ContactManager」と入力してください。これからコピーするコード ブロックは、ContactManager というプロジェクト名が前提となっています。
 
 4.  **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**MVC** テンプレートを選択し、**[リモート リソースの作成]** チェック ボックスを**オフ**にして、**[OK]** をクリックします (チェック ボックスは **"リモート リソースの作成"**ではなく **"クラウドでのホスト"** というラベルが付いている可能性があります。)
 
- ![New ASP.NET Project dialog box][]
+ ![New ASP.NET Project dialog box][New ASP.NET Project dialog box]
 
 ### ページのヘッダーとフッターを設定する
 
 1.  **ソリューション エクスプローラー**の *Views\\Shared* フォルダーにある *Layout.cshtml* ファイルを開きます。
 
-    ![\_Layout.cshtml in Solution Explorer][]
+    ![\_Layout.cshtml in Solution Explorer][\_Layout.cshtml in Solution Explorer]
 
 2.  "My ASP.NET MVC Application" となっている箇所 (2 か所) を「Contact Manager」に書き換えます。
 3.  "Application name" を「CM Demo」に書き換えます。
 
 4.  *Cm* コントローラーを使用するため、1 つ目のアクション リンクを更新します。*Home* を *Cm* に書き換えてください。
 
-    ![code changes][]
+    ![code changes][code changes]
 
 ### ローカルでアプリケーションを実行する
 
@@ -128,7 +128,7 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 
     アプリケーションのホーム ページが既定のブラウザーに表示されます。
 
-    ![Web site running locally][]
+    ![Web site running locally][Web site running locally]
 
 これで、Azure に展開するアプリケーションを作成するために必要な操作が完了しました。データベース機能は後で追加します。
 
@@ -136,31 +136,31 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 
 1.  Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
 
- ![Publish in project context menu][]
+ ![Publish in project context menu][Publish in project context menu]
 
  **Web の発行**ウィザードが開きます。
 
 2.  **Web の発行**ウィザードの **[プロファイル]** タブで、**[Azure の Web サイト]** をクリックします。
 
- ![Import publish settings][]
+ ![Import publish settings][Import publish settings]
 
 3.  **[サインイン]** をクリックして、Azure ポータルにログインします。
 
- ![sign in][]
+ ![sign in][sign in]
 
  ログインすると、**[既存の Web Site の選択]** ダイアログ ボックスが表示されます。
 
 4.  このチュートリアルのパート 1 で作成した Web サイトを選択して、**[OK]** をクリックします。
 
- ![select web site][]
+ ![select web site][select web site]
 
 5.  **[Web の発行]** ダイアログ ボックスの **[発行]** をクリックします。
 
-    ![Publish][]
+    ![Publish][Publish]
 
     これで、作成したアプリケーションはクラウドで実行されています。このアプリケーションを次に展開するときは、変更したファイル (または新しいファイル) のみが展開されます。
 
-    ![Running in Cloud][]
+    ![Running in Cloud][Running in Cloud]
 
 ## <a name="bkmk_addadatabase"></a>アプリケーションにデータベースを追加する
 
@@ -172,11 +172,11 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 
 1.  **ソリューション エクスプローラー**で、Models フォルダーを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
 
-    ![Add Class in Models folder context menu][]
+    ![Add Class in Models folder context menu][Add Class in Models folder context menu]
 
 2.  **[新しい項目の追加]** ダイアログ ボックスで、新しいクラス ファイルに「*Contact.cs*」という名前を付け、[**追加**] をクリックします。
 
-    ![Add New Item dialog box][]
+    ![Add New Item dialog box][Add New Item dialog box]
 
 3.  Contacts.cs ファイルの内容を次のコードに置き換えます。
 
@@ -208,17 +208,17 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 1.  プロジェクトをビルドします **(Ctrl + Shift + B)**。(スキャフォールディング機能の使用前にプロジェクトをビルドする必要があります。)
 2.  **ソリューション エクスプローラー**で、Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。
 
-    ![Add Controller in Controllers folder context menu][]
+    ![Add Controller in Controllers folder context menu][Add Controller in Controllers folder context menu]
 
 3.  **[スキャフォールディングの追加]** ダイアログ ボックスで、**[MVC 5 コントローラーとビュー、EF を使用]** を選択し、**[追加]** をクリックします。
 
-    ![Add Scaffold dlg][]
+    ![Add Scaffold dlg][Add Scaffold dlg]
 
 4.  **[モデル クラス]** ボックスで **Contact (ContactManager.Models)** を選択します。(下図を参照)。
 5.  **[データ コンテキスト クラス]** で **ApplicationDbContext (ContactManager.Models)** を選択します。この **ApplicationDbContext** が、メンバーシップ DB と連絡先データの両方に使用されます。
 6.  **[コントローラー名]** テキスト入力ボックスで、コントローラー名として「CmController」と入力します。
 
-    ![New data ctx dlg][]
+    ![New data ctx dlg][New data ctx dlg]
 
 7.  **[追加]** をクリックします。
 
@@ -226,10 +226,10 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 ## Migrations の有効化、データベースの作成、サンプル データとデータ初期化子の追加
 
-次の作業では、作成したデータ モデルに基づいてデータベースを作成するために、[Code First Migrations][] 機能を有効にします。
+次の作業では、作成したデータ モデルに基づいてデータベースを作成するために、[Code First Migrations][Code First Migrations] 機能を有効にします。
 
 1.  **[ツール]** メニューで、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。
-    ![Package Manager Console in Tools menu][]
+    ![Package Manager Console in Tools menu][Package Manager Console in Tools menu]
 
 2.  **[パッケージ マネージャー コンソール]** ウィンドウで、次のコマンドを入力します。
 
@@ -302,13 +302,13 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
                 );
         }
 
-    このコードでは、連絡先情報を使用してデータベースを初期化 (初期データ投入) します。シード データベースの生成の詳細については、「[Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)][]」を参照してください。
+    このコードでは、連絡先情報を使用してデータベースを初期化 (初期データ投入) します。シード データベースの生成の詳細については、「[Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)][Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)]」を参照してください。
 
 7.  **[パッケージ マネージャー コンソール]** で、次のコマンドを入力します。
 
         update-database
 
-    ![Package Manager Console commands][]
+    ![Package Manager Console commands][Package Manager Console commands]
 
     **update-database** によって、データベースを作成する最初の Migration が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます
 
@@ -316,11 +316,11 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
     アプリケーションでは、登録されたデータが表示され、編集、詳細、削除のリンクが示されます。データの作成、編集、削除、表示を行うことができます。
 
-    ![MVC view of data][]
+    ![MVC view of data][MVC view of data]
 
 ## <a name="addOauth"></a><span class="short-header">OAuth</span>OAuth2 および OpenID プロバイダーを追加する
 
-[OAuth][] は、Web、モバイル、およびデスクトップのアプリケーションからシンプルで標準的な方法で安全に認証するためのオープン プロトコルです。ASP.NET MVC インターネット テンプレートは OAuth および [OpenID][] を使用して、Facebook、Twitter、Google、Microsoft を認証プロバイダーとしてサポートします。このチュートリアルでは Google のみを認証プロバイダーとして使用しますが、コードを少し変更すれば他のプロバイダーも使用できます。他のプロバイダーを実装する手順は、このチュートリアルで説明する手順とほとんど同じです。Facebook を認証プロバイダーとして使用する方法については、Facebook や Google の OAuth2/OpenID サインオンを使用した ASP.NET MVC 5 アプリケーションの作成について執筆した[拙著のチュートリアル][]を参照してください。
+[OAuth][OAuth] は、Web、モバイル、およびデスクトップのアプリケーションからシンプルで標準的な方法で安全に認証するためのオープン プロトコルです。ASP.NET MVC インターネット テンプレートは OAuth および [OpenID][OpenID] を使用して、Facebook、Twitter、Google、Microsoft を認証プロバイダーとしてサポートします。このチュートリアルでは Google のみを認証プロバイダーとして使用しますが、コードを少し変更すれば他のプロバイダーも使用できます。他のプロバイダーを実装する手順は、このチュートリアルで説明する手順とほとんど同じです。Facebook を認証プロバイダーとして使用する方法については、Facebook や Google の OAuth2/OpenID サインオンを使用した ASP.NET MVC 5 アプリケーションの作成について執筆した[拙著のチュートリアル][拙著のチュートリアル]を参照してください。
 
 このチュートリアルでは、認証の他にロールを使用して権限を付与します。*canEdit* ロールに追加したユーザーのみがデータを変更 (連絡先を作成、編集、削除) できます。
 
@@ -348,14 +348,14 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 1.  アプリケーションを実行し、**[ログイン]** リンクをクリックします。
 2.  **[Use another service to log in]** の **[Google]** をクリックします。
 
-    ![Goog login][]
+    ![Goog login][Goog login]
 
 3.  資格情報を入力します。
 4.  Google の認証のサーバーはアプリケーションへのアクセス許可を要求して、電子メール アドレスとアカウントに関する基本情報を表示します。**[同意する]** をクリックします。
-    ![GOOG asking for permission][]
+    ![GOOG asking for permission][GOOG asking for permission]
 5.  登録ページにリダイレクトされます。ユーザー名は既定では登録するために使用した電子メール エイリアスで、必要に応じて変更できます。**[登録]** をクリックします。
 
-    ![register][]
+    ![register][register]
 
 ## <a name="mbrDB"></a><span class="short-header">メンバーシップ DB</span>メンバーシップ API を使用する
 
@@ -395,13 +395,13 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
     次のイメージは *Seed* メソッドへの変更を示します。
 
     </p>
-    ![code image][]
+    ![code image][code image]
 
-このコードでは、*canEdit* という名前の新しいロールを作成し、新しいローカル ユーザー <*user1@contoso.com*> を作成して、<*user1@contoso.com>\* を *canEdit* ロールに追加します。詳細については、「[ASP.NET Identity resource page (ASP.NET Identity リソース ページ)][]」を参照してください。
+このコードでは、*canEdit* という名前の新しいロールを作成し、新しいローカル ユーザー <*user1@contoso.com*> を作成して、<*user1@contoso.com>\* を *canEdit* ロールに追加します。詳細については、「[ASP.NET Identity resource page (ASP.NET Identity リソース ページ)][ASP.NET Identity resource page (ASP.NET Identity リソース ページ)]」を参照してください。
 
 ## 一時的なコードを使用して新しいソーシャル ログイン ユーザーを canEdit ロールに追加する
 
-このセクションでは、Account コントローラーの **ExternalLoginConfirmation** メソッドを一時的に変更して、*canEdit* ロールに新しいユーザーを追加し、OAuth または OpenID プロバイダーに登録します。ここで一時的に **ExternalLoginConfirmation** メソッドを変更し、新しいユーザーが管理者ロールに自動的に追加されるようにします。ロールの追加と管理に必要なツールの準備が整うまでの間、以下に示した一時的な自動登録コードを使用することになります。将来的には、ユーザー アカウントとロールの作成および編集のために、[WSAT][] と同様のツールを提供する予定です。**サーバー エクスプローラー**を使用してユーザーをロールに追加する方法については、このチュートリアルの中で紹介します。
+このセクションでは、Account コントローラーの **ExternalLoginConfirmation** メソッドを一時的に変更して、*canEdit* ロールに新しいユーザーを追加し、OAuth または OpenID プロバイダーに登録します。ここで一時的に **ExternalLoginConfirmation** メソッドを変更し、新しいユーザーが管理者ロールに自動的に追加されるようにします。ロールの追加と管理に必要なツールの準備が整うまでの間、以下に示した一時的な自動登録コードを使用することになります。将来的には、ユーザー アカウントとロールの作成および編集のために、[WSAT][WSAT] と同様のツールを提供する予定です。**サーバー エクスプローラー**を使用してユーザーをロールに追加する方法については、このチュートリアルの中で紹介します。
 
 1.  **Controllers\\AccountController.cs** ファイルを開いて、**ExternalLoginConfirmation** メソッドに移動します。
 2.  次の **AddToRoleAsync** への呼び出しを **SignInAsync** の呼び出しの直前に追加します。
@@ -410,7 +410,7 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 このコードは、新しく登録したユーザーを "canEdit" ロールに追加します。これにより、データの変更 (編集) を伴うアクション メソッドへのアクセス権がユーザーに割り当てられます。以下の図は、変更後のコードを示しています。
 
-![code][]
+![code][code]
 
 このチュートリアルの中で、アプリケーションを Azure に展開します。そこでのログオンには、Google などサード パーティの認証プロバイダーが使用されます。新しく登録されたアカウントは、*canEdit* ロールに追加されます。サイトの URL と Google ID さえあればだれでも登録し、データベースを更新することができます。そのような操作が第三者によって行われるのを防ぐためには、サイトを停止する必要があります。だれが *canEdit* ロールに追加されているかは、データベースを調べることによって確認できます。
 
@@ -422,9 +422,9 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 ## SSL と Authorize 属性を使用してアプリケーションを保護する
 
-このセクションでは、[Authorize][]) 属性を適用してアクション メソッドへのアクセスを制限します。匿名ユーザーが表示できるのは、home コントローラーの **Index** アクション メソッドだけになります。登録ユーザーは、連絡先データ (Cm コントローラーの **[Index]** ページと **[Details]** ページ)、[About] ページ、[Contact] ページを表示することができます。*canEdit* ロールを与えられているユーザーのみがアクション メソッドを実行してデータを変更できます。
+このセクションでは、[Authorize][Authorize]) 属性を適用してアクション メソッドへのアクセスを制限します。匿名ユーザーが表示できるのは、home コントローラーの **Index** アクション メソッドだけになります。登録ユーザーは、連絡先データ (Cm コントローラーの **[Index]** ページと **[Details]** ページ)、[About] ページ、[Contact] ページを表示することができます。*canEdit* ロールを与えられているユーザーのみがアクション メソッドを実行してデータを変更できます。
 
-1.  [Authorize][] フィルターと [RequireHttps][] フィルターをアプリケーションに追加します。[Authorize][] 属性と [RequireHttps][] 属性をコントローラーごとに追加する方法もありますが、セキュリティ上の理由から、通常はこれらをアプリケーション全体に適用します。アプリケーション全体に適用すれば、新しいコントローラーやアクション メソッドを追加したとき、それらが自動的に保護されます。ユーザー自身で適用する必要がありません。詳細については、「[Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性)][]」を参照してください。*App\_Start\\FilterConfig.cs* ファイルを開き、*RegisterGlobalFilters* メソッドを次のように書き換えます (2 つのフィルターを追加)。
+1.  [Authorize][Authorize] フィルターと [RequireHttps][RequireHttps] フィルターをアプリケーションに追加します。[Authorize][Authorize] 属性と [RequireHttps][RequireHttps] 属性をコントローラーごとに追加する方法もありますが、セキュリティ上の理由から、通常はこれらをアプリケーション全体に適用します。アプリケーション全体に適用すれば、新しいコントローラーやアクション メソッドを追加したとき、それらが自動的に保護されます。ユーザー自身で適用する必要がありません。詳細については、「[Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性)][Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性)]」を参照してください。*App\_Start\\FilterConfig.cs* ファイルを開き、*RegisterGlobalFilters* メソッドを次のように書き換えます (2 つのフィルターを追加)。
 
          public static void RegisterGlobalFilters(GlobalFilterCollection filters) { filters.Add(new HandleErrorAttribute()); filters.Add(new System.Web.Mvc.AuthorizeAttribute()); filters.Add(new RequireHttpsAttribute()); } 
 
@@ -435,7 +435,7 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
     ![code image][4]
 
-    このコードで適用した [Authorize][] フィルターによって、匿名ユーザーは、アプリケーション内のメソッドに一切アクセスできなくなります。2 つのメソッドについては、[AllowAnonymous][Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性)] 属性を使用して承認要件を免除し、匿名ユーザーがログインしてホーム ページを表示できるようにします。[RequireHttps][] により、Web アプリケーションに対するすべてのアクセスは HTTPS に限定されます。
+    このコードで適用した [Authorize][Authorize] フィルターによって、匿名ユーザーは、アプリケーション内のメソッドに一切アクセスできなくなります。2 つのメソッドについては、[AllowAnonymous][Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性)] 属性を使用して承認要件を免除し、匿名ユーザーがログインしてホーム ページを表示できるようにします。[RequireHttps][RequireHttps] により、Web アプリケーションに対するすべてのアクセスは HTTPS に限定されます。
 
 2.  [AllowAnonymous][Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性)] 属性を Home コントローラーの **Index** メソッドに追加します。[AllowAnonymous][Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性)] 属性を使用すれば、特定のメソッドを認証不要として指定できます。HomeController からのイメージの抜粋を以下に示します。
 
@@ -444,13 +444,13 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 3.  グローバルに検索すると、Account コントローラーのログイン メソッドや登録メソッドで *AllowAnonymous* が使われていることがわかります。
 4.  *CmController.cs* で、*Cm* コントローラーでデータの変更 (Create、Edit、Delete、つまり、Index と Details を除くすべてのアクション メソッド) を伴う HttpGet メソッドと HttpPost メソッドに `[Authorize(Roles = "canEdit")]` を追加します。追加後のコードは次のようになります。
 
-    ![img of code][]
+    ![img of code][img of code]
 
 ## プロジェクトに対して SSL を有効にする
 
 1.  SSL を有効にします。ソリューション エクスプローラーで **ContactManager** プロジェクトをクリックし、F4 キーを押します。プロパティ ダイアログ ボックスが表示されます。**[SSL Enabled]** を True に変更します。**[SSL URL]** をコピーします。以前に SSL Web サイトを作成したことがなければ、SSL URL は <https://localhost:44300/> になります。
 
-    ![enable SSL][]
+    ![enable SSL][enable SSL]
 
 2.  ソリューション エクスプローラーで **Contact Manager** プロジェクトを右クリックし、**[プロパティ]** をクリックします。
 3.  左側のタブで **[Web]** をクリックします。
@@ -460,35 +460,35 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 5.  次の図に示すように、Internet Explorer が Visual Studio によって起動されるブラウザーであることを確認します。
 
-    ![default browser][]
+    ![default browser][default browser]
 
     ブラウザー セレクターによって、Visual Studio が起動するブラウザーを指定することができます。
 
- ![browser selector][]
+ ![browser selector][browser selector]
 
     You can select multiple browsers and have Visual Studio update each browser when you make changes. For more information see [Using Browser Link in Visual Studio 2013](http://www.asp.net/visual-studio/overview/2013/using-browser-link).
 
 1.  Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。指示に従って、IIS Express が生成した自己署名証明書を信頼します。
 
-    ![instructions to trust the self-signed certificate that IIS Express has generated][]
+    ![instructions to trust the self-signed certificate that IIS Express has generated][instructions to trust the self-signed certificate that IIS Express has generated]
 
 2.  **[セキュリティ警告]** ダイアログを確認して、**localhost** を表す証明書をインストールする場合は **[はい]** をクリックします。
 
-  ![localhost IIS Express certificate warning][]
+  ![localhost IIS Express certificate warning][localhost IIS Express certificate warning]
 
 3.  IE は*ホーム* ページを表示し、SSL の警告はありません。
 
-    ![IE with localhost SSL and no warnings][]
+    ![IE with localhost SSL and no warnings][IE with localhost SSL and no warnings]
 
     Google Chrome も証明書を受け取り、警告なしで HTTPS コンテンツを表示します。Firefox は独自の証明書ストアを使用します。したがって、警告を表示します。マイクロソフトのアプリケーションについては、**[リスクを理解しています]** を安全にクリックできます。
 
-    ![FireFox Cert Warning][]
+    ![FireFox Cert Warning][FireFox Cert Warning]
 
 4.  まだ前のセッションにログインしている場合は、**ログアウト** リンクをクリックします。
 5.  **[About]** または **[Contact]** リンクをクリックします。匿名ユーザーはこれらのページを表示できないため、ログイン ページにリダイレクトされます。
 6.  **[Register as a new user]** リンクをクリックして、電子メールが <*joe@contoso.com*> であるローカル ユーザーを追加します。*Joe* であれば Home ページ、About ページ、Contact ページを表示できることを確認します。
 
-    ![login][]
+    ![login][login]
 
 7.  *[CM Demo]* リンクをクリックし、データが表示されることを確認します。
 8.  このページ上の編集リンクをクリックすると、ログイン ページにリダイレクトされます (新しいローカル ユーザーが *canEdit* ロールに追加されていないため)。
@@ -508,7 +508,7 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 2.  **[Web の発行]** ダイアログ ボックスの左側の **[設定]** タブをクリックします。**v** アイコンをクリックして **ApplicationDbContext** の **[リモート接続文字列]** を選択し、**[ContactDB]** を選択します。
 
-    ![settings][]
+    ![settings][settings]
 
 3.  **ContactManagerContext** で、**[Code First Migrations を実行する]** を選択します。
 
@@ -527,7 +527,7 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 1.  **サーバー エクスプローラー**で **[Web サイト]** に移動します。
 2.  各 Web サイトのインスタンスを右クリックし、**[Web サイトの停止]** を選択します。
 
-    ![stop web site][]
+    ![stop web site][stop web site]
 
     Azure の管理ポータルから Web サイトを選択し、ページ下部の **[停止]** アイコンをクリックする方法もあります。
 
@@ -540,27 +540,27 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 2.  プロジェクトをビルドします。これにより、ファイルの変更が保存され、コンパイル エラーがないか確認が行われます。
 3.  **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[発行]** をクリックします。
 
-    ![Publish in project context menu][]
+    ![Publish in project context menu][Publish in project context menu]
 
 4.  **[プレビューの開始]** をクリックします。更新する必要のあるファイルだけが展開されます。
 5.  Visual Studio またはポータルから Web サイトを開きます。**Web サイトが停止した状態で発行することはできません**。
 
-    ![start web site][]
+    ![start web site][start web site]
 
 6.  Visual Studio に戻り、**[発行]** をクリックします。
 7.  Azure アプリケーションが既定のブラウザーで起動します。ログインして、ログアウトすると、匿名ユーザーとしてホーム ページを表示できます。
 8.  **[About]** リンクをクリックします。ログイン ページにリダイレクトされます。
 9.  ログイン ページの **[登録]** リンクをクリックし、ローカル アカウントを作成します。読み取り専用ページにはアクセスできるが、データの変更を伴うページにはアクセスできない (*canEdit* ロールによって保護されている) ことをこのローカル アカウントを使用して確認します。ローカル アカウント アクセスは、後でこのチュートリアルの中で削除します。
 
-    ![Register][]
+    ![Register][Register]
 
 10. *About* ページと *Contact* ページにアクセスできることを確認します。
 
-    ![Log off][]
+    ![Log off][Log off]
 
 11. **[CM Demo]** リンクをクリックして **Cm** コントローラーに移動します。URL に *Cm* を付加することによって移動してもかまいません。
 
-    ![CM page][]
+    ![CM page][CM page]
 
 12. [編集] リンクをクリックします。ログイン ページにリダイレクトされます。**[Use another service to log in]** で [Google] または [Facebook] をクリックし、過去に登録したアカウントでログインします (短時間で作業して、セッション Cookie がタイムアウトしていない場合は、以前に使用した Google アカウントまたは Facebook アカウントで自動的にログインされます)。
 13. そのアカウントにログインした状態でデータを編集できることを確認します。
@@ -573,7 +573,7 @@ Google アカウント情報の氏名を入力しないと、NullReferenceExcept
 1.  **サーバー エクスプローラー**で **[ContactDB]** に移動します。
 2.  **[ContactDB]** を右クリックし、**[SQL Server オブジェクト エクスプローラーで開く]** を選択します。
 
-    ![open in SSOX][]
+    ![open in SSOX][open in SSOX]
 
   **注:** **[SQL データベース]** を展開できず、**ContactDB** を Visual Studio から表示*できない*場合は、以下の手順に従い、特定のファイアウォール ポート (またはポート範囲) を開放する必要があります。**[Azure ファイアウォール ルールを設定する]** の下の手順に従います。ファイアウォール ルールの追加後、データベースに接続できるようになるまでに数分かかる場合があります。
 
@@ -595,19 +595,19 @@ Google アカウント情報の氏名を入力しないと、NullReferenceExcept
 
 Visual Studio から SQL Azure に接続できない、またはエラー メッセージ "サーバーを開けません" が表示される場合は、このセクションの指示に従います。
 
-![firewall error][]
+![firewall error][firewall error]
 
 使用できる IP アドレスに、目的の IP アドレスを追加する必要があります。
 
 1.  Azure ポータルの左側のタブで **[SQL データベース]** を選択します。
 
-    ![Select SQL][]
+    ![Select SQL][Select SQL]
 
 2.  **[ContactDB]** をクリックします。
 
 3.  **[この IP アドレス用に Azure ファイアウォール ルールを設定する]** リンクをクリックします。
 
-    ![firewall rules][]
+    ![firewall rules][firewall rules]
 
 4.  [現在の IP アドレス xxx.xxx.xxx.xxx は既存のファイアウォール ルールに含まれていません。ファイアウォール ルールを更新しますか?" というメッセージが表示されたら、**[はい]** をクリックします。企業ファイアウォールによっては、このアドレスだけでは不十分な場合もあります。そのような場合は、IP アドレスの範囲を追加する必要があります。
 
@@ -616,13 +616,13 @@ Visual Studio から SQL Azure に接続できない、またはエラー メッ
 1.  Azure ポータルで **[SQL データベース]** をクリックします。
 2.  **[サーバー]** タブをクリックし、構成するサーバーをクリックします。
 
-    ![Servers tab in Azure][]
+    ![Servers tab in Azure][Servers tab in Azure]
 
 3.  **[構成]** タブをクリックします。
 
 4.  ルール名、開始 IP アドレス、終了 IP アドレスを追加します。
 
-    ![ip range][]
+    ![ip range][ip range]
 
 5.  ページの下部にある **[保存]** をクリックします。
 6.  ご意見やご感想、また接続先となる一連の IP アドレスを追加する必要がある場合は、お知らせください。
@@ -636,11 +636,11 @@ Visual Studio から SQL Azure に接続できない、またはエラー メッ
 5.  **[ContactDB]** を選択し、**[SQL データベース接続文字列を表示する]** をクリックします。
 6.  **[接続文字列]** ページから **[サーバー]** と **[ユーザー ID]** をコピーします。
 
-    ![con string][]
+    ![con string][con string]
 
 7.  **[サーバー]** と **[ユーザー ID]** の値を Visual Studio の **[サーバーへの接続]** ダイアログに貼り付けます。**[ユーザー ID]** の値が **[ログイン]** エントリに入ります。SQL DB の作成時に使用したパスワードを入力します。
 
-    ![Connect to Server DLG][]
+    ![Connect to Server DLG][Connect to Server DLG]
 
 これで、先ほど説明した手順に従い、Contact データベースに移動できます。
 
@@ -662,7 +662,7 @@ Visual Studio から SQL Azure に接続できない、またはエラー メッ
 
 ## ローカル登録の考慮事項
 
-このプロジェクトの現在の ASP.NET メンバーシップ登録はパスワードのリセットをサポートしておらず、人間による登録を検証しません ([CAPTCHA][] など)。いずれかのサードパーティ プロバイダーを使用してユーザーを認証すると、登録できるようになります。ローカル登録を無効にする場合は、次のステップを実行します。
+このプロジェクトの現在の ASP.NET メンバーシップ登録はパスワードのリセットをサポートしておらず、人間による登録を検証しません ([CAPTCHA][CAPTCHA] など)。いずれかのサードパーティ プロバイダーを使用してユーザーを認証すると、登録できるようになります。ローカル登録を無効にする場合は、次のステップを実行します。
 
 1.  AccountController で、GET および POST *Register* メソッドから *[AllowAnonymous]* 属性を削除します。これによって、ボットや匿名ユーザーが登録されるのを防ぎます。
 2.  *Views\\Shared* フォルダーの \*\_LoginPartial.cshtml\* ファイルから登録リンクを削除します。
@@ -673,13 +673,13 @@ Visual Studio から SQL Azure に接続できない、またはエラー メッ
 
 ユーザー登録データベースにプロファイル データを追加する方法や、Facebook を認証プロバイダーとして使用する詳細な手順については、[Facebook や Google の OAuth2/OpenID サインオンを使用した ASP.NET MVC 5 アプリケーションの作成について執筆した拙著のチュートリアル][拙著のチュートリアル]を参考にしてください。
 
-このチュートリアルの上部に表示されるソーシャル ログイン ボタンを有効にするには、「[Pretty social login buttons for ASP.NET MVC 5 (ASP.NET MVC 5 用ソーシャル ログイン ボタン)][]」を参照してください。
+このチュートリアルの上部に表示されるソーシャル ログイン ボタンを有効にするには、「[Pretty social login buttons for ASP.NET MVC 5 (ASP.NET MVC 5 用ソーシャル ログイン ボタン)][Pretty social login buttons for ASP.NET MVC 5 (ASP.NET MVC 5 用ソーシャル ログイン ボタン)]」を参照してください。
 
-ASP.NET MVC については、[ASP.NET MVC 5 の基本について執筆したチュートリアル][]をぜひご覧ください。MVC および Entity Framework のプログラミングについては、Tom Dykstra が [Entity Framework と MVC について取り上げたこちらのページ][]に、さらに詳しく解説されています。
+ASP.NET MVC については、[ASP.NET MVC 5 の基本について執筆したチュートリアル][ASP.NET MVC 5 の基本について執筆したチュートリアル]をぜひご覧ください。MVC および Entity Framework のプログラミングについては、Tom Dykstra が [Entity Framework と MVC について取り上げたこちらのページ][Entity Framework と MVC について取り上げたこちらのページ]に、さらに詳しく解説されています。
 
-このチュートリアルとサンプル アプリケーションは、Tom Dykstra と Barry Dorrans (Twitter [@blowdart][]) の協力の下、[Rick Anderson][] (Twitter [@RickAndMSFT][]) が執筆しました。
+このチュートリアルとサンプル アプリケーションは、Tom Dykstra と Barry Dorrans (Twitter [@blowdart][@blowdart]) の協力の下、[Rick Anderson][Rick Anderson] (Twitter [@RickAndMSFT][@RickAndMSFT]) が執筆しました。
 
-役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。新しいトピックについては、「[Show Me How With Code (コードの使用方法)][]」で要求および投票することもできます。
+役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。新しいトピックについては、「[Show Me How With Code (コードの使用方法)][Show Me How With Code (コードの使用方法)]」で要求および投票することもできます。
 
 <!-- bookmarks -->
 <!-- images-->

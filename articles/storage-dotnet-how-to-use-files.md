@@ -158,7 +158,7 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 Visual Studio で新しいコンソール アプリケーションを作成して Azure Storage NuGet パッケージをインストールするには、次の手順を実行します。
 
-1.  Visual Studio で、**[ファイル]**、**[新しいプロジェクト]** の順にクリックした後、**[Windows]** をクリックし、Visual C\# テンプレートの一覧から **[コンソール アプリケーション]** をクリックします。
+1.  Visual Studio で、**[ファイル]**、**[新しいプロジェクト]** の順にクリックした後、**[Windows]** をクリックし、Visual C# テンプレートの一覧から **[コンソール アプリケーション]** をクリックします。
 2.  コンソール アプリケーションの名前を入力して、**[OK]** をクリックします。
 3.  プロジェクトが作成されたら、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
 
@@ -260,16 +260,16 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
   [File ストレージを利用する内部設置型アプリケーションの作成]: #create-console-app
   [次のステップ]: #next-steps
   [files-concepts]: ./media/storage-dotnet-how-to-use-files/files-concepts.png
-  [Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ]: http://msdn.microsoft.com/en-us/library/dn249410.aspx
-  [Naming and Referencing Shares, Directories, Files, and Metadata (共有、ディレクトリ、ファイル、およびメタデータの命名と参照)]: http://msdn.microsoft.com/en-us/library/azure/dn167011.aspx
-  [Microsoft Azure プレビューのページ]: /en-us/services/preview/
+  [Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ]: http://msdn.microsoft.com/ja-jp/library/dn249410.aspx
+  [Naming and Referencing Shares, Directories, Files, and Metadata (共有、ディレクトリ、ファイル、およびメタデータの命名と参照)]: http://msdn.microsoft.com/ja-jp/library/azure/dn167011.aspx
+  [Microsoft Azure プレビューのページ]: /ja-jp/services/preview/
   [create-storage-account]: ../includes/create-storage-account.md
   [Azure PowerShell のインストールおよび構成方法]: /ja-jp/documentation/articles/install-configure-powershell/
   [Windows Server を実行する仮想マシンの作成]: /ja-jp/documentation/articles/virtual-machines-windows-tutorial/
   [Windows Server を実行する仮想マシンにログオンする方法]: /ja-jp/documentation/articles/virtual-machines-log-on-windows-server/
-  [System.IO 名前空間]: http://msdn.microsoft.com/en-us/library/gg145019(v=vs.110).aspx
+  [System.IO 名前空間]: http://msdn.microsoft.com/ja-jp/library/gg145019(v=vs.110).aspx
   [Azure .NET Storage クライアント ライブラリ]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
-  [File サービスの REST API リファレンス]: http://msdn.microsoft.com/en-us/library/azure/dn167006.aspx
+  [File サービスの REST API リファレンス]: http://msdn.microsoft.com/ja-jp/library/azure/dn167006.aspx
   [Introducing Microsoft Azure File Service (Microsoft Azure File サービスの概要)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx
   [Persisting connections to Microsoft Azure Files (Microsoft Azure Files への接続の維持)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx
   [BLOB ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/

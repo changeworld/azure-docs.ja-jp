@@ -14,5 +14,5 @@
 
   [Azure 管理ポータル]: https://manage.windowsazure.com/
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A30A4DDE2&returnurl=http%3A%2F%2FFen-us%2Fdocumentation%2Farticles%2Fmobile-services-how-to-create-new-service%2F
+  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A30A4DDE2&returnurl=http%3A%2F%2FFja-jp%2Fdocumentation%2Farticles%2Fmobile-services-how-to-create-new-service%2F
   [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md

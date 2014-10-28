@@ -24,9 +24,9 @@
 ## <a name="q01"></a>Visual Studio で Application Insights をプロジェクトに追加するオプションがありません
 
 -   [Visual Studio Update 3][Visual Studio Update 3] を使用していることを確認してください。Visual Studio Update 3 にはプレインストールされた Application Insights Tools が付属します。このツールは、拡張機能マネージャーに表示されます。
--   現在、Microsoft Azure プレビュー対応の Application Insights は、C\# または Visual Basic で書かれた ASP.NET Web プロジェクトに対してのみ使用できます。
+-   現在、Microsoft Azure プレビュー対応の Application Insights は、C# または Visual Basic で書かれた ASP.NET Web プロジェクトに対してのみ使用できます。
 -   既存のプロジェクトがある場合は、ソリューション エクスプローラーで、(別のプロジェクトまたはソリューションではなく) 対象の Web プロジェクトをクリックしていることを確認してください。[Application Insights テレメトリをプロジェクトに追加する] というメニュー項目があることを確認してください。
--   新しいプロジェクトを作成している場合は、Visual Studio で、[ファイル]、[新しいプロジェクト]、[Visual C\#] または [Visual Basic]、[Web]、[ASP.NET Web アプリケーション] の順に選択します。Application Insights をプロジェクトに追加するためのオプションがあることを確認してください。
+-   新しいプロジェクトを作成している場合は、Visual Studio で、[ファイル]、[新しいプロジェクト]、[Visual C#] または [Visual Basic]、[Web]、[ASP.NET Web アプリケーション] の順に選択します。Application Insights をプロジェクトに追加するためのオプションがあることを確認してください。
 
 ## <a name="q02"></a>新しい Web プロジェクトが作成されましたが Application Insights が追加されませんでした
 

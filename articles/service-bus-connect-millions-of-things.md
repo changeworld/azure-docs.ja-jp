@@ -28,13 +28,13 @@
 -   [Azure Active Directory][Azure Active Directory]
 -   [Cloud Services][Cloud Services]
 
-  [Event Hubs]: http://msdn.microsoft.com/en-us/library/dn789973.aspx
-  [シャーディング パターン]: http://msdn.microsoft.com/en-us/library/dn589797.aspx
-  [Service Bus と AMQP 1.0]: http://msdn.microsoft.com/en-us/library/azure/jj841071.aspx
+  [Event Hubs]: http://msdn.microsoft.com/ja-jp/library/dn789973.aspx
+  [シャーディング パターン]: http://msdn.microsoft.com/ja-jp/library/dn589797.aspx
+  [Service Bus と AMQP 1.0]: http://msdn.microsoft.com/ja-jp/library/azure/jj841071.aspx
   [Service Bus の概要]: http://azure.microsoft.com/ja-jp/documentation/services/service-bus/
-  [メッセージング エンティティのパーティション分割]: http://msdn.microsoft.com/en-us/library/azure/dn520246.aspx
+  [メッセージング エンティティのパーティション分割]: http://msdn.microsoft.com/ja-jp/library/azure/dn520246.aspx
   [Service Bus トピック]: http://azure.microsoft.com/ja-jp/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
-  [Azure Linux VM に Apache Qpid Proton-C をインストールする]: http://msdn.microsoft.com/en-us/library/azure/dn235560.aspx
+  [Azure Linux VM に Apache Qpid Proton-C をインストールする]: http://msdn.microsoft.com/ja-jp/library/azure/dn235560.aspx
   [Service Assisted Communication for Connected Devices (接続されたデバイスに対するサービスが支援する通信)]: http://blogs.msdn.com/b/clemensv/archive/2014/02/10/service-assisted-communication-for-connected-devices.aspx
   [Azure Active Directory]: http://azure.microsoft.com/ja-jp/documentation/services/active-directory/
   [Cloud Services]: http://azure.microsoft.com/ja-jp/documentation/services/cloud-services/

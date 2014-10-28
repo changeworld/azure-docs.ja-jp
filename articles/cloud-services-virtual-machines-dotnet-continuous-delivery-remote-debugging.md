@@ -80,11 +80,11 @@
   [継続的な配信]: http://azure.microsoft.com/ja-jp/documentation/articles/cloud-services-dotnet-continuous-delivery/
   [クラウド サービス用にリモート デバッグを有効にする]: #cloudservice
   [仮想マシン用にリモート デバッグを有効にする]: #virtualmachine
-  [Azure のコマンド ライン ビルド]: http://msdn.microsoft.com/en-us/library/hh535755.aspx
-  [Remote Tools for Visual Studio 2013]: http://www.microsoft.com/en-us/download/details.aspx?id=40781
-  [Remote Tools for Visual Studio 2012 Update 4]: http://www.microsoft.com/en-us/download/details.aspx?id=38184
+  [Azure のコマンド ライン ビルド]: http://msdn.microsoft.com/ja-jp/library/hh535755.aspx
+  [Remote Tools for Visual Studio 2013]: http://www.microsoft.com/ja-jp/download/details.aspx?id=40781
+  [Remote Tools for Visual Studio 2012 Update 4]: http://www.microsoft.com/ja-jp/download/details.aspx?id=38184
   [Azure のサービス証明書を作成する]: http://msdn.microsoft.com/library/azure/gg432987.aspx
   [Create a Virtual Machine Running Windows Server (Windows Server を実行する仮想マシンの作成)]: http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-windows-tutorial/
-  [Creating Azure Virtual Machines in Visual Studio (Visual Studio で Azure 仮想マシンを作成する)]: http://msdn.microsoft.com/en-us/library/azure/dn569263.aspx
+  [Creating Azure Virtual Machines in Visual Studio (Visual Studio で Azure 仮想マシンを作成する)]: http://msdn.microsoft.com/ja-jp/library/azure/dn569263.aspx
   [Azure ポータル ページ]: http://go.microsoft.com/fwlink/p/?LinkID=269851
   [Azure Powershell]: http://go.microsoft.com/?linkid=9811175&clcid=0x409

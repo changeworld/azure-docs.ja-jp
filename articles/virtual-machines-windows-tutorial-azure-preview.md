@@ -91,12 +91,12 @@ Azure での Windows 仮想マシンの構成に関する詳細については�
 
   [Azure ポータル]: /ja-jp/documentation/articles/virtual-machines-windows-tutorial/ "Azure ポータル"
   [Azure プレビュー ポータル]: /ja-jp/documentation/articles/virtual-machines-windows-tutorial-azure-preview/ "Azure プレビュー ポータル"
-  [Azure アカウントの作成に関するページ]: http://www.windowsazure.com/en-us/develop/php/tutorials/create-a-windows-azure-account/
+  [Azure アカウントの作成に関するページ]: http://www.windowsazure.com/ja-jp/develop/php/tutorials/create-a-windows-azure-account/
   [仮想マシンの作成方法]: #createvirtualmachine
   [仮想マシンを作成後、ログオンする方法]: #logon
   [仮想マシン]: http://go.microsoft.com/fwlink/p/?LinkID=271224
   [1]: https://portal.azure.com
-  [無料評価版]: http://www.windowsazure.com/en-us/pricing/free-trial/
+  [無料評価版]: http://www.windowsazure.com/ja-jp/pricing/free-trial/
   [Select New from the Command Bar]: ./media/virtual-machines-windows-tutorial-azure-preview/new_button_preview_portal.png
   [Select a VM image from the Gallery]: ./media/virtual-machines-windows-tutorial-azure-preview/image_gallery_preview_portal.png
   [Configure host name and log on credentials]: ./media/virtual-machines-windows-tutorial-azure-preview/create_vm_preview_portal.png

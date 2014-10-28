@@ -19,7 +19,7 @@
 
 このトピックでは、Azure Mobile Services を Android アプリのバックエンド データソースとして使用する方法について説明します。このチュートリアルでは、新しいモバイル サービスの作成、メモリにデータを格納するアプリケーション用の Eclipse Android のダウンロード、モバイル サービスとアプリケーションとの統合、アプリケーションの実行時にデータに加えられた変更の表示について説明します。
 
-このチュートリアルで作成するモバイル サービスは、Mobile Services の .NET ランタイムをサポートします。これによって、モバイル サービスのサーバー側のビジネス ロジックに .NET 言語と Visual Studio を使用できます。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[JavaScript バックエンド バージョン][]」を参照してください。
+このチュートリアルで作成するモバイル サービスは、Mobile Services の .NET ランタイムをサポートします。これによって、モバイル サービスのサーバー側のビジネス ロジックに .NET 言語と Visual Studio を使用できます。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[JavaScript バックエンド バージョン][JavaScript バックエンド バージョン]」を参照してください。
 
 <div class="dev-callout"><b>注</b>
 <p>このチュートリアルには、Visual Studio 2013 が必要です。</p>
@@ -27,31 +27,31 @@
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
-1.  [新しいモバイル サービスを作成する][]
-2.  [サービスをローカルにダウンロードする][]
-3.  [モバイル サービスをテストする][]
-4.  [モバイル サービスを Azure に発行する][]
-5.  [GetStartedWithData プロジェクトをダウンロードする][]
-6.  [モバイル サービスをデータ アクセスに使用するためにアプリケーションを更新する][]
-7.  [発行されたモバイル サービスに対してアプリケーションをテストする][]
+1.  [新しいモバイル サービスを作成する][新しいモバイル サービスを作成する]
+2.  [サービスをローカルにダウンロードする][サービスをローカルにダウンロードする]
+3.  [モバイル サービスをテストする][モバイル サービスをテストする]
+4.  [モバイル サービスを Azure に発行する][モバイル サービスを Azure に発行する]
+5.  [GetStartedWithData プロジェクトをダウンロードする][GetStartedWithData プロジェクトをダウンロードする]
+6.  [モバイル サービスをデータ アクセスに使用するためにアプリケーションを更新する][モバイル サービスをデータ アクセスに使用するためにアプリケーションを更新する]
+7.  [発行されたモバイル サービスに対してアプリケーションをテストする][発行されたモバイル サービスに対してアプリケーションをテストする]
 
 <div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
 
 ## <a name="create-service"></a><span class="short-header">新しいモバイル サービスの作成</span>新しいモバイル サービスを作成する
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service][]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service][mobile-services-dotnet-backend-create-new-service]]
 
 ## <a name="download-the-service"></a><span class="short-header">サービスのダウンロード</span>サービスをローカル コンピューターにダウンロードする
 
-[WACOM.INCLUDE [mobile-services-download-service-locally][]]
+[WACOM.INCLUDE [mobile-services-download-service-locally][mobile-services-download-service-locally]]
 
 ## <a name="test-the-service"></a><span class="short-header">サービスのテスト</span>モバイル サービスをテストする
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service][]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service][mobile-services-dotnet-backend-test-local-service]]
 
 ## <a name="publish-the-service"></a><span class="short-header">サービスの発行</span>モバイル サービスを Azure に発行する
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service][]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service][mobile-services-dotnet-backend-publish-service]]
 
 ## <a name="download-app"></a><span class="short-header">プロジェクトのダウンロード</span>GetStartedWithData プロジェクトのダウンロード
 
@@ -61,15 +61,15 @@
 
 ### Android SDK バージョンの検証
 
-[WACOM.INCLUDE [mobile-services-verify-android-sdk-version][]]
+[WACOM.INCLUDE [mobile-services-verify-android-sdk-version][mobile-services-verify-android-sdk-version]]
 
 ### サンプル コードの確認と実行
 
-[WACOM.INCLUDE [mobile-services-android-run-sample-code][]]
+[WACOM.INCLUDE [mobile-services-android-run-sample-code][mobile-services-android-run-sample-code]]
 
 ## <a name="update-app"></a><span class="short-header">アプリケーションの更新</span>モバイル サービスをデータ アクセスに使用するためのアプリケーションの更新
 
-[WACOM.INCLUDE [mobile-services-android-getting-started-with-data][]]
+[WACOM.INCLUDE [mobile-services-android-getting-started-with-data][mobile-services-android-getting-started-with-data]]
 
 ## <a name="test-app"></a><span class="short-header">アプリケーションのテスト</span>発行されたモバイル サービスに対してアプリケーションをテストする
 
@@ -105,13 +105,13 @@
 
 他のチュートリアルを 1 つ試してください。
 
--   [認証の使用][]
+-   [認証の使用][認証の使用]
     アプリケーションのユーザーを認証する方法について説明します。
 
--   [プッシュ通知の使用][]
+-   [プッシュ通知の使用][プッシュ通知の使用]
     アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
--   [モバイル サービス .NET の使用方法の概念リファレンス][]
+-   [モバイル サービス .NET の使用方法の概念リファレンス][モバイル サービス .NET の使用方法の概念リファレンス]
     .NET で Mobile Services を使用する方法について説明します。
 
 <!-- Anchors. --> 

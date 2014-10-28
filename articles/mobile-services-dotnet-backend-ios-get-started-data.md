@@ -6,7 +6,7 @@
 
 <div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/" title="Windows Phone">Windows Phone</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data/" title="iOS" class="current">iOS</a><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/" title="Android" class="current">Android</a></div>
 
-<div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data/" title=".NET バックエンド" class="current">.NET バックエンド</a> |  <a href="/en-us/develop/mobile/tutorials/get-started-with-data-ios/"  title="JavaScript バックエンド">JavaScript バックエンド</a></div>
+<div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data/" title=".NET バックエンド" class="current">.NET バックエンド</a> |  <a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-ios/"  title="JavaScript バックエンド">JavaScript バックエンド</a></div>
 
 このトピックでは、Azure Mobile Services を使用して iOS アプリケーションのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合し、アプリケーションの実行時にデータに加えられた変更を表示します。
 
@@ -17,7 +17,7 @@
 </div>
 
 <div class="dev-callout"><b>注</b>
-<p>このチュートリアルの目的は、モバイル サービスが iOS アプリケーションのデータを Azure に格納および取得できるようにするしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル「<a href="/en-us/develop/mobile/tutorials/get-started-ios">モバイル サービスの使用</a>」を完了することをお勧めします。</p>
+<p>このチュートリアルの目的は、モバイル サービスが iOS アプリケーションのデータを Azure に格納および取得できるようにするしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル「<a href="/ja-jp/develop/mobile/tutorials/get-started-ios">モバイル サービスの使用</a>」を完了することをお勧めします。</p>
 </div>
 
 このチュートリアルでは、次の基本的な手順について説明します。
@@ -122,15 +122,15 @@
 
 
 
-  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/ "Windows ストア C#"
+  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/ "Windows ストア C#"
   [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/ "Windows ストア JavaScript"
   [Windows Phone]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/ "Windows Phone"
   [iOS]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data/ "iOS"
   [Android]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/ "Android"
   [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data/ ".NET バックエンド"
-  [JavaScript バックエンド]: /en-us/develop/mobile/tutorials/get-started-with-data-ios/ "JavaScript バックエンド"
-  [JavaScript バックエンド バージョン]: /en-us/develop/mobile/tutorials/get-started-with-data-ios
-  [モバイル サービスの使用]: /en-us/develop/mobile/tutorials/get-started-ios
+  [JavaScript バックエンド]: /ja-jp/develop/mobile/tutorials/get-started-with-data-ios/ "JavaScript バックエンド"
+  [JavaScript バックエンド バージョン]: /ja-jp/develop/mobile/tutorials/get-started-with-data-ios
+  [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-ios
   [iOS アプリ プロジェクトのダウンロード]: #download-app
   [モバイル サービスの作成]: #create-service
   [サービスをローカルにダウンロードする]: #download-the-service-locally
@@ -141,7 +141,7 @@
   [モバイル サービス iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
   [XCode 4.5]: https://go.microsoft.com/fwLink/p/?LinkID=266532
   [Visual Studio Express for Web]: http://go.microsoft.com/p/?linkid=9832232
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A756A2826&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-ios%2F
+  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A756A2826&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-ios%2F
   [GetStartedWithData]: http://go.microsoft.com/fwlink/p/?LinkId=268622
   []: ./media/mobile-services-dotnet-backend-ios-get-started-data/mobile-quickstart-startup-ios.png
   [mobile-services-dotnet-backend-create-new-service]: ../includes/mobile-services-dotnet-backend-create-new-service.md
@@ -152,7 +152,7 @@
   [Azure 管理ポータル]: https://manage.windowsazure.com/
   [1]: ./media/mobile-services-dotnet-backend-ios-get-started-data/manage-sql-azure-database.png
   [2]: ./media/mobile-services-dotnet-backend-ios-get-started-data/sql-azure-query.png
-  [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
-  [ページングを使用したモバイル サービス クエリの改善]: /en-us/develop/mobile/tutorials/add-paging-to-data-ios
-  [認証の使用]: /en-us/develop/mobile/tutorials/get-started-with-users-ios
-  [プッシュ通知の使用]: /en-us/develop/mobile/tutorials/get-started-with-push-ios
+  [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
+  [ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-ios
+  [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-ios
+  [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-ios

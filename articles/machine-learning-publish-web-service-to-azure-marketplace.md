@@ -24,14 +24,14 @@ Azure ML Web サービスを Azure Marketplace に発行するための手順を
 1.  Azure ML RRS (要求応答サービス) または BES (バッチ実行サービス) Web サービスを作成して発行します。
 2.  Azure の管理ポータルから、サービスを運用環境にデプロイします。
 3.  発行済みの Web サービスの URL を使用して、Azure Marketplace に発行します。
-4.  発行プロセスの概要は次のとおりです。<http://msdn.microsoft.com/en-us/library/azure/hh580725.aspx>
+4.  発行プロセスの概要は次のとおりです。<http://msdn.microsoft.com/ja-jp/library/azure/hh580725.aspx>
 5.  送信すると、サービスの内容が確認され、顧客が購入するにはこのサービスが承認される必要があります。発行プロセスには数営業日かかります。現在、可能な限り短縮できるように取り組んでいます。今後、最新情報を随時お知らせいたします。
 
 ## Azure Marketplace への発行ガイドライン
 
-1.  発行者として登録する必要があります。詳細については、次のリンクを参照してください。<http://msdn.microsoft.com/en-us/library/azure/hh563872.aspx>
-2.  料金プランなど、サービスについての情報を提供する必要があります。無料サービスまたは有料サービスのいずれを提供するかを決定します。詳細については、次のリンクを参照してください。<http://msdn.microsoft.com/en-us/library/azure/hh563873.aspx>
-3.  有料にするには、銀行や税などの、支払いの情報を提供する必要があります。詳細については、次のリンクを参照してください。<http://msdn.microsoft.com/en-us/library/azure/hh563873.aspx>
+1.  発行者として登録する必要があります。詳細については、次のリンクを参照してください。<http://msdn.microsoft.com/ja-jp/library/azure/hh563872.aspx>
+2.  料金プランなど、サービスについての情報を提供する必要があります。無料サービスまたは有料サービスのいずれを提供するかを決定します。詳細については、次のリンクを参照してください。<http://msdn.microsoft.com/ja-jp/library/azure/hh563873.aspx>
+3.  有料にするには、銀行や税などの、支払いの情報を提供する必要があります。詳細については、次のリンクを参照してください。<http://msdn.microsoft.com/ja-jp/library/azure/hh563873.aspx>
 
 ## Machine Learning 固有のオプション
 

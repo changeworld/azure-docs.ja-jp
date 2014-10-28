@@ -93,6 +93,6 @@
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started
   [データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data
   [Azure 管理ポータル]: https://manage.windowsazure.com/
-  [MongoLab アドオンのページ]: /en-us/gallery/store/mongolab/mongolab
+  [MongoLab アドオンのページ]: /ja-jp/gallery/store/mongolab/mongolab
   []: ./media/mobile-services-dotnet-backend-use-non-relational-data-store/create-mongo-lab.png
   [1]: ./media/mobile-services-dotnet-backend-use-non-relational-data-store/mongo-connection-string.png

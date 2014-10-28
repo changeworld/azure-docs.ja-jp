@@ -107,7 +107,7 @@ Azure SDK 2.3 には、更新されたストレージ エミュレーターが�
 -   [Build 2014: Azure Resource Group Model: Modern Management for Modern Cloud (Build 2014: Azure リソース グループ モデル: 最先端のクラウドに対する最先端の管理) (ビデオ)][Build 2014: Azure Resource Group Model: Modern Management for Modern Cloud (Build 2014: Azure リソース グループ モデル: 最先端のクラウドに対する最先端の管理) (ビデオ)]
 
   [Visual Studio 2013 Update 2 RC]: http://aka.ms/vs2013update2rc
-  [Azure SDK 2.3]: http://www.windowsazure.com/en-us/downloads/
+  [Azure SDK 2.3]: http://www.windowsazure.com/ja-jp/downloads/
   [Azure PowerShell]: http://go.microsoft.com/?linkid=9811175
   [Azure クロスプラットフォーム コマンド ライン インターフェイス]: http://go.microsoft.com/?linkid=9828653
   [Azure SDK for .NET 2.3 リリース ノート]: http://go.microsoft.com/fwlink/p/?LinkId=393548
@@ -121,25 +121,25 @@ Azure SDK 2.3 には、更新されたストレージ エミュレーターが�
   [ストレージ クライアント ライブラリ 3.0 と新しいストレージ エミュレーター]: #storage
   [リソース マネージャー]: #arm
   [Azure と ASP.NET の使用]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-dotnet-get-started/
-  [Azure Tools for Visual Studio の概要]: http://msdn.microsoft.com/en-us/library/azure/ff687127.aspx
+  [Azure Tools for Visual Studio の概要]: http://msdn.microsoft.com/ja-jp/library/azure/ff687127.aspx
   [Creating ASP.NET Web Projects in Visual Studio 2013 (Visual Studio 2013 での ASP.NET Web プロジェクトの作成)]: http://asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio
   [Build 2014: What's New for ASP.NET and Web in Visual Studio 2013 Update 2 and Beyond (Build 2014: Visual Studio 2013 Update 2 の ASP.NET および Web の新機能など) (ビデオ)]: http://channel9.msdn.com/Events/Build/2014/3-602
-  [Visual Studio でのクラウド サービスまたは仮想マシンのデバッグ]: http://msdn.microsoft.com/en-us/library/azure/ff683670.aspx
-  [Emulator Express を使用したローカルでのクラウド サービス実行とデバッグ]: http://msdn.microsoft.com/en-us/library/windowsazure/dn339018.aspx
+  [Visual Studio でのクラウド サービスまたは仮想マシンのデバッグ]: http://msdn.microsoft.com/ja-jp/library/azure/ff683670.aspx
+  [Emulator Express を使用したローカルでのクラウド サービス実行とデバッグ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn339018.aspx
   [Visual Studio での Azure の Web サイトのトラブルシューティング]: http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio
-  [Visual Studio での Azure 仮想マシンの作成]: http://msdn.microsoft.com/en-us/library/windowsazure/dn569263.aspx
-  [サーバー エクスプローラーから Azure の仮想マシンへのアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/jj131259.aspx
-  [Visual Studio サーバー エクスプローラーを使用して Service Bus のリソースを参照する]: http://msdn.microsoft.com/en-us/library/windowsazure/jj149828.aspx
-  [サーバー エクスプローラーを使用したストレージ リソースの参照]: http://msdn.microsoft.com/en-us/library/windowsazure/ff683677.aspx
+  [Visual Studio での Azure 仮想マシンの作成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn569263.aspx
+  [サーバー エクスプローラーから Azure の仮想マシンへのアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj131259.aspx
+  [Visual Studio サーバー エクスプローラーを使用して Service Bus のリソースを参照する]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj149828.aspx
+  [サーバー エクスプローラーを使用したストレージ リソースの参照]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff683677.aspx
   [Azure PowerShell のインストールおよび構成方法]: http://www.windowsazure.com/ja-jp/documentation/articles/install-configure-powershell/
-  [1]: http://msdn.microsoft.com/en-us/library/windowsazure/jj156055.aspx
+  [1]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156055.aspx
   [Build 2014: Automation Everywhere with New SDKs, Tools, and Services in Azure (Build 2014: Azure 内の新しい SDK、ツール、およびサービスであらゆる場所を自動化) (ビデオ)]: http://channel9.msdn.com/Events/Build/2014/3-621
-  [Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行]: http://msdn.microsoft.com/en-us/library/windowsazure/dn642480.aspx
+  [Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn642480.aspx
   [Cloud Cover Episode 137: The Azure Mobile Services .NET Backend with Yavor Georgiev (Cloud Cover エピソード 137: Yavor Georgiev による Azure モバイル サービスの .NET バックエンド) (ビデオ)]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-137-The-Azure-Mobile-Services-NET-Backend-with-Yavor-Georgiev
-  [Azure モバイル デベロッパー センター]: /en-us/develop/mobile/
-  [クイック スタート: モバイル サービスの追加]: http://msdn.microsoft.com/en-us/library/windows/apps/xaml/dn629482.aspx
-  [Visual Studio で実行中のアプリにプッシュ通知を送信する方法]: http://msdn.microsoft.com/en-us/library/windows/apps/xaml/dn614131.aspx
-  [モバイル サービスでカスタム API とスケジュールされたジョブを作成する方法]: http://msdn.microsoft.com/en-us/library/windows/apps/xaml/dn614130.aspx
+  [Azure モバイル デベロッパー センター]: /ja-jp/develop/mobile/
+  [クイック スタート: モバイル サービスの追加]: http://msdn.microsoft.com/ja-jp/library/windows/apps/xaml/dn629482.aspx
+  [Visual Studio で実行中のアプリにプッシュ通知を送信する方法]: http://msdn.microsoft.com/ja-jp/library/windows/apps/xaml/dn614131.aspx
+  [モバイル サービスでカスタム API とスケジュールされたジョブを作成する方法]: http://msdn.microsoft.com/ja-jp/library/windows/apps/xaml/dn614130.aspx
   [Azure ストレージ クライアント ライブラリ 3.0]: http://go.microsoft.com/fwlink/?LinkId=394927
   [Microsoft Azure ストレージの概要]: /ja-jp/documentation/articles/storage-introduction/
   [Build 2014: Microsoft Azure Storage – What's New, Best Practices and Patterns (Build 2014: Microsoft Azure ストレージ – 新機能、ベスト プラクティス、およびパターン) (ビデオ)]: http://channel9.msdn.com/Events/Build/2014/3-628

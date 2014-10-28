@@ -133,7 +133,7 @@ Customers<em>OracleServer</em>
 2.  ファイルを解凍します。
 3.  グループ ポリシーを変更するコンピューターで、以下の手順を実行します。
 4.  .ADMX ファイルを *%WINROOT%\\PolicyDefinitions* フォルダーにコピーします。
-5.  .ADML ファイルを *%WINROOT%\\PolicyDefinitions\\en-us* フォルダーにコピーします。
+5.  .ADML ファイルを *%WINROOT%\\PolicyDefinitions\\ja-jp* フォルダーにコピーします。
 
 コピーが終了すると、グループ ポリシー エディターを使用してポリシーを変更できます。
 

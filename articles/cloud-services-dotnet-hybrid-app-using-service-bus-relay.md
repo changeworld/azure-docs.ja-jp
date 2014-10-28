@@ -19,7 +19,7 @@ Windows Azure リソースをクラウドで運用するアプリケーション
 -   Azure アプリケーションと別の場所でホストされている Web サービスの間で、
     Azure の Service Bus Relay を使用してデータを共有する方法。
 
-[WACOM.INCLUDE [create-account-note][]]
+[WACOM.INCLUDE [create-account-note][create-account-note]]
 
 ### Service Bus Relay がハイブリッド ソリューションで役立つ理由
 
@@ -75,7 +75,7 @@ Azure アプリケーションを開発する前に、ツールを入手して�
 
 1.  Azure SDK for .NET をインストールするには、次のボタンをクリックします。
 
-    [ツールと SDK の入手][]
+    [ツールと SDK の入手][ツールと SDK の入手]
 
 2.  **[SDK のインストール]** をクリックします。
 
@@ -104,11 +104,11 @@ Azure で Service Bus 機能を使用するには、最初に
 サービス名前空間を作成する必要があります。サービス名前空間は、アプリケーション内で
 Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
 
-[Azure 管理ポータル][]または Visual Studio のサーバー エクスプローラー を使用して名前空間と Service Bus のメッセージ エンティティを管理できますが、新しい名前空間を作成できるのは、ポータル内のみです。
+[Azure 管理ポータル][Azure 管理ポータル]または Visual Studio のサーバー エクスプローラー を使用して名前空間と Service Bus のメッセージ エンティティを管理できますが、新しい名前空間を作成できるのは、ポータル内のみです。
 
 ### ポータルを使用してサービス名前空間を作成するには:
 
-1.  [Azure 管理ポータル][]へのログオン
+1.  [Azure 管理ポータル][Azure 管理ポータル]へのログオン
 
 2.  管理ポータルの左のナビゲーション ウィンドウで、
     **[サービス バス]** をクリックします。
@@ -157,7 +157,7 @@ Service Bus リソースをアドレス指定するためのスコープ コン�
 
 ### Visual Studio のサーバー エクスプローラーを使用したサービス名前空間の管理:
 
-管理ポータルの代わりに Visual Studio を使用して名前空間を管理し、接続情報を取得するには、「[Azure Tools for Visual Studio の概要][]」の「**Visual Studio から Azure に接続するには**」で説明されている手順に従ってください。Azure にサインインすると、サーバー エクスプローラーの **[Microsoft Azure]** ツリーの下にある **[サービス バス]** ノードが、既に作成したすべての名前空間を使用して自動的に設定されます。いずれかの名前空間を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウで表示される、この名前空間に関連付けられている接続文字列と他のメタデータを確認できます。
+管理ポータルの代わりに Visual Studio を使用して名前空間を管理し、接続情報を取得するには、「[Azure Tools for Visual Studio の概要][Azure Tools for Visual Studio の概要]」の「**Visual Studio から Azure に接続するには**」で説明されている手順に従ってください。Azure にサインインすると、サーバー エクスプローラーの **[Microsoft Azure]** ツリーの下にある **[サービス バス]** ノードが、既に作成したすべての名前空間を使用して自動的に設定されます。いずれかの名前空間を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウで表示される、この名前空間に関連付けられている接続文字列と他のメタデータを確認できます。
 
 ![][10]
 
@@ -177,7 +177,7 @@ Visual Studio および Visual Studio Express でのライブラリや
 ツールのインストールと更新を簡単に行うことができます。Service Bus NuGet パッケージは、Service Bus API を
 取得し、Service Bus 依存関係をすべて備えたアプリケーションを
 構成する最も簡単な方法です。NuGet および Service Bus パッケージの
-使用方法の詳細については、「[NuGet Service Bus パッケージの使用][]」を参照してください。
+使用方法の詳細については、「[NuGet Service Bus パッケージの使用][NuGet Service Bus パッケージの使用]」を参照してください。
 
 ### プロジェクトの作成
 
@@ -206,7 +206,7 @@ Visual Studio および Visual Studio Express でのライブラリや
 
     ![][13]
 
-7.  既に Visual Studio 用の NuGet パッケージ マネージャーをインストールしている場合は、次のステップに進みます。まだインストールしていない場合は、[NuGet][] にアクセスし、[[Install NuGet]][] をクリックします。メッセージに従って NuGet パッケージ マネージャーをインストールし、Visual Studio を再起動します。
+7.  既に Visual Studio 用の NuGet パッケージ マネージャーをインストールしている場合は、次のステップに進みます。まだインストールしていない場合は、[NuGet][NuGet] にアクセスし、[[Install NuGet]][] をクリックします。メッセージに従って NuGet パッケージ マネージャーをインストールし、Visual Studio を再起動します。
 
 8.  **ソリューション エクスプローラー**で **[参照]** を右クリックし、
     **[NuGet パッケージの管理]** をクリックします。
@@ -493,7 +493,7 @@ Visual Studio および Visual Studio Express でのライブラリや
 
     ## <span class="short-header">Azure へのデプロイ</span>アプリケーションを Azure にデプロイするための準備
 
-    アプリケーションは、Azure クラウド サービスまたは Azure の Web サイトにデプロイできます。Web サイトとクラウド サービスの違いについては、「[Azure Execution Models (Azure 実行モデル)][]」を参照してください。Azure の Web サイトにアプリケーションをデプロイする方法については、「[Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションを Azure の Web サイトに展開する)][]」を参照してください。このセクションには、アプリケーションを Azure クラウド サービスにデプロイする詳細な手順が記載されています。
+    アプリケーションは、Azure クラウド サービスまたは Azure の Web サイトにデプロイできます。Web サイトとクラウド サービスの違いについては、「[Azure Execution Models (Azure 実行モデル)][Azure Execution Models (Azure 実行モデル)]」を参照してください。Azure の Web サイトにアプリケーションをデプロイする方法については、「[Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションを Azure の Web サイトに展開する)][Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションを Azure の Web サイトに展開する)]」を参照してください。このセクションには、アプリケーションを Azure クラウド サービスにデプロイする詳細な手順が記載されています。
 
     アプリケーションをクラウド サービスにデプロイするには、クラウド サービス プロジェクトのデプロイ プロジェクトをソリューションに追加します。
     このデプロイ プロジェクトには、アプリケーションを
@@ -694,7 +694,7 @@ Visual Studio および Visual Studio Express でのライブラリや
 
         ![][33]
 
-Web サイトとクラウド サービスの違いについては、「[Azure Execution Models (Azure 実行モデル)][]」を参照してください。
+Web サイトとクラウド サービスの違いについては、「[Azure Execution Models (Azure 実行モデル)][Azure Execution Models (Azure 実行モデル)]」を参照してください。
 
 ## <span class="short-header">アプリケーションの削除</span>アプリケーションの停止と削除
 
@@ -724,9 +724,9 @@ Azure では、消費されたサーバー時間の 1 時間単位の
 
 サービス バスの詳細については、次のリソースを参照してください。
 
--   [Azure のサービス バス][]
--   [サービス バスの利用方法に関するページ][]
--   [サービス バス キューの使用方法][]
+-   [Azure のサービス バス][Azure のサービス バス]
+-   [サービス バスの利用方法に関するページ][サービス バスの利用方法に関するページ]
+-   [サービス バス キューの使用方法][サービス バス キューの使用方法]
 
   [create-account-note]: ../includes/create-account-note.md
   []: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/hybrid.png

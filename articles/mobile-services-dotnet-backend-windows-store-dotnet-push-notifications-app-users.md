@@ -54,7 +54,7 @@
 <br/>
 
 
-  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users "Windows ストア C#"
+  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users "Windows ストア C#"
   [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-push-notifications-app-users "Windows ストア JavaScript"
   [Windows Phone]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-push-notifications-app-users "Windows Phone"
   [iOS]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-push-notifications-app-users "iOS"

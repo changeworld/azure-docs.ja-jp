@@ -298,7 +298,7 @@
   [Windows Phone]: /ja-jp/documentation/articles/notification-hubs-windows-phone-send-breaking-news/ "Windows Phone"
   [iOS]: /ja-jp/documentation/articles/notification-hubs-ios-send-breaking-news/ "iOS"
   [Android]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-breaking-news/ "Android"
-  [通知ハブの概要]: http://msdn.microsoft.com/en-us/library/jj927170.aspx
+  [通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
   [アプリケーションにカテゴリ選択を追加する]: #adding-categories
   [通知を登録する]: #register
   [バックエンドから通知を送信する]: #send
@@ -306,5 +306,5 @@
   [通知ハブの使用]: /ja-jp/documentation/articles/notification-hubs-android-get-started/
   []: ./media/notification-hubs-aspnet-backend-android-breaking-news/android-breaking-news1.PNG
   [notification-hubs-back-end]: ../includes/notification-hubs-back-end.md
-  [通知ハブを使用したローカライズ ニュース速報のブロードキャスト]: /en-us/manage/services/notification-hubs/breaking-news-localized-dotnet/
-  [通知ハブによるユーザーへの通知]: /en-us/manage/services/notification-hubs/notify-users
+  [通知ハブを使用したローカライズ ニュース速報のブロードキャスト]: /ja-jp/manage/services/notification-hubs/breaking-news-localized-dotnet/
+  [通知ハブによるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users

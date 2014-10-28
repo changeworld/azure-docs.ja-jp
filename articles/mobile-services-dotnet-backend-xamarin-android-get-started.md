@@ -80,7 +80,7 @@
     これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目がモバイル サービスによって返され、データが一覧に表示されます。
 
     > [WACOM.NOTE]
-    > モバイル サービスにアクセスして ToDoActivity.cs C\# ファイルにあるデータを照会および挿入するコードを確認できます。
+    > モバイル サービスにアクセスして ToDoActivity.cs C# ファイルにあるデータを照会および挿入するコードを確認できます。
 
 ## 次のステップ
 
@@ -96,9 +96,9 @@
 
   [mobile-services-selector-get-started]: ../includes/mobile-services-selector-get-started.md
   [JavaScript バックエンド バージョン]: /ja-jp/documentation/articles/partner-xamarin-mobile-services-android-get-started
-  [クイック スタート: モバイル サービスの追加 (.NET バックエンド)]: http://msdn.microsoft.com/en-us/library/windows/apps/dn629482.aspx
+  [クイック スタート: モバイル サービスの追加 (.NET バックエンド)]: http://msdn.microsoft.com/ja-jp/library/windows/apps/dn629482.aspx
   []: ./media/mobile-services-dotnet-backend-xamarin-android-get-started/mobile-quickstart-completed-android.png
-  [無料評価版のサイト]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-xamarin-android-get-started
+  [無料評価版のサイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-xamarin-android-get-started
   [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
   [mobile-services-dotnet-backend-create-new-service]: ../includes/mobile-services-dotnet-backend-create-new-service.md
   [1]: ./media/mobile-services-dotnet-backend-xamarin-android-get-started/mobile-portal-quickstart-xamarin.png

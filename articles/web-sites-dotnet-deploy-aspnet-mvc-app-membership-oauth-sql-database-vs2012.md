@@ -27,34 +27,34 @@ Azure アカウントは無料で開くことができます。また、まだ V
 
 ASP.NET MVC 4 に基づく、データベース アクセスに ADO.NET Entity Framework を使用する、簡単な連絡先リスト Web アプリケーションをビルドします。次の図は、完成したアプリケーションのログイン ページです。
 
-![login page][]
+![login page][login page]
 
-[WACOM.INCLUDE [create-account-and-websites-note][]]
+[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
 
 このチュートリアルの内容:
 
--   [開発環境を設定する][]
--   [Azure 環境を設定する][]
--   [ASP.NET MVC 4 アプリケーションを作成する][]
--   [Azure にアプリケーションを展開する][]
--   [アプリケーションにデータベースを追加する][]
--   [OAuth プロバイダーを追加する][]
--   [メンバーシップ データベースにロールを追加する][]
--   [データ展開スクリプトを作成する][]
+-   [開発環境を設定する][開発環境を設定する]
+-   [Azure 環境を設定する][Azure 環境を設定する]
+-   [ASP.NET MVC 4 アプリケーションを作成する][ASP.NET MVC 4 アプリケーションを作成する]
+-   [Azure にアプリケーションを展開する][Azure にアプリケーションを展開する]
+-   [アプリケーションにデータベースを追加する][アプリケーションにデータベースを追加する]
+-   [OAuth プロバイダーを追加する][OAuth プロバイダーを追加する]
+-   [メンバーシップ データベースにロールを追加する][メンバーシップ データベースにロールを追加する]
+-   [データ展開スクリプトを作成する][データ展開スクリプトを作成する]
 -   [Azure にアプリケーションを展開する][1]
--   [メンバーシップ データベースを更新する][]
--   [次のステップ][]
+-   [メンバーシップ データベースを更新する][メンバーシップ データベースを更新する]
+-   [次のステップ][次のステップ]
 
 ## <a name="bkmk_setupdevenv"></a>開発環境を設定する
 
 最初に、.NET Framework 対応の Azure SDK をインストールして、開発環境を設定します
 
 1.  Azure SDK for .NET をインストールするには、次のリンクをクリックします。Visual Studio 2012 をまだインストールしていない場合は、次のリンクをクリックするとインストールされます。このチュートリアルには Visual Studio 2012 が必要です。
-    [Visual Studio 2012 用の Azure SDK][]
+    [Visual Studio 2012 用の Azure SDK][Visual Studio 2012 用の Azure SDK]
 2.  インストール プログラムの実行または保存を求めるメッセージが表示されたら、**[実行]** をクリックします。
 3.  Web Platform Installer のウィンドウで、**[インストール]** をクリックし、インストールの手順を進めます。
 
-![Web Platform Installer - Azure SDK for .NET][]
+![Web Platform Installer - Azure SDK for .NET][Web Platform Installer - Azure SDK for .NET]
 
 インストールが完了すると、開発に必要なツールがすべて揃います。
 
@@ -68,13 +68,13 @@ Azure の Web サイトは、共有ホスティング環境で実行されます
 
 Azure SQL データベースは、SQL Server テクノロジに基づいて構築されたクラウドベースのリレーショナル データベース サービスです。SQL Server で動作するツールおよびアプリケーションは、SQL データベースでも動作します。
 
-1.  [Azure の管理ポータル][]で、左側のタブにある **[Web サイト]** をクリックし、**[新規]** をクリックします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]で、左側のタブにある **[Web サイト]** をクリックし、**[新規]** をクリックします。
 
-![New button in Management Portal][]
+![New button in Management Portal][New button in Management Portal]
 
 1.  **[カスタム作成]** をクリックします。
 
-    ![Create with Database link in Management Portal][]
+    ![Create with Database link in Management Portal][Create with Database link in Management Portal]
 
 **新しい Web サイト - カスタム作成**ウィザードが開きます。
 
@@ -98,7 +98,7 @@ Azure SQL データベースは、SQL Server テクノロジに基づいて構�
 
 8.  終了したら、ダイアログ ボックスの下部にあるチェック マークをクリックします。
 
-    ![Database Settings step of New Website - Create with Database wizard][]
+    ![Database Settings step of New Website - Create with Database wizard][Database Settings step of New Website - Create with Database wizard]
 
     次の画像では、既存の SQL Server を選択した場合のログインを示しています。
     ![Database Settings step of New Website - Create with Database wizard][3]
@@ -115,17 +115,17 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 2.  **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
 3.  **[新しいプロジェクト]** ダイアログ ボックスで、**[インストールされているテンプレート]** の下にある **[Visual C\#]** を展開して **[Web]** を選択し、**[ASP.NET MVC 4 Web アプリケーション]** を選択します。既定の **[.NET Framework 4.5]** をそのまま使用します。アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
 
-    ![New Project dialog box][]
+    ![New Project dialog box][New Project dialog box]
 
 4.  **[新しい ASP.NET MVC 4 プロジェクト]** ダイアログ ボックスで、**[インターネット アプリケーション]** テンプレートを選択します。**[ビュー エンジン]** ボックスの一覧で既定の [Razor] をそのまま使用し、**[OK]** をクリックします。
 
-    ![New ASP.NET MVC 4 Project dialog box][]
+    ![New ASP.NET MVC 4 Project dialog box][New ASP.NET MVC 4 Project dialog box]
 
 ### ページのヘッダーとフッターを設定する
 
 1.  **ソリューション エクスプローラー**で、Views\\Shared フォルダーを展開し、\*\_Layout.cshtml\* ファイルを開きます。
 
-    ![\_Layout.cshtml in Solution Explorer][]
+    ![\_Layout.cshtml in Solution Explorer][\_Layout.cshtml in Solution Explorer]
 
 2.  "My ASP.NET MVC Application" となっている箇所をすべて「Contact Manager」に書き換えます。
 3.  "your logo here" を「CM Demo」に書き換えます。
@@ -133,7 +133,7 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 ### ローカルでアプリケーションを実行する
 
 1.  Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。アプリケーションのホーム ページが既定のブラウザーに表示されます。
-    ![To Do List home page][]
+    ![To Do List home page][To Do List home page]
 
 これで、Azure に展開するアプリケーションを作成するために必要な操作が完了しました。データベース機能は後で追加します。
 
@@ -143,29 +143,29 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 
 2.  **[Web サイト]** タブで、前の手順で作成したサイトの名前をクリックします。
 
-    ![Contact manager application in Management Portal Websites tab][]
+    ![Contact manager application in Management Portal Websites tab][Contact manager application in Management Portal Websites tab]
 
 3.  ウィンドウの右側で、**[発行プロファイルのダウンロード]** をクリックします。
 
-    ![Quickstart tab and Download Publishing Profile button][]
+    ![Quickstart tab and Download Publishing Profile button][Quickstart tab and Download Publishing Profile button]
 
     この手順では、アプリケーションを Web サイトにデプロイするために必要な設定をすべて含むファイルがダウンロードされます。このファイルを Visual Studio にインポートすると、この情報を手動で入力する必要はありません。
 
 4.  Visual Studio からアクセスできるフォルダーに .*publishsettings* ファイルを保存します。
 
-    ![saving the .publishsettings file][]
+    ![saving the .publishsettings file][saving the .publishsettings file]
 
-    [WACOM.INCLUDE [publishsettingsfilewarningchunk][]]
+    [WACOM.INCLUDE [publishsettingsfilewarningchunk][publishsettingsfilewarningchunk]]
 
 5.  Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
 
-    ![Publish in project context menu][]
+    ![Publish in project context menu][Publish in project context menu]
 
     **Web の発行**ウィザードが開きます。
 
 6.  **Web の発行**ウィザードの **[プロファイル]** タブで、**[インポート]** をクリックします。
 
-    ![Import publish settings][]
+    ![Import publish settings][Import publish settings]
 
     **[発行プロファイルのインポート]** ダイアログ ボックスが表示されます。
 
@@ -173,34 +173,34 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 
     a. **[発行プロファイルのインポート]** ダイアログ ボックスで、**[Azure サブスクリプションの追加]** をクリックします。
 
-    ![add win az sub][]
+    ![add win az sub][add win az sub]
 
     b. **[Azure サブスクリプションのインポート]** ダイアログ ボックスで、**[サブスクリプション ファイルのダウンロード]** をクリックします。
 
-    ![download sub][]
+    ![download sub][download sub]
 
     c. ブラウザー ウィンドウで、*.publishsettings* ファイルを保存します。
 
-    ![download pub file][]
+    ![download pub file][download pub file]
 
     > [WACOM.NOTE]
     >  .publishsettings ファイルには、Azure のサブスクリプションとサービスの管理に使用される資格情報 (デコード済み) が保存されています。このファイルのセキュリティに関するベスト プラクティスは、このファイルをソース ディレクトリの外 (Libraries\\Documents フォルダーなど) に一時的に保存し、インポートが完了したらそのファイルを削除することです。悪意のあるユーザーが .publishsettings ファイルへのアクセス許可を取得すると、Azure サービスを編集、作成、削除できるためです。
 
     d. **[Azure サブスクリプションのインポート]** ダイアログ ボックスで、**[参照]** をクリックし、*.publishsettings* ファイルに移動します。
 
-    ![download sub][]
+    ![download sub][download sub]
 
     e. **[インポート]** をクリックします。
 
-    ![import][]
+    ![import][import]
 
 8.  **[発行プロファイルのインポート]** ダイアログ ボックスで、**[Azure の Web サイトからインポート]** をクリックし、ドロップダウン リストから Web サイトを選択して **[OK]** をクリックします。
 
-    ![Import Publish Profile][]
+    ![Import Publish Profile][Import Publish Profile]
 
     これで、作成したアプリケーションはクラウドで実行されています。このアプリケーションを次に展開するときは、変更したファイル (または新しいファイル) のみが展開されます。
 
-    ![To Do List home page running in Azure][]
+    ![To Do List home page running in Azure][To Do List home page running in Azure]
 
 ## <a name="bkmk_addadatabase"></a>アプリケーションにデータベースを追加する
 
@@ -212,11 +212,11 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 
 1.  **ソリューション エクスプローラー**で、Models フォルダーを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
 
-![Add Class in Models folder context menu][]
+![Add Class in Models folder context menu][Add Class in Models folder context menu]
 
 1.  **[新しい項目の追加]** ダイアログ ボックスで、新しいクラス ファイルに「*Contact.cs*」という名前を付け、[**追加**] をクリックします。
 
-![Add New Item dialog box][]
+![Add New Item dialog box][Add New Item dialog box]
 
 1.  Contacts.cs ファイルの内容を次のコードに置き換えます。
 
@@ -248,13 +248,13 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 1.  プロジェクトをビルドします **(Ctrl + Shift + B)**。(スキャフォールディング機能の使用前にプロジェクトをビルドする必要があります。)
 2.  **ソリューション エクスプローラー**で、Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。
 
-    ![Add Controller in Controllers folder context menu][]
+    ![Add Controller in Controllers folder context menu][Add Controller in Controllers folder context menu]
 
 3.  **[コントローラーの追加]** ダイアログ ボックスで、コントローラー名として「HomeController」と入力します。
 4.  **[スキャフォールディングのオプション]** の [テンプレート] で **[Entity Framework を使用した、読み取り/書き込み操作とビューのある MVC コントローラー]** を選択します。
 5.  モデル クラスとして **Contact** を、データ コンテキスト クラスとして **[\<新しいデータ コンテキスト...\>]** を選択します。
 
-    ![Add Controller dialog box][]
+    ![Add Controller dialog box][Add Controller dialog box]
 
 6.  **[新しいデータ コンテキスト]** ダイアログ ボックスで、既定の *ContactManager.Models.ContactManagerContext* をそのまま使用します。
     ![Add Controller dialog box][5]
@@ -262,24 +262,24 @@ ASP.NET MVC のスキャフォールディング機能によって、作成、�
 7.  **[OK]** をクリックし、**[コントローラーの追加]** ダイアログ ボックスで **[追加]** をクリックします。
 8.  **[コントローラーの追加]** の上書き確認のダイアログ ボックスで、すべてのチェック ボックスがオンになっていることを確認し、**[OK]** をクリックします。
 
-    ![Add Controller message box][]
+    ![Add Controller message box][Add Controller message box]
 
 Visual Studio によって、**Contact** オブジェクトの CRUD データベース操作に対応したコントローラー メソッドとビューが作成されます。
 
 ## Migrations の有効化、データベースの作成、サンプル データとデータ初期化子の追加
 
-次の作業では、作成したデータ モデルに基づいてデータベースを作成するために、[Code First Migrations][] 機能を有効にします。
+次の作業では、作成したデータ モデルに基づいてデータベースを作成するために、[Code First Migrations][Code First Migrations] 機能を有効にします。
 
 1.  **[ツール]** メニューの **[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。
 
-    ![Package Manager Console in Tools menu][]
+    ![Package Manager Console in Tools menu][Package Manager Console in Tools menu]
 
 2.  **[パッケージ マネージャー コンソール]** ウィンドウで、次のコマンドを入力します。
 
         enable-migrations -ContextTypeName ContactManagerContext
 
-    ![enable-migrations][]
-    コンテキストの型名 (**ContactManagerContext**) を指定する必要があります。プロジェクトに [DbContext][] の 2 つの派生クラスがあるためです。前の手順で追加した **ContactManagerContext** と、メンバーシップ データベースに使用される **UsersContext** です。**ContactManagerContext** クラスは Visual Studio のスキャフォールディング ウィザードによって追加されました。
+    ![enable-migrations][enable-migrations]
+    コンテキストの型名 (**ContactManagerContext**) を指定する必要があります。プロジェクトに [DbContext][DbContext] の 2 つの派生クラスがあるためです。前の手順で追加した **ContactManagerContext** と、メンバーシップ データベースに使用される **UsersContext** です。**ContactManagerContext** クラスは Visual Studio のスキャフォールディング ウィザードによって追加されました。
 
     **enable-migrations** コマンドによって *Migrations* フォルダーが作成され、そのフォルダーに *Configuration.cs* ファイルが保存されます。このファイルを編集して Migration を構成できます。
 
@@ -349,13 +349,13 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
                 );
         }
 
-    このコードでは、連絡先情報を使用してデータベースを初期化します。シード データベースの生成の詳細については、「[Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)][]」を参照してください。
+    このコードでは、連絡先情報を使用してデータベースを初期化します。シード データベースの生成の詳細については、「[Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)][Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)]」を参照してください。
 
 7.  **[パッケージ マネージャー コンソール]** で、次のコマンドを入力します。
 
         update-database
 
-    ![Package Manager Console commands][]
+    ![Package Manager Console commands][Package Manager Console commands]
 
     **update-database** によって、データベースを作成する最初の Migration が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます (SQL Server Express をインストールしている場合を除き、この例では、SQL Server Express インスタンスを使用してデータベースが作成されます)。
 
@@ -363,11 +363,11 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 アプリケーションでは、登録されたデータが表示され、編集、詳細、削除のリンクが示されます。
 
-![MVC view of data][]
+![MVC view of data][MVC view of data]
 
 ## <a name="addOauth"></a><span class="short-header">OAuth</span>OAuth プロバイダーを追加する
 
-[OAuth][] は、Web、モバイル、およびデスクトップのアプリケーションからシンプルで標準的な方法で安全に認証するためのオープン プロトコルです。ASP.NET MVC インターネット テンプレートは OAuth を使用して、Facebook、Twitter、Google、Yahoo、Microsoft を認証プロバイダーとしてサポートします。このチュートリアルでは Facebook、Google、Yahoo のみを認証プロバイダーとして使用しますが、コードを少し変更すれば他のプロバイダーも使用できます。他のプロバイダーを実装する手順は、このチュートリアルで説明する手順とほとんど同じです。
+[OAuth][OAuth] は、Web、モバイル、およびデスクトップのアプリケーションからシンプルで標準的な方法で安全に認証するためのオープン プロトコルです。ASP.NET MVC インターネット テンプレートは OAuth を使用して、Facebook、Twitter、Google、Yahoo、Microsoft を認証プロバイダーとしてサポートします。このチュートリアルでは Facebook、Google、Yahoo のみを認証プロバイダーとして使用しますが、コードを少し変更すれば他のプロバイダーも使用できます。他のプロバイダーを実装する手順は、このチュートリアルで説明する手順とほとんど同じです。
 
 このチュートリアルでは、認証の他にロールを使用して権限を付与します。canEdit ロールに追加したユーザーのみが連絡先を作成、編集、削除できます。
 
@@ -377,24 +377,24 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 このチュートリアルでは、これらのプロバイダーに登録するための手順を詳しく説明しません。複雑な手順ではないので、プロバイダーの指示に従ってサイトを登録してください。サイトの登録については、次の開発者向けサイトを参照してください。
 
--   [Facebook][]
--   [Microsoft][]
--   [Twitter][]
+-   [Facebook][Facebook]
+-   [Microsoft][Microsoft]
+-   [Twitter][Twitter]
 
 [][]<https://developers.facebook.com/apps></a> ページへ移動し、必要であればログインします。**[Register as a Developer]** ボタンをクリックして登録手続きを行います。登録が完了したら、**[新しいアプリケーションを作成]** をクリックします。アプリケーションの名前を入力します。アプリケーションの名前空間を入力する必要はありません。
 
-![Create New FB app][]
+![Create New FB app][Create New FB app]
 
 **[App Domain]** に「localhost」と入力し、**[Site URL]** に「<http://localhost/>」と入力します。**[Sandbox Mode]** で **[有効]** をクリックし、**[変更を保存]** をクリックします。
 
 このアプリケーションに OAuth を実装するには、**[App ID]** と **[App Secret]** が必要です。
-![New FB app][]
+![New FB app][New FB app]
 
 ## テスト ユーザーを作成する
 
 画面左側の **[設定]** で **[開発者の役割]** をクリックします。(**テスト担当者**行ではなく) **テスト ユーザー**行の **[作成]** リンクをクリックします。
 
-![FB testers][]
+![FB testers][FB testers]
 
 **[変更]** リンクをクリックし、テスト ユーザーの電子メールを取得します (アプリケーションにログインするとき使用します)。**[もっと見る]** リンクをクリックし、次に **[編集]** をクリックしてテスト ユーザーのパスワードを設定します。
 
@@ -432,28 +432,28 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 3.  **UserProfile** を右クリックして **[テーブル データの表示]** をクリックします。
 
-    ![Show table data][]
+    ![Show table data][Show table data]
 
 4.  canEdit ロールを割り当てるユーザーの **UserId** を記録します。次の図では、**UserId** が "2" であるユーザー *ricka* に canEdit ロールが割り当てられています。
 
-    ![user IDs][]
+    ![user IDs][user IDs]
 
 5.  **webpages\_Roles** を右クリックして **[テーブル データの表示]** をクリックします。
 6.  **RoleName** セルに「**canEdit**」と入力します。ロールを初めて追加する場合、**RoleId** は 1 になります。RoleID を記録しておきます。末尾にスペースを入れないように注意してください。ロール テーブルの "canEdit " がコントローラー コードの "canEdit" と一致しなくなります。
 
-    ![roleID][]
+    ![roleID][roleID]
 
 7.  **webpages UsersInRoles** を右クリックして **[テーブル データの表示]** をクリックします。*canEdit* アクセスを付与するユーザーの **UserId** と **RoleId** を入力します。
 
-    ![usr role ID tbl][]
+    ![usr role ID tbl][usr role ID tbl]
 
 **webpages\_OAuthMembership** テーブルには、OAuth プロバイダー、プロバイダーの UserID、および登録されている各 OAuth ユーザーの UserID が格納されます。<!-- Don't replace "-" with "_" or it won't validate -->**webpages-Membership** テーブルには、ASP.NET メンバーシップ テーブルが格納されます。登録リンクを使用して、このテーブルにユーザーを追加できます。*canEdit* ロールが割り当てられており、Facebook や他のサードパーティ認証プロバイダーに関連付けられていないユーザーを追加しておけば、サードパーティ認証プロバイダーに接続できない場合でも *canEdit* アクセスが可能になります。後ほどこのチュートリアルで、ASP.NET メンバーシップ登録を無効にします。
 
 ## Authorize 属性を使用してアプリケーションを保護する
 
-このセクションでは、[Authorize][] 属性を適用してアクション メソッドへのアクセスを制限します。匿名ユーザーが表示できるのはホーム ページだけになります。登録ユーザーは連絡先の詳細ページを閲覧できます。*canEdit* ロールを与えられているユーザーのみがアクション メソッドを実行してデータを変更できます。
+このセクションでは、[Authorize][Authorize] 属性を適用してアクション メソッドへのアクセスを制限します。匿名ユーザーが表示できるのはホーム ページだけになります。登録ユーザーは連絡先の詳細ページを閲覧できます。*canEdit* ロールを与えられているユーザーのみがアクション メソッドを実行してデータを変更できます。
 
-1.  [Authorize][] フィルターと [RequireHttps][] フィルターをアプリケーションに追加します。[Authorize][] 属性と [RequireHttps][] 属性をコントローラーごとに追加する方法もありますが、セキュリティ上の理由から、通常はこれらをアプリケーション全体に適用します。アプリケーション全体に適用すれば、新しいコントローラーやアクション メソッドを追加したとき、それらが自動的に保護されます。ユーザー自身で適用する必要がありません。詳細については、[ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性に関するページ][]を参照してください。*App\_Start\\FilterConfig.cs* ファイルを開き、*RegisterGlobalFilters* メソッドを次のように書き換えます。
+1.  [Authorize][Authorize] フィルターと [RequireHttps][RequireHttps] フィルターをアプリケーションに追加します。[Authorize][Authorize] 属性と [RequireHttps][RequireHttps] 属性をコントローラーごとに追加する方法もありますが、セキュリティ上の理由から、通常はこれらをアプリケーション全体に適用します。アプリケーション全体に適用すれば、新しいコントローラーやアクション メソッドを追加したとき、それらが自動的に保護されます。ユーザー自身で適用する必要がありません。詳細については、[ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性に関するページ][ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性に関するページ]を参照してください。*App\_Start\\FilterConfig.cs* ファイルを開き、*RegisterGlobalFilters* メソッドを次のように書き換えます。
 
         public static void
         RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -494,11 +494,11 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
             // Methods moved and omitted for clarity.
         }
 
-5.  ASP.NET メンバーシップ登録を削除します。このプロジェクトの現在の ASP.NET メンバーシップ登録はパスワードのリセットをサポートしておらず、人間による登録を検証しません ([CAPTCHA][] など)。いずれかのサードパーティ プロバイダーを使用してユーザーを認証すると、登録できるようになります。AccountController で、GET および POST Register メソッドから [AllowAnonymous] を削除します。これによって、ボットや匿名ユーザーが登録されるのを防ぎます。
+5.  ASP.NET メンバーシップ登録を削除します。このプロジェクトの現在の ASP.NET メンバーシップ登録はパスワードのリセットをサポートしておらず、人間による登録を検証しません ([CAPTCHA][CAPTCHA] など)。いずれかのサードパーティ プロバイダーを使用してユーザーを認証すると、登録できるようになります。AccountController で、GET および POST Register メソッドから [AllowAnonymous] を削除します。これによって、ボットや匿名ユーザーが登録されるのを防ぎます。
 6.  *Views\\Shared\_LoginPartial.cshtml* で登録リンクを削除します。
 7.  SSL を有効にします。ソリューション エクスプローラーで **ContactManager** プロジェクトをクリックし、F4 キーを押します。プロパティ ダイアログ ボックスが表示されます。**[SSL Enabled]** を True に変更します。**[SSL URL]** をコピーします。
 
-    ![enable SSL][]
+    ![enable SSL][enable SSL]
 
 8.  ソリューション エクスプローラーで **Contact Manager** プロジェクトを右クリックし、**[プロパティ]** をクリックします。
 9.  左側のタブで **[Web]** をクリックします。
@@ -509,7 +509,7 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 12. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。ブラウザーに証明書の警告が表示されます。このアプリケーションでは、**[このサイトの閲覧を続行する]** をクリックしてかまいません。*canEdit* ロールを与えられているユーザーのみがデータを変更できることを確認します。匿名ユーザーが閲覧できるのはホーム ページのみであることを確認します。
 
-    ![cert Warn][]
+    ![cert Warn][cert Warn]
 
     ![cert Warn][7]
 
@@ -518,14 +518,14 @@ Azure の Web サイトには有効なセキュリティ証明書が備わって
 ## <a name="ppd"></a><span class="short-header">DB の作成</span>データ デプロイ スクリプトを作成する
 
 </p>
-メンバーシップ データベースは Entity Framework Code First によって管理されないので、Migrations を使用して展開できません。[dbDacFx][] プロバイダーを使用してデータベース スキーマを展開し、メンバーシップ データをメンバー テーブルに挿入するスクリプトを実行するように発行プロファイルを構成します。
+メンバーシップ データベースは Entity Framework Code First によって管理されないので、Migrations を使用して展開できません。[dbDacFx][dbDacFx] プロバイダーを使用してデータベース スキーマを展開し、メンバーシップ データをメンバー テーブルに挿入するスクリプトを実行するように発行プロファイルを構成します。
 
 このチュートリアルでは、SQL Server Management Studio (SSMS) を使用してデータ展開スクリプトを作成します。
 
-[Microsoft SQL Server 2012 Express ダウンロード センター][]から SSMS をインストールします。
+[Microsoft SQL Server 2012 Express ダウンロード センター][Microsoft SQL Server 2012 Express ダウンロード センター]から SSMS をインストールします。
 
--   [ENU\\x64\\SQLManagementStudio\_x64\_ENU.exe][] (64 ビット システム)
--   [ENU\\x86\\SQLManagementStudio\_x86\_ENU.exe][] (32 ビット システム)
+-   [ENU\x64\SQLManagementStudio\_x64\_ENU.exe][ENU\x64\SQLManagementStudio\_x64\_ENU.exe] (64 ビット システム)
+-   [ENU\x86\SQLManagementStudio\_x86\_ENU.exe][ENU\x86\SQLManagementStudio\_x86\_ENU.exe] (32 ビット システム)
 
 お使いのシステムに適したバージョンを選択しないとインストールできません。その場合は、適切なバージョンを選択して、もう一度インストールしてください。
 
@@ -533,25 +533,25 @@ Azure の Web サイトには有効なセキュリティ証明書が備わって
 
 SQL Server インストール センターの最初のページで **[SQL Server の新規スタンドアロン インストールを実行するか、既存のインストールに機能を追加します]** をクリックし、画面の指示に従います。設定は既定値を使用してください。SSMS のインストール画面を次に示します。
 
-![SQL Install][]
+![SQL Install][SQL Install]
 
 ### 開発データベース スクリプトを作成する
 
 1.  SSMS を実行します。
 2.  **[サーバーへの接続]** ダイアログ ボックスで、サーバー名として「*(localdb)\\v11.0*」と入力します。**[認証]** を **[Windows 認証]** に設定して **[接続]** をクリックします。SQL Express をインストールしている場合は、「**.\\SQLEXPRESS**」と 入力します。
 
-    ![con to srvr dlg][]
+    ![con to srvr dlg][con to srvr dlg]
 
 3.  **オブジェクト エクスプローラー**で **[データベース]** を展開し、**[aspnet-ContactManager]** を右クリックして、**[タスク]**、**[スクリプトの生成]** の順にクリックします。
 
-    ![Gen Scripts][]
+    ![Gen Scripts][Gen Scripts]
 
 4.  **[スクリプトの生成とパブリッシュ]** ダイアログ ボックスで、**[スクリプト作成オプションの設定]** をクリックします。
     **[オブジェクトの選択]** ステップはスキップしてかまいません。既定の設定 ([データベース全体とすべてのデータベース オブジェクトのスクリプトを作成]) をそのまま使用します。
 
 5.  **[詳細設定]** をクリックします。
 
-    ![Set scripting options][]
+    ![Set scripting options][Set scripting options]
 
 6.  **[スクリプト作成の詳細オプション]** ダイアログ ボックスで **[スクリプトを作成するデータの種類]** までスクロールし、一覧から **[データのみ]** を選択します (次の図を参照)。
 
@@ -563,14 +563,14 @@ SQL Server インストール センターの最初のページで **[SQL Server
 9.  **[スクリプトの生成とパブリッシュ]** ダイアログ ボックスで、**[ファイル名]** ボックスにスクリプトの作成場所を指定します。ソリューション フォルダー (*Contacts.sln* ファイルが保存されているフォルダー) のパスを変更し、ファイル名を「*aspnet-data-membership.sql*」に変更します。
 10. **[次へ]** をクリックして **[概要]** タブへ進み、もう一度 **[次へ]** をクリックしてスクリプトを作成します。
 
-    ![Save or pub][]
+    ![Save or pub][Save or pub]
 
 11. **[完了]** をクリックします。
 
 ## <a name="bkmk_deploytowindowsazure11"></a>Azure にアプリケーションをデプロイする
 
 1.  アプリケーション ルートの *Web.config* ファイルを開きます。*DefaultConnection* マークアップを見つけ、それをコピーして *DefaultConnection* マークアップ行の下に貼り付けます。コピーした要素の名前を「*DefaultConnectionDeploy*」に変更します。ユーザー データをメンバーシップ データベースにデプロイするには、この接続文字列が必要になります。
-    ![3 cons str][]
+    ![3 cons str][3 cons str]
 
 2.  アプリケーションをビルドします。
 3.  Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
@@ -581,7 +581,7 @@ SQL Server インストール センターの最初のページで **[SQL Server
 
 1.  **[設定]** タブをクリックします。**ContactManagerContext** と **DefaultConnectionDeploy** で、**v** アイコンをクリックして **[リモート接続文字列]** を選択します。表示されている 3 つのデータベースでは、すべて同じ接続文字列を使用します。**ContactManagerContext** データベースには連絡先が保存されます。**DefaultConnectionDeploy** は、ユーザー アカウント データをメンバーシップ データベースへ展開するときに使用します。**UsersContext** はメンバーシップ データベースです。
 
-    ![settings][]
+    ![settings][settings]
 
 2.  **ContactManagerContext** で、**[Code First Migrations を実行する]** を選択します。
 
@@ -590,7 +590,7 @@ SQL Server インストール センターの最初のページで **[SQL Server
 3.  **DefaultConnectionDeploy** で **[データベースの更新]** チェック ボックスをオンにして、**[データベースの更新の構成]** リンクをクリックします。
 4.  **[SQL スクリプトの追加]** リンクをクリックし、*aspnet-data-membership.sql* ファイルへ移動します。この操作を行うのは 1 回だけです。次の展開時にはユーザー データをメンバーシップ テーブルに追加する必要がないので、**[データベースの更新]** チェック ボックスをオフにします。
 
-    ![add sql][]
+    ![add sql][add sql]
 
 5.  **[発行]** をクリックします。
 6.  [][]<https://developers.facebook.com/apps></a> ページへ移動し、**[App Domains]** と **[Site URL]** の設定を Azure URL に変更します。
@@ -606,7 +606,7 @@ SQL Server インストール センターの最初のページで **[SQL Server
 ![settings][10]
 
 1.  **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[発行]** をクリックします。
-    ![Publish][]
+    ![Publish][Publish]
 
 2.  **[設定]** タブをクリックします。
 3.  接続文字列をコピーします。たとえば、このサンプルで使用されている接続文字列は次のとおりです。
@@ -627,23 +627,23 @@ SQL Server インストール センターの最初のページで **[SQL Server
 10. **[ユーザー名]** と **[パスワード]** を入力します。これらの情報はコピーした接続文字列に含まれています。
 11. データベース名 (ContactDB) を入力します ("ContactDB" 以外の名前を付けた場合は、データベースの "Initial Catalog=" の後の文字列を入力します)。エラー メッセージが表示される場合は、次のセクションを参照してください。
 12. **[接続テスト]** をクリックします。エラー メッセージが表示される場合は、次のセクションを参照してください。
-    ![add con dlg][]
+    ![add con dlg][add con dlg]
 
 ## サーバーに接続できない場合
 
 "サーバーを開けない" ことを知らせるエラー メッセージが表示された場合は、使用できる IP に IP アドレスを追加する必要があります。
 
-![ファイアウォール エラー][]
+![ファイアウォール エラー][ファイアウォール エラー]
 
 1.  Azure ポータルの左側のタブで **[SQL データベース]** を選択します。
 
-    ![Select SQL][]
+    ![Select SQL][Select SQL]
 
 2.  接続するデータベースを選択します。
 
 3.  **[この IP アドレス用に Azure ファイアウォール ルールを設定する]** リンクをクリックします。
 
-    ![firewall rules][]
+    ![firewall rules][firewall rules]
 
 4.  [現在の IP アドレス xxx.xxx.xxx.xxx は既存のファイアウォール ルールに含まれていません。ファイアウォール ルールを更新しますか?" というメッセージが表示されたら、**[はい]** をクリックします。このアドレスだけでは不十分な場合は、IP アドレスの範囲を追加する必要があります。
 
@@ -652,51 +652,51 @@ SQL Server インストール センターの最初のページで **[SQL Server
 1.  Azure ポータルで **[SQL データベース]** をクリックします。
 2.  データベースをホストする **[サーバー]** をクリックします。
 
-    ![db server][]
+    ![db server][db server]
 
 3.  ページの上部にある **[構成]** をクリックします。
 4.  ルール名、開始 IP アドレス、終了 IP アドレスを追加します。
-    ![ip range][]
+    ![ip range][ip range]
 
 5.  ページの下部にある **[保存]** をクリックします。
 6.  ここで、前に説明した手順に従ってメンバーシップ データベースを編集します。
 
 ## <a name="nextsteps"></a><span class="short-header">次の手順</span>次の手順
 
-このチュートリアルとサンプル アプリケーションは、Tom Dykstra、Tom FitzMacken、Barry Dorrans (Twitter [@blowdart][]) の協力の下、[Rick Anderson][] (Twitter [@RickAndMSFT][]) が執筆しました。
+このチュートリアルとサンプル アプリケーションは、Tom Dykstra、Tom FitzMacken、Barry Dorrans (Twitter [@blowdart][@blowdart]) の協力の下、[Rick Anderson][Rick Anderson] (Twitter [@RickAndMSFT][@RickAndMSFT]) が執筆しました。
 
 役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。特に、メンバーシップ データベースの構成と展開の自動化に関するご意見をお待ちしております。
 
-Facebook、Google、Yahoo のカラフルなログイン ボタンを取得する方法については、ブログ投稿「[Customizing External Login Buttons in ASP.NET MVC 4 (ASP.NET MVC 4 で外部ログイン ボタンをカスタマイズする)][]」を参照してください。Windows 認証の詳細については、次の Web ページを参照してください。
+Facebook、Google、Yahoo のカラフルなログイン ボタンを取得する方法については、ブログ投稿「[Customizing External Login Buttons in ASP.NET MVC 4 (ASP.NET MVC 4 で外部ログイン ボタンをカスタマイズする)][Customizing External Login Buttons in ASP.NET MVC 4 (ASP.NET MVC 4 で外部ログイン ボタンをカスタマイズする)]」を参照してください。Windows 認証の詳細については、次の Web ページを参照してください。
 
--   [Azure Authentication (Azure の認証)][]
--   [ASP.NET MVC を使用してイントラネット サイトを作成する方法][]
+-   [Azure Authentication (Azure の認証)][Azure Authentication (Azure の認証)]
+-   [ASP.NET MVC を使用してイントラネット サイトを作成する方法][ASP.NET MVC を使用してイントラネット サイトを作成する方法]
 
 Azure アプリケーションにデータを保存するには、Azure ストレージを使用する方法もあります。Azure ストレージには、非リレーショナル データを BLOB 形式とテーブル形式で保存できます。ASP.NET MVC および Window Azure の詳細については、次の Web ページを参照してください。
 
--   [ストレージ テーブル、キュー、BLOB を使用する .NET 多層アプリケーションに関するページ][]
--   [ASP.NET MVC 4 の入門ページ][]
--   [MVC を使用した Entity Framework の概要に関するページ][]
--   [OAuth 2.0 とサインインに関するブログ投稿][]
+-   [ストレージ テーブル、キュー、BLOB を使用する .NET 多層アプリケーションに関するページ][ストレージ テーブル、キュー、BLOB を使用する .NET 多層アプリケーションに関するページ]
+-   [ASP.NET MVC 4 の入門ページ][ASP.NET MVC 4 の入門ページ]
+-   [MVC を使用した Entity Framework の概要に関するページ][MVC を使用した Entity Framework の概要に関するページ]
+-   [OAuth 2.0 とサインインに関するブログ投稿][OAuth 2.0 とサインインに関するブログ投稿]
 
-Azure の Web サイトに Web アプリケーションをデプロイする方法を確認したところで、Azure の Web サイトを構成、管理、および拡張する方法をさらに確認するには、「[一般的なタスク][]」ページにある操作方法のトピックを参照してください。
+Azure の Web サイトに Web アプリケーションをデプロイする方法を確認したところで、Azure の Web サイトを構成、管理、および拡張する方法をさらに確認するには、「[一般的なタスク][一般的なタスク]」ページにある操作方法のトピックを参照してください。
 
-Azure の Web サイトのデバッグ方法については、「[Visual Studio での Azure の Web サイトのトラブルシューティング][]」を参照してください。
+Azure の Web サイトのデバッグ方法については、「[Visual Studio での Azure の Web サイトのトラブルシューティング][Visual Studio での Azure の Web サイトのトラブルシューティング]」を参照してください。
 
-Azure のクラウド サービスにアプリケーションを展開する方法を確認するには、[このチュートリアルのクラウド サービス バージョン][]および [Azure を使った Web アプリケーションの開発に関するページ][]を参照してください。Azure の Web サイトではなく Azure のクラウド サービスで ASP.NET Web アプリケーションを実行する場合のいくつかの理由を次に示します。
+Azure のクラウド サービスにアプリケーションを展開する方法を確認するには、[このチュートリアルのクラウド サービス バージョン][このチュートリアルのクラウド サービス バージョン]および [Azure を使った Web アプリケーションの開発に関するページ][Azure を使った Web アプリケーションの開発に関するページ]を参照してください。Azure の Web サイトではなく Azure のクラウド サービスで ASP.NET Web アプリケーションを実行する場合のいくつかの理由を次に示します。
 
 -   アプリケーションが実行される Web サーバーに対する管理者権限が必要である。
 -   アプリケーションが実行される Web サーバーにアクセスするためにリモート デスクトップ接続を使用したい。
 -   多層アプリケーションを使用し、複数の仮想サーバー (Web およびワーカー) 間で処理を分散したい。
 
-SQL データベースと Azure ストレージの詳細については、「[Data Storage Offerings on Azure (Azure のデータ ストレージ機能)][]」を参照してください。
+SQL データベースと Azure ストレージの詳細については、「[Data Storage Offerings on Azure (Azure のデータ ストレージ機能)][Data Storage Offerings on Azure (Azure のデータ ストレージ機能)]」を参照してください。
 
-SQL データベースの使用方法については、[ASP.NET データ アクセス コンテンツ マップでの Azure SQL データベースの操作に関するページ][]を参照してください。
+SQL データベースの使用方法については、[ASP.NET データ アクセス コンテンツ マップでの Azure SQL データベースの操作に関するページ][ASP.NET データ アクセス コンテンツ マップでの Azure SQL データベースの操作に関するページ]を参照してください。
 
 Entity Framework および Code First Migrations の詳細については、次のリソースを参照してください。
 
--   [MVC を使用した Entity Framework の概要に関するページ][]
--   [Code First Migrations に関するページ][]
+-   [MVC を使用した Entity Framework の概要に関するページ][MVC を使用した Entity Framework の概要に関するページ]
+-   [Code First Migrations に関するページ][Code First Migrations に関するページ]
 
 <!-- bookmarks --> <!-- links --> <!-- links from Tom's hopefully no collisions --> <!-- images-->
 

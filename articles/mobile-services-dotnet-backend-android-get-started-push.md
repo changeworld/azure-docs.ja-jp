@@ -14,44 +14,42 @@
 
 このチュートリアルでは、次の手順について説明します。
 
-1.  [Google Cloud Messaging を有効にする][]
-2.  [プッシュ要求を送信するようにモバイル サービスを構成する][]
-3.  [サーバーを更新してプッシュ通知を送信する][]
-4.  [アプリケーションにプッシュ通知を追加する][]
-5.  [ローカル テストのためにプッシュ通知を有効にする][]
-6.  [発行されたモバイル サービスに対してアプリケーションをテストする][]
+1.  [Google Cloud Messaging を有効にする][Google Cloud Messaging を有効にする]
+2.  [プッシュ要求を送信するようにモバイル サービスを構成する][プッシュ要求を送信するようにモバイル サービスを構成する]
+3.  [サーバーを更新してプッシュ通知を送信する][サーバーを更新してプッシュ通知を送信する]
+4.  [アプリケーションにプッシュ通知を追加する][アプリケーションにプッシュ通知を追加する]
+5.  [ローカル テストのためにプッシュ通知を有効にする][ローカル テストのためにプッシュ通知を有効にする]
+6.  [発行されたモバイル サービスに対してアプリケーションをテストする][発行されたモバイル サービスに対してアプリケーションをテストする]
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用][]」または「[モバイル サービスでのデータの使用][]」を完了してプロジェクトをモバイル サービスに接続している必要があります。そのため、このチュートリアルには、Visual Studio 2013 も必要です。
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用][モバイル サービスの使用]」または「[モバイル サービスでのデータの使用][モバイル サービスでのデータの使用]」を完了してプロジェクトをモバイル サービスに接続している必要があります。そのため、このチュートリアルには、Visual Studio 2013 も必要です。
 
-> [WACOM.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト][]を参照してください。
+> [WACOM.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト][Azure の無料評価版サイト]を参照してください。
 
 ## <span id="register"></span></a>Google Cloud Messaging を有効にする
 
-[WACOM.INCLUDE [Enable GCM][]]
+[WACOM.INCLUDE [Enable GCM](../includes/mobile-services-enable-Google-cloud-messaging.md)]
 
 ## <span id="configure"></span></a>プッシュ要求を送信するようにモバイル サービスを構成する
 
-1.  [Azure の管理ポータル][]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[プッシュ]** タブをクリックし、前の手順で GCM から取得した **API キー**値を入力して、**[保存]** をクリックします。
 
     ![][1]
 
-    <div class="dev-callout"><b>重要</b>
-<p>ポータルの [プッシュ] タブで拡張プッシュ通知に対応する GCM の資格情報を設定した場合は、アプリに対して通知ハブを構成する目的で、それらの資格情報が通知ハブと共有されます。</p>
-</div>
+    <div class="dev-callout"><b>重要</b><p>ポータルの [プッシュ] タブで拡張プッシュ通知に対応する GCM の資格情報を設定した場合は、アプリに対して通知ハブを構成する目的で、それらの資格情報が通知ハブと共有されます。</p></div>
 
 これで、GCM および通知ハブと連携するようにモバイル サービスが構成されました。
 
 ## <a name="download-the-service"></a><span class="short-header">サービスのダウンロード</span>サービスをローカル コンピューターにダウンロードする
 
-[WACOM.INCLUDE [mobile-services-download-service-locally][]]
+[WACOM.INCLUDE [mobile-services-download-service-locally](../includes/mobile-services-download-service-locally.md)]
 
 ## <a name="test-the-service"></a><span class="short-header">サービスのテスト</span>モバイル サービスをテストする
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service][]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service](../includes/mobile-services-dotnet-backend-test-local-service.md)]
 
 ## <span id="update-server"></span></a> サーバーを更新してプッシュ通知を送信する
 
@@ -88,13 +86,13 @@
 
 ## <a name="publish-the-service"></a><span class="short-header">サービスの発行</span>モバイル サービスを Azure に発行する
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service][]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
 
 ## <a name="update-app"></a>アプリケーションにプッシュ通知を追加する
 
 ### Android SDK バージョンの検証
 
-[WACOM.INCLUDE [mobile-services-verify-android-sdk-version][]]
+[WACOM.INCLUDE [mobile-services-verify-android-sdk-version](../includes/mobile-services-verify-android-sdk-version.md)]
 
 次の手順は、Google Play サービスをインストールすることです。Google Cloud Messaging には、マニフェストの **minSdkVersion** プロパティが準拠する必要がある、開発およびテストに関する最小 API レベル要件があります。
 
@@ -102,11 +100,11 @@
 
 ### プロジェクトへの Google Play Services の追加
 
-[WACOM.INCLUDE [Add Play Services][]]
+[WACOM.INCLUDE [Add Play Services](../includes/mobile-services-add-Google-play-services.md)]
 
 ### コードの追加
 
-[WACOM.INCLUDE [mobile-services-android-getting-started-with-push][]]
+[WACOM.INCLUDE [mobile-services-android-getting-started-with-push](../includes/mobile-services-android-getting-started-with-push.md)]
 
 ## <a name="test-app"></a><span class="short-header">アプリケーションのテスト</span>発行されたモバイル サービスに対してアプリケーションをテストする
 
@@ -128,7 +126,7 @@ Google API をサポートしている Android Virtual Device (AVD) を使用し
 
 ### <span id="local-testing"></span></a> ローカル テストのためにプッシュ通知を有効にする
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-configure-local-push][]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-configure-local-push](../includes/mobile-services-dotnet-backend-configure-local-push.md)]
 
 ### テストの実行
 
@@ -151,13 +149,13 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 -   [データの使用][モバイル サービスでのデータの使用]
     モバイル サービスを使用してデータの格納およびクエリの実行の方法について説明します。
 
--   [認証の使用][]
+-   [認証の使用][認証の使用]
     モバイル サービスを使用して別のアカウントの種類のアプリケーションのユーザーを認証する方法について説明します。
 
--   [Windows Azure 通知ハブとは][]
+-   [Windows Azure 通知ハブとは][Windows Azure 通知ハブとは]
     通知ハブがすべての主要なクライアント プラットフォーム全体のアプリケーションに通知を配信するための動作を説明します。
 
--   [モバイル サービス向け Android クライアント ライブラリの使用方法][]
+-   [モバイル サービス向け Android クライアント ライブラリの使用方法][モバイル サービス向け Android クライアント ライブラリの使用方法]
     Android と共に Mobile Services を使用する方法を説明します。
 
 <!-- Anchors. --> 
@@ -166,7 +164,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 
 <!-- URLs. -->
 
-  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/ "Windows ストア C#"
+  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/ "Windows ストア C#"
   [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push/ "Windows ストア JavaScript"
   [Windows Phone]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push/ "Windows Phone"
   [iOS]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-push/ "iOS"
@@ -181,10 +179,10 @@ Mobile Services と通知ハブについては次のトピックを参照して�
   [発行されたモバイル サービスに対してアプリケーションをテストする]: #test-app
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started
   [モバイル サービスでのデータの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-data
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AE564AB28&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F
+  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F
   [Enable GCM]: ../includes/mobile-services-enable-Google-cloud-messaging.md
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
+  [0]: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
   [1]: ./media/mobile-services-android-get-started-push/mobile-push-tab-android.png
   [mobile-services-download-service-locally]: ../includes/mobile-services-download-service-locally.md
   [mobile-services-dotnet-backend-test-local-service]: ../includes/mobile-services-dotnet-backend-test-local-service.md

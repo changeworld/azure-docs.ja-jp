@@ -104,7 +104,7 @@
 
 
 
-  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication "Windows ストア C#"
+  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication "Windows ストア C#"
   [iOS]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-adal-sso-authentication "iOS"
   [Xamarin.iOS]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-xamarin-ios-adal-sso-authentication "Xamarin.iOS"
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started/

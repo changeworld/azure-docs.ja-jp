@@ -735,11 +735,11 @@ App.xaml.cs ファイルを開き、`App` クラスに **MobileServiceClient** �
   [4]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/05leaderboard.png
   [EF Code First]: http://msdn.microsoft.com/en-US/data/ee712907#codefirst
   [データベースの書き込み競合を処理する]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-handle-database-conflicts/
-  [ナビゲーション プロパティ]: http://msdn.microsoft.com/en-us/data/jj713564.aspx
+  [ナビゲーション プロパティ]: http://msdn.microsoft.com/ja-jp/data/jj713564.aspx
   [5]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/06leaderboard.png
   [6]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/07leaderboard.png
   [7]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/08leaderboard.png
-  [REST API]: http://msdn.microsoft.com/en-us/library/azure/jj710104.aspx
+  [REST API]: http://msdn.microsoft.com/ja-jp/library/azure/jj710104.aspx
   [Mapping between Database Types and Client Types in the .NET Backend using AutoMapper (.NET バックエンドで AutoMapper を使用したデータベース型とクライアント型の間のマッピング)]: http://blogs.msdn.com/b/azuremobile/archive/2014/05/19/mapping-between-database-types-and-client-type-in-the-net-backend-using-automapper.aspx
   [Attribute Routing in Web API (Web API での属性ルーティング)]: http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
   [8]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/10leaderboard.png
@@ -750,7 +750,7 @@ App.xaml.cs ファイルを開き、`App` クラスに **MobileServiceClient** �
   [13]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/15leaderboard.png
   [14]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/16leaderboard.png
   [15]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/17leaderboard.png
-  [Azure Mobile Services の詳細]: /en-us/develop/mobile/resources/
+  [Azure Mobile Services の詳細]: /ja-jp/develop/mobile/resources/
   [データベースの書き込み競合の処理]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-handle-database-conflicts/
   [プッシュ通知の追加]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-  [認証の使用]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet
+  [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet

@@ -159,7 +159,7 @@ Mobile Services でカスタム API をまったく使用したことがない�
 
 
 
-  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-aad-graph-info/ "Windows ストア C#"
+  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-aad-graph-info/ "Windows ストア C#"
   [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-aad-graph-info/ ".NET バックエンド"
   [JavaScript バックエンド]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-aad-graph-info/ "JavaScript バックエンド"
   [Graph Client Library]: http://go.microsoft.com/fwlink/?LinkId=510536

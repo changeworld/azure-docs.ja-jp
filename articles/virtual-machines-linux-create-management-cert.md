@@ -6,7 +6,7 @@
 
 管理証明書は、サービス管理 API を使用して Azure イメージ プラットフォームと対話するときに必要です。
 
-証明書の作成および管理方法に関するドキュメントは [][]<http://msdn.microsoft.com/en-us/library/azure/gg981929.aspx></a> に既に用意されています。または、OpenSSL を使用して管理証明書を作成することもできます。詳細については、[OpenSSL の Web サイト][OpenSSL の Web サイト]を参照してください。ただし、このドキュメントでは、Silverlight ポータルの使用に焦点を合わせています。このポータルには一部の Linux ユーザーがアクセスできない場合があります。独自にこれらの証明書にアクセスし、さまざまなツール (パートナー) に統合して使用する方法について説明します。管理証明書の機能が Azure 管理ポータルに追加されるまでは、この方法に従ってください。
+証明書の作成および管理方法に関するドキュメントは [][]<http://msdn.microsoft.com/ja-jp/library/azure/gg981929.aspx></a> に既に用意されています。または、OpenSSL を使用して管理証明書を作成することもできます。詳細については、[OpenSSL の Web サイト][OpenSSL の Web サイト]を参照してください。ただし、このドキュメントでは、Silverlight ポータルの使用に焦点を合わせています。このポータルには一部の Linux ユーザーがアクセスできない場合があります。独自にこれらの証明書にアクセスし、さまざまなツール (パートナー) に統合して使用する方法について説明します。管理証明書の機能が Azure 管理ポータルに追加されるまでは、この方法に従ってください。
 
 ## 目次
 
@@ -133,7 +133,7 @@ OpenSSL を使用して作成した PFX ファイルを Base64 でエンコー�
 ここで xxxxx は [エンコードしたファイル] の内容です。この部分は Linux 用 Azure コマンド ライン ツールで、次のコマンドに使用します。
 Azure account import (File)
 
-  []: http://msdn.microsoft.com/en-us/library/azure/gg981929.aspx
+  []: http://msdn.microsoft.com/ja-jp/library/azure/gg981929.aspx
   [OpenSSL の Web サイト]: http://openssl.org/
   [publishsettings ファイルから管理証明書を取得する]: #createcert
   [Azure 管理ポータルを使用して管理証明書をインストールする]: #management

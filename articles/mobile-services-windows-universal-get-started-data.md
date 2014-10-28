@@ -25,7 +25,7 @@
 
 このチュートリアルは、Visual Studio 2013 の Windows ストア アプリ プロジェクトの [GetStartedWithMobileServices アプリケーション][GetStartedWithMobileServices アプリケーション]に基づいています。このアプリケーションの UI は、追加された項目がメモリにローカルに格納される点を除き、モバイル サービスのクイック スタートで生成したアプリケーションと同じです。
 
-1.  C\# バージョンの GetStartedWithMobileServices サンプル アプリケーションを[デベロッパー サンプル コード集のサイト][GetStartedWithMobileServices アプリケーション]からダウンロードします。
+1.  C# バージョンの GetStartedWithMobileServices サンプル アプリケーションを[デベロッパー サンプル コード集のサイト][GetStartedWithMobileServices アプリケーション]からダウンロードします。
 
     ![][]
 
@@ -93,7 +93,7 @@
 
     このコードでは、新しい項目をテーブルに挿入します。
 
-    <div class="dev-callout"><strong>注</strong><p>Id、__createdAt、__updatedAt、および __version の列を含む新しいテーブルが作成されます。動的スキーマが有効な場合、挿入または更新の要求に含まれる JSON オブジェクトに基づいて、モバイル サービスによって自動的に新しい列が生成されます。詳細については、「<a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj193175.aspx">動的スキーマ</a>」を参照してください。</p></div>
+    <div class="dev-callout"><strong>注</strong><p>Id、__createdAt、__updatedAt、および __version の列を含む新しいテーブルが作成されます。動的スキーマが有効な場合、挿入または更新の要求に含まれる JSON オブジェクトに基づいて、モバイル サービスによって自動的に新しい列が生成されます。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193175.aspx">動的スキーマ</a>」を参照してください。</p></div>
 
 5.  **RefreshTodoItems** メソッド内で、**async** 修飾子をメソッドに追加して、次のコード行をコメント解除します。
 
@@ -175,7 +175,7 @@
 
 
 
-  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-data/ "Windows ストア C#"
+  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-data/ "Windows ストア C#"
   [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-data/ "Windows ストア JavaScript"
   [Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data/ "Windows Phone"
   [iOS]: /ja-jp/documentation/articles/mobile-services-ios-get-started-data/ "iOS"
@@ -187,18 +187,18 @@
   [Visual Studio からのモバイル サービスの作成]: #create-service
   [ストレージのデータ テーブルの追加とアプリケーションの更新]: #add-table
   [モバイル サービスに対するアプリケーションのテスト]: #test-app
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AE564AB28
+  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28
   [GetStartedWithMobileServices アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=328660
   []: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-data-sample-download-dotnet-vs12.png
   [1]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-quickstart-startup.png
   [mobile-services-create-new-service-vs2013]: ../includes/mobile-services-create-new-service-vs2013.md
   [MobileServiceClient クラス]: http://go.microsoft.com/fwlink/p/?LinkId=302030
   [mobile-services-create-new-table-vs2013]: ../includes/mobile-services-create-new-table-vs2013.md
-  [動的スキーマ]: http://msdn.microsoft.com/en-us/library/windowsazure/jj193175.aspx
+  [動的スキーマ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193175.aspx
   [管理ポータル]: https://manage.windowsazure.com/
   [2]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-todoitem-data-browse.png
-  [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
-  [ページングを使用したモバイル サービス クエリの改善]: /en-us/develop/mobile/tutorials/add-paging-to-data-dotnet
-  [認証の使用]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet
+  [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
+  [ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
+  [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet
   [プッシュ通知の使用]: ../mobile-services-windows-store-dotnet-get-started-push/
-  [モバイル サービス .NET の使用方法の概念リファレンス]: /en-us/develop/mobile/how-to-guides/work-with-net-client-library
+  [モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library

@@ -1,20 +1,23 @@
-<properties pageTitle="ストリーミング ログとコンソール" description="ストリーミング ログとコンソールの概要" title="ストリーミング ログとコンソール" authors="adamab" />
+<properties pageTitle="Streaming logs and console" description="Streaming logs and console overview" title="Streaming logs and console" authors="adamab" />
 
-## ストリーミング ログとコンソール##
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="adamab"></tags>
 
-### ストリーミング ログ###
+## ストリーミング ログとコンソール
+
+### ストリーミング ログ
 
 Microsoft Azure プレビュー ポータルには、ストリーミング ログ ビューアーが用意されており、Web サイトのトレース イベントをリアルタイムで表示できます。
 
 この設定には、次のいくつかの簡単な手順が必要です。
 
-- コードにトレースを記述する
-- Azure プレビュー ポータル内からアプリケーション診断を有効にする
-- Web サイト ブレードの [ストリーミング ログ] パーツをクリックする
+-   コードにトレースを記述する
+-   Azure プレビュー ポータル内からアプリケーション診断を有効にする
+-   Web サイト ブレードの [ストリーミング ログ] パーツをクリックする
 
-### 方法: コードにトレースを記述する###
+### 方法: コードにトレースを記述する
 
 コードにトレースを記述するのは簡単です。C# では、次のコードを記述するだけです。
+
 
 `````````````````````````
 Trace.TraceInformation("My trace statement");
@@ -32,15 +35,13 @@ Trace クラスは System.Diagnostics 名前空間にあります。
 
 node.js アプリケーションでは、次のコードを記述すると同じ結果を得られます。
 
-`````````````````````````
-console.log("My trace statement").
-`````````````````````````
+    console.log("My trace statement").
 
-### 方法: ストリーミング ログを有効にして表示する###
+### 方法: ストリーミング ログを有効にして表示する
 
-診断は Web サイトごとに有効になります。[ポータル](https://portal.azure.com)で左側のメニュー バーにある **[参照]** ボタンをクリックし、**[Web サイト]** をクリックすると、既存のすべての Web サイトの一覧が表示されます。
+診断は Web サイトごとに有効になります。[ポータル][ポータル]で左側のメニュー バーにある **[参照]** ボタンをクリックし、**[Web サイト]** をクリックすると、既存のすべての Web サイトの一覧が表示されます。
 
-![][BrowseSitesScreenshot]
+![][]
 
 構成する Web サイトの名前をクリックします。次に、**[診断ログ]** パーツをクリックし、**[アプリケーション ログ記録 (ファイル システム)]** を **[オン]** に切り替えます。**[レベル]** オプションが表示されて、取り込むトレースの重要度レベルを変更できるようになります。**[詳細]** はこの機能に詳しくなっておこうとする場合に設定してください。この設定では、トレース ステートメントのすべてがログに記録されるためです。
 
@@ -48,18 +49,17 @@ console.log("My trace statement").
 
 ポータル内からストリーミング ログを表示するには、Web サイト ブレードの **[ストリーミング ログ]** パーツをクリックします。サイトによってトレース ステートメントがアクティブに書き込まれている場合は、結果ウィンドウにそれらのステートメントがほぼリアルタイムで表示されます。
 
-![][StreamingLogsScreenshot]
+![][1]
 
-## コンソール##
+## コンソール
 
 Azure プレビュー ポータルには、Web サイト環境にアクセスするためのコンソールが用意されています。コンソールでは、Web サイトのファイル システムを操作したり、powershell/cmd スクリプトを実行したりできます。コンソールのコマンドを実行するときは、実行中の Web サイトのコードに設定された同じアクセス許可が適用されます。保護されたディレクトリにアクセスしたり、より高いレベルのアクセス許可が必要なスクリプトを実行したりすることはできません。
 
 コンソールにアクセスするには、前のセクションで説明しているように Web サイトを参照します。**[コンソール]** パーツをクリックすると、コンソールが開きます。
 
-![][ConsoleScreenshot]
+![][2]
 
 コンソールに詳しくなるには、次のような基本的なコマンドを試してください。
-
 
 `````````````````````````
 dir
@@ -69,10 +69,9 @@ dir
 cd
 `````````````````````````
 
-
-
 <!-- Images. -->
-[BrowseSitesScreenshot]: ./media/web-sites-streaming-logs-and-console/browse-sites.png
-[StreamingLogsScreenshot]: ./media/web-sites-streaming-logs-and-console/streaming-logs.png
-[ConsoleScreenshot]: ./media/web-sites-streaming-logs-and-console/console.png
 
+  [ポータル]: https://portal.azure.com
+  []: ./media/web-sites-streaming-logs-and-console/browse-sites.png
+  [1]: ./media/web-sites-streaming-logs-and-console/streaming-logs.png
+  [2]: ./media/web-sites-streaming-logs-and-console/console.png

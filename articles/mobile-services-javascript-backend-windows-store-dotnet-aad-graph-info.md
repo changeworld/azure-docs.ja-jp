@@ -143,7 +143,7 @@ Mobile Services でカスタム API をまったく使用したことがない�
 
 
 
-  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-aad-graph-info/ "Windows ストア C#"
+  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-aad-graph-info/ "Windows ストア C#"
   [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-aad-graph-info/ ".NET バックエンド"
   [JavaScript バックエンド]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-aad-graph-info/ "JavaScript バックエンド"
   [Graph API]: http://msdn.microsoft.com/library/azure/hh974478.aspx
@@ -155,10 +155,10 @@ Mobile Services でカスタム API をまったく使用したことがない�
   [Custom API Tutorial (カスタム API チュートリアル)]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-call-custom-api/
   [Register to use an Azure Active Directory Login (Azure Active Directory のログインの使用を登録する)]: /ja-jp/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
   [mobile-services-generate-aad-app-registration-access-key]: ../includes/mobile-services-generate-aad-app-registration-access-key.md
-  [Graph REST API]: http://msdn.microsoft.com/en-us/library/azure/hh974478.aspx
+  [Graph REST API]: http://msdn.microsoft.com/ja-jp/library/azure/hh974478.aspx
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   []: ./media/mobile-services-javascript-backend-windows-store-dotnet-aad-graph-info/create-getuserinfo.png
-  [ユーザーの取得]: http://msdn.microsoft.com/en-us/library/azure/dn151678.aspx
+  [ユーザーの取得]: http://msdn.microsoft.com/ja-jp/library/azure/dn151678.aspx
   [mobile-services-aad-graph-info-update-app]: ../includes/mobile-services-aad-graph-info-update-app.md
   [mobile-services-aad-graph-info-test-app]: ../includes/mobile-services-aad-graph-info-test-app.md
   [Mobile Services と Azure Active Directory でのロール ベースのアクセス制御]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac/
