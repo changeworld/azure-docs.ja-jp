@@ -1,25 +1,21 @@
-###### キューを作成する
+##### キューを作成する
 
 **CloudQueueClient** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。次のコードでは、**CloudQueueClient** オブジェクトを作成します。このトピックのすべてのコードでは、Azure アプリケーションのサービス構成に格納されているストレージ接続文字列を使用します。**CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、[CloudStorageAccount][CloudStorageAccount] に関するドキュメントを参照してください。
-
-    // Get the storage account from its connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-      CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
     // Create the queue client.
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-**queueClient** オブジェクトを使用して、使用するキューへの参照を取得します。キューが存在しない場合は作成できます。
+**queueClient** オブジェクトを使用して、使用するキューへの参照を取得します。コードは "myqueue" という名前のキューを参照しようとします。この名前のキューが見つからない場合は作成します。
 
     // Get a reference to a queue named “myqueue”.
     CloudQueue queue = queueClient.GetQueueReference("myqueue");
 
     // If the queue isn’t already there, then create it.
-    queue.CreateIfNotExist();
+    queue.CreateIfNotExists();
 
 **メモ:** このコード ブロックは、以下のセクションで扱うコードの前に使用してください。
 
-###### メッセージをキューに挿入する
+##### メッセージをキューに挿入する
 
 既存のキューにメッセージを挿入するには、最初に新しい **CloudQueueMessage** オブジェクトを作成します。次に、AddMessage() メソッドを呼び出します。**CloudQueueMessage** オブジェクトは、文字列 (UTF-8 形式) またはバイト配列から作成できます。次のコードでは、キューが存在しない場合は作成し、メッセージ "Hello, World" を挿入します。
 
@@ -27,7 +23,7 @@
     CloudQueueMessage message = new CloudQueueMessage("Hello, World");
     queue.AddMessage(message);
 
-###### 次のメッセージをピークする
+##### 次のメッセージをピークする
 
 PeekMessage() メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。
 
@@ -37,7 +33,7 @@ PeekMessage() メソッドを呼び出すと、キューの先頭にあるメッ
     // Display the message.
     Console.WriteLine(peekedMessage.AsString);
 
-###### 次のメッセージを削除する
+##### 次のメッセージを削除する
 
 コードでは、2 つの手順でキューからメッセージを削除 (デキュー) できます。
 
@@ -52,4 +48,9 @@ PeekMessage() メソッドを呼び出すと、キューの先頭にあるメッ
     // Process the message in less than 30 seconds, and then delete the message.
     queue.DeleteMessage(retrievedMessage);
 
-  [CloudStorageAccount]: http://msdn.microsoft.com/en-us/library/microsoft.windowsazure.cloudstorageaccount_methods.aspx "CloudStorageAccount"
+[Azure Storage の詳細を確認する][Azure Storage の詳細を確認する]
+「[サーバー エクスプローラーを使用したストレージ リソースの参照][サーバー エクスプローラーを使用したストレージ リソースの参照]」も参照する
+
+  [CloudStorageAccount]: http://msdn.microsoft.com/ja-jp/library/microsoft.windowsazure.cloudstorageaccount_methods.aspx "CloudStorageAccount"
+  [Azure Storage の詳細を確認する]: http://azure.microsoft.com/documentation/services/storage/
+  [サーバー エクスプローラーを使用したストレージ リソースの参照]: http://msdn.microsoft.com/ja-jp/library/azure/ff683677.aspx

@@ -1,26 +1,27 @@
-<properties title="Getting Started with Mobile Services" pageTitle="" metaKeywords="Azure, Getting Started, Mobile Services" description="" services="mobile-services" documentationCenter="" authors="ghogen, kempb" />
+<properties title="Mobile Services の使用" pageTitle="" metaKeywords="Azure, Getting Started, Mobile Services" description="" services="mobile-services" documentationCenter="" authors="ghogen, kempb" />
 
 <tags ms.service="mobile-services" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/8/2014" ms.author="ghogen, kempb"></tags>
 
-### 処理内容
+> [AZURE.SELECTOR]
+>
+> -   [Getting Started (概要)][Getting Started (概要)]
+> -   [変更内容][変更内容]
 
-###### リファレンスの追加
+## Mobile Services の使用
 
-Windows Azure Mobile Service のライブラリが MobileServices.js ファイルの形でプロジェクトに追加されました。
+これらの例で使用されているコードを実行するために行う必要がある最初のステップは、接続しているモバイル サービスの種類によります。
 
-###### Mobile Services 用の接続文字列の値
+JavaScript バックエンド モバイル サービスの場合は、TodoItem と呼ばれるテーブルを作成します。テーブルを作成するには、サーバー エクスプローラーの Azure ノード下でモバイル サービスを特定し、そのモバイル サービスのノードを右クリックしてコンテキスト メニューを開き、[**Create Table (テーブルの作成)**] を選択します。テーブル名として「TodoItem」と入力します。
 
-services\\mobileServices\\settings フォルダー内に新しい JavaScript (.js) ファイルが生成されました。このファイルには、選択したモバイル サービスのアプリケーション URL とアプリケーション キーを格納した MobileServiceClient が含まれています。
+.NET バックエンド モバイル サービスの場合は、TodoItem テーブルは Visual Studio によって既にデフォルトのプロジェクト テンプレート内に作成されていますが、これを Azure に発行する必要があります。発行するには、ソリューション エクスプローラーでモバイル サービス プロジェクトのコンテキスト メニューを開き、[**Publish Web (Web の発行)**] を選択します。既定値を受け入れ、**[Publish (発行)]** を選択します。
 
-### Mobile Services の使用
-
-###### テーブルへの参照を取得する
+##### テーブルへの参照を取得する
 
 クライアント オブジェクトは既にプロジェクトに追加されています。このオブジェクトは、モバイル サービスの名前に "Client" を追加した名前になります。次のコードは、TodoItem のデータを含むテーブルへの参照を取得します。この後でデータ テーブルの読み取りと更新の操作を実行する際に、TodoItem のデータを使用できます。
 
     var todoTable = yourMobileServiceClient.getTable('TodoItem');
 
-###### エントリを追加する
+##### エントリを追加する
 
 新しい項目をデータ テーブルに挿入します。ID (文字列型の GUID) が新しい行のプライマリ キーとして自動的に作成されます。Mobile Services のインフラストラクチャが ID 列を使用するため、ID 列の型を変更しないでください。
 
@@ -32,7 +33,7 @@ services\\mobileServices\\settings フォルダー内に新しい JavaScript (.j
         });
     };
 
-###### テーブルを読み取る/照会する
+##### テーブルを読み取る/照会する
 
 次のコードは、テーブルのすべての項目を照会し、ローカル コレクションを更新して、その結果を UI 要素の listItems にバインドします。
 
@@ -58,22 +59,27 @@ where メソッドを使用してクエリを変更できます。次の例で�
 
 使用できる他のクエリ例については、「[query オブジェクト][query オブジェクト]」を参照してください。
 
-###### エントリを更新する
+##### エントリを更新する
 
-データ テーブルの行を更新します。この例では、todoItem は更新済みの項目です。また、項目は、モバイル サービスから返されるものと同じ項目です。モバイル サービスが応答するときに、[splice][splice] メソッドを使用して、ローカルの todoItems リスト内の項目を更新します。返された [Promise]() オブジェクト上の [done]() メソッドを呼び出し、挿入されたオブジェクトのコピーを取得して、エラーがあれば処理します。
+データ テーブルの行を更新します。この例では、todoItem は更新済みの項目です。また、項目は、モバイル サービスから返されるものと同じ項目です。モバイル サービスが応答するときに、[splice][splice] メソッドを使用して、ローカルの todoItems リスト内の項目を更新します。返された [Promise][Promise] オブジェクト上の [done][Promise] メソッドを呼び出し、挿入されたオブジェクトのコピーを取得して、エラーがあれば処理します。
 
         todoTable.update(todoItem).done(function (item) {
             todoItems.splice(todoItems.indexOf(item), 1, item);
         });
 
-###### エントリを削除する
+##### エントリを削除する
 
-データ テーブルの行を削除します。返された [Promise]() オブジェクト上の [done]() メソッドを呼び出し、挿入されたオブジェクトのコピーを取得して、エラーがあれば処理します。
+データ テーブルの行を削除します。返された [Promise][Promise] オブジェクト上の [done][Promise] メソッドを呼び出し、挿入されたオブジェクトのコピーを取得して、エラーがあれば処理します。
 
     todoTable.delete(todoItem).done(function (item) {
         todoItems.splice(todoItems.indexOf(item), 1);
     }
 
+[モバイル サービスの詳細を確認する][モバイル サービスの詳細を確認する]
+
+  [Getting Started (概要)]: /documentation/articles/vs-mobile-services-javascript-getting-started/
+  [変更内容]: /documentation/articles/vs-mobile-services-javascript-what-happened/
   [query オブジェクト]: http://msdn.microsoft.com/library/azure/jj613353.aspx
   [splice]: http://msdn.microsoft.com/library/windows/apps/Hh700810.aspx
- 
+  [Promise]: 
+  [モバイル サービスの詳細を確認する]: http://azure.microsoft.com/documentation/services/mobile-services/

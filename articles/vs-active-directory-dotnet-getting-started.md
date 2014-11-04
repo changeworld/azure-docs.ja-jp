@@ -1,94 +1,69 @@
-<properties title="Getting Started with Active Directory Authentication" pageTitle="" metaKeywords="Azure, Getting Started, Active Directory" description="" services="active-directory" documentationCenter="" authors="ghogen, kempb" />
+<properties title="Active Directory 認証の使用" pageTitle="" metaKeywords="Azure, Getting Started, Active Directory" description="" services="active-directory" documentationCenter="" authors="ghogen, kempb" />
 
 <tags ms.service="active-directory" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/8/2014" ms.author="ghogen, kempb"></tags>
 
-### 処理内容
+> [AZURE.SELECTOR]
+>
+> -   [Getting Started (概要)][Getting Started (概要)]
+> -   [変更内容][変更内容]
 
-プロジェクトにリファレンスが追加されました
+## Azure Active Directory の使用 (.NET プロジェクト)
 
-###### NuGet パッケージのリファレンス
+##### コントローラーへのアクセスに対して認証を要求する
 
-Microsoft.IdentityModel.Protocol.Extensions、Microsoft.Owin、Microsoft.Owin.Host.SystemWeb、Microsoft.Owin.Security、Microsoft.Owin.Security.Cookies、Microsoft.Owin.Security.OpenIdConnect、Owin、System.IdentityModel.Tokens.Jwt
+プロジェクトに含まれるすべてのコントローラーには、**Authorize** 属性が設定されています。この属性により、ユーザーがこれらのコントローラーにアクセスする際に認証が求められます。これらのコントローラーに匿名でアクセスできるようにするには、コントローラーからこの属性を削除します。より細かなレベルでアクセス許可を設定するには、コントローラー クラスではなく、認証を必要とするそれぞれのメソッドに対してこの属性を割り当てます。
 
-###### .NET のリファレンス
+##### SignIn/SignOut コントロールを追加する
 
-Microsoft.IdentityModel.Protocol.Extensions、Microsoft.Owin、Microsoft.Owin.Host.SystemWeb、Microsoft.Owin.Security、Microsoft.Owin.Security.Cookies、Microsoft.Owin.Security.OpenIdConnect、Owin、System、System.Data、System.Drawing、System.IdentityModel、System.IdentityModel.Tokens.Jwt、System.Runtime.Serialization
+ビューに SignIn/SignOut コントロールを追加するには、\*\*\_LoginPartial.cshtml\*\* 部分ビューを使用してこの機能をいずれかのビューに追加します。この機能を標準 \*\*\_Layout.cshtml\*\* ビューに追加した例を次に示します。(div class="navbar-collapse collapse" の最後の要素にご注目ください):
 
-###### コード ファイルがプロジェクトに追加された
+<pre class="prettyprint">
+&lt;!DOCTYPE html&gt; 
+&lt;html&gt; 
+&lt;head&gt; 
+&lt;meta charset=&quot;utf-8&quot; /&gt; 
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt; 
+&lt;title&gt;@ViewBag.Title - My ASP.NET Application&lt;/title&gt; 
+@Styles.Render(&quot;~/Content/css&quot;) 
+@Scripts.Render(&quot;~/bundles/modernizr&quot;) 
+&lt;/head&gt; 
+&lt;body&gt; 
+&lt;div class=&quot;navbar navbar-inverse navbar-fixed-top&quot;&gt; 
+&lt;div class=&quot;container&quot;&gt; 
+&lt;div class=&quot;navbar-header&quot;&gt; 
+&lt;button type=&quot;button&quot; class=&quot;navbar-toggle&quot; data-toggle=&quot;collapse&quot; data-target=&quot;.navbar-collapse&quot;&gt; 
+&lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt; 
+&lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt; 
+&lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt; 
+&lt;/button&gt; 
+@Html.ActionLink(&quot;Application name&quot;, &quot;Index&quot;, &quot;Home&quot;, new { area = &quot;&quot; }, new { @class = &quot;navbar-brand&quot; }) 
+&lt;/div&gt; 
+&lt;div class=&quot;navbar-collapse collapse&quot;&gt; 
+&lt;ul class=&quot;nav navbar-nav&quot;&gt; 
+&lt;li&gt;@Html.ActionLink(&quot;Home&quot;, &quot;Index&quot;, &quot;Home&quot;)&lt;/li&gt; 
+&lt;li&gt;@Html.ActionLink(&quot;About&quot;, &quot;About&quot;, &quot;Home&quot;)&lt;/li&gt; 
+&lt;li&gt;@Html.ActionLink(&quot;Contact&quot;, &quot;Contact&quot;, &quot;Home&quot;)&lt;/li&gt; 
+&lt;/ul&gt; 
+@Html.Partial(&quot;_LoginPartial&quot;) 
+&lt;/div&gt; 
+&lt;/div&gt; 
+&lt;/div&gt; 
+&lt;div class=&quot;container body-content&quot;&gt; 
+@RenderBody() 
+&lt;hr /&gt; 
+&lt;footer&gt; 
+&lt;p&gt;© @DateTime.Now.Year - My ASP.NET Application&lt;/p&gt; 
+&lt;/footer&gt; 
+&lt;/div&gt; 
+@Scripts.Render(&quot;~/bundles/jquery&quot;) 
+@Scripts.Render(&quot;~/bundles/bootstrap&quot;) 
+@RenderSection(&quot;scripts&quot;, required:false) 
+&lt;/body&gt; 
+&lt;/html&gt;
+</pre>
 
-認証スタートアップ クラス App\_Start/Startup.Auth.cs が Azure AD 認証のスタートアップ ロジックを含むプロジェクトに追加されました。さらに、SignIn() メソッドおよび SignOut() メソッドを含むコントローラー クラス Controllers/AccountController.cs が追加されました。最後に、SignIn/SignOut のアクション リンクを含む部分ビュー Views/Shared/\_LoginPartial.cshtml が追加されました。
+[Azure Active Directory の詳細を確認する][Azure Active Directory の詳細を確認する]
 
-###### スタートアップ コードがプロジェクトに追加された
-
-既にプロジェクトに Startup クラスがある場合、Configuration() メソッドが更新されて ConfigureAuth(app) 呼び出しが追加されています。それ以外の場合は、Startup クラスがプロジェクトに追加されました。
-
-###### app.config または web.config に新しい構成値が含まれる
-
-次の構成エントリが追加されました。
-
-    <pre>
-	`<appSettings>
-	    <add key="ida:ClientId" value="ClientId from the new Azure AD App" /> 
-	    <add key="ida:Tenant" value="Your selected Azure AD Tenant" /> 
-	    <add key="ida:AADInstance" value="https://login.windows.net/{0}" /> 
-	    <add key="Ida:PostLogoutRedirectURI" value="Your project start page" /> 
-	</appSettings>` </pre>
-
-###### Azure Active Directory (AD) アプリが作成された
-
-ウィザードで選択したディレクトリに Azure AD アプリケーションが作成されました。
-
-## Azure Active Directory (AD) の使用
-
-追加されたコードで実行できる操作を次に示します。
-
-###### コントローラーへのアクセスに対して認証を要求する
-
-プロジェクトに含まれるすべてのコントローラーには、[Authorize] 属性が設定されています。この属性により、ユーザーがこれらのコントローラーにアクセスする際に認証が求められます。これらのコントローラーに匿名でアクセスできるようにするには、コントローラーからこの属性を削除します。
-
-###### SignIn/SignOut コントロールを追加する
-
-ビューに SignIn/SignOut コントロールを追加するには、\_LoginPartial.cshtml 部分ビューを使用してこの機能をいずれかのビューに追加します。この機能を標準 \_Layout.cshtml ビューに追加した例を次に示します。
-	<pre> 
-	`<!DOCTYPE html> 
-	<html> 
-	<head> 
-	    <meta charset="utf-8" /> 
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-	    <title>@ViewBag.Title - My ASP.NET Application</title> 
-	    @Styles.Render("~/Content/css") 
-	    @Scripts.Render("~/bundles/modernizr") 
-	</head> 
-	<body> 
-	    <div class="navbar navbar-inverse navbar-fixed-top"> 
-	        <div class="container"> 
-	            <div class="navbar-header"> 
-	                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> 
-	                    <span class="icon-bar"></span> 
-	                    <span class="icon-bar"></span> 
-	                    <span class="icon-bar"></span> 
-	                </button> 
-	                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }) 
-	            </div> 
-	            <div class="navbar-collapse collapse"> 
-	                <ul class="nav navbar-nav"> 
-	                    <li>@Html.ActionLink("Home", "Index", "Home")</li> 
-	                    <li>@Html.ActionLink("About", "About", "Home")</li> 
-	                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li> 
-	                </ul> 
-	                @Html.Partial("_LoginPartial") 
-	            </div> 
-	        </div> 
-	    </div> 
-	    <div class="container body-content"> 
-	        @RenderBody() 
-	        <hr /> 
-	        <footer> 
-	            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p> 
-	        </footer> 
-	    </div> 
-	    @Scripts.Render("~/bundles/jquery") 
-	    @Scripts.Render("~/bundles/bootstrap") 
-	    @RenderSection("scripts", required: false) 
-	</body> 
-	</html>` </pre>
+  [Getting Started (概要)]: /documentation/articles/vs-active-directory-dotnet-getting-started/
+  [変更内容]: /documentation/articles/vs-active-directory-dotnet-what-happened/
+  [Azure Active Directory の詳細を確認する]: http://azure.microsoft.com/services/active-directory/

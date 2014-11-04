@@ -1,12 +1,8 @@
-###### テーブルの作成
+##### テーブルの作成
 
-**CloudTableClient** オブジェクトを使用すると、テーブルとエンティティの参照オブジェクトを取得できます。次のコードは、**CloudTableClient** オブジェクトを作成し、これを使用して新しいテーブルを作成します。
+**CloudTableClient** オブジェクトを使用すると、テーブルとエンティティの参照オブジェクトを取得できます。次のコードは、**CloudTableClient** オブジェクトを作成し、これを使用して新しいテーブルを作成します。コードは "people" という名前のテーブルを参照しようとします。この名前のテーブルが見つからない場合は作成します。
 
 **メモ:** このガイドのすべてのコードでは、作成するアプリケーションが Azure Cloud Service プロジェクトであること、Azure アプリケーションのサービス構成に格納されているストレージ接続文字列を使用することを前提としています。
-
-    // Get the storage account from the connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-      CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
     // Create the table client.
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
@@ -15,7 +11,7 @@
     CloudTable table = tableClient.GetTableReference("people");
     table.CreateIfNotExists();
 
-###### エンティティをテーブルに追加する
+##### エンティティをテーブルに追加する
 
 エンティティをテーブルに追加するには、エンティティのプロパティを定義するクラスを作成します。次のコードは、ユーザーの名を行キーとし、姓をパーティション キーとして使用する **CustomerEntity** という名前のエンティティ クラスを定義します。
 
@@ -36,13 +32,6 @@
 
 エンティティに関連するテーブル操作は、「テーブルを作成する」で作成した **CloudTable** オブジェクトを使用して実行されます。**TableOperation** オブジェクトは、実行する操作を表しています。次のコード例では、**CloudTable** オブジェクトと **CustomerEntity** オブジェクトを作成します。その後、操作を準備するために、ユーザー エンティティをテーブルに挿入する **TableOperation** を作成します。最後に、CloudTable.Execute を呼び出して操作を実行します。
 
-    // Get the storage account from the connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-      CloudConfigurationManager.GetSetting("StorageConnectionString"));
-
-    // Create the table client.
-    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-
     // Create the CloudTable object that represents the "people" table.
     CloudTable table = tableClient.GetTableReference("people");
 
@@ -57,16 +46,9 @@
     // Execute the insert operation.
     table.Execute(insertOperation);
 
-###### エンティティのバッチを挿入する
+##### エンティティのバッチを挿入する
 
 1 回の書き込み操作で複数のエンティティをテーブルに挿入できます。次のコード例は、2 つのエンティティ オブジェクト ("Jeff Smith" と "Ben Smith") を作成し、Insert メソッドを使用する **TableBatchOperation** オブジェクトにそれを追加します。その後、CloudTable.Execute を呼び出して操作を実行します。
-
-    // Get the storage account from the connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-      CloudConfigurationManager.GetSetting("StorageConnectionString"));
-
-    // Create the table client.
-    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
     // Create the CloudTable object that represents the "people" table.
     CloudTable table = tableClient.GetTableReference("people");
@@ -91,16 +73,9 @@
     // Execute the batch operation.
     table.ExecuteBatch(batchOperation);
 
-###### パーティション内のすべてのエンティティを取得する
+##### パーティション内のすべてのエンティティを取得する
 
 テーブルに対してパーティション内のすべてのエンティティを照会する場合は、**TableQuery** オブジェクトを使用します。次のコード例は、'Smith' がパーティション キーであるエンティティに対してフィルターを指定します。この例は、クエリ結果の各エンティティのフィールドをコンソールに出力します。
-
-    // Get the storage account from the connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
-
-    // Create the table client.
-    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
     // Create the CloudTable object that represents the "people" table.
     CloudTable table = tableClient.GetTableReference("people");
@@ -115,16 +90,9 @@
             entity.Email, entity.PhoneNumber);
     }
 
-###### 単一のエンティティを取得する
+##### 単一のエンティティを取得する
 
 単一の特定のエンティティを取得するクエリを記述することができます。次のコードは、**TableOperation** オブジェクトを使用して、"Ben Smith" という名前のユーザーを指定します。このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみです。したがって、TableResult.Result の戻り値は **CustomerEntity** オブジェクトです。クエリでパーティション キーと行キーの両方を指定することが、**テーブル** サービスから単一のエンティティを取得するための最速の方法です。
-
-    // Get the storage account from the connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
-
-    // Create the table client.
-    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
     // Create the CloudTable object that represents the "people" table.
     CloudTable table = tableClient.GetTableReference("people");
@@ -141,16 +109,9 @@
     else
        Console.WriteLine("The phone number could not be retrieved.");
 
-###### エンティティを削除する
+##### エンティティを削除する
 
 エンティティは、検索して削除できます。次のコードは、"Ben Smith" という名前のユーザー エンティティを検索し、見つかったら削除します。
-
-    // Get the storage account from the connection string.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-      CloudConfigurationManager.GetSetting("StorageConnectionString"));
-
-    // Create the table client.
-    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
     // Create the CloudTable that represents the "people" table.
     CloudTable table = tableClient.GetTableReference("people");
@@ -177,3 +138,9 @@
 
     else
        Console.WriteLine("Couldn't delete the entity.");
+
+[Azure Storage の詳細を確認する][Azure Storage の詳細を確認する]
+「[サーバー エクスプローラーを使用したストレージ リソースの参照][サーバー エクスプローラーを使用したストレージ リソースの参照]」も参照する
+
+  [Azure Storage の詳細を確認する]: http://azure.microsoft.com/documentation/services/storage/
+  [サーバー エクスプローラーを使用したストレージ リソースの参照]: http://msdn.microsoft.com/ja-jp/library/azure/ff683677.aspx
