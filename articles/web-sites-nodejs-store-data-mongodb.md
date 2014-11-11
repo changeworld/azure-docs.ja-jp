@@ -1,6 +1,7 @@
 <properties linkid="develop-node-website-with-mongodb-mac" urlDisplayName="Website with MongoDB" pageTitle="Node.js website with MongoDB on a VM - Azure tutorial" metaKeywords="Azure tutorial MongoDB, MongoDB store data, access data MongoDB Node, Azure Node app" description="A tutorial that teaches you how to use MongoDB to store and access data from a Node application hosted on Azure." metaCanonical="http://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/website-with-mongodb-mongolab/" services="web-sites,virtual-machines" documentationCenter="nodejs" title="Node.js Web Application with Storage on MongoDB (Virtual Machine)" authors="larryfr"  solutions="" writer="" manager="" editor=""  />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
+
 
 # 仮想マシン上の MongoDB を使用した Azure での Node.js アプリケーションの作成
 
@@ -28,7 +29,7 @@ Node.js を使用するこのチュートリアルの手順では、開発環境
 
 また、アプリケーションを Azure Website にデプロイする際に使用するため、開発環境のコマンド ラインから [Git][Git] を使用できる必要があります。
 
-[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## 仮想マシンの作成
 
@@ -94,7 +95,7 @@ Node.js を使用するこのチュートリアルの手順では、開発環境
 
     ![エンドポイント構成のスクリーンショット][エンドポイント構成のスクリーンショット]
 
-9.  仮想マシンの状態が **[実行中]** に変わったら、Web ブラウザーを開いて [http://\<YourVMDNSName\>.cloudapp.net:28017/][http://\<YourVMDNSName\>.cloudapp.net:28017/] にアクセスし、MongoDB が実行されていることを確認できます。ページの下部に、サービスに関する情報を示す次のようなログが表示されます。
+9.  仮想マシンの状態が **[実行中]** に変わったら、Web ブラウザーを開いて __http://&lt;YourVMDNSName&gt;.cloudapp.net:28017/__ にアクセスし、MongoDB が実行されていることを確認できます。ページの下部に、サービスに関する情報を示す次のようなログが表示されます。
 
         Fri Mar  7 18:57:16 [initandlisten] MongoDB starting : pid=1019 port=27017 dbpath=/var/lib/mongodb 64-bit host=localhost.localdomain
            18:57:16 [initandlisten] db version v2.2.3, pdfile version 4.5
@@ -441,7 +442,7 @@ Azure クロス プラットフォーム コマンド ライン インターフ�
         info:   Executing `git remote add azure http://username@mongodbtasklist.azurewebsites.net/mongodbtasklist.git`
         info:   site create command OK
 
-    > [WACOM.NOTE\> これがサブスクリプションで最初の Azure Website である場合、ポータルを使用して Web サイトを作成するように指示するメッセージが表示されます。詳細については、「[Node.js アプリケーションの作成と Azure Websites へのデプロイ][Node.js アプリケーションの作成と Azure Website へのデプロイ]」を参照してください。
+    > [WACOM.NOTE] これがサブスクリプションで最初の Azure Website である場合、ポータルを使用して Web サイトを作成するように指示するメッセージが表示されます。詳細については、「[Node.js アプリケーションの作成と Azure Websites へのデプロイ][Node.js アプリケーションの作成と Azure Website へのデプロイ]」を参照してください。
 
 ### MONGODB\_URI 環境変数の設定
 
@@ -515,7 +516,6 @@ MongoDB をセキュリティ保護する方法については、「[MongoDB Sec
   [Azure 上の Linux における SSH の使用方法]: http://www.windowsazure.com/ja-jp/documentation/articles/linux-use-ssh-key/
   [VM 構成のスクリーンショット]: ./media/web-sites-nodejs-store-data-mongodb/vmconfig.png
   [エンドポイント構成のスクリーンショット]: ./media/web-sites-nodejs-store-data-mongodb/endpoints.png
-  [http://\<YourVMDNSName\>.cloudapp.net:28017/]: http://<YourVMDNSName>.cloudapp.net:28017/__
   [MongoDB のドキュメント]: http://docs.mongodb.org/manual/
   [Express]: http://expressjs.com
   [Mongoose]: http://mongoosejs.com

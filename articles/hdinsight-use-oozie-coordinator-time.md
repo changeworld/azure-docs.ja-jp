@@ -1,6 +1,6 @@
 <properties linkid="hdinsight-use-time-based-oozie-coordinator-with-hdinsight" urlDisplayName="Use time-based Hadoop Oozie Coordinator in HDInsight" pageTitle="Use time-based Hadoop Oozie Coordinator in HDInsight | Azure" metaKeywords="" description="Use time-based Hadoop Oozie Coordinator in HDInsight, a big data solution. Learn how to define Oozie workflows and coordinators, and submit coordinator jobs." metaCanonical="" services="hdinsight" documentationCenter="" title="Use time-based Hadoop Oozie Coordinator in HDInsight" authors="jgao" solutions="big-data" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
 
 # HDInsight の Hadoop での時間ベースの Oozie コーディネーターの使用
 
@@ -242,9 +242,9 @@ Hive パスには既知の問題があります。この問題に見舞われる
 
 	<table border="1"> 
 	<tr><th>ワークフローの変数</th><th>説明</th></tr>
-	<tr><td>${jobTracker}</td><td>Hadoop ジョブ トラッカーの URL を指定します。HDInsight クラスター Version 2.0 および 3.0 の **jobtrackerhost:9010** を使用します。</td></th>
-    <tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。既定のファイル システムの WASB アドレスを使用します。たとえば、*wasb://\<containerName\>@\<storageAccountName\>.blob.core.windows.net* のように指定します。</td></th>
-    <tr><td>${queueName}</td><td>ジョブの送信先になるキュー名を指定します。**default** を使用します。</td></th>
+	<tr><td>${jobTracker}</td><td>Hadoop ジョブ トラッカーの URL を指定します。HDInsight クラスター Version 2.0 および 3.0 の <strong>jobtrackerhost:9010</strong> を使用します。</td></th>
+    <tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。既定のファイル システムの WASB アドレスを使用します。たとえば、<i>wasb://\<containerName\>@\<storageAccountName\>.blob.core.windows.net</i> のように指定します。</td></th>
+    <tr><td>${queueName}</td><td>ジョブの送信先になるキュー名を指定します。<strong>default</strong> を使用します。</td></th>
 	</table>
 
 	<table border="1"> 
@@ -337,7 +337,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 **チュートリアルを準備するには**
 
-1.  Windows PowerShell ISE を開きます (Windows 8 のスタート画面で、「**PowerShell\_ISE**」と入力し、**[Windows PowerShell ISE]** をクリックします。「[Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)][Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)])」を参照してください。
+1.  Windows PowerShell ISE を開きます (Windows 8 のスタート画面で、「**PowerShell\_ISE**」と入力し、**[Windows PowerShell ISE]** をクリックします。「[Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)](Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)))」を参照してください。
 2.  下のウィンドウで、次のコマンドを実行して、Azure サブスクリプションに接続します。
 
         Add-AzureAccount
@@ -688,7 +688,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
     追加の機能を実行するには、\# 記号を削除します。
 
-9.  HDInsight クラスターが Version 2.1 である場合は、"<https://$clusterName.azurehdinsight.net:443/oozie/v2/>" を "<https://$clusterName.azurehdinsight.net:443/oozie/v1/>" に置き換えてください。HDInsight クラスター Version 2.1 は、Web サービスの Version 2 をサポートしていません。
+9.  HDInsight クラスターが Version 2.1 である場合は、"https://$clusterName.azurehdinsight.net:443/oozie/v2/" を "https://$clusterName.azurehdinsight.net:443/oozie/v1/" に置き換えてください。HDInsight クラスター Version 2.1 は、Web サービスの Version 2 をサポートしていません。
 
 10. **[スクリプトの実行]** をクリックするか、**F5** キーを押して、スクリプトを実行します。次のように出力されます。
 
@@ -748,7 +748,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 -   [HDInsight での Hive の使用][HDInsight での Hive の使用]
 -   [HDInsight での Pig の使用][HDInsight での Pig の使用]
 -   [HDInsight 用 C# Hadoop ストリーミング プログラムの開発][HDInsight 用 C# Hadoop ストリーミング プログラムの開発]
--   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]
+-   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)](Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発))
 
   [HDInsight での Oozie の使用]: ../hdinsight-use-oozie/
   [Oozie とは]: #whatisoozie
@@ -762,7 +762,6 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
   [HDInsight での Sqoop の使用]: ../hdinsight-use-sqoop/
   [HDInsight で提供されるクラスター バージョンの新機能]: ../hdinsight-component-versioning/
   [Azure PowerShell のインストールおよび構成に関するページ]: ../install-and-configure-powershell/
-  [Run Windows PowerShell scripts (Windows PowerShell スクリプトの実行)]: http://technet.microsoft.com/ja-jp/library/ee176949.aspx
   [HDInsight クラスターのプロビジョニング]: ../hdinsight-provision-clusters/
   [Azure HDInsight の概要]: ../hdinsight-get-started/
   [Azure SQL データベースの概要]: ../sql-database-get-started/
@@ -771,8 +770,6 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
   [Apache Oozie 4.0 のマニュアル]: http://oozie.apache.org/docs/4.0.0/
   [Apache Oozie 3.3.2 のマニュアル]: http://oozie.apache.org/docs/3.3.2/
   [HDInsight での Azure BLOB ストレージの使用]: ../hdinsight-use-blob-storage/
-  [HDInsight: Hive Internal and External Tables Intro (HDInsight: Hive の内部テーブルと外部テーブルの概要)]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
-  [Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)]: http://technet.microsoft.com/ja-jp/library/hh847889.aspx
   [チュートリアルの準備の出力]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.Preparation.Output1.png
   [チュートリアルのワークフローの実行の出力]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.RunCoord.Output.png
   [管理ポータルを使用した HDInsight クラスターの管理]: ../hdinsight-administer-use-management-portal/
@@ -781,4 +778,3 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
   [HDInsight へのデータのアップロード]: ../hdinsight-upload-data/
   [HDInsight での Pig の使用]: ../hdinsight-use-pig/
   [HDInsight 用 C# Hadoop ストリーミング プログラムの開発]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
-  [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]: ../hdinsight-develop-deploy-java-mapreduce/

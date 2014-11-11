@@ -1,6 +1,6 @@
 <properties pageTitle="How to add operations to an API in Azure API Management" metaKeywords="" description="Learn how to add operations to an API in Azure API Management." metaCanonical="" services="" documentationCenter="API Management" title="How to add operations to an API in Azure API Management" authors="sdanie" solutions="" manager="" editor="" />
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie"></tags>
+<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
 
 # Azure API Management で API に操作を追加する方法
 
@@ -8,7 +8,7 @@ API Management (プレビュー) 内の API を使用するためには、操作
 
 ## このトピックの内容
 
--   [操作の追加](#add-operation)
+-   [操作の追加][操作の追加]
 -   [操作のキャッシュ][操作のキャッシュ]
 -   [要求パラメーター][要求パラメーター]
 -   [要求本文][要求本文]
@@ -29,7 +29,7 @@ API Management ポータルで目的の API を選択し、**[操作]** タブ�
 
 **[操作の追加]** をクリックして新しい操作を追加します。**[新しい操作]** が表示され、**[署名]** タブが既定で選択されます。
 
-![Add operation](#add-operation)
+![Add operation][Add operation]
 
 **[HTTP 動詞]** ボックスの一覧で適切な HTTP 動詞を選択します。
 
@@ -124,6 +124,7 @@ API Management ポータルで目的の API を選択し、**[操作]** タブ�
   [要求本文]: #request-body
   [応答]: #responses
   [次のステップ]: #next-steps
+  [操作の追加]: #add-operation
   [Azure API Management の使用]: ../api-management-get-started
   [API Management インスタンスの作成]: ../api-management-get-started/#create-service-instance
   [API Management console]: ./media/api-management-howto-add-operations/api-management-management-console.png

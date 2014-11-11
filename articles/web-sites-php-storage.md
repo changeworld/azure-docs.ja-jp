@@ -1,6 +1,6 @@
 <properties linkid="develop-php-website-with-storage" urlDisplayName="Web w/ Storage" pageTitle="PHP website with table storage - Azure tutorial" metaKeywords="Azure table storage PHP, Azure PHP website, Azure PHP web site, Azure PHP tutorial, Azure PHP example" description="This tutorial shows you how to create a PHP website and use the Azure Tables storage service in the back-end." metaCanonical="" services="web-sites,storage" documentationCenter="PHP" title="Create a PHP Website using Azure Storage" authors="cephalin" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin" />
 
 # Azure Storage を使用した PHP Web サイトを作成する
 
@@ -17,7 +17,7 @@
 
 ![Azure の PHP Web サイト][Azure の PHP Web サイト]
 
-[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## Azure クライアント ライブラリのインストール
 
@@ -395,8 +395,8 @@ Git でアプリケーションを発行するには、次の手順に従いま�
 
     先ほど作成したパスワードを入力するように求められます。
 
-3.  アプリケーション用のテーブルを作成するには、**[http://[your][http://[your] web site domain]/createtable.php** に移動します。
-4.  アプリケーションの使用を開始するには、**[http://[your][http://[your] web site domain]/index.php** に移動します。
+3.  アプリケーション用のテーブルを作成するには、**http://[your web site domain]/createtable.php** に移動します。
+4.  アプリケーションの使用を開始するには、**http://[your web site domain]/index.php** に移動します。
 
 アプリケーションを発行した後、アプリケーションへの変更を開始し、Git を使用してその変更を発行することもできます。
 
@@ -413,7 +413,7 @@ Git でアプリケーションを発行するには、次の手順に従いま�
 
     先ほど作成したパスワードを入力するように求められます。
 
-3.  変更内容を確認するには、**[http://[your][http://[your] web site domain]/index.php** に移動します。
+3.  変更内容を確認するには、**http://[your web site domain]/index.php** に移動します。
 
   [PHP]: http://www.php.net/manual/en/install.php
   [Azure の PHP Web サイト]: ./media/web-sites-php-storage/ws-storage-app.png
@@ -435,4 +435,3 @@ Git でアプリケーションを発行するには、次の手順に従いま�
   [ソース コードの位置]: ./media/web-sites-php-storage/where_is_code.png
   [発行資格情報の作成]: ./media/web-sites-php-storage/git-deployment-credentials.png
   [Web サイトのリポジトリの作成後に返される Git 展開の手順]: ./media/web-sites-php-storage/git-instructions.png
-  [http://[your]: http://[your

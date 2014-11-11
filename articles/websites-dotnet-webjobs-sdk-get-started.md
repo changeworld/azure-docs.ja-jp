@@ -36,7 +36,7 @@ MSDN コード ギャラリーから、対象の [Visual Studio プロジェク�
 
 これらの製品をお持ちでない場合、Azure SDK をインストールすると Visual Studio 2013 Express for Web が自動的にインストールされます。
 
-[WACOM.INCLUDE [free-trial-note][free-trial-note]]
+[WACOM.INCLUDE [free-trial-note](../includes/free-trial-note.md)]
 
 ## <span id="learn"></span></a>学習内容
 
@@ -137,7 +137,7 @@ Web ジョブは Web サイトのコンテキストで実行され、個別に�
 
 このチュートリアルでは、フロントエンドを Web サイトで実行し、バックエンドを Web ジョブとして同じ Web サイトで実行する方法を示しています。自分のシナリオに最適な環境を選択する方法の詳細については、「[Azure の Web サイト、クラウド サービス、および仮想マシンの比較][Azure の Web サイト、クラウド サービス、および仮想マシンの比較]」を参照してください。
 
-[WACOM.INCLUDE [install-sdk-2013-only][install-sdk-2013-only]]
+[WACOM.INCLUDE [install-sdk-2013-only](../includes/install-sdk-2013-only.md)]
 
 ## <span id="storage"></span></a>Azure ストレージ アカウントの作成
 
@@ -212,11 +212,16 @@ Azure Storage アカウントは、キューおよび BLOB データをクラウ
 
     このファイルには、アプリケーション データ用に 1 つとログ用に 1 つの計 2 つのストレージ接続文字列があります。このチュートリアルでは、どちらも同じアカウントを使用します。接続文字列には、前出と同じプレースホルダーがあります。
 
-    ``` prettyprint
-    <configuration><connectionStrings> <add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=[accountname];AccountKey=[accesskey]"/> <add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=[accountname];AccountKey=[accesskey]"/> <add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;"/></connectionStrings> <startup> <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" /></startup></configuration>
-    ```
-
-    </p>
+  	<pre class="prettyprint">&lt;configuration&gt;
+    &lt;connectionStrings&gt;
+        &lt;add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
+        &lt;add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=<mark>[accountname]</mark>;AccountKey=<mark>[accesskey]</mark>"/&gt;
+        &lt;add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;"/&gt;
+    &lt;/connectionStrings&gt;
+        &lt;startup&gt; 
+            &lt;supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" /&gt;
+    &lt;/startup&gt;
+&lt;/configuration&gt;</pre>
     既定では、Web ジョブ SDK は、AzureWebJobsStorage および AzureWebJobsDashboard という名前の接続文字列を探します。代替として、希望する接続文字列を格納し、それを明示的に `JobHost` オブジェクトに渡すこともできます。
 
 6.  Web プロジェクトで実行したのと同様に、出現する *[accountname]* と *[accesskey]* をすべて、使用しているストレージ アカウントの値で置き換えます (または、完成した接続文字列を *Web.config* ファイルから *App.config* ファイルの両方の接続文字列にコピーできます)。
@@ -912,7 +917,6 @@ Web ジョブを Web サイトで実行する場合は、Web サイトの場合�
   [Change Authentication]: ./media/websites-dotnet-webjobs-sdk-get-started/chgauth.png
   [認証なし]: ./media/websites-dotnet-webjobs-sdk-get-started/noauth.png
   [New Azure WebJob Project menu selection]: ./media/websites-dotnet-webjobs-sdk-get-started/newawjp.png
-  [How to Deploy WebJobs by using Visual Studio (Visual Studio を使用した Web ジョブのデプロイ方法)]: /ja-jp/documentation/articles/websites-dotnet-deploy-webjobs/
   [Find WebJobs SDK package]: ./media/websites-dotnet-webjobs-sdk-get-started/updstg.png
   [Install WebJobs SDK package only in WebJob project]: ./media/websites-dotnet-webjobs-sdk-get-started/updstg2.png
   [SQL Server データベースで動作する Entity Framework コードの作成]: http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc
@@ -923,8 +927,6 @@ Web ジョブを Web サイトで実行する場合は、Web サイトの場合�
   [HttpPostedFileBase]: http://msdn.microsoft.com/ja-jp/library/system.web.httppostedfilebase.aspx
   [Web ジョブ SDK 0.3.0 ベータの発表]: http://azure.microsoft.com/blog/2014/06/18/announcing-the-0-3-0-beta-preview-of-microsoft-azure-webjobs-sdk/http://azure.microsoft.com/blog/2014/06/18/announcing-the-0-3-0-beta-preview-of-microsoft-azure-webjobs-sdk/
   [アプリケーションのクラウド サービス版]: /ja-jp/documentation/articles/cloud-services-dotnet-get-started/
-  [https://{websitename}.scm.azurewebsites.net/azurejobs/\#/functions]: https://{websitename}.scm.azurewebsites.net/azurejobs/#/functions
-  [Getting a dashboard for local development with the WebJobs SDK (Web ジョブ SDK を使用したローカル開発用ダッシュボードへのアクセス)]: http://blogs.msdn.com/b/jmstall/archive/2014/01/27/getting-a-dashboard-for-local-development-with-the-webjobs-sdk.aspx
   [依存関係の挿入]: http://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection
   [作業パターンのリポジトリと単位]: http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo
   [ログのためのインターフェイス]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log
@@ -932,4 +934,3 @@ Web ジョブを Web サイトで実行する場合は、Web サイトの場合�
   [Entity Framework の接続の回復性]: http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application
   [AzureWebJobs]: http://aspnet.codeplex.com/SourceControl/latest#Samples/AzureWebJobs/ReadMe.txt
   [Visual Studio での Azure の Web Sites のトラブルシューティング]: /ja-jp/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/
-  [Azure Web Jobs Recommended Resources (Azure Web ジョブの推奨リソース)]: http://go.microsoft.com/fwlink/?LinkId=390226

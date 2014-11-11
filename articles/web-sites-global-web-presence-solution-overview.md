@@ -1,6 +1,10 @@
 <properties linkid="websites-global-web-presence" urlDisplayName="Create a Global Web Presence on Azure Websites" pageTitle="Create a Global Web Presence on Azure Websites" metaKeywords="" description="This guide provides a technical overview of how to host your organization's (.COM) site on Azure Websites. This includes deployment, custom domains, SSL, and monitoring." metaCanonical="http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-global-web-presence-solution-overview/" services="" documentationCenter="" title="Create a Global Web Presence on Azure Websites" authors="jroth" solutions="" manager="paulettm" editor="mollybos" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jroth"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jroth" />
+
+
+
+
 
 # Azure Websites でのグローバル Web プレゼンスの作成
 
@@ -23,7 +27,7 @@
 
 Azure 管理ポータルでは、いくつかの方法で新しい Azure Website を作成できます。ポータルの下部にある **[新規]** をクリックすると、次のようなダイアログ ボックスが表示されます。
 
-![GlobalWebCreate][GlobalWebCreate]
+![GlobalWebCreate](./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Create.png)
 
 新しい Website を作成する方法として、**[簡易作成]**、**[カスタム作成]**、**[ギャラリーから]** という 3 つのオプションがあります。どのオプションを選択した場合も、大多数のユーザーが所在している Azure リージョンを選択します。
 
@@ -48,11 +52,11 @@ Web サイトを Azure にデプロイするにはいくつかの方法があり
 
 ここで行う展開作業の多くは、Azure 管理ポータルの情報を使用します。対象となる Web サイトへ移動して **[ダッシュボード]** タブを選択し、**[概要]** セクションを参照してください。次のスクリーンショットにはいくつかのオプションが表示されています。
 
-![GlobalWebQuickGlance][GlobalWebQuickGlance]
+![GlobalWebQuickGlance](./media/web-sites-global-web-presence-solution-overview/GlobalWeb_QuickGlance.png)
 
 一部のソース管理ツールと FTP クライアントは、ユーザー名とパスワードを入力してアクセスする必要があります。新しい Website の資格情報は自動的に作成されませんが、**[展開資格情報のリセット]** をクリックすれば簡単に作成できます。資格情報を作成した後、**[ダッシュボード]** ページにそれらの資格情報と **[FTP ホスト名]** を入力すれば、FTP クライアントを使用して Web サイトをデプロイできます。
 
-![GlobalWebFTPSettings][GlobalWebFTPSettings]
+![GlobalWebFTPSettings](./media/web-sites-global-web-presence-solution-overview/GlobalWeb_FTPSettings.png)
 
 デプロイ/FTP ユーザー名は、Website 名と指定したユーザー名の組み合わせになります。たとえば、サイトが "<http://contoso.azurewebsite.net>" でユーザー名が "myuser" の場合、デプロイおよび FTP のユーザー名は "contoso\\myuser" になります。
 
@@ -67,13 +71,13 @@ Visual Studio を使用してサイトを作成および管理する場合は、
 
 サブスクリプション情報を Visual Studio へ直接インポートすることもできます。たとえば、Visual Studio でローカル ASP.NET プロジェクトを開発している場合、目的の Web プロジェクトを右クリックして **[発行]** を選択します。**[Web の発行]** ダイアログ ボックスで **[インポート]** をクリックすると、Azure のサブスクリプション設定が保存されたファイル、または Websites のダッシュボードからダウンロードした publishsettings ファイルをインポートできます。次のスクリーンショットを参照してください。
 
-![GlobalWebVSPublish][GlobalWebVSPublish]
+![GlobalWebVSPublish](./media/web-sites-global-web-presence-solution-overview/)
 
 Visual Studio から Azure への発行の詳細については、「ASP.NET Web アプリケーションを Azure Website にデプロイする」を参照してください。
 
 Web サイトを開発して展開する方法として、Azure 管理ポータルには WebMatrix も用意されています。
 
-![GlobalWebWebMatrix][GlobalWebWebMatrix]
+![GlobalWebWebMatrix](../media/web-sites-global-web-presence-solution-overview/GlobalWeb_WebMatrix.png)
 
 この方法の詳細については、「[Microsoft WebMatrix を使用して Web サイトを開発して展開する][Microsoft WebMatrix を使用して Web サイトを開発して展開する]」を参照してください。
 
@@ -85,7 +89,7 @@ Web サイトを開発して展開する方法として、Azure 管理ポータ�
 
 <div class="dev-callout">
 <strong>注</strong>
-<p>この後の説明では 2 種類の DNS レコード (CNAME レコードと A レコード) を取り上げます。CNAME レコードは、ある URL (&quot;www.contoso.com&quot; など) から別の URL (&quot;contoso.azurewebsites.net&quot;) へリダイレクトします。A レコードは、URL (&quot;www.contoso.com&quot; など) を IP アドレス (172.16.48.1. など) に関連付けます。</p>
+<p>この後の説明では 2 種類の DNS レコード (CNAME レコードと A レコード) を取り上げます。CNAME レコードは、ある URL ("www.contoso.com" など) から別の URL ("contoso.azurewebsites.net") へリダイレクトします。A レコードは、URL ("www.contoso.com" など) を IP アドレス (172.16.48.1. など) に関連付けます。</p>
 </div>
 
 Azure Website では、最初に CNAME レコードを作成する必要があります。この設定を行うにはサードパーティの登録サイトを使用します。CNAME レコードの例を次に示します。
@@ -110,83 +114,27 @@ Azure Website では、最初に CNAME レコードを作成する必要があ�
 
 Azure 管理ポータルの **[スケール]** タブで、**[Shared]** モードまたは [Standard] モードを選択していることを確認してください (**[Free]** モードの Web サイトはカスタム ドメインを使用できません)。**[構成]** タブへ移動し、**[ドメインの管理]** をクリックします。Web サイトにカスタム ドメイン名を関連付けられるようになります。
 
-![GlobalWebWebMatrix][GlobalWebWebMatrix]
+![GlobalWebWebMatrix](./media/web-sites-global-web-presence-solution-overview/GlobalWeb_WebMatrix.png)
 
 一覧にカスタム ドメインを追加するには、まず、DNS プロバイダーへアクセスして CNAME レコードを作成する必要があります。その際、カスタム ドメイン (www.contoso.com) と Azure Website (contoso.azurewebsites.net) の URL を関連付けます。これで、上記のスクリーンショットのダイアログにカスタム ドメインを入力できるようになります。この Web サイトを参照する www.contoso.com の CNAME レコードを作成することで、指定したドメイン名をこの Web サイトで使用する権限が与えられます。この時点で、ダイアログ ボックスの下部の IP アドレスを使用して A レコードを作成できます。
 
-| 種類  | ホスト      | リダイレクト先 | TTL  |
-|-------|-------------|----------------|------|
-| **A** | contoso.com | 172.16.48.1    | 8000 |
-
-詳細については、[Azure の Web サイトのカスタム ドメイン名の構成に関するページ][Azure の Web サイトのカスタム ドメイン名の構成に関するページ]を参照してください。
-
-## <a name="ssl"></a>SSL による Web サイトのセキュリティ保護
-
-サイトで公開する情報が読み取り専用の場合、そのサイトへのアクセスをセキュリティで保護する必要はありません。ただし、ユーザー情報を収集したり、通信販売を行ったり、その他の機密データを管理したりする場合は、サイトを保護しなければなりません。セキュリティは大きなテーマなので、すべてのベスト プラクティスや手法をこのドキュメントで取り上げることはできません。ただし、中でも重要なのは、Secure Sockets Layer (SSL) を有効にして Web サイトを保護することです。SSL はユーザーがサイトへ接続する際の通信を暗号化する技術であり、HTTP の代わりに HTTPS アドレスを用います。Azure Websites で SSL を使用するには、決められた手順に従う必要があります。
-
-Azure Websites では、実際のサイト URL への接続が自動的に保護されます。たとえば、サイトが <http://contoso.azurewebsites.net> の場合、"http" を "https" に変更する (**https**://contoso.azurewebsites.net) だけで SSL 経由で接続できます。
-
-ただし、カスタム ドメイン名を使用する場合は、Web サイトの Azure 管理ポータルから証明書をアップロードして SSL を有効にする必要があります。この後、そのための大まかな手順を説明しますが、詳細については「[Azure の Web サイトの SSL 証明書の構成][Azure の Web サイトの SSL 証明書の構成]」を参照してください。
-
-まず、証明機関から SSL 証明書を取得します。保護対象のドメインが複数のサブドメインで構成されている場合は、ワイルドカード証明書を取得する必要があります (たとえば、www.contoso.com と staging.contoso.com の場合、ワイルドカード証明書 \*.contoso.com を取得します)。ワイルドカード証明書は通常より費用がかかるので、ワイルドカード証明書によって得られる柔軟性がその費用に見合うかを検討する必要があります。
-
-証明機関から証明書を取得した後、そのままのフォーマットでは Azure へアップロードできません。openssl コマンドを使用して .pfx ファイルを生成する必要があります。openssl コマンドは OpenSSL プロジェクトの一部です。ソースは [OpenSSL Web サイト][OpenSSL Web サイト]で配布されていますが、このツールのコンパイル済みバージョンもインターネットで入手できます。次の例では、証明書 myserver.crt と 秘密キー ファイル myserver.key を使用して .pfx ファイルを作成します。
-
-    openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
-
-証明書を Azure へアップロードするには、**[スケール]** タブを開き、**[標準]** モードで実行していることを確認します。**[無料]** モードと **[共有]** モードでは、カスタム ドメインを SSL で保護できません。**[構成]** タブで **[証明書をアップロードします]** をクリックします。
-
-![GlobalWebUplodateCert][GlobalWebUplodateCert]
-
-**[SSL のバインディング]** セクションで証明書を選択し、さらにその証明書が保護するドメイン名を選択します。証明書のマッピング方法には、SNI SSL と IP ベースの SSL があります。
-
-![GlobalWebSSLBindings][GlobalWebSSLBindings]
-
-**[IP ベースの SSL]** オプションは、専用のパブリック IP アドレスをドメイン名に関連付ける従来の方法です。この方法はすべてのブラウザーで使用できます。**[SNI SSL]** オプションを選択した場合、複数のドメインで同じ IP アドレスを共有でき、さらにドメインごとに異なる SSL 証明書を関連付けることができます。SNI SSL は一部の古いブラウザーでは機能しません (互換性については、[SNI SSL に関するウィキペディア項目][SNI SSL に関するウィキペディア項目]を参照してください)。SSL 証明書ごとに毎月課金され (時間割り計算)、IP ベースの SSL を選択するか、SNI SSL を選択するかによって料金が異なります。料金については、「[Web サイトの料金詳細][Web サイトの料金詳細]」を参照してください。SSL 証明書の詳細については、「[Azure の Web サイトの SSL 証明書の構成][Azure の Web サイトの SSL 証明書の構成]」を参照してください。
-
-## <a name="monitor"></a>Web サイトの監視
-
-Web サイトでユーザーの要求を処理できるようになったら、運用状況を監視することが大切です。たとえば、ユーザー負荷により CPU 時間が増加している場合は、サイトを拡張する必要があります。また、アプリケーションの処理効率が低下すると、応答時間が長くなったり、エラーが発生したりする可能性があります。このセクションでは、Azure 管理ポータルに組み込まれている一部の監視機能を紹介します。
-
-**[監視]** タブには、Web サイトの主な指標がグラフとして表示されます。
-
-![GlobalWebMonitor1][GlobalWebMonitor1]
-
-このグラフの指標をカスタマイズするには [メトリックの追加] をクリックします。
-
-![GlobalWebMonitor2][GlobalWebMonitor2]
-
-**[標準]** モードで実行しているサイトでは、エンドポイントの監視とアラートも有効にできます。**[構成]** タブの **[監視]** セクションでエンドポイントを構成します。このエンドポイントは指定した 1 つの場所から実行でき、定期的に Web サイトへのアクセスを試みます。タイミング情報とエラー情報の両方が収集されます。
-
-**[監視]** タブには、このエンドポイントの応答時間が表示されます。エンドポイント メトリックを選択した後、**[ルールの追加]** アイコンをクリックしてアラート ルールを追加します。
-
-![GlobalWebMonitor3][GlobalWebMonitor3]
-
-ルールに基づき、応答時間が所定のしきい値を超えた時点で管理者またはその他の担当者に電子メールが送信されます。
-
-![GlobalWebMonitor4][GlobalWebMonitor4]
-
-サイトの規模設定 (スケール) が必要と判断した場合、**[スケール]** タブで手動で規模を設定するか、自動スケール (プレビュー) 機能を使用します。[スケール] タブでは、スケールアップ (専用マシンを増強する) とスケールアウト (同じサイズの共有インスタンスまたは専用インスタンスを追加する) の両方を設定できます。ただし、自動スケール (プレビュー) がサポートしているのはスケールアウトのみです。詳細については、[デジタル マーケティング キャンペーン][1] シナリオの「ユーザーの需要に応じた規模設定 (スケーリング)」を参照してください。また、「[Web サイトの監視方法][Web サイトの監視方法]」も参照してください。
-
-## <a name="summary"></a>まとめ
-
-組織の (.COM) サイトを作成する際の一般的な作業手順は、開発フレームワークの選択、サイトの作成とデプロイ、カスタム ドメインの割り当て、サイトの監視です。ユーザー データの保護を要するサイトでは SSL を使用してください。ここでは、Azure Websites を使用してこれらの作業を実施する方法を概説しました。詳細については、次の技術解説記事を参照してください。
-
 <table cellspacing="0" border="1">
 <tr>
-<th align="left" valign="top">種類</th>
-<th align="left" valign="top">ホスト</th>
-<th align="left" valign="top">リダイレクト先</th>
-<th align="left" valign="top">TTL</th>
+   <th align="left" valign="top">種類</th>
+   <th align="left" valign="top">ホスト</th>
+   <th align="left" valign="top">リダイレクト先</th>
+   <th align="left" valign="top">TTL</th>
 </tr>
 <tr>
-<td valign="top"><strong>A</strong></td>
-<td valign="top">contoso.com</td>
+   <td valign="top"><strong>A</strong></td>
+   <td valign="top">contoso.com</td>
    <td valign="top">172.16.48.1</td>
    <td valign="top">8000</td>
 </tr>
 </table>
+
 <p>詳細については、<a href="/ja-jp/develop/net/common-tasks/custom-dns-web-site/">Azure の Web サイトのカスタム ドメイン名の構成に関するページ</a>を参照してください。</p>
+
 <h2 id="secure-the-website-with-ssl"><a name="ssl"></a>SSL による Web サイトのセキュリティ保護</h2>
 <p>サイトで公開する情報が読み取り専用の場合、そのサイトへのアクセスをセキュリティで保護する必要はありません。ただし、ユーザー情報を収集したり、通信販売を行ったり、その他の機密データを管理したりする場合は、サイトを保護しなければなりません。セキュリティは大きなテーマなので、すべてのベスト プラクティスや手法をこのドキュメントで取り上げることはできません。ただし、中でも重要なのは、Secure Sockets Layer (SSL) を有効にして Web サイトを保護することです。SSL はユーザーがサイトへ接続する際の通信を暗号化する技術であり、HTTP の代わりに HTTPS アドレスを用います。Azure Websites で SSL を使用するには、決められた手順に従う必要があります。</p>
 <p>Azure Websites では、実際のサイト URL への接続が自動的に保護されます。たとえば、サイトが <a href="http://contoso.azurewebsites.net" class="uri">http://contoso.azurewebsites.net</a> の場合、&quot;http&quot; を &quot;https&quot; に変更する (<strong>https</strong>://contoso.azurewebsites.net) だけで SSL 経由で接続できます。</p>
@@ -251,28 +199,18 @@ Web サイトでユーザーの要求を処理できるようになったら、�
 
   [デジタル マーケティング キャンペーン]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/digital-marketing-campaign-solution-overview
   [基幹業務アプリケーション]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/business-application-solution-overview
-  [GlobalWebCreate]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Create.png
   [Azure Web サイトと ASP.NET の使用]: /ja-jp/documentation/articles/web-sites-dotnet-get-started
   [WebMatrix]: http://www.microsoft.com/web/webmatrix/
-  [GlobalWebQuickGlance]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_QuickGlance.png
-  [GlobalWebFTPSettings]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_FTPSettings.png
   [ソース管理から Azure の Web サイトへの発行]: /ja-jp/develop/net/common-tasks/publishing-with-git/
-  [GlobalWebVSPublish]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_VS_Publish.png
-  [GlobalWebWebMatrix]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_WebMatrix.png
+  [GlobalWebCustomDomain]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_CustomDomain.png
   [Microsoft WebMatrix を使用して Web サイトを開発して展開する]: /ja-jp/develop/net/tutorials/get-started/
   [Drupal]: https://drupal.org/
   [Umbraco]: http://umbraco.com/
   [Azure の Web サイトのカスタム ドメイン名の構成に関するページ]: /ja-jp/develop/net/common-tasks/custom-dns-web-site/
   [Azure の Web サイトの SSL 証明書の構成]: /ja-jp/develop/net/common-tasks/enable-ssl-web-site/
   [OpenSSL Web サイト]: http://www.openssl.org/
-  [GlobalWebUplodateCert]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Uplodate_Cert.png
-  [GlobalWebSSLBindings]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_SSL_Bindings.png
   [SNI SSL に関するウィキペディア項目]: http://en.wikipedia.org/wiki/Server_Name_Indication
   [Web サイトの料金詳細]: /ja-jp/pricing/details/web-sites/#service-ssl
-  [GlobalWebMonitor1]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Monitor1.png
-  [GlobalWebMonitor2]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Monitor2.png
-  [GlobalWebMonitor3]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Monitor3.png
-  [GlobalWebMonitor4]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Monitor4.png
   [1]: /ja-jp/manage/services/web-sites/digital-marketing-campaign-solution-overview
   [Web サイトの監視方法]: /ja-jp/manage/services/web-sites/how-to-monitor-websites/
   [Azure Websites、クラウド サービス、仮想マシン: いつ、どれを使用するか]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/choose-web-app-service

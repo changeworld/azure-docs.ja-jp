@@ -1,6 +1,6 @@
 <properties linkid="dev-net-how-to-file-storage" urlDisplayName="File Service" pageTitle="How to use Azure File storage | Microsoft Azure" metaKeywords="Get started Azure file  Azure file share  Azure file shares  Azure file   Azure file storage   Azure file .NET   Azure file C#   Azure file PowerShell" description="Learn how to use Microsoft Azure File storage to create file shares and manage file content. Samples are written in PowerShell and C#." metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="storage" documentationCenter=".NET" title="How to use Microsoft Azure File storage in .NET" authors="tamram" manager="mbaldwin" editor="cgronlun" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tamram"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
 # Azure File ストレージを使用する方法
 
@@ -55,7 +55,7 @@ File ストレージには次の構成要素があります。
 
 -   **URL 形式:** ファイルは次の URL 形式でアドレス指定
     されます。
-    <https://>`<storage account>`.file.core.windows.net/`<share>`/`<directory/directories>`/`<file>`
+    `<https://><storage account>.file.core.windows.net/<share>/<directory/directories>/<file>`
 
     次の例の URL を使用すると、上の図のいずれかのファイルを
     アドレス指定できます。
@@ -69,7 +69,7 @@ Azure File ストレージは現在プレビュー段階にあります。この
 
 > [WACOM.NOTE] File ストレージは現在、新規のストレージ アカウントでのみ利用できます。File ストレージ アカウントへのアクセスがサブスクリプションに許可された後で、このガイドで使用する新規ストレージ アカウントを作成してください。
 
-[WACOM.INCLUDE [create-storage-account][create-storage-account]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <a name="use-cmdlets"></a><span class="short-header">PowerShell を使用したファイル共有の作成</span>PowerShell を使用したファイル共有の作成
 
@@ -261,7 +261,6 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
   [次のステップ]: #next-steps
   [files-concepts]: ./media/storage-dotnet-how-to-use-files/files-concepts.png
   [Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ]: http://msdn.microsoft.com/ja-jp/library/dn249410.aspx
-  [Naming and Referencing Shares, Directories, Files, and Metadata (共有、ディレクトリ、ファイル、およびメタデータの命名と参照)]: http://msdn.microsoft.com/ja-jp/library/azure/dn167011.aspx
   [Microsoft Azure プレビューのページ]: /ja-jp/services/preview/
   [create-storage-account]: ../includes/create-storage-account.md
   [Azure PowerShell のインストールおよび構成方法]: /ja-jp/documentation/articles/install-configure-powershell/
@@ -270,8 +269,6 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
   [System.IO 名前空間]: http://msdn.microsoft.com/ja-jp/library/gg145019(v=vs.110).aspx
   [Azure .NET Storage クライアント ライブラリ]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [File サービスの REST API リファレンス]: http://msdn.microsoft.com/ja-jp/library/azure/dn167006.aspx
-  [Introducing Microsoft Azure File Service (Microsoft Azure File サービスの概要)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx
-  [Persisting connections to Microsoft Azure Files (Microsoft Azure Files への接続の維持)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx
   [BLOB ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/
   [テーブル ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/
   [キュー ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-queues/

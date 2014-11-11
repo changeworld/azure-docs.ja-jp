@@ -1,6 +1,6 @@
 <properties linkid="develop-java-how-to-twilio-phone-call" urlDisplayName="How to Make a Phone Call from Twilio in Java" pageTitle="How to Make a phone call from Twilio (Java) - Azure" metaKeywords="Azure Twilio call, Twilio call website, Azure Twilio Java" description="Learn how to make a phone call from a web page using Twilio in a Java application on Azure." metaCanonical="" services="" documentationCenter="Java" title="How to Make a Phone Call Using Twilio in a Java Application on Azure" authors="MicrosoftHelp@twilio.com; robmcm" videoId="" scriptId="" solutions="" manager="wpickett" editor="mollybos" />
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="MicrosoftHelp@twilio.com; robmcm"></tags>
+<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="MicrosoftHelp@twilio.com; robmcm" />
 
 # Azure 上の Java アプリケーションで Twilio を使用して通話する方法
 
@@ -10,8 +10,8 @@
 
 このトピックでコードを使用するためには次の操作を行う必要があります。
 
-1.  Twilio アカウントと認証トークンを取得します。Twilio を利用し始める前に、[][]<http://www.twilio.com/pricing></a> で価格を検討します。[][1]<https://www.twilio.com/try-twilio></a> でサインアップできます。Twilio から提供される API の詳細については、[][2]<http://www.twilio.com/api></a> を参照してください。
-2.  電話番号を発信元 ID として Twilio で確認します。電話番号を確認する方法については、[][3]<https://www.twilio.com/user/account/phone-numbers/verified>\#</a> を参照してください。既存の番号を使用する代わりに、Twilio 電話番号を購入することができます。
+1.  Twilio アカウントと認証トークンを取得します。Twilio を利用し始める前に、[][0]<http://www.twilio.com/pricing></a> で価格を検討します。[][1]<https://www.twilio.com/try-twilio></a> でサインアップできます。Twilio から提供される API の詳細については、[][2]<http://www.twilio.com/api></a> を参照してください。
+2.  電話番号を発信元 ID として Twilio で確認します。電話番号を確認する方法については、[][3]<https://www.twilio.com/user/account/phone-numbers/verified#></a> を参照してください。既存の番号を使用する代わりに、Twilio 電話番号を購入することができます。
     この例では、有効な電話番号を callform.jsp の **From** の値として使用します (後で説明)。
 3.  Twilio JAR を入手します。[][4]<https://github.com/twilio/twilio-java></a> で、GitHub のソースをダウンロードして独自の JAR を作成するか、ビルド済み JAR (依存関係あり/なし) をダウンロードすることができます。
     このトピックでのコードは、ビルド済み TwilioJava-3.3.8-with-dependencies JAR を使用して記述されています。
@@ -160,10 +160,10 @@
 2.  TwilioCloud WAR を解凍するように **startup.cmd** を変更します。
 3.  アプリケーションをコンピューティング エミュレーター用にコンパイルします。
 4.  コンピューティング エミュレーターでデプロイを開始します。
-5.  ブラウザーを開き、**<http://localhost:8080/TwilioCloud/callform.jsp>** を実行します。
+5.  ブラウザーを開き、**http://localhost:8080/TwilioCloud/callform.jsp** を実行します。
 6.  フォームで値を入力し、**[電話をかける]** クリックして、makecall.jsp で結果を確認します。
 
-Azure にデプロイする準備ができたら、クラウドへのデプロイ用に再コンパイルし、Azure にデプロイして、ブラウザーで [http://your\_hosted\_name][http://your\_hosted\_name]*.cloudapp.net/TwilioCloud/callform.jsp* を実行します (your\_hosted\_name\* は実際の値に置き換えてください)。
+Azure にデプロイする準備ができたら、クラウドへのデプロイ用に再コンパイルし、Azure にデプロイして、ブラウザーで http://*your_hosted_name*.cloudapp.net/TwilioCloud/callform.jsp を実行します (*your_hosted_name* は実際の値に置き換えてください)。
 
 ## 次のステップ
 
@@ -171,7 +171,7 @@ Azure 上の Java で Twilio を使用した基本機能を示すために、こ
 
 -   Web フォームを使用する代わりに、Azure ストレージ BLOB または SQL データベースを使用して、電話番号と通話テキストを保存できます。Java で Azure ストレージ BLOB を使用する方法の詳細については、[Java から BLOB ストレージ サービスを使用する方法に関するページ][Java から BLOB ストレージ サービスを使用する方法に関するページ]を参照してください。Java で SQL データベースを使用する方法の詳細については、[Java での SQL データベースの使用に関するページ][Java での SQL データベースの使用に関するページ]を参照してください。
 -   **RoleEnvironment.getConfigurationSettings** を使用して、Twilio のアカウント ID と認証トークンを makecall.jsp 内にハードコーディングするのではなく、デプロイの構成設定から取得するようにします。**RoleEnvironment** クラスについては、「[JSP での Azure サービス ランタイム ライブラリの使用][JSP での Azure サービス ランタイム ライブラリの使用]」および Azure サービス ランタイム パッケージのドキュメント ([][6]<http://dl.windowsazure.com/javadoc></a>) を参照してください。
--   makecall.jsp コードで、Twilio から提供される URL ([][7]<http://twimlets.com/message></a>) を **Url** 変数に設定します。この URL で、通話の次の動作を Twilio に指示する TwiML (Twilio マークアップ言語) 応答が返されるようにします。たとえば、返される TwiML 応答に **\<Say\>** 動詞を含めて、通話受信者に対してテキストが読み上げられるようにできます。Twilio から提供される URL を使用する代わりに、独自のサービスを作成して Twilio の要求への応答を返すことができます。詳細については、「[Java で音声および SMS 機能に Twilio を使用する方法][Java で音声および SMS 機能に Twilio を使用する方法]」を参照してください。TwiML の詳細については、[][8]<http://www.twilio.com/docs/api/twiml></a> で確認できます。**\<Say\>** を始めとする Twilio 動詞の詳細については、[][9]<http://www.twilio.com/docs/api/twiml/say></a> で確認できます。
+-   makecall.jsp コードで、Twilio から提供される URL ([][7]<http://twimlets.com/message></a>) を **Url** 変数に設定します。この URL で、通話の次の動作を Twilio に指示する TwiML (Twilio マークアップ言語) 応答が返されるようにします。たとえば、返される TwiML 応答に **\<Say\>** 動詞を含めて、通話受信者に対してテキストが読み上げられるようにできます。Twilihttp://api.twilio.como から提供される URL を使用する代わりに、独自のサービスを作成して Twilio の要求への応答を返すことができます。詳細については、「[Java で音声および SMS 機能に Twilio を使用する方法][Java で音声および SMS 機能に Twilio を使用する方法]」を参照してください。TwiML の詳細については、[][8]<http://www.twilio.com/docs/api/twiml></a> で確認できます。**\<Say\>** を始めとする Twilio 動詞の詳細については、[][9]<http://www.twilio.com/docs/api/twiml/say></a> で確認できます。
 -   また、Twilio に関するセキュリティ ガイドライン ([][10]<https://www.twilio.com/docs/security></a>) も参照してください。
 
 Twilio の詳細については、[][11]<https://www.twilio.com/docs></a> を参照してください。
@@ -182,7 +182,7 @@ Twilio の詳細については、[][11]<https://www.twilio.com/docs></a> を参
 -   [証明書を Java CA 証明書ストアに追加する方法][証明書を Java CA 証明書ストアに追加する方法]
 
   [Twilio および Java を使用した Azure 通話フォーム]: ./media/partner-twilio-java-phone-call-example/WA_TwilioJavaCallForm.jpg
-  []: http://www.twilio.com/pricing
+  [0]: http://www.twilio.com/pricing
   [1]: http://www.twilio.com/try-twilio
   [2]: http://www.twilio.com/api
   [3]: https://www.twilio.com/user/account/phone-numbers/verified#
@@ -191,7 +191,6 @@ Twilio の詳細については、[][11]<https://www.twilio.com/docs></a> を参
   [証明書を Java CA 証明書ストアに追加する方法]: ../java-add-certificate-ca-store
   [Hello World アプリケーションを Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) で作成する方法に関する情報]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690944.aspx
   [Twilio および Java を使用した Azure 通話応答]: ./media/partner-twilio-java-phone-call-example/WA_TwilioJavaMakeCall.jpg
-  [http://your\_hosted\_name]: http://*your_hosted_name
   [Java から BLOB ストレージ サービスを使用する方法に関するページ]: http://www.windowsazure.com/ja-jp/develop/java/how-to-guides/blob-storage/
   [Java での SQL データベースの使用に関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh749029.aspx
   [JSP での Azure サービス ランタイム ライブラリの使用]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690948.aspx

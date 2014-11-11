@@ -1,6 +1,7 @@
 <properties linkid="manage-services-hdinsight-howto-social-data" urlDisplayName="Analyze realt-time Twitter sentiment with Hbase in HDInsight" pageTitle="Analyze real-time Twitter sentiment with HBase in HDInsight | Azure" metaKeywords="" description="Learn how to do real-time analysis of big data using HBase in an HDInsight (Hadoop) cluster." metaCanonical="" services="hdinsight" documentationCenter="" title="Analyze real-time Twitter sentiment with HBase in HDInsight" authors="jgao" solutions="big-data" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/21/2014" ms.author="jgao"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/21/2014" ms.author="jgao" />
+
 
 # HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する
 
@@ -578,7 +579,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 5.  **HBaseReader** クラス内で、以下の定数値を変更します。
 
-    -   **CLUSTERNAME**: HBase クラスター名。たとえば、*<https://><hbaseclustername>.azurehdinsight.net/* などです。
+    -   **CLUSTERNAME**: HBase クラスター名。たとえば、*https://<hbaseclustername>.azurehdinsight.net/* などです。
     -   **HADOOPUSERNAME**: HBase クラスターの Hadoop ユーザーのユーザー名。既定の名前は *admin* です。
     -   **HADOOPUSERPASSWORD**: HBase クラスターの Hadoop ユーザーのパスワード。
     -   **HBASETABLENAME** = "tweets\_by\_words";
@@ -625,28 +626,28 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 4.  以下のコードをコピーして、ファイルに貼り付けます。このコードの作成者は Alastair Aitchison です。詳しくは、[http://alastaira.wordpress.com/2011/04/15/bing-maps-ajax-v7-heatmap-library/](http://alastaira.wordpress.com/2011/04/15/bing-maps-ajax-v7-heatmap-library/) を参照してください。
 
         /*******************************************************************************
-        * Author: Alastair Aitchison
-        * Website: http://alastaira.wordpress.com
-        * Date: 15th April 2011
-        * 
-        * Description: 
-        * This JavaScript file provides an algorithm that can be used to add a heatmap
-        * overlay on a Bing Maps v7 control. The intensity and temperature palette
-        * of the heatmap are designed to be easily customisable.
+		* Author: Alastair Aitchison
+		* Website: http://alastaira.wordpress.com
+		* Date: 15th April 2011
+		* 
+		* Description: 
+		* This JavaScript file provides an algorithm that can be used to add a heatmap
+		* overlay on a Bing Maps v7 control. The intensity and temperature palette
+		* of the heatmap are designed to be easily customisable.
         *
-        * Requirements:
-        * The heatmap layer itself is created dynamically on the client-side using
-        * the HTML5 <canvas> element, and therefore requires a browser that supports
-        * this element. It has been tested on IE9, Firefox 3.6/4 and 
-        * Chrome 10 browsers. If you can confirm whether it works on other browsers or
-        * not, I'd love to hear from you!
+		* Requirements:
+		* The heatmap layer itself is created dynamically on the client-side using
+		* the HTML5 <canvas> element, and therefore requires a browser that supports
+		* this element. It has been tested on IE9, Firefox 3.6/4 and 
+		* Chrome 10 browsers. If you can confirm whether it works on other browsers or
+		* not, I'd love to hear from you!
 
-        * Usage:
-        * The HeatMapLayer constructor requires:
-        * - A reference to a map object
-        * - An array or Microsoft.Maps.Location items
-        * - Optional parameters to customise the appearance of the layer
-        *  (Radius,, Unit, Intensity, and ColourGradient), and a callback function
+		* Usage:
+		* The HeatMapLayer constructor requires:
+		* - A reference to a map object
+		* - An array or Microsoft.Maps.Location items
+		* - Optional parameters to customise the appearance of the layer
+		*  (Radius,, Unit, Intensity, and ColourGradient), and a callback function
         *
         */
 
@@ -1212,7 +1213,7 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 
   [img-app-arch]: ./media/hdinsight-hbase-analyze-twitter-sentiment/AppArchitecture.png
   [img-bing-map]: ./media/hdinsight-hbase-analyze-twitter-sentiment/TwitterSentimentBingMap.png
-  []: https://github.com/maxluk/tweet-sentiment
+  [0]: https://github.com/maxluk/tweet-sentiment
   [前提条件]: #prerequisites
   [Twitter アプリケーションを作成する]: #twitter
   [簡単な Twitter ストリーミング サービスを作成する]: #streaming

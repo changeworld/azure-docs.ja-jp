@@ -1,6 +1,10 @@
 <properties linkid="develop-php-website-with-sql-database-and-webmatrix" urlDisplayName="Web w/ SQL + WebMatrix" pageTitle="PHP website with SQL Database and WebMatrix - Azure" metaKeywords="" description="A tutorial that demonstrates how to use the free WebMatrix IDE to create and deploy a PHP website that stores data in SQL Database." metaCanonical="" services="" documentationCenter="" title="Create and Deploy a PHP Website and SQL Database using WebMatrix" authors="cephalin" solutions="" manager="wpickett" editor="mollybos" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin" />
+
+
+
+
 
 # WebMatrix を使用して PHP Web サイトと SQL Database を作成およびデプロイする
 
@@ -20,7 +24,7 @@
 
 ![Azure PHP Web Site][Azure PHP Web Site]
 
-[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## 前提条件
 
@@ -143,9 +147,9 @@ WebMatrix は、[管理ポータル][管理ポータル]からインストール
 
     ![WebMatrix - Publish][WebMatrix - Publish]
 
-3.  [http://[your][http://[your] web site name].azurewebsites.net/createtable.php に移動すると、`items` テーブルを作成できます。
+3.  http://[Web サイト名].azurewebsites.net/createtable.php に移動すると、`items` テーブルを作成できます。
 
-4.  最後に、[http://[][http://[your]Web サイト名].azurewebsites.net/index.php に移動してアプリケーションを起動します。
+4.  最後に、http://[Web サイト名].azurewebsites.net/index.php に移動してアプリケーションを起動します。
 
 ## アプリケーションの変更と再発行
 
@@ -172,7 +176,6 @@ WebMatrix は、[管理ポータル][管理ポータル]からインストール
 
   [SQL Server Express]: http://www.microsoft.com/ja-jp/download/details.aspx?id=29062
   [Azure PHP Web Site]: ./media/web-sites-php-sql-database-use-webmatrix/tasklist_app_windows.png
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [ダウンロード]: http://go.microsoft.com/fwlink/?LinkId=252504
   [管理ポータル]: https://manage.windowsazure.com
   [新しい Azure の Web サイトの作成]: ./media/web-sites-php-sql-database-use-webmatrix/NewWebSite1.jpg

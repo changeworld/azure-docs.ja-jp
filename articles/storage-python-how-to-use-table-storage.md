@@ -1,26 +1,26 @@
 <properties linkid="develop-python-table-service" urlDisplayName="Table Service" pageTitle="How to use table storage (Python) | Microsoft Azure" metaKeywords="Azure table Python, creating table Azure, deleting table Azure, inserting table Azure, querying table Azure" description="Learn how to use the Table service from Python to create and delete a table, and insert, delete, and query the table." metaCanonical="" services="storage" documentationCenter="Python" title="How to Use the Table Storage Service from Python" authors="huvalo" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo" />
 
 # Python からテーブル ストレージ サービスを使用する方法
 
-このガイドでは、Windows Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Python API を使用して記述されています。紹介するシナリオは、**テーブルの作成と削除、テーブルのエンティティの挿入とクエリ実行**などです。テーブルの詳細については、「[次のステップ][]」のセクションを参照してください。
+このガイドでは、Windows Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Python API を使用して記述されています。紹介するシナリオは、**テーブルの作成と削除、テーブルのエンティティの挿入とクエリ実行**などです。テーブルの詳細については、「[次のステップ][次のステップ]」のセクションを参照してください。
 
 ## 目次
 
-[テーブル サービスとは][]
- [概念][]
- [Azure ストレージ アカウントの作成][]
- [方法: テーブルを作成する][]
- [方法: エンティティをテーブルに追加する][]
- [方法: エンティティを更新する][]
- [方法: エンティティのグループを変更する][]
- [方法: エンティティを照会する][]
- [方法: エンティティのセットを照会する][]
- [方法: エンティティ プロパティのサブセットを照会する][]
- [方法: エンティティを削除する][]
- [方法: テーブルを削除する][]
- [次のステップ][]
+[テーブル サービスとは][テーブル サービスとは]
+ [概念][概念]
+ [Azure ストレージ アカウントの作成][Azure ストレージ アカウントの作成]
+ [方法: テーブルを作成する][方法: テーブルを作成する]
+ [方法: エンティティをテーブルに追加する][方法: エンティティをテーブルに追加する]
+ [方法: エンティティを更新する][方法: エンティティを更新する]
+ [方法: エンティティのグループを変更する][方法: エンティティのグループを変更する]
+ [方法: エンティティを照会する][方法: エンティティを照会する]
+ [方法: エンティティのセットを照会する][方法: エンティティのセットを照会する]
+ [方法: エンティティ プロパティのサブセットを照会する][方法: エンティティ プロパティのサブセットを照会する]
+ [方法: エンティティを削除する][方法: エンティティを削除する]
+ [方法: テーブルを削除する][方法: テーブルを削除する]
+ [次のステップ][次のステップ]
 
 [WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
@@ -143,8 +143,8 @@
 
 これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   MSDN リファレンス: [Azure のデータの格納とアクセス][]
--   [Azure のストレージ チーム ブログ][]
+-   MSDN リファレンス: [Azure のデータの格納とアクセス][Azure のデータの格納とアクセス]
+-   [Azure のストレージ チーム ブログ][Azure のストレージ チーム ブログ]
 
   [次のステップ]: #next-steps
   [テーブル サービスとは]: #what-is
@@ -159,5 +159,5 @@
   [方法: エンティティ プロパティのサブセットを照会する]: #query-entity-properties
   [方法: エンティティを削除する]: #delete-entity
   [方法: テーブルを削除する]: #delete-table
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
