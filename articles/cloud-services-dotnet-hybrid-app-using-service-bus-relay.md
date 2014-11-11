@@ -19,7 +19,7 @@ Windows Azure リソースをクラウドで運用するアプリケーション
 -   Azure アプリケーションと別の場所でホストされている Web サービスの間で、
     Azure の Service Bus Relay を使用してデータを共有する方法。
 
-[WACOM.INCLUDE [create-account-note][create-account-note]]
+[WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
 ### Service Bus Relay がハイブリッド ソリューションで役立つ理由
 
@@ -51,7 +51,7 @@ Service Bus は、Azure Active Directory Access Control を使用して、
 このチュートリアルでは、商品在庫ページに商品の一覧を表示する
 ASP.NET MVC 4 Web サイトを作成します。
 
-![][]
+![][0]
 
 このチュートリアルでは、既存の内部設置型システムに商品情報が
 格納されているものとし、Service Bus Relay を使用してそのシステムに
@@ -729,7 +729,7 @@ Azure では、消費されたサーバー時間の 1 時間単位の
 -   [サービス バス キューの使用方法][サービス バス キューの使用方法]
 
   [create-account-note]: ../includes/create-account-note.md
-  []: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
+  [0]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
   [1]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/App2.png
   [ツールと SDK の入手]: http://go.microsoft.com/fwlink/?LinkId=271920
   [2]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/getting-started-41.png
