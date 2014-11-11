@@ -1,18 +1,18 @@
 <properties linkid="develop-dotnet-aspnet-mvc-4-mobile-website" urlDisplayName="ASP.NET MVC 5 mobile website" pageTitle=".NET ASP.NET MVC 5 mobile website - Azure tutorials" metaKeywords="Azure tutorial, Azure web app tutorial, Azure mobile app, Azure ASP.NET MVC 5,,ASP.NET MVC" description="A tutorial that teaches you how to deploy a web application to an Azure website using mobile features in ASP.NET MVC 5 web application." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Deploy an ASP.NET MVC Mobile Web Application on Azure Websites" authors="cephalin,riande" solutions="" manager="wpickett" editor="mollybos" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="08/19/2014" ms.author="cephalin,riande"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="08/19/2014" ms.author="cephalin,riande" />
 
 # ASP.NET MVC 5 モバイル Web アプリケーションを Azure Web サイトに展開する
 
 このチュートリアルでは、モバイル対応の ASP.NET MVC 5 Web アプリケーションを作成し、Windows Azure に展開する方法について基本を説明します。このチュートリアルを実行するには、[Visual Studio Express 2013 for Web][Visual Studio Express 2013 for Web] が必要です。または Visual Studio のプロフェッショナル エディションを既にお持ちの場合はそれを使用することもできます。
 
-[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ### 作成するアプリケーション:
 
 このチュートリアルでは、[スタート プロジェクト][スタート プロジェクト]に用意されている単純な会議一覧アプリケーションにモバイル機能を追加します。次のスクリーンショットは、完成した アプリケーションの ASP.NET セッションを Internet Explorer 11 F12 開発ツールのブラウザー エミュレーターで表示したものです。
 
-![][]
+![][0]
 
 Internet Explorer 11 F12 開発者ツールおよび [Fiddler ツール][Fiddler ツール] を使用してアプリケーションのデバッグに役立てることができます。
 
@@ -462,7 +462,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 タイトル リンクをタップして、それぞれのセッションに移動することもできます。次の図では、コードの変更が反映されています。
 
-![][]
+![][0]
 
 適用したブートストラップのグリッド システムによって、モバイル ブラウザーのセッションが自動的に縦並びに配置されます。また、タグが非表示になります。デスクトップ ブラウザーに切り替えます。
 
@@ -480,7 +480,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 **[ASP.NET]** リンクをタップします。ASP.NET タグのセッションが表示されます。
 
-![][]
+![][0]
 
 **[Building a Single Page Application with ASP.NET and AngularJS]** リンクをタップします。
 
@@ -557,7 +557,7 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
   [Visual Studio Express 2013 for Web]: http://www.visualstudio.com/downloads/download-visual-studio-vs#d-express-web
   [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [スタート プロジェクト]: http://go.microsoft.com/fwlink/?LinkID=398780&clcid=0x409
-  []: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/SessionsByTag-ASP.NET-Fixed.png
+  [0]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/SessionsByTag-ASP.NET-Fixed.png
 
   [Visual Studio 2013 用の Azure SDK]: http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409
   [Web Platform Installer - Azure SDK for .NET]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/WebPIAzureSdk23NetVS13.png

@@ -1,6 +1,6 @@
 <properties linkid="develop-net-how-to-guides-new-relic" urlDisplayName="New Relic" pageTitle="Using New Relic with Azure - Azure feature guides" metaKeywords="" description="Learn how to use the New Relic service to manage and monitor your Azure application." metaCanonical="" services="" documentationCenter=".NET" title="New Relic Application Performance Management on Azure" authors="" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="new relic"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="new="" relic" />
 
 # Azure の New Relic によるアプリケーション パフォーマンス管理
 
@@ -180,19 +180,11 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
   [ライセンス キーの入力]: ./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget07.png
   [アプリケーション名の入力]: ./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget08.png
   [クラウド プロジェクトの発行]: ./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget09.png
-  [Deploying an ASP.NET Web Application to a Azure Web Site (ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする)]: /ja-jp/develop/net/tutorials/get-started/
   [発行の設定]: ./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget10.png
   [New Relic の監視ダッシュボード]: ./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelic_app.png
-  []: https://newrelic.com/docs/site/the-new-relic-ui#functions
-  [と]: https://newrelic.com/docs/site/the-new-relic-ui#drilldown
   [Apdex]: https://newrelic.com/docs/site/apdex
   [地理]: https://docs.newrelic.com/docs/new-relic-browser/geography-dashboard
   [Web トランザクション]: https://newrelic.com/docs/applications-dashboards/web-transactions
-  [主要トランザクション]: https://newrelic.com/docs/site/key-transactions
   [エラー]: https://newrelic.com/docs/site/errors
   [1]: ./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelic_app_browser.png
-  [Installing the on Azure (Azure への .NET エージェントのインストール)]: https://newrelic.com/docs/dotnet/installing-the-net-agent-on-azure
-  [The New Relic User Interface (New Relic ユーザー インターフェイス)]: https://newrelic.com/docs/site/the-new-relic-ui
-  [Applications Overview (アプリケーションの概要)」]: https://newrelic.com/docs/site/applications-overview
   [Real User Monitoring]: https://newrelic.com/docs/features/real-user-monitoring
-  [Finding Help (ヘルプの利用)]: https://newrelic.com/docs/site/finding-help

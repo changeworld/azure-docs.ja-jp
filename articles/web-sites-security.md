@@ -1,6 +1,6 @@
 <properties title="Securing an Azure Website" pageTitle="Securing an Azure Website." description="Learn how to secure an Azure Website." metaKeywords="Azure web site security, azure web site https, azure web site ftps, azure web site ssl, azure web site ssl rewrite" services="web-sites" solutions="" documentationCenter="web" authors="larryfr" videoId="" scriptId="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr" />
 
 ## Azure Web サイト内の Web アプリケーションのセキュリティ保護
 
@@ -133,7 +133,6 @@ Azure Web サイトの **web.config** または **applicationhost.config** フ�
 
 攻撃の検出に役立つことのある Azure Websites のログ情報の詳細については、「[Azure の Web サイトの診断ログを有効にする][Azure の Web サイトの診断ログを有効にする]」を参照してください。
 
-  [Open Web Application Security Project (OWASP)]: https://www.owasp.org/index.php/Main_Page
   [top 10 プロジェクト]: https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project
   [保護された通信]: #https
   [保護された開発]: #develop
@@ -143,11 +142,9 @@ Azure Web サイトの **web.config** または **applicationhost.config** フ�
   [RequireHttps]: http://msdn.microsoft.com/ja-jp/library/system.web.mvc.requirehttpsattribute.aspx
   [安全な ASP.NET MVC 5 アプリケーションを Azure の Web サイトにデプロイする]: /ja-jp/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/
   [例]: #example
-  [Uploading/downloading files over FTP and collecting diagnostics logs (FTP を介したファイルのアップロード/ダウンロードおよび診断ログの収集)]: http://blogs.msdn.com/b/avkashchauhan/archive/2012/06/19/windows-azure-website-uploading-downloading-files-over-ftp-and-collecting-diagnostics-logs.aspx
   [URL 書き換え]: http://www.iis.net/downloads/microsoft/url-rewrite
   [Web サイトの構成方法]: /ja-jp/documentation/articles/web-sites-configure/
   [Azure の管理ポータル]: https://manage.windowsazure.com
   [File Transfer Protocol]: http://en.wikipedia.org/wiki/File_Transfer_Protocol
   [Microsoft Azure のトラスト センター]: /ja-jp/support/trust-center/security/
-  [Configuration options unlocked in Azure Web Sites (Azure Web サイトでロック解除される構成オプション)]: http://azure.microsoft.com/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/
   [Azure の Web サイトの診断ログを有効にする]: /ja-jp/documentation/articles/web-sites-enable-diagnostic-log/

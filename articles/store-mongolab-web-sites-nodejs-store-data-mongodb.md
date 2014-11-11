@@ -1,6 +1,6 @@
 <properties linkid="develop-nodejs-tutorials-web-site-with-mongodb-mongolab" urlDisplayName="Website with MongoDB" pageTitle="Node.js website with MongoDB on MongoLab - Azure" metaKeywords="" description="Learn how to create a Node.js Azure Website that connects to a MongoDB instance hosted on MongoLab." metaCanonical="" services="web-sites,virtual-machines" documentationCenter="nodejs" title="Create a Node.js Application on Azure with MongoDB using the MongoLab Add-On" authors="eric@mongolab.com" solutions="" manager="" editor="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="eric@mongolab.com"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="eric@mongolab.com" />
 
 # MongoLab アドオンを使用して Azure で MongoDB 対応の Node.js アプリケーションを作成する
 
@@ -21,7 +21,7 @@
 
 -   [Git][Git]
 
-[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## クイック スタート
 
@@ -61,7 +61,7 @@ Azure ストアにある程度慣れている場合は、このセクション�
 
 ## <a name="provision"></a>データベースの準備
 
-[WACOM.INCLUDE [howto-provision-mongolab][howto-provision-mongolab]]
+[WACOM.INCLUDE [howto-provision-mongolab](../includes/howto-provision-mongolab.md)]
 
 ## <a name="create"></a>アプリケーションの作成
 
@@ -429,11 +429,11 @@ Azure での Web サイトの作成は簡単です。初めて Azure の Web サ
 
 #### MongoLab 接続文字列を取得する
 
-[WACOM.INCLUDE [howto-get-connectioninfo-mongolab][howto-get-connectioninfo-mongolab]]
+[WACOM.INCLUDE [howto-get-connectioninfo-mongolab](../includes/howto-get-connectioninfo-mongolab.md)]
 
 #### Web サイトの環境変数に接続文字列を追加する
 
-[WACOM.INCLUDE [howto-save-connectioninfo-mongolab][howto-save-connectioninfo-mongolab]]
+[WACOM.INCLUDE [howto-save-connectioninfo-mongolab](../includes/howto-save-connectioninfo-mongolab.md)]
 
 ## 成功です。
 
@@ -443,7 +443,7 @@ Azure での Web サイトの作成は簡単です。初めて Azure の Web サ
 
 ## <a name="manage"></a>データベースの管理
 
-[WACOM.INCLUDE [howto-access-mongolab-ui][howto-access-mongolab-ui]]
+[WACOM.INCLUDE [howto-access-mongolab-ui](../includes/howto-access-mongolab-ui.md)]
 
 ご利用ありがとうございます。これで、MongoLab がホスティングする MongoDB データベースに支えられた Node.js アプリケーションが公開されました。MongoLab データベースを利用しているため、データベースに関する疑問や懸念がある場合、または、MongoDB やノード ドライバーそのものに関するヘルプが必要な場合は、[support@mongolab.com](mailto:support@mongolab.com) にお問い合わせください。それではお元気で。
 
@@ -452,7 +452,6 @@ Azure での Web サイトの作成は簡単です。初めて Azure の Web サ
   [アプリケーションの作成]: #create
   [アプリケーションの展開]: #deploy
   [データベースの管理]: #manage
-  [\<a href="mailto:support@mongolab.com"\>support@mongolab.com\</a\>]: mailto:support@mongolab.com
   [Node.js]: http://nodejs.org
   [Git]: http://git-scm.com
   [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md

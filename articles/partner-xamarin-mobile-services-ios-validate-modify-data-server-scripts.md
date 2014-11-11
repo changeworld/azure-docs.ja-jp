@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-validate-modify-and-augment-data-Xamarin-iOS" urlDisplayName="" pageTitle="Use server scripts to validate and modify data (Xamarin iOS) | Mobile Dev Center" metaKeywords="" description="Learn how to validate and modify data sent using server scripts from your Xamarin iOS app." metaCanonical="" services="" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using server scripts" authors="donnam" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="donnam"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="donnam" />
 
 # サーバー スクリプトを使用したモバイル サービスのデータの検証および変更
 
@@ -24,7 +24,7 @@
 
 1.  [Azure の管理ポータル][Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
@@ -114,14 +114,6 @@
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Windows ストア C#]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-js "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-wp8 "Windows Phone"
-  [iOS]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-ios "iOS"
-  [Android]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-android "Android"
-  [HTML]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-html "HTML"
-  [Xamarin.iOS]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android "Xamarin.Android"
   [ValidateModifyData アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=331330
   [文字列の長さの検証の追加]: #string-length-validation
   [検証をサポートするためのクライアントの更新]: #update-client-validation
@@ -129,7 +121,7 @@
   [タイムスタンプを表示するためのクライアントの更新]: #update-client-timestamp
   [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-ios
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/partner-xamarin-mobile-services-ios-validate-modify-data-server-scripts/mobile-services-selection.png
+  [0]: ./media/partner-xamarin-mobile-services-ios-validate-modify-data-server-scripts/mobile-services-selection.png
   [1]: ./media/partner-xamarin-mobile-services-ios-validate-modify-data-server-scripts/mobile-portal-data-tables.png
   [2]: ./media/partner-xamarin-mobile-services-ios-validate-modify-data-server-scripts/mobile-insert-script-users.png
   [3]: ./media/partner-xamarin-mobile-services-ios-validate-modify-data-server-scripts/mobile-quickstart-data-error-ios.png

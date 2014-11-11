@@ -1,6 +1,6 @@
 <properties linkid="develop-node-create-a-website-mac" urlDisplayName="Website" pageTitle="Create a Node.js website on Mac - Azure tutorials" metaKeywords="Azure create website Node, Azure deploy website Node, website Node.js, Node website" description="Learn how to build and deploy a Node.js website in Azure. Sample code is written in Java." metaCanonical="" services="web-sites" documentationCenter="nodejs" title="Build and deploy a Node.js website to Azure" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
 # Node.js Web サイトの構築と Azure へのデプロイ
 
@@ -28,11 +28,11 @@ Azure Web サイトを作成し、Web サイトの Git 発行を有効にする�
 
 2.  ポータルの左下にある **[+ 新規]** アイコンをクリックします。
 
-    ![+ 新規 リンクが強調表示された Azure ポータル][]
+    ![+ 新規 リンクが強調表示された Azure ポータル][+ 新規 リンクが強調表示された Azure ポータル]
 
 3.  **[Web サイト]** をクリックし、**[簡易作成]** をクリックします。**[URL]** ボックスに値を入力し、**[リージョン]** ボックスの一覧で Web サイトのデータセンターを選択します。ダイアログの下部にあるチェックマークをクリックします。
 
-    ![簡易作成 ダイアログ][]
+    ![簡易作成 ダイアログ][簡易作成 ダイアログ]
 
 4.  Web サイトの状況が **[実行中]** に変わったら、Web サイトの名前をクリックして**ダッシュボード**にアクセスします。
 
@@ -165,9 +165,7 @@ Azure への展開後にアプリケーションで問題が発生した場合�
   [Node]: http://nodejs.org
   [Git]: http://git-scm.com
   ["Hello World" メッセージを表示しているブラウザー]: ./media/web-sites-nodejs-develop-deploy-mac/helloazure.png
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A7171371E
   [Azure の管理ポータル]: http://manage.windowsazure.com
-  [+ 新規 リンクが強調表示された Azure ポータル]: ./media/web-sites-nodejs-develop-deploy-mac/plus-new.png
   [簡易作成 ダイアログ]: ./media/web-sites-nodejs-develop-deploy-mac/create-quick-website.png
   [Open web site dashboard]: ./media/web-sites-nodejs-develop-deploy-mac/go_to_dashboard.png
   [Git 発行の設定]: ./media/web-sites-nodejs-develop-deploy-mac/setup_git_publishing.png
@@ -175,8 +173,6 @@ Azure への展開後にアプリケーションで問題が発生した場合�
   [ユーザー名とパスワードの入力を求めるダイアログ]: ./media/web-sites-nodejs-develop-deploy-mac/git-deployment-credentials.png
   [Web サイトのリポジトリの作成後に返される Git 展開の手順]: ./media/web-sites-nodejs-develop-deploy-mac/git-instructions.png
   [1]: ./media/web-sites-nodejs-develop-deploy-mac/helloworldlocal.png
-  [2]: http://git-scm.com/
-  [Git のダウンロード ページ]: http://git-scm.com/download
   [ポータルでの Git デプロイの状態]: ./media/web-sites-nodejs-develop-deploy-mac/git_deployments_first.png
   [ポータルで更新された Git 展開の状態]: ./media/web-sites-nodejs-develop-deploy-mac/git_deployments_second.png
   [Mac および Linux 用 Azure コマンド ライン ツール]: /ja-jp/documentation/articles/xplat-cli/

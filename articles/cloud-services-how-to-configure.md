@@ -1,10 +1,10 @@
 <properties linkid="manage-services-how-to-configure-a-cloud-service" urlDisplayName="How to configure" pageTitle="How to configure a cloud service - Azure" metaKeywords="Configuring cloud services" description="Learn how to configure cloud services in Azure. Learn to update the cloud service configuration and configure remote access to role instances." metaCanonical="" services="cloud-services" documentationCenter="" title="How to Configure Cloud Services" authors="davidmu" solutions="" manager="" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="davidmu"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="davidmu" />
 
 # <span id="configurecloudservice"></span></a>クラウド サービスの構成方法
 
-[WACOM.INCLUDE [disclaimer][disclaimer]]
+[WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
 
 クラウド サービスで最もよく使用される設定は Azure の管理ポータルで構成できます。また、構成ファイルを直接更新する場合は、サービス構成ファイルをダウンロードして内容を更新し、更新したファイルをアップロードして、クラウド サービスの構成を更新します。どちらの方法でも、構成の更新はすべてのロール インスタンスに適用されます。
 
@@ -25,7 +25,7 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 
     **[構成]** ページでは、監視の構成、ロール設定の更新、およびロール インスタンス (仮想マシン) のゲスト オペレーティング システムとファミリの選択ができます。
 
-    ![構成 ページ][]
+    ![構成 ページ][構成 ページ]
 
 3.  監視設定では、監視レベルの設定 ([詳細] または [最小])、および詳細監視に必要な診断接続文字列の構成を行います。手順については、「[クラウド サービスの監視方法][クラウド サービスの監視方法]」を参照してください。
 
@@ -148,4 +148,3 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
   [1]: http://www.windowsazure.com/ja-jp/support/legal/sla/
   [Azure ロールのリモート デスクトップ接続をセットアップする]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh124107.aspx
   [クラウド サービス リモート]: ./media/cloud-services-how-to-configure/CloudServices_Remote.png
-  [CloudServices\_CreateNewCertDropDown]: ./media/cloud-services-how-to-configure/CloudServices_CreateNewCertDropDown.png

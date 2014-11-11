@@ -1,12 +1,12 @@
 <properties linkid="manage-services-hdinsight-version" urlDisplayName="HDInsight Hadoop Version" pageTitle="What's new in Hadoop cluster versions of HDInsight? | Azure" metaKeywords="hdinsight, hadoop, hdinsight hadoop, hadoop azure" description="HDInsight supports multiple Hadoop cluster versions deployable at any time. See the Hadoop and HortonWorks Data Platform (HDP) distribution versions supported." services="HDInsight" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" title="What's new in the cluster versions provided by HDInsight?" authors="bradsev" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev" />
 
 # HDInsight で提供される Hadoop クラスター バージョンの新機能
 
 ## HDInsight のバージョン
 
-HDInsight は、いつでも展開できる Hadoop クラスター バージョンを複数サポートしています。各バージョンを選択すると、特定のバージョンの Hortonworks Data Platform (HDP) ディストリビューションと、そのディストリビューションに含まれるコンポーネントがプロビジョニングされます。各 HDInsight クラスター バージョンに対応するコンポーネントのバージョンを、次の表にまとめます。[Azure HDInsight][] で使用される既定のクラスター バージョンは、現在、HDP 2.1 を基盤とした 3.1 です。
+HDInsight は、いつでも展開できる Hadoop クラスター バージョンを複数サポートしています。各バージョンを選択すると、特定のバージョンの Hortonworks Data Platform (HDP) ディストリビューションと、そのディストリビューションに含まれるコンポーネントがプロビジョニングされます。各 HDInsight クラスター バージョンに対応するコンポーネントのバージョンを、次の表にまとめます。[Azure HDInsight][Azure HDInsight] で使用される既定のクラスター バージョンは、現在、HDP 2.1 を基盤とした 3.1 です。
 
 <table>
 <colgroup>
@@ -122,11 +122,11 @@ HDInsight は、いつでも展開できる Hadoop クラスター バージョ�
 
 **現在のコンポーネント バージョン情報を取得する**
 
-HDInsight クラスターのバージョンに関連付けられたコンポーネントのバージョンは、将来 HDInsight が更新されたときに変更される可能性があります。利用可能なコンポーネントを特定し、どのバージョンがクラスターに使用されているかどうかを確認する 1 つの方法は、Ambari REST API を使用することです。**GetComponentInformation** コマンドを使用すると、サービス コンポーネントに関する情報を取得できます。詳細については、「[Ambari のドキュメント][]」を参照してください。この情報を取得するもう 1 つの方法は、リモート デスクトップを使用してクラスターにログインし、"C:\\apps\\dist\\" ディレクトリの内容を直接確認することです。
+HDInsight クラスターのバージョンに関連付けられたコンポーネントのバージョンは、将来 HDInsight が更新されたときに変更される可能性があります。利用可能なコンポーネントを特定し、どのバージョンがクラスターに使用されているかどうかを確認する 1 つの方法は、Ambari REST API を使用することです。**GetComponentInformation** コマンドを使用すると、サービス コンポーネントに関する情報を取得できます。詳細については、「[Ambari のドキュメント][Ambari のドキュメント]」を参照してください。この情報を取得するもう 1 つの方法は、リモート デスクトップを使用してクラスターにログインし、"C:\\apps\\dist\\" ディレクトリの内容を直接確認することです。
 
 **リリース ノート**
 
-HDInsight の最新バージョンに関する追加のリリース ノートは、「[HDInsight Release Notes (HDInsight のリリース ノート)][]」を参照してください。
+HDInsight の最新バージョンに関する追加のリリース ノートは、「[HDInsight Release Notes (HDInsight のリリース ノート)][HDInsight Release Notes (HDInsight のリリース ノート)]」を参照してください。
 
 ### HDInsight クラスターのプロビジョニング時にバージョンを選択
 
@@ -161,7 +161,7 @@ HDInsight PowerShell コマンドレットまたは HDInsight .NET SDK を使用
 次の表に、現在使用できる HDInsight のバージョン、該当する Hortonworks Data Platform (HDP) のバージョン、そのリリース日を示します。非推奨となった場合は、サポート有効期限とその日付も記載されます。以下の点に注意してください。
 
 -   ヘッド ノードを 2 つ備えた可用性の高いクラスターは、HDInsight 2.1、3.0、および 3.1 クラスターでは既定でデプロイされています。HDInsight 1.6 クラスターでは利用できません。
--   特定のバージョンのサポート期限が切れると、Azure の管理ポータルから利用できなくなる可能性があります。次の表に、Azure の管理ポータルで利用できるバージョンを示します。クラスター バージョンは、非推奨となるまでは、PowerShell [New-AzureHDInsightCluster][] コマンドの `Version` パラメーターと .NET SDK で利用できます。
+-   特定のバージョンのサポート期限が切れると、Azure の管理ポータルから利用できなくなる可能性があります。次の表に、Azure の管理ポータルで利用できるバージョンを示します。クラスター バージョンは、非推奨となるまでは、PowerShell [New-AzureHDInsightCluster][New-AzureHDInsightCluster] コマンドの `Version` パラメーターと .NET SDK で利用できます。
 
 <table border="1">
 <tr>
@@ -322,23 +322,22 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
 **非推奨となる日**は、それ以降 HDInsight でそのクラスター バージョンが作成できなくなる日付です。
 
-> [WACOM.NOTE] HDInsight 2.1 および 3.0 のクラスターは Azure ゲスト OS [ファミリ 4][] で実行されます。この OS は Windows Server 2012 R2 の 64 ビット版を使用し、.NET Framework 4.0、4.5. および 4.5.1 をサポートします。
+> [WACOM.NOTE] HDInsight 2.1 および 3.0 のクラスターは Azure ゲスト OS [ファミリ 4][ファミリ 4] で実行されます。この OS は Windows Server 2012 R2 の 64 ビット版を使用し、.NET Framework 4.0、4.5. および 4.5.1 をサポートします。
 
 ## HDInsight バージョンに対応する Hortonworks リリース ノート
 
--   HDInsight クラスター Version 3.1 は、[Hortonworks Data Platform 2.1][] を基盤とする Hadoop ディストリビューションを使用します。これは、Azure HDInsight ポータルを使用する場合に作成される既定の Hadoop クラスターです。
+-   HDInsight クラスター Version 3.1 は、[Hortonworks Data Platform 2.1][Hortonworks Data Platform 2.1] を基盤とする Hadoop ディストリビューションを使用します。これは、Azure HDInsight ポータルを使用する場合に作成される既定の Hadoop クラスターです。
 
--   HDInsight クラスター Version 3.0 は、[Hortonworks Data Platform 2.0][] を基盤とする Hadoop ディストリビューションを使用します。
+-   HDInsight クラスター Version 3.0 は、[Hortonworks Data Platform 2.0][Hortonworks Data Platform 2.0] を基盤とする Hadoop ディストリビューションを使用します。
 
--   HDInsight クラスター Version 2.1 は、[Hortonworks Data Platform 1.3][] を基盤とする Hadoop ディストリビューションを使用します。
+-   HDInsight クラスター Version 2.1 は、[Hortonworks Data Platform 1.3][Hortonworks Data Platform 1.3] を基盤とする Hadoop ディストリビューションを使用します。
 
--   HDInsight クラスター Version 1.6 は、[Hortonworks Data Platform 1.1][] を基盤とする Hadoop ディストリビューションを使用します。
+-   HDInsight クラスター Version 1.6 は、[Hortonworks Data Platform 1.1][Hortonworks Data Platform 1.1] を基盤とする Hadoop ディストリビューションを使用します。
 
   [Azure HDInsight]: http://go.microsoft.com/fwlink/?LinkID=285601
   [Ambari のドキュメント]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
-  [HDInsight Release Notes (HDInsight のリリース ノート)]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-release-notes/
-  [New-AzureHDInsightCluster]: http://msdn.microsoft.com/en-us/library/dn593744.aspx
-  [ファミリ 4]: http://msdn.microsoft.com/en-us/library/azure/ee924680.aspx#explanation
+  [New-AzureHDInsightCluster]: http://msdn.microsoft.com/ja-jp/library/dn593744.aspx
+  [ファミリ 4]: http://msdn.microsoft.com/ja-jp/library/azure/ee924680.aspx#explanation
   [Hortonworks Data Platform 2.1]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.1/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.1.html
   [Hortonworks Data Platform 2.0]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.8.0/bk_releasenotes_hdp_2.0/content/ch_relnotes-hdp2.0.8.0.html
   [Hortonworks Data Platform 1.3]: http://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.3.0_1.html

@@ -1,6 +1,6 @@
 <properties linkid="develop-media-services-tutorials-smooth-streaming-plugin-for-open-source-media-framework" urlDisplayName="Smooth Streaming Plugin" pageTitle="Smooth Streaming Plugin for the Open Source Media Framework" metaKeywords="" description="Learn how to use the Azure Media Services Smooth Streaming plugin for the Adobe Open Source Media Framework." metaCanonical="" services="media-services" documentationCenter="" title="How to Use the Microsoft Smooth Streaming Plugin for the Adobe Open Source Media Framework" authors="" solutions="" manager="" editor="" />
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author></tags>
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="" />
 
 # Adobe Open Source Media Framework 用 Microsoft スムーズ ストリーミング プラグインを使用する方法
 
@@ -14,7 +14,7 @@ OSMF 用 SS には、次に示す 2 つのバージョンのプラグインが�
 
 -   OSMF 用 Dynamic スムーズ ストリーミング プラグイン (.swf)
 
-このドキュメントでは、OSMF および OSMF プラグインに関する一般的な実務知識を持つ読者を想定しています。OSMF の詳細については、[OSMF の公式サイト][]にあるドキュメントを参照してください。
+このドキュメントでは、OSMF および OSMF プラグインに関する一般的な実務知識を持つ読者を想定しています。OSMF の詳細については、[OSMF の公式サイト][OSMF の公式サイト]にあるドキュメントを参照してください。
 
 ### OSMF 2.0 用スムーズ ストリーミング プラグイン
 
@@ -40,7 +40,7 @@ OSMF 用 SS には、次に示す 2 つのバージョンのプラグインが�
 
 既知の問題の一覧を次に示します。
 
--   48 KHz オーディオ トラックが含まれるスムーズ ストリーミング コンテンツの再生に問題があります。Flash ランタイムには、48 KHz オーディオ コンテンツのレンダリングに関する問題があります。この問題のため、48 Khz 設定でエンコードされたスムーズ ストリーミング コンテンツが正しく動作しないことがあります。詳細については、「[Using Flash Player (Flash Player の使用)][]」および「[Adobe Flash Player 11.3 - Bug 3210964 (Adobe Flash Player 11.3 - バグ 3210964)][]」を参照してください。
+-   48 KHz オーディオ トラックが含まれるスムーズ ストリーミング コンテンツの再生に問題があります。Flash ランタイムには、48 KHz オーディオ コンテンツのレンダリングに関する問題があります。この問題のため、48 Khz 設定でエンコードされたスムーズ ストリーミング コンテンツが正しく動作しないことがあります。詳細については、「[Using Flash Player (Flash Player の使用)][Using Flash Player (Flash Player の使用)]」および「[Adobe Flash Player 11.3 - Bug 3210964 (Adobe Flash Player 11.3 - バグ 3210964)][Adobe Flash Player 11.3 - Bug 3210964 (Adobe Flash Player 11.3 - バグ 3210964)]」を参照してください。
 -   単一ページで複数のスムーズ ストリーミング コンテンツを再生すると、問題が発生することがあります。これは OSMF に関する既知の問題です。
 -   Stage Video を再生すると、問題が発生することがあります。一部のコンピューターではビデオをまったく再生できないこともあります。回避策として、ハードウェア アクセラレータまたは Stage Video を無効にすることができます。
 
@@ -52,7 +52,7 @@ OSMF プラグインは、静的 (コンパイル時) または動的 (実行時
 
 -   動的読み込み: 動的に読み込むには、プリコンパイル済みファイル (SWF) ファイルが必要です。動的プラグインはランタイムに読み込まれ、プロジェクト出力 (コンパイル済み出力) には含まれません。動的プラグインは HTTP および FILE プロトコルを使用して読み込むことができます。
 
-静的読み込みと動的読み込みの詳細については、[OSMF 公式サイトのプラグインに関するページ][]を参照してください。
+静的読み込みと動的読み込みの詳細については、[OSMF 公式サイトのプラグインに関するページ][OSMF 公式サイトのプラグインに関するページ]を参照してください。
 
 ### OSMF 用 SS の静的読み込み
 
@@ -326,9 +326,9 @@ OSMF プラグインは、静的 (コンパイル時) または動的 (実行時
 
 ## Strobe Media Playback と OSMF 用 SS 動的プラグイン
 
-OSMF 用スムーズ ストリーミング動的プラグインには、[Strobe Media Playback (SMP)][] との互換性があります。OSMF 用 SS プラグインを使用すると、スムーズ ストリーミング コンテンツ再生機能を SMP に追加することができます。これには、"MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" を Web サーバーにコピーし、次に示す手順を使用して HTTP 読み込みを行ってください。
+OSMF 用スムーズ ストリーミング動的プラグインには、[Strobe Media Playback (SMP)][Strobe Media Playback (SMP)] との互換性があります。OSMF 用 SS プラグインを使用すると、スムーズ ストリーミング コンテンツ再生機能を SMP に追加することができます。これには、"MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" を Web サーバーにコピーし、次に示す手順を使用して HTTP 読み込みを行ってください。
 
-1.  [Strobe Media Playback セットアップ ページ][]に移動します。
+1.  [Strobe Media Playback セットアップ ページ][Strobe Media Playback セットアップ ページ]に移動します。
 2.  [src] をスムーズ ストリーミング ソース ("<http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest>" など) に設定します。
 3.  必要な構成変更を行い、[Preview and Update] をクリックします。
 
@@ -381,12 +381,9 @@ OSMF 用スムーズ ストリーミング動的プラグインには、[Strobe 
 6.  HTML ページを保存して、Web サーバーに発行します。Flash® Player 対応の好みのインターネット ブラウザー (Internet Explorer、Chrome、Firefox など) を使用して、発行済みの Web ページに移動します。
 7.  Adobe® Flash® Player でスムーズ ストリーミング コンテンツをお楽しみください。
 
-全般的な OSMF 開発の詳細については、[OSMF 公式サイトの開発に関するページ][]を参照してください。
+全般的な OSMF 開発の詳細については、[OSMF 公式サイトの開発に関するページ][OSMF 公式サイトの開発に関するページ]を参照してください。
 
   [OSMF の公式サイト]: http://osmf.org/
-  [Using Flash Player (Flash Player の使用)]: http://forums.adobe.com/message/4483498#4483498
-  [Adobe Flash Player 11.3 - Bug 3210964 (Adobe Flash Player 11.3 - バグ 3210964)]: https://bugbase.adobe.com/index.cfm?event=bug&id=3210964
   [OSMF 公式サイトのプラグインに関するページ]: http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf
-  [Strobe Media Playback (SMP)]: http://osmf.org/strobe_mediaplayback.html
   [Strobe Media Playback セットアップ ページ]: http://osmf.org/dev/2.0gm/setup.html
   [OSMF 公式サイトの開発に関するページ]: http://osmf.org/resources.html

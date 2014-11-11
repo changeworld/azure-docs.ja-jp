@@ -1,6 +1,6 @@
 <properties title="Using the Docker Virtual Machines Extension for Linux on Azure" pageTitle="Using the Docker VM Extension for Linux on Azure" description="Describes Docker and the Azure Virtual Machines extensions, and shows how to programmatically create Virtual Machines on Azure that are docker hosts from the command line using the azure-cli command interface." metaKeywords="linux, virtual machines, vm, azure, docker, linux containers,  lxc, virtualization" services="virtual-machines" solutions="dev-test" documentationCenter="virtual-machines" authors="rasquill" videoId="" scriptId="" />
 
-<tags ms.service="virtual-machines" ms.devlang="multiple" ms.topic="article" ms.tgt_pltfrm="vm-linux" ms.workload="infrastructure-services" ms.date="08/21/2014" ms.author="ralph.squillace@microsoft.com"></tags>
+<tags ms.service="virtual-machines" ms.devlang="multiple" ms.topic="article" ms.tgt_pltfrm="vm-linux" ms.workload="infrastructure-services" ms.date="08/21/2014" ms.author="ralph.squillace@microsoft.com" />
 
 # Azure で Linux 用 Docker 仮想マシン拡張機能を使用する方法
 
@@ -142,7 +142,6 @@ Azure 向けの Docker VM 拡張機能は、特殊な動作を提供する VM �
   [Azure 向けのコンテナーおよびコンテナー管理リソース]: #Container-and-Container-Management-Resources-for-Azure
   [KVM]: http://www.linux-kvm.org/page/Main_Page
   [ハイパーバイザー]: http://en.wikipedia.org/wiki/Hypervisor
-  [What is Docker? (Docker とは)]: https://www.docker.com/whatisdocker/
   [SELinux]: http://selinuxproject.org/page/Main_Page
   [AppArmor]: http://wiki.apparmor.net/index.php/Main_Page
   [ロール ベースのセキュリティ]: http://en.wikipedia.org/wiki/Role-based_access_control
@@ -150,12 +149,10 @@ Azure 向けの Docker VM 拡張機能は、特殊な動作を提供する VM �
   [azure-cli]: https://github.com/Azure/azure-sdk-tools-xplat
   [Boot2Docker]: https://docs.docker.com/installation/windows/
   [こちら]: http://azure.microsoft.com/ja-jp/documentation/articles/xplat-cli/#install
-  [ノード パッケージ マネージャー (npm)]: http://en.wikipedia.org/wiki/Npm_%28software%29
   [1]: https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server
   [Mac インストーラー]: http://go.microsoft.com/fwlink/?linkid=252249&clcid=0x409
   [方法: Azure サブスクリプションに接続する]: http://azure.microsoft.com/ja-jp/documentation/articles/xplat-cli/#configure
   [Docker のインストール手順]: https://docs.docker.com/installation/#installation
-  [!@\#$%^&+=]: mailto:!@#$%^&+=
   [0]: ./media/virtual-machines-docker/dockercreateresults.png
   [2]: ./media/virtual-machines-docker/connectingtodockerhost.png
   [Docker ユーザー ガイド]: https://docs.docker.com/userguide/

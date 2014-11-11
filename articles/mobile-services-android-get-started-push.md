@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-get-started-with-push-android" urlDisplayName="Get Started with Push (Android)" pageTitle="Get started with push notifications (Android) | Mobile Dev Center" metaKeywords="" description="Learn how to use Azure Mobile Services to send push notifications to your Android app." metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="ricksal" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="ricksal"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="ricksal" />
 
 # モバイル サービスでのプッシュ通知の使用 (従来のプッシュ)
 
@@ -39,7 +39,7 @@
 
 ## <span id="register"></span></a>Google Cloud Messaging を有効にする
 
-[WACOM.INCLUDE [Enable GCM][Enable GCM]]
+[WACOM.INCLUDE [Enable GCM](../includes/mobile-services-enable-Google-cloud-messaging.md)]
 
 次に、この API キー値を使用して、モバイル サービスが GCM で認証し、アプリケーションの代わりにプッシュ通知を送信できるようにします。
 
@@ -47,7 +47,7 @@
 
 1.  [Azure の管理ポータル][Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[プッシュ]** タブをクリックし、前の手順で GCM から取得した **API キー**値を入力して、**[保存]** をクリックします。
 
@@ -59,7 +59,7 @@
 
 ### プロジェクトへの Google Play Services の追加
 
-[WACOM.INCLUDE [Add Play Services][Add Play Services]]
+[WACOM.INCLUDE [Add Play Services](../includes/mobile-services-add-Google-play-services.md)]
 
 ### コードの追加
 
@@ -250,14 +250,7 @@
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Windows ストア C#]: /ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/develop/mobile/tutorials/get-started-with-push-js "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/develop/mobile/tutorials/get-started-with-push-wp8 "Windows Phone"
-  [iOS]: /ja-jp/develop/mobile/tutorials/get-started-with-push-ios "iOS"
   [Android]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android "Android"
-  [Appcelerator]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push "Appcelerator"
-  [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/ ".NET バックエンド"
-  [JavaScript バックエンド]: /ja-jp/documentation/articles/mobile-services-android-get-started-push/ "JavaScript バックエンド"
   [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-android-get-started-push/
   [Google Cloud Messaging を有効にする]: #register
   [モバイル サービスを構成する]: #configure
@@ -268,10 +261,9 @@
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-android
   [Enable GCM]: ../includes/mobile-services-enable-Google-cloud-messaging.md
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
+  [0]: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
   [1]: ./media/mobile-services-android-get-started-push/mobile-push-tab-android.png
   [Add Play Services]: ../includes/mobile-services-add-Google-play-services.md
-  [Set Up Google Play Services SDK (Google Play Services SDK のセットアップ)]: http://go.microsoft.com/fwlink/?LinkId=389801
   [2]: ./media/mobile-services-android-get-started-push/mobile-services-android-create-class.png
   [3]: ./media/mobile-services-android-get-started-push/mobile-portal-data-tables.png
   [4]: ./media/mobile-services-android-get-started-push/mobile-insert-script-push2.png
@@ -281,4 +273,3 @@
   [7]: ./media/mobile-services-android-get-started-push/mobile-services-android-virtual-device-manager-edit.png
   [8]: ./media/mobile-services-android-get-started-push/mobile-quickstart-push1-android.png
   [9]: ./media/mobile-services-android-get-started-push/mobile-push-icon.png
-  [Push notifications to app users (アプリケーション ユーザーへのプッシュ通知)]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-android

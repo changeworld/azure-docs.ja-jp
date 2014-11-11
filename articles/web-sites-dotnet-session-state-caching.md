@@ -1,6 +1,6 @@
 <properties linkid="video-center-index" urlDisplayName="index" pageTitle="Use ASP.NET session state with Azure Websites" metaKeywords="azure cache service session state" description="Learn how to use the Azure Cache Service to support ASP.NET session state caching." metaCanonical="" services="cache" documentationCenter=".NET" title="How to Use ASP.NET Session State with Azure Websites" authors="tdykstra"  solutions="" manager="wpickett" editor="mollybos"  />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tdykstra"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tdykstra" />
 
 # Azure Websites で ASP.NET セッション状態を使用する方法
 
@@ -70,5 +70,4 @@ ASP.NET セッション状態の使用方法の詳細については、「[ASP.N
   [NuGet RedisSessionStateProvider のページ]: http://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider/
   [キャッシュ クライアントの構成]: http://azure.microsoft.com/ja-jp/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/#NuGet
   [キャッシュに接続する]: http://azure.microsoft.com/ja-jp/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/#connect-to-cache
-  [MVC movie app with Azure Redis Cache in 15 minutes (Azure Redis Cache を使用した MVC ムービー アプリを 15 分でデプロイする)]: http://azure.microsoft.com/blog/2014/06/05/mvc-movie-app-with-azure-redis-cache-in-15-minutes/
   [ASP.NET セッション状態の概要]: http://msdn.microsoft.com/ja-jp/library/ms178581.aspx

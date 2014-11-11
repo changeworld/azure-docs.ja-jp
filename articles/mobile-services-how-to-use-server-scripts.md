@@ -1,6 +1,6 @@
 <properties pageTitle="Work with a JavaScript backend mobile service" metaKeywords="server scripts, mobile devices, Azure, scheduler" description="Provides examples on how to define, register, and use server scripts in Azure Mobile Services." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Work with server scripts in Mobile Services" authors="ricksal" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="ricksal"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="ricksal" />
 
 # JavaScript バックエンド モバイル サービスを操作する
 
@@ -874,8 +874,6 @@ Mobile Services では、Azure コマンド ライン ツールを使用して�
 
 <!-- Anchors. --> <!-- URLs. -->
 
-  [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-use/ ".NET バックエンド"
-  [JavaScript バックエンド]: /ja-jp/documentation/articles/mobile-services-how-to-use-server-scripts/ "JavaScript バックエンド"
   [はじめに]: #intro
   [テーブル操作]: #table-scripts
   [方法: テーブル操作に登録する]: #register-table-scripts
@@ -904,7 +902,6 @@ Mobile Services では、Azure コマンド ライン ツールを使用して�
   [テーブルにアクセスするための Transact-SQL の使用]: #TSQL
   [デバッグおよびトラブルシューティング]: #debugging
   [方法: 出力をモバイル サービス ログに書き込む]: #write-to-logs
-  [Mobile Services server script reference (モバイル サービスのサーバー スクリプト リファレンス)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554226.aspx
   [query オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj613353.aspx
   [user オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554220.aspx
   [request オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554218.aspx
@@ -925,7 +922,6 @@ Mobile Services では、Azure コマンド ライン ツールを使用して�
   [express.js ライブラリ]: http://go.microsoft.com/fwlink/p/?LinkId=309046
   [3]: ./media/mobile-services-how-to-use-server-scripts/2-mobile-custom-api-script.png
   [クライアントからのカスタム API 呼び出し]: /ja-jp/develop/mobile/tutorials/call-custom-api-dotnet/#define-custom-api
-  [Define a custom API that supports periodic notifications (定期的な通知をサポートするカスタム API の定義)]: /ja-jp/develop/mobile/tutorials/create-pull-notifications-dotnet/
   [express.js 内の express オブジェクト]: http://expressjs.com/api.html#express
   [ジョブのスケジュール]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj860528.aspx
   [4]: ./media/mobile-services-how-to-use-server-scripts/3-mobile-schedule-job-script.png
@@ -935,7 +931,6 @@ Mobile Services では、Azure コマンド ライン ツールを使用して�
   [5]: http://go.microsoft.com/fwlink/p/?LinkId=288803
   [6]: http://go.microsoft.com/fwlink/p/?LinkId=288804
   [HTTP 要求の送信]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj631641.aspx
-  [Send email from Mobile Services with SendGrid (SendGrid を使用したモバイル サービスからの電子メールの送信)]: /ja-jp/develop/mobile/tutorials/send-email-with-sendgrid/
   [7]: http://go.microsoft.com/fwlink/p/?LinkId=288805
   [8]: http://go.microsoft.com/fwlink/p/?LinkId=288806
   [9]: http://go.microsoft.com/fwlink/p/?LinkId=288807
@@ -953,6 +948,5 @@ Mobile Services では、Azure コマンド ライン ツールを使用して�
   [方法: 静的クエリを実行する]: #static-query
   [方法: 動的クエリを実行する]: #dynamic-query
   [方法: リレーショナル テーブルを結合する]: #joins
-  [方法: *raw* の結果を返すクエリを実行する]: #raw
   [方法: データベース接続へのアクセスを取得する]: #connection
   [console オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554209.aspx

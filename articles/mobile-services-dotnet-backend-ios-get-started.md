@@ -1,16 +1,16 @@
 <properties pageTitle="Get Started with Azure Mobile Services for iOS apps" metaKeywords="Azure iOS application, mobile service iOS, getting started Azure iOS" description="Follow this tutorial to get started using Azure Mobile Services for iOS development. " metaCanonical="" services="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="krisragh" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="krisragh"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="krisragh" />
 
 # <a name="getting-started"> </a>Mobile Services の使用
 
-[WACOM.INCLUDE [mobile-services-selector-get-started][mobile-services-selector-get-started]]
+[WACOM.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
 
 このチュートリアルでは、Azure モバイル サービスを使用して iOS アプリにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な *To do list* アプリケーションの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために Visual Studio を使用してサポートされる .NET 言語を使用し、モバイル サービスを管理します。JavaScript でサーバー側ビジネス ロジックを記述できるモバイル サービスを作成する方法については、このトピックの「[JavaScript バックエンド バージョン][JavaScript バックエンド バージョン]」を参照してください。
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
-![][]
+![][0]
 
 このチュートリアルを完了するには、XCode 4.5 および iOS 5.0 以降のバージョンが必要です。
 
@@ -18,7 +18,7 @@
 
 ## <a name="create-new-service"> </a> 新しいモバイル サービスを作成する
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service][mobile-services-dotnet-backend-create-new-service]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/mobile-services-dotnet-backend-create-new-service.md)]
 
 ## ローカル コンピューターにモバイル サービスをダウンロードする
 
@@ -38,11 +38,11 @@
 
 ## モバイル サービスをテストする
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service][mobile-services-dotnet-backend-test-local-service]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service](../includes/mobile-services-dotnet-backend-test-local-service.md)]
 
 ## モバイル サービスを発行する
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service][mobile-services-dotnet-backend-publish-service]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
 
 ## 新しい iOS アプリを作成する
 
@@ -60,7 +60,7 @@
 
 ## 新しい iOS アプリを実行する
 
-[WACOM.INCLUDE [mobile-services-ios-run-app][mobile-services-ios-run-app]]
+[WACOM.INCLUDE [mobile-services-ios-run-app](../includes/mobile-services-ios-run-app.md)]
 
 これで、Azure で実行されているモバイル サービスに対して新しいクライアント アプリケーションを実行する方法が示されます。iOS アプリをローカル コンピューターで実行しているモバイル サービスでテストする前に、iOS 開発コンピューターからのアクセスを許可するように Web サーバーおよびファイアウォールを構成する必要があります。詳細については、「[Configure the local web server to allow connections to a local mobile service (ローカル モバイル サービスへの接続を許可するようにローカル Web サーバーを構成する)][Configure the local web server to allow connections to a local mobile service (ローカル モバイル サービスへの接続を許可するようにローカル Web サーバーを構成する)]」を参照してください。
 
@@ -89,15 +89,13 @@
 
   [mobile-services-selector-get-started]: ../includes/mobile-services-selector-get-started.md
   [JavaScript バックエンド バージョン]: /ja-jp/documentation/articles/mobile-services-ios-get-started
-  []: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-quickstart-completed-ios.png
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F
+  [0]: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-quickstart-completed-ios.png
   [mobile-services-dotnet-backend-create-new-service]: ../includes/mobile-services-dotnet-backend-create-new-service.md
   [1]: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-quickstart-steps-vs.png
   [mobile-services-dotnet-backend-test-local-service]: ../includes/mobile-services-dotnet-backend-test-local-service.md
   [mobile-services-dotnet-backend-publish-service]: ../includes/mobile-services-dotnet-backend-publish-service.md
   [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
   [mobile-services-ios-run-app]: ../includes/mobile-services-ios-run-app.md
-  [Configure the local web server to allow connections to a local mobile service (ローカル モバイル サービスへの接続を許可するようにローカル Web サーバーを構成する)]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-configure-iis-express
   [データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data
   [オフライン データの同期の使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started-offline-data
   [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users

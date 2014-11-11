@@ -1,6 +1,6 @@
 <properties linkid="develop-nodejs-tutorials-web-site-with-sql-database" urlDisplayName="Website with SQL Database" pageTitle="Node.js website with SQL Database - Azure tutorial" metaKeywords="" description="Learn how to create a Node.js website that accesses a SQL Database and is deployed to Azure" metaCanonical="" services="web-sites,sql-database" documentationCenter="nodejs" title="Node.js Web Application using the Azure SQL Database" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="sql-database" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr"></tags>
+<tags ms.service="sql-database" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr" />
 
 # Azure SQL Database を使用する Node.js Web アプリケーション
 
@@ -472,7 +472,6 @@ tasklist アプリケーションのアイテムを格納するために使用�
   [新しい Azure Websites の作成]: ./media/sql-database-nodejs-use-web-site/new_website.jpg
   [新しい Web サイトのカスタム作成]: ./media/sql-database-nodejs-use-web-site/custom_create.png
   [Web サイトの詳細の入力]: ./media/sql-database-nodejs-use-web-site/website_details_sqlazure.jpg
-  [(WEB または BUSINESS)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee621788.aspx
   [SQL データベースの設定の指定]: ./media/sql-database-nodejs-use-web-site/database_settings.jpg
   [新しい SQL データベース サーバーの作成]: ./media/sql-database-nodejs-use-web-site/create_server.jpg
   [Web サイトのダッシュボードを開く]: ./media/sql-database-nodejs-use-web-site/go_to_dashboard.png
@@ -493,10 +492,8 @@ tasklist アプリケーションのアイテムを格納するために使用�
   [1]: http://getbootstrap.com/
   [2]: ./media/sql-database-nodejs-use-web-site/sql_todo_empty.png
   [タスク一覧の新しいアイテムの画像]: ./media/sql-database-nodejs-use-web-site/sql_todo_list.png
-  [http://[site]: http://[site
   [構成リンク]: ./media/sql-database-nodejs-use-web-site/sql-task-configure.png
   [アプリケーション設定]: ./media/sql-database-nodejs-use-web-site/appsettings.png
   [アプリケーション設定の保存]: ./media/sql-database-nodejs-use-web-site/savebutton.png
   [MongoDB を使用する Node.js Web アプリケーション]: ../store-mongolab-web-sites-nodejs-store-data-mongodb/
-  [Git を使用した Azure の Web サイトへの発行]: ../CommonTasks/publishing-with-git
   [Build and deploy a Node.js website to Azure (Node.js Web サイトの構築と Azure への展開)]: /ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/

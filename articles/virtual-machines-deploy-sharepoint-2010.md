@@ -1,6 +1,6 @@
 <properties linkid="manage-windows-other-resource-sharepoint-wp" urlDisplayName="SharePoint on Azure" pageTitle="SharePoint 2010 Deployment on Azure Virtual Machines" metaKeywords="" description="Understand the supported scenarios for using SharePoint 2010 on Azure virtual machines." metaCanonical="" services="virtual-machines" documentationCenter="" title="SharePoint Deployment on Azure Virtual Machines" authors="josephd" solutions="" manager="timlt" editor="" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="josephd"></tags>
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="josephd" />
 
 # Azure の仮想マシンへの SharePoint のデプロイ
 
@@ -423,7 +423,6 @@ SharePoint Server を Azure の仮想マシンに正常に展開するには、�
   [コマンド プロンプトからの SQL Server 2012 のインストール]: http://msdn.microsoft.com/ja-jp/library/ms144259.aspx#SysPrep
   [Microsoft SharePoint Server ファームの作成に関するページ]: http://technet.microsoft.com/ja-jp/library/ee805948.aspx#CreateConfigure
   [SharePoint 2013 で Web サーバーまたはアプリケーション サーバーをファームに追加する]: http://technet.microsoft.com/ja-jp/library/cc261752.aspx
-  [Add a Database Server to an Existing Farm (既存のファームへのデータベース サーバーの追加)]: http://technet.microsoft.com/ja-jp/library/cc262781
   [SharePoint Server 2010 Service Pack 1]: http://www.microsoft.com/ja-jp/download/details.aspx?id=26623
   [SQL Server 2012 のビジネス インテリジェンス機能のインストール]: http://technet.microsoft.com/ja-jp/library/hh231681(v=sql.110).aspx
   [Psconfig コマンドライン リファレンス]: http://technet.microsoft.com/ja-jp/library/cc263093.aspx
@@ -432,16 +431,9 @@ SharePoint Server を Azure の仮想マシンに正常に展開するには、�
   [仮想ハード ディスクを作成する]: http://technet.microsoft.com/ja-jp/library/cc742509
   [Sysprep の使用方法 : 紹介]: http://technet.microsoft.com/ja-jp/library/bb457073.aspx
   [azure-sharepoint-wp-11]: ./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-11.png
-  [Azure Virtual Network (Design Considerations and Secure Connection Scenarios) (Azure の仮想ネットワーク (設計上の考慮事項と安全な接続シナリオ))]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156007.aspx
-  [SharePoint 2010 Easy Setup Script (SharePoint 2010 簡易セットアップ スクリプト)]: http://www.microsoft.com/ja-jp/download/details.aspx?id=23415
   [Visual Studio のインストール]: http://msdn.microsoft.com/ja-jp/library/e2h7fzkw.aspx
-  [Configuring SQL Server 2012 for SharePoint in Azure (Azure で SharePoint 用に SQL Server 2012 を構成)]: https://github.com/WindowsAzure-TrainingKit/HOL-DeployingSQLServerForSharePoint
-  [Deploying a SharePoint Farm with Azure Virtual Machines (Azure の仮想マシンを備えた SharePoint ファームのデプロイ)]: https://github.com/WindowsAzure-TrainingKit/HOL-DeploySharePointVMs
-  [Introducing Geo-replication for Azure Storage (Azure のストレージの Geo (主要地域) レプリケーション入門)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/introducing-geo-replication-for-windows-azure-storage.aspx
   [azure-sharepoint-wp-12]: ./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-12.png
   [Azure の仮想マシンでの Active Directory のデプロイ ガイドライン]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090
-  [Configure Virtual Networking (仮想ネットワークの構成)]: https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectory/blob/master/HOL.md
-  [Deploying Active Directory in Azure (Windows PowerShell) (Azure での Active Directory のデプロイ (Windows PowerShell))]: https://github.com/WindowsAzure-TrainingKit/HOL-DeployingActiveDirectoryPS
   [Azure での新しい Active Directory フォレストのインストール]: /ja-jp/manage/services/networking/active-directory-forest/
   [Azure のトラスト センター]: /ja-jp/support/trust-center/compliance/
   [azure-sharepoint-wp-13]: ./media/virtual-machines-deploy-sharepoint-2010/azure-sharepoint-wp-13.png

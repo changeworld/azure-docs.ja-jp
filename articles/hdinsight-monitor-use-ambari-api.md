@@ -1,6 +1,6 @@
 <properties linkid="manage-services-hdinsight-use-Ambari" urlDisplayName="Monitor Hadoop clusters  in HDInsight using the Ambari API" pageTitle="Monitor Hadoop clusters in HDInsight using the Ambari API | Azure" metaKeywords="" description="Use the Apache Ambari APIs for provisioning, managing, and monitoring Hadoop clusters. Ambari's intuitive operator tools and APIs hide the complexity of Hadoop." services="hdinsight" documentationCenter="" title="Monitor Hadoop clusters in HDInsight using the Ambari API" umbracoNaviHide="0" disqusComments="1" authors="jgao" editor="cgronlun" manager="paulettm" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
 
 # Ambari API を使用した HDInsight の Hadoop クラスターの監視
 
@@ -10,15 +10,15 @@ Ambari API を使用して HDInsight クラスター Version 2.1 を監視する
 
 ## この記事の内容
 
--   [Ambari とは][]
--   [前提条件][]
--   [ジャンプ スタート][]
--   [Ambari での API の監視][]
--   [次のステップ][]
+-   [Ambari とは][Ambari とは]
+-   [前提条件][前提条件]
+-   [ジャンプ スタート][ジャンプ スタート]
+-   [Ambari での API の監視][Ambari での API の監視]
+-   [次のステップ][次のステップ]
 
 ## <span id="whatisambari"></span></a>Ambari とは
 
-[Apache Ambari][] は、Apache Hadoop クラスターのプロビジョニング、管理、および監視を目的としています。演算子ツールの直観的なコレクションおよび Hadoop の複雑さが見えないようにする信頼性の高い、一連の API が含まれており、クラスターの操作を単純化しています。API の詳細については、「[Ambari API リファレンス][]」を参照してください。
+[Apache Ambari][Apache Ambari] は、Apache Hadoop クラスターのプロビジョニング、管理、および監視を目的としています。演算子ツールの直観的なコレクションおよび Hadoop の複雑さが見えないようにする信頼性の高い、一連の API が含まれており、クラスターの操作を単純化しています。API の詳細については、「[Ambari API リファレンス][Ambari API リファレンス]」を参照してください。
 
 HDInsight は現在、Ambari の監視機能のみをサポートしています。Ambari API v1.0 は HDInsight クラスター Version 2.1 および 3.0 によってサポートされています。この記事では、HDInsight クラスター Version 2.1 での Ambari API の実行のみを取り上げます。
 
@@ -26,13 +26,13 @@ HDInsight は現在、Ambari の監視機能のみをサポートしています
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
--   **コンピューター**。Azure PowerShell がインストールされ構成されている必要があります。手順については、[Azure PowerShell のインストールおよび構成に関するページ][]を参照してください。PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。「[Run Windows PowerShell scripts (Windows PowerShell スクリプトの実行)][]」を参照してください。
+-   **コンピューター**。Azure PowerShell がインストールされ構成されている必要があります。手順については、[Azure PowerShell のインストールおよび構成に関するページ][Azure PowerShell のインストールおよび構成に関するページ]を参照してください。PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。「[Run Windows PowerShell scripts (Windows PowerShell スクリプトの実行)][Run Windows PowerShell scripts (Windows PowerShell スクリプトの実行)]」を参照してください。
 
-    [Curl][] は省略可能です。[ここ][]からインストールできます。
+    [Curl][Curl] は省略可能です。[ここ][ここ]からインストールできます。
 
     > [WACOM.NOTE] Windows で curl コマンドを使用する場合、オプション値には一重引用符の代わりに二重引用符を使用します。
 
--   **Azure HDInsight クラスター**。クラスターのプロビジョニングの手順については、「[Azure HDInsight の概要][]」または「[HDInsight クラスターのプロビジョニング][]」を参照してください。このチュートリアルを読み進めるには、次のデータが必要です。
+-   **Azure HDInsight クラスター**。クラスターのプロビジョニングの手順については、「[Azure HDInsight の概要][Azure HDInsight の概要]」または「[HDInsight クラスターのプロビジョニング][HDInsight クラスターのプロビジョニング]」を参照してください。このチュートリアルを読み進めるには、次のデータが必要です。
 
     <table>
     <colgroup>
@@ -92,7 +92,7 @@ MapReduce jobtracker 情報を取得するための PowerShell スクリプト�
 
 出力は次のようになります。
 
-![Jobtracker の出力][]
+![Jobtracker の出力][Jobtracker の出力]
 
 **Curl の使用**
 
@@ -119,7 +119,7 @@ Curl を使用してクラスター情報を取得する例を以下に示しま
 
 ## <span id="monitor"></span></a>Ambari での API の監視
 
-以下のテーブルに最も一般的な Ambari での API 呼び出しの監視の一部を示します。API の詳細については、「[Ambari API リファレンス][]」を参照してください。
+以下のテーブルに最も一般的な Ambari での API 呼び出しの監視の一部を示します。API の詳細については、「[Ambari API リファレンス][Ambari API リファレンス]」を参照してください。
 
 <table>
 <colgroup>
@@ -198,10 +198,10 @@ Curl を使用してクラスター情報を取得する例を以下に示しま
 
 ここでは Ambari での API 呼び出しの監視の使用方法を説明しました。詳細については、次を参照してください。
 
--   [管理ポータルを使用した HDInsight クラスターの管理][]
--   [Azure PowerShell を使用した HDInsight クラスターの管理][]
--   [コマンド ライン インターフェイスを使用した HDInsight クラスターの管理][]
--   [HDInsight のドキュメント][]
+-   [管理ポータルを使用した HDInsight クラスターの管理][管理ポータルを使用した HDInsight クラスターの管理]
+-   [Azure PowerShell を使用した HDInsight クラスターの管理][Azure PowerShell を使用した HDInsight クラスターの管理]
+-   [コマンド ライン インターフェイスを使用した HDInsight クラスターの管理][コマンド ライン インターフェイスを使用した HDInsight クラスターの管理]
+-   [HDInsight のドキュメント][HDInsight のドキュメント]
 -   [HDInsight の使用][Azure HDInsight の概要]
 
   [Ambari とは]: #whatisambari
@@ -212,7 +212,6 @@ Curl を使用してクラスター情報を取得する例を以下に示しま
   [Apache Ambari]: http://ambari.apache.org/
   [Ambari API リファレンス]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
   [Azure PowerShell のインストールおよび構成に関するページ]: ../install-configure-powershell/
-  [Run Windows PowerShell scripts (Windows PowerShell スクリプトの実行)]: http://technet.microsoft.com/en-us/library/ee176949.aspx
   [Curl]: http://curl.haxx.se
   [ここ]: http://curl.haxx.se/download.html
   [Azure HDInsight の概要]: ../hdinsight-get-started/

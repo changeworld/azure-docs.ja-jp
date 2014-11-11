@@ -1,6 +1,6 @@
 <properties linkid="manage-services-hdinsight-recommendation-engine-using-mahout" urlDisplayName="Hadoop Recommendation Engine" pageTitle="Hadoop recommendation engine (.NET) | Azure" metaKeywords="Azure Apache Mahout, Azure recommendation example, Azure recommendation tutorial, Azure recommendation engine" description="A tutorial that teaches how to use the Apache Mahout recommendation engine with Azure to create song suggestions based on listening habits." disqusComments="1" umbracoNaviHide="1" title="Simple recommendation engine using Apache Mahout" authors="jgao" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/21/2014" ms.author="jgao"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/21/2014" ms.author="jgao" />
 
 # Apache Mahout を使用した単純なリコメンデーション エンジン
 
@@ -8,7 +8,7 @@ Apache Mahout™ は、スケーラブルな機械学習アプリケーション
 
 Apache Mahout にはアイテムベースの協調フィルタリングが組み込まれています。この手法はリコメンデーション データ マイニングで広く用いられています。Amazon.com によって開発されたアイテムベースの協調フィルタリングは、ユーザーの嗜好に関するデータを分析してアイテム間の嗜好の関連性を見出し、同様のグループに属するユーザーの好みを予測しようというものです。
 
-このチュートリアルでは、[Million Song Dataset][] サイトから[データセット][]をダウンロードし、ユーザーの過去の再生傾向に基づいてリコメンデーションを作成します。
+このチュートリアルでは、[Million Song Dataset][Million Song Dataset] サイトから[データセット][データセット]をダウンロードし、ユーザーの過去の再生傾向に基づいてリコメンデーションを作成します。
 
 学習内容:
 
@@ -16,20 +16,20 @@ Apache Mahout にはアイテムベースの協調フィルタリングが組み
 
 このチュートリアルで学習する内容は次のとおりです。
 
-1.  [セットアップと構成][]
-2.  [データの調査と書式設定][]
-3.  [Mahout のインストール][]
-4.  [Mahout ジョブの実行][]
+1.  [セットアップと構成][セットアップと構成]
+2.  [データの調査と書式設定][データの調査と書式設定]
+3.  [Mahout のインストール][Mahout のインストール]
+4.  [Mahout ジョブの実行][Mahout ジョブの実行]
 
 ## <a name="setup"></a>セットアップと構成
 
-このチュートリアルは、Azure と HDinsight プレビューのセットアップが完了しており、サンプルを実行できる HDInsight クラスターが既に作成されていることを前提としています。これらの準備が整っていない場合は、「[Azure HDInsight の概要][]」チュートリアルを参照してセットアップしてください。
+このチュートリアルは、Azure と HDinsight プレビューのセットアップが完了しており、サンプルを実行できる HDInsight クラスターが既に作成されていることを前提としています。これらの準備が整っていない場合は、「[Azure HDInsight の概要][Azure HDInsight の概要]」チュートリアルを参照してセットアップしてください。
 
 ## <a name="segment1"></a>データの調査と書式設定
 
 このサンプルでは、特定の楽曲に対するユーザーの嗜好を調査します。ユーザーが楽曲を再生した回数によって、その楽曲に対するユーザーの嗜好度を判断します。嗜好データから何らかのパターンを導き出せば、過去に示した音楽の好みに基づいてそのユーザーの今後の嗜好を予測できます。「[Echo Nest Taste Profile Subset][Million Song Dataset]」Web ページの「**説明**」セクションで、このデータセットのサンプルを参照できます。
 
-![Echo Nest 嗜好データ サブセット][]
+![Echo Nest 嗜好データ サブセット][Echo Nest 嗜好データ サブセット]
 
 ### Million Song Dataset のサンプル データ
 
@@ -42,7 +42,7 @@ Visual Studio 2010 がインストールされていない場合は、この手�
 
 まず Visual Studio 2010 を起動します。Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** の順に選択します。**[インストールされたテンプレート]** の **[Visual C#]** で **[Windows]** カテゴリを選択し、一覧から **[コンソール アプリケーション]** を選択します。プロジェクト名として「ConvertToMahoutInput」と入力し、**[OK]** をクリックします。
 
-![コンソール アプリケーションの作成][]
+![コンソール アプリケーションの作成][コンソール アプリケーションの作成]
 
 ### コンソール アプリケーションの作成
 
@@ -132,7 +132,7 @@ Visual Studio 2010 がインストールされていない場合は、この手�
 
     このユーティリティを実行する際、**train\_triplets.txt** の場所をコマンド ライン引数として指定します。そのためには、**ソリューション エクスプローラー**で **ConvertToMahoutInput** プロジェクトを右クリックし、**[プロパティ]** を選択します。プロジェクトのプロパティ ページで、左側の **[デバッグ]** タブを選択し、**[コマンド ライン引数]** ボックスに \<localpath\>train\_triplets.txt のパスを追加します。
 
-    ![コマンド ライン引数の設定][]
+    ![コマンド ライン引数の設定][コマンド ライン引数の設定]
 
 ### コマンド ライン引数の設定
 
@@ -142,17 +142,17 @@ Visual Studio 2010 がインストールされていない場合は、この手�
 
 -   HDInsight クラスター ポータルを開き、**[リモート デスクトップ]** アイコンをクリックします。
 
-    ![クラスターの管理 アイコン][]
+    ![クラスターの管理 アイコン][クラスターの管理 アイコン]
 
 ### [リモート デスクトップ] アイコン
 
-既定では、HDInsight には Mahout が含まれていません。しかし、Mahout は Hadoop エコシステムの構成要素なので、[Mahout][] の Web サイトからダウンロードできます。最新バージョンは 0.7 ですが、この手順説明はバージョン 0.5 または 0.7 に対応しています。
+既定では、HDInsight には Mahout が含まれていません。しかし、Mahout は Hadoop エコシステムの構成要素なので、[Mahout][Mahout] の Web サイトからダウンロードできます。最新バージョンは 0.7 ですが、この手順説明はバージョン 0.5 または 0.7 に対応しています。
 
-1.  まず、[Mahout バージョン 0.7][] をローカル コンピューターにダウンロードします。
+1.  まず、[Mahout バージョン 0.7][Mahout バージョン 0.7] をローカル コンピューターにダウンロードします。
 
 2.  次に、ダウンロードした Mahout をクラスターにコピーします。ローカル zip ファイルを選択してコピーし、それを Hadoop クラスターに貼り付けてください (Ctrl キーを押しながら V キーを押します)。
 
-    ![Mahout のアップロード][]
+    ![Mahout のアップロード][Mahout のアップロード]
 
 ### Mahout をヘッドノードにコピー
 
@@ -175,7 +175,7 @@ Visual Studio 2010 がインストールされていない場合は、この手�
 
 この時点で、Hadoop ターミナル ウィンドウを開き、users.txt と mInput.txt が保存されているフォルダーへ移動します。
 
-![Mahout コマンド ウィンドウ][]
+![Mahout コマンド ウィンドウ][Mahout コマンド ウィンドウ]
 
 ### Hadoop コマンド ウィンドウ
 
@@ -224,7 +224,7 @@ Visual Studio 2010 がインストールされていない場合は、この手�
   [データの調査と書式設定]: #segment1
   [Mahout のインストール]: #Segment2
   [Mahout ジョブの実行]: #segment2
-  [Azure HDInsight の概要]: /en-us/manage/services/hdinsight/get-started-hdinsight/
+  [Azure HDInsight の概要]: /ja-jp/manage/services/hdinsight/get-started-hdinsight/
   [Echo Nest 嗜好データ サブセット]: ./media/hdinsight-hadoop-recommendation-engine/the-echo-nest-taste-profile-subset.png
   [コンソール アプリケーションの作成]: ./media/hdinsight-hadoop-recommendation-engine/creating-a-console-application.png
   [コマンド ライン引数の設定]: ./media/hdinsight-hadoop-recommendation-engine/setting-command-line-arguments.png
@@ -232,6 +232,4 @@ Visual Studio 2010 がインストールされていない場合は、この手�
   [Mahout]: http://mahout.apache.org/
   [Mahout バージョン 0.7]: http://www.apache.org/dyn/closer.cgi/mahout/
   [Mahout のアップロード]: ./media/hdinsight-hadoop-recommendation-engine/uploading-mahout.PNG
-  [リポジトリ]: https://github.com/wenming/BigDataSamples/tree/master/mahout
-  [zip ファイル]: https://github.com/wenming/BigDataSamples/archive/master.zip
   [Mahout コマンド ウィンドウ]: ./media/hdinsight-hadoop-recommendation-engine/mahout-commandwindow.PNG

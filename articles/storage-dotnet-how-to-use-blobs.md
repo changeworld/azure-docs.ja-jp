@@ -1,6 +1,6 @@
 <properties linkid="dev-net-how-to-blob-storage" urlDisplayName="Blob Service" pageTitle="How to use blob storage from .NET | Azure" metaKeywords="Get started Azure blob   Azure unstructured data   Azure unstructured storage   Azure blob   Azure blob storage   Azure blob .NET   Azure blob C#   Azure blob C#" description="Learn how to use Microsoft Azure Blob storage to upload,  download, list, and delete blob content. Samples are written in C#." metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="storage" documentationCenter=".NET" title="How to use Microsoft Azure Blob storage in .NET" authors="tamram" manager="mbaldwin" editor="cgronlun" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tamram"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
 # How to use Blob Storage from .NET (.NET から BLOB ストレージを使用する方法)
 
@@ -8,33 +8,33 @@
 一般的なシナリオを実行する方法のデモンストレーションを行います。例は C# で記述され、Azure .NET 用
 ストレージ クライアント ライブラリを利用しています。紹介するシナリオは、BLOB の
 **アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。BLOB の
-詳細については、「[次のステップ][]」のセクションを参照してください。
+詳細については、「[次のステップ][次のステップ]」のセクションを参照してください。
 
-> [WACOM.NOTE] このガイドは、Azure .NET 用ストレージ クライアント ライブラリ 2.x 以上を対象としています。推奨されるバージョンはストレージ クライアント ライブラリ 4.x です。これは、[NuGet][] から、または [Azure SDK for .NET][] の一部として提供されています。ストレージ クライアント ライブラリの入手方法の詳細については、「[方法: プログラムで BLOB ストレージにアクセスする][]」を参照してください。
+> [WACOM.NOTE] このガイドは、Azure .NET 用ストレージ クライアント ライブラリ 2.x 以上を対象としています。推奨されるバージョンはストレージ クライアント ライブラリ 4.x です。これは、[NuGet][NuGet] から、または [Azure SDK for .NET][Azure SDK for .NET] の一部として提供されています。ストレージ クライアント ライブラリの入手方法の詳細については、「[方法: プログラムで BLOB ストレージにアクセスする][方法: プログラムで BLOB ストレージにアクセスする]」を参照してください。
 
 ## 目次
 
--   [BLOB ストレージとは][]
--   [概念][]
--   [Azure のストレージ アカウントの作成][]
--   [ストレージ接続文字列の設定][]
--   [方法: プログラムで BLOB ストレージにアクセスする][]
--   [方法: コンテナーを作成する][]
--   [方法: コンテナーに BLOB をアップロードする][]
--   [方法: コンテナー内の BLOB を一覧表示する][]
--   [方法: BLOB をダウンロードする][]
--   [方法: BLOB を削除する][]
--   [次のステップ][]
+-   [BLOB ストレージとは][BLOB ストレージとは]
+-   [概念][概念]
+-   [Azure のストレージ アカウントの作成][Azure のストレージ アカウントの作成]
+-   [ストレージ接続文字列の設定][ストレージ接続文字列の設定]
+-   [方法: プログラムで BLOB ストレージにアクセスする][方法: プログラムで BLOB ストレージにアクセスする]
+-   [方法: コンテナーを作成する][方法: コンテナーを作成する]
+-   [方法: コンテナーに BLOB をアップロードする][方法: コンテナーに BLOB をアップロードする]
+-   [方法: コンテナー内の BLOB を一覧表示する][方法: コンテナー内の BLOB を一覧表示する]
+-   [方法: BLOB をダウンロードする][方法: BLOB をダウンロードする]
+-   [方法: BLOB を削除する][方法: BLOB を削除する]
+-   [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [howto-blob-storage][]]
+[WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
 ## <a name="create-account"></a><span class="short-header">アカウントの作成</span>Azure の Storage アカウントの作成
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <a name="setup-connection-string"></a><span class="short-header">接続文字列の設定</span>ストレージ接続文字列の設定
 
-[WACOM.INCLUDE [storage-configure-connection-string][]]
+[WACOM.INCLUDE [storage-configure-connection-string](../includes/storage-configure-connection-string.md)]
 
 ## <a name="configure-access"> </a><span class="short-header">プログラムでのアクセス</span>方法: プログラムで BLOB ストレージにアクセスする
 
@@ -42,7 +42,7 @@
 
 NuGet を使用して `Microsoft.WindowsAzure.Storage.dll` アセンブリを取得できます。**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
 
-`Microsoft.WindowsAzure.Storage.dll` は、[.NET デベロッパー センター][]からダウンロードできる Azure SDK for .NET にも含まれています。このアセンブリは `%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\<sdk-version>\ref\`lt;sdk-version\>\\ref\\</code> ディレクトリにインストールされます。
+`Microsoft.WindowsAzure.Storage.dll` は、[.NET デベロッパー センター][.NET デベロッパー センター]からダウンロードできる Azure SDK for .NET にも含まれています。このアセンブリは `%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\<sdk-version>\ref\`lt;sdk-version\>\\ref\\</code> ディレクトリにインストールされます。
 
 ### 名前空間宣言
 
@@ -84,7 +84,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager
 
 ### ODataLib 依存
 
-.NET 用ストレージ クライアント ライブラリの ODataLib 依存は、WCF Data Services ではなく、NuGet から入手できる ODataLib (バージョン 5.0.2) パッケージで解決されます。ODataLib ライブラリは、直接ダウンロードすることも、NuGet を使用してコード プロジェクトで参照することもできます。具体的な ODataLib パッケージは、[OData][]、[Edm][]、および [Spatial][] です。
+.NET 用ストレージ クライアント ライブラリの ODataLib 依存は、WCF Data Services ではなく、NuGet から入手できる ODataLib (バージョン 5.0.2) パッケージで解決されます。ODataLib ライブラリは、直接ダウンロードすることも、NuGet を使用してコード プロジェクトで参照することもできます。具体的な ODataLib パッケージは、[OData][OData]、[Edm][Edm]、および [Spatial][Spatial] です。
 
 ## <a name="create-container"> </a><span class="short-header">コンテナーの作成</span>方法: コンテナーを作成する
 
@@ -233,7 +233,7 @@ Azure BLOB Storage では、ブロック BLOB とページ BLOB がサポート�
     Block blob of length 399751: https://<accountname>.blob.core.windows.net/photos/2011/photo7.jpg
     Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 
-詳細については、[CloudBlobContainer.ListBlobs に関するページ][]を参照してください。
+詳細については、[CloudBlobContainer.ListBlobs に関するページ][CloudBlobContainer.ListBlobs に関するページ]を参照してください。
 
 ## <a name="download-blobs"> </a><span class="short-header">BLOB のダウンロード</span>方法: BLOB をダウンロードする
 
@@ -310,22 +310,22 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその
 次のリンク先を参照してください。
 
 -   利用可能な API の詳細については、BLOB サービスのリファレンス ドキュメントを参照してください。
-    -   [.NET 用ストレージ クライアント ライブラリ リファレンス][]
-    -   [REST API リファレンス][]
+    -   [.NET 用ストレージ クライアント ライブラリ リファレンス][.NET 用ストレージ クライアント ライブラリ リファレンス]
+    -   [REST API リファレンス][REST API リファレンス]
 
--   Azure Storage を使用して実行できるさらに高度なタスクについては、「[Azure のデータの格納とアクセス][]」を参照してください。
--   Azure Websites のバックエンド プロセスで Azure Storage を使用する方法については、「[Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)][]」を参照してください。
+-   Azure Storage を使用して実行できるさらに高度なタスクについては、「[Azure のデータの格納とアクセス][Azure のデータの格納とアクセス]」を参照してください。
+-   Azure Websites のバックエンド プロセスで Azure Storage を使用する方法については、「[Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)][Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)]」を参照してください。
 -   Azure でデータを格納するための追加のオプションについては、他の機能ガイドも
     参照してください。
-    -   構造化データの格納には、[テーブル ストレージ][]を使用します。
-    -   非構造化データの格納には、[キュー ストレージ][]を使用します。
-    -   リレーショナル データの格納には、[SQL データベース][]を使用します。
+    -   構造化データの格納には、[テーブル ストレージ][テーブル ストレージ]を使用します。
+    -   非構造化データの格納には、[キュー ストレージ][キュー ストレージ]を使用します。
+    -   リレーショナル データの格納には、[SQL データベース][SQL データベース]を使用します。
 
 </p>
 
   [次のステップ]: #next-steps
   [NuGet]: https://www.nuget.org/packages/WindowsAzure.Storage/
-  [Azure SDK for .NET]: /en-us/downloads/
+  [Azure SDK for .NET]: /ja-jp/downloads/
   [方法: プログラムで BLOB ストレージにアクセスする]: #configure-access
   [BLOB ストレージとは]: #what-is
   [概念]: #concepts
@@ -339,14 +339,13 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその
   [howto-blob-storage]: ../includes/howto-blob-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
   [storage-configure-connection-string]: ../includes/storage-configure-connection-string.md
-  [.NET デベロッパー センター]: http://www.windowsazure.com/en-us/develop/net/#
+  [.NET デベロッパー センター]: http://www.windowsazure.com/ja-jp/develop/net/#
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [.NET 用ストレージ クライアント ライブラリ リファレンス]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
-  [REST API リファレンス]: http://msdn.microsoft.com/en-us/library/windowsazure/dd179355
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
-  [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)]: /ja-jp/documentation/articles/websites-dotnet-webjobs-sdk-get-started/
+  [REST API リファレンス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179355
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [テーブル ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/
   [キュー ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-queues/
   [SQL データベース]: /ja-jp/documentation/articles/sql-database-dotnet-how-to-use/

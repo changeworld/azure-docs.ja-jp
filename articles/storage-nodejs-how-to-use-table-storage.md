@@ -1,6 +1,6 @@
 <properties linkid="dev-nodejs-how-to-table-services" urlDisplayName="Table Service" pageTitle="How to use table storage (Node.js) | Microsoft Azure" metaKeywords="Azure table storage service, Azure table service Node.js, table storage Node.js" description="Learn how to use the table storage service in Azure. Code samples are written using the Node.js API." metaCanonical="" services="storage" documentationCenter="Node.js" title="How to Use the Table Service from Node.js" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr" />
 
 # Node.js からテーブル サービスを使用する方法
 
@@ -8,36 +8,36 @@
 実行する方法について説明します。サンプルは Node.js API を使用して
 記述されています。紹介するシナリオは、**テーブルの作成と削除、テーブルのエンティティの挿入とクエリ実行**などです。
 テーブルの
-詳細については、「[次のステップ][]」のセクションを参照してください。
+詳細については、「[次のステップ][次のステップ]」のセクションを参照してください。
 
 ## 目次
 
--   [テーブル サービスとは][]
--   [概念][]
--   [Azure のストレージ アカウントの作成][]
--   [Node.js アプリケーションの作成][]
--   [アプリケーションのストレージへのアクセスの構成][]
--   [Azure のストレージ接続文字列の設定][]
--   [方法: テーブルを作成する][]
--   [方法: エンティティをテーブルに追加する][]
--   [方法: エンティティを更新する][]
--   [方法: エンティティのグループを操作する][]
--   [方法: エンティティを取得する][]
--   [方法: エンティティのセットを照会する][]
--   [方法: エンティティを削除する][]
--   [方法: テーブルを削除する][]
--   [方法: 共有アクセス署名を操作する][]
--   [次のステップ][]
+-   [テーブル サービスとは][テーブル サービスとは]
+-   [概念][概念]
+-   [Azure のストレージ アカウントの作成][Azure のストレージ アカウントの作成]
+-   [Node.js アプリケーションの作成][Node.js アプリケーションの作成]
+-   [アプリケーションのストレージへのアクセスの構成][アプリケーションのストレージへのアクセスの構成]
+-   [Azure のストレージ接続文字列の設定][Azure のストレージ接続文字列の設定]
+-   [方法: テーブルを作成する][方法: テーブルを作成する]
+-   [方法: エンティティをテーブルに追加する][方法: エンティティをテーブルに追加する]
+-   [方法: エンティティを更新する][方法: エンティティを更新する]
+-   [方法: エンティティのグループを操作する][方法: エンティティのグループを操作する]
+-   [方法: エンティティを取得する][方法: エンティティを取得する]
+-   [方法: エンティティのセットを照会する][方法: エンティティのセットを照会する]
+-   [方法: エンティティを削除する][方法: エンティティを削除する]
+-   [方法: テーブルを削除する][方法: テーブルを削除する]
+-   [方法: 共有アクセス署名を操作する][方法: 共有アクセス署名を操作する]
+-   [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [howto-table-storage][]]
+[WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
 ## <a name="create-account"></a>Azure ストレージ アカウントの作成
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <a name="create-app"> </a>Node.js アプリケーションの作成
 
-空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][]、[Node.js クラウド サービスへのデプロイ][] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ][]に関するページを参照してください。
+空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービスへのデプロイ][Node.js クラウド サービスへのデプロイ] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ][WebMatrix による Web サイトの作成とデプロイ]に関するページを参照してください。
 
 ## <a name="configure-access"> </a>アプリケーションからストレージへのアクセスの構成
 
@@ -72,7 +72,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT、AZURE\_STORAGE\_ACCESS\_KEY、および AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。これらの環境変数が設定されていない場合、**TableService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Web サイトの管理ポータルで環境変数を設定する例については、「[Azure テーブル サービスを使用する Node.js Web アプリケーション][]」を参照してください。
+Azure Web サイトの管理ポータルで環境変数を設定する例については、「[Azure テーブル サービスを使用する Node.js Web アプリケーション][Azure テーブル サービスを使用する Node.js Web アプリケーション]」を参照してください。
 
 ## <a name="create-table"> </a>テーブルの作成方法
 
@@ -118,7 +118,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
 
 -   **RowKey** - パーティション内のエンティティを一意に識別します。
 
-**PartitionKey** と **RowKey** は両方とも文字列値にする必要があります。詳細については、「[テーブル サービス データ モデルについて][]」を参照してください。
+**PartitionKey** と **RowKey** は両方とも文字列値にする必要があります。詳細については、「[テーブル サービス データ モデルについて][テーブル サービス データ モデルについて]」を参照してください。
 
 エンティティを定義する例を次に示します。**dueDate** が **Edm.DateTime** の型として定義されている点に注意してください。型の指定は省略可能です。型を指定しなかった場合、型は推測されます。
 
@@ -150,7 +150,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
         }
     });
 
-操作が成功した場合、`result` には挿入されたレコードの [ETag][] が含まれ、`response` には操作に関する情報が含まれます。
+操作が成功した場合、`result` には挿入されたレコードの [ETag][ETag] が含まれ、`response` には操作に関する情報が含まれます。
 
 > [WACOM.NOTE] 既定では、**insertEntity** は、`response` 情報の一部として、挿入されたエンティティを返しません。このエンティティに対して他の操作を実行する予定がある場合、または情報をキャッシュする場合は、`result` の一部として返されるようにすると便利です。そのためには、次のように **echoContent** を有効にします。
 >
@@ -309,7 +309,7 @@ Azure Web サイトの管理ポータルで環境変数を設定する例につ�
       }
     });
 
-> [WACOM.NOTE] 項目を削除する場合は、項目が別のプロセスによって変更されていないことを確認するために ETag を使用することを検討してください。ETag の使用の詳細については、「[方法: エンティティを更新する][]」を参照してください。
+> [WACOM.NOTE] 項目を削除する場合は、項目が別のプロセスによって変更されていないことを確認するために ETag を使用することを検討してください。ETag の使用の詳細については、「[方法: エンティティを更新する][方法: エンティティを更新する]」を参照してください。
 
 ## <a name="delete-table"> </a>テーブルを削除する方法
 
@@ -411,9 +411,9 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
 これで、テーブル ストレージの基本を学習できました。さらに複雑な
 ストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   MSDN リファレンス: [Azure のデータの格納とアクセス][]
--   [Azure のストレージ チーム ブログ][]
--   GitHub の [Azure Storage SDK for Node][] リポジトリ
+-   MSDN リファレンス: [Azure のデータの格納とアクセス][Azure のデータの格納とアクセス]
+-   [Azure のストレージ チーム ブログ][Azure のストレージ チーム ブログ]
+-   GitHub の [Azure Storage SDK for Node][Azure Storage SDK for Node] リポジトリ
 
   [次のステップ]: #next-steps
   [テーブル サービスとは]: #what-is
@@ -439,6 +439,6 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [Azure テーブル サービスを使用する Node.js Web アプリケーション]: /ja-jp/documentation/articles/storage-nodejs-use-table-storage-web-site/
   [テーブル サービス データ モデルについて]: http://msdn.microsoft.com/library/azure/dd179338.aspx
   [ETag]: http://en.wikipedia.org/wiki/HTTP_ETag
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
   [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node

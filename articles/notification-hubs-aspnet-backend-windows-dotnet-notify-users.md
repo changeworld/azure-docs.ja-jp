@@ -1,6 +1,6 @@
 <properties title="Azure Notification Hubs Notify Users" pageTitle="Azure Notification Hubs Notify Users" metaKeywords="Azure push notifications, Azure notification hubs" description="Learn how to send secure push notifications in Azure. Code samples written in C# using the .NET API." documentationCenter="Mobile" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="sethm" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="sethm"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="sethm" />
 
 # Azure Notification Hubs によるユーザーへの通知
 
@@ -20,7 +20,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 このチュートリアルを開始する前に、アプリケーション名を予約してから、Azure Notification Hub を作成してそのアプリケーションに接続します。「[Getting Started with Notification Hubs (Windows Store) (Notification Hubs (Windows ストア) の使用)][Getting Started with Notification Hubs (Windows Store) (Notification Hubs (Windows ストア) の使用)]」で、特にセクション「[アプリケーションを Windows ストアに登録する][アプリケーションを Windows ストアに登録する]」と「[通知ハブを構成する][通知ハブを構成する]」の手順に従ってください。特に、ポータルで通知ハブの **[構成]** タブに、**[パッケージ SID]** と **[クライアント シークレット]** の値を入力してください。この構成手順は、セクション「[通知ハブを構成する][通知ハブを構成する]」で説明しています。これは重要な手順です。ポータルの資格情報が、選択したアプリケーション名に指定した資格情報と一致しない場合、プッシュ通知は成功しません。
 
-[WACOM.INCLUDE [notification-hubs-aspnet-backend-notifyusers][notification-hubs-aspnet-backend-notifyusers]]
+[WACOM.INCLUDE [notification-hubs-aspnet-backend-notifyusers](../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## Windows Phone プロジェクトを作成する
 
@@ -30,7 +30,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 2.  **[ストア アプリ]** を展開し、**[Windows Phone アプリ]**、**[空のアプリケーション (Windows Phone)]** の順にクリックします。
 
-    ![][]
+    ![][0]
 
 3.  **[名前]** ボックスに、「**NotifyUserWindowsPhone**」と入力し、**[OK]** をクリックしてプロジェクトを生成します。
 
@@ -236,15 +236,11 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 4.  **NotifyUserWindowsPhone** アプリケーションの UI で、**[ログインして登録]** をクリックします。次に、**[プッシュを送信する]** をクリックします。
 
-  [Windows ユニバーサル]: /ja-jp/documentation/articles/notification-hubs-windows-dotnet-notify-users/ "Windows ユニバーサル"
-  [iOS]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-notify-users/ "iOS"
-  [Android]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-notify-users/ "Android"
   [アプリ バックエンドからの登録]: http://msdn.microsoft.com/ja-jp/library/dn743807.aspx
-  [Getting Started with Notification Hubs (Windows Store) (Notification Hubs (Windows ストア) の使用)]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
   [アプリケーションを Windows ストアに登録する]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/#register
   [通知ハブを構成する]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/#configure-hub
   [notification-hubs-aspnet-backend-notifyusers]: ../includes/notification-hubs-aspnet-backend-notifyusers.md
-  []: ./media/notification-hubs-aspnet-backend-windows-dotnet-notify-users/notification-hubs-secure-push9.png
+  [0]: ./media/notification-hubs-aspnet-backend-windows-dotnet-notify-users/notification-hubs-secure-push9.png
   [1]: ./media/notification-hubs-aspnet-backend-windows-dotnet-notify-users/notification-hubs-secure-push10.png
   [2]: ./media/notification-hubs-aspnet-backend-windows-dotnet-notify-users/notification-hubs-secure-push11.png
   [Windows デベロッパー センター]: http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409

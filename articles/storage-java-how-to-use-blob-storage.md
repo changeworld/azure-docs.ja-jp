@@ -1,40 +1,40 @@
 <properties linkid="dev-net-how-to-use-blog-storage-service-java" urlDisplayName="Blob Service" pageTitle="How to use blob storage (Java) | Microsoft Azure" metaKeywords="Get started Azure blob, Azure unstructured data, Azure unstructured storage, Azure blob, Azure blob storage, Azure blob Java" description="Learn how to use the Azure blob service to upload, download, list, and delete blob content. Samples written in Java." metaCanonical="" services="storage" documentationCenter="Java" title="How to use Blob Storage from Java" authors="" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="" />
 
 # Java から BLOB ストレージを使用する方法
 
-このガイドでは、Microsoft Azure BLOB ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][] を利用しています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。BLOB の詳細については、「[次のステップ][]」のセクションを参照してください。
+このガイドでは、Microsoft Azure BLOB ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][Azure Storage SDK for Java] を利用しています。紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。BLOB の詳細については、「[次のステップ][次のステップ]」のセクションを参照してください。
 
-注: SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。詳細については、[Azure Storage SDK for Android に関するページ][]を参照してください。
+注: SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。詳細については、[Azure Storage SDK for Android に関するページ][Azure Storage SDK for Android に関するページ]を参照してください。
 
 ## <a name="Contents"> </a> 目次
 
--   [BLOB ストレージとは][]
--   [概念][]
--   [Azure のストレージ アカウントの作成][]
--   [Java アプリケーションの作成][]
--   [BLOB ストレージにアクセスするようにアプリケーションを構成する][]
--   [Azure のストレージ接続文字列の設定][]
--   [方法: コンテナーを作成する][]
--   [方法: コンテナーに BLOB をアップロードする][]
--   [方法: コンテナー内の BLOB を一覧表示する][]
--   [方法: BLOB をダウンロードする][]
--   [方法: BLOB を削除する][]
--   [方法: BLOB コンテナーを削除する][]
--   [次のステップ][]
+-   [BLOB ストレージとは][BLOB ストレージとは]
+-   [概念][概念]
+-   [Azure のストレージ アカウントの作成][Azure のストレージ アカウントの作成]
+-   [Java アプリケーションの作成][Java アプリケーションの作成]
+-   [BLOB ストレージにアクセスするようにアプリケーションを構成する][BLOB ストレージにアクセスするようにアプリケーションを構成する]
+-   [Azure のストレージ接続文字列の設定][Azure のストレージ接続文字列の設定]
+-   [方法: コンテナーを作成する][方法: コンテナーを作成する]
+-   [方法: コンテナーに BLOB をアップロードする][方法: コンテナーに BLOB をアップロードする]
+-   [方法: コンテナー内の BLOB を一覧表示する][方法: コンテナー内の BLOB を一覧表示する]
+-   [方法: BLOB をダウンロードする][方法: BLOB をダウンロードする]
+-   [方法: BLOB を削除する][方法: BLOB を削除する]
+-   [方法: BLOB コンテナーを削除する][方法: BLOB コンテナーを削除する]
+-   [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [howto-blob-storage][]]
+[WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
 ## <span id="CreateAccount"></span></a>Azure のストレージ アカウントの作成
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <a name="CreateApplication"> </a>Java アプリケーションの作成
 
 このガイドで使用するストレージ機能は、Java アプリケーション内でローカルで実行することも、Azure の Web ロールまたは worker ロールで動作するコード内で実行することもできます。
 
-そのためには、Java Development Kit (JDK) をインストールし、Azure サブスクリプションに Azure ストレージ アカウントを作成する必要があります。その後、開発システムが、GitHub の [Azure Storage SDK for Java][] リポジトリに示されている最小要件と依存関係を満たしていることを確認する必要があります。システムがそれらの要件を満たしている場合は、指示に従って、そのリポジトリからシステムに Azure Storage Libraries for Java をダウンロードしてインストールできます。それらのタスクが完了したら、この記事の例を使用した Java アプリケーションを作成できます。
+そのためには、Java Development Kit (JDK) をインストールし、Azure サブスクリプションに Azure ストレージ アカウントを作成する必要があります。その後、開発システムが、GitHub の [Azure Storage SDK for Java][Azure Storage SDK for Java] リポジトリに示されている最小要件と依存関係を満たしていることを確認する必要があります。システムがそれらの要件を満たしている場合は、指示に従って、そのリポジトリからシステムに Azure Storage Libraries for Java をダウンロードしてインストールできます。それらのタスクが完了したら、この記事の例を使用した Java アプリケーションを作成できます。
 
 ## <a name="ConfigureStorage"> </a>BLOB ストレージにアクセスするようにアプリケーションを構成する
 
@@ -65,7 +65,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 
 ## <a name="CreateContainer"> </a>方法: コンテナーを作成する
 
-CloudBlobClient オブジェクトを使用すると、コンテナーと BLOB の参照オブジェクトを取得できます。次のコードでは、**CloudBlobClient** オブジェクトを作成しています。(注: **CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、[Azure ストレージ クライアント SDK リファレンス][]の **CloudStorageAccount** を参照してください)。
+CloudBlobClient オブジェクトを使用すると、コンテナーと BLOB の参照オブジェクトを取得できます。次のコードでは、**CloudBlobClient** オブジェクトを作成しています。(注: **CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、[Azure ストレージ クライアント SDK リファレンス][Azure ストレージ クライアント SDK リファレンス]の **CloudStorageAccount** を参照してください)。
 
 BLOB はすべてコンテナー内に格納されます。**CloudBlobClient** オブジェクトにより、使用するコンテナーへの参照を取得します。コンテナーが存在しない場合は、**createIfNotExists** メソッドを使用して作成できます。存在する場合は、このメソッドによって既存のコンテナーが返されます。既定では、新しいコンテナーはプライベートであるため、このコンテナーから BLOB をダウンロードするにはストレージ アクセス キーを指定する必要があります (前と同じ方法で)。
 
@@ -165,7 +165,7 @@ BLOB サービスには、コンテナー内のディレクトリの概念もあ
 必要に応じて、**listBlobs** メソッドにパラメーターを渡すことが
 できます。そのためには、**useFlatBlobListing** パラメーターに true を設定しておく必要があります。これにより、
 ディレクトリに関係なく、すべての BLOB が返されるようになります。詳細に
-ついては、[Azure ストレージ クライアント SDK リファレンス][]の **CloudBlobContainer.listBlobs** を参照してください。
+ついては、[Azure ストレージ クライアント SDK リファレンス][Azure ストレージ クライアント SDK リファレンス]の **CloudBlobContainer.listBlobs** を参照してください。
 
 ## <a name="DownloadBlob"> </a>方法: BLOB をダウンロードする
 
@@ -254,10 +254,10 @@ BLOB を削除するには、BLOB の参照を取得し、**deleteIfExists** を
 
 これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   [Azure Storage SDK for Java][]
--   [Azure ストレージ クライアント SDK リファレンス][]
--   [Azure Storage REST API][]
--   [Azure のストレージ チーム ブログ][]
+-   [Azure Storage SDK for Java][Azure Storage SDK for Java]
+-   [Azure ストレージ クライアント SDK リファレンス][Azure ストレージ クライアント SDK リファレンス]
+-   [Azure Storage REST API][Azure Storage REST API]
+-   [Azure のストレージ チーム ブログ][Azure のストレージ チーム ブログ]
 
   [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
   [次のステップ]: #NextSteps
@@ -277,5 +277,5 @@ BLOB を削除するには、BLOB の参照を取得し、**deleteIfExists** を
   [howto-blob-storage]: ../includes/howto-blob-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
   [Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
-  [Azure Storage REST API]: http://msdn.microsoft.com/en-us/library/azure/gg433040.aspx
+  [Azure Storage REST API]: http://msdn.microsoft.com/ja-jp/library/azure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/

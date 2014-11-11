@@ -1,6 +1,6 @@
 <properties linkid="dev-net-common-tasks-continuous-delivery" urlDisplayName="Continuous Delivery" pageTitle="Continuous delivery for cloud services with TFS in Azure" metaKeywords="Azure continuous delivery, continuous delivery sample code, continuous delivery PowerShell" description="Learn how to set up continuous delivery for Azure cloud apps. Code samples for MSBuild command-line statements and PowerShell scripts." metaCanonical="" services="" documentationCenter="" title="Continuous Delivery for Cloud Services in Azure" authors="ghogen" solutions="" manager="" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ghogen"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ghogen" />
 
 # Azure でのクラウド サービスの継続的な配信
 
@@ -81,7 +81,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 1.  開発コンピューターの Visual Studio で、[表示] メニューの **[チーム エクスプローラー]** をクリックするか、Ctrl + \\ キーに続けて Ctrl + M キーを押します。[チーム エクスプローラー] ウィンドウで、**[ビルド]** ノードを展開します。**[すべてのビルド定義]** を右クリックし、**[ビルド定義の新規作成]** をクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[プロセス]** タブをクリックします。[プロセス] タブで、既定のテンプレートを選択します。[ビルドする項目] で、プロジェクトを選択し、グリッドの **[詳細設定]** セクションを展開します。
 
@@ -576,12 +576,9 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
 継続的な配信を使用する場合にリモート デバッガーを有効にするには、[これらの手順][これらの手順]を参照してください。
 
-  [Continuous Delivery to Azure by Using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)]: ../cloud-services-continuous-delivery-use-vso/
   [手順 1.ビルド サーバーを構成する]: #step1
   [手順 2.MSBuild コマンドを使用してパッケージをビルドする]: #step2
-  [手順 3.TFS チーム ビルドを使用してパッケージをビルドする (省略可能)]: #step3
   [手順 4.PowerShell スクリプトを使用してパッケージを発行する]: #step4
-  [手順 5.TFS チーム ビルドを使用してパッケージを発行する (省略可能)]: #step5
   [Team Foundation ビルド サービス]: http://go.microsoft.com/fwlink/p/?LinkId=239963
   [.NET Framework 4]: http://go.microsoft.com/fwlink/?LinkId=239538
   [.NET Framework 4.5]: http://go.microsoft.com/fwlink/?LinkId=245484
@@ -591,7 +588,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
   [MSBuild コマンド ライン リファレンスのページ]: http://go.microsoft.com/fwlink/p/?LinkId=239966
   [Team Foundation ビルド システムについて]: http://go.microsoft.com/fwlink/?LinkId=238798
   [ビルド コンピューターの構成]: http://go.microsoft.com/fwlink/?LinkId=238799
-  []: ./media/cloud-services-dotnet-continuous-delivery/tfs-01.png
+  [0]: ./media/cloud-services-dotnet-continuous-delivery/tfs-01.png
   [1]: ./media/cloud-services-dotnet-continuous-delivery/tfs-02.png
   [Azure PowerShell コマンドレット]: http://go.microsoft.com/fwlink/?LinkId=256262
   [この記事の末尾]: #script

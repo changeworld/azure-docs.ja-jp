@@ -1,6 +1,6 @@
 <properties linkid="service-bus-manage-messaging-entitites" urlDisplayName="Traffic Manager" pageTitle="Manage Service Bus Messaging Entities - Azure" metaKeywords="" description="Learn how to create and manage your Service Bus entities using the Azure Management Portal." metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="service-bus" documentationCenter="" title="How to Manage Service Bus Messaging Entities" authors="sethm" solutions="" />
 
-<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="sethm"></tags>
+<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="sethm" />
 
 # Service Bus メッセージング エンティティの管理方法
 
@@ -34,7 +34,7 @@ Azure 管理ポータルでは Service Bus エンティティの作成方法と�
 
     a. このリージョンまたはこの Azure サブスクリプションに名前空間がない場合、新しい名前空間が自動的に作成されます。その場合、成功メッセージが 2 つ表示されます。1 つは名前空間の作成、もう 1 つはエンティティ作成の成功メッセージです。
 
-    ![][]
+    ![][0]
 
 左側のナビゲーション バーで **[サービス バス]** アイコンをクリックして、名前空間の一覧を表示します。先ほど作成した新しい名前空間が表示されています。一覧でその名前空間をクリックします。先ほど作成したエンティティがその名前空間の下に表示されます。
 
@@ -107,7 +107,7 @@ Azure Web サイトにある [.NET デベロッパー センター][.NET デベ�
   [方法: Service Bus エンティティの削除]: #delete
   [方法: Service Bus エンティティの無効化または有効化]: #disableenable
   [その他のリソース]: #seealso
-  []: ./media/service-bus-manage-message-entities/QueueQuickCreate.png
+  [0]: ./media/service-bus-manage-message-entities/QueueQuickCreate.png
   [サービス バスのマニュアル]: http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/service-bus-relay/
   [1]: ./media/service-bus-manage-message-entities/AddQueue1.png
   [2]: ./media/service-bus-manage-message-entities/ConfigureQueue.png

@@ -1,6 +1,6 @@
 <properties title="Manage an Azure Machine Learning workspace" pageTitle="Manage a Machine Learning workspace | Azure" description="Manage access to Azure Machine Learning workspaces, and deploy and manage ML API web services" metaKeywords="" services="" solutions="" documentationCenter="" authors="derrickv" videoId="" scriptId="" />
 
-<tags ms.service="machine-learning" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="derrickv"></tags>
+<tags ms.service="machine-learning" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="derrickv" />
 
 # Azure Machine Learning ワークスペースの管理
 
@@ -14,7 +14,7 @@ Microsoft Azure Machine Learning (Azure ML) ワークスペースを管理して
 2.  Microsoft Azure サービス パネルで、**[MACHINE LEARNING]** をクリックします。
 3.  **[機械学習]** リストで、ワークスペースをクリックします。
 
-![][]
+![][0]
 
 ## ユーザーにアクセスを許可する方法とアクセスを一時的に禁止する方法
 
@@ -26,4 +26,4 @@ Microsoft Azure Machine Learning (Azure ML) ワークスペースを管理して
 
 
 
-  []: ./media/machine-learning-manage-workspace/mw1.png
+  [0]: ./media/machine-learning-manage-workspace/mw1.png

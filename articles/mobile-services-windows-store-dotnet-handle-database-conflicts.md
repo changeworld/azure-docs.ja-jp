@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-optimistic-concurrent-data-dotnet" urlDisplayName="Optimistic concurrency" pageTitle="Handle database write conflicts with optimistic concurrency (Windows Store) | Mobile Dev Center" metaKeywords="" description="Learn how to handle database write conflicts on both the server and in your Windows Store application." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Handling database write conflicts" authors="wesmc" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc" />
 
 # データベースの書き込み競合の処理
 
@@ -360,9 +360,6 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
 
 
-  [Windows ストア C#]: /ja-jp/develop/mobile/tutorials/handle-database-write-conflicts-dotnet/ "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-handle-database-conflicts/ "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/develop/mobile/tutorials/handle-database-write-conflicts-wp8/ "Windows Phone"
   [更新を実行できるようにアプリケーションを更新する]: #uiupdate
   [アプリケーションでの競合検出を有効にする]: #enableOC
   [アプリケーションでデータベース書き込み競合をテストする]: #test-app

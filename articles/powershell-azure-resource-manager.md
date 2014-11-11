@@ -1,6 +1,6 @@
 <properties pageTitle="Using Windows PowerShell with Resource Manager" metaKeywords="ResourceManager, PowerShell, Azure PowerShell" description="Use Windows PowerShell to create a resource group" metaCanonical="" services="" documentationCenter="" title="Using Windows PowerShell with Resource Manager" authors="stevenka; juneb" solutions="" manager="stevenka" editor="mollybos" />
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="powershell" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="stevenka; juneb"></tags>
+<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="powershell" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="stevenka; juneb" />
 
 # リソース マネージャーでの Windows PowerShell の使用
 
@@ -472,18 +472,13 @@ AzureResourceManager モジュールにはエラーを防止するためのコ�
 -   [Windows PowerShell のブログ][Windows PowerShell のブログ]: Windows PowerShell の新機能について説明します。
 -   ["Hey, Scripting Guy!"ブログ]["Hey, Scripting Guy!"ブログ]: 実際のヒントとテクニックを Windows PowerShell コミュニティから取得します。
 
-  [Windows PowerShell]: /ja-jp/documentation/articles/powershell-azure-resource-manager.md "Windows PowerShell"
-  [クロスプラットフォーム CLI]: /ja-jp/documentation/articles/xplat-cli-azure-resource-manager.md "クロスプラットフォーム CLI"
   [Windows Management Framework 3.0]: http://www.microsoft.com/ja-jp/download/details.aspx?id=34595
   [Windows Management Framework 4.0]: http://www.microsoft.com/ja-jp/download/details.aspx?id=40855
-  [How to install and configure Windows Azure PowerShell (Windows Azure PowerShell のインストールおよび構成方法)]: http://www.windowsazure.com/ja-jp/documentation/articles/install-configure-powershell/
-  [Getting Started with Windows PowerShell (Windows PowerShell の概要)]: http://technet.microsoft.com/ja-jp/library/hh857337.aspx
   [Azure PowerShell モジュールについて]: #about
   [リソース グループの作成]: #create
   [リソース グループの管理]: #manage
   [リソース グループのトラブルシューティング]: #troubleshoot
   [次のステップ]: #next
-  [Azure Service Management Cmdlets (Azure サービス管理コマンドレット)]: http://msdn.microsoft.com/ja-jp/library/jj152841.aspx
   [Azure リソース マネージャー コマンドレット]: http://go.microsoft.com/fwlink/?LinkID=394765
   [Azure プロファイル コマンドレット]: http://go.microsoft.com/fwlink/?LinkID=394766
   [Switch-AzureMode]: http://go.microsoft.com/fwlink/?LinkID=394398

@@ -1,6 +1,6 @@
 <properties linkid="biztalk-backup-restore" urlDisplayName="BizTalk Services: Backup and Restore" pageTitle="BizTalk Services: Backup and Restore | Azure" metaKeywords="" description="BizTalk Services includes Backup and Restore capabilities. When creating a Backup, a snapshot of the BizTalk Services configuration is taken." metaCanonical="" services="" documentationCenter="" title="BizTalk Services: Backup and Restore" authors="mandia"  solutions="" writer="mandia" manager="dwrede" editor="cgronlun"  />
 
-<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/10/2014" ms.author="mandia"></tags>
+<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/10/2014" ms.author="mandia" />
 
 # BizTalk サービス: バックアップと復元
 
@@ -58,7 +58,7 @@ BizTalk サービスのバックアップは、[BizTalk サービスの REST API
 2.  [**バックアップ ステータス**] を [**自動**] に設定します。
 3.  [**ストレージ アカウント**] で、どのアカウントにバックアップを保存するかを選択し、[**頻度**] にバックアップ作成の間隔を入力し、バックアップを保持する期間の長さを [**保持日数**] に入力します。
 
-    ![][]
+    ![][0]
 
     **メモ**
 
@@ -225,7 +225,7 @@ Azure BizTalk サービスを Azure 管理ポータルで作成するには、�
   [BizTalk サービス: エディションのチャート]: http://azure.microsoft.com/ja-jp/documentation/articles/biztalk-editions-feature-chart/
   [オンデマンド バックアップ]: #backupnow
   [バックアップのスケジュール]: #backupschedule
-  []: ./media/biztalk-backup-restore/AutomaticBU.png
+  [0]: ./media/biztalk-backup-restore/AutomaticBU.png
   [前回のスケジュールされたバックアップの状態]: ./media/biztalk-backup-restore/status-last-backup.png
   [BizTalk サービス: 操作ログを使用したトラブルシューティング]: http://go.microsoft.com/fwlink/?LinkId=391211
   [1]: http://go.microsoft.com/fwlink/p/?LinkID=325582

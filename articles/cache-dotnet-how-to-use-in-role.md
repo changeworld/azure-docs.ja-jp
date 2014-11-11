@@ -1,6 +1,6 @@
 <properties linkid="Contact - Support" urlDisplayName="Caching" pageTitle="How to use In-Role Cache (.NET) - Azure feature guide" metaKeywords="Azure cache, Azure caching, Azure cache, Azure caching, Azure store session state, Azure cache .NET, Azure cache C#" description="Learn how to use Azure In-Role Cache. The samples are written in C# code and use the .NET API." metaCanonical="" services="cache" documentationCenter=".NET" title="How to Use In-Role Cache for Azure Cache" authors="sdanie" solutions="" manager="" editor="" />
 
-<tags ms.service="cache" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie"></tags>
+<tags ms.service="cache" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
 
 # Azure のキャッシュのインロール キャッシュの使用方法
 
@@ -406,5 +406,3 @@ Caching サービス セッション状態プロバイダーの使い方の詳�
   [インロール キャッシュの出力キャッシュ プロバイダーに関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg185662.aspx
   [インロール キャッシュ]: http://www.microsoft.com/ja-jp/showcase/Search.aspx?phrase=azure+caching
   [Windows Azure のキャッシュのインロール キャッシュへの移行]: http://msdn.microsoft.com/ja-jp/library/hh914163.aspx
-  [インロール キャッシュのサンプル (Windows Azure のキャッシュ)]: http://msdn.microsoft.com/ja-jp/library/jj189876.aspx
-  [Maximum Performance: Accelerate Your Cloud Services Applications with Azure Caching (最大のパフォーマンス: Azure の Caching によってクラウド サービス アプリケーションを高速化する)]: http://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/WAD-B326#fbid=kmrzkRxQ6gU

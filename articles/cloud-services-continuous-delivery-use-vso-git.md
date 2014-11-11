@@ -1,6 +1,6 @@
 <properties linkid="dev-net-common-tasks-publishing-with-vso" urlDisplayName="Publishing with TFS" pageTitle="Continuous delivery with Visual Studio Online in Azure" metaKeywords="" description="Learn how to configure your Visual Studio Online team projects to automatically build and deploy to Azure websites or cloud services." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Continuous delivery to Azure using Visual Studio Online and Git" authors="ghogen" solutions="" manager="" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ghogen"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ghogen" />
 
 # Visual Studio Online と Git を使用した Azure への継続的な配信
 
@@ -29,7 +29,7 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
 1.  まだ Visual Studio Online アカウントを持っていない場合は、[こちら][こちら]の指示に従ってください。チーム プロジェクトを作成するときに、ソース管理システムとして Git を選択します。指示に従い、Visual Studio をチーム プロジェクトに接続します。
 
 2.  チーム エクスプローラーで、**[このリポジトリを複製]** リンクを選択します。
-    ![][]
+    ![][0]
 
 3.  ローカル コピーの場所を指定し、**[複製]** を選択します。
 
@@ -193,11 +193,10 @@ Git を使用する場合は、通常、working 分岐で変更を行い、開�
   [手順 2.プロジェクトを作成して Git リポジトリにプッシュする。]: #step2
   [手順 3.プロジェクトを Azure に接続する。]: #step3
   [手順 4.変更を行い、リビルドと再デプロイをトリガーする。]: #step4
-  [手順 5.以前のビルドを再デプロイする (省略可能)]: #step5
   [手順 6.運用デプロイを変更する]: #step6
   [手順 7.working 分岐からデプロイする]: #step7
   [こちら]: http://go.microsoft.com/fwlink/?LinkId=397665
-  []: ./media/cloud-services-continuous-delivery-use-vso-git/CloneThisRepository.PNG
+  [0]: ./media/cloud-services-continuous-delivery-use-vso-git/CloneThisRepository.PNG
   [1]: ./media/cloud-services-continuous-delivery-use-vso-git/CreateNewSolutionInClonedRepo.PNG
   [Azure と ASP.NET の使用に関するページ]: http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-dotnet-get-started/
   [2]: ./media/cloud-services-continuous-delivery-use-vso-git/CommitMenuItem.PNG
@@ -234,4 +233,3 @@ Git を使用する場合は、通常、working 分岐で変更を行い、開�
   [32]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
   [Visual Studio Online に関するページ]: http://go.microsoft.com/fwlink/?LinkId=253861
   [Git でコードを共有する]: http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx
-  [Publishing to Azure Websites with Git (ソース管理から Azure の Web サイトへの発行)]: http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-publish-source-control

@@ -1,35 +1,35 @@
 <properties linkid="develop-php-table-service" urlDisplayName="Table Service" pageTitle="How to use table storage (PHP) | Microsoft Azure" metaKeywords="Azure Table service PHP, Azure creating table, Azure deleting table, Azure insert table, Azure query table" description="Learn how to use the Table service from PHP to create and delete a table, and insert, delete, and query the table." metaCanonical="" services="storage" documentationCenter="PHP" title="How to use the Table service from PHP" authors="" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="" />
 
 # PHP からテーブル サービスを使用する方法
 
-このガイドでは、Azure テーブル サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは PHP で記述され、[Azure SDK for PHP][] を利用しています。紹介するシナリオは、**テーブルの作成と削除、テーブルのエンティティの挿入、削除、および照会**などです。Azure テーブル サービスの詳細については、「[次のステップ][]」を参照してください。
+このガイドでは、Azure テーブル サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは PHP で記述され、[Azure SDK for PHP][Azure SDK for PHP] を利用しています。紹介するシナリオは、**テーブルの作成と削除、テーブルのエンティティの挿入、削除、および照会**などです。Azure テーブル サービスの詳細については、「[次のステップ][次のステップ]」を参照してください。
 
 ## 目次
 
--   [テーブル サービスとは][]
--   [概念][]
--   [Azure のストレージ アカウントの作成][]
--   [PHP アプリケーションの作成][]
--   [テーブル サービスにアクセスするようにアプリケーションを構成する][]
--   [Azure のストレージ接続文字列の設定][]
--   [方法: テーブルの作成][]
--   [方法: エンティティをテーブルに追加する][]
--   [方法: 単一のエンティティを取得する][]
--   [方法: パーティション内のすべてのエンティティを取得する][]
--   [方法: パーティション内のエンティティのサブセットを取得する][]
--   [方法: エンティティ プロパティのサブセットを取得する][]
--   [方法: エンティティを更新する][]
--   [方法: バッチ テーブル処理][]
--   [方法: テーブルを削除する][]
--   [次のステップ][]
+-   [テーブル サービスとは][テーブル サービスとは]
+-   [概念][概念]
+-   [Azure のストレージ アカウントの作成][Azure のストレージ アカウントの作成]
+-   [PHP アプリケーションの作成][PHP アプリケーションの作成]
+-   [テーブル サービスにアクセスするようにアプリケーションを構成する][テーブル サービスにアクセスするようにアプリケーションを構成する]
+-   [Azure のストレージ接続文字列の設定][Azure のストレージ接続文字列の設定]
+-   [方法: テーブルの作成][方法: テーブルの作成]
+-   [方法: エンティティをテーブルに追加する][方法: エンティティをテーブルに追加する]
+-   [方法: 単一のエンティティを取得する][方法: 単一のエンティティを取得する]
+-   [方法: パーティション内のすべてのエンティティを取得する][方法: パーティション内のすべてのエンティティを取得する]
+-   [方法: パーティション内のエンティティのサブセットを取得する][方法: パーティション内のエンティティのサブセットを取得する]
+-   [方法: エンティティ プロパティのサブセットを取得する][方法: エンティティ プロパティのサブセットを取得する]
+-   [方法: エンティティを更新する][方法: エンティティを更新する]
+-   [方法: バッチ テーブル処理][方法: バッチ テーブル処理]
+-   [方法: テーブルを削除する][方法: テーブルを削除する]
+-   [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [howto-table-storage][]]
+[WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
 ## <span id="CreateAccount"></span></a>Azure のストレージ アカウントの作成
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <span id="CreateApplication"></span></a>PHP アプリケーションの作成
 
@@ -39,13 +39,13 @@ Azure テーブル サービスにアクセスする PHP アプリケーショ�
 
 ## <span id="GetClientLibrary"></span></a>Azure クライアント ライブラリの入手
 
-[WACOM.INCLUDE [get-client-libraries][]]
+[WACOM.INCLUDE [get-client-libraries](../includes/get-client-libraries.md)]
 
 ## <span id="ConfigureStorage"></span></a>テーブル サービスにアクセスするようにアプリケーションを構成する
 
 Azure テーブル サービス API を使用するには、次の要件があります。
 
-1.  [require\_once][] ステートメントを使用してオートローダー ファイルを参照する
+1.  [require\_once][require\_once] ステートメントを使用してオートローダー ファイルを参照する
 2.  使用する可能性のあるクラスを参照する
 
 次の例では、オートローダー ファイルをインクルードし、**ServicesBuilder** クラスを参照する方法を示しています。
@@ -88,7 +88,7 @@ Azure テーブル サービス クライアントをインスタンス化する
 
 ## <span id="CreateTable"></span></a>方法: テーブルの作成
 
-**TableRestProxy** オブジェクトの **createTable** メソッドを使用してテーブルを作成できます。テーブルの作成時、テーブル サービスのタイムアウトを設定できます (テーブル サービスのタイムアウトの詳細については、「[テーブル サービス操作のサーバー タイムアウトの設定][]」を参照)。
+**TableRestProxy** オブジェクトの **createTable** メソッドを使用してテーブルを作成できます。テーブルの作成時、テーブル サービスのタイムアウトを設定できます (テーブル サービスのタイムアウトの詳細については、「[テーブル サービス操作のサーバー タイムアウトの設定][テーブル サービス操作のサーバー タイムアウトの設定]」を参照)。
 
     require_once 'vendor\autoload.php';
 
@@ -107,10 +107,10 @@ Azure テーブル サービス クライアントをインスタンス化する
         $error_message = $e->getMessage();
         // Handle exception based on error codes and messages.
         // Error codes and messages can be found here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
     }
 
-テーブル名の制限については、「[テーブル サービス データ モデルについて][]」を参照してください。
+テーブル名の制限については、「[テーブル サービス データ モデルについて][テーブル サービス データ モデルについて]」を参照してください。
 
 ## <span id="AddEntity"></span></a>方法: エンティティをテーブルに追加する
 
@@ -141,12 +141,12 @@ Azure テーブル サービス クライアントをインスタンス化する
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
     }
 
-テーブルのプロパティと型については、「[テーブル サービス データ モデルについて][]」を参照してください。
+テーブルのプロパティと型については、「[テーブル サービス データ モデルについて][テーブル サービス データ モデルについて]」を参照してください。
 
 **TableRestProxy** クラスには、他にもエンティティを挿入する 2 つのメソッドが用意されています。**insertOrMergeEntity** と **insertOrReplaceEntity** です。これらのメソッドを使用するには、新しい **Entity** を作成し、いずれかのメソッドにパラメーターとして渡します。各メソッドは、渡されたエンティティが存在しない場合に、そのエンティティを挿入します。エンティティが既に存在する場合、**insertOrMergeEntity** はプロパティ値が既に存在するなら更新し、存在しないなら新しいプロパティを追加します。一方、**insertOrReplaceEntity** は既存のエンティティを完全に置き換えます。次の例は、**insertOrMergeEntity** を使用する方法を示しています。`PartitionKey` が "tasksSeattle" で `RowKey` が "1" であるエンティティがまだ存在しない場合は挿入されます。ただし、既に挿入されている場合 (前の例を参照)、`DueDate` プロパティが更新され、`Status` プロパティが追加されます。`Description` プロパティと `Location` プロパティも更新されますが、値は実際には変更されないままになります。これら後者の 2 つのプロパティは例に示しているように追加されますが、ターゲット エンティティに存在しているため、それらの既存の値は変更されないままになります。
 
@@ -182,7 +182,7 @@ Azure テーブル サービス クライアントをインスタンス化する
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -207,7 +207,7 @@ Azure テーブル サービス クライアントをインスタンス化する
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -219,7 +219,7 @@ Azure テーブル サービス クライアントをインスタンス化する
 
 ## <span id="RetEntitiesInPartition"></span></a>方法: パーティション内のすべてのエンティティを取得する
 
-エンティティのクエリはフィルターを使用して作成します (詳細については「[テーブルおよびエンティティのクエリ][]」を参照)。パーティション内のすべてのエンティティを取得するには、フィルター "PartitionKey eq *partition\_name*" を使用します。次の例では、フィルターを **queryEntities** メソッドに渡すことで、`tasksSeattle` パーティション内のすべてのエンティティを取得する方法を示しています。
+エンティティのクエリはフィルターを使用して作成します (詳細については「[テーブルおよびエンティティのクエリ][テーブルおよびエンティティのクエリ]」を参照)。パーティション内のすべてのエンティティを取得するには、フィルター "PartitionKey eq *partition\_name*" を使用します。次の例では、フィルターを **queryEntities** メソッドに渡すことで、`tasksSeattle` パーティション内のすべてのエンティティを取得する方法を示しています。
 
     require_once 'vendor\autoload.php';
 
@@ -237,7 +237,7 @@ Azure テーブル サービス クライアントをインスタンス化する
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -251,7 +251,7 @@ Azure テーブル サービス クライアントをインスタンス化する
 
 ## <span id="RetrieveSubset"></span></a>方法: パーティション内のエンティティのサブセットを取得する
 
-前の例で示している同じパターンを使用してパーティション内のエンティティのサブセットを取得できます。取得するエンティティのサブセットは、使用するフィルターによって決まります (詳細については、「[テーブルおよびエンティティのクエリ][]」を参照)。次の例では、フィルターを使用して、`Location` で指定した場所で、`DueDate` で指定した日付より前のエンティティをすべて取得する方法を示しています。
+前の例で示している同じパターンを使用してパーティション内のエンティティのサブセットを取得できます。取得するエンティティのサブセットは、使用するフィルターによって決まります (詳細については、「[テーブルおよびエンティティのクエリ][テーブルおよびエンティティのクエリ]」を参照)。次の例では、フィルターを使用して、`Location` で指定した場所で、`DueDate` で指定した日付より前のエンティティをすべて取得する方法を示しています。
 
     require_once 'vendor\autoload.php';
 
@@ -269,7 +269,7 @@ Azure テーブル サービス クライアントをインスタンス化する
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -303,7 +303,7 @@ Azure テーブル サービス クライアントをインスタンス化する
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -349,7 +349,7 @@ Azure テーブル サービス クライアントをインスタンス化する
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -374,7 +374,7 @@ Azure テーブル サービス クライアントをインスタンス化する
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -430,13 +430,13 @@ Azure テーブル サービス クライアントをインスタンス化する
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
     }
 
-テーブル バッチ処理の詳細については、「[エンティティ グループ トランザクションの実行][]」を参照してください。
+テーブル バッチ処理の詳細については、「[エンティティ グループ トランザクションの実行][エンティティ グループ トランザクションの実行]」を参照してください。
 
 ## <span id="DeleteTable"></span></a>方法: テーブルを削除する
 
@@ -457,7 +457,7 @@ Azure テーブル サービス クライアントをインスタンス化する
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179438.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -467,7 +467,7 @@ Azure テーブル サービス クライアントをインスタンス化する
 
 これで、Azure テーブル サービスの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   MSDN リファレンス: [Azure のデータの格納とアクセス][]
+-   MSDN リファレンス: [Azure のデータの格納とアクセス][Azure のデータの格納とアクセス]
 -   Azure のストレージ チーム ブログ: <http://blogs.msdn.com/b/windowsazurestorage/>
 
   [Azure SDK for PHP]: http://go.microsoft.com/fwlink/?LinkID=252473
@@ -490,9 +490,8 @@ Azure テーブル サービス クライアントをインスタンス化する
   [howto-table-storage]: ../includes/howto-table-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
   [get-client-libraries]: ../includes/get-client-libraries.md
-  [require\_once]: http://php.net/require_once
-  [テーブル サービス操作のサーバー タイムアウトの設定]: http://msdn.microsoft.com/en-us/library/windowsazure/dd894042.aspx
-  [テーブル サービス データ モデルについて]: http://msdn.microsoft.com/en-us/library/windowsazure/dd179338.aspx
-  [テーブルおよびエンティティのクエリ]: http://msdn.microsoft.com/en-us/library/windowsazure/dd894031.aspx
-  [エンティティ グループ トランザクションの実行]: http://msdn.microsoft.com/en-us/library/windowsazure/dd894038.aspx
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+  [テーブル サービス操作のサーバー タイムアウトの設定]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd894042.aspx
+  [テーブル サービス データ モデルについて]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179338.aspx
+  [テーブルおよびエンティティのクエリ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd894031.aspx
+  [エンティティ グループ トランザクションの実行]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd894038.aspx
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx

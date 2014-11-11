@@ -1,6 +1,6 @@
 <properties title="Learn how to configure an Azure website to use a custom domain name" pageTitle="Configure a custom domain name for an Azure website" metaKeywords="Azure, Azure Web Sites, domain name" description="" services="web-sites" documentationCenter="" authors="larryfr, jroth" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr, jroth, mwasson"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr, jroth, mwasson" />
 
 # Azure Web サイトのカスタム ドメイン名の構成
 
@@ -8,7 +8,7 @@
 
 <div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/web-sites-custom-domain-name/" title="Web サイト" class="current">Web サイト</a> | <a href="/ja-jp/documentation/articles/web-sites-traffic-manager-custom-domain-name/" title="トラフィック マネージャーを利用する Web サイト">トラフィック マネージャーを利用する Web サイト</a></div>
 
-[WACOM.INCLUDE [websites-cloud-services-css-guided-walkthrough][websites-cloud-services-css-guided-walkthrough]]
+[WACOM.INCLUDE [websites-cloud-services-css-guided-walkthrough](../includes/websites-cloud-services-css-guided-walkthrough.md)]
 
 Web サイトを作成すると、作成した Web サイトは Azure によって azurewebsites.net のサブドメインに割り当てられます。たとえば、Web サイト名が **contoso** の場合、URL は **contoso.azurewebsites.net** となります。また Azure によって仮想 IP アドレスも割り当てられます。
 
@@ -16,7 +16,7 @@ Web サイトを作成すると、作成した Web サイトは Azure によっ�
 
 製品 Web サイトでは、通常、カスタム ドメイン名をユーザーに表示します。この記事では、Azure Web サイトを使用してカスタム ドメインを構成する方法について説明します (この記事では、すべてのドメイン レジストラーに共通する一般的な手順を示します。特定のレジストラーについては、この記事の上部にあるタブをクリックしてください)。
 
-[WACOM.INCLUDE [introfooter][introfooter]]
+[WACOM.INCLUDE [introfooter](../includes/custom-dns-web-site-intro-notes.md)]
 
 この記事の内容:
 
@@ -41,7 +41,7 @@ Web サイトを作成すると、作成した Web サイトは Azure によっ�
 -   サブドメインのマッピング。たとえば、**blogs.contoso.com** はサブドメインです。複数のサブドメインをそれぞれ異なる Web サイトにマップできます。
 -   ワイルドカードのマッピング。たとえば、\***.contoso.com** などです。ワイルドカードのエントリは、ドメインのすべてのサブドメインに適用されます。
 
-[WACOM.INCLUDE [modes][modes]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes.md)]
 
 ## DNS レコードの種類
 
@@ -62,7 +62,7 @@ CNAME レコードを作成している場合は、この手順をスキップ�
 2.  **[Web サイト]** タブでサイト名をクリックし、**[ダッシュボード]** を選択します。
 3.  ページの下部にある **[ドメインの管理]** をクリックします (このオプションが無効な場合は、共有、基本、または標準モードを使用していることを確認します。詳細については、「[Web サイトの規模の設定方法][Web サイトの規模の設定方法]」を参照してください)。
 
-    ![][]
+    ![][0]
 
 4.  IP アドレスが、ダイアログの下部に表示されます。
 
@@ -106,17 +106,7 @@ awverify サブドメインは、サイトの訪問者に対して表示され�
 
 
 
-  [カスタム ドメイン]: /ja-jp/documentation/articles/web-sites-custom-domain-name "カスタム ドメイン"
-  [GoDaddy]: /ja-jp/documentation/articles/web-sites-godaddy-custom-domain-name "GoDaddy"
-  [Network Solutions]: /ja-jp/documentation/articles/web-sites-network-solutions-custom-domain-name "Network Solutions"
-  [Register.com]: /ja-jp/documentation/articles/web-sites-registerdotcom-custom-domain-name "Register.com"
-  [Enom]: /ja-jp/documentation/articles/web-sites-enom-custom-domain-name "Enom"
-  [Moniker]: /ja-jp/documentation/articles/web-sites-moniker-custom-domain-name "Moniker"
-  [Dotster]: /ja-jp/documentation/articles/web-sites-dotster-custom-domain-name "Dotster"
-  [DomainDiscover]: /ja-jp/documentation/articles/web-sites-domaindiscover-custom-domain-name "DomainDiscover"
-  [Directnic]: /ja-jp/documentation/articles/web-sites-directnic-custom-domain-name "Directnic"
   [Web サイト]: /ja-jp/documentation/articles/web-sites-custom-domain-name/ "Web サイト"
-  [トラフィック マネージャーを利用する Web サイト]: /ja-jp/documentation/articles/web-sites-traffic-manager-custom-domain-name/ "トラフィック マネージャーを利用する Web サイト"
   [websites-cloud-services-css-guided-walkthrough]: ../includes/websites-cloud-services-css-guided-walkthrough.md
   [contoso.azurewebsites.net サブドメイン]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
   [introfooter]: ../includes/custom-dns-web-site-intro-notes.md
@@ -124,11 +114,10 @@ awverify サブドメインは、サイトの訪問者に対して表示され�
   [DNS レコードの種類]: #dns-record-types
   [仮想 IP アドレスの検索]: #find-the-virtual-ip-address
   [DNS レコードの作成]: #create-the-dns-records
-  ["awverify" レコードの作成 (A レコードのみ)]: #awverify
   [Web サイトでのドメイン名の有効化]: #enable-the-domain-name-on-your-website
   [modes]: ../includes/custom-dns-web-site-modes.md
   [Azure の管理ポータル]: https://manage.windowsazure.com
   [Web サイトの規模の設定方法]: http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-scale/
-  []: media/web-sites-custom-domain-name/dncmntask-cname-6.png
+  [0]: media/web-sites-custom-domain-name/dncmntask-cname-6.png
   [1]: media/web-sites-custom-domain-name/ipaddress.png
   [2]: ../includes/custom-dns-web-site-enable-on-web-site.md

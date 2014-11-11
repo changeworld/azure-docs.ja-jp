@@ -1,6 +1,6 @@
 <properties title="Operating System Functionality Available to Applications on Azure Websites" pageTitle="Operating System Functionality Available to Applications on Azure Websites" description="Learn about the OS functionality available to web applications on Azure Websites" metaKeywords="Azure,Web Sites,web applications,operating system functionality" services="web-sites" solutions="web" documentationCenter="" authors="cephalin" manager="wpickett" editor="mollybos" videoId="" scriptId="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin" />
 
 # Azure Websites 上のアプリケーションが利用できるオペレーティング システムの機能
 
@@ -133,7 +133,6 @@ Azure 上の Web アプリケーションが使用できない診断情報ログ
   [開発フレームワーク]: #developmentframeworks
   [ファイル アクセス]: #FileAccess
   [ローカル ドライブ]: #LocalDrives
-  [ネットワーク ドライブ ("UNC 共有" とも呼ばれます)]: #NetworkDrives
   [複数のインスタンス間でのファイル アクセス]: #multipleinstances
   [Web アプリケーションに付与されるファイル アクセスの種類]: #TypesOfFileAccess
   [ネットワーク アクセス]: #NetworkAccess

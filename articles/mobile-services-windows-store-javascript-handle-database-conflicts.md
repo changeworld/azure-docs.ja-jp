@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-optimistic-concurrent-data-javascript" urlDisplayName="Optimistic concurrency" pageTitle="Handle database write conflicts with optimistic concurrency (Windows Store) | Mobile Dev Center" metaKeywords="" writer="wesmc" description="Learn how to handle database write conflicts on both the server and in your Windows Store application." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Handling database write conflicts" authors="wesmc" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc" />
 
 # データベースの書き込み競合の処理
 
@@ -29,7 +29,7 @@
 
     2.  **[オンライン]** を展開し、**[Microsoft and .NET]** をクリックします。検索ボックスに「**WindowsAzure.MobileServices.WinJS**」と入力します。**WinJS 用の Windows Azure Mobile Services** NuGet パッケージで **[インストール]** をクリックします。
 
-        ![][]
+        ![][0]
 
 ## <a name="uiupdate"></a><span class="short-header">UI の更新</span>更新を実行できるようにアプリケーションを更新する
 
@@ -293,16 +293,13 @@ Azure のモバイル サービスはオプティミスティック同時実行�
 
 
 
-  [Windows ストア C#]: /ja-jp/develop/mobile/tutorials/handle-database-write-conflicts-dotnet/ "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-handle-database-conflicts/ "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/develop/mobile/tutorials/handle-database-write-conflicts-wp8/ "Windows Phone"
   [更新を実行できるようにアプリケーションを更新する]: #uiupdate
   [アプリケーションでの競合検出を有効にする]: #enableOC
   [アプリケーションでデータベース書き込み競合をテストする]: #test-app
   [サーバー スクリプトで競合の解決を自動的に処理する]: #scriptsexample
   [Mobile Services の使用]: /ja-jp/develop/mobile/tutorials/get-started
   [Azure アカウント]: http://www.windowsazure.com/ja-jp/pricing/free-trial/
-  []: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/mobile-manage-nuget-packages-dialog.png
+  [0]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/mobile-manage-nuget-packages-dialog.png
   [システム プロパティ]: http://go.microsoft.com/fwlink/?LinkId=331143
   [1]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-create-app-package1.png
   [2]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-create-app-package2.png

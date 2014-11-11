@@ -1,6 +1,6 @@
 <properties linkid="dev-java-compute-load" urlDisplayName="TSP on Virtual Machine" pageTitle="Compute-intensive Java application on a VM - Azure" metaKeywords="Azure virtual machine Java, Azure Java app, Azure Java application" description="Learn how to create an Azure virtual machine that runs a compute-intensive Java application that can be monitored by another Java application." metaCanonical="" services="virtual-machines" documentationCenter="Java" title="How to run a compute-intensive task in Java on a virtual machine" authors="robmcm" videoId="" scriptId="" solutions="" manager="wpickett" editor="mollybos" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm"></tags>
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
 
 # 仮想マシンで多くのコンピューティング処理を要する Java タスクを実行する方法
 
@@ -26,7 +26,7 @@ Azure で仮想マシンを使用することで、多くのコンピューテ�
 
 ![巡回セールスマン問題のクライアント][巡回セールスマン問題のクライアント]
 
-[WACOM.INCLUDE [create-account-and-vms-note][create-account-and-vms-note]]
+[WACOM.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
 
 ## 仮想マシンを作成するには
 
@@ -95,10 +95,10 @@ Azure のサービス バス キューを使用するには、最初にサービ
     ![名前空間の一覧のスクリーンショット][名前空間の一覧のスクリーンショット]
 3.  右側の **[プロパティ]** ウィンドウに、新しい名前空間のプロパティが表示されます。
 
-    ![プロパティ ウィンドウのスクリーンショット][]
+    ![プロパティ ウィンドウのスクリーンショット][プロパティ ウィンドウのスクリーンショット]
 4.  **[既定のキー]** は表示されません。**[表示]** をクリックしてセキュリティ資格情報を表示します。
 
-    ![既定のキー のスクリーンショット][]
+    ![既定のキー のスクリーンショット][既定のキー のスクリーンショット]
 5.  **[既定の発行者]** と **[既定のキー]** をメモしておきます。この情報は、後で名前空間に対して操作を実行するときに使用します。
 
 ## 多くのコンピューティング処理を要するタスクを実行する Java アプリケーションの作成方法
@@ -514,7 +514,6 @@ Azure のサービス バス キューを使用するには、最初にサービ
   [create-account-and-vms-note]: ../includes/create-account-and-vms-note.md
   [Azure 管理ポータル]: https://manage.windowsazure.com
   [証明書を Java CA 証明書ストアに追加する方法]: ../java-add-certificate-ca-store
-  [Service Bus ノードのスクリーンショット]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_02_SvcBusNode.jpg
   [名前空間の新規作成のスクリーンショット]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_03_CreateNewSvcNamespace.jpg
   [利用可能な名前空間のスクリーンショット]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_04_SvcBusNode_AvailNamespaces.jpg
   [名前空間の一覧のスクリーンショット]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_05_NamespaceList.jpg

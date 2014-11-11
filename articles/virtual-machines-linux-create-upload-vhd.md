@@ -1,6 +1,6 @@
 <properties linkid="manage-linux-common-task-upload-vhd" urlDisplayName="Upload a VHD" pageTitle="Create and upload a Linux VHD in Azure" metaKeywords="Azure VHD, uploading Linux VHD" description="Learn to create and upload an Azure virtual hard disk (VHD) that has the Linux operating system." metaCanonical="" services="virtual-machines" documentationCenter="" title="Creating and Uploading a Virtual Hard Disk that Contains the Linux Operating System" authors="kathydav" solutions="" manager="timlt" editor="tysonn" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="06/05/2014" ms.author="kathydav, szarkos"></tags>
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="06/05/2014" ms.author="kathydav, szarkos" />
 
 # Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード
 
@@ -719,7 +719,6 @@ Azure 上で実行する仮想マシンのオペレーティング システム�
   [SUSE Studio ギャラリーの Azure 向け SLES 11 SP3]: http://susestudio.com/a/02kbT4/sles-11-sp3-for-windows-azure
   [SLES のドキュメント]: https://www.suse.com/documentation/sles11/
   [SUSE Studio ギャラリーの Azure 向け openSUSE 13.1]: https://susestudio.com/a/02kbT4/opensuse-13-1-for-windows-azure
-  [ストレージ アカウントの作]: ./media/virtual-machines-linux-create-upload-vhd/create.png
   [ストレージ アカウントの簡易作成]: ./media/virtual-machines-linux-create-upload-vhd/storage-quick-create.png
   [ストレージ アカウントの詳細の入力]: ./media/virtual-machines-linux-create-upload-vhd/storage-create-account.png
   [ストレージ アカウントの作に成功]: ./media/virtual-machines-linux-create-upload-vhd/Storagenewaccount.png

@@ -1,6 +1,6 @@
 <properties title="Explore your metrics" pageTitle="Explore your metrics" description="Analyze usage, availability and performance of your on-premises or Microsoft Azure web application with Application Insights." metaKeywords="analytics monitoring application insights" authors="awills"  />
 
-<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="awills"></tags>
+<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="awills" />
 
 # メトリックの探索
 
@@ -16,7 +16,7 @@
 
 アプリケーションの健全性は、アプリケーションのコードをインストルメント化することによって監視できます。
 
-![][]
+![][0]
 
 ### 平均応答時間
 
@@ -105,7 +105,7 @@
   [アプリケーションの健全性]: #health
   [利用状況分析]: #usage
   [次のステップ]: #next
-  []: ./media/appinsights/appinsights-42reqs.png
+  [0]: ./media/appinsights/appinsights-42reqs.png
   [1]: ./media/appinsights/appinsights-43webtests.png
   [2]: ./media/appinsights/appinsights-44slowest.png
   [3]: ./media/appinsights/appinsights-45diagnostic.png

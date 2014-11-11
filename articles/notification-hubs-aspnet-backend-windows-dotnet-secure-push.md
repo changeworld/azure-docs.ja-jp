@@ -1,6 +1,6 @@
 <properties title="Azure Notification Hubs Secure Push" pageTitle="Azure Notification Hubs Secure Push" metaKeywords="Azure push notifications, Azure notification hubs, Azure messaging, secure push" description="Learn how to send secure push notifications in Azure. Code samples written in C# using the .NET API." documentationCenter="Mobile" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="sethm" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="sethm"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="sethm" />
 
 # Azure Notification Hubs の安全なプッシュ
 
@@ -32,7 +32,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 > [AZURE.NOTE] このチュートリアルでは、「[Getting Started with Notification Hubs (Windows Store) (Notification Hubs (Windows ストア) の使用)][Getting Started with Notification Hubs (Windows Store) (Notification Hubs (Windows ストア) の使用)]」の説明に従って、通知ハブが作成され、構成されていると想定しています。
 > また、Windows Phone 8.1 には Windows (Windows Phone ではなく) の資格情報が必要で、バックグラウンド タスクは Windows Phone 8.0 または Silverlight 8.1 では機能しないことに注意してください。Windows ストア アプリケーションの場合は、アプリケーションでロック画面が有効 (Appmanifest でチェック ボックスをオンにする) な場合にだけバックグラウンド タスクから通知を受信できます。
 
-[WACOM.INCLUDE [notification-hubs-aspnet-backend-securepush][notification-hubs-aspnet-backend-securepush]]
+[WACOM.INCLUDE [notification-hubs-aspnet-backend-securepush](../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## Windows Phone プロジェクトを変更する
 
@@ -71,7 +71,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 2.  **[ストア アプリ]** を展開し、**[Windows Phone アプリ]**、**[Windows ランタイム コンポーネント (Windows Phone)]** の順にクリックします。プロジェクトの名前として「**PushBackgroundComponent**」と入力し、**[OK]** をクリックしてプロジェクトを作成します。
 
-    ![][]
+    ![][0]
 
 3.  ソリューション エクスプローラーで、**PushBackgroundComponent (Windows Phone 8.1)** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。新しいクラスに「**PushBackgroundTask.cs**」という名前を付けます。**[追加]** をクリックしてクラスを生成します。
 
@@ -169,11 +169,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 4.  **NotifyUserWindowsPhone** アプリケーションの UI で、**[ログインして登録]** をクリックします。次に、**[プッシュを送信する]** をクリックします。
 
-  [Windows ユニバーサル]: /ja-jp/documentation/articles/notification-hubs-windows-dotnet-secure-push/ "Windows ユニバーサル"
-  [iOS]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/ "iOS"
-  [Android]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-secure-push/ "Android"
-  [Getting Started with Notification Hubs (Windows Store) (Notification Hubs (Windows ストア) の使用)]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
   [notification-hubs-aspnet-backend-securepush]: ../includes/notification-hubs-aspnet-backend-securepush.md
-  []: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png
+  [0]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png
   [1]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push3.png
   [2]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push13.png

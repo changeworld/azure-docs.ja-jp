@@ -1,6 +1,6 @@
 <properties pageTitle="Get started with push notifications (legacy push) | Mobile Dev Center" metaKeywords="" description="Learn how to use Azure Mobile Services to send push notifications to your Windows Phone app (legacy push)." metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services (legacy push)" authors="glenga" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # モバイル サービスでのプッシュ通知の使用 (従来のプッシュ)
 
@@ -39,7 +39,7 @@
 
 ## <a name="create-table"></a>新しいテーブルを作成する
 
-[WACOM.INCLUDE [mobile-services-create-new-push-table][mobile-services-create-new-push-table]]
+[WACOM.INCLUDE [mobile-services-create-new-push-table](../includes/mobile-services-create-new-push-table.md)]
 
 ## <a name="add-push"></a><span class="short-header">プッシュ通知の追加</span>アプリケーションにプッシュ通知を追加する
 
@@ -93,13 +93,13 @@
 
 5.  ソリューション エクスプローラーで、**[プロパティ]** を展開して WMAppManifest.xml ファイルを開き、**[機能]** タブをクリックして、**ID___CAP___PUSH_NOTIFICATION** 機能がオンであることを確認します。
 
-    ![][]
+    ![][0]
 
     これにより、アプリケーションでプッシュ通知の受信が有効になります。
 
 ## <a name="update-scripts"></a><span class="short-header">挿入スクリプトの更新</span>管理ポータルで登録されている挿入スクリプトを更新する
 
-[WACOM.INCLUDE [mobile-services-update-registrations-script][mobile-services-update-registrations-script]]
+[WACOM.INCLUDE [mobile-services-update-registrations-script](../includes/mobile-services-update-registrations-script.md)]
 
 1.  **[TodoItem]** をクリックし、**[スクリプト]** タブをクリックして、**[挿入]** を選択します。
 
@@ -196,14 +196,6 @@
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-push "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-push "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-push "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/mobile-services-ios-get-started-push "iOS"
-  [Android]: /ja-jp/documentation/articles/mobile-services-android-get-started-push "Android"
-  [Appcelerator]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push "Appcelerator"
-  [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push/ ".NET バックエンド"
-  [JavaScript バックエンド]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-push/ "JavaScript バックエンド"
   [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push/
   [Registrations テーブルを作成する]: #create-table
   [アプリケーションにプッシュ通知を追加する]: #add-push
@@ -213,7 +205,7 @@
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-wp8
   [通知ハブの使用]: /ja-jp/manage/services/notification-hubs/getting-started-windows-dotnet/
   [mobile-services-create-new-push-table]: ../includes/mobile-services-create-new-push-table.md
-  []: ./media/mobile-services-windows-phone-get-started-push/mobile-app-enable-push-wp8.png
+  [0]: ./media/mobile-services-windows-phone-get-started-push/mobile-app-enable-push-wp8.png
   [mobile-services-update-registrations-script]: ../includes/mobile-services-update-registrations-script.md
   [1]: ./media/mobile-services-windows-phone-get-started-push/mobile-insert-script-push2.png
   [2]: ./media/mobile-services-windows-phone-get-started-push/mobile-quickstart-push1-wp8.png

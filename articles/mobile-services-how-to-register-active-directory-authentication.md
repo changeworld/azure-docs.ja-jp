@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-how-to-guides-register-for-active-directory-authentication" urlDisplayName="Register for Azure Active Directory Authentication" pageTitle="Register for Azure Active Directory authentication - Mobile Services" metaKeywords="Azure registering application, Azure Active Directory authentication, application authenticate, authenticate mobile services" description="Learn how to register for Azure Active Directory authentication in your Mobile Services application." title="Register your account to use an Azure Active Directory account login" authors="wesmc" services="mobile-services" documentationCenter="Mobile" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc" />
 
 # アプリケーションを登録して Azure Active Directory アカウント ログインを使用する
 
@@ -10,7 +10,7 @@
 
 1.  [Azure の管理ポータル][Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  モバイル サービスの **[ID]** タブをクリックします。
 
@@ -62,7 +62,7 @@
 
   [Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/mobile-services-how-to-register-active-directory-authentication/mobile-services-selection.png
+  [0]: ./media/mobile-services-how-to-register-active-directory-authentication/mobile-services-selection.png
   [1]: ./media/mobile-services-how-to-register-active-directory-authentication/mobile-identity-tab.png
   [2]: ./media/mobile-services-how-to-register-active-directory-authentication/mobile-services-copy-app-url-waad-auth.png
   [3]: ./media/mobile-services-how-to-register-active-directory-authentication/mobile-services-select-ad-waad-auth.png

@@ -1,12 +1,12 @@
 <properties linkid="develop-dotnet-website-with-mongodb-vm" urlDisplayName="Website with MongoDB VM" pageTitle=".NET website with MongoDB on a virtual machine - Azure" metaKeywords="Azure Git ASP.NET MongoDB, Git .NET, Git MongoDB, ASP.NET MongoDB, Azure MongoDB, Azure ASP.NET, Azure tutorial" description="A tutorial that teaches you how to use Git to deploy an ASP.NET app to an Azure website connected to MongoDB on a virtual machine." metaCanonical="" services="web-sites,virtual-machines" documentationCenter=".NET" title="Create an Azure website that connects to MongoDB running on a virtual machine in Azure" authors="cephalin" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin" />
 
 # Azure の仮想マシンで実行される MongoDB に接続する Azure Web サイトを作成する
 
 Git を使用すると、ASP.NET アプリケーションを Azure Web サイトにデプロイできます。このチュートリアルでは、Azure の仮想マシンで実行されている MongoDB データベースに接続する、ASP.NET MVC の単純なフロントエンド タスク一覧アプリケーションをビルドします。[MongoDB][MongoDB] は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。開発用コンピューターで ASP.NET アプリケーションを実行してテストした後、Git を使用してアプリケーションを Azure Web サイトにアップロードします。
 
-[WACOM.INCLUDE [create-account-and-websites-and-vms-note][create-account-and-websites-and-vms-note]]
+[WACOM.INCLUDE [create-account-and-websites-and-vms-note](../includes/create-account-and-websites-and-vms-note.md)]
 
 ## 概要
 
@@ -508,7 +508,6 @@ MongoDB の接続文字列の詳細については、[Connections (接続)][Conn
   [インストールされた MongoDB C# ドライバー]: ./media/web-sites-dotnet-store-data-mongodb-vm/MongoDBCsharpDriverInstalled.png
   [MongoDB C# ドライバーの参照]: ./media/web-sites-dotnet-store-data-mongodb-vm/MongoDBCSharpDriverReferences.png
   [Solution Explorer]: ./media/web-sites-dotnet-store-data-mongodb-vm/SolutionExplorerMyTaskListApp.png
-  [Connections (接続)]: http://www.mongodb.org/display/DOCS/Connections
   [My Task List アプリケーション]: ./media/web-sites-dotnet-store-data-mongodb-vm/TaskListAppBlank.png
   [Azure 管理ポータル]: http://manage.windowsazure.com
   [Create a new web site]: ./media/web-sites-dotnet-store-data-mongodb-vm/WAWSCreateWebSite.png

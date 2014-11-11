@@ -1,6 +1,6 @@
 <properties linkid="develop-php-website-with-sql-database-and-git" urlDisplayName="Web w/ SQL + Git" pageTitle="PHP website with SQL Database and Git - Azure tutorial" metaKeywords="" description="A tutorial that demonstrates how to create a PHP website that stores data in SQL Database and use Git deployment to Azure." metaCanonical="" services="web-sites,sql-database" documentationCenter="PHP" title="Create a PHP website with a SQL Database and deploy using Git" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
 
 # SQL Database を使用する PHP Web サイトを作成して Git でデプロイする
 
@@ -18,7 +18,7 @@
 
 ![Azure PHP Web Site][Azure PHP Web Site]
 
-[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## Azure Website の作成と Git 発行の設定
 
@@ -283,7 +283,6 @@ Registration アプリケーションは、名前と電子メール アドレス
   [新しい Azure Website の作成]: ./media/web-sites-php-sql-database-deploy-use-git/new_website.jpg
   [Custom Create a new Web Site]: ./media/web-sites-php-sql-database-deploy-use-git/custom_create.png
   [Fill in web site details]: ./media/web-sites-php-sql-database-deploy-use-git/website_details_sqlazure.jpg
-  [(WEB または BUSINESS)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee621788.aspx
   [SQL データベースの設定の指定]: ./media/web-sites-php-sql-database-deploy-use-git/database_settings.jpg
   [新しい SQL データベース サーバーの作成]: ./media/web-sites-php-sql-database-deploy-use-git/create_server.jpg
   [Open web site dashboard]: ./media/web-sites-php-sql-database-deploy-use-git/go_to_dashboard.png
@@ -294,4 +293,3 @@ Registration アプリケーションは、名前と電子メール アドレス
   [リンク済みリソース]: ./media/web-sites-php-sql-database-deploy-use-git/linked_resources.jpg
   [Connection string]: ./media/web-sites-php-sql-database-deploy-use-git/connection_string.jpg
   [SQL Server 用 PDO 拡張機能]: http://php.net/pdo_sqlsrv
-  [http://[site]: http://[site

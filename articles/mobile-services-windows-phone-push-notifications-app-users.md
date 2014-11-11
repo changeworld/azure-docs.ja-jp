@@ -1,6 +1,6 @@
 <properties linkid="develop-net-tutorials-push-notifications-to-users-wp8" urlDisplayName="Push Notifications to Users (WP8)" pageTitle="Push notifications to users (Windows Phone) | Mobile Dev Center" metaKeywords="" description="Learn how to use Mobile Services to push notifications to users of your Windows Phone app." metaCanonical="" services="" documentationCenter="" title="Push notifications to users by using Mobile Services" authors="glenga" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # モバイル サービスによるユーザーへのプッシュ通知
 
@@ -23,7 +23,7 @@
 
 1.  [Azure の管理ポータル][Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[データ]** タブをクリックし、**[作成]** をクリックします。
 
@@ -197,16 +197,13 @@
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Windows Phone]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-wp8 "Windows Phone"
-  [iOS]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-ios "iOS"
-  [Android]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-android "Android"
   [1 つ前のプッシュ通知に関するチュートリアル]: /ja-jp/develop/mobile/tutorials/get-started-with-push-wp8
   [Channel テーブルを作成する]: #create-table
   [アプリケーションを更新する]: #update-app
   [サーバー スクリプトを更新する]: #update-scripts
   [プッシュ通知の動作を確認する]: #test-app
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-services-selection.png
+  [0]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-services-selection.png
   [1]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-create-table.png
   [2]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-create-channel-table.png
   [3]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-portal-data-tables-channel.png

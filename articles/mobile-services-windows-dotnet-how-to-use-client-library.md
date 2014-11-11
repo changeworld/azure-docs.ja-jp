@@ -1,6 +1,6 @@
 <properties linkid="obile-services-how-to-dotnet-client" urlDisplayName=".NET Client Library" pageTitle="Working with the Mobile Services .NET Client Library" metaKeywords="Azure Mobile Services, Mobile Service .NET client, .NET client" description="Learn how to use an .NET client for Azure Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="How to use a .NET client for Azure Mobile Services" authors="krisragh" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="krisragh"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="krisragh" />
 
 # Azure モバイル サービス向け .NET クライアントを使用する方法
 
@@ -38,7 +38,7 @@
     -   [シリアル化をカスタマイズする][シリアル化をカスタマイズする]
 -   [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [mobile-services-concepts][mobile-services-concepts]]
+[WACOM.INCLUDE [mobile-services-concepts](../includes/mobile-services-concepts.md)]
 
 ## <a name="setup"></a><span class="short-header">セットアップ</span>セットアップと前提条件
 
@@ -662,11 +662,6 @@ Windows Phone アプリの場合は、[ProtectedData][ProtectedData] クラス�
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [.NET Framework]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library/ ".NET Framework"
-  [HTML/JavaScript]: /ja-jp/develop/mobile/how-to-guides/work-with-html-js-client/ "HTML/JavaScript"
-  [iOS]: /ja-jp/develop/mobile/how-to-guides/work-with-ios-client-library/ "iOS"
-  [Android]: /ja-jp/develop/mobile/how-to-guides/work-with-android-client-library/ "Android"
-  [Xamarin]: /ja-jp/develop/mobile/how-to-guides/work-with-xamarin-client-library/ "Xamarin"
   [Windows ストアのクイック スタートのチュートリアル]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started/
   [Windows Phone のクイック スタートのチュートリアル]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-wp8/
   [Windows ストアのデータのチュートリアル]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet/
@@ -719,8 +714,6 @@ Windows Phone アプリの場合は、[ProtectedData][ProtectedData] クラス�
   [userId]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid.aspx
   [MobileServiceAuthenticationToken]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken.aspx
   [認証トークンをキャッシュする]: #caching
-  [Windows ストア アプリケーション パッケージを Microsoft 認証に登録する]: /ja-jp/develop/mobile/how-to-guides/register-windows-store-app-package/
-  [LoginAsync]: http://go.microsoft.com/fwlink/p/?LinkId=311594
   [1]: /ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/
   [2]: /ja-jp/develop/mobile/tutorials/single-sign-on-wp8/
   [PasswordVault]: http://msdn.microsoft.com/ja-jp/library/windows/apps/windows.security.credentials.passwordvault.aspx

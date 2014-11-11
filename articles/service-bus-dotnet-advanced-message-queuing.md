@@ -1,6 +1,6 @@
 <properties linkid="develop-net-how-to-guides-service-bus-amqp" urlDisplayName="Service Bus AMQP" pageTitle="How to use AMQP 1.0 with the .NET Service Bus API - Azure" metaKeywords="" description="Learn how to use Advanced Message Queuing Protodol (AMQP) 1.0 with the Azure .NET Service Bus API." metaCanonical="" services="service-bus" documentationCenter=".NET" title="How to use AMQP 1.0 with the Service Bus .NET API" authors="sethm" solutions="" manager="timlt" editor="mattshel" />
 
-<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="sethm"></tags>
+<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="sethm" />
 
 # .NET サービス バス API で AMQP 1.0 を使用する方法
 
@@ -299,6 +299,5 @@ Service Bus AMQP 1.0 は、Java、C、Python、PHP など、その他の言語�
   []: http://nuget.org/packages/WindowsAzure.ServiceBus/
   [Service Bus AMQP: 開発者ガイド]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj841071.aspx
   [1]: http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/service-bus-queues/
-  [サービス バスと AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ]: http://aka.ms/ll1fm3
   [2]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj841071.aspx
   [Azure のサービス バスの AMQP 1.0 のサポートに関するページ]: http://aka.ms/pgr3dp

@@ -1,6 +1,6 @@
 <properties title="Azure Machine Learning Sample: Prediction of student performance" pageTitle="Machine Learning Sample: Predict student performance | Azure" description="A sample Azure Machine Learning experiment to develop a model that predicts student performance on tests." metaKeywords="" services="" solutions="" documentationCenter="" authors="garye" videoId="" scriptId="" />
 
-<tags ms.service="machine-learning" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="garye"></tags>
+<tags ms.service="machine-learning" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="garye" />
 
 # Azure Machine Learning サンプル: 学生の成績の予測
 
@@ -27,7 +27,7 @@
     $ctxt = New-AzureStorageContext -StorageAccountName $key.StorageAccountName -StorageAccountKey $key.Primary
     Set-AzureStorageBlobContent –Container <container name in your storage account> -File "algebra_train_small.txt_ascii" –Context $ctxt
 
-![][]
+![][0]
 
 **"リーダー"** モジュールのパラメーターは上記のとおりです。この例では、ストレージ アカウント名は "datascience" で、データセット ファイル algebra\_train\_small.txt\_ascii はコンテナー "sampleexperiments" 内にあります。アカウント キーは Azure Storage アカウントのアクセス キーです。このキーは Azure の管理ポータル ([][1]<https://manage.windowsazure.com></a>) でアカウントから取得できます。
 
@@ -94,9 +94,9 @@ Name、Section Name、Problem Name、Problem View、Opportunity の各特徴と�
 
 H.-F. Yu ほか、Feature Engineering and Classifier Ensemble for KDD Cup 2010、KDD Cup 2010 Workshop、2010 年
 
-  []: https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp
+  [0]: https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp
   [二乗平均平方根誤差]: http://en.wikipedia.org/wiki/Root-mean-square_deviation
-  []: ./media/machine-learning-sample-prediction-of-student-performance/student-performance-1.jpg
+  [0]: ./media/machine-learning-sample-prediction-of-student-performance/student-performance-1.jpg
   [1]: https://manage.windowsazure.com
   [2]: ./media/machine-learning-sample-prediction-of-student-performance/student-performance-2.jpg
   [3]: ./media/machine-learning-sample-prediction-of-student-performance/student-performance-3.jpg

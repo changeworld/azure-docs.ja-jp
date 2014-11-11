@@ -1,6 +1,6 @@
 <properties umbracoNaviHide="0" pageTitle="Azure AD Integration with Google Apps" metaKeywords="Azure Google Apps Integration" description="Learn about integrating Azure AD with Google Apps." linkid="documentation-services-identity-windows-azure-ad-integration-with-google=apps" urlDisplayName="Azure AD Integration with Google Apps" headerExpose="" footerExpose="" disqusComments="0" editor="lisatoft" manager="terrylan" title="Azure AD Integration with Google Apps" authors="" />
 
-<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author></tags>
+<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="" />
 
 # Azure AD と Google Apps との統合
 
@@ -177,23 +177,5 @@ Google アプリケーションでユーザー プロビジョニングを構成
 関連項目
 [Azure Active Directory のアプリケーション アクセスの強化を管理するためのベスト プラクティス アプリケーション アクセス][Azure Active Directory のアプリケーション アクセスの強化を管理するためのベスト プラクティス アプリケーション アクセス]
 
-  [Google\_Tutorial\_01]: ./media/integration-azure-google-apps/Google_Tutorial_01.png
-  [Google\_Tutorial\_02]: ./media/integration-azure-google-apps/Google_Tutorial_02.png
-  [Google\_Tutorial\_03]: ./media/integration-azure-google-apps/Google_Tutorial_03.png
-  [Google\_Tutorial\_04]: ./media/integration-azure-google-apps/Google_Tutorial_04.png
-  [Google\_Tutorial\_05]: ./media/integration-azure-google-apps/Google_Tutorial_05.png
-  [Google\_Tutorial\_06]: ./media/integration-azure-google-apps/Google_Tutorial_06.png
-  [Google\_Tutorial\_07]: ./media/integration-azure-google-apps/Google_Tutorial_07.png
-  [Google\_Tutorial\_08]: ./media/integration-azure-google-apps/Google_Tutorial_08.png
   [アクセス パネル]: https://login.microsoftonline.com/login.srf?wa=wsignin1.0&rpsnv=2&ct=1384289458&rver=6.1.6206.0&wp=MCMBI&wreply=https:%2F%2Faccount.activedirectory.windowsazure.com%2Flanding.aspx%3Ftarget%3D%252fapplications%252fdefault.aspx&lc=1033&id=500633
-  [Google\_Tutorial\_09]: ./media/integration-azure-google-apps/Google_Tutorial_09.png
-  [Google\_Tutorial\_10]: ./media/integration-azure-google-apps/Google_Tutorial_10.png
-  [Google\_Tutorial\_11]: ./media/integration-azure-google-apps/Google_Tutorial_11.png
-  [Google\_Tutorial\_12]: ./media/integration-azure-google-apps/Google_Tutorial_12.png
-  [Google\_Tutorial\_13]: ./media/integration-azure-google-apps/Google_Tutorial_13.png
-  [Google\_Tutorial\_14]: ./media/integration-azure-google-apps/Google_Tutorial_14.png
-  [Google\_Tutorial\_15]: ./media/integration-azure-google-apps/Google_Tutorial_15.png
-  [Google\_Tutorial\_16]: ./media/integration-azure-google-apps/Google_Tutorial_16.png
-  [Google\_Tutorial\_17]: ./media/integration-azure-google-apps/Google_Tutorial_17.png
-  [Google\_Tutorial\_18]: ./media/integration-azure-google-apps/Google_Tutorial_18.png
   [Azure Active Directory のアプリケーション アクセスの強化を管理するためのベスト プラクティス アプリケーション アクセス]: http://social.technet.microsoft.com/wiki/contents/articles/18409.best-practices-for-managing-the-application-access-enhancements-for-windows-azure-active-directory.aspx

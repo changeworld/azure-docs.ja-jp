@@ -1,6 +1,6 @@
 <properties title="Monitor your app's health and usage with Application Insights" pageTitle="Monitor your app's health and usage with Application Insights" description="Get started with Application Insights. Analyze usage, availability and performance of your on-premises or Microsoft Azure applications." metaKeywords="analytics monitoring application insights" authors="awills"  />
 
-<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="awills"></tags>
+<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="awills" />
 
 # アプリケーションの正常性と利用状況の監視
 
@@ -44,7 +44,7 @@ F5 キーを押してアプリケーションを実行し、いろいろなペ�
 
 Visual Studio に、受け取ったイベントの数が表示されます。
 
-![][]
+![][0]
 
 ## <a name="monitor"></a>3. 監視データの表示
 
@@ -96,7 +96,7 @@ Application Insights をプロジェクトから開きます。
   [エージェントをサーバーにインストール]: ../app-insights-monitor-performance-live-website-now/
   [Create an ASP.NET project]: ./media/appinsights/appinsights-01-vsnewp1.png
   [Choose Add Application Insights]: ./media/appinsights/appinsights-03-addExisting.png
-  []: ./media/appinsights/appinsights-09eventcount.png
+  [0]: ./media/appinsights/appinsights-09eventcount.png
   [Right-click your project and open the Azure portal]: ./media/appinsights/appinsights-04-openPortal.png
   [Click through to more data]: ./media/appinsights/appinsights-05-usageTiles.png
   [タイルとレポートの詳細]: ../app-insights-explore-metrics/

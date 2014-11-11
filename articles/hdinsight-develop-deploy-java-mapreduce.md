@@ -1,6 +1,6 @@
 <properties linkid="manage-services-hdinsight-develop-Java-MapReduce-programs-for-HDInsight-Hadoop" urlDisplayName="HDInsight Tutorials" pageTitle="Develop Java MapReduce programs for Hadoop in HDInsight | Azure" metaKeywords="hdinsight, hdinsight development, hadoop development, hdinsight deployment, development, deployment, tutorial, MapReduce, Java" description="Learn how to develop Java MapReduce programs on HDInsight emulator, how to deploy them to HDInsight." services="hdinsight" title="Develop Java MapReduce programs for Hadoop in HDInsight" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" authors="jgao" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="jgao"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
 
 # HDInsight での Hadoop 用 Java MapReduce プログラムの開発
 
@@ -10,18 +10,18 @@
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
--   Azure HDInsight Emulator のインストール。手順については、「[HDInsight Emulator の概要][]」を参照してください。
--   エミュレーター コンピューターへの Azure PowerShell のインストール。手順については、[Azure PowerShell のインストールおよび構成に関するページ][]を参照してください。
--   Azure サブスクリプションの入手。手順については、[購入オプション][]、[メンバー プラン][]、または[無料評価版][]に関するページを参照してください。
+-   Azure HDInsight Emulator のインストール。手順については、「[HDInsight Emulator の概要][HDInsight Emulator の概要]」を参照してください。
+-   エミュレーター コンピューターへの Azure PowerShell のインストール。手順については、[Azure PowerShell のインストールおよび構成に関するページ][Azure PowerShell のインストールおよび構成に関するページ]を参照してください。
+-   Azure サブスクリプションの入手。手順については、[購入オプション][購入オプション]、[メンバー プラン][メンバー プラン]、または[無料評価版][無料評価版]に関するページを参照してください。
 
 ## この記事の内容
 
--   [Java でワード カウント MapReduce プログラムを開発する][]
--   [エミュレーターでプログラムをテストする][]
--   [Azure BLOB ストレージにデータ ファイルとアプリケーションをアップロードする][]
--   [Azure HDInsight で MapReduce プログラムを実行する][]
--   [MapReduce の結果を取得する][]
--   [次のステップ][]
+-   [Java でワード カウント MapReduce プログラムを開発する][Java でワード カウント MapReduce プログラムを開発する]
+-   [エミュレーターでプログラムをテストする][エミュレーターでプログラムをテストする]
+-   [Azure BLOB ストレージにデータ ファイルとアプリケーションをアップロードする][Azure BLOB ストレージにデータ ファイルとアプリケーションをアップロードする]
+-   [Azure HDInsight で MapReduce プログラムを実行する][Azure HDInsight で MapReduce プログラムを実行する]
+-   [MapReduce の結果を取得する][MapReduce の結果を取得する]
+-   [次のステップ][次のステップ]
 
 ## <a name="develop"></a>Java でワード カウント MapReduce プログラムを開発する
 
@@ -128,7 +128,7 @@ HDInsight Emulator は *javac* コンパイラに付属しています。
 
     このコマンドによって、現在のフォルダーに WordCount.jar ファイルが作成されます。
 
-    ![HDI.EMulator.WordCount.Compile][]
+    ![HDI.EMulator.WordCount.Compile][HDI.EMulator.WordCount.Compile]
 
 ## <a name="test"></a>エミュレーターでプログラムをテストする
 
@@ -141,7 +141,7 @@ HDInsight Emulator は *javac* コンパイラに付属しています。
 
 HDInsight Emulator は既定のファイル システムとして HDFS を使用します。必要に応じて、Azure BLOB ストレージを使用するように HDInsight Emulator を構成することもできます。詳細については、「[HDInsight Emulator の概要][1]」を参照してください。
 
-このチュートリアルでは、HDFS *copyFromLocal* コマンドを使用して、データ ファイルを HDFS にアップロードします。次のセクションでは、Azure PowerShell を使用してファイルを Azure BLOB ストレージにアップロードする方法について説明します。Azure BLOB ストレージにファイルをアップロードするその他の方法については、「[HDInsight へのデータのアップロード][]」を参照してください。
+このチュートリアルでは、HDFS *copyFromLocal* コマンドを使用して、データ ファイルを HDFS にアップロードします。次のセクションでは、Azure PowerShell を使用してファイルを Azure BLOB ストレージにアップロードする方法について説明します。Azure BLOB ストレージにファイルをアップロードするその他の方法については、「[HDInsight へのデータのアップロード][HDInsight へのデータのアップロード]」を参照してください。
 
 このチュートリアルでは、次の HDFS フォルダー構造を使用します。
 
@@ -194,11 +194,11 @@ HDInsight Emulator は既定のファイル システムとして HDFS を使用
 
     ジョブが正常に完了した場合は、次のスクリーンショットのような出力が表示されます。
 
-    ![HDI.EMulator.WordCount.Run][]
+    ![HDI.EMulator.WordCount.Run][HDI.EMulator.WordCount.Run]
 
     スクリーンショットから、map と reduce の両方が 100% 完了したことがわかります。ジョブ ID job\_201312092021\_0002 も一覧表示されます。同じレポートは、デスクトップから **Hadoop MapReduce status** ショートカットを開いてジョブ ID を見つける方法で取得することもできます。
 
-MapReduce ジョブを実行するための別のオプションは、Azure PowerShell を使用することです。手順については、「[HDInsight Emulator の概要][]」を参照してください。
+MapReduce ジョブを実行するための別のオプションは、Azure PowerShell を使用することです。手順については、「[HDInsight Emulator の概要][HDInsight Emulator の概要]」を参照してください。
 
 **HDFS からの出力を表示するには**
 
@@ -230,7 +230,7 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
         $containerName_Data = "<ContainerName>"
         $location = "<MicrosoftDataCenter>"  # For example, "East US"
 
-    **$subscripionName** は、Azure サブスクリプションに関連付けられます。**$storageAccountName\_Data** と **$storageAccountName\_Data** には名前を付ける必要があります。名前付けの制限については、「[コンテナー、BLOB、およびメタデータの名前付け][]」を参照してください
+    **$subscripionName** は、Azure サブスクリプションに関連付けられます。**$storageAccountName\_Data** と **$storageAccountName\_Data** には名前を付ける必要があります。名前付けの制限については、「[コンテナー、BLOB、およびメタデータの名前付け][コンテナー、BLOB、およびメタデータの名前付け]」を参照してください
 
 3.  次のコマンドを実行して、ストレージ アカウントと、そのアカウントの BLOB ストレージ コンテナーを作成します。
 
@@ -445,11 +445,11 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 
         PowerShell -File <FileName> -ExecutionPolicy RemoteSigned
 
-8.  プロンプトが表示されたら、HDInsight クラスターのユーザー名とパスワードを入力します。スクリプトの最後でクラスターを削除し、ユーザー名とパスワードが必要なくなるため、ユーザー名とパスワードとして任意の文字列を使用できます。資格情報の入力を求めないようにする場合は、[Windows PowerShell でのパスワード、セキュリティ保護された文字列、資格情報の使用][]に関するページを参照してください。
+8.  プロンプトが表示されたら、HDInsight クラスターのユーザー名とパスワードを入力します。スクリプトの最後でクラスターを削除し、ユーザー名とパスワードが必要なくなるため、ユーザー名とパスワードとして任意の文字列を使用できます。資格情報の入力を求めないようにする場合は、[Windows PowerShell でのパスワード、セキュリティ保護された文字列、資格情報の使用][Windows PowerShell でのパスワード、セキュリティ保護された文字列、資格情報の使用]に関するページを参照してください。
 
 ## <a name="retrieve"></a>MapReduce ジョブの出力を取得する
 
-このセクションでは、出力をダウンロードして表示する方法を示します。Excel で結果を表示する方法については、「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][]」と「[Power Query を使用した Excel から HDInsight への接続][]」を参照してください。
+このセクションでは、出力をダウンロードして表示する方法を示します。Excel で結果を表示する方法については、「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続]」と「[Power Query を使用した Excel から HDInsight への接続][Power Query を使用した Excel から HDInsight への接続]」を参照してください。
 
 **出力を取得するには**
 
@@ -473,28 +473,28 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
         Get-AzureStorageBlobContent -Container $containerName_Data -Blob $blobName -Context $storageContext -Force
         cat "./$blobName" | findstr "there"
 
-ジョブが完了したら、[Sqoop][] を使用してデータを SQL Server または Azure SQL データベースにエクスポートするか、Excel にエクスポートするかを選択できます。
+ジョブが完了したら、[Sqoop][Sqoop] を使用してデータを SQL Server または Azure SQL データベースにエクスポートするか、Excel にエクスポートするかを選択できます。
 
 ## <span id="nextsteps"></span></a>次のステップ
 
 このチュートリアルでは、Java MapReduce ジョブを作成する方法、HDInsight Emulator でアプリケーションをテストする方法、HDInsight クラスターをプロビジョニングしてクラスターで MapReduce を実行する PowerShell スクリプトを記述する方法について説明しました。詳細については、次の記事を参照してください。
 
--   [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発][]
--   [Azure HDInsight の概要][]
--   [HDInsight Emulator の概要][]
--   [HDInsight での Azure BLOB ストレージの使用][]
--   [PowerShell を使用した HDInsight の管理][]
--   [HDInsight へのデータのアップロード][]
--   [HDInsight での Hive の使用][]
--   [HDInsight での Pig の使用][]
--   [Power Query を使用した Excel から HDInsight への接続][]
--   [Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][]
+-   [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発][HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発]
+-   [Azure HDInsight の概要][Azure HDInsight の概要]
+-   [HDInsight Emulator の概要][HDInsight Emulator の概要]
+-   [HDInsight での Azure BLOB ストレージの使用][HDInsight での Azure BLOB ストレージの使用]
+-   [PowerShell を使用した HDInsight の管理][PowerShell を使用した HDInsight の管理]
+-   [HDInsight へのデータのアップロード][HDInsight へのデータのアップロード]
+-   [HDInsight での Hive の使用][HDInsight での Hive の使用]
+-   [HDInsight での Pig の使用][HDInsight での Pig の使用]
+-   [Power Query を使用した Excel から HDInsight への接続][Power Query を使用した Excel から HDInsight への接続]
+-   [Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続]
 
   [HDInsight Emulator の概要]: ../hdinsight-get-started-emulator/
   [Azure PowerShell のインストールおよび構成に関するページ]: ../install-configure-powershell/
-  [購入オプション]: http://azure.microsoft.com/en-us/pricing/purchase-options/
-  [メンバー プラン]: http://azure.microsoft.com/en-us/pricing/member-offers/
-  [無料評価版]: http://azure.microsoft.com/en-us/pricing/free-trial/
+  [購入オプション]: http://azure.microsoft.com/ja-jp/pricing/purchase-options/
+  [メンバー プラン]: http://azure.microsoft.com/ja-jp/pricing/member-offers/
+  [無料評価版]: http://azure.microsoft.com/ja-jp/pricing/free-trial/
   [Java でワード カウント MapReduce プログラムを開発する]: #develop
   [エミュレーターでプログラムをテストする]: #test
   [Azure BLOB ストレージにデータ ファイルとアプリケーションをアップロードする]: #upload
@@ -505,7 +505,7 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
   [1]: ../hdinsight-get-started-emulator/#blobstorage
   [HDInsight へのデータのアップロード]: ../hdinsight-upload-data/
   [HDI.EMulator.WordCount.Run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
-  [コンテナー、BLOB、およびメタデータの名前付け]: http://msdn.microsoft.com/en-us/library/windowsazure/dd135715.aspx
+  [コンテナー、BLOB、およびメタデータの名前付け]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd135715.aspx
   [Windows PowerShell でのパスワード、セキュリティ保護された文字列、資格情報の使用]: http://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
   [Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続]: ../hdinsight-connect-excel-hive-ODBC-driver/
   [Power Query を使用した Excel から HDInsight への接続]: ../hdinsight-connect-excel-power-query/

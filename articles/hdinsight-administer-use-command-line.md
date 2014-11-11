@@ -1,6 +1,6 @@
 <properties linkid="manage-services-hdinsight-administer-hdinsight-hadoop-clusters-using-command-line" urlDisplayName="HDInsight Administration" pageTitle="Manage Hadoop clusters using Cross-Platform Command-Line | Azure" metaKeywords="hdinsight, hdinsight administration, hdinsight administration azure, hadoop, administration" description="Learn how to use the Cross-Platform Command-Line Interface to manage Hadoop clusters in HDIsight on any platform that supports Node.js, including Windows, Mac, and Linux." services="hdinsight" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" title="Administer Hadoop clusters using the Cross-platform Command-line Interface" authors="jgao" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
 
 # クロスプラットフォーム コマンド ライン インターフェイスを使用した HDInsight での Hadoop クラスターの管理
 
@@ -8,23 +8,23 @@
 
 コマンド ライン ツールはオープン ソースです。ソース コードは GitHub (<https://github.com/WindowsAzure/azure-sdk-tools-xplat>) で管理されています。
 
-この記事では、Windows からコマンド ライン インターフェイスを使用する方法だけを取り上げます。コマンド ライン インターフェイスの使用方法の一般的ガイドについては、「[Mac および Linux 用 Azure コマンド ライン ツールの使用方法][]」を参照してください。包括的なリファレンス ドキュメントについては、「[Mac および Linux 用 Azure コマンド ライン ツール][]」を参照してください。
+この記事では、Windows からコマンド ライン インターフェイスを使用する方法だけを取り上げます。コマンド ライン インターフェイスの使用方法の一般的ガイドについては、「[Mac および Linux 用 Azure コマンド ライン ツールの使用方法][Mac および Linux 用 Azure コマンド ライン ツールの使用方法]」を参照してください。包括的なリファレンス ドキュメントについては、「[Mac および Linux 用 Azure コマンド ライン ツール][Mac および Linux 用 Azure コマンド ライン ツール]」を参照してください。
 
 **前提条件:**
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
--   **Azure サブスクリプション**。Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション][]、[メンバー プラン][]、または[無料評価版][]に関するページを参照してください。
+-   **Azure サブスクリプション**。Azure はサブスクリプション方式のプラットフォームです。サブスクリプションの入手方法の詳細については、[購入オプション][購入オプション]、[メンバー プラン][メンバー プラン]、または[無料評価版][無料評価版]に関するページを参照してください。
 
 ## この記事の内容
 
--   [インストール][]
--   [Azure アカウントの発行設定のダウンロードとインポート][]
--   [クラスターのプロビジョニング][]
--   [構成ファイルを使用したクラスターのプロビジョニング][]
--   [クラスターの一覧と表示][]
--   [クラスターの削除][]
--   [次のステップ][]
+-   [インストール][インストール]
+-   [Azure アカウントの発行設定のダウンロードとインポート][Azure アカウントの発行設定のダウンロードとインポート]
+-   [クラスターのプロビジョニング][クラスターのプロビジョニング]
+-   [構成ファイルを使用したクラスターのプロビジョニング][構成ファイルを使用したクラスターのプロビジョニング]
+-   [クラスターの一覧と表示][クラスターの一覧と表示]
+-   [クラスターの削除][クラスターの削除]
+-   [次のステップ][次のステップ]
 
 ## <span id="installation"></span></a> インストール
 
@@ -54,7 +54,7 @@
 
 **Windows インストーラーを使用してコマンド ライン インターフェイスをインストールするには**
 
-1.  ブラウザーで **<http://azure.microsoft.com/en-us/downloads/>** を開きます。
+1.  ブラウザーで **<http://azure.microsoft.com/ja-jp/downloads/>** を開きます。
 2.  下へスクロールして、**[コマンド ライン ツール]** セクションの **[クロスプラットフォーム コマンド ライン インターフェイス]** をクリックし、Web プラットフォーム インストーラー ウィザードの指示に従います。
 
 ## <span id="importsettings"></span></a> Azure アカウントの発行設定のダウンロードとインポート
@@ -70,7 +70,7 @@
 
         azure account download
 
-    ![HDI.CLIAccountDownloadImport][]
+    ![HDI.CLIAccountDownloadImport][HDI.CLIAccountDownloadImport]
 
     URL も含めて、ファイルのダウンロード方法が表示されます。
 
@@ -98,7 +98,7 @@ HDInsight は、既定のファイル システムとして Azure BLOB ストレ
 > -   米国東部
 > -   米国西部
 
-Azure 管理ポータルを使った Azure ストレージ アカウントの作成については、「[ストレージ アカウントの作成方法][]」を参照してください。
+Azure 管理ポータルを使った Azure ストレージ アカウントの作成については、「[ストレージ アカウントの作成方法][ストレージ アカウントの作成方法]」を参照してください。
 
 既にストレージ アカウントを持っていて、アカウント名とアカウント キーがわからない場合は、次のコマンドを使ってその情報を取得できます。
 
@@ -109,7 +109,7 @@ Azure 管理ポータルを使った Azure ストレージ アカウントの作
     -- Lists the keys for a storage account
     azure account storage keys list <StorageAccountName>
 
-管理ポータルを使用して情報を取得する方法の詳細については、「[ストレージ アカウントの管理方法][]」の「*方法: ストレージ アクセス キーの表示、コピーおよび再生成*」を参照してください。
+管理ポータルを使用して情報を取得する方法の詳細については、「[ストレージ アカウントの管理方法][ストレージ アカウントの管理方法]」の「*方法: ストレージ アクセス キーの表示、コピーおよび再生成*」を参照してください。
 
 *azure hdinsight cluster create* コマンドは、コンテナーが存在しない場合、コンテナーを作成します。コンテナーを事前に作成する場合は、次のコマンドを使用できます。
 
@@ -120,7 +120,7 @@ Azure 管理ポータルを使った Azure ストレージ アカウントの作
 
     azure hdinsight cluster create --clusterName <ClusterName> --storageAccountName <StorageAccountName> --storageAccountKey <storageAccountKey> --storageContainer <StorageContainer> --nodes <NumberOfNodes> --location <DataCenterLocation> --username <HDInsightClusterUsername> --clusterPassword <HDInsightClusterPassword>
 
-![HDI.CLIClusterCreation][]
+![HDI.CLIClusterCreation][HDI.CLIClusterCreation]
 
 ## <span id="provisionconfigfile"></span></a> 構成ファイルを使用した HDInsight クラスターのプロビジョニング
 
@@ -142,7 +142,7 @@ Azure 管理ポータルを使った Azure ストレージ アカウントの作
     azure hdinsight cluster create --config <file>
          
 
-![HDI.CLIClusterCreationConfig][]
+![HDI.CLIClusterCreationConfig][HDI.CLIClusterCreationConfig]
 
 ## <span id="listshow"></span></a> クラスターの一覧と詳細の表示
 
@@ -151,7 +151,7 @@ Azure 管理ポータルを使った Azure ストレージ アカウントの作
     azure hdinsight cluster list
     azure hdinsight cluster show <ClusterName>
 
-![HDI.CLIListCluster][]
+![HDI.CLIListCluster][HDI.CLIListCluster]
 
 ## <span id="delete"></span></a> クラスターの削除
 
@@ -163,17 +163,17 @@ Azure 管理ポータルを使った Azure ストレージ アカウントの作
 
 この記事では、さまざまな HDInsight クラスター管理タスクを実行する方法について説明しました。詳細については、次の記事を参照してください。
 
--   [管理ポータルを使用した HDInsight クラスターの管理][]
--   [PowerShell を使用した HDInsight の管理][]
--   [Azure HDInsight の概要][]
--   [Mac および Linux 用 Azure コマンド ライン ツールの使用方法][]
--   [Mac および Linux 用 Azure コマンド ライン ツール][]
+-   [管理ポータルを使用した HDInsight クラスターの管理][管理ポータルを使用した HDInsight クラスターの管理]
+-   [PowerShell を使用した HDInsight の管理][PowerShell を使用した HDInsight の管理]
+-   [Azure HDInsight の概要][Azure HDInsight の概要]
+-   [Mac および Linux 用 Azure コマンド ライン ツールの使用方法][Mac および Linux 用 Azure コマンド ライン ツールの使用方法]
+-   [Mac および Linux 用 Azure コマンド ライン ツール][Mac および Linux 用 Azure コマンド ライン ツール]
 
   [Mac および Linux 用 Azure コマンド ライン ツールの使用方法]: ../xplat-cli/
   [Mac および Linux 用 Azure コマンド ライン ツール]: ../command-line-tools/
-  [購入オプション]: http://azure.microsoft.com/en-us/pricing/purchase-options/
-  [メンバー プラン]: http://azure.microsoft.com/en-us/pricing/member-offers/
-  [無料評価版]: http://azure.microsoft.com/en-us/pricing/free-trial/
+  [購入オプション]: http://azure.microsoft.com/ja-jp/pricing/purchase-options/
+  [メンバー プラン]: http://azure.microsoft.com/ja-jp/pricing/member-offers/
+  [無料評価版]: http://azure.microsoft.com/ja-jp/pricing/free-trial/
   [インストール]: #installation
   [Azure アカウントの発行設定のダウンロードとインポート]: #importsettings
   [クラスターのプロビジョニング]: #provision

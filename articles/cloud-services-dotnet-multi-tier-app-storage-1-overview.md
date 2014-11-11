@@ -1,6 +1,6 @@
 <properties linkid="develop-net-tutorials-multi-tier-web-site-1-overview" pageTitle="Azure Cloud Service Tutorial: ASP.NET MVC Web Role, Worker Role, Azure Storage Tables, Queues, and Blobs" metaKeywords="Azure tutorial, Azure storage tutorial, Azure multi-tier tutorial, MVC Web Role tutorial, Azure worker role tutorial, Azure blobs tutorial, Azure tables tutorial, Azure queues tutorial" description="Learn how to create a multi-tier app using ASP.NET MVC and Azure. The app runs in a cloud service, with web role and worker roles, and uses Azure storage tables, queues, and blobs." metaCanonical="" services="cloud-services,storage" documentationCenter=".NET" title="Azure Cloud Service Tutorial: ASP.NET MVC Web Role, Worker Role, Azure Storage Tables, Queues, and Blobs" authors="tdykstra,riande" solutions="" manager="wpickett" editor="mollybos" />
 
-<tags ms.service="cloud-services" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tdykstra,riande"></tags>
+<tags ms.service="cloud-services" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tdykstra,riande" />
 
 # Azure クラウド サービス チュートリアル: ASP.NET MVC Web ロール、Worker ロール、Azure ストレージ テーブル、キュー、BLOB (1/5)
 
@@ -1042,11 +1042,6 @@ Azure Storage のテーブル、キュー、BLOB に関する参考情報につ�
   [電子書籍]: http://social.technet.microsoft.com/wiki/contents/articles/11608.e-book-gallery-for-microsoft-technologies.aspx#ASPNETMultiTierWindowsAzureApplicationUsingStorageTablesQueuesandBlobs
   [電子メール メッセージの処理]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-overview/mtas-worker-roles-a-and-b.png
   [Azure Cloud Services と ASP.NET を使ってみる]: /ja-jp/documentation/articles/cloud-services-dotnet-get-started/
-  [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)]: /ja-jp/documentation/articles/websites-dotnet-webjobs-sdk-get-started/
-  [Configuring and Deploying the Azure Email Service application (Azure 電子メール サービス アプリケーションの構成と展開)]: /ja-jp/develop/net/tutorials/multi-tier-web-site/2-download-and-run/
-  [Building the web role for the Azure Email Service application (Azure 電子メール サービス アプリケーションで使用する Web ロールの作成)]: /ja-jp/develop/net/tutorials/multi-tier-web-site/3-web-role/
-  [Building worker role A (email scheduler) for the Azure Email Service application (Azure 電子メール サービス アプリケーションで使用する Worker ロール A (電子メール スケジューラ) の作成)]: /ja-jp/develop/net/tutorials/multi-tier-web-site/4-worker-role-a/
-  [Building worker role B (email sender) for the Azure Email Service application (Azure 電子メール サービス アプリケーションで使用する Worker ロール B (電子メール送信) の作成)]: /ja-jp/develop/net/tutorials/multi-tier-web-site/5-worker-role-b/
   [前提条件]: #prerequisites
   [フロントエンドの概要]: #frontend
   [バックエンドの概要]: #backend
@@ -1071,19 +1066,13 @@ Azure Storage のテーブル、キュー、BLOB に関する参考情報につ�
   [重複する電子メールの送信を防ぐ]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-overview/mtas-message-processing.png
   [配信登録キュー メッセージの処理]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-overview/mtas-subscribe-diagram.png
   [Azure SQL データベース]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336279.aspx
-  [Real World: Designing a Scalable Partitioning Strategy for Azure Table Storage (リアル ワールド: Azure テーブル ストレージ用の拡張性が高いパーティション分割方法の設計)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh508997.aspx
   [Azure 電子メール サービス アプリケーションのデータ図]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-overview/mtas-datadiagram.png
   [アプリケーション アーキテクチャの概要]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-overview/mtas-architecture-overview.png
   [別のアプリケーション アーキテクチャ]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-overview/mtas-alternative-architecture.png
   [Azure 料金計算ツール]: http://www.windowsazure.com/ja-jp/pricing/calculator/
   [SendGrid Azure]: http://sendgrid.com/windowsazure.html
-  [Azure クラウド サービス 99.95% サービス レベル アグリーメント (SLA)]: https://www.windowsazure.com/ja-jp/support/legal/sla/ "SLA"
-  [Role Instance Restarts Due to OS Upgrades (OS のアップグレードに伴うロール インスタンスの再起動)]: http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx
   [CloudFx]: http://nuget.org/packages/Microsoft.Experience.CloudFx "CloudFX"
   [WorkerRole.cs サンプル]: http://code.msdn.microsoft.com/windowsazure/CloudFx-Samples-60c3a852/sourcecode?fileId=57087&pathId=528472169
-  [The Dangers of Implementing Recurring Background Tasks In ASP.NET (繰り返し実行されるバックグラウンド タスクを ASP.NET に実装する危険性)]: http://haacked.com/archive/2011/10/16/the-dangers-of-implementing-recurring-background-tasks-in-asp-net.aspx
-  [How to Combine a Worker and Web Role in Azure (Azure の Worker ロールと Web ロールを結合する方法)]: http://www.31a2ba2a-b718-11dc-8314-0800200c9a66.com/2010/12/how-to-combine-worker-and-web-role-in.html
-  [Combining Multiple Azure Worker Roles into an Azure Web Role (複数の Azure Worker ロールを 1 つの Azure Web ロールに集約)]: http://www.31a2ba2a-b718-11dc-8314-0800200c9a66.com/2012/02/combining-multiple-azure-worker-roles.html
   [Azure の Web サイトで実行し、バックエンド タスクに Web ジョブ機能を使用する]: http://go.microsoft.com/fwlink/?LinkId=390226
   [オートスケーリング アプリケーション ブロック]: /ja-jp/develop/net/how-to-guides/autoscaling/
   [ASP.NET Identity]: http://asp.net/identity

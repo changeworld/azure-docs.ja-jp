@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-how-to-guides/work-with-android-client-library" urlDisplayName="Android Client Library" pageTitle="Working with the Mobile Services Android Client Library" metaKeywords="" description="Learn how to use an Android client for Azure Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="How to use the Android client library for Mobile Services" authors="ricksal" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="ricksal"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="ricksal" />
 
 # モバイル サービス向け Android クライアント ライブラリの使用方法
 
@@ -43,7 +43,7 @@
     -   [シリアル化をカスタマイズする][シリアル化をカスタマイズする]
 -   [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [mobile-services-concepts][mobile-services-concepts]]
+[WACOM.INCLUDE [mobile-services-concepts](../includes/mobile-services-concepts.md)]
 
 ## <a name="setup"></a><span class="short-header">セットアップ</span>セットアップと前提条件
 
@@ -781,11 +781,6 @@ Android クライアント API に関する Javadocs リファレンスについ
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [.NET Framework]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library/ ".NET Framework"
-  [HTML/JavaScript]: /ja-jp/develop/mobile/how-to-guides/work-with-html-js-client/ "HTML/JavaScript"
-  [iOS]: /ja-jp/develop/mobile/how-to-guides/work-with-ios-client-library/ "iOS"
-  [Android]: /ja-jp/develop/mobile/how-to-guides/work-with-android-client-library/ "Android"
-  [Xamarin]: /ja-jp/develop/mobile/how-to-guides/work-with-xamarin-client-library/ "Xamarin"
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-android/
   [モバイル サービス SDK]: http://go.microsoft.com/fwlink/p/?linkid=280126
   [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125&clcid=0x409
@@ -825,62 +820,16 @@ Android クライアント API に関する Javadocs リファレンスについ
   [MobileServiceTable]: http://go.microsoft.com/fwlink/p/?LinkId=296835
   [1 つ目のオーバーロード]: http://go.microsoft.com/fwlink/p/?LinkId=296839
   [2 つ目のオーバーロード]: http://go.microsoft.com/fwlink/p/?LinkId=296840
-  [**TableQueryCallback\<E\>**]: http://go.microsoft.com/fwlink/p/?LinkId=296849
-  [**where**]: http://go.microsoft.com/fwlink/p/?LinkId=296867
-  [**field**]: http://go.microsoft.com/fwlink/p/?LinkId=296869
   [**eq**]: http://go.microsoft.com/fwlink/p/?LinkId=298461
   [**ne**]: http://go.microsoft.com/fwlink/p/?LinkId=298462
-  [**gt**]: http://go.microsoft.com/fwlink/p/?LinkId=298463
-  [**ge**]: http://go.microsoft.com/fwlink/p/?LinkId=298464
-  [**lt**]: http://go.microsoft.com/fwlink/p/?LinkId=298465
   [**le**]: http://go.microsoft.com/fwlink/p/?LinkId=298466
-  [**year**]: http://go.microsoft.com/fwlink/p/?LinkId=298467
-  [**month**]: http://go.microsoft.com/fwlink/p/?LinkId=298468
-  [**day**]: http://go.microsoft.com/fwlink/p/?LinkId=298469
-  [**hour**]: http://go.microsoft.com/fwlink/p/?LinkId=298470
-  [**minute**]: http://go.microsoft.com/fwlink/p/?LinkId=298471
-  [**second**]: http://go.microsoft.com/fwlink/p/?LinkId=298472
-  [**startsWith**]: http://go.microsoft.com/fwlink/p/?LinkId=298473
-  [**endsWith**]: http://go.microsoft.com/fwlink/p/?LinkId=298474
-  [**concat**]: http://go.microsoft.com/fwlink/p/?LinkId=298475
-  [**subString**]: http://go.microsoft.com/fwlink/p/?LinkId=298477
-  [**indexOf**]: http://go.microsoft.com/fwlink/p/?LinkId=298488
-  [**replace**]: http://go.microsoft.com/fwlink/p/?LinkId=298491
-  [**toLower**]: http://go.microsoft.com/fwlink/p/?LinkId=298492
-  [**toUpper**]: http://go.microsoft.com/fwlink/p/?LinkId=298493
-  [**trim**]: http://go.microsoft.com/fwlink/p/?LinkId=298495
-  [**length**]: http://go.microsoft.com/fwlink/p/?LinkId=298496
-  [**add**]: http://go.microsoft.com/fwlink/p/?LinkId=298497
-  [**sub**]: http://go.microsoft.com/fwlink/p/?LinkId=298499
-  [**mul**]: http://go.microsoft.com/fwlink/p/?LinkId=298500
-  [**div**]: http://go.microsoft.com/fwlink/p/?LinkId=298502
-  [**mod**]: http://go.microsoft.com/fwlink/p/?LinkId=298503
-  [**floor**]: http://go.microsoft.com/fwlink/p/?LinkId=298505
-  [**ceiling**]: http://go.microsoft.com/fwlink/p/?LinkId=298506
-  [**round**]: http://go.microsoft.com/fwlink/p/?LinkId=298507
-  [**and**]: http://go.microsoft.com/fwlink/p/?LinkId=298512
-  [**or**]: http://go.microsoft.com/fwlink/p/?LinkId=298514
-  [**not**]: http://go.microsoft.com/fwlink/p/?LinkId=298515
   [モバイル サービスの Android クライアント クエリ モデルの機能に関する記事]: http://hashtagfail.com/post/46493261719/mobile-services-android-querying
-  [**orderBy**]: http://go.microsoft.com/fwlink/p/?LinkId=298519
-  [**QueryOrder**]: http://go.microsoft.com/fwlink/p/?LinkId=298521
-  [**select**]: http://go.microsoft.com/fwlink/p/?LinkId=290689
   [1]: http://go.microsoft.com/fwlink/p/?LinkId=296296
   [2]: http://go.microsoft.com/fwlink/p/?LinkId=296313
-  [**top**]: http://go.microsoft.com/fwlink/p/?LinkId=298731
-  [**MobileServiceQuery\<T\>**]: http://go.microsoft.com/fwlink/p/?LinkId=298551
-  [**execute**]: http://go.microsoft.com/fwlink/p/?LinkId=298554
-  [**insert**]: http://go.microsoft.com/fwlink/p/?LinkId=296862
-  [**TableOperationCallback\<ToDoItem\>**]: http://go.microsoft.com/fwlink/p/?LinkId=296865
   [ASCII 制御コード C0 および C1 に関するページ]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
   [モバイル サービス テーブルの管理用コマンド]: http://www.windowsazure.com/ja-jp/manage/linux/other-resources/command-line-tools/#Mobile_Tables
-  [**TableDeleteCallback**]: http://go.microsoft.com/fwlink/p/?LinkId=296858
   [MobileServicesJsonTable]: http://go.microsoft.com/fwlink/p/?LinkId=298733
-  [getTable()]: http://go.microsoft.com/fwlink/p/?LinkId=298734
-  [**JsonObject**]: http://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/JsonObject.html
   [3]: http://go.microsoft.com/fwlink/p/?LinkId=298535
-  [**TableJsonOperationCallback**]: http://go.microsoft.com/fwlink/p/?LinkId=298532
-  [**TableJsonQueryCallback**]: http://go.microsoft.com/fwlink/p/?LinkId=298543
   [認証の使用]: http://go.microsoft.com/fwlink/p/?LinkId=296316
   [Azure 管理ポータル]: https://manage.windowsazure.com/
   [ここ]: https://www.windowsazure.com/ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet/

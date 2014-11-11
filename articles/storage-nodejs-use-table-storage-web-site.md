@@ -1,10 +1,10 @@
 <properties linkid="dev-nodejs-tutorials-web-site-with-storage" urlDisplayName="Website with Storage" pageTitle="Node.js website with table storage | Microsoft Azure" metaKeywords="Azure table storage Node.js, Azure Node.js application, Azure Node.js tutorial, Azure Node.js example" description="A tutorial that teaches you how to use the Azure Table service to store data from a Node application hosted on an Azure website." metaCanonical="" services="web-sites,storage" documentationCenter="Node.js" title="Node.js Web Application using the Azure Table Service" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr" />
 
 # Azure テーブル サービスを使用する Node.js Web アプリケーション
 
-このチュートリアルでは、Azure データ管理で提供されるテーブル サービスを使用して、Azure でホストされる[ノード][] アプリケーションのデータを格納する方法やデータにアクセスする方法を示します。このチュートリアルは、ノードおよび [Git][] を使用した経験があることを前提としています。
+このチュートリアルでは、Azure データ管理で提供されるテーブル サービスを使用して、Azure でホストされる[ノード][ノード] アプリケーションのデータを格納する方法やデータにアクセスする方法を示します。このチュートリアルは、ノードおよび [Git][Git] を使用した経験があることを前提としています。
 
 学習内容:
 
@@ -18,7 +18,7 @@
 
 このチュートリアルのプロジェクト ファイルは **tasklist** という名前のディレクトリに保存され、作成されるアプリケーションは次のようになります。
 
-![空のタスク一覧が表示されている Web ページ][]
+![空のタスク一覧が表示されている Web ページ][空のタスク一覧が表示されている Web ページ]
 
 > [WACOM.NOTE] このチュートリアルでは、**tasklist** フォルダーを参照します。パスのセマンティクスはオペレーティング システムによって異なるので、このフォルダーへの完全なパスは省略しています。このフォルダーは、ローカル ファイル システムのアクセスしやすい場所 (**~/node/tasklist** や **c:\\node\\tasklist** など) に作成してください。
 
@@ -30,39 +30,39 @@
 
 -   [node][ノード] Version 0.10.24 以上
 
--   [Git][]
+-   [Git][Git]
 
 -   テキスト エディター
 
 -   Web ブラウザー
 
-[WACOM.INCLUDE [create-account-and-websites-note][]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## ストレージ アカウントの作成
 
 ストレージ アカウントを作成するには、次の手順を実行します このアカウントは、このチュートリアルの以降の手順で使用されます。
 
-1.  Web ブラウザーを開き、[Azure ポータル][]に移動します。ログインを求められた場合は、Azure サブスクリプションの情報を使ってログインします。
+1.  Web ブラウザーを開き、[Azure ポータル][Azure ポータル]に移動します。ログインを求められた場合は、Azure サブスクリプションの情報を使ってログインします。
 
 2.  ポータルの下部にある **[+ 新規]** をクリックし、**[ストレージ アカウント]** を選択します。
 
     ![+ 新規][portal-new]
 
-    ![ストレージ アカウント][]
+    ![ストレージ アカウント][ストレージ アカウント]
 
 3.  **[簡易作成]** を選択し、このストレージ アカウントの URL とリージョン/アフィニティ グループを入力します。これはチュートリアルであり、グローバルにレプリケートする必要がないので、**[ジオ (主要地域) レプリケーションの有効化]** チェック ボックスをオフにします。最後に、[ストレージ アカウントの作成] をクリックします。
 
-    ![簡易作成][]
+    ![簡易作成][簡易作成]
 
     入力した URL は、後の手順でアカウント名として参照されるのでメモしておきます。
 
 4.  ストレージ アカウントが作成されたら、ページの下部にある **[キーの管理]** をクリックします。これにより、このストレージ アカウントのプライマリ アクセス キーとセカンダリ アクセス キーが表示されます。プライマリ アクセス キーをコピーして保存した後、チェックマークをクリックします。
 
-    ![アクセス キー][]
+    ![アクセス キー][アクセス キー]
 
 ## モジュールのインストールとスキャフォールディングの生成
 
-ここでは、新しい Node アプリケーションを作成し、npm を使用してモジュール パッケージを追加します。タスク一覧アプリケーションの場合は、[Express][] モジュールと [Azure][] モジュールを使用します。Express モジュールは node の Model View Controller フレームワークを提供し、Azure モジュールはテーブル サービスへの接続を提供します。
+ここでは、新しい Node アプリケーションを作成し、npm を使用してモジュール パッケージを追加します。タスク一覧アプリケーションの場合は、[Express][Express] モジュールと [Azure][Azure] モジュールを使用します。Express モジュールは node の Model View Controller フレームワークを提供し、Azure モジュールはテーブル サービスへの接続を提供します。
 
 ### express のインストールとスキャフォールディングの生成
 
@@ -421,7 +421,7 @@
 
 ### グローバル レイアウトの変更
 
-**views** ディレクトリ内の **layout.jade** ファイルは、他の **.jade** ファイルのグローバル テンプレートとして使用されます。この手順では、[Twitter Bootstrap][] を使用するようにこのファイルを変更します。Twitter Bootstrap は、見栄えのよい Web サイトを簡単にデザインできるツールキットです。
+**views** ディレクトリ内の **layout.jade** ファイルは、他の **.jade** ファイルのグローバル テンプレートとして使用されます。この手順では、[Twitter Bootstrap][Twitter Bootstrap] を使用するようにこのファイルを変更します。Twitter Bootstrap は、見栄えのよい Web サイトを簡単にデザインできるツールキットです。
 
 1.  [Twitter Bootstrap][1] のファイルをダウンロードして展開します。**bootstrap\\dist\\css** フォルダーから **bootstrap.min.css** ファイルを tasklist アプリケーションの **public\\stylesheets** ディレクトリにコピーします。
 
@@ -472,13 +472,13 @@
 
 3.  Web ブラウザーを開いて、<http://127.0.0.1:3000> にアクセスします。次のような Web ページが表示されます。
 
-    ![空のタスク一覧が表示されている Web ページ][]
+    ![空のタスク一覧が表示されている Web ページ][空のタスク一覧が表示されている Web ページ]
 
 4.  表示された **[Item Name]** と **[Item Category]** のフィールドを使用して情報を入力し、**[Add item]** をクリックします。
 
 5.  ページが更新され、ToDo List テーブルにアイテムが表示されるようになります。
 
-    ![タスク一覧の新しいアイテムの画像][]
+    ![タスク一覧の新しいアイテムの画像][タスク一覧の新しいアイテムの画像]
 
 6.  タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、**[Update tasks]** をクリックします。
 
@@ -488,7 +488,7 @@
 
 ここで説明する手順では、Azure コマンド ライン ツールを使用して新しい Azure の Web サイトを作成し、Git を使用してアプリケーションをデプロイします。これらの手順を実行するには、Azure サブスクリプションが必要です。
 
-> [WACOM.NOTE] これらの手順は、Azure ポータルを使用して実行することもできます。Azure ポータルを使用して Node.js アプリケーションを展開する手順については、「[Node.js アプリケーションの作成と Azure の Web サイトへの展開][]」を参照してください。
+> [WACOM.NOTE] これらの手順は、Azure ポータルを使用して実行することもできます。Azure ポータルを使用して Node.js アプリケーションを展開する手順については、「[Node.js アプリケーションの作成と Azure の Web サイトへの展開][Node.js アプリケーションの作成と Azure の Web サイトへの展開]」を参照してください。
 
 > [WACOM.NOTE] 初めて Azure の Web サイトを作成した場合は、Azure ポータルを使用してこのアプリケーションをデプロイする必要があります。
 
@@ -496,7 +496,7 @@
 
 Azure サブスクリプションをまだ取得していない場合でも、[無料][Azure ポータル]でサインアップできます。サインアップした後で、次の手順に従ってこのチュートリアルを続行します。
 
-[WACOM.INCLUDE [antares-iaas-signup][]]
+[WACOM.INCLUDE [antares-iaas-signup](../includes/antares-iaas-signup.md)]
 
 ### Mac および Linux 用 Azure コマンド ライン ツールのインストール
 
@@ -504,7 +504,7 @@ Azure サブスクリプションをまだ取得していない場合でも、[�
 
     npm install azure-cli -g
 
-> [WACOM.NOTE] 詳細については、「[Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成][]」を参照してください。
+> [WACOM.NOTE] 詳細については、「[Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成][Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成]」を参照してください。
 
 > [WACOM.NOTE] コマンド ライン ツールは、主に Mac および Linux ユーザー向けに作成されていますが、Node.js に基づいているため、Node を実行できる任意のシステムで動作します。
 
@@ -518,7 +518,7 @@ Azure でコマンド ライン ツールを使用する前に、自分のサブ
 
         azure account download
 
-    ![ダウンロード ページ][]
+    ![ダウンロード ページ][ダウンロード ページ]
 
     ファイルのダウンロードが自動的に開始されます。ダウンロードが開始されない場合は、ページの先頭にあるリンクをクリックして、手動でファイルをダウンロードできます。
 
@@ -550,7 +550,7 @@ Azure でコマンド ライン ツールを使用する前に、自分のサブ
 
     Web サイト名と Web サイトが配置されるデータ センターを指定するよう求められます。一意の名前を指定し、現在の場所に地理的に近いデータ センターを選択します。
 
-    `--git` パラメーターにより、この Web サイトの Azure に Git リポジトリが作成されます。存在しない場合は、現在のディレクトリで Git リポジトリが初期化されます。また、'azure' という名前の [Git リモート][]も作成されます。これは、Azure にアプリケーションを発行するために使用されます。最後に、**web.config** ファイルが作成されます。このファイルには、ノード アプリケーションをホストするために、Azure によって使用される設定が格納されます。
+    `--git` パラメーターにより、この Web サイトの Azure に Git リポジトリが作成されます。存在しない場合は、現在のディレクトリで Git リポジトリが初期化されます。また、'azure' という名前の [Git リモート][Git リモート]も作成されます。これは、Azure にアプリケーションを発行するために使用されます。最後に、**web.config** ファイルが作成されます。このファイルには、ノード アプリケーションをホストするために、Azure によって使用される設定が格納されます。
 
     > [WACOM.NOTE] 既に Git リポジトリが含まれているディレクトリからこのコマンドを実行した場合、ディレクトリは再初期化されません。
 
@@ -599,11 +599,11 @@ Azure でコマンド ライン ツールを使用する前に、自分のサブ
 
 1.  管理ポータルで、**[Web サイト]** をクリックし、対象となる Web サイトを選択します。
 
-    ![Web サイトのダッシュボードを開く][]
+    ![Web サイトのダッシュボードを開く][Web サイトのダッシュボードを開く]
 
 2.  **[構成]** をクリックし、ページの **[アプリ設定]** セクションを探します。
 
-    ![構成リンク][]
+    ![構成リンク][構成リンク]
 
 3.  **[アプリ設定]** で、**[キー]** フィールドに「**STORAGE\_NAME**」と入力し、**[値]** フィールドに自分のストレージ アカウントの名前を入力します。チェックマークをクリックして、次のフィールドに移動します。次のキーと値について、この手順を繰り返します。
 
@@ -613,11 +613,11 @@ Azure でコマンド ライン ツールを使用する前に、自分のサブ
 
     -   **TABLE\_NAME** - 「tasks」
 
-    ![アプリケーション設定][]
+    ![アプリケーション設定][アプリケーション設定]
 
 4.  ページの下部にある **[保存]** アイコンをクリックし、この変更を実行時環境にコミットします。
 
-    ![アプリケーション設定の保存][]
+    ![アプリケーション設定の保存][アプリケーション設定の保存]
 
 5.  コマンド ラインで、**tasklist** ディレクトリに移動し、次のコマンドを入力して **config.json** ファイルを削除します。
 
@@ -632,20 +632,19 @@ Azure でコマンド ライン ツールを使用する前に、自分のサブ
 
 ## 次のステップ
 
-この記事の手順では、テーブル サービスを使用して情報を格納する方法を説明しましたが、MongoDB を使用することもできます。詳細については、「[MongoDB を使用する Node.js Web アプリケーション][]」を参照してください。
+この記事の手順では、テーブル サービスを使用して情報を格納する方法を説明しましたが、MongoDB を使用することもできます。詳細については、「[MongoDB を使用する Node.js Web アプリケーション][MongoDB を使用する Node.js Web アプリケーション]」を参照してください。
 
 ## その他のリソース
 
 [Mac および Linux 用 Azure コマンド ライン ツール] [Build and deploy a Node.js website to Azure (Node.js Web サイトの構築と Azure への展開)]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
-[ソース管理から Azure の Web サイトへの発行][]: /ja-jp/documentation/articles/web-sites-publish-source-control/
-[Node.js Developer Center (Node.js デベロッパー センター)]: en-us/develop/nodejs/
+[ソース管理から Azure の Web サイトへの発行][ソース管理から Azure の Web サイトへの発行]: /ja-jp/documentation/articles/web-sites-publish-source-control/
+[Node.js Developer Center (Node.js デベロッパー センター)]: ja-jp/develop/nodejs/
 
   [ノード]: http://nodejs.org
   [Git]: http://git-scm.com
   [空のタスク一覧が表示されている Web ページ]: ./media/storage-nodejs-use-table-storage-web-site/table_todo_empty.png
   [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [Azure ポータル]: http://windowsazure.com
-  [+ 新規]: ./media/storage-nodejs-use-table-storage-web-site/plus-new.png
   [ストレージ アカウント]: ./media/storage-nodejs-use-table-storage-web-site/new-storage.png
   [簡易作成]: ./media/storage-nodejs-use-table-storage-web-site/quick-storage.png
   [アクセス キー]: ./media/storage-nodejs-use-table-storage-web-site/manage-access-keys.png

@@ -1,6 +1,6 @@
 <properties linkid="develop-php-how-to-guides-service-management" urlDisplayName="Service Management" pageTitle="How to use Azure service management APIs (PHP)" metaKeywords="" description="Learn how to use the Azure PHP Service Management APIs to manage cloud services and other Azure applications." metaCanonical="" services="" documentationCenter="PHP" title="How to use Service Management from PHP" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" videoId="" scriptId="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
 
 # PHP からサービス管理を使用する方法
 
@@ -43,7 +43,7 @@ Azure サービス管理を使用する PHP アプリケーションを作成す
 
 ## <span id="GetClientLibraries"></span></a>Azure クライアント ライブラリの入手
 
-[WACOM.INCLUDE [get-client-libraries][get-client-libraries]]
+[WACOM.INCLUDE [get-client-libraries](../includes/get-client-libraries.md)]
 
 ## <span id="Connect"></span></a>方法: サービス管理への接続
 
@@ -564,7 +564,6 @@ Azure には、2 つのデプロイ環境が用意されています。デプロ
   [サービス パッケージ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433093
   [Azure PowerShell コマンドレット]: ../install-configure-powershell/
   [cspack コマンド ライン ツール]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg432988.aspx
-  [Windows Azure サービスの構成スキーマ (.cscfg ファイル)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758710.aspx
   [Azure における展開管理の概要]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh386336.aspx
   [ストレージ サービス]: ../storage-whatis-account/
   [BLOB]: ../storage-php-how-to-use-blobs/

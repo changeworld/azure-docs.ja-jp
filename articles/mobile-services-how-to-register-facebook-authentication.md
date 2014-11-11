@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-how-to-guides-register-for-facebook-authentication" urlDisplayName="Register for Facebook Authentication" pageTitle="Register for Facebook authentication - Mobile Services" metaKeywords="Azure Facebook, Azure Facebook, Azure authenticate Mobile Services" description="Learn how to use Facebook authentication in your Azure Mobile Services app." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Register your apps for Facebook authentication with Mobile Services" authors="glenga" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # モバイル サービスでの Facebook 認証用のアプリケーションの登録
 
@@ -14,7 +14,7 @@
 
 2.  (省略可能) まだ登録していない場合は、**[Apps]**、**[Register as a Developer]** の順にクリックし、ポリシーに同意して、登録手順に従います。
 
-    ![][]
+    ![][0]
 
 3.  **[Apps]** をクリックし、**[Create a New App]** をクリックします。
 
@@ -63,7 +63,7 @@
   [モバイル サービスの使用]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-ios-get-started/
   [facebook.com]: http://go.microsoft.com/fwlink/p/?LinkId=268285
   [Facebook Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268286
-  []: ./media/mobile-services-how-to-register-facebook-authentication/mobile-services-facebook-developer-register.png
+  [0]: ./media/mobile-services-how-to-register-facebook-authentication/mobile-services-facebook-developer-register.png
   [1]: ./media/mobile-services-how-to-register-facebook-authentication/mobile-services-facebook-add-app.png
   [2]: ./media/mobile-services-how-to-register-facebook-authentication/mobile-services-facebook-new-app-dialog.png
   [3]: ./media/mobile-services-how-to-register-facebook-authentication/mobile-services-facebook-configure-app.png

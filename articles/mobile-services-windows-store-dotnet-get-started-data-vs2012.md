@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-get-started-with-data-dotnet" urlDisplayName="Get Started with Data" pageTitle="Get started with data - Azure Mobile Services" metaKeywords="" description="Learn how to get started using data with Azure Mobile Services." metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Get started with data in Mobile Services using Visual Studio 2012" documentationCenter="Mobile" authors="glenga" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # Visual Studio 2012 を使用したモバイル サービスでのデータの使用
 
@@ -36,7 +36,7 @@
 
 1.  C# バージョンの GetStartedWithData サンプル アプリケーションを[デベロッパー サンプル コード集のサイト][GetStartedWithData アプリケーション]からダウンロードします。
 
-    ![][]
+    ![][0]
 
 2.  Visual Studio 2012 Express for Windows 8 で、ダウンロードしたプロジェクトを開き、MainPage.xaml.cs ファイルを確認します。
 
@@ -52,11 +52,11 @@
 
 ## <a name="create-service"></a><span class="short-header">管理ポータルでの新しいモバイル サービスの作成</span>
 
-[WACOM.INCLUDE [mobile-services-create-new-service-data][mobile-services-create-new-service-data]]
+[WACOM.INCLUDE [mobile-services-create-new-service-data](../includes/mobile-services-create-new-service-data.md)]
 
 ## <a name="add-table"></a><span class="short-header">モバイル サービスへの新しいテーブルの追加 </span> 
 
-[WACOM.INCLUDE [mobile-services-create-new-service-data-2][mobile-services-create-new-service-data-2]]
+[WACOM.INCLUDE [mobile-services-create-new-service-data-2](../includes/mobile-services-create-new-service-data-2.md)]
 
 ## <a name="update-app"></a><span class="short-header">モバイル サービスをデータ アクセスに使用するためのアプリケーションの更新</span>
 
@@ -203,24 +203,13 @@
 
 
 
-  [Windows ストア C#]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet-vs2012 "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/develop/mobile/tutorials/get-started-with-data-js-vs2012 "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/develop/mobile/tutorials/get-started-with-data-wp8 "Windows Phone"
-  [iOS]: /ja-jp/develop/mobile/tutorials/get-started-with-data-ios "iOS"
-  [Android]: /ja-jp/develop/mobile/tutorials/get-started-with-data-android "Android"
-  [HTML]: /ja-jp/develop/mobile/tutorials/get-started-with-data-html "HTML"
-  [Xamarin.iOS]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-android "Xamarin.Android"
-  [チュートリアルを見る]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Windows-Store-app-Getting-Started-with-Data-Connecting-your-app-to-Windows-Azure-Mobile-Services
-  [モバイル サービスでのデータの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet/
   [Windows ストア アプリ プロジェクトのダウンロード]: #download-app
   [モバイル サービスの作成]: #create-service
   [ストレージのデータ テーブルの追加]: #add-table
   [モバイル サービスを使用するためのアプリケーションの更新]: #update-app
   [モバイル サービスに対するアプリケーションのテスト]: #test-app
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28
   [GetStartedWithData アプリケーション]: http://go.microsoft.com/fwlink/?LinkId=262308
-  []: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2012/mobile-data-sample-download-dotnet.png
+  [0]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2012/mobile-data-sample-download-dotnet.png
   [1]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2012/mobile-quickstart-startup.png
   [mobile-services-create-new-service-data]: ../includes/mobile-services-create-new-service-data.md
   [mobile-services-create-new-service-data-2]: ../includes/mobile-services-create-new-service-data-2.md

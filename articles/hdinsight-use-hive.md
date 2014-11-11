@@ -1,25 +1,25 @@
 <properties linkid="manage-services-hdinsight-howto-hive" urlDisplayName="Use Hadoop Hive in HDInsight" pageTitle="Use Hadoop Hive in HDInsight | Azure" metaKeywords="" description="Learn how to use Hive with HDInsight. You'll use a log file as input into an HDInsight table, and use HiveQL to query the data and report basic statistics." metaCanonical="" services="hdinsight" documentationCenter="" title="Use Hadoop Hive in HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
 
 # HDInsight での Hive と Hadoop の使用
 
-[Apache Hive][] では、*HiveQL* と呼ばれる SQL に似たスクリプト言語を使用して MapReduce ジョブを実行します。大規模なデータの集約、照会、分析でも Hive を利用できます。この記事では、HiveQL を使用して、Apache log4j ログ ファイルのデータを照会し、基本的な統計情報レポートを生成します。
+[Apache Hive][Apache Hive] では、*HiveQL* と呼ばれる SQL に似たスクリプト言語を使用して MapReduce ジョブを実行します。大規模なデータの集約、照会、分析でも Hive を利用できます。この記事では、HiveQL を使用して、Apache log4j ログ ファイルのデータを照会し、基本的な統計情報レポートを生成します。
 
 **前提条件:**
 
--   **HDInsight クラスター**のプロビジョニングを終えている必要があります。Azure ポータルを使用してこれを実行する手順については、「[HDInsight の使用][]」を参照してください。クラスターを作成するその他のさまざまな方法については、「[HDInsight クラスターのプロビジョニング][]」を参照してください。
+-   **HDInsight クラスター**のプロビジョニングを終えている必要があります。Azure ポータルを使用してこれを実行する手順については、「[HDInsight の使用][HDInsight の使用]」を参照してください。クラスターを作成するその他のさまざまな方法については、「[HDInsight クラスターのプロビジョニング][HDInsight クラスターのプロビジョニング]」を参照してください。
 
--   **Azure PowerShell** をコンピューターにインストールしておく必要があります。その手順については、「[Azure PowerShell のインストールおよび構成][]」を参照してください。
+-   **Azure PowerShell** をコンピューターにインストールしておく必要があります。その手順については、「[Azure PowerShell のインストールおよび構成][Azure PowerShell のインストールおよび構成]」を参照してください。
 
 **所要時間:** 30 分
 
 ## この記事の内容
 
--   [Hive の利用例][]
--   [Azure BLOB ストレージへのデータ ファイルのアップロード][]
--   [PowerShell を使用して Hive クエリを実行][]
--   [次のステップ][]
+-   [Hive の利用例][Hive の利用例]
+-   [Azure BLOB ストレージへのデータ ファイルのアップロード][Azure BLOB ストレージへのデータ ファイルのアップロード]
+-   [PowerShell を使用して Hive クエリを実行][PowerShell を使用して Hive クエリを実行]
+-   [次のステップ][次のステップ]
 
 ## <span id="usage"></span></a>Hive の利用例
 
@@ -39,7 +39,7 @@ Hive は、膨大な不変データ (Web ログなど) のバッチ処理に最�
 
 ## <span id="uploaddata"></span></a>BLOB ストレージへのデータ ファイルのアップロード
 
-HDInsight は、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。詳細については、「[HDInsight での Azure BLOB ストレージの使用][]」を参照してください。
+HDInsight は、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。詳細については、「[HDInsight での Azure BLOB ストレージの使用][HDInsight での Azure BLOB ストレージの使用]」を参照してください。
 
 この記事では、HDInsight クラスターと一緒に配布されている log4j サンプル ファイル (*\\example\\data\\sample.log*) を使用します。ファイル内の各ログは 1 行で、ログ タイプと重要度を表す `[LOG LEVEL]` フィールドを含みます。次に例を示します。
 
@@ -60,7 +60,7 @@ HDInsight は、既定のファイル システムとして Azure BLOB ストレ
     wasb:///example/data/sample.log
     /example/data/sample.log
 
-独自の log4j ファイルを生成するには、[Apache Log4j ログ ユーティリティ][]を使用します。Azure BLOB ストレージにデータをアップロードする方法については、「[データを HDInsight にアップロードする方法][]」を参照してください。
+独自の log4j ファイルを生成するには、[Apache Log4j ログ ユーティリティ][Apache Log4j ログ ユーティリティ]を使用します。Azure BLOB ストレージにデータをアップロードする方法については、「[データを HDInsight にアップロードする方法][データを HDInsight にアップロードする方法]」を参照してください。
 
 ## <span id="runhivequeries"></span></a> PowerShell を使用して Hive クエリを実行
 
@@ -72,7 +72,7 @@ Hive クエリは、**Start-AzureHDInsightJob** コマンドレットまたは *
 
 **Start-AzureHDInsightJob を使用して Hive クエリを実行するには**
 
-1.  Azure PowerShell コンソール ウィンドウを開きます。手順については、「[Azure PowerShell のインストールおよび構成][]」を参照してください。
+1.  Azure PowerShell コンソール ウィンドウを開きます。手順については、「[Azure PowerShell のインストールおよび構成][Azure PowerShell のインストールおよび構成]」を参照してください。
 2.  次のコマンドを実行して、Azure サブスクリプションに接続します。
 
         Add-AzureAccount
@@ -132,7 +132,7 @@ Hive クエリは、**Start-AzureHDInsightJob** コマンドレットまたは *
 		# Print the standard error and the standard output of the Hive job.
         Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $hiveJob.JobId -StandardOutput
 
-    ![HDI.HIVE.PowerShell][]
+    ![HDI.HIVE.PowerShell][HDI.HIVE.PowerShell]
 
     結果は次のようになります。
 
@@ -164,25 +164,25 @@ Hive クエリは、**Start-AzureHDInsightJob** コマンドレットまたは *
 
     出力は次のようになります。
 
-    ![PowerShell の Invoke-Hive の出力][]
+    ![PowerShell の Invoke-Hive の出力][PowerShell の Invoke-Hive の出力]
 
     より長い HiveQL クエリの場合は、PowerShell の Here-Strings または HiveQL スクリプト ファイルを使用することをお勧めします。次の例では、Invoke-Hive コマンドレットを使用して HiveQL スクリプト ファイルを実行する方法を示します。HiveQL スクリプト ファイルは、WASB にアップロードする必要があります。
 
         Invoke-Hive -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"
 
-    Here-Strings の詳細については、[Windows PowerShell Here-Strings の使用][]を参照してください。
+    Here-Strings の詳細については、[Windows PowerShell Here-Strings の使用][Windows PowerShell Here-Strings の使用]を参照してください。
 
 ## <span id="nextsteps"></span></a>次のステップ
 
 Hive では、SQL に似たクエリ言語を使用してデータを容易に照会できます。さらに、HDInsight の他のコンポーネントを使用すれば、データ移動や変換などを行うこともできます。詳細については、次の記事を参照してください。
 
 -   [Azure HDInsight の概要][HDInsight の使用]
--   [HDInsight を使用したフライトの遅延データの分析][]
--   [Use Oozie with HDInsight (HDInsight での Oozie の使用)][]
--   [プログラムによる Hadoop ジョブの送信][]
+-   [HDInsight を使用したフライトの遅延データの分析][HDInsight を使用したフライトの遅延データの分析]
+-   [Use Oozie with HDInsight (HDInsight での Oozie の使用)][Use Oozie with HDInsight (HDInsight での Oozie の使用)]
+-   [プログラムによる Hadoop ジョブの送信][プログラムによる Hadoop ジョブの送信]
 -   [HDInsight へのデータのアップロード][データを HDInsight にアップロードする方法]
--   [HDInsight での Pig の使用][]
--   [Azure HDInsight SDK のドキュメント][]
+-   [HDInsight での Pig の使用][HDInsight での Pig の使用]
+-   [Azure HDInsight SDK のドキュメント][Azure HDInsight SDK のドキュメント]
 
   [Apache Hive]: http://hive.apache.org/
   [HDInsight の使用]: ../hdinsight-get-started/
@@ -197,9 +197,8 @@ Hive では、SQL に似たクエリ言語を使用してデータを容易に�
   [データを HDInsight にアップロードする方法]: ../hdinsight-upload-data/
   [HDI.HIVE.PowerShell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
   [PowerShell の Invoke-Hive の出力]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
-  [Windows PowerShell Here-Strings の使用]: http://technet.microsoft.com/en-us/library/ee692792.aspx
+  [Windows PowerShell Here-Strings の使用]: http://technet.microsoft.com/ja-jp/library/ee692792.aspx
   [HDInsight を使用したフライトの遅延データの分析]: ../hdinsight-analyze-flight-delay-data/
-  [Use Oozie with HDInsight (HDInsight での Oozie の使用)]: ../hdinsight-use-oozie/
   [プログラムによる Hadoop ジョブの送信]: ../hdinsight-submit-hadoop-jobs-programmatically/
   [HDInsight での Pig の使用]: ../hdinsight-use-pig/
-  [Azure HDInsight SDK のドキュメント]: http://msdnstage.redmond.corp.microsoft.com/en-us/library/dn479185.aspx
+  [Azure HDInsight SDK のドキュメント]: http://msdnstage.redmond.corp.microsoft.com/ja-jp/library/dn479185.aspx

@@ -1,6 +1,6 @@
 <properties title="Azure Notification Hubs Secure Push" pageTitle="Azure Notification Hubs Secure Push" metaKeywords="Azure push notifications, Azure notification hubs, secure push" description="Learn how to send secure push notifications to an Android app from Azure. Code samples written in Java and C#." documentationCenter="Mobile" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="sethm" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-android" ms.devlang="java" ms.topic="article" ms.date="01/01/1900" ms.author="sethm"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-android" ms.devlang="java" ms.topic="article" ms.date="01/01/1900" ms.author="sethm" />
 
 # Azure Notification Hubs の安全なプッシュ
 
@@ -31,7 +31,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 > [AZURE.NOTE] このチュートリアルでは、「[Getting Started with Notification Hubs (Android) (Notification Hubs (Android) の使用)][Getting Started with Notification Hubs (Android) (Notification Hubs (Android) の使用)]」での説明に従って通知が作成され、構成されていると想定しています。
 
-[WACOM.INCLUDE [notification-hubs-aspnet-backend-securepush][notification-hubs-aspnet-backend-securepush]]
+[WACOM.INCLUDE [notification-hubs-aspnet-backend-securepush](../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## Android プロジェクトを変更する
 
@@ -118,8 +118,4 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 4.  Android アプリケーションの UI で、**[ログイン]** をクリックします。次に、**[プッシュを送信する]** をクリックします。
 
-  [Windows ユニバーサル]: /ja-jp/documentation/articles/notification-hubs-windows-dotnet-secure-push/ "Windows ユニバーサル"
-  [iOS]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/ "iOS"
-  [Android]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-secure-push/ "Android"
-  [Getting Started with Notification Hubs (Android) (Notification Hubs (Android) の使用)]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-android-get-started/
   [notification-hubs-aspnet-backend-securepush]: ../includes/notification-hubs-aspnet-backend-securepush.md

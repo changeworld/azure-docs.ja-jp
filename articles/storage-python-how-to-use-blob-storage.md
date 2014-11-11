@@ -1,36 +1,36 @@
 <properties linkid="develop-python-blob-service" urlDisplayName="Blob Service" pageTitle="How to use blob storage (Python) | Microsoft Azure" metaKeywords="Azure blob service Python, Azure blobs Python" description="Learn how to use the Azure Blob service to upload, list, download, and delete blobs." metaCanonical="" disqusComments="1" umbracoNaviHide="0" services="storage" documentationCenter="Python" title="How to use the Blob service from Python" authors="huvalo" videoId="" scriptId="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo" />
 
 # Python から BLOB ストレージ サービスを使用する方法
 
 このガイドでは、Azure BLOB ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。
 サンプルは Python API を使用して記述されています。
 紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、
-**ダウンロード**、および**削除**です。BLOB の詳細については、「[次のステップ][]」のセクションを参照してください。
+**ダウンロード**、および**削除**です。BLOB の詳細については、「[次のステップ][次のステップ]」のセクションを参照してください。
 
 ## 目次
 
-[BLOB ストレージとは][]		
- [概念][]		
- [Azure ストレージ アカウントの作成][]		
- [方法: コンテナーを作成する][]		
-[方法: コンテナーに BLOB をアップロードする][]		
-[方法: コンテナー内の BLOB を一覧表示する][]		
-[方法: BLOB をダウンロードする][]		
-[方法: BLOB を削除する][]		
-[方法: サイズが大きい BLOB のダウンロードとアップロード][]		
-[次のステップ][]		
+[BLOB ストレージとは][BLOB ストレージとは]		
+ [概念][概念]		
+ [Azure ストレージ アカウントの作成][Azure ストレージ アカウントの作成]		
+ [方法: コンテナーを作成する][方法: コンテナーを作成する]		
+[方法: コンテナーに BLOB をアップロードする][方法: コンテナーに BLOB をアップロードする]		
+[方法: コンテナー内の BLOB を一覧表示する][方法: コンテナー内の BLOB を一覧表示する]		
+[方法: BLOB をダウンロードする][方法: BLOB をダウンロードする]		
+[方法: BLOB を削除する][方法: BLOB を削除する]		
+[方法: サイズが大きい BLOB のダウンロードとアップロード][方法: サイズが大きい BLOB のダウンロードとアップロード]		
+[次のステップ][次のステップ]		
 
-[WACOM.INCLUDE [howto-blob-storage][]]
+[WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
 ## <a name="create-account"> </a> Azure のストレージ アカウントの作成
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <a name="create-container"> </a>方法: コンテナーを作成する
 
-**注:** Python またはクライアント ライブラリをインストールする場合は、[Python インストール ガイド][]を参照してください。
+**注:** Python またはクライアント ライブラリをインストールする場合は、[Python インストール ガイド][Python インストール ガイド]を参照してください。
 
 **BlobService** オブジェクトを使用して、コンテナーおよび BLOB を操作できます。次のコードでは、**BlobService** オブジェクトを作成します。
 プログラムを使用して Azure Storage にアクセスするすべての Python ファイルの先頭付近に、次のコードを追加します。
@@ -95,8 +95,8 @@ BLOB からデータをダウンロードするには、**get\_blob\_to\_path**�
 
 これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   MSDN リファレンス: [Azure のデータの格納とアクセス][]
--   [Azure のストレージ チーム ブログ][]
+-   MSDN リファレンス: [Azure のデータの格納とアクセス][Azure のデータの格納とアクセス]
+-   [Azure のストレージ チーム ブログ][Azure のストレージ チーム ブログ]
 
   [次のステップ]: #next-steps
   [BLOB ストレージとは]: #what-is
@@ -111,5 +111,5 @@ BLOB からデータをダウンロードするには、**get\_blob\_to\_path**�
   [howto-blob-storage]: ../includes/howto-blob-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
   [Python インストール ガイド]: ../python-how-to-install/
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/

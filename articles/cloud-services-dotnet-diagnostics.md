@@ -1,6 +1,6 @@
 <properties linkid="dev-net-commons-tasks-diagnostics" urlDisplayName="Diagnostics" pageTitle="How to use diagnostics (.NET) - Azure feature guide" metaKeywords="Azure diagnostics monitoring,logs crash dumps C#" description="Learn how to use diagnostic data in Azure for debugging, measuring performance, monitoring, traffic analysis, and more." metaCanonical="" services="cloud-services" documentationCenter=".NET" title="Enabling Diagnostics in Azure" authors="ryanwi" solutions="" manager="timlt" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ryanwi"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ryanwi" />
 
 # Azure のクラウド サービスおよび仮想マシンの診断機能
 
@@ -773,7 +773,6 @@ WADdest2
 -   [クラウド サービスのデバッグ][クラウド サービスのデバッグ]
 -   [Azure 診断の構成][Azure 診断の構成]
 
-  [Troubleshooting Best Practices for Developing Azure Applications (Azure アプリケーション開発のトラブルシューティングのベスト プラクティス)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh771389.aspx
   [概要]: #overview
   [Worker ロールの診断を有効にする方法]: #worker-role
   [仮想マシンの診断を有効にする方法]: #virtual-machine
@@ -785,12 +784,6 @@ WADdest2
   [EventSource クラス]: http://msdn.microsoft.com/ja-jp/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
   [無料評価版]: http://azure.microsoft.com/ja-jp/pricing/free-trial/
   [Azure PowerShell Version 0.8.7 以降をインストールして構成している]: http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/
-  [CloudServices\_diag\_add\_xml]: ./media/cloud-services-dotnet-diagnostics/AddXmlFile.png
-  [CloudServices\_diag\_tables]: ./media/cloud-services-dotnet-diagnostics/WadExampleTables.png
-  [CloudServices\_diag\_new\_project]: ./media/cloud-services-dotnet-diagnostics/NewProject.png
-  [CloudServices\_diag\_wadexamplevm\_tables]: ./media/cloud-services-dotnet-diagnostics/WadExampleVMTables.png
-  [Azure Diagnostics 1.2 Configuration Schema (Azure 診断 1.2 構成スキーマ)]: http://msdn.microsoft.com/ja-jp/library/azure/dn782207.aspx
-  [デコードする]: http://www.bing.com/search?q=base64+decoder
   [Azure 診断を使用したログ データの収集]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433048.aspx
   [クラウド サービスのデバッグ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405479.aspx
   [Azure 診断の構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn186185.aspx

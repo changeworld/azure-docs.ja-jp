@@ -1,6 +1,6 @@
 <properties title="Get started with a DocumentDB account" pageTitle="Get started with a DocumentDB account | Azure" description="Learn how to create and configure an Azure DocumentDB account, create databases, create collections, and store JSON documents within the account." metaKeywords="NoSQL, DocumentDB,  database, document-orientated database, JSON, getting started"   services="documentdb" solutions="data-management" documentationCenter=""  authors="bradsev" manager="paulettm" editor="cgronlun" scriptId="" />
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="bradsev"></tags>
+<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="bradsev" />
 
 # DocumentDB アカウントの使用
 
@@ -33,7 +33,7 @@ DocumentClient は、DocumentDB アカウント エンドポイントおよび�
 
 DocumentDB アカウント エンドポイントとキーは、DocumentDB アカウントの Azure 管理プレビュー ポータル ブレードから取得できます。
 
-![][]
+![][0]
 
 > [キー] ブレードから利用可能な DocumentDB アクセス キーは、DocumentDB アカウントおよびそのリソースへの管理アクセスを付与する点に注意してください。DocumentDB では、付与されているアクセス許可に応じて、クライアントがアカウント キーなしで、DocumentDB アカウント内のリソースの読み取り、書き込み、および削除を実行するためのリソース キーの使用もサポートされます。
 
@@ -196,7 +196,6 @@ DocumentDB では、各コレクションに格納された JSON ドキュメン
   [ドキュメントの作成]: #CreateDoc
   [DocumentDB リソースのクエリ]: #Query
   [次のステップ]: #NextSteps
-  []: ./media/documentdb-get-started/gs1.png
-  [Windows Azure Web Sites: How Application Strings and Connection Strings Work (Windows Azure Web サイト: アプリケーション文字列と接続文字列の動作)]: http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/
+  [0]: ./media/documentdb-get-started/gs1.png
   [DocumentDB アカウントを監視する]: http://go.microsoft.com/fwlink/p/?LinkId=402378
   [DocumentDB ドキュメント ページ]: http://go.microsoft.com/fwlink/p/?LinkID=402319

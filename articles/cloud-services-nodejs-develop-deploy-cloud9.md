@@ -1,6 +1,6 @@
 <properties linkid="dev-nodejs-cloud9" urlDisplayName="Deploying with Cloud9" pageTitle="Node.js deploying with Cloud9 - Azure tutorial" metaKeywords="Cloud9 IDE Azure, Azure node.js, Azure node apps" description="Learn how to use Cloud9 IDE to develop, build, and deploy a Node.js application to Azure." metaCanonical="" services="cloud-services" documentationCenter="nodejs" title="Deploying an Azure App from Cloud9" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
 # Cloud9 からの Azure アプリケーションのデプロイ
 
@@ -97,7 +97,7 @@ Cloud9 を使用するには、Cloud9 の Web サイトにアクセスして、[
 
 アプリケーションを Azure に展開するには、アカウントが必要です。Azure アカウントを持っていない場合は、次の手順に従って無料評価版アカウントにサインアップすることもできます。
 
-[WACOM.INCLUDE [create-azure-account][create-azure-account]]
+[WACOM.INCLUDE [create-azure-account](../includes/create-azure-account.md)]
 
 ## デプロイの作成
 
@@ -276,7 +276,6 @@ Cloud9 は IDE を提供することに重点を置いており、Azure に展�
   [ブラウザーで実行中のアプリケーション]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_debug_browser.png
   [create-azure-account]: ../includes/create-azure-account.md
   [発行設定のダウンロード]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_choosetypeandcert.png
-  [Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj155995.aspx
   [新しいデプロイの作成]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_createdeployment.png
   [新しいホステッド サービスの作成]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_new_hosted_service_settings.png
   [デプロイの選択]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_select_deployment.png

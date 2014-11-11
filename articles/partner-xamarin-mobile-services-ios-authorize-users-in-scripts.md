@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-authorize-users-in-scripts-xamarin-ios" urlDisplayName="Authorize Users in Scripts (Xamarin.iOS)" pageTitle="Authorize users in scripts (Xamarin.iOS) - Azure Mobile Services" metaKeywords="Azure authorizing user, Xamarin.iOS scripts authorization, authorize mobile services" description="Learn how to authorize users with scripts in your Azure Mobile Services app for Xamarin.iOS." metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Use scripts to authorize users in Mobile Services" documentationCenter="Mobile" authors="donnam" manager="dwrede" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="donnam"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="donnam" />
 
 # モバイル サービスでユーザー承認にスクリプトを使用する
 
@@ -19,7 +19,7 @@
 
 1.  [Azure の管理ポータル][Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
@@ -89,17 +89,9 @@
 <!-- Images. -->
 <!-- URLs. -->
 
-  [Windows ストア C#]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-dotnet "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-js "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-wp8 "Windows Phone"
-  [iOS]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-ios "iOS"
-  [Android]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-android "Android"
-  [HTML]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-html "HTML"
-  [iOS C#]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios "Xamarin.iOS"
-  [Android C#]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android "Xamarin.Android"
   [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-ios
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/partner-xamarin-mobile-services-ios-authorize-users-in-scripts/mobile-services-selection.png
+  [0]: ./media/partner-xamarin-mobile-services-ios-authorize-users-in-scripts/mobile-services-selection.png
   [1]: ./media/partner-xamarin-mobile-services-ios-authorize-users-in-scripts/mobile-portal-data-tables.png
   [2]: ./media/partner-xamarin-mobile-services-ios-authorize-users-in-scripts/mobile-insert-script-users.png
   [3]: ./media/partner-xamarin-mobile-services-ios-authorize-users-in-scripts/mobile-quickstart-startup-ios.png

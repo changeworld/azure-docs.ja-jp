@@ -1,6 +1,6 @@
 <properties linkid="mobile-services-monitor-new-relic" urlDisplayName="Use New Relic to monitor Mobile Services" pageTitle="Store server scripts in source control - Azure Mobile Services" metaKeywords="" description="Learn how to use the New Relic add-on to monitor your mobile service." metaCanonical="" disqusComments="1" umbracoNaviHide="0" documentationCenter="Mobile" title="Use New Relic to monitor Mobile Services" authors="new relic" manager="dwrede" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="new relic"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="new="" relic" />
 
 # New Relic を使用したモバイル サービスの監視
 
@@ -65,7 +65,7 @@ New Relic サービスにサインアップしたら、New Relic の Node.js モ
 
 1.  [管理ポータル][管理ポータル]で、モバイル サービスを選択し、**[構成]** タブをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  下へスクロールして **[開発者分析]** を表示し、New Relic サブスクリプションをどのように購入したかに応じて、次のどちらかの手順を実行します。
 
@@ -120,14 +120,12 @@ New Relic サービスにサインアップしたら、New Relic の Node.js モ
   [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet
   [Azure 管理ポータル]: https://manage.windowsazure.com
   [ソース管理へのサーバー スクリプトの保存]: /ja-jp/develop/mobile/tutorials/store-scripts-in-source-control/
-  [ノード パッケージ マネージャー (NPM)]: http://nodejs.org/
   [New Relic モジュール]: https://npmjs.org/package/newrelic
   [管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/store-new-relic-mobile-services-monitor/mobile-configure-tab.png
+  [0]: ./media/store-new-relic-mobile-services-monitor/mobile-configure-tab.png
   [1]: ./media/store-new-relic-mobile-services-monitor/mobile-configure-new-relic-monitoring.png
   [2]: ./media/store-new-relic-mobile-services-monitor/mobile-configure-new-relic-monitoring-custom.png
   [3]: ./media/store-new-relic-mobile-services-monitor/mobile-configure-new-relic-monitoring-complete.png
   [4]: ./media/store-new-relic-mobile-services-monitor/mobile-new-relic-dashboard.png
   [5]: ./media/store-new-relic-mobile-services-monitor/mobile-new-relic-dashboard-2.png
   [Windows Azure ストアの New Relic のページ]: /ja-jp/gallery/store/new-relic/new-relic/
-  [Applications Overview (アプリケーションの概要)]: https://docs.newrelic.com/docs/applications-dashboards/applications-overview

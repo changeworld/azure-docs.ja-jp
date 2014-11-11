@@ -1,22 +1,22 @@
 <properties urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="How to Configure Traffic Manager Settings" authors="" solutions="" manager="" editor="" />
 
-<tags ms.service="traffic-manager" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author></tags>
+<tags ms.service="traffic-manager" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="" />
 
 # Traffic Manager の設定の構成方法
 
 Azure Traffic Manager を使用すると、Azure ホステッド サービスへのユーザー トラフィックの振り分けを制御できます。
 
-トラフィック マネージャーは、会社のメイン ドメイン名に対する DNS クエリにインテリジェントなポリシー エンジンを適用することで機能します。会社が所有する DNS リソース レコードは、会社のドメインで Traffic Manager ドメインが参照されるように更新する必要があります。それらのドメインに接続されているトラフィック マネージャー ポリシーに基づいて、会社のメイン ドメイン名に対する DNS クエリが、トラフィック マネージャー ポリシー内の特定の Azure ホステッド サービスの IP アドレスに解決されます。詳細については、[Azure のトラフィック マネージャーの概要に関するページ][]を参照してください。
+トラフィック マネージャーは、会社のメイン ドメイン名に対する DNS クエリにインテリジェントなポリシー エンジンを適用することで機能します。会社が所有する DNS リソース レコードは、会社のドメインで Traffic Manager ドメインが参照されるように更新する必要があります。それらのドメインに接続されているトラフィック マネージャー ポリシーに基づいて、会社のメイン ドメイン名に対する DNS クエリが、トラフィック マネージャー ポリシー内の特定の Azure ホステッド サービスの IP アドレスに解決されます。詳細については、[Azure のトラフィック マネージャーの概要に関するページ][Azure のトラフィック マネージャーの概要に関するページ]を参照してください。
 
 ## 目次
 
--   [方法: 会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする][]
--   [方法: ポリシーをテストする][]
--   [方法: ポリシーとホステッド サービスを一時的に無効にする][]
--   [方法: ポリシーを編集する][]
--   [方法: トラフィックを一連のホステッド サービスに均等に負荷分散する][]
--   [方法: フェールオーバー ポリシーを作成する][]
--   [方法: ネットワーク パフォーマンスに基づいて受信トラフィックをホステッド サービスに振り分ける][]
+-   [方法: 会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする][方法: 会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする]
+-   [方法: ポリシーをテストする][方法: ポリシーをテストする]
+-   [方法: ポリシーとホステッド サービスを一時的に無効にする][方法: ポリシーとホステッド サービスを一時的に無効にする]
+-   [方法: ポリシーを編集する][方法: ポリシーを編集する]
+-   [方法: トラフィックを一連のホステッド サービスに均等に負荷分散する][方法: トラフィックを一連のホステッド サービスに均等に負荷分散する]
+-   [方法: フェールオーバー ポリシーを作成する][方法: フェールオーバー ポリシーを作成する]
+-   [方法: ネットワーク パフォーマンスに基づいて受信トラフィックをホステッド サービスに振り分ける][方法: ネットワーク パフォーマンスに基づいて受信トラフィックをホステッド サービスに振り分ける]
 
 ## <span id="howto_point_company"></span></a>方法: 会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする
 
@@ -35,7 +35,7 @@ Azure Traffic Manager を使用すると、Azure ホステッド サービスへ
 
 -   **テストするポリシー内の Azure ホステッド サービスの IP アドレスを確認**します。この情報は Azure 管理ポータルから取得できます。サービスの運用環境のデプロイをクリックします。右側のプロパティ ウィンドウで、最後のエントリがそのホステッド サービスの VIP (仮想 IP アドレス) になります。
 
-    ![ホステッド サービスの IP の場所][]
+    ![ホステッド サービスの IP の場所][ホステッド サービスの IP の場所]
 
     **図 1** - ホステッド サービスの IP の場所
 
@@ -59,7 +59,7 @@ Azure Traffic Manager を使用すると、Azure ホステッド サービスへ
 > > -   コマンド ラインで "nslookup" の後に入力した Traffic Manager ドメイン名と、その Traffic Manager ドメインから解決された IP アドレス。
 > >     この 2 番目の IP アドレスを確認することが重要です。この IP アドレスが、テスト対象のトラフィック マネージャー ポリシー内のいずれかのホステッド サービスの VIP に一致する必要があります。
 
-> > ![nslookup コマンドの例][]
+> > ![nslookup コマンドの例][nslookup コマンドの例]
 
 > > **図 2** - nslookup コマンドの例
 
@@ -130,7 +130,7 @@ Azure Traffic Manager を使用すると、Azure ホステッド サービスへ
 
 2.  上部のツール バーの **[サービスのポリシーの無効化]** をクリックします。既に無効になっているホステッド サービスを選択すると、このボタンは淡色表示されることに注意してください。
 
-3.  そのホステッド サービスへのトラフィックの振り分けが、ポリシー内の Traffic Manager ドメインに設定された DNS TTL に基づいて停止されます。詳細については、[Azure トラフィック マネージャーの概要に関するページ][]で、Azure トラフィック マネージャーでのホステッド サービスの監視に関するセクションを参照してください。
+3.  そのホステッド サービスへのトラフィックの振り分けが、ポリシー内の Traffic Manager ドメインに設定された DNS TTL に基づいて停止されます。詳細については、[Azure トラフィック マネージャーの概要に関するページ][Azure トラフィック マネージャーの概要に関するページ]で、Azure トラフィック マネージャーでのホステッド サービスの監視に関するセクションを参照してください。
 
 ### ホステッド サービスを有効にするには
 
@@ -162,7 +162,7 @@ Azure Traffic Manager を使用すると、Azure ホステッド サービスへ
 
 トラフィック マネージャーに用意されているさまざまな負荷分散方法の詳細については、[Azure トラフィック マネージャーの概要に関するページ][Azure のトラフィック マネージャーの概要に関するページ]で、Azure トラフィック マネージャーでの負荷分散方法に関するセクションを参照してください。
 
-1.  **ホステッド サービスを運用環境に展開**します。ホステッド サービスの開発と展開については、[Azure ホステッド サービスに関するページ][]を参照してください。
+1.  **ホステッド サービスを運用環境に展開**します。ホステッド サービスの開発と展開については、[Azure ホステッド サービスに関するページ][Azure ホステッド サービスに関するページ]を参照してください。
 
 2.  **管理ポータル ([][]<http://manage.windowsazure.com></a>) でトラフィック マネージャー領域にログイン**します。ポータル ページの左下にある **[仮想ネットワーク]** をクリックし、左側のウィンドウのオプションから **[トラフィック マネージャー]** を選択します。
 
@@ -186,16 +186,16 @@ Azure Traffic Manager を使用すると、Azure ホステッド サービスへ
 
     **[トラフィック マネージャー ポリシーの作成]** ダイアログ ボックスは次の例のようになります。
 
-    ![ラウンド ロビン負荷分散方式のダイアログ ボックス][]
+    ![ラウンド ロビン負荷分散方式のダイアログ ボックス][ラウンド ロビン負荷分散方式のダイアログ ボックス]
 
     **図 2** - ラウンド ロビン負荷分散方式のダイアログ ボックス
 
-9.  **Traffic Manager ドメインとポリシーをテストします。**手順については、「[方法: ポリシーをテストする][]」を参照してください。
+9.  **Traffic Manager ドメインとポリシーをテストします。**手順については、「[方法: ポリシーをテストする][方法: ポリシーをテストする]」を参照してください。
 
 10. **DNS サーバーで Traffic Manager ドメインを参照します。** Traffic Manager ドメインを設定したら、権威 DNS サーバー上の DNS レコードを編集して、会社のドメインで Traffic Manager ドメインが参照されるようにします。
     たとえば、次のコマンドでは、**www.contoso.com** へのすべてのトラフィックが Traffic Manager ドメイン **contoso.trafficmanager.net** に振り分けられます。
     `www.contoso.com IN CNAME contoso.trafficmanager.net`
-    詳細については、「[方法: 会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする][]」を参照してください。
+    詳細については、「[方法: 会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする][方法: 会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする]」を参照してください。
 
 ## <span id="howto_create_failover"></span></a>方法: フェールオーバー ポリシーを作成する
 
@@ -203,7 +203,7 @@ Azure Traffic Manager を使用すると、Azure ホステッド サービスへ
 
 トラフィック マネージャーに用意されているさまざまな負荷分散方法の詳細については、[Azure トラフィック マネージャーの概要に関するページ][Azure のトラフィック マネージャーの概要に関するページ]で、Azure トラフィック マネージャーでの負荷分散方法に関するセクションを参照してください。
 
-1.  **ホステッド サービスを運用環境に展開**します。ホステッド サービスの開発と展開については、[Azure ホステッド サービスに関するページ][]を参照してください。
+1.  **ホステッド サービスを運用環境に展開**します。ホステッド サービスの開発と展開については、[Azure ホステッド サービスに関するページ][Azure ホステッド サービスに関するページ]を参照してください。
 
 2.  **管理ポータル ([][]<http://manage.windowsazure.com></a>) でトラフィック マネージャー領域にログイン**します。ポータル ページの左下にある **[仮想ネットワーク]** をクリックし、左側のウィンドウのオプションから **[トラフィック マネージャー]** を選択します。
 
@@ -227,14 +227,14 @@ Azure Traffic Manager を使用すると、Azure ホステッド サービスへ
 
     **[トラフィック マネージャー ポリシーの作成]** ダイアログ ボックスは次の例のようになります。
 
-    ![フェールオーバー負荷分散方式のダイアログ ボックス][]
+    ![フェールオーバー負荷分散方式のダイアログ ボックス][フェールオーバー負荷分散方式のダイアログ ボックス]
 
     **図 2** - フェールオーバー負荷分散方法のダイアログ ボックス
 
-9.  **Traffic Manager ドメインとポリシーをテストします。**詳細については、「[方法: ポリシーをテストする][]」を参照してください。
+9.  **Traffic Manager ドメインとポリシーをテストします。**詳細については、「[方法: ポリシーをテストする][方法: ポリシーをテストする]」を参照してください。
 
 10. **DNS サーバーで Traffic Manager ドメインを参照します。** Traffic Manager ドメインを設定したら、権威 DNS サーバー上の DNS レコードを編集して、会社のドメインで Traffic Manager ドメインが参照されるようにします。
-    詳細については、「[方法: 会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする][]」を参照してください。
+    詳細については、「[方法: 会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする][方法: 会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする]」を参照してください。
     たとえば、次のコマンドでは、**www.contoso.com** へのすべてのトラフィックが Traffic Manager ドメイン **contoso.trafficmanager.net** に振り分けられます。
     `www.contoso.com IN CNAME contoso.trafficmanager.net`
 
@@ -244,7 +244,7 @@ Azure Traffic Manager を使用すると、Azure ホステッド サービスへ
 
 次の手順では、このプロセスについて説明します。
 
-1.  **ホステッド サービスを運用環境に展開**します。詳細については、「[Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成)][]」を参照してください。
+1.  **ホステッド サービスを運用環境に展開**します。詳細については、「[Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成)][Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成)]」を参照してください。
     また、「[Traffic Manager の概要][Azure トラフィック マネージャーの概要に関するページ]」で、ホステッド サービスとポリシーのベスト プラクティスに関するセクションも参照してください。
 
 2.  **管理ポータル ([][]<http://manage.windowsazure.com></a>) でトラフィック マネージャー領域にログイン**します。ポータル ページの左下にある **[仮想ネットワーク]** をクリックし、左側のウィンドウのオプションから **[トラフィック マネージャー]** を選択します。
@@ -269,18 +269,18 @@ Azure Traffic Manager を使用すると、Azure ホステッド サービスへ
 
     **[トラフィック マネージャー ポリシーの作成]** ダイアログ ボックスは次の例のようになります。
 
-    ![パフォーマンス負荷分散方式のダイアログ ボックス][]
+    ![パフォーマンス負荷分散方式のダイアログ ボックス][パフォーマンス負荷分散方式のダイアログ ボックス]
 
     **図 2** - パフォーマンス負荷分散方法のダイアログ ボックス
 
-9.  **Traffic Manager ドメインとポリシーをテストします。**テストの詳細については、「[方法: ポリシーをテストする][]」を参照してください。
+9.  **Traffic Manager ドメインとポリシーをテストします。**テストの詳細については、「[方法: ポリシーをテストする][方法: ポリシーをテストする]」を参照してください。
 
 10. **DNS サーバーで Traffic Manager ドメインを参照します。** Traffic Manager ドメインを設定したら、権威 DNS サーバー上の DNS レコードを編集して、会社のドメインで Traffic Manager ドメインが参照されるようにします。
     たとえば、次のコマンドでは、**www.contoso.com** へのすべてのトラフィックが Traffic Manager ドメイン **contoso.trafficmanager.net** に振り分けられます。
     `www.contoso.com IN CNAME contoso.trafficmanager.net`
-    詳細については、「[方法: 会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする][]」を参照してください。
+    詳細については、「[方法: 会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする][方法: 会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする]」を参照してください。
 
-  [Azure のトラフィック マネージャーの概要に関するページ]: http://msdn.microsoft.com/en-us/library/windowsazure/hh744833.aspx
+  [Azure のトラフィック マネージャーの概要に関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh744833.aspx
   [方法: 会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする]: #howto_point_company
   [方法: ポリシーをテストする]: #howto_test
   [方法: ポリシーとホステッド サービスを一時的に無効にする]: #howto_temp_disable
@@ -290,10 +290,9 @@ Azure Traffic Manager を使用すると、Azure ホステッド サービスへ
   [方法: ネットワーク パフォーマンスに基づいて受信トラフィックをホステッド サービスに振り分ける]: #howto_direct
   [ホステッド サービスの IP の場所]: ./media/traffic-manager-configure-settings/hosted_service_IP_location.png
   [nslookup コマンドの例]: ./media/traffic-manager-configure-settings/nslookup_command_example.png
-  [Azure トラフィック マネージャーの概要に関するページ]: http://msdn.microsoft.com/en-us/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring
+  [Azure トラフィック マネージャーの概要に関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring
   []: http://manage.windowsazure.com
   [Azure ホステッド サービスに関するページ]: http://msdn.microsoft.com/library/gg432967.aspx
   [ラウンド ロビン負荷分散方式のダイアログ ボックス]: ./media/traffic-manager-configure-settings/Dialog_box_for_Round_Robin_load_balancing_method.png
   [フェールオーバー負荷分散方式のダイアログ ボックス]: ./media/traffic-manager-configure-settings/Dialog_box_for_Failover_load_balancing_method.png
-  [Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成)]: http://msdn.microsoft.com/en-us/library/windowsazure/gg432967.aspx
   [パフォーマンス負荷分散方式のダイアログ ボックス]: ./media/traffic-manager-configure-settings/Dialog_box_for_Performance_load_balancing_method.png

@@ -1,34 +1,34 @@
 <properties title="How to use the queue service (PHP) - Azure feature guide" pageTitle="How to use the queue service (PHP) | Microsoft Azure" metaKeywords="Azure Queue Service messaging PHP" description="Learn how to use the Azure Queue service to create and delete queues, and insert, get, and delete messages. Samples written in PHP." documentationCenter="PHP" services="storage" authors="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="" />
 
 # PHP からキュー サービスを使用する方法
 
-このガイドでは、Azure キュー サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Windows SDK for PHP のクラスを利用して記述されています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、**キューの作成および削除**の各シナリオについて説明します。キューの詳細については、「[次のステップ][]」のセクションを参照してください。
+このガイドでは、Azure キュー サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Windows SDK for PHP のクラスを利用して記述されています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、**キューの作成および削除**の各シナリオについて説明します。キューの詳細については、「[次のステップ][次のステップ]」のセクションを参照してください。
 
 ## 目次
 
--   [キュー ストレージとは][]
--   [概念][]
--   [Azure のストレージ アカウントの作成][]
--   [PHP アプリケーションの作成][]
--   [キュー サービスにアクセスするようにアプリケーションを構成する][]
--   [Azure のストレージ接続文字列の設定][]
--   [方法: キューを作成する][]
--   [方法: メッセージをキューに追加する][]
--   [方法: 次のメッセージをピークする][]
--   [方法: 次のメッセージをデキューする][]
--   [方法: キューに配置されたメッセージの内容を変更する][]
--   [メッセージのデキュー用の追加オプション][]
--   [方法: キューの長さを取得する][]
--   [方法: キューを削除する][]
+-   [キュー ストレージとは][キュー ストレージとは]
+-   [概念][概念]
+-   [Azure のストレージ アカウントの作成][Azure のストレージ アカウントの作成]
+-   [PHP アプリケーションの作成][PHP アプリケーションの作成]
+-   [キュー サービスにアクセスするようにアプリケーションを構成する][キュー サービスにアクセスするようにアプリケーションを構成する]
+-   [Azure のストレージ接続文字列の設定][Azure のストレージ接続文字列の設定]
+-   [方法: キューを作成する][方法: キューを作成する]
+-   [方法: メッセージをキューに追加する][方法: メッセージをキューに追加する]
+-   [方法: 次のメッセージをピークする][方法: 次のメッセージをピークする]
+-   [方法: 次のメッセージをデキューする][方法: 次のメッセージをデキューする]
+-   [方法: キューに配置されたメッセージの内容を変更する][方法: キューに配置されたメッセージの内容を変更する]
+-   [メッセージのデキュー用の追加オプション][メッセージのデキュー用の追加オプション]
+-   [方法: キューの長さを取得する][方法: キューの長さを取得する]
+-   [方法: キューを削除する][方法: キューを削除する]
 -   [次のステップ][1]
 
-[WACOM.INCLUDE [howto-queue-storage][]]
+[WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
 ## <span id="create-account"></span></a>Azure のストレージ アカウントの作成
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <span id="create-app"></span></a>PHP アプリケーションの作成
 
@@ -38,13 +38,13 @@ Azure キュー サービスにアクセスする PHP アプリケーション�
 
 ## <span id="GetClientLibrary"></span></a>Azure クライアント ライブラリの入手
 
-[WACOM.INCLUDE [get-client-libraries][]]
+[WACOM.INCLUDE [get-client-libraries](../includes/get-client-libraries.md)]
 
 ## <span id="configure-app"></span></a>キュー サービスにアクセスするようにアプリケーションを構成する
 
 Azure キュー サービス API を使用するには、次の要件があります。
 
-1.  [require\_once][] ステートメントを使用してオートローダー ファイルを参照する
+1.  [require\_once][require\_once] ステートメントを使用してオートローダー ファイルを参照する
 2.  使用する可能性のあるクラスを参照する
 
 次の例では、オートローダー ファイルをインクルードし、**ServicesBuilder** クラスを参照する方法を示しています。
@@ -110,7 +110,7 @@ Azure キュー サービス クライアントをインスタンス化するに
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179446.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179446.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -140,7 +140,7 @@ Azure キュー サービス クライアントをインスタンス化するに
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179446.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179446.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -169,7 +169,7 @@ Azure キュー サービス クライアントをインスタンス化するに
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179446.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179446.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -223,7 +223,7 @@ Azure キュー サービス クライアントをインスタンス化するに
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179446.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179446.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -265,7 +265,7 @@ Azure キュー サービス クライアントをインスタンス化するに
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179446.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179446.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -312,7 +312,7 @@ Azure キュー サービス クライアントをインスタンス化するに
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179446.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179446.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -338,7 +338,7 @@ Azure キュー サービス クライアントをインスタンス化するに
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179446.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179446.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -365,7 +365,7 @@ Azure キュー サービス クライアントをインスタンス化するに
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179446.aspx
+        // http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179446.aspx
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -375,7 +375,7 @@ Azure キュー サービス クライアントをインスタンス化するに
 
 これで、Azure キュー サービスの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   MSDN リファレンス: [Azure のデータの格納とアクセス][]
+-   MSDN リファレンス: [Azure のデータの格納とアクセス][Azure のデータの格納とアクセス]
 -   Azure のストレージ チーム ブログ: <http://blogs.msdn.com/b/windowsazurestorage/>
 
   [次のステップ]: #NextSteps
@@ -397,5 +397,4 @@ Azure キュー サービス クライアントをインスタンス化するに
   [howto-queue-storage]: ../includes/howto-queue-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
   [get-client-libraries]: ../includes/get-client-libraries.md
-  [require\_once]: http://www.php.net/manual/en/function.require-once.php
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx

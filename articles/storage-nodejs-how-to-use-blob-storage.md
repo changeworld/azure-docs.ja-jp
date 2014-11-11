@@ -1,40 +1,40 @@
 <properties linkid="dev-nodejs-how-to-blob-storage" urlDisplayName="Blob Service" pageTitle="How to use blob storage (Node.js) | Microsoft Azure" metaKeywords="Get started Azure blob, Azure unstructured data, Azure unstructured storage, Azure blob, Azure blob storage, Azure blob Node.js" description="Learn how to use the Azure blob service to upload, download, list, and delete blob content. Samples written in Node.js." metaCanonical="" services="storage" documentationCenter="Node.js" title="How to Use the Blob Service from Node.js" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr" />
 
 # Node.js から BLOB サービスを使用する方法
 
 このガイドでは、Azure BLOB サービスを使用して一般的なシナリオを実行する方法について説明します。
 サンプルは Node.js API を使用して記述されています。
 紹介するシナリオは、BLOB の**アップロード**、**一覧表示**、
-**ダウンロード**、および**削除**です。BLOB の詳細については、「[次のステップ][]」のセクションを参照してください。
+**ダウンロード**、および**削除**です。BLOB の詳細については、「[次のステップ][次のステップ]」のセクションを参照してください。
 
 ## 目次
 
--   [BLOB サービスとは][]
--   [概念][]
--   [Azure のストレージ アカウントの作成][]
--   [Node.js アプリケーションの作成][]
--   [アプリケーションのストレージへのアクセスの構成][]
--   [Azure のストレージ接続文字列の設定][]
--   [方法: コンテナーを作成する][]
--   [方法: コンテナーに BLOB をアップロードする][]
--   [方法: コンテナー内の BLOB を一覧表示する][]
--   [方法: BLOB をダウンロードする][]
--   [方法: BLOB を削除する][]
--   [方法: 同時アクセス][]
--   [方法: 共有アクセス署名を操作する][]
--   [次のステップ][]
+-   [BLOB サービスとは][BLOB サービスとは]
+-   [概念][概念]
+-   [Azure のストレージ アカウントの作成][Azure のストレージ アカウントの作成]
+-   [Node.js アプリケーションの作成][Node.js アプリケーションの作成]
+-   [アプリケーションのストレージへのアクセスの構成][アプリケーションのストレージへのアクセスの構成]
+-   [Azure のストレージ接続文字列の設定][Azure のストレージ接続文字列の設定]
+-   [方法: コンテナーを作成する][方法: コンテナーを作成する]
+-   [方法: コンテナーに BLOB をアップロードする][方法: コンテナーに BLOB をアップロードする]
+-   [方法: コンテナー内の BLOB を一覧表示する][方法: コンテナー内の BLOB を一覧表示する]
+-   [方法: BLOB をダウンロードする][方法: BLOB をダウンロードする]
+-   [方法: BLOB を削除する][方法: BLOB を削除する]
+-   [方法: 同時アクセス][方法: 同時アクセス]
+-   [方法: 共有アクセス署名を操作する][方法: 共有アクセス署名を操作する]
+-   [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [howto-blob-storage][]]
+[WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
 ## <a name="create-account"></a>Azure ストレージ アカウントの作成
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <a name="create-app"> </a>Node.js アプリケーションの作成
 
-空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][]、[Node.js クラウド サービスへのデプロイ][] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ][]に関するページを参照してください。
+空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービスへのデプロイ][Node.js クラウド サービスへのデプロイ] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ][WebMatrix による Web サイトの作成とデプロイ]に関するページを参照してください。
 
 ## <a name="configure-access"> </a>アプリケーションからストレージへのアクセスの構成
 
@@ -69,7 +69,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT、AZURE\_STORAGE\_ACCESS\_KEY、および AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。これらの環境変数が設定されていない場合は、**createBlobService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Web サイトの管理ポータルで環境変数を設定する例については、「[Azure テーブル サービスを使用する Node.js Web アプリケーション][]」を参照してください。
+Azure Web サイトの管理ポータルで環境変数を設定する例については、「[Azure テーブル サービスを使用する Node.js Web アプリケーション][Azure テーブル サービスを使用する Node.js Web アプリケーション]」を参照してください。
 
 ## <a name="create-container"> </a>方法: コンテナーを作成する
 
@@ -90,7 +90,7 @@ BLOB はすべてコンテナー内に格納されます。新しいコンテナ
       }
     });
 
-コンテナーが作成されると、`result` は true になります。コンテナーが既に存在する場合は、`result` は false になります。`response` には、コンテナーの [ETag][] 情報を含む、操作に関する情報が含まれます。
+コンテナーが作成されると、`result` は true になります。コンテナーが既に存在する場合は、`result` は false になります。`response` には、コンテナーの [ETag][ETag] 情報を含む、操作に関する情報が含まれます。
 
 ### コンテナーのセキュリティ
 
@@ -137,7 +137,7 @@ BLOB はすべてコンテナー内に格納されます。新しいコンテナ
 
 ## <a name="upload-blob"> </a>方法: コンテナーに BLOB をアップロードする
 
-BLOB はブロック ベースまたはページ ベースのいずれにもできます。ブロック blob は大量のデータを効率的にアップロードできる一方、ページ blob は読み取りと書き込みの操作に適しています。詳細については「[ブロック BLOB およびページ BLOB について][]」を参照してください。
+BLOB はブロック ベースまたはページ ベースのいずれにもできます。ブロック blob は大量のデータを効率的にアップロードできる一方、ページ blob は読み取りと書き込みの操作に適しています。詳細については「[ブロック BLOB およびページ BLOB について][ブロック BLOB およびページ BLOB について]」を参照してください。
 
 ### ブロック blob
 
@@ -360,9 +360,9 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
 
 これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   MSDN リファレンス: [Azure のデータの格納とアクセス][]
--   [Azure のストレージ チーム ブログ][]
--   GitHub の [Azure Storage SDK for Node][] リポジトリ
+-   MSDN リファレンス: [Azure のデータの格納とアクセス][Azure のデータの格納とアクセス]
+-   [Azure のストレージ チーム ブログ][Azure のストレージ チーム ブログ]
+-   GitHub の [Azure Storage SDK for Node][Azure Storage SDK for Node] リポジトリ
 
   [次のステップ]: #next-steps
   [BLOB サービスとは]: #what-is
@@ -380,12 +380,12 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [方法: 共有アクセス署名を操作する]: #sas
   [howto-blob-storage]: ../includes/howto-blob-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
-  [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)/
+  [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: /ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
   [Node.js クラウド サービスへのデプロイ]: /ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/
   [WebMatrix による Web サイトの作成とデプロイ]: /ja-jp/documentation/articles/web-sites-nodejs-use-webmatrix/
   [Azure テーブル サービスを使用する Node.js Web アプリケーション]: /ja-jp/documentation/articles/storage-nodejs-use-table-storage-web-site/
   [ETag]: http://en.wikipedia.org/wiki/HTTP_ETag
-  [ブロック BLOB およびページ BLOB について]: http://msdn.microsoft.com/en-us/library/azure/ee691964.aspx
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+  [ブロック BLOB およびページ BLOB について]: http://msdn.microsoft.com/ja-jp/library/azure/ee691964.aspx
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
   [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node

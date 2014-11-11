@@ -1,6 +1,6 @@
 <properties linkid="storage-use-azcopy" urlDisplayName="AzCopy" pageTitle="How to use AzCopy with Microsoft Azure Storage" metaKeywords="Get started Azure AzCopy   Azure unstructured data   Azure unstructured storage   Azure blob   Azure blob storage   Azure file   Azure file storage   Azure file share   AzCopy" description="Learn how to use the AzCopy utility to upload, download, and copy blob and file content." metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="storage" documentationCenter="" title="How to use AzCopy with Microsoft Azure Storage" authors="tamram" manager="mbaldwin" editor="cgronlun" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/06/2014" ms.author="tamram"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/06/2014" ms.author="tamram" />
 
 # AzCopy コマンド ライン ユーティリティの概要
 
@@ -663,13 +663,5 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
   [AzCopy のバージョン]: #versions
   [次のステップ]: #next-steps
   [最新バージョンの AzCopy]: http://aka.ms/downloadazcopy
-  [Introducing Asynchronous Cross-Account Copy Blob (非同期アカウント間での BLOB のコピーについて)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx
   [Microsoft Azure ストレージの概要]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-introduction/
-  [How to use Blob Storage from .NET (.NET での BLOB ストレージの使用方法)]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/
-  [How to Use Azure File storage (Azure ファイル ストレージの使用方法)]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-files/
-  [Introducing Microsoft Azure File Service (Microsoft Azure File サービスの概要)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx
   [大量のコピーのシナリオでの最適化が実現した AzCopy 2.5 に関する記事]: http://go.microsoft.com/fwlink/?LinkId=507682
-  [AzCopy - Support for read-access geo-redundant storage (AzCopy - Geo 冗長ストレージの読み取りアクセスのサポート)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx
-  [AzCopy - Transfer data with re-startable mode and SAS token (AzCopy - 再起動可能モードまたは SAS トークンを使用したデータの転送)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx
-  [AzCopy - Using cross-account Copy Blob (AzCopy - アカウント間での BLOB のコピー)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx
-  [AzCopy - Uploading/downloading files for Windows Azure Blobs (AzCopy - Windows Azure BLOB に対するファイルのアップロードおよびダウンロード)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx

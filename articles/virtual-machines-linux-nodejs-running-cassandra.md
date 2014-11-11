@@ -1,6 +1,6 @@
 <properties linkid="services-linux-cassandra-with-linux" urlDisplayName="Cassandra with Linux" pageTitle="Run Cassandra with Linux on Azure" metaKeywords="" description="Explains how to run a Cassandra cluster on Linux in Azure Virtual Machines." metaCanonical="" services="virtual-machines" documentationCenter="nodejs" title="Running Cassandra with Linux on Azure and Accessing it from Node.js" authors="hanuk" solutions="" manager="timlt" editor="" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="hanuk"></tags>
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="hanuk" />
 
 # <span></span></a>Azure 上の Linux で Cassandra を実行して Node.js からアクセスする
 
@@ -581,11 +581,9 @@ Azure の仮想マシン機能を利用すると、Linux (Microsoft パートナ
   [仮想マシンのデプロイ]: ./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux2.png
   [クラスター作成の流れ図]: ./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux4.png
   [Azure 上の Linux における SSH の使用方法]: http://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/ssh-into-linux/
-  [Generating SSH Key Pair for Linux VM Deployment on Windows Azure (Windows Azure 上の Linux VM デプロイ用の SSH キー ペアの生成)]: http://blogs.msdn.com/b/hanuk/archive/2012/06/07/generating-ssh-key-pair-for-linux-vm-deployment-on-windows-azure.aspx
   [Linux を実行する仮想マシンの作成]: http://www.windowsazure.com/ja-jp/manage/linux/tutorials/virtual-machine-from-gallery/
   [Linux を実行する仮想マシンのイメージをキャプチャする方法]: https://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/capture-an-image/
   []: http://wiki.apache.org/cassandra/MultinodeCluster
   [1]: http://wiki.apache.org/cassandra/GettingStarted
   [cassandra-client]: https://github.com/racker/node-cassandra-client
   [行と列]: ./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux3.png
-  [Cassandra Query Language (CQL)]: http://cassandra.apache.org/doc/cql/CQL.html

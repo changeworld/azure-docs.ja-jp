@@ -1,6 +1,6 @@
 <properties linkid="develop-java-sql-azure" urlDisplayName="SQL Database" pageTitle="How to use SQL Azure (Java) - Azure feature guide" metaKeywords="" description="Learn how to use the Azure SQL Database from Java code. " metaCanonical="" services="sql-database" documentationCenter="Java" title="How to Use Azure SQL Database in Java" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" videoId="" scriptId="" />
 
-<tags ms.service="sql-database" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm"></tags>
+<tags ms.service="sql-database" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
 
 # Java での Azure SQL データベースの使用方法
 
@@ -87,12 +87,12 @@ Java コードで Azure SQL データベースを使用するには、Azure SQL 
 7.  これで、この値をコード ファイルに貼り付けて、次の形式の接続文字列を作成できるようになりました。*your\_server* (2 か所) を、前の手順でコピーしたテキストに置き換え、*your\_password* を、SQL データベース アカウントの作成時に指定したパスワードの値に置き換えます (さらに、**gettingstarted** と **MySQLAdmin** を使用しない場合は、**database=** と **user=** に設定された値もそれぞれ置き換える)。
 
     String connectionString =
-     "jdbc:sqlserver://*your\_server*.database.windows.net:1433" + ";" +  
-     "database=gettingstarted" + ";" + 
-     "user=MySQLAdmin@*your_server*" + ";" +  
-     "password=*your\_password*" + ";" +  
+     "jdbc:sqlserver://*your\_server*.database.windows.net:1433" + ";" +
+     "database=gettingstarted" + ";" +
+     ["user=MySQLAdmin@\*your\_server\*]["user=MySQLAdmin@\*your\_server\*]" + ";" +
+     "password=*your\_password*" + ";" +
      "encrypt=true" + ";" +
-     "hostNameInCertificate=\*.int.mscds.com" + ";" +  
+     "hostNameInCertificate=\*.int.mscds.com" + ";" +
      "loginTimeout=30";
 
 この文字列はこのガイドで後で実際に使用します。これで、接続文字列を決定する手順がわかりました。さらに、アプリケーションの要件によっては、**encrypt** および **hostNameInCertificate** 設定の使用が不要になったり、**loginTimeout** 設定の変更が必要になったりします。
@@ -107,7 +107,7 @@ Java コードで Azure SQL データベースを使用するには、Azure SQL 
 6.  **[構成]** をクリックします。
 7.  **[使用できる IP アドレス]** で、新しい IP ルールの名前を入力します。IP アドレスの開始と終了の範囲を指定します。参考までに、ここでは現在のクライアント IP アドレスを示しています。次の例では、1 つのクライアント IP アドレスにアクセスを許可しています (IP アドレスは実際のものと異なる)。
 
-    ![使用できる IP アドレス ダイアログ ボックス][使用できる IP アドレス ダイアログ ボックス]
+    ![使用できる IP アドレス][使用できる IP アドレス]
 
 8.  完了ボタンをクリックします。これで、指定した IP アドレスはデータベース サーバーへのアクセスが許可されます。
 
@@ -117,7 +117,7 @@ Java コードで Azure SQL データベースを使用するには、Azure SQL 
 2.  **HelloSQLAzure.java** という名前の Java クラス ファイルをプロジェクトに追加します。
 3.  **Microsoft JDBC Driver for SQL Server** をビルド パスに追加します。
 
-   Eclipse を使用している場合:
+Eclipse を使用している場合:
 
     1. Within Eclipse's Project Explorer, right-click the **HelloSQLAzure** project and click **Properties**.
     2. In the left-hand pane of the **Properties** dialog, click **Java Build Path**.
@@ -724,17 +724,12 @@ Microsoft JDBC Driver for SQL Server の詳細については、「[JDBC ドラ�
   [テーブルを削除するには]: #to_drop_table
   [Azure 展開内での Java からの SQL データベースの使用]: #using_in_azure
   [次のステップ]: #nextsteps
-  [ガイドラインと制限事項 (SQL データベース)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff394102.aspx
-  [Installing the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies) (Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) のインストール)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690946.aspx
-  [http://www.microsoft.com/ja-jp/download/details.aspx?id=11774]: http://www.microsoft.com/ja-jp/download/details.aspx?id=11774
   [1]: https://manage.windowsazure.com
   [新しい SQL データベースの作成]: ./media/sql-data-java-how-to-use-sql-database/WA_New.png
   [SQL データベースのカスタム作成]: ./media/sql-data-java-how-to-use-sql-database/WA_SQL_DB_Create.png
   [SQL データベースの設定]: ./media/sql-data-java-how-to-use-sql-database/WA_CustomCreate_1.png
   [SQL データベース サーバーの設定]: ./media/sql-data-java-how-to-use-sql-database/WA_CustomCreate_2.png
   [JDBC 接続文字列の決定]: ./media/sql-data-java-how-to-use-sql-database/WA_SQL_JDBC_ConnectionString.png
-  ["user=MySQLAdmin@\*your\_server\*]: mailto:"user=MySQLAdmin@*your_server*
-  [使用できる IP アドレス ダイアログ ボックス]: ./media/sql-data-java-how-to-use-sql-database/WA_Allowed_IPs.png
-  [Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) を使用した Hello World アプリケーションの作成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690944.aspx
+  [使用できる IP アドレス]: ./media/sql-data-java-how-to-use-sql-database/WA_Allowed_IPs.png
   [JDBC ドライバーの概要]: http://msdn.microsoft.com/ja-jp/library/ms378749.aspx
   [Windows Azure SQL データベースの概要]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336241.aspx

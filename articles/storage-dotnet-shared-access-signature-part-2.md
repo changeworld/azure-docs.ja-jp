@@ -1,10 +1,10 @@
 <properties linkid="manage-services-storage-net-shared-access-signature-part-2" urlDisplayName="" pageTitle="Create and use a SAS with the Blob Service | Microsoft Azure" metaKeywords="Azure blob, shared access signatures, stored access policy" description="Explore generating and using shared access signatures with the Blob service" metaCanonical="" services="storage" documentationCenter="" title="Part 2: Create and Use a SAS with the Blob Service" solutions="" authors="tamram" manager="mbaldwin" editor="cgronlun" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tamram"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
 # 共有アクセス署名、パート 2:BLOB サービスによる SAS の作成および使用
 
-このチュートリアルの[第 1 部][] では、共有アクセス署名 (SAS) を紹介し、そのベスト プラクティスについて説明しました。第 2 部では、Azure BLOB サービスで共有アクセス署名を生成し、使用する方法を説明します。例は C# で記述され、Azure .NET 用ストレージ クライアント ライブラリを利用しています。説明しているシナリオには、共有アクセス署名を使用する場合の次の側面が含まれます。
+このチュートリアルの[第 1 部][第 1 部] では、共有アクセス署名 (SAS) を紹介し、そのベスト プラクティスについて説明しました。第 2 部では、Azure BLOB サービスで共有アクセス署名を生成し、使用する方法を説明します。例は C# で記述され、Azure .NET 用ストレージ クライアント ライブラリを利用しています。説明しているシナリオには、共有アクセス署名を使用する場合の次の側面が含まれます。
 
 -   コンテナーでの共有アクセス署名の生成
 -   BLOB での共有アクセス署名の生成
@@ -17,11 +17,11 @@
 
 # パート 1: コンソール アプリケーションの作成と共有アクセス署名の生成
 
-まず、Azure .NET 用ストレージ クライアント ライブラリがインストールされていることを確認します。クライアント ライブラリの最新アセンブリを含む [NuGet パッケージ][]をインストールできます。最新の修正プログラムが確実に含まれるように、この方法をお勧めします。また、[Azure SDK for .NET][] の最新バージョンの一部として、クライアント ライブラリをダウンロードすることもできます。
+まず、Azure .NET 用ストレージ クライアント ライブラリがインストールされていることを確認します。クライアント ライブラリの最新アセンブリを含む [NuGet パッケージ][NuGet パッケージ]をインストールできます。最新の修正プログラムが確実に含まれるように、この方法をお勧めします。また、[Azure SDK for .NET][Azure SDK for .NET] の最新バージョンの一部として、クライアント ライブラリをダウンロードすることもできます。
 
 Visual Studio で、新しい Windows コンソール アプリケーションを作成し、**GenerateSharedAccessSignatures** という名前を付けます。次の方法のいずれかを使用して、**Microsoft.WindowsAzure.Configuration.dll** および **Microsoft.WindowsAzure.Storage.dll** への参照を追加します。
 
--   NuGet パッケージをインストールする場合は、まず、[Visual Studio 用 NuGet パッケージ マネージャー拡張機能][]をインストールします。Visual Studio で、**[プロジェクト]、[NuGet パッケージの管理]** の順に選択し、オンラインで "**Azure のストレージ**" を検索して、見つかったインストール手順に従います。
+-   NuGet パッケージをインストールする場合は、まず、[Visual Studio 用 NuGet パッケージ マネージャー拡張機能][Visual Studio 用 NuGet パッケージ マネージャー拡張機能]をインストールします。Visual Studio で、**[プロジェクト]、[NuGet パッケージの管理]** の順に選択し、オンラインで "**Azure のストレージ**" を検索して、見つかったインストール手順に従います。
 -   または、インストールした Azure SDK でアセンブリを探し、そのアセンブリへの参照を追加することもできます。
 
 Program.cs ファイルの先頭に、次の **using** ステートメントを追加します。
@@ -273,7 +273,7 @@ BLOB を作成し、共有アクセス署名を生成する新しいメソッド
 
 GenerateSharedAccessSignatures コンソール アプリケーションを実行すると、コンソール ウィンドウに次のような出力が表示されます。これが、チュートリアルの第 2 部で使用する共有アクセス署名です。
 
-![sas-console-output-1][]
+![sas-console-output-1][sas-console-output-1]
 
 # パート 2: コンソール アプリケーションの作成と共有アクセス署名のテスト
 
@@ -508,24 +508,23 @@ Program.cs ファイルの先頭に、次の **using** ステートメントを�
 
 コンソール アプリケーションを実行し、出力で、どの署名に対してどの操作が許可されているかを確認します。コンソール ウィンドウでの出力は、次のようになります。
 
-![sas-console-output-2][]
+![sas-console-output-2][sas-console-output-2]
 
 # 次のステップ
 
 [共有アクセス署名、パート 1:SAS モデルについて][第 1 部]
 
-[Microsoft Azure ストレージ リソースへのアクセスの管理][]
+[Microsoft Azure ストレージ リソースへのアクセスの管理][Microsoft Azure ストレージ リソースへのアクセスの管理]
 
-[共有アクセス署名によるアクセスの委任 (REST API) に関するページ][]
+[共有アクセス署名によるアクセスの委任 (REST API) に関するページ][共有アクセス署名によるアクセスの委任 (REST API) に関するページ]
 
-[テーブルおよびキュー SAS についての MSDN ブログ][]
+[テーブルおよびキュー SAS についての MSDN ブログ][テーブルおよびキュー SAS についての MSDN ブログ]
 
   [第 1 部]: ../storage-dotnet-shared-access-signature-part-1/
   [NuGet パッケージ]: http://nuget.org/packages/WindowsAzure.Storage/ "NuGet package"
-  [Azure SDK for .NET]: http://www.windowsazure.com/en-us/downloads/
+  [Azure SDK for .NET]: http://www.windowsazure.com/ja-jp/downloads/
   [Visual Studio 用 NuGet パッケージ マネージャー拡張機能]: http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c
   [sas-console-output-1]: ./media/storage-dotnet-shared-access-signature-part-2/sas-console-output-1.PNG
   [sas-console-output-2]: ./media/storage-dotnet-shared-access-signature-part-2/sas-console-output-2.PNG
-  [Microsoft Azure ストレージ リソースへのアクセスの管理]: http://msdn.microsoft.com/en-us/library/windowsazure/ee393343.aspx
-  [共有アクセス署名によるアクセスの委任 (REST API) に関するページ]: http://msdn.microsoft.com/en-us/library/windowsazure/ee395415.aspx
+  [Microsoft Azure ストレージ リソースへのアクセスの管理]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee393343.aspx
   [テーブルおよびキュー SAS についての MSDN ブログ]: http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx

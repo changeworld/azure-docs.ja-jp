@@ -1,6 +1,6 @@
 <properties linkid="dev-net-how-to-autoscaling" urlDisplayName="Autoscaling" pageTitle="Use the autoscaling application block (.NET) - Azure" metaKeywords="Azure autoscaling, Azure autoscaling C#, Azure autoscaling .NET" description="Learn how to use the Autoscaling Application for Azure. Code samples are written in C# and use the .NET API." metaCanonical="" services="cloud-services" documentationCenter=".NET" title="How to Use the Autoscaling Application Block" authors="timlt" solutions="" manager="timlt" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="timlt"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="timlt" />
 
 # オートスケーリング アプリケーション ブロックの使用方法
 
@@ -379,6 +379,3 @@ Visual Studio で、規則ファイルが出力フォルダーにコピーされ
   [通知と手動スケーリングの使用]: http://msdn.microsoft.com/ja-jp/library/hh680885(PandP.50).aspx
   [スケール グループの定義]: http://msdn.microsoft.com/ja-jp/library/hh680902(PandP.50).aspx
   [Windows PowerShell でブロックを操作するための WASABiCmdlets の使用]: http://msdn.microsoft.com/ja-jp/library/hh680938(PandP.50).aspx
-  [Developer's Guide to the Enterprise Library 5.0 Integration Pack for Azure (Enterprise Library 5.0 Integration Pack for Azure 開発者ガイド)]: http://msdn.microsoft.com/ja-jp/library/hh680949(PandP.50).aspx
-  [How Sage Reduces Azure Hosting Costs Using Autoscaling (Sage がオートスケーリングを使って Azure のホスティング コストを削減した方法)]: http://msdn.microsoft.com/ja-jp/library/jj838716(PandP.50).aspx
-  [Reducing TechNet and MSDN hosting costs and environmental impact with autoscaling on Azure (Azure のオートスケーリングによる TechNet と MSDN のホスティング コストと環境への影響の軽減)]: http://msdn.microsoft.com/ja-jp/library/jj838718(PandP.50).aspx

@@ -1,6 +1,6 @@
 <properties linkid="Deploy_a_Secure_ASP.NET_Web_Forms_App_with_Membership_OAuth_and_SQL_Database_to_an_Azure_Web_Site" pageTitle="Deploy a Secure ASP.NET Web Forms App with Membership, OAuth, and SQL Database to an Azure Website" metaKeywords="Azure WebForms Hello World Tutorial, Azure Getting Started with WebForms Tutorial, Azure C# WebForms Hello World Tutorial, SQL Azure C# WebForms Tutorial" description="This tutorial shows you how to build a secure ASP.NET 4.5 Web Forms web app that incorporates a SQL Database and deploy the application to Azure." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Deploy a secure ASP.NET 4.5 Web Forms app to an Azure Website" authors="erikre"  solutions="" manager="wpickett" editor="mollybos"  />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="erikre"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="erikre" />
 
 # メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET Web フォーム アプリケーションを Azure の Web サイトにデプロイする
 
@@ -749,7 +749,6 @@ ASP.NET Web フォームの詳細については、ASP.NET Web サイトの「 [
   [Add Scaffold dialog box]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms13a.png
   [Add Web Forms Pages dialog box]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms13b.png
   [5]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms13c.png
-  [Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)]: http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx
   [Package Manager Console]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms13d.png
   [Contacts List Page]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms17.png
   [Project Properties]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms18.png
@@ -764,7 +763,6 @@ ASP.NET Web フォームの詳細については、ASP.NET Web サイトの「 [
   [Google - Sign in]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms21e.png
   [Project Default Service Account]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms21f.png
   [Register with your Google Account]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms21g.png
-  [ASP.NET Identity resource page (ASP.NET Identity リソース ページ)]: http://www.asp.net/identity
   [Publish menu option]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms22.png
   [7]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms22a.png
   [8]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms23.png
@@ -782,8 +780,6 @@ ASP.NET Web フォームの詳細については、ASP.NET Web サイトの「 [
   [ContactManager window]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms35.png
   [AspNetUserRoles data]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms36.png
   [14]: ./media/web-sites-dotnet-web-forms-secure/SecureWebForms37.png
-  [Learn About ASP.NET Web Forms (ASP.NET Web フォームについて学習する)]: http://www.asp.net/web-forms
   [Microsoft Azure のチュートリアルとガイド]: http://azure.microsoft.com/ja-jp/documentation/services/web-sites/#net
   [@RickAndMSFT]: https://twitter.com/RickAndMSFT
   [@blowdart]: https://twitter.com/blowdart
-  [Show Me How With Code (コードの使用方法)]: http://aspnet.uservoice.com/forums/228522-show-me-how-with-code

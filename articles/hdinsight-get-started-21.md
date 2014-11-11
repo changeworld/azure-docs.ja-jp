@@ -1,6 +1,6 @@
 <properties linkid="manage-services-hdinsight-get-started-hdinsight-hadoop" urlDisplayName="Get Started" pageTitle="Get started using Hadoop in HDInsight | Azure" metaKeywords="" description="Get started using Hadoop in HDInsight, a big data solution. Learn how to provision clusters, run hive jobs, and output data to Excel for analysis." metaCanonical="" services="hdinsight" documentationCenter="" title="Get started using Hadoop in HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
 
 # HDInsight で Hadoop 1.2 を使用する
 
@@ -197,9 +197,6 @@ Power Query for Excel アドインを使用すると、Excel に HDInsight の�
 -   [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)][Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)]
 -   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]
 
-  [Hadoop 2.2]: ../hdinsight-get-started "HDInsight で Hadoop 2.2 を使用する"
-  [Hadoop 2.4]: ../hdinsight-get-started-31 "HDInsight で Hadoop 2.4 を使用する"
-  [Hadoop 1.2]: ../hdinsight-get-started-21 "HDInsight で Hadoop 1.2 を使用する"
   [Apache Hadoop]: http://hadoop.apache.org/
   [HDInsight で提供されるクラスター バージョンの新機能]: ../hdinsight-component-versioning/
   [img-hdi-getstarted-video]: https://www.youtube.com/watch?v=Y4aNjnoeaHA&list=PLDrz-Fkcb9WWdY-Yp6D4fTC1ll_3lU-QS
@@ -215,7 +212,6 @@ Power Query for Excel アドインを使用すると、Excel に HDInsight の�
   [HDInsight クラスターのプロビジョニング]: ../hdinsight-provision-clusters/
   [Azure 管理ポータル]: https://manage.windowsazure.com/
   [HDI.StorageAccount.QuickCreate]: ./media/hdinsight-get-started/HDI.StorageAccount.QuickCreate.png
-  [How to Create a Storage Account (ストレージ アカウントの作成方法)]: ../storage-create-storage-account/
   [HDI.ClusterStatus]: ./media/hdinsight-get-started/HDI.ClusterStatus.png
   [HDI.CustomCreateCluster]: ./media/hdinsight-get-started/HDI.CustomCreateCluster.png
   [hdi.dashboard]: ./media/hdinsight-get-started/HDI.dashboard.png
@@ -229,6 +225,3 @@ Power Query for Excel アドインを使用すると、Excel に HDInsight の�
   [HDInsight での MapReduce の使用]: ../hdinsight-use-mapreduce
   [HDInsight での Hive の使用]: ../hdinsight-use-hive/
   [HDInsight での Pig の使用]: ../hdinsight-use-pig/
-  [Use Oozie with HDInsight (HDInsight での Oozie の使用)]: ../hdinsight-use-oozie/
-  [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
-  [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]: ../hdinsight-develop-deploy-java-mapreduce/

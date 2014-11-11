@@ -1,6 +1,6 @@
 <properties linkid="develop-python-web-app-with-django-mac" urlDisplayName="Web with Django" pageTitle="Python web app with Django on Mac - Azure tutorial" metaKeywords="" description="A tutorial that shows how to host a Django-based website on Azure using a Linux virtual machine." metaCanonical="" services="virtual-machines" documentationCenter="Python" title="Django Hello World Web Application (mac-linux)" authors="huvalo" solutions="" manager="" editor="" />
 
-<tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="vm-linux" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo"></tags>
+<tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="vm-linux" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo" />
 
 # Django Hello World Web アプリケーション (mac-linux)
 
@@ -19,7 +19,7 @@
 
 ![Azure で Hello World ページを表示するブラウザー ウィンドウ][Azure で Hello World ページを表示するブラウザー ウィンドウ]
 
-[WACOM.INCLUDE [create-account-and-vms-note][create-account-and-vms-note]]
+[WACOM.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
 
 ## Django をホストする Azure の仮想マシンの作成と構成
 
@@ -112,11 +112,8 @@ Ubuntu Linux VM はプレインストールされている Python 2.7 に付属�
 
 このチュートリアルが終了したら、新しく作成した Azure の仮想マシンをシャットダウンまたは削除して、他のチュートリアル用にリソースを解放し、Azure に対する利用料金の発生を回避します。
 
-  [Windows]: /ja-jp/develop/python/tutorials/web-app-with-django/ "Windows"
-  [Mac/Linux]: /ja-jp/develop/python/tutorials/django-hello-world-(maclinux)/ "Mac/Linux"
   [Azure で Hello World ページを表示するブラウザー ウィンドウ]: ./media/virtual-machines-python-django-web-app-linux/mac-linux-django-helloworld-browser.png
   [create-account-and-vms-note]: ../includes/create-account-and-vms-note.md
   [ここ]: /ja-jp/manage/linux/tutorials/virtual-machine-from-gallery/
   [エンドポイントの追加]: ./media/virtual-machines-python-django-web-app-linux/mac-linux-django-helloworld-add-endpoint.png
   [port80]: ./media/virtual-machines-python-django-web-app-linux/mac-linux-django-helloworld-port80.png
-  [Python Installation Guide (Python インストール ガイド)]: ../python-how-to-install/

@@ -1,6 +1,6 @@
 <properties linkid="script-xplat-intro" urlDisplayName="Microsoft Azure Cross-Platform Command-Line Interface" pageTitle="Using Microsoft Azure Cross-Platform Command-Line Interface with the Resource Manager" title="Using Microsoft Azure Cross-Platform Command-Line Interface with the Resource Manager" metaKeywords="windows azure cross-platform command-line interface Resource Manager, windows azure command-line resource manager, azure command-line resource manager, azure cli resource manager" description="Use the Microsoft Azure Cross-Platform Command-Line Interface with the Resource Manager" metaCanonical="http://www.windowsazure.com/ja-jp/script/xplat-cli-intro" umbracoNaviHide="0" disqusComments="1" editor="mollybos" manager="paulettm" documentationCenter="" solutions="" authors="larryfr" services="" />
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="command-line-interface" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr"></tags>
+<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="command-line-interface" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
 # リソース マネージャーでの Azure クロスプラットフォーム コマンドライン インターフェイスの使用
 
@@ -162,7 +162,5 @@ Microsoft では先ごろ、Microsoft Azure の新しい管理方法として、
 -   Azure クロスプラットフォーム コマンドライン インターフェイスの使用方法については、「[Microsoft Azure クロスプラットフォーム コマンドライン インターフェイスのインストールと構成][Microsoft Azure クロスプラットフォーム コマンドライン インターフェイスのインストールおよび構成]」を参照してください。
 -   リソース マネージャーで Windows Azure PowerShell を使用する方法の詳細については、「[リソース マネージャーでの Windows PowerShell の使用方法の概要][リソース マネージャーでの Windows PowerShell の使用方法の概要]」を参照してください。
 
-  [Windows PowerShell]: /ja-jp/documentation/articles/powershell-azure-resource-manager.md "Windows PowerShell"
-  [クロス プラットフォーム CLI]: /ja-jp/documentation/articles/xplat-cli-azure-resource-manager.md "クロス プラットフォーム CLI"
   [Microsoft Azure クロスプラットフォーム コマンドライン インターフェイスのインストールおよび構成]: /ja-jp/documentation/articles/xplat-cli/
   [リソース マネージャーでの Windows PowerShell の使用方法の概要]: http://go.microsoft.com/fwlink/?LinkId=394760

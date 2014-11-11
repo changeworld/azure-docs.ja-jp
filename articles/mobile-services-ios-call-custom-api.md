@@ -1,6 +1,6 @@
 <properties pageTitle="Call a custom API from an iOS app | Mobile Services" metaKeywords="" description="Learn how to define a custom API and then call it from an iOS app that uses Azure Mobile Services." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Call a custom API from the client" authors="krisragh"  solutions="" writer="krisragh" manager="" editor=""  />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="krisragh"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="krisragh" />
 
 # クライアントからのカスタム API 呼び出し
 
@@ -22,9 +22,9 @@
 
 ## <a name="define-custom-api"></a>カスタム API を定義する
 
-[WACOM.INCLUDE [mobile-services-create-custom-api][mobile-services-create-custom-api]]
+[WACOM.INCLUDE [mobile-services-create-custom-api](../includes/mobile-services-create-custom-api.md)]
 
-[WACOM.INCLUDE [mobile-services-ios-call-custom-api][mobile-services-ios-call-custom-api]]
+[WACOM.INCLUDE [mobile-services-ios-call-custom-api](../includes/mobile-services-ios-call-custom-api.md)]
 
 ## 次のステップ
 
@@ -39,14 +39,6 @@
 <!-- Anchors. --> 
 <!-- URLs. -->
 
-  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-call-custom-api "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-call-custom-api "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-call-custom-api "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/mobile-services-ios-call-custom-api "iOS"
-  [Android]: /ja-jp/documentation/articles/mobile-services-android-call-custom-api "Android"
-  [HTML]: /ja-jp/documentation/articles/mobile-services-html-call-custom-api "HTML"
-  [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-call-custom-api ".NET バックエンド"
-  [JavaScript バックエンド]: /ja-jp/documentation/articles/mobile-services-ios-call-custom-api "JavaScript バックエンド"
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started/
   [データの使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started-data/
   [カスタム API を定義する]: #define-custom-api

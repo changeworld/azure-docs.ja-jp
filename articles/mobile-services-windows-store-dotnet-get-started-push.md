@@ -1,6 +1,6 @@
 <properties pageTitle="Get started with push notifications (Windows Store) | Mobile Dev Center" metaKeywords="" description="Learn how to use Azure Mobile Services to send push notifications to your Windows Store app (legacy push)." metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services (legacy push)" authors="glenga" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/11/2014" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/11/2014" ms.author="glenga" />
 
 # モバイル サービスでのプッシュ通知の使用 (従来のプッシュ)
 
@@ -32,7 +32,7 @@
 
 ## <a name="register"></a><span class="short-header">アプリケーションの登録</span>プッシュ通知を追加し、アプリケーションを構成する
 
-[WACOM.INCLUDE [mobile-services-create-new-push-vs2013][mobile-services-create-new-push-vs2013]]
+[WACOM.INCLUDE [mobile-services-create-new-push-vs2013](../includes/mobile-services-create-new-push-vs2013.md)]
 
 1.  **[サービス]**、**[モバイル サービス]**、\<サービス名\> の順に展開し、生成されたコード ファイルを開きます。デバイスのインストール ID とチャネルを取得する **UploadChannel** メソッドを見つけ、このデータを新しい channels テーブルに挿入します。
 
@@ -59,7 +59,7 @@
 
 ## <a name="update-scripts"></a><span class="short-header">コードの更新</span>生成されたプッシュ通知コードを更新する
 
-[WACOM.INCLUDE [mobile-services-create-new-push-vs2013-2][mobile-services-create-new-push-vs2013-2]]
+[WACOM.INCLUDE [mobile-services-create-new-push-vs2013-2](../includes/mobile-services-create-new-push-vs2013-2.md)]
 
 ## <a name="test"></a><span class="short-header">アプリケーションのテスト</span>アプリケーションでプッシュ通知をテストする
 
@@ -67,7 +67,7 @@
 
 2.  アプリケーションで、**[Insert a TodoItem]** にテキストを入力し、**[Save]** をクリックします。
 
-    ![][]
+    ![][0]
 
     挿入が完了すると、アプリケーションは、WNS からプッシュ通知を受け取ります。
 
@@ -113,14 +113,6 @@
 
 
 
-  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-push "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-push "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-push "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/mobile-services-ios-get-started-push "iOS"
-  [Android]: /ja-jp/documentation/articles/mobile-services-android-get-started-push "Android"
-  [Appcelerator]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push "Appcelerator"
-  [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/ ".NET バックエンド"
-  [JavaScript バックエンド]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-push/ "JavaScript バックエンド"
   [通知ハブの使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push/
   [プッシュ通知用のアプリケーションを登録してモバイル サービスを構成する]: #register
   [生成されたプッシュ通知コードを更新する]: #update-scripts
@@ -130,7 +122,7 @@
   [mobile-services-create-new-push-vs2013]: ../includes/mobile-services-create-new-push-vs2013.md
   [モバイル サービスのサーバー スクリプトの操作に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=287178
   [mobile-services-create-new-push-vs2013-2]: ../includes/mobile-services-create-new-push-vs2013-2.md
-  []: ./media/mobile-services-windows-store-dotnet-get-started-push/mobile-quickstart-push1.png
+  [0]: ./media/mobile-services-windows-store-dotnet-get-started-push/mobile-quickstart-push1.png
   [1]: ./media/mobile-services-windows-store-dotnet-get-started-push/mobile-quickstart-push2.png
   [2]: /ja-jp/manage/services/notification-hubs/getting-started-windows-dotnet/
   [登録者への通知の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet/

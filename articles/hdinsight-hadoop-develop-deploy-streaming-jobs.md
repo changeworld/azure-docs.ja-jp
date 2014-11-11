@@ -1,6 +1,6 @@
 <properties linkid="manage-services-hdinsight-develop-hadoop-streaming-programs-for-hdinsight" urlDisplayName="" pageTitle="Develop C# Hadoop streaming programs for HDInsight | Azure" metaKeywords="hdinsight hdinsight development, hadoop development, hdinsight deployment, development, deployment, tutorial, MapReduce" description="Learn how to develop Hadoop streaming MapReduce programs in C#, and how to deploy them to Azure HDInsight." metaCanonical="" services="hdinsight" documentationCenter="" title="Develop C# Hadoop streaming programs for HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
 
 # Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)
 
@@ -10,18 +10,18 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
--   Azure HDInsight Emulator のインストール。手順については、「[HDInsight Emulator の概要][]」を参照してください。
--   エミュレーター コンピューターへの Azure PowerShell のインストール。手順については、「[Azure PowerShell のインストールおよび構成][]」を参照してください。
--   Azure サブスクリプションの入手。手順については、[購入オプション][]、[メンバー プラン][]、または[無料評価版][]に関するページを参照してください。
+-   Azure HDInsight Emulator のインストール。手順については、「[HDInsight Emulator の概要][HDInsight Emulator の概要]」を参照してください。
+-   エミュレーター コンピューターへの Azure PowerShell のインストール。手順については、「[Azure PowerShell のインストールおよび構成][Azure PowerShell のインストールおよび構成]」を参照してください。
+-   Azure サブスクリプションの入手。手順については、[購入オプション][購入オプション]、[メンバー プラン][メンバー プラン]、または[無料評価版][無料評価版]に関するページを参照してください。
 
 ## この記事の内容
 
--   [C# でワード カウント Hadoop ストリーミング プログラムを開発する][]
--   [エミュレーターでプログラムをテストする][]
--   [Azure BLOB ストレージにデータとアプリケーションをアップロードする][]
--   [Azure HDInsight で MapReduce プログラムを実行する][]
--   [MapReduce の結果を取得する][]
--   [次のステップ][]
+-   [C# でワード カウント Hadoop ストリーミング プログラムを開発する][C# でワード カウント Hadoop ストリーミング プログラムを開発する]
+-   [エミュレーターでプログラムをテストする][エミュレーターでプログラムをテストする]
+-   [Azure BLOB ストレージにデータとアプリケーションをアップロードする][Azure BLOB ストレージにデータとアプリケーションをアップロードする]
+-   [Azure HDInsight で MapReduce プログラムを実行する][Azure HDInsight で MapReduce プログラムを実行する]
+-   [MapReduce の結果を取得する][MapReduce の結果を取得する]
+-   [次のステップ][次のステップ]
 
 ## <a name="develop"></a>C# でワード カウント Hadoop ストリーミング プログラムを開発する
 
@@ -144,7 +144,7 @@ Mapper と Reducer の実行可能ファイルは次の場所にあります。
 4.  ジョブの状態を確認する
 5.  ジョブの結果を取得する
 
-HDInsight Emulator は既定のファイル システムとして HDFS を使用します。必要に応じて、Azure BLOB ストレージを使用するように HDInsight Emulator を構成することもできます。詳細については、「[HDInsight Emulator の概要][1]」を参照してください。このセクションでは、HDFS copyFromLocal コマンドを使用して、ファイルをアップロードします。次のセクションでは、Azure PowerShell を使用してファイルをアップロードする方法について説明します。その他の方法については、「[HDInsight へのデータのアップロード][]」を参照してください。
+HDInsight Emulator は既定のファイル システムとして HDFS を使用します。必要に応じて、Azure BLOB ストレージを使用するように HDInsight Emulator を構成することもできます。詳細については、「[HDInsight Emulator の概要][1]」を参照してください。このセクションでは、HDFS copyFromLocal コマンドを使用して、ファイルをアップロードします。次のセクションでは、Azure PowerShell を使用してファイルをアップロードする方法について説明します。その他の方法については、「[HDInsight へのデータのアップロード][HDInsight へのデータのアップロード]」を参照してください。
 
 このチュートリアルでは、次のフォルダー構造を使用します。
 
@@ -481,13 +481,13 @@ Azure HDInsight は、既定のファイル システムとして Azure BLOB ス
 
         PowerShell -File <FileName> -ExecutionPolicy RemoteSigned
 
-8.  プロンプトが表示されたら、HDInsight クラスターのユーザー名とパスワードを入力します。スクリプトの最後でクラスターを削除し、ユーザー名とパスワードが必要なくなるため、ユーザー名とパスワードとして任意の文字列を使用できます。資格情報の入力を求めないようにする場合は、[Windows PowerShell でのパスワード、セキュリティ保護された文字列、資格情報の使用][]に関するページを参照してください。
+8.  プロンプトが表示されたら、HDInsight クラスターのユーザー名とパスワードを入力します。スクリプトの最後でクラスターを削除し、ユーザー名とパスワードが必要なくなるため、ユーザー名とパスワードとして任意の文字列を使用できます。資格情報の入力を求めないようにする場合は、[Windows PowerShell でのパスワード、セキュリティ保護された文字列、資格情報の使用][Windows PowerShell でのパスワード、セキュリティ保護された文字列、資格情報の使用]に関するページを参照してください。
 
-Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サンプルについては、「[プログラムによる Hadoop ジョブの送信][]」を参照してください。
+Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サンプルについては、「[プログラムによる Hadoop ジョブの送信][プログラムによる Hadoop ジョブの送信]」を参照してください。
 
 ## <a name="retrieve"></a>MapReduce ジョブの出力を取得する
 
-このセクションでは、出力をダウンロードして表示する方法を示します。Excel で結果を表示する方法については、「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][]」と「[Power Query を使用した Excel から HDInsight への接続][]」を参照してください。
+このセクションでは、出力をダウンロードして表示する方法を示します。Excel で結果を表示する方法については、「[Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続]」と「[Power Query を使用した Excel から HDInsight への接続][Power Query を使用した Excel から HDInsight への接続]」を参照してください。
 
 **出力を取得するには**
 
@@ -514,20 +514,20 @@ Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サン�
 
 このチュートリアルでは、Hadoop ストリーミング MapReduce ジョブを作成する方法、HDInsight Emulator でアプリケーションをテストする方法、HDInsight クラスターをプロビジョニングしてクラスターで MapReduce を実行する PowerShell スクリプトを記述する方法について説明しました。詳細については、次の記事を参照してください。
 
--   [Azure HDInsight の概要][]
--   [HDInsight Emulator の概要][]
--   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][]
--   [HDInsight での Azure BLOB ストレージの使用][]
--   [PowerShell を使用した HDInsight の管理][]
--   [HDInsight へのデータのアップロード][]
--   [HDInsight での Hive の使用][]
--   [HDInsight での Pig の使用][]
+-   [Azure HDInsight の概要][Azure HDInsight の概要]
+-   [HDInsight Emulator の概要][HDInsight Emulator の概要]
+-   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]
+-   [HDInsight での Azure BLOB ストレージの使用][HDInsight での Azure BLOB ストレージの使用]
+-   [PowerShell を使用した HDInsight の管理][PowerShell を使用した HDInsight の管理]
+-   [HDInsight へのデータのアップロード][HDInsight へのデータのアップロード]
+-   [HDInsight での Hive の使用][HDInsight での Hive の使用]
+-   [HDInsight での Pig の使用][HDInsight での Pig の使用]
 
   [HDInsight Emulator の概要]: ../hdinsight-get-started-emulator/
   [Azure PowerShell のインストールおよび構成]: ../install-configure-powershell/
-  [購入オプション]: http://azure.microsoft.com/en-us/pricing/purchase-options/
-  [メンバー プラン]: http://azure.microsoft.com/en-us/pricing/member-offers/
-  [無料評価版]: http://azure.microsoft.com/en-us/pricing/free-trial/
+  [購入オプション]: http://azure.microsoft.com/ja-jp/pricing/purchase-options/
+  [メンバー プラン]: http://azure.microsoft.com/ja-jp/pricing/member-offers/
+  [無料評価版]: http://azure.microsoft.com/ja-jp/pricing/free-trial/
   [C# でワード カウント Hadoop ストリーミング プログラムを開発する]: #develop
   [エミュレーターでプログラムをテストする]: #test
   [Azure BLOB ストレージにデータとアプリケーションをアップロードする]: #upload
@@ -541,7 +541,6 @@ Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サン�
   [Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続]: ../hdinsight-connect-excel-hive-ODBC-driver/
   [Power Query を使用した Excel から HDInsight への接続]: ../hdinsight-connect-excel-power-query/
   [Azure HDInsight の概要]: ../hdinsight-get-started/
-  [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]: ../hdinsight-develop-deploy-java-mapreduce/
   [HDInsight での Azure BLOB ストレージの使用]: ../hdinsight-use-blob-storage/
   [PowerShell を使用した HDInsight の管理]: ../hdinsight-administer-use-powershell/
   [HDInsight での Hive の使用]: ../hdinsight-use-hive/

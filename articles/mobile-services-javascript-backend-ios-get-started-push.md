@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-get-started-with-push-ios" urlDisplayName="Get Started with Push (iOS)" pageTitle="Get started with push notifications (iOS) | Mobile Dev Center" metaKeywords="" description="Learn how to use Azure Mobile Services to send push notifications to your iOS app." metaCanonical="http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet/" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" solutions="" manager="dwrede" editor="" authors="krisragh" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="krisragh"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="krisragh" />
 
 # モバイル サービスでのプッシュ通知の使用
 
@@ -33,11 +33,11 @@
 
 このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用][モバイル サービスの使用]」を完了している必要があります。
 
-[WACOM.INCLUDE [Enable Apple Push Notifications][Enable Apple Push Notifications]]
+[WACOM.INCLUDE [Enable Apple Push Notifications](../includes/enable-apple-push-notifications.md)]
 
 ## プッシュ要求を送信するようにモバイル サービスを構成する
 
-[WACOM.INCLUDE [mobile-services-apns-configure-push][mobile-services-apns-configure-push]]
+[WACOM.INCLUDE [mobile-services-apns-configure-push](../includes/mobile-services-apns-configure-push.md)]
 
 ## アプリケーションにプッシュ通知を追加する
 
@@ -110,7 +110,7 @@
 
 1.  管理ポータルで、**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[todoitem]** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。
 
@@ -189,14 +189,6 @@
 
 
 
-  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/mobile-services-javascript-backend-ios-get-started-push "iOS"
-  [Android]: /ja-jp/documentation/articles/mobile-services-javascript-backend-android-get-started-push "Android"
-  [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-push/ ".NET バックエンド"
-  [JavaScript バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-push/ "JavaScript バックエンド"
-  [Get started with push notifications (legacy) (プッシュ通知の使用 (従来))]: /ja-jp/documentation/articles/mobile-services-ios-get-started-push/
   [証明書の署名要求を生成する]: #certificates
   [アプリケーションを登録し、プッシュ通知を有効にする]: #register
   [アプリケーションのプロビジョニング プロファイルを作成する]: #profile
@@ -209,7 +201,7 @@
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started
   [Enable Apple Push Notifications]: ../includes/enable-apple-push-notifications.md
   [mobile-services-apns-configure-push]: ../includes/mobile-services-apns-configure-push.md
-  []: ./media/mobile-services-ios-get-started-push/mobile-portal-data-tables.png
+  [0]: ./media/mobile-services-ios-get-started-push/mobile-portal-data-tables.png
   [1]: ./media/mobile-services-ios-get-started-push/mobile-insert-script-push2.png
   [apns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=272333
   [2]: ./media/mobile-services-ios-get-started-push/mobile-quickstart-push1-ios.png
@@ -217,9 +209,7 @@
   [4]: ./media/mobile-services-ios-get-started-push/mobile-quickstart-push3-ios.png
   [5]: ./media/mobile-services-ios-get-started-push/mobile-quickstart-push4-ios.png
   [認証されたユーザーへのプッシュ通知の送信]: /ja-jp/documentation/articles/mobile-services-javascript-backend-ios-push-notifications-app-users/
-  [Send broadcast notifications to subscribers (登録者へのブロードキャスト通知の送信)]: /ja-jp/documentation/articles/notification-hubs-ios-send-breaking-news/
   [データの使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started-data
   [認証の使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started-users
   [Windows Azure 通知ハブとは]: /ja-jp/documentation/articles/notification-hubs-overview/
-  [Mobile Services Objective-C how-to conceptual reference (Mobile Services Objective-C の使用方法の概念リファレンス)]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
   [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293

@@ -1,6 +1,6 @@
 <properties linkid="manage-services-how-to-create-websites" urlDisplayName="How to create" pageTitle="How to create websites - Azure service management" metaKeywords="Azure creating website, Azure deleting website" description="Learn how to create a website using the Azure Management Portal." metaCanonical="" services="web-sites" documentationCenter="" title="How to Create and Deploy a Website" authors="cephalin" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin" />
 
 # Web サイトを作成する方法
 
@@ -59,7 +59,7 @@ Azure で Web サイトを作成するには、次の手順に従います。
 
 ## <a name="howtocreatefromgallery"></a>方法: ギャラリーからの Web サイトの作成
 
-[WACOM.INCLUDE [website-from-gallery][website-from-gallery]]
+[WACOM.INCLUDE [website-from-gallery](../includes/website-from-gallery.md)]
 
 ## <a name="deleteawebsite"></a>方法: Web サイトの削除
 

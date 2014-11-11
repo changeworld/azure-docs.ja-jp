@@ -1,6 +1,6 @@
 <properties pageTitle="Use Mobile Services to upload images to blob storage (Windows Store) | Mobile Services" metaKeywords="" description="Learn how to use Mobile Services to upload images to Azure Blob Storage and access the images from your Windows Store app." metaCanonical="" services="mobile-services,storage" documentationCenter="Mobile" title="Upload images to Azure Storage by using Mobile Services" authors="glenga" solutions="mobile" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # モバイル サービスを使用した Azure ストレージへのイメージのアップロード
 
@@ -35,7 +35,7 @@ SAS を使用して Blob ストレージにイメージをアップロードで�
 
 2.  左側のウィンドウで、**[オンライン]** カテゴリを選択し、`WindowsAzure.Storage` を探します。**Azure Storage** パッケージで **[インストール]** をクリックし、使用許諾契約に同意します。
 
-    ![][]
+    ![][0]
 
     これにより、Azure のストレージ サービス用のクライアント ライブラリがプロジェクトに追加されます。
 
@@ -43,9 +43,9 @@ SAS を使用して Blob ストレージにイメージをアップロードで�
 
 ## <a name="update-scripts"></a>管理ポータルで登録されている挿入スクリプトを更新する
 
-[WACOM.INCLUDE [mobile-services-configure-blob-storage][mobile-services-configure-blob-storage]]
+[WACOM.INCLUDE [mobile-services-configure-blob-storage](../includes/mobile-services-configure-blob-storage.md)]
 
-[WACOM.INCLUDE [mobile-services-windows-store-dotnet-upload-to-blob-storage][mobile-services-windows-store-dotnet-upload-to-blob-storage]]
+[WACOM.INCLUDE [mobile-services-windows-store-dotnet-upload-to-blob-storage](../includes/mobile-services-windows-store-dotnet-upload-to-blob-storage.md)]
 
 ## <a name="next-steps"> </a>次のステップ
 
@@ -69,17 +69,13 @@ SAS を使用して Blob ストレージにイメージをアップロードで�
 
 
 
-  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-upload-data-blob-storage "Windows ストア C#"
-  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-upload-data-blob-storage "Windows Phone"
-  [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage ".NET バックエンド"
-  [JavaScript バックエンド]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-upload-data-blob-storage "JavaScript バックエンド"
   [ストレージ クライアント ライブラリのインストール]: #install-storage-client
   [SAS を生成する挿入スクリプトの更新]: #update-scripts
   [イメージをキャプチャするためのクライアント アプリケーションの更新]: #add-select-images
   [アプリケーションをテストするイメージのアップロード]: #test
   [Azure ストレージ アカウント]: /ja-jp/manage/services/storage/how-to-create-a-storage-account
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-get-started
-  []: ./media/mobile-services-windows-store-dotnet-upload-data-blob-storage/mobile-add-storage-nuget-package-dotnet.png
+  [0]: ./media/mobile-services-windows-store-dotnet-upload-data-blob-storage/mobile-add-storage-nuget-package-dotnet.png
   [mobile-services-configure-blob-storage]: ../includes/mobile-services-configure-blob-storage.md
   [mobile-services-windows-store-dotnet-upload-to-blob-storage]: ../includes/mobile-services-windows-store-dotnet-upload-to-blob-storage.md
   [SendGrid を使用したモバイル サービスからの電子メールの送信]: /ja-jp/develop/mobile/tutorials/send-email-with-sendgrid/

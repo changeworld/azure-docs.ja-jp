@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-twilio-for-voice-and-sms" pageTitle="Use Twilio for Voice and SMS Capabilities | Mobile Dev Center" metaKeywords="" description="Learn how to perform common tasks using the Twilio API with Azure Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="How to use Twilio for voice and SMS capabilities from Mobile Services" authors="MicrosoftHelp@twilio.com" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="MicrosoftHelp@twilio.com"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="MicrosoftHelp@twilio.com" />
 
 # モバイル サービスから音声および SMS 機能に Twilio を使用する方法
 
@@ -202,7 +202,7 @@ TwiML 応答を提供する方法をセットアップしたら、次のコー�
         });
     };
 
-[WACOM.INCLUDE [twilio\_additional\_services\_and\_next\_steps][twilio\_additional\_services\_and\_next\_steps]]
+[WACOM.INCLUDE [twilio_additional_services_and_next_steps](../includes/twilio_additional_services_and_next_steps.md)]
 
   [特別プラン]: http://ahoy.twilio.com/azure
   [Twilio の料金のページ]: http://www.twilio.com/pricing
@@ -220,11 +220,9 @@ TwiML 応答を提供する方法をセットアップしたら、次のコー�
   [番号の管理に関するページ]: https://www.twilio.com/user/account/phone-numbers/verified#
   [Twilio 電話番号のヘルプに関するページ]: https://www.twilio.com/help/faq/phone-numbers
   [モバイル サービスの使用]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started/
-  [Store Scripts in Source Control (ソース管理へのスクリプトの保存)]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/store-scripts-in-source-control/
   [モバイル サービス コンソール]: ./media/partner-twilio-mobile-services-how-to-use-voice-sms/twilio-kuduconsole.png
   []: http://www.twilio.com/docs/api/rest/making-calls
   [方法: 独自の Web サイトから TwiML 応答を返す]: #howto_provide_twiml_responses
   [URL http://twimlets.com/message]: http://twimlets.com/message
-  [twimlet\_message\_url\_hello\_world]: http://twimlets.com/message?Message%5B0%5D=Hello%20World
   [1]: https://www.twilio.com/docs/api/twiml
-  [twilio\_additional\_services\_and\_next\_steps]: ../includes/twilio_additional_services_and_next_steps.md
+  [twilio_additional_services_and_next_steps]: ../includes/twilio_additional_services_and_next_steps.md

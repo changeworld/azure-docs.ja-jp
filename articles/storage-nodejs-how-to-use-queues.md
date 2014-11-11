@@ -1,42 +1,42 @@
 <properties linkid="dev-nodejs-how-to-service-bus-queues" urlDisplayName="Queue Service" pageTitle="How to use the queue service (Node.js) | Microsoft Azure" metaKeywords="Azure Queue Service get messages Node.js" description="Learn how to use the Azure Queue service to create and delete queues, and insert, get, and delete messages. Samples written in Node.js." metaCanonical="" services="storage" documentationCenter="Node.js" title="How to Use the Queue Service from Node.js" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr" />
 
 # Node.js からキュー サービスを使用する方法
 
 このガイドでは、Windows Azure キュー サービスを使用して一般的なシナリオを実行する方法について説明します。
 サンプルは Node.js API を使用して記述されています。
 キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、**キューの作成および削除**の各シナリオについて説明します。
-キューの詳細については、「[次のステップ][]」のセクションを参照してください。
+キューの詳細については、「[次のステップ][次のステップ]」のセクションを参照してください。
 
 ## 目次
 
--   [キュー サービスとは][]
--   [概念][]
--   [Azure のストレージ アカウントの作成][]
--   [Node.js アプリケーションの作成][]
--   [アプリケーションのストレージへのアクセスの構成][]
--   [Azure のストレージ接続文字列の設定][]
--   [方法: キューを作成する][]
--   [方法: メッセージをキューに挿入する][]
--   [方法: 次のメッセージをピークする][]
--   [方法: 次のメッセージをデキューする][]
--   [方法: キューに配置されたメッセージの内容を変更する][]
--   [方法: メッセージをデキューするための追加オプション][]
--   [方法: キューの長さを取得する][]
--   [方法: キューを削除する][]
--   [方法: 共有アクセス署名を操作する][]
--   [次のステップ][]
+-   [キュー サービスとは][キュー サービスとは]
+-   [概念][概念]
+-   [Azure のストレージ アカウントの作成][Azure のストレージ アカウントの作成]
+-   [Node.js アプリケーションの作成][Node.js アプリケーションの作成]
+-   [アプリケーションのストレージへのアクセスの構成][アプリケーションのストレージへのアクセスの構成]
+-   [Azure のストレージ接続文字列の設定][Azure のストレージ接続文字列の設定]
+-   [方法: キューを作成する][方法: キューを作成する]
+-   [方法: メッセージをキューに挿入する][方法: メッセージをキューに挿入する]
+-   [方法: 次のメッセージをピークする][方法: 次のメッセージをピークする]
+-   [方法: 次のメッセージをデキューする][方法: 次のメッセージをデキューする]
+-   [方法: キューに配置されたメッセージの内容を変更する][方法: キューに配置されたメッセージの内容を変更する]
+-   [方法: メッセージをデキューするための追加オプション][方法: メッセージをデキューするための追加オプション]
+-   [方法: キューの長さを取得する][方法: キューの長さを取得する]
+-   [方法: キューを削除する][方法: キューを削除する]
+-   [方法: 共有アクセス署名を操作する][方法: 共有アクセス署名を操作する]
+-   [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [howto-queue-storage][]]
+[WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
 ## <a name="create-account"></a>Azure ストレージ アカウントの作成
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <a name="create-app"> </a>Node.js アプリケーションの作成
 
-空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][]、[Node.js クラウド サービスへのデプロイ][] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ][]に関するページを参照してください。
+空の Node.js アプリケーションを作成します。Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]、[Node.js クラウド サービスへのデプロイ][Node.js クラウド サービスへのデプロイ] (Windows PowerShell を使用)、または [WebMatrix による Web サイトの作成とデプロイ][WebMatrix による Web サイトの作成とデプロイ]に関するページを参照してください。
 
 ## <a name="configure-access"> </a>アプリケーションからストレージへのアクセスの構成
 
@@ -71,7 +71,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 
 azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT、AZURE\_STORAGE\_ACCESS\_KEY、および AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。これらの環境変数が設定されていない場合、**createQueueService** を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Web サイトの管理ポータルで環境変数を設定する例については、「[Azure テーブル サービスを使用する Node.js Web アプリケーション][]」を参照してください。
+Azure Web サイトの管理ポータルで環境変数を設定する例については、「[Azure テーブル サービスを使用する Node.js Web アプリケーション][Azure テーブル サービスを使用する Node.js Web アプリケーション]」を参照してください。
 
 ## <a name="create-queue"> </a>方法: キューを作成する
 
@@ -317,9 +317,9 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
 これで、キュー ストレージの基本を学習できました。さらに複雑な
 ストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   MSDN リファレンス: [Azure のデータの格納とアクセス][]
--   [Azure のストレージ チーム ブログ][]
--   GitHub の [Azure Storage SDK for Node][] リポジトリ
+-   MSDN リファレンス: [Azure のデータの格納とアクセス][Azure のデータの格納とアクセス]
+-   [Azure のストレージ チーム ブログ][Azure のストレージ チーム ブログ]
+-   GitHub の [Azure Storage SDK for Node][Azure Storage SDK for Node] リポジトリ
 
   [次のステップ]: #next-steps
   [キュー サービスとは]: #what-is
@@ -343,6 +343,6 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [Node.js クラウド サービスへのデプロイ]: /ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/
   [WebMatrix による Web サイトの作成とデプロイ]: /ja-jp/documentation/articles/web-sites-nodejs-use-webmatrix/
   [Azure テーブル サービスを使用する Node.js Web アプリケーション]: /ja-jp/documentation/articles/storage-nodejs-use-table-storage-web-site/
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
   [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node

@@ -1,6 +1,6 @@
 <properties linkid="develop-net-tutorials-multi-tier-web-site-5-worker-role-b" pageTitle="Azure Cloud Service Tutorial: Worker Role with Azure Storage Tables, Queues, and Blobs" metaKeywords="Azure tutorial, Azure storage tutorial, Azure multi-tier tutorial, Azure worker role tutorial, Azure blobs tutorial, Azure tables tutorial, Azure queues tutorial" description="Learn how to create a multi-tier app using ASP.NET MVC and Azure. The app runs in a cloud service, with web role and worker roles, and uses Azure storage tables, queues, and blobs." metaCanonical="" services="cloud-services,storage" documentationCenter=".NET" title="Azure Cloud Service Tutorial: ASP.NET MVC Web Role, Worker Role, Azure Storage Tables, Queues, and Blobs" authors="tdykstra,riande" solutions="" manager="wpickett" editor="mollybos" />
 
-<tags ms.service="cloud-services" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tdykstra,riande"></tags>
+<tags ms.service="cloud-services" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tdykstra,riande" />
 
 # Azure Email Service アプリケーションで使用するワーカー ロール B (電子メール送信) の作成 (5/5)
 
@@ -28,11 +28,11 @@
 
 1.  ソリューション エクスプローラーで、該当するクラウド サービス プロジェクトを右クリックして **[新しいワーカー ロール プロジェクト]** を選択します。
 
-    ![新しいワーカー ロール プロジェクト メニュー項目][]
+    ![新しいワーカー ロール プロジェクト メニュー項目][新しいワーカー ロール プロジェクト メニュー項目]
 
 2.  **[新しいロール プロジェクトの追加]** ダイアログ ボックスで **[Visual C#]** をクリックし、**[ワーカー ロール]** を選択します。プロジェクト名として「WorkerRoleB」と入力し、**[追加]** をクリックします。
 
-    ![新しいロール プロジェクトの追加 ダイアログ ボックス][]
+    ![新しいロール プロジェクトの追加 ダイアログ ボックス][新しいロール プロジェクトの追加 ダイアログ ボックス]
 
 ## <a name="addreference"></a>Web プロジェクトへの参照の追加
 
@@ -584,7 +584,6 @@ Azure クラウド サービスのオートスケーリングについては、�
   [ワーカー ロール B の起動時に実行するコードを追加]: #addcode
   [ワーカー ロール B のテスト]: #testing
   [次のステップ]: #nextsteps
-  [ 新しいワーカー ロール プロジェクト メニュー項目]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-worker-role-b/mtas-new-worker-role-project.png
   [新しいロール プロジェクトの追加 ダイアログ ボックス]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-worker-role-b/mtas-add-new-role-project-dialog.png
   [MvcWebRole への参照を追加]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-worker-role-b/mtas-worker-b-reference-manager.png
   [NuGet パッケージの管理]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-worker-role-b/mtas-worker-b-manage-nuget.png
@@ -596,23 +595,11 @@ Azure クラウド サービスのオートスケーリングについては、�
   [GetMessage]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee741827.aspx
   [表示タイムアウト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758454.aspx
   [GetMessages]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.storageclient.cloudqueue.getmessages.aspx
-  [SendGrid MultiAuth - Multiple Account Credentials (SendGrid MultiAuth - 複数のアカウント資格情報)]: http://support.sendgrid.com/entries/21658978-sendgrid-multiauth-multiple-account-credentials
   []: https://sendgrid.com/credentials
   [PhluffyFotos]: http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31
-  [Essential Knowledge for Windows Azure Storage (Windows Azure ストレージに関する基本知識)]: http://blogs.msdn.com/b/brunoterkaly/archive/2012/11/08/essential-knowledge-for-windows-azure-storage.aspx
-  [Essential Knowledge for Azure Table Storage (Azure テーブル ストレージに関する基本知識)]: http://blogs.msdn.com/b/brunoterkaly/archive/2012/11/08/essential-knowledge-for-azure-table-storage.aspx
-  [How to get the most out of Windows Azure Tables (Windows Azure テーブルの活用方法)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2010/11/06/how-to-get-most-out-of-windows-azure-tables.aspx
   [.NET でテーブル ストレージ サービスを使用する方法]: http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/table-services/
-  [Windows Azure Storage Client Library 2.0 Tables Deep Dive (Windows Azure ストレージ クライアント ライブラリ 2.0 のテーブルに関する詳細情報)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2012/11/06/windows-azure-storage-client-library-2-0-tables-deep-dive.aspx
-  [Real World:Designing a Scalable Partitioning Strategy for Azure Table Storage (リアル ワールド: Azure テーブル ストレージ用の拡張性が高いパーティション分割方法の設計)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh508997.aspx
-  [Queue-Centric Work Pattern (Building Real-World Cloud Apps with Windows Azure) (キューを中心とした作業パターン (Windows Azure で構築する実用的なクラウド アプリケーション))]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern
-  [Azure Queues and Azure Service Bus Queues Compared and Contrasted (Azure キューと Azure のサービス バス キューの比較)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh767287.aspx
-  [How to use the Queue Storage Service in .NET (.NET でキュー ストレージ サービスを使用する方法)]: /ja-jp/develop/net/how-to-guides/queue-service/
-  [Unstructured Blob Storage (Building Real-World Cloud Apps with Windows Azure) (非構造化 BLOB ストレージ (Windows Azure で構築する実用的なクラウド アプリケーション))]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage
   [.NET での Azure BLOB ストレージ サービスの使用方法]: /ja-jp/develop/net/how-to-guides/blob-storage/
   [オートスケーリング アプリケーション ブロックの使用方法]: /ja-jp/develop/net/how-to-guides/autoscaling/
-  [Autoscaling and Azure (オートスケーリングと Azure)]: http://msdn.microsoft.com/ja-jp/library/hh680945(v=PandP.50).aspx
-  [Building Elastic, Autoscalable Solutions with Azure (Azure で柔軟性の高いオートスケーリング ソリューションを構築)]: http://channel9.msdn.com/Events/WindowsAzureConf/2012/B04
   [Rick Anderson]: http://blogs.msdn.com/b/rickandy/
   [@blowdart]: https://twitter.com/blowdart
   [Cory Fowler]: http://blog.syntaxc4.net/

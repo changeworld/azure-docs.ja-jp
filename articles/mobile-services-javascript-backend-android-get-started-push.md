@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-get-started-with-push-js-vs2013" urlDisplayName="Get Started with Push (JS)" pageTitle="Get started with push notifications (Android JavaScript) | Mobile Dev Center" metaKeywords="" description="Learn how to use Azure Mobile Services to send push notifications to your Android JavaScript app." metaCanonical="http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet/" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="ricksal"  solutions="" writer="ricksal" manager="" editor=""   />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="ricksal"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="ricksal" />
 
 # <a name="getting-started-with-push"> </a>モバイル サービスでのプッシュ通知の使用
 
@@ -28,7 +28,7 @@
 
 > [WACOM.NOTE] この手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、[accounts.google.com][accounts.google.com] にアクセスしてください。
 
-[WACOM.INCLUDE [Enable GCM][Enable GCM]]
+[WACOM.INCLUDE [Enable GCM](../includes/mobile-services-enable-Google-cloud-messaging.md)]
 
 次に、この API キー値を使用して、モバイル サービスが GCM で認証し、アプリケーションの代わりにプッシュ通知を送信できるようにします。
 
@@ -36,7 +36,7 @@
 
 1.  [Azure の管理ポータル][Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[プッシュ]** タブをクリックし、前の手順で GCM から取得した **API キー**値を入力して、**[保存]** をクリックします。
 
@@ -54,7 +54,7 @@
 
 ### Android SDK バージョンの検証
 
-[WACOM.INCLUDE [Verify SDK][Verify SDK]]
+[WACOM.INCLUDE [Verify SDK](../includes/mobile-services-verify-android-sdk-version.md)]
 
 次の手順は、Google Play サービスをインストールすることです。Google Cloud Messaging には、マニフェストの **minSdkVersion** プロパティが準拠する必要がある、開発およびテストに関する最小 API レベル要件があります。
 
@@ -62,11 +62,11 @@
 
 ### プロジェクトへの Google Play Services の追加
 
-[WACOM.INCLUDE [Add Play Services][Add Play Services]]
+[WACOM.INCLUDE [Add Play Services](../includes/mobile-services-add-Google-play-services.md)]
 
 ### コードの追加
 
-[WACOM.INCLUDE [mobile-services-android-getting-started-with-push][mobile-services-android-getting-started-with-push]]
+[WACOM.INCLUDE [mobile-services-android-getting-started-with-push](../includes/mobile-services-android-getting-started-with-push.md)]
 
 ## <span id="update-scripts"></span></a>管理ポータルで登録されている挿入スクリプトを更新する
 
@@ -171,14 +171,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/mobile-services-javascript-backend-ios-get-started-push "iOS"
   [Android]: /ja-jp/documentation/articles/mobile-services-javascript-backend-android-get-started-push "Android"
-  [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/ ".NET バックエンド"
-  [JavaScript バックエンド]: /ja-jp/documentation/articles/mobile-services-javascript-backend-android-get-started-push/ "JavaScript バックエンド"
-  [プッシュ通知の使用 (従来のプッシュ)]: /ja-jp/documentation/articles/mobile-services-android-get-started-push/
   [Google Cloud Messaging を有効にする]: #register
   [モバイル サービスを構成する]: #configure
   [アプリケーションにプッシュ通知を追加する]: #add-push
@@ -189,7 +182,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
   [accounts.google.com]: http://go.microsoft.com/fwlink/p/?LinkId=268302
   [Enable GCM]: ../includes/mobile-services-enable-Google-cloud-messaging.md
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
+  [0]: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
   [このガイダンス]: http://go.microsoft.com/fwlink/p/?LinkId=391951
   [1]: ./media/mobile-services-android-get-started-push/mobile-push-tab-android.png
   [Verify SDK]: ../includes/mobile-services-verify-android-sdk-version.md

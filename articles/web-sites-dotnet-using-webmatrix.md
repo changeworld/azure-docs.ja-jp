@@ -1,6 +1,6 @@
 <properties linkid="develop-dotnet-website-with-webmatrix" urlDisplayName="Website with WebMatrix" pageTitle=".NET website with WebMatrix - Azure tutorials" metaKeywords="WebMatrix Azure, WebMatrix Azure, Azure web site WebMatrix, Azure website WebMatrix, Web Matrix Azure, WebMatrix Azure" description="Learn how to develop and deploy an Azure website with WebMatrix." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Develop and deploy a website with Microsoft WebMatrix" authors="cephalin" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin" />
 
 # Microsoft WebMatrix を使用して Web サイトを開発してデプロイする
 
@@ -12,7 +12,7 @@
 -   WebMatrix による組み込みテンプレートを使用してサイトを作成する方法
 -   カスタマイズした Web サイトを直接 WebMatrix から Azure にデプロイする方法
 
-[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## Azure へのサインイン
 
@@ -49,7 +49,7 @@
 
 1.  WebMatrix の左側にあるナビゲーション ウィンドウで、**[bakerysample]** フォルダーを展開します。
 
-    ![][]
+    ![][0]
 
 2.  ファイル名をダブルクリックして、*Order.cshtml* ページを開きます。
 
@@ -152,11 +152,10 @@ WebMatrix を使用してサイトを修正し、それを Azure Web サイト�
   [テンプレートからサイトを作成]: ./media/web-sites-dotnet-using-webmatrix/webmatrix-site-from-template-details.png
   [Azure でのサイトの作成]: ./media/web-sites-dotnet-using-webmatrix/webmatrix-site-from-template-azure.png
   [WebMatrix IDE]: ./media/web-sites-dotnet-using-webmatrix/howtowebmatrixide.png
-  []: ./media/web-sites-dotnet-using-webmatrix/website-with-webmatrix-sample-mod-1-1.png
+  [0]: ./media/web-sites-dotnet-using-webmatrix/website-with-webmatrix-sample-mod-1-1.png
   [1]: ./media/web-sites-dotnet-using-webmatrix/website-with-webmatrix-sample-mod-1-2.png
   [2]: ./media/web-sites-dotnet-using-webmatrix/website-with-webmatrix-sample-mod-1-3.png
   [3]: ./media/web-sites-dotnet-using-webmatrix/website-with-webmatrix-sample-mod-1-4.png
-  [Issues with Sending Email (メール送信関連の問題)]: http://go.microsoft.com/fwlink/?LinkId=253001#email
   [WebMatrix の発行のプレビュー]: ./media/web-sites-dotnet-using-webmatrix/howtopublishpreview.png
   [発行の完了]: ./media/web-sites-dotnet-using-webmatrix/howtopublished2.png
   [パン屋のサンプル サイト]: ./media/web-sites-dotnet-using-webmatrix/howtobakerysamplesite.png

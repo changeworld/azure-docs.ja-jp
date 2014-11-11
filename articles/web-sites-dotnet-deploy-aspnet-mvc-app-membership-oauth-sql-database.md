@@ -1,6 +1,6 @@
 <properties linkid="dev-net-tutorials-web-app-with-sql-azure-vs2013" urlDisplayName="Website with SQL Database" pageTitle="Deploy a Secure ASP.NET MVC app with Membership, OAuth, and SQL Database to an Azure Website" metaKeywords="Azure hello world tutorial, Azure getting started tutorial, SQL Database tutorial, Azure .NET hello world tutorial, Azure C# hello world tutorial, SQL Azure C# tutorial" description="Learn how to develop an ASP.NET MVC 5 website with a SQL Database back-end deploy it to Azure." metaCanonical="" services="web-sites,sql-database" documentationCenter=".NET" title="Deploy a Secure ASP.NET MVC 5 app with Membership, OAuth, and SQL Database to an Azure Website" authors="riande"  solutions="" writer="riande" manager="wpickett" editor="mollybos"  />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="riande"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="riande" />
 
 # メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC 5 アプリケーションを Azure の Web サイトにデプロイする
 
@@ -37,7 +37,7 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 -   [Azure にアプリケーションを展開する][1]
 -   [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [install-sdk-2013-only][install-sdk-2013-only]]
+[WACOM.INCLUDE [install-sdk-2013-only](../includes/install-sdk-2013-only.md)]
 
 localhost に新しい SSL 証明書を使用するには、[Visual Studio 2013 Update 2 RC][Visual Studio 2013 Update 2 RC] 以上をインストールする必要があります。
 
@@ -684,12 +684,12 @@ ASP.NET MVC については、[ASP.NET MVC 5 の基本について執筆した�
 <!-- bookmarks -->
 <!-- images-->
 
-  [前のチュートリアル]: /en-us/develop/net/tutorials/web-site-with-sql-database-vs2012/
+  [前のチュートリアル]: /ja-jp/develop/net/tutorials/web-site-with-sql-database-vs2012/
   [OAuth]: http://oauth.net/ "http://oauth.net/"
   [OpenID]: http://openid.net/
   [login page]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rxb.png
-  [MSDN サブスクライバーの特典を有効にする]: /en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
-  [無料評価版にサインアップ]: /en-us/pricing/free-trial/?WT.mc_id=A261C142F
+  [MSDN サブスクライバーの特典を有効にする]: /ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
+  [無料評価版にサインアップ]: /ja-jp/pricing/free-trial/?WT.mc_id=A261C142F
   [開発環境を設定する]: #setupdevenv
   [Azure 環境を設定する]: #bkmk_setupwindowsazure
   [ASP.NET MVC 5 アプリケーションを作成する]: #bkmk_createmvc4app
@@ -710,7 +710,6 @@ ASP.NET MVC については、[ASP.NET MVC 5 の基本について執筆した�
   [New Project in File menu]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/gs13newproj.png
   [New Project dialog box]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/GS13newprojdb.png
   [New ASP.NET Project dialog box]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss1.PNG
-  [\_Layout.cshtml in Solution Explorer]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/dntutmobile-createapp-004.png
   [code changes]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rs3.png
   [Web site running locally]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rr2.png
   [Publish in project context menu]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/GS13publish.png
@@ -726,7 +725,6 @@ ASP.NET MVC については、[ASP.NET MVC 5 の基本について執筆した�
   [New data ctx dlg]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss5.PNG
   [Code First Migrations]: http://msdn.microsoft.com/library/hh770484.aspx
   [Package Manager Console in Tools menu]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/SS6.png
-  [Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)]: http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx
   [Package Manager Console commands]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/dntutmobile-migrations-package-manager-console.png
   [MVC view of data]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rx2.png
   [拙著のチュートリアル]: http://www.asp.net/mvc/tutorials/mvc-5/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on
@@ -734,12 +732,10 @@ ASP.NET MVC については、[ASP.NET MVC 5 の基本について執筆した�
   [GOOG asking for permission]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss7.PNG
   [register]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss8.PNG
   [code image]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss24.PNG
-  [ASP.NET Identity resource page (ASP.NET Identity リソース ページ)]: http://curah.microsoft.com/55636/aspnet-identity
-  [WSAT]: http://msdn.microsoft.com/en-us/library/ms228053.aspx
+  [WSAT]: http://msdn.microsoft.com/ja-jp/library/ms228053.aspx
   [code]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss9.PNG
-  [Authorize]: http://msdn.microsoft.com/en-us/library/system.web.mvc.authorizeattribute.aspx
-  [RequireHttps]: http://msdn.microsoft.com/en-us/library/system.web.mvc.requirehttpsattribute.aspx
-  [Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性)]: http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx
+  [Authorize]: http://msdn.microsoft.com/ja-jp/library/system.web.mvc.authorizeattribute.aspx
+  [RequireHttps]: http://msdn.microsoft.com/ja-jp/library/system.web.mvc.requirehttpsattribute.aspx
   [4]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss10.PNG
   [5]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss11.PNG
   [img of code]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rr11.png
@@ -774,10 +770,8 @@ ASP.NET MVC については、[ASP.NET MVC 5 の基本について執筆した�
   [Connect to Server DLG]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rss1.png
   [13]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rs2.png
   [CAPTCHA]: http://www.asp.net/web-pages/tutorials/security/16-adding-security-and-membership
-  [Pretty social login buttons for ASP.NET MVC 5 (ASP.NET MVC 5 用ソーシャル ログイン ボタン)]: http://www.beabigrockstar.com/pretty-social-login-buttons-for-asp-net-mvc-5/
   [ASP.NET MVC 5 の基本について執筆したチュートリアル]: http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started
   [Entity Framework と MVC について取り上げたこちらのページ]: http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
   [@blowdart]: http://blogs.msdn.com/b/rickandy/
   [Rick Anderson]: https://twitter.com/RickAndMSFT
   [@RickAndMSFT]: https://twitter.com/blowdart
-  [Show Me How With Code (コードの使用方法)]: http://aspnet.uservoice.com/forums/228522-show-me-how-with-code

@@ -1,12 +1,12 @@
 <properties linkid="develop-media-services-tutorials-smooth-streaming-windows-store-app" urlDisplayName="Smooth Streaming Windows Store App" pageTitle="Smooth Streaming Windows Store App - Azure .NET tutorials" metaKeywords="" description="Learn how to use Azure Media Services to create a C# Windows Store application with a XML MediaElement control to playback Smooth Stream content." metaCanonical="" services="media-services" documentationCenter="" title="How to Build a Smooth Streaming Windows Store Application" authors="Michael Greenn" solutions="" manager="" editor="" />
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="Michael Greenn"></tags>
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="Michael="" Greenn" />
 
 # スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法
 
-Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマンドおよびライブ スムーズ ストリーミング コンテンツの再生が可能な Windows ストア アプリケーションを作成できます。スムーズ ストリーミング コンテンツの基本再生機能に加えて、SDK では、Microsoft PlayReady Protection、品質レベル制限、ライブ DVR、オーディオ ストリーム切り替え、ステータス更新 (品質レベルの変化など) のリスニング、エラー イベントなどの豊富な機能が提供されます。サポートされている機能の詳細については、[リリース ノート][]を参照してください。
+Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマンドおよびライブ スムーズ ストリーミング コンテンツの再生が可能な Windows ストア アプリケーションを作成できます。スムーズ ストリーミング コンテンツの基本再生機能に加えて、SDK では、Microsoft PlayReady Protection、品質レベル制限、ライブ DVR、オーディオ ストリーム切り替え、ステータス更新 (品質レベルの変化など) のリスニング、エラー イベントなどの豊富な機能が提供されます。サポートされている機能の詳細については、[リリース ノート][リリース ノート]を参照してください。
 
-このチュートリアルでは、API について説明します。Microsoft では、プレーヤーの開発には [Windows 8 用プレーヤー フレームワーク][]の使用を強くお勧めします。プレーヤー フレームワークを使用すると、多数の追加機能が提供され、アプリケーションの作成が容易になります。
+このチュートリアルでは、API について説明します。Microsoft では、プレーヤーの開発には [Windows 8 用プレーヤー フレームワーク][Windows 8 用プレーヤー フレームワーク]の使用を強くお勧めします。プレーヤー フレームワークを使用すると、多数の追加機能が提供され、アプリケーションの作成が容易になります。
 
 このチュートリアルには、次の 4 つのレッスンが含まれています。
 
@@ -17,19 +17,19 @@ Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマン�
 
 # 前提条件
 
--   Windows 8 32 ビットまたは 64 ビット。MSDN から [Windows 8 Enterprise Evaluation][] を入手することもできます。
--   Windows 8 にインストールされた Visual Studio 2012 または Visual Studio Express 2012 for Windows 8。試用版は[こちら][]から入手できます。
--   [Windows 8 用 Microsoft Smooth Streaming Client SDK][]。
+-   Windows 8 32 ビットまたは 64 ビット。MSDN から [Windows 8 Enterprise Evaluation][Windows 8 Enterprise Evaluation] を入手することもできます。
+-   Windows 8 にインストールされた Visual Studio 2012 または Visual Studio Express 2012 for Windows 8。試用版は[こちら][こちら]から入手できます。
+-   [Windows 8 用 Microsoft Smooth Streaming Client SDK][Windows 8 用 Microsoft Smooth Streaming Client SDK]。
 
-各レッスンの完成したソリューションは、MSDN デベロッパー サンプル コード集 (コード ギャラリー) からダウンロードできます: [レッスン 1][]、[レッスン 2][]、[レッスン 3][]、[レッスン 4][]
+各レッスンの完成したソリューションは、MSDN デベロッパー サンプル コード集 (コード ギャラリー) からダウンロードできます: [レッスン 1][レッスン 1]、[レッスン 2][レッスン 2]、[レッスン 3][レッスン 3]、[レッスン 4][レッスン 4]
 
 # レッスン 1: 基本的なスムーズ ストリーミング ストア アプリケーションの作成
 
 このレッスンでは、スムーズ ストリーミング コンテンツを再生するための MediaElement コントロールを備えた Windows ストア アプリケーションを作成します。実行中のアプリケーションは次のような外観になります。
 
-![スムーズ ストリーミング用の Windows ストア アプリケーションの例][]
+![スムーズ ストリーミング用の Windows ストア アプリケーションの例][スムーズ ストリーミング用の Windows ストア アプリケーションの例]
 
-Windows ストア アプリケーションの開発の詳細については、「[Windows 8 用の優れたアプリケーションの開発][]」を参照してください。
+Windows ストア アプリケーションの開発の詳細については、「[Windows 8 用の優れたアプリケーションの開発][Windows 8 用の優れたアプリケーションの開発]」を参照してください。
 このレッスンは、次の工程で構成されています。
 
 1.  Windows ストア プロジェクトの作成
@@ -190,7 +190,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 完成したコード ビハインド ファイルは次のようになります。
 
-![Visual Studio のコード ビューに表示されたスムーズ ストリーミング用の Windows ストア アプリケーション][]
+![Visual Studio のコード ビューに表示されたスムーズ ストリーミング用の Windows ストア アプリケーション][Visual Studio のコード ビューに表示されたスムーズ ストリーミング用の Windows ストア アプリケーション]
 
 **アプリケーションのコンパイルとテストを行うには**
 
@@ -956,20 +956,18 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 # その他のリソース:
 
--   [How to build a Smooth Streaming Windows 8 JavaScript application with advanced features (高度な機能を備えたスムーズ ストリーミング用の Windows 8 JavaScript アプリケーションを作成する方法)][]
--   [Smooth Streaming Technical Overview (スムーズ ストリーミングの技術概要)][]
+-   [How to build a Smooth Streaming Windows 8 JavaScript application with advanced features (高度な機能を備えたスムーズ ストリーミング用の Windows 8 JavaScript アプリケーションを作成する方法)][How to build a Smooth Streaming Windows 8 JavaScript application with advanced features (高度な機能を備えたスムーズ ストリーミング用の Windows 8 JavaScript アプリケーションを作成する方法)]
+-   [Smooth Streaming Technical Overview (スムーズ ストリーミングの技術概要)][Smooth Streaming Technical Overview (スムーズ ストリーミングの技術概要)]
 
   [リリース ノート]: http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes
   [Windows 8 用プレーヤー フレームワーク]: http://playerframework.codeplex.com/
-  [Windows 8 Enterprise Evaluation]: http://msdn.microsoft.com/en-us/evalcenter/jj554510.aspx
-  [こちら]: http://www.microsoft.com/visualstudio/11/en-us/downloads
+  [Windows 8 Enterprise Evaluation]: http://msdn.microsoft.com/ja-jp/evalcenter/jj554510.aspx
+  [こちら]: http://www.microsoft.com/visualstudio/11/ja-jp/downloads
   [Windows 8 用 Microsoft Smooth Streaming Client SDK]: http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Homehttp://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home
   [レッスン 1]: http://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f "A Simple Windows 8 Smooth Streaming Media Player (単純な Windows 8 スムーズ ストリーミング メディア プレーヤー)"
   [レッスン 2]: http://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a "A Simple Windows 8 Smooth Streaming Media Player with a Slider Bar Control (スライダー コントロールを備えた単純な Windows 8 スムーズ ストリーミング メディア プレーヤー)"
   [レッスン 3]: http://code.msdn.microsoft.com/A-Windows-8-Smooth-883c3b44 "A Windows 8 Smooth Streaming Media Player with Stream Selection (ストリーム選択機能を備えた Windows 8 スムーズ ストリーミング メディア プレーヤー)"
   [レッスン 4]: http://code.msdn.microsoft.com/A-Windows-8-Smooth-aa9e4907 "A Windows 8 Smooth Streaming Media Player with Track Selection (トラック選択機能を備えた Windows 8 スムーズ ストリーミング メディア プレーヤー)"
   [スムーズ ストリーミング用の Windows ストア アプリケーションの例]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
-  [Windows 8 用の優れたアプリケーションの開発]: http://msdn.microsoft.com/en-us/windows/apps/br229512.aspx
+  [Windows 8 用の優れたアプリケーションの開発]: http://msdn.microsoft.com/ja-jp/windows/apps/br229512.aspx
   [Visual Studio のコード ビューに表示されたスムーズ ストリーミング用の Windows ストア アプリケーション]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
-  [How to build a Smooth Streaming Windows 8 JavaScript application with advanced features (高度な機能を備えたスムーズ ストリーミング用の Windows 8 JavaScript アプリケーションを作成する方法)]: http://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx
-  [Smooth Streaming Technical Overview (スムーズ ストリーミングの技術概要)]: http://www.iis.net/learn/media/on-demand-smooth-streaming/smooth-streaming-technical-overview

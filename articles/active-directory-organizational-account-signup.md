@@ -1,10 +1,10 @@
 <properties umbracoNaviHide="0" pageTitle="How To Configure Cloud Services" metaKeywords="Azure cloud services, cloud service, configure cloud service" description="Learn how to configure Azure cloud services." linkid="manage-windows-how-to-guide-storage-accounts" urlDisplayName="How to: storage accounts" headerExpose="" footerExpose="" disqusComments="1" title="Sign up for Azure as an organization" authors="terrylan" manager="terrylan" />
 
-<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="terrylan"></tags>
+<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="terrylan" />
 
 # Azure への組織としてのサインアップ
 
-[WACOM.INCLUDE [disclaimer][disclaimer]]
+[WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
 
 最近まで、新しい Azure サブスクリプションにサインアップするには、必ず Microsoft アカウント (Windows Live ID) を使用する必要がありました。現在、Azure では、次に示す 2 つのアカウントのいずれかを使用してサインアップすることができます。
 
@@ -27,7 +27,7 @@ Active Directory は組織のクラウド ディレクトリなので、その�
 組織が既に内部設置型 Active Directory を使用している場合は、ディレクトリ同期、シングル サインオンなどの Azure AD のディレクトリ統合機能を使用し、既存の社内の ID をクラウドに拡張して、管理およびエンド ユーザー エクスペリエンスを強化できます。[詳細情報][3]
 
   [disclaimer]: ../includes/disclaimer.md
-  [詳細情報]: http://windows.microsoft.com/en-US/windows-live/sign-in-what-is-microsoft-account
+  [詳細情報]: http://windows.microsoft.com/ja-jp/windows-live/sign-in-what-is-microsoft-account
   [1]: http://technet.microsoft.com/ja-jp/library/jj573650
   [2]: http://technet.microsoft.com/ja-jp/library/hh967619
   [3]: http://technet.microsoft.com/ja-jp/library/jj573653

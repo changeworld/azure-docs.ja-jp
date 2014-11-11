@@ -1,6 +1,6 @@
 <properties linkid="develop-notificationhubs-tutorials-send-localized-breaking-news-windowsdotnet" urlDisplayName="Localized Breaking News" pageTitle="Notification Hubs Localized Breaking News Tutorial" metaKeywords="" description="Learn how to use Azure Service Bus Notification Hubs to send localized breaking news notifications." metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Use Notification Hubs to send localized breaking news" authors="ricksal" solutions="" manager="" editor="" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ricksal"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ricksal" />
 
 # 通知ハブを使用したローカライズ ニュース速報の送信
 
@@ -151,7 +151,7 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
 
 ## <a name="send"></a><span class="short-header">ローカライズした通知を送信する</span>バックエンドからローカライズした通知を送信する
 
-[WACOM.INCLUDE [notification-hubs-localized-back-end][notification-hubs-localized-back-end]]
+[WACOM.INCLUDE [notification-hubs-localized-back-end](../includes/notification-hubs-localized-back-end.md)]
 
 ## 次のステップ
 
@@ -161,15 +161,12 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Windows ストア C#]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/ "Windows ストア C#"
-  [iOS]: /ja-jp/documentation/articles/notification-hubs-ios-send-localized-breaking-news/ "iOS"
   [通知ハブを使用したニュース速報の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet
   [テンプレートの概念]: #concepts
   [アプリケーションのユーザー インターフェイス]: #ui
   [Windows ストア クライアント アプリケーションを構築する]: #building-client
   [バックエンドから通知を送信する]: #send
   [通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
-  [方法: Windows Azure 通知ハブ (Windows ストア アプリ)]: http://msdn.microsoft.com/ja-jp/library/jj927172.aspx
   [notification-hubs-localized-back-end]: ../includes/notification-hubs-localized-back-end.md
   [Notification Hubs によるユーザーへの通知: ASP.NET]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
   [Notification Hubs によるユーザーへの通知: Mobile Services]: /ja-jp/manage/services/notification-hubs/notify-users

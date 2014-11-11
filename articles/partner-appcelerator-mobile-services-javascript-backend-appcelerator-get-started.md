@@ -1,10 +1,10 @@
 <properties pageTitle="Get Started with Azure Mobile Services for Appcelerator Titanium" metaKeywords="" description="Follow this tutorial to get started using Azure Mobile Services for Appcelerator development. " metaCanonical="" services="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="Appcelerator team;mahender" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-appcelerator" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="Appcelerator team;mahender"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-appcelerator" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="Appcelerator="" team;mahender" />
 
 # <a name="getting-started"> </a>Mobile Services の使用
 
-[WACOM.INCLUDE [mobile-services-selector-get-started][mobile-services-selector-get-started]]
+[WACOM.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
 
 このチュートリアルでは、Appcelerator で構築したアプリケーションで Azure Mobile Services を活用する方法について説明します。
 
@@ -18,7 +18,7 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
 
 ## <a name="create-new-service"> </a> 新しいモバイル サービスを作成する
 
-[WACOM.INCLUDE [mobile-services-create-new-service][mobile-services-create-new-service]]
+[WACOM.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
 
 ## 新しい Appcelerator アプリケーションを作成する
 
@@ -40,7 +40,7 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
 
 1.  Titanium studio を開き、**[File]、[Import]** の順に選択して、前にダウンロードしたプロジェクトをインポートします。
 
-    ![][]
+    ![][0]
 
 2.  次の画面で、**[Existing Projects into Workspace]** を選択し、**[Next]** をクリックします。
 
@@ -101,7 +101,7 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
   [Appcelerator Titanium]: http://go.microsoft.com/fwlink/p/?LinkID=509987
   [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md
   [Todolist アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=506859
-  []: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started/image007.png
+  [0]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started/image007.png
   [1]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started/image008.png
   [2]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started/image009.png
   [3]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started/image010.png

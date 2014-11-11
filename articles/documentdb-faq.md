@@ -1,6 +1,6 @@
 <properties title="Frequently asked questions about DocumentDB" pageTitle="Frequently asked questions about DocumentDB | Azure" description="Answers to frequently asked questions about Azure DocumentDB databases. Learn about capacity and request units, and understand how to scale to your application needs." metaKeywords="NoSQL, DocumentDB,  database, document-orientated database, JSON, faq"   services="documentdb" solutions="data-management"   authors="bradsev" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="bradsev"></tags>
+<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="bradsev" />
 
 # DocumentDB に関してよく寄せられる質問
 
@@ -106,5 +106,3 @@ DocumentDB によるストアド プロシージャのサポートにより、�
   [Azure DocumentDB のセットアップ]: #setup
   [Azure DocumentDB に対する開発]: #develop
   [DocumentDB ドキュメント ページ]: http://go.microsoft.com/fwlink/p/?LinkID=402319
-  [DocumentDB Preview Pricing Details (DocumentDB プレビュー料金の詳細)]: http://go.microsoft.com/fwlink/p/?LinkID=402317
-  [Query DocumentDB (DocumentDB のクエリ)]: ../documentdb-sql-query/

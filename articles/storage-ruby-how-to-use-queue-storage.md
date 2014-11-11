@@ -1,6 +1,6 @@
 <properties linkid="dev-ruby-how-to-service-bus-queues" urlDisplayName="Queue Service" pageTitle="How to use the queue service (Ruby) | Microsoft Azure" metaKeywords="Azure Queue Service get messages Ruby" description="Learn how to use the Azure Queue service to create and delete queues, and insert, get, and delete messages. Samples written in Ruby." metaCanonical="" services="storage" documentationCenter="Ruby" title="How to Use the Queue Storage Service from Ruby" authors="guayan" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="ruby" ms.topic="article" ms.date="01/01/1900" ms.author="guayan"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="ruby" ms.topic="article" ms.date="01/01/1900" ms.author="guayan" />
 
 # Ruby からキュー ストレージ サービスを使用する方法
 
@@ -8,37 +8,37 @@
 一般的なシナリオを実行する方法について説明します。サンプルは Ruby Azure API を使用して記述されています。
 キュー メッセージの**挿入**、**ピーク**、**取得**、および
 **削除**と、**キューの作成および削除**の各シナリオに
-ついて説明します。キューの詳細については、「[次のステップ][]
+ついて説明します。キューの詳細については、「[次のステップ][次のステップ]
 」のセクションを参照してください。
 
 ## 目次
 
--   [キュー ストレージとは][]
--   [概念][]
--   [Azure のストレージ アカウントの作成][]
--   [Ruby アプリケーションの作成][]
--   [アプリケーションのストレージへのアクセスの構成][]
--   [Azure のストレージ接続文字列の設定][]
--   [方法: キューを作成する][]
--   [方法: メッセージをキューに挿入する][]
--   [方法: 次のメッセージをピークする][]
--   [方法: 次のメッセージをデキューする][]
--   [方法: キューに配置されたメッセージの内容を変更する][]
--   [方法: メッセージをデキューするための追加オプション][]
--   [方法: キューの長さを取得する][]
--   [方法: キューを削除する][]
--   [次のステップ][]
+-   [キュー ストレージとは][キュー ストレージとは]
+-   [概念][概念]
+-   [Azure のストレージ アカウントの作成][Azure のストレージ アカウントの作成]
+-   [Ruby アプリケーションの作成][Ruby アプリケーションの作成]
+-   [アプリケーションのストレージへのアクセスの構成][アプリケーションのストレージへのアクセスの構成]
+-   [Azure のストレージ接続文字列の設定][Azure のストレージ接続文字列の設定]
+-   [方法: キューを作成する][方法: キューを作成する]
+-   [方法: メッセージをキューに挿入する][方法: メッセージをキューに挿入する]
+-   [方法: 次のメッセージをピークする][方法: 次のメッセージをピークする]
+-   [方法: 次のメッセージをデキューする][方法: 次のメッセージをデキューする]
+-   [方法: キューに配置されたメッセージの内容を変更する][方法: キューに配置されたメッセージの内容を変更する]
+-   [方法: メッセージをデキューするための追加オプション][方法: メッセージをデキューするための追加オプション]
+-   [方法: キューの長さを取得する][方法: キューの長さを取得する]
+-   [方法: キューを削除する][方法: キューを削除する]
+-   [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [howto-queue-storage][]]
+[WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
 ## <span id="CreateAccount"></span></a>Azure のストレージ アカウントの作成
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <span id="create-a-ruby-application"></span></a>Ruby アプリケーションを作成する
 
 Ruby アプリケーションを作成します。手順については、
-「[Azure VM での Ruby on Rails Web アプリケーション][]」を参照してください。
+「[Azure VM での Ruby on Rails Web アプリケーション][Azure VM での Ruby on Rails Web アプリケーション]」を参照してください。
 
 ## <span id="configure-your-application-to-access-storage"></span></a>アプリケーションからストレージへのアクセスの構成
 
@@ -65,7 +65,7 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 これらの値を取得するには、次の手順を実行します。
 
-1.  [Azure の管理ポータル][]にログインします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]にログインします。
 2.  使用するストレージ アカウントを表示します。
 3.  ナビゲーション ウィンドウの下部にある **[キーの管理]** をクリックします。
 4.  ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。アクセス キーには、プライマリとセカンダリのどちらでも選択できます。
@@ -153,11 +153,11 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 これで、キュー ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   MSDN リファレンス: [Azure のデータの格納とアクセス][]
--   [Azure のストレージ チーム ブログ][]
--   GitHub の [Azure SDK for Ruby][] リポジトリ
+-   MSDN リファレンス: [Azure のデータの格納とアクセス][Azure のデータの格納とアクセス]
+-   [Azure のストレージ チーム ブログ][Azure のストレージ チーム ブログ]
+-   GitHub の [Azure SDK for Ruby][Azure SDK for Ruby] リポジトリ
 
-この記事で説明されている Azure キュー サービスと、「[Service Bus キューの使用方法][]」で説明されている Azure Service Bus キューの比較については、「[Windows Azure キューと Windows Azure サービス バス キューの比較][]」を参照してください。
+この記事で説明されている Azure キュー サービスと、「[Service Bus キューの使用方法][Service Bus キューの使用方法]」で説明されている Azure Service Bus キューの比較については、「[Windows Azure キューと Windows Azure サービス バス キューの比較][Windows Azure キューと Windows Azure サービス バス キューの比較]」を参照してください。
 
   [次のステップ]: #next-steps
   [キュー ストレージとは]: #what-is
@@ -176,10 +176,10 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
   [方法: キューを削除する]: #how-to-delete-a-queue
   [howto-queue-storage]: ../includes/howto-queue-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
-  [Azure VM での Ruby on Rails Web アプリケーション]: /en-us/develop/ruby/tutorials/web-app-with-linux-vm/
+  [Azure VM での Ruby on Rails Web アプリケーション]: /ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
   [Azure SDK for Ruby]: https://github.com/WindowsAzure/azure-sdk-for-ruby
-  [Service Bus キューの使用方法]: /en-us/develop/ruby/how-to-guides/service-bus-queues/
-  [Windows Azure キューと Windows Azure サービス バス キューの比較]: http://msdn.microsoft.com/en-us/library/windowsazure/hh767287.aspx
+  [Service Bus キューの使用方法]: /ja-jp/develop/ruby/how-to-guides/service-bus-queues/
+  [Windows Azure キューと Windows Azure サービス バス キューの比較]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh767287.aspx

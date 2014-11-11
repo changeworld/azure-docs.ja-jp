@@ -1,6 +1,6 @@
 <properties linkid="manage-services-hdinsight-introduction-hdinsight" urlDisplayName="HDInsight Introduction" pageTitle="Introduction to Hadoop in HDInsight | Azure" metaKeywords="" description="Learn how Azure HDInsight uses Apache Hadoop clusters in the cloud, to provide a software framework to manage, analyze, and report on big data." metaCanonical="" services="hdinsight" documentationCenter="" title="Introduction to Hadoop in HDInsight" authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev" />
 
 # HDInsight での Hadoop 入門
 
@@ -45,11 +45,11 @@ Microsoft Power Query for Excel は、Azure HDInsight または任意の HDFS �
 
 このトピックでは、HDInsight でサポートされている Hadoop エコシステム、HDInsight の主な使用シナリオ、およびその他の関連リソースについて説明します。ここで取り上げる内容は次のとおりです。
 
--   [HDInsight の Hadoop エコシステム][]: HDInsight には Pig、Hive、Sqoop、Oozie、Ambari が実装されています。また、その他の BI ツール (Excel、SQL Server Analysis Services、Reporting Services など) もサポートされており、Power Query または Microsoft Hive ODBC ドライバーを使用して、BLOB ストレージ/HDFS および MapReduce フレームワークと連携できます。このセクションでは、Hadoop エコシステムのこれらのプログラムがどのようなジョブを処理するかについて説明します。
+-   [HDInsight の Hadoop エコシステム][HDInsight の Hadoop エコシステム]: HDInsight には Pig、Hive、Sqoop、Oozie、Ambari が実装されています。また、その他の BI ツール (Excel、SQL Server Analysis Services、Reporting Services など) もサポートされており、Power Query または Microsoft Hive ODBC ドライバーを使用して、BLOB ストレージ/HDFS および MapReduce フレームワークと連携できます。このセクションでは、Hadoop エコシステムのこれらのプログラムがどのようなジョブを処理するかについて説明します。
 
--   [HDInsight のビッグ データ シナリオ][]: 「HDInsight はどのような種類のジョブに適しているのか」という疑問に答えます。
+-   [HDInsight のビッグ データ シナリオ][HDInsight のビッグ データ シナリオ]: 「HDInsight はどのような種類のジョブに適しているのか」という疑問に答えます。
 
--   [HDInsight の関連リソース][]: その他の関連情報を紹介します。
+-   [HDInsight の関連リソース][HDInsight の関連リソース]: その他の関連情報を紹介します。
 
 ## <a name="Ecosystem">Azure 環境での Hadoop エコシステム </a>
 
@@ -63,15 +63,15 @@ Hadoop エコシステムの一部であり、Hadoop クラスター上で実行
 
 ### Pig
 
-Pig は、Hadoop クラスター上でビッグ データを処理するための高レベル プラットフォームです。"Pig Latin" と呼ばれるデータ フロー言語で構成されます。大規模なデータセットに対するクエリを記述したり、プログラムをコンソールから実行したりできます。Pig Latin プログラムは一連のデータセット命令から成り、これらは MapReduce プログラムに変換されます。Pig Latin 抽象化は MapReduce より高度なデータ構造を提供し、SQL でリレーショナル データベース管理システム (RDBMS) を操作する場合と同じように Hadoop を操作できます。Pig Latin は完全に拡張可能です。データを分析する際、Java、Python、Ruby、C#、または JavaScript で記述されたユーザー定義関数 (UDF) を呼び出して、処理パス ステージをカスタマイズできます。詳細については、[Apache Pig に関するページ][]を参照してください。
+Pig は、Hadoop クラスター上でビッグ データを処理するための高レベル プラットフォームです。"Pig Latin" と呼ばれるデータ フロー言語で構成されます。大規模なデータセットに対するクエリを記述したり、プログラムをコンソールから実行したりできます。Pig Latin プログラムは一連のデータセット命令から成り、これらは MapReduce プログラムに変換されます。Pig Latin 抽象化は MapReduce より高度なデータ構造を提供し、SQL でリレーショナル データベース管理システム (RDBMS) を操作する場合と同じように Hadoop を操作できます。Pig Latin は完全に拡張可能です。データを分析する際、Java、Python、Ruby、C#、または JavaScript で記述されたユーザー定義関数 (UDF) を呼び出して、処理パス ステージをカスタマイズできます。詳細については、[Apache Pig に関するページ][Apache Pig に関するページ]を参照してください。
 
 ### Hive
 
-HDFS に格納されたデータを管理する分散データ ウェアハウスであり、Hadoop クエリ エンジンです。Hive は高度な SQL スキルを必要とする分析に適しており、SQL と同様のインターフェイスとリレーショナル データ モデルを提供します。Hive では、HiveQL と呼ばれる言語 (SQL の方言) を使用します。Pig と同様、Hive は MapReduce 上の抽象コンポーネントであり、クエリを一連の MapReduce ジョブに変換します。Hive のシナリオは概念が RDBMS と似ていることから、構造化されたデータの操作に適しています。非構造化データを操作する場合は Pig が適しています。詳細については、[Apache Hive に関する Web ページ][]を参照してください。
+HDFS に格納されたデータを管理する分散データ ウェアハウスであり、Hadoop クエリ エンジンです。Hive は高度な SQL スキルを必要とする分析に適しており、SQL と同様のインターフェイスとリレーショナル データ モデルを提供します。Hive では、HiveQL と呼ばれる言語 (SQL の方言) を使用します。Pig と同様、Hive は MapReduce 上の抽象コンポーネントであり、クエリを一連の MapReduce ジョブに変換します。Hive のシナリオは概念が RDBMS と似ていることから、構造化されたデータの操作に適しています。非構造化データを操作する場合は Pig が適しています。詳細については、[Apache Hive に関する Web ページ][Apache Hive に関する Web ページ]を参照してください。
 
 ### Sqoop
 
-Sqoop は、リレーショナル データベース (SQL など) やその他の構造化データ ストアと Hadoop との間でデータを効率的に一括転送するためのツールです。外部の構造化データ ストアから HDFS や関連システム (Hive など) にデータをインポートするときは、Sqoop を使用します。また、Hadoop からデータを抽出し、抽出したデータを外部のリレーショナル データベース、エンタープライズ データ ウェアハウス、またはその他の構造化データ ストアへエクスポートするときにも Sqoop を使用できます。詳細については、[Apache Sqoop に関する Web ページ][]を参照してください。
+Sqoop は、リレーショナル データベース (SQL など) やその他の構造化データ ストアと Hadoop との間でデータを効率的に一括転送するためのツールです。外部の構造化データ ストアから HDFS や関連システム (Hive など) にデータをインポートするときは、Sqoop を使用します。また、Hadoop からデータを抽出し、抽出したデータを外部のリレーショナル データベース、エンタープライズ データ ウェアハウス、またはその他の構造化データ ストアへエクスポートするときにも Sqoop を使用できます。詳細については、[Apache Sqoop に関する Web ページ][Apache Sqoop に関する Web ページ]を参照してください。
 
 ### Oozie
 
@@ -79,25 +79,25 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 ### Ambari
 
-Apache Ambari は、Apache Hadoop クラスターのプロビジョニング、管理、および監視を目的としています。演算子ツールの直観的なコレクションおよび Hadoop の複雑さが見えないようにする信頼性の高い、一連の API が含まれており、クラスターの操作を単純化しています。API の詳細については、「[Ambari API リファレンス][]」を参照してください。HDInsight は現在、Ambari の監視機能のみをサポートしています。Ambari API Version 1.0 は HDInsight クラスター Version 2.1 および 3.0 によってサポートされています。Ambari の詳細については、[Apache Ambari に関する Web ページ][]を参照してください。
+Apache Ambari は、Apache Hadoop クラスターのプロビジョニング、管理、および監視を目的としています。演算子ツールの直観的なコレクションおよび Hadoop の複雑さが見えないようにする信頼性の高い、一連の API が含まれており、クラスターの操作を単純化しています。API の詳細については、「[Ambari API リファレンス][Ambari API リファレンス]」を参照してください。HDInsight は現在、Ambari の監視機能のみをサポートしています。Ambari API Version 1.0 は HDInsight クラスター Version 2.1 および 3.0 によってサポートされています。Ambari の詳細については、[Apache Ambari に関する Web ページ][Apache Ambari に関する Web ページ]を参照してください。
 
 ### Microsoft Avro ライブラリ
 
-Microsoft Avro ライブラリは、Microsoft.NET 環境向けに Apache Avro データ シリアル化システムを実装します。Apache Avro は、シリアル化のためのコンパクトなバイナリ データ交換形式を提供します。Apache Avro は、[JSON][] を使用して、言語の相互運用性を保証する、言語に依存しないスキーマを定義します。ある言語でシリアル化されたデータは、別の言語で読むことができます。現在、C、C++、C#、Java、PHP、Python、および Ruby がサポートされています。この形式の詳細については、[Apache Avro の仕様][]を参照してください。現在のバージョンの Microsoft Avro ライブラリでは、このシリアル化のリモート プロシージャ コール (RPC) の部分をサポートしていないことに注意してください。
+Microsoft Avro ライブラリは、Microsoft.NET 環境向けに Apache Avro データ シリアル化システムを実装します。Apache Avro は、シリアル化のためのコンパクトなバイナリ データ交換形式を提供します。Apache Avro は、[JSON][JSON] を使用して、言語の相互運用性を保証する、言語に依存しないスキーマを定義します。ある言語でシリアル化されたデータは、別の言語で読むことができます。現在、C、C++、C#、Java、PHP、Python、および Ruby がサポートされています。この形式の詳細については、[Apache Avro の仕様][Apache Avro の仕様]を参照してください。現在のバージョンの Microsoft Avro ライブラリでは、このシリアル化のリモート プロシージャ コール (RPC) の部分をサポートしていないことに注意してください。
 
-Apache Avro のシリアル化形式は、Azure HDInsight やその他の Apache Hadoop 環境で広く使用されています。Avro は、Hadoop MapReduce ジョブ内の複雑なデータ構造を表すのに便利です。Avro ファイルの形式は、分散型 MapReduce プログラミング モデルをサポートするように設計されています。分散を可能にする重要な機能として、ファイル内の任意のポイントを検索し、特定のブロックから読み取りを開始できるという意味で、ファイルが "分割可能" であることがあります。詳細については、「[Serialize data with the Microsoft Avro Library (Microsoft Avro ライブラリを使用したデータのシリアル化)][]」を参照してください。
+Apache Avro のシリアル化形式は、Azure HDInsight やその他の Apache Hadoop 環境で広く使用されています。Avro は、Hadoop MapReduce ジョブ内の複雑なデータ構造を表すのに便利です。Avro ファイルの形式は、分散型 MapReduce プログラミング モデルをサポートするように設計されています。分散を可能にする重要な機能として、ファイル内の任意のポイントを検索し、特定のブロックから読み取りを開始できるという意味で、ファイルが "分割可能" であることがあります。詳細については、「[Serialize data with the Microsoft Avro Library (Microsoft Avro ライブラリを使用したデータのシリアル化)][Serialize data with the Microsoft Avro Library (Microsoft Avro ライブラリを使用したデータのシリアル化)]」を参照してください。
 
 ### ビジネス インテリジェンス ツールとコネクタ
 
 Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用すれば、Excel、PowerPivot、SQL Server Analysis Services、Reporting Services などの使い慣れたビジネス インテリジェンス (BI) ツールを HDInsight と連携して、データの取得、分析、レポート生成を行うことができます。
 
--   Microsoft Power Query for Excel は [Microsoft ダウンロード センター][]からダウンロードできます。
+-   Microsoft Power Query for Excel は [Microsoft ダウンロード センター][Microsoft ダウンロード センター]からダウンロードできます。
 
--   Microsoft Hive ODBC ドライバーは、[ダウンロード センター][]からダウンロードできます。
+-   Microsoft Hive ODBC ドライバーは、[ダウンロード センター][ダウンロード センター]からダウンロードできます。
 
--   Analysis Services の詳細については、[SQL Server 2012 Analysis Services][] の Web ページを参照してください。
+-   Analysis Services の詳細については、[SQL Server 2012 Analysis Services][SQL Server 2012 Analysis Services] の Web ページを参照してください。
 
--   Reporting Services の詳細については、[SQL Server 2012 Reporting][] の Web ページを参照してください。
+-   Reporting Services の詳細については、[SQL Server 2012 Reporting][SQL Server 2012 Reporting] の Web ページを参照してください。
 
 ## <a name="Scenarios"></a>HDInsight のビッグ データ シナリオ
 
@@ -111,47 +111,47 @@ HDInsight (および Hadoop 技術全般) は、いったん書き込んだ後�
 
 **Microsoft: HDInsight**
 
--   [HDInsight のドキュメント][]: Azure HDInsight のドキュメント ページ。記事やビデオなどのリソースに対するリンクが記載されています。
+-   [HDInsight のドキュメント][HDInsight のドキュメント]: Azure HDInsight のドキュメント ページ。記事やビデオなどのリソースに対するリンクが記載されています。
 
--   [HDInsight Release Notes (HDInsight リリース ノート)][]: 最新リリースに関する留意事項。
+-   [HDInsight Release Notes (HDInsight リリース ノート)][HDInsight Release Notes (HDInsight リリース ノート)]: 最新リリースに関する留意事項。
 
--   [Azure HDInsight の概要][]: HDInsight の使用方法のクイック スタートとなるチュートリアル。
+-   [Azure HDInsight の概要][Azure HDInsight の概要]: HDInsight の使用方法のクイック スタートとなるチュートリアル。
 
--   [HDInsight のサンプルの実行][]: HDInsight に付属するサンプルの実行方法に関するチュートリアル。
+-   [HDInsight のサンプルの実行][HDInsight のサンプルの実行]: HDInsight に付属するサンプルの実行方法に関するチュートリアル。
 
--   [Big Data と Azure][]: Azure を使用して構築できるビッグ データ シナリオを紹介します。
+-   [Big Data と Azure][Big Data と Azure]: Azure を使用して構築できるビッグ データ シナリオを紹介します。
 
--   [Azure HDInsight SDK][]: HDinsight SDK のリファレンス ドキュメント。
+-   [Azure HDInsight SDK][Azure HDInsight SDK]: HDinsight SDK のリファレンス ドキュメント。
 
 **Microsoft: Windows および SQL データベース**
 
--   [Azure のホーム ページ][]: アプリケーションを初めて構築する場合に役立つ各種シナリオ、無料評価版、開発用ツール、ドキュメントが用意されています。
+-   [Azure のホーム ページ][Azure のホーム ページ]: アプリケーションを初めて構築する場合に役立つ各種シナリオ、無料評価版、開発用ツール、ドキュメントが用意されています。
 
--   [Azure SQL データベース][]: SQL データベースの MSDN ドキュメント。
+-   [Azure SQL データベース][Azure SQL データベース]: SQL データベースの MSDN ドキュメント。
 
--   [SQL データベースの管理ポータル][]: 軽量で使いやすいデータベース管理ツール。クラウド環境で SQL データベースを管理する際に役立ちます。
+-   [SQL データベースの管理ポータル][SQL データベースの管理ポータル]: 軽量で使いやすいデータベース管理ツール。クラウド環境で SQL データベースを管理する際に役立ちます。
 
--   [Adventure Works for SQL Database][]: SQL データベースのサンプル データベースのダウンロード ページ。
+-   [Adventure Works for SQL Database][Adventure Works for SQL Database]: SQL データベースのサンプル データベースのダウンロード ページ。
 
 **Microsoft: ビジネス インテリジェンス**
 
--   [Power Query を使用した Excel から HDInsight への接続][]: Microsoft Power Query for Excel を使用して、HDInsight クラスターに関連付けられたデータを格納する Azure ストレージ アカウントに Excel を接続する方法を説明します。
+-   [Power Query を使用した Excel から HDInsight への接続][Power Query を使用した Excel から HDInsight への接続]: Microsoft Power Query for Excel を使用して、HDInsight クラスターに関連付けられたデータを格納する Azure ストレージ アカウントに Excel を接続する方法を説明します。
 
--   [Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][]: Microsoft Hive ODBC ドライバーを使用して、Azure HDInsight からデータをインポートする方法を説明します。
+-   [Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続]: Microsoft Hive ODBC ドライバーを使用して、Azure HDInsight からデータをインポートする方法を説明します。
 
--   [Microsoft BI PowerPivot][]: 高度なデータ マッシュアップおよびデータ探索ツールをダウンロードし関連情報を入手します。
+-   [Microsoft BI PowerPivot][Microsoft BI PowerPivot]: 高度なデータ マッシュアップおよびデータ探索ツールをダウンロードし関連情報を入手します。
 
--   [SQL Server 2012 Analysis Services][]: SQL Server 2012 の評価版をダウンロードでき、エンタープライズ規模の総合的な分析ソリューションを構築して、収集したデータから価値ある情報を得る方法が説明されています。
+-   [SQL Server 2012 Analysis Services][SQL Server 2012 Analysis Services]: SQL Server 2012 の評価版をダウンロードでき、エンタープライズ規模の総合的な分析ソリューションを構築して、収集したデータから価値ある情報を得る方法が説明されています。
 
 -   [SQL Server 2012 Reporting][1]: SQL Server 2012 の評価版をダウンロードでき、エンタープライズ規模でのリアルタイムな意思決定をサポートする、包括的で拡張性に優れたソリューションを作成する方法が説明されています。
 
 **Apache Hadoop**:
 
--   [Apache Hadoop][]: 大規模なデータ セットを複数のコンピューターで分散処理するためのフレームワークとなる Apache Hadoop ソフトウェア ライブラリについて説明します。
+-   [Apache Hadoop][Apache Hadoop]: 大規模なデータ セットを複数のコンピューターで分散処理するためのフレームワークとなる Apache Hadoop ソフトウェア ライブラリについて説明します。
 
--   [HDFS][]: Hadoop 分散ファイル システム (HDFS) は、Hadoop アプリケーションで使用する主要なストレージ システムで、そのアーキテクチャと設計について説明します。
+-   [HDFS][HDFS]: Hadoop 分散ファイル システム (HDFS) は、Hadoop アプリケーションで使用する主要なストレージ システムで、そのアーキテクチャと設計について説明します。
 
--   [MapReduce][]: 複数の計算ノードから成る大規模なクラスターを利用して、膨大なデータを迅速に並列処理する Hadoop アプリケーションを記述するためのプログラミング モデルとソフトウェア フレームワークについて説明します。
+-   [MapReduce][MapReduce]: 複数の計算ノードから成る大規模なクラスターを利用して、膨大なデータを迅速に並列処理する Hadoop アプリケーションを記述するためのプログラミング モデルとソフトウェア フレームワークについて説明します。
 
   [HDInsight の Hadoop エコシステム]: #Ecosystem
   [HDInsight のビッグ データ シナリオ]: #Scenarios
@@ -163,25 +163,22 @@ HDInsight (および Hadoop 技術全般) は、いったん書き込んだ後�
   [Apache Ambari に関する Web ページ]: http://ambari.apache.org/
   [JSON]: http://www.json.org
   [Apache Avro の仕様]: http://avro.apache.org/docs/current/spec.html
-  [Serialize data with the Microsoft Avro Library (Microsoft Avro ライブラリを使用したデータのシリアル化)]: ../hdinsight-dotnet-avro-serialization/
   [Microsoft ダウンロード センター]: http://go.microsoft.com/fwlink/?LinkID=286689
   [ダウンロード センター]: http://go.microsoft.com/fwlink/?LinkID=286698
   [SQL Server 2012 Analysis Services]: http://www.microsoft.com/sqlserver/en/us/solutions-technologies/business-intelligence/SQL-Server-2012-analysis-services.aspx
-  [SQL Server 2012 Reporting]: http://www.microsoft.com/en-us/sqlserver/solutions-technologies/business-intelligence/reporting.aspx
+  [SQL Server 2012 Reporting]: http://www.microsoft.com/ja-jp/sqlserver/solutions-technologies/business-intelligence/reporting.aspx
   [HDInsight のドキュメント]: http://go.microsoft.com/fwlink/?LinkID=285601
-  [HDInsight Release Notes (HDInsight リリース ノート)]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-release-notes/
   [Azure HDInsight の概要]: ../hdinsight-get-started/
   [HDInsight のサンプルの実行]: ../hdinsight-run-samples/
-  [Big Data と Azure]: http://azure.microsoft.com/en-us/solutions/big-data/
-  [Azure HDInsight SDK]: http://msdnstage.redmond.corp.microsoft.com/en-us/library/dn479185.aspx
-  [Azure のホーム ページ]: http://azure.microsoft.com/en-us/
-  [Azure SQL データベース]: http://msdn.microsoft.com/en-us/library/windowsazure/ee336279.aspx
-  [SQL データベースの管理ポータル]: http://msdn.microsoft.com/en-us/library/windowsazure/gg442309.aspx
+  [Big Data と Azure]: http://azure.microsoft.com/ja-jp/solutions/big-data/
+  [Azure HDInsight SDK]: http://msdnstage.redmond.corp.microsoft.com/ja-jp/library/dn479185.aspx
+  [Azure のホーム ページ]: http://azure.microsoft.com/ja-jp/
+  [Azure SQL データベース]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee336279.aspx
+  [SQL データベースの管理ポータル]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg442309.aspx
   [Adventure Works for SQL Database]: http://msftdbprodsamples.codeplex.com/releases/view/37304
   [Power Query を使用した Excel から HDInsight への接続]: ../hdinsight-connect-excel-power-query/
   [Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続]: ../hdinsight-connect-excel-hive-ODBC-driver/
-  [Microsoft BI PowerPivot]: http://www.microsoft.com/en-us/bi/PowerPivot.aspx
-  [1]: http://www.microsoft.com/sqlserver/en/us/solutions-technologies/business-intelligence/SQL-Server-2012-reporting-services.aspx
+  [Microsoft BI PowerPivot]: http://www.microsoft.com/ja-jp/bi/PowerPivot.aspx
   [Apache Hadoop]: http://hadoop.apache.org/
   [HDFS]: http://hadoop.apache.org/docs/r0.18.1/hdfs_design.html
   [MapReduce]: http://mapreduce.org/

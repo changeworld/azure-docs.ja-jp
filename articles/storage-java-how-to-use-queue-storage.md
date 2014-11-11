@@ -1,43 +1,43 @@
 <properties linkid="dev-net-how-to-use-queue-storage-service-java" urlDisplayName="Queue Service" pageTitle="How to use the queue service (Java) | Microsoft Azure" metaKeywords="Azure Queue Service, Azure Queue storage service, queues peeking, queues insert messages, queues get messages, queues delete messages, create queues, delete queues, Queue service Java" description="Learn how to use the Azure Queue service to create and delete queues, and insert, get, and delete messages. Samples written in Java." metaCanonical="" services="storage" documentationCenter="Java" title="How to use the Queue storage service from Java" authors="" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="" />
 
 # Java からキュー ストレージを使用する方法
 
-このガイドでは、Azure キュー ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][] を利用しています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、キューの**作成**および**削除**の各シナリオについて説明します。キューの詳細については、「[次のステップ][]」のセクションを参照してください。
+このガイドでは、Azure キュー ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。サンプルは Java で記述され、[Azure Storage SDK for Java][Azure Storage SDK for Java] を利用しています。キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、キューの**作成**および**削除**の各シナリオについて説明します。キューの詳細については、「[次のステップ][次のステップ]」のセクションを参照してください。
 
-注: SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。詳細については、[Azure Storage SDK for Android に関するページ][]を参照してください。
+注: SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。詳細については、[Azure Storage SDK for Android に関するページ][Azure Storage SDK for Android に関するページ]を参照してください。
 
 ## <a name="Contents"> </a> 目次
 
--   [キュー ストレージとは][]
--   [概念][]
--   [Azure のストレージ アカウントの作成][]
--   [Java アプリケーションの作成][]
--   [キュー ストレージにアクセスするようにアプリケーションを構成する][]
--   [Azure のストレージ接続文字列の設定][]
--   [方法: キューを作成する][]
--   [方法: メッセージをキューに追加する][]
--   [方法: 次のメッセージをピークする][]
--   [方法: キューに配置されたメッセージの内容を変更する][]
--   [方法: キューの長さを取得する][]
--   [方法: 次のメッセージをデキューする][]
--   [メッセージのデキュー用の追加オプション][]
--   [方法: キューを一覧表示する][]
--   [方法: キューを削除する][]
--   [次のステップ][]
+-   [キュー ストレージとは][キュー ストレージとは]
+-   [概念][概念]
+-   [Azure のストレージ アカウントの作成][Azure のストレージ アカウントの作成]
+-   [Java アプリケーションの作成][Java アプリケーションの作成]
+-   [キュー ストレージにアクセスするようにアプリケーションを構成する][キュー ストレージにアクセスするようにアプリケーションを構成する]
+-   [Azure のストレージ接続文字列の設定][Azure のストレージ接続文字列の設定]
+-   [方法: キューを作成する][方法: キューを作成する]
+-   [方法: メッセージをキューに追加する][方法: メッセージをキューに追加する]
+-   [方法: 次のメッセージをピークする][方法: 次のメッセージをピークする]
+-   [方法: キューに配置されたメッセージの内容を変更する][方法: キューに配置されたメッセージの内容を変更する]
+-   [方法: キューの長さを取得する][方法: キューの長さを取得する]
+-   [方法: 次のメッセージをデキューする][方法: 次のメッセージをデキューする]
+-   [メッセージのデキュー用の追加オプション][メッセージのデキュー用の追加オプション]
+-   [方法: キューを一覧表示する][方法: キューを一覧表示する]
+-   [方法: キューを削除する][方法: キューを削除する]
+-   [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [howto-queue-storage][]]
+[WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
 ## <span id="CreateAccount"></span></a>Azure のストレージ アカウントの作成
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <a name="CreateApplication"> </a>Java アプリケーションの作成
 
 このガイドで使用するストレージ機能は、Java アプリケーション内でローカルで実行することも、Azure の Web ロールまたは worker ロールで動作するコード内で実行することもできます。
 
-そのためには、Java Development Kit (JDK) をインストールし、Azure サブスクリプションに Azure ストレージ アカウントを作成する必要があります。その後、開発システムが、GitHub の [Azure Storage SDK for Java][] リポジトリに示されている最小要件と依存関係を満たしていることを確認する必要があります。システムがそれらの要件を満たしている場合は、指示に従って、そのリポジトリからシステムに Azure Storage Libraries for Java をダウンロードしてインストールできます。それらのタスクが完了したら、この記事の例を使用した Java アプリケーションを作成できます。
+そのためには、Java Development Kit (JDK) をインストールし、Azure サブスクリプションに Azure ストレージ アカウントを作成する必要があります。その後、開発システムが、GitHub の [Azure Storage SDK for Java][Azure Storage SDK for Java] リポジトリに示されている最小要件と依存関係を満たしていることを確認する必要があります。システムがそれらの要件を満たしている場合は、指示に従って、そのリポジトリからシステムに Azure Storage Libraries for Java をダウンロードしてインストールできます。それらのタスクが完了したら、この記事の例を使用した Java アプリケーションを作成できます。
 
 ## <a name="ConfigureStorage"> </a>キュー ストレージにアクセスするようにアプリケーションを構成する
 
@@ -67,7 +67,7 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 
 ## <a name="create-queue"> </a>方法: キューを作成する
 
-**CloudQueueClient** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。次のコードでは、**CloudQueueClient** オブジェクトを作成します。(注: **CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、[Azure ストレージ クライアント SDK リファレンス][]の **CloudStorageAccount** を参照してください)。
+**CloudQueueClient** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。次のコードでは、**CloudQueueClient** オブジェクトを作成します。(注: **CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、[Azure ストレージ クライアント SDK リファレンス][Azure ストレージ クライアント SDK リファレンス]の **CloudStorageAccount** を参照してください)。
 
 **CloudQueueClient** オブジェクトを使用して、使用するキューへの参照を取得します。キューが存在しない場合は作成できます。
 
@@ -381,10 +381,10 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 
 これで、キュー ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   [Azure Storage SDK for Java][]
--   [Azure ストレージ クライアント SDK リファレンス][]
--   [Azure Storage REST API][]
--   [Azure のストレージ チーム ブログ][]
+-   [Azure Storage SDK for Java][Azure Storage SDK for Java]
+-   [Azure ストレージ クライアント SDK リファレンス][Azure ストレージ クライアント SDK リファレンス]
+-   [Azure Storage REST API][Azure Storage REST API]
+-   [Azure のストレージ チーム ブログ][Azure のストレージ チーム ブログ]
 
   [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
   [次のステップ]: #NextSteps
@@ -407,5 +407,5 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
   [howto-queue-storage]: ../includes/howto-queue-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
   [Azure ストレージ クライアント SDK リファレンス]: http://dl.windowsazure.com/storage/javadoc/
-  [Azure Storage REST API]: http://msdn.microsoft.com/en-us/library/azure/gg433040.aspx
+  [Azure Storage REST API]: http://msdn.microsoft.com/ja-jp/library/azure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/

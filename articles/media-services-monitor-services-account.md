@@ -1,6 +1,6 @@
 <properties linkid="manage-services-mediaservices-monitor-a-media-services-account" urlDisplayName="How to monitor" pageTitle="Monitor a Media Services Account - Azure" metaKeywords="" description="Describes how to configure monitoring for your Media Services account in Azure." metaCanonical="" services="media-services" documentationCenter="" title="How to Monitor a Media Services Account" authors="migree" solutions="" manager="" editor="" />
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="migree"></tags>
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="migree" />
 
 # <span id="monitormediaservicesaccount"></span></a>Media Services アカウントの監視方法
 
@@ -8,13 +8,13 @@ Azure メディア サービスのダッシュボードには、使用状況の�
 
 監視できるのは、キューに格納されたエンコード ジョブの数、失敗したエンコード タスク、エンコーダーからの入出力データによって表されるアクティブなエンコード ジョブ、およびメディア サービス アカウントに関連付けられた BLOB ストレージの使用状況です。さらに、顧客に対してコンテンツをストリーミング配信している場合は、さまざまなストリーミング メトリックも取得できます。データの監視期間は、過去 6 時間、24 時間、または 7 日間から選択できます。
 
-**注:** Azure 管理ポータルでストレージ データを監視すると、それに応じて追加のコストがかかります。詳細については、[ストレージの分析と課金に関するページ][]を参照してください。
+**注:** Azure 管理ポータルでストレージ データを監視すると、それに応じて追加のコストがかかります。詳細については、[ストレージの分析と課金に関するページ][ストレージの分析と課金に関するページ]を参照してください。
 
 ## <span id="configuremonitoring"></span></a>方法: Media Services アカウントを監視する
 
-1.  [管理ポータル][]で、**[メディア サービス]** をクリックし、目的の Media Services アカウント名をクリックしてダッシュボードを開きます。
+1.  [管理ポータル][管理ポータル]で、**[メディア サービス]** をクリックし、目的の Media Services アカウント名をクリックしてダッシュボードを開きます。
 
-    ![MediaServices\_Dashboard][]
+    ![MediaServices\_Dashboard][MediaServices\_Dashboard]
 
 2.  エンコード ジョブまたはデータを監視するには、Media Services に対するエンコード ジョブの送信を開始するか、Azure メディア オンデマンド ストリーミングを使用して顧客に対するコンテンツのストリーミング配信を開始します。約 1 時間後に、ダッシュボードに監視データが表示されるようになります。
 
@@ -25,7 +25,7 @@ Azure メディア サービスのダッシュボードには、使用状況の�
 
     **注:** BLOB は、メディア サービスで唯一サポートされているストレージの種類です。
 
-    ![StorageOptions][]
+    ![StorageOptions][StorageOptions]
 
 3.  **[監視]** で、BLOB の監視レベルおよびデータ保有ポリシーを設定します。
 
@@ -41,12 +41,11 @@ Azure メディア サービスのダッシュボードには、使用状況の�
 
 1.  監視の構成が完了したら、**[保存]** をクリックします。
     Media Services のメトリックと同様に、約 1 時間後に、ダッシュボードに監視データが表示されるようになります。
-    メトリックは、ストレージ アカウントの $MetricsTransactionsBlob、$MetricsTransactionsTable、$MetricsTransactionsQueue、$MetricsCapacityBlob という名前の 4 つのテーブルに保存されます。詳細については、[ストレージ分析のメトリックに関するページ][]を参照してください。
+    メトリックは、ストレージ アカウントの $MetricsTransactionsBlob、$MetricsTransactionsTable、$MetricsTransactionsQueue、$MetricsCapacityBlob という名前の 4 つのテーブルに保存されます。詳細については、[ストレージ分析のメトリックに関するページ][ストレージ分析のメトリックに関するページ]を参照してください。
 
 <!-- Images -->
 
   [ストレージの分析と課金に関するページ]: http://go.microsoft.com/fwlink/?LinkId=256667
   [管理ポータル]: http://go.microsoft.com/fwlink/?LinkID=256666
-  [MediaServices\_Dashboard]: ./media/media-services-monitor-services-account/media-services-dashboard.png
   [StorageOptions]: ./media/media-services-monitor-services-account/storagemonitoringoptions_scoped.png
   [ストレージ分析のメトリックに関するページ]: http://go.microsoft.com/fwlink/?LinkId=256668

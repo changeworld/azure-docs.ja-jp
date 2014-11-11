@@ -1,6 +1,6 @@
 <properties linkid="develop-php-how-to-guides-service-bus-topics" urlDisplayName="Service Bus Topics" pageTitle="How to use Service Bus topics (PHP) - Azure" metaKeywords="" description="Learn how to use Service Bus topics with PHP in Azure." metaCanonical="" services="service-bus" documentationCenter="PHP" title="How to Use Service Bus Topics/Subscriptions" authors="sethm" solutions="" manager="timlt" editor="" />
 
-<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="sethm"></tags>
+<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="sethm" />
 
 # サービス バス トピック/サブスクリプションの使用方法
 
@@ -22,7 +22,7 @@
 -   [方法: トピックとサブスクリプションを削除する][方法: トピックとサブスクリプションを削除する]
 -   [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [howto-service-bus-topics][howto-service-bus-topics]]
+[WACOM.INCLUDE [howto-service-bus-topics](../includes/howto-service-bus-topics.md)]
 
 ## <span id="CreateApplication"></span></a>PHP アプリケーションの作成
 
@@ -35,7 +35,7 @@ Windows Azure BLOB サービスにアクセスする PHP アプリケーショ�
 
 ## <span id="GetClientLibrary"></span></a>Azure クライアント ライブラリの入手
 
-[WACOM.INCLUDE [get-client-libraries][get-client-libraries]]
+[WACOM.INCLUDE [get-client-libraries](../includes/get-client-libraries.md)]
 
 ## <span id="ConfigureApp"></span></a>サービス バスを使用するようにアプリケーションを構成する
 
@@ -331,6 +331,5 @@ Service Bus トピックの管理操作は **ServiceBusRestProxy** クラスを�
   [howto-service-bus-topics]: ../includes/howto-service-bus-topics.md
   [OpenSSL 拡張機能]: http://php.net/openssl
   [get-client-libraries]: ../includes/get-client-libraries.md
-  [require\_once]: http://php.net/require_once
   [SqlFilter.SqlExpression プロパティ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [Service Bus キュー、トピックおよびサブスクリプション]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367516.aspx

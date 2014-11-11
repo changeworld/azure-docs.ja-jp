@@ -1,6 +1,6 @@
 <properties linkid="develop-dotnet-performance" urlDisplayName="Performance" pageTitle="Performance best practices - Azure" metaKeywords="Azure optimization, Azure best practice performance" description="Learn about best practices for performance in Azure." metaCanonical="" services="cloud-services,sql-database,storage,service-bus,virtual-network" documentationCenter=".NET" title="" authors="robb" solutions="" manager="johndaw" editor="" />
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="robb"></tags>
+<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="robb" />
 
 # Azure アプリケーションのパフォーマンスに関するベスト プラクティス
 
@@ -333,11 +333,7 @@ Transact-SQL コマンド SET STATISTICS を使用し、SQL Server Management St
 
   [使用される時間とリソースに比較して、達成された有用な処理の量]: http://go.microsoft.com/fwlink/?LinkId=252650
   [Azure の Visual Studio ロード テストの概要]: http://www.visualstudio.com/get-started/load-test-your-app-vs
-  [Database Design and Modeling Fundamentals (データベース設計およびモデリングの基礎)]: http://go.microsoft.com/fwlink/?LinkId=252675
-  [Stairway to Database Design (データベース設計の段階)]: http://go.microsoft.com/fwlink/?LinkId=252676
-  [Database Design (データベース設計)]: http://go.microsoft.com/fwlink/?LinkId=252677
   [Azure テーブル ストレージと Azure SQL データベースの比較]: http://msdn.microsoft.com/ja-jp/library/jj553018.aspx
-  [Azure Table Storage Performance Considerations (Azure テーブル ストレージ)]: http://go.microsoft.com/fwlink/?LinkId=252663
   [SQL データベースと Azure テーブル ストレージ]: http://go.microsoft.com/fwlink/?LinkId=252664
   [Azure テーブル ストレージ挿入のバッチ処理によるパフォーマンスの向上に関するページ]: http://go.microsoft.com/fwlink/?LinkID=252665
   [SQL データベースのパフォーマンスと弾力性に関するガイド]: http://go.microsoft.com/fwlink/?LinkId=221876
@@ -346,23 +342,18 @@ Transact-SQL コマンド SET STATISTICS を使用し、SQL Server Management St
   [フェデレーションを使用したデータベース設計に対するスケール優先のアプローチ: パート 2 - フェデレーションのスキーマの注釈とデプロイ]: http://go.microsoft.com/fwlink/?LinkId=252672
   [パート 2]: http://go.microsoft.com/fwlink/?LinkId=252673
   [SQL データベースでのシャードの方法]: http://go.microsoft.com/fwlink/?LinkId=252678
-  [SQL Server and SQL Database Shard Library (SQL Server と SQL データベースのシャード ライブラリ)]: http://go.microsoft.com/fwlink/?LinkId=252679
   [Azure Caching サービスの概要]: http://go.microsoft.com/fwlink/?LinkId=252680
-  [Windows \#Azure Caching – Performance considerations (Windows \#Azure の Caching – パフォーマンスの考慮事項)]: http://go.microsoft.com/fwlink/?LinkId=252681
   [Azure キューと Azure Service Bus キューの比較]: http://go.microsoft.com/fwlink/?LinkId=252682
   [サービス バスで仲介型メッセージングを使用したパフォーマンス向上のヒント集]: http://go.microsoft.com/fwlink/?LinkID=252683
   [ビッグ データ]: /ja-jp/solutions/big-data/
   [Azure HDInsight サービス]: /ja-jp/documentation/services/hdinsight/
   [Azure HDInsight サービスの概要]: /ja-jp/documentation/articles/hdinsight-get-started/
   [Azure での NoSQL の利用について]: http://go.microsoft.com/fwlink/?LinkId=252729
-  [AggregateOrientedDatabase (集計指向のデータベース)]: http://go.microsoft.com/fwlink/?LinkID=252731
-  [PolyglotPersistence (Polyglot の永続化機能)]: http://go.microsoft.com/fwlink/?LinkId=252732
   [ACS のパフォーマンスに関するガイドライン]: http://go.microsoft.com/fwlink/?LinkId=252747
   [Azure 対応の Web アプリケーションとシリアル化]: http://go.microsoft.com/fwlink/?LinkId=252749
   []: http://go.microsoft.com/fwlink/?LinkId=252775
   [1]: http://go.microsoft.com/fwlink/?LinkId=252776
   [2]: http://go.microsoft.com/fwlink/?LinkID=252666
-  [Transient Fault Handling Application Block (一時的なエラー処理アプリケーション ブロック)]: http://go.microsoft.com/fwlink/?LinkID=236901
   [オートスケーリング アプリケーション ブロック]: http://go.microsoft.com/fwlink/?LinkId=252873
   [Service Bus のキューおよびトピックのキャパシティ プランニング]: http://go.microsoft.com/fwlink/?LinkId=252875
   [Azure アプリケーション開発のトラブルシューティングに関するベスト プラクティスのページ]: http://go.microsoft.com/fwlink/?LinkID=252876

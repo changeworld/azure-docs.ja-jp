@@ -1,6 +1,6 @@
 <properties linkid="dev-java-vm-application-server" urlDisplayName="Tomcat on Virtual Machine" pageTitle="Tomcat on a virtual machine - Azure tutorial" metaKeywords="Azure vm, creating vm Tomcat, configuring vm Tomcat" description="Learn how to create a Windows Virtual machine and configure the machine to run a Apache Tomcat application server." metaCanonical="" services="virtual-machines" documentationCenter="Java" title="How to run a Java application server on a virtual machine" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
 
-<tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="vm-windows" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm"></tags>
+<tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="vm-windows" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
 
 # Java アプリケーション サーバーを仮想マシンで実行する方法
 
@@ -18,7 +18,7 @@ Azure では、仮想マシンを使用してサーバー機能を実現する�
 
 ![仮想マシンで実行されている Apache Tomcat][仮想マシンで実行されている Apache Tomcat]
 
-[WACOM.INCLUDE [create-account-and-vms-note][create-account-and-vms-note]]
+[WACOM.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
 
 ## 仮想マシンを作成するには
 
@@ -146,5 +146,4 @@ Tomcat が実行されていることを外部コンピューターから確認�
   [新しい受信の規則の操作]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleAction.png
   [新しい受信の規則のプロファイル]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleProfile.png
   [新しい受信の規則の名前]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleName.png
-  [http://\*your\\\_DNS\\\_name]: http://*your\_DNS\_name
   [サービスが自動的に起動するように設定する]: ./media/virtual-machines-java-run-tomcat-application-server/WA_TomcatServiceAutomaticStart.png

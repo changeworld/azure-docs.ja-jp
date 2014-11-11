@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-create-pull-notifications-js" urlDisplayName="Define a custom API that supports pull notifications" pageTitle="Define a custom API that supports pull notifications - Azure Mobile Services" metaKeywords="" description="Learn how to Define a custom API that supports periodic notifications in Windows Store apps that use Azure Mobile Services." metaCanonical="" services="" documentationCenter="" title="Define a custom API that supports periodic notifications" authors="glenga" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # 定期的な通知をサポートするカスタム API を定義します。
 
@@ -24,7 +24,7 @@
 
 1.  [Azure の管理ポータル][Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[API]** タブをクリックし、**[カスタム API の作成]** をクリックします。
 
@@ -142,13 +142,10 @@
   [アプリケーションを更新して定期的な通知を有効にする]: #update-app
   [アプリケーションをテストする]: #test-app
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-services-selection.png
+  [0]: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-services-selection.png
   [1]: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-custom-api-create.png
   [2]: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-custom-api-create-dialog.png
   [3]: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-custom-api-select.png
-  [wns モジュール]: http://go.microsoft.com/fwlink/p/?LinkId=306750
-  [push オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554217.aspx
-  [wns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=260591
   [4]: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-custom-api-live-tile.png
   [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-js
   [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293

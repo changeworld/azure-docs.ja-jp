@@ -1,6 +1,6 @@
 <properties linkid="manage-services-hdinsight-sample-wordcount" urlDisplayName="Hadoop Samples in HDInsight" pageTitle="The WordCount Hadoop sample in HDInsight | Azure" metaKeywords="hdinsight, hdinsight sample, hadoop, mapreduce" description="Learn how to run a simple MapReduce sample on HDInsight." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="The WordCount Hadoop sample in HDInsight" authors="bradsev" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev" />
 
 # HDInsight でのワードカウント Hadoop サンプル
 
@@ -15,20 +15,20 @@ Hadoop MapReduce プログラムはテキスト ファイルを読み取って�
 
 **前提条件**:
 
--   Azure アカウントが必要です。アカウントにサインアップする方法については、[Azure の無料評価版のページ][]を参照してください。
+-   Azure アカウントが必要です。アカウントにサインアップする方法については、[Azure の無料評価版のページ][Azure の無料評価版のページ]を参照してください。
 
--   HDInsight クラスターのプロビジョニングを終えている必要があります。クラスターを作成するさまざまな方法については、「[Azure HDInsight の概要][]」または「[HDInsight クラスターのプロビジョニング][]」を参照してください。
+-   HDInsight クラスターのプロビジョニングを終えている必要があります。クラスターを作成するさまざまな方法については、「[Azure HDInsight の概要][Azure HDInsight の概要]」または「[HDInsight クラスターのプロビジョニング][HDInsight クラスターのプロビジョニング]」を参照してください。
 
--   Azure PowerShell をインストールして、アカウントを使用するように構成している必要があります。その手順については、「[Azure PowerShell のインストールおよび構成][]」を参照してください。
+-   Azure PowerShell をインストールして、アカウントを使用するように構成している必要があります。その手順については、「[Azure PowerShell のインストールおよび構成][Azure PowerShell のインストールおよび構成]」を参照してください。
 
 ## この記事の内容
 
 このトピックでは、サンプルを実行する方法について説明し、MapReduce プログラムの Java コードを示し、説明した内容をまとめ、次の手順の概略を示します。ここで取り上げる内容は次のとおりです。
 
-1.  [Azure PowerShell を使用したサンプルの実行][]
-2.  [ワードカウント MapReduce プログラムの Java コード][]
-3.  [まとめ][]
-4.  [次のステップ][]
+1.  [Azure PowerShell を使用したサンプルの実行][Azure PowerShell を使用したサンプルの実行]
+2.  [ワードカウント MapReduce プログラムの Java コード][ワードカウント MapReduce プログラムの Java コード]
+3.  [まとめ][まとめ]
+4.  [次のステップ][次のステップ]
 
 ## <span id="run-sample"></span></a>Azure PowerShell を使用したサンプルの実行
 
@@ -101,7 +101,7 @@ Hadoop MapReduce プログラムはテキスト ファイルを読み取って�
 
 ワードカウント スクリプトの出力がコマンド ウィンドウに表示されます。
 
-![HDI.Sample.WordCount.Output][]
+![HDI.Sample.WordCount.Output][HDI.Sample.WordCount.Output]
 
 MapReduce ジョブの出力ファイルは不変であることに注意してください。そのため、このサンプルを再実行する場合は、出力ファイルの名前を変更する必要があります。
 
@@ -183,15 +183,15 @@ MapReduce ジョブの出力ファイルは不変であることに注意して�
 
 Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実行するチュートリアルや、Pig、Hive、MapReduce の使用方法に関するチュートリアルについては、次のトピックを参照してください。
 
--   [Azure HDInsight の概要][]
--   [サンプル: 10 GB GraySort][]
--   [サンプル: Pi 推定][]
--   [サンプル: C# ストリーミング][]
--   [HDInsight での Pig の使用][]
--   [HDInsight での Hive の使用][]
--   [Azure HDInsight SDK のドキュメント][]
+-   [Azure HDInsight の概要][Azure HDInsight の概要]
+-   [サンプル: 10 GB GraySort][サンプル: 10 GB GraySort]
+-   [サンプル: Pi 推定][サンプル: Pi 推定]
+-   [サンプル: C# ストリーミング][サンプル: C# ストリーミング]
+-   [HDInsight での Pig の使用][HDInsight での Pig の使用]
+-   [HDInsight での Hive の使用][HDInsight での Hive の使用]
+-   [Azure HDInsight SDK のドキュメント][Azure HDInsight SDK のドキュメント]
 
-  [Azure の無料評価版のページ]: http://azure.microsoft.com/en-us/pricing/free-trial/
+  [Azure の無料評価版のページ]: http://azure.microsoft.com/ja-jp/pricing/free-trial/
   [Azure HDInsight の概要]: ../hdinsight-get-started/
   [HDInsight クラスターのプロビジョニング]: ../hdinsight-provision-clusters/
   [Azure PowerShell のインストールおよび構成]: ../install-configure-powershell/
@@ -205,4 +205,4 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
   [サンプル: C# ストリーミング]: ../hdinsight-sample-csharp-streaming/
   [HDInsight での Pig の使用]: ../hdinsight-use-pig/
   [HDInsight での Hive の使用]: ../hdinsight-use-hive/
-  [Azure HDInsight SDK のドキュメント]: http://msdnstage.redmond.corp.microsoft.com/en-us/library/dn479185.aspx
+  [Azure HDInsight SDK のドキュメント]: http://msdnstage.redmond.corp.microsoft.com/ja-jp/library/dn479185.aspx

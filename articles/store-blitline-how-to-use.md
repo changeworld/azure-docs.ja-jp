@@ -1,6 +1,6 @@
 <properties linkid="develop-net-how-to-guides-blitline-image-processing-service" urlDisplayName="Blitline Image Processing Service" pageTitle="How to use Blitline for image processing - Azure feature guide " metaKeywords="" description="Learn how to use the Blitline service to process images within an Azure application." metaCanonical="" services="" documentationCenter=".NET" title="How to use Blitline with Azure and Azure Storage" authors="pennij" solutions="" manager="" editor="" />
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="pennij"></tags>
+<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="pennij" />
 
 # Azure と Azure ストレージで Blitline を使用する方法
 
@@ -37,7 +37,7 @@ Blitline がどのようなときに役立つかは、使い始める前に Blit
 
 ## <span id="createaccount"></span></a>Blitline アカウントの作成
 
-[WACOM.INCLUDE [blitline-signup][blitline-signup]]
+[WACOM.INCLUDE [blitline-signup](../includes/blitline-signup.md)]
 
 ## <span id="createjob"></span></a>Blitline ジョブを作成する方法
 
@@ -135,5 +135,4 @@ Azure ストレージに関する Blitline のドキュメントの最新版を[
   [blitline-signup]: ../includes/blitline-signup.md
   [を参照してください。http://www.blitline.com/docs/functions]: http://www.blitline.com/docs/functions
   [にも用意されています。http://www.blitline.com/docs/api]: http://www.blitline.com/docs/api
-  [https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\\\_APP\\\_ID/CK3f0xBF\_2bV6wf7gEZE8w.jpg]: https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg
   [ここ]: http://www.blitline.com/docs/azure_storage

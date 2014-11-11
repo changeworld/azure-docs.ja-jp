@@ -1,6 +1,6 @@
 <properties pageTitle="What is a web hosting plan?" description="Web hosting plan overview" title="What is a web hosting plan?" services="web-sites" authors="adamab" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="adamab"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="adamab" />
 
 # Web ホスティング プランとは
 
@@ -34,7 +34,7 @@ Web ホスティング プランの管理の詳細については、[こちら][
 
 すべてのサブスクリプションにまたがって関連付けられている Web ホスティング プランを確認できます。そのためには、左側のメニュー バーにある **[参照]** をクリックし、画面に表示される [アクティビティ] パネルの右上にある **[すべて]** をクリックします。
 
-![][]
+![][0]
 ![][2]
 
 各 Web サイトに関連付けられている Web ホスティング プランを確認することもできます。そのためには、Web サイト ブレードの上部に表示されるリソース グループのグラフィカルな表示を使用します。
@@ -53,7 +53,7 @@ Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイ
 
   [こちら]: http://go.microsoft.com/fwlink/?LinkID=394421
   [1]: http://go.microsoft.com/fwlink/?LinkID=394411
-  []: ./media/web-sites-web-hosting-plan-overview/browse-everything.png
+  [0]: ./media/web-sites-web-hosting-plan-overview/browse-everything.png
   [2]: ./media/web-sites-web-hosting-plan-overview/browse-web-hosting-plans.png
   [3]: ./media/web-sites-web-hosting-plan-overview/web-hosting-plan-resource-map.png
   [4]: ./media/web-sites-web-hosting-plan-overview/web-hosting-plan-blade.png

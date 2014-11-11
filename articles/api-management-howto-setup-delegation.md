@@ -1,6 +1,6 @@
 <properties pageTitle="How to delegate user registration and product subscription" metaKeywords="" description="Learn how to delegate user registration and product subscription to a third party in Azure API Management." metaCanonical="" services="" documentationCenter="API Management" title="How to delegate user registration and product subscription in Azure API Management" authors="antonba" solutions="" manager="" editor="" />
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="antonba"></tags>
+<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="antonba" />
 
 # ユーザーの登録と成果物のサブスクリプションを委任する方法
 
@@ -114,5 +114,4 @@
   [成果物のサブスクリプション処理の委任]: #delegate-product-subscription
   [Delegation page]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png
   [ユーザーを作成]: http://go.microsoft.com/fwlink/?LinkId=507655#CreateUser
-  [シングル サインオン (SSO) トークンを要求]: http://go.microsoft.com/fwlink/?LinkId=507409
   [成果物のサブスクリプションのための REST API を呼び出して]: http://go.microsoft.com/fwlink/?LinkId=507655#SSO

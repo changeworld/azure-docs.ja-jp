@@ -1,6 +1,6 @@
 <properties linkid="storage-introduction" urlDisplayName="Introduction to Azure Storage" pageTitle="Introduction to Storage | Microsoft Azure" metaKeywords="Get started  Azure storage introduction  Azure storage overview  Azure blob   Azure unstructured data   Azure unstructured storage   Azure blob   Azure blob storage  Azure queue   Azure asynchronous processing   Azure queue   Azure queue storage Azure table   Azure nosql   Azure large structured data store   Azure table   Azure table storage  Azure file storage  Azure file  Azure file share  Azure " description="An overview of Microsoft Azure Storage." metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="storage" documentationCenter="" title="Introduction to Microsoft Azure Storage" authors="tamram" manager="mbaldwin" editor="cgronlun" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="tamram"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
 # Microsoft Azure Storage の概要
 
@@ -35,17 +35,17 @@ Azure Storage サービスには、BLOB ストレージ、テーブル ストレ
 -   **キュー ストレージ**は、ワークフロー処理およびクラウド サービスのコンポーネント間通信のための、信頼性の高いメッセージング機能を提供します。
 -   **ファイル ストレージ**は、標準の SMB 2.1 プロトコルを使用して、レガシ アプリケーション用の共有ストレージを提供します。Azure の仮想マシンおよびクラウド サービスでは、マウントされている共有を介して、アプリケーション コンポーネント間でファイル データを共有できます。内部設置型のアプリケーションでは、ファイル サービス REST API を介して、共有内のファイル データにアクセスできます。
 
-BLOB ストレージ、テーブル ストレージ、キュー ストレージは、すべてのストレージ アカウントに含まれています。ファイル ストレージは、[Azure プレビュー ページ][]から要求することで利用できます。
+BLOB ストレージ、テーブル ストレージ、キュー ストレージは、すべてのストレージ アカウントに含まれています。ファイル ストレージは、[Azure プレビュー ページ][Azure プレビュー ページ]から要求することで利用できます。
 
-ストレージ アカウントは、Azure Storage にアクセスできる一意の名前空間です。各ストレージ アカウントには、最大 500 TB の BLOB (異なる種類のデータの組み合わせが可能)、キュー、テーブル、ファイルのデータを格納できます。Azure ストレージ アカウントの容量の詳細については、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット][]」を参照してください。
+ストレージ アカウントは、Azure Storage にアクセスできる一意の名前空間です。各ストレージ アカウントには、最大 500 TB の BLOB (異なる種類のデータの組み合わせが可能)、キュー、テーブル、ファイルのデータを格納できます。Azure ストレージ アカウントの容量の詳細については、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット][Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット]」を参照してください。
 
 以下の図は、Azure Storage のリソース間の関係を示したものです。
 
-![Azure Storage のリソース][]
+![Azure Storage のリソース][Azure Storage のリソース]
 
 ストレージ アカウントを作成するには、事前に Azure サブスクリプション (多様な Azure サービスにアクセスするためのプラン) が必要です。1 つのサブスクリプションに対し、最大 20 の一意の名前を持つストレージ アカウントを作成できます。
 
-Azure は、まず[無料評価版][]で使用してみることができます。またプランの購入時には、さまざまな[購入オプション][]から選択できます。[MSDN サブスクライバー][]には、毎月、Azure ストレージを含む Azure サービスに使用できる無料使用分のクレジットが与えられます。
+Azure は、まず[無料評価版][無料評価版]で使用してみることができます。またプランの購入時には、さまざまな[購入オプション][購入オプション]から選択できます。[MSDN サブスクライバー][MSDN サブスクライバー]には、毎月、Azure ストレージを含む Azure サービスに使用できる無料使用分のクレジットが与えられます。
 
 ## BLOB ストレージ
 
@@ -62,7 +62,7 @@ Azure は、まず[無料評価版][]で使用してみることができます�
 
 BLOB ストレージが提供する BLOB には、ブロック BLOB とページ BLOB (ディスク) の 2 種類があります。ブロック BLOB はストリーミングおよびクラウド オブジェクトの格納に最適化されているため、ドキュメント、メディア ファイル、バックアップ データなどの格納に適しています。ブロック BLOB は、最大 200 GB までサイズを拡大できます。ページ BLOB は、IaaS のディスクとして使用でき、ランダムな書き込みをサポートするように最適化され、最大 1 TB までサイズを拡大できます。Azure 仮想マシン ネットワークに設置された IaaS ディスクは、ページ BLOB として格納される VHD です。
 
-ネットワーク上の制限があるために、有線接続経由で BLOB ストレージにデータをアップロードまたはダウンロードできない場合は、Microsoft にハード ドライブを送付し、データ センターから直接データをインポートまたはエクスポートする [Azure インポート/エクスポート サービス][]を使用できます。BLOB データは、ストレージ アカウント内またはストレージ アカウント間でコピーすることもできます。
+ネットワーク上の制限があるために、有線接続経由で BLOB ストレージにデータをアップロードまたはダウンロードできない場合は、Microsoft にハード ドライブを送付し、データ センターから直接データをインポートまたはエクスポートする [Azure インポート/エクスポート サービス][Azure インポート/エクスポート サービス]を使用できます。BLOB データは、ストレージ アカウント内またはストレージ アカウント間でコピーすることもできます。
 
 ## テーブル ストレージ
 
@@ -100,13 +100,13 @@ Azure の仮想マシンまたはクラウド サービスで実行している�
 
 ストレージ アカウントには、認証に使用される 2 つのプライベート アクセス キーが作成時に割り当てられます。2 つのキーを持つことで、通常のセキュリティ キーの管理手法に従って定期的にキーを再生成しても、アプリケーションが使用できます。
 
-ストレージ リソースへのアクセス許可をユーザーが管理する必要がある場合は、[共有アクセス署名][]を作成できます。共有アクセス署名は、URL に追加することで、コンテナー、BLOB、テーブル、またはキューへのアクセスを委任できるトークンです。トークンを持つすべてのユーザーは、トークンが有効な間、トークンに指定されたアクセス許可を使用して、トークンが示すリソースにアクセスできます。Azure ファイル ストレージでは、現在、共有アクセス署名をサポートしていません。
+ストレージ リソースへのアクセス許可をユーザーが管理する必要がある場合は、[共有アクセス署名][共有アクセス署名]を作成できます。共有アクセス署名は、URL に追加することで、コンテナー、BLOB、テーブル、またはキューへのアクセスを委任できるトークンです。トークンを持つすべてのユーザーは、トークンが有効な間、トークンに指定されたアクセス許可を使用して、トークンが示すリソースにアクセスできます。Azure ファイル ストレージでは、現在、共有アクセス署名をサポートしていません。
 
 最後に、コンテナーとそれに含まれるすべての BLOB、または特定の BLOB をパブリック アクセスで使用できるように指定できます。コンテナーまたは BLOB をパブリックとして指定すると、認証が不要になり、すべてのユーザーが匿名でリソースを読み取ることができます。パブリック コンテナーと BLOB は、Web サイトでホストされているメディアやドキュメントなどのリソースを公開する場合に便利です。グローバル ユーザーのネットワーク待ち時間を短縮するために、Web サイトで使用される BLOB データを Azure CDN によってキャッシュできます。
 
 ## レプリケーションによる持続性と高可用性
 
-[WACOM.INCLUDE [storage-replication-options][]]
+[WACOM.INCLUDE [storage-replication-options](../includes/storage-replication-options.md)]
 
 ## 料金
 
@@ -114,101 +114,85 @@ Azure の仮想マシンまたはクラウド サービスで実行している�
 
 ストレージ容量とは、データの保存に使用するためにストレージ アカウントに割り当てられた容量を指します。単純にデータを保存する場合の料金は、保存するデータ量とレプリケーション方法によって決まります。サービスに対する要求とは、Azure Storage に対するすべての読み取り、書き込み操作を指します。送信データ転送とは、Windows Azure のリージョン外に転送されるデータです。他のリージョンで動作しているアプリケーションがストレージ アカウント内のデータにアクセスした場合、そのアプリケーションがクラウド サービスか、その他の種類のアプリケーションかに関係なく、送信データ転送として課金されます (Windows Azure サービスでは、同じデータ センター内のデータとサービスをグループ化して、送信データ転送処理とそれに伴う料金を削減または不要にする手順が用意されています)
 
-ストレージ容量、レプリケーション、トランザクションの料金の詳細については、「[Storage (ストレージ サービス) の料金詳細][]」のページを参照してください。送信データ転送の料金の詳細については、「[データ転送の料金の詳細][]」を参照してください。コストの見積には、[計算ツール][] をご利用ください。
+ストレージ容量、レプリケーション、トランザクションの料金の詳細については、「[Storage (ストレージ サービス) の料金詳細][Storage (ストレージ サービス) の料金詳細]」のページを参照してください。送信データ転送の料金の詳細については、「[データ転送の料金の詳細][データ転送の料金の詳細]」を参照してください。コストの見積には、[計算ツール][計算ツール] をご利用ください。
 
 ## ストレージに対する開発
 
-Azure ストレージでは、HTTP/HTTPS 要求機能を持つ任意の言語を使用して [REST API][] を呼び出すことで、リソースにアクセスできます。さらに、主要な複数の言語のプログラミング ライブラリも用意されています。これらのライブラリを使用すると、同期呼び出しと非同期呼び出し、操作のバッチ処理、例外管理、自動再試行、実行動作などの詳細が処理され、Azure ストレージの使用に関するさまざまな側面が簡略化されます。ライブラリは、次の言語およびプラットフォーム用が現在提供されており、その他についても準備中です。
+Azure ストレージでは、HTTP/HTTPS 要求機能を持つ任意の言語を使用して [REST API][REST API] を呼び出すことで、リソースにアクセスできます。さらに、主要な複数の言語のプログラミング ライブラリも用意されています。これらのライブラリを使用すると、同期呼び出しと非同期呼び出し、操作のバッチ処理、例外管理、自動再試行、実行動作などの詳細が処理され、Azure ストレージの使用に関するさまざまな側面が簡略化されます。ライブラリは、次の言語およびプラットフォーム用が現在提供されており、その他についても準備中です。
 
--   [.NET][]
--   [ネイティブ コード][]
--   [Java/Android][]
--   [Node.js][]
--   [PHP][]
--   [Ruby][]
--   [Python][]
--   [PowerShell][]
+-   [.NET][.NET]
+-   [ネイティブ コード][ネイティブ コード]
+-   [Java/Android][Java/Android]
+-   [Node.js][Node.js]
+-   [PHP][PHP]
+-   [Ruby][Ruby]
+-   [Python][Python]
+-   [PowerShell][PowerShell]
 
 ## 次のステップ
 
 Azure ストレージを導入するには、次のリソースを参照してください。
 
--   [Azure ストレージのドキュメント][]
--   [Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット][]
+-   [Azure ストレージのドキュメント][Azure ストレージのドキュメント]
+-   [Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット][Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット]
 
 ### .NET 開発者向け
 
--   [How to use Blob Storage from .NET (.NET から BLOB ストレージを使用する方法)][]
--   [How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)][]
--   [How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)][]
+-   [How to use Blob Storage from .NET (.NET から BLOB ストレージを使用する方法)][How to use Blob Storage from .NET (.NET から BLOB ストレージを使用する方法)]
+-   [How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)][How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)]
+-   [How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)][How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)]
 
 ### Java/Android 開発者向け
 
--   [Java/Android から BLOB ストレージを使用する方法][]
--   [Java/Android からテーブル ストレージを使用する方法][]
--   [Java/Android からキュー ストレージを使用する方法][]
+-   [Java/Android から BLOB ストレージを使用する方法][Java/Android から BLOB ストレージを使用する方法]
+-   [Java/Android からテーブル ストレージを使用する方法][Java/Android からテーブル ストレージを使用する方法]
+-   [Java/Android からキュー ストレージを使用する方法][Java/Android からキュー ストレージを使用する方法]
 
 ### Node.js 開発者向け
 
--   [How to use Blob Storage from Node.js (Node.js から BLOB ストレージを使用する方法)][]
--   [How to use Table Storage from Node.js (Node.js からテーブル ストレージを使用する方法)][]
--   [How to use Queue Storage from Node.js (Node.js からキュー ストレージを使用する方法)][]
+-   [How to use Blob Storage from Node.js (Node.js から BLOB ストレージを使用する方法)][How to use Blob Storage from Node.js (Node.js から BLOB ストレージを使用する方法)]
+-   [How to use Table Storage from Node.js (Node.js からテーブル ストレージを使用する方法)][How to use Table Storage from Node.js (Node.js からテーブル ストレージを使用する方法)]
+-   [How to use Queue Storage from Node.js (Node.js からキュー ストレージを使用する方法)][How to use Queue Storage from Node.js (Node.js からキュー ストレージを使用する方法)]
 
 ### PHP 開発者向け
 
--   [How to use Blob Storage from PHP (PHP から BLOB ストレージを使用する方法)][]
--   [How to use Table Storage from PHP (PHP からテーブル ストレージを使用する方法)][]
--   [How to use Queue Storage from PHP (PHP からキュー ストレージを使用する方法)][]
+-   [How to use Blob Storage from PHP (PHP から BLOB ストレージを使用する方法)][How to use Blob Storage from PHP (PHP から BLOB ストレージを使用する方法)]
+-   [How to use Table Storage from PHP (PHP からテーブル ストレージを使用する方法)][How to use Table Storage from PHP (PHP からテーブル ストレージを使用する方法)]
+-   [How to use Queue Storage from PHP (PHP からキュー ストレージを使用する方法)][How to use Queue Storage from PHP (PHP からキュー ストレージを使用する方法)]
 
 ### Ruby 開発者向け
 
--   [How to use Blob Storage from Ruby (Ruby から BLOB ストレージを使用する方法)][]
--   [How to use Table Storage from Ruby (Ruby からテーブル ストレージを使用する方法)][]
--   [How to use Queue Storage from Ruby (Ruby からキュー ストレージを使用する方法)][]
+-   [How to use Blob Storage from Ruby (Ruby から BLOB ストレージを使用する方法)][How to use Blob Storage from Ruby (Ruby から BLOB ストレージを使用する方法)]
+-   [How to use Table Storage from Ruby (Ruby からテーブル ストレージを使用する方法)][How to use Table Storage from Ruby (Ruby からテーブル ストレージを使用する方法)]
+-   [How to use Queue Storage from Ruby (Ruby からキュー ストレージを使用する方法)][How to use Queue Storage from Ruby (Ruby からキュー ストレージを使用する方法)]
 
 ### Python 開発者向け
 
--   [How to use Blob Storage from Python (Python から BLOB ストレージを使用する方法)][]
--   [How to use Table Storage from Python (Python からテーブル ストレージを使用する方法)][]
--   [How to use Queue Storage from Python (Python からキュー ストレージを使用する方法)][]
+-   [How to use Blob Storage from Python (Python から BLOB ストレージを使用する方法)][How to use Blob Storage from Python (Python から BLOB ストレージを使用する方法)]
+-   [How to use Table Storage from Python (Python からテーブル ストレージを使用する方法)][How to use Table Storage from Python (Python からテーブル ストレージを使用する方法)]
+-   [How to use Queue Storage from Python (Python からキュー ストレージを使用する方法)][How to use Queue Storage from Python (Python からキュー ストレージを使用する方法)]
 
-  [Azure プレビュー ページ]: /en-us/services/preview/
+  [Azure プレビュー ページ]: /ja-jp/services/preview/
   [Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット]: http://msdn.microsoft.com/library/windowsazure/dn249410.aspx
   [Azure Storage のリソース]: ./media/storage-introduction/storage-concepts.png
-  [無料評価版]: /en-us/pricing/free-trial/
-  [購入オプション]: /en-us/pricing/purchase-options/
-  [MSDN サブスクライバー]: /en-us/pricing/member-offers/msdn-benefits-details/
+  [無料評価版]: /ja-jp/pricing/free-trial/
+  [購入オプション]: /ja-jp/pricing/purchase-options/
+  [MSDN サブスクライバー]: /ja-jp/pricing/member-offers/msdn-benefits-details/
   [Azure インポート/エクスポート サービス]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-import-export-service/
   [共有アクセス署名]: ../storage-dotnet-shared-access-signature-part-1/
   [storage-replication-options]: ../includes/storage-replication-options.md
-  [Storage (ストレージ サービス) の料金詳細]: /en-us/pricing/details/storage/
-  [データ転送の料金の詳細]: /en-us/pricing/details/data-transfers/
-  [計算ツール]: /en-us/pricing/calculator/?scenario=data-management
+  [データ転送の料金の詳細]: /ja-jp/pricing/details/data-transfers/
+  [計算ツール]: /ja-jp/pricing/calculator/?scenario=data-management
   [REST API]: http://msdn.microsoft.com/library/windowsazure/dd179355.aspx
   [.NET]: http://msdn.microsoft.com/library/dn495001.aspx
   [ネイティブ コード]: http://msdn.microsoft.com/library/dn495438.aspx
-  [Java/Android]: /en-us/develop/java/
-  [Node.js]: /en-us/develop/nodejs/
-  [PHP]: /en-us/develop/php/
-  [Ruby]: /en-us/develop/ruby/
-  [Python]: /en-us/develop/python/
+  [Java/Android]: /ja-jp/develop/java/
+  [Node.js]: /ja-jp/develop/nodejs/
+  [PHP]: /ja-jp/develop/php/
+  [Ruby]: /ja-jp/develop/ruby/
+  [Python]: /ja-jp/develop/python/
   [PowerShell]: http://msdn.microsoft.com/library/dn495240.aspx
   [Azure ストレージのドキュメント]: /ja-jp/documentation/services/storage/
-  [How to use Blob Storage from .NET (.NET から BLOB ストレージを使用する方法)]: ../storage-dotnet-how-to-use-blobs/
-  [How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)]: ../storage-dotnet-how-to-use-tables/
-  [How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)]: ../storage-dotnet-how-to-use-queues/
   [Java/Android から BLOB ストレージを使用する方法]: ../storage-java-how-to-use-blob-storage/
   [Java/Android からテーブル ストレージを使用する方法]: ../storage-java-how-to-use-table-storage/
   [Java/Android からキュー ストレージを使用する方法]: ../storage-java-how-to-use-queue-storage/
-  [How to use Blob Storage from Node.js (Node.js から BLOB ストレージを使用する方法)]: ../storage-nodejs-how-to-use-blob-storage/
-  [How to use Table Storage from Node.js (Node.js からテーブル ストレージを使用する方法)]: ../storage-nodejs-how-to-use-table-storage/
-  [How to use Queue Storage from Node.js (Node.js からキュー ストレージを使用する方法)]: ../storage-nodejs-how-to-use-queues/
-  [How to use Blob Storage from PHP (PHP から BLOB ストレージを使用する方法)]: ../storage-php-how-to-use-blobs/
-  [How to use Table Storage from PHP (PHP からテーブル ストレージを使用する方法)]: ../storage-php-how-to-use-table-storage/
-  [How to use Queue Storage from PHP (PHP からキュー ストレージを使用する方法)]: ../storage-php-how-to-use-queues/
-  [How to use Blob Storage from Ruby (Ruby から BLOB ストレージを使用する方法)]: ../storage-ruby-how-to-use-blob-storage/
-  [How to use Table Storage from Ruby (Ruby からテーブル ストレージを使用する方法)]: ../storage-ruby-how-to-use-table-storage/
-  [How to use Queue Storage from Ruby (Ruby からキュー ストレージを使用する方法)]: ../storage-ruby-how-to-use-queue-storage/
-  [How to use Blob Storage from Python (Python から BLOB ストレージを使用する方法)]: ../storage-python-how-to-use-blob-storage/
-  [How to use Table Storage from Python (Python からテーブル ストレージを使用する方法)]: ../storage-python-how-to-use-table-storage/
-  [How to use Queue Storage from Python (Python からキュー ストレージを使用する方法)]: ../storage-python-how-to-use-queue-storage/

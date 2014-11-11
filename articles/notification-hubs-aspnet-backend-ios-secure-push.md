@@ -1,6 +1,6 @@
 <properties title="Azure Notification Hubs Secure Push" pageTitle="Azure Notification Hubs Secure Push" metaKeywords="Azure push notifications, Azure notification hubs, secure push" description="Learn how to send secure push notifications to an iOS app from Azure. Code samples written in Objective-C and C#." documentationCenter="Mobile" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="sethm" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="sethm"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="sethm" />
 
 # Azure Notification Hubs の安全なプッシュ
 
@@ -31,7 +31,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 > [AZURE.NOTE] このチュートリアルでは、「[Getting Started with Notification Hubs (iOS) (Notification Hubs (iOS) の使用)][Getting Started with Notification Hubs (iOS) (Notification Hubs (iOS) の使用)]」での説明に従って通知が作成され、構成されていると想定しています。
 
-[WACOM.INCLUDE [notification-hubs-aspnet-backend-securepush][notification-hubs-aspnet-backend-securepush]]
+[WACOM.INCLUDE [notification-hubs-aspnet-backend-securepush](../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## iOS プロジェクトを変更する
 
@@ -98,7 +98,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 4.  次に、中央ウィンドウの上部で **[機能]** タブをクリックし、**[リモート通知]** チェック ボックスをオンにします。
 
-    ![][]
+    ![][0]
 
 5.  **AppDelegate.m** で、次のメソッドを追加してプッシュ通知を処理します。
 
@@ -137,9 +137,5 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 4.  iOS アプリケーションの UI で、**[ログイン]** をクリックします。次に、**[プッシュを送信する]** をクリックします。通知センターに安全な通知が表示されます。
 
-  [Windows ユニバーサル]: /ja-jp/documentation/articles/notification-hubs-windows-dotnet-secure-push/ "Windows ユニバーサル"
-  [iOS]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/ "iOS"
-  [Android]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-secure-push/ "Android"
-  [Getting Started with Notification Hubs (iOS) (Notification Hubs (iOS) の使用)]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-ios-get-started/
   [notification-hubs-aspnet-backend-securepush]: ../includes/notification-hubs-aspnet-backend-securepush.md
-  []: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png
+  [0]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png

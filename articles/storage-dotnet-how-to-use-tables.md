@@ -1,6 +1,6 @@
 <properties linkid="dev-net-how-to-table-services" urlDisplayName="Table Service" pageTitle="How to use table storage  from .NET | Microsoft Azure" metaKeywords="Get started Azure table   Azure nosql   Azure large structured data store   Azure table   Azure table storage   Azure table .NET   Azure table storage .NET   Azure table C#   Azure table storage C#" description="Learn how to use Microsoft Azure Table storage to create and delete tables and insert and query entities in a table." services="storage" documentationCenter=".NET" metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="How to use Microsoft Azure Table storage" authors="tamram" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tamram"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
 # How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)
 
@@ -8,45 +8,45 @@
 シナリオを実行する方法について説明します。例は C# のコードで記述され、
 Azure .NET 用ストレージ クライアント ライブラリを利用しています。紹介するシナリオは、**テーブルの作成と
 削除**、**テーブル エンティティの操作**などです。テーブルの
-詳細については、「[次のステップ][]」のセクションを参照してください。
+詳細については、「[次のステップ][次のステップ]」のセクションを参照してください。
 
-> [WACOM.NOTE] このガイドは、Azure .NET 用ストレージ クライアント ライブラリ 2.x 以上を対象としています。推奨されるバージョンはストレージ クライアント ライブラリ 4.x です。これは、[NuGet][] から、または [Azure SDK for .NET][] の一部として提供されています。ストレージ クライアント ライブラリの入手方法の詳細については、「[方法: プログラムでテーブル ストレージにアクセスする][]」を参照してください。
+> [WACOM.NOTE] このガイドは、Azure .NET 用ストレージ クライアント ライブラリ 2.x 以上を対象としています。推奨されるバージョンはストレージ クライアント ライブラリ 4.x です。これは、[NuGet][NuGet] から、または [Azure SDK for .NET][Azure SDK for .NET] の一部として提供されています。ストレージ クライアント ライブラリの入手方法の詳細については、「[方法: プログラムでテーブル ストレージにアクセスする][方法: プログラムでテーブル ストレージにアクセスする]」を参照してください。
 
 ## 目次
 
--   [テーブル サービスとは][]
--   [概念][]
--   [Azure のストレージ アカウントの作成][]
--   [ストレージ接続文字列の設定][]
--   [方法: プログラムでテーブル ストレージにアクセスする][]
--   [方法: テーブルの作成][]
--   [方法: エンティティをテーブルに追加する][]
--   [方法: エンティティのバッチを挿入する][]
--   [方法: パーティション内のすべてのエンティティを取得する][]
--   [方法: パーティション内の一定範囲のエンティティを取得する][]
--   [方法: 単一のエンティティを取得する][]
--   [方法: エンティティを置換する][]
--   [方法: エンティティの挿入または置換を行う][]
--   [方法: エンティティ プロパティのサブセットを照会する][]
--   [方法: エンティティを削除する][]
--   [方法: テーブルを削除する][]
--   [次のステップ][]
+-   [テーブル サービスとは][テーブル サービスとは]
+-   [概念][概念]
+-   [Azure のストレージ アカウントの作成][Azure のストレージ アカウントの作成]
+-   [ストレージ接続文字列の設定][ストレージ接続文字列の設定]
+-   [方法: プログラムでテーブル ストレージにアクセスする][方法: プログラムでテーブル ストレージにアクセスする]
+-   [方法: テーブルの作成][方法: テーブルの作成]
+-   [方法: エンティティをテーブルに追加する][方法: エンティティをテーブルに追加する]
+-   [方法: エンティティのバッチを挿入する][方法: エンティティのバッチを挿入する]
+-   [方法: パーティション内のすべてのエンティティを取得する][方法: パーティション内のすべてのエンティティを取得する]
+-   [方法: パーティション内の一定範囲のエンティティを取得する][方法: パーティション内の一定範囲のエンティティを取得する]
+-   [方法: 単一のエンティティを取得する][方法: 単一のエンティティを取得する]
+-   [方法: エンティティを置換する][方法: エンティティを置換する]
+-   [方法: エンティティの挿入または置換を行う][方法: エンティティの挿入または置換を行う]
+-   [方法: エンティティ プロパティのサブセットを照会する][方法: エンティティ プロパティのサブセットを照会する]
+-   [方法: エンティティを削除する][方法: エンティティを削除する]
+-   [方法: テーブルを削除する][方法: テーブルを削除する]
+-   [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [howto-table-storage][]]
+[WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
 ## 
 
 ## <a name="create-account"></a><span class="short-header">アカウントの作成</span>Azure の Storage アカウントの作成
 
 </h2>
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## 
 
 ## <a name="setup-connection-string"></a><span class="short-header">接続文字列の設定</span>ストレージ接続文字列の設定
 
 </h2>
-[WACOM.INCLUDE [storage-configure-connection-string][]]
+[WACOM.INCLUDE [storage-configure-connection-string](../includes/storage-configure-connection-string.md)]
 
 ## 
 
@@ -57,7 +57,7 @@ Azure .NET 用ストレージ クライアント ライブラリを利用して�
 
 NuGet を使用して `Microsoft.WindowsAzure.Storage.dll` アセンブリを取得できます。**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
 
-`Microsoft.WindowsAzure.Storage.dll` は、[.NET デベロッパー センター][]からダウンロードできる Azure SDK for .NET にも含まれています。このアセンブリは `%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\<sdk-version>\ref\`lt;sdk-version\>\\ref\\</code> ディレクトリにインストールされます。
+`Microsoft.WindowsAzure.Storage.dll` は、[.NET デベロッパー センター][.NET デベロッパー センター]からダウンロードできる Azure SDK for .NET にも含まれています。このアセンブリは `%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\<sdk-version>\ref\`lt;sdk-version\>\\ref\\</code> ディレクトリにインストールされます。
 
 ### 名前空間宣言
 
@@ -92,7 +92,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 名前空間
 
 ### ODataLib 依存
 
-.NET 用ストレージ クライアント ライブラリの ODataLib 依存は、WCF Data Services ではなく、NuGet から入手できる ODataLib (バージョン 5.0.2) パッケージで解決されます。ODataLib ライブラリは、直接ダウンロードすることも、NuGet を使用してコード プロジェクトで参照することもできます。具体的な ODataLib パッケージは、[OData][]、[Edm][]、および [Spatial][] です。
+.NET 用ストレージ クライアント ライブラリの ODataLib 依存は、WCF Data Services ではなく、NuGet から入手できる ODataLib (バージョン 5.0.2) パッケージで解決されます。ODataLib ライブラリは、直接ダウンロードすることも、NuGet を使用してコード プロジェクトで参照することもできます。具体的な ODataLib パッケージは、[OData][OData]、[Edm][Edm]、および [Spatial][Spatial] です。
 
 ## <a name="create-table"></a><span class="short-header">テーブルの作成</span>方法: テーブルの作成
 
@@ -410,7 +410,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 名前空間
 テーブル クエリでは、エンティティのすべてのプロパティではなくごくわずかのプロパティだけをエンティティから取得できます。プロジェクションと呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。次のコードの
 クエリは、テーブル内のエンティティの電子メール アドレスだけを
 返します。これは、**DynamicTableEntity** のクエリと
-**EntityResolver** を使用して行われます。プロジェクションの詳細については、この[ブログの記事][]を参照してください。プロジェクションはローカル ストレージ エミュレーターではサポートされていません。したがって、このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。
+**EntityResolver** を使用して行われます。プロジェクションの詳細については、この[ブログの記事][ブログの記事]を参照してください。プロジェクションはローカル ストレージ エミュレーターではサポートされていません。したがって、このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。
 
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -496,18 +496,18 @@ Microsoft.WindowsAzure.CloudConfigurationManager 名前空間
 ストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
 -   利用可能な API の詳細については、テーブル サービスのリファレンス ドキュメントを参照してください。
-    -   [.NET 用ストレージ クライアント ライブラリ リファレンス][]
-    -   [REST API リファレンス][]
--   Azure Storage を使用して実行できるさらに高度なタスクについては、「[Azure のデータの格納とアクセス][]」を参照してください。
--   Azure Websites のバックエンド プロセスで Azure Storage を使用する方法については、「[Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)][]」を参照してください。
+    -   [.NET 用ストレージ クライアント ライブラリ リファレンス][.NET 用ストレージ クライアント ライブラリ リファレンス]
+    -   [REST API リファレンス][REST API リファレンス]
+-   Azure Storage を使用して実行できるさらに高度なタスクについては、「[Azure のデータの格納とアクセス][Azure のデータの格納とアクセス]」を参照してください。
+-   Azure Websites のバックエンド プロセスで Azure Storage を使用する方法については、「[Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)][Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)]」を参照してください。
 -   Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
-    -   非構造化データの格納には、[BLOB ストレージ][]を使用します。
-    -   構造化データの格納には、[キュー ストレージ][]を使用します。
-    -   リレーショナル データの格納には、[SQL データベース][]を使用します。
+    -   非構造化データの格納には、[BLOB ストレージ][BLOB ストレージ]を使用します。
+    -   構造化データの格納には、[キュー ストレージ][キュー ストレージ]を使用します。
+    -   リレーショナル データの格納には、[SQL データベース][SQL データベース]を使用します。
 
   [次のステップ]: #next-steps
   [NuGet]: https://www.nuget.org/packages/WindowsAzure.Storage/
-  [Azure SDK for .NET]: /en-us/downloads/
+  [Azure SDK for .NET]: /ja-jp/downloads/
   [方法: プログラムでテーブル ストレージにアクセスする]: #configure-access
   [テーブル サービスとは]: #what-is
   [概念]: #concepts
@@ -527,15 +527,14 @@ Microsoft.WindowsAzure.CloudConfigurationManager 名前空間
   [howto-table-storage]: ../includes/howto-table-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
   [storage-configure-connection-string]: ../includes/storage-configure-connection-string.md
-  [.NET デベロッパー センター]: http://www.windowsazure.com/en-us/develop/net/#
+  [.NET デベロッパー センター]: http://www.windowsazure.com/ja-jp/develop/net/#
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [ブログの記事]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
   [.NET 用ストレージ クライアント ライブラリ リファレンス]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
-  [REST API リファレンス]: http://msdn.microsoft.com/en-us/library/windowsazure/dd179355
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
-  [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)]: /ja-jp/documentation/articles/websites-dotnet-webjobs-sdk-get-started/
+  [REST API リファレンス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179355
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [BLOB ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/
   [キュー ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-queues/
   [SQL データベース]: /ja-jp/documentation/articles/sql-database-dotnet-how-to-use/

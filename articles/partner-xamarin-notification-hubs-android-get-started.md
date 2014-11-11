@@ -1,6 +1,6 @@
 <properties linkid="manage-services-notification-hubs-getting-started-xamarin-android" urlDisplayName="" pageTitle="Get started with Notification Hubs for Xamarin.Android apps" metaKeywords="" description="Learn how to use Azure Notification Hubs to send push notifications to a Xamarin Android application." metaCanonical="" authors="donnam" solutions="" manager="dwrede" editor="" services="mobile-services,notification-hubs" documentationCenter="" title="Get started with Notification Hubs" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-android" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="donnam"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-android" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="donnam" />
 
 # 通知ハブの使用
 
@@ -36,7 +36,7 @@
 
 1.  [Google apis][Google apis] Web サイトに移動し、Google アカウント資格情報でサインインして、**[プロジェクトの作成]** をクリックします。
 
-    ![][]
+    ![][0]
 
     <div class="dev-callout"><b>注</b>
 <p>既にプロジェクトがある場合は、ログイン後に <strong>[ダッシュボード]</strong> ページが表示されます。ダッシュボードで新しいプロジェクトを作成するには、<strong>[API Project]</strong> を展開し、<strong>[Other projects]</strong> の下の <strong>[Create]</strong> をクリックして、プロジェクト名を入力してから <strong>[Create project]</strong> をクリックします。</p>
@@ -405,12 +405,6 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Windows ユニバーサル]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/ "Windows ユニバーサル"
-  [Windows Phone]: /ja-jp/documentation/articles/notification-hubs-windows-phone-get-started/ "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/notification-hubs-ios-get-started/ "iOS"
-  [Android]: /ja-jp/documentation/articles/notification-hubs-android-get-started/ "Android"
-  [Kindle]: /ja-jp/documentation/articles/notification-hubs-kindle-get-started/ "Kindle"
-  [Xamarin.iOS]: /ja-jp/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/ "Xamarin.iOS"
   [Xamarin.Android]: /ja-jp/documentation/articles/partner-xamarin-notification-hubs-android-get-started/ "Xamarin.Android"
   [NotificationHubs アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=331329
   [Google Cloud Messaging を有効にする]: #register
@@ -421,10 +415,8 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
   [1]: http://xamarin.com/download/
   [Azure モバイル サービス コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
   [Google Cloud Messaging コンポーネント]: http://components.xamarin.com/view/GCMClient/
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A9C9624B5&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fmanage%2Fservices%2Fnotification-hubs%2Fgetting-started-xamarin-android%2F
-  [accounts.google.com]: http://go.microsoft.com/fwlink/p/?LinkId=268302
   [Google apis]: http://go.microsoft.com/fwlink/p/?LinkId=268303
-  []: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-developers.png
+  [0]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-developers.png
   [2]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-create-server.png
   [3]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-create-server2.png
   [4]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-create-server3.png
@@ -451,4 +443,3 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
   [通知ハブを使用したユーザーへのプッシュ通知]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
   [通知ハブを使用したニュース速報の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet
   [Windows Azure 通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
-  [方法: Windows Azure 通知ハブ (Android アプリ)]: http://msdn.microsoft.com/ja-jp/library/dn282661.aspx

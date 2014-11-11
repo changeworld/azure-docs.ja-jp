@@ -1,10 +1,10 @@
 <properties linkid="manage-services-how-to-monitor-a-cloud-service" urlDisplayName="How to monitor" pageTitle="How to monitor a cloud service - Azure" metaKeywords="Azure monitoring cloud services, Azure Management Portal cloud services" description="Learn how to monitor cloud services by using the Azure Management Portal." metaCanonical="" services="cloud-services" documentationCenter="" title="How to Monitor Cloud Services" authors="ryanwi" solutions="" manager="timlt" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="ryanwi"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="ryanwi" />
 
 # クラウド サービスの監視方法
 
-[WACOM.INCLUDE [disclaimer][disclaimer]]
+[WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
 
 クラウド サービスの主要パフォーマンス メトリックは Azure の管理ポータルで監視できます。監視レベルは、サービス ロールごとに最小および詳細に設定でき、監視画面をカスタマイズできます。詳細監視データはストレージ アカウントに保存され、ポータル外からもアクセスできます。
 
@@ -112,7 +112,7 @@
 <p>詳細監視の場合、メトリック一覧に数十個のメトリックが表示されることがあります。スクロールバーを表示するには、ダイアログ ボックスの右側をポイントします。一覧を絞り込むには、検索アイコンをクリックして、下図の検索ボックスにテキストを入力します。</p> 
 </div>
 
-    ![メトリックの追加 の検索][]
+    ![メトリックの追加 の検索][メトリックの追加 の検索]
 
 3.  メトリックの選択が終了したら [OK] (チェックマーク) をクリックします。
 
@@ -185,10 +185,8 @@
   [方法: 管理ポータル外で詳細監視データにアクセス]: #accessverbose
   [Azure 診断を使用したログ データの収集]: http://msdn.microsoft.com/ja-jp/library/gg433048.aspx
   [Azure アプリケーションでのパフォーマンス カウンターの作成と使用]: http://msdn.microsoft.com/ja-jp/library/hh411542.aspx
-  [How To Create a Storage Account (ストレージ アカウントの作成方法)]: /ja-jp/manage/services/storage/how-to-create-a-storage-account/
   [Azure 診断の構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn186185.aspx
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  [How to Manage Cloud Services (クラウド サービスの管理方法)]: http://www.windowsazure.com/ja-jp/manage/services/cloud-services/how-to-manage-a-cloud-service/
   [監視オプション]: ./media/cloud-services-how-to-monitor/CloudServices_MonitoringOptions.png
   [方法: Azure でアラート通知を受け取り、アラート ルールを管理する]: http://go.microsoft.com/fwlink/?LinkId=309356
   [管理ポータル]: http://manage.windowsazure.com/

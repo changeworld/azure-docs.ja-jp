@@ -1,10 +1,10 @@
 <properties linkid="manage-services-storage-net-shared-access-signature-part-1" urlDisplayName="" pageTitle="Shared access signatures: Understanding the SAS Model | Microsoft Azure" metaKeywords="Azure blob, Azure table, Azure queue, shared access signatures" description="Learn about delegating access to blob, queue, and table resources with shared access signatures" metaCanonical="" services="storage" documentationCenter="" title="Part 1: Understanding the SAS Model" solutions="" authors="tamram" manager="mbaldwin" editor="cgronlun" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tamram"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
 # 共有アクセス署名、パート 1:SAS モデルについて
 
-共有アクセス署名 (SAS) の使用は、アカウント キーを知らせずに、自分のストレージ アカウントの BLOB、テーブル、およびキューへの制限付きアクセスを他のクライアントに許可するための優れた方法です。共有アクセス署名についてのこのチュートリアルの第 1 部では、SAS モデルの概要と SAS のベスト プラクティスについて説明します。チュートリアルの[パート 2][] では、BLOB サービスで共有アクセス署名を作成するプロセスを詳しく説明します。
+共有アクセス署名 (SAS) の使用は、アカウント キーを知らせずに、自分のストレージ アカウントの BLOB、テーブル、およびキューへの制限付きアクセスを他のクライアントに許可するための優れた方法です。共有アクセス署名についてのこのチュートリアルの第 1 部では、SAS モデルの概要と SAS のベスト プラクティスについて説明します。チュートリアルの[パート 2][パート 2] では、BLOB サービスで共有アクセス署名を作成するプロセスを詳しく説明します。
 
 ## 共有アクセス署名とは
 
@@ -118,7 +118,7 @@ BLOB に読み書きアクセス許可を付与する SAS URI の例を、次に
 7.  **アカウントは、SAS によるものも含め、すべての使用について課金されます。**BLOB への書き込みアクセスを許可した場合は、ユーザーが 200GB の BLOB をアップロードする可能性があります。ユーザーに読み取りアクセスも許可すると、この BLOB を 10 回ダウンロードする可能性があります。この場合、2 TB の送信料金が発生します。したがって、悪意のあるユーザーによるリスクが軽減されるように、制限付きアクセス許可を付与してください。このような脅威が軽減されるように、短期間の SAS を使用してください (ただし、終了時刻のクロック スキューには注意してください)。
 8.  **SAS を使用して書き込まれたデータを検証します。**クライアント アプリケーションがストレージ アカウントにデータを書き込む場合は、そのデータに問題がある可能性に注意してください。データが検証後または認証後に使用可能になることをアプリケーションが要求する場合は、書き込まれたデータをアプリケーションが使用する前に、この検証を実行する必要があります。これを実行すると、ユーザーが SAS を正当に入手している場合でも、漏えいした SAS を利用している場合でも、破損データまたは悪意によるデータの書き込みからアカウントが保護されます。
 9.  **場合によっては SAS を使用しないようにします。**ストレージ アカウントに対する特定の操作に関連するリスクが、SAS の利点より重大である場合もあります。このような操作については、ビジネス ルールの検証、認証、および監査を実行した後にストレージ アカウントに書き込む中間層サービスを作成します。また、別の方法でアクセスを管理した方が容易である場合もあります。たとえば、コンテナー内のすべての BLOB が一般ユーザーに読み取り可能である場合は、すべてのクライアントにアクセス用の SAS を提供するのではなく、コンテナーをパブリックにします。
-10. **Storage Analytics を使用してアプリケーションを管理します。** SAS プロバイダー サービスが中断したり、保存されているアクセス ポリシーを不注意で削除したりしたために発生する認証失敗の急増を、ログやメトリックを使用して監視できます。詳細については、[Microsoft Azure のストレージ チームのブログ][]を参照してください。
+10. **Storage Analytics を使用してアプリケーションを管理します。** SAS プロバイダー サービスが中断したり、保存されているアクセス ポリシーを不注意で削除したりしたために発生する認証失敗の急増を、ログやメトリックを使用して監視できます。詳細については、[Microsoft Azure のストレージ チームのブログ][Microsoft Azure のストレージ チームのブログ]を参照してください。
 
 ## まとめ
 
@@ -128,16 +128,15 @@ BLOB に読み書きアクセス許可を付与する SAS URI の例を、次に
 
 [共有アクセス署名、パート 2:BLOB サービスによる SAS の作成および使用][パート 2]
 
-[Microsoft Azure ストレージ リソースへのアクセスの管理][]
+[Microsoft Azure ストレージ リソースへのアクセスの管理][Microsoft Azure ストレージ リソースへのアクセスの管理]
 
-[共有アクセス署名によるアクセスの委任 (REST API) に関するページ][]
+[共有アクセス署名によるアクセスの委任 (REST API) に関するページ][共有アクセス署名によるアクセスの委任 (REST API) に関するページ]
 
-[テーブルおよびキュー SAS についての MSDN ブログ][]
+[テーブルおよびキュー SAS についての MSDN ブログ][テーブルおよびキュー SAS についての MSDN ブログ]
 [sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png
 [sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
 
   [パート 2]: ../storage-dotnet-shared-access-signature-part-2/
   [Microsoft Azure のストレージ チームのブログ]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx
-  [Microsoft Azure ストレージ リソースへのアクセスの管理]: http://msdn.microsoft.com/en-us/library/windowsazure/ee393343.aspx
-  [共有アクセス署名によるアクセスの委任 (REST API) に関するページ]: http://msdn.microsoft.com/en-us/library/windowsazure/ee395415.aspx
+  [Microsoft Azure ストレージ リソースへのアクセスの管理]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee393343.aspx
   [テーブルおよびキュー SAS についての MSDN ブログ]: http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx

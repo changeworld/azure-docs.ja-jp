@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-add-paging-to-data-html" urlDisplayName="Add paging to data (HTML5)" pageTitle="Add paging to data (HTML 5) | Mobile Dev Center" metaKeywords="" description="Learn how to use paging to manage the amount of data returned to your HTML app from Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="Refine Mobile Services queries with paging" authors="glenga" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-html" ms.devlang="javascript" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-html" ms.devlang="javascript" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # ページングを使用したモバイル サービス クエリの改善
 
@@ -70,14 +70,6 @@
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Windows ストア C#]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-js "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-wp8 "Windows Phone"
-  [iOS]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-ios "iOS"
-  [Android]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-android "Android"
-  [HTML]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-html "HTML"
-  [Xamarin.iOS]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-xamarin-android "Xamarin.Android"
   [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-html
   [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-html
   [モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-html-js-client

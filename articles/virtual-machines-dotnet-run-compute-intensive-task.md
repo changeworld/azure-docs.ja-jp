@@ -1,6 +1,6 @@
 <properties linkid="develop-net-tutorials-compute-intensive-task-on-a-virtual-machine" urlDisplayName="Compute Intensive .NET Task" pageTitle="Compute intensive .NET task on a virtual machine - Azure" metaKeywords="deploying compute .NET application, vm .NET application, Service Bus queue monitoring, remote monitoring" description="Learn how to deploy and run a compute-intensive .NET app on an Azure virtual machine and use Service Bus queues to monitor progress remotely." metaCanonical="" services="virtual-machines" documentationCenter=".NET" title="How to run a compute-intensive task in .NET on an Azure virtual machine" authors="wpickett" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="wpickett"></tags>
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="wpickett" />
 
 # Azure の仮想マシンで多くのコンピューティング処理を要する .NET タスクを実行する方法
 
@@ -26,7 +26,7 @@ Azure では、仮想マシンを使用して多くのコンピューティン�
 
 ![巡回セールスマン問題のクライアント][巡回セールスマン問題のクライアント]
 
-[WACOM.INCLUDE [create-account-and-vms-note][create-account-and-vms-note]]
+[WACOM.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
 
 ## 仮想マシンを作成するには
 
@@ -63,7 +63,7 @@ Azure のサービス バス キューを使用するには、最初にサービ
 
 4.  **[名前空間を作成する]** ダイアログで、名前空間の名前を入力します。その名前が使用できるかどうかがすぐに自動で確認されます。重複する名前は使用できません。
 
-    ![名前空間を作成する ダイアログ][]
+    ![名前空間を作成する ダイアログ][名前空間を作成する ダイアログ]
 
 5.  入力した名前が利用できることを確認できたら、名前空間をホストするリージョンを選択します (仮想マシンをホストするリージョンと同じリージョンを必ず使用してください)。
     <div class="dev-callout"><br /><strong>重要</strong><br /><p>仮想マシンが使用するリージョンまたは使用する予定のリージョンと<strong>同じリージョン</strong>を選択してください。そうすることで、パフォーマンスが最高になります。</p><br /></div>
@@ -86,7 +86,7 @@ Azure のサービス バス キューを使用するには、最初にサービ
     ![名前空間の一覧のスクリーンショット][名前空間の一覧のスクリーンショット]
 3.  **[アクセス キー]** をクリックします。
 
-    ![アクセス キー ボタン][]
+    ![アクセス キー ボタン][アクセス キー ボタン]
 4.  ダイアログで、**[既定の発行者]** と **[既定のキー]** のエントリを探します。その値を書き留めておきます。この情報は、この後に名前空間に対して操作を実行するときに使用します。
 
 ## 多くのコンピューティング処理を要するタスクを実行する .NET アプリケーションの作成方法
@@ -555,4 +555,3 @@ TSPSolver を使用してキューを作成したり削除したりする代わ�
   [名前空間の一覧のスクリーンショット]: ./media/virtual-machines-dotnet-run-compute-intensive-task/NamespaceList.png
   [アクセス キー ボタン]: ./media/virtual-machines-dotnet-run-compute-intensive-task/AccessKey.png
   [Azure SDK for .NET]: http://www.windowsazure.com/ja-jp/develop/net/
-  [create_namespace_dialog]: ./media/virtual-machines-dotnet-run-compute-intensive-task/CreateNameSpaceDialog.png 

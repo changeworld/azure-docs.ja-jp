@@ -1,6 +1,6 @@
 <properties title="Query with Azure DocumentDB" pageTitle="Query with DocumentDB | Azure" description="DocumentDB's SQL query language supports a subset of ANSI SQL grammar and adds document-oriented support. Queries are served through up-to-date indexes that don't require index management."  metaKeywords="NoSQL, DocumentDB,  database, document-orientated database, JSON, account" services="documentdb"  solutions="data-management" documentationCenter=""  authors="bradsev" manager="jhubbard" editor="cgronlun" videoId="" scriptId="" />
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="bradsev"></tags>
+<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="bradsev" />
 
 # Azure DocumentDB を使用したクエリ
 
@@ -359,7 +359,7 @@ DocumentDB は、開発者が調整できる 4 種類の一貫性レベル (Stro
 
 次のレールロード ダイアグラムは、DocumentDB クエリ言語の正式な SQL 文法を示しています。
 
-![][]
+![][0]
 ![][1]
 ![][2]
 ![][3]
@@ -377,7 +377,7 @@ DocumentDB は、開発者が調整できる 4 種類の一貫性レベル (Stro
 ![][15]
 ![][16]
 
-  []: ./media/documentdb-query/query1.png
+  [0]: ./media/documentdb-query/query1.png
   [1]: ./media/documentdb-query/query2.png
   [2]: ./media/documentdb-query/query3.png
   [3]: ./media/documentdb-query/query4.png

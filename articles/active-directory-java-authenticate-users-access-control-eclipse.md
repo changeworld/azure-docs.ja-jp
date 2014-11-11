@@ -1,6 +1,6 @@
 <properties linkid="develop-java-how-to-guides-access-control" urlDisplayName="Access Control" pageTitle="How to use Access Control (Java) - Azure feature guide" metaKeywords="" description="Learn how to develop and use Access Control with Java in Azure." metaCanonical="" services="active-directory" documentationCenter="Java" title="How to Authenticate Web Users with Azure Access Control Service Using Eclipse" videoId="" scriptId="" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" />
 
-<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm"></tags>
+<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
 
 # Eclipse を使用して Azure の Access Control サービスで Web ユーザーを認証する方法
 
@@ -298,7 +298,6 @@ ACS によってアプリケーションに返される SAML (Security Assertion
   [Azure への展開]: #deploy_azure
   [アクセス制御サービス 2.0 に関するページ]: http://go.microsoft.com/fwlink/?LinkID=212360
   [ACS フロー図]: ./media/active-directory-java-authenticate-users-access-control-eclipse/ACSFlow.png
-  [Installing the Azure Plugin for Eclipse with Java (by Microsoft Open Technologies) (Azure Plugin for Eclipse with Java (Microsoft Open Technologies 提供) のインストール)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690946.aspx
   [Azure 用の Hello World アプリケーションを Eclipse で作成する方法に関するトピック]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh690944.aspx
   [Azure の管理ポータル]: https://manage.windowsazure.com
   [コンピューティング エミュレーターで使用する証明書利用者領域]: ./media/active-directory-java-authenticate-users-access-control-eclipse/RelyingPartyRealmEmulator.png
@@ -312,5 +311,4 @@ ACS によってアプリケーションに返される SAML (Security Assertion
   [運用で使用する証明書利用者の領域]: ./media/active-directory-java-authenticate-users-access-control-eclipse/RelyingPartyRealmProduction.png
   [運用で使用する証明書利用者の戻り先 URL]: ./media/active-directory-java-authenticate-users-access-control-eclipse/RelyingPartyReturnURLProduction.png
   [運用展開用の Azure ACS Filter 設定]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddACSFilterLibraryProduction.png
-  [How to view SAML returned by the Azure Access Control Service (Azure の Access Control サービスによって返される SAML を表示する方法)]: /ja-jp/develop/java/how-to-guides/view-saml-returned-by-acs/
   [証明書コンポーネントの追加]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddCertificateComponent.png

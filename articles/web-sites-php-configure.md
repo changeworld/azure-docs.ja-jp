@@ -1,6 +1,6 @@
 <properties title="How to Configure PHP in Azure Websites" pageTitle="How to Configure PHP in Azure Websites" metaKeywords="Azure, Azure Web Sites, configuration, PHP" description="Learn how to configure the default PHP installation or add a custom PHP installation in Azure Websites." services="Web Sites" documentationCenter="PHP" authors="cephalin" manager="wpickett" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin" />
 
 # Azure Websites での PHP の構成方法
 
@@ -105,13 +105,11 @@ Azure Websites では、既定の PHP ランタイムを使用する代わりに
   [方法: ビルトインの PHP ランタイムで拡張機能を有効にする]: #EnableExtDefaultPHP
   [方法: カスタムの PHP ランタイムを使用する]: #UseCustomPHP
   [次のステップ]: #NextSteps
-  [phpinfo()]: http://php.net/manual/en/function.phpinfo.php
   [Web サイト ダッシュボードの 構成 タブ]: ./media/web-sites-php-configure/configure.png
   [PHP バージョンを選択する]: ./media/web-sites-php-configure/select-php-version.png
   [構成設定を保存する]: ./media/web-sites-php-configure/save-button.png
   [php.ini ディレクティブの一覧]: http://www.php.net/manual/en/ini.list.php
   [.user.ini]: http://www.php.net/manual/en/configuration.file.per-user.php
-  [ini\_set()]: http://www.php.net/manual/en/function.ini-set.php
   [アプリケーション設定 で拡張機能を有効にする]: ./media/web-sites-php-configure/app-settings.png
   []: http://windows.php.net/download/
   [1]: http://windows.php.net/downloads/releases/archives/

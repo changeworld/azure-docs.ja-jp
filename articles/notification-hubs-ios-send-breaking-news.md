@@ -1,6 +1,6 @@
 <properties linkid="notification-hubs-ios-send-breaking-news" pageTitle="Notification Hubs Breaking News Tutorial - iOS" metaKeywords="" description="Learn how to use Azure Service Bus Notification Hubs to send breaking news notifications to iOS devices." metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Use Notification Hubs to send breaking news" authors="krisragh" solutions="" manager="" editor="" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="krisragh"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="krisragh" />
 
 # 通知ハブを使用したニュース速報の送信
 
@@ -35,7 +35,7 @@
 
     ストーリーボードは次のようになります。
 
-    ![][]
+    ![][0]
 
 2.  アシスタント エディターで、すべてのスイッチのアウトレットを作成し、"WorldSwitch"、"PoliticsSwitch"、"BusinessSwitch"、"TechnologySwitch"、"ScienceSwitch"、"SportsSwitch" という名前にします。
 
@@ -201,7 +201,7 @@
 
 ## <a name="send"></a><span class="short-header">通知を送信する</span>バックエンドから通知を送信する
 
-[WACOM.INCLUDE [create-an-azure-account][create-an-azure-account]]
+[WACOM.INCLUDE [create-an-azure-account](../includes/notification-hubs-back-end.md)]
 
 ## <a name="test-app"></a>アプリケーションを実行して通知を生成する
 
@@ -239,17 +239,13 @@
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Windows ユニバーサル]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/ "Windows ユニバーサル"
-  [Windows Phone]: /ja-jp/documentation/articles/notification-hubs-windows-phone-send-breaking-news/ "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/notification-hubs-ios-send-breaking-news/ "iOS"
-  [Android]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-breaking-news/ "Android"
   [通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
   [アプリケーションにカテゴリ選択を追加する]: #adding-categories
   [通知を登録する]: #register
   [バックエンドから通知を送信する]: #send
   [アプリケーションを実行して通知を生成する]: #test-app
   [通知ハブの使用]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-ios/
-  []: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios2.png
+  [0]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios2.png
   [1]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios3.png
   [create-an-azure-account]: ../includes/notification-hubs-back-end.md
   [2]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios1.png

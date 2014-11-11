@@ -1,6 +1,6 @@
 <properties pageTitle="Call a custom API from a Windows Store client - Mobile Services" metaKeywords="" description="Learn how to define a custom API and then call it from a Windows Store app that use Windows Azure Mobile Services." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Call a custom API from the client" authors="glenga"  solutions="" writer="glenga" manager="" editor=""  />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # クライアントからのカスタム API 呼び出し
 
@@ -23,11 +23,11 @@
 
 ## <a name="define-custom-api"></a>カスタム API を定義する
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-create-custom-api][mobile-services-dotnet-backend-create-custom-api]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-create-custom-api](../includes/mobile-services-dotnet-backend-create-custom-api.md)]
 
 ## <a name="update-app"></a>カスタム API を呼び出すようにアプリケーションを更新する
 
-[WACOM.INCLUDE [mobile-services-windows-store-javascript-call-custom-api][mobile-services-windows-store-javascript-call-custom-api]]
+[WACOM.INCLUDE [mobile-services-windows-store-javascript-call-custom-api](../includes/mobile-services-windows-store-javascript-call-custom-api.md)]
 
 ## 次のステップ
 
@@ -46,13 +46,6 @@
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-call-custom-api "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-call-custom-api "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-call-custom-api "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-call-custom-api "iOS"
-  [Android]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-call-custom-api "Android"
-  [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-call-custom-api ".NET バックエンド"
-  [JavaScript バックエンド]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-call-custom-api "JavaScript バックエンド"
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-get-started/
   [データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/
   [カスタム API を定義する]: #define-custom-api

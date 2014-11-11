@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-get-started-offline-data-dotnet" urlDisplayName="Getting Started with Offline Data" pageTitle="Get started with offline data in Mobile Services (Windows Store) | Mobile Dev Center" metaKeywords="" description="Learn how to use Azure Mobile Services to cache and sync offline data in your Windows Store application" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Get started with offline data sync in Mobile Services" authors="wesmc" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc" />
 
 # モバイル サービスでのオフライン データの同期の使用
 
@@ -60,7 +60,7 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 
 2.  Visual Studio で、「[モバイル サービスの使用][モバイル サービスの使用]」または「[データの使用][データの使用]」のチュートリアルで完成したプロジェクトを開きます。ソリューション エクスプローラーで、プロジェクトにある **[参照設定]** を右クリックし、**[Windows]** \> **[Extensions]** で **SQLite for Windows Runtime** への参照を追加します。
 
-    ![][]
+    ![][0]
 
 3.  SQLite ランタイムでは、ビルド対象のプロジェクトのプロセッサ アーキテクチャを **[x86]**、**[x64]**、または **[ARM]** に変更する必要があります。**[任意の CPU]** はサポートされません。プロセッサ アーキテクチャを、サポートされているテスト対象のいずれかの設定に変更します。
 
@@ -260,12 +260,6 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 
 
 
-  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data "Windows ストア C#"
-  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-offline-data "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/mobile-services-ios-get-started-offline-data "iOS"
-  [Xamarin.iOS]: /ja-jp/documentation/articles/mobile-services-xamarin-ios-get-started-offline-data "Xamarin.iOS"
-  [Xamarin.Android]: /ja-jp/documentation/articles/mobile-services-xamarin-android-get-started-offline-data "Xamarin.Android"
-  [チュートリアルを見る]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Build-offline-apps-Azure-Mobile-Services
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-get-started/
   [データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/
   [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28
@@ -273,11 +267,9 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
   [オフラインの状況でアプリケーションをテストする]: #test-offline-app
   [モバイル サービスに再接続するようにアプリケーションを更新する]: #update-online-app
   [モバイル サービスに接続されているアプリケーションをテストする]: #test-online-app
-  [Azure Mobile Services SDK バージョン 1.3.0-beta2 (またはこれ以降)]: http://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.0-beta2
-  [Azure Mobile Services SQLite Store バージョン 1.0.0-beta2 (またはこれ以降)]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.0-beta2
   [オフライン サンプルの使用]: http://go.microsoft.com/fwlink/?LinkId=394777
   [SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkId=394776
-  []: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-add-reference-sqlite-dialog.png
+  [0]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-add-reference-sqlite-dialog.png
   [1]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-sqlitestore-nuget.png
   [2]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-offline-app-run1.png
   [3]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-online-app-run1.png

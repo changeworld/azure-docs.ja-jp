@@ -1,6 +1,6 @@
 <properties linkid="manage-services-mediaservices-create-a-media-services-account" urlDisplayName="How to create" pageTitle="Create a Media Services Account - Azure" metaKeywords="" description="Describes how to create a new Media Services account in Azure." metaCanonical="" services="media-services" documentationCenter="" title="How to Create a Media Services Account" authors="migree" solutions="" manager="" editor="" />
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="migree"></tags>
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="migree" />
 
 # メディア サービス アカウントの作成方法
 
@@ -10,8 +10,8 @@ Azure 管理ポータルには、Azure メディア サービス アカウント
 
 ## 目次
 
--   [概念][]
--   [方法: 簡易作成によるメディア サービス アカウントの作成][]
+-   [概念][概念]
+-   [方法: 簡易作成によるメディア サービス アカウントの作成][方法: 簡易作成によるメディア サービス アカウントの作成]
 
 ## <span id="concepts"></span></a>概念
 
@@ -24,9 +24,9 @@ Azure 管理ポータルには、Azure メディア サービス アカウント
 
 ## <span id="quick"></span></a>方法: 簡易作成によるメディア サービス アカウントの作成
 
-1.  [管理ポータル][]で、**[新規]**、**[メディア サービス]**、**[簡易作成]** の順にクリックします。
+1.  [管理ポータル][管理ポータル]で、**[新規]**、**[メディア サービス]**、**[簡易作成]** の順にクリックします。
 
-    ![メディア サービスの簡易作成][]
+    ![メディア サービスの簡易作成][メディア サービスの簡易作成]
 
 2.  **[名前]** ボックスに新しいアカウントの名前を入力します。メディア サービス アカウント名は、使用できる文字が小文字または数字だけで、空白を含めることはできず、長さは 3 ～ 24 文字です。
 
@@ -42,7 +42,7 @@ Azure 管理ポータルには、Azure メディア サービス アカウント
 
     **[メディア サービス]** ページが開き、新しいアカウントが表示されます。状態が "有効" に変わると、アカウントが正常に作成されています。
 
-    ![メディア サービス ページ][]
+    ![メディア サービス ページ][メディア サービス ページ]
 
     アカウント名をダブルクリックすると、既定で [クイック スタート] ページが表示されます。このページでは、ポータルの別のページでも実行できる管理タスクをいくつか実行できます。たとえば、ビデオ ファイルのアップロードは、このページから実行することも、[コンテンツ] ページから実行することもできます。
 

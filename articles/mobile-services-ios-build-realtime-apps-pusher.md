@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-build-realtime-apps-with-pusher-ios" urlDisplayName="Build Realtime Apps with Pusher" pageTitle="Build Realtime Apps with Pusher (iOS) - Mobile Services" metaKeywords="" description="Learn how to use Pusher to send notifications to your Azure Media Services app on iOS." metaCanonical="" services="" documentationCenter="Mobile" title="Build Real-time Apps with Mobile Services and Pusher" authors="krisragh" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="krisragh"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="krisragh" />
 
 # モバイル サービスおよび Pusher を使用したリアルタイム アプリケーションの構築
 
@@ -25,7 +25,7 @@ Pusher はモバイル サービスのようにクラウド ベースのサー�
 
 ## <a name="sign-up"></a>新しい Pusher アカウントを作成する
 
-[WACOM.INCLUDE [pusher-sign-up][pusher-sign-up]]
+[WACOM.INCLUDE [pusher-sign-up](../includes/pusher-sign-up.md)]
 
 ## <a name="update-app"></a>アプリケーションを更新する
 
@@ -43,7 +43,7 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 
 4.  **[Copy items into destination group's folder]** をオンにして、**[完了]** をクリックします。
 
-    ![][]
+    ![][0]
 
     これで、libPusher ファイルがプロジェクトにコピーされます。
 
@@ -381,9 +381,8 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [iOS]:  "iOS"
   [ユーザーへのプッシュ通知]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-ios
-  []: http://pusher.com
+  [0]: http://pusher.com
   [Pusher アカウントを作成する]: #sign-up
   [アプリケーションを更新する]: #update-app
   [サーバー スクリプトをインストールする]: #install-scripts
@@ -392,7 +391,7 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
   [pusher-sign-up]: ../includes/pusher-sign-up.md
   [libPusher]: http://go.microsoft.com/fwlink/p?LinkId=276999
   [ここから]: http://go.microsoft.com/fwlink/p/?LinkId=276998
-  []: ./media/mobile-services-ios-build-realtime-apps-pusher/pusher-ios-add-files-to-group.png
+  [0]: ./media/mobile-services-ios-build-realtime-apps-pusher/pusher-ios-add-files-to-group.png
   [1]: ./media/mobile-services-ios-build-realtime-apps-pusher/pusher-ios-add-build-phase.png
   [2]: ./media/mobile-services-ios-build-realtime-apps-pusher/pusher-ios-add-linker-flag.png
   [Azure の管理ポータル]: https://manage.windowsazure.com/

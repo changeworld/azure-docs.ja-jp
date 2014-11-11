@@ -1,6 +1,6 @@
 <properties linkid="automation-create-runbook-from-samples" urlDisplayName="Get Started with Azure Automation" pageTitle="Get Started with Azure Automation" metaKeywords="" description="Learn how to import and run an automation job in Azure." metaCanonical="" services="automation" documentationCenter="" title="Get Started with Azure Automation" authors="bwren" solutions="" manager="stevenka" editor="" />
 
-<tags ms.service="automation" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bwren"></tags>
+<tags ms.service="automation" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bwren" />
 
 # Azure オートメーションの使用
 
@@ -29,7 +29,7 @@ Azure オートメーション チームはさまざまな Runbook サンプル�
 
 **フィードバックの送信**オートメーション Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。オートメーションに関連する新機能が思い浮かんだ場合は、[User Voice][User Voice] に投稿してください。
 
-[WACOM.INCLUDE [create-account-note][create-account-note]]
+[WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
 ## このチュートリアルの手順概要
 
@@ -153,5 +153,4 @@ Azure オートメーション チームはさまざまな Runbook サンプル�
   [Runbook のステータス]: ./media/automation/automation_12_RunbookStatus.png
   [Runbook の概要]: ./media/automation/automation_13_RunbookSummary_callouts.png
   [オートメーションの概要]: http://go.microsoft.com/fwlink/p/?LinkId=392860
-  [Runbook 作成ガイド (英語)]: http://go.microsoft.com/fwlink/p/?LinkID=301740
   [オートメーション フォーラム]: http://go.microsoft.com/fwlink/p/?LinkId=390561

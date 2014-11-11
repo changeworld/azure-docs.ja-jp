@@ -1,6 +1,6 @@
 <properties linkid="provisioning-biztalk-service" urlDisplayName="Provision BizTalk Services in management portal" pageTitle="Create BizTalk Services in management portal | Azure" metaKeywords="Get started Azure biztalk services, provision, Azure unstructured data" description="Learn how to provision a BizTalk service in the Azure Management Portal, as well as create an optional SQL database server and Storage account." metaCanonical="http://www.windowsazure.com/ja-jp/manage/services/biztalk-services/provisioning-biztalk-service" services="biztalk-services" documentationCenter="" title="BizTalk Services: Provisioning Using Azure Management Portal" authors="mandia" solutions="" manager="dwrede" editor="cgronlun" />
 
-<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/10/2014" ms.author="mandia"></tags>
+<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/10/2014" ms.author="mandia" />
 
 # Azure 管理ポータルを使用して BizTalk サービスを作成する
 
@@ -311,7 +311,6 @@ BizTalk サービスが作成されたので、<a href="http://go.microsoft.com/
   [プロビジョニング後の手順]: #PostProv
   [要件の説明]: #Requirements
   [ハイブリッド接続 - New!]: #HC
-  [Azure 無料評価版のサイト]: http://go.microsoft.com/fwlink/p/?LinkID=239738
   [Azure 管理ポータル]: http://go.microsoft.com/fwlink/p/?LinkID=213885
   [新規ボタンを選択]: ./media/biztalk-provision-services/WABS_New.png
   [BizTalk サービスとカスタム作成を選択]: ./media/biztalk-provision-services/WABS_NewBizTalkService.png
@@ -326,10 +325,6 @@ BizTalk サービスが作成されたので、<a href="http://go.microsoft.com/
   [接続情報を選択]: ./media/biztalk-provision-services/WABS_ACSConnectInformation.png
   [Access Control 管理ポータルにおける ACS サービス ID]: ./media/biztalk-provision-services/WABS_ACSServiceIdentities.png
   [ACS 名前空間の管理]: http://go.microsoft.com/fwlink/p/?LinkID=285670
-  [Azure サブスクリプションのページ]: https://account.windowsazure.com/Subscriptions
-  [Azure 管理ポータルでのサブスクリプションとストレージ アカウントの管理に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=267577
-  [Azure SQL データベースのアカウントと課金]: http://go.microsoft.com/fwlink/p/?LinkID=234930
-  [ストレージ]: http://go.microsoft.com/fwlink/p/?LinkID=285671
   [ハイブリッド接続タブ]: ./media/biztalk-provision-services/WABS_HybridConnectionTab.png
   [ハイブリッド接続]: http://go.microsoft.com/fwlink/p/?LinkID=397274
   [Azure BizTalk サービス]: http://go.microsoft.com/fwlink/p/?LinkID=235197

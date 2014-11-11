@@ -1,6 +1,6 @@
 <properties linkid="develop-notificationhubs-tutorials-get-started-ios" urlDisplayName="Get Started" pageTitle="Get Started with Azure Notification Hubs" metaKeywords="" description="Learn how to use Azure Notification Hubs to push notifications." metaCanonical="" services="notification-hubs" documentationCenter="Mobile" title="Get started with Notification Hubs" authors="krisragh" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="09/24/2014" ms.author="krisragh"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="09/24/2014" ms.author="krisragh" />
 
 # 通知ハブの使用
 
@@ -34,13 +34,13 @@
 
 <div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
 
-[WACOM.INCLUDE [Apple プッシュ通知の有効化][Apple プッシュ通知の有効化]]
+[WACOM.INCLUDE [Apple プッシュ通知の有効化](../includes/enable-apple-push-notifications.md)]
 
 ## <a name="configure-hub"></a>通知ハブを構成する
 
 1.  Keychain Access で、quickstart アプリの新しい証明書 **[マイ証明書]** を右クリックします。**[エクスポート]** をクリックし、ファイルに名前を付けて、**[.p12]** 形式を選択します。次に、**[保存]** をクリックします。
 
-    ![][]
+    ![][0]
 
 エクスポートした証明書のファイル名と場所を書き留めます。
 
@@ -177,13 +177,6 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Windows ユニバーサル]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/ "Windows ユニバーサル"
-  [Windows Phone]: /ja-jp/documentation/articles/notification-hubs-windows-phone-get-started/ "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/notification-hubs-ios-get-started/ "iOS"
-  [Android]: /ja-jp/documentation/articles/notification-hubs-android-get-started/ "Android"
-  [Kindle]: /ja-jp/documentation/articles/notification-hubs-kindle-get-started/ "Kindle"
-  [Xamarin.iOS]: /ja-jp/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/ "Xamarin.iOS"
-  [Xamarin.Android]: /ja-jp/documentation/articles/partner-xamarin-notification-hubs-android-get-started/ "Xamarin.Android"
   [証明書の署名要求を生成する]: #certificates
   [アプリケーションを登録し、プッシュ通知を有効にする]: #register
   [アプリケーションのプロビジョニング プロファイルを作成する]: #profile
@@ -192,9 +185,8 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
   [バックエンドから通知を送信する]: #send
   [モバイル サービス iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
   [XCode 4.5]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F
   [Apple プッシュ通知の有効化]: ../includes/enable-apple-push-notifications.md
-  []: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-27.png
+  [0]: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-27.png
   [Azure 管理ポータル]: https://manage.windowsazure.com/
   [1]: ./media/notification-hubs-ios-get-started/notification-hub-create-from-portal.png
   [2]: ./media/notification-hubs-ios-get-started/notification-hub-create-from-portal2.png
@@ -210,7 +202,6 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
   [Java]: /ja-jp/documentation/articles/notification-hubs-java-backend-how-to/
   [PHP]: /ja-jp/documentation/articles/notification-hubs-php-backend-how-to/
   [WindowsAzure.ServiceBus NuGet パッケージ]: http://nuget.org/packages/WindowsAzure.ServiceBus/
-  [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
   [通知ハブを使用したユーザーへのプッシュ通知]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
   [通知ハブを使用したニュース速報の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet
   [Windows Azure 通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx

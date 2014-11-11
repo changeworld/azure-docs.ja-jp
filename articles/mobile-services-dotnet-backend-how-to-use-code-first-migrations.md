@@ -1,6 +1,6 @@
 <properties pageTitle="How to use Code First Migrations .NET backend (Mobile Services)" metaKeywords="" description="" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Considerations for supporting multiple clients from a single mobile service" authors="glenga" solutions="mobile" writer="glenga" manager="dwrede" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # データ モデルの変更を .NET バックエンド モバイル サービスに加える方法
 
@@ -80,7 +80,7 @@ Code First Migrations は、実行されたときにスナップショットの�
 
 11. (省略可能) [Azure の管理ポータル][Azure の管理ポータル]にログインし、モバイル サービスを選択して、**[構成]** タブ、**[SQL データベース]** リンクの順にクリックします。
 
-    ![][]
+    ![][0]
 
     この結果、モバイル サービスのデータベースに対応する SQL データベース ページに移動します。
 
@@ -129,7 +129,7 @@ Code First Migrations は、実行されたときにスナップショットの�
   [DbContext]: http://msdn.microsoft.com/ja-jp/library/system.data.entity.dbcontext(v=vs.113).aspx
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   [移行時のデータの登録]: #seeding
-  []: ./media/mobile-services-dotnet-backend-how-to-use-code-first-migrations/navagate-to-sql-database.png
+  [0]: ./media/mobile-services-dotnet-backend-how-to-use-code-first-migrations/navagate-to-sql-database.png
   [1]: ./media/mobile-services-dotnet-backend-how-to-use-code-first-migrations/manage-sql-database.png
   [Seed]: http://msdn.microsoft.com/ja-jp/library/hh829453(v=vs.113).aspx
   [AddOrUpdate]: http://msdn.microsoft.com/ja-jp/library/system.data.entity.migrations.idbsetextensions.addorupdate(v=vs.103).aspx

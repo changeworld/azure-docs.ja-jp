@@ -1,6 +1,6 @@
 <properties linkid="manage-services-manage-acs" urlDisplayName="Manage ACS" pageTitle="Access Control Service - Azure service management" metaKeywords="" description="Learn how to manage your Azure Access Control Service (ACS) using certificates and keys." metaCanonical="" services="active-directory" documentationCenter="" title="Managing Your ACS Namespace" authors="mbaldwin" solutions="" manager="mbaldwin" editor="" />
 
-<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="mbaldwin"></tags>
+<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="mbaldwin" />
 
 # ACS 名前空間の管理
 
@@ -74,7 +74,7 @@ ACS は発行するすべてのセキュリティ トークンに署名します
 
 3.  Windows Live ID を使ってサインインすると、管理ポータルのページにリダイレクトされます。このページの左下で、**[Service Bus と Access Control]** をクリックします。
 
-    ![][]
+    ![][0]
 
 4.  ACS 管理ポータルを開くには、左側にあるツリーで **[Access Control]** をクリックし、構成する ACS サービス名前空間を選択して、ページ上部にあるツール バーの **[Access Control サービス]** をクリックします。
 
@@ -130,7 +130,7 @@ ACS は発行するすべてのセキュリティ トークンに署名します
 
 3.  Windows Live ID を使ってサインインすると、管理ポータルのページにリダイレクトされます。このページの左下で、**[Service Bus と Access Control]** をクリックします。
 
-    ![][]
+    ![][0]
 
 4.  ACS 管理ポータルを開くには、左側にあるツリーで **[Access Control]** をクリックし、構成する ACS サービス名前空間を選択して、ページ上部にあるツール バーの **[Access Control サービス]** をクリックします。
 
@@ -186,7 +186,7 @@ ACS は発行するすべてのセキュリティ トークンに署名します
 
 3.  Windows Live ID を使ってサインインすると、管理ポータルのページにリダイレクトされます。このページの左下で、**[Service Bus と Access Control]** をクリックします。
 
-    ![][]
+    ![][0]
 
 4.  ACS 管理ポータルを開くには、左側にあるツリーで **[Access Control]** をクリックし、構成する ACS サービス名前空間を選択して、ページ上部にあるツール バーの **[Access Control サービス]** をクリックします。
 
@@ -236,7 +236,7 @@ ACS は WS-Federation ID プロバイダー (たとえば AD FS 2.0) の暗号�
 
 3.  Windows Live ID を使ってサインインすると、管理ポータルのページにリダイレクトされます。このページの左下で、**[Service Bus と Access Control]** をクリックします。
 
-    ![][]
+    ![][0]
 
 4.  ACS 管理ポータルを開くには、左側にあるツリーで **[Access Control]** をクリックし、構成する ACS サービス名前空間を選択して、ページ上部にあるツール バーの **[Access Control サービス]** をクリックします。
 
@@ -293,7 +293,7 @@ ACS は WS-Federation ID プロバイダー (たとえば AD FS 2.0) の暗号�
 
 3.  Windows Live ID を使ってサインインすると、管理ポータルのページにリダイレクトされます。このページの左下で、**[Service Bus と Access Control]** をクリックします。
 
-    ![][]
+    ![][0]
 
 4.  ACS 管理ポータルを開くには、左側にあるツリーで **[Access Control]** をクリックし、構成する ACS サービス名前空間を選択して、ページ上部にあるツール バーの **[Access Control サービス]** をクリックします。
 
@@ -366,7 +366,7 @@ ACS 管理サービスは、ACS 名前空間の設定をプログラムによっ
 
 3.  Windows Live ID を使ってサインインすると、管理ポータルのページにリダイレクトされます。このページの左下で、**[Service Bus と Access Control]** をクリックします。
 
-    ![][]
+    ![][0]
 
 4.  ACS 管理ポータルを開くには、左側にあるツリーで **[Access Control]** をクリックし、構成する ACS サービス名前空間を選択して、ページ上部にあるツール バーの **[Access Control サービス]** をクリックします。
 
@@ -455,8 +455,8 @@ WS-Federation ID プロバイダー証明書は、そのメタデータを介し
   [IdentityProviderKey]: http://msdn.microsoft.com/ja-jp/library/hh124084.aspx
   [ACS エラー コード]: http://msdn.microsoft.com/ja-jp/library/gg185949.aspx
   [サンプル コード:管理サービス]: http://msdn.microsoft.com/ja-jp/library/gg185970.aspx
-  []: http://go.microsoft.com/fwlink/?LinkID=129428
-  []: ./media/manage-acs-namespace/ACS1.png
+  [0]: http://go.microsoft.com/fwlink/?LinkID=129428
+  [0]: ./media/manage-acs-namespace/ACS1.png
   [1]: ./media/manage-acs-namespace/ACS2.png
   [2]: ./media/manage-acs-namespace/ACS3.png
   [3]: ./media/manage-acs-namespace/ACS4.png

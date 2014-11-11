@@ -1,6 +1,6 @@
 <properties linkid="manage-services-sql-databases-datasync" urlDisplayName="How to sync data" pageTitle="Getting started with SQL Databases Data Sync" metaKeywords="" description="" metaCanonical="" services="sql-database" documentationCenter="" title="Getting Started with Azure SQL Data Sync" authors="spelleru" solutions="" manager="" editor="" />
 
-<tags ms.service="sql-database" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="spelleru"></tags>
+<tags ms.service="sql-database" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="spelleru" />
 
 # Azure SQL データ同期の概要
 
@@ -185,7 +185,6 @@ SQL データベースと SQL データ同期の詳細については、以下�
   [Image1]: ./media/sql-database-get-started-data-sync/SQLDatabaseScreen-Figure1.PNG
   [このページ]: http://go.microsoft.com/fwlink/?linkid=205836
   [1]: http://www.microsoft.com/download/en/details.aspx?id=26728
-  [Install a Client Agent (SQL Data Sync) (クライアント エージェントのインストール (SQL データ同期))]: http://msdn.microsoft.com/ja-jp/library/jj823137.aspx
   [方法: SQL Server データベースをクライアント エージェントに登録する]: http://msdn.microsoft.com/ja-jp/library/jj823138.aspx
   [Image2]: ./media/sql-database-get-started-data-sync/NewSyncGroup-Figure2.png
   [Image3]: ./media/sql-database-get-started-data-sync/NewSyncGroupName-Figure3.PNG
@@ -193,6 +192,5 @@ SQL データベースと SQL データ同期の詳細については、以下�
   [Image5]: ./media/sql-database-get-started-data-sync/NewSyncGroupReference-Figure5.PNG
   [Image6]: ./media/sql-database-get-started-data-sync/NewSyncGroupSyncRules-Figure6.PNG
   [Image7]: ./media/sql-database-get-started-data-sync/NewSyncGroupConfigure-Figure7.PNG
-  [SQL Data Sync (WA Portal) (SQL データ同期 (WA ポータル))]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj856263.aspx
   [Azure SQL データベースの概要]: ../getting-started-w-sql-databases/
   [SQL Server データベースのライフサイクルに関するページ]: http://go.microsoft.com/fwlink/?LinkId=275193

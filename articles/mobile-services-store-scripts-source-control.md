@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-store-scripts-in-source-control" urlDisplayName="Store server scripts in source control" pageTitle="Store server scripts in source control - Azure Mobile Services" metaKeywords="" description="Learn how to store your server script files and modules in a local Git repo on your computer." metaCanonical="" services="" documentationCenter="Mobile" title="Store server scripts in source control" authors="glenga" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # ソース管理へのサーバー スクリプトの保存
 
@@ -19,7 +19,7 @@
 
 1.  [Azure の管理ポータル][Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[ダッシュボード]** タブをクリックし、**[概要]** の **[ソース管理の設定]** をクリックして、確認のために **[はい]** をクリックします。
 
@@ -174,16 +174,14 @@
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started
   [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/mobile-services-store-scripts-source-control/mobile-services-selection.png
+  [0]: ./media/mobile-services-store-scripts-source-control/mobile-services-selection.png
   [1]: ./media/mobile-services-store-scripts-source-control/mobile-setup-source-control.png
   [2]: ./media/mobile-services-store-scripts-source-control/mobile-source-control-credentials.png
   [3]: ./media/mobile-services-store-scripts-source-control/mobile-source-control-configure.png
-  [Installing Git (Git のインストール)]: http://git-scm.com/book/en/Getting-Started-Installing-Git
   [4]: ./media/mobile-services-store-scripts-source-control/mobile-source-local-repo.png
   [ソース管理]: http://msdn.microsoft.com/ja-jp/library/windowsazure/c25aaede-c1f0-4004-8b78-113708761643
   [5]: ./media/mobile-services-store-scripts-source-control/mobile-portal-data-tables.png
   [6]: ./media/mobile-services-store-scripts-source-control/mobile-insert-script-source-control.png
-  [Modules (モジュール)]: http://nodejs.org/api/modules.html
   [node-uuid]: https://npmjs.org/package/node-uuid
   [Node.js Web サイト]: http://nodejs.org/
   [モバイル サービスのサーバー スクリプトの操作]: /ja-jp/develop/mobile/how-to-guides/work-with-server-scripts

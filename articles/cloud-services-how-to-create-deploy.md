@@ -1,6 +1,6 @@
 <properties linkid="manage-services-how-to-create-and-deploy-a-cloud-service" urlDisplayName="How to create and deploy" pageTitle="How to create and deploy a cloud service - Azure" metaKeywords="Azure creating cloud service, deleting cloud service" description="Learn how to create and deploy a cloud service using the Quick Create method in Azure." metaCanonical="" services="cloud-services" documentationCenter="" title="How to Create and Deploy a Cloud Service" authors="ryanwi" solutions="" manager="timlt" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="ryanwi"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="ryanwi" />
 
 # クラウド サービスを作成してデプロイする方法
 
@@ -155,7 +155,6 @@ Azure SDK には、こういった必須の展開ファイルを準備するた�
 
 <!-- -->
   [disclaimer]: ../includes/disclaimer.md
-  [Continuous Delivery to Azure by Using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信に関するページ)]: http://go.microsoft.com/fwlink/?LinkID=251796&clcid=0x409
   [概念]: #concepts
   [アプリケーションの準備]: #prepare
   [開始する前に]: #begin
@@ -165,18 +164,7 @@ Azure SDK には、こういった必須の展開ファイルを準備するた�
   [Azure のダウンロード]: http://www.windowsazure.com/ja-jp/develop/downloads/
   [Azure Code Samples]: http://code.msdn.microsoft.com/windowsazure/
   [HTTPS エンドポイントでの SSL 証明書の構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff795779.aspx
-  [Overview of Setting Up a Remote Desktop Connection for a Role (ロールのリモート デスクトップ接続をセットアップする手順の概要)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433010.aspx
-  [Enabling Diagnostics in Azure (Azure における診断の有効化)]: http://www.windowsazure.com/ja-jp/develop/net/common-tasks/diagnostics/
   [管理ポータル]: http://manage.windowsazure.com/
-  [CloudServices\_QuickCreate]: ./media/cloud-services-how-to-create-deploy/CloudServices_QuickCreate.png
   [アフィニティ グループに対する操作]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee460798.aspx
-  [CloudServices\_CloudServicesPage]: ./media/cloud-services-how-to-create-deploy/CloudServices_CloudServicesPage.png
-  [CloudServices\_EmptyDashboard]: ./media/cloud-services-how-to-create-deploy/CloudServices_EmptyDashboard.png
-  [CloudServices\_CertificatesPage]: ./media/cloud-services-how-to-create-deploy/CloudServices_CertificatesPage.png
-  [CloudServices\_AddaCertificate]: ./media/cloud-services-how-to-create-deploy/CloudServices_AddaCertificate.png
-  [CloudServices\_CertificateProgress]: ./media/cloud-services-how-to-create-deploy/CloudServices_CertificateProgress.png
   [Azure SDK .NET リリース ノート]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh552718.aspx
-  [CloudServices\_QuickStartPage]: ./media/cloud-services-how-to-create-deploy/CloudServices_QuickStartPage.png
-  [CloudServices\_UploadaPackage]: ./media/cloud-services-how-to-create-deploy/CloudServices_UploadaPackage.png
   [サービス レベル アグリーメント]: http://www.windowsazure.com/ja-jp/support/legal/sla/
-  [CloudServices\_UploadProgress]: ./media/cloud-services-how-to-create-deploy/CloudServices_UploadProgress.png

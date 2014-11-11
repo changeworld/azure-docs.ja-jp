@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-handle-conflcits-offline-data-dotnet" urlDisplayName="Handle Conflicts with Offline Data" pageTitle="Handle Conflicts with offline data in Mobile Services (Windows Store) | Mobile Dev Center" metaKeywords="" description="Learn how to use Azure Mobile Services handle conflicts when syncing offline data in your Windows Store application" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Handling conflicts with offline data in Mobile Services" authors="wesmc" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc" />
 
 # モバイル サービスでのオフライン データの同期との競合の処理
 
@@ -37,7 +37,7 @@
 
 ## <a name="download-app"></a>サンプル プロジェクトのダウンロード
 
-![][]
+![][0]
 
 このチュートリアルは、Visual Studio 2013 の Windows ストア アプリ プロジェクトである、[競合コード サンプルの処理][競合コード サンプルの処理]に基づいて構築されています。このアプリケーションの UI は、各 TodoItem に新しいデータ列があることを除き、「[オフライン データの使用][オフライン データの使用]」チュートリアルのアプリケーションと似ています。
 
@@ -117,7 +117,7 @@ JavaScript バックエンド モバイル サービスでは、**TodoWithDate**
 
 4.  前と同様に、テキスト ボックスにテキストを入力し、**[Save]** をクリックします。これによってデータはローカルの同期テーブルには保存されますが、サーバーには保存されません。
 
-    ![][]
+    ![][0]
 
 5.  データベースの現在の状態を表示するには、[Azure の管理ポータル][Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。
 
@@ -195,9 +195,6 @@ JavaScript バックエンド モバイル サービスでは、**TodoWithDate**
 
 
 
-  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data "Windows ストア C#"
-  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-handling-conflicts-offline-data "Windows Phone"
-  [チュートリアルを見る]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Build-offline-apps-Azure-Mobile-Services
   [オフライン データの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data
   [Windows ストア アプリ プロジェクトのダウンロード]: #download-app
   [期日列のデータベースへの追加]: #add-column
@@ -205,7 +202,7 @@ JavaScript バックエンド モバイル サービスでは、**TodoWithDate**
   [JavaScript モバイル サービスのデータベースの更新]: #javascript-backend
   [モバイル サービスに対するアプリケーションのテスト]: #test-app
   [競合を作成するためのバックエンドでのデータの手動更新]: #handle-conflict
-  []: ./media/mobile-services-windows-store-dotnet-handling-conflicts-offline-data/mobile-services-handling-conflicts-app-run1.png
+  [0]: ./media/mobile-services-windows-store-dotnet-handling-conflicts-offline-data/mobile-services-handling-conflicts-app-run1.png
   [競合コード サンプルの処理]: http://go.microsoft.com/fwlink/?LinkId=394787
   [SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkId=394776
   [Code First Migrations を使用してデータ モデルを更新する方法に関するページ]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations

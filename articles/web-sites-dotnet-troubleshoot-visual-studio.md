@@ -1,6 +1,6 @@
 <properties title="Troubleshooting Azure Websites in Visual Studio" pageTitle="Troubleshooting Azure Websites in Visual Studio" metaKeywords="troubleshoot debug azure web site tracing logging" description="Learn how to troubleshoot an Azure Website by using remote debugging, tracing, and logging tools that are built in to Visual Studio 2013." metaCanonical="" services="web-sites" documentationCenter=".NET" authors="tdykstra" manager="wpickett" solutions="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="tdykstra"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="tdykstra" />
 
 # Visual Studio での Azure Web サイトのトラブルシューティング
 
@@ -55,11 +55,11 @@ Visual Studio は、管理ポータルで利用できるサイト管理機能や
 
 3.  「[ASP.NET Web アプリケーションを Azure Web サイトに展開する][ASP.NET Web アプリケーションを Azure Web サイトに展開する]」で作成した Web サイトのノードを右クリックし、**[設定の表示]** をクリックします。
 
-    ![サーバー エクスプローラーの 設定の表示][]
+    ![サーバー エクスプローラーの 設定の表示][サーバー エクスプローラーの 設定の表示]
 
     **[Azure の Web サイト]** タブが表示され、Visual Studio から利用できるサイト管理タスクや構成タスクが確認できます。
 
-    ![Azure Web サイト ウィンドウ][]
+    ![Azure Web サイト ウィンドウ][Azure Web サイト ウィンドウ]
 
     このチュートリアルでは、ログとトレースのドロップダウンを使用します。また、リモート デバッグも使用し、さまざまな方法でこの機能を有効にします。
 
@@ -375,7 +375,7 @@ Azure Web サイトで動作する ASP.NET アプリケーションでは、次�
 
 **出力**ウィンドウの **[Azure ログ]** タブには、いくつかのボタンと 1 つのテキスト ボックスが表示されます。
 
-![ログ タブのボタン][]
+![ログ タブのボタン][ログ タブのボタン]
 
 それぞれの機能を次に示します。
 
@@ -713,21 +713,17 @@ Web サイトではなく Azure クラウド サービスをデバッグする�
   [1]: ./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png
   [2]: ./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png
   [Web.config の変換]: http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations
-  [ファイル と ログ ファイル]: ./media/web-sites-dotnet-troubleshoot-visual-studio/fileandlogfiles.png
-  [Web.config を開く]: ./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png
   [Web.config の編集]: ./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png
   [詳細なエラー メッセージ]: ./media/web-sites-dotnet-troubleshoot-visual-studio/detailederror.png
   [デバッグ モードでの発行]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png
   [デバッガーの接続]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png
   [管理ポータルでのリモート デバッグの設定]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debuginportal.png
   [Azure で実行されているコード内の変数をデバッグ モードで表示]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png
-  [About ページ (値の変更後)]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugchangeinwa.png
   [Azure 料金計算ツール]: /ja-jp/pricing/calculator/
   [ステップ実行をマイ コードのみに制限する]: http://msdn.microsoft.com/ja-jp/library/vstudio/y740d9d3.aspx#BKMK_Restrict_stepping_to_Just_My_Code
   [WebJobs]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs
   [Visual Studio でのデバッグ]: http://msdn.microsoft.com/ja-jp/library/vstudio/sc65sadd.aspx
   [System.Diagnostics.Trace]: http://msdn.microsoft.com/ja-jp/library/system.diagnostics.trace.aspx
-  [デバッグ ウィンドウでのトレース]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugtracing.png
   [trace 要素]: http://msdn.microsoft.com/ja-jp/library/vstudio/6915t83k(v=vs.100).aspx
   [trace.axd]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png
   [3]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png
@@ -735,7 +731,6 @@ Web サイトではなく Azure クラウド サービスをデバッグする�
   [4]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png
   [出力ウィンドウのエラー トレース]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-errortrace.png
   [アプリケーション ログ記録がオフ]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-apploggingoff.png
-  [トレース レベルを 詳細 に設定]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-applogverbose.png
   [詳細レベルのトレース出力]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-verbosetraces.png
   [ログ タブのボタン]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png
   [Web サーバーのログ記録を有効にする]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-webserverloggingon.png
@@ -750,20 +745,16 @@ Web サイトではなく Azure クラウド サービスをデバッグする�
   [ダウンロードされたファイル]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png
   [6]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png
   [Log Parser]: http://www.microsoft.com/ja-jp/download/details.aspx?displaylang=en&id=24659
-  [データ ストレージ オプション (Azure を使用した実際のクラウド アプリケーションの作成) に関するページ]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options
   [ストレージ アカウントの作成]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-createstorage.png
   [URL を入力する]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-storageurl.png
   [7]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configlogging.png
-  [テーブル ストレージの管理 をクリックします。]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-stgsettingsmgmtportal.png
   [テーブル ストレージの管理]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-choosestorageacct.png
-  [最新の情報に更新 をクリックする]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-refreshstorage.png
   [ストレージ ログ]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-storagelogs.png
   [サーバー エクスプローラーのトレース テーブル]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracetableinse.png
   [テーブル形式で表示されたストレージ ログ]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracelogtableview.png
   [サーバー エクスプローラーを使用したストレージ リソースの参照]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff683677.aspx
   [8]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracetablerow.png
   [失敗した要求トレースを有効にする]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-failedrequeston.png
-  [FTP の資格情報をリセットするためのリンク (ダッシュボード)]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-resetftpcredentials.png
   [新しい FTP ユーザー名とパスワード]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-enterftpcredentials.png
   [LogFiles フォルダーを開く]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilesfolder.png
   [W3SVC フォルダーを開く]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-w3svcfolder.png
@@ -773,18 +764,11 @@ Web サイトではなく Azure クラウド サービスをデバッグする�
   [Web サイトのトラブルシューティング]: /ja-jp/develop/net/best-practices/troubleshooting-web-sites/
   [診断ログの有効化: Azure の Web サイト]: /ja-jp/develop/net/common-tasks/diagnostics-logging-and-instrumentation/
   [Web サイトの監視方法]: /ja-jp/manage/services/web-sites/how-to-monitor-websites/
-  [configure diagnostics and download logs (診断の構成とログのダウンロード)]: /ja-jp/manage/services/web-sites/how-to-monitor-websites/#howtoconfigdiagnostics
-  [Investigating Memory Leaks in Azure Web Sites with Visual Studio 2013 (Visual Studio 2013 を使用した Azure の Web サイトでのメモリ リークの調査)]: http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx
-  [Windows Azure Websites online tools you should know about (知っておくべき Windows Azure Web サイトのオンライン ツール)]: /blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/
   [ASP.NET サイト上の Azure フォーラム]: http://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET
   [MSDN 上の Azure フォーラム]: http://social.msdn.microsoft.com/Forums/windowsazure/
   [StackOverflow.com]: http://www.stackoverflow.com
   [Visual Studio 2010 でのデバッグのヒントに関するページ]: http://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx
-  [Introduction to Remote Debugging on Azure Web Sites (Azure の Web サイトにおけるリモート デバッグの概要)]: /blog/2014/05/06/introduction-to-remote-debugging-on-azure-web-sites/
-  [Introduction to Remote Debugging Azure Web Sites part 2 - Inside Remote debugging (Azure の Web サイトにおけるリモート デバッグの概要 2 - リモート デバッグの内部処理)]: /blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/
-  [Introduction to Remote Debugging on Azure Web Sites part 3 - Multi-Instance environment and GIT (Azure の Web サイトにおけるリモート デバッグの概要 3 - マルチインスタンス環境と GIT)]: /blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/
   [Visual Studio での .NET バックエンドのデバッグに関するページ]: http://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx
-  [監視と利用統計情報 (Azure での実際のクラウド アプリケーションのビルド) に関するページ]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry
   [ASP.NET トレース]: http://msdn.microsoft.com/ja-jp/library/ms972204.aspx
   [トレース リスナー]: http://msdn.microsoft.com/ja-jp/library/4y5y10s7.aspx
   [WebPageTraceListener]: http://msdn.microsoft.com/ja-jp/library/system.web.webpagetracelistener.aspx
@@ -798,8 +782,6 @@ Web サイトではなく Azure クラウド サービスをデバッグする�
   [ELMAH]: http://nuget.org/packages/elmah/
   [Scott Hanselman が ELMAH についてまとめたブログ記事]: http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx
   [LogParser]: http://www.microsoft.com/ja-jp/download/details.aspx?id=24659
-  [Troubleshooting IIS Performance Issues or Application Errors using LogParser (IIS のパフォーマンスの問題やアプリケーション エラーを LogParser でトラブルシューティングする)]: http://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser
   [LogParser の使用に関して Robert McMurray が執筆したブログ記事]: http://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/
   [IIS 7.0、IIS 7.5、IIS 8.0 における HTTP ステータス コード]: http://support.microsoft.com/kb/943891
-  [Using Failed Request Tracing (失敗した要求トレースの使用)]: http://www.iis.net/learn/troubleshoot/using-failed-request-tracing
   [クラウド サービスのデバッグに関するページ]: http://msdnstage.redmond.corp.microsoft.com/ja-jp/library/windowsazure/ee405479.aspx

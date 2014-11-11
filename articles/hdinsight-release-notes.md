@@ -1,6 +1,6 @@
 <properties title="HDInsight Release Notes" pageTitle="HDInsight Release Notes | Azure" description="HDInsight release notes." metaKeywords="hdinsight, hadoop, hdinsight hadoop, hadoop azure, release notes" services="HDInsight" solutions="" documentationCenter="" editor="cgronlun" manager="paulettm"  authors="bradsev" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev" />
 
 # Microsoft HDInsight リリース ノート
 
@@ -42,7 +42,7 @@
 -   **HDP 2.1 が使用可能**: HDP 2.1 が含まれる HDInsight 3.1 が一般に使用可能となり、新しいクラスターの既定のバージョンになりました。
 -   **HBase – Azure の管理ポータルの改良**: HBase クラスターがプレビューで使用可能になりました。ポータルで 3 回クリックするだけで HBase クラスターが作成できるようになりました。
 
-![][]
+![][0]
 
 HBase を使用すると、大規模なデータセットを処理する対話的な Web サイトから、何百万ものエンド ポイントからのセンサーのデータや利用統計情報のデータを格納するサービスまで、さまざまなリアルタイムのワークロードを HDInsight で構築できます。次の手順としては Hadoop ジョブでこれらのワークロードのデータを分析しますが、これは PowerShell や Hive クラスター ダッシュボードなどと同様の方法によって HDInsight で即座に実現可能です。
 
@@ -426,11 +426,8 @@ SQL Server JDBC ドライバーは HDInsight によって内部的に使用さ�
   [New-AzureHDInsightCluster]: http://msdn.microsoft.com/ja-jp/library/dn593744.aspx
   [HDInsight SDK]: http://msdn.microsoft.com/ja-jp/library/azure/dn469975.aspx
   [HDInsight で提供されるクラスター バージョンの新機能]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/
-  []: http://i.imgur.com/cmOl5fM.png
+  [0]: http://i.imgur.com/cmOl5fM.png
   [Mahout]: http://hortonworks.com/hadoop/mahout/
-  [Breiman Example (Breiman の例)]: https://mahout.apache.org/users/classification/breiman-example.html
-  [Benchmarking Apache Hive 13 for Enterprise Hadoop (Enterprise Hadoop 向け Apache Hive 13 のベンチマーク)]: http://hortonworks.com/blog/benchmarking-apache-hive-13-enterprise-hadoop/
-  [Hive on Tez wiki page (wiki ページ「Tez を使用した Hive」)]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
   [Hortonworks Data Platform 2.1]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.1/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.1.html
   [Hortonworks Data Platform 2.0]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.8.0/bk_releasenotes_hdp_2.0/content/ch_relnotes-hdp2.0.8.0.html
   [Hortonworks Data Platform 1.3]: http://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.3.0_1.html

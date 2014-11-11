@@ -1,6 +1,6 @@
 <properties linkid="develop-net-tutorials-website-with-mongodb-mongolab" urlDisplayName="Website with MongoDB on MongoLab" pageTitle="Create a Website that uses MongoDB on MongoLab (.NET)" metaKeywords="" description="Learn how to create an Azure website that stores data in MongoDB hosted by MongoLab." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Create a C# ASP.NET Application on Azure with MongoDB using the MongoLab Add-On" authors="eric@mongolab.com" solutions="" manager="" editor="mollybos" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="eric@mongolab.com"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="eric@mongolab.com" />
 
 # MongoLab アドオンを使用して Azure で MongoDB 対応の C# ASP.NET アプリケーションを作成する
 
@@ -54,7 +54,7 @@
 
 ## <a name="provision"></a>データベースの準備
 
-[WACOM.INCLUDE [howto-provision-mongolab][howto-provision-mongolab]]
+[WACOM.INCLUDE [howto-provision-mongolab](../includes/howto-provision-mongolab.md)]
 
 ## <a name="create"></a>アプリケーションの作成
 
@@ -429,11 +429,11 @@ Azure で Web サイトを作成するのは、特に Azure では Visual Studio
 
 ### MongoLab 接続文字列を取得する
 
-[WACOM.INCLUDE [howto-get-connectioninfo-mongolab][howto-get-connectioninfo-mongolab]]
+[WACOM.INCLUDE [howto-get-connectioninfo-mongolab](../includes/howto-get-connectioninfo-mongolab.md)]
 
 ### Web サイトの環境変数に接続文字列を追加する
 
-[WACOM.INCLUDE [howto-save-connectioninfo-mongolab][howto-save-connectioninfo-mongolab]]
+[WACOM.INCLUDE [howto-save-connectioninfo-mongolab](../includes/howto-save-connectioninfo-mongolab.md)]
 
 ### Web サイトを発行する
 
@@ -449,7 +449,7 @@ Azure で Web サイトを作成するのは、特に Azure では Visual Studio
 
 ## <a name="manage"></a>データベースの管理
 
-[WACOM.INCLUDE [howto-access-mongolab-ui][howto-access-mongolab-ui]]
+[WACOM.INCLUDE [howto-access-mongolab-ui](../includes/howto-access-mongolab-ui.md)]
 
 ご利用ありがとうございます。これで、MongoLab がホスティングする MongoDB データベースに支えられた C# ASP.NET アプリケーションが公開されました。MongoLab データベースを利用しているため、データベースに関する疑問や懸念がある場合、または、MongoDB や C# ドライバーそのものに関するヘルプが必要な場合は、[support@mongolab.com](mailto:support@mongolab.com) にお問い合わせください。それではお元気で。
 
@@ -458,7 +458,6 @@ Azure で Web サイトを作成するのは、特に Azure では Visual Studio
   [アプリケーションの作成]: #create
   [アプリケーションの展開]: #deploy
   [データベースの管理]: #manage
-  [\<a href="mailto:support@mongolab.com"\>support@mongolab.com\</a\>]: mailto:support@mongolab.com
   [ストア]: ./media/partner-mongodb-web-sites-dotnet-use-mongolab/button-store.png
   [1]: ./media/partner-mongodb-web-sites-dotnet-use-mongolab/entry-mongolab.png
   [ConnectionInfoButton]: ./media/partner-mongodb-web-sites-dotnet-use-mongolab/button-connectioninfo.png
@@ -469,7 +468,6 @@ Azure で Web サイトを作成するのは、特に Azure では Visual Studio
   [ProjectFramework]: ./media/partner-mongodb-web-sites-dotnet-use-mongolab/focus-dotNet-Framework4-mongolab.png
   [ProjectTemplate]: ./media/partner-mongodb-web-sites-dotnet-use-mongolab/dialog-mongolab-csharp-projecttemplate.png
   [PMConsole]: ./media/partner-mongodb-web-sites-dotnet-use-mongolab/focus-mongolab-csharp-pmconsole.png
-  [CSharp Driver QuickStart (CSharp ドライバー クイックスタート)]: http://www.mongodb.org/display/DOCS/CSharp+Driver+Quickstart "CSharp Driver Quickstart"
   [New]: ./media/partner-mongodb-web-sites-dotnet-use-mongolab/button-new.png
   [CreateSite]: ./media/partner-mongodb-web-sites-dotnet-use-mongolab/screen-mongolab-newwebsite.png
   [WebSiteDashboard]: ./media/partner-mongodb-web-sites-dotnet-use-mongolab/screen-mongolab-websitedashboard.png

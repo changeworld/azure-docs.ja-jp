@@ -1,6 +1,6 @@
 <properties linkid="mobile-services-dotnet-backend-get-started-custom-authentication" urlDisplayName="Get started with custom authentication" pageTitle="Get started with custom authentication | Mobile Dev Center" metaKeywords="" description="Learn how to authenticate users with a username and password." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Get started with custom authentication" authors="mahender" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="mahender"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="mahender" />
 
 # カスタム認証の使用
 
@@ -252,7 +252,7 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 
 ## <a name="require-authentication"></a>認証を要求するようにモバイル サービスを構成する
 
-[WACOM.INCLUDE [mobile-services-restrict-permissions-dotnet-backend][mobile-services-restrict-permissions-dotnet-backend]]
+[WACOM.INCLUDE [mobile-services-restrict-permissions-dotnet-backend](../includes/mobile-services-restrict-permissions-dotnet-backend.md)]
 
 ## <a name="test-login"></a>テスト クライアントを使用して、ログイン フローをテストする
 
@@ -262,7 +262,7 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
 
 1.  Visual Studio で、Mobile Services バックエンド プロジェクトを右クリックし、**[デバッグ]、[新しいインスタンスを開始]** の順に選択して、プロジェクトの新しいデバッグ インスタンスを開始します。
 
-    ![][]
+    ![][0]
 
 2.  **[試してみる]** をクリックします。
 
@@ -291,7 +291,7 @@ Mobile Services 認証パイプラインの基本的なコンストラクトの 
   [テスト クライアントを使用して、ログイン フローをテストする]: #test-login
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started
   [mobile-services-restrict-permissions-dotnet-backend]: ../includes/mobile-services-restrict-permissions-dotnet-backend.md
-  []: ./media/mobile-services-dotnet-backend-get-started-custom-authentication/mobile-services-dotnet-backend-debug-start.png
+  [0]: ./media/mobile-services-dotnet-backend-get-started-custom-authentication/mobile-services-dotnet-backend-debug-start.png
   [1]: ./media/mobile-services-dotnet-backend-get-started-custom-authentication/mobile-services-dotnet-backend-try-out.png
   [2]: ./media/mobile-services-dotnet-backend-get-started-custom-authentication/mobile-services-dotnet-backend-custom-auth-test-client.png
   [3]: ./media/mobile-services-dotnet-backend-get-started-custom-authentication/mobile-services-dotnet-backend-custom-auth-send-register.png

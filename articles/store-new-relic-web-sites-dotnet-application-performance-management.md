@@ -1,6 +1,6 @@
 <properties linkid="develop-net-how-to-guides-new-relic-app" urlDisplayName="New Relic App Performance Management" pageTitle="New Relic App Performance Management on Azure" metaKeywords="new relic Azure, performance azure" description="Learn how to use New Relic's performance monitoring on Azure." metaCanonical="" services="web-sites" documentationCenter=".NET" title="New Relic Application Performance Management on Azure Websites" authors="new relic" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="new relic"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="new="" relic" />
 
 # Azure Web サイトの New Relic によるアプリケーション パフォーマンス管理
 
@@ -278,22 +278,15 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
   [Microsoft WebMatrix を使用して Web サイトを開発してデプロイする]: http://www.windowsazure.com/ja-jp/develop/net/tutorials/website-with-webmatrix/
   [パッケージ マネージャー コンソール]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/NewRelicAzureNuget04.png
   [ライセンス キーの入力]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nrvslicensekey.png
-  [ホーム タブの NuGet ボタン]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nrwmnugetbutton.png
   [NuGet ギャラリーで NewRelic.Azure.WebSites を検索]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nrwmnugetgallery.png
   [newrelic フォルダーを展開して newrelic.conf を選択]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nrwmlicensekey.png
   [アドオン フィールドの画像]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nraddon.png
   [カスタム フィールドの画像]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nrcustom.png
   [New Relic の監視ダッシュボード]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/NewRelic_app.png
   []: https://newrelic.com/docs/site/the-new-relic-ui#functions
-  [と]: https://newrelic.com/docs/site/the-new-relic-ui#drilldown
   [Apdex]: https://newrelic.com/docs/site/apdex
   [地理]: https://newrelic.com/docs/site/geography
   [Web トランザクション]: https://docs.newrelic.com/docs/applications-menu/transactions-dashboard
-  [主要トランザクション]: https://newrelic.com/docs/site/key-transactions
   [エラー]: https://newrelic.com/docs/site/errors
   [1]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/NewRelic_app_browser.png
-  [Installing the .NET Agent for Azure Web Sites (Azure の Web サイト用の .NET エージェントのインストール)]: https://newrelic.com/docs/dotnet/azure-web-sites-beta#manual_install
-  [The New Relic User Interface (New Relic ユーザー インターフェイス)]: https://newrelic.com/docs/site/the-new-relic-ui
-  [Applications Overview (アプリケーションの概要)」]: https://newrelic.com/docs/site/applications-overview
   [Real User Monitoring]: https://newrelic.com/docs/features/real-user-monitoring
-  [Finding Help (ヘルプの利用)]: https://newrelic.com/docs/site/finding-help

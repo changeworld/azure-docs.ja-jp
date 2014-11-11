@@ -1,36 +1,36 @@
 <properties linkid="develop-python-queue-service" urlDisplayName="Queue Service" pageTitle="How to use the queue service (Python) | Microsoft Azure" metaKeywords="Azure Queue Service messaging Python" description="Learn how to use the Azure Queue service to create and delete queues, and insert, get, and delete messages. Samples written in Python." metaCanonical="" services="storage" documentationCenter="Python" title="How to Use the Queue Storage Service from Python" authors="huvalo" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo" />
 
 # Python からキュー ストレージ サービスを使用する方法
 
 このガイドでは、Windows Azure キュー ストレージ サービスを使用して
 一般的なシナリオを実行する方法について説明します。サンプルは Python API を使用して記述されています。
 キュー メッセージの**挿入**、**ピーク**、**取得**、および**削除**と、**キューの作成および削除**の各シナリオについて説明します。
-キューの詳細については、「[次のステップ][]」のセクションを参照してください。
+キューの詳細については、「[次のステップ][次のステップ]」のセクションを参照してください。
 
 ## 目次
 
-[キュー ストレージとは][]		
- [概念][]		
- [Azure ストレージ アカウントの作成][]		
- [方法: キューを作成する][]		
- [方法: メッセージをキューに挿入する][]		
- [方法: 次のメッセージをピークする][]		
- [方法: 次のメッセージをデキューする][]		
- [方法: キューに配置されたメッセージの内容を変更する][]		
- [方法: メッセージをデキューするための追加オプション][]		
- [方法: キューの長さを取得する][]		
- [方法: キューを削除する][]		
- [次のステップ][]		
+[キュー ストレージとは][キュー ストレージとは]		
+ [概念][概念]		
+ [Azure ストレージ アカウントの作成][Azure ストレージ アカウントの作成]		
+ [方法: キューを作成する][方法: キューを作成する]		
+ [方法: メッセージをキューに挿入する][方法: メッセージをキューに挿入する]		
+ [方法: 次のメッセージをピークする][方法: 次のメッセージをピークする]		
+ [方法: 次のメッセージをデキューする][方法: 次のメッセージをデキューする]		
+ [方法: キューに配置されたメッセージの内容を変更する][方法: キューに配置されたメッセージの内容を変更する]		
+ [方法: メッセージをデキューするための追加オプション][方法: メッセージをデキューするための追加オプション]		
+ [方法: キューの長さを取得する][方法: キューの長さを取得する]		
+ [方法: キューを削除する][方法: キューを削除する]		
+ [次のステップ][次のステップ]		
 
-[WACOM.INCLUDE [howto-queue-storage][]]
+[WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
 ## <a name="create-account"> </a> Azure のストレージ アカウントの作成
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-**注:** Python またはクライアント ライブラリをインストールする場合は、[Python インストール ガイド][]を参照してください。
+**注:** Python またはクライアント ライブラリをインストールする場合は、[Python インストール ガイド][Python インストール ガイド]を参照してください。
 
 ## <a name="create-queue"> </a>方法: キューを作成する
 
@@ -115,8 +115,8 @@
 
 これで、キュー ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   MSDN リファレンス: [Azure のデータの格納とアクセス][]
--   [Azure のストレージ チーム ブログ][]
+-   MSDN リファレンス: [Azure のデータの格納とアクセス][Azure のデータの格納とアクセス]
+-   [Azure のストレージ チーム ブログ][Azure のストレージ チーム ブログ]
 
   [次のステップ]: #next-steps
   [キュー ストレージとは]: #what-is
@@ -133,5 +133,5 @@
   [howto-queue-storage]: ../includes/howto-queue-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
   [Python インストール ガイド]: ../python-how-to-install/
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/

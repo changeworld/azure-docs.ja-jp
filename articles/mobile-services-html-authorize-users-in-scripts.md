@@ -1,6 +1,6 @@
 <properties pageTitle="Service-side authorization (HTML) | Mobile Dev Center" metaKeywords="" description="Learn how to authorize users in the JavaScript backend of Azure Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="Service-side authorization of Mobile Services users" authors="glenga" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-html" ms.devlang="javascript" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-html" ms.devlang="javascript" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # モバイル サービス ユーザーのサービス側の承認
 
@@ -18,7 +18,7 @@
 
 1.  [Azure の管理ポータル][Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
@@ -83,18 +83,9 @@
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-authorize-users-in-scripts "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-authorize-users-in-scripts "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-authorize-users-in-scripts "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/mobile-services-ios-authorize-users-in-scripts "iOS"
-  [Android]: /ja-jp/documentation/articles/mobile-services-android-authorize-users-in-scripts "Android"
-  [HTML]: /ja-jp/documentation/articles/mobile-services-html-authorize-users-in-scripts "HTML"
-  [Xamarin.iOS]: /ja-jp/documentation/articles/partner-xamarin-mobile-services-ios-authorize-users-in-scripts "Xamarin.iOS"
-  [Xamarin.Android]: /ja-jp/documentation/articles/partner-xamarin-mobile-services-android-authorize-users-in-scripts "Xamarin.Android"
-  [JavaScript バックエンド]: /ja-jp/documentation/articles/mobile-services-html-authorize-users-in-scripts/ "JavaScript バックエンド"
   [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-html
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/mobile-services-html-authorize-users-in-scripts/mobile-services-selection.png
+  [0]: ./media/mobile-services-html-authorize-users-in-scripts/mobile-services-selection.png
   [1]: ./media/mobile-services-html-authorize-users-in-scripts/mobile-portal-data-tables.png
   [2]: ./media/mobile-services-html-authorize-users-in-scripts/mobile-insert-script-users.png
   [3]: ./media/mobile-services-html-authorize-users-in-scripts/mobile-quickstart-startup-html.png

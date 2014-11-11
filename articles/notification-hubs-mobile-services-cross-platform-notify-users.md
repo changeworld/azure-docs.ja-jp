@@ -1,6 +1,6 @@
 <properties linkid="manage-services-notification-hubs-notify-users-xplat-mobile-services" urlDisplayName="notify users xplat mobile services" pageTitle="Send cross-platform notifications to users with Notification Hubs (Mobile Services)" metaKeywords="" description="Learn how to use Notification Hubs templates to send, in a single request, a platform-agnostic notification that targets all platforms." metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Send cross-platform notifications to users with Notification Hubs" authors="glenga" solutions="" manager="" editor="" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # 通知ハブによるユーザーへのクロスプラットフォーム通知の送信
 
@@ -19,7 +19,7 @@
 
 1.  [Azure の管理ポータル][Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[API]** タブをクリックし、API テーブルで **register\_notifications** エントリをクリックします。
 
@@ -115,14 +115,12 @@
 <!-- URLs. -->
 
   [モバイル サービス]: /ja-jp/documentation/articles/notification-hubs-mobile-services-cross-platform-notify-users/ "モバイル サービス"
-  [ASP.NET]: /ja-jp/documentation/articles/notification-hubs-aspnet-cross-platform-notify-users/ "ASP.NET"
   [通知ハブによるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users
   [Azure 通知ハブの概要]: http://go.microsoft.com/fwlink/p/?LinkId=317339
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-services-selection.png
+  [0]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-services-selection.png
   [1]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-custom-api-select.png
   [2]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-portal-data-tables.png
   [3]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-insert-script-push2.png
   [Windows ストア C#]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet
   [iOS]: /ja-jp/manage/services/notification-hubs/breaking-news-ios
-  [方法: Azure 通知ハブ (Windows ストア アプリ)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj927172.aspx

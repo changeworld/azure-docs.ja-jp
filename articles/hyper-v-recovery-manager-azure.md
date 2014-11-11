@@ -1,6 +1,6 @@
 <properties linkid="configure-hyper-v-recovery-vault" urlDisplayName="configure-Azure-Site-Recovery" pageTitle="Configure Azure Site Recovery to protect virtual machines on Hyper-V server located in VMM clouds" metaKeywords="Azure Site Recovery, VMM, clouds, disaster recovery" description="Azure Site Recovery coordinates the replication, failover and recovery of Hyper-V virtual machines located in VMM clouds from one on-premises site to another. Azure Site Recovery can also replicate, failover, and recover Hyper-V virtual machine data between VMM clouds and Microsoft Azure." metaCanonical="" umbracoNaviHide="0" disqusComments="1" title="Getting Started with Azure Site Recovery: On-Premises to Azure Protection" editor="jimbe" manager="cfreeman" authors="" />
 
-<tags ms.service="site-recovery" ms.workload="backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author></tags>
+<tags ms.service="site-recovery" ms.workload="backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="" />
 
 # Azure Site Recovery の概要: 内部設置型と Azure 間の保護
 
@@ -359,29 +359,9 @@ VMM コンソールで設定を確認および更新します。仮想マシン�
 -   完全な運用環境に Azure Site Recovery を計画、デプロイするには、「[Planning Guide for Azure Site Recovery (Azure Site Recovery の計画ガイド)][Plan for Azure Site Recovery Deployment (手順 5: 証明書の準備)]」および「[Azure Site Recovery のデプロイ: オンプレミス間の保護][Azure Site Recovery のデプロイ: オンプレミス間の保護]」を参照してください。
 -   疑問がある場合は、「[Azure Recovery Services Forum (Azure 復旧サービス フォーラム)][Azure Recovery Services フォーラム]」にアクセスします。
 
-  [Getting Started with Azure Site Recovery: On-Premises to On-Premises Protection (Azure の Hyper-V 回復マネージャーの構成)]: http://go.microsoft.com/fwlink/?LinkId=398765
-  [Plan for Azure Site Recovery Deployment (手順 5: 証明書の準備)]: http://go.microsoft.com/fwlink/?LinkId=321294
-  [Azure Site Recovery のデプロイ : オンプレミスと Azure 間の保護]: http://go.microsoft.com/fwlink/?LinkId=402679
   [Azure Site Recovery の管理および監視]: http://go.microsoft.com/fwlink/?LinkId=378272
-  [Azure Site Recovery のエラーの一般的なシナリオと解決策に関するページ]: http://go.microsoft.com/fwlink/?LinkId=389879
   [Azure Recovery Services フォーラム]: http://go.microsoft.com/fwlink/?LinkId=313628
-  [Microsoft Azure 1 か月間無料評価版]: http://aka.ms/try-azure
-  [Azure Site Recovery Pricing (Azure Site Recovery の価格設定)]: http://go.microsoft.com/fwlink/?LinkId=378268
-  [Microsoft Azure ストレージの概要]: http://go.microsoft.com/fwlink/?LinkId=398704
   [前提条件とサポート]: http://go.microsoft.com/fwlink/?LinkId=402602
-  [手順 1.証明書の取得と構成]: #createcert
-  [手順 2.コンテナーの作成]: #vault
-  [手順 3.コンテナーの構成]: #upload
-  [手順 4.Provider アプリケーションのインストール]: #download
-  [手順 5.Agent アプリケーションのインストール]: #agent
-  [手順 6.クラウドの保護の構成]: #clouds
-  [手順 7.ネットワーク マッピングの構成]: #NetworkMapping
-  [手順 8.仮想マシンの保護の有効化]: #virtualmachines
-  [手順 9.復旧計画の構成と実行]: #recovery%20plans
-  [チュートリアルで使用する自己署名証明書の取得]: #obtaincert
-  [.pfx 形式での証明書のエクスポート]: #exportcert
-  [VMM サーバーへの .pfx 証明書のインポート]: #importcert
-  [Windows SDK]: http://go.microsoft.com/fwlink/?LinkId=378269
   [管理ポータル]: https://manage.windowsazure.com
   [新しいコンテナー]: ./media/hyper-v-recovery-manager-configure-vault/SR_HvVault.png
   [クイック スタート アイコン]: ./media/hyper-v-recovery-manager-configure-vault/SR_QuickStartIcon.png

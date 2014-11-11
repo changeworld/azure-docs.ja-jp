@@ -1,6 +1,6 @@
 <properties linkid="dev-nodejs-basic-web-app-with-express" urlDisplayName="Web App with Express" pageTitle="Web App with Express (Node.js) - Azure Tutorial" metaKeywords="Azure Node.js hello world tutorial, Azure Node.js hello world, Azure Node.js Getting Started tutorial, Azure Node.js tutorial, Azure Node.js Express tutorial" description="An tutorial that builds on the cloud service tutorial, and demonstrates how to use the Express module." metaCanonical="" services="cloud-services" documentationCenter="nodejs" title="Build a Node.js web application using Express on an Azure Cloud Service" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
 # Azure Cloud Services での Express を使用した Node.js Web アプリケーションの構築
 
@@ -18,7 +18,7 @@ Node.js には、コア ランタイムの最小限の機能セットが含ま�
 
     ![Azure PowerShell アイコン][Azure PowerShell アイコン]
 
-    [WACOM.INCLUDE [install-dev-tools][install-dev-tools]]
+    [WACOM.INCLUDE [install-dev-tools](../includes/install-dev-tools.md)]
 
 2.  **c:\\node** ディレクトリに移動し、次のコマンドを入力して **expressapp** という名前の新しいソリューションと **WebRole1** という名前の Web ロールを作成します。
 
@@ -117,6 +117,4 @@ Azure PowerShell ウィンドウで、**Publish-AzureServiceProject** コマン�
   [npm install コマンドの出力]: ./media/cloud-services-nodejs-develop-deploy-express-app/node26.png
   [Welcome to Express メッセージを含む Web ページ]: ./media/cloud-services-nodejs-develop-deploy-express-app/node28.png
   [index.jade ファイルの内容]: ./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png
-  []: http://jade-lang.com
-  [index.jade ファイルの最後の行を次のように変更: p Welcome to \#{title} in Azure]: ./media/cloud-services-nodejs-develop-deploy-express-app/node31.png
   [ブラウザー ウィンドウで "Welcome to Express in Azure" と表示されたページ]: ./media/cloud-services-nodejs-develop-deploy-express-app/node32.png

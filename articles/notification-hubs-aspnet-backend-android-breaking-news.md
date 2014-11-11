@@ -1,6 +1,6 @@
 <properties linkid="develop-notificationhubs-tutorials-send-breaking-news-ios" urlDisplayName="Breaking News" pageTitle="Notification Hubs Breaking News Tutorial - iOS" metaKeywords="" description="Learn how to use Azure Service Bus Notification Hubs to send breaking news notifications to iOS devices." metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Use Notification Hubs to send breaking news" authors="elioda" solutions="" manager="" editor="" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-android" ms.devlang="java" ms.topic="article" ms.date="01/01/1900" ms.author="elioda"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-android" ms.devlang="java" ms.topic="article" ms.date="01/01/1900" ms.author="elioda" />
 
 # 通知ハブを使用したニュース速報の送信
 
@@ -88,7 +88,7 @@
 
     main\_activity.xml の画像レイアウトは次のようになります。
 
-    ![][]
+    ![][0]
 
 3.  ここで、**MainActivity** と同じパッケージにクラス **Notifications** を作成します。
 
@@ -260,7 +260,7 @@
 
 ## <a name="send"></a><span class="short-header">通知を送信する</span>バックエンドから通知を送信する
 
-[WACOM.INCLUDE [notification-hubs-back-end][notification-hubs-back-end]]
+[WACOM.INCLUDE [notification-hubs-back-end](../includes/notification-hubs-back-end.md)]
 
 ## <a name="test-app"></a>アプリケーションを実行して通知を生成する
 
@@ -294,17 +294,13 @@
 
 
 
-  [Windows ユニバーサル]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/ "Windows ユニバーサル"
-  [Windows Phone]: /ja-jp/documentation/articles/notification-hubs-windows-phone-send-breaking-news/ "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/notification-hubs-ios-send-breaking-news/ "iOS"
-  [Android]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-breaking-news/ "Android"
   [通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
   [アプリケーションにカテゴリ選択を追加する]: #adding-categories
   [通知を登録する]: #register
   [バックエンドから通知を送信する]: #send
   [アプリケーションを実行して通知を生成する]: #test-app
   [通知ハブの使用]: /ja-jp/documentation/articles/notification-hubs-android-get-started/
-  []: ./media/notification-hubs-aspnet-backend-android-breaking-news/android-breaking-news1.PNG
+  [0]: ./media/notification-hubs-aspnet-backend-android-breaking-news/android-breaking-news1.PNG
   [notification-hubs-back-end]: ../includes/notification-hubs-back-end.md
   [通知ハブを使用したローカライズ ニュース速報のブロードキャスト]: /ja-jp/manage/services/notification-hubs/breaking-news-localized-dotnet/
   [通知ハブによるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users

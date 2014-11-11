@@ -1,6 +1,6 @@
 <properties linkid="mobile-services-how-to-html-client" urlDisplayName="HTML Client" pageTitle="How to use an HTML client - Azure Mobile Services" metaKeywords="Azure Mobile Services, Mobile Service HTML client, HTML client" description="Learn how to use an HTML client for Azure Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="How to use an HTML/JavaScript client for Azure Mobile Services" authors="krisragh" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-html" ms.devlang="javascript" ms.topic="article" ms.date="01/01/1900" ms.author="krisragh"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-html" ms.devlang="javascript" ms.topic="article" ms.date="01/01/1900" ms.author="krisragh" />
 
 # Azure モバイル サービス向け HTML/JavaScript クライアントを使用する方法
 
@@ -33,7 +33,7 @@
 -   [方法: クロス オリジン リソース共有を使用する][方法: クロス オリジン リソース共有を使用する]
 -   [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [mobile-services-concepts][mobile-services-concepts]]
+[WACOM.INCLUDE [mobile-services-concepts](../includes/mobile-services-concepts.md)]
 
 ## <a name="create-client"></a>方法: モバイル サービス クライアントを作成する
 
@@ -48,7 +48,7 @@ Web エディターで、HTML ファイルを開き、次のコードをペー�
     var MobileServiceClient = WindowsAzure.MobileServiceClient;
     var client = new MobileServiceClient('AppUrl', 'AppKey');
 
-プレースホルダーの `AppUrl` と `AppKey` を、モバイル サービスのアプリケーション URL とアプリケーション キーでそれぞれ置き換える必要があります。モバイル サービスのアプリケーション URL とアプリケーション キーを取得する方法については、「[[Windows ストア JavaScript でのデータの使用][[Windows ストア JavaScript でのデータの使用]」または「[HTML/JavaScript でのデータの使用][HTML/JavaScript でのデータの使用]」を参照してください。
+プレースホルダーの `AppUrl` と `AppKey` を、モバイル サービスのアプリケーション URL とアプリケーション キーでそれぞれ置き換える必要があります。モバイル サービスのアプリケーション URL とアプリケーション キーを取得する方法については、「[Windows ストア JavaScript でのデータの使用][Windows ストア JavaScript でのデータの使用]」または「[HTML/JavaScript でのデータの使用][HTML/JavaScript でのデータの使用]」を参照してください。
 
 ## <a name="querying"></a>方法: モバイル サービスのデータを照会する
 
@@ -584,11 +584,6 @@ promise はいくつかの異なる方法で使用することができます。
 <!-- Anchors. --> 
 <!-- URLs. -->
 
-  [.NET Framework]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library/ ".NET Framework"
-  [HTML/JavaScript]: /ja-jp/develop/mobile/how-to-guides/work-with-html-js-client/ "HTML/JavaScript"
-  [iOS]: /ja-jp/develop/mobile/how-to-guides/work-with-ios-client-library/ "iOS"
-  [Android]: /ja-jp/develop/mobile/how-to-guides/work-with-android-client-library/ "Android"
-  [Xamarin]: /ja-jp/develop/mobile/how-to-guides/work-with-xamarin-client-library/ "Xamarin"
   [Windows ストア JavaScript に関するクイック スタート]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started
   [HTML に関するクイック スタート]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-html
   [モバイル サービスとは]: #what-is
@@ -612,18 +607,15 @@ promise はいくつかの異なる方法で使用することができます。
   [方法: クロス オリジン リソース共有を使用する]: #hostnames
   [次のステップ]: #nextsteps
   [mobile-services-concepts]: ../includes/mobile-services-concepts.md
-  [[Windows ストア JavaScript でのデータの使用]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-data-js
+  [Windows ストア JavaScript でのデータの使用]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-data-js
   [HTML/JavaScript でのデータの使用]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-data-html/
   [OData システム クエリ オプション リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=444502
   [ASCII 制御コード C0 および C1 に関するページ]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
   [モバイル サービス テーブルの管理用コマンド]: http://www.windowsazure.com/ja-jp/manage/linux/other-resources/command-line-tools/#Mobile_Tables
   [ListView]: http://msdn.microsoft.com/ja-jp/library/windows/apps/br211837.aspx
-  [データ バインディング (JavaScript と HTML を使った Windows ストア アプリ)]: http://msdn.microsoft.com/ja-jp/library/windows/apps/hh758311.aspx
   [モバイル サービスでの認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-html
   [Windows ストア]: /ja-jp/develop/mobile/tutorials/get-started-with-users-js
   [login]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554236.aspx
-  [Windows ストア アプリケーション パッケージを Microsoft 認証に登録する]: /ja-jp/develop/mobile/how-to-guides/register-windows-store-app-package/
-  [1]: http://go.microsoft.com/fwlink/p/?LinkId=322050
   [Live Connect シングル サインオンによる Windows ストア アプリの認証]: /ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/
   [sessionStorage]: http://msdn.microsoft.com/ja-jp/library/cc197062(v=vs.85).aspx
   [Promise.done メソッドに関するページ]: http://msdn.microsoft.com/ja-jp/library/windows/apps/hh701079.aspx

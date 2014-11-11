@@ -1,10 +1,10 @@
 <properties linkid="manage-services-how-to-scale-a-cloud-service" urlDisplayName="How to scale" pageTitle="How to scale a cloud service - Azure" metaKeywords="Azure link resource, scaling cloud service" description="Learn how to scale a cloud service and linked resources in Azure." metaCanonical="" services="cloud-services" documentationCenter="" title="How to Scale an Application" authors="davidmu" solutions="" manager="jeffreyg" editor="mattshel" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="davidmu"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="davidmu" />
 
 # アプリケーションの規模の設定方法
 
-[WACOM.INCLUDE [disclaimer][disclaimer]]
+[WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
 
 Azure の管理ポータルの [スケール] ページで、アプリケーションの規模を手動で設定するか、パラメーターを指定して自動的に規模を設定することができます。Web ロール、ワーカー ロール、または仮想マシンを実行しているアプリケーションの規模を設定できます。Web ロールまたは Worker ロールのインスタンスを実行しているアプリケーションの規模を設定するには、ロール インスタンスを追加または削除してワーク ロードを調整します。
 
@@ -33,7 +33,7 @@ Azure の管理ポータルの [スケール] ページで、アプリケーシ�
 
 2.  **[スケール]** をクリックします。既定では、すべてのロールに対して自動的な規模の設定は無効になっていますが、アプリケーションで使用するインスタンスの数を手動で変更できます。
 
-    ![スケール ページ][]
+    ![スケール ページ][スケール ページ]
 
 3.  クラウド サービス内の各ロールには、使用するインスタンスの数を変更するスライダーがあります。ロール インスタンスを追加するには、垂直バーを右にドラッグします。インスタンスを削除するには、バーを左にドラッグします。
 
@@ -193,9 +193,6 @@ Azure の管理ポータルの [スケール] ページで、アプリケーシ�
 7.  スケジュールは、保存すると一覧に表示されます。使用する時間スケジュールを選択すると、スケール設定を変更できます。スケール設定は、選択したスケジュール中のみ適用されます。スケジュールは、**[スケジュール時間の設定]** をクリックすることで編集できます。
 
   [disclaimer]: ../includes/disclaimer.md
-  [Manage the Availability of Virtual Machines (仮想マシンの可用性の管理)]: http://www.windowsazure.com/ja-jp/manage/windows/common-tasks/manage-vm-availability/
-  [Virtual Machine and Cloud Service Sizes for Azure (Azure の仮想マシンおよびクラウド サービスのサイズ)]: http://msdn.microsoft.com/ja-jp/library/dn197896.aspx
-  [How to use the Queue Storage Service (キュー ストレージ サービスの使用方法)]: http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/queue-service
   [方法: クラウド サービスに対するリソースのリンク」]: http://www.windowsazure.com/ja-jp/manage/services/cloud-services/how-to-manage-a-cloud-service/#linkresources
   [サービス レベル アグリーメント]: https://www.windowsazure.com/ja-jp/support/legal/sla/
   [Web ロールまたはワーカー ロールを実行しているアプリケーションの規模の手動設定]: #manualscale

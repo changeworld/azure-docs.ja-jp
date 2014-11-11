@@ -1,6 +1,6 @@
 <properties urlDisplayName=".NET Client Library" pageTitle="Creating a Leaderboard App with Azure Mobile Services .NET Backend" metaKeywords="Azure Mobile Services, Mobile Service .NET client, .NET client" description="Learn how to build a Windows Store app using Azure Mobile Services with a .NET backend." documentationCenter="Mobile" title="Creating a Leaderboard App with Azure Mobile Services .NET Backend" authors="mwasson" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="mwasson"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="mwasson" />
 
 # Azure Mobile Services の .NET バックエンドによるランキング アプリケーションの作成
 
@@ -43,7 +43,7 @@ Web API は、オープン ソースのフレームワークであり、REST API
 
 *ランキング*は、ゲームのプレーヤーの一覧に、各プレーヤーのスコアと順位を示したものです。ランキングは大きなゲームの一部である場合も、個別のアプリケーションの場合もあります。ランキングは実際に使用されているアプリケーションですが、構造が単純なのでチュートリアルに適しています。アプリケーションのスクリーン ショットを次に示します。
 
-![][]
+![][0]
 
 アプリケーションを単純にするため、実際のゲームは作成しません。その代わりに、プレーヤーを追加して、各プレーヤーのスコアを送信できます。スコアを送信すると、モバイル サービスが新しいランキングを計算します。バックエンドでは、モバイル サービスが 2 つのテーブルを含むデータベースを作成します。
 
@@ -727,21 +727,19 @@ App.xaml.cs ファイルを開き、`App` クラスに **MobileServiceClient** �
   [モバイル サービスを発行する]: #publish-your-mobile-service
   [次のステップ]: #next-steps
   [Visual Studio 2013 Update 2]: http://go.microsoft.com/fwlink/p/?LinkID=390465
-  []: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/01leaderboard.png
+  [0]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/01leaderboard.png
   [1]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/02leaderboard.png
   [ここ]: http://code.msdn.microsoft.com/Leaderboard-App-with-Azure-9acf63af
   [2]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/03leaderboard.png
   [3]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/04leaderboard.png
   [4]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/05leaderboard.png
-  [EF Code First]: http://msdn.microsoft.com/en-US/data/ee712907#codefirst
+  [EF Code First]: http://msdn.microsoft.com/ja-jp/data/ee712907#codefirst
   [データベースの書き込み競合を処理する]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-handle-database-conflicts/
   [ナビゲーション プロパティ]: http://msdn.microsoft.com/ja-jp/data/jj713564.aspx
   [5]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/06leaderboard.png
   [6]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/07leaderboard.png
   [7]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/08leaderboard.png
   [REST API]: http://msdn.microsoft.com/ja-jp/library/azure/jj710104.aspx
-  [Mapping between Database Types and Client Types in the .NET Backend using AutoMapper (.NET バックエンドで AutoMapper を使用したデータベース型とクライアント型の間のマッピング)]: http://blogs.msdn.com/b/azuremobile/archive/2014/05/19/mapping-between-database-types-and-client-type-in-the-net-backend-using-automapper.aspx
-  [Attribute Routing in Web API (Web API での属性ルーティング)]: http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
   [8]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/10leaderboard.png
   [9]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/11leaderboard.png
   [10]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/12leaderboard.png

@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-push-notifications-to-users-android" urlDisplayName="" pageTitle="Push notifications to users (Android ) | Mobile Dev Center" metaKeywords="" description="Learn how to use Mobile Services to push notifications to users of your Android app." metaCanonical="" services="" documentationCenter="Mobile" title="Push notifications to users by using Mobile Services" authors="ricksal" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="ricksal"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="ricksal" />
 
 # モバイル サービスによるユーザーへのプッシュ通知
 
@@ -25,7 +25,7 @@
 
 1.  [Azure の管理ポータル][Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[データ]** タブをクリックし、**[作成]** をクリックします。
 
@@ -240,16 +240,13 @@
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Windows Phone]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-wp8 "Windows Phone"
-  [iOS]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-ios "iOS"
-  [Android]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-android "Android"
   [以前のプッシュ通知のチュートリアル]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android
   [Registration テーブルを作成する]: #create-table
   [アプリケーションを更新する]: #update-app
   [サーバー スクリプトを更新する]: #update-scripts
   [プッシュ通知の動作を確認する]: #test-app
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/mobile-services-android-push-notifications-app-users/mobile-services-selection.png
+  [0]: ./media/mobile-services-android-push-notifications-app-users/mobile-services-selection.png
   [1]: ./media/mobile-services-android-push-notifications-app-users/mobile-create-table.png
   [2]: ./media/mobile-services-android-push-notifications-app-users/mobile-create-registration-table.png
   [3]: ./media/mobile-services-android-push-notifications-app-users/mobile-create-registration-class.png

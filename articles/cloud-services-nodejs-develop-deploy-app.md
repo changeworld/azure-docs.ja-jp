@@ -1,6 +1,6 @@
 <properties linkid="dev-nodejs-getting-started" urlDisplayName="Cloud Service" pageTitle="Node.js Getting Started Guide - Azure Tutorial" metaKeywords="Azure node.js getting started, Azure Node.js tutorial, Azure Node.js tutorial" description="An end-to-end tutorial that helps you develop a simple Node.js web application and deploy it to Azure." metaCanonical="" services="cloud-services" documentationCenter="nodejs" title="Build and deploy a Node.js application to an Azure Cloud Service" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
 # Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ
 
@@ -26,11 +26,11 @@
 
     ![Azure PowerShell アイコン][Azure PowerShell アイコン]
 
-    [WACOM.INCLUDE [install-dev-tools][install-dev-tools]]
+    [WACOM.INCLUDE [install-dev-tools](../includes/install-dev-tools.md)]
 
 2.  C ドライブに新しい **node** ディレクトリを作成し、c:\\node ディレクトリに移動します。
 
-    !["mkdir c:\\node" および "cd node" コマンドが表示されたコマンド プロンプト][]
+    !["mkdir c:\node" および "cd node" コマンドが表示されたコマンド プロンプト]["mkdir c:\node" および "cd node" コマンドが表示されたコマンド プロンプト]
 
 3.  次のコマンドレットを入力し、新しいソリューションを作成します。
 
@@ -189,13 +189,11 @@ Azure SDK によってインストールされるツールの 1 つに、Azure �
 </div>
 
   [「Azure の Web サイト、クラウド サービス、および仮想マシンの比較」]: http://azure.microsoft.com/ja-jp/documentation/articles/choose-web-site-cloud-service-vm/
-  [軽量の Azure の Web サイトを使用する]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
   [hello world ページを表示しているブラウザー ウィンドウこの URL は、ページが Azure でホストされていることを示します。]: https://wacomdpsstablestorage.blob.core.windows.net/articlesmedia/demo-ppe.windowsazure.com/ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/20140107035927/node21.png
   [Azure PowerShell アイコン]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-start.png
   [install-dev-tools]: ../includes/install-dev-tools.md
   ["mkdir c:\\node" および "cd node" コマンドが表示されたコマンド プロンプト]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-6.png
   [New-AzureService helloworld コマンドの結果]: ./media/cloud-services-nodejs-develop-deploy-app/node9.png
-  [Overview of Creating a Hosted Service for Windows (Azure 対応のホステッド サービスの作成の概要)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj155995.aspx
   [Add-AzureNodeWebRole コマンドの出力]: ./media/cloud-services-nodejs-develop-deploy-app/node11.png
   [nodejs.org]: http://nodejs.org/
   [メモ帳による server.js の内容の表示]: ./media/cloud-services-nodejs-develop-deploy-app/node13.png
@@ -204,4 +202,3 @@ Azure SDK によってインストールされるツールの 1 つに、Azure �
   [1]: ./media/cloud-services-nodejs-develop-deploy-app/node21.png
   [Stop-AzureService コマンドの状態]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
   [Remove-AzureService コマンドの状態]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
-  [Azure サブスクリプションからストレージ アカウントを削除する方法]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh531562.aspx

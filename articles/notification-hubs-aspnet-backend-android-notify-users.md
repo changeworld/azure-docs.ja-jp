@@ -1,6 +1,6 @@
 <properties title="Azure Notification Hubs Notify Users" pageTitle="Azure Notification Hubs Notify Users" metaKeywords="Azure push notifications, Azure notification hubs" description="Learn how to send secure push notifications in Azure. Code samples written in C# using the .NET API." documentationCenter="Mobile" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="elioda" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-android" ms.devlang="java" ms.topic="article" ms.date="01/01/1900" ms.author="elioda"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-android" ms.devlang="java" ms.topic="article" ms.date="01/01/1900" ms.author="elioda" />
 
 # Azure Notification Hubs によるユーザーへの通知
 
@@ -13,7 +13,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 > [AZURE.NOTE] このチュートリアルでは、「[Getting Started with Notification Hubs (Android) (Notification Hubs (Android) の使用)][Getting Started with Notification Hubs (Android) (Notification Hubs (Android) の使用)]」での説明に従って通知が作成され、構成されていると想定しています。
 
-[WACOM.INCLUDE [notification-hubs-aspnet-backend-notifyusers][notification-hubs-aspnet-backend-notifyusers]]
+[WACOM.INCLUDE [notification-hubs-aspnet-backend-notifyusers](../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## Android プロジェクトを作成する
 
@@ -70,7 +70,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
     main\_activity.xml の画像レイアウトは次のようになります。
 
-    ![][]
+    ![][0]
 
 4.  ここで、**MainActivity** クラスと同じパッケージにクラス **RegisterClient** を作成します。必ず、前のセクションで取得したバックエンド エンドポイントで `{backend endpoint}` を置き換えてください。
 
@@ -276,10 +276,6 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 4.  Android アプリケーションの UI で、**[ログイン]** をクリックします。次に、**[プッシュを送信する]** をクリックします。
 
-  [Windows ユニバーサル]: /ja-jp/documentation/articles/notification-hubs-windows-dotnet-notify-users/ "Windows ユニバーサル"
-  [iOS]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-notify-users/ "iOS"
-  [Android]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-notify-users/ "Android"
   [アプリ バックエンドからの登録]: http://msdn.microsoft.com/ja-jp/library/dn743807.aspx
-  [Getting Started with Notification Hubs (Android) (Notification Hubs (Android) の使用)]: /ja-jp/documentation/articles/notification-hubs-android-get-started/
   [notification-hubs-aspnet-backend-notifyusers]: ../includes/notification-hubs-aspnet-backend-notifyusers.md
-  []: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users1.PNG
+  [0]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users1.PNG

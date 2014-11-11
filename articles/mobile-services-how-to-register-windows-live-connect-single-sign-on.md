@@ -1,6 +1,6 @@
 <properties pageTitle="Register for single sign-on - Azure Mobile Services" metaKeywords="" description="Learn how to register for single sign-on authentication in your Azure Mobile Services application." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Register your Windows Store apps to use Windows Live Connect single sign-on" authors="glenga" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # Windows Live Connect シングル サインオンを使用するための Windows ストア アプリの登録
 
@@ -12,7 +12,7 @@
 
 1.  アプリケーションをまだ登録していない場合は、Windows ストア アプリのデベロッパー センターで[アプリの提出のページ][アプリの提出のページ]に移動し、Microsoft アカウントでログインして、**[アプリの名前]** をクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[アプリ名]** にアプリケーションの名前を入力し、**[アプリの名前の予約]** をクリックして、**[保存]** をクリックします。
 
@@ -60,9 +60,8 @@ Live Connect を使用して認証をアプリケーションに統合する準�
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Microsoft アカウント ログインを使用するためのアプリケーションの登録]: /ja-jp/develop/mobile/how-to-guides/register-for-microsoft-authentication
   [アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-  []: ./media/mobile-services-how-to-register-windows-live-connect-single-sign-on/mobile-services-submit-win8-app.png
+  [0]: ./media/mobile-services-how-to-register-windows-live-connect-single-sign-on/mobile-services-submit-win8-app.png
   [1]: ./media/mobile-services-how-to-register-windows-live-connect-single-sign-on/mobile-services-win8-app-name.png
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started
   [2]: ./media/mobile-services-how-to-register-windows-live-connect-single-sign-on/mobile-services-store-association.png

@@ -1,6 +1,6 @@
 <properties linkid="dev-net-common-tasks-publishing-with-vso" urlDisplayName="Publishing with Visual Studio Online" pageTitle="Continuous delivery with Visual Studio Online in Azure" metaKeywords="" description="Learn how to configure your Visual Studio Online team projects to automatically build and deploy to Azure websites or cloud services." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Continuous delivery to Azure using Visual Studio Online" authors="ghogen" solutions="" manager="douge" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="ghogen"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="ghogen" />
 
 # Continuous delivery to Azure using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)
 
@@ -43,7 +43,7 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
     Web サイトを作成する場合は、ASP.NET Web アプリケーション プロジェクトのテンプレートを選択し、次に MVC を選択します。[Azure と ASP.NET の使用に関するページ][Azure と ASP.NET の使用に関するページ]を参照してください。
 
 2.  ソリューションのコンテキスト メニューを開き、**[ソリューションをソース管理に追加]** を選択します。
-    ![][]
+    ![][0]
 
 3.  既定値を受け入れるか変更し、**[OK]** を選択します。処理が完了すると、ソース管理アイコンがソリューション エクスプローラーに表示されます。
     ![][1]
@@ -272,21 +272,16 @@ Visual Studio Online での単位テストの詳細については、[「ビル�
 
 詳細については、[Visual Studio Online に関するページ][Visual Studio Online に関するページ]を参照してください。Git を使用している場合は、「[Git でコードを共有する][Git でコードを共有する]」および「[ソース管理から Windows Azure の Web サイトへの発行][ソース管理から Windows Azure の Web サイトへの発行]」を参照してください。
 
-  [Continuous Delivery for Cloud Applications in Azure (Azure でのクラウド サービスの継続的な配信)]: ../cloud-services-dotnet-continuous-delivery
   [www.visualstudio.com]: http://www.visualstudio.com
   [ここ]: http://go.microsoft.com/fwlink/?LinkId=239540
-  [Visual Studio Online アカウントは無料で開く]: http://go.microsoft.com/fwlink/p/?LinkId=512979
   [手順 1.チーム プロジェクトを作成する。]: #step1
   [手順 2.プロジェクトをソース管理にチェックインする。]: #step2
   [手順 3.プロジェクトを Azure に接続する。]: #step3
   [手順 4.変更を行い、リビルドと再デプロイをトリガーする。]: #step4
-  [手順 5.以前のビルドを再デプロイする (省略可能)]: #step5
-  [手順 6.運用デプロイを変更する (クラウド サービスのみ)]: #step6
-  [手順 7.単体テストを実行する (省略可能)]: #step7
   [この]: http://go.microsoft.com/fwlink/?LinkId=512980
   [このチュートリアルの Git バージョン]: http://go.microsoft.com/fwlink/p/?LinkId=397358
   [Azure と ASP.NET の使用に関するページ]: http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-dotnet-get-started/
-  []: ./media/cloud-services-continuous-delivery-use-vso/tfs5.png
+  [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs5.png
   [1]: ./media/cloud-services-continuous-delivery-use-vso/tfs6.png
   [2]: ./media/cloud-services-continuous-delivery-use-vso/tfs7.png
   [3]: ./media/cloud-services-continuous-delivery-use-vso/tfs8.png

@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-get-started-with-push-dotnet" urlDisplayName="Get Started with Push Notifications" pageTitle="Get started with push notifications - Mobile Services" metaKeywords="push notifications c#" description="Learn how to use push notifications with Azure Mobile Services." metaCanonical="http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet/" disqusComments="0" umbracoNaviHide="1" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services using Visual Studio 2012" authors="glenga" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # Visual Studio 2012 を使用したモバイル サービスでのプッシュ通知の使用
 
@@ -40,13 +40,13 @@
 
 モバイル サービスから Windows ストア アプリケーションにプッシュ通知を送信できるようにするには、アプリケーションを Windows ストアに提出する必要があります。さらに、WNS に統合するためにモバイル サービスを構成する必要があります。
 
-[WACOM.INCLUDE [mobile-services-register-windows-store-app][mobile-services-register-windows-store-app]]
+[WACOM.INCLUDE [mobile-services-register-windows-store-app](../includes/mobile-services-register-windows-store-app.md)]
 
 これで、WNS と連携するようにモバイル サービスとアプリケーションが構成されました。次に、登録を格納するための新しいテーブルを作成します。
 
 ## <a name="create-table"></a>新しいテーブルを作成する
 
-[WACOM.INCLUDE [mobile-services-create-new-push-table][mobile-services-create-new-push-table]]
+[WACOM.INCLUDE [mobile-services-create-new-push-table](../includes/mobile-services-create-new-push-table.md)]
 
 ## <a name="add-push"></a><span class="short-header">アプリケーションにプッシュ通知を追加する</span>
 
@@ -88,13 +88,13 @@
 
 1.  Package.appxmanifest ファイルを開き、**[アプリケーション UI]** タブで **[トースト対応]** が **[はい]** に設定されていることを確認します。
 
-    ![][]
+    ![][0]
 
     これにより、アプリケーションでトースト通知の使用が有効になります。
 
 ## <a name="update-scripts"></a><span class="short-header">管理ポータルで登録されている挿入スクリプトを更新する</span>
 
-[WACOM.INCLUDE [mobile-services-update-registrations-script][mobile-services-update-registrations-script]]
+[WACOM.INCLUDE [mobile-services-update-registrations-script](../includes/mobile-services-update-registrations-script.md)]
 
 1.  **[TodoItem]** をクリックし、**[スクリプト]** タブをクリックして、**[挿入]** を選択します。
 
@@ -186,14 +186,6 @@
 
 
 
-  [Windows ストア C#]: /ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet-vs2012 "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/develop/mobile/tutorials/get-started-with-push-js-vs2012 "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/develop/mobile/tutorials/get-started-with-push-wp8 "Windows Phone"
-  [iOS]: /ja-jp/develop/mobile/tutorials/get-started-with-push-ios "iOS"
-  [Android]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android "Android"
-  [Xamarin.iOS]: /ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-android "Xamarin.Android"
-  [モバイル サービスでのプッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet
   [プッシュ通知用のアプリケーションを登録してモバイル サービスを構成する]: #register
   [Registrations テーブルを作成する]: #create-table
   [アプリケーションにプッシュ通知を追加する]: #add-push
@@ -202,7 +194,7 @@
   [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet
   [mobile-services-register-windows-store-app]: ../includes/mobile-services-register-windows-store-app.md
   [mobile-services-create-new-push-table]: ../includes/mobile-services-create-new-push-table.md
-  []: ./media/mobile-services-windows-store-dotnet-get-started-push-vs2012/mobile-app-enable-toast-win8.png
+  [0]: ./media/mobile-services-windows-store-dotnet-get-started-push-vs2012/mobile-app-enable-toast-win8.png
   [mobile-services-update-registrations-script]: ../includes/mobile-services-update-registrations-script.md
   [1]: ./media/mobile-services-windows-store-dotnet-get-started-push-vs2012/mobile-insert-script-push2.png
   [2]: ./media/mobile-services-windows-store-dotnet-get-started-push-vs2012/mobile-quickstart-push1.png

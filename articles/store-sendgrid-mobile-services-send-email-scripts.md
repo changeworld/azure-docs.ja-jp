@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-send-email-with-sendgrid" urlDisplayName="Send Email Using SendGrid" pageTitle="Send email using SendGrid - Azure Mobile Services" metaKeywords="Azure SendGrid, SendGrid service, Azure emailing, mobile services email" description="Learn how to use the SendGrid service to send email from your Azure Mobile Services app." metaCanonical="" services="" documentationCenter="Mobile" title="Send email from Mobile Services with SendGrid" authors="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork" />
 
 # SendGrid を使用したモバイル サービスからの電子メールの送信
 
@@ -18,7 +18,7 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
 ## <a name="sign-up"></a><span class="short-header">新しいアカウントの作成</span>新しい SendGrid アカウントを作成する
 
-[WACOM.INCLUDE [sendgrid-sign-up][sendgrid-sign-up]]
+[WACOM.INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
 ## <a name="add-script"></a><span class="short-header">スクリプトの登録</span>電子メールを送信する新しいスクリプトを登録する
 
@@ -26,7 +26,7 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
 2.  管理ポータルで、**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
-    ![][]
+    ![][0]
 
 3.  **[todoitem]** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。
 
@@ -115,7 +115,7 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started
   [sendgrid-sign-up]: ../includes/sendgrid-sign-up.md
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-portal-data-tables.png
+  [0]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-portal-data-tables.png
   [1]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-insert-script-push2.png
   [2]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-quickstart-push1.png
   [3]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-receive-email.png

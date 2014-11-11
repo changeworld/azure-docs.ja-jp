@@ -1,6 +1,6 @@
 <properties linkid="cdn-cloud-service-with-cdn" urlDisplayName="Integrate a cloud service with Azure CDN" pageTitle="Integrate a cloud service with Azure CDN" metaKeywords="Azure tutorial, Azure web app tutorial, ASP.NET, CDN, MVC, cloud service" description="A tutorial that teaches you how to deploy a cloud service that serves content from an integrated Azure CDN endpoint" metaCanonical="" services="cdn,cloud-services" documentationCenter=".NET" title="Integrate a cloud service with Azure CDN" authors="cephalin" solutions="" manager="wpickett" editor="tysonn" />
 
-<tags ms.service="cdn" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin"></tags>
+<tags ms.service="cdn" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin" />
 
 <a name="intro"></a>
 
@@ -54,7 +54,7 @@ Azure CDN をクラウド サービスと統合して、クラウド サービ�
 
 1.  Visual Studio 2013 で、メニュー バーから **[ファイル]、[新規]、[プロジェクト]、[クラウド]、[Windows Azure クラウド サービス]** の順に選択して新しい Azure クラウド サービスを作成します。クラウド サービスに名前を付けて、**[OK]** をクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[ASP.NET Web ロール]** を選択し、**[\>]** ボタンをクリックします。[OK] をクリックします。
 
@@ -637,9 +637,7 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
   [Azure CDN がオフラインのときのスクリプトおよび CSS のフォールバックを構成する]: #fallback
   [Microsoft Azure アカウント]: http://azure.microsoft.com/ja-jp/account/
   [Azure SDK]: http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409
-  [無料で Azure アカウントを開く]: http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F
-  [MSDN サブスクライバーの特典を有効にする]: http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
-  []: media/cdn-cloud-service-with-cdn/cdn-cs-1-new-project.PNG
+  [0]: media/cdn-cloud-service-with-cdn/cdn-cs-1-new-project.PNG
   [1]: media/cdn-cloud-service-with-cdn/cdn-cs-2-select-role.PNG
   [2]: media/cdn-cloud-service-with-cdn/cdn-cs-3-mvc-template.PNG
   [3]: media/cdn-cloud-service-with-cdn/cdn-cs-4-publish-a.png
@@ -649,16 +647,13 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
   [7]: media/cdn-cloud-service-with-cdn/cdn-cs-8-publish-finalize.png
   [Azure Tools を使用したクラウド サービスの発行]: http://msdn.microsoft.com/ja-jp/library/ff683672.aspx
   [Azure 管理ポータル]: http://manage.windowsazure.com/
-  [[http://]: http://
   [8]: media/cdn-cloud-service-with-cdn/cdn-cs-10-createcdn.png
   [9]: media/cdn-cloud-service-with-cdn/cdn-cs-11-disablequerya.png
   [10]: media/cdn-cloud-service-with-cdn/cdn-cs-12-disablequeryb.png
   [11]: media/cdn-cloud-service-with-cdn/cdn-cs-13-testcdn.png
   [12]: media/cdn-cloud-service-with-cdn/cdn-1-browser-access.PNG
   [13]: media/cdn-cloud-service-with-cdn/cdn-2-home-page.PNG
-  [Client Cache \<clientCache\> (クライアント キャッシュ \<clientCache\>)]: http://www.iis.net/configreference/system.webserver/staticcontent/clientcache
   [Maarten Balliauw]: https://twitter.com/maartenballiauw
-  [Reducing latency on the web with the Windows Azure CDN (Windows Azure CDN による Web の遅延時間の短縮)]: http://channel9.msdn.com/events/TechDays/Techdays-2014-the-Netherlands/Reducing-latency-on-the-web-with-the-Windows-Azure-CDN
   [Alan Light]: http://www.flickr.com/photos/alan-light/218493788/
   [14]: media/cdn-cloud-service-with-cdn/cdn-5-memegenerator.PNG
   [15]: media/cdn-cloud-service-with-cdn/cdn-6-addview.PNG
@@ -671,7 +666,4 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
   [Ember Consulting Group]: https://github.com/EmberConsultingGroup
   [スタイル バンドルのフォールバック]: https://github.com/EmberConsultingGroup/StyleBundleFallback
   [GitHub に公開されているコード]: https://github.com/EmberConsultingGroup/StyleBundleFallback/blob/master/Website/App_Start/StyleBundleExtensions.cs
-  [Azure コンテンツ配信ネットワーク (CDN) の概要]: http://msdn.microsoft.com/library/azure/ff919703.aspx
   [Web アプリケーションで Azure CDN からコンテンツを配信する]: http://azure.microsoft.com/ja-jp/Documentation/Articles/cdn-serve-content-from-cdn-in-your-web-application/
-  [Bundling and Minification (バンドルおよび縮小)]: http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification
-  [Using CDN for Azure (Azure 用 CDN の使用)]: http://azure.microsoft.com/ja-jp/documentation/articles/cdn-how-to-use/

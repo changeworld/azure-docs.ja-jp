@@ -1,6 +1,6 @@
 <properties linkid="dev-nodejs-how-to-sendgrid-email-service" urlDisplayName="SendGrid Email Service" pageTitle="How to use the SendGrid email service (Node.js) - Azure" metaKeywords="Azure SendGrid, Azure email service, Azure SendGrid Node.js, Azure email Node.js" description="Learn how send email with the SendGrid email service on Azure. Code samples written using the Node.js API." metaCanonical="" services="" documentationCenter="nodejs" title="How to Send Email Using SendGrid from Node.js" authors="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork"></tags>
+<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork" />
 
 # SendGrid を使用して Node.js から電子メールを送信する方法
 
@@ -34,7 +34,7 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 
 ## <a name="createaccount"> </a>SendGrid アカウントの作成
 
-[WACOM.INCLUDE [sendgrid-sign-up][sendgrid-sign-up]]
+[WACOM.INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
 ## <a name="reference"> </a>SendGrid Node.js モジュールの参照
 
@@ -233,7 +233,6 @@ SendGrid の Web ベース API を使用して、Azure アプリケーション�
   [sendgrid-sign-up]: ../includes/sendgrid-sign-up.md
   [sendgrid-nodejs に関するページ]: https://github.com/sendgrid/sendgrid-nodejs
   [SMTP と Web API を比較した SendGrid ドキュメント]: http://docs.sendgrid.com/documentation/get-started/integrate/examples/smtp-vs-rest/
-  [fs.readFile]: http://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile
   [フィルター設定に関するページ]: http://docs.sendgrid.com/documentation/api/smtp-api/filter-settings/
   [SendGrid API に関するドキュメント]: http://docs.sendgrid.com/documentation/api/
   [2]: http://sendgrid.com/azure.html

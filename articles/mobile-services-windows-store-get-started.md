@@ -1,6 +1,6 @@
 <properties pageTitle="Get Started with Mobile Services for Windows Store apps | Mobile Dev Center" metaKeywords="" description="Follow this tutorial to get started using Azure Mobile Services for Windows Store development in C# or JavaScript. " metaCanonical="" services="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="hero-article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="hero-article" ms.date="01/01/1900" ms.author="glenga" />
 
 # <a name="getting-started"> </a>Mobile Services の使用
 
@@ -36,7 +36,7 @@
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
-![][]
+![][0]
 
 このチュートリアルを完了することは、Windows ストア アプリの他のすべてのモバイル サービス チュートリアルの前提条件です。
 
@@ -46,7 +46,7 @@
 
 ## 新しいモバイル サービスを作成する
 
-[WACOM.INCLUDE [mobile-services-create-new-service][mobile-services-create-new-service]]
+[WACOM.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
 
 ## 新しい Windows ストア アプリを作成する
 
@@ -114,20 +114,7 @@
 
 
 
-  [Windows ストア]: /ja-jp/documentation/articles/mobile-services-windows-store-get-started "Windows ストア"
-  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/mobile-services-ios-get-started "iOS"
-  [Android]: /ja-jp/documentation/articles/mobile-services-android-get-started "Android"
-  [HTML]: /ja-jp/documentation/articles/mobile-services-html-get-started "HTML"
-  [Xamarin.iOS]: /ja-jp/documentation/articles/partner-xamarin-mobile-services-ios-get-started "Xamarin.iOS"
-  [Xamarin.Android]: /ja-jp/documentation/articles/partner-xamarin-mobile-services-android-get-started "Xamarin.Android"
-  [Sencha]: /ja-jp/documentation/articles/partner-sencha-mobile-services-get-started/ "Sencha"
-  [PhoneGap]: /ja-jp/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/ "PhoneGap"
-  [Appcelerator]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started "Appcelerator"
-  [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/ ".NET バックエンド"
-  [JavaScript バックエンド]: /ja-jp/documentation/articles/mobile-services-windows-store-get-started/ "JavaScript バックエンド"
-  [チュートリアルを見る]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Introduction-to-Windows-Azure-Mobile-Services
-  []: ./media/mobile-services-windows-store-get-started/mobile-quickstart-completed.png
+  [0]: ./media/mobile-services-windows-store-get-started/mobile-quickstart-completed.png
   [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F
   [Visual Studio 2012 を使用したモバイル サービスでのデータの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet-vs2012/
   [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md

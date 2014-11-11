@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-single-sign-on-windows-8-wp8" urlDisplayName="Authenticate with single sign-on" pageTitle="Authenticate your app with Live Connect (Windows Phone) | Mobile Dev Center" metaKeywords="" description="Learn how to use Live Connect single sign-on in Azure Mobile Services from a Windows Phone application." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Authenticate your Windows Phone 8 app with Live Connect single sign-on" authors="glenga" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # Live Connect シングル サインオンによる Windows Phone 8 アプリの認証
 
@@ -33,7 +33,7 @@
 
 1.  [Azure の管理ポータル][Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[ダッシュボード]** タブをクリックし、**[サイトの URL]** の値をメモしておきます。
 
@@ -168,9 +168,6 @@
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Windows ストア C#]: /ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-dotnet "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-js "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/develop/mobile/tutorials/single-sign-on-wp8/ "Windows Phone"
   [モバイル サービスでの認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-wp8/
   [アプリケーションを認証に登録し、モバイル サービスを構成する]: #register
   [テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
@@ -178,7 +175,7 @@
   [Windows および Windows Phone 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-wp8
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/mobile-services-windows-phone-single-sign-on/mobile-services-selection.png
+  [0]: ./media/mobile-services-windows-phone-single-sign-on/mobile-services-selection.png
   [1]: ./media/mobile-services-windows-phone-single-sign-on/mobile-service-uri.png
   [Live Connect デベロッパー センター]: http://go.microsoft.com/fwlink/p/?LinkId=262039
   [2]: ./media/mobile-services-windows-phone-single-sign-on/mobile-services-live-connect-add-app.png
@@ -187,6 +184,5 @@
   [5]: ./media/mobile-services-windows-phone-single-sign-on/mobile-portal-data-tables.png
   [6]: ./media/mobile-services-windows-phone-single-sign-on/mobile-portal-change-table-perms.png
   [7]: ./media/mobile-services-windows-phone-single-sign-on/mobile-add-reference-live-wp8.png
-  [Windows ストア アプリ]: /ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/
   [スクリプトを使用したユーザーの認証]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-wp8
   [8]: /ja-jp/develop/mobile/tutorials/get-started-with-users-wp8

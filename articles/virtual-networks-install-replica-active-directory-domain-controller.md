@@ -1,6 +1,6 @@
 <properties linkid="manage-services-networking-replica-domain-controller" urlDisplayName="Replica domain controller" pageTitle="Install a replica domain controller in Azure" metaKeywords="" description="A tutorial that teaches you how to install a domain controller from your Corp Active Directory forest on your Azure virtual machine." metaCanonical="" services="virtual-network" documentationCenter="" title="Install a Replica Active Directory Domain Controller in Azure Virtual Networks" authors="Justinha" solutions="" writer="Justinha" manager="TerryLan" editor="LisaToft" />
 
-<tags ms.service="virtual-network" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="Justinha"></tags>
+<tags ms.service="virtual-network" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="Justinha" />
 
 # Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール
 
@@ -296,8 +296,6 @@ Windows PowerShell の使い方の詳細については、[Azure PowerShell の�
   [管理ポータルでのサイト間 VPN の構成]: http://msdn.microsoft.com/ja-jp/library/dn133795.aspx
   [仮想ネットワークへの仮想マシンの追加]: http://azure.microsoft.com/ja-jp/documentation/articles/virtual-networks-add-virtual-machine/
   [ゾーンの委任を作成する]: http://technet.microsoft.com/library/cc753500.aspx
-  [Azure での新しい Active Directory フォレストのインストール]: /ja-jp/manage/services/networking/active-directory-forest/
-  [ドメインから Windows Server 2008 ドメイン コントローラーを削除する]: http://technet.microsoft.com/ja-jp/library/cc771844(v=WS.10).aspx
   [VerifystaticIPaddressyourPrimaryDC1]: ./media/virtual-networks-install-replica-active-directory-domain-controller/VerifystaticIP.png
   [InstallCorpForest1]: ./media/virtual-networks-install-replica-active-directory-domain-controller/InstallCorpForest1.png
   [InstallCorpForest2]: ./media/virtual-networks-install-replica-active-directory-domain-controller/InstallCorpForest2.png
@@ -335,5 +333,3 @@ Windows PowerShell の使い方の詳細については、[Azure PowerShell の�
   [Azure PowerShell の概要に関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156055.aspx
   [Azure 管理コマンドレットに関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841
   [BackupDC]: ./media/virtual-networks-install-replica-active-directory-domain-controller/BackupDC.png
-  [Windows Azure IT プロフェッショナル IaaS:(01) 仮想マシンの基礎]: http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01
-  [Windows Azure IT プロフェッショナル IaaS:(05) 仮想ネットワークとクロスプレミス接続の作成]: http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05

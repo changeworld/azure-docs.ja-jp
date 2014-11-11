@@ -1,6 +1,6 @@
 <properties title="Diagnose performance issues on a running website" pageTitle="Diagnose performance issues on a running website" description="Monitor a website's performance without re-deploying it." metaKeywords="analytics monitoring application insights" authors="awills"  />
 
-<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="awills"></tags>
+<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="awills" />
 
 <!-- Required end of Sprint 69 - AUX48 -->
 
@@ -35,7 +35,7 @@ Web アプリケーションの動作がおかしくなっていませんか。W
 2.  バージョン 5.0 以降の [Web プラットフォーム インストーラー][Web プラットフォーム インストーラー]があることを確認します。
 3.  Web プラットフォーム インストーラーを使用して、Application Insights エージェントをインストールします。
 
-    ![][]
+    ![][0]
 
 4.  インストール ウィザードで、Microsoft Azure にサインインします。
 
@@ -104,7 +104,7 @@ Azure のアカウントを開いた後、Application Insights を参照して�
 
   [Microsoft Azure アカウント]: http://azure.com
   [Web プラットフォーム インストーラー]: http://www.microsoft.com/web/downloads/platform.aspx
-  []: ./media/appinsights/appinsights-031-wpi.png
+  [0]: ./media/appinsights/appinsights-031-wpi.png
   [1]: ./media/appinsights/appinsights-035-signin.png
   [2]: ./media/appinsights/appinsights-036-configAIC.png
   [Web テスト]: ../app-insights-monitor-web-app-availability/

@@ -1,6 +1,6 @@
 <properties linkid="develop-net-tutorials-multi-tier-web-site-4-worker-role-a" pageTitle="Azure Cloud Service Tutorial: Worker Role with Azure Storage Tables, Queues, and Blobs" metaKeywords="Azure tutorial, Azure storage tutorial, Azure multi-tier tutorial, Azure worker role tutorial, Azure blobs tutorial, Azure tables tutorial, Azure queues tutorial" description="Learn how to create a multi-tier app using ASP.NET MVC and Azure. The app runs in a cloud service, with web role and worker roles, and uses Azure storage tables, queues, and blobs." metaCanonical="" services="cloud-services,storage" documentationCenter=".NET" title="Azure Cloud Service Tutorial: ASP.NET MVC Web Role, Worker Role, Azure Storage Tables, Queues, and Blobs" authors="tdykstra,riande" solutions="" manager="wpickett" editor="mollybos" />
 
-<tags ms.service="cloud-services" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tdykstra,riande"></tags>
+<tags ms.service="cloud-services" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tdykstra,riande" />
 
 # Azure 電子メール サービス アプリケーションで使用する Worker ロール A (電子メール スケジューラ) の作成 (4/5)
 
@@ -551,7 +551,6 @@ Azure Storage のテーブル、キュー、BLOB に関する参考情報につ�
   [2 番目のチュートリアル]: /ja-jp/develop/net/tutorials/multi-tier-web-site/2-download-and-run/
   [ServicePointManager.DefaultConnectionLimit]: http://msdn.microsoft.com/ja-jp/library/system.net.servicepointmanager.defaultconnectionlimit.aspx
   [ServicePointManager]: http://msdn.microsoft.com/ja-jp/library/system.net.servicepointmanager.aspx
-  [Role Instance Restarts Due to OS Upgrades (OS のアップグレードに伴うロール インスタンスの再起動)]: http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx
   [UnhandledException]: http://msdn.microsoft.com/ja-jp/library/system.appdomain.unhandledexception.aspx
   [pending 状態の新しいメッセージ]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-worker-role-a/mtas-worker-a-test-pending.png
   [processing 状態の新しいメッセージ]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-worker-role-a/mtas-worker-a-test-processing.png

@@ -1,6 +1,6 @@
 <properties linkid="develop-python-web-app-with-django" urlDisplayName="Web with Django (Windows)" pageTitle="Python web app with Django - Azure tutorial" metaKeywords="Azure Django web app, Azure Django virtual machine" description="A tutorial that teaches you how to host a Django-based website on Azure using a Windows Server 2008 R2 virtual machine." metaCanonical="" services="virtual-machines" documentationCenter="Python" title="Django Hello World Web Application" authors="huvalo" solutions="" manager="" editor="" />
 
-<tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="vm-windows" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo"></tags>
+<tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="vm-windows" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo" />
 
 # Django Hello World Web アプリケーション
 
@@ -19,7 +19,7 @@
 
 ![Azure で Hello World ページを表示するブラウザー ウィンドウ][Azure で Hello World ページを表示するブラウザー ウィンドウ]
 
-[WACOM.INCLUDE [create-account-and-vms-note][create-account-and-vms-note]]
+[WACOM.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
 
 ## Django をホストする Azure の仮想マシンの作成と構成
 
@@ -31,7 +31,7 @@
     ![エンドポイントの追加][エンドポイントの追加]
 
  - *TCP* プロトコルの *パブリック ポート 80* を *プライベート ポート 80* として開きます。
-    ![][]
+    ![][0]
 
 1.  Windows リモート デスクトップを使用して、新しく作成した Azure の仮想マシンにリモートでログインします。
 
@@ -118,14 +118,11 @@ Python と Django の環境を設定する場合、詳細については「[Inst
 
 このチュートリアルが終了したら、新しく作成した Azure の仮想マシンをシャットダウンまたは削除して、他のチュートリアル用にリソースを解放し、Azure に対する利用料金の発生を回避します。
 
-  [Windows]: /ja-jp/develop/python/tutorials/web-app-with-django/ "Windows"
-  [Mac/Linux]: /ja-jp/develop/python/tutorials/django-hello-world-(maclinux)/ "MacLinux"
   [Azure で Hello World ページを表示するブラウザー ウィンドウ]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-browser-azure.png
   [create-account-and-vms-note]: ../includes/create-account-and-vms-note.md
   [ここ]: /ja-jp/manage/windows/tutorials/virtual-machine-from-gallery/
   [エンドポイントの追加]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-addendpoint.png
-  []: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-port80.png
-  [Installation Guide (インストール ガイド)]: ../python-how-to-install/
+  [0]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-port80.png
   [IIS 構成 1]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-iis1.png
   [CodePlex]: http://go.microsoft.com/fwlink/?LinkID=316392&clcid=0x409
   [New-AzureService コマンドの結果]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-cmd-new-azure-service.png

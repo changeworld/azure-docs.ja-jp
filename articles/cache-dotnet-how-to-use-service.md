@@ -1,6 +1,6 @@
 <properties linkid="manage-services-cache-net-how-to-cache-service" urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="cache" documentationCenter="" title="How to Use Azure Managed Cache Service" authors="sdanie" solutions="" manager="" editor="" />
 
-<tags ms.service="cache" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie"></tags>
+<tags ms.service="cache" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
 
 # Azure マネージ キャッシュ サービスの使用方法
 
@@ -456,14 +456,10 @@ Azure のキャッシュの出力キャッシュ プロバイダーの使い方�
   [New-AzureManagedCache]: http://go.microsoft.com/fwlink/?LinkId=400495
   [キャッシュ オファリング]: http://go.microsoft.com/fwlink/?LinkId=317277
   [NamedCaches]: ./media/cache-dotnet-how-to-use-service/CacheServiceNamedCaches.jpg
-  [Azure のキャッシュ サービス (プレビュー) の有効期限と削除]: http://go.microsoft.com/fwlink/?LinkId=317278
-  [Azure のキャッシュ サービス (プレビュー) の通知]: http://go.microsoft.com/fwlink/?LinkId=317276
-  [Azure のキャッシュ サービス (プレビュー) の高可用性]: http://go.microsoft.com/fwlink/?LinkId=317329
   [NuGetPackageMenu]: ./media/cache-dotnet-how-to-use-service/CacheServiceManageNuGetPackagesMenu.png
   [NuGetPackage]: ./media/cache-dotnet-how-to-use-service/CacheServiceManageNuGetPackage.png
   [エンドポイント]: ./media/cache-dotnet-how-to-use-service/CacheServiceEndpoint.png
   [AccessKeys]: ./media/cache-dotnet-how-to-use-service/CacheServiceManageAccessKeys.png
-  [Azure のキャッシュ サービス (プレビュー) の ClientDiagnosticLevel について]: http://go.microsoft.com/fwlink/?LinkId=320839
   [NuGet パッケージ マネージャーのインストールのページ]: http://go.microsoft.com/fwlink/?LinkId=240311
   [Azure のキャッシュのセッション状態プロバイダーに関するページ]: http://go.microsoft.com/fwlink/?LinkId=320835
   [OutputCache ディレクティブに関するページ]: http://go.microsoft.com/fwlink/?LinkId=251979

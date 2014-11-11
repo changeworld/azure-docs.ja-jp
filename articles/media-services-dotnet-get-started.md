@@ -1,31 +1,31 @@
 <properties linkid="develop-media-services-tutorials-get-started" urlDisplayName="Get Started with Media Services" pageTitle="Get Started with Media Services - Azure" metaKeywords="Azure media services" description="An introduction to using Media Services with Azure." metaCanonical="" services="media-services" documentationCenter="" title="Get started with Media Services" authors="" solutions="" manager="" editor="" />
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author></tags>
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="" />
 
 # <a name="getting-started"></a>メディア サービスの使用
 
 このチュートリアルでは、Azure のメディア サービスを使用した開発の基礎について説明します。メディア サービスの基本的なワークフローを示し、メディア サービス開発に必要となる一般的なプログラミング オブジェクトおよびタスクについても紹介します。このチュートリアルを完了すると、サンプル メディア ファイルをアップロード、エンコード、およびダウンロードして再生できるようになります。サーバーでエンコード済みのアセットを参照して再生することもできます。
 
-このチュートリアルで使用するコードが格納されている Visual Studio の C# プロジェクトは、こちらから[ダウンロード][]できます。
+このチュートリアルで使用するコードが格納されている Visual Studio の C# プロジェクトは、こちらから[ダウンロード][ダウンロード]できます。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
--   [プロジェクトのセットアップ][]
--   [メディア サービス サーバー コンテキストの取得][]
--   [アセットの作成と、アセットに関連付けられたファイルのメディア サービスへのアップロード][]
--   [アセットのエンコードと、出力されたアセットのダウンロード][]
+-   [プロジェクトのセットアップ][プロジェクトのセットアップ]
+-   [メディア サービス サーバー コンテキストの取得][メディア サービス サーバー コンテキストの取得]
+-   [アセットの作成と、アセットに関連付けられたファイルのメディア サービスへのアップロード][アセットの作成と、アセットに関連付けられたファイルのメディア サービスへのアップロード]
+-   [アセットのエンコードと、出力されたアセットのダウンロード][アセットのエンコードと、出力されたアセットのダウンロード]
 
 ## 前提条件
 
 次の前提条件は、Azure Media Services SDK に基づくチュートリアルおよび開発で必要になります。
 
--   新規または既存の Azure サブスクリプションで作成した Media Services アカウント。詳細については、「[メディア サービス アカウントの作成方法][]」を参照してください。
+-   新規または既存の Azure サブスクリプションで作成した Media Services アカウント。詳細については、「[メディア サービス アカウントの作成方法][メディア サービス アカウントの作成方法]」を参照してください。
 -   オペレーティング システム: Windows 7、Windows 2008 R2、または Windows 8。
 -   .NET Framework 4.5 または .NET Framework 4。
 -   Visual Studio 2012 または Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express)。
--   [windowsazure.mediaservices Nuget][] パッケージを使用して、**Azure SDK for .NET**、**Azure Media Services SDK for .NET**、および **WCF Data Services 5.0 for OData V3 ライブラリ**をインストールし、プロジェクトに参照を追加します。次のセクションでは、インストールの方法と参照の追加方法を示します。
+-   [windowsazure.mediaservices Nuget][windowsazure.mediaservices Nuget] パッケージを使用して、**Azure SDK for .NET**、**Azure Media Services SDK for .NET**、および **WCF Data Services 5.0 for OData V3 ライブラリ**をインストールし、プロジェクトに参照を追加します。次のセクションでは、インストールの方法と参照の追加方法を示します。
 
-<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
+<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
 
 ## <span id="Step1"></span></a>プロジェクトのセットアップ
 
@@ -35,7 +35,7 @@
 
     **[参照の管理]** ダイアログを使用して参照を追加するには、次の操作を行います。**ソリューション エクスプローラー**で **[参照]** ノードを右クリックし、**[参照の追加]** を選択します。**[参照の管理]** ダイアログで、適切なアセンブリ (ここでは System.Configuration) を選択します。
 
-3.  [windowsazure.mediaservices Nuget][] パッケージを使用して、**Azure SDK for .NET** (Microsoft.WindowsAzure.StorageClient.dll)、**Azure Media Services SDK for .NET** (Microsoft.WindowsAzure.MediaServices.Client.dll)、および **WCF Data Services 5.0 for OData V3** (Microsoft.Data.OData.dll) の各ライブラリへの参照を追加します (まだこの作業を行っていない場合)。
+3.  [windowsazure.mediaservices Nuget][windowsazure.mediaservices Nuget] パッケージを使用して、**Azure SDK for .NET** (Microsoft.WindowsAzure.StorageClient.dll)、**Azure Media Services SDK for .NET** (Microsoft.WindowsAzure.MediaServices.Client.dll)、および **WCF Data Services 5.0 for OData V3** (Microsoft.Data.OData.dll) の各ライブラリへの参照を追加します (まだこの作業を行っていない場合)。
 
     Nuget を使用して参照を追加するには、次の操作を行います。Visual Studio のメイン メニューで、[ツール]、[ライブラリ パッケージ マネージャー]、[パッケージ マネージャー コンソール] の順に選択します。コンソール ウィンドウで、「*Install-Package [package name]*」と入力し、Enter キーを押します (ここでは、「*Install-Package windowsazure.mediaservices*」というコマンドを使用します)。
 
@@ -167,7 +167,7 @@ Program.cs ファイルで、**Main** メソッド内の最初のアイテムと
 
 ## <span id="Step4"></span></a>サーバー上のアセットのエンコードと、出力されたアセットのダウンロード
 
-メディア サービスでは、エンコード、暗号化、形式変換など、複数の方法でメディア コンテンツを処理するジョブを作成できます。メディア サービスのジョブには、処理作業の詳細を指定したタスクが必ず 1 つ以上含まれています。このセクションでは、基本的なエンコード タスクを作成し、Azure メディア エンコーダーを使用してこのタスクを行うジョブを実行します。このタスクでは、プリセットの文字列を使用して、実行するエンコードの種類を指定します。使用できるプリセットのエンコード値を確認するには、「[Media Services Encoder 用のタスク プリセット][]」を参照してください。メディア サービスでは、Microsoft Expression Encoder と同じメディア ファイル入力形式および出力形式をサポートされています。サポートされている形式の一覧については、「[Windows Azure Media Encoder でサポートされているコーデックとファイルの種類][]」を参照してください。
+メディア サービスでは、エンコード、暗号化、形式変換など、複数の方法でメディア コンテンツを処理するジョブを作成できます。メディア サービスのジョブには、処理作業の詳細を指定したタスクが必ず 1 つ以上含まれています。このセクションでは、基本的なエンコード タスクを作成し、Azure メディア エンコーダーを使用してこのタスクを行うジョブを実行します。このタスクでは、プリセットの文字列を使用して、実行するエンコードの種類を指定します。使用できるプリセットのエンコード値を確認するには、「[Media Services Encoder 用のタスク プリセット][Media Services Encoder 用のタスク プリセット]」を参照してください。メディア サービスでは、Microsoft Expression Encoder と同じメディア ファイル入力形式および出力形式をサポートされています。サポートされている形式の一覧については、「[Windows Azure Media Encoder でサポートされているコーデックとファイルの種類][Windows Azure Media Encoder でサポートされているコーデックとファイルの種類]」を参照してください。
 
 1.  次の **CreateEncodingJob** メソッド定義をクラスに追加します。このメソッドは、エンコード ジョブに必要ないくつかのタスクを実行する方法を示しています。
 
@@ -618,8 +618,8 @@ Program.cs ファイルで、**Main** メソッド内の最初のアイテムと
 
 このチュートリアルでは、単純なメディア サービス アプリケーションを作成するための一連のプログラミング タスクについて説明しました。サーバー コンテキストの取得、アセットの作成、サーバー上のアセットのダウンロードまたはアクセスなど、メディア サービスの基本的なプログラミング タスクを学習しました。次の手順およびさらに高度な開発タスクについては、次のリソースを参照してください。
 
--   [メディア サービスを使用する方法][]
--   [Windows Azure Media Services REST API を使用したアプリケーション構築][]
+-   [メディア サービスを使用する方法][メディア サービスを使用する方法]
+-   [Windows Azure Media Services REST API を使用したアプリケーション構築][Windows Azure Media Services REST API を使用したアプリケーション構築]
 
 <!-- Anchors. -->
 
@@ -630,9 +630,8 @@ Program.cs ファイルで、**Main** メソッド内の最初のアイテムと
   [アセットのエンコードと、出力されたアセットのダウンロード]: #Step4
   [メディア サービス アカウントの作成方法]: http://go.microsoft.com/fwlink/?LinkId=256662
   [windowsazure.mediaservices Nuget]: http://nuget.org/packages/windowsazure.mediaservices
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A8A8397B5
-  [Media Services Encoder 用のタスク プリセット]: http://msdn.microsoft.com/en-us/library/windowsazure/jj129582.aspx
-  [Windows Azure Media Encoder でサポートされているコーデックとファイルの種類]: http://msdn.microsoft.com/en-us/library/windowsazure/hh973634.aspx
+  [Media Services Encoder 用のタスク プリセット]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj129582.aspx
+  [Windows Azure Media Encoder でサポートされているコーデックとファイルの種類]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh973634.aspx
   [1]: http://msdn.microsoft.com/library/windowsazure/jj129582.aspx
-  [メディア サービスを使用する方法]: http://www.windowsazure.com/en-us/develop/net/how-to-guides/media-services/
-  [Windows Azure Media Services REST API を使用したアプリケーション構築]: http://msdn.microsoft.com/en-us/library/windowsazure/hh973618.aspx
+  [メディア サービスを使用する方法]: http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/media-services/
+  [Windows Azure Media Services REST API を使用したアプリケーション構築]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh973618.aspx

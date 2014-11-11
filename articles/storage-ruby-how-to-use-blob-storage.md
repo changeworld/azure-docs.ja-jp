@@ -1,39 +1,39 @@
 <properties linkid="dev-ruby-how-to-blob-storage" urlDisplayName="Blob Service" pageTitle="How to use blob storage (Ruby) | Microsoft Azure" metaKeywords="Get started Azure blob, Azure unstructured data, Azure unstructured storage, Azure blob, Azure blob storage, Azure blob Ruby" description="Learn how to use the Azure blob service to upload, download, list, and delete blob content. Samples written in Ruby." metaCanonical="" services="storage" documentationCenter="Ruby" title="How to Use the Blob Service from Ruby" authors="guayan" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="ruby" ms.topic="article" ms.date="01/01/1900" ms.author="guayan"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="ruby" ms.topic="article" ms.date="01/01/1900" ms.author="guayan" />
 
 # Ruby から BLOB サービスを使用する方法
 
 このガイドでは、Azure BLOB サービスを使用して一般的なシナリオを実行する方法について説明します。
 サンプルは Ruby API を使用して記述されています。
 紹介するシナリオは、BLOB の**アップロード、一覧の取得、ダウンロード**、および**削除**です。
-BLOB の詳細については、「[次のステップ][]」のセクションを参照してください。
+BLOB の詳細については、「[次のステップ][次のステップ]」のセクションを参照してください。
 
 ## 目次
 
--   [BLOB サービスとは][]
--   [概念][]
--   [Azure のストレージ アカウントの作成][]
--   [Ruby アプリケーションの作成][]
--   [アプリケーションのストレージへのアクセスの構成][]
--   [Azure のストレージ接続文字列の設定][]
--   [方法: コンテナーを作成する][]
--   [方法: コンテナーに BLOB をアップロードする][]
--   [方法: コンテナー内の BLOB を一覧表示する][]
--   [方法: BLOB をダウンロードする][]
--   [方法: BLOB を削除する][]
+-   [BLOB サービスとは][BLOB サービスとは]
+-   [概念][概念]
+-   [Azure のストレージ アカウントの作成][Azure のストレージ アカウントの作成]
+-   [Ruby アプリケーションの作成][Ruby アプリケーションの作成]
+-   [アプリケーションのストレージへのアクセスの構成][アプリケーションのストレージへのアクセスの構成]
+-   [Azure のストレージ接続文字列の設定][Azure のストレージ接続文字列の設定]
+-   [方法: コンテナーを作成する][方法: コンテナーを作成する]
+-   [方法: コンテナーに BLOB をアップロードする][方法: コンテナーに BLOB をアップロードする]
+-   [方法: コンテナー内の BLOB を一覧表示する][方法: コンテナー内の BLOB を一覧表示する]
+-   [方法: BLOB をダウンロードする][方法: BLOB をダウンロードする]
+-   [方法: BLOB を削除する][方法: BLOB を削除する]
 -   [次のステップ][1]
 
-[WACOM.INCLUDE [howto-blob-storage][]]
+[WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
 ## <span id="CreateAccount"></span></a>Azure のストレージ アカウントの作成
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <span id="CreateRubyApp"></span></a>Ruby アプリケーションを作成する
 
 Ruby アプリケーションを作成します。手順については、
-「[Azure VM での Ruby on Rails Web アプリケーション][]」を参照してください。
+「[Azure VM での Ruby on Rails Web アプリケーション][Azure VM での Ruby on Rails Web アプリケーション]」を参照してください。
 
 ## <span id="ConfigAccessStorage"></span></a>アプリケーションからストレージへのアクセスの構成
 
@@ -60,7 +60,7 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 これらの値を取得するには、次の手順を実行します。
 
-1.  [Azure の管理ポータル][]にログインします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]にログインします。
 2.  使用するストレージ アカウントを表示します。
 3.  ナビゲーション ウィンドウの下部にある **[キーの管理]** をクリックします。
 4.  ポップアップ ダイアログに、ストレージ アカウント名、プライマリ アクセス キー、およびセカンダリ アクセス キーが表示されます。アクセス キーは、プライマリとセカンダリのどちらでも選択できます。
@@ -142,9 +142,9 @@ BLOB をダウンロードするには、**get\_blob()** メソッドを使用�
 
 これで、BLOB ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   MSDN リファレンス: [Azure のデータの格納とアクセス][]
--   [Azure のストレージ チーム ブログ][]
--   GitHub の [Azure SDK for Ruby][] リポジトリ
+-   MSDN リファレンス: [Azure のデータの格納とアクセス][Azure のデータの格納とアクセス]
+-   [Azure のストレージ チーム ブログ][Azure のストレージ チーム ブログ]
+-   GitHub の [Azure SDK for Ruby][Azure SDK for Ruby] リポジトリ
 
   [次のステップ]: #next-steps
   [BLOB サービスとは]: #what-is
@@ -161,8 +161,8 @@ BLOB をダウンロードするには、**get\_blob()** メソッドを使用�
   [1]: #NextSteps
   [howto-blob-storage]: ../includes/howto-blob-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
-  [Azure VM での Ruby on Rails Web アプリケーション]: /en-us/develop/ruby/tutorials/web-app-with-linux-vm/
+  [Azure VM での Ruby on Rails Web アプリケーション]: /ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
   [Azure SDK for Ruby]: https://github.com/WindowsAzure/azure-sdk-for-ruby

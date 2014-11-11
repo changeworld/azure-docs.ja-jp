@@ -155,13 +155,11 @@ Administrator ユーザーには、すべての成果物に対するサブスク
   [Create API]: ./media/api-management-get-started/api-management-create-api.png
   [Add new API]: ./media/api-management-get-started/api-management-add-new-api.png
   [API summary]: ./media/api-management-get-started/api-management-new-api-summary.png
-  [Configure API settings (API 設定の構成)]: ../api-management-howto-create-apis/#configure-api-settings
   [Operations]: ./media/api-management-get-started/api-management-myecho-operations.png
   [Operation signature]: ./media/api-management-get-started/api-management-operation-signature.png
   [Add API]: ./media/api-management-get-started/api-management-add-api-to-product.png
   [3]: ./media/api-management-get-started/api-management-add-myechoapi-to-product.png
   [API added]: ./media/api-management-get-started/api-management-api-added-to-product.png
-  [How create and publish a product (成果物を作成して発行する方法)]: ../api-management-howto-add-products****
   [4]: ./media/api-management-get-started/api-management-developer-portal-myecho-api.png
   [Operation console]: ./media/api-management-get-started/api-management-developer-portal-myecho-api-console.png 
   [Response]: ./media/api-management-get-started/api-management-invoke-get-response.png

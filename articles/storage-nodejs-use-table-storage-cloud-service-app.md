@@ -1,11 +1,11 @@
 <properties linkid="dev-nodejs-basic-web-app-with-storage" urlDisplayName="Web App with Storage" pageTitle="Web app with table storage (Node.js) | Microsoft Azure" metaKeywords="Azure Node.js hello world tutorial, Azure Node.js hello world, Azure Node.js Getting Started tutorial, Azure Node.js tutorial, Azure Node.js Express tutorial" description="A tutorial that builds on the Web App with Express tutorial by adding Azure Storage services and the Azure module." metaCanonical="" services="cloud-services,storage" documentationCenter="Node.js" title="Node.js Web Application using Storage" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr" />
 
 # ストレージを使用する Node.js Web アプリケーション
 
 このチュートリアルでは、Node.js 用の Windows Azure クライアント ライブラリを使用して、
-[Express を使用する Node.js Web アプリケーション][]のチュートリアルで作成したアプリケーションを拡張し、
+[Express を使用する Node.js Web アプリケーション][Express を使用する Node.js Web アプリケーション]のチュートリアルで作成したアプリケーションを拡張し、
 データ管理サービスを使用できるようにします。アプリケーションを
 拡張して、Azure にデプロイできる Web ベースのタスク一覧
 アプリケーションを作成します。このタスク一覧では、
@@ -16,10 +16,11 @@
 データ ストレージです。Azure ストレージには、データを格納してアクセスできる
 データ構造がいくつか用意されています。Azure SDK for Node.js に
 含まれる API または REST API を通じて、そのストレージ サービスを
-活用できます。詳細については、「[Azure のデータの格納とアクセス][]」を参照してください。
+活用できます。詳細については、「[Azure のデータの格納とアクセス][Azure のデータの格納とアクセス]」を参照してください。
 
 このチュートリアルは、[Node.js Web
-アプリケーション][]および [Node.js with Express][Express を使用する Node.js Web アプリケーション] のチュートリアルを完了していることを前提としています。
+アプリケーション][Node.js Web
+アプリケーション]および [Node.js with Express][Express を使用する Node.js Web アプリケーション] のチュートリアルを完了していることを前提としています。
 
 学習内容:
 
@@ -28,7 +29,7 @@
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
-![Internet Explorer で表示された完成した Web ページ][]
+![Internet Explorer で表示された完成した Web ページ][Internet Explorer で表示された完成した Web ページ]
 
 ## Web.Config のストレージ資格情報の設定
 
@@ -71,7 +72,7 @@ Azure に展開するときにのみ使用されます。エミュレーター�
         <Variable name="AZURE_STORAGE_ACCOUNT" value="{STORAGE ACCOUNT}" />
         <Variable name="AZURE_STORAGE_ACCESS_KEY" value="{STORAGE ACCESS KEY}" />
 
-    ![web.cloud.config ファイルの内容][]
+    ![web.cloud.config ファイルの内容][web.cloud.config ファイルの内容]
 
 6.  ファイルを保存して、メモ帳を閉じます。
 
@@ -321,7 +322,7 @@ Azure に展開するときにのみ使用されます。エミュレーター�
 
 ### グローバル レイアウトの変更
 
-**views** ディレクトリ内の **layout.jade** ファイルは、他の **.jade** ファイルのグローバル テンプレートとして使用されます。この手順では、[Twitter Bootstrap][] を使用するようにこのファイルを変更します。Twitter Bootstrap は、見栄えのよい Web サイトを簡単にデザインできるツールキットです。
+**views** ディレクトリ内の **layout.jade** ファイルは、他の **.jade** ファイルのグローバル テンプレートとして使用されます。この手順では、[Twitter Bootstrap][Twitter Bootstrap] を使用するようにこのファイルを変更します。Twitter Bootstrap は、見栄えのよい Web サイトを簡単にデザインできるツールキットです。
 
 1.  [Twitter Bootstrap][1] のファイルをダウンロードして展開します。**bootstrap\\dist\\css** フォルダーから **bootstrap.min.css** ファイルを tasklist アプリケーションの **public\\stylesheets** ディレクトリにコピーします。
 
@@ -349,7 +350,7 @@ Azure に展開するときにのみ使用されます。エミュレーター�
 
 ブラウザーが開き、次のページが表示されます。
 
-![My Task List というタイトルの Web ページと新しいタスクを追加するためのタスクとフィールドを含むテーブル][]
+![My Task List というタイトルの Web ページと新しいタスクを追加するためのタスクとフィールドを含むテーブル][My Task List というタイトルの Web ページと新しいタスクを追加するためのタスクとフィールドを含むテーブル]
 
 フォームを使用してアイテムを追加するか、完了済みのマークを付けることにより既存のアイテムを削除します。
 
@@ -407,9 +408,8 @@ Azure では、ロール インスタンスで消費されたサーバー時間�
 
     サービスの削除には、数分間かかる場合があります。サービスが削除されると、削除されたことを知らせるメッセージが表示されます。
 
-  [Express を使用する Node.js Web アプリケーション]: http://www.windowsazure.com/en-us/develop/nodejs/tutorials/web-app-with-express/
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
-  [Node.js Web  アプリケーション]: http://www.windowsazure.com/en-us/develop/nodejs/tutorials/getting-started/
+  [Express を使用する Node.js Web アプリケーション]: http://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/web-app-with-express/
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [Internet Explorer で表示された完成した Web ページ]: ./media/storage-nodejs-use-table-storage-cloud-service-app/getting-started-1.png
   [web.cloud.config ファイルの内容]: ./media/storage-nodejs-use-table-storage-cloud-service-app/node37.png
   [Twitter Bootstrap]: https://github.com/twbs/bootstrap

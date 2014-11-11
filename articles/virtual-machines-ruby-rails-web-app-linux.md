@@ -1,6 +1,6 @@
 <properties linkid="dev-ruby-web-app-with-linux-vm" urlDisplayName="Ruby on Rails Web App on Azure using Linux VM" pageTitle="Ruby on Rails Web App on Azure using Linux VM" metaKeywords="Azure Ruby web application, Azure Ruby application, Ruby app Azure, Ruby azure vm, ruby virthal machine, ruby linux vm" description="Host a Ruby on Rails-based website on Azure using a Linux virtual machine. " metaCanonical="" services="virtual-machines" documentationCenter="Ruby" title="Ruby on Rails Web application on an Azure VM" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="vm-linux" ms.devlang="ruby" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr"></tags>
+<tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="vm-linux" ms.devlang="ruby" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
 # Azure VM での Ruby on Rails Web アプリケーション
 
@@ -285,11 +285,6 @@ Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サ
   [アプリケーションを VM にコピーする]: #copy
   [gem をインストールしてアプリケーションを起動する]: #start
   [次のステップ]: #next
-  [Homebrew]: http://brew.sh/
-  []: https://github.com/sstephenson/rbenv/
-  [RailsInstaller]: http://railsinstaller.org/
-  [1]: https://github.com/sstephenson/execjs#readme
-  [Node.js]: http://nodejs.org/
   [SQLite3 データベース]: http://www.sqlite.org/
   [既定の rails ページ]: ./media/virtual-machines-ruby-rails-web-app-linux/basicrailslocal.png
   [a page listing posts]: ./media/virtual-machines-ruby-rails-web-app-linux/blograilslocal.png

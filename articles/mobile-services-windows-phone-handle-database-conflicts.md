@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-optimistic-concurrent-data-wp8" urlDisplayName="Optimistic concurrency" pageTitle="Handle database write conflicts with optimistic concurrency (Windows Store) | Mobile Dev Center" metaKeywords="" description="Learn how to handle database write conflicts on both the server and in your Windows Store application." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Handling database write conlicts" authors="wesmc" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc" />
 
 # データベースの書き込み競合の処理
 
@@ -29,7 +29,7 @@
 
     1.  Visual Studio のソリューション エクスプローラーで、プロジェクトを開いて右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-        ![][]
+        ![][0]
 
     2.  **[オンライン]** を展開し、**[Microsoft and .NET]** をクリックします。検索ボックスに「**Azure Mobile Services**」と入力します。**[Azure Mobile Services]** NuGet パッケージで **[インストール]** をクリックします。
 
@@ -292,9 +292,6 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Windows ストア C#]: /ja-jp/develop/mobile/tutorials/handle-database-write-conflicts-dotnet/ "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-handle-database-conflicts/ "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/develop/mobile/tutorials/handle-database-write-conflicts-wp8/ "Windows Phone"
   [更新を実行できるようにアプリケーションを更新する]: #uiupdate
   [アプリケーションでの競合検出を有効にする]: #enableOC
   [アプリケーションでデータベース書き込み競合をテストする]: #test-app
@@ -302,7 +299,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
   [Windows Phone 8 SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268374
   [Azure アカウント]: http://www.windowsazure.com/ja-jp/pricing/free-trial/
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-wp8
-  []: ./media/mobile-services-windows-phone-handle-database-conflicts/mobile-manage-nuget-packages-VS.png
+  [0]: ./media/mobile-services-windows-phone-handle-database-conflicts/mobile-manage-nuget-packages-VS.png
   [1]: ./media/mobile-services-windows-phone-handle-database-conflicts/mobile-manage-nuget-packages-dialog.png
   [オプティミスティック同時実行制御]: http://go.microsoft.com/fwlink/?LinkId=330935
   [システム プロパティ]: http://go.microsoft.com/fwlink/?LinkId=331143

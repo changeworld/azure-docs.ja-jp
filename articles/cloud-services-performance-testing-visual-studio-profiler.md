@@ -1,6 +1,6 @@
 <properties linkid="dev-net-common-tasks-profiling-in-compute-emulator" urldisplayname="Team Foundation Service" headerexpose="" pageTitle="Profiling a Cloud Service Locally in the Compute Emulator" metakeywords="" footerexpose="" description="" umbraconavihide="0" disquscomments="1" title="Testing the Performance of a Cloud Service Locally in the Azure Compute Emulator Using the Visual Studio Profiler" authors="ghogen" manager="douge" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ghogen"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ghogen" />
 
 # Visual Studio プロファイラーを使用した、Azure コンピューティング エミュレーターでのクラウド サービスのパフォーマンスのローカルなテスト
 
@@ -30,7 +30,7 @@
 
 まず、プロファイル時に有用な Visual Studio の構成オプションがいくつかあります。プロファイル レポートを理解しやすくするために、アプリケーションのシンボル (.pdb ファイル) およびシステム ライブラリのシンボルが必要です。使用可能なシンボル サーバーを参照していることを確認してください。確認するには、Visual Studio の **[ツール]** メニューで、**[オプション]**、**[デバッグ]**、**[シンボル]** の順に選択します。Microsoft シンボル サーバーが **[シンボル ファイル (.pdb) の場所]** の下に表示されていることを確認します。その他のシンボル ファイルが含まれている <http://referencesource.microsoft.com/symbols> を参照することもできます。
 
-![][]
+![][0]
 
 必要な場合は、[マイ コードのみ] を設定して、プロファイラーが生成するレポートを簡素化することができます。[マイ コードのみ] を有効にすると、完全にライブラリおよび .NET Framework の内部への呼び出しがレポートから隠されるように関数コール スタックが簡素化されます。**[ツール]** メニューの **[オプション]** を選択します。次に、**[パフォーマンス ツール]** ノードを展開し、**[全般]** を選択します。**[プロファイラー レポートでマイ コードのみを有効にする]** チェック ボックスをオンにします。
 
@@ -173,7 +173,7 @@ Visual Studio 2010 プロファイラーでは、エミュレーター内の Azu
   [手順 4.変更を行ってパフォーマンスを比較する]: #step4
   [トラブルシューティング]: #troubleshooting
   [次のステップ]: #nextSteps
-  []: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
+  [0]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
   [1]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally08.png
   [2]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally10.png
   [3]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally02.png

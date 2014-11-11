@@ -1,6 +1,6 @@
 <properties title="Azure Notification Hubs Notify Users" pageTitle="Azure Notification Hubs Notify Users" metaKeywords="Azure push notifications, Azure notification hubs" description="Learn how to send secure push notifications in Azure. Code samples written in Objective-C using the .NET API." documentationCenter="Mobile" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="sethm" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="sethm"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="sethm" />
 
 # Azure Notification Hubs によるユーザーへの通知
 
@@ -19,7 +19,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 このチュートリアルを開始する前に、iOS プロビジョニング プロファイルと開発プッシュ証明書を作成してから、Azure の通知ハブを作成しアプリケーションに接続する必要があります。「[通知ハブの使用][Getting Started with Notification Hubs (iOS) (Notification Hubs (iOS) の使用)]」の手順に従ってください。特にセクション 1 から 5 が重要です。
 
-[WACOM.INCLUDE [notification-hubs-aspnet-backend-notifyusers][notification-hubs-aspnet-backend-notifyusers]]
+[WACOM.INCLUDE [notification-hubs-aspnet-backend-notifyusers](../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## iOS アプリを変更する
 
@@ -36,7 +36,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
     ストーリーボードは次のようになります。
 
-    ![][]
+    ![][0]
 
 2.  ViewController.m のインターフェイス部分で UITextFields と UIButtons の両方にアウトレットを作成します。
 
@@ -328,10 +328,6 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 4.  iOS アプリケーションの UI で、**[ログイン]** をクリックします。次に、**[プッシュを送信する]** をクリックします。
 
-  [Windows ユニバーサル]: /ja-jp/documentation/articles/notification-hubs-windows-dotnet-notify-users/ "Windows ユニバーサル"
-  [iOS]: /ja-jp/documentation/articles/notification-hubs-/ "iOS"
-  [Android]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-notify-users/ "Android"
   [アプリ バックエンドからの登録]: http://msdn.microsoft.com/ja-jp/library/dn743807.aspx
-  [Getting Started with Notification Hubs (iOS) (Notification Hubs (iOS) の使用)]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-ios-get-started/
   [notification-hubs-aspnet-backend-notifyusers]: ../includes/notification-hubs-aspnet-backend-notifyusers.md
-  []: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users1.png
+  [0]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users1.png

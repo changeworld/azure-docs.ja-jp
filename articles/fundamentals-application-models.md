@@ -1,6 +1,6 @@
 <properties umbracoNaviHide="0" pageTitle="Application Model" metaKeywords="Azure, Azure, application model, Azure application model, development model, Azure development model, hosted service, Azure hosted service, web role, worker role" description="Learn about the Azure hosted service application model. Understand core concepts, design considerations, defining and configuring your application, and scaling." linkid="dev-net-fundamentals-application-model" urlDisplayName="Application Model" headerExpose="" footerExpose="" disqusComments="1" title="Application Model" authors="robb" manager="johndaw" />
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="robb"></tags>
+<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="robb" />
 
 # Azure 実行モデル
 
@@ -186,18 +186,11 @@ Azure の 3 種類の実行モデルにはすべて一長一短があります�
   [Cloud Services]: #CloudServices
   [使用するモデルを選択する]: #WhatShouldIUse
   [図 1]: #Fig1
-  [01\_CreatingVMs]: ./media/fundamentals-application-models/ExecModels_01_CreatingVMs.png
   [VMDepot]: http://vmdepot.msopentech.com/
   [Azure ライブラリ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn197896.aspx
   [図 2]: #Fig2
-  [02\_CloudServices]: ./media/fundamentals-application-models/ExecModels_02_CloudServices.png
   [図 3]: #Fig3
-  [03\_AppUsingSQLServer]: ./media/fundamentals-application-models/ExecModels_03_AppUsingSQLServer.png
   [図 4]: #Fig4
-  [04\_SharePointFarm]: ./media/fundamentals-application-models/ExecModels_04_SharePointFarm.png
-  [05\_Websites]: ./media/fundamentals-application-models/ExecModels_05_Websites.png
   [図 5]: #Fig5
   [図 6]: #Fig6
-  [06\_CloudServices2]: ./media/fundamentals-application-models/ExecModels_06_CloudServices2.png
   [図 7]: #Fig7
-  [07\_CombineTechnologies]: ./media/fundamentals-application-models/ExecModels_07_CombineTechnologies.png

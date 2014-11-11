@@ -1,22 +1,22 @@
 <properties linkid="manage-services-how-to-manage-a-storage-account" urlDisplayName="How to manage" pageTitle="How to manage storage accounts | Microsoft Azure" metaKeywords="Azure manage storage accounts, storage account management portal, storage account geo-replication, Azure geo-replication, Azure access keys" description="Learn how to manage storage accounts in Azure by using the Management Portal." metaCanonical="" services="storage" documentationCenter="" title="How To Manage Storage Accounts" authors="tamram" solutions="" manager="mbaldwin" editor="cgronlun" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="tamram"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
 # <span id="managestorageaccounts"></span></a>ストレージ アカウントの管理方法
 
 ## 目次
 
--   [方法: ストレージ アカウント レプリケーションを管理する][]
--   [方法: ストレージ アクセス キーの表示、コピーおよび再生成][]
--   [方法: ストレージ アカウントの削除][]
+-   [方法: ストレージ アカウント レプリケーションを管理する][方法: ストレージ アカウント レプリケーションを管理する]
+-   [方法: ストレージ アクセス キーの表示、コピーおよび再生成][方法: ストレージ アクセス キーの表示、コピーおよび再生成]
+-   [方法: ストレージ アカウントの削除][方法: ストレージ アカウントの削除]
 
 ## <span id="georeplication"></span></a>方法: 持続性と高可用性のためにストレージ アカウント データをレプリケートする
 
-[WACOM.INCLUDE [storage-replication-options][]]
+[WACOM.INCLUDE [storage-replication-options](../includes/storage-replication-options.md)]
 
 ### ストレージ アカウントに対してレプリケーションの設定を指定するには
 
-1.  [Azure の管理ポータル][]で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを表示します。
+1.  [Azure の管理ポータル][Azure の管理ポータル]で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを表示します。
 
 2.  **[構成]** をクリックします。
 
@@ -28,19 +28,19 @@
 
 ストレージ アカウントを作成するときに、Azure によって 2 つの 512 ビット ストレージ アクセス キーが生成されます。これらは、ストレージ アカウントにアクセスするときに認証の目的で使用されます。Azure によって 2 つのストレージ アクセス キーが提供される結果、ストレージ サービスやサービスへのアクセスを中断することなく、これらのキーを再生成できます。
 
-[管理ポータル][]で、ダッシュボードまたは **[ストレージ]** ページの **[キーの管理]** を使用して、BLOB、テーブル、およびキュー サービスのアクセスに使用するストレージ アクセス キーを表示、コピー、および再生成します。
+[管理ポータル][管理ポータル]で、ダッシュボードまたは **[ストレージ]** ページの **[キーの管理]** を使用して、BLOB、テーブル、およびキュー サービスのアクセスに使用するストレージ アクセス キーを表示、コピー、および再生成します。
 
 ### ストレージ アクセス キーのコピー
 
-**[キーの管理]** を使用してストレージ アクセス キーをコピーし、接続文字列で使用することができます。接続文字列には、ストレージ アカウント名および認証で使用するキーが必要です。Azure ストレージ サービスにアクセスする接続文字列の構成方法の詳細については、「[Azure 接続文字列の構成方法][]」を参照してください。
+**[キーの管理]** を使用してストレージ アクセス キーをコピーし、接続文字列で使用することができます。接続文字列には、ストレージ アカウント名および認証で使用するキーが必要です。Azure ストレージ サービスにアクセスする接続文字列の構成方法の詳細については、「[Azure 接続文字列の構成方法][Azure 接続文字列の構成方法]」を参照してください。
 
-1.  [管理ポータル][]で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
+1.  [管理ポータル][管理ポータル]で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
 2.  **[キーの管理]** をクリックします。
 
     **[アクセス キーの管理]** が開きます。
 
-    ![Managekeys][]
+    ![Managekeys][Managekeys]
 
 3.  ストレージ アクセス キーをコピーするには、キー文字列を選択します。右クリックして **[コピー]** をクリックします。
 
@@ -62,7 +62,7 @@
 
 1.  ストレージ アカウントのセカンダリ アクセス キーを参照するようにアプリケーション コードの接続文字列を更新します。
 
-2.  ストレージ アカウントのプライマリ アクセス キーを再生成します。[管理ポータル][]で、ダッシュボードまたは **[構成]** ページの **[キーの管理]** をクリックします。プライマリ アクセス キーの **[再生成]** をクリックし、確認画面で **[はい]** をクリックして新しいキーを生成します。
+2.  ストレージ アカウントのプライマリ アクセス キーを再生成します。[管理ポータル][管理ポータル]で、ダッシュボードまたは **[構成]** ページの **[キーの管理]** をクリックします。プライマリ アクセス キーの **[再生成]** をクリックし、確認画面で **[はい]** をクリックして新しいキーを生成します。
 
 3.  新しいプライマリ アクセス キーを参照するようにアプリケーション コードの接続文字列を更新します。
 
@@ -84,7 +84,7 @@
     </p>
 </div>
 
-1.  [管理ポータル][]で、**[ストレージ]** をクリックします。
+1.  [管理ポータル][管理ポータル]で、**[ストレージ]** をクリックします。
 
 2.  ストレージ アカウント項目の名前以外の部分をクリックして、**[削除]** をクリックします。
 
@@ -100,5 +100,5 @@
   [storage-replication-options]: ../includes/storage-replication-options.md
   [Azure の管理ポータル]: https://manage.windowsazure.com
   [管理ポータル]: http://manage.windowsazure.com
-  [Azure 接続文字列の構成方法]: http://msdn.microsoft.com/en-us/library/ee758697.aspx
+  [Azure 接続文字列の構成方法]: http://msdn.microsoft.com/ja-jp/library/ee758697.aspx
   [Managekeys]: ./media/storage-manage-storage-account/Storage_ManageKeys.png

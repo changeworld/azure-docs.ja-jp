@@ -1,6 +1,6 @@
 <properties linkid="develop-nodejs-how-to-guides-service-bus-notification-hubs" urlDisplayName="Notification Hubs" pageTitle="Notification Hubs - Node.js Dev Center" metaKeywords="" description="Learn how to use Notification Hubs to send push notifications. Code samples are written for Node.js applications." metaCanonical="" services="service-bus" documentationCenter="nodejs" title="How to Use Notification Hubs" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
 # Notification Hubs の使用方法
 
@@ -184,8 +184,5 @@ Azure Notification Hub を使用するには、Node.js azure パッケージを�
   [Node.js アプリケーションの作成と Azure Web サイトへの展開]: /ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
   [Node.js クラウド サービス]: /ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/
   [WebMatrix を使用した Web サイト]: /ja-jp/develop/nodejs/tutorials/web-site-with-webmatrix/
-  [Implementing GCM Server (GCM サーバーの実装)]: http://developer.android.com/google/gcm/server.html#payload
-  [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html
-  [Push notifications from a server (サーバーからのプッシュ通知)]: http://msdn.microsoft.com/ja-jp/library/hh221551.aspx
   [プッシュ通知サービスの要求ヘッダーと応答ヘッダー]: http://msdn.microsoft.com/ja-jp/library/windows/apps/hh465435.aspx
   [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node

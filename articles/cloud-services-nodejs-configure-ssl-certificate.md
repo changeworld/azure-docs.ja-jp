@@ -1,6 +1,6 @@
 <properties linkid="dev-nodejs-enablessl" urlDisplayName="Enable SSL" pageTitle="Configure SSL for a cloud service (Node.js) - Azure" metaKeywords="Node.js Azure SSL, Node.js Azure HTTPS" description="Learn how to specify an HTTPS endpoint for a Node.js web role and how to upload an SSL certificate to secure your application." metaCanonical="" services="cloud-services" documentationCenter="nodejs" title="Configuring SSL for a Node.js Application in an Azure Web Role" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
 # Azure Web ロールで Node.js アプリケーションの SSL を構成する
 
@@ -25,11 +25,11 @@ Node.js アプリケーションを Azure Web ロールにデプロイすると�
 
     ![Azure PowerShell アイコン][Azure PowerShell アイコン]
 
-	[WACOM.INCLUDE [install-dev-tools][install-dev-tools]]
+	[WACOM.INCLUDE [install-dev-tools](../includes/install-dev-tools.md)]
 
 1.  **New-AzureServiceProject** コマンドレットを使用して、新しいサービス プロジェクトを作成します。
 
-    ![][]
+    ![][0]
 
 2.  **Add-AzureNodeWebRole** コマンドレットを使用して、サービスに Web ロールを追加します。
 
@@ -160,7 +160,6 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
 
 [HTTPS エンドポイント上での SSL 証明書の構成方法][HTTPS エンドポイント上での SSL 証明書の構成方法]
 
-  [Azure Websites の SSL 証明書の構成]: ../web-sites-configure-ssl-certificate/
   [手順 1.Node.js サービスを作成してクラウドにサービスを発行する]: #step1
   [手順 2.SSL 証明書を取得する]: #step2
   [手順 3.SSL 証明書をインポートする]: #step3
@@ -168,10 +167,9 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
   [手順 5.HTTPS を使用してロール インスタンスに接続する]: #step5
   [Azure PowerShell アイコン]: ./media/cloud-services-nodejs-configure-ssl-certificate/azure-powershell-start.png
   [install-dev-tools]: ../includes/install-dev-tools.md
-  []: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-01.png
+  [0]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-01.png
   [1]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-02.png
   [2]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-03.png
-  [Azure PowerShell for Node.js の使用方法]: https://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings
   [証明書ウィザード]: ./media/cloud-services-nodejs-configure-ssl-certificate/certificateimport.png
   [秘密キーの保護]: ./media/cloud-services-nodejs-configure-ssl-certificate/exportable.png
   [サービスと証明書の関連付け]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg465718.aspx

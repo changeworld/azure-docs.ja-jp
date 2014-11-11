@@ -1,6 +1,6 @@
 <properties title="How to Create a DocumentDB Account" pageTitle="How to create a DocumentDB account | Azure" description="Find out how to create a DocumentDB account and choose account settings in the Azure Preview portal."  metaKeywords="NoSQL, DocumentDB,  database, document-orientated database, JSON, account" services="documentdb"  solutions="data-management" documentationCenter=""  authors="bradsev" manager="jhubbard" editor="cgronlun" videoId="" scriptId="" />
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="bradsev"></tags>
+<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="bradsev" />
 
 # DocumentDB アカウントの作成方法
 
@@ -15,7 +15,7 @@ DocumentDB を使用するには、利用可能なリージョンの DocumentDB 
 
 1.  [Azure 管理プレビュー ポータル][Azure 管理プレビュー ポータル]にサインインします。
 2.  [新規]、[DocumentDB アカウント] の順にクリックします。<br/>
-    ![][]
+    ![][0]
 
     または、Azure ギャラリーを参照し、[データ、ストレージ、+ バックアップ] カテゴリを選択して、**[DocumentDB]** を選択します。次に、**[作成]** をクリックします。
 
@@ -78,10 +78,9 @@ DocumentDB を使用するには、利用可能なリージョンの DocumentDB 
   [方法: DocumentDB アカウントを作成する]: #Howto
   [次のステップ]: #NextSteps
   [Azure 管理プレビュー ポータル]: https://portal.azure.com/
-  []: ./media/documentdb-create-account/ca1.png
+  [0]: ./media/documentdb-create-account/ca1.png
   [1]: ./media/documentdb-create-account/ca2.png
   [2]: ./media/documentdb-create-account/ca3.png
-  [DocumentDB PREVIEW pricing details (DocumentDB プレビュー料金の詳細)]: http://go.microsoft.com/fwlink/p/?LinkID=402317&clcid=0x409
   [DocumentDB の容量とパフォーマンスの管理]: ../documentdb-manage/
   [リソース グループを使用した Azure リソースの管理]: http://azure.microsoft.com/ja-jp/documentation/articles/azure-preview-portal-using-resource-groups/
   [3]: ./media/documentdb-create-account/ca4.png

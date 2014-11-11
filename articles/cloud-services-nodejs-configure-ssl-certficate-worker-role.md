@@ -1,6 +1,6 @@
 <properties linkid="dev-nodejs-enablesslworker" urlDisplayName="Enable SSL worker role" pageTitle="Configure SSL for a cloud service (Node.js) worker role" metaKeywords="Node.js Azure SSL, Node.js Azure, SSL worker role" description="" metaCanonical="" services="cloud-services" documentationCenter="nodejs" title="Configuring SSL for a Node.js Application in an Azure Worker Role" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
 # Azure ワーカー ロールで Node.js アプリケーションの SSL を構成する
 
@@ -29,7 +29,7 @@ Azure PowerShell を使用して、以下の手順に従って簡単な Node.js 
 
 2.  **New-AzureServiceProject** コマンドレットを使用して、新しいサービスを作成します。
 
-    ![][]
+    ![][0]
 
 3.  **Add-AzureNodeWorkerRole** コマンドレットを使用して、サービスに worker ロールを追加します。
 
@@ -146,10 +146,9 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
   [手順 4.サービス定義ファイルを変更する]: #step4
   [手順 5.HTTPS を使用してロール インスタンスに接続する]: #step5
   [Azure PowerShell アイコン]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/azure-powershell-start.png
-  []: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-01.png
+  [0]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-01.png
   [1]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-02-worker.png
   [2]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-03-worker.png
-  [Azure PowerShell for Node.js の使用方法]: https://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings
   [サイトの URL]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/site-url.png
   [3]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-08.png
   [証明書をサービスに関連付ける方法]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg465718.aspx

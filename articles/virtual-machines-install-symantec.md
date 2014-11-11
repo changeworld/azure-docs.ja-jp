@@ -1,6 +1,6 @@
 <properties title="How to install and configure Symantec Endpoint Protection on an Azure VM" pageTitle="How to install and configure Symantec Endpoint Protection on an Azure VM" description="Describes installing and configuring Symantec Endpoint Protection on a VM in Azure" metaKeywords="" services="virtual machines" solutions="" documentationCenter="" authors="kathydav" videoId="" scriptId="" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-multiple" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="kathydav"></tags>
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-multiple" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="kathydav" />
 
 # Azure VM に Symantec Endpoint Protection をインストールして構成する方法
 
@@ -65,7 +65,6 @@ Azure PowerShell セッションを開き、次のコマンドを実行します
 
 <!--Link references-->
 
-  [Symantec Endpoint Protection on Microsoft's Azure platform (Microsoft Azure プラットフォームでの Symantec Endpoint Protection)]: http://go.microsoft.com/fwlink/p/?LinkId=403942
   [Azure 管理ポータル]: http://manage.windowsazure.com
   [Windows Server を実行する仮想マシンの作成]: http://go.microsoft.com/fwlink/p/?LinkId=403943
   [Install the VM Agent and the Endpoint Protection Client]: ./media/virtual-machines-install-symantec/InstallVMAgentandSymantec.png

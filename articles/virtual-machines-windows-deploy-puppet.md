@@ -1,6 +1,6 @@
 <properties title="About Puppet and Azure Virtual Machines" pageTitle="About Puppet and Azure Virtual Machines" description="Describes installing and configuring Puppet on a VM in Azure" metaKeywords="" services="virtual machines" solutions="" documentationCenter="" authors="kathydav" videoId="" scriptId="" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="kathydav"></tags>
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="kathydav" />
 
 # Puppet と Azure Virtual Machines について
 
@@ -25,8 +25,6 @@ Puppet はクライアント サーバー システムです。Puppet マスタ�
 
 <!--Link references-->
 
-  [Microsoft Windows and Azure (Microsoft Windows と Azure)]: http://puppetlabs.com/solutions/microsoft
-  [New Integrations with Microsoft Azure and Visual Studio (Microsoft Azure および Visual Studio との新しい統合)]: http://puppetlabs.com/blog/new-integrations-windows-azure-and-visual-studio
   [Windows Server が実行されている仮想マシンにログオンする方法]: ../virtual-machines-log-on-windows-server/
   [Linux を実行する仮想マシンにログオンする方法]: ../virtual-machines-linux-how-to-log-on
   [拡張機能の管理]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409

@@ -1,6 +1,6 @@
 <properties linkid="develop-notificationhubs-tutorials-send-localized-breaking-news-iOS" urlDisplayName="Localized Breaking News" pageTitle="Notification Hubs Localized Breaking News Tutorial for iOS" metaKeywords="" description="Learn how to use Azure Service Bus Notification Hubs to send localized breaking news notifications (iOS)." metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Use Notification Hubs to send localized breaking news to iOS devices" authors="krisragh" solutions="" manager="" editor="" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="krisragh"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="krisragh" />
 
 # 通知ハブを使用した iOS デバイスへのローカライズ ニュース速報の送信
 
@@ -61,7 +61,7 @@ Visual Studio 2012 も必要です。
 
 MainStoryboard\_iPhone.storyboard で、サポートする 3 つの言語 (英語、フランス語、標準中国語) を備えた Segmented Control を追加します。
 
-![][]
+![][0]
 
 次に、以下に示すように ViewController.h に IBOutlet を追加します。
 
@@ -156,7 +156,7 @@ MainStoryboard\_iPhone.storyboard で、サポートする 3 つの言語 (英�
 
 ## <a name="send"></a><span class="short-header">ローカライズした通知を送信する</span>バックエンドからローカライズした通知を送信する
 
-[WACOM.INCLUDE [notification-hubs-localized-back-end][notification-hubs-localized-back-end]]
+[WACOM.INCLUDE [notification-hubs-localized-back-end](../includes/notification-hubs-localized-back-end.md)]
 
 ## 次のステップ
 
@@ -172,16 +172,13 @@ MainStoryboard\_iPhone.storyboard で、サポートする 3 つの言語 (英�
 <!-- Images. --> 
 <!-- URLs. -->
 
-  [Windows ストア C#]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/ "Windows ストア C#"
-  [iOS]: /ja-jp/documentation/articles/notification-hubs-ios-send-localized-breaking-news/ "iOS"
   [通知ハブを使用したニュース速報の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-ios
   [テンプレートの概念]: #concepts
   [アプリケーションのユーザー インターフェイス]: #ui
   [iOS アプリケーションを構築する]: #building-client
   [バックエンドから通知を送信する]: #send
   [通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
-  [方法: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/ja-jp/library/jj927168.aspx
-  []: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized1.png
+  [0]: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized1.png
   [1]: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized2.png
   [notification-hubs-localized-back-end]: ../includes/notification-hubs-localized-back-end.md
   [Notification Hubs によるユーザーへの通知: ASP.NET]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet

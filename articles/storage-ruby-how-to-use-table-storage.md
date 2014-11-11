@@ -1,6 +1,6 @@
 <properties linkid="dev-ruby-how-to-table-services" urlDisplayName="Table Service" pageTitle="How to use table storage (Ruby) | Microsoft Azure" metaKeywords="Azure table storage service, Azure table service Ruby, table storage Ruby" description="Learn how to use the table storage service in Azure. Code samples are written using the Ruby API." metaCanonical="" services="storage" documentationCenter="Ruby" title="How to Use the Table Service from Ruby" authors="guayan" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="ruby" ms.topic="article" ms.date="01/01/1900" ms.author="guayan"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="ruby" ms.topic="article" ms.date="01/01/1900" ms.author="guayan" />
 
 # Ruby からテーブル サービスを使用する方法
 
@@ -8,37 +8,37 @@
 実行する方法について説明します。サンプルは Ruby API を使用して記述されて
 います。紹介するシナリオは、**テーブルの作成と削除、テーブルのエンティティの挿入とクエリ実行**などです。
 テーブルの
-詳細については、「[次のステップ][]」のセクションを参照してください。
+詳細については、「[次のステップ][次のステップ]」のセクションを参照してください。
 
 ## 目次
 
--   [テーブル サービスとは][]
--   [概念][]
--   [Azure のストレージ アカウントの作成][]
--   [Ruby アプリケーションの作成][]
--   [アプリケーションのストレージへのアクセスの構成][]
--   [Azure のストレージ接続文字列の設定][]
--   [方法: テーブルを作成する][]
--   [方法: エンティティをテーブルに追加する][]
--   [方法: エンティティを更新する][]
--   [方法: エンティティのグループを操作する][]
--   [方法: エンティティを照会する][]
--   [方法: エンティティのセットを照会する][]
--   [方法: エンティティ プロパティのサブセットを照会する][]
--   [方法: エンティティを削除する][]
--   [方法: テーブルを削除する][]
--   [次のステップ][]
+-   [テーブル サービスとは][テーブル サービスとは]
+-   [概念][概念]
+-   [Azure のストレージ アカウントの作成][Azure のストレージ アカウントの作成]
+-   [Ruby アプリケーションの作成][Ruby アプリケーションの作成]
+-   [アプリケーションのストレージへのアクセスの構成][アプリケーションのストレージへのアクセスの構成]
+-   [Azure のストレージ接続文字列の設定][Azure のストレージ接続文字列の設定]
+-   [方法: テーブルを作成する][方法: テーブルを作成する]
+-   [方法: エンティティをテーブルに追加する][方法: エンティティをテーブルに追加する]
+-   [方法: エンティティを更新する][方法: エンティティを更新する]
+-   [方法: エンティティのグループを操作する][方法: エンティティのグループを操作する]
+-   [方法: エンティティを照会する][方法: エンティティを照会する]
+-   [方法: エンティティのセットを照会する][方法: エンティティのセットを照会する]
+-   [方法: エンティティ プロパティのサブセットを照会する][方法: エンティティ プロパティのサブセットを照会する]
+-   [方法: エンティティを削除する][方法: エンティティを削除する]
+-   [方法: テーブルを削除する][方法: テーブルを削除する]
+-   [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [howto-table-storage][]]
+[WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
 ## <span id="create-a-windows-azure-storage-account"></span></a> Azure のストレージ アカウントの作成
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <span id="create-a-ruby-application"></span></a>Ruby アプリケーションを作成する
 
 Ruby アプリケーションを作成します。手順については、
-「[Azure VM での Ruby on Rails Web アプリケーション][]」を参照してください。
+「[Azure VM での Ruby on Rails Web アプリケーション][Azure VM での Ruby on Rails Web アプリケーション]」を参照してください。
 
 ## <span id="configure-your-application-to-access-storage"></span></a>アプリケーションからストレージへのアクセスの構成
 
@@ -66,7 +66,7 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 これらの値を取得するには、次の手順を実行します。
 
-1.  [Azure の管理ポータル][]にログインします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]にログインします。
 
 2.  使用するストレージ アカウントを表示します。
 
@@ -162,9 +162,9 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 これで、テーブル ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   MSDN リファレンス: [Azure のデータの格納とアクセス][]
--   [Azure のストレージ チーム ブログ][]
--   GitHub の [Azure SDK for Ruby][] リポジトリ
+-   MSDN リファレンス: [Azure のデータの格納とアクセス][Azure のデータの格納とアクセス]
+-   [Azure のストレージ チーム ブログ][Azure のストレージ チーム ブログ]
+-   GitHub の [Azure SDK for Ruby][Azure SDK for Ruby] リポジトリ
 
   [次のステップ]: #next-steps
   [テーブル サービスとは]: #what-is
@@ -184,8 +184,8 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
   [方法: テーブルを削除する]: #how-to-delete-a-table
   [howto-table-storage]: ../includes/howto-table-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
-  [Azure VM での Ruby on Rails Web アプリケーション]: /en-us/develop/ruby/tutorials/web-app-with-linux-vm/
+  [Azure VM での Ruby on Rails Web アプリケーション]: /ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
   [Azure SDK for Ruby]: http://github.com/WindowsAzure/azure-sdk-for-ruby

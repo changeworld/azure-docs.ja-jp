@@ -1,6 +1,6 @@
 <properties linkid="scripting-center-index" urlDisplayName="index" pageTitle="How to Manage Origins in a Media Services Account" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="How to Manage Origins in a Media Services Account" authors="juliako"  solutions="" writer="juliako" manager="" editor=""  />
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="juliako"></tags>
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="juliako" />
 
 # <span id="managemediaservicesorigins"></span></a>Media Services アカウントでオリジンを管理する方法
 
@@ -8,7 +8,7 @@
 
 ## オリジンの追加と削除
 
-1.  [管理ポータル][]で、**[メディア サービス]** をクリックします。次に、メディア サービスの名前をクリックします。
+1.  [管理ポータル][管理ポータル]で、**[メディア サービス]** をクリックします。次に、メディア サービスの名前をクリックします。
 2.  [オリジン] ページを選択します。
 3.  ページの下部にある [追加] または [削除] をクリックします。既定のオリジンは削除できない点に注意してください。
 4.  [開始] をクリックしてオリジンを開始します。
@@ -28,7 +28,7 @@
 
     ![オリジンの構成](./media/media-services-manage-origins/media-services-origins-configure.png)
 
-    このページの構成は、1 つ以上の占有ユニットを持つオリジンのみに適用されます。オンデマンド ストリーミング占有ユニットを予約するには、[スケール] タブに移動します。占有ユニットの詳細については、「[メディア サービスの規模の設定方法][]」を参照してください。
+    このページの構成は、1 つ以上の占有ユニットを持つオリジンのみに適用されます。オンデマンド ストリーミング占有ユニットを予約するには、[スケール] タブに移動します。占有ユニットの詳細については、「[メディア サービスの規模の設定方法][メディア サービスの規模の設定方法]」を参照してください。
 
   [管理ポータル]: https://manage.windowsazure.com/
   [メディア サービスの規模の設定方法]: http://go.microsoft.com/fwlink/?LinkID=275847&clcid=0x409/

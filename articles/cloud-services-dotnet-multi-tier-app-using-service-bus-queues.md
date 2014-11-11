@@ -1,6 +1,6 @@
 <properties linkid="dev-net-e2e-multi-tier" urlDisplayName="Multi-Tier Application" pageTitle=".NET Multi-Tier Application - Azure Tutorial" metaKeywords="Azure Service Bus queue tutorial, Azure queue tutorial, Azure worker role tutorial, Azure .NET queue tutorial, Azure C# queue tutorial, Azure C# worker role tutorial" description="A tutorial that helps you develop a multi-tier app in Azure that uses Service Bus queues to communicate between tiers. Samples in .NET." metaCanonical="" services="cloud-services,service-bus" documentationCenter=".NET" title=".NET Multi-Tier Application Using Service Bus Queues" authors="sethm" solutions="" manager="timlt" editor="mattshel" />
 
-<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/15/2014" ms.author="sethm"></tags>
+<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/15/2014" ms.author="sethm" />
 
 # Service Bus キューを使用する .NET 多層アプリケーション
 
@@ -13,13 +13,13 @@ Azure 向けアプリケーションは、Visual Studio 2013 および無料の 
 -   Web ロールおよび Worker ロールを使用して Azure に多層アプリケーションを作成する方法
 -   Service Bus キューを使用して各層間で通信する方法
 
-[WACOM.INCLUDE [create-account-note][create-account-note]]
+[WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
 このチュートリアルでは、Azure のクラウド サービスで多層アプリケーションを構築して実行します。フロントエンドは ASP.NET MVC Web ロール、バックエンドは Worker ロールになります。同じ多層アプリケーションを作成するときに、クラウド サービスではなく Azure Web サイトに展開される Web プロジェクトとしてフロントエンドを実装することもできます。Azure Web サイトのフロントエンドの場合の手順については、「[次のステップ][次のステップ]」を参照してください。
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
-![][]
+![][0]
 
 **注:** Azure にもストレージ キュー機能が用意されています。Azure のストレージ キューと Service Bus キューの詳細については、「[Azure キューと Azure Service Bus キューの比較][Azure キューと Azure Service Bus キューの比較]」を参照してください。
 
@@ -378,7 +378,7 @@ Visual Studio サーバー エクスプローラーを使用しても名前空�
 
 ## <span class="short-header">構成マネージャー</span>クラウド構成マネージャー
 
-Azure は、Service Bus など、Azure サービス クライアントの新しいインスタンスを Microsoft のクラウド サービス全体で一貫した方法で作成できる一連のマネージ API をサポートしています。アプリケーションがホストされている場所 (内部設置型、Microsoft クラウド サービス、Web サイト、永続 VM ロールなど) に関係なく、この API を通じて、これらのクライアント (**CloudBlobClient**、**QueueClient**、**TopicClient** など) をインスタンス化することができます。また、API を使用することで、こうしたクライアントをインスタンス化するために必要な構成情報を取得でき、また、構成に変更を加える際も、呼び出し元のアプリケーションを展開し直さずに済みます。この API は [Microsoft.WindowsAzure.Configuration.CloudConfigurationManager][] クラスに存在します。API はクライアント側にも存在します。
+Azure は、Service Bus など、Azure サービス クライアントの新しいインスタンスを Microsoft のクラウド サービス全体で一貫した方法で作成できる一連のマネージ API をサポートしています。アプリケーションがホストされている場所 (内部設置型、Microsoft クラウド サービス、Web サイト、永続 VM ロールなど) に関係なく、この API を通じて、これらのクライアント (**CloudBlobClient**、**QueueClient**、**TopicClient** など) をインスタンス化することができます。また、API を使用することで、こうしたクライアントをインスタンス化するために必要な構成情報を取得でき、また、構成に変更を加える際も、呼び出し元のアプリケーションを展開し直さずに済みます。この API は [Microsoft.WindowsAzure.Configuration.CloudConfigurationManager][Microsoft.WindowsAzure.Configuration.CloudConfigurationManager] クラスに存在します。API はクライアント側にも存在します。
 
 ### Connection string
 
@@ -506,7 +506,7 @@ Azure Web サイトにフロンドエンドを展開する方法については�
 
   [create-account-note]: ../includes/create-account-note.md
   [次のステップ]: #nextsteps
-  []: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
+  [0]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
   [Azure キューと Azure Service Bus キューの比較]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh767287.aspx
   [1]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png
   [2]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-101.png
@@ -546,5 +546,3 @@ Azure Web サイトにフロンドエンドを展開する方法については�
   [サービス バスの利用方法に関するページ]: /ja-jp/documentation/services/service-bus/
   [サービス バス キューの使用方法]: /ja-jp/develop/net/how-to-guides/service-bus-queues/
   [ストレージ テーブル、キュー、および BLOB を使用する .NET 多層アプリケーション]: /ja-jp/develop/net/tutorials/multi-tier-web-site/1-overview/
-  [Azure Execution Models (Azure 実行モデル)]: http://www.windowsazure.com/ja-jp/develop/net/fundamentals/compute/
-  [Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションを Azure の Web サイトに展開する)]: http://www.windowsazure.com/ja-jp/develop/net/tutorials/get-started/

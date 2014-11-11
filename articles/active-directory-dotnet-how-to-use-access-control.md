@@ -1,6 +1,6 @@
 <properties linkid="dev-net-how-to-access-control" urlDisplayName="Access Control" pageTitle="How to use Access Control (.NET) - Azure feature guide" metaKeywords="Azure Access Control Service authentication C#" description="Learn how to use Access Control Service (ACS) in your Azure application to authenticate users when they try to gain access to a web app." metaCanonical="" services="active-directory" documentationCenter=".NET" title="How to Authenticate Web Users with Azure Active Directory Access Control" authors="mbaldwin, juneb" solutions="" manager="mbaldwin" editor="" />
 
-<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="mbaldwin, juneb"></tags>
+<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="mbaldwin, juneb" />
 
 # Azure Active Directory の Access Control で Web ユーザーを認証する方法
 
@@ -56,7 +56,7 @@ ACS はクレームベース ID のプリンシパルに基づいており、こ
 
 次の図は、Web アプリケーションで ACS 認証がどのように機能するかを示しています。
 
-![][]
+![][0]
 
 1.  クライアント (ここではブラウザー) が RP のページを要求します。
 2.  要求がまだ認証されていないので、RP は信頼している機関 (つまり ACS) にユーザーをリダイレクトします。
@@ -362,7 +362,7 @@ ACS と統合された Web アプリケーションを作成できました。�
   [ID プロバイダーを追加する]: #add-IP
   [参照トピック]: #whats-next
   [アクセス制御サービス 2.0 に関するページ]: http://go.microsoft.com/fwlink/?LinkID=212360
-  []: ./media/active-directory-dotnet-how-to-use-access-control/acs-01.png
+  [0]: ./media/active-directory-dotnet-how-to-use-access-control/acs-01.png
   [Identity and Access Tool のダウンロード ページ]: http://go.microsoft.com/fwlink/?LinkID=245849
   [Azure 管理ポータル]: http://manage.WindowsAzure.com
   [1]: ./media/active-directory-dotnet-how-to-use-access-control/acsCreateNamespace.png

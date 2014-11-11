@@ -1,6 +1,6 @@
 <properties linkid="dev-net-how-to-sendgrid-email-service" urlDisplayName="SendGrid Email Service" pageTitle="How to use the SendGrid email service (.NET) - Azure" metaKeywords="Azure SendGrid, Azure email service, Azure SendGrid .NET, Azure email .NET, Azure SendGrid C#, Azure email C#" description="Learn how send email with the SendGrid email service on Azure. Code samples written in C# and use the .NET API." metaCanonical="" services="" documentationCenter=".NET" title="How to Send Email Using SendGrid with Azure" authors="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork" solutions="" manager="carolz" editor="" />
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork"></tags>
+<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork" />
 
 # SendGrid を使用した Azure での電子メールの送信方法
 
@@ -15,19 +15,19 @@
 
 ## <a name="toc"></a>目次
 
-[SendGrid 電子メール サービスとは][]   
+[SendGrid 電子メール サービスとは][SendGrid 電子メール サービスとは]   
 
-[SendGrid 電子メール サービスとは][]   
-[SendGrid アカウントの作成][SendGrid アカウントの作成][]   
-[SendGrid .NET クラス ライブラリの参照][]   [SendGrid .NET クラス ライブラリの参照][]   
-[方法: 電子メールを作成する][方法: 電子メールを作成する][]   
-[方法: 電子メールを送信する][方法: 電子メールを送信する][]   
-[方法: 添付ファイルを追加する][方法: 添付ファイルを追加する][]   
-[方法: フィルターを使用してフッター、追跡、および分析を有効にする][]   
-[方法: フィルターを使用してフッター、追跡、および分析を有効にする][]   
-[方法: その他の SendGrid サービスを使用する][]   
-[方法: その他の SendGrid サービスを使用する][]   
-[次のステップ][次のステップ][]   
+[SendGrid 電子メール サービスとは][SendGrid 電子メール サービスとは]   
+[SendGrid アカウントの作成][SendGrid アカウントの作成][SendGrid アカウントの作成]   
+[SendGrid .NET クラス ライブラリの参照][SendGrid .NET クラス ライブラリの参照]   [SendGrid .NET クラス ライブラリの参照][SendGrid .NET クラス ライブラリの参照]   
+[方法: 電子メールを作成する][方法: 電子メールを作成する][方法: 電子メールを作成する]   
+[方法: 電子メールを送信する][方法: 電子メールを送信する][方法: 電子メールを送信する]   
+[方法: 添付ファイルを追加する][方法: 添付ファイルを追加する][方法: 添付ファイルを追加する]   
+[方法: フィルターを使用してフッター、追跡、および分析を有効にする][方法: フィルターを使用してフッター、追跡、および分析を有効にする]   
+[方法: フィルターを使用してフッター、追跡、および分析を有効にする][方法: フィルターを使用してフッター、追跡、および分析を有効にする]   
+[方法: その他の SendGrid サービスを使用する][方法: その他の SendGrid サービスを使用する]   
+[方法: その他の SendGrid サービスを使用する][方法: その他の SendGrid サービスを使用する]   
+[次のステップ][次のステップ][次のステップ]   
 
 ## <a name="whatis"></a><span class="short-header">SendGrid 電子メール サービスとは</span>
 
@@ -45,7 +45,7 @@ SendGrid の一般的な使用シナリオを次に示します。
 
 ## <a name="createaccount"></a><span class="short-header">SendGrid アカウントを作成する</span>
 
-[WACOM.INCLUDE [sendgrid-sign-up][sendgrid-sign-up]]
+[WACOM.INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
 ## <a name="reference"></a><span class="short-header">SendGrid .NET クラス ライブラリの参照</span>SendGrid .NET クラス ライブラリの参照
 

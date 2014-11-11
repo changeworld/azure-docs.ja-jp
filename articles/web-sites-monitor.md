@@ -1,6 +1,6 @@
 <properties linkid="manage-services-how-to-monitor-websites" urlDisplayName="How to monitor" pageTitle="How to monitor websites - Azure service management" metaKeywords="Azure monitoring web sites, Azure Management Portal Monitor, Azure monitoring" description="Learn how to monitor Azure websites by using the Monitor page in the Management Portal." metaCanonical="" services="web-sites" documentationCenter="" title="How to Monitor Websites" authors="cephalin" solutions="" manager="wpickett" editor="mollybos" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin" />
 
 # <a name="howtomonitor"></a>Web サイトの監視方法
 
@@ -119,48 +119,31 @@ Azure のストレージ アカウントの詳細については、「[ストレ
 <div class="dev-callout">
 
 <b>注</b>
-<br/><br/>
-
-テーブルまたは BLOB ストレージに保存できるのは、.NET アプリケーションによって生成されたログ情報のみです。
-
-</div>
+<p>テーブルまたは BLOB ストレージに保存できるのは、.NET アプリケーションによって生成されたログ情報のみです。</p> </div>
 
 アプリケーションのログ情報をストレージに記録した場合、ストレージ クライアントを使用してログ データを表示する必要があります。したがって、この方法は、Azure のテーブルや BLOB ストレージからデータを直接読み込んで処理するサービスまたはアプリケーションに適しています。ファイル システムにログを記録するとファイルが生成され、そのファイルを、このセクションで後述する FTP などのユーティリティを使用してローカル コンピューターにダウンロードできます。
 
 <div class="dev-callout">
 
-<b>注</b>
-<br/><br/>
+	<b>注</b>
+	<p><b>アプリケーション診断 (ファイル システム)</b>、<b>アプリケーション診断 (テーブル ストレージ)</b>、および<b>アプリケーション診断 (BLOB ストレージ)</b> は同時に有効にできます。また、それぞれ個別にログ レベルを設定できます。たとえば、エラーと警告をストレージに長期間保存すると同時に、アプリケーション コードを実装した後、問題解決に役立つ詳細ログをファイル システムに記録できます。</p></div>
 
-<b>アプリケーション診断 (ファイル システム)</b>、<b>アプリケーション診断 (テーブル ストレージ)</b>、および<b>アプリケーション診断 (BLOB ストレージ)</b> は同時に有効にできます。また、それぞれ個別にログ レベルを設定できます。たとえば、エラーと警告をストレージに長期間保存すると同時に、アプリケーション コードを実装した後、問題解決に役立つ詳細ログをファイル システムに記録できます。
+<div class="dev-callout">
 
-</div>
+	<b>注</b>
+	<p>診断を有効にするには、Azure PowerShell から <b>Set-AzureWebsite</b> コマンドレットを使用する方法もあります。</p>
+    <p>Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法][Azure PowerShell の使用方法]」を参照してください。</p></div>
 
 <div class="dev-callout">
 
 <b>注</b>
-<br/><br/>
-診断を有効にするには、Azure PowerShell から <b>Set-AzureWebsite</b> コマンドレットを使用する方法もあります。
-
-Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法][Azure PowerShell の使用方法]」を参照してください。
-
-</div>
-
-<div class="dev-callout">
-
-<b>注</b>
-<br/><br/>
-アプリケーション ログ記録は、アプリケーションが生成するログ情報に依存しています。ログ情報を生成する方法およびログ情報の形式は、アプリケーションの開発言語によって異なります。各言語でのアプリケーション ログ記録の使用方法については、次の記事を参照してください。
+<p>アプリケーション ログ記録は、アプリケーションが生成するログ情報に依存しています。ログ情報を生成する方法およびログ情報の形式は、アプリケーションの開発言語によって異なります。各言語でのアプリケーション ログ記録の使用方法については、次の記事を参照してください。</p>
 
 <ul>
-<li><b>.NET</b> <a href="/ja-jp/develop/net/common-tasks/diagnostics-logging-and-instrumentation/">Enable diagnostic logging for Azure Websites (Azure Web サイトの診断ログを有効にする)</a></li>
-<li><b>Node.js</b> <a href="/ja-jp/develop/nodejs/how-to-guides/Debug-Website/">How to debug a Node.js application in Azure Websites (Azure Web サイトでの Node.js アプリケーションのデバッグ方法)</a></li>
+<li><b>.NET</b> - <a href="/ja-jp/develop/net/common-tasks/diagnostics-logging-and-instrumentation/">Enable diagnostic logging for Azure Websites (Azure Web サイトの診断ログを有効にする)</a></li>
+<li><b>Node.js</b> - <a href="/ja-jp/develop/nodejs/how-to-guides/Debug-Website/">How to debug a Node.js application in Azure Websites (Azure Web サイトでの Node.js アプリケーションのデバッグ方法)</a></li>
 </ul>
 <p>テーブルまたは BLOB ストレージに保存できるのは、.NET アプリケーションによって生成されたログ情報のみです。</p>
-
-
-テーブルまたは BLOB ストレージに保存できるのは、.NET アプリケーションによって生成されたログ情報のみです。
-
 </div>
 
 #### サイト診断
@@ -281,7 +264,7 @@ Web サイトに対するログ記録またはトレース、あるいはその�
 
 **ログ ファイルの種類: 失敗した要求トレース**
 
--   場所: /LogFiles/W3SVC#\#\#\#\#\#\#\#\#/。このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。
+-   場所: /LogFiles/W3SVC\#\#\#\#\#\#\#\#\#/。このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。
 
 -   ファイルの閲覧に使用するツール: Internet Explorer
 
@@ -342,16 +325,9 @@ Web サイトのエンドポイントの監視の詳細については、次の�
   [方法: Web サイトの診断の構成とログのダウンロード]: #howtoconfigdiagnostics
   [方法: Web エンドポイントの状態の監視]: #webendpointstatus
   [Azure の管理ポータル]: http://manage.windowsazure.com/
-  [方法: Receive Alert Notifications and Manage Alert Rules in Azure (Azure でアラート通知を受け取り、アラート ルールを管理する)]: http://go.microsoft.com/fwlink/?LinkId=309356
   [Azure での仮想マシンとクラウド サービスのサイズに関するページ]: http://go.microsoft.com/fwlink/?LinkID=309169
   [ストレージ アカウントの管理方法]: https://www.windowsazure.com/ja-jp/manage/services/storage/how-to-manage-a-storage-account/
   [Azure PowerShell の使用方法]: http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/
-  [Enable diagnostic logging for Azure Websites (Azure Web サイトの診断ログを有効にする)]: /ja-jp/develop/net/common-tasks/diagnostics-logging-and-instrumentation/
-  [How to debug a Node.js application in Azure Websites (Azure Web サイトでの Node.js アプリケーションのデバッグ方法)]: /ja-jp/develop/nodejs/how-to-guides/Debug-Website/
   [FileZilla]: http://go.microsoft.com/fwlink/?LinkId=247914
-  [Azure コマンドレットの概要]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554332.aspx
-  [How to use the Azure Command-Line Tools (Azure コマンド ライン ツールの使用方法)]: http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/command-line-tools/
   [W3C 拡張ログ形式]: http://go.microsoft.com/fwlink/?LinkID=90561
   []: http://contoso.cloudapp.net
-  [Scott Guthrie introduces Azure Web Sites and sets up Endpoint Monitoring (Scott Guthrie による Azure の Web サイトの紹介とエンドポイント監視の設定)]: http://www.windowsazure.com/ja-jp/documentation/videos/websites-and-endpoint-monitoring-scottgu/
-  [Keeping Azure Web Sites up plus Endpoint Monitoring with Stefan Schackow (Azure の Web サイトの保持とエンドポイントの監視 - Stefan Schackow 共演)]: http://www.windowsazure.com/ja-jp/documentation/videos/azure-web-sites-endpoint-monitoring-and-staying-up/

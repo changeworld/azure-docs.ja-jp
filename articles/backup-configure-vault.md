@@ -1,6 +1,6 @@
 <properties linkid="manage-services-recovery-configure-backup-vault" urlDisplayName="Configure a Backup Vault" pageTitle="Configure Azure Recovery Services to quickly and easily back-up Windows Server" metaKeywords="disaster recovery" description="Use this tutorial to learn how to use the Backup service in Microsoft's Azure cloud offering to back up Windows Server to the cloud." metaCanonical="" services="recovery-services" documentationCenter="" title="Configure Azure Backup to quickly and easily back-up Windows Server" authors="raynew" solutions="" manager="johndaw" editor="tysonn" />
 
-<tags ms.service="site-recovery" ms.workload="backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="raynew"></tags>
+<tags ms.service="site-recovery" ms.workload="backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="raynew" />
 
 # <span id="configure-a-backup-vault-tutorial"></span></a>Windows Server のバックアップをすばやく簡単に行うための Azure のバックアップの構成
 
@@ -91,7 +91,6 @@ Azure に Windows Server のファイルとデータをバックアップする�
 
 -   [Azure のバックアップ フォーラム][Azure のバックアップ フォーラム]にアクセスします。
 
-  [Azure の無料評価版サイト]: /ja-jp/pricing/free-trial/
   [管理ポータル]: https://manage.windowsazure.com
   [新しいバックアップ コンテナー]: http://i.imgur.com/506c7ch.png
   [バックアップ資格情報コンテナーの作成]: http://i.imgur.com/grtLcKM.png

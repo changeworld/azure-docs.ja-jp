@@ -1,6 +1,6 @@
 <properties linkid="script-xplat-intro" urlDisplayName="Azure Cross-Platform Command-Line Interface" pageTitle="The Azure Cross-Platform Command-Line Interface" title="The Azure Cross-Platform Command-Line Interface" metaKeywords="Azure cross-platform command-line interface, Azure command-line, azure command-line, azure cli" description="Install and configure the Azure Cross-Platform Command-Line Interface to manage Azure Services" metaCanonical="http://www.windowsazure.com/ja-jp/script/xplat-cli-intro" umbracoNaviHide="0" disqusComments="1" editor="mollybos" manager="paulettm" documentationCenter="" solutions="" authors="carolz" services="" />
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="command-line-interface" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="carolz"></tags>
+<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="command-line-interface" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="carolz" />
 
 # Azure クロス プラットフォーム コマンド ライン インターフェイスのインストールと構成
 
@@ -384,8 +384,6 @@ xplat-cli では、エラー情報を STDERR にログ出力しますが、エ�
 
 -   Azure の詳細については、[][2]<http://azure.microsoft.com/></a> を参照してください。
 
-  [PowerShell]: /ja-jp/manage/install-and-configure-windows-powershell/ "PowerShell"
-  [クロス プラットフォーム CLI]: /ja-jp/manage/install-and-configure-cli/ "クロス プラットフォーム CLI"
   []: https://github.com/WindowsAzure/azure-sdk-tools-xplat
   [方法: Azure クロス プラットフォーム コマンド ライン インターフェイスをインストールする]: #install
   [方法: Azure サブスクリプションに接続する]: #configure
@@ -397,7 +395,6 @@ xplat-cli では、エラー情報を STDERR にログ出力しますが、エ�
   [OS X インストーラー]: http://go.microsoft.com/fwlink/?LinkId=252249
   [Azure の管理ポータル]: https://manage.windowsazure.com
   [Microsoft Azure への組織としてのサインアップ]: http://www.windowsazure.com/ja-jp/documentation/articles/sign-up-organization/
-  [What's the difference between account-based authentication and certificate-based authentication (アカウント ベースの認証と証明書ベースの認証の違い)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh531793.aspx#BKMK_AccountVCert
   [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A7171371E
   [リソース マネージャーでの Azure クロスプラットフォーム コマンドライン インターフェイスの使用]: /ja-jp/documentation/articles/xplat-cli-azure-resource-manager/
   [Advanced Bash-Scripting Guide]: http://tldp.org/LDP/abs/html/
@@ -405,5 +402,5 @@ xplat-cli では、エラー情報を STDERR にログ出力しますが、エ�
   [「Command-line reference A-Z」]: http://technet.microsoft.com/ja-jp/library/bb490890.aspx
   [jsawk]: https://github.com/micha/jsawk
   [jq]: http://stedolan.github.io/jq/
-  [Azure フォーラム]: http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home
+  [Azure フォーラム]: http://social.msdn.microsoft.com/Forums/windowsazure/ja-jp/home
   [2]: http://azure.microsoft.com

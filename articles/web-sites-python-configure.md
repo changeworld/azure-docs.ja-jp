@@ -1,6 +1,6 @@
 <properties linkid="develop-python-tutorials-web-sites-configuration" urlDisplayName="Configuring Python with Azure Websites" pageTitle="Configuring Python with Azure Websites" metaKeywords="" description="This tutorial describes options for authoring and configuring a basic Web server Gateway Interface (WSGI) compliant Python application on Azure Websites." metaCanonical="" services="web-sites" documentationCenter="Python" title="Configuring Python with Azure Websites" authors="huvalo" solutions="" manager="" editor="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo" />
 
 # Azure Websites での Python の構成
 
@@ -21,7 +21,7 @@ WSGI は、[PEP 3333][PEP 3333] で規定された Python の標準です。Web 
 
 簡単に言えば、既存の Web サイトがない場合、Azure 管理ポータルから自分で作成することができます。[Web サイト] 機能を選択し、目的の Web サイトの URL を指定して、[簡易作成] オプションを使用します。
 
-![][]
+![][0]
 
 ## Git 発行
 
@@ -131,10 +131,10 @@ Web サイトにアクセスして正しく構成されたかをテストして�
 
 ![][5]
 
-  []: http://www.windowsazure.com/ja-jp/develop/python/tutorials/web-sites-with-django
+  [0]: http://www.windowsazure.com/ja-jp/develop/python/tutorials/web-sites-with-django
   [PEP 3333]: http://www.python.org/dev/peps/pep-3333/
   [1]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-create-websites
-  []: ./media/web-sites-python-configure/configure-python-create-website.png
+  [0]: ./media/web-sites-python-configure/configure-python-create-website.png
   [2]: ./media/web-sites-python-configure/configure-python-git.png
   [3]: ./media/web-sites-python-configure/configure-python-handler-mapping.png
   [4]: ./media/web-sites-python-configure/configure-python-app-settings.png

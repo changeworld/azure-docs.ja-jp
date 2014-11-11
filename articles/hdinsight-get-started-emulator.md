@@ -1,16 +1,16 @@
 <properties linkid="manage-services-hdinsight-get-started-hdinsight" urlDisplayName="Get Started" pageTitle="Get started with the HDInsight Emulator | Azure" metaKeywords="hdinsight, Azure hdinsight, hdinsight azure, get started hdinsight, emulator, hdinsight emulator" description="Learn how to use HDInsight Emulator for Azure." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" title="Get started with the HDInsight Emulator" author="jgao" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="" />
 
 # HDInsight Emulator の概要
 
-このチュートリアルでは、Microsoft HDInsight Emulator for Azure (旧 HDInsight サーバー開発者プレビュー) における Hadoop クラスターの概要を紹介します。HDInsight Emulator には、Azure の HDInsight と同じ Hadoop エコシステムのコンポーネントが付属します。デプロイされたバージョンの情報も含めて、詳細については、「[Azure HDInsight でサポートされている Hadoop のバージョン][]」を参照してください。
+このチュートリアルでは、Microsoft HDInsight Emulator for Azure (旧 HDInsight サーバー開発者プレビュー) における Hadoop クラスターの概要を紹介します。HDInsight Emulator には、Azure の HDInsight と同じ Hadoop エコシステムのコンポーネントが付属します。デプロイされたバージョンの情報も含めて、詳細については、「[Azure HDInsight でサポートされている Hadoop のバージョン][Azure HDInsight でサポートされている Hadoop のバージョン]」を参照してください。
 
 HDInsight Emulator は、Azure HDInsight 用のローカル開発環境を提供します。Hadoop に慣れている場合は、HDFS を使用して Emulator を使い始めることができます。しかし、HDInsight では、既定のファイル システムが Azure BLOB ストレージ (WASB: Azure Storage - BLOB) であるため、最終的には WASB を使用してジョブを開発することになります。Azure ストレージ エミュレーターを使用して WASB に対して開発を開始できます。ここでは、おそらくデータの一部しか使いません (HDInsight Emulator では構成の変更が不要で、ストレージ アカウント名を変えるだけで済みます)。次に、Windows Azure のストレージに対してローカルでジョブをテストします。今度もデータの一部だけを使用します (HDInsight Emulator で構成を変更する必要があります)。これで、ジョブの計算部分を HDInsight に移動して、運用データに対してジョブを実行する準備が整いました。
 
 > [WACOM.NOTE] HDInsight Emulator では 1 つのノードでのデプロイのみが使用できます。
 
-HDInsight を使用したチュートリアルについては、「[Azure の HDInsight の概要][]」を参照してください。
+HDInsight を使用したチュートリアルについては、「[Azure の HDInsight の概要][Azure の HDInsight の概要]」を参照してください。
 
 **前提条件**
 このチュートリアルを開始する前に、以下の条件を満たしている必要があります。
@@ -21,16 +21,16 @@ HDInsight を使用したチュートリアルについては、「[Azure の HD
     -   Windows Server 2008 R2 Service Pack 1
     -   Windows 8
     -   Windows Server 2012
--   Azure PowerShell のインストールおよび構成。手順については、[Azure PowerShell のインストールおよび構成に関するページ][]を参照してください。
+-   Azure PowerShell のインストールおよび構成。手順については、[Azure PowerShell のインストールおよび構成に関するページ][Azure PowerShell のインストールおよび構成に関するページ]を参照してください。
 
 ## このチュートリアルの内容
 
--   [HDInsight Emulator のインストール][]
--   [ワード カウント サンプルの実行][]
--   [入門サンプルの実行][]
--   [Azure BLOB ストレージへの接続][]
--   [HDInsight PowerShell の実行][]
--   [次のステップ][]
+-   [HDInsight Emulator のインストール][HDInsight Emulator のインストール]
+-   [ワード カウント サンプルの実行][ワード カウント サンプルの実行]
+-   [入門サンプルの実行][入門サンプルの実行]
+-   [Azure BLOB ストレージへの接続][Azure BLOB ストレージへの接続]
+-   [HDInsight PowerShell の実行][HDInsight PowerShell の実行]
+-   [次のステップ][次のステップ]
 
 ## <a name="install"></a>HDInsight Emulator のインストール
 
@@ -47,7 +47,7 @@ Microsoft HDInsight Emulator は、Microsoft Web Platform Installer を使用し
 
 **HDInsight Emulator をインストールするには**
 
-1.  Internet Explorer を開き、[Microsoft HDInsight Emulator for Azure インストール ページ][]にアクセスします。
+1.  Internet Explorer を開き、[Microsoft HDInsight Emulator for Azure インストール ページ][Microsoft HDInsight Emulator for Azure インストール ページ]にアクセスします。
 2.  **[今すぐインストール]** をクリックします。
 3.  ページ下部に HDINSIGHT.exe のインストールに関するメッセージが表示されたら、**[実行]** をクリックします。
 4.  **[ユーザー アカウント制御]** ウィンドウで **[はい]** をクリックして、インストールを完了します。[Web Platform Installer 4.6] ウィンドウが表示されます。
@@ -66,9 +66,9 @@ Microsoft HDInsight Emulator は、Microsoft Web Platform Installer を使用し
 
     インストールが終わると、いくつかのローカル サービスもインストールされます。[サービス] ウィンドウのスクリーンショットは次のようになります。
 
-    ![HDI.Emulator.Services][]
+    ![HDI.Emulator.Services][HDI.Emulator.Services]
 
-    HDInsight Server のインストールと実行に関する既知の問題については、[HDInsight Emulator のリリース ノート][]を参照してください。インストール ログは **C:\\HadoopFeaturePackSetup\\HadoopFeaturePackSetupTools\\gettingStarted.winpkg.install.log** にあります。
+    HDInsight Server のインストールと実行に関する既知の問題については、[HDInsight Emulator のリリース ノート][HDInsight Emulator のリリース ノート]を参照してください。インストール ログは **C:\\HadoopFeaturePackSetup\\HadoopFeaturePackSetupTools\\gettingStarted.winpkg.install.log** にあります。
 
 ## <a name="runwordcount"></a>ワード カウント MapReduce ジョブの実行
 
@@ -80,7 +80,7 @@ jar コマンドの構文は次のとおりです。
 
     hadoop jar <jar> [mainClass] args...
 
-また、いくつかの fs コマンドも使用します。Hadoop コマンドの詳細については、[Hadoop コマンド マニュアル][]を参照してください。
+また、いくつかの fs コマンドも使用します。Hadoop コマンドの詳細については、[Hadoop コマンド マニュアル][Hadoop コマンド マニュアル]を参照してください。
 
 ワード カウント MapReduce ジョブは、入力フォルダーと出力フォルダーの 2 つの引数をとります。*hdfs://localhost/user/HDIUser* を入力フォルダーとして、*hdfs://localhost/user/HDIUser/WordCount\_Output* を出力ディレクトリとして使用します。出力フォルダーは既存のフォルダーにすることはできません。既存のフォルダーの場合、MapReduce ジョブは失敗します。2 回目に MapReduce ジョブを実行する場合は、別の出力フォルダーを指定するか、既存の出力フォルダーを削除します。
 
@@ -139,16 +139,16 @@ jar コマンドの構文は次のとおりです。
 
 HDInsight Emulator をインストールすると、Windows 上の Apache Hadoop ベースのサービスについて新しいユーザーがすばやく学習できるサンプルもインストールされます。これらのサンプルは、通常、ビッグ データ セットを処理する際に必要なタスクを対象としています。サンプルを試すと、MapReduce プログラミング モデルとそのエコシステムに関連した概念に慣れることができます。
 
-サンプルは、処理する IIS W3C ログ データ シナリオを軸として整理されています。データ生成ツールが用意されていて、さまざまなサイズのデータ セットを HDFS または WASB (Azure BLOB ストレージ) に作成しインポートできます。詳細については、「[HDInsight での Azure BLOB ストレージの使用][]」を参照してください。その後、PowerShell スクリプトによって生成されたデータのページ上で MapReduce、Pig または Hive ジョブを実行できます。使用する Pig スクリプトと Hive スクリプトはどちらも、コンパイルすると MapReduce プログラムになります。ユーザーは一連のジョブを実行して、これらの異なる技術を使用する効果と、処理タスクの実行にデータ サイズが及ぼす影響を自分の目で確認することができます。
+サンプルは、処理する IIS W3C ログ データ シナリオを軸として整理されています。データ生成ツールが用意されていて、さまざまなサイズのデータ セットを HDFS または WASB (Azure BLOB ストレージ) に作成しインポートできます。詳細については、「[HDInsight での Azure BLOB ストレージの使用][HDInsight での Azure BLOB ストレージの使用]」を参照してください。その後、PowerShell スクリプトによって生成されたデータのページ上で MapReduce、Pig または Hive ジョブを実行できます。使用する Pig スクリプトと Hive スクリプトはどちらも、コンパイルすると MapReduce プログラムになります。ユーザーは一連のジョブを実行して、これらの異なる技術を使用する効果と、処理タスクの実行にデータ サイズが及ぼす影響を自分の目で確認することができます。
 
 ### このセクションの内容
 
--   [IIS W3C ログ データのシナリオ][]
--   [サンプル W3C ログ データの読み込み][]
--   [Java MapReduce ジョブの実行][]
--   [Hive ジョブの実行][]
--   [Pig ジョブの実行][]
--   [サンプルのリビルド][]
+-   [IIS W3C ログ データのシナリオ][IIS W3C ログ データのシナリオ]
+-   [サンプル W3C ログ データの読み込み][サンプル W3C ログ データの読み込み]
+-   [Java MapReduce ジョブの実行][Java MapReduce ジョブの実行]
+-   [Hive ジョブの実行][Hive ジョブの実行]
+-   [Pig ジョブの実行][Pig ジョブの実行]
+-   [サンプルのリビルド][サンプルのリビルド]
 
 ### <a name="scenarios"></a> IIS W3C ログ データのシナリオ
 
@@ -175,7 +175,7 @@ PowerShell スクリプトの importdata.ps1 を使用して、データを生�
 
         powershell -File importdata.ps1 w3c -ExecutionPolicy unrestricted 
 
-    代わりに WASB にデータを読み込む場合は、[Azure BLOB ストレージへの接続][]を参照してください。
+    代わりに WASB にデータを読み込む場合は、[Azure BLOB ストレージへの接続][Azure BLOB ストレージへの接続]を参照してください。
 
 4.  Hadoop コマンド ラインから次のコマンドを実行して、HDFS にインポートしたファイルの一覧を表示します。
 
@@ -395,7 +395,7 @@ Pig スクリプトはコンパイルすると MapReduce ジョブになり、�
 
 ## <a name="blobstorage"></a>Azure BLOB ストレージへの接続
 
-Azure HDInsight は、既定のファイル システムとして Azure BLOB ストレージを使用します。詳細については、「[HDInsight での Azure BLOB ストレージの使用][]」を参照してください。
+Azure HDInsight は、既定のファイル システムとして Azure BLOB ストレージを使用します。詳細については、「[HDInsight での Azure BLOB ストレージの使用][HDInsight での Azure BLOB ストレージの使用]」を参照してください。
 
 ローカル ストレージの代わりに Azure BLOB ストレージを使用して、HDInsight Emulator でローカル クラスターを構成することができます。このセクションでは次の項目を取り上げます。
 
@@ -405,7 +405,7 @@ Azure HDInsight は、既定のファイル システムとして Azure BLOB ス
 
 ### ストレージ エミュレーターへの接続
 
-Azure ストレージ エミュレーターには [Azure SDK for .NET][] が付属しています。ストレージ エミュレーターは自動的に開始されることはありません。手動で開始する必要があります。アプリケーション名は *Azure ストレージ エミュレーター*です。エミュレーターを開始または終了するには、Windows システム トレイにある青色の [Azure] アイコンを右クリックし、[Show Storage Emulator UI] (ストレージ エミュレーター UI の表示) をクリックします。
+Azure ストレージ エミュレーターには [Azure SDK for .NET][Azure SDK for .NET] が付属しています。ストレージ エミュレーターは自動的に開始されることはありません。手動で開始する必要があります。アプリケーション名は *Azure ストレージ エミュレーター*です。エミュレーターを開始または終了するには、Windows システム トレイにある青色の [Azure] アイコンを右クリックし、[Show Storage Emulator UI] (ストレージ エミュレーター UI の表示) をクリックします。
 
 > [WACOM.NOTE] ストレージ エミュレーターを開始すると、次のようなエラー メッセージが表示されることがあります。
 
@@ -433,11 +433,11 @@ Azure ストレージ エミュレーターには [Azure SDK for .NET][] が付�
 
 ### Azure BLOB ストレージへの接続
 
-ストレージ アカウントの作成方法については、「[ストレージ アカウントの作成方法][]」を参照してください。
+ストレージ アカウントの作成方法については、「[ストレージ アカウントの作成方法][ストレージ アカウントの作成方法]」を参照してください。
 
 **コンテナーを作成するには**
 
-1.  [管理ポータル][]にサインインします。
+1.  [管理ポータル][管理ポータル]にサインインします。
 2.  左側の **[ストレージ]** をクリックします。サブスクリプションの下にストレージ アカウントの一覧が表示されます。
 3.  コンテナーを作成するストレージ アカウントを一覧からクリックします。
 4.  ページの上部にある **[コンテナー]** をクリックします。
@@ -549,17 +549,17 @@ Hadoop ジョブを送信する例を次に示します。
 
 Get-Credential を呼び出すと入力画面が表示されます。ユーザー名として **hadoop** を使用する必要があります。パスワードは任意の文字列でかまいません。クラスター名は常に **<http://localhost:50111>** です。
 
-Hadoop ジョブの送信方法の詳細については、「[プログラムによる Hadoop ジョブの送信][]」を参照してください。HDInsight PowerShell コマンドレットの詳細については、「[HDInsight cmdlet reference (HDInsight コマンドレット リファレンス)][]」を参照してください。
+Hadoop ジョブの送信方法の詳細については、「[プログラムによる Hadoop ジョブの送信][プログラムによる Hadoop ジョブの送信]」を参照してください。HDInsight PowerShell コマンドレットの詳細については、「[HDInsight cmdlet reference (HDInsight コマンドレット リファレンス)][HDInsight cmdlet reference (HDInsight コマンドレット リファレンス)]」を参照してください。
 
 ## <a name="nextsteps"></a>次のステップ
 
 このチュートリアルでは、HDInsight Emulator をインストールして、Hadoop ジョブをいくつか実行しました。詳細については、次の記事を参照してください。
 
--   [Azure の HDInsight の概要][]
--   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][]
--   [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発][]
+-   [Azure の HDInsight の概要][Azure の HDInsight の概要]
+-   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]
+-   [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発][HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発]
 -   [HDInsight Emulator リリース ノート][HDInsight Emulator のリリース ノート]
--   [HDInsight について議論する MSDN フォーラム][]
+-   [HDInsight について議論する MSDN フォーラム][HDInsight について議論する MSDN フォーラム]
 
   [Azure HDInsight でサポートされている Hadoop のバージョン]: ../hdinsight-component-versioning/
   [Azure の HDInsight の概要]: ../hdinsight-get-started/
@@ -581,11 +581,9 @@ Hadoop ジョブの送信方法の詳細については、「[プログラムに
   [Hive ジョブの実行]: #hive
   [Pig ジョブの実行]: #pig
   [サンプルのリビルド]: #rebuild
-  [Azure SDK for .NET]: http://azure.microsoft.com/en-us/downloads/
+  [Azure SDK for .NET]: http://azure.microsoft.com/ja-jp/downloads/
   [ストレージ アカウントの作成方法]: ../storage-create-storage-account/
   [管理ポータル]: https://manage.windowsazure.com/
   [プログラムによる Hadoop ジョブの送信]: ../hdinsight-submit-hadoop-jobs-programmatically/
-  [HDInsight cmdlet reference (HDInsight コマンドレット リファレンス)]: http://msdn.microsoft.com/en-us/library/windowsazure/dn479228.aspx
-  [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]: ../hdinsight-develop-deploy-java-mapreduce/
   [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
-  [HDInsight について議論する MSDN フォーラム]: http://social.msdn.microsoft.com/Forums/en-US/hdinsight
+  [HDInsight について議論する MSDN フォーラム]: http://social.msdn.microsoft.com/Forums/ja-jp/hdinsight

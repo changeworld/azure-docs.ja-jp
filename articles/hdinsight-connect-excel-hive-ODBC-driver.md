@@ -1,31 +1,31 @@
 <properties linkid="manage-services-hdinsight-connect-excel-with-hive-ODBC" urlDisplayName="Connect Excel to HDInsight" pageTitle="Connect Excel to Hadoop with the Hive ODBC Driver | Azure" metaKeywords="" description="Learn how to set up and use the Microsoft Hive ODBC driver for Excel to query data in an HDInsight cluster." metaCanonical="" services="hdinsight" documentationCenter="" title="Connect Excel to Hadoop with the Microsoft Hive ODBC Driver" authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev" />
 
 # Microsoft Hive ODBC ドライバーを使用した Excel から Hadoop への接続
 
 Microsoft のビッグ データ ソリューションの大きな特長の 1 つは、Azure HDInsight を使用して展開した Apache Hadoop クラスターに Microsoft Business Intelligence (BI) コンポーネントを統合できることです。たとえば、Microsoft Hive Open Database Connectivity (ODBC) ドライバーを使用すれば、HDInsight で Hadoop クラスターの Hive データ ウェアハウスに Excel を接続できます。
 
-また、Microsoft Power Query for Excel アドインを使用して Excel から HDInsight クラスターや、その他の (HDInsight 以外の) Hadoop クラスターなどのデータ ソースを接続することもできます。Power Query のインストール方法と使用方法については、「[Power Query を使用した Excel から HDInsight への接続][]」を参照してください。
+また、Microsoft Power Query for Excel アドインを使用して Excel から HDInsight クラスターや、その他の (HDInsight 以外の) Hadoop クラスターなどのデータ ソースを接続することもできます。Power Query のインストール方法と使用方法については、「[Power Query を使用した Excel から HDInsight への接続][Power Query を使用した Excel から HDInsight への接続]」を参照してください。
 
 **前提条件**:
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
--   HDInsight クラスター。その構成方法については、「[Azure HDInsight の概要][]」を参照してください。
+-   HDInsight クラスター。その構成方法については、「[Azure HDInsight の概要][Azure HDInsight の概要]」を参照してください。
 -   Windows 8、Windows 7、Windows Server 2012、Windows Server 2008 R2 のいずれかを実行しているコンピューターが必要です。
 -   Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone、Office 2010 Professional Plus のいずれかが必要です。
 
 ## この記事の内容
 
-1.  [Microsoft Hive ODBC ドライバーのインストール][]
-2.  [Hive ODBC データ ソースの作成][]
-3.  [HDInsight クラスターから Excel へのデータのインポート][]
-4.  [次のステップ][]
+1.  [Microsoft Hive ODBC ドライバーのインストール][Microsoft Hive ODBC ドライバーのインストール]
+2.  [Hive ODBC データ ソースの作成][Hive ODBC データ ソースの作成]
+3.  [HDInsight クラスターから Excel へのデータのインポート][HDInsight クラスターから Excel へのデータのインポート]
+4.  [次のステップ][次のステップ]
 
 ## <span id="InstallHiveODBCDriver"></span></a>Microsoft Hive ODBC ドライバーのインストール
 
-Microsoft Hive ODBC ドライバーは、[ダウンロード センター][]からダウンロードしてインストールします。
+Microsoft Hive ODBC ドライバーは、[ダウンロード センター][ダウンロード センター]からダウンロードしてインストールします。
 
 このドライバーは Windows 7、Windows 8、Windows Server 2008 R2、Windows Server 2012 のいずれかの 32 ビットまたは 64 ビット バージョンにインストールすることができ、これによって Azure HDInsight (バージョン 1.6 以降) および Azure HDInsight Emulator (v.1.0.0.0 以降) への接続が許可されます。ODBC ドライバーを使用するアプリケーションのバージョンに合致したバージョンをインストールする必要があります。このチュートリアルでは、Office Excel のドライバーが使用されます。
 
@@ -36,7 +36,7 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][]か�
 1.  Windows 8 で、Windows キーを押してスタート画面を開き、**データ ソース**を入力します。
 2.  使用している Office バージョンに応じて、**[ODBC データ ソースのセットアップ (32 ビット)]** または **[ODBC データ ソースのセットアップ (64 ビット)]** をクリックします。Windows 7 を使用している場合は、**[管理ツール]** の **[ODBC データ ソース (32 ビット)]** または **[ODBC データ ソース (64 ビット)]** をクリックします。**[ODBC データ ソース アドミニストレーター]** ダイアログが開きます。
 
-    ![ODBC データ ソース アドミニストレーター][]
+    ![ODBC データ ソース アドミニストレーター][ODBC データ ソース アドミニストレーター]
 
 3.  ユーザー DNS から、**[追加]** をクリックすると、**データ ソースの新規作成**ウィザードが開きます。
 4.  **[Microsoft Hive ODBC ドライバー]** を選択し、**[完了]** をクリックします。**[Microsoft Hive ODBC ドライバーの DNS セットアップ]** ダイアログが開きます。
@@ -66,7 +66,7 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][]か�
       10 進数の列の桁数             </td><td>データ型の長さおよび精度は、データが返される方法に影響する可能性があります。精度が失われたり、切り捨てられたりするために間違った情報が返されます。                                                                                  </td></tr>
 	</table>
 
-    ![詳細オプション][]
+    ![詳細オプション][詳細オプション]
 6.  **[テスト]** をクリックして、データ ソースをテストします。データ ソースが正しく構成された場合、*テストは無事に完了しました。*と表示されます。
 7.  **[OK]** をクリックして [テスト] ダイアログを閉じます。これで新しいデータ ソースが **[ODBC データ ソース アドミニストレーター]** ダイアログに表示されます。
 8.  **[OK]** をクリックしてウィザードを終了します。
@@ -78,19 +78,19 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][]か�
 1.  Excel で新しいブックまたは既存のブックを開きます。
 2.  **[データ]** タブから **[外部データの取得]** タイルをクリックし、**[その他のデータ ソース]**、**[データ接続ウィザード]** の順にクリックして、**データ接続ウィザード**を開きます。
 
-    ![データ接続ウィザードを開く][]
+    ![データ接続ウィザードを開く][データ接続ウィザードを開く]
 
 3.  データ ソースとして **[ODBC DSN]** を選択して、**[次へ]** をクリックします。
 4.  ODBC データ ソースから、前の手順で作成したデータ ソース名を選択して、**[次へ]** をクリックします。
 5.  ウィザードにクラスターのパスワードを再入力し、**[テスト]** をクリックして構成を確認します。
 6.  **[OK]** をクリックして [テスト] ダイアログを閉じます。
 7.  **[OK]** をクリックします。**[データベースとテーブルの選択]** ダイアログが開くのを待ちます。この処理には数秒かかります。
-8.  インポートするテーブルを選択し、**[次へ]** をクリックします。*hivesampletable* は HDInsight クラスターに付属する Hive テーブルのサンプルです。作成していない場合は、ここで選択できます。Hive クエリの実行および Hive テーブルの作成の詳細については、「[HDInsight での Hive の使用][]」を参照してください。
+8.  インポートするテーブルを選択し、**[次へ]** をクリックします。*hivesampletable* は HDInsight クラスターに付属する Hive テーブルのサンプルです。作成していない場合は、ここで選択できます。Hive クエリの実行および Hive テーブルの作成の詳細については、「[HDInsight での Hive の使用][HDInsight での Hive の使用]」を参照してください。
 9.  **[完了]** をクリックします。
 10. **[データのインポート]** ダイアログでは、クエリを変更または指定できます。これを行うには、**[プロパティ]** をクリックします。この処理には数秒かかります。
 11. **[定義]** タブをクリックして、**[コマンド文字列]** ボックスの Hive select ステートメントに「**LIMIT 200**」を追加します。変更によって、返されるレコード セットが 200 に制限されます。
 
-    ![接続のプロパティ][]
+    ![接続のプロパティ][接続のプロパティ]
 
 12. **[OK]** をクリックして [接続プロパティ] ダイアログを閉じます。
 13. **[OK]** をクリックして **[データのインポート]** ダイアログを閉じます。
@@ -100,9 +100,9 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][]か�
 
 この記事では、Microsoft Hive ODBC ドライバーを使用して HDInsight サービスから Excel にデータを取得する方法を学習しました。同様に、SQL データベースに HDInsight サービスからデータを取得することもできます。また、HDInsight サービスにデータをアップロードすることもできます。詳細については、次を参照してください。
 
--   [HDInsight を使用したフライトの遅延データの分析][]
--   [データを HDInsight へアップロードする方法][]
--   [HDInsight での Sqoop の使用][]
+-   [HDInsight を使用したフライトの遅延データの分析][HDInsight を使用したフライトの遅延データの分析]
+-   [データを HDInsight へアップロードする方法][データを HDInsight へアップロードする方法]
+-   [HDInsight での Sqoop の使用][HDInsight での Sqoop の使用]
 
   [Power Query を使用した Excel から HDInsight への接続]: ../hdinsight-connect-excel-power-query/
   [Azure HDInsight の概要]: ../hdinsight-get-started/

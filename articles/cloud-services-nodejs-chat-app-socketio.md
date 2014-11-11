@@ -1,6 +1,6 @@
 <properties linkid="dev-nodejs-worker-app-with-socketio" urlDisplayName="App Using Socket.IO" pageTitle="Node.js application using Socket.io - Azure tutorial" metaKeywords="Azure Node.js socket.io tutorial, Azure Node.js socket.io, Azure Node.js tutorial" description="A tutorial that demonstrates using socket.io in a node.js application hosted on Azure." metaCanonical="" services="cloud-services" documentationCenter="nodejs" title="Build a Node.js Chat Application with Socket.IO on an Azure Cloud Service" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
 # Azure Cloud Services で Socket.IO を使用する Node.js チャット アプリケーションを構築する
 
@@ -18,7 +18,7 @@ Socket.IO は、node.js サーバーとクライアントの間のリアルタ�
 
     ![Azure PowerShell アイコン][Azure PowerShell アイコン]
 
-    [WACOM.INCLUDE [install-dev-tools][install-dev-tools]]
+    [WACOM.INCLUDE [install-dev-tools](../includes/install-dev-tools.md)]
 
 2.  **c:\\node** ディレクトリに移動し、次のコマンドを入力して **chatapp** という名前の新しいソリューションと **WorkerRole1** という名前の worker ロールを作成します。
 
@@ -132,7 +132,5 @@ server.js の変更内容を保存した後、次の手順に従って必要な�
   [アーカイブから展開された examples\\chat ディレクトリの内容を表示しているエクスプローラー]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-5.png
   [npm install コマンドの出力]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-7.png
   [User1 と User2 からのチャット メッセージを表示している 2 つのブラウザー ウィンドウ]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-8.png
-  [Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ]: https://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/getting-started/
-  [Azure SDK for Node.js GitHub リポジトリ]: https://github.com/WindowsAzure/azure-sdk-for-node
   [Azure Websites で Socket.IO を使用する Node.js チャット アプリケーションを構築する]: /ja-jp/develop/nodejs/tutorials/website-using-socketio/
   [chat-contents]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-5.png

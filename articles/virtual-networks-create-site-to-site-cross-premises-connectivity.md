@@ -1,6 +1,6 @@
 <properties linkid="manage-services-cross-premises-connectivity" urlDisplayName="Tutorial: Create a Cross-Premises Virtual Network for Site-to-Site Connectivity" pageTitle="Tutorial: Create a Cross-Premises Virtual Network for Site-to-Site Connectivity" metaKeywords="" description="Learn how to create an Azure Virtual Network with cross-premises connectivity in this tutorial." metaCanonical="" services="virtual-network" documentationCenter="" title="Create a Virtual Network for Site-to-Site Cross-Premises Connectivity" authors="cherylmc" solutions="" manager="adinah" editor="" />
 
-<tags ms.service="virtual-network" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/23/2014" ms.author="cherylmc"></tags>
+<tags ms.service="virtual-network" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/23/2014" ms.author="cherylmc" />
 
 # チュートリアル: サイト間クロスプレミス接続用の仮想ネットワークの作成
 
@@ -231,7 +231,6 @@ VPN デバイスごとに異なるため、ここでは大まかな手順を示�
   [Azure の無料評価版のページ]: http://www.windowsazure.com/pricing/free-trial/
   [Microsoft Azure 特別料金: MSDN、MPN、Bizspark の特典]: http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/
   [仮想ネットワークに使用する VPN デバイスについて]: http://go.microsoft.com/fwlink/?LinkID=248098
-  [Routing and Remote Access Service templates (ルーティングおよびリモート アクセス サービスのテンプレート)]: http://msdn.microsoft.com/library/windowsazure/dn133801.aspx
   [仮想ネットワークの作成]: #CreateVN
   [ゲートウェイの起動とネットワーク管理者用の情報の収集]: #StartGateway
   [VPN デバイスの構成]: #ConfigVPN

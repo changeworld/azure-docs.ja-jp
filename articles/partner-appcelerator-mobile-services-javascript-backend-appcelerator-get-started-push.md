@@ -1,6 +1,6 @@
 <properties pageTitle="Get started with push notifications (Appcelerator) | Mobile Dev Center" metaKeywords="" description="Learn how to use Azure Mobile Services to send push notifications to your Appcelerator app." metaCanonical="" services="" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="Appcelerator team;mahender" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-appcelerator" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="Appcelerator team;mahender"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-appcelerator" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="Appcelerator="" team;mahender" />
 
 # Mobile Services でのプッシュ通知 (従来のプッシュ) の使用
 
@@ -40,13 +40,13 @@
 
 このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用][モバイル サービスの使用]」を完了している必要があります。
 
-[WACOM.INCLUDE [Enable Apple Push Notifications][Enable Apple Push Notifications]]
+[WACOM.INCLUDE [Enable Apple Push Notifications](../includes/enable-apple-push-notifications.md)]
 
 ## <a name="register-gcm"></a>Google Cloud Messaging を有効にする
 
 > [WACOM.NOTE] この手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、[accounts.google.com][accounts.google.com] にアクセスしてください。
 
-[WACOM.INCLUDE [Enable GCM][Enable GCM]]
+[WACOM.INCLUDE [Enable GCM](../includes/mobile-services-enable-Google-cloud-messaging.md)]
 
 ## <a name="gcm-module"></a>Titanium 用の GCM モジュールを作成する
 
@@ -62,7 +62,7 @@ Android NDK をインストールする必要があります。[][]<http://devel
 
 2.  [File]、[New]、[Mobile Module Project] の順にクリックします。
 
-    ![][]
+    ![][0]
 
 3.  次のウィンドウで、プロジェクト設定のデータを入力します。
 
@@ -213,7 +213,7 @@ Android NDK をインストールする必要があります。[][]<http://devel
 
 ## <a name="configure"></a>プッシュ要求を送信するようにモバイル サービスを構成する
 
-[WACOM.INCLUDE [mobile-services-apns-configure-push][mobile-services-apns-configure-push]]
+[WACOM.INCLUDE [mobile-services-apns-configure-push](../includes/mobile-services-apns-configure-push.md)]
 
 1.  前の手順で GCM から取得した API キー値を入力して、[保存] をクリックします。
 
@@ -444,12 +444,6 @@ Android NDK をインストールする必要があります。[][]<http://devel
 
 
 
-  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-push "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-push "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-push "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/mobile-services-ios-get-started-push "iOS"
-  [Android]: /ja-jp/documentation/articles/mobile-services-android-get-started-push "Android"
-  [Appcelerator]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push "Appcelerator"
   [証明書の署名要求を生成する]: #certificates
   [アプリケーションを登録し、プッシュ通知を有効にする]: #register
   [アプリケーションのプロビジョニング プロファイルを作成する]: #profile
@@ -463,13 +457,11 @@ Android NDK をインストールする必要があります。[][]<http://devel
   [Enable Apple Push Notifications]: ../includes/enable-apple-push-notifications.md
   [accounts.google.com]: http://go.microsoft.com/fwlink/p/?LinkId=268302
   [Enable GCM]: ../includes/mobile-services-enable-Google-cloud-messaging.md
-  [Installing the Java Development Tools (Java Development Tools のインストール)]: http://docs.appcelerator.com/titanium/latest/#!/guide/Installing_the_Java_Development_Tools
-  []: http://developer.android.com/sdk/ndk/index.html
-  []: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push/image0011.png
+  [0]: http://developer.android.com/sdk/ndk/index.html
+  [0]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push/image0011.png
   [1]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push/image0031.png
   [2]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push/image0041.png
   [3]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push/image0061.png
-  [Using Titanium Modules (Titanium モジュールの使用)]: http://docs.appcelerator.com/titanium/latest/#!/guide/Using_Titanium_Modules
   [mobile-services-apns-configure-push]: ../includes/mobile-services-apns-configure-push.md
   [4]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push/image062.png
   [5]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push/image064.png

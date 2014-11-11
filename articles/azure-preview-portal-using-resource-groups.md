@@ -1,6 +1,6 @@
 <properties urlDisplayName="" pageTitle="Using Resource groups to manage your Azure resources" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Using Resource groups to manage your Azure resources" authors="Nafisa Bhojawala"  solutions="" writer="" manager="" editor=""  />
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="Nafisa Bhojawala"></tags>
+<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="Nafisa="" Bhojawala" />
 
 # リソース グループを使用した Azure リソースの管理
 
@@ -17,7 +17,7 @@
 
 プレビュー ポータル内でリソースを作成すると、そのリソースは必ずリソース グループ内に作成されます。新しいリソース グループを作成すること、または作成フローの一部として既存のリソース グループを使用することができます。
 
-![][]
+![][0]
 <br><br />
 互いに連携する少数のリソース (たとえば、Web サイトとデータベース) で構成される 1 つのアプリケーションを作成するときは、そのアプリケーションは独自のリソース グループ内で作成されるため、そのリソース グループを使用してすべての関連アセットのライフサイクルを管理することができます。アプリケーションの発展に応じて、リソース グループに対して他のリソースを追加または削除することができます。
 
@@ -55,7 +55,7 @@
 
 ![][6]
 
-  []: http://i.imgur.com/USKkQdW.png
+  [0]: http://i.imgur.com/USKkQdW.png
   [1]: http://i.imgur.com/Me0jbio.png
   [2]: http://i.imgur.com/PhJeLZQ.png
   [3]: http://i.imgur.com/5Wqv2XR.png

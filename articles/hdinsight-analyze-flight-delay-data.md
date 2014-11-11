@@ -1,31 +1,31 @@
 <properties linkid="manage-services-hdinsight-analyze-flight-delay-data" urlDisplayName="Analyze flight delay data with Hadoop in HDInsight" pageTitle="Analyze flight delay data using Hadoop in HDInsight | Azure" metaKeywords="" description="Learn how to upload data to HDInsight, how to process the data using Hive, and how to export the results to SQL Database using Sqoop." metaCanonical="" services="hdinsight" documentationCenter="" title="Analyze flight delay data using Hadoop in HDInsight " authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
 
 # HDInsight での Hadoop を使用したフライトの遅延データの分析
 
-Hive では、*[HiveQL][]* と呼ばれる SQL に似たスクリプト言語を使用して Hadoop MapReduce ジョブを実行します。大規模なデータの集約、照会、分析でも Hive を利用できます。このチュートリアルでは、Hive を使用して空港での平均遅延時間を計算する方法と、Sqoop を使用して結果を SQL データベースにエクスポートする方法を紹介します。
+Hive では、*[HiveQL][HiveQL]* と呼ばれる SQL に似たスクリプト言語を使用して Hadoop MapReduce ジョブを実行します。大規模なデータの集約、照会、分析でも Hive を利用できます。このチュートリアルでは、Hive を使用して空港での平均遅延時間を計算する方法と、Sqoop を使用して結果を SQL データベースにエクスポートする方法を紹介します。
 
 **前提条件:**
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
--   Azure HDInsight クラスター。HDInsight クラスターのプロビジョニングについては、「[Azure HDInsight の概要][]」または「[HDInsight クラスターのプロビジョニング][]」を参照してください。
--   Azure PowerShell がインストールされ構成されたワークステーション。手順については、[Azure PowerShell のインストールおよび構成に関するページ][]を参照してください。
+-   Azure HDInsight クラスター。HDInsight クラスターのプロビジョニングについては、「[Azure HDInsight の概要][Azure HDInsight の概要]」または「[HDInsight クラスターのプロビジョニング][HDInsight クラスターのプロビジョニング]」を参照してください。
+-   Azure PowerShell がインストールされ構成されたワークステーション。手順については、[Azure PowerShell のインストールおよび構成に関するページ][Azure PowerShell のインストールおよび構成に関するページ]を参照してください。
 
 **所要時間:** 30 分
 
 ## このチュートリアルの内容
 
--   [チュートリアルを準備する][]
--   [HiveQL スクリプトを作成してアップロードする][]
--   [HiveQL スクリプトを実行する][]
--   [Azure SQL データベースに出力をエクスポートする][]
--   [次のステップ][]
+-   [チュートリアルを準備する][チュートリアルを準備する]
+-   [HiveQL スクリプトを作成してアップロードする][HiveQL スクリプトを作成してアップロードする]
+-   [HiveQL スクリプトを実行する][HiveQL スクリプトを実行する]
+-   [Azure SQL データベースに出力をエクスポートする][Azure SQL データベースに出力をエクスポートする]
+-   [次のステップ][次のステップ]
 
 ## <span id="prepare"></span></a>チュートリアルを準備する
 
-このチュートリアルでは、[米国運輸省研究・革新技術庁 (RITA)/運輸統計局][]が公開している航空便の定時運航データをコンピューターにダウンロードして使用します。次の作業を実行します。
+このチュートリアルでは、[米国運輸省研究・革新技術庁 (RITA)/運輸統計局][米国運輸省研究・革新技術庁 (RITA)/運輸統計局]が公開している航空便の定時運航データをコンピューターにダウンロードして使用します。次の作業を実行します。
 
 1.  Web ブラウザーを使用して、RITA が公開している定時運航データをワークステーションにダウンロードする
 2.  Azure PowerShell を使用して、HDInsight にデータをアップロードする
@@ -33,9 +33,9 @@ Hive では、*[HiveQL][]* と呼ばれる SQL に似たスクリプト言語を
 
 **HDInsight ストレージについて**
 
-HDInsight はデータ ストレージとして Azure BLOB ストレージを使用します。これは *WASB* または *Azure ストレージ - BLOB* と呼ばれています。WASB は、HDFS を Azure BLOB ストレージ上で Microsoft が実装したものです。詳細については、「[HDInsight での Azure BLOB ストレージの使用][]」を参照してください。
+HDInsight はデータ ストレージとして Azure BLOB ストレージを使用します。これは *WASB* または *Azure ストレージ - BLOB* と呼ばれています。WASB は、HDFS を Azure BLOB ストレージ上で Microsoft が実装したものです。詳細については、「[HDInsight での Azure BLOB ストレージの使用][HDInsight での Azure BLOB ストレージの使用]」を参照してください。
 
-HDInsight クラスターをプロビジョニングする際、HDFS と同様に、既定のファイル システムとして BLOB ストレージ コンテナーが指定されます。プロビジョニング プロセスを実行するときに、このコンテナーに加えて、同じ Azure ストレージ アカウントまたは別の Azure ストレージ アカウントに属する付加的なコンテナーを追加することもできます。付加的なストレージ アカウントを追加する方法の詳細については、「[HDInsight クラスターのプロビジョニング][]」を参照してください。
+HDInsight クラスターをプロビジョニングする際、HDFS と同様に、既定のファイル システムとして BLOB ストレージ コンテナーが指定されます。プロビジョニング プロセスを実行するときに、このコンテナーに加えて、同じ Azure ストレージ アカウントまたは別の Azure ストレージ アカウントに属する付加的なコンテナーを追加することもできます。付加的なストレージ アカウントを追加する方法の詳細については、「[HDInsight クラスターのプロビジョニング][HDInsight クラスターのプロビジョニング]」を参照してください。
 
 このチュートリアルで使用する PowerShell スクリプトを簡単にするために、ファイルはすべて、*/tutorials/flightdelays* にある既定のファイル システム コンテナーに格納されています。既定で、このコンテナーの名前は、HDInsight クラスター名と同じです。
 
@@ -45,7 +45,7 @@ WASB の構文は次のとおりです。
 
 > [WACOM.NOTE] HDInsight クラスター Version 3.0 では、*wasb://* 構文のみがサポートされます。旧バージョンの *"asv://"* 構文は、HDInsight 2.1 および 1.6 クラスターではサポートされますが、HDInsight 3.0 クラスターではサポートされず、以降のバージョンでもサポートされません。
 
-> WASB のパスは、仮想パスです。詳細については、「[HDInsight での Azure BLOB ストレージの使用][]」を参照してください。
+> WASB のパスは、仮想パスです。詳細については、「[HDInsight での Azure BLOB ストレージの使用][HDInsight での Azure BLOB ストレージの使用]」を参照してください。
 
 既定のファイル システム コンテナーに格納されているファイルの場合、次の URI のどれを使用しても HDInsight からアクセスできます (例として flightdelays.hql を使用しています)。
 
@@ -83,7 +83,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 **フライト データをダウンロードするには**
 
-1.  [米国運輸省研究・革新技術庁 (RITA)/運輸統計局][]のページに移動します。
+1.  [米国運輸省研究・革新技術庁 (RITA)/運輸統計局][米国運輸省研究・革新技術庁 (RITA)/運輸統計局]のページに移動します。
 2.  このページで、次の値を選択します。
 
     | 名前          | 値                                                                                                                                                                                                                                                                                                                                                                                                     |
@@ -99,7 +99,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 **フライト遅延データを Azure BLOB ストレージにアップロードするには**
 
-1.  Azure PowerShell を開きます。手順については、[Azure PowerShell のインストールおよび構成に関するページ][]を参照してください。
+1.  Azure PowerShell を開きます。手順については、[Azure PowerShell のインストールおよび構成に関するページ][Azure PowerShell のインストールおよび構成に関するページ]を参照してください。
 2.  次のコマンドを実行して、Azure サブスクリプションに接続します。
 
         Add-AzureAccount
@@ -606,9 +606,9 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 
 ## <span id="executehqlscript"></span></a>HiveQL スクリプトを実行する
 
-Hive の実行に使用できる Azure PowerShell コマンドレットはいくつかあります。このチュートリアルでは Invoke-Hive を使用します。その他の方法については、「[HDInsight での Hive の使用][]」を参照してください。Invoke-Hive を使用して、HiveQL ステートメントまたは HiveQL スクリプトを実行できます。ここでは、作成後に Azure BLOB ストレージにアップロードした HiveQL スクリプトを使用します。
+Hive の実行に使用できる Azure PowerShell コマンドレットはいくつかあります。このチュートリアルでは Invoke-Hive を使用します。その他の方法については、「[HDInsight での Hive の使用][HDInsight での Hive の使用]」を参照してください。Invoke-Hive を使用して、HiveQL ステートメントまたは HiveQL スクリプトを実行できます。ここでは、作成後に Azure BLOB ストレージにアップロードした HiveQL スクリプトを使用します。
 
-Hive パスには既知の問題があります。この問題の解決方法は [TechNet Wiki][] をご覧ください。
+Hive パスには既知の問題があります。この問題の解決方法は [TechNet Wiki][TechNet Wiki] をご覧ください。
 
 **PowerShell を使用して Hive クエリを実行するには**
 
@@ -868,19 +868,19 @@ Hive パスには既知の問題があります。この問題の解決方法は
 
 5.  SQL データベースに接続し、*AvgDelays* テーブルに保存されている都市別平均遅延を表示します。
 
-    ![HDI.FlightDelays.AvgDelays.Dataset][]
+    ![HDI.FlightDelays.AvgDelays.Dataset][HDI.FlightDelays.AvgDelays.Dataset]
 
 ## <span id="nextsteps"></span></a>次のステップ
 
 ここでは、ファイルを BLOB ストレージへアップロードする方法、BLOB ストレージのデータを Hive テーブルへ取り込む方法、Hive クエリの実行方法、Sqoop を使用して HDFS から Azure SQL データベースへデータをエクスポートする方法を学習しました。詳細については、次の記事を参照してください。
 
--   [Azure HDInsight の概要][]
--   [HDInsight での Hive の使用][]
--   [Use Oozie with HDInsight (HDInsight での Oozie の使用)][]
--   [HDInsight での Sqoop の使用][]
--   [HDInsight での Pig の使用][]
--   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][]
--   [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)][]
+-   [Azure HDInsight の概要][Azure HDInsight の概要]
+-   [HDInsight での Hive の使用][HDInsight での Hive の使用]
+-   [Use Oozie with HDInsight (HDInsight での Oozie の使用)][Use Oozie with HDInsight (HDInsight での Oozie の使用)]
+-   [HDInsight での Sqoop の使用][HDInsight での Sqoop の使用]
+-   [HDInsight での Pig の使用][HDInsight での Pig の使用]
+-   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]
+-   [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)][Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)]
 
   [HiveQL]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL
   [Azure HDInsight の概要]: ../hdinsight-get-started/
@@ -891,14 +891,10 @@ Hive パスには既知の問題があります。この問題の解決方法は
   [HiveQL スクリプトを実行する]: #executehqlscript
   [Azure SQL データベースに出力をエクスポートする]: #exportdata
   [次のステップ]: #nextsteps
-  [米国運輸省研究・革新技術庁 (RITA)/運輸統計局]: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
   [HDInsight での Azure BLOB ストレージの使用]: ../hdinsight-use-blob-storage/
   [HDInsight での Hive の使用]: ../hdinsight-use-hive/
   [TechNet Wiki]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
   [1]: #createScript
   [HDI.FlightDelays.AvgDelays.Dataset]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.AvgDelays.DataSet.png
-  [Use Oozie with HDInsight (HDInsight での Oozie の使用)]: ../hdinsight-use-oozie/
   [HDInsight での Sqoop の使用]: ../hdinsight-use-sqoop/
   [HDInsight での Pig の使用]: ../hdinsight-use-pig/
-  [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]: ../hdinsight-develop-deploy-java-mapreduce/
-  [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/

@@ -1,14 +1,14 @@
 <properties linkid="dev-net-how-to-service-bus-topics" urlDisplayName="Service Bus Topics" pageTitle="How to use Service Bus topics (.NET) - Azure" metaKeywords="Get started Azure Service Bus topics, Azure publish subscribe messaging, Azure messaging topics and subscriptions C# " description="Learn how to use Service Bus topics and subscriptions in Azure. Code samples are written for .NET applications. " metaCanonical="" services="service-bus" documentationCenter=".NET" title="How to Use Service Bus Topics/Subscriptions" authors="sethm" solutions="" manager="timlt" editor="mattshel" />
 
-<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="sethm"></tags>
+<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="sethm" />
 
 # サービス バス トピック/サブスクリプションの使用方法
 
 <span>このガイドでは、サービス バスのトピックとサブスクリプションの使用方法について説明します。サンプルは C# で記述され、.NET API を利用しています。ここでは、**トピックとサブスクリプションの作成、サブスクリプション フィルターの作成**、トピックへの**メッセージの送信、サブスクリプションからのメッセージの受信**、**トピックとサブスクリプションの削除**などのシナリオについて説明します。トピックとサブスクリプションの詳細については、「[次のステップ][次のステップ]」を参照してください。 </span>
 
-[WACOM.INCLUDE [create-account-note][create-account-note]]
+[WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
-[WACOM.INCLUDE [howto-service-bus-topics][howto-service-bus-topics]]
+[WACOM.INCLUDE [howto-service-bus-topics](../includes/howto-service-bus-topics.md)]
 
 ## <span class="short-header">アプリケーションの構成</span>サービス バスを使用するためにアプリケーションを構成する
 
@@ -24,7 +24,7 @@
     **[NuGet パッケージの管理]** をクリックします。
 2.  "WindowsAzure" を検索し、**[Azure のサービス バス]** 項目をクリックします。**[インストール]** をクリックし、インストールが完了したら、このダイアログを閉じます。
 
-    ![][]
+    ![][0]
 
 これで、サービス バスに対応するコードを作成する準備ができました。
 
@@ -278,7 +278,7 @@ Web サイトまたは仮想マシンを使用する場合には、.NET 構成�
   [次のステップ]: #nextsteps
   [create-account-note]: ../includes/create-account-note.md
   [howto-service-bus-topics]: ../includes/howto-service-bus-topics.md
-  []: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
+  [0]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
   [キュー、トピック、およびサブスクリプションに関するページ]: http://msdn.microsoft.com/ja-jp/library/hh367516.aspx
   [SqlFilter]: http://msdn.microsoft.com/ja-jp/library/microsoft.servicebus.messaging.sqlfilter.aspx
   [サービス バスが仲介するメッセージングに関する.NET チュートリアル]: http://msdn.microsoft.com/ja-jp/library/hh367512.aspx

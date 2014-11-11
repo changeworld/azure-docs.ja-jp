@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-get-started-with-data-dotnet-vs2013" urlDisplayName="Get Started with Data" pageTitle="Get started with data (Windows Store) | Mobile Dev Center" metaKeywords="" description="Learn how to get started using Mobile Services to leverage data in your Windows Store app." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services (universal Windows apps)" authors="glenga" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # Mobile Services でのデータの使用 (ユニバーサル Windows アプリケーション)
 
@@ -27,7 +27,7 @@
 
 1.  C# バージョンの GetStartedWithMobileServices サンプル アプリケーションを[デベロッパー サンプル コード集のサイト][GetStartedWithMobileServices アプリケーション]からダウンロードします。
 
-    ![][]
+    ![][0]
 
 2.  Visual Studio 2013 で、ダウンロードしたプロジェクトを開き、MainPage.xaml.cs ファイルを確認します。
 
@@ -43,7 +43,7 @@
 
 ## <a name="create-service"></a><span class="short-header">モバイル サービスの作成</span>Visual Studio から新しいモバイル サービスを作成する
 
-[WACOM.INCLUDE [mobile-services-create-new-service-vs2013][mobile-services-create-new-service-vs2013]]
+[WACOM.INCLUDE [mobile-services-create-new-service-vs2013](../includes/mobile-services-create-new-service-vs2013.md)]
 
 1.  ソリューション エクスプローラーで、App.xaml.cs コード ファイルを開き、\*\*App\*\* クラスに追加された新しい静的フィールドを確認します。次に例を示します。
 
@@ -57,7 +57,7 @@
 
 ## <a name="add-table"></a><span class="short-header">新しいテーブルの追加</span>モバイル サービスに新しいテーブルを追加してアプリケーションを更新する
 
-[WACOM.INCLUDE [mobile-services-create-new-table-vs2013][mobile-services-create-new-table-vs2013]]
+[WACOM.INCLUDE [mobile-services-create-new-table-vs2013](../includes/mobile-services-create-new-table-vs2013.md)]
 
 1.  MainPage.xaml.cs ファイルで、次の using ステートメントを追加またはコメント解除します。
 
@@ -175,26 +175,17 @@
 
 
 
-  [Windows ストア C#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-data/ "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-data/ "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data/ "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/mobile-services-ios-get-started-data/ "iOS"
-  [Android]: /ja-jp/documentation/articles/mobile-services-android-get-started-data/ "Android"
-  [HTML]: /ja-jp/documentation/articles/mobile-services-html-get-started-data/ "HTML"
-  [Xamarin.iOS]: /ja-jp/documentation/articles/partner-xamarin-mobile-services-ios-get-started-data/ "Xamarin.iOS"
-  [Xamarin.Android]: /ja-jp/documentation/articles/partner-xamarin-mobile-services-android-get-started-data/ "Xamarin.Android"
   [Windows ストア アプリ プロジェクトのダウンロード]: #download-app
   [Visual Studio からのモバイル サービスの作成]: #create-service
   [ストレージのデータ テーブルの追加とアプリケーションの更新]: #add-table
   [モバイル サービスに対するアプリケーションのテスト]: #test-app
   [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28
   [GetStartedWithMobileServices アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=328660
-  []: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-data-sample-download-dotnet-vs12.png
+  [0]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-data-sample-download-dotnet-vs12.png
   [1]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-quickstart-startup.png
   [mobile-services-create-new-service-vs2013]: ../includes/mobile-services-create-new-service-vs2013.md
   [MobileServiceClient クラス]: http://go.microsoft.com/fwlink/p/?LinkId=302030
   [mobile-services-create-new-table-vs2013]: ../includes/mobile-services-create-new-table-vs2013.md
-  [動的スキーマ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193175.aspx
   [管理ポータル]: https://manage.windowsazure.com/
   [2]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-todoitem-data-browse.png
   [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet

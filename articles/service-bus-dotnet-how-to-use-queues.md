@@ -1,6 +1,6 @@
 <properties linkid="dev-net-how-to-service-bus-queues" urlDisplayName="Service Bus Queues" pageTitle="How to use Service Bus queues (.NET) - Azure" metaKeywords="Azure Service Bus queues, Azure queues, Azure messaging, Azure queues C#, Azure queues .NET" description="Learn how to use Service Bus queues in Azure. Code samples written in C# using the .NET API." metaCanonical="" services="service-bus" documentationCenter=".NET" title="How to Use Service Bus Queues" authors="sethm" solutions="" manager="timlt" editor="mattshel" />
 
-<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="sethm"></tags>
+<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="sethm" />
 
 # サービス バス キューの使用方法
 
@@ -9,9 +9,9 @@
 **キューの作成、メッセージの送受信、**
 **およびキューの削除です**。キューの詳細については、「[次のステップ][次のステップ]」のセクションを参照してください。 </span>
 
-[WACOM.INCLUDE [create-account-note][create-account-note]]
+[WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
-[WACOM.INCLUDE [howto-service-bus-queues][howto-service-bus-queues]]
+[WACOM.INCLUDE [howto-service-bus-queues](../includes/howto-service-bus-queues.md)]
 
 ## <span class="short-header">アプリケーションの構成</span>サービス バスを使用するためにアプリケーションを構成する
 
@@ -35,7 +35,7 @@ Visual Studio および Visual Studio Express 2012 for Web でのライブラリ
     サービス バス]** 項目をクリックします。**[インストール]** をクリックし、インストールが
     完了したら、このダイアログを閉じます。
 
-    ![][]
+    ![][0]
 
 これで、サービス バスに対応するコードを作成する準備ができました。
 
@@ -291,6 +291,5 @@ Web サイトまたは仮想マシンを使用する場合には、.NET 構成�
   [次のステップ]: #next-steps
   [create-account-note]: ../includes/create-account-note.md
   [howto-service-bus-queues]: ../includes/howto-service-bus-queues.md
-  []: ./media/service-bus-dotnet-how-to-use-queues/getting-started-multi-tier-13.png
+  [0]: ./media/service-bus-dotnet-how-to-use-queues/getting-started-multi-tier-13.png
   [キュー、トピック、およびサブスクリプション]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367516.aspx
-  [サービス バスが仲介するメッセージングに関する.NET チュートリアル]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367512.aspx

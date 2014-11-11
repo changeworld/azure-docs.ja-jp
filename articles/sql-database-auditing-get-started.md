@@ -1,6 +1,6 @@
 <properties title="Get started with SQL database auditing" pageTitle="Get started with SQL database auditing | Azure" description="Get started with SQL database auditing" metaKeywords="" services="sql-database" solutions="data-management" documentationCenter="" authors="jeffreyg" videoId="" scriptId=""  />
 
-<tags ms.service="sql-database" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jeffreyg"></tags>
+<tags ms.service="sql-database" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jeffreyg" />
 
 # SQL Database 監査の使用
 
@@ -30,7 +30,7 @@ Azure プレビュー ポータルで監査を設定しますが、データベ�
 -   **アカウント、ロール、アクセス許可 (DCL)**
 -   **セキュリティ例外**
 
-ログに記録された活動やイベントの詳細については、「[Audit Log Format Reference (doc file download) (監査ログ形式のリファレンス (doc ファイルのダウンロード)][Audit Log Format Reference (doc file download) (監査ログ形式のリファレンス (doc ファイルのダウンロード)]」を参照してください。
+ログに記録された活動やイベントの詳細については、「[Audit Log Format Reference (doc file download) (監査ログ形式のリファレンス (doc ファイルのダウンロード))][Audit Log Format Reference (doc file download) (監査ログ形式のリファレンス (doc ファイルのダウンロード))]」を参照してください。
 
 監査ログが保存されるストレージ アカウントも選択します。
 
@@ -49,7 +49,7 @@ Azure プレビュー ポータルで監査を設定しますが、データベ�
 3.  <https://portal.azure.com> で [Azure プレビュー ポータル][Azure プレビュー ポータル]を起動します。
 4.  監査するデータベースをクリックし、**[監査プレビュー]** をクリックして、監査プレビューを有効にし、監査構成ブレードを起動します。
 
-    ![][]
+    ![][0]
 
 5.  監査構成ブレードで、ログが保存される Azure ストレージ アカウントを選択します。**ヒント:** すべての監査済みデータベースに同じストレージ アカウントを使用して、事前に構成したレポートのテンプレートを活用します。
 
@@ -84,14 +84,12 @@ Azure プレビュー ポータルで監査を設定しますが、データベ�
 
 
   [プレビューにサインアップ]: http://go.microsoft.com/fwlink/?LinkId=404163
-  [Azure Trust Center (Azure トラスト センター)]: http://azure.microsoft.com/ja-jp/support/trust-center/compliance/
   [Azure SQL Database の監査の基本]: #subheading-1
   [データベースに対する監査を設定する]: #subheading-2
   [監査ログとレポートを分析する]: #subheading-3
-  [Audit Log Format Reference (doc file download) (監査ログ形式のリファレンス (doc ファイルのダウンロード)]: http://go.microsoft.com/fwlink/?LinkId=506733
   [新しいサービス層のプレビューにもサインアップ]: https://account.windowsazure.com/PreviewFeatures?fid=premiumdb
   [Azure プレビュー ポータル]: https://portal.azure.com
-  []: ./media/sql-database-auditing-get-started/sql-database-get-started-auditingpreview.png
+  [0]: ./media/sql-database-auditing-get-started/sql-database-get-started-auditingpreview.png
   [1]: ./media/sql-database-auditing-get-started/sql-database-get-started-storageaccount.png
   [2]: ./media/sql-database-auditing-get-started/sql-database-auditing-eventtype.png
   [3]: ./media/sql-database-auditing-get-started/sql-database-get-started-saveconfigasdefault.png
@@ -99,5 +97,4 @@ Azure プレビュー ポータルで監査を設定しますが、データベ�
   [Azure ストレージ エクスプローラー]: http://azurestorageexplorer.codeplex.com/
   [ダウンロードできる Excel スプレッドシート]: http://go.microsoft.com/fwlink/?LinkId=403540
   [ここ]: http://www.microsoft.com/ja-jp/download/details.aspx?id=39379
-  [How To (doc download) (使用方法 (doc のダウンロード))]: http://go.microsoft.com/fwlink/?LinkId=506731
   [5]: ./media/sql-database-auditing-get-started/sql-database-auditing-dashboard.png

@@ -1,15 +1,15 @@
 <properties linkid="develop-python-web-app-with-blob-storage" urlDisplayName="Web App with Blob Storage" pageTitle="Python web app with table storage | Microsoft Azure" metaKeywords="Azure table storage Python, Azure Python application, Azure Python tutorial, Azure Python example" description="A tutorial that teaches you how to create a Python web application using the Azure Client Libraries. Django is used as the web framework." metaCanonical="" services="storage" documentationCenter="Python" title="Python Web Application using Table Storage" authors="huvalo" solutions="" videoId="" scriptId="" manager="" editor="mollybos" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo" />
 
 # テーブル ストレージを使用する Python Web アプリケーション
 
-このチュートリアルでは、Python 用 Azure クライアント ライブラリに基づいて、テーブル ストレージを使用するアプリケーションの作成方法について説明します。このアプリケーションが最初の Python Azure アプリケーションである場合は、「[Django Hello World Web アプリケーション][]」を先に参照することをお勧めします。
+このチュートリアルでは、Python 用 Azure クライアント ライブラリに基づいて、テーブル ストレージを使用するアプリケーションの作成方法について説明します。このアプリケーションが最初の Python Azure アプリケーションである場合は、「[Django Hello World Web アプリケーション][Django Hello World Web アプリケーション]」を先に参照することをお勧めします。
 
 このガイドでは、Azure に展開できる Web ベースのタスク一覧アプリケーションを作成します。このタスク一覧では、ユーザーがタスクの取得、新しいタスクの追加、タスクの完了済みのマーク付けを実行できます。また、Web フレームワークとして Django を使用します。
 
 タスク項目は Azure ストレージに格納されます。Azure ストレージは、フォールト トレランスと可用性に優れた非構造化データ ストレージです。Azure Storage には、データを格納してアクセスできるデータ構造がいくつか用意されています。Azure SDK for Python に含まれる API または REST API を通じて、そのストレージ サービスを活用できます。
-詳細については、「[Azure のデータの格納とアクセス][]」を参照してください。
+詳細については、「[Azure のデータの格納とアクセス][Azure のデータの格納とアクセス]」を参照してください。
 
 学習内容:
 
@@ -17,19 +17,19 @@
 
 完成したアプリケーションのスクリーンショットは次のようになります (追加されるタスク項目は異なる場合があります)。
 
-![][]
+![][0]
 
-[WACOM.INCLUDE [create-account-note][]]
+[WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
 ## <span id="setup"></span> </a>開発環境の設定
 
-**注:** Python またはクライアント ライブラリをインストールする場合は、[Python インストール ガイド][]を参照してください。
+**注:** Python またはクライアント ライブラリをインストールする場合は、[Python インストール ガイド][Python インストール ガイド]を参照してください。
 
 *Windows に関するメモ*: Windows WebPI インストーラーを使用した場合、Django とクライアント ライブラリが既にインストールされています。
 
 ## Azure でのストレージ アカウントの作成
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## Django プロジェクトの作成
 
@@ -166,18 +166,18 @@
 
 ## コンピューティング エミュレーターでのアプリケーションの実行と、アプリケーションの発行、停止、削除
 
-これで、組み込みの Django サーバーでアプリケーションが適切に実行されました。このアプリケーションを Azure エミュレーターに展開し (Windows のみ)、その後 Azure に発行することで、さらに詳細なテストを行うことができます。これを実行する方法の一般的な手順については、「[Django Hello World Web アプリケーション][]」の記事を参照してください。この記事では手順が詳細に説明されています。
+これで、組み込みの Django サーバーでアプリケーションが適切に実行されました。このアプリケーションを Azure エミュレーターに展開し (Windows のみ)、その後 Azure に発行することで、さらに詳細なテストを行うことができます。これを実行する方法の一般的な手順については、「[Django Hello World Web アプリケーション][Django Hello World Web アプリケーション]」の記事を参照してください。この記事では手順が詳細に説明されています。
 
 ## <span id="NextSteps"></span></a> 次のステップ
 
 これで、Azure テーブル ストレージ サービスの基本を学習できました。さらに複雑なストレージ タスクを実行する方法については、次のリンク先を参照してください。
 
--   MSDN リファレンス: [Azure のデータの格納とアクセス][]
+-   MSDN リファレンス: [Azure のデータの格納とアクセス][Azure のデータの格納とアクセス]
 -   Azure のストレージ チーム ブログ: <http://blogs.msdn.com/b/windowsazurestorage/>
 
   [Django Hello World Web アプリケーション]: http://windowsazure.com/ja-jp/documentation/articles/virtual-machines-python-django-web-app-windows-server
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433040.aspx
-  []: ./media/storage-python-use-table-storage-web-app/web-app-with-storage-Finaloutput-mac.png
+  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+  [0]: ./media/storage-python-use-table-storage-web-app/web-app-with-storage-Finaloutput-mac.png
   [create-account-note]: ../includes/create-account-note.md
   [Python インストール ガイド]: http://windowsazure.com/ja-jp/documentation/articles/python-how-to-install
   [create-storage-account]: ../includes/create-storage-account.md

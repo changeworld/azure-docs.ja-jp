@@ -1,10 +1,10 @@
 <properties linkid="develop-java-how-to-hudson-ci" urlDisplayName="Hudson Continuous Integration" pageTitle="How to use Hudson with the Azure Blob service | Microsoft Azure" metaKeywords="Hudson, Azure storage, Azure Blob service, Azure storage, Azure hudson" description="Describes how to use Hudson with Azure Blob storage as a repository for build artifacts." metaCanonical="" services="storage" documentationCenter="Java" title="Using Azure Storage with a Hudson Continuous Integration solution" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
 
 # Hudson 継続的インテグレーション ソリューションでの Azure ストレージの使用
 
-*[Microsoft Open Technologies Inc.][]*
+*[Microsoft Open Technologies Inc.][Microsoft Open Technologies Inc.]*
 
 ここでは、Hudson 継続的インテグレーション (CI) ソリューションで作成されるビルド アーティファクトのリポジトリとして、または、ビルド プロセスで使用されるダウンロード可能なファイルのソースとして Azure BLOB サービスを使用する方法について説明します。この方法が有用になるシナリオの 1 つが、アジャイル開発環境で (Java などの言語を使って) コーディングをしており、継続的インテグレーションに基づいてビルドを実行するとき、ビルド アーティファクト用のリポジトリが必要な場合です。このリポジトリがあれば、ビルド アーティファクトを他の組織のメンバーや顧客と共有したり、そのアーカイブを保存したりできます。もう 1 つのシナリオとしては、ビルド ジョブ自体にその他のファイルが必要になる場合、たとえば、ビルドの入力で依存関係のダウンロードが必要になる場合などが考えられます。
 
@@ -12,21 +12,21 @@
 
 ## 目次
 
--   [Hudson の概要][]
--   [BLOB サービスを使用するメリット][]
--   [前提条件][]
--   [Hudson CI で BLOB サービスを使用する方法][]
--   [Azure ストレージ プラグインのインストール方法][]
--   [Azure ストレージ プラグインを構成してストレージ アカウントを使用する方法][]
--   [ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションの作成方法][]
--   [BLOB ストレージからのダウンロードを実行するビルド手順の作成方法][]
--   [BLOB サービスが使用するコンポーネント][]
+-   [Hudson の概要][Hudson の概要]
+-   [BLOB サービスを使用するメリット][BLOB サービスを使用するメリット]
+-   [前提条件][前提条件]
+-   [Hudson CI で BLOB サービスを使用する方法][Hudson CI で BLOB サービスを使用する方法]
+-   [Azure ストレージ プラグインのインストール方法][Azure ストレージ プラグインのインストール方法]
+-   [Azure ストレージ プラグインを構成してストレージ アカウントを使用する方法][Azure ストレージ プラグインを構成してストレージ アカウントを使用する方法]
+-   [ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションの作成方法][ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションの作成方法]
+-   [BLOB ストレージからのダウンロードを実行するビルド手順の作成方法][BLOB ストレージからのダウンロードを実行するビルド手順の作成方法]
+-   [BLOB サービスが使用するコンポーネント][BLOB サービスが使用するコンポーネント]
 
 ## <span id="overview"></span></a><span class="short header">概要</span>Hudson の概要
 
 Hudson では、開発者がコードの変更を簡単に統合し、ビルドを自動的に頻繁に生成できるようになり、ソフトウェア プロジェクトの継続的な統合が実現されます。これにより、開発者の生産性が向上します。ビルドはバージョン管理され、ビルド アーティファクトをさまざまなリポジトリにアップロードできます。このトピックでは、Azure BLOB ストレージをビルド アーティファクトのリポジトリとして使用する方法について説明します。また、Azure BLOB ストレージから依存関係をダウンロードする方法も紹介します。
 
-Hudson の詳細については、「[Meet Hudson (Hudson について)][]」を参照してください。
+Hudson の詳細については、「[Meet Hudson (Hudson について)][Meet Hudson (Hudson について)]」を参照してください。
 
 ## <span id="benefits"></span></a><span class="short header">メリット</span>BLOB サービスを使用するメリット
 
@@ -60,7 +60,7 @@ Hudson CI ソリューションで BLOB サービスを使用するには、次�
 
 -   Azure アカウント。Azure アカウントには、<http://www.windowsazure.com> でサインアップできます。
 
--   Azure ストレージ アカウント。まだストレージ アカウントを取得していない場合には、[ストレージ アカウントの作成方法][]を示した記事の手順に従って作成できます。
+-   Azure ストレージ アカウント。まだストレージ アカウントを取得していない場合には、[ストレージ アカウントの作成方法][ストレージ アカウントの作成方法]を示した記事の手順に従って作成できます。
 
 -   以降では、Hudson CI のビルド アーティファクトで BLOB サービスをリポジトリとして使用するうえで必要な手順を、基本的な例を使って説明しています。Hudson CI ソリューションにある程度習熟していることが望ましいものの、必須ではありません。
 
@@ -114,7 +114,7 @@ Hudson で BLOB サービスを使用するには、Azure ストレージ プラ
 
     **[Execute Windows batch command]** にスクリプトを入力した **[Command]** セクションの下には、Hudson が認識できる環境変数へのリンクがあります。環境変数の名前および説明を確認するには、リンクをクリックします。**BUILD\_URL** など、特殊文字が含まれる環境変数は、コンテナー名および共通仮想パスに使用できません。
 
-8.  この例では **[Make new container public by default]** をクリックします。(プライベート コンテナーを使用する場合には、共有アクセス署名を作成してアクセスを許可する必要があります。ただし、この点についてはこのトピックでは取り扱いません。共有アクセス署名に関する詳細については、[共有アクセス署名の作成に関するページ][]を参照してください)。
+8.  この例では **[Make new container public by default]** をクリックします。(プライベート コンテナーを使用する場合には、共有アクセス署名を作成してアクセスを許可する必要があります。ただし、この点についてはこのトピックでは取り扱いません。共有アクセス署名に関する詳細については、[共有アクセス署名の作成に関するページ][共有アクセス署名の作成に関するページ]を参照してください)。
 9.  [省略可能] ビルド アーティファクトをアップロードする前にコンテナーの内容をクリアする場合、**[Clean container before uploading]** をクリックします (コンテナーの内容をクリアしない場合は、チェック ボックスをオフにします)。
 10. **[List of Artifacts to upload]** では、「text/\*.txt」と入力します。
 11. **[Common virtual path for uploaded artifacts]** では、「**${BUILD\_ID}/${BUILD\_NUMBER}**」と入力します。
@@ -150,7 +150,7 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 
 -   **ストレージ アカウント**: Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。これは、アクセスする BLOB の名前空間の 中でも最高レベルに位置するものです。アカウントに格納できるコンテナーの数は、 コンテナーの合計サイズが 100 TB 未満である限り無制限です。
 -   **コンテナー**: コンテナーは、BLOB のセットをグループ化します。すべての BLOB はコンテナーに格納されている必要があります。1 つのアカウントに格納できるコンテナーの数は無制限です。また、1 つのコンテナーに保存できる BLOB の数も無制限です。
--   **BLOB**: 任意の種類およびサイズのファイルです。Azure ストレージに格納できる BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。ほとんどのファイルは ブロック BLOB です。1 つのブロック BLOB には、最大で 200 GB までのデータを格納できます。このチュートリアルでは、 ブロック BLOB を使用します。もう 1 つの種類の BLOB であるページ BLOB には、最大 1 TB までの データを格納できます。ファイルのバイト数の範囲が頻繁に変更される 場合には、こちらの方が効率的です。BLOB の詳細については、「[ブロック BLOB およびページ BLOB について][]」を参照してください。
+-   **BLOB**: 任意の種類およびサイズのファイルです。Azure ストレージに格納できる BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。ほとんどのファイルは ブロック BLOB です。1 つのブロック BLOB には、最大で 200 GB までのデータを格納できます。このチュートリアルでは、 ブロック BLOB を使用します。もう 1 つの種類の BLOB であるページ BLOB には、最大 1 TB までの データを格納できます。ファイルのバイト数の範囲が頻繁に変更される 場合には、こちらの方が効率的です。BLOB の詳細については、「[ブロック BLOB およびページ BLOB について][ブロック BLOB およびページ BLOB について]」を参照してください。
 -   **URL 形式**: BLOB は、次の URL 形式を使用してアドレスを指定し、アクセスできます。
 
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
@@ -171,7 +171,6 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
   [ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションの作成方法]: #howtocreatepostbuild
   [BLOB ストレージからのダウンロードを実行するビルド手順の作成方法]: #howtocreatebuildstep
   [BLOB サービスが使用するコンポーネント]: #components
-  [Meet Hudson (Hudson について)]: http://wiki.eclipse.org/Hudson-ci/Meet_Hudson
   [ストレージ アカウントの作成方法]: http://go.microsoft.com/fwlink/?LinkId=279823
   [共有アクセス署名の作成に関するページ]: http://go.microsoft.com/fwlink/?LinkId=279889
-  [ブロック BLOB およびページ BLOB について]: http://msdn.microsoft.com/en-us/library/windowsazure/ee691964.aspx
+  [ブロック BLOB およびページ BLOB について]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee691964.aspx
