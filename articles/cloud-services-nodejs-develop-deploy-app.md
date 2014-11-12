@@ -16,7 +16,7 @@
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
-![hello world ページを表示しているブラウザー ウィンドウこの URL は、ページが Azure でホストされていることを示します。][hello world ページを表示しているブラウザー ウィンドウこの URL は、ページが Azure でホストされていることを示します。]
+![hello world ページを表示しているブラウザー ウィンドウこの URL は、ページが Azure でホストされていることを示します。](https://wacomdpsstablestorage.blob.core.windows.net/articlesmedia/demo-ppe.windowsazure.com/en-us/documentation/articles/cloud-services-nodejs-develop-deploy-app/20140107035927/node21.png)
 
 ## 新しいノード アプリケーションの作成
 
