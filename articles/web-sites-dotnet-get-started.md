@@ -1,10 +1,10 @@
 <properties linkid="develop-net-tutorials-get-started-vs2013" pageTitle="Get started with Azure Websites for ASP.NET" metaKeywords="" description="This tutorial shows you how to create an ASP.NET web project in Visual Studio 2013 and deploy it to an Azure Website. In less than 15 minutes you'll have an app up and running in the cloud." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Get started with Azure Websites and ASP.NET" authors="tdykstra"  solutions="" manager="wpickett" editor="mollybos"  />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="hero-article" ms.date="01/01/1900" ms.author="tdykstra"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="hero-article" ms.date="01/01/1900" ms.author="tdykstra" />
 
 # Azure Websites と ASP.NET を使用する
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/develop/net/tutorials/get-started/" title="Visual Studio 2013" class="current">Visual Studio 2013</a><a href="/en-us/develop/net/tutorials/get-started-vs2012/" title="Visual Studio 2012">Visual Studio 2012</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/develop/net/tutorials/get-started/" title="Visual Studio 2013" class="current">Visual Studio 2013</a><a href="/ja-jp/develop/net/tutorials/get-started-vs2012/" title="Visual Studio 2012">Visual Studio 2012</a></div>
 
 このチュートリアルでは、Visual Studio 2013 または Visual Studio 2013 for Web Express を使用して、ASP.NET Web アプリケーションを作成し、Azure の Web サイトにデプロイする方法を示します。このチュートリアルは、Azure または ASP.NET を使用した経験がない読者を対象にしています。このチュートリアルでは、クラウドで動作する単純な Web アプリケーションを作成します。
 
@@ -25,8 +25,8 @@ Azure アカウントは無料で開くことができます。また、まだ V
   <span class="wa-icon-bulb"></span>
 <h5><a name="note"></a>このチュートリアルを完了するには、Azure アカウントが必要です。</h5>
   <ul>
-<li><a href="/en-us/pricing/free-trial/?WT.mc_id=A261C142F">無料で Azure アカウントを開く</a>ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。</li>
-<li><a href="/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F">MSDN サブスクライバーの特典を有効にする</a>こともできます - MSDN サブスクリプションにより、有料の Azure のサービスを使用できるクレジットが毎月与えられます。</li>
+<li><a href="/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F">無料で Azure アカウントを開く</a>ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。</li>
+<li><a href="/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F">MSDN サブスクライバーの特典を有効にする</a>こともできます - MSDN サブスクリプションにより、有料の Azure のサービスを使用できるクレジットが毎月与えられます。</li>
   <ul>
 </div>
 
@@ -39,7 +39,7 @@ Azure アカウントは無料で開くことができます。また、まだ V
 -   [管理ポータルでサイトを監視および管理する][管理ポータルでサイトを監視および管理する]
 -   [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [install-sdk-2013-only][install-sdk-2013-only]]
+[WACOM.INCLUDE [install-sdk-2013-only](../includes/install-sdk-2013-only.md)]
 
 ## ASP.NET Web アプリケーションを作成する
 
@@ -224,7 +224,7 @@ Azure アカウントは無料で開くことができます。また、まだ V
 
 [Azure の管理ポータル][Azure の管理ポータル]は、作成した Web サイトなどの Azure のサービスを管理および監視できる Web インターフェイスです。チュートリアルのこのセクションでは、ポータルで何ができるかを確認できます。
 
-1.  ブラウザーで、[][]<http://manage.windowsazure.com></a> に移動し、Azure 資格情報でサインインします。
+1.  ブラウザーで、[http://manage.windowsazure.com]() に移動し、Azure 資格情報でサインインします。
 
     このポータルには、Azure サービスの一覧が表示されます。
 
@@ -298,11 +298,7 @@ Azure アカウントは無料で開くことができます。また、まだ V
 
     Azure では、このチュートリアルで示したように Websites で、または Cloud Services や Virtual Machines で、Web アプリケーションを実行することができます。詳細については、「[Azure 実行モデル][Azure 実行モデル]」と「[Azure の Web Sites、Cloud Services、Virtual Machines: いつ、どれを使用するか][Azure の Web Sites、Cloud Services、Virtual Machines: いつ、どれを使用するか]」を参照してください。
 
-  [Visual Studio 2013]: /en-us/develop/net/tutorials/get-started/ "Visual Studio 2013"
-  [Visual Studio 2012]: /en-us/develop/net/tutorials/get-started-vs2012/ "Visual Studio 2012"
   [Web site home page]: ./media/web-sites-dotnet-get-started-vs2013/deployedandazure.png
-  [無料で Azure アカウントを開く]: /en-us/pricing/free-trial/?WT.mc_id=A261C142F
-  [MSDN サブスクライバーの特典を有効にする]: /en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
   [開発環境を設定する]: #set-up-the-development-environment
   [Visual Studio で ASP.NET Web アプリケーションを作成する]: #create-an-aspnet-web-application
   [Azure にアプリケーションを展開する]: #deploy-the-application-to-azure
@@ -336,7 +332,7 @@ Azure アカウントは無料で開くことができます。また、まだ V
   [Chooose Publish]: ./media/web-sites-dotnet-get-started-vs2013/choosepublish.png
   [Click Publish]: ./media/web-sites-dotnet-get-started-vs2013/clickpublish.png
   [Web One Click Publish Toolbar]: ./media/web-sites-dotnet-get-started-vs2013/weboneclickpublish.png
-  [Azure の管理ポータル]: /en-us/services/management-portal/
+  [Azure の管理ポータル]: /ja-jp/services/management-portal/
   []: 
   [Portal home page with new web site called out]: ./media/web-sites-dotnet-get-started-vs2013/portalhome.png
   [Portal web site dashboard tab]: ./media/web-sites-dotnet-get-started-vs2013/portaldashboard.png
@@ -347,17 +343,15 @@ Azure アカウントは無料で開くことができます。また、まだ V
   [Portal web site configure tab]: ./media/web-sites-dotnet-get-started-vs2013/portalconfigure.png
   [[規模の設定]]: /ja-jp/documentation/articles/web-sites-scale/
   [Portal website scale tab]: ./media/web-sites-dotnet-get-started-vs2013/portalscale.png
-  [Azure プレビュー ポータル]: /en-us/overview/preview-portal/
+  [Azure プレビュー ポータル]: /ja-jp/overview/preview-portal/
   [ソース管理システム]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control
   [デプロイメントの自動化]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery
   [Azure の Web サイトをデプロイする方法]: /ja-jp/documentation/articles/web-sites-deploy/"
-  [Automate Everything (Building Real-World Cloud Apps with Azure) (すべてを自動化 - Azure での実際のクラウド アプリケーションのビルド)]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything
-  [Visual Studio での Azure の Web サイトのトラブルシューティング]: /en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/
-  [メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET MVC アプリケーションを Azure の Web サイトに展開する]: /en-us/develop/net/tutorials/web-site-with-sql-database/
+  [Visual Studio での Azure の Web サイトのトラブルシューティング]: /ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/
+  [メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET MVC アプリケーションを Azure の Web サイトに展開する]: /ja-jp/develop/net/tutorials/web-site-with-sql-database/
   [Azure の Web サイトのカスタム ドメイン名の構成]: /ja-jp/documentation/articles/web-sites-custom-domain-name/
   [Azure の Web サイトでの HTTPS の有効化]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-configure-ssl-certificate/
   [Web サイトの構成方法]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-configure/
   [ASP.NET SignalR]: http://www.asp.net/signalr
-  [Using SignalR with Windows Azure Websites (Windows Azure Websites で SignalR を使用する)]: http://www.asp.net/signalr/overview/signalr-20/getting-started-with-signalr-20/using-signalr-with-windows-azure-web-sites
-  [Azure 実行モデル]: /en-us/develop/net/fundamentals/compute/
-  [Azure の Web Sites、Cloud Services、Virtual Machines: いつ、どれを使用するか]: /en-us/manage/services/web-sites/choose-web-app-service/
+  [Azure 実行モデル]: /ja-jp/develop/net/fundamentals/compute/
+  [Azure の Web Sites、Cloud Services、Virtual Machines: いつ、どれを使用するか]: /ja-jp/manage/services/web-sites/choose-web-app-service/

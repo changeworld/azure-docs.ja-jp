@@ -14,27 +14,27 @@
 
 このトピックでは、Azure モバイル サービスのオフライン機能を使用する方法を説明します。Azure モバイル サービスのオフライン機能を使用すると、モバイル サービスに対してオフラインになっている状況でも、ローカル データベースとやり取りすることができます。再びオンライン状態に復帰したときに、オフライン機能により、ローカルの変更をモバイル サービスに同期させることができます。
 
-このチュートリアルでは、[モバイル サービスの使用][] または [データの使用][] いずれかのチュートリアルで使用したアプリケーションを更新し、Azure モバイル サービスのオフライン機能をサポートできるようにします。その後、切断されたオフラインの状況でデータを追加し、それらの項目をオンライン データベースに同期してから、Azure の管理ポータルにログインして、アプリケーションを実行したときにデータに加えた変更を表示します。
+このチュートリアルでは、[モバイル サービスの使用][モバイル サービスの使用] または [データの使用][データの使用] いずれかのチュートリアルで使用したアプリケーションを更新し、Azure モバイル サービスのオフライン機能をサポートできるようにします。その後、切断されたオフラインの状況でデータを追加し、それらの項目をオンライン データベースに同期してから、Azure の管理ポータルにログインして、アプリケーションを実行したときにデータに加えた変更を表示します。
 
-> [WACOM.NOTE] このチュートリアルの目的は、Azure を使用して Windows Phone アプリケーションのデータを格納および取得できるようにするための Mobile Services のしくみを説明することにあります。モバイル サービスを初めて使用する場合は、最初にチュートリアル「[モバイル サービスの使用][]」を完了することをお勧めします。
+> [WACOM.NOTE] このチュートリアルの目的は、Azure を使用して Windows Phone アプリケーションのデータを格納および取得できるようにするための Mobile Services のしくみを説明することにあります。モバイル サービスを初めて使用する場合は、最初にチュートリアル「[モバイル サービスの使用][モバイル サービスの使用]」を完了することをお勧めします。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
-1.  [オフライン機能をサポートするようにアプリケーションを更新する][]
-2.  [オフラインの状況でアプリケーションをテストする][]
-3.  [モバイル サービスに再接続するようにアプリケーションを更新する][]
-4.  [モバイル サービスに接続されているアプリケーションをテストする][]
+1.  [オフライン機能をサポートするようにアプリケーションを更新する][オフライン機能をサポートするようにアプリケーションを更新する]
+2.  [オフラインの状況でアプリケーションをテストする][オフラインの状況でアプリケーションをテストする]
+3.  [モバイル サービスに再接続するようにアプリケーションを更新する][モバイル サービスに再接続するようにアプリケーションを更新する]
+4.  [モバイル サービスに接続されているアプリケーションをテストする][モバイル サービスに接続されているアプリケーションをテストする]
 
 このチュートリアルには、次のものが必要です。
 
 -   Visual Studio 2012
--   [Windows Phone 8 SDK][]
--   「[モバイル サービスの使用][]」または「[データの使用][]」チュートリアルを完了している。
--   [Azure Mobile Services SDK バージョン 1.3.0-alpha4 (またはこれ以降)][]
--   [Azure Mobile Services SQLite Store バージョン 1.0.0-alpha4 (またはこれ以降)][]
--   [SQLite for Windows Phone 8][]
+-   [Windows Phone 8 SDK][Windows Phone 8 SDK]
+-   「[モバイル サービスの使用][モバイル サービスの使用]」または「[データの使用][データの使用]」チュートリアルを完了している。
+-   [Azure Mobile Services SDK バージョン 1.3.0-alpha4 (またはこれ以降)][Azure Mobile Services SDK バージョン 1.3.0-alpha4 (またはこれ以降)]
+-   [Azure Mobile Services SQLite Store バージョン 1.0.0-alpha4 (またはこれ以降)][Azure Mobile Services SQLite Store バージョン 1.0.0-alpha4 (またはこれ以降)]
+-   [SQLite for Windows Phone 8][SQLite for Windows Phone 8]
 
-> [WACOM.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト][]を参照してください。
+> [WACOM.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト][Azure の無料評価版サイト]を参照してください。
 
 ## <a name="enable-offline-app"></a>オフライン機能をサポートするようにアプリケーションを更新する
 
@@ -42,15 +42,15 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 
 このセクションでは、オフライン機能のローカル ストアとして SQLite を使用します。
 
-> [WACOM.NOTE] このセクションをスキップし、既にオフラインをサポートしている Getting Started プロジェクトのバージョンをダウンロードすることもできます。オフライン サポートが有効になっているプロジェクトをダウンロードするには、「[Getting Started Offline Sample for Windows Phone (Windows Phone のオフライン サンプルの使用)][]」を参照してください。
+> [WACOM.NOTE] このセクションをスキップし、既にオフラインをサポートしている Getting Started プロジェクトのバージョンをダウンロードすることもできます。オフライン サポートが有効になっているプロジェクトをダウンロードするには、「[Getting Started Offline Sample for Windows Phone (Windows Phone のオフライン サンプルの使用)][Getting Started Offline Sample for Windows Phone (Windows Phone のオフライン サンプルの使用)]」を参照してください。
 
-1.  SQLite for Windows Phone 8 プロジェクトをインストールします。このリンク [SQLite for Windows Phone 8][] からインストールできます。
+1.  SQLite for Windows Phone 8 プロジェクトをインストールします。このリンク [SQLite for Windows Phone 8][SQLite for Windows Phone 8] からインストールできます。
 
     > [WACOM.NOTE] Internet Explorer を使用している場合は、SQLite をインストールするためにこのリンクをクリックすると、.vsix を .zip ファイルとしてダウンロードするためのプロンプトが表示されることがあります。ファイルに .zip ではなく .vsix 拡張子を付けて、ハード ドライブ上の場所に保存します。エクスプローラーで .vsix ファイルをダブルクリックすると、インストールが実行されます。
 
-2.  Visual Studio で、「[モバイル サービスの使用][]」または「[データの使用][]」のチュートリアルで完成したプロジェクトを開きます。ソリューション エクスプローラーで、プロジェクトにある **[参照設定]** を右クリックし、**[Windows Phone]**\>**[Extensions]** で **SQLite for Windows Phone** への参照を追加します。
+2.  Visual Studio で、「[モバイル サービスの使用][モバイル サービスの使用]」または「[データの使用][データの使用]」のチュートリアルで完成したプロジェクトを開きます。ソリューション エクスプローラーで、プロジェクトにある **[参照設定]** を右クリックし、**[Windows Phone]**\>**[Extensions]** で **SQLite for Windows Phone** への参照を追加します。
 
-    ![][]
+    ![][0]
 
 3.  SQLite ランタイムでは、ビルド対象のプロジェクトのプロセッサ アーキテクチャを **[x86]**、**[x64]**、または **[ARM]** に変更する必要があります。**[任意の CPU]** はサポートされません。プロセッサ アーキテクチャを、サポートされているテスト対象のいずれかの設定に変更します。
 
@@ -235,11 +235,11 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 
     クエリを指定することを許可する、**PullAsync()** のオーバー ロードも存在します。モバイル サービスのオフライン サポートに関するプレビュー リリースでは、**PullAsync** は、対応するテーブル (またはクエリ) 内にあるすべての行を読み取る予定です。たとえば、前回の同期より新しい行のみを読み取ろうとすることはありません。行が既にローカルの同期テーブル内に存在している場合は、それらの行は変化しないままです。
 
--   オフライン サポートが有効になっているプロジェクトをダウンロードするには、「[Getting Started Offline Sample for Windows Phone (Windows Phone のオフライン サンプルの使用)][]」を参照してください。
+-   オフライン サポートが有効になっているプロジェクトをダウンロードするには、「[Getting Started Offline Sample for Windows Phone (Windows Phone のオフライン サンプルの使用)][Getting Started Offline Sample for Windows Phone (Windows Phone のオフライン サンプルの使用)]」を参照してください。
 
 ## 次のステップ
 
--   [モバイル サービスのオフライン サポートでの競合を処理する][]
+-   [モバイル サービスのオフライン サポートでの競合を処理する][モバイル サービスのオフライン サポートでの競合を処理する]
 
 <!-- Anchors. --> 
 <!-- Images --> 
@@ -260,9 +260,9 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 [Azure Mobile Services SDK バージョン 1.3.0-alpha4 (またはこれ以降)]: http://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.0-alpha4
 [Azure Mobile Services SQLite Store バージョン 1.0.0-alpha4 (またはこれ以降)]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.0-alpha4
 [SQLite for Windows Phone 8]: http://go.microsoft.com/fwlink/?LinkId=397953
-[Azure の無料評価版サイト]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AE564AB28
+[Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28
 [Getting Started Offline Sample for Windows Phone (Windows Phone のオフライン サンプルの使用)]: http://go.microsoft.com/fwlink/?LinkId=397952
-[]: ./media/mobile-services-windows-phone-get-started-offline-data/mobile-services-add-reference-sqlite-dialog.png
+[0]: ./media/mobile-services-windows-phone-get-started-offline-data/mobile-services-add-reference-sqlite-dialog.png
 [1]: ./media/mobile-services-windows-phone-get-started-offline-data/vs-select-processor-architecture.png
 [2]: ./media/mobile-services-windows-phone-get-started-offline-data/mobile-services-sqlitestore-nuget.png
 [3]: ./media/mobile-services-windows-phone-get-started-offline-data/ui-screenshot.png
