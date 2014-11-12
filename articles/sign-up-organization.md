@@ -4,7 +4,7 @@
 
 # Azure への組織としてのサインアップ
 
-[WACOM.INCLUDE [disclaimer][disclaimer]]
+[WACOM.INCLUDE [disclaimer][]]
 
 最近まで、新しい Azure サブスクリプションにサインアップするには、必ず Microsoft アカウント (Windows Live ID) を使用する必要がありました。現在、Azure では、次に示す 2 つのアカウントのいずれかを使用してサインアップすることができます。
 
@@ -14,13 +14,13 @@
 
     このテナントが作成されたら、管理者が各従業員/学生に組織アカウントを発行し、それぞれがアクセスする必要があるクラウド サービス (Azure など) のサブスクリプションに基づいて各アカウントにライセンスを付与できます。
 
-組織として Azure にサインアップする必要がある場合は、[**今すぐサインアップ**][**今すぐサインアップ**]
+組織として Azure にサインアップする必要がある場合は、[**今すぐサインアップ**][]
 
 **その他のリソース**
 
--   [Azure AD とは][Azure AD とは]
--   [TechNet の Azure AD ライブラリ][TechNet の Azure AD ライブラリ]
--   [MSDN の Azure AD ライブラリ][MSDN の Azure AD ライブラリ]
+-   [Azure AD とは][]
+-   [TechNet の Azure AD ライブラリ][]
+-   [MSDN の Azure AD ライブラリ][]
 
   [disclaimer]: ../includes/disclaimer.md
   [詳細情報]: http://windows.microsoft.com/en-US/windows-live/sign-in-what-is-microsoft-account
