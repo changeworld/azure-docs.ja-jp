@@ -1,4 +1,4 @@
-<properties title="Build an HBase application using Maven" pageTitle="Build an HBase application using Maven" description="Learn how to use Apache Maven to build a Java-based Apache HBase application, then deploy it to Azure HDInsight" metaKeywords="Maven hbase hadoop, hbase hadoop, maven java hbase, maven java hbase hadoop, maven java hadoop, hbase hdinsight, hbase java hdinsight, maven hdinsight, maven java hdinsight, hadoop database, hdinsight database" services="hdinsight" solutions="big-data" documentationCenter="" authors="larryfr" videoId="" scriptId="" />
+<properties title="Maven を使用した HBase アプリケーションのビルド" pageTitle="Maven を使用した HBase アプリケーションのビルド" description="Apache Maven を使用して Java ベースの Apache HBase アプリケーションをビルドし、Azure HDInsight にデプロイする方法について説明します。" metaKeywords="Maven hbase hadoop, hbase hadoop, maven java hbase, maven java hbase hadoop, maven java hadoop, hbase hdinsight, hbase java hdinsight, maven hdinsight, maven java hdinsight, hadoop database, hdinsight database" services="hdinsight" solutions="big-data" documentationCenter="" authors="larryfr" videoId="" scriptId="" manager="paulettm" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/21/2014" ms.author="larryfr" />
 
@@ -18,7 +18,7 @@ Apache Maven を使用して Java で [Apache HBase][Apache HBase] アプリケ�
 
 ## プロジェクトを作成する
 
-1.  開発環境のコマンド ラインから、プロジェクトを作成する場所にディレクトリを変更します。たとえば、`cd code\hdinsight` です。
+1.  開発環境のコマンド ラインから、プロジェクトを作成する場所にディレクトリを変更します。たとえば、`cd code\hdinsight` のように指定します。
 
 2.  Maven でインストールされた **mvn** コマンドを使用し、プロジェクトのスキャフォールディングを生成します。
 
@@ -116,14 +116,18 @@ Apache Maven を使用して Java で [Apache HBase][Apache HBase] アプリケ�
          */
         -->
         <configuration>
+          <property>
             <name>hbase.cluster.distributed</name>
             <value>true</value>
           </property>
           <property>
             <name>hbase.zookeeper.quorum</name>
-            <value>zookeepernode0:2181 zookeepernode1:2181 zookeepernode2:2181</value>
+            <value>zookeeper0,zookeeper1,zookeeper2</value>
           </property>
-
+          <property>
+            <name>hbase.zookeeper.property.clientPort</name>
+            <value>2181</value>
+          </property>
         </configuration>
 
     このファイルは、HDInsight クラスター用の HBase 構成の読み込みに使用されます。

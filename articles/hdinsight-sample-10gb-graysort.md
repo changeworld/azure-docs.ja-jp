@@ -1,12 +1,12 @@
-<properties linkid="manage-services-hdinsight-sample-10gb-graysort" urlDisplayName="Hadoop Samples in HDInsight" pageTitle="The 10GB GraySort sample | Azure" metaKeywords="hdinsight, hadoop, hdinsight administration, hdinsight administration azure" description="Learn how to run a general purpose GraySort on Hadoop with HDInsight using Azure PowerShell." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="The 10GB GraySort sample" authors="bradsev" />
+<properties urlDisplayName="Hadoop Samples in HDInsight" pageTitle="10 GB GraySort サンプル | Azure" metaKeywords="hdinsight, hadoop, hdinsight administration, hdinsight administration azure" description="このサンプル トピックでは、Azure PowerShell を使用して、HDInsight で Hadoop の汎用的な GraySort を実行する方法について説明します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="10 GB GraySort サンプル" authors="bradsev" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev" />
 
 # HDInsight での 10 GB GraySort Hadoop サンプル
 
 このサンプル トピックでは、Azure PowerShell を使用して、Azure HDInsight で汎用 GraySort Hadoop MapReduce プログラムを実行する方法について説明します。GraySort はベンチマーク ソートで、その評価尺度は、非常に大量のデータ、通常は最低でも 100 TB のデータをソートした際のソート速度 (TB/分) です。
 
-このサンプルでは、比較的高速に実行できるように、中程度のサイズの 10 GB のデータを使用します。使用する MapReduce アプリケーションは Owen O'Malley と Arun Murthy が開発したもので、2009 年にはテラバイト ソート ベンチマークの汎用目的 ("daytona") 部門で 0.578 TB/分 (173 分で 100 TB) という年間記録を樹立しました。これも含めたソート ベンチマークの詳細については、[Sortbenchmark][] サイトを参照してください。
+このサンプルでは、比較的高速に実行できるように、中程度のサイズの 10 GB のデータを使用します。使用する MapReduce アプリケーションは Owen O'Malley と Arun Murthy が開発したもので、2009 年にはテラバイト ソート ベンチマークの汎用目的 ("daytona") 部門で 0.578 TB/分 (173 分で 100 TB) という年間記録を樹立しました。これも含めたソート ベンチマークの詳細については、[Sortbenchmark][Sortbenchmark] サイトを参照してください。
 
 このサンプルでは 3 組の MapReduce プログラムを使用します。
 
@@ -23,24 +23,24 @@
 
 **前提条件**:
 
--   Azure アカウントが必要です。アカウントにサインアップする方法については、[Azure の無料評価版のページ][]を参照してください。
+-   Azure アカウントが必要です。アカウントにサインアップする方法については、[Azure の無料評価版のページ][Azure の無料評価版のページ]を参照してください。
 
--   HDInsight クラスターのプロビジョニングを終えている必要があります。クラスターを作成するさまざまな方法については、「[HDInsight クラスターのプロビジョニング][]」を参照してください。
+-   HDInsight クラスターのプロビジョニングを終えている必要があります。クラスターを作成するさまざまな方法については、「[HDInsight クラスターのプロビジョニング][HDInsight クラスターのプロビジョニング]」を参照してください。
 
--   Azure PowerShell をインストールして、アカウントを使用するように構成している必要があります。その手順については、「[Azure PowerShell のインストールおよび構成][]」を参照してください。
+-   Azure PowerShell をインストールして、アカウントを使用するように構成している必要があります。その手順については、「[Azure PowerShell のインストールおよび構成][Azure PowerShell のインストールおよび構成]」を参照してください。
 
 ## この記事の内容
 
 このトピックでは、サンプルを構成する一連の MapReduce プログラムを実行する方法を説明し、MapReduce プログラムの Java コードを示し、説明した内容をまとめ、次の手順の概略を示します。ここで取り上げる内容は次のとおりです。
 
-1.  [Azure PowerShell を使用したサンプルの実行][]
-2.  [TeraSort MapReduce プログラムの Java コード][]
-3.  [まとめ][]
-4.  [次のステップ][]
+1.  [Azure PowerShell を使用したサンプルの実行][Azure PowerShell を使用したサンプルの実行]
+2.  [TeraSort MapReduce プログラムの Java コード][TeraSort MapReduce プログラムの Java コード]
+3.  [まとめ][まとめ]
+4.  [次のステップ][次のステップ]
 
 ## <span id="run-sample"></span></a>Azure PowerShell を使用したサンプルの実行
 
-サンプルでは 3 つのタスクが必要です。タスクのそれぞれが、先に説明した MapReduce プログラムに対応しています。
+サンプルでは 3 つのタスクを実行する必要があります。各タスクが、先ほど説明した MapReduce プログラムに対応しています。
 
 1.  **TeraGen** MapReduce ジョブを実行して、ソート用のデータを生成します。
 2.  **TeraSort** MapReduce ジョブを実行して、データをソートします。
@@ -397,16 +397,16 @@
 
 Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実行するチュートリアルや、Pig、Hive、MapReduce の使用方法に関するチュートリアルについては、次のトピックを参照してください。
 
--   [Azure HDInsight の概要][]
--   [サンプル: Pi 推定][]
--   [サンプル: ワードカウント][]
--   [サンプル: C# ストリーミング][]
--   [HDInsight での Pig の使用][]
--   [HDInsight での Hive の使用][]
--   [Azure HDInsight SDK のドキュメント][]
+-   [Azure HDInsight の概要][Azure HDInsight の概要]
+-   [サンプル: Pi 推定][サンプル: Pi 推定]
+-   [サンプル: ワードカウント][サンプル: ワードカウント]
+-   [サンプル: C# ストリーミング][サンプル: C# ストリーミング]
+-   [HDInsight での Pig の使用][HDInsight での Pig の使用]
+-   [HDInsight での Hive の使用][HDInsight での Hive の使用]
+-   [Azure HDInsight SDK のドキュメント][Azure HDInsight SDK のドキュメント]
 
   [Sortbenchmark]: http://sortbenchmark.org/
-  [Azure の無料評価版のページ]: http://azure.microsoft.com/en-us/pricing/free-trial/
+  [Azure の無料評価版のページ]: http://azure.microsoft.com/ja-jp/pricing/free-trial/
   [HDInsight クラスターのプロビジョニング]: ../hdinsight-provision-clusters/
   [Azure PowerShell のインストールおよび構成]: ../install-configure-powershell/
   [Azure PowerShell を使用したサンプルの実行]: #run-sample
@@ -419,4 +419,4 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
   [サンプル: C# ストリーミング]: ../hdinsight-sample-csharp-streaming/
   [HDInsight での Pig の使用]: ../hdinsight-use-pig/
   [HDInsight での Hive の使用]: ../hdinsight-use-hive/
-  [Azure HDInsight SDK のドキュメント]: http://msdnstage.redmond.corp.microsoft.com/en-us/library/dn479185.aspx
+  [Azure HDInsight SDK のドキュメント]: http://msdnstage.redmond.corp.microsoft.com/ja-jp/library/dn479185.aspx

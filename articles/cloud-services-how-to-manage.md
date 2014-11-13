@@ -1,10 +1,8 @@
-<properties linkid="manage-services-how-to-manage-a-cloud-service" urlDisplayName="How to manage" pageTitle="How to manage a cloud service - Azure" metaKeywords="Azure manage cloud services, Azure Management Portal cloud services" description="Learn how to manage cloud services in the Azure Management Portal." metaCanonical="" services="cloud-services" documentationCenter="" title="How to Manage Cloud Services" authors="ryanwi" solutions="" manager="timlt" editor="" />
+<properties urlDisplayName="How to manage" pageTitle="クラウド サービスの管理方法 - Azure" metaKeywords="Azure manage cloud services, Azure Management Portal cloud services" description="Azure の管理ポータルでクラウド サービスを管理する方法について説明します。" metaCanonical="" services="cloud-services" documentationCenter="" title="クラウド サービスの管理方法" authors="ryanwi" solutions="" manager="timlt" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="ryanwi" />
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/23/2014" ms.author="ryanwi" />
 
 # クラウド サービスの管理方法
-
-[WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
 
 Azure の管理ポータルの **[クラウド サービス]** 領域では、サービス ロールまたは展開の更新、ステージングされた展開の運用環境への昇格、クラウド サービスに対するリソースのリンク (リソースの依存関係を把握してリソースの規模をまとめて設定するため)、およびクラウド サービスまたは展開の削除ができます。
 
@@ -21,19 +19,17 @@ Azure の管理ポータルの **[クラウド サービス]** 領域では、�
 
 1.  [Azure の管理ポータル][Azure の管理ポータル]のダッシュボード、**[クラウド サービス]** ページ、または **[インスタンス]** ページで、**[更新]** をクリックします。
 
-    **[展開を更新する]** が開きます。
-
     ![UpdateDeployment][UpdateDeployment]
 
-2.  **[展開ラベル]** ボックスに、展開を識別する名前を入力します (たとえば、mycloudservicev2)。展開名はダッシュボードの **[クイック スタート]** に表示されます。
+2.  **[デプロイ ラベル]** ボックスに、デプロイメントを識別する名前を入力します (たとえば、mycloudservice4)。デプロイ ラベルはダッシュボードの **[クイック スタート]** に表示されます。
 
-3.  **[パッケージ ファイル]** で、**[参照]** を使ってサービス パッケージ ファイル (.cspkg) をアップロードします。
+3.  **[パッケージ]** で、**[参照]** を使ってサービス パッケージ ファイル (.cspkg) をアップロードします。
 
-4.  **[構成ファイル]** で、**[参照]** を使ってサービス構成ファイル (.cscfg) をアップロードします。
+4.  **[構成]** で、**[参照]** を使ってサービス構成ファイル (.cscfg) をアップロードします。
 
-5.  **[ロール]** で、クラウド サービスのすべてのロールをアップグレードする場合は、**[すべて]** をクリックします。あるロールのアップグレードを実行するには、アップグレードするロールを選択します。特定のロールを選択して更新した場合でも、サービス構成ファイルの更新内容はすべてのロールに適用されます。
+5.  **[ロール]** で、クラウド サービスのすべてのロールをアップグレードする場合は、**[すべて]** をクリックします。1 つのロールの更新を実行するには、更新するロールを選択します。特定のロールを選択して更新した場合でも、サービス構成ファイルの更新内容はすべてのロールに適用されます。
 
-6.  アップグレードによってロールの数またはロールのサイズが変わる場合は、**[ロールのサイズまたは数が変更された場合に更新を許可する]** チェック ボックスをオンにしないと更新を続行できません。
+6.  更新によってロールの数またはロールのサイズが変わる場合は、**[ロールのサイズまたは数が変更された場合に更新を許可する]** チェック ボックスをオンにしないと更新を続行できません。
 
     ロールのサイズ (つまり、ロール インスタンスをホスティングする仮想マシンのサイズ) またはロールの数を変更した場合、各ロール インスタンス (仮想マシン) にイメージを再適用する必要があり、ローカル データがすべて失われることに注意してください。
 
@@ -41,7 +37,7 @@ Azure の管理ポータルの **[クラウド サービス]** 領域では、�
 
     Azure でクラウド サービスの更新中に 99.95% の可用性を保証できるのは、各ロールに少なくとも 2 つのロール インスタンス (仮想マシン) がある場合だけです。この場合、1 台の仮想マシンでクライアントからの要求を処理し、もう 1 台で更新を行うことができます。
 
-8.  [OK] (チェックマーク) をクリックして、サービスの更新を開始します。
+8.  **[OK]** (チェックマーク) をクリックして、サービスの更新を開始します。
 
 ## <span id="swap"></span></a>方法: デプロイをスワップしてステージングされたデプロイを運用環境に昇格
 
@@ -140,7 +136,6 @@ Azure の管理ポータルの **[クラウド サービス]** 領域では、�
 > [WACOM.NOTE]
 > Azure でクラウド サービスに詳細監視が設定されている場合、クラウド サービスを削除しても、ストレージ アカウントから監視データは削除されません。データは手作業で削除する必要があります。メトリック テーブルのある場所については、「[クラウド サービスの監視方法][クラウド サービスの監視方法]」の「方法: 管理ポータル外で詳細監視データにアクセス」を参照してください。
 
-  [disclaimer]: ../includes/disclaimer.md
   [方法: クラウド サービス ロールまたはデプロイの更新]: #updaterole
   [方法: デプロイをスワップしてステージングされたデプロイを運用環境に昇格]: #swap
   [方法: クラウド サービスに対するリソースのリンク]: #linkresources

@@ -1,6 +1,6 @@
-<properties title="Develop a predictive solution with Azure Machine Learning" pageTitle="Develop a predictive solution with Machine Learning | Azure" description="Walkthrough of how to create a predictive analytics experiment in Azure Machine Learning Studio" metaKeywords="" services="" solutions="" documentationCenter="" authors="garye" videoId="" scriptId="" />
+<properties title="Azure Machine Learning を使用した予測ソリューションの開発" pageTitle="Machine Learning を使用した予測ソリューションの開発 | Azure" description="Azure Machine Learning Studio で予測的な分析手法を作成する方法の段階的説明" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
 
-<tags ms.service="machine-learning" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="garye"></tags>
+<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/06/2014" ms.author="garye" />
 
 # Azure Machine Learning を使用した予測ソリューションの開発
 
@@ -12,15 +12,15 @@
 
 次の手順に従います。
 
-1.  [ML ワークスペースを作成する][]
-2.  [既存のデータをアップロードする][]
-3.  [新しい実験を作成する][]
-4.  [モデルをトレーニングして評価する][]
-5.  [Web サービスを発行する][]
-6.  [Web サービスにアクセスする][]
+1.  [ML ワークスペースを作成する][ML ワークスペースを作成する]
+2.  [既存のデータをアップロードする][既存のデータをアップロードする]
+3.  [新しい実験を作成する][新しい実験を作成する]
+4.  [モデルをトレーニングして評価する][モデルをトレーニングして評価する]
+5.  [Web サービスを発行する][Web サービスを発行する]
+6.  [Web サービスにアクセスする][Web サービスにアクセスする]
 
 このチュートリアルは、ML Studio に含まれる「
-[Credit risk prediction sample experiment (信用リスク予測のサンプル実験)][]」の簡略版に基づきます。
+[Credit risk prediction sample experiment (信用リスク予測のサンプル実験)][Credit risk prediction sample experiment (信用リスク予測のサンプル実験)]」の簡略版に基づきます。
 
   [ML ワークスペースを作成する]: ../machine-learning-walkthrough-1-create-ml-workspace/
   [既存のデータをアップロードする]: ../machine-learning-walkthrough-2-upload-data/

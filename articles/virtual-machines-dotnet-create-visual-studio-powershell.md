@@ -1,6 +1,6 @@
-<properties linkid="dotnet-visualstudio-create-virtual-machine" urlDisplayName="Create a virtual machine for a website" pageTitle="Creating a virtual machine for a web project using Visual Studio" metaKeywords="Visual Studio, ASP.NET, web project, virtual machine" description="Create a virtual machine for a website" metaCanonical="" services="" documentationCenter="" title="Creating a virtual machine for a website with Visual Studio" authors="ghogen" solutions="" manager="" editor="" />
+<properties urlDisplayName="Create a virtual machine for a website" pageTitle="Visual Studio を使用して Web プロジェクト用の仮想マシンを作成する" metaKeywords="Visual Studio, ASP.NET, web project, virtual machine" description="Web サイト用の仮想マシンを作成します。" metaCanonical="" services="" documentationCenter="" title="Visual Studio で Web サイト用の仮想マシンを作成する" authors="ghogen" solutions="" manager="douge" editor="" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-multiple" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ghogen"></tags>
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-multiple" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="ghogen" />
 
 # Visual Studio で Web サイト用の仮想マシンを作成する
 
@@ -11,7 +11,7 @@ Web サイトを作成する際に仮想マシンを作成するには、次の�
 1.  Visual Studio の **[ファイル]** メニューから、**[新しいプロジェクト]**、**[Web]**、**[ASP.NET Web アプリケーション]** の順にクリックします。
 2.  **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、必要な Web アプリケーションの種類を選択します。このダイアログ ボックスの Azure セクション (右下隅) にある **[クラウドでのホスト]** チェック ボックスがオンになっていることを確認してください (インストールによっては、このチェック ボックスに **"リモート リソースの作成"** というラベルが付いている場合もあります)。
 
-    ![][]
+    ![][0]
 
 3.  **[仮想マシン]** をクリックし、さらに **[OK]** をクリックします。
 4.  Azure へのサインインを要求された場合には、サインインしてください。[仮想マシンを作成する] ダイアログ ボックスが表示されます。
@@ -38,13 +38,13 @@ Web サイトを作成する際に仮想マシンを作成するには、次の�
 
     ![][3]
 
-13. (必要に応じて) **サーバー エクスプローラー**で、**[仮想マシン]** ノードを展開し、作成した仮想マシンのノードをクリックします。さらに、**[リモート デスクトップを使用して接続する]** をクリックして仮想マシンに接続します。
+1.  (必要に応じて) **サーバー エクスプローラー**で、**[仮想マシン]** ノードを展開し、作成した仮想マシンのノードをクリックします。さらに、**[リモート デスクトップを使用して接続する]** をクリックして仮想マシンに接続します。
 
 # 次のステップ
 
 発行スクリプトをカスタマイズする場合の詳細については、[ここ][ここ]を参照してください。
 
-  []: ./media/dotnet-visual-studio-create-virtual-machine/CreateVM_NewProject.PNG
+  [0]: ./media/dotnet-visual-studio-create-virtual-machine/CreateVM_NewProject.PNG
   [1]: ./media/dotnet-visual-studio-create-virtual-machine/CreateVM_CreateVM.PNG
   [2]: ./media/dotnet-visual-studio-create-virtual-machine/CreateVM_Provisioning.png
   [3]: ./media/dotnet-visual-studio-create-virtual-machine/CreateVM_SolutionExplorer.png

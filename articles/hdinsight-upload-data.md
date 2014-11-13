@@ -1,4 +1,4 @@
-<properties linkid="manage-services-hdinsight-upload-data-for-hadoop-jobs-in-hdinsight" urlDisplayName="Upload Data" pageTitle="Upload data for Hadoop jobs in HDInsight | Azure" metaKeywords="" description="Learn how to upload and access data in HDInsight using Azure Storage Explorer, Azure PowerShell, the Hadoop command line, or Sqoop." metaCanonical="" services="storage,hdinsight" documentationCenter="" title="Upload data for Hadoop jobs in HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
+<properties urlDisplayName="Upload Data" pageTitle="HDInsight での Hadoop ジョブ用データのアップロード | Azure" metaKeywords="" description="Azure ストレージ エクスプローラー、Azure PowerShell、Hadoop コマンド ライン、または Sqoop を使用して、データを HDInsight にアップロードする方法と HDInsight のデータにアクセスする方法について説明します。" metaCanonical="" services="storage,hdinsight" documentationCenter="" title="HDInsight での Hadoop ジョブ用データのアップロード" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
 
@@ -10,7 +10,7 @@ Azure の HDInsight では、Azure BLOB ストレージ上でフル機能の Had
 
 Azure BLOB ストレージにアクセスするには、[AzCopy][AzCopy]、[Azure PowerShell][Azure PowerShell]、[Azure の .NET 用ストレージ クライアント ライブラリ][Azure の .NET 用ストレージ クライアント ライブラリ]、またはエクスプローラー ツールを使用する方法があります。次に、使用可能なツールの例を示します。
 
--   [Azure ストレージ エクスプローラー][Azure ストレージ エクスプローラー]
+-   [Azure Storage Explorer][Azure Storage Explorer]
 -   [Cloud Storage Studio 2][Cloud Storage Studio 2]
 -   [CloudXplorer][CloudXplorer]
 -   [Azure 用エクスプローラー][Azure 用エクスプローラー]
@@ -184,10 +184,11 @@ Sqoop の使用法の詳細については、「[HDInsight と Hive の使用][H
   [AzCopy]: http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx
   [Azure PowerShell]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj152841.aspx
   [Azure の .NET 用ストレージ クライアント ライブラリ]: /ja-jp/develop/net/how-to-guides/blob-storage/
-  [Azure ストレージ エクスプローラー]: http://azurestorageexplorer.codeplex.com/
+  [Azure Storage Explorer]: http://azurestorageexplorer.codeplex.com/
   [Cloud Storage Studio 2]: http://www.cerebrata.com/Products/CloudStorageStudio/
   [CloudXplorer]: http://clumsyleaf.com/products/cloudxplorer
   [Azure 用エクスプローラー]: http://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx
+  [Azure 用エクスプローラー (PRO)]: http://www.cloudberrylab.com/microsoft-azure-explorer-pro.aspx
   [Azure HDInsight の概要]: ../hdinsight-get-started/
   [HDInsight クラスターのプロビジョニング]: ../hdinsight-provision-clusters/
   [AzCopy を使用して BLOB ストレージにデータをアップロードする]: #azcopy

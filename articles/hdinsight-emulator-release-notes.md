@@ -1,11 +1,21 @@
-<properties linkid="hdinsight-emulator-release-notes" urlDisplayName="HDInsight Emulator release notes" pageTitle="Release notes: Microsoft HDInsight Emulator for Azure | Azure" metaKeywords="hdinsight, Azure hdinsight, hdinsight azure, get started hdinsight, emulator, hdinsight emulator" description="Get late-breaking information about the most recent releases of the HDInsight Hadoop Emulator." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" title="Release notes: Microsoft HDInsight Emulator for Azure" authors="cgronlun" />
+<properties urlDisplayName="HDInsight Emulator release notes" pageTitle="リリース ノート: Microsoft HDInsight Emulator for Azure | Azure" metaKeywords="hdinsight, Azure hdinsight, hdinsight azure, get started hdinsight, emulator, hdinsight emulator" description="HDInsight Emulator の最新リリースについての最新情報を入手します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" title="リリース ノート: Microsoft HDInsight Emulator for Azure" authors="jgao" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="cgronlun" />
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/03/2014" ms.author="jgao" />
 
 # リリース ノート: Microsoft HDInsight Emulator for Azure
 
 > [WACOM.NOTE]
 > バージョン番号を確認する最も簡単な方法は、[プログラムの追加と削除] で [Microsoft HDInsight Emulator for Azure] (Version 1.0.0.0 以上の場合) または [Microsoft HDInsight 開発者プレビュー] (Version 1.0.0.0 未満の場合) の項目を探すことです。
+
+## v2.0.0.0、2014 年 8 月 29 日リリース
+
+-   このリリースでは、Version 3.1 で現在サービスが提供されているのと同じセットの Hadoop プロジェクトを対象とするように HDInsight Emulator が更新されました。
+
+-   この製品のプレビュー リリースと同様に、このリリースも引き続き開発者シナリオを対象としており、そのため単一ノード デプロイメントのみをサポートします。
+
+### 新機能
+
+-   サービスの Version 3.1 に対応させるために [Hadoop コンポーネントのバージョンが更新][Hadoop コンポーネントのバージョンが更新]されました。これには、Hive 0.13 と Tez のサポートが含まれます。
 
 ## v1.0.0.0、2013 年 10 月 28 日リリース
 
@@ -245,6 +255,7 @@
 
 -   [HDInsight Emulator の概要][HDInsight Emulator の概要]
 
+  [Hadoop コンポーネントのバージョンが更新]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/
   []: http://azure.microsoft.com/ja-jp/documentation/services/hdinsight/
   [//{container}@{account}/{path]: mailto://{container}@{account}/{path
   [HDInsight Emulator の概要]: ../hdinsight-get-started-emulator/

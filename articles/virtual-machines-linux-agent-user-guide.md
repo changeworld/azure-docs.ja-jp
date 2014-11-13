@@ -1,6 +1,6 @@
-<properties linkid="manage-linux-howto-linux-agent" urlDisplayName="Linux Agent guide" pageTitle="Linux Agent User Guide for Azure" metaKeywords="" description="Learn how to install and configure Linux Agent (waagent) to manage your virtual machine's interaction with Azure Fabric Controller." metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure Linux Agent User Guide" authors="" solutions="" manager="" editor="" />
+<properties urlDisplayName="Linux Agent guide" pageTitle="Azure Linux エージェント ユーザー ガイド" metaKeywords="" description="Azure ファブリック コントローラーと仮想マシンとの相互動作を管理するために、Linux エージェント (waagent) をインストールして構成する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure Linux エージェント ユーザー ガイド" authors="timlt" solutions="" manager="timlt" editor="" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author></tags>
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="timlt" />
 
 # Azure Linux エージェント ユーザー ガイド
 
@@ -41,11 +41,12 @@ Azure Linux エージェント (waagent) は仮想マシンと Azure ファブ�
 
 最新の Linux エージェントは次のいずれかから直接入手できます。
 
--   [Azure 上での動作保証済みのさまざまな Linux ディストリビューションのプロバイダー][]
--   [Github の Azure Linux エージェント用のオープン ソース リポジトリ][]
+-   [Azure 上での動作保証済みのさまざまな Linux ディストリビューションのプロバイダー][Azure 上での動作保証済みのさまざまな Linux ディストリビューションのプロバイダー]
+-   [Github の Azure Linux エージェント用のオープン ソース リポジトリ][Github の Azure Linux エージェント用のオープン ソース リポジトリ]
 
 ### サポートされている Linux ディストリビューション
 
+-   CoreOS
 -   CentOS 6.2+
 -   Debian 7.0+
 -   Ubuntu 12.04+

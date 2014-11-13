@@ -1,6 +1,6 @@
-<properties linkid="develop-media-services-tutorials-smooth-streaming-windows-store-app" urlDisplayName="Smooth Streaming Windows Store App" pageTitle="Smooth Streaming Windows Store App - Azure .NET tutorials" metaKeywords="" description="Learn how to use Azure Media Services to create a C# Windows Store application with a XML MediaElement control to playback Smooth Stream content." metaCanonical="" services="media-services" documentationCenter="" title="How to Build a Smooth Streaming Windows Store Application" authors="Michael Greenn" solutions="" manager="" editor="" />
+<properties urlDisplayName="Smooth Streaming Windows Store App" pageTitle="スムーズ ストリーミング用の Windows ストア アプリケーション - Azure .NET チュートリアル" metaKeywords="" description="Azure Media Services を使用して、スムーズ ストリーム コンテンツを再生するための XML MediaElement コントロールを備えた Windows ストア アプリケーションを C# で作成する方法について説明します。" metaCanonical="" services="media-services" documentationCenter="" title="スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法" authors="juliako" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="Michael="" Greenn" />
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="juliako" />
 
 # スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法
 
@@ -39,19 +39,18 @@ Windows ストア アプリケーションの開発の詳細については、�
 
 **Windows ストア プロジェクトを作成するには**
 
-1.  Visual Studio 2012 を実行します。
+1.  Visual Studio 2012 またはそれ以降を実行します。
 2.  **[ファイル]** メニューの **[新規作成]** をポイントし、**[プロジェクト]** をクリックします。
 3.  [新しいプロジェクト] ダイアログ ボックスで、次の値を入力または選択します。
 
-	<table border="1">
-	<tr><th>名前</th><th>値</th></tr>
-    <tr><td>テンプレート グループ</td><td>インストール済み/テンプレート/Visual C#/Windows ストア</td></tr>
-    <tr><td>テンプレート</td><td>新しいアプリケーション (XAML)</td></tr>
-    <tr><td>名前</td><td>SSPlayer</td></tr>
-    <tr><td>場所</td><td>C:\\SSTutorials</td></tr>
-    <tr><td>ソリューション名</td><td>SSPlayer</td></tr>
-    <tr><td>ソリューションのディレクトリを作成</td><td>(オン)</td></tr>
-	</table>
+    | 名前                               | 値                                                      |
+    |------------------------------------|---------------------------------------------------------|
+    | テンプレート グループ              | インストール済み/テンプレート/Visual C#/Windows ストア |
+    | テンプレート                       | 新しいアプリケーション (XAML)                           |
+    | 名前                               | SSPlayer                                                |
+    | 場所                               | C:\\SSTutorials                                         |
+    | ソリューション名                   | SSPlayer                                                |
+    | ソリューションのディレクトリを作成 | (オン)                                                  |
 
 4.  **[OK]** をクリックします。
 
@@ -60,11 +59,10 @@ Windows ストア アプリケーションの開発の詳細については、�
 1.  ソリューション エクスプローラーで **[SSPlayer]** を右クリックし、**[参照の追加]** をクリックします。
 2.  次の値を入力または選択します。
 
-	<table border="1">
-    <tr><th>名前</th><th>値</th></tr>
-    <tr><td>参照グループ</td><td>Windows/拡張</td></tr>
-    <tr><td>リファレンス</td><td>Windows 8 用 Microsoft Smooth Streaming Client SDK と Microsoft Visual C++ ランタイム パッケージを選択</td></tr>
-	</table>
+    | 名前         | 値                                                                                                     |
+    |--------------|--------------------------------------------------------------------------------------------------------|
+    | 参照グループ | Windows/拡張                                                                                           |
+    | リファレンス | Windows 8 用 Microsoft Smooth Streaming Client SDK と Microsoft Visual C++ ランタイム パッケージを選択 |
 
 3.  **[OK]** をクリックします。
 
@@ -971,3 +969,5 @@ MediaElement コントロールは、そのままではスムーズ ストリー
   [スムーズ ストリーミング用の Windows ストア アプリケーションの例]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
   [Windows 8 用の優れたアプリケーションの開発]: http://msdn.microsoft.com/ja-jp/windows/apps/br229512.aspx
   [Visual Studio のコード ビューに表示されたスムーズ ストリーミング用の Windows ストア アプリケーション]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
+  [How to build a Smooth Streaming Windows 8 JavaScript application with advanced features (高度な機能を備えたスムーズ ストリーミング用の Windows 8 JavaScript アプリケーションを作成する方法)]: http://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx
+  [Smooth Streaming Technical Overview (スムーズ ストリーミングの技術概要)]: http://www.iis.net/learn/media/on-demand-smooth-streaming/smooth-streaming-technical-overview

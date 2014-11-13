@@ -1,4 +1,4 @@
-<properties linkid="manage-services-hdinsight-connect-excel-with-hive-ODBC" urlDisplayName="Connect Excel to HDInsight" pageTitle="Connect Excel to Hadoop with the Hive ODBC Driver | Azure" metaKeywords="" description="Learn how to set up and use the Microsoft Hive ODBC driver for Excel to query data in an HDInsight cluster." metaCanonical="" services="hdinsight" documentationCenter="" title="Connect Excel to Hadoop with the Microsoft Hive ODBC Driver" authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
+<properties urlDisplayName="Connect Excel to HDInsight" pageTitle="Hive ODBC ドライバーを使用した Excel から Hadoop への接続 | Azure" metaKeywords="" description="Excel 用の Microsoft Hive ODBC ドライバーを使用できるようにセットアップし、HDInsight クラスターのデータを照会する方法を説明します。" metaCanonical="" services="hdinsight" documentationCenter="" title="Microsoft Hive ODBC ドライバーを使用した Excel から Hadoop への接続" authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev" />
 
@@ -43,30 +43,29 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][ダ�
 
 5.  次の値を入力または選択します。
 
-	<table border="1">
-    <tr><td><strong>プロパティ</strong>     </td><td><strong>説明</strong>                                                                                                                                           </td></tr>                                               
-    <tr><td>データ ソース名    </td><td>データ ソースに名前を付けます。                                                                                                                             </td></tr>
-    <tr><td>ホスト             </td><td>「myHDICluster.azurehdinsight.net」など、<hdinsightclustername>.azurehdinsight.net を入力します。                                                        </td></tr>
-    <tr><td>Port               </td><td><strong>443</strong> を使用します (このポートは 563 から 443 に変更されました)。                                                                                         </td></tr>
-    <tr><td>データベース       </td><td><strong>既定のデータベース</strong>を使用します。                                                                                                                        </td></tr>
-    <tr><td>Hive サーバーの種類</td><td><strong>Hive Server 2</strong> を選択します。                                                                                                                      </td></tr>
-    <tr><td>メカニズム         </td><td><strong>Azure HDInsight サービス</strong>を選択します。                                                                                                               </td></tr>
-    <tr><td>HTTP パス          </td><td>空白のままにします。                                                                                                                                  </td></tr>
-    <tr><td>ユーザー名         </td><td>HDInsight クラスター ユーザーのユーザー名を入力します。これは、クラスターのプロビジョニング処理中に作成されるユーザー名です。簡易作成オプションを使用する場合、既定のユーザー名は <strong>admin</strong> です。</td></tr>
-    <tr><td>パスワード         </td><td>HDInsight クラスター ユーザーのパスワードを入力します。                                                                                                         </td></tr>
-	</table>
+    |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | **プロパティ**      | **説明**                                                                                                                                                                                           |
+    | データ ソース名     | データ ソースに名前を付けます。                                                                                                                                                                    |
+    | ホスト              | 「myHDICluster.azurehdinsight.net」など、<hdinsightclustername>.azurehdinsight.net を入力します。                                                                                                  |
+    | Port                | **443** を使用します (このポートは 563 から 443 に変更されました)。                                                                                                                                |
+    | データベース        | **既定のデータベース**を使用します。                                                                                                                                                               |
+    | Hive サーバーの種類 | **Hive Server 2** を選択します。                                                                                                                                                                   |
+    | メカニズム          | **Azure HDInsight サービス**を選択します。                                                                                                                                                         |
+    | HTTP パス           | 空白のままにします。                                                                                                                                                                               |
+    | ユーザー名          | HDInsight クラスター ユーザーのユーザー名を入力します。これは、クラスターのプロビジョニング処理中に作成されるユーザー名です。簡易作成オプションを使用する場合、既定のユーザー名は **admin** です。 |
+    | パスワード          | HDInsight クラスター ユーザーのパスワードを入力します。                                                                                                                                            |
 
     **[詳細オプション]** をクリックするときに、注意する必要のある重要なパラメーターがいくつかあります。
 
-    <table border="1">
-    <tr><td>ネイティブ クエリの使用       </td><td>これを選択すると、ODBC ドライバーは TSQL を HiveQL に変換しません。純粋な HiveQL ステートメントを送信していることを確認している場合にのみ使用します。SQL Server または Azure SQL Database に接続している場合は、オフのままにします。</td></tr>
-    <tr><td>ブロック単位でフェッチされた行</td><td>大量のレコードをフェッチする場合、このパラメーターを調整してパフォーマンスを最適化する必要がある場合があります。                                                                                                                    </td></tr>
-    <tr><td>既定の文字列の長さ、           
+    |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | ネイティブ クエリの使用        | これを選択すると、ODBC ドライバーは TSQL を HiveQL に変換しません。純粋な HiveQL ステートメントを送信していることを確認している場合にのみ使用します。SQL Server または Azure SQL Database に接続している場合は、オフのままにします。 |
+    | ブロック単位でフェッチされた行 | 大量のレコードをフェッチする場合、このパラメーターを調整してパフォーマンスを最適化する必要がある場合があります。                                                                                                                     |
+    | 既定の文字列の長さ、           
       バイナリ列の長さ、             
-      10 進数の列の桁数             </td><td>データ型の長さおよび精度は、データが返される方法に影響する可能性があります。精度が失われたり、切り捨てられたりするために間違った情報が返されます。                                                                                  </td></tr>
-	</table>
+      10 進数の列の桁数              | データ型の長さおよび精度は、データが返される方法に影響する可能性があります。精度が失われたり、切り捨てられたりするために間違った情報が返されます。                                                                                   |
 
     ![詳細オプション][詳細オプション]
+
 6.  **[テスト]** をクリックして、データ ソースをテストします。データ ソースが正しく構成された場合、*テストは無事に完了しました。*と表示されます。
 7.  **[OK]** をクリックして [テスト] ダイアログを閉じます。これで新しいデータ ソースが **[ODBC データ ソース アドミニストレーター]** ダイアログに表示されます。
 8.  **[OK]** をクリックしてウィザードを終了します。

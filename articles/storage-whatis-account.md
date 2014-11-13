@@ -1,6 +1,6 @@
-<properties linkid="manage-services-what-is-a-storage-account" urlDisplayName="What is a Storage Account" pageTitle="What is a storage account? | Microsoft Azure" metaKeywords="" description="Learn about the different types of storage accounts available in Azure, and get definitions for key storage terms." metaCanonical="" services="storage" documentationCenter="" title="What is a Storage Account?" authors="tamram" solutions="" manager="mbaldwin" editor="cgronlun" />
+<properties urlDisplayName="What is a Storage Account" pageTitle="ストレージ アカウントとは| Microsoft Azure" metaKeywords="" description="Azure で使用できるさまざまな種類のストレージ アカウントについて説明し、ストレージ関連の主要な用語に関する定義を理解します。" metaCanonical="" services="storage" documentationCenter="" title="ストレージ アカウントとは" authors="tamram" solutions="" manager="adinah" editor="cgronlun" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="tamram"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
 # ストレージ アカウントとは
 
@@ -24,15 +24,15 @@ Azure Storage には、BLOB ストレージ、テーブル ストレージ、キ
 
 ストレージ アカウントの*エンドポイント*とは、BLOB、テーブル、またはキューにアクセスするための最高レベルの名前空間です。ストレージ アカウントに対応する既定のエンドポイントでは、次の書式を使用します。
 
-- BLOB サービス: http://*mystorageaccount*.blob.core.windows.net
+-   BLOB サービス: <http://*mystorageaccount>\*.blob.core.windows.net
 
-- テーブル サービス: http://*mystorageaccount*.table.core.windows.net
+-   テーブル サービス: <http://*mystorageaccount>\*.table.core.windows.net
 
-- キュー サービス: http://*mystorageaccount*.queue.core.windows.net
+-   キュー サービス: <http://*mystorageaccount>\*.queue.core.windows.net
 
-- ファイル サービス: http://*mystorageaccount*.file.core.windows.net
+-   ファイル サービス: <http://*mystorageaccount>\*.file.core.windows.net
 
-ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。たとえば、BLOB アドレスは次の形式になることがあります。http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*
+ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。たとえば、BLOB アドレスは次の形式になることがあります。<http://*mystorageaccount>*.blob.core.windows.net/*mycontainer*/*myblob\*
 
 ### ストレージ アカウントのセキュリティ
 
@@ -55,7 +55,6 @@ Azure Storage には、BLOB ストレージ、テーブル ストレージ、キ
   [Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット]: http://msdn.microsoft.com/ja-jp/library/dn249410.aspx
   [Storage (ストレージ サービス) の料金詳細]: http://www.windowsazure.com/ja-jp/pricing/details/#storage
   [データ転送の料金の詳細]: http://www.windowsazure.com/ja-jp/pricing/details/data-transfers/
-  [storage-replication-options]: ../includes/storage-replication-options.md
   [共有アクセス署名、第 1 部: SAS モデルについて]: ../storage-dotnet-shared-access-signature-part-1/
   [Storage Analytics Metrics のテーブル スキーマ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343264.aspx
   [Storage Analytics Metrics について]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343258.aspx

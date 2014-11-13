@@ -1,4 +1,4 @@
-<properties linkid="dev-net-common-tasks-publishing-with-vso" urlDisplayName="Publishing with Visual Studio Online" pageTitle="Continuous delivery with Visual Studio Online in Azure" metaKeywords="" description="Learn how to configure your Visual Studio Online team projects to automatically build and deploy to Azure websites or cloud services." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Continuous delivery to Azure using Visual Studio Online" authors="ghogen" solutions="" manager="douge" editor="" />
+<properties urlDisplayName="Publishing with Visual Studio Online" pageTitle="Visual Studio Online を使用した Azure への継続的な配信" metaKeywords="" description="Visual Studio Online チーム プロジェクトを自動的にビルドして Azure Web サイトまたはクラウド サービスにデプロイするための構成方法について説明します。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Continuous delivery to Azure using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)" authors="ghogen" solutions="" manager="douge" editor="" />
 
 <tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="ghogen" />
 
@@ -57,7 +57,7 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
 チェックイン時に特定の変更を含める、または除外するオプションに注意してください。必要な変更が除外されている場合は、**[すべて含む]** を選択します。
 ![][4]
 
-## <a name="step3"> </a><span class="short-header">プロジェクトを Azure に接続</span>手順 3: プロジェクトを Azure に接続
+## <a name="step3"> </a><span class="short-header">プロジェクトを Azure に接続する</span>手順 3. プロジェクトを Azure に接続する
 
 1.  ソース コードが含まれる VSO チーム プロジェクトが完成したので、チーム プロジェクトを Azure に接続することができます。[Azure ポータル][Azure ポータル]で、クラウド サービスまたは Web サイトを選択するか、新たに作成します。作成するには、左下にある [+] アイコンを選択し、**[クラウド サービス]** または **[Web サイト]** を選択して、**[簡易作成]** を選択します。**[Visual Studio Online 発行の設定]** を選択します。
     ![][5]
@@ -74,7 +74,7 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
 5.  プロジェクトがリンクされると、変更を Visual Studio Online チーム プロジェクトにチェックインするための手順が表示されます。次のチェックイン時に、Visual Studio Online はプロジェクトをビルドして Azure にデプロイします。これを試すには、**[Visual Studio 2012 からチェックインする]** をクリックし、**[Visual Studio 2012 を起動]** をクリックします (または、同等のコマンド バーの **[Visual Studio]** ボタンをクリックします)。
     ![][9]
 
-## <a name="step4"> </a><span class="short-header">リビルドのトリガー</span>手順 4: リビルドをトリガーし、プロジェクトを再デプロイ
+## <a name="step4"> </a><span class="short-header">リビルドのトリガー</span>手順 4: リビルドをトリガーし、プロジェクトを再デプロイする
 
 1.  Visual Studio のチーム エクスプローラーで、**[ソース管理エクスプローラー]** をクリックします。
     ![][10]
@@ -114,78 +114,91 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
     既定値と異なる値を使用する場合は、プロパティに対して希望の値を指定します。Azure 発行のプロパティは [展開] セクションにあります。
     次の表は、[展開] セクションで使用可能なプロパティを示しています。
 
-
     <table>
 
     <tr>
     <td>
-    <b>プロパティ</b>
+    **プロパティ**
+
     </td>
     <td>
-    <b>既定値</b>
+    **既定値**
+
     </td>
     </tr>
     </p>
-    <tr>
-    <td>
-    信頼されていない証明書を許可
-    </td>
-    <td>
-    false の場合、SSL 証明書はルート証明機関によって署名される必要があります。
-    </td>
-    </tr>
-    <tr>
-    <td>
-    アップグレードの許可
-    </td>
-    <td>
-    新しい展開を作成せずに既存の展開を更新することを許可します。IP アドレスを保持します。
-    </td>
-    </tr>
-    <tr>
-    <td>
-    削除しない
-    </td>
-    <td>
-    true の場合、既存の関連のない展開を上書きしません (アップグレードは許可)。
-    </td>
-    </tr>
-    <tr>
-    <td>
-    展開設定へのパス
-    </td>
-    <td>
-    リポジトリのルート フォルダーを基準とした Web サイトの .pubxml ファイルへのパス。クラウド サービスでは無視されます。
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Sharepoint 展開環境
-    </td>
-    <td>
-    サービス名と同じ
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Windows Azure 展開環境
-    </td>
-    <td>
-    Web サイト名またはクラウド サービス名
-    </td>
-    </tr>
-    </table>
+    > <tr>
+    > <td>
+    > 信頼されていない証明書を許可
+    >
+    > </td>
+    > <td>
+    > false の場合、ルート証明機関により SSL 証明書に署名する必要があります。
+    >
+    > </td>
+    > </tr>
+    > <tr>
+    > <td>
+    > アップグレードの許可
+    >
+    > </td>
+    > <td>
+    > 新規作成の代わりに、既存のデプロイを更新するデプロイを許可します。IP アドレスを保持します。
+    >
+    > </td>
+    > </tr>
+    > <tr>
+    > <td>
+    > 削除しない
+    >
+    > </td>
+    > <td>
+    > true の場合は、既存の無関係のデプロイを上書きしません (アップグレードは許可されます)。
+    >
+    > </td>
+    > </tr>
+    > <tr>
+    > <td>
+    > 配置設定へのパス
+    >
+    > </td>
+    > <td>
+    > リポジトリのルート フォルダーを基準にした .pubxml ファイルまたは Web サイトへのパス。クラウド サービスの場合は無視されます。
+    >
+    > </td>
+    > </tr>
+    > <tr>
+    > <td>
+    > SharePoint 配置環境
+    >
+    > </td>
+    > <td>
+    > サービス名と同じ
+    >
+    > </td>
+    > </tr>
+    > <tr>
+    > <td>
+    > Windows Azure 配置環境
+    >
+    > </td>
+    > <td>
+    > Web サイトまたはクラウド サービスの名前
+    >
+    > </td>
+    > </tr>
+    > </table>
 
 複数のサービス構成 (.cscfg ファイル) を使用している場合は、**[Build、Advanced、MSBuild 引数]** 設定で目的のサービス構成を指定できます。たとえば、ServiceConfiguration.Test.cscfg を使用するには、MSBuild 引数ライン オプション /p:TargetProfile=Test を設定します。
 ![][23]
 
-1.  この時点までには、ビルドが正常に完了しています。
+1.  この時点で、ビルドは正常に完了しています。
     ![][24]
 
-2.  ビルド名をダブルクリックすると、関連付けられた単体テスト プロジェクトのテスト結果を含む **[ビルドの概要]** が Visual Studio に表示されます。
+2.  ビルド名をダブルクリックすると、関連付けられた単体テスト プロジェクトのテスト結果を含む **[ビルドの概要]** が表示されます。
     ![][25]
 
-3.  [Azure ポータル][Azure ポータル] では、ステージング環境が選択されると、関連付けられた展開が [展開] タブに表示されます。
+3.  [Azure ポータル][Azure ポータル]では、ステージング環境が選択されると、関連付けられたデプロイが [デプロイ] タブに表示されます。
     ![][26]
 
 4.  目的のサイトの URL に移動します。Web サイトの場合は、コマンド バーの参照ボタンをクリックします。クラウド サービスのステージング環境を示す **[ダッシュボード]** ページの **[概要]** セクションで URL を選択します。クラウド サービス向けの継続的な統合からのデプロイは、既定ではステージング環境に発行されます。代替クラウド サービス環境プロパティを [運用] に設定することで、これを変更できます。このスクリーンショットでは、クラウド サービスのダッシュボード ページにサイト URL が表示されています。
@@ -196,12 +209,12 @@ Visual Studio Online を使用してクラウド サービスを自動的にビ�
 5.  クラウド サービスの場合は、プロジェクトにその他の変更を加えると、さらにビルドが実行され、複数のデプロイが累積されます。最新のデプロイは [アクティブ] とマークされます。
     ![][29]
 
-## <a name="step5"> </a><span class="short-header">以前のビルドの再デプロイ</span>手順 5: 以前のビルドの再デプロイ
+## <a name="step5"> </a><span class="short-header">以前のビルドの再デプロイ</span>手順 5: 以前のビルドを再デプロイする
 
 この手順の内容は、クラウド サービスのみに適用され、省略可能です。管理ポータルで以前のデプロイを選択し、**[再デプロイ]** をクリックしてサイトを以前のチェックインに戻します。これによって、TFS で新しいビルドが開始され、デプロイ履歴に新しいエントリが作成されます。
 ![][30]
 
-## <a name="step6"> </a><span class="short-header">運用デプロイの変更</span>手順 6: 運用デプロイの変更
+## <a name="step6"> </a><span class="short-header">運用デプロイの変更</span>手順 6: 運用デプロイを変更する
 
 この手順の内容は、クラウド サービスのみに適用され、Web サイトには適用されません。準備が整ったら、管理ポータルで [スワップ] を選択してステージング環境を運用環境へ昇格できます。新たにデプロイされたステージング環境は運用に昇格され、以前の運用環境がある場合、運用環境はステージング環境になります。運用環境とステージング環境でアクティブなデプロイは異なることはありますが、最近のビルドのデプロイ履歴は環境にかかわらず同じです。
 ![][31]
@@ -272,12 +285,16 @@ Visual Studio Online での単位テストの詳細については、[「ビル�
 
 詳細については、[Visual Studio Online に関するページ][Visual Studio Online に関するページ]を参照してください。Git を使用している場合は、「[Git でコードを共有する][Git でコードを共有する]」および「[ソース管理から Windows Azure の Web サイトへの発行][ソース管理から Windows Azure の Web サイトへの発行]」を参照してください。
 
+  [Continuous Delivery for Cloud Applications in Azure (Azure でのクラウド サービスの継続的な配信)]: ../cloud-services-dotnet-continuous-delivery
   [www.visualstudio.com]: http://www.visualstudio.com
   [ここ]: http://go.microsoft.com/fwlink/?LinkId=239540
   [手順 1.チーム プロジェクトを作成する。]: #step1
   [手順 2.プロジェクトをソース管理にチェックインする。]: #step2
   [手順 3.プロジェクトを Azure に接続する。]: #step3
   [手順 4.変更を行い、リビルドと再デプロイをトリガーする。]: #step4
+  [手順 5.以前のビルドを再デプロイする (省略可能)]: #step5
+  [手順 6.運用デプロイを変更する (クラウド サービスのみ)]: #step6
+  [手順 7.単体テストを実行する (省略可能)]: #step7
   [この]: http://go.microsoft.com/fwlink/?LinkId=512980
   [このチュートリアルの Git バージョン]: http://go.microsoft.com/fwlink/p/?LinkId=397358
   [Azure と ASP.NET の使用に関するページ]: http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-dotnet-get-started/

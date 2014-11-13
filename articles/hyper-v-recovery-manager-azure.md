@@ -1,161 +1,70 @@
-<properties linkid="configure-hyper-v-recovery-vault" urlDisplayName="configure-Azure-Site-Recovery" pageTitle="Configure Azure Site Recovery to protect virtual machines on Hyper-V server located in VMM clouds" metaKeywords="Azure Site Recovery, VMM, clouds, disaster recovery" description="Azure Site Recovery coordinates the replication, failover and recovery of Hyper-V virtual machines located in VMM clouds from one on-premises site to another. Azure Site Recovery can also replicate, failover, and recover Hyper-V virtual machine data between VMM clouds and Microsoft Azure." metaCanonical="" umbracoNaviHide="0" disqusComments="1" title="Getting Started with Azure Site Recovery: On-Premises to Azure Protection" editor="jimbe" manager="cfreeman" authors="" />
+<properties urlDisplayName="configure-Azure-Site-Recovery" pageTitle="Azure Site Recovery の概要:内部設置型と Azure 間の保護" metaKeywords="Azure Site Recovery, VMM, clouds, disaster recovery" description="Azure Site Recovery は、内部設置型 VMM クラウドに配置された Hyper-V 仮想マシンの Azure へのレプリケーション、フェイルオーバー、および回復を調整します。" metaCanonical="" umbracoNaviHide="0" disqusComments="1" title="Azure Site Recovery の概要:内部設置型と Azure 間の保護" editor="jimbe" manager="johndaw" authors="raynew" />
 
-<tags ms.service="site-recovery" ms.workload="backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="" />
+<tags ms.service="site-recovery" ms.workload="backup-recovery" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="raynew" />
 
-# Azure Site Recovery の概要: 内部設置型と Azure 間の保護
+# Azure Site Recovery の概要:内部設置型と Azure 間の保護
 
-<div class="dev-callout"> 
+<div class="dev-callout">
 
-<p>Azure Site Recovery を使用して、System Center Virtual Machine Manager (VMM) クラウド内に配置されている Hyper-V ホスト上で実行する仮想マシンを保護します。そのための構成方法は次のとおりです。</p>
+Azure Site Recovery を使用して、VMM クラウド内の 内部設置型 Hyper-V ホスト サーバー上の仮想マシンを保護します。利用できる構成は、次のとおりです。
 
-<ul>
-<li><b>内部設置型と Azure 間の保護</b> &mdash; VMM クラウド内の Hyper-V ホスト サーバー上に置かれた内部設置型仮想マシンを Azure にレプリケートします。Azure Site Recovery コンテナーに保護設定を構成し、有効にします。仮想マシンのデータが内部設置型の Hyper-V サーバーから Azure ストレージにレプリケートされます。</li>
+-   **オンプレミスと Azure 間の保護** - 内部設置型仮想マシンを Azure に複製します。Azure Site Recovery コンテナーに保護設定を構成し、有効にします。仮想マシンのデータが、内部設置型 Hyper-V サーバーから Azure ストレージに複製されます。
+-   **オンプレミス間の保護** - 内部設置型仮想マシンを別の内部設置型サイトに複製します。Azure Site Recovery コンテナーに保護設定を構成し、有効にします。仮想マシンのデータが、内部設置型 Hyper-V サーバーから別の内部設置型 Hyper-V サーバーに複製されます。 このシナリオの詳細については、「[Azure の Hyper-V 回復マネージャーの構成][Azure の Hyper-V 回復マネージャーの構成]」を参照してください。
 
-<li><b>内部設置型間の保護</b> &mdash; VMM クラウド内の Hyper-V ホスト サーバー上に置かれた 1 つの内部設置型サイトの仮想マシンから別の内部設置型サイトの仮想マシンにレプリケートします。Azure Site Recovery コンテナーに保護設定を構成し、有効にします。仮想マシンのデータが 1 つの内部設置型の Hyper-V サーバーから別のサーバーにレプリケートされます。Azure Site Recovery は、このプロセスを調整するだけです。
-このシナリオの詳細については、「<a href="http://go.microsoft.com/fwlink/?LinkId=398765">Getting Started with Azure Site Recovery: On-Premises to On-Premises Protection (Azure の Hyper-V 回復マネージャーの構成)</a>」を参照してください。</li>
+## <span id="about"></span></a>このチュートリアルについて
 
-</ul>
- 
-<h2><a id="about"></a>このチュートリアルについて</h2>
+このチュートリアルを利用すると、オンプレミスと Azure 間のデプロイの Azure Site Recovery の概念実証をすばやく行うことができます。このチュートリアルでは、可能な場合は、最も短時間ですむ方法と既定の設定を使用しています。このチュートリアルでは、Azure Site Recovery 資格情報コンテナーの作成、ソース VMM サーバーへの Azure Site Recovery プロバイダーのインストール、VMM クラウド内の Hyper-V ホストへの Azure Recovery Services エージェントのインストール、クラウドの保護設定の構成、仮想マシンの保護の有効化、デプロイメントのテストを行います。
 
+フル デプロイについての情報は、下記を参照してください。
 
-<P>このチュートリアルは、すばやい概念実証のために Azure Site Recovery のデプロイを支援することが目的です。ここではできる限り簡潔な方法と既定の設定を用いて説明します。以下の手順について説明します。
-<ul>
-<li>Azure Site Recovery コンテナーのセットアップ &mdash; 証明書をコンテナーにアップロードし、ソース VMM サーバーでのセットアップ後、コンテナー キーを生成します。 </li>
-<li>ソース VMM サーバーと Hyper-V ホスト サーバーのセットアップ &mdash; ソース VMM サーバーに Azure Site Recovery Provider をインストールし、Hyper-V ホスト サーバーに Azure Recovery Services Agent をインストールします。</li>
-<li>VMM クラウドの構成 &mdash; ソース VMM サーバー上のクラウドの保護設定を構成します。</li>
-<li>仮想マシンの有効化 &mdash; 仮想マシンの保護を有効にします。</li>
-<li>フェールオーバーの実行 &mdash; 復旧計画を作成してテスト フェールオーバーを実行します。</li>
-</ul>
+-   [Azure Site Recovery のデプロイメントのプランニング][Azure Site Recovery のデプロイメントのプランニング] - フル デプロイメントを開始する前に完了する必要のあるプランニングの手順について説明しています。
+-   「[Azure Site Recovery のデプロイ: オンプレミスと Azure 間の保護][Azure Site Recovery のデプロイ: オンプレミスと Azure 間の保護]」— フル デプロイメントの手順をステップ バイ ステップで説明しています。
 
-
-完全なデプロイに関する詳細については、以下を参照してください。</P>
-
-<UL>
-<LI>「<a href="http://go.microsoft.com/fwlink/?LinkId=321294">Plan for Azure Site Recovery Deployment (手順 5: 証明書の準備)</a>」&mdash; 完全なデプロイを開始する前に必要な計画手順について説明します。</LI>
-<LI>「<a href="http://go.microsoft.com/fwlink/?LinkId=402679">Azure Site Recovery のデプロイ : オンプレミスと Azure 間の保護</a>」&mdash; 完全なデプロイの手順をステップ バイ ステップで説明しています。</LI>
-<LI>「<a href="http://go.microsoft.com/fwlink/?LinkId=378272">Azure Site Recovery の管理および監視</a>」&mdash; フェールオーバーの実行方法および、デプロイの管理と監視の方法について説明します。</LI>
-</UL>
-<P>このチュートリアルを使用している場合に問題が発生した場合は、<a href="http://go.microsoft.com/fwlink/?LinkId=389879">Azure Site Recovery のエラーの一般的なシナリオと解決策に関するページ</a>を参照するか、<a href="http://go.microsoft.com/fwlink/?LinkId=313628">Azure Recovery Services フォーラム</a>のページに質問を投稿してください。</P>
+このチュートリアルの使用中に問題が発生した場合は、wiki の記事「[Azure Site Recovery: Common Error Scenarios and Resolutions (Azure Site Recovery: 一般的なエラー シナリオと解決方法)][Azure Site Recovery: Common Error Scenarios and Resolutions (Azure Site Recovery: 一般的なエラー シナリオと解決方法)]」を参照するか、[Azure 復旧サービス フォーラム][Azure 復旧サービス フォーラム]に質問を投稿してください。
 
 </div>
 
 ## <span id="before"></span></a>開始する前に
 
-<div class="dev-callout"> 
-<P>このチュートリアルを開始する前に、前提条件を確認してください。</P>
+<div class="dev-callout">
 
-<h3><a id="HVRMPrereq"></a>Azure の前提条件</h3>
+このチュートリアルを開始する前に、前提条件を確認してください。
 
-<UL>
-<LI><b>Azure アカウント</b> &mdash; Azure アカウントが必要になります。まだアカウントを持っていない場合は、「<a href="http://aka.ms/try-azure">Microsoft Azure 1 か月間無料評価版</a>」を参照してください。価格情報については、「<a href="http://go.microsoft.com/fwlink/?LinkId=378268">Azure Site Recovery Pricing (Azure Site Recovery の価格設定)</a>」を参照してください。</LI>
-<LI><b>証明書</b> &mdash; 公開キーと共に管理証明書 (.cer) をコンテナーにアップロードする必要があります。この証明書は、.pfx ファイル (秘密キー付き) としてエクスポートし、コンテナーに登録する各 VMM サーバーでインポートします。このチュートリアルでは、自己署名証明書を使用します。完全なデプロイを実行する場合は、計画ガイドで説明されている「<a href="http://go.microsoft.com/fwlink/?LinkId=321294">certificate requirements (手順 5: 証明書の準備)</a>」に準拠した有効な SSL 証明書を使用できます。</a> </LI>
+### <span id="HVRMPrereq"></span></a>前提条件
 
+-   **Azure アカウント** — Azure アカウントが必要です。お持ちでない場合は、[Azure の無料評価版][Azure の無料評価版]を参照してください。料金については、「[Azure Site Recovery Manager Pricing Details (Azure Site Recovery Manager の料金詳細)][Azure Site Recovery Manager Pricing Details (Azure Site Recovery Manager の料金詳細)]」を参照してください。
+-   **Azure ストレージのアカウント** — Azure にレプリケートしたデータを格納するために Azure ストレージのアカウントが必要になります。アカウントではジオ (主要地域) レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。Azure ストレージのセットアップの詳細については、「[Microsoft Azure ストレージの概要][Microsoft Azure ストレージの概要]」を参照してください。
+-   **VMM サーバー** — System Center 2012 R2 上で実行される VMM サーバー。
+-   **VMM クラウド** — VMM サーバー上の少なくとも 1 つのクラウド。このクラウドには以下のものが含まれている必要があります。
+    -   1 つ以上の VMM ホスト グループ
+    -   各ホスト グループ内に 1 つ以上の Hyper-V ホスト サーバーまたはクラスター。
+    -   クラウド内のソース Hyper-V サーバー上に配置された 1 つ以上の仮想マシン。仮想マシンは世代 1 にする必要があります。
+-   **仮想マシン** — Azure 要件に準じた仮想マシンが必要です。計画ガイドの「[前提条件とサポート][前提条件とサポート]」を参照してください。
+-   Azure にフェイルオーバーするための仮想マシンのサポート要件の詳細については、を参照してください。
 
-</LI>
-
-<LI><b>Azure ストレージのアカウント</b> &mdash; Azure にレプリケートしたデータを格納するために Azure ストレージのアカウントが必要になります。アカウントではジオ (主要地域) レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。Azure ストレージのセットアップの詳細については、「<a href="http://go.microsoft.com/fwlink/?LinkId=398704">Microsoft Azure ストレージの概要</a>」を参照してください。</LI>
-</UL>
-
-<h3><a id="VMMPrereq"></a>VMM の前提条件</h3>
-
-<UL>
-<LI><b>VMM サーバー</b> &mdash; System Center 2012 R2 上で実行される VMM サーバー。</LI>
-<LI><b>VMM クラウド</b> &mdash; VMM サーバー上の少なくとも 1 つのクラウド。このクラウドには以下のものが含まれている必要があります。
-    <UL>
-<LI>1 つ以上の VMM ホスト グループ</LI>
-<LI>各ホスト グループ内に 1 つ以上の Hyper-V ホスト サーバーまたはクラスター。</LI>
-<li>クラウド内のソース Hyper-V サーバーに配置されている 1 つ以上の仮想マシン。仮想マシンは世代 1 にする必要があります。</li>
-        </UL></LI>  
-</UL>
-
-<h3><a id="VMPrereq"></a>仮想マシンの前提条件</h3>
-
-<UL>
-<LI><b>世代</b> &mdash; Azure は世代 1 の仮想マシンのみサポートします。</LI>
-<LI>Azure にフェールオーバーする仮想マシンのすべてのサポート要件の一覧については、計画ガイドの「<a href="http://go.microsoft.com/fwlink/?LinkId=402602">前提条件とサポート</a>」をお読みください。 </LI>  
-</UL>
-
-<h2><a id="tutorial"></a>チュートリアルの手順</h2> 
+## <span id="tutorial"></span></a>チュートリアルの手順
 
 前提条件を確認した後、以下の手順を実行します。
-<UL>
-<LI><a href="#createcert">手順 1.証明書の取得と構成</a> - .cer 証明書を取得し、.pfx ファイルとしてエクスポートして、その .pfx ファイルを VMM サーバーにインポートします。</LI>
-<LI><a href="#vault">手順 2.コンテナーの作成</a> &mdash; Azure Site Recovery コンテナーを作成します。</LI>
-<LI><a href="#upload">手順 3.コンテナーの構成</a> &mdash; 管理証明書をコンテナーにアップロードし、コンテナーにキーを生成します。このキーを使用することで、VMM サーバーに配置されている Provider は Azure Site Recovery から送信されたコマンドのみを実行するようになります。</LI>
-<LI><a href="#download">手順 4.Provider アプリケーションのインストール</a> &mdash; Microsoft Azure Site Recovery Provider アプリケーションを VMM サーバー上で実行します。この手順で Provider がインストールされ、コンテナーに VMM サーバーが登録されます。</LI>
-<LI><a href="#agent">手順 5.Agent アプリケーションのインストール</a> &mdash; Microsoft Azure Recovery Services Agent を Hyper-V ホストごとにインストールします。</LI>
-<LI><a href="#clouds">手順 6.クラウドの保護の構成</a> - VMM クラウドの保護設定を構成します。</LI>
-<LI><a href="#NetworkMapping">手順 7.ネットワーク マッピングの構成</a> &mdash; ソース VM ネットワークをターゲット Azure ネットワークにマッピングするネットワーク マッピングをオプションで構成できます。</LI>
-<LI><a href="#virtualmachines">手順 8.仮想マシンの保護の有効化</a> - 保護する VMM クラウドに配置された仮想マシンの保護を有効にします。</LI>
-<LI><a href="#recovery plans">手順 9.復旧計画の構成と実行</a> &mdash; 復旧計画を作成し、計画したテスト フェールオーバーを実行します。</LI>
-</UL>
 
-
-
-<a name="createcert"></a> <h2>手順 1.証明書の取得と構成</h2>
-
-次のステップで、証明書を取得して構成します。
-<OL>
-<LI><a href="#obtaincert">チュートリアルで使用する自己署名証明書の取得</a> - MakeCert ツールを使用して証明書を取得します。</LI>
-<LI><a href="#exportcert">.pfx 形式での証明書のエクスポート</a> - 証明書の作成元であるサーバーで、.cer ファイルを、(秘密キーを含む) .pfx ファイルとしてエクスポートします。 </LI>
-<LI><a href="#importcert">VMM サーバーへの .pfx 証明書のインポート</a> - エクスポート後、その .pfx ファイルを、コンテナーに登録する各 VMM サーバーのローカル コンピューター ストアの Personal フォルダーにインポートします。</LI>
-</OL>
-
-
-<h3><a id="obtaincert"></a>自己署名証明書 (.cer) の取得</h3>
-<P>証明書のすべての要件に準拠する .cer x.509 証明書を以下の手順で作成します。</P>
-<ol>
-<LI>
-MakeCert を実行するコンピューターに、<a href="http://go.microsoft.com/fwlink/?LinkId=378269">Windows SDK</a> の最新バージョンをダウンロードします。SDK 全体をインストールする必要はありません。</LI>
-<ol>
-<LI>[場所の指定] ページで、<b>[Windows Software Development Kit for Windows 8.1 をこのコンピューターにインストールします]</b> を選択します。</LI>
-<LI>[インストールする機能を選択してください] ページで、<b>[Windows ソフトウェア開発キット]</b> を除き、他のすべてのオプションをオフにします。</LI>
-<LI>インストールが完了した後、makecert.exe が C:\ProgramFiles (x86)\Windows Kits\<i>WindowsVersion</i>\bin\x64 フォルダーに含まれていることを確認します。</LI>
-<LI>管理者特権でコマンド プロンプト (cmd.exe) を開き、makecert.exe フォルダーに移動します。</LI> 
-<LI>次のコマンドを実行して、自己署名証明書を作成します。CertificateName を、その証明書で使用する名前に置き換えます。また、-e: の後に、証明書の実際の有効期限を指定します。</LI>
-<code>
-makecert.exe -r -pe -n CN=CertificateName -ss my -sr localmachine -eku 1.3.6.1.5.5.7.3.2 -len 2048 -e 01/01/2016 CertificateName.cer</code>
-</ol>
-<P>成功状態は、証明書が作成されたことを示します。証明書は makecert.exe と同じフォルダーに格納されます。証明書はエクスポート時にアクセスしやすい別の場所に移動することができます。</P>
-
-<h3><a id="exportcert"></a>.pfx 形式での証明書のエクスポート</h3>
-<P>次のステップを完了して、.cer ファイルを .pfx 形式にエクスポートします。</P>
-<ol>
-<li>成功状態は、証明書が作成されたことを示します。証明書は makecert.exe と同じフォルダーに格納されます。証明書はエクスポート時にアクセスしやすい別の場所に移動することができます。</li>
-<li>詳細ウィンドウで、管理する証明書をクリックします。</li>
-<li><b>[アクション]</b> メニューの <b>[すべてのタスク]</b> をポイントし、<b>[エクスポート]</b> をクリックします。証明書のエクスポート ウィザードが表示されます。<b>[次へ]</b> をクリックします。</li>
-<li><b>[秘密キーのエクスポート]</b> ページで <b>[はい]</b> をクリックして秘密キーをエクスポートします。<b>[次へ]</b> をクリックします。この操作は、インストール後に別のサーバーに秘密キーをエクスポートする場合にのみ必要です。</li>
-<li>[エクスポート ファイル形式] ページで、<b>[個人情報の交換 &ndash; PKCS #12 (.PFX)]</b> を選択します。<b>[次へ]</b> をクリックします。</li>
-<li><b>[パスワード]</b> ページで、秘密キーの暗号化時に使用するパスワードを入力し、確認のためにもう一度パスワードを入力します。<b>[次へ]</b> をクリックします。</li>
-<li>ウィザードの指示に従って、証明書を .pfx 形式でエクスポートします。</li>
-</ol>
-
-<h3><a id="importcert"></a>VMM サーバーへの .pfx 証明書のインポート</h3>
-<p>.pfx のコピーを VMM サーバーにエクスポートした後で、これをインポートします。VMM サーバーで MakeCert.exe を実行した場合は、そのサーバーに証明書をインポートする必要はありません。</p>
- 
-<ol>
-<li>ローカル サーバーに秘密キー (.pfx) 証明書ファイルをコピーします。</li>
-<li>証明書 MMC スナップインで <b>[コンピューター アカウント]</b> を選択し、<b>[次へ]</b> をクリックします。</li>
-<li><b>[ローカル コンピューター]</b> を選択し、<b>[完了]</b> をクリックします。</li>
-<li>MMC で <b>[証明書]</b> を展開し、<b>[個人用]</b> を右クリックしてから <b>[すべてのタスク] </b>をポイントします。次に <b>[インポート]</b> をクリックして、証明書のインポート ウィザードを開始します。</li>
-<li>[インポートするファイル] ページで、<b>[参照]</b> をクリックし、インポートする証明書を含む .pfx 証明書ファイルが格納されたフォルダーを見つけます。適切なファイルを選択し、<b>[開く]</b> をクリックします。</li>
-<li>[パスワード] ページの <b>[パスワード]</b> ボックスに、秘密キーが含まれる .pfx ファイルのパスワードを入力して、<b>[次へ]</b> をクリックします。</li>
-<li>[証明書ストア] ページで、<b>[証明書をすべて次のストアに配置する]</b> を選択し、<b>[参照]</b> をクリックします。<b>[個人用]</b> ストアを選択し、<b>[OK]</b> をクリック後、<b>[次へ]</b> をクリックします。ウィザードを終了します。</li>
-</ol>
-
-これらのステップを完了した後、コンテナーの構成時にアップロードする .cer 証明書を選択し、Provider のインストール時に VMM サーバーを登録するときに .pfx 証明書を選択することができます。
-</div>
+-   [手順 1.資格情報コンテナーの作成][手順 1.資格情報コンテナーの作成] — Azure Site Recovery 資格情報コンテナーを作成します。
+-   [手順 2.プロバイダー アプリケーションのインストール][手順 2.プロバイダー アプリケーションのインストール] — 登録キーを生成し、その後、VMM サーバーで Microsoft Azure Site Recovery プロバイダー アプリケーションを実行します。プロバイダーがインストールされ、VMM サーバーがコンテナーに登録されます。
+-   [手順 3.Azure ストレージ アカウントの追加][手順 3.Azure ストレージ アカウントの追加] — アカウントがない場合は、アカウントを作成します。
+-   [手順 4.エージェント アプリケーションのインストール][手順 4.エージェント アプリケーションのインストール] — Microsoft Azure Recovery Services エージェントを Hyper-V ホストごとにインストールします。
+-   [手順 5.クラウドの保護の構成][手順 5.クラウドの保護の構成] — VMM クラウドの保護設定を構成します。
+-   [手順 6.ネットワーク マッピングの構成][手順 6.ネットワーク マッピングの構成] — ソース VM ネットワークをターゲット Azure ネットワークにマッピングするネットワーク マッピングをオプションで構成できます。
+-   [手順 7.仮想マシンの保護の有効化][手順 7.仮想マシンの保護の有効化] — 保護する VMM クラウドに配置された仮想マシンの保護を有効にします。
+-   [手順 8.デプロイメントのテスト][手順 8.デプロイメントのテスト] — 単一の仮想マシンでテスト フェイルオーバーを実行するか、または回復計画を作成して、計画に従ってテスト フェイルオーバーを実行できます。
 
 <a name="vault"></a>
 
-## 手順 2.コンテナーの作成
+## 手順 1.コンテナーの作成
 
+</p>
 1.  [管理ポータル][管理ポータル]にサインインします。
 
-2.  **[データ サービス]** を展開し、**[Recovery Services]** を展開してから、**[Site Recovery コンテナー]** をクリックします。
+2.  **[データ サービス]** をクリックし、**[復旧サービス]** を展開し、**[Site Recovery コンテナー]**クリックします。
 
-3.  **[新規作成]** をクリックしてから、**[簡易作成]** をクリックします。
+3.  **[新規作成]**、**[簡易作成]** の順にクリックします。
 
 4.  **[名前]** ボックスに、コンテナーを識別する表示名を入力します。
 
@@ -164,69 +73,64 @@ makecert.exe -r -pe -n CN=CertificateName -ss my -sr localmachine -eku 1.3.6.1.5
 
     ![新しいコンテナー][新しいコンテナー]
 
-コンテナーが正常に作成されたことを状態バーで確認します。コンテナーはメインの [Recovery Services] ページに **[アクティブ]** として一覧されます。
-
-<a name="upload"></a>
-
-## 手順 3.コンテナーの構成
-
-1.  **[Recovery Services]** ページで、コンテナーをクリックして [クイック スタート] ページを開きます。このページはいつでもアイコンで開くことができます。
-
-    ![クイック スタート アイコン][クイック スタート アイコン]
-
-2.  **[Recovery のセットアップ]** ドロップダウン リストから、**[内部設置型サイトと Microsoft Azure 間]** を選択します。
-3.  証明書 (.cer) をコンテナーにアップロードするために **[証明書の管理]** をクリックします。
-
-    ![クイック スタート][クイック スタート]
-
-4.  **[証明書の管理]** ダイアログ ボックスで、**[ファイルの参照]** をクリックして .cer ファイルを選択します。
-
-    ![証明書の管理][証明書の管理]
-
-5.  コンテナー用のキーを生成するために、**[コンテナー キーの取得]** をクリックします。キーが自動生成されます。キーを再生成すると前のキーは上書きされます。このキーは、後で Azure Site Recovery Provider を VMM サーバーにインストールするときに必要になります。
-
-    ![証明書の管理][1]
+ステータス バーを確認して、コンテナーが正常に作成されたことを確かめます。メイン [復旧サービス] ページで、コンテナーは **[アクティブ]** と表示されています。
 
 <a name="download"></a>
 
-## 手順 4.Azure Site Recovery Provider のインストール
+## 手順 2.登録キーの生成と Azure Site Recovery プロバイダーのインストール
 
-1.  **[クイック スタート]** ページで **[Provider のダウンロード]** をクリックして、最新バージョンの Provider のインストール ファイルを取得します。
+</p>
+1.  **[復旧サービス]** ページで、コンテナーをクリックして [クイック スタート] ページを開きます。[クイック スタート] は、アイコンを使っていつでも開くことができます。
 
-    ![Download Provider File][Download Provider File]
+    ![[クイック スタート] アイコン][]
 
-2.  ソース VMM サーバーでこのファイルを実行します。
+2.  ドロップダウン リストで、**[内部設置型 Hyper-V サイトと Microsoft Azure 間]** を選択します。
+3.  **[VMM サーバーの準備]** で、**[登録キーの生成]** ファイルをクリックします。キーは生成後 5 日間有効です。VMM サーバーにファイルをコピーします。このファイルは、プロバイダーのセットアップ時に必要になります。
 
-    ![エージェントのダウンロード][エージェントのダウンロード]
+    ![登録キー][登録キー]
 
-3.  Provider がインストールされたら、サーバーをコンテナーに登録するセットアップを続行します。
-    ![Setup Complete][Setup Complete]
-4.  [インターネット接続] ページで、VMM サーバーで実行中の Provider がインターネットに接続する方法を指定します。**[次へ]** をクリックして、サーバーに構成されている既定のインターネット接続設定を使用します。
-    ![Internet Settings][Internet Settings]
-5.  [コンテナーの登録] ページで、以下の手順を実行します。
+4.  **[クイック スタート]** ページの **[VMM サーバーの準備]** で、**[VMM サーバーへのインストール用の Microsoft Azure Site Recovery プロバイダーのダウンロード]** をクリックして、最新バージョンのプロバイダー インストール ファイルを取得します。
 
-    -   VMM サーバーにインポートした秘密キー (.pfx) を選択します。
-    -   サーバーに登録するコンテナーを選択します。
-    -   コンテナー キーを指定します。これは、先ほど生成したコンテナーのキーです。[クイック スタート] ページからキーの値を切り取って貼り付けます。
+5.  ソース VMM サーバーでこのファイルを実行します。
 
-    ![証明書の登録][証明書の登録]
+6.  **[前提条件の確認]**で、VMM サービスを停止して、プロバイダーのセットアップを開始します。VMM サービスは停止し、セットアップの終了時に自動的に再起動します。
 
-6.  [データ暗号化] ページで、特定のクラウドのレプリケーション時にデータを暗号化するオプションを許可するかどうかを指定します。このオプションを選択すると、SSL 証明書が自動生成されます。この証明書は、フェールオーバーを実行するときに選択する必要があります。この設定を有効にすると、Azure Site Recovery ポータルで、クラウドのデータの暗号化を有効または無効にできます。このチュートリアルでは既定の設定のままにし、**[次へ]** をクリックします。
+    ![前提条件][前提条件]
 
-    ![証明書コンテナー][証明書コンテナー]
+7.  **[Microsoft Update]** で、アップデートの内容を設定できます。この設定を行うことで、設定した Microsoft Update のポリシーに従って、プロバイダーの有効な更新がインストールされます。
 
-7.  [VMM サーバー] ページで、以下の手順を実行します。
+    ![Microsoft 更新プログラム][Microsoft 更新プログラム]
 
-    -   VMM サーバーの表示名を指定します。この名前は、Azure Site Recovery コンソールでサーバーを識別するために使用されます。
-    -   VMM クラウドの情報を Azure Site Recovery コンテナーと同期するために、**[コンテナーとのクラウド メタデータの同期]** を選択します。この操作は、各サーバーで 1 回のみ実行する必要があります。すべてのクラウドを同期することを希望しない場合は、クラウドの保護設定を構成する前に、各クラウドを個別に発行して同期することができます。
+プロバイダーのインストール後は、セットアップを続行し、サーバーをコンテナーに登録します。
 
-8.  **[登録]** をクリックしてプロセスを完了します。
+1.  **[インターネット接続]** で、VMM サーバーで実行中のプロバイダーがインターネットに接続する方法を指定します。**[既定のシステム プロキシ設定を使用]** を選択して、サーバー上に構成されている既定のインターネット接続設定を使用します。
 
-    ![PublishCloud][PublishCloud]
+    ![インターネット設定][インターネット設定]
 
-サーバーが正常に登録されると、その表示名が、コンテナーの [サーバー] ページの **[リソース]** タブに表示されます。
+2.  **[登録キー]** で、Azure Site Recovery からダウンロードして VMM サーバーにコピーした登録キーを選択します。
+3.  **[コンテナー名]** で、サーバーが登録されるコンテナーの名前を確認します。
+4.  **[サーバー名]** に、コンテナーで VMM サーバーを識別する表示名を入力します。
 
-## <span id="storage"></span></a>手順 5.Azure Recovery Services Agent のインストール
+    ![サーバー登録][サーバー登録]
+
+5.  **[初期クラウド メタデータ]** 同期で、VMM サーバー上のすべてのクラウドのメタデータをコンテナーと同期するかどうか選択します。この操作は、各サーバーで 1 回のみ実行する必要があります。すべてのクラウドを同期したくない場合は、この設定をオフのままにして、VMM コンソールのクラウドのプロパティで各クラウドを個別に同期できます。
+
+6.  **[データ暗号化]** で、データの暗号化用に自動的に生成された SSL 証明書を保存する場所を指定します。この証明書は、Azure Site Recovery ポータル内で Azure によって保護されているクラウドのデータ暗号化が有効な場合に使用されます。この証明書を安全な場所に保管します。Azure へのフェイルオーバーの実行時に、暗号化されたデータを復号化するために、この証明書を選択します。
+    このオプションは、内部設置型サイト間でレプリケーションを実行する場合には関係ありません。
+
+    ![サーバー登録][1]
+
+7.  **[登録]** をクリックしてプロセスを完了します。登録後に、VMM サーバーからのメタデータが、Azure Site Recovery によって取得されます。サーバーは、コンテナーの **[サーバー]** ページの **[リソース]** タブに表示されます。
+
+## <span id="storage"></span></a>手順 3.Azure のストレージ アカウントの作成
+
+Azure ストレージ アカウントがない場合は、**[Azure ストレージ アカウントの追加]** をクリックします。アカウントでは geo レプリケーションを有効にする必要があります。アカウントは Azure Site Recovery サービスと同じリージョンである必要があり、同じサブスクリプションに関連付けられている必要があります。
+
+このチュートリアルを利用すると、オンプレミスと Azure 間のデプロイの Azure Site Recovery の概念実証をすばやく行うことができます。このチュートリアルでは、可能な場合は、最も短時間ですむ方法と既定の設定を使用しています。このチュートリアルでは、Azure Site Recovery 資格情報コンテナーの作成、ソース VMM サーバーへの Azure Site Recovery プロバイダーのインストール、VMM クラウド内の Hyper-V ホストへの Azure Recovery Services エージェントのインストール、クラウドの保護設定の構成、仮想マシンの保護の有効化、デプロイメントのテストを行います。
+
+![ストレージ アカウント][ストレージ アカウント]
+
+## <span id="agent"></span></a>手順 4.Azure Recovery Services エージェントの Hyper-V ホストへのインストール
 
 保護する VMM クラウドに配置されている Hyper-V ホスト サーバーごとに、Azure Recovery Services Agent をインストールします。
 
@@ -235,162 +139,128 @@ makecert.exe -r -pe -n CN=CertificateName -ss my -sr localmachine -eku 1.3.6.1.5
     ![Install Recovery Services Agent][Install Recovery Services Agent]
 
 2.  保護する VMMM クラウドに配置されている Hyper-V ホスト サーバーごとにインストール ファイルを実行します。
-3.  [前提条件のチェック] ページで **[次へ]** をクリックします。不足している前提条件があると自動的にインストールされます。
+3.  **[前提条件のチェック]** ページで **[次へ]** をクリックします。不足している前提条件があると自動的にインストールされます。
 
-![Prerequisites Recovery Services Agent][Prerequisites Recovery Services Agent]
+    ![Prerequisites Recovery Services Agent][Prerequisites Recovery Services Agent]
 
-1.  [インストール設定] ページで Agent のインストール先を指定し、バックアップのメタデータがインストールされるキャッシュの場所を選択します。その後、**[インストール]** をクリックします。
+4.  **[インストール設定]** ページでエージェントのインストール先を指定し、バックアップのメタデータがインストールされるキャッシュの場所を選択します。その後、**[インストール]** をクリックします。
 
-[インターネット接続] ページで、VMM サーバーで実行中の Provider がインターネットに接続する方法を指定します。**[次へ]** をクリックして、サーバーに構成されている既定のインターネット接続設定を使用します。![Recovery Services Agent location][Recovery Services Agent location]
+## <span id="clouds"></span></a>手順 5.クラウドの保護設定の構成
 
-## <span id="clouds"></span></a>手順 6.クラウドの保護設定の構成
-
-VMM サーバーを登録した後、クラウドの保護設定を構成することができます。Provider のインストール時にオプション **[コンテナーとのクラウド データの同期]** を有効にしているため、コンテナーの **[保護された項目]** タブに VMM サーバー上のすべてのクラウドが表示されます。
+VMM サーバーを登録した後、クラウドの保護設定を構成することができます。プロバイダーのインストール時にオプション **[コンテナーとのクラウド データの同期]** を有効にしたので、VMM サーバー上のすべてのクラウドが、コンテナーの **[保護された項目]** タブに表示されます。
 
 ![発行済みのクラウド][発行済みのクラウド]
 
-以下の手順で保護設定を構成します。
+1.  [クイック スタート] ページで、**[VMM クラウドの保護の設定]** をクリックします。
 
-1.  [クイック スタート] ページで、**[VMM クラウドの保護のセットアップ]** をクリックします。
-
-![Enable cloud protection][Enable cloud protection]
-
-1.  **[保護された項目]** タブで、構成するクラウドをクリックし、**[構成]** タブに移動します。
-2.  **[ターゲット]** で、**[Microsoft Azure]** を選択します。
-3.  **[ストレージ アカウント]** で、仮想マシンを格納する Azure ストレージを選択します。
-4.  **[格納データの暗号化]** を **[オフ]** に設定します。この設定は、内部設置型サイトと Azure 間のレプリケートでデータを暗号化する必要があることを指定します。
-5.  **[コピーの頻度]** で、既定の設定をそのまま使用します。この値は、ソースとターゲットの場所の間でデータが同期される頻度を指定します。
-6.  **[保持する復旧ポイント]** で、既定の設定をそのまま使用します。既定値である 0 を使用する場合は、プライマリ仮想マシンに対応する最新の復旧ポイントのみが、レプリカのホスト サーバーに格納されます。
-7.  **[アプリケーション整合性スナップショットの頻度]** で、既定の設定をそのまま使用します。この値は、スナップショットを作成する頻度を指定します。スナップショットは、ボリューム シャドウ コピー サービス (VSS) を使用して、スナップショットを作成するときにアプリケーションを一貫性のある状態に保ちます。値を設定する場合は、構成する追加の復旧ポイント数よりも少ない値にしてください。
-
-    ![クラウド構成][クラウド構成]
-
-8.  **[レプリケーションの開始時刻]** で、Azure へのデータの初期レプリケーションを開始する時刻を指定します。Hyper-V ホスト サーバーのタイムゾーンが使用されます。初期レプリケーションはピーク時以外にスケジュールすることをお勧めします。
+2.  **[保護された項目]** タブで、構成するクラウドをクリックし、**[構成]** タブに移動します。
+3.  **[ターゲット]** で、**[Microsoft Azure]** を選択します。
+4.  **[ストレージ アカウント]** で、仮想マシンを格納する Azure ストレージを選択します。
+5.  **[格納データの暗号化]** を **[オフ]** に設定します。この設定は、内部設置型サイトと Azure 間のレプリケートでデータを暗号化する必要があることを指定します。
+6.  **[コピーの頻度]** では、既定の設定をそのまま使用します。この値は、ソースとターゲットの場所の間でデータが同期される頻度を指定します。
+7.  **[保持する復旧ポイント]** で、既定の設定をそのまま使用します。既定値である 0 を使用する場合は、プライマリ仮想マシンに対応する最新の復旧ポイントのみが、レプリカのホスト サーバーに格納されます。
+8.  **[アプリケーションの整合性スナップショットの頻度]** では、既定の設定をそのまま使用します。この値は、スナップショットを作成する頻度を指定します。スナップショットは、ボリューム シャドウ コピー サービス (VSS) を使用して、スナップショットを作成するときにアプリケーションを一貫性のある状態に保ちます。値を設定する場合は、構成する追加の復旧ポイント数よりも少ない値にしてください。
+9.  **[レプリケーションの開始時刻]** で、Azure へのデータの初期レプリケーションを開始する時刻を指定します。Hyper-V ホスト サーバーのタイムゾーンが使用されます。初期レプリケーションはピーク時以外にスケジュールすることをお勧めします。
 
     ![Cloud replication settings][Cloud replication settings]
 
-クラウド設定を保存すると、ジョブが作成され、これを **[ジョブ]** タブで監視できます。VMM ソース クラウド内のすべての Hyper-V ホスト サーバーのレプリケーションが構成されます。 保存後は、クラウド設定は **[構成]** タブで変更できます。ターゲットの場所またはターゲットのストレージを変更するには、クラウド構成を削除してから、クラウドを再構成する必要があります。ストレージ アカウントを変更する場合は、ストレージ アカウントの修正後に保護を有効にした仮想マシンにのみ、その変更が適用されることに注意してください。既存の仮想マシンは新しいストレージ アカウントに移行されません。
+この設定を保存すると、ジョブが作成され、これを **[ジョブ]** タブで監視できます。VMM ソース クラウド内のすべての Hyper-V ホスト サーバーは、レプリケーション用に構成されます。 保存後は、クラウド設定は **[構成]** タブで変更できます。ターゲットの場所またはターゲットのストレージを変更するには、クラウド構成を削除してから、クラウドを再構成する必要があります。ストレージ アカウントを変更する場合は、ストレージ アカウントの修正後に保護を有効にした仮想マシンにのみ、その変更が適用されることに注意してください。既存の仮想マシンは新しいストレージ アカウントに移行されません。
 
-## <span id="networkmapping"></span></a>手順 7.ネットワーク マッピングの構成
+## <span id="networkmapping"></span></a>手順 6.ネットワーク マッピングの構成
 
-ソースの VM ネットワークをターゲットの Azure 仮想ネットワークにマッピングするネットワーク マッピングをオプションで有効にできます。ネットワーク マッピングを作成しない場合は、同一の復旧計画でフェールオーバーする仮想マシンどうしのみ、Azure で通信できます。ネットワーク マッピングを作成すると、属している復旧計画の種類にかかわらず、同じネットワーク上でフェールオーバーするすべての仮想マシンが相互に通信できるようになります。さらに、ターゲットの Azure ネットワーク上にネットワーク ゲートウェイをセットアップすると、仮想マシンは内部設置型仮想マシンと通信できるようになります。このチュートリアルの一環としてネットワーク マッピングを構成する場合は、デプロイ ガイドの「[手順 4: ネットワーク マッピングの構成: オンプレミス間][手順 4: ネットワーク マッピングの構成: オンプレミス間]」を参照してください。
+このチュートリアルでは、テスト環境で Azure Site Recovery を展開する最も簡単な方法について説明します。このチュートリアルの一環としてネットワーク マッピングを構成することを希望する場合は、計画ガイドの[ネットワーク マッピングの準備に関するページ][ネットワーク マッピングの準備に関するページ]を参照してください。マッピングを構成するには、デプロイ ガイドの「[ネットワーク マッピングの構成][ネットワーク マッピングの構成]」の手順に従ってください。
 
-## <span id="virtualmachines"></span></a>手順 8.仮想マシンの保護の有効化
+## <span id="virtualmachines"></span></a>手順 7.仮想マシンの保護の有効化
 
-サーバー、クラウド、およびネットワークを正しく構成した後で、クラウド内の仮想マシンで保護を有効にすることができます。
+サーバー、クラウド、およびネットワークを正しく構成した後で、クラウド内の仮想マシンの保護を有効にすることができます。以下の点に注意してください。
 
-仮想マシンの保護を有効にする前に、必要に応じて、仮想マシンの設定を検証および更新します。たとえば、仮想マシン上のゲスト オペレーティング システムは、Windows Server 2008 以降または Linux でなければなりません。仮想マシンは、世代 1 のみでなければなりません。Azure Site Recovery のすべての要件の一覧については、計画ガイドの「[前提条件とサポート][前提条件とサポート]」を参照してください。
+-   仮想マシンは Azure 要件を満たしている必要があります。計画ガイドの「[前提条件とサポート][前提条件とサポート]」で確認してください。
+-   オペレーティング システムとオペレーティング システム ディスクの保護を有効にするには、仮想マシンにプロパティを設定する必要があります。仮想マシン テンプレートを使用して VMM 内で仮想マシンを作成する際に、プロパティを設定できます。また、仮想マシンのプロパティの [全般] タブと [ハードウェア構成] タブで既存の仮想マシンに対してこれらのプロパティを設定することもできます。VMM でこれらのプロパティを設定していない場合は、Azure Site Recovery ポータルで構成できます。
 
-VMM コンソールで設定を確認および更新します。仮想マシンのプロパティの [全般] ページで、仮想マシンのオペレーティング システムの設定を変更します。[ハードウェア構成] ページで、オペレーティング システム ディスクの設定を更新します。
+![Create virtual machine][Create virtual machine]
 
 ![Modify virtual machine properties][Modify virtual machine properties]
 
-![Modify virtual machine properties][2]
-
 1.  保護を有効にするために、仮想マシンが配置されているクラウドの **[仮想マシン]** タブで、**[保護を有効にする]** をクリックしてから **[仮想マシンを追加する]** を選択します。
-2.  クラウド内の仮想マシンのリストから保護するマシンを選択します。
+2.  クラウド内の仮想マシンのリストから、保護する仮想マシンを選択します。
 
-![Enable virtual machine protection][Enable virtual machine protection]
+    ![仮想マシンの保護の有効化][仮想マシンの保護の有効化]
 
-保護を有効にすると、2 つのジョブが作成されます。Enable Protection ジョブが実行されます。そして、初期レプリケーションが完了した後に、保護の最終処理が実行されます。仮想マシンは、これらのジョブが正常に完了してからフェールオーバーできる状態になります。ジョブの進捗状況は **[ジョブ]** タブで監視できます。
+3.  仮想マシンのプロパティを確認し、必要に応じて変更します。
 
-![Virtual machine protection job][Virtual machine protection job]
+    ![Verify virtual machines][Verify virtual machines]
 
-## <span id="recoveryplans"></span></a>手順 9.復旧計画の構成と実行
+[\*\*ジョブ\*\*] タブで、初期レプリケーションを含む [保護の有効化] アクションの進捗状況を確認します。保護の最終処理のジョブが実行されると、仮想マシンは、フェールオーバーを実行できる状態になります。保護が有効され仮想マシンが複製されると、Azure でそれらの状態を表示できます。
 
-復旧計画では、一括でのフェールオーバーを可能にするために、仮想マシンをグループにまとめます。復旧計画を作成するには、以下の手順を実行します。
+![仮想マシン保護ジョブ][仮想マシン保護ジョブ]
 
-1.  **[復旧計画]** タブで、**[作成]** をクリックします。
-2.  [復旧計画の名前とターゲットを指定します] ページで、ソース VMM サーバーを選択し、ターゲットとして Azure を選択します。
+## <span id="test"></span></a>手順 8.展開をテスト
 
-    ![復旧計画の作成][復旧計画の作成]
-
-3.  [仮想マシンの選択] ページで、復旧計画に追加する仮想マシンを選択します。保護が有効化された仮想マシンだけが表示されます。これらの仮想マシンが復旧計画の既定のグループ (グループ 1) に追加されます。
-4.  チェック マークをクリックして、復旧計画を作成します。
-
-    ![復旧計画の VM][復旧計画の VM]
-
-### <span id="run"></span></a>フェールオーバーのテスト
-
-復旧計画は、事前対応的なテストまたは計画されたフェールオーバーの一部として実行することも、計画されていないフェールオーバー時に実行することもできます。このチュートリアルでは、フェールオーバー戦略が予想どおりに動作するか検証するための、VMM から Azure へのテストのフェールオーバーを実行する方法を説明します。テスト フェールオーバーは、孤立したネットワークでフェールオーバーと復旧のシミュレーションを実行します。以下の点に注意してください。
+展開をテストするために、1 台の仮想マシンに対するテスト フェールオーバーを実行することや、複数の仮想マシンで構成される復旧計画を作成して、その計画のテスト フェールオーバーを実行することができます。テスト フェールオーバーは、孤立したネットワークでフェールオーバーと復旧のシミュレーションを実行します。以下の点に注意してください。
 
 -   フェールオーバー後に Azure でリモート デスクトップを使用して仮想マシンに接続する場合は、テストのフェールオーバーを実行する前に、仮想マシンのリモート デスクトップ接続を有効にします。
 -   フェールオーバー後、パブリック IP アドレスを使用して、Azure の仮想マシンにリモート デスクトップで接続します。この接続では、パブリック アドレスを使用する仮想マシンの接続を妨げるドメイン ポリシーを使用していないことを確認してください。
 
-</p>
-#### 
-
-<p>
-<span id="runtest"></span></a>フェールオーバーの実行
-
-</h5>
-復旧計画のテスト フェールオーバーを、次のように実行します。
+-   復旧計画作成の手順については、「[復旧計画の作成およびカスタマイズ: オンプレミスと Azure 間][復旧計画の作成およびカスタマイズ: オンプレミスと Azure 間]」を参照してください。
+-   テスト フェールオーバー実行の手順については、「[オンプレミスと Azure 間のデプロイメントのテスト][オンプレミスと Azure 間のデプロイメントのテスト]」を参照してください。
 
 </p>
-1.  復旧計画を実行する前に、計画内の仮想マシンの設定を検証できます。検証するには、クラウドの [プロパティ] ページで仮想マシンをクリックします。[フェールオーバー] ページの [ソース] と [ターゲット] の各プロパティで、設定を確認します。 具体的には、Azure のターゲット仮想マシンの推奨サイズが正しいことと、ネットワーク設定が正確であることを確認します。仮想マシンのすべての前提条件の一覧については、「[前提条件とサポート][3]」を参照してください。
+### <span id="runtest"></span></a>アクティビティの監視
 
-![Virtual Machine Properties][Virtual Machine Properties]
+**[ジョブ]** タブと **[ダッシュボード]** を使用して、Azure Site Recovery コンテナーで実行されるメイン ジョブを表示して監視できます。これには、クラウドに対する保護の構成、仮想マシンに対する保護の有効化と無効化、フェールオーバー (計画されたフェールオーバー、計画されていないフェールオーバー、またはテスト フェールオーバー) の実行、計画されていないフェールオーバーのコミットが含まれます。
 
-1.  **[復旧計画]** タブで、必要な復旧計画を選択します。
-2.  フェールオーバーを開始するには、**[テスト フェールオーバー]** ボタンをクリックします。
-3.  [テスト フェールオーバーの確認] ページで、テスト フェールオーバー後に仮想マシンが接続される Azure ネットワークを選択します。オプションで **[ネットワークなし]** を選択することができます。このように設定すると、選択された仮想マシンはフェールオーバー後にネットワークに接続されません。
+**[ジョブ]** タブからは、ジョブの表示、ジョブの詳細とエラーの表示、特定の条件に一致するジョブを取得するジョブ クエリの実行、ジョブの Excel へのエクスポート、失敗したジョブの再開を行うことができます。
 
-![Test Failover][Test Failover]
+**[ダッシュボード]** からは、最新バージョンのプロバイダーとエージェントのインストール ファイルのダウンロード、コンテナーの構成情報の取得、コンテナーによって管理されている保護対象の仮想マシンの数の確認、最近のジョブの確認、コンテナー証明書の管理、仮想マシンの再同期を行うことができます。
 
-テスト フェールオーバー ジョブの進行状況は、**[ジョブ]** タブで確認できます。テスト フェールオーバーが完了したら、以下の手順を実行します。
-
-1.  仮想マシンが Azure で正常に起動することを確認します。
-2.  **[メモ]** をクリックして、テスト フェールオーバーに関連する監察結果をすべて記録し、保存します。
-3.  **[ジョブ]** タブの詳細情報に加えて、復旧計画のテスト フェールオーバーを実行すると、そのプロセスが復旧計画の詳細ページに表示されます。フェールオーバーの各手順と状態を表示することができます。また、テスト フェールオーバーに関連するメモを作成して表示することができます。
-
-
-<h4><a id="runtest"></a>アクティビティの監視</h5>
-
-**[ジョブ]** タブと **[ダッシュボード]** を使用して、Azure Site Recovery コンテナーによって実行される主要なジョブを表示および監視することができます。ここには、クラウドの保護の構成、仮想マシンの保護の有効化と無効化、フェールオーバーの実行 (計画、計画外、テスト)、さらに計画外のフェールオーバーのコミットなどが含まれます。
-
-**[ジョブ]** タブでは、ジョブを表示し、ジョブの詳細やエラーにドリルダウンします。また、ジョブのクエリを実行して指定した条件に一致するジョブを取得します。さらに、ジョブを Excel にエクスポートしたり、失敗したジョブを再開したりできます。
-
-**[ダッシュボード]** では、Provider や Agent の最新バージョンのインストール ファイルをダウンロードしたり、コンテナーの構成情報を取得したりできます。また、コンテナーで保護管理された仮想マシンの数を確認することができ、さらに、最新のジョブの表示、コンテナーの証明書の管理、仮想マシンの再同期ができます。
-
-ジョブとダッシュボードの操作の詳細については、「[Azure Site Recovery の管理および監視][4]」を参照してください。
+ジョブの操作とダッシュボードの詳細については、「[Operations and Monitoring Guide (運用と監視ガイド)][Operations and Monitoring Guide (運用と監視ガイド)]」を参照してください。
 
 ## <span id="next"></span></a>次のステップ
 
--   完全な運用環境に Azure Site Recovery を計画、デプロイするには、「[Planning Guide for Azure Site Recovery (Azure Site Recovery の計画ガイド)][Plan for Azure Site Recovery Deployment (手順 5: 証明書の準備)]」および「[Azure Site Recovery のデプロイ: オンプレミス間の保護][Azure Site Recovery のデプロイ: オンプレミス間の保護]」を参照してください。
--   疑問がある場合は、「[Azure Recovery Services Forum (Azure 復旧サービス フォーラム)][Azure Recovery Services フォーラム]」にアクセスします。
+-   完全な運用環境で Azure Site Recovery の計画と展開を実行するには、「[Planning Guide for Azure Site Recovery (Azure Site Recovery 計画ガイド)][Azure Site Recovery のデプロイメントのプランニング]」と「[Deployment Guide for Azure Site Recovery (Azure Site Recovery デプロイ ガイド)][Deployment Guide for Azure Site Recovery (Azure Site Recovery デプロイ ガイド)]」を参照してください。
+-   疑問がある場合は、「[Azure Recovery Services Forum (Azure 復旧サービス フォーラム)][Azure 復旧サービス フォーラム]」にアクセスしてください。
 
-  [Azure Site Recovery の管理および監視]: http://go.microsoft.com/fwlink/?LinkId=378272
-  [Azure Recovery Services フォーラム]: http://go.microsoft.com/fwlink/?LinkId=313628
+</div>
+
+  [Azure の Hyper-V 回復マネージャーの構成]: http://go.microsoft.com/fwlink/?LinkId=398765
+  [Azure Site Recovery のデプロイメントのプランニング]: http://go.microsoft.com/fwlink/?LinkId=321294
+  [Azure Site Recovery のデプロイ: オンプレミスと Azure 間の保護]: http://go.microsoft.com/fwlink/?LinkId=402679
+  [Azure Site Recovery: Common Error Scenarios and Resolutions (Azure Site Recovery: 一般的なエラー シナリオと解決方法)]: http://go.microsoft.com/fwlink/?LinkId=389879
+  [Azure 復旧サービス フォーラム]: http://go.microsoft.com/fwlink/?LinkId=313628
+  [Azure の無料評価版]: http://aka.ms/try-azure
+  [Azure Site Recovery Manager Pricing Details (Azure Site Recovery Manager の料金詳細)]: http://go.microsoft.com/fwlink/?LinkId=378268
+  [Microsoft Azure ストレージの概要]: http://go.microsoft.com/fwlink/?LinkId=398704
   [前提条件とサポート]: http://go.microsoft.com/fwlink/?LinkId=402602
+  [手順 1.資格情報コンテナーの作成]: #vault
+  [手順 2.プロバイダー アプリケーションのインストール]: #download
+  [手順 3.Azure ストレージ アカウントの追加]: #storage
+  [手順 4.エージェント アプリケーションのインストール]: #agent
+  [手順 5.クラウドの保護の構成]: #clouds
+  [手順 6.ネットワーク マッピングの構成]: #NetworkMapping
+  [手順 7.仮想マシンの保護の有効化]: #virtualmachines
+  [手順 8.デプロイメントのテスト]: #test
   [管理ポータル]: https://manage.windowsazure.com
   [新しいコンテナー]: ./media/hyper-v-recovery-manager-configure-vault/SR_HvVault.png
-  [クイック スタート アイコン]: ./media/hyper-v-recovery-manager-configure-vault/SR_QuickStartIcon.png
-  [クイック スタート]: ./media/hyper-v-recovery-manager-configure-vault/SR_QuickStart.png
-  [証明書の管理]: ./media/hyper-v-recovery-manager-configure-vault/SR_ManageCert.png
-  [1]: ./media/hyper-v-recovery-manager-configure-vault/SR_VaultKey.png
-  [Download Provider File]: ./media/hyper-v-recovery-manager-configure-vault/SR_DownloadProviderFile.png
-  [エージェントのダウンロード]: ./media/hyper-v-recovery-manager-configure-vault/SR_ProviderInstall1.png
-  [Setup Complete]: ./media/hyper-v-recovery-manager-configure-vault/SR_InstallWiz.png
-  [Internet Settings]: ./media/hyper-v-recovery-manager-configure-vault/SR_ProviderProxy.png
-  [証明書の登録]: ./media/hyper-v-recovery-manager-configure-vault/SR_CertReg1.png
-  [証明書コンテナー]: ./media/hyper-v-recovery-manager-configure-vault/SR_CertReg2.png
-  [PublishCloud]: ./media/hyper-v-recovery-manager-configure-vault/SR_VMMServerName.png
-  [Install Recovery Services Agent]: ./media/hyper-v-recovery-manager-configure-vault/SR_HyperVAgent.png
+  [[クイック スタート] アイコン]: ./media/hyper-v-recovery-manager-configure-vault/SR_QuickStartIcon.png
+  [登録キー]: ./media/hyper-v-recovery-manager-configure-vault/SR_E2ARegisterKey.png
+  [前提条件]: ./media/hyper-v-recovery-manager-configure-vault/SR_ProviderPrereq.png
+  [Microsoft 更新プログラム]: ./media/hyper-v-recovery-manager-configure-vault/SR_ProviderUpdate.png
+  [インターネット設定]: ./media/hyper-v-recovery-manager-configure-vault/SR_ProviderProxy.png
+  [サーバー登録]: ./media/hyper-v-recovery-manager-configure-vault/SR_ProviderRegKeyServerName.png
+  [1]: ./media/hyper-v-recovery-manager-configure-vault/SR_ProviderSyncEncrypt.png
+  [ストレージ アカウント]: ./media/hyper-v-recovery-manager-configure-vault/SR_E2AStorageAgent.png
+  [Install Recovery Services Agent]: ./media/hyper-v-recovery-manager-configure-vault/SR_E2AInstallHyperVAgent.png
   [Prerequisites Recovery Services Agent]: ./media/hyper-v-recovery-manager-configure-vault/SR_AgentPrereqs.png
-  [Recovery Services Agent location]: ./media/hyper-v-recovery-manager-configure-vault/SR_AgentInstallSettings.png
-  [発行済みのクラウド]: ./media/hyper-v-recovery-manager-configure-vault/SR_Clouds.png
-  [Enable cloud protection]: ./media/hyper-v-recovery-manager-configure-vault/SR_EnableCloudProtection.png
-  [クラウド構成]: ./media/hyper-v-recovery-manager-configure-vault/SR_CloudConfigureE2A1.png
-  [Cloud replication settings]: ./media/hyper-v-recovery-manager-configure-vault/SR_PublishCloudSetup2.png
-  [手順 4: ネットワーク マッピングの構成: オンプレミス間]: http://go.microsoft.com/fwlink/?LinkId=402533
-  [Modify virtual machine properties]: ./media/hyper-v-recovery-manager-configure-vault/SR_VMMVMPropsGeneral.png
-  [2]: ./media/hyper-v-recovery-manager-configure-vault/SR_VMMVMPropsHW.png
-  [Enable virtual machine protection]: ./media/hyper-v-recovery-manager-configure-vault/SR_EnableProtectionVM.png
-  [Virtual machine protection job]: ./media/hyper-v-recovery-manager-configure-vault/SR_VMJobs.png
-  [復旧計画の作成]: ./media/hyper-v-recovery-manager-configure-vault/SR_RecoveryPlan1.png
-  [復旧計画の VM]: ./media/hyper-v-recovery-manager-configure-vault/SR_RecoveryPlan2.png
-  [3]: http://go.microsoft.com/fwlink/?LinkId=402676
-  [Virtual Machine Properties]: ./media/hyper-v-recovery-manager-configure-vault/SR_VMPropertiesE2A.png
-  [Test Failover]: ./media/hyper-v-recovery-manager-configure-vault/SR_TestFailover.png
-  [4]: http://go.microsoft.com/fwlink/?LinkId=398534
-  [Azure Site Recovery のデプロイ: オンプレミス間の保護]: http://go.microsoft.com/fwlink/?LinkId=321295
+  [発行済みのクラウド]: ./media/hyper-v-recovery-manager-configure-vault/SR_CloudsList.png
+  [Cloud replication settings]: ./media/hyper-v-recovery-manager-configure-vault/SR_CloudSettingsE2A.png
+  [ネットワーク マッピングの準備に関するページ]: http://go.microsoft.com/fwlink/?LinkId=324817
+  [ネットワーク マッピングの構成]: http://go.microsoft.com/fwlink/?LinkId=402533
+  [Create virtual machine]: ./media/hyper-v-recovery-manager-configure-vault/SR_EnableVMME2ANew.png
+  [Modify virtual machine properties]: ./media/hyper-v-recovery-manager-configure-vault/SR_EnableVMME2AExisting.png
+  [仮想マシンの保護の有効化]: ./media/hyper-v-recovery-manager-configure-vault/SR_EnableVMME2ASelectVM.png
+  [Verify virtual machines]: ./media/hyper-v-recovery-manager-configure-vault/SR_EnableVME2AProps.png
+  [仮想マシン保護ジョブ]: ./media/hyper-v-recovery-manager-configure-vault/SR_VMJobs.png
+  [復旧計画の作成およびカスタマイズ: オンプレミスと Azure 間]: http://go.microsoft.com/fwlink/?LinkId=511492
+  [オンプレミスと Azure 間のデプロイメントのテスト]: http://go.microsoft.com/fwlink/?LinkId=511494
+  [Operations and Monitoring Guide (運用と監視ガイド)]: http://go.microsoft.com/fwlink/?LinkId=398534
+  [Deployment Guide for Azure Site Recovery (Azure Site Recovery デプロイ ガイド)]: http://go.microsoft.com/fwlink/?LinkId=321295

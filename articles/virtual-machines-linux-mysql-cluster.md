@@ -1,6 +1,6 @@
-<properties title="Using load-balanced sets to clusterize MySQL on Linux" pageTitle="Using load-balanced sets to clusterize MySQL on Linux" description="An article that illustrates patterns to setup a load-balanced, high availability Linux cluster on Azure using MySQL as an example" metaKeywords="mysql, linux, cluster, azure, ha, high availability, corosync, pacemaker, drbd, heartbeat" services="virtual-machines" solutions="" documentationCenter="" authors="jparrel" videoId="" scriptId="" />
+<properties title="負荷分散セットを使用して Linux の MySQL をクラスター化する" pageTitle="負荷分散セットを使用して Linux の MySQL をクラスター化する" description="この記事では、例として MySQL を使用して、負荷分散された可用性の高い Linux クラスターを Azure にセットアップするときのパターンを紹介します。" metaKeywords="mysql, linux, cluster, azure, ha, high availability, corosync, pacemaker, drbd, heartbeat" services="virtual-machines" solutions="" documentationCenter="" authors="jparrel" videoId="" scriptId="" manager="timlt" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jparrel"></tags>
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jparrel" />
 
 # 負荷分散セットを使用して Linux の MySQL をクラスター化する
 
@@ -32,9 +32,9 @@ Microsoft Azure の負荷分散セットを使用すると、ラウンド ロビ
 ### テスト環境
 
 -   Ubuntu 13.10
- -   DRBD
- -   MySQL サーバー
- -   Corosync および Pacemaker
+-   DRBD
+-   MySQL サーバー
+-   Corosync および Pacemaker
 
 ### アフィニティ グループ
 
@@ -64,7 +64,7 @@ Azure ポータルにログインし、下にスクロールして、[設定] �
 
     sudo apt-get install corosync pacemaker drbd8utils.
 
-**この時点では MySQL をインストールしないでください。** Debian および Ubuntu のインストール スクリプトは、`/var/lib/mysql` の MySQL のデータ ディレクトリを初期化します。しかし、このディレクトリは DRBD のファイルシステムに置き換わるため、MySQL は後でインストールする必要があります。
+**この時点では MySQL をインストールしないでください。**Debian および Ubuntu のインストール スクリプトは、`/var/lib/mysql` の MySQL のデータ ディレクトリを初期化します。しかし、このディレクトリは DRBD のファイルシステムに置き換わるため、MySQL は後でインストールする必要があります。
 
 この時点で、両 VM とも 10.10.10.0/24 サブネットのアドレスを使用していること、および、相互に名前で Ping を送信できることを、(`/sbin/ifconfig` を使用して) 確認する必要もあります。また、必要に応じて、`ssh-keygen` および `ssh-copy-id` を使用して、両 VM がパスワードを求められることなく SSH 経由で通信できることを確認します。
 
@@ -154,7 +154,7 @@ Azure ポータルに戻って `hadb01` VM を表示し、さらにエンドポ�
 
 ### 負荷分散セットのテスト
 
-テストは、外部のマシンから、MySQL クライアントやアプリケーション (たとえば、Azure Web サイトを実行している phpMyAdmin) を使用して実行できます。ここでは、別の Linux ボックスで MySQL のコマンド ライン ツールを使用します。
+テストは、外部のマシンから、MySQL クライアントやアプリケーション (たとえば、Azure Website を実行している phpMyAdmin) を使用して実行できます。ここでは、別の Linux ボックスで MySQL のコマンド ライン ツールを使用します。
 
     mysql azureha –u root –h hadb.cloudapp.net –e "select * from things;"
 
@@ -327,8 +327,8 @@ Pacemaker が DRBD リソース、マウント ポイント、および MySQL �
 次の制限事項が適用されます。
 
 -   ノードをシャットダウンする場合、Pacemaker で DRBD をリソースとして管理する linbit DRBD リソース スクリプトは、ノードがスタンバイを始めたばかりでも、`drbdadm down` を使用します。マスターへの書き込み中はスレーブは DRBD リソースと同期しないため、このような動作は適切ではありません。マスターのフェールオーバーが正しく行われなかった場合、スレーブは古いファイルシステムの状態を引き継ぐ可能性があります。こうした状況は、次の 2 つの方法により解決する可能性があります。
- -   ローカルの (クラスター化されていない) ウォッチドッグを介してすべてのクラスター ノードに `drbdadm up r0` を強制適用する。
- -   linbit DRBD スクリプトを編集し、`/usr/lib/ocf/resource.d/linbit/drbd` の `down` が呼び出されないようにする。
+-   ローカルの (クラスター化されていない) ウォッチドッグを介してすべてのクラスター ノードに `drbdadm up r0` を強制適用する。
+-   linbit DRBD スクリプトを編集し、`/usr/lib/ocf/resource.d/linbit/drbd` の `down` が呼び出されないようにする。
 -   負荷分散の応答には、少なくとも 5 秒必要なため、アプリケーションはクラスター対応であると共に、タイムアウトに寛容である必要があります。アプリケーション内キュー、クエリ ミドルウェアなど、他のアーキテクチャが役立つ可能性もあります。
 -   適切なペースで書き込みが実行されるためには MySQL の調整が必要です。また、メモリ損失を最小化するため、できるだけ頻繁にキャッシュをディスクにフラッシュします。
 -   DRBD はデバイスをリプリケートするためのメカニズムとして、仮想スイッチで VM を相互に接続しているため、書き込み性能は、仮想スイッチでの接続状態に左右されます。

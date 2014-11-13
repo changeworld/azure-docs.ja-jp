@@ -1,4 +1,4 @@
-<properties linkid="develop-python-web-app-with-blob-storage" urlDisplayName="Web App with Blob Storage" pageTitle="Python web app with table storage | Microsoft Azure" metaKeywords="Azure table storage Python, Azure Python application, Azure Python tutorial, Azure Python example" description="A tutorial that teaches you how to create a Python web application using the Azure Client Libraries. Django is used as the web framework." metaCanonical="" services="storage" documentationCenter="Python" title="Python Web Application using Table Storage" authors="huvalo" solutions="" videoId="" scriptId="" manager="" editor="mollybos" />
+<properties urlDisplayName="Web App with Blob Storage" pageTitle="テーブル ストレージを使用した Python Web アプリケーション | Microsoft Azure" metaKeywords="Azure table storage Python, Azure Python application, Azure Python tutorial, Azure Python example" description="Azure クライアント ライブラリを使用して Python Web アプリケーションを作成する方法について説明したチュートリアルです。Django を Web フレームワークとして使用します。" metaCanonical="" services="storage" documentationCenter="Python" title="テーブル ストレージを使用する Python Web アプリケーション" authors="huvalo" solutions="" videoId="" scriptId="" manager="wpickett" editor="mollybos" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo" />
 
@@ -178,6 +178,4 @@
   [Django Hello World Web アプリケーション]: http://windowsazure.com/ja-jp/documentation/articles/virtual-machines-python-django-web-app-windows-server
   [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [0]: ./media/storage-python-use-table-storage-web-app/web-app-with-storage-Finaloutput-mac.png
-  [create-account-note]: ../includes/create-account-note.md
   [Python インストール ガイド]: http://windowsazure.com/ja-jp/documentation/articles/python-how-to-install
-  [create-storage-account]: ../includes/create-storage-account.md

@@ -1,4 +1,4 @@
-<properties linkid="manage-services-import-export" urlDisplayName="Azure Import/Export Service" pageTitle="Using import/export to transfer data to Blob Storage | Microsoft Azure" metaKeywords="" description="Learn how to create import and export jobs in the Azure Management Portal to transfer data to blob storage." metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Using the Azure Import/Export Service to Transfer Data to Blob Storage" authors="tamram" manager="mbaldwin" editor="cgronlun" />
+<properties urlDisplayName="Azure Import/Export Service" pageTitle="Import/Export を使用した BLOB ストレージへのデータの転送 | Microsoft Azure" metaKeywords="" description="Azure の管理ポータルでインポート ジョブおよびエクスポート ジョブを作成し、データを BLOB ストレージに転送する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Azure Import/Export サービスを使用した BLOB ストレージへのデータの転送" authors="tamram" manager="adinah" editor="cgronlun" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
@@ -27,8 +27,10 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 インポート ジョブのために発送するドライブを準備するには、**Microsoft Azure Import/Export ツール**を実行します。これによって、ドライブ上のデータが BitLocker で暗号化され、後で説明するドライブのジャーナル ファイルが作成されるため、ドライブへのデータのコピーが容易になります。
 
 <div class="dev-callout">
-<strong>注</strong>
-<p>ドライブ上のデータは、BitLocker ドライブ暗号化で暗号化する必要があります。こうすると、移送中にデータが保護されます。エクスポート ジョブの場合は、ドライブを返送する前に Import/Export サービスでデータが暗号化されます。</p>
+
+**注**
+ドライブ上のデータは、BitLocker ドライブ暗号化で暗号化する必要があります。こうすると、移送中にデータが保護されます。エクスポート ジョブの場合は、ドライブを返送する前に Import/Export サービスでデータが暗号化されます。
+
 </div>
 
 インポート ジョブまたはエクスポート ジョブの作成時には、*ドライブ ID* も必要になります。これは、ドライブの製造元によって特定のドライブに割り当てられたシリアル番号です。ドライブ ID は、ドライブの外側に表示されています。
@@ -101,50 +103,15 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 
     次の表は、有効な BLOB のパスの例を示します。
 
-	<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
-		<tbody>
-			<tr>
-				<td><strong>セレクター</strong></td>
-				<td><strong>BLOB パス</strong></td>
-				<td><strong>説明</strong></td>
-			</tr>
-			<tr>
-				<td>指定値で始まる</td>
-				<td>/</td>
-				<td>ストレージ アカウントのすべての BLOB をエクスポートする</td>
-			</tr>
-			<tr>
-				<td>指定値で始まる</td>
-				<td>/$root/</td>
-				<td>ルート コンテナー内のすべての BLOB をエクスポートする</td>
-			</tr>
-			<tr>
-				<td>指定値で始まる</td>
-				<td>/book</td>
-				<td>プレフィックス "<strong>book</strong>" で始まるすべてのコンテナー内のすべての BLOB をエクスポートする</td>
-			</tr>
-			<tr>
-				<td>指定値で始まる</td>
-				<td>/music/</td>
-				<td>コンテナー "<strong>music</strong>" 内のすべての BLOB をエクスポートする </td>
-			</tr>
-			<tr>
-				<td>指定値で始まる</td>
-				<td>/music/love</td>
-				<td>コンテナー "<strong>music</strong>" 内の、プレフィックス "<strong>love</strong>" で始まるすべての BLOB をエクスポートする</td>
-			</tr>
-			<tr>
-				<td>等しい</td>
-				<td>$root/logo.bmp</td>
-				<td>ルート コンテナー内の BLOB "<strong>logo.bmp</strong>" をエクスポートする</td>
-			</tr>
-			<tr>
-				<td>等しい</td>
-				<td>videos/story.mp4</td>
-				<td>コンテナー "<strong>videos</strong>" 内の BLOB "<strong>story.mp4</strong>" をエクスポートする</td>
-			</tr>
-		</tbody>
-	</table>
+    |----------------|------------------|-------------------------------------------------------------------------------------------------|
+    | **セレクター** | **BLOB パス**    | **説明**                                                                                        |
+    | 指定値で始まる | /                | ストレージ アカウントのすべての BLOB をエクスポートする                                         |
+    | 指定値で始まる | /$root/          | ルート コンテナー内のすべての BLOB をエクスポートする                                           |
+    | 指定値で始まる | /book            | プレフィックス "**book**" で始まるすべてのコンテナー内のすべての BLOB をエクスポートする        |
+    | 指定値で始まる | /music/          | コンテナー "**music**" 内のすべての BLOB をエクスポートする                                     |
+    | 指定値で始まる | /music/love      | コンテナー "**music**" 内の、プレフィックス "**love**" で始まるすべての BLOB をエクスポートする |
+    | 等しい         | $root/logo.bmp   | ルート コンテナー内の BLOB "**logo.bmp**" をエクスポートする                                    |
+    | 等しい         | videos/story.mp4 | コンテナー "**videos**" 内の BLOB "**story.mp4**" をエクスポートする                            |
 
 4.  ステップ 4. で、エクスポート ジョブのわかりやすい名前を入力します。名前に含めることができるのは、アルファベットの小文字、数字、ハイフン、アンダースコアだけです。また、先頭の文字はアルファベットにします。スペースを含めることはできません。
 
@@ -166,34 +133,13 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 
 次の表では、それぞれのジョブの状態の意味を説明しています。
 
-<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
-	<tbody>
-		<tr>
-			<td><strong>ジョブの状態</strong></td>
-			<td><strong>説明</strong></td>
-		</tr>
-		<tr>
-			<td>作成</td>
-			<td>ジョブが作成されましたが、発送情報が入力されていません。</td>
-		</tr>
-		<tr>
-			<td>発送</td>
-			<td>ジョブが作成され、発送情報が入力されています。</td>
-		</tr>
-		<tr>
-			<td>転送</td>
-			<td>ハード ドライブから (インポート ジョブの場合)、またはハード ドライブに (エクスポート ジョブの場合) データを転送中です。</td>
-		</tr>
-		<tr>
-			<td>パッケージ</td>
-			<td>データの転送が完了し、返送のためにハード ドライブを準備しています。</td>
-		</tr>
-		<tr>
-			<td>完了</td>
-			<td>ハード ドライブが返送されました。</td>
-		</tr>
-	</tbody>
-</table>
+|------------------|-------------------------------------------------------------------------------------------------------------------------|
+| **ジョブの状態** | **説明**                                                                                                                |
+| 作成             | ジョブが作成されましたが、発送情報が入力されていません。                                                                |
+| 発送             | ジョブが作成され、発送情報が入力されています。                                                                          |
+| 転送             | ハード ドライブから (インポート ジョブの場合)、またはハード ドライブに (エクスポート ジョブの場合) データを転送中です。 |
+| パッケージ       | データの転送が完了し、返送のためにハード ドライブを準備しています。                                                     |
+| 完了             | ハード ドライブが返送されました。                                                                                       |
 
 ## エクスポート ジョブの BitLocker キーの表示
 
@@ -262,9 +208,11 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 -   アジアのリージョンでは、[DHL][DHL] のみがサポートされています。すべてのパッケージが DHL Express Worldwide で返送されます。
 
     <div class="dev-callout">
-<strong>重要</strong>
-<p>Azure インポート/エクスポート サービスに問い合わせ番号を通知する必要があります。通知しないと、ジョブは処理されません。</p>
-</div>
+
+    **重要**
+    Azure インポート/エクスポート サービスに問い合わせ番号を通知する必要があります。通知しないと、ジョブは処理されません。
+
+    </div>
 
 **返送には費用がかかりますか。**
 
@@ -287,9 +235,11 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 -   お客様のストレージ アカウントが存在するリージョン内の発送先住所が提供されます。たとえば、米国にお住まいで、ストレージ アカウントが西ヨーロッパ データ センターにある場合は、ドライブの発送先としてヨーロッパの住所が提供されます。
 
     <div class="dev-callout">
-<strong>重要</strong>
-<p>発送する物理メディアが国境を越える場合があることに注意してください。お客様は、物理メディアおよびデータが輸入および輸出に関して該当する法律に準拠していることを確認する必要があります。物理メディアを発送する前に、アドバイザーに依頼して、メディアおよびデータが指定のデータ センターに合法的に発送できることを確認してもらってください。それにより、マイクロソフトへのメディアの到着が遅れるのを防ぐことができます。</p>
-</div>
+
+    **重要**
+    発送する物理メディアが国境を越える場合があることに注意してください。お客様は、物理メディアおよびデータが輸入および輸出に関して該当する法律に準拠していることを確認する必要があります。物理メディアを発送する前に、アドバイザーに依頼して、メディアおよびデータが指定のデータ センターに合法的に発送できることを確認してもらってください。それにより、マイクロソフトへのメディアの到着が遅れるのを防ぐことができます。
+
+    </div>
 
 -   パッケージを発送する際には、[Microsoft Azure サービス条件][Microsoft Azure サービス条件]の規定に従う必要があります。
 

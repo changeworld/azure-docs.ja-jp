@@ -1,10 +1,10 @@
-<properties pageTitle="Customizing the developer portal in Azure API Management" metaKeywords="" description="Customizing the developer portal in Azure API Management." metaCanonical="" services="" documentationCenter="API Management" title="Customizing the developer portal in Azure API Management" authors="sdanie" solutions="" manager="" editor="" />
+<properties pageTitle="Azure API Management での開発者ポータルのカスタマイズ" metaKeywords="" description="Azure API Management での開発者ポータルのカスタマイズ。" metaCanonical="" services="api-management" documentationCenter="API Management" title="Azure API Management での開発者ポータルのカスタマイズ" authors="sdanie" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie"></tags>
+<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
 
 # Azure API Management での開発者ポータルのカスタマイズ
 
-このガイドでは、API Management (プレビュー) における開発者ポータルのルック アンド フィールをお客様のブランドに合わせてカスタマイズする方法について説明します。
+このガイドでは、API Management における開発者ポータルのルック アンド フィールをお客様のブランドに合わせてカスタマイズする方法について説明します。
 
 ## このトピックの内容
 

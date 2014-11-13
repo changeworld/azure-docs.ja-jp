@@ -1,4 +1,4 @@
-<properties title="How to use Giraph with HDInsight" pageTitle="How to use Apache Giraph with Azure HDInsight" description="Learn how to use Apache Giraph to perform graph processing with Azure HDInsight" metaKeywords="Azure HDInsight Apache Giraph, hdinsight giraph, hdinsight graph, hadoop giraph, azure hadoop, hadoop graph" services="hdinsight" solutions="big-data" documentationCenter="" authors="larryfr" videoId="" scriptId="" />
+<properties title="Giraph を HDInsight で使用する方法" pageTitle="Apache Giraph を HDInsight で使用する方法" description="Apache Giraph を使って Azure HDInsight でグラフ処理を実行する方法について説明します。" metaKeywords="Azure HDInsight Apache Giraph, hdinsight giraph, hdinsight graph, hadoop giraph, azure hadoop, hadoop graph" services="hdinsight" solutions="big-data" documentationCenter="" authors="larryfr" videoId="" scriptId="" manager="paulettm" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/14/2014" ms.author="larryfr" />
 
@@ -179,7 +179,7 @@ HDInsight クラスターに接続するには、次の手順を実行します�
 
 4.  .RDP ファイルを保存するか、すぐに開いてリモート デスクトップ クライアントを起動することができます。接続プロセスの間に、リモート デスクトップ接続を有効にしたときに使用したユーザー名とパスワードを入力するように求められます。
 
-5.  接続されたら、デスクトップ上の **Hadoop コマンド ライン** アイコンを使用して Hadoop コマンド ラインを開始します。
+5.  接続されたら、デスクトップ上の **[Hadoop コマンド ライン]** アイコンを使用して Hadoop コマンド ラインを開始します。
 
 6.  次の例では、**giraph.jar** ファイルをクラスター ヘッド ノードにコピーし、Hadoop コマンド ラインを使用してジョブを実行する方法を示しています。
 
@@ -199,6 +199,7 @@ HDInsight クラスターに接続するには、次の手順を実行します�
   [Apache Giraph]: http://giraph.apache.org
   [Apache Giraph をビルドして HDInsight クラスターにデプロイする]: #build
   [SimpleShortestPathsComputation サンプルを実行する]: #run
+  [Package org.apache.giraph.examples (パッケージ org.apache.giraph.examples)]: https://giraph.apache.org/apidocs/org/apache/giraph/examples/package-summary.html
   [発生する可能性のある問題のトラブルシューティングを行う]: #tshoot
   [Git]: http://git-scm.com/
   [Maven]: http://maven.apache.org/
@@ -210,6 +211,7 @@ HDInsight クラスターに接続するには、次の手順を実行します�
   [Pregel]: http://people.apache.org/~edwardyoon/documents/pregel.pdf
   [release-1.1 branch]: https://github.com/apache/giraph/tree/release-1.1
   [有向グラフ]: http://en.wikipedia.org/wiki/Directed_graph
+  [tiny\_graph.txt drawn as circles with lines of varying distance between]: .\media\hdinsight-giraph\giraph-graph.png
   [Drawing of objects as circles with shortest paths drawn between]: .\media\hdinsight-giraph\giraph-graph-out.png
   [Azure 管理ポータル]: https://manage.windowsazure.com
   [HDInsight で提供されるクラスター バージョンの新機能]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/

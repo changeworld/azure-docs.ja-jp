@@ -1,4 +1,4 @@
-<properties linkid="manage-linux-howto-service-management-api" urlDisplayName="Service Management API" pageTitle="How to use the service management API for VMs - Azure" metaKeywords="" description="Learn how to use the Azure Service Management API for a Linux virtual machine." metaCanonical="" services="virtual-machines" documentationCenter="" title="How to Use the Service Management API" authors="timlt" solutions="" manager="timlt" editor="" />
+<properties urlDisplayName="Service Management API" pageTitle="VM 用サービス管理 API の使用方法 - Azure" metaKeywords="" description="Linux 仮想マシン用 Azure サービス管理 API の使用方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="サービス管理 API の使用方法" authors="timlt" solutions="" manager="timlt" editor="" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="timlt" />
 
@@ -81,7 +81,6 @@ SetProxyUrl を呼び出してプロキシのホストとポートを明示的�
     -   場所
     -   RoleSize
 -   callback は必須です。(imageOptions を設定しない場合、これを 3 番目のパラメーターとして指定できます)。
-   
 -   成功した場合、応答オブジェクトには作成されたイメージのプロパティが格納されます。
 
 **iaasClient.ListHostedServices(callback)**
@@ -99,6 +98,7 @@ SetProxyUrl を呼び出してプロキシのホストとポートを明示的�
 
 -   serviceName はホステッド サービスの必須の名前文字列です。
 -   serviceOptions は省略可能なオブジェクトです。格納できるプロパティは次のとおりです。
+
     -   Description - 既定で 'Service host' が設定されます。
     -   Label - 設定しない場合、既定で serviceName が設定されます。
     -   場所 - サービスが作成されるリージョン。
@@ -130,6 +130,7 @@ SetProxyUrl を呼び出してプロキシのホストとポートを明示的�
 -   deploymentName はデプロイの必須の名前文字列です。
 -   VMRole は、デプロイ用に作成されるロールのプロパティが格納される必須のオブジェクトです。
 -   deployOptions は省略可能なオブジェクトです。格納できるプロパティは次のとおりです。
+
     -   DeploymentSlot - 既定で 'Production' が設定されます。
     -   Label - 設定しない場合、既定で deploymentName が設定されます。
     -   UpgradeDomainCount - 既定値はありません。
@@ -210,6 +211,7 @@ SetProxyUrl を呼び出してプロキシのホストとポートを明示的�
 -   deploymentName はデプロイの必須の名前文字列です。
 -   roleInstance はロール インスタンスの必須の名前文字列です。
 -   captOptions は必須のオブジェクトであり、キャプチャ アクションを定義します。
+
     -   PostCaptureActions
     -   ProvisioningConfiguration
     -   SupportsStatelessDeployment
@@ -219,9 +221,9 @@ SetProxyUrl を呼び出してプロキシのホストとポートを明示的�
 
 ## データ オブジェクト
 
-API はデプロイ、ロール、またはディスクの作成や変更をするときに、入力としてオブジェクトを受け取ります。Get または List の処理で同様のオブジェクトを返す API もあります。
-このセクションでは、オブジェクトのプロパティについて概説します。
-デプロイ
+API はデプロイ、ロール、またはディスクの作成や変更をするときに、入力としてオブジェクトを受け取ります。他の API は Get 操作または List 操作で同様のオブジェクトを返します。
+このセクションでは、オブジェクトのプロパティについて大まかにまとめます。
+デプロイメント
 
 -   Name - 文字列
 -   DeploymentSlot - 'Staging' または 'Production'

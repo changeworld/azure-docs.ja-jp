@@ -1,28 +1,37 @@
-<properties linkid="dev-nodejs-getting-started" urlDisplayName="Cloud Service" pageTitle="Node.js Getting Started Guide - Azure Tutorial" metaKeywords="Azure node.js getting started, Azure Node.js tutorial, Azure Node.js tutorial" description="An end-to-end tutorial that helps you develop a simple Node.js web application and deploy it to Azure." metaCanonical="" services="cloud-services" documentationCenter="nodejs" title="Build and deploy a Node.js application to an Azure Cloud Service" authors="larryfr" solutions="" manager="" editor="" />
+<properties urlDisplayName="Cloud Service" pageTitle="Node.js 概要ガイド - Azure チュートリアル" metaKeywords="Azure node.js getting started, Azure Node.js tutorial, Azure Node.js tutorial" description="シンプルな Node.js Web アプリケーションの開発および Azure へのデプロイに役立つエンド ツー エンドのチュートリアルです。" metaCanonical="" services="cloud-services" documentationCenter="nodejs" title="Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ" authors="larryfr" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="wpickett" />
 
 # Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ
 
-このガイドでは、Azure のクラウド サービスで実行される簡単な Node.js アプリケーションを作成します。クラウド サービスは、Azure のスケーラブルなクラウド アプリケーションの構成要素です。クラウド サービスによって、アプリケーションのフロントエンド コンポーネントとバックエンド コンポーネントの分離および独立した管理とスケールアウトを実現できます。クラウド サービスは、各ロールを信頼性の高い方法でホストするための堅牢な専用仮想マシンを提供します。
+このガイドでは、Azure のクラウド サービスで実行される
+簡単な Node.js アプリケーションを作成します。クラウド サービスは、Azure のスケーラブルな
+クラウド アプリケーションの構成要素です。クラウド サービスによって、アプリケーションの
+フロントエンド コンポーネントとバックエンド コンポーネントの分離および独立した管理とスケールアウトを実現できます。クラウド サービス
+は、各ロールを信頼性の高い方法でホストするための堅牢な専用仮想マシンを提供します。
 
 クラウド サービスの詳細と Azure の Web サイトおよび仮想マシンとの違いについては、[「Azure の Web サイト、クラウド サービス、および仮想マシンの比較」][「Azure の Web サイト、クラウド サービス、および仮想マシンの比較」]を参照してください。
 
-<div class="dev-callout"><strong>単純な Web サイトを構築する場合</strong>
-<p>実現するシナリオが単純な Web サイトのフロントエンドにのみ関係している場合は、<a href="/ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/">軽量の Azure の Web サイトを使用する</a>ことを検討してください。Web サイトの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。</p>
+<div class="dev-callout">
+
+**単純な Web サイトを構築する場合**
+実現するシナリオが単純な Web サイトのフロントエンドにのみ関係している場合は、[軽量の Azure の Web サイトを使用する][軽量の Azure の Web サイトを使用する]ことを検討してください。Web サイトの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。
+
 </div>
 
-このチュートリアルでは、Web ロールでホストされる単純な Web アプリケーションを作成します。コンピューティング エミュレーターを使用してアプリケーションをローカルでテストし、PowerShell コマンド ライン ツールを使用してアプリケーションをデプロイします。
+このチュートリアルでは、Web ロールでホストされる単純な Web アプリケーションを作成します。コンピューティング
+ エミュレーターを使用してアプリケーションをローカルでテストし、
+PowerShell コマンド ライン ツールを使用してアプリケーションをデプロイします。
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
-![hello world ページを表示しているブラウザー ウィンドウこの URL は、ページが Azure でホストされていることを示します。](https://wacomdpsstablestorage.blob.core.windows.net/articlesmedia/demo-ppe.windowsazure.com/en-us/documentation/articles/cloud-services-nodejs-develop-deploy-app/20140107035927/node21.png)
+![hello world ページを表示しているブラウザー ウィンドウこの URL は、ページが Azure でホストされていることを示します。][hello world ページを表示しているブラウザー ウィンドウこの URL は、ページが Azure でホストされていることを示します。]
 
 ## 新しいノード アプリケーションの作成
 
 新しい Azure クラウド サービス プロジェクトおよび基本的な Node.js スキャフォールディングを作成するには、次のタスクを実行します。
 
-1.  **[スタート] メニュー**または**スタート画面**で、「**Azure PowerShell**」を検索します。最後に、**[Azure PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
+1.  **[スタート] メニュー**または**スタート画面**で、**Azure PowerShell** を検索します。最後に、**[Azure PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
 
     ![Azure PowerShell アイコン][Azure PowerShell アイコン]
 
@@ -65,9 +74,11 @@
     **Add-AzureNodeWebRole** コマンドレットにより、アプリケーション用の新しいディレクトリが作成され、基本的な Node.js アプリケーションのスキャフォールディングが生成されます。前の手順で作成した **ServiceConfiguration.Cloud.csfg**、**ServiceConfiguration.Local.csfg**、および **ServiceDefinition.csdef** ファイルも変更され、新しいロールの構成エントリが追加されます。
 
     <div class="dev-callout">
-<b>注</b>
-<p>既定では、ロール名を指定しない場合、ロールが作成されます。名前は、<b>Add-AzureNodeWebRole</b> の最初のパラメーターとして指定できます。たとえば、<code data-inline="1">Add-AzureNodeWebRole MyRole</code> のように指定します。</p>
-</div>
+
+    **注**
+    既定では、ロール名を指定しない場合、ロールが作成されます。名前は、**Add-AzureNodeWebRole** の最初のパラメーターとして指定できます。たとえば、`Add-AzureNodeWebRole MyRole` のように指定します。
+
+    </div>
 
 5.  次のコマンドを使用して、**WebRole1** ディレクトリに移動し、**server.js** ファイルをメモ帳で開きます。
 
@@ -84,7 +95,10 @@
 
 ## エミュレーターでのアプリケーションのローカル実行
 
-Azure SDK によってインストールされるツールの 1 つに、Azure コンピューティング エミュレーターがあります。このツールを使用すると、アプリケーションをローカルで実行できます。コンピューティング エミュレーターでは、クラウドにデプロイされたときのアプリケーションの実行環境がシミュレートされます。エミュレーターでアプリケーションをテストするには、次のステップを実行します。
+Azure SDK によってインストールされる
+ツールの 1 つに、Azure コンピューティング エミュレーターがあります。このツールを使用すると、アプリケーションをローカルで実行できます。
+コンピューティング エミュレーターでは、クラウドにデプロイされたときの
+アプリケーションの実行環境がシミュレートされます。エミュレーターでアプリケーションをテストするには、次のステップを実行します。
 
 1.  メモ帳を閉じ、Windows PowerShell ウィンドウに切り替えます。
     次のコマンドレットを入力してエミュレーターでサービスを実行します。
@@ -99,7 +113,7 @@ Azure SDK によってインストールされるツールの 1 つに、Azure �
 
     PS C:\\node\\helloworld\\WebRole1\> Stop-AzureEmulator
 
-## Azure へのアプリケーションの展開
+## Azure へのアプリケーションのデプロイ
 
     [WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
@@ -120,9 +134,11 @@ Azure SDK によってインストールされるツールの 1 つに、Azure �
         PS C:\node\helloworld\WebRole1> Import-AzurePublishSettingsFile [path to file]
 
     <div class="dev-callout">
-<b>注</b>
-<p>発行設定をインポートした後、ダウンロードした .publishSettings ファイルには他のユーザーがアカウントにアクセスするために使用できる情報が含まれているので、削除することを検討してください。</p>
-</div>
+
+    **注**
+    発行設定をインポートした後、ダウンロードした .publishSettings ファイルには他のユーザーがアカウントにアクセスするために使用できる情報が含まれているので、削除することを検討してください。
+
+    </div>
 
 ### アプリケーションの発行
 
@@ -183,17 +199,18 @@ Azure SDK によってインストールされるツールの 1 つに、Azure �
     ![Remove-AzureService コマンドの状態][Remove-AzureService コマンドの状態]
 
     <div class="dev-callout">
-<strong>注</strong>
-<p>サービスを削除しても、サービスが最初に発行されたときに作成されたストレージ アカウントは削除されず、使用したストレージに対して引き続き課金されます。ストレージ アカウントの削除の詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/hh531562.aspx">Azure サブスクリプションからストレージ アカウントを削除する方法</a>」を参照してください。
-</p>
-</div>
+
+    **注**
+    サービスを削除しても、サービスが最初に発行されたときに作成されたストレージ アカウントは削除されず、使用したストレージに対して引き続き課金されます。ストレージ アカウントの削除の詳細については、「[Azure サブスクリプションからストレージ アカウントを削除する方法][Azure サブスクリプションからストレージ アカウントを削除する方法]」を参照してください。
+
+    </div>
 
   [「Azure の Web サイト、クラウド サービス、および仮想マシンの比較」]: http://azure.microsoft.com/ja-jp/documentation/articles/choose-web-site-cloud-service-vm/
+  [軽量の Azure の Web サイトを使用する]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
   [hello world ページを表示しているブラウザー ウィンドウこの URL は、ページが Azure でホストされていることを示します。]: https://wacomdpsstablestorage.blob.core.windows.net/articlesmedia/demo-ppe.windowsazure.com/ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/20140107035927/node21.png
   [Azure PowerShell アイコン]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-start.png
-  [install-dev-tools]: ../includes/install-dev-tools.md
-  ["mkdir c:\\node" および "cd node" コマンドが表示されたコマンド プロンプト]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-6.png
   [New-AzureService helloworld コマンドの結果]: ./media/cloud-services-nodejs-develop-deploy-app/node9.png
+  [Overview of Creating a Hosted Service for Windows (Azure 対応のホステッド サービスの作成の概要)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj155995.aspx
   [Add-AzureNodeWebRole コマンドの出力]: ./media/cloud-services-nodejs-develop-deploy-app/node11.png
   [nodejs.org]: http://nodejs.org/
   [メモ帳による server.js の内容の表示]: ./media/cloud-services-nodejs-develop-deploy-app/node13.png
@@ -202,3 +219,4 @@ Azure SDK によってインストールされるツールの 1 つに、Azure �
   [1]: ./media/cloud-services-nodejs-develop-deploy-app/node21.png
   [Stop-AzureService コマンドの状態]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
   [Remove-AzureService コマンドの状態]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
+  [Azure サブスクリプションからストレージ アカウントを削除する方法]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh531562.aspx

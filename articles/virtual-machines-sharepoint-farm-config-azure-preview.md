@@ -1,6 +1,6 @@
-<properties title="SharePoint Server Farm Configuration Details" pageTitle="SharePoint Server Farm Configuration Details" description="Describes the default configuration of SharePoint farms" metaKeywords="" services="virtual-machines" solutions="" documentationCenter="" authors="josephd" videoId="" scriptId="" />
+<properties title="SharePoint サーバー ファームの構成の詳細" pageTitle="SharePoint サーバー ファームの構成の詳細" description="SharePoint ファームの既定の構成について説明します。" metaKeywords="" services="virtual-machines" solutions="" documentationCenter="" authors="josephd" videoId="" scriptId="" manager="timlt"/>
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-sharepoint" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="josephd"></tags>
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-sharepoint" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="josephd" />
 
 # SharePoint サーバー ファームの構成の詳細
 
@@ -26,7 +26,7 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 -   ストレージ アカウント: 初期構成中に指定されます。
 -   仮想ネットワーク
 
-    -   種類: クラウドのみ
+    -   次のコマンドを入力します。クラウドのみ
     -   アドレス空間: 192.168.16.0/26
 -   仮想マシン
 
@@ -69,7 +69,7 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 -   ストレージ アカウント: 初期構成中に指定されます。
 -   仮想ネットワーク
 
-    -   種類: クラウドのみ
+    -   次のコマンドを入力します。クラウドのみ
     -   アドレス空間: 192.168.16.0/26
 -   仮想マシン
 

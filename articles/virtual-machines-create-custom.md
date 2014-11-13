@@ -1,10 +1,10 @@
-<properties linkid="manage-linux-howto-custom-create-vm" urlDisplayName="Create a custom VM" pageTitle=" Create a custom virtual machine running Linux in Azure" metaKeywords="Azure custom vm, creating custom vm" description="Learn how to create a custom virtual machine in Azure." metaCanonical="http://www.windowsazure.com/ja-jp/manage/windows/how-to-guides/custom-create-a-vm/" services="virtual-machines" documentationCenter="" title="" authors="kathydav" solutions="" manager="dongill" editor="tysonn" />
+<properties urlDisplayName="Create a custom VM" pageTitle=" Azure 上で Linux を実行するカスタム仮想マシンの作成" metaKeywords="Azure custom vm, creating custom vm" description="Azure 上でのカスタム仮想マシンの作成方法について説明します。" metaCanonical="http://www.windowsazure.com/ja-jp/manage/windows/how-to-guides/custom-create-a-vm/" services="virtual-machines" documentationCenter="" title="" authors="kathydav" solutions="" manager="timlt" editor="tysonn" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="kathydav" />
 
 # カスタム仮想マシンの作成方法
 
-**[簡易作成]** オプションよりも多くの構成が選択できるため、カスタムの仮想マシンとは、**[ギャラリーから]** オプションを使用して作成する仮想マシンのことを指します。次のような構成が選択できます。
+**[簡易作成]** オプションよりも多くの構成が選択できるため、カスタムの仮想マシンとは、**[ギャラリーから]** オプションを使用して作成する仮想マシンのことを指します。学習した内容は次のとおりです。
 
 -   仮想マシン (VM) を作成するための多数のイメージ
 -   仮想ネットワークと VM との接続
@@ -17,4 +17,3 @@
 [WACOM.INCLUDE [virtual-machines-create-WindowsVM](../includes/virtual-machines-create-WindowsVM.md)]
 
   [仮想ネットワークの概要]: http://go.microsoft.com/fwlink/p/?LinkID=294063
-  [virtual-machines-create-WindowsVM]: ../includes/virtual-machines-create-WindowsVM.md

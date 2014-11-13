@@ -1,6 +1,6 @@
-<properties linkid="develop-media-services-how-to-guides-media-services-java" urlDisplayName="Media Services" pageTitle="How to use Media Services (Java) - Azure feature guide" metaKeywords="Azure Media Services, Azure media, Azure streaming, azure media, azure streaming, azure encoding" description="Describes how to use Azure Media Services to perform common tasks including encoding, encrypting, and streaming resources." metaCanonical="" services="media-services" documentationCenter="Java" title="How to Use Media Services" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
+<properties urlDisplayName="Media Services" pageTitle="Media Services の使用方法 (Java) - Azure の機能ガイド" metaKeywords="Azure Media Services, Azure media, Azure streaming, azure media, azure streaming, azure encoding" description="Azure Media Services を使用して、リソースのエンコード、暗号化、ストリーミングなど、基本的なタスクを実行する方法について説明します。" metaCanonical="" services="media-services" documentationCenter="Java" title="メディア サービスを使用する方法" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm"></tags>
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
 
 # メディア サービスを使用する方法
 
@@ -28,10 +28,10 @@ Azure メディア サービスは、Microsoft Media Platform とサードパー
 
 -   **取り込み**。たとえば、Azure ストレージに配置するアセットを事前にアップロードしたり暗号化したりすることによって、システムにアセットを取り込む操作です。メディア サービスの RTM リリースまでには、パートナー コンポーネントとの統合が可能となり、高速な UDP (ユーザー データグラム プロトコル) アップロード ソリューションが実現します。
 -   **エンコード**。エンコード操作には、メディア アセットのエンコードや変換が伴います。エンコード タスクは、メディア サービスに付属のメディア エンコーダーを使用し、クラウドで実行することができます。次のエンコード機能があります。
-	-   Azure メディア エンコーダーの使用と一連の標準コーデックおよび形式への対応 (業界をリードする IIS スムーズ ストリーミング、MP4、Apple HTTP ライブ ストリーミングへの変換など)。
-	-   入力と出力をトータルに制御することでライブラリ全体または個々のファイルを変換。
-	-   ファイル タイプ、形式、コーデックを豊富にサポート (メディア サービスでサポートされるファイル タイプに関するページを参照)。
-	-   形式の変換。メディア サービスでは、ISO MP4 (.mp4) を Smooth Streaming File Format (PIFF 1.3) (.ismv、.isma) に変換できます。Smooth Streaming File Format (PIFF) を Apple HTTP ライブ ストリーミング (.msu8、.ts) に変換することもできます。
+-   Azure メディア エンコーダーの使用と一連の標準コーデックおよび形式への対応 (業界をリードする IIS スムーズ ストリーミング、MP4、Apple HTTP ライブ ストリーミングへの変換など)。
+-   入力と出力をトータルに制御することでライブラリ全体または個々のファイルを変換。
+-   ファイル タイプ、形式、コーデックを豊富にサポート (メディア サービスでサポートされるファイル タイプに関するページを参照)。
+-   形式の変換。メディア サービスでは、ISO MP4 (.mp4) を Smooth Streaming File Format (PIFF 1.3) (.ismv、.isma) に変換できます。Smooth Streaming File Format (PIFF) を Apple HTTP ライブ ストリーミング (.msu8、.ts) に変換することもできます。
 -   **保護**。コンテンツの保護とは、ライブ ストリーミングやオンデマンド コンテンツを暗号化することによって、送信、保存、配信のセキュリティを保護することです。メディア サービスは、特定の DRM テクノロジにとらわれないコンテンツ保護ソリューションを提供します。現在サポートされている DRM テクノロジは、Microsoft PlayReady Protection および MPEG Common Encryption です。その他の DRM テクノロジも今後サポートされる予定です。
 -   **ストリーム**。コンテンツのストリーミングとは、コンテンツをライブでまたはオンデマンドでクライアントに送信したり、特定のメディア ファイルをクラウドから取得 (ダウンロード) したりすることです。メディア サービスは、特定の形式にとらわれないコンテンツ ストリーミングを提供します。メディア サービスでは、スムーズ ストリーミング、Apple HTTP ライブ ストリーミング、および MP4 形式が、ストリーミングの配信元としてサポートされます。その他の形式も今後サポートされる予定です。Azure CDN またはサードパーティ CDN を使用してストリーミング コンテンツをシームレスに配信することもでき、必要に応じて、配信規模を何百万というユーザーにまで拡張することができます。
 
@@ -40,6 +40,8 @@ Azure メディア サービスは、Microsoft Media Platform とサードパー
 Media Services でサポートされる代表的なメディア開発シナリオを次の表に示します。
 
 <table border="2" cellspacing="0" cellpadding="5" style="border: 2px solid #000000;">
+
+<thead>
 
 <tr>
 
@@ -54,6 +56,10 @@ Media Services でサポートされる代表的なメディア開発シナリ�
 </th>
 
 </tr>
+
+</thead>
+
+<tbody>
 
 <tr>
 
@@ -96,6 +102,8 @@ Media Services は、既存のツールやプロセスと統合できます。�
 </td>
 
 </tr>
+
+</tbody>
 
 </table>
 </p>

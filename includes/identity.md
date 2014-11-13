@@ -12,17 +12,17 @@ ID の管理は、パブリック クラウドにおいても内部設置型の�
 
 ## 目次
 
--   [VM での Windows Server Active Directory の実行][]
+-   [VM での Windows Server Active Directory の実行][VM での Windows Server Active Directory の実行]
 
--   [Azure Active Directory の使用][]
+-   [Azure Active Directory の使用][Azure Active Directory の使用]
 
--   [Azure の Active Directory Access Control の使用][]
+-   [Azure の Active Directory Access Control の使用][Azure の Active Directory Access Control の使用]
 
 ## <a name="adinvm"></a>VM での Windows Server Active Directory の実行
 
-Azure VM での Windows Server AD の実行は、内部設置型での実行とかなり似ています。[図 1][] は、その典型的な例を示しています。
+Azure VM での Windows Server AD の実行は、内部設置型での実行とかなり似ています。[図 1][図 1] は、その典型的な例を示しています。
 
-![Azure Active Directory in Virtual Machine][]
+![Azure Active Directory in Virtual Machine][Azure Active Directory in Virtual Machine]
 
 <a name="Fig1"></a>図 1: Windows Server Active Directory は、Azure Virtual Network を使用する組織の内部設置型データセンターに接続された Azure VM で実行できる
 
@@ -46,7 +46,7 @@ Azure VM で Windows Server AD を実行することは、いくつかの状況�
 
 -   障害復旧に Azure を使用している組織は、アクティブな VM の小規模なセット (ドメイン コントローラーなど) をクラウドに保持していることがあります。その場合、必要に応じてこのサイトを拡張し、他の場所で障害が発生したときに引き継ぎを行う準備を整えることができます。
 
-他の可能性もあります。たとえば、クラウドの Windows Server AD を内部設置型データセンターに接続する必要がないとします。特定のユーザー セットにサービスを提供する SharePoint ファームを実行する場合 (たとえば、すべてのユーザーがクラウド ベースの ID だけを使用してログインする場合など)、Azure にスタンドアロン フォレストを作成できます。このテクノロジの利用方法は、目標が何であるかによって決まります (Azure で Windows Server AD を使用する方法の詳細については、[ここを参照][]してください)。
+他の可能性もあります。たとえば、クラウドの Windows Server AD を内部設置型データセンターに接続する必要がないとします。特定のユーザー セットにサービスを提供する SharePoint ファームを実行する場合 (たとえば、すべてのユーザーがクラウド ベースの ID だけを使用してログインする場合など)、Azure にスタンドアロン フォレストを作成できます。このテクノロジの利用方法は、目標が何であるかによって決まります (Azure で Windows Server AD を使用する方法の詳細については、[ここを参照][ここを参照]してください)。
 
 ## <a name="ad"></a>Azure Active Directory の使用
 
@@ -58,7 +58,7 @@ SaaS アプリケーションが一般的になるにつれて、素朴な疑問
 
 -   Windows Server Active Directory を実行する組織は、内部設置型ディレクトリを Azure Active Directory に接続した後、それを使用して SaaS アプリケーションへのシングル サインオンをユーザーに提供できます。
 
-[図 2][] は、2 つのうちの最初のオプション (Azure Active Directory だけが必要) を示しています。
+[図 2][図 2] は、2 つのうちの最初のオプション (Azure Active Directory だけが必要) を示しています。
 
 ![Azure Active Directory in Virtual Machine][1]
 
@@ -74,16 +74,16 @@ SaaS アプリケーションが一般的になるにつれて、素朴な疑問
 
 アプリケーションが、トークンに含まれている情報以外にユーザーの情報を必要とする場合、Azure AD Graph API を使用して Azure AD から直接要求できます (ステップ 6)。初期バージョンの Azure AD では、ディレクトリ スキーマがかなりシンプルです。ユーザーとグループ、およびそれらの間の関係だけが含まれています。アプリケーションは、この情報を使用して、ユーザー間の関係を知ることができます。たとえば、ユーザーがあるデータ チャンクへのアクセスを許可されているかどうかを判断するために、ユーザーのマネージャーがだれであるかをアプリケーションが知る必要があるとします。これは、Graph API をとおして Azure AD にクエリを実行することで知ることができます。
 
-Graph API は、通常の RESTful プロトコルを使用するため、モバイル デバイスを含むほとんどのクライアントから簡単に使用することができます。この API では、OData により定義された拡張 (より簡単な方法でクライアントがデータにアクセスできるようにするクエリ言語などが追加されます) もサポートされます (OData の詳細については、[Introducing OData (OData の概要)][] を参照してください)。 Graph API を使用すると、ユーザー間の関係について知ることができ、アプリケーションは特定の組織の Azure AD スキーマに埋め込まれたソーシャル グラフを認識することができます (Graph API と呼ばれるのはこのためです)。Azure AD で Graph API 要求を認証するため、アプリケーションは OAuth 2.0 を使用します。
+Graph API は、通常の RESTful プロトコルを使用するため、モバイル デバイスを含むほとんどのクライアントから簡単に使用することができます。この API では、OData により定義された拡張 (より簡単な方法でクライアントがデータにアクセスできるようにするクエリ言語などが追加されます) もサポートされます (OData の詳細については、[Introducing OData (OData の概要)][Introducing OData (OData の概要)] を参照してください)。 Graph API を使用すると、ユーザー間の関係について知ることができ、アプリケーションは特定の組織の Azure AD スキーマに埋め込まれたソーシャル グラフを認識することができます (Graph API と呼ばれるのはこのためです)。Azure AD で Graph API 要求を認証するため、アプリケーションは OAuth 2.0 を使用します。
 
-組織が Windows Server Active Directory を使用しておらず (内部設置型のサーバーやドメインがない)、Azure AD を使用するクラウド アプリケーションのみに依存している場合、このクラウド ディレクトリだけを使用すると、その会社のユーザーがすべてのアプリケーションでシングル サインオンを利用できるようになります。このシナリオは日々一般的になっていますが、ほとんどの組織は依然として Windows Server Active Directory で作成された内部設置型ドメインを使用しています。[図 3][] が示すように、Azure AD にはこの場合に役立つ重要な役割もあります。
+組織が Windows Server Active Directory を使用しておらず (内部設置型のサーバーやドメインがない)、Azure AD を使用するクラウド アプリケーションのみに依存している場合、このクラウド ディレクトリだけを使用すると、その会社のユーザーがすべてのアプリケーションでシングル サインオンを利用できるようになります。このシナリオは日々一般的になっていますが、ほとんどの組織は依然として Windows Server Active Directory で作成された内部設置型ドメインを使用しています。[図 3][図 3] が示すように、Azure AD にはこの場合に役立つ重要な役割もあります。
 
 ![Azure Active Directory in Virtual Machine][2]
 <span id="fig3"></span></a>図 3:組織は、Windows Server Active Directory と Azure Active Directory をフェデレーションして、ユーザーが SaaS アプリケーションにシングル サインオンを利用できるようにすることができる
 
 このシナリオでは、組織 B のユーザーが SaaS アプリケーションにアクセスしようとしています。アクセスする前に、組織のディレクトリ管理者は、AD FS を使用して Azure AD とのフェデレーション関係を確立する必要があります。さらに、管理者は組織の内部設置型 Windows Server AD と Azure AD の間にデータ同期を構成する必要もあります。これにより、ユーザーとグループの情報が、内部設置型ディレクトリから Azure AD に自動的にコピーされます。これにより実現することに注目してみましょう。実際には、組織は内部設置型ディレクトリをクラウドに拡張しようとしています。Windows Server AD と Azure AD をこの方法で結合すると、組織は、単一のエンティティとして管理できるディレクトリ サービスを手に入れることができますが、引き続き内部設置型とクラウドの両方を使用し続けることができます。
 
-Azure AD を使用するには、まずユーザーが自身の内部設置型 Active Directory ドメインに通常どおりログインします (ステップ 1)。SaaS アプリケーションにアクセスしようとすると (ステップ 2)、フェデレーション処理の結果、Azure AD によりこのアプリケーションのトークンが発行されます (ステップ 3) (フェデレーションのしくみの詳細については、[Windows のクレーム ベースの ID: テクノロジとシナリオに関するドキュメント][]を参照してください)。前述のとおり、このトークンにはユーザーを識別する情報が含まれており、Azure AD によりデジタル署名されています。次に、このトークンが SaaS アプリケーションに送信され (ステップ 4)、トークンの署名が検証されてその内容が使用されます (ステップ 5)。前のシナリオと同様、SaaS アプリケーションは必要に応じて Graph API を使用してこのユーザーに関する詳細を知ることができます (ステップ 6)。
+Azure AD を使用するには、まずユーザーが自身の内部設置型 Active Directory ドメインに通常どおりログインします (ステップ 1)。SaaS アプリケーションにアクセスしようとすると (ステップ 2)、フェデレーション処理の結果、Azure AD によりこのアプリケーションのトークンが発行されます (ステップ 3) (フェデレーションのしくみの詳細については、[Windows のクレーム ベースの ID: テクノロジとシナリオに関するドキュメント][Windows のクレーム ベースの ID: テクノロジとシナリオに関するドキュメント]を参照してください)。前述のとおり、このトークンにはユーザーを識別する情報が含まれており、Azure AD によりデジタル署名されています。次に、このトークンが SaaS アプリケーションに送信され (ステップ 4)、トークンの署名が検証されてその内容が使用されます (ステップ 5)。前のシナリオと同様、SaaS アプリケーションは必要に応じて Graph API を使用してこのユーザーに関する詳細を知ることができます (ステップ 6)。
 
 現在のところ、内部設置型 Windows Server AD を Azure AD に完全に置き換えることはできません。既に説明したとおり、クラウド ディレクトリのスキーマの方がかなりシンプルであり、グループ ポリシー、マシンに関する情報の格納機能、LDAP のサポートなどもありません (実際、ユーザーが Azure AD 以外を使用してログインできるように Windows マシンを構成することはできません。これは、サポートされるシナリオではありません)。むしろ、Azure AD の当初の目標は、エンタープライズ ユーザーが別個のログインを維持しなくてもクラウドのアプリケーションにアクセスできるようにすることと、内部設置型ディレクトリ管理者が、内部設置型ディレクトリと組織が使用する各 SaaS アプリケーションを手動で同期しなくてもよいようにすることです。しかし、時間の経過と共に、このクラウド ディレクトリ サービスが広範なシナリオに対応することが期待されます。
 
@@ -95,7 +95,7 @@ Azure AD を使用するには、まずユーザーが自身の内部設置型 A
 
 しかし、どの ID プロバイダーも何らかのトークンを発行していますが、それらのトークンは標準ではありません。各 IdP が独自の形式を使用しています。さらに、それらのトークンに含まれる情報も標準ではありません。Facebook、Google、マイクロソフトなどによって発行されたトークンを受け入れようとするアプリケーションは、そのような異なる各形式に対応する独自のコードを記述するという課題に直面します。
 
-しかし、これを回避する方法があります。代わりに、共通の ID 情報表記法による、単一のトークン形式を生成できる中間機能を作成することができます。このアプローチにより、1 種類のトークンだけに対応するだけで済み、アプリケーションを作成する開発者の業務がシンプルになります。Azure の Active Directory Access Control はまさにこの役割を果たし、クラウド内で多様なトークンを処理するための中間機能を提供します。[図 4][] は、このしくみを示しています。
+しかし、これを回避する方法があります。代わりに、共通の ID 情報表記法による、単一のトークン形式を生成できる中間機能を作成することができます。このアプローチにより、1 種類のトークンだけに対応するだけで済み、アプリケーションを作成する開発者の業務がシンプルになります。Azure の Active Directory Access Control はまさにこの役割を果たし、クラウド内で多様なトークンを処理するための中間機能を提供します。[図 4][図 4] は、このしくみを示しています。
 
 ![Azure Active Directory in Virtual Machine][3]
 <span id="fig4"></span></a>図 4:Azure の Active Directory Access Control は、さまざまな ID プロバイダーによって発行された ID トークンをアプリケーションが簡単に受け入れられるようにする
@@ -116,14 +116,14 @@ ID の処理は、ほとんどすべてのアプリケーションにとって�
 
 ## 著者について
 
-David Chappell は、カリフォルニア州サンフランシスコに拠点を置く Chappell & Associates [www.davidchappell.com][] の社長です。講演、執筆、コンサルティングを通じて、
+David Chappell は、カリフォルニア州サンフランシスコに拠点を置く Chappell & Associates [www.davidchappell.com][www.davidchappell.com] の社長です。講演、執筆、コンサルティングを通じて、
 
   [VM での Windows Server Active Directory の実行]: #adinvm
   [Azure Active Directory の使用]: #ad
   [Azure の Active Directory Access Control の使用]: #ac
   [図 1]: #fig1
   [Azure Active Directory in Virtual Machine]: ./media/identity/identity_01_ADinVM.png
-  [ここを参照]: http://msdn.microsoft.com/en-us/library/windowsazure/jj156090.aspx
+  [ここを参照]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj156090.aspx
   [図 2]: #fig2
   [1]: ./media/identity/identity_02_AD.png
   [Introducing OData (OData の概要)]: http://download.microsoft.com/download/E/5/A/E5A59052-EE48-4D64-897B-5F7C608165B8/IntroducingOData.pdf

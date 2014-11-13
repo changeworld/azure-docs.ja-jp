@@ -1,4 +1,4 @@
 > [WACOM.NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、[Azure の無料評価版サイト][]を参照してください。
+> このチュートリアルを完了するには、Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、[Azure の無料評価版サイト][Azure の無料評価版サイト]を参照してください。
 
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/en-us/pricing/free-trial
+  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial

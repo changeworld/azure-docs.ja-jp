@@ -1,16 +1,16 @@
-<properties linkid="develop-media-services-how-to-guides-encrypt-assets" urlDisplayName="Encrypt Assets in Media Services" pageTitle="How to Encrypt Assets in Media Services - Azure" metaKeywords="" description="Learn how to use Microsoft PlayReady Protection to encrypt an asset in Media Services. Code samples are written in C# and use the Media Services SDK for .NET. Code samples are written in C# and use the Media Services SDK for .NET." metaCanonical="" services="media-services" documentationCenter="" title="How to: Protect an Asset with PlayReady Protection" authors="migree" solutions="" manager="" editor="" />
+<properties urlDisplayName="Encrypt Assets in Media Services" pageTitle="Media Services でアセットを暗号化する方法 - Azure" metaKeywords="" description="Microsoft PlayReady Protection を使用して Media Services でアセットを暗号化する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" metaCanonical="" services="media-services" documentationCenter="" title="方法: PlayReady Protection でアセットを保護する" authors="juliako" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="migree"></tags>
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="juliako" />
 
 # <a name="playready"></a>方法: PlayReady Protection でアセットを保護する
 
-この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[ジョブの進行状況をチェックする方法に関するページ][]を参照してください。
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[ジョブの進行状況をチェックする方法に関するページ][ジョブの進行状況をチェックする方法に関するページ]を参照してください。
 
 Azure メディア サービスでは、Microsoft PlayReady Protection と連携してアセットを暗号化するジョブを送信できます。このセクションで紹介するコードは、入力フォルダーから複数のストリーミング ファイルを取得してタスクを作成し、PlayReady Protection を使ってそれらを暗号化します。
 
 次の例は、PlayReady Protection を提供する単純なジョブを作成する方法を示しています。
 
-1.  構成データを取得します。サンプルの構成ファイルは「[Windows Azure Media Encryptor のタスク プリセット][]」トピックから入手できます。
+1.  構成データを取得します。サンプルの構成ファイルは「[Windows Azure Media Encryptor のタスク プリセット][Windows Azure Media Encryptor のタスク プリセット]」トピックから入手できます。
 2.  MP4 入力ファイルをアップロードします。
 3.  MP4 ファイルをスムーズ ストリーミング アセットに変換します。
 4.  アセットを PlayReady で暗号化します。
@@ -32,7 +32,7 @@ Azure メディア サービスでは、Microsoft PlayReady Protection と連携
         string configMp4ToSmooth = File.ReadAllText(Path.GetFullPath(configFilePath + @"\MediaPackager_MP4ToSmooth.xml"));
 
         // Get a media processor instance
-        IMediaProcessor processor = GetLatestMediaProcessorByName("Azure Media Packager");
+        IMediaProcessor processor = GetLatestMediaProcessorByName("Windows Azure Media Packager");
 
         // Create a task with the conversion details, using the configuration data 
         ITask task = job.Tasks.AddNew("My Mp4 to Smooth Task",
@@ -55,7 +55,7 @@ Azure メディア サービスでは、Microsoft PlayReady Protection と連携
         string configPlayReady = File.ReadAllText(Path.GetFullPath(configFilePath + @"\MediaEncryptor_PlayReadyProtection.xml"));
 
         // Get a media processor instance
-        IMediaProcessor playreadyProcessor = GetLatestMediaProcessorByName("Azure Media Encryptor");
+        IMediaProcessor playreadyProcessor = GetLatestMediaProcessorByName("Windows Azure Media Encryptor");
 
         // Create a second task, specifying a task name, the media processor, and configuration
         ITask playreadyTask = job.Tasks.AddNew("My PlayReady Task",
@@ -103,16 +103,16 @@ Azure メディア サービスでは、Microsoft PlayReady Protection と連携
 
 PlayReady Protection の詳細については、以下を参照してください。
 
--   [Microsoft PlayReady でのアセットの保護][]
--   [Microsoft PlayReady][]
+-   [Microsoft PlayReady でのアセットの保護][Microsoft PlayReady でのアセットの保護]
+-   [Microsoft PlayReady][Microsoft PlayReady]
 
 </p>
 ## 次のステップ
 
-これで、メディア サービスでアセットを保護する方法を学習できました。次は、「[メディア サービスのコンテンツの管理方法][]」トピックに進みます。
+これで、メディア サービスでアセットを保護する方法を学習できました。次は、「[メディア サービスのコンテンツの管理方法][メディア サービスのコンテンツの管理方法]」トピックに進みます。
 
-  [ジョブの進行状況をチェックする方法に関するページ]: http://go.microsoft.com/fwlink/?LinkID=301737&clcid=0x409
-  [Windows Azure Media Encryptor のタスク プリセット]: http://msdn.microsoft.com/en-us/library/hh973610.aspx
-  [Microsoft PlayReady でのアセットの保護]: http://msdn.microsoft.com/en-us/library/dn189154.aspx
+  [ジョブの進行状況をチェックする方法に関するページ]: ../media-services-check-job-progress/
+  [Windows Azure Media Encryptor のタスク プリセット]: http://msdn.microsoft.com/ja-jp/library/hh973610.aspx
+  [Microsoft PlayReady でのアセットの保護]: http://msdn.microsoft.com/ja-jp/library/dn189154.aspx
   [Microsoft PlayReady]: http://www.microsoft.com/PlayReady/
-  [メディア サービスのコンテンツの管理方法]: http://go.microsoft.com/fwlink/?LinkID=301943&clcid=0x409
+  [メディア サービスのコンテンツの管理方法]: ../media-services-manage-assets/

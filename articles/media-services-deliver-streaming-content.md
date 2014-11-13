@@ -1,10 +1,10 @@
-<properties linkid="develop-media-services-how-to-guides-deliver-streaming-content" urlDisplayName="Deliver Streaming Content from Media Services" pageTitle="How to Deliver Streaming Content from Media Services – Azure" metaKeywords="" description="Learn how to deliver streaming content from Media Services using a direct URL. Code samples are written in C# and use the Media Services SDK for .NET." metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="How to: Deliver streaming content" authors="" />
+<properties urlDisplayName="Deliver Streaming Content from Media Services" pageTitle="Media Services からストリーミング コンテンツを配信する方法 - Azure" metaKeywords="" description="直接の URL を使用して Media Services からストリーミング コンテンツを配信する方法について説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="方法: ストリーミング コンテンツを配信する" authors="juliako" manager="dwrede" />
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author></tags>
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="juliako" />
 
 # 方法: ストリーミング コンテンツを配信する
 
-この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[「方法: ダウンロードによってアセットを配信する][]」を参照してください。
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[「方法: ダウンロードによってアセットを配信する][「方法: ダウンロードによってアセットを配信する]」を参照してください。
 
 メディア コンテンツをメディア サービスからダウンロードする以外にも、アダプティブ ビットレート ストリーミングを使ってコンテンツを配信することができます。たとえば、直接の URL (ロケーター) を作成して、メディア サービスの配信元サーバー上のコンテンツをストリーミングすることができます。Microsoft Silverlight などのクライアント アプリケーションは、ロケーターからストリーミング コンテンツを直接再生できます。
 
@@ -70,15 +70,15 @@
 </p>
 アセットの配信の詳細については、以下を参照してください。
 
--   [Media Services SDK for .NET を使用して資産を配信する][]
--   [Media Services REST API を使って資産を配信する][]
+-   [Media Services SDK for .NET を使用して資産を配信する][Media Services SDK for .NET を使用して資産を配信する]
+-   [Media Services REST API を使って資産を配信する][Media Services REST API を使って資産を配信する]
 
 </p>
 ## 次のステップ
 
-これまで、Azure Storage からのダウンロードとスムーズ ストリーミングの使用によるメディアの配信について説明しました。次の [HLS コンテンツを配信する方法][]に関するトピックでは、Apple HTTP Live Streaming (HLS) を使用したストリーミング コンテンツの配信について説明します。
+これまで、Azure Storage からのダウンロードとスムーズ ストリーミングの使用によるメディアの配信について説明しました。次の [HLS コンテンツを配信する方法][HLS コンテンツを配信する方法]に関するトピックでは、Apple HTTP Live Streaming (HLS) を使用したストリーミング コンテンツの配信について説明します。
 
-  [「方法: ダウンロードによってアセットを配信する]: http://go.microsoft.com/fwlink/?LinkID=301734&clcid=0x409
-  [Media Services SDK for .NET を使用して資産を配信する]: http://msdn.microsoft.com/en-us/library/jj129575.aspx
-  [Media Services REST API を使って資産を配信する]: http://msdn.microsoft.com/en-us/library/jj129578.aspx
-  [HLS コンテンツを配信する方法]: http://go.microsoft.com/fwlink/?LinkId=301817
+  [「方法: ダウンロードによってアセットを配信する]: ../media-services-deliver-asset-download/
+  [Media Services SDK for .NET を使用して資産を配信する]: http://msdn.microsoft.com/ja-jp/library/jj129575.aspx
+  [Media Services REST API を使って資産を配信する]: http://msdn.microsoft.com/ja-jp/library/jj129578.aspx
+  [HLS コンテンツを配信する方法]: ../media-services-deliver-http-live-streaming-content/

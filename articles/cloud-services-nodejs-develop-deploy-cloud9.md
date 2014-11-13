@@ -1,10 +1,11 @@
-<properties linkid="dev-nodejs-cloud9" urlDisplayName="Deploying with Cloud9" pageTitle="Node.js deploying with Cloud9 - Azure tutorial" metaKeywords="Cloud9 IDE Azure, Azure node.js, Azure node apps" description="Learn how to use Cloud9 IDE to develop, build, and deploy a Node.js application to Azure." metaCanonical="" services="cloud-services" documentationCenter="nodejs" title="Deploying an Azure App from Cloud9" authors="larryfr" solutions="" manager="" editor="" />
+<properties urlDisplayName="Deploying with Cloud9" pageTitle="Cloud9 を使用した Node.js のデプロイ - Azure チュートリアル" metaKeywords="Cloud9 IDE Azure, Azure node.js, Azure node apps" description="Cloud9 IDE を使用して Node.js アプリケーションを開発、構築し、Azure にデプロイする方法について説明します。" metaCanonical="" services="cloud-services" documentationCenter="nodejs" title="Cloud9 からの Azure アプリケーションのデプロイ" authors="larryfr" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="wpickett" />
 
 # Cloud9 からの Azure アプリケーションのデプロイ
 
-このチュートリアルでは、Cloud9 IDE を使用してNode.js アプリケーションを開発、構築し、Azure にデプロイする方法について説明します。
+このチュートリアルでは、Cloud9 IDE を使用して
+Node.js アプリケーションを開発、構築し、Azure にデプロイする方法について説明します。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -13,43 +14,63 @@
 -   既存の Azure のデプロイメントを更新する
 -   ステージング環境のデプロイと運用環境のデプロイの間でプロジェクトを移動する
 
-[Cloud9 IDE][Cloud9 IDE] は、プラットフォーム間共通のブラウザー ベースの開発環境を提供します。Cloud9 が Node.js プロジェクト用にサポートしている機能の 1 つとして、この IDE 内から直接 Azure にデプロイできます。また、Cloud9 は GitHub および BitBucket リポジトリ サービスとも統合されており、他のユーザーと簡単にプロジェクトを共有できます。
+[Cloud9 IDE][Cloud9 IDE] は、プラットフォーム間共通のブラウザー ベースの開発環境を
+提供します。Cloud9 が Node.js プロジェクト用に
+サポートしている機能の 1 つとして、
+この IDE 内から直接 Azure にデプロイできます。また、Cloud9 は GitHub および BitBucket リポジトリ サービスとも統合されており、
+他のユーザーと簡単にプロジェクトを共有できます。
 
-Cloud9 を使用すると、多くの最新のブラウザーおよびオペレーティング システムからアプリケーションを開発し、Azure にデプロイすることができ、追加の開発ツールや SDK をローカルにインストールする必要はありません。次に示す手順は、Mac で Google Chrome を使用する場合の手順です。
+Cloud9 を使用すると、多くの最新のブラウザーおよびオペレーティング システムからアプリケーションを開発し、
+Azure にデプロイすることができ、
+追加の開発ツールや SDK をローカルにインストールする必要はありません。次に示す手順は、
+Mac で Google Chrome を使用する場合の手順です。
 
 ## サインアップ
 
-Cloud9 を使用するには、Cloud9 の Web サイトにアクセスして、[サブスクリプションを登録する][Cloud9 IDE]必要があります。既存の GitHub または BitBucket のアカウントを使用してサインインすることも、Cloud9 のアカウントを作成することもできます。無料のサブスクリプションを利用することも、より多くの機能が提供される有料サブスクリプションを利用することもできます。詳細については、[Cloud9 IDE][Cloud9 IDE] を参照してください。
+Cloud9 を使用するには、Cloud9 の Web サイトにアクセスして、
+[サブスクリプションを登録する][Cloud9 IDE]必要があります。既存の GitHub または BitBucket のアカウントを使用してサインインすることも、
+Cloud9 のアカウントを作成することもできます。無料のサブスクリプションを利用することも、
+より多くの機能が提供される有料サブスクリプションを利用することも
+できます。詳細については、[Cloud9 IDE][Cloud9 IDE] を参照してください。
 
 ## Node.js プロジェクトの作成
 
-1.  Cloud9 にサインインし、**[My Projects]** の横にある **+** 符号をクリックし、**[Create a new project]** を選択します。
+1.  Cloud9 にサインインし、**[My Projects]** の横にある **+** 符号をクリックし、
+    **[Create a new project]** を選択します。
 
     ![新しい Cloud9 プロジェクトの作成][新しい Cloud9 プロジェクトの作成]
 
-2.  **[Create a new project]** ダイアログで、プロジェクト名、アクセス、およびプロジェクト タイプを入力します。**[Create]** をクリックしてプロジェクトを作成します。
+2.  **[Create a new project]** ダイアログで、プロジェクト名、
+    アクセス、およびプロジェクト タイプを入力します。**[Create]** をクリックしてプロジェクトを作成します。
 
     ![新しいプロジェクトの作成ダイアログ Cloud9][新しいプロジェクトの作成ダイアログ Cloud9]
 
     <div class="dev-callout">
-<strong>注</strong>
-<p>一部のオプションでは、Cloud9 の有料プランが必要です。</p>
-</div>
+
+    **注**
+    一部のオプションでは、Cloud9 の有料プランが必要です。
+
+    </div>
 
     <div class="dev-callout">
-<strong>注</strong>
-<p>Cloud9 プロジェクトのプロジェクト名は、Azure に展開するときには使用されません。</p>
-</div>
+
+    **注**
+    Cloud9 プロジェクトのプロジェクト名は、Azure に展開するときには使用されません。
+
+    </div>
 
 3.  プロジェクトが作成されたら、**[Start Editing]** をクリックします。Cloud9 IDE を初めて使用する場合は、サービスの説明ツアーを開始するためのオプションが表示されます。ツアーをスキップして後日見る場合は、**[Just the editor, please]** を選択します。
 
     ![Cloud9 プロジェクトの編集の開始][Cloud9 プロジェクトの編集の開始]
 
-4.  新しい Node アプリケーションを作成するには、**[File]**、**[New File]** の順に選択します。
+4.  新しい Node アプリケーションを作成するには、
+    **[File]**、**[New File]** の順に選択します。
 
     ![Cloud9 プロジェクト内での新しいファイルの作成][Cloud9 プロジェクト内での新しいファイルの作成]
 
-5.  **Untitled1** というタイトルの新しいタブが表示されます。**[Untitled1]** タブに次のコードを入力して、 Node アプリケーションを作成します。
+5.  **Untitled1** というタイトルの新しいタブが表示されます。**[Untitled1]** タブに
+    次のコードを入力して、
+    Node アプリケーションを作成します。
 
         var http = require('http');
         var port = process.env.PORT;
@@ -59,31 +80,40 @@ Cloud9 を使用するには、Cloud9 の Web サイトにアクセスして、[
         }).listen(port);
 
     <div class="dev-callout">
-<strong>注</strong>
-<p>process.env.PORT を使用することによって、アプリケーションを Cloud9 デバッガーで実行するか、Azure に展開するかに関係なく、アプリケーションで適切なポートが選択されます。</p>
-</div>
 
-6.  コードを保存するには、**[File]**、**[Save]** の順に選択します。 **[Save As]** ダイアログで、ファイル名として「**server.js**」と入力し、 **[Save]** をクリックします。
+    **注**
+    process.env.PORT を使用することによって、アプリケーションを Cloud9 デバッガーで実行するか、Azure に展開するかに関係なく、アプリケーションで適切なポートが選択されます。
+
+    </div>
+
+6.  コードを保存するには、**[File]**、**[Save]** の順に選択します。
+    **[Save As]** ダイアログで、ファイル名として「**server.js**」と入力し、
+    **[Save]** をクリックします。
 
     <div class="dev-callout">
-<strong>注</strong>
-<p>req 変数が使用されていないことを示す警告の記号が表示されます。この警告は無視してかまいません。</p>
-</div>
+
+    **注**
+    req 変数が使用されていないことを示す警告の記号が表示されます。この警告は無視してかまいません。
+
+    </div>
 
     ![server.js ファイルの保存][server.js ファイルの保存]
 
 ## アプリケーションの実行
 
 <div class="dev-callout">
-<strong>注</strong>
-<p>ここで示す手順は、Hello World アプリケーションでは十分ですが、外部モジュールを使用するアプリケーションでは、デバッグ環境として特定のバージョンの Node.js を選択することが必要になる場合があります。そのためには、デバッグのドロップダウンで <strong>[Configure]</strong> を選択し、Node.js の特定のバージョンを選択します。たとえば、&quot;azure&quot; モジュールを使用しているときに、Node.js 0.6.x が選択されていない場合、認証エラーが表示されることがあります。</p>
+
+**注**
+ここで示す手順は、Hello World アプリケーションでは十分ですが、外部モジュールを使用するアプリケーションでは、デバッグ環境として特定のバージョンの Node.js を選択することが必要になる場合があります。そのためには、デバッグのドロップダウンで **[Configure]** を選択し、Node.js の特定のバージョンを選択します。たとえば、"azure" モジュールを使用しているときに、Node.js 0.6.x が選択されていない場合、認証エラーが表示されることがあります。
+
 </div>
 
 1.  **[Debug]** をクリックして、Cloud9 デバッガーでアプリケーションを実行します。
 
     ![デバッガーでの実行][デバッガーでの実行]
 
-2.  出力ウィンドウが表示されます。ブラウザー ウィンドウからアプリケーションにアクセスするには、表示される URL をクリックします。
+2.  出力ウィンドウが表示されます。ブラウザー ウィンドウからアプリケーションに
+    アクセスするには、表示される URL をクリックします。
 
     ![出力ウィンドウ][出力ウィンドウ]
 
@@ -95,7 +125,9 @@ Cloud9 を使用するには、Cloud9 の Web サイトにアクセスして、[
 
 ## Azure アカウントの作成
 
-アプリケーションを Azure に展開するには、アカウントが必要です。Azure アカウントを持っていない場合は、次の手順に従って無料評価版アカウントにサインアップすることもできます。
+アプリケーションを Azure に展開するには、アカウントが必要です。Azure アカウントを持っていない場合は、
+次の手順に従って無料評価版アカウントに
+サインアップすることもできます。
 
 [WACOM.INCLUDE [create-azure-account](../includes/create-azure-account.md)]
 
@@ -103,7 +135,7 @@ Cloud9 を使用するには、Cloud9 の Web サイトにアクセスして、[
 
 1.  新しいデプロイメントを作成するには、**[Deploy]** を選択し、**[+]** をクリックしてデプロイ サーバーを作成します。
 
-    ![新しいデプロイメントの作成](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_createdeployment.png)
+    [新しいデプロイメントの作成][新しいデプロイメントの作成]
 
 2.  **[Add a deploy target]** ダイアログで、デプロイメント名を入力し、**[Choose type]** の一覧で **[Azure]** を選択します。指定した展開名は、Cloud9 内で展開を識別するために使用され、Azure 内の展開名とは対応しません。
 
@@ -117,7 +149,8 @@ Cloud9 を使用するには、Cloud9 の Web サイトにアクセスして、[
 
     2.  発行設定ファイルをローカル ドライブに保存します。
 
-    3.  **[Add a deploy target]** ダイアログで、**[Choose File]** を選択し、前の手順でダウンロードしたファイルを選択します。
+    3.  **[Add a deploy target]** ダイアログで、**[Choose File]** を選択し、
+        前の手順でダウンロードしたファイルを選択します。
 
     4.  ファイルを選択した後、**[Upload]** をクリックします。
 
@@ -130,18 +163,25 @@ Cloud9 を使用するには、Cloud9 の Web サイトにアクセスして、[
     ![新しいホステッド サービスの作成][新しいホステッド サービスの作成]
 
     <div class="dev-callout">
-<strong>注</strong>
-<p><strong>[Add a deploy target]</strong> ダイアログの <strong>[Choose existing deployment]</strong> には、既存の Azure ホステッド サービスがすべて表示されます。既存のホステッド サービスを選択すると、このプロジェクトはそのサービスに対してデプロイされます。</p>
-</div>
+
+    **注**
+    **[Add a deploy target]** ダイアログの **[Choose existing deployment]** には、既存の Azure ホステッド サービスがすべて表示されます。既存のホステッド サービスを選択すると、このプロジェクトはそのサービスに対してデプロイされます。
+
+    </div>
 
     <div class="dev-callout">
-<strong>注</strong>
-<p><strong>[Enable RDP]</strong> を選択し、ユーザー名とパスワードを指定すると、デプロイメントのリモート デスクトップが有効になります。</p>
-</div>
+
+    **注**
+    **[Enable RDP]** を選択し、ユーザー名とパスワードを指定すると、デプロイメントのリモート デスクトップが有効になります。
+
+    </div>
 
 ## Azure 運用環境へのデプロイ
 
-1.  前の手順で作成したデプロイメントを選択します。ダイアログが表示され、このデプロイメントに関する情報と、Microsoft Azure へのデプロイ後に使用される運用環境の URL が示されます。
+1.  前の手順で作成したデプロイメントを選択します。ダイアログが表示され、
+    このデプロイメントに関する情報と、
+    Microsoft Azure へのデプロイ後に使用される運用環境の URL が
+    示されます。
 
     ![デプロイの選択][デプロイの選択]
 
@@ -164,9 +204,11 @@ Cloud9 を使用するには、Cloud9 の Web サイトにアクセスして、[
     ![デプロイの状態][デプロイの状態]
 
     <div class="dev-callout">
-<strong>注</strong>
-<p>Cloud 9 IDE によって展開されるプロジェクトには、Azure の展開名として GUID が割り当てられます。</p>
-</div>
+
+    **注**
+    Cloud 9 IDE によって展開されるプロジェクトには、Azure の展開名として GUID が割り当てられます。
+
+    </div>
 
 8.  デプロイメント ダイアログには、運用環境の URL へのリンクが含まれます。展開が完了したら、URL をクリックして Azure で実行されているアプリケーションを表示します。
 
@@ -201,15 +243,24 @@ Cloud9 を使用するには、Cloud9 の Web サイトにアクセスして、[
 
 ## VIP スワップを使用した運用環境への更新の移行
 
-運用環境またはステージング環境にサービスをデプロイすると、その環境のサービスに、仮想 IP アドレス (VIP) が割り当てられます。サービスをステージング環境から運用環境に移行するには、VIP スワップを実行して、ステージング環境と運用環境のデプロイメントをスワップすることによって、再デプロイすることなく、この処理を行うことができます。VIP スワップでは、テストされたステージング環境のアプリケーションが運用環境に移行され、運用環境でダウンタイムは発生しません。詳細については、「[Azure での配置の管理][Azure での配置の管理]」を参照してください。
+運用環境またはステージング環境に
+サービスをデプロイすると、その環境のサービスに、
+仮想 IP アドレス (VIP) が割り当てられます。サービスをステージング環境から運用環境に移行するには、
+VIP スワップを実行して、
+ステージング環境と運用環境のデプロイメントをスワップすることによって、
+再デプロイすることなく、この処理を行うことができます。VIP スワップでは、テストされたステージング環境の
+アプリケーションが運用環境に移行され、運用環境でダウンタイムは発生しません。詳細については、
+「[Azure での配置の管理][Azure での配置の管理]」を参照してください。
 
-1.  デプロイ ダイアログで、**[Open portal]** リンクをクリックして、 Azure 管理ポータルを開きます。
+1.  デプロイ ダイアログで、**[Open portal]** リンクをクリックして、
+    Azure 管理ポータルを開きます。
 
-    ![デプロイ ダイアログから Azure 管理ポータルへのリンク](./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_portal_link.png)
+    [デプロイ ダイアログから Azure 管理ポータルへのリンク][デプロイ ダイアログから Azure 管理ポータルへのリンク]
 
 2.  自分の資格情報を使用してポータルにサインインします。
 
-3.  Web ページの左側で、 **[ホステッド サービス、ストレージ アカウント、CDN]** を選択し、**[ホステッド サービス]** をクリックします。
+3.  Web ページの左側で、
+    **[ホステッド サービス、ストレージ アカウント、CDN]** を選択し、**[ホステッド サービス]** をクリックします。
 
     [Azure 管理ポータル][Azure 管理ポータル]
 
@@ -232,12 +283,14 @@ Cloud9 を使用するには、Cloud9 の Web サイトにアクセスして、[
 
 ![インスタンスへの接続][インスタンスへの接続]
 
-[接続] をクリックすると、.RDP ファイルを開くか、ダウンロードするよう求めるメッセージが表示されます。このファイルには、リモート デスクトップ セッションに接続するために必要な情報が含まれています。このファイルを Windows システムで実行すると、デプロイメントを作成するときに入力したユーザー名とパスワードの入力を求めるメッセージが表示され、選択したインスタンスのデスクトップに接続されます。
+[接続] をクリックすると、.RDP ファイルを開くか、ダウンロードするよう求めるメッセージが表示されます。このファイルには、リモート デスクトップ セッションに接続するために必要な情報が含まれています。このファイルを Windows システムで実行すると、デプロイメントを作成するときに入力したユーザー名とパスワードの入力を求めるメッセージが表示され、
+選択したインスタンスのデスクトップに接続されます。
 
 <div class="dev-callout">
-<strong>注</strong>
-<p>ホストされているアプリケーションのインスタンスに接続するための .RDP ファイルは、Windows 上のリモート デスクトップ アプリケーションについてのみ
-動作します。</p>
+
+**注**
+ホストされているアプリケーションのインスタンスに接続するための .RDP ファイルは、Windows 上のリモート デスクトップ アプリケーションについてのみ 動作します。
+
 </div>
 
 ## アプリケーションの停止と削除
@@ -274,8 +327,8 @@ Cloud9 は IDE を提供することに重点を置いており、Azure に展�
   [デバッガーでの実行]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_debug.png
   [出力ウィンドウ]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_output.png
   [ブラウザーで実行中のアプリケーション]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_debug_browser.png
-  [create-azure-account]: ../includes/create-azure-account.md
   [発行設定のダウンロード]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_choosetypeandcert.png
+  [Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj155995.aspx
   [新しいデプロイの作成]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_createdeployment.png
   [新しいホステッド サービスの作成]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_new_hosted_service_settings.png
   [デプロイの選択]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_select_deployment.png

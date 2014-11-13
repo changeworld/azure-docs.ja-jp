@@ -1,10 +1,10 @@
-<properties linkid="manage-services-storage-custom-dns-storage" urlDisplayName="custom dns storage" pageTitle="Configure a domain name for blob data in a storage account | Microsoft Azure" metaKeywords="" description="Learn how to configure a custom domain for accessing blob data in an Azure storage account." metaCanonical="" services="storage" documentationCenter="" title="Configure a custom domain name for blob data in a storage account" solutions="" authors="tamram" manager="mbaldwin" editor="cgronlun" />
+<properties urlDisplayName="custom dns storage" pageTitle="ストレージ アカウントの BLOB データのカスタム ドメイン名の構成 | Microsoft Azure" metaKeywords="" description="Azure ストレージ アカウントの BLOB データにアクセスするためにカスタム ドメインを構成する方法について学習します。" metaCanonical="" services="storage" documentationCenter="" title="ストレージ アカウントの BLOB データのカスタム ドメイン名の構成" solutions="" authors="tamram" manager="adinah" editor="cgronlun" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="tamram"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
 # Azure ストレージ アカウントの BLOB データのカスタム ドメイン名の構成
 
-Azure ストレージ アカウントの BLOB データにアクセスするためのカスタム ドメインを構成できます。BLOB サービスの既定のエンドポイントは https://\<*mystorageaccount*\>.blob.core.windows.net です。**www.contoso.com** などのカスタム ドメインおよびサブドメインをストレージ アカウントの BLOB エンドポイントにマッピングしている場合、ユーザーはそのドメインを使って、ストレージ アカウントの BLOB データにもアクセスできます。
+Azure ストレージ アカウントの BLOB データにアクセスするためのカスタム ドメインを構成できます。BLOB サービスの既定のエンドポイントは <https://>\<*mystorageaccount*\>.blob.core.windows.net です。**www.contoso.com** などのカスタム ドメインおよびサブドメインをストレージ アカウントの BLOB エンドポイントにマッピングしている場合、ユーザーはそのドメインを使って、ストレージ アカウントの BLOB データにもアクセスできます。
 
 <div class="dev-callout"> 
 <b>注</b> 
@@ -17,12 +17,18 @@ Azure ストレージ アカウントの BLOB データにアクセスするた�
 
 次の表は、**mystorageaccount** というストレージ アカウントの BLOB データにアクセスするためのサンプル URL を示します。ストレージ アカウントに登録されているカスタム ドメインは **www.contoso.com** です。
 
-<table border="1">
-<tr><td><strong>リソースの種類</strong></td><td><strong>URL の形式</strong></td></tr>
-<tr><td>ストレージ アカウント</td><td><strong>既定の URL:</strong> http://mystorageaccount.blob.core.windows.net<br /><strong>カスタム ドメインの URL:</strong> http://www.contoso.com</td></tr>
-<tr><td>BLOB</td><td><strong>既定の URL:</strong> http://mystorageaccount.blob.core.windows.net/mycontainer/myblob<br /><strong>カスタム ドメインの URL:</strong> http://www.contoso.com/mycontainer/myblob</th></tr>
-<tr><td>ルート コンテナー</td><td><strong>既定の URL:</strong> http://mystorageaccount.blob.core.windows.net/myblob<br />または<br />http://mystorageaccount.blob.core.windows.net/$root/myblob<br /><strong>カスタム ドメインの URL:</strong> http://www.contoso.com/myblob<br />または<br />http://www.contoso.com/$root/myblob</th></tr>
-</table>
+|-----------------------|----------------------------------------------------------------------------------|
+| **リソースの種類**    | **URL の形式**                                                                   |
+| ストレージ アカウント | **既定の URL:** http://mystorageaccount.blob.core.windows.net                    
+                          **カスタム ドメインの URL:** http://www.contoso.com                              |
+| BLOB                  | **既定の URL:** http://mystorageaccount.blob.core.windows.net/mycontainer/myblob 
+                         **カスタム ドメインの URL:** http://www.contoso.com/mycontainer/myblob            |
+| ルート コンテナー     | **既定の URL:** http://mystorageaccount.blob.core.windows.net/myblob             
+                         または                                                                            
+                          http://mystorageaccount.blob.core.windows.net/$root/myblob                       
+                          **カスタム ドメインの URL:** http://www.contoso.com/myblob                       
+                         または                                                                            
+                          http://www.contoso.com/$root/myblob                                              |
 
 ここでは、次の操作方法について説明します。
 
@@ -111,7 +117,7 @@ asverify サブドメインは、Azure で認識される特殊なサブドメ�
 
 カスタム ドメインが実際に BLOB サービス エンドポイントにマッピングされていることを確認するために、ストレージ アカウントのパブリック コンテナーで BLOB を作成します。そして、Web ブラウザーで、次の形式の URI を使って BLOB にアクセスします。
 
--   http://\<*subdomain.customdomain*\>/\<*mycontainer*\>/\<*myblob*\>
+-   <http://>\<*subdomain.customdomain*\>/\<*mycontainer*\>/\<*myblob*\>
 
 たとえば、
 **myforms** コンテナー内の BLOB にマッピングされている
@@ -123,8 +129,6 @@ asverify サブドメインは、Azure で認識される特殊なサブドメ�
 
 -   [CDN コンテンツをカスタム ドメインにマッピングする方法][CDN コンテンツをカスタム ドメインにマッピングする方法]
 
-  [Azure クラウド サービスのカスタム ドメイン名の構成]: /ja-jp/develop/net/common-tasks/custom-dns/
-  [Azure の Web サイトのカスタム ドメイン名の構成]: /ja-jp/develop/net/common-tasks/custom-dns-web-site/
   [ストレージ アカウントのカスタム ドメインの登録]: #register-domain
   [中間 asverify サブドメインを使用したストレージ アカウントのカスタム ドメインの登録]: #register-asverify
   [CDN コンテンツをカスタム ドメインにマッピングする方法]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg680307.aspx

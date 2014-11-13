@@ -1,4 +1,6 @@
-<properties pageTitle="Get started with Azure API Management" metaKeywords="" description="Learn how to create APIs, operations, and get started with API Management." metaCanonical="" services="" documentationCenter="API Management" title="Get started with Azure API Management" authors="sdanie" solutions="" manager="" editor="" />
+<properties pageTitle="Azure API Management の使用" metaKeywords="" description="API とその操作を作成する方法のほか、API Management の基本操作について説明します。" metaCanonical="" services="api-management" documentationCenter="API Management" title="Azure API Management の使用" authors="sdanie" solutions="" manager="dwrede" editor="" />
+
+<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
 
 # Azure API Management の使用
 
@@ -89,7 +91,7 @@ API 呼び出しを行うにあたって開発者はまず、成果物をサブ�
 
 この API インスタンスで利用できる成果物を表示したり構成したりするには、左側の **[API Management]** メニューにある **[成果物]** をクリックします。
 
-![成果物](./media/api-management-get-started/api-management-list-products.png)
+![成果物][成果物]
 
 すべての API Management インスタンスは、2 つのサンプル成果物を既定で備えています。
 
@@ -118,7 +120,7 @@ Administrator ユーザーには、すべての成果物に対するサブスク
 
 開発者ポータルには、API の操作を見てテストするための便利が環境が用意されており、操作を直接呼び出すことができます。このチュートリアル ステップでは、**My Echo API** に追加した Get メソッドを呼び出します。管理ポータルの右上にあるメニューから **[開発者ポータル]** をクリックします。
 
-![開発者ポータル](./media/api-management-get-started/api-management-developer-portal-menu.png)
+![開発者ポータル][開発者ポータル]
 
 上部のメニューで **[API]** をクリックし、**[My Echo API]** をクリックして、利用できる操作を表示します。
 
@@ -132,7 +134,7 @@ Administrator ユーザーには、すべての成果物に対するサブスク
 
 パラメーターの値を入力し、開発者キーを指定して、**[HTTP Get]** をクリックします。
 
-![HTTP Get](./media/api-management-get-started/api-management-invoke-get.png)
+![HTTP Get][HTTP Get]
 
 操作を呼び出すと、バックエンド サービスの**要求された URL**、**応答のステータス**、**応答ヘッダー**、**応答内容**が開発者ポータルに表示されます。
 
@@ -155,11 +157,16 @@ Administrator ユーザーには、すべての成果物に対するサブスク
   [Create API]: ./media/api-management-get-started/api-management-create-api.png
   [Add new API]: ./media/api-management-get-started/api-management-add-new-api.png
   [API summary]: ./media/api-management-get-started/api-management-new-api-summary.png
+  [Configure API settings (API 設定の構成)]: ../api-management-howto-create-apis/#configure-api-settings
   [Operations]: ./media/api-management-get-started/api-management-myecho-operations.png
   [Operation signature]: ./media/api-management-get-started/api-management-operation-signature.png
+  [成果物]: ./media/api-management-get-started/api-management-list-products.png
   [Add API]: ./media/api-management-get-started/api-management-add-api-to-product.png
   [3]: ./media/api-management-get-started/api-management-add-myechoapi-to-product.png
   [API added]: ./media/api-management-get-started/api-management-api-added-to-product.png
+  [How create and publish a product (成果物を作成して発行する方法)]: ../api-management-howto-add-products
+  [開発者ポータル]: ./media/api-management-get-started/api-management-developer-portal-menu.png
   [4]: ./media/api-management-get-started/api-management-developer-portal-myecho-api.png
-  [Operation console]: ./media/api-management-get-started/api-management-developer-portal-myecho-api-console.png 
+  [Operation console]: ./media/api-management-get-started/api-management-developer-portal-myecho-api-console.png
+  [HTTP Get]: ./media/api-management-get-started/api-management-invoke-get.png
   [Response]: ./media/api-management-get-started/api-management-invoke-get-response.png

@@ -1,6 +1,6 @@
-<properties linkid="manage-services-identity-multi-factor-authentication" urlDisplayName="What is Azure Multi-Factor Authentication?" pageTitle="What is Azure Multi-Factor Authentication?" metaKeywords="" description="Learn more about Azure Multi-Factor Authentication, a method of authentication that requires the use of more than one verification method and adds a critical second layer of security to user sign-ins and transactions." metaCanonical="" services="active-directory,multi-factor-authentication" documentationCenter="" title="How to Manage Azure Virtual Machines using Ruby" authors="larryfr" solutions="" manager="" editor="" />
+<properties urlDisplayName="What is Azure Multi-Factor Authentication?" pageTitle="Windows Azure 多要素認証とは" metaKeywords="" description="Azure Multi-Factor Authentication (複数の確認方法の使用を要求することで、ユーザーのサインインとトランザクションにさらなる重要なセキュリティ レイヤーを追加する認証方法) について説明します。" metaCanonical="" services="active-directory,multi-factor-authentication" documentationCenter="" title="Ruby を使用して Azure の仮想マシンを管理する方法" authors="larryfr" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="ruby" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr"></tags>
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="ruby" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
 # Ruby を使用して Azure の仮想マシンを管理する方法
 
@@ -88,11 +88,12 @@ Azure サービスを管理するには、Azure SDK for Ruby が含まれる Azu
         Successfully installed azure-0.5.0
         7 gems installed
 
-	<div class="dev-callout">
-	<b>注</b>
-	<p>アクセス許可関連のエラーが発生した場合は、代わりに `sudo gem install azure` を使用します。</p>
-	</div>
+    <div class="dev-callout">
 
+    **注**
+    アクセス許可関連のエラーが発生した場合は、代わりに `sudo gem install azure` を使用します。
+
+    </div>
 
 ### gem を要求する
 
@@ -221,10 +222,11 @@ Azure サブスクリプションにおける既存の仮想マシンの一覧�
     vm = vm_mgr.delete_virtual_machine('myvm', 'mycloudservice')
 
 <div class="dev-callout">
-<b>警告</b>
-<p>The <b>delete_virtual_machine</b> メソッドは、仮想マシンに関連付けられているすべてのディスクとクラウド サービスを削除します。</p>
-</div>
 
+**警告**
+**delete\_virtual\_machine** メソッドは、仮想マシンに関連付けられているすべてのディスクとクラウド サービスを削除します。
+
+</div>
 
 ### 方法: 仮想マシンのシャットダウン
 

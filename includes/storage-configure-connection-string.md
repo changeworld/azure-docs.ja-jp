@@ -14,18 +14,16 @@ Azure サービス構成で接続文字列を構成するには:
 1.  Visual Studio のソリューション エクスプローラーで、Azure デプロイ プロジェクトの
     **[ロール]** フォルダー内の Web ロールまたは worker ロールを右クリックし、
     **[プロパティ]** をクリックします。
-
-    ![Select the properties on a Cloud Service role in Visual Studio][]
+    ![Select the properties on a Cloud Service role in Visual Studio][Select the properties on a Cloud Service role in Visual Studio]
 
 2.  **[設定]** タブをクリックし、**[設定の追加]** をクリックします。
-     ![Add a Cloud Service setting in visual Studio][]
+    ![Add a Cloud Service setting in visual Studio][Add a Cloud Service setting in visual Studio]
 
     新しい **[Setting1]** エントリが設定グリッドに表示されます。
 
 3.  新しい **[Setting1]** エントリの **[種類]** ボックスの一覧で、
     **[接続文字列]** をクリックします。
-
-    ![Set connection string type][]
+    ![Set connection string type][Set connection string type]
 
 4.  **[Setting1]** エントリの右端にある **[...]** ボタンをクリックします。
     **[ストレージ アカウント接続文字列]** ダイアログ ボックスが開きます。
@@ -39,13 +37,12 @@ Azure サービス構成で接続文字列を構成するには:
 
     > [WACOM.NOTE] ストレージ エミュレーターをターゲットとすると、Windows Azure Storage に関連する利用料金の発生を回避できます。ただし、クラウド内の Azure ストレージ アカウントをターゲットとしても、このチュートリアルを実行するための利用料金はごくわずかです。
 
-    ![Select target environment][]
+    ![Select target environment][Select target environment]
 
 6.  エントリの **[名前]** を **Setting1** から
     **StorageConnectionString** などのわかりやすい名前に変更します。この接続文字列は、
     このガイドの後半のコードで参照します。
-
-    ![Change connection string name][]
+    ![Change connection string name][Change connection string name]
 
 ### .NET 構成を使用した接続文字列の構成
 
@@ -65,7 +62,7 @@ Azure のクラウド サービスではないアプリケーション (前の�
         </appSettings>
     </configuration>
 
-ストレージ接続文字列の詳細については、「[Azure 接続文字列の構成][]」を参照してください。
+ストレージ接続文字列の詳細については、「[Azure 接続文字列の構成][Azure 接続文字列の構成]」を参照してください。
 
 これで、このガイドのハウツー タスクを実行する準備が整いました。
 
@@ -74,4 +71,4 @@ Azure のクラウド サービスではないアプリケーション (前の�
   [Set connection string type]: ./media/storage-configure-connection-string/connection-string3.png
   [Select target environment]: ./media/storage-configure-connection-string/connection-string4.png
   [Change connection string name]: ./media/storage-configure-connection-string/connection-string5.png
-  [Azure 接続文字列の構成]: http://msdn.microsoft.com/en-us/library/windowsazure/ee758697.aspx
+  [Azure 接続文字列の構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758697.aspx

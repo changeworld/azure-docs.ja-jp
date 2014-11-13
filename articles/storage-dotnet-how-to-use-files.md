@@ -1,4 +1,4 @@
-<properties linkid="dev-net-how-to-file-storage" urlDisplayName="File Service" pageTitle="How to use Azure File storage | Microsoft Azure" metaKeywords="Get started Azure file  Azure file share  Azure file shares  Azure file   Azure file storage   Azure file .NET   Azure file C#   Azure file PowerShell" description="Learn how to use Microsoft Azure File storage to create file shares and manage file content. Samples are written in PowerShell and C#." metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="storage" documentationCenter=".NET" title="How to use Microsoft Azure File storage in .NET" authors="tamram" manager="mbaldwin" editor="cgronlun" />
+<properties urlDisplayName="File Service" pageTitle="Azure File ストレージを使用する方法 | Microsoft Azure" metaKeywords="Get started Azure file  Azure file share  Azure file shares  Azure file   Azure file storage   Azure file .NET   Azure file C#   Azure file PowerShell" description="Microsoft Azure File ストレージを使用してファイル共有を作成し、ファイルの内容を管理する方法について説明します。サンプルは PowerShell および C# で記述されています。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="storage" documentationCenter=".NET" title=".NET で Microsoft Azure File ストレージを使用する方法" authors="tamram" manager="adinah" editor="cgronlun" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
@@ -41,7 +41,7 @@ File ストレージには次の構成要素があります。
 
 ![files-concepts][files-concepts]
 
--   **ストレージ アカウント:** Azure のストレージにアクセスする場合には必ず、
+-   **ストレージ アカウント:**Azure のストレージにアクセスする場合には必ず、
     ストレージ アカウントを使用します。ストレージ アカウントの容量の詳細については、[Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ][Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ]を参照してください。
 
 -   **共有:** File ストレージ共有は、Azure 内の SMB 2.1 ファイル共有です。
@@ -55,7 +55,7 @@ File ストレージには次の構成要素があります。
 
 -   **URL 形式:** ファイルは次の URL 形式でアドレス指定
     されます。
-    `<https://><storage account>.file.core.windows.net/<share>/<directory/directories>/<file>`
+    <https://>`<storage account>`.file.core.windows.net/`<share>`/`<directory/directories>`/`<file>`
 
     次の例の URL を使用すると、上の図のいずれかのファイルを
     アドレス指定できます。
@@ -148,7 +148,7 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 さらに、ロールにリモート接続することで、Azure クラウド サービスで実行されるロールからファイル共有をマウントすることもできます。
 
-## <a name="create-console-app"></a><span class="short-header">File ストレージを利用する内部設置型アプリケーションの作成</span>
+## <a name="create-console-app"></a><span class="short-header">File ストレージを利用する内部設置型アプリケーションの作成</span>File ストレージを利用する内部設置型アプリケーションの作成
 
 これまで説明したように、仮想マシンや Azure 内で実行されるクラウド サービスの中から File ストレージ共有をマウントすることができます。ただし、内部設置型のアプリケーションから File ストレージ共有をマウントすることはできません。内部設置型のアプリケーションから共有データにアクセスするには、File ストレージ API を使用する必要があります。この例では、[Azure .NET Storage クライアント ライブラリ][Azure .NET Storage クライアント ライブラリ]を使用してファイル共有を利用する方法を示します。
 
@@ -261,14 +261,16 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
   [次のステップ]: #next-steps
   [files-concepts]: ./media/storage-dotnet-how-to-use-files/files-concepts.png
   [Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ]: http://msdn.microsoft.com/ja-jp/library/dn249410.aspx
+  [Naming and Referencing Shares, Directories, Files, and Metadata (共有、ディレクトリ、ファイル、およびメタデータの命名と参照)]: http://msdn.microsoft.com/ja-jp/library/azure/dn167011.aspx
   [Microsoft Azure プレビューのページ]: /ja-jp/services/preview/
-  [create-storage-account]: ../includes/create-storage-account.md
   [Azure PowerShell のインストールおよび構成方法]: /ja-jp/documentation/articles/install-configure-powershell/
   [Windows Server を実行する仮想マシンの作成]: /ja-jp/documentation/articles/virtual-machines-windows-tutorial/
   [Windows Server を実行する仮想マシンにログオンする方法]: /ja-jp/documentation/articles/virtual-machines-log-on-windows-server/
   [System.IO 名前空間]: http://msdn.microsoft.com/ja-jp/library/gg145019(v=vs.110).aspx
   [Azure .NET Storage クライアント ライブラリ]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [File サービスの REST API リファレンス]: http://msdn.microsoft.com/ja-jp/library/azure/dn167006.aspx
+  [Introducing Microsoft Azure File Service (Microsoft Azure File サービスの概要)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx
+  [Persisting connections to Microsoft Azure Files (Microsoft Azure Files への接続の維持)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx
   [BLOB ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/
   [テーブル ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/
   [キュー ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-queues/

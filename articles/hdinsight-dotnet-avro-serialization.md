@@ -1,4 +1,4 @@
-<properties linkid="hdinsight-dotnet-avro-serialization" urlDisplayName="HDInsight Microsoft .NET Library for Serialization with Avro" pageTitle="Serialize data with the Microsoft .NET Library for Avro | Azure" metaKeywords="" description="Learn how Azure HDInsight uses Avro to serialize big data." metaCanonical="" services="hdinsight" documentationCenter="" title="Serialize data with the Microsoft .NET Library for Avro " authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
+<properties urlDisplayName="HDInsight Microsoft .NET Library for Serialization with Avro" pageTitle="Microsoft .NET Library for Avro を使用したデータのシリアル化 | Azure" metaKeywords="" description="Azure HDInsight が Avro を使用してビッグ データをシリアル化する方法について説明します。" metaCanonical="" services="hdinsight" documentationCenter="" title="Microsoft .NET Library for Avro を使用したデータのシリアル化 " authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev" />
 
@@ -1304,6 +1304,7 @@ Microsoft .NET Library for Avro でリフレクションを使用して、型の
 
   [JSON]: http://www.json.org
   [Apache Avro の仕様]: http://avro.apache.org/docs/current/spec.html
+  [**AvroRecord**]: http://msdn.microsoft.com/ja-jp/library/microsoft.hadoop.avro.avrorecord.aspx
   [Microsoft .NET Framework v4.0]: http://www.microsoft.com/ja-jp/download/details.aspx?id=17851
   [Newtonsoft Json.NET]: http://james.newtonking.com/json
   [Azure コード サンプル]: http://code.msdn.microsoft.com/windowsazure/Serialize-data-with-the-86055923
@@ -1312,7 +1313,13 @@ Microsoft .NET Library for Avro でリフレクションを使用して、型の
   [**汎用レコードを使用したシリアル化**]: #Scenario2
   [**オブジェクト コンテナー ファイルとリフレクションを使用したシリアル化**]: #Scenario3
   [**オブジェクト コンテナー ファイルと汎用レコードを使用したシリアル化**]: #Scenario4
+  [**オブジェクト コンテナー ファイルとカスタム圧縮コーデックを使用したシリアル化**]: #Scenario5
+  [**IAvroSeralizer<t>**]: http://msdn.microsoft.com/ja-jp/library/dn627341.aspx
+  [**AvroContainer**]: http://msdn.microsoft.com/ja-jp/library/microsoft.hadoop.avro.container.avrocontainer.aspx
+  [**SequentialWriter<sensordata>**]: http://msdn.microsoft.com/ja-jp/library/dn627340.aspx
+  [**Deflate**]: http://msdn.microsoft.com/ja-jp/library/system.io.compression.deflatestream(v=vs.100).aspx
   [2]: http://msdn.microsoft.com/ja-jp/library/system.io.compression.deflatestream(v=vs.110).aspx
+  [**Codex.Null**]: http://msdn.microsoft.com/ja-jp/library/microsoft.hadoop.avro.container.codec.null.aspx
   [Avro 仕様]: http://avro.apache.org/docs/current/spec.html#Required+Codecs
   [3]: http://avro.apache.org/docs/current/spec.html#snappy
   [zlib]: http://zlib.net/

@@ -1,6 +1,6 @@
-<properties linkid="manage-services-hdinsight-howto-blob-store" urlDisplayName="Blob Storage with  Hadoop in HDInsight" pageTitle="Use Blob storage with Hadoop in HDInsight | Azure" metaKeywords="" description="Learn how HDInsight uses Blob storage as the underlying data store for HDFS and how you can query data from the store." metaCanonical="" services="storage,hdinsight" documentationCenter="" title="Use Azure Blob storage with Hadoop in HDInsight" authors="jgao" solutions="" manager="paulettm" editor="mollybos" />
+<properties urlDisplayName="Blob Storage with  Hadoop in HDInsight" pageTitle="HDInsight の Hadoop での BLOB ストレージの使用 | Azure" metaKeywords="" description="HDInsight で、HDFS の基盤データ ストアとして BLOB ストレージがどのように使用されるのかを説明します。また、ストア内のデータを照会する方法も説明します。" metaCanonical="" services="storage,hdinsight" documentationCenter="" title="HDInsight の Hadoop での Azure BLOB ストレージの使用" authors="jgao" solutions="" manager="paulettm" editor="mollybos" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
 
 # HDInsight の Hadoop での Azure BLOB ストレージの使用
 
@@ -117,7 +117,7 @@ BLOB ストレージ内のファイルにアクセスするための URI スキ�
 
     wasb[s]://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>
 
-> [WACOM.NOTE] ストレージ エミュレーター (HDInsight エミュレーター上で実行) でファイルをアドレス指定するための構文は、<i>wasb://&lt;ContainerName&gt;@storageemulator</i> です。
+> [WACOM.NOTE] ストレージ エミュレーター (HDInsight エミュレーター上で実行) でファイルをアドレス指定するための構文は、*wasb:[//\<ContainerName\>@storageemulator][//\<ContainerName\>@storageemulator]* です。
 
 この URI スキームは、暗号化なしのアクセス (*wasb:* プレフィックス) と SSL で暗号化されたアクセス (*wasbs*) の両方に対応しています。同じ Azure データ センター内のデータにアクセスする場合でも、できる限り *wasbs* を使用することをお勧めします。
 
@@ -262,6 +262,7 @@ $clusterName = "<hdinsightclustername>"
   [HDI.QuickCreate]: ./media/hdinsight-use-blob-storage/HDI.QuickCreateCluster.png
   [HDI.CustomCreateStorageAccount]: ./media/hdinsight-use-blob-storage/HDI.CustomCreateStorageAccount.png
   [Azure PowerShell]: ../install-configure-powershell/
+  [//\<ContainerName\>@storageemulator]: mailto://<ContainerName>@storageemulator
   [Blob.PowerShell.コマンドレット]: ./media/hdinsight-use-blob-storage/HDI.PowerShell.BlobCommands.png
   [データを HDInsight にアップロードする方法]: ../hdinsight-upload-data/
   [HDInsight での Hive の使用]: ../hdinsight-use-hive/

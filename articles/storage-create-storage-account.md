@@ -1,6 +1,6 @@
-<properties linkid="manage-services-how-to-create-a-storage-account" urlDisplayName="How to create" pageTitle="How to create a storage account | Azure" metaKeywords="" description="Learn how to create a storage account in the Azure management portal." metaCanonical="" services="storage" documentationCenter="" title="How To Create a Storage Account" solutions="" authors="tamram" manager="mbaldwin" editor="cgronlun" />
+<properties urlDisplayName="How to create" pageTitle="ストレージ アカウントの作成方法 | Azure" metaKeywords="" description="Azure の管理ポータルでストレージ アカウントを作成する方法について学習します。" metaCanonical="" services="storage" documentationCenter="" title="ストレージ アカウントの作成方法" solutions="" authors="tamram" manager="adinah" editor="cgronlun" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="tamram"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
 # <span id="createstorageaccount"></span></a>ストレージ アカウントの作成方法
 
@@ -23,7 +23,7 @@ Azure の BLOB、テーブル、キュー、およびファイル サービス�
 
     ![NewStorageAccount][NewStorageAccount]
 
-3.  **[URL]** ボックスに、ストレージ アカウントの URL で使用するサブドメイン名を入力します。ストレージにあるオブジェクトにアクセスするには、オブジェクトの場所をエンドポイントに追加します。たとえば、BLOB にアクセスする URL は、http://*myaccount*.blob.core.windows.net/*mycontainer*/*myblob\* のようになります。
+3.  **[URL]** ボックスに、ストレージ アカウントの URL で使用するサブドメイン名を入力します。ストレージにあるオブジェクトにアクセスするには、オブジェクトの場所をエンドポイントに追加します。たとえば、BLOB にアクセスする URL は、<http://*myaccount>*.blob.core.windows.net/*mycontainer*/*myblob\* のようになります。
 
 4.  **[リージョン/アフィニティ グループ]** で、ストレージのリージョンまたはアフィニティ グループを選択します。使用している他の Azure サービスと同じデータ センターにストレージ サービスを配置する場合は、リージョンの代わりにアフィニティ グループを選択します。これによりパフォーマンスが向上し、送信料金も発生しません。
 
@@ -45,7 +45,7 @@ Azure の BLOB、テーブル、キュー、およびファイル サービス�
 
 -   Azure Storage の詳細については、[azure.com][azure.com] および [MSDN][MSDN] で Azure Storage のドキュメントを参照してください。
 
--   [Azure のストレージ チーム ブログ][Azure のストレージ チーム ブログ]を参照してください。
+-   [Azure のストレージ チーム ブログ][Azure のストレージ チーム ブログ]
 
   [Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット]: http://msdn.microsoft.com/ja-jp/library/dn249410.aspx
   [方法: ストレージ アカウントを作成する]: #create
@@ -53,7 +53,6 @@ Azure の BLOB、テーブル、キュー、およびファイル サービス�
   [管理ポータル]: https://manage.windowsazure.com
   [NewStorageAccount]: ./media/storage-create-storage-account/storage_NewStorageAccount.png
   [アフィニティ グループに対する操作]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee460798.aspx
-  [storage-replication-options]: ../includes/storage-replication-options.md
   [StoragePage]: ./media/storage-create-storage-account/Storage_StoragePage.png
   [azure.com]: http://azure.microsoft.com/ja-jp/documentation/services/storage/
   [MSDN]: http://msdn.microsoft.com/ja-jp/library/gg433040.aspx

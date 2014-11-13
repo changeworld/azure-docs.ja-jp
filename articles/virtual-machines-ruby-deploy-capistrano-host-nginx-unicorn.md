@@ -1,10 +1,10 @@
-<properties linkid="dev-ruby-web-app-with-linux-vm-capistrano" urlDisplayName="Ruby on Rails Azure VM Capistrano" pageTitle="Deploying a Ruby on Rails Web application to an Azure Virtual Machine using Capistrano - tutorial" metaKeywords="ruby on rails, ruby on rails azure, rails azure, rails vm, capistrano azure vm, capistrano azure rails, unicorn azure vm, unicorn azure rails, unicorn nginx capistrano, unicorn nginx capistrano azure, nginx azure" description="Learn how to deploy a Ruby on Rails application to an Azure Virtual Machine using Capistrano, Unicorn and Nginx." metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Deploy a Ruby on Rails Web application to an Azure VM using Capistrano" authors="larryfr" />
+<properties urlDisplayName="Ruby on Rails Azure VM Capistrano" pageTitle="Capistrano を使用して Azure 仮想マシンに Ruby on Rails Web アプリケーションをデプロイする - チュートリアル" metaKeywords="ruby on rails, ruby on rails azure, rails azure, rails vm, capistrano azure vm, capistrano azure rails, unicorn azure vm, unicorn azure rails, unicorn nginx capistrano, unicorn nginx capistrano azure, nginx azure" description="Capistrano、Unicorn、および Nginx を使用して Azure 仮想マシンに Ruby on Rails Web アプリケーションをデプロイする方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Capistrano を使用して Azure VM に Ruby on Rails Web アプリケーションをデプロイする" authors="larryfr" manager="wpickett" />
 
-<tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="vm-linux" ms.devlang="ruby" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr"></tags>
+<tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="vm-linux" ms.devlang="ruby" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
 # Capistrano を使用して Azure VM に Ruby on Rails Web アプリケーションをデプロイする
 
-このチュートリアルでは、[Capistrano][] を使用して Azure の仮想マシンに Ruby on Rails Web サイトをデプロイする方法について説明します。デプロイすると、[Nginx][] と [Unicorn][] を使用して Web サイトをホストします。[PostgreSQL][] は、デプロイされるアプリケーションのアプリケーション データを保存します。
+このチュートリアルでは、[Capistrano][Capistrano] を使用して Azure の仮想マシンに Ruby on Rails Web サイトをデプロイする方法について説明します。デプロイすると、[Nginx][Nginx] と [Unicorn][Unicorn] を使用して Web サイトをホストします。[PostgreSQL][PostgreSQL] は、デプロイされるアプリケーションのアプリケーション データを保存します。
 
 このチュートリアルは、Azure を初めて使用するユーザーを対象としていますが、Ruby、Rails、Git、および Linux について詳しく理解していることを前提としています。このチュートリアルを完了すると、クラウドで動作する Ruby on Rails ベースのアプリケーションが完成します。
 
@@ -22,7 +22,7 @@
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
-![a browser displaying Listing Posts][]
+![a browser displaying Listing Posts][a browser displaying Listing Posts]
 
 > [WACOM.NOTE] このチュートリアルで使用するアプリケーションには、ネイティブのバイナリ コンポーネントが含まれています。開発環境が Linux ベースでない場合、VM へのデプロイ時にエラーが発生する場合があります。デプロイ中に使用される Gemfile.lock ファイルにはプラットフォーム固有の gem が含まれますが、ここには VM で必要な gem のネイティブ Linux バージョンのエントリが含まれていないことがあります。
 >
@@ -30,33 +30,33 @@
 
 ## この記事の内容
 
--   [開発環境を設定する][]
+-   [開発環境を設定する][開発環境を設定する]
 
--   [Rails アプリケーションを作成する][]
+-   [Rails アプリケーションを作成する][Rails アプリケーションを作成する]
 
--   [アプリケーションをテストする][]
+-   [アプリケーションをテストする][アプリケーションをテストする]
 
--   [ソース リポジトリを作成する][]
+-   [ソース リポジトリを作成する][ソース リポジトリを作成する]
 
--   [Azure の仮想マシンを作成する][]
+-   [Azure の仮想マシンを作成する][Azure の仮想マシンを作成する]
 
--   [Nginx をテストする][]
+-   [Nginx をテストする][Nginx をテストする]
 
--   [デプロイの準備をする][]
+-   [デプロイの準備をする][デプロイの準備をする]
 
--   [展開][]
+-   [展開][展開]
 
--   [次のステップ][]
+-   [次のステップ][次のステップ]
 
 ## <span id="setup"></span></a>開発環境を設定する
 
 1.  開発環境に Ruby をインストールします。この手順は、使用しているオペレーティング システムによって異なる場合があります。
 
-    -   **Apple OS X** - OS X 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証には、OS X で [Homebrew][] を使用して **rbenv**、**ruby-build**、および **Ruby 2.0.0-p451** をインストールしました。インストールに関する情報は、[][]<https://github.com/sstephenson/rbenv/></a> で確認できます。
+    -   **Apple OS X** - OS X 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証には、OS X で [Homebrew][Homebrew] を使用して **rbenv**、**ruby-build**、および **Ruby 2.0.0-p451** をインストールしました。インストールに関する情報は、[][]<https://github.com/sstephenson/rbenv/></a> で確認できます。
 
     -   **Linux** - ディストリビューションのパッケージ管理システムを使用します。このチュートリアルは、Ubuntu 12.10 で **rbenv**、**ruby-build**、および **Ruby 2.0.0-p451** を使用して検証されました。
 
-    -   **Windows** - Windows 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証では、[RubyInstaller][] を使用して **Ruby 2.0.0-p451** をインストールしました。コマンドは [Git for Windows][] で使用可能な **GitBash** コマンド ラインを使用して実行されました。
+    -   **Windows** - Windows 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証では、[RubyInstaller][RubyInstaller] を使用して **Ruby 2.0.0-p451** をインストールしました。コマンドは [Git for Windows][Git for Windows] で使用可能な **GitBash** コマンド ラインを使用して実行されました。
 
 2.  新しいコマンド ラインまたはターミナル セッションを開き、次のコマンドを入力して Ruby on Rails をインストールします。
 
@@ -92,7 +92,7 @@
 
         rake db:migrate
 
-    このコマンドで、Rails の既定のデータベース プロバイダーである [SQLite3 データベース][]を使用して投稿を保存するデータベース スキーマが作成されます。
+    このコマンドで、Rails の既定のデータベース プロバイダーである [SQLite3 データベース][SQLite3 データベース]を使用して投稿を保存するデータベース スキーマが作成されます。
 
 4.  ホーム ページとして投稿の一覧を表示するには、**config/routes.rb** ファイルを変更して、`resources :posts` 行の後に次のコードを追加します。
 
@@ -118,17 +118,17 @@
 
 2.  ブラウザーを開き、<http://localhost:3000/> に移動します。次のようなページが表示されます。
 
-    ![a page listing posts][]
+    ![a page listing posts][a page listing posts]
 
     サーバー プロセスを停止するには、コマンド ラインで Ctrl + C キーを押します。
 
 ## <span id="repository"></span></a>ソース リポジトリを作成する
 
-Capistrano を使用してアプリケーションをデプロイすると、リポジトリから対象のファイルがプルされます。このチュートリアルでは、バージョン管理に [Git][] を使用し、リポジトリに [GitHub][] を使用します。
+Capistrano を使用してアプリケーションをデプロイすると、リポジトリから対象のファイルがプルされます。このチュートリアルでは、バージョン管理に [Git][Git] を使用し、リポジトリに [GitHub][GitHub] を使用します。
 
-1.  [GitHub][] で新しいリポジトリを作成します。GitHub アカウントを持っていない場合は、無料のアカウントにサインアップできます。次の手順では、リポジトリ名が **blog\_app** であることを前提としています。
+1.  [GitHub][GitHub] で新しいリポジトリを作成します。GitHub アカウントを持っていない場合は、無料のアカウントにサインアップできます。次の手順では、リポジトリ名が **blog\_app** であることを前提としています。
 
-    > [WACOM.NOTE] アプリケーションの自動デプロイメントをサポートするには、GitHub への認証に SSH キーを使用する必要があります。詳細については、[Generating SSH Keys (SSH キーの生成方法)][] の GitHub ドキュメントを参照してください。
+    > [WACOM.NOTE] アプリケーションの自動デプロイメントをサポートするには、GitHub への認証に SSH キーを使用する必要があります。詳細については、[Generating SSH Keys (SSH キーの生成方法)][Generating SSH Keys (SSH キーの生成方法)] の GitHub ドキュメントを参照してください。
 
 2.  コマンド プロンプトから、ディレクトリを **blog\_app** に変更し、次のコマンドを実行して、アプリケーションを GitHub リポジトリにアップロードします。**YourGitHubName** を GitHub アカウントの名前に置き換えます。
 
@@ -142,9 +142,9 @@ Capistrano を使用してアプリケーションをデプロイすると、リ
 
 ## <span id="createvm"></span></a>Azure の仮想マシンを作成する
 
-[ここ][]に記載されている指示に従って、Linux をホストする Azure の仮想マシンを作成します。
+[ここ][ここ]に記載されている指示に従って、Linux をホストする Azure の仮想マシンを作成します。
 
-1.  [Azure 管理ポータル][]にサインインします。コマンド バーで、**[新規]** を選択します。
+1.  [Azure 管理ポータル][Azure 管理ポータル]にサインインします。コマンド バーで、**[新規]** を選択します。
 
 2.  **[仮想マシン]**、**[ギャラリーから]** の順に選択します。
 
@@ -160,7 +160,7 @@ Capistrano を使用してアプリケーションをデプロイすると、リ
 
 6.  **[認証]** で、**[互換性のある認証用の SSH キーのアップロード]** をチェックしてから、証明書が含まれた **.pem** ファイルを検索して選択します。最後に、矢印を選択して続行します。
 
-    > [WACOM.NOTE] SSH キーの生成または使用に慣れていない場合は、「[How to use SSH with Linux on Azure (Azure 上の Linux における SSH の使用方法)][]」で SSH キーの作成手順を参照してください。
+    > [WACOM.NOTE] SSH キーの生成または使用に慣れていない場合は、「[How to use SSH with Linux on Azure (Azure 上の Linux における SSH の使用方法)][How to use SSH with Linux on Azure (Azure 上の Linux における SSH の使用方法)]」で SSH キーの作成手順を参照してください。
     >
     > パスワードの認証も有効にできますが、自動デプロイメントで使用されるため、SSH キーも指定する必要があります。
 
@@ -246,7 +246,7 @@ Rails で開発用に使用される既定のデータベースは SQLite です
 
 2.  仮想マシンの DNS 名に移動して、アプリケーションをテストします。Web サイトは次のようになります。
 
-    ![nginx welcome page][]
+    ![nginx welcome page][nginx welcome page]
 
     > [WACOM.NOTE] このチュートリアルの後の手順で実行するデプロイメント スクリプトでは、blog\_app が Nginx によって提供される既定の Web サイトに設定されます。
 
@@ -433,20 +433,20 @@ Rails で開発用に使用される既定のデータベースは SQLite です
 この記事では、基本的な Rails アプリケーションを作成し、Capistrano を使用して Azure の仮想マシンに発行する方法について説明しました。この記事で紹介した基本的なアプリケーションを使用した方法は、デプロイメントのために Capistrano でできることの一例にすぎません。Capistrano の使用方法の詳細については、以下を参照してください。
 
 -   [Capistranorb.com][2] - Capistrano のサイトです。
--   [Azure, Ruby on Rails, Capistrano 3, & PostgreSQL][] - Azure にデプロイする代替的な手法で、カスタム デプロイメント スクリプトについて説明します。
--   [Capistrano 3 tutorial (Capistrano 3 チュートリアル)][] - Capistrano 3 を使用したチュートリアルです。
+-   [Azure, Ruby on Rails, Capistrano 3, & PostgreSQL][Azure, Ruby on Rails, Capistrano 3, & PostgreSQL] - Azure にデプロイする代替的な手法で、カスタム デプロイメント スクリプトについて説明します。
+-   [Capistrano 3 tutorial (Capistrano 3 チュートリアル)][Capistrano 3 tutorial (Capistrano 3 チュートリアル)] - Capistrano 3 を使用したチュートリアルです。
 
-より基礎的な例として、Rails アプリケーションを作成し、SSH のみを使用して Azure VM に展開する手順については、「[Linux VM を使用した Azure での Ruby on Rails Web アプリケーション][]」を参照してください。
+より基礎的な例として、Rails アプリケーションを作成し、SSH のみを使用して Azure VM に展開する手順については、「[Linux VM を使用した Azure での Ruby on Rails Web アプリケーション][Linux VM を使用した Azure での Ruby on Rails Web アプリケーション]」を参照してください。
 
-Ruby on Rails の詳細について学習するには、[Ruby on Rails のガイド][]を参照してください。
+Ruby on Rails の詳細について学習するには、[Ruby on Rails のガイド][Ruby on Rails のガイド]を参照してください。
 
 Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サービスにアクセスする方法については、次のリンクを参照してください。
 
--   [BLOB を使用して非構造化データを保存する][]
+-   [BLOB を使用して非構造化データを保存する][BLOB を使用して非構造化データを保存する]
 
--   [テーブルを使用してキー/値のペアを保存する][]
+-   [テーブルを使用してキー/値のペアを保存する][テーブルを使用してキー/値のペアを保存する]
 
--   [コンテンツ配信ネットワークを使用して高帯域幅コンテンツを配信する][]
+-   [コンテンツ配信ネットワークを使用して高帯域幅コンテンツを配信する][コンテンツ配信ネットワークを使用して高帯域幅コンテンツを配信する]
 
   [Capistrano]: https://github.com/capistrano/capistrano/
   [Nginx]: http://nginx.org/
@@ -472,15 +472,15 @@ Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サ
   [Git]: http://git-scm.com/
   [GitHub]: https://github.com/
   [Generating SSH Keys (SSH キーの生成方法)]: https://help.github.com/articles/generating-ssh-keys
-  [ここ]: /en-us/manage/linux/tutorials/virtual-machine-from-gallery/
+  [ここ]: /ja-jp/manage/linux/tutorials/virtual-machine-from-gallery/
   [Azure 管理ポータル]: https://manage.windowsazure.com/
   [2]: http://capistranorb.com
   [How to use SSH with Linux on Azure (Azure 上の Linux における SSH の使用方法)]: http://azure.microsoft.com/ja-jp/documentation/articles/linux-use-ssh-key/
   [nginx welcome page]: ./media/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/welcomenginx.png
   [Azure, Ruby on Rails, Capistrano 3, & PostgreSQL]: http://wootstudio.ca/articles/tutorial-windows-azure-ruby-on-rails-capistrano-3-postgresql
   [Capistrano 3 tutorial (Capistrano 3 チュートリアル)]: http://www.talkingquickly.co.uk/2014/01/deploying-rails-apps-to-a-vps-with-capistrano-v3/
-  [Linux VM を使用した Azure での Ruby on Rails Web アプリケーション]: /en-us/develop/ruby/tutorials/web-app-with-linux-vm/
+  [Linux VM を使用した Azure での Ruby on Rails Web アプリケーション]: /ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/
   [Ruby on Rails のガイド]: http://guides.rubyonrails.org/
-  [BLOB を使用して非構造化データを保存する]: /en-us/develop/ruby/how-to-guides/blob-storage/
-  [テーブルを使用してキー/値のペアを保存する]: /en-us/develop/ruby/how-to-guides/table-service/
-  [コンテンツ配信ネットワークを使用して高帯域幅コンテンツを配信する]: /en-us/develop/ruby/app-services/
+  [BLOB を使用して非構造化データを保存する]: /ja-jp/develop/ruby/how-to-guides/blob-storage/
+  [テーブルを使用してキー/値のペアを保存する]: /ja-jp/develop/ruby/how-to-guides/table-service/
+  [コンテンツ配信ネットワークを使用して高帯域幅コンテンツを配信する]: /ja-jp/develop/ruby/app-services/

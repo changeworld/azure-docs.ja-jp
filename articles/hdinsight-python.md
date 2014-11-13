@@ -1,12 +1,12 @@
-<properties linkid="python-hdinsight" urlDisplayName="Python with HDInsight" pageTitle="Use Python with Hive and Pig in Azure HDInsight" metaKeywords="" description="Learn how to use Python User Defined Functions (UDF) from Hive and Pig in Azure HDInsight." metaCanonical="" services="hdinsight" documentationCenter="" title="Use Python with Hive and Pig in HDInsight" authors="larryfr" solutions="" manager="paulettm" editor="cgronlun" />
+<properties urlDisplayName="Python with HDInsight" pageTitle="Azure HDInsight での Python と Hive および Pig の使用" metaKeywords="" description="Azure HDInsight での Hive および Pig の Python ユーザー定義関数の使用方法について説明します。" metaCanonical="" services="hdinsight" documentationCenter="" title="HDInsight における Python と Hive および Pig の使用" authors="larryfr" solutions="" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
 # HDInsight における Python と Hive および Pig の使用
 
 Hive と Pig は HDInsight でデータを処理する場合にきわめて有益ですが、より汎用的な言語が必要になる場合もあります。Hive と Pig では、さまざまなプログラミング言語を使用してユーザー定義関数 (UDF) を作成できます。この記事では、Hive と Pig で Python UDF を使用する方法について説明します。
 
-> [WACOM.NOTE] この記事で説明する手順は、HDInsight クラスター バージョン 2.1、3.0、および 3.1 プレビューに適用されます。
+> [WACOM.NOTE] この記事で説明する手順は、HDInsight クラスター Version 2.1、3.0、および 3.1 に適用されます。
 
 ## 目次
 
@@ -39,7 +39,7 @@ Python は、HiveQL の **TRANSFORM** ステートメントを通じて Hive か
 
 1.  ファイルの先頭の **add file** ステートメントで **streaming.py** ファイルが分散キャッシュに追加されます。これによってクラスター内のすべてのノードからのアクセスが可能になります。
 
-2.  **SELECT TRANSFORM ... USING 'D:\\Python27\\python.exe streaming.py'** ステートメントは **hivesampletable** からデータを選択し、clientid、devicemake、および devicemodel を **streaming.py** スクリプトに渡します。
+2.  **SELECT TRANSFORM ...USING 'D:\\Python27\\python.exe streaming.py'** ステートメントは **hivesampletable** からデータを選択し、clientid、devicemake、および devicemodel を **streaming.py** スクリプトに渡します。
 
     > [WACOM.NOTE] **USING** 句は、パスに指定されていない python.exe への完全なパスを指定します。
 
@@ -74,7 +74,7 @@ Python は、HiveQL の **TRANSFORM** ステートメントを通じて Hive か
 
 5.  これはすべて `while` ループ内で実行され、`line` が読み込まれなくなるまで繰り返されます。読み込まれなくなった時点で `break` がループを終了し、スクリプトは終了します。
 
-これ以外にも、スクリプトは `devicemake` と `devicemodel` の入力値を連結し、連結後の値のハッシュを計算します。Hive から呼び出された Python スクリプトは、ループ、入力がなくなるまでの読み込み、タブでの各入力行の区切り、処理、タブで区切った単一行への出力の書き出しを行います。単純ですがこれが基本的な動作の説明です。
+これ以外にも、スクリプトは `devicemake` と `devicemodel` の入力値を連結し、連結後の値のハッシュを計算します。Hive から呼び出された Python スクリプトは、ループ、入力がなくなるまでの読み込み、タブでの各入力行の区切り、処理、タブで区切った単一行への出力の書き出しを実行します。単純ですがこれが基本的な動作の説明です。
 
 HDInsight クラスターでこの例を実行する方法については「[例を実行する][例を実行する]」を参照してください。
 
@@ -112,7 +112,7 @@ Python スクリプトは、**GENERATE** ステートメントを通じて Pig �
 
 先ほど、入力の一貫したスキーマがないために **LINE** 入力を chararray として定義したことを覚えているでしょうか。これから **jython.py** が行うのは、出力用に、データを一貫したスキーマに変換することです。次のような処理です。
 
-1.  **@outputSchema** ステートメントは、Pig に返されるデータ形式を定義します。この場合、Pig のデータ型である、**data bag** になります。この bag には以下のフィールドが含まれ、すべて chararray (文字列) です。
+1.  <**@outputSchema*>\* ステートメントは、Pig に返されるデータ形式を定義します。この場合、Pig のデータ型である、**data bag** になります。この bag には以下のフィールドが含まれ、すべて chararray (文字列) です。
 
     -   date - ログ エントリが作成された日付
     -   time - ログ エントリが作成された時刻
@@ -128,7 +128,7 @@ Python スクリプトは、**GENERATE** ステートメントを通じて Pig �
 
 5.  最後に、値が Pig に返されます。
 
-データが Pig に返された時点で、このデータは、**@outputSchema** ステートメントで定義された一貫したスキーマを持ちます。
+データが Pig に返された時点で、このデータは、<**@outputSchema*>\* ステートメントで定義された一貫したスキーマを持ちます。
 
 HDInsight クラスターでこの例を実行する方法については「[例を実行する][例を実行する]」を参照してください。
 

@@ -1,6 +1,6 @@
-<properties linkid="manage-services-hdinsight-howto-mapreduce" urlDisplayName="MapReduce with Hadoop in HDInsight" pageTitle="Use Hadoop MapReduce in HDInsight | Azure" metaKeywords="" description="Learn how to use HDInsight to execute a simple Hadoop MapReduce job." metaCanonical="" services="hdinsight" documentationCenter="" title="Use Hadoop MapReduce in HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
+<properties urlDisplayName="MapReduce with Hadoop in HDInsight" pageTitle="HDInsight での Hadoop MapReduce の使用 | Azure" metaKeywords="" description="HDInsight を使用して、単純な Hadoop MapReduce ジョブを実行する方法について説明します。" metaCanonical="" services="hdinsight" documentationCenter="" title="HDInsight での Hadoop MapReduce の使用" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
 
 # HDInsight での Hadoop MapReduce の使用
 
@@ -10,24 +10,24 @@ Hadoop MapReduce は、膨大なデータを処理するアプリケーション
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
--   HDInsight クラスター。クラスターを作成するさまざまな方法については、「[HDInsight クラスターのプロビジョニング][]」を参照してください。
+-   HDInsight クラスター。クラスターを作成するさまざまな方法については、「[HDInsight クラスターのプロビジョニング][HDInsight クラスターのプロビジョニング]」を参照してください。
 
--   Azure PowerShell がインストールされ構成されたワークステーション。手順については、[Azure PowerShell のインストールおよび構成に関するページ][]を参照してください。
+-   Azure PowerShell がインストールされ構成されたワークステーション。手順については、[Azure PowerShell のインストールおよび構成に関するページ][Azure PowerShell のインストールおよび構成に関するページ]を参照してください。
 
 **所要時間:** 30 分
 
 ## このチュートリアルの内容
 
-1.  [シナリオの理解][]
-2.  [Azure PowerShell を使用したサンプルの実行][]
-3.  [ワードカウント MapReduce プログラムの Java コード][]
-4.  [次のステップ][]
+1.  [シナリオの理解][シナリオの理解]
+2.  [Azure PowerShell を使用したサンプルの実行][Azure PowerShell を使用したサンプルの実行]
+3.  [ワードカウント MapReduce プログラムの Java コード][ワードカウント MapReduce プログラムの Java コード]
+4.  [次のステップ][次のステップ]
 
 ## <span id="scenario"></span></a>シナリオの理解
 
 次の図は、MapReduce が単語数をカウントするしくみを示しています。
 
-![HDI.WordCountDiagram][]
+![HDI.WordCountDiagram][HDI.WordCountDiagram]
 
 MapReduce ジョブの出力は、"キーと値" から成る一連のペアです。キーは単語を指定する文字列。値は、その単語がテキスト内に出現した合計回数です。この処理は 2 段階で実行されます。
 
@@ -37,8 +37,8 @@ MapReduce ジョブの出力は、"キーと値" から成る一連のペアで�
 
 MapReduce ジョブを実行するには次の要素が必要です。
 
--   MapReduce プログラム。このチュートリアルでは、HDInsight クラスターに付属するワード カウント サンプルを使用するため、自分で書く必要はありません。プログラムは */example/jars/hadoop-examples.jar* に格納されています。バージョン 3.0 の HDInsight クラスターでは、このファイルの名前は *hadoop-mapreduce-examples.jar* です。独自の MapReduce ジョブの作成手順については、「[HDInsight 用 Java MapReduce プログラムの開発][]」を参照してください。
--   入力ファイル。*/example/data/gutenberg/davinci.txt* を入力ファイルとして使用します。ファイルのアップロードについては、「[データを HDInsight へアップロードする方法][]」を参照してください。
+-   MapReduce プログラム。このチュートリアルでは、HDInsight クラスターに付属するワード カウント サンプルを使用するため、自分で書く必要はありません。プログラムは */example/jars/hadoop-examples.jar* に格納されています。バージョン 3.0 の HDInsight クラスターでは、このファイルの名前は *hadoop-mapreduce-examples.jar* です。独自の MapReduce ジョブの作成手順については、「[HDInsight 用 Java MapReduce プログラムの開発][HDInsight 用 Java MapReduce プログラムの開発]」を参照してください。
+-   入力ファイル。*/example/data/gutenberg/davinci.txt* を入力ファイルとして使用します。ファイルのアップロードについては、「[データを HDInsight へアップロードする方法][データを HDInsight へアップロードする方法]」を参照してください。
 -   出力ファイル フォルダー。*/example/data/WordCountOutput* を出力ファイル フォルダーとして使用します。フォルダーが存在しない場合は自動的に作成されます。このフォルダーが存在していると、MapReduce ジョブは失敗します。2 回目に MapReduce ジョブを実行する場合は、出力フォルダーを削除するか、別の出力フォルダーを指定してください。
 
 ## <span id="run-sample"></span></a>Azure PowerShell を使用したサンプルの実行
@@ -202,12 +202,12 @@ MapReduce ジョブの出力ファイルは不変であることに注意して�
 
 MapReduce は高度な診断機能を備えていますが、使いこなすのは少し難しいツールです。Pig や Hive のような他の言語を使用した方が、HDInsight に保存されているデータを容易に操作できます。詳細については、次の記事を参照してください。
 
--   [Azure HDInsight の概要][]
+-   [Azure HDInsight の概要][Azure HDInsight の概要]
 -   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][HDInsight 用 Java MapReduce プログラムの開発]
--   [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発][]
--   [HDInsight での Hive の使用][]
--   [HDInsight での Pig の使用][]
--   [HDInsight のサンプルの実行][]
+-   [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発][HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発]
+-   [HDInsight での Hive の使用][HDInsight での Hive の使用]
+-   [HDInsight での Pig の使用][HDInsight での Pig の使用]
+-   [HDInsight のサンプルの実行][HDInsight のサンプルの実行]
 
   [HDInsight クラスターのプロビジョニング]: ../hdinsight-provision-clusters/
   [Azure PowerShell のインストールおよび構成に関するページ]: ../install-and-configure-powershell/

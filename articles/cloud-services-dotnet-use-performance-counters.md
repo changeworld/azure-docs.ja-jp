@@ -1,10 +1,12 @@
-<properties linkid="dev-net-commons-tasks-profiling" urlDisplayName="Performance Profiling" pageTitle="Use Performance Counters in Azure (.NET)" metaKeywords="Azure performance counters, Azure performance profiling, Azure performance counters C#, Azure performance profiling C#" description="Learn how to enable and collect data from performance counters in Azure applications. " metaCanonical="" services="cloud-services" documentationCenter=".NET" title="Using performance counters in Azure" authors="ryanwi" solutions="" manager="timlt" editor="" />
+<properties urlDisplayName="Performance Profiling" pageTitle="Azure でのパフォーマンス カウンターの使用 (.NET)" metaKeywords="Azure performance counters, Azure performance profiling, Azure performance counters C#, Azure performance profiling C#" description="Azure アプリケーションで、パフォーマンス カウンターを有効にしてデータを収集する方法を説明します。" metaCanonical="" services="cloud-services" documentationCenter=".NET" title="Azure でのパフォーマンス カウンターの使用" authors="ryanwi" solutions="" manager="timlt" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ryanwi"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ryanwi" />
 
 # Azure でのパフォーマンス カウンターの使用
 
-Azure アプリケーションでパフォーマンス カウンターを使用してデータを収集すると、システムのボトルネックを特定したり、システムやアプリケーションのパフォーマンスを調整したりするのに役立ちます。Windows Server 2008、Windows Server 2012、IIS、ASP.NET で使用可能なパフォーマンス カウンターは、Azure アプリケーションの状態を把握するために収集して使用できます。
+Azure アプリケーションでパフォーマンス カウンターを使用してデータを収集すると、
+システムのボトルネックを特定したり、
+システムやアプリケーションのパフォーマンスを調整したりするのに役立ちます。Windows Server 2008、Windows Server 2012、IIS、ASP.NET で使用可能なパフォーマンス カウンターは、Azure アプリケーションの状態を把握するために収集して使用できます。
 
 Azure SDK 2.0 以降を使用して Visual Studio 2012 または Visual Studio 2013 内でデプロイ前または実行時にパフォーマンス カウンターを構成することができます。詳細については、「[Azure 診断の構成][Azure 診断の構成]」を参照してください。アプリケーションでパフォーマンス カウンターを手動で構成する方法の詳細については、「[パフォーマンス カウンターを構成する方法][パフォーマンス カウンターを構成する方法]」を参照してください。
 

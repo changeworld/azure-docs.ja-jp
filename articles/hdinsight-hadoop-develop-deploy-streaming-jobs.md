@@ -1,14 +1,22 @@
-<properties linkid="manage-services-hdinsight-develop-hadoop-streaming-programs-for-hdinsight" urlDisplayName="" pageTitle="Develop C# Hadoop streaming programs for HDInsight | Azure" metaKeywords="hdinsight hdinsight development, hadoop development, hdinsight deployment, development, deployment, tutorial, MapReduce" description="Learn how to develop Hadoop streaming MapReduce programs in C#, and how to deploy them to Azure HDInsight." metaCanonical="" services="hdinsight" documentationCenter="" title="Develop C# Hadoop streaming programs for HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
+<properties urlDisplayName="" pageTitle="HDInsight 用 C# Hadoop ストリーミング プログラムの開発 | Azure" metaKeywords="hdinsight hdinsight development, hadoop development, hdinsight deployment, development, deployment, tutorial, MapReduce" description="C# で Hadoop ストリーミング MapReduce プログラムを開発する方法、それらのプログラムを Azure HDInsight にデプロイする方法について説明します。" metaCanonical="" services="hdinsight" documentationCenter="" title="Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/25/2014" ms.author="jgao" />
 
 # Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)
 
-Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語 map 関数と reduce 関数を記述することができます。このチュートリアルでは、C# での Hadoop ストリーミング MapReduce プログラムの開発と HDInsight Emulator でのテストから、Azure HDInsight での MapReduce ジョブの実行、その結果の取得まで、全工程にわたるシナリオについて説明します。
+Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語の map 関数と reduce 関数を記述することができます。このチュートリアルでは、指定した入力データ内の特定の単語の出現回数を数えるワード カウント シナリオについて説明します。MapReduce フレームワークでワード カウントを実現するしくみを次の図に示します。
+
+![HDI.WordCountDiagram][HDI.WordCountDiagram]
+
+このトピックでは、次の操作方法について説明します。
+
+-   C# で Hadoop ストリーミング MapReduce プログラムを開発し、HDInsight Emulator 上でテストする
+-   Azure HDInsight で同じ MapReduce ジョブを実行する
+-   MapReduce ジョブの結果を取得する
 
 **前提条件:**
 
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
+このチュートリアルを開始する前に、次の作業を完了している必要があります。
 
 -   Azure HDInsight Emulator のインストール。手順については、「[HDInsight Emulator の概要][HDInsight Emulator の概要]」を参照してください。
 -   エミュレーター コンピューターへの Azure PowerShell のインストール。手順については、「[Azure PowerShell のインストールおよび構成][Azure PowerShell のインストールおよび構成]」を参照してください。
@@ -33,13 +41,12 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 2.  **[ファイル]**、**[新規]**、**[プロジェクト]** の順にクリックします。
 3.  次の値を入力または選択します。
 
-	<table border="1">
-    <tr><th>フィールド</th><th>値</th></tr>
-    <tr><td>テンプレート</td><td>Visual C#/Windows/コンソール アプリケーション</td></tr>
-    <tr><td>名前</td><td>WordCountMapper</td></tr>
-    <tr><td>場所</td><td>C:\\Tutorials</td></tr>
-    <tr><td>ソリューション名</td><td>WordCount</td></tr>
-	</table>
+    |------------------|------------------------------------------------|
+    | フィールド       | 値                                             |
+    | テンプレート     | Visual C#/Windows/コンソール アプリケーション |
+    | 名前             | WordCountMapper                                |
+    | 場所             | C:\\Tutorials                                  |
+    | ソリューション名 | WordCount                                      |
 
 4.  **[OK]** をクリックしてプロジェクトを作成します。
 
@@ -81,14 +88,13 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 1.  Visual Studio 2013 で **[ファイル]**、**[追加]**、**[新しいプロジェクト]** の順にクリックします。
 2.  次の値を入力または選択します。
 
-    <table border="1">
-    <tr><th>フィールド</th><th>値</th></tr>
-    <tr><td>テンプレート</td><td>Visual C#/Windows/コンソール アプリケーション</td></tr>
-    <tr><td>名前</td><td>WordCountReducer</td></tr>
-    <tr><td>場所</td><td>C:\\Tutorials\\WordCount</td></tr>
-	</table>
+    |--------------|------------------------------------------------|
+    | フィールド   | 値                                             |
+    | テンプレート | Visual C#/Windows/コンソール アプリケーション |
+    | 名前         | WordCountReducer                               |
+    | 場所         | C:\\Tutorials\\WordCount                       |
 
-3.  **[OK]** をクリックしてプロジェクトを作成します。
+3.  **[ソリューションのディレクトリを作成]** チェック ボックスをオフにし、**[OK]** をクリックしてプロジェクトを作成します。
 4.  ソリューション エクスプローラーで **[Program.cs]** を右クリックし、**[名前の変更]** をクリックします。
 5.  ファイルの名前を **WordCountReducer.cs** に変更し、**Enter** キーを押します。
 6.  **[はい]** をクリックして、すべての参照の名前変更を確定します。
@@ -127,7 +133,7 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
             Console.WriteLine(count);
         }
 
-10. **[ビルド]**、**[ソリューションのビルド]** の順にクリックして、ソリューションをコンパイルします。
+10. **[ビルド]**、**[ソリューションのビルド]** の順にクリックして、Reducer プログラムをコンパイルします。
 
 Mapper と Reducer の実行可能ファイルは次の場所にあります。
 
@@ -136,26 +142,26 @@ Mapper と Reducer の実行可能ファイルは次の場所にあります。
 
 ## <a name="test"></a>エミュレーターでプログラムをテストする
 
-このセクションは、次の工程で構成されています。
+次の操作を行って、プログラムをエミュレーター上でテストします。
 
 1.  データをエミュレーター上の HDFS にアップロードする
-2.  Mapper と Reducer をエミュレーター上の HDFS にアップロードする
+2.  Mapper アプリケーションと Reducer アプリケーションをエミュレーター上の HDFS にアップロードする
 3.  ワード カウント MapReduce ジョブを送信する
 4.  ジョブの状態を確認する
 5.  ジョブの結果を取得する
 
-HDInsight Emulator は既定のファイル システムとして HDFS を使用します。必要に応じて、Azure BLOB ストレージを使用するように HDInsight Emulator を構成することもできます。詳細については、「[HDInsight Emulator の概要][1]」を参照してください。このセクションでは、HDFS copyFromLocal コマンドを使用して、ファイルをアップロードします。次のセクションでは、Azure PowerShell を使用してファイルをアップロードする方法について説明します。その他の方法については、「[HDInsight へのデータのアップロード][HDInsight へのデータのアップロード]」を参照してください。
+HDInsight Emulator は既定のファイル システムとして HDFS を使用します。必要に応じて、Azure BLOB ストレージを使用するように HDInsight Emulator を構成することもできます。詳細については、「[HDInsight Emulator の概要][1]」を参照してください。このセクションでは、HDFS *copyFromLocal* コマンドを使用して、ファイルをアップロードします。次のセクションでは、Azure PowerShell を使用してファイルをアップロードする方法について説明します。その他の方法については、「[HDInsight へのデータのアップロード][HDInsight へのデータのアップロード]」を参照してください。
 
 このチュートリアルでは、次のフォルダー構造を使用します。
 
-<table border="1">
-<tr><th>フォルダー</th><th>注</th></tr>
-<tr><td>\\WordCount</td><td>ワード カウント プロジェクトのルート フォルダー。</td></tr>
-<tr><td>\\WordCount\\Apps</td><td>mapper と reducer の実行可能ファイルのフォルダー。</td></tr>
-<tr><td>\\WordCount\\Input</td><td>MapReduce のソース ファイル フォルダー。</td></tr>
-<tr><td>\\WordCount\\Output</td><td>MapReduce の出力ファイル フォルダー。</td></tr>
-<tr><td>\\WordCount\\MRStatusOutput</td><td>ジョブの出力フォルダー。</td></tr>
-</table>
+|-----------------------------|----------------------------------------------------|
+| フォルダー                  | 注                                                 |
+| \\WordCount                 | ワード カウント プロジェクトのルート フォルダー。  |
+| \\WordCount\\Apps           | mapper と reducer の実行可能ファイルのフォルダー。 |
+| \\WordCount\\Input          | MapReduce のソース ファイル フォルダー。           |
+| \\WordCount\\Output         | MapReduce の出力ファイル フォルダー。              |
+| \\WordCount\\MRStatusOutput | ジョブの出力フォルダー。                           |
+
 </br>
 
 このチュートリアルでは、%hadoop\_home% ディレクトリにある .txt ファイルを使用します。
@@ -166,6 +172,7 @@ HDInsight Emulator は既定のファイル システムとして HDFS を使用
 
 1.  Hadoop コマンド ライン ウィンドウから次のコマンドを実行して、入力ファイルのディレクトリを作成します。
 
+        hadoop fs -mkdir /WordCount/
         hadoop fs -mkdir /WordCount/Input
 
     ここで使用しているパスは相対パスです。次のパスと同等です。
@@ -174,17 +181,17 @@ HDInsight Emulator は既定のファイル システムとして HDFS を使用
 
 2.  次のコマンドを実行して、テキスト ファイルを HDFS 上の入力フォルダーにコピーします。
 
-        hadoop fs -copyFromLocal %hadoop_home%\*.txt \WordCount\Input
+        hadoop fs -copyFromLocal %hadoop_home%\share\doc\hadoop\common\*.txt \WordCount\Input
 
 3.  次のコマンドを実行して、アップロードしたファイルを一覧表示します。
 
         hadoop fs -ls \WordCount\Input
 
-    8 個の .txt ファイルが表示されます。
-
 **Mapper と Reducer をエミュレーター上の HDFS に 展開するには**
 
-1.  デスクトップから Hadoop コマンド ラインを開きます。
+1.  デスクトップから Hadoop コマンド ラインを開き、HDFS に /Apps フォルダーを作成します。
+     hadoop fs -mkdir /WordCount/Apps
+
 2.  次のコマンドを実行します。
 
         hadoop fs -copyFromLocal C:\Tutorials\WordCount\WordCountMapper\bin\Debug\WordCountMapper.exe /WordCount/Apps/WordCountMapper.exe
@@ -192,7 +199,7 @@ HDInsight Emulator は既定のファイル システムとして HDFS を使用
 
 3.  次のコマンドを実行して、アップロードしたファイルを一覧表示します。
 
-        hadoop fs -lsr /WordCount/Apps
+        hadoop fs -ls /WordCount/Apps
 
     2 つの .exe ファイルが表示されます。
 
@@ -242,13 +249,13 @@ HDInsight Emulator は既定のファイル システムとして HDFS を使用
         PercentComplete : map 100%  reduce 100%
         JobId           : job_201311132317_0034
 
-    たとえば、ここではジョブ ID が job-201311132317-0034 であることがわかります。
+    出力にジョブ ID (たとえば、*job-201311132317-0034*) が含まれています。
 
 **ジョブの状態を確認するには**
 
-1.  デスクトップで **[Hadoop MapReduce Status]** をクリックするか、**<http://localhost:50030/jobtracker.jsp>** を参照します。
-2.  **[Completed Jobs]**、**[Running Jobs]**、**[Retired Jobs]** 3 つのうちのいずれかのセクションでジョブ ID を使用してジョブを見つけます。
-3.  ジョブが失敗した場合は、ジョブの詳細を開き、デバッグに役立つ情報を検索できます。
+1.  デスクトップで **[Hadoop YARN のステータス]** をクリックするか、**<http://localhost:50030/jobtracker.jsp>** を参照します。
+2.  **[実行中]** カテゴリまたは **[完了]** カテゴリで、このジョブ ID を使用しているジョブを見つけます。
+3.  ジョブが失敗している場合は **[失敗]** カテゴリに表示されます。ジョブの詳細を開き、デバッグに役立つ情報を検索することもできます。
 
 **HDFS からの出力を表示するには**
 
@@ -262,7 +269,7 @@ HDInsight Emulator は既定のファイル システムとして HDFS を使用
 
 ## <span id="upload"></span></a>Azure BLOB ストレージにデータをアップロードする
 
-Azure HDInsight は、既定のファイル システムとして Azure BLOB ストレージを使用します。データ ファイル用に追加の Azure BLOB ストレージを使用するように HDInsight クラスターを構成できます。このセクションでは、ストレージ アカウントを作成し、データ ファイルを BLOB ストレージにアップロードします。データ ファイルは %hadoop\_home% ディレクトリ内の txt ファイルです。
+Azure HDInsight は、既定のファイル システムとして Azure BLOB ストレージを使用します。データ ファイル用に追加の Azure BLOB ストレージを使用するように HDInsight クラスターを構成できます。このセクションでは、ストレージ アカウントを作成し、データ ファイルを BLOB ストレージにアップロードします。データ ファイルは %hadoop\_home%\\share\\doc\\hadoop\\common ディレクトリ内の .txt ファイルです。
 
 **BLOB ストレージとコンテナーを作成するには**
 
@@ -294,32 +301,20 @@ Azure HDInsight は、既定のファイル システムとして Azure BLOB ス
 
 **データ ファイルをアップロードするには**
 
-1.  Azure PowerShell を開きます。
-2.  最初の 3 つの変数を設定し、次のコマンドを実行します。
+1.  Azure PowerShell ウィンドウで、ローカル フォルダーとアップロード先フォルダーの値を設定します。
 
-        $subscriptionName = "<AzureSubscriptionName>"
-        $storageAccountName = "<AzureStorageAccountName>"  
-        $containerName = "<ContainerName>"
-
-        $localFolder = "c:\Hadoop\hadoop-1.1.0-SNAPSHOT"
+        $localFolder = "C:\hdp\hadoop-2.4.0.2.1.3.0-1981\share\doc\hadoop\common"
         $destFolder = "WordCount/Input"
 
-    ソース ファイル フォルダーは **c:\\Hadoop\\hadoop-1.1.0-SNAPSHOT** で、アップロード先フォルダーは **WordCount/Input** です。
+    ローカル ソース ファイル フォルダーは **C:\\hdp\\hadoop-2.4.0.2.1.3.0-1981\\share\\doc\\hadoop\\common** で、アップロード先フォルダーは **WordCount/Input** です。ソースの場所は、HDInsight Emulator 上の .txt ファイルの場所です。アップロード先は、Azure Blob コンテナーに反映するフォルダー構造です。
 
-3.  次のコマンドを実行して、ソース ファイル フォルダー内の txt ファイルの一覧を取得します。
+2.  次のコマンドを実行して、ソース ファイル フォルダー内の .txt ファイルの一覧を取得します。
 
         # Get a list of the txt files
         $filesAll = Get-ChildItem $localFolder
         $filesTxt = $filesAll | where {$_.Extension -eq ".txt"}
 
-4.  次のコマンドを実行して、ストレージ コンテキスト オブジェクトを作成します。
-
-        # Create a storage context object
-        Select-AzureSubscription $subscriptionName
-        $storageaccountkey = get-azurestoragekey $storageAccountName | %{$_.Primary}
-        $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageaccountkey
-
-5.  次のコマンドを実行して、ファイルをコピーします。
+3.  次のスニペットを実行して、ファイルをコピーします。
 
         # Copy the file from local workstation to the Blob container        
         foreach ($file in $filesTxt){
@@ -332,54 +327,42 @@ Azure HDInsight は、既定のファイル システムとして Azure BLOB ス
             Set-AzureStorageBlobContent -File $fileName -Container $containerName -Blob $blobName -Context $destContext
         }
 
-6.  次のコマンドを実行して、アップロードしたファイルを一覧表示します。
+4.  次のコマンドを実行して、アップロードしたファイルを一覧表示します。
 
         # List the uploaded files in the Blob storage container
         Get-AzureStorageBlob -Container $containerName  -Context $destContext -Prefix $destFolder
 
 **ワード カウント アプリケーションをアップロードするには**
 
-1.  Azure PowerShell を開きます。
-2.  最初の 3 つの変数を設定し、次のコマンドを実行します。
-
-        $subscriptionName = "<AzureSubscriptionName>"
-        $storageAccountName = "<AzureStorageAccountName>"  
-        $containerName = "<ContainerName>"
+1.  Azure PowerShell ウィンドウで、次の変数を設定します。
 
         $mapperFile = "C:\Tutorials\WordCount\WordCountMapper\bin\Debug\WordCountMapper.exe"
         $reducerFile = "C:\Tutorials\WordCount\WordCountReducer\bin\Debug\WordCountReducer.exe"
         $blobFolder = "WordCount/Apps"
 
-    アップロード先フォルダーは **WordCount/Apps** です。
+    アップロード先フォルダーは、Azure Blob コンテナーに反映される構造である **WordCount/Apps** です。
 
-3.  次のコマンドを実行して、ストレージ コンテキスト オブジェクトを作成します。
-
-        # Create a storage context object
-        Select-AzureSubscription $subscriptionName
-        $storageaccountkey = get-azurestoragekey $storageAccountName | %{$_.Primary}
-        $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageaccountkey
-
-4.  次のコマンドを実行して、アプリケーションをコピーします。
+2.  次のコマンドを実行して、アプリケーションをコピーします。
 
         Set-AzureStorageBlobContent -File $mapperFile -Container $containerName -Blob "$blobFolder/WordCountMapper.exe" -Context $destContext
         Set-AzureStorageBlobContent -File $reducerFile -Container $containerName -Blob "$blobFolder/WordCountReducer.exe" -Context $destContext
 
-5.  次のコマンドを実行して、アップロードしたファイルを一覧表示します。
+3.  次のコマンドを実行して、アップロードしたファイルを一覧表示します。
 
         # List the uploaded files in the Blob storage container
         Get-AzureStorageBlob -Container $containerName  -Context $destContext -Prefix $blobFolder
 
-    両方のファイルがそこに一覧表示されます。
+    両方のアプリケーション ファイルがそこに一覧表示されます。
 
 ## <a name="run"></a>Azure HDInsight で MapReduce ジョブを実行する
 
-ここで示している PowerShell スクリプトは次のタスクを実行します。
+このセクションでは、MapReduce ジョブの実行に関連するすべてのタスクを実行する PowerShell スクリプトについて説明します。これらのタスクには次のタスクが含まれます。
 
 1.  HDInsight クラスターをプロビジョニングする
 
     1.  HDInsight クラスターの既定のファイル システムとして使用されるストレージ アカウントを作成する
     2.  BLOB ストレージ コンテナーを作成する
-    3.  HDInsight クラスターを作成する
+    3.  HDInsight クラスターの作成
 
 2.  MapReduce ジョブを送信する
 
@@ -399,20 +382,20 @@ Azure HDInsight は、既定のファイル システムとして Azure BLOB ス
 1.  メモ帳を開きます。
 2.  次のコードをコピーして貼り付けます。
 
-        # The storage account and the HDInsight cluster variables
+        # ====== STORAGE ACCOUNT AND HDINSIGHT CLUSTER VARIABLES ======
         $subscriptionName = "<AzureSubscriptionName>"
-        $serviceNameToken = "<ServiceNameTokenString>"
+        $stringPrefix = "<StringForPrefix>"     ### prefix to cluster, storage account, and container names
         $storageAccountName_Data = "<TheDataStorageAccountName>"
         $containerName_Data = "<TheDataBlobStorageContainerName>"
         $location = "<MicrosoftDataCenter>"     ### must match the data storage account location
         $clusterNodes = 1
 
-        $clusterName = $serviceNameToken + "hdicluster"
+        $clusterName = $stringPrefix + "hdicluster"
 
-        $storageAccountName_Default = $serviceNameToken + "hdistore"
-        $containerName_Default =  $serviceNameToken + "hdicluster"
+        $storageAccountName_Default = $stringPrefix + "hdistore"
+        $containerName_Default =  $stringPrefix + "hdicluster"
 
-        # The streaming MapReduce job variables
+        # ====== THE STREAMING MAPREDUCE JOB VARIABLES ======
         $mrMapper = "WordCountMapper.exe"
         $mrReducer = "WordCountReducer.exe"
         $mrMapperFile = "wasb://$containerName_Data@$storageAccountName_Data.blob.core.windows.net/WordCount/Apps/WordCountMapper.exe"
@@ -423,21 +406,18 @@ Azure HDInsight は、既定のファイル システムとして Azure BLOB ス
 
         Select-AzureSubscription $subscriptionName
 
-        #=============================
-        # Create a storage account
+        #====== CREATE A STORAGE ACCOUNT ======
         Write-Host "Create a storage account" -ForegroundColor Green
         New-AzureStorageAccount -StorageAccountName $storageAccountName_Default -location $location
 
-        #=============================
-        # Create a Blob storage container
+        #====== CREATE A BLOB STORAGE CONTAINER ======
         Write-Host "Create a Blob storage container" -ForegroundColor Green
         $storageAccountKey_Default = Get-AzureStorageKey $storageAccountName_Default | %{ $_.Primary }
         $destContext = New-AzureStorageContext –StorageAccountName $storageAccountName_Default –StorageAccountKey $storageAccountKey_Default
 
         New-AzureStorageContainer -Name $containerName_Default -Context $destContext
 
-        #=============================
-        # Create an HDInsight cluster
+        #====== CREATE AN HDINSIGHT CLUSTER ======
         Write-Host "Create an HDInsight cluster" -ForegroundColor Green
         $storageAccountKey_Data = Get-AzureStorageKey $storageAccountName_Data | %{ $_.Primary }
 
@@ -445,35 +425,38 @@ Azure HDInsight は、既定のファイル システムとして Azure BLOB ス
             Set-AzureHDInsightDefaultStorage -StorageAccountName "$storageAccountName_Default.blob.core.windows.net" -StorageAccountKey $storageAccountKey_Default -StorageContainerName $containerName_Default |
             Add-AzureHDInsightStorage -StorageAccountName "$storageAccountName_Data.blob.core.windows.net" -StorageAccountKey $storageAccountKey_Data
 
-        New-AzureHDInsightCluster -Subscription $subscriptionName  -Name $clusterName -Location $location -Config $config
+        Select-AzureSubscription $subscriptionName
+        New-AzureHDInsightCluster -Name $clusterName -Location $location -Config $config
 
-        #=============================
-        # Create a streaming MapReduce job definition
+        #====== CREATE A STREAMING MAPREDUCE JOB DEFINITION ======
         Write-Host "Create a streaming MapReduce job definition" -ForegroundColor Green
 
         $mrJobDef = New-AzureHDInsightStreamingMapReduceJobDefinition -JobName mrWordCountStreamingJob -StatusFolder $mrStatusOutput -Mapper $mrMapper -Reducer $mrReducer -InputPath $mrInput -OutputPath $mrOutput
         $mrJobDef.Files.Add($mrMapperFile)
         $mrJobDef.Files.Add($mrReducerFile)
 
-        #=============================
-        # Run a streaming MapReduce job
+        #====== RUN A STREAMING MAPREDUCE JOB ======
         Write-Host "Run a streaming MapReduce job" -ForegroundColor Green
-        $mrJob = Start-AzureHDInsightJob -Cluster $clusterName -Subscription $subscriptionName -JobDefinition $mrJobDef 
-        Wait-AzureHDInsightJob -Subscription $subscriptionName -Job $mrJob -WaitTimeoutInSeconds 3600 
+        Select-AzureSubscription $subscriptionName
+        $mrJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $mrJobDef 
+        Wait-AzureHDInsightJob -Job $mrJob -WaitTimeoutInSeconds 3600 
 
-        Get-AzureHDInsightJobOutput -Cluster $clusterName -Subscription $subscriptionName -JobId $mrJob.JobId -StandardError 
-        Get-AzureHDInsightJobOutput -Cluster $clusterName -Subscription $subscriptionName -JobId $mrJob.JobId -StandardOutput
+        Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $mrJob.JobId -StandardError 
+        Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $mrJob.JobId -StandardOutput
 
-        #=============================
-        # Delete the HDInsight cluster
+        #====== DELETE THE HDINSIGHT CLUSTER ======
         Write-Host "Delete the HDInsight cluster" -ForegroundColor Green
-        Remove-AzureHDInsightCluster -Name $clusterName -Subscription $subscriptionName 
+        Select-AzureSubscription $subscriptionName
+        Remove-AzureHDInsightCluster -Name $clusterName 
 
-        # Delete the storage account
+        #====== DELETE THE STORAGE ACCOUNT ======
         Write-Host "Delete the storage account" -ForegroundColor Green
         Remove-AzureStorageAccount -StorageAccountName $storageAccountName_Default
 
-3.  スクリプトの最初の 4 つの変数を設定します。$serviceNameToken は HDInsight クラスター名、ストレージ アカウント名、BLOB ストレージ コンテナー名に使用されます。サービス名は 3 〜 24 文字であり、スクリプトは最大 10 文字の文字列を名前に付加するため、サービス名の文字列は 14 文字以下に制限する必要があります。また、$ serviceNameToken には小文字を使用する必要があります。$storageAccountName\_Data と $containerName\_Data はデータ ファイルとアプリケーションの格納に使用されるストレージ アカウントとコンテナーです。$location は、データ ストレージ アカウントの場所と一致する必要があります。
+3.  スクリプトの最初の 4 つの変数を設定します。**$stringPrefix** は、指定した文字列をプレフィックスとして HDInsight クラスター名、ストレージ アカウント名、BLOB ストレージ コンテナー名に付けるために使用されます。これらの名前の長さは 3 ～ 24 文字である必要があるため、指定する文字列とこのスクリプトで使用する名前の合計の長さが名前の文字制限を超えないように注意してください。$stringPrefix には、すべて小文字を使用する必要があります。
+
+    **$storageAccountName\_Data** と **$containerName\_Data** はストレージ アカウントとコンテナーで、既に前の手順で作成したものです。そこで、これらに名前を付ける必要があります。これらは、データ ファイルとアプリケーションを格納するために使用します。$location は、データ ストレージ アカウントの場所と一致する必要があります。
+
 4.  残りの変数を確認します。
 5.  スクリプト ファイルを保存します。
 6.  Azure PowerShell を開きます。
@@ -481,7 +464,7 @@ Azure HDInsight は、既定のファイル システムとして Azure BLOB ス
 
         PowerShell -File <FileName> -ExecutionPolicy RemoteSigned
 
-8.  プロンプトが表示されたら、HDInsight クラスターのユーザー名とパスワードを入力します。スクリプトの最後でクラスターを削除し、ユーザー名とパスワードが必要なくなるため、ユーザー名とパスワードとして任意の文字列を使用できます。資格情報の入力を求めないようにする場合は、[Windows PowerShell でのパスワード、セキュリティ保護された文字列、資格情報の使用][Windows PowerShell でのパスワード、セキュリティ保護された文字列、資格情報の使用]に関するページを参照してください。
+8.  プロンプトが表示されたら、HDInsight クラスターのユーザー名とパスワードを入力します。パスワードが 10 文字以上であり、大文字、小文字、数字、特殊文字がそれぞれ 1 文字以上含まれていることを確認してください。資格情報の入力を求めないようにする場合は、[Windows PowerShell でのパスワード、セキュリティ保護された文字列、資格情報の使用][Windows PowerShell でのパスワード、セキュリティ保護された文字列、資格情報の使用]に関するページを参照してください。
 
 Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サンプルについては、「[プログラムによる Hadoop ジョブの送信][プログラムによる Hadoop ジョブの送信]」を参照してください。
 
@@ -523,6 +506,7 @@ Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サン�
 -   [HDInsight での Hive の使用][HDInsight での Hive の使用]
 -   [HDInsight での Pig の使用][HDInsight での Pig の使用]
 
+  [HDI.WordCountDiagram]: ./media/hdinsight-hadoop-develop-deploy-streaming-jobs/HDI.WordCountDiagram.gif "MapReduce ワード カウント アプリケーションのフロー"
   [HDInsight Emulator の概要]: ../hdinsight-get-started-emulator/
   [Azure PowerShell のインストールおよび構成]: ../install-configure-powershell/
   [購入オプション]: http://azure.microsoft.com/ja-jp/pricing/purchase-options/
@@ -541,6 +525,7 @@ Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サン�
   [Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続]: ../hdinsight-connect-excel-hive-ODBC-driver/
   [Power Query を使用した Excel から HDInsight への接続]: ../hdinsight-connect-excel-power-query/
   [Azure HDInsight の概要]: ../hdinsight-get-started/
+  [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]: ../hdinsight-develop-deploy-java-mapreduce/
   [HDInsight での Azure BLOB ストレージの使用]: ../hdinsight-use-blob-storage/
   [PowerShell を使用した HDInsight の管理]: ../hdinsight-administer-use-powershell/
   [HDInsight での Hive の使用]: ../hdinsight-use-hive/

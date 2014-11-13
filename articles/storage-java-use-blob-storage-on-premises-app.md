@@ -1,6 +1,6 @@
-<properties linkid="dev-java-how-to-on-premise-application-with-blob-storage" urlDisplayName="Image Gallery w/ Storage" pageTitle="On-premises application with blob storage (Java) | Microsoft Azure" metaKeywords="Azure blob storage, Azure blob Java, Azure blob example, Azure blob tutorial" description="Learn how to create a console application that uploads an image to Azure, and then displays the image in your browser. Code samples in Java." metaCanonical="" services="storage" documentationCenter="Java" title="On-Premises Application with Blob Storage" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
+<properties urlDisplayName="Image Gallery w/ Storage" pageTitle="BLOB ストレージを使用する内部設置型アプリケーション (Java) | Microsoft Azure" metaKeywords="Azure blob storage, Azure blob Java, Azure blob example, Azure blob tutorial" description="画像を Azure にアップロードしてブラウザーに表示するコンソール アプリケーションを作成する方法について説明します。コード サンプルは Java で記述されています。" metaCanonical="" services="storage" documentationCenter="Java" title="BLOB ストレージを使用する内部設置型アプリケーション" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
 
 # BLOB ストレージを使用する内部設置型アプリケーション
 
@@ -9,9 +9,9 @@
 
 ## 目次
 
--   [前提条件][]
--   [Azure BLOB ストレージを使用してファイルをアップロードするには][]
--   [コンテナーを削除するには][]
+-   [前提条件][前提条件]
+-   [Azure BLOB ストレージを使用してファイルをアップロードするには][Azure BLOB ストレージを使用してファイルをアップロードするには]
+-   [コンテナーを削除するには][コンテナーを削除するには]
 
 ## <a name="bkmk_prerequisites"> </a>前提条件
 
@@ -19,14 +19,15 @@
 2.  Azure SDK がインストールされていること。
 3.  Azure Libraries for Java の JAR および該当する依存関係 JAR がインストールされ、Java コンパイラで使用されるビルド パスに存在すること。
     Azure Libraries for Java のインストールについては、「[Download the
-    Azure SDK for Java (Azure SDK for Java のダウンロード)][]」を参照してください。
+    Azure SDK for Java (Azure SDK for Java のダウンロード)][Download the
+    Azure SDK for Java (Azure SDK for Java のダウンロード)]」を参照してください。
 4.  Azure Storage アカウントがセットアップされていること。後に示すコードでは、ストレージ アカウントのアカウント名とアカウント キーが使用されます。
-    ストレージ アカウントを作成する方法については「[ストレージ アカウントの作成方法][]」、
-    アカウント キーを取得する方法については「[ストレージ アカウントの管理方法][]」を参照してください。
+    ストレージ アカウントを作成する方法については「[ストレージ アカウントの作成方法][ストレージ アカウントの作成方法]」、
+    アカウント キーを取得する方法については「[ストレージ アカウントの管理方法][ストレージ アカウントの管理方法]」を参照してください。
 5.  ローカル画像ファイルが作成され、c:\\myimages\\image1.jpg に保存されていること。
     代替方法として、例の **FileInputStream** コンストラクターを変更し、別の画像パスおよびファイル名を使用することもできます。
 
-[WACOM.INCLUDE [create-account-note][]]
+[WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
 ## <a name="bkmk_uploadfile"> </a>Azure BLOB ストレージを使用してファイルをアップロードするには
 
@@ -365,13 +366,11 @@
         }
     }
 
-他の BLOB ストレージ クラスおよびメソッドの概要については、「[How to Use the Blob Storage from Java (BLOB ストレージを Java で使用する方法)][]」を参照してください。
+他の BLOB ストレージ クラスおよびメソッドの概要については、「[How to Use the Blob Storage from Java (BLOB ストレージを Java で使用する方法)][How to Use the Blob Storage from Java (BLOB ストレージを Java で使用する方法)]」を参照してください。
 
   [前提条件]: #bkmk_prerequisites
   [Azure BLOB ストレージを使用してファイルをアップロードするには]: #bkmk_uploadfile
   [コンテナーを削除するには]: #bkmk_deletecontainer
-  [Download the Azure SDK for Java (Azure SDK for Java のダウンロード)]: http://www.windowsazure.com/en-us/develop/java/
-  [ストレージ アカウントの作成方法]: http://www.windowsazure.com/en-us/manage/services/storage/how-to-create-a-storage-account/
-  [ストレージ アカウントの管理方法]: http://www.windowsazure.com/en-us/manage/services/storage/how-to-manage-a-storage-account/
-  [create-account-note]: ../includes/create-account-note.md
-  [How to Use the Blob Storage from Java (BLOB ストレージを Java で使用する方法)]: http://www.windowsazure.com/en-us/develop/java/how-to-guides/blob-storage/
+  [ストレージ アカウントの作成方法]: http://www.windowsazure.com/ja-jp/manage/services/storage/how-to-create-a-storage-account/
+  [ストレージ アカウントの管理方法]: http://www.windowsazure.com/ja-jp/manage/services/storage/how-to-manage-a-storage-account/
+  [How to Use the Blob Storage from Java (BLOB ストレージを Java で使用する方法)]: http://www.windowsazure.com/ja-jp/develop/java/how-to-guides/blob-storage/

@@ -1,4 +1,4 @@
-<properties linkid="manage-linux-howto-attach-a-disk" urlDisplayName="Attach a disk" pageTitle="Attach a disk to a virtual machine running Linux in Azure" metaKeywords="disk VM Azure, initialize new disk Azure, initialize disk Azure Linux, attaching empty disk Azure" description="Learn how to attach a data disk to an Azure virtual machine and initialize it so it's ready for use." metaCanonical="http://www.windowsazure.com/ja-jp/manage/windows/how-to-guides/attach-a-disk/" services="virtual-machines" documentationCenter="" title="" authors="kathydav" solutions="" manager="timlt" editor="tysonn" />
+<properties urlDisplayName="Attach a disk" pageTitle="Azure 上で Linux を実行する仮想マシンへのディスクの接続" metaKeywords="disk VM Azure, initialize new disk Azure, initialize disk Azure Linux, attaching empty disk Azure" description="データ ディスクを Azure 仮想マシンに接続し、初期化して、使用できる状態にする方法について説明します。" metaCanonical="http://www.windowsazure.com/ja-jp/manage/windows/how-to-guides/attach-a-disk/" services="virtual-machines" documentationCenter="" title="" authors="kathydav" solutions="" manager="timlt" editor="tysonn" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="7/29/2014" ms.author="kathydav" />
 
@@ -7,7 +7,7 @@
 空のディスクと、データが含まれているディスクのどちらも接続できます。どちらの場合も、ディスクは、実際には、Azure ストレージ アカウントに配置されている .vhd ファイルです。また、ディスクを接続した後に、初期化して、使用できる状態にする必要があります。
 
 > [WACOM.NOTE] 仮想マシンのデータを格納するには、1 つ以上の個別のディスクを使用することをお勧めします。Azure の仮想マシンを作成するとき、オペレーティング システム ディスクと一時ディスクが表示されます。**データの格納に一時ディスクを使用しないでください。**名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。
-> 一時ディスクは通常、Azure Linux Agent によって管理され、**/mnt/resource** (または Ubuntu イメージでは **/mnt** )に自動的にマウントされます。一方、Linux では、データ ディスクはカーネルによって `/dev/sdc` という名前が付けられる場合があります。その場合、ユーザーはこのリソースをパーティション分割し、フォーマットした上でマウントする必要があります。詳細については、[Azure Linux エージェント ユーザー ガイド][Azure Linux エージェント ユーザー ガイド]を参照してください。
+> 一時ディスクは通常、Azure Linux Agent によって管理され、**/mnt/resource** (Ubuntu イメージでは **/mnt**) に自動的にマウントされます。一方、Linux では、データ ディスクはカーネルによって `/dev/sdc` という名前が付けられる場合があります。その場合、ユーザーはこのリソースをパーティション分割し、フォーマットした上でマウントする必要があります。詳細については、[Azure Linux エージェント ユーザー ガイド][Azure Linux エージェント ユーザー ガイド]を参照してください。
 
 -   [方法: 空のディスクの接続][方法: 空のディスクの接続]
 -   [方法: 既存のディスクの接続][方法: 既存のディスクの接続]
@@ -106,7 +106,6 @@
   [方法: 空のディスクの接続]: #attachempty
   [方法: 既存のディスクの接続]: #attachexisting
   [方法: Linux での新しいデータ ディスクの初期化]: #initializeinlinux
-  [howto-attach-disk-windows-linux]: ../includes/howto-attach-disk-windows-linux.md
   [Linux を実行する仮想マシンにログオンする方法]: ../virtual-machines-linux-how-to-log-on/
   [ディスク メッセージに取得]: ./media/virtual-machines-linux-how-to-attach-disk/DiskMessages.png
   [Create new device]: ./media/virtual-machines-linux-how-to-attach-disk/DiskPartition.png

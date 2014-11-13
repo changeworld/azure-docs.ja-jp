@@ -1,12 +1,12 @@
-<properties linkid="virtual-machines-windows-tutorial-azure-preview" urlDisplayName="Create a virtual machine in the Preview Portal" pageTitle="Create a virtual machine running Windows Server in the Azure Preview Portal" metaKeywords="Azure image gallery vm" description="Learn how to create an Azure virtual machine (VM) running Windows Server, using the VM Gallery in the Azure Preview Portal" metaCanonical="" services="virtual-machines" documentationCenter="" title="" authors="danlep,kathydav" solutions="" manager="dongill" editor="tysonn" />
+<properties urlDisplayName="Create a virtual machine in the Preview Portal" pageTitle="Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する" metaKeywords="Azure image gallery vm" description="Windows を実行する Azure 仮想マシン (VM) を、Azure プレビュー ポータルの VM ギャラリーを利用して作成する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する" authors="danlep,kathydav,rasquill" solutions="" manager="timlt" editor="tysonn" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="danlep,kathydav"></tags>
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="na" ms.topic="article" ms.date="09/16/2014" ms.author="danlep,kathydav,rasquill" />
 
-# Azure プレビュー ポータルで Windows Server を実行する仮想マシンを作成する
+# Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する
 
 <div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/virtual-machines-windows-tutorial/" title="Azure ポータル">Azure ポータル</a><a href="/ja-jp/documentation/articles/virtual-machines-windows-tutorial-azure-preview/" title="Azure プレビュー ポータル" class="current">Azure プレビュー ポータル</a></div>
 
-このチュートリアルでは、Azure プレビュー ポータルの VM ギャラリーで、Windows Server を実行する Azure 仮想マシン (VM) を簡単に作成する方法を示します。このギャラリーは、Windows オペレーティング システム、Linux ベースのオペレーティング システム、アプリケーション イメージなどさまざまなイメージを提供します。
+このチュートリアルは、Azure プレビュー ポータルのイメージ ギャラリーに用意されている Windows Server イメージを例として使用して、Windows を実行する Azure 仮想マシン (VM) を簡単に作成できることを示します。このギャラリーは、Windows オペレーティング システム、Linux ベースのオペレーティング システム、アプリケーション イメージなどさまざまなイメージを提供します。
 
 > [WACOM.NOTE] このチュートリアルは、Azure VM の使用経験がなくても完了できます。ただし、Azure アカウントが必要です。数分で無料の試用アカウントを作成することができます。詳細については、[Azure アカウントの作成に関するページ][Azure アカウントの作成に関するページ]を参照してください。
 
@@ -19,7 +19,9 @@
 
 ## <span id="createvirtualmachine"></span> </a>仮想マシンの作成方法
 
-このセクションでは、プレビュー ポータルを使用して Windows Server を実行する VM を作成する方法について説明します。ほとんどの構成に Azure の既定の設定を使用でき、ほんの数分で VM を作成できます。
+このセクションでは、Windows Server を例として使用して、プレビュー ポータルで VM を作成する方法について説明します。ほとんどの構成に Azure の既定の設定を使用でき、ほんの数分で VM を作成できます。
+
+> [WACOM.NOTE] ギャラリーから利用できるイメージの数と種類は、お持ちのサブスクリプションの種類によって異なります。このチュートリアルでは Windows Server イメージを使用しますが、MSDN サブスクリプションがあれば、デスクトップ イメージを含め、さらに多くのイメージを利用できます。
 
 1.  [Azure プレビュー ポータル][1]にサインインします。まだサブスクリプションをお持ちでない場合は、[無料評価版][無料評価版]をお試しください。
 
@@ -27,7 +29,7 @@
 
     ![Select New from the Command Bar][Select New from the Command Bar]
 
-3.  **[新規]** の **[すべて]** をクリックし、**[ギャラリー]** の下の **\[仮想マシン]** をクリックします。**[Windows Server 2012 R2 Datacenter]** をクリックします。その画面の **[作成]** をクリックします。
+3.  **[新規]** の **[すべて]** をクリックし、**[ギャラリー]** の下の **[仮想マシン]** をクリックします。**[Windows Server 2012 R2 Datacenter]** をクリックします。その画面の **[作成]** をクリックします。
 
     ![Select a VM image from the Gallery][Select a VM image from the Gallery]
 
@@ -55,7 +57,7 @@
 
 1.  まだサインインしていない場合は、[Azure プレビュー ポータル][1]にサインインします。
 
-2.  スタートボードの VM をクリックします。VM を探す場合は、**[参照]** をクリックし、次に **\[仮想マシン]** をクリックします。
+2.  スタートボードの VM をクリックします。VM を探す場合は、**[参照]** をクリックし、次に **[仮想マシン]** をクリックします。
 
     ![Browse to find the VM][Browse to find the VM]
 
@@ -89,7 +91,8 @@ Azure での Windows 仮想マシンの構成に関する詳細については�
 
 [仮想マシンの可用性管理][仮想マシンの可用性管理]
 
-  [Azure ポータル]: /ja-jp/documentation/articles/virtual-machines-windows-tutorial/ "Azure ポータル"
+[Azure VM の構成設定について][Azure VM の構成設定について]
+
   [Azure プレビュー ポータル]: /ja-jp/documentation/articles/virtual-machines-windows-tutorial-azure-preview/ "Azure プレビュー ポータル"
   [Azure アカウントの作成に関するページ]: http://www.windowsazure.com/ja-jp/develop/php/tutorials/create-a-windows-azure-account/
   [仮想マシンの作成方法]: #createvirtualmachine
@@ -111,3 +114,4 @@ Azure での Windows 仮想マシンの構成に関する詳細については�
   [Windows Server オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード]: http://www.windowsazure.com/ja-jp/documentation/articles/virtual-machines-create-upload-vhd-windows-server/
   [データ ディスクを Virtual Machine に接続する方法]: http://www.windowsazure.com/ja-jp/documentation/articles/storage-windows-attach-disk/
   [仮想マシンの可用性管理]: http://www.windowsazure.com/ja-jp/documentation/articles/manage-availability-virtual-machines/
+  [Azure VM の構成設定について]: http://msdn.microsoft.com/library/azure/dn763935.aspx

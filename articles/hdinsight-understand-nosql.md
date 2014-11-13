@@ -1,6 +1,6 @@
-<properties linkid="manage-hdinsight-understand-nosql" urlDisplayName="Understand NoSQL technologies" pageTitle="Understanding NoSQL Technologies on Azure | Azure" metaKeywords="" description="Learn how NoSQL technologies on HDInsight can help you manage data not suited to relational databases, such as big data sets and JSON documents or graphs." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="storage,hdinsight" documentationCenter="" title="Data management: Understanding NoSQL technologies on Azure" authors="dchappell" />
+<properties urlDisplayName="Understand NoSQL technologies" pageTitle="Azure での NoSQL テクノロジについて | Azure" metaKeywords="" description="ビッグ データや JSON ドキュメント、グラフのようなリレーショナル データベースに適していないデータを管理するのに、HDInsight 上の NoSQL テクノロジがどのように役立つかについて説明します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="storage,hdinsight" documentationCenter="" title="データ管理: Azure での NoSQL テクノロジについて" authors="dchappell" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="dchappell"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="dchappell" />
 
 # データ管理: Azure での NoSQL テクノロジについて
 
@@ -29,6 +29,6 @@
 
 **リビジョン:** 1.0
 
-**ダウンロード:** [「Understanding NoSQL technologies on Azure (Azure での NoSQL テクノロジについて)」の PDF ファイル][]
+**ダウンロード:** [「Understanding NoSQL technologies on Azure (Azure での NoSQL テクノロジについて)」の PDF ファイル][「Understanding NoSQL technologies on Azure (Azure での NoSQL テクノロジについて)」の PDF ファイル]
 
   [「Understanding NoSQL technologies on Azure (Azure での NoSQL テクノロジについて)」の PDF ファイル]: http://go.microsoft.com/fwlink/p/?LinkId=330292

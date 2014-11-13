@@ -1,10 +1,10 @@
-<properties linkid="develop-media-services-how-to-guides-deliver-media-assets" urlDisplayName="Delivering Media Assets" pageTitle="How to Deliver Media Assets - Azure" metaKeywords="" description="Learn about options for delivering media assets that have been uploaded to Media Services in Azure. Code samples are written in C# and use the Media Services SDK for .NET." metaCanonical="" services="media-services" documentationCenter="" title="How to: Deliver an Asset by Download" authors="migree" solutions="" manager="" editor="" />
+<properties urlDisplayName="Delivering Media Assets" pageTitle="メディア アセットを配信する方法 - Azure" metaKeywords="" description="Azure で Media Services にアップロードされたメディア アセットを配信するオプションについて説明します。コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。" metaCanonical="" services="media-services" documentationCenter="" title="方法: ダウンロードによってアセットを配信する" authors="juliako" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="migree"></tags>
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="juliako" />
 
 # 方法: ダウンロードによってアセットを配信する
 
-この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[「方法: ストレージ内のアセットを管理する][]」を参照してください。
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[「方法: ストレージ内のアセットを管理する][「方法: ストレージ内のアセットを管理する]」を参照してください。
 
 このトピックでは、メディア サービスにアップロードされたメディア アセットを配信するためのオプションについて説明します。メディア サービスのコンテンツ配信には、さまざまな方法を適用できます。メディア アセットをダウンロードするか、ロケーターを使用してアクセスすることができます。メディア コンテンツは、別のアプリケーションまたは別のコンテンツ プロバイダーに送ることができます。パフォーマンスとスケーラビリティを高めるために、Azure CDN などのコンテンツ配信ネットワーク (CDN: Content Delivery Network) を使用してコンテンツを配信することもできます。
 
@@ -62,15 +62,15 @@
 
 アセットの配信の詳細については、以下を参照してください。
 
--   [Media Services SDK for .NET を使用して資産を配信する][]
--   [Media Services REST API を使って資産を配信する][]
+-   [Media Services SDK for .NET を使用して資産を配信する][Media Services SDK for .NET を使用して資産を配信する]
+-   [Media Services REST API を使って資産を配信する][Media Services REST API を使って資産を配信する]
 
 </p>
 ## 次のステップ
 
-このトピックでは、Azure ストレージからのアセットのダウンロードについて説明しました。アセットを配信する他の方法の情報については、[ストリーミング コンテンツを配信する方法][]に関するページを参照してください。
+このトピックでは、Azure ストレージからのアセットのダウンロードについて説明しました。アセットを配信する他の方法の情報については、[ストリーミング コンテンツを配信する方法][ストリーミング コンテンツを配信する方法]に関するページを参照してください。
 
-  [「方法: ストレージ内のアセットを管理する]: http://go.microsoft.com/fwlink/?LinkID=301815&clcid=0x409
-  [Media Services SDK for .NET を使用して資産を配信する]: http://msdn.microsoft.com/en-us/library/jj129575.aspx
-  [Media Services REST API を使って資産を配信する]: http://msdn.microsoft.com/en-us/library/jj129578.aspx
-  [ストリーミング コンテンツを配信する方法]: http://go.microsoft.com/fwlink/?LinkID=301942
+  [「方法: ストレージ内のアセットを管理する]: ../media-services-manage-assets/
+  [Media Services SDK for .NET を使用して資産を配信する]: http://msdn.microsoft.com/ja-jp/library/jj129575.aspx
+  [Media Services REST API を使って資産を配信する]: http://msdn.microsoft.com/ja-jp/library/jj129578.aspx
+  [ストリーミング コンテンツを配信する方法]: ../media-services-deliver-streaming-content/

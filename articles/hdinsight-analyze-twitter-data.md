@@ -1,4 +1,4 @@
-<properties linkid="manage-services-hdinsight-howto-social-data" urlDisplayName="Analyze Twitter data with HDInsight Hadoop" pageTitle="Analyze Twitter data with Hadoop in HDInsight | Azure" metaKeywords="" description="Learn how to use Hive to analyze Twitter data on Hadoop in HDInsight to find the usage frequency of a particular word." metaCanonical="" services="HDInsight" documentationCenter="" title="Analyze Twitter data with Hadoop in HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
+<properties urlDisplayName="Analyze Twitter data with HDInsight Hadoop" pageTitle="HDInsight の Hadoop を使用した Twitter データの分析 | Azure" metaKeywords="" description="HDInsight の Hadoop に格納されている Twitter データを Hive で分析し、特定の単語の使用頻度を調べる方法について説明します。" metaCanonical="" services="HDInsight" documentationCenter="" title="HDInsight での Hadoop を使用した Twitter データの分析" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
 
@@ -78,7 +78,7 @@ HDInsight はデータ ストレージとして Azure BLOB ストレージを使
 
 HDInsight クラスターをプロビジョニングする際、HDFS と同様に、既定のファイル システムとして BLOB ストレージ コンテナーが指定されます。プロビジョニング プロセスを実行するときに、このコンテナーに加えて、同じ Azure ストレージ アカウントまたは別の Azure ストレージ アカウントに属する付加的なコンテナーを追加することもできます。付加的なストレージ アカウントを追加する方法の詳細については、「[HDInsight クラスターのプロビジョニング][HDInsight クラスターのプロビジョニング]」を参照してください。
 
-このチュートリアルで使用する PowerShell スクリプトを簡単にするために、ファイルはすべて、*/tutorials/twitter* にある既定のファイル システム コンテナーに格納されています。既定で、このコンテナーの名前は、HDInsight クラスター名と同じです。
+> [WACOM.NOTE] このチュートリアルで使用する PowerShell スクリプトを簡単にするために、ファイルはすべて、*/tutorials/twitter* にある既定のファイル システム コンテナーに格納されています。既定で、このコンテナーの名前は、HDInsight クラスター名と同じです。別のコンテナーにファイルを保存する場合は、適宜スクリプトを調整してください。
 
 WASB の構文は次のとおりです。
 
@@ -123,12 +123,12 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 2.  **[Create New App]** をクリックします。
 3.  **名前**、**説明**、**Web サイト**を入力します。Web サイト フィールドの URL を構成することができます。次のテーブルは使用する値のサンプルを示しています。
 
-	<table border="1">
-	<tr><th>フィールド</th><th>値</th></tr>
-	<tr><td>名前</td><td>MyHDInsightApp</td></tr>
-	<tr><td>説明</td><td>MyHDInsightApp</td></tr>
-	<tr><td>Web サイト</td><td>http://www.myhdinsightapp.com</td></tr>
-	</table>
+    | フィールド | 値                            |
+    |------------|-------------------------------|
+    | 名前       | MyHDInsightApp                |
+    | 説明       | MyHDInsightApp                |
+    | Web サイト | http://www.myhdinsightapp.com |
+
 4.  **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
 5.  **[Permissions]** タブをクリックします。既定のアクセス許可は**読み取り専用**です。このチュートリアルにはこれで十分です。
 6.  **[API Keys]** タブをクリックします。
@@ -142,7 +142,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 **ツイートを取得するには**
 
-1.  Windows PowerShell ISE を開きます (Windows 8 のスタート画面で、「**PowerShell\_ISE**」と入力し、**[Windows PowerShell ISE]** をクリックします。「[Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)][Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)]」)を参照してください。
+1.  Windows PowerShell ISE を開きます (Windows 8 のスタート画面で、「**PowerShell\_ISE**」と入力し、**[Windows PowerShell ISE]** をクリックします。「[Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)][Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)])」を参照してください。
 
 2.  次のスクリプトをスクリプト ウィンドウにコピーします。
 
@@ -521,6 +521,7 @@ HiveQL スクリプトは、次の作業を実行します。
   [チュートリアルのクリーンアップ]: #cleanup
   [次のステップ]: #nextsteps
   [Azure PowerShell のインストールおよび構成に関するページ]: ../install-configure-powershell
+  [Run Windows PowerShell scripts (Windows PowerShell スクリプトの実行)]: http://technet.microsoft.com/ja-jp/library/ee176961.aspx
   [Azure HDInsight の概要]: ../hdinsight-get-started/
   [HDInsight クラスターのプロビジョニング]: ../hdinsight-provision-clusters/
   [HDInsight での Azure BLOB ストレージの使用]: ../hdinsight-use-blob-storage/
@@ -528,9 +529,13 @@ HiveQL スクリプトは、次の作業を実行します。
   [statuses/filter]: https://dev.twitter.com/docs/api/1.1/post/statuses/filter
   [ツイート データ]: https://dev.twitter.com/docs/platform-objects/tweets
   [oauth.net]: http://oauth.net/
+  [Beginner's Guide to OAuth (OAuth 初心者向けガイド)]: http://hueniverse.com/oauth/
   []: https://apps.twitter.com/
+  [*Curl*]: http://curl.haxx.se
   [ここ]: http://curl.haxx.se/download.html
+  [Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)]: http://technet.microsoft.com/ja-jp/library/hh847889.aspx
   [HDInsight での BLOB ストレージの使用]: ../hdinsight-use-blob-storage/#powershell
+  [Hive tutorial (Hive のチュートリアル)]: https://cwiki.apache.org/confluence/display/Hive/Tutorial
   [HDInsight での Sqoop の使用]: ../hdinsight-use-sqoop/
   [HDInsight を使用したフライト遅延データの分析]: ../hdinsight-analyze-flight-delay-data/
   [Power Query を使用した Excel から HDInsight への接続]: ../hdinsight-connect-excel-power-query/

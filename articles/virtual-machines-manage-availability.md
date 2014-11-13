@@ -1,6 +1,6 @@
-<properties linkid="manage-windows-common-tasks-vm-availability" urlDisplayName="Manage Availability of VMs" pageTitle="Manage the availability of virtual machines - Azure" metaKeywords="" description="Learn how to use multiple virtual machines to ensure high availability for your Azure application. " metaCanonical="" services="virtual-machines" documentationCenter="" title="" authors="kenazk" solutions="" manager="dongill" editor="tysonn" />
+<properties urlDisplayName="Manage Availability of VMs" pageTitle="仮想マシンの可用性管理 - Azure" metaKeywords="" description="複数の仮想マシンを使って Azure アプリケーションの高い可用性を確保する方法について説明します。 " metaCanonical="" services="virtual-machines" documentationCenter="" title="" authors="kenazk" solutions="" manager="timlt" editor="tysonn" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="kenazk"></tags>
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="kenazk" />
 
 # 仮想マシンの可用性管理
 
@@ -25,13 +25,15 @@
 
 アプリケーションに冗長性をもたらすには、可用性セット内に 2 つ以上の仮想マシンをグループ化することをお勧めします。このような構成により、計画済み、または計画外メンテナンス イベント中に、少なくとも 1 つの仮想マシンが利用可能となり、99.95% の Azure SLA を満たします。サービス レベル アグリーメントの詳細については、「[サービス レベル アグリーメント][サービス レベル アグリーメント]」の「クラウド サービス、仮想マシン、仮想ネットワーク」のセクションを参照してください。
 
-可用性セット内の各仮想マシンは、基盤となる Azure プラットフォームによって更新ドメイン (UD) と障害ドメイン (FD) に割り当てられます。所定の可用性セットに対して、同時に再起動される仮想マシンのグループと物理ハードウェアを示す UD (ユーザーによる構成不可) が 5 つ割り当てられます。1 つの可用性セット内に 5 つ以上の仮想マシンが構成されている時、6 つ目の仮想マシンは 1 つ目の仮想マシンと同じ UD 内に配置され、7 つ目は 2 つ目の仮想マシンと同じ UD 内に配置されるといった具合に続きます。計画済みメンテナンス中、UD の再起動は順番に処理されない場合がありますが、一度に再起動される UD は 1 つのみです。
+基盤を成す Azure プラットフォームにより、可用性セット内の各仮想マシンに更新ドメイン (UD) と障害ドメイン (FD) が割り当てられます。所定の可用性セットに対して、同時に再起動される仮想マシンのグループと物理ハードウェアを示す UD (ユーザーによる構成不可) が 5 つ割り当てられます。1 つの可用性セット内に 5 つ以上の仮想マシンが構成されている時、6 つ目の仮想マシンは 1 つ目の仮想マシンと同じ UD 内に配置され、7 つ目は 2 つ目の仮想マシンと同じ UD 内に配置されるといった具合に続きます。計画済みメンテナンス中、UD の再起動は順番に処理されない場合がありますが、一度に再起動される UD は 1 つのみです。
 
 FD は電源とネットワーク スイッチを共有する仮想マシンのグループを定義します。既定では、可用性セット内に構成された仮想マシンは、2 つの FD に分けられます。仮想マシンを可用性セットに配置しても、アプリケーションがオペレーティング システムやアプリケーションの障害から保護されるわけではありませんが、潜在的な物理ハードウェア障害、ネットワーク障害、または電力の中断の影響を低下させることができます。
 
 <!--Image reference-->
 
 ![UD FD 構成][UD FD 構成]
+
+> [WACOM.NOTE] 手順については、「[仮想マシンの可用性セットを構成する方法][仮想マシンの可用性セットを構成する方法]」を参照してください。
 
 ### 各アプリケーション層に対して別々の可用性セットを構成する
 
@@ -53,11 +55,14 @@ Azure ロード バランサーと可用性セットを結合することで、�
 
 可用性セット内の仮想マシンが 1 つのみにならないようにしてくだい。この構成の仮想マシンは、SLA 保証の対象とはならず、Azure の計画されたメンテナンス イベント時にダウンタイムが発生します。さらに、可用性セット内に 1 つの VM を配備する場合、プラットフォーム メンテナンスの事前警告や通知は送付されません。この構成では、プラットフォーム メンテナンス時に事前警告なく 1 つの仮想マシンが再起動されます。
 
+<!-- Link references -->
+
   [冗長性実現のために複数の仮想マシンを可用性セット内に構成する]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
   [各アプリケーション層に対して別々の可用性セットを構成する]: #configure-each-application-tier-into-separate-availability-sets
   [ロード バランサーと可用性セットを結合する]: #combine-the-load-balancer-with-availability-sets
   [可用性セット内の仮想マシンが 1 つのみにならないようにする]: #avoid-single-instance-virtual-machines-in-availability-sets
   [サービス レベル アグリーメント]: ../../../support/legal/sla/
   [UD FD 構成]: ./media/virtual-machines-manage-availability/ud-fd-configuration.png
+  [仮想マシンの可用性セットを構成する方法]: ../virtual-machines-how-to-configure-availability
   [アプリケーション層]: ./media/virtual-machines-manage-availability/application-tiers.png
   [仮想マシンの負荷分散]: ../load-balance-virtual-machines/

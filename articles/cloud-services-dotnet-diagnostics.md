@@ -1,10 +1,10 @@
-<properties linkid="dev-net-commons-tasks-diagnostics" urlDisplayName="Diagnostics" pageTitle="How to use diagnostics (.NET) - Azure feature guide" metaKeywords="Azure diagnostics monitoring,logs crash dumps C#" description="Learn how to use diagnostic data in Azure for debugging, measuring performance, monitoring, traffic analysis, and more." metaCanonical="" services="cloud-services" documentationCenter=".NET" title="Enabling Diagnostics in Azure" authors="ryanwi" solutions="" manager="timlt" editor="" />
+<properties urlDisplayName="Diagnostics" pageTitle="診断の使用方法 (.NET) - Azure の機能ガイド" metaKeywords="Azure diagnostics monitoring,logs crash dumps C#" description="Azure で、デバッグ、パフォーマンス測定、監視、トラフィック解析などに診断データを使用する方法を説明します。" metaCanonical="" services="cloud-services" documentationCenter=".NET" title="Enabling Diagnostics in Azure (Azure の診断機能)" authors="ryanwi" solutions="" manager="timlt" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ryanwi" />
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="10/23/2014" ms.author="ryanwi" />
 
 # Azure のクラウド サービスおよび仮想マシンの診断機能
 
-Azure 診断 1.2 を使用すると、Azure で実行している Worker ロール、Web ロール、または仮想マシンから診断データを収集できます。このガイドでは、Azure 診断 1.2 の使用方法について説明します。ログやトレース方法を作成する方法と、診断機能やその他の手法で問題のトラブルシューティングを行う方法の詳細なガイダンスについては、「[Troubleshooting Best Practices for Developing Azure Applications (Azure アプリケーション開発のトラブルシューティングのベスト プラクティス)][Troubleshooting Best Practices for Developing Azure Applications (Azure アプリケーション開発のトラブルシューティングのベスト プラクティス)]」を参照してください。
+Azure 診断 1.2 を使用すると、Azure で実行している Worker ロール、Web ロール、または仮想マシンから診断データを収集できます。このガイドでは、Azure 診断 1.2 の使用方法について説明します。ログやトレース方法を作成する方法と、診断機能やその他の手法で問題のトラブルシューティングを行う方法の詳細なガイダンスについては、「[Azure アプリケーション開発のトラブルシューティングのベスト プラクティス][Azure アプリケーション開発のトラブルシューティングのベスト プラクティス]」を参照してください。
 
 ## 目次
 
@@ -31,51 +31,17 @@ Azure 診断 1.2 は、Azure で実行している Worker ロール、Web ロー
 
 Azure 診断では、次の種類の利用統計情報を収集できます。
 
-<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
-<tbody>
-    <tr>
-<td style="width: 100px;"><strong>データ ソース</strong></td>
-<td><strong>説明</strong></td>
-    </tr>
-    <tr>
-<td>IIS Logs</td>
-<td>IIS Web サイトに関する情報。</td>            
-    </tr>
-    <tr>
-<td>Azure 診断インフラストラクチャ ログ</td>
-<td>診断自体に関する情報。</td>            
-    </tr>
-    <tr>
-<td>IIS の失敗した要求ログ </td>
-<td>IIS サイトまたはアプリケーションへの失敗した要求に関する情報。</td>            
-    </tr>
-    <tr>
-<td>Windows イベント ログ</td>
-<td>Windows イベント ログ システムに送信された情報。</td>            
-    </tr>
-    <tr>
-<td>パフォーマンス カウンター</td>
-<td>オペレーティング システムとカスタム パフォーマンス カウンター</td>            
-    </tr>
-    <tr>
-<td>クラッシュ ダンプ</td>
-<td>アプリケーションがクラッシュした場合のプロセスの状態に関する情報。</td>            
-    </tr>
-    <tr>
-<td>カスタム エラー ログ</td>
-<td>アプリケーションまたはサービスで作成されたログ。</td>            
-    </tr>
-    <tr>
-<td>.NET EventSource</td>
-<td>.NET <a href="http://msdn.microsoft.com/ja-jp/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx">EventSource クラス</a>を使用してコードで生成されたイベント。</td>            
-    </tr>
-    <tr>
-<td>マニフェスト ベースの ETW</td>
-<td>すべてのプロセスで生成された ETW イベント。</td>            
-    </tr>
-        
-</tbody>
-</table>
+|-------------------------------------|--------------------------------------------------------------------|
+| **データ ソース**                   | **説明**                                                           |
+| IIS Logs                            | IIS Web サイトに関する情報。                                       |
+| Azure 診断インフラストラクチャ ログ | 診断自体に関する情報。                                             |
+| IIS の失敗した要求ログ              | IIS サイトまたはアプリケーションへの失敗した要求に関する情報。     |
+| Windows イベント ログ               | Windows イベント ログ システムに送信された情報。                   |
+| パフォーマンス カウンター           | オペレーティング システムとカスタム パフォーマンス カウンター      |
+| クラッシュ ダンプ                   | アプリケーションがクラッシュした場合のプロセスの状態に関する情報。 |
+| カスタム エラー ログ                | アプリケーションまたはサービスで作成されたログ。                   |
+| .NET EventSource                    | .NET [EventSource クラス][EventSource クラス]を使用してコードで生成されたイベント。  |
+| マニフェスト ベースの ETW           | すべてのプロセスで生成された ETW イベント。                        |
 
 ## <a name="worker-role"></a><span class="short-header">Worker ロールの診断の有効化</span>Worker ロールの診断を有効にする方法
 
@@ -260,8 +226,7 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 
 1.  開発コンピューター上で Visual Studio 2013 を起動します。
 2.  .NET Framework 4.5 をターゲットとする Visual C# の新しいコンソール アプリケーションを作成します。プロジェクト名として「WadExampleVM」と入力します。
-    
-	![CloudServices\_diag\_new\_project][CloudServices\_diag\_new\_project]
+    ![CloudServices\_diag\_new\_project][CloudServices\_diag\_new\_project]
 3.  Program.cs の内容を次のコードに置き換えます。**SampleEventSourceWriter** クラスは、4 つのログの作成方法 (**SendEnums**、**MessageMethod**、**SetOther**、**HighFreq**) を実装しています。WriteEvent メソッドの最初のパラメーターは各イベントの ID を定義しています。Run メソッドは、**SampleEventSourceWriter** クラスに実装されているログ作成方法をぞれぞれ 10 秒ごとに呼び出す無限ループを実装します。
 
         using System;
@@ -625,154 +590,38 @@ WADdest2
 
 次の表は、Azure 診断のバージョン 1.0 および 1.1/1.2 でサポートされる機能を比較します。
 
-<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
-<tbody>
-    <tr>
-<td style="width: 100px;"><strong>サポートされるロールの種類</strong></td>
-<td><strong>診断 1.0</strong></td>
-<td><strong>診断 1.1/1.2</strong></td>
-    </tr>
+|--------------------------------|--------------|------------------|
+| **サポートされるロールの種類** | **診断 1.0** | **診断 1.1/1.2** |
+| Web ロール                     | あり         | あり             |
+| Worker ロール                  | あり         | あり             |
+| IaaS                           | いいえ       | あり             |
 
-    <tr>
-<td>Web ロール</td>
-<td>あり</td>
-<td>あり</td>
-    </tr>
-    <tr>
-<td>Worker ロール</td>
-<td>あり</td>
-<td>あり</td>
-    </tr>
-    <tr>
-<td>IaaS</td>
-<td>いいえ</td>
-<td>あり</td>
-    </tr>
-</tbody>
-</table>
+|----------------------------------------------------------------------------------|--------------|------------------|
+| **構成と展開**                                                                   | **診断 1.0** | **診断 1.1/1.2** |
+| Visual Studio との統合 - Azure Web/Worker 開発機能への統合。                     | あり         | いいえ           |
+| PowerShell スクリプト - 診断のロールへのインストールと構成を管理するスクリプト。 | あり         | あり             |
 
-<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
-<tbody>
-    <tr>
-<td style="width: 100px;"><strong>構成と展開</strong></td>
-<td><strong>診断 1.0</strong></td>
-<td><strong>診断 1.1/1.2</strong></td>
-    </tr>
-
-    <tr>
-<td>Visual Studio との統合 - Azure Web/Worker 開発機能への統合。</td>
-<td>あり</td>
-<td>いいえ</td>
-    </tr>
-    <tr>
-<td>PowerShell スクリプト - 診断のロールへのインストールと構成を管理するスクリプト。</td>
-<td>あり</td>
-<td>あり</td>
-    </tr>
-    
-</tbody>
-</table>
-
-<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
-<tbody>
-    <tr>
-<td style="width: 100px;"><strong>データ ソース</strong></td>
-<td><strong>既定のコレクション</strong></td>
-<td><strong>形式</strong></td>
-<td><strong>説明</strong></td>
-<td><strong>診断 1.0</strong></td>
-<td><strong>診断 1.1/1.2</strong></td>
-    </tr>
-    <tr>
-<td>System.Diagnostics.Trace ログ</td>
-<td>あり</td>
-<td>テーブル</td>
-<td>コードからトレース リスナーに送信されるトレース メッセージを記録します (トレース リスナーを web.config ファイルまたは app.config ファイルに追加する必要があります)。ログ データは、scheduledTransferPeriod の転送間隔でストレージ テーブル WADLogsTable に転送されます。</td>
-<td>あり</td>
-<td>なし (EventSource を使用)</td>
-    </tr>
-    <tr>
-<td>IIS ログ</td>
-<td>あり</td>
-<td>BLOB</td>
-<td>IIS サイトに関する情報を記録します。ログ データは、scheduledTransferPeriod の転送間隔で、指定したコンテナーに転送されます。</td>
-<td>あり</td>
-<td>あり</td>
-    </tr>
-    <tr>
-<td>Azure 診断インフラストラクチャ ログ</td>
-<td>あり</td>
-<td>テーブル</td>
-<td>診断インフラストラクチャ、RemoteAccess モジュール、RemoteForwarder モジュールに関する情報を記録します。ログ データは、scheduledTransferPeriod の転送間隔でストレージ テーブル WADDiagnosticInfrastructureLogsTable に転送されます。</td>
-<td>あり</td>
-<td>あり</td>
-    </tr>
-    <tr>
-<td>IIS の失敗した要求ログ</td>
-<td>いいえ</td>
-<td>BLOB</td>
-<td>IIS サイトまたはアプリケーションへの失敗した要求に関する情報を記録します。Web.config の system.WebServer の下でトレース オプションを設定することでも有効にする必要があります。ログ データは、scheduledTransferPeriod の転送間隔で、指定したコンテナーに転送されます。</td>
-<td>あり</td>
-<td>あり</td>
-    </tr>
-    <tr>
-<td>Windows イベント ログ</td>
-<td>いいえ</td>
-<td>テーブル</td>
-<td>オペレーティング システム、アプリケーション、またはドライバーが適切に動作しているかどうかを示す情報を記録します。パフォーマンス カウンターは明示的に指定する必要があります。これらが追加されると、パフォーマンス カウンター データは scheduledTransferPeriod の転送間隔でストレージ テーブル WADPerformanceCountersTable に転送されます。</td>
-<td>あり</td>
-<td>あり</td>
-    </tr>
-    <tr>
-<td>パフォーマンス カウンター</td>
-<td>いいえ</td>
-<td>テーブル</td>
-<td>オペレーティング システム、アプリケーション、またはドライバーが適切に動作しているかどうかを示す情報を記録します。パフォーマンス カウンターは明示的に指定する必要があります。これらが追加されると、パフォーマンス カウンター データは scheduledTransferPeriod の転送間隔でストレージ テーブル WADPerformanceCountersTable に転送されます。</td>
-<td>あり</td>
-<td>あり</td>
-    </tr>
-    <tr>
-<td>クラッシュ ダンプ</td>
-<td>いいえ</td>
-<td>BLOB</td>
-<td>システム クラッシュ時のオペレーティング システムの状態に関する情報を記録します。小さいクラッシュ ダンプがローカルで収集されます。完全なダンプを有効にできます。ログ データは、scheduledTransferPeriod の転送間隔で、指定したコンテナーに転送されます。ほとんどの例外は ASP.NET によって処理されるため、これは通常 Worker ロールまたは VM でのみ役立ちます。</td>
-<td>あり</td>
-<td>あり</td>
-    </tr>
-    <tr>
-<td>カスタム エラー ログ</td>
-<td>いいえ</td>
-<td>BLOB</td>
-<td>ローカル ストレージ リソースを使用することで、カスタム データを記録し、指定したコンテナーにすぐに転送できます。</td>
-<td>あり</td>
-<td>あり</td>
-    </tr>
-    <tr>
-<td>EventSource</td>
-<td>いいえ</td>
-<td>テーブル</td>
-<td>.NET EventSource クラスを使用してコードで生成されたログ イベント。</td>
-<td>いいえ</td>
-<td>あり</td>
-    </tr>
-    <tr>
-<td>マニフェスト ベースの ETW</td>
-<td>いいえ</td>
-<td>テーブル</td>
-<td>すべてのプロセスで生成された ETW イベント。</td>
-<td>いいえ</td>
-<td>あり</td>
-    </tr>
-</tbody>
-</table>
+|-------------------------------------|------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|---------------------------|
+| **データ ソース**                   | **既定のコレクション** | **形式** | **説明**                                                                                                                                                                                                                                                                                                                                                    | **診断 1.0** | **診断 1.1/1.2**          |
+| System.Diagnostics.Trace ログ       | あり                   | テーブル | コードからトレース リスナーに送信されるトレース メッセージを記録します (トレース リスナーを web.config ファイルまたは app.config ファイルに追加する必要があります)。ログ データは、scheduledTransferPeriod の転送間隔でストレージ テーブル WADLogsTable に転送されます。                                                                                    | あり         | なし (EventSource を使用) |
+| IIS ログ                            | あり                   | BLOB     | IIS サイトに関する情報を記録します。ログ データは、scheduledTransferPeriod の転送間隔で、指定したコンテナーに転送されます。                                                                                                                                                                                                                                 | あり         | あり                      |
+| Azure 診断インフラストラクチャ ログ | あり                   | テーブル | 診断インフラストラクチャ、RemoteAccess モジュール、RemoteForwarder モジュールに関する情報を記録します。ログ データは、scheduledTransferPeriod の転送間隔でストレージ テーブル WADDiagnosticInfrastructureLogsTable に転送されます。                                                                                                                         | あり         | あり                      |
+| IIS の失敗した要求ログ              | いいえ                 | BLOB     | IIS サイトまたはアプリケーションへの失敗した要求に関する情報を記録します。Web.config の system.WebServer の下でトレース オプションを設定することでも有効にする必要があります。ログ データは、scheduledTransferPeriod の転送間隔で、指定したコンテナーに転送されます。                                                                                       | あり         | あり                      |
+| Windows イベント ログ               | いいえ                 | テーブル | オペレーティング システム、アプリケーション、またはドライバーが適切に動作しているかどうかを示す情報を記録します。パフォーマンス カウンターは明示的に指定する必要があります。これらが追加されると、パフォーマンス カウンター データは scheduledTransferPeriod の転送間隔でストレージ テーブル WADPerformanceCountersTable に転送されます。                   | あり         | あり                      |
+| パフォーマンス カウンター           | いいえ                 | テーブル | オペレーティング システム、アプリケーション、またはドライバーが適切に動作しているかどうかを示す情報を記録します。パフォーマンス カウンターは明示的に指定する必要があります。これらが追加されると、パフォーマンス カウンター データは scheduledTransferPeriod の転送間隔でストレージ テーブル WADPerformanceCountersTable に転送されます。                   | あり         | あり                      |
+| クラッシュ ダンプ                   | いいえ                 | BLOB     | システム クラッシュ時のオペレーティング システムの状態に関する情報を記録します。小さいクラッシュ ダンプがローカルで収集されます。完全なダンプを有効にできます。ログ データは、scheduledTransferPeriod の転送間隔で、指定したコンテナーに転送されます。ほとんどの例外は ASP.NET によって処理されるため、これは通常 Worker ロールまたは VM でのみ役立ちます。 | あり         | あり                      |
+| カスタム エラー ログ                | いいえ                 | BLOB     | ローカル ストレージ リソースを使用することで、カスタム データを記録し、指定したコンテナーにすぐに転送できます。                                                                                                                                                                                                                                             | あり         | あり                      |
+| EventSource                         | いいえ                 | テーブル | .NET EventSource クラスを使用してコードで生成されたログ イベント。                                                                                                                                                                                                                                                                                          | いいえ       | あり                      |
+| マニフェスト ベースの ETW           | いいえ                 | テーブル | すべてのプロセスで生成された ETW イベント。                                                                                                                                                                                                                                                                                                                 | いいえ       | あり                      |
 
 ## <a name="additional"></a><span class="short-header">その他のリソース</span>その他のリソース
 
--   [Troubleshooting Best Practices for Developing Azure Applications (Azure アプリケーション開発時のトラブルシューティングのベスト プラクティス)][Troubleshooting Best Practices for Developing Azure Applications (Azure アプリケーション開発のトラブルシューティングのベスト プラクティス)]
+-   [Troubleshooting Best Practices for Developing Azure Applications (Azure アプリケーション開発時のトラブルシューティングのベスト プラクティス)][Azure アプリケーション開発のトラブルシューティングのベスト プラクティス]
 -   [Azure 診断を使用したログ データの収集][Azure 診断を使用したログ データの収集]
 -   [クラウド サービスのデバッグ][クラウド サービスのデバッグ]
 -   [Azure 診断の構成][Azure 診断の構成]
 
+  [Azure アプリケーション開発のトラブルシューティングのベスト プラクティス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh771389.aspx
   [概要]: #overview
   [Worker ロールの診断を有効にする方法]: #worker-role
   [仮想マシンの診断を有効にする方法]: #virtual-machine
@@ -784,6 +633,11 @@ WADdest2
   [EventSource クラス]: http://msdn.microsoft.com/ja-jp/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
   [無料評価版]: http://azure.microsoft.com/ja-jp/pricing/free-trial/
   [Azure PowerShell Version 0.8.7 以降をインストールして構成している]: http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/
+  [CloudServices\_diag\_add\_xml]: ./media/cloud-services-dotnet-diagnostics/AddXmlFile.png
+  [CloudServices\_diag\_tables]: ./media/cloud-services-dotnet-diagnostics/WadExampleTables.png
+  [CloudServices\_diag\_new\_project]: ./media/cloud-services-dotnet-diagnostics/NewProject.png
+  [CloudServices\_diag\_wadexamplevm\_tables]: ./media/cloud-services-dotnet-diagnostics/WadExampleVMTables.png
+  [Azure Diagnostics 1.2 Configuration Schema (Azure 診断 1.2 構成スキーマ)]: http://msdn.microsoft.com/ja-jp/library/azure/dn782207.aspx
   [Azure 診断を使用したログ データの収集]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433048.aspx
   [クラウド サービスのデバッグ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405479.aspx
   [Azure 診断の構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn186185.aspx

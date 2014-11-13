@@ -1,4 +1,4 @@
-<properties linkid="manage-services-hdinsight-version" urlDisplayName="HDInsight Hadoop Version" pageTitle="What's new in Hadoop cluster versions of HDInsight? | Azure" metaKeywords="hdinsight, hadoop, hdinsight hadoop, hadoop azure" description="HDInsight supports multiple Hadoop cluster versions deployable at any time. See the Hadoop and HortonWorks Data Platform (HDP) distribution versions supported." services="HDInsight" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" title="What's new in the cluster versions provided by HDInsight?" authors="bradsev" />
+<properties urlDisplayName="HDInsight Hadoop Version" pageTitle="HDInsight で提供される Hadoop クラスター バージョンの新機能| Azure" metaKeywords="hdinsight, hadoop, hdinsight hadoop, hadoop azure" description="HDInsight は、いつでもデプロイできる Hadoop クラスター バージョンを複数サポートしています。サポートされている Hadoop および Hortonworks Data Platform (HDP) ディストリビューションのバージョンを確認します。" services="hdinsight" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" title="HDInsight で提供されるクラスター バージョンの新機能" authors="bradsev" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev" />
 
@@ -148,13 +148,15 @@ HDInsight PowerShell コマンドレットまたは HDInsight .NET SDK を使用
 
 -   **Tez (HDInsight 3.1 のみ)**: Hadoop で小規模なワークロードと大規模なワークロードの両方にまたがる簡単なデータ処理タスクを作成する、カスタマイズ可能な汎用フレームワーク。1 つのジョブでタスクの複雑な無閉路有効グラフ (DAG) を実行できるため、Apache Hive や Apache Pig などの Apache Hadoop エコシステムのプロジェクトで、人間が介在する応答時間やペタバイト規模の高速スループットに関する要件を満たすことができます。Hive 0.13 では、MapReduce ではなく Tez 上で Hive クエリを実行できます。
 
--   **高可用性**: サービスの可用性を高めるために、HDInsight によってデプロイされた Hadoop クラスターに 2 つ目のヘッドノードが追加されました。通常 Hadoop クラスターの標準的な実装には、ヘッドノードは 1 つだけあります。HDInsight はセカンダリ ヘッドノードを追加することで、この単一障害点をなくします。顧客が既定の L サイズ ノードを使わず、XL サイズのヘッドノードでクラスターをプロビジョニングしない限り、新しい HA クラスター構成に切り替えてもクラスターの価格は変わりません。
+-   **高可用性**: サービスの可用性を高めるために、HDInsight によってデプロイされた Hadoop クラスターに 2 つ目のヘッドノードが追加されました。通常 Hadoop クラスターの標準的な実装には、ヘッドノードは 1 つだけあります。HDInsight はセカンダリ ヘッドノードを追加することで、この単一障害点をなくします。顧客が既定の L サイズ ノードを使わず、XL サイズのヘッド ノードでクラスターをプロビジョニングしない限り、新しい HA クラスター構成に切り替えてもクラスターの価格は変わりません。
 
 -   **Hive のパフォーマンス**: Hive クエリの応答時間 (最大 40 x) および **Optimized Row Columnar** (ORC) 形式によるデータ圧縮 (最大 80%) への重要な機能強化の序列。
 
--   **Pig、Sqoop、Qozie、Ambari**: HDInsight クラスター Version 2.1 (HDP 1.3/Hadoop 1.2) でのパリティを提供する、HDInsight クラスター Version 3.0 (HDP 2.0/Hadoop 2.2) のコンポーネント バージョンのアップグレード。詳細については、以下のバージョンの各表を参照してください。
+-   **Pig、Sqoop、Oozie、Ambari**: HDInsight クラスター Version 2.1 (HDP 1.3/Hadoop 1.2) でのパリティを提供する、HDInsight クラスター Version 3.0 (HDP 2.0/Hadoop 2.2) のコンポーネント バージョンのアップグレード。詳細については、以下のバージョンの各表を参照してください。
 
 -   **Mahout**: このスケーラブルな機械学習アルゴリズムのライブラリは、HDInsight 3.1 Hadoop クラスターにプレインストールされています。そのため、他のクラスター構成を追加することなく、Mahout ジョブを実行できます。
+
+-   **Virtual Network のサポート**: HDInsight クラスターと Azure Virtual Network を組み合わせることにより、クラウド リソースの分離、つまり、クラウドのリソースとご利用のデータセンター内のリソースとをリンクさせたハイブリッド ソリューションを実現できます。
 
 ## サポートされているバージョン
 
@@ -336,6 +338,7 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
   [Azure HDInsight]: http://go.microsoft.com/fwlink/?LinkID=285601
   [Ambari のドキュメント]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
+  [HDInsight Release Notes (HDInsight のリリース ノート)]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-release-notes/
   [New-AzureHDInsightCluster]: http://msdn.microsoft.com/ja-jp/library/dn593744.aspx
   [ファミリ 4]: http://msdn.microsoft.com/ja-jp/library/azure/ee924680.aspx#explanation
   [Hortonworks Data Platform 2.1]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.1/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.1.html

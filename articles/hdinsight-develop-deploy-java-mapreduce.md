@@ -1,36 +1,114 @@
-<properties linkid="manage-services-hdinsight-develop-Java-MapReduce-programs-for-HDInsight-Hadoop" urlDisplayName="HDInsight Tutorials" pageTitle="Develop Java MapReduce programs for Hadoop in HDInsight | Azure" metaKeywords="hdinsight, hdinsight development, hadoop development, hdinsight deployment, development, deployment, tutorial, MapReduce, Java" description="Learn how to develop Java MapReduce programs on HDInsight emulator, how to deploy them to HDInsight." services="hdinsight" title="Develop Java MapReduce programs for Hadoop in HDInsight" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" authors="jgao" />
+<properties linkid="manage-services-hdinsight-develop-Java-MapReduce-programs-for-HDInsight-Hadoop" urlDisplayName="HDInsight Tutorials" pageTitle="HDInsight での Hadoop 用 Java MapReduce プログラムの開発 | Azure" metaKeywords="hdinsight, hdinsight development, hadoop development, hdinsight deployment, development, deployment, tutorial, MapReduce, Java" description="HDInsight Emulator で Java MapReduce プログラムを開発する方法、それらのプログラムを HDInsight にデプロイする方法について説明します。" services="hdinsight" title="HDInsight での Hadoop 用 Java MapReduce プログラムの開発" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" authors="nitinme" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="10/10/2014" ms.author="nitinme" />
 
 # HDInsight での Hadoop 用 Java MapReduce プログラムの開発
 
-このチュートリアルでは、Java を使ってワード カウント Hadoop MapReduce ジョブを作成して HDInsight Emulator でテストしてから、Azure HDInsight にデプロイして実行するエンド ツー エンド シナリオについて説明します。
+このチュートリアルでは、Apache Haven を使って Java でワード カウント Hadoop MapReduce ジョブを開発する場合の全工程にわたるシナリオについて説明します。さらに、アプリケーションを HDInsight Emulator でテストした後で Azure HDInsight クラスターにデプロイして実行する方法についても説明します。
 
 **前提条件:**
 
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
+このチュートリアルを開始する前に、次の作業を完了している必要があります。
 
 -   Azure HDInsight Emulator のインストール。手順については、「[HDInsight Emulator の概要][HDInsight Emulator の概要]」を参照してください。
 -   エミュレーター コンピューターへの Azure PowerShell のインストール。手順については、[Azure PowerShell のインストールおよび構成に関するページ][Azure PowerShell のインストールおよび構成に関するページ]を参照してください。
+-   エミュレーター コンピューターへの Java プラットフォーム JDK 7 以降のインストール。これはエミュレーター コンピューターで既に利用可能です。
+-   [Apache Maven][Apache Maven] のインストールおよび構成。
 -   Azure サブスクリプションの入手。手順については、[購入オプション][購入オプション]、[メンバー プラン][メンバー プラン]、または[無料評価版][無料評価版]に関するページを参照してください。
 
 ## この記事の内容
 
--   [Java でワード カウント MapReduce プログラムを開発する][Java でワード カウント MapReduce プログラムを開発する]
+-   [Apache Maven を使って Java でワード カウント MapReduce プログラムを作成する][Apache Maven を使って Java でワード カウント MapReduce プログラムを作成する]
 -   [エミュレーターでプログラムをテストする][エミュレーターでプログラムをテストする]
 -   [Azure BLOB ストレージにデータ ファイルとアプリケーションをアップロードする][Azure BLOB ストレージにデータ ファイルとアプリケーションをアップロードする]
 -   [Azure HDInsight で MapReduce プログラムを実行する][Azure HDInsight で MapReduce プログラムを実行する]
 -   [MapReduce の結果を取得する][MapReduce の結果を取得する]
 -   [次のステップ][次のステップ]
 
-## <a name="develop"></a>Java でワード カウント MapReduce プログラムを開発する
+## <a name="develop"></a>Apache Maven を使って Java で MapReduce プログラムを作成する
 
-ワード カウントは、指定された入力内での各単語の出現回数をカウントする単純なアプリケーションです。
+ワード カウント MapReduce アプリケーションを作成します。作成するのは、指定された入力内での各単語の出現回数をカウントする単純なアプリケーションです。このセクションでは、次のタスクを実行します。
 
-**Java でワード カウント MapReduce ジョブを記述するには**
+1.  Apache Maven を使ってプロジェクトを作成する
+2.  プロジェクトのオブジェクト モデル (POM) を更新する
+3.  ワード カウント MapReduce アプリケーションを作成する
+4.  アプリケーションをビルドおよびパッケージ化する
 
-1.  メモ帳を開きます。
-2.  次のプログラムをコピーして、メモ帳に貼り付けます。
+**Maven を使ってプロジェクトを作成するには**
+
+1.  \*\*C:\\Tutorials\\WordCountJava\*\* という名前のディレクトリを作成します。
+2.  開発環境のコマンド ラインから、作成した場所にディレクトリを変更します。
+3.  Maven でインストールされた **mvn** コマンドを使用し、プロジェクトのスキャフォールディングを生成します。
+
+        mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+    これにより、**artifactID** パラメーターにより指定された名前で、新しいディレクトリが現在のディレクトリに作成されます (この例では **wordcountjava**)。このディレクトリには、次の項目が含まれます。
+
+    -   **pom.xml** - プロジェクト オブジェクト モデル ([POM][POM]) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
+
+    -   **src** - アプリケーションを作成する **main\\java\\org\\apache\\hadoop\\examples** ディレクトリを格納するディレクトリです。
+
+4.  **src\\test\\java\\org\\apache\\hadoop\\examples\\apptest.java** ファイルはこの例で使用しないため、削除します。
+
+**プロジェクト オブジェクト モデル (POM) を更新する**
+
+1.  **pom.xml** ファイルを編集し、`<dependencies>` セクション内に次のコードを追加します。
+
+        <dependency>
+          <groupId>org.apache.hadoop</groupId>
+          <artifactId>hadoop-mapreduce-examples</artifactId>
+          <version>2.5.1</version>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.hadoop</groupId>
+          <artifactId>hadoop-mapreduce-client-common</artifactId>
+          <version>2.5.1</version>
+        </dependency>
+        <dependency>                                                                                     
+          <groupId>org.apache.hadoop</groupId>                                                                                                       
+          <artifactId>hadoop-common</artifactId>                                                                                                         
+          <version>2.5.1</version>                                                                                            
+        </dependency>
+
+    これは、プロジェクトで特定のバージョン (<version\> 内に記載) のライブラリ (<artifactid\> 内に記載) を必要とすることを Maven に通知しています。これはコンパイル時に、既定の Maven リポジトリからダウンロードされます。[Maven リポジトリ検索][Maven リポジトリ検索]を使用して、その他の情報を表示できます。
+
+2.  **pom.xml** ファイルに次のコードを追加します。これは、ファイルの `<project>...</project>` タグ内に配置する必要があります (たとえば `</dependencies>` と `</project>` の間)。
+
+        <build>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-shade-plugin</artifactId>
+              <version>2.3</version>
+              <configuration>
+                <transformers>
+                  <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer">
+                  </transformer>
+                </transformers>
+              </configuration>
+              <executions>
+                <execution>
+                  <phase>package</phase>
+                    <goals>
+                      <goal>shade</goal>
+                    </goals>
+                </execution>
+              </executions>
+            </plugin>       
+          </plugins>
+        </build>
+
+    これにより、Maven でビルドされる JAR 内のライセンスの重複を防ぐために使用する [maven-shade-plugin][maven-shade-plugin] が構成されます。ライセンス ファイルの重複は、HDInsight クラスターでの実行時に発生するエラーの原因となるためです。maven-shade-plugin を `ApacheLicenseResourceTransformer` 実装で使用すると、エラーを回避できます。
+
+    また、maven-shade-plugin は、アプリケーションで必要とされるすべての依存関係を含む uberjar (または fatjar) も生成します。
+
+3.  **pom.xml** ファイルを保存します。
+
+**ワード カウント アプリケーションを作成するには**
+
+1.  **wordcountjava\\src\\main\\java\\org\\apache\\hadoop\\examples** ディレクトリに移動し、**app.java** ファイルの名前を **WordCount.java** に変更します。
+2.  メモ帳を開きます。
+3.  次のプログラムをコピーして、メモ帳に貼り付けます。
 
         package org.apache.hadoop.examples;
 
@@ -103,40 +181,29 @@
 
     パッケージ名は **org.apache.hadoop.examples** で、クラス名は **WordCount** です。これらの名前は MapReduce ジョブを送信するときに使用します。
 
-3.  ファイルを **c:\\Tutorials\\WordCountJava\\WordCount.java** として保存します。このフォルダー構造がなければ作成します。
+4.  ファイルを保存します。
 
-HDInsight Emulator は *javac* コンパイラに付属しています。
+**アプリケーションをビルドおよびパッケージ化するには**
 
-**MapReduce プログラムをコンパイルするには**
+1.  コマンド プロンプトを開き、ディレクトリを **wordcountjava** ディレクトリに変更します。
 
-1.  コマンド プロンプトを開きます。
-2.  ディレクトリを **c:\\Tutorials\\WordCountJava** に変更します。これは、ワード カウント MapReduce プログラムのフォルダーです。
-3.  次のコマンドを実行して、2 つの jar ファイルがあることを確認します。
+2.  次のコマンドを使用し、アプリケーションを含む JAR をビルドします。
 
-        dir %hadoop_home%\hadoop-core-1.1.0-SNAPSHOT.jar
-        dir %hadoop_home%\lib\commons-cli-1.2.jar
+        mvn clean package
 
-4.  次のコマンドを実行して、プログラムをコンパイルします。
+    これにより、前のビルド アーティファクトを整理し、まだインストールされていない依存関係をダウンロードして、アプリケーションをビルドおよびパッケージ化します。
 
-        C:\Hadoop\java\bin\javac -classpath %hadoop_home%\hadoop-core-1.1.0-SNAPSHOT.jar;%hadoop_home%\lib\commons-cli-1.2.jar WordCount.java
+3.  コマンドが完了すると、**wordcountjava\\target** ディレクトリに **wordcountjava-1.0-SNAPSHOT.jar** という名前のファイルが格納されます。
 
-    javac は C:\\Hadoop\\java\\bin フォルダーにあります。最後のパラメーターは、現在のフォルダーにある Java プログラムです。コンパイラによって現在のフォルダーに 3 つのクラス ファイルが作成されます。
-
-5.  次のコマンドを実行して、jar ファイルを作成します。
-
-        C:\Hadoop\java\bin\jar -cvf WordCount.jar *.class
-
-    このコマンドによって、現在のフォルダーに WordCount.jar ファイルが作成されます。
-
-    ![HDI.EMulator.WordCount.Compile][HDI.EMulator.WordCount.Compile]
+    > [WACOM.NOTE] **wordcountjava-1.0-SNAPSHOT.jar** ファイルは、アプリケーションの実行に必要なすべての依存関係を含む uberjar (fatjar とも呼ばれる) です。
 
 ## <a name="test"></a>エミュレーターでプログラムをテストする
 
-エミュレーターでの MapReduce ジョブのテストには次の手順が含まれます。
+HDInsight Emulator での MapReduce ジョブのテストには次の手順が含まれます。
 
 1.  データ ファイルをエミュレーターの HDFS にアップロードする
-2.  ワード カウント MapReduce ジョブを送信する
-3.  ジョブの状態を確認する
+2.  ローカル ユーザー グループを作成する
+3.  ワード カウント MapReduce ジョブを実行する
 4.  ジョブの結果を取得する
 
 HDInsight Emulator は既定のファイル システムとして HDFS を使用します。必要に応じて、Azure BLOB ストレージを使用するように HDInsight Emulator を構成することもできます。詳細については、「[HDInsight Emulator の概要][1]」を参照してください。
@@ -145,14 +212,13 @@ HDInsight Emulator は既定のファイル システムとして HDFS を使用
 
 このチュートリアルでは、次の HDFS フォルダー構造を使用します。
 
-<table border="1">
-<tr><th>フォルダー                   </th><th>注                                         </th></tr>
-<tr><td>/WordCount               </td><td>ワード カウント プロジェクトのルート フォルダー。  </td></tr>
-<tr><td>/WordCount/Apps          </td><td>mapper と reducer の実行可能ファイルのフォルダー。</td></tr>
-<tr><td>/WordCount/Input         </td><td>MapReduce のソース ファイル フォルダー。           </td></tr>
-<tr><td>/WordCount/Output        </td><td>MapReduce の出力ファイル フォルダー。             </td></tr>
-<tr><td>/WordCount/MRStatusOutput</td><td>ジョブの出力フォルダー。                           </td></tr>
-</table>
+|---------------------------|----------------------------------------------------|
+| フォルダー                | 注                                                 |
+| /WordCount                | ワード カウント プロジェクトのルート フォルダー。  |
+| /WordCount/Apps           | mapper と reducer の実行可能ファイルのフォルダー。 |
+| /WordCount/Input          | MapReduce のソース ファイル フォルダー。           |
+| /WordCount/Output         | MapReduce の出力ファイル フォルダー。              |
+| /WordCount/MRStatusOutput | ジョブの出力フォルダー。                           |
 
 このチュートリアルでは、%hadoop\_home% ディレクトリにある .txt ファイルをデータ ファイルとして使用します。
 
@@ -171,7 +237,7 @@ HDInsight Emulator は既定のファイル システムとして HDFS を使用
 
 3.  次のコマンドを実行して、テキスト ファイルを HDFS 上の入力フォルダーにコピーします。
 
-        hadoop fs -copyFromLocal %hadoop_home%\*.txt /WordCount/Input
+        hadoop fs -copyFromLocal C:\hdp\hadoop-2.4.0.2.1.3.0-1981\share\doc\hadoop\common\*.txt /WordCount/Input
 
     MapReduce ジョブはこれらのファイル内の単語をカウントします。
 
@@ -179,24 +245,35 @@ HDInsight Emulator は既定のファイル システムとして HDFS を使用
 
         hadoop fs -ls /WordCount/Input
 
-    8 個の .txt ファイルが表示されます。
+**ローカル ユーザー グループを作成するには**
+
+クラスター上で MapReduce ジョブを正常に実行するために、hdfs という名前のユーザー グループを作成する必要があります。次に、このグループに対し、hadoop という名前のユーザーと、エミュレーターにログオンするときに使用するローカル ユーザーを追加します。管理者特権のコマンド プロンプトで、次のコマンドを使用します。
+
+        # Add a user group called hdfs      
+        net localgroup hdfs /add
+
+        # Adds a user called hadoop to the group
+        net localgroup hdfs hadoop /add
+
+        # Adds the local user to the group
+        net localgroup hdfs <username> /add
 
 **Hadoop コマンド ラインを使用して MapReduce ジョブを実行するには**
 
 1.  デスクトップから Hadoop コマンド ラインを開きます。
 2.  次のコマンドを実行して、HDFS から /WordCount/Output フォルダー構造を削除します。/WordCount/Output はワード カウント MapReduce ジョブの出力フォルダーです。このフォルダーが既に存在していると、MapReduce ジョブは失敗します。この手順は、ジョブを実行するのが 2 回目である場合に必要です。
 
-        hadoop fs -rmr /WordCount/Output
+        hadoop fs -rm - r /WordCount/Output
 
 3.  次のコマンドを実行します。
 
-        hadoop jar c:\Tutorials\WordCountJava\wordcount\target\wordcount-1.0-SNAPSHOT.jar org.apache.hadoop.examples.WordCount /WordCount/Input /WordCount/Output
+        hadoop jar C:\Tutorials\WordCountJava\wordcountjava\target\wordcountjava-1.0-SNAPSHOT.jar org.apache.hadoop.examples.WordCount /WordCount/Input /WordCount/Output
 
     ジョブが正常に完了した場合は、次のスクリーンショットのような出力が表示されます。
 
     ![HDI.EMulator.WordCount.Run][HDI.EMulator.WordCount.Run]
 
-    スクリーンショットから、map と reduce の両方が 100% 完了したことがわかります。ジョブ ID job\_201312092021\_0002 も一覧表示されます。同じレポートは、デスクトップから **Hadoop MapReduce status** ショートカットを開いてジョブ ID を見つける方法で取得することもできます。
+    スクリーンショットから、map と reduce の両方が 100% 完了したことがわかります。ジョブ ID も一覧表示されます。同じレポートは、デスクトップから "**Hadoop MapReduce status**" ショートカットを開いて同じジョブ ID を見つける方法で取得することもできます。
 
 MapReduce ジョブを実行するための別のオプションは、Azure PowerShell を使用することです。手順については、「[HDInsight Emulator の概要][HDInsight Emulator の概要]」を参照してください。
 
@@ -206,19 +283,19 @@ MapReduce ジョブを実行するための別のオプションは、Azure Powe
 2.  次のコマンドを実行して、出力を表示します。
 
         hadoop fs -ls /WordCount/Output/
-        hadoop fs -cat /WordCount/Output/part-00000
+        hadoop fs -cat /WordCount/Output/part-r-00000
 
     "|more" をコマンドの最後に付けることで、ページ ビューを得られます。また、findstr コマンドを使用することで、文字列パターンを検索できます。
 
-        hadoop fs -cat /WordCount/Output/part-00000 | findstr "there"
+        hadoop fs -cat /WordCount/Output/part-r-00000 | findstr "there"
 
 これで、ワード カウント MapReduce ジョブの開発とエミュレーターでのテストが正常に完了しました。次の手順は、Azure HDInsight でそのジョブを展開して実行することです。
 
-## <span id="upload"></span></a>Azure BLOB ストレージにデータをアップロードする
+## <span id="upload"></span></a>Azure BLOB ストレージにデータとアプリケーションをアップロードする
 
 Azure HDInsight は、データ ストレージとして Azure BLOB ストレージを使用します。HDInsight クラスターをプロビジョニングするときは、Azure BLOB ストレージ コンテナーを使用してシステム ファイルを格納します。この既定のコンテナーか別のコンテナー (Azure の同じストレージ アカウント上、またはクラスターと同じデータ センターに配置された別のストレージ アカウント上) をデータ ファイルの格納に使用できます。
 
-このチュートリアルでは、データ ファイル用と MapReduce アプリケーション用にそれぞれ個別のストレージ アカウント上にコンテナーを作成します。データ ファイルはワークステーション上の %hadoop\_home% ディレクトリ内のテキスト ファイルです。
+このチュートリアルでは、データ ファイル用と MapReduce アプリケーション用にそれぞれ個別のストレージ アカウント上にコンテナーを作成します。データ ファイルは、エミュレーター ワークステーション上の **C:\\hdp\\hadoop-2.4.0.2.1.3.0-1981\\share\\doc\\hadoop\\common** ディレクトリ内のテキスト ファイルです。
 
 **BLOB ストレージとコンテナーを作成するには**
 
@@ -259,7 +336,7 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
         $storageAccountName_Data = "<AzureStorageAccountName>"  
         $containerName_Data = "<ContainerName>"
 
-        $localFolder = "c:\Hadoop\hadoop-1.1.0-SNAPSHOT"
+        $localFolder = "C:\hdp\hadoop-2.4.0.2.1.3.0-1981\share\doc\hadoop\common\"
         $destFolder = "WordCount/Input"
 
     **$storageAccountName\_Data** と **$containerName\_Data** は前の手順で定義したものと同じです。
@@ -298,7 +375,7 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
         Write-Host "The Uploaded data files:" -BackgroundColor Green
         Get-AzureStorageBlob -Container $containerName_Data -Context $destContext -Prefix $destFolder
 
-    8 個のテキスト データ ファイルが表示されます。
+    アップロードされたテキスト データ ファイルが表示されます。
 
 **ワード カウント アプリケーションをアップロードするには**
 
@@ -337,13 +414,13 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 
 ## <a name="run"></a>Azure HDInsight で MapReduce ジョブを実行する
 
-ここで示している PowerShell スクリプトは次のタスクを実行します。
+このセクションでは、次のタスクを実行する PowerShell スクリプトを作成します。
 
 1.  HDInsight クラスターをプロビジョニングする
 
     1.  HDInsight クラスターの既定のファイル システムとして使用されるストレージ アカウントを作成する
     2.  BLOB ストレージ コンテナーを作成する
-    3.  HDInsight クラスターを作成する
+    3.  HDInsight クラスターの作成
 
 2.  MapReduce ジョブを送信する
 
@@ -365,17 +442,17 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 
         # The storage account and the HDInsight cluster variables
         $subscriptionName = "<AzureSubscriptionName>"
-        $serviceNameToken = "<ServiceNameTokenString>"
+        $stringPrefix = "<StringForPrefix>"
         $location = "<MicrosoftDataCenter>"     ### must match the data storage account location
         $clusterNodes = <NumberOFNodesInTheCluster>
 
         $storageAccountName_Data = "<TheDataStorageAccountName>"
         $containerName_Data = "<TheDataBlobStorageContainerName>"
 
-        $clusterName = $serviceNameToken + "hdicluster"
+        $clusterName = $stringPrefix + "hdicluster"
 
-        $storageAccountName_Default = $serviceNameToken + "hdistore"
-        $containerName_Default =  $serviceNameToken + "hdicluster"
+        $storageAccountName_Default = $stringPrefix + "hdistore"
+        $containerName_Default =  $stringPrefix + "hdicluster"
 
         # The MapReduce job variables
         $jarFile = "wasb://$containerName_Data@$storageAccountName_Data.blob.core.windows.net/WordCount/jars/WordCount.jar"
@@ -437,7 +514,10 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
         Write-Host "Delete the storage account" -ForegroundColor Green
         Remove-AzureStorageAccount -StorageAccountName $storageAccountName_Default
 
-3.  スクリプトの最初の 6 つの変数を設定します。**$serviceNameToken** は、HDInsight クラスター名、既定のストレージ アカウント名、および既定の BLOB ストレージ コンテナー名に使用されます。サービス名は 3 〜 24 文字であり、スクリプトは最大 10 文字の文字列を名前に付加するため、サービス名の文字列は 14 文字以下に制限する必要があります。$serviceNameToken には小文字を使用してください。**$storageAccountName\_Data** と **$containerName\_Data** は、データ ファイルとアプリケーションの格納に使用するストレージ アカウントとコンテナーです。**$location** は、データ ストレージ アカウントの場所と一致する必要があります。
+3.  スクリプトの最初の 6 つの変数を設定します。**$stringPrefix** は、指定した文字列をプレフィックスとして HDInsight クラスター名、ストレージ アカウント名、BLOB ストレージ コンテナー名に付けるために使用されます。これらの名前の長さは 3 ～ 24 文字である必要があるため、指定する文字列とこのスクリプトで使用する名前の合計の長さが名前の文字制限を超えないように注意してください。**$stringPrefix** には、すべて小文字を使用する必要があります。
+
+    **$storageAccountName\_Data** と **$containerName\_Data** は、データ ファイルとアプリケーションの格納に使用するストレージ アカウントとコンテナーです。**$location** は、データ ストレージ アカウントの場所と一致する必要があります。
+
 4.  残りの変数を確認します。
 5.  スクリプト ファイルを保存します。
 6.  Azure PowerShell を開きます。
@@ -492,16 +572,19 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 
   [HDInsight Emulator の概要]: ../hdinsight-get-started-emulator/
   [Azure PowerShell のインストールおよび構成に関するページ]: ../install-configure-powershell/
+  [Apache Maven]: http://maven.apache.org/
   [購入オプション]: http://azure.microsoft.com/ja-jp/pricing/purchase-options/
   [メンバー プラン]: http://azure.microsoft.com/ja-jp/pricing/member-offers/
   [無料評価版]: http://azure.microsoft.com/ja-jp/pricing/free-trial/
-  [Java でワード カウント MapReduce プログラムを開発する]: #develop
+  [Apache Maven を使って Java でワード カウント MapReduce プログラムを作成する]: #develop
   [エミュレーターでプログラムをテストする]: #test
   [Azure BLOB ストレージにデータ ファイルとアプリケーションをアップロードする]: #upload
   [Azure HDInsight で MapReduce プログラムを実行する]: #run
   [MapReduce の結果を取得する]: #retrieve
   [次のステップ]: #nextsteps
-  [HDI.EMulator.WordCount.Compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
+  [POM]: http://maven.apache.org/guides/introduction/introduction-to-the-pom.html
+  [Maven リポジトリ検索]: http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar
+  [maven-shade-plugin]: http://maven.apache.org/plugins/maven-shade-plugin/
   [1]: ../hdinsight-get-started-emulator/#blobstorage
   [HDInsight へのデータのアップロード]: ../hdinsight-upload-data/
   [HDI.EMulator.WordCount.Run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png

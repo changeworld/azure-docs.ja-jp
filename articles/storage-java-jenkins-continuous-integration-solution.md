@@ -1,4 +1,4 @@
-<properties linkid="develop-java-tutorials-jenkins-continuous-integration" urlDisplayName="Jenkins Continuous Integration" pageTitle="Using Azure Storage with a Jenkins Continuous Integration Solution | Microsoft Azure" metaKeywords="" description="This tutorial show how to use the Azure blob service as a repository for build artifacts created by a Jenkins continuous integration solution." metaCanonical="" services="storage" documentationCenter="Java" title="Using Azure Storage with a Jenkins Continuous Integration solution" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
+<properties urlDisplayName="Jenkins Continuous Integration" pageTitle="Jenkins 継続的インテグレーション ソリューションでの Azure Storage の使用 | Microsoft Azure" metaKeywords="" description="このチュートリアルでは、Jenkins 継続的インテグレーション ソリューションで作成されるビルド アーティファクトのリポジトリとして Azure BLOB サービスを使用する方法について説明します。" metaCanonical="" services="storage" documentationCenter="Java" title="Jenkins 継続的インテグレーション ソリューションでの Azure ストレージの使用" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
 
@@ -166,6 +166,7 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
   [ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションの作成方法]: #howtocreatepostbuild
   [BLOB ストレージからのダウンロードを実行するビルド手順の作成方法]: #howtocreatebuildstep
   [BLOB サービスが使用するコンポーネント]: #components
+  [Meet Jenkins (Jenkins について)]: https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins
   [ストレージ アカウントの作成方法]: http://go.microsoft.com/fwlink/?LinkId=279823
   [共有アクセス署名の作成に関するページ]: http://go.microsoft.com/fwlink/?LinkId=279889
   [ブロック BLOB およびページ BLOB について]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee691964.aspx

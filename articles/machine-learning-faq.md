@@ -1,6 +1,6 @@
-<properties title="Microsoft Azure Machine Learning Frequently Asked Questions (FAQ)" pageTitle="Azure Machine Learning FAQ | Azure" description="Frequently asked questions about Microsoft Azure Machine Learning" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="pamehta" videoId="" scriptId="" />
+<properties title="Microsoft Azure Machine Learning に関してよく寄せられる質問 (FAQ)" pageTitle="Azure Machine Learning の FAQ | Azure" description="Microsoft Azure Machine Learning についてよくある質問" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="pamehta" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
 
-<tags ms.service="machine-learning" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="pamehta"></tags>
+<tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/06/2014" ms.author="pamehta" />
 
 # Microsoft Azure Machine Learning に関してよく寄せられる質問 (FAQ)
 
@@ -18,11 +18,11 @@ Azure ML Studio は、Web ブラウザーからアクセスできるワークベ
 
 ML API サービスでは、ML Studio に組み込まれた予測モデルを、拡張性の高い、フォールト トレランスに優れた Web サービスとしてデプロイできます。ML API サービスによって作成された Web サービスが REST API です。REST API は、外部アプリケーションと予測分析モデルの間の通信インターフェイスを提供します。Web サービスは、予測の結果を受信し、その結果を外部クライアント アプリケーションに組み込むために、予測モデルとリアルタイムで通信する手段を提供します。ML API サービスは、Azure ML REST API のデプロイメント、ホスティング、および管理に Microsoft Azure を活用します。Azure ML API サービスを使用して、2 種類のサービスが作成されます。非同期のバッチ アクセスのためのバッチ実行サービスと、待ち時間が短い同期応答のための要求応答サービスです。
 
-予測モデルはワークスペース内部のステージング環境に取り入れることができます。ML API サービスは、Web サービスのヘルプ ページも生成します。Web サービスのヘルプ ページでは、C\#、R、および Python で Web サービスを呼び出すためのコード サンプルを提供しています。対話型でサービスを呼び出して Web サービスをテストできます。ステージング環境の Web サービスは、その後に数回クリックするだけで運用環境にデプロイできます。運用環境にデプロイされた後は、Azure ポータルで使用状況やエラーを追跡するだけでなく、デプロイされたサービスを監視できます。Web サービスの更新は、ML Studio のモデルを更新し、ステージング環境のサービスに変更をプッシュするだけの簡単な作業です。
+予測モデルはワークスペース内部のステージング環境に取り入れることができます。ML API サービスは、Web サービスのヘルプ ページも生成します。Web サービスのヘルプ ページでは、C#、R、および Python で Web サービスを呼び出すためのコード サンプルを提供しています。対話型でサービスを呼び出して Web サービスをテストできます。ステージング環境の Web サービスは、その後に数回クリックするだけで運用環境にデプロイできます。運用環境にデプロイされた後は、Azure ポータルで使用状況やエラーを追跡するだけでなく、デプロイされたサービスを監視できます。Web サービスの更新は、ML Studio のモデルを更新し、ステージング環境のサービスに変更をプッシュするだけの簡単な作業です。
 
 **4. Microsoft Azure Machine Learning にはどのようにアクセスできますか。**
 
-Azure Machine Learning を利用し始めるには、「[Azure Machine Learning を利用する][]」にアクセスします。[Azure Machine Learning Center][] にアクセスして、サービスの更新、ML チーム ブログの最新の記事の参照、フォーラム経由での Machine Learning コミュニティへの参加、製品のヘルプへのアクセス、モデル ギャラリーの参照などを行えるほか、サービスに関するフィードバックを提供して製品ロードマップの形成に役立てることもできます。
+Azure Machine Learning を利用し始めるには、「[Azure Machine Learning を利用する][Azure Machine Learning を利用する]」にアクセスします。[Azure Machine Learning Center][Azure Machine Learning Center] にアクセスして、サービスの更新、ML チーム ブログの最新の記事の参照、フォーラム経由での Machine Learning コミュニティへの参加、製品のヘルプへのアクセス、モデル ギャラリーの参照などを行えるほか、サービスに関するフィードバックを提供して製品ロードマップの形成に役立てることもできます。
 
 ### 請求
 
@@ -36,11 +36,11 @@ Azure ML Studio サービスはアクティブな実験のコンピューティ�
 -   API サービス予測時間 - この測定値には、運用環境での Web サービスの実行によって発生したコンピューティング料金が含まれます。
 -   API サービス予測 (1,000 回単位) - この測定値には、運用 Web サービスへの呼び出しごとに発生した料金が含まれます。
 
-料金の詳細については、料金ページ (<http://azure.microsoft.com/en-us/pricing/details/machine-learning/>) を参照してください。
+料金の詳細については、料金ページ (<http://azure.microsoft.com/ja-jp/pricing/details/machine-learning/>) を参照してください。
 
 **6. Azure Machine Learning に無料評価版はありますか。**
 
-Azure ML は、Azure の無料評価版の一部です。Azure の無料評価版にサインアップすると、1 か月間すべての Azure サービスを試すことができます。Azure の無料評価版の詳細については、<http://azure.microsoft.com/en-us/pricing/free-trial-faq/> を参照してください。
+Azure ML は、Azure の無料評価版の一部です。Azure の無料評価版にサインアップすると、1 か月間すべての Azure サービスを試すことができます。Azure の無料評価版の詳細については、<http://azure.microsoft.com/ja-jp/pricing/free-trial-faq/> を参照してください。
 
 ### Machine Learning Studio
 
@@ -62,7 +62,7 @@ ML Studio は、拡張性の高い強化された意思決定ツリー、ベイ�
 
 **10. 探している機械学習アルゴリズム、データ ソース、データ形式、データ変換操作が Azure ML Studio で見つかりません。どうすればいいでしょうか。**
 
-[ユーザー フィードバック フォーラム][]にアクセスすると、追跡中の機能の要求を参照できます。探している機能が既に要求されている場合は、その要求に投票を追加できます。探している機能が存在しない場合は、新しい要求を作成します。このフォーラムでの要求の状態も参照できます。この一覧はこまめに追跡され、機能の提供状況は頻繁に更新されます。
+[ユーザー フィードバック フォーラム][ユーザー フィードバック フォーラム]にアクセスすると、追跡中の機能の要求を参照できます。探している機能が既に要求されている場合は、その要求に投票を追加できます。探している機能が存在しない場合は、新しい要求を作成します。このフォーラムでの要求の状態も参照できます。この一覧はこまめに追跡され、機能の提供状況は頻繁に更新されます。
 
 **11. 既存のコードを ML Studio に取り込むことはできますか。**
 
@@ -70,7 +70,7 @@ ML Studio は現在 R をサポートしているため、ML Studio の既存の
 
 **12. ML Studio で使用できるのはどの R パッケージですか。**
 
-ML Studio では現在、350+ R パッケージをサポートします。サポートされるパッケージは随時されます。サポートされている R パッケージの一覧を取得する方法については、ML Studio のヘルプ トピック「**Extensibility with R (R との拡張性)**」を参照してください。必要なパッケージがこの一覧にない場合は、[ユーザー フィードバック フォーラム][]でパッケージの名前を指定してください。
+ML Studio では現在、350+ R パッケージをサポートします。サポートされるパッケージは随時されます。サポートされている R パッケージの一覧を取得する方法については、ML Studio のヘルプ トピック「**Extensibility with R (R との拡張性)**」を参照してください。必要なパッケージがこの一覧にない場合は、[ユーザー フィードバック フォーラム][ユーザー フィードバック フォーラム]でパッケージの名前を指定してください。
 
 ### ML API サービス
 
@@ -100,7 +100,7 @@ ML Studio では現在、350+ R パッケージをサポートします。サポ
 
 **17. どこで Azure ML のトレーニングを受講できますか。**
 
-[Azure Machine Learning Center][] に、ハウツー ガイドやビデオ チュートリアルが用意されています。順を追ったハウツー ガイドでは、サービスの概要に加え、データのインポートから、データのクリーニング、予測モデルの構築、Azure ML を使用した運用環境へのデプロイまで、データ技術のライフ サイクルをひととおり説明します。
+[Azure Machine Learning Center][Azure Machine Learning Center] に、ハウツー ガイドやビデオ チュートリアルが用意されています。順を追ったハウツー ガイドでは、サービスの概要に加え、データのインポートから、データのクリーニング、予測モデルの構築、Azure ML を使用した運用環境へのデプロイまで、データ技術のライフ サイクルをひととおり説明します。
 
 ビデオ チュートリアルでは、ML Studio および ML API サービスの視覚的なツアーを体験できます。ビデオ チュートリアルでは、幅広いサービス、最もよく使用されるデータの受信、クリーニング、処理の各モジュール、予測モデルの構築、および予測モデルのデプロイについて説明します。また、ワークスペースのプロビジョニングやステージング環境のモデルの運用環境へのデプロイのようなタスクも取り上げています。
 
@@ -108,9 +108,9 @@ Machine Learning Center には継続的に新しい資料が追加されます�
 
 **18. どのようにして Azure ML のサポートを受けることができますか。**
 
-Azure ML は、Azure のサポート サービスの提供の一環としてサポートされます。Azure ML のテクニカル サポートを利用するには、サービスで Machine Learning を選択すると、サポート チケットを登録するためのトピックのカテゴリが指示されます。サポート サービスの提供の詳細については、<http://azure.microsoft.com/en-us/support/options/> を参照してください。
+Azure ML は、Azure のサポート サービスの提供の一環としてサポートされます。Azure ML のテクニカル サポートを利用するには、サービスで Machine Learning を選択すると、サポート チケットを登録するためのトピックのカテゴリが指示されます。サポート サービスの提供の詳細については、<http://azure.microsoft.com/ja-jp/support/options/> を参照してください。
 
-Azure Machine Learning については、MSDN にコミュニティ フォーラムがあり、ここで、Azure ML に関連する質問をすることができます。このフォーラムは Azure ML チームが監視しています。[Azure フォーラム][]にアクセスしてください。
+Azure Machine Learning については、MSDN にコミュニティ フォーラムがあり、ここで、Azure ML に関連する質問をすることができます。このフォーラムは Azure ML チームが監視しています。[Azure フォーラム][Azure フォーラム]にアクセスしてください。
 
   [Azure Machine Learning を利用する]: http://go.microsoft.com/fwlink/?LinkId=404226
   [Azure Machine Learning Center]: http://azure.microsoft.com/ja-jp/documentation/services/machine-learning/

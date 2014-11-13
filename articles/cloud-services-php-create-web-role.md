@@ -1,6 +1,6 @@
-<properties linkid="develop-php-common-tasks-create-web-and-worker-roles" urlDisplayName="Create Web and Worker Roles" pageTitle="Create Web and Worker Roles" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="PHP" title="How to create PHP web and worker roles" authors="bswan" solutions="" manager="paulettm" editor="mollybos" />
+<properties urlDisplayName="Create Web and Worker Roles" pageTitle="Web ロールとワーカー ロールを作成する" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="PHP" title="PHP Web ロールとワーカー ロールを作成する方法" authors="bswan" solutions="" manager="wpickett" editor="mollybos" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="bswan"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="bswan" />
 
 # PHP Web ロールとワーカー ロールを作成する方法
 
@@ -106,7 +106,7 @@ PHP ランタイム バージョンは、表示されている任意の PHP バ�
 
 指定した PHP ランタイムが使用されるように Web ロールを構成するには、次の操作を行います。
 
-1.  前の「[方法: クラウド サービス プロジェクトを作成する][方法: クラウド サービス プロジェクトを作成する]」セクションおよび「[方法: PHP Web ロールまたは worker ロールを追加する][方法: PHP Web ロールとワーカー ロールを追加する]」セクションの説明に従い、Azure サービス プロジェクトを作成して、PHP Web ロールを追加します。
+1.  前の「[方法: クラウド サービス プロジェクトを作成する][方法: クラウド サービス プロジェクトを作成する]」セクションおよび「[方法: PHP Web ロールまたは worker ロールを追加する][方法: PHP Web ロールとワーカー ロールを追加する]」セクションの説明に従い、Azure サービス プロジェクトを作成して、PHP worker ロールを追加します。
 2.  Web ロールのルート ディレクトリにある `bin` フォルダー内に `php` フォルダーを作成し、この `php` フォルダーに PHP ランタイム (すべてのバイナリ、構成ファイル、サブフォルダーなど) を追加します。
 3.  (省略可能) PHP ランタイムに [Microsoft Drivers for PHP for SQL Server][Microsoft Drivers for PHP for SQL Server] が使用されている場合は、Web ロールを構成して、プロビジョニング時に [SQL Server Native Client 2012][SQL Server Native Client 2012] がインストールされるように指定する必要があります。これを行うには、Web ロールのルート ディレクトリにある `bin` フォルダーに、`sqlncli.msi` インストーラーを追加します。インストーラーは、[sqlncli.msi x64 インストーラー][sqlncli.msi x64 インストーラー]からダウンロードできます。次のステップで説明するスタートアップ スクリプトでは、ロールのプロビジョニング時にインストーラーが自動的に実行されます。PHP ランタイムに Microsoft Drivers for PHP for SQL Server が使用されていない場合は、次のステップで示すスクリプトから、この行を削除できます。
 
@@ -182,7 +182,7 @@ PHP ランタイム バージョンは、表示されている任意の PHP バ�
 
 ## <a name="Emulators"></a>方法: コンピューティング エミュレーターとストレージ エミュレーターでアプリケーションを実行する
 
-Azure コンピューティング エミュレーターとストレージ エミュレーターでは、Azure アプリケーションをクラウドに展開する前にテストできるローカル環境が提供されます。ただし、エミュレーターと Azure 環境では、いくつか相違点があります。詳細については、「[コンピューティング エミュレーターと Windows Azure との違い][コンピューティング エミュレーターと Windows Azure との違い]」および「[ストレージ エミュレーターと Windows Azure ストレージ サービスとの違い][ストレージ エミュレーターと Windows Azure ストレージ サービスとの違い]」を参照してください。
+Azure コンピューティング エミュレーターとストレージ エミュレーターでは、Azure アプリケーションをクラウドにデプロイする前にテストできるローカル環境が提供されます。ただし、エミュレーターと Azure 環境では、いくつか相違点があります。詳細については、「[コンピューティング エミュレーターと Windows Azure との違い][コンピューティング エミュレーターと Windows Azure との違い]」および「[ストレージ エミュレーターと Windows Azure ストレージ サービスとの違い][ストレージ エミュレーターと Windows Azure ストレージ サービスとの違い]」を参照してください。
 
 コンピューティング エミュレーターを使用するには、ローカルで PHP をインストールしておく必要があります。コンピューティング エミュレーターでは、アプリケーションを実行するために、ローカルの PHP インストールが使用されます。
 

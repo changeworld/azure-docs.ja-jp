@@ -1,6 +1,6 @@
-<properties linkid="develop-python-django-with-visual-studio" urlDisplayName="Django with Visual Studio" pageTitle="Django with Visual Studio (Python) - Azure tutorial" metaKeywords="Azure Django web app, Azure Django virtual machine" description="A tutorial that teaches you how to build a Django web application hosted in an Azure virtual machine." metaCanonical="" services="cloud-services" documentationCenter="Python" title="Creating Django applications with Python Tools for Visual Studio 1.5" authors="huvalo" solutions="" manager="" editor="" />
+<properties urlDisplayName="Django with Visual Studio" pageTitle="Visual Studio を使用した Django (Python) - Azure チュートリアル" metaKeywords="Azure Django web app, Azure Django virtual machine" description="Azure の仮想マシンでホストされる Django Web アプリケーションを作成する方法について説明するチュートリアルです。" metaCanonical="" services="cloud-services" documentationCenter="Python" title="Python Tools for Visual Studio 1.5 を使用して Django アプリケーションを作成する" authors="huvalo" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo"></tags>
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo" />
 
 # Python Tools for Visual Studio 1.5 を使用して Django アプリケーションを作成する
 
@@ -8,7 +8,9 @@
 
 **注:** PTVS 2.0 ベータ版に関する、[より詳しい最新のチュートリアル][より詳しい最新のチュートリアル]もあります。
 
-Azure の開発を容易にする各種ツールが用意されています。このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このガイドでは、クラウドで動作する Django アプリケーションを作成します。
+Azure の開発を容易にする各種ツールが用意されています。
+このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。
+このガイドでは、クラウドで動作する Django アプリケーションを作成します。
 
 学習内容:
 
@@ -17,13 +19,15 @@ Azure の開発を容易にする各種ツールが用意されています。�
 -   コンピューティング エミュレーターで Django アプリケーションをローカル実行する方法
 -   Azure にアプリケーションを発行および再発行する方法
 
-このチュートリアルを実行して、単純な Hello World Web アプリケーションを作成します。このアプリケーションは Web ロールのインスタンスにホストされます。Azure で実行する場合は、このロール自体が専用の仮想マシン (VM) にホストされます。
+このチュートリアルを実行して、単純な Hello World Web
+アプリケーションを作成します。このアプリケーションは Web ロールのインスタンスにホストされます。
+Azure で実行する場合は、このロール自体が専用の仮想マシン (VM) にホストされます。
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
-![][]
+![][0]
 
-[WACOM.INCLUDE [create-account-note][create-account-note]]
+[WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
 ## <span id="setup"></span> </a>開発環境の設定
 
@@ -153,8 +157,7 @@ Azure アプリケーションを開発する前に、ツールを入手して�
 
   [Youtube の動画]: http://www.youtube.com/watch?v=UsLti4KlgAY
   [より詳しい最新のチュートリアル]: ../web-sites-python-create-deploy-django-app/
-  []: ./media/python-django-app-tools-visual-studio/ptvs-dj-FirstAppInCloud.png
-  [create-account-note]: ../includes/create-account-note.md
+  [0]: ./media/python-django-app-tools-visual-studio/ptvs-dj-FirstAppInCloud.png
   [How to Install Python (Python のインストール方法)]: ../python-how-to-install/
   [新しい Python プロジェクト テンプレート]: ./media/python-django-app-tools-visual-studio/ptvs-dj-NewProject.png
   [最初の Django プロジェクトが表示されている Visual Studio]: ./media/python-django-app-tools-visual-studio/ptvs-dj-FirstProject.png
@@ -163,7 +166,7 @@ Azure アプリケーションを開発する前に、ツールを入手して�
   [新しいアプリケーションが追加されたソリューション エクスプローラー]: ./media/python-django-app-tools-visual-studio/ptvs-dj-MyFirstApp.png
   [INSTALLED\_APPS で settings.py にアプリケーションを追加]: ./media/python-django-app-tools-visual-studio/ptvs-dj-InstallApp.png
   [1]: ./media/python-django-app-tools-visual-studio/ptvs-dj-FirstView.png
-  [テンプレート フォルダーへの新しい項目の追加]: ./media/python-django-app-tools-visual-studio/ptvs-dj-AddFirstTemplate.png
+  [[テンプレート] フォルダーへの新しい項目の追加]: ./media/python-django-app-tools-visual-studio/ptvs-dj-AddFirstTemplate.png
   [2]: ./media/python-django-app-tools-visual-studio/ptvs-dj-NewDjangoTemplate.png
   [ソリューション エクスプローラーに追加されたテンプレート]: ./media/python-django-app-tools-visual-studio/ptvs-dj-TemplateAdded.png
   [Django フィルターに対応したテンプレートの Intellisense]: ./media/python-django-app-tools-visual-studio/ptvs-dj-TemplateIntellisense.png
@@ -177,4 +180,3 @@ Azure アプリケーションを開発する前に、ツールを入手して�
   [パッケージのサブスクリプション]: ./media/python-django-app-tools-visual-studio/ptvs-dj-publish2.png
   [パッケージの設定]: ./media/python-django-app-tools-visual-studio/ptvs-dj-publish3.png
   [パッケージのデプロイ]: ./media/python-django-app-tools-visual-studio/ptvs-dj-publish4.png
-  [クラウド内の Django アプリケーション]: ./media/python-django-app-tools-visual-studio/ptvs-dj-FirstAppInCloud.png

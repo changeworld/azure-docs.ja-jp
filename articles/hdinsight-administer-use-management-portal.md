@@ -1,4 +1,4 @@
-<properties linkid="manage-services-hdinsight-howto-administer-hdinsight" urlDisplayName="Administration" pageTitle="Manage Hadoop clusters in HDInsight using Azure Portal | Azure" metaKeywords="" description="Learn how to administer HDInsight Service. Create an HDInsight cluster, open the interactive JavaScript console, and open the Hadoop command console." metaCanonical="" services="hdinsight" documentationCenter="" title="Manage Hadoop clusters in HDInsight using the Azure Management Portal" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
+<properties urlDisplayName="Administration" pageTitle="Azure ポータルを使用した HDInsight Hadoop クラスターの管理 | Azure" metaKeywords="" description="HDInsight サービスを管理する方法を学習します。HDInsight クラスターを作成し、対話型 JavaScript コンソールを開いて、Hadoop コマンド コンソールを開きます。" metaCanonical="" services="hdinsight" documentationCenter="" title="Azure の管理ポータルを使用した HDInsight での Hadoop クラスターの管理" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
 
@@ -22,6 +22,7 @@ Azure の管理ポータルを使用すると、HDInsight で Hadoop クラス�
 -   [HDInsight クラスターのカスタマイズ][HDInsight クラスターのカスタマイズ]
 -   [HDInsight クラスターのユーザー名とパスワードの変更][HDInsight クラスターのユーザー名とパスワードの変更]
 -   [RDP を使用した HDInsight クラスターへの接続][RDP を使用した HDInsight クラスターへの接続]
+-   [自己署名証明書の作成][自己署名証明書の作成]
 -   [HTTP サービスのアクセス許可の付与/取り消し][HTTP サービスのアクセス許可の付与/取り消し]
 -   [Hadoop コマンド コンソールを開く][Hadoop コマンド コンソールを開く]
 -   [次のステップ][次のステップ]
@@ -44,7 +45,7 @@ Azure ストレージ アカウントの作成の詳細については、「[ス
 
 **HDInsight クラスターをプロビジョニングするには**
 
-1.  [Azure 管理ポータル][Azure 管理ポータル]にサインインします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]にサインインします。
 2.  ページ下部の **[新規]** をクリックし、**[データ サービス]**、**[HDINSIGHT]**、**[簡易作成]** の順にクリックします。
 
 3.  **クラスター名**、**クラスターのサイズ**、**クラスター管理用パスワード**、Azure の**ストレージ アカウント**を入力し、**[HDInsight クラスターの作成]** をクリックします。クラスターを作成して実行すると、状態が *"実行中"* になります。
@@ -80,7 +81,7 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 
 **HDInsight クラスターのユーザー名とパスワードを変更するには**
 
-1.  [Azure 管理ポータル][Azure 管理ポータル]にサインインします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]にサインインします。
 2.  左側のウィンドウで **[HDINSIGHT]** をクリックします。展開した HDInsight クラスターが一覧表示されます。
 3.  ユーザー名とパスワードをリセットする HDInsight クラスターをクリックします。
 4.  ページの上部にある **[構成]** をクリックします。
@@ -96,7 +97,7 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 
 **リモート デスクトップを有効にするには**
 
-1.  [Azure 管理ポータル][Azure 管理ポータル]にサインインします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]にサインインします。
 2.  左側のウィンドウで **[HDINSIGHT]** をクリックします。展開した HDInsight クラスターが一覧表示されます。
 3.  接続する HDInsight クラスターをクリックします。
 4.  ページの上部にある **[構成]** をクリックします。
@@ -111,11 +112,25 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 
 **RDP を使用してクラスターに接続するには**
 
-1.  [Azure 管理ポータル][Azure 管理ポータル]にサインインします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]にサインインします。
 2.  左側のウィンドウで **[HDINSIGHT]** をクリックします。展開した HDInsight クラスターが一覧表示されます。
 3.  接続する HDInsight クラスターをクリックします。
 4.  ページの上部にある **[構成]** をクリックします。
 5.  **[接続]** クリックし、指示に従います。
+
+## <span id="cert"></span></a>自己署名証明書の作成
+
+クラスターに対し、.NET SDK を使用して何らかの操作を実行するには、ワークステーションで自己署名証明書を作成したうえで、ご利用の Azure サブスクリプションにその証明書をアップロードする必要があります。これは 1 回限りの作業です。証明書が有効である限り、同じ証明書を他のコンピューターにインストールすることができます。
+
+**自己署名証明書を取得するには**
+
+1.  要求を認証するために使用する自己署名証明書を作成します。IIS または [makecert][makecert] を使用して証明書を作成できます。
+
+2.  証明書の場所を参照して、証明書を右クリックします。**[証明書のインストール]** をクリックし、コンピューターの個人用ストアに証明書をインストールします。証明書のプロパティを編集し、フレンドリ名を割り当てます。
+
+3.  Azure 管理ポータルに証明書をインポートします。ポータルで、ページの左下にある **[設定]** をクリックし、**[管理証明書]** をクリックします。ページの下部で **[アップロード]** をクリックして指示に従い、前の手順で作成した .cer ファイルをアップロードします。
+
+    ![HDI.ClusterCreate.UploadCert][HDI.ClusterCreate.UploadCert]
 
 ## <span id="httpservice"></span></a> HTTP サービスのアクセス許可の付与/取り消し
 
@@ -133,7 +148,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 
 **HTTP Web サービスのアクセス許可を付与する/取り消すには**
 
-1.  [Azure 管理ポータル][Azure 管理ポータル]にサインインします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]にサインインします。
 2.  左側のウィンドウで **[HDINSIGHT]** をクリックします。展開した HDInsight クラスターが一覧表示されます。
 3.  構成する HDInsight クラスターをクリックします。
 4.  ページの上部にある **[構成]** をクリックします。
@@ -154,7 +169,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 
 **Hadoop コマンド ラインを開くには**
 
-1.  [Azure 管理ポータル][Azure 管理ポータル]にサインインします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]にサインインします。
 2.  左側のウィンドウで **[HDINSIGHT]** をクリックします。デプロイした Hadoop クラスターが一覧表示されます。
 3.  接続する HDInsight クラスターをクリックします。
 4.  ページの上部にある **[構成]** をクリックします。
@@ -196,13 +211,14 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
   [HDInsight クラスターのカスタマイズ]: #customize
   [HDInsight クラスターのユーザー名とパスワードの変更]: #password
   [RDP を使用した HDInsight クラスターへの接続]: #rdp
+  [自己署名証明書の作成]: #cert
   [HTTP サービスのアクセス許可の付与/取り消し]: #httpservice
   [Hadoop コマンド コンソールを開く]: #hadoopcmd
   [次のステップ]: #nextsteps
   [1]: ../hdinsight-provision-clusters/
   [HDInsight での Azure BLOB ストレージの使用]: ../hdinsight-use-blob-storage/
   [ストレージ アカウントの作成方法]: ../storage-create-storage-account/
-  [Azure 管理ポータル]: https://manage.windowsazure.com/
+  [Azure の管理ポータル]: https://manage.windowsazure.com/
   [HDI.QuickCreate]: ./media/hdinsight-administer-use-management-portal/HDI.QuickCreateCluster.png
   [HDI.ClusterLanding]: ./media/hdinsight-administer-use-management-portal/HDI.ClusterLanding.PNG "クラスター ランディング ページ"
   [Azure HDInsight でサポートされている Hadoop のバージョン]: ../hdinsight-component-versioning/
@@ -210,6 +226,8 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
   [Microsoft サポート]: http://azure.microsoft.com/ja-jp/support/options/
   [リモート デスクトップを有効にする]: #enablerdp
   [HDI.CreateRDPUser]: ./media/hdinsight-administer-use-management-portal/HDI.CreateRDPUser.png
+  [makecert]: http://msdn.microsoft.com/ja-jp/library/bfsktky3(v=vs.110).aspx
+  [HDI.ClusterCreate.UploadCert]: ./media/hdinsight-administer-use-management-portal/HDI.ClusterCreate.UploadCert.png
   [HDI.HadoopCommandLine]: ./media/hdinsight-administer-use-management-portal/HDI.HadoopCommandLine.PNG "Hadoop コマンド ライン"
   [Hadoop コマンド リファレンス]: http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html
   [Azure HDInsight の概要]: ../hdinsight-get-started/

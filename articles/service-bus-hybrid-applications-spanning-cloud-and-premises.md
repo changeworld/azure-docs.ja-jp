@@ -1,6 +1,6 @@
-<properties pageTitle="Enable Hybrid Applications Spanning Cloud and Premises" metaKeywords="Service Bus, Cloud, Hybrid" description="Learn how to build hybrid applications that span across the cloud and on premises." services="service-bus" documentationCenter=".NET" title="Enable Hybrid Applications Spanning Cloud and Premises" authors="sethm" solutions="" manager="dwrede" editor="mattshel" />
+<properties pageTitle="クラウドと社内にまたがったハイブリッド アプリケーションの有効化" metaKeywords="Service Bus, Cloud, Hybrid" description="クラウドと内部設置にまたがったハイブリッド アプリケーションの構築方法について学習します。" services="service-bus" documentationCenter=".NET" title="クラウドと社内にまたがったハイブリッド アプリケーションの有効化" authors="sethm" solutions="" manager="timlt" editor="mattshel" />
 
-<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="sethm"></tags>
+<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="09/24/2014" ms.author="sethm" />
 
 # クラウドと社内にまたがったハイブリッド アプリケーションの有効化
 

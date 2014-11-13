@@ -1,4 +1,4 @@
-<properties linkid="hdinsight-use-time-based-oozie-coordinator-with-hdinsight" urlDisplayName="Use time-based Hadoop Oozie Coordinator in HDInsight" pageTitle="Use time-based Hadoop Oozie Coordinator in HDInsight | Azure" metaKeywords="" description="Use time-based Hadoop Oozie Coordinator in HDInsight, a big data solution. Learn how to define Oozie workflows and coordinators, and submit coordinator jobs." metaCanonical="" services="hdinsight" documentationCenter="" title="Use time-based Hadoop Oozie Coordinator in HDInsight" authors="jgao" solutions="big-data" manager="paulettm" editor="cgronlun" />
+<properties urlDisplayName="Use time-based Hadoop Oozie Coordinator in HDInsight" pageTitle="HDInsight の Hadoop での時間ベースの Oozie コーディネーターの使用 | Azure" metaKeywords="" description="ビッグ データ ソリューションとして HDInsight の Hadoop で時間ベースの Oozie コーディネーターを使用します。Oozie ワークフローとコーディネーターを定義し、コーディネーター ジョブを送信する方法について説明します。" metaCanonical="" services="hdinsight" documentationCenter="" title="HDInsight の Hadoop での時間ベースの Oozie コーディネーターの使用" authors="jgao" solutions="big-data" manager="paulettm" editor="cgronlun" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
 
@@ -63,12 +63,15 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
     <col width="25%" />
     <col width="25%" />
     </colgroup>
+    <thead>
     <tr class="header">
     <th align="left">クラスター プロパティ</th>
     <th align="left">PowerShell 変数名</th>
     <th align="left">値</th>
     <th align="left">説明</th>
     </tr>
+    </thead>
+    <tbody>
     <tr class="odd">
     <td align="left">HDInsight クラスター名</td>
     <td align="left">$clusterName</td>
@@ -99,6 +102,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
     <td align="left"></td>
     <td align="left">この例では、既定の HDInsight クラスター ファイル システムで使用する Azure BLOB ストレージ コンテナーを使用します。既定では、HDInsight クラスターと同じ名前です。</td>
     </tr>
+    </tbody>
     </table>
 
 -   **Azure SQL データベース**。コンピューターから SQL データベース サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。SQL データベースの作成方法とファイアウォールの構成方法については、「[Azure SQL データベースの概要][Azure SQL データベースの概要]」を参照してください。この記事には、このチュートリアルに必要な SQL データベース テーブルを作成する PowerShell スクリプトが紹介されています。
@@ -110,12 +114,15 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
     <col width="25%" />
     <col width="25%" />
     </colgroup>
+    <thead>
     <tr class="header">
     <th align="left">SQL データベースのプロパティ</th>
     <th align="left">PowerShell 変数名</th>
     <th align="left">値</th>
     <th align="left">説明</th>
     </tr>
+    </thead>
+    <tbody>
     <tr class="odd">
     <td align="left">SQL データベース サーバー名</td>
     <td align="left">$sqlDatabaseServer</td>
@@ -140,6 +147,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
     <td align="left"></td>
     <td align="left">Sqoop によるデータのエクスポート先となる Azure SQL データベース。</td>
     </tr>
+    </tbody>
     </table>
 
     > [WACOM.NOTE] 既定では、Azure SQL データベースは Azure HDInsight のような Azure サービスからの接続を許可します。このファイアウォール設定が無効になっている場合は、Azure 管理ポータルから有効にする必要があります。SQL データベースの作成方法とファイアウォール ルールの構成方法については、「[SQL データベースの作成と構成][SQL データベースの作成と構成]」を参照してください。
@@ -240,26 +248,23 @@ Hive パスには既知の問題があります。この問題に見舞われる
 
     RunHiveScript には、変数がいくつかあります。その値は、Azure PowerShell を使用してコンピューターから Oozie ジョブを送信するときに渡します。
 
-	<table border="1"> 
-	<tr><th>ワークフローの変数</th><th>説明</th></tr>
-	<tr><td>${jobTracker}</td><td>Hadoop ジョブ トラッカーの URL を指定します。HDInsight クラスター Version 2.0 および 3.0 の <strong>jobtrackerhost:9010</strong> を使用します。</td></th>
-    <tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。既定のファイル システムの WASB アドレスを使用します。たとえば、<i>wasb://\<containerName\>@\<storageAccountName\>.blob.core.windows.net</i> のように指定します。</td></th>
-    <tr><td>${queueName}</td><td>ジョブの送信先になるキュー名を指定します。<strong>default</strong> を使用します。</td></th>
-	</table>
+    | ワークフローの変数 | 説明                                                                                                                                                                                              |
+    |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | ${jobTracker}      | Hadoop ジョブ トラッカーの URL を指定します。HDInsight クラスター Version 2.0 および 3.0 の **jobtrackerhost:9010** を使用します。                                                                |
+    | ${nameNode}        | Hadoop 名前ノードの URL を指定します。既定のファイル システムの WASB アドレスを使用します。たとえば、*wasb://\<containerName\>@\<storageAccountName\>.blob.core.windows.net* のように指定します。 |
+    | ${queueName}       | ジョブの送信先になるキュー名を指定します。**default** を使用します。                                                                                                                              |
 
-	<table border="1"> 
-    <tr><th>Hive アクションの変数</th><th>説明</th></tr>
-    <tr><td>${hiveDataFolder}</td><td>Hive の CREATE TABLE コマンドのソース ディレクトリ。</td></th>
-    <tr><td>${hiveOutputFolder}</td><td>INSERT OVERWRITE ステートメントの出力フォルダー。</td></th>
-    <tr><td>${hiveTableName}</td><td>log4j データ ファイルを参照する Hive テーブルの名前。</td></th>
-	</table>
+    | Hive アクションの変数 | 説明                                                  |
+    |-----------------------|-------------------------------------------------------|
+    | ${hiveDataFolder}     | Hive の CREATE TABLE コマンドのソース ディレクトリ。  |
+    | ${hiveOutputFolder}   | INSERT OVERWRITE ステートメントの出力フォルダー。     |
+    | ${hiveTableName}      | log4j データ ファイルを参照する Hive テーブルの名前。 |
 
-	<table border="1"> 
-    <tr><th>Sqoop アクションの変数</th><th>説明</th></tr>
-    <tr><td>${sqlDatabaseConnectionString}</td><td>SQL データベース接続文字列。</td></th>
-    <tr><td>${sqlDatabaseTableName}</td><td>データのエクスポート先となる SQL データベース テーブル。</td></th>
-    <tr><td>${hiveOutputFolder}</td><td>Hive の INSERT OVERWRITE ステートメントの出力フォルダー。これは Sqoop エクスポートの export-dir と同じフォルダーです。</td></th>
-	</table>
+    | Sqoop アクションの変数         | 説明                                                                                                                   |
+    |--------------------------------|------------------------------------------------------------------------------------------------------------------------|
+    | ${sqlDatabaseConnectionString} | SQL データベース接続文字列。                                                                                           |
+    | ${sqlDatabaseTableName}        | データのエクスポート先となる SQL データベース テーブル。                                                               |
+    | ${hiveOutputFolder}            | Hive の INSERT OVERWRITE ステートメントの出力フォルダー。これは Sqoop エクスポートの export-dir と同じフォルダーです。 |
 
     Oozie ワークフローとワークフロー アクションの使用法の詳細については、[Apache Oozie 4.0 のマニュアル][Apache Oozie 4.0 のマニュアル] (HDInsight クラスター Version 3.0) または [Apache Oozie 3.3.2 のマニュアル][Apache Oozie 3.3.2 のマニュアル] (HDInsight クラスター Version 2.1) を参照してください。
 
@@ -279,14 +284,13 @@ Hive パスには既知の問題があります。この問題に見舞われる
 
     定義ファイルでは 5 つの変数が使用されています。
 
-	<table border="1">
-    <tr><th>変数</th><th>説明</th></ztr>
-    <tr><td>${coordFrequency}</td><td>ジョブの一時停止時間。頻度は、常に分単位で表現します。</td></tr>
-    <tr><td>${coordStart}</td><td>ジョブの開始時刻。</td></tr>
-    <tr><td>${coordEnd}</td><td>ジョブの終了時刻。</td></tr>
-    <tr><td>${coordTimezone}</td><td>Oozie は、DST (夏時間) なしの固定タイムゾーン (通常は UTC) でコーディネーター ジョブを処理します。このタイムゾーンを、"Oozie 処理のタイムゾーン" と呼びます。</td></tr>
-    <tr><td>${wfPath}</td><td>workflow.xml のパス。ワークフローのファイル名が既定のファイル名 (workflow.xml) とは異なる場合は、それを指定する必要があります。</td></tr>
-	</table>
+    | 変数              | 説明                                                                                                                                                          |
+    |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | ${coordFrequency} | ジョブの一時停止時間。頻度は、常に分単位で表現します。                                                                                                        |
+    | ${coordStart}     | ジョブの開始時刻。                                                                                                                                            |
+    | ${coordEnd}       | ジョブの終了時刻。                                                                                                                                            |
+    | ${coordTimezone}  | Oozie は、DST (夏時間) なしの固定タイムゾーン (通常は UTC) でコーディネーター ジョブを処理します。このタイムゾーンを、"Oozie 処理のタイムゾーン" と呼びます。 |
+    | ${wfPath}         | workflow.xml のパス。ワークフローのファイル名が既定のファイル名 (workflow.xml) とは異なる場合は、それを指定する必要があります。                               |
 
 2.  ファイルを **C:\\Tutorials\\UseOozie\\coordinator.xml** という名前で保存します。エンコーディングは、ANSI (ASCII) を使用します (使っているテキスト エディターにこのオプションがない場合は、メモ帳を使用します)。
 
@@ -337,7 +341,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
 **チュートリアルを準備するには**
 
-1.  Windows PowerShell ISE を開きます (Windows 8 のスタート画面で、「**PowerShell\_ISE**」と入力し、**[Windows PowerShell ISE]** をクリックします。「[Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)](Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)))」を参照してください。
+1.  Windows PowerShell ISE を開きます (Windows 8 のスタート画面で、「**PowerShell\_ISE**」と入力し、**[Windows PowerShell ISE]** をクリックします。「[Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)][Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)])」を参照してください。
 2.  下のウィンドウで、次のコマンドを実行して、Azure サブスクリプションに接続します。
 
         Add-AzureAccount
@@ -688,7 +692,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
     追加の機能を実行するには、\# 記号を削除します。
 
-9.  HDInsight クラスターが Version 2.1 である場合は、"https://$clusterName.azurehdinsight.net:443/oozie/v2/" を "https://$clusterName.azurehdinsight.net:443/oozie/v1/" に置き換えてください。HDInsight クラスター Version 2.1 は、Web サービスの Version 2 をサポートしていません。
+9.  HDInsight クラスターが Version 2.1 である場合は、"<https://$clusterName.azurehdinsight.net:443/oozie/v2/>" を "<https://$clusterName.azurehdinsight.net:443/oozie/v1/>" に置き換えてください。HDInsight クラスター Version 2.1 は、Web サービスの Version 2 をサポートしていません。
 
 10. **[スクリプトの実行]** をクリックするか、**F5** キーを押して、スクリプトを実行します。次のように出力されます。
 
@@ -748,7 +752,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 -   [HDInsight での Hive の使用][HDInsight での Hive の使用]
 -   [HDInsight での Pig の使用][HDInsight での Pig の使用]
 -   [HDInsight 用 C# Hadoop ストリーミング プログラムの開発][HDInsight 用 C# Hadoop ストリーミング プログラムの開発]
--   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)](Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発))
+-   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]
 
   [HDInsight での Oozie の使用]: ../hdinsight-use-oozie/
   [Oozie とは]: #whatisoozie
@@ -762,6 +766,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
   [HDInsight での Sqoop の使用]: ../hdinsight-use-sqoop/
   [HDInsight で提供されるクラスター バージョンの新機能]: ../hdinsight-component-versioning/
   [Azure PowerShell のインストールおよび構成に関するページ]: ../install-and-configure-powershell/
+  [Run Windows PowerShell scripts (Windows PowerShell スクリプトの実行)]: http://technet.microsoft.com/ja-jp/library/ee176949.aspx
   [HDInsight クラスターのプロビジョニング]: ../hdinsight-provision-clusters/
   [Azure HDInsight の概要]: ../hdinsight-get-started/
   [Azure SQL データベースの概要]: ../sql-database-get-started/
@@ -770,6 +775,8 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
   [Apache Oozie 4.0 のマニュアル]: http://oozie.apache.org/docs/4.0.0/
   [Apache Oozie 3.3.2 のマニュアル]: http://oozie.apache.org/docs/3.3.2/
   [HDInsight での Azure BLOB ストレージの使用]: ../hdinsight-use-blob-storage/
+  [HDInsight: Hive Internal and External Tables Intro (HDInsight: Hive の内部テーブルと外部テーブルの概要)]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+  [Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)]: http://technet.microsoft.com/ja-jp/library/hh847889.aspx
   [チュートリアルの準備の出力]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.Preparation.Output1.png
   [チュートリアルのワークフローの実行の出力]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.RunCoord.Output.png
   [管理ポータルを使用した HDInsight クラスターの管理]: ../hdinsight-administer-use-management-portal/
@@ -778,3 +785,4 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
   [HDInsight へのデータのアップロード]: ../hdinsight-upload-data/
   [HDInsight での Pig の使用]: ../hdinsight-use-pig/
   [HDInsight 用 C# Hadoop ストリーミング プログラムの開発]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
+  [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]: ../hdinsight-develop-deploy-java-mapreduce/

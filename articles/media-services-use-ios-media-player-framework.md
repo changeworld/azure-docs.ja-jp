@@ -1,6 +1,6 @@
-<properties linkid="develop-media-services-how-to-guides-ios-media-player-framework" urlDisplayName="iOS Media Player Framework" pageTitle="Use the iOS Media Player Framework with Azure Media Services" metaKeywords="" description="Learn how to use the Media Services iOS Media Player Framework library to create rich, dynamic apps.," metaCanonical="" services="media-services" documentationCenter="" title="How to use the Azure Media Services iOS Media Player Framework" authors="migree" solutions="" manager="" editor="" />
+<properties urlDisplayName="iOS Media Player Framework" pageTitle="iOS Media Player フレームワークを Azure Media Services と共に使用する" metaKeywords="" description="Media Services iOS Media Player フレームワーク ライブラリを使用して、動的なリッチ アプリケーションを作成する方法を説明します。" metaCanonical="" services="media-services" documentationCenter="" title="Azure Media Services iOS Media Player フレームワークを使用する方法" authors="juliako" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="mobile-ios" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="migree"></tags>
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="mobile-ios" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="juliako" />
 
 # Azure Media Services iOS Media Player フレームワークを使用する方法
 
@@ -27,11 +27,11 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 
     `git clone https://github.com/WindowsAzure/azure-media-player-framework`
 
-2.  `azure-media-player-framework/src/iOS/HLSClient/` にあるプロジェクト **SamplePlayer.xcodeproj** を開きます。
+2.  `azure-media-player-framework/src/iOS/HLSClient/` にあるプロジェクト**SamplePlayer.xcodeproj** を開きます。
 
 3.  SamplePlayer の構造は、次のとおりです。
 
-![HLS サンプル コードの構造][]
+![HLS サンプル コードの構造][HLS サンプル コードの構造]
 
 1.  iPad フォルダーには 2 つの .xib ファイル、**SeekbarViewController** と **SamplePlayerViewController** があります。これらは、iPad アプリケーションの UI レイアウトを作成します。iPhone フォルダーにも 2 つの .xib ファイルがあり、これらはシーク バーとコントローラーを定義しています。
 
@@ -43,7 +43,7 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 
 ### SamplePlayerViewController\_iPad.xib
 
-![Sample Player のアドレス バー][]
+![Sample Player のアドレス バー][Sample Player のアドレス バー]
 
 -   **[Media URL] (メディアの URL)** は、メディア ストリームの読み込みに使用する URL です。アプリケーションには、使用できるメディア URL の一覧があらかじめ用意されており、[URL Selection] (URL 選択) ボタンを使用して選択できます。独自の Http ライブ ストリーミング (HLS) コンテンツの URL を入力することもできます。このメディア コンテンツは、1 つ目のメイン コンテンツとして使用されます。
     **注: この URL を空にしておくことはできません。**
@@ -52,7 +52,7 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 
 ### SeekbarViewController\_iPad.xib
 
-![シーク バー コント ローラー][]
+![シーク バー コント ローラー][シーク バー コント ローラー]
 
 -   **[Play]** (再生) ボタンは、メディアの再生と一時停止に使用します。
 
@@ -87,7 +87,8 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 -   **MediaTime** オブジェクトは、メイン コンテンツとしてスケジュールされるビデオ クリップを制御します。上の例では、ビデオ クリップの長さが 80 秒間 (0 秒目から 80 秒目まで) になるようにスケジュールされます。
 -   **clipBeginMediaTime** は、ビデオ再生の開始位置を時間で表します。たとえば、**clipBeginMediaTime** = 5 の場合、このビデオ クリップはビデオ クリップ内の 5 秒目から開始されます。
 -   **clipEndMediaTime** は、ビデオ再生の終了位置を時間で表します。**clipEndMediaTime**=100 の場合、ビデオの再生はビデオ クリップ内の 100 秒目で終了します。
-    \***MediaTime** のスケジュール設定は、フレームワークに対して **appendContentClip** を指示することによって行っています。上の例では、メイン コンテンツの URL が `[NSURL URLWithString:url]` で指定され、そのメディアのスケジュールが **withMedia** を使用して設定されています (`[framework appendContentClip:[NSURL URLWithString:url] withMediaTime:mediaTime andGetClipId:&clipId])`)。
+    \***MediaTime** のスケジュール設定は、フレームワークに対して **appendContentClip** を指示することによって行っています。上の例では、メイン コンテンツの URL が `[NSURL URLWithString:url]` で指定され、そのメディアのスケジュールが **withMedia** を使用して設定されています。
+     `[framework appendContentClip:[NSURL URLWithString:url] withMediaTime:mediaTime andGetClipId:&clipId])` .
 
 **注:** メイン コンテンツのスケジュール設定は、必ず (プリロール広告の場合も含めて) 広告のスケジュール設定より前に行ってください。
 
@@ -214,7 +215,7 @@ Ad Pod は、複数の広告が連続して再生される広告ブレークで�
 
 上のコード例で示されているように、**deleteAfterPlay** を **YES** に設定すると、この広告は 1 度だけ再生されます。**deleteAfterPlay** を **NO** に設定すると、この広告は連続して再生されます。これを Sticky 広告といいます。
 
-### 詳細については、[Azure Media Player フレームワークの wiki][] を参照してください。
+### 詳細については、[Azure Media Player フレームワークの wiki][Azure Media Player フレームワークの wiki] を参照してください。
 
   [HLS サンプル コードの構造]: http://mingfeiy.com/wp-content/uploads/2013/01/HLS-Structure.png
   [Sample Player のアドレス バー]: http://mingfeiy.com/wp-content/uploads/2013/01/addressbar.png

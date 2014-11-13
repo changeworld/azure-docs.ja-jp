@@ -1,10 +1,15 @@
-<properties linkid="dev-net-common-tasks-profiling-in-compute-emulator" urldisplayname="Team Foundation Service" headerexpose="" pageTitle="Profiling a Cloud Service Locally in the Compute Emulator" metakeywords="" footerexpose="" description="" umbraconavihide="0" disquscomments="1" title="Testing the Performance of a Cloud Service Locally in the Azure Compute Emulator Using the Visual Studio Profiler" authors="ghogen" manager="douge" />
+<properties urldisplayname="Team Foundation Service" headerexpose="" pageTitle="コンピューティング エミュレーターでのクラウド サービスのローカルなプロファイル" metakeywords="" footerexpose="" description="" umbraconavihide="0" disquscomments="1" title="Visual Studio プロファイラーを使用した、Azure コンピューティング エミュレーターでのクラウド サービスのパフォーマンスのローカルなテスト" authors="ghogen" manager="douge" />
 
 <tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ghogen" />
 
 # Visual Studio プロファイラーを使用した、Azure コンピューティング エミュレーターでのクラウド サービスのパフォーマンスのローカルなテスト
 
-クラウド サービスのパフォーマンスのテストには、さまざまなツールや手法を使用できます。Azure にクラウド サービスを発行するとき、「[クラウド サービスのパフォーマンスのテスト][クラウド サービスのパフォーマンスのテスト]」で説明されているように、Visual Studio でプロファイル データを収集してデータをローカルで分析するように設定することができます。また、「[Azure でのパフォーマンス カウンターの使用][Azure でのパフォーマンス カウンターの使用]」で説明されているように、診断機能を使用してさまざまなパフォーマンス カウンターを追跡することもできます。アプリケーションをクラウドにデプロイする前に、コンピューティング エミュレーターでローカルにプロファイリングすることもできます。
+クラウド サービスのパフォーマンスのテストには、さまざまなツールや手法を使用できます。
+Azure にクラウド サービスを発行するとき、
+「[クラウド サービスのパフォーマンスのテスト][クラウド サービスのパフォーマンスのテスト]」で説明されているように、
+Visual Studio でプロファイル データを収集してデータをローカルで分析するように設定することができます。
+また、「[Azure でのパフォーマンス カウンターの使用][Azure でのパフォーマンス カウンターの使用]」で説明されているように、診断機能を使用してさまざまなパフォーマンス カウンターを追跡することもできます。
+アプリケーションをクラウドにデプロイする前に、コンピューティング エミュレーターでローカルにプロファイリングすることもできます。
 
 この記事では、エミュレーターでローカルに実行できるプロファイル手法である CPU サンプリングについて説明します。CPU サンプリングは、あまり侵入的でないプロファイル手法です。プロファイラーは、指定されたサンプリング間隔でコール スタックのスナップショットを取得します。データはある期間にわたって収集され、レポートに示されます。このプロファイル手法では、コンピューティング処理が集中するアプリケーションで大部分の CPU 処理が行われる箇所が示されます。これによって、アプリケーションが多くの時間を費やしている "ホット パス" に焦点を合わせる機会が与えられます。
 
@@ -40,7 +45,8 @@
 
 ![][2]
 
-例として、時間がかかり明白なパフォーマンス問題を示すコードをプロジェクトに追加してください。たとえば、worker ロール プロジェクトに次のコードを追加します。
+例として、時間がかかり明白なパフォーマンス問題を示すコードを
+プロジェクトに追加してください。たとえば、worker ロール プロジェクトに次のコードを追加します。
 
     public class Concatenator
     {
@@ -83,7 +89,9 @@ worker ロールの場合は、WaWorkerHost.exe プロセスを見つけます�
 
 プロジェクト フォルダーがネットワーク ドライブ上にある場合は、プロファイル レポートの保存場所として別の場所を提供するように求められます。
 
-WaIISHost.exe にアタッチすることでWeb ロールにアタッチすることもできます。アプリケーション内に複数の worker ロールがある場合は、processID を使用してそれらを区別する必要があります。Process オブジェクトにアクセスすることで、プログラムで processID を照会できます。たとえば、ロール内の RoleEntryPoint から派生したクラスの Run メソッドに次のコードを追加すると、コンピューティング エミュレーター UI でログを調べて、接続しているプロセスを知ることができます。
+WaIISHost.exe にアタッチすることで
+Web ロールにアタッチすることもできます。アプリケーション内に複数の worker ロールがある場合は、processID を使用してそれらを区別する必要があります。Process オブジェクトにアクセスすることで、プログラムで processID を照会できます。たとえば、ロール内の RoleEntryPoint から派生したクラスの Run メソッドに次のコードを追加すると、コンピューティング エミュレーター UI でログを調べて、
+接続しているプロセスを知ることができます。
 
     var process = System.Diagnostics.Process.GetCurrentProcess();
     var message = String.Format("Process ID: {0}", process.Id);
@@ -107,13 +115,15 @@ WaIISHost.exe にアタッチすることでWeb ロールにアタッチする�
 
 アプリケーションのパフォーマンス レポートが表示されます。
 
-この時点で、プロファイラーは実行を停止し、.vsp ファイルにデータを保存し、そのデータの分析を示すレポートを表示します。
+この時点で、プロファイラーは実行を停止し、.vsp ファイルにデータを保存し、
+そのデータの分析を示すレポートを表示します。
 
 ![][8]
 
 [ホット パス] に "String.wstrcpy" が表示されている場合は、[マイ コードのみ] をクリックして、ユーザー コードだけを表示するようにビューを変更します。"String.Concat" が表示されている場合は、[すべてのコードの表示] を押してみてください。
 
-Concatenate メソッドと String.Concat が実行時間の大部分を占めていることがわかります。
+Concatenate メソッドと String.Concat が
+実行時間の大部分を占めていることがわかります。
 
 ![][9]
 

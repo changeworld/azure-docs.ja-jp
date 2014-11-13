@@ -1,4 +1,4 @@
-<properties linkid="manage-services-hdinsight-introduction-hdinsight" urlDisplayName="HDInsight Introduction" pageTitle="Introduction to Hadoop in HDInsight | Azure" metaKeywords="" description="Learn how Azure HDInsight uses Apache Hadoop clusters in the cloud, to provide a software framework to manage, analyze, and report on big data." metaCanonical="" services="hdinsight" documentationCenter="" title="Introduction to Hadoop in HDInsight" authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
+<properties urlDisplayName="HDInsight Introduction" pageTitle="HDInsight での Hadoop 入門 | Azure" metaKeywords="" description="Azure HDInsight がどのように Apache Hadoop クラスターをクラウドで使用して、ビッグ データの管理、分析、レポート生成を支援するソフトウェア フレームワークを提供するかについて説明します。" metaCanonical="" services="hdinsight" documentationCenter="" title="HDInsight での Hadoop 入門" authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev" />
 
@@ -47,7 +47,7 @@ Microsoft Power Query for Excel は、Azure HDInsight または任意の HDFS �
 
 -   [HDInsight の Hadoop エコシステム][HDInsight の Hadoop エコシステム]: HDInsight には Pig、Hive、Sqoop、Oozie、Ambari が実装されています。また、その他の BI ツール (Excel、SQL Server Analysis Services、Reporting Services など) もサポートされており、Power Query または Microsoft Hive ODBC ドライバーを使用して、BLOB ストレージ/HDFS および MapReduce フレームワークと連携できます。このセクションでは、Hadoop エコシステムのこれらのプログラムがどのようなジョブを処理するかについて説明します。
 
--   [HDInsight のビッグ データ シナリオ][HDInsight のビッグ データ シナリオ]: 「HDInsight はどのような種類のジョブに適しているのか」という疑問に答えます。
+-   [HDInsight のビッグ データ シナリオ][HDInsight のビッグ データ シナリオ]: このセクションでは、"HDInsight がどのような種類のジョブに適しているか" を考察します。
 
 -   [HDInsight の関連リソース][HDInsight の関連リソース]: その他の関連情報を紹介します。
 
@@ -163,11 +163,13 @@ HDInsight (および Hadoop 技術全般) は、いったん書き込んだ後�
   [Apache Ambari に関する Web ページ]: http://ambari.apache.org/
   [JSON]: http://www.json.org
   [Apache Avro の仕様]: http://avro.apache.org/docs/current/spec.html
+  [Serialize data with the Microsoft Avro Library (Microsoft Avro ライブラリを使用したデータのシリアル化)]: ../hdinsight-dotnet-avro-serialization/
   [Microsoft ダウンロード センター]: http://go.microsoft.com/fwlink/?LinkID=286689
   [ダウンロード センター]: http://go.microsoft.com/fwlink/?LinkID=286698
   [SQL Server 2012 Analysis Services]: http://www.microsoft.com/sqlserver/en/us/solutions-technologies/business-intelligence/SQL-Server-2012-analysis-services.aspx
   [SQL Server 2012 Reporting]: http://www.microsoft.com/ja-jp/sqlserver/solutions-technologies/business-intelligence/reporting.aspx
   [HDInsight のドキュメント]: http://go.microsoft.com/fwlink/?LinkID=285601
+  [HDInsight Release Notes (HDInsight リリース ノート)]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-release-notes/
   [Azure HDInsight の概要]: ../hdinsight-get-started/
   [HDInsight のサンプルの実行]: ../hdinsight-run-samples/
   [Big Data と Azure]: http://azure.microsoft.com/ja-jp/solutions/big-data/

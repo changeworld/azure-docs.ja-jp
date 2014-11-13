@@ -1,6 +1,6 @@
-<properties linkid="manage-services-mediaservices-create-a-media-services-account" urlDisplayName="How to create" pageTitle="Create a Media Services Account - Azure" metaKeywords="" description="Describes how to create a new Media Services account in Azure." metaCanonical="" services="media-services" documentationCenter="" title="How to Create a Media Services Account" authors="migree" solutions="" manager="" editor="" />
+<properties urlDisplayName="How to create" pageTitle="Media Services アカウントの作成 - Azure" metaKeywords="" description="Azure で新しい Media Services アカウントを作成する方法について説明します。" metaCanonical="" services="media-services" documentationCenter="" title="メディア サービス アカウントの作成方法" authors="juliako" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="migree" />
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="juliako" />
 
 # メディア サービス アカウントの作成方法
 
@@ -19,7 +19,9 @@ Azure 管理ポータルには、Azure メディア サービス アカウント
 
 -   **メディア サービス アカウント**。アカウントを使用して、Azure で利用可能なクラウド ベースのメディア サービスにアクセスできます。メディア サービス アカウントには実際のメディア コンテンツは保存されません。代わりに、メディア コンテンツに関するメタデータおよびメディア処理ジョブがアカウントに保存されます。アカウントを作成するときに、利用可能なメディア サービス リージョンを選択します。選択したリージョンに、アカウントのメタデータ レコードを保存するデータ センターが配置されます。
 
-    -   **注:** 利用可能なメディア サービス リージョンは、**西ヨーロッパ**、**東南アジア**、**東アジア**、**北ヨーロッパ**、**米国西部**、**米国東部**です。メディア サービスは、アフィニティ グループを使用しません。
+    > [WACOM.NOTE]
+    > 利用可能な Media Services リージョンは、**西ヨーロッパ**、**東南アジア**、**東アジア**、**北ヨーロッパ**、**米国西部**、**米国東部**です。メディア サービスは、アフィニティ グループを使用しません。
+
 -   **関連付けられたストレージ アカウント**。ストレージ アカウントは、メディア サービス アカウントに関連付けられた Azure ストレージ アカウントです。ストレージ アカウントにはメディア ファイルの BLOB ストレージが用意されます。また、メディア サービス アカウントと同じリージョンに配置する必要があります。メディア サービス アカウントを作成するときに、同じリージョンにある既存のストレージ アカウントを選択することも、同じリージョンに新しいストレージ アカウントを作成することもできます。メディア サービス アカウントを削除しても、関連付けられたストレージ アカウントにある BLOB は削除されません。
 
 ## <span id="quick"></span></a>方法: 簡易作成によるメディア サービス アカウントの作成
@@ -42,18 +44,16 @@ Azure 管理ポータルには、Azure メディア サービス アカウント
 
     **[メディア サービス]** ページが開き、新しいアカウントが表示されます。状態が "有効" に変わると、アカウントが正常に作成されています。
 
-    ![メディア サービス ページ][メディア サービス ページ]
+    ![[メディア サービス] ページ][]
 
     アカウント名をダブルクリックすると、既定で [クイック スタート] ページが表示されます。このページでは、ポータルの別のページでも実行できる管理タスクをいくつか実行できます。たとえば、ビデオ ファイルのアップロードは、このページから実行することも、[コンテンツ] ページから実行することもできます。
 
-    さらに、Azure メディア サービス SDK を使用して、ビデオのアップロード、エンコード、および発行を実行するコードを表示することもできます。[コードを記述] にあるリンクをクリックして、コードをコピーし、それをアプリケーションで使用できます。
+    さらに、Azure Media Services SDK を使用して、ビデオのアップロード、エンコード、および発行を実行するコードを表示することもできます。[コードを記述] にあるリンクをクリックして、コードをコピーし、それをアプリケーションで使用できます。
 
-<!-- Reusable paths. --> 
-<!-- Anchors. --> 
-<!-- URLs. -->
+<!-- Reusable paths. --> <!-- Anchors. --> <!-- URLs. -->
 
   [概念]: #concepts
   [方法: 簡易作成によるメディア サービス アカウントの作成]: #quick
   [管理ポータル]: http://manage.windowsazure.com/
   [メディア サービスの簡易作成]: ./media/media-services-create-account/wams-QuickCreate.png
-  [メディア サービス ページ]: ./media/media-services-create-account/wams-mediaservices-page.png
+  [[メディア サービス] ページ]: ./media/media-services-create-account/wams-mediaservices-page.png

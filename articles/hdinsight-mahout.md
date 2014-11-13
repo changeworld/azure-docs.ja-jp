@@ -1,14 +1,14 @@
-<properties title="Generate movie recommendations using Mahout" pageTitle="Generate movie recommendations using Mahout with Microsoft Azure HDInsight (Hadoop)" description="Learn how to use the Apache Mahout machine learning library to generate movie recommendations with HDInsight (Hadoop)" metaKeywords="Azure hdinsight mahout, Azure hdinsight machine learning, azure hadoop mahout, azure hadoop machine learning" services="hdinsight" solutions="" documentationCenter="big-data" authors="larryfr" videoId="" scriptId="" />
+<properties title="Mahout を使用した映画のリコメンデーションの生成" pageTitle="Mahout を Microsoft Azure HDInsight (Hadoop) と共に使用した映画のリコメンデーションの生成" description="Apache Mahout 機械学習ライブラリを使用して HDInsight (Hadoop) で映画のリコメンデーションを生成する方法について説明します。" metaKeywords="Azure hdinsight mahout, Azure hdinsight machine learning, azure hadoop mahout, azure hadoop machine learning" services="hdinsight" solutions="" documentationCenter="big-data" authors="larryfr" videoId="" scriptId="" manager="paulettm" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
 # HDInsight (Hadoop) で Apache Mahout を使用して映画のリコメンデーションを生成する
 
 [Apache Mahout][Apache Mahout] 機械学習ライブラリを使用して Microsoft Azure HDInsight (Hadoop) で映画のリコメンデーションを生成する方法について説明します。
 
 > [WACOM.NOTE] この記事の情報を使用するには HDInsight クラスターが必要です。作成の詳細については、「[Get started with Hadoop in HDInsight (Azure の HDInsight の概要)][Get started with Hadoop in HDInsight (Azure の HDInsight の概要)]」を参照してください。
-
-> [WACOM.NOTE] Mahout は HDInsight 3.1 クラスターと共に提供されます。以前のバージョンの HDInsight を使用している場合は、次に進む前に「[Install Mahout (Mahout のインストール)][Install Mahout (Mahout のインストール)]」を参照してください。
+>
+> Mahout は HDInsight 3.1 クラスターに付属しています。以前のバージョンの HDInsight を使用している場合は、次に進む前に「[Install Mahout (Mahout のインストール)][Install Mahout (Mahout のインストール)]」を参照してください。
 
 ## <a name="learn"></a>学習内容
 
@@ -70,7 +70,7 @@ GroupLens Research では利便性を高めるために、Mahout と互換性の
     $clusterName = "the cluster name"
 
     # The location of the Mahout jar file.
-    $jarFile = "C:\apps\dist\mahout-0.9.0.2.1.3.0-1887\examples\target\mahout-examples-0.9.0.2.1.3.0-1887-job.jar"
+    $jarFile = "file:///c:/apps/dist/mahout-0.9.0.2.1.3.0-1887/examples/target/mahout-examples-0.9.0.2.1.3.0-1887-job.jar"
     # NOTE: The version number portion of the file path
     # may change in future versions of HDInsight.
     # Use the following to find the location and name
@@ -257,17 +257,18 @@ Mahout ジョブは出力を STDOUT に返しません。代わりに、指定�
 Mahout で利用可能は分類方法の 1 つは、[ランダム フォレスト][ランダム フォレスト]をビルドすることです。これは複数の手順から成るプロセスです。データの分類に使用されるデシジョン ツリーをトレーニング データで生成する手順も含まれます。Mahout により提供される **org.apache.mahout.classifier.df.tools.Describe** クラスが使用され、現在は Hadoop コマンド ラインを使用して実行する必要があります。
 
 ### データを読み込む
+
 現在の Mahout の実装は、University of California の Irvine (UCI) リポジトリ形式との互換性があります [なぜこれが重要なのか、この形式は何か]。
 
-1. ファイルを [][]<http://nsl.cs.unb.ca/NSL-KDD/></a> からダウンロードします。
+1.  ファイルを [][]<http://nsl.cs.unb.ca/NSL-KDD/></a> からダウンロードします。
 
-  * [KDDTrain+.ARFF][KDDTrain+.ARFF] - トレーニング ファイル
+-   [KDDTrain+.ARFF][KDDTrain+.ARFF] - トレーニング ファイル
 
-  * [KDDTest+.ARFF][KDDTest+.ARFF] - テスト データ
+-   [KDDTest+.ARFF][KDDTest+.ARFF] - テスト データ
 
-2. 各ファイルを開き、<'@'> で始まる先頭の行を削除して、ファイルを保存します。これらが削除されていない場合、このデータを Mahout で使用するとエラーが返されます。
+1.  各ファイルを開き、<'@'> で始まる先頭の行を削除して、ファイルを保存します。これらが削除されていない場合、このデータを Mahout で使用するとエラーが返されます。
 
-2. **example/data** をアップロードします。これは、[HDInsight-Tools][HDInsight-Tools] の PowerShell モジュール内の `Add-HDInsightFile` 関数を使用して実行できます。
+2.  **example/data** をアップロードします。これは、[HDInsight-Tools][HDInsight-Tools] の PowerShell モジュール内の `Add-HDInsightFile` 関数を使用して実行できます。
 
 ### ジョブを実行する
 
@@ -327,33 +328,33 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
         Reliability                                53.4921%
         Reliability (standard deviation)            0.4933
 
-  このジョブでは、**wasb:///example/data/predictions/KDDTest+.arff.out** のファイルも生成されますが、これは人間が判読できないファイルです。
+このジョブでは、**wasb:///example/data/predictions/KDDTest+.arff.out** のファイルも生成されますが、これは人間が判読できないファイルです。
 
 > [WACOM.NOTE] Mahout ジョブはファイルを上書きしません。これらのジョブをもう一度実行する場合は、前のジョブで作成したファイルを削除する必要があります。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 ### <a name="install"></a>Mahout のインストール
+
 Mahout は HDInsight 3.1 クラスターにインストールされますが、次の手順を使用して手動で 3.0 または 2.1 クラスターにインストールできます。
 
-1. 使用する Mahout のバージョンは、使用するクラスターの HDInsight バージョンによって異なります。[Azure PowerShell][Azure PowerShell] で以下を使用することにより、クラスター バージョンを特定できます。
+1.  使用する Mahout のバージョンは、使用するクラスターの HDInsight バージョンによって異なります。[Azure PowerShell][Azure PowerShell] で以下を使用することにより、クラスター バージョンを特定できます。
 
-    	PS C:\> Get-AzureHDInsightCluster -Name YourClusterName | Select version
+        PS C:PS C:\> Get-AzureHDInsightCluster -Name YourClusterName | Select versiongt; Get-AzureHDInsightCluster -Name YourClusterName | Select version
 
+-   **HDInsight 2.1 の場合は**、[Mahout 0.9][Mahout 0.9] を含む jar ファイルをダウンロードできます。
 
-  * **HDInsight 2.1 の場合は**、[Mahout 0.9][Mahout 0.9] を含む jar ファイルをダウンロードできます。
+-   **HDInsight 3.0 の場合は**、[Mahout をソースからビルド][Mahout をソースからビルド]して HDInsight により提供される Hadoop バージョンを指定する必要があります。ビルド ページに示された前提条件をインストールし、ソースをダウンロードして、次のコマンドを使用して Mahout jar ファイルを作成します。
 
-  * **HDInsight 3.0 の場合は**、[Mahout をソースからビルド][Mahout をソースからビルド]して HDInsight により提供される Hadoop バージョンを指定する必要があります。ビルド ページに示された前提条件をインストールし、ソースをダウンロードして、次のコマンドを使用して Mahout jar ファイルを作成します。
+            mvn -Dhadoop2.version=2.2.0 -DskipTests clean package
 
-			mvn -Dhadoop2.version=2.2.0 -DskipTests clean package
+        Once the build completes, the jar file will be created at __mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar__.
 
-    	ビルドが完了したら、jarファイルをに作成されます __mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar__.
+        > [WACOM.NOTE] Once Mahout 1.0 is released, you should be able to use the pre-built packages with HDInsight 3.0.
 
-    	> [WACOM.NOTE] Once Mahout 1.0 is released, you should be able to use the pre-built packages with HDInsight 3.0.
+1.  この jar ファイルを、使用しているクラスターの既定のストレージ内の **example/jars** にアップロードします。次の例は、[send-hdinsight][sendhdinsight] スクリプトを使用してファイルをアップロードします。
 
-2. この jar ファイルを、使用しているクラスターの既定のストレージ内の **example/jars** にアップロードします。次の例は、[send-hdinsight][sendhdinsight] スクリプトを使用してファイルをアップロードします。
-
-    	PS C:\> .\Send-HDInsight -LocalPath "path\to\mahout-core-0.9-job.jar" -DestinationPath "example/jars/mahout-core-0.9-job.jar" -ClusterName "your cluster name"
+        PS C:PS C:\> .\Send-HDInsight -LocalPath "path\to\mahout-core-0.9-job.jar" -DestinationPath "example/jars/mahout-core-0.9-job.jar" -ClusterName "your cluster name"gt; .\Send-HDInsight -LocalPath "path\to\mahout-core-0.9-job.jar" -DestinationPath "example/jars/mahout-core-0.9-job.jar" -ClusterName "your cluster name"
 
 ### ファイルを上書きできない
 

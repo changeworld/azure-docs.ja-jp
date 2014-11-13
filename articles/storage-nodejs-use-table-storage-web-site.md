@@ -1,6 +1,6 @@
-<properties linkid="dev-nodejs-tutorials-web-site-with-storage" urlDisplayName="Website with Storage" pageTitle="Node.js website with table storage | Microsoft Azure" metaKeywords="Azure table storage Node.js, Azure Node.js application, Azure Node.js tutorial, Azure Node.js example" description="A tutorial that teaches you how to use the Azure Table service to store data from a Node application hosted on an Azure website." metaCanonical="" services="web-sites,storage" documentationCenter="Node.js" title="Node.js Web Application using the Azure Table Service" authors="larryfr" solutions="" manager="" editor="" />
+<properties urlDisplayName="Website with Storage" pageTitle="テーブル ストレージを使用した Node.js Web サイト | Microsoft Azure" metaKeywords="Azure table storage Node.js, Azure Node.js application, Azure Node.js tutorial, Azure Node.js example" description="Azure Table サービスを使用して、Azure Web サイトでホストされる Node アプリケーションのデータを格納する方法を示すチュートリアル。" metaCanonical="" services="web-sites,storage" documentationCenter="nodejs" title="Azure テーブル サービスを使用する Node.js Web アプリケーション" authors="larryfr" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr" />
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
 # Azure テーブル サービスを使用する Node.js Web アプリケーション
 
@@ -46,7 +46,7 @@
 
 2.  ポータルの下部にある **[+ 新規]** をクリックし、**[ストレージ アカウント]** を選択します。
 
-    ![+ 新規][portal-new]
+    ![+new][+new]
 
     ![ストレージ アカウント][ストレージ アカウント]
 
@@ -643,8 +643,8 @@ Azure でコマンド ライン ツールを使用する前に、自分のサブ
   [ノード]: http://nodejs.org
   [Git]: http://git-scm.com
   [空のタスク一覧が表示されている Web ページ]: ./media/storage-nodejs-use-table-storage-web-site/table_todo_empty.png
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [Azure ポータル]: http://windowsazure.com
+  [+new]: ./media/storage-nodejs-use-table-storage-web-site/plus-new.png
   [ストレージ アカウント]: ./media/storage-nodejs-use-table-storage-web-site/new-storage.png
   [簡易作成]: ./media/storage-nodejs-use-table-storage-web-site/quick-storage.png
   [アクセス キー]: ./media/storage-nodejs-use-table-storage-web-site/manage-access-keys.png
@@ -654,7 +654,6 @@ Azure でコマンド ライン ツールを使用する前に、自分のサブ
   [1]: http://getbootstrap.com/
   [タスク一覧の新しいアイテムの画像]: ./media/storage-nodejs-use-table-storage-web-site/table_todo_list.png
   [Node.js アプリケーションの作成と Azure の Web サイトへの展開]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
-  [antares-iaas-signup]: ../includes/antares-iaas-signup.md
   [Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成]: /ja-jp/documentation/articles/xplat-cli/
   [ダウンロード ページ]: ./media/storage-nodejs-use-table-storage-web-site/azure-account-download-cli.png
   [Git リモート]: http://git-scm.com/docs/git-remote
@@ -664,4 +663,3 @@ Azure でコマンド ライン ツールを使用する前に、自分のサブ
   [アプリケーション設定の保存]: ./media/storage-nodejs-use-table-storage-web-site/savebutton.png
   [MongoDB を使用する Node.js Web アプリケーション]: /ja-jp/documentation/articles/web-sites-nodejs-store-data-mongodb/
   [ソース管理から Azure の Web サイトへの発行]: /ja-jp/documentation/articles/web-sites-publish-source-control/
-  [portal-new]: ./media/storage-nodejs-use-table-storage-web-site/plus-new.png

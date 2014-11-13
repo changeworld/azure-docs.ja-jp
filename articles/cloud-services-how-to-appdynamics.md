@@ -1,4 +1,4 @@
-<properties linkid="manage-services-how-to-use-appdynamics" urlDisplayName="Monitor with AppDynamics" pageTitle="How to use AppDynamics with Azure" metaKeywords="" description="Learn how to use AppDynamics for Azure." metaCanonical="" services="cloud-services" documentationCenter="" title="How To Use AppDynamics for Azure" authors="ryanwi" solutions="" manager="timlt" editor="" />
+<properties urlDisplayName="Monitor with AppDynamics" pageTitle="Azure における AppDynamics の使用方法" metaKeywords="" description="Azure で AppDynamics を使用する方法を説明します。" metaCanonical="" services="cloud-services" documentationCenter="" title="Azure における AppDynamics の使用方法" authors="ryanwi" solutions="" manager="timlt" editor="" />
 
 <tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="ryanwi" />
 
@@ -8,13 +8,13 @@
 
 ## 目次
 
--   [AppDynamics とは](#what)
--   [前提条件](#prereq)
--   [AppDynamics アカウントを登録する](#register)
--   [AppDynamics から .NET エージェントをダウンロードする](#download)
--   [.NET エージェントを Azure のロールに追加してスタートアップを変更する](#addagent)
--   [AppDynamics でインストルメント化されたアプリケーションを Azure に発行する](#publish)
--   [アプリケーションを監視する](#monitor)
+-   [AppDynamics とは][AppDynamics とは]
+-   [前提条件][前提条件]
+-   [AppDynamics アカウントを登録する][AppDynamics アカウントを登録する]
+-   [AppDynamics から .NET エージェントをダウンロードする][AppDynamics から .NET エージェントをダウンロードする]
+-   [.NET エージェントを Azure のロールに追加してスタートアップを変更する][.NET エージェントを Azure のロールに追加してスタートアップを変更する]
+-   [AppDynamics でインストルメント化されたアプリケーションを Azure に発行する][AppDynamics でインストルメント化されたアプリケーションを Azure に発行する]
+-   [アプリケーションを監視する][アプリケーションを監視する]
 
 ## <span id="what"></span></a>AppDynamics とは
 
@@ -30,7 +30,7 @@ AppDynamics にはコンポーネントが 2 つあります。
 
 -   AppDynamics コントローラー: エージェントは、Azure 上の AppDynamics コントローラー ホステッド サービスに情報を送信します。Web ブラウザー ベースのコンソールを使用して、コントローラーにログインし、アプリケーションの監視、分析、および問題解決を実行します。
 
-    ![AppDynamics の図](./media/cloud-services-how-to-appdynamics/addiagram.png)
+    ![AppDynamics の図][AppDynamics の図]
 
 ## <span id="prereq"></span></a>前提条件
 
@@ -43,7 +43,7 @@ AppDynamics にはコンポーネントが 2 つあります。
 
 Azure アカウント用の AppDynamics を登録するには、次に示している手順を実行します。
 
-1.  Azure Marketplace ([https://datamarket.azure.com/browse/Applications](https://datamarket.azure.com/browse/Applications)) で AppDynamics の **[無料試用]** または **[サインアップ]** をクリックします。
+1.  Azure Marketplace ([][]<https://datamarket.azure.com/browse/Applications></a>) で AppDynamics の **[無料試用]** または **[サインアップ]** をクリックします。
 
     **[サインアップ]** をクリックした場合、Azure 用の AppDynamics Pro の無料版を受け取ります。機能は制限されておらず、30 日後に機能が制限された Azure 用の AppDynamics Lite の無料版にダウングレードされます。この場合、クレジット カード番号を入力する必要はありません。いつでも Azure 用の AppDynamics Pro にアップグレードできます。
 
@@ -109,7 +109,7 @@ Azure アカウント用の AppDynamics を登録するには、次に示して�
 
 5.  監視する Web および worker ロールごとに、AppDynamics エージェント .msi ファイルおよび startup.cmd ファイルの **[出力ディレクトリにコピー]** プロパティを **[常にコピーする]** に設定します。
 
-    ![常にコピーする](./media/cloud-services-how-to-appdynamics/adcopyalways.png)
+    ![常にコピーする][常にコピーする]
 
 6.  Azure プロジェクトの ServiceDefinition.csdef ファイルで、各 WorkerRole および WebRole 要素に、startup.cmd を起動する Startup Task 要素をパラメーターと共に追加します。
 
@@ -121,13 +121,13 @@ Azure アカウント用の AppDynamics を登録するには、次に示して�
 
     各値の説明:
 
-    -   *your\_controller\_host* および *your\_controller\_port* は、アカウントに割り当てられたコントローラーのホストとポートで、*your\_account\_name* および *your\_access\_key* は、AppDynamics によって割り当てられた資格情報です。この情報は、AppDynamics に登録したときに受け取ったメールおよび AppDynamic のホーム ページに記載されています。「[AppDynamics アカウントを登録する](#register)」を参照してください。
+    -   *your\_controller\_host* および *your\_controller\_port* は、アカウントに割り当てられたコントローラーのホストとポートで、*your\_account\_name* および *your\_access\_key* は、AppDynamics によって割り当てられた資格情報です。この情報は、AppDynamics に登録したときに受け取ったメールおよび AppDynamic のホーム ページに記載されています。「[AppDynamics アカウントを登録する][AppDynamics アカウントを登録する]」を参照してください。
 
     -   *your\_application\_name* はアプリケーションに付ける名前です。この名前は、AppDynamics コントローラーの操作画面でアプリケーションを識別するために使用されます。
 
     ServiceDefinition.csdef ファイルは次のようになります。
 
-    ![サービス定義](./media/cloud-services-how-to-appdynamics/adscreen.png)
+    ![サービス定義][サービス定義]
 
 ## <a name="publish"></a>AppDynamics でインストルメント化されたアプリケーションを Azure に発行する
 
@@ -151,6 +151,17 @@ AppDynamics でインストルメント化されたロール プロジェクト�
 
 マニュアルとビデオのリンクについては、AppDynamics アカウントのホーム ページを参照してください。
 
-この文書の最新版は、wiki 版 ([http://docs.appdynamics.com/display/ADAZ/How+To+Use+AppDynamics+for+Windows+Azure](http://docs.appdynamics.com/display/ADAZ/How+To+Use+AppDynamics+for+Windows+Azure)) で参照できます。
+この文書の最新版は、wiki 版 ([][1]<http://docs.appdynamics.com/display/ADAZ/How+To+Use+AppDynamics+for+Windows+Azure></a>) で参照できます。
 
-
+  [AppDynamics とは]: #what
+  [前提条件]: #prereq
+  [AppDynamics アカウントを登録する]: #register
+  [AppDynamics から .NET エージェントをダウンロードする]: #download
+  [.NET エージェントを Azure のロールに追加してスタートアップを変更する]: #addagent
+  [AppDynamics でインストルメント化されたアプリケーションを Azure に発行する]: #publish
+  [アプリケーションを監視する]: #monitor
+  [AppDynamics の図]: ./media/cloud-services-how-to-appdynamics/addiagram.png
+  []: https://datamarket.azure.com/browse/Applications
+  [常にコピーする]: ./media/cloud-services-how-to-appdynamics/adcopyalways.png
+  [サービス定義]: ./media/cloud-services-how-to-appdynamics/adscreen.png
+  [1]: http://docs.appdynamics.com/display/ADAZ/How+To+Use+AppDynamics+for+Windows+Azure

@@ -1,10 +1,10 @@
-<properties linkid="develop-media-services-how-to-guides-create-assets" urlDisplayName="Create Encrypted Asset and Upload to Storage" pageTitle="Create Encrypted Asset and Upload to Storage Azure" metaKeywords="" description="Learn how to get media content into Media Services by creating and uploading an encrypted asset." metaCanonical="" services="media-services" documentationCenter="" title="How to: Create an encrypted Asset and upload to storage" authors="migree" solutions="" manager="" editor="" />
+<properties urlDisplayName="Create Encrypted Asset and Upload to Storage" pageTitle="暗号化されたアセットを作成してストレージにアップロードする - Azure" metaKeywords="" description="暗号化されたアセットを作成し、アップロードして、メディア サービスにメディア コンテンツを取得する方法について説明します。" metaCanonical="" services="media-services" documentationCenter="" title="方法: 暗号化されたアセットを作成してストレージにアップロードする" authors="juliako" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="migree"></tags>
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="juliako" />
 
 # <a name="create-asset"> </a><span class="short header">方法: 暗号化されたアセットを作成してストレージにアップロードする</span>
 
-この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[メディア サービス開発のためのコンピューターのセットアップに関するページ][]を参照してください。
+この記事は、Azure メディア サービスのプログラミングを紹介するシリーズの一部です。前のトピックについては、[メディア サービス開発のためのコンピューターのセットアップに関するページ][メディア サービス開発のためのコンピューターのセットアップに関するページ]を参照してください。
 
 メディア コンテンツをメディア サービスに取り込むには、まずアセットを作成してファイルを追加した後、そのアセットをアップロードします。このプロセスを "コンテンツの取り込み" といいます。
 
@@ -14,7 +14,8 @@
 -   **AssetCreationOptions.CommonEncryptionProtected**: Common Encryption Protected (CENC) ファイル用。既に PlayReady で暗号化されている一連のファイルは、その例です
 -   **AssetCreationOptions.StorageEncrypted**: ストレージ暗号化。Azure ストレージへのアップロードの前にクリア入力ファイルを暗号化します。
 
-**注**: メディア サービスでは、Digital Rights Manager (DRM) のようにネットワーク経由ではなく、オンディスクのストレージ暗号化を提供します。
+> WACOM.NOTE
+> Media Services では、Digital Rights Manager (DRM) のようにネットワーク経由ではなく、資産のオンディスクでのストレージ暗号化を提供します。
 
 このサンプル コードでは、次のことが行われます。
 
@@ -113,7 +114,7 @@
 
 ## 次のステップ
 
-これで、アセットをメディア サービスにアップロードできました。次は、[メディア プロセッサの取得][]に関するトピックに進みます。
+これで、アセットをメディア サービスにアップロードできました。次は、[メディア プロセッサの取得][メディア プロセッサの取得]に関するトピックに進みます。
 
   [メディア サービス開発のためのコンピューターのセットアップに関するページ]: http://go.microsoft.com/fwlink/?LinkID=301751&clcid=0x409
-  [メディア プロセッサの取得]: http://go.microsoft.com/fwlink/?LinkID=301732&clcid=0x409
+  [メディア プロセッサの取得]: ../media-services-get-media-processor/

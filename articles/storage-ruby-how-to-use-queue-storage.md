@@ -1,4 +1,4 @@
-<properties linkid="dev-ruby-how-to-service-bus-queues" urlDisplayName="Queue Service" pageTitle="How to use the queue service (Ruby) | Microsoft Azure" metaKeywords="Azure Queue Service get messages Ruby" description="Learn how to use the Azure Queue service to create and delete queues, and insert, get, and delete messages. Samples written in Ruby." metaCanonical="" services="storage" documentationCenter="Ruby" title="How to Use the Queue Storage Service from Ruby" authors="guayan" solutions="" manager="" editor="" />
+<properties urlDisplayName="Queue Service" pageTitle="キュー サービスを使用する方法 (Ruby) | Microsoft Azure" metaKeywords="Azure Queue Service get messages Ruby" description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。コード サンプルは Ruby で記述されています。" metaCanonical="" services="storage" documentationCenter="Ruby" title="Ruby からキュー ストレージ サービスを使用する方法" authors="guayan" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="ruby" ms.topic="article" ms.date="01/01/1900" ms.author="guayan" />
 
@@ -58,7 +58,9 @@ Azure ストレージを使用するには、Ruby azure パッケージをダウ
 
 ## <span id="setup-a-windows-azure-storage-connection"></span></a>Azure のストレージ接続文字列の設定
 
-azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** および **AZURE\_STORAGE\_ACCESS\_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::QueueService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
+azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** および **AZURE\_STORAGE\_ACCESS\_KEY**
+ を読み取ります。これらの環境変数が設定されていない場合は、
+**Azure::QueueService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
     Azure.config.storage_account_name = "<your azure storage account>"
     Azure.config.storage_access_key = "<your Azure storage access key>"
@@ -174,8 +176,6 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
   [方法: メッセージをデキューするための追加オプション]: #how-to-additional-options-for-dequeuing-messages
   [方法: キューの長さを取得する]: #how-to-get-the-queue-length
   [方法: キューを削除する]: #how-to-delete-a-queue
-  [howto-queue-storage]: ../includes/howto-queue-storage.md
-  [create-storage-account]: ../includes/create-storage-account.md
   [Azure VM での Ruby on Rails Web アプリケーション]: /ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx

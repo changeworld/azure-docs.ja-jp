@@ -1,4 +1,4 @@
-<properties linkid="manage-services-storage-net-shared-access-signature-part-2" urlDisplayName="" pageTitle="Create and use a SAS with the Blob Service | Microsoft Azure" metaKeywords="Azure blob, shared access signatures, stored access policy" description="Explore generating and using shared access signatures with the Blob service" metaCanonical="" services="storage" documentationCenter="" title="Part 2: Create and Use a SAS with the Blob Service" solutions="" authors="tamram" manager="mbaldwin" editor="cgronlun" />
+<properties urlDisplayName="" pageTitle="BLOB サービスによる SAS の作成および使用 | Microsoft Azure" metaKeywords="Azure blob, shared access signatures, stored access policy" description="BLOB サービスによる共有アクセス署名の生成と使用について説明します。" metaCanonical="" services="storage" documentationCenter="" title="パート 2: BLOB サービスによる SAS の作成および使用" solutions="" authors="tamram" manager="adinah" editor="cgronlun" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
@@ -527,4 +527,5 @@ Program.cs ファイルの先頭に、次の **using** ステートメントを�
   [sas-console-output-1]: ./media/storage-dotnet-shared-access-signature-part-2/sas-console-output-1.PNG
   [sas-console-output-2]: ./media/storage-dotnet-shared-access-signature-part-2/sas-console-output-2.PNG
   [Microsoft Azure ストレージ リソースへのアクセスの管理]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee393343.aspx
+  [共有アクセス署名によるアクセスの委任 (REST API) に関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee395415.aspx
   [テーブルおよびキュー SAS についての MSDN ブログ]: http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx

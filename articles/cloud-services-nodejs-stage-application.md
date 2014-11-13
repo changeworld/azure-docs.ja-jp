@@ -1,15 +1,22 @@
-<properties linkid="dev-nodejs-enablestaging" urlDisplayName="Staging Deployment" pageTitle="Stage a cloud service deployment (Node.js) - Azure" metaKeywords="Azure staging, Azure application staging, Azure test environment, Azure staging environment, Azure Virtual IP swap, Azure VIP swap" description="Learn how to deploy your Azure application to a staging environment, then deploy to a production environment using Virtual IP (VIP) swap." metaCanonical=" " services="cloud-services" documentationCenter="nodejs" title="Staging an Application in Azure" authors="larryfr" solutions="" manager="" editor="" />
+<properties urlDisplayName="Staging Deployment" pageTitle="クラウド サービス デプロイのステージング (Node.js) - Azure" metaKeywords="Azure staging, Azure application staging, Azure test environment, Azure staging environment, Azure Virtual IP swap, Azure VIP swap" description="Azure アプリケーションをステージング環境にデプロイしてから、仮想 IP (VIP) スワップを使用して運用環境にデプロイする方法について説明します。" metaCanonical=" " services="cloud-services" documentationCenter="nodejs" title="Azure アプリケーションのステージング" authors="larryfr" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="wpickett" />
 
 # Azure アプリケーションのステージング
 
-パッケージ アプリケーションは、インターネット上でアクセスできる運用環境に移行する前に、Azure でステージング環境にデプロイしてテストすることができます。ステージング環境は運用環境とほぼ同じです。唯一の違いは、ステージングされたアプリケーションには、Azure で生成されたわかりにくい URL を使用しなければアクセスできない点です。アプリケーションが正常に動作することを確認したら、仮想 IP (VIP) スワップを実行して、運用環境にデプロイできます。
+パッケージ アプリケーションは、
+インターネット上でアクセスできる運用環境に移行する前に、
+Azure でステージング環境にデプロイしてテストすることができます。ステージング環境は運用環境とほぼ同じです。
+唯一の違いは、ステージングされたアプリケーションには、
+Azure で生成されたわかりにくい URL を使用しなければ
+アクセスできない点です。アプリケーションが正常に動作することを確認したら、
+仮想 IP (VIP) スワップを実行して、
+運用環境にデプロイできます。
 
-
+<div class="dev-callout">
 <b>注</b>
 <p>この記事で説明する手順は、Azure クラウド サービスとしてホストされるノード アプリケーションにのみ適用されます。</p>
-
+    </div>
 
 このタスクの手順は次のとおりです。
 
@@ -18,9 +25,11 @@
 
 ## <span id="step1"></span></a>手順 1.アプリケーションをステージングする
 
-このタスクでは、**Microsoft Azure PowerShell** を使用してアプリケーションをステージングする方法を示します。
+このタスクでは、**Microsoft Azure PowerShell** を使用して
+アプリケーションをステージングする方法を示します。
 
-1.  サービスを発行するときに、 **Publish-AzureServiceProject** コマンドレットに **-Slot** パラメーターを渡します。
+1.  サービスを発行するときに、
+    **Publish-AzureServiceProject** コマンドレットに **-Slot** パラメーターを渡します。
 
     **Publish-AzureServiceProject -Slot によるステージング**
 
@@ -38,11 +47,17 @@
 
 これで、ステージング サイトの URL を使用して、アプリケーションがステージング環境で正常に動作していることを確認できます。
 
-ステージングされたアプリケーションが、運用環境にデプロイ済みのアプリケーションのアップグレードされたバージョンであるアップグレード シナリオの場合、[VIP スワップによって運用環境でアプリケーションをアップグレード][手順 2.VIP スワップでアプリケーションを運用環境にデプロイする]できます。
+ステージングされたアプリケーションが、
+運用環境にデプロイ済みのアプリケーションのアップグレードされたバージョンであるアップグレード シナリオの場合、
+[VIP スワップによって運用環境でアプリケーションをアップグレード][手順 2.VIP スワップでアプリケーションを運用環境にデプロイする]
+できます。
 
 ## <span id="step2"></span></a>手順 2.VIP スワップによって運用環境でアプリケーションをアップグレードする
 
-ステージング環境でアップグレードされたバージョンのアプリケーションを検証したら、ステージング環境と運用環境の仮想 IP (VIP) をスワップするだけで、そのアプリケーションを運用環境で使用可能にすることができます。
+ステージング環境で
+アップグレードされたバージョンのアプリケーションを検証したら、
+ステージング環境と運用環境の仮想 IP (VIP) をスワップするだけで、
+そのアプリケーションを運用環境で使用可能にすることができます。
 
 <div class="dev-callout">
 <b>注</b>
@@ -51,15 +66,20 @@
 想定しています。</p>
 </div>
 
-1.  [Azure 管理ポータル][Azure 管理ポータル]にログインし、 **[クラウド サービス]** をクリックして、サービス名を選択します。
+1.  [Azure 管理ポータル][Azure 管理ポータル]にログインし、
+    **[クラウド サービス]** をクリックして、サービス名を選択します。
 
-2.  **[ダッシュボード]** で、**[ステージング]** を選択して、ページの下部にある **[スワップ]** をクリックします。これにより、 [VIP のスワップ] ダイアログが開きます。
+2.  **[ダッシュボード]** で、**[ステージング]** を選択して、ページの下部にある **[スワップ]** をクリックします。これにより、
+    [VIP のスワップ] ダイアログが開きます。
 
     ![VIP のスワップ ダイアログ][VIP のスワップ ダイアログ]
 
-3.  情報を確認し、**[OK]** をクリックします。ステージング環境のデプロイメントが運用環境に切り替わるとき、および運用環境のデプロイメントがステージングに切り替わるときに、これら 2 つのデプロイメントで更新が開始されます。
+3.  情報を確認し、**[OK]** をクリックします。ステージング環境のデプロイメントが運用環境に切り替わるとき、
+    および運用環境のデプロイメントがステージングに切り替わるときに、
+    これら 2 つのデプロイメントで更新が開始されます。
 
-正常にデプロイメントをステージングし、ステージング環境のデプロイメントで VIP をスワップすることによって運用環境のデプロイメントをアップグレードしました。
+正常にデプロイメントをステージングし、
+ステージング環境のデプロイメントで VIP をスワップすることによって運用環境のデプロイメントをアップグレードしました。
 
 ## その他のリソース
 

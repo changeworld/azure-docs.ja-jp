@@ -1,6 +1,6 @@
-<properties linkid="cloud-services-virtual-machines-dotnet-continuous-delivery-remote-debugging" urlDisplayName="Enable remote debugging with continuous delivery" pageTitle="Enable remote debugging with continuous delivery" metaKeywords="" description="Learn how to enable remote debugging when using continuous delivery to deploy to Azure." metaCanonical="" services="cloud-services,virtual machines" documentationCenter=".NET" title="Enable remote debugging when using continuous delivery to publish to Azure" authors="ghogen" solutions="" manager="" editor="" />
+<properties urlDisplayName="Enable remote debugging with continuous delivery" pageTitle="継続的な配信でのリモート デバッグを有効にする" metaKeywords="" description="継続的な配信を使用した Azure へのデプロイ時にリモート デバッグを有効にする方法を説明します。" metaCanonical="" services="cloud-services,virtual machines" documentationCenter=".NET" title="継続的な配信を使用して Azure に発行する場合にリモート デバッグを有効にする" authors="kempb" solutions="" manager="douge" editor="" />
 
-<tags ms.service="multiple" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-multiple" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="ghogen"></tags>
+<tags ms.service="multiple" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-multiple" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="kempb" />
 
 # 継続的な配信を使用して Azure に発行する場合にリモート デバッグを有効にする
 

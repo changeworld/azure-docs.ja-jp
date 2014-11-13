@@ -1,6 +1,6 @@
-<properties linkid="manage-linux-fundamentals-intro-to-linux" urlDisplayName="Intro to Linux" pageTitle="Introduction to Linux in Azure - Azure Tutorial" metaKeywords="Azure Linux vm, Linux vm" description="Learn about using Linux virtual machines on Azure." metaCanonical="" services="virtual-machines" documentationCenter="Python" title="Introduction to Linux on Azure" authors="szark" solutions="" manager="" editor="" />
+<properties urlDisplayName="Intro to Linux" pageTitle="Azure での Linux 入門 - Azure チュートリアル" metaKeywords="Azure Linux vm, Linux vm" description="Azure での Linux 仮想マシンの使用に関する詳細です。" metaCanonical="" services="virtual-machines" documentationCenter="Python" title="Azure での Linux 入門" authors="szark" solutions="" manager="timlt" editor="" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="szark"></tags>
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="szark" />
 
 # Azure での Linux 入門
 
@@ -18,7 +18,7 @@
 
 ## <span id="authentication"></span></a>認証: ユーザー名、パスワード、SSH 鍵
 
-Azure の管理ポータルを使用して Linux 仮想マシンを作成すると、ユーザー名、パスワード、および SSH 公開キー (任意) の入力が求められます。Azure で Linux 仮想マシンをデプロイするユーザー名を選択する場合、root など、既に仮想マシン内に存在するシステム アカウント (UID \<100) の名前は許可されない、という制約があります。
+Azure の管理ポータルを使用して Linux 仮想マシンを作成すると、ユーザー名、パスワード、および SSH 公開キー (任意) の入力が求められます。Azure で Linux 仮想マシンをデプロイするユーザー名を選択する場合、既に仮想マシン内に存在するシステム アカウント (UID 100 未満) の名前 (たとえば root) は許可されない、という制約があります。
 
 -   詳細については、「[Azure 上の Linux における SSH の使用方法][Azure 上の Linux における SSH の使用方法]」を参照してください。
 
@@ -36,11 +36,11 @@ Azure の管理ポータルを使用して Linux 仮想マシンを作成する�
 
         chmod 600 myPrivateKey.key
 
-3.  myCert.pem を myCert.cer (DER エンコード済み X509 証明書) に変換します。
+3.  `myCert.pem` を `myCert.cer` に変換します (DER 形式でエンコードされた x509 証明書)
 
         openssl  x509 -outform der -in myCert.pem -out myCert.cer
 
-4.  Linux 仮想マシンの作成中に myCert.cer をアップロードします。プロビジョニング中に、仮想マシン内の指定されたユーザーに対応する authorized\_keys ファイルにこの証明書の公開キーが自動的にインストールされます。
+4.  Linux 仮想マシンの作成中に `myCert.cer` をアップロードします。プロビジョニング中に、仮想マシン内の指定されたユーザーに対応する `~/.ssh/authorized_keys` ファイルにこの証明書の公開キーが自動的にインストールされます。
 
 5.  ssh を使用して Linux 仮想マシンに接続します。
 
@@ -48,7 +48,11 @@ Azure の管理ポータルを使用して Linux 仮想マシンを作成する�
 
     最初にログインすると、ホストの公開キーの指紋に同意するように求められます。
 
-6.  openssh クライアントが -i オプションを使用しないで自動的に myPrivateKey.key を選択できるように、myPrivateKey.key を ~/.ssh/id\_rsa にコピーできます。
+6.  openssh クライアントが -i オプションを使用せずに自動的に `myPrivateKey.key` を選択できるように、必要に応じてこのファイルを `~/.ssh/id_rsa` にコピーできます。
+    また、`~/.ssh/config` を変更して、仮想マシンのセクションを含めることもできます。
+
+        Host servicename.cloudapp.net
+          IdentityFile %d/.ssh/myPrivateKey.key
 
 ### OpenSSH と互換性のある既存のキーからキーを生成する
 
@@ -74,7 +78,7 @@ Azure での仮想マシン インスタンスをデプロイする際に指定�
 
 Azure では、管理ポータルで指定されたポートに接続を制限する受信パケット フィルターが用意されています。既定では、許可されている唯一のポートは SSH です。管理ポータルでエンドポイントを構成することで、Linux 仮想マシンの追加ポートへのアクセスを設定できます。
 
--   詳細については、「[仮想マシンに対してエンドポイントを設定する方法][仮想マシンに対してエンドポイントを設定する方法]」を参照してください。
+-   参照: [仮想マシンに対してエンドポイントを設定する方法][仮想マシンに対してエンドポイントを設定する方法]
 
 既定では、Azure ギャラリー内の Linux のイメージを使用して*iptables* ファイアウォールを有効にすることはできません。必要があれば、このファイアウォールにフィルターを追加するように構成することはできます。
 
@@ -106,7 +110,7 @@ Azure には、既存の仮想マシンの状態をイメージにキャプチ�
 
 3.  管理ポータルで *[キャプチャ]* をクリックするか、Powershell ツールまたは CLI ツールを使用して仮想マシンをイメージとしてキャプチャします。
 
- -  詳細については、「[Linux を実行する仮想マシンのイメージをキャプチャする方法][Linux を実行する仮想マシンのイメージをキャプチャする方法]」を参照してください。
+-   参照: [テンプレートとして使用するために Linux 仮想マシンをキャプチャする方法][テンプレートとして使用するために Linux 仮想マシンをキャプチャする方法]
 
 ## <span id="attachingdisks"></span></a>ディスクの接続
 
@@ -116,9 +120,9 @@ Linux では通常、リソース ディスクは Azure Linux エージェント
 
     >[WACOM.NOTE] Note that the resource disk is a **temporary** disk, and might be deleted and reformatted when the VM is rebooted.
 
-Linux では、データ ディスクはカーネルによって `/dev/sdc` という名前が付けられる場合があり、ユーザーはこのリソースをパーティション分割し、フォーマットした上で、マウントする必要があります。ディスクの接続については、チュートリアル「[データ ディスクを Virtual Machine に接続する方法][データ ディスクを Virtual Machine に接続する方法]」で詳しく説明しています。.
+Linux では、データ ディスクはカーネルによって `/dev/sdc` という名前が付けられる場合があり、ユーザーはこのリソースをパーティション分割し、フォーマットした上で、マウントする必要があります。ディスクの接続については、チュートリアル「[データ ディスクを Linux 仮想マシンに接続する方法][データ ディスクを Linux 仮想マシンに接続する方法]」で詳しく説明しています。.
 
--   関連項目: [Linux でのソフトウェア RAID の構成][Linux でのソフトウェア RAID の構成]
+-   関連項目:[Linux でのソフトウェア RAID の構成][Linux でのソフトウェア RAID の構成]
 
   [認証: ユーザー名、パスワード、SSH 鍵。]: #authentication
   [Linux 仮想マシンへのログイン用の SSH 鍵の生成と使用。]: #keygeneration
@@ -132,6 +136,6 @@ Linux では、データ ディスクはカーネルによって `/dev/sdc` と�
   [仮想マシンに対してエンドポイントを設定する方法]: ../virtual-machines-set-up-endpoints/
   [Azure Linux エージェント ユーザー ガイド]: ../virtual-machines-linux-agent-user-guide/
   [Custom Data and Cloud-Init on Microsoft Azure (Microsoft Azure のカスタム データと Cloud-Init)]: http://azure.microsoft.com/blog/2014/04/21/custom-data-and-cloud-init-on-windows-azure/
-  [Linux を実行する仮想マシンのイメージをキャプチャする方法]: ../virtual-machines-linux-capture-image/
-  [データ ディスクを Virtual Machine に接続する方法]: ../virtual-machines-linux-how-to-attach-disk/
+  [テンプレートとして使用するために Linux 仮想マシンをキャプチャする方法]: ../virtual-machines-linux-capture-image/
+  [データ ディスクを Linux 仮想マシンに接続する方法]: ../virtual-machines-linux-how-to-attach-disk/
   [Linux でのソフトウェア RAID の構成]: ../virtual-machines-linux-configure-raid/

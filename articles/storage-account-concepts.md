@@ -1,6 +1,6 @@
-<properties umbracoNaviHide="0" pageTitle="Storage Account Concepts | Azure" metaKeywords="Azure storage, storage service, service, storage account, account, create storage account, create account" description="Learn about storage account concepts." linkid="manage-windows-how-to-guide-storage-accounts" urlDisplayName="How to: storage accounts" headerExpose="" footerExpose="" disqusComments="1" title="Storage Account Concepts" services="storage" authors="tamram" manager="mbaldwin" editor="cgronlun" />
+<properties umbracoNaviHide="0" pageTitle="ストレージ アカウントの概念 | Azure" metaKeywords="Azure storage, storage service, service, storage account, account, create storage account, create account" description="ストレージ アカウントの概念について学習します。" urlDisplayName="How to: storage accounts" headerExpose="" footerExpose="" disqusComments="1" title="ストレージ アカウントの概念" services="storage" authors="tamram" manager="adinah" editor="cgronlun" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="tamram"></tags>
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
 # ストレージ アカウントの概念
 
@@ -12,15 +12,15 @@
 
 ストレージ アカウントの*エンドポイント*とは、BLOB、テーブル、またはキューにアクセスするための最高レベルの名前空間です。ストレージ アカウントに対応する既定のエンドポイントでは、次の書式を使用します。
 
--   BLOB サービス: http://*mystorageaccount\*.blob.core.windows.net
--   
--   テーブル サービス: http://*mystorageaccount\*.table.core.windows.net
+-   BLOB サービス: <http://*mystorageaccount>\*.blob.core.windows.net
 
--   キュー サービス: http://*mystorageaccount\*.queue.core.windows.net
+-   テーブル サービス: <http://*mystorageaccount>\*.table.core.windows.net
 
--   ファイル サービス: http://*mystorageaccount\*.file.core.windows.net
+-   キュー サービス: <http://*mystorageaccount>\*.queue.core.windows.net
 
-ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。たとえば、BLOB アドレスは次の形式になることがあります。http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob\*
+-   ファイル サービス: <http://*mystorageaccount>\*.file.core.windows.net
+
+ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。たとえば、BLOB アドレスは次の形式になることがあります。<http://*mystorageaccount>*.blob.core.windows.net/*mycontainer*/*myblob\*
 
 ## ストレージ アカウントのセキュリティ
 
@@ -40,7 +40,6 @@
 
 *アフィニティ グループ*は、Azure ストレージ アカウント内で Azure サービスと仮想マシンを地理的にまとめたグループです。アフィニティ グループは、コンピューティング ワークロードを同じデータ センター内または対象ユーザーの近くに配置することにより、サービス パフォーマンスを向上させることができます。また、同じアフィニティ グループに属している別のサービスがストレージ アカウント内のデータにアクセスする場合には、課金されません。
 
-  [storage-replication-options]: ../includes/storage-replication-options.md
   [共有アクセス署名、第 1 部: SAS モデルについて]: ../storage-dotnet-shared-access-signature-part-1/
   [Storage Analytics Metrics のテーブル スキーマ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343264.aspx
   [Storage Analytics Metrics について]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343258.aspx

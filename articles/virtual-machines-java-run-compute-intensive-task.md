@@ -1,4 +1,4 @@
-<properties linkid="dev-java-compute-load" urlDisplayName="TSP on Virtual Machine" pageTitle="Compute-intensive Java application on a VM - Azure" metaKeywords="Azure virtual machine Java, Azure Java app, Azure Java application" description="Learn how to create an Azure virtual machine that runs a compute-intensive Java application that can be monitored by another Java application." metaCanonical="" services="virtual-machines" documentationCenter="Java" title="How to run a compute-intensive task in Java on a virtual machine" authors="robmcm" videoId="" scriptId="" solutions="" manager="wpickett" editor="mollybos" />
+<properties urlDisplayName="TSP on Virtual Machine" pageTitle="VM で多くのコンピューティング処理を要する Java アプリケーションを実行する - Azure" metaKeywords="Azure virtual machine Java, Azure Java app, Azure Java application" description="Azure の仮想マシンを作成し、多くのコンピューティング処理を要する Java アプリケーションを実行して、別の Java アプリケーションで監視する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="Java" title="仮想マシンで多くのコンピューティング処理を要する Java タスクを実行する方法" authors="robmcm" videoId="" scriptId="" solutions="" manager="wpickett" editor="mollybos" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
 
@@ -69,37 +69,45 @@ Azure のサービス バス機能により、JRE の **cacerts** ストアの�
 
 ## サービス バス 名前空間の作成方法
 
-Azure のサービス バス キューを使用するには、最初にサービス名前空間を作成する必要があります。サービス名前空間は、アプリケーション内でService Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
+Azure のサービス バス キューを使用するには、最初に
+サービス名前空間を作成する必要があります。サービス名前空間は、アプリケーション内で
+Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
 
 サービス名前空間を作成するには:
 
 1.  [Azure 管理ポータル][Azure 管理ポータル]へのログオン
 2.  管理ポータルの左下のナビゲーション ウィンドウで、**[Service Bus、Access Control、Caching]** をクリックします。
-3.  管理ポータルの左上のナビゲーション ウィンドウで、**[Service Bus]** ノードをクリックしてから **[新規]** ボタンをクリックします。
+3.  管理ポータルの左上のナビゲーション ウィンドウで、
+    **[Service Bus]** ノードをクリックしてから **[新規]** ボタンをクリックします。
     ![[Service Bus] ノードのスクリーンショット][]
-4.  **[サービス名前空間の新規作成]** ダイアログで **[名前空間]** に名前空間の名前を入力し、固有の名前であることを確認するために **[利用可能かどうかを確認]** をクリックします。
-
+4.  **[サービス名前空間の新規作成]** ダイアログで
+    **[名前空間]** に名前空間の名前を入力し、固有の名前であることを確認するために
+    **[利用可能かどうかを確認]** をクリックします。
     ![名前空間の新規作成のスクリーンショット][名前空間の新規作成のスクリーンショット]
-5.  名前空間の名前が有効であることを確認できたら、名前空間をホストする国またはリージョンを選択して、**[名前空間を作成します]** をクリックします。
+5.  名前空間の名前が有効であることを確認できたら、
+    名前空間をホストする国またはリージョンを選択して、**[名前空間を作成します]** をクリックします。
 
-    作成した名前空間が管理ポータルに表示され、有効化されます。有効化には少し時間がかかります。状態が **[有効]** になるのを待ってから、次の手順に進みます。
+    作成した名前空間が管理ポータルに表示され、有効化されます。
+    有効化には少し時間がかかります。状態が **[有効]** になるのを待ってから、次の手順に進みます。
 
 ## 名前空間の既定の管理資格情報の取得
 
-新規作成した名前空間に対してキューの作成などの管理操作を実行するには、名前空間の管理資格情報を取得する必要があります。
+新規作成した名前空間に対してキューの作成などの管理操作を実行するには、
+名前空間の管理資格情報を取得する必要があります。
 
-1.  左側のナビゲーション ウィンドウで **[サービス バス]** ノードをクリックして、利用可能な名前空間の一覧を表示します。
+1.  左側のナビゲーション ウィンドウで **[サービス バス]** ノードを
+    クリックして、利用可能な名前空間の一覧を表示します。
     ![利用可能な名前空間のスクリーンショット][利用可能な名前空間のスクリーンショット]
 2.  表示された一覧から先ほど作成した名前空間を選択します。
-
     ![名前空間の一覧のスクリーンショット][名前空間の一覧のスクリーンショット]
-3.  右側の **[プロパティ]** ウィンドウに、新しい名前空間のプロパティが表示されます。
-
-    ![プロパティ ウィンドウのスクリーンショット][プロパティ ウィンドウのスクリーンショット]
-4.  **[既定のキー]** は表示されません。**[表示]** をクリックしてセキュリティ資格情報を表示します。
-
-    ![既定のキー のスクリーンショット][既定のキー のスクリーンショット]
-5.  **[既定の発行者]** と **[既定のキー]** をメモしておきます。この情報は、後で名前空間に対して操作を実行するときに使用します。
+3.  右側の **[プロパティ]** ウィンドウに、新しい名前空間のプロパティが
+    表示されます。
+    ![[プロパティ] ウィンドウのスクリーンショット][]
+4.  **[既定のキー]** は表示されません。**[表示]** をクリックして
+    セキュリティ資格情報を表示します。
+    ![[既定のキー] のスクリーンショット][]
+5.  **[既定の発行者]** と **[既定のキー]** をメモしておきます。
+    この情報は、後で名前空間に対して操作を実行するときに使用します。
 
 ## 多くのコンピューティング処理を要するタスクを実行する Java アプリケーションの作成方法
 
@@ -107,10 +115,8 @@ Azure のサービス バス キューを使用するには、最初にサービ
 2.  このセクションの末尾にあるコード例を使用して、Java コンソール アプリケーションを作成します。このチュートリアルでは、Java ファイル名として **TSPSolver.java** を使用します。**your\_service\_bus\_namespace**、**your\_service\_bus\_owner**、**your\_service\_bus\_key** の各プレースホルダーを変更して、それぞれ自分の Service Bus の **[名前空間]**、**[既定の発行者]**、**[既定のキー]** の値を設定します。
 3.  コーディング後、実行可能な Java アーカイブ (JAR) にアプリケーションをエクスポートして、生成される JAR に、必要なライブラリをパッケージ化します。このチュートリアルでは、生成される JAR 名として **TSPSolver.jar** を使用します。
 
-<p/>
-
     // TSPSolver.java
-	
+
     import com.microsoft.windowsazure.services.core.Configuration;
     import com.microsoft.windowsazure.services.core.ServiceException;
     import com.microsoft.windowsazure.services.serviceBus.*;
@@ -295,8 +301,6 @@ Azure のサービス バス キューを使用するには、最初にサービ
 1.  開発用コンピューターで、このセクションの末尾にあるコード例を使用して、Java コンソール アプリケーションを作成します。このチュートリアルでは、Java ファイル名として **TSPClient.java** を使用します。先ほどと同じように、**your\_service\_bus\_namespace**、**your\_service\_bus\_owner**、**your\_service\_bus\_key** の各プレースホルダーを変更して、それぞれ自分のサービス バスの **[名前空間]**、**[既定の発行者]**、**[既定のキー]** の値を使用します。
 2.  実行可能な JAR にアプリケーションをエクスポートして、生成される JAR に、必要なライブラリをパッケージ化します。このチュートリアルでは、生成される JAR 名として **TSPClient.jar** を使用します。
 
-<p/>
-
     // TSPClient.java
 
     import java.util.Date;
@@ -479,7 +483,7 @@ Azure のサービス バス キューを使用するには、最初にサービ
 
         java -jar TSPSolver.jar 8
 
-   数値を指定しなかった場合は、10 都市を対象として実行されます。現時点で最短の経路が見つかると、それがキューに追加されます。
+数値を指定しなかった場合は、10 都市を対象として実行されます。現時点で最短の経路が見つかると、それがキューに追加されます。
 
 > [WACOM.NOTE]
 > 指定した数値が大きいほど、プログラムの実行時間は長くなります。たとえば、14 都市の場合は数分で実行できても、15 都市になると実行に数時間かかることがありえます。16 都市以上にすると実行時間が数日になる可能性があります (最終的には数週間、数か月、数年かかります)。これは都市数が増えるにつれてプログラムが評価する順列の数が急増するためです。
@@ -511,12 +515,12 @@ Azure のサービス バス キューを使用するには、最初にサービ
 
   [巡回セールスマン問題を解くプログラム]: ./media/virtual-machines-java-run-compute-intensive-task/WA_JavaTSPSolver.png
   [巡回セールスマン問題のクライアント]: ./media/virtual-machines-java-run-compute-intensive-task/WA_JavaTSPClient.png
-  [create-account-and-vms-note]: ../includes/create-account-and-vms-note.md
   [Azure 管理ポータル]: https://manage.windowsazure.com
   [証明書を Java CA 証明書ストアに追加する方法]: ../java-add-certificate-ca-store
+  [[Service Bus] ノードのスクリーンショット]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_02_SvcBusNode.jpg
   [名前空間の新規作成のスクリーンショット]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_03_CreateNewSvcNamespace.jpg
   [利用可能な名前空間のスクリーンショット]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_04_SvcBusNode_AvailNamespaces.jpg
   [名前空間の一覧のスクリーンショット]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_05_NamespaceList.jpg
-  [プロパティ ウィンドウのスクリーンショット]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_06_PropertiesPane.jpg
-  [既定のキー のスクリーンショット]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_07_DefaultKey.jpg
+  [[プロパティ] ウィンドウのスクリーンショット]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_06_PropertiesPane.jpg
+  [[既定のキー] のスクリーンショット]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_07_DefaultKey.jpg
   [Azure SDK for Java]: http://www.windowsazure.com/ja-jp/develop/java/

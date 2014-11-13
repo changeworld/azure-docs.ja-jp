@@ -1,4 +1,4 @@
-<properties linkid="dev-ruby-web-app-with-linux-vm" urlDisplayName="Ruby on Rails Web App on Azure using Linux VM" pageTitle="Ruby on Rails Web App on Azure using Linux VM" metaKeywords="Azure Ruby web application, Azure Ruby application, Ruby app Azure, Ruby azure vm, ruby virthal machine, ruby linux vm" description="Host a Ruby on Rails-based website on Azure using a Linux virtual machine. " metaCanonical="" services="virtual-machines" documentationCenter="Ruby" title="Ruby on Rails Web application on an Azure VM" authors="larryfr" solutions="" manager="" editor="" />
+<properties urlDisplayName="Ruby on Rails Web App on Azure using Linux VM" pageTitle="Linux VM を使用した Azure での Ruby on Rails Web アプリケーション" metaKeywords="Azure Ruby web application, Azure Ruby application, Ruby app Azure, Ruby azure vm, ruby virthal machine, ruby linux vm" description="Linux 仮想マシンを使用して、Azure で Ruby on Rails ベースの Web サイトをホストします。" metaCanonical="" services="virtual-machines" documentationCenter="Ruby" title="Azure VM での Ruby on Rails Web アプリケーション" authors="larryfr" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="vm-linux" ms.devlang="ruby" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
@@ -36,28 +36,41 @@
 
 -   [次のステップ][次のステップ]
 
-</ul>
-<h2 id="set-up-your-development-environment"><a id="setup"></a>開発環境を設定する</h2>
-<ol>
-<li><p>開発環境に Ruby をインストールします。この手順は、使用しているオペレーティング システムによって異なる場合があります。
-<ul>
-<li><p><strong>Apple OS X</strong> - OS X 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証には、OS X で <a href="http://brew.sh/">Homebrew</a> を使用して <strong>rbenv</strong> および <strong>ruby-build</strong> をインストールしました。インストールに関する情報は、<a href="https://github.com/sstephenson/rbenv/"><a href="https://github.com/sstephenson/rbenv/" class="uri">https://github.com/sstephenson/rbenv/</a></a> で確認できます。</li>
-<li><p><strong>Linux</strong> - ディストリビューションのパッケージ管理システムを使用します。このチュートリアルは、Ubuntu 12.10 で ruby1.9.1 および ruby1.9.1-dev パッケージを使用して検証されました。</li>
-<li><p><strong>Windows</strong> - Windows 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルは、<a href="http://railsinstaller.org/">RailsInstaller</a> 1.9.3-p392 を使用して検証されました。</li></ul></li>
-<p>
-<li><p>新しいコマンド ラインまたはターミナル セッションを開き、次のコマンドを入力して Ruby on Rails をインストールします。</p>
-<pre><code data-inline="1">gem install rails --no-rdoc --no-ri</code></pre>
-<div class="dev-callout">
-<strong>注</strong>
-<p>オペレーティング システムによっては、このコマンドには管理者特権または root 権限が必要となる場合があります。このコマンドの実行中にエラーが発生した場合は、次のように &quot;sudo&quot; を使用してください。</p>
-<pre class="prettyprint">sudo gem install rails</pre>
-</div>
-<div class="dev-callout">
-<strong>注</strong>
-<p>このチュートリアルでは、Rails gem Version 3.2.12 を使用しました。</p>
-<li><p>JavaScript インタープリターもインストールする必要があります。これは、Rails アプリケーションで使われる CoffeeScript アセットをコンパイルするために Rails によって使用されます。サポートされているインタープリターの一覧は、<a href="https://github.com/sstephenson/execjs#readme"><a href="https://github.com/sstephenson/execjs#readme" class="uri">https://github.com/sstephenson/execjs#readme</a></a> で確認できます。
-<p><a href="http://nodejs.org/">Node.js</a> をこのチュートリアルの検証中に使用しました。このインタープリターは OS X、Linux、Windows の各オペレーティング システムで利用できるためです。</p></li>
-</ol>
+## <span id="setup"></span></a>開発環境を設定する
+
+1.  開発環境に Ruby をインストールします。この手順は、使用しているオペレーティング システムによって異なる場合があります。
+
+    -   **Apple OS X** - OS X 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証には、OS X で [Homebrew][Homebrew] を使用して **rbenv** および **ruby-build** をインストールしました。インストールに関する情報は、[][]<https://github.com/sstephenson/rbenv/></a> で確認できます。
+
+    -   **Linux** - ディストリビューションのパッケージ管理システムを使用します。このチュートリアルは、Ubuntu 12.10 で ruby1.9.1 および ruby1.9.1-dev パッケージを使用して検証されました。
+
+    -   **Windows** - Windows 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルは、[RailsInstaller][RailsInstaller] 1.9.3-p392 を使用して検証されました。
+
+2.  新しいコマンド ラインまたはターミナル セッションを開き、次のコマンドを入力して Ruby on Rails をインストールします。
+
+        gem install rails --no-rdoc --no-ri
+
+    <div class="dev-callout">
+
+    **注**
+    オペレーティング システムによっては、このコマンドには管理者特権または root 権限が必要となる場合があります。このコマンドの実行中にエラーが発生した場合は、次のように "sudo" を使用してください。
+
+    ``` prettyprint
+    sudo gem install rails
+    ```
+
+    </div>
+
+    <div class="dev-callout">
+
+    **注**
+    このチュートリアルでは、Rails gem Version 3.2.12 を使用しました。
+
+    </div>
+
+3.  JavaScript インタープリターもインストールする必要があります。これは、Rails アプリケーションで使われる CoffeeScript アセットをコンパイルするために Rails によって使用されます。サポートされているインタープリターの一覧は、[][1]<https://github.com/sstephenson/execjs#readme></a> で確認できます。
+
+    [Node.js][Node.js] をこのチュートリアルの検証中に使用しました。このインタープリターは OS X、Linux、Windows の各オペレーティング システムで利用できるためです。
 
 ## <span id="create"></span></a>Rails アプリケーションを作成する
 
@@ -69,8 +82,8 @@
 
     <div class="dev-callout">
 
-    <b>注</b>
-    <p>このコマンドが完了するまでには、しばらく時間がかかることがあります。このコマンドによって既定のアプリケーションに必要な gem のサイレント インストールが実行されますが、その間にハングしたように見える場合があります。</p>
+    **注**
+    このコマンドが完了するまでには、しばらく時間がかかることがあります。このコマンドによって既定のアプリケーションに必要な gem のサイレント インストールが実行されますが、その間にハングしたように見える場合があります。
 
     </div>
 
@@ -120,15 +133,15 @@
 
 <div class="dev-callout">
 
-<b>注</b>
-<p>このチュートリアルの手順は、Ubuntu 12.10 をホストする Azure 仮想マシンで実行しています。他の Linux ディストリビューションを使用する場合は、同じタスクを完了するために別の手順が必要になることがあります。</p>
+**注**
+このチュートリアルの手順は、Ubuntu 12.10 をホストする Azure 仮想マシンで実行しています。他の Linux ディストリビューションを使用する場合は、同じタスクを完了するために別の手順が必要になることがあります。
 
 </div>
 
 <div class="dev-callout">
 
-<b>注</b>
-<p>ここで作成する必要があるのは、仮想マシン**のみ**です。SSH を使用して仮想マシンに接続する方法を確認したら戻ってください。</p>
+**注**
+ここで作成する必要があるのは、仮想マシン**のみ**です。SSH を使用して仮想マシンに接続する方法を確認したら戻ってください。
 
 </div>
 
@@ -144,8 +157,8 @@ Azure の仮想マシンを作成したら、次の手順を実行して、仮�
 
     <div class="dev-callout">
 
-    <b>注</b>
-    <p>開発環境として Windows を使用している場合、SSH 機能には **PuTTY** などのユーティリティを使用できます。PuTTY は、[PuTTY のダウンロード ページ][PuTTY のダウンロード ページ]から入手できます。</p>
+    **注**
+    開発環境として Windows を使用している場合、SSH 機能には **PuTTY** などのユーティリティを使用できます。PuTTY は、[PuTTY のダウンロード ページ][PuTTY のダウンロード ページ]から入手できます。
 
     </div>
 
@@ -179,8 +192,8 @@ Azure の仮想マシンを作成したら、次の手順を実行して、仮�
 
 <div class="dev-callout">
 
-<b>注</b>
-<p>開発環境として Windows を使用している場合、scp 機能には **pscp** などのユーティリティを使用できます。pscp は、[PuTTY のダウンロード ページ][PuTTY のダウンロード ページ]から入手できます。</p>
+**注**
+開発環境として Windows を使用している場合、scp 機能には **pscp** などのユーティリティを使用できます。pscp は、[PuTTY のダウンロード ページ][PuTTY のダウンロード ページ]から入手できます。
 
 </div>
 
@@ -194,7 +207,7 @@ Azure の仮想マシンを作成したら、次の手順を実行して、仮�
 
 -   **directory-to-copy**:コピーするローカル ディレクトリ
 
--   **user@vmdns**:ファイルのコピー先となるコンピューターのアドレスと、ログインに使用するユーザー アカウント
+-   <**user@vmdns**>:ファイルのコピー先となるコンピューターのアドレスと、ログインに使用するユーザー アカウント
 
 コピー操作が完了すると、**blog\_app** ディレクトリがユーザーのホーム ディレクトリに配置されます。仮想マシンへの SSH セッションで次のコマンドを使用して、コピーされたファイルを表示します。
 
@@ -275,7 +288,7 @@ Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サ
 
 -   [コンテンツ配信ネットワークを使用して高帯域幅コンテンツを配信する][コンテンツ配信ネットワークを使用して高帯域幅コンテンツを配信する]
 
-
+<!-- WA.com links --> <!-- External Links --> <!-- Images -->
 
   [a browser displaying Listing Posts]: ./media/virtual-machines-ruby-rails-web-app-linux/blograilscloud.png
   [開発環境を設定する]: #setup
@@ -285,6 +298,11 @@ Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サ
   [アプリケーションを VM にコピーする]: #copy
   [gem をインストールしてアプリケーションを起動する]: #start
   [次のステップ]: #next
+  [Homebrew]: http://brew.sh/
+  []: https://github.com/sstephenson/rbenv/
+  [RailsInstaller]: http://railsinstaller.org/
+  [1]: https://github.com/sstephenson/execjs#readme
+  [Node.js]: http://nodejs.org/
   [SQLite3 データベース]: http://www.sqlite.org/
   [既定の rails ページ]: ./media/virtual-machines-ruby-rails-web-app-linux/basicrailslocal.png
   [a page listing posts]: ./media/virtual-machines-ruby-rails-web-app-linux/blograilslocal.png

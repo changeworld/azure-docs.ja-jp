@@ -1,4 +1,4 @@
-<properties linkid="dev-net-commons-tasks-enable-ssl" urlDisplayName="Enable SSL" pageTitle="Configure SSL for a cloud service - Azure" metaKeywords="Azure SSL, Azure HTTPS, Azure SSL, Azure HTTPS, .NET Azure SSL, .NET Azure HTTPS, C# Azure SSL, C# Azure HTTPS, VB Azure SSL, VB Azure HTTPS" description="Learn how to specify an HTTPS endpoint for a web role and how to upload an SSL certificate to secure your application." metaCanonical="" services="cloud-services" documentationCenter=".NET" title="Configuring SSL for an application in Azure" authors="timlt" solutions="" manager="timlt" editor="mollybos" />
+<properties urlDisplayName="Enable SSL" pageTitle="クラウド サービス向けの SSL の構成 - Azure" metaKeywords="Azure SSL, Azure HTTPS, Azure SSL, Azure HTTPS, .NET Azure SSL, .NET Azure HTTPS, C# Azure SSL, C# Azure HTTPS, VB Azure SSL, VB Azure HTTPS" description="Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。" metaCanonical="" services="cloud-services" documentationCenter=".NET" title="Azure でアプリケーションの SSL を構成する" authors="timlt" solutions="" manager="timlt" editor="mollybos" />
 
 <tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="timlt" />
 
@@ -67,7 +67,8 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
         ...
         </WebRole>
 
-3.  サービス定義ファイルで、**Sites** セクション内に **Binding** 要素を追加します。これにより、HTTPS バインドが追加され、エンドポイントがサイトにマップされます。
+3.  サービス定義ファイルで、**Sites** セクション内に **Binding** 要素を追加します。
+    これにより、HTTPS バインドが追加され、エンドポイントがサイトにマップされます。
 
         <WebRole name="CertificateTesting" vmsize="Small">
         ...
@@ -81,10 +82,12 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
         ...
         </WebRole>
 
-    サービス定義ファイルに対して必要な変更はすべて完了しましたが、
+    サービス定義ファイルに対して
+    必要な変更はすべて完了しましたが、
     サービス構成ファイルに証明書の情報を追加する必要もあります。
 
-4.  サービス構成ファイル (CSCFG) である ServiceConfiguration.Cloud.cscfg で、**ロール** セクション内に **Certificates** セクションを追加し、次に示す拇印値のサンプルを証明書の拇印値に置き換えます。
+4.  サービス構成ファイル (CSCFG) である ServiceConfiguration.Cloud.cscfg で、**ロール** セクション内に **Certificates** セクションを追加し、
+    次に示す拇印値のサンプルを証明書の拇印値に置き換えます。
 
         <Role name="Deployment">
         ...
@@ -98,11 +101,15 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 (上記の例では、サムプリント アルゴリズムに **sha1** を使用しています。証明書のサムプリント アルゴリズムに適切な値を指定してください。)
 
-サービス定義ファイルとサービス構成ファイルが更新されたので、Azure にアップロードするためにデプロイをパッケージ化します。**cspack** を使用している場合は、**/generateConfigurationFile** フラグを使用しないようにしてください。このフラグによって、先ほど挿入した証明書情報が上書きされるためです。
+サービス定義ファイルとサービス構成ファイルが更新されたので、
+Azure にアップロードするためにデプロイをパッケージ化します。
+**cspack** を使用している場合は、
+**/generateConfigurationFile** フラグを使用しないようにしてください。このフラグによって、先ほど挿入した証明書情報が上書きされるためです。
 
 ## <a name="step3"> </a><span class="short-header">Azure へのアップロード</span>手順 3: デプロイ パッケージと証明書をアップロードする
 
-デプロイ パッケージがこの証明書を使用するように更新され、HTTPS エンドポイントが追加されました。これで、管理ポータルを使用して Azure にパッケージと証明書をアップロードできるようになりました。
+デプロイ パッケージがこの証明書を使用するように更新され、HTTPS エンドポイントが追加されました。
+これで、管理ポータルを使用して Azure にパッケージと証明書をアップロードできるようになりました。
 
 1.  [Azure の管理ポータル][Azure の管理ポータル]にログインします。
 2.  **[新規]**、**[クラウド サービス]**、**[カスタム作成]** の順にクリックします。
@@ -125,7 +132,8 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 ## <a name="step4"> </a><span class="short-header">HTTPS を使用した接続</span>手順 4: HTTPS を使用してロール インスタンスに接続する
 
-Azure でデプロイを実行できるようになったため、HTTPS を使用して接続できます。
+Azure でデプロイを実行できるようになったため、
+HTTPS を使用して接続できます。
 
 1.  管理ポータルで展開を選択し、**[サイトの URL]** の下にあるリンクをクリックします。
 
@@ -147,7 +155,6 @@ Azure でデプロイを実行できるようになったため、HTTPS を使�
 
 -   [HTTPS エンドポイント上での SSL 証明書の構成方法][HTTPS エンドポイント上での SSL 証明書の構成方法]
 
-  [websites-cloud-services-css-guided-walkthrough]: ../includes/websites-cloud-services-css-guided-walkthrough.md
   [手順 1.SSL 証明書を取得する]: #step1
   [手順 2.サービス定義ファイルとサービス構成ファイルを変更する]: #step2
   [手順 3.デプロイ パッケージと証明書をアップロードする]: #step3

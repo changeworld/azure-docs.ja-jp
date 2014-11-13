@@ -1,36 +1,34 @@
-<properties linkid="manage-services-mediaservices-scale-media-service" urlDisplayName="How to scale" pageTitle="How to Scale a media service | Azure Documentation" metaKeywords="" description="Learn how to scale Media Services by specifying the number of On-Demand Streaming Reserved Units and Encoding Reserved Units that you would like your account to be provisioned with." metaCanonical="" services="media-services" documentationCenter="" title="How to Scale a Media Service" authors="migree" solutions="" manager="" editor="" />
+<properties urlDisplayName="How to scale" pageTitle="メディア サービスの規模の設定方法 | Azure ドキュメント" metaKeywords="" description="アカウントにプロビジョニングする [オンデマンド ストリーミング占有ユニット] および [エンコード占有ユニット] の数を指定することでメディア サービスの規模を設定する方法について説明します。" metaCanonical="" services="media-services" documentationCenter="" title="メディア サービスの規模の設定方法" authors="juliako" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="migree"></tags>
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/26/2014" ms.author="juliako" />
 
 # メディア サービスの規模の設定方法
 
-[WACOM.INCLUDE [disclaimer][]]
+[WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
 
 メディア サービスは、アカウントのプロビジョニングに使用する**オンデマンド ストリーミング占有ユニット**および**エンコード占有ユニット**の数を指定することで規模を設定できます。
 
 ## オンデマンド ストリーミング占有ユニット
 
-オンデマンド ストリーミング占有ユニットを使用すると、専用の送信容量を 200 Mbps 単位で購入できるほか、[動的パッケージ化機能][]などの追加機能を利用できるようになります。既定では、オンデマンド ストリーミングは、サーバー リソース (コンピューティング、送信容量など) を他のユーザーと共有する共有インスタンス モデルとして構成されます。オンデマンド ストリーミングのスループットを高めるために、オンデマンド ストリーミング占有ユニットの購入をお勧めします。
+オンデマンド ストリーミング占有ユニットを使用すると、専用の送信容量を 200 Mbps 単位で購入できるほか、[動的パッケージ化機能][動的パッケージ化機能]などの追加機能を利用できるようになります。既定では、オンデマンド ストリーミングは、サーバー リソース (コンピューティング、送信容量など) を他のユーザーと共有する共有インスタンス モデルとして構成されます。オンデマンド ストリーミングのスループットを高めるために、オンデマンド ストリーミング占有ユニットの購入をお勧めします。
 
 オンデマンド ストリーミング占有ユニットの数を変更するには、以下の手順を実行します。
 
-1.  [管理ポータル][]で、**[メディア サービス]** をクリックします。次に、メディア サービスの名前をクリックします。
+1.  [管理ポータル][管理ポータル]で、**[メディア サービス]** をクリックします。次に、メディア サービスの名前をクリックします。
 
-2.  [オリジン] ページを選択します。次に、変更するオリジンをクリックします。
+2.  [ストリーミング エンドポイント] ページを選択します。次に、変更するストリーミング エンドポイントをクリックします。
 
-    ![[オリジン] ページ](./media/media-services-how-to-scale/media-services-origin-page.png)
+3.  ストリーミング ユニットの数を指定するには、[スケール] タブをクリックし、**[占有容量]** スライダーを動かします。
 
-3.  占有ユニットの数を指定するには、[スケール] タブをクリックし、**[占有容量]** スライダーを動かします。
-
-    ![[スケール] ページ](./media/media-services-how-to-scale/media-services-origin-scale.png)
+    ![[スケール] ページ][]
 
 4.  [保存] ボタンを押して、変更を保存します。
 
     オンデマンド ストリーミングの新しいユニットの割り当ては完了するまでに約 20 分かかります。
 
-    **注:** 現在のところ、オンデマンド ストリーミング占有ユニットの数を正の値からゼロに戻すと、オンデマンド ストリーミングが最大 1 時間無効になります。
+    > [Azure.Note] 現在のところ、オンデマンド ストリーミング ユニットの数を正の値からゼロに戻すと、オンデマンド ストリーミングが最大 1 時間無効になります。
 
-    **注:** コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Azure 料金早見表][]」を参照してください。
+    > [Azure.Note] コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。料金設定の詳細については、「[Azure 料金早見表][Azure 料金早見表]」を参照してください。
 
 ## エンコード占有ユニット
 
@@ -38,17 +36,25 @@
 
 エンコード占有ユニットの数を変更するには、以下の手順を実行します。
 
-1.  [管理ポータル][]で、**[メディア サービス]** をクリックします。次に、メディア サービスの名前をクリックします。
+1.  [管理ポータル][管理ポータル]で、**[メディア サービス]** をクリックします。次に、メディア サービスの名前をクリックします。
 
-2.  [プロセッサ] ページを選択します。
+2.  [エンコード] ページを選択します。
 
-    ![[プロセッサ] ページ](./media/media-services-how-to-scale/media-services-encoding-scale.png) 
+    [エンコード] ページでは、以下に示すように、Basic、Standard、Premium の 3 種類のエンコード占有ユニットから選択できます。
+
+    ![[プロセッサ] ページ][]
+
+    エンコード スライダーを使用して、選択した占有ユニットの種類のユニット数を変更できます。
+
+    占有ユニットの種類間の大きな違いは速度です。たとえば、同じエンコード ジョブを実行した場合、Standard 占有ユニットの方が Basic 占有ユニットに比べ高速です。詳細については、[Milan Gada][Milan Gada] によるエンコード占有ユニットの種類に関するブログを参照してください。
+
+    > [Azure.Note] シンガポール、香港、大阪、北京、上海のデータ センターは、Premium 占有ユニットの種類を提供していません。
 
 3.  [保存] ボタンを押して、変更を保存します。
 
-    新しいエンコード占有ユニットは、ほぼ即座に割り当てられます。
+    新しいエンコード占有ユニットは、[保存] をクリックするとすぐに割り当てられます。
 
-    **注:** コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。
+    > [Azure.Note] コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。
 
 ## サポート チケットを開く
 
@@ -57,7 +63,7 @@
 サポート チケットを開くには、以下の手順を実行します。
 
 1.  [管理ポータル][1]で自分の Azure アカウントにログインします。
-2.  [[サポート]](http://www.windowsazure.com/en-us/support/contact/) に移動します。
+2.  [[サポート]][] に移動します。
 3.  [サポートの要求] をクリックします。
 4.  サブスクリプションを選択します。
 5.  サポートの種類として [技術] を選択します。
@@ -68,8 +74,11 @@
 10. 次のページにある指示に従って、必要なエンコードまたはオンデマンド ストリーミング占有ユニットの数を入力します。
 11. [送信] をクリックして、チケットを開きます。
 
-  [disclaimer]: ../includes/disclaimer.md
   [動的パッケージ化機能]: http://go.microsoft.com/fwlink/?LinkId=276874
   [管理ポータル]: https://manage.windowsazure.com/
+  [[スケール] ページ]: ./media/media-services-how-to-scale/media-services-origin-scale.png
   [Azure 料金早見表]: http://go.microsoft.com/fwlink/?LinkId=275107
+  [[プロセッサ] ページ]: ./media/media-services-how-to-scale/media-services-encoding-scale.png
+  [Milan Gada]: http://azure.microsoft.com/blog/author/milanga/
   [1]: http://manage.windowsazure.com
+  [[サポート]]: http://www.windowsazure.com/ja-jp/support/contact/

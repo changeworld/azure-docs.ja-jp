@@ -1,4 +1,4 @@
-<properties linkid="dev-net-how-to-blob-storage" urlDisplayName="Blob Service" pageTitle="How to use blob storage from .NET | Azure" metaKeywords="Get started Azure blob   Azure unstructured data   Azure unstructured storage   Azure blob   Azure blob storage   Azure blob .NET   Azure blob C#   Azure blob C#" description="Learn how to use Microsoft Azure Blob storage to upload,  download, list, and delete blob content. Samples are written in C#." metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="storage" documentationCenter=".NET" title="How to use Microsoft Azure Blob storage in .NET" authors="tamram" manager="mbaldwin" editor="cgronlun" />
+<properties urlDisplayName="Blob Service" pageTitle=".NET から BLOB ストレージを使用する方法 | Azure" metaKeywords="Get started Azure blob   Azure unstructured data   Azure unstructured storage   Azure blob   Azure blob storage   Azure blob .NET   Azure blob C#   Azure blob C#" description="Microsoft Azure BLOB ストレージを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、および削除する方法について説明します。サンプルは C# で記述されています。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="storage" documentationCenter=".NET" title=".NET での Microsoft Azure BLOB ストレージの使用方法" authors="tamram" manager="adinah" editor="cgronlun" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
@@ -24,23 +24,24 @@
 -   [方法: コンテナー内の BLOB を一覧表示する][方法: コンテナー内の BLOB を一覧表示する]
 -   [方法: BLOB をダウンロードする][方法: BLOB をダウンロードする]
 -   [方法: BLOB を削除する][方法: BLOB を削除する]
+-   [方法: BLOB をページで非同期に一覧表示する][方法: BLOB をページで非同期に一覧表示する]
 -   [次のステップ][次のステップ]
 
 [WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
-## <a name="create-account"></a><span class="short-header">アカウントの作成</span>Azure の Storage アカウントの作成
+## <a name="create-account"></a><span class="short-header">Azure のストレージ アカウントの作成</span>
 
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## <a name="setup-connection-string"></a><span class="short-header">接続文字列の設定</span>ストレージ接続文字列の設定
+## <a name="setup-connection-string"></a><span class="short-header">ストレージ接続文字列の設定</span>
 
 [WACOM.INCLUDE [storage-configure-connection-string](../includes/storage-configure-connection-string.md)]
 
-## <a name="configure-access"> </a><span class="short-header">プログラムでのアクセス</span>方法: プログラムで BLOB ストレージにアクセスする
+## <a name="configure-access"> </a><span class="short-header">方法: プログラムで BLOB ストレージにアクセスする</span>
 
 ### アセンブリの取得
 
-NuGet を使用して `Microsoft.WindowsAzure.Storage.dll` アセンブリを取得できます。**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
+NuGet を使用して `Microsoft.WindowsAzure.Storage.dll` アセンブリを取得することをお勧めします。**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
 
 `Microsoft.WindowsAzure.Storage.dll` は、[.NET デベロッパー センター][.NET デベロッパー センター]からダウンロードできる Azure SDK for .NET にも含まれています。このアセンブリは `%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\<sdk-version>\ref\`lt;sdk-version\>\\ref\\</code> ディレクトリにインストールされます。
 
@@ -86,11 +87,9 @@ Microsoft.WindowsAzure.CloudConfigurationManager
 
 .NET 用ストレージ クライアント ライブラリの ODataLib 依存は、WCF Data Services ではなく、NuGet から入手できる ODataLib (バージョン 5.0.2) パッケージで解決されます。ODataLib ライブラリは、直接ダウンロードすることも、NuGet を使用してコード プロジェクトで参照することもできます。具体的な ODataLib パッケージは、[OData][OData]、[Edm][Edm]、および [Spatial][Spatial] です。
 
-## <a name="create-container"> </a><span class="short-header">コンテナーの作成</span>方法: コンテナーを作成する
+## <a name="create-container"> </a><span class="short-header">方法: コンテナーを作成する</span>
 
-ストレージの BLOB はすべてコンテナー内に格納されます。**CloudBlobClient**
-オブジェクトを使用すると、使用するコンテナーへの参照を取得
-できます。コンテナーが存在しない場合は、次のようにして作成できます。
+Azure Storage のどの BLOB もコンテナーに格納する必要があります。この例は、コンテナーがない場合に、コンテナーを作成する方法を示しています。
 
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -118,7 +117,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager
 パブリック コンテナー内の BLOB は、インターネットに接続している
 すべてのユーザーが表示できますが、変更または削除できるのは、適切なアクセス キーを持っているユーザーだけです。
 
-## <a name="upload-blob"> </a><span class="short-header">コンテナーへのアップロード</span>方法: コンテナーに BLOB をアップロードする
+## <a name="upload-blob"> </a><span class="short-header">方法: コンテナーに BLOB をアップロードする</span>
 
 Azure BLOB Storage では、ブロック BLOB とページ BLOB がサポートされています。ほとんどの場合は、ブロック BLOB を使用することをお勧めします。
 
@@ -146,7 +145,7 @@ Azure BLOB Storage では、ブロック BLOB とページ BLOB がサポート�
         blockBlob.UploadFromStream(fileStream);
     } 
 
-## <a name="list-blob"> </a><span class="short-header">コンテナー内の BLOB の一覧表示</span>方法: コンテナー内の BLOB を一覧表示する
+## <a name="list-blob"> </a><span class="short-header">方法: コンテナー内の BLOB を一覧表示する</span>
 
 コンテナー内の BLOB を一覧表示するには、まず、コンテナーの参照を取得します。次に、
 コンテナーの **ListBlobs** メソッドを使って、その中の BLOB やディレクトリを取得
@@ -235,7 +234,7 @@ Azure BLOB Storage では、ブロック BLOB とページ BLOB がサポート�
 
 詳細については、[CloudBlobContainer.ListBlobs に関するページ][CloudBlobContainer.ListBlobs に関するページ]を参照してください。
 
-## <a name="download-blobs"> </a><span class="short-header">BLOB のダウンロード</span>方法: BLOB をダウンロードする
+## <a name="download-blobs"> </a><span class="short-header">方法: BLOB をダウンロードする</span>
 
 BLOB をダウンロードするには、まず BLOB の参照を取得し、次に **DownloadToStream** メソッドを呼び出します。次の例は、
 **DownloadToStream** メソッドを使用して、ローカル ファイルに
@@ -282,7 +281,7 @@ BLOB をダウンロードするには、まず BLOB の参照を取得し、次
         text = System.Text.Encoding.UTF8.GetString(memoryStream.ToArray());
     }
 
-## <a name="delete-blobs"> </a><span class="short-header">BLOB の削除</span>方法: BLOB を削除する
+## <a name="delete-blobs"> </a><span class="short-header">方法: BLOB を削除する</span>
 
 BLOB を削除するには、まず BLOB の参照を取得し、次にその
 **Delete** メソッドを呼び出します。
@@ -303,7 +302,67 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその
     // Delete the blob.
     blockBlob.Delete(); 
 
-## <a name="next-steps"></a><span class="short-header">次の手順</span>次の手順
+## <a name="list-blobs-async"> </a><span class="short-header">方法: BLOB をページで非同期に一覧表示する</span>
+
+多数の BLOB を一覧表示する場合や、1 回の一覧表示操作で返される結果の数を制御する場合には、BLOB の一覧を結果のページで表示できます。この例は、大きな結果のセットを返すために待機している間に実行がブロックされないように、結果をページで非同期に返す方法を示しています。
+
+この例は、BLOB をフラットな一覧で表示しますが、**ListBlobsSegmentedAsync** メソッドの `useFlatBlobListing` パラメーターを `false` に設定することによって、階層化された一覧で表示することもできます。
+
+サンプル メソッドは非同期メソッドを呼び出すため、その先頭を `async` キーワードにする必要があり、また、**Task** オブジェクトを返す必要があります。**ListBlobsSegmentedAsync** メソッドに対して指定された await キーワードは、一覧表示タスクが完了するまで、サンプル メソッドの実行を中断します。
+
+    async public static Task ListBlobsSegmentedInFlatListing()
+    {
+        // Retrieve storage account from connection string.
+        CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+            CloudConfigurationManager.GetSetting("StorageConnectionString"));
+
+        // Create the blob client.
+        CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+
+        // Retrieve reference to a previously created container.
+        CloudBlobContainer container = blobClient.GetContainerReference("myblobs");
+
+        //List blobs in pages.
+        Console.WriteLine("List blobs in pages:");
+
+        //List blobs with a paging size of 10, for the purposes of the example. 
+        //The first call does not include the continuation token.
+        BlobResultSegment resultSegment = await container.ListBlobsSegmentedAsync(
+                "", true, BlobListingDetails.All, 10, null, null, null);
+
+        //Enumerate the result segment returned.
+        int i = 0;
+        if (resultSegment.Results.Count<IListBlobItem>() > 0) { Console.WriteLine("Page {0}:", ++i); }
+        foreach (var blobItem in resultSegment.Results)
+        {
+            Console.WriteLine("\t{0}", blobItem.StorageUri.PrimaryUri);
+        }
+        Console.WriteLine();
+
+        //Get the continuation token, if there are additional pages of results.
+        BlobContinuationToken continuationToken = resultSegment.ContinuationToken;
+
+        //Check whether there are more results and list them in pages of 10 while a continuation token is returned.
+        while (continuationToken != null)
+        {
+            //This overload allows control of the page size. 
+            //You can return all remaining results by passing null for the maxResults parameter, 
+            //or by calling a different overload.
+            resultSegment = await container.ListBlobsSegmentedAsync(
+                    "", true, BlobListingDetails.All, 10, continuationToken, null, null);
+            if (resultSegment.Results.Count<IListBlobItem>() > 0) { Console.WriteLine("Page {0}:", ++i); }
+            foreach (var blobItem in resultSegment.Results)
+            {
+                Console.WriteLine("\t{0}", blobItem.StorageUri.PrimaryUri);
+            }
+            Console.WriteLine();
+
+            //Get the next continuation token.
+            continuationToken = resultSegment.ContinuationToken;
+        }
+    }
+
+## <a name="next-steps"></a><span class="short-header">次のステップ</span>
 
 これで、BLOB ストレージの基本を学習できました。さらに複雑な
 ストレージ タスクを実行する方法については、
@@ -336,9 +395,7 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその
   [方法: コンテナー内の BLOB を一覧表示する]: #list-blob
   [方法: BLOB をダウンロードする]: #download-blobs
   [方法: BLOB を削除する]: #delete-blobs
-  [howto-blob-storage]: ../includes/howto-blob-storage.md
-  [create-storage-account]: ../includes/create-storage-account.md
-  [storage-configure-connection-string]: ../includes/storage-configure-connection-string.md
+  [方法: BLOB をページで非同期に一覧表示する]: #list-blobs-async
   [.NET デベロッパー センター]: http://www.windowsazure.com/ja-jp/develop/net/#
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
@@ -346,6 +403,7 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその
   [.NET 用ストレージ クライアント ライブラリ リファレンス]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API リファレンス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179355
   [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
+  [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)]: /ja-jp/documentation/articles/websites-dotnet-webjobs-sdk-get-started/
   [テーブル ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/
   [キュー ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-queues/
   [SQL データベース]: /ja-jp/documentation/articles/sql-database-dotnet-how-to-use/

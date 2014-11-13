@@ -1,6 +1,6 @@
-<properties title="Introduction to Microsoft Azure DocumentDB" pageTitle="Introduction to Microsoft Azure DocumentDB | Azure" description="Learn about Azure DocumentDB and its value to cloud and mobile applications. Also, learn about how it manages data, and how you can use it in application development." metaKeywords="" services="documentdb" solutions="data-management"  authors="bradsev" manager="jhubbard" editor="cgronlun" videoId="" scriptId="" />
+<properties title="Microsoft Azure DocumentDB の概要" pageTitle="Microsoft Azure DocumentDB の概要 | Azure" description="Azure DocumentDB とは何か、また、それがクラウド アプリケーションやモバイル アプリケーションにどのような価値をもたらすかについて説明します。Azure DocumentDB におけるデータの管理や、アプリケーション開発における Azure DocumentDB の活用方法についても説明します。" metaKeywords="" services="documentdb" solutions="data-management"  authors="bradsev" manager="jhubbard" editor="cgronlun" videoId="" scriptId="" />
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="bradsev"></tags>
+<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="spelluru" />
 
 # Microsoft Azure DocumentDB の概要
 
@@ -45,7 +45,7 @@ Azure DocumentDB 内のリソースはいずれも、JSON ドキュメントと�
 
 以下の図は、Azure DocumentDB のリソース間の関係を示したものです。
 
-![][]
+![][0]
 
 データベース アカウントは、一連のデータベースから成ります。それぞれのデータベースには、複数のコレクションが含まれており、それぞれのコレクションに、ストアド プロシージャ、トリガー、UDF のほか、ドキュメントおよび関連する添付ファイルが含まれています。また、データベースにはユーザーが関連付けられ、それぞれのユーザーには、他のさまざまなコレクション、ストアド プロシージャ、トリガー、UDF、ドキュメント、添付ファイルにアクセスするための一連のアクセス許可が関連付けられます。データベース、ユーザー、アクセス許可、コレクションが、既知のスキーマを持ったシステム定義のリソースであるのに対し、ドキュメント、ストアド プロシージャ、トリガー、UDF、添付ファイルは、ユーザーが自由に定義できる JSON コンテンツを格納します。
 
@@ -53,10 +53,10 @@ Azure DocumentDB 内のリソースはいずれも、JSON ドキュメントと�
 
 Azure DocumentDB が公開するリソースには、HTTP/HTTPS 要求機能を持つ任意の言語から REST API を呼び出すことでアクセスできます。さらに、いくつかの主要な言語のプログラミング ライブラリも用意されています。アドレスのキャッシュ、例外管理、自動再試行などに伴う細部の処理がライブラリ側で行われるため、Azure DocumentDB の操作が多くの点で単純化されます。ライブラリは、次の言語およびプラットフォーム用が現在提供されており、その他についても準備中です。
 
--   [.NET][]
--   [Node.js][]
--   [JavaScript][]
--   [Python][]
+-   [.NET][.NET]
+-   [Node.js][Node.js]
+-   [JavaScript][JavaScript]
+-   [Python][Python]
 
 Azure DocumentDB には、作成、読み取り、更新、削除という基本的な操作以外にも、JSON ドキュメントを検索するための多彩な SQL クエリ インターフェイスが備わっているほか、JavaScript のアプリケーション ロジックをサーバー側でトランザクション実行する機能がサポートされています。クエリとスクリプトの実行インターフェイスは、REST API に加え、あらゆるプラットフォーム ライブラリから利用できます。
 
@@ -78,16 +78,18 @@ DocumentDB における JavaScript は、T-SQL の後継として、リレーシ
 
 Azure DocumentDB を導入するには、次のリソースを参照してください。
 
--   [DocumentDB のリソース モデルと概念][]
--   [DocumentDB リソースとの対話][]
--   [How to create a DocumentDB account (DocumentDB アカウントの作成方法)][]
--   [Get started with a DocumentDB account (DocumentDB アカウントの概要)][]
+-   [DocumentDB の試用][DocumentDB の試用]
+-   [DocumentDB のリソース モデルと概念][DocumentDB のリソース モデルと概念]
+-   [DocumentDB リソースとの対話][DocumentDB リソースとの対話]
+-   [How to create a DocumentDB account (DocumentDB アカウントの作成方法)][How to create a DocumentDB account (DocumentDB アカウントの作成方法)]
+-   [Get started with a DocumentDB account (DocumentDB アカウントの概要)][Get started with a DocumentDB account (DocumentDB アカウントの概要)]
 
-  []: ./media/documentdb-introduction/intro.png
+  [0]: ./media/documentdb-introduction/intro.png
   [.NET]: http://go.microsoft.com/fwlink/?LinkID=402989
   [Node.js]: http://go.microsoft.com/fwlink/?LinkID=402990
   [JavaScript]: http://go.microsoft.com/fwlink/?LinkID=402991
   [Python]: http://go.microsoft.com/fwlink/?LinkID=402992
+  [DocumentDB の試用]: https://portal.azure.com/#gallery/Microsoft.DocumentDB
   [DocumentDB のリソース モデルと概念]: /documentation/articles/documentdb-resources/
   [DocumentDB リソースとの対話]: /documentation/articles/documentdb-interactions-with-resources/
   [How to create a DocumentDB account (DocumentDB アカウントの作成方法)]: /documentation/articles/documentdb-create-account/

@@ -1,4 +1,4 @@
-<properties linkid="manage-services-how-to-manage-a-storage-account" urlDisplayName="How to manage" pageTitle="How to manage storage accounts | Microsoft Azure" metaKeywords="Azure manage storage accounts, storage account management portal, storage account geo-replication, Azure geo-replication, Azure access keys" description="Learn how to manage storage accounts in Azure by using the Management Portal." metaCanonical="" services="storage" documentationCenter="" title="How To Manage Storage Accounts" authors="tamram" solutions="" manager="mbaldwin" editor="cgronlun" />
+<properties urlDisplayName="How to manage" pageTitle="ストレージ アカウントの管理方法 | Microsoft Azure" metaKeywords="Azure manage storage accounts, storage account management portal, storage account geo-replication, Azure geo-replication, Azure access keys" description="管理ポータルを使用して Azure でストレージ アカウントを管理する方法について説明します。" metaCanonical="" services="storage" documentationCenter="" title="ストレージ アカウントの管理方法" authors="tamram" solutions="" manager="adinah" editor="cgronlun" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
@@ -97,7 +97,6 @@
   [方法: ストレージ アカウント レプリケーションを管理する]: #georeplication
   [方法: ストレージ アクセス キーの表示、コピーおよび再生成]: #regeneratestoragekeys
   [方法: ストレージ アカウントの削除]: #deletestorageaccount
-  [storage-replication-options]: ../includes/storage-replication-options.md
   [Azure の管理ポータル]: https://manage.windowsazure.com
   [管理ポータル]: http://manage.windowsazure.com
   [Azure 接続文字列の構成方法]: http://msdn.microsoft.com/ja-jp/library/ee758697.aspx

@@ -1,6 +1,6 @@
-<properties title="How to Create a DocumentDB Account" pageTitle="How to create a DocumentDB account | Azure" description="Find out how to create a DocumentDB account and choose account settings in the Azure Preview portal."  metaKeywords="NoSQL, DocumentDB,  database, document-orientated database, JSON, account" services="documentdb"  solutions="data-management" documentationCenter=""  authors="bradsev" manager="jhubbard" editor="cgronlun" videoId="" scriptId="" />
+<properties title="DocumentDB アカウントの作成方法" pageTitle="DocumentDB アカウントの作成方法 | Azure" description="Azure プレビュー ポータルで DocumentDB アカウントを作成したりアカウントの設定を選択したりする方法について説明します。"  metaKeywords="NoSQL, DocumentDB,  database, document-orientated database, JSON, account" services="documentdb"  solutions="data-management" documentationCenter=""  authors="bradsev" manager="jhubbard" editor="cgronlun" videoId="" scriptId="" />
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="bradsev" />
+<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="spelluru" />
 
 # DocumentDB アカウントの作成方法
 
@@ -14,7 +14,7 @@ DocumentDB を使用するには、利用可能なリージョンの DocumentDB 
 ## <span id="HowTo"></span></a>方法: DocumentDB アカウントを作成する
 
 1.  [Azure 管理プレビュー ポータル][Azure 管理プレビュー ポータル]にサインインします。
-2.  [新規]、[DocumentDB アカウント] の順にクリックします。<br/>
+2.  [新規]、[DocumentDB アカウント] の順にクリックします。
     ![][0]
 
     または、Azure ギャラリーを参照し、[データ、ストレージ、+ バックアップ] カテゴリを選択して、**[DocumentDB]** を選択します。次に、**[作成]** をクリックします。
@@ -47,10 +47,10 @@ DocumentDB を使用するには、利用可能なリージョンの DocumentDB 
 
     **[場所]** を指定して、DocumentDB アカウントのホストの場所を指定します。
 
-3.  新しい DocumentDB アカウントのオプションを構成したら、**[作成]** をクリックします。DocumentDB アカウントが作成されるまで数分かかる場合があります。状態を確認するには、スタートボードで進行状況を監視してください。<br/>
+3.  新しい DocumentDB アカウントのオプションを構成したら、**[作成]** をクリックします。DocumentDB アカウントが作成されるまで数分かかる場合があります。状態を確認するには、スタートボードで進行状況を監視してください。
     ![][3]
 
-    または、[通知] ハブを使用します。<br/>
+    または、[通知] ハブを使用します。
 
     ![][4]
 
@@ -58,15 +58,10 @@ DocumentDB を使用するには、利用可能なリージョンの DocumentDB 
 
 4.  DocumentDB アカウントが作成されたら、既定の設定で使用するための準備が整います。
 
-    *DocumentDB アカウントの既定の一貫性は Session に設定されることに注意してください。既定の一貫性の設定は、[Azure 管理プレビュー ポータル][Azure 管理プレビュー ポータル]を使用して調整できます。*<br/>
-
-
+    *DocumentDB アカウントの既定の一貫性は Session に設定されることに注意してください。既定の一貫性の設定は、[Azure 管理プレビュー ポータル][Azure 管理プレビュー ポータル]を使用して調整できます。*
     ![][6]
 
-5.  **[参照]** ブレードから、既存の DocumentDB アカウントにアクセスすることもできます。<br/><br/>
-
-
-
+5.  **[参照]** ブレードから、既存の DocumentDB アカウントにアクセスすることもできます。
     ![][7]
 
 ## <span id="NextSteps"></span></a>次のステップ
@@ -81,6 +76,7 @@ DocumentDB を使用するには、利用可能なリージョンの DocumentDB 
   [0]: ./media/documentdb-create-account/ca1.png
   [1]: ./media/documentdb-create-account/ca2.png
   [2]: ./media/documentdb-create-account/ca3.png
+  [DocumentDB PREVIEW pricing details (DocumentDB プレビュー料金の詳細)]: http://go.microsoft.com/fwlink/p/?LinkID=402317&clcid=0x409
   [DocumentDB の容量とパフォーマンスの管理]: ../documentdb-manage/
   [リソース グループを使用した Azure リソースの管理]: http://azure.microsoft.com/ja-jp/documentation/articles/azure-preview-portal-using-resource-groups/
   [3]: ./media/documentdb-create-account/ca4.png

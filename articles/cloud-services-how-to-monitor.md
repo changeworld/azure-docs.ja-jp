@@ -1,6 +1,6 @@
-<properties linkid="manage-services-how-to-monitor-a-cloud-service" urlDisplayName="How to monitor" pageTitle="How to monitor a cloud service - Azure" metaKeywords="Azure monitoring cloud services, Azure Management Portal cloud services" description="Learn how to monitor cloud services by using the Azure Management Portal." metaCanonical="" services="cloud-services" documentationCenter="" title="How to Monitor Cloud Services" authors="ryanwi" solutions="" manager="timlt" editor="" />
+<properties urlDisplayName="How to monitor" pageTitle="クラウド サービスの監視方法 - Azure" metaKeywords="Azure monitoring cloud services, Azure Management Portal cloud services" description="Azure の管理ポータルを使用してクラウド サービスを監視する方法について説明します。" metaCanonical="" services="cloud-services" documentationCenter="" title="クラウド サービスの監視方法" authors="ryanwi" solutions="" manager="timlt" editor="" />
 
-<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="ryanwi" />
+<tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/23/2014" ms.author="ryanwi" />
 
 # クラウド サービスの監視方法
 
@@ -24,7 +24,7 @@
 既定では、新しいクラウド サービス用に最小監視が用意されており、ロール インスタンス (仮想マシン) のホスト オペレーティング システムから収集したパフォーマンス カウンターが使用されます。最小メトリックは、CPU 使用率、受信データ、送信データ、ディスク読み取りのスループット、およびディスク書き込みのスループットに限定されます。詳細監視を構成することで、仮想マシン (ロール インスタンス) 内のパフォーマンス データに基づいた追加のメトリックが使用できます。詳細メトリックを使用すると、アプリケーションの操作中に発生する問題を詳しく分析できます。
 
 > [WACOM.NOTE]
-> 詳細監視を使用した場合、ロール インスタンスの起動時に、診断構成ファイルを使用するか Azure 診断 API をリモートで使用して、さらに多くのパフォーマンス カウンターを追加できます。管理ポータルでこれらのメトリックを監視するには、詳細監視を構成する前にパフォーマンス カウンターを追加する必要があります。詳細については、「[Azure 診断を使用したログ データの収集][Azure 診断を使用したログ データの収集]」と「[Azure アプリケーションでのパフォーマンス カウンターの作成と使用][Azure アプリケーションでのパフォーマンス カウンターの作成と使用]」を参照してください。
+> 詳細監視を使用した場合、ロール インスタンスの起動時に、診断構成ファイルを使用して、さらに多くのパフォーマンス カウンターを追加できます。管理ポータルでこれらのメトリックを監視するには、詳細監視を構成する前にパフォーマンス カウンターを追加する必要があります。詳細については、「[Azure の診断機能][Azure の診断機能]」を参照してください。
 
 既定では、ロール インスタンスから得られるパフォーマンス カウンター データは、3 分間隔でサンプリングされてロール インスタンスから転送されます。詳細監視を有効にすると、生のパフォーマンス カウンター データが、5 分、1 時間、および 12 時間間隔で、ロール インスタンスごとに、および各ロールのロール インスタンス全体で集計されます。集計されたデータは 10 日後に消去されます。
 
@@ -41,7 +41,7 @@
 -   監視データを保存するストレージ アカウントを作成します。異なるロールには異なるストレージ アカウントを使用できます。詳細については、**ストレージ アカウント**のヘルプを参照するか、「[How To Create a Storage Account (ストレージ アカウントの作成方法)][How To Create a Storage Account (ストレージ アカウントの作成方法)]」を参照してください。
 
 -   クラウド サービス ロールの Azure 診断を有効にします。
-    クラウド サービス定義ファイル (.csdef) およびクラウド サービス構成ファイル (.cscfg) を更新する必要があります。詳細については、「[Azure 診断の構成][Azure 診断の構成]」を参照してください。
+    詳細については、「[Azure の診断機能][1]」を参照してください。
 
 管理ポータルで、詳細監視データを保存するストレージ アカウントに Azure 診断がアクセスするときに使用する診断接続文字列を追加または修正でき、監視レベルを詳細または最小に設定できます。詳細監視データはストレージ アカウントに保存されるため、監視レベルを詳細に設定する前に、診断接続文字列を構成する必要があります。
 
@@ -83,7 +83,7 @@
 
 ## <span id="receivealerts"></span></a>方法: クラウド サービスのメトリックに関するアラートの受信
 
-クラウド サービスの監視メトリックに基づいてアラートを受け取ることができます。Azure の管理ポータルの **[管理サービス]** ページで、選択したメトリックが指定した値に達したときにアラートをトリガーするルールを作成できます。アラートがトリガーされたときに電子メールが送信されるように指定することもできます。詳細については、「[方法: Azure でアラート通知を受け取り、アラート ルールを管理する][方法: Azure でアラート通知を受け取り、アラート ルールを管理する]」を参照してください。
+クラウド サービスの監視メトリックに基づいてアラートを受け取ることができます。Azure の管理ポータルの **[管理サービス]** ページで、選択したメトリックが指定した値に達したときにアラートをトリガーするルールを作成できます。アラートがトリガーされたときに電子メールが送信されるように指定することもできます。詳細については、「[方法: Receive Alert Notifications and Manage Alert Rules in Azure (Azure でアラート通知を受け取り、アラート ルールを管理する)][方法: Receive Alert Notifications and Manage Alert Rules in Azure (Azure でアラート通知を受け取り、アラート ルールを管理する)]」を参照してください。
 
 ## <span id="addmetrics"></span></a>方法: メトリック テーブルへのメトリックの追加
 
@@ -107,12 +107,14 @@
 
     メトリック テーブルには最大 50 個のメトリックを表示できます。
 
-    <div class="dev-callout"> 
-<b>ヒント</b> 
-<p>詳細監視の場合、メトリック一覧に数十個のメトリックが表示されることがあります。スクロールバーを表示するには、ダイアログ ボックスの右側をポイントします。一覧を絞り込むには、検索アイコンをクリックして、下図の検索ボックスにテキストを入力します。</p> 
-</div>
+    <div class="dev-callout">
 
-    ![メトリックの追加 の検索][メトリックの追加 の検索]
+    **ヒント**
+    詳細監視の場合、メトリック一覧に数十個のメトリックが表示されることがあります。スクロールバーを表示するには、ダイアログ ボックスの右側をポイントします。一覧を絞り込むには、検索アイコンをクリックして、下図の検索ボックスにテキストを入力します。
+
+    </div>
+
+    ![[メトリックの追加] の検索][]
 
 3.  メトリックの選択が終了したら [OK] (チェックマーク) をクリックします。
 
@@ -176,23 +178,23 @@
 
     WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRITable (hourly aggregations for role instances)
 
-  [disclaimer]: ../includes/disclaimer.md
   [概念]: #concepts
   [方法: クラウド サービスの監視の構成]: #verbose
   [方法: クラウド サービスのメトリックに関するアラートの受信]: #receivealerts
   [方法: メトリック テーブルへのメトリックの追加]: #addmetrics
   [方法: メトリック チャートのカスタマイズ]: #customizechart
   [方法: 管理ポータル外で詳細監視データにアクセス]: #accessverbose
-  [Azure 診断を使用したログ データの収集]: http://msdn.microsoft.com/ja-jp/library/gg433048.aspx
-  [Azure アプリケーションでのパフォーマンス カウンターの作成と使用]: http://msdn.microsoft.com/ja-jp/library/hh411542.aspx
-  [Azure 診断の構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn186185.aspx
+  [Azure の診断機能]: http://azure.microsoft.com/ja-jp/documentation/articles/cloud-services-dotnet-diagnostics/
+  [How To Create a Storage Account (ストレージ アカウントの作成方法)]: /ja-jp/manage/services/storage/how-to-create-a-storage-account/
+  [1]: /ja-jp/documentation/articles/cloud-services-dotnet-diagnostics/
   [Azure の管理ポータル]: https://manage.windowsazure.com/
+  [How to Manage Cloud Services (クラウド サービスの管理方法)]: /ja-jp/documentation/articles/cloud-services-how-to-manage/
   [監視オプション]: ./media/cloud-services-how-to-monitor/CloudServices_MonitoringOptions.png
-  [方法: Azure でアラート通知を受け取り、アラート ルールを管理する]: http://go.microsoft.com/fwlink/?LinkId=309356
+  [方法: Receive Alert Notifications and Manage Alert Rules in Azure (Azure でアラート通知を受け取り、アラート ルールを管理する)]: http://go.microsoft.com/fwlink/?LinkId=309356
   [管理ポータル]: http://manage.windowsazure.com/
   [詳細表示]: ./media/cloud-services-how-to-monitor/CloudServices_DefaultVerboseDisplay.png
   [メトリックの追加]: ./media/cloud-services-how-to-monitor/CloudServices_AddMetrics.png
-  [メトリックの追加 の検索]: ./media/cloud-services-how-to-monitor/CloudServices_AddMetrics_Search.png
+  [[メトリックの追加] の検索]: ./media/cloud-services-how-to-monitor/CloudServices_AddMetrics_Search.png
   [監視メトリック]: ./media/cloud-services-how-to-monitor/CloudServices_Monitor_UpdatedMetrics.png
   [相対または絶対]: ./media/cloud-services-how-to-monitor/CloudServices_Monitor_RelativeAbsolute.png
   [監視の表示期間]: ./media/cloud-services-how-to-monitor/CloudServices_Monitor_DisplayPeriod.png

@@ -1,16 +1,25 @@
-<properties linkid="develop-net-how-to-guides-new-relic" urlDisplayName="New Relic" pageTitle="Using New Relic with Azure - Azure feature guides" metaKeywords="" description="Learn how to use the New Relic service to manage and monitor your Azure application." metaCanonical="" services="" documentationCenter=".NET" title="New Relic Application Performance Management on Azure" authors="" solutions="" manager="dwrede" editor="" />
+<properties urlDisplayName="New Relic" pageTitle="Azure での New Relic の使用 - Azure の機能ガイド" metaKeywords="" description="New Relic サービスを使用して Azure アプリケーションを管理および監視する方法について説明します。" metaCanonical="" services="" documentationCenter=".NET" title="Azure の New Relic によるアプリケーション パフォーマンス管理" authors="" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="new="" relic" />
 
 # Azure の New Relic によるアプリケーション パフォーマンス管理
 
-このガイドでは、Azure でホストされるアプリケーションに New Relic による世界クラスのパフォーマンスの監視を追加する方法について説明します。アプリケーションに New Relic をすぐに追加できる簡単なプロセスについて説明し、New Relic の機能をいくつか紹介します。New Relic の使い方の詳細については、「[New Relic の使用][New Relic の使用]」を参照してください。
+このガイドでは、Azure でホストされるアプリケーションに New Relic による
+世界クラスのパフォーマンスの監視を追加する方法について説明します。アプリケーションに New Relic を
+すぐに追加できる簡単なプロセスについて説明し、New Relic の機能を
+いくつか紹介します。New Relic の使い方の詳細については、「[New Relic の使用][New Relic の使用]」を参照してください。
 
 ## New Relic とは
 
-New Relic は、実稼働アプリケーションを監視してそのパフォーマンスと信頼性を詳しく把握できるようにする開発者向けのツールです。パフォーマンス上の問題を特定して診断する時間を短縮できるように設計されており、その問題の解決に必要な情報をすぐに確認できます。
+New Relic は、実稼働アプリケーションを監視してそのパフォーマンスと信頼性を
+詳しく把握できるようにする開発者向けのツールです。パフォーマンス上の
+問題を特定して診断する時間を短縮できるように設計されており、
+その問題の解決に必要な情報をすぐに確認できます。
 
-New Relic は、Web トランザクションの読み込み時間とスループットを、サーバーとユーザーのブラウザーの両方から追跡します。データベースでの処理にかかった時間の表示、時間がかかったクエリと Web 要求の分析、アップタイムの監視と通知、アプリケーションの例外の追跡など、多数の処理を実行します。
+New Relic は、Web トランザクションの読み込み時間とスループットを、
+サーバーとユーザーのブラウザーの両方から追跡します。データベースでの処理にかかった時間の表示、
+時間がかかったクエリと Web 要求の分析、アップタイムの監視と通知、アプリケーションの
+例外の追跡など、多数の処理を実行します。
 
 ## Azure ストアの New Relic 特別料金
 
@@ -53,15 +62,20 @@ Azure ストアから New Relic に直接サインアップするには、次の
 
 ### 手順 2. NuGet パッケージをインストールする
 
-1.  Visual Studio ソリューションを開くか、または**[ファイル]、[新規作成]、[プロジェクト]** の順にクリックして新しいソリューションを作成します。
+1.  Visual Studio ソリューションを開くか、または
+    **[ファイル]、[新規作成]、[プロジェクト]** の順にクリックして新しいソリューションを作成します。
 
     ![Visual Studio][Visual Studio]
 
-2.  ソリューションに Azure クラウド サービス プロジェクトがまだ含まれていない場合は、ソリューション エクスプローラーでアプリケーションを右クリックし、**[Azure クラウド サービス プロジェクトの追加]** をクリックして、プロジェクトを追加します。
+2.  ソリューションに Azure クラウド サービス プロジェクトがまだ
+    含まれていない場合は、ソリューション エクスプローラーでアプリケーションを
+    右クリックし、**[Azure クラウド サービス プロジェクトの追加]** をクリックして、プロジェクトを追加します。
 
     ![クラウド サービスを作成する][クラウド サービスを作成する]
 
-3.  **[ツール]、[ライブラリ パッケージ マネージャー]、\[パッケージ マネージャー コンソール]** の順にクリックし、パッケージ マネージャー コンソールを開きます。プロジェクトをパッケージ マネージャーコンソール ウィンドウの一番上に表示される既定のプロジェクトに設定します。
+3.  **[ツール]、[ライブラリ パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順に
+    クリックし、パッケージ マネージャー コンソールを開きます。プロジェクトをパッケージ マネージャー
+    コンソール ウィンドウの一番上に表示される既定のプロジェクトに設定します。
 
     ![パッケージ マネージャー コンソール][パッケージ マネージャー コンソール]
 
@@ -73,7 +87,8 @@ Azure ストアから New Relic に直接サインアップするには、次の
 
     ![ライセンス キーの入力][ライセンス キーの入力]
 
-6.  省略可能: アプリケーション名のダイアログで、New Relic のダッシュボードに表示されるアプリケーションの名前を入力します。または、既定のソリューション名を使用します。
+6.  省略可能: アプリケーション名のダイアログで、New Relic のダッシュボードに
+    表示されるアプリケーションの名前を入力します。または、既定のソリューション名を使用します。
 
     ![アプリケーション名の入力][アプリケーション名の入力]
 
@@ -81,7 +96,8 @@ Azure ストアから New Relic に直接サインアップするには、次の
 
     ![クラウド プロジェクトの発行][クラウド プロジェクトの発行]
 
-**注:** 初めてこのアプリケーションを Azure にデプロイする場合は、Azure の資格情報を入力するように求められます。詳細については、「[Deploying an ASP.NET Web Application to a Azure Web Site (ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする)][Deploying an ASP.NET Web Application to a Azure Web Site (ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする)]」を参照してください。
+**注:** 初めてこのアプリケーションを Azure にデプロイする場合は、Azure の
+資格情報を入力するように求められます。詳細については、「[Deploying an ASP.NET Web Application to a Azure Web Site (ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする)][Deploying an ASP.NET Web Application to a Azure Web Site (ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする)]」を参照してください。
 
 ![発行の設定][発行の設定]
 
@@ -103,7 +119,7 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
 
 [アプリケーション] メニューの一覧からアプリケーションを選択すると、[概要] ダッシュボードに、現在のアプリ サーバーとブラウザーの情報が表示されます。2 つのビューを切り替えるには、**[アプリ サーバー]** または **[ブラウザー]** をクリックします。
 
-<a href="https://newrelic.com/docs/site/the-new-relic-ui#functions">標準の New Relic UI</a> と <a href="https://newrelic.com/docs/site/the-new-relic-ui#drilldown">ダッシュボードのドリルダウン</a>機能のほかにも、アプリケーションの [概要] ダッシュボードにはさまざまな機能があります。
+[][]標準の New Relic UI[と][と]ダッシュボードのドリルダウン機能のほかにも、アプリケーションの [概要] ダッシュボードにはさまざまな機能があります。
 
 <table>
 <colgroup>
@@ -180,11 +196,18 @@ New Relic のダッシュボードを表示するには、次の手順を実行�
   [ライセンス キーの入力]: ./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget07.png
   [アプリケーション名の入力]: ./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget08.png
   [クラウド プロジェクトの発行]: ./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget09.png
+  [Deploying an ASP.NET Web Application to a Azure Web Site (ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする)]: /ja-jp/develop/net/tutorials/get-started/
   [発行の設定]: ./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelicAzureNuget10.png
   [New Relic の監視ダッシュボード]: ./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelic_app.png
+  []: https://newrelic.com/docs/site/the-new-relic-ui#functions
+  [と]: https://newrelic.com/docs/site/the-new-relic-ui#drilldown
   [Apdex]: https://newrelic.com/docs/site/apdex
-  [地理]: https://docs.newrelic.com/docs/new-relic-browser/geography-dashboard
-  [Web トランザクション]: https://newrelic.com/docs/applications-dashboards/web-transactions
-  [エラー]: https://newrelic.com/docs/site/errors
+  [[地理]]: https://docs.newrelic.com/docs/new-relic-browser/geography-dashboard
+  [[Web トランザクション]]: https://newrelic.com/docs/applications-dashboards/web-transactions
+  [[エラー]]: https://newrelic.com/docs/site/errors
   [1]: ./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelic_app_browser.png
+  [Installing the on Azure (Azure への .NET エージェントのインストール)]: https://newrelic.com/docs/dotnet/installing-the-net-agent-on-azure
+  [The New Relic User Interface (New Relic ユーザー インターフェイス)]: https://newrelic.com/docs/site/the-new-relic-ui
+  [Applications Overview (アプリケーションの概要)」]: https://newrelic.com/docs/site/applications-overview
   [Real User Monitoring]: https://newrelic.com/docs/features/real-user-monitoring
+  [Finding Help (ヘルプの利用)]: https://newrelic.com/docs/site/finding-help

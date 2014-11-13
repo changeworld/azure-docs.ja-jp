@@ -1,4 +1,4 @@
-<properties linkid="manage-windows-common-task-mongodb-vm" urlDisplayName="Install MongoDB" pageTitle="Install MongoDB on a Windows Server virtual machine" metaKeywords="Azure vm, Azure MongoDB, Azure remote desktop" description="Learn how to install MongoDB on an Azure VM running Windows Server." metaCanonical="" services="virtual-machines" documentationCenter="" title="Install MongoDB on a virtual machine running Windows Server in Azure" authors="kathydav" solutions="" manager="dongill" editor="tysonn" />
+<properties urlDisplayName="Install MongoDB" pageTitle="Windows Server 仮想マシンに MongoDB をインストールする" metaKeywords="Azure vm, Azure MongoDB, Azure remote desktop" description="Windows Server を実行する Azure VM に MongoDB をインストールする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure で Windows Server を実行する仮想マシンへの MongoDB のインストール" authors="kathydav" solutions="" manager="timlt" editor="tysonn" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="kathydav" />
 
@@ -41,8 +41,5 @@
 
   [MongoDB]: http://www.mongodb.org/
   [Azure 管理ポータル]: http://manage.windowsazure.com
-  [virtual-machines-create-WindowsVM]: ../includes/virtual-machines-create-WindowsVM.md
-  [howto-attach-disk-windows-linux]: ../includes/howto-attach-disk-windows-linux.md
   [データ ディスクを Virtual Machine に接続する方法]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-windows-attach-disk/
-  [install-and-run-mongo-on-win2k8-vm]: ../includes/install-and-run-mongo-on-win2k8-vm.md
   [MongoDB のドキュメント]: http://www.mongodb.org/display/DOCS/Home

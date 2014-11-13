@@ -1,6 +1,6 @@
-<properties linkid="develop-media-services-tutorials-get-started" urlDisplayName="Get Started with Media Services" pageTitle="Get Started with Media Services - Azure" metaKeywords="Azure media services" description="An introduction to using Media Services with Azure." metaCanonical="" services="media-services" documentationCenter="" title="Get started with Media Services" authors="" solutions="" manager="" editor="" />
+<properties urlDisplayName="Get Started with Media Services" pageTitle="Media Services の使用 - Azure" metaKeywords="Azure media services" description="Azure で Media Services を使用する方法を紹介します。" metaCanonical="" services="media-services" documentationCenter="" title="メディア サービスの使用" authors="juliako" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="" />
+<tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="juliako" />
 
 # <a name="getting-started"></a>メディア サービスの使用
 
@@ -20,12 +20,13 @@
 次の前提条件は、Azure Media Services SDK に基づくチュートリアルおよび開発で必要になります。
 
 -   新規または既存の Azure サブスクリプションで作成した Media Services アカウント。詳細については、「[メディア サービス アカウントの作成方法][メディア サービス アカウントの作成方法]」を参照してください。
--   オペレーティング システム: Windows 7、Windows 2008 R2、または Windows 8。
+-   オペレーティング システム: Windows 7、Windows 2008 R2、Windows 8 またはそれ以降。
 -   .NET Framework 4.5 または .NET Framework 4。
--   Visual Studio 2012 または Visual Studio 2010 SP1 (Professional、Premium、Ultimate、または Express)。
+-   Visual Studio 2012、Visual Studio 2010 SP1 (Professional、Premium、Ultimate、Express)、またはそれ以降。
 -   [windowsazure.mediaservices Nuget][windowsazure.mediaservices Nuget] パッケージを使用して、**Azure SDK for .NET**、**Azure Media Services SDK for .NET**、および **WCF Data Services 5.0 for OData V3 ライブラリ**をインストールし、プロジェクトに参照を追加します。次のセクションでは、インストールの方法と参照の追加方法を示します。
 
-<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
+> [WACOM.NOTE]
+> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト][Azure の無料評価版サイト]を参照してください。
 
 ## <span id="Step1"></span></a>プロジェクトのセットアップ
 
@@ -112,10 +113,12 @@ Program.cs ファイルで、**Main** メソッド内の最初のアイテムと
     -   **AssetCreationOptions.CommonEncryptionProtected**: Common Encryption Protected (CENC) ファイル用。既に PlayReady で暗号化されている一連のファイルは、その例です
     -   **AssetCreationOptions.StorageEncrypted**: ストレージ暗号化。Azure ストレージへのアップロードの前にクリア入力ファイルを暗号化します。
 
-        <div class="dev-callout"> 
-<strong>注</strong> 
-<p>メディア サービスでは、Digital Rights Manager (DRM) のようにネットワーク経由ではなく、オンディスクのストレージ暗号化を提供します。</p> 
-</div>
+        <div class="dev-callout">
+
+        **注**
+        メディア サービスでは、Digital Rights Manager (DRM) のようにネットワーク経由ではなく、オンディスクのストレージ暗号化を提供します。
+
+        </div>
 
 2.  アセットに関連付ける AssetFile インスタンスを作成します。
 3.  アセットへのアクセス許可とアクセス期間を定義する AccessPolicy インスタンスを作成します。
@@ -167,7 +170,7 @@ Program.cs ファイルで、**Main** メソッド内の最初のアイテムと
 
 ## <span id="Step4"></span></a>サーバー上のアセットのエンコードと、出力されたアセットのダウンロード
 
-メディア サービスでは、エンコード、暗号化、形式変換など、複数の方法でメディア コンテンツを処理するジョブを作成できます。メディア サービスのジョブには、処理作業の詳細を指定したタスクが必ず 1 つ以上含まれています。このセクションでは、基本的なエンコード タスクを作成し、Azure メディア エンコーダーを使用してこのタスクを行うジョブを実行します。このタスクでは、プリセットの文字列を使用して、実行するエンコードの種類を指定します。使用できるプリセットのエンコード値を確認するには、「[Media Services Encoder 用のタスク プリセット][Media Services Encoder 用のタスク プリセット]」を参照してください。メディア サービスでは、Microsoft Expression Encoder と同じメディア ファイル入力形式および出力形式をサポートされています。サポートされている形式の一覧については、「[Windows Azure Media Encoder でサポートされているコーデックとファイルの種類][Windows Azure Media Encoder でサポートされているコーデックとファイルの種類]」を参照してください。
+Media Services では、エンコード、暗号化、形式変換など、複数の方法でメディア コンテンツを処理するジョブを作成できます。メディア サービスのジョブには、処理作業の詳細を指定したタスクが必ず 1 つ以上含まれています。このセクションでは、基本的なエンコード タスクを作成し、Azure メディア エンコーダーを使用してこのタスクを行うジョブを実行します。このタスクでは、プリセットの文字列を使用して、実行するエンコードの種類を指定します。使用できるプリセットのエンコード値を確認するには、「[Media Services Encoder 用のタスク プリセット][Media Services Encoder 用のタスク プリセット]」を参照してください。メディア サービスでは、Microsoft Expression Encoder と同じメディア ファイル入力形式および出力形式をサポートされています。サポートされている形式の一覧については、「[Windows Azure Media Encoder でサポートされているコーデックとファイルの種類][Windows Azure Media Encoder でサポートされているコーデックとファイルの種類]」を参照してください。
 
 1.  次の **CreateEncodingJob** メソッド定義をクラスに追加します。このメソッドは、エンコード ジョブに必要ないくつかのタスクを実行する方法を示しています。
 
@@ -288,15 +291,15 @@ Program.cs ファイルで、**Main** メソッド内の最初のアイテムと
         CreateEncodingJob(asset, _singleInputFilePath, _outputFilesFolder);
 
 3.  次のヘルパー メソッドをクラスに追加します。これらは、**CreateEncodingJob** メソッドをサポートするために必要です。各ヘルパー メソッドの概要を次に示します。
-    -   **GetLatestMediaProcessorByName** メソッドは、エンコード、暗号化など、関連する処理タスクを扱う適切なメディア プロセッサを返します。メディア プロセッサを作成するには、作成するプロセッサの適切な文字列名を使用します。このメソッドに mediaProcessor パラメーターとして渡すことができる文字列は、**Azure Media Encoder**、**Azure Media Packager**、**Azure Media Encryptor**、**Storage Decryption** です。
+    -   **GetLatestMediaProcessorByName** メソッドは、エンコード、暗号化など、関連する処理タスクを扱う適切なメディア プロセッサを返します。メディア プロセッサを作成するには、作成するプロセッサの適切な文字列名を使用します。このメソッドに mediaProcessor パラメーターとして渡すことができる文字列は、**Azure Media Encoder**、**Windows Azure Media Packager**、**Windows Azure Media Encryptor**、**Storage Decryption** です。
 
             private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
             {
                 // The possible strings that can be passed into the 
                 // method for the mediaProcessor parameter:
                 //   Azure Media Encoder
-                //   Azure Media Packager
-                //   Azure Media Encryptor
+                //   Windows Azure Media Packager
+                //   Windows Azure Media Encryptor
                 //   Storage Decryption
 
                 var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
@@ -609,10 +612,8 @@ Program.cs ファイルで、**Main** メソッド内の最初のアイテムと
 
 5.  .mp4 メディア ファイルと \_metadata.xml ファイルが outputFiles フォルダーにダウンロードされます。
 
-<div class="dev-callout"> 
-<strong>注</strong> 
-<p>メディア サービス オブジェクト モデルのアセットとは、1 対多のファイルを表すメディア サービス コンテンツのコレクション オブジェクトです。Azure Storage 内にあるこのアセットへのベース パスである Azure BLOB URL が、ロケーター パスによって提供されます。アセット内の特定のファイルにアクセスするには、ベース ロケーター パスにファイル名を追加します。</p> 
-</div>
+> [WACOM.NOTE]
+> Media Services オブジェクト モデルのアセットとは、1 対多のファイルを表す Media Services コンテンツのコレクション オブジェクトです。Azure Storage 内にあるこのアセットへのベース パスである Azure BLOB URL が、ロケーター パスによって提供されます。アセット内の特定のファイルにアクセスするには、ベース ロケーター パスにファイル名を追加します。
 
 ## 次のステップ
 
@@ -630,8 +631,9 @@ Program.cs ファイルで、**Main** メソッド内の最初のアイテムと
   [アセットのエンコードと、出力されたアセットのダウンロード]: #Step4
   [メディア サービス アカウントの作成方法]: http://go.microsoft.com/fwlink/?LinkId=256662
   [windowsazure.mediaservices Nuget]: http://nuget.org/packages/windowsazure.mediaservices
+  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A8A8397B5
   [Media Services Encoder 用のタスク プリセット]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj129582.aspx
   [Windows Azure Media Encoder でサポートされているコーデックとファイルの種類]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh973634.aspx
   [1]: http://msdn.microsoft.com/library/windowsazure/jj129582.aspx
-  [メディア サービスを使用する方法]: http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/media-services/
+  [メディア サービスを使用する方法]: http://azure.microsoft.com/ja-jp/develop/media-services/resources/
   [Windows Azure Media Services REST API を使用したアプリケーション構築]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh973618.aspx

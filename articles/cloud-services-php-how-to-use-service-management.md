@@ -1,4 +1,4 @@
-<properties linkid="develop-php-how-to-guides-service-management" urlDisplayName="Service Management" pageTitle="How to use Azure service management APIs (PHP)" metaKeywords="" description="Learn how to use the Azure PHP Service Management APIs to manage cloud services and other Azure applications." metaCanonical="" services="" documentationCenter="PHP" title="How to use Service Management from PHP" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" videoId="" scriptId="" />
+<properties urlDisplayName="Service Management" pageTitle="Azure サービス管理 API の使用方法 (PHP)" metaKeywords="" description="Azure PHP サービス管理 API を使用して、クラウド サービスおよびその他 Azure アプリケーションを管理する方法について説明します。" metaCanonical="" services="" documentationCenter="PHP" title="PHP からサービス管理を使用する方法" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" videoId="" scriptId="" />
 
 <tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
 
@@ -552,7 +552,6 @@ Azure には、2 つのデプロイ環境が用意されています。デプロ
   [方法: アフィニティ グループの削除]: #DeleteAffinityGroup
   [Azure アカウントを作成する]: /ja-jp/pricing/free-trial/
   [Azure サービス管理 API]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee460799.aspx
-  [get-client-libraries]: ../includes/get-client-libraries.md
   [OpenSSL]: http://www.openssl.org/
   [Windows 版をダウンロード]: http://www.openssl.org/related/binaries.html
   [Azure の証明書の概要]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg981935.aspx
@@ -564,6 +563,7 @@ Azure には、2 つのデプロイ環境が用意されています。デプロ
   [サービス パッケージ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433093
   [Azure PowerShell コマンドレット]: ../install-configure-powershell/
   [cspack コマンド ライン ツール]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg432988.aspx
+  [Windows Azure サービスの構成スキーマ (.cscfg ファイル)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758710.aspx
   [Azure における展開管理の概要]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh386336.aspx
   [ストレージ サービス]: ../storage-whatis-account/
   [BLOB]: ../storage-php-how-to-use-blobs/

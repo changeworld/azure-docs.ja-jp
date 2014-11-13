@@ -1,4 +1,4 @@
-<properties linkid="manage-windows-common-task-upload-vhd" urlDisplayName="Upload a VHD" pageTitle="Create and upload a Windows Server VHD to Azure" metaKeywords="Azure VHD, uploading VHD" description="Learn to create and upload a virtual hard disk (VHD) in Azure that has the Windows Server operating system." metaCanonical="" services="virtual-machines" documentationCenter="" title="Create and upload a Windows Server VHD to Azure" authors="kathydav" solutions="" manager="timlt" editor="tysonn" />
+<properties urlDisplayName="Upload a VHD" pageTitle="Windows Server VHD の作成と Azure へのアップロード" metaKeywords="Azure VHD, uploading VHD" description="Windows Server オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成して Azure にアップロードする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Windows Server VHD の作成と Azure へのアップロード" authors="kathydav" solutions="" manager="timlt" editor="tysonn" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="na" ms.topic="article" ms.date="09/23/2014" ms.author="kathydav" />
 
@@ -155,11 +155,11 @@ x64
 
 6.  **[OK]** をクリックします。
 
-## <span id="createstorage"></span> </a>手順 2.Azure にストレージ アカウントを作成する
+## <span id="createstorage"></span> </a>手順 2.Azure でストレージ アカウントを作成する
 
 ストレージ アカウントは、ストレージ サービスにアクセスするための最高レベルの名前空間を表し、Azure サブスクリプションに関連付けられています。仮想マシンの作成に使用できる .vhd ファイルを Azure にアップロードするには、Azure のストレージ アカウントが必要です。Azure の管理ポータルを使用して、ストレージ アカウントを作成できます。
 
-1.  Azure の管理ポータルにサインインします。
+1.  Azure 管理ポータルにサインインします。
 
 2.  コマンド バーで、**[新規]** をクリックします。
 

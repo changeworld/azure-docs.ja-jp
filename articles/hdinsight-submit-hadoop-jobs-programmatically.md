@@ -1,4 +1,4 @@
-<properties linkid="manage-services-hdinsight-submit-hadoop-jobs" urlDisplayName="HDInsight Administration" pageTitle="Submit Hadoop jobs in HDInsight | Azure" metaKeywords="hdinsight, hdinsight administration, hdinsight administration azure, hive, mapreduce, HDInsight .NET SDK, powershell, submit mapreduce jobs, submit hive jobs, development, hadoop, apache" description="Learn how to submit Hadoop jobs to Azure HDInsight Hadoop." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="Submit  Hadoop jobs in HDInsight" authors="jgao" />
+<properties urlDisplayName="HDInsight Administration" pageTitle="HDInsight での Hadoop ジョブの送信 | Azure" metaKeywords="hdinsight, hdinsight administration, hdinsight administration azure, hive, mapreduce, HDInsight .NET SDK, powershell, submit mapreduce jobs, submit hive jobs, development, hadoop, apache" description="Hadoop ジョブを Azure HDInsight Hadoop へ送信する方法について説明します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="HDInsight での Hadoop ジョブの送信" authors="jgao" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
 
@@ -43,7 +43,7 @@ Hadoop MapReduce は、膨大なデータを処理するアプリケーション
 3.  次のコマンドを実行して、MapReduce ジョブ定義を作成します。
 
         # Define the word count MapReduce job
-        $wordCountJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/hadoop-examples.jar" -ClassName "wordcount" -Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data/WordCountOutput"
+        $wordCountJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" -ClassName "wordcount" -Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data/WordCountOutput"
 
     引数が 2 つあります。最初の引数はソース ファイル名で、2 つ目の引数は出力ファイル パスです。wasb プレフィックスの詳細については、「[HDInsight での Azure BLOB ストレージの使用][HDInsight での Azure BLOB ストレージの使用]」を参照してください。
 
@@ -162,12 +162,11 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
 3.  [新しいプロジェクト] で、次の値を入力または選択します。
 
-	<table border="1">
-	<tr><th>プロパティ</th><th>値</th></th>
-    <tr><td>カテゴリ</td><td>テンプレート/Visual C#/Windows</td></tr>
-    <tr><td>テンプレート</td><td>コンソール アプリケーション</td></tr>
-    <tr><td>名前</td><td>SubmitMapReduceJob</td></tr>
-	</table>
+    | プロパティ   | 値                              |
+    |--------------|---------------------------------|
+    | カテゴリ     | テンプレート/Visual C#/Windows |
+    | テンプレート | コンソール アプリケーション     |
+    | 名前         | SubmitMapReduceJob              |
 
 4.  **[OK]** をクリックしてプロジェクトを作成します。
 
@@ -401,12 +400,11 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
 3.  [新しいプロジェクト] で、次の値を入力または選択します。
 
-	<table border="1">    
-	<tr><th>プロパティ</th><th>値</th></tr>
-    <tr><td>カテゴリ</td><td>テンプレート/Visual C#/Windows</td></tr>
-    <tr><td>テンプレート</td><td>コンソール アプリケーション</td></tr>
-    <tr><td>名前</td><td>SubmitHiveJob</td></tr>
-	</table>
+    | プロパティ   | 値                              |
+    |--------------|---------------------------------|
+    | カテゴリ     | テンプレート/Visual C#/Windows |
+    | テンプレート | コンソール アプリケーション     |
+    | 名前         | SubmitHiveJob                   |
 
 4.  **[OK]** をクリックしてプロジェクトを作成します。
 
@@ -537,4 +535,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
   [Hadoop .NET SDK と HDInsight の使用]: ../hdinsight-use-sqoop/
   [NuGet]: http://nuget.codeplex.com/wikipage?title=Getting%20Started
   [Azure の管理ポータル]: http://manage.windowsazure.com/
+  [Create and Upload a Management Certificate for Azure (Azure の管理証明書の作成とアップロード)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg551722.aspx
+  [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
+  [HDInsight Cmdlet Reference Documentation (HDInsight コマンドレット リファレンス ドキュメント)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn479228.aspx
   [HDInsight での Pig の使用]: ../hdinsight-use-pig/

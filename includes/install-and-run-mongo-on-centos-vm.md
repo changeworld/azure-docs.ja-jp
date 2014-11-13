@@ -62,7 +62,6 @@
 
     ![エンドポイント][2]
 
-  [Security and Authentication (セキュリティと認証)]: http://www.mongodb.org/display/DOCS/Security+and+Authentication
   [Install MongoDB on Linux (Linux への MongoDB のインストール)]: http://www.mongodb.org/display/DOCS/Quickstart+Unix
   [エンドポイント]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint.png
   [1]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint2.png

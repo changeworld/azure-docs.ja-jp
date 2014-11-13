@@ -1,6 +1,6 @@
-<properties title="Query with DocumentDB SQL" pageTitle="Query with DocumentDB SQL | Azure" description="DocumentDB supports querying of documents using SQL-like grammar over hierarchical JSON documents without requiring explicit schema or creation of secondary indexes." metaKeywords="" services="documentdb"  documentationCenter="" solutions="data-management" authors="bradsev" manager="jhubbard" editor="cgronlun" videoId="" scriptId="" />
+<properties title="DocumentDB SQL を使用したクエリ" pageTitle="DocumentDB SQL を使用したクエリ | Azure" description="DocumentDB は、階層型の JSON ドキュメントに対し、SQL に似た文法を使用することによって行うドキュメント クエリをサポートしています。明確なスキーマが不要であり、セカンダリ インデックスを作成する必要もありません。" metaKeywords="" services="documentdb"  documentationCenter="" solutions="data-management" authors="bradsev" manager="jhubbard" editor="cgronlun" videoId="" scriptId="" />
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="bradsev"></tags>
+<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="spelluru" />
 
 # DocumentDB のクエリ
 
@@ -266,7 +266,7 @@ WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。WHERE 句�
 </td>
 
 <td>
-+、-、\*、/、%
++,-,\*,/,%
 
 </td>
 
@@ -280,7 +280,7 @@ WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。WHERE 句�
 </td>
 
 <td>
-|、&、^
+|, &, ^
 
 </td>
 
@@ -308,7 +308,7 @@ AND、OR
 </td>
 
 <td>
-=、!=、\>、\>=、\<、\<=、\<\>
+=, !=, \>, \>=, \<, \<=, \<\>
 
 </td>
 
@@ -1321,7 +1321,7 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 
        UserDefinedFunction sqrtUdf = new UserDefinedFunction
        {
-           Name = "SQRT",
+           Id = "SQRT",
            Body = @"function(number) { 
                        return Math.sqrt(number);
                    };",
@@ -1374,7 +1374,7 @@ UDF の機能はさらに拡張できます。条件ロジックが使用され�
 
        UserDefinedFunction seaLevelUdf = new UserDefinedFunction()
        {
-           Name = "SEALEVEL",
+           Id = "SEALEVEL",
            Body = @"function(city) {
                 switch (city) {
                     case 'seattle':
@@ -1432,7 +1432,7 @@ LINQ は、計算処理をオブジェクトのストリームに対するクエ
 
 DocumentDB を使用した LINQ クエリ サポートのアーキテクチャは以下の図のようになります。開発者は DocumentDB クライアントを使用して **IQueryable** オブジェクトを作成できます。このオブジェクトがクエリを DocumentDB クエリ プロバイダーに転送することで、LINQ クエリが DocumentDB クエリに変換されます。次にクエリが DocumentDB サーバーに渡されることで、結果セットが JSON 形式で取得されます。返された結果は、クライアント側で .NET オブジェクトのストリームに逆シリアル化されます。
 
-![][]
+![][0]
 
 ## .NET と JSON のマッピング
 
@@ -1844,7 +1844,7 @@ DocumentDB は、HTTP を介したオープンな RESTful プログラミング 
 
 クエリ結果を 1 つの結果ページに収めることができない場合、REST API は `x-ms-continuation-token` 応答ヘッダーを使って継続トークンを返します。クライアントは、このヘッダーを後続の結果に含めることで、結果を改ページすることができます。ページあたりの結果の数も、`x-ms-max-item-count` 番号ヘッダーで制御できます。
 
-クエリのデータ一貫性ポリシーを管理するには、すべての REST API 要求と同様に `x-ms-consistency-level` ヘッダーを使用します。セッションの一貫性を維持するには、すべてのクエリ要求で最新の `x-ms-session-token` Cookie ヘッダーもエコーする必要があります。クエリされたコレクションのインデックス作成ポリシーは、クエリ結果の一貫性にも影響を与える点に注意してください。既定のインデックス作成ポリシーの設定では、インデックスはドキュメントの内容に関して常に最新の状態になり、クエリ結果はデータ用に選択された一貫性と一致します。インデックス作成ポリシーが "遅延" に緩和されている場合、返されるクエリ結果も古いものになる可能性があります。詳細については、[DocumentDB の一貫性レベルに関する記事][]を参照してください。
+クエリのデータ一貫性ポリシーを管理するには、すべての REST API 要求と同様に `x-ms-consistency-level` ヘッダーを使用します。セッションの一貫性を維持するには、すべてのクエリ要求で最新の `x-ms-session-token` Cookie ヘッダーもエコーする必要があります。クエリされたコレクションのインデックス作成ポリシーは、クエリ結果の一貫性にも影響を与える点に注意してください。既定のインデックス作成ポリシーの設定では、インデックスはドキュメントの内容に関して常に最新の状態になり、クエリ結果はデータ用に選択された一貫性と一致します。インデックス作成ポリシーが "遅延" に緩和されている場合、返されるクエリ結果も古いものになる可能性があります。詳細については、[DocumentDB の一貫性レベルに関する記事][DocumentDB の一貫性レベルに関する記事]を参照してください。
 
 指定されたクエリを、コレクションで構成されたインデックス作成ポリシーがサポートできない場合、DocumentDB サーバーは 400 "Bad Request" を返します。これは、ハッシュ (等値) 検索用に構成されたパスに対する範囲クエリと、インデックス作成から明示的に除外されたパスのために返されます。`x-ms-documentdb-query-enable-scan` ヘッダーを指定することで、インデックスを利用できない場合のクエリによるスキャン実行を許可することができます。
 
@@ -1965,25 +1965,25 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 
 # 参照
 
-1.  [Azure DocumentDB の概要][]
+1.  [Azure DocumentDB の概要][Azure DocumentDB の概要]
 2.  DocumentDB SQL 言語の仕様 (<http://go.microsoft.com/fwlink/p/?LinkID=510612>)
 3.  DocumentDB の .NET サンプル (<http://code.msdn.microsoft.com/Azure-DocumentDB-NET-Code-6b3da8af#content>)
 4.  [DocumentDB の一貫性レベル][DocumentDB の一貫性レベルに関する記事]
 5.  ANSI SQL 2011 - [][]<http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681></a>
 6.  JSON [][1]<http://json.org/></a>
 7.  Javascript 仕様 [][2]<http://www.ecma-international.org/publications/standards/Ecma-262.htm></a>
-8.  LINQ [][3]<http://msdn.microsoft.com/en-us/library/bb308959.aspx></a>
+8.  LINQ [][3]<http://msdn.microsoft.com/ja-jp/library/bb308959.aspx></a>
 9.  大規模なデータベース向けのクエリ評価技術 [][4]<http://dl.acm.org/citation.cfm?id=152611></a>
 10. 「Query Processing in Parallel Relational Database Systems」(IEEE Computer Society Press、1994 年)
 11.  「Query Processing in Parallel Relational Database Systems」(Lu、Ooi、Tan、IEEE Computer Society Press、1994 年)
 12. 「Pig Latin: A Not-So-Foreign Language for Data Processing」(Christopher Olston、Benjamin Reed、Utkarsh Srivastava、Ravi Kumar、Andrew Tomkins、SIGMOD、2008 年)
 13. G. Graefe. The Cascades framework for query optimization. IEEE Data Eng. Bull., 18(3): 1995.
 
-  []: ./media/documentdb-sql-query/sql-query1.png
+  [0]: ./media/documentdb-sql-query/sql-query1.png
   [DocumentDB の一貫性レベルに関する記事]: ../documentdb-consistency-levels
   [Azure DocumentDB の概要]: ../documentdb-introduction
-  []: http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681
+  [0]: http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681
   [1]: http://json.org/
   [2]: http://www.ecma-international.org/publications/standards/Ecma-262.htm
-  [3]: http://msdn.microsoft.com/en-us/library/bb308959.aspx
+  [3]: http://msdn.microsoft.com/ja-jp/library/bb308959.aspx
   [4]: http://dl.acm.org/citation.cfm?id=152611

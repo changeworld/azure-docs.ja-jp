@@ -1,4 +1,4 @@
-<properties linkid="develop-net-tutorials-compute-intensive-task-on-a-virtual-machine" urlDisplayName="Compute Intensive .NET Task" pageTitle="Compute intensive .NET task on a virtual machine - Azure" metaKeywords="deploying compute .NET application, vm .NET application, Service Bus queue monitoring, remote monitoring" description="Learn how to deploy and run a compute-intensive .NET app on an Azure virtual machine and use Service Bus queues to monitor progress remotely." metaCanonical="" services="virtual-machines" documentationCenter=".NET" title="How to run a compute-intensive task in .NET on an Azure virtual machine" authors="wpickett" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
+<properties urlDisplayName="Compute Intensive .NET Task" pageTitle="仮想マシン上で多くのコンピューティング処理を要する .NET タスク - Azure" metaKeywords="deploying compute .NET application, vm .NET application, Service Bus queue monitoring, remote monitoring" description="Azure の仮想マシンに多くのコンピューティング処理を要する .NET アプリケーションをデプロイして実行する方法と、Service Bus キューを使用して進捗をリモート監視する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter=".NET" title="Azure の仮想マシンで多くのコンピューティング処理を要する .NET タスクを実行する方法" authors="wpickett" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="wpickett" />
 
@@ -51,7 +51,9 @@ Azure では、仮想マシンを使用して多くのコンピューティン�
 
 ## サービス バス 名前空間の作成方法
 
-Azure のサービス バス キューを使用するには、最初にサービス名前空間を作成する必要があります。サービス名前空間は、アプリケーション内でService Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
+Azure のサービス バス キューを使用するには、最初に
+サービス名前空間を作成する必要があります。サービス名前空間は、アプリケーション内で
+Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
 
 サービス名前空間を作成するには:
 
@@ -63,10 +65,15 @@ Azure のサービス バス キューを使用するには、最初にサービ
 
 4.  **[名前空間を作成する]** ダイアログで、名前空間の名前を入力します。その名前が使用できるかどうかがすぐに自動で確認されます。重複する名前は使用できません。
 
-    ![名前空間を作成する ダイアログ][名前空間を作成する ダイアログ]
+    ![[名前空間を作成する] ダイアログ][]
 
 5.  入力した名前が利用できることを確認できたら、名前空間をホストするリージョンを選択します (仮想マシンをホストするリージョンと同じリージョンを必ず使用してください)。
-    <div class="dev-callout"><br /><strong>重要</strong><br /><p>仮想マシンが使用するリージョンまたは使用する予定のリージョンと<strong>同じリージョン</strong>を選択してください。そうすることで、パフォーマンスが最高になります。</p><br /></div>
+    <div class="dev-callout">
+
+    **重要**
+    仮想マシンが使用するリージョンまたは使用する予定のリージョンと**同じリージョン**を選択してください。そうすることで、パフォーマンスが最高になります。
+
+    </div>
 
 6.  ログオンしたアカウントに複数の Azure サブスクリプションがある場合は、名前空間で使用するサブスクリプションを選択します (ログオンしたアカウントにサブスクリプションが 1 つしかない場合、サブスクリプションのドロップダウン リストは表示されません)。
 7.  チェック マークをクリックします。これで、システムによってサービス名前空間が 作成および有効化されます。システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
@@ -77,16 +84,16 @@ Azure のサービス バス キューを使用するには、最初にサービ
 
 ## 名前空間の既定の管理資格情報の取得
 
-新規作成した名前空間に対してキューの作成などの管理操作を実行するには、名前空間の管理資格情報を取得する必要があります。
+新規作成した名前空間に対してキューの作成などの管理操作を実行するには、
+名前空間の管理資格情報を取得する必要があります。
 
-1.  左側のナビゲーション ウィンドウで **[サービス バス]** ノードをクリックして、利用可能な名前空間の一覧を表示します。
+1.  左側のナビゲーション ウィンドウで **[サービス バス]** ノードを
+    クリックして、利用可能な名前空間の一覧を表示します。
     ![利用可能な名前空間のスクリーンショット][利用可能な名前空間のスクリーンショット]
 2.  表示された一覧から先ほど作成した名前空間を選択します。
-
     ![名前空間の一覧のスクリーンショット][名前空間の一覧のスクリーンショット]
 3.  **[アクセス キー]** をクリックします。
-
-    ![アクセス キー ボタン][アクセス キー ボタン]
+    ![[アクセス キー] ボタン][]
 4.  ダイアログで、**[既定の発行者]** と **[既定のキー]** のエントリを探します。その値を書き留めておきます。この情報は、この後に名前空間に対して操作を実行するときに使用します。
 
 ## 多くのコンピューティング処理を要するタスクを実行する .NET アプリケーションの作成方法
@@ -98,8 +105,6 @@ Azure のサービス バス キューを使用するには、最初にサービ
 5.  このセクションの末尾にあるコード例を **Program.cs** の内容として使用します。
 6.  **your\_service\_bus\_namespace**、**your\_service\_bus\_owner**、**your\_service\_bus\_key** の各プレースホルダーを変更して、それぞれ自分の Service Bus の **[名前空間]**、**[既定の発行者]**、**[既定のキー]** の値を設定します。
 7.  アプリケーションをコンパイルします。これにより、プロジェクトの **bin** フォルダー (リリース ビルドかデバッグ ビルドかに応じて **bin\\release** または **bin\\debug**) に **TSPSolver.exe** が作成されます。この実行可能ファイルと Microsoft.ServiceBus.dll を後で仮想マシンにコピーします。
-
-<p/>
 
     using System;
     using System.Collections.Generic;
@@ -329,8 +334,6 @@ Azure のサービス バス キューを使用するには、最初にサービ
 5.  **your\_service\_bus\_namespace**、**your\_service\_bus\_owner**、**your\_service\_bus\_key** の各プレースホルダーを変更して、それぞれ自分の Service Bus の **[名前空間]**、**[既定の発行者]**、**[既定のキー]** の値を設定します。
 6.  アプリケーションをコンパイルします。これにより、プロジェクトの **bin** フォルダー (リリース ビルドかデバッグ ビルドかに応じて **bin\\release** または **bin\\debug**) に **TSPClient.exe** が作成されます。このコードを開発用コンピューターから実行することも、別のコンピューターに実行可能ファイルと Microsoft.ServiceBus.dll をコピーして、そこでクライアント アプリケーションを実行することもできます (アプリケーションを仮想マシン上に置く必要はありません)。
 
-<p/>
-
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -511,7 +514,7 @@ Azure のサービス バス キューを使用するには、最初にサービ
 
         TSPSolver 8
 
-   数値を指定しなかった場合、プログラムは 10 都市を対象として実行されます。現時点で最短の経路が見つかると、それがキューに追加されます。
+数値を指定しなかった場合、プログラムは 10 都市を対象として実行されます。現時点で最短の経路が見つかると、それがキューに追加されます。
 
 プログラムはすべての経路の調査が完了すると終了します。
 
@@ -546,12 +549,11 @@ TSPSolver を使用してキューを作成したり削除したりする代わ�
 
   [巡回セールスマン問題を解くプログラム]: ./media/virtual-machines-dotnet-run-compute-intensive-task/WA_dotNetTSPSolver.png
   [巡回セールスマン問題のクライアント]: ./media/virtual-machines-dotnet-run-compute-intensive-task/WA_dotNetTSPClient.png
-  [create-account-and-vms-note]: ../includes/create-account-and-vms-note.md
   [Azure 管理ポータル]: https://manage.windowsazure.com
   [新しい サービス バスの作成]: ./media/virtual-machines-dotnet-run-compute-intensive-task/ServiceBusCreateNew.png
-  [名前空間を作成する ダイアログ]: ./media/virtual-machines-dotnet-run-compute-intensive-task/CreateNameSpaceDialog.png
+  [[名前空間を作成する] ダイアログ]: ./media/virtual-machines-dotnet-run-compute-intensive-task/CreateNameSpaceDialog.png
   [クリックして作成するスクリーンショット]: ./media/virtual-machines-dotnet-run-compute-intensive-task/ClickCreate.png
   [利用可能な名前空間のスクリーンショット]: ./media/virtual-machines-dotnet-run-compute-intensive-task/AvailableNamespaces.png
   [名前空間の一覧のスクリーンショット]: ./media/virtual-machines-dotnet-run-compute-intensive-task/NamespaceList.png
-  [アクセス キー ボタン]: ./media/virtual-machines-dotnet-run-compute-intensive-task/AccessKey.png
+  [[アクセス キー] ボタン]: ./media/virtual-machines-dotnet-run-compute-intensive-task/AccessKey.png
   [Azure SDK for .NET]: http://www.windowsazure.com/ja-jp/develop/net/
