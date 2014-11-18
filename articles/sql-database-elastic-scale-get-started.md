@@ -24,7 +24,7 @@ Elastic Scale のすべてのトピックの一覧については、「[Elastic 
 
 #### Visual Studio および Nuget
 
-1.  C# と Visual Studio 2012 以上が必要です。「[Visual Studio のダウンロード][Visual Studio のダウンロード]」で無償評価版をダウンロードしてください。
+1.  C\# と Visual Studio 2012 以上が必要です。「[Visual Studio のダウンロード][Visual Studio のダウンロード]」で無償評価版をダウンロードしてください。
 2.  Nuget 2.7 以上。最新版を入手するには、「[Installing NuGet (NuGet のインストール)][Installing NuGet (NuGet のインストール)]」を参照してください。
 
     #### Azure SQL データベースの作成
@@ -40,9 +40,9 @@ Elastic Scale のすべてのトピックの一覧については、「[Elastic 
 
     ![New Project\>Online][New Project\>Online]
 
-3.  次に、**[サンプル]** の **[Visual C#]** をクリックします。
+3.  次に、**[サンプル]** の **[Visual C\#]** をクリックします。
 
-    ![Click Visual C#][Click Visual C#]
+    ![Click Visual C\#][Click Visual C\#]
 
 4.  検索ボックスに「**Elastic Scale**」と入力してサンプルを検索します。**Elastic Scale with Azure SQL Database-Getting Started** (Azure SQL データベースで使用する Elastic Scale - 概要) というタイトルが表示されます。
 
@@ -107,7 +107,7 @@ Elastic Scale の機能の詳細については、以下のページを参照し
   [Data Dependent Routing (データ依存ルーティング)]: http://go.microsoft.com/?linkid=9862596
   [Multi-Shard Querying (マルチシャード クエリ実行)]: http://go.microsoft.com/?linkid=9862597
   [New Project\>Online]: ./media/sql-database-elastic-scale-get-started/click-online.png
-  [Click Visual C#]: ./media/sql-database-elastic-scale-get-started/click-CSharp.png
+  [Click Visual C\#]: ./media/sql-database-elastic-scale-get-started/click-CSharp.png
   [Search Box]: ./media/sql-database-elastic-scale-get-started/newProject.png
   [progress]: ./media/sql-database-elastic-scale-get-started/output2.png
   [SQL Server Management Studio を使用した Azure SQL データベースの管理]: http://azure.microsoft.com/ja-jp/documentation/articles/sql-database-manage-azure-ssms/

@@ -6,7 +6,7 @@
 
 Azure Event Hub で発生したセンサー データを処理するために HDInsight Storm クラスターを使用するソリューションを作成する方法を説明します。処理中、Storm のトポロジは、HBase クラスターに受信データを格納します。トポロジは、Azure Websites でホストされている Web ベースのダッシュボードを介してほぼリアルタイムの情報を提供するために、SignalR も使用します。
 
-> [AZURE.NOTE] このプロジェクトの完全なバージョンは、[][]<https://github.com/Blackmist/hdinsight-eventhub-example></a> で利用できます。
+> [AZURE.NOTE] このプロジェクトの完全なバージョンは、<https://github.com/Blackmist/hdinsight-eventhub-example> で利用できます。
 
 ## 前提条件
 
@@ -28,11 +28,11 @@ Azure Event Hub で発生したセンサー データを処理するために HD
 
 Web サイトには静的な index.html ファイルも含まれます。このファイルは SignalR にも接続し、D3.js を使用して、Storm トポロジから送信されたデータをグラフ化します。
 
-> [WACOM.NOTE] SignalR の代わりに未加工の WebSockets を使用することもできますが、Web サイトをスケール アウトする必要があったとしても、WebSockets には組み込みのスケーリング メカニズムがありません。SignalR では、Azure Service Bus ([][1]<http://www.asp.net/signalr/overview/performance/scaleout-with-windows-azure-service-bus></a>) を使用して規模を変更することができます。
+> [WACOM.NOTE] SignalR の代わりに未加工の WebSockets を使用することもできますが、Web サイトをスケール アウトする必要があったとしても、WebSockets には組み込みのスケーリング メカニズムがありません。SignalR では、Azure Service Bus (<http://www.asp.net/signalr/overview/performance/scaleout-with-windows-azure-service-bus>) を使用して規模を変更することができます。
 >
 > Storm トポロジで未加工の WebSockets を使用して Python Web サイトと通信する例については、「[Storm Tweet Sentiment D3 Visualization (Storm Tweet の評判の D3 視覚化)][Storm Tweet Sentiment D3 Visualization (Storm Tweet の評判の D3 視覚化)]」プロジェクトを参照してください。
 
-1.  Visual Studio で、**ASP.NET Web アプリケーション** プロジェクト テンプレートを使用して新しい C# アプリケーションを作成します。新しいアプリケーションに「**ダッシュボード**」という名前を付けます。
+1.  Visual Studio で、**ASP.NET Web アプリケーション** プロジェクト テンプレートを使用して新しい C\# アプリケーションを作成します。新しいアプリケーションに「**ダッシュボード**」という名前を付けます。
 
 2.  **[新しい ASP.NET プロジェクト]** ウィンドウで、**空の**アプリケーション テンプレートを選択します。**[Windows Azure]** セクションで、**[クラウドでのホスト]** と **[Web サイト]** を選択します。最後に、**[OK]** をクリックします。
 
@@ -357,7 +357,7 @@ Web サイトには静的な index.html ファイルも含まれます。この�
 
 ### ダッシュボードのテスト
 
-1.  SignalR が動作していることと、SignalR に送信されたデータのグラフの線がダッシュボードに表示されることを確認するには、新しいブラウザー ウィンドウでこの Web サイトの **test.html** ページを開きます。たとえば、**<http://mydashboard.azurewebsites.net/test.html>** のように指定します。
+1.  SignalR が動作していることと、SignalR に送信されたデータのグラフの線がダッシュボードに表示されることを確認するには、新しいブラウザー ウィンドウでこの Web サイトの **test.html** ページを開きます。たとえば、**http://mydashboard.azurewebsites.net/test.html** のように指定します。
 
 2.  ダッシュボードは、**デバイス ID** と**温度**の値を持つ JSON 形式のデータを想定しています。たとえば、「**{"device":0, "temperature":80}**」という形式です。ダッシュボードが別のページで開いている間に、デバイス ID に 0 から 9 を使用して、**test.html** ページにテスト用の値をいくつか入力します。各デバイス ID の行は、別の色で表示されます。
 
@@ -533,7 +533,7 @@ Storm クラスターで実行しているトポロジが HBase と直接通信�
     -   **アドレス空間**: クラスター内のすべてのノードにアドレスを提供するために十分な大きさの、仮想ネットワークのアドレス空間を選択します。そうでないと、プロビジョニングは失敗します。
     -   **最大 VM 数**: 最大 VM 数のいずれかを選択します。
     -   **場所**: 場所は作成する HBase クラスターと同じである必要があります。
-    -   **DNS サーバー**: この記事では、Azure が提供する内部 DNS サーバーを使用するため、**[なし]** を選択します。カスタム DNS サーバーを使用した、より高度なネットワーク構成もサポートされています。詳細なガイダンスについては、[][2]<http://msdn.microsoft.com/library/azure/jj156088.aspx></a> を参照してください。
+    -   **DNS サーバー**: この記事では、Azure が提供する内部 DNS サーバーを使用するため、**[なし]** を選択します。カスタム DNS サーバーを使用した、より高度なネットワーク構成もサポートされています。詳細なガイダンスについては、<http://msdn.microsoft.com/library/azure/jj156088.aspx> を参照してください。
 
 4.  **[仮想ネットワークの作成]** をクリックします。新しい仮想ネットワーク名が一覧に表示されます。[ステータス] 列に **[作成済み]** が表示されるまで待機します。
 
@@ -547,7 +547,7 @@ Storm クラスターで実行しているトポロジが HBase と直接通信�
 
 9.  ページの下部に示される既定のサブネット名は、**Subnet-1** です。**[サブネットの追加]** をクリックして「**Subnet-2**」を追加します。これらのサブネットには、Storm クラスターと HBase クラスターが収容されます。
 
-    > [WACOM.NOTE] この記事では、ノードが 1 つのみのクラスターを使用します。マルチノード クラスターを作成する場合は、クラスターに使用されるサブネットの **[CIDR (アドレス数)]** を確認する必要があります。アドレス数は、ワーカー ノード数に 7 (ゲートウェイ: 2、ヘッドノード: 2、Zookeeper: 3) を加えた合計よりも多くする必要があります。たとえば、10 ノードの HBase クラスターが必要な場合、サブネットのアドレス数は、17 (10+7) を超えている必要があります。17 以下の場合、デプロイメントは失敗します。
+    > [WACOM.NOTE] この記事では、ノードが 1 つのみのクラスターを使用します。マルチノード クラスターを作成する場合は、クラスターに使用されるサブネットの **[CIDR (アドレス数)]** を確認する必要があります。アドレス数は、ワーカー ノード数に 7 (ゲートウェイ: 2、ヘッドノード: 2、Zookeeper: 3)。たとえば、10 ノードの HBase クラスターが必要な場合、サブネットのアドレス数は、17 (10+7) を超えている必要があります。17 以下の場合、デプロイメントは失敗します。
     >
     > 1 つのクラスターには単一のサブネットを指定することを強くお勧めします。
 
@@ -643,7 +643,7 @@ ASP.NET ダッシュボードにメッセージを送信するには、[SignalR 
 
 3.  次のコマンドを使用して GitHub からプロジェクトをダウンロードします。
 
-    git clone <https://github.com/SignalR/java-client>
+    git clone https://github.com/SignalR/java-client
 
 4.  ディレクトリを **java-client\\signalr-client-sdk** ディレクトリに変更し、次のコマンドを使用してプロジェクトを JAR ファイルにコンパイルします。
 
@@ -1079,7 +1079,7 @@ JSON との双方向のシリアル化をサポートするには、オブジェ
           }
         }
 
-    `http://yourwebsiteaddress` を、前にダッシュボードを発行した Azure Web サイトのアドレスで置き換えます。たとえば、<http://mydashboard.azurewebsites.net> のように指定します。
+    `http://yourwebsiteaddress` を、前にダッシュボードを発行した Azure Web サイトのアドレスで置き換えます。たとえば、http://mydashboard.azurewebsites.net です。
 
 5.  ファイルを保存して閉じます。
 
@@ -1318,7 +1318,7 @@ JSON との双方向のシリアル化をサポートするには、オブジェ
 
 ここでは、Storm を使用して、Event Hub からデータを読み取り、HBase にデータを格納し、SignalR と D3.js を使用して Storm からの情報を外部ダッシュボードに表示する方法について説明しました。
 
--   Apache Storm の詳細については、[][3]<https://storm.incubator.apache.org/></a> を参照してください。
+-   Apache Storm の詳細については、<https://storm.incubator.apache.org/> を参照してください。
 
 -   HDInsight での HBase の詳細については、「[HDInsight HBase の概要][HDInsight HBase の概要]」を参照してください。
 
@@ -1326,23 +1326,19 @@ JSON との双方向のシリアル化をサポートするには、オブジェ
 
 -   D3.js の詳細については、「[D3.js - Data Driven Documents (D3.js - データ駆動ドキュメント)][D3.js - Data Driven Documents (D3.js - データ駆動ドキュメント)]」を参照してください。
 
--   .NET でのトポロジの作成の詳細については、「[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発][HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]」を参照してください。
+-   .NET でのトポロジの作成の詳細については、「[HDInsight の Storm で SCP.NET と C\# を使用したストリーミング データ処理アプリケーションの開発][HDInsight の Storm で SCP.NET と C\# を使用したストリーミング データ処理アプリケーションの開発]」を参照してください。
 
-  []: https://github.com/Blackmist/hdinsight-eventhub-example
   [Azure SDK for .NET]: http://azure.microsoft.com/ja-jp/downloads/archive-net-downloads/
   [Java と JDK]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
   [Maven]: http://maven.apache.org/what-is-maven.html
   [Git]: http://git-scm.com/
   [Chocolatey NuGet]: http://chocolatey.org/
   [SignalR]: http://www.asp.net/signalr/overview/getting-started/introduction-to-signalr
-  [1]: http://www.asp.net/signalr/overview/performance/scaleout-with-windows-azure-service-bus
   [Storm Tweet Sentiment D3 Visualization (Storm Tweet の評判の D3 視覚化)]: https://github.com/P7h/StormTweetsSentimentD3Viz
   [Azure ポータル]: https://manage.windowsazure.com
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  [2]: http://msdn.microsoft.com/library/azure/jj156088.aspx
   [SignalR client SDK for Java (SignalR Java クライアント SDK)]: https://github.com/SignalR/java-client
-  [3]: https://storm.incubator.apache.org/
   [HDInsight HBase の概要]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-overview/
   [ASP.NET SignalR]: http://signalr.net/
   [D3.js - Data Driven Documents (D3.js - データ駆動ドキュメント)]: http://d3js.org/
-  [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: /ja-jp/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application/
+  [HDInsight の Storm で SCP.NET と C\# を使用したストリーミング データ処理アプリケーションの開発]: /ja-jp/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application/

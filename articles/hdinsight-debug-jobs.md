@@ -75,7 +75,7 @@ Azure PowerShell または Azure ポータルで発生する可能性のある�
 ### <span id="AzureRegionNotSupported"></span></a>AzureRegionNotSupported
 
 -   **説明**: リージョン *nameOfYourRegion* にクラスターを作成できません。有効な HDInsight リージョンを使用して要求し直してください。
--   **対応策**: 現在サポートされているリージョン (東南アジア、西ヨーロッパ、北ヨーロッパ、米国東部、米国西部) にクラスターを作成する必要があります。
+-   **対応策**: 現在サポートされているリージョンにクラスターを作成する必要があります。対象のリージョンは、東南アジア、西ヨーロッパ、北ヨーロッパ、米国東部、米国西部です。
 
 ### <span id="ClusterContainerRecordNotFound"></span></a>ClusterContainerRecordNotFound
 
@@ -265,12 +265,12 @@ Azure PowerShell または Azure ポータルで発生する可能性のある�
 ### <span id="UnableToResolveDNS"></span></a>UnableToResolveDNS
 
 -   **説明**: DNS *yourDnsUrl* を解決できません。BLOB エンドポイントの完全修飾 URL が指定されているか確認してください。
--   **対応策**: 有効な BLOB URL を指定します。URL は、先頭が *<http://>* で末尾が *.com* であることを含め、完全に有効である必要があります。完全修飾 URL は通常、manage.windowsazure.com ポータルの [ストレージ] タブに表示されています。
+-   **対応策**: 有効な BLOB URL を指定します。URL は、先頭が *http://* で末尾が *.com* であることを含め、完全に有効である必要があります。完全修飾 URL は通常、manage.windowsazure.com ポータルの [ストレージ] タブに表示されています。
 
 ### <span id="UnableToVerifyLocationOfResource"></span></a>UnableToVerifyLocationOfResource
 
 -   **説明**: リソース *yourDnsUrl* の場所を確認できません。BLOB エンドポイントの完全修飾 URL が指定されているか確認してください。
--   **対応策**: 有効な BLOB URL を指定します。URL は、先頭が *<http://>* で末尾が *.com* であることを含め、完全に有効である必要があります。完全修飾 URL は通常、manage.windowsazure.com ポータルの [ストレージ] タブに表示されています。
+-   **対応策**: 有効な BLOB URL を指定します。URL は、先頭が *http://* で末尾が *.com* であることを含め、完全に有効である必要があります。完全修飾 URL は通常、manage.windowsazure.com ポータルの [ストレージ] タブに表示されています。
 
 ### <span id="VersionCapabilityNotAvailable"></span></a>VersionCapabilityNotAvailable
 

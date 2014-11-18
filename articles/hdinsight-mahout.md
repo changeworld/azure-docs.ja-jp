@@ -260,13 +260,13 @@ Mahout で利用可能は分類方法の 1 つは、[ランダム フォレス�
 
 現在の Mahout の実装は、University of California の Irvine (UCI) リポジトリ形式との互換性があります [なぜこれが重要なのか、この形式は何か]。
 
-1.  ファイルを [][]<http://nsl.cs.unb.ca/NSL-KDD/></a> からダウンロードします。
+1.  ファイルを <http://nsl.cs.unb.ca/NSL-KDD/> からダウンロードします。
 
 -   [KDDTrain+.ARFF][KDDTrain+.ARFF] - トレーニング ファイル
 
 -   [KDDTest+.ARFF][KDDTest+.ARFF] - テスト データ
 
-1.  各ファイルを開き、<'@'> で始まる先頭の行を削除して、ファイルを保存します。これらが削除されていない場合、このデータを Mahout で使用するとエラーが返されます。
+1.  各ファイルを開き、'@' で始まる先頭の数行を削除して、ファイルを保存します。これらが削除されていない場合、このデータを Mahout で使用するとエラーが返されます。
 
 2.  **example/data** をアップロードします。これは、[HDInsight-Tools][HDInsight-Tools] の PowerShell モジュール内の `Add-HDInsightFile` 関数を使用して実行できます。
 
@@ -405,7 +405,6 @@ HDInsight 3.1 に Mahout が含まれていますが、パスとファイル名�
   [HDInsight-Tools]: https://github.com/Blackmist/hdinsight-tools
   [データを HDInsight にアップロードする方法]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-upload-data/
   [ランダム フォレスト]: http://en.wikipedia.org/wiki/Random_forest
-  []: http://nsl.cs.unb.ca/NSL-KDD/
   [KDDTrain+.ARFF]: http://nsl.cs.unb.ca/NSL-KDD/KDDTrain+.arff
   [KDDTest+.ARFF]: http://nsl.cs.unb.ca/NSL-KDD/KDDTest+.arff
   [Azure 管理ポータル]: https://manage.windowsazure.com/

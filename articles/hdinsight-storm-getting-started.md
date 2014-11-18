@@ -167,7 +167,7 @@ WordCountTopology サンプルはディレクトリに出力を書き込みま�
 
 -   [Storm と HDInsight を使用したセンサー データの分析][Storm と HDInsight を使用したセンサー データの分析]
 
--   [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発][HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]
+-   [HDInsight の Storm で SCP.NET と C\# を使用したストリーミング データ処理アプリケーションの開発][HDInsight の Storm で SCP.NET と C\# を使用したストリーミング データ処理アプリケーションの開発]
 
   [HDInsight Storm クラスターのプロビジョニング方法]: #provision
   [クラスターへの接続方法]: #connect
@@ -189,4 +189,4 @@ WordCountTopology サンプルはディレクトリに出力を書き込みま�
   [spouts and bolts]: ./media/hdinsight-storm-getting-started/stormuiboltsnspouts.png
   [selecting executors]: ./media/hdinsight-storm-getting-started/executors.png
   [Storm と HDInsight を使用したセンサー データの分析]: /ja-jp/documentation/articles/hdinsight-storm-sensor-data-analysis
-  [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: /ja-jp/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application
+  [HDInsight の Storm で SCP.NET と C\# を使用したストリーミング データ処理アプリケーションの開発]: /ja-jp/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application

@@ -52,7 +52,7 @@
 
 1.  開発環境に Ruby をインストールします。この手順は、使用しているオペレーティング システムによって異なる場合があります。
 
-    -   **Apple OS X** - OS X 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証には、OS X で [Homebrew][Homebrew] を使用して **rbenv**、**ruby-build**、および **Ruby 2.0.0-p451** をインストールしました。インストールに関する情報は、[][]<https://github.com/sstephenson/rbenv/></a> で確認できます。
+    -   **Apple OS X** - OS X 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証には、OS X で [Homebrew][Homebrew] を使用して **rbenv**、**ruby-build**、および **Ruby 2.0.0-p451** をインストールしました。インストールに関する情報は、<https://github.com/sstephenson/rbenv/> で確認できます。
 
     -   **Linux** - ディストリビューションのパッケージ管理システムを使用します。このチュートリアルは、Ubuntu 12.10 で **rbenv**、**ruby-build**、および **Ruby 2.0.0-p451** を使用して検証されました。
 
@@ -68,9 +68,9 @@
 
     > [WACOM.NOTE] このチュートリアルでは、Rails gem Version 4.0.4 を使用しました。
 
-3.  JavaScript インタープリターもインストールする必要があります。これは、Rails アプリケーションで使われる CoffeeScript アセットをコンパイルするために Rails によって使用されます。サポートされているインタープリターの一覧は、[][1]<https://github.com/sstephenson/execjs#readme></a> で確認できます。
+3.  JavaScript インタープリターもインストールする必要があります。これは、Rails アプリケーションで使われる CoffeeScript アセットをコンパイルするために Rails によって使用されます。サポートされているインタープリターの一覧は、<https://github.com/sstephenson/execjs#readme> で確認できます。
 
-    > [WACOM.NOTE] [Node.js] (<http://nodejs.org/>) をこのチュートリアルの検証中に使用しました。このインタープリターは OS X、Linux、Windows の各オペレーティング システムで利用できるためです。
+    > [WACOM.NOTE] [Node.js] (http://nodejs.org/) をこのチュートリアルの検証中に使用しました。このインタープリターは OS X、Linux、Windows の各オペレーティング システムで利用できるためです。
 
 ## <span id="create"></span></a>Rails アプリケーションを作成する
 
@@ -116,7 +116,7 @@
         [2013-03-12 19:11:31] INFO  ruby 2.0.0 (2014-02-24) [x86_64-linux]
         [2013-03-12 19:11:31] INFO  WEBrick::HTTPServer#start: pid=9789 port=3000
 
-2.  ブラウザーを開き、<http://localhost:3000/> に移動します。次のようなページが表示されます。
+2.  ブラウザーを開き、http://localhost:3000/ に移動します。次のようなページが表示されます。
 
     ![a page listing posts][a page listing posts]
 
@@ -156,7 +156,7 @@ Capistrano を使用してアプリケーションをデプロイすると、リ
 
 5.  **[新しいユーザー名]** に、このマシンの管理者アカウントの名前を入力します。
 
-    > [WACOM.NOTE] このチュートリアルでは、アプリケーションのデプロイでも管理者アカウントが使用されます。デプロイメント用の個別のアカウントを作成する詳細については、[Capistrano][2] のドキュメントを参照してください。
+    > [WACOM.NOTE] このチュートリアルでは、アプリケーションのデプロイでも管理者アカウントが使用されます。デプロイメント用の個別のアカウントを作成する詳細については、[Capistrano][1] のドキュメントを参照してください。
 
 6.  **[認証]** で、**[互換性のある認証用の SSH キーのアップロード]** をチェックしてから、証明書が含まれた **.pem** ファイルを検索して選択します。最後に、矢印を選択して続行します。
 
@@ -323,7 +323,7 @@ Rails で開発用に使用される既定のデータベースは SQLite です
 
     前の変更が終了したら、ファイルを保存します。
 
-5.  **config/deploy.rb** ファイルを編集して、ファイルのコンテンツを次のように置き換えます。**YourApplicationName** をアプリケーションの名前に置き換えます。また、**<https://github.com/YourGitHubName/YourRepoName.git>** を、このプロジェクトの GitHub リポジトリの URL に置き換えます。
+5.  **config/deploy.rb** ファイルを編集して、ファイルのコンテンツを次のように置き換えます。**YourApplicationName** をアプリケーションの名前に置き換えます。また、**https://github.com/YourGitHubName/YourRepoName.git** を、このプロジェクトの GitHub リポジトリの URL に置き換えます。
 
         lock '3.1.0'
         # application name and the github repository
@@ -422,17 +422,17 @@ Rails で開発用に使用される既定のデータベースは SQLite です
 
     > [WACOM.NOTE] 一部のシステムでは、GitHub への認証時に SSH エージェントがリモート VM に資格情報を転送できなくなる場合があります。この場合、エラーを解決する代替方法として、**config/deploy.rb** ファイルを変更し、`set :repo_url` 行を、GitHub へのアクセス時に HTTPS を使用するように変更する方法があります。HTTPS を使用する場合は、GitHub ユーザー名とパスワード (または認証トークン) を URL の一部として指定する必要があります。次に例を示します。
     >
-    > \`set :repo\_url, '<https://you:yourpassword@github.com/You/yourrepository.git>'
+    > 'set :repo\_url, 'https://you:yourpassword@github.com/You/yourrepository.git'
     >
     > これによってエラーを回避でき、このチュートリアルも終了できますが、運用デプロイメントにお勧めできる解決法ではありません。この方法は、資格情報をアプリケーションの一部としてプレーンテキストで保存するためです。SSH エージェントでの転送について、オペレーティング システムのドキュメントを確認してください。
 
-この時点で、Ruby on Rails アプリケーションは既に Azure の仮想マシンで動作していることになります。これを確認するには、Web ブラウザーに仮想マシンの DNS 名を入力します。たとえば、<http://railsvm.cloudapp.net> のように入力します。投稿のインデックスが表示され、ポストを作成、編集、削除できます。
+この時点で、Ruby on Rails アプリケーションは既に Azure の仮想マシンで動作していることになります。これを確認するには、Web ブラウザーに仮想マシンの DNS 名を入力します。たとえば、「http://railsvm.cloudapp.net」のように入力します。投稿のインデックスが表示され、ポストを作成、編集、削除できます。
 
 ## <span id="next"></span></a>次のステップ
 
 この記事では、基本的な Rails アプリケーションを作成し、Capistrano を使用して Azure の仮想マシンに発行する方法について説明しました。この記事で紹介した基本的なアプリケーションを使用した方法は、デプロイメントのために Capistrano でできることの一例にすぎません。Capistrano の使用方法の詳細については、以下を参照してください。
 
--   [Capistranorb.com][2] - Capistrano のサイトです。
+-   [Capistranorb.com][1] - Capistrano のサイトです。
 -   [Azure, Ruby on Rails, Capistrano 3, & PostgreSQL][Azure, Ruby on Rails, Capistrano 3, & PostgreSQL] - Azure にデプロイする代替的な手法で、カスタム デプロイメント スクリプトについて説明します。
 -   [Capistrano 3 tutorial (Capistrano 3 チュートリアル)][Capistrano 3 tutorial (Capistrano 3 チュートリアル)] - Capistrano 3 を使用したチュートリアルです。
 
@@ -463,10 +463,8 @@ Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サ
   [展開]: #deploy
   [次のステップ]: #next
   [Homebrew]: http://brew.sh/
-  []: https://github.com/sstephenson/rbenv/
   [RubyInstaller]: http://RubyInstaller.org/
   [Git for Windows]: http://git-scm.com/download/win
-  [1]: https://github.com/sstephenson/execjs#readme
   [SQLite3 データベース]: http://www.sqlite.org/
   [a page listing posts]: ./media/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/blograilslocal.png
   [Git]: http://git-scm.com/
@@ -474,7 +472,7 @@ Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サ
   [Generating SSH Keys (SSH キーの生成方法)]: https://help.github.com/articles/generating-ssh-keys
   [ここ]: /ja-jp/manage/linux/tutorials/virtual-machine-from-gallery/
   [Azure 管理ポータル]: https://manage.windowsazure.com/
-  [2]: http://capistranorb.com
+  [1]: http://capistranorb.com
   [How to use SSH with Linux on Azure (Azure 上の Linux における SSH の使用方法)]: http://azure.microsoft.com/ja-jp/documentation/articles/linux-use-ssh-key/
   [nginx welcome page]: ./media/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/welcomenginx.png
   [Azure, Ruby on Rails, Capistrano 3, & PostgreSQL]: http://wootstudio.ca/articles/tutorial-windows-azure-ruby-on-rails-capistrano-3-postgresql

@@ -29,7 +29,7 @@ HDInsight には次のサンプルが付属します。
 -   [**Pi 推定サンプル**][**Pi 推定サンプル**]: このチュートリアルでは、HDInsight を使用して MapReduce プログラムを実行する方法を紹介します。MapReduce プログラムは、統計的手法 (準モンテカルロ法) に基づいてパイ (Pi) の値を計算します。
 -   [**ワードカウント サンプル**][**ワードカウント サンプル**]: このチュートリアルでは、HDInsight クラスターを使用してテキスト ファイル内の単語出現回数をカウントする MapReduce プログラムを実行する方法を紹介します。
 -   [**10 GB GraySort サンプル**][**10 GB GraySort サンプル**]: このチュートリアルでは、HDInsight を使用し、10 GB のファイルに対して汎用 GraySort を実行する方法を紹介します。実行するジョブは 3 つあります。データを生成する Teragen、データをソートする Terasort、データが適切にソートされているか確認する Teravalidate です。
--   [**C# ストリーミング サンプル**][**C# ストリーミング サンプル**]: このチュートリアルでは、Hadoop ストリーミング インターフェイスを使用する MapReduce プログラムを C# で記述する方法を紹介します。
+-   [**C\# ストリーミング サンプル**][**C\# ストリーミング サンプル**]: このチュートリアルでは、Hadoop ストリーミング インターフェイスを使用する MapReduce プログラムを C\# で記述する方法を紹介します。
 
 ## サンプルの実行方法
 
@@ -54,7 +54,7 @@ HDInsight には次のサンプルが付属します。
   [**Pi 推定サンプル**]: ../hdinsight-sample-pi-estimator/
   [**ワードカウント サンプル**]: ../hdinsight-sample-wordcount/
   [**10 GB GraySort サンプル**]: ../hdinsight-sample-10gb-graysort/
-  [**C# ストリーミング サンプル**]: ../hdinsight-sample-csharp-streaming/
+  [**C\# ストリーミング サンプル**]: ../hdinsight-sample-csharp-streaming/
   [Azure HDInsight サービスの概要]: ../hdinsight-get-started/
   [HDInsight での Pig の使用]: ../hdinsight-use-pig/
   [HDInsight での Hive の使用]: ../hdinsight-use-hive/

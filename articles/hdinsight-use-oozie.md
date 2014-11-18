@@ -569,7 +569,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 
         Write-Host "$(Get-Date -format 'G'): $oozieJobId is in $JobStatus state!" -ForegroundColor Green
 
-7.  HDInsight クラスターが Version 2.1 である場合は、"<https://$clusterName.azurehdinsight.net:443/oozie/v2/>" を "<https://$clusterName.azurehdinsight.net:443/oozie/v1/>" に置き換えてください。HDInsight クラスター Version 2.1 は、Web サービスの Version 2 をサポートしていません。
+7.  HDInsight クラスターが Version 2.1 である場合は、"https://$clusterName.azurehdinsight.net:443/oozie/v2/" を "https://$clusterName.azurehdinsight.net:443/oozie/v1/" に置き換えてください。HDInsight クラスター Version 2.1 は、Web サービスの Version 2 をサポートしていません。
 
 8.  **[スクリプトの実行]** をクリックするか、**F5** キーを押して、スクリプトを実行します。次のように出力されます。
 
@@ -630,7 +630,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
 -   [HDInsight での Sqoop の使用][HDInsight での Sqoop の使用]
 -   [HDInsight での Hive の使用][HDInsight での Hive の使用]
 -   [HDInsight での Pig の使用][HDInsight での Pig の使用]
--   [HDInsight 用 C# Hadoop ストリーミング プログラムの開発][HDInsight 用 C# Hadoop ストリーミング プログラムの開発]
+-   [HDInsight 用 C\# Hadoop ストリーミング プログラムの開発][HDInsight 用 C\# Hadoop ストリーミング プログラムの開発]
 -   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]
 
   [HDInsight での時間ベースの Oozie コーディネーターの使用]: ../hdinsight-use-oozie-coordinator-time/
@@ -663,5 +663,5 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
   [PowerShell を使用した HDInsight の管理]: ../hdinsight-administer-use-powershell/
   [HDInsight へのデータのアップロード]: ../hdinsight-upload-data/
   [HDInsight での Pig の使用]: ../hdinsight-use-pig/
-  [HDInsight 用 C# Hadoop ストリーミング プログラムの開発]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
+  [HDInsight 用 C\# Hadoop ストリーミング プログラムの開発]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]: ../hdinsight-develop-deploy-java-mapreduce/

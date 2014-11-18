@@ -157,7 +157,7 @@ WorkerRole.cs の内容を次のコードに置き換えます。[EventSource �
 1.  次の PowerShell コマンドを実行して、パブリック構成ファイルのスキーマ定義をダウンロードします。
 2.  (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd' 
 
-3.  **[WorkerRole1]** プロジェクトを右クリックし、**[追加]** -\> **[新しい項目]** -\> **[Visual C# items]** -\> **[データ]** -\> **[XML ファイル]** の順に選択して、XML ファイルを **[WorkerRole1]** プロジェクトに追加します。ファイルに「WadExample.xml」という名前を付けます。
+3.  **[WorkerRole1]** プロジェクトを右クリックし、**[追加]** -\> **[新しい項目]** -\> **[Visual C\# items]** -\> **[データ]** -\> **[XML ファイル]** の順に選択して、XML ファイルを **[WorkerRole1]** プロジェクトに追加します。ファイルに「WadExample.xml」という名前を付けます。
 
     ![CloudServices\_diag\_add\_xml][CloudServices\_diag\_add\_xml]
 
@@ -225,7 +225,7 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 ### 手順 2.アプリケーションを作成する
 
 1.  開発コンピューター上で Visual Studio 2013 を起動します。
-2.  .NET Framework 4.5 をターゲットとする Visual C# の新しいコンソール アプリケーションを作成します。プロジェクト名として「WadExampleVM」と入力します。
+2.  .NET Framework 4.5 をターゲットとする Visual C\# の新しいコンソール アプリケーションを作成します。プロジェクト名として「WadExampleVM」と入力します。
     ![CloudServices\_diag\_new\_project][CloudServices\_diag\_new\_project]
 3.  Program.cs の内容を次のコードに置き換えます。**SampleEventSourceWriter** クラスは、4 つのログの作成方法 (**SendEnums**、**MessageMethod**、**SetOther**、**HighFreq**) を実装しています。WriteEvent メソッドの最初のパラメーターは各イベントの ID を定義しています。Run メソッドは、**SampleEventSourceWriter** クラスに実装されているログ作成方法をぞれぞれ 10 秒ごとに呼び出す無限ループを実装します。
 
@@ -310,7 +310,7 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 
         (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd' 
 
-2.  既に開いているプロジェクトか、プロジェクトを開かずに Visual Studio インスタンスで、Visual Studio の新しい XML ファイルを開きます。Visual Studio で、**[追加]** -\> **[新しい項目]** -\> **[Visual C# アイテム]** -\> **[データ]** -\> **[XML ファイル]** の順に選択します。ファイルに「WadExample.xml」という名前を付けます。
+2.  既に開いているプロジェクトか、プロジェクトを開かずに Visual Studio インスタンスで、Visual Studio の新しい XML ファイルを開きます。Visual Studio で、**[追加]** -\> **[新しい項目]** -\> **[Visual C\# アイテム]** -\> **[データ]** -\> **[XML ファイル]** の順に選択します。ファイルに「WadExample.xml」という名前を付けます。
 3.  構成ファイルに WadConfig.xsd を関連付けます。WadExample.xml エディタ ウィンドウがアクティブになっていることを確認します。**F4** キーを押し、**[プロパティ]** ウィンドウを開きます。**[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。**[スキーマ]** プロパティで **[…]** をクリックします。**[追加]** ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。**[OK]** をクリックします。
 4.  WadExample.xml 構成ファイルの内容を次の XML に置き換え、ファイルを保存します。この構成ファイルは、収集するいくつかのパフォーマンス カウンターを定義します。1 つは CPU 使用率、1 つはメモリ使用率です。次に、SampleEventSourceWriter クラスのメソッドに対応する 4 つのイベントを定義します。
 
@@ -482,7 +482,7 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 解決策: 診断構成ファイルを修正し、診断を再インストールします。
 イベント データは、ストレージ アカウントにアップロードされる前にフォルダーに格納されます。**LocalResourceDirectory** の詳細については、上記を参照してください。
 
-このフォルダーにファイルがない場合、監視エージェントは起動できません。これは通常、無効な構成ファイルが原因であり、CommandExecution.log で報告される必要があります。監視エージェントが正常にイベント·データを収集している場合は、構成ファイルで定義されたイベントごとに .tsf ファイルが表示されます。
+このフォルダーにファイルがない場合、監視エージェントは起動できません。これは通常、無効な構成ファイルが原因であり、CommandExecution.log に記録されます。監視エージェントが正常にイベント データを収集している場合は、構成ファイルで定義されたイベントごとに .tsf ファイルが表示されます。
 
 監視エージェントは、MaEventTable.tsf ファイルに発生したすべてのエラーを記録します。このファイルの内容を確認するには、次のコマンドを実行します。
 
@@ -504,7 +504,7 @@ Visual Studio の **[サーバー エクスプローラー]** で wadexample ス
 
 **Q.** 診断 1.1 拡張機能をロールまたは VM 上にインストールしている場合は、どのように診断 1.2 にアップグレードしますか。
 
-**A.** 診断 1.1 のインストール時に「バージョン 1」を指定した場合は、*次回ロールまたは VM が再起動するときに、自動的に正規表現「1」に一致する最新バージョンに更新されます*。診断 1.1 のインストール時に「バージョン 1.1」を指定した場合は、Set- コマンドレットを再実行し、インストールするバージョンを指定できる最新バージョンに更新されます。
+**A.** 診断 1.1 のインストール時に "–Version "1.\*"" を指定した場合は、次回ロールまたは VM が再起動するときに、自動的に正規表現 "1.\*" に一致する最新バージョンに更新されます。診断 1.1 のインストール時に "–Version 1.1" を指定した場合は、Set- コマンドレットを再実行し、インストールするバージョンを指定すれば、最新バージョンに更新できます。
 
 **Q.**テーブルにはどのようにして名前が付けられますか。
 

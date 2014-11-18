@@ -106,7 +106,7 @@ IPython とその依存モジュールを Windows VM にインストールする
     環境変数に追加する必要もあります。
 
 2.  **get-pip.py**
-    ファイルを [][]<https://pip.pypa.io/en/latest/installing.html></a> からダウンロードして次のコマンドを実行し、
+    ファイルを <https://pip.pypa.io/en/latest/installing.html> からダウンロードして次のコマンドを実行し、
     pip と setuptools をインストールします。
 
         python get-pip.py
@@ -126,7 +126,7 @@ IPython とその依存モジュールを Windows VM にインストールする
 5.  [Matplotlib][Matplotlib] をダウンロードし、その提供元の Web サイトで入手できる
     `.exe` バイナリ インストーラーを使ってインストールします。この記事の執筆時点で最新バージョンは **matplotlib-1.40.0.win32-py2.7.exe** です。
 
-6.  OpenSSL をダウンロードしインストールします。Windows 版 OpenSSL は [][4]<http://slproweb.com/products/Win32OpenSSL.html></a> から入手できます。
+6.  OpenSSL をダウンロードしインストールします。Windows 版 OpenSSL は <http://slproweb.com/products/Win32OpenSSL.html> から入手できます。
 
     -   **Light** バージョンをインストールする場合、同じページで提供されている **Visual C++ 2008 Redistributable** もインストールする必要があります。
 
@@ -243,18 +243,18 @@ IPython Notebook サーバーを起動します。
 
 ノートブックに初めてアクセスするとき、ログイン ページでパスワードが要求されます。
 
-![スクリーンショット][5]
+![スクリーンショット][4]
 
 ログインすると、"IPython Notebook ダッシュボード" が表示されます。これは、ノートブックに関するすべての操作の
 コントロール センターとなります。このページから、新しいノートブックを作成する、
 既存のノートブックを開くなどの操作を実行できます。
 
-![スクリーンショット][6]
+![スクリーンショット][5]
 
 [New Notebook] ボタンをクリックすると、次のように
 ページが開きます。
 
-![スクリーンショット][7]
+![スクリーンショット][6]
 
 `In []:` プロンプトがある領域に適切な Python コードを入力します。
 `Shift-Enter` キーを押すか、[実行] アイコン (ツール バーにある右向き三角形) を
@@ -263,7 +263,7 @@ IPython Notebook サーバーを起動します。
 NumPy と matplotlib のサポートで自動的に開始されるように
 ノートブックを構成してあるので、次の例のように、図を作成できます。
 
-![スクリーンショット][8]
+![スクリーンショット][7]
 
 ## 強力なパラダイム: リッチ メディアを含んだリアルタイムなコンピューティング ドキュメント
 
@@ -273,25 +273,25 @@ NumPy と matplotlib のサポートで自動的に開始されるように
 でセルの形式を [Code] から [Markdown] に変更して、メモなどの
 テキストを保存することもできます。
 
-![スクリーンショット][9]
+![スクリーンショット][8]
 
 IPython Notebook はワード プロセッサよりも優れています。
 IPython Notebook では、計算処理とリッチ メディア (テキスト、グラフィックス、ビデオなど、最新の Web ブラウザーで
 表示できるほとんどのデータ) を混在させることができます。たとえば、教育用に説明ビデオと
 計算処理を混在させることができます。
 
-![スクリーンショット][10]
+![スクリーンショット][9]
 
 また、ノートブック ファイル内に外部の Web サイトを埋め込んで、リアルタイムに表示し
 利用することができます。
 
-![スクリーンショット][11]
+![スクリーンショット][10]
 
 Python に関連する多数の優れた科学技術計算用
 ライブラリを使用することで、1 つの環境で、複雑なネットワーク分析も単純な
 計算も同じように簡単に実行することができます。
 
-![スクリーンショット][12]
+![スクリーンショット][11]
 
 最新の Web の機能とリアルタイムな計算処理を混在させるというパラダイムは、多くの可能性を示すものです。このパラダイムは、クラウドに適した理想的なパラダイムです。Notebook の用途には次のようなものがあります。
 
@@ -341,15 +341,13 @@ IPython の主要機能は、
   [Matplotlib]: http://matplotlib.sourceforge.net/ "Matplotlib"
   [Tornado]: http://www.tornadoweb.org/ "Tornado"
   [python.org]: http://www.python.org/download
-  []: https://pip.pypa.io/en/latest/installing.html
   [PyZMQ]: https://github.com/zeromq/pyzmq "PyZMQ"
-  [4]: http://slproweb.com/products/Win32OpenSSL.html
-  [5]: ./media/virtual-machines-python-ipython-notebook/ipy-notebook-001.png
-  [6]: ./media/virtual-machines-python-ipython-notebook/ipy-notebook-002.png
-  [7]: ./media/virtual-machines-python-ipython-notebook/ipy-notebook-003.png
-  [8]: ./media/virtual-machines-python-ipython-notebook/ipy-notebook-004.png
-  [9]: ./media/virtual-machines-python-ipython-notebook/ipy-notebook-005.png
-  [10]: ./media/virtual-machines-python-ipython-notebook/ipy-notebook-006.png
-  [11]: ./media/virtual-machines-python-ipython-notebook/ipy-notebook-007.png
-  [12]: ./media/virtual-machines-python-ipython-notebook/ipy-notebook-008.png
+  [4]: ./media/virtual-machines-python-ipython-notebook/ipy-notebook-001.png
+  [5]: ./media/virtual-machines-python-ipython-notebook/ipy-notebook-002.png
+  [6]: ./media/virtual-machines-python-ipython-notebook/ipy-notebook-003.png
+  [7]: ./media/virtual-machines-python-ipython-notebook/ipy-notebook-004.png
+  [8]: ./media/virtual-machines-python-ipython-notebook/ipy-notebook-005.png
+  [9]: ./media/virtual-machines-python-ipython-notebook/ipy-notebook-006.png
+  [10]: ./media/virtual-machines-python-ipython-notebook/ipy-notebook-007.png
+  [11]: ./media/virtual-machines-python-ipython-notebook/ipy-notebook-008.png
   [Python Tools for Visual Studio]: http://pytools.codeplex.com

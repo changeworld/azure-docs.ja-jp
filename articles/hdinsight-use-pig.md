@@ -248,7 +248,7 @@ BLOB ストレージ内のファイルにアクセスするための構文は次
 
 ## <span id="sdk"></span></a>HDInsight .NET SDK を使用して Pig ジョブを送信する
 
-C# アプリケーションを使用して Pig ジョブを送信するには、以下の手順に従います。Hadoop ジョブの送信用の C# アプリケーションを作成する方法については、「[HDInsight .NET SDK を使用して MapReduce ジョブを送信する][HDInsight .NET SDK を使用して MapReduce ジョブを送信する]」を参照してください。
+C\# アプリケーションを使用して Pig ジョブを送信するには、以下の手順に従います。Hadoop ジョブの送信用の C\# アプリケーションを作成する方法については、「[HDInsight .NET SDK を使用して MapReduce ジョブを送信する][HDInsight .NET SDK を使用して MapReduce ジョブを送信する]」を参照してください。
 
 1.  自己署名証明書を作成し、それをコンピューターにインストールして、さらに、Azure サブスクリプションにアップロードします。手順については、「[Create a self-signed certificate (自己署名証明書の作成)][Create a self-signed certificate (自己署名証明書の作成)]」を参照してください。
 

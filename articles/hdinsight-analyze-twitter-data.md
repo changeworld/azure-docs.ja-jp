@@ -119,7 +119,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 **Twitter アプリケーションを作成するには**
 
-1.  [][]<https://apps.twitter.com/></a> にサインインします。Twitter アカウントを持っていない場合は、**[今すぐ登録]** リンクをクリックします。
+1.  <https://apps.twitter.com/> にサインインします。Twitter アカウントを持っていない場合は、**[今すぐ登録]** リンクをクリックします。
 2.  **[Create New App]** をクリックします。
 3.  **名前**、**説明**、**Web サイト**を入力します。Web サイト フィールドの URL を構成することができます。次のテーブルは使用する値のサンプルを示しています。
 
@@ -530,7 +530,6 @@ HiveQL スクリプトは、次の作業を実行します。
   [ツイート データ]: https://dev.twitter.com/docs/platform-objects/tweets
   [oauth.net]: http://oauth.net/
   [Beginner's Guide to OAuth (OAuth 初心者向けガイド)]: http://hueniverse.com/oauth/
-  []: https://apps.twitter.com/
   [*Curl*]: http://curl.haxx.se
   [ここ]: http://curl.haxx.se/download.html
   [Start Windows PowerShell on Windows 8 and Windows (Windows 8 と Windows での Windows PowerShell の起動)]: http://technet.microsoft.com/ja-jp/library/hh847889.aspx

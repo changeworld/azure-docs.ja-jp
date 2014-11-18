@@ -164,7 +164,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
     | プロパティ   | 値                              |
     |--------------|---------------------------------|
-    | カテゴリ     | テンプレート/Visual C#/Windows |
+    | カテゴリ     | テンプレート/Visual C\#/Windows |
     | テンプレート | コンソール アプリケーション     |
     | 名前         | SubmitMapReduceJob              |
 
@@ -282,11 +282,11 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
 ## <span id="streaming-sdk"></span></a>HDInsight .NET SDK を使用して Hadoop ストリーミング ジョブを送信する
 
-HDInsight クラスターには、C# で開発されたワード カウント Hadoop ストリーミング プログラムが付属します。Mapper プログラムは */example/apps/cat.exe* で、Reduce プログラムは */example/apps/wc.exe* です。ここでは、.NET アプリケーションを作成して、ワード カウント サンプルを実行する方法を説明します。
+HDInsight クラスターには、C\# で開発されたワード カウント Hadoop ストリーミング プログラムが付属します。Mapper プログラムは */example/apps/cat.exe* で、Reduce プログラムは */example/apps/wc.exe* です。ここでは、.NET アプリケーションを作成して、ワード カウント サンプルを実行する方法を説明します。
 
 MapReduce ジョブを送信する .NET アプリケーションの作成方法の詳細については、「[HDInsight .NET SDK を使用して MapReduce ジョブを送信する][HDInsight .NET SDK を使用して MapReduce ジョブを送信する]」を参照してください。
 
-Hadoop ストリーミング ジョブの開発およびデプロイ方法の詳細については、「[Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)][Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)]」を参照してください。
+Hadoop ストリーミング ジョブの開発およびデプロイ方法の詳細については、「[Develop C\# Hadoop streaming programs for HDInsight (HDInsight 用 C\# Hadoop ストリーミング プログラムの開発)][Develop C\# Hadoop streaming programs for HDInsight (HDInsight 用 C\# Hadoop ストリーミング プログラムの開発)]」を参照してください。
 
     using System;
     using System.Collections.Generic;
@@ -402,7 +402,7 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
     | プロパティ   | 値                              |
     |--------------|---------------------------------|
-    | カテゴリ     | テンプレート/Visual C#/Windows |
+    | カテゴリ     | テンプレート/Visual C\#/Windows |
     | テンプレート | コンソール アプリケーション     |
     | 名前         | SubmitHiveJob                   |
 
@@ -536,6 +536,6 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
   [NuGet]: http://nuget.codeplex.com/wikipage?title=Getting%20Started
   [Azure の管理ポータル]: http://manage.windowsazure.com/
   [Create and Upload a Management Certificate for Azure (Azure の管理証明書の作成とアップロード)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg551722.aspx
-  [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
+  [Develop C\# Hadoop streaming programs for HDInsight (HDInsight 用 C\# Hadoop ストリーミング プログラムの開発)]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
   [HDInsight Cmdlet Reference Documentation (HDInsight コマンドレット リファレンス ドキュメント)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn479228.aspx
   [HDInsight での Pig の使用]: ../hdinsight-use-pig/

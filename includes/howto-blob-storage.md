@@ -38,7 +38,7 @@ BLOB サービスには、次のコンポーネントが含まれます。
 
 -   **URL 形式:** BLOB は次の URL 形式でアドレス指定
     されます。
-    <http://>`<storage account>`.blob.core.windows.net/`<container>`/`<blob>`
+    http://`<storage account>`.blob.core.windows.net/`<container>`/`<blob>`
 
     次の例の URL を使用すると、上の図のいずれかの BLOB を
     アドレス指定できます。

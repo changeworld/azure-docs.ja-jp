@@ -2,7 +2,7 @@
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/25/2014" ms.author="jgao" />
 
-# Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)
+# Develop C\# Hadoop streaming programs for HDInsight (HDInsight 用 C\# Hadoop ストリーミング プログラムの開発)
 
 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語の map 関数と reduce 関数を記述することができます。このチュートリアルでは、指定した入力データ内の特定の単語の出現回数を数えるワード カウント シナリオについて説明します。MapReduce フレームワークでワード カウントを実現するしくみを次の図に示します。
 
@@ -10,7 +10,7 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 このトピックでは、次の操作方法について説明します。
 
--   C# で Hadoop ストリーミング MapReduce プログラムを開発し、HDInsight Emulator 上でテストする
+-   C\# で Hadoop ストリーミング MapReduce プログラムを開発し、HDInsight Emulator 上でテストする
 -   Azure HDInsight で同じ MapReduce ジョブを実行する
 -   MapReduce ジョブの結果を取得する
 
@@ -24,18 +24,18 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
 ## この記事の内容
 
--   [C# でワード カウント Hadoop ストリーミング プログラムを開発する][C# でワード カウント Hadoop ストリーミング プログラムを開発する]
+-   [C\# でワード カウント Hadoop ストリーミング プログラムを開発する][C\# でワード カウント Hadoop ストリーミング プログラムを開発する]
 -   [エミュレーターでプログラムをテストする][エミュレーターでプログラムをテストする]
 -   [Azure BLOB ストレージにデータとアプリケーションをアップロードする][Azure BLOB ストレージにデータとアプリケーションをアップロードする]
 -   [Azure HDInsight で MapReduce プログラムを実行する][Azure HDInsight で MapReduce プログラムを実行する]
 -   [MapReduce の結果を取得する][MapReduce の結果を取得する]
 -   [次のステップ][次のステップ]
 
-## <a name="develop"></a>C# でワード カウント Hadoop ストリーミング プログラムを開発する
+## <a name="develop"></a>C\# でワード カウント Hadoop ストリーミング プログラムを開発する
 
 ワード カウント ソリューションには、mapper と reducer という 2 つのコンソール アプリケーション プロジェクトが含まれます。mapper アプリケーションは、コンソールに各単語をストリーミングします。reducer アプリケーションは、ドキュメントからストリーミングされた単語の数をカウントします。mapper と reducer はどちらも標準入力ストリーム (stdin) から 1 行ずつ文字を読み取って、標準出力ストリーム (stdout) に書き込みます。
 
-**C# コンソール アプリケーションを作成するには**
+**C\# コンソール アプリケーションを作成するには**
 
 1.  Visual Studio 2013 を開きます。
 2.  **[ファイル]**、**[新規]**、**[プロジェクト]** の順にクリックします。
@@ -43,7 +43,7 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
     |------------------|------------------------------------------------|
     | フィールド       | 値                                             |
-    | テンプレート     | Visual C#/Windows/コンソール アプリケーション |
+    | テンプレート     | Visual C\#/Windows/コンソール アプリケーション |
     | 名前             | WordCountMapper                                |
     | 場所             | C:\\Tutorials                                  |
     | ソリューション名 | WordCount                                      |
@@ -90,7 +90,7 @@ Hadoop には MapReduce に対するストリーミング API が用意されて
 
     |--------------|------------------------------------------------|
     | フィールド   | 値                                             |
-    | テンプレート | Visual C#/Windows/コンソール アプリケーション |
+    | テンプレート | Visual C\#/Windows/コンソール アプリケーション |
     | 名前         | WordCountReducer                               |
     | 場所         | C:\\Tutorials\\WordCount                       |
 
@@ -218,7 +218,7 @@ HDInsight Emulator は既定のファイル システムとして HDFS を使用
         $mrOutput = "/WordCount/Output"
         $mrStatusOutput = "/WordCount/MRStatusOutput"
 
-    HDInsight Emulator のクラスター名は "<http://localhost:50111>" です。
+    HDInsight Emulator のクラスター名は "http://localhost:50111" です。
 
 3.  次のコマンドを実行して、ストリーミング ジョブを定義します。
 
@@ -253,7 +253,7 @@ HDInsight Emulator は既定のファイル システムとして HDFS を使用
 
 **ジョブの状態を確認するには**
 
-1.  デスクトップで **[Hadoop YARN のステータス]** をクリックするか、**<http://localhost:50030/jobtracker.jsp>** を参照します。
+1.  デスクトップで **[Hadoop YARN のステータス]** をクリックするか、**http://localhost:50030/jobtracker.jsp** を参照します。
 2.  **[実行中]** カテゴリまたは **[完了]** カテゴリで、このジョブ ID を使用しているジョブを見つけます。
 3.  ジョブが失敗している場合は **[失敗]** カテゴリに表示されます。ジョブの詳細を開き、デバッグに役立つ情報を検索することもできます。
 
@@ -512,7 +512,7 @@ Hadoop ストリーミング ジョブを送信する HDInsight .NET SDK サン�
   [購入オプション]: http://azure.microsoft.com/ja-jp/pricing/purchase-options/
   [メンバー プラン]: http://azure.microsoft.com/ja-jp/pricing/member-offers/
   [無料評価版]: http://azure.microsoft.com/ja-jp/pricing/free-trial/
-  [C# でワード カウント Hadoop ストリーミング プログラムを開発する]: #develop
+  [C\# でワード カウント Hadoop ストリーミング プログラムを開発する]: #develop
   [エミュレーターでプログラムをテストする]: #test
   [Azure BLOB ストレージにデータとアプリケーションをアップロードする]: #upload
   [Azure HDInsight で MapReduce プログラムを実行する]: #run

@@ -559,7 +559,7 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
 
 このチュートリアルでは、Java MapReduce ジョブを作成する方法、HDInsight Emulator でアプリケーションをテストする方法、HDInsight クラスターをプロビジョニングしてクラスターで MapReduce を実行する PowerShell スクリプトを記述する方法について説明しました。詳細については、次の記事を参照してください。
 
--   [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発][HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発]
+-   [HDInsight 用 C\# Hadoop ストリーミング MapReduce プログラムの開発][HDInsight 用 C\# Hadoop ストリーミング MapReduce プログラムの開発]
 -   [Azure HDInsight の概要][Azure HDInsight の概要]
 -   [HDInsight Emulator の概要][HDInsight Emulator の概要]
 -   [HDInsight での Azure BLOB ストレージの使用][HDInsight での Azure BLOB ストレージの使用]
@@ -593,7 +593,7 @@ Azure HDInsight は、データ ストレージとして Azure BLOB ストレー
   [Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続]: ../hdinsight-connect-excel-hive-ODBC-driver/
   [Power Query を使用した Excel から HDInsight への接続]: ../hdinsight-connect-excel-power-query/
   [Sqoop]: ../hdinsight-use-sqoop/
-  [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
+  [HDInsight 用 C\# Hadoop ストリーミング MapReduce プログラムの開発]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
   [Azure HDInsight の概要]: ../hdinsight-get-started/
   [HDInsight での Azure BLOB ストレージの使用]: ../hdinsight-use-blob-storage/
   [PowerShell を使用した HDInsight の管理]: ../hdinsight-administer-use-powershell/

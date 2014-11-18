@@ -346,7 +346,7 @@ SQL データベースまたは SQL Server で 2 つのテーブルを作成し�
          [sessionid] [bigint],
          [sessionpagevieworder][bigint])
 
-5.  **F5** キーを使用するか、リボンで **[実行]** を選択してクエリを実行します。クエリの下に次のメッセージが表示されます。
+5.  **F5** ファンクション キーを使用するか、リボンの **[! 実行]** をクリックしてクエリを実行します。クエリの下に次のメッセージが表示されます。
 
         Command(s) completed successfully.
 
@@ -554,7 +554,7 @@ SQL データベースまたは SQL Server で 2 つのテーブルを作成し�
 
 ## <span id="export-sdk"></span></a>HDInsight .NET SDK を使用して Sqoop エクスポートを実行する
 
-以下は、HDInsight .NET SDK を使用して Sqoop エクスポートを実行する C# サンプルです。HDInsight .NET SDK の使用方法に関する一般的情報については、「[プログラムによる Hadoop ジョブの送信][プログラムによる Hadoop ジョブの送信]」を参照してください。
+以下は、HDInsight .NET SDK を使用して Sqoop エクスポートを実行する C\# サンプルです。HDInsight .NET SDK の使用方法に関する一般的情報については、「[プログラムによる Hadoop ジョブの送信][プログラムによる Hadoop ジョブの送信]」を参照してください。
 
     using System;
     using System.Collections.Generic;

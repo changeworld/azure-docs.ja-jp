@@ -87,7 +87,7 @@ Web ジョブ SDK は Azure ストレージを操作するための多数の方�
 
 Web ジョブ SDK を使用するプログラムは標準的なコンソール アプリケーションであるため、場所を問わず実行できます。Web ジョブとして実行する必要はありません。ローカルの開発用コンピューターでプログラムをテストし、運用段階では、好みに応じてクラウド サービスの worker ロールまたは Windows サービスで実行することができます。
 
-ただし、ダッシュボードは Azure Web サイトのサイト拡張機能としてのみ使用可能です。Web ジョブ以外で実行する際にもダッシュボードを使いたい場合は、Web ジョブ SDK ダッシュボードの接続文字列が参照するストレージ アカウントを使用するように Azure Web サイトを構成できます。そうすれば、そのサイトの Web ジョブ ダッシュボードに、別の場所で実行されているプログラムから関数の実行に関するデータが表示されます。ダッシュボードには、URL <https://>*{websitename}*.scm.azurewebsites.net/azurejobs/\#/functions を使用してアクセスできます。詳細については、「[Getting a dashboard for local development with the WebJobs SDK (Web ジョブ SDK を使用したローカル開発用ダッシュボードへのアクセス)][Getting a dashboard for local development with the WebJobs SDK (Web ジョブ SDK を使用したローカル開発用ダッシュボードへのアクセス)]」を参照してください。ただし、このブログ記事には、既に使用されていない接続文字列名が示されている点に注意してください。
+ただし、ダッシュボードは Azure Web サイトのサイト拡張機能としてのみ使用可能です。Web ジョブ以外で実行する際にもダッシュボードを使いたい場合は、Web ジョブ SDK ダッシュボードの接続文字列が参照するストレージ アカウントを使用するように Azure Web サイトを構成できます。そうすれば、そのサイトの Web ジョブ ダッシュボードに、別の場所で実行されているプログラムから関数の実行に関するデータが表示されます。ダッシュボードには、URL https://*{websitename}*.scm.azurewebsites.net/azurejobs/\#/functions を使用してアクセスできます。詳細については、「[Getting a dashboard for local development with the WebJobs SDK (Web ジョブ SDK を使用したローカル開発用ダッシュボードへのアクセス)][Getting a dashboard for local development with the WebJobs SDK (Web ジョブ SDK を使用したローカル開発用ダッシュボードへのアクセス)]」を参照してください。ただし、このブログ記事には、既に使用されていない接続文字列名が示されている点に注意してください。
 
 ## <span id="nostorage"></span></a>Web ジョブ SDK を使用した関数の呼び出し
 

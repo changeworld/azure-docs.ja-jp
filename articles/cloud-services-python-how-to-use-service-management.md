@@ -77,7 +77,7 @@ Azure SDK for Python は、REST API である [Azure サービス管理 API][Azu
 
     `openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer`
 
-Azure 証明書の詳細については、「[証明書の管理][証明書の管理]」を参照してください。OpenSSL のパラメーターの詳細については、[][]<http://www.openssl.org/docs/apps/openssl.html></a> にあるドキュメントを参照してください。
+Azure 証明書の詳細については、「[証明書の管理][証明書の管理]」を参照してください。OpenSSL のパラメーターの詳細については、<http://www.openssl.org/docs/apps/openssl.html> にあるドキュメントを参照してください。
 
 これらのファイルを作成した後、[管理ポータル][管理ポータル]の [設定] タブで [アップロード] をクリックして、`.cer` ファイルを Azure にアップロードする必要があります。また、`.pem` ファイルを保存した場所を書き留めておいてください。
 
@@ -523,7 +523,6 @@ Azure には、2 つのデプロイ環境が用意されています。デプロ
   [Windows Azure の管理証明書の作成とアップロード]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg551722.aspx
   [OpenSSL]: http://www.openssl.org/
   [証明書の管理]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg981929.aspx
-  []: http://www.openssl.org/docs/apps/openssl.html
   [クラウド サービス]: http://windowsazure.com/ja-jp/documentation/articles/cloud-services-what-is
   [サービス パッケージ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj155995.aspx
   [Azure PowerShell コマンドレット]: https://www.windowsazure.com/ja-jp/develop/php/how-to-guides/powershell-cmdlets/

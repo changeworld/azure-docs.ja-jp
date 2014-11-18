@@ -37,7 +37,7 @@ Cassandra アプリケーション環境で実現できるデプロイ モデル
 
 ![仮想マシンのデプロイ][仮想マシンのデプロイ]
 
-前に示している図では、Thrift トラフィックを許すように構成されたロード バランサーの背後で、4 ノードの Cassandra クラスターが仮想マシン内に展開されています。Azure でホストする PaaS アプリケーションは、言語固有の Thrift ライブラリを使用してクラスターにアクセスします。Java、C#、Node.js、Python、C++ などの言語用のライブラリがあります。2 つ目の図に示されている自立的仮想マシン展開では、仮想マシンでホストされた別のクラウド サービス内部で実行されているアプリケーションによってデータが利用されます。
+前に示している図では、Thrift トラフィックを許すように構成されたロード バランサーの背後で、4 ノードの Cassandra クラスターが仮想マシン内に展開されています。Azure でホストする PaaS アプリケーションは、言語固有の Thrift ライブラリを使用してクラスターにアクセスします。Java、C\#、Node.js、Python、C++ などの言語用のライブラリがあります。2 つ目の図に示されている自立的仮想マシン展開では、仮想マシンでホストされた別のクラウド サービス内部で実行されているアプリケーションによってデータが利用されます。
 
 ## <span id="task1"></span> </a>タスク 1: Linux クラスターのデプロイ
 
@@ -251,7 +251,7 @@ Cassandra には Java 仮想マシンが必要であり、そのため、Ubuntu 
 
 1.  SSH を使用して Linux (Ubuntu) VM インスタンスにログインします。
 
-2.  wget を使用して、ダウンロード ページ (<http://cassandra.apache.org/download/>)[<http://cassandra.apache.org/download/>] に記載されたミラーから Cassandra を ~/downloads ディレクトリに apache-cassandra-bin.tar.gz としてダウンロードします。処理がバージョンに左右されないように、ダウンロードしたファイルの名前にはバージョン番号を含めていないことに注意してください。
+2.  wget を使用して、ダウンロード ページ (http://cassandra.apache.org/download/) に記載されたミラーから Cassandra を ~/downloads ディレクトリに apache-cassandra-bin.tar.gz としてダウンロードします。処理がバージョンに左右されないように、ダウンロードしたファイルの名前にはバージョン番号を含めないようにしてください。
 
 3.  次のコマンドを実行して、tar ball を既定のログイン ディレクトリに展開します。
 
@@ -302,7 +302,7 @@ conf/cassandra.yaml を編集して、**listen\_address** および **rpc\_addre
 
 クラスターのすべてのノードについて、手順 1. から手順 5. までを繰り返します。
 
-これで、個々の VM すべてに必要なソフトウェアが用意されたため、今度はシードを構成してノード間の通信を確立します。マルチノード クラスター構成の詳細については、[][]<http://wiki.apache.org/cassandra/MultinodeCluster></a> にある情報を参照してください。
+これで、個々の VM すべてに必要なソフトウェアが用意されたため、今度はシードを構成してノード間の通信を確立します。マルチノード クラスター構成の詳細については、<http://wiki.apache.org/cassandra/MultinodeCluster> にある情報を参照してください。
 
 **手順 6.マルチノード クラスターのセットアップ**
 
@@ -317,7 +317,7 @@ cassandra.yaml を編集して、すべての VM について次のプロパテ�
 ここで指定した IP アドレスは、新しいノードによってリング トポロジについて知るために使用されます。コンマ区切り形式で、最も信頼できるノードをシードとして設定します: "*host1*,*host2*"。設定例: "hk-ub1,hk-ub2"。
 
 この演習の主眼ではないため、シード サーバーによる既定のトークンをそのまま受け入れます。最適なトークン生成については、python スクリプト(
-[][1]<http://wiki.apache.org/cassandra/GettingStarted></a>) を参照してください。
+<http://wiki.apache.org/cassandra/GettingStarted>) を参照してください。
 
 すべてのノードで Cassandra を再起動して、上記の変更を適用します。
 
@@ -585,8 +585,6 @@ Azure の仮想マシン機能を利用すると、Linux (Microsoft パートナ
   [Generating SSH Key Pair for Linux VM Deployment on Windows Azure (Windows Azure 上の Linux VM デプロイ用の SSH キー ペアの生成)]: http://blogs.msdn.com/b/hanuk/archive/2012/06/07/generating-ssh-key-pair-for-linux-vm-deployment-on-windows-azure.aspx
   [Linux を実行する仮想マシンの作成]: http://www.windowsazure.com/ja-jp/manage/linux/tutorials/virtual-machine-from-gallery/
   [Linux を実行する仮想マシンのイメージをキャプチャする方法]: https://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/capture-an-image/
-  []: http://wiki.apache.org/cassandra/MultinodeCluster
-  [1]: http://wiki.apache.org/cassandra/GettingStarted
   [cassandra-client]: https://github.com/racker/node-cassandra-client
   [行と列]: ./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux3.png
   [Cassandra Query Language (CQL)]: http://cassandra.apache.org/doc/cql/CQL.html

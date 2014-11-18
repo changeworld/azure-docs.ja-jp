@@ -132,7 +132,7 @@ DocumentDB SQL の重要な項目について理解するため、このデー�
 
 -   JSON 値を利用する DocumentDB SQL は、行と列ではなくツリー形式のエンティティを処理します。つまり、この言語では `Node1.Node2.Node3…..Nodem` のようにツリーのノードが任意の深さで参照されます。これは、リレーショナル SQL が `<table>.<column>` という 2 項目参照を実行するのと同様です。
 -   この言語ではスキーマのないデータを扱います。このため、型システムを動的にバインドする必要があります。同じ式でも、ドキュメントが異なれば異なる型が導出される場合があります。このようなクエリ結果は有効な JSON 値ですが、固定スキーマの場合でも有効とは限りません。
--   DocumentDB は厳密な JSON ドキュメントだけをサポートします。つまり、型システムおよび式は、JSON 型のみを扱うように制限されます。詳細については JSON の仕様 (<http://www.json.org/>) を参照してください。
+-   DocumentDB は厳密な JSON ドキュメントだけをサポートします。つまり、型システムおよび式は、JSON 型のみを扱うように制限されます。詳細については JSON の仕様 (http://www.json.org/) を参照してください。
 -   DocumentDB コレクションは、スキーマフリーの JSON ドキュメントのコンテナーです。コレクションにあるドキュメント内およびドキュメント間のデータ エンティティの関係はコンテインメントによって暗黙的にキャプチャされます。PK-FK 関係ではキャプチャされません。これは、このホワイト ペーパーで後述するドキュメント間結合の点で注意すべき要素です。
 
 # DocumentDB のインデックス作成
@@ -153,7 +153,7 @@ DocumentDB SQL 言語について詳しく説明する前に、DocumentDB のイ
 
 -   ストレージの効率性: コスト効率性を実現するため、インデックスのディスク上のストレージ オーバーヘッドは、有限かつ予測可能なものにします。これは、開発者がインデックスのオーバーヘッドとクエリのパフォーマンスを比較して、コストに基づくトレードオフを DocumentDB で実施できるようになるためには必須です。
 
-コレクションのインデックス作成ポリシーの構成方法については、MSDN の DocumentDB のサンプル (<http://code.msdn.microsoft.com/Azure-DocumentDB-NET-Code-6b3da8af#content>) を参照してください。以降は、DocumentDB SQL 言語の詳細を説明していきます。
+コレクションのインデックス作成ポリシーの構成方法については、MSDN の DocumentDB のサンプル (http://code.msdn.microsoft.com/Azure-DocumentDB-NET-Code-6b3da8af\#content) を参照してください。以降は、DocumentDB SQL 言語の詳細を説明していきます。
 
 # DocumentDB クエリの基礎
 
@@ -1438,7 +1438,7 @@ DocumentDB を使用した LINQ クエリ サポートのアーキテクチャ�
 
 .NET オブジェクトと JSON ドキュメント間のマッピングは自然に実行されます。各データ メンバー フィールドが JSON オブジェクトにマップされ、フィールド名がオブジェクトの "key" 部分にマップされ、"value" 部分がオブジェクトの値の部分に再帰的にマップされます。以下の例では、作成された Family オブジェクトが JSON ドキュメントにマップされています。同様に JSON ドキュメントから .NET オブジェクトへのマップも行われています。
 
-**C# クラス**
+**C\# クラス**
 
     public class Family
     {
@@ -1848,7 +1848,7 @@ DocumentDB は、HTTP を介したオープンな RESTful プログラミング 
 
 指定されたクエリを、コレクションで構成されたインデックス作成ポリシーがサポートできない場合、DocumentDB サーバーは 400 "Bad Request" を返します。これは、ハッシュ (等値) 検索用に構成されたパスに対する範囲クエリと、インデックス作成から明示的に除外されたパスのために返されます。`x-ms-documentdb-query-enable-scan` ヘッダーを指定することで、インデックスを利用できない場合のクエリによるスキャン実行を許可することができます。
 
-## C# (.NET) SDK
+## C\# (.NET) SDK
 
 .NET SDK は LINQ クエリと SQL クエリの両方をサポートしています。以下の例は、このドキュメントで前述したシンプルなフィルター クエリを実行する方法を示しています。
 
@@ -1925,7 +1925,7 @@ DocumentDB は、HTTP を介したオープンな RESTful プログラミング 
 
 開発者は、`IDocumentQueryable` を作成することでページ設定を明示的に制御できます。これには `IQueryable` オブジェクトを使用し、次に `ResponseContinuationToken` の値を読み取り、これらを `RequestContinuationToken` として `FeedOptions` 内で渡します。`EnableScanInQuery` を設定することで、構成されたインデックス作成ポリシーでクエリをサポートできない場合に、スキャンを有効にすることができます。
 
-クエリのその他のサンプルについては、DocumentDB の .NET サンプル (<http://code.msdn.microsoft.com/Azure-DocumentDB-NET-Code-6b3da8af#content>) を参照してください。
+クエリのその他のサンプルについては、DocumentDB の .NET サンプル (http://code.msdn.microsoft.com/Azure-DocumentDB-NET-Code-6b3da8af\#content) を参照してください。
 
 ## JavaScript のサーバー側 API
 
@@ -1966,14 +1966,14 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
 # 参照
 
 1.  [Azure DocumentDB の概要][Azure DocumentDB の概要]
-2.  DocumentDB SQL 言語の仕様 (<http://go.microsoft.com/fwlink/p/?LinkID=510612>)
-3.  DocumentDB の .NET サンプル (<http://code.msdn.microsoft.com/Azure-DocumentDB-NET-Code-6b3da8af#content>)
+2.  DocumentDB SQL 言語の仕様 (http://go.microsoft.com/fwlink/p/?LinkID=510612)
+3.  DocumentDB の .NET サンプル (http://code.msdn.microsoft.com/Azure-DocumentDB-NET-Code-6b3da8af\#content)
 4.  [DocumentDB の一貫性レベル][DocumentDB の一貫性レベルに関する記事]
-5.  ANSI SQL 2011 - [][]<http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681></a>
-6.  JSON [][1]<http://json.org/></a>
-7.  Javascript 仕様 [][2]<http://www.ecma-international.org/publications/standards/Ecma-262.htm></a>
-8.  LINQ [][3]<http://msdn.microsoft.com/ja-jp/library/bb308959.aspx></a>
-9.  大規模なデータベース向けのクエリ評価技術 [][4]<http://dl.acm.org/citation.cfm?id=152611></a>
+5.  ANSI SQL 2011 - <http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681>
+6.  JSON <http://json.org/>
+7.  Javascript 仕様 <http://www.ecma-international.org/publications/standards/Ecma-262.htm>
+8.  LINQ <http://msdn.microsoft.com/ja-jp/library/bb308959.aspx>
+9.  大規模なデータベース向けのクエリ評価技術 <http://dl.acm.org/citation.cfm?id=152611>
 10. 「Query Processing in Parallel Relational Database Systems」(IEEE Computer Society Press、1994 年)
 11.  「Query Processing in Parallel Relational Database Systems」(Lu、Ooi、Tan、IEEE Computer Society Press、1994 年)
 12. 「Pig Latin: A Not-So-Foreign Language for Data Processing」(Christopher Olston、Benjamin Reed、Utkarsh Srivastava、Ravi Kumar、Andrew Tomkins、SIGMOD、2008 年)
@@ -1982,8 +1982,3 @@ DocumentDB が提供するプログラミング モデルでは、ストアド �
   [0]: ./media/documentdb-sql-query/sql-query1.png
   [DocumentDB の一貫性レベルに関する記事]: ../documentdb-consistency-levels
   [Azure DocumentDB の概要]: ../documentdb-introduction
-  [0]: http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681
-  [1]: http://json.org/
-  [2]: http://www.ecma-international.org/publications/standards/Ecma-262.htm
-  [3]: http://msdn.microsoft.com/ja-jp/library/bb308959.aspx
-  [4]: http://dl.acm.org/citation.cfm?id=152611

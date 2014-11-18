@@ -20,8 +20,8 @@
 
 このトピックでコードを使用するためには次の操作を行う必要があります。
 
-1.  Twilio アカウントと認証トークンを取得します。Twilio を利用するには、[][]<https://www.twilio.com/try-twilio></a> でサインアップします。[][1]<http://www.twilio.com/pricing></a> で価格を検討することができます。Twilio から提供される API の詳細については、[][2]<http://www.twilio.com/voice/api></a> を参照してください。
-2.  使用する電話番号を Twilio で確認します。電話番号を確認する方法については、[][3]<https://www.twilio.com/user/account/phone-numbers/verified>\#</a> を参照してください。既存の番号を使用する代わりに、Twilio 電話番号を購入することができます。
+1.  Twilio アカウントと認証トークンを取得します。Twilio を利用するには、[https://www.twilio.com/try-twilio][https://www.twilio.com/try-twilio] でサインアップします。<http://www.twilio.com/pricing> で価格を検討することができます。Twilio から提供される API の詳細については、<http://www.twilio.com/voice/api> を参照してください。
+2.  使用する電話番号を Twilio で確認します。電話番号を確認する方法については、<https://www.twilio.com/user/account/phone-numbers/verified#> を参照してください。既存の番号を使用する代わりに、Twilio 電話番号を購入することができます。
     この例では、Twilio サンドボックス電話番号を使用して、有効な電話番号にメッセージを送信します。サンドボックス電話番号を使用するだけで、有効な電話番号に送信できます。
 3.  Twilio .NET ライブラリを Web ロールに追加します。このトピックの「Twilio ライブラリを Web ロール プロジェクトに追加するには」のセクションを参照してください。
 
@@ -149,7 +149,7 @@ Azure での基本的な Web ロールの作成について詳しく理解して
 
 ![Twilio および ASP.NET を使用した Azure 通話応答][Twilio および ASP.NET を使用した Azure 通話応答]
 
-TwiML の詳細については、[][4]<http://www.twilio.com/docs/api/twiml></a> を参照してください。\<Say\> およびその他の Twilio 動詞の詳細については、[][5]<http://www.twilio.com/docs/api/twiml/say></a> を参照してください。
+TwiML の詳細については、<http://www.twilio.com/docs/api/twiml> を参照してください。\<Say\> およびその他の Twilio 動詞の詳細については、<http://www.twilio.com/docs/api/twiml/say> を参照してください。
 
 ## <span id="nextsteps"></span></a>次のステップ
 
@@ -157,8 +157,8 @@ Azure の ASP.NET Web ロールで Twilio を使用した基本機能を示す�
 
 -   Web フォームを使用する代わりに、Azure BLOB ストレージまたは Azure SQL データベース インスタンスを使用して、電話番号と通話テキストを保存できます。Azure での BLOB の使用に関する詳細については、「[.NET での Azure BLOB ストレージ サービスの使用方法][.NET での Azure BLOB ストレージ サービスの使用方法]」を参照してください。SQL データベースの使用の詳細については、「[.NET アプリケーションでの Azure SQL データベースの使用方法][.NET アプリケーションでの Azure SQL データベースの使用方法]」を参照してください。
 -   RoleEnvironment.getConfigurationSettings を使用すると、Twilio アカウント ID と認証トークンは、その値をフォーム内にハードコーディングするのではなく、デプロイの構成設定から取得できます。RoleEnvironment クラスの詳細については、「[Microsoft.WindowsAzure.ServiceRuntime 名前空間][Microsoft.WindowsAzure.ServiceRuntime 名前空間]」を参照してください。
--   また、Twilio に関するセキュリティ ガイドライン ([][6]<https://www.twilio.com/docs/security></a>) も参照してください。
--   Twilio の詳細については、[][7]<https://www.twilio.com/docs></a> を参照してください。
+-   また、Twilio に関するセキュリティ ガイドライン ([https://www.twilio.com/docs/security][https://www.twilio.com/docs/security]) も参照してください。
+-   Twilio の詳細については、[https://www.twilio.com/docs][https://www.twilio.com/docs] を参照してください。
 
 ## <a name="seealso"></a>関連項目
 
@@ -170,16 +170,11 @@ Azure の ASP.NET Web ロールで Twilio を使用した基本機能を示す�
   [方法: 通話するためにコードを作成する]: #howtocreatecode
   [次のステップ]: #nextsteps
   [関連項目]: #seealso
-  []: http://www.twilio.com/try-twilio
-  [1]: http://www.twilio.com/pricing
-  [2]: http://www.twilio.com/voice/api
-  [3]: https://www.twilio.com/user/account/phone-numbers/verified#
+  [https://www.twilio.com/try-twilio]: http://www.twilio.com/try-twilio
   [Twilio および ASP.NET を使用した Azure 通話応答]: ./media/partner-twilio-cloud-services-dotnet-phone-call-web-role/WA_twilio_dotnet_basic_form_output.png
-  [4]: http://www.twilio.com/docs/api/twiml
-  [5]: http://www.twilio.com/docs/api/twiml/say
   [.NET での Azure BLOB ストレージ サービスの使用方法]: https://www.windowsazure.com/ja-jp/develop/net/how-to-guides/blob-storage/
   [.NET アプリケーションでの Azure SQL データベースの使用方法]: https://www.windowsazure.com/ja-jp/develop/net/how-to-guides/sql-database/
   [Microsoft.WindowsAzure.ServiceRuntime 名前空間]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.serviceruntime.aspx
-  [6]: http://www.twilio.com/docs/security
-  [7]: http://www.twilio.com/docs
+  [https://www.twilio.com/docs/security]: http://www.twilio.com/docs/security
+  [https://www.twilio.com/docs]: http://www.twilio.com/docs
   [Azure から音声および SMS 機能に Twilio を使用する方法]: ../twilio-dotnet-how-to-use-for-voice-sms/

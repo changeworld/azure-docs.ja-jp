@@ -57,7 +57,7 @@ Apache Ambari は、Apache Hadoop クラスターのプロビジョニング、�
 ### <a name="avro"></a>Avro (Microsoft .NET Library for Avro)
 
 Microsoft .NET Library for Avro は、Microsoft.NET 環境向けのシリアル化のために、Apache Avro のコンパクトなバイナリ データ交換形式を実装します。Avro は、[JSON][JSON] を使用して、言語の相互運用性を保証する、言語に依存しないスキーマを定義します。これは、ある言語でシリアル化されたデータを別の言語で読むことができることを意味します。この形式の詳細については、[Apache Avro の仕様][Apache Avro の仕様]を参照してください。
-Avro ファイルの形式は、分散 MapReduce プログラミング モデルをサポートしています。ファイル内の任意のポイントを検索し、特定のブロックから読み取りを開始できるという意味で、ファイルは "分割可能" です。詳細については、「[Microsoft .NET Library for Avro を使用したデータのシリアル化][Microsoft .NET Library for Avro を使用したデータのシリアル化]」を参照してください。
+Avro ファイルの形式は、分散型 MapReduce プログラミング モデルをサポートします。ファイル内の任意のポイントを検索し、特定のブロックから読み取りを開始できるという意味で、ファイルは "分割可能" です。詳細については、「[Microsoft .NET Library for Avro を使用したデータのシリアル化][Microsoft .NET Library for Avro を使用したデータのシリアル化]」を参照してください。
 
 ### <a name="hbase"></a>HBase
 
@@ -101,7 +101,7 @@ MapReduce の詳細については、Hadoop Wiki で「[MapReduce][MapReduce]」
 
 ### <a name="zookeeper"></a>Zookeeper
 
-[Apache Zookeeper][Apache Zookeeper] は、データ レジスタ (znode) の共有階層名前空間を使用して、大規模な分散システムのプロセスを調整します。znode には、状態、場所、構成など、プロセスを調整するのに必要な少量のメタ情報が含まれます。
+[Apache Zookeeper][Apache Zookeeper] は、データ レジスタ (znode) の共有階層名前空間を使用して、大規模な分散システムのプロセスを調整します。Znodes には、状態、場所、構成など、プロセスの調整に必要なメタ情報が少量含まれます。
 
 ### <a name="bi"></a>ビジネス インテリジェンス ツール
 

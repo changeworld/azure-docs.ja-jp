@@ -62,18 +62,18 @@ OpenSSH の秘密キーは `openssl` ユーティリティで直接読み取る�
 
 ### msysgit を使用する
 
-1.  次の場所から msysgit をダウンロードしてインストールします: [][]<http://msysgit.github.com/></a>
+1.  次の場所から msysgit をダウンロードしてインストールします: <http://msysgit.github.com/>
 2.  インストールしたディレクトリ (c:\\msysgit\\msys.exe など) から `msys` を実行します。
 3.  「`cd bin`」と入力し、`bin` ディレクトリに移動します。
 
 ### Windows 用の GitHub を使用する
 
-1.  次の場所から Windows 用の GitHub をダウンロードしてインストールします: [][1]<http://windows.github.com/></a>
+1.  次の場所から Windows 用の GitHub をダウンロードしてインストールします: <http://windows.github.com/>
 2.  [スタート] メニューをクリックし、[すべてのプログラム]、[GitHub] の順にクリックして、Git シェルを実行します。
 
 ### cygwin を使用する
 
-1.  次の場所から Cygwin をダウンロードしてインストールします: [][2]<http://cygwin.com/></a>
+1.  次の場所から Cygwin をダウンロードしてインストールします: <http://cygwin.com/>
 2.  OpenSSL パッケージとその依存パッケージがすべてインストールされていることを確認します。
 3.  `cygwin` を実行します。
 
@@ -96,7 +96,7 @@ OpenSSH の秘密キーは `openssl` ユーティリティで直接読み取る�
 
 ## Putty 用の PPK を作成する
 
-1.  次の場所から Puttygen をダウンロードしてインストールします: [][3]<http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html></a>
+1.  次の場所から Puttygen をダウンロードしてインストールします: <http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html>
 
 2.  Puttygen は、以前作成された秘密キー (`myPrivateKey.key`) を読み取ることができない可能性があります。それを Puttygen で認識できる RSA 秘密キーに変換するには、次のコマンドを使用してください。
 
@@ -125,7 +125,7 @@ OpenSSH の秘密キーは `openssl` ユーティリティで直接読み取る�
 
 ## Putty を使用して Linux 仮想マシンに接続する
 
-1.  次の場所から putty をダウンロードしてインストールします: [][3]<http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html></a>
+1.  次の場所から putty をダウンロードしてインストールします: <http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html>
 2.  putty.exe を実行します。
 3.  ホスト名として、管理ポータルの IP を入力します。
 
@@ -133,16 +133,12 @@ OpenSSH の秘密キーは `openssl` ユーティリティで直接読み取る�
 
 4.  **[Open]** をクリックする前に、[Connection]、[SSH]、[Auth] タブの順にクリックして、自分のキーを選択します。入力するフィールドについては、下図を参照してください。
 
-    ![linuxputtyprivatekey][4]
+    ![linuxputtyprivatekey][1]
 
 5.  **[Open]** をクリックして、仮想マシンに接続します。
 
-  []: http://msysgit.github.com/
-  [1]: http://windows.github.com/
-  [2]: http://cygwin.com/
   [linuxwelcomegit]: ./media/virtual-machines-linux-use-ssh-key/linuxwelcomegit.png
-  [3]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
   [linuxgoodforeignkey]: ./media/virtual-machines-linux-use-ssh-key/linuxgoodforeignkey.png
   [linuxputtyprivatekey]: ./media/virtual-machines-linux-use-ssh-key/linuxputtygenprivatekey.png
   [linuxputtyconfig]: ./media/virtual-machines-linux-use-ssh-key/linuxputtyconfig.png
-  [4]: ./media/virtual-machines-linux-use-ssh-key/linuxputtyprivatekey.png
+  [1]: ./media/virtual-machines-linux-use-ssh-key/linuxputtyprivatekey.png

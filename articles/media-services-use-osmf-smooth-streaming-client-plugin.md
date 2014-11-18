@@ -329,7 +329,7 @@ OSMF プラグインは、静的 (コンパイル時) または動的 (実行時
 OSMF 用スムーズ ストリーミング動的プラグインには、[Strobe Media Playback (SMP)][Strobe Media Playback (SMP)] との互換性があります。OSMF 用 SS プラグインを使用すると、スムーズ ストリーミング コンテンツ再生機能を SMP に追加することができます。これには、"MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" を Web サーバーにコピーし、次に示す手順を使用して HTTP 読み込みを行ってください。
 
 1.  [Strobe Media Playback セットアップ ページ][Strobe Media Playback セットアップ ページ]に移動します。
-2.  [src] をスムーズ ストリーミング ソース ("<http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest>" など) に設定します。
+2.  [src] をスムーズ ストリーミング ソース (「http://devplatem.vo.msecnd.net/Sintel/Sintel\_H264.ism/manifest」など) に設定します。
 3.  必要な構成変更を行い、[Preview and Update] をクリックします。
 
     **注**: コンテンツ Web サーバーには有効な crossdomain.xml が必要です。

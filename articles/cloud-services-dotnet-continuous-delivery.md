@@ -5,16 +5,10 @@
 # Azure でのクラウド サービスの継続的な配信
 
 この記事のプロセスでは、Azure クラウド アプリケーションの継続的な配信を設定する方法について説明します。
-このプロセスを使用すると、
-パッケージを作成し、すべてのコードをチェックインした後に
-パッケージを Azure に自動的にデプロイできます。
-この記事で説明するパッケージのビルド プロセスは Visual Studio の Package
-コマンドに対応し、発行手順は Visual Studio の Publish コマンドに対応します。
-この記事では、MSBuild コマンド ライン ステートメントと
- Windows PowerShell スクリプトを使用してビルド サーバーを作成するための
-いくつかの方法を紹介し、オプションで Visual Studio Team Foundation Server を
-構成する方法 (MSBuild コマンドと PowerShell スクリプトを使用するための
-チーム ビルド定義) について説明します。このプロセスは、ビルド環境や Azure ターゲット環境に合わせてカスタマイズできます。
+このプロセスを使用すると、自動的にパッケージを作成し、コードをチェックインするたびにそのパッケージを Azure に展開できます。
+この記事で説明するパッケージのビルド プロセスは、Visual Studio の Package コマンドに対応し、発行手順は、Visual Studio の Publish コマンドに対応します。
+この記事では、MSBuild コマンド ライン ステートメントと Windows PowerShell スクリプトを使用してビルド サーバーを作成するためのいくつかの方法を紹介し、オプションで Visual Studio Team Foundation Server を構成する方法 (MSBuild コマンドと PowerShell スクリプトを使用するためのチーム ビルド定義) について説明します。
+このプロセスは、ビルド環境や Azure ターゲット環境に合わせてカスタマイズできます。
 
 また、Visual Studio Online (Azure でホストされる TFS のバージョン) を使用すると、これらの操作をより簡単に実行できます。詳細については、「[Continuous Delivery to Azure by Using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)][Continuous Delivery to Azure by Using Visual Studio Online (Visual Studio Online を使用した Azure への継続的な配信)]」を参照してください。
 
@@ -45,7 +39,8 @@ Team Foundation ビルド サービスを使用してビルド サーバーを�
     このファイルは、Visual Studio がインストールされているコンピューターの C:\\\\Program Files
     (x86)\\\\MSBuild\\\\Microsoft\\\\VisualStudio\\\\v11.0\\\\WebApplications (Visual Studio 2013 の場合は v12.0) ディレクトリに含まれています。
     このファイルを、ビルド サーバー上の同じディレクトリにコピーします。
-5.  [Azure Tools for Visual Studio][Azure Libraries] をインストールします。Visual Studio 2012 のプロジェクトのビルドには WindowsAzureTools.VS110.exe、Visual Studio 2013 のプロジェクトのビルドには WindowsAzureTools.VS120.exe を探して使用します。
+5.  [Azure Tools for Visual Studio][Azure Libraries] をインストールします。
+    Visual Studio 2012 のプロジェクトのビルドには WindowsAzureTools.VS110.exe、Visual Studio 2013 のプロジェクトのビルドには WindowsAzureTools.VS120.exe を探して使用します。
 
 ## <a name="step2"> </a><span class="short-header">MSBuild を使用してパッケージをビルドする</span>手順 2: MSBuild コマンドを使用してパッケージをビルドする
 
@@ -257,7 +252,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
     または、Azure の管理ポータルを使用して、証明書ファイル PFX を秘密キーと共にエクスポートし、
     証明書を各ターゲット クラウド サービスにアップロードすることもできます。
     詳細については、
-    <http://msdn.microsoft.com/ja-jp/library/windowsazure/gg443832.aspx> を参照してください。
+    [http://msdn.microsoft.com/ja-jp/library/windowsazure/gg443832.aspx][http://msdn.microsoft.com/ja-jp/library/windowsazure/gg443832.aspx] を参照してください。
 
     **配置のアップグレードと、配置の削除後に新しい配置を作成する操作**
 

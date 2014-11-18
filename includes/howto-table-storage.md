@@ -26,7 +26,7 @@ Azure Table ストレージ サービスは、大量の構造化データを
 
 -   **URL 形式:** 次のアドレス形式を使用してアカウントのテーブルのアドレスを
     記述します。
-    <http://>`<storage account>`.table.core.windows.net/`<table>`
+    http://`<storage account>`.table.core.windows.net/`<table>`
 
     このアドレスを OData プロトコルで使用して、Azure テーブルを直接
     アドレス指定できます。詳細については、[OData.org の Web サイト][OData.org の Web サイト]を参照してください。

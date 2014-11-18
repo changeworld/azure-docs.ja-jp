@@ -2,11 +2,11 @@
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/15/2014" ms.author="qixia" />
 
-# HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発
+# HDInsight の Storm で SCP.NET と C\# を使用したストリーミング データ処理アプリケーションの開発
 
 ## SCP の概要
 
-SCP は、リアルタイムで、信頼性が高く、整合性のとれた高パフォーマンスのデータ処理アプリケーションを構築するためのプラットフォームです。OSS コミュニティが設計したストリーム処理システムである Storm (<http://storm.incubator.apache.org/>) を基に構築されています。Storm は Nathan Marz によって設計され、Twitter によってオープン ソース化されています。別の Apache プロジェクトである ZooKeeper (<http://zookeeper.apache.org/>) を利用して、信頼性の高い分散調整および状態管理を実現しています。
+SCP は、リアルタイムで、信頼性が高く、整合性のとれた高パフォーマンスのデータ処理アプリケーションを構築するためのプラットフォームです。OSS コミュニティによって設計されたストリーム処理システムである Storm (http://storm.incubator.apache.org/) の上に構築されています。Storm は Nathan Marz によって設計され、Twitter によってオープン ソース化されています。信頼性の高い分散化した調整と状態管理を実現するために、別の Apache プロジェクトである ZooKeeper (http://zookeeper.apache.org/) を利用しています。
 
 SCP プロジェクトでは、Storm を Windows に移植しただけでなく、Windows エコシステム向けの拡張機能とカスタマイズを追加しました。拡張機能には .NET 開発者の経験が活かされており、ライブラリが含まれています。カスタマイズには Windows ベースのデプロイメントが含まれています。
 
@@ -62,7 +62,7 @@ ISCPSpout は非トランザクション スパウト用のインターフェイ
         void Fail(long seqId, Dictionary<string, Object> parms);
     }  
 
-NextTuple() が呼び出されると、C# ユーザー コードで 1 つまたは複数のタプルを出力できます。出力するものがない場合、このメソッドは何も出力せずに戻ります。NextTuple()、Ack()、および Fail() はすべて、C# プロセスの単一スレッドの厳密なループで呼び出されることに注意してください。出力するタプルがない場合は、CPU が浪費されないように、NextTuple を短時間 (10 ミリ秒など) スリープにすることをお勧めします。
+NextTuple() が呼び出されると、C\# ユーザー コードで 1 つまたは複数のタプルを出力できます。出力するものがない場合、このメソッドは何も出力せずに戻ります。NextTuple()、Ack()、および Fail() はすべて、C\# プロセスの単一スレッドの厳密なループで呼び出されることに注意してください。出力するタプルがない場合は、CPU が浪費されないように、NextTuple を短時間 (10 ミリ秒など) スリープにすることをお勧めします。
 
 Ack() と Fail() は、spec ファイルで ACK メカニズムが有効である場合にのみ呼び出されます。"seqId" は、確認されたか失敗したタプルを特定するために使用されます。そのため、ACK が非トランザクション トポロジで有効である場合は、スパウトで次の emit 関数を使用する必要があります。
 
@@ -94,7 +94,7 @@ ISCPTxSpout はトランザクション スパウト用のインターフェイ�
         void Fail(long seqId, Dictionary<string, Object> parms);
     }  
 
-非トランザクション スパウトの場合と同様に、NextTx()、Ack()、および Fail() はすべて、C# プロセスの単一スレッドの厳密なループで呼び出されます。出力するデータがない場合は、CPU が浪費されないように、NextTuple を短時間 (10 ミリ秒) スリープにすることをお勧めします。
+非トランザクション スパウトの場合と同様に、NextTx()、Ack()、および Fail() はすべて、C\# プロセスの単一スレッドの厳密なループで呼び出されます。出力するデータがない場合は、CPU が浪費されないように、NextTuple を短時間 (10 ミリ秒) スリープにすることをお勧めします。
 
 NextTx() は、呼び出されると、新しいトランザクションを開始し、出力パラメーター "seqId" を使用してトランザクションを特定します。このパラメーターは、Ack() と Fail() でも使用されます。NextTx() では、ユーザーがデータを Java 側に出力できます。このデータは、再生をサポートするために ZooKeeper に格納されます。ZooKeeper の能力は限定的であるため、ユーザーはトランザクション スパウトでメタデータのみを出力し、大量のデータを出力しないようにする必要があります。
 
@@ -122,7 +122,7 @@ SCP.NET は、開発者がプログラムに使用できる重要なオブジェ
 
 ### Context
 
-Context は、アプリケーションに実行環境を提供します。各 ISCPPlugin インスタンス (ISCPSpout/ISCPBolt/ISCPTxSpout/ISCPBatchBolt) には対応する Context インスタンスがあります。Context が提供する機能は、次の 2 つに分かれています。(1) C# プロセス全体で使用できる静的部分、(2) 特定の Context インスタンスのみが使用できる動的部分。
+Context は、アプリケーションに実行環境を提供します。各 ISCPPlugin インスタンス (ISCPSpout/ISCPBolt/ISCPTxSpout/ISCPBatchBolt) には対応する Context インスタンスがあります。Context が提供する機能は、次の 2 つに分かれています。(1) C\# プロセス全体で使用できる静的部分、(2) 特定の Context インスタンスのみが使用できる動的部分。
 
 #### 静的部分
 
@@ -133,7 +133,7 @@ Context は、アプリケーションに実行環境を提供します。各 IS
 
 "Logger" は、ログ目的で提供されています。
 
-"pluginType" は、C# プロセスのプラグインの種類を示すために使用します。C# プロセスをローカル テスト モード (Java なし) で実行する場合、プラグインの種類は "SCP\_NET\_LOCAL" です。
+"pluginType" は、C\# プロセスのプラグインの種類を示すために使用します。C\# プロセスをローカル テスト モード (Java なし) で実行する場合、プラグインの種類は "SCP\_NET\_LOCAL" です。
 
     public enum SCPPluginType
     {
@@ -144,7 +144,7 @@ Context は、アプリケーションに実行環境を提供します。各 IS
         SCP_NET_BATCH_BOLT = 4
     }  
 
-"Config" は、Java 側の構成パラメーターを取得するためのものです。このパラメーターは、C# プラグインが初期化されると Java 側から渡されます。"Config" パラメーターは、"stormConf" と "pluginConf" の 2 つに分かれています。
+"Config" は、Java 側の構成パラメーターを取得するためのものです。このパラメーターは、C\# プラグインが初期化されると Java 側から渡されます。"Config" パラメーターには、次の 2 つの部分があります。"stormConf" と "pluginConf" です。
 
     public Dictionary<string, Object> stormConf { get; set; }
     public Dictionary<string, Object> pluginConf { get; set; }  
@@ -299,9 +299,9 @@ SCPRuntime は、次の 2 つのメソッドを提供します。
 
         public static void LaunchPlugin(newSCPPlugin createDelegate);
 
-Initialize() は、SCP ランタイム環境を初期化するために使用します。このメソッドでは、C# プロセスで Java 側に接続し、構成パラメーターとトポロジ コンテキストを取得します。
+Initialize() は、SCP ランタイム環境を初期化するために使用します。このメソッドでは、C\# プロセスで Java 側に接続し、構成パラメーターとトポロジ コンテキストを取得します。
 
-LaunchPlugin() は、メッセージ処理ループを開始するために使用します。このループでは、C# プラグインが Java 側から (タプルと制御信号を含む) メッセージを受信し、おそらくユーザー コードで指定されているインターフェイス メソッドを呼び出して、メッセージを処理します。LaunchPlugin() メソッドの入力パラメーターは、ISCPSpout/IScpBolt/ISCPTxSpout/ISCPBatchBolt インターフェイスを実装するオブジェクトを返すことができるデリゲートです。
+LaunchPlugin() は、メッセージ処理ループを開始するために使用します。このループでは、C\# プラグインが Java 側から (タプルと制御信号を含む) メッセージを受信し、おそらくユーザー コードで指定されているインターフェイス メソッドを呼び出して、メッセージを処理します。LaunchPlugin() メソッドの入力パラメーターは、ISCPSpout/IScpBolt/ISCPTxSpout/ISCPBatchBolt インターフェイスを実装するオブジェクトを返すことができるデリゲートです。
 
     public delegate ISCPPlugin newSCPPlugin(Context ctx, Dictionary<string, Object> parms);  
 
@@ -309,7 +309,7 @@ ISCPBatchBolt では、"parms" の "StormTxAttempt" を取得し、それを使�
 
 一般的には、SCP プラグインは次の 2 つのモードで実行できます。
 
-1.  ローカル テスト モード: このモードでは、SCP プラグイン (C# ユーザー コード) は、開発フェーズ中は Visual Studio 内で実行されます。"LocalContext" はこのモードで使用することができます。出力されたタプルをローカル ファイルにシリアル化して、メモリに読み取ります。
+1.  ローカル テスト モード: このモードでは、SCP プラグイン (C\# ユーザー コード) は、開発フェーズ中は Visual Studio 内で実行されます。"LocalContext" はこのモードで使用することができます。出力されたタプルをローカル ファイルにシリアル化して、メモリに読み取ります。
 
         public interface ILocalContext
         {
@@ -348,7 +348,7 @@ ISCPBatchBolt では、"parms" の "StormTxAttempt" を取得し、それを使�
 
 ## トポロジ仕様言語
 
-SCP Topology Specification は、SCP トポロジを記述、構成するためのドメイン固有の言語です。Storm の Clojure DSL ([][]<http://storm.incubator.apache.org/documentation/Clojure-DSL.html></a>) を基にし、SCP によって拡張されています。
+SCP Topology Specification は、SCP トポロジを記述、構成するためのドメイン固有の言語です。Storm の Clojure DSL (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) を基にし、SCP によって拡張されています。
 
 トポロジの仕様は、***runspec*** コマンドを介して Storm クラスターに直接送信されて実行されます。
 
@@ -358,14 +358,14 @@ SCP Topology Specification は、SCP トポロジを記述、構成するため�
 |------------------------|---------------|--------------------------------------------------------------------------------------------------------------------|
 | **tx-topolopy**        | topology-name 
                            spout-map     
-                           bolt-map      | トポロジ名、スパウト定義マップ、およびボルト定義マップでトランザクション トポロジを定義します。                    |
+                          bolt-map       | トポロジ名、スパウト定義マップ、およびボルト定義マップでトランザクション トポロジを定義します。                    |
 | **scp-tx-spout**       | exec-name     
-                           args          
-                           fields        | トランザクション スパウトを定義します。***args*** を使用して ***exec-name*** でアプリケーションを実行します。      
+                          args           
+                          fields         | トランザクション スパウトを定義します。***args*** を使用して ***exec-name*** でアプリケーションを実行します。      
                                           ***fields*** はスパウトの出力フィールドです。                                                                       |
 | **scp-tx-batch-bolt**  | exec-name     
-                           args          
-                           fields        | トランザクション バッチ ボルトを定義します。***args*** を使用して ***exec-name*** でアプリケーションを実行します。 
+                          args           
+                          fields         | トランザクション バッチ ボルトを定義します。***args*** を使用して ***exec-name*** でアプリケーションを実行します。 
                                           Fields はボルトの出力フィールドです。                                                                               |
 | **scp-tx-commit-bolt** | exec-name     
                           args           
@@ -401,7 +401,7 @@ SCP.NET には次のキーワードが定義されています。
 
 | パラメーター                       | 説明                                            |
 |------------------------------------|-------------------------------------------------|
-| **"plugin.name"**                  | C# プラグインの exe ファイル名                 |
+| **"plugin.name"**                  | C\# プラグインの exe ファイル名                 |
 | **"plugin.args"**                  | プラグイン引数                                  |
 | **"output.schema"**                | 出力スキーマ                                    |
 | **"nontransactional.ack.enabled"** | ACK が非トランザクション トポロジで有効かどうか |
@@ -412,7 +412,7 @@ runspec コマンドはビットと共にデプロイされます。次のよう
     usage: runSpec [spec-file target-dir [resource-dir] [-cp classpath]]
      ex: runSpec examples\HelloWorld\HelloWorld.spec specs examples\HelloWorld\Target
 
-***resource-dir*** パラメーターは省略可能です。C# アプリケーションを組み込む場合は指定する必要があり、このディレクトリにはアプリケーション、依存関係、および構成が含まれます。
+***resource-dir*** パラメーターは省略可能です。C\# アプリケーションを組み込む場合は指定する必要があり、このディレクトリにはアプリケーション、依存関係、および構成が含まれます。
 
 ***classpath*** パラメーターも省略可能です。spec ファイルに Java スパウトまたはボルトが含まれている場合に、Java classpath を指定するために使用します。
 
@@ -420,7 +420,7 @@ runspec コマンドはビットと共にデプロイされます。次のよう
 
 ### 入力スキーマと出力スキーマの宣言
 
-ユーザーは C# プロセスでタプルを出力できます。プラットフォームはそのタプルを byte[] にシリアル化し、Java 側に転送する必要があり、Storm はこのタプルをターゲットに転送します。その一方で、ダウンストリーム コンポーネントでは、C# プロセスが Java 側からタプルを受信し、プラットフォーム別に元の型に変換します。これらの操作はすべてプラットフォームによってバックグランドで実行されます。
+ユーザーは C\# プロセスでタプルを出力できます。プラットフォームはそのタプルを byte[] にシリアル化し、Java 側に転送する必要があり、Storm はこのタプルをターゲットに転送します。その一方で、ダウンストリーム コンポーネントでは、C\# プロセスが Java 側からタプルを受信し、プラットフォーム別に元の型に変換します。これらの操作はすべてプラットフォームによってバックグランドで実行されます。
 
 シリアル化と非シリアル化をサポートするためには、ユーザー コードで入力と出力のスキーマを宣言する必要があります。
 
@@ -447,7 +447,7 @@ Context オブジェクトには、次の API を追加しました。
 
 SCP では、同時に複数の異なるストリームから出力または受信するユーザー コードをサポートしています。このサポートは Context オブジェクトに反映されており、Emit メソッドは省略可能なストリーム ID パラメーターを受け取ります。
 
-SCP.NET Context オブジェクトに 2 つのメソッドが追加されました。これらのメソッドは、タプルを出力して StreamId を指定するために使用します。StreamId は文字列で、C# とトポロジ定義の仕様の両方で一貫している必要があります。
+SCP.NET Context オブジェクトに 2 つのメソッドが追加されました。これらのメソッドは、タプルを出力して StreamId を指定するために使用します。StreamId は文字列で、C\# とトポロジ定義の仕様の両方で一貫している必要があります。
 
         /* Emit tuple to the specific stream. */
         public abstract void Emit(string streamId, List<object> values);
@@ -478,7 +478,7 @@ SCP.NET はカスタマイズしたグループ化メソッドを追加しまし
 
 ### ハイブリッド トポロジ
 
-ネイティブ Storm は Java で記述されています。SCP プロジェクトの最も重要な機能は、ビジネス ロジックを処理する C# コードを記述できることです。ただし、C# のスパウトとボルトだけでなく、Java のスパウトとボルトも含まれるハイブリッド トポロジもサポートしています。
+ネイティブ Storm は Java で記述されています。SCP プロジェクトの最も重要な機能は、ビジネス ロジックを処理する C\# コードを記述できることです。ただし、C\# のスパウトとボルトだけでなく、Java のスパウトとボルトも含まれるハイブリッド トポロジもサポートしています。
 
 #### spec ファイルでの Java スパウトとボルトの指定
 
@@ -500,9 +500,9 @@ Java スパウトまたはボルトを含むトポロジを送信する場合は
 
 #### Java と C の間のシリアル化と非シリアル化
 
-ハイブリッド トポロジでは、Java 側での任意のオブジェクトのシリアル化と C# 側での逆シリアル化およびその逆をサポートする必要があります。**現在、Java スパウトと C# ボルトのみをサポートしています**。追加の拡張機能は今後のリリースで予定されています。
+ハイブリッド トポロジでは、Java 側での任意のオブジェクトのシリアル化と C\# 側での逆シリアル化およびその逆をサポートする必要があります。**現在、Java スパウトと C\# ボルトのみをサポートしています**。追加の拡張機能は今後のリリースで予定されています。
 
-まず、Java 側でのシリアル化と C# 側での逆シリアル化の既定の実装を提供します。Java 側のシリアル化メソッドは、spec ファイルで次のように指定できます。
+まず、Java 側でのシリアル化と C\# 側での逆シリアル化の既定の実装を提供します。Java 側のシリアル化メソッドは、spec ファイルで次のように指定できます。
 
       (scp-bolt
         {
@@ -512,7 +512,7 @@ Java スパウトまたはボルトを含むトポロジを送信する場合は
           "customized.java.serializer" ["microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer"]
         })  
 
-C# 側の逆シリアル化メソッドは、次のように C# ユーザー コードで指定する必要があります。
+C\# 側の逆シリアル化メソッドは、次のように C\# ユーザー コードで指定する必要があります。
 
     Dictionary<string, List<Type>> inputSchema = new Dictionary<string, List<Type>>();
     inputSchema.Add("default", new List<Type>() { typeof(Person) });
@@ -528,7 +528,7 @@ Java 側でのシリアル化インターフェイスは、次のように定義
         public List<ByteBuffer> serialize(List<Object> objectList);
     }  
 
-C# 側での逆シリアル化インターフェイスは、次のように定義します。
+C\# 側での逆シリアル化インターフェイスは、次のように定義します。
 
     public interface ICustomizedInteropCSharpDeserializer
     {
@@ -560,7 +560,7 @@ C# 側での逆シリアル化インターフェイスは、次のように定�
 
 HelloWorld は、SCP.Net を体験できる非常に簡単な例です。"generator" というスパウトと、"splitter" と "counter" という 2 つのボルトを持つ非トランザクション トポロジを使用します。"generator" スパウトは、複数の文を無作為に生成し、それらの文を "splitter" に出力します。"splitter" ボルトは、文を単語に分割し、それらの単語を "counter" ボルトに出力します。"counter" ボルトはディクショナリを使用して、各単語の出現回数を記録します。
 
-この例には、"HelloWorld.spec" と "HelloWorld\_EnableAck.spec" の 2 つの spec ファイルがあります。C# コードでは、Java 側から pluginConf を取得することによって、ACK が有効かどうか確認できます。
+この例には、"HelloWorld.spec" と "HelloWorld\_EnableAck.spec" の 2 つの spec ファイルがあります。C\# コードでは、Java 側から pluginConf を取得することによって、ACK が有効かどうか確認できます。
 
     /* demo how to get pluginConf info */
     if (Context.Config.pluginConf.ContainsKey(Constants.NONTRANSACTIONAL_ENABLE_ACK))
@@ -591,7 +591,7 @@ HelloWorld は、SCP.Net を体験できる非常に簡単な例です。"genera
 
 ### HelloWorldTx
 
-HelloWorldTx の例では、トランザクション トポロジの実装方法を示します。"generator" というスパウトが 1 つ、"partial-count" というバッチ ボルト、および "count-sum" というコミット ボルトがあります。事前に作成された 3 つの txt ファイル、"DataSource0.txt"、"DataSource1.txt"、および "DataSource2.txt" もあります。
+HelloWorldTx の例では、トランザクション トポロジの実装方法を示します。"generator" というスパウトが 1 つ、"partial-count" というバッチ ボルト、および "count-sum" というコミット ボルトがあります。また、事前作成された 3 つのテキスト ファイルとして、"DataSource0.txt"、"DataSource1.txt"、"DataSource2.txt" があります。
 
 各トランザクションでは、"generator" スパウトが事前に作成された 3 つのファイルから無作為に 2 つのファイルを選択し、その 2 つのファイル名を "partial-count" ボルトに出力します。"partial-count" ボルトは、最初に受信したタプルからファイル名を取得し、そのファイルを開いてファイル内の単語数をカウントして、最後に "count-sum" ボルトに単語数を出力します。"count-sum" ボルトは、合計数を集計します。
 
@@ -633,11 +633,10 @@ FinishBatch() が呼び出されると、再生されたトランザクション
 
 ### HybridTopology
 
-このトポロジには Java スパウトと C# ボルトが含まれています。SCP プラットフォームが提供する既定のシリアル化と逆シリアル化の実装を使用します。spec ファイルの詳細については "examples\\HybridTopology" フォルダーの "HybridTopology.spec" を参照し、Java Classpath の指定方法については "SubmitTopology.bat" を参照してください。
+このトポロジには Java スパウトと C\# ボルトが含まれています。SCP プラットフォームが提供する既定のシリアル化と逆シリアル化の実装を使用します。spec ファイルの詳細については "examples\\HybridTopology" フォルダーの "HybridTopology.spec" を参照し、Java Classpath の指定方法については "SubmitTopology.bat" を参照してください。
 
 ### SCPHost のデモ
 
 この例は、基本的に HelloWorld と同じです。唯一の相違点は、ユーザー コードが DLL としてコンパイルされ、トポロジが SCPHost.exe を使用して送信されることです。詳細な説明については、「SCP ホスト モード」を参照してください。
 
   [0]: ./media/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application-01.png
-  [0]: http://storm.incubator.apache.org/documentation/Clojure-DSL.html

@@ -16,7 +16,7 @@ HDInsight の実装と HBase のスケールアウト アーキテクチャに�
 
 ## HDInsight HBase 内データの管理方法
 
-HBase 内のデータは、HBase シェルから `create` `get`、`put`、および `scan` というコマンドを使用して管理できます。データの書き込みは `put` コマンド、読み取りは `get` コマンドを使用します。`scan` コマンドは、テーブルの複数の行からデータを取得するために使用します。HBase の C# API を使用してデータを管理することもできます。これにより、HBase REST API 最上層のクライアント ライブラリを利用できます。HBase データベースは、Hive を使用して照会することもできます。これらのプログラミング モデルの基本的な説明については、「[Get started using HBase with Hadoop in HDInsight (HDInsight の Hadoop 環境で HBase を使用する)][Get started using HBase with Hadoop in HDInsight (HDInsight の Hadoop 環境で HBase を使用する)]」を参照してください。コプロセッサを利用することにより、データベースをホストするノードでデータを処理することもできます。
+HBase 内のデータは、HBase シェルから `create` `get`、`put`、および `scan` というコマンドを使用して管理できます。データの書き込みは `put` コマンド、読み取りは `get` コマンドを使用します。`scan` コマンドは、テーブルの複数の行からデータを取得するために使用します。HBase の C\# API を使用してデータを管理することもできます。これにより、HBase REST API 最上層のクライアント ライブラリを利用できます。HBase データベースは、Hive を使用して照会することもできます。これらのプログラミング モデルの基本的な説明については、「[Get started using HBase with Hadoop in HDInsight (HDInsight の Hadoop 環境で HBase を使用する)][Get started using HBase with Hadoop in HDInsight (HDInsight の Hadoop 環境で HBase を使用する)]」を参照してください。コプロセッサを利用することにより、データベースをホストするノードでデータを処理することもできます。
 
 ## シナリオ: HBase の使用事例
 
@@ -49,7 +49,7 @@ HBase をデータストアとして使用することで、アプリケーシ�
 
 [Use Maven to build Java applications that use HBase with HDInsight (Hadoop) (HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築)][Use Maven to build Java applications that use HBase with HDInsight (Hadoop) (HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築)]
 
-[C# HBase SDK][C# HBase SDK]
+[C\# HBase SDK][C\# HBase SDK]
 
 ## <a name="see-also"></a>関連項目
 
@@ -62,6 +62,6 @@ HBase をデータストアとして使用することで、アプリケーシ�
   [Phoenix]: http://phoenix.apache.org/
   [Analyze real-time Twitter sentiment with HBase in HDInsight (HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析)]: ../hdinsight-hbase-analyze-twitter-sentiment/
   [Use Maven to build Java applications that use HBase with HDInsight (Hadoop) (HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築)]: ../hdinsight-hbase-build-java-maven/
-  [C# HBase SDK]: https://github.com/hdinsight/hbase-sdk-for-net
+  [C\# HBase SDK]: https://github.com/hdinsight/hbase-sdk-for-net
   [Apache HBase]: https://hbase.apache.org/
   [Bigtable: A Distributed Storage System for Structured Data (Bigtable: 構造化データ用分散ストレージ システム)]: http://research.google.com/archive/bigtable.html

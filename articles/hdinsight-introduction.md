@@ -6,7 +6,7 @@
 
 ## 概要
 
-Azure HDInsight は、Apache™ Hadoop™ クラスターをクラウドに展開してプロビジョニングするためのサービスです。ビッグ データの管理、分析、レポート生成を支援するソフトウェア フレームワークとなります。
+Azure HDInsight は、Apache™ Hadoop® クラスターをクラウドに展開してプロビジョニングするためのサービスです。ビッグ データの管理、分析、レポート生成を支援するソフトウェア フレームワークとなります。
 
 ### ビッグ データ
 
@@ -63,7 +63,7 @@ Hadoop エコシステムの一部であり、Hadoop クラスター上で実行
 
 ### Pig
 
-Pig は、Hadoop クラスター上でビッグ データを処理するための高レベル プラットフォームです。"Pig Latin" と呼ばれるデータ フロー言語で構成されます。大規模なデータセットに対するクエリを記述したり、プログラムをコンソールから実行したりできます。Pig Latin プログラムは一連のデータセット命令から成り、これらは MapReduce プログラムに変換されます。Pig Latin 抽象化は MapReduce より高度なデータ構造を提供し、SQL でリレーショナル データベース管理システム (RDBMS) を操作する場合と同じように Hadoop を操作できます。Pig Latin は完全に拡張可能です。データを分析する際、Java、Python、Ruby、C#、または JavaScript で記述されたユーザー定義関数 (UDF) を呼び出して、処理パス ステージをカスタマイズできます。詳細については、[Apache Pig に関するページ][Apache Pig に関するページ]を参照してください。
+Pig は、Hadoop クラスター上でビッグ データを処理するための高レベル プラットフォームです。"Pig Latin" と呼ばれるデータ フロー言語で構成されます。大規模なデータセットに対するクエリを記述したり、プログラムをコンソールから実行したりできます。Pig Latin プログラムは一連のデータセット命令から成り、これらは MapReduce プログラムに変換されます。Pig Latin 抽象化は MapReduce より高度なデータ構造を提供し、SQL でリレーショナル データベース管理システム (RDBMS) を操作する場合と同じように Hadoop を操作できます。Pig Latin は完全に拡張可能です。データを分析する際、Java、Python、Ruby、C\#、または JavaScript で記述されたユーザー定義関数 (UDF) を呼び出して、処理パス ステージをカスタマイズできます。詳細については、[Apache Pig に関するページ][Apache Pig に関するページ]を参照してください。
 
 ### Hive
 
@@ -83,7 +83,7 @@ Apache Ambari は、Apache Hadoop クラスターのプロビジョニング、�
 
 ### Microsoft Avro ライブラリ
 
-Microsoft Avro ライブラリは、Microsoft.NET 環境向けに Apache Avro データ シリアル化システムを実装します。Apache Avro は、シリアル化のためのコンパクトなバイナリ データ交換形式を提供します。Apache Avro は、[JSON][JSON] を使用して、言語の相互運用性を保証する、言語に依存しないスキーマを定義します。ある言語でシリアル化されたデータは、別の言語で読むことができます。現在、C、C++、C#、Java、PHP、Python、および Ruby がサポートされています。この形式の詳細については、[Apache Avro の仕様][Apache Avro の仕様]を参照してください。現在のバージョンの Microsoft Avro ライブラリでは、このシリアル化のリモート プロシージャ コール (RPC) の部分をサポートしていないことに注意してください。
+Microsoft Avro ライブラリは、Microsoft.NET 環境向けに Apache Avro データ シリアル化システムを実装します。Apache Avro は、シリアル化のためのコンパクトなバイナリ データ交換形式を提供します。Apache Avro は、[JSON][JSON] を使用して、言語の相互運用性を保証する、言語に依存しないスキーマを定義します。ある言語でシリアル化されたデータは、別の言語で読むことができます。現在、C、C++、C\#、Java、PHP、Python、および Ruby がサポートされています。この形式の詳細については、[Apache Avro の仕様][Apache Avro の仕様]を参照してください。現在のバージョンの Microsoft Avro ライブラリでは、このシリアル化のリモート プロシージャ コール (RPC) の部分をサポートしていないことに注意してください。
 
 Apache Avro のシリアル化形式は、Azure HDInsight やその他の Apache Hadoop 環境で広く使用されています。Avro は、Hadoop MapReduce ジョブ内の複雑なデータ構造を表すのに便利です。Avro ファイルの形式は、分散型 MapReduce プログラミング モデルをサポートするように設計されています。分散を可能にする重要な機能として、ファイル内の任意のポイントを検索し、特定のブロックから読み取りを開始できるという意味で、ファイルが "分割可能" であることがあります。詳細については、「[Serialize data with the Microsoft Avro Library (Microsoft Avro ライブラリを使用したデータのシリアル化)][Serialize data with the Microsoft Avro Library (Microsoft Avro ライブラリを使用したデータのシリアル化)]」を参照してください。
 

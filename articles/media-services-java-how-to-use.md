@@ -123,7 +123,7 @@ Microsoft Silverlight または Adobe Open Source Media Framework を使用す�
 
 #### Windows 8 アプリケーション
 
-Windows 8 用には、サポートされている開発言語やコンストラクト (HTML、Javascript、XAML、C#、C+ など) を使用して Windows ストア アプリケーションを作成できます。
+Windows 8 用には、サポートされている開発言語やコンストラクト (HTML、Javascript、XAML、C\#、C+ など) を使用して Windows ストア アプリケーションを作成できます。
 
 -   [Windows 8 用 Smooth Streaming Client SDK][Windows 8 用 Smooth Streaming Client SDK]。この SDK を使用して Windows ストア アプリケーションを作成する方法の詳細については、[スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法に関するページ][スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法に関するページ]を参照してください。HTML5 でスムーズ ストリーミング プレイヤーを作成する方法については、「[Walkthrough: Building Your First HTML5 Smooth Streaming Player (チュートリアル: 初めての HTML5 スムーズ ストリーミング プレイヤーを作成する)][Walkthrough: Building Your First HTML5 Smooth Streaming Player (チュートリアル: 初めての HTML5 スムーズ ストリーミング プレイヤーを作成する)]」を参照してください。
 

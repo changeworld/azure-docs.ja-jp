@@ -10,7 +10,7 @@ Azure で Linux ベースのクラウド ソリューションを実現する際
 
 [![Bitnami][![Bitnami]][]
 
-[][![Bitnami][![Bitnami]]<http://bitnami.org/azure/get-started></a>
+<http://bitnami.org/azure/get-started>
 
 BitNami は、1 クリックで Azure に展開できる人気の Web アプリケーションの構成済みイメージを提供しています。Azure 用の BitNami WebPack および DevPack イメージは、Web アプリケーション開発者用に構成済みですぐに実行できる環境です。BitNami WebPack には、Wordpress、Drupal、および Joomla! が同梱されていて、Web サイトとブログを開発するのに最適なプラットフォームを選択できます。BitNami DevPack は、Ruby on Rails、PHP、Django、および Java 言語のランタイムとその依存関係など、クラウドで Web アプリケーションを作成するために必要な要素をすべて備えた開発環境です。
 
@@ -26,7 +26,7 @@ Opscode は、小さな新興企業からフォーチュン 100 企業まで、�
 
 [![Rightscale][![Rightscale]][![Opscode][![Opscode]]
 
-[][![Opscode][![Opscode]]<http://www.opscode.com/partners/microsoft></a>
+<http://www.opscode.com/partners/microsoft>
 
 RightScale® Inc. のクラウド管理を使用すると、パブリック、プライベート、およびハイブリッドのクラウド環境で業務に不可欠なアプリケーションを簡単に展開し管理することができます。RightScale では、クラウド インフラストラクチャおよびアプリケーションの効率的構成、監視、自動化、および統制ができます。2006 年以降、Associated Press や CBS Interactive、Intercontinental Hotels Group、PBS、Zynga などの一流企業によって数百万台のサーバーに RightScale ソリューションが導入されています。
 
@@ -52,7 +52,7 @@ SUSE Studio の 1 クリック 展開機能を利用すると、SUSE Linux Enter
 
 [![Juju][![Juju]][]
 
-[][]<http://www.ubuntu.com/cloud/azure></a>
+<http://www.ubuntu.com/cloud/azure>
 
 クラウド コンピューティングに未来があることを認識し、クラウドの採用が IT 部門と開発者の両方において何を意味するかを分析した結果、これまでとはまったく違うサービス オーケストレーション ツールセットである Juju が開発されました。アプリケーションに関連付けられた知識 (依存関係、関係、プラットフォーム構成) をチャームにカプセル化できます。
 
@@ -71,4 +71,3 @@ Juju は、背後にあるインフラストラクチャ レイヤーから独�
   [![SUSE][![SUSE]]: http://www.susestudio.com
   [Juju]: ./media/cloud-services-linux-partners/juju.png
   [![Juju][![Juju]]: https://juju.ubuntu.com/
-  []: http://www.ubuntu.com/cloud/azure

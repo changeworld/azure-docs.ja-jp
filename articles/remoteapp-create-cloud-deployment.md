@@ -20,7 +20,7 @@ RemoteApp のデプロイメントには、次の 2 種類の方法がありま�
 
 サービスを作成する前に、以下の操作が必要です。
 
--   RemoteApp のプレビューにサインアップします。これは、[][][http://azure.microsoft.com/ja-jp/services/remoteapp/][http://azure.microsoft.com/ja-jp/services/remoteapp/]</a> で行うことができます。
+-   RemoteApp のプレビューにサインアップします。これは、[http://azure.microsoft.com/ja-jp/services/remoteapp/][http://azure.microsoft.com/ja-jp/services/remoteapp/] で行うことができます。
 -   アクセス権を付与するユーザーとグループに関する情報を集めます。この情報とは、ユーザーまたはグループの Microsoft アカウントの情報または Active Directory の職場アカウントの情報です。
 -   この手順は、サブスクリプションの一部として提供されたテンプレートのイメージを使用しようとしているか、使用するテンプレートのイメージが既にアップロード済みであることが前提となっています。別のテンプレート イメージをアップロードする必要がある場合は、[テンプレート イメージ] ページから実行できます。**[テンプレート イメージのアップロード]** をクリックして、ウィザードで表示される手順に従います。
 -   カスタム アプリケーションまたは LOB プログラムが必要な場合は、「[How to create a custom template image for RemoteApp (RemoteApp のカスタム テンプレート イメージの作成方法)][How to create a custom template image for RemoteApp (RemoteApp のカスタム テンプレート イメージの作成方法)]」の手順に従って新しいカスタム テンプレート イメージを作成し、これをクラウドのデプロイに使用してください。
@@ -61,7 +61,7 @@ RemoteApp サービスには複数のプログラムを発行できます。[Rem
 1.  [クイック スタート] ページの **[ユーザー アクセスの構成]** をクリックします。
 2.  アクセス権を付与する (Active Directory の) 職場アカウントかグループ名、または Microsoft アカウントを入力します。
 
-    ユーザーに対しては、"<user@domain.com>" 形式を使用するようにしてください。グループに対しては、グループ名を入力します。
+    ユーザーに対しては、"user@domain.com" 形式を使用するようにしてください。グループに対しては、グループ名を入力します。
 
 3.  ユーザーまたはグループが検証されたら、**[保存]** をクリックします。
 
@@ -69,7 +69,7 @@ RemoteApp サービスには複数のプログラムを発行できます。[Rem
 
 これで、RemoteApp クラウドのデプロイメントの作成とデプロイが正常に完了しました。次のステップは、ユーザーによるリモート デスクトップ クライアントのダウンロードとインストールです。このクライアントの URL は、RemoteApp の [クイック スタート] ページにあります。次に、ユーザーがクライアントにログインし、発行した RemoteApp プログラムにアクセスします。
 
-  []: http://azure.microsoft.com/ja-jp/services/remoteapp/
+  [http://azure.microsoft.com/ja-jp/services/remoteapp/]: http://azure.microsoft.com/ja-jp/services/remoteapp/
   [How to create a custom template image for RemoteApp (RemoteApp のカスタム テンプレート イメージの作成方法)]: http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-custom-image/
   [Windows Azure の管理ポータル]: http://manage.windowsazure.com
   [ディレクトリ同期のロードマップ]: http://msdn.microsoft.com/ja-jp/library/azure/hh967642.aspx

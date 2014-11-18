@@ -90,8 +90,8 @@ Express モジュールは、Node.js Web アプリケーションを作成する
 
     ![index.jade ファイルの内容][index.jade ファイルの内容]
 
-    Jade は Express アプリケーションで使用される既定のビュー エンジンです。Jade ビュー エンジンの詳細については、
-    [][]<http://jade-lang.com></a> を参照してください。
+    Jade は Express アプリケーションで使用される既定のビュー エンジンです。
+    Jade ビュー エンジンの詳細については、<http://jade-lang.com> を参照してください。
 
 2.  テキストの最後の行に **in Azure** を追加します。
 
@@ -123,6 +123,5 @@ Azure PowerShell ウィンドウで、**Publish-AzureServiceProject** コマン�
   [npm install コマンドの出力]: ./media/cloud-services-nodejs-develop-deploy-express-app/node26.png
   [Welcome to Express メッセージを含む Web ページ]: ./media/cloud-services-nodejs-develop-deploy-express-app/node28.png
   [index.jade ファイルの内容]: ./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png
-  []: http://jade-lang.com
   [index.jade ファイルの最後の行を次のように変更: p Welcome to \#{title} in Azure]: ./media/cloud-services-nodejs-develop-deploy-express-app/node31.png
   [ブラウザー ウィンドウで "Welcome to Express in Azure" と表示されたページ]: ./media/cloud-services-nodejs-develop-deploy-express-app/node32.png

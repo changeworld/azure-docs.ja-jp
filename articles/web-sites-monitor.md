@@ -132,7 +132,7 @@ Azure のストレージ アカウントの詳細については、「[ストレ
 
 	<b>注</b>
 	<p>診断を有効にするには、Azure PowerShell から <b>Set-AzureWebsite</b> コマンドレットを使用する方法もあります。</p>
-    <p>Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell の使用方法][Azure PowerShell の使用方法]」を参照してください。</p></div>
+    <p>Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、<a href="http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/">「Azure PowerShell の使用方法」</a>を参照してください。</p></div>
 
 <div class="dev-callout">
 
@@ -158,9 +158,9 @@ Web サーバーのログをファイル システムに保存するには、**[
 
 既定では、Web サーバーのログは一切削除されません。ログが自動的に削除されるまでの期間を指定するには、**[保有期間の設定]** を選択し、ログを保持する日数を **[保有期間]** ボックスに入力します。Azure のストレージとファイル システム両方について、ログの保有期間を設定できます。
 
--    **[詳細なエラー メッセージ]** - 詳細なエラー ログを有効にすると、HTTP エラーに関する追加情報 (400 を超える状態コード) がログに記録されます。
+- **[詳細なエラー メッセージ]** - 詳細なエラー ログを有効にすると、HTTP エラーに関する追加情報 (400 を超える状態コード) がログに記録されます。
 
--   **[失敗した要求トレース]** - 失敗した要求トレースを有効にして、HTTP ステータス コードが 400 番台の要求など、失敗したクライアント要求に関する情報を取得します。失敗した要求トレースでは、XML ドキュメントが生成され、IIS で要求が渡されたモジュールのトレース、モジュールの返した値の詳細、モジュールが呼び出された時刻が記録されます。この情報を参照して、障害が発生したコンポーネントを突き止めることができます。
+- **[失敗した要求トレース]** - 失敗した要求トレースを有効にして、HTTP ステータス コードが 400 番台の要求など、失敗したクライアント要求に関する情報を取得します。失敗した要求トレースでは、XML ドキュメントが生成され、IIS で要求が渡されたモジュールのトレース、モジュールの返した値の詳細、モジュールが呼び出された時刻が記録されます。この情報を参照して、障害が発生したコンポーネントを突き止めることができます。
 
 Web サイトの診断を有効にしたら、**[構成]** 管理ページの下部にある **[保存]** アイコンをクリックして、設定したオプションを適用します。
 
@@ -212,7 +212,6 @@ Web サイトの診断を有効にしたら、**[構成]** 管理ページの下
     <div class="dev-callout">
 
     <b>注</b>
-<br/>
     <p><b>Azure PowerShell</b> がインストールされていない場合は、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554332.aspx">Azure コマンドレットの概要</a>」を参照して、インストールと構成を実行してください。</p> 
 
 
@@ -306,16 +305,16 @@ Web サイトに対するログ記録またはトレース、あるいはその�
 2.  **[構成]** タブをクリックします。
 3.  **[監視]** セクションに移動して、エンドポイント設定を入力します。
 4.  エンドポイントの名前を入力します。
-5.  監視するサービスの URL を入力します。たとえば、「[][]<http://contoso.cloudapp.net></a>」のように入力します。
+5.  監視するサービスの URL を入力します。たとえば、「[http://contoso.cloudapp.net](http://contoso.cloudapp.net)」のように入力します。
 6.  1 つ以上の場所を一覧から選択します。
 7.  2 つ目のエンドポイントを構成する場合は、これまでの手順を繰り返します。
 8.  **[保存]** をクリックします。Web エンドポイントの監視データが **[ダッシュボード]** と **[監視]** タブに表示されるまでに、時間がかかることがあります。
 
 Web サイトのエンドポイントの監視の詳細については、次のビデオを参照してください。
 
--   [Scott Guthrie introduces Azure Web Sites and sets up Endpoint Monitoring (Scott Guthrie による Azure の Web サイトの紹介とエンドポイント監視の設定)][Scott Guthrie introduces Azure Web Sites and sets up Endpoint Monitoring (Scott Guthrie による Azure の Web サイトの紹介とエンドポイント監視の設定)]
+-   [Scott Guthrie introduces Azure Web Sites and sets up Endpoint Monitoring (Scott Guthrie による Azure の Web サイトの紹介とエンドポイント監視の設定)](http://www.windowsazure.com/ja-jp/documentation/videos/websites-and-endpoint-monitoring-scottgu/)
 
--   [Keeping Azure Web Sites up plus Endpoint Monitoring with Stefan Schackow (Azure の Web サイトの保持とエンドポイントの監視 - Stefan Schackow 共演)][Keeping Azure Web Sites up plus Endpoint Monitoring with Stefan Schackow (Azure の Web サイトの保持とエンドポイントの監視 - Stefan Schackow 共演)]
+-   [Keeping Azure Web Sites up plus Endpoint Monitoring with Stefan Schackow (Azure の Web サイトの保持とエンドポイントの監視 - Stefan Schackow 共演)](http://www.windowsazure.com/ja-jp/documentation/videos/azure-web-sites-endpoint-monitoring-and-staying-up/)
 
   [方法: Web サイト メトリックの追加]: #websitemetrics
   [方法: Web サイトのメトリックからアラートを受信]: #howtoreceivealerts
@@ -327,7 +326,6 @@ Web サイトのエンドポイントの監視の詳細については、次の�
   [Azure の管理ポータル]: http://manage.windowsazure.com/
   [Azure での仮想マシンとクラウド サービスのサイズに関するページ]: http://go.microsoft.com/fwlink/?LinkID=309169
   [ストレージ アカウントの管理方法]: https://www.windowsazure.com/ja-jp/manage/services/storage/how-to-manage-a-storage-account/
-  [Azure PowerShell の使用方法]: http://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/
   [FileZilla]: http://go.microsoft.com/fwlink/?LinkId=247914
   [W3C 拡張ログ形式]: http://go.microsoft.com/fwlink/?LinkID=90561
-  []: http://contoso.cloudapp.net
+ 

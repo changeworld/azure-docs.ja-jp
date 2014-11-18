@@ -88,7 +88,7 @@ iOS デバイスのメディア再生設備にこれらの機能を組み合わ�
 -   **clipBeginMediaTime** は、ビデオ再生の開始位置を時間で表します。たとえば、**clipBeginMediaTime** = 5 の場合、このビデオ クリップはビデオ クリップ内の 5 秒目から開始されます。
 -   **clipEndMediaTime** は、ビデオ再生の終了位置を時間で表します。**clipEndMediaTime**=100 の場合、ビデオの再生はビデオ クリップ内の 100 秒目で終了します。
     \***MediaTime** のスケジュール設定は、フレームワークに対して **appendContentClip** を指示することによって行っています。上の例では、メイン コンテンツの URL が `[NSURL URLWithString:url]` で指定され、そのメディアのスケジュールが **withMedia** を使用して設定されています。
-     `[framework appendContentClip:[NSURL URLWithString:url] withMediaTime:mediaTime andGetClipId:&clipId])` .
+    `[framework appendContentClip:[NSURL URLWithString:url] withMediaTime:mediaTime andGetClipId:&clipId])`
 
 **注:** メイン コンテンツのスケジュール設定は、必ず (プリロール広告の場合も含めて) 広告のスケジュール設定より前に行ってください。
 

@@ -4,7 +4,7 @@
 
 # DocumentDB アカウントの使用
 
-このガイドでは、**Azure DocumentDB (プレビュー)** の使用を開始する方法について説明します。サンプルは C# コードで記述され、DocumentDB .NET SDK を使用しています。紹介されているシナリオには、DocumentDB アカウントの作成と構成、データベースの作成、コレクションの作成、およびアカウント内での JSON ドキュメントの格納が含まれています。Azure DocumentDB の使用の詳細については、「次のステップ」のセクションを参照してください。
+このガイドでは、**Azure DocumentDB (プレビュー)** の使用を開始する方法について説明します。サンプルは C\# コードで記述され、DocumentDB .NET SDK を使用しています。紹介されているシナリオには、DocumentDB アカウントの作成と構成、データベースの作成、コレクションの作成、およびアカウント内での JSON ドキュメントの格納が含まれています。Azure DocumentDB の使用の詳細については、「次のステップ」のセクションを参照してください。
 
 この概要ガイドを使用するには、DocumentDB アカウントとアカウントのアクセス キー (プライマリまたはセカンダリ) を持っている必要があります。詳細については、次を参照してください。
 
@@ -21,9 +21,9 @@
 
 ## <span id="Connect"></span></a>DocumentDB アカウントへの接続
 
-プログラムによって DocumentDB を利用するためのさまざまな SDK および API があります。次のサンプルは C# コードで記述され、DocumentDB .NET SDK を使用しています。
+プログラムによって DocumentDB を利用するためのさまざまな SDK および API があります。次のサンプルは C\# コードで記述され、DocumentDB .NET SDK を使用しています。
 
-最初に、DocumentDB アカウントへの接続を確立するために DocumentClient を作成します。C# アプリケーションで次の参照が必要です。
+最初に、DocumentDB アカウントへの接続を確立するために DocumentClient を作成します。C\# アプリケーションで次の参照が必要です。
 
     using Microsoft.Azure.Documents;
     using Microsoft.Azure.Documents.Client;

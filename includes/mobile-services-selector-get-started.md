@@ -2,8 +2,8 @@
 
 -   [(iOS | .NET)][(iOS | .NET)]
 -   [(iOS | JavaScript)][(iOS | JavaScript)]
--   [(Windows ストア C# | .NET)][(Windows ストア C# | .NET)]
--   [(Windows ストア C# | JavaScript)][(Windows ストア C# | JavaScript)]
+-   [(Windows ストア C\# | .NET)][(Windows ストア C\# | .NET)]
+-   [(Windows ストア C\# | JavaScript)][(Windows ストア C\# | JavaScript)]
 -   [(Windows ストア JavaScript | .NET)][(Windows ストア JavaScript | .NET)]
 -   [(Windows ストア JavaScript | JavaScript)][(Windows ストア JavaScript | JavaScript)]
 -   [(Android | .NET)][(Android | .NET)]
@@ -19,8 +19,8 @@
 
   [(iOS | .NET)]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started/
   [(iOS | JavaScript)]: /ja-jp/documentation/articles/mobile-services-ios-get-started/
-  [(Windows ストア C# | .NET)]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
-  [(Windows ストア C# | JavaScript)]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started/
+  [(Windows ストア C\# | .NET)]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
+  [(Windows ストア C\# | JavaScript)]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started/
   [(Windows ストア JavaScript | .NET)]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started/
   [(Windows ストア JavaScript | JavaScript)]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started/
   [(Android | .NET)]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started/

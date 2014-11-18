@@ -48,7 +48,7 @@ Azure Virtual Network での HDInsight クラスターの作成方法につい�
     -   **アドレス空間**: クラスター内のすべてのノードにアドレスを提供するために十分な大きさの、仮想ネットワークのアドレス空間を選択します。そうでないと、プロビジョニングは失敗します。
     -   **最大 VM 数**: 最大 VM 数のいずれかを選択します。
     -   **場所**: 場所は作成する HBase クラスターと同じである必要があります。
-    -   **DNS サーバー**: この記事では、Azure が提供する内部 DNS サーバーを使用するため、**[なし]** を選択します。カスタム DNS サーバーを使用した、より高度なネットワーク構成もサポートされています。詳細なガイダンスについては、[][]<http://msdn.microsoft.com/library/azure/jj156088.aspx></a> を参照してください。
+    -   **DNS サーバー**: この記事では、Azure が提供する内部 DNS サーバーを使用するため、**[なし]** を選択します。カスタム DNS サーバーを使用した、より高度なネットワーク構成もサポートされています。詳細なガイダンスについては、<http://msdn.microsoft.com/library/azure/jj156088.aspx> を参照してください。
 
 4.  **[仮想ネットワークの作成]** をクリックします。新しい仮想ネットワーク名が一覧に表示されます。[ステータス] 列に **[作成済み]** が表示されるまで待機します。
 5.  メイン ウィンドウで、作成した仮想ネットワークをクリックします。
@@ -56,7 +56,7 @@ Azure Virtual Network での HDInsight クラスターの作成方法につい�
 7.  **[概要]** の下の **[仮想ネットワーク ID]** を書き留めます。この ID は、HBase クラスターのプロビジョニング時に必要です。
 8.  ページの上部で、**[構成]** をクリックします。
 9.  ページの下部に示される既定のサブネット名は、**Subnet-1** です。必要に応じて、HBase クラスターのサブネット名を変更したり、新しいサブネットを追加したりできます。サブネット名を書き留めます。これは、クラスターのプロビジョニング時に必要となります。
-10. クラスター用に使用するサブネットの **[CIDR (アドレス数)]** を確認します。アドレス数は、worker ノード数に 7 (ゲートウェイ: 2、ヘッドノード: 2、Zookeeper: 3) を加えた合計よりも多くする必要があります。たとえば、10 ノードの HBase クラスターが必要な場合、サブネットのアドレス数は、17 (10+7) を超えている必要があります。17 以下の場合、デプロイメントは失敗します。
+10. クラスター用に使用するサブネットの **[CIDR (アドレス数)]** を確認します。アドレス数は、ワーカー ノード数に 7 (ゲートウェイ: 2、ヘッドノード: 2、Zookeeper: 3) を加えた合計よりも多くする必要があります。たとえば、10 ノードの HBase クラスターが必要な場合、サブネットのアドレス数は、17 (10+7) を超えている必要があります。17 以下の場合、デプロイメントは失敗します。
 
     > [WACOM.NOTE] 1 つのクラスターに単一のサブネットを指定することを強くお勧めします。
 
@@ -299,7 +299,6 @@ Java アプリケーションでこの情報を使用するには、「[HDInsigh
   [Azure PowerShell のインストールおよび構成に関するページ]: ../install-configure-powershell
   [Run Windows PowerShell scripts (Windows PowerShell スクリプトの実行)]: http://technet.microsoft.com/ja-jp/library/ee176949.aspx
   [Azure の管理ポータル]: https://manage.windowsazure.com
-  []: http://msdn.microsoft.com/library/azure/jj156088.aspx
   [Use Azure Blob storage with Hadoop in HDInsight (HDInsight での Hadoop と Azure BLOB ストレージの使用)]: ../hdinsight-use-blob-storage/
   [cluster name and version fields]: ./media/hdinsight-hbase-provision-vnet/hbasewizard1.png
   [number of nodes and region fields]: ./media/hdinsight-hbase-provision-vnet/hbasewizard2.png

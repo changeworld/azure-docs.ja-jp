@@ -204,7 +204,7 @@ MapReduce は高度な診断機能を備えていますが、使いこなすの�
 
 -   [Azure HDInsight の概要][Azure HDInsight の概要]
 -   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][HDInsight 用 Java MapReduce プログラムの開発]
--   [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発][HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発]
+-   [HDInsight 用 C\# Hadoop ストリーミング MapReduce プログラムの開発][HDInsight 用 C\# Hadoop ストリーミング MapReduce プログラムの開発]
 -   [HDInsight での Hive の使用][HDInsight での Hive の使用]
 -   [HDInsight での Pig の使用][HDInsight での Pig の使用]
 -   [HDInsight のサンプルの実行][HDInsight のサンプルの実行]
@@ -219,7 +219,7 @@ MapReduce は高度な診断機能を備えていますが、使いこなすの�
   [HDInsight 用 Java MapReduce プログラムの開発]: ../hdinsight-develop-deploy-java-mapreduce/
   [データを HDInsight へアップロードする方法]: ../hdinsight-upload-data/
   [Azure HDInsight の概要]: ../hdinsight-get-started/
-  [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
+  [HDInsight 用 C\# Hadoop ストリーミング MapReduce プログラムの開発]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
   [HDInsight での Hive の使用]: ../hdinsight-use-hive/
   [HDInsight での Pig の使用]: ../hdinsight-use-pig/
   [HDInsight のサンプルの実行]: ../hdinsight-run-samples/

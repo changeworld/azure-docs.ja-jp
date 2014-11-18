@@ -61,7 +61,7 @@ Azure サービス管理 API を使用してこの操作を実行する方法に
     次の形式の URI を使用します。*\<StorageAccountLabel\>* は
      **[URL を入力してください]** に入力した値を表します:
 
-    <http://>*\<StorageAcountLabel\>*.blob.core.windows.net/*\<mycontainer\>*
+    http://*\<StorageAcountLabel\>*.blob.core.windows.net/*\<mycontainer\>*
 
     **重要:** この URL は、ストレージ アカウントの
      URI のサブドメインとなるため、Azure のすべてのホステッド サービスで
@@ -117,7 +117,7 @@ Azure サービス管理 API を使用してこの操作を実行する方法に
 </p>
 CDN にキャッシュされたコンテンツにアクセスするには、ポータルで提供される CDN URL を使用します。キャッシュされた BLOB のアドレスは、次のようになります。
 
-<http://>\<*CDNNamespace*\>.vo.msecnd.net/\<*myPublicContainer*\>/\<*BlobName*\>
+http://\<*CDNNamespace*\>.vo.msecnd.net/\<*myPublicContainer*\>/\<*BlobName*\>
 
 <span id="Step4"></span> </a>
 

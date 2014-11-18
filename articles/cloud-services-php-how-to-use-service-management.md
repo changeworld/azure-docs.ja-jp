@@ -57,7 +57,7 @@ Azure サービス管理を使用する PHP アプリケーションを作成す
 
     `openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer`
 
-Azure 証明書の詳細については、「[Azure の証明書の概要][Azure の証明書の概要]」を参照してください。OpenSSL のパラメーターの詳細については、[][]<http://www.openssl.org/docs/apps/openssl.html></a> にあるドキュメントを参照してください。
+Azure 証明書の詳細については、「[Azure の証明書の概要][Azure の証明書の概要]」を参照してください。OpenSSL のパラメーターの詳細については、<http://www.openssl.org/docs/apps/openssl.html> にあるドキュメントを参照してください。
 
 [Azure コマンド ライン ツール][Azure コマンド ライン ツール]を使用して発行設定ファイルをダウンロードおよびインポートした場合、ツールによって作成された `.pem` ファイルを使用できます。独自に作成する必要はありません。ツールによって `.cer` が作成され、Azure にアップロードされて、対応する `.pem` ファイルがコンピューター上の `.azure` ディレクトリ (ユーザー ディレクトリ内) に保存されます。
 
@@ -555,7 +555,6 @@ Azure には、2 つのデプロイ環境が用意されています。デプロ
   [OpenSSL]: http://www.openssl.org/
   [Windows 版をダウンロード]: http://www.openssl.org/related/binaries.html
   [Azure の証明書の概要]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg981935.aspx
-  []: http://www.openssl.org/docs/apps/openssl.html
   [Azure コマンド ライン ツール]: ../command-line-tools/
   [クラウド サービス]: ../cloud-services-what-is/
   [CreateServiceOptions]: https://github.com/WindowsAzure/azure-sdk-for-php/blob/master/WindowsAzure/ServiceManagement/Models/CreateServiceOptions.php

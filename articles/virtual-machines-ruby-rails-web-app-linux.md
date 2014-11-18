@@ -40,7 +40,7 @@
 
 1.  開発環境に Ruby をインストールします。この手順は、使用しているオペレーティング システムによって異なる場合があります。
 
-    -   **Apple OS X** - OS X 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証には、OS X で [Homebrew][Homebrew] を使用して **rbenv** および **ruby-build** をインストールしました。インストールに関する情報は、[][]<https://github.com/sstephenson/rbenv/></a> で確認できます。
+    -   **Apple OS X** - OS X 用には、いくつかの Ruby ディストリビューションがあります。このチュートリアルの検証には、OS X で [Homebrew][Homebrew] を使用して **rbenv** および **ruby-build** をインストールしました。インストールに関する情報は、<https://github.com/sstephenson/rbenv/> で確認できます。
 
     -   **Linux** - ディストリビューションのパッケージ管理システムを使用します。このチュートリアルは、Ubuntu 12.10 で ruby1.9.1 および ruby1.9.1-dev パッケージを使用して検証されました。
 
@@ -68,7 +68,7 @@
 
     </div>
 
-3.  JavaScript インタープリターもインストールする必要があります。これは、Rails アプリケーションで使われる CoffeeScript アセットをコンパイルするために Rails によって使用されます。サポートされているインタープリターの一覧は、[][1]<https://github.com/sstephenson/execjs#readme></a> で確認できます。
+3.  JavaScript インタープリターもインストールする必要があります。これは、Rails アプリケーションで使われる CoffeeScript アセットをコンパイルするために Rails によって使用されます。サポートされているインタープリターの一覧は、<https://github.com/sstephenson/execjs#readme> で確認できます。
 
     [Node.js][Node.js] をこのチュートリアルの検証中に使用しました。このインタープリターは OS X、Linux、Windows の各オペレーティング システムで利用できるためです。
 
@@ -117,11 +117,11 @@
         [2013-03-12 19:11:31] INFO  ruby 1.9.3 (2012-04-20) [x86_64-linux]
         [2013-03-12 19:11:31] INFO  WEBrick::HTTPServer#start: pid=9789 port=3000
 
-2.  ブラウザーを開き、<http://localhost:3000/> に移動します。次のようなページが表示されます。
+2.  ブラウザーを開き、http://localhost:3000/ に移動します。次のようなページが表示されます。
 
     ![既定の rails ページ][既定の rails ページ]
 
-    これは静的な開始ページです。スキャフォールディング コマンドによって生成されたフォームを表示するには、<http://localhost:3000/posts> に移動します。次のようなページが表示されます。
+    これは静的な開始ページです。スキャフォールディング コマンドによって生成されたフォームを表示するには、http://localhost:3000/posts に移動します。次のようなページが表示されます。
 
     ![a page listing posts][a page listing posts]
 
@@ -207,7 +207,7 @@ Azure の仮想マシンを作成したら、次の手順を実行して、仮�
 
 -   **directory-to-copy**:コピーするローカル ディレクトリ
 
--   <**user@vmdns**>:ファイルのコピー先となるコンピューターのアドレスと、ログインに使用するユーザー アカウント
+-   **user@vmdns**:ファイルのコピー先となるコンピューターのアドレスと、ログインに使用するユーザー アカウント
 
 コピー操作が完了すると、**blog\_app** ディレクトリがユーザーのホーム ディレクトリに配置されます。仮想マシンへの SSH セッションで次のコマンドを使用して、コピーされたファイルを表示します。
 
@@ -266,7 +266,7 @@ Azure の仮想マシンを作成したら、次の手順を実行して、仮�
 
 8.  **"更新が進行中です"** というメッセージが表示されます。このメッセージが消えると、エンドポイントがアクティブになります。この時点で仮想マシンの DNS 名に移動すると、アプリケーションをテストできます。Web サイトは次のようになります。
 
-    ![既定の rails ページ][2]
+    ![既定の rails ページ][1]
 
     URL に **/posts** を追加すると、スキャフォールディング コマンドで生成されたページが表示されます。
 
@@ -299,9 +299,7 @@ Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サ
   [gem をインストールしてアプリケーションを起動する]: #start
   [次のステップ]: #next
   [Homebrew]: http://brew.sh/
-  []: https://github.com/sstephenson/rbenv/
   [RailsInstaller]: http://railsinstaller.org/
-  [1]: https://github.com/sstephenson/execjs#readme
   [Node.js]: http://nodejs.org/
   [SQLite3 データベース]: http://www.sqlite.org/
   [既定の rails ページ]: ./media/virtual-machines-ruby-rails-web-app-linux/basicrailslocal.png
@@ -312,7 +310,7 @@ Azure SDK for Ruby を使用して Ruby アプリケーションから Azure サ
   [仮想マシンの一覧]: ./media/virtual-machines-ruby-rails-web-app-linux/vmlist.png
   [エンドポイント ページ]: ./media/virtual-machines-ruby-rails-web-app-linux/endpoints.png
   [新しいエンドポイントのダイアログ]: ./media/virtual-machines-ruby-rails-web-app-linux/newendpoint.png
-  [2]: ./media/virtual-machines-ruby-rails-web-app-linux/basicrailscloud.png
+  [1]: ./media/virtual-machines-ruby-rails-web-app-linux/basicrailscloud.png
   [Capistrano を使用して Azure VM に Ruby on Rails Web アプリケーションを展開する]: /ja-jp/documentation/articles/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/
   [Ruby on Rails のガイド]: http://guides.rubyonrails.org/
   [BLOB を使用して非構造化データを保存する]: /ja-jp/documentation/articles/storage-ruby-how-to-use-blob-storage

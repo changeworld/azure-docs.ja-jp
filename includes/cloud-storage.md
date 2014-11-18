@@ -23,7 +23,7 @@
 
 BLOB を使用するには、まず、Azure *ストレージ アカウント*を作成します。その一環として、このアカウントを使用して作成するオブジェクトを格納する Azure データセンターを指定します。作成される各 BLOB は、どこにあるとしても、ストレージ アカウント内のいずれかのコンテナーに属します。BLOB にアクセスするために、アプリケーションは次の形式で URL を用意します。
 
-[http://\<\*StorageAccount][http://\<\*StorageAccount]*\>.blob.core.windows.net/\<*Container*\>/\<*BlobName\*\>
+http://\<*StorageAccount*\>.blob.core.windows.net/\<*Container*\>/\<*BlobName*\>
 
 \<*StorageAccount*\> は新しいストレージ アカウントが作成されたときに割り当てられる一意の識別子で、\<*Container*\> および \<*BlobName*\> は、特定のコンテナーの名前と、そのコンテナー内の BLOB の名前です。
 
@@ -125,7 +125,7 @@ Azure テーブル ストレージは、このような種類の NoSQL アプロ
 
 BLOB のように、各テーブルは Azure のストレージ アカウントに関連付けられています。テーブルは BLOB と同じように、次のような形式の URL を使って名前を指定されます。
 
-[http://\<\*StorageAccount][http://\<\*StorageAccount]*\>.table.core.windows.net/\<*TableName\*\>
+http://\<*StorageAccount*\>.table.core.windows.net/\<*TableName*\>
 
 図で示されているように、各テーブルはいくつかのパーティションに分割され、それぞれを別のコンピューターに格納できます (SQL フェデレーションと同様のシャーディングの形式です)。Azure アプリケーションも、他の場所で実行されるアプリケーションも、REST ベースの OData プロトコルまたは Azure のストレージ クライアント ライブラリを使用してテーブルにアクセスできます。
 
@@ -157,7 +157,7 @@ Hadoop on Azure を使用するには、まず、このクラウド プラット
 
 Azure では、MapReduce ジョブの対象となるデータが、通常は BLOB ストレージに保持されます。しかし、Hadoop の MapReduce ジョブでは、データは *Hadoop 分散ファイル システム (HDFS)* に格納されていると想定されています。HDFS は、いくつかの点で BLOB ストレージに似ています。たとえば、複数の物理サーバー間でデータを複製します。Hadoop on Azure は、図で示されているように、この機能を重複させるのではなく、代わりに HDFS API を通じて BLOB ストレージを公開します。MapReduce ジョブのロジックからは通常の HDFS ファイルにアクセスしているように見えますが、実際には BLOB からそこにストリーミングされたデータを操作しています。複数のジョブが同じデータに対して実行される場合をサポートするために、Hadoop on Azure ではデータを BLOB から VM で実行されている HDFS 全体にコピーすることもできます。
 
-MapReduce ジョブは、現在では主に Java で記述されており、Hadoop on Azure でもそのアプローチがサポートされています。Microsoft では、他の言語 (C#、F\#、JavaScript など) による MapReduce ジョブの作成もサポートされています。目標は、この Big Data テクノロジに、より大きな開発者のグループが、より簡単にアクセスできるようにすることです。
+MapReduce ジョブは、現在では主に Java で記述されており、Hadoop on Azure でもそのアプローチがサポートされています。Microsoft では、他の言語 (C\#、F\#、JavaScript など) による MapReduce ジョブの作成もサポートされています。目標は、この Big Data テクノロジに、より大きな開発者のグループが、より簡単にアクセスできるようにすることです。
 
 Hadoop には、HDFS と MapReduce の他に、ユーザーが自分で MapReduce ジョブを記述しなくてもデータを分析できるようにするためのテクノロジも含まれています。たとえば、Pig はビッグ データの分析用に設計された高レベル言語であり、Hive は SQL 風の HiveQL と呼ばれる言語を提供します。Pig も Hive も実際には HDFS データを処理する MapReduce ジョブを生成しますが、ユーザーからはその複雑さが見えないようになっています。
 どちらも Hadoop on Azure に付属しています。
@@ -177,7 +177,6 @@ Big Data 分析は重要なので、Hadoop も重要です。Microsoft は、Had
   [Hadoop]: #hadoop
   [図 1]: #Fig1
   [BLOB の図]: ./media/cloud-storage/Data_01_Blobs.png
-  [http://\<\*StorageAccount]: http://<*StorageAccount
   [図 2]: #Fig2
   [仮想マシンでの SQL Server の図]: ./media/cloud-storage/Data_02_SQLSvrVM.png
   [図 3]: #Fig3

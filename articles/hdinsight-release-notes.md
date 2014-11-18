@@ -10,20 +10,20 @@
 
 ## 2014 年 10 月 7 日リリース
 
--   Ambari エンドポイントを使用するとき ([https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}][https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}])、*host\_name* フィールドはホスト名の代わりにノードの完全修飾ドメイン名 (FQDN) を返すようになりました。たとえば、"**headnode0**" を返す代わりに、FQDN "**headnode0.{ClusterDNS}.azurehdinsight.net**" を返します。この変更は、1 つの仮想ネットワーク (VNET) に HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。このシナリオは、Hadoop のバックエンド プラットフォームとして HBase を使用する場合などが該当します。
+-   Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}) を使用すると、*host\_name* フィールドがホスト名そのものではなくノードの完全修飾ドメイン名 (FQDN) を返します。たとえば、"**headnode0**" を返す代わりに、FQDN "**headnode0.{ClusterDNS}.azurehdinsight.net**" を返します。この変更は、1 つの仮想ネットワーク (VNET) に HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。このシナリオは、Hadoop のバックエンド プラットフォームとして HBase を使用する場合などが該当します。
 
 -   HDInsight クラスターの既定のデプロイメントのために、新しいメモリ設定が用意されています。前の既定のメモリ設定は、デプロイされる CPU コアの数についてガイダンスの考慮が適切ではありませんでした。既定の 4 CPU コア (8 コンテナー) HDInsight クラスターで使用される新しいメモリ設定を次の表に示します (前のリリースで使用された値もかっこ内に記載します)。
 
 | コンポーネント                    | メモリの割り当て                         |
 |-----------------------------------|------------------------------------------|
-| yarn.scheduler.minimum-allocation | 768 MB (以前は 512 MB)                   |
-| yarn.scheduler.maximum-allocation | 6144 MB (変更なし)                       |
-| yarn.nodemanager.resource.memory  | 6144 MB (変更なし)                       |
-| mapreduce.map.memory              | 768 MB (以前は 512 MB)                   |
+| yarn.scheduler.minimum-allocation | 768MB (以前は 512MB)                     |
+| yarn.scheduler.maximum-allocation | 6,144MB (変更なし)                       |
+| yarn.nodemanager.resource.memory  | 6,144MB (変更なし)                       |
+| mapreduce.map.memory              | 768MB (以前は 512MB)                     |
 | mapreduce.map.java.opts           | opts=-X m x 512 m (以前は -X m x 410 m)  |
-| mapreduce.reduce.memory           | 1536 MB (以前は 1024 MB)                 |
+| mapreduce.reduce.memory           | 1,536MB (以前は 1,024MB)                 |
 | mapreduce.reduce.java.opts        | opts=-X m x 1024 m (以前は -X m x 819 m) |
-| yarn.app.mapreduce.am.resource    | 768 MB (以前は 1024 MB)                  |
+| yarn.app.mapreduce.am.resource    | 768MB (以前は 1,024MB)                   |
 | yarn.app.mapreduce.am.command     | opts=-X m x 512 m (以前は -X m x 819 m)  |
 | mapreduce.task.io.sort            | 256 MB (以前は 200 MB)                   |
 | tez.am.resource.memory            | 1536 MB (変更なし)                       |
@@ -481,7 +481,6 @@ SQL Server JDBC ドライバーは HDInsight によって内部的に使用さ�
 
 -   HDInsight クラスター Version 1.6 は、[Hortonworks Data Platform 1.1][Hortonworks Data Platform 1.1] を基盤とする Hadoop ディストリビューションを使用します。
 
-  [https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}]: https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}
   [Determine HDP Memory Configuration Settings (HDP メモリ構成の設定の決定)]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1-latest/bk_installing_manually_book/content/rpm-chap1-11.html
   [互換性の問題]: https://social.msdn.microsoft.com/Forums/azure/en-US/a7de016d-8de1-4385-b89e-d2e7a1a9d927/hdinsight-powershellsdk-error-cluster-is-not-configured-for-http-services-access?forum=hdinsight
   [NuGet]: http://nuget.codeplex.com/wikipage?title=Getting%20Started

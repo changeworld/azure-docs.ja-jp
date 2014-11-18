@@ -361,11 +361,11 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 -   [Azure Search REST API][Azure Search REST API]
 
--   [Channel 9 video: Introduction to Azure Search (チャネル 9 ビデオ: Azure Search の概要)][Channel 9 video: Introduction to Azure Search (チャネル 9 ビデオ: Azure Search の概要)]
+-   [Channel 9 のビデオ: Introduction to Azure Search (Azure Search の概要)][Channel 9 のビデオ: Introduction to Azure Search (Azure Search の概要)]
 
--   [Channel 9 video: Azure Search and Geospatial Data (チャネル 9: Azure Search と地理空間データ)][Channel 9 video: Azure Search and Geospatial Data (チャネル 9: Azure Search と地理空間データ)]
+-   [Channel 9 のビデオ: Azure Search and Geospatial Data (Azure Search および地理空間データ)][Channel 9 のビデオ: Azure Search and Geospatial Data (Azure Search および地理空間データ)]
 
--   [Cloud Cover episode 152: Generate an index in Azure Search (クラウド カバー エピソード 152: Azure Search でのインデックスの生成)][Cloud Cover episode 152: Generate an index in Azure Search (クラウド カバー エピソード 152: Azure Search でのインデックスの生成)]
+-   [Cloud Cover のエピソード 152: Generate an index in Azure Search (Azure Search でのインデックス生成)][Cloud Cover のエピソード 152: Generate an index in Azure Search (Azure Search でのインデックス生成)]
 
 <!--Anchors--> <!--Image references--> <!--Link references-->
 
@@ -402,6 +402,6 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
   [Microsoft Azure で検索ソリューションを管理する]: ../search-manage/
   [Azure Search の技術概要]: http://msdn.microsoft.com/ja-jp/library/dn798933.aspx
   [Azure Search REST API]: http://msdn.microsoft.com/ja-jp/library/dn798935.aspx
-  [Channel 9 video: Introduction to Azure Search (チャネル 9 ビデオ: Azure Search の概要)]: http://channel9.msdn.com/Shows/Data-Exposed/Introduction-To-Azure-Search
-  [Channel 9 video: Azure Search and Geospatial Data (チャネル 9: Azure Search と地理空間データ)]: http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data
-  [Cloud Cover episode 152: Generate an index in Azure Search (クラウド カバー エピソード 152: Azure Search でのインデックスの生成)]: http://channel9.msdn.com/Shows/Cloud+Cover/Cloud-Cover-152-Azure-Search-with-Liam-Cavanagh
+  [Channel 9 のビデオ: Introduction to Azure Search (Azure Search の概要)]: http://channel9.msdn.com/Shows/Data-Exposed/Introduction-To-Azure-Search
+  [Channel 9 のビデオ: Azure Search and Geospatial Data (Azure Search および地理空間データ)]: http://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data
+  [Cloud Cover のエピソード 152: Generate an index in Azure Search (Azure Search でのインデックス生成)]: http://channel9.msdn.com/Shows/Cloud+Cover/Cloud-Cover-152-Azure-Search-with-Liam-Cavanagh

@@ -138,8 +138,8 @@ Curl を使用してクラスター情報を取得する例を以下に示しま
         "Hosts":{"cluster_name":"hdi0211v2.azurehdinsight.net",
                  "host_name":"headnode0.{ClusterDNS}.azurehdinsight.net"}}]}
 
-2014 年 10 月 8 日のリリースで、
-Ambari エンドポイントを使用するとき ([https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}][https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}])、*host\_name* フィールドがホスト名の代わりにノードの完全修飾ドメイン名 (FQDN) を返すようになりました。2014 年 10 月 8 日のリリースの前は、このサンプルは単純に "**headnode0**" を返しました。2014 年 10 月 8 日のリリースの後に、上の例に示すように FQDN である "**headnode0.{ClusterDNS}.azurehdinsight.net**" を取得するようになりました。この変更は、1 つの仮想ネットワーク (VNET) に HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。このシナリオは、Hadoop のバックエンド プラットフォームとして HBase を使用する場合などが該当します。
+2014 年 10 月 8 日のリリースの注意:
+Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}) を使用すると、*host\_name* フィールドがホスト名ではなくノードの完全修飾ドメイン名 (FQDN) を返します。2014 年 10 月 8 日のリリースの前は、このサンプルは単純に "**headnode0**" を返しました。2014 年 10 月 8 日のリリースの後に、上の例に示すように FQDN である "**headnode0.{ClusterDNS}.azurehdinsight.net**" を取得するようになりました。この変更は、1 つの仮想ネットワーク (VNET) に HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。このシナリオは、Hadoop のバックエンド プラットフォームとして HBase を使用する場合などが該当します。
 
 ## <span id="monitor"></span></a>Ambari での API の監視
 
@@ -347,7 +347,6 @@ HostRoles、component、host、metrics
   [Azure HDInsight の概要]: ../hdinsight-get-started/
   [HDInsight クラスターのプロビジョニング]: ../hdinsight-provision-clusters/
   [Jobtracker の出力]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png
-  [https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}]: https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}
   [管理ポータルを使用した HDInsight クラスターの管理]: ../hdinsight-administer-use-management-portal/
   [Azure PowerShell を使用した HDInsight クラスターの管理]: ../hdinsight-administer-use-powershell/
   [コマンド ライン インターフェイスを使用した HDInsight クラスターの管理]: ../hdinsight-administer-use-command-line/

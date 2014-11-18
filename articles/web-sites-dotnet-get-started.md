@@ -49,7 +49,7 @@ Azure アカウントは無料で開くことができます。また、まだ V
 
 2.  **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
 
-3.  **[新しいプロジェクト]** ダイアログ ボックスで、**[C#]** \> **[Web]** \> **[ASP.NET Web アプリケーション]** の順にクリックします。必要に応じて、**[Visual Basic]** を選択することもできます。
+3.  **[新しいプロジェクト]** ダイアログ ボックスで、**[C\#]** \> **[Web]** \> **[ASP.NET Web アプリケーション]** の順にクリックします。必要に応じて、**[Visual Basic]** を選択することもできます。
 
 4.  ターゲット フレームワークとして **.NET Framework 4.5** が選択されていることを確認します。
 
@@ -222,7 +222,7 @@ Azure アカウントは無料で開くことができます。また、まだ V
 
 [Azure の管理ポータル][Azure の管理ポータル]は、作成した Web サイトなどの Azure のサービスを管理および監視できる Web インターフェイスです。チュートリアルのこのセクションでは、ポータルで何ができるかを確認できます。
 
-1.  ブラウザーで、[][]<http://manage.windowsazure.com></a> に移動し、Azure 資格情報でサインインします。
+1.  ブラウザーで、[http://manage.windowsazure.com][http://manage.windowsazure.com] に移動し、Azure 資格情報でサインインします。
 
     このポータルには、Azure サービスの一覧が表示されます。
 
@@ -330,7 +330,7 @@ Azure アカウントは無料で開くことができます。また、まだ V
   [Click Publish]: ./media/web-sites-dotnet-get-started-vs2013/clickpublish.png
   [Web One Click Publish Toolbar]: ./media/web-sites-dotnet-get-started-vs2013/weboneclickpublish.png
   [Azure の管理ポータル]: /ja-jp/services/management-portal/
-  []: 
+  [http://manage.windowsazure.com]: 
   [Portal home page with new web site called out]: ./media/web-sites-dotnet-get-started-vs2013/portalhome.png
   [Portal web site dashboard tab]: ./media/web-sites-dotnet-get-started-vs2013/portaldashboard.png
   [[構成]]: /ja-jp/documentation/articles/web-sites-configure//

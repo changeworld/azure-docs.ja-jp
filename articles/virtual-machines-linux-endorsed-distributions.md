@@ -8,7 +8,7 @@ Azure ギャラリーにあるディストリビューション イメージは�
 
 ## Canonical
 
-[][]<http://www.ubuntu.com/cloud/azure></a>
+<http://www.ubuntu.com/cloud/azure>
 
 Canonical のエンジニアリングおよびオープン コミュニティ体制は、消費者向け個人クラウド サービスも含めて、クライアント、サーバー、およびクラウド コンピューティングにおける Ubuntu の成功を支えています。Canonical は、Ubuntu に関して、携帯電話、タブレット、テレビ、およびデスクトップで一貫したインターフェイスを備え、携帯電話からクラウドまで統一されたフリー プラットフォームにするというビジョンを持っているため、Ubuntu はパブリック クラウド プロバイダーから家電メーカーに至るまで多様な企業が最初に選択するディストリビューションとなり、個々の技術者のお気に入りとなっています。
 
@@ -16,19 +16,19 @@ Canonical のエンジニアリングおよびオープン コミュニティ体
 
 ## OpenLogic
 
-[][1]<http://www.openlogic.com/azure></a>
+<http://www.openlogic.com/azure>
 
 OpenLogic は、クラウドおよびデータ センター向けの企業オープン ソース ソリューションの一流プロバイダーです。OpenLogic は、多種多様な業界の一流企業数百社に対して、オープン ソース ソフトウェアを安全に入手し、サポートし、コントロールできるよう支援しています。OpenLogic は、600 種類のオープン ソース パッケージについて、OpenLogic Expert Community に支えられた商用品質のテクニカル サポートと保証を提供しています。たとえば、CentOS を企業レベルでサポートし、Azure に CentOS ベースのイメージを提供する開設時パートナー様でもあります。
 
 ## Oracle
 
-[][2]<http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html></a>
+<http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html>
 
 Oracle の戦略は、パブリック クラウドとプライベート クラウドに対して広範なソリューションを用意し、顧客が Oracle のクラウドや他社のクラウドにおいて Oracle のソフトウェアを柔軟にデプロイできるようにすることです。マイクロソフトと Oracle との提携により、お客様はマイクロソフトのパブリック クラウドおよびプライベート クラウドにおいて Oracle の保証とサポートの下で安心して Oracle のソフトウェアをデプロイできます。Oracle のパブリックおよびプライベート クラウド ソリューションに対する取り組みと投資が変わることはありません。
 
 ## SUSE
 
-[][3]<http://www.suse.com/suse-linux-enterprise-server-on-azure></a>
+<http://www.suse.com/suse-linux-enterprise-server-on-azure>
 
 SUSE Linux Enterprise Server on Azure は、クラウド コンピューティングで優れた信頼性とセキュリティを実現する実績あるプラットフォームです。SUSE の多機能な Linux プラットフォームは Azure クラウド サービスとシームレスに統合され、管理の容易なクラウド環境を実現します。SUSE Linux Enterprise Server には、1,800 社を超える独立系ソフトウェア ベンダーによる 9,200 本を超える公認アプリケーションが存在し、SUSE は、データ センターで実行されているワークロードを Azure に安心して自信を持って展開できることを保証しています。
 
@@ -125,7 +125,7 @@ CoreOS
 
 </td>
 <td>
-ソース: [GitHub][4]
+ソース: [GitHub][1]
 
 </td>
 </tr>
@@ -202,10 +202,6 @@ openSUSE 13.1+
 <sup>1</sup> **メモ:** Azure 上の CoreOS は、現在開発者プレビュー (*alpha*) の段階です。
 
   [このページ]: ../virtual-machines-linux-create-upload-vhd/
-  []: http://www.ubuntu.com/cloud/azure
-  [1]: http://www.openlogic.com/azure
-  [2]: http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html
-  [3]: http://www.suse.com/suse-linux-enterprise-server-on-azure
   [ここ]: http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409
   [Github]: https://github.com/azure/walinuxagent
   [Linux カーネル互換性パッチ]: http://go.microsoft.com/fwlink/?LinkID=403027&clcid=0x409
@@ -213,5 +209,5 @@ openSUSE 13.1+
   [GitHub]: http://go.microsoft.com/fwlink/p/?LinkID=250998
   [6.3 のみ必要]: http://go.microsoft.com/fwlink/?LinkID=275153&clcid=0x409
   [Open Logic パッケージ リポジトリ]: http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/
-  [4]: https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent
+  [1]: https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent
   [Cloud:Tools]: https://build.opensuse.org/project/show/Cloud:Tools

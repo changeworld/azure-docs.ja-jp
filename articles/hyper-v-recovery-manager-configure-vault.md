@@ -8,8 +8,8 @@
 
 Azure Site Recovery を使用して、VMM クラウド内の 内部設置型 Hyper-V ホスト サーバー上の仮想マシンを保護します。利用できる構成は、次のとおりです。
 
--   **オンプレミス間の保護** - 内部設置型仮想マシンを別の内部設置型サイトに複製します。Azure Site Recovery コンテナーに保護設定を構成し、有効にします。仮想マシンのデータが、内部設置型 Hyper-V サーバーから別の内部設置型 Hyper-V サーバーに複製されます。 このシナリオの詳細については、「[Azure の Hyper-V 回復マネージャーの構成][Azure の Hyper-V 回復マネージャーの構成]」を参照してください。
--   **オンプレミスと Azure 間の保護** - 内部設置型仮想マシンを Azure に複製します。Azure Site Recovery コンテナーに保護設定を構成し、有効にします。仮想マシンのデータが、内部設置型 Hyper-V サーバーから Azure ストレージに複製されます。このシナリオの詳細については、「[Getting Started with Azure Site Recovery: On-Premises to Azure Protection (Azure Site Recovery の概要: オンプレミスと Azure 間の保護)][Getting Started with Azure Site Recovery: On-Premises to Azure Protection (Azure Site Recovery の概要: オンプレミスと Azure 間の保護)]」を参照してください。
+-   **オンプレミス間の保護** - 内部設置型仮想マシンを別の内部設置型サイトに複製します。Azure Site Recovery コンテナーに保護設定を構成し、有効にします。仮想マシンのデータが、内部設置型 Hyper-V サーバーから別の内部設置型 Hyper-V サーバーに複製されます。 このシナリオの詳細については、「[Azure Site Recovery の概要: オンプレミス間の保護」を参照してください。][Azure Site Recovery の概要: オンプレミス間の保護」を参照してください。].
+-   **オンプレミスと Azure 間の保護** - 内部設置型仮想マシンを Azure に複製します。Azure Site Recovery コンテナーに保護設定を構成し、有効にします。仮想マシンのデータが、内部設置型 Hyper-V サーバーから Azure ストレージに複製されます。このシナリオの詳細については、「[Azure Site Recovery の概要: オンプレミスと Azure 間の保護」を参照してください。][Azure Site Recovery の概要: オンプレミスと Azure 間の保護」を参照してください。]
 
 ## <span id="about"></span></a>このチュートリアルについて
 
@@ -17,10 +17,10 @@ Azure Site Recovery を使用して、VMM クラウド内の 内部設置型 Hyp
 
 フル デプロイについての情報は、下記を参照してください。
 
--   [Plan for Azure Site Recovery Deployment (Azure Site Recovery のデプロイメントのプランニング)][Plan for Azure Site Recovery Deployment (Azure Site Recovery のデプロイメントのプランニング)] - フル デプロイを開始する前に完了する必要のあるプランニングの手順について説明しています。
+-   [Azure Site Recovery のデプロイ計画][Azure Site Recovery のデプロイ計画] - フル デプロイを開始する前に完了する必要のあるプランニングの手順について説明しています。
 -   [Azure Site Recovery のデプロイ: オンプレミス間の保護][Azure Site Recovery のデプロイ: オンプレミス間の保護] - フル デプロイを行うための手順を説明しています。
 
-このチュートリアルの使用中に問題が発生した場合は、wiki の記事「[Azure Site Recovery: Common Error Scenarios and Resolutions (Azure Site Recovery: 一般的なエラー シナリオと解決方法)][Azure Site Recovery: Common Error Scenarios and Resolutions (Azure Site Recovery: 一般的なエラー シナリオと解決方法)]」を参照するか、[Azure 復旧サービス フォーラム][Azure 復旧サービス フォーラム]に質問を投稿してください。
+このチュートリアルの使用中に問題が発生した場合は、wiki の記事「[Azure Site Recovery: Common Error Scenarios and Resolutions (Azure Site Recovery: 一般的なエラー シナリオと解決方法)][Azure Site Recovery: Common Error Scenarios and Resolutions (Azure Site Recovery: 一般的なエラー シナリオと解決方法)]」を参照するか、[Azure 復旧サービス フォーラム][Azure 復旧サービス フォーラム] に質問を投稿してください。
 
 </div>
 
@@ -43,9 +43,9 @@ Azure Site Recovery を使用して、VMM クラウド内の 内部設置型 Hyp
 
 前提条件を確認した後、以下の手順を実行します。
 
--   [手順 1.資格情報コンテナーの作成][手順 1.資格情報コンテナーの作成] — Azure Site Recovery 資格情報コンテナーを作成します。
+-   [手順 1.コンテナーの作成][手順 1.コンテナーの作成] - Azure Site Recovery コンテナーを作成します。
 -   [手順 2.プロバイダー アプリケーションのインストール][手順 2.プロバイダー アプリケーションのインストール] — 登録キーを生成し、その後、VMM サーバーで Microsoft Azure Site Recovery プロバイダー アプリケーションを実行します。プロバイダーがインストールされ、VMM サーバーがコンテナーに登録されます。
--   [手順 3.クラウドの保護の構成][手順 3.クラウドの保護の構成] — VMM クラウドの保護設定を構成します。
+-   [手順 3.クラウドの保護の構成][手順 3.クラウドの保護の構成] - VMM クラウドの保護設定を構成します。
 -   <a href="#networkmapping">手順 5.ネットワーク マッピングの構成 — 必要に応じて、ネットワーク マッピングを構成して、ソース VM ネットワークをターゲット VM ネットワークにマッピングできます。
 -   [手順 6.ストレージのマッピングの構成][手順 6.ストレージのマッピングの構成] — 必要に応じて、ストレージのマッピングを構成して、ソース VMM サーバー上の記憶域の分類をターゲット サーバー上の記憶域の分類にマッピングできます。
 -   [手順 7.仮想マシンの保護を有効にする][手順 7.仮想マシンの保護を有効にする] - 保護対象の VMM クラウドに配置された仮想マシンの保護を有効にします。
@@ -141,7 +141,7 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 
 6.  **[コピーの頻度]** では、既定の設定をそのまま使用します。この値は、ソースとターゲットの場所の間でデータが同期される頻度を指定します。この設定は、Hyper-V ホストが Windows Server 2012 R2 を実行している場合にのみ該当します。他のサーバーでは、5 分間という既定の設定が使用されます。
 7.  **[追加の復旧ポイント]** では、既定の設定をそのまま使用します。この値は、追加の復旧ポイントを作成するかどうかを指定します。既定値である 0 を使用する場合は、プライマリ仮想マシンに対応する最新の復旧ポイントのみが、レプリカのホスト サーバーに格納されます。
-8.  **[アプリケーションの整合性スナップショットの頻度]** では、既定の設定をそのまま使用します。この値は、スナップショットを作成する頻度を指定します。スナップショットは、ボリューム シャドウ コピー サービス (VSS) を使用して、スナップショットを作成するときにアプリケーションを一貫性のある状態に保ちます。チュートリアルでこの値を設定する場合は、構成する追加の復旧ポイントの値より小さくするように注意してください。
+8.  **[アプリケーションの整合性スナップショットの頻度]** では、既定の設定をそのまま使用します。この値は、スナップショットを作成する頻度を指定します。スナップショットは、ボリューム シャドウ コピー サービス (VSS) を使用して、スナップショットを作成するときにアプリケーションを一貫性のある状態に保ちます。チュートリアルでこの値を設定する場合は、構成する追加の復旧ポイントの値より小さくするようにしてください。
     ![Configure protection settings][Configure protection settings]
 9.  **[データ転送の圧縮]** で、転送されるレプリケート済みデータを圧縮するかどうかを指定します。
 10. **[認証]** で、プライマリおよび復旧用の Hyper-V ホスト サーバー間でトラフィックを認証する方法を指定します。動作している Kerberos 環境が既に構成済みの場合を除き、このチュートリアルでは、[HTTPS] を選択します。Azure Site Recovery は、HTTPS 認証に使用する証明書を自動的に構成します手動で構成する必要はありません。この設定は、Windows Server 2012 R2 で実行されている Hyper-V ホスト サーバーだけに関連することに注意してください。
@@ -196,20 +196,20 @@ VMM サーバーを登録した後、クラウドの保護設定を構成する�
 
 ## <span id="next"></span></a>次のステップ
 
--   完全な運用環境で Azure Site Recovery の計画と展開を実行するには、「[Planning Guide for Azure Site Recovery (Azure Site Recovery 計画ガイド)][Plan for Azure Site Recovery Deployment (Azure Site Recovery のデプロイメントのプランニング)]」と「[Deployment Guide for Azure Site Recovery (Azure Site Recovery デプロイ ガイド)][Azure Site Recovery のデプロイ: オンプレミス間の保護]」を参照してください。
+-   完全な運用環境で Azure Site Recovery の計画と展開を実行するには、「[Planning Guide for Azure Site Recovery (Azure Site Recovery 計画ガイド)][Azure Site Recovery のデプロイ計画]」と「[Deployment Guide for Azure Site Recovery (Azure Site Recovery デプロイ ガイド)][Azure Site Recovery のデプロイ: オンプレミス間の保護]」を参照してください。
 -   疑問がある場合は、「[Azure Recovery Services Forum (Azure 復旧サービス フォーラム)][Azure 復旧サービス フォーラム]」にアクセスしてください。
 
 </div>
 
-  [Azure の Hyper-V 回復マネージャーの構成]: http://go.microsoft.com/fwlink/?LinkId=398765
-  [Getting Started with Azure Site Recovery: On-Premises to Azure Protection (Azure Site Recovery の概要: オンプレミスと Azure 間の保護)]: http://go.microsoft.com/fwlink/?LinkId=398764
-  [Plan for Azure Site Recovery Deployment (Azure Site Recovery のデプロイメントのプランニング)]: http://go.microsoft.com/fwlink/?LinkId=321294
+  [Azure Site Recovery の概要: オンプレミス間の保護」を参照してください。]: http://go.microsoft.com/fwlink/?LinkId=398765
+  [Azure Site Recovery の概要: オンプレミスと Azure 間の保護」を参照してください。]: http://go.microsoft.com/fwlink/?LinkId=398764
+  [Azure Site Recovery のデプロイ計画]: http://go.microsoft.com/fwlink/?LinkId=321294
   [Azure Site Recovery のデプロイ: オンプレミス間の保護]: http://go.microsoft.com/fwlink/?LinkId=321295
   [Azure Site Recovery: Common Error Scenarios and Resolutions (Azure Site Recovery: 一般的なエラー シナリオと解決方法)]: http://go.microsoft.com/fwlink/?LinkId=389879
   [Azure 復旧サービス フォーラム]: http://go.microsoft.com/fwlink/?LinkId=313628
   [Azure の無料評価版]: http://aka.ms/try-azure
   [Azure Site Recovery Manager Pricing Details (Azure Site Recovery Manager の料金詳細)]: http://go.microsoft.com/fwlink/?LinkId=378268
-  [手順 1.資格情報コンテナーの作成]: #vault
+  [手順 1.コンテナーの作成]: #vault
   [手順 2.プロバイダー アプリケーションのインストール]: #download
   [手順 3.クラウドの保護の構成]: #clouds
   [手順 6.ストレージのマッピングの構成]: #storagemapping

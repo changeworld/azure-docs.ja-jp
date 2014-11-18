@@ -117,7 +117,7 @@ BLOB ストレージ内のファイルにアクセスするための URI スキ�
 
     wasb[s]://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>
 
-> [WACOM.NOTE] ストレージ エミュレーター (HDInsight エミュレーター上で実行) でファイルをアドレス指定するための構文は、*wasb:[//\<ContainerName\>@storageemulator][//\<ContainerName\>@storageemulator]* です。
+> [WACOM.NOTE] ストレージ エミュレーター (HDInsight エミュレーター上で実行) でファイルをアドレス指定するための構文は、*wasb://\<ContainerName\>@storageemulator* です。
 
 この URI スキームは、暗号化なしのアクセス (*wasb:* プレフィックス) と SSL で暗号化されたアクセス (*wasbs*) の両方に対応しています。同じ Azure データ センター内のデータにアクセスする場合でも、できる限り *wasbs* を使用することをお勧めします。
 
@@ -262,7 +262,6 @@ $clusterName = "<hdinsightclustername>"
   [HDI.QuickCreate]: ./media/hdinsight-use-blob-storage/HDI.QuickCreateCluster.png
   [HDI.CustomCreateStorageAccount]: ./media/hdinsight-use-blob-storage/HDI.CustomCreateStorageAccount.png
   [Azure PowerShell]: ../install-configure-powershell/
-  [//\<ContainerName\>@storageemulator]: mailto://<ContainerName>@storageemulator
   [Blob.PowerShell.コマンドレット]: ./media/hdinsight-use-blob-storage/HDI.PowerShell.BlobCommands.png
   [データを HDInsight にアップロードする方法]: ../hdinsight-upload-data/
   [HDInsight での Hive の使用]: ../hdinsight-use-hive/

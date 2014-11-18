@@ -55,7 +55,7 @@ File ストレージには次の構成要素があります。
 
 -   **URL 形式:** ファイルは次の URL 形式でアドレス指定
     されます。
-    <https://>`<storage account>`.file.core.windows.net/`<share>`/`<directory/directories>`/`<file>`
+    https://`<storage account>`.file.core.windows.net/`<share>`/`<directory/directories>`/`<file>`
 
     次の例の URL を使用すると、上の図のいずれかのファイルを
     アドレス指定できます。
@@ -158,7 +158,7 @@ Azure のファイル共有をマウントする方法を示すために、こ�
 
 Visual Studio で新しいコンソール アプリケーションを作成して Azure Storage NuGet パッケージをインストールするには、次の手順を実行します。
 
-1.  Visual Studio で、**[ファイル]**、**[新しいプロジェクト]** の順にクリックした後、**[Windows]** をクリックし、Visual C# テンプレートの一覧から **[コンソール アプリケーション]** をクリックします。
+1.  Visual Studio で、**[ファイル]**、**[新しいプロジェクト]** の順にクリックした後、**[Windows]** をクリックし、Visual C\# テンプレートの一覧から **[コンソール アプリケーション]** をクリックします。
 2.  コンソール アプリケーションの名前を入力して、**[OK]** をクリックします。
 3.  プロジェクトが作成されたら、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。"WindowsAzure.Storage" をオンライン検索し、**[インストール]** をクリックして Azure Storage のパッケージと依存関係をインストールします。
 

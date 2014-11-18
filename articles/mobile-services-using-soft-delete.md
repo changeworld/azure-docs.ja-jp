@@ -88,7 +88,7 @@ JavaScript バックエンドの既存のテーブルで論理削除を有効に
         }
     }
 
-.NET バックエンド Mobile Services でのジョブのスケジュール方法の詳細については、「[モバイル サービスでの繰り返し発生するジョブのスケジュール][モバイル サービスでの繰り返し発生するジョブのスケジュール]」(JavaScript バックエンド) を参照してください。
+.NET バックエンド Mobile Services でのジョブのスケジュール方法の詳細については、「[モバイル サービスでの繰り返し発生するジョブのスケジュール」(JavaScript バックエンド) を参照してください。][モバイル サービスでの繰り返し発生するジョブのスケジュール」(JavaScript バックエンド) を参照してください。]
 
 ## <a name="using-with-javascript"></a>JavaScript バックエンドでの論理削除の使用方法
 
@@ -127,7 +127,7 @@ HTTP 要求を介して削除済みレコードを取得するには、"\_\_incl
         }});
     }
 
-JavaScript バックエンド Mobile Services でのスケジュールされたジョブの詳細については、「[モバイル サービスでの繰り返し発生するジョブのスケジュール][3]」(JavaScript バックエンド) を参照してください。
+JavaScript バックエンド Mobile Services でのスケジュールされたジョブの詳細については、「[モバイル サービスでの繰り返し発生するジョブのスケジュール][モバイル サービスでの繰り返し発生するジョブのスケジュール]」(JavaScript バックエンド) を参照してください。
 
 <!-- Anchors. --> <!-- Images --> <!-- URLs. -->
 
@@ -143,5 +143,5 @@ JavaScript バックエンド Mobile Services でのスケジュールされた�
   [管理ポータル]: https://manage.windowsazure.com/
   [1]: ./media/mobile-services-using-soft-delete/enable-soft-delete-button.png
   [2]: ./media/mobile-services-using-soft-delete/disable-soft-delete.png
-  [モバイル サービスでの繰り返し発生するジョブのスケジュール]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-schedule-recurring-tasks/
-  [3]: /ja-jp/documentation/articles/mobile-services-schedule-recurring-tasks/
+  [モバイル サービスでの繰り返し発生するジョブのスケジュール」(JavaScript バックエンド) を参照してください。]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-schedule-recurring-tasks/
+  [モバイル サービスでの繰り返し発生するジョブのスケジュール]: /ja-jp/documentation/articles/mobile-services-schedule-recurring-tasks/

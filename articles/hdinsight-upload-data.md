@@ -77,7 +77,7 @@ Azure エクスプローラー ツールを使用すると、サイズが 0 バ�
 
 ## <span id="storageexplorer"></span></a>Azure ストレージ エクスプローラーを使用して BLOB ストレージにデータをアップロードする
 
-*Azure Storage エクスプローラー*は、Azure Storage 内のデータを調べたり、変更したりするときに役立つ便利なツールです。このツールは、[][]<http://azurestorageexplorer.codeplex.com/></a>から無料でダウンロードできます。
+*Azure Storage エクスプローラー*は、Azure Storage 内のデータを調べたり、変更したりするときに役立つ便利なツールです。このツールは、<http://azurestorageexplorer.codeplex.com/>から無料でダウンロードできます。
 
 Azure Storage エクスプローラーを使用するには、Azure Storage のアカウント名とアカウント キーを確認しておく必要があります。この情報を取得する方法については、「[ストレージ アカウントの管理][ストレージ アカウントの管理]」の「方法: ストレージ アクセス キーの表示、コピーおよび再生成」を参照してください。
 
@@ -198,7 +198,6 @@ Sqoop の使用法の詳細については、「[HDInsight と Hive の使用][H
   [Sqoop を使用して Azure SQL データベースから BLOB ストレージにデータをインポートする]: #sqoop
   [AzCopy をダウンロード]: http://aka.ms/WaCopy
   [Azure PowerShell のインストールおよび構成]: ../install-configure-powershell/
-  []: http://azurestorageexplorer.codeplex.com/ "Azure Storage エクスプローラー"
   [ストレージ アカウントの管理]: ../storage-manage-storage-account/
   [HDI.AzureStorageExplorer]: ./media/hdinsight-upload-data/HDI.AzureStorageExplorer.png
   [HDI.ASEAddAccount]: ./media/hdinsight-upload-data/HDI.ASEAddAccount.png

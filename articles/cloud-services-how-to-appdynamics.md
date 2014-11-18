@@ -43,7 +43,7 @@ AppDynamics にはコンポーネントが 2 つあります。
 
 Azure アカウント用の AppDynamics を登録するには、次に示している手順を実行します。
 
-1.  Azure Marketplace ([][]<https://datamarket.azure.com/browse/Applications></a>) で AppDynamics の **[無料試用]** または **[サインアップ]** をクリックします。
+1.  Azure Marketplace (<https://datamarket.azure.com/browse/Applications>) で AppDynamics の **[無料試用]** または **[サインアップ]** をクリックします。
 
     **[サインアップ]** をクリックした場合、Azure 用の AppDynamics Pro の無料版を受け取ります。機能は制限されておらず、30 日後に機能が制限された Azure 用の AppDynamics Lite の無料版にダウングレードされます。この場合、クレジット カード番号を入力する必要はありません。いつでも Azure 用の AppDynamics Pro にアップグレードできます。
 
@@ -151,7 +151,7 @@ AppDynamics でインストルメント化されたロール プロジェクト�
 
 マニュアルとビデオのリンクについては、AppDynamics アカウントのホーム ページを参照してください。
 
-この文書の最新版は、wiki 版 ([][1]<http://docs.appdynamics.com/display/ADAZ/How+To+Use+AppDynamics+for+Windows+Azure></a>) で参照できます。
+この文書の最新版は、wiki 版 (<http://docs.appdynamics.com/display/ADAZ/How+To+Use+AppDynamics+for+Windows+Azure>) で参照できます。
 
   [AppDynamics とは]: #what
   [前提条件]: #prereq
@@ -161,7 +161,5 @@ AppDynamics でインストルメント化されたロール プロジェクト�
   [AppDynamics でインストルメント化されたアプリケーションを Azure に発行する]: #publish
   [アプリケーションを監視する]: #monitor
   [AppDynamics の図]: ./media/cloud-services-how-to-appdynamics/addiagram.png
-  []: https://datamarket.azure.com/browse/Applications
   [常にコピーする]: ./media/cloud-services-how-to-appdynamics/adcopyalways.png
   [サービス定義]: ./media/cloud-services-how-to-appdynamics/adscreen.png
-  [1]: http://docs.appdynamics.com/display/ADAZ/How+To+Use+AppDynamics+for+Windows+Azure

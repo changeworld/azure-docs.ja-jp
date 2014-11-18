@@ -6,7 +6,7 @@
 
 ## 概要
 
-Azure には、Web サイトをホストするための方法がいくつかあります ([Azure Websites][Azure Websites]、[Cloud Services][Cloud Services]、[Virtual Machines][Virtual Machines])。それぞれの選択肢についてこの記事で理解を深め、実際の Web アプリケーションに適した方法をお選びください。
+Azure には、Web サイトをホストするための方法がいくつかあります ([Azure Websites][Azure Websites]、[Cloud Services][Cloud Services]、[Virtual Machines][Virtual Machines] など)。それぞれの選択肢についてこの記事で理解を深め、実際の Web アプリケーションに適した方法をお選びください。
 
 Azure Websites は、ほとんどの Web アプリケーションに適しています。デプロイメントと管理機能がそのプラットフォームに統合され、トラフィックの負荷に応じてサイトのスケールを機敏に調整できるほか、組み込みの負荷分散機能と Traffic Manager によって高い可用性が得られます。既にあるサイトは、[オンライン移行ツール][オンライン移行ツール]を使用して簡単に Azure Websites へ移行することができます。Web アプリケーション ギャラリーからオープン ソースのアプリケーションを使用したり、好きなフレームワークとツールを使用して新しいサイトを作成したりすることが可能です。アプリケーションには、[Web ジョブ][Web ジョブ]機能 (現在はプレビュー) を使用して簡単にバックグラウンド ジョブ処理を追加できます。
 

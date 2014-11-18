@@ -1,6 +1,6 @@
 <properties linkid="manage-scenarios-how-to-manage-websites" urlDisplayName="How to manage" pageTitle="How to manage websites - Microsoft Azure service management" metaKeywords="Azure portal website management" description="A reference for the Portal website management pages in Microsoft Azure. Details are provided for each website management page." metaCanonical="" services="web-sites" documentationCenter="" title="How to Manage Websites" authors="cephalin"  solutions="" writer="mwasson" manager="wpickett" editor=""  />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/18/2014" ms.author="mwasson"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/18/2014" ms.author="mwasson" />
 
 # <a name="howtomanage"></a>Azure 管理ポータルでの Web サイトの管理
 
@@ -199,7 +199,6 @@ FTP の完全なユーザー名は、“Web サイト\\ユーザー名” です
   [Web サイトの監視方法]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-monitor-websites/
   [FTP 資格情報]: #ftp-credentials
   [Web サイトの規模変更方法]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-scale-websites
-  [How to Use the WebJobs feature in Microsoft Azure Web Sites (Microsoft Azure の Web サイトで Web ジョブ機能を使用する方法)]: http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-create-web-jobs/
   [Web サイトの構成方法]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-configure-websites
   [Microsoft Azure の Web サイトのバックアップに関するページ]: http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-backup/
   [Microsoft Azure の Web サイトの復元]: http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-restore/

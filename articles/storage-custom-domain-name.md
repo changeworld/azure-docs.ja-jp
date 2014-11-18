@@ -4,7 +4,7 @@
 
 # Azure ストレージ アカウントの BLOB データのカスタム ドメイン名の構成
 
-Azure ストレージ アカウントの BLOB データにアクセスするためのカスタム ドメインを構成できます。BLOB サービスの既定のエンドポイントは <https://>\<*mystorageaccount*\>.blob.core.windows.net です。**www.contoso.com** などのカスタム ドメインおよびサブドメインをストレージ アカウントの BLOB エンドポイントにマッピングしている場合、ユーザーはそのドメインを使って、ストレージ アカウントの BLOB データにもアクセスできます。
+Azure ストレージ アカウントの BLOB データにアクセスするためのカスタム ドメインを構成できます。BLOB サービスの既定のエンドポイントは https://\<*mystorageaccount*\>.blob.core.windows.net です。**www.contoso.com** などのカスタム ドメインおよびサブドメインをストレージ アカウントの BLOB エンドポイントにマッピングしている場合、ユーザーはそのドメインを使って、ストレージ アカウントの BLOB データにもアクセスできます。
 
 <div class="dev-callout"> 
 <b>注</b> 
@@ -117,13 +117,13 @@ asverify サブドメインは、Azure で認識される特殊なサブドメ�
 
 カスタム ドメインが実際に BLOB サービス エンドポイントにマッピングされていることを確認するために、ストレージ アカウントのパブリック コンテナーで BLOB を作成します。そして、Web ブラウザーで、次の形式の URI を使って BLOB にアクセスします。
 
--   <http://>\<*subdomain.customdomain*\>/\<*mycontainer*\>/\<*myblob*\>
+-   http://\<*subdomain.customdomain*\>/\<*mycontainer*\>/\<*myblob*\>
 
 たとえば、
 **myforms** コンテナー内の BLOB にマッピングされている
 **photos.contoso.com** カスタム サブドメイン経由で Web フォームにアクセスするには、次の URI を使用します。
 
--   <http://photos.contoso.com/myforms/applicationform.htm>
+-   http://photos.contoso.com/myforms/applicationform.htm
 
 ## その他のリソース
 

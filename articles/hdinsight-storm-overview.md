@@ -36,7 +36,7 @@ Storm クラスターは、HDInsight や Hadoop から使用することが一�
 
 -   **ボルト** - **ストリーム**を利用し、**タプル**に対して処理を実行します。**ストリーム**を発する場合もあります。ボルトは、キュー、HDInsight HBase、BLOB、その他のデータ ストアなどの、外部ストレージへのデータの書き込みも処理します。
 
--   **Thrift** - Apache Thrift は、拡張性のある、多言語のサービス開発のためのソフトウェア フレームワークです。これを使用すると、C++、Java、Python、PHP、Ruby、Erlang、Perl、Haskell、C#、Cocoa、JavaScript、Node.js、Smalltalk、その他の言語の間で動作するサービスを構築できます。
+-   **Thrift** - Apache Thrift は、拡張性のある、多言語のサービス開発のためのソフトウェア フレームワークです。これを使用すると、C++、Java、Python、PHP、Ruby、Erlang、Perl、Haskell、C\#、Cocoa、JavaScript、Node.js、Smalltalk、その他の言語の間で動作するサービスを構築できます。
 
     -   **Nimbus** は Thrift サービスであり、**トポロジ**は Thrift の定義であるため、さまざまなプログラミング言語を使用してトポロジを開発できます。
 
@@ -72,7 +72,7 @@ HDInsight Storm クラスターは、.NET、Java、Python を既定でサポー�
 
 SCP は、.NET 開発者がトポロジ (スパウトとボルトを含む) を設計し実装できるプロジェクトです。SCP は、HDInsight Storm クラスターによって既定でサポートされています。
 
-SCP を使用した開発の詳細については、「[HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発][HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]」を参照してください。
+SCP を使用した開発の詳細については、「[HDInsight の Storm で SCP.NET と C\# を使用したストリーミング データ処理アプリケーションの開発][HDInsight の Storm で SCP.NET と C\# を使用したストリーミング データ処理アプリケーションの開発]」を参照してください。
 
 ### Java
 
@@ -126,7 +126,7 @@ Trident を使用している場合、これはタプルのバッチ処理を基
 
 -   [Storm と HDInsight を使用したセンサー データの分析][1]
 
--   [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発][HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]
+-   [HDInsight の Storm で SCP.NET と C\# を使用したストリーミング データ処理アプリケーションの開発][HDInsight の Storm で SCP.NET と C\# を使用したストリーミング データ処理アプリケーションの開発]
 
   [Apache Storm]: https://storm.incubator.apache.org
   [HDInsight (Hadoop) での Storm の使用]: /ja-jp/documentation/articles/hdinsight-storm-getting-started
@@ -135,7 +135,7 @@ Trident を使用している場合、これはタプルのバッチ処理を基
   [Distributed RPC (分散 RPC)]: https://storm.incubator.apache.org/documentation/Distributed-RPC.html
   [Scalable Advanced Massive Online Analysis (SAMOA) project (Scalable Advanced Massive Online Analysis (SAMOA) プロジェクト)]: http://yahooeng.tumblr.com/post/65453012905/introducing-samoa-an-open-source-platform-for-mining
   [他の言語をサポート]: https://storm.incubator.apache.org/about/multi-language.html
-  [HDInsight の Storm で SCP.NET と C# を使用したストリーミング データ処理アプリケーションの開発]: /ja-jp/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application
+  [HDInsight の Storm で SCP.NET と C\# を使用したストリーミング データ処理アプリケーションの開発]: /ja-jp/documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application
   [Trident tutorial (Trident のチュートリアル)]: https://storm.incubator.apache.org/documentation/Trident-tutorial.html
   [Guarantees on data processing (データ処理の保証)]: https://storm.apache.org/about/guarantees-data-processing.html
   [IBasicBolt]: https://storm.apache.org/apidocs/backtype/storm/topology/IBasicBolt.html

@@ -26,8 +26,8 @@ HDInsight の大きな利点の 1 つに、データ ストレージとコンピ
 -   [新規または既存の HDInsight クラスター上で Hive ジョブを実行する (M1)][新規または既存の HDInsight クラスター上で Hive ジョブを実行する (M1)]
 -   [Sqoop を使用して出力結果を Azure SQL Database にエクスポートする (M2)][Sqoop を使用して出力結果を Azure SQL Database にエクスポートする (M2)]
 -   [次のステップ][次のステップ]
--   [付録 A: フライト遅延データを Azure BLOB ストレージにアップロードする (A1)][付録 A: フライト遅延データを Azure BLOB ストレージにアップロードする (A1)]
--   [付録 B: HiveQL スクリプトを作成してアップロードする (A2)][付録 B: HiveQL スクリプトを作成してアップロードする (A2)]
+-   [付録 A: Azure BLOB ストレージへのフライト遅延データのアップロード (A1)][付録 A: Azure BLOB ストレージへのフライト遅延データのアップロード (A1)]
+-   [付録 B: HiveQL スクリプトの作成とアップロード (A2)][付録 B: HiveQL スクリプトの作成とアップロード (A2)]
 
 ## <span id="prerequisite"></span></a>前提条件
 
@@ -252,7 +252,7 @@ Hadoop はバッチ処理です。Hive ジョブの実行方法としては、�
 -   [HDInsight での Sqoop の使用][HDInsight での Sqoop の使用]
 -   [HDInsight での Pig の使用][HDInsight での Pig の使用]
 -   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]
--   [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)][Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)]
+-   [Develop C\# Hadoop streaming programs for HDInsight (HDInsight 用 C\# Hadoop ストリーミング プログラムの開発)][Develop C\# Hadoop streaming programs for HDInsight (HDInsight 用 C\# Hadoop ストリーミング プログラムの開発)]
 
 ## <span id="appendix-a"></span></a>付録 A: フライト遅延データを Azure BLOB ストレージにアップロードする
 
@@ -860,11 +860,11 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 
         Write-host "`nEnd of the PowerShell script" -ForegroundColor Green
 
-    > WACOM.NOTE このスクリプトは、REST サービス (<http://bot.whatismyipaddress.com>) を使用して外部 IP アドレスを取得します。SQL Database サーバーのファイアウォール ルールを作成する際に、その IP アドレスを使用します。
+    > [WACOM.NOTE] このスクリプトは REST サービスの 1 つである http://bot.whatismyipaddress.com を使用して外部 IP アドレスを取得します。SQL Database サーバーのファイアウォール ルールを作成する際に、その IP アドレスを使用します。
 
     スクリプトには次の定数が使用されています。
 
-    -   **$ipAddressRestService**: 既定値は <u><http://bot.whatismyipaddress.com></u>。外部 IP アドレスを取得するためのパブリック IP アドレス (Rest サービス) です。必要に応じて他のサービスを使用することもできます。このサービスを使用して取得した外部 IP アドレスは、Azure SQL データベース サーバーのファイアウォール ルールを作成する際に使用され、ご利用のワークステーションから (PowerShell スクリプトを使用して) データベースへのアクセスが許可されます。
+    -   **$ipAddressRestService**: 既定値は <u>http://bot.whatismyipaddress.com</u>。外部 IP アドレスを取得するためのパブリック IP アドレス (Rest サービス) です。必要に応じて他のサービスを使用することもできます。このサービスを使用して取得した外部 IP アドレスは、Azure SQL データベース サーバーのファイアウォール ルールを作成する際に使用され、ご利用のワークステーションから (PowerShell スクリプトを使用して) データベースへのアクセスが許可されます。
     -   **$fireWallRuleName**: Azure SQL データベース サーバーのファイアウォール ルールの名前。既定の名前は <u>FlightDelay</u> です。この名前は必要に応じて変更できます。
     -   **$sqlDatabaseMaxSizeGB**: この値は、新しい Azure SQL データベース サーバーを作成するときにのみ使用されます。既定値は <u>10 GB</u> です。このチュートリアルにはこれで十分です。
     -   **$sqlDatabaseName**: この値は、新しい Azure SQL データベースを作成するときにのみ使用されます。既定値は <u>HDISqoop</u> です。この名前を変更した場合は、Sqoop PowerShell スクリプトにも反映する必要があります。
@@ -891,8 +891,8 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
   [新規または既存の HDInsight クラスター上で Hive ジョブを実行する (M1)]: #runjob
   [Sqoop を使用して出力結果を Azure SQL Database にエクスポートする (M2)]: #exportdata
   [次のステップ]: #nextsteps
-  [付録 A: フライト遅延データを Azure BLOB ストレージにアップロードする (A1)]: #appdendix-a
-  [付録 B: HiveQL スクリプトを作成してアップロードする (A2)]: #appendix-b
+  [付録 A: Azure BLOB ストレージへのフライト遅延データのアップロード (A1)]: #appdendix-a
+  [付録 B: HiveQL スクリプトの作成とアップロード (A2)]: #appendix-b
   [Azure PowerShell のインストールおよび構成に関するページ]: ../install-configure-powershell/
   [HDInsight での Azure BLOB ストレージの使用]: ../hdinsight-use-blob-storage/
   [HDInsight での Hadoop クラスターのプロビジョニング]: ../hdinsight-provision-clusters/
@@ -907,4 +907,4 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
   [HDInsight での Sqoop の使用]: ../hdinsight-use-sqoop/
   [HDInsight での Pig の使用]: ../hdinsight-use-pig/
   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]: ../hdinsight-develop-deploy-java-mapreduce/
-  [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
+  [Develop C\# Hadoop streaming programs for HDInsight (HDInsight 用 C\# Hadoop ストリーミング プログラムの開発)]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/

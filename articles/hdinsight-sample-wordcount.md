@@ -186,7 +186,7 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 -   [Azure HDInsight の概要][Azure HDInsight の概要]
 -   [サンプル: 10 GB GraySort][サンプル: 10 GB GraySort]
 -   [サンプル: Pi 推定][サンプル: Pi 推定]
--   [サンプル: C# ストリーミング][サンプル: C# ストリーミング]
+-   [サンプル: C\# ストリーミング][サンプル: C\# ストリーミング]
 -   [HDInsight での Pig の使用][HDInsight での Pig の使用]
 -   [HDInsight での Hive の使用][HDInsight での Hive の使用]
 -   [Azure HDInsight SDK のドキュメント][Azure HDInsight SDK のドキュメント]
@@ -202,7 +202,7 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
   [HDI.Sample.WordCount.Output]: ./media/hdinsight-sample-wordcount/HDI.Sample.WordCount.Output.png
   [サンプル: 10 GB GraySort]: ../hdinsight-sample-10gb-graysort/
   [サンプル: Pi 推定]: ../hdinsight-sample-pi-estimator/
-  [サンプル: C# ストリーミング]: ../hdinsight-sample-csharp-streaming/
+  [サンプル: C\# ストリーミング]: ../hdinsight-sample-csharp-streaming/
   [HDInsight での Pig の使用]: ../hdinsight-use-pig/
   [HDInsight での Hive の使用]: ../hdinsight-use-hive/
   [Azure HDInsight SDK のドキュメント]: http://msdnstage.redmond.corp.microsoft.com/ja-jp/library/dn479185.aspx

@@ -98,9 +98,7 @@ LAMP スタックは次のさまざまな要素で構成されています。
 
 Ubuntu 上での LAMP スタックの設定については多くのリソースがあります。
 
--   [][]<https://help.ubuntu.com/community/ApacheMySQLPHP></a>
--   [][1]<http://fedorasolved.org/server-solutions/lamp-stack></a>
+-   <https://help.ubuntu.com/community/ApacheMySQLPHP>
+-   <http://fedorasolved.org/server-solutions/lamp-stack>
 
   [エンドポイントの構成]: http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-set-up-endpoints/
-  []: https://help.ubuntu.com/community/ApacheMySQLPHP
-  [1]: http://fedorasolved.org/server-solutions/lamp-stack

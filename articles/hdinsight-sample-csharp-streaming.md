@@ -2,9 +2,9 @@
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev" />
 
-# HDInsight での C# ストリーミング ワードカウント Hadoop サンプル
+# HDInsight での C\# ストリーミング ワードカウント Hadoop サンプル
 
-Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語 map 関数と reduce 関数を記述することができます。このチュートリアルでは、Hadoop ストリーミング インターフェイスを使用する MapReduce プログラムを C# で記述する方法、および Azure PowerShell コマンドレットを使用して Azure HDInsight でプログラムを実行する方法を紹介します。
+Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語 map 関数と reduce 関数を記述することができます。このチュートリアルでは、Hadoop ストリーミング インターフェイスを使用する MapReduce プログラムを C\# で記述する方法、および Azure PowerShell コマンドレットを使用して Azure HDInsight でプログラムを実行する方法を紹介します。
 
 この例では、mapper と reducer はどちらも [stdin][stdin] から入力を (1 行ずつ) 読み取り、出力を [stdout][stdin] に書き込む実行可能ファイルです。プログラムはテキスト内の単語すべての出現数を計算します。
 
@@ -16,8 +16,8 @@ Hadoop ストリーミング インターフェイスの詳細については、
 
 **学習内容:**
 
--   Azure PowerShell を使用して C# ストリーミング プログラムを実行し、ファイルに含まれるデータを HDInsight で分析する方法。
--   Hadoop ストリーミング インターフェイスを使用する C# コードの記述方法。
+-   Azure PowerShell を使用して C\# ストリーミング プログラムを実行し、ファイルに含まれるデータを HDInsight で分析する方法。
+-   Hadoop ストリーミング インターフェイスを使用する C\# コードの記述方法。
 
 **前提条件**:
 
@@ -32,7 +32,7 @@ Hadoop ストリーミング インターフェイスの詳細については、
 このトピックでは、サンプルを実行する方法について説明し、MapReduce プログラムの Java コードを示し、説明した内容をまとめ、次の手順の概略を示します。ここで取り上げる内容は次のとおりです。
 
 1.  [Azure PowerShell を使用したサンプルの実行][Azure PowerShell を使用したサンプルの実行]
-2.  [Hadoop ストリーミングの C# コード][Hadoop ストリーミングの C# コード]
+2.  [Hadoop ストリーミングの C\# コード][Hadoop ストリーミングの C\# コード]
 3.  [まとめ][まとめ]
 4.  [次のステップ][次のステップ]
 
@@ -84,7 +84,7 @@ Hadoop ストリーミング インターフェイスの詳細については、
 
     MapReduce ジョブの出力ファイルは不変であることに注意してください。そのため、このサンプルを再実行する場合は、出力ファイルの名前を変更する必要があります。
 
-## <span id="java-code"></span></a>Hadoop ストリーミングの C# コード
+## <span id="java-code"></span></a>Hadoop ストリーミングの C\# コード
 
 MapReduce プログラムでは、cat.exe アプリケーションを map インターフェイスとして使ってコンソールにテキストをストリーミングし、wc.exe アプリケーションを reduce インターフェイスとして使って、文書からストリーミングされた単語の数を計算します。mapper と reducer はどちらも標準入力ストリーム (stdin) から 1 行ずつ文字を読み取って、標準出力ストリーム (stdout) に書き込みます。
 
@@ -166,7 +166,7 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
   [HDInsight クラスターのプロビジョニング]: ../hdinsight-provision-clusters/
   [Azure PowerShell のインストールおよび構成]: ../install-configure-powershell/
   [Azure PowerShell を使用したサンプルの実行]: #run-sample
-  [Hadoop ストリーミングの C# コード]: #java-code
+  [Hadoop ストリーミングの C\# コード]: #java-code
   [まとめ]: #summary
   [次のステップ]: #next-steps
   [StreamReader]: http://msdn.microsoft.com/ja-jp/library/system.io.streamreader.aspx

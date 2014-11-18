@@ -8,7 +8,7 @@
 
 > [WACOM.NOTE] HDInsight Emulator には Hadoop クラスターのみが含まれます。HBase は含まれません。
 
-HDInsight Emulator は、Azure HDInsight 用のローカル開発環境を提供します。Hadoop に慣れている場合は、HDFS を使用して Emulator を使い始めることができます。HDInsight では、既定のファイル システムが Azure BLOB ストレージ (WASB: Azure Storage - BLOB) であるため、最終的には WASB を使用してジョブを開発することになります。WASB を HDInsight Emulator で使うには、HDInsight Emulator の構成を変更する必要があります。
+HDInsight Emulator は、Azure HDInsight 用のローカル開発環境を提供します。Hadoop に慣れている場合は、HDFS を使用して Emulator を使い始めることができます。HDInsight では、既定のファイル システムが Azure BLOB ストレージ (WASB: Azure Storage - BLOB) です。そのため、最終的には WASB を使用してジョブを開発することになります。WASB を HDInsight Emulator で使うには、HDInsight Emulator の構成を変更する必要があります。
 
 > [WACOM.NOTE] HDInsight Emulator では 1 つのノードでのデプロイのみが使用できます。
 
@@ -149,7 +149,7 @@ HDInsight Emulator をインストールすると、Windows 上の Apache Hadoop
 
 ### <a name="scenarios"></a> IIS W3C ログ データのシナリオ
 
-W3C シナリオでは、IIS W3C ログ データを、1 MB (小)、500 MB (中)、2 GB (大) の 3 つのサイズで生成し、HDFS または WASB にインポートします。3 種類のジョブがあり、それぞれを C#、Java、Pig、および Hive で実装します。
+W3C シナリオは、IIS W3C ログ データを 3 つのサイズ (1 MB (S)、500 MB (M)、2 GB(L)) で生成し、HDFS または WASB にインポートします。3 種類のジョブがあり、それぞれを C\#、Java、Pig、および Hive で実装します。
 
 -   **totalhits**: 所定のページに対する要求の総数を計算します。
 -   **avgtime**: ページあたりの要求にかかかった平均時間 (秒単位) を計算します。
@@ -194,7 +194,7 @@ PowerShell スクリプトの importdata.ps1 を使用して、データを生�
 
 ### <a name="javamapreduce"></a>Java MapReduce ジョブの実行
 
-MapReduce は Hadoop の基本的計算エンジンです。既定で Java で実装されていますが、C# を使用する .NET および Hadoop Streaming を活用した例もあります。MapReduce ジョブを実行する構文は次のとおりです。
+MapReduce は Hadoop の基本的計算エンジンです。既定で Java で実装されていますが、C\# を使用する .NET および Hadoop Streaming を活用した例もあります。MapReduce ジョブを実行する構文は次のとおりです。
 
     hadoop jar <jarFileName>.jar <className> <inputFiles> <outputFolder>
 
@@ -547,7 +547,7 @@ Hadoop ジョブを送信する例を次に示します。
     $hdinsightJob = <JobDefinition>
     Start-AzureHDInsightJob -Cluster http://localhost:50111 -Credential $creds -JobDefinition $hdinsightJob
 
-Get-Credential を呼び出すと入力画面が表示されます。ユーザー名として **hadoop** を使用する必要があります。パスワードは任意の文字列でかまいません。クラスター名は常に **<http://localhost:50111>** です。
+Get-Credential を呼び出すと入力画面が表示されます。ユーザー名として **hadoop** を使用する必要があります。パスワードは任意の文字列でかまいません。クラスター名は常に **http://localhost:50111** です。
 
 Hadoop ジョブの送信方法の詳細については、「[プログラムによる Hadoop ジョブの送信][プログラムによる Hadoop ジョブの送信]」を参照してください。HDInsight PowerShell コマンドレットの詳細については、「[HDInsight cmdlet reference (HDInsight コマンドレット リファレンス)][HDInsight cmdlet reference (HDInsight コマンドレット リファレンス)]」を参照してください。
 
@@ -557,7 +557,7 @@ Hadoop ジョブの送信方法の詳細については、「[プログラムに
 
 -   [Azure の HDInsight の概要][Azure の HDInsight の概要]
 -   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]
--   [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発][HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発]
+-   [HDInsight 用 C\# Hadoop ストリーミング MapReduce プログラムの開発][HDInsight 用 C\# Hadoop ストリーミング MapReduce プログラムの開発]
 -   [HDInsight Emulator リリース ノート][HDInsight Emulator のリリース ノート]
 -   [HDInsight について議論する MSDN フォーラム][HDInsight について議論する MSDN フォーラム]
 
@@ -586,5 +586,5 @@ Hadoop ジョブの送信方法の詳細については、「[プログラムに
   [HDInsight cmdlet reference (HDInsight コマンドレット リファレンス)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn479228.aspx
   [Azure の HDInsight の概要]: ../hdinsight-get-started/
   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]: ../hdinsight-develop-deploy-java-mapreduce/
-  [HDInsight 用 C# Hadoop ストリーミング MapReduce プログラムの開発]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
+  [HDInsight 用 C\# Hadoop ストリーミング MapReduce プログラムの開発]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
   [HDInsight について議論する MSDN フォーラム]: http://social.msdn.microsoft.com/Forums/en-US/hdinsight

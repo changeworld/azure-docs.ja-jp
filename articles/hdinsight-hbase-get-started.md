@@ -30,7 +30,7 @@ HBase は、ビッグ データのオンライン トランザクション処理
 -   [Azure ポータルで HBase クラスターをプロビジョニングする][Azure ポータルで HBase クラスターをプロビジョニングする]
 -   [HBase シェルから HBase サンプル テーブルを作成する][HBase シェルから HBase サンプル テーブルを作成する]
 -   [Hive を使用して HBase テーブルを照会する][Hive を使用して HBase テーブルを照会する]
--   [HBase C# API を使用して HBase テーブルを作成し、テーブルからデータを取得する][HBase C# API を使用して HBase テーブルを作成し、テーブルからデータを取得する]
+-   [HBase C\# API を使用して HBase テーブルを作成し、テーブルからデータを取得する][HBase C\# API を使用して HBase テーブルを作成し、テーブルからデータを取得する]
 -   [まとめ][まとめ]
 -   [参照トピック][参照トピック]
 
@@ -130,9 +130,9 @@ HBase は、ビッグ データのオンライン トランザクション処理
 3.  以前書き留めたジョブの開始時刻よりも少し後の最終変更時刻の GUID 番号をクリックします。この GUID をメモしておきます。これは、次のセクションで必要になります。
 4.  **stdout** ファイルには、次のセクションで必要なデータが含まれています。必要な場合は、**stdout** をクリックして、このデータ ファイルのコピーをダウンロードできます。
 
-## <a name="hbase-powershell"></a>HBase C# API を使用して HBase テーブルを作成し、テーブルからデータを取得する
+## <a name="hbase-powershell"></a>HBase C\# API を使用して HBase テーブルを作成し、テーブルからデータを取得する
 
-Marlin は、REST API 上のシン レイヤーで、C# の ProtoBuf を使用して HBase との対話を処理します。Marlin プロジェクトを github からダウンロードして、HBase .NET SDK を使用してプロジェクトをビルドする必要があります。
+Marlin は、REST API 上のシン レイヤーで、C\# の ProtoBuf を使用して HBase との対話を処理します。Marlin プロジェクトを github からダウンロードして、HBase .NET SDK を使用してプロジェクトをビルドする必要があります。
 
 1.  [Marlin のプロジェクト ページ][Marlin のプロジェクト ページ]の [Download the Marlin project] に説明されているビルド手順に従います。プロジェクトをローカル ディレクトリに解凍します。
 
@@ -142,7 +142,7 @@ Marlin は、REST API 上のシン レイヤーで、C# の ProtoBuf を使用�
 
 3.  右上の [オンライン] ボックスで protobuf-net を検索し、v2.0.0.68 をインストールします。**ソリューション エクスプローラー**で **Marlin** プロジェクトを右クリックし、**[ビルド]** を選択して、Marlin プロジェクトをビルドします。
 
-4.  ビルドされた marlin.dll を取得して、C# プロジェクトに追加します。
+4.  ビルドされた marlin.dll を取得して、C\# プロジェクトに追加します。
 
 5.  次のように、クラスターの資格情報を使用して Marlin の新しいインスタンスを作成し、クラスター バージョンを取得します。
 
@@ -190,7 +190,7 @@ Marlin は、REST API 上のシン レイヤーで、C# の ProtoBuf を使用�
 
 ## <a name="summary"></a>まとめ
 
-このチュートリアルでは、HBase クラスターのプロビジョニング方法、テーブルの作成方法、および作成したテーブルのデータを HBase シェルから表示する方法について学習しました。また、Hive を使用して HBase テーブルのデータを照会する方法、および HBase C# API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
+このチュートリアルでは、HBase クラスターのプロビジョニング方法、テーブルの作成方法、および作成したテーブルのデータを HBase シェルから表示する方法について学習しました。また、Hive を使用して HBase テーブルのデータを照会する方法、および HBase C\# API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
 
 ## <a name="next"></a>参照トピック
 
@@ -208,7 +208,7 @@ HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL 
   [Azure ポータルで HBase クラスターをプロビジョニングする]: #create-hbase-cluster
   [HBase シェルから HBase サンプル テーブルを作成する]: #create-sample-table
   [Hive を使用して HBase テーブルを照会する]: #hive-query
-  [HBase C# API を使用して HBase テーブルを作成し、テーブルからデータを取得する]: #hbase-powershell
+  [HBase C\# API を使用して HBase テーブルを作成し、テーブルからデータを取得する]: #hbase-powershell
   [まとめ]: #summary
   [参照トピック]: #next
   [Azure の管理ポータル]: https://manage.windowsazure.com/

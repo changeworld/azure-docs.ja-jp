@@ -49,7 +49,7 @@ API の作成と構成は、Azure の管理ポータルから API Management コ
 新しい API を構成するには、次の 3 つのフィールドを使用します。
 
 -   **[Web API タイトル]** ボックスに「**My Echo API**」と入力します。**[Web API タイトル]** は、API に対する一意のわかりやすい名前です。開発者ポータルと管理ポータルには、この名前が表示されます。
--   **[Web サービスの URL]** に「**<http://echoapi.cloudapp.net/api>**」と入力します。**[Web サービスの URL]** は、API が実装されている HTTP サービスの URL です。要求は、API Management によってこのアドレスに転送されます。
+-   **[Web サービスの URL]** に「**http://echoapi.cloudapp.net/api**」と入力します。**[Web サービスの URL]** は、API が実装されている HTTP サービスの URL です。要求は、API Management によってこのアドレスに転送されます。
 -   **[Web API URL サフィックス]** に「**myecho**」と入力します。**[Web API URL サフィックス]** は、API Management サービスのベース URL に付加されます。ご利用の API は、共通のベース URL を持ち、その後ろに付加された一意のサフィックスによって識別されます。
 
 **[保存]** をクリックすると API が作成されます。新しい API が作成されると、その API の概要ページが管理ポータルに表示されます。

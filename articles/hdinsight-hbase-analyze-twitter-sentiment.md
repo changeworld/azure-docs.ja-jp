@@ -19,7 +19,7 @@ Big Data の多くはソーシャル Web サイトからもたらされます。
 
     特定のキーワードを使用してツイートを照会し、ツイートで表明された意見の感情が肯定的、否定的、中立のどれであるかを取得できます。
 
-Visual Studio ソリューションの完全なサンプルは、[][]<https://github.com/maxluk/tweet-sentiment></a> に示されています。
+Visual Studio ソリューションの完全なサンプルは、<https://github.com/maxluk/tweet-sentiment> に示されています。
 
 ## この記事の内容
 
@@ -51,7 +51,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 **Twitter アプリケーション ID とシークレットを作成するには**
 
-1.  [][1]<https://apps.twitter.com/></a> にサインインします。Twitter アカウントを持っていない場合は、**[今すぐ登録]** リンクをクリックします。
+1.  <https://apps.twitter.com/> にサインインします。Twitter アカウントを持っていない場合は、**[今すぐ登録]** リンクをクリックします。
 2.  **[Create New App]** をクリックします。
 3.  **名前**、**説明**、**Web サイト**を入力します。[Website] フィールドは実際には使用しません。有効な URL である必要はありません。次のテーブルは使用する値のサンプルを示しています。
 
@@ -80,8 +80,8 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 2.  **[ファイル]** メニューの **[新規]** をポイントし、**[プロジェクト]** をクリックします。
 3.  次の値を入力または選択します。
 
-    -   テンプレート: **Visual C#**
-    -   テンプレート: **コンソール アプリケーション**
+    -   テンプレート: **Visual C\#**
+    -   Template:**コンソール アプリケーション**
     -   名前: **TweetSentimentStreaming**
     -   場所: **C:\\Tutorials**
     -   ソリューション名: **TweetSentimentStreaming**
@@ -96,7 +96,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
         Install-Package TweetinviAPI
         Install-Package protobuf-net 
 
-    > [WACOM.NOTE] Microsoft Hbase SDK Nuget パッケージは、2014 年 8 月 26 日現在使用できません。Github リポジトリは [][2]<https://github.com/hdinsight/hbase-sdk-for-net></a> にあります。この SDK が使用可能になるまでは、dll を自分でビルドする必要があります。手順については、[HDInsight で Hadoop の HBase を使用して開始する][HDInsight で Hadoop の HBase を使用して開始する]を参照してください。
+    > [WACOM.NOTE] Microsoft Hbase SDK Nuget パッケージは、2014 年 8 月 26 日現在使用できません。Github リポジトリは <https://github.com/hdinsight/hbase-sdk-for-net> にあります。この SDK が使用可能になるまでは、dll を自分でビルドする必要があります。手順については、[HDInsight で Hadoop の HBase を使用して開始する][HDInsight で Hadoop の HBase を使用して開始する]を参照してください。
 
 3.  **ソリューション エクスプローラー**で **[参照]** を右クリックし、**[参照の追加]** をクリックします。
 4.  左のウィンドウで **[アセンブリ]** を展開し、**[フレームワーク]** をクリックします。
@@ -413,7 +413,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 **センチメント辞書ファイルをダウンロードするには**
 
-1.  [][]<https://github.com/maxluk/tweet-sentiment></a> を参照します。
+1.  <https://github.com/maxluk/tweet-sentiment> を参照します。
 2.  **[ZIP のダウンロード]** をクリックします。
 3.  このファイルをローカルに解凍します。
 4.  ファイルを **../tweet-sentiment/SimpleStreamingService/data/dictionary/dictionary.tsv** からコピーします。
@@ -437,7 +437,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 2.  **[ファイル]**、**[新規]**、**[プロジェクト]** の順にクリックします。
 3.  次のように入力します。
 
-    -   テンプレート カテゴリ: **Visual C#/Web**
+    -   テンプレート カテゴリ: **Visual C\#/Web**
     -   テンプレート: **ASP.NET Web アプリケーション**
     -   名前: **TweetSentimentWeb**
     -   場所: **C:\\Tutorials**
@@ -459,7 +459,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
         Install-Package protobuf-net 
 
-    > [WACOM.NOTE] Microsoft Hbase SDK Nuget パッケージは、2014 年 8 月 20 日現在使用できません。Github リポジトリは [][2]<https://github.com/hdinsight/hbase-sdk-for-net></a> にあります。この SDK が使用可能になるまでは、dll を自分でビルドする必要があります。手順については、[HDInsight で Hadoop の HBase を使用して開始する][HDInsight で Hadoop の HBase を使用して開始する]を参照してください。
+    > [WACOM.NOTE] Microsoft Hbase SDK Nuget パッケージは、2014 年 8 月 20 日現在使用できません。Github リポジトリは <https://github.com/hdinsight/hbase-sdk-for-net> にあります。この SDK が使用可能になるまでは、dll を自分でビルドする必要があります。手順については、[HDInsight で Hadoop の HBase を使用して開始する][HDInsight で Hadoop の HBase を使用して開始する]を参照してください。
 
 **HBaseReader クラスを追加するには**
 
@@ -577,7 +577,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 5.  **HBaseReader** クラス内で、以下の定数値を変更します。
 
-    -   **CLUSTERNAME**: HBase クラスター名。たとえば、*<https://><hbaseclustername>.azurehdinsight.net/* などです。
+    -   **CLUSTERNAME**: HBase クラスター名。たとえば、*https://<hbaseclustername>.azurehdinsight.net/* などです。
     -   **HADOOPUSERNAME**: HBase クラスターの Hadoop ユーザーのユーザー名。既定の名前は *admin* です。
     -   **HADOOPUSERPASSWORD**: HBase クラスターの Hadoop ユーザーのパスワード。
     -   **HBASETABLENAME** = "tweets\_by\_words";
@@ -621,7 +621,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 1.  **ソリューション エクスプローラー**で **[TweetSentimentWeb]** を展開します。
 2.  **[スクリプト]** を右クリックし、**[追加]**、**[JavaScript ファイル]** の順にクリックします。
 3.  [項目名] に、**heatmap.js** と入力します。
-4.  以下のコードをコピーして、ファイルに貼り付けます。このコードの作成者は Alastair Aitchison です。詳しくは、[][3]<http://alastaira.wordpress.com/2011/04/15/bing-maps-ajax-v7-heatmap-library/></a> を参照してください。
+4.  以下のコードをコピーして、ファイルに貼り付けます。このコードの作成者は Alastair Aitchison です。詳しくは、<http://alastaira.wordpress.com/2011/04/15/bing-maps-ajax-v7-heatmap-library/> を参照してください。
 
         /*******************************************************************************
         * Author: Alastair Aitchison
@@ -1205,13 +1205,12 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 -   [HDInsight の使用][HDInsight の使用]
 -   [HDInsight での Hadoop を使用した Twitter データの分析][HDInsight での Hadoop を使用した Twitter データの分析]
 -   [HDInsight を使用したフライトの遅延データの分析][HDInsight を使用したフライトの遅延データの分析]
--   [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)][Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)]
+-   [Develop C\# Hadoop streaming programs for HDInsight (HDInsight 用 C\# Hadoop ストリーミング プログラムの開発)][Develop C\# Hadoop streaming programs for HDInsight (HDInsight 用 C\# Hadoop ストリーミング プログラムの開発)]
 -   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)][Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]
 
   [センチメントを分析]: http://en.wikipedia.org/wiki/Sentiment_analysis
   [0]: ./media/hdinsight-hbase-analyze-twitter-sentiment/AppArchitecture.png
   [hdinsight.hbase.twitter.sentiment.bing.map]: ./media/hdinsight-hbase-analyze-twitter-sentiment/TwitterSentimentBingMap.png
-  [0]: https://github.com/maxluk/tweet-sentiment
   [前提条件]: #prerequisites
   [Twitter アプリケーションを作成する]: #twitter
   [簡単な Twitter ストリーミング サービスを作成する]: #streaming
@@ -1220,16 +1219,13 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
   [HDInsight で Hadoop の HBase を使用して開始する]: ../hdinsight-hbase-get-started/
   [Visual Studio のインストール]: http://msdn.microsoft.com/ja-jp/library/e2h7fzkw.aspx
   [OAuth]: http://oauth.net/
-  [1]: https://apps.twitter.com/
   [hdi.hbase.twitter.sentiment.twitter.app]: ./media/hdinsight-hbase-analyze-twitter-sentiment/TwitterApp.png
   [Tweetinvi]: https://www.nuget.org/packages/TweetinviAPI/
   [Protobuf-net]: https://www.nuget.org/packages/protobuf-net/
-  [2]: https://github.com/hdinsight/hbase-sdk-for-net
   [hdinsight.hbase.twitter.sentiment.streaming.service]: ./media/hdinsight-hbase-analyze-twitter-sentiment/StreamingService.png
-  [3]: http://alastaira.wordpress.com/2011/04/15/bing-maps-ajax-v7-heatmap-library/
   [Azure Web Sites と ASP.NET の使用]: ../web-sites-dotnet-get-started/
   [HDInsight の使用]: ../hdinsight-get-started/
   [HDInsight での Hadoop を使用した Twitter データの分析]: ../hdinsight-analyze-twitter-data/
   [HDInsight を使用したフライトの遅延データの分析]: ../hdinsight-analyze-flight-delay-data/
-  [Develop C# Hadoop streaming programs for HDInsight (HDInsight 用 C# Hadoop ストリーミング プログラムの開発)]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
+  [Develop C\# Hadoop streaming programs for HDInsight (HDInsight 用 C\# Hadoop ストリーミング プログラムの開発)]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]: ../hdinsight-develop-deploy-java-mapreduce/

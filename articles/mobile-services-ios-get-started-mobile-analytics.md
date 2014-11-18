@@ -10,7 +10,7 @@
 
 このチュートリアルでは、[Capptain][Capptain] を使用して、モバイル分析機能をアプリに追加します。モバイル分析によって、ユーザーがアプリとやり取りしている方法と、アクティビティが最大のセクションを判別できます。これらのデータの取得を開始するには、Capptain SDK を使用してアプリをインストルメントします。
 
-> [AZURE.NOTE] マイクロソフトが所有する Capptain.com は、Azure Mobile Services Standard レベルのお客様を対象として、月間最大 100,000 アクティブ ユーザーにモバイル アプリの分析を無償で提供しています。このサービスを利用するための詳細な手順については、<mobileservices@microsoft.com> にお問い合わせください。以下のチュートリアルでは、Capptain.com 機能の概要と、それらの使用方法に関する手順を説明します。
+> [AZURE.NOTE] マイクロソフトが所有する Capptain.com は、Azure Mobile Services Standard レベルのお客様を対象として、月間最大 100,000 アクティブ ユーザーにモバイル アプリの分析を無償で提供しています。このサービスを利用するための詳細な手順については、mobileservices@microsoft.com に問い合わせのメールをお送りください。以下のチュートリアルでは、Capptain.com 機能の概要と、それらの使用方法に関する手順を説明します。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
@@ -54,7 +54,7 @@
 
 ## <a name="instrument"></a>UIViewController のオーバーロード
 
-1.  プロジェクト内で `UIViewController` の子を見つけ、それぞれ代わりに `CapptainViewController` から継承していることを確認します。
+1.  プロジェクト内で `UIViewController` の子を見つけ、それぞれかわりに `CapptainViewController` から継承していることを確認します。
 
         #import <UIKit/UIKit.h>
         #import "CapptainViewController.h"
@@ -74,7 +74,7 @@
 
 ## 次のステップ
 
-Capptain がアプリに対して実行できる機能の詳細については、[][Capptain]<http://www.capptain.com></a> を参照してください。
+Capptain がアプリに対して実行できる機能の詳細については、<http://www.capptain.com> を参照してください。
 
 <!-- Anchors. --> <!-- URLs. -->
 

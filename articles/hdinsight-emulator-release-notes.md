@@ -1,21 +1,11 @@
-<properties urlDisplayName="HDInsight Emulator release notes" pageTitle="リリース ノート: Microsoft HDInsight Emulator for Azure | Azure" metaKeywords="hdinsight, Azure hdinsight, hdinsight azure, get started hdinsight, emulator, hdinsight emulator" description="HDInsight Emulator の最新リリースについての最新情報を入手します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" title="リリース ノート: Microsoft HDInsight Emulator for Azure" authors="jgao" />
+<properties linkid="hdinsight-emulator-release-notes" urlDisplayName="HDInsight Emulator release notes" pageTitle="Release notes: Microsoft HDInsight Emulator for Azure | Azure" metaKeywords="hdinsight, Azure hdinsight, hdinsight azure, get started hdinsight, emulator, hdinsight emulator" description="Get late-breaking information about the most recent releases of the HDInsight Hadoop Emulator." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" title="Release notes: Microsoft HDInsight Emulator for Azure" authors="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/03/2014" ms.author="jgao" />
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="cgronlun" />
 
 # リリース ノート: Microsoft HDInsight Emulator for Azure
 
 > [WACOM.NOTE]
 > バージョン番号を確認する最も簡単な方法は、[プログラムの追加と削除] で [Microsoft HDInsight Emulator for Azure] (Version 1.0.0.0 以上の場合) または [Microsoft HDInsight 開発者プレビュー] (Version 1.0.0.0 未満の場合) の項目を探すことです。
-
-## v2.0.0.0、2014 年 8 月 29 日リリース
-
--   このリリースでは、Version 3.1 で現在サービスが提供されているのと同じセットの Hadoop プロジェクトを対象とするように HDInsight Emulator が更新されました。
-
--   この製品のプレビュー リリースと同様に、このリリースも引き続き開発者シナリオを対象としており、そのため単一ノード デプロイメントのみをサポートします。
-
-### 新機能
-
--   サービスの Version 3.1 に対応させるために [Hadoop コンポーネントのバージョンが更新][Hadoop コンポーネントのバージョンが更新]されました。これには、Hive 0.13 と Tez のサポートが含まれます。
 
 ## v1.0.0.0、2013 年 10 月 28 日リリース
 
@@ -90,13 +80,13 @@
 -   ローカル HDInsight インストール上の REST API エンドポイントと Azure HDInsight サービスは、同じサービスについて異なるポート番号でアクセスされます。
 
     ローカル:
-    Oozie: <http://localhost:11000/oozie/v1/admin/status>
-    Templeton: <http://localhost:50111/templeton/v1/status>
+    Oozie: http://localhost:11000/oozie/v1/admin/status
+    Templeton: http://localhost:50111/templeton/v1/status
     ODBC: DSN 構成または接続文字列でポート 10000 を使用します。
 
     HDInsight サービス:
-    Oozie: <http://ServerFQDN:563/oozie/v1/admin/status>
-    Templeton: <http://ServerFQDN:563/templeton/v1/status>
+    Oozie: http://ServerFQDN:563/oozie/v1/admin/status
+    Templeton: http://ServerFQDN:563/templeton/v1/status
     ODBC: DSN 構成または接続文字列でポート 563 を使用します。
 
 -   ローカル クラスター上の ASV の構成
@@ -143,7 +133,7 @@
 
             %HADOOP_NODE%\stop-onebox.cmd && %HADOOP_NODE%\start-onebox.cmd
 
-    3.  asv:[//{container}@{account}/{path][//{container}@{account}/{path]} というフル URI を使用してそのアカウントにある任意のファイルにアクセスします (HTTPS を使用してデータにアクセスする場合は asvs://)。例:
+    3.  asv://{container}@{account}/{path} というフル URI を使用してそのアカウントにある任意のファイルにアクセスします (HTTPS を使用してデータにアクセスする場合は asvs://)。例:
 
             hadoop fs -lsr 
             asvs://MyHadoopOnAzureContainerName@MyHadoopOnAzureAccountName/example/data/
@@ -188,7 +178,7 @@
 
 -   JavaScript コンソールの読み込みに失敗します。
 
-    -   一部のインストールで、ページに HTTP 404 エラーが表示され JavaScript コンソールの読み込みに失敗します。この問題を回避するには、コンソールを使用して <http://localhost:8080> に直接移動します。
+    -   一部のインストールで、ページに HTTP 404 エラーが表示され JavaScript コンソールの読み込みに失敗します。この問題を回避するには、コンソールを使用して http://localhost:8080 に直接移動します。
 -   HDInsight ダッシュボードに移動するとログイン プロンプトが表示されます。
 
     -   HDInsight ダッシュボードに移動すると、ログイン ダイアログ ボックスが表示されるという報告がいくつかありました。その場合は、現在のユーザーのログイン情報を入力すると、ダッシュボードに移動できます。
@@ -255,7 +245,6 @@
 
 -   [HDInsight Emulator の概要][HDInsight Emulator の概要]
 
-  [Hadoop コンポーネントのバージョンが更新]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/
   []: http://azure.microsoft.com/ja-jp/documentation/services/hdinsight/
   [//{container}@{account}/{path]: mailto://{container}@{account}/{path
   [HDInsight Emulator の概要]: ../hdinsight-get-started-emulator/

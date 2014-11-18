@@ -24,15 +24,15 @@ Azure Storage には、BLOB ストレージ、テーブル ストレージ、キ
 
 ストレージ アカウントの*エンドポイント*とは、BLOB、テーブル、またはキューにアクセスするための最高レベルの名前空間です。ストレージ アカウントに対応する既定のエンドポイントでは、次の書式を使用します。
 
--   BLOB サービス: <http://*mystorageaccount>\*.blob.core.windows.net
+-   BLOB サービス: http://*mystorageaccount*.blob.core.windows.net
 
--   テーブル サービス: <http://*mystorageaccount>\*.table.core.windows.net
+-   テーブル サービス: http://*mystorageaccount*.table.core.windows.net
 
--   キュー サービス: <http://*mystorageaccount>\*.queue.core.windows.net
+-   キュー サービス: http://*mystorageaccount*.queue.core.windows.net
 
--   ファイル サービス: <http://*mystorageaccount>\*.file.core.windows.net
+-   ファイル サービス: http://*mystorageaccount*.file.core.windows.net
 
-ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。たとえば、BLOB アドレスは次の形式になることがあります。<http://*mystorageaccount>*.blob.core.windows.net/*mycontainer*/*myblob\*
+ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。たとえば、BLOB アドレスは次の形式になることがあります。http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*
 
 ### ストレージ アカウントのセキュリティ
 

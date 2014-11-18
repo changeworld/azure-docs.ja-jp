@@ -123,14 +123,14 @@ Azure オートメーション チームはさまざまな Runbook サンプル�
 
 # Runbook からの Azure サービスの管理
 
-この例では、Azure サービスを管理しない簡単な Runbook を示しています。[Azure コマンドレット][Azure PowerShell コマンドレット] は Azure の認証を要求します。Azure オートメーションによる管理のために Azure サブスクリプションを構成するには、「[Azure オートメーション: Azure Active Directory を使用して Azure を認証する][Azure オートメーション: Azure Active Directory を使用して Azure を認証する]」の指示に従います。
+この例では、Azure サービスを管理しない簡単な Runbook を示しています。[Azure コマンドレット][Azure PowerShell コマンドレット] は Azure の認証を要求します。Azure オートメーションによる管理のために Azure サブスクリプションを構成するには、「[Azure Automation: Authenticating to Azure using Azure Active Directory (Azure オートメーション: Azure Active Directory を使用して Azure を認証する)][Azure オートメーション: Azure Active Directory を使用して Azure を認証する]」の指示に従います。
 
 # 関連項目
 
 -   [オートメーションの概要][オートメーションの概要]
 -   [Runbook 作成ガイド (英語)][Runbook 作成ガイド (英語)]
 -   [オートメーション フォーラム][オートメーション フォーラム]
--   [Azure オートメーション: Azure Active Directory を使用して Azure を認証する][Azure オートメーション: Azure Active Directory を使用して Azure を認証する]
+-   [Azure Automation: Authenticating to Azure using Azure Active Directory (Azure オートメーション: Azure Active Directory を使用して Azure を認証する)][Azure オートメーション: Azure Active Directory を使用して Azure を認証する]
 
   [オートメーション概要ガイドに関するページ]: http://go.microsoft.com/fwlink/p/?LinkId=392861
   [Azure PowerShell コマンドレット]: http://msdn.microsoft.com/ja-jp/library/jj156055.aspx
