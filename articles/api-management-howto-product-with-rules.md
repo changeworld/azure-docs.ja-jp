@@ -1,6 +1,6 @@
 <properties pageTitle="How to create and configure advanced product settings in Azure API Management" metaKeywords="" description="Learn how to configure a product with quota and rate limit policies." metaCanonical="" services="" documentationCenter="API Management" title="How to create and configure advanced product settings in Azure API Management" authors="sdanie" solutions="" manager="" editor="" />
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie"></tags>
+<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
 
 # Azure API Management で成果物を作成して詳細設定を行う方法
 
@@ -10,13 +10,13 @@ Azure API Management (プレビュー) では、API 発行者の要件に応じ�
 
 ## このトピックの内容
 
--   [成果物の作成][]
--   [成果物への API の追加][]
--   [呼び出しレート制限ポリシーとクォータ ポリシーの構成][]
--   [成果物の発行][]
--   [成果物のサブスクリプションを開発者アカウントに追加する][]
--   [操作の呼び出しとレート制限のテスト][]
--   [次のステップ][]
+-   [成果物の作成][成果物の作成]
+-   [成果物への API の追加][成果物への API の追加]
+-   [呼び出しレート制限ポリシーとクォータ ポリシーの構成][呼び出しレート制限ポリシーとクォータ ポリシーの構成]
+-   [成果物の発行][成果物の発行]
+-   [成果物のサブスクリプションを開発者アカウントに追加する][成果物のサブスクリプションを開発者アカウントに追加する]
+-   [操作の呼び出しとレート制限のテスト][操作の呼び出しとレート制限のテスト]
+-   [次のステップ][次のステップ]
 
 ## <a name="create-product"> </a>成果物の作成
 
@@ -24,17 +24,17 @@ Azure API Management (プレビュー) では、API 発行者の要件に応じ�
 
 最初に、ご利用の API Management サービスの Azure ポータルで **[管理コンソール]** をクリックします。API Management の管理ポータルが表示されます。
 
-> まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][]」チュートリアルの「[API Management インスタンスの作成][]」を参照してください。
+> まだ API Management サービス インスタンスを作成していない場合は、「[Azure API Management の使用][Azure API Management の使用]」チュートリアルの「[API Management インスタンスの作成][API Management インスタンスの作成]」を参照してください。
 
-![API Management console][]
+![API Management console][API Management console]
 
 左側の **[API Management]** メニューにある **[成果物]** をクリックして、**[成果物]** ページを表示します。
 
-![Add product][]
+![Add product][Add product]
 
 **[成果物の追加]** をクリックして **[新しい成果物の追加]** ポップアップ ウィンドウを表示します。
 
-![Add new product][]
+![Add new product][Add new product]
 
 **[タイトル]** ボックスに「**Free Trial**」と入力します。
 
@@ -44,13 +44,13 @@ Azure API Management (プレビュー) では、API 発行者の要件に応じ�
 
 すべての値を入力したら、**[保存]** をクリックして成果物を作成します。
 
-![Product added][]
+![Product added][Product added]
 
 **Administrators** グループのユーザーには、新しい成果物が既定で表示されます。ここでは、**Developers** グループを追加します。**[無料評価版]** をクリックし、**[表示]** タブを選択します。
 
-> API Management では、開発者に成果物の表示を許可するかどうかが、グループを使用して管理されます。成果物の表示の可否はグループに対して付与されます。開発者は、自分が所属するグループから見える成果物を表示してサブスクライブすることができます。詳細については、「[How to create and use groups in Azure API Management (Azure API Management でグループを作成して使用する方法)][]」を参照してください。
+> API Management では、開発者に成果物の表示を許可するかどうかが、グループを使用して管理されます。成果物の表示の可否はグループに対して付与されます。開発者は、自分が所属するグループから見える成果物を表示してサブスクライブすることができます。詳細については、「[How to create and use groups in Azure API Management (Azure API Management でグループを作成して使用する方法)][How to create and use groups in Azure API Management (Azure API Management でグループを作成して使用する方法)]」を参照してください。
 
-![Add developers group][]
+![Add developers group][Add developers group]
 
 **[Developers]** グループのチェック ボックスをオンにし、**[保存]** をクリックします。
 
@@ -58,37 +58,37 @@ Azure API Management (プレビュー) では、API 発行者の要件に応じ�
 
 このチュートリアル ステップでは、新しい無料評価版の成果物に Echo API を追加します。
 
-> それぞれの API Management サービス インスタンスには、Echo API があらかじめ構成されています。API Management を体験、学習する目的で使用することができます。詳細については、「[Azure API Management の使用][]」を参照してください。
+> それぞれの API Management サービス インスタンスには、Echo API があらかじめ構成されています。API Management を体験、学習する目的で使用することができます。詳細については、「[Azure API Management の使用][Azure API Management の使用]」を参照してください。
 
 成果物を構成するには、左側の **[API Management]** メニューにある **[成果物]** をクリックし、**[無料評価版]** をクリックします。
 
-![Configure product][]
+![Configure product][Configure product]
 
 **[成果物への API の追加]** をクリックします。
 
-![Add API to product][]
+![Add API to product][Add API to product]
 
 **[Echo API]** のチェック ボックスをオンにし、**[保存]** をクリックします。
 
-![Add Echo API][]
+![Add Echo API][Add Echo API]
 
 ## <a name="policies"> </a>呼び出しレート制限ポリシーとクォータ ポリシーの構成
 
 レート制限とクォータは、ポリシー エディターで構成します。左側の **[API Management]** メニューの **[ポリシー]** をクリックし、**[ポリシーの対象となる成果物]** ボックスの一覧の **[無料評価版]** を選択します。
 
-![Product policy][]
+![Product policy][Product policy]
 
 **[ポリシーの追加]** をクリックしてポリシー テンプレートをインポートし、レート制限とクォータ ポリシーの作成を開始します。
 
-![Add policy][]
+![Add policy][Add policy]
 
 ポリシーを挿入し、ポリシー テンプレートの **inbound** または **outbound** セクションにカーソルを置きます。レート制限ポリシーとクォータ ポリシーは inbound ポリシーなので、カーソルを inbound 要素に置きます。
 
-![Policy editor][]
+![Policy editor][Policy editor]
 
 このチュートリアルでは、**[呼び出しレート制限]** と **[使用量クォータの設定]** という 2 つのポリシーを追加します。
 
-![Policy statements][]
+![Policy statements][Policy statements]
 
 **inbound** ポリシー要素にカーソルを置いたら、**[呼び出しレート制限]** の横の矢印をクリックしてそのポリシー テンプレートを挿入します。
 
@@ -153,17 +153,17 @@ Azure API Management (プレビュー) では、API 発行者の要件に応じ�
 
 必要なポリシーが完成したら、**[保存]** をクリックします。
 
-![Save policy][]
+![Save policy][Save policy]
 
 ## <a name="publish-product"> </a> 成果物の発行
 
 API を追加し、ポリシーを構成したら、準備は完了です。その成果物は、開発者が使用できる状態にあります。成果物を発行すると、開発者がそれを利用できるようになります。成果物を構成するには、左側の **[API Management]** メニューにある **[成果物]** をクリックし、**[無料評価版]** をクリックします。
 
-![Configure product][]
+![Configure product][Configure product]
 
 **[発行]** をクリックし、**[はい。発行します]** をクリックして確定します。
 
-![Publish product][]
+![Publish product][Publish product]
 
 ## <a name="subscribe-account"> </a>成果物のサブスクリプションを開発者アカウントに追加する
 
@@ -173,11 +173,11 @@ API を追加し、ポリシーを構成したら、準備は完了です。そ�
 
 左側の **[API Management]** メニューにある **[開発者]** をクリックし、目的の開発者アカウントの名前をクリックします。この例では、**Clayton Gragg** という開発者アカウントを使用します。
 
-![Configure developer][]
+![Configure developer][Configure developer]
 
 **[サブスクリプションの追加]** をクリックします。
 
-![Add subscription][]
+![Add subscription][Add subscription]
 
 **[無料評価版]** の横のチェック ボックスをオンにし、**[サブスクライブ]** をクリックします。
 
@@ -187,7 +187,7 @@ API を追加し、ポリシーを構成したら、準備は完了です。そ�
 
 無料評価版成果物の構成と発行は以上で完了です。今度は、いくつかの操作を呼び出して、レート制限ポリシーをテストしてみましょう。右上のメニューにある **[開発者ポータル]** をクリックして開発者ポータルに切り替えてください。
 
-![開発者ポータル][]
+![開発者ポータル][開発者ポータル]
 
 上部のメニューで **[API]** をクリックし、**[Echo API]** を選択します。
 
@@ -197,17 +197,17 @@ API を追加し、ポリシーを構成したら、準備は完了です。そ�
 
 **[GET Resource]** 操作を選択し、**[コンソールを開く]** をクリックします。
 
-![Open console][]
+![Open console][Open console]
 
 既定のパラメーターの値はそのままにし、対象となる**無料評価版**の成果物のサブスクリプション キーを選択します。
 
-![Subscription key][]
+![Subscription key][Subscription key]
 
 > 複数のサブスクリプションがある場合は、必ず、**[無料評価版]** のキーを選択してください。そうしないと、これまでの手順で構成したポリシーが有効になりません。
 
 **[HTTP Get]** をクリックして応答を確認します。**[応答のステータス]** が "**200 OK**" と表示されることに注目してください。
 
-![Operation results][]
+![Operation results][Operation results]
 
 呼び出しレート制限ポリシー (1 分間に 10 回) を超える頻度で **[HTTP Get]** をクリックします。レート制限ポリシーを超えると、応答ステータスとして "**429 要求が多すぎます**" が返されます。
 
@@ -219,7 +219,7 @@ API を追加し、ポリシーを構成したら、準備は完了です。そ�
 
 ## <a name="next-steps"> </a>次のステップ
 
--   「[Azure API Management の詳細な構成について][]」チュートリアルにあるその他のトピックもチェックしてください。
+-   「[Azure API Management の詳細な構成について][Azure API Management の詳細な構成について]」チュートリアルにあるその他のトピックもチェックしてください。
 
   [成果物の作成]: #create-product
   [成果物への API の追加]: #add-api

@@ -27,7 +27,7 @@
 
 アプリケーションによってはデータの保存が必要になる場合があります。そのためには、前の手順で作成した仮想マシンにデータ ディスクを接続します。最も簡単な方法は、仮想マシンに空のデータ ディスクを接続することです。
 
-Linux では通常、リソース ディスクは Azure Linux エージェントによって管理され、**/mnt/resource** (または Ubuntu イメージでは **/mnt**) に自動的にマウントされます。一方、Linux では、データ ディスクはカーネルによって、`/dev/sdc` という名前が付けられる場合があります。その場合、ユーザーはこのリソースをパーティション分割し、フォーマットした上で、マウントする必要があります。詳細については、[Azure Linux エージェント ユーザー ガイド)][Azure Linux エージェント ユーザー ガイド)]を参照してください。
+Linux では通常、リソース ディスクは Azure Linux エージェントによって管理され、**/mnt/resource** (または Ubuntu イメージでは **/mnt**) に自動的にマウントされます。一方、Linux では、データ ディスクはカーネルによって、`/dev/sdc` という名前が付けられる場合があります。その場合、ユーザーはこのリソースをパーティション分割し、フォーマットした上で、マウントする必要があります。詳細については、[Azure Linux エージェント ユーザー ガイド][Azure Linux エージェント ユーザー ガイド]を参照してください。
 
 > [WACOM.NOTE] データをリソース ディスクに格納しないでください。このディスクはアプリケーションとプロセス用の一時的なストレージであり、スワップ ファイルなど、保持する必要のないデータが格納されます。データ ディスクは、ページ BLOB の .vhd ファイルの形で Azure Storage に存在し、データ保護のためにストレージの冗長性を提供します。詳細については、「[ディスクおよびイメージの管理][ディスクおよびイメージの管理]」を参照してください。
 
@@ -145,7 +145,7 @@ Linux では通常、リソース ディスクは Azure Linux エージェント
   [Find SSH details]: ./media/virtual-machines-Linux-tutorial-log-on-attach-disk/SSHdetails.png
   [Enter the host name and port information]: ./media/virtual-machines-Linux-tutorial-log-on-attach-disk/putty.png
   [Log on to the new virtual machine]: ./media/virtual-machines-Linux-tutorial-log-on-attach-disk/sshlogin.png
-  [Azure Linux エージェント ユーザー ガイド)]: http://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/linux-agent-guide/
+  [Azure Linux エージェント ユーザー ガイド]: http://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/linux-agent-guide/
   [ディスクおよびイメージの管理]: http://msdn.microsoft.com/ja-jp/library/jj672979.aspx
   [Define disk details]: ./media/virtual-machines-Linux-tutorial-log-on-attach-disk/attachnewdisklinux.png
   [Attach disk success]: ./media/virtual-machines-Linux-tutorial-log-on-attach-disk/attachemptysuccess.png

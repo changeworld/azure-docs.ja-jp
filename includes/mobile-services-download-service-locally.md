@@ -1,12 +1,12 @@
-1.  [Azure の管理ポータル][]で、新しいモバイル サービスまたはそのクラウド アイコン タブをクリックして、[概要] ページに移動します。
+1.  [Azure の管理ポータル][Azure の管理ポータル]で、新しいモバイル サービスまたはそのクラウド アイコン タブをクリックして、[概要] ページに移動します。
 
-    ![][]
+    ![][0]
 
 2.  **[Android]** プラットフォームをクリックします。**[作業の開始]** セクションで、**[新しい Android アプリを作成する]** を展開します。
 
     ![][1]
 
-3.  [Visual Studio Professional 2013][] 以降をダウンロードしてインストールします (まだインストールしていない場合)。
+3.  [Visual Studio Professional 2013][Visual Studio Professional 2013] 以降をダウンロードしてインストールします (まだインストールしていない場合)。
 
 4.  **[サービスのダウンロードとクラウドへの発行]** の下の **[ダウンロード]** をクリックします。
 
@@ -18,10 +18,10 @@
 
     ![][2]
 
-<!-- URLs. -->
+
 
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/mobile-services-dotnet-backend-android-get-started-data/mobile-portal-quickstart-android.png
+  [0]: ./media/mobile-services-dotnet-backend-android-get-started-data/mobile-portal-quickstart-android.png
   [1]: ./media/mobile-services-dotnet-backend-android-get-started-data/download-service-project.png
   [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=391934
   [2]: ./media/mobile-services-dotnet-backend-android-get-started-data/download-publish-profile.png

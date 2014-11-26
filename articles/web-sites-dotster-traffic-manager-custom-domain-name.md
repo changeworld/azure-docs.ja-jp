@@ -68,22 +68,15 @@
 
 ## <a name="enabledomain"></a>Web サイトに対するトラフィック マネージャーの有効化
 
-[WACOM.INCLUDE [modes][4]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes-traffic-manager.md)]
 
-  [websites-cloud-services-css-guided-walkthrough]: ../includes/websites-cloud-services-css-guided-walkthrough.md
-  [intro]: ../includes/custom-dns-web-site-intro-traffic-manager.md
   [Dotster.com]: https://dotster.com
-  [tmwebsitefooter]: ../includes/custom-dns-web-site-traffic-manager-notes.md
-  [introfooter]: ../includes/custom-dns-web-site-intro-notes.md
   [DNS レコードについて]: #understanding-records
   [Web サイトの標準モード用の構成]: #bkmk_configsharedmode
   [カスタム ドメインの DNS レコードの追加]: #bkmk_configurecname
   [Web サイトに対するトラフィック マネージャーの有効化]: #enabledomain
-  [understandingdns]: ../includes/custom-dns-web-site-understanding-dns-traffic-manager.md
-  [modes]: ../includes/custom-dns-web-site-modes-traffic-manager.md
   [Dotster の DomainCentral メニュー項目]: .\media\web-sites-dotster-custom-domain-name\Dotster_DomainCentralMenu.png
   [Dotster のドメイン構成オプション]: .\media\web-sites-dotster-custom-domain-name\Dotster_DomainMenu.png
   [1]: .\media\web-sites-dotster-custom-domain-name\Dotster_Nameservers.png
   [2]: .\media\web-sites-dotster-custom-domain-name\Dotster_DNS.png
   [3]: .\media\web-sites-dotster-custom-domain-name\Dotster_DNS_CNAME_TM.png
-  [4]: ../includes/custom-dns-web-site-enable-on-traffic-manager.md

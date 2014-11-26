@@ -1,6 +1,6 @@
 <properties title="Create an Umbraco website from the gallery in Microsoft Azure" pageTitle="Create an Umbraco website from the gallery in Microsoft Azure" description="required" metaKeywords="Azure, gallery, Umbraco, web site, website" services="web-sites" solutions="web" documentationCenter="" authors="timamm" manager="paulettm" editor="mollybos" videoId="" scriptId="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="timamm"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="timamm" />
 
 # Microsoft Azure でギャラリーから Umbraco Web サイトを作成する
 
@@ -43,7 +43,7 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
 
 デプロイメントが完了した後、ポータル内のスタート ボードに、Umbraco CMS のリソース グループ、この場合は **UmbracoCMSgroup** が作成されたことが示されます。**[サマリー]** セクションで、Web サイト名 (この場合、**umbracocmsgroup**) をクリックし、Web サイトのプロパティを確認します。また、**[サマリー]** セクションでは、データベース リソースを選択して、関連付けられたデータベースのプロパティも確認できます。
 
-![][]
+![][0]
 
 ## Umbraco CMS Web サイトの起動と構成
 
@@ -104,7 +104,7 @@ Umbraco CMS は、小規模なものから複雑なものまでさまざまな�
   [Configure resources]: ./media/web-sites-gallery-umbraco/04AppSettings.PNG
   [Create a SQL Server on Azure]: ./media/web-sites-gallery-umbraco/05NewServer.PNG
   [1]: ./media/web-sites-gallery-umbraco/06UmbracoCMSGroup.PNG
-  []: ./media/web-sites-gallery-umbraco/07UmbracoCMSGroupBlade.PNG
+  [0]: ./media/web-sites-gallery-umbraco/07UmbracoCMSGroupBlade.PNG
   [Browse to your site]: ./media/web-sites-gallery-umbraco/08UmbracoCMSGroupRunning.PNG
   [Install Umbraco wizard]: ./media/web-sites-gallery-umbraco/09InstallUmbraco7.png
   [Configure your database]: ./media/web-sites-gallery-umbraco/10ConfigureYourDatabase.png

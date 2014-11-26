@@ -72,22 +72,15 @@
 
 ## <a name="enabledomain"></a>Web サイトに対するトラフィック マネージャーの有効化
 
-[WACOM.INCLUDE [modes][3]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes-traffic-manager.md)]
 
   [Moniker]: /ja-jp/documentation/articles/web-sites-moniker-custom-domain-name "Moniker"
-  [websites-cloud-services-css-guided-walkthrough]: ../includes/websites-cloud-services-css-guided-walkthrough.md
-  [intro]: ../includes/custom-dns-web-site-intro-traffic-manager.md
   [1]: https://moniker.com
-  [tmwebsitefooter]: ../includes/custom-dns-web-site-traffic-manager-notes.md
-  [introfooter]: ../includes/custom-dns-web-site-intro-notes.md
   [DNS レコードについて]: #understanding-records
   [Web サイトの標準モード用の構成]: #bkmk_configsharedmode
   [カスタム ドメインの DNS レコードの追加]: #bkmk_configurecname
   [Web サイトに対するトラフィック マネージャーの有効化]: #enabledomain
-  [understandingdns]: ../includes/custom-dns-web-site-understanding-dns-traffic-manager.md
-  [modes]: ../includes/custom-dns-web-site-modes-traffic-manager.md
   [Moniker の My Domains ページ]: .\media\web-sites-moniker-custom-domain-name\Moniker_MyDomains.png
   [Moniker の Zone Template Management ページ]: .\media\web-sites-moniker-custom-domain-name\Moniker_ZoneManager.png
   [Moniker の Create Zone Template ページ]: .\media\web-sites-moniker-custom-domain-name\Moniker_CreateZoneTemplate_TM.png
   [2]: .\media\web-sites-moniker-custom-domain-name\Moniker_ZoneAssignment.png
-  [3]: ../includes/custom-dns-web-site-enable-on-traffic-manager.md

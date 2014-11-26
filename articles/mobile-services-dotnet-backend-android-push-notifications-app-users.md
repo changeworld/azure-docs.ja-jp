@@ -61,6 +61,3 @@
   [登録の前にログインするようにアプリケーションを更新する]: #update-app
   [アプリケーションをテストする]: #test
   [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-users/
-  [mobile-services-dotnet-backend-push-notifications-app-users]: ../includes/mobile-services-dotnet-backend-push-notifications-app-users.md
-  [mobile-services-android-push-notifications-app-users]: ../includes/mobile-services-android-push-notifications-app-users.md
-  [mobile-services-android-test-push-users]: ../includes/mobile-services-android-test-push-users.md

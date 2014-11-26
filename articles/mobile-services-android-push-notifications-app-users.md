@@ -236,9 +236,9 @@
 -   [モバイル サービス向け Android クライアント ライブラリの使用方法][モバイル サービス向け Android クライアント ライブラリの使用方法]
     .NET と共に Mobile Services を使用する方法を説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [以前のプッシュ通知のチュートリアル]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android
   [Registration テーブルを作成する]: #create-table

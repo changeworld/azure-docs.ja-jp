@@ -31,12 +31,11 @@
 -   [モバイル サービス .NET の使用方法の概念リファレンス][モバイル サービス .NET の使用方法の概念リファレンス]
     .NET で Mobile Services を使用する方法について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/
-  [mobile-services-windows-dotnet-paging]: ../includes/mobile-services-windows-dotnet-paging.md
   [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/
   [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/
   [モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library

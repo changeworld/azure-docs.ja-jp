@@ -1,4 +1,4 @@
-<properties title="SQL Database 監査の使用" pageTitle="SQL Database 監査の使用 | Azure" description="SQL Database 監査の使用" metaKeywords="" services="sql-database" solutions="data-management" documentationCenter="" authors="jeffreyg" videoId="" scriptId="" manager="jeffreyg" />
+<properties title="Get started with SQL database auditing" pageTitle="Get started with SQL database auditing | Azure" description="Get started with SQL database auditing" metaKeywords="" services="sql-database" solutions="data-management" documentationCenter="" authors="jeffreyg" videoId="" scriptId=""  />
 
 <tags ms.service="sql-database" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jeffreyg" />
 
@@ -30,7 +30,7 @@ Azure プレビュー ポータルで監査を設定しますが、データベ�
 -   **アカウント、ロール、アクセス許可 (DCL)**
 -   **セキュリティ例外**
 
-ログに記録された活動やイベントの詳細については、「[Audit Log Format Reference (doc file download) (監査ログ形式のリファレンス (doc ファイルのダウンロード)][Audit Log Format Reference (doc file download) (監査ログ形式のリファレンス (doc ファイルのダウンロード)]」を参照してください。
+ログに記録された活動やイベントの詳細については、「[Audit Log Format Reference (doc file download) (監査ログ形式のリファレンス (doc ファイルのダウンロード))][Audit Log Format Reference (doc file download) (監査ログ形式のリファレンス (doc ファイルのダウンロード))]」を参照してください。
 
 監査ログが保存されるストレージ アカウントも選択します。
 
@@ -45,28 +45,29 @@ Azure プレビュー ポータルで監査を設定しますが、データベ�
 ## <span id="subheading-2"></span></a>データベースに対する監査を設定する
 
 1.  [監査プレビューにサインアップ][プレビューにサインアップ]します。
-2.  https://portal.azure.com で [Azure プレビュー ポータル][Azure プレビュー ポータル]を起動します。
-3.  監査するデータベースをクリックし、**[監査プレビュー]** をクリックして、監査プレビューを有効にし、監査構成ブレードを起動します。
+2.  また、必ず[新しいサービス層のプレビューにもサインアップ][新しいサービス層のプレビューにもサインアップ]して、Basic、Standard、または Premium のデータベースを作成します。
+3.  <https://portal.azure.com> で [Azure プレビュー ポータル][Azure プレビュー ポータル]を起動します。
+4.  監査するデータベースをクリックし、**[監査プレビュー]** をクリックして、監査プレビューを有効にし、監査構成ブレードを起動します。
 
     ![][0]
 
-4.  監査構成ブレードで、ログが保存される Azure ストレージ アカウントを選択します。**ヒント:** すべての監査済みデータベースに同じストレージ アカウントを使用して、事前に構成したレポートのテンプレートを活用します。
+5.  監査構成ブレードで、ログが保存される Azure ストレージ アカウントを選択します。**ヒント:** すべての監査済みデータベースに同じストレージ アカウントを使用して、事前に構成したレポートのテンプレートを活用します。
 
     ![][1]
 
-5.  **[監査オプション]** で、**[すべて]** をクリックしてすべてのイベントをログに記録するか、または個別のイベントの種類を選択します。
+6.  **[監査オプション]** で、**[すべて]** をクリックしてすべてのイベントをログに記録するか、または個別のイベントの種類を選択します。
 
     ![][2]
 
-6.  これらの設定を、今後のサーバーのすべてのデータベース、およびまだ監査を設定していないデータベースに適用する場合は、**[この構成を既定値として保存する]** をクリックします。同じ手順によって、後でデータベースごとにこの設定をオーバーライドできます。
+7.  これらの設定を、今後のサーバーのすべてのデータベース、およびまだ監査を設定していないデータベースに適用する場合は、**[この構成を既定値として保存する]** をクリックします。同じ手順によって、後でデータベースごとにこの設定をオーバーライドできます。
 
     ![][3]
 
-7.  **[データベース接続文字列を表示する]** をクリックしてから、アプリケーションに対して該当するセキュリティが有効な接続文字列をコピーするか、メモします。活動を監査するすべてのクライアント アプリケーションに対して、この文字列を使用します。
+8.  **[データベース接続文字列を表示する]** をクリックしてから、アプリケーションに対して該当するセキュリティが有効な接続文字列をコピーするか、メモします。活動を監査するすべてのクライアント アプリケーションに対して、この文字列を使用します。
 
     ![][4]
 
-8.  **[OK]** をクリックします。
+9.  **[OK]** をクリックします。
 
 ## <span id="subheading-3"></span>監査ログとレポートを分析する</a>
 
@@ -80,14 +81,13 @@ Azure プレビュー ポータルで監査を設定しますが、データベ�
 
 ![][5]
 
-<!--Anchors--> <!--Image references--> <!--Link references-->
+
 
   [プレビューにサインアップ]: http://go.microsoft.com/fwlink/?LinkId=404163
-  [Azure Trust Center (Azure トラスト センター)]: http://azure.microsoft.com/ja-jp/support/trust-center/compliance/
   [Azure SQL Database の監査の基本]: #subheading-1
   [データベースに対する監査を設定する]: #subheading-2
   [監査ログとレポートを分析する]: #subheading-3
-  [Audit Log Format Reference (doc file download) (監査ログ形式のリファレンス (doc ファイルのダウンロード)]: http://go.microsoft.com/fwlink/?LinkId=506733
+  [新しいサービス層のプレビューにもサインアップ]: https://account.windowsazure.com/PreviewFeatures?fid=premiumdb
   [Azure プレビュー ポータル]: https://portal.azure.com
   [0]: ./media/sql-database-auditing-get-started/sql-database-get-started-auditingpreview.png
   [1]: ./media/sql-database-auditing-get-started/sql-database-get-started-storageaccount.png
@@ -97,5 +97,4 @@ Azure プレビュー ポータルで監査を設定しますが、データベ�
   [Azure ストレージ エクスプローラー]: http://azurestorageexplorer.codeplex.com/
   [ダウンロードできる Excel スプレッドシート]: http://go.microsoft.com/fwlink/?LinkId=403540
   [ここ]: http://www.microsoft.com/ja-jp/download/details.aspx?id=39379
-  [How To (doc download) (使用方法 (doc のダウンロード))]: http://go.microsoft.com/fwlink/?LinkId=506731
   [5]: ./media/sql-database-auditing-get-started/sql-database-auditing-dashboard.png

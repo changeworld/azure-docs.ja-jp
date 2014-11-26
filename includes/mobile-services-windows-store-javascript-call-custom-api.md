@@ -57,8 +57,8 @@
 
 4.  **[Complete All]** ボタンをクリックします。
 
-    ![][]
+    ![][0]
 
     完了としてマークされた項目の数を示すメッセージ ダイアログが表示され、フィルター処理済みのクエリが再度実行されて、すべての項目がリストから消去されます。
 
-  []: ./media/mobile-services-windows-store-javascript-call-custom-api/mobile-custom-api-windows-store-completed.png
+  [0]: ./media/mobile-services-windows-store-javascript-call-custom-api/mobile-custom-api-windows-store-completed.png

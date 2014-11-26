@@ -26,11 +26,10 @@
 -   [プッシュ通知の使用][プッシュ通知の使用]
     アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [データの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data/
-  [mobile-services-windows-dotnet-paging]: ../includes/mobile-services-windows-dotnet-paging.md
   [認証の使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-users/
   [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-push/

@@ -1,14 +1,14 @@
 <properties linkid="dev-net-tutorials-web-app-with-sql-azure" urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title=" OAuth" authors="riande" solutions="" manager="wpickett" editor="mollybos" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="riande"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="riande" />
 
 # メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC アプリケーションを Azure の Web サイトにデプロイする
 
 ***更新日: 2013 年 10 月 15 日。***
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/develop/net/tutorials/web-site-with-sql-database/" title="Visual Studio 2013">Visual Studio 2013</a><a href="/en-us/develop/net/tutorials/web-site-with-sql-database-vs2012/" title="Visual Studio 2012" class="current">Visual Studio 2012</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/develop/net/tutorials/web-site-with-sql-database/" title="Visual Studio 2013">Visual Studio 2013</a><a href="/ja-jp/develop/net/tutorials/web-site-with-sql-database-vs2012/" title="Visual Studio 2012" class="current">Visual Studio 2012</a></div>
 
-<div class="dev-callout"><strong>注</strong><p><a href="/en-us/develop/net/tutorials/web-site-with-sql-database/">このチュートリアルの新しいバージョン</a>が提供されています。Visual Studio 2012 を使用する場合はこのバージョンを引き続き利用できますが、新しいバージョンの方が格段に取り組みやすい内容となっています。</p></div>
+<div class="dev-callout"><strong>注</strong><p><a href="/ja-jp/develop/net/tutorials/web-site-with-sql-database/">このチュートリアルの新しいバージョン</a>が提供されています。Visual Studio 2012 を使用する場合はこのバージョンを引き続き利用できますが、新しいバージョンの方が格段に取り組みやすい内容となっています。</p></div>
 
 このチュートリアルでは、ユーザーが Facebook、Yahoo、Google の資格情報を使用してログインできる、安全な ASP.NET MVC 4 Web アプリケーションを構築する方法について説明します。さらに、作成したアプリケーションを Azure に展開する方法についても学習します。
 
@@ -29,7 +29,7 @@ ASP.NET MVC 4 に基づく、データベース アクセスに ADO.NET Entity F
 
 ![login page][login page]
 
-[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 このチュートリアルの内容:
 
@@ -155,7 +155,7 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 
     ![saving the .publishsettings file][saving the .publishsettings file]
 
-    [WACOM.INCLUDE [publishsettingsfilewarningchunk][publishsettingsfilewarningchunk]]
+    [WACOM.INCLUDE [publishsettingsfilewarningchunk](../includes/publishsettingsfilewarningchunk.md)]
 
 5.  Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
 
@@ -698,13 +698,12 @@ Entity Framework および Code First Migrations の詳細については、次�
 -   [MVC を使用した Entity Framework の概要に関するページ][MVC を使用した Entity Framework の概要に関するページ]
 -   [Code First Migrations に関するページ][Code First Migrations に関するページ]
 
-<!-- bookmarks --> <!-- links --> <!-- links from Tom's hopefully no collisions --> <!-- images-->
+<!-- bookmarks -->
+<!-- links -->
+<!-- links from Tom's hopefully no collisions -->
+<!-- images-->
 
-  [Visual Studio 2013]: /en-us/develop/net/tutorials/web-site-with-sql-database/ "Visual Studio 2013"
-  [Visual Studio 2012]: /en-us/develop/net/tutorials/web-site-with-sql-database-vs2012/ "Visual Studio 2012"
-  [このチュートリアルの新しいバージョン]: /en-us/develop/net/tutorials/web-site-with-sql-database/
   [login page]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxb.png
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [開発環境を設定する]: #bkmk_setupdevenv
   [Azure 環境を設定する]: #bkmk_setupwindowsazure
   [ASP.NET MVC 4 アプリケーションを作成する]: #bkmk_createmvc4app
@@ -732,7 +731,6 @@ Entity Framework および Code First Migrations の詳細については、次�
   [Contact manager application in Management Portal Websites tab]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/dntutmobile-setup-azure-site-006.png
   [Quickstart tab and Download Publishing Profile button]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/dntutmobile-deploy1-download-profile.png
   [saving the .publishsettings file]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/dntutmobile-deploy1-save-profile.png
-  [publishsettingsfilewarningchunk]: ../includes/publishsettingsfilewarningchunk.md
   [Publish in project context menu]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/PublishVSSolution.png
   [Import publish settings]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/ImportPublishSettings.png
   [add win az sub]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rzAddWAsub.png
@@ -750,7 +748,7 @@ Entity Framework および Code First Migrations の詳細については、次�
   [Code First Migrations]: http://msdn.microsoft.com/library/hh770484.aspx
   [Package Manager Console in Tools menu]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/dntutmobile-migrations-package-manager-menu.png
   [enable-migrations]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxE.png
-  [DbContext]: http://msdn.microsoft.com/en-us/library/system.data.entity.dbcontext(v=VS.103).aspx
+  [DbContext]: http://msdn.microsoft.com/ja-jp/library/system.data.entity.dbcontext(v=VS.103).aspx
   [Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)]: http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx
   [Package Manager Console commands]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/dntutmobile-migrations-package-manager-console.png
   [MVC view of data]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rx2.png
@@ -766,18 +764,16 @@ Entity Framework および Code First Migrations の詳細については、次�
   [user IDs]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxUid.png
   [roleID]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxRoleID.png
   [usr role ID tbl]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxUR.png
-  [Authorize]: http://msdn.microsoft.com/en-us/library/system.web.mvc.authorizeattribute(v=vs.100).aspx
-  [RequireHttps]: http://msdn.microsoft.com/en-us/library/system.web.mvc.requirehttpsattribute(v=vs.108).aspx
+  [Authorize]: http://msdn.microsoft.com/ja-jp/library/system.web.mvc.authorizeattribute(v=vs.100).aspx
+  [RequireHttps]: http://msdn.microsoft.com/ja-jp/library/system.web.mvc.requirehttpsattribute(v=vs.108).aspx
   [ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性に関するページ]: http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx
   [CAPTCHA]: http://www.asp.net/web-pages/tutorials/security/16-adding-security-and-membership
   [enable SSL]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxSSL.png
   [6]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxS2.png
   [cert Warn]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxNOT.png
   [7]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxNOT2.png
-  [dbDacFx]: http://msdn.microsoft.com/en-us/library/dd394698.aspx
-  [Microsoft SQL Server 2012 Express ダウンロード センター]: http://www.microsoft.com/en-us/download/details.aspx?id=29062
-  [ENU\\x64\\SQLManagementStudio\_x64\_ENU.exe]: http://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x64/SQLManagementStudio_x64_ENU.exe
-  [ENU\\x86\\SQLManagementStudio\_x86\_ENU.exe]: http://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x86/SQLManagementStudio_x86_ENU.exe
+  [dbDacFx]: http://msdn.microsoft.com/ja-jp/library/dd394698.aspx
+  [Microsoft SQL Server 2012 Express ダウンロード センター]: http://www.microsoft.com/ja-jp/download/details.aspx?id=29062
   [SQL Install]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxSS.png
   [con to srvr dlg]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxC2S.png
   [Gen Scripts]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxGenScripts.png
@@ -803,15 +799,15 @@ Entity Framework および Code First Migrations の詳細については、次�
   [@RickAndMSFT]: https://twitter.com/blowdart
   [Customizing External Login Buttons in ASP.NET MVC 4 (ASP.NET MVC 4 で外部ログイン ボタンをカスタマイズする)]: http://www.beabigrockstar.com/customizing-external-login-buttons-in-asp-net-mvc-4/
   [Azure Authentication (Azure の認証)]: http://www.asp.net/vnext/overview/fall-2012-update/windows-azure-authentication
-  [ASP.NET MVC を使用してイントラネット サイトを作成する方法]: http://msdn.microsoft.com/en-us/library/gg703322(v=vs.98).aspx
-  [ストレージ テーブル、キュー、BLOB を使用する .NET 多層アプリケーションに関するページ]: http://www.windowsazure.com/en-us/develop/net/tutorials/multi-tier-web-site/1-overview/
+  [ASP.NET MVC を使用してイントラネット サイトを作成する方法]: http://msdn.microsoft.com/ja-jp/library/gg703322(v=vs.98).aspx
+  [ストレージ テーブル、キュー、BLOB を使用する .NET 多層アプリケーションに関するページ]: http://www.windowsazure.com/ja-jp/develop/net/tutorials/multi-tier-web-site/1-overview/
   [ASP.NET MVC 4 の入門ページ]: http://www.asp.net/mvc/tutorials/mvc-4/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4
   [MVC を使用した Entity Framework の概要に関するページ]: http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
   [OAuth 2.0 とサインインに関するブログ投稿]: http://blogs.msdn.com/b/vbertocci/archive/2013/01/02/oauth-2-0-and-sign-in.aspx
-  [一般的なタスク]: http://www.windowsazure.com/en-us/develop/net/common-tasks/
-  [Visual Studio での Azure の Web サイトのトラブルシューティング]: /en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/
-  [このチュートリアルのクラウド サービス バージョン]: http://www.windowsazure.com/en-us/develop/net/tutorials/cloud-service-with-sql-database/
-  [Azure を使った Web アプリケーションの開発に関するページ]: http://msdn.microsoft.com/en-us/library/Hh674484
+  [一般的なタスク]: http://www.windowsazure.com/ja-jp/develop/net/common-tasks/
+  [Visual Studio での Azure の Web サイトのトラブルシューティング]: /ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/
+  [このチュートリアルのクラウド サービス バージョン]: http://www.windowsazure.com/ja-jp/develop/net/tutorials/cloud-service-with-sql-database/
+  [Azure を使った Web アプリケーションの開発に関するページ]: http://msdn.microsoft.com/ja-jp/library/Hh674484
   [Data Storage Offerings on Azure (Azure のデータ ストレージ機能)]: http://social.technet.microsoft.com/wiki/contents/articles/data-storage-offerings-on-the-windows-azure-platform.aspx
   [ASP.NET データ アクセス コンテンツ マップでの Azure SQL データベースの操作に関するページ]: http://go.microsoft.com/fwlink/p/?LinkId=282414#ssdb
-  [Code First Migrations に関するページ]: http://msdn.microsoft.com/en-us/library/hh770484
+  [Code First Migrations に関するページ]: http://msdn.microsoft.com/ja-jp/library/hh770484

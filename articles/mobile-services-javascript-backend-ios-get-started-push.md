@@ -199,8 +199,6 @@
   [モバイル サービス iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
   [XCode 4.5]: https://go.microsoft.com/fwLink/p/?LinkID=266532
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started
-  [Enable Apple Push Notifications]: ../includes/enable-apple-push-notifications.md
-  [mobile-services-apns-configure-push]: ../includes/mobile-services-apns-configure-push.md
   [0]: ./media/mobile-services-ios-get-started-push/mobile-portal-data-tables.png
   [1]: ./media/mobile-services-ios-get-started-push/mobile-insert-script-push2.png
   [apns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=272333

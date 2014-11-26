@@ -6,7 +6,7 @@
 
 2.  [Twitter デベロッパー][Twitter デベロッパー]の Web サイトに移動し、Twitter アカウント資格情報でサインインして、**[My Applications]** に移動し、自分の Twitter アプリケーションを選択します。
 
-    ![][]
+    ![][0]
 
 3.  アプリケーションの **[Details]** タブで、次の値を調べます。
 
@@ -32,11 +32,11 @@
 
     これにより、アプリケーション設定に Twitter アクセス トークンが保存されます。**[ID]** タブのコンシューマー資格情報と同様に、アクセス資格情報も暗号化されてアプリケーション設定に保存され、サーバー スクリプト ファイルに資格情報をハード コーディングすることなくサーバー スクリプト内で資格情報にアクセスすることができます。詳細については、「[アプリ設定][アプリ設定]」を参照してください。
 
-<!-- URLs. -->
+
 
   [モバイル サービスでの Twitter ログイン用のアプリケーションの登録]: /ja-jp/documentation/articles/mobile-services-how-to-register-twitter-authentication/
   [Twitter デベロッパー]: http://go.microsoft.com/fwlink/p/?LinkId=268300
-  []: ./media/mobile-services-register-twitter-access/mobile-twitter-my-apps.png
+  [0]: ./media/mobile-services-register-twitter-access/mobile-twitter-my-apps.png
   [1]: ./media/mobile-services-register-twitter-access/mobile-twitter-app-secrets.png
   [Windows Azure 管理ポータル]: https://manage.windowsazure.com/
   [2]: ./media/mobile-services-register-twitter-access/mobile-identity-tab-twitter-only.png

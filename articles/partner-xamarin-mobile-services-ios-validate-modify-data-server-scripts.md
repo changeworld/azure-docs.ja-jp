@@ -110,9 +110,9 @@
 -   [モバイル サービスのサーバー スクリプト リファレンス][モバイル サービスのサーバー スクリプト リファレンス]
     <br/>サーバー スクリプトの登録および使用について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [ValidateModifyData アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=331330
   [文字列の長さの検証の追加]: #string-length-validation

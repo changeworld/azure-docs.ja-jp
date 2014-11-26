@@ -1,6 +1,6 @@
 <properties title="Manage DocumentDB capacity and performance" pageTitle="Manage DocumentDB capacity and performance | Azure" description="Learn how you can elastically scale DocumentDB to meet the performance and storage needs of your application." metaKeywords="" services="documentdb" solutions="data-management"  authors="bradsev" manager="jhubbard" editor="cgronlun"  videoId="" scriptId="" />
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="bradsev"></tags>
+<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="bradsev" />
 
 # DocumentDB の容量とパフォーマンスの管理
 
@@ -58,7 +58,7 @@ SSD ベースのドキュメント ストレージとスループットから構
 
 アプリケーションに対する正確な数の要求単位を求めるには、各種の操作で消費される要求単位を計算するための要求単位計算ツールを使用できます。また、特定の要求で消費される要求単位の数を含む x-ms-request-charge 応答ヘッダーを調べることもできます。
 
-[要求単位計算ツール][]
+[要求単位計算ツール][要求単位計算ツール]
 
 # コレクションとプロビジョニング済みスループット
 
@@ -71,7 +71,7 @@ SSD ベースのドキュメント ストレージとスループットから構
 -   "Session" および "Eventual" 一貫性レベルは、約 2,000 のドキュメントの読み取り要求と 500 のドキュメントの挿入、置換、削除要求を提供します。
 -   "Strong" および "Bounded Staleness" 一貫性レベルは、約 1,200 のドキュメントの読み取り要求と 500 のドキュメントの挿入、置換、削除要求を提供します。"Bounded Staleness" では、"Strong" に比べて挿入、置換、削除操作の待機時間が大幅に短くなります。
 
-[要求単位計算ツール][]
+[要求単位計算ツール][要求単位計算ツール]
 
 # プロビジョニング済みドキュメント ストレージとインデックス オーバーヘッド
 
@@ -79,6 +79,6 @@ SSD ベースのドキュメント ストレージとスループットから構
 
 既定では、DocumentDB によって自動的にすべてのドキュメントのインデックスが作成されます。ただし、インデックス オーバーヘッドを調整する場合は、ドキュメントの挿入時または置換時におけるインデックス作成の対象から特定のドキュメントを除外することができます。コレクション内のすべてのドキュメントをインデックス作成の対象から除外するように DocumentDB コレクションを構成できます。また、JSON ドキュメントのワイルドカードを使用して特定のプロパティまたはパスに関してのみ選択的にインデックスを作成するように DocumentDB コレクションを構成することもできます。プロパティまたはドキュメントを除外すると書き込みスループットが向上し、消費する要求単位が少なくなります。
 
-[要求単位計算ツール][]
+[要求単位計算ツール][要求単位計算ツール]
 
   [要求単位計算ツール]: http://go.microsoft.com/fwlink/?LinkID=510088

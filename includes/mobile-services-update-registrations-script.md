@@ -1,6 +1,6 @@
 1.  管理ポータルで、**[データ]** タブをクリックし、**Registrations** テーブルをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[Registrations]** で、**[スクリプト]** タブをクリックし、**[挿入]** をクリックします。
 
@@ -26,5 +26,5 @@
 
     これにより、新しいテーブルに登録情報を格納する新しい挿入スクリプトが登録されます。
 
-  []: ./media/mobile-services-update-registrations-script/mobile-portal-data-tables-registrations.png
+  [0]: ./media/mobile-services-update-registrations-script/mobile-portal-data-tables-registrations.png
   [1]: ./media/mobile-services-update-registrations-script/mobile-insert-script-registrations.png

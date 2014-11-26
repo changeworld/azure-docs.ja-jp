@@ -132,7 +132,6 @@ Azure ストレージに関する Blitline のドキュメントの最新版を[
   [画像を Azure ストレージに保存する方法]: #saveazure
   [次のステップ]: #nextsteps
   []: http://www.blitline.com
-  [blitline-signup]: ../includes/blitline-signup.md
   [を参照してください。http://www.blitline.com/docs/functions]: http://www.blitline.com/docs/functions
   [にも用意されています。http://www.blitline.com/docs/api]: http://www.blitline.com/docs/api
   [ここ]: http://www.blitline.com/docs/azure_storage

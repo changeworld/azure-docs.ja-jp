@@ -6,7 +6,7 @@
 ことがなくなり、仲介者の役割を果たすトピックを介してメッセージをやり取りする
 ことになります。
 
-![TopicConcepts][]
+![TopicConcepts][TopicConcepts]
 
 すべてのメッセージが 1 つのコンシューマーによって処理されるサービス バス キューとは異なり、
 トピックとサブスクリプションでは発行/サブスクライブ パターンを使用した **1 対多**形式の通信を
@@ -34,14 +34,14 @@ Azure のサービス バスのトピックとサブスクリプションを使�
 
 サービス名前空間を作成するには:
 
-1.  [Azure 管理ポータル][]へのログオン
+1.  [Azure 管理ポータル][Azure 管理ポータル]へのログオン
 
 2.  管理ポータルの左のナビゲーション ウィンドウで、
     **[サービス バス]** をクリックします。
 
 3.  管理ポータルの下のウィンドウの **[作成]** をクリックします。
 
-    ![][]
+    ![][0]
 
 4.  **[新しい名前空間を追加する]** ダイアログで、名前空間の名前を入力します。
     その名前が使用できるかどうかがすぐに自動で確認されます。
@@ -73,7 +73,7 @@ Azure のサービス バスのトピックとサブスクリプションを使�
 1.  左側のナビゲーション ウィンドウで **[サービス バス]** ノードをクリック
     して、利用可能な名前空間の一覧を表示します。
 
-    ![][]
+    ![][0]
 
 2.  表示された一覧から先ほど作成した名前空間を選択します。
 
@@ -87,7 +87,7 @@ Azure のサービス バスのトピックとサブスクリプションを使�
 
 ### 管理資格情報をサーバー エクスプローラーから取得するには
 
-管理ポータルの代わりに Visual Studio を使用して接続情報を取得するには、「[Azure Tools for Visual Studio の概要][]」の「**Visual Studio から Azure に接続するには**」で説明されている手順に従ってください。Azure にサインインすると、サーバー エクスプローラーの **[Microsoft Azure]** ツリーの下にある **[サービス バス]** ノードが、既に作成したすべての名前空間を使用して自動的に設定されます。いずれかの名前空間を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウで表示される、この名前空間に関連付けられている接続文字列と他のメタデータを確認できます。
+管理ポータルの代わりに Visual Studio を使用して接続情報を取得するには、「[Azure Tools for Visual Studio の概要][Azure Tools for Visual Studio の概要]」の「**Visual Studio から Azure に接続するには**」で説明されている手順に従ってください。Azure にサインインすると、サーバー エクスプローラーの **[Microsoft Azure]** ツリーの下にある **[サービス バス]** ノードが、既に作成したすべての名前空間を使用して自動的に設定されます。いずれかの名前空間を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウで表示される、この名前空間に関連付けられている接続文字列と他のメタデータを確認できます。
 
 **SharedAccessKey** の値を書き留めておくか、クリップボードにコピーしておいてください。
 
@@ -95,10 +95,10 @@ Azure のサービス バスのトピックとサブスクリプションを使�
 
   [TopicConcepts]: ./media/howto-service-bus-topics/sb-topics-01.png
   [Azure 管理ポータル]: http://manage.windowsazure.com
-  []: ./media/howto-service-bus-topics/sb-queues-13.png
+  [0]: ./media/howto-service-bus-topics/sb-queues-13.png
   [1]: ./media/howto-service-bus-topics/sb-queues-04.png
   [2]: ./media/howto-service-bus-topics/getting-started-multi-tier-27.png
   [3]: ./media/howto-service-bus-topics/sb-queues-09.png
   [4]: ./media/howto-service-bus-topics/sb-queues-06.png
-  [Azure Tools for Visual Studio の概要]: http://http://msdn.microsoft.com/en-us/library/windowsazure/ff687127.aspx
+  [Azure Tools for Visual Studio の概要]: http://http://msdn.microsoft.com/ja-jp/library/windowsazure/ff687127.aspx
   [5]: ./media/howto-service-bus-topics/VSProperties.png

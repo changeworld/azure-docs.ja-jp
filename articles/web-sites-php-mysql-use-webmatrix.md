@@ -1,6 +1,6 @@
 <properties linkid="develop-php-website-with-mysql-and-webmatrix" urlDisplayName="Web w/ WebMatrix" pageTitle="PHP website with MySQL and WebMatrix - Azure tutorial" metaKeywords="" description="A tutorial that demonstrates how to use the free WebMatrix IDE to create and deploy a PHP website that stores data in MySQL." metaCanonical="" services="web-sites" documentationCenter="PHP" title="Create and deploy a PHP-MySQL Azure Website using WebMatrix" authors="" solutions="" manager="" editor="mollybos" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="" />
 
 # WebMatrix を使用して PHP-MySQL Azure の Web サイトを作成および展開する
 
@@ -148,7 +148,7 @@ WebMatrix は、[管理ポータル][管理ポータル]からインストール
 
 3.  http://[your web site name].azurewebsites.net/createtable.php に移動すると、`items` テーブルを作成できます。
 
-4.  最後に、http://[your web site name] Web サイト名].azurewebsites.net/index.php に移動してアプリケーションを使用します。
+4.  最後に、http://[your web site name] Web サイト名.azurewebsites.net/index.php に移動してアプリケーションを使用します。
 
 ## アプリケーションの変更と再発行
 
@@ -193,7 +193,6 @@ WebMatrix は、[管理ポータル][管理ポータル]からインストール
   [WebMatrix - Launch createtable.php in browser]: ./media/web-sites-php-mysql-use-webmatrix/edit_run.png
   [Azure の Web サイトと MySQL データベースの作成]: #CreateWebsite
   [WebMatrix - Publish]: ./media/web-sites-php-mysql-use-webmatrix/edit_publish.png
-  [http://[your]: http://[your
   [WebMatrix - Open Remote View]: ./media/web-sites-php-mysql-use-webmatrix/OpenRemoteView.png
   [WebMatrix - Open index file]: ./media/web-sites-php-mysql-use-webmatrix/Remote_editIndex.png
   [WebMatrix - Launch site in Remote]: ./media/web-sites-php-mysql-use-webmatrix/Remote_run.png

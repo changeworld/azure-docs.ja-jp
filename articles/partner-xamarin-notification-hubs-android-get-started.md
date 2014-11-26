@@ -401,9 +401,9 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 
 この簡単な例では、すべての Android デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、「[通知ハブを使用したユーザーへのプッシュ通知][通知ハブを使用したユーザーへのプッシュ通知]」を参照してください。一方、対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信][通知ハブを使用したニュース速報の送信]」を参照してください。通知ハブの使用方法の詳細については、「[Windows Azure 通知ハブの概要][Windows Azure 通知ハブの概要]」と「[方法: Windows Azure 通知ハブ (Android アプリ)][方法: Windows Azure 通知ハブ (Android アプリ)]」を参照してください。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [Xamarin.Android]: /ja-jp/documentation/articles/partner-xamarin-notification-hubs-android-get-started/ "Xamarin.Android"
   [NotificationHubs アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=331329

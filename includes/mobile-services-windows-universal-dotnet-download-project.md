@@ -10,7 +10,7 @@
 
 4.  アプリケーションで、**[Insert a TodoItem]** に任意のテキストを入力し、**[Save]** をクリックします。
 
-    ![][]
+    ![][0]
 
     保存されたテキストが表示されます。
 
@@ -21,5 +21,5 @@
 6.  手順 3 と 4 を繰り返して、サンプルが同じように動作することを確認します。
 
   [GetStartedWithMobileServices アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkID=510826
-  []: ./media/mobile-services-windows-universal-dotnet-download-project/mobile-quickstart-startup.png
+  [0]: ./media/mobile-services-windows-universal-dotnet-download-project/mobile-quickstart-startup.png
   [1]: ./media/mobile-services-windows-universal-dotnet-download-project/mobile-quickstart-startup-wp8.png

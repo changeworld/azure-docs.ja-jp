@@ -1,6 +1,6 @@
 <properties title="Learn how to configure an Azure website to use a domain name registered with Register.com" pageTitle="Configure a Register.com domain name for an Azure website" metaKeywords="Azure, Azure Web Sites, domain name" description="" services="web-sites" documentationCenter="" authors="larryfr, jroth" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr, jroth"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr, jroth" />
 
 # Azure Website のカスタム ドメイン名の構成 (Register.com)
 
@@ -8,13 +8,13 @@
 
 <div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/web-sites-registerdotcom-custom-domain-name/" title="Web サイト" class="current">Web サイト</a> | <a href="/ja-jp/documentation/articles/web-sites-registerdotcom-traffic-manager-custom-domain-name/" title="Traffic Manager を利用する Web サイト">Traffic Manager を利用する Web サイト</a></div>
 
-[WACOM.INCLUDE [websites-cloud-services-css-guided-walkthrough][websites-cloud-services-css-guided-walkthrough]]
+[WACOM.INCLUDE [websites-cloud-services-css-guided-walkthrough](../includes/websites-cloud-services-css-guided-walkthrough.md)]
 
-[WACOM.INCLUDE [intro][intro]]
+[WACOM.INCLUDE [intro](../includes/custom-dns-web-site-intro.md)]
 
 この記事では、[Register.com][1] から購入したカスタム ドメイン名を Azure Websites で使用する手順を示します。
 
-[WACOM.INCLUDE [introfooter][introfooter]]
+[WACOM.INCLUDE [introfooter](../includes/custom-dns-web-site-intro-notes.md)]
 
 この記事の内容:
 
@@ -25,11 +25,11 @@
 
 ## <a name="understanding-records"></a>DNS レコードについて
 
-[WACOM.INCLUDE [understandingdns][understandingdns]]
+[WACOM.INCLUDE [understandingdns](../includes/custom-dns-web-site-understanding-dns-raw.md)]
 
 ## <a name="bkmk_configsharedmode"></a>Web サイトの基本、共有、または標準モード用の構成
 
-[WACOM.INCLUDE [modes][modes]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes.md)]
 
 <a name="bkmk_configurecname"></a>
 
@@ -73,31 +73,15 @@
 
 ## <a name="enabledomain"></a>Web サイトでのドメイン名の有効化
 
-[WACOM.INCLUDE [modes][2]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes.md)]
 
-  [カスタム ドメイン]: /ja-jp/documentation/articles/web-sites-custom-domain-name "カスタム ドメイン"
-  [GoDaddy]: /ja-jp/documentation/articles/web-sites-godaddy-custom-domain-name "GoDaddy"
-  [Network Solutions]: /ja-jp/documentation/articles/web-sites-network-solutions-custom-domain-name "Network Solutions"
   [Register.com]: /ja-jp/documentation/articles/web-sites-registerdotcom-custom-domain-name "Register.com"
-  [Enom]: /ja-jp/documentation/articles/web-sites-enom-custom-domain-name "Enom"
-  [Moniker]: /ja-jp/documentation/articles/web-sites-moniker-custom-domain-name "Moniker"
-  [Dotster]: /ja-jp/documentation/articles/web-sites-dotster-custom-domain-name "Dotster"
-  [DomainDiscover]: /ja-jp/documentation/articles/web-sites-domaindiscover-custom-domain-name "DomainDiscover"
-  [Directnic]: /ja-jp/documentation/articles/web-sites-directnic-custom-domain-name "Directnic"
-  [Web サイト]: /ja-jp/documentation/articles/web-sites-registerdotcom-custom-domain-name/ "Web サイト"
-  [Traffic Manager を利用する Web サイト]: /ja-jp/documentation/articles/web-sites-registerdotcom-traffic-manager-custom-domain-name/ "Traffic Manager を利用する Web サイト"
-  [websites-cloud-services-css-guided-walkthrough]: ../includes/websites-cloud-services-css-guided-walkthrough.md
-  [intro]: ../includes/custom-dns-web-site-intro.md
   [1]: https://www.register.com
-  [introfooter]: ../includes/custom-dns-web-site-intro-notes.md
   [DNS レコードについて]: #understanding-records
   [Web サイトの基本、共有、または標準モード用の構成]: #bkmk_configsharedmode
   [カスタム ドメインの DNS レコードの追加]: #bkmk_configurecname
   [Web サイトでのドメインの有効化]: #enabledomain
-  [understandingdns]: ../includes/custom-dns-web-site-understanding-dns-raw.md
-  [modes]: ../includes/custom-dns-web-site-modes.md
   [My Account ページ]: ./media/web-sites-custom-domain-name/rdotcom-myaccount.png
   [Advanced Technical Settings ページ]: ./media/web-sites-custom-domain-name/rdotcom-advancedsettings.png
   [CNAME フォーム]: ./media/web-sites-custom-domain-name/rdotcom-editcnamerecord.png
   [A レコード フォーム]: ./media/web-sites-custom-domain-name/rdotcom-editarecord.png
-  [2]: ../includes/custom-dns-web-site-enable-on-web-site.md

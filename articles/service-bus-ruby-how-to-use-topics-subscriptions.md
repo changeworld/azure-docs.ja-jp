@@ -194,7 +194,6 @@ azure モジュールは、Azure Service Bus 名前空間に接続するため�
   [サブスクリプションからメッセージを受信する方法]: #how-to-receive-messages-from-a-subscription
   [アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法]: #how-to-handle-application-crashes-and-unreadable-messages
   [方法: トピックとサブスクリプションを削除する]: #how-to-delete-topics-and-subscriptions
-  [howto-service-bus-topics]: ../includes/howto-service-bus-topics.md
   [Windows Azure での Ruby アプリケーションの作成に関するページ]: /ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/
   [SqlFilter.SqlExpression]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [Azure 管理ポータル]: https://manage.windowsazure.com

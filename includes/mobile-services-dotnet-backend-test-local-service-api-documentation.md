@@ -18,7 +18,7 @@
 
 4.  **[テーブル/TodoItem の取得]** のリンクをクリックします。
 
-    ![][]
+    ![][0]
 
     これにより、API の GET 応答ページが表示されます。
 
@@ -32,7 +32,7 @@
 
   [モバイル サービス プロジェクトをローカルに開始する]: ./media/mobile-services-dotnet-backend-test-local-service-api-documentation/vs-start-debug-service-project.png
   [タスクバーにあるモバイル サービスを確認する]: ./media/mobile-services-dotnet-backend-test-local-service-api-documentation/iis-express-tray.png
-  []: ./media/mobile-services-dotnet-backend-test-local-service-api-documentation/service-api-documentation-page.png
+  [0]: ./media/mobile-services-dotnet-backend-test-local-service-api-documentation/service-api-documentation-page.png
   [1]: ./media/mobile-services-dotnet-backend-test-local-service-api-documentation/service-try-this-out-get-todoitems.png
   [.NET バックエンド モバイル サービスに対してデータ モデルを変更する方法]: ./ja-jp/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations/
   [2]: ./media/mobile-services-dotnet-backend-test-local-service-api-documentation/service-try-this-out-get-response.png

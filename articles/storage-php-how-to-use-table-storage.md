@@ -1,6 +1,6 @@
-<properties urlDisplayName="Table Service" pageTitle="テーブル ストレージを使用する方法 (PHP) | Microsoft Azure" metaKeywords="Azure Table service PHP, Azure creating table, Azure deleting table, Azure insert table, Azure query table" description="PHP からテーブル サービスを使用して、テーブルを作成および削除する方法、テーブルのエンティティを挿入、削除、照会する方法について説明します。" metaCanonical="" services="storage" documentationCenter="PHP" title="PHP からテーブル サービスを使用する方法" authors="tamram" solutions="" manager="adinah" editor="" />
+<properties linkid="develop-php-table-service" urlDisplayName="Table Service" pageTitle="How to use table storage (PHP) | Microsoft Azure" metaKeywords="Azure Table service PHP, Azure creating table, Azure deleting table, Azure insert table, Azure query table" description="Learn how to use the Table service from PHP to create and delete a table, and insert, delete, and query the table." metaCanonical="" services="storage" documentationCenter="PHP" title="How to use the Table service from PHP" authors="" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="" />
 
 # PHP からテーブル サービスを使用する方法
 
@@ -487,7 +487,6 @@ Azure テーブル サービス クライアントをインスタンス化する
   [方法: エンティティを更新する]: #UpdateEntity
   [方法: バッチ テーブル処理]: #BatchOperations
   [方法: テーブルを削除する]: #DeleteTable
-  [require\_once]: http://php.net/require_once
   [テーブル サービス操作のサーバー タイムアウトの設定]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd894042.aspx
   [テーブル サービス データ モデルについて]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179338.aspx
   [テーブルおよびエンティティのクエリ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd894031.aspx

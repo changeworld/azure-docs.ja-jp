@@ -1,6 +1,6 @@
 <properties linkid="develop-net-architecture-multi-tenant-web-application" urlDisplayName="Multi-Tenant Web Application Pattern" pageTitle="Multi-Tenant Web Application Pattern - Azure Architecture" metaKeywords="" description="Find architectural overviews and design patterns that describe how to implement a multi-tenant web application on Azure." metaCanonical="" services="" documentationCenter=".NET" title="Multitenant Applications in Azure" authors="" solutions="" manager="" editor="" />
 
-<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author></tags>
+<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="" />
 
 <div>
 <div class="left-nav">
@@ -107,16 +107,4 @@ Azure には、アプリケーション用に新しいテナントをプロビ�
 
 <!--links-->
 
-  [コンピューティング]: /ja-jp/develop/net/compute/
-  [データ サービス]: /ja-jp/develop/net/data/
-  [アプリケーション サービス]: /ja-jp/develop/net/app-services/
-  [リファレンス]: /ja-jp/develop/net/reference/
-  [ガイダンス]: /ja-jp/develop/net/guidance/
-  [アーキテクチャ]: /ja-jp/develop/net/architecture/
-  [サンプル]: /ja-jp/develop/net/samples/
-  [シナリオに基づいたチュートリアル]: /ja-jp/develop/net/end-to-end-Apps/
-  [フォーラム]: /ja-jp/support/forums/
-  [アプリケーションのアーキテクチャの概要]: /ja-jp/develop/net/architecture/#overviews
-  [アプリケーション パターン: ロード テスト]: /ja-jp/develop/net/architecture/load-testing-pattern/
-  [設計パターン]: /ja-jp/develop/net/architecture/#designpatterns
   [Hosting a Multi-Tenant Application on Azure (Azure 上のマルチテナント アプリケーションのホスト)]: http://msdn.microsoft.com/ja-jp/library/hh534480.aspx

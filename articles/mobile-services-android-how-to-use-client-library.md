@@ -777,9 +777,9 @@ Java クライアント コードにおいて*ToDoItem* オブジェクト プ�
 
 Android クライアント API に関する Javadocs リファレンスについては、[][]<http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/package-summary.html></a> を参照してください。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-android/
   [モバイル サービス SDK]: http://go.microsoft.com/fwlink/p/?linkid=280126
@@ -812,7 +812,6 @@ Android クライアント API に関する Javadocs リファレンスについ
   [要求ヘッダーをカスタマイズする]: #headers
   [シリアル化をカスタマイズする]: #serialization
   [次のステップ]: #next-steps
-  [mobile-services-concepts]: ../includes/mobile-services-concepts.md
   [テーブルの作成]: http://go.microsoft.com/fwlink/p/?LinkId=298592
   [動的スキーマ]: http://go.microsoft.com/fwlink/p/?LinkId=296271
   [MobileServiceClient]: http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html

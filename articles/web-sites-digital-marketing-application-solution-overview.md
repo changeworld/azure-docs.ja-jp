@@ -1,6 +1,6 @@
 <properties linkid="websites-digital-marketing" urlDisplayName="Resources" pageTitle="Create a Digital Marketing Campaign on Azure Websites" metaKeywords="" description="This guide provides a technical overview of how to use Azure Websites to create digital marketing campaigns. This includes deployment, social media integration, scaling strategies, and monitoring." metaCanonical="" services="" documentationCenter="" title="Create a Digital Marketing Campaign on Azure Websites" authors="jroth" solutions="" manager="paulettm" editor="mollybos" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jroth"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jroth" />
 
 # Azure Websites でのデジタル マーケティング キャンペーンの作成
 
@@ -164,7 +164,6 @@ Azure Websites は、同じ Web コンテンツを個々のマーケティング
   [その他のサービスの統合]: #integrate
   [キャンペーンの監視]: #monitor
   [グローバル Web プレゼンス]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/global-web-presence-solution-overview/
-  [基幹業務アプリケーション]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/business-application-solution-overview
   [こちらのトピック]: /ja-jp/manage/services/web-sites/global-web-presence-solution-overview/
   [DigitalMarketingDeploy1]: ./media/web-sites-digital-marketing-application-solution-overview/DigitalMarketing_Deploy1.png
   [DigitalMarketingDeploy2]: ./media/web-sites-digital-marketing-application-solution-overview/DigitalMarketing_Deploy2.png
@@ -184,7 +183,6 @@ Azure Websites は、同じ Web コンテンツを個々のマーケティング
   [Web サイトの料金詳細]: https://www.windowsazure.com/ja-jp/pricing/details/web-sites/
   [DigitalMarketingAutoScale]: ./media/web-sites-digital-marketing-application-solution-overview/DigitalMarketing_AutoScale.png
   [Web サイトの規模の設定方法]: /ja-jp/manage/services/web-sites/how-to-scale-websites/
-  [クラウド サービスの規模の設定方法]: http://www.windowsazure.com/ja-jp/manage/services/cloud-services/how-to-scale-a-cloud-service/
   [Azure メディア サービスの概念とシナリオに関するドキュメント]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn223282.aspx
   [Azure Cache Service (プレビュー)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn386094.aspx
   [DigitalMarketingMonitor]: ./media/web-sites-digital-marketing-application-solution-overview/DigitalMarketing_Monitor.png
@@ -192,10 +190,3 @@ Azure Websites は、同じ Web コンテンツを個々のマーケティング
   [DigitalMarketingUsageOverview]: ./media/web-sites-digital-marketing-application-solution-overview/DigitalMarketing_UsageOverview.png
   [Azure の New Relic によるアプリケーション パフォーマンス管理]: /ja-jp/develop/net/how-to-guides/new-relic/
   [方法: Azure でアラート通知を受け取り、アラート ルールを管理する]: http://msdn.microsoft.com/library/windowsazure/dn306638.aspx
-  [Azure Websites、クラウド サービス、仮想マシン: いつ、どれを使用するか]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/choose-web-app-service
-  [Web サイトの作成/デプロイ方法]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-create-websites/
-  [Azure Website のデプロイ方法]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-deploy/
-  [ソース管理から Azure Websites への発行]: http://www.windowsazure.com/ja-jp/develop/net/common-tasks/publishing-with-git/
-  [メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC アプリケーションをデプロイする]: http://www.windowsazure.com/ja-jp/develop/net/tutorials/web-site-with-sql-database/
-  [1]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-scale-websites/
-  [2]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-monitor-websites/

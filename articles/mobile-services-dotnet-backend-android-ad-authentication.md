@@ -13,6 +13,6 @@
 
 Chris Risner のチュートリアル「[Accessing Resources Secured by Azure Active Directory with iOS and Android (iOS および Android で Azure Active Directory によってリソースに安全にアクセスする)][Accessing Resources Secured by Azure Active Directory with iOS and Android (iOS および Android で Azure Active Directory によってリソースに安全にアクセスする)]」に従って、Active Directory を使用してアプリを認証し、リソースにアクセスする方法を説明します。
 
-<!-- URLs. -->
+
 
   [Accessing Resources Secured by Azure Active Directory with iOS and Android (iOS および Android で Azure Active Directory によってリソースに安全にアクセスする)]: http://chrisrisner.com/Accessing-Resources-Secured-by-Azure-Active-Directory-with-iOS-and-Android

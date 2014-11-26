@@ -1,4 +1,4 @@
-<properties urlDisplayName="How to monitor" pageTitle="ストレージ アカウントの監視方法 | Microsoft Azure" metaKeywords="Azure monitor storage accounts, storage account management portal, storage account dashboard, storage metrics table, storage metrics chart" description="管理ポータルを使用して Azure でストレージ アカウントを監視する方法について説明します。" metaCanonical="" services="storage" documentationCenter="" title="ストレージ アカウントの監視方法" authors="tamram" solutions="" manager="adinah" editor="cgronlun" />
+<properties linkid="manage-services-how-to-monitor-a-storage-account" urlDisplayName="How to monitor" pageTitle="How to monitor a storage account | Microsoft Azure" metaKeywords="Azure monitor storage accounts, storage account management portal, storage account dashboard, storage metrics table, storage metrics chart" description="Learn how to monitor a storage account in Azure by using the Management Portal." metaCanonical="" services="storage" documentationCenter="" title="How To Monitor a Storage Account" authors="tamram" solutions="" manager="mbaldwin" editor="cgronlun" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
@@ -8,11 +8,9 @@
 
 ストレージ アカウントの監視を構成するまで、監視データは収集されず、ダッシュボードおよび **[監視]** ページのメトリック チャートは空です。
 
-<div class="dev-callout">
-
-**注**
-管理ポータルで監視データを調査すると、追加のコストがかかります。詳細については、[ストレージの分析と課金に関するページ][ストレージの分析と課金に関するページ]を参照してください。
-
+<div class="dev-callout"> 
+<b>注</b> 
+<p>管理ポータルで監視データを調査すると、追加のコストがかかります。詳細については、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/hh360997.aspx">ストレージの分析と課金に関するページ</a>を参照してください。</p> 
 </div>
 
 ## 目次
@@ -90,12 +88,10 @@
 
     ![Monitoring\_VerboseDisplay][Monitoring\_VerboseDisplay]
 
-    <div class="dev-callout">
-
-    **注**
-    メトリックを選択するときはコストを考慮してください。監視の表示を更新すると、トランザクションと送信のコストがかかります。詳細については、[ストレージの分析と課金に関するページ][ストレージの分析と課金に関するページ]を参照してください。
-
-    </div>
+    <div class="dev-callout"> 
+<b>注</b> 
+<p>メトリックを選択するときはコストを考慮してください。監視の表示を更新すると、トランザクションと送信のコストがかかります。詳細については、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/hh360997.aspx">ストレージの分析と課金に関するページ</a>を参照してください。</p> 
+</div>
 
 3.  **[メトリックの追加]** をクリックします。
 
@@ -147,18 +143,13 @@
 
 診断ログは、ストレージ アカウントの $logs という名前の BLOB コンテナーに保存されます。$logs コンテナーへのアクセスの詳細については、「[Storage Analytics Logging について][Storage Analytics Logging について]」を参照してください。
 
-  [ストレージの分析と課金に関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh360997.aspx
   [方法: ストレージ アカウントの監視の設定]: #configurestoragemonitoring
   [方法: ダッシュボードの監視用のカスタマイズ]: #customizestoragemonitoring
-  [方法: [監視] ページのカスタマイズ]: #customizemonitorpage
   [方法: メトリック テーブルへのメトリックの追加]: #addmonitoringmetrics
-  [方法: [監視] ページのメトリック チャートのカスタマイズ]: #customizemetricschart
   [方法: ログの構成]: #configurelogging
   [管理ポータル]: https://manage.windowsazure.com/
   [MonitoringOptions]: ./media/storage-monitor-storage-account/Storage_MonitoringOptions.png
   [Storage Analytics Metrics について]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343258.aspx
-  [Monitoring\_nmore]: ./media/storage-monitor-storage-account/storage_Monitoring_nmore.png
-  [Monitoring\_VerboseDisplay]: ./media/storage-monitor-storage-account/Storage_Monitoring_VerboseDisplay.png
   [AddMetricsInitialDisplay]: ./media/storage-monitor-storage-account/Storage_AddMetrics_InitialDisplay.png
   [AddMetricsScrollbar]: ./media/storage-monitor-storage-account/Storage_AddMetrics_Scrollbar.png
   [ExpandCollapse]: ./media/storage-monitor-storage-account/Storage_AddMetrics_ExpandCollapse.png

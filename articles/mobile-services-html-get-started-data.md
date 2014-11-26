@@ -274,11 +274,10 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
 
 データ シリーズを完了した後は、アプリのユーザーを認証する方法について学習してください。[認証の使用][認証の使用]に関するチュートリアルを完了して、他のチュートリアルの 1 つを試してください。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
 
-  [mobile-services-selector-get-started-data]: ../includes/mobile-services-selector-get-started-data.md
+
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-html
   [HTML アプリ プロジェクトのダウンロード]: #download-app
   [モバイル サービスの作成]: #create-service
@@ -287,7 +286,6 @@ GetStartedWithData アプリケーションは、任意の Web サーバーで�
   [モバイル サービスに対するアプリケーションのテスト]: #test-app
   [GetStartedWithData アプリケーション]: http://go.microsoft.com/fwlink/?LinkID=286345
   [0]: ./media/mobile-services-html-get-started-data/mobile-quickstart-startup-html.png
-  [mobile-services-create-new-service-data]: ../includes/mobile-services-create-new-service-data.md
   [1]: ./media/mobile-services-html-get-started-data/mobile-data-tab-empty.png
   [2]: ./media/mobile-services-html-get-started-data/mobile-create-todoitem-table.png
   [3]: ./media/mobile-services-html-get-started-data/mobile-services-set-cors-localhost.png

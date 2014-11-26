@@ -1,6 +1,6 @@
-1.  [Google Cloud Console][] Web サイトに移動し、Google アカウント資格情報でサインインして、**[CREATE PROJECT]** をクリックします。
+1.  [Google Cloud Console][Google Cloud Console] Web サイトに移動し、Google アカウント資格情報でサインインして、**[CREATE PROJECT]** をクリックします。
 
-    ![][]
+    ![][0]
 
     > [WACOM.NOTE] 既にプロジェクトがある場合は、ログイン後に **[Projects]** ページが表示されます。ダッシュボードで新しいプロジェクトを作成するには、**[API Project]** を展開し、**[Other projects]** の下の **[Create]** をクリックして、プロジェクト名を入力してから **[Create project]** をクリックします。
 
@@ -29,7 +29,7 @@
     この API キー値を使用して、Mobile Services が GCM で認証し、アプリケーションの代わりにプッシュ通知を送信できるようにします。
 
   [Google Cloud Console]: http://cloud.google.com/console
-  []: ./media/notification-hubs-android-get-started/mobile-services-google-new-project.png
+  [0]: ./media/notification-hubs-android-get-started/mobile-services-google-new-project.png
   [1]: ./media/notification-hubs-android-get-started/mobile-services-google-enable-GCM.png
   [2]: ./media/notification-hubs-android-get-started/mobile-services-google-create-server-key.png
   [3]: ./media/notification-hubs-android-get-started/mobile-services-google-create-server-key2.png

@@ -1,6 +1,6 @@
 <properties pageTitle="Work with a .NET backend mobile service" metaKeywords="Web API, mobile service, Azure, controllers" description="Provides examples on how to define, register, and use server-side components in Azure Mobile Services." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Work with server scripts in Mobile Services" authors="glenga" solutions="mobile" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # .NET バックエンド モバイル サービスの使用
 
@@ -48,7 +48,7 @@
 
 個々のサーバー スクリプト オブジェクトおよび関数の詳細については、[モバイル サービスのサーバー スクリプト リファレンス]を参照してください。
 
-<!-- Anchors. -->
+
 
   [はじめに]: #intro
   [テーブル操作]: #table-scripts

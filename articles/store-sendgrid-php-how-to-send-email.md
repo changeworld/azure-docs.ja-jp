@@ -1,6 +1,6 @@
 <properties title="How to use the SendGrid email service (PHP) - Azure" pageTitle="How to use the SendGrid email service (PHP) - Azure" metaKeywords="Azure SendGrid, Azure email service, Azure SendGrid PHP, Azure email PHP" description="Learn how send email with the SendGrid email service on Azure. Code samples written in PHP." documentationCenter="PHP" services="" manager="wpickett" editor="mollybos" authors="robmcm" scriptId="" videoId="" />
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm"></tags>
+<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
 
 # PHP から SendGrid 電子メール サービスを使用する方法
 
@@ -34,7 +34,7 @@ SendGrid の一般的な使用シナリオを次に示します。
 
 ## <a name="bkmk_CreateSendGrid"> </a>SendGrid アカウントの作成
 
-[WACOM.INCLUDE [sendgrid-sign-up][sendgrid-sign-up]]
+[WACOM.INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
 ## <a name="bkmk_UsingSendGridfromPHP"> </a>PHP アプリケーションからの SendGrid の使用
 
@@ -429,6 +429,5 @@ SendGrid では、"フィルター" を使用することでその他の電子�
   [トランザクション電子メール配信]: http://sendgrid.com/solutions
   [クラウドベース電子メール サービス]: http://sendgrid.com/transactional-email
   []: http://sendgrid.com
-  [sendgrid-sign-up]: ../includes/sendgrid-sign-up.md
   [1]: http://swiftmailer.org/download
   [curl 関数]: http://php.net/curl

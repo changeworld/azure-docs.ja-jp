@@ -132,7 +132,6 @@ Django アプリケーションを設定する場合、3 つの環境変数を�
 
 ここで、DjangoApplication ディレクトリに移動して、manage.py を一般的な方法に従って使用し、新しいアプリケーションを Django プロジェクトに追加することができます。
 
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [0]: http://www.windowsazure.com/ja-jp/develop/python/
   [msysgit]: http://code.google.com/p/msysgit/
   [0]: ./media/web-sites-python-create-deploy-django-app/django-ws-003.png

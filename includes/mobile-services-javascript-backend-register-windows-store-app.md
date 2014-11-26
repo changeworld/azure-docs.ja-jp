@@ -63,11 +63,11 @@
 
 	>[WACOM.NOTE]ポータルの **[プッシュ]** タブで拡張プッシュ通知に対応する WNS の資格情報を設定した場合は、アプリに対して通知ハブを構成する目的で、それらの資格情報が通知ハブと共有されます。
 
-<!-- Anchors. -->
 
 
 
-<!-- URLs. -->
+
+
 [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-get-started/
 [アプリ送信のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [Azure 管理ポータル]: https://manage.windowsazure.com/

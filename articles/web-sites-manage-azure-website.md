@@ -1,6 +1,6 @@
 <properties title="Manage an Azure website" pageTitle="Manage an Azure website" description="Links to resources for managing a Microsoft Azure website." services="web-sites" solutions="web" documentationCenter="" authors="mwasson" videoId="" scriptId="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/16/2014" ms.author="mwasson"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/16/2014" ms.author="mwasson" />
 
 # Azure Web サイトの管理
 
@@ -78,7 +78,7 @@ Visual Studio Online を使用する場合は、ソース管理から継続的�
 -   [Team Foundation バージョン管理 (TFVC) の使用][Team Foundation バージョン管理 (TFVC) の使用]
 -   [Git の使用][Git の使用]
 
-<!-- Anchors. -->
+
 
   [サイトを運用環境にデプロイする前]: #before-you-deploy-your-site-to-production
   [Web サイトの運用中]: #while-your-website-is-running

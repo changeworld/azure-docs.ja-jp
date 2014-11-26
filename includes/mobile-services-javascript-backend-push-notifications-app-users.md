@@ -1,6 +1,6 @@
 1.  Azure 管理ポータルにログオンし、[**Mobile Services**] をクリックして、目的のモバイル サービスをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  [**プッシュ**] タブをクリックし、[**権限**] に対して [**認証されたユーザーのみ**] を選択し、[**スクリプトの編集**] をクリックします。
 
@@ -45,5 +45,5 @@
 
 4.  戻る矢印をクリックし、[**データ**] タブをクリックし、[**TodoItem**] をクリックし、[**スクリプト**] をクリックし、[**挿入**] を選択します。
 
-  []: ./media/mobile-services-javascript-backend-push-notifications-app-users/mobile-services-selection.png
+  [0]: ./media/mobile-services-javascript-backend-push-notifications-app-users/mobile-services-selection.png
   [1]: ./media/mobile-services-javascript-backend-push-notifications-app-users/mobile-services-push-registration-endpoint.png

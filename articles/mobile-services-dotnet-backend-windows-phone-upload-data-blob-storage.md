@@ -46,9 +46,9 @@ SAS を使用してアプリケーションから BLOB ストレージにイメ�
 
 [WACOM.INCLUDE [mobile-services-windows-phone-upload-to-blob-storage](../includes/mobile-services-windows-phone-upload-to-blob-storage.md)]
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [ストレージ クライアント ライブラリのインストール]: #install-storage-client
   [イメージをキャプチャするためのクライアント アプリケーションの更新]: #add-select-images
@@ -59,6 +59,4 @@ SAS を使用してアプリケーションから BLOB ストレージにイメ�
   [Windows Phone SDK 8.0]: http://www.microsoft.com/ja-jp/download/details.aspx?id=35471
   [Azure ストレージ アカウント]: /ja-jp/documentation/articles/storage-create-storage-account/
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started
-  [mobile-services-dotnet-backend-configure-blob-storage]: ../includes/mobile-services-dotnet-backend-configure-blob-storage.md
   [0]: ./media/mobile-services-dotnet-backend-windows-phone-upload-data-blob-storage/mobile-add-storage-nuget-package-dotnet.png
-  [mobile-services-windows-phone-upload-to-blob-storage]: ../includes/mobile-services-windows-phone-upload-to-blob-storage.md

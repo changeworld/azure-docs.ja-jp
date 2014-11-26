@@ -60,7 +60,6 @@
 次の[モバイル サービス ユーザーのサービス側の認証][モバイル サービス ユーザーのサービス側の認証]チュートリアルでは、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。.NET でモバイル サービスを使用する方法の詳細については、「[モバイル サービス .NET の使用方法の概念リファレンス][モバイル サービス .NET の使用方法の概念リファレンス]」を参照してください。
 
 
-  [mobile-services-selector-get-started-users]: ../includes/mobile-services-selector-get-started-users.md
   [アプリケーションを認証に登録し、モバイル サービスを構成する]: #register
   [テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
   [アプリケーションに認証を追加する]: #add-authentication
@@ -69,11 +68,7 @@
   [モバイル サービスでの認証の使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-users
   [Live Connect を使用した Windows Phone アプリへのシングル サインオン]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-single-sign-on
   [この記事]: http://go.microsoft.com/fwlink/p/?LinkId=506605
-  [mobile-services-register-authentication]: ../includes/mobile-services-register-authentication.md
   [Windows ストア アプリ パッケージを Microsoft 認証に登録する]: /ja-jp/documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication/
-  [mobile-services-restrict-permissions-javascript-backend]: ../includes/mobile-services-restrict-permissions-javascript-backend.md
   [MobileServiceClient]: http://msdn.microsoft.com/ja-jp/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx
-  [mobile-services-windows-universal-dotnet-authenticate-app]: ../includes/mobile-services-windows-universal-dotnet-authenticate-app.md
-  [mobile-services-windows-store-dotnet-authenticate-app-with-token]: ../includes/mobile-services-windows-store-dotnet-authenticate-app-with-token.md
   [モバイル サービス ユーザーのサービス側の認証]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-authorize-users-in-scripts
   [モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library/

@@ -1,6 +1,7 @@
-<properties umbracoNaviHide="0" pageTitle="ストレージ アカウントの概念 | Azure" metaKeywords="Azure storage, storage service, service, storage account, account, create storage account, create account" description="ストレージ アカウントの概念について学習します。" urlDisplayName="How to: storage accounts" headerExpose="" footerExpose="" disqusComments="1" title="ストレージ アカウントの概念" services="storage" authors="tamram" manager="adinah" editor="cgronlun" />
+﻿<properties umbracoNaviHide="0" pageTitle="ストレージ アカウントの概念 | Azure" metaKeywords="Azure ストレージ, ストレージ サービス, サービス, ストレージ アカウント, アカウント, ストレージ アカウントの作成, アカウントの作成" description="Learn about storage account concepts." urlDisplayName="How to: storage accounts" headerExpose="" footerExpose="" disqusComments="1" title="Storage Account Concepts" services="storage" authors="tamram" manager="adinah" editor="cgronlun" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
+
 
 # ストレージ アカウントの概念
 
@@ -8,19 +9,20 @@
 
 [WACOM.INCLUDE [storage-replication-options](../includes/storage-replication-options.md)]
 
-## ストレージ アカウント エンドポイント
 
-ストレージ アカウントの*エンドポイント*とは、BLOB、テーブル、またはキューにアクセスするための最高レベルの名前空間です。ストレージ アカウントに対応する既定のエンドポイントでは、次の書式を使用します。
+## ストレージ アカウント エンドポイント 
 
--   BLOB サービス: http://*mystorageaccount*.blob.core.windows.net
+ストレージ アカウントの*エンドポイント*とは、BLOB、テーブル、キュー、ファイルにアクセスするための最高レベルの名前空間です。ストレージ アカウントに対応する既定のエンドポイントでは、次の書式を使用します。 
 
--   テーブル サービス: http://*mystorageaccount*.table.core.windows.net
+- BLOB サービス: http://*mystorageaccount*.blob.core.windows.net
 
--   キュー サービス: http://*mystorageaccount*.queue.core.windows.net
+- テーブル サービス: http://*mystorageaccount*.table.core.windows.net
 
--   ファイル サービス: http://*mystorageaccount*.file.core.windows.net
+- キュー サービス: http://*mystorageaccount*.queue.core.windows.net
 
-ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。たとえば、BLOB アドレスは次の形式になることがあります。http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*
+- ファイル サービス: http://*mystorageaccount*.file.core.windows.net
+
+ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。たとえば、BLOB アドレスは次の形式になることがあります。http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
 
 ## ストレージ アカウントのセキュリティ
 
@@ -28,19 +30,15 @@
 
 ストレージ アカウント アクセス キーは、他の人と共有しないことをお勧めします。アカウントが侵害されていると感じたときは、ポータル内からアクセス キーを再生成できます。自分のストレージ アカウントを選択し、**[アクセス キーの管理]** を選択してください。
 
-アクセス キーを入力しないでストレージ リソースにアクセスする場合は、*共有アクセス署名*が利用できます。共有アクセス署名を使用すると、指定した期間、指定した権限で、アカウント内のリソースにアクセスできるようになります。詳細については、「[共有アクセス署名、第 1 部: SAS モデルについて][共有アクセス署名、第 1 部: SAS モデルについて]」を参照してください。
+アクセス キーを入力しないでストレージ リソースにアクセスする場合は、*共有アクセス署名*が利用できます。共有アクセス署名を使用すると、指定した期間、指定した権限で、アカウント内のリソースにアクセスできるようになります。詳細については、「[共有アクセス署名、第 1 部: SAS モデルについて](../storage-dotnet-shared-access-signature-part-1/)」を参照してください。
 
 ## ストレージ アカウントのメトリックとログ
 
--   **最小限のメトリックと詳細メトリックの比較** ストレージ アカウントの監視設定で、最小限のメトリック、または詳細メトリックを構成できます。*最低限のメトリック*の場合は、Blob サービス、テーブル サービス、キュー サービスに関して集計される、受信/送信、可用性、遅延時間、成功のパーセンテージなどのデータを収集します。*詳細メトリック*の場合は、同じメトリックに関するサービス レベルの集計に加えて、オペレーションレベルの詳細を収集します。詳細メトリックにより、アプリケーションの操作中に発生する問題を詳しく分析できます。使用可能なメトリックの詳細なリストについては、「[Storage Analytics Metrics のテーブル スキーマ][Storage Analytics Metrics のテーブル スキーマ]」を参照してください。ストレージ監視の詳細については、「[Storage Analytics Metrics について][Storage Analytics Metrics について]」を参照してください。
+- **最小限のメトリックと詳細メトリックの比較**      ストレージ アカウントの監視設定で、最小限のメトリック、または詳細メトリックを構成できます。*最低限のメトリック*の場合は、BLOB サービス、テーブル サービス、キュー サービスに関して集計される、受信/送信、可用性、遅延時間、成功のパーセンテージなどのデータを収集します。*詳細メトリック*の場合は、同じメトリックに関するサービス レベルの集計に加えて、オペレーション レベルの詳細を収集します。詳細メトリックにより、アプリケーションの操作中に発生する問題を詳しく分析できます。使用可能なメトリックの詳細なリストについては、「[Storage Analytics Metrics のテーブル スキーマ](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343264.aspx)」を参照してください。ストレージ監視の詳細については、「[About Storage Analytics Metrics (ストレージ分析メトリックについて)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343258.aspx)」を参照してください。
 
--   **ログ** ログはストレージ アカウントの構成可能な機能であり、BLOB、テーブル、およびキューへの読み取り、書き込み、削除の各要求をログに記録できます。Azure の管理ポータルでログを構成しますが、管理ポータルでログを表示することはできません。ログは、ストレージ アカウント内の $logs コンテナーに格納され、アクセスできます。詳細については、「[Storage Analytics Overview (Storage Analytics の概要)][Storage Analytics Overview (Storage Analytics の概要)]」を参照してください。
+- **ログ**      ログはストレージ アカウントの構成可能な機能であり、BLOB、テーブル、およびキューへの読み取り、書き込み、削除の各要求をログに記録できます。Azure の管理ポータルでログを構成しますが、管理ポータルでログを表示することはできません。ログは、ストレージ アカウント内の $logs コンテナーに格納され、アクセスできます。詳細については、「[Storage Analytics Overview (ストレージ分析の概要)](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343268.aspx)」を参照してください。
 
 ## Azure ストレージと他のサービスを併置するためのアフィニティ グループ
 
-*アフィニティ グループ*は、Azure ストレージ アカウント内で Azure サービスと仮想マシンを地理的にまとめたグループです。アフィニティ グループは、コンピューティング ワークロードを同じデータ センター内または対象ユーザーの近くに配置することにより、サービス パフォーマンスを向上させることができます。また、同じアフィニティ グループに属している別のサービスがストレージ アカウント内のデータにアクセスする場合には、課金されません。
+*アフィニティ グループ*は、Azure Storage アカウント内で Azure サービスと仮想マシンを地理的にまとめたグループです。アフィニティ グループは、コンピューティング ワークロードを同じデータ センター内または対象ユーザーの近くに配置することにより、サービス パフォーマンスを向上させることができます。また、同じアフィニティ グループに属している別のサービスがストレージ アカウント内のデータにアクセスする場合には、課金されません。
 
-  [共有アクセス署名、第 1 部: SAS モデルについて]: ../storage-dotnet-shared-access-signature-part-1/
-  [Storage Analytics Metrics のテーブル スキーマ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343264.aspx
-  [Storage Analytics Metrics について]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343258.aspx
-  [Storage Analytics Overview (Storage Analytics の概要)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343268.aspx

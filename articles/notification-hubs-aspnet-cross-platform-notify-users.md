@@ -81,9 +81,9 @@
 -   **[方法: Azure 通知ハブ (Windows ストア アプリ)][方法: Azure 通知ハブ (Windows ストア アプリ)]**
     テンプレート式言語のリファレンスが記載されています。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [通知ハブによるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
   [Azure 通知ハブの概要]: http://go.microsoft.com/fwlink/p/?LinkId=317339

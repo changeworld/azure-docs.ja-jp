@@ -103,9 +103,9 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
 -   Azure ユーザー向けの SendGrid 特別プラン:
     <http://sendgrid.com/azure.html>
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [トランザクション電子メール配信]: http://sendgrid.com/solutions
   [クラウドベース電子メール サービス]: http://sendgrid.com/transactional-email
@@ -113,7 +113,6 @@ SendGrid は、信頼性の高い[トランザクション電子メール配信]
   [電子メールを送信するためのスクリプトを追加する]: #add-script
   [データを挿入して電子メールを受け取る]: #insert-data
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started
-  [sendgrid-sign-up]: ../includes/sendgrid-sign-up.md
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   [0]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-portal-data-tables.png
   [1]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-insert-script-push2.png

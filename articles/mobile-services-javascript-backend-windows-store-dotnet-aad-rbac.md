@@ -248,11 +248,8 @@ Git でモバイル サービスにスクリプトをデプロイすることに
   [メンバーシップを確認する共有スクリプトを追加する]: #add-shared-script
   [データベース操作にロール ベースのアクセス確認を追加する]: #add-access-checking
   [クライアントのアクセスをテストする]: #test-client
-  [mobile-services-aad-rbac-create-sales-group]: ../includes/mobile-services-aad-rbac-create-sales-group.md
-  [mobile-services-generate-aad-app-registration-access-key]: ../includes/mobile-services-generate-aad-app-registration-access-key.md
   [Windows Azure AD Graph のエラー コード]: http://msdn.microsoft.com/ja-jp/library/azure/hh974480.aspx
   [IsMemberOf]: http://msdn.microsoft.com/ja-jp/library/azure/dn151601.aspx
   [0]: ./media/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac/table-perms.png
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   [1]: ./media/mobile-services-javascript-backend-windows-store-dotnet-aad-rbac/insert-table-op-view.png
-  [mobile-services-aad-rbac-test-app]: ../includes/mobile-services-aad-rbac-test-app.md

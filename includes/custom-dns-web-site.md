@@ -1,6 +1,6 @@
 # Azure の Web サイトのカスタム ドメイン名の構成
 
-Azure で Web サイトを作成すると、azurewebsites.net ドメイン上にフレンドリ サブドメインが提供されるため、ユーザーは [http://\<mysite][http://\<mysite]\>.azurewebsites.net のような URL を使用して Web サイトにアクセスできるようになります。ただし、Web サイトを Shared モードまたは Standard モード用に構成すると、Web サイトを独自のドメイン名にマップできます。
+Azure で Web サイトを作成すると、azurewebsites.net ドメイン上にフレンドリ サブドメインが提供されるため、ユーザーは http://\<mysite\>.azurewebsites.net のような URL を使用して Web サイトにアクセスできるようになります。ただし、Web サイトを Shared モードまたは Standard モード用に構成すると、Web サイトを独自のドメイン名にマップできます。
 
 必要に応じて、Azure Traffic Manager を使用して Web サイトへの着信トラフィックを負荷分散できます。Traffic Manager の Web サイトでの使用の詳細については、「[Azure Traffic Manager による Azure Websites のトラフィックの制御][Azure Traffic Manager による Azure Websites のトラフィックの制御]」を参照してください。
 
@@ -44,7 +44,7 @@ Web サイトのカスタム ドメイン名は、Azure Websites の Shared モ�
 1.  ブラウザーで、[管理ポータル][管理ポータル]を開きます。
 2.  **[Websites]** タブで、サイトの名前をクリックします。
 
-    ![][]
+    ![][0]
 
 3.  **[規模の設定]** タブをクリックします。
 
@@ -298,7 +298,6 @@ A レコードを作成するには、まず、Website の IP アドレスを見
 <!-- images --> 
 <!-- images -->
 
-  [http://\<mysite]: http://<mysite
   [Azure Traffic Manager による Azure Websites のトラフィックの制御]: /ja-jp/documentation/articles/web-sites-traffic-manager/
   [Azure でのカスタム ドメイン名の構成]: /ja-jp/develop/net/common-tasks/custom-dns/
   [Websites の料金詳細]: /ja-jp/pricing/details/web-sites/
@@ -311,7 +310,7 @@ A レコードを作成するには、まず、Website の IP アドレスを見
   [IETF ドメイン名 - 実装と仕様書]: http://tools.ietf.org/html/rfc1035
   [料金の詳細]: /ja-jp/pricing/details/
   [管理ポータル]: http://manage.windowsazure.com
-  []: ./media/custom-dns-web-site/dncmntask-cname-1.png
+  [0]: ./media/custom-dns-web-site/dncmntask-cname-1.png
   [1]: ./media/custom-dns-web-site/dncmntask-cname-2.png
   [2]: ./media/custom-dns-web-site/dncmntask-cname-3.png
   [簡易作成による Traffic Manager プロファイルの作成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn339012.aspx

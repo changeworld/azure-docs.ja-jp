@@ -2,16 +2,15 @@
 
 1.  サーバー エクスプローラーで、**[Azure Mobile Services]** を展開し、モバイル サービスを右クリックして、**[テーブルの作成]** をクリックします。次に、**[テーブル名]** に「`TodoItem`」と入力します。
 
-    ![create table in VS 2013][]
+    ![create table in VS 2013][create table in VS 2013]
 
 2.  **[詳細]** を展開し、テーブル操作のアクセス許可が既定の **[アプリケーション キーを持つユーザー]** に設定されていることを確認して、**[作成]** をクリックします。
 
-    ![create table in VS 2013 part 2][]
+    ![create table in VS 2013 part 2][create table in VS 2013 part 2]
 
     これにより、サーバー上に TodoItem テーブルが作成されます。アプリケーション キーを持っているユーザーは、最初に認証されなくても、このテーブル内のデータにアクセスし、変更を加えることができます。
 
-    <div class="dev-callout"><strong>注</strong><p>アプリケーション キーはアプリケーションと共に配布されます。このキーはセキュリティの保護がない状態で配布されるため、セキュリティ トークンとして扱うことはできません。モバイル サービスのデータへのアクセスを保護するには、アクセスする前にユーザーを認証する必要があります。詳細については、「<a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj193161.aspx">権限</a>」を参照してください。</p></div>
+    <div class="dev-callout"><strong>注</strong><p>アプリケーション キーはアプリケーションと共に配布されます。このキーはセキュリティの保護がない状態で配布されるため、セキュリティ トークンとして扱うことはできません。モバイル サービスのデータへのアクセスを保護するには、アクセスする前にユーザーを認証する必要があります。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193161.aspx">権限</a>」を参照してください。</p></div>
 
   [create table in VS 2013]: ./media/mobile-services-create-new-table-vs2013/mobile-create-table-vs2013.png
   [create table in VS 2013 part 2]: ./media/mobile-services-create-new-table-vs2013/mobile-create-table-vs2013-2.png
-  [権限]: http://msdn.microsoft.com/en-us/library/windowsazure/jj193161.aspx

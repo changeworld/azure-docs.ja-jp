@@ -162,11 +162,10 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 -   [モバイル サービスのサーバー スクリプト リファレンス][モバイル サービスのサーバー スクリプト リファレンス]
     モバイル サービスでビジネス ロジックを実装する方法を説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
 
-  [mobile-services-selector-get-started-push-legacy]: ../includes/mobile-services-selector-get-started-push-legacy.md
+
   [アプリケーションを更新して通知に登録する]: #update-app
   [サーバー スクリプトを更新してプッシュ通知を送信する]: #update-scripts
   [データを挿入してプッシュ通知を受信する]: #test

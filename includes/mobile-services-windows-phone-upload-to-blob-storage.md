@@ -4,7 +4,7 @@
 
 1.  Visual Studio のソリューション エクスプローラーで、プロジェクトの下の **[プロパティ]** を展開します。次に WMAppManifest.xml ファイルを開き、**[機能]** タブの **ID\_CAP\_ISV\_CAMERA** をクリックして、カメラを有効にします。ファイルを閉じて変更内容を保存します。
 
-    ![][]
+    ![][0]
 
     これにより、コンピューターに接続されたカメラをアプリケーションで使用できます。ユーザーは、アプリケーションを最初に実行したときに、カメラのアクセスを許可することを求められます。
 
@@ -177,7 +177,7 @@
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started
   [CameraCaptureTask]: http://msdn.microsoft.com/ja-jp/library/windowsphone/develop/microsoft.phone.tasks.cameracapturetask(v=vs.105).aspx
   [PhotoCamera]: http://msdn.microsoft.com/ja-jp/library/windowsphone/develop/microsoft.devices.photocamera(v=vs.105).aspx
-  []: ./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-WMAppmanifest-wp8.png
+  [0]: ./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-WMAppmanifest-wp8.png
   [1]: ./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-wp8.png
   [2]: ./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-camera-wp8.png
   [3]: ./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-camera-accept-wp8.png

@@ -1,6 +1,6 @@
 <properties linkid="dev-net-service-bus-amqp-overview" urlDisplayName="Azure Notification Hubs" pageTitle="Azure Notification Hubs" metaKeywords="Azure push notifications, Azure notification hubs, Azure messaging" description="Learn how to use push notifications in Azure. Code samples written in C# using the .NET API." metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Azure Notification Hubs" authors="sethm" manager="dwrede" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="09/24/2014" ms.author="sethm"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="09/24/2014" ms.author="sethm" />
 
 # Azure 通知ハブ
 
@@ -29,7 +29,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 3.  プッシュ通知を送信する際には、アプリケーションのバックエンドがハンドルを使用して PNS にアクセスし、特定のクライアント アプリケーション インスタンスを対象として指定します。
 4.  PNS はハンドルで指定されたデバイスに通知を転送します。
 
-![][]
+![][0]
 
 ## <span class="short-header">プッシュ通知の課題</span>プッシュ通知の課題
 
@@ -73,7 +73,7 @@ Notification Hubs の詳細については、次のトピックを参照して�
 -   [Microsoft.WindowsAzure.Messaging.NotificationHub][Microsoft.WindowsAzure.Messaging.NotificationHub]
 -   [Microsoft.ServiceBus.Notifications][Microsoft.ServiceBus.Notifications]
 
-  []: ./media/notification-hubs-overview/SBPushNotifications1.gif
+  [0]: ./media/notification-hubs-overview/SBPushNotifications1.gif
   [1]: ./media/notification-hubs-overview/SBPushNotifications2.gif
   [Notification Hubs の機能と特徴]: http://azure.microsoft.com/ja-jp/services/notification-hubs
   [Notification Hubs のチュートリアルとガイド]: http://azure.microsoft.com/ja-jp/documentation/services/notification-hubs

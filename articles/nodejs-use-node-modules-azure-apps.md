@@ -1,6 +1,6 @@
 <properties linkid="develop-nodejs-common-tasks-working-with-node-modules" urlDisplayName="Working with Node.js Modules" pageTitle="Working with Node.js Modules" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="nodejs" title="Using Node.js Modules with Azure applications" authors="larryfr" solutions="" manager="paulettm" editor="mollybos" />
 
-<tags ms.service="na" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr"></tags>
+<tags ms.service="na" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
 # Azure アプリケーションでの Node.js モジュールの使用
 
@@ -69,7 +69,6 @@ Azure の Web サイトでは、ネイティブ モジュールがサポート�
 
 Windows Azure で Node.js モジュールを使用する方法が理解できたら、[Node.js バージョンを指定][Node.js バージョンを指定]する方法、[Node.js Web サイトを構築、デプロイする方法][Node.js Web サイトを構築、デプロイする方法]、[Mac および Linux 用 Windows Azure コマンド ライン ツールを使用する方法][Mac および Linux 用 Windows Azure コマンド ライン ツールを使用する方法]に関する各トピックを参照してください。
 
-  [npm インストールを実行してノード モジュールのデプロイを回避するための Windows Azure スタートアップ タスク]: http://nodeblog.azurewebsites.net/startup-task-to-run-npm-in-azure
   [npm-install]: https://npmjs.org/doc/install.html
   [Node.js バージョンを指定]: /ja-jp/documentation/articles/nodejs-specify-node-version-azure-apps/
   [Node.js Web サイトを構築、デプロイする方法]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/

@@ -18,7 +18,7 @@
 
 このセクションでは、管理ポータルのオプションの **[ギャラリーから]** を使用して仮想マシンを作成する方法について説明します。このオプションは、**[簡易作成]** オプションよりも多数の構成の選択肢があります。たとえば、仮想マシンを仮想ネットワークに参加させる場合、**[ギャラリーから]** オプションを使用する必要があります。
 
-[WACOM.INCLUDE [virtual-machines-create-WindowsVM][virtual-machines-create-WindowsVM]]
+[WACOM.INCLUDE [virtual-machines-create-WindowsVM](../includes/virtual-machines-create-WindowsVM.md)]
 
 ## <span id="logon"></span> </a>仮想マシンを作成後、ログオンする方法
 
@@ -125,7 +125,6 @@ Azure での Windows 仮想マシンの構成に関する詳細については�
   [仮想マシンを作成後、ログオンする方法]: #logon
   [新しい仮想マシンにデータ ディスクを接続する方法]: #attachdisk
   [仮想マシン]: http://go.microsoft.com/fwlink/p/?LinkID=271224
-  [virtual-machines-create-WindowsVM]: ../includes/virtual-machines-create-WindowsVM.md
   [Azure 管理ポータル]: http://manage.windowsazure.com
   [Select MyTestVM]: ./media/CreateVirtualMachineWindowsTutorial/selectvm.png
   [MyTestVM に接続する]: ./media/CreateVirtualMachineWindowsTutorial/commandbarconnect.png

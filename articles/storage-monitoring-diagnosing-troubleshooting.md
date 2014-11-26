@@ -805,7 +805,8 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 
 この資料の作成時点では、Application Insights はプレビュー段階です。詳細については、MSDN の「[Application Insights for Visual Studio Online][Application Insights for Visual Studio Online]」を参照してください。
 
-<!--Anchors--> <!--Image references-->
+<!--Anchors-->
+<!--Image references-->
 
   [はじめに]: #introduction
   [本書の構成]: #how-this-guide-is-organized

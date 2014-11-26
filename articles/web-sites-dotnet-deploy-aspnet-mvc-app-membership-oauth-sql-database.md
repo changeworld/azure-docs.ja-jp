@@ -699,7 +699,6 @@ ASP.NET MVC については、[ASP.NET MVC 5 の基本について執筆した�
   [メンバーシップ API を使用する]: #mbrDB
   [1]: #bkmk_deploytowindowsazure11
   [次のステップ]: #nextsteps
-  [install-sdk-2013-only]: ../includes/install-sdk-2013-only.md
   [Visual Studio 2013 Update 2 RC]: http://go.microsoft.com/fwlink/?LinkId=390521
   [Azure の管理ポータル]: https://manage.windowsazure.com
   [New button in Management Portal]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rxWSnew2.png

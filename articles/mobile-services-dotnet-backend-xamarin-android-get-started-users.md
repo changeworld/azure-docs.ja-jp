@@ -82,12 +82,9 @@
 
     ログインに成功すると、アプリケーションはエラーなしで実行されます。また、モバイル サービスを照会してデータを更新できるようになります。
 
-<!-- ## <a name="next-steps"> </a>Next steps  In the next tutorial, [Service-side authorization of Mobile Services users][Authorize users with scripts], you will take the user ID value provided by Mobile Services based on an authenticated user and use it to filter the data returned by Mobile Services.   --> <!-- Anchors. --> <!-- URLs. -->
+<!-- ## <a name="next-steps"> </a>Next steps  In the next tutorial, [Service-side authorization of Mobile Services users][Authorize users with scripts], you will take the user ID value provided by Mobile Services based on an authenticated user and use it to filter the data returned by Mobile Services.   -->  
 
   [アプリケーションを認証に登録し、モバイル サービスを構成する]: #register
   [テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
   [アプリケーションに認証を追加する]: #add-authentication
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-xamarin-android-get-started/
-  [mobile-services-register-authentication]: ../includes/mobile-services-register-authentication.md
-  [mobile-services-dotnet-backend-aad-server-extension]: ../includes/mobile-services-dotnet-backend-aad-server-extension.md
-  [mobile-services-restrict-permissions-dotnet-backend]: ../includes/mobile-services-restrict-permissions-dotnet-backend.md

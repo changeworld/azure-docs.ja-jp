@@ -503,7 +503,6 @@ MongoDB をセキュリティ保護する方法については、「[MongoDB Sec
   [Create a Node.js Application on Azure with MongoDB using the MongoLab Add-On (MongoLab アドオンを使用して Azure で MongoDB 対応の Node.js アプリケーションを作成する)]: /ja-jp/develop/nodejs/tutorials/website-with-mongodb-mongolab/
   [空のタスク一覧が表示されている Web ページ]: ./media/store-mongodb-web-sites-nodejs-use-mac/todo_list_empty.png
   [Git]: http://git-scm.com
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [MongoDB のインストール ガイド]: http://docs.mongodb.org/manual/installation/
   [Linux on Azure への MongoDB のインストール]: http://docs.mongodb.org/ecosystem/tutorial/install-mongodb-on-linux-in-azure/
   [Azure 管理ポータル]: https://manage.windowsazure.com/

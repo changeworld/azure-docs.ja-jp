@@ -1,6 +1,6 @@
 <properties linkid="mobile-services-dotnet-backend-calling-sharepoint-on-behalf-of-user" urlDisplayName="Access SharePoint on behalf of the user" pageTitle="Access SharePoint on behalf of the user | Mobile Dev Center" metaKeywords="" description="Learn how to make calls to SharePoint on behalf of the user" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Access SharePoint on behalf of the user" authors="mahender" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="mahender"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="mahender" />
 
 # ユーザーの代理としての SharePoint へのアクセス
 
@@ -36,7 +36,7 @@
 
 1.  [Azure 管理ポータル][Azure 管理ポータル]の **[Active Directory]** セクションに移動し、テナントを選択します。モバイル サービス用に作成した Web アプリケーションに移動します。
 
-    ![][]
+    ![][0]
 
 2.  **[構成]** タブで、[他のアプリケーションに対するアクセス許可] セクションまでページを下へスクロールします。**[Office 365 SharePoint Online]** を選択し、**[ユーザーのファイルを編集または削除]** 委任アクセス許可を付与します。その後、**[保存]** をクリックします。
 
@@ -72,7 +72,7 @@ SharePoint にアクセスするには、SharePoint を対象ユーザーとす�
 
 1.  Visual Studio で、Mobile Services バックエンド プロジェクトを開きます。
 
-[WACOM.INCLUDE [mobile-services-dotnet-adal-install-nuget][mobile-services-dotnet-adal-install-nuget]]
+[WACOM.INCLUDE [mobile-services-dotnet-adal-install-nuget](../includes/mobile-services-dotnet-adal-install-nuget.md)]
 
 1.  Mobile Services バックエンド プロジェクトで、SharePointUploadContext という名前の新しいクラスを作成します。このクラスで、次のコードを追加します。
 
@@ -187,7 +187,6 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
 
 
 
-  [チュートリアルを見る]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Azure-Mobile-Services-AAD-O365-Authentication-identity-across-services
   [SharePoint への委任アクセスのためにアプリケーションを登録する]: #configure-permissionss
   [モバイル サービスに SharePoint 情報を追加する]: #store-credentials
   [アクセス トークンを取得し、SharePoint API を呼び出す]: #obtain-token
@@ -196,9 +195,8 @@ Word 文書を作成するには、OpenXML NuGet パッケージを使用しま�
   [SharePoint Online]: http://office.microsoft.com/ja-jp/sharepoint/
   [Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/
   [Azure 管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/mobile-services-dotnet-backend-calling-sharepoint-on-behalf-of-user/aad-web-application.png
+  [0]: ./media/mobile-services-dotnet-backend-calling-sharepoint-on-behalf-of-user/aad-web-application.png
   [1]: ./media/mobile-services-dotnet-backend-calling-sharepoint-on-behalf-of-user/aad-sharepoint-permissions.png
   [2]: ./media/mobile-services-dotnet-backend-calling-sharepoint-on-behalf-of-user/aad-manage-secret-key.png
   [3]: ./media/mobile-services-dotnet-backend-calling-sharepoint-on-behalf-of-user/mobile-services-app-settings-sharepoint.png
-  [mobile-services-dotnet-adal-install-nuget]: ../includes/mobile-services-dotnet-adal-install-nuget.md
   [4]: ./media/mobile-services-dotnet-backend-calling-sharepoint-on-behalf-of-user/sharepoint-document-created.png

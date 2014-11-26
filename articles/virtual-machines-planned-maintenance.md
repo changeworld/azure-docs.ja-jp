@@ -1,4 +1,4 @@
-<properties title="Azure Virtual Machines に対する計画的なメンテナンス" pageTitle="Azure Virtual Machines に対する計画的なメンテナンス" description="Azure の計画的なメンテナンスの概要と、それが Azure で実行されている仮想マシンに及ぼす影響について説明します。" metaKeywords="" services="virtual-machines" solutions="" documentationCenter="" authors="kenazk" videoId="" scriptId="" manager="timlt" />
+<properties title="Planned maintenance for Azure virtual machines" pageTitle="Planned maintenance for Azure virtual machines" description="Understand what Azure planned maintenance is and how it affects your virtual machines running in Azure." metaKeywords="" services="virtual-machines" solutions="" documentationCenter="" authors="kenazk" videoId="" scriptId="" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-multiple" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="kenazk" />
 
@@ -47,15 +47,14 @@ Azure は単一インスタンス構成の仮想マシンに対してのみ、�
 
 ![][1]
 
-<!--Anchors--> <!--Link references-->
+<!--Anchors-->
+<!--Link references-->
 
-  [Understand planned versus unplanned maintenance (計画的なメンテナンスと計画外のメンテナンスの概要)]: ../virtual-machines-manage-availability/#Understand-planned-versus-unplanned-maintenance/
   [仮想マシンの構成]: #virtual-machine-configurations
   [マルチインスタンスの更新]: #multi-instance-update
   [単一インスタンスの更新]: #single-instance-update
   [電子メール通知]: #email-notification
   [仮想マシンの可用性管理]: http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-manage-availability/
   [サービス レベル アグリーメント]: ../../support/legal/sla/
-  [Configure multiple virtual machines in an Availability Set for redundancy (冗長性を得るために単一の可用性セットに複数の仮想マシンを構成する)]: http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-manage-availability/#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
   [0]: ./media/virtual-machines-planned-maintenance/EventViewerPostReboot.png
   [1]: ./media/virtual-machines-planned-maintenance/vmplanned1.png

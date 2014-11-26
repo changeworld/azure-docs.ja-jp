@@ -6,4 +6,3 @@
 
 Azure での PHP による MySQL の使用方法を示すサンプルは、<https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/tasklist-mysql> から入手できます。
 
-  [create-mysql-db]: ../includes/create-mysql-db.md

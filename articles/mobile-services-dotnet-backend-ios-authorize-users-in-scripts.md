@@ -38,10 +38,9 @@
 * [Get started with data]   <br/>Learn more about storing and querying data using Mobile Services.  
 * [Get started with push notifications]    <br/>Learn how to send a very basic push notification to your app.  * [Mobile Services .NET How-to Conceptual Reference]   <br/>Learn more about how to use Mobile Services with .NET. --> 
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users
-  [mobile-services-filter-user-results-dotnet-backend]: ../includes/mobile-services-filter-user-results-dotnet-backend.md
   [0]: ./media/mobile-services-dotnet-backend-ios-authorize-users-in-scripts/mobile-quickstart-startup-ios.png

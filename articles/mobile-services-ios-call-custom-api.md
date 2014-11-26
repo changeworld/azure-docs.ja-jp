@@ -36,8 +36,8 @@
 -   [ソース管理へのサーバー スクリプトの保存][ソース管理へのサーバー スクリプトの保存]
      ソース管理機能を使用して、カスタム API スクリプト コードを簡単かつ安全に開発、発行する方法について説明します。
 
-<!-- Anchors. --> 
-<!-- URLs. -->
+ 
+
 
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started/
   [データの使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started-data/
@@ -46,7 +46,5 @@
   [アプリケーションをテストする]: #test-app
   [モバイル サービス iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
   [XCode 4.5]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-  [mobile-services-create-custom-api]: ../includes/mobile-services-create-custom-api.md
-  [mobile-services-ios-call-custom-api]: ../includes/mobile-services-ios-call-custom-api.md
   [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
   [ソース管理へのサーバー スクリプトの保存]: /ja-jp/documentation/articles/mobile-services-store-scripts-source-control

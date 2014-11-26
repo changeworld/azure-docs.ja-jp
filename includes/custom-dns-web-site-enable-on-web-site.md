@@ -4,11 +4,11 @@
 >
 > <http://www.digwebinterface.com/> などのサービスを使用すると、CNAME を利用できるかどうかを確認できます。
 
-1.  ブラウザーで、[Azure の管理ポータル][]を開きます。
+1.  ブラウザーで、[Azure の管理ポータル][Azure の管理ポータル]を開きます。
 
 2.  **[Web サイト]** タブで、サイト名をクリックし、**[ダッシュボード]** を選択して、ページの下部にある **[ドメインの管理]** を選択します。
 
-    ![][]
+    ![][0]
 
 3.  **[ドメイン名]** ボックスに、この Web サイトに関連付けるドメイン名を入力します。
 
@@ -21,5 +21,5 @@
 この時点でブラウザーにカスタム ドメイン名を入力して、対象の Azure Web サイトに正常にアクセスできることを確認できます。
 
   [Azure の管理ポータル]: https://manage.windowsazure.com
-  []: ./media/custom-dns-web-site/dncmntask-cname-6.png
+  [0]: ./media/custom-dns-web-site/dncmntask-cname-6.png
   [1]: ./media/custom-dns-web-site/dncmntask-cname-7.png

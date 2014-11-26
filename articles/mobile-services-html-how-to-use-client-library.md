@@ -581,8 +581,8 @@ promise はいくつかの異なる方法で使用することができます。
 -   [スクリプトを使用したユーザーの認証][スクリプトを使用したユーザーの認証]
     認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理する方法について説明します。
 
-<!-- Anchors. --> 
-<!-- URLs. -->
+ 
+
 
   [Windows ストア JavaScript に関するクイック スタート]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started
   [HTML に関するクイック スタート]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-html
@@ -606,7 +606,6 @@ promise はいくつかの異なる方法で使用することができます。
   [方法: 要求ヘッダーをカスタマイズする]: #customizing
   [方法: クロス オリジン リソース共有を使用する]: #hostnames
   [次のステップ]: #nextsteps
-  [mobile-services-concepts]: ../includes/mobile-services-concepts.md
   [Windows ストア JavaScript でのデータの使用]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-data-js
   [HTML/JavaScript でのデータの使用]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-with-data-html/
   [OData システム クエリ オプション リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=444502

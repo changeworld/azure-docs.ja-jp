@@ -282,11 +282,10 @@
 -   [モバイル サービス .NET の使用方法の概念リファレンス][モバイル サービス .NET の使用方法の概念リファレンス]
     .NET で Mobile Services を使用する方法について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
 
-  [mobile-services-selector-get-started-data-legacy]: ../includes/mobile-services-selector-get-started-data-legacy.md
+
   [JavaScript バックエンド バージョン]: /ja-jp/develop/mobile/tutorials/get-started-with-data-wp8
   [Windows Phone 8 アプリ プロジェクトのダウンロード]: #download-app
   [新しいモバイル サービスを作成する]: #create-service
@@ -302,7 +301,6 @@
   [Windows Phone Store アプリケーション バージョン]: http://go.microsoft.com/fwlink/p/?LinkId=397372
   [1]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/vs-deployment-target.png
   [2]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/app-view.png
-  [mobile-services-dotnet-backend-create-new-service]: ../includes/mobile-services-dotnet-backend-create-new-service.md
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   [3]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/mobile-service-overview-page.png
   [4]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/download-service-project.png
@@ -318,12 +316,10 @@
   [14]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/manage-nuget-packages.png
   [15]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/copy-mobileserviceclient-snippet.png
   [16]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/vs-pasted-mobileserviceclient.png
-  [mobile-services-how-to-configure-iis-express]: ../includes/mobile-services-how-to-configure-iis-express.md
   [17]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/vs-build-solution.png
   [18]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/vs-run-solution.png
   [19]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/local-item-checked.png
   [20]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/vs-show-local-table-data.png
-  [mobile-services-dotnet-backend-publish-service]: ../includes/mobile-services-dotnet-backend-publish-service.md
   [21]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/azure-items.png
   [22]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/manage-sql-azure-database.png
   [23]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/sql-azure-query.png

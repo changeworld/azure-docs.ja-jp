@@ -1,10 +1,10 @@
 <properties linkid="develop-net-tutorials-multi-tier-web-site-3-web-role" pageTitle="Azure Cloud Service Tutorial: ASP.NET Web Role with Azure Storage Tables, Queues, and Blobs" metaKeywords="Azure tutorial, Azure storage tutorial, Azure multi-tier tutorial, ASP.NET MVC tutorial, Azure web role tutorial, Azure blobs tutorial, Azure tables tutorial, Azure queues tutorial" description="Learn how to create a multi-tier app using ASP.NET MVC and Azure. The app runs in a cloud service, with web role and worker roles, and uses Azure storage tables, queues, and blobs." metaCanonical="" services="cloud-services,storage" documentationCenter=".NET" title="Azure Cloud Service Tutorial: ASP.NET MVC Web Role, Worker Role, Azure Storage Tables, Queues, and Blobs" authors="tdykstra,riande" solutions="" manager="wpickett" editor="mollybos" />
 
-<tags ms.service="cloud-services" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tdykstra,riande"></tags>
+<tags ms.service="cloud-services" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tdykstra,riande" />
 
 # Azure Email Service アプリケーションで使用する Web ロールの作成 - 3/5
 
-この 3 番目のチュートリアル (全 5 回シリーズ) では、Azure Email Service のサンプル アプリケーションを作成してデプロイする方法を説明します。このアプリケーションとチュートリアル シリーズの詳細については、[シリーズの最初のチュートリアル][]を参照してください。
+この 3 番目のチュートリアル (全 5 回シリーズ) では、Azure Email Service のサンプル アプリケーションを作成してデプロイする方法を説明します。このアプリケーションとチュートリアル シリーズの詳細については、[シリーズの最初のチュートリアル][シリーズの最初のチュートリアル]を参照してください。
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -14,16 +14,16 @@
 
 ## このチュートリアルの内容
 
--   [Visual Studio ソリューションの作成][]
--   [ストレージ クライアント ライブラリ NuGet パッケージの更新][]
--   [ストレージ エミュレーターを使用するためのプロジェクトの構成][]
--   [トレースの構成と再起動の処理][]
--   [Application\_Start メソッドへのテーブル、キュー、および BLOB コンテナーを作成するコードの追加][]
--   [Mailing List の作成とテスト][]
--   [Subscriber コントローラーおよびビューの作成とテスト][]
--   [Message コントローラーおよびビューの作成とテスト][]
--   [Unsubscribe コントローラーおよびビューの作成とテスト][]
--   [次のステップ][]
+-   [Visual Studio ソリューションの作成][Visual Studio ソリューションの作成]
+-   [ストレージ クライアント ライブラリ NuGet パッケージの更新][ストレージ クライアント ライブラリ NuGet パッケージの更新]
+-   [ストレージ エミュレーターを使用するためのプロジェクトの構成][ストレージ エミュレーターを使用するためのプロジェクトの構成]
+-   [トレースの構成と再起動の処理][トレースの構成と再起動の処理]
+-   [Application\_Start メソッドへのテーブル、キュー、および BLOB コンテナーを作成するコードの追加][Application\_Start メソッドへのテーブル、キュー、および BLOB コンテナーを作成するコードの追加]
+-   [Mailing List の作成とテスト][Mailing List の作成とテスト]
+-   [Subscriber コントローラーおよびビューの作成とテスト][Subscriber コントローラーおよびビューの作成とテスト]
+-   [Message コントローラーおよびビューの作成とテスト][Message コントローラーおよびビューの作成とテスト]
+-   [Unsubscribe コントローラーおよびビューの作成とテスト][Unsubscribe コントローラーおよびビューの作成とテスト]
+-   [次のステップ][次のステップ]
 
 ## <a name="cloudproject"></a>Visual Studio ソリューションの作成
 
@@ -35,27 +35,27 @@
 
 2.  **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
 
-    ![New Project menu][]
+    ![New Project menu][New Project menu]
 
 3.  **[インストールされたテンプレート]** の **C\#** を展開して **[クラウド]** を選択し、**[Azure Cloud Service]** を選択します。
 
 4.  アプリケーションに「**AzureEmailService**」という名前を付けて、**[OK]** をクリックします。
 
-    ![New Project dialog box][]
+    ![New Project dialog box][New Project dialog box]
 
 5.  **[新しい Azure Cloud Service]** ダイアログ ボックスで **[ASP.NET Web ロール]** を選択し、右矢印をクリックします。
 
-    ![New Azure Cloud Project dialog box][]
+    ![New Azure Cloud Project dialog box][New Azure Cloud Project dialog box]
 
 6.  右側の列でポインターを **[WebRole1]** に合わせて鉛筆のアイコンをクリックすると、Web ロールの名前を変更できます。
 
 7.  新しい名前として「MvcWebRole」と入力し、Enter キーを押します。
 
-    ![New Azure Cloud Project dialog box - renaming the web role][]
+    ![New Azure Cloud Project dialog box - renaming the web role][New Azure Cloud Project dialog box - renaming the web role]
 
 8.  同じ手順で **Worker ロール** を追加し、「WorkerRoleA」という名前を付けて、**[OK]** をクリックします。
 
-    ![New Azure Cloud Project dialog box - adding a worker role][]
+    ![New Azure Cloud Project dialog box - adding a worker role][New Azure Cloud Project dialog box - adding a worker role]
 
 9.  **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[MVC]** テンプレートを選択します。**[Web API]** チェック ボックスをオンにし、**[認証の変更]** をクリックします。
 
@@ -63,7 +63,7 @@
 
 10. **[認証の変更]** ダイアログ ボックスで、**[認証なし]** をクリックし、**[OK]** をクリックします。
 
-    ![No authentication][]
+    ![No authentication][No authentication]
 
 11. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで **[OK]** をクリックします。
 
@@ -71,7 +71,7 @@
 
 このセクションでは、管理者 Web UI の全ページに表示されるヘッダー、フッター、およびメニュー項目を更新します。このアプリケーションには、Mailing Lists 用、Subscribers 用、および Messages 用として、3 セットの管理者 Web ページを用意します。
 
-1.  [完成したソリューション][]をまだダウンロードしていない場合は、次のステップに進む前にダウンロードしてください。
+1.  [完成したソリューション][完成したソリューション]をまだダウンロードしていない場合は、次のステップに進む前にダウンロードしてください。
 
     チュートリアルの残りの部分でコードを追加する必要が生じたときは、スニペットを切り取って貼り付ける代わりに、ダウンロードしたプロジェクトからファイルを新しいプロジェクトにコピーできます。チュートリアルでは、コピーするコードの重要な部分を示し、説明します。
 
@@ -93,11 +93,11 @@
 
     これまで Azure クラウド サービス プロジェクトではない Web プロジェクトをよく起動していた開発者であれば、ブラウザーにホーム ページが表示されるまで通常より時間がかかることに気が付くことでしょう。
 
-    ![home page][]
+    ![home page][home page]
 
     この遅延は、Visual Studio によって Azure コンピューティング エミュレーターと Azure ストレージ エミュレーターが起動されることに原因があります。Windows システム トレイに、コンピューティング エミュレーター アイコンが表示されます。
 
-    ![Compute emulator in system tray][]
+    ![Compute emulator in system tray][Compute emulator in system tray]
 
 2.  ブラウザーを閉じます。
 
@@ -107,15 +107,15 @@ Azure のストレージのテーブル、キュー、および BLOB を操作�
 
 1.  Visual Studio の **[ツール]** メニューの **[ライブラリ パッケージ マネージャー]** にポインターを合わせて、**[ソリューションの NuGet パッケージの管理]** をクリックします。
 
-    ![Manage NuGet Packages for Solution in menu][]
+    ![Manage NuGet Packages for Solution in menu][Manage NuGet Packages for Solution in menu]
 
 2.  **[NuGet パッケージの管理]** ダイアログ ボックスの左側のウィンドウで、**[更新プログラム]** を選択して **[Azure Storage]** パッケージまで下方向へスクロールし、**[更新]** をクリックします。
 
-    ![Azure Storage package in Manage NuGet Packages dialog box][]
+    ![Azure Storage package in Manage NuGet Packages dialog box][Azure Storage package in Manage NuGet Packages dialog box]
 
 3.  **[プロジェクトの選択]** ダイアログ ボックスで、両方のプロジェクトが選択されていることを確認し、**[OK]** をクリックします。
 
-    ![Selecting both projects in the Select Projects dialog box][]
+    ![Selecting both projects in the Select Projects dialog box][Selecting both projects in the Select Projects dialog box]
 
 4.  ライセンス条項に同意してパッケージのインストールを完了し、**[NuGet パッケージの管理]** ダイアログ ボックスを閉じます。
 
@@ -125,7 +125,7 @@ Azure のストレージのテーブル、キュー、および BLOB を操作�
 
 1.  **ソリューション エクスプローラー**で、**AzureEmailService** クラウド プロジェクトの **[Roles]** の下にある **[MvcWebRole]** を右クリックし、**[プロパティ]** を選択します。
 
-    ![Web role properties][]
+    ![Web role properties][Web role properties]
 
 2.  **[サービス構成]** ボックスの一覧で **[すべての構成]** が選択されていることを確認します。
 
@@ -137,7 +137,7 @@ Azure のストレージのテーブル、キュー、および BLOB を操作�
 
 6.  その行の右端にある **[...]** ボタンをクリックして、**[ストレージ アカウント接続文字列]** ダイアログ ボックスを開きます。
 
-    ![Right Click Properties][]
+    ![Right Click Properties][Right Click Properties]
 
 7.  **[ストレージ接続文字列の作成]** ダイアログ ボックスで **[Azure ストレージ エミュレーター]** をクリックし、**[OK]** をクリックします。
 
@@ -161,7 +161,7 @@ Azure のストレージのテーブル、キュー、および BLOB を操作�
 -   新しい設定を 1 か所で追加すると、正しい設定の XML が 3 つのファイルすべてに追加される。
 -   3 つの設定ファイルについて、正しい XML が生成される。*ServiceDefinition.csdf* ファイルには、各 *.cscfg* 構成ファイルに含める必要のある設定が定義されています。*ServiceDefinition.csdf* ファイルと 2 つの *.cscfg* 構成ファイルの設定に矛盾があると、Visual Studio から "*現在のサービス モデルは非同期です。サービス構成ファイルおよびサービス定義ファイルが有効であることを確認してください。*" というエラー メッセージが表示されることがあります。
 
-    ![Invalid service configuration and definition files error][]
+    ![Invalid service configuration and definition files error][Invalid service configuration and definition files error]
 
 このエラーが発生すると、手動でファイルを編集して矛盾の問題を解決するまでプロパティ エディターは動作しません。
 
@@ -169,9 +169,9 @@ Azure のストレージのテーブル、キュー、および BLOB を操作�
 
 1.  MvcWebRole プロジェクトで、ダウンロードしたプロジェクトから *WebRole.cs* ファイルを追加します。
 
-これにより、ログを構成するメソッドが追加され、Web ロールが開始されたときに実行される `OnStart` メソッドから呼び出されるようになります。新しい `ConfigureDiagnostics` メソッドのコードについては、[2 番目のチュートリアル][]の説明を参照してください。
+これにより、ログを構成するメソッドが追加され、Web ロールが開始されたときに実行される `OnStart` メソッドから呼び出されるようになります。新しい `ConfigureDiagnostics` メソッドのコードについては、[2 番目のチュートリアル][2 番目のチュートリアル]の説明を参照してください。
 
-また、シャットダウンされることが Web ロールに通知されたときに実行されるコードも追加されます。Azure クラウド サービス アプリケーションは、オペレーティング システムの更新に伴い、月に約 2 回再起動されます (OS の更新の詳細については、「[Role Instance Restarts Due to OS Upgrades (OS のアップグレードに伴うロール インスタンスの再起動)][]」を参照してください)。Web アプリケーションがシャットダウンされる際には、`OnStop` イベントが発生します。Visual Studio によって作成された Web ロール ボイラー プレートでは `OnStop` メソッドをオーバーライドしていないため、アプリケーションが HTTP 要求の処理を完了するための時間はシャットダウンまでに数秒しかありません。シャットダウンが正常に処理されるようにするには、コードを追加して `OnStop` メソッドをオーバーライドすることができます。
+また、シャットダウンされることが Web ロールに通知されたときに実行されるコードも追加されます。Azure クラウド サービス アプリケーションは、オペレーティング システムの更新に伴い、月に約 2 回再起動されます (OS の更新の詳細については、「[Role Instance Restarts Due to OS Upgrades (OS のアップグレードに伴うロール インスタンスの再起動)][Role Instance Restarts Due to OS Upgrades (OS のアップグレードに伴うロール インスタンスの再起動)]」を参照してください)。Web アプリケーションがシャットダウンされる際には、`OnStop` イベントが発生します。Visual Studio によって作成された Web ロール ボイラー プレートでは `OnStop` メソッドをオーバーライドしていないため、アプリケーションが HTTP 要求の処理を完了するための時間はシャットダウンまでに数秒しかありません。シャットダウンが正常に処理されるようにするには、コードを追加して `OnStop` メソッドをオーバーライドすることができます。
 
 ここで追加したファイルには、次の `OnStop` メソッドのオーバーライドが含まれています。
 
@@ -192,7 +192,7 @@ Azure がロールをオフラインにすると、ロール インスタンス�
 
 `OnStop` メソッド用に示したコードの中で、ASP.NET パフォーマンス カウンター `Requests Current` が作成されています。`Requests Current` カウンターの値には、現在の要求数が設定されます。これには、キューに登録済み、現在実行中、またはクライアントへの書き込み待ちの要求が含まれています。`Requests Current` 値は毎秒チェックされ、ゼロになると、`OnStop` メソッドが制御を返します。`OnStop` が制御を返した時点で、ロールがシャットダウンされます。
 
-[オンデマンド転送][]を実行せずに `OnStop` メソッドから呼び出された場合、トレース データは保存されません。リモート デスクトップ接続で [dbgview][] ユーティリティを使用すると、`OnStop` トレース情報をリアルタイムで確認できます。
+[オンデマンド転送][オンデマンド転送]を実行せずに `OnStop` メソッドから呼び出された場合、トレース データは保存されません。リモート デスクトップ接続で [dbgview][dbgview] ユーティリティを使用すると、`OnStop` トレース情報をリアルタイムで確認できます。
 
 ## <a name="createifnotexists"></a>Application\_Start メソッドへのテーブル、キュー、および BLOB コンテナーを作成するコードの追加
 
@@ -268,17 +268,17 @@ Azure がロールをオフラインにすると、ロール インスタンス�
             public string Description { get; set; }
         }
 
-    Azure Storage API では、テーブル操作に使用するエンティティ クラスが [TableEntity][] から派生していることが求められます。`TableEntity` では、`PartitionKey`、`RowKey`、`TimeStamp`、および `ETag` の各フィールドが定義されます。`TimeStamp` および `ETag` プロパティはシステムによって使用されます。このチュートリアルの後の方で、どのように `ETag` プロパティが同時実行処理に使用されるかを説明します。
+    Azure Storage API では、テーブル操作に使用するエンティティ クラスが [TableEntity][TableEntity] から派生していることが求められます。`TableEntity` では、`PartitionKey`、`RowKey`、`TimeStamp`、および `ETag` の各フィールドが定義されます。`TimeStamp` および `ETag` プロパティはシステムによって使用されます。このチュートリアルの後の方で、どのように `ETag` プロパティが同時実行処理に使用されるかを説明します。
 
-    (定義済みのモデル クラスを使用する代わりに、Dictionary コレクションのキー値ペアとしてテーブル行を操作する場合に使用する [DynamicTableEntity][] クラスもあります。詳細については、[Azure のストレージ クライアント ライブラリ 2.0 テーブルの詳細に関するページ][]を参照してください。)
+    (定義済みのモデル クラスを使用する代わりに、Dictionary コレクションのキー値ペアとしてテーブル行を操作する場合に使用する [DynamicTableEntity][DynamicTableEntity] クラスもあります。詳細については、[Azure のストレージ クライアント ライブラリ 2.0 テーブルの詳細に関するページ][Azure のストレージ クライアント ライブラリ 2.0 テーブルの詳細に関するページ]を参照してください。)
 
     `mailinglist` テーブルのパーティション キーはメーリング リスト名です。このエンティティ クラスでは、`PartitionKey` プロパティ (`TableEntity` クラスで定義されます) または `ListName` プロパティ (`MailingList` クラスで定義されます) を使用してパーティション キー値にアクセスできます。`ListName` プロパティでは、バッキング変数として `PartitionKey` が使用されます。`ListName` プロパティを定義すると、わかりやすい変数名をコード内で使用でき、Web UI のプログラミングが容易になります。これは、書式設定と検証の DataAnnotations 属性を `ListName` プロパティに追加できるためですが、DataAnnotations 属性を `PartitionKey` プロパティに直接追加することはできません。
 
     `ListName` プロパティに `RegularExpression` 属性が追加されている場合、MVC はユーザー入力を検証して、入力されたリスト名の値に含まれている文字が英数字またはアンダースコアのみであることを確認します。この制約は、URL のクエリ文字列に容易に使用できるように、リスト名をシンプルに保つために実装されています。
 
-    > [WACOM.NOTE] リスト名の書式に対する制約を緩和するには、クエリ文字列で他の文字および URL エンコード リスト名の使用を許可することもできます。ただし、Azure テーブルのパーティション キーまたは行キーに使用できない特定の文字が存在するため、少なくともこれらの文字は除外する必要があります。パーティション キー フィールドまたは行キー フィールドで使用できない (使用すると問題の原因になる) 文字については、「[テーブル サービス データ モデルについて][]」および [PartitionKey または RowKey にパーセント '%' 文字が含まれていると、一部の Azure テーブル API が失敗する動作に関するページ][]を参照してください。
+    > [WACOM.NOTE] リスト名の書式に対する制約を緩和するには、クエリ文字列で他の文字および URL エンコード リスト名の使用を許可することもできます。ただし、Azure テーブルのパーティション キーまたは行キーに使用できない特定の文字が存在するため、少なくともこれらの文字は除外する必要があります。パーティション キー フィールドまたは行キー フィールドで使用できない (使用すると問題の原因になる) 文字については、「[テーブル サービス データ モデルについて][テーブル サービス データ モデルについて]」および [PartitionKey または RowKey にパーセント '%' 文字が含まれていると、一部の Azure テーブル API が失敗する動作に関するページ][PartitionKey または RowKey にパーセント '%' 文字が含まれていると、一部の Azure テーブル API が失敗する動作に関するページ]を参照してください。
 
-    `MailingList` クラスで定義されている既定のコンストラクターでは、ハードコーディングされた文字列 "mailinglist" が `RowKey` に設定されます。これは、テーブル内のすべての MailingList 行で、行キーがこの値であるためです (テーブル構造の詳細については、[シリーズの最初のチュートリアル][]を参照してください)。この目的では、任意の定数値を選択することができます。ただし、このテーブルの Subscriber 行の行キーである電子メール アドレスと同じ値にすることはできません。
+    `MailingList` クラスで定義されている既定のコンストラクターでは、ハードコーディングされた文字列 "mailinglist" が `RowKey` に設定されます。これは、テーブル内のすべての MailingList 行で、行キーがこの値であるためです (テーブル構造の詳細については、[シリーズの最初のチュートリアル][シリーズの最初のチュートリアル]を参照してください)。この目的では、任意の定数値を選択することができます。ただし、このテーブルの Subscriber 行の行キーである電子メール アドレスと同じ値にすることはできません。
 
     新しい `MailingList` エンティティの作成時には、必ずリスト名と "差出人" の電子メール アドレスを入力して、`Required` 属性が指定されているフィールドの値を確保します。
 
@@ -305,7 +305,7 @@ Azure がロールをオフラインにすると、ロール インスタンス�
 
     次の `FindRowAsync` メソッドは、`MailingList` テーブルから特定のメーリング リスト エントリをコントローラーが検索する必要がある場合 (メーリング リスト エントリを編集する場合など) に呼び出されます。このメソッドは、渡されたパーティション キーおよび行キーの値を使用して、単一の `MailingList` エンティティを取得します。このコントローラーが編集する行は、行キーが "MailingList" の行であるため、"MailingList" を行キーとしてハードコーディングすることもできますが、パーティション キーと行キーの指定は、すべてのコントローラーの `FindRow` メソッドで使用されているパターンです。
 
-    > [WACOM.NOTE] アプリケーションは、サーバー リソースを効率的に使用するために、ASP.NET 4.5 の非同期コードを使用して Web ロールの I/O 操作を実行します。Web アプリケーションの非同期コードの詳細については、「[Use .NET 4.5's async support to avoid blocking calls (ブロッキング呼び出しを回避するための .NET 4.5 の非同期サポートの使用)][]」を参照してください。
+    > [WACOM.NOTE] アプリケーションは、サーバー リソースを効率的に使用するために、ASP.NET 4.5 の非同期コードを使用して Web ロールの I/O 操作を実行します。Web アプリケーションの非同期コードの詳細については、「[Use .NET 4.5's async support to avoid blocking calls (ブロッキング呼び出しを回避するための .NET 4.5 の非同期サポートの使用)][Use .NET 4.5's async support to avoid blocking calls (ブロッキング呼び出しを回避するための .NET 4.5 の非同期サポートの使用)]」を参照してください。
 
         private async Task<MailingList> FindRowAsync(string partitionKey, string rowKey)
         {
@@ -319,7 +319,7 @@ Azure がロールをオフラインにすると、ロール インスタンス�
             return mailingList;
         }
 
-    `FindRow` メソッドのコードでは、MailingList 行が返されます。対応する `Subscriber` コントローラーの `FindRow` メソッドでは、同じ `mailinglist` テーブルから Subscriber 行が返されます。2 つのメソッドのコードは、[TableOperation.Retrieve][] で使用されるモデルの種類を除き、同じです。
+    `FindRow` メソッドのコードでは、MailingList 行が返されます。対応する `Subscriber` コントローラーの `FindRow` メソッドでは、同じ `mailinglist` テーブルから Subscriber 行が返されます。2 つのメソッドのコードは、[TableOperation.Retrieve][TableOperation.Retrieve] で使用されるモデルの種類を除き、同じです。
 
         private async Task<Subscriber> FindRowAsync(string partitionKey, string rowKey)
         {
@@ -351,11 +351,11 @@ Azure がロールをオフラインにすると、ロール インスタンス�
             token = currentSegment.ContinuationToken;
         }
 
-    `ExecuteQuerySegmentedAsync` メソッドは、大きな結果セットをセグメントに分割します。このメソッドは、最大で 1,000 行を返します。1,000 行を超える行を取得するクエリを実行すると、1,000 行と継続トークンが返されます。この継続トークンを使用すると、前のクエリが終了した箇所から継続して次のクエリを実行できます。ここに示されているコードは、サンプル アプリケーション用に簡略化されているため、すべてのセグメントが 1 つのリストに集約されています。運用アプリケーションの場合は、ページング コードを実装します。大きな結果セットと継続トークンの詳細については、「[How to get most out of Windows Azure Tables (Windows Azure テーブルの最大活用)][]」および「[Windows Azure Tables: Expect Continuation Tokens, Seriously! (Windows Azure テーブル: 継続トークンの重要性)][]」を参照してください。.
+    `ExecuteQuerySegmentedAsync` メソッドは、大きな結果セットをセグメントに分割します。このメソッドは、最大で 1,000 行を返します。1,000 行を超える行を取得するクエリを実行すると、1,000 行と継続トークンが返されます。この継続トークンを使用すると、前のクエリが終了した箇所から継続して次のクエリを実行できます。ここに示されているコードは、サンプル アプリケーション用に簡略化されているため、すべてのセグメントが 1 つのリストに集約されています。運用アプリケーションの場合は、ページング コードを実装します。大きな結果セットと継続トークンの詳細については、「[How to get most out of Windows Azure Tables (Windows Azure テーブルの最大活用)][How to get most out of Windows Azure Tables (Windows Azure テーブルの最大活用)]」および「[Windows Azure Tables: Expect Continuation Tokens, Seriously! (Windows Azure テーブル: 継続トークンの重要性)][Windows Azure Tables: Expect Continuation Tokens, Seriously! (Windows Azure テーブル: 継続トークンの重要性)]」を参照してください。.
 
-    `OperationContext` オブジェクトを作成するとき、`ClientID` プロパティ値を設定して、Azure Storage によって書き込まれるログに含める一意の識別子を指定できます。この識別子を使用して、ストレージ サービス アクティビティを発生させたコードまでストレージ操作ログをトレースできます。Azure Storage ログの詳細については、「[Windows Azure Storage Logging: Using Logs to Track Storage Requests (Windows Azure Storage ログ: ログを使用したストレージ要求の追跡)][]」を参照してください。
+    `OperationContext` オブジェクトを作成するとき、`ClientID` プロパティ値を設定して、Azure Storage によって書き込まれるログに含める一意の識別子を指定できます。この識別子を使用して、ストレージ サービス アクティビティを発生させたコードまでストレージ操作ログをトレースできます。Azure Storage ログの詳細については、「[Windows Azure Storage Logging: Using Logs to Track Storage Requests (Windows Azure Storage ログ: ログを使用したストレージ要求の追跡)][Windows Azure Storage Logging: Using Logs to Track Storage Requests (Windows Azure Storage ログ: ログを使用したストレージ要求の追跡)]」を参照してください。
 
-    SCL 2.1 以降の API では、テーブル クエリに LINQ を使用することもできます。LINQ の使用法を示すコード サンプルについては、「[PhluffyFotos Sample (PhluffyFotos サンプル)][]」を参照してください。
+    SCL 2.1 以降の API では、テーブル クエリに LINQ を使用することもできます。LINQ の使用法を示すコード サンプルについては、「[PhluffyFotos Sample (PhluffyFotos サンプル)][PhluffyFotos Sample (PhluffyFotos サンプル)]」を参照してください。
 
     再試行ポリシーを指定しなかった場合は、API により指数関数的にタイムアウト制限が延長され、試行が自動的に 3 回行われます。Web インターフェイスでユーザーがページの表示を待っている場合、この待ち時間は許容できない長さになる可能性があります。そのため、このコードでは、(タイムアウトが毎回延長されないように) 直線的な値が指定され、ユーザーの待ち時間として妥当なタイムアウト制限が指定されています。再試行ポリシーは、`ExecuteQuerySegmentedAsync` メソッドに渡される `webUIRetryPolicy` オブジェクトに指定します。`webUIRetryPolicy` オブジェクトは、コントローラー コンストラクターに定義されています。
 
@@ -559,11 +559,11 @@ Azure がロールをオフラインにすると、ロール インスタンス�
 
 1.  Ctrl キーを押しながら F5 キーを押してプロジェクトを実行します。
 
-    ![空の MailingList の Index ページ][]
+    ![空の MailingList の Index ページ][空の MailingList の Index ページ]
 
 2.  **Create** 機能を使用してメーリング リストを追加し、**Edit** 機能と **Delete** 機能を試して動作することを確認します。
 
-    ![MailingList Index page with rows][]
+    ![MailingList Index page with rows][MailingList Index page with rows]
 
 ## <a name="subscriber"></a><span class="short-header">登録者</span>Subscriber コントローラーおよびビューの作成とテスト
 
@@ -612,7 +612,7 @@ Azure がロールをオフラインにすると、ロール インスタンス�
             }
         
 
-`Subscriber` 行では、定数 "mailinglist" ではなく電子メール アドレスが行キーに使用されます (テーブル構造の詳細については、[シリーズの最初のチュートリアル][]を参照してください)。このため、`EmailAddress` が `RowKey` をバッキング フィールドとして使用するように、`ListName` プロパティは `PartitionKey` プロパティをバッキング フィールドとして使用することが定義されています。前に説明したように、これによって、書式設定と検証の DataAnnotations 属性をプロパティに追加できます。
+`Subscriber` 行では、定数 "mailinglist" ではなく電子メール アドレスが行キーに使用されます (テーブル構造の詳細については、[シリーズの最初のチュートリアル][シリーズの最初のチュートリアル]を参照してください)。このため、`EmailAddress` が `RowKey` をバッキング フィールドとして使用するように、`ListName` プロパティは `PartitionKey` プロパティをバッキング フィールドとして使用することが定義されています。前に説明したように、これによって、書式設定と検証の DataAnnotations 属性をプロパティに追加できます。
 
 `SubscriberGUID` 値は、`Subscriber エンティティの作成時に生成されます。この値は、許可されている人だけが電子メール アドレスを登録または登録解除できるようにするために、登録リンクと登録解除リンクで使用されます。`
 
@@ -768,11 +768,11 @@ MVC モデル バインダーが `Edit` メソッドに渡すパラメーター�
 
 1.  Ctrl キーを押しながら F5 キーを押してプロジェクトを実行し、**[Subscribers]** をクリックします。
 
-    ![Empty Subscriber Index page][]
+    ![Empty Subscriber Index page][Empty Subscriber Index page]
 
 2.  **Create** 機能を使用してメーリング リストを追加し、**Edit** 機能と **Delete** 機能を試して動作することを確認します。
 
-    ![Subscribers Index page with rows][]
+    ![Subscribers Index page with rows][Subscribers Index page with rows]
 
 ## <a name="message"></a>Message コントローラーおよびビューの作成とテスト
 
@@ -844,7 +844,7 @@ MVC モデル バインダーが `Edit` メソッドに渡すパラメーター�
 
 既定のコンストラクターでは、新しい `message` 行に既定のステータスとして "Pending" を設定する処理も行われます。
 
-`Message` テーブル構造の詳細については、[シリーズの最初のチュートリアル][]を参照してください。
+`Message` テーブル構造の詳細については、[シリーズの最初のチュートリアル][シリーズの最初のチュートリアル]を参照してください。
 
 ### Message MVC コントローラーを追加する
 
@@ -1007,11 +1007,11 @@ BLOB は BLOB コンテナーに保存されます。Azure Email Service アプ�
 
 1.  Ctrl キーを押しながら F5 キーを押してプロジェクトを実行し、**[Messages]** をクリックします。
 
-    ![Empty Message Index page][]
+    ![Empty Message Index page][Empty Message Index page]
 
 2.  **Create** 機能を使用してメーリング リストを追加し、**Edit** 機能と **Delete** 機能を試して動作することを確認します。
 
-    ![行が表示されている Subscribers の Index ページ][]
+    ![行が表示されている Subscribers の Index ページ][行が表示されている Subscribers の Index ページ]
 
 ## <a name="unsubscribe"></a>Unsubscribe コントローラーおよびビューの作成とテスト
 
@@ -1082,7 +1082,7 @@ BLOB は BLOB コンテナーに保存されます。Azure Email Service アプ�
             return View(unsubscribeVM);
         }
 
-注: SubscriberGUID がパーティション キーまたは行キーに含まれていないため、パーティション サイズ (メーリング リスト内の電子メール アドレス数) が大きくなると、このクエリのパフォーマンスは低下します。このクエリの拡張性を向上するための代替方法の詳細については、[シリーズの最初のチュートリアル][]を参照してください。
+注: SubscriberGUID がパーティション キーまたは行キーに含まれていないため、パーティション サイズ (メーリング リスト内の電子メール アドレス数) が大きくなると、このクエリのパフォーマンスは低下します。このクエリの拡張性を向上するための代替方法の詳細については、[シリーズの最初のチュートリアル][シリーズの最初のチュートリアル]を参照してください。
 
 `HttpPost Index` メソッドは、GUID とメーリング リスト名を使用して登録者情報を取得し、ビュー モデルのプロパティに値を設定します。次に、**[Confirm]** ボタンがクリックされた場合は、`MailingList` テーブル内の該当する Subscriber 行を削除します。**[Confirm]** ボタンが押された場合は `Confirm` プロパティを `true` に設定し、それ以外の場合は `Confirm` プロパティを `false` に設定します。`Confirm` プロパティの値は、**登録解除用**ページの確認済みバージョンを表示するか取り消し済みバージョンを表示するかを指定する値です。
 
@@ -1188,7 +1188,7 @@ BLOB は BLOB コンテナーに保存されます。Azure Email Service アプ�
 
 6.  **[エンティティの編集]** ダイアログ ボックスで、`SubscriberGUID` の値を選択してコピーします。
 
-    ![Azure Storage Explorer][]
+    ![Azure Storage Explorer][Azure Storage Explorer]
 
 7.  ブラウザー ウィンドウに戻ります。ブラウザーのアドレス バーで、URL に含まれる "Subscriber" を "unsubscribe?ID=[guidvalue]&listName=[listname]" ([guidvalue] は Azure ストレージ エクスプローラーからコピーした GUID、[listname] はメーリング リストの名前) に変更します。次に例を示します。
 
@@ -1196,17 +1196,17 @@ BLOB は BLOB コンテナーに保存されます。Azure Email Service アプ�
 
     確認を求めるバージョンの**登録解除用**ページが表示されます。
 
-    ![Unsubscribe page][]
+    ![Unsubscribe page][Unsubscribe page]
 
 8.  **[Confirm]** をクリックすると、電子メール アドレスが登録解除されたという確認が表示されます。
 
-    ![Unsubscribe confirmed page][]
+    ![Unsubscribe confirmed page][Unsubscribe confirmed page]
 
 9.  **Subscribers** **Index** ページに戻り、Subscriber 行が表示されていないことを確認します。
 
 ## <a name="nextsteps"></a>次のステップ
 
-[シリーズの最初のチュートリアル][]で説明したように、ASP.NET Web API サービス メソッドに共有シークレットのセキュリティが実装されていないため、このチュートリアルでは登録プロセスのコンポーネントを示しません。ただし、サービス メソッドは 2 つ目のチュートリアルで設定した IP 制限によっても保護されます。登録機能は、ダウンロードしたプロジェクトから次の各ファイルをコピーすることによって追加できます。
+[シリーズの最初のチュートリアル][シリーズの最初のチュートリアル]で説明したように、ASP.NET Web API サービス メソッドに共有シークレットのセキュリティが実装されていないため、このチュートリアルでは登録プロセスのコンポーネントを示しません。ただし、サービス メソッドは 2 つ目のチュートリアルで設定した IP 制限によっても保護されます。登録機能は、ダウンロードしたプロジェクトから次の各ファイルをコピーすることによって追加できます。
 
 ASP.NET Web API サービス メソッド:
 
@@ -1218,9 +1218,9 @@ ASP.NET Web API サービス メソッド:
 -   Controllers\\SubscribeController.cs
 -   Views\\Subscribe\\Index.cshtml
 
-[次のチュートリアル][]では、電子メールのスケジュールを設定するワーカー ロール A の構成とプログラミングを行います。
+[次のチュートリアル][次のチュートリアル]では、電子メールのスケジュールを設定するワーカー ロール A の構成とプログラミングを行います。
 
-Azure Storage のテーブル、キュー、BLOB に関する参考情報については、[このシリーズの最終チュートリアル][]を参照してください。
+Azure Storage のテーブル、キュー、BLOB に関する参考情報については、[このシリーズの最終チュートリアル][このシリーズの最終チュートリアル]を参照してください。
 
 <div>
 
@@ -1228,7 +1228,7 @@ Azure Storage のテーブル、キュー、BLOB に関する参考情報につ�
 
 </div>
 
-  [シリーズの最初のチュートリアル]: /en-us/develop/net/tutorials/multi-tier-web-site/1-overview/
+  [シリーズの最初のチュートリアル]: /ja-jp/develop/net/tutorials/multi-tier-web-site/1-overview/
   [Visual Studio ソリューションの作成]: #cloudproject
   [ストレージ クライアント ライブラリ NuGet パッケージの更新]: #updatescl
   [ストレージ エミュレーターを使用するためのプロジェクトの構成]: #configurestorage
@@ -1255,17 +1255,17 @@ Azure Storage のテーブル、キュー、BLOB に関する参考情報につ�
   [Web role properties]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-web-role/mtas-mvcwebrole-properties-menu.png
   [Right Click Properties]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-web-role/mtas-elip.png
   [Invalid service configuration and definition files error]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-web-role/mtas-er1.png
-  [2 番目のチュートリアル]: /en-us/develop/net/tutorials/multi-tier-web-site/2-download-and-run/
+  [2 番目のチュートリアル]: /ja-jp/develop/net/tutorials/multi-tier-web-site/2-download-and-run/
   [Role Instance Restarts Due to OS Upgrades (OS のアップグレードに伴うロール インスタンスの再起動)]: http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx
-  [オンデマンド転送]: http://msdn.microsoft.com/en-us/library/windowsazure/gg433075.aspx
-  [dbgview]: http://technet.microsoft.com/en-us/sysinternals/bb896647.aspx
-  [TableEntity]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.storage.table.tableentity.aspx
-  [DynamicTableEntity]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.storage.table.dynamictableentity.aspx
+  [オンデマンド転送]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433075.aspx
+  [dbgview]: http://technet.microsoft.com/ja-jp/sysinternals/bb896647.aspx
+  [TableEntity]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.storage.table.tableentity.aspx
+  [DynamicTableEntity]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.storage.table.dynamictableentity.aspx
   [Azure のストレージ クライアント ライブラリ 2.0 テーブルの詳細に関するページ]: http://blogs.msdn.com/b/windowsazurestorage/archive/2012/11/06/windows-azure-storage-client-library-2-0-tables-deep-dive.aspx
-  [テーブル サービス データ モデルについて]: http://msdn.microsoft.com/en-us/library/windowsazure/dd179338.aspx
+  [テーブル サービス データ モデルについて]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179338.aspx
   [PartitionKey または RowKey にパーセント '%' 文字が含まれていると、一部の Azure テーブル API が失敗する動作に関するページ]: http://blogs.msdn.com/b/windowsazurestorage/archive/2012/05/28/partitionkey-or-rowkey-containing-the-percent-character-causes-some-windows-azure-tables-apis-to-fail.aspx
   [Use .NET 4.5's async support to avoid blocking calls (ブロッキング呼び出しを回避するための .NET 4.5 の非同期サポートの使用)]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices#async
-  [TableOperation.Retrieve]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.storage.table.tableoperation.retrieve.aspx
+  [TableOperation.Retrieve]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.storage.table.tableoperation.retrieve.aspx
   [How to get most out of Windows Azure Tables (Windows Azure テーブルの最大活用)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2010/11/06/how-to-get-most-out-of-windows-azure-tables.aspx
   [Windows Azure Tables: Expect Continuation Tokens, Seriously! (Windows Azure テーブル: 継続トークンの重要性)]: http://blog.smarx.com/posts/windows-azure-tables-expect-continuation-tokens-seriously
   [Windows Azure Storage Logging: Using Logs to Track Storage Requests (Windows Azure Storage ログ: ログを使用したストレージ要求の追跡)]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx
@@ -1279,5 +1279,5 @@ Azure Storage のテーブル、キュー、BLOB に関する参考情報につ�
   [Azure Storage Explorer]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-web-role/mtas-ase-edit-entity-unsubscribe.png
   [Unsubscribe page]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-web-role/mtas-unsubscribe-query-page.png
   [Unsubscribe confirmed page]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-web-role/mtas-unsubscribe-confirmation-page.png
-  [次のチュートリアル]: /en-us/develop/net/tutorials/multi-tier-web-site/4-worker-role-a/
-  [このシリーズの最終チュートリアル]: /en-us/develop/net/tutorials/multi-tier-web-site/5-worker-role-b/#nextsteps
+  [次のチュートリアル]: /ja-jp/develop/net/tutorials/multi-tier-web-site/4-worker-role-a/
+  [このシリーズの最終チュートリアル]: /ja-jp/develop/net/tutorials/multi-tier-web-site/5-worker-role-b/#nextsteps

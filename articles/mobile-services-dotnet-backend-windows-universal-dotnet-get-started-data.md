@@ -26,7 +26,7 @@
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウントアカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/en-us/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-universal-dotnet-get-started-data%2F)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト](http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-universal-dotnet-get-started-data%2F)を参照してください。
 * <a href="https://go.microsoft.com/fwLink/p/?LinkID=391934" target="_blank">Visual Studio Professional 2013</a> (Update 3 以降のバージョン)。<br/>無料評価版が利用できます。
 
 ## <a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする
@@ -101,9 +101,8 @@
 <br/>.NET で Mobile Services を使用する方法について説明します。
 
 
-  [mobile-services-selector-get-started-data]: ../includes/mobile-services-selector-get-started-data.md
-  [Windows Phone 向けデータの使用]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data
-  [このバージョン]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data
+  [Windows Phone 向けデータの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data
+  [このバージョン]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data
   [Windows ストア アプリ プロジェクトのダウンロード]: #download-app
   [Visual Studio からの新しいモバイル サービスの作成]: #create-service
   [モバイル サービス プロジェクトをローカルにテストする]: #test-the-service-locally
@@ -111,18 +110,9 @@
   [モバイル サービスを Azure に発行する]: #publish-mobile-service
   [Azure でホストされるサービスに対するアプリのテスト]: #test-azure-hosted
   [SQL データベースに格納されているデータの表示]: #view-stored-data
-  [Azure の無料評価版サイト]: http://azure.microsoft.com/en-us/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-universal-dotnet-get-started-data%2F
-  [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=391934
-  [mobile-services-windows-universal-dotnet-download-project]: ../includes/mobile-services-windows-universal-dotnet-download-project.md
-  [mobile-services-dotnet-backend-create-new-service-vs2013]: ../includes/mobile-services-dotnet-backend-create-new-service-vs2013.md
-  [MobileServiceClient クラス]: http://go.microsoft.com/fwlink/p/?LinkId=302030
-  [mobile-services-dotnet-backend-test-local-service-api-documentation]: ../includes/mobile-services-dotnet-backend-test-local-service-api-documentation.md
-  [mobile-services-windows-dotnet-update-data-app]: ../includes/mobile-services-windows-dotnet-update-data-app.md
-  [mobile-services-dotnet-backend-publish-service]: ../includes/mobile-services-dotnet-backend-publish-service.md
-  [mobile-services-windows-universal-test-app]: ../includes/mobile-services-windows-universal-test-app.md
-  [mobile-services-dotnet-backend-view-sql-data]: ../includes/mobile-services-dotnet-backend-view-sql-data.md
-  [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
-  [ページングを使用したモバイル サービス クエリの改善]: /en-us/develop/mobile/tutorials/add-paging-to-data-dotnet
-  [認証の使用]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/
-  [プッシュ通知の使用]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/
-  [モバイル サービス .NET の使用方法の概念リファレンス]: /en-us/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library/
+  [Azure の無料評価版サイト]: http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-universal-dotnet-get-started-data%2F
+  [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
+  [ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
+  [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/
+  [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/
+  [モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library/

@@ -1,6 +1,6 @@
 <properties title="Azure Machine Learning API service operations" pageTitle="Machine Learning API service operations | Azure" description="Creating and managing Azure Machine Learning web services" metaKeywords="" services="" solutions="" documentationCenter="" authors="derrickv" videoId="" scriptId="" />
 
-<tags ms.service="machine-learning" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="derrickv"></tags>
+<tags ms.service="machine-learning" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="derrickv" />
 
 # Azure Machine Learning API サービスの操作
 
@@ -28,7 +28,7 @@ Azure ML により、Azure Machine Learning Studio (ML Studio) に定義され�
 
 次の図では、大まかな手順を 2 つに分けて示します。1 つ目がモデルの作成で、2 つ目が Web サービスとしてのそのモデルの発行です。このドキュメントでは、図 1 の右側、つまり、スコアを付ける Web サービスの発行を重点的に取り扱い、そのプロセスに関係する概念について説明します。
 
-![][]
+![][0]
 
 図 1: スコアを付ける Web サービスのプロビジョニング、作成、発行
 
@@ -218,7 +218,7 @@ RRS Web サービスは REST のエンドポイントであり、さまざまな
 
 
 
-  []: ./media/machine-learning-overview-of-azure-ml-process/oamlp1.png
+  [0]: ./media/machine-learning-overview-of-azure-ml-process/oamlp1.png
   [1]: ./media/machine-learning-overview-of-azure-ml-process/oamlp2.png
   [2]: ./media/machine-learning-overview-of-azure-ml-process/oamlp3.png
   [3]: ./media/machine-learning-overview-of-azure-ml-process/oamlp4.png

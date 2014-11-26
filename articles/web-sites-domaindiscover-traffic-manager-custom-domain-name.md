@@ -66,23 +66,16 @@
 
 ## <a name="enabledomain"></a>Web サイトに対するトラフィック マネージャーの有効化
 
-[WACOM.INCLUDE [modes][3]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes-traffic-manager.md)]
 
-  [websites-cloud-services-css-guided-walkthrough]: ../includes/websites-cloud-services-css-guided-walkthrough.md
-  [intro]: ../includes/custom-dns-web-site-intro-traffic-manager.md
   [DomainDiscover.com]: https://domaindiscover.com
   [TierraNet]: https://www.tierra.net/
-  [tmwebsitefooter]: ../includes/custom-dns-web-site-traffic-manager-notes.md
-  [introfooter]: ../includes/custom-dns-web-site-intro-notes.md
   [DNS レコードについて]: #understanding-records
   [Web サイトの標準モード用の構成]: #bkmk_configsharedmode
   [カスタム ドメインの DNS レコードの追加]: #bkmk_configurecname
   [Web サイトに対するトラフィック マネージャーの有効化]: #enabledomain
-  [understandingdns]: ../includes/custom-dns-web-site-understanding-dns-traffic-manager.md
-  [modes]: ../includes/custom-dns-web-site-modes-traffic-manager.md
   [DomainDiscover の Login メニュー]: .\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_LoginMenu.png
   [ドメイン管理ページ]: .\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DomainManagement.png
   [DNS の Edit ボタン]: .\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DNSEditButton.png
   [1]: .\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DNSAddRecords.png
   [2]: .\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DNSRecords_TM.png
-  [3]: ../includes/custom-dns-web-site-enable-on-traffic-manager.md

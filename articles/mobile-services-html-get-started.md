@@ -1,4 +1,4 @@
-<properties pageTitle="HTML 5 アプリ用 Azure Mobile Services の使用" metaKeywords="" description="次のチュートリアルに従って、HTML 開発用の Azure Mobile Services を使用します。" metaCanonical="" services="" documentationCenter="Mobile" title="モバイル サービスの使用" authors="glenga" solutions="" manager="dwrede" editor="" />
+<properties pageTitle="Get Started with Azure Mobile Services for HTML 5 apps" metaKeywords="" description="Follow this tutorial to get started using Azure Mobile Services for HTML development. " metaCanonical="" services="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-html" ms.devlang="javascript" ms.topic="hero-article" ms.date="01/01/1900" ms.author="glenga" />
 
@@ -7,18 +7,11 @@
 [WACOM.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
 
 <div class="dev-onpage-video-clear clearfix">
-
 <div class="dev-onpage-left-content">
-
-このチュートリアルでは、Azure のモバイル サービスを使用して HTML アプリケーションにクラウドベースのバックエンド サービスを追加する方法について説明します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な *To do list* アプリケーションの両方を作成します。このチュートリアルのビデオ バージョンを表示するには、右側のクリップをクリックします。
-
+<p>このチュートリアルでは、Azure のモバイル サービスを使用して HTML アプリケーションにクラウドベースのバックエンド サービスを追加する方法について説明します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な <em>To do list</em> アプリケーションの両方を作成します。このチュートリアルのビデオ バージョンを表示するには、右側のクリップをクリックします。</p>
 </div>
 
-<div class="dev-onpage-video-wrapper">
-
-[チュートリアルを見る][チュートリアルを見る] [<span class="icon">ビデオを再生する</span>][チュートリアルを見る] <span class="time">3:51:00</span>
-
-</div>
+<div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkId=287040" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-html-get-started-180x120.png') !important;" href="http://go.microsoft.com/fwlink/?LinkId=287040" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">3:51:00</span></div>
 
 </div>
 
@@ -28,12 +21,7 @@
 
 このチュートリアルを完了することは、HTML アプリの他のすべてのモバイル サービス チュートリアルの前提条件です。
 
-<div class="dev-callout">
-
-**注**
-このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト][Azure の無料評価版サイト]を参照してください。
-
-</div>
+<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
 
 ### その他の要件
 
@@ -80,12 +68,9 @@
 
     ![][3]
 
-    <div class="dev-callout">
-
-    **注**
-    localhost 以外の Web サーバーにクイック スタート アプリケーションを展開する場合は、**[ホスト名からの要求を許可する]** の一覧に Web サーバーのホスト名を追加する必要があります。詳細については、「[クロス オリジン リソース共有][クロス オリジン リソース共有]」を参照してください。
-
-    </div>
+    <div class="dev-callout"><b>注</b>
+<p>localhost 以外の Web サーバーにクイック スタート アプリケーションを展開する場合は、<strong>[ホスト名からの要求を許可する]</strong> の一覧に Web サーバーのホスト名を追加する必要があります。詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dn155871.aspx" target="_blank">クロス オリジン リソース共有</a>」を参照してください。</p>
+</div>
 
 ## HTML アプリのホストと実行
 
@@ -97,12 +82,9 @@
     -   **launch-mac.command** (Mac OS X コンピューター)
     -   **launch-linux.sh** (Linux コンピューター)
 
-    <div class="dev-callout">
-
-    **注**
-    Windows コンピューターでは、PowerShell からスクリプトの実行の確認を求められた場合は、「R」と入力します。Web ブラウザーでは、インターネットからダウンロードしたスクリプトであるため、実行しないよう警告されることがあります。その場合は、ブラウザーがスクリプトの読み込みを開始するよう要求する必要があります。
-
-    </div>
+    <div class="dev-callout"><b>注</b>
+<p>Windows コンピューターでは、PowerShell からスクリプトの実行の確認を求められた場合は、「R」と入力します。Web ブラウザーでは、インターネットからダウンロードしたスクリプトであるため、実行しないよう警告されることがあります。その場合は、ブラウザーがスクリプトの読み込みを開始するよう要求する必要があります。</p>
+</div>
 
     これにより、新しいアプリケーションをホストする Web サーバーがローカル コンピューター上で起動します。
 
@@ -114,12 +96,10 @@
 
     これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目はモバイル サービスによって返され、データはアプリケーションの 2 番目の列に表示されます。
 
-    <div class="dev-callout">
-
-    **注**
-    モバイル サービスにアクセスして app.js ファイルにあるデータを照会および挿入するコードを確認できます。
-
-    </div>
+    <div class="dev-callout"> 
+<b>注</b> 
+<p>モバイル サービスにアクセスして app.js ファイルにあるデータを照会および挿入するコードを確認できます。</p> 
+</div>
 
 4.  管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
 
@@ -145,17 +125,16 @@
 -   **[モバイル サービス HTML/JavaScript の使用方法の概念リファレンス][モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]**
     HTML/JavaScript でモバイル サービスを使用する方法について説明します。
 
-<!-- Anchors. --> <!-- Images. --> <!-- URLs. -->
+ 
+ 
 
-  [チュートリアルを見る]: http://go.microsoft.com/fwlink/?LinkId=287040
+
   [0]: ./media/mobile-services-html-get-started/mobile-quickstart-completed-html.png
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F
   [Microsoft Web プラットフォーム インストーラー]: http://go.microsoft.com/fwlink/p/?LinkId=286333
   [最新バージョンの Python]: http://go.microsoft.com/fwlink/p/?LinkId=286342
   [1]: ./media/mobile-services-html-get-started/mobile-portal-quickstart-html.png
   [2]: ./media/mobile-services-html-get-started/mobile-quickstart-steps-html.png
   [3]: ./media/mobile-services-html-get-started/mobile-services-set-cors-localhost.png
-  [クロス オリジン リソース共有]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn155871.aspx
   [4]: ./media/mobile-services-html-get-started/mobile-quickstart-startup-html.png
   [5]: ./media/mobile-services-html-get-started/mobile-data-tab.png
   [6]: ./media/mobile-services-html-get-started/mobile-data-browse.png

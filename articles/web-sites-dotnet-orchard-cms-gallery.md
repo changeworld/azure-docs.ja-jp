@@ -73,7 +73,6 @@ Azure によって構築操作と展開操作が開始されます。Web サイ�
   [Orchard]: http://www.orchardproject.net/
   [追加のモジュールとテーマをダウンロード]: http://gallery.orchardproject.net/
   [Orchard ブログ]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-08.png
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [Create New]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-01.png
   [Create From Gallery]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-02.png
   [一覧から Orchard]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-03.png

@@ -32,6 +32,5 @@
 
 
   [データの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-data/
-  [mobile-services-javascript-paging]: ../includes/mobile-services-javascript-paging.md
   [認証の使用]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-users/
   [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-push/

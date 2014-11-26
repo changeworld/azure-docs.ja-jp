@@ -123,7 +123,6 @@ azure モジュールは、Azure Service Bus 名前空間に接続するため�
   [メッセージをキューに送信する方法]: #how-to-send-messages-to-a-queue
   [キューからメッセージを受信する方法]: #how-to-receive-messages-from-a-queue
   [アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法]: #how-to-handle-application-crashes-and-unreadable-messages
-  [howto-service-bus-queues]: ../includes/howto-service-bus-queues.md
   [Windows Azure での Ruby アプリケーションの作成に関するページ]: /ja-jp/develop/ruby/tutorials/web-app-with-linux-vm/
   [サービス バス キュー、トピック、およびサブスクリプション]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367516.aspx
   [Azure SDK for Ruby]: https://github.com/WindowsAzure/azure-sdk-for-ruby

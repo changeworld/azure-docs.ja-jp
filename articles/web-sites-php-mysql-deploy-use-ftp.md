@@ -245,7 +245,6 @@ Azure Websites で実行されている MySQL データベースに接続する�
   [PHP]: http://www.php.net/manual/en/install.php
   [MySQL]: http://dev.mysql.com/doc/refman/5.6/en/installing.html
   [Azure PHP Web Site]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/running_app_2.png
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [Azure の管理ポータル]: https://manage.windowsazure.com
   [新しい Azure の Web サイトの作成]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/new_website.jpg
   [Custom Create a new Web Site]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/custom_create.png

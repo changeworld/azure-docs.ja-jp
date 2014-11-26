@@ -1,6 +1,6 @@
 <properties linkid="develop-notificationhubs-tutorials-get-started-kindle" urlDisplayName="Get Started" pageTitle="Get Started with Azure Notification Hubs" metaKeywords="" description="Learn how to use Azure Notification Hubs to send push notifications." metaCanonical="" services="notification-hubs" documentationCenter="Mobile" title="Get started with Notification Hubs" authors="sethm" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-kindle" ms.devlang="Java" ms.topic="article" ms.date="09/24/2014" ms.author="sethm"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-kindle" ms.devlang="Java" ms.topic="article" ms.date="09/24/2014" ms.author="sethm" />
 
 # 通知ハブの使用
 
@@ -18,7 +18,7 @@
 
 1.  最初に、[開発者ポータル][開発者ポータル]でアプリを作成します。
 
-    ![][]
+    ![][0]
 
 2.  **アプリケーション キー**をコピーします。
 
@@ -254,19 +254,12 @@ ADM ライブラリを Eclipse プロジェクトに追加します。
 
 ![][8]
 
-<!-- URLs. -->
 
-  [Windows ユニバーサル]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/ "Windows ユニバーサル"
-  [Windows Phone]: /ja-jp/documentation/articles/notification-hubs-windows-phone-get-started/ "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/notification-hubs-ios-get-started/ "iOS"
-  [Android]: /ja-jp/documentation/articles/notification-hubs-android-get-started/ "Android"
-  [Kindle]: /ja-jp/documentation/articles/notification-hubs-kindle-get-started/ "Kindle"
-  [Xamarin.iOS]: /ja-jp/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/ "Xamarin.iOS"
-  [Xamarin.Android]: /ja-jp/documentation/articles/partner-xamarin-notification-hubs-android-get-started/ "Xamarin.Android"
+
   [ここ]: http://go.microsoft.com/fwlink/?LinkId=389797
   [1]: https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment
   [開発者ポータル]: https://developer.amazon.com/home.html
-  []: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal1.png
+  [0]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal1.png
   [2]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal2.png
   [3]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal3.png
   [4]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal4.png

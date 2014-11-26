@@ -175,7 +175,8 @@ AdventureWorksWeb をビルドするときに、「ファイルまたはアセ�
 
 さらに、MSDN の「[Azure Search サービス REST API][Azure Search REST API のドキュメント]」も参照できます。
 
-<!--Anchors--> <!--Image references-->
+<!--Anchors-->
+<!--Image references-->
 
   [前提条件]: #sub-1
   [Azure Search インデックスの作成]: #sub-2

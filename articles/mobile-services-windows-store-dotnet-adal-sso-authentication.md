@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-sso-with-adal" urlDisplayName="Active Directory SSO Authentication with ADAL" pageTitle="Authenticate your app with Active Directory Authentication Library Single Sign-On (Windows Store) | Mobile Dev Center" metaKeywords="" description="Learn how to authentication users for single sign-on with ADAL in your Windows Store application." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Authenticate your app with Active Directory Authentication Library Single Sign-On" authors="wesmc" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="wesmc"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="wesmc" />
 
 # Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証
 
@@ -31,7 +31,7 @@
 -   Microsoft Azure Mobile Services SDK の NuGet パッケージ
 -   Active Directory 認証ライブラリの NuGet パッケージ
 
-[WACOM.INCLUDE [mobile-services-dotnet-adal-register-service][mobile-services-dotnet-adal-register-service]]
+[WACOM.INCLUDE [mobile-services-dotnet-adal-register-service](../includes/mobile-services-dotnet-adal-register-service.md)]
 
 ## <a name="register-app-aad"></a>Azure Active Directory にアプリケーションを登録する
 
@@ -41,7 +41,7 @@
 
 1.  Visual Studio で、クライアント アプリケーション プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。
 
-    ![][]
+    ![][0]
 
 2.  デベロッパー センター アカウントにサインインします。
 
@@ -105,13 +105,13 @@
 
 ## <a name="require-authentication"></a>認証を要求するようにモバイル サービスを構成する
 
-[WACOM.INCLUDE [mobile-services-restrict-permissions-dotnet-backend][mobile-services-restrict-permissions-dotnet-backend]]
+[WACOM.INCLUDE [mobile-services-restrict-permissions-dotnet-backend](../includes/mobile-services-restrict-permissions-dotnet-backend.md)]
 
 ## <a name="add-authentication-code"></a>クライアント アプリケーションに認証コードを追加する
 
 1.  Visual Studio で、Windows ストア クライアント アプリケーション プロジェクトを開きます。
 
-[WACOM.INCLUDE [mobile-services-dotnet-adal-install-nuget][mobile-services-dotnet-adal-install-nuget]]
+[WACOM.INCLUDE [mobile-services-dotnet-adal-install-nuget](../includes/mobile-services-dotnet-adal-install-nuget.md)]
 
 1.  Visual Studio のソリューション エクスプローラー ウィンドウで MainPage.xaml.cs を開き、次の using ステートメントを追加します。
 
@@ -177,9 +177,9 @@
 
     ![][13]
 
-<!-- Anchors. -->
+
 <!-- Images -->
-<!-- URLs. -->
+
 
 [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication "Windows ストア C#"
 [iOS]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-adal-sso-authentication "iOS"
@@ -192,7 +192,7 @@
 [認証を使用してクライアントをテストする]: #test-client
 [データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/
 [mobile-services-dotnet-adal-register-service]: ../includes/mobile-services-dotnet-adal-register-service.md
-[]: ./media/mobile-services-windows-store-dotnet-adal-sso-authenticate/mobile-services-vs-associate-app.png
+[0]: ./media/mobile-services-windows-store-dotnet-adal-sso-authenticate/mobile-services-vs-associate-app.png
 [1]: ./media/mobile-services-windows-store-dotnet-adal-sso-authenticate/mobile-services-vs-reserve-store-appname.png
 [Windows デベロッパー センター ダッシュボード]: http://go.microsoft.com/fwlink/p/?LinkID=266734
 [2]: ./media/mobile-services-windows-store-dotnet-adal-sso-authenticate/mobile-services-store-app-edit.png

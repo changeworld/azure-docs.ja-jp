@@ -1,28 +1,28 @@
 <properties linkid="develop-mobile-tutorials-create-pull-notifications-dotnet" urlDisplayName="Define a custom API that supports pull notifications" pageTitle="Define a custom API that supports pull notifications - Azure Mobile Services" metaKeywords="" description="Learn how to Define a custom API that supports periodic notifications in Windows Store apps that use Azure Mobile Services." metaCanonical="" services="" documentationCenter="" title="Define a custom API that supports periodic notifications" authors="glenga" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # 定期的な通知をサポートするカスタム API を定義します。
 
 <div class="dev-center-tutorial-selector"> 
-<a href="/en-us/develop/mobile/tutorials/create-pull-notifications-dotnet" title="Windows ストア C#" class="current">Windows ストア C#</a><a href="/en-us/develop/mobile/tutorials/create-pull-notifications-js" title="Windows ストア JavaScript">Windows ストア JavaScript</a>
+<a href="/ja-jp/develop/mobile/tutorials/create-pull-notifications-dotnet" title="Windows ストア C#" class="current">Windows ストア C#</a><a href="/ja-jp/develop/mobile/tutorials/create-pull-notifications-js" title="Windows ストア JavaScript">Windows ストア JavaScript</a>
 </div>
 
-このトピックでは、Windows ストア アプリでカスタム API を使用し、定期的な通知をサポートする方法について説明します。定期的な通知が有効になっている場合、Windows が定期的にカスタム API のエンドポイントにアクセスし、返された XML (タイル固有の形式) を使用して、スタート メニューのアプリケーションのタイルを更新します。詳細については、「[定期的な通知の概要][]」を参照してください。
+このトピックでは、Windows ストア アプリでカスタム API を使用し、定期的な通知をサポートする方法について説明します。定期的な通知が有効になっている場合、Windows が定期的にカスタム API のエンドポイントにアクセスし、返された XML (タイル固有の形式) を使用して、スタート メニューのアプリケーションのタイルを更新します。詳細については、「[定期的な通知の概要][定期的な通知の概要]」を参照してください。
 
-チュートリアル「[モバイル サービスの使用][]」または「[データの使用][]」の最後に作成したアプリケーションが、この機能の追加対象となります。次の手順を実行します。
+チュートリアル「[モバイル サービスの使用][モバイル サービスの使用]」または「[データの使用][データの使用]」の最後に作成したアプリケーションが、この機能の追加対象となります。次の手順を実行します。
 
-1.  [カスタム API を定義する][]
-2.  [アプリケーションを更新して定期的な通知を有効にする][]
-3.  [アプリケーションをテストする][]
+1.  [カスタム API を定義する][カスタム API を定義する]
+2.  [アプリケーションを更新して定期的な通知を有効にする][アプリケーションを更新して定期的な通知を有効にする]
+3.  [アプリケーションをテストする][アプリケーションをテストする]
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用][]」または「[データの使用][]」を完了している必要があります。
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用][モバイル サービスの使用]」または「[データの使用][データの使用]」を完了している必要があります。
 
 ## <a name="define-custom-api"></a>カスタム API を定義する
 
-1.  [Azure の管理ポータル][]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[API]** タブをクリックし、**[カスタム API の作成]** をクリックします。
 
@@ -83,7 +83,7 @@
     クライアントは、GET 要求を送信してタイル テンプレートにアクセスすることになるため、**exports.get** 関数が使用されます。
 
     <div class="dev-callout"><b>注</b>
-<p>このカスタム API スクリプトには、Node.js の <a href="http://go.microsoft.com/fwlink/p/?LinkId=306750">wns モジュール</a>が使用されており、<strong>require</strong> 関数を使って参照されています。このモジュールは、<a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj554217.aspx">push オブジェクト</a>から返される <a href="http://go.microsoft.com/fwlink/p/?LinkId=260591">wns オブジェクト</a>とは異なります。push オブジェクトから返される wns オブジェクトは、サーバー スクリプトからプッシュ通知を送信する目的に使用されます。</p>
+<p>このカスタム API スクリプトには、Node.js の <a href="http://go.microsoft.com/fwlink/p/?LinkId=306750">wns モジュール</a>が使用されており、<strong>require</strong> 関数を使って参照されています。このモジュールは、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554217.aspx">push オブジェクト</a>から返される <a href="http://go.microsoft.com/fwlink/p/?LinkId=260591">wns オブジェクト</a>とは異なります。push オブジェクトから返される wns オブジェクトは、サーバー スクリプトからプッシュ通知を送信する目的に使用されます。</p>
 </div>
 
 次に、クイック スタート アプリケーションに変更を加えます。ライブ タイルを更新する定期的な通知を開始するために、新しいカスタム API を要求します。
@@ -121,37 +121,32 @@
 
 定期的な通知を作成したら、モバイル サービスに関連した次のトピックも参考にしてください。
 
--   [プッシュ通知の使用][]
+-   [プッシュ通知の使用][プッシュ通知の使用]
     定期的な通知は、Windows によって管理され、事前定義されたスケジュールでのみ実行されます。プッシュ通知は、モバイル サービスからオンデマンドで送信することができます。トースト、タイル、直接通知のいずれかの形式が利用できます。
 
--   [モバイル サービスのサーバー スクリプト リファレンス][]
+-   [モバイル サービスのサーバー スクリプト リファレンス][モバイル サービスのサーバー スクリプト リファレンス]
     カスタム API の作成について説明します。
 
--   [モバイル サービス .NET の使用方法の概念リファレンス][]
+-   [モバイル サービス .NET の使用方法の概念リファレンス][モバイル サービス .NET の使用方法の概念リファレンス]
     .NET で Mobile Services を使用する方法について説明します。
 
-<!-- URLs. -->
-  [Windows ストア C\#]: /en-us/develop/mobile/tutorials/create-pull-notifications-dotnet "Windows ストア C#"
-  [Windows ストア JavaScript]: /en-us/develop/mobile/tutorials/create-pull-notifications-js "Windows ストア JavaScript"
-  [定期的な通知の概要]: http://msdn.microsoft.com/en-us/library/windows/apps/jj150587.aspx
-  [モバイル サービスの使用]: /en-us/develop/mobile/tutorials/get-started/#create-new-service
-  [データの使用]: /en-us/develop/mobile/tutorials/get-started-with-data-dotnet
+
+  [定期的な通知の概要]: http://msdn.microsoft.com/ja-jp/library/windows/apps/jj150587.aspx
+  [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
+  [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet
   
-<!-- Anchors. -->  
+  
 [カスタム API を定義する]: #define-custom-api
   [アプリケーションを更新して定期的な通知を有効にする]: #update-app
   [アプリケーションをテストする]: #test-app
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   
-<!-- Images. -->
-[]: ./media/mobile-services-windows-store-dotnet-create-pull-notifications/mobile-services-selection.png
+
+[0]: ./media/mobile-services-windows-store-dotnet-create-pull-notifications/mobile-services-selection.png
   [1]: ./media/mobile-services-windows-store-dotnet-create-pull-notifications/mobile-custom-api-create.png
   [2]: ./media/mobile-services-windows-store-dotnet-create-pull-notifications/mobile-custom-api-create-dialog.png
   [3]: ./media/mobile-services-windows-store-dotnet-create-pull-notifications/mobile-custom-api-select.png
-  [wns モジュール]: http://go.microsoft.com/fwlink/p/?LinkId=306750
-  [push オブジェクト]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554217.aspx
-  [wns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=260591
   [4]: ./media/mobile-services-windows-store-dotnet-create-pull-notifications/mobile-custom-api-live-tile.png
-  [プッシュ通知の使用]: /en-us/develop/mobile/tutorials/get-started-with-push-dotnet
+  [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet
   [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
-  [モバイル サービス .NET の使用方法の概念リファレンス]: /en-us/develop/mobile/how-to-guides/work-with-net-client-library
+  [モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library

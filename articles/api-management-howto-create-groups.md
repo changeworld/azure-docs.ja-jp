@@ -1,6 +1,6 @@
 <properties pageTitle="How to create and use groups to manage developer accounts in Azure API Management" metaKeywords="" description="Learn how to manage developer accounts using groups in Azure API Management" metaCanonical="" services="" documentationCenter="API Management" title="How to create and use groups to manage developer accounts in Azure API Management" authors="sdanie" solutions="" manager="" editor="" />
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie"></tags>
+<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
 
 # Azure API Management でグループを作成および使用して開発者アカウントを管理する方法
 

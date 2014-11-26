@@ -160,7 +160,6 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [方法: サブスクリプションからメッセージを受信する]: #How_to_Receive_Messages_from_a_Subscription
   [方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する]: #How_to_Handle_Application_Crashes_and_Unreadable_Messages
   [方法: トピックとサブスクリプションを削除する]: #How_to_Delete_Topics_and_Subscriptions
-  [howto-service-bus-topics]: ../includes/howto-service-bus-topics.md
   [Python インストール ガイド]: ../python-how-to-install/
   [キュー、トピック、およびサブスクリプション]: http://msdn.microsoft.com/ja-jp/library/hh367516.aspx
   [SqlFilter]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx

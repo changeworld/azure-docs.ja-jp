@@ -1,4 +1,4 @@
-<properties urlDisplayName="Hudson Continuous Integration" pageTitle="Hudson で Azure BLOB サービスを使用する方法 | Microsoft Azure" metaKeywords="Hudson, Azure storage, Azure Blob service, Azure storage, Azure hudson" description="Hudson で Azure BLOB ストレージをビルド アーティファクトのリポジトリとして使用する方法について説明します。" metaCanonical="" services="storage" documentationCenter="Java" title="Hudson 継続的インテグレーション ソリューションでの Azure ストレージの使用" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
+<properties linkid="develop-java-how-to-hudson-ci" urlDisplayName="Hudson Continuous Integration" pageTitle="How to use Hudson with the Azure Blob service | Microsoft Azure" metaKeywords="Hudson, Azure storage, Azure Blob service, Azure storage, Azure hudson" description="Describes how to use Hudson with Azure Blob storage as a repository for build artifacts." metaCanonical="" services="storage" documentationCenter="Java" title="Using Azure Storage with a Hudson Continuous Integration solution" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
 
@@ -128,7 +128,7 @@ Hudson で BLOB サービスを使用するには、Azure ストレージ プラ
     4.  **[コンテナー]** をクリックします。
     5.  **myjob** という名前のコンテナーをクリックします。これは、Hudson ジョブを作成したときに割り当てたジョブ名を小文字にしたものです。Azure ストレージでは、コンテナー名と BLOB 名は小文字です (大文字と小文字は区別されます)。**myjob** という名前のコンテナーの BLOB の一覧に、**hello.txt** と **date.txt** の 2 つがあります。そのどちらかの URL をコピーして、ブラウザーで開きます。このテキスト ファイルがビルド アーティファクトとしてアップロードされていることがわかります。
 
-アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクションは、ジョブごとに 1 つのみ作成できます。**[List of Artifacts to upload]** でセミコロンを区切り記号として使用することで、アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクション 1 つに、(ワイルドカードを含む) 複数のファイルとファイル パスを指定できます。たとえば、Hudson ビルドによってワークスペースの **build** フォルダーに JAR ファイルと TXT ファイルが生成され、これら両方のファイルを Azure BLOB ストレージにアップロードする場合、**[List of Artifacts to upload]** の値には「**build/\*.jar;build/\*.txt**」を使用します。また、2 重コロンの構文を使用すると、BLOB 名で使用するパスを指定できます。たとえば、JAR ファイルのアップロードに BLOB パス内の **binaries** を使用し、TXT ファイルのアップロードに BLOB パス内の **notices** を使用する場合、**[List of Artifacts to upload]** の値には「**build/\*.jar::binaries;build/\*.txt::notices**」を使用します。
+アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクションは、ジョブごとに 1 つのみ作成できます。**[List of Artifacts to upload]** でセミコロンを区切り記号として使用することで、アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクション 1 つに、(ワイルドカードを含む) 複数のファイルとファイル パスを指定できます。たとえば、Hudson ビルドによってワークスペースの **build** フォルダーに JAR ファイルと TXT ファイルが生成され、これら両方のファイルを Azure BLOB ストレージにアップロードする場合、**[List of Artifacts to upload]** の値には「**build/\*.jar;build/\*.txt**」を使用します。また、2 重コロンの構文を使用すると、BLOB 名で使用するパスを指定できます。たとえば、JAR ファイルのアップロードに BLOB パス内の **binaries** を使用し、TXT ファイルのアップロードに BLOB パス内の **notices** を使用する場合、**[List of Artifacts to upload]** の値には「**build/\*.<jar::binaries;build/>\*.txt::notices**」を使用します。
 
 ## <a name="howtocreatebuildstep"></a><span class="short header">ビルド手順の作成方法</span>BLOB ストレージからのダウンロードを実行するビルド手順の作成方法
 
@@ -171,7 +171,6 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
   [ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションの作成方法]: #howtocreatepostbuild
   [BLOB ストレージからのダウンロードを実行するビルド手順の作成方法]: #howtocreatebuildstep
   [BLOB サービスが使用するコンポーネント]: #components
-  [Meet Hudson (Hudson について)]: http://wiki.eclipse.org/Hudson-ci/Meet_Hudson
   [ストレージ アカウントの作成方法]: http://go.microsoft.com/fwlink/?LinkId=279823
   [共有アクセス署名の作成に関するページ]: http://go.microsoft.com/fwlink/?LinkId=279889
   [ブロック BLOB およびページ BLOB について]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee691964.aspx

@@ -250,7 +250,5 @@ MSDN のトピック「[Service Bus キュー、トピックおよびサブス�
   [方法: キューからメッセージを受信する]: #ReceiveMessages
   [方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する]: #HandleCrashes
   [次のステップ]: #NextSteps
-  [howto-service-bus-queues]: ../includes/howto-service-bus-queues.md
   [OpenSSL 拡張機能]: http://php.net/openssl
-  [get-client-libraries]: ../includes/get-client-libraries.md
   [Service Bus キュー、トピックおよびサブスクリプション]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367516.aspx

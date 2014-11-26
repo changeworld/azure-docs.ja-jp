@@ -1,4 +1,4 @@
-<properties urlDisplayName="Upload a VHD" pageTitle="Windows Server VHD の作成と Azure へのアップロード" metaKeywords="Azure VHD, uploading VHD" description="Windows Server オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成して Azure にアップロードする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Windows Server VHD の作成と Azure へのアップロード" authors="kathydav" solutions="" manager="timlt" editor="tysonn" />
+<properties linkid="manage-windows-common-task-upload-vhd" urlDisplayName="Upload a VHD" pageTitle="Create and upload a Windows Server VHD to Azure" metaKeywords="Azure VHD, uploading VHD" description="Learn to create and upload a virtual hard disk (VHD) in Azure that has the Windows Server operating system." metaCanonical="" services="virtual-machines" documentationCenter="" title="Create and upload a Windows Server VHD to Azure" authors="kathydav" solutions="" manager="timlt" editor="tysonn" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="na" ms.topic="article" ms.date="09/23/2014" ms.author="kathydav" />
 
@@ -155,11 +155,11 @@ x64
 
 6.  **[OK]** をクリックします。
 
-## <span id="createstorage"></span> </a>手順 2.Azure でストレージ アカウントを作成する
+## <span id="createstorage"></span> </a>手順 2.Azure にストレージ アカウントを作成する
 
 ストレージ アカウントは、ストレージ サービスにアクセスするための最高レベルの名前空間を表し、Azure サブスクリプションに関連付けられています。仮想マシンの作成に使用できる .vhd ファイルを Azure にアップロードするには、Azure のストレージ アカウントが必要です。Azure の管理ポータルを使用して、ストレージ アカウントを作成できます。
 
-1.  Azure 管理ポータルにサインインします。
+1.  Azure の管理ポータルにサインインします。
 
 2.  コマンド バーで、**[新規]** をクリックします。
 
@@ -173,7 +173,7 @@ x64
 
 -   ストレージ アカウントの**場所またはアフィニティ グループ**を選択します。アフィニティ グループを指定することで、ストレージと同じデータ センターにクラウド サービスを配置できます。
 
--   ストレージ アカウントの **Geo (主要地域) レプリケーション**を使用するかどうかを決定します。Geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で対処できない大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーすることができます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、Geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。ストレージ アカウントの Geo レプリケーションの管理の詳細については、「[ストレージ アカウントの管理方法][ストレージ アカウントの管理方法]」を参照してください。
+-   ストレージ アカウントの **Geo (主要地域) レプリケーション**を使用するかどうかを決定します。Geo レプリケーションは既定で有効です。このオプションでは、ユーザーのコスト負担なしで、データが 2 次拠点にコピーされるため、1 次拠点で対処できない大規模な障害が発生した場合に、2 次拠点にストレージをフェールオーバーすることができます。2 次拠点は自動的に割り当てられ、変更することはできません。法律上の要件または組織のポリシー上、クラウド方式のストレージの場所を厳格に管理する必要がある場合は、Geo レプリケーションを無効にすることができます。ただし、後で Geo レプリケーションを有効に戻すと、既存データを 2 次拠点にコピーするためのデータ転送料金が 1 回だけ発生することに注意してください。Geo レプリケーションなしのストレージ サービスも割引価格で提供されています。ストレージ アカウントの Geo レプリケーションの管理についての詳細は、「[ストレージ アカウントの管理方法][ストレージ アカウントの管理方法]」を参照してください。
 
     ![ストレージ アカウントの詳細の入力][ストレージ アカウントの詳細の入力]
 

@@ -311,13 +311,13 @@
 
 通知ハブの詳細については、「[Azure 通知ハブ]」を参照してください。
 
-<!-- Anchors. -->
+
 [認証付きの ASP.NET アプリケーションを作成する]: #create-application
 [通知に登録できるように ASP.NET アプリケーションを更新する]: #register-notification
 [ログインして登録を要求できるようにアプリケーションを更新する]: #update-app
 [通知を送信できるように ASP.NET アプリケーションを更新する]: #send-notifications
 
-<!-- Images. -->
+
 [0]: ./media/notification-hubs-aspnet-notify-users/notification-hub-create-mvc-app.png
 [1]: ./media/notification-hubs-aspnet-notify-users/notification-hub-create-aspnet-class.png
 [2]: ./media/notification-hubs-aspnet-notify-users/notification-hub-add-nuget-package.png
@@ -326,7 +326,7 @@
 [7]: ./media/notification-hubs-aspnet-notify-users/notification-hub-connection-strings.png
 
 
-<!-- URLs. -->
+
 [Windows ストア アプリの使用]: /ja-jp/manage/services/notification-hubs/getting-started-windows-dotnet
 [iOS の使用]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-ios
 [Android の使用]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-android

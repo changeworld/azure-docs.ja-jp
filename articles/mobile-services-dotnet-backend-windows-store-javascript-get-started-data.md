@@ -237,11 +237,10 @@
 -   [モバイル サービス .NET の使用方法の概念リファレンス][モバイル サービス .NET の使用方法の概念リファレンス]
     HTML と JavaScript でモバイル サービスを使用する方法について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
 
-  [mobile-services-selector-get-started-data-legacy]: ../includes/mobile-services-selector-get-started-data-legacy.md
+
   [ユニバーサル Windows アプリ バージョン]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-universal-javascript-get-started-data
   [Windows ストア アプリ プロジェクトのダウンロード]: #download-app
   [新しいモバイル サービスを作成する]: #create-service
@@ -254,7 +253,6 @@
   [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
   [GetStartedWithMobileServices アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=328660
   [0]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/app-view.png
-  [mobile-services-dotnet-backend-create-new-service]: ../includes/mobile-services-dotnet-backend-create-new-service.md
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   [1]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/mobile-service-overview-page.png
   [2]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/download-service-project.png
@@ -271,8 +269,6 @@
   [13]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/copy-mobileserviceclient-snippet.png
   [14]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-pasted-mobileserviceclient.png
   [15]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-mobileservices-script-reference.png
-  [mobile-services-dotnet-backend-test-local-service-data]: ../includes/mobile-services-dotnet-backend-test-local-service-data.md
-  [mobile-services-dotnet-backend-publish-service]: ../includes/mobile-services-dotnet-backend-publish-service.md
   [16]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-run-solution.png
   [17]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/azure-items.png
   [18]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/manage-sql-azure-database.png

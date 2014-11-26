@@ -1,10 +1,10 @@
 新しいモバイル サービスを作成するには、次のステップに従います。
 
-1.  [管理ポータル][]にログインします。
+1.  [管理ポータル][管理ポータル]にログインします。
 
 2.  ナビゲーション ウィンドウの下部にある **[新規]** をクリックします。
 
-    ![][]
+    ![][0]
 
 3.  **[コンピューティング]**、**[モバイル サービス]** の順に展開し、**[作成]** をクリックします。
 
@@ -33,10 +33,10 @@
 
 これで、モバイル アプリケーションで使用できる新しいモバイル サービスが作成されました。
 
-<!-- URLs. -->
+
 
   [管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/mobile-services-dotnet-backend-create-new-service/plus-new.png
+  [0]: ./media/mobile-services-dotnet-backend-create-new-service/plus-new.png
   [1]: ./media/mobile-services-dotnet-backend-create-new-service/mobile-create.png
   [2]: ./media/mobile-services-dotnet-backend-create-new-service/mobile-create-page1.png
   [3]: ./media/mobile-services-dotnet-backend-create-new-service/mobile-create-page2.png

@@ -8,7 +8,7 @@
 
 3.  再度 Windows ストア アプリを実行し、**[TodoItem の挿入]** にテキストを入力してから、**[保存]** をクリックします。
 
-    ![][]
+    ![][0]
 
     挿入が完了すると、Windows ストアと Windows Phone アプリの両方が WNS からのプッシュ通知を受信します。
 
@@ -18,6 +18,6 @@
 
     ![][2]
 
-  []: ./media/mobile-services-javascript-backend-windows-universal-test-push/mobile-quickstart-push1.png
+  [0]: ./media/mobile-services-javascript-backend-windows-universal-test-push/mobile-quickstart-push1.png
   [1]: ./media/mobile-services-javascript-backend-windows-universal-test-push/mobile-quickstart-push2.png
   [2]: ./media/mobile-services-javascript-backend-windows-universal-test-push/mobile-quickstart-push5-wp8.png

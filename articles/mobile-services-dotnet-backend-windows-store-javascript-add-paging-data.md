@@ -28,11 +28,10 @@
 -   [プッシュ通知の使用][プッシュ通知の使用]
     アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/
-  [mobile-services-javascript-paging]: ../includes/mobile-services-javascript-paging.md
   [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/
   [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push/

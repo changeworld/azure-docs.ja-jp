@@ -113,6 +113,3 @@
   [テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
   [アプリケーションに認証を追加する]: #add-authentication
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-xamarin-ios-get-started/
-  [mobile-services-register-authentication]: ../includes/mobile-services-register-authentication.md
-  [mobile-services-dotnet-backend-aad-server-extension]: ../includes/mobile-services-dotnet-backend-aad-server-extension.md
-  [mobile-services-restrict-permissions-dotnet-backend]: ../includes/mobile-services-restrict-permissions-dotnet-backend.md

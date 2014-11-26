@@ -872,7 +872,7 @@ Mobile Services では、Azure コマンド ライン ツールを使用して�
 
 ログが過大になることを避けるには、運用環境で使用する必要がない console.log() への呼び出しを削除または無効にする必要があります。
 
-<!-- Anchors. --> <!-- URLs. -->
+ 
 
   [はじめに]: #intro
   [テーブル操作]: #table-scripts

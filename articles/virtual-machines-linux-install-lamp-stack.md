@@ -1,4 +1,4 @@
-<properties urlDisplayName="Install LAMP stack" pageTitle="Linux 仮想マシンへの LAMP スタックのインストール" metaKeywords="" description="Azure 上の Linux 仮想マシン (VM) に LAMP スタックをインストールする方法について説明します。Ubuntu または CentOS 上でインストールできます。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure 上の Linux 仮想マシンへの LAMP スタックのインストール" authors="szark" solutions="" manager="timlt" editor="" />
+<properties linkid="manage-linux-common-tasks-lampstack" urlDisplayName="Install LAMP stack" pageTitle="Install the LAMP stack on a Linux virtual machine" metaKeywords="" description="Learn how to install the LAMP stack on a Linux virtual machine (VM) in Azure. You can install on Ubuntu or CentOS." metaCanonical="" services="virtual-machines" documentationCenter="" title="Install the LAMP Stack on a Linux virtual machine in Azure" authors="szark" solutions="" manager="timlt" editor="" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="szark" />
 
@@ -98,7 +98,9 @@ LAMP スタックは次のさまざまな要素で構成されています。
 
 Ubuntu 上での LAMP スタックの設定については多くのリソースがあります。
 
--   <https://help.ubuntu.com/community/ApacheMySQLPHP>
--   <http://fedorasolved.org/server-solutions/lamp-stack>
+-   [][]<https://help.ubuntu.com/community/ApacheMySQLPHP></a>
+-   [][1]<http://fedorasolved.org/server-solutions/lamp-stack></a>
 
   [エンドポイントの構成]: http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-set-up-endpoints/
+  []: https://help.ubuntu.com/community/ApacheMySQLPHP
+  [1]: http://fedorasolved.org/server-solutions/lamp-stack

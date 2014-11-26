@@ -4,7 +4,7 @@
 
 2.  管理ポータルで、**[ストレージ]**、ストレージ アカウント、**[キーの管理]** の順にクリックします。
 
-    ![][]
+    ![][0]
 
 3.  **ストレージ アカウント名**と**アクセス キー**をメモします。
 
@@ -90,12 +90,12 @@
 
 次に、挿入時に生成される SAS を使用してイメージ アップロード機能を追加する、クイック スタート アプリケーションを更新します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [How To Create a Storage Account (ストレージ アカウントの作成方法)]: /ja-jp/manage/services/storage/how-to-create-a-storage-account
-  []: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-account.png
+  [0]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-account.png
   [1]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-account-keys.png
   [2]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-app-settings.png
   [アプリ設定]: http://msdn.microsoft.com/ja-jp/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7

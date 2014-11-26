@@ -36,19 +36,21 @@
 
 [WACOM.INCLUDE [mobile-services-create-new-service-vs2013](../includes/mobile-services-create-new-service-vs2013.md)]
 
-1.  Solution Explorer で、GetStartedWithData.Shared プロジェクト フォルダーの App.xaml.cs コード ファイルを開き、Windows ストア アプリの条件付きコンパイル ブロック内の **App** クラスに追加された新しい静的フィールドを確認します。これは、次のように表示されます。
+<ol start="8"><li><p>Solution Explorer で、GetStartedWithData.Shared プロジェクト フォルダーの App.xaml.cs コード ファイルを開き、Windows ストア アプリの条件付きコンパイル ブロック内の <b>App</b> クラスに追加された新しい静的フィールドを確認します。これは、次のように表示されます。
 
-        public static Microsoft.WindowsAzure.MobileServices.MobileServiceClient 
-                    todolistClient = new Microsoft.WindowsAzure.MobileServices.MobileServiceClient(
-                        "https://todolist.azure-mobile.net/",
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-                
+		<pre><code>public static Microsoft.WindowsAzure.MobileServices.MobileServiceClient 
+		    todolistClient = new Microsoft.WindowsAzure.MobileServices.MobileServiceClient(
+		        "https://todolist.azure-mobile.net/",
+		        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+		</code></pre>
 
-    このコードは、[MobileServiceClient クラス][MobileServiceClient クラス]のインスタンスを使用して、アプリケーションの新しいモバイル サービスへのアクセスを提供します。クライアントは、新しいモバイル サービスの URI とアプリケーション キーを提供することによって作成されます。この静的フィールドは、アプリケーションのすべてのページで使用できます。
+    <p>このコードは、<a href="http://go.microsoft.com/fwlink/p/?LinkId=302030">MobileServiceClient クラス</a>のインスタンスを使用して、アプリケーションの新しいモバイル サービスへのアクセスを提供します。クライアントは、新しいモバイル サービスの URI とアプリケーション キーを提供することによって作成されます。この静的フィールドは、アプリケーションのすべてのページで使用できます。</p>
+</li>
 
-2.  Windows Phone アプリ プロジェクトを右クリックし、**[追加]**、**[接続済みサービス...]** をクリックし、作成されたばかりのモバイル サービスを選択してから、**[OK]** をクリックします。
+<li><p>Windows Phone アプリ プロジェクトを右クリックし、<b>追加</b>、<b>接続済みサービス...</b> をクリックし、作成されたばかりのモバイル サービスを選択してから、<b>OK</b> をクリックします。</p>
 
-    同じコードは共有 App.xaml.cs ファイルにも追加されますが、今回は Windows Phone アプリの条件付きコンパイル ブロック内に追加されています。
+    <p>同じコードは共有 App.xaml.cs ファイルにも追加されますが、今回は Windows Phone アプリの条件付きコンパイル ブロック内に追加されています。</p></li>
+</ol>
 
 この時点で、Windows ストア アプリと Windows Phone ストア アプリのどちらも新しいモバイル サービスに接続されます。次の手順は、モバイル サービスで新しい TodoItem テーブルを作成することです。
 
@@ -68,12 +70,14 @@
 
 [WACOM.INCLUDE [mobile-services-windows-universal-test-app](../includes/mobile-services-windows-universal-test-app.md)]
 
-1.  [管理ポータル][管理ポータル]で、**[モバイル サービス]** をクリックし、対象のモバイル サービスをクリックします。
+<ol start="4">
+<li><p><a href="https://manage.windowsazure.com/" target="_blank">管理ポータル</a>で、<b>モバイル サービス</b> をクリックし、対象のモバイル サービスをクリックします。</p>
 
-    <p>
-2.  **[データ]** タブをクリックし、**[参照]** をクリックします。
 
-    **TodoItem** テーブルに、モバイル サービスによって生成された ID 値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
+<li><p><b>データ</b> タブをクリックし、<b>参照</b> をクリックします。</p>
+
+    <p><b>TodoItem</b> テーブルに、モバイル サービスによって生成された ID 値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。</p></li>
+</ol>
 
 ![][0]
 
@@ -101,7 +105,6 @@
     .NET で Mobile Services を使用する方法について説明します。
 
 
-  [mobile-services-selector-get-started-data]: ../includes/mobile-services-selector-get-started-data.md
   [Windows と Windows Phone を対象とするユニバーサル Windows アプリの構築]: http://msdn.microsoft.com/ja-jp/library/windows/apps/xaml/dn609832.aspx
   [Windows Phone 向けデータの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started-data
   [このバージョン]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-data
@@ -113,14 +116,7 @@
   [Azure 管理ポータルでのアップロード済みデータの表示]: #view-data
   [Azure の無料評価版サイト]: http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-javascript-backend-windows-universal-dotnet-get-started-data%2F
   [Visual Studio Express 2013 for Windows]: https://go.microsoft.com/fwLink/p/?LinkID=257546
-  [mobile-services-windows-universal-dotnet-download-project]: ../includes/mobile-services-windows-universal-dotnet-download-project.md
-  [mobile-services-create-new-service-vs2013]: ../includes/mobile-services-create-new-service-vs2013.md
-  [MobileServiceClient クラス]: http://go.microsoft.com/fwlink/p/?LinkId=302030
-  [mobile-services-create-new-table-vs2013]: ../includes/mobile-services-create-new-table-vs2013.md
   [動的スキーマ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193175.aspx
-  [mobile-services-windows-dotnet-update-data-app]: ../includes/mobile-services-windows-dotnet-update-data-app.md
-  [mobile-services-windows-universal-test-app]: ../includes/mobile-services-windows-universal-test-app.md
-  [管理ポータル]: https://manage.windowsazure.com/
   [0]: ./media/mobile-services-javascript-backend-windows-universal-dotnet-get-started-data/mobile-todoitem-data-browse.png
   [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-validate-modify-data-server-scripts/
   [ページングを使用したモバイル サービス クエリの改善]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-add-paging-data/

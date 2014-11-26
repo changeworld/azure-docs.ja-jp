@@ -120,9 +120,9 @@
             @"deviceToken" : delegate.deviceToken
         };
 
-    This adds a reference to the **QSAppDelegate** to obtain the device token and then modifies the request payload to include that device token.
+   これによって、デバイス トークンを取得するための参照が  **QSAppDelegate** に追加され、要求ペイロードがそのデバイス トークンを含めるように変更されます。
 
-    > [WACOM.NOTE] You must add this code before to the call to the <strong>addItem</strong> method.
+   > [WACOM.NOTE] このコードを、<strong>addItem</strong>  メソッドへの呼び出しの前に追加する必要があります。
 
 これで、アプリケーションがプッシュ通知をサポートするように更新されました。
 
@@ -184,9 +184,7 @@
 
 この単純な例では、ユーザーは挿入したばかりのデータのプッシュ通知を受け取ります。APNS によって使用されるデバイス トークンは、要求のクライアントによってモバイル サービスに提供されます。次のチュートリアル、「[Push notifications to app users (アプリケーション ユーザーへのプッシュ通知)][Push notifications to app users (アプリケーション ユーザーへのプッシュ通知)]」では、デバイス トークンを格納するための個別の Devices テーブルを作成し、挿入が発生したときに、すべての格納されているチャネルにプッシュ通知を送信します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+
 
   [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-ios-get-started-push/
   [証明書の署名要求を生成する]: #certificates
@@ -199,8 +197,6 @@
   [モバイル サービス iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
   [Xcode 4.5]: https://go.microsoft.com/fwLink/p/?LinkID=266532
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-ios
-  [Enable Apple Push Notifications]: ../includes/enable-apple-push-notifications.md
-  [mobile-services-apns-configure-push]: ../includes/mobile-services-apns-configure-push.md
   [0]: ./media/mobile-services-ios-get-started-push/mobile-portal-data-tables.png
   [1]: ./media/mobile-services-ios-get-started-push/mobile-insert-script-push2.png
   [apns オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=272333

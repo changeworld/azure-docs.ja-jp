@@ -1,6 +1,6 @@
 <properties title="Integrate your Azure Website with an Azure Virtual Network" pageTitle="Integrate Azure Website with Azure VNet" description="Shows you how to connect an Azure Website to a new or existing Azure virtual network" metaKeywords="" services="web-sites,virtual-network" solutions="web,integration,infrastructure" documentationCenter="" authors="cephalin" videoId="" scriptId="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/24/2014" ms.author="cephalin"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/24/2014" ms.author="cephalin" />
 
 # Azure Web サイトを Azure Virtual Network に統合する
 
@@ -94,11 +94,3 @@ Azure Websites には、ハイブリッド接続と呼ばれる別の機能が�
 さらに、現時点では、2 つの機能の間に料金レベルの違いもあります。それは、最安価のレベルでは、開発/テストのシナリオにおいてハイブリッド接続機能が非常に便利であり、ごく少数のエンドポイントへのアクセスのみ可能になるからです。仮想ネットワーク機能の場合は、VNET 内にあるすべてのもの、または VNET に接続されているすべてのものへのアクセスが提供されます。
 
   []: ./media/web-sites-integrate-with-vnet/upgrade-to-standard.png
-  [1]: ./media/web-sites-integrate-with-vnet/how-it-works.png
-  [2]: ./media/web-sites-integrate-with-vnet/connect-to-existing-vnet.png
-  [3]: ./media/web-sites-integrate-with-vnet/create-new-vnet.png
-  [4]: ./media/web-sites-integrate-with-vnet/new-vnet-progress.png
-  [5]: ./media/web-sites-integrate-with-vnet/vnet-status-portal.png
-  [6]: ./media/web-sites-integrate-with-vnet/vpn-to-onpremise.png
-  [7]: ./media/web-sites-integrate-with-vnet/vpn-to-onpremise-certificate.png
-  [8]: ./media/web-sites-integrate-with-vnet/vnet-sync-connection.png

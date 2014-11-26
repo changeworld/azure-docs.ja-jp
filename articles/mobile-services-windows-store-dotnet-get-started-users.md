@@ -75,11 +75,7 @@
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-get-started/
   [Live Connect を使用した Windows Phone アプリケーションへのシングル サインオン]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-single-sign-on
   [この投稿]: http://go.microsoft.com/fwlink/p/?LinkId=506605
-  [mobile-services-register-authentication]: ../includes/mobile-services-register-authentication.md
   [Windows ストア アプリ パッケージを Microsoft 認証に登録する]: /ja-jp/documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication/
-  [mobile-services-restrict-permissions-javascript-backend]: ../includes/mobile-services-restrict-permissions-javascript-backend.md
   [1]: /ja-jp/documentation/articles/mobile-services-windows-store-get-started
-  [mobile-services-windows-dotnet-authenticate-app]: ../includes/mobile-services-windows-dotnet-authenticate-app.md
-  [mobile-services-windows-store-dotnet-authenticate-app-with-token]: ../includes/mobile-services-windows-store-dotnet-authenticate-app-with-token.md
   [モバイル サービス ユーザーのサービス側の認証]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-authorize-users-in-scripts
   [モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library

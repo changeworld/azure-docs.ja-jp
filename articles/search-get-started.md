@@ -367,7 +367,9 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 -   [Cloud Cover のエピソード 152: Generate an index in Azure Search (Azure Search でのインデックス生成)][Cloud Cover のエピソード 152: Generate an index in Azure Search (Azure Search でのインデックス生成)]
 
-<!--Anchors--> <!--Image references--> <!--Link references-->
+<!--Anchors-->
+<!--Image references-->
+<!--Link references-->
 
   [Azure Search Scenarios and Capabilities (Azure Search のシナリオと機能)]: http://azure.microsoft.com/blog/2014/08/28/azure-search-scenarios-and-capabilities/
   [無料サービスで開始する]: #sub-1

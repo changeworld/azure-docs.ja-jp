@@ -1,6 +1,6 @@
 <properties title="Create a geospatial search solution using Azure Search" pageTitle="Create a geospatial search app using Azure Search" description="Create a geospatial search app using Bing and Azure Search" metaKeywords="" services="" solutions="" documentationCenter="" authors="Heidist" manager="mblythe" videoId="" scriptId="" />
 
-<tags ms.service="azure-search" ms.devlang ms.workload="search" ms.topic="article" ms.tgt_pltfrm ms.date="09/23/2014" ms.author="heidist"></tags>
+<tags ms.service="azure-search" ms.devlang="" ms.workload="search" ms.topic="article" ms.tgt_pltfrm="" ms.date="09/23/2014" ms.author="heidist" />
 
 # Azure Search を使用した地理空間検索アプリの作成
 

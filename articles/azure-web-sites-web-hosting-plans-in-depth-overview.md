@@ -1,6 +1,6 @@
 <properties title="Azure Websites Web Hosting Plans In-Depth Overview" pageTitle="Azure Websites Web Hosting Plans In-Depth Overview - Windows Azure feature guide" description="Learn how Web Hosting Plans for Azure Websites work, and how they benefit your management experience." metaKeywords="Azure Web Sites, Azure Websites, WHP, Web Hosting Plan, Web Hosting Plans, Resource Groups" services="web-sites" solutions="web" documentationCenter="Infrastructure" authors="Byron Tardif and Yochay Kiryaty" videoId="" scriptId="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="Byron Tardif and Yochay Kiryaty"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="Byron="" Tardif="" and="" Yochay="" Kiryaty" />
 </br>
 
 # 詳解 Azure Websites の Web ホスティング プラン
@@ -19,7 +19,7 @@ Web ホスティング プラン (WHP) は、Web サイト間で共有できる�
 1 つのリソース グループに複数の Web ホスティング プランを追加して、それぞれの Web ホスティング プランに異なる機能を持たせたうえで、サイトを関連付けることにより、それらのサイトは、ホスティング プランがそれぞれ備えている機能一式を利用することができます。その関係を示したのが次の画像です。
 </br>
 </br>
-![Resource Groups and Web Hosting Plans][]
+![Resource Groups and Web Hosting Plans][Resource Groups and Web Hosting Plans]
 </br>
 </br>
 Web ホスティング プランは 1 つのリソース グループに複数割り当てることができるため、複数のサイトをそれぞれ異なるリソース (主に Web サイトを実行する仮想マシン) に割り当てることができます。たとえば、開発テスト環境サイトと運用環境サイト間でリソースを分離することができます。運用環境サイト専用のリソースを持った Web ホスティング プランと、開発テスト環境サイト用の Web ホスティング プランを割り当てることが可能です。
@@ -33,7 +33,7 @@ Web ホスティング プランは 1 つのリソース グループに複数�
 新しい Web サイトを作成するとき、作成しようとしている Web サイトが、新規性のある Web アプリケーションといえる場合は、新しいリソース グループの作成を検討してください。この場合、リソース グループとそれに関連する Web ホスティング プラン、Web サイトを新規作成することをお勧めします。新しい Azure ポータル プレビューから、ギャラリー (Web サイト + SQL の新規作成オプション) を使用してこのような新しい Web サイトを作成すると、新しいサイト用の新しいリソース グループと Web ホスティング プランが既定で作成されます。ただし、これらの既定の動作は上書きすることができます。
 </br>
 </br>
-![Creating a new Web Hosting Plan][]
+![Creating a new Web Hosting Plan][Creating a new Web Hosting Plan]
 </br>
 </br>
 既存のリソース グループには、新しい Web サイトやその他のリソースをいつでも追加することができます。既存のリソース グループのコンテキストから新しい Web サイトを作成すると、Web サイトの新規作成ウィザードにより、既存のリソースと Web ホスティング プランが既定で選択されます。この場合も、既定の動作を必要に応じて上書きすることが可能です。既存のリソース グループに新しい Web サイトを追加するときは、既にある Web ホスティング プランにサイトを追加するか (新しい Azure ポータル プレビューでは、こちらが既定で選択されます)、またはサイトの追加先となる新しい Web ホスティング プランを作成するかを選ぶことができます。
@@ -51,13 +51,13 @@ Web ホスティング プランは 1 つのリソース グループに複数�
 既に Web サイトが Azure Websites に存在する場合、そのすべての Web サイトが Azure プレビュー ポータルに表示されます。左側のナビゲーション ウィンドウにある **[参照]** ボタンをクリックし、**[Web サイト]** をクリックすると、すべての Web サイトがフラットに一覧表示されます。
 </br>
 </br>
-![See all your website as a flat list][]
+![See all your website as a flat list][See all your website as a flat list]
 </br>
 </br>
 また、左側のナビゲーション ウィンドウの **[参照]** ボタンをクリックし、**[リソース グループ]** を選択すると、作成済みのすべてのリソース グループを表示することができます。
 </br>
 </br>
-![See all the resource groups that have been created][]
+![See all the resource groups that have been created][See all the resource groups that have been created]
 </br>
 </br>
 また、既に Web サイトがある各リージョンには、既定のリソース グループが自動的に生成されていることがわかります。Web サイトに関して自動的に生成されたリソース グループの名前は *Default-Web-<location name>* になります。ここで、Location Name は、Azure のリージョンを表します (例: *Default-Web-WestUS*)。各リソース グループには、そのグループのリージョンに既にあるサイトがすべて表示されます。完全版であれ、プレビュー版であれ、Azure ポータルで過去に作成したサイトと将来作成するサイトは、どちらのポータルでも利用できるようになります。
@@ -84,18 +84,18 @@ Web ホスティング プランは 1 つのリソース グループに複数�
     新しい **Azure ポータル プレビュー**の UI を使って作成するには、**[新規]** をクリックし、**[Web サイト]** を選択して、Web サイトの作成ブレードを表示します。以下の 1 つ目の画像には、左下に **[新規]** アイコンが表示されています。また、2 つ目の画像には、**[Web サイト]** 作成ブレード、**[Web ホスティング プラン]** ブレード、**[料金レベル]** ブレードが確認できます。
     </br>
     </br>
-    ![Create a new website][]
+    ![Create a new website][Create a new website]
     </br>
     </br>
-    ![Website, Web Hosting Plan and pricing tier blades][]
+    ![Website, Web Hosting Plan and pricing tier blades][Website, Web Hosting Plan and pricing tier blades]
     </br>
     </br>
-    この例では、**contosomarketing** という新しい Web サイトを作成し、**contoso** という新しい Web ホスティング プランに配置しています。この Web ホスティング プランに選択した料金レベルは "**S、標準**" です。Web ホスティング プランの料金レベルと、それぞれに用意されている機能、料金、スケール オプションの詳細については、「[Azure Websites Web Hosting Plans Spec (Azure Websites Web ホスティング プランの仕様)][]」を参照してください。
+    この例では、**contosomarketing** という新しい Web サイトを作成し、**contoso** という新しい Web ホスティング プランに配置しています。この Web ホスティング プランに選択した料金レベルは "**S、標準**" です。Web ホスティング プランの料金レベルと、それぞれに用意されている機能、料金、スケール オプションの詳細については、「[Azure Websites Web Hosting Plans Spec (Azure Websites Web ホスティング プランの仕様)][Azure Websites Web Hosting Plans Spec (Azure Websites Web ホスティング プランの仕様)]」を参照してください。
     </br>
     既にある Azure ポータルに Web ホスティング プランを作成することもできます。これは、**[Web ホスティング プラン]** ボックスの一覧の **[新しい Web ホスティング プランの作成]** を選択することによって、**簡易作成**ウィザードの中で行います。
     </br>
     </br>
-    ![Create new web hosting plan in the existing portal][]
+    ![Create new web hosting plan in the existing portal][Create new web hosting plan in the existing portal]
     </br>
     </br>
     この例では、**northwind** という新しいサイトを作成し、Web ホスティング プランを新規作成するように選択しています。この操作を実行すると、Web サイト **northwind** を含んだ **default0** という新しい Web ホスティング プランが作成されます。この方法で作成されたすべての Web ホスティング プランは、この名前付け規則に従います。Web ホスティング プランの作成後に名前を変更することはできません。また、この方法で作成された Web ホスティング プランは、**無料**の料金レベルに作成されます。
@@ -111,13 +111,13 @@ Web ホスティング プランは 1 つのリソース グループに複数�
     次に、Web サイトの作成ブレードで、ホスティング プランを選択します。
     </br>
     </br>
-    ![Select a hosting plan][]
+    ![Select a hosting plan][Select a hosting plan]
     </br>
     </br>
     既存の Azure ポータルを使用して特定の Web ホスティング プランにサイトを作成することもできます。これは、**簡易作成**ウィザードの中で行います。Web サイトの URL を入力した後、**[Web ホスティング プラン]** ボックスの一覧から、サイトの追加先となるプランを選択します。
     </br>
     </br>
-    ![Select a hosting plan in the existing portal][]
+    ![Select a hosting plan in the existing portal][Select a hosting plan in the existing portal]
     </br>
     </br>
     **Q**: Web ホスティング プラン間でサイトを移動する方法を教えてください。
@@ -127,7 +127,7 @@ Web ホスティング プランは 1 つのリソース グループに複数�
     サイトを別のプランに移動するには、移動するサイトの Web サイト ブレードに移動します。続けて、**[Web ホスティング プラン]** をクリックします。
     </br>
     </br>
-    ![Choose a new or existing web hosting plan][]
+    ![Choose a new or existing web hosting plan][Choose a new or existing web hosting plan]
     </br>
     </br>
     すると、[Web ホスティング プラン] ブレードが表示されます。この時点で、既存の Web ホスティング プランを選択するか、新しい Web ホスティング プランを作成することができます。異なる地理的拠点またはリソース グループに属しているプランは淡色表示され、選択できません。
@@ -142,13 +142,13 @@ Web ホスティング プランは 1 つのリソース グループに複数�
     以下の画像には、**[Web ホスティング プラン]** ブレードと **[料金レベル]** ブレードが表示されています。**[Web ホスティング プラン]** ブレードの **[料金レベル]** の部分をクリックすると、**[料金レベル]** ブレードが展開表示され、Web ホスティング プランの料金レベルを変更することができます。
     </br>
     </br>
-    ![The Web Hosting Plan blade and the Pricing Tier][]
+    ![The Web Hosting Plan blade and the Pricing Tier][The Web Hosting Plan blade and the Pricing Tier]
     </br>
     </br>
     Web ホスティング プラン内のインスタンス数を増やすことによってスケール アウトする方法もあります。これがプランを拡張する 2 つ目の方法です。以下の画像には、**[Web ホスティング プラン]** ブレードと **[スケール]** ブレードが表示されています。**[Web ホスティング プラン]** ブレードの [スケール] 領域をクリックして展開表示することによって、プランのインスタンス数を変更することができます。
     </br>
     </br>
-    ![Changing the instance count of a hosting plan][]
+    ![Changing the instance count of a hosting plan][Changing the instance count of a hosting plan]
     </br>
     </br>
     上の画像の Web ホスティング プランは、**標準**料金レベルを使用するように構成されているため、**[自動スケール]** オプションが有効にされています。
@@ -156,7 +156,7 @@ Web ホスティング プランは 1 つのリソース グループに複数�
     完全版の Azure ポータルでは、**[スケール]** タブでこの操作を実行できます (以下の図を参照)。
     </br>
     </br>
-    ![Changing the instance count of a hosting plan in the existing portal][]
+    ![Changing the instance count of a hosting plan in the existing portal][Changing the instance count of a hosting plan in the existing portal]
     </br>
     </br>
     **Q**: Web ホスティング プランを削除する方法を教えてください。
@@ -164,7 +164,7 @@ Web ホスティング プランは 1 つのリソース グループに複数�
     **A**: Web ホスティング プランを削除するにはまず、そこに関連付けられている Web サイトをすべて削除する必要があります。Web ホスティング プランからすべての Web サイトを削除した後、[Web ホスティング プラン] ブレードから Web ホスティング プランを削除できます。
     </br>
     </br>
-    ![Deleting a web hosting plan][]
+    ![Deleting a web hosting plan][Deleting a web hosting plan]
     </br>
     </br>
     完全版の Azure ポータルでは、Web ホスティング プランに残った最後の Web サイトを削除すると、関連付けられている Web ホスティング プランが自動的に削除されます。
@@ -174,13 +174,13 @@ Web ホスティング プランは 1 つのリソース グループに複数�
     **A**: Web ホスティング プランの監視には、[Web ホスティング プラン] ブレードの [監視] 領域を使用できます。
     </br>
     </br>
-    ![Monitoring a web hosting plan][]
+    ![Monitoring a web hosting plan][Monitoring a web hosting plan]
     </br>
     </br>
     モニタリング コントロールを右クリックし、**[クエリの編集]** を選択すると、コントロールをカスタマイズすることができます。
     </br>
     </br>
-    ![Editing the monitoring controls][]
+    ![Editing the monitoring controls][Editing the monitoring controls]
     </br>
     </br>
     公開されるメトリックは次のとおりです。

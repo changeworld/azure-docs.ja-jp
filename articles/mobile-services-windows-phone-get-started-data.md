@@ -175,11 +175,10 @@
 -   [プッシュ通知の使用][プッシュ通知の使用]
     Mobile Services を使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
 
-  [mobile-services-selector-get-started-data-legacy]: ../includes/mobile-services-selector-get-started-data-legacy.md
+
   [Windows Phone 8 アプリ プロジェクトのダウンロード]: #download-app
   [モバイル サービスの作成]: #create-service
   [ストレージのデータ テーブルの追加]: #add-table
@@ -190,8 +189,6 @@
   [GetStartedWithData app]: http://go.microsoft.com/fwlink/p/?LinkId=271146
   [Windows Phone Store アプリケーション バージョン]: http://go.microsoft.com/fwlink/p/?LinkId=397372
   [0]: ./media/mobile-services-windows-phone-get-started-data/mobile-quickstart-startup-wp8.png
-  [mobile-services-create-new-service-data]: ../includes/mobile-services-create-new-service-data.md
-  [mobile-services-create-new-service-data-2]: ../includes/mobile-services-create-new-service-data-2.md
   [1]: ./media/mobile-services-windows-phone-get-started-data/mobile-add-nuget-package-wp.png
   [2]: ./media/mobile-services-windows-phone-get-started-data/mobile-dashboard-tab.png
   [管理ポータル]: https://manage.windowsazure.com/

@@ -1,11 +1,11 @@
-<properties urlDisplayName="Table Service" pageTitle=".NET から Table ストレージを使用する方法 | Microsoft Azure" metaKeywords="Get started Azure table   Azure nosql   Azure large structured data store   Azure table   Azure table storage   Azure table .NET   Azure table storage .NET   Azure table C#   Azure table storage C#" description="Microsoft Azure Table ストレージを使用してテーブルを作成および削除する方法、さらにテーブル内のエンティティを挿入および照会する方法について説明します。" services="storage" documentationCenter=".NET" metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Microsoft Azure Table ストレージを使用する方法" authors="tamram" manager="adinah" />
+<properties linkid="dev-net-how-to-table-services" urlDisplayName="Table Service" pageTitle="How to use table storage  from .NET | Microsoft Azure" metaKeywords="Get started Azure table   Azure nosql   Azure large structured data store   Azure table   Azure table storage   Azure table .NET   Azure table storage .NET   Azure table C#   Azure table storage C#" description="Learn how to use Microsoft Azure Table storage to create and delete tables and insert and query entities in a table." services="storage" documentationCenter=".NET" metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="How to use Microsoft Azure Table storage" authors="tamram" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
 # How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)
 
 このガイドでは、Azure テーブル ストレージ サービスを使用して一般的な
-シナリオを実行する方法について説明します。例は C\# のコードで記述され、
+シナリオを実行する方法について説明します。例は C# のコードで記述され、
 Azure .NET 用ストレージ クライアント ライブラリを利用しています。紹介するシナリオは、**テーブルの作成と
 削除**、**テーブル エンティティの操作**などです。テーブルの
 詳細については、「[次のステップ][次のステップ]」のセクションを参照してください。
@@ -61,7 +61,7 @@ NuGet を使用して `Microsoft.WindowsAzure.Storage.dll` アセンブリを取
 
 ### 名前空間宣言
 
-プログラムを使用して Azure ストレージにアクセスするすべての C\#
+プログラムを使用して Azure ストレージにアクセスするすべての C#
 ファイルの冒頭部分に、次の名前空間宣言を追加します。
 
     using Microsoft.WindowsAzure.Storage;
@@ -116,7 +116,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 名前空間
 ## <a name="add-entity"></a><span class="short-header">テーブルへのエンティティの追加</span>方法: エンティティをテーブルに追加する
 
 エンティティは、
-**TableEntity** から派生するカスタム クラスを使用して C\# オブジェクトにマップされます。エンティティをテーブルに追加するには、
+**TableEntity** から派生するカスタム クラスを使用して C# オブジェクトにマップされます。エンティティをテーブルに追加するには、
 エンティティのプロパティを定義するクラスを作成します。次のコードは、
 ユーザーの名を行キーとして、姓をパーティション キーとしてそれぞれ
 使用するエンティティ クラスを定義します。エンティティのパーティション キー
@@ -490,7 +490,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 名前空間
     // Delete the table it if exists.
     table.DeleteIfExists();
 
-## <a name="next-steps"></a><span class="short-header">次のステップ</span>次のステップ
+## <a name="next-steps"></a><span class="short-header">次の手順</span>次の手順
 
 これで、テーブル ストレージの基本を学習できました。さらに複雑な
 ストレージ タスクを実行する方法については、次のリンク先を参照してください。
@@ -532,7 +532,6 @@ Microsoft.WindowsAzure.CloudConfigurationManager 名前空間
   [.NET 用ストレージ クライアント ライブラリ リファレンス]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API リファレンス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179355
   [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
-  [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)]: /ja-jp/documentation/articles/websites-dotnet-webjobs-sdk-get-started/
   [BLOB ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/
   [キュー ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-queues/
   [SQL データベース]: /ja-jp/documentation/articles/sql-database-dotnet-how-to-use/

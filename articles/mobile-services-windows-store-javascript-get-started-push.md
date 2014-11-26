@@ -116,8 +116,6 @@
   [データを挿入して通知を受け取る]: #test
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/
   [モバイル サービスでのデータの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-js/
-  [mobile-services-create-new-push-vs2013]: ../includes/mobile-services-create-new-push-vs2013.md
-  [mobile-services-create-new-push-vs2013-2]: ../includes/mobile-services-create-new-push-vs2013-2.md
   [0]: ./media/mobile-services-windows-store-javascript-get-started-push/mobile-quickstart-push1.png
   [1]: ./media/mobile-services-windows-store-javascript-get-started-push/mobile-quickstart-push2.png
   [2]: /ja-jp/manage/services/notification-hubs/getting-started-windows-dotnet/

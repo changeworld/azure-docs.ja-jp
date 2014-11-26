@@ -199,7 +199,6 @@ SendGrid の Web ベース API を使用して、Azure アプリケーション�
   [方法: その他の SendGrid サービスを使用する]: #bkmk_HowToUseAdditionalSvcs
   [トランザクション電子メール配信]: http://sendgrid.com/solutions
   [クラウドベース電子メール サービス]: http://sendgrid.com/transactional-email
-  [sendgrid-sign-up]: ../includes/sendgrid-sign-up.md
   [フィルター設定に関するページ]: http://sendgrid.com/docs/API_Reference/Web_API/filter_settings.html
   [SendGrid API に関するドキュメント]: http://sendgrid.com/docs/API_Reference/index.html
   [Azure デプロイで Java から SendGrid を使用して電子メールを送信する方法]: ../store-sendgrid-java-how-to-send-email-example/

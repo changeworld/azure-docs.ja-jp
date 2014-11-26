@@ -57,6 +57,3 @@
   [登録の前にログインするようにアプリケーションを更新する]: #update-app
   [アプリケーションをテストする]: #test
   [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users/
-  [mobile-services-dotnet-backend-push-notifications-app-users]: ../includes/mobile-services-dotnet-backend-push-notifications-app-users.md
-  [mobile-services-ios-push-notifications-app-users-login]: ../includes/mobile-services-ios-push-notifications-app-users-login.md
-  [mobile-services-ios-push-notifications-app-users-test-app]: ../includes/mobile-services-ios-push-notifications-app-users-test-app.md

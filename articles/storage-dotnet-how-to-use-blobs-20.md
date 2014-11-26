@@ -5,21 +5,21 @@
 このガイドでは、Azure BLOB ストレージ サービスを使用して一般的なシナリオを実行する方法のデモンストレーションを行います。サンプルは C# で記述され、Azure
 .NET 用 Storage クライアント ライブラリを利用しています。紹介するシナリオは、
 BLOB の**アップロード**、**一覧表示**、**ダウンロード**、および**削除**です。BLOB の
-詳細については、「[次のステップ][]」のセクションを参照してください。
+詳細については、「[次のステップ][次のステップ]」のセクションを参照してください。
 
 ##目次
 
--   [BLOB ストレージとは][]
--   [概念][]
--   [Azure の Storage アカウントの作成][]
--   [ストレージ接続文字列の設定][]
--   [方法: プログラムで BLOB ストレージにアクセスする][]
--   [方法: コンテナーを作成する][]
--   [方法: コンテナーに BLOB をアップロードする][]
--   [方法: コンテナー内の BLOB を一覧表示する][]
--   [方法: BLOB をダウンロードする][]
--   [方法: BLOB を削除する][]
--   [次のステップ][]
+-   [BLOB ストレージとは][BLOB ストレージとは]
+-   [概念][概念]
+-   [Azure の Storage アカウントの作成][Azure の Storage アカウントの作成]
+-   [ストレージ接続文字列の設定][ストレージ接続文字列の設定]
+-   [方法: プログラムで BLOB ストレージにアクセスする][方法: プログラムで BLOB ストレージにアクセスする]
+-   [方法: コンテナーを作成する][方法: コンテナーを作成する]
+-   [方法: コンテナーに BLOB をアップロードする][方法: コンテナーに BLOB をアップロードする]
+-   [方法: コンテナー内の BLOB を一覧表示する][方法: コンテナー内の BLOB を一覧表示する]
+-   [方法: BLOB をダウンロードする][方法: BLOB をダウンロードする]
+-   [方法: BLOB を削除する][方法: BLOB を削除する]
+-   [次のステップ][次のステップ]
 
 [WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
@@ -85,7 +85,11 @@ Azure のクラウド サービスではないアプリケーション (前の�
   		</appSettings>
 	</configuration>
 
-ストレージ接続文字列の詳細については、「[接続文字列の構成][]」を参照してください。
+ストレージ接続文字列の詳細については、「[接続文字列の構成][AccountKey" />
+  		</appSettings>
+	</configuration>
+
+ストレージ接続文字列の詳細については、「[接続文字列の構成]」を参照してください。
 	
 これで、このガイドのハウツー タスクを実行する準備が整いました。
 
@@ -276,7 +280,7 @@ Azure BLOB Storage では、ブロック BLOB とページ BLOB がサポート�
 	Block blob of length 399751: https://<accountname>.blob.core.windows.net/photos/2011/photo7.jpg
 	Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 
-詳細については、[CloudBlobContainer.ListBlobs に関するページ][]を参照してください。
+詳細については、[CloudBlobContainer.ListBlobs に関するページ][CloudBlobContainer.ListBlobs に関するページ]を参照してください。
 
 ## <a name="download-blobs"> </a><span  class="short-header">BLOB をダウンロードする</span>方法: BLOB をダウンロードする
 
@@ -383,12 +387,7 @@ BLOB を削除するには、まず BLOB の参照を取得し、次にその
   [Blob8]: ./media/storage-dotnet-how-to-use-blobs-20/blob8.png
   [Blob9]: ./media/storage-dotnet-how-to-use-blobs-20/blob9.png
   
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
-  [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
   [接続文字列の構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758697.aspx
-  [.NET クライアント ライブラリ リファレンス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn495001(v=azure.10).aspx
-  [REST API リファレンス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179355
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
-  [空間]: http://nuget.org/packages/System.Spatial/5.0.2
 

@@ -49,7 +49,7 @@ Web ホスティング プランの管理の詳細については、[こちら][
 
 Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイト][Microsoft Azure の無料評価版サイト]」を参照してください。
 
-<!-- Images. -->
+
 
   [こちら]: http://go.microsoft.com/fwlink/?LinkID=394421
   [1]: http://go.microsoft.com/fwlink/?LinkID=394411

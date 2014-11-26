@@ -26,7 +26,6 @@ Active Directory は組織のクラウド ディレクトリなので、その�
 
 組織が既に内部設置型 Active Directory を使用している場合は、ディレクトリ同期、シングル サインオンなどの Azure AD のディレクトリ統合機能を使用し、既存の社内の ID をクラウドに拡張して、管理およびエンド ユーザー エクスペリエンスを強化できます。[詳細情報][3]
 
-  [disclaimer]: ../includes/disclaimer.md
   [詳細情報]: http://windows.microsoft.com/ja-jp/windows-live/sign-in-what-is-microsoft-account
   [1]: http://technet.microsoft.com/ja-jp/library/jj573650
   [2]: http://technet.microsoft.com/ja-jp/library/hh967619

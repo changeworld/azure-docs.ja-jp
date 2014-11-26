@@ -79,9 +79,9 @@
 -   [モバイル サービス HTML/JavaScript の使用方法の概念リファレンス][モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]
     HTML/JavaScript でモバイル サービスを使用する方法について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-html
   [Azure の管理ポータル]: https://manage.windowsazure.com/

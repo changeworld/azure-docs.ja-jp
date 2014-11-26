@@ -201,8 +201,8 @@
 
     認証された特定のユーザーにプッシュ通知する方法について説明します。これは、特定のユーザーにのみ通知を送信する場合に適したソリューションです。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
+ 
+ 
 <!-- URLs.-->
 
   [Windows Phone]: /ja-jp/documentation/articles/notification-hubs-windows-phone-send-breaking-news/ "Windows Phone"
@@ -213,7 +213,6 @@
   [バックエンドから通知を送信する]: #send
   [アプリケーションを実行して通知を生成する]: #test-app
   [通知ハブの使用]: /ja-jp/manage/services/notification-hubs/getting-started-windows-dotnet/
-  [create-an-azure-account]: ../includes/notification-hubs-back-end.md
   [0]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png
   [2]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png
   [3]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png

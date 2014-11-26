@@ -1,6 +1,6 @@
 <properties linkid="manage-services-integration-hybrid-connection" urlDisplayName="Create and Manage Hybrid Connections - BizTalk Services" pageTitle="Create and Manage Hybrid Connections | Azure" metaKeywords="BizTalk Services, BizTalk, web sites, website, hybrid connections, Azure" description="Learn how to create a hybrid connection, manage the connection, and install the Hybrid Connection Manager." metaCanonical="" services="integration-services" documentationCenter="" title="Create and Manage Hybrid Connections" authors="mandia" solutions="" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="mandia"></tags>
+<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="mandia" />
 
 # ハイブリッド接続の作成と管理
 
@@ -167,4 +167,3 @@ Customers<em>OracleServer</em>
   [Manage Options]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
   [Connect to on-premises SQL Server from an Azure website using Hybrid Connections (ハイブリッド接続を使用した Azure Web サイトから内部設置型 SQL Server への接続)]: http://go.microsoft.com/fwlink/?LinkID=397979
   [ハイブリッド接続の概要]: http://azure.microsoft.com/ja-jp/documentation/articles/integration-hybrid-connection-overview
-  [BizTalk サービス: Azure 管理ポータルを使用したプロビジョニング]: http://go.microsoft.com/fwlink/p/?LinkID=302280

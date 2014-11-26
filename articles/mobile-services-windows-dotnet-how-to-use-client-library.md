@@ -658,9 +658,9 @@ Windows Phone アプリの場合は、[ProtectedData][ProtectedData] クラス�
 -   [スクリプトを使用したユーザーの認証][スクリプトを使用したユーザーの認証]
     認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理する方法について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [Windows ストアのクイック スタートのチュートリアル]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started/
   [Windows Phone のクイック スタートのチュートリアル]: http://www.windowsazure.com/ja-jp/develop/mobile/tutorials/get-started-wp8/
@@ -691,7 +691,6 @@ Windows Phone アプリの場合は、[ProtectedData][ProtectedData] クラス�
   [要求ヘッダーをカスタマイズする]: #headers
   [シリアル化をカスタマイズする]: #serialization
   [次のステップ]: #nextsteps
-  [mobile-services-concepts]: ../includes/mobile-services-concepts.md
   [テーブルの作成]: http://go.microsoft.com/fwlink/?LinkId=298592
   [動的スキーマ]: http://go.microsoft.com/fwlink/?LinkId=296271
   [GetTable]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554275.aspx

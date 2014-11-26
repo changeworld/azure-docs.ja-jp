@@ -1,6 +1,6 @@
 <properties urlDisplayName="Tracking work for your website" pageTitle="Tracking work for your website | Azure" metaKeywords="Visual Studio Online, VSO, work, items, backlog" description="Learn how to track and manage work for your website." metaCanonical="" services="visual-studio-online" documentationCenter="" title="Tracking work for your website" authors="rmarron" solutions="" manager="" editor="" />
 
-<tags ms.service="visual-studio-online" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="rmarron"></tags>
+<tags ms.service="visual-studio-online" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="rmarron" />
 
 # Web サイトの作業の追跡
 このトピックでは、作業項目の追跡ツールを使用して Web サイトの作業を管理する方法について説明します。

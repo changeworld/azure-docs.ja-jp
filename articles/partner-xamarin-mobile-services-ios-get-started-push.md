@@ -8,4 +8,3 @@
 
 > [WACOM.NOTE]モバイル サービスを使用したプッシュ通知にいくつか変更を加えました。Xamarin iOS 用に更新されたチュートリアルに引き続きご注目ください。
 
-  [mobile-services-selector-get-started-push-xamarin]: ../includes/mobile-services-selector-get-started-push-xamarin.md

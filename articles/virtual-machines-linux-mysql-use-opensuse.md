@@ -1,4 +1,4 @@
-<properties urlDisplayName="Install MongoDB" pageTitle="Azure 上で CentOS Linux を実行する仮想マシンへの MongoDB のインストール" metaKeywords="Azure, MongoDB" description="Azure 上の仮想マシンに Mongo DB をインストールする方法について説明します。" metaCanonical="" services="" documentationCenter="" title="Azure 上で CentOS Linux を実行する仮想マシンへの MongoDB のインストール" authors="timlt" solutions="" manager="timlt" editor="" />
+<properties linkid="virtual-machines-linux-mysql-use-opensuse" urlDisplayName="Install MongoDB" pageTitle="nstall MongoDB on a virtual machine running CentOS Linux in Azure" metaKeywords="Azure, MongoDB" description="Learn how to install Mongo DB on a virtual machine in Azure." metaCanonical="" services="" documentationCenter="" title="Install MongoDB on a virtual machine running CentOS Linux in Azure" authors="timlt" solutions="" manager="timlt" editor="" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="timlt" />
 

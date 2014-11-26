@@ -1,6 +1,6 @@
 <properties title="Interact with DocumentDB resources" pageTitle="Interact with DocumentDB resources | Azure" description="DocumentDB manages resources--uniquely identified by logical URIs--that developers can interact with using HTTP verbs, request/response headers, and status codes." metaKeywords="" services="documentdb" solutions="data-management"  authors="bradsev" manager="jhubbard" editor="cgronlun" videoId="" scriptId="" />
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="bradsev"></tags>
+<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="bradsev" />
 
 # DocumentDB リソースとの対話
 
@@ -12,7 +12,7 @@ DocumentDB は、HTTP を介したシンプルで開かれた RESTful なプロ�
 
 DocumentDB によって管理されるエンティティは "**リソース**" と呼ばれ、リソースはその論理 URI によって一意に識別されます。開発者がリソースを対話的に扱う際は、標準の HTTP 動詞、要求/応答ヘッダー、ステータス コードを使用します。次の図に示したように、DocumentDB の**リソース モデル**は、データベース アカウントに従属する一連のリソースから成り、個々のリソースは、不変の論理 URI アドレスで参照することができます。このドキュメントでは、そうした一連のリソースを "**フィード**" と呼ぶことにします。
 
-![][]
+![][0]
 
 ## データベース アカウント下の階層型リソース モデル
 
@@ -283,14 +283,14 @@ DocumentDB に採用されている論理アドレス モデルでは、すべ�
 -   JSON 仕様 ([][2]<http://-www.ietf.org/rfc/rfc4627.txt></a>)
 -   HTTP 仕様 ([][3]<http://www.w3.org/Protocols/rfc2616/rfc2616.html></a>)
 -   エンティティ タグ ([][4]<http://en.wikipedia.org/wiki/HTTP_ETag></a>)
--   [DocumentDB のクエリ][]
--   [DocumentDB SQL リファレンス][]
--   [DocumentDB のプログラミング: ストアド プロシージャ、トリガー、UDF][]
--   [DocumentDB Reference Documentation (DocumentDB リファレンス ドキュメント)][]
+-   [DocumentDB のクエリ][DocumentDB のクエリ]
+-   [DocumentDB SQL リファレンス][DocumentDB SQL リファレンス]
+-   [DocumentDB のプログラミング: ストアド プロシージャ、トリガー、UDF][DocumentDB のプログラミング: ストアド プロシージャ、トリガー、UDF]
+-   [DocumentDB Reference Documentation (DocumentDB リファレンス ドキュメント)][DocumentDB Reference Documentation (DocumentDB リファレンス ドキュメント)]
 
-  []: ./media/documentdb-interactions-with-resources/interactions-with-resources1.png
+  [0]: ./media/documentdb-interactions-with-resources/interactions-with-resources1.png
   [1]: ./media/documentdb-interactions-with-resources/interactions-with-resources2.png
-  []: http://en.wikipedia.org/wiki/Representational_state_transfer
+  [0]: http://en.wikipedia.org/wiki/Representational_state_transfer
   [2]: http://-www.ietf.org/rfc/rfc4627.txt
   [3]: http://www.w3.org/Protocols/rfc2616/rfc2616.html
   [4]: http://en.wikipedia.org/wiki/HTTP_ETag

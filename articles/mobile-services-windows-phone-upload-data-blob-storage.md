@@ -70,9 +70,9 @@ SendGrid 電子メール サービスを使用して、モバイル サービス
 
 .NET でモバイル サービスを使用する方法について説明します
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [ストレージ クライアント ライブラリのインストール]: #install-storage-client
   [SAS を生成する挿入スクリプトの更新]: #update-scripts
@@ -82,8 +82,6 @@ SendGrid 電子メール サービスを使用して、モバイル サービス
   [Azure ストレージ アカウント]: /ja-jp/manage/services/storage/how-to-create-a-storage-account
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-phone-get-started
   [0]: ./media/mobile-services-windows-phone-upload-data-blob-storage/mobile-add-storage-nuget-package-dotnet.png
-  [mobile-services-configure-blob-storage]: ../includes/mobile-services-configure-blob-storage.md
-  [mobile-services-windows-phone-upload-to-blob-storage]: ../includes/mobile-services-windows-phone-upload-to-blob-storage.md
   [SendGrid を使用したモバイル サービスからの電子メールの送信]: /ja-jp/develop/mobile/tutorials/send-email-with-sendgrid/
   [モバイル サービスでのバックエンド ジョブの計画]: /ja-jp/develop/mobile/tutorials/schedule-backend-tasks/
   [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=262293

@@ -288,9 +288,9 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 -   [プッシュ通知の使用][プッシュ通知の使用]
     Mobile Services を使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [更新を実行できるようにアプリケーションを更新する]: #uiupdate
   [アプリケーションでの競合検出を有効にする]: #enableOC

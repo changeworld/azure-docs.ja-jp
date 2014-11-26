@@ -439,7 +439,7 @@ SDK のオフライン同期機能を使用すると、コードを介してこ�
 
 ここまでで、ユーザーにアラートを表示するための **QSUIAlertViewWithBlock** ヘルパー クラスを追加し、最後に、3 とおりのいずれかで競合を調整するようにユーザーに要求するためのコードを **QSTodoListViewController** に追加しました。
 
-<!-- URLs. -->
+
 
   [オフライン データの使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started-offline-data/
   [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=AE564AB28

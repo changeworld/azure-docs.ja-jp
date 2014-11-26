@@ -215,9 +215,9 @@
 -   [モバイル サービスのサーバー スクリプト リファレンス][モバイル サービスのサーバー スクリプト リファレンス]
     サーバー スクリプトの登録および使用について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [以前のプッシュ通知のチュートリアル]: /ja-jp/develop/mobile/tutorials/get-started-with-push-ios
   [Devices テーブルを作成する]: #create-table

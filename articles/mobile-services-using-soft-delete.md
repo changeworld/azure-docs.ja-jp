@@ -129,7 +129,7 @@ HTTP 要求を介して削除済みレコードを取得するには、"\_\_incl
 
 JavaScript バックエンド Mobile Services でのスケジュールされたジョブの詳細については、「[モバイル サービスでの繰り返し発生するジョブのスケジュール][モバイル サービスでの繰り返し発生するジョブのスケジュール]」(JavaScript バックエンド) を参照してください。
 
-<!-- Anchors. --> <!-- Images --> <!-- URLs. -->
+ <!-- Images --> 
 
   [SQL bit 型]: http://msdn.microsoft.com/ja-jp/library/ms177603.aspx
   [REST クエリ操作]: http://msdn.microsoft.com/ja-jp/library/azure/jj677199.aspx

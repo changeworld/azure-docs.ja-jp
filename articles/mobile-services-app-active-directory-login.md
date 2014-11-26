@@ -26,9 +26,9 @@
 
 これで、クライアント ID とクライアント シークレットの値をモバイル サービスに渡すことにより、Azure Active Directory を使用してアプリケーションで認証を使用する準備ができました。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   [0]: ./media/mobile-services-app-active-directory-login/mobile-services-live-connect-add-app.png

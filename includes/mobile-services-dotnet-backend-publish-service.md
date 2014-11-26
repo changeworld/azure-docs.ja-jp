@@ -2,7 +2,7 @@
 
 1.  ソリューション エクスプローラーで、モバイル サービス プロジェクトを右クリックし、**[発行]** をクリックします。その後、**[Web の発行]** ダイアログ ボックスで **[Azure Mobile Services]** をクリックします。
 
-    ![][]
+    ![][0]
 
 2.  Azure アカウント資格情報でサインインし、**[既存の Mobile Services]** から目的のサービスを選択して、**[OK]** をクリックします。
 
@@ -18,6 +18,6 @@
 
     発行に成功した後、確認ページが再び表示されますが、今度はモバイル サービスが Azure 内で実行されていることが示されます。
 
-  []: ./media/mobile-services-dotnet-backend-publish-service/mobile-quickstart-publish.png
+  [0]: ./media/mobile-services-dotnet-backend-publish-service/mobile-quickstart-publish.png
   [1]: ./media/mobile-services-dotnet-backend-publish-service/mobile-quickstart-publish-select-service.png
   [2]: ./media/mobile-services-dotnet-backend-publish-service/mobile-quickstart-publish-2.png

@@ -2,27 +2,27 @@
 
 # Azure プレビュー ポータルで Search を構成する
 
-[WACOM.INCLUDE [この記事では Azure プレビュー ポータルを使用します][]]
+[WACOM.INCLUDE [この記事では Azure プレビュー ポータルを使用します](../includes/preview-portal-note.md)]
 
 新しいプレビュー ポータルで Microsoft Azure Search (パブリック プレビュー) を利用できます。管理者は、共有サービスを選択する場合は無料で、または専用のリソースを使用する場合は割引料金で、Search サービスを既存のサブスクリプションに追加できます。この記事で取り上げる内容は次のとおりです。
 
 <!--Table of contents -->
 
--   [無料サービスで開始する][]
--   [標準検索にアップグレードする][]
--   [サービス操作をテストする][]
--   [Search サービスの構成ページを表示する][]
--   [実際に使ってみる][]
+-   [無料サービスで開始する][無料サービスで開始する]
+-   [標準検索にアップグレードする][標準検索にアップグレードする]
+-   [サービス操作をテストする][サービス操作をテストする]
+-   [Search サービスの構成ページを表示する][Search サービスの構成ページを表示する]
+-   [実際に使ってみる][実際に使ってみる]
 
 ## 無料サービスで開始する
 
 登録者は自動的に、共有のマルチテナント Search サービスに無料でアクセスできます。このサービスは、学習目的に、または概念実証テストや小規模な開発用検索プロジェクトのために使用できます。無料版を使用するには、次の手順でサインアップします。
 
-1.  既存のサブスクリプションを使用して、[Azure プレビュー ポータル][]にサインインします。この URL でプレビュー ポータルにアクセスできます。
+1.  既存のサブスクリプションを使用して、[Azure プレビュー ポータル][Azure プレビュー ポータル]にサインインします。この URL でプレビュー ポータルにアクセスできます。
 
 2.  ページの下部にある **[新規]** をクリックします。
 
-    ![][]
+    ![][0]
 
 3.  ページの上部にある **[すべて]** をクリックします。
 
@@ -74,7 +74,7 @@
 
    **[使用]** には、ドキュメント数、利用可能なリソース、およびストレージの上限が表示されます。
 
-これらの値を使用してサービスに接続する方法については、「[サービス操作をテストする][]」に進んでください。
+これらの値を使用してサービスに接続する方法については、「[サービス操作をテストする][サービス操作をテストする]」に進んでください。
 
 ## 標準検索にアップグレードする
 
@@ -88,7 +88,7 @@
 
 **手順 1. - 料金レベルを標準に設定して新しいサービスを作成する**
 
-1.  既存のサブスクリプションを使用して、[Azure プレビュー ポータル][]にサインインします。
+1.  既存のサブスクリプションを使用して、[Azure プレビュー ポータル][Azure プレビュー ポータル]にサインインします。
 
 2.  ページの下部にある **[新規]** をクリックします。
 
@@ -116,13 +116,13 @@
 
 2.  スライダーを使用して、レプリカ、パーティション、または両方を追加します。
 
-追加のレプリカおよびパーティションは、検索単位で課金されます。リソースの追加に応じて、特定のリソース構成に必要な検索単位の合計数がページに表示されます。「[料金の詳細][]」をチェックして、単位あたりの課金情報を確認できます。
+追加のレプリカおよびパーティションは、検索単位で課金されます。リソースの追加に応じて、特定のリソース構成に必要な検索単位の合計数がページに表示されます。「[料金の詳細][料金の詳細]」をチェックして、単位あたりの課金情報を確認できます。
 
 ![][10]
 
 ## サービス操作をテストする
 
-Search 構成の最後の手順では、サービスがクライアント アプリケーションから操作およびアクセスできるかどうかを確認します。この手順は、[Telerik から無料でダウンロード][]できる Fiddler を使用し、HTTP 要求を発行して応答を確認します。Fiddler を使用することで、コードを記述することなく、API をすぐにテストできます。
+Search 構成の最後の手順では、サービスがクライアント アプリケーションから操作およびアクセスできるかどうかを確認します。この手順は、[Telerik から無料でダウンロード][Telerik から無料でダウンロード]できる Fiddler を使用し、HTTP 要求を発行して応答を確認します。Fiddler を使用することで、コードを記述することなく、API をすぐにテストできます。
 
 次の手順は、共有検索と標準検索の両方で使用します。以下の手順では、インデックスを作成し、ドキュメントをアップロードし、インデックスのクエリを実行してから、システムでサービス情報のクエリを実行します。
 
@@ -287,7 +287,7 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 ![][14]
 
-次のクエリ例は、MSDN の「[Search Index operation (Azure Search API) (検索インデックス操作 (Azure Search API))][]」に記載されているものです。このトピックのクエリ例の多くに、Fiddler では許可されないスペースが含まれています。Fiddler でクエリを実行する場合は、次のように、スペースを + 文字に置き換えてからクエリ文字列に貼り付けてください。
+次のクエリ例は、MSDN の「[Search Index operation (Azure Search API) (検索インデックス操作 (Azure Search API))][Search Index operation (Azure Search API) (検索インデックス操作 (Azure Search API))]」に記載されているものです。このトピックのクエリ例の多くに、Fiddler では許可されないスペースが含まれています。Fiddler でクエリを実行する場合は、次のように、スペースを + 文字に置き換えてからクエリ文字列に貼り付けてください。
 
 **スペースを置き換える前:**
 
@@ -328,7 +328,7 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 構成ページの場所を思い出せない場合は、次の手順に従って、サービス ダッシュボードを表示します。
 
-1.  既存のサブスクリプションを使用して、[Azure プレビュー ポータル][]にサインインします。
+1.  既存のサブスクリプションを使用して、[Azure プレビュー ポータル][Azure プレビュー ポータル]にサインインします。
 2.  **[参照]**、**[すべて]** の順にクリックします。
 
     ![][17]
@@ -347,24 +347,23 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 次のステップに進む準備ができていますか。次のリンクでは、Azure Search を使用する検索アプリケーションを作成して管理する方法について、その他の資料を参照できます。
 
-[最初の Azure Search ソリューションを作成する][]
+[最初の Azure Search ソリューションを作成する][最初の Azure Search ソリューションを作成する]
 
-[Microsoft Azure で検索ソリューションを管理する][]
+[Microsoft Azure で検索ソリューションを管理する][Microsoft Azure で検索ソリューションを管理する]
 
-[Azure Search の技術概要][]
+[Azure Search の技術概要][Azure Search の技術概要]
 
-[Azure Search REST API][]
+[Azure Search REST API][Azure Search REST API]
 
 
 
-  [この記事では Azure プレビュー ポータルを使用します]: ../includes/preview-portal-note.md
   [無料サービスで開始する]: #sub-1
   [標準検索にアップグレードする]: #sub-2
   [サービス操作をテストする]: #sub-3
   [Search サービスの構成ページを表示する]: #sub-4
   [実際に使ってみる]: #next-steps
   [Azure プレビュー ポータル]: https://portal.azure.com
-  []: ./media/search-configure/AzureSearch_Configure1_1_New.PNG
+  [0]: ./media/search-configure/AzureSearch_Configure1_1_New.PNG
   [1]: ./media/search-configure/AzureSearch_Configure1_2_Everything.PNG
   [2]: ./media/search-configure/Azuresearch_Configure1_3_Gallery.PNG
   [3]: ./media/search-configure/AzureSearch_Configure1_4_GallerySeeAll.PNG
@@ -381,11 +380,11 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
   [12]: ./media/search-configure/AzureSearch_Configure1_12_POSTDocs.PNG
   [13]: ./media/search-configure/AzureSearch_Configure1_13_GETQuery.PNG
   [14]: ./media/search-configure/AzureSearch_Configure1_14_GETQueryResponse.PNG
-  [Search Index operation (Azure Search API) (検索インデックス操作 (Azure Search API))]: http://msdn.microsoft.com/en-us/library/dn798927.aspx
+  [Search Index operation (Azure Search API) (検索インデックス操作 (Azure Search API))]: http://msdn.microsoft.com/ja-jp/library/dn798927.aspx
   [15]: ./media/search-configure/AzureSearch_Configure1_15_Stats.PNG
   [16]: ./media/search-configure/AzureSearch_Configure1_16_StatsResponse.PNG
   [17]: ./media/search-configure/AzureSearch_Configure1_17_BrowseEverything.PNG
   [最初の Azure Search ソリューションを作成する]: ../search-create-first-solution/
   [Microsoft Azure で検索ソリューションを管理する]: ../search-manage/
-  [Azure Search の技術概要]: http://msdn.microsoft.com/en-us/library/dn798933.aspx
-  [Azure Search REST API]: http://msdn.microsoft.com/en-us/library/dn798935.aspx
+  [Azure Search の技術概要]: http://msdn.microsoft.com/ja-jp/library/dn798933.aspx
+  [Azure Search REST API]: http://msdn.microsoft.com/ja-jp/library/dn798935.aspx

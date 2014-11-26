@@ -1,6 +1,6 @@
 <properties linkid="develop-dotnet-rest-service-using-web-api" urlDisplayName="REST service using Web API" pageTitle=".NET REST service using Web API - Azure tutorial" metaKeywords="Azure tutorial web site, ASP.NET API web site, Azure VS" description="A tutorial that teaches you how to deploy an app that uses the ASP.NET Web API to an Azure website by using Visual Studio." metaCanonical="" services="web-sites" documentationCenter=".NET" title="REST service using ASP.NET Web API and SQL Database" authors="riande" solutions="" manager="" editor="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="riande"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="riande" />
 
 # ASP.NET Web API と SQL データベースを使用した REST サービス
 
@@ -37,7 +37,7 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 
 <a name="bkmk_setupdevenv"></a>
 <!-- the next line produces the "Set up the development environment" section as see at http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-dotnet-get-started/ -->
-[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## <a name="bkmk_setupwindowsazure"></a>Azure 環境を設定する
 
@@ -823,7 +823,6 @@ Azure アプリケーションにデータを保存するには、Azure スト�
   [Web API を使用する REST ベースのインターフェイスを追加する]: #bkmk_addwebapi
   [XSRF 保護を追加する]: #xsrf
   [Azure および SQL データベースにアプリケーションの更新を発行する]: #bkmk_deploydatabaseupdate
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [Azure の管理ポータル]: https://manage.windowsazure.com
   [Create with Database link in Management Portal]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr6.PNG
   [Create a New Website step of New Website - Create with Database wizard]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rrCWS.png

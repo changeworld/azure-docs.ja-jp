@@ -1,6 +1,6 @@
 1.  モバイル サービスが現在 IIS Express で実行されている場合は、そのモバイル サービスを停止してください。IIS Express トレイ アイコンを右クリックし、モバイル サービスに対応する **[stop]** をクリックします。
 
-    ![][]
+    ![][0]
 
 2.  コマンド プロンプト ウィンドウで **ipconfig** コマンドを実行し、ワークステーションに対応する有効なローカル IP アドレスを参照します。
 
@@ -32,8 +32,8 @@
 
     > [WACOM.NOTE] ローカルでサービスのテストが完了した後、作成した Windows ファイアウォールの規則を削除する必要があります。
 
-<!-- URLs. -->
 
-  []: ./media/mobile-services-how-to-configure-iis-express/iis-express-tray-stop-site.png
+
+  [0]: ./media/mobile-services-how-to-configure-iis-express/iis-express-tray-stop-site.png
   [1]: ./media/mobile-services-how-to-configure-iis-express/ipconfig.png
   [ローカル コンピューターにポート規則を作成するには]: http://go.microsoft.com/fwlink/?LinkId=392240

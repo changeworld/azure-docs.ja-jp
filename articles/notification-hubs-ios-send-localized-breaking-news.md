@@ -168,9 +168,9 @@ MainStoryboard\_iPhone.storyboard で、サポートする 3 つの言語 (英�
 
 テンプレート式言語のリファレンスは、「[方法: Windows Azure 通知ハブ (iOS アプリ)][方法: Service Bus Notification Hubs (iOS Apps)]」にあります。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [通知ハブを使用したニュース速報の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-ios
   [テンプレートの概念]: #concepts
@@ -180,6 +180,5 @@ MainStoryboard\_iPhone.storyboard で、サポートする 3 つの言語 (英�
   [通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
   [0]: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized1.png
   [1]: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized2.png
-  [notification-hubs-localized-back-end]: ../includes/notification-hubs-localized-back-end.md
   [Notification Hubs によるユーザーへの通知: ASP.NET]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
   [Notification Hubs によるユーザーへの通知: Mobile Services]: /ja-jp/manage/services/notification-hubs/notify-users

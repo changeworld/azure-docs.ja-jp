@@ -289,7 +289,5 @@ Web サイトまたは仮想マシンを使用する場合には、.NET 構成�
 -   サービス バス キューとの間でメッセージを送受信する実用アプリケーションの作成: <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367512.aspx">サービス バスが仲介するメッセージングに関する .NET チュートリアル</a>。
 
   [次のステップ]: #next-steps
-  [create-account-note]: ../includes/create-account-note.md
-  [howto-service-bus-queues]: ../includes/howto-service-bus-queues.md
   [0]: ./media/service-bus-dotnet-how-to-use-queues/getting-started-multi-tier-13.png
   [キュー、トピック、およびサブスクリプション]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367516.aspx

@@ -177,7 +177,6 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [方法: メッセージをキューに送信する]: #send-messages
   [方法: キューからメッセージを受信する]: #receive-messages
   [方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する]: #handle-crashes
-  [howto-service-bus-queues]: ../includes/howto-service-bus-queues.md
   [Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: /ja-jp/develop/nodejs/tutorials/create-a-website-(mac)/
   [Node.js クラウド サービスへのデプロイ]: /ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/
   [WebMatrix による Web サイトの作成とデプロイ]: /ja-jp/develop/nodejs/tutorials/web-site-with-webmatrix/

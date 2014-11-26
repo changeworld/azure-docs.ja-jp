@@ -58,21 +58,14 @@
 
 ## <a name="enabledomain"></a>Web サイトに対するトラフィック マネージャーの有効化
 
-[WACOM.INCLUDE [modes][2]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes-traffic-manager.md)]
 
   [Register.com]: /ja-jp/documentation/articles/web-sites-registerdotcom-custom-domain-name "Register.com"
-  [websites-cloud-services-css-guided-walkthrough]: ../includes/websites-cloud-services-css-guided-walkthrough.md
-  [intro]: ../includes/custom-dns-web-site-intro-traffic-manager.md
   [1]: https://www.register.com
-  [tmwebsitefooter]: ../includes/custom-dns-web-site-traffic-manager-notes.md
-  [introfooter]: ../includes/custom-dns-web-site-intro-notes.md
   [DNS レコードについて]: #understanding-records
   [Web サイトの標準モード用の構成]: #bkmk_configsharedmode
   [カスタム ドメインの DNS レコードの追加]: #bkmk_configurecname
   [Web サイトに対するトラフィック マネージャーの有効化]: #enabledomain
-  [understandingdns]: ../includes/custom-dns-web-site-understanding-dns-traffic-manager.md
-  [modes]: ../includes/custom-dns-web-site-modes-traffic-manager.md
   [My Account ページ]: ./media/web-sites-custom-domain-name/rdotcom-myaccount.png
   [Advanced Technical Settings ページ]: ./media/web-sites-custom-domain-name/rdotcom-advancedsettingstm.png
   [CNAME フォーム]: ./media/web-sites-custom-domain-name/rdotcom-editcnamerecordtm.png
-  [2]: ../includes/custom-dns-web-site-enable-on-traffic-manager.md

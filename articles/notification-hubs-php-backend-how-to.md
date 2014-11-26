@@ -1,6 +1,6 @@
 <properties linkid="notification-hubs-php-back-end-how-to" urlDisplayName="How to use Notification Hubs with PHP" pageTitle="How to use Notification Hubs with PHP" metaKeywords="" description="Learn how to use Azure Notification Hubs from a PHP back-end." metaCanonical="" services="mobile-services,notification-hubs,push,php" documentationCenter="" title="How to use Notification Hubs with PHP" authors="elioda" solutions="" manager="" editor="" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="php" ms.topic="article" ms.date="01/01/1900" ms.author="elioda"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="php" ms.topic="article" ms.date="01/01/1900" ms.author="elioda" />
 
 # Java/PHP から Notification Hubs を使用する方法
 
@@ -247,8 +247,6 @@ PHP コードを実行すると、ターゲット デバイスに表示される
 -   引き続き、「[ニュース速報チュートリアル]」で Notification Hubs のタグ付け機能について学習してください。
 -   個別ユーザーへの通知のプッシュについては、「[ユーザーへの通知チュートリアル]」で学習してください。
 
-  [Java]: /ja-jp/documentation/articles/notification-hubs-java-backend-how-to/ "Java"
-  [PHP]: /ja-jp/documentation/articles/notification-hubs-php-backend-how-to/ "PHP"
   [通知ハブの REST API]: http://msdn.microsoft.com/ja-jp/library/dn223264.aspx
   [Notification Hubs の使用]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-ios-get-started/
   [.NET 通知ハブの SDK]: http://msdn.microsoft.com/ja-jp/library/jj933431.aspx

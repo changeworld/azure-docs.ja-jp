@@ -49,8 +49,6 @@
   [カスタム API を定義する]: #define-custom-api
   [カスタム API を呼び出すようにアプリケーションを更新する]: #update-app
   [アプリケーションをテストする]: #test-app
-  [mobile-services-create-custom-api]: ../includes/mobile-services-create-custom-api.md
-  [mobile-services-windows-store-javascript-call-custom-api]: ../includes/mobile-services-windows-store-javascript-call-custom-api.md
   [定期的な通知をサポートするカスタム API の定義に関するページ]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-create-pull-notifications
   [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
   [ソース管理へのサーバー スクリプトの保存に関するページ]: /ja-jp/documentation/articles/mobile-services-store-scripts-source-control

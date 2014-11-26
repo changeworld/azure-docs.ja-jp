@@ -1,6 +1,6 @@
 <properties linkid="develop-php-website-with-mysql-and-git" urlDisplayName="Web w/ MySQL + Git" pageTitle="PHP website with MySQL and Git - Azure tutorial" metaKeywords="" description="A tutorial that demonstrates how to create a PHP website that stores data in MySQL and use Git deployment to Azure." metaCanonical="" services="web-sites" documentationCenter="PHP" title="Create a PHP-MySQL Azure website and deploy using Git" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
 
 # PHP-MySQL Azure Web サイトを作成して Git で展開する
 
@@ -210,7 +210,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 
     ![Git 経由による Azure への初期プッシュ][Git 経由による Azure への初期プッシュ]
 
-3.  アプリケーションの使用を開始できるように、**http://[site] name].azurewebsites.net/index.php** に移動します (この情報はアカウント ダッシュボードに保存されます)。
+3.  アプリケーションの使用を開始できるように、**http://[site name].azurewebsites.net/index.php** に移動します (この情報はアカウント ダッシュボードに保存されます)。
 
     ![Azure の PHP Web サイト][Azure の PHP Web サイト]
 
@@ -231,7 +231,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 
     ![サイト変更の Git 経由による Azure へのプッシュ][サイト変更の Git 経由による Azure へのプッシュ]
 
-3.  アプリケーションとその変更内容を確認できるように、**http://[site] name].azurewebsites.net/index.php** に移動します。
+3.  アプリケーションとその変更内容を確認できるように、**http://[site name].azurewebsites.net/index.php** に移動します。
 
     ![Azure の PHP Web サイト][Azure の PHP Web サイト]
 
@@ -242,7 +242,6 @@ Registration アプリケーションは、名前と電子メール アドレス
   [PHP]: http://www.php.net/manual/en/install.php
   [Git]: http://git-scm.com/
   [Azure の PHP Web サイト]: ./media/web-sites-php-mysql-deploy-use-git/running_app_2.png
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A74E0F923
   [Azure SDK for PHP]: http://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/azurephpsdk.appids
   [Azure の管理ポータル]: https://manage.windowsazure.com
   [新しい Azure の Web サイトの作成]: ./media/web-sites-php-mysql-deploy-use-git/new_website.jpg
@@ -256,6 +255,5 @@ Registration アプリケーションは、名前と電子メール アドレス
   [データベース接続情報を取得する]: ./media/web-sites-php-mysql-deploy-use-git/connection_string_info.png
   [MySQL 用 PDO 拡張機能]: http://www.php.net/manual/en/ref.pdo-mysql.php
   [Git 経由による Azure への初期プッシュ]: ./media/web-sites-php-mysql-deploy-use-git/php-git-initial-push.png
-  [http://[site]: http://[site
   [サイト変更の Git 経由による Azure へのプッシュ]: ./media/web-sites-php-mysql-deploy-use-git/php-git-change-push.png
   [Web サイトの展開一覧]: ./media/web-sites-php-mysql-deploy-use-git/php-deployments-list.png

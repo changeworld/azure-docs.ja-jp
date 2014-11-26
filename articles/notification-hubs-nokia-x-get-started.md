@@ -1,6 +1,6 @@
 <properties linkid="develop-notificationhubs-tutorials-get-started-nokia-x" urlDisplayName="Get Started" pageTitle="Get Started with Azure Notification Hubs" metaKeywords="" description="Learn how to use Azure Notification Hubs to push notifications." metaCanonical="" services="notification-hubs" documentationCenter="Mobile" title="Get started with Notification Hubs" authors="piyushjo" solutions="" manager="kirillg" editor="" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-nokia-x" ms.devlang="java" ms.topic="article" ms.date="01/01/1900" ms.author="piyushjo"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-nokia-x" ms.devlang="java" ms.topic="article" ms.date="01/01/1900" ms.author="piyushjo" />
 
 # 通知ハブの使用
 
@@ -31,7 +31,7 @@
 
 2.  **[Create services (サービスの作成)]** タブに移動し、**[Sender ID (送信者 ID)]** と **[Service description (サービスの説明)]** に入力して新しいサービスを作成します。
 
-    ![][]
+    ![][0]
 
 3.  サービスの作成が完了したら、**送信者 ID** と**承認キー**をメモします。
 
@@ -345,26 +345,17 @@ Android アプリケーションが通知ハブへの登録を完了すると、
 
 
 
-  [Windows ユニバーサル]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/ "Windows ユニバーサル"
-  [Windows Phone]: /ja-jp/documentation/articles/notification-hubs-windows-phone-get-started/ "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/notification-hubs-ios-get-started/ "iOS"
-  [Android]: /ja-jp/documentation/articles/notification-hubs-android-get-started/ "Android"
-  [Kindle]: /ja-jp/documentation/articles/notification-hubs-kindle-get-started/ "Kindle"
-  [Nokia X]: /ja-jp/documentation/articles/notification-hubs-nokia-x-get-started/ "Nokia X"
-  [Xamarin.iOS]: /ja-jp/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/ "Xamarin.iOS"
-  [Xamarin.Android]: /ja-jp/documentation/articles/partner-xamarin-notification-hubs-android-get-started/ "Xamarin.Android"
   [Nokia Notification service を構成する]: #register
   [通知ハブを構成する]: #configure-hub
   [通知ハブにアプリケーションを接続する]: #connect-hub
   [アプリケーションへの通知の送信方法]: #send
   [アプリケーションのテスト]: #test-app
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F
   [ここ]: http://developer.nokia.com/resources/library/nokia-x/getting-started/environment-setup.html
   [1]: http://developer.nokia.com/resources/library/nokia-x/getting-started/device-setup.html
   [2]: http://go.microsoft.com/fwlink/?linkid=389797&clcid=0x409
   [3]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
   [Nokia Notifications API Developer Console (Nokia Notifications API 開発者コンソール)]: https://console.push.nokia.com/ncm/Web/index.jsp
-  []: ./media/notification-hubs-nokia-x-get-started/NokiaConsole.png
+  [0]: ./media/notification-hubs-nokia-x-get-started/NokiaConsole.png
   [4]: ./media/notification-hubs-nokia-x-get-started/NokiaConsoleService.png
   [リンク]: http://developer.nokia.com/resources/library/nokia-x/nokia-notifications/nokia-notifications-developer-guide.html
   [Azure 管理ポータル]: https://manage.windowsazure.com/

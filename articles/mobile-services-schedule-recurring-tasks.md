@@ -163,14 +163,13 @@
 -   [モバイル サービスのサーバー スクリプト リファレンス][モバイル サービスのサーバー スクリプト リファレンス]<br />
     サーバー スクリプトの登録および使用について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [Twitter アクセスを登録して資格情報を保存する]: #get-oauth-credentials
   [新しい Updates テーブルを作成する]: #create-table
   [新しいスケジュール済みジョブを作成する]: #add-job
-  [mobile-services-register-twitter-access]: ../includes/mobile-services-register-twitter-access.md
   [0]: ./media/mobile-services-schedule-recurring-tasks/mobile-data-tab-empty-cli.png
   [1]: ./media/mobile-services-schedule-recurring-tasks/mobile-create-updates-table.png
   [2]: ./media/mobile-services-schedule-recurring-tasks/mobile-schedule-new-job-cli.png

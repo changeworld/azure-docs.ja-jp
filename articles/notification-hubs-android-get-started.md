@@ -287,8 +287,8 @@
 
 この簡単な例では、すべての Android デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、「[通知ハブを使用したユーザーへのプッシュ通知][通知ハブを使用したユーザーへのプッシュ通知]」を参照してください。一方、対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信][通知ハブを使用したニュース速報の送信]」を参照してください。通知ハブの使用方法の詳細については、「[Windows Azure 通知ハブの概要][Windows Azure 通知ハブの概要]」を参照してください。
 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+
 
   [Google Cloud Messaging を有効にする]: #register
   [通知ハブを構成する]: #configure-hub
@@ -297,7 +297,6 @@
   [アプリケーションのテスト]: #run-app
   [ここ]: http://go.microsoft.com/fwlink/?LinkId=389797
   [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-  [Enable GCM]: ../includes/mobile-services-enable-Google-cloud-messaging.md
   [Azure 管理ポータル]: https://manage.windowsazure.com/
   [0]: ./media/notification-hubs-android-get-started/notification-hub-create-from-portal.png
   [1]: ./media/notification-hubs-android-get-started/notification-hub-create-from-portal2.png
@@ -306,7 +305,6 @@
   [4]: ./media/notification-hubs-android-get-started/notification-hub-configure-android.png
   [5]: ./media/notification-hubs-android-get-started/notification-hub-create-android-app.png
   [6]: ./media/notification-hubs-android-get-started/notification-hub-create-android-app2.png
-  [Add Play Services]: ../includes/mobile-services-add-Google-play-services.md
   [7]: ./media/notification-hubs-android-get-started/notification-hub-android-new-class.png
   [REST インターフェイス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn223264.aspx
   [.NET バックエンド]: /ja-jp/documentation/articles/mobile-services-javascript-backend-android-get-started-push/

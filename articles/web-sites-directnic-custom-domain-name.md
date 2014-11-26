@@ -1,6 +1,6 @@
 <properties title="Learn how to configure an Azure website to use a domain name registered with Directnic" pageTitle="Configure a Directnic domain name for an Azure website" metaKeywords="Azure, Azure Web Sites, Directnic" description="Learn how to configure an Azure website to use a domain name registered with Directnic" services="web-sites" documentationCenter="" authors="larryfr,jroth" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr,jroth"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr,jroth" />
 
 # Azure Web サイトのカスタム ドメイン名の構成 (Directnic)
 
@@ -8,13 +8,13 @@
 
 <div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/web-sites-directnic-custom-domain-name/" title="Web サイト" class="current">Web サイト</a> | <a href="/ja-jp/documentation/articles/web-sites-directnic-traffic-manager-custom-domain-name/" title="Traffic Manager を利用する Web サイト">Traffic Manager を利用する Web サイト</a></div>
 
-[WACOM.INCLUDE [websites-cloud-services-css-guided-walkthrough][websites-cloud-services-css-guided-walkthrough]]
+[WACOM.INCLUDE [websites-cloud-services-css-guided-walkthrough](../includes/websites-cloud-services-css-guided-walkthrough.md)]
 
-[WACOM.INCLUDE [intro][intro]]
+[WACOM.INCLUDE [intro](../includes/custom-dns-web-site-intro.md)]
 
 この記事では、[DirectNic.com][DirectNic.com] から購入したカスタム ドメイン名を Azure Websites で使用する手順を示します。
 
-[WACOM.INCLUDE [introfooter][introfooter]]
+[WACOM.INCLUDE [introfooter](../includes/custom-dns-web-site-intro-notes.md)]
 
 この記事の内容:
 
@@ -25,11 +25,11 @@
 
 ## <a name="understanding-records"></a>DNS レコードについて
 
-[WACOM.INCLUDE [understandingdns][understandingdns]]
+[WACOM.INCLUDE [understandingdns](../includes/custom-dns-web-site-understanding-dns-raw.md)]
 
 ## <a name="bkmk_configsharedmode"></a>Web サイトの基本、共有、または標準モード用の構成
 
-[WACOM.INCLUDE [modes][modes]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes.md)]
 
 <a name="bkmk_configurecname"></a>
 
@@ -50,7 +50,7 @@
 
 4.  **[Type]**、**[Name]**、**[Data]** の各フィールドに入力することで、DNS レコードを追加します。完了したら、**[Add Record]** をクリックします。
 
-    ![][]
+    ![][0]
 
     -   CNAME レコードを追加するときは、**[Name]** フィールドを、使用するサブドメインに設定する必要があります。たとえば **www** にします。**[Data]** フィールドを、Azure Web サイトの **.azurewebsites.net** ドメイン名に設定する必要があります。たとえば **contoso.azurwebsites.net** にします。
 
@@ -68,30 +68,13 @@
 
 ## <a name="enabledomain"></a>Web サイトでのドメイン名の有効化
 
-[WACOM.INCLUDE [modes][1]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes.md)]
 
-  [カスタム ドメイン]: /ja-jp/documentation/articles/web-sites-custom-domain-name "カスタム ドメイン"
-  [GoDaddy]: /ja-jp/documentation/articles/web-sites-godaddy-custom-domain-name "GoDaddy"
-  [Network Solutions]: /ja-jp/documentation/articles/web-sites-network-solutions-custom-domain-name "Network Solutions"
-  [Register.com]: /ja-jp/documentation/articles/web-sites-registerdotcom-custom-domain-name "Register.com"
-  [Enom]: /ja-jp/documentation/articles/web-sites-enom-custom-domain-name "Enom"
-  [Moniker]: /ja-jp/documentation/articles/web-sites-moniker-custom-domain-name "Moniker"
-  [Dotster]: /ja-jp/documentation/articles/web-sites-dotster-custom-domain-name "Dotster"
-  [DomainDiscover]: /ja-jp/documentation/articles/web-sites-domaindiscover-custom-domain-name "DomainDiscover"
-  [Directnic]: /ja-jp/documentation/articles/web-sites-directnic-custom-domain-name "Directnic"
-  [Web サイト]: /ja-jp/documentation/articles/web-sites-directnic-custom-domain-name/ "Web サイト"
-  [Traffic Manager を利用する Web サイト]: /ja-jp/documentation/articles/web-sites-directnic-traffic-manager-custom-domain-name/ "Traffic Manager を利用する Web サイト"
-  [websites-cloud-services-css-guided-walkthrough]: ../includes/websites-cloud-services-css-guided-walkthrough.md
-  [intro]: ../includes/custom-dns-web-site-intro.md
   [DirectNic.com]: https://directnic.com
-  [introfooter]: ../includes/custom-dns-web-site-intro-notes.md
   [DNS レコードについて]: #understanding-records
   [Web サイトの基本、共有、または標準モード用の構成]: #bkmk_configsharedmode
   [カスタム ドメインの DNS レコードの追加]: #bkmk_configurecname
   [Web サイトでのドメインの有効化]: #enabledomain
-  [understandingdns]: ../includes/custom-dns-web-site-understanding-dns-raw.md
-  [modes]: ../includes/custom-dns-web-site-modes.md
   [Directnic の Services メニュー]: .\media\web-sites-directnic-custom-domain-name\Directnic_DomainMenu.png
   [Services パネル]: .\media\web-sites-directnic-custom-domain-name\Directnic_DomainManagement.png
-  []: .\media\web-sites-directnic-custom-domain-name\Directnic_DNS.png
-  [1]: ../includes/custom-dns-web-site-enable-on-web-site.md
+  [0]: .\media\web-sites-directnic-custom-domain-name\Directnic_DNS.png

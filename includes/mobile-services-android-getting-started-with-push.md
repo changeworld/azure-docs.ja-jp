@@ -19,7 +19,7 @@
             </intent-filter>
         </receiver>
 
-4.  [Mobile Services Android SDK][] をダウンロードし、解凍します。**notifications** フォルダーを開き、**notifications-n.jar** ファイルを Eclipse プロジェクトの *libs* フォルダーにコピーした後、*libs* フォルダーを最新の情報に更新します。
+4.  [Mobile Services Android SDK][Mobile Services Android SDK] をダウンロードし、解凍します。**notifications** フォルダーを開き、**notifications-n.jar** ファイルを Eclipse プロジェクトの *libs* フォルダーにコピーした後、*libs* フォルダーを最新の情報に更新します。
 
     <div class="dev-callout"><b>注</b>
 <p>ファイル名の末尾にある数値は、今後の SDK リリースで変更される可能性があります。</p>
@@ -43,7 +43,7 @@
 
 9.  **[Name]** に「`MyHandler`」と入力し、**[Superclass]** に「`com.microsoft.windowsazure.notifications.NotificationsHandler`」と入力します。**[Finish]** をクリックします。
 
-    ![][]
+    ![][0]
 
     これで、新しい MyHandler クラスが作成されます。
 
@@ -113,7 +113,7 @@
 
 これで、アプリケーションがプッシュ通知をサポートするように更新されました。
 
-<!-- URLs. -->
+
 
   [Mobile Services Android SDK]: http://go.microsoft.com/fwlink/p/?LinkID=280126
-  []: ./media/mobile-services-android-get-started-push/mobile-services-android-create-class.png
+  [0]: ./media/mobile-services-android-get-started-push/mobile-services-android-create-class.png

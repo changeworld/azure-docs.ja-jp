@@ -214,11 +214,10 @@
 -   [プッシュ通知の使用][プッシュ通知の使用]
     <br/>Mobile Services を使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
+ 
+ 
 <!-- URLs. TODO:: update download link, github link, and completed example project with new Xamarin.iOs projects -->
 
-  [mobile-services-selector-get-started-data]: ../includes/mobile-services-selector-get-started-data.md
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-ios
   [Xamarin.iOS アプリケーション プロジェクトのダウンロード]: http://go.microsoft.com/fwlink/p/?LinkId=331302
   [モバイル サービスの作成]: #create-service
@@ -229,7 +228,6 @@
   [XCode 5.0]: https://go.microsoft.com/fwLink/p/?LinkID=266532
   [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A643EE910&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-xamarin-ios%2F
   [0]: ./media/partner-xamarin-mobile-services-ios-get-started-data/mobile-quickstart-startup-ios.png
-  [mobile-services-create-new-service-data]: ../includes/mobile-services-create-new-service-data.md
   [1]: ./media/partner-xamarin-mobile-services-ios-get-started-data/mobile-data-tab-empty.png
   [2]: ./media/partner-xamarin-mobile-services-ios-get-started-data/mobile-create-todoitem-table.png
   [3]: ./media/partner-xamarin-mobile-services-ios-get-started-data/mobile-dashboard-tab.png

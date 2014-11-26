@@ -1,6 +1,6 @@
-<properties urlDisplayName="Queue Service" pageTitle="キュー サービスを使用する方法 (Python) | Microsoft Azure" metaKeywords="Azure Queue Service messaging Python" description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。コード サンプルは Python で記述されています。" metaCanonical="" services="storage" documentationCenter="Python" title="Python からキュー ストレージ サービスを使用する方法" authors="huvalo" solutions="" manager="wpickett" editor="" />
+<properties linkid="develop-python-queue-service" urlDisplayName="Queue Service" pageTitle="How to use the queue service (Python) | Microsoft Azure" metaKeywords="Azure Queue Service messaging Python" description="Learn how to use the Azure Queue service to create and delete queues, and insert, get, and delete messages. Samples written in Python." metaCanonical="" services="storage" documentationCenter="Python" title="How to Use the Queue Storage Service from Python" authors="huvalo" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="09/19/2014" ms.author="huvalo" />
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo" />
 
 # Python からキュー ストレージ サービスを使用する方法
 
@@ -11,18 +11,18 @@
 
 ## 目次
 
-[キュー ストレージとは][キュー ストレージとは]
- [概念][概念]
- [Azure ストレージ アカウントの作成][Azure ストレージ アカウントの作成]
- [方法: キューを作成する][方法: キューを作成する]
- [方法: メッセージをキューに挿入する][方法: メッセージをキューに挿入する]
- [方法: 次のメッセージをピークする][方法: 次のメッセージをピークする]
- [方法: 次のメッセージをデキューする][方法: 次のメッセージをデキューする]
- [方法: キューに配置されたメッセージの内容を変更する][方法: キューに配置されたメッセージの内容を変更する]
- [方法: メッセージをデキューするための追加オプション][方法: メッセージをデキューするための追加オプション]
- [方法: キューの長さを取得する][方法: キューの長さを取得する]
- [方法: キューを削除する][方法: キューを削除する]
- [次のステップ][次のステップ]
+[キュー ストレージとは][キュー ストレージとは]		
+ [概念][概念]		
+ [Azure ストレージ アカウントの作成][Azure ストレージ アカウントの作成]		
+ [方法: キューを作成する][方法: キューを作成する]		
+ [方法: メッセージをキューに挿入する][方法: メッセージをキューに挿入する]		
+ [方法: 次のメッセージをピークする][方法: 次のメッセージをピークする]		
+ [方法: 次のメッセージをデキューする][方法: 次のメッセージをデキューする]		
+ [方法: キューに配置されたメッセージの内容を変更する][方法: キューに配置されたメッセージの内容を変更する]		
+ [方法: メッセージをデキューするための追加オプション][方法: メッセージをデキューするための追加オプション]		
+ [方法: キューの長さを取得する][方法: キューの長さを取得する]		
+ [方法: キューを削除する][方法: キューを削除する]		
+ [次のステップ][次のステップ]		
 
 [WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
@@ -36,7 +36,7 @@
 
 **QueueService** オブジェクトを使用して、キューを操作できます。次のコードでは、**QueueService** オブジェクトを作成します。プログラムを使用して Azure ストレージにアクセスするすべての Python ファイルの先頭付近に、次のコードを追加します。
 
-    from azure.storage import QueueService
+    from azure.storage import *
 
 次のコードでは、ストレージ アカウント名とアカウント キーを使用して **QueueService** オブジェクトを作成します。'myaccount' と 'mykey' の部分は、実際のアカウントとキーに置き換えてください。
 

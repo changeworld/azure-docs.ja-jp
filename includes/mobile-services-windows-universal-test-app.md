@@ -2,7 +2,7 @@
 
 2.  アプリケーションで、**[Insert a TodoItem]** ボックスに意味のあるテキスト (たとえば、「*チュートリアルの完了*」) を入力し、**[Save]** をクリックします。
 
-    ![][]
+    ![][0]
 
     これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。
 
@@ -12,5 +12,5 @@
 
     アプリケーションが開始すると、前の手順で保存したデータが、モバイル サービスから読み込まれる点に注目してください。
 
-  []: ./media/mobile-services-windows-universal-test-app/mobile-quickstart-startup.png
+  [0]: ./media/mobile-services-windows-universal-test-app/mobile-quickstart-startup.png
   [1]: ./media/mobile-services-windows-universal-test-app/mobile-quickstart-completed-wp8.png

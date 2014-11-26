@@ -225,4 +225,3 @@ TwiML 応答を提供する方法をセットアップしたら、次のコー�
   [方法: 独自の Web サイトから TwiML 応答を返す]: #howto_provide_twiml_responses
   [URL http://twimlets.com/message]: http://twimlets.com/message
   [1]: https://www.twilio.com/docs/api/twiml
-  [twilio_additional_services_and_next_steps]: ../includes/twilio_additional_services_and_next_steps.md

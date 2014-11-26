@@ -1,6 +1,6 @@
 <properties title="Analyzing Customer Churn using Microsoft Azure Machine Learning" pageTitle="Analyzing Customer Churn using Microsoft Machine Learning | Azure" description="Case study of developing an integrated model for analyzing and scoring customer churn" metaKeywords="" services="" solutions="" documentationCenter="" authors="barga" videoId="" scriptId="" />
 
-<tags ms.service="machine-learning" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="barga"></tags>
+<tags ms.service="machine-learning" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="barga" />
 
 # Microsoft Azure Machine Learning を使用した顧客離れの分析
 
@@ -24,7 +24,7 @@
 2.  介入モデルでは、離反の可能性と顧客生涯価値 (CLV) の大きさに対する介入レベルの影響を検討できます。
 3.  この分析は定性分析につながります。それをさらに各種顧客セグメントを対象とするプロアクティブなマーケティング キャンペーンへと昇華し、最適なサービスを提供できます。
 
-![][]
+![][0]
 
 この将来を考慮したアプローチは顧客離れに対処する最適な方法ではあるものの、一筋縄ではいかず、マルチモデルのアーキタイプを作成し、モデル間の依存関係をトレースする必要があります。モデル間の相互作用は、次の図のようにまとめられます。
 
@@ -215,7 +215,7 @@ Azure Cloud ML にはほかにも便利な機能があり、元から利用で�
 
 *図 12. 離反プロトタイプに関するプレゼンテーションのスナップショット*
 
-  []: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-1.png
+  [0]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-1.png
   [1]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-2.png
   [2]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-3.png
   [3]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-4.png

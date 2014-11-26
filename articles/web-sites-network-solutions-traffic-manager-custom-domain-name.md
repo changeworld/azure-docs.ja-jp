@@ -64,22 +64,15 @@
 
 ## <a name="enabledomain"></a>Web サイトに対するトラフィック マネージャーの有効化
 
-[WACOM.INCLUDE [modes][2]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes-traffic-manager.md)]
 
   [Network Solutions]: /ja-jp/documentation/articles/web-sites-network-solutions-custom-domain-name "Network Solutions"
-  [websites-cloud-services-css-guided-walkthrough]: ../includes/websites-cloud-services-css-guided-walkthrough.md
-  [intro]: ../includes/custom-dns-web-site-intro-traffic-manager.md
   [1]: https://www.networksolutions.com
-  [tmwebsitefooter]: ../includes/custom-dns-web-site-traffic-manager-notes.md
-  [introfooter]: ../includes/custom-dns-web-site-intro-notes.md
   [DNS レコードについて]: #understanding-records
   [Web サイトの標準モード用の構成]: #bkmk_configsharedmode
   [カスタム ドメインの DNS レコードの追加]: #bkmk_configurecname
   [Web サイトに対するトラフィック マネージャーの有効化]: #enabledomain
-  [understandingdns]: ../includes/custom-dns-web-site-understanding-dns-traffic-manager.md
-  [modes]: ../includes/custom-dns-web-site-modes-traffic-manager.md
   [Edit DNS ページ]: ./media/web-sites-custom-domain-name/ns-editdns.png
   [Domain Names ページで Edit Advanced DNS Records を選択したところ]: ./media/web-sites-custom-domain-name/ns-editadvanced.png
   [Update Advanced DNS ページ]: ./media/web-sites-custom-domain-name/ns-updatecnameadvanced.png
   [CNAME フォーム]: ./media/web-sites-custom-domain-name/ns-cnametm.png
-  [2]: ../includes/custom-dns-web-site-enable-on-traffic-manager.md

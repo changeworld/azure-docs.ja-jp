@@ -54,9 +54,9 @@
 
 これで、App ID と App Secret の値をモバイル サービスに渡すことにより、Facebook ログインを使用してアプリケーションで認証を使用する準備ができました。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [Azure モバイル サービス]: http://azure.microsoft.com/ja-jp/services/mobile-services/
   [認証の使用]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-ios-get-started-users/

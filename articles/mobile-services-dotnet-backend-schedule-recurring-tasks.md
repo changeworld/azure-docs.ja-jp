@@ -271,9 +271,9 @@
 
 これで、スケジュールされた新しいジョブがモバイル サービスに作成されました。このジョブは、無効化または変更するまで、スケジュールに従って実行されます。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [Twitter アクセスを登録して資格情報を保存する]: #get-oauth-credentials
   [LINQ to Twitter ライブラリをダウンロードしてインストールする]: #install-linq2twitter
@@ -282,7 +282,6 @@
   [スケジュールされたジョブをローカルでテストする]: #run-job-locally
   [サービスを発行してジョブを登録する]: #register-job
   [LINQ to Twitter の CodePlex プロジェクトに関するページ]: http://linqtotwitter.codeplex.com/
-  [mobile-services-register-twitter-access]: ../includes/mobile-services-register-twitter-access.md
   [0]: ./media/mobile-services-dotnet-backend-schedule-recurring-tasks/add-linq2twitter-nuget-package.png
   [1]: ./media/mobile-services-dotnet-backend-schedule-recurring-tasks/add-component-model-reference.png
   [Code First Migrations を使用してデータ モデルを更新する方法に関するページ]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-use-code-first-migrations

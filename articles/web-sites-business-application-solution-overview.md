@@ -1,6 +1,6 @@
 <properties linkid="websites-business-application" urlDisplayName="Create a Line-of-Business Application on Azure Websites" pageTitle="Create a Line-of-Business Application on Azure Websites" metaKeywords="Web Sites" description="This guide provides a technical overview of how to use Azure Websites to create intranet, line-of-business applications. This includes authentication strategies, service bus relay, and monitoring." umbracoNaviHide="0" disqusComments="1" editor="mollybos" manager="paulettm" title="Create a Line-of-Business Application on Azure Websites" authors="jroth" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jroth"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jroth" />
 
 # Azure Websites での基幹業務アプリケーションの作成
 
@@ -209,14 +209,3 @@ Azure を使用すれば、安全なイントラネット アプリケーショ�
   [BusinessApplicationsDiagRetention]: ./media/web-sites-business-application-solution-overview/BusinessApplications_Diag_Retention.png
   [方法: Web サイトの診断の構成とログのダウンロード]: /ja-jp/manage/services/web-sites/how-to-monitor-websites/#howtoconfigdiagnostics
   [Visual Studio での Azure の Web サイトのトラブルシューティング]: /ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/
-  [Azure Websites、クラウド サービス、仮想マシン: いつ、どれを使用するか]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/choose-web-app-service
-  [ASP.NET Web アプリケーションを Azure Website にデプロイする]: http://www.windowsazure.com/ja-jp/develop/net/tutorials/get-started/
-  [安全な ASP.NET MVC アプリケーションを Azure にデプロイする]: http://www.windowsazure.com/ja-jp/develop/net/tutorials/web-site-with-sql-database/
-  [Azure ID オプションについて]: http://www.windowsazure.com/ja-jp/manage/windows/fundamentals/identity/
-  [2]: http://azure.microsoft.com/ja-jp/documentation/services/active-directory/?fb=ja-jp
-  [3]: http://technet.microsoft.com/ja-jp/library/jj573650.aspx
-  [Service Bus Relay Service の使用方法]: http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/service-bus-relay/
-  [Web サイトの監視方法]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-monitor-websites/
-  [方法: Azure でのアラート通知の受信とアラート ルールの管理]: http://msdn.microsoft.com/library/windowsazure/dn306638.aspx
-  [4]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-monitor-websites/#howtoconfigdiagnostics
-  [Visual Studio での Azure Websites のトラブルシューティング]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/?fb=ja-jp

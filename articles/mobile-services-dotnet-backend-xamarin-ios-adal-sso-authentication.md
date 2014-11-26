@@ -134,8 +134,5 @@
   [Xamarin Studio]: http://xamarin.com/download
   [データの使用]: /ja-jp/documentation/articles/partner-xamarin-mobile-services-ios-get-started-data/
   [iOS 用 Active Directory 認証ライブラリに対する Xamarin バインド]: https://github.com/AzureADSamples/NativeClient-Xamarin-iOS
-  [mobile-services-dotnet-adal-register-service]: ../includes/mobile-services-dotnet-adal-register-service.md
-  [mobile-services-dotnet-adal-register-client]: ../includes/mobile-services-dotnet-adal-register-client.md
-  [mobile-services-restrict-permissions-dotnet-backend]: ../includes/mobile-services-restrict-permissions-dotnet-backend.md
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   [0]: ./media/mobile-services-dotnet-backend-xamarin-ios-adal-sso-authentication/mobile-services-app-run.png

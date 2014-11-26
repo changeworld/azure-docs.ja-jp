@@ -39,5 +39,5 @@ Hive を HDInsight (Hadoop) と共に使用してセンサー データを分析
 
   [A diagram of the solution architecture]: ./media/hdinsight-use-hive-sensor-data-analysis/hvac-architecture.png
   [HDInsight での Hadoop クラスターのプロビジョニング]: /ja-jp/documentation/articles/hdinsight-provision-clusters/
-  [Power View]: https://support.office.com/en-US/Article/Power-View-Explore-visualize-and-present-your-data-98268d31-97e2-42aa-a52b-a68cf460472e?ui=en-US&rs=en-US&ad=US
+  [Power View]: https://support.office.com/ja-jp/Article/Power-View-Explore-visualize-and-present-your-data-98268d31-97e2-42aa-a52b-a68cf460472e?ui=ja-jp&rs=ja-jp&ad=US
   [Microsoft Hive ODBC ドライバー]: http://www.microsoft.com/ja-jp/download/details.aspx?id=40886

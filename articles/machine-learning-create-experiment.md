@@ -1,6 +1,6 @@
 <properties title="Create a simple experiment in Azure Machine Learning Studio" pageTitle="Create a simple experiment in Machine Learning Studio | Azure" description="How to create an experiment to train and test a simple model in Azure Machine Learning Studio" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" videoId="" scriptId="" />
 
-<tags ms.service="machine-learning" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="garye"></tags>
+<tags ms.service="machine-learning" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="garye" />
 
 # Azure Machine Learning Studio での簡単な実験の作成
 
@@ -14,15 +14,15 @@ ML Studio で実験を構築する以下の 5 つの基本的な手順に従う�
 
 -   モデルの作成
 
-    -   [手順 1.データを取得する][]
-    -   [手順 2.データを前処理する][]
-    -   [手順 3.特徴を定義する][]
+    -   [手順 1.データを取得する][手順 1.データを取得する]
+    -   [手順 2.データを前処理する][手順 2.データを前処理する]
+    -   [手順 3.特徴を定義する][手順 3.特徴を定義する]
 -   モデルのトレーニング
 
-    -   [手順 4.学習アルゴリズムを選択して、適用する][]
+    -   [手順 4.学習アルゴリズムを選択して、適用する][手順 4.学習アルゴリズムを選択して、適用する]
 -   モデルへのスコア付けとテスト
 
-    -   [手順 5.新しいデータについて予測する][]
+    -   [手順 5.新しいデータについて予測する][手順 5.新しいデータについて予測する]
 
 この例では、サンプルの自動車データを使用して、回帰モデルを作成する方法を説明します。目標は、製造仕様と技術仕様などのさまざまな変数を使用して、自動車の価格を予測することです。
 
@@ -34,15 +34,15 @@ ML Studio には、多数のサンプル データセットが含まれており
 
 2.  実験キャンバスの左側には、データセットとモジュールのパレットがあります。このパレットの上部にある検索ボックスに「自動車」と入力し、**"自動車価格データ (未加工)"** というラベルが付いたデータセットを検索します。
 
-    ![Palette search][]
+    ![Palette search][Palette search]
 
 3.  実験キャンバスにデータセットをドラッグします。
 
-    ![Dataset][]
+    ![Dataset][Dataset]
 
 このデータの外観を確認するには、自動車データセットの下部にある出力ポートをダブルクリックし、**[視覚化]** を選択します。データセットの変数が列として表示され、自動車の各インスタンスが行として表示されます。最も右側の列 "価格" (列 26) が、予想の対象となる変数です。
 
-![Dataset visualization][]
+![Dataset visualization][Dataset visualization]
 
 右上隅の "**x**" をクリックして、視覚化ウィンドウを閉じます。
 
@@ -62,23 +62,23 @@ ML Studio には、多数のサンプル データセットが含まれており
     -   次の行で、**[除外]** と **[列名]** を選択し、テキスト ボックスの内側をクリックします。列の一覧が表示されます。"正規化された損失" を選択すると、その列がテキスト ボックスに追加されます。
     -   チェック マーク **[OK]** ボタンをクリックして、列セレクターを閉じます。
 
-    ![Select columns][]
+    ![Select columns][Select columns]
 
     **"プロジェクト列"** のプロパティ ウィンドウに、"正規化された損失" 以外のすべての列がデータセットからフィルターされることが示されます。
 
-    ![Project Columns properties][]
+    ![Project Columns properties][Project Columns properties]
 
     > **ヒント** - モジュールをダブルクリックして、テキストを入力すると、モジュールにコメントを追加できます。これで、実験でモジュールがどのような処理をするのかがひとめでわかります。この例では、**"プロジェクト列"** モジュールをダブルクリックして、「正規化された損失を除外する」というコメントを入力します。
 
 3.  **"不足値スクラブ"** モジュールを実験キャンバスにドラッグして、**"プロジェクト列"** モジュールに接続します。プロパティ ウィンドウで、**[見つからない値に対する処理]** の下にある **[行全体を削除]** を選択し、値が見つからない列を削除してデータを整理します。モジュールをダブルクリックして、「値が見つからない行を削除する」というコメントを入力します。
 
-    ![Missing Values Scrubber properties][]
+    ![Missing Values Scrubber properties][Missing Values Scrubber properties]
 
 4.  実験キャンバスの下にある **[実行]** をクリックして、実験を実行します。
 
 実験が終了したら、すべてのモジュールに緑色のチェック マークが付けられ、正常に完了したことがわかります。右上隅にも "実行が完了しました" というステータスが表示されます。
 
-![First experiment run][]
+![First experiment run][First experiment run]
 
 この時点までに、データを整理する実験はすべて終了しました。整理したデータセットを表示するには、**"不足値スクラブ"** モジュールの出力ポートをダブルクリックして、**[視覚化]** を選択します。"正規化された損失" 列が、もう含まれていないことと、見つからない値がなくなったことが確認できます。
 
@@ -124,7 +124,7 @@ ML Studio には、多数のサンプル データセットが含まれており
 
 4.  **"モデルのトレーニング"** モジュールを見つけて、実験にドラッグします。**[列セレクターの起動]** をクリックし、*"価格"* 列を選択します。これが、作成しているモデルで予測する値です。
 
-    ![Select "price" column][]
+    ![Select "price" column][Select "price" column]
 
 5.  左側の入力ポートを **"線形回帰"** モジュールの出力と接続し、右側の入力ポートを **"分割"** モジュールのトレーニング データの出力 (左側のポート) と接続します。
 
@@ -132,7 +132,7 @@ ML Studio には、多数のサンプル データセットが含まれており
 
 結果として、トレーニングされた回帰モデルが作成され、新しいサンプルにスコアを付けて予測するのに使用できます。
 
-![Applying the learning algorithm][]
+![Applying the learning algorithm][Applying the learning algorithm]
 
 ### 手順 5.新しいデータについて予測する
 
@@ -140,7 +140,7 @@ ML Studio には、多数のサンプル データセットが含まれており
 
 1.  **"モデルのスコア付け"** モジュールを見つけて、実験キャンバスにドラッグします。左側の入力ポートを **"モデルのトレーニング"** モジュールの出力に接続し、右側の入力ポートを **"分割"** モジュールのテスト データの出力 (右側のポート) に接続します。
 
-    ![Score Model module][]
+    ![Score Model module][Score Model module]
 
 2.  実験を実行して、**"モデルのスコア付け"** モジュールの出力を表示します (出力ポートをダブルクリックして、**[視覚化]** を選択します)。出力に、予測された価格の値と、テスト データから既知の値が表示されます。
 
@@ -156,11 +156,11 @@ ML Studio には、多数のサンプル データセットが含まれており
 
     各誤差の統計値は、小さいほど優れています。つまり値が小さくなるほど、予測が実際の値に近くなることを意味します。**決定係数**では、値が 1 (1.0) に近づくほど、予測の精度が高くなります。
 
-    ![Evaluation results][]
+    ![Evaluation results][Evaluation results]
 
 最終的な実験の表示は次のようになります。
 
-![Complete experiment][]
+![Complete experiment][Complete experiment]
 
 ### 次の手順
 
@@ -170,7 +170,7 @@ ML Studio には、多数のサンプル データセットが含まれており
 
 作成したモデルが期待どおりであれば、Web サービスとして公開し、新しいデータを使用した自動車価格の予測に使用できます。詳細については、ML Studio のヘルプ トピック「**Publishing Experiments (実験の公開)**」を参照してください。
 
-予測モデルの作成、トレーニング、スコア付け、および公開の広範囲にわたる詳しい手順については、「[チュートリアル: Azure Machine Learning を使用した予測ソリューションの開発][]」を参照してください。
+予測モデルの作成、トレーニング、スコア付け、および公開の広範囲にわたる詳しい手順については、「[チュートリアル: Azure Machine Learning を使用した予測ソリューションの開発][チュートリアル: Azure Machine Learning を使用した予測ソリューションの開発]」を参照してください。
 
 <!-- Images -->
 

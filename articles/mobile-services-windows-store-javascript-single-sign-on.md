@@ -147,8 +147,6 @@
   [アプリケーションに認証を追加する]: #add-authentication
   [Windows 向け Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started
-  [mobile-services-register-windows-store-app]: ../includes/mobile-services-register-windows-store-app.md
-  [mobile-services-restrict-permissions-javascript-backend]: ../includes/mobile-services-restrict-permissions-javascript-backend.md
   [1]: /ja-jp/documentation/articles/mobile-services-windows-store-get-started
   [0]: ./media/mobile-services-windows-store-javascript-single-sign-on/mobile-add-reference-live-js.png
   [2]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-users/#tokens

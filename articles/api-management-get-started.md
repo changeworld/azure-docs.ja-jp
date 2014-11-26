@@ -1,6 +1,6 @@
 <properties pageTitle="Get started with Azure API Management" metaKeywords="" description="Learn how to create APIs, operations, and get started with API Management." metaCanonical="" services="" documentationCenter="API Management" title="Get started with Azure API Management" authors="sdanie" solutions="" manager="" editor="" />
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie"></tags>
+<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
 
 # Azure API Management の使用
 
@@ -8,32 +8,32 @@
 
 ## このトピックの内容
 
--   [API Management インスタンスの作成][]
--   [API の作成][]
--   [操作の追加][]
--   [成果物に新しい API を追加する][]
--   [API を含む成果物のサブスクライブ][]
--   [開発者ポータルから操作を呼び出す][]
--   [分析結果の表示][]
--   [次のステップ][]
+-   [API Management インスタンスの作成][API Management インスタンスの作成]
+-   [API の作成][API の作成]
+-   [操作の追加][操作の追加]
+-   [成果物に新しい API を追加する][成果物に新しい API を追加する]
+-   [API を含む成果物のサブスクライブ][API を含む成果物のサブスクライブ]
+-   [開発者ポータルから操作を呼び出す][開発者ポータルから操作を呼び出す]
+-   [分析結果の表示][分析結果の表示]
+-   [次のステップ][次のステップ]
 
 ## <a name="create-service-instance"> </a>API Management インスタンスの作成
 
-> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト][]を参照してください。
+> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料評価版サイト][Azure の無料評価版サイト]を参照してください。
 
-API Management を使用するにあたって最初に行うことは、サービス インスタンスの作成です。[管理ポータル][]にログインし、**[新規]**、**[アプリ サービス]**、**[API Management]**、**[作成]** をクリックします。
+API Management を使用するにあたって最初に行うことは、サービス インスタンスの作成です。[管理ポータル][管理ポータル]にログインし、**[新規]**、**[アプリ サービス]**、**[API Management]**、**[作成]** をクリックします。
 
-![API Management new instance][]
+![API Management new instance][API Management new instance]
 
 **[URL]** に、サービス URL に使用する一意のサブドメイン名を指定します。
 
 サービス インスタンスの **[料金レベル]**、**[サブスクリプション]**、**[リージョン]** を選択します。このチュートリアルは、いずれの料金レベルでもかまいません。それらを選択したら、次に進むボタンをクリックします。
 
-![New API Management service][]
+![New API Management service][New API Management service]
 
 **[会社名]** に「**Contoso Ltd.**」と入力し、管理者の電子メール フィールドに電子メール アドレスを入力します。
 
-> API Management システムからの通知には、この電子メール アドレスが使用されます。詳細については、「[通知の構成][]」を参照してください。
+> API Management システムからの通知には、この電子メール アドレスが使用されます。詳細については、「[通知の構成][通知の構成]」を参照してください。
 
 チェック ボックスをクリックすると、サービス インスタンスが作成されます。
 
@@ -53,13 +53,13 @@ API は、クライアント アプリケーションから呼び出すことの
 
 API の作成と構成は、Azure の管理ポータルから API Management コンソールにアクセスして行います。API Management コンソールには、API Management サービスの Azure ポータルの **[管理コンソール]** をクリックしてアクセスします。
 
-![New API Management console][]
+![New API Management console][New API Management console]
 
 **My Echo API** を作成するには、左側の **[API Management]** メニューで **[API]** をクリックし、**[API の追加]** をクリックします。
 
-![Create API][]
+![Create API][Create API]
 
-![Add new API][]
+![Add new API][Add new API]
 
 新しい API を構成するには、次の 3 つのフィールドを使用します。
 
@@ -69,11 +69,11 @@ API の作成と構成は、Azure の管理ポータルから API Management コ
 
 **[保存]** をクリックすると API が作成されます。新しい API が作成されると、その API の概要ページが管理ポータルに表示されます。
 
-![API summary][]
+![API summary][API summary]
 
 API セクションには 4 つのタブがあります。**[概要]** タブには、API に関する基本的なメトリックと情報が表示されます。**[設定]** タブは、バックエンド サービスの認証資格情報など、API の構成を表示したり編集したりするときに使用します。**[操作]** タブは、API の操作を管理するときに使用します (この後の手順で使用します)。**[問題]** タブは、API を使用する開発者によって報告された問題を確認するときに使用します。
 
-> サンプルの Echo API に認証は使用されていません。認証の構成の詳細については、「[Configure API settings (API 設定の構成)][]」を参照してください。
+> サンプルの Echo API に認証は使用されていません。認証の構成の詳細については、「[Configure API settings (API 設定の構成)][Configure API settings (API 設定の構成)]」を参照してください。
 
 API を作成して必要な設定を行ったら、API に操作を追加します。操作の定義は、受け取った要求の検証とドキュメントの自動生成に使用されます。
 
@@ -81,11 +81,11 @@ API を作成して必要な設定を行ったら、API に操作を追加しま
 
 **[操作]** をクリックして、API の [操作] ウィンドウを表示します。まだ操作を追加していないため、ここには何も表示されません。
 
-![Operations][]
+![Operations][Operations]
 
 新しい操作を追加するには、**[操作の追加]** をクリックします。**[新しい操作]** ウィンドウが表示され、**[署名]** タブが既定で選択されます。
 
-![Operation signature][]
+![Operation signature][Operation signature]
 
 この例では、エコー サービスに GET 操作を指定します。**[署名]** タブのフィールドに次の値を入力します。
 
@@ -114,13 +114,13 @@ API を作成して必要な設定を行ったら、API に操作を追加しま
 
 応答セクションの **[追加]** をクリックし、テキスト ボックスに「**200**」と入力してドロップダウン リストの項目を絞り込み、**[200 OK]** を選択します。
 
-![Add response][]
+![Add response][Add response]
 
 **[200 OK]** を選択すると、新しい応答コードが操作に追加され、応答ウィンドウが表示されます。**[説明]** ボックスに「**Returned in all cases.**」と入力します。
 
 ![Add response][3]
 
-> さまざまな表現形式の応答を構成するには、**[表現の追加]** を使用します。詳細については、「[Responses (応答)][]」を参照してください。
+> さまざまな表現形式の応答を構成するには、**[表現の追加]** を使用します。詳細については、「[Responses (応答)][Responses (応答)]」を参照してください。
 
 **[保存]** をクリックして、新しく構成した操作を API に追加します。
 
@@ -130,7 +130,7 @@ API 呼び出しを行うにあたって開発者はまず、成果物をサブ�
 
 この API インスタンスで利用できる成果物を表示したり構成したりするには、左側の **[API Management]** メニューにある **[成果物]** をクリックします。
 
-![Products][]
+![Products][Products]
 
 すべての API Management インスタンスは、2 つのサンプル成果物を既定で備えています。
 
@@ -139,7 +139,7 @@ API 呼び出しを行うにあたって開発者はまず、成果物をサブ�
 
 このチュートリアルでは、**スターター**成果物を使用します。**[スターター]** をクリックすると、スターター成果物に関連付けられている API を含め、その設定が表示されます。
 
-![Add API][]
+![Add API][Add API]
 
 **[成果物への API の追加]** をクリックします。
 
@@ -147,11 +147,11 @@ API 呼び出しを行うにあたって開発者はまず、成果物をサブ�
 
 **[My Echo API]** のチェック ボックスをオンにし、**[保存]** をクリックします。
 
-![API added][]
+![API added][API added]
 
 以上で成果物への **My Echo API** の関連付けは終了です。開発者は成果物をサブスクライブして API を使い始めることができます。
 
-> このチュートリアル ステップでは、事前構成され使用する準備が整っているスターター成果物を使用します。新しい成果物の作成と発行に関する具体的な手順については、「[How create and publish a product (成果物を作成して発行する方法)][]」を参照してください。
+> このチュートリアル ステップでは、事前構成され使用する準備が整っているスターター成果物を使用します。新しい成果物の作成と発行に関する具体的な手順については、「[How create and publish a product (成果物を作成して発行する方法)][How create and publish a product (成果物を作成して発行する方法)]」を参照してください。
 
 ## <a name="subscribe"> </a>API を含む成果物のサブスクライブ
 
@@ -159,13 +159,13 @@ API 呼び出しを行うにあたって開発者はまず、成果物をサブ�
 
 このサービス インスタンスで開発者を表示したり構成したりするには、左側の **[API Management]** メニューにある **[開発者]** をクリックします。
 
-![Developers][]
+![Developers][Developers]
 
 サブスクリプションをはじめとするユーザーの設定を行うには、開発者の名前をクリックします。
 
-> この例では、Clayton Gragg という名前の開発者にサブスクリプションを追加します。開発者アカウントが未作成である場合は、管理者アカウントでサブスクライブしてもかまいません。開発者アカウントの作成については、「[How to manage developer accounts in Azure API Management (Azure API Management で開発者アカウントを管理する方法)][]」を参照してください。
+> この例では、Clayton Gragg という名前の開発者にサブスクリプションを追加します。開発者アカウントが未作成である場合は、管理者アカウントでサブスクライブしてもかまいません。開発者アカウントの作成については、「[How to manage developer accounts in Azure API Management (Azure API Management で開発者アカウントを管理する方法)][How to manage developer accounts in Azure API Management (Azure API Management で開発者アカウントを管理する方法)]」を参照してください。
 
-![Add subscription][]
+![Add subscription][Add subscription]
 
 **[サブスクリプションの追加]** をクリックします。
 
@@ -173,7 +173,7 @@ API 呼び出しを行うにあたって開発者はまず、成果物をサブ�
 
 **[スターター]** のチェック ボックスをオンにし、**[サブスクライブ]** をクリックします。
 
-![Subscription added][]
+![Subscription added][Subscription added]
 
 開発者アカウントのサブスクライブ後、成果物の API を呼び出すことができます。
 
@@ -181,7 +181,7 @@ API 呼び出しを行うにあたって開発者はまず、成果物をサブ�
 
 開発者ポータルには、API の操作を見てテストするための便利が環境が用意されており、操作を直接呼び出すことができます。このチュートリアル ステップでは、**My Echo API** に追加した Get メソッドを呼び出します。管理ポータルの右上にあるメニューから **[開発者ポータル]** をクリックします。
 
-![Developer portal][]
+![Developer portal][Developer portal]
 
 上部のメニューで **[API]** をクリックし、**[My Echo API]** をクリックして、利用できる操作を表示します。
 
@@ -191,39 +191,39 @@ API 呼び出しを行うにあたって開発者はまず、成果物をサブ�
 
 **[GET Resource]** をクリックし、**[コンソールを開く]** をクリックします。
 
-![Operation console][]
+![Operation console][Operation console]
 
 パラメーターの値を入力し、開発者キーを指定して、**[HTTP Get]** をクリックします。
 
-![HTTP Get][]
+![HTTP Get][HTTP Get]
 
 操作を呼び出すと、バックエンド サービスの**要求された URL**、**応答のステータス**、**応答ヘッダー**、**応答内容**が開発者ポータルに表示されます。
 
-![Response][]
+![Response][Response]
 
 ## <a name="view-analytics"> </a>分析結果の表示
 
 **My Echo API** の分析結果を表示するには、開発者ポータルの右上にあるユーザー メニューから **[管理]** を選択して管理ポータルに戻ります。
 
-![Manage][]
+![Manage][Manage]
 
 管理ポータルの既定のビューはダッシュボードで、API Management インスタンスの概要が表示されます。
 
-![Dashboard][]
+![Dashboard][Dashboard]
 
 My Echo API のグラフの上にマウス ポインターを合わせると、特定の期間における API の使用量について具体的なメトリックが表示されます。
 
 > グラフに線が表示されない場合は、開発者ポータルに戻って何か API を呼び出し、少し経ってから、再度ダッシュボードに切り替えてください。
 
-![Analytics][]
+![Analytics][Analytics]
 
 **[詳細の表示]** をクリックすると、表示されたメトリックの拡大版を含む、API の概要ページが表示されます。
 
-![Summary][]
+![Summary][Summary]
 
 詳細なメトリックとレポートについては、左側の **[API Management]** メニューの **[分析]** をクリックします。
 
-![Overview][]
+![Overview][Overview]
 
 **[分析]** セクションには、次の 4 つのタブがあります。
 
@@ -234,7 +234,7 @@ My Echo API のグラフの上にマウス ポインターを合わせると、�
 
 ## <a name="next-steps"> </a>次のステップ
 
--   「[Azure API Management の詳細な構成について][]」チュートリアルにあるその他のトピックもチェックしてください。
+-   「[Azure API Management の詳細な構成について][Azure API Management の詳細な構成について]」チュートリアルにあるその他のトピックもチェックしてください。
 
   [API Management インスタンスの作成]: #create-service-instance
   [API の作成]: #create-api
@@ -244,7 +244,7 @@ My Echo API のグラフの上にマウス ポインターを合わせると、�
   [開発者ポータルから操作を呼び出す]: #call-operation
   [分析結果の表示]: #view-analytics
   [次のステップ]: #next-steps
-  [Azure の無料評価版サイト]: http://azure.microsoft.com/en-us/pricing/free-trial/?WT.mc_id=api_management_hero_a
+  [Azure の無料評価版サイト]: http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=api_management_hero_a
   [管理ポータル]: https://manage.windowsazure.com/
   [API Management new instance]: ./media/api-management-get-started/api-management-create-instance-menu.png
   [New API Management service]: ./media/api-management-get-started/api-management-create-instance-step1.png

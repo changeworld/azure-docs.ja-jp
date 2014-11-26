@@ -301,6 +301,5 @@
   [アプリケーションを実行して通知を生成する]: #test-app
   [通知ハブの使用]: /ja-jp/documentation/articles/notification-hubs-android-get-started/
   [0]: ./media/notification-hubs-aspnet-backend-android-breaking-news/android-breaking-news1.PNG
-  [notification-hubs-back-end]: ../includes/notification-hubs-back-end.md
   [通知ハブを使用したローカライズ ニュース速報のブロードキャスト]: /ja-jp/manage/services/notification-hubs/breaking-news-localized-dotnet/
   [通知ハブによるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users

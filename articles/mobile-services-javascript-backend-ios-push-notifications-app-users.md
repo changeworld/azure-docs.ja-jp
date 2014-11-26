@@ -75,6 +75,3 @@
   [アプリケーションをテストする]: #test
   [このトピックの Windows ストア版]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-push-notifications-app-users
   [認証の使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started-users/
-  [mobile-services-javascript-backend-push-notifications-app-users]: ../includes/mobile-services-javascript-backend-push-notifications-app-users.md
-  [mobile-services-ios-push-notifications-app-users-login]: ../includes/mobile-services-ios-push-notifications-app-users-login.md
-  [mobile-services-ios-push-notifications-app-users-test-app]: ../includes/mobile-services-ios-push-notifications-app-users-test-app.md

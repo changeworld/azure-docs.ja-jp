@@ -335,5 +335,4 @@ ServiceBus ではメッセージのロックが自動的に解除され、
   [方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する]: #bkmk_HowToHandleAppCrash
   [方法: トピックとサブスクリプションを削除する]: #bkmk_HowToDeleteTopics
   [次のステップ]: #bkmk_NextSteps
-  [howto-service-bus-topics]: ../includes/howto-service-bus-topics.md
   [サービス バス キュー、トピック、およびサブスクリプション]: http://msdn.microsoft.com/library/windowsazure/hh367516.aspx

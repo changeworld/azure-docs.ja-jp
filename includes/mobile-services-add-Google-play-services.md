@@ -2,7 +2,7 @@
 
 2.  下方向へスクロールして **[Extras]** を展開し、下に示すように **[Google Play Services]** をオンにします。**[Install Packages]** をクリックします。SDK のパスはこの後の手順で使用するので、メモしておいてください。Eclipse を再起動します。
 
-    ![][]
+    ![][0]
 
 3.  Google Play Services SDK をプロジェクトにインストールします。Eclipse で、**[File]** をクリックし、**[Import]** をクリックします。**[Android]** を選択し、**[Existing Android Code into Workspace]** を選択します。**[Next]** をクリックします。**[Browse]** をクリックし、Android SDK パス (通常は `adt-bundle-windows-x86_64` フォルダー) に移動します。`\extras\google\google_play_services\libproject` サブフォルダーに移動し、google-play-services-lib フォルダーを選択します。**[OK]** をクリックします。**[Copy projects into workspace]** チェック ボックスをオンにし、**[Finish]** をクリックします。
 
@@ -22,6 +22,6 @@
 
 9.  **[Apply]** をクリックし、**[OK]** をクリックします。
 
-  []: ./media/notification-hubs-android-get-started/notification-hub-create-android-app4.png
+  [0]: ./media/notification-hubs-android-get-started/notification-hub-create-android-app4.png
   [1]: ./media/mobile-services-android-get-started-push/mobile-eclipse-import-Play-library.png
   [2]: ./media/mobile-services-android-get-started-push/mobile-google-set-project-properties.png

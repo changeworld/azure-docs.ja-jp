@@ -1,6 +1,6 @@
-<properties urlDisplayName="Web App with Storage" pageTitle="テーブル ストレージを使用した Web アプリケーション (Node.js) | Microsoft Azure" metaKeywords="Azure Node.js hello world tutorial, Azure Node.js hello world, Azure Node.js Getting Started tutorial, Azure Node.js tutorial, Azure Node.js Express tutorial" description="Express を使用する Web アプリケーションのチュートリアルを基に、Azure Storage サービスと Azure モジュールを追加するチュートリアル。" metaCanonical="" services="cloud-services,storage" documentationCenter="nodejs" title="ストレージを使用する Node.js Web アプリケーション" authors="larryfr" solutions="" manager="wpickett" editor="" />
+<properties linkid="dev-nodejs-basic-web-app-with-storage" urlDisplayName="Web App with Storage" pageTitle="Web app with table storage (Node.js) | Microsoft Azure" metaKeywords="Azure Node.js hello world tutorial, Azure Node.js hello world, Azure Node.js Getting Started tutorial, Azure Node.js tutorial, Azure Node.js Express tutorial" description="A tutorial that builds on the Web App with Express tutorial by adding Azure Storage services and the Azure module." metaCanonical="" services="cloud-services,storage" documentationCenter="Node.js" title="Node.js Web Application using Storage" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr" />
 
 # ストレージを使用する Node.js Web アプリケーション
 
@@ -39,10 +39,10 @@ Azure ストレージにアクセスするには、ストレージ資格情報�
 Azure SDK によって読み取られます。
 
 <div class="dev-callout">
-
-**注**
-ストレージの資格情報は、アプリケーションを Azure に展開するときにのみ使用されます。エミュレーターで実行している場合、アプリケーションは ストレージ エミュレーターを使用します。
-
+<strong>注</strong>
+<p>ストレージの資格情報は、アプリケーションを 
+Azure に展開するときにのみ使用されます。エミュレーターで実行している場合、アプリケーションは
+ストレージ エミュレーターを使用します。</p>
 </div>
 
 ストレージ アカウントの資格情報を取得して web.config 設定に追加するには、
@@ -59,11 +59,9 @@ Azure SDK によって読み取られます。
     これにより、ホステッド サービスに関連付けられたストレージ アカウントとアカウント キーのリストが取得されます。
 
     <div class="dev-callout">
-
-    **注**
-    Azure SDK では、サービスを展開するときにストレージ アカウントが作成されるので、以前のガイドでアプリケーションを展開したときから、ストレージ アカウントは既に存在しています。
-
-    </div>
+<strong>注</strong>
+<p>Azure SDK では、サービスを展開するときにストレージ アカウントが作成されるので、以前のガイドでアプリケーションを展開したときから、ストレージ アカウントは既に存在しています。</p>
+</div>
 
 4.  **ServiceDefinition.csdef** ファイルを開きます。このファイルには、アプリケーションを Azure にデプロイするときに使用される環境設定が含まれます。
 

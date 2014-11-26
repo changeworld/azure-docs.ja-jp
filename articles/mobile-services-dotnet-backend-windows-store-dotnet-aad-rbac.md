@@ -283,7 +283,4 @@
   [カスタム承認属性を作成する]: #create-custom-authorization-attribute
   [データベース操作にロール ベースのアクセス確認を追加する]: #add-access-checking
   [クライアントのアクセスをテストする]: #test-client
-  [mobile-services-aad-rbac-create-sales-group]: ../includes/mobile-services-aad-rbac-create-sales-group.md
-  [mobile-services-generate-aad-app-registration-access-key]: ../includes/mobile-services-generate-aad-app-registration-access-key.md
   [0]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-aad-rbac/add-authorize-aad-role-class.png
-  [mobile-services-aad-rbac-test-app]: ../includes/mobile-services-aad-rbac-test-app.md

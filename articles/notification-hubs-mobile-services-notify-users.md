@@ -233,12 +233,12 @@
 
 通知ハブの詳細については、「[Azure 通知ハブ]」を参照してください。
 
-<!-- Anchors. -->
+
 [通知に登録できるようにモバイル サービスを更新する]: #register-notification
 [ログインして登録を要求できるようにアプリケーションを更新する]: #update-app
 [通知を送信できるようにモバイル サービスを更新する]: #send-notifications
 
-<!-- Images. -->
+
 [0]: ./media/notification-hubs-mobile-services-notify-users/mobile-services-selection.png
 [1]: ./media/notification-hubs-mobile-services-notify-users/mobile-custom-api-create.png
 [2]: ./media/notification-hubs-mobile-services-notify-users/mobile-custom-api-create2.png
@@ -248,7 +248,7 @@
 [6]: ./media/notification-hubs-mobile-services-notify-users/notification-hub-select-hub-connection.png
 [7]: ./media/notification-hubs-mobile-services-notify-users/notification-hub-connection-strings.png
 
-<!-- URLs. -->
+
 [Get started Windows Store]: /ja-jp/manage/services/notification-hubs/getting-started-windows-dotnet
 [Get started iOS]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-ios
 [Get started Android]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-android

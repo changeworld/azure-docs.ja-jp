@@ -1,6 +1,6 @@
 <properties linkid="manage-services-integration-hybrid-connection" urlDisplayName="Hybrid Connections Overview - BizTalk Services" pageTitle="Hybrid Connections Overview | Azure" metaKeywords="BizTalk Services, BizTalk, websites, web sites, hybrid connections, Azure" description="Learn about hybrid connections, including Security." metaCanonical="" services="integration-services" documentationCenter="" title="Hybrid Connections Overview" authors="mandia" solutions="" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="mandia"></tags>
+<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="mandia" />
 
 # ハイブリッド接続の概要
 
@@ -94,7 +94,4 @@
   [Connect an Azure Website to an On-Premises Resource using Hybrid Connections (ハイブリッド接続を使用した Azure Web サイトの内部設置型リソースへの接続)]: http://go.microsoft.com/fwlink/p/?LinkId=397538
   [Connect to on-premises SQL Server from an Azure website using Hybrid Connections (ハイブリッド接続を使用した Azure Web サイトから内部設置型 SQL Server への接続)]: http://go.microsoft.com/fwlink/?LinkID=397979
   [Connect to an on-premises SQL Server from Azure mobile services using Hybrid Connections (ハイブリッド接続を使用した Azure モバイル サービスから内部設置型 SQL Server への接続)]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started
-  [Windows Azure での BizTalk サービス管理の REST API に関するページ]: http://msdn.microsoft.com/library/azure/dn232347.aspx
-  [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート]: http://go.microsoft.com/fwlink/p/?LinkID=302279
-  [BizTalk サービス: Azure 管理ポータルを使用したプロビジョニング]: http://go.microsoft.com/fwlink/p/?LinkID=302280
 

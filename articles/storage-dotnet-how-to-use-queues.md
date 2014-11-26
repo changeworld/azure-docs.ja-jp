@@ -1,11 +1,11 @@
-<properties urlDisplayName="Queue Service" pageTitle=".NET からキュー ストレージを使用する方法 | Microsoft Azure" metaKeywords="Get started Azure queue   Azure asynchronous processing   Azure queue   Azure queue storage   Azure queue .NET   Azure queue storage .NET   Azure queue C#   Azure queue storage C#" description="Microsoft Azure Queue ストレージを使用して、キューの作成と削除のほか、キュー メッセージの挿入、ピーク、取得、および削除を行う方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="storage" documentationCenter=".NET" title="Microsoft Azure キュー ストレージを使用する方法" authors="tamram" manager="adinah" />
+<properties linkid="dev-net-how-to-queue-service" urlDisplayName="Queue Service" pageTitle="How to use queue storage from .NET | Microsoft Azure" metaKeywords="Get started Azure queue   Azure asynchronous processing   Azure queue   Azure queue storage   Azure queue .NET   Azure queue storage .NET   Azure queue C#   Azure queue storage C#" description="Learn how to use Microsoft Azure Queue storage to create and delete queues and insert, peek, get, and delete queue messages." metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="storage" documentationCenter=".NET" title="How to use Microsoft Azure Queue Storage" authors="tamram" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
 # How to use Queue Storage from .NET (.NET からキュー ストレージを使用する方法)
 
 このガイドでは、Azure キュー ストレージ サービスを使用して一般的な
-シナリオを実行する方法について説明します。例は C\# のコードで記述され、
+シナリオを実行する方法について説明します。例は C# のコードで記述され、
 Azure .NET 用ストレージ クライアントを利用しています。キュー メッセージの**挿入**、
 **ピーク**、**取得**、および**削除**と、
 **キューの作成および削除**の各シナリオについて説明します。キューの詳細については、
@@ -56,7 +56,7 @@ NuGet を使用して `Microsoft.WindowsAzure.Storage.dll` アセンブリを取
 
 ### 名前空間宣言
 
-プログラムを使用して Azure ストレージにアクセスするすべての C\#
+プログラムを使用して Azure ストレージにアクセスするすべての C#
 ファイルの冒頭部分に、次の名前空間宣言を追加します。
 
     using Microsoft.WindowsAzure.Storage;
@@ -334,7 +334,6 @@ Microsoft.WindowsAzure.CloudConfigurationManager
   [.NET 用ストレージ クライアント ライブラリ リファレンス]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API リファレンス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179355
   [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
-  [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)]: /ja-jp/documentation/articles/websites-dotnet-webjobs-sdk-get-started/
   [テーブル ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/
   [BLOB ストレージ]: /ja-jp/documentation/articles/storage-dotnet-how-to-use-blobs/
   [SQL データベース]: /ja-jp/documentation/articles/sql-database-dotnet-how-to-use/

@@ -454,15 +454,12 @@ Android NDK をインストールする必要があります。[][]<http://devel
   [プッシュ通知を送信するようにスクリプトを更新する]: #update-scripts
   [データを挿入して通知を受け取る]: #test
   [モバイル サービスの使用]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started
-  [Enable Apple Push Notifications]: ../includes/enable-apple-push-notifications.md
   [accounts.google.com]: http://go.microsoft.com/fwlink/p/?LinkId=268302
-  [Enable GCM]: ../includes/mobile-services-enable-Google-cloud-messaging.md
   [0]: http://developer.android.com/sdk/ndk/index.html
   [0]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push/image0011.png
   [1]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push/image0031.png
   [2]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push/image0041.png
   [3]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push/image0061.png
-  [mobile-services-apns-configure-push]: ../includes/mobile-services-apns-configure-push.md
   [4]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push/image062.png
   [5]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push/image064.png
   [6]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push/image066.png

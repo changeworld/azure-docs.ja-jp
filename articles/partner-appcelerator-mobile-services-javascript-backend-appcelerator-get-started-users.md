@@ -101,5 +101,3 @@
   [テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
   [アプリケーションに認証を追加する]: #add-authentication
   [モバイル サービスの使用]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started
-  [mobile-services-register-authentication]: ../includes/mobile-services-register-authentication.md
-  [mobile-services-restrict-permissions-javascript-backend]: ../includes/mobile-services-restrict-permissions-javascript-backend.md

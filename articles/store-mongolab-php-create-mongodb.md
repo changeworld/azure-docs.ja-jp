@@ -4,4 +4,3 @@
 
 [WACOM.INCLUDE [create-mongolab-mongodb](../includes/create-mongolab-mongodb.md)]
 
-  [create-mongolab-mongodb]: ../includes/create-mongolab-mongodb.md

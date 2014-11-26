@@ -1,6 +1,6 @@
 <properties linkid="manage-services-biztalk-services-dashboard-monitor-scale-tabs" urlDisplayName="Dashboard, Monitor, Scale, Configure and Hybrid Connections tabs" pageTitle="Dashboard, Monitor, and Scale in BizTalk Services | Azure" metaKeywords="BizTalk Services, Azure, dashboard, monitor, scale, wabs, mabs" description="Learn about the controls on the Management Portal tabs for BizTalk Services: Dashboard, Monitor, and Scale." metaCanonical="" services="biztalk-services" documentationCenter="" title=" Monitor and Scale tabs" authors="mandia" solutions="" manager="dwrede" editor="cgronlun" />
 
-<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/10/2014" ms.author="mandia"></tags>
+<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/10/2014" ms.author="mandia" />
 
 # BizTalk サービス: ダッシュボード、監視、スケール、構成、および ハイブリッド接続タブ
 
@@ -354,12 +354,7 @@ Azure BizTalk サービスでハイブリッド接続を作成または管理す
   [GrayedMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_GrayedMetric.png
   [EnabledMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_EnabledMetric.png
 
-  [学習センター]: http://azure.microsoft.com/ja-jp/documentation/services/biztalk-services/
-  [BizTalk サービス ポータルにおける EDI メッセージングのコンポーネントの構成に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=303653
-  [ACS 名前空間の管理に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=285670
   [使用可能なメトリック]: #Metrics
-  [BizTalk サービスを作成する]: http://go.microsoft.com/fwlink/p/?LinkID=302280
-  [BizTalk サービス: サービスの状態のチャート]: http://go.microsoft.com/fwlink/p/?LinkID=329870
   [メトリックの追加を選択]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_AddMetrics.png
   [CPU 使用率メトリックが淡色表示されている]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_GrayedMetric.png
   [CPU 使用率メトリックが有効になっている状態]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_EnabledMetric.png
@@ -367,7 +362,6 @@ Azure BizTalk サービスでハイブリッド接続を作成または管理す
   [BizTalk サービス: バックアップと復元]: http://go.microsoft.com/fwlink/p/?LinkID=329873
   [ハイブリッド接続: Azure Web サイトから内部設置型リソースへの接続に関するページ]: http://go.microsoft.com/fwlink/p/?LinkId=397538
   [Azure Mobile Services とハイブリッド接続に関するページ]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started
-  [2]: http://go.microsoft.com/fwlink/p/?LinkID=397274
   [BizTalk サービス: 調整]: http://go.microsoft.com/fwlink/p/?LinkID=302282
   [BizTalk サービス: 発行者名および発行者キー]: http://go.microsoft.com/fwlink/p/?LinkID=303941
   [Azure BizTalk サービス SDK の使用開始に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=302335

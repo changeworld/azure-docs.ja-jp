@@ -1,6 +1,6 @@
-<properties title="Chef と Azure Virtual Machines について" pageTitle="Chef と Azure Virtual Machines について" description="Azure の VM での Chef のインストールと構成について説明します。" metaKeywords="" services="virtual machines" solutions="" documentationCenter="" authors="kathydav" manager="timlt" videoId="" scriptId="" />
+<properties title="About Chef and Azure Virtual Machines" pageTitle="About Chef and Azure Virtual Machines" description="Describes installing and configuring Chef on a VM in Azure" metaKeywords="" services="virtual machines" solutions="" documentationCenter="" authors="kathydav" videoId="" scriptId="" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="na" ms.topic="article" ms.date="07/29/2014" ms.author="kathydav" />
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="kathydav" />
 
 # Chef と Azure Virtual Machines について
 
@@ -24,11 +24,8 @@ Chef はクライアント サーバー システムです。Chef サーバー�
 
 <!--Link references-->
 
-  [Choose your installation (インストールの種類を選択してください)]: http://www.getchef.com/chef/choose-your-version/
-  [Microsoft Azure Portal (Microsoft Azure ポータル)]: http://docs.opscode.com/azure_portal.html
   [スクリプト]: https://gist.github.com/kaustubh-d/cea1aa75baebd3615609
   [knife-azure]: http://docs.getchef.com/plugin_knife_azure.html
-  [Chef and Microsoft Azure (Chef と Microsoft Azure)]: http://www.getchef.com/solutions/azure/
   [Windows Server が実行されている仮想マシンにログオンする方法]: ../virtual-machines-log-on-windows-server/
   [Linux を実行する仮想マシンにログオンする方法]: ../virtual-machines-linux-how-to-log-on
   [拡張機能の管理]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409

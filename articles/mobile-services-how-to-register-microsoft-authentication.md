@@ -36,9 +36,9 @@
 
 これで、クライアント ID とクライアント シークレットの値をモバイル サービスに渡すことにより、Microsoft アカウントを使用してアプリケーションで認証を使用する準備ができました。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [Windows ストア アプリケーション パッケージを Microsoft 認証に登録する]: /ja-jp/documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication
   [Live Connect デベロッパー センター]: http://go.microsoft.com/fwlink/p/?LinkId=262039

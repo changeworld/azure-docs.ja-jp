@@ -14,11 +14,11 @@
 
 5.  管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
 
-    ![][]
+    ![][0]
 
     これで、アプリケーションによってテーブルに挿入されたデータを参照できます。
 
     ![][1]
 
-  []: ./media/mobile-services-javascript-backend-run-app/mobile-data-tab.png
+  [0]: ./media/mobile-services-javascript-backend-run-app/mobile-data-tab.png
   [1]: ./media/mobile-services-javascript-backend-run-app/mobile-data-browse.png

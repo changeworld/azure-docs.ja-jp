@@ -395,8 +395,8 @@ Git でアプリケーションを発行するには、次の手順に従いま�
 
     先ほど作成したパスワードを入力するように求められます。
 
-3.  アプリケーション用のテーブルを作成するには、**[http://[your][http://[your] web site domain]/createtable.php** に移動します。
-4.  アプリケーションの使用を開始するには、**[http://[your][http://[your] web site domain]/index.php** に移動します。
+3.  アプリケーション用のテーブルを作成するには、**http://[your web site domain]/createtable.php** に移動します。
+4.  アプリケーションの使用を開始するには、**http://[your web site domain]/index.php** に移動します。
 
 アプリケーションを発行した後、アプリケーションへの変更を開始し、Git を使用してその変更を発行することもできます。
 
@@ -413,11 +413,10 @@ Git でアプリケーションを発行するには、次の手順に従いま�
 
     先ほど作成したパスワードを入力するように求められます。
 
-3.  変更内容を確認するには、**[http://[your][http://[your] web site domain]/index.php** に移動します。
+3.  変更内容を確認するには、**http://[your web site domain]/index.php** に移動します。
 
   [PHP]: http://www.php.net/manual/en/install.php
   [Azure の PHP Web サイト]: ./media/web-sites-php-storage/ws-storage-app.png
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [Git のインストール]: http://git-scm.com/book/en/Getting-Started-Installing-Git
   [composer.phar]: http://getcomposer.org/composer.phar
   []: http://msdn.microsoft.com/ja-jp/library/windowsazure/dd179438.aspx

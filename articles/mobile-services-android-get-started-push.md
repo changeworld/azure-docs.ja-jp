@@ -247,8 +247,8 @@
 
 この単純な例では、ユーザーは挿入したばかりのデータのプッシュ通知を受け取ります。GCM によって使用されるデバイス トークンは、要求のクライアントによってモバイル サービスに提供されます。次のチュートリアル、「[Push notifications to app users (アプリケーション ユーザーへのプッシュ通知)][Push notifications to app users (アプリケーション ユーザーへのプッシュ通知)]」では、デバイス トークンを格納するための個別の Devices テーブルを作成し、挿入が発生したときに、すべての格納されているチャネルにプッシュ通知を送信します。
 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+
 
   [Android]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android "Android"
   [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-android-get-started-push/
@@ -259,11 +259,9 @@
   [データを挿入して通知を受け取る]: #test
   [モバイル サービス Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-android
-  [Enable GCM]: ../includes/mobile-services-enable-Google-cloud-messaging.md
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   [0]: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
   [1]: ./media/mobile-services-android-get-started-push/mobile-push-tab-android.png
-  [Add Play Services]: ../includes/mobile-services-add-Google-play-services.md
   [2]: ./media/mobile-services-android-get-started-push/mobile-services-android-create-class.png
   [3]: ./media/mobile-services-android-get-started-push/mobile-portal-data-tables.png
   [4]: ./media/mobile-services-android-get-started-push/mobile-insert-script-push2.png

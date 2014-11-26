@@ -33,23 +33,26 @@
 
 [WACOM.INCLUDE [mobile-services-create-new-service-vs2013](../includes/mobile-services-create-new-service-vs2013.md)]
 
-1.  Solution Explorer で、**services\\mobileService\\scripts** サブフォルダーに移動し、service.js スクリプト ファイルを開き、次のような新しいグローバル変数があることを確認します。
+<ol start="8">
+<li><p>Solution Explorer で、<b>services\\mobileService\\scripts</b> サブフォルダーに移動し、service.js スクリプト ファイルを開き、次のような新しいグローバル変数があることを確認します。</p>
 
-        var todolistClient = new WindowsAzure.MobileServiceClient(
-                        "https://todolist.azure-mobile.net/",
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+		<pre><code>var todolistClient = new WindowsAzure.MobileServiceClient(
+                "https://todolist.azure-mobile.net/",
+		        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");</code></pre>
 
-    このコードは、グローバル変数を使用して、アプリケーションの新しいモバイル サービスへのアクセスを提供します。クライアントは、新しいモバイル サービスの URI とアプリケーション キーを提供することによって作成されます。このスクリプトへの参照は default.html ファイルに追加されているため、この変数は、このページからも参照されるすべてのスクリプト ファイルで使用できます。
+    <p>このコードは、グローバル変数を使用して、アプリケーションの新しいモバイル サービスへのアクセスを提供します。クライアントは、新しいモバイル サービスの URI とアプリケーション キーを提供することによって作成されます。このスクリプトへの参照は default.html ファイルに追加されているため、この変数は、このページからも参照されるすべてのスクリプト ファイルで使用できます。</p>
+</li>
 
-2.  default.html プロジェクト ファイルを開き、新しい service.js スクリプト ファイルへの参照を見つけ、参照されたパスが次のようになっていることを確認します。
+<li><p>default.html プロジェクト ファイルを開き、新しい service.js スクリプト ファイルへの参照を見つけ、参照されたパスが次のようになっていることを確認します。</p>
 
-        <script src="/services/mobileServices/scripts/todolist.js">
+<pre><code>&lt;script src="/services/mobileServices/scripts/todolist.js"&gt;</script></code></pre>
 
-    現在、Visual Studio では、誤ったフォルダー名がパスに生成されるバグがあります。
+    <p>現在、Visual Studio では、誤ったフォルダー名がパスに生成されるバグがあります。</p></li>
 
-3.  Windows Phone アプリ プロジェクトを右クリックし、**[追加]**、**[接続済みサービス...]** をクリックし、作成されたばかりのモバイル サービスを選択してから、**[OK]** をクリックします。
+<li><p>Windows Phone アプリ プロジェクトを右クリックし、<b>追加</b>、<b>接続済みサービス...</b> をクリックし、作成されたばかりのモバイル サービスを選択してから、<b>OK</b> をクリックします。</p></li>
 
-    これと同じ新しいコード ファイルが Windows Phone ストア アプリ プロジェクトに追加されます。default.html ファイルに追加された参照パスも必ず修正してください。
+    <p>これと同じ新しいコード ファイルが Windows Phone ストア アプリ プロジェクトに追加されます。default.html ファイルに追加された参照パスも必ず修正してください。</p></li>
+</ol>
 
 ## <a name="add-table"></a>新しいテーブルをモバイル サービスに追加する
 
@@ -67,12 +70,14 @@
 
 [WACOM.INCLUDE [mobile-services-windows-universal-test-app](../includes/mobile-services-windows-universal-test-app.md)]
 
-1.  [管理ポータル][管理ポータル]で、**[モバイル サービス]** をクリックし、対象のモバイル サービスをクリックします。
+<ol start="4">
+<li><p>[管理ポータル][管理ポータル]で、<b>モバイル サービス</b> をクリックし、対象のモバイル サービスをクリックします。</p></li>
 
-    <p>
-2.  **[データ]** タブをクリックし、**[参照]** をクリックします。
 
-    **TodoItem** テーブルに、モバイル サービスによって生成された ID 値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
+<li><p><b>データ</b> タブをクリックし、<b>参照</b> をクリックします。</p>
+
+    <p><b>TodoItem</b> テーブルに、モバイル サービスによって生成された ID 値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。</p></li>
+</ol>
 
 ![][0]
 
@@ -100,7 +105,6 @@
     HTML および JavaScript でモバイル サービスを使用する方法について説明します。
 
 
-  [mobile-services-selector-get-started-data]: ../includes/mobile-services-selector-get-started-data.md
   [Windows と Windows Phone を対象とするユニバーサル Windows アプリの構築]: http://msdn.microsoft.com/ja-jp/library/windows/apps/xaml/dn609832.aspx
   [Windows Phone 向けデータの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data
   [Windows ストア アプリ プロジェクトのダウンロード]: #download-app
@@ -110,12 +114,7 @@
   [モバイル サービスに対するアプリケーションのテスト]: #test-app
   [Azure の無料評価版サイト]: http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-javascript-backend-windows-universal-javascript-get-started-data%2F
   [Visual Studio Express 2013 for Windows]: https://go.microsoft.com/fwLink/p/?LinkID=257546
-  [mobile-services-windows-universal-javascript-download-project]: ../includes/mobile-services-windows-universal-dotnet-download-project.md
-  [mobile-services-create-new-service-vs2013]: ../includes/mobile-services-create-new-service-vs2013.md
-  [mobile-services-create-new-table-vs2013]: ../includes/mobile-services-create-new-table-vs2013.md
   [動的スキーマ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193175.aspx
-  [mobile-services-windows-javascript-update-data-app]: ../includes/mobile-services-windows-javascript-update-data-app.md
-  [mobile-services-windows-universal-test-app]: ../includes/mobile-services-windows-universal-test-app.md
   [管理ポータル]: https://manage.windowsazure.com/
   [0]: ./media/mobile-services-javascript-backend-windows-universal-dotnet-get-started-data/mobile-todoitem-data-browse.png
   [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-validate-modify-data-server-scripts/

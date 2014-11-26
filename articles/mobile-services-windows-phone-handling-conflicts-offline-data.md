@@ -1,6 +1,6 @@
 <properties linkid="develop-mobile-tutorials-handle-conflcits-offline-data-dotnet" urlDisplayName="Handle Conflicts with Offline Data" pageTitle="Handle Conflicts with offline data in Mobile Services (Windows Phone) | Mobile Dev Center" metaKeywords="" description="Learn how to use Azure Mobile Services handle conflicts when syncing offline data in your Windows phone application" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Handling conflicts with offline data in Mobile Services" authors="wesmc" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="wesmc"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="wesmc" />
 
 # モバイル サービスでのオフライン データの同期との競合の処理
 
@@ -11,31 +11,31 @@
 
 このトピックでは、Azure Mobile Services のオフライン機能を使用しているときに、データを同期し、競合を処理する方法について説明します。このチュートリアルでは、オフライン データとオンライン データの両方をサポートするアプリケーションをダウンロードして、モバイル サービスをそのアプリケーションに統合します。その後に、Azure の管理ポータルにログインして、アプリケーションの実行中にデータベースを表示および更新します。
 
-このチュートリアルは、前の「[オフライン データの使用][]」チュートリアルの手順およびサンプル アプリケーションを基に作成されています。このチュートリアルを開始する前に、「[オフライン データの使用][]」チュートリアルを完了している必要があります。
+このチュートリアルは、前の「[オフライン データの使用][オフライン データの使用]」チュートリアルの手順およびサンプル アプリケーションを基に作成されています。このチュートリアルを開始する前に、「[オフライン データの使用][オフライン データの使用]」チュートリアルを完了している必要があります。
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
-1.  [Windows Phone プロジェクトのダウンロード][]
-2.  [期日列のデータベースへの追加][]
+1.  [Windows Phone プロジェクトのダウンロード][Windows Phone プロジェクトのダウンロード]
+2.  [期日列のデータベースへの追加][期日列のデータベースへの追加]
 
--   [.NET バックエンド モバイル サービスのデータベースの更新][]
--   [JavaScript モバイル サービスのデータベースの更新][]
+-   [.NET バックエンド モバイル サービスのデータベースの更新][.NET バックエンド モバイル サービスのデータベースの更新]
+-   [JavaScript モバイル サービスのデータベースの更新][JavaScript モバイル サービスのデータベースの更新]
 
-1.  [モバイル サービスに対するアプリケーションのテスト][]
-2.  [競合を作成するためのバックエンドでのデータの手動更新][]
+1.  [モバイル サービスに対するアプリケーションのテスト][モバイル サービスに対するアプリケーションのテスト]
+2.  [競合を作成するためのバックエンドでのデータの手動更新][競合を作成するためのバックエンドでのデータの手動更新]
 
-このチュートリアルには、Visual Studio 2012 および [Windows Phone 8 SDK][] が必要です。
+このチュートリアルには、Visual Studio 2012 および [Windows Phone 8 SDK][Windows Phone 8 SDK] が必要です。
 
 ## <a name="download-app"></a>サンプル プロジェクトのダウンロード
 
-このチュートリアルは、Visual Studio 2012 の Windows Phone 8 プロジェクトである、「[競合コード サンプルの処理][]」に基づいて構築されています。
-このアプリケーションの UI は、各 TodoItem に新しいデータ列があることを除き、「[オフライン データの使用][]」チュートリアルのアプリケーションと似ています。
+このチュートリアルは、Visual Studio 2012 の Windows Phone 8 プロジェクトである、「[競合コード サンプルの処理][競合コード サンプルの処理]」に基づいて構築されています。
+このアプリケーションの UI は、各 TodoItem に新しいデータ列があることを除き、「[オフライン データの使用][オフライン データの使用]」チュートリアルのアプリケーションと似ています。
 
-![][]
+![][0]
 
-1.  「[競合コード サンプルの処理][]」の Windows Phone バージョンをダウンロードします。
+1.  「[競合コード サンプルの処理][競合コード サンプルの処理]」の Windows Phone バージョンをダウンロードします。
 
-2.  インストールされていない場合は、[SQLite for Windows Phone 8][] をインストールします。
+2.  インストールされていない場合は、[SQLite for Windows Phone 8][SQLite for Windows Phone 8] をインストールします。
 
 3.  Visual Studio 2012 で、ダウンロードしたプロジェクトを開きます。**[Windows Phone]**\>**[Extensions]** で、**SQLite for Windows Phone** への参照を追加します。
 
@@ -73,7 +73,7 @@
 
     WebApiConfig.cs ファイルで、既定のデータベース初期化子クラスが `DropCreateDatabaseIfModelChanges` クラスから派生していることに注意してください。つまり、モデルへの変更により、テーブルが削除され、新しいモデルを格納するために再作成されることになります。したがって、テーブル内のデータは失われ、テーブルは再シードされます。次のように `Seed()` 初期化関数が新しい DueDate 列を初期化するように、データベース初期化子の Seed メソッドを変更します。WebApiConfig.cs ファイルを保存します。
 
-    > [WACOM.NOTE] データベースの既定の初期化子を使用する場合は、Code First のモデル定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。詳細については、[Code First Migrations を使用してデータ モデルを更新する方法に関するページ][]を参照してください。
+    > [WACOM.NOTE] データベースの既定の初期化子を使用する場合は、Code First のモデル定義内でのデータ モデルの変更が検出されるたびに、Entity Framework がデータベースを削除して再作成します。このようなデータ モデルの変更を行ってデータベース内で既存のデータを保持するには、Code First Migrations を使用する必要があります。詳細については、[Code First Migrations を使用してデータ モデルを更新する方法に関するページ][Code First Migrations を使用してデータ モデルを更新する方法に関するページ]を参照してください。
 
         new TodoItem { Id = "1", Text = "First item", Complete = false, DueDate = DateTime.Today },
         new TodoItem { Id = "2", Text = "Second item", Complete = false, DueDate = DateTime.Today },
@@ -88,7 +88,7 @@
 
 JavaScript バックエンド モバイル サービスでは、**TodoWithDate** という名前の新しいテーブルを追加します。JavaScript バックエンド モバイル サービスに **TodoWithDate** テーブルを追加するには、次の手順に従います。
 
-1.  [Azure の管理ポータル][]にログインします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]にログインします。
 
 2.  モバイル サービスの **[データ]** タブに移動します。
 
@@ -113,7 +113,7 @@ JavaScript バックエンド モバイル サービスでは、**TodoWithDate**
 
     ![][0]
 
-5.  データベースの現在の状態を表示するには、[Azure の管理ポータル][]にログインし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。
+5.  データベースの現在の状態を表示するには、[Azure の管理ポータル][Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、目的のモバイル サービスをクリックします。
 
 -   モバイル サービスの JavaScript バックエンドを使用している場合は、**[データ]** タブをクリックし、**TodoWithDate** テーブルをクリックします。アプリケーションからサーバーに変更をプッシュしていないため、**[参照]** をクリックして、テーブルがまだ空であることを確認します。
 
@@ -192,7 +192,7 @@ JavaScript バックエンド モバイル サービスでは、**TodoWithDate**
 
 プッシュがキャンセルされると、`PushAsync` は `MobileServicePushFailedException` をスローし、例外プロパティ `PushResult.Status` の値は `MobileServicePushStatus.CancelledByOperation` となります。
 
-<!-- Anchors. --> 
+ 
 <!-- URLs -->
 
 [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data "Windows ストア C#"

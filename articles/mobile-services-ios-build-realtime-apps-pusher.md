@@ -377,9 +377,9 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
 
 サーバー スクリプトの登録および使用の詳細については、「[モバイル サービスのサーバー スクリプト リファレンス][モバイル サービスのサーバー スクリプト リファレンス]」を参照してください。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [ユーザーへのプッシュ通知]: /ja-jp/develop/mobile/tutorials/push-notifications-to-users-ios
   [0]: http://pusher.com
@@ -388,7 +388,6 @@ Pusher アカウントの設定が終わったので、次に iOS アプリケ�
   [サーバー スクリプトをインストールする]: #install-scripts
   [アプリケーションをテストする]: #test-app
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started
-  [pusher-sign-up]: ../includes/pusher-sign-up.md
   [libPusher]: http://go.microsoft.com/fwlink/p?LinkId=276999
   [ここから]: http://go.microsoft.com/fwlink/p/?LinkId=276998
   [0]: ./media/mobile-services-ios-build-realtime-apps-pusher/pusher-ios-add-files-to-group.png

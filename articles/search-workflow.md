@@ -2,23 +2,23 @@
 
 # Azure Search: 開発ワークフロー
 
-[WACOM.INCLUDE [この記事では Azure プレビュー ポータルを使用します][]]
+[WACOM.INCLUDE [この記事では Azure プレビュー ポータルを使用します](../includes/preview-portal-note.md)]
 
 この記事では、検索サービスとそのインデックスを作成して維持するためのロードマップといくつかのベスト プラクティスについて説明します。
 
-既にサービスがプロビジョニングされていることが前提となっています。まだ行われていない場合は、「[Azure プレビュー ポータルで Search を構成する][]」を参照して開始してください。
+既にサービスがプロビジョニングされていることが前提となっています。まだ行われていない場合は、「[Azure プレビュー ポータルで Search を構成する][Azure プレビュー ポータルで Search を構成する]」を参照して開始してください。
 
--   [手順 1.インデックスの作成][]
--   [手順 2.ドキュメントの追加][]
--   [手順 3.インデックスのクエリ][]
--   [手順 4.インデックスとドキュメントの更新または削除][]
--   [ストレージの設計に関する考慮事項][]
+-   [手順 1.インデックスの作成][手順 1.インデックスの作成]
+-   [手順 2.ドキュメントの追加][手順 2.ドキュメントの追加]
+-   [手順 3.インデックスのクエリ][手順 3.インデックスのクエリ]
+-   [手順 4.インデックスとドキュメントの更新または削除][手順 4.インデックスとドキュメントの更新または削除]
+-   [ストレージの設計に関する考慮事項][ストレージの設計に関する考慮事項]
 
 ## 手順 1.インデックスの作成
 
 クエリ (少なくとも非システム クエリ) は、検索のデータと属性を含む検索インデックスを対象としています。この手順では、インデックス スキーマを JSON 形式で定義し、このインデックスがサービスで作成されるように HTTPS PUT 要求を実行します。
 
-インデックスは、通常はローカル開発環境でコーディングされます。インデックス定義のための組み込みのツールやエディターはありません。インデックスの作成の詳細については、MSDN の「[Create Index (Azure Search API) (インデックスの作成 (Azure Search API))][]」を参照してください。
+インデックスは、通常はローカル開発環境でコーディングされます。インデックス定義のための組み込みのツールやエディターはありません。インデックスの作成の詳細については、MSDN の「[Create Index (Azure Search API) (インデックスの作成 (Azure Search API))][Create Index (Azure Search API) (インデックスの作成 (Azure Search API))]」を参照してください。
 
 ## 手順 2.ドキュメントの追加
 
@@ -36,8 +36,8 @@ POST 要求に対する全体的なステータス コードがあります。�
 
 ドキュメントのインデックスが作成された後で、検索クエリを実行できます。OData または単純なクエリ構文を使用して、一度に 1 つのインデックスを照会できます。
 
--   [OData expression syntax for Azure Search (Azure Search の OData 式構文)][]
--   [Simple query syntax in Azure Search (Azure Search の単純なクエリ構文)][]
+-   [OData expression syntax for Azure Search (Azure Search の OData 式構文)][OData expression syntax for Azure Search (Azure Search の OData 式構文)]
+-   [Simple query syntax in Azure Search (Azure Search の単純なクエリ構文)][Simple query syntax in Azure Search (Azure Search の単純なクエリ構文)]
 
 ## 手順 4.インデックスとドキュメントの更新または削除
 
@@ -51,18 +51,17 @@ POST 要求に対する全体的なステータス コードがあります。�
 
 ドキュメント内のすべてのフィールドが検索可能ではありません。たとえば、アプリケーションが音楽やビデオのオンライン カタログである場合は、BLOB やその他のストレージにバイナリ ファイルを格納することをお勧めします。バイナリ ファイル自体は検索可能ではないため、Azure Search ストレージにそれらを保存する必要はありません。他のサービスまたは場所に画像、ビデオ、オーディオ ファイルを格納し、ファイルの場所への URL を格納するフィールドをドキュメント内に指定する必要があります。
 
-インデックスやドキュメントの作成の詳細については、「[Azure Search Rest API (Azure Search Rest API)][]」を参照してください。
+インデックスやドキュメントの作成の詳細については、「[Azure Search Rest API (Azure Search Rest API)][Azure Search Rest API (Azure Search Rest API)]」を参照してください。
 
 
 
-  [この記事では Azure プレビュー ポータルを使用します]: ../includes/preview-portal-note.md
   [Azure プレビュー ポータルで Search を構成する]:  ../search-configure/
   [手順 1.インデックスの作成]: #sub-1
   [手順 2.ドキュメントの追加]: #sub-2
   [手順 3.インデックスのクエリ]: #sub-3
   [手順 4.インデックスとドキュメントの更新または削除]: #sub-4
   [ストレージの設計に関する考慮事項]: #sub-5
-  [Create Index (Azure Search API) (インデックスの作成 (Azure Search API))]: http://msdn.microsoft.com/en-us/library/dn798941.aspx
-  [OData expression syntax for Azure Search (Azure Search の OData 式構文)]: http://msdn.microsoft.com/en-us/library/dn798921.aspx
-  [Simple query syntax in Azure Search (Azure Search の単純なクエリ構文)]: http://msdn.microsoft.com/en-us/library/dn798920.aspx
-  [Azure Search Rest API (Azure Search Rest API)]: http://msdn.microsoft.com/en-us/library/dn798935.aspx
+  [Create Index (Azure Search API) (インデックスの作成 (Azure Search API))]: http://msdn.microsoft.com/ja-jp/library/dn798941.aspx
+  [OData expression syntax for Azure Search (Azure Search の OData 式構文)]: http://msdn.microsoft.com/ja-jp/library/dn798921.aspx
+  [Simple query syntax in Azure Search (Azure Search の単純なクエリ構文)]: http://msdn.microsoft.com/ja-jp/library/dn798920.aspx
+  [Azure Search Rest API (Azure Search Rest API)]: http://msdn.microsoft.com/ja-jp/library/dn798935.aspx

@@ -1,6 +1,6 @@
 <properties linkid="biztalk-troubleshoot-using-ops-logs" urlDisplayName="BizTalk Services: Troubleshoot using operation logs" pageTitle="BizTalk Services: Troubleshoot using ops logs | Azure" metaKeywords="" description="BizTalk Services: Troubleshoot using ops logs" metaCanonical="" services="" documentationCenter="" title="BizTalk Services: Troubleshoot using ops logs" authors="mandia"  solutions="" writer="nitinme" manager="dwrede" editor="cgronlun"  />
 
-<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/10/2014" ms.author="mandia"></tags>
+<tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/10/2014" ms.author="mandia" />
 
 # BizTalk サービス: 操作ログを使用したトラブルシューティング
 
@@ -98,9 +98,6 @@ Azure 管理サービスを使用して追跡される操作の一覧を次の�
 -   [BizTalk サービス: 発行者名および発行者キー][BizTalk サービス: 発行者名および発行者キー]
 -   [Azure BizTalk サービス SDK の使用開始に関するページ][Azure BizTalk サービス SDK の使用開始に関するページ]
 
-  [BizTalk サービスの REST API]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn232347.aspx
-  [Azure 管理サービスを使用して追跡される操作]: #bizops
-  [メッセージの追跡]: http://msdn.microsoft.com/library/windowsazure/hh949805.aspx
   [操作ログを表示]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png
   [BizTalk サービスのバックアップに関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=325584
   [バックアップからの BizTalk サービスの復元に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=325582

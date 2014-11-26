@@ -1,6 +1,6 @@
 1.  アプリケーションをまだ登録していない場合は、Windows ストア アプリのデベロッパー センターで[アプリの提出のページ][アプリの提出のページ]に移動し、Microsoft アカウントでログインして、**[アプリの名前]** をクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[アプリ名]** にアプリケーションの名前を入力し、**[アプリの名前の予約]** をクリックして、**[保存]** をクリックします。
 
@@ -54,10 +54,10 @@
 
     > [WACOM.NOTE]ポータルの **[プッシュ]** タブで拡張プッシュ通知に対応する WNS の資格情報を設定した場合は、アプリに対して通知ハブを構成する目的で、それらの資格情報が Notification Hubs と共有されます。
 
-<!-- URLs. -->
+
 
   [アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-  []: ./media/mobile-services-notification-hubs-register-windows-store-app/mobile-services-submit-win8-app.png
+  [0]: ./media/mobile-services-notification-hubs-register-windows-store-app/mobile-services-submit-win8-app.png
   [1]: ./media/mobile-services-notification-hubs-register-windows-store-app/mobile-services-win8-app-name.png
   [2]: ./media/mobile-services-notification-hubs-register-windows-store-app/mobile-services-store-association.png
   [3]: ./media/mobile-services-notification-hubs-register-windows-store-app/mobile-services-select-app-name.png

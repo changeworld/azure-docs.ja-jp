@@ -1,6 +1,6 @@
 <properties linkid="mobile-services-dotnet-backend-use-non-relational-data-store" urlDisplayName="Build a Service Using a Non-Relational Data Store" pageTitle="Build a Service Using a Non-Relational Data Store - Azure Mobile Services" metaKeywords="" description="Learn how to use a non-relational data store such as MongoDB or Azure Table Storage with your .NET based mobile service" metaCanonical="" services="" documentationCenter="Mobile" title="Build a Service Using a Non-Relational Data Store" authors="yavorg, mahender" solutions="" manager="" editor="mollybos" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="yavorg, mahender"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="yavorg, mahender" />
 
 # .NET バックエンドによる MongoDB をデータ ストアとして使用するサービスの作成
 
@@ -20,7 +20,7 @@
 
 2.  **[MongoLab]** アドオンを選択し、ウィザードの指示に従い、アカウントにサインアップします。MongoLab の詳細については、[MongoLab アドオンのページ][MongoLab アドオンのページ]を参照してください。
 
-    ![][]
+    ![][0]
 
 3.  アカウントが設定されたら、**[接続文字列]** を選択し、接続文字列をすべてコピーします。
 
@@ -94,5 +94,5 @@
   [データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data
   [Azure 管理ポータル]: https://manage.windowsazure.com/
   [MongoLab アドオンのページ]: /ja-jp/gallery/store/mongolab/mongolab
-  []: ./media/mobile-services-dotnet-backend-use-non-relational-data-store/create-mongo-lab.png
+  [0]: ./media/mobile-services-dotnet-backend-use-non-relational-data-store/create-mongo-lab.png
   [1]: ./media/mobile-services-dotnet-backend-use-non-relational-data-store/mongo-connection-string.png

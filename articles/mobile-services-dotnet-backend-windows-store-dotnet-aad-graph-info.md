@@ -165,8 +165,5 @@ Mobile Services でカスタム API をまったく使用したことがない�
   [GetUserInfo カスタム API を作成する]: #create-api
   [カスタム API を使用するようにアプリケーションを更新する]: #update-app
   [アプリケーションをテストする]: #test-app
-  [mobile-services-generate-aad-app-registration-access-key]: ../includes/mobile-services-generate-aad-app-registration-access-key.md
   [Azure 管理ポータル]: https://manage.windowsazure.com/
-  [mobile-services-aad-graph-info-update-app]: ../includes/mobile-services-aad-graph-info-update-app.md
-  [mobile-services-aad-graph-info-test-app]: ../includes/mobile-services-aad-graph-info-test-app.md
   [Mobile Services と Azure Active Directory でのロール ベースのアクセス制御]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-aad-rbac/

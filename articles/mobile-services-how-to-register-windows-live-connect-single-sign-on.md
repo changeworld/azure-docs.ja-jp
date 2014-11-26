@@ -56,9 +56,9 @@ Live Connect を使用して認証をアプリケーションに統合する準�
 
 -   基本認証。この方法では、さまざまな認証プロバイダーがサポートされますが、ユーザーはアプリケーションの開始ごとにログインする必要があります。詳細については、「[認証の使用][認証の使用]」を参照してください。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
   [0]: ./media/mobile-services-how-to-register-windows-live-connect-single-sign-on/mobile-services-submit-win8-app.png

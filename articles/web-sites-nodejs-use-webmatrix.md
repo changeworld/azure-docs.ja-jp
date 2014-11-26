@@ -1,6 +1,6 @@
 <properties linkid="web-site-with-webmatrix" urlDisplayName="Website with WebMatrix" pageTitle="Node.js website with WebMatrix - Azure tutorial" metaKeywords="" description="A tutorial that teaches you how to WebMatrix to develop and deploy a Node.js application to an Azure website." metaCanonical="" services="web-sites" documentationCenter="nodejs" title="Build and deploy a Node.js website to Azure using WebMatrix" authors="larryfr" solutions="" manager="paulettm" editor="mollybos" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
 # WebMatrix を使用した Node.js Web サイトの構築と Azure へのデプロイ
 
@@ -12,7 +12,7 @@
 
 ![Azure node Web サイト][Azure node Web サイト]
 
-[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## Azure へのサインイン
 
@@ -92,8 +92,6 @@ Azure への展開後にアプリケーションで問題が発生した場合�
 
   [Azure 用 WebMatrix の概要]: http://go.microsoft.com/fwlink/?LinkID=253622&clcid=0x409
   [Azure node Web サイト]: ./media/web-sites-nodejs-use-webmatrix/webmatrix-node-complete.png
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A7171371E
   [アカウントの追加]: ./media/web-sites-nodejs-use-webmatrix/webmatrix-add-account.png
   [Azure へのサインイン]: ./media/web-sites-nodejs-use-webmatrix/webmatrix-sign-in.png
   [テンプレート ギャラリーからの新しいサイト]: ./media/web-sites-nodejs-use-webmatrix/webmatrix-site-from-template.png

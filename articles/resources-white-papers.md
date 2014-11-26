@@ -6,4 +6,3 @@
 
 [WACOM.INCLUDE [white-papers](../includes/white-papers.md)]
 
-  [white-papers]: ../includes/white-papers.md

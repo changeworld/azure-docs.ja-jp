@@ -4,8 +4,8 @@
 
 2.  **F5** キーを押してプロジェクトをリビルドし、モバイル サービスをローカルで開始します。
 
-    ![][]
+    ![][0]
 
     モバイル サービスが正常に起動した後、Web ページが表示されます。
 
-  []: ./media/mobile-services-dotnet-backend-test-local-service/mobile-service-startup.png
+  [0]: ./media/mobile-services-dotnet-backend-test-local-service/mobile-service-startup.png

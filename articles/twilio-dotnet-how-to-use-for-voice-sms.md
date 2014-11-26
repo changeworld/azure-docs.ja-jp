@@ -1,6 +1,6 @@
 <properties linkid="develop-net-how-to-twilio-sms-service" urlDisplayName="Twilio Voice/SMS Service" pageTitle="How to Use Twilio for Voice and SMS (.NET) - Azure" metaKeywords="Azure Twilio, Azure phone calls, Azure phone calls, Azure twilio, Azure SMS, Azure SMS, Azure voice calls, azure voice calls, Azure text messages, Azure text messages" description="Learn how to make a phone call and send a SMS message with the Twilio API service on Azure. Code samples written in .NET." metaCanonical="" services="" documentationCenter=".NET" title="How to use Twilio for voice and SMS capabilities from Azure" authors="MicrosoftHelp@twilio.com" solutions="" manager="" editor="" />
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="MicrosoftHelp@twilio.com"></tags>
+<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="MicrosoftHelp@twilio.com" />
 
 # Azure から音声および SMS 機能に Twilio を使用する方法
 
@@ -208,7 +208,7 @@ Microsoft Visual Studio 2010 では既定で NuGet の Version 1.2 がインス�
 
 <div class="dev-callout">
 <b>注</b>
-<p>TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。たとえば、[http://twimlets.com/message] (twimlet_message_url) をクリックして、空の &lt;Response&gt; 要素を確認します。もう 1 つの例として、[http://twimlets.com/message?Message%5B0%5D=Hello%20World] (twimlet_message_url_hello_world) をクリックして、&lt;Say&gt; 要素を格納している &lt;Response&gt; 要素を確認します。</p>
+<p>TwiML は Web サービスで使用するように設計されており、ブラウザーで表示できます。たとえば、[http://twimlets.com/message](http://twimlets.com/message) をクリックして、空の &lt;Response&gt; 要素を確認します。もう 1 つの例として、[http://twimlets.com/message?Message%5B0%5D=Hello%20World] (http://twimlets.com/message?Message%5B0%5D=Hello%20World) をクリックして、&lt;Say&gt; 要素を格納している &lt;Response&gt; 要素を確認します。</p>
 </div>
 
 Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自の URL サイトを作成できます。HTTP 応答を返すサイトは、任意の言語で作成できます。このトピックでは、ASP.NET 汎用ハンドラーから URL をホストすることを想定しています。
@@ -299,7 +299,7 @@ TwiML 応答を提供する方法を設定したら、**client.InitiateOutboundC
 
 ASP.NET を使用する Windows Azure での Twilio の使用に関する詳細については、「[Windows Azure の Web ロールで Twilio を使用して通話する方法][Windows Azure の Web ロールで Twilio を使用して通話する方法]」を参照してください。
 
-[WACOM.INCLUDE [twilio\_additional\_services\_and\_next\_steps][twilio\_additional\_services\_and\_next\_steps]]
+[WACOM.INCLUDE [twilio_additional_services_and_next_steps](../includes/twilio_additional_services_and_next_steps.md)]
 
   [次の手順]: #NextSteps
   [Twilio とは]: #WhatIs
@@ -323,7 +323,7 @@ ASP.NET を使用する Windows Azure での Twilio の使用に関する詳細�
   [Twilio アカウント ページ]: https://www.twilio.com/user/account
   [番号の管理に関するページ]: https://www.twilio.com/user/account/phone-numbers/verified#
   [Twilio 電話番号のヘルプに関するページ]: https://www.twilio.com/help/faq/phone-numbers
-  [Visual Studio を使用した Azure プロジェクトの作成]: http://msdn.microsoft.com/en-us/library/windowsazure/ee405487.aspx
+  [Visual Studio を使用した Azure プロジェクトの作成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405487.aspx
   [Visual Studio 2010 および 2012 で使用可能な NuGet パッケージ マネージャー拡張機能を使用してインストール]: http://www.twilio.com/docs/csharp/install
   [GitHub]: https://github.com/twilio/twilio-csharp
   []: http://nuget.org/
@@ -331,4 +331,3 @@ ASP.NET を使用する Windows Azure での Twilio の使用に関する詳細�
   [2]: http://twimlets.com/message
   [3]: https://www.twilio.com/docs/api/twiml
   [Windows Azure の Web ロールで Twilio を使用して通話する方法]: ../partner-twilio-cloud-services-dotnet-phone-call-web-role/
-  [twilio\_additional\_services\_and\_next\_steps]: ../includes/twilio_additional_services_and_next_steps.md

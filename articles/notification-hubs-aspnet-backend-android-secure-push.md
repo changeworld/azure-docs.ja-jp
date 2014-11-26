@@ -118,4 +118,3 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 4.  Android アプリケーションの UI で、**[ログイン]** をクリックします。次に、**[プッシュを送信する]** をクリックします。
 
-  [notification-hubs-aspnet-backend-securepush]: ../includes/notification-hubs-aspnet-backend-securepush.md

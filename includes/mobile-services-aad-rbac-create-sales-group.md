@@ -8,7 +8,7 @@
 4.  **Dave** という名前の別のユーザーを作成します。ユーザーの一時パスワードを書き留めます。
 5.  新しいユーザーは、以下に示されているように表示されます。
 
-    ![][]
+    ![][0]
 
 ### Sales グループを作成する
 
@@ -28,7 +28,7 @@
 
     ![][3]
 
-  []: ./media/mobile-services-aad-rbac-create-sales-group/users.png
+  [0]: ./media/mobile-services-aad-rbac-create-sales-group/users.png
   [1]: ./media/mobile-services-aad-rbac-create-sales-group/sales-group.png
   [2]: ./media/mobile-services-aad-rbac-create-sales-group/group-membership.png
   [3]: ./media/mobile-services-aad-rbac-create-sales-group/sales-group-id.png

@@ -105,11 +105,10 @@
 -   [プッシュ通知の使用][プッシュ通知の使用]
     Mobile Services を使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
 
-  [mobile-services-selector-get-started-data]: ../includes/mobile-services-selector-get-started-data.md
+
   [Android アプリ プロジェクトのダウンロード]: #download-app
   [モバイル サービスの作成]: #create-service
   [ストレージのデータ テーブルの追加]: #add-table
@@ -117,12 +116,6 @@
   [モバイル サービスに対するアプリケーションのテスト]: #test-app
   [モバイル サービス Android SDK]: http://go.microsoft.com/fwlink/p/?LinkID=280126
   [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
-  [download-android-sample-code]: ../includes/download-android-sample-code.md
-  [Verify SDK]: ../includes/mobile-services-verify-android-sdk-version.md
-  [mobile-services-android-run-sample-code]: ../includes/mobile-services-android-run-sample-code.md
-  [mobile-services-create-new-service-data]: ../includes/mobile-services-create-new-service-data.md
-  [mobile-services-create-new-service-data-2]: ../includes/mobile-services-create-new-service-data-2.md
-  [mobile-services-android-getting-started-with-data]: ../includes/mobile-services-android-getting-started-with-data.md
   [管理ポータル]: https://manage.windowsazure.com/
   [0]: ./media/mobile-services-android-get-started-data/mobile-todoitem-data-browse.png
   [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet

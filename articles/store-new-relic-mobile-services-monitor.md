@@ -108,9 +108,9 @@ New Relic サービスにサインアップしたら、New Relic の Node.js モ
 -   料金情報については、[Windows Azure ストアの New Relic のページ][Windows Azure ストアの New Relic のページ]を参照してください。
 -   New Relic の使用方法については、New Relic ドキュメントの「[Applications Overview (アプリケーションの概要)][Applications Overview (アプリケーションの概要)]」を参照してください。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [Azure ストアを使用して New Relic にサインアップする]: #sign-up
   [New Relic モジュールをインストールする]: #install-module

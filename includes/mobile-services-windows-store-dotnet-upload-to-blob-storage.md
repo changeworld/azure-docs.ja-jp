@@ -2,7 +2,7 @@
 
 1.  Visual Studio 2012 で、Package.appxmanifest ファイルを開き、**[機能]** タブの **[Web カメラ]** 機能と **[マイク]** 機能を有効にします。
 
-    ![][]
+    ![][0]
 
     これにより、コンピューターに接続されたカメラをアプリケーションで使用できます。ユーザーは、アプリケーションを最初に実行したときに、カメラのアクセスを許可することを求められます。
 
@@ -142,7 +142,7 @@
 
     > [WACOM.NOTE] 新しい項目の `imageUri` プロパティが **Image** コントロールにバインドされると、イメージは BLOB ストレージ サービスから自動的にダウンロードされます。
 
-  []: ./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-app-manifest-camera.png
+  [0]: ./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-app-manifest-camera.png
   [1]: ./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-quickstart-blob-appbar.png
   [2]: ./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-quickstart-blob-camera.png
   [3]: ./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-quickstart-blob-appbar2.png

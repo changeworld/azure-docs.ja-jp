@@ -40,9 +40,9 @@
 
 これで、コンシューマー キーとコンシューマー シークレットの値をモバイル サービスに渡すことにより、アプリケーションで Twitter ログインを認証に使用する準備ができました。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [Twitter デベロッパー]: http://go.microsoft.com/fwlink/p/?LinkId=268300
   [0]: ./media/mobile-services-how-to-register-twitter-authentication/mobile-services-twitter-developers.png

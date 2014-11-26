@@ -1,12 +1,12 @@
 <properties urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Get started with Azure Websites and ASP.NET" authors="tdykstra" solutions="" manager="wpickett" editor="mollybos" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tdykstra"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tdykstra" />
 
 # Azure Websites と ASP.NET を使用する
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/develop/net/tutorials/get-started/" title="Visual Studio 2013">Visual Studio 2013</a><a href="/en-us/develop/net/tutorials/get-started-vs2012/" title="Visual Studio 2012" class="current">Visual Studio 2012</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/develop/net/tutorials/get-started/" title="Visual Studio 2013">Visual Studio 2013</a><a href="/ja-jp/develop/net/tutorials/get-started-vs2012/" title="Visual Studio 2012" class="current">Visual Studio 2012</a></div>
 
-<div class="dev-callout"><strong>注</strong><p><a href="/en-us/develop/net/tutorials/get-started/">このチュートリアルの新しいバージョン</a>が提供されています。Visual Studio 2012 を使用する場合はこのバージョンを引き続き利用できますが、最新の Azure SDK の機能の中には、取り上げられていないものもあります。</p></div>
+<div class="dev-callout"><strong>注</strong><p><a href="/ja-jp/develop/net/tutorials/get-started/">このチュートリアルの新しいバージョン</a>が提供されています。Visual Studio 2012 を使用する場合はこのバージョンを引き続き利用できますが、最新の Azure SDK の機能の中には、取り上げられていないものもあります。</p></div>
 
 このチュートリアルでは、Visual Studio 2012 または Visual Studio 2012 for Web Express の Web の発行ウィザードを使用して、ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする方法を示します。必要に応じて、Visual Studio 2010 または Visual Web Developer Express 2010 を使用して、チュートリアルの手順に従うこともできます。
 
@@ -23,7 +23,7 @@ Azure アカウントは無料で開くことができます。また、まだ V
 
 ![Web サイトの例][Web サイトの例]
 
-<div class="dev-callout"><p><strong>注</strong> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントを持っていない場合は、<a href="/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">MSDN サブスクライバーの特典を有効にする</a>か、<a href="/en-us/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">無料評価版にサインアップ</a>してください。</p></div>
+<div class="dev-callout"><p><strong>注</strong> このチュートリアルを完了するには、Azure アカウントが必要です。アカウントを持っていない場合は、<a href="/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">MSDN サブスクライバーの特典を有効にする</a>か、<a href="/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">無料評価版にサインアップ</a>してください。</p></div>
 
 ### チュートリアル セグメント
 
@@ -33,7 +33,7 @@ Azure アカウントは無料で開くことができます。また、まだ V
 4.  [Azure にアプリケーションを展開する][Azure にアプリケーションを展開する]
 5.  [次のステップ][次のステップ]
 
-[WACOM.INCLUDE [install-sdk-2012-only][install-sdk-2012-only]]
+[WACOM.INCLUDE [install-sdk-2012-only](../includes/install-sdk-2012-only.md)]
 
 ## <a name="setupwindowsazure"></a><span class="short-header">サイトの作成</span>Web サイトを作成する
 
@@ -209,12 +209,12 @@ Web サイトを削除するには、Azure の管理ポータルを使用でき�
 
 一部のシナリオでは、Azure の Web サイトではなく、Azure のクラウド サービスでアプリケーションを実行することもできます。詳細については、「[Azure 実行モデル][Azure 実行モデル]」と「[Azure の Web サイト、クラウド サービス、および仮想マシンの比較][Azure の Web サイト、クラウド サービス、および仮想マシンの比較]」を参照してください。多層 ASP.NET Web アプリケーションを作成してクラウド サービスに展開する方法を説明したチュートリアルについては、「[ストレージ テーブル、キュー、および BLOB を使用する .NET 多層アプリケーション][ストレージ テーブル、キュー、および BLOB を使用する .NET 多層アプリケーション]」を参照してください。
 
-[Visual Studio 2013]: /en-us/develop/net/tutorials/get-started/ "Visual Studio 2013"
-[Visual Studio 2012]: /en-us/develop/net/tutorials/get-started-vs2012/ "Visual Studio 2012"
-[このチュートリアルの新しいバージョン]: /en-us/develop/net/tutorials/get-started/
+[Visual Studio 2013]: /ja-jp/develop/net/tutorials/get-started/ "Visual Studio 2013"
+[Visual Studio 2012]: /ja-jp/develop/net/tutorials/get-started-vs2012/ "Visual Studio 2012"
+[このチュートリアルの新しいバージョン]: /ja-jp/develop/net/tutorials/get-started/
 [Web サイトの例]: ./media/web-sites-dotnet-get-started-vs2012/DeployedWebSite.png
-[MSDN サブスクライバーの特典を有効にする]: /en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
-[無料評価版にサインアップ]: /en-us/pricing/free-trial/?WT.mc_id=A261C142F
+[MSDN サブスクライバーの特典を有効にする]: /ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
+[無料評価版にサインアップ]: /ja-jp/pricing/free-trial/?WT.mc_id=A261C142F
 [開発環境を設定する]: #setupdevenv
 [Azure に Web サイトを作成する]: #setupwindowsazure
 [ASP.NET MVC 4 アプリケーションを作成する]: #createmvc4app
@@ -247,12 +247,12 @@ Web サイトを削除するには、Azure の管理ポータルを使用でき�
 [サーバー エクスプローラーでの Azure の Web サイト]: ./media/web-sites-dotnet-get-started-vs2012/ServerExplorerWSSettings.png
 [Visual Studio での Web サイトの構成]: ./media/web-sites-dotnet-get-started-vs2012/WSConfigurationInVS.png
 [管理ポータルの ダッシュボード タブ]: ./media/web-sites-dotnet-get-started-vs2012/MPStopStartDelete.png
-[Web サイトの管理方法]: /en-us/manage/services/web-sites/how-to-manage-websites/
+[Web サイトの管理方法]: /ja-jp/manage/services/web-sites/how-to-manage-websites/
 [管理ポータルの 規模の設定 タブ]: ./media/web-sites-dotnet-get-started-vs2012/MPScale.png
-[Web サイトの規模変更方法]: /en-us/manage/services/web-sites/how-to-scale-websites/
+[Web サイトの規模変更方法]: /ja-jp/manage/services/web-sites/how-to-scale-websites/
 [Visual Studio のログ]: ./media/web-sites-dotnet-get-started-vs2012/LogsInVS.png
-[Visual Studio での Azure の Web Sites のトラブルシューティング]: /en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/
-[メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET MVC アプリケーションを Azure の Web Site に展開する]: /en-us/develop/net/tutorials/web-site-with-sql-database/
-[Azure 実行モデル]: /en-us/develop/net/fundamentals/compute/
+[Visual Studio での Azure の Web Sites のトラブルシューティング]: /ja-jp/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/
+[メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET MVC アプリケーションを Azure の Web Site に展開する]: /ja-jp/develop/net/tutorials/web-site-with-sql-database/
+[Azure 実行モデル]: /ja-jp/develop/net/fundamentals/compute/
 [Azure の Web サイト、クラウド サービス、および仮想マシンの比較]: http://azure.microsoft.com/ja-jp/documentation/articles/choose-web-site-cloud-service-vm/
-[ストレージ テーブル、キュー、および BLOB を使用する .NET 多層アプリケーション]: /en-us/develop/net/tutorials/multi-tier-web-site/1-overview/
+[ストレージ テーブル、キュー、および BLOB を使用する .NET 多層アプリケーション]: /ja-jp/develop/net/tutorials/multi-tier-web-site/1-overview/

@@ -1,6 +1,6 @@
 <properties linkid="develop-python-web-app-with-django-and-mysql" urlDisplayName="Web with Django + MySQL" pageTitle="Python web app with Django and MySQL - Azure tutorial" metaKeywords="Azure django web app, Azure Django MySQL, Azure django Python" description="A tutorial that teaches you how to use MySQL in with Django on an Azure virtual machine. Code samples written in Python." metaCanonical="" services="virtual-machines" documentationCenter="Python" title="Django Hello World - MySQL Windows Edition" authors="huvalo" solutions="" manager="" editor="" />
 
-<tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo"></tags>
+<tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo" />
 
 # Django Hello World - MySQL Windows エディション
 
@@ -240,7 +240,6 @@ MySQL データベースを利用し、Azure VM でホストすることによ�
   ["world" データベース]: http://dev.mysql.com/doc/index-other.html
   [この]: http://downloads.mysql.com/docs/world.sql.zip
   [このリンク]: http://code.google.com/p/soemin/downloads/detail?name=MySQL-python-1.2.3.win32-py2.7.exe&can=2&q=
-  [http://yourVmName]: http://*yourVmName
 
 
 [0]: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01.png

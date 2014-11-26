@@ -1,6 +1,6 @@
 <properties linkid="mobile-services-html-call-custom-api" urlDisplayName="Call a custom API from the client" pageTitle="Call a custom API from an HTML client - Mobile Services" metaKeywords="" description="Learn how to define a custom API and then call it from an HTML app that uses Windows Azure Mobile Services." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Call a custom API from the client" authors="glenga"  solutions="" writer="jparrel" manager="" editor=""  />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-html" ms.devlang="javascript" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-html" ms.devlang="javascript" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # HTML アプリケーションからのカスタム API 呼び出し
 
@@ -20,7 +20,7 @@
 
 ## <a name="define-custom-api"></a>カスタム API を定義する
 
-[WACOM.INCLUDE [mobile-services-create-custom-api][mobile-services-create-custom-api]]
+[WACOM.INCLUDE [mobile-services-create-custom-api](../includes/mobile-services-create-custom-api.md)]
 
 ## <a name="update-app"></a><span class="short-header">アプリケーションの更新</span>カスタム API を呼び出すようにアプリケーションを更新する
 
@@ -69,18 +69,11 @@
 -   [モバイル サービスのサーバー スクリプト リファレンス][モバイル サービスのサーバー スクリプト リファレンス]
     カスタム API の作成について説明します。
 
-<!-- Anchors. --> <!-- URLs. -->
+ 
 
-  [Windows ストア C\#]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-call-custom-api "Windows ストア C#"
-  [Windows ストア JavaScript]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-call-custom-api "Windows ストア JavaScript"
-  [Windows Phone]: /ja-jp/documentation/articles/mobile-services-windows-phone-call-custom-api "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/mobile-services-ios-call-custom-api "iOS"
-  [Android]: /ja-jp/documentation/articles/mobile-services-android-call-custom-api "Android"
-  [HTML]: /ja-jp/documentation/articles/mobile-services-html-call-custom-api "HTML"
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-html-get-started
   [データの使用]: /ja-jp/documentation/articles/mobile-services-html-get-started-data
   [カスタム API を定義する]: #define-custom-api
   [カスタム API を呼び出すようにアプリケーションを更新する]: #update-app
   [アプリケーションをテストする]: #test-app
-  [mobile-services-create-custom-api]: ../includes/mobile-services-create-custom-api.md
   [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293

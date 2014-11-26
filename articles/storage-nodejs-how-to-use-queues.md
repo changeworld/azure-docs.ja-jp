@@ -1,6 +1,6 @@
-<properties urlDisplayName="Queue Service" pageTitle="Queue サービスを使用する方法 (Node.js) - Microsoft Azure" metaKeywords="Azure Queue Service get messages Node.js" description="Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。サンプルは Node.js で記述されています。" metaCanonical="" services="storage" documentationCenter="nodejs" title="Node.js からキュー サービスを使用する方法" authors="larryfr" solutions="" manager="wpickett" editor="" />
+<properties linkid="dev-nodejs-how-to-service-bus-queues" urlDisplayName="Queue Service" pageTitle="How to use the queue service (Node.js) | Microsoft Azure" metaKeywords="Azure Queue Service get messages Node.js" description="Learn how to use the Azure Queue service to create and delete queues, and insert, get, and delete messages. Samples written in Node.js." metaCanonical="" services="storage" documentationCenter="Node.js" title="How to Use the Queue Service from Node.js" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr" />
 
 # Node.js からキュー サービスを使用する方法
 

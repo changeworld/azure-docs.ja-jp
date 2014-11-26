@@ -1,6 +1,6 @@
 <properties title="Build a web application with ASP.NET MVC using DocumentDB" pageTitle="Build a web application with ASP.NET MVC using DocumentDB | Azure" description="Learn how to use DocumentDB to build a To Do List web application. You'll store and access data from an ASP.NET MVC web application hosted on Azure."  metaKeywords="NoSQL, DocumentDB,  database, document-orientated database, JSON, account" services="documentdb"  solutions="data-management" documentationCenter=""  authors="hawong" manager="jhubbard" editor="cgronlun" videoId="" scriptId="" />
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="08/19/2014" ms.author="hawong"></tags>
+<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="08/19/2014" ms.author="hawong" />
 
 # <a name="_Toc395809351">DocumentDB を使用した ASP.NET MVC Web アプリケーションの構築</a>
 
@@ -33,7 +33,7 @@ Azure にホストされている ASP.NET MVC Web アプリケーションから
 します。対象となるタスクは、JSON ドキュメントとして Azure
 DocumentDB に保存するものとします。
 
-![Alt text][]
+![Alt text][Alt text]
 
 # <a name="_Toc395637760">前提条件</a>
 
@@ -43,10 +43,10 @@ DocumentDB に保存するものとします。
 Git for Windows (<http://www.git-scm.com/downloads>)
 
 Visual Studio 2013 (またはその無償版の
-[Visual Studio Express][])
+[Visual Studio Express][Visual Studio Express])
 
 Azure SDK for .NET Version 2.3 以降
-([Microsoft Web Platform Installer][] にて提供)
+([Microsoft Web Platform Installer][Microsoft Web Platform Installer] にて提供)
 
 このドキュメントに掲載されているすべてのスクリーンショットは、
 Visual Studio 2013 Update 3 および Azure SDK for .NET Version2.4 で
@@ -642,7 +642,7 @@ Todo リストに他にもいくつか項目を追加してみてください。
 [ダウンロードはこちら] (<http://go.microsoft.com/fwlink/?LinkID=509838&clcid=0x409>)
 
   [Alt text]: ./media/documentdb-dotnet-application/image1.png
-  [Visual Studio Express]: http://www.visualstudio.com/en-us/products/visual-studio-express-vs.aspx
+  [Visual Studio Express]: http://www.visualstudio.com/ja-jp/products/visual-studio-express-vs.aspx
   [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
   [1]: ./media/documentdb-dotnet-application/image2.png
   [2]: ./media/documentdb-dotnet-application/image3.png

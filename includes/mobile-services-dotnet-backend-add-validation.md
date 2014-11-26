@@ -4,7 +4,7 @@
 
 2.  ソリューション エクスプローラー ウィンドウで、todo list サービス プロジェクトを展開し、**[Contollers]** フォルダーを展開します。モバイル サービス プロジェクトの一部である TodoItemController.cs ファイルを開きます。
 
-    ![][]
+    ![][0]
 
 3.  `PostTodoItem` メソッドを、テキスト文字列が 10 文字以下であることを検証する次のメソッドと置き換えます。項目のテキストが 10 文字より長い場合は、説明メッセージをコンテンツとして含む "HTTP ステータス コード 400 – Bad Request" が返されます。
 
@@ -31,10 +31,10 @@
 
     ![][2]
 
-<!-- URLs. -->
+
 
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
   [Get started with data (データの使用)]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/
-  []: ./media/mobile-services-dotnet-backend-add-validation/mobile-services-open-todoitemcontroller.png
+  [0]: ./media/mobile-services-dotnet-backend-add-validation/mobile-services-open-todoitemcontroller.png
   [1]: ./media/mobile-services-dotnet-backend-add-validation/mobile-services-build-dotnet-service.png
   [2]: ./media/mobile-services-dotnet-backend-add-validation/mobile-services-publish-dotnet-service.png

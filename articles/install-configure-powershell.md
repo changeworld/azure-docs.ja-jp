@@ -1,6 +1,6 @@
 <properties linkid="Install-Config-Windows-Azure-PowerShell" urlDisplayName="Azure PowerShell" pageTitle="How to install and configure Azure PowerShell" description="Learn how to install and configure Azure PowerShell." umbracoNaviHide="0" disqusComments="1" editor="tysonn" manager="stevenka" documentationCenter="" services="" solutions="" authors="stevenka" title="How to install and configure Azure PowerShell" />
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="powershell" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="stevenka;juneb"></tags>
+<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="powershell" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="stevenka;juneb" />
 
 # Azure PowerShell のインストールおよび構成方法
 
@@ -262,8 +262,6 @@ Azure や Windows PowerShell の使用方法を学習するためのリソース
 
 -   Azure AD のコマンドレットについては、「[Windows PowerShell を使用して Azure AD を管理する][Windows PowerShell を使用して Azure AD を管理する]」を参照してください。
 
-  [PowerShell]: /ja-jp/manage/install-and-configure-windows-powershell/ "PowerShell"
-  [クロス プラットフォーム CLI]: /ja-jp/manage/install-and-configure-cli/ "クロス プラットフォーム CLI"
   [Azure PowerShell のコード リポジトリ]: https://github.com/WindowsAzure/azure-sdk-tools
   [Azure PowerShell を使用するための前提条件]: #Prereq
   [方法: Azure PowerShell をインストールするには]: #Install
@@ -277,9 +275,6 @@ Azure や Windows PowerShell の使用方法を学習するためのリソース
   [アカウント、サブスクリプション、管理者ロールを管理する]: http://go.microsoft.com/fwlink/?LinkId=324796
   [Azure 管理ポータル]: https://manage.windowsazure.com
   [Microsoft Azure への組織としてのサインアップ]: http://azure.microsoft.com/ja-jp/documentation/articles/sign-up-organization/
-  [Azure Resource Manager Cmdlets (Azure リソース マネージャー コマンドレット)]: http://go.microsoft.com/fwlink/?LinkID=394765
-  [1]: http://manage.windowsazure.com/
-  [Microsoft Online Services カスタマー ポータル]: http://go.microsoft.com/fwlink/p/?LinkId=324875
   [2]: http://manage.windowsazure.com
   [」を参照してください。]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg456328.aspx
   [Azure コマンドレット リファレンス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554330.aspx

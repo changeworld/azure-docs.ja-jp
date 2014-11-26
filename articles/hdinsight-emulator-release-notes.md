@@ -246,5 +246,4 @@
 -   [HDInsight Emulator の概要][HDInsight Emulator の概要]
 
   []: http://azure.microsoft.com/ja-jp/documentation/services/hdinsight/
-  [//{container}@{account}/{path]: mailto://{container}@{account}/{path
   [HDInsight Emulator の概要]: ../hdinsight-get-started-emulator/

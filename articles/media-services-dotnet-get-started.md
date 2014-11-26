@@ -622,7 +622,7 @@ Program.cs ファイルで、**Main** メソッド内の最初のアイテムと
 -   [メディア サービスを使用する方法][メディア サービスを使用する方法]
 -   [Windows Azure Media Services REST API を使用したアプリケーション構築][Windows Azure Media Services REST API を使用したアプリケーション構築]
 
-<!-- Anchors. -->
+
 
   [ダウンロード]: http://go.microsoft.com/fwlink/?linkid=253275
   [プロジェクトのセットアップ]: #Step1

@@ -66,9 +66,9 @@
 
 これで、モバイル サービスのデータを操作するための基本について説明する一連のチュートリアルは終了です。次は、チュートリアル「[認証の使用][認証の使用]」でアプリケーションのユーザーを認証する方法について説明します。[モバイル サービス HTML/JavaScript の使用方法の概念リファレンス][モバイル サービス HTML/JavaScript の使用方法の概念リファレンス] で、HTML/JavaScript でモバイル サービスを使用する方法について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-html
   [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-html

@@ -72,6 +72,6 @@ WCF Data Services NuGet パッケージを参照したら、ボタンの **Click
   [Windows ストア アプリケーション用 WCF Data Services ツール]: http://www.microsoft.com/ja-jp/download/details.aspx?id=30714
   [store-apps-storage-vs-project]: ./media/storage-use-store-apps/store-apps-storage-vs-project.png
   [store-apps-storage-choose-library]: ./media/storage-use-store-apps/store-apps-storage-choose-library.png
-  [async キーワード]: http://msdn.microsoft.com/en-US/library/vstudio/hh156513.aspx
+  [async キーワード]: http://msdn.microsoft.com/ja-jp/library/vstudio/hh156513.aspx
   [store-apps-storage-package-manager]: ./media/storage-use-store-apps/store-apps-storage-package-manager.png
   [Managing NuGet Packages Using the Dialog (ダイアログを使用した NuGet パッケージの管理)]: http://docs.nuget.org/docs/start-here/Managing-NuGet-Packages-Using-The-Dialog

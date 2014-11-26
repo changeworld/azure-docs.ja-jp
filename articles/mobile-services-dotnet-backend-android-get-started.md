@@ -112,19 +112,15 @@
 -   [モバイル サービス .NET バックエンドのトラブルシューティング][モバイル サービス .NET バックエンドのトラブルシューティング]
      モバイル サービスの .NET バックエンドで発生する問題を診断して解決する方法について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
 
-  [mobile-services-selector-get-started]: ../includes/mobile-services-selector-get-started.md
+
   [JavaScript バックエンド バージョン]: /ja-jp/documentation/articles/mobile-services-android-get-started/
   [0]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-completed-android.png
   [Android Developer Tools]: https://go.microsoft.com/fwLink/p/?LinkID=280125
-  [mobile-services-dotnet-backend-create-new-service]: ../includes/mobile-services-dotnet-backend-create-new-service.md
   [1]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-steps-vs.png
   [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=391934
-  [mobile-services-dotnet-backend-test-local-service]: ../includes/mobile-services-dotnet-backend-test-local-service.md
-  [mobile-services-dotnet-backend-publish-service]: ../includes/mobile-services-dotnet-backend-publish-service.md
   [管理ポータル]: https://manage.windowsazure.com/
   [2]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-steps-android.png
   [3]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-services-import-android-workspace.png

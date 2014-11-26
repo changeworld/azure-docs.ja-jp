@@ -1,6 +1,6 @@
 <properties pageTitle="How to implement disaster recovery using service backup and restore in Azure API Management" metaKeywords="" description="Learn how to use backup and restore to perform disaster recovery in Azure API Management." metaCanonical="" services="api-management" documentationCenter="API Management" title="How to implement disaster recovery using service backup and restore in Azure API Management" authors="sdanie" solutions="" manager="" editor="" />
 
-<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie"></tags>
+<tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
 
 # Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法
 

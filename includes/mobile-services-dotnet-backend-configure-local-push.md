@@ -2,7 +2,7 @@
 
 1.  モバイル サービスの **[プッシュ]** タブに戻り、**[通知ハブ]** リンクをクリックします。
 
-    ![][]
+    ![][0]
 
     これによって、モバイル サービスが使用している通知ハブに移動します。
 
@@ -20,6 +20,6 @@
 
 これで、モバイル サービス プロジェクトは、ローカルでの実行時に Azure 内の通知ハブに接続されるように構成されました。Azure 内で実行する際に、Web.config プロジェクトの設定はポータルの設定で上書きされるため、ポータルの設定と同じ通知ハブ名と接続文字列を使用する必要がある点に注意してください。
 
-  []: ./media/mobile-services-dotnet-backend-configure-local-push/link-to-notification-hub.png
+  [0]: ./media/mobile-services-dotnet-backend-configure-local-push/link-to-notification-hub.png
   [1]: ./media/mobile-services-dotnet-backend-configure-local-push/notification-hub-page.png
   [2]: ./media/mobile-services-dotnet-backend-configure-local-push/notification-hub-connection-string.png

@@ -137,5 +137,4 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 4.  iOS アプリケーションの UI で、**[ログイン]** をクリックします。次に、**[プッシュを送信する]** をクリックします。通知センターに安全な通知が表示されます。
 
-  [notification-hubs-aspnet-backend-securepush]: ../includes/notification-hubs-aspnet-backend-securepush.md
   [0]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png

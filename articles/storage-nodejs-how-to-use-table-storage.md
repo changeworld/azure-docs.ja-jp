@@ -1,6 +1,6 @@
-<properties urlDisplayName="Table Service" pageTitle="テーブル ストレージを使用する方法 (Node.js) | Microsoft Azure" metaKeywords="Azure table storage service, Azure table service Node.js, table storage Node.js" description="Azure でテーブル ストレージ サービスを使用する方法について説明します。コード サンプルは Node.js API を使用して記述されています。" metaCanonical="" services="storage" documentationCenter="nodejs" title="Node.js からテーブル サービスを使用する方法" authors="larryfr" solutions="" manager="wpickett" editor="" />
+<properties linkid="dev-nodejs-how-to-table-services" urlDisplayName="Table Service" pageTitle="How to use table storage (Node.js) | Microsoft Azure" metaKeywords="Azure table storage service, Azure table service Node.js, table storage Node.js" description="Learn how to use the table storage service in Azure. Code samples are written using the Node.js API." metaCanonical="" services="storage" documentationCenter="Node.js" title="How to Use the Table Service from Node.js" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr" />
 
 # Node.js からテーブル サービスを使用する方法
 

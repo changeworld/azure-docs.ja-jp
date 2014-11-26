@@ -193,7 +193,6 @@ WebMatrix は、[管理ポータル][管理ポータル]からインストール
   [WebMatrix - Launch createtable.php in browser]: ./media/web-sites-php-sql-database-use-webmatrix/edit_run.png
   [Azure Website と SQL Database の作成]: #CreateWebsite
   [WebMatrix - Publish]: ./media/web-sites-php-sql-database-use-webmatrix/edit_publish.png
-  [http://[your]: http://[your
   [WebMatrix - Open Remote View]: ./media/web-sites-php-sql-database-use-webmatrix/OpenRemoteView.png
   [WebMatrix - Open index file]: ./media/web-sites-php-sql-database-use-webmatrix/Remote_editIndex.png
   [WebMatrix - Launch site in Remote]: ./media/web-sites-php-sql-database-use-webmatrix/Remote_run.png

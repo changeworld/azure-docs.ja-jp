@@ -1,6 +1,6 @@
 <properties title="How to create a custom template image for RemoteApp" pageTitle="How to create a custom template nimage for RemoteApp" description="Learn how to create a custom template image for RemoteApp. You can use this template with either a hybrid or cloud deployment." metaKeywords="" services="" solutions="" documentationCenter="" authors="elizapo" manager="kathyw" />
 
-<tags ms.service="remoteapp" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/12/2014" ms.author="elizapo" ms.manager="kathyw"></tags>
+<tags ms.service="remoteapp" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/12/2014" ms.author="elizapo" ms.manager="kathyw" />
 
 # RemoteApp のカスタム テンプレート イメージの作成方法
 
@@ -20,7 +20,7 @@ Azure RemoteApp では、ユーザーと共有するすべてのプログラム�
 
 サービスを作成する前に、以下の操作が必要です。
 
--   RemoteApp のプレビューにサインアップします。これは、[][][http://azure.microsoft.com/ja-jp/services/remoteapp/][http://azure.microsoft.com/ja-jp/services/remoteapp/]</a> で行うことができます。
+-   RemoteApp のプレビューにサインアップします。これは、[http://azure.microsoft.com/ja-jp/services/remoteapp/](http://azure.microsoft.com/ja-jp/services/remoteapp/)</a> で行うことができます。
 -   RemoteApp サービス アカウントとして使用するためのユーザー アカウントを Active Directory に作成します。ドメインへのマシンの参加のみが実行可能になるように、このアカウントのアクセス許可を制限します。
 -   オンプレミスのネットワークに関する情報を収集します。IP アドレスの情報と VPN デバイスの詳細情報が含まれます。
 -   [Azure PowerShell][Azure PowerShell] モジュールをインストールします。
@@ -106,7 +106,6 @@ Azure RemoteApp では、ユーザーと共有するすべてのプログラム�
 -   [RemoteApp のハイブリッド デプロイメントの作成方法][RemoteApp のハイブリッド デプロイメントの作成方法]
 -   [RemoteApp のクラウドのデプロイメントの作成方法][RemoteApp のクラウドのデプロイメントの作成方法]
 
-  []: http://azure.microsoft.com/ja-jp/services/remoteapp/
   [Azure PowerShell]: http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/
   [RemoteApp のハイブリッド デプロイメントの作成方法]: http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-hybrid-deployment/
   [RemoteApp のクラウドのデプロイメントの作成方法]: http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-cloud-deployment/

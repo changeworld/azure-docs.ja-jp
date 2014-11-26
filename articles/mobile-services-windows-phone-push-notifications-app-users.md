@@ -194,8 +194,8 @@
     サーバー スクリプトの登録および使用について説明します。
 
 <!-- anchors --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+
 
   [1 つ前のプッシュ通知に関するチュートリアル]: /ja-jp/develop/mobile/tutorials/get-started-with-push-wp8
   [Channel テーブルを作成する]: #create-table

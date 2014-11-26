@@ -156,7 +156,7 @@ Azure モバイル サービスのオフライン機能を使用すると、モ�
 
 -   [Azure Mobile Services 向け Xamarin コンポーネント クライアントを使用する方法][Azure Mobile Services 向け Xamarin コンポーネント クライアントを使用する方法]
 
-<!-- Anchors. --> <!-- Images --> <!-- URLs. -->
+ <!-- Images --> 
 
   [モバイル サービスの使用]: /ja-jp/documentation/articles/partner-xamarin-mobile-services-android-get-started/
   [データの使用]: /ja-jp/documentation/articles/partner-xamarin-mobile-services-android-get-started-data/

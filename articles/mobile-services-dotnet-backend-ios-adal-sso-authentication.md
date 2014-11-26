@@ -112,8 +112,5 @@
   [認証を使用してクライアントをテストする]: #test-client
   [データの使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started-data/
   [iOS 向け Active Directory 認証ライブラリ]: https://github.com/MSOpenTech/azure-activedirectory-library-for-ios
-  [mobile-services-dotnet-adal-register-service]: ../includes/mobile-services-dotnet-adal-register-service.md
-  [mobile-services-dotnet-adal-register-client]: ../includes/mobile-services-dotnet-adal-register-client.md
-  [mobile-services-restrict-permissions-dotnet-backend]: ../includes/mobile-services-restrict-permissions-dotnet-backend.md
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   [0]: ./media/mobile-services-dotnet-backend-ios-adal-sso-authentication/mobile-services-app-run.png

@@ -555,7 +555,6 @@ MVC 5 の新機能の 1 つに、ブートストラップの標準サポート�
 
 
   [Visual Studio Express 2013 for Web]: http://www.visualstudio.com/downloads/download-visual-studio-vs#d-express-web
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [スタート プロジェクト]: http://go.microsoft.com/fwlink/?LinkID=398780&clcid=0x409
   [0]: ./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/SessionsByTag-ASP.NET-Fixed.png
 

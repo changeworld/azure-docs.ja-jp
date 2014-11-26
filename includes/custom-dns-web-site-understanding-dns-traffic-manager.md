@@ -16,7 +16,7 @@ CNAME レコードは、**mail.contoso.com** や **www.contoso.com** などの*�
 
 Traffic Manager に到着したトラフィックは、構成された負荷分散方法を使用して、Web サイトにルーティングされます。これは、Web サイトにアクセスするユーザーに対して透過的です。ユーザーのブラウザーには、カスタム ドメイン名のみが表示されます。
 
-> [WACOM.NOTE] いくつかのドメイン レジストラーでは、CNAME レコードを使用する場合にマップすることが許可されるのは、ルート名 (**contoso.com** など) ではなく、サブドメイン (**www.contoso.com** など) のみです。CNAME レコードの詳細については、レジストラーが提供するドキュメント、「[the Wikipedia entry on CNAME record (CNAME レコードに関するウィキペディア項目)][]」、または「[IETF Domain Names - Implementation and Specification (IETF ドメイン名 - 実装と仕様書)][]」を参照してください。
+> [WACOM.NOTE] いくつかのドメイン レジストラーでは、CNAME レコードを使用する場合にマップすることが許可されるのは、ルート名 (**contoso.com** など) ではなく、サブドメイン (**www.contoso.com** など) のみです。CNAME レコードの詳細については、レジストラーが提供するドキュメント、「[the Wikipedia entry on CNAME record (CNAME レコードに関するウィキペディア項目)][the Wikipedia entry on CNAME record (CNAME レコードに関するウィキペディア項目)]」、または「[IETF Domain Names - Implementation and Specification (IETF ドメイン名 - 実装と仕様書)][IETF Domain Names - Implementation and Specification (IETF ドメイン名 - 実装と仕様書)]」を参照してください。
 
   [the Wikipedia entry on CNAME record (CNAME レコードに関するウィキペディア項目)]: http://en.wikipedia.org/wiki/CNAME_record
   [IETF Domain Names - Implementation and Specification (IETF ドメイン名 - 実装と仕様書)]: http://tools.ietf.org/html/rfc1035

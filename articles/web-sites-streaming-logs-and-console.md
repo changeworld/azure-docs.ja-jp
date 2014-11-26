@@ -1,6 +1,6 @@
 <properties pageTitle="Streaming logs and console" description="Streaming logs and console overview" title="Streaming logs and console" authors="adamab" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="adamab"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="adamab" />
 
 ## ストリーミング ログとコンソール
 
@@ -41,7 +41,7 @@ node.js アプリケーションでは、次のコードを記述すると同じ
 
 診断は Web サイトごとに有効になります。[ポータル][ポータル]で左側のメニュー バーにある **[参照]** ボタンをクリックし、**[Web サイト]** をクリックすると、既存のすべての Web サイトの一覧が表示されます。
 
-![][]
+![][0]
 
 構成する Web サイトの名前をクリックします。次に、**[診断ログ]** パーツをクリックし、**[アプリケーション ログ記録 (ファイル システム)]** を **[オン]** に切り替えます。**[レベル]** オプションが表示されて、取り込むトレースの重要度レベルを変更できるようになります。**[詳細]** はこの機能に詳しくなっておこうとする場合に設定してください。この設定では、トレース ステートメントのすべてがログに記録されるためです。
 
@@ -69,9 +69,9 @@ dir
 cd
 `````````````````````````
 
-<!-- Images. -->
+
 
   [ポータル]: https://portal.azure.com
-  []: ./media/web-sites-streaming-logs-and-console/browse-sites.png
+  [0]: ./media/web-sites-streaming-logs-and-console/browse-sites.png
   [1]: ./media/web-sites-streaming-logs-and-console/streaming-logs.png
   [2]: ./media/web-sites-streaming-logs-and-console/console.png

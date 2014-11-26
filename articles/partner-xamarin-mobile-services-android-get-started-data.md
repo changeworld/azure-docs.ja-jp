@@ -1,30 +1,30 @@
 <properties linkid="develop-mobile-tutorials-get-started-with-data-xamarin-android" urlDisplayName="Get Started with Data" pageTitle="Get started with data (Xamarin.Android) - Azure Mobile Services" metaKeywords="Azure Xamarin.Android data, Azure mobile services data" description="Learn how to store and access data from your Azure Mobile Services Xamarin.Android app." metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Get started with data in Mobile Services" documentationCenter="Mobile" authors="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-android" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-android" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="" />
 
 # モバイル サービスでのデータの使用
 
 <div class="dev-center-tutorial-selector sublanding">    
-<a href="/en-us/develop/mobile/tutorials/get-started-with-data-dotnet" title="Windows ストア C#">Windows ストア C#</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-js" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-android" title="Android">Android</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-html" title="HTML">HTML</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a>
+<a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet" title="Windows ストア C#">Windows ストア C#</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-js" title="Windows ストア JavaScript">Windows ストア JavaScript</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-wp8" title="Windows Phone">Windows Phone</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-ios" title="iOS">iOS</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-android" title="Android">Android</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-html" title="HTML">HTML</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a>
 </div>
 
 このトピックでは、Azure Mobile Services を使用して Xamarin.Android アプリのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにログインして、アプリケーションの実行中にデータに加えられた変更を表示します。
 
 <div class="dev-callout"><b>注</b>
-<p>このチュートリアルの目的は、Azure を使用して Xamarin.Android アプリのデータを格納および取得できるようにする Mobile Services のしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル「<a href="/en-us/develop/mobile/tutorials/get-started-xamarin-android">モバイル サービスの使用</a>」を完了することをお勧めします。</p>
+<p>このチュートリアルの目的は、Azure を使用して Xamarin.Android アプリのデータを格納および取得できるようにする Mobile Services のしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル「<a href="/ja-jp/develop/mobile/tutorials/get-started-xamarin-android">モバイル サービスの使用</a>」を完了することをお勧めします。</p>
 </div>
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
-1.  [Xamarin.Android アプリ プロジェクトのダウンロード][]
-2.  [モバイル サービスの作成][]
-3.  [ストレージのデータ テーブルの追加][]
-4.  [モバイル サービスを使用するためのアプリケーションの更新][]
-5.  [モバイル サービスに対するアプリケーションのテスト][]
+1.  [Xamarin.Android アプリ プロジェクトのダウンロード][Xamarin.Android アプリ プロジェクトのダウンロード]
+2.  [モバイル サービスの作成][モバイル サービスの作成]
+3.  [ストレージのデータ テーブルの追加][ストレージのデータ テーブルの追加]
+4.  [モバイル サービスを使用するためのアプリケーションの更新][モバイル サービスを使用するためのアプリケーションの更新]
+5.  [モバイル サービスに対するアプリケーションのテスト][モバイル サービスに対するアプリケーションのテスト]
 
-<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A9C9624B5" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
+<div class="dev-callout"><strong>注</strong> <p>このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A9C9624B5" target="_blank">Azure の無料評価版サイト</a>を参照してください。</p></div>
 
-このチュートリアルには、[Azure Mobile Services コンポーネント][]、[Xamarin.Android]、および Android SDK 4.2 以降のバージョンが必要です。
+このチュートリアルには、[Azure Mobile Services コンポーネント][Azure Mobile Services コンポーネント]、[Xamarin.Android]、および Android SDK 4.2 以降のバージョンが必要です。
 
 <div class="dev-callout"><b>注</b>
 <p>ダウンロードした GetStartedWithData プロジェクトは、Android 4.2 以降のバージョンをターゲットとしています。ただし、Mobile Services SDK は、Android 2.2 以降で動作します。</p>
@@ -54,7 +54,7 @@
 
 ## <a name="create-service"></a><span class="short-header">モバイル サービスの作成</span>管理ポータルでの新しいモバイル サービスの作成
 
-[WACOM.INCLUDE [mobile-services-create-new-service-data][]]
+[WACOM.INCLUDE [mobile-services-create-new-service-data](../includes/mobile-services-create-new-service-data.md)]
 
 ## <a name="add-table"></a><span class="short-header">新しいテーブルの追加</span>モバイル サービスへの新しいテーブルの追加
 
@@ -209,7 +209,7 @@
 
     これにより、新しい項目が挿入としてモバイル サービスに送信されます。
 
-3.  [管理ポータル][]で、**[モバイル サービス]** をクリックし、対象のモバイル サービスをクリックします。
+3.  [管理ポータル][管理ポータル]で、**[モバイル サービス]** をクリックし、対象のモバイル サービスをクリックします。
 
 4.  **[データ]** タブをクリックし、**[参照]** をクリックします。
 
@@ -229,21 +229,21 @@
 
 次は、このチュートリアルで作成した GetStartedWithData アプリケーションに基づく次のいずれかのチュートリアルを行うことをお勧めします。
 
--   [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更][]
+-   [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更][サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]
     Mobile Services でサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
--   [ページングを使用したモバイル サービス クエリの改善][]
+-   [ページングを使用したモバイル サービス クエリの改善][ページングを使用したモバイル サービス クエリの改善]
     クエリ内でページングを使用して、1 回の要求で渡されるデータの量を制御する方法について説明します。
 
 データ シリーズを完了した後は、次に示す、Xamarin.Android に関する他のチュートリアルを行うことをお勧めします。
 
--   [認証の使用][]
+-   [認証の使用][認証の使用]
     アプリケーションのユーザーを認証する方法について説明します。
 
--   [プッシュ通知の使用][]
+-   [プッシュ通知の使用][プッシュ通知の使用]
     Mobile Services を使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
-<!-- Anchors. --> 
+ 
 [モバイル サービスの作成]: #create-service
 [ストレージのデータ テーブルの追加]: #add-table
 [モバイル サービスを使用するためのアプリケーションの更新]: #update-app
@@ -251,26 +251,26 @@
 
 <!-- URLs. TODO:: update 'Download the Android app project' download link, 'GitHub', completed project, etc. -->
 
-[Windows ストア C\#]: /en-us/develop/mobile/tutorials/get-started-with-data-dotnet "Windows ストア C#"
-[Windows ストア JavaScript]: /en-us/develop/mobile/tutorials/get-started-with-data-js "Windows ストア JavaScript"
-[Windows Phone]: /en-us/develop/mobile/tutorials/get-started-with-data-wp8 "Windows Phone"
-[iOS]: /en-us/develop/mobile/tutorials/get-started-with-data-ios "iOS"
-[Android]: /en-us/develop/mobile/tutorials/get-started-with-data-android "Android"
-[HTML]: /en-us/develop/mobile/tutorials/get-started-with-data-html "HTML"
-[Xamarin.iOS]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-ios "Xamarin.iOS"
-[Xamarin.Android]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android "Xamarin.Android"
-[モバイル サービスの使用]: /en-us/develop/mobile/tutorials/get-started-xamarin-android
+[Windows ストア C\#]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet "Windows ストア C#"
+[Windows ストア JavaScript]: /ja-jp/develop/mobile/tutorials/get-started-with-data-js "Windows ストア JavaScript"
+[Windows Phone]: /ja-jp/develop/mobile/tutorials/get-started-with-data-wp8 "Windows Phone"
+[iOS]: /ja-jp/develop/mobile/tutorials/get-started-with-data-ios "iOS"
+[Android]: /ja-jp/develop/mobile/tutorials/get-started-with-data-android "Android"
+[HTML]: /ja-jp/develop/mobile/tutorials/get-started-with-data-html "HTML"
+[Xamarin.iOS]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-ios "Xamarin.iOS"
+[Xamarin.Android]: /ja-jp/develop/mobile/tutorials/get-started-with-data-xamarin-android "Xamarin.Android"
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-android
 [Xamarin.Android アプリ プロジェクトのダウンロード]: http://go.microsoft.com/fwlink/p/?LinkId=331302
-[Azure の無料評価版サイト]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A9C9624B5
+[Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A9C9624B5
 [Azure Mobile Services コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
 [管理ポータル]: https://manage.windowsazure.com/
-[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android
-[ページングを使用したモバイル サービス クエリの改善]: /en-us/develop/mobile/tutorials/add-paging-to-data-xamarin-android
-[認証の使用]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android
-[プッシュ通知の使用]: /en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android
+[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android
+[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-xamarin-android
+[認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-android
+[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-xamarin-android
 [mobile-services-create-new-service-data]: ../includes/mobile-services-create-new-service-data.md
 
-<!-- Images. -->   
+   
 [0]: ./media/partner-xamarin-mobile-services-android-get-started-data/mobile-quickstart-startup-android.png
 [1]: ./media/partner-xamarin-mobile-services-android-get-started-data/mobile-data-tab-empty.png
 [2]: ./media/partner-xamarin-mobile-services-android-get-started-data/mobile-create-todoitem-table.png

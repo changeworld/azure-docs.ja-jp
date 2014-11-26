@@ -106,12 +106,9 @@
 
 
 
-  [mobile-services-selector-get-started-users]: ../includes/mobile-services-selector-get-started-users.md
   [アプリケーションを認証に登録し、モバイル サービスを構成する]: #register
   [テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
   [アプリケーションに認証を追加する]: #add-authentication
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-xamarin-android
-  [mobile-services-register-authentication]: ../includes/mobile-services-register-authentication.md
-  [mobile-services-restrict-permissions-javascript-backend]: ../includes/mobile-services-restrict-permissions-javascript-backend.md
   [完成したサンプル プロジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=331328
   [スクリプトを使用したユーザーの認証]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android

@@ -1,4 +1,4 @@
-<properties urlDisplayName="Install MySQL" pageTitle="Azure 上で MySQL を実行する仮想マシンの作成" metaKeywords="Azure virtual machines, Azure Windows Server, Azure installing MySQL, Azure configuring MySQL, Azure databases" description="Windows Server 2008 R2 を実行する Azure 仮想マシンを作成し、その仮想マシンで MySQL データベースのインストールと構成を行います。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure で Windows Server 2008 R2 を実行する仮想マシンへの MySQL のインストール" authors="kathydav" solutions="" manager="timlt" editor="tysonn" />
+<properties linkid="manage-windows-common-tasks-install-mysql" urlDisplayName="Install MySQL" pageTitle="Create a virtual machine running MySQL in Azure " metaKeywords="Azure virtual machines, Azure Windows Server, Azure installing MySQL, Azure configuring MySQL, Azure databases" description="Create an Azure virtual machine running Windows Server 2008 R2, and then install and configure a MySQL database on the virtual machine." metaCanonical="" services="virtual-machines" documentationCenter="" title="Install MySQL on a virtual machine running Windows Server 2008 R2 in Azure" authors="kathydav" solutions="" manager="timlt" editor="tysonn" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-windows" ms.devlang="na" ms.topic="article" ms.date="12/15/2013" ms.author="kathydav" />
 
@@ -131,7 +131,7 @@ MySQL Community Server をインストール、構成、および実行するに
 
 30. MySQL をインストールしたら、MySQL にリモートでアクセスできるように、エンドポイントを構成する必要があります。[Azure 管理ポータル][Azure 管理ポータル]にログインします。Azure ポータルで、**[仮想マシン]** をクリックし、新しい仮想マシンの名前をクリックして、**[エンドポイント]**、**[エンドポイントの追加]** の順にクリックします。
 
-    ![エンドポイント][エンドポイント]
+    ![エンドポイン][エンドポイン]
 
 31. **[エンドポイントの追加]** を選択し、矢印をクリックして続行します。
 
@@ -172,7 +172,7 @@ MySQL Community Server をインストール、構成、および実行するに
   [12]: ./media/virtual-machines-mysql-windows-server-2008r2/MySQLConfig10.png
   [13]: ./media/virtual-machines-mysql-windows-server-2008r2/MySQLConfig11.png
   [14]: ./media/virtual-machines-mysql-windows-server-2008r2/MySQLConfig12.png
-  [エンドポイント]: ./media/virtual-machines-mysql-windows-server-2008r2/WinVMAddEndpointMySQL0.png
+  [エンドポイン]: ./media/virtual-machines-mysql-windows-server-2008r2/WinVMAddEndpointMySQL0.png
   [15]: ./media/virtual-machines-mysql-windows-server-2008r2/WinVMAddEndpointMySQL1.png
   [16]: ./media/virtual-machines-mysql-windows-server-2008r2/WinVMAddEndpointMySQL.png
   [MySQL のドキュメント]: http://dev.mysql.com/doc/

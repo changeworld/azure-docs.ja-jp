@@ -58,6 +58,3 @@
   [登録の前にログインするようにアプリケーションを更新する]: #update-app
   [アプリケーションをテストする]: #test
   [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/
-  [mobile-services-dotnet-backend-push-notifications-app-users]: ../includes/mobile-services-dotnet-backend-push-notifications-app-users.md
-  [mobile-services-windows-store-javascript-push-notifications-app-users]: ../includes/mobile-services-windows-store-javascript-push-notifications-app-users.md
-  [mobile-services-windows-test-push-users]: ../includes/mobile-services-windows-test-push-users.md

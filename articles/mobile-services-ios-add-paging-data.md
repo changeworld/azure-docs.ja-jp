@@ -80,9 +80,9 @@
     Windows アカウントを使用してアプリケーションのユーザーを認証する方法について説明します。
 
 <!-- * [Get started with push notifications]<br/>Learn how to send a very basic push notification to your app. --> 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-ios
   [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-ios

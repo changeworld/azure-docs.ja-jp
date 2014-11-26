@@ -1,19 +1,19 @@
 このセクションでは、.NET コンソール アプリなどから通知を送信する方法について説明します。
-Mobile Services を使用する場合は、[プッシュ通知の使用][]チュートリアルを参照してください。Java または PHP を使用する場合は、「[How to use Notification Hubs from Java/PHP (Java/PHP から Notification Hubs を使用する方法)][]」を参照してください。[通知ハブ REST インターフェイス][]を使用することで、バックエンドから通知を送信できます。
+Mobile Services を使用する場合は、[プッシュ通知の使用][プッシュ通知の使用]チュートリアルを参照してください。Java または PHP を使用する場合は、「[How to use Notification Hubs from Java/PHP (Java/PHP から Notification Hubs を使用する方法)][How to use Notification Hubs from Java/PHP (Java/PHP から Notification Hubs を使用する方法)]」を参照してください。[通知ハブ REST インターフェイス][通知ハブ REST インターフェイス]を使用することで、バックエンドから通知を送信できます。
 
 次のコードでは、Windows ストア デバイス、Windows Phone デバイス、iOS デバイス、Android デバイスに通知を送信します。
 
-「[Get started with Notification Hubs (通知ハブの使用)][]」を実行したときにコンソール アプリケーションを作成した場合は、ステップ 1. ～ 3. はスキップします。
+「[Get started with Notification Hubs (通知ハブの使用)][Get started with Notification Hubs (通知ハブの使用)]」を実行したときにコンソール アプリケーションを作成した場合は、ステップ 1. ～ 3. はスキップします。
 
 1.  Visual Studio で、Visual C# の新しいコンソール アプリケーションを作成します。
 
-    ![][]
+    ![][0]
 
 2.  Visual Studio のメイン メニューで、**[ツール]**、**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックし、コンソール ウィンドウで次のコマンドを入力して、**Enter** キーを押します。
 
         Install-Package WindowsAzure.ServiceBus
 
-    これにより、[WindowsAzure.ServiceBus NuGet パッケージ][]を使用して Azure Service Bus SDK への参照が追加されます。
+    これにより、[WindowsAzure.ServiceBus NuGet パッケージ][WindowsAzure.ServiceBus NuGet パッケージ]を使用して Azure Service Bus SDK への参照が追加されます。
 
 3.  Program.cs ファイルを開き、次の `using` ステートメントを追加します。
 
@@ -82,12 +82,12 @@ Mobile Services を使用する場合は、[プッシュ通知の使用][]チュ
          Console.ReadLine();
 
 <!-- Anchors --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+
 
   [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/
   [How to use Notification Hubs from Java/PHP (Java/PHP から Notification Hubs を使用する方法)]: /ja-jp/documentation/articles/notification-hubs-java-backend-how-to/
-  [通知ハブ REST インターフェイス]: http://msdn.microsoft.com/en-us/library/windowsazure/dn223264.aspx
+  [通知ハブ REST インターフェイス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn223264.aspx
   [Get started with Notification Hubs (通知ハブの使用)]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-  []: ./media/notification-hubs-back-end/notification-hub-create-console-app.png
+  [0]: ./media/notification-hubs-back-end/notification-hub-create-console-app.png
   [WindowsAzure.ServiceBus NuGet パッケージ]: http://nuget.org/packages/WindowsAzure.ServiceBus/

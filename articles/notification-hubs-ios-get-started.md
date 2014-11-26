@@ -173,9 +173,9 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
 
 この簡単な例では、すべての iOS デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、「[通知ハブを使用したユーザーへのプッシュ通知][通知ハブを使用したユーザーへのプッシュ通知]」を参照してください。一方、対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信][通知ハブを使用したニュース速報の送信]」を参照してください。通知ハブの使用方法の詳細については、「[Windows Azure 通知ハブの概要][Windows Azure 通知ハブの概要]」を参照してください。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [証明書の署名要求を生成する]: #certificates
   [アプリケーションを登録し、プッシュ通知を有効にする]: #register
@@ -185,7 +185,6 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
   [バックエンドから通知を送信する]: #send
   [モバイル サービス iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
   [XCode 4.5]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-  [Apple プッシュ通知の有効化]: ../includes/enable-apple-push-notifications.md
   [0]: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-27.png
   [Azure 管理ポータル]: https://manage.windowsazure.com/
   [1]: ./media/notification-hubs-ios-get-started/notification-hub-create-from-portal.png

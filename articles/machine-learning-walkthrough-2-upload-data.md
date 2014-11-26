@@ -1,15 +1,15 @@
 <properties title="Step 2: Upload existing data into an Azure Machine Learning experiment" pageTitle="Step 2: Upload data into a Machine Learning experiment | Azure" description="Step 2: Upload existing public data into Azure Machine Learning Studio" metaKeywords="" services="" solutions="" documentationCenter="" authors="garye" videoId="" scriptId="" />
 
-<tags ms.service="machine-learning" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="garye"></tags>
+<tags ms.service="machine-learning" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="garye" />
 
-これは、チュートリアル「[Azure Machine Learning を使用した予測ソリューションの開発][]」の 2 番目の手順です。
+これは、チュートリアル「[Azure Machine Learning を使用した予測ソリューションの開発][Azure Machine Learning を使用した予測ソリューションの開発]」の 2 番目の手順です。
 
-1.  [ML ワークスペースを作成する][]
+1.  [ML ワークスペースを作成する][ML ワークスペースを作成する]
 2.  **既存のデータをアップロードする**
-3.  [新しい実験を作成する][]
-4.  [モデルをトレーニングして評価する][]
-5.  [Web サービスを発行する][]
-6.  [Web サービスにアクセスする][]
+3.  [新しい実験を作成する][新しい実験を作成する]
+4.  [モデルをトレーニングして評価する][モデルをトレーニングして評価する]
+5.  [Web サービスを発行する][Web サービスを発行する]
+6.  [Web サービスにアクセスする][Web サービスにアクセスする]
 
 ------------------------------------------------------------------------
 
@@ -52,7 +52,7 @@ UCI の Web サイトでは、財務情報、信用貸付の履歴、雇用状�
 6.  データ型として、"ヘッダーなしの汎用 CSV ファイル (.nh.csv)" を選択します。
 7.  必要に応じて説明を追加します。
 8.  **[OK]** をクリックします。
-    ![Upload the dataset][]
+    ![Upload the dataset][Upload the dataset]
 
 これにより、データが、実験で使用できるデータセット モジュールにアップロードされます。
 

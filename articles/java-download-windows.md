@@ -6,5 +6,3 @@
 
 [WACOM.INCLUDE [download_eclipse](../includes/download_eclipse.md)]
 
-  [download_libraries]: ../includes/download_libraries.md
-  [download_eclipse]: ../includes/download_eclipse.md

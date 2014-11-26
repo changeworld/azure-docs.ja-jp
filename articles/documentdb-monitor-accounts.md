@@ -1,6 +1,6 @@
 <properties title="Monitor a DocumentDB Account" pageTitle="Monitor a DocumentDB account | Azure" description="Learn how to monitor your DocumentDB account for performance metrics (such as requests and server errors) and usage metrics (such as storage consumption)." metaKeywords="NoSQL, DocumentDB,  database, document-orientated database, JSON, monitor, accounts" services="documentdb" solutions="data-management" documentationCenter=""  authors="bradsev" manager="jhubbard" editor="cgronlun" videoId="" scriptId="" />
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="brradsev"></tags>
+<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="brradsev" />
 
 # DocumentDB アカウントを監視する
 
@@ -23,7 +23,7 @@ DocumentDB アカウントは、[Azure プレビュー ポータル][Azure プ�
     -   当日の要求数合計
     -   当日の 1 秒あたりの要求数平均
 
-    ![][]
+    ![][0]
 
 3.  **[要求数合計または 1 秒あたりの要求数平均]** パーツをクリックすると、詳細な **[メトリック]** ブレードが表示されます。
 4.  [メトリック] ブレードには、選択したメトリックの詳細が表示されます。ブレードの上部にはグラフがあり、下部にある表では、平均、最小値、最大値など、選択したメトリックの集約値が表示されます。[メトリック] ブレードには、現在のメトリック ブレードに表示されるメトリックに対してフィルター処理された定義済みアラートの一覧も表示されます (これにより、さまざまなアラートがある場合、ここで示された関連するアラートのみが表示されます)。
@@ -105,7 +105,7 @@ Azure プレビュー ポータルでは、サイド バイ サイドのメト�
   [方法: DocumentDB アカウントの使用状況メトリックを表示する]: #view
   [方法: DocumentDB アカウントのパフォーマンス メトリック アラートを設定する]: #setup
   [次のステップ]: #next
-  []: http://i.imgur.com/y7pigTT.png
+  [0]: http://i.imgur.com/y7pigTT.png
   [1]: http://i.imgur.com/6rBNPBL.png
   [2]: http://i.imgur.com/tRZEHk1.png
   [3]: http://i.imgur.com/G4UTi5U.png

@@ -16,11 +16,10 @@ Azure のモバイル サービスでは、クライアント主導とサーバ�
 
 アプリケーション パッケージの登録後、[LoginAsync][LoginAsync] メソッドを呼び出すときに、*useSingleSignOn* に値 **true** を指定してください。そうすることで、Microsoft アカウントを使用する場合に、向上したログイン エクスペリエンスをユーザーに提供できます。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [モバイル サービスのプッシュ通知の追加のクイック スタートに関するページ]: http://go.microsoft.com/fwlink/p/?LinkId=309101
   [Live Connect シングル サインオンによる Windows ストア アプリケーションの認証]: /ja-jp/develop/mobile/tutorials/single-sign-on-windows-8-dotnet
-  [mobile-services-register-windows-store-app]: ../includes/mobile-services-register-windows-store-app.md
   [LoginAsync]: http://go.microsoft.com/fwlink/p/?LinkId=311594

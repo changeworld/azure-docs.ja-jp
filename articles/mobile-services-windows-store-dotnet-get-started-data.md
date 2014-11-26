@@ -136,7 +136,6 @@
 
 
 
-  [mobile-services-selector-get-started-data-legacy]: ../includes/mobile-services-selector-get-started-data-legacy.md
   [ユニバーサル Windows アプリ バージョン]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-universal-dotnet-get-started-data
   [Windows ストア アプリ プロジェクトのダウンロード]: #download-app
   [Visual Studio からのモバイル サービスの作成]: #create-service
@@ -146,11 +145,8 @@
   [Azure の無料評価版サイト]: http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-jp%2Fdocumentation%2Farticles%2Fmobile-services-windows-store-dotnet-get-started-data%2F
   [GetStartedWithMobileServices アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=328660
   [0]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-quickstart-startup.png
-  [mobile-services-create-new-service-vs2013]: ../includes/mobile-services-create-new-service-vs2013.md
   [MobileServiceClient クラス]: http://go.microsoft.com/fwlink/p/?LinkId=302030
-  [mobile-services-create-new-table-vs2013]: ../includes/mobile-services-create-new-table-vs2013.md
   [動的スキーマ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193175.aspx
-  [mobile-services-windows-dotnet-update-data-app]: ../includes/mobile-services-windows-dotnet-update-data-app.md
   [管理ポータル]: https://manage.windowsazure.com/
   [1]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-todoitem-data-browse.png
   [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-validate-modify-data-server-scripts/

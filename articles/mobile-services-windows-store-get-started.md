@@ -117,7 +117,6 @@
   [0]: ./media/mobile-services-windows-store-get-started/mobile-quickstart-completed.png
   [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F
   [Visual Studio 2012 を使用したモバイル サービスでのデータの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet-vs2012/
-  [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md
   [1]: ./media/mobile-services-windows-store-get-started/mobile-portal-quickstart.png
   [2]: ./media/mobile-services-windows-store-get-started/mobile-quickstart-steps.png
   [Visual Studio 2013 Express for Windows]: http://go.microsoft.com/fwlink/?LinkId=257546

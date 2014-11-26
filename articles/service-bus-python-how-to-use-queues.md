@@ -97,6 +97,5 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [方法: メッセージをキューに送信する]: #send-messages
   [方法: キューからメッセージを受信する]: #receive-messages
   [方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する]: #handle-crashes
-  [howto-service-bus-queues]: ../includes/howto-service-bus-queues.md
   [Python インストール ガイド]: ../python-how-to-install/
   [キュー、トピック、およびサブスクリプション]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367516.aspx

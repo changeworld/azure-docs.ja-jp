@@ -1,6 +1,6 @@
 <properties title="Azure Storage の使用" pageTitle="Azure Storage の使用" metaKeywords="Azure, Getting Started, Storage" description="" services="storage" documentationCenter="" authors="ghogen, kempb" />
 
-<tags ms.service="storage" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="ghogen, kempb"></tags>
+<tags ms.service="storage" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="ghogen, kempb" />
 
 > [AZURE.SELECTOR]
 >
@@ -39,5 +39,4 @@ Azure テーブル ストレージ サービスを使用すると、大量の構
   [BLOB]: /documentation/articles/vs-storage-aspnet-getting-started-blobs/
   [キュー]: /documentation/articles/vs-storage-aspnet-getting-started-queues/
   [How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/#create-table "How to use Table Storage from .NET"
-  [vs-storage-getting-started-tables-include]: ../includes/vs-storage-getting-started-tables-include.md
   [ASP.NET]: http://www.asp.net

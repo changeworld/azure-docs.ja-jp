@@ -1,10 +1,10 @@
 <properties linkid="manage-services-identity-organization-account" urlDisplayName="Organization accounts" pageTitle="Sign up for Azure as an organization" metaKeywords="" description="Learn how you can use an organizational account to leverage the existing user accounts, policies, settings, or on-premise server deployments you already have improve efficiencies between your organization's on-premises identity infrastructure and Azure AD." metaCanonical="" services="active-directory" documentationCenter="" title="Sign up for Azure as an organization" authors="terrylan" solutions="" manager="terrylan" editor="" />
 
-<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="terrylan"></tags>
+<tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="terrylan" />
 
 # Azure への組織としてのサインアップ
 
-[WACOM.INCLUDE [disclaimer][]]
+[WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
 
 最近まで、新しい Azure サブスクリプションにサインアップするには、必ず Microsoft アカウント (Windows Live ID) を使用する必要がありました。現在、Azure では、次に示す 2 つのアカウントのいずれかを使用してサインアップすることができます。
 
@@ -14,16 +14,15 @@
 
     このテナントが作成されたら、管理者が各従業員/学生に組織アカウントを発行し、それぞれがアクセスする必要があるクラウド サービス (Azure など) のサブスクリプションに基づいて各アカウントにライセンスを付与できます。
 
-組織として Azure にサインアップする必要がある場合は、[**今すぐサインアップ**][]
+組織として Azure にサインアップする必要がある場合は、[**今すぐサインアップ**][**今すぐサインアップ**]
 
 **その他のリソース**
 
--   [Azure AD とは][]
--   [TechNet の Azure AD ライブラリ][]
--   [MSDN の Azure AD ライブラリ][]
+-   [Azure AD とは][Azure AD とは]
+-   [TechNet の Azure AD ライブラリ][TechNet の Azure AD ライブラリ]
+-   [MSDN の Azure AD ライブラリ][MSDN の Azure AD ライブラリ]
 
-  [disclaimer]: ../includes/disclaimer.md
-  [詳細情報]: http://windows.microsoft.com/en-US/windows-live/sign-in-what-is-microsoft-account
+  [詳細情報]: http://windows.microsoft.com/ja-jp/windows-live/sign-in-what-is-microsoft-account
   [1]: http://technet.microsoft.com/ja-jp/library/jj573650
   [**今すぐサインアップ**]: http://go.microsoft.com/fwlink/?LinkId=269967
   [Azure AD とは]: /ja-jp/manage/services/identity/what-is-windows-azure-active-directory/

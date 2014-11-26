@@ -102,22 +102,18 @@ awverify サブドメインは、サイトの訪問者に対して表示され�
 
 ## Web サイトでのドメイン名の有効化
 
-[WACOM.INCLUDE [modes][2]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes.md)]
 
 
 
   [Web サイト]: /ja-jp/documentation/articles/web-sites-custom-domain-name/ "Web サイト"
-  [websites-cloud-services-css-guided-walkthrough]: ../includes/websites-cloud-services-css-guided-walkthrough.md
   [contoso.azurewebsites.net サブドメイン]: media/web-sites-custom-domain-name/azurewebsites-subdomain.png
-  [introfooter]: ../includes/custom-dns-web-site-intro-notes.md
   [概要]: #overview
   [DNS レコードの種類]: #dns-record-types
   [仮想 IP アドレスの検索]: #find-the-virtual-ip-address
   [DNS レコードの作成]: #create-the-dns-records
   [Web サイトでのドメイン名の有効化]: #enable-the-domain-name-on-your-website
-  [modes]: ../includes/custom-dns-web-site-modes.md
   [Azure の管理ポータル]: https://manage.windowsazure.com
   [Web サイトの規模の設定方法]: http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-scale/
   [0]: media/web-sites-custom-domain-name/dncmntask-cname-6.png
   [1]: media/web-sites-custom-domain-name/ipaddress.png
-  [2]: ../includes/custom-dns-web-site-enable-on-web-site.md

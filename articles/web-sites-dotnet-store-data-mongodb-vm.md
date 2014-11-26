@@ -486,7 +486,6 @@ MongoDB の接続文字列の詳細については、[Connections (接続)][Conn
 <!-- TOC BOOKMARKS -->
 
   [MongoDB]: http://www.mongodb.org
-  [create-account-and-websites-and-vms-note]: ../includes/create-account-and-websites-and-vms-note.md
   [仮想マシンを作成して MongoDB をインストールする]: #virtualmachine
   [開発用コンピューターで My Task List ASP.NET アプリケーションを作成して実行する]: #createapp
   [Azure の Web サイトの作成]: #createwebsite

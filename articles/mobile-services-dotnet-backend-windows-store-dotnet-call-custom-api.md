@@ -42,17 +42,15 @@
 -   [ソース管理へのサーバー スクリプトの保存][ソース管理へのサーバー スクリプトの保存]
      ソース管理機能を使用して、カスタム API スクリプト コードを簡単かつ安全に開発、発行する方法について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-get-started/
   [データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/
   [カスタム API を定義する]: #define-custom-api
   [カスタム API を呼び出すようにアプリケーションを更新する]: #update-app
   [アプリケーションをテストする]: #test-app
-  [mobile-services-dotnet-backend-create-custom-api]: ../includes/mobile-services-dotnet-backend-create-custom-api.md
-  [mobile-services-windows-store-dotnet-call-custom-api]: ../includes/mobile-services-windows-store-dotnet-call-custom-api.md
   [定期的な通知をサポートするカスタム API の定義]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-create-pull-notifications
   [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
   [ソース管理へのサーバー スクリプトの保存]: /ja-jp/documentation/articles/mobile-services-store-scripts-source-control

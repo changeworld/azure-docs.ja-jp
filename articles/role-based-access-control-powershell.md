@@ -1,6 +1,6 @@
 <properties pageTitle="Managing Role-Based Access Control with Windows PowerShell" metaKeywords="ResourceManager, PowerShell, Azure PowerShell, RBAC" description="Managing role-based access control with Windows PowerShell" metaCanonical="" services="" documentationCenter="" title="Managing Role-Based Access Control with Windows PowerShell" authors="guayan" solutions="" manager="terrylan" editor="mollybos" />
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="powershell" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="guayan"></tags>
+<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="powershell" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="guayan" />
 
 # Windows PowerShell を使用した役割ベースのアクセス制御の管理
 
@@ -148,8 +148,6 @@ Windows PowerShell を使用した役割ベースのアクセス制御の管理�
 -   [XPLAT CLI を使用した役割ベースのアクセス制御の構成][XPLAT CLI を使用した役割ベースのアクセス制御の構成]
 -   [役割ベースのアクセス制御のトラブルシューティング][役割ベースのアクセス制御のトラブルシューティング]
 
-  [Windows PowerShell]: /ja-jp/documentation/articles/powershell-rbac.md "Windows PowerShell"
-  [クロスプラットフォーム CLI]: /ja-jp/documentation/articles/xplat-cli-rbac.md "クロスプラットフォーム CLI"
   [Windows Management Framework 3.0]: http://www.microsoft.com/ja-jp/download/details.aspx?id=34595
   [Windows Management Framework 4.0]: http://www.microsoft.com/ja-jp/download/details.aspx?id=40855
   [How to install and configure Windows Azure PowerShell (Windows Azure PowerShell のインストールおよび構成方法)]: http://www.windowsazure.com/ja-jp/documentation/articles/install-configure-powershell/

@@ -1,6 +1,6 @@
-<properties title="Azure Virtual Machines のセキュリティに関する提言" pageTitle="Azure Virtual Machines のセキュリティに関する提言" description="Azure VM の主要なセキュリティ機能の概要と、詳細へのリンクを示します。" metaKeywords="" services="virtual machines" solutions="" documentationCenter="" authors="kathydav" manager="timlt" videoId="" scriptId="" />
+<properties title="Security offerings for Azure Virtual Machines" pageTitle="Security offerings for Azure Virtual Machines" description="Quick overview of key security features for Azure VMs and links to details" metaKeywords="" services="virtual machines" solutions="" documentationCenter="" authors="kathydav" videoId="" scriptId="" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-multiple" ms.devlang="na" ms.topic="article" ms.date="7/29/2014" ms.author="kathydav" />
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-multiple" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="kathydav" />
 
 # Azure Virtual Machines のセキュリティに関する提言
 
@@ -22,12 +22,4 @@ Azure はウイルスまたはマルウェアへの対策に使用できる数�
 
 ネットワーク アクセス制御リスト (ACL) を使用すると、仮想マシン エンドポイントで受信するトラフィックを選択的に許可または拒否できます。このパケット フィルタリング機能は、セキュリティ レイヤーを追加します。この機能の詳細と手順のリンクについては、「[ネットワーク アクセス制御リスト (ACL) について][ネットワーク アクセス制御リスト (ACL) について]」を参照してください。
 
-## その他のリソース
-
-Microsoft Azure のトラスト センターの[リソース][リソース]
-
-  [How to install and configure Symantec Endpoint Protection on an Azure VM (Azure VM に Symantec Endpoint Protection をインストールし、構成する方法)]: http://go.microsoft.com/fwlink/p/?LinkId=404207
-  [How to install and configure Trend Micro Deep Security as a Service on an Azure VM (Azure VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法)]: http://go.microsoft.com/fwlink/p/?LinkId=404206
   [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ]: http://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/
-  [ネットワーク アクセス制御リスト (ACL) について]: http://go.microsoft.com/fwlink/?LinkId=506655
-  [リソース]: http://azure.microsoft.com/ja-jp/support/trust-center/resources/

@@ -1,6 +1,6 @@
 <properties linkid="dev-net-tutorials-hybrid-solution" urlDisplayName="Hybrid Application" pageTitle="Hybrid On-Premises/ Cloud Application (.NET) - Azure" metaKeywords="Azure Service Bus tutorial,hybrid .NET" description="Learn how to create a .NET On-Premises/Cloud Hybrid Application Using the Azure Service Bus Relay." metaCanonical="" services="service-bus" documentationCenter=".NET" title=".NET On-Premises/Cloud Hybrid Application Using Service Bus Relay" authors="sethm" solutions="" manager="dwrede" editor="mattshel" />
 
-<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="sethm"></tags>
+<tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="sethm" />
 
 # Service Bus Relay を使用する .NET 内部設置型/クラウド ハイブリッド アプリケーション
 
@@ -728,7 +728,6 @@ Azure では、消費されたサーバー時間の 1 時間単位の
 -   [サービス バスの利用方法に関するページ][サービス バスの利用方法に関するページ]
 -   [サービス バス キューの使用方法][サービス バス キューの使用方法]
 
-  [create-account-note]: ../includes/create-account-note.md
   [0]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/hybrid.png
   [1]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/App2.png
   [ツールと SDK の入手]: http://go.microsoft.com/fwlink/?LinkId=271920
@@ -741,7 +740,7 @@ Azure では、消費されたサーバー時間の 1 時間単位の
   [7]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/getting-started-multi-tier-27.png
   [8]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/sb-queues-09.png
   [9]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/sb-queues-06.png
-  [Azure Tools for Visual Studio の概要]: http://http://msdn.microsoft.com/en-us/library/windowsazure/ff687127.aspx
+  [Azure Tools for Visual Studio の概要]: http://http://msdn.microsoft.com/ja-jp/library/windowsazure/ff687127.aspx
   [10]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/VSProperties.png
   [NuGet Service Bus パッケージの使用]: http://go.microsoft.com/fwlink/?LinkId=234589
   [11]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/hy-web-1.png
@@ -757,8 +756,8 @@ Azure では、消費されたサーバー時間の 1 時間単位の
   [20]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/getting-started-multi-tier-40.png
   [21]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/hy-web-11.png
   [22]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/App1.png
-  [Azure Execution Models (Azure 実行モデル)]: http://www.windowsazure.com/en-us/develop/net/fundamentals/compute/
-  [Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションを Azure の Web サイトに展開する)]: http://www.windowsazure.com/en-us/develop/net/tutorials/get-started/
+  [Azure Execution Models (Azure 実行モデル)]: http://www.windowsazure.com/ja-jp/develop/net/fundamentals/compute/
+  [Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションを Azure の Web サイトに展開する)]: http://www.windowsazure.com/ja-jp/develop/net/tutorials/get-started/
   [23]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-21.png
   [24]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-22.png
   [25]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/hy-web-12.png
@@ -771,6 +770,6 @@ Azure では、消費されたサーバー時間の 1 時間単位の
   [32]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-41.png
   [33]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/hy-service1.png
   [34]: ./media/cloud-services-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-43.png
-  [Azure のサービス バス]: http://msdn.microsoft.com/en-us/library/windowsazure/ee732537.aspx
+  [Azure のサービス バス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee732537.aspx
   [サービス バスの利用方法に関するページ]: /ja-jp/documentation/services/service-bus/
-  [サービス バス キューの使用方法]: /en-us/develop/net/how-to-guides/service-bus-queues/
+  [サービス バス キューの使用方法]: /ja-jp/develop/net/how-to-guides/service-bus-queues/

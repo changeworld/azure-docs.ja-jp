@@ -54,8 +54,8 @@ Red Hat Enterprise Linux バージョン **6.0-6.3** の変形を実行する場
 
 最低限、以下のパッチが適用されていない場合は、Azure 上で問題が発生することがわかっているため、これらのパッチをカーネルに含める必要があります。この一覧は、すべてのディストリビューションに対して包括的または完全であるとは限りません。
 
--   [ata\_piix:defer disks to the Hyper-V drivers by default)。][ata\_piix:defer disks to the Hyper-V drivers by default)。]
--   [storvsc:Account for in-transit packets in the RESET path (RESET パスの転送中のパケットのアカウント)][storvsc:Account for in-transit packets in the RESET path (RESET パスの転送中のパケットのアカウント)]
+-   [ata\_piix:defer disks to the Hyper-V drivers by default。][ata defer disks to the Hyper-V drivers by default]
+-   [storvsc:Account for in-transit packets in the RESET path (RESET パスの転送中のパケットのアカウント)][storvsc:Account for in-transit packets in the RESET path RESET パスの転送中のパケットのアカウント]
 
 ## Azure Linux エージェント
 
@@ -124,7 +124,7 @@ Red Hat Enterprise Linux バージョン **6.0-6.3** の変形を実行する場
   [RAID]: ../virtual-machines-linux-configure-raid
   [この場所]: http://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409
   [MAINTAINERS]: https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS
-  [ata\_piix:defer disks to the Hyper-V drivers by default)。]: https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/ata/ata_piix.c?id=cd006086fa5d91414d8ff9ff2b78fbb593878e3c
-  [storvsc:Account for in-transit packets in the RESET path (RESET パスの転送中のパケットのアカウント)]: https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c
+  [ata defer disks to the Hyper-V drivers by default]: https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/ata/ata_piix.c?id=cd006086fa5d91414d8ff9ff2b78fbb593878e3c
+  [storvsc:Account for in-transit packets in the RESET path RESET パスの転送中のパケットのアカウント]: https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c
   [Azure Linux エージェント]: ../virtual-machines-linux-agent-user-guide
   [Linux Agent GitHub リポジトリ]: https://github.com/Azure/WALinuxAgent

@@ -1,6 +1,6 @@
 <properties title="Build a Node.js web application using DocumentDB" pageTitle="Build a Node.js web application using DocumentDB | Azure" description="Learn how to use Azure DocumentDB to store and access data from a Node.js application hosted on Azure." metaKeywords="NoSQL, DocumentDB,  database, document-orientated database, JSON, getting started"   services="documentdb" solutions="data-management" documentationCenter=""  authors="ryancraw" manager="jhubbard" editor="cgronlun" scriptId="" />
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="ryancraw"></tags>
+<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="ryancraw" />
 
 # <a name="_Toc395783175">DocumentDB を使用した Node.js Web アプリケーションの作成</a>
 
@@ -31,23 +31,23 @@ DocumentDB に保存するものとします。
 この記事の手順を実行する前に、次のソフトウェアがインストール
 されていることを確認してください。
 
-[Node.js][] バージョン v0.10.29 以降
+[Node.js][Node.js] バージョン v0.10.29 以降
 
-[Git][]
+[Git][Git]
 
-[Visual Studio 2013][] Update 3
+[Visual Studio 2013][Visual Studio 2013] Update 3
 
-[Node.js Tools for Visual Studio][]
+[Node.js Tools for Visual Studio][Node.js Tools for Visual Studio]
 
 **注:** このチュートリアルでは Visual Studio を使って Node.js プロジェクトを
 ビルド、デバッグ、デプロイしていますが、
 任意のエディターを使い、Node.js プロジェクトを普段実行するのと同じように、
-任意のプラットフォームで Node.js を直接実行できます。その後、[Azure CLI][] ツールを使って
+任意のプラットフォームで Node.js を直接実行できます。その後、[Azure CLI][Azure CLI] ツールを使って
 アプリケーションを Azure Websites にデプロイできます。
 
 # <a name="_Toc395637761">DocumentDB データベース アカウントの作成</a>
 
-DocumentDB データベース アカウントを Azure にプロビジョニングするには、[Azure の管理ポータル][]
+DocumentDB データベース アカウントを Azure にプロビジョニングするには、[Azure の管理ポータル][Azure の管理ポータル]
 を開いて、ホームページにある Azure ギャラリー タイルをクリックするか、または、画面の左下隅にある [+] をクリックします。
 
 ![Alt text][1]
@@ -499,14 +499,14 @@ Visual Studio によって Azure サブスクリプションに接続され、
 ご利用ありがとうございます。ここでは初めての方を対象に、Azure DocumentDB
 を使用した Node.js Express Web アプリケーションを作成し、Azure Websites に発行する方法を説明しました。
 
-アプリケーションの完全なソース コードは[こちら][]からダウンロードできます。ぜひご参考ください。
+アプリケーションの完全なソース コードは[こちら][こちら]からダウンロードできます。ぜひご参考ください。
 
 </h1>
 
   [0]: ./media/documentdb-nodejs-application/image1.png
   [Node.js]: http://nodejs.org/
   [Git]: http://git-scm.com/
-  [Visual Studio 2013]: http://msdn.microsoft.com/en-us/vstudio/cc136611.aspx
+  [Visual Studio 2013]: http://msdn.microsoft.com/ja-jp/vstudio/cc136611.aspx
   [Node.js Tools for Visual Studio]: https://nodejstools.codeplex.com/
   [Azure CLI]: http://azure.microsoft.com/ja-jp/documentation/articles/xplat-cli/
   [Azure の管理ポータル]: http://portal.azure.com

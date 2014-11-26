@@ -56,9 +56,9 @@
 
 これで、アプリケーションで認証に Azure Active Directory を使用する準備ができました。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証]: /ja-jp/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/
   [Azure の管理ポータル]: https://manage.windowsazure.com/

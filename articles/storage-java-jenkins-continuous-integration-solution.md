@@ -1,4 +1,4 @@
-<properties urlDisplayName="Jenkins Continuous Integration" pageTitle="Jenkins 継続的インテグレーション ソリューションでの Azure Storage の使用 | Microsoft Azure" metaKeywords="" description="このチュートリアルでは、Jenkins 継続的インテグレーション ソリューションで作成されるビルド アーティファクトのリポジトリとして Azure BLOB サービスを使用する方法について説明します。" metaCanonical="" services="storage" documentationCenter="Java" title="Jenkins 継続的インテグレーション ソリューションでの Azure ストレージの使用" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
+<properties linkid="develop-java-tutorials-jenkins-continuous-integration" urlDisplayName="Jenkins Continuous Integration" pageTitle="Using Azure Storage with a Jenkins Continuous Integration Solution | Microsoft Azure" metaKeywords="" description="This tutorial show how to use the Azure blob service as a repository for build artifacts created by a Jenkins continuous integration solution." metaCanonical="" services="storage" documentationCenter="Java" title="Using Azure Storage with a Jenkins Continuous Integration solution" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
 
@@ -123,7 +123,7 @@ Jenkins で BLOB サービスを使用するには、Azure ストレージ プ�
     4.  **[コンテナー]** をクリックします。
     5.  **myjob** という名前のコンテナーをクリックします。これは、Jenkins ジョブを作成したときに割り当てたジョブ名を小文字にしたものです。Azure ストレージでは、コンテナー名と BLOB 名は小文字です (大文字と小文字は区別されます)。**myjob** という名前のコンテナーの BLOB の一覧に、**hello.txt** と **date.txt** の 2 つがあります。そのどちらかの URL をコピーして、ブラウザーで開きます。このテキスト ファイルがビルド アーティファクトとしてアップロードされていることがわかります。
 
-アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクションは、ジョブごとに 1 つのみ作成できます。**[List of Artifacts to upload]** でセミコロンを区切り記号として使用することで、アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクション 1 つに、(ワイルドカードを含む) 複数のファイルとファイル パスを指定できます。たとえば、Jenkins ビルドによってワークスペースの **build** フォルダーに JAR ファイルと TXT ファイルが生成され、これら両方のファイルを Azure BLOB ストレージにアップロードする場合、**[List of Artifacts to upload]** の値には「**build/\*.jar;build/\*.txt**」を使用します。また、2 重コロンの構文を使用すると、BLOB 名で使用するパスを指定できます。たとえば、JAR ファイルのアップロードに BLOB パス内の **binaries** を使用し、TXT ファイルのアップロードに BLOB パス内の **notices** を使用する場合、**[List of Artifacts to upload]** の値には「**build/\*.jar::binaries;build/\*.txt::notices**」を使用します。
+アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクションは、ジョブごとに 1 つのみ作成できます。**[List of Artifacts to upload]** でセミコロンを区切り記号として使用することで、アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクション 1 つに、(ワイルドカードを含む) 複数のファイルとファイル パスを指定できます。たとえば、Jenkins ビルドによってワークスペースの **build** フォルダーに JAR ファイルと TXT ファイルが生成され、これら両方のファイルを Azure BLOB ストレージにアップロードする場合、**[List of Artifacts to upload]** の値には「**build/\*.jar;build/\*.txt**」を使用します。また、2 重コロンの構文を使用すると、BLOB 名で使用するパスを指定できます。たとえば、JAR ファイルのアップロードに BLOB パス内の **binaries** を使用し、TXT ファイルのアップロードに BLOB パス内の **notices** を使用する場合、**[List of Artifacts to upload]** の値には「**build/\*.<jar::binaries;build/>\*.txt::notices**」を使用します。
 
 ## <a name="howtocreatebuildstep"></a><span class="short header">ビルド手順の作成方法</span>BLOB ストレージからのダウンロードを実行するビルド手順の作成方法
 
@@ -166,7 +166,6 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
   [ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションの作成方法]: #howtocreatepostbuild
   [BLOB ストレージからのダウンロードを実行するビルド手順の作成方法]: #howtocreatebuildstep
   [BLOB サービスが使用するコンポーネント]: #components
-  [Meet Jenkins (Jenkins について)]: https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins
   [ストレージ アカウントの作成方法]: http://go.microsoft.com/fwlink/?LinkId=279823
   [共有アクセス署名の作成に関するページ]: http://go.microsoft.com/fwlink/?LinkId=279889
   [ブロック BLOB およびページ BLOB について]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee691964.aspx

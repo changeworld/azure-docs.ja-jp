@@ -1,6 +1,6 @@
 <properties title="Build a web application with Python and Flask (MVC) using DocumentDB" pageTitle="Build a web app with Python and Flask using DocumentDB | Azure" description="Learn how to use DocumentDB to store and access data from an Python and Flask (MVC) web application hosted on Azure."  metaKeywords="NoSQL, DocumentDB,  database, document-orientated database, JSON, account" services="documentdb"  solutions="data-management" documentationCenter=""  authors="hawong" manager="jhubbard" editor="cgronlun" videoId="" scriptId="" />
 
-<tags ms.service="documentdb" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="hawong"></tags>
+<tags ms.service="documentdb" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="hawong" />
 
 # <a name="_Toc395888515"></a><a name="_Toc395809324">DocumentDB を使用した Python Flask (MVC) Web アプリケーションの構築</a>
 
@@ -33,7 +33,7 @@ Azure にホストされている Python Web アプリケーションからデ�
 このチュートリアルの手順を実行すると、
 アンケートに回答する単純な投票アプリケーションを作成できます。
 
-![Alt text][]
+![Alt text][Alt text]
 
 <a name="_Toc395888520"></a><a name="_Toc395809329">前提条件</a>
 
@@ -41,15 +41,16 @@ Azure にホストされている Python Web アプリケーションからデ�
 されていることを確認してください。
 
 Visual Studio 2013 (またはその無償版の
-[Visual Studio Express][])
+[Visual Studio Express][Visual Studio Express])
 
-Python Tools for Visual Studio ([ここ][]から入手できます)
+Python Tools for Visual Studio ([ここ][ここ]から入手できます)
 
 Azure SDK for Visual Studio 2013 バージョン 2.4 以降
 ([ここ][1]から入手できます)
 
 Azure クロスプラットフォーム コマンド ライン ツール ([Microsoft
-Web Platform Installer][] を通じて入手できます)
+Web Platform Installer][Microsoft
+Web Platform Installer] を通じて入手できます)
 
 # <a name="_Toc395888519"></a><a name="_Toc395809328">DocumentDB データベース アカウントの作成</a>
 
@@ -109,7 +110,7 @@ Visual Studio を開き、[ファイル]、[新しいプロジェクト]、[Pyth
 仮想環境が設定されます。
 
 Flask は、Python で
-Web アプリケーションをより迅速に作成するのに役立つ Web フレームワークです。[Flask のチュートリアルについては、ここをクリックしてください][]。
+Web アプリケーションをより迅速に作成するのに役立つ Web フレームワークです。[Flask のチュートリアルについては、ここをクリックしてください][Flask のチュートリアルについては、ここをクリックしてください]。
 
 ![Alt text][10]
 
@@ -442,10 +443,9 @@ Azure Websites を構成します。
 </h1>
 
   [Alt text]: ./media/documentdb-python-application/image1.png
-  [Visual Studio Express]: http://www.visualstudio.com/en-us/products/visual-studio-express-vs.aspx
+  [Visual Studio Express]: http://www.visualstudio.com/ja-jp/products/visual-studio-express-vs.aspx
   [ここ]: https://pytools.codeplex.com/releases/view/123624
   [1]: http://go.microsoft.com/fwlink/?linkid=254281&clcid=0x409
-  [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
   [2]: ./media/documentdb-python-application/image2.png
   [3]: ./media/documentdb-python-application/image3.png
   [4]: ./media/documentdb-python-application/image4.png

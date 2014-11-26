@@ -230,7 +230,6 @@ SendGrid の Web ベース API を使用して、Azure アプリケーション�
   [トランザクション電子メール配信]: http://sendgrid.com/solutions
   [クラウドベース電子メール サービス]: http://sendgrid.com/transactional-email
   []: http://sendgrid.com
-  [sendgrid-sign-up]: ../includes/sendgrid-sign-up.md
   [sendgrid-nodejs に関するページ]: https://github.com/sendgrid/sendgrid-nodejs
   [SMTP と Web API を比較した SendGrid ドキュメント]: http://docs.sendgrid.com/documentation/get-started/integrate/examples/smtp-vs-rest/
   [フィルター設定に関するページ]: http://docs.sendgrid.com/documentation/api/smtp-api/filter-settings/

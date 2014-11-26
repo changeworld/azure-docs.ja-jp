@@ -1,21 +1,19 @@
-<properties urlDisplayName="Web with Django (Windows)" pageTitle="Django を使用した Python Web アプリケーション - Azure チュートリアル" metaKeywords="Azure Django web app, Azure Django virtual machine" description="Windows Server 2012 R2 Datacenter 仮想マシンを使用して Azure で Django ベースの Web サイトをホストする方法について説明するチュートリアルです。" metaCanonical="" services="virtual-machines" documentationCenter="Python" title="Django Hello World Web アプリケーション" authors="huvalo" solutions="" manager="wpickett" editor="" />
+<properties linkid="develop-python-web-app-with-django" urlDisplayName="Web with Django (Windows)" pageTitle="Python web app with Django - Azure tutorial" metaKeywords="Azure Django web app, Azure Django virtual machine" description="A tutorial that teaches you how to host a Django-based website on Azure using a Windows Server 2008 R2 virtual machine." metaCanonical="" services="virtual-machines" documentationCenter="Python" title="Django Hello World Web Application" authors="huvalo" solutions="" manager="" editor="" />
 
-<tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="vm-windows" ms.devlang="python" ms.topic="article" ms.date="09/25/2014" ms.author="huvalo" />
+<tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="vm-windows" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo" />
 
 # Django Hello World Web アプリケーション
 
 <div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/develop/python/tutorials/web-app-with-django/" title="Windows" class="current">Windows</a><a href="/ja-jp/develop/python/tutorials/django-hello-world-(maclinux)/" title="MacLinux">Mac/Linux</a></div>
 
-このチュートリアルでは、Windows Server 仮想マシンを使用して Microsoft
-Azure で Django ベースの Web サイトをホストする方法について説明します。このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルを完了すると、クラウドで動作する Django ベースのアプリケーションが完成します。
+このチュートリアルでは、Windows Server 仮想マシンを使用して Windows Azure でDjango ベースの Web サイトをホストする方法について説明します。このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルを完了すると、クラウドで動作する Django ベースのアプリケーションが完成します。
 
 学習内容:
 
 -   Django をホストするように Azure の仮想マシンを設定します。このチュートリアルでは **Windows Server** で Azure の仮想マシンを設定する方法について説明しますが、Azure でホストされている Linux VM の場合も基本的な手順は同じです。
 -   新しい Django アプリケーションを Windows から作成します。
 
-このチュートリアルを実行して、単純な Hello World Web
-アプリケーションを作成します。このアプリケーションは Azure の仮想マシンでホストされます。
+このチュートリアルを実行して、単純な Hello World Web アプリケーションを作成します。このアプリケーションは Azure の仮想マシンでホストされます。
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
@@ -25,137 +23,91 @@ Azure で Django ベースの Web サイトをホストする方法について�
 
 ## Django をホストする Azure の仮想マシンの作成と構成
 
-1.  [ここ][ここ]に記載されている手順に従って、*Windows Server 2012 R2 Datacenter* ディストリビューションの Azure 仮想マシンを作成します。
+1.  [ここ][ここ]に記載されている手順に従って、*Windows Server 2012 データセンター* ディストリビューションの Azure の仮想マシンを作成します。
 
 2.  Azure で、ポート **80** トラフィックを Web から仮想マシン上のポート **80** に転送します。
+ - Azure ポータルで新しく作成した仮想マシンに移動し、*[エンドポイント]* タブをクリックします。
+ - 画面の下部にある *[エンドポイントの追加]* ボタンをクリックします。
+    ![エンドポイントの追加][エンドポイントの追加]
 
--   Azure ポータルで新しく作成した仮想マシンに移動し、*[エンドポイント]* タブをクリックします。
--   画面の下部にある *[追加]* ボタンをクリックします。
-    ![add endpoint][add endpoint]
-
--   *TCP* プロトコルの*パブリック ポート 80* を*プライベート ポート 80* として開きます。
+ - *TCP* プロトコルの *パブリック ポート 80* を *プライベート ポート 80* として開きます。
     ![][0]
 
-1.  *[ダッシュボード]* タブで *[接続]* をクリックし、新たに作成した Azure 仮想マシンに*リモート デスクトップ*を使ってリモートでログインします。
+1.  Windows リモート デスクトップを使用して、新しく作成した Azure の仮想マシンにリモートでログインします。
 
 **重要:** 以下のすべての手順では、仮想マシンに正しくログインしており、ローカル コンピューターではなく仮想マシンでコマンドを発行することを前提としています。
 
-## <span id="setup"></span> </a>Python と Django の設定
+## <span id="setup"></span> </a>開発環境の設定
 
-**注:** Internet Explorer を使ってダウンロードするには、IE ESC 設定の構成が必要になる場合があります。具体的には、[スタート]、[管理ツール]、[サーバー マネージャー]、[ローカル サーバー] の順にクリックしてから、**[IE セキュリティ強化の構成]** をクリックし、[オフ] に設定します。
+Python と Django の環境を設定する場合、詳細については「[Installation Guide (インストール ガイド)][Installation Guide (インストール ガイド)]」を参照してください。
 
-1.  [Web Platform Installer][Web Platform Installer] をインストールします。
-2.  Web Platform Installer を使用して、Python と WFastCGI をインストールします。これにより、wfastcgi.py が Python スクリプト フォルダーにインストールされます。
+**注 1:** このチュートリアルに示されている手順を実施するには、Windows WebPI インストーラーから **Django** 製品を Azure の仮想マシンにインストールするだけで十分です。
 
-    1.  Web Platform Installer を起動します。
-    2.  検索バーに「WFastCGI」と入力します。
-    3.  使用する Python のバージョン (2.7 または 3.4) に対応した WFactCGI エントリを選択します。これにより、Python が WFastCGI の依存コンポーネントとしてインストールされます。
-
-3.  Python 2.7 をインストールした場合は、[この手順に従って pip を手動でインストールします][この手順に従って pip を手動でインストールします] (Python 3.4 の場合は pip は既にインストールされています)。
-4.  pip を使用して Django をインストールします。
-
-    Python 2.7:
-
-        c:\python27\scripts\pip install django
-
-    Python 3.4:
-
-        c:\python34\scripts\pip install django
+**注 2:** WebPI インストーラーをダウンロードするには、IE ESC 設定の構成が必要になる場合があります。そのためには、[スタート]、[管理ツール]、[サーバー マネージャー] の順にクリックしてから、**[IE ESC の構成]** をクリックし、[オフ] に設定します。
 
 ## FastCGI での IIS の設定
 
-1.  FastCGI のサポートを利用して IIS をインストールします。この操作には数分かかる可能性があります。
+1.  FastCGI のサポートを利用した IIS のインストール
 
         start /wait %windir%\System32\PkgMgr.exe /iu:IIS-WebServerRole;IIS-WebServer;IIS-CommonHttpFeatures;IIS-StaticContent;IIS-DefaultDocument;IIS-DirectoryBrowsing;IIS-HttpErrors;IIS-HealthAndDiagnostics;IIS-HttpLogging;IIS-LoggingLibraries;IIS-RequestMonitor;IIS-Security;IIS-RequestFiltering;IIS-HttpCompressionStatic;IIS-WebServerManagementTools;IIS-ManagementConsole;WAS-WindowsActivationService;WAS-ProcessModel;WAS-NetFxEnvironment;WAS-ConfigurationAPI;IIS-CGI
 
-### Python 2.7
-
-Python 2.7 を使用している場合に限り、これらのコマンドを実行してください。
-
-1.  Python FastCGI ハンドラーを設定します。
+2.  Python FastCGI ハンドラーの設定
 
         %windir%\system32\inetsrv\appcmd set config /section:system.webServer/fastCGI "/+[fullPath='c:\Python27\python.exe', arguments='C:\Python27\Scripts\wfastcgi.py']"
 
-2.  このサイトのハンドラーを登録します。
+3.  このサイトのハンドラーの登録
 
         %windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers "/+[name='Python_via_FastCGI',path='*',verb='*',modules='FastCgiModule',scriptProcessor='c:\Python27\python.exe|C:\Python27\Scripts\wfastcgi.py',resourceType='Unspecified']"
 
-3.  Django アプリケーションを実行するようにハンドラーを構成します。
+4.  Django アプリケーションを実行するようにハンドラーを構成する
 
-        %windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='C:\Python27\python.exe', arguments='C:\Python27\Scripts\wfastcgi.py'].environmentVariables.[name='DJANGO_SETTINGS_MODULE',value='helloworld.settings']" /commit:apphost
+        %windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='C:\Python27\python.exe', arguments='C:\Python27\Scripts\wfastcgi.py'].environmentVariables.[name='DJANGO_SETTINGS_MODULE',value='DjangoApplication.settings']" /commit:apphost
 
-4.  Python インタープリターで Django アプリケーションを検索できるように PYTHONPATH を構成します。
+5.  Python インタープリターで Django アプリケーションを検索できるように PYTHONPATH を構成する
 
-        %windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='C:\Python27\python.exe', arguments='C:\Python27\Scripts\wfastcgi.py'].environmentVariables.[name='PYTHONPATH',value='C:\inetpub\wwwroot\helloworld']" /commit:apphost
+        %windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='C:\Python27\python.exe', arguments='C:\Python27\Scripts\wfastcgi.py'].environmentVariables.[name='PYTHONPATH',value='C:\inetpub\wwwroot\DjangoApplication']" /commit:apphost
 
-5.  FastCGI から WSGI へのゲートウェイに、使用する WSGI ハンドラーを指定します。
-
-        %windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='C:\Python27\python.exe', arguments='C:\Python27\Scripts\wfastcgi.py'].environmentVariables.[name='WSGI_HANDLER',value='django.core.handlers.wsgi.WSGIHandler()']" /commit:apphost
-
-6.  次のように表示されます。
+    次のように表示されます。
 
     ![IIS 構成 1][IIS 構成 1]
 
-### Python 3.4
+6.  FastCGI から WSGI へのゲートウェイにどの WSGI ハンドラーを使用するかを伝えます。
 
-Python 3.4 を使用している場合に限り、これらのコマンドを実行してください。
+        %windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='C:\Python27\python.exe', arguments='C:\Python27\Scripts\wfastcgi.py'].environmentVariables.[name='WSGI_HANDLER',value='django.core.handlers.wsgi.WSGIHandler()']" /commit:apphost
 
-1.  Python FastCGI ハンドラーを設定します。
-
-        %windir%\system32\inetsrv\appcmd set config /section:system.webServer/fastCGI "/+[fullPath='c:\Python34\python.exe', arguments='C:\Python34\Scripts\wfastcgi.py']"
-
-2.  このサイトのハンドラーを登録します。
-
-        %windir%\system32\inetsrv\appcmd set config /section:system.webServer/handlers "/+[name='Python_via_FastCGI',path='*',verb='*',modules='FastCgiModule',scriptProcessor='c:\Python34\python.exe|C:\Python34\Scripts\wfastcgi.py',resourceType='Unspecified']"
-
-3.  Django アプリケーションを実行するようにハンドラーを構成します。
-
-        %windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='C:\Python34\python.exe', arguments='C:\Python34\Scripts\wfastcgi.py'].environmentVariables.[name='DJANGO_SETTINGS_MODULE',value='helloworld.settings']" /commit:apphost
-
-4.  Python インタープリターで Django アプリケーションを検索できるように PYTHONPATH を構成します。
-
-        %windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='C:\Python34\python.exe', arguments='C:\Python34\Scripts\wfastcgi.py'].environmentVariables.[name='PYTHONPATH',value='C:\inetpub\wwwroot\helloworld']" /commit:apphost
-
-5.  FastCGI から WSGI へのゲートウェイに、使用する WSGI ハンドラーを指定します。
-
-        %windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='C:\Python34\python.exe', arguments='C:\Python34\Scripts\wfastcgi.py'].environmentVariables.[name='WSGI_HANDLER',value='django.core.handlers.wsgi.WSGIHandler()']" /commit:apphost
-
-6.  次のように表示されます。
-
-    ![IIS 構成 1][1]
+7.  [CodePlex][CodePlex] から wfastcgi.py をダウンロードし、C:\\Python27\\Scripts に保存します。このディレクトリは、FastCGI ハンドラーの登録で以前のコマンドが使用していた場所です。または、Web Platform Installer を使用してインストールすることもできます。「WFastCGI」を検索してください。
 
 ## 新しい Django アプリケーションの作成
 
-1.  *C:\\inetpub\\wwwroot* から次のコマンドを入力して、新しい Django プロジェクトを作成します。
+1.  cmd.exe を起動します。
 
-    Python 2.7:
+2.  C:\\inetpub\\wwwroot ディレクトリへ移動します。
 
-        C:\Python27\Scripts\django-admin.exe startproject helloworld
+3.  次のコマンドを入力して、新しい Django プロジェクトを作成します。
 
-    Python 3.4:
-
-        C:\Python34\Scripts\django-admin.exe startproject helloworld
+    C:\\Python27\\python.exe -m django.bin.django-admin startproject DjangoApplication
 
     ![New-AzureService コマンドの結果][New-AzureService コマンドの結果]
 
-2.  **django-admin** コマンドによって、Django ベースの Web サイトの基本的な構造が生成されます。
+     **django-admin.py** スクリプトによって、Django ベースの Web サイトの基本的な構造が生成されます。
 
--   **helloworld\\manage.py** を使用すると、Django ベースの Web サイトのホスティングを開始および停止できます。
--   **helloworld\\helloworld\\settings.py** には、アプリケーション向けの Django の設定が含まれています。
--   **helloworld\\helloworld\\urls.py** には、各 URL とそのビューとの間のマッピング コードが含まれています。
-
-1.  **views.py** という名前の新しいファイルを *C:\\inetpub\\wwwroot\\helloworld\\helloworld* ディレクトリに作成します。このファイルには、"Hello World" ページをレンダリングするビューが含まれます。エディターを起動し、次のコードを入力します。
+ -   **manage.py** を使用すると、Django ベースの Web サイトに対するホスティングの開始や停止を実行できます。
+ -   **DjangoApplication\\settings.py** には、アプリケーション向けの Django の設定が含まれています。
+ -   **DjangoApplication\\urls.py** には、各 URL とそのビューとの間のマッピング コードが含まれています。
+<br/><br/>
+1.  *C:\\inetpub\\wwwroot\\DjangoApplication* のサブディレクトリ *DjangoApplication* に、**views.py** という名前の新しいファイルを作成します。このファイルは **urls.py** と兄弟関係にあります。このファイルには、"Hello World" ページをレンダリングするビューが含まれます。エディターを起動し、次のコードを入力します。
 
         from django.http import HttpResponse
-        def home(request):
+        def hello(request):
             html = "<html><body>Hello World!</body></html>"
             return HttpResponse(html)
 
-2.  **urls.py** ファイルの内容を次のコードに置き換えます。
+2.  ここで、**urls.py** ファイルの内容を次のコードに置き換えます。
 
-        from django.conf.urls import patterns, url
+        from django.conf.urls.defaults import patterns, include, url
+        from DjangoApplication.views import hello
         urlpatterns = patterns('',
-            url(r'^$', 'helloworld.views.home', name='home'),
+            (r'^$',hello),
         )
 
 3.  最後に、ブラウザーで Web ページを読み込みます。
@@ -168,10 +120,8 @@ Python 3.4 を使用している場合に限り、これらのコマンドを実
 
   [Azure で Hello World ページを表示するブラウザー ウィンドウ]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-browser-azure.png
   [ここ]: /ja-jp/manage/windows/tutorials/virtual-machine-from-gallery/
-  [add endpoint]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-addendpoint.png
+  [エンドポイントの追加]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-addendpoint.png
   [0]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-port80.png
-  [Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
-  [この手順に従って pip を手動でインストールします]: https://pip.pypa.io/en/latest/installing.html
-  [IIS 構成 1]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-iis-27.png
-  [1]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-iis-34.png
+  [IIS 構成 1]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-iis1.png
+  [CodePlex]: http://go.microsoft.com/fwlink/?LinkID=316392&clcid=0x409
   [New-AzureService コマンドの結果]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-cmd-new-azure-service.png

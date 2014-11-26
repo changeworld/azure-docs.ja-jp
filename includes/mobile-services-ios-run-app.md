@@ -2,7 +2,7 @@
 
 1.  圧縮されたプロジェクト ファイルの保存場所を参照し、ファイルをコンピューター上に展開して、Xcode でプロジェクト ファイルを開きます。
 
-    ![][]
+    ![][0]
 
 2.  **[実行]** をクリックしてプロジェクトをビルドし、このプロジェクトの既定である iPhone エミュレーターでアプリケーションを開始します。
 
@@ -17,5 +17,5 @@
     > </div>
     > </p>
 
-  []: ./media/mobile-services-ios-run-app/mobile-xcode-project.png
+  [0]: ./media/mobile-services-ios-run-app/mobile-xcode-project.png
   [1]: ./media/mobile-services-ios-run-app/mobile-quickstart-startup-ios.png

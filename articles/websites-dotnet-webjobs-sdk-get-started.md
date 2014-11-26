@@ -881,13 +881,11 @@ Web ジョブを Web サイトで実行する場合は、Web サイトの場合�
   [次のステップ]: #next-steps
   [ASP.NET MVC]: http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started
   [Web フォーム]: http://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview
-  [free-trial-note]: ../includes/free-trial-note.md
   [Web ジョブ]: /ja-jp/documentation/articles/web-sites-create-web-jobs/
   [AlwaysOn]: http://weblogs.asp.net/scottgu/archive/2014/01/16/windows-azure-staging-publishing-support-for-web-sites-monitoring-improvements-hyper-v-recovery-manager-ga-and-pci-compliance.aspx
   [Ad table]: ./media/websites-dotnet-webjobs-sdk-get-started/adtable.png
   [Contoso Ads architecture]: ./media/websites-dotnet-webjobs-sdk-get-started/apparchitecture.png
   [Azure の Web サイト、クラウド サービス、および仮想マシンの比較]: /ja-jp/documentation/articles/choose-web-site-cloud-service-vm/
-  [install-sdk-2013-only]: ../includes/install-sdk-2013-only.md
   [Azure 管理ポータル]: http://manage.windowsazure.com
   [ストレージ アカウントの管理方法に関するページ]: /ja-jp/documentation/articles/storage-manage-storage-account/
   [New storage account]: ./media/websites-dotnet-webjobs-sdk-get-started/newstorage.png

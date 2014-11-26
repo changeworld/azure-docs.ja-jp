@@ -192,7 +192,7 @@ FTP の完全なユーザー名は、“Web サイト\\ユーザー名” です
 パスワードをリセットするには、**[発行プロファイルの資格情報のリセット]** をクリックします。新しい資格情報を取得するには、発行プロファイルを再びダウンロードします。発行プロファイルの資格情報は Web サイトと関連付けられています。各 Web サイトには専用の発行プロファイルがあります。
 
 <!-- LINKS --> 
-<!-- Anchors. -->
+
 
   [WebMatrix のインストール]: http://go.microsoft.com/fwlink/?LinkID=226244
   [Microsoft Azure SDK のインストール]: http://go.microsoft.com/fwlink/?LinkId=246928

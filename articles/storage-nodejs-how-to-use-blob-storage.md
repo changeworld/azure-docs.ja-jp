@@ -1,6 +1,6 @@
-<properties urlDisplayName="Blob Service" pageTitle="BLOB ストレージの使用方法 (Node.js) | Microsoft Azure" metaKeywords="Get started Azure blob, Azure unstructured data, Azure unstructured storage, Azure blob, Azure blob storage, Azure blob Node.js" description="Azure BLOB サービスを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、および削除する方法について説明します。サンプルは Node.js で記述されています。" metaCanonical="" services="storage" documentationCenter="nodejs" title="Node.js から BLOB サービスを使用する方法" authors="larryfr" solutions="" manager="wpickett" editor="" />
+<properties linkid="dev-nodejs-how-to-blob-storage" urlDisplayName="Blob Service" pageTitle="How to use blob storage (Node.js) | Microsoft Azure" metaKeywords="Get started Azure blob, Azure unstructured data, Azure unstructured storage, Azure blob, Azure blob storage, Azure blob Node.js" description="Learn how to use the Azure blob service to upload, download, list, and delete blob content. Samples written in Node.js." metaCanonical="" services="storage" documentationCenter="Node.js" title="How to Use the Blob Service from Node.js" authors="larryfr" solutions="" manager="" editor="" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="larryfr" />
 
 # Node.js から BLOB サービスを使用する方法
 
@@ -167,7 +167,7 @@ BLOB はブロック ベースまたはページ ベースのいずれにもで�
 
 -   **createPageBlob** - 指定の長さの新しいページ blob を作成します。
 
--   **createPageBlobFromLocalFile** - 新しいページ blob を作成してファイルの内容をアップロードします。
+-   **createPageBlobFromFile** - 新しいページ blob を作成してファイルの内容をアップロードします。
 
 -   **createPageBlobFromStream** - 新しいページ blob を作成してストリームの内容をアップロードします。
 
@@ -177,7 +177,7 @@ BLOB はブロック ベースまたはページ ベースのいずれにもで�
 
 次の例では、**test.txt** ファイルの内容を **mypageblob** にアップロードします。
 
-    blobSvc.createPageBlobFromLocalFile('mycontainer', 'mypageblob', 'test.txt', function(error, result, response){
+    blobSvc.createPageBlobFromFile('mycontainer', 'mypageblob', 'test.txt', function(error, result, response){
       if(!error){
         // file uploaded
       }

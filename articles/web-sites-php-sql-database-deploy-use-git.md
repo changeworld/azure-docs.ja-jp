@@ -278,7 +278,6 @@ Registration アプリケーションは、名前と電子メール アドレス
   [Git]: http://git-scm.com/
   [Microsoft Web プラットフォーム インストーラー]: http://www.microsoft.com/web/downloads/platform.aspx
   [Azure PHP Web Site]: ./media/web-sites-php-sql-database-deploy-use-git/running_app_3.png
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   [新しい Azure Website の作成]: ./media/web-sites-php-sql-database-deploy-use-git/new_website.jpg
   [Custom Create a new Web Site]: ./media/web-sites-php-sql-database-deploy-use-git/custom_create.png

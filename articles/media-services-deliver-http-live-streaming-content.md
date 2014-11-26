@@ -82,6 +82,6 @@ Apple HLS ストリーミング コンテンツへのロケーターを構築す
   [Media Services SDK for .NET の概要に関するページ]: http://go.microsoft.com/fwlink/?linkid=252966
   [Media Services SDK for .NET を使ったアプリケーション構築に関するページ]: http://go.microsoft.com/fwlink/?linkid=247821
   [Azure メディア サービス REST API を使用したアプリケーション構築に関するページ]: http://go.microsoft.com/fwlink/?linkid=252967
-  [メディア サービス フォーラム]: http://social.msdn.microsoft.com/Forums/en-US/MediaServices/threads
+  [メディア サービス フォーラム]: http://social.msdn.microsoft.com/Forums/ja-jp/MediaServices/threads
   [メディア サービス アカウントの監視方法に関するページ]: ../media-services-monitor-services-account/
   [メディア サービスのコンテンツの管理方法に関するページ]: ../media-services-manage-content/

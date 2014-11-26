@@ -190,9 +190,9 @@
 
 詳細については、「[サーバー スクリプトの操作][サーバー スクリプトの操作]」と「[モバイル サービス HTML/JavaScript の使用方法の概念リファレンス][モバイル サービス HTML/JavaScript の使用方法の概念リファレンス]」を参照してください
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [文字列の長さの検証の追加]: #string-length-validation
   [検証をサポートするためのクライアントの更新]: #update-client-validation

@@ -47,19 +47,14 @@
 
 次の[モバイル サービス ユーザーのサービス側の認証][モバイル サービス ユーザーのサービス側の認証]チュートリアルでは、認証されたユーザーに基づいてモバイル サービスによって提供されるユーザー ID 値を受け取り、それを使用して、モバイル サービスから返されたデータをフィルター処理します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
 
-  [mobile-services-selector-get-started-users]: ../includes/mobile-services-selector-get-started-users.md
+
   [アプリケーションを認証に登録し、モバイル サービスを構成する]: #register
   [テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
   [アプリケーションに認証を追加する]: #add-authentication
   [アプリケーションに認証トークンを保存する]: #store-authentication
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-ios
-  [mobile-services-register-authentication]: ../includes/mobile-services-register-authentication.md
-  [mobile-services-restrict-permissions-javascript-backend]: ../includes/mobile-services-restrict-permissions-javascript-backend.md
   [1]: /ja-jp/documentation/articles/mobile-services-ios-get-started
-  [mobile-services-ios-authenticate-app]: ../includes/mobile-services-ios-authenticate-app.md
-  [mobile-services-ios-authenticate-app-with-token]: ../includes/mobile-services-ios-authenticate-app-with-token.md
   [モバイル サービス ユーザーのサービス側の認証]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-ios

@@ -504,7 +504,6 @@ Azure のクラウド サービスではなく、Azure Web サイトに多層ア
 
 Azure Web サイトにフロンドエンドを展開する方法については、「[Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションを Azure の Web サイトに展開する)][Deploying an ASP.NET Web Application to an Azure Website (ASP.NET Web アプリケーションを Azure の Web サイトに展開する)]」を参照してください。Azure のクラウド サービスにバックエンドを展開する方法については、「[ストレージ テーブル、キュー、および BLOB を使用する .NET 多層アプリケーション][ストレージ テーブル、キュー、および BLOB を使用する .NET 多層アプリケーション]」を参照してください。
 
-  [create-account-note]: ../includes/create-account-note.md
   [次のステップ]: #nextsteps
   [0]: ./media/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
   [Azure キューと Azure Service Bus キューの比較]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh767287.aspx

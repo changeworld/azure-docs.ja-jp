@@ -1,6 +1,6 @@
 <properties title="Interact with DocumentDB resources" pageTitle="Interact with DocumentDB resources | Azure" description="DocumentDB manages resources--uniquely identified by logical URIs--that developers can interact with using HTTP verbs, request/response headers, and status codes." metaKeywords="" services="documentdb" solutions="data-management" documentationCenter="" authors="bradsev" manager="jhubbard" editor="cgronlun" videoId="" scriptId="" />
 
-<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="bradsev"></tags>
+<tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="bradsev" />
 
 # DocumentDB のリソース モデルと概念
 
@@ -8,7 +8,7 @@ DocumentDB は、HTTP を介したシンプルで開かれた RESTful なプロ�
 
 > [AZURE.NOTE] RESTful なプログラミング モデルに加え、DocumentDB にはきわめて効率的な TCP プロトコルが用意されています。やはり RESTful な通信モデルを特徴としており、.NET クライアント SDK を通じて利用することができます。
 
-![][]
+![][0]
 **データベース アカウント下の階層型リソース モデル**
 
 DocumentDB の利用者はまず、ご利用の Azure サブスクリプションを使用して、DocumentDB の**データベース アカウント**をプロビジョニングする必要があります。データベース アカウントは、一連の**データベース**から構成できます。それぞれのデータベースには、複数の**コレクション**が含まれており、さらに、それぞれのコレクションに、**ストアド プロシージャ、トリガー、UDF、ドキュメント**および関連する**添付ファイル**が含まれています。また、データベースには**ユーザー**が関連付けられ、それぞれのユーザーには、他のさまざまなコレクション、ストアド プロシージャ、トリガー、UDF、ドキュメント、添付ファイルにアクセスするための一連の**アクセス許可**が関連付けられます。データベース、ユーザー、アクセス許可、コレクションが、既知のスキーマを持ったシステム定義のリソースであるのに対し、ドキュメントと添付ファイルは、ユーザーが自由に定義できる JSON コンテンツを格納します。
@@ -109,7 +109,7 @@ DocumentDB データベース アカウントは、Azure のポータル [][]<ht
 </tbody>
 </table>
 
-Azure ポータルからデータベース アカウントをプロビジョニング、構成、管理するだけでなく、[Azure DocumentDB REST API][] を使用すると、クライアント SDK と DocumentDB データベース アカウントをプログラムで作成または管理できます。
+Azure ポータルからデータベース アカウントをプロビジョニング、構成、管理するだけでなく、[Azure DocumentDB REST API][Azure DocumentDB REST API] を使用すると、クライアント SDK と DocumentDB データベース アカウントをプログラムで作成または管理できます。
 
  
 
@@ -125,7 +125,7 @@ DocumentDB のデータベースは、1 つまたは複数のコレクション�
 
 DocumentDB データベースはユーザーのコンテナーでもあります。ユーザーは同様に、一連のアクセス許可に対する論理上の名前空間です。これらのアクセス許可は、コレクション、ドキュメント、添付ファイルに対するアクセス権を詳細に制御するものです。
 
-DocumentDB リソース モデルの他のリソースと同様に、データベースも [Azure DocumentDB REST API][] や任意のクライアント SDK を使用すると、作成、置換、削除、読み取り、または列挙が簡単にできます。DocumentDB は、データベース リソースのメタデータの読み取りや照会で強力な一貫性を保証します。データベースを削除すると、含まれるすべてのコレクションやユーザーに自動的にアクセスできなくなります。DocumentDB では、削除されたデータベースの一部としてプロビジョニングされていたストレージとスループットをバックグラウンドで回収しますが、削除されたデータベースのプロビジョニング済みストレージとスループットは両方とも直ちに利用可能になります。
+DocumentDB リソース モデルの他のリソースと同様に、データベースも [Azure DocumentDB REST API][Azure DocumentDB REST API] や任意のクライアント SDK を使用すると、作成、置換、削除、読み取り、または列挙が簡単にできます。DocumentDB は、データベース リソースのメタデータの読み取りや照会で強力な一貫性を保証します。データベースを削除すると、含まれるすべてのコレクションやユーザーに自動的にアクセスできなくなります。DocumentDB では、削除されたデータベースの一部としてプロビジョニングされていたストレージとスループットをバックグラウンドで回収しますが、削除されたデータベースのプロビジョニング済みストレージとスループットは両方とも直ちに利用可能になります。
 
 # コレクション
 
@@ -157,7 +157,7 @@ DocumentDB のプレビュー リリースでは、インデックス作成ポ�
 2.  コンポジション、フィルター、プロジェクション、集計、自己結合などの関係演算子のサブセット
 3.  (1) と (2) を組み合わせた純粋な JavaScript ベースの UDF
 
-DocumentDB クエリ モデルは、機能、効率、簡潔さのバランスを取ることを試行します。DocumentDB のデータベース エンジンは、SQL クエリ ステートメントをネイティブでコンパイルして実行します。コレクションは [Azure DocumentDB REST API][] または任意のクライアント SDK で照会できます。.NET SDK は、LINQ プロバイダーと共に提供されます。今後のリリースでは、サーバー側のストアド プロシージャやトリガーだけでなく、クライアント側の JavaScript SDK からも使用できる、ネイティブのアンダースコア マッピングが提供される予定です。
+DocumentDB クエリ モデルは、機能、効率、簡潔さのバランスを取ることを試行します。DocumentDB のデータベース エンジンは、SQL クエリ ステートメントをネイティブでコンパイルして実行します。コレクションは [Azure DocumentDB REST API][Azure DocumentDB REST API] または任意のクライアント SDK で照会できます。.NET SDK は、LINQ プロバイダーと共に提供されます。今後のリリースでは、サーバー側のストアド プロシージャやトリガーだけでなく、クライアント側の JavaScript SDK からも使用できる、ネイティブのアンダースコア マッピングが提供される予定です。
 
 ## マルチドキュメント トランザクション
 
@@ -219,7 +219,7 @@ DocumentDB クエリ モデルは、機能、効率、簡潔さのバランス�
 
 ストアド プロシージャとトリガーは、現在のコレクションのコンテキストを明示する、適切に定義されたオブジェクト モデルを通じて、コレクションやコレクション内のドキュメントと対話します。
 
-DocumentDB のコレクションは、[Azure DocumentDB REST API][] または任意のクライアント SDK を使用して作成、削除、読み取り、または列挙が簡単にできます。DocumentDB は、コレクションのメタデータの読み取りや照会で強力な一貫性を常に提供します。コレクションを削除すると、含まれているドキュメント、添付ファイル、ストアド プロシージャ、トリガー、および UDF へのアクセスが自動的にできなくなります。DocumentDB では、削除されたコレクションの一部としてプロビジョニングされていたストレージとスループットをバックグラウンドで回収しますが、削除されたコレクションのプロビジョニング済みストレージとスループットは両方とも直ちに利用可能になります。
+DocumentDB のコレクションは、[Azure DocumentDB REST API][Azure DocumentDB REST API] または任意のクライアント SDK を使用して作成、削除、読み取り、または列挙が簡単にできます。DocumentDB は、コレクションのメタデータの読み取りや照会で強力な一貫性を常に提供します。コレクションを削除すると、含まれているドキュメント、添付ファイル、ストアド プロシージャ、トリガー、および UDF へのアクセスが自動的にできなくなります。DocumentDB では、削除されたコレクションの一部としてプロビジョニングされていたストレージとスループットをバックグラウンドで回収しますが、削除されたコレクションのプロビジョニング済みストレージとスループットは両方とも直ちに利用可能になります。
 
  
 
@@ -420,9 +420,9 @@ DocumentDB のユーザーは、アクセス許可をグループ化するため
 
 他のすべてのリソースと同様、DocumentDB のアクセス許可も REST API または任意のクライアント SDK を使用すると、作成、置換、削除、読み取り、列挙が簡単にできます。DocumentDB は、アクセス許可のメタデータの読み取りや照会で強力な一貫性を常に提供します。
 
-  []: ./media/documentdb-resources/resources1.png
+  [0]: ./media/documentdb-resources/resources1.png
   [1]: ./media/documentdb-resources/resources2.png
-  []: http://portal.azure.com/
+  [0]: http://portal.azure.com/
   [Azure DocumentDB REST API]: http://go.microsoft.com/fwlink/p/?LinkID=402413
   [2]: ./media/documentdb-resources/resources3.png
   [3]: ./media/documentdb-resources/resources4.png

@@ -28,9 +28,9 @@
 
     <div class="dev-callout"><strong>セキュリティに関する注意</strong> <p>発行設定をインポートした後、ダウンロードした .publishsettings ファイルには他のユーザーがアカウントにアクセスするために使用できる情報が含まれているので、削除することを検討してください。接続されている他のアプリケーション プロジェクトで使用するためにこのファイルを保持する場合は、セキュリティで保護してください。</p></div>
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [add connected service]: ./media/mobile-services-create-new-service-vs2013/mobile-add-connected-service.png
   [create a new mobile service from VS 2013]: ./media/mobile-services-create-new-service-vs2013/mobile-create-service-from-vs2013.png

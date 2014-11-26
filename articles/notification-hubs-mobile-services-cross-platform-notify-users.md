@@ -110,9 +110,9 @@
 -   **[方法: Azure 通知ハブ (Windows ストア アプリ)][方法: Azure 通知ハブ (Windows ストア アプリ)]**
     テンプレート式言語のリファレンスが記載されています。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [モバイル サービス]: /ja-jp/documentation/articles/notification-hubs-mobile-services-cross-platform-notify-users/ "モバイル サービス"
   [通知ハブによるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users

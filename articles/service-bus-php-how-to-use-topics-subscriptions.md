@@ -328,8 +328,6 @@ Service Bus トピックの管理操作は **ServiceBusRestProxy** クラスを�
   [方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する]: #HandleCrashes
   [方法: トピックとサブスクリプションを削除する]: #DeleteTopicsAndSubscriptions
   [次のステップ]: #NextSteps
-  [howto-service-bus-topics]: ../includes/howto-service-bus-topics.md
   [OpenSSL 拡張機能]: http://php.net/openssl
-  [get-client-libraries]: ../includes/get-client-libraries.md
   [SqlFilter.SqlExpression プロパティ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [Service Bus キュー、トピックおよびサブスクリプション]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367516.aspx

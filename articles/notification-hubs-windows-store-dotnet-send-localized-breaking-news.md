@@ -157,9 +157,9 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
 
 テンプレートの使用方法の詳細については、「[Notification Hubs によるユーザーへの通知: ASP.NET][Notification Hubs によるユーザーへの通知: ASP.NET]」および「[Notification Hubs によるユーザーへの通知: Mobile Services][Notification Hubs によるユーザーへの通知: Mobile Services]」を参照してください。また、「[Notification Hubs の概要][Notification Hubs の概要]」も参照してください。テンプレート式言語のリファレンスは、「[方法: Windows Azure 通知ハブ (Windows ストア アプリ)][方法: Windows Azure 通知ハブ (Windows ストア アプリ)]」にあります。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [通知ハブを使用したニュース速報の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet
   [テンプレートの概念]: #concepts
@@ -167,7 +167,6 @@ MainPage.xaml を変更してロケール コンボボックスを追加しま�
   [Windows ストア クライアント アプリケーションを構築する]: #building-client
   [バックエンドから通知を送信する]: #send
   [通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
-  [notification-hubs-localized-back-end]: ../includes/notification-hubs-localized-back-end.md
   [Notification Hubs によるユーザーへの通知: ASP.NET]: /ja-jp/manage/services/notification-hubs/notify-users-aspnet
   [Notification Hubs によるユーザーへの通知: Mobile Services]: /ja-jp/manage/services/notification-hubs/notify-users
   [Notification Hubs の概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx

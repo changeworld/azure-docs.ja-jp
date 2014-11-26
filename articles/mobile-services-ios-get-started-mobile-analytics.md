@@ -76,7 +76,7 @@
 
 Capptain がアプリに対して実行できる機能の詳細については、<http://www.capptain.com> を参照してください。
 
-<!-- Anchors. --> <!-- URLs. -->
+ 
 
   [Capptain]: http://www.capptain.com
   [Capptain SDK の開始]: #initialize

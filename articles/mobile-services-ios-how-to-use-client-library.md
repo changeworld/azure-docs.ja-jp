@@ -1,11 +1,11 @@
 <properties linkid="mobile-services-how-to-ios-client" urlDisplayName="iOS Client Library" pageTitle="How to use the iOS client library - Azure Mobile Services" metaKeywords="Azure Mobile Services, Mobile Service iOS client library, iOS client library" description="Learn how to use the iOS client library for Azure Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="How to use the iOS client library for Mobile Services" authors="glenga" solutions="" manager="" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="glenga"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
 
 # モバイル サービス向け iOS クライアント ライブラリの使用方法
 
 <div class="dev-center-tutorial-selector sublanding"> 
-<a href="/en-us/develop/mobile/how-to-guides/work-with-net-client-library/" title=".NET Framework">.NET Framework</a><a href="/en-us/develop/mobile/how-to-guides/work-with-html-js-client/" title="HTML/JavaScript">HTML/JavaScript</a><a href="/en-us/develop/mobile/how-to-guides/work-with-ios-client-library/" title="iOS" class="current">iOS</a><a href="/en-us/develop/mobile/how-to-guides/work-with-android-client-library/" title="Android" class="current">Android</a><a href="/en-us/develop/mobile/how-to-guides/work-with-xamarin-client-library/" title="Xamarin" class="current">Xamarin</a>
+<a href="/ja-jp/develop/mobile/how-to-guides/work-with-net-client-library/" title=".NET Framework">.NET Framework</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-html-js-client/" title="HTML/JavaScript">HTML/JavaScript</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-ios-client-library/" title="iOS" class="current">iOS</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-android-client-library/" title="Android" class="current">Android</a><a href="/ja-jp/develop/mobile/how-to-guides/work-with-xamarin-client-library/" title="Xamarin" class="current">Xamarin</a>
 </div>
 
 このガイドでは、Azure のモバイル サービス向け iOS クライアントを使用して一般的なシナリオを実行する方法について説明します。サンプルは Objective-C で記述され、[モバイル サービス SDK][モバイル サービス SDK] を必要とします。さらに、このチュートリアルには、[iOS SDK][iOS SDK] も必要です。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。モバイル サービスを初めて使用する場合は、まず「[モバイル サービスの使用][モバイル サービスの使用]」を完了することを検討してください。このクイック スタート チュートリアルでは、アカウントを構成し、初めてのモバイル サービスを作成します。
@@ -30,7 +30,7 @@
 
 <!--- [How to: Design unit tests] - [How to: Customize the client]     - [Customize request headers]     - [Customize data type serialization] - [Next steps][Next steps]-->
 
-[WACOM.INCLUDE [mobile-services-concepts][mobile-services-concepts]]
+[WACOM.INCLUDE [mobile-services-concepts](../includes/mobile-services-concepts.md)]
 
 ## <a name="Setup"></a>セットアップと前提条件
 
@@ -437,20 +437,15 @@ Microsoft アカウントを使用してログインする方法の例を次に�
 
 <!-- <h2><a name="#unit-testing"></a><span class="short-header">Designing tests</span>How to: Design unit tests</h2>  _(Optional) This section shows how to write unit test when using the client library (info from Yavor)._  <h2><a name="#customizing"></a><span class="short-header">Customizing the client</span>How to: Customize the client</h2>  _(Optional) This section shows how to send customize client behaviors._  ###<a name="custom-headers"></a>How to: Customize request headers  _(Optional) This section shows how to send custom request headers._  For more information see, New topic about processing headers in the server-side.  ###<a name="custom-serialization"></a>How to: Customize serialization  _(Optional) This section shows how to use attributes to customize how data types are serialized._  For more information see, New topic about processing headers in the server-side.  ## <a name="next-steps"></a>Next steps --> 
 
-<!-- Anchors. --> 
+ 
 
-<!-- Images. --> 
+ 
 
-<!-- URLs. -->
 
-  [.NET Framework]: /en-us/develop/mobile/how-to-guides/work-with-net-client-library/ ".NET Framework"
-  [HTML/JavaScript]: /en-us/develop/mobile/how-to-guides/work-with-html-js-client/ "HTML/JavaScript"
-  [iOS]: /en-us/develop/mobile/how-to-guides/work-with-ios-client-library/ "iOS"
-  [Android]: /en-us/develop/mobile/how-to-guides/work-with-android-client-library/ "Android"
-  [Xamarin]: /en-us/develop/mobile/how-to-guides/work-with-xamarin-client-library/ "Xamarin"
+
   [モバイル サービス SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
   [iOS SDK]: https://developer.apple.com/xcode
-  [モバイル サービスの使用]: /en-us/develop/mobile/tutorials/get-started-ios
+  [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-ios
   [モバイル サービスとは]: #what-is
   [概念]: #concepts
   [セットアップと前提条件]: #Setup
@@ -465,18 +460,17 @@ Microsoft アカウントを使用してログインする方法の例を次に�
   [方法: データをユーザー インターフェイスにバインドする]: #binding
   [方法: ユーザーを認証する]: #authentication
   [方法: エラーを処理する]: #errors
-  [mobile-services-concepts]: ../includes/mobile-services-concepts.md
-  [テーブルの作成]: http://msdn.microsoft.com/en-us/library/windowsazure/jj193162.aspx
+  [テーブルの作成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193162.aspx
   [**[Link Binary With Libraries]**]: https://developer.apple.com/library/ios/recipes/xcode_help-project_editor/Articles/AddingaLibrarytoaTarget.html
   [ページにデータを返す]: #paging
-  [方法: カスタム パラメーターにアクセスする]: /en-us/develop/mobile/how-to-guides/work-with-server-scripts#access-headers
+  [方法: カスタム パラメーターにアクセスする]: /ja-jp/develop/mobile/how-to-guides/work-with-server-scripts#access-headers
   [NSDictionary オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=301965
   [ASCII 制御コード C0 および C1 に関するページ]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-  [モバイル サービス テーブルの管理用コマンド]: http://www.windowsazure.com/en-us/manage/linux/other-resources/command-line-tools/#Mobile_Tables
+  [モバイル サービス テーブルの管理用コマンド]: http://www.windowsazure.com/ja-jp/manage/linux/other-resources/command-line-tools/#Mobile_Tables
   [動的スキーマ]: http://go.microsoft.com/fwlink/p/?LinkId=296271
-  [認証の使用]: /en-us/develop/mobile/tutorials/get-started-with-users-ios
-  [スクリプトを使用したユーザーの認証]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-ios
-  [権限]: http://msdn.microsoft.com/en-us/library/windowsazure/jj193161.aspx
+  [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-ios
+  [スクリプトを使用したユーザーの認証]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-ios
+  [権限]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj193161.aspx
   [Live Connect SDK]: http://go.microsoft.com/fwlink/p/?LinkId=301960
   [アプリケーションで期限切れのトークンを処理する方法に関するページ]: http://go.microsoft.com/fwlink/p/?LinkId=301955
-  [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-ios
+  [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-ios

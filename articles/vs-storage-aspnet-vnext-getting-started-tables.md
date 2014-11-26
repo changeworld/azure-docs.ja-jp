@@ -1,6 +1,6 @@
 <properties title="Azure Storage の使用" pageTitle="Azure Storage の使用" metaKeywords="Azure, Getting Started, Storage" description="" services="storage" documentationCenter="" authors="ghogen, kempb" />
 
-<tags ms.service="storage" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/10/2014" ms.author="ghogen, kempb"></tags>
+<tags ms.service="storage" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/10/2014" ms.author="ghogen, kempb" />
 
 > [AZURE.SELECTOR]
 >
@@ -44,5 +44,4 @@ ASP.NET vNext プロジェクトのテーブルにプログラムを使用して
   [BLOB]: /documentation/articles/vs-storage-aspnet-vnext-getting-started-blobs/
   [キュー]: /documentation/articles/vs-storage-aspnet-vnext-getting-started-queues/
   [How to use Table Storage from .NET (.NET からテーブル ストレージを使用する方法)]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-dotnet-how-to-use-tables/#create-table "How to use Table Storage from .NET"
-  [vs-storage-getting-started-tables-include]: ../includes/vs-storage-getting-started-tables-include.md
   [ASP.NET vNext]: http://www.asp.net/vnext

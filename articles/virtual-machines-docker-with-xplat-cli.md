@@ -100,7 +100,9 @@ Azure 上に作成した Docker VM をテストするために、次のコマン
 
 「[Docker ユーザー ガイド][Docker ユーザー ガイド]」にアクセスして Docker VM の使用を開始する準備が整いました。新しいポータルで Docker 対応 VM を作成する方法については、「[Using the Docker VM Extension with the Azure Portal (Azure ポータルでの Docker VM 拡張機能の使用)][Using the Docker VM Extension with the Azure Portal (Azure ポータルでの Docker VM 拡張機能の使用)]」を参照してください。
 
-<!--Anchors--> <!--Image references--> <!--Link references-->
+<!--Anchors-->
+<!--Image references-->
+<!--Link references-->
 
   [Docker]: https://www.docker.com/
   [Linux コンテナー]: http://en.wikipedia.org/wiki/LXC

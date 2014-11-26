@@ -1,4 +1,4 @@
-<properties urlDisplayName="Cassandra with Linux" pageTitle="Azure 上の Linux での Cassandra の実行" metaKeywords="" description="Azure の仮想マシンの Linux で Cassandra クラスターを実行する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="nodejs" title="Azure 上の Linux で Cassandra を実行して Node.js からアクセス" authors="hanuk" solutions="" manager="timlt" editor="" />
+<properties linkid="services-linux-cassandra-with-linux" urlDisplayName="Cassandra with Linux" pageTitle="Run Cassandra with Linux on Azure" metaKeywords="" description="Explains how to run a Cassandra cluster on Linux in Azure Virtual Machines." metaCanonical="" services="virtual-machines" documentationCenter="nodejs" title="Running Cassandra with Linux on Azure and Accessing it from Node.js" authors="hanuk" solutions="" manager="timlt" editor="" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="hanuk" />
 
@@ -37,7 +37,7 @@ Cassandra アプリケーション環境で実現できるデプロイ モデル
 
 ![仮想マシンのデプロイ][仮想マシンのデプロイ]
 
-前に示している図では、Thrift トラフィックを許すように構成されたロード バランサーの背後で、4 ノードの Cassandra クラスターが仮想マシン内に展開されています。Azure でホストする PaaS アプリケーションは、言語固有の Thrift ライブラリを使用してクラスターにアクセスします。Java、C\#、Node.js、Python、C++ などの言語用のライブラリがあります。2 つ目の図に示されている自立的仮想マシン展開では、仮想マシンでホストされた別のクラウド サービス内部で実行されているアプリケーションによってデータが利用されます。
+前に示している図では、Thrift トラフィックを許すように構成されたロード バランサーの背後で、4 ノードの Cassandra クラスターが仮想マシン内に展開されています。Azure でホストする PaaS アプリケーションは、言語固有の Thrift ライブラリを使用してクラスターにアクセスします。Java、C#、Node.js、Python、C++ などの言語用のライブラリがあります。2 つ目の図に示されている自立的仮想マシン展開では、仮想マシンでホストされた別のクラウド サービス内部で実行されているアプリケーションによってデータが利用されます。
 
 ## <span id="task1"></span> </a>タスク 1: Linux クラスターのデプロイ
 
@@ -124,7 +124,7 @@ Cassandra クラスターに属するすべての仮想マシンについて、�
 
 a. 最初の VM の詳細ビューで、[エンドポイントの追加] をクリックします。
 
-[仮想マシンにエンドポイントを追加します] 画面で、[エンドポイントの追加] をクリックします。
+b.[仮想マシンにエンドポイントを追加します] 画面で、[エンドポイントの追加] をクリックします。
 
 c. 右矢印をクリックします。
 
@@ -228,14 +228,13 @@ cassandra.yaml でこれを変更していない場合。
 </table>
 前に示している設定を終えると、最初の VM では、cassandra エンドポイントの [負荷分散] が [いいえ] と表示されます。当面、これは無視してください。このエンドポイントを以降の VM に追加すると [はい] に変わります。
 
-</p>
 e. 2 つ目の VM を選択し、前に示している手順を繰り返してエンドポイントを追加します。少しだけ違うのは、[既存のエンドポイントのトラフィックを負荷分散します] を選択し、ドロップダウン ボックスの一覧の [cassandra-960] を選択することです。この段階で、両方の VM にマッピングされたエンドポイントは、[負荷分散] の状態が [いいえ] から [はい] に変わります。
 
 クラスターの以降のノードについて、"e" の手順を繰り返します。
 
 これで VM の準備が完了しました。次は各 VM で Cassandra をセットアップします。Cassandra は多くの Linux ディストリビューションで標準パッケージではないため、手作業で展開します。
 
-[各 VM に対するソフトウェアのインストールは手作業で行います。ただし、この作業は、完全に機能する Cassandra VM をセットアップして、それを基本イメージとしてキャプチャし、この基本イメージから残りのインスタンスを作成することで、時間を短縮することができます。Linux イメージのキャプチャ方法については、「[Linux を実行する仮想マシンのイメージをキャプチャする方法][各 VM に対するソフトウェアのインストールは手作業で行います。ただし、この作業は、完全に機能する Cassandra VM をセットアップして、それを基本イメージとしてキャプチャし、この基本イメージから残りのインスタンスを作成することで、時間を短縮することができます。Linux イメージのキャプチャ方法については、「[Linux を実行する仮想マシンのイメージをキャプチャする方法]」を参照してください。]
+[各 VM に対するソフトウェアのインストールは手作業で行います。ただし、この作業は、完全に機能する Cassandra VM をセットアップして、それを基本イメージとしてキャプチャし、この基本イメージから残りのインスタンスを作成することで、時間を短縮することができます。Linux イメージのキャプチャ方法については、「[Linux を実行する仮想マシンのイメージをキャプチャする方法]」を参照してください。]
 
 ## <span id="task2"></span> </a>タスク 2: 各仮想マシンでの Cassandra のセットアップ
 
@@ -251,7 +250,7 @@ Cassandra には Java 仮想マシンが必要であり、そのため、Ubuntu 
 
 1.  SSH を使用して Linux (Ubuntu) VM インスタンスにログインします。
 
-2.  wget を使用して、ダウンロード ページ (http://cassandra.apache.org/download/) に記載されたミラーから Cassandra を ~/downloads ディレクトリに apache-cassandra-bin.tar.gz としてダウンロードします。処理がバージョンに左右されないように、ダウンロードしたファイルの名前にはバージョン番号を含めないようにしてください。
+2.  wget を使用して、ダウンロード ページ (<http://cassandra.apache.org/download/>)[<http://cassandra.apache.org/download/>] に記載されたミラーから Cassandra を ~/downloads ディレクトリに apache-cassandra-bin.tar.gz としてダウンロードします。処理がバージョンに左右されないように、ダウンロードしたファイルの名前にはバージョン番号を含めていないことに注意してください。
 
 3.  次のコマンドを実行して、tar ball を既定のログイン ディレクトリに展開します。
 
@@ -302,7 +301,7 @@ conf/cassandra.yaml を編集して、**listen\_address** および **rpc\_addre
 
 クラスターのすべてのノードについて、手順 1. から手順 5. までを繰り返します。
 
-これで、個々の VM すべてに必要なソフトウェアが用意されたため、今度はシードを構成してノード間の通信を確立します。マルチノード クラスター構成の詳細については、<http://wiki.apache.org/cassandra/MultinodeCluster> にある情報を参照してください。
+これで、個々の VM すべてに必要なソフトウェアが用意されたため、今度はシードを構成してノード間の通信を確立します。マルチノード クラスター構成の詳細については、[][]<http://wiki.apache.org/cassandra/MultinodeCluster></a> にある情報を参照してください。
 
 **手順 6.マルチノード クラスターのセットアップ**
 
@@ -317,7 +316,7 @@ cassandra.yaml を編集して、すべての VM について次のプロパテ�
 ここで指定した IP アドレスは、新しいノードによってリング トポロジについて知るために使用されます。コンマ区切り形式で、最も信頼できるノードをシードとして設定します: "*host1*,*host2*"。設定例: "hk-ub1,hk-ub2"。
 
 この演習の主眼ではないため、シード サーバーによる既定のトークンをそのまま受け入れます。最適なトークン生成については、python スクリプト(
-<http://wiki.apache.org/cassandra/GettingStarted>) を参照してください。
+[][1]<http://wiki.apache.org/cassandra/GettingStarted></a>) を参照してください。
 
 すべてのノードで Cassandra を再起動して、上記の変更を適用します。
 
@@ -582,9 +581,9 @@ Azure の仮想マシン機能を利用すると、Linux (Microsoft パートナ
   [仮想マシンのデプロイ]: ./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux2.png
   [クラスター作成の流れ図]: ./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux4.png
   [Azure 上の Linux における SSH の使用方法]: http://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/ssh-into-linux/
-  [Generating SSH Key Pair for Linux VM Deployment on Windows Azure (Windows Azure 上の Linux VM デプロイ用の SSH キー ペアの生成)]: http://blogs.msdn.com/b/hanuk/archive/2012/06/07/generating-ssh-key-pair-for-linux-vm-deployment-on-windows-azure.aspx
   [Linux を実行する仮想マシンの作成]: http://www.windowsazure.com/ja-jp/manage/linux/tutorials/virtual-machine-from-gallery/
   [Linux を実行する仮想マシンのイメージをキャプチャする方法]: https://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/capture-an-image/
+  []: http://wiki.apache.org/cassandra/MultinodeCluster
+  [1]: http://wiki.apache.org/cassandra/GettingStarted
   [cassandra-client]: https://github.com/racker/node-cassandra-client
   [行と列]: ./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux3.png
-  [Cassandra Query Language (CQL)]: http://cassandra.apache.org/doc/cql/CQL.html

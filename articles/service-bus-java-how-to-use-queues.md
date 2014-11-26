@@ -191,5 +191,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [方法: キューからメッセージを受信する]: #bkmk_HowToReceiveMsgs
   [方法: アプリケーションのクラッシュと読み取り不能のメッセージを処理する]: #bkmk_HowToHandleAppCrashes
   [次のステップ]: #bkmk_NextSteps
-  [howto-service-bus-queues]: ../includes/howto-service-bus-queues.md
   [Service Bus キュー、トピックおよびサブスクリプション]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367516.aspx

@@ -26,7 +26,7 @@
 
     > [WACOM.NOTE] プッシュ通知の追加ウィザードによってユニバーサル Windows アプリケーション ソリューションに追加されたコードは、プラットフォーム固有です。このチュートリアルでは、後ほどモバイル サービスのクライアント コードを共有して、この重複を解消します。これにより、ユニバーサル アプリケーションのメンテナンスが容易になります。
 
-<!-- URLs. -->
+
 
   [Visual Studio 2013 でのプッシュ通知の追加]: ../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013.png
   [プッシュ通知の追加ウィザードでのアプリケーション名の選択]: ../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013-2.png

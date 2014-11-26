@@ -2,7 +2,7 @@
 
 # Microsoft Azure で検索サービスを管理する
 
-[WACOM.INCLUDE [この記事では Azure プレビュー ポータルを使用します][]]
+[WACOM.INCLUDE [この記事では Azure プレビュー ポータルを使用します](../includes/preview-portal-note.md)]
 
 Azure Search は、カスタムの検索アプリケーションで使用できるクラウドベースのサービスと HTTP ベースの API です。この検索サービスでは、全文検索テキスト分析のためのエンジン、高度な検索機能、ストレージ、クエリ コマンド構文が用意されています。
 
@@ -12,17 +12,17 @@ Azure Search は、カスタムの検索アプリケーションで使用でき�
 
 <!--TOC-->
 
--   [サブスクリプションに検索サービスを追加する][]
--   [管理タスク][]
--   [サービス URL][]
--   [API キーを管理する][]
--   [リソース使用量を監視する][]
--   [拡大または縮小][]
--   [サービスを開始または停止する][]
+-   [サブスクリプションに検索サービスを追加する][サブスクリプションに検索サービスを追加する]
+-   [管理タスク][管理タスク]
+-   [サービス URL][サービス URL]
+-   [API キーを管理する][API キーを管理する]
+-   [リソース使用量を監視する][リソース使用量を監視する]
+-   [拡大または縮小][拡大または縮小]
+-   [サービスを開始または停止する][サービスを開始または停止する]
 
 ## サブスクリプションに検索サービスを追加する
 
-管理者として、新しい [Azure プレビュー ポータル][]を使用して既存の Azure サブスクリプションに検索を追加できます。サブスクリプションに機能を追加できるのは、管理者だけです。サービスを設定する場合は、2 種類の料金レベルから選択できます。
+管理者として、新しい [Azure プレビュー ポータル][Azure プレビュー ポータル]を使用して既存の Azure サブスクリプションに検索を追加できます。サブスクリプションに機能を追加できるのは、管理者だけです。サービスを設定する場合は、2 種類の料金レベルから選択できます。
 
 既存の登録者に課金することなく、共有サービスを使用できます。学習目的、概念実証のテスト、小規模な開発用プロジェクトの場合に適しています。共有サービスでは、ストレージが最大 50 MB、インデックスが最大 3 つ、ハードウェアの上限としてドキュメント数が 10,000 個 (ストレージの使用が許容最大限の 50 MB に達していない場合であっても) という制約があります。共有サービスではパフォーマンスは保証されないため、運用検索アプリケーションを構築する場合は、代わりに標準検索を検討してください。
 
@@ -30,10 +30,10 @@ Azure Search は、カスタムの検索アプリケーションで使用でき�
 
 容量を考慮して計画し、課金の影響を理解するには、以下のリンクをお勧めします。
 
--   [Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))][]
--   [料金の詳細][]
+-   [Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))][Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))]
+-   [料金の詳細][料金の詳細]
 
-サインアップの準備が整った場合は、「[Azure プレビュー ポータルで Search を構成する][]」を参照してください。
+サインアップの準備が整った場合は、「[Azure プレビュー ポータルで Search を構成する][Azure プレビュー ポータルで Search を構成する]」を参照してください。
 
 ## 管理タスク
 
@@ -54,16 +54,16 @@ Azure Search は、カスタムの検索アプリケーションで使用でき�
 
 サービス ダッシュボードからサービス URL を取得するには:
 
-1.  [Azure プレビュー ポータル][]にサインインします。
+1.  [Azure プレビュー ポータル][Azure プレビュー ポータル]にサインインします。
 2.  **[参照]**、**[すべて]**、**[検索サービス]** の順にクリックします。
 3.  目的の検索サービスの名前をクリックして、ダッシュボードを開きます。
 4.  **[プロパティ]** をクリックしてプロパティ ページを開きます。ページの上部にサービス URL が表示されています。後ですばやくアクセスできるように、このページを固定できます。
 
-    ![][]
+    ![][0]
 
 開発者から API バージョンに関する問い合わせがある可能性もあります。Azure Search API のコーディング要件として、要求では常に API バージョンを指定する必要があります。これは、開発者が以前のバージョンを引き続き使用して、適時に新しいバージョンに移行できるようにするための要件です。
 
-API バージョンはポータル ページに表示されないため、管理者はこの情報を提供できません。現在および以前の API バージョンについては、「[Azure Search REST API (Azure Search REST API)][]」を参照してください。
+API バージョンはポータル ページに表示されないため、管理者はこの情報を提供できません。現在および以前の API バージョンについては、「[Azure Search REST API (Azure Search REST API)][Azure Search REST API (Azure Search REST API)]」を参照してください。
 
 <!---->
 
@@ -92,10 +92,10 @@ API キーを取得または再生成するには、サービス ダッシュボ
 
 サービス ダッシュボードの [使用] セクションで、パーティション リソース レベルが自分のアプリケーションに適しているかどうかをすばやく決定できます。
 
-Search Service API を使用して、ドキュメントとインデックスの数を取得できます。料金レベルに基づいて、これらの数に関連付けられたハードウェアの制限があります。詳細については、「[Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))][]」を参照してください。
+Search Service API を使用して、ドキュメントとインデックスの数を取得できます。料金レベルに基づいて、これらの数に関連付けられたハードウェアの制限があります。詳細については、「[Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))][Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))]」を参照してください。
 
--   [Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))][]
--   [Count Documents (Azure Search) (ドキュメントのカウント (Azure Search))][]
+-   [Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))][Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))]
+-   [Count Documents (Azure Search) (ドキュメントのカウント (Azure Search))][Count Documents (Azure Search) (ドキュメントのカウント (Azure Search))]
 
 > [WACOM.NOTE] キャッシング動作により、一時的に制限を超える場合があります。たとえば、共有サービスの使用時に、ドキュメント数がハードウェアの制限である 10,000 個を超える場合があります。この超過は一時的であり、次の制限強制チェックで検出されます。
 
@@ -135,7 +135,7 @@ Search Service API を使用して、ドキュメントとインデックスの�
 
 特定のパーティションにどのインデックス シャードが格納されているかを検出する方法はありません。各パーティションで約 25 GB のストレージが提供されるため、現在のパーティションの数で対応できるサイズまでストレージを削減する必要があります。1 つのパーティションに戻す場合は、12 個のシャードをすべて収める必要があります。
 
-将来の計画を立てるには、ストレージをチェックして (「[Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))][]」を使用) 実際にどのくらい使用したかを確認します。
+将来の計画を立てるには、ストレージをチェックして (「[Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))][Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))]」を使用) 実際にどのくらい使用したかを確認します。
 
 <!---->
 
@@ -149,7 +149,6 @@ Search Service API を使用して、ドキュメントとインデックスの�
 
 
 
-  [この記事では Azure プレビュー ポータルを使用します]: ../includes/preview-portal-note.md
   [サブスクリプションに検索サービスを追加する]: #sub-1
   [管理タスク]: #sub-2
   [サービス URL]: #sub-3
@@ -158,13 +157,13 @@ Search Service API を使用して、ドキュメントとインデックスの�
   [拡大または縮小]: #sub-6
   [サービスを開始または停止する]: #sub-7
   [Azure プレビュー ポータル]: https://portal.azure.com
-  [Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))]: http://msdn.microsoft.com/en-us/library/dn798934.aspx
+  [Limits and constraints (Azure Search API) (制限と制約 (Azure Search API))]: http://msdn.microsoft.com/ja-jp/library/dn798934.aspx
   [料金の詳細]: http://go.microsoft.com/fwlink/p/?LinkdID=509792
   [Azure プレビュー ポータルで Search を構成する]: ../search-configure/
-  []: ./media/search-manage/Azure-Search-Manage-1-URL.png
+  [0]: ./media/search-manage/Azure-Search-Manage-1-URL.png
   [Azure Search REST API (Azure Search REST API)]: http://go.microsoft.com/fwlink/p/?LinkdID=509922
   [1]: ./media/search-manage/Azure-Search-Manage-2-Keys.png
-  [Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))]: http://msdn.microsoft.com/en-us/library/dn798942.aspx
-  [Count Documents (Azure Search) (ドキュメントのカウント (Azure Search))]: http://msdn.microsoft.com/en-us/library/dn798924.aspx
+  [Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))]: http://msdn.microsoft.com/ja-jp/library/dn798942.aspx
+  [Count Documents (Azure Search) (ドキュメントのカウント (Azure Search))]: http://msdn.microsoft.com/ja-jp/library/dn798924.aspx
   [2]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png
   [3]: ./media/search-manage/Azure-Search-Manage-4-StartStop.png

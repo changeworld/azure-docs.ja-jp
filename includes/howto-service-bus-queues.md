@@ -16,7 +16,7 @@
 受信および処理できるメッセージ コンシューマーは、メッセージ 1 件に
 つき 1 つだけです。
 
-![QueueConcepts][]
+![QueueConcepts][QueueConcepts]
 
 サービス バス キューは汎用テクノロジであり、幅広い
 シナリオで使用できます。
@@ -43,14 +43,14 @@ Service Bus リソースをアドレス指定するためのスコープ コン�
 
 サービス名前空間を作成するには:
 
-1.  [Azure 管理ポータル][]へのログオン
+1.  [Azure 管理ポータル][Azure 管理ポータル]へのログオン
 
 2.  管理ポータルの左のナビゲーション ウィンドウで、
     **[サービス バス]** をクリックします。
 
 3.  管理ポータルの下のウィンドウの **[作成]** をクリックします。
 
-    ![][]
+    ![][0]
 
 4.  **[新しい名前空間を追加する]** ダイアログで、名前空間の名前を入力します。
     その名前が使用できるかどうかがすぐに自動で確認されます。
@@ -103,7 +103,7 @@ Service Bus リソースをアドレス指定するためのスコープ コン�
 
 ### 管理資格情報をサーバー エクスプローラーから取得するには
 
-管理ポータルの代わりに Visual Studio を使用して接続情報を取得するには、「[Azure Tools for Visual Studio の概要][]」の「**Visual Studio から Azure に接続するには**」で説明されている手順に従ってください。Azure にサインインすると、サーバー エクスプローラーの **[Microsoft Azure]** ツリーの下にある **[サービス バス]** ノードが、既に作成したすべての名前空間を使用して自動的に設定されます。いずれかの名前空間を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウで表示される、この名前空間に関連付けられている接続文字列と他のメタデータを確認できます。
+管理ポータルの代わりに Visual Studio を使用して接続情報を取得するには、「[Azure Tools for Visual Studio の概要][Azure Tools for Visual Studio の概要]」の「**Visual Studio から Azure に接続するには**」で説明されている手順に従ってください。Azure にサインインすると、サーバー エクスプローラーの **[Microsoft Azure]** ツリーの下にある **[サービス バス]** ノードが、既に作成したすべての名前空間を使用して自動的に設定されます。いずれかの名前空間を右クリックし、**[プロパティ]** をクリックします。Visual Studio の **[プロパティ]** ウィンドウで表示される、この名前空間に関連付けられている接続文字列と他のメタデータを確認できます。
 
 **SharedAccessKey** の値を書き留めておくか、クリップボードにコピーしておいてください。
 
@@ -111,11 +111,11 @@ Service Bus リソースをアドレス指定するためのスコープ コン�
 
   [QueueConcepts]: ./media/howto-service-bus-queues/sb-queues-08.png
   [Azure 管理ポータル]: http://manage.windowsazure.com
-  []: ./media/howto-service-bus-queues/sb-queues-03.png
+  [0]: ./media/howto-service-bus-queues/sb-queues-03.png
   [1]: ./media/howto-service-bus-queues/sb-queues-04.png
   [2]: ./media/howto-service-bus-queues/getting-started-multi-tier-27.png
   [3]: ./media/howto-service-bus-queues/sb-queues-13.png
   [4]: ./media/howto-service-bus-queues/sb-queues-09.png
   [5]: ./media/howto-service-bus-queues/sb-queues-06.png
-  [Azure Tools for Visual Studio の概要]: http://http://msdn.microsoft.com/en-us/library/windowsazure/ff687127.aspx
+  [Azure Tools for Visual Studio の概要]: http://http://msdn.microsoft.com/ja-jp/library/windowsazure/ff687127.aspx
   [6]: ./media/howto-service-bus-queues/VSProperties.png

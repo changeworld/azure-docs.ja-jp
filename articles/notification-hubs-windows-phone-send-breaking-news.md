@@ -213,8 +213,8 @@
 
 <!--## <a name="next-steps"> </a>Next steps  In this tutorial we learned how to broadcast breaking news by category. Consider completing one of the following tutorials that highlight other advanced Notification Hubs scenarios:  + [Use Notification Hubs to broadcast localized breaking news]      Learn how to expand the breaking news app to enable sending localized notifications.   + [Notify users with Notification Hubs]      Learn how to push notifications to specific authenticated users. This is a good solution for sending notifications only to specific users. --> 
 
-<!-- Anchors. --> 
-<!-- Images. --> 
+ 
+ 
 <!-- URLs.-->
 
   [Windows ユニバーサル]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/ "Windows ユニバーサル"
@@ -225,7 +225,6 @@
   [バックエンドから通知を送信する]: #send
   [アプリケーションを実行して通知を生成する]: #test-app
   [通知ハブの使用]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-wp8/
-  [create-an-azure-account]: ../includes/notification-hubs-back-end.md
   [0]: ./media/notification-hubs-windows-phone-send-breaking-news/notification-hub-breakingnews.png
   [2]: ./media/notification-hubs-windows-phone-send-breaking-news/notification-hub-registration.png
   [3]: ./media/notification-hubs-windows-phone-send-breaking-news/notification-hub-toast.png

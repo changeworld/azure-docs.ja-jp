@@ -85,9 +85,9 @@
 -   [モバイル サービスのサーバー スクリプト リファレンス][モバイル サービスのサーバー スクリプト リファレンス]
     <br/>サーバー スクリプトの登録および使用について説明します。
 
-<!-- Anchors. -->
-<!-- Images. -->
-<!-- URLs. -->
+
+
+
 
   [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-xamarin-ios
   [Azure の管理ポータル]: https://manage.windowsazure.com/

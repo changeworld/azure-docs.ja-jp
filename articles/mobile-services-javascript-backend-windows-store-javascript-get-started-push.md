@@ -82,11 +82,10 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 -   [モバイル サービスのサーバー スクリプト リファレンス][モバイル サービスのサーバー スクリプト リファレンス]
     モバイル サービスでビジネス ロジックを実装する方法を説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
 
-  [mobile-services-selector-get-started-push-legacy]: ../includes/mobile-services-selector-get-started-push-legacy.md
+
   [ユニバーサル Windows アプリ バージョン]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push
   [アプリケーションを WNS に登録し、モバイル サービスを構成する]: #register
   [アプリケーションを更新して通知に登録する]: #update-app
@@ -94,10 +93,7 @@ Mobile Services と通知ハブについては次のトピックを参照して�
   [データを挿入してプッシュ通知を受信する]: #test
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-get-started
   [モバイル サービスでのデータの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-data
-  [mobile-services-notification-hubs-register-windows-store-app]: ../includes/mobile-services-notification-hubs-register-windows-store-app.md
   [0]: ./media/mobile-services-windows-store-javascript-get-started-push-vs2012/mobile-app-enable-toast-win8.png
-  [mobile-services-javascript-update-script-notification-hubs]: ../includes/mobile-services-javascript-update-script-notification-hubs.md
-  [mobile-services-windows-store-test-push]: ../includes/mobile-services-windows-store-test-push.md
   [認証されたユーザーにプッシュ通知を送信する]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-push-notifications-app-users/
   [認証の使用]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-users
   [Windows Azure 通知ハブとは]: /ja-jp/documentation/articles/notification-hubs-overview/

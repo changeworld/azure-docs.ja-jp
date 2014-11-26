@@ -239,7 +239,6 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
   [アプリ バックエンドからの登録]: http://msdn.microsoft.com/ja-jp/library/dn743807.aspx
   [アプリケーションを Windows ストアに登録する]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/#register
   [通知ハブを構成する]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/#configure-hub
-  [notification-hubs-aspnet-backend-notifyusers]: ../includes/notification-hubs-aspnet-backend-notifyusers.md
   [0]: ./media/notification-hubs-aspnet-backend-windows-dotnet-notify-users/notification-hubs-secure-push9.png
   [1]: ./media/notification-hubs-aspnet-backend-windows-dotnet-notify-users/notification-hubs-secure-push10.png
   [2]: ./media/notification-hubs-aspnet-backend-windows-dotnet-notify-users/notification-hubs-secure-push11.png

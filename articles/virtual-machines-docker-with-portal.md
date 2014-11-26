@@ -113,7 +113,9 @@ VM のドメイン名を見つけてコピーし、クライアント コンピ�
 
 「[Docker ユーザー ガイド][Docker ユーザー ガイド]」にアクセスして Docker VM の使用を開始する準備が整いました。Azure で Docker VM を短時間で繰り返し作成する方法については、「[Azure クロスプラットフォーム インターフェイス (xplat-cli) から Docker VM 拡張機能を使用する方法][Azure クロスプラットフォーム インターフェイス (xplat-cli) から Docker VM 拡張機能を使用する方法]」を参照してください。
 
-<!--Anchors--> <!--Image references--> <!--Link references-->
+<!--Anchors-->
+<!--Image references-->
+<!--Link references-->
 
   [Docker]: https://www.docker.com/
   [Linux コンテナー]: http://en.wikipedia.org/wiki/LXC

@@ -1,6 +1,6 @@
 <properties linkid="develop-notificationhubs-tutorials-get-started-xamarin-ios" urlDisplayName="Get Started" pageTitle="Get Started with Notification Hubs for Xamarin iOS apps" metaKeywords="" description="Learn how to use Azure Notification Hubs to send push notifications to a Xamarin iOS application." metaCanonical="" disqusComments="0" umbracoNaviHide="1" services="mobile-services,notification-hubs" documentationCenter="" title="Get started with Notification Hubs" authors="donnam" manager="dwrede" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="donnam"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="donnam" />
 
 # 通知ハブの使用
 
@@ -43,7 +43,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
 2.  **[Keychain Access]** をクリックし、**[Certificate Assistant]** を展開して、**[Request a Certificate from a Certificate Authority]** をクリックします。
 
-    ![][]
+    ![][0]
 
 3.  **[ユーザーの電子メール アドレス]** を選択し、**[共通名]** と **[CA 電子メール アドレス]** の値を入力します。次に、**[ディスクに保存]** が選択されていることを確認し、**[続行]** をクリックします。
 
@@ -400,17 +400,11 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
 
 この簡単な例では、すべての iOS デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、「[通知ハブを使用したユーザーへのプッシュ通知][通知ハブを使用したユーザーへのプッシュ通知]」を参照してください。一方、対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信][通知ハブを使用したニュース速報の送信]」を参照してください。通知ハブの使用方法の詳細については、「[Windows Azure 通知ハブの概要][Windows Azure 通知ハブの概要]」と「[方法: Windows Azure 通知ハブ (iOS アプリ)][方法: Windows Azure 通知ハブ (iOS アプリ)]」を参照してください。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
 
-  [Windows ユニバーサル]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/ "Windows ユニバーサル"
-  [Windows Phone]: /ja-jp/documentation/articles/notification-hubs-windows-phone-get-started/ "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/notification-hubs-ios-get-started/ "iOS"
-  [Android]: /ja-jp/documentation/articles/notification-hubs-android-get-started/ "Android"
-  [Kindle]: /ja-jp/documentation/articles/notification-hubs-kindle-get-started/ "Kindle"
+
   [Xamarin.iOS]: /ja-jp/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/ "Xamarin.iOS"
-  [Xamarin.Android]: /ja-jp/documentation/articles/partner-xamarin-notification-hubs-android-get-started/ "Xamarin.Android"
   [NotificationHubs アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=331329
   [証明書の署名要求を生成する]: #certificates
   [アプリケーションを登録し、プッシュ通知を有効にする]: #register
@@ -421,9 +415,8 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
   [XCode 5.0]: https://go.microsoft.com/fwLink/p/?LinkID=266532
   [1]: http://xamarin.com/download
   [Azure モバイル サービス コンポーネント]: http://components.xamarin.com/view/azure-mobile-services/
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A643EE910&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fmanage%2Fservices%2Fnotification-hubs%2Fgetting-started-xamarin-ios%2F
   [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
-  []: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-step5.png
+  [0]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-step5.png
   [2]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-step6.png
   [3]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-step7.png
   [iOS プロビジョニング ポータル]: http://go.microsoft.com/fwlink/p/?LinkId=272456

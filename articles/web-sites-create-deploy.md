@@ -75,5 +75,4 @@ Web サイトは、Azure の管理ポータルの **[削除]** アイコンを�
   [方法: Web サイトの削除]: #deleteawebsite
   [次のステップ]: #nextsteps
   [Azure の管理ポータル]: http://manage.windowsazure.com/
-  [website-from-gallery]: ../includes/website-from-gallery.md
   [Azure の Web サイト]: /ja-jp/documentation/services/web-sites/

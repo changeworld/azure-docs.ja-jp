@@ -276,8 +276,6 @@ Web サイトまたは仮想マシンを使用する場合には、.NET 構成�
 -   サービス バス キューとの間でメッセージを送受信する実用アプリケーションの作成: [サービス バスが仲介するメッセージングに関する.NET チュートリアル][サービス バスが仲介するメッセージングに関する.NET チュートリアル]。
 
   [次のステップ]: #nextsteps
-  [create-account-note]: ../includes/create-account-note.md
-  [howto-service-bus-topics]: ../includes/howto-service-bus-topics.md
   [0]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
   [キュー、トピック、およびサブスクリプションに関するページ]: http://msdn.microsoft.com/ja-jp/library/hh367516.aspx
   [SqlFilter]: http://msdn.microsoft.com/ja-jp/library/microsoft.servicebus.messaging.sqlfilter.aspx

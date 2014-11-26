@@ -8,24 +8,24 @@
 Azure .NET 用ストレージ クライアントを利用しています。キュー メッセージの**挿入**、**ピーク**、
 **取得**、および**削除**と、**キューの作成および削除**の各シナリオに
 ついて説明します。キューの詳細については、
-「[次のステップ][]」のセクションを参照してください。
+「[次のステップ][次のステップ]」のセクションを参照してください。
 
 <h2>目次</h2>
 
--   [キュー ストレージとは][]
--   [概念][]
--   [Azure のストレージ アカウントの作成][]
--   [Azure のストレージ接続文字列の設定][]
--   [方法: .NET を使用してキューにプログラムでアクセスする][]
--   [方法: キューを作成する][]
--   [方法: メッセージをキューに挿入する][]
--   [方法: 次のメッセージをピークする][]
--   [方法: キューに配置されたメッセージの内容を変更する][]
--   [方法: 次のメッセージをデキューする][]
--   [方法: 追加オプションを利用してメッセージをデキューする][]
--   [方法: キューの長さを取得する][]
--   [方法: キューを削除する][]
--   [次のステップ][]
+-   [キュー ストレージとは][キュー ストレージとは]
+-   [概念][概念]
+-   [Azure のストレージ アカウントの作成][Azure のストレージ アカウントの作成]
+-   [Azure のストレージ接続文字列の設定][Azure のストレージ接続文字列の設定]
+-   [方法: .NET を使用してキューにプログラムでアクセスする][方法: .NET を使用してキューにプログラムでアクセスする]
+-   [方法: キューを作成する][方法: キューを作成する]
+-   [方法: メッセージをキューに挿入する][方法: メッセージをキューに挿入する]
+-   [方法: 次のメッセージをピークする][方法: 次のメッセージをピークする]
+-   [方法: キューに配置されたメッセージの内容を変更する][方法: キューに配置されたメッセージの内容を変更する]
+-   [方法: 次のメッセージをデキューする][方法: 次のメッセージをデキューする]
+-   [方法: 追加オプションを利用してメッセージをデキューする][方法: 追加オプションを利用してメッセージをデキューする]
+-   [方法: キューの長さを取得する][方法: キューの長さを取得する]
+-   [方法: キューを削除する][方法: キューを削除する]
+-   [次のステップ][次のステップ]
 
 [WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
@@ -88,7 +88,11 @@ Azure のクラウド サービスではないアプリケーション (前の�
   		</appSettings>
 	</configuration>
 
-ストレージ接続文字列の詳細については、「[接続文字列の構成][]」を参照してください。
+ストレージ接続文字列の詳細については、「[接続文字列の構成][AccountKey" />
+  		</appSettings>
+	</configuration>
+
+ストレージ接続文字列の詳細については、「[接続文字列の構成]」を参照してください。
 	
 これで、このガイドのハウツー タスクを実行する準備が整いました。
 
@@ -136,7 +140,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager への
 次のコードでは、**CloudQueueClient** オブジェクトを作成します。このガイドのすべてのコードでは、
 Azure アプリケーションのサービス構成に格納されている
 ストレージ接続文字列を使用します。**CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、
-「[CloudStorageAccount][]」を参照してください。
+「[CloudStorageAccount][CloudStorageAccount]」を参照してください。
 
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -368,12 +372,7 @@ Azure アプリケーションのサービス構成に格納されている
   [方法: 追加オプションを利用してメッセージをデキューする]: #advanced-get
   [方法: キューの長さを取得する]: #get-queue-length
   [方法: キューを削除する]: #delete-queue
-  [Azure SDK for .NET をダウンロードしてインストールする]: /ja-jp/develop/net/
-  [.NET クライアント ライブラリ リファレンス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn495001(v=azure.10).aspx
-  [Visual Studio を使用した Azure プロジェクトの作成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405487.aspx 
   [CloudStorageAccount]: http://msdn.microsoft.com/ja-jp/library/microsoft.windowsazure.cloudstorageaccount_methods.aspx
-  [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
-  [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
   [接続文字列の構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758697.aspx
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2

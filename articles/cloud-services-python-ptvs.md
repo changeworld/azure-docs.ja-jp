@@ -102,7 +102,8 @@ Web ロールまたは worker ロールから、Azure Storage、Service Bus な�
 -   [Service Bus キュー][Service Bus キュー]
 -   [Service Bus トピック][Service Bus トピック]
 
-<!--Link references--> <!--External Link references-->
+<!--Link references-->
+<!--External Link references-->
 
   [Python Tools for Visual Studio]: http://pytools.codeplex.com
   [前提条件]: #prerequisites

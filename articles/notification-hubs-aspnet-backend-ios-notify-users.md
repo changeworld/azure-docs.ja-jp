@@ -329,5 +329,4 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 4.  iOS アプリケーションの UI で、**[ログイン]** をクリックします。次に、**[プッシュを送信する]** をクリックします。
 
   [アプリ バックエンドからの登録]: http://msdn.microsoft.com/ja-jp/library/dn743807.aspx
-  [notification-hubs-aspnet-backend-notifyusers]: ../includes/notification-hubs-aspnet-backend-notifyusers.md
   [0]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users1.png

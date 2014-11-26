@@ -1,6 +1,6 @@
-1.  [Azure の管理ポータル][]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[API]** タブをクリックし、**[カスタム API の作成]** をクリックします。
 
@@ -34,26 +34,26 @@
             })
         };
 
-    このコードは [mssql オブジェクト][]を使用し、**todoitem** テーブルに直接アクセスしてすべての項目の完了フラグを設定します。**exports.post** 関数を使用するため、クライアントは POST 要求を送信して操作を実行します。変更された行数は整数値としてクライアントに返されます。
+    このコードは [mssql オブジェクト][mssql オブジェクト]を使用し、**todoitem** テーブルに直接アクセスしてすべての項目の完了フラグを設定します。**exports.post** 関数を使用するため、クライアントは POST 要求を送信して操作を実行します。変更された行数は整数値としてクライアントに返されます。
 
 > [WACOM.NOTE]
-> カスタム API の関数に指定されている[要求][]と[応答][]オブジェクトが、[Express.js ライブラリ][]で実行されます。詳細については、「[カスタム API][]」を参照してください。
+> カスタム API の関数に指定されている[要求][要求]と[応答][応答]オブジェクトが、[Express.js ライブラリ][Express.js ライブラリ]で実行されます。詳細については、「[カスタム API][カスタム API]」を参照してください。
 
 次に、quickstart アプリケーションを変更し、新しいボタンと、非同期的に新しいカスタム API を呼び出すコードを追加します。
 
-<!-- Anchors. -->
 
-<!-- Images. -->
 
-<!-- URLs. -->
+
+
+
 
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/mobile-services-create-custom-api/mobile-services-selection.png
+  [0]: ./media/mobile-services-create-custom-api/mobile-services-selection.png
   [1]: ./media/mobile-services-create-custom-api/mobile-custom-api-create.png
   [2]: ./media/mobile-services-create-custom-api/mobile-custom-api-create-dialog2.png
   [3]: ./media/mobile-services-create-custom-api/mobile-custom-api-select2.png
-  [mssql オブジェクト]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554212.aspx
-  [要求]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554218.aspx
-  [応答]: http://msdn.microsoft.com/en-us/library/windowsazure/dn303373.aspx
+  [mssql オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554212.aspx
+  [要求]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554218.aspx
+  [応答]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn303373.aspx
   [Express.js ライブラリ]: http://go.microsoft.com/fwlink/p/?LinkId=309046
-  [カスタム API]: http://msdn.microsoft.com/en-us/library/windowsazure/dn280974.aspx
+  [カスタム API]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn280974.aspx

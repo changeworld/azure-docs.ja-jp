@@ -14,4 +14,3 @@
 
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-ios-get-started-push/
-  [Enable Apple Push Notifications]: ../includes/enable-apple-push-notifications.md

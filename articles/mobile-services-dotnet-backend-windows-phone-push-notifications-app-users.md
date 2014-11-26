@@ -58,6 +58,3 @@
   [アプリケーションをテストする]: #test
   [このトピックの Windows ストア版]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users
   [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-users/
-  [mobile-services-dotnet-backend-push-notifications-app-users]: ../includes/mobile-services-dotnet-backend-push-notifications-app-users.md
-  [mobile-services-windows-phone-push-notifications-app-users]: ../includes/mobile-services-windows-phone-push-notifications-app-users.md
-  [mobile-services-windows-test-push-users]: ../includes/mobile-services-windows-test-push-users.md

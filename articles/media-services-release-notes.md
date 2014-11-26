@@ -396,9 +396,9 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 
     すべてのメソッドに非同期のサポートが追加されました。
 
-<!-- Anchors. --> <!-- Images. --> <!-- URLs. -->
+  
 
-  [Azure Media Services MSDN フォーラム]: http://social.msdn.microsoft.com/forums/azure/en-US/home?forum=MediaServices
+  [Azure Media Services MSDN フォーラム]: http://social.msdn.microsoft.com/forums/azure/ja-jp/home?forum=MediaServices
   [現在の既知の問題]: #issues
   [REST API バージョン履歴]: #rest_version_history
   [2014 年 10 月のリリース]: #october_changes_14

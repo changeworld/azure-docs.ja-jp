@@ -2,7 +2,7 @@
 
 1.  **[TodoItem]** をクリックし、**[スクリプト]** タブをクリックして、**[挿入]** を選択します。
 
-    ![][]
+    ![][0]
 
 2.  insert 関数を次のコードに置き換え、**[保存]** をクリックします。
 
@@ -31,4 +31,4 @@
 
     この insert スクリプトによって、挿入が成功した後、すべての Windows ストア アプリケーション登録にプッシュ通知が (挿入された項目のテキストと共に) 送信されます。
 
-  []: ./media/mobile-services-javascript-update-script-notification-hubs/mobile-insert-script-push2.png
+  [0]: ./media/mobile-services-javascript-update-script-notification-hubs/mobile-insert-script-push2.png

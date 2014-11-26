@@ -1,6 +1,6 @@
 <properties linkid="manage-services-how-to-deploy-websites" pageTitle="How to deploy an Azure Website" metaKeywords="Azure deploy publish web site" description="Learn what methods are available for deploying content to an Azure Website." metaCanonical="" services="web-sites" documentationCenter="" title="How to Deploy an Azure Website" authors="tdykstra" solutions="" manager="wpickett" editor="mollybos" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/02/2014" ms.author="tdykstra"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/02/2014" ms.author="tdykstra" />
 
 # Azure Web サイトのデプロイ方法
 
@@ -210,7 +210,7 @@ Mac または Linux マシンでコマンド ラインを使用し、FTP を使�
   [BitBucket]: https://bitbucket.org/
   [ソース管理から Azure の Web サイトへの発行]: /ja-jp/documentation/articles/web-sites-publish-source-control/
   [Deploying to Web Sites with GitHub using Kudu (Kudu を使用した GitHub による Web サイトへのデプロイ)]: /ja-jp/documentation/videos/deploying-to-azure-from-github/
-  [Git、Mercurial、Dropbox に関する Azure フォーラム]: http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azuregit
+  [Git、Mercurial、Dropbox に関する Azure フォーラム]: http://social.msdn.microsoft.com/Forums/windowsazure/ja-jp/home?forum=azuregit
   [Mercurial]: http://mercurial.selenic.com/
   [Dropbox]: https://www.dropbox.com/
   [Dropbox を使用した Windows Azure へのデプロイ]: http://blogs.msdn.com/b/windowsazure/archive/2013/03/19/new-deploy-to-windows-azure-web-sites-from-dropbox.aspx

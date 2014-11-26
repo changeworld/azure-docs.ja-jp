@@ -45,7 +45,7 @@ AMQP 1.0 の追加により、サービス バスの仲介型メッセージン�
 
 次の図は、標準の Java Message Service (JMS) API を使用して記述された Linux で実行される Java クライアントと、Windows で実行される .NET クライアントが、AMQP 1.0 を使用してサービス バス経由でメッセージを交換する、サンプルの展開を示しています。
 
-![][]
+![][0]
 
 **図 1: Service Bus と AMQP 1.0 を使用したクロスプラットフォーム メッセージングを示すサンプル デプロイ シナリオ**
 
@@ -93,7 +93,7 @@ IIT Software SwiftMQ Java クライアント</td>
 -   [サービス バス AMQP 1.0: 開発者ガイド][サービス バス AMQP 1.0: 開発者ガイド]
 -   [OASIS Advanced Message Queuing Protocol (AMQP) バージョン 1.0 の仕様][OASIS Advanced Message Queuing Protocol (AMQP) バージョン 1.0 の仕様]
 
-  []: ./media/service-bus-amqp-overview/Example1.png
+  [0]: ./media/service-bus-amqp-overview/Example1.png
   [.NET サービス バス API で AMQP 1.0 を使用する方法]: http://aka.ms/lym3vk
   [サービス バスと AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ]: http://aka.ms/ll1fm3
   [サービス バス AMQP 1.0: 開発者ガイド]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj841071.aspx

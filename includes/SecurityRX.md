@@ -277,7 +277,7 @@ SWT トークンを発行するように Azure AD Access Control を構成しま
 
 **Azure AD Access Control**。この実装では、Azure AD Access Control の要求変換ルール エンジンが使用されます。要求変換ルール エンジンのルールを使用すると、入力方向の要求すべてをロールの種類の要求に変換して、トークンがアプリケーションまたはサービスに到達したときに、WIF がこのロール要求を解析してIsInRole 呼び出しが成功したこと確認できます。
 
-![][]
+![][0]
 
 **WIF ClaimsAuthenticationManager**。この実装では、ClaimsAuthenticationManager を WIF の機能拡張ポイントとして使用します。この方法を使用して、任意の入力方向の要求をアプリケーションでロールの要求の種類に変換します。複雑な変換作業が、コードの作成のみに軽減されます。
 
@@ -588,7 +588,7 @@ Azure AD Access Control のデプロイにおいては、次のセキュリテ�
   [方法: Yahoo! を ID プロバイダーとして構成する]: http://msdn.microsoft.com/ja-jp/library/gg185977.aspx
   [ASP.NET Web アプリケーション]: ./media/SecurityRX/08_ASPNETWebApptoREST.gif
   [共有 SWT トークンを使用する REST WCF サービス委任への ASP.NET Web アプリケーション]: http://code.msdn.microsoft.com/ASPNET-Web-App-To-REST-WCF-b2b95f82
-  []: ./media/SecurityRX/09_RBAC.gif
+  [0]: ./media/SecurityRX/09_RBAC.gif
   [1]: ./media/SecurityRX/10_WIFClaimsAuthenticationManager.gif
   [2]: ./media/SecurityRX/11_SecurityTokenRequriementmapping.gif
   [3]: ./media/SecurityRX/12_CustomRoleManager.gif
@@ -624,7 +624,6 @@ Azure AD Access Control のデプロイにおいては、次のセキュリテ�
   [アプリケーション用の Azure Marketplace の紹介]: https://datamarket.azure.com/
   [設計に関する考慮事項]: http://msdn.microsoft.com/ja-jp/library/ee517298.aspx
   [ASP.NET Web アプリケーションの Windows Identity Foundation (WIF) のセキュリティ – 脅威と対策]: http://blogs.msdn.com/b/alikl/archive/2010/12/02/windows-identity-foundation-wif-security-for-asp-net-web-applications-threats-amp-countermeasures.aspx
-  [Windows Identity Foundation (WIF): 危険な可能性のある Request.Form 値がクライアントから検出されました]: http://social.technet.microsoft.com/wiki/contents/articles/1725.windows-identity-foundation-wif-a-potentially-dangerous-request-form-value-was-detected-from-the-client-wresult-t-requestsecurityto.aspx
   [ACS セキュリティ ガイドライン]: http://msdn.microsoft.com/ja-jp/library/gg185962.aspx
   [証明書およびキーの管理ガイドライン]: http://msdn.microsoft.com/ja-jp/library/hh204521.aspx
   [13]: http://go.microsoft.com/fwlink/?LinkId=214555

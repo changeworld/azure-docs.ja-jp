@@ -1,6 +1,6 @@
 <properties linkid="develop-notificationhubs-tutorials-get-started-windowsphone" urlDisplayName="Get Started" pageTitle="Get Started with Azure Notification Hubs" metaKeywords="" description="Learn how to use Azure Notification Hubs to push notifications." metaCanonical="" services="notification-hubs" documentationCenter="Mobile" title="Get started with Notification Hubs" authors="glenga" solutions="" manager="dwrede" editor="dwrede" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="glenga"></tags>
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="glenga" />
 
 # 通知ハブの使用
 
@@ -31,7 +31,7 @@
 
 2.  **[アプリ サービス]**、**[Service Bus]**、**[Notification Hub]**、**[簡易作成]** の順にクリックします。
 
-    ![][]
+    ![][0]
 
 3.  通知ハブの名前を入力して、目的のリージョンを選択し、**[新しい通知ハブを作成する]** をクリックします。
 
@@ -173,17 +173,11 @@ MSDN の[トースト カタログ][トースト カタログ]および[タイ�
 
 この簡単な例では、すべての Windows Phone 8 デバイスに通知をブロードキャストします。特定のユーザーをターゲットとするには、「[通知ハブを使用したユーザーへのプッシュ通知][通知ハブを使用したユーザーへのプッシュ通知]」のチュートリアルを参照してください。対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信][通知ハブを使用したニュース速報の送信]」を参照してください。通知ハブの使用方法の詳細については、「[Windows Azure 通知ハブの概要][Windows Azure 通知ハブの概要]」を参照してください。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [Windows ユニバーサル]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/ "Windows ユニバーサル"
-  [Windows Phone]: /ja-jp/documentation/articles/notification-hubs-windows-phone-get-started/ "Windows Phone"
-  [iOS]: /ja-jp/documentation/articles/notification-hubs-ios-get-started/ "iOS"
-  [Android]: /ja-jp/documentation/articles/notification-hubs-android-get-started/ "Android"
-  [Kindle]: /ja-jp/documentation/articles/notification-hubs-kindle-get-started/ "Kindle"
-  [Xamarin.iOS]: /ja-jp/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/ "Xamarin.iOS"
-  [Xamarin.Android]: /ja-jp/documentation/articles/partner-xamarin-notification-hubs-android-get-started/ "Xamarin.Android"
   [1]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
   [ユーザーへの通知]: /ja-jp/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-notify-users/
   [Notification Hubs REST API]: http://msdn.microsoft.com/ja-jp/library/dn223264.aspx
@@ -191,15 +185,13 @@ MSDN の[トースト カタログ][トースト カタログ]および[タイ�
   [通知ハブにアプリケーションを接続する]: #connecting-app
   [バックエンドから通知を送信する]: #send
   [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
-  [Azure の無料評価版サイト]: http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F
   [Azure 管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-from-portal.png
+  [0]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-from-portal.png
   [2]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-from-portal2.png
   [3]: ./media/notification-hubs-windows-phone-get-started/notification-hub-select-from-portal.png
   [4]: ./media/notification-hubs-windows-phone-get-started/notification-hub-select-from-portal2.png
   [5]: ./media/notification-hubs-windows-phone-get-started/notification-hub-connection-strings.png
   [6]: ./media/notification-hubs-windows-phone-get-started/notification-hub-pushauth.png
-  [MPNS 認証モード]: http://msdn.microsoft.com/ja-jp/library/windowsphone/develop/ff941099(v=vs.105).aspx
   [7]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-wp-app.png
   [8]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-wp-silverlight-app.png
   [9]: ./media/notification-hubs-windows-phone-get-started/notification-hub-windows-universal-app-install-package.png

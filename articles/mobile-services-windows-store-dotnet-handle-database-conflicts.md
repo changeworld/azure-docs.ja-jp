@@ -373,7 +373,7 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
   [ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
   [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet
   [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-dotnet
-<!-- Images. -->
+
 [0]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package1.png
 [1]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-create-app-package2.png
 [2]: ./media/mobile-services-windows-store-dotnet-handle-database-conflicts/Mobile-oc-store-app1.png 

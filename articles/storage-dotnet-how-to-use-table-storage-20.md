@@ -9,27 +9,27 @@
 一般的なシナリオを実行する方法について説明します。サンプルは C\# コードで記述され、
 Azure .NET 用 Storage クライアント ライブラリを利用しています。紹介するシナリオは、**テーブルの作成と削除**、
 **テーブル エンティティの操作**などです。テーブルの
-詳細については、「[次の手順][]」のセクションを参照してください。
+詳細については、「[次の手順][次の手順]」のセクションを参照してください。
 
 ## 目次
 
--   [テーブル サービスとは][]
--   [概念][]
--   [Azure の Storage アカウントの作成][]
--   [ストレージ接続文字列の設定][]
--   [方法: プログラムでテーブル ストレージにアクセスする][]
--   [方法: テーブルを作成する][]
--   [方法: エンティティをテーブルに追加する][]
--   [方法: エンティティのバッチを挿入する][]
--   [方法: パーティション内のすべてのエンティティを取得する][]
--   [方法: パーティション内の一定範囲のエンティティを取得する][]
--   [方法: 単一のエンティティを取得する][]
--   [方法: エンティティを置換する][]
--   [方法: エンティティを挿入または置換する][]
--   [方法: エンティティ プロパティのサブセットを照会する][]
--   [方法: エンティティを削除する][]
--   [方法: テーブルを削除する][]
--   [次のステップ][]
+-   [テーブル サービスとは][テーブル サービスとは]
+-   [概念][概念]
+-   [Azure の Storage アカウントの作成][Azure の Storage アカウントの作成]
+-   [ストレージ接続文字列の設定][ストレージ接続文字列の設定]
+-   [方法: プログラムでテーブル ストレージにアクセスする][方法: プログラムでテーブル ストレージにアクセスする]
+-   [方法: テーブルを作成する][方法: テーブルを作成する]
+-   [方法: エンティティをテーブルに追加する][方法: エンティティをテーブルに追加する]
+-   [方法: エンティティのバッチを挿入する][方法: エンティティのバッチを挿入する]
+-   [方法: パーティション内のすべてのエンティティを取得する][方法: パーティション内のすべてのエンティティを取得する]
+-   [方法: パーティション内の一定範囲のエンティティを取得する][方法: パーティション内の一定範囲のエンティティを取得する]
+-   [方法: 単一のエンティティを取得する][方法: 単一のエンティティを取得する]
+-   [方法: エンティティを置換する][方法: エンティティを置換する]
+-   [方法: エンティティを挿入または置換する][方法: エンティティを挿入または置換する]
+-   [方法: エンティティ プロパティのサブセットを照会する][方法: エンティティ プロパティのサブセットを照会する]
+-   [方法: エンティティを削除する][方法: エンティティを削除する]
+-   [方法: テーブルを削除する][方法: テーブルを削除する]
+-   [次のステップ][次のステップ]
 
 [WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
@@ -96,7 +96,7 @@ Azure のクラウド サービスではないアプリケーション (前の�
   		</appSettings>
 	</configuration>
 
-ストレージ接続文字列の詳細については、「[接続文字列の構成][]」を参照してください。
+ストレージ接続文字列の詳細については、「[接続文字列の構成][接続文字列の構成]」を参照してください。
 	
 これで、このガイドのハウツー タスクを実行する準備が整いました。
 
@@ -445,7 +445,7 @@ Azure アプリケーションのサービス構成に格納されているス�
 テーブル クエリでは、エンティティのすべてのプロパティではなくごくわずかのプロパティだけをエンティティから取得できます。プロジェクションと呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。次のコードのクエリは、
 テーブル内のエンティティの電子メール アドレスだけを
 返します。これは、**DynamicTableEntity** のクエリと **EntityResolver** を
-使用して行われます。プロジェクションの詳細については、この[ブログの記事][]を参照してください。プロジェクションはローカル ストレージ エミュレーターではサポートされていません。したがって、このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。
+使用して行われます。プロジェクションの詳細については、この[ブログの記事][ブログの記事]を参照してください。プロジェクションはローカル ストレージ エミュレーターではサポートされていません。したがって、このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。
 
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -548,8 +548,6 @@ Azure アプリケーションのサービス構成に格納されているス�
   [テーブル サービスとは]: #what-is
   [概念]: #concepts
   [Azure の Storage アカウントの作成]: #create-account
-  [Visual Studio を使用した Azure プロジェクトの作成]: #create-project
-  [アプリケーションのストレージへのアクセスの構成]: #configure-access
   [ストレージ接続文字列の設定]: #setup-connection-string
   [方法: プログラムでテーブル ストレージにアクセスする]: #configure-access
   [方法: テーブルを作成する]: #create-table
@@ -563,8 +561,6 @@ Azure アプリケーションのサービス構成に格納されているス�
   [方法: エンティティ プロパティのサブセットを照会する]: #query-entity-properties
   [方法: エンティティを削除する]: #delete-entity
   [方法: テーブルを削除する]: #delete-table
-  [Azure SDK for .NET をダウンロードしてインストールする]: /ja-jp/develop/net/
-  [Visual Studio を使用した Azure プロジェクトの作成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405487.aspx
   
   [Blob5]: ./media/storage-dotnet-how-to-use-table-storage-20/blob5.png
   [Blob6]: ./media/storage-dotnet-how-to-use-table-storage-20/blob6.png
@@ -573,10 +569,7 @@ Azure アプリケーションのサービス構成に格納されているス�
   [Blob9]: ./media/storage-dotnet-how-to-use-table-storage-20/blob9.png
   
   [ブログの記事]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
-  [.NET クライアント ライブラリ リファレンス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn495001(v=azure.10).aspx[Storing and Accessing Data in Azure]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
-  [Azure のストレージ チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
   [接続文字列の構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758697.aspx
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
-  [空間]: http://nuget.org/packages/System.Spatial/5.0.2
 

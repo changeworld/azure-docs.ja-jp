@@ -1,6 +1,6 @@
 <properties pageTitle="How to Use Azure Redis Cache" metaKeywords="" description="Learn how to create a use a cache in Azure Redis Cache" metaCanonical="" services="" documentationCenter="API Management" title="How to Use Azure Redis Cache" authors="sdanie" solutions="" manager="" editor="" />
 
-<tags ms.service="cache" ms.workload="tbd" ms.tgt_pltfrm="cache-redis" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie"></tags>
+<tags ms.service="cache" ms.workload="tbd" ms.tgt_pltfrm="cache-redis" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="sdanie" />
 
 # Azure Redis Cache の使用方法
 
@@ -286,7 +286,9 @@ Azure Redis Session State プロバイダーの構成と使用の詳細につい
 -   [redis][redis] のドキュメント、[redis のデータ型に関するページ][redis のデータ型に関するページ]、[redis のデータ型の概念に関するページ][redis のデータ型の概念に関するページ]を参照してください。
 -   MSDN リファレンス: [Azure Redis キャッシュ][Azure Redis キャッシュ]
 
-<!-- INTRA-TOPIC LINKS --> <!-- IMAGES --> <!-- LINKS -->
+<!-- INTRA-TOPIC LINKS -->
+<!-- IMAGES -->
+<!-- LINKS -->
 
   [次のステップ]: #next-steps
   [Azure Redis Cache とは]: #what-is
@@ -298,7 +300,7 @@ Azure Redis Session State プロバイダーの構成と使用の詳細につい
   [オブジェクトをキャッシュに追加する、キャッシュから削除する]: #add-object
   [キャッシュ内のオブジェクトの有効期限を指定する]: #specify-expiration
   [ASP.NET セッション状態をキャッシュに格納する]: #store-session
-  [キャッシュの料金詳細]: http://www.windowsazure.com/en-us/pricing/details/cache/
+  [キャッシュの料金詳細]: http://www.windowsazure.com/ja-jp/pricing/details/cache/
   [Azure Redis Cache の概要に関するページ]: http://go.microsoft.com/fwlink/?LinkId=320830
   [キャッシュの構成]: #enable-caching
   [New cache]: ./media/cache-dotnet-how-to-use-azure-redis-cache/redis-cache-new-cache-menu.png
@@ -315,7 +317,7 @@ Azure Redis Session State プロバイダーの構成と使用の詳細につい
   [StackExchange.Redis の構成モデル]: http://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Configuration.md
   [Cache properties]: ./media/cache-dotnet-how-to-use-azure-redis-cache/redis-cache-properties.png
   [Manage keys]: ./media/cache-dotnet-how-to-use-azure-redis-cache/redis-cache-manage-keys.png
-  [キャッシュ内で .NET オブジェクトを使用する]: http://msdn.microsoft.com/en-us/library/dn690521.aspx#Objects
+  [キャッシュ内で .NET オブジェクトを使用する]: http://msdn.microsoft.com/ja-jp/library/dn690521.aspx#Objects
   [Redis Cache Session State NuGet Package]: ./media/cache-dotnet-how-to-use-azure-redis-cache/redis-cache-session-state-provider.png
   [Azure Redis キャッシュ (プレビュー) ASP.NET セッション状態プロバイダー]: http://go.microsoft.com/fwlink/?LinkId=398249
   [redis]: http://redis.io/documentation

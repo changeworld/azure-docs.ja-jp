@@ -4,4 +4,3 @@
 
 [WACOM.INCLUDE [publishing-with-git](../includes/publishing-with-git.md)]
 
-  [publishing-with-git]: ../includes/publishing-with-git.md

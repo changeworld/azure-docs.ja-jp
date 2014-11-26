@@ -97,9 +97,7 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
     アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
 
-  [mobile-services-selector-get-started]: ../includes/mobile-services-selector-get-started.md
   [Appcelerator Titanium]: http://go.microsoft.com/fwlink/p/?LinkID=509987
-  [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md
   [Todolist アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=506859
   [0]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started/image007.png
   [1]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started/image008.png

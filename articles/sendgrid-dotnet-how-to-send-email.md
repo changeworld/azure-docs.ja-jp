@@ -264,7 +264,6 @@ SendGrid の Web ベース API を使用して、Azure アプリケーション�
   [トランザクション電子メール配信]: http://sendgrid.com/solutions
   [クラウドベース電子メール サービス]: http://sendgrid.com/transactional-email
   []: http://sendgrid.com
-  [sendgrid-sign-up]: ../includes/sendgrid-sign-up.md
   [SendGrid NuGet パッケージ]: https://www.nuget.org/packages/Sendgrid
   [1]: ./media/sendgrid-dotnet-how-to-send-email/sendgrid01.png
   [sendgrid-csharp に関するページ]: https://github.com/sendgrid/sendgrid-csharp

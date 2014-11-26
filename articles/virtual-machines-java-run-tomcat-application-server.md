@@ -1,4 +1,4 @@
-<properties urlDisplayName="Tomcat on Virtual Machine" pageTitle="仮想マシンで Tomcat を実行する - Azure チュートリアル" metaKeywords="Azure vm, creating vm Tomcat, configuring vm Tomcat" description="Windows 仮想マシンを作成し、Apache Tomcat アプリケーション サーバーを実行できるように仮想マシンを構成する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="Java" title="Java アプリケーション サーバーを仮想マシンで実行する方法" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
+<properties linkid="dev-java-vm-application-server" urlDisplayName="Tomcat on Virtual Machine" pageTitle="Tomcat on a virtual machine - Azure tutorial" metaKeywords="Azure vm, creating vm Tomcat, configuring vm Tomcat" description="Learn how to create a Windows Virtual machine and configure the machine to run a Apache Tomcat application server." metaCanonical="" services="virtual-machines" documentationCenter="Java" title="How to run a Java application server on a virtual machine" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
 
 <tags ms.service="virtual-machines" ms.workload="web" ms.tgt_pltfrm="vm-windows" ms.devlang="Java" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
 
@@ -54,9 +54,8 @@ Azure では、仮想マシンを使用してサーバー機能を実現する�
 1.  [管理ポータル][Azure 管理ポータル] にログオンします。
 2.  **[仮想マシン]** をクリックします。
 3.  ログインする仮想マシンの名前をクリックします。
-4.  仮想マシンが起動すると、接続するためのポップアップ メニューがページ下部に表示されます。
-5.  **[接続]** をクリックします。
-6.  表示される画面で必要に応じて入力して、仮想マシンに接続します。これにより、接続の詳細が含まれる .rdp ファイルが保存されるか、開きます。.rdp ファイルの最初の行の最後の部分として、url: ポートをコピーし、それをリモートのログイン アプリケーション内に貼り付けなければならない場合があります。
+4.  **[接続]** をクリックします。
+5.  表示される画面で必要に応じて入力して、仮想マシンに接続します。管理者名とパスワードの入力画面が表示されたら、仮想マシンの作成時に指定した値を使用します。
 
 ## 仮想マシンに Java アプリケーション サーバーをインストールするには
 
@@ -101,27 +100,27 @@ Tomcat が実行されていることを外部コンピューターから確認�
 4.  **[システムとセキュリティ]**、**[Windows ファイアウォール]**、**[詳細設定]** の順にクリックします。
 5.  **[受信の規則]**、**[新しい規則]** の順にクリックします。
 
-![新しい受信の規則][新しい受信の規則]
+    ![新しい受信の規則][新しい受信の規則]
 
 1.  新しい規則として、**[規則の種類]** の **[ポート]** をクリックし、**[次へ]** をクリックします。
 
-![新しい受信の規則のポート][新しい受信の規則のポート]
+    ![新しい受信の規則のポート][新しい受信の規則のポート]
 
 1.  プロトコルとして **[TCP]** を選択し、ポートに **8080** を指定して、**[次へ]** をクリックします。
 
-![新しい受信の規則][1]
+    ![新しい受信の規則][1]
 
 1.  **[接続を許可する]** を選択し、**[次へ]** をクリックします。
 
-![新しい受信の規則の操作][新しい受信の規則の操作]
+    ![新しい受信の規則の操作][新しい受信の規則の操作]
 
 1.  **[ドメイン]**、**[プライベート]**、および **[パブリック]** の各チェック ボックスがオンになっていることを確認し、**[次へ]** をクリックします。
 
-![新しい受信の規則のプロファイル][新しい受信の規則のプロファイル]
+    ![新しい受信の規則のプロファイル][新しい受信の規則のプロファイル]
 
 1.  **HttpIn** など、規則の名前を指定し (ただし、規則の名前がエンドポイント名と一致する必要はありません)、**[完了]** をクリックします。
 
-![新しい受信の規則の名前][新しい受信の規則の名前]
+    ![新しい受信の規則の名前][新しい受信の規則の名前]
 
 これで、外部のブラウザーから Tomcat の Web サイトを表示できるようになります。これには、**http://*your\_DNS\_name*.cloudapp.net** (***your\_DNS\_name*** は、仮想マシンの作成時に指定した DNS 名) という形式の URL を使用します。
 

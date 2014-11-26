@@ -167,9 +167,9 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 -   [モバイル サービスのサーバー スクリプト リファレンス][モバイル サービスのサーバー スクリプト リファレンス]
     モバイル サービスでビジネス ロジックを実装する方法を説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [Android]: /ja-jp/documentation/articles/mobile-services-javascript-backend-android-get-started-push "Android"
   [Google Cloud Messaging を有効にする]: #register
@@ -180,15 +180,11 @@ Mobile Services と通知ハブについては次のトピックを参照して�
   [モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-android-get-started/
   [モバイル サービスでのデータの使用]: /ja-jp/documentation/articles/mobile-services-android-get-started-data/
   [accounts.google.com]: http://go.microsoft.com/fwlink/p/?LinkId=268302
-  [Enable GCM]: ../includes/mobile-services-enable-Google-cloud-messaging.md
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   [0]: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
   [このガイダンス]: http://go.microsoft.com/fwlink/p/?LinkId=391951
   [1]: ./media/mobile-services-android-get-started-push/mobile-push-tab-android.png
-  [Verify SDK]: ../includes/mobile-services-verify-android-sdk-version.md
   [Google Play Services SDK のセットアップに関するページ]: http://go.microsoft.com/fwlink/?LinkId=389801
-  [Add Play Services]: ../includes/mobile-services-add-Google-play-services.md
-  [mobile-services-android-getting-started-with-push]: ../includes/mobile-services-android-getting-started-with-push.md
   [2]: ./media/mobile-services-android-get-started-push/mobile-portal-data-tables.png
   [3]: ./media/mobile-services-android-get-started-push/mobile-insert-script-push2.png
   [gcm オブジェクト]: http://go.microsoft.com/fwlink/p/?LinkId=282645

@@ -587,4 +587,4 @@ Hadoop ジョブの送信方法の詳細については、「[プログラムに
   [Azure の HDInsight の概要]: ../hdinsight-get-started/
   [Develop Java MapReduce programs for HDInsight (HDInsight 用 Java MapReduce プログラムの開発)]: ../hdinsight-develop-deploy-java-mapreduce/
   [HDInsight 用 C\# Hadoop ストリーミング MapReduce プログラムの開発]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
-  [HDInsight について議論する MSDN フォーラム]: http://social.msdn.microsoft.com/Forums/en-US/hdinsight
+  [HDInsight について議論する MSDN フォーラム]: http://social.msdn.microsoft.com/Forums/ja-jp/hdinsight

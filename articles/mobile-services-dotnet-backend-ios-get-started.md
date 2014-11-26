@@ -83,19 +83,14 @@
 -   [モバイル サービス .NET バックエンドのトラブルシューティング][モバイル サービス .NET バックエンドのトラブルシューティング]
      モバイル サービスの .NET バックエンドで発生する問題を診断して解決する方法について説明します。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
 
-  [mobile-services-selector-get-started]: ../includes/mobile-services-selector-get-started.md
+
   [JavaScript バックエンド バージョン]: /ja-jp/documentation/articles/mobile-services-ios-get-started
   [0]: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-quickstart-completed-ios.png
-  [mobile-services-dotnet-backend-create-new-service]: ../includes/mobile-services-dotnet-backend-create-new-service.md
   [1]: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-quickstart-steps-vs.png
-  [mobile-services-dotnet-backend-test-local-service]: ../includes/mobile-services-dotnet-backend-test-local-service.md
-  [mobile-services-dotnet-backend-publish-service]: ../includes/mobile-services-dotnet-backend-publish-service.md
   [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-  [mobile-services-ios-run-app]: ../includes/mobile-services-ios-run-app.md
   [データの使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data
   [オフライン データの同期の使用]: /ja-jp/documentation/articles/mobile-services-ios-get-started-offline-data
   [認証の使用]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users

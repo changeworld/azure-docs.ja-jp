@@ -1,4 +1,4 @@
-<properties urlDisplayName="Install MySQL" pageTitle="Azure 上の Linux 仮想マシンへの MySQL のインストール" metaKeywords="Azure vm OpenSUSE, Linux vm" description="OpenSUSE Linux を実行する Azure の仮想マシンを作成し、SSH または PuTTY を使用して MySQL をその仮想マシンにインストールする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure 上で OpenSUSE Linux を実行する仮想マシンへの MySQL のインストール" authors="timlt" solutions="" manager="timlt" editor="" />
+<properties linkid="manage-linux-common-task-mysql-virtual-machine" urlDisplayName="Install MySQL" pageTitle="Install MySQL on a Linux virtual machine in Azure" metaKeywords="Azure vm OpenSUSE, Linux vm" description="Learn how to create an Azure virtual machine with OpenSUSE Linux, and then use SSH or PuTTY to install MySQL." metaCanonical="" services="virtual-machines" documentationCenter="" title="Install MySQL on a virtual machine running OpenSUSE Linux in Azure" authors="timlt" solutions="" manager="timlt" editor="" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="timlt" />
 

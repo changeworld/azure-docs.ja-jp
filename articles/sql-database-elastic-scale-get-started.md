@@ -94,7 +94,8 @@ Elastic Scale の機能の詳細については、以下のページを参照し
 -   チャンネル 9: [Azure SQL Database Elastic Scale (Azure SQL データベースの Elastic Scale)][Azure SQL Database Elastic Scale (Azure SQL データベースの Elastic Scale)]
 -   ディスカッション フォーラム: [Azure SQL Database (Azure SQL データベース)][Azure SQL Database (Azure SQL データベース)]
 
-<!--Anchors--> <!--Image references-->
+<!--Anchors-->
+<!--Image references-->
 
   [Azure SQL Database Elastic Scale (Azure SQL データベース Elastic Scale)]: http://go.microsoft.com/?linkid=9862592
   [Elastic Scale ドキュメント マップ]: ./sql-database-elastic-scale-documentation-map.md
@@ -118,4 +119,4 @@ Elastic Scale の機能の詳細については、以下のページを参照し
   [スクリプト センター「Azure SQL Database Elastic Scale: Shard Elasticity (Azure SQL データベース Elastic Scale: シャードの弾力性)」]: http://go.microsoft.com/?linkid=9862617
   [Introducing Elastic Scale preview for Azure SQL Database (Azure SQL データベースで使用する Elastic Scale プレビューの紹介)]: http://go.microsoft.com/?linkid=9862608
   [Azure SQL Database Elastic Scale (Azure SQL データベースの Elastic Scale)]: http://go.microsoft.com/?linkid=9862609
-  [Azure SQL Database (Azure SQL データベース)]: http://social.msdn.microsoft.com/forums/azure/en-US/home?forum=ssdsgetstarted
+  [Azure SQL Database (Azure SQL データベース)]: http://social.msdn.microsoft.com/forums/azure/ja-jp/home?forum=ssdsgetstarted

@@ -1,10 +1,10 @@
 <properties linkid="develop-net-tutorials-multi-tier-web-site-2-download-and-run" pageTitle="Azure Cloud Service Tutorial: ASP.NET MVC Web Role, Worker Role, Azure Storage Tables, Queues, and Blobs" metaKeywords="Azure tutorial, Azure storage tutorial, Azure multi-tier tutorial, MVC Web Role tutorial, Azure worker role tutorial, Azure blobs tutorial, Azure tables tutorial, Azure queues tutorial" description="Learn how to create a multi-tier app using ASP.NET MVC and Azure. The app runs in a cloud service, with web role and worker roles, and uses Azure storage tables, queues, and blobs." metaCanonical="" services="cloud-services,storage" documentationCenter=".NET" title="Azure Cloud Service Tutorial: ASP.NET MVC Web Role, Worker Role, Azure Storage Tables, Queues, and Blobs" authors="riande,tdykstra" solutions="" manager="wpickett" editor="mollybos" />
 
-<tags ms.service="cloud-services" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="riande,tdykstra"></tags>
+<tags ms.service="cloud-services" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="riande,tdykstra" />
 
 # Azure Email Service アプリケーションの構成とデプロイ - 2/5
 
-この 2 番目のチュートリアル (全 5 回シリーズ) では、Azure Email Service サンプル アプリケーションをビルドしてデプロイする方法について説明します。このアプリケーションとチュートリアル シリーズの詳細については、[シリーズの最初のチュートリアル][]を参照してください。
+この 2 番目のチュートリアル (全 5 回シリーズ) では、Azure Email Service サンプル アプリケーションをビルドしてデプロイする方法について説明します。このアプリケーションとチュートリアル シリーズの詳細については、[シリーズの最初のチュートリアル][シリーズの最初のチュートリアル]を参照してください。
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -17,23 +17,23 @@
 
 ### チュートリアル セグメント
 
--   [開発環境を設定する][]
--   [完成したソリューションをダウンロードして実行する][]
--   [Visual Studio で開発ストレージを表示する][]
--   [Azure のストレージ アカウントの作成][]
--   [クラウド サービスを作成する][]
--   [Azure ストレージを使用するためにアプリケーションを構成する][]
--   [SendGrid を使用するようにアプリケーションを構成する][]
--   [Azure にアプリケーションを展開する][]
--   [ステージング環境から運用環境にアプリケーションを昇格する][]
--   [トレース データを構成および表示する][]
--   [増加した負荷の処理用に別のワーカー ロール インスタンスを追加する][]
+-   [開発環境を設定する][開発環境を設定する]
+-   [完成したソリューションをダウンロードして実行する][完成したソリューションをダウンロードして実行する]
+-   [Visual Studio で開発ストレージを表示する][Visual Studio で開発ストレージを表示する]
+-   [Azure のストレージ アカウントの作成][Azure のストレージ アカウントの作成]
+-   [クラウド サービスを作成する][クラウド サービスを作成する]
+-   [Azure ストレージを使用するためにアプリケーションを構成する][Azure ストレージを使用するためにアプリケーションを構成する]
+-   [SendGrid を使用するようにアプリケーションを構成する][SendGrid を使用するようにアプリケーションを構成する]
+-   [Azure にアプリケーションを展開する][Azure にアプリケーションを展開する]
+-   [ステージング環境から運用環境にアプリケーションを昇格する][ステージング環境から運用環境にアプリケーションを昇格する]
+-   [トレース データを構成および表示する][トレース データを構成および表示する]
+-   [増加した負荷の処理用に別のワーカー ロール インスタンスを追加する][増加した負荷の処理用に別のワーカー ロール インスタンスを追加する]
 
-[WACOM.INCLUDE [install-sdk-2013-only][]]
+[WACOM.INCLUDE [install-sdk-2013-only](../includes/install-sdk-2013-only.md)]
 
 ## <a name="downloadcnfg"></a><span class="short-header">ダウンロードと実行</span>完成したソリューションをダウンロードして実行する
 
-1.  [完成したソリューション][]をダウンロードして解凍します。
+1.  [完成したソリューション][完成したソリューション]をダウンロードして解凍します。
 
 2.  Visual Studio を起動します。
 
@@ -53,7 +53,7 @@
 
     (これらのスクリーン ショットでは Visual Studio 2012 プロジェクト テンプレートの Web ページ スタイルが示されていますが、Visual Studio 2013 でも内容は同じです)。
 
-    ![Run the App.][]
+    ![Run the App.][Run the App.]
 
 8.  **[Create New]** をクリックします。
 
@@ -63,19 +63,19 @@
 
 10. いくつかの追加のメーリング リスト エントリを作成します。
 
-    ![Mailing List Index Page][]
+    ![Mailing List Index Page][Mailing List Index Page]
 
 11. **[Subscribers]** をクリックし、いくつかの登録者を追加します。**[Verified]** を `true` に設定します。
 
-    ![Subscriber Index Page][]
+    ![Subscriber Index Page][Subscriber Index Page]
 
 12. 送信する電子メールの本文を保存した *.txt* ファイルを作成して、メッセージを追加する準備をします。その後、同じテキストといくつかの HTML (メッセージのいずれかの単語を太字や斜体にするタグなど) を保存した *.htm* ファイルを作成します。これらのファイルはこの後の手順で使用します。
 
 13. **[Messages]** をクリックし、何らかのメッセージを追加します。前の手順で作成したファイルを選択します。[Scheduled Date] の値を変更しないでください。既定で 1 週間後の日付に設定されています。SendGrid を構成するまで、このアプリケーションでメッセージを送信することはできません。
 
-    ![Message Create Page][]
+    ![Message Create Page][Message Create Page]
 
-    ![Message Index Page][]
+    ![Message Index Page][Message Index Page]
 
     入力および表示しているデータは Azure ストレージ エミュレーターによって管理されています。ストレージ エミュレーターでは、SQL Server Express の LocalDB データベースを使用して、クラウド内での Azure Storage の機能をエミュレートします。このアプリケーションでストレージ エミュレーターが使用されているのは、ダウンロード時にそのストレージ エミュレーターを使用するようにプロジェクトを構成したためです。この設定は **AzureEmailService** プロジェクトの *.cscfg* ファイルに保存されています。*ServiceConfiguration.Local.cscfg* ファイルにより、Visual Studio でアプリケーションをローカルで実行するときに使用される設定が決まります。*ServiceConfiguration.Cloud.cscfg* ファイルにより、アプリケーションをクラウドに展開するときに使用される設定が決まります。この後で、Azure Storage のアカウントを使用するようにアプリケーションを構成する方法について説明します。
 
@@ -93,29 +93,29 @@
 
 3.  **[テーブル]** を展開して、前の手順で作成したテーブルを表示します。
 
-    ![Server Explorer][]
+    ![Server Explorer][Server Explorer]
 
 4.  **[MailingList]** テーブルをダブルクリックします。
 
-    ![VS storage explorer][]
+    ![VS storage explorer][VS storage explorer]
 
     このウィンドウにテーブル内のさまざまなスキーマがどのように表示されているかに注目します。`MailingList` エンティティには `Description` プロパティと `FromEmailAddress` プロパティがあります。また、`Subscriber` エンティティには `Verified` プロパティがあります (この画像では見えていませんが `SubscriberGUID` プロパティもあります)。テーブルにはすべてのプロパティに対応する列があります。指定したテーブルの行に対応するエンティティにプロパティがない場合、そのセルは空白になります。
 
-Azure Storage リソースを操作するためのもう 1 つのツールとして、[Azure ストレージ エクスプローラー][]があります。
+Azure Storage リソースを操作するためのもう 1 つのツールとして、[Azure ストレージ エクスプローラー][Azure ストレージ エクスプローラー]があります。
 
 ## <a name="createWASA"></a>Azure ストレージ アカウントの作成
 
 Visual Studio でサンプル アプリケーションを実行するとき、Azure ストレージ エミュレーターで、またはクラウド内の Azure Storage アカウントで、テーブル、キュー、BLOB にアクセスできます。チュートリアルのこのセクションでは、Azure のストレージ アカウントを作成します。後のセクションで、Visual Studio での実行時にこのアカウントを使用するようにアプリケーションを構成します。
 
-1.  ブラウザーで、[Azure の管理ポータル][]を開きます。
+1.  ブラウザーで、[Azure の管理ポータル][Azure の管理ポータル]を開きます。
 
-2.  [Azure の管理ポータル][]で、**[ストレージ]** をクリックし、**[新規]** をクリックします。
+2.  [Azure の管理ポータル][Azure の管理ポータル]で、**[ストレージ]** をクリックし、**[新規]** をクリックします。
 
-![New Storage][]
+![New Storage][New Storage]
 
 1.  **[簡易作成]** をクリックします。
 
-![Quick Create][]
+![Quick Create][Quick Create]
 
 1.  [URL] 入力ボックスに、URL プレフィックスを入力します。
 
@@ -125,21 +125,21 @@ Visual Studio でサンプル アプリケーションを実行するとき、Az
 
 3.  **[レプリケーション]** ボックスを **[ローカル冗長]** に設定します。
 
-    Geo レプリケーションをストレージ アカウントに対して有効にすると、1 次拠点で重大な障害が発生した場合に備えて、保存したコンテンツは 2 次拠点に複製されて、フェイルオーバーが可能になります。Geo レプリケーションには追加費用が発生する場合があります。また、テストおよび開発アカウントの場合は、一般的に Geo レプリケーションに対する課金は避けたいと考えるでしょう。詳細については、[ストレージ アカウントの管理方法に関するページ][]を参照してください。
+    Geo レプリケーションをストレージ アカウントに対して有効にすると、1 次拠点で重大な障害が発生した場合に備えて、保存したコンテンツは 2 次拠点に複製されて、フェイルオーバーが可能になります。Geo レプリケーションには追加費用が発生する場合があります。また、テストおよび開発アカウントの場合は、一般的に Geo レプリケーションに対する課金は避けたいと考えるでしょう。詳細については、[ストレージ アカウントの管理方法に関するページ][ストレージ アカウントの管理方法に関するページ]を参照してください。
 
 4.  **[ストレージ アカウントの作成]** をクリックします。
 
     次の画像では、ストレージ アカウントは `aestest3.core.windows.net` という URL で作成されます。
 
-    ![create storage with URL prefix][]
+    ![create storage with URL prefix][create storage with URL prefix]
 
     この手順は完了までに数分かかる場合があります。完了を待つ間にここまでの手順を繰り返して、運用ストレージ アカウントを作成できます。多くの場合に便利なのは、ローカル開発用にテスト ストレージ アカウントを、Azure 上でのテスト用に別のテスト ストレージ アカウントを作成し、さらに運用ストレージ アカウントを作成することです。
 
 5.  前の手順で作成したテスト アカウントをクリックし、**[アクセス キーの管理]** アイコンをクリックします。
 
-    ![Manage Keys][]
+    ![Manage Keys][Manage Keys]
 
-    ![Keys GUID][]
+    ![Keys GUID][Keys GUID]
 
     ストレージ アカウントを選択すると、これらのキーのいずれかで接続文字列が自動的に構成されます。接続文字列は手動で更新することもできます。
 
@@ -147,9 +147,9 @@ Visual Studio でサンプル アプリケーションを実行するとき、Az
 
 ## <a name="createcloudsvc"></a><span class="short-header">クラウド サービスの作成</span>クラウド サービスを作成する
 
-1.  [Azure の管理ポータル][]で、**[クラウド サービス]** をクリックし、**[新規]** アイコンをクリックします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]で、**[クラウド サービス]** をクリックし、**[新規]** アイコンをクリックします。
 
-    ![Quick Cloud][]
+    ![Quick Cloud][Quick Cloud]
 
 2.  **[簡易作成]** をクリックします。
 
@@ -161,7 +161,7 @@ Visual Studio でサンプル アプリケーションを実行するとき、Az
 
     ストレージ アカウントを作成した同じリージョンでクラウド サービスを作成する必要があります。クラウド サービスとストレージ アカウントが異なるデータ センター (異なるリージョン) にあると、遅延時間が長くなり、データ センター外の帯域幅に対して課金されることになります。データ センター内の帯域幅は無料です。
 
-    Azure アフィニティ グループには、データ センター内のリソース間の距離を最短にする機能が備わっており、それにより遅延時間を短縮できます。このチュートリアルでは、アフィニティ グループを使用しません。詳細については、[Azure でアフィニティ グループを作成する方法に関するページ][]を参照してください。
+    Azure アフィニティ グループには、データ センター内のリソース間の距離を最短にする機能が備わっており、それにより遅延時間を短縮できます。このチュートリアルでは、アフィニティ グループを使用しません。詳細については、[Azure でアフィニティ グループを作成する方法に関するページ][Azure でアフィニティ グループを作成する方法に関するページ]を参照してください。
 
 5.  **[クラウド サービスを作成する]** をクリックします。
 
@@ -183,7 +183,7 @@ Visual Studio でサンプル アプリケーションを実行するとき、Az
 
 4.  **StorageConnectionString** エントリを選択すると、行の右端に省略記号 **[...]** ボタンが表示されます。省略記号ボタンをクリックすると、**[ストレージ アカウント接続文字列]** ダイアログ ボックスが開きます。
 
-    ![Right Click Properties][]
+    ![Right Click Properties][Right Click Properties]
 
 5.  **[ストレージ接続文字列の作成]** ダイアログで、**[サブスクリプション]** をクリックし、**サブスクリプション**とストレージの**アカウント名**を選択します。
 
@@ -207,7 +207,7 @@ Visual Studio でサンプル アプリケーションを実行するとき、Az
 
     2 つのワーカー ロールの `Role` 要素には、同じ 2 つの接続文字列が表示されます。
 
-    これらのファイルは、Visual Studio **[ロール]** ウィンドウを使わずに直接編集できます。構成ファイルの詳細については、「[Azure プロジェクトの構成][]」を参照してください。
+    これらのファイルは、Visual Studio **[ロール]** ウィンドウを使わずに直接編集できます。構成ファイルの詳細については、「[Azure プロジェクトの構成][Azure プロジェクトの構成]」を参照してください。
 
 ### ストレージ アカウントを使用するように構成されたアプリケーションをテストする
 
@@ -225,13 +225,13 @@ Visual Studio でサンプル アプリケーションを実行するとき、Az
 
 1.  **ソリューション エクスプローラー**で **AzureEmailService** クラウド プロジェクトを右クリックし、**[プロパティ]** をクリックします。
 
-    ![Selecting cloud project properties][]
+    ![Selecting cloud project properties][Selecting cloud project properties]
 
 2.  **[開発]** タブを選択します。
 
 3.  **[Azure ストレージ エミュレーターの起動]** を **[False]** に設定します。
 
-    ![Disabling the storage emulator automatic startup][]
+    ![Disabling the storage emulator automatic startup][Disabling the storage emulator automatic startup]
 
     **メモ**:[False] に設定する必要があるのは、ストレージ エミュレーターを使用しない場合のみです。
 
@@ -239,7 +239,7 @@ Visual Studio でサンプル アプリケーションを実行するとき、Az
 
 4.  Windows システム トレイで、コンピューティング エミュレーターのアイコンを右クリックし、**[ストレージ エミュレーターのシャットダウン]** をクリックします。
 
-    ![ASE][]
+    ![ASE][ASE]
 
 ## <a name="sendGrid"></a><span class="short-header">SendGrid</span>SendGrid を使用するようにアプリケーションを構成する
 
@@ -249,7 +249,7 @@ Visual Studio でサンプル アプリケーションを実行するとき、Az
 
 ### SendGrid アカウントを作成する
 
-1.  「[How to Send Email Using SendGrid with Azure (SendGrid を使用した Azure での電子メールの送信方法)][]」の指示に従って、無料アカウントにサインアップします。
+1.  「[How to Send Email Using SendGrid with Azure (SendGrid を使用した Azure での電子メールの送信方法)][How to Send Email Using SendGrid with Azure (SendGrid を使用した Azure での電子メールの送信方法)]」の指示に従って、無料アカウントにサインアップします。
 
 ### SendGrid 資格情報でワーカー ロールのプロパティを更新する
 
@@ -259,7 +259,7 @@ Visual Studio でサンプル アプリケーションを実行するとき、Az
 
 1.  `AzureEmailService` プロジェクトで *ServiceConfiguration.Cloud.cscfg* ファイルを編集し、前の手順で取得した SendGrid ユーザー名とパスワードの値を、これらの設定がある `WorkerRoleB` 要素に入力します。次のコードは WorkerRoleB 要素のものです。
 
-    ![SendGridSettings][]
+    ![SendGridSettings][SendGridSettings]
 
 2.  AzureMailServiceURL 設定もあります。この値には Azure クラウド サービスの作成時に選択した URL を設定します。たとえば、""<http://aescloud.cloudapp.net>" を設定します。
 
@@ -277,7 +277,7 @@ Visual Studio でサンプル アプリケーションを実行するとき、Az
 
 1.  `MvcWebRole` プロジェクトの root フォルダーにある *Web.Release.config* ファイルを開き、**ipAddress** 属性値 127.0.0.1 を自身の IP アドレスに置き換えます (**ソリューション エクスプローラー**で **Web.Release.config** ファイルを参照するには、*Web.config* ファイルを展開する必要があります)。
 
-    [Bing][] やその他の検索エンジンで "Find my IP" を検索することで、自身の IP アドレスを調べることができます。
+    [Bing][Bing] やその他の検索エンジンで "Find my IP" を検索することで、自身の IP アドレスを調べることができます。
 
     アプリケーションが発行されると、*Web.release.config* ファイルで指定した変換が適用され、クラウド内に展開されている *web.config* ファイルの IP 制限要素が更新されます。変換された *web.config* ファイルは、パッケージの作成後、*AzureEmailService\\MvcWebRole\\obj\\Release\\TransformWebConfig\\transformed* フォルダーで確認できます。
 
@@ -301,11 +301,11 @@ Visual Studio でサンプル アプリケーションを実行するとき、Az
 
 2.  **AzureEmailService** クラウド プロジェクトを右クリックし、**[発行]** を選択します。
 
-    ![Package][]
+    ![Package][Package]
 
     **[Azure アプリケーションの発行]** ダイアログ ボックスが表示されます。
 
-    ![Cloud Package][]
+    ![Cloud Package][Cloud Package]
 
 3.  前の手順でストレージ アカウントの資格情報のインポートに自動による方法を使用した場合は、Azure サブスクリプションがドロップダウン リストにあります。そのサブスクリプションを選択し、**[次へ]** をクリックできます。それ以外の場合は、**[サインインして資格情報をダウンロードする]** をクリックし、「[Azure のストレージ用にアプリケーションを構成する][Azure ストレージを使用するためにアプリケーションを構成する]」の指示に従って、発行設定をダウンロードしてインポートします。
 
@@ -313,11 +313,11 @@ Visual Studio でサンプル アプリケーションを実行するとき、Az
 
 5.  **[環境]** ボックスの一覧の **[運用]** を **[ステージング]** に変更します。
 
-    ![Dashboard][]
+    ![Dashboard][Dashboard]
 
 6.  **[ビルド構成]** には既定の **[リリース]** 設定を、**[サービス構成]** には **[クラウド]** をそのまま使用します。
 
-    **[詳細設定]** タブの既定の設定はこのチュートリアルではそのまま使用します。**[詳細設定]** タブには開発やテストに便利な設定がいくつかあります。[詳細設定] タブの詳細については、「[Windows Azure アプリケーションの発行ウィザード][]」を参照してください。
+    **[詳細設定]** タブの既定の設定はこのチュートリアルではそのまま使用します。**[詳細設定]** タブには開発やテストに便利な設定がいくつかあります。[詳細設定] タブの詳細については、「[Windows Azure アプリケーションの発行ウィザード][Windows Azure アプリケーションの発行ウィザード]」を参照してください。
 
 7.  **[次へ]** をクリックします。
 
@@ -327,7 +327,7 @@ Visual Studio でサンプル アプリケーションを実行するとき、Az
 
 9.  設定を確認し、**[発行]** をクリックします。
 
-    ![pub][]
+    ![pub][pub]
 
 **[Azure のアクティビティ ログ]** ウィンドウが Visual Studio で開きます。
 
@@ -340,11 +340,11 @@ Visual Studio でサンプル アプリケーションを実行するとき、Az
 
 2.  展開が完了したら、**Web サイトの URL** をクリックしてアプリケーションを起動します。
 
-    ![ダッシュボード][]
+    ![ダッシュボード][ダッシュボード]
 
 3.  **[Mailing List]**、**[Subscriber]**、**[Message]** の Web ページで何らかのデータを入力して、アプリケーションをテストします。
 
-    **メモ**:アプリケーションはテストの終了後に削除して、使用していないリソースに対して課金されないようにしてください。[Azure の無料評価版のアカウント][]を使用している場合、3 つのデプロイされたロールは数週間で月間の上限に達します。Azure 管理ポータルを使用してデプロイを削除するには、クラウド サービスを選択し、ページの下部にある **[削除]** をクリックしてから、運用またはステージングのデプロイを選択します。
+    **メモ**:アプリケーションはテストの終了後に削除して、使用していないリソースに対して課金されないようにしてください。[Azure の無料評価版のアカウント][Azure の無料評価版のアカウント]を使用している場合、3 つのデプロイされたロールは数週間で月間の上限に達します。Azure 管理ポータルを使用してデプロイを削除するには、クラウド サービスを選択し、ページの下部にある **[削除]** をクリックしてから、運用またはステージングのデプロイを選択します。
 
     ![pub][6]
 
@@ -356,7 +356,7 @@ Visual Studio でサンプル アプリケーションを実行するとき、Az
 
 ## <a name="swap"></a>ステージング環境から運用環境にアプリケーションを昇格する
 
-1.  [Azure の管理ポータル][]の左側のウィンドウで **[クラウド サービス]** アイコンをクリックし、目的のクラウド サービスを選択します。次に、**[ダッシュボード]** タブをクリックします。
+1.  [Azure の管理ポータル][Azure の管理ポータル]の左側のウィンドウで **[クラウド サービス]** アイコンをクリックし、目的のクラウド サービスを選択します。次に、**[ダッシュボード]** タブをクリックします。
 
 2.  **[スワップ]** をクリックします。
 
@@ -399,21 +399,21 @@ Visual Studio でサンプル アプリケーションを実行するとき、Az
 
     このコードで、`DiagnosticMonitor` は、トレース情報を 500 MB まで保存するように構成されています (500 MB を超えた後は、最も古いデータから上書きされます)。また、すべてのトレース メッセージを保存するように構成されています (LogLevel.Verbose)。`ScheduledTransferPeriod` は、トレース データを 1 分単位でストレージに転送するように構成されています。トレース データを保存するには、`ScheduledTransferPeriod` を設定する必要があります。
 
-    `ConfigureDiagnostics` メソッドで、Trace API の呼び出し時にデータを記録するようにトレース リスナーを構成します。詳細については、「[Using Trace in Windows Azure Cloud Applications (Windows Azure クラウド アプリケーションでのトレースの使用)][]」を参照してください。
+    `ConfigureDiagnostics` メソッドで、Trace API の呼び出し時にデータを記録するようにトレース リスナーを構成します。詳細については、「[Using Trace in Windows Azure Cloud Applications (Windows Azure クラウド アプリケーションでのトレースの使用)][Using Trace in Windows Azure Cloud Applications (Windows Azure クラウド アプリケーションでのトレースの使用)]」を参照してください。
 
-2.  **サーバー エクスプローラー**で、前に追加したストレージ アカウントに対応する **WADLogsTable** (**[Azure]** / **[ストレージ]** / **yourstorageaccountname** / **[テーブル]** を展開) をダブルクリックします。[WCF Data Services フィルター][]を入力して、表示されるエンティティを制限できます。次の画像では、警告およびエラー メッセージのみ表示されています。
+2.  **サーバー エクスプローラー**で、前に追加したストレージ アカウントに対応する **WADLogsTable** (**[Azure]** / **[ストレージ]** / **yourstorageaccountname** / **[テーブル]** を展開) をダブルクリックします。[WCF Data Services フィルター][WCF Data Services フィルター]を入力して、表示されるエンティティを制限できます。次の画像では、警告およびエラー メッセージのみ表示されています。
 
     ![Dashboard][10]
 
 ## <a name="addRole"></a>増加した負荷の処理用に別の worker ロール インスタンスを追加する
 
-Azure ロール内のコンピューティング リソースのスケーリングには 2 つの方法があります。[仮想マシンのサイズ][]を指定することと、実行中の仮想マシンのインスタンス数を指定することです。
+Azure ロール内のコンピューティング リソースのスケーリングには 2 つの方法があります。[仮想マシンのサイズ][仮想マシンのサイズ]を指定することと、実行中の仮想マシンのインスタンス数を指定することです。
 
-仮想マシン (VM) のサイズは、*ServiceDefinition.csdef* ファイル内の `WebRole` または `WorkerRole` 要素の `vmsize` 属性で指定します。既定の設定は `Small` で、1 コアと 1.75 GB RAM の VM が提供されます。マルチスレッドのアプリケーションや、大量のメモリ、ディスク、帯域幅を使用するアプリケーションでは、パフォーマンスの向上のために VM のサイズを増やすことができます。たとえば `ExtraLarge` では、8 CPU コアと 14 GB RAM の VM が提供されます。1 つのマシン上のメモリ、CPU コア、ディスク、帯域幅を増やすことは、*スケール アップ*として知られています。スケール アップの良い候補は、[非同期メソッド][]を使用する ASP.NET Web アプリケーションなどです。VM のサイズ別に提供されるリソースの説明については、「[クラウド サービスのサイズを構成する][仮想マシンのサイズ]」を参照してください。
+仮想マシン (VM) のサイズは、*ServiceDefinition.csdef* ファイル内の `WebRole` または `WorkerRole` 要素の `vmsize` 属性で指定します。既定の設定は `Small` で、1 コアと 1.75 GB RAM の VM が提供されます。マルチスレッドのアプリケーションや、大量のメモリ、ディスク、帯域幅を使用するアプリケーションでは、パフォーマンスの向上のために VM のサイズを増やすことができます。たとえば `ExtraLarge` では、8 CPU コアと 14 GB RAM の VM が提供されます。1 つのマシン上のメモリ、CPU コア、ディスク、帯域幅を増やすことは、*スケール アップ*として知られています。スケール アップの良い候補は、[非同期メソッド][非同期メソッド]を使用する ASP.NET Web アプリケーションなどです。VM のサイズ別に提供されるリソースの説明については、「[クラウド サービスのサイズを構成する][仮想マシンのサイズ]」を参照してください。
 
 このアプリケーションの Worker ロール B は、電子メールの送信処理を行うため高負荷下にある限定コンポーネントです (ワーカー ロール A は、リソースを集中的に使用しないキュー メッセージの作成処理のみ行います)。ワーカー ロール B はマルチスレッドではなく、メモリ フットプリントも大きくないため、スケール アップの良い候補ではありません。ワーカー ロール B は、インスタンス数を増やすことで直線的にスケーリングできます (インスタンス数を 2 倍にすると、パフォーマンスもほぼ 2 倍になります)。コンピューティング インスタンスの数を増やすことは、*スケール アウト*として知られています。各インスタンスにはコストがあるため、スケール アウトはアプリケーションに必要なときのみ行う必要があります。
 
-Visual Studio の UI で設定を更新するか、*ServiceConfiguration.\*.cscfg* ファイルを直接編集することで、Web ロールまたは worker ロールをスケール アウトできます。インスタンス数はロールの**プロパティ** ウィンドウの **[構成]** タブ、および </em>.cscfg</em> ファイルの `Instances` 要素で指定します。設定を更新するときは、更新した構成ファイルを展開して、変更を有効にする必要があります。または、負荷の増加が一時的な場合は、ロール インスタンスの数を手動で変更できます。さらに、指定した条件に基づいてロール インスタンスの数を自動的に変更するように Azure を構成することもできます。オートスケーリングの詳細については、[このシリーズの最終チュートリアル][]を参照してください。
+Visual Studio の UI で設定を更新するか、*ServiceConfiguration.\*.cscfg* ファイルを直接編集することで、Web ロールまたは worker ロールをスケール アウトできます。インスタンス数はロールの**プロパティ** ウィンドウの **[構成]** タブ、および </em>.cscfg</em> ファイルの `Instances` 要素で指定します。設定を更新するときは、更新した構成ファイルを展開して、変更を有効にする必要があります。または、負荷の増加が一時的な場合は、ロール インスタンスの数を手動で変更できます。さらに、指定した条件に基づいてロール インスタンスの数を自動的に変更するように Azure を構成することもできます。オートスケーリングの詳細については、[このシリーズの最終チュートリアル][このシリーズの最終チュートリアル]を参照してください。
 
 チュートリアルのこのセクションでは、管理ポータルを使用してワーカー ロール B をスケール アウトする方法について説明しますが、その前に Visual Studio でスケール アウトする方法を紹介します。
 
@@ -423,7 +423,7 @@ Visual Studio でスケール アウトを行うには、クラウド プロジ�
 
 その後、左側の **[構成]** タブを選択し、**[サービス構成]** ボックスの一覧の **[クラウド]** を選択します。
 
-![Instance Count][]
+![Instance Count][Instance Count]
 
 このタブで VM のサイズも構成できることに注目してください。
 
@@ -433,23 +433,23 @@ Visual Studio でスケール アウトを行うには、クラウド プロジ�
 
 2.  Worker ロール B のインスタンスの数を増やし、**[保存]** をクリックします。
 
-    ![increase instances][]
+    ![increase instances][increase instances]
 
     新しい VM がプロビジョニングされるまで数分かかる場合があります。
 
 3.  **[インスタンス]** タブを選択して、アプリケーションの各ロール インスタンスを表示します。
 
-    ![view instances][]
+    ![view instances][view instances]
 
 ## <a name="nextsteps"></a>次のステップ
 
-ここまで、完成したアプリケーションの構成、展開、スケーリング方法を見てきました。この後の一連のチュートリアルでは、アプリケーションを新しくビルドする方法について説明します。[次のチュートリアル][]では、Web ロールを作成します。
+ここまで、完成したアプリケーションの構成、展開、スケーリング方法を見てきました。この後の一連のチュートリアルでは、アプリケーションを新しくビルドする方法について説明します。[次のチュートリアル][次のチュートリアル]では、Web ロールを作成します。
 
 Azure Storage のテーブル、キュー、BLOB に関する参考情報については、[このシリーズの最終チュートリアル][11]を参照してください。
 
-<div><a href="/en-us/develop/net/tutorials/multi-tier-web-site/3-web-role/" class="site-arrowboxcta download-cta">チュートリアル 3</a></div>
+<div><a href="/ja-jp/develop/net/tutorials/multi-tier-web-site/3-web-role/" class="site-arrowboxcta download-cta">チュートリアル 3</a></div>
 
-  [シリーズの最初のチュートリアル]: /en-us/develop/net/tutorials/multi-tier-web-site/1-overview/
+  [シリーズの最初のチュートリアル]: /ja-jp/develop/net/tutorials/multi-tier-web-site/1-overview/
   [開発環境を設定する]: #setupdevenv
   [完成したソリューションをダウンロードして実行する]: #downloadcnfg
   [Azure のストレージ アカウントの作成]: #createWASA
@@ -460,7 +460,6 @@ Azure Storage のテーブル、キュー、BLOB に関する参考情報につ�
   [ステージング環境から運用環境にアプリケーションを昇格する]: #swap
   [トレース データを構成および表示する]: #trace
   [増加した負荷の処理用に別のワーカー ロール インスタンスを追加する]: #addRole
-  [install-sdk-2013-only]: ../includes/install-sdk-2013-only.md
   [完成したソリューション]: http://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
   [Run the App.]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-mailinglist1.png
   [1]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-create1.png
@@ -474,21 +473,21 @@ Azure Storage のテーブル、キュー、BLOB に関する参考情報につ�
   [Azure の管理ポータル]: http://manage.windowsazure.com
   [New Storage]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-portal-new-storage.png
   [Quick Create]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-storage-quick.png
-  [ストレージ アカウントの管理方法に関するページ]: /en-us/manage/services/storage/how-to-manage-a-storage-account/
+  [ストレージ アカウントの管理方法に関するページ]: /ja-jp/manage/services/storage/how-to-manage-a-storage-account/
   [create storage with URL prefix]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-create-storage-url-test.png
   [Manage Keys]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-manage-keys.png
   [Keys GUID]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-guid-keys.PNG
   [Quick Cloud]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-new-cloud.png
-  [Azure でアフィニティ グループを作成する方法に関するページ]: http://msdn.microsoft.com/en-us/library/jj156209.aspx
+  [Azure でアフィニティ グループを作成する方法に関するページ]: http://msdn.microsoft.com/ja-jp/library/jj156209.aspx
   [2]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-create-cloud.png
   [[プロパティ] を右クリック]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-rt-prop.png
   [Right Click Properties]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-elip.png
   [3]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-enter.png
-  [Azure プロジェクトの構成]: http://msdn.microsoft.com/en-us/library/windowsazure/ee405486.aspx
+  [Azure プロジェクトの構成]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405486.aspx
   [Selecting cloud project properties]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-aesp.png
   [Disabling the storage emulator automatic startup]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-1.png
   [ASE]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-se4.png
-  [How to Send Email Using SendGrid with Azure (SendGrid を使用した Azure での電子メールの送信方法)]: http://www.windowsazure.com/en-us/develop/net/how-to-guides/sendgrid-email-service/ "SendGrid"
+  [How to Send Email Using SendGrid with Azure (SendGrid を使用した Azure での電子メールの送信方法)]: http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/sendgrid-email-service/ "SendGrid"
   [SendGridSettings]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-sg.png
   [Bing]: http://www.bing.com/search?q=find+my+IP&qs=n&form=QBLH&pq=find+my+ip&sc=8-10&sp=-1&sk= "find my IP"
   [Package]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-6.png
@@ -499,19 +498,19 @@ Azure Storage のテーブル、キュー、BLOB に関する参考情報につ�
   [4]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-11.png
   [5]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-9.png
   [ダッシュボード]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-c55.png
-  [Azure の無料評価版のアカウント]: http://www.windowsazure.com/en-us/pricing/free-trial/ "無料評価版"
+  [Azure の無料評価版のアカウント]: http://www.windowsazure.com/ja-jp/pricing/free-trial/ "無料評価版"
   [6]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-19.png
   [7]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-12.png
   [8]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-c6.png
   [9]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-c7.png
   [Using Trace in Windows Azure Cloud Applications (Windows Azure クラウド アプリケーションでのトレースの使用)]: http://blogs.msdn.com/b/windowsazure/archive/2012/10/24/using-trace-in-windows-azure-cloud-applications-1.aspx "Windows Azure でのトレースの使用"
-  [WCF Data Services フィルター]: http://msdn.microsoft.com/en-us/library/windowsazure/ff683669.aspx "WCF フィルター"
+  [WCF Data Services フィルター]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff683669.aspx "WCF フィルター"
   [10]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-trc.png
-  [仮想マシンのサイズ]: http://msdn.microsoft.com/en-us/library/windowsazure/ee814754.aspx "VM のサイズ"
+  [仮想マシンのサイズ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee814754.aspx "VM のサイズ"
   [非同期メソッド]: http://www.asp.net/mvc/tutorials/mvc-4/using-asynchronous-methods-in-aspnet-mvc-4 "非同期 MVC"
-  [このシリーズの最終チュートリアル]: /en-us/develop/net/tutorials/multi-tier-web-site/5-worker-role-b/
+  [このシリーズの最終チュートリアル]: /ja-jp/develop/net/tutorials/multi-tier-web-site/5-worker-role-b/
   [Instance Count]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-instanceCnt.png
   [increase instances]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-in3.png
   [view instances]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-download-run/mtas-in2.png
-  [次のチュートリアル]: /en-us/develop/net/tutorials/multi-tier-web-site/3-web-role/
-  [11]: /en-us/develop/net/tutorials/multi-tier-web-site/5-worker-role-b/#nextsteps
+  [次のチュートリアル]: /ja-jp/develop/net/tutorials/multi-tier-web-site/3-web-role/
+  [11]: /ja-jp/develop/net/tutorials/multi-tier-web-site/5-worker-role-b/#nextsteps

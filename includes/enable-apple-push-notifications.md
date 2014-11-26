@@ -1,4 +1,4 @@
-Apple Push Notification Service (APNS) では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、モバイル サービスにアップロードしてください。公式な APNS 機能のドキュメントについては、「[Apple Push Notification Service][]」を参照してください。
+Apple Push Notification Service (APNS) では、証明書を使用してモバイル サービスを認証します。次の手順に従って、必要な証明書を作成し、モバイル サービスにアップロードしてください。公式な APNS 機能のドキュメントについては、「[Apple Push Notification Service][Apple Push Notification Service]」を参照してください。
 
 ## 証明書の署名要求ファイルを生成する
 
@@ -8,7 +8,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
 2.  **[Keychain Access]** をクリックし、**[Certificate Assistant]** を展開して、**[Request a Certificate from a Certificate Authority]** をクリックします。
 
-    ![][]
+    ![][0]
 
 3.  **[User Email Address]** と **[Common Name]** を選択し、**[Saved to disk]** が選択されていることを確認して、**[Continue]** をクリックします。必要ではないため、"**CA 電子メール アドレス**" フィールドを空白のままにします。
 
@@ -26,7 +26,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
 モバイル サービスから iOS アプリケーションにプッシュ通知を送信できるようにするには、アプリケーションを Apple に登録し、プッシュ通知にも登録する必要があります。
 
-1.  アプリケーションをまだ登録していない場合は、Apple デベロッパー センターで [iOS プロビジョニング ポータル][]に移動し、Apple ID でログインして、**[Identifiers]** をクリックし、**[App IDs]** をクリックします。最後に、**+** 記号をクリックして新しいアプリケーションを登録します。
+1.  アプリケーションをまだ登録していない場合は、Apple デベロッパー センターで [iOS プロビジョニング ポータル][iOS プロビジョニング ポータル]に移動し、Apple ID でログインして、**[Identifiers]** をクリックし、**[App IDs]** をクリックします。最後に、**+** 記号をクリックして新しいアプリケーションを登録します。
 
     ![][3]
 
@@ -86,7 +86,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 
 ## アプリケーションのプロビジョニング プロファイルを作成する
 
-1.  [iOS プロビジョニング ポータル][]に戻って **[Provisioning Profiles]** を選択し、**[All]** を選択してから **+** ボタンをクリックして、新しいプロファイルを作成します。これで、**Add iOS Provisiong Profile** ウィザードが起動されます。
+1.  [iOS プロビジョニング ポータル][iOS プロビジョニング ポータル]に戻って **[Provisioning Profiles]** を選択し、**[All]** を選択してから **+** ボタンをクリックして、新しいプロファイルを作成します。これで、**Add iOS Provisiong Profile** ウィザードが起動されます。
 
     ![][14]
 
@@ -123,7 +123,7 @@ Apple Push Notification Service (APNS) では、証明書を使用してモバ�
 これで、Xcode プロジェクトはコード署名のために新しいプロファイルを使用するようになります。次に、証明書を Azure にアップロードする必要があります。
 
   [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
-  []: ./media/enable-apple-push-notifications/mobile-services-ios-push-step5.png
+  [0]: ./media/enable-apple-push-notifications/mobile-services-ios-push-step5.png
   [1]: ./media/enable-apple-push-notifications/mobile-services-ios-push-step6.png
   [2]: ./media/enable-apple-push-notifications/mobile-services-ios-push-step7.png
   [iOS プロビジョニング ポータル]: http://go.microsoft.com/fwlink/p/?LinkId=272456

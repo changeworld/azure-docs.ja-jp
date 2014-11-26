@@ -91,7 +91,7 @@ Azure ポータルを使用し、次に示す手順を実行して、Web サイ�
 
 7.  Azure で初めてリポジトリを設定した場合、そのログイン資格情報を作成する必要があります。それらを使用して、Azure リポジトリにログインし、ローカル Git リポジトリから変更をプッシュします。
 
-    ![][]
+    ![][0]
 
 8.  しばらくすると、リポジトリが準備できたことを示すメッセージが表示されます。
 
@@ -324,7 +324,7 @@ Git を使用して Azure Websites に発行する場合に発生する一般的
   [Azure ポータル]: http://manage.windowsazure.com
   [選択した Web サイトが表示されている画像]: ./media/publishing-with-git/git-select-website.png
   [git-WhereIsYourSourceCode]: ./media/publishing-with-git/git-WhereIsYourSourceCode.png
-  []: ./media/publishing-with-git/git_credentials.png
+  [0]: ./media/publishing-with-git/git_credentials.png
   [Git の手順]: ./media/publishing-with-git/git-instructions.png
   ["Hello Git!" を含む Web ページ]: ./media/publishing-with-git/git-hello-git.png
   ["Yay!" を含む Web ページ]: ./media/publishing-with-git/git-yay.png

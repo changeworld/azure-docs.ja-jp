@@ -14,4 +14,3 @@
 
   [Azure の管理ポータル]: https://manage.windowsazure.com/
   [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-android-get-started-push/
-  [Enable GCM]: ../includes/mobile-services-enable-Google-cloud-messaging.md

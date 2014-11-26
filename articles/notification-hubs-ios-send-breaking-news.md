@@ -235,9 +235,9 @@
 
     認証された特定のユーザーにプッシュ通知する方法について説明します。これは、特定のユーザーにのみ通知を送信する場合に適したソリューションです。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/jj927170.aspx
   [アプリケーションにカテゴリ選択を追加する]: #adding-categories
@@ -247,7 +247,6 @@
   [通知ハブの使用]: /ja-jp/manage/services/notification-hubs/get-started-notification-hubs-ios/
   [0]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios2.png
   [1]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios3.png
-  [create-an-azure-account]: ../includes/notification-hubs-back-end.md
   [2]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios1.png
   [通知ハブを使用したローカライズ ニュース速報のブロードキャスト]: /ja-jp/manage/services/notification-hubs/breaking-news-localized-dotnet/
   [通知ハブによるユーザーへの通知]: /ja-jp/manage/services/notification-hubs/notify-users/

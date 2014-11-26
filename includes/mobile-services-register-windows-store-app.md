@@ -1,6 +1,6 @@
 1.  アプリケーションをまだ登録していない場合は、Windows ストア アプリのデベロッパー センターで[アプリの提出のページ][アプリの提出のページ]に移動し、Microsoft アカウントでログインして、**[アプリの名前]** をクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[アプリ名]** にアプリケーションの名前を入力し、**[アプリの名前の予約]** をクリックして、**[保存]** をクリックします。
 
@@ -58,12 +58,12 @@
 
 これで、アプリケーションで認証に Microsoft アカウントを使用する準備ができました。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-  []: ./media/mobile-services-register-windows-store-app/mobile-services-submit-win8-app.png
+  [0]: ./media/mobile-services-register-windows-store-app/mobile-services-submit-win8-app.png
   [1]: ./media/mobile-services-register-windows-store-app/mobile-services-win8-app-name.png
   [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
   [2]: ./media/mobile-services-register-windows-store-app/mobile-services-store-association.png

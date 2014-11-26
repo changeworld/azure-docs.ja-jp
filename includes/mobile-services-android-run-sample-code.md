@@ -1,6 +1,6 @@
 1.  Package Explorer で、**[GetStartedWithData]**、**[src]**、および **[.com.example.GetStartedWithData]** を展開し、ToDoActivity.java ファイルを確認します。
 
-    ![][]
+    ![][0]
 
     "`//TODO` " コメントに、このアプリケーションをモバイル サービスで実行するために必要な手順が指定されている点に注目してください。
 
@@ -14,5 +14,5 @@
 
     保存したテキストがメモリ内のコレクションに格納され、下のリストに表示されます。
 
-  []: ./media/download-android-sample-code/mobile-eclipse-project.png
+  [0]: ./media/download-android-sample-code/mobile-eclipse-project.png
   [1]: ./media/download-android-sample-code/mobile-quickstart-startup-android.png

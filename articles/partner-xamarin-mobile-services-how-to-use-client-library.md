@@ -466,7 +466,6 @@ Xamarin コンポーネント クライアントは厳密に型指定された�
   [方法: 型指定のないデータを処理する]: #untyped
   [方法: 単体テストを設計する]: #unit-testing
   [次のステップ]: #nextsteps
-  [mobile-services-concepts]: ../includes/mobile-services-concepts.md
   [テーブルの作成]: http://go.microsoft.com/fwlink/?LinkId=298592
   [動的スキーマ]: http://go.microsoft.com/fwlink/?LinkId=296271
   [GetTable]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554275.aspx

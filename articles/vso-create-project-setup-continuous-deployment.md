@@ -1,10 +1,10 @@
 <properties linkid="create-vso-project-setup-continuous-deployment" urlDisplayName="How to create a VSO project and setup Continuous Deployment" pageTitle="How to create a Visual Studio Online team project and setup Continuous Deployment - Windows Azure" metaKeywords="Visual Studio Online create team project, continuous deployment to Azure" description="Learn how to create a Visual Studio Online team project and configure it for continuous deployment to Windows Azure." metaCanonical="" services="cloud-services, visual-studio-online" documentationCenter="" title="How to Create and Deploy a Cloud Service" authors="jimlamb" solutions="" writer="jimlamb" manager="" editor=""  />
 
-<tags ms.service="visual-studio-online" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jimlamb"></tags>
+<tags ms.service="visual-studio-online" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jimlamb" />
 
 # Visual Studio Online プロジェクトの作成と Windows Azure への継続的なデプロイの設定
 
-[WACOM.INCLUDE [disclaimer][disclaimer]]
+[WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
 
 Windows Azure 管理ポータルを使用すると、Visual Studio Online でチーム プロジェクトを作成し、Web アプリケーションを Web サイトへの継続的なデプロイ用に構成できます。
 
@@ -57,7 +57,6 @@ Windows Azure 管理ポータルを使用すると、Visual Studio Online でチ
 3.  ビルド ブレードで、**[デプロイ]** パーツの最初の項目をクリックして、対応する Web サイトを開きます。
 4.  Web サイト ブレードで、**[参照]** ブレード レベル コマンドをクリックして Web サイトを参照し、Web アプリケーションのデプロイを確認します。
 
-  [disclaimer]: ../includes/disclaimer.md
   [チーム プロジェクトの作成方法]: #create_team_project
   [新しい Web アプリケーションを作成して Git バージョン管理に追加する方法]: #create_web_app
   [継続的なデプロイを設定する方法]: #continuous_deployment

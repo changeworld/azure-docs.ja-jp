@@ -1,6 +1,6 @@
 1.  [Azure の管理ポータル][Azure の管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[データ]** タブをクリックし、**[作成]** をクリックします。
 
@@ -19,6 +19,6 @@
 <!-- URLs -->
 
   [Azure の管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/mobile-services-create-new-push-table/mobile-services-selection.png
+  [0]: ./media/mobile-services-create-new-push-table/mobile-services-selection.png
   [1]: ./media/mobile-services-create-new-push-table/mobile-create-table.png
   [2]: ./media/mobile-services-create-new-push-table/mobile-create-registrations-table.png

@@ -12,7 +12,7 @@
 
 3.  Azure の管理ポータルで、モバイル サービスに関連付けられたデータベースの [管理] をクリックします。
 
-    ![][]
+    ![][0]
 
 4.  管理ポータルで、クエリを実行して Windows ストア アプリによって加えられた変更を表示します。クエリは次のようになりますが、`todolist` の代わりにデータベースの名前を使用します。
 
@@ -22,5 +22,5 @@
 
 これで、Android 向けの**データの使用**に関するチュートリアルは終了です。
 
-  []: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/manage-sql-azure-database.png
+  [0]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/manage-sql-azure-database.png
   [1]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/sql-azure-query.png

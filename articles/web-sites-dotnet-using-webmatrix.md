@@ -145,7 +145,6 @@ WebMatrix を使用してサイトを修正し、それを Azure Web サイト�
 
 -   [WebMatrix の Web サイト][WebMatrix の Web サイト]
 
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [アカウントの追加]: ./media/web-sites-dotnet-using-webmatrix/webmatrix-add-account.png
   [Azure へのサインイン]: ./media/web-sites-dotnet-using-webmatrix/webmatrix-sign-in.png
   [テンプレート ギャラリーからの新しいサイト]: ./media/web-sites-dotnet-using-webmatrix/webmatrix-site-from-template.png

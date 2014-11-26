@@ -169,7 +169,6 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 4.  **NotifyUserWindowsPhone** アプリケーションの UI で、**[ログインして登録]** をクリックします。次に、**[プッシュを送信する]** をクリックします。
 
-  [notification-hubs-aspnet-backend-securepush]: ../includes/notification-hubs-aspnet-backend-securepush.md
   [0]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png
   [1]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push3.png
   [2]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push13.png

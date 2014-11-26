@@ -1,4 +1,4 @@
-<properties urlDisplayName="Blob Service" pageTitle="BLOB ストレージを使用する方法 (Ruby) | Microsoft Azure" metaKeywords="Get started Azure blob, Azure unstructured data, Azure unstructured storage, Azure blob, Azure blob storage, Azure blob Ruby" description="Azure BLOB サービスを使用して、BLOB の内容をアップロード、ダウンロード、一覧表示、および削除する方法について説明します。コード サンプルは Ruby で記述されています。" metaCanonical="" services="storage" documentationCenter="Ruby" title="Ruby から BLOB サービスを使用する方法" authors="guayan" solutions="" manager="wpickett" editor="" />
+<properties linkid="dev-ruby-how-to-blob-storage" urlDisplayName="Blob Service" pageTitle="How to use blob storage (Ruby) | Microsoft Azure" metaKeywords="Get started Azure blob, Azure unstructured data, Azure unstructured storage, Azure blob, Azure blob storage, Azure blob Ruby" description="Learn how to use the Azure blob service to upload, download, list, and delete blob content. Samples written in Ruby." metaCanonical="" services="storage" documentationCenter="Ruby" title="How to Use the Blob Service from Ruby" authors="guayan" solutions="" manager="" editor="" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="ruby" ms.topic="article" ms.date="01/01/1900" ms.author="guayan" />
 
@@ -53,8 +53,7 @@ Azure ストレージを使用するには、Ruby azure パッケージをダウ
 
 ## <span id="SetupStorageConnection"></span></a>Azure のストレージ接続文字列の設定
 
-azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** および **AZURE\_STORAGE\_ACCESS\_KEY**
- を読み取ります。これらの環境変数が設定されていない場合は、**Azure::BlobService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
+azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** および **AZURE\_STORAGE\_ACCESS\_KEY** を読み取ります。これらの環境変数が設定されていない場合は、**Azure::BlobService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
     Azure.config.storage_account_name = "<your azure storage account>"
     Azure.config.storage_access_key = "<your azure storage access key>"

@@ -1,10 +1,10 @@
-<properties urlDisplayName="" pageTitle="BLOB サービスによる SAS の作成および使用 | Microsoft Azure" metaKeywords="Azure blob, shared access signatures, stored access policy" description="BLOB サービスによる共有アクセス署名の生成と使用について説明します。" metaCanonical="" services="storage" documentationCenter="" title="パート 2: BLOB サービスによる SAS の作成および使用" solutions="" authors="tamram" manager="adinah" editor="cgronlun" />
+<properties linkid="manage-services-storage-net-shared-access-signature-part-2" urlDisplayName="" pageTitle="Create and use a SAS with the Blob Service | Microsoft Azure" metaKeywords="Azure blob, shared access signatures, stored access policy" description="Explore generating and using shared access signatures with the Blob service" metaCanonical="" services="storage" documentationCenter="" title="Part 2: Create and Use a SAS with the Blob Service" solutions="" authors="tamram" manager="mbaldwin" editor="cgronlun" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
 # 共有アクセス署名、パート 2:BLOB サービスによる SAS の作成および使用
 
-このチュートリアルの[第 1 部][第 1 部] では、共有アクセス署名 (SAS) を紹介し、そのベスト プラクティスについて説明しました。第 2 部では、Azure BLOB サービスで共有アクセス署名を生成し、使用する方法を説明します。例は C\# で記述され、Azure .NET 用ストレージ クライアント ライブラリを利用しています。説明しているシナリオには、共有アクセス署名を使用する場合の次の側面が含まれます。
+このチュートリアルの[第 1 部][第 1 部] では、共有アクセス署名 (SAS) を紹介し、そのベスト プラクティスについて説明しました。第 2 部では、Azure BLOB サービスで共有アクセス署名を生成し、使用する方法を説明します。例は C# で記述され、Azure .NET 用ストレージ クライアント ライブラリを利用しています。説明しているシナリオには、共有アクセス署名を使用する場合の次の側面が含まれます。
 
 -   コンテナーでの共有アクセス署名の生成
 -   BLOB での共有アクセス署名の生成
@@ -91,7 +91,7 @@ Program.cs ファイルの先頭に、次の **using** ステートメントを�
 
 コンパイルし、実行して、新しいコンテナーの共有アクセス署名 URI を出力します。URI は、次の URI のようになります。
 
-https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2013-04-13T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3D
+<https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2013-04-13T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3D>
 
 コードを実行すると、コンテナーで作成した共有アクセス署名が 4 時間だけ有効になります。署名によってクライアントには、コンテナー内の BLOB の一覧を表示し、新しい BLOB をコンテナーに書き込むアクセス許可が付与されます。
 
@@ -139,7 +139,7 @@ https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2013-
 
 コンパイルし、実行して、新しい BLOB の共有アクセス署名 URI を出力します。URI は、次の URI のようになります。
 
-https://storageaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&st=2013-04-12T23%3A37%3A08Z&se=2013-04-13T00%3A12%3A08Z&sr=b&sp=rw&sig=dF2064yHtc8RusQLvkQFPItYdeOz3zR8zHsDMBi4S30%3D
+<https://storageaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&st=2013-04-12T23%3A37%3A08Z&se=2013-04-13T00%3A12%3A08Z&sr=b&sp=rw&sig=dF2064yHtc8RusQLvkQFPItYdeOz3zR8zHsDMBi4S30%3D>
 
 ## 保存されているアクセス ポリシーのコンテナーでの作成
 
@@ -527,5 +527,4 @@ Program.cs ファイルの先頭に、次の **using** ステートメントを�
   [sas-console-output-1]: ./media/storage-dotnet-shared-access-signature-part-2/sas-console-output-1.PNG
   [sas-console-output-2]: ./media/storage-dotnet-shared-access-signature-part-2/sas-console-output-2.PNG
   [Microsoft Azure ストレージ リソースへのアクセスの管理]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee393343.aspx
-  [共有アクセス署名によるアクセスの委任 (REST API) に関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee395415.aspx
   [テーブルおよびキュー SAS についての MSDN ブログ]: http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx

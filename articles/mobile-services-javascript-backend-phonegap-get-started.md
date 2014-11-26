@@ -144,15 +144,13 @@ PhoneGap は、複数のプラットフォーム向けの開発をサポート�
 -   [認証の使用][認証の使用]
     ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
 
-  [mobile-services-selector-get-started]: ../includes/mobile-services-selector-get-started.md
+
   [0]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-portal-quickstart-ios.png
   [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
   [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
   [Android Developer Tools]: https://go.microsoft.com/fwLink/p/?LinkID=280125
-  [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md
   [1]: ./media/mobile-services-javascript-backend-phonegap-get-started/portal-screenshot1.png
   [2]: ./media/mobile-services-javascript-backend-phonegap-get-started/portal-screenshot2.png
   [3]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-portal-quickstart-wp8.png

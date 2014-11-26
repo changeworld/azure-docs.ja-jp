@@ -2,7 +2,7 @@
 
 1.  [Azure 管理ポータル][Azure 管理ポータル]にログオンし、**[Mobile Services]** をクリックして、目的のモバイル サービスをクリックします。
 
-    ![][]
+    ![][0]
 
 2.  **[ダッシュボード]** タブをクリックし、**[モバイル サービス URL]** の値をメモしておきます。
 
@@ -30,10 +30,10 @@
 
     これで、モバイル サービスとアプリケーションの両方が、選択した認証プロバイダーと連係するように構成されました。
 
-<!-- URLs. -->
+
 
   [Azure 管理ポータル]: https://manage.windowsazure.com/
-  []: ./media/mobile-services-register-authentication/mobile-services-selection.png
+  [0]: ./media/mobile-services-register-authentication/mobile-services-selection.png
   [1]: ./media/mobile-services-register-authentication/mobile-service-uri.png
   [Microsoft アカウント]: /ja-jp/documentation/articles/mobile-services-how-to-register-microsoft-authentication/
   [Facebook ログイン]: /ja-jp/documentation/articles/mobile-services-how-to-register-facebook-authentication/

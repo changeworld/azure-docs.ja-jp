@@ -1,6 +1,6 @@
 <properties linkid="web-sites-staged-publishing" urlDisplayName="How to stage sites on Microsoft Azure" pageTitle="Staged Deployment on Microsoft Azure Websites" metaKeywords="Microsoft Azure Web Sites, Staged Deployment, Site Slots" description="Learn how to use staged publishing on Microsoft Azure Websites." metaCanonical="" services="web-sites" documentationCenter="" title="Staged Deployment on Microsoft Azure Websites" authors="cephalin"  solutions="" writer="cephalin" manager="wpickett" editor="mollybos"  />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="9/9/2014" ms.author="cephalin"></tags>
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="9/9/2014" ms.author="cephalin" />
 
 <a name="Overview"></a>
 
@@ -34,7 +34,7 @@
 
 1.  [クイック スタート] ページ、または Web サイトの [ダッシュボード] ページの [概要] セクションで、**[新しい展開スロットの追加]** をクリックします。
 
-    ![新しい展開スロットの加][]
+    ![新しい展開スロットの加][新しい展開スロットの加]
 
     > [WACOM.NOTE]
     > Web サイトが**標準**モードになっていない場合は、"**ステージングされた発行を有効にするには、標準モードになっている必要があります**" というメッセージが表示されます。この時点で、**[アップグレード]** を選択して Web サイトの **[スケールの設定]** タブに移動してから、操作を続行することもできます。
@@ -99,11 +99,11 @@
 
 1.  展開スロットをスワップするには、Web サイトの一覧でスワップする展開スロットを選択し、コマンド バーで **[スワップ]** ボタンをクリックします。
 
-    ![スワップ ボタン][]
+    ![スワップ ボタン][スワップ ボタン]
 
 2.  [展開のスワップ] ダイアログが表示されます。このダイアログでは、スワップ元およびスワップ先となるサイト スロットを選択できます。
 
-    ![展開のスワップ ダイアログ][]
+    ![展開のスワップ ダイアログ][展開のスワップ ダイアログ]
 
 3.  チェックマークをクリックして操作を完了します。操作が完了すると、サイト スロットはスワップされています。
 

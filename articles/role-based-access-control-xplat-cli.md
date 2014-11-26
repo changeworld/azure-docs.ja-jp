@@ -1,6 +1,6 @@
 <properties pageTitle="Managing Role-Based Access Control with Azure Cross-Platform Command-Line Interface" metaKeywords="ResourceManager, Azure cross-platform command-line interface, Azure command-line, azure command-line, azure cli, RBAC" description="Managing role-based access control with cross-platform command-line interface" metaCanonical="" services="" documentationCenter="" title="Managing Role-Based Access Control with Cross-Platform Command-Line Interface" authors="guayan" solutions="" manager="terrylan" editor="mollybos" />
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="command-line-interface" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="guayan"></tags>
+<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="command-line-interface" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="guayan" />
 
 # クロスプラットフォームのコマンド ライン インターフェイスによる役割ベースのアクセス制御の管理
 
@@ -133,8 +133,6 @@ xplat-cli を使用した役割ベースのアクセス制御の管理の詳細�
 -   [Windows PowerShell を使用した役割ベースのアクセス制御の構成][Windows PowerShell を使用した役割ベースのアクセス制御の構成]
 -   [役割ベースのアクセス制御のトラブルシューティング][役割ベースのアクセス制御のトラブルシューティング]
 
-  [Windows PowerShell]: /ja-jp/documentation/articles/powershell-rbac.md "Windows PowerShell"
-  [クロスプラットフォーム CLI]: /ja-jp/documentation/articles/xplat-cli-rbac.md "クロスプラットフォーム CLI"
   [Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成]: http://azure.microsoft.com/ja-jp/documentation/articles/xplat-cli/
   [リソース マネージャーでの Azure クロスプラットフォーム コマンド ライン インターフェイスの使用]: http://azure.microsoft.com/ja-jp/documentation/articles/xplat-cli-azure-resource-manager/
   [サブスクリプションへの接続]: #connect

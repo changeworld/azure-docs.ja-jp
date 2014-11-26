@@ -2,7 +2,7 @@
 
 この記事では、[MongoLab] を使用して [Azure ストア]から MongoDB データベースを作成する方法について説明します。[MongoLab] は、サービスとしての MongoDB プロバイダーであり、Azure データセンターで MongoDB データベースを実行および管理し、どのアプリケーションからもデータベースに接続できるようにしています。
 
-[Azure ストア][]から MongoDB データベースを作成するには、以下の手順を実行します。
+[Azure ストア][Azure ストア]から MongoDB データベースを作成するには、以下の手順を実行します。
 
 1.  [Azure 管理ポータル][portal]にログインします。
 2.  ページの下部にある **[+新規]** をクリックし、**[ストア]** を選択します。
@@ -30,6 +30,6 @@
 	![MongoLab 接続情報](./media/create-mongolab-mongodb/mongolab-conn-info.png) 
 
   [MongoLab]: https://mongolab.com/home
-  [Azure ストア]: /en-us/store/overview/
+  [Azure ストア]: /ja-jp/store/overview/
   [Azure 管理ポータル]: http://windows.azure.com/
 [portal]: http://windows.azure.com/

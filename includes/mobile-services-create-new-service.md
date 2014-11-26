@@ -39,7 +39,7 @@
 
 これで、モバイル アプリケーションで使用できる新しいモバイル サービスが作成されました。
 
-<!-- URLs. -->
+
 
   [管理ポータル]: https://manage.windowsazure.com/
   [0]: ./media/mobile-services-create-new-service/plus-new.png

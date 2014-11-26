@@ -34,9 +34,9 @@
 
 これで、クライアント ID とクライアント シークレットの値をモバイル サービスに渡すことにより、Google ログインを使用してアプリケーションで認証を使用する準備ができました。
 
-<!-- Anchors. --> 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
+ 
+
 
   [Google apis]: http://go.microsoft.com/fwlink/p/?LinkId=268303
   [0]: ./media/mobile-services-how-to-register-google-authentication/mobile-services-google-new-project.png

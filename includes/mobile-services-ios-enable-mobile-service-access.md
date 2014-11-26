@@ -1,6 +1,6 @@
 モバイル サービスの準備が整ったら、ローカル コレクションの代わりにモバイル サービスに項目を格納するようにアプリケーションを更新します。
 
-1.  [モバイル サービス iOS SDK][] をまだインストールしていない場合は、ここでインストールしてください。
+1.  [モバイル サービス iOS SDK][モバイル サービス iOS SDK] をまだインストールしていない場合は、ここでインストールしてください。
 
 2.  Xcode の Project Navigator で、Quickstart フォルダーにある TodoService.m および TodoService.h ファイルを開き、次の import ステートメントを追加します。
 
@@ -30,7 +30,7 @@
 
 6.  **[ダッシュボード]** タブをクリックし、**サイトの URL** をメモに記録します。次に、**[キーの管理]** をクリックし、**アプリケーション キー**をメモに記録します。
 
-    ![][]
+    ![][0]
 
     これらの値は、アプリケーション コードからモバイル サービスにアクセスするときに必要になります。
 
@@ -112,4 +112,4 @@
 バックエンド ストレージのモバイル サービスを使用するようにアプリケーションを更新した後は、モバイル サービスに対してアプリケーションをテストします。
 
   [モバイル サービス iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
-  []: ./media/mobile-services-ios-enable-mobile-service-access/mobile-dashboard-tab.png
+  [0]: ./media/mobile-services-ios-enable-mobile-service-access/mobile-dashboard-tab.png

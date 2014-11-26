@@ -347,14 +347,6 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
   [Azure ストア]: http://azure.microsoft.com/ja-jp/gallery/store/
   [an Azure Website, hosted in multiple regions, using CDBR High Availability router for MySQL, with Managed Cache, Blob storage, and CDN]: ./media/web-sites-enterprise-wordpress/performance-diagram.png
   [コンテンツ配信ネットワーク (CDN)]: http://azure.microsoft.com/ja-jp/documentation/articles/cdn-how-to-use/
-  [WordPress plugin for using Blob storage (BLOB ストレージを使うための WordPress プラグイン)]: https://wordpress.org/plugins/windows-azure-storage/
-  [SendGrid]: http://azure.microsoft.com/ja-jp/gallery/store/sendgrid/sendgrid-azure/
-  [SendGrid を使うための WordPress プラグイン]: http://wordpress.org/plugins/sendgrid-email-delivery-simplified/
-  [Azure の Web Site のカスタム ドメイン名の構成]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-custom-domain-name/
-  [Azure の Web サイトでの HTTPS の有効化]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-configure-ssl-certificate/
-  [Microsoft Azure の Web サイトのステージングされた展開]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-staged-publishing/
-  [Azure の Web サイトの診断ログを有効にする]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-enable-diagnostic-log/
-  [Web サイトの監視方法]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-monitor/
   [Azure の Web サイトのデプロイ方法]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-deploy/
   [Azure の Web サイトのバックアップ]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-backup/
   [Microsoft Azure の Web サイトの復元]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-restore/
@@ -371,12 +363,6 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
   [Velvet Blues Update URLs プラグイン]: https://wordpress.org/plugins/velvet-blues-update-urls/
   [MySQL Workbench]: http://www.mysql.com/products/workbench/
   [WordPress データベースの検索と置換用スクリプト]: http://interconnectit.com/124/search-and-replace-for-wordpress-databases/
-  [WebJobs についての紹介記事]: http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx
-  [ARR クッキーの無効化]: http://blogs.msdn.com/b/windowsazure/archive/2013/11/18/disabling-arr-s-instance-affinity-in-windows-azure-web-sites.aspx
-  [WordPress プラグインの Redis Object Cache]: https://wordpress.org/plugins/redis-object-cache/
-  [WordPress を WinCache で高速化する方法]: http://ruslany.net/2010/03/make-wordpress-faster-on-iis-with-wincache-1-1/
-  [Azure のストレージ アカウントの作成]: http://azure.microsoft.com/ja-jp/documentation/articles/storage-create-storage-account/
-  [ユーザー ガイド]: http://plugins.svn.wordpress.org/windows-azure-storage/trunk/UserGuide.docx
   []: resources
   [WordPress の最適化]: http://codex.wordpress.org/WordPress_Optimization
   [WordPress サイトの Multisite への変換]: http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-php-convert-wordpress-multisite/

@@ -13,6 +13,5 @@
 -   [PHP-MySQL Azure の Web サイトを作成して Git で展開する][PHP-MySQL Azure の Web サイトを作成して Git で展開する] -- PHP Web サイトを 1 から作成し、Git を使用して Azure Web サイトにデプロイします。
 -   [その他の PHP チュートリアル][その他の PHP チュートリアル] - PHP および Azure を使用して、その他の種類のアプリケーションを作成します。
 
-  [website-from-gallery]: ../includes/website-from-gallery.md
   [PHP-MySQL Azure の Web サイトを作成して Git で展開する]: /ja-jp/develop/php/tutorials/website-w-mysql-and-git/
   [その他の PHP チュートリアル]: /ja-jp/develop/php/tutorials/

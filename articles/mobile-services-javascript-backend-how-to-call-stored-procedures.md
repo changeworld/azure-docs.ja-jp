@@ -1,6 +1,6 @@
 <properties pageTitle="Calling SQL stored procedures with a JavaScript back end" metaKeywords="stored procedures, SQL, mobile devices, Azure" description="explains how to use SQL stored procedures in a mobile services JavaScript backed." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Calling SQL stored procedures with a JavaScript back end" authors="ricksal" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="ricksal"></tags>
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="ricksal" />
 
 # JavaScript バックエンドによる SQL ストアド プロシージャの呼び出し
 
@@ -148,8 +148,8 @@ SQL Server のストアド プロシージャを呼び出す必要があるの�
 
 また、Azure ポータルを使用して新しいストアド プロシージャを管理したり作成したりすることもできます。
 
-<!-- Anchors. --> 
-<!-- URLs. -->
+ 
+
 
   [単純なストアド プロシージャを呼び出す]: #simple
   [パラメーターを使用してストアド プロシージャを呼び出す]: #parameters
@@ -163,7 +163,6 @@ SQL Server のストアド プロシージャを呼び出す必要があるの�
   [iOS]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-ios-call-custom-api/
   [Android]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-android-call-custom-api/
   [HTML]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-html-call-custom-api/
-  [How do I do more than 1 read operation by scripting (スクリプトで複数の読み取り操作を実行する方法)]: http://social.msdn.microsoft.com/Forums/windowsazure/en-US/fccf4ae7-f43c-4c2d-8518-32e2df84a824/how-do-i-do-more-than-1-read-operation-by-scripting?forum=azuremobile
+  [How do I do more than 1 read operation by scripting (スクリプトで複数の読み取り操作を実行する方法)]: http://social.msdn.microsoft.com/Forums/windowsazure/ja-jp/fccf4ae7-f43c-4c2d-8518-32e2df84a824/how-do-i-do-more-than-1-read-operation-by-scripting?forum=azuremobile
   [Accessing a Stored Procedure from a different Schema (異なるスキーマからストアド プロシージャにアクセスする)]: http://blogs.msdn.com/b/jpsanders/archive/2013/05/02/windows-azure-mobile-services-accessing-a-stored-procedure-from-a-different-schema.aspx
-  [JavaScript バックエンド モバイル サービスの使用]: http://azure.microsoft.com/ja-jp/documentation/articles/mobile-services-how-to-use-server-scripts/
   [mssql オブジェクト]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj554212.aspx

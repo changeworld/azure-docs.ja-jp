@@ -1,8 +1,8 @@
-<properties title="Azure VM に Trend をインストールして構成する方法" pageTitle="How to install and configure Trend Micro Deep Security as a Service on an Azure VM (Azure VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法)" description="Azure VM に Trend Micro Security をインストールし、構成する方法について説明します。" metaKeywords="" services="virtual machines" solutions="" documentationCenter="" authors="kathydav" manager="timlt" videoId="" scriptId="" />
+<properties title="How to install and configure Trend on an Azure VM" pageTitle="How to install and configure Trend Micro Deep Security as a Service on an Azure VM" description="Describes installing and configuring Trend Micro security on a VM in Azure" metaKeywords="" services="virtual machines" solutions="" documentationCenter="" authors="kathydav" videoId="" scriptId="" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-multiple" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="kathydav" />
 
-# How to install and configure Trend Micro Deep Security as a Service on an Azure VM (Azure VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法)
+# Azure VM に Trend Micro Deep Security as a Service をインストールして構成する方法
 
 この記事では、Windows Server を実行している既存の仮想マシン (VM) または新しい仮想マシンに Trend Micro Deep Security as a Service をインストールして構成する方法を説明します。Deep Security as a Service には、ウイルス対策、ファイアウォール、侵入防止システム、変更監視などの保護機能が含まれています。
 
@@ -70,13 +70,11 @@ Azure PowerShell セッションを開き、次のコマンドを実行します
 
 <!--Link references-->
 
-  [Microsoft Azure VM Agent Extension For Deep Security (Deep Security 用の Microsoft Azure VM エージェント拡張機能)]: http://go.microsoft.com/fwlink/p/?LinkId=403945
   [Azure 管理ポータル]: http://manage.windowsazure.com
   [Windows Server を実行する仮想マシンの作成]: http://go.microsoft.com/fwlink/p/?LinkId=403943
   [Install the VM Agent and the Deep Security Agent]: ./media/virtual-machines-install-trend/InstallVMAgentandTrend.png
   [Azure PowerShell のインストールおよび構成方法]: http://go.microsoft.com/fwlink/p/?LinkId=320552
   [VM エージェントと拡張機能 - パート 2]: http://go.microsoft.com/fwlink/p/?LinkId=403947
-  [Instant-On Cloud Security for Microsoft Azure (Microsoft Azure 用の Instant-On クラウド セキュリティ)]: http://go.microsoft.com/fwlink/?LinkId=404101
   [Windows PowerShell サンプル スクリプト]: http://go.microsoft.com/fwlink/?LinkId=404100
   [説明]: http://go.microsoft.com/fwlink/?LinkId=404099
   [Windows Server が実行されている仮想マシンにログオンする方法]: ../virtual-machines-log-on-windows-server/

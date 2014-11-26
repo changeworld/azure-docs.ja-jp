@@ -1,6 +1,6 @@
 1.  Visual Studio で、クライアント アプリケーションを実行し、作成した Dave という名前のアカウントで認証を試みます。
 
-    ![][]
+    ![][0]
 
 2.  Dave には Sales グループのメンバーシップがあります。そのため、ロール ベースのアクセス確認によりテーブル操作へのアクセスは拒否されます。クライアント アプリケーションを閉じます。
 
@@ -14,7 +14,7 @@
 
     ![][3]
 
-  []: ./media/mobile-services-aad-rbac-test-app/dave-login.png
+  [0]: ./media/mobile-services-aad-rbac-test-app/dave-login.png
   [1]: ./media/mobile-services-aad-rbac-test-app/unauthorized.png
   [2]: ./media/mobile-services-aad-rbac-test-app/bob-login.png
   [3]: ./media/mobile-services-aad-rbac-test-app/success.png

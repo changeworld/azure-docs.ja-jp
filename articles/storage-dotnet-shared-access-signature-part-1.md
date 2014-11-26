@@ -1,4 +1,4 @@
-<properties urlDisplayName="" pageTitle="共有アクセス署名: SAS モデルについて | Microsoft Azure" metaKeywords="Azure blob, Azure table, Azure queue, shared access signatures" description="共有アクセス署名を使用して BLOB、キュー、およびテーブル リソースへのアクセスを委任する方法について説明します。" metaCanonical="" services="storage" documentationCenter="" title="パート 1: SAS モデルについて" solutions="" authors="tamram" manager="adinah" editor="cgronlun" />
+<properties linkid="manage-services-storage-net-shared-access-signature-part-1" urlDisplayName="" pageTitle="Shared access signatures: Understanding the SAS Model | Microsoft Azure" metaKeywords="Azure blob, Azure table, Azure queue, shared access signatures" description="Learn about delegating access to blob, queue, and table resources with shared access signatures" metaCanonical="" services="storage" documentationCenter="" title="Part 1: Understanding the SAS Model" solutions="" authors="tamram" manager="mbaldwin" editor="cgronlun" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
 
@@ -16,11 +16,11 @@ SAS は、自分のアカウント キーを知らせたくないクライアン
 
 SAS が役立つ一般的なシナリオは、ストレージ アカウント内でユーザーが自分のデータの読み取りや書き込みを行うサービスです。ストレージ アカウントにユーザー データが格納されるシナリオには、2 種類の典型的な設計パターンがあります。
 
-1. 認証を実行するフロントエンド プロキシ サービス経由で、クライアントがデータのアップロードとダウンロードを行います。このフロントエンド プロキシ サービスには、ビジネス ルールの検証が可能であるという利点がありますが、データやトランザクションが大量である場合は、需要に応じて拡張可能なサービスの作成にコストがかかったり、困難が生じたりする可能性があります。
+1\. 認証を実行するフロントエンド プロキシ サービス経由で、クライアントがデータのアップロードとダウンロードを行います。このフロントエンド プロキシ サービスには、ビジネス ルールの検証が可能であるという利点がありますが、データやトランザクションが大量である場合は、需要に応じて拡張可能なサービスの作成にコストがかかったり、困難が生じたりする可能性があります。
 
 [sas-storage-fe-proxy-service][sas-storage-fe-proxy-service]
 
-2. 軽量サービスが、必要に応じてクライアントを認証してから、SAS を生成します。クライアントは、SAS を受信すると、SAS で定義されたアクセス許可と SAS で許可された期間で、ストレージ アカウントのリソースに直接アクセスできるようになります。SAS によって、すべてのデータをフロントエンド プロキシ サービス経由でルーティングする必要性が減少します。
+2\. 軽量サービスが、必要に応じてクライアントを認証してから、SAS を生成します。クライアントは、SAS を受信すると、SAS で定義されたアクセス許可と SAS で許可された期間で、ストレージ アカウントのリソースに直接アクセスできるようになります。SAS によって、すべてのデータをフロントエンド プロキシ サービス経由でルーティングする必要性が減少します。
 
 [sas-storage-provider-service][sas-storage-provider-service]
 
@@ -35,11 +35,11 @@ SAS が役立つ一般的なシナリオは、ストレージ アカウント内
 -   **ストレージ リソース。**そのアクセスを委任できるストレージ リソースには、コンテナー、BLOB、キュー、テーブル、およびテーブル エンティティの範囲があります。
 -   **開始時刻。**この時刻に SAS が有効になります。共有アクセス署名の開始時刻は省略可能です。省略した場合は、SAS がすぐに有効になります。
 -   **有効期限。**この時刻の後、SAS が有効ではなくなります。ベスト プラクティスでは、SAS の有効期限を指定するか、保存されているアクセス ポリシーに SAS を関連付けることを推奨しています (以下を参照)。
--   **アクセス許可。**SAS に指定されたアクセス許可は、クライアントが SAS を使用して、ストレージ リソースに対して実行できる操作を示します。
+-   <b>アクセス許可。</b>SAS に指定されたアクセス許可は、クライアントが SAS を使用して、ストレージ リソースに対して実行できる操作を示します。
 
 BLOB に読み書きアクセス許可を付与する SAS URI の例を、次に示します。表では、SAS での機能がわかりやすいように、URI の部分ごとに説明しています。
 
-https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&st=2013-04-29T22%3A18%3A26Z&se=2013-04-30T02%3A23%3A26Z&sr=b&sp=rw&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
+<https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&st=2013-04-29T22%3A18%3A26Z&se=2013-04-30T02%3A23%3A26Z&sr=b&sp=rw&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D>
 
 <table>
 <colgroup>
@@ -139,5 +139,4 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2012-02-12&s
   [パート 2]: ../storage-dotnet-shared-access-signature-part-2/
   [Microsoft Azure のストレージ チームのブログ]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx
   [Microsoft Azure ストレージ リソースへのアクセスの管理]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee393343.aspx
-  [共有アクセス署名によるアクセスの委任 (REST API) に関するページ]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee395415.aspx
   [テーブルおよびキュー SAS についての MSDN ブログ]: http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx

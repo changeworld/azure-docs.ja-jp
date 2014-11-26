@@ -6,7 +6,7 @@
 
 2.  **F5** キーを押してプロジェクトをリビルドし、モバイル サービスをローカルで開始します。
 
-    ![][]
+    ![][0]
 
     モバイル サービスが正常に起動した後、Web ページが表示されます。
 
@@ -18,4 +18,4 @@
 
     この結果、POST 要求がローカルのモバイル サービス宛てに送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目はモバイル サービスによって返され、データはアプリケーションの 2 番目の列に表示されます。
 
-  []: ./media/mobile-services-dotnet-backend-test-local-service-dotnet/mobile-service-startup.png
+  [0]: ./media/mobile-services-dotnet-backend-test-local-service-dotnet/mobile-service-startup.png

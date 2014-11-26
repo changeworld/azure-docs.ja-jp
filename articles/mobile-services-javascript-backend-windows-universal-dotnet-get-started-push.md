@@ -70,7 +70,6 @@ Mobile Services と通知ハブについては次のトピックを参照して�
     モバイル サービスを C# Windows アプリから使用する方法について説明します。
 
 
-  [mobile-services-selector-get-started-push]: ../includes/mobile-services-selector-get-started-push.md
   [モバイル サービスでのプッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push
   [このバージョン]: /ja-jp/documentation/articles/mobile-services-javscript-backend-windows-store-dotnet-get-started-push
   [アプリケーションをプッシュ通知に登録する]: #register
@@ -78,9 +77,6 @@ Mobile Services と通知ハブについては次のトピックを参照して�
   [アプリケーションでプッシュ通知をテストする]: #test
   [Microsoft ストア アカウント]: http://go.microsoft.com/fwlink/p/?LinkId=280045
   [Visual Studio 2013 Express for Windows]: http://go.microsoft.com/fwlink/?LinkId=257546
-  [mobile-services-create-new-push-vs2013]: ../includes/mobile-services-create-new-push-vs2013.md
-  [mobile-services-javascript-update-script-notification-hubs]: ../includes/mobile-services-javascript-update-script-notification-hubs.md
-  [mobile-services-javascript-backend-windows-universal-test-push]: ../includes/mobile-services-javascript-backend-windows-universal-test-push.md
   [プッシュ通知を認証ユーザーに送信する]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-push-notifications-app-users/
   [データの使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-universal-dotnet-get-started-data
   [認証の使用]: /ja-jp/documentation/articles/mobile-services-javascript-backend-windows-universal-dotnet-get-started-users
