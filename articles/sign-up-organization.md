@@ -8,7 +8,7 @@
 
 最近まで、新しい Azure サブスクリプションにサインアップするには、必ず Microsoft アカウント (Windows Live ID) を使用する必要がありました。現在、Azure では、次に示す 2 つのアカウントのいずれかを使用してサインアップすることができます。
 
--   **Microsoft アカウント** (個人ユーザー向け) - Outlook (Hotmail)、Messenger、SkyDrive、MSN、Xbox LIVE、Office Live など、すべてのコンシューマー向け Microsoft 製品およびクラウド サービスへのアクセスを可能にします。Outlook にサインアップすると、@Outlook.com アドレスの Microsoft アカウントが自動的に作成されます。一度作成されら、その Microsoft アカウントを使用して、コンシューマー関連の Microsoft クラウド サービスや Azure にアクセスできます。[詳細情報][詳細情報]
+-   **Microsoft アカウント** (個人ユーザー向け) - Outlook (Hotmail)、Messenger、OneDrive、MSN、Xbox LIVE、Office Live など、すべてのコンシューマー向け Microsoft 製品およびクラウド サービスへのアクセスを可能にします。Outlook にサインアップすると、@Outlook.com アドレスの Microsoft アカウントが自動的に作成されます。一度作成されら、その Microsoft アカウントを使用して、コンシューマー関連の Microsoft クラウド サービスや Azure にアクセスできます。[詳細情報][詳細情報]
 
 -   **組織アカウント** (ビジネス/教育機関用に管理者が発行) - あらゆるレベルのビジネスを対象とした、Azure、Windows Intune、Office 365 など、すべての中小およびエンタープライズ ビジネス レベルの Microsoft クラウド サービスに対するアクセスを可能にします。これらのサービスのいずれかに組織としてサインアップすると、クラウド ベースのテナントが組織を代表して Azure の Active Directory に自動的にプロビジョニングされます。[詳細情報][1]
 
