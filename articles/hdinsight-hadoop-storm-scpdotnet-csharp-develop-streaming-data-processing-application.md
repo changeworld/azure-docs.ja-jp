@@ -354,38 +354,15 @@ SCP Topology Specification は、SCP トポロジを記述、構成するため�
 
 トランザクション トポロジを定義するために、SCP.NET は次の関数を追加しました。
 
-| 新しい関数             | パラメーター  | 説明                                                                                                               |
-|------------------------|---------------|--------------------------------------------------------------------------------------------------------------------|
-| **tx-topolopy**        | topology-name 
-                           spout-map     
-                          bolt-map       | トポロジ名、スパウト定義マップ、およびボルト定義マップでトランザクション トポロジを定義します。                    |
-| **scp-tx-spout**       | exec-name     
-                          args           
-                          fields         | トランザクション スパウトを定義します。***args*** を使用して ***exec-name*** でアプリケーションを実行します。      
-                                          ***fields*** はスパウトの出力フィールドです。                                                                       |
-| **scp-tx-batch-bolt**  | exec-name     
-                          args           
-                          fields         | トランザクション バッチ ボルトを定義します。***args*** を使用して ***exec-name*** でアプリケーションを実行します。 
-                                          Fields はボルトの出力フィールドです。                                                                               |
-| **scp-tx-commit-bolt** | exec-name     
-                          args           
-                          fields         | トランザクション コミッター ボルトを定義します。args を使用して ***exec-name*** でアプリケーションを実行します。   
-                                          ***fields*** はボルトの出力フィールドです。                                                                         |
-| **nontx-topolopy**     | topology-name 
-                           spout-map     
-                          bolt-map       | トポロジ名、スパウト定義マップ、およびボルト定義マップで非トランザクション トポロジを定義します。                  |
-| **scp-spout**          | exec-name     
-                          args           
-                          fields         
-                          parameters     | 非トランザクション スパウトを定義します。***args*** を使用して ***exec-name*** でアプリケーションを実行します。    
-                                          ***fields*** はスパウトの出力フィールドです。                                                                       
-                                          ***parameters*** は省略可能で、"nontransactional.ack.enabled" など、一部のパラメーターを指定する場合に使用します。  |
-| **scp-bolt**           | exec-name     
-                          args           
-                          fields         
-                          parameters     | 非トランザクション ボルトを定義します。***args*** を使用して ***exec-name*** でアプリケーションを実行します。      
-                                          ***fields*** はボルトの出力フィールドです。                                                                         
-                                          ***parameters*** は省略可能で、"nontransactional.ack.enabled" など、一部のパラメーターを指定する場合に使用します。  |
+|New Functions|	Parameters|	Description
+|-------------|-----------|-----------
+|**tx-topolopy**|	topology-name<br> spout-map<br> bolt-map|	 トポロジ名、スパウト定義マップ、およびボルト定義マップでトランザクション トポロジを定義します。
+|**scp-tx-spout**|	exec-name<br> args<br> fields|	トランザクション スパウトを定義します。 ***args*** を使用して ***exec-name*** でアプリケーションを実行します。<br><br>***fields*** はスパウトの出力フィールドです。
+|**scp-tx-batch-bolt**|	exec-name<br> args<br> fields| 	トランザクション バッチ ボルトを定義します。 ***args*** を使用して ***exec-name*** でアプリケーションを実行します。<br><br>Fields はボルトの出力フィールドです。
+|**scp-tx-commit-bolt**|	exec-name<br>args<br>fields|	トランザクション コミッター ボルトを定義します。 args を使用して ***exec-name*** でアプリケーションを実行します。<br><br>***fields*** はボルトの出力フィールドです。	
+|**nontx-topolopy**|	topology-name<br> spout-map<br>bolt-map|	トポロジ名、スパウト定義マップ、およびボルト定義マップで非トランザクション トポロジを定義します。
+|**scp-spout**|	exec-name<br>args<br>fields<br>parameters|	非トランザクション スパウトを定義します。 ***args*** を使用して ***exec-name*** でアプリケーションを実行します。<br><br>***fields*** はスパウトの出力フィールドです。<br><br>***parameters*** は省略可能で、"nontransactional.ack.enabled" など、一部のパラメーターを指定する場合に使用します。
+|**scp-bolt**|	exec-name<br>args<br>fields<br>parameters|	非トランザクション ボルトを定義します。 ***args*** を使用して ***exec-name*** でアプリケーションを実行します。<br><br>***fields*** はボルトの出力フィールドです。<br><br>***parameters*** は省略可能で、"nontransactional.ack.enabled" など、一部のパラメーターを指定する場合に使用します。
 
 SCP.NET には次のキーワードが定義されています。
 

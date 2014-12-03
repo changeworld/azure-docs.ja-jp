@@ -649,29 +649,30 @@ Azure Storage では、バッチ トランザクションはエンティティ �
 
 ## キュー
 
-### <a name="subheading39&quot;"></a>Scalability Limits
+### <a name="subheading39&quot;"></a>スケーラビリティ限界
 
-A single queue can process approximately 2,000 messages (1KB each) per second (each AddMessage, GetMessage, and DeleteMessage count as a message here). If this is insufficient for your application, you should use multiple queues and spread the messages across them.
+単一のキューで、1 秒あたり約 2,000 件のメッセージ (それぞれ 1 KB) を処理できます (ここでは、AddMessage、GetMessage、DeleteMessage のそれぞれをメッセージとしてカウント)。この能力がアプリケーションで不十分な場合は、複数のキューを使い、メッセージを分散させる必要があります。
 
-You can view the current scalability targets on the page [Azure Storage Scalability and Performance Targets][スケーラビリティ ターゲットに関するページ] on MSDN.
+現在のスケーラビリティ ターゲットについては、MSDN の[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット][スケーラビリティ ターゲットに関するページ] を参照してください。
+	
 
 ### <a name="subheading40&quot;"></a>Nagle のオフ
 
 Nagle アルゴリズムについて論じているテーブル構成のセクションを参照してください。Nagle アルゴリズムは、一般的にキュー要求のパフォーマンスに適していないため、無効にする必要があります。
 
-### <a name="subheading41&quot;"></a>Message Size
+### <a name="subheading41&quot;"></a>メッセージ サイズ
 
-Queue performance and scalability decreases as message size increases. You should place only the information the receiver needs in a message.
+キューのパフォーマンスとスケーラビリティは、メッセージのサイズが大きくなると低下します。受信側が必要とする情報だけをメッセージに含める必要があります。
 
 ### <a name="subheading42&quot;"></a>一括取得
 
 1 回の操作でキューから最大 32 個のメッセージを取得できます。これにより、クライアント アプリケーションの取得回数を減らすことができ、モバイル デバイスなどの待機時間が長い環境では特に役立ちます。
 
-### <a name="subheading43&quot;"></a>Queue Polling Interval
+### <a name="subheading43&quot;"></a>キューのポーリング間隔
 
-Most applications poll for messages from a queue, which can be one of the largest sources of transactions for that application. Select your polling interval wisely: polling too frequently could cause your application to approach the scalability targets for the queue. However, at 200,000 transactions for $0.01 (at the time of writing), a single processor polling once every second for a month would cost less than 15 cents so cost is not typically a factor that affects your choice of polling interval.
+ほとんどのアプリケーションは、キューからメッセージをポーリングします。これは、そのアプリケーションにとって最も大きなトランザクション発生元の 1 つとなります。ポーリング間隔は適切に設定してください。あまりに頻繁にポーリングを行うと、キューのスケーラビリティ ターゲットに迫るおそれがあります。とはいえ、200,000 トランザクションで $0.01 (書き込み時) であれば、1 か月間、毎秒 1 回のシングル プロセッサ ポーリングでもコストは 15 セント未満であるため、通常はポーリング間隔の選択を左右する要因とはなりません。
 
-For up to date cost information, see [Storage Pricing Details][Storage Pricing Details].
+最新のコスト情報については、[Azure Storage 料金][Storage Pricing Details]を参照してください。
 
 ### <a name="subheading44&quot;"></a>UpdateMessage
 

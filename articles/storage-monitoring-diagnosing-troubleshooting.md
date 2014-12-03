@@ -129,7 +129,7 @@ BLOB などのさまざまなストレージ オブジェクトのサイズを�
 
 時間単位メトリックまたは分単位メトリックのテーブルの **Availability** 列の値を監視して、ストレージ アカウントのストレージ サービスの可用性を監視する必要があります。これらのテーブルは、**$MetricsHourPrimaryTransactionsBlob**、**$MetricsHourPrimaryTransactionsTable**、**$MetricsHourPrimaryTransactionsQueue**、**$MetricsMinutePrimaryTransactionsBlob**、**$MetricsMinutePrimaryTransactionsTable**、**$MetricsMinutePrimaryTransactionsQueue**、**$MetricsCapacityBlob** です。**Availability** 列には、その行が表しているサービスまたは API 操作の可用性を示すパーセント値が入っています (**RowKey** から、行に含まれているのがサービス全体のメトリックなのか、それとも特定の API 操作のメトリックなのかが分かります)。
 
-100% より低い値は、一部のストレージ要求が失敗したことを示します。失敗した理由は、エラーの種類別に要求数を示すメトリック データの他の列 (**ServerTimeoutError** など) を参照して調べることができます。要求の負荷分散を向上させるためにサービスがパーティションを移動しているときの一時的なサーバー タイムアウトなどの理由で、**Availability** が一時的に 100% を切ることを予期しておく必要があります。また、このような偶発的な状況は、クライアント アプリケーションの再試行ロジックで対処する必要があります。ページ「[][]」に、ストレージ メトリックが **Availability** の計算に含めるトランザクションの種類の一覧を示しています。
+100% より低い値は、一部のストレージ要求が失敗したことを示します。失敗した理由は、エラーの種類別に要求数を示すメトリック データの他の列 (**ServerTimeoutError** など) を参照して調べることができます。要求の負荷分散を向上させるためにサービスがパーティションを移動しているときの一時的なサーバー タイムアウトなどの理由で、**Availability** が一時的に 100% を切ることを予期しておく必要があります。また、このような偶発的な状況は、クライアント アプリケーションの再試行ロジックで対処する必要があります。ページ「<a href="http://msdn.microsoft.com/ja-jp/library/azure/hh343260.aspx" target="_blank"></a>」に、ストレージ メトリックが **Availability** の計算に含めるトランザクションの種類の一覧を示しています。
 
 Azure ポータルでは、ストレージ アカウントの **[監視]** ページで、サービスの **Availability** が指定のしきい値を超えた場合または下回った場合に通知するアラート ルールを追加できます。
 
@@ -452,22 +452,142 @@ BLOB ダウンロード要求の **AverageServerLatency** が高い場合、Stor
 
 クライアント アプリケーションが HTTP 403 (許可されていません) エラーをスローする場合、可能性の高い原因は、クライアントがストレージ要求を送信するときに期限切れの共有アクセス署名 (SAS) を使用していることです (原因の他の可能性としては、クロック スキュー、無効なキー、空のヘッダーなどがあります)。期限切れの SAS キーが原因の場合、サーバー側の Storage Logging ログ データのエントリが表示されません。以下の表に、この問題が生じたときにストレージ クライアント ライブラリによって生成されるクライアント側のログのサンプルを示します。
 
-|--------------------------------|------------|------------|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **ソース**                     | **詳細度** | **詳細度** | **クライアント要求 ID** | **操作テキスト**                                                                                                                                                           |
-| Microsoft.WindowsAzure.Storage | 情報       | 3          | 85d077ab -…             | 場所 Primary、場所モード PrimaryOnly で操作を開始しています。                                                                                                              |
-| Microsoft.WindowsAzure.Storage | 情報       | 3          | 85d077ab -…             | https://domemaildist.blob.core.windows.netazure                                                                                                                            
-                                                                                      imblobcontainer/blobCreatedViaSAS.txt? に対する同期要求から開始しています。                                                                                                 
-                                                                                      sv=2014-02-14&sr=c&si=mypolicy                                                                                                                                              
-                                                                                      &sig=OFnd4Rd7z01fIvh%                                                                                                                                                       
-                                                                                      2BmcR6zbudIH2F5Ikm%                                                                                                                                                         
-                                                                                      2FyhNYZEmJNQ%3D&api-version=2014-02-14.                                                                                                                                     |
-| Microsoft.WindowsAzure.Storage | 情報       | 3          | 85d077ab -…             |  応答を待機しています。                                                                                                                                                    |
-| Microsoft.WindowsAzure.Storage | 警告       | 2          | 85d077ab -…             |  応答の待機中に例外がスローされました: リモート サーバーがエラーを返しました: (403) 許可されていません。                                                                   |
-| Microsoft.WindowsAzure.Storage | 情報       | 3          | 85d077ab -…             |  応答を受け取りました。ステータス コード = 403、要求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, Content-MD5 = 、ETag = 。                                                  |
-| Microsoft.WindowsAzure.Storage | 警告       | 2          | 85d077ab -…             |  操作中に例外がスローされました: リモート サーバーがエラーを返しました: (403) 許可されていません。                                                                         |
-| Microsoft.WindowsAzure.Storage | 情報       | 3          | 85d077ab -…             | 操作を再試行する必要があるかどうかを検査しています。再試行回数 = 0、HTTP ステータス コード = 403、例外 = リモート サーバーがエラーを返しました: (403) 許可されていません。 |
-| Microsoft.WindowsAzure.Storage | 情報       | 3          | 85d077ab -…             | 次の場所が、場所モードに基づいてプライマリに設定されています。                                                                                                             |
-| Microsoft.WindowsAzure.Storage | エラー     | 1          | 85d077ab -…             |  再試行ポリシーは再試行を許可しませんでした。"リモート サーバーがエラーを返しました: (403) 許可されていません" で失敗しました。                                            |
+<table>
+ <tr>
+    <td><b>ソース</b></td>
+    <td><b>詳細度</b></td>
+    <td><b>詳細度</b></td>
+    <td><b>クライアント要求 ID</b></td>
+    <td><b>操作テキスト</b></td>
+ </tr>
+ <tr>
+    <td>Microsoft.WindowsAzure.Storage</td>
+    <td>情報</td>
+    <td>3</td>
+    <td>85d077ab-…</td>
+    <td>場所 Primary、場所モード PrimaryOnly で操作を開始しています。</td>
+ </tr>
+ <tr>
+    <td>Microsoft.WindowsAzure.Storage</td>
+    <td>情報</td>
+    <td>3</td>
+    <td>85d077ab -…</td>
+    <td>https://domemaildist.blob.core.windows.netazure	    <br>imblobcontainer/blobCreatedViaSAS.txt? に対する同期要求から開始しています。
+	    <br>sv=2014-02-14&amp;sr=c&amp;si=mypolicy
+	    <br>&amp;sig=OFnd4Rd7z01fIvh%
+	    <br>2BmcR6zbudIH2F5Ikm%
+	    <br>2FyhNYZEmJNQ%3D&amp;api-version=2014-02-14.</td>
+ </tr>
+ <tr>
+    <td>Microsoft.WindowsAzure.Storage</td>
+    <td>情報</td>
+    <td>3</td>
+    <td>85d077ab -…</td>
+    <td>応答を待機しています。</td>
+ </tr>
+ <tr>
+  <td>
+  Microsoft.WindowsAzure.Storage 
+  </td>
+  <td>
+  警告 
+  </td>
+  <td>
+  2 
+  </td>
+  <td>
+  85d077ab -… 
+  </td>
+  <td>
+  応答の待機中に例外がスローされました。リモート サーバーがエラー「(403) 許可されていません」を返しました。 
+  </td>
+ </tr>
+ <tr>
+  <td>
+  Microsoft.WindowsAzure.Storage 
+  </td>
+  <td>
+  情報 
+  </td>
+  <td>
+  3 
+  </td>
+  <td>
+  85d077ab -… 
+  </td>
+  <td>
+  応答を受信しました。ステータス コード = 403、要求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, Content-MD5 = 、ETag = 。 
+  </td>
+ </tr>
+ <tr>
+  <td>
+  Microsoft.WindowsAzure.Storage 
+  </td>
+  <td>
+  警告 
+  </td>
+  <td>
+  2 
+  </td>
+  <td>
+  85d077ab -… 
+  </td>
+  <td>
+  操作中に例外がスローされました。リモート サーバーがエラー「(403) 許可されていません」を返しました。 
+  </td>
+ </tr>
+ <tr>
+  <td>
+  Microsoft.WindowsAzure.Storage 
+  </td>
+  <td>
+  情報 
+  </td>
+  <td>
+  3 
+  </td>
+  <td>
+  85d077ab -… 
+  </td>
+  <td>
+  操作を再試行する必要があるかどうかを検査しています。再試行回数 = 0、HTTP ステータス コード = 403、例外 = リモート サーバーがエラー「(403) 許可されていません」を返しました。 
+  </td>
+ </tr>
+ <tr>
+  <td>
+  Microsoft.WindowsAzure.Storage 
+  </td>
+  <td>
+  情報 
+  </td>
+  <td>
+  3 
+  </td>
+  <td>
+  85d077ab -… 
+  </td>
+  <td>
+  次の場所が、場所モードに基づいてプライマリに設定されています。 
+  </td>
+ </tr>
+ <tr>
+  <td>
+  Microsoft.WindowsAzure.Storage 
+  </td>
+  <td>
+  エラー 
+  </td>
+  <td>
+  1 
+  </td>
+  <td>
+  85d077ab -… 
+  </td>
+  <td>
+  再試行ポリシーにより、再試行できませんでした。リモート サーバーがエラー「(403) 許可されていません」を返して、失敗しました。 
+  </td>
+ </tr>
+</table>
 
 このシナリオでは、クライアントが SAS トークンをサーバーに送信する前にトークンが期限切れになった理由を調査しなければなりません。
 
@@ -497,54 +617,207 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 
 ストレージ クライアント ライブラリによって生成された以下のクライアント側のログには、作成する BLOB 用のコンテナーをクライアントが検出できないという問題が示されています。このログには、以下のストレージ操作の詳細が示されています。
 
-|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **要求 ID**  | **操作**                                                                                                                                                                                                          |
-| 07b26a5d-... | BLOB コンテナーを削除する **DeleteIfExists** メソッド。この操作には、 コンテナーの存在をチェックする **HEAD** 要求が含まれていることに注意してください。                                                          |
-| e2d06d78…    | BLOB コンテナーを作成する **CreateIfNotExists**。この操作には、 コンテナーの存在をチェックする **HEAD** 要求が含まれていることに注意してください。 **HEAD** から 404 メッセージが返されますが、処理を続行します。 |
-| de8b1c3c-... | BLOB を作成する **UploadFromStream** メソッド。 **PUT** 要求が 404 メッセージで失敗しています。                                                                                                                   |
+<table>
+  <tr>
+    <td>
+      <b>要求 ID</b>
+    </td>
+    <td>
+      <b>操作</b>
+    </td>
+  </tr>
+  <tr>
+    <td>07b26a5d-...</td>
+    <td>
+    BLOB コンテナーを削除する       <b>DeleteIfExists</b> メソッド。この操作には、 
+    コンテナーの存在をチェックする       <b>HEAD</b> 要求が含まれていることに注意してください。</td>
+  </tr>
+  <tr>
+    <td>e2d06d78…</td>
+    <td>
+    BLOB コンテナーを作成する       <b>CreateIfNotExists</b>。この操作には、 
+    コンテナーの存在をチェックする       <b>HEAD</b> 要求が含まれていることに注意してください。  
+    <b>HEAD</b> から 404 メッセージが返されますが、処理を続行します。</td>
+  </tr>
+  <tr>
+    <td>de8b1c3c-...</td>
+    <td>
+    BLOB を作成する       <b>UploadFromStream</b> メソッド。  
+    <b>PUT</b> 要求が 404 メッセージで失敗しています。</td>
+  </tr>
+</table>
 
 ログ エントリ:
 
-|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **要求 ID**  | **操作テキスト**                                                                                                                                                                                                                          |
-| 07b26a5d-... |  https://domemaildist.blob.core.windows.net/azuremmblobcontainer への同期要求を開始します。                                                                                                                                               |
-| 07b26a5d-... |  StringToSign = HEAD............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:11 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container.                                                 |
-| 07b26a5d-... |  応答を待機しています。                                                                                                                                                                                                                   |
-| 07b26a5d-... |  応答を受け取りました。Status code = 200, Request ID = eeead849-...Content-MD5 = , ETag = "0x8D14D2DC63D059B".                                                                                                                            |
-| 07b26a5d-... |  応答ヘッダーは正常に処理されました。残りの操作を処理しています。                                                                                                                                                                         |
-| 07b26a5d-... |  応答の本文をダウンロードしています。                                                                                                                                                                                                     |
-| 07b26a5d-... |  操作は正常に完了しました。                                                                                                                                                                                                               |
-| 07b26a5d-... |  https://domemaildist.blob.core.windows.net/azuremmblobcontainer への同期要求を開始します。                                                                                                                                               |
-| 07b26a5d-... |  StringToSign = DELETE............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container.                                               |
-| 07b26a5d-... |  応答を待機しています。                                                                                                                                                                                                                   |
-| 07b26a5d-... |  応答を受け取りました。Status code = 202, Request ID = 6ab2a4cf-..., Content-MD5 = , ETag = .                                                                                                                                             |
-| 07b26a5d-... |  応答ヘッダーは正常に処理されました。残りの操作を処理しています。                                                                                                                                                                         |
-| 07b26a5d-... |  応答の本文をダウンロードしています。                                                                                                                                                                                                     |
-| 07b26a5d-... |  操作は正常に完了しました。                                                                                                                                                                                                               |
-| e2d06d78-... |  https://domemaildist.blob.core.windows.net/azuremmblobcontainer への非同期要求を開始します。                                                                                                                                             |
-| e2d06d78-... |  StringToSign = HEAD............x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container.                                                 |
-| e2d06d78-... |  応答を待機しています。                                                                                                                                                                                                                   |
-| de8b1c3c-... |  https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt への同期要求を開始します。                                                                                                                               |
-| de8b1c3c-... |  StringToSign = PUT...64.qCmF+TQLPhq/YYK50mP9ZQ==........x-ms-blob-type:BlockBlob.x-ms-client-request-id:de8b1c3c-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt. |
-| de8b1c3c-... |  要求データを書き込む準備をしています。                                                                                                                                                                                                   |
-| e2d06d78-... |  応答の待機中に例外がスローされました: リモート サーバーがエラーを返しました: (404) 未検出。                                                                                                                                              |
-| e2d06d78-... |  応答を受け取りました。Status code = 404, Request ID = 353ae3bc-..., Content-MD5 = , ETag = .                                                                                                                                             |
-| e2d06d78-... |  応答ヘッダーは正常に処理されました。残りの操作を処理しています。                                                                                                                                                                         |
-| e2d06d78-... |  応答の本文をダウンロードしています。                                                                                                                                                                                                     |
-| e2d06d78-... |  操作は正常に完了しました。                                                                                                                                                                                                               |
-| e2d06d78-... |  https://domemaildist.blob.core.windows.net/azuremmblobcontainer への非同期要求を開始します。                                                                                                                                             |
-| e2d06d78-... |  StringToSign = PUT...0.........x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container.                                                 |
-| e2d06d78-... |  応答を待機しています。                                                                                                                                                                                                                   |
-| de8b1c3c-... |  要求データを待機しています。                                                                                                                                                                                                             |
-| de8b1c3c-... |  応答を待機しています。                                                                                                                                                                                                                   |
-| e2d06d78-... |  応答の待機中に例外がスローされました: リモート サーバーがエラーを返しました: (409) 競合。                                                                                                                                                |
-| e2d06d78-... |  応答を受け取りました。Status code = 409, Request ID = c27da20e-..., Content-MD5 = , ETag = .                                                                                                                                             |
-| e2d06d78-... |  エラー応答の本文をダウンロードしています。                                                                                                                                                                                               |
-| de8b1c3c-... |  応答の待機中に例外がスローされました: リモート サーバーがエラーを返しました: (404) 未検出。                                                                                                                                              |
-| de8b1c3c-... |  応答を受け取りました。Status code = 404, Request ID = 0eaeab3e-..., Content-MD5 = , ETag = .                                                                                                                                             |
-| de8b1c3c-... |  操作中に例外がスローされました: リモート サーバーがエラーを返しました: (404) 未検出。                                                                                                                                                    |
-| de8b1c3c-... |  再試行ポリシーは再試行を許可しませんでした。"リモート サーバーがエラーを返しました: (404) 未検出" で失敗しました。                                                                                                                       |
-| e2d06d78-... |  再試行ポリシーは再試行を許可しませんでした。"リモート サーバーがエラーを返しました: (409) 競合" で失敗しました。                                                                                                                         |
+<table>
+  <tr>
+    <td>
+      <b>要求 ID</b>
+    </td>
+    <td>
+      <b>操作テキスト</b>
+    </td>
+  </tr>
+  <tr>
+    <td>07b26a5d-...</td>
+    <td>&nbsp;https://domemaildist.blob.core.windows.net/azuremmblobcontainer への同期要求を開始します。</td>
+  </tr>
+  <tr>
+    <td>07b26a5d-...</td>
+    <td>&nbsp;StringToSign = HEAD............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:11
+    GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container.</td>
+  </tr>
+  <tr>
+    <td>07b26a5d-...</td>
+    <td>&nbsp;応答を待機しています。</td>
+  </tr>
+  <tr>
+    <td>07b26a5d-...</td>
+    <td>&nbsp;応答を受け取りました。Status code = 200, Request ID = eeead849-...Content-MD5 = , ETag =
+    &quot;0x8D14D2DC63D059B&quot;.</td>
+  </tr>
+  <tr>
+    <td>07b26a5d-...</td>
+    <td>&nbsp;応答ヘッダーは正常に処理されました。残りの操作を処理しています。</td>
+  </tr>
+  <tr>
+    <td>07b26a5d-...</td>
+    <td>&nbsp;応答の本文をダウンロードしています。</td>
+  </tr>
+  <tr>
+    <td>07b26a5d-...</td>
+    <td>&nbsp;操作は正常に完了しました。</td>
+  </tr>
+  <tr>
+    <td>07b26a5d-...</td>
+    <td>&nbsp;https://domemaildist.blob.core.windows.net/azuremmblobcontainer への同期要求を開始します。</td>
+  </tr>
+  <tr>
+    <td>07b26a5d-...</td>
+    <td>&nbsp;StringToSign = DELETE............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:12
+    GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container.</td>
+  </tr>
+  <tr>
+    <td>07b26a5d-...</td>
+    <td>&nbsp;応答を待機しています。</td>
+  </tr>
+  <tr>
+    <td>07b26a5d-...</td>
+    <td>&nbsp;応答を受け取りました。Status code = 202, Request ID = 6ab2a4cf-..., Content-MD5 = , ETag = .</td>
+  </tr>
+  <tr>
+    <td>07b26a5d-...</td>
+    <td>&nbsp;応答ヘッダーは正常に処理されました。残りの操作を処理しています。</td>
+  </tr>
+  <tr>
+    <td>07b26a5d-...</td>
+    <td>&nbsp;応答の本文をダウンロードしています。</td>
+  </tr>
+  <tr>
+    <td>07b26a5d-...</td>
+    <td>&nbsp;操作は正常に完了しました。</td>
+  </tr>
+  <tr>
+    <td>e2d06d78-...</td>
+    <td>&nbsp;https://domemaildist.blob.core.windows.net/azuremmblobcontainer への非同期要求を開始します。</td>
+  </tr>
+  <tr>
+    <td>e2d06d78-...</td>
+    <td>&nbsp;StringToSign = HEAD............x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12
+    GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container.</td>
+  </tr>
+  <tr>
+    <td>e2d06d78-...</td>
+    <td>&nbsp;応答を待機しています。</td>
+  </tr>
+  <tr>
+    <td>de8b1c3c-...</td>
+    <td>&nbsp;https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt への同期要求を開始します。</td>
+  </tr>
+  <tr>
+    <td>de8b1c3c-...</td>
+    <td>&nbsp;StringToSign =
+    PUT...64.qCmF+TQLPhq/YYK50mP9ZQ==........x-ms-blob-type:BlockBlob.x-ms-client-request-id:de8b1c3c-....x-ms-date:Tue, 03 Jun
+    2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer/blobCreated.txt.</td>
+  </tr>
+  <tr>
+    <td>de8b1c3c-...</td>
+    <td>&nbsp;要求データを書き込む準備をしています。</td>
+  </tr>
+  <tr>
+    <td>e2d06d78-...</td>
+    <td>&nbsp;応答の待機中に例外がスローされました: リモート サーバーがエラーを返しました: (404) 未検出。</td>
+  </tr>
+  <tr>
+    <td>e2d06d78-...</td>
+    <td>&nbsp;応答を受け取りました。Status code = 404, Request ID = 353ae3bc-..., Content-MD5 = , ETag = .</td>
+  </tr>
+  <tr>
+    <td>e2d06d78-...</td>
+    <td>&nbsp;応答ヘッダーは正常に処理されました。残りの操作を処理しています。</td>
+  </tr>
+  <tr>
+    <td>e2d06d78-...</td>
+    <td>&nbsp;応答の本文をダウンロードしています。</td>
+  </tr>
+  <tr>
+    <td>e2d06d78-...</td>
+    <td>&nbsp;操作は正常に完了しました。</td>
+  </tr>
+  <tr>
+    <td>e2d06d78-...</td>
+    <td>&nbsp;https://domemaildist.blob.core.windows.net/azuremmblobcontainer への非同期要求を開始します。</td>
+  </tr>
+  <tr>
+    <td>e2d06d78-...</td>
+    <td>&nbsp;StringToSign = PUT...0.........x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12
+    GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container.</td>
+  </tr>
+  <tr>
+    <td>e2d06d78-...</td>
+    <td>&nbsp;応答を待機しています。</td>
+  </tr>
+  <tr>
+    <td>de8b1c3c-...</td>
+    <td>&nbsp;要求データを待機しています。</td>
+  </tr>
+  <tr>
+    <td>de8b1c3c-...</td>
+    <td>&nbsp;応答を待機しています。</td>
+  </tr>
+  <tr>
+    <td>e2d06d78-...</td>
+    <td>&nbsp;応答の待機中に例外がスローされました: リモート サーバーがエラーを返しました: (409) 競合。</td>
+  </tr>
+  <tr>
+    <td>e2d06d78-...</td>
+    <td>&nbsp;応答を受け取りました。Status code = 409, Request ID = c27da20e-..., Content-MD5 = , ETag = .</td>
+  </tr>
+  <tr>
+    <td>e2d06d78-...</td>
+    <td>&nbsp;エラー応答の本文をダウンロードしています。</td>
+  </tr>
+  <tr>
+    <td>de8b1c3c-...</td>
+    <td>&nbsp;応答の待機中に例外がスローされました: リモート サーバーがエラーを返しました: (404) 未検出。</td>
+  </tr>
+  <tr>
+    <td>de8b1c3c-...</td>
+    <td>&nbsp;応答を受け取りました。Status code = 404, Request ID = 0eaeab3e-..., Content-MD5 = , ETag = .</td>
+  </tr>
+  <tr>
+    <td>de8b1c3c-...</td>
+    <td>&nbsp;操作中に例外がスローされました: リモート サーバーがエラーを返しました: (404) 未検出。</td>
+  </tr>
+  <tr>
+    <td>de8b1c3c-...</td>
+    <td>&nbsp;再試行ポリシーは再試行を許可しませんでした。&quot;リモート サーバーがエラーを返しました: (404) 未検出&quot; で失敗しました。</td>
+  </tr>
+  <tr>
+    <td>e2d06d78-...</td>
+    <td>&nbsp;再試行ポリシーは再試行を許可しませんでした。&quot;リモート サーバーがエラーを返しました: (409) 競合&quot; で失敗しました。</td>
+  </tr>
+</table>
 
 この例では、クライアントが **CreateIfNotExists** メソッドからの要求 (要求 ID e2d06d78…) と **UploadFromStream** メソッドからの要求 (de8b1c3c-...) を交互に処理していることがログに示されています。これは、クライアント アプリケーションがこれらのメソッドを非同期的に呼び出しているために生じています。必ず、コンテナーを作成してからそのコンテナーの BLOB にデータをアップロードするように、クライアントの非同期コードを変更する必要があります。すべてのコンテナーをあらかじめ作成しておくことをお勧めします。
 
@@ -554,16 +827,46 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 
 以下の表に、ストレージ ログのログ ファイルのサーバー側ログ メッセージの例を示します。
 
-|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 要求の開始時刻      | 2014-05-30T06:17:48.4473697Z                                                                                                                           |
-| 操作の種類          | GetBlobProperties                                                                                                                                      |
-| 要求の状態          | SASAuthorizationError                                                                                                                                  |
-| HTTP 状態コード     | 404                                                                                                                                                    |
-| 認証の種類          | SAS                                                                                                                                                    |
-| サービスの種類      | BLOB                                                                                                                                                   |
-| 要求 URL            | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&api-version=2014-02-14& |
-| 要求 ID ヘッダー    | a1f348d5-8032-4912-93ef-b393e5252a3b                                                                                                                   |
-| クライアント要求 ID | 2d064953-8436-4ee0-aa0c-65cb874f7929                                                                                                                   |
+<table>
+  <tr>
+    <td>要求の開始時刻</td>
+    <td>2014-05-30T06:17:48.4473697Z</td>
+  </tr>
+  <tr>
+    <td>操作の種類</td>
+    <td>GetBlobProperties</td>
+  </tr>
+  <tr>
+    <td>要求の状態</td>
+    <td>SASAuthorizationError</td>
+  </tr>
+  <tr>
+    <td>HTTP 状態コード</td>
+    <td>404</td>
+  </tr>
+  <tr>
+    <td>認証の種類</td>
+    <td>SAS</td>
+  </tr>
+  <tr>
+    <td>サービスの種類</td>
+    <td>BLOB</td>
+  </tr>
+  <tr>
+    <td>要求 URL</td>
+    <td>
+
+https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp;sr=c&amp;si=mypolicy&amp;sig=XXXXX&amp;api-version=2014-02-14&amp;</td>
+  </tr>
+  <tr>
+    <td>要求 ID ヘッダー</td>
+    <td>a1f348d5-8032-4912-93ef-b393e5252a3b</td>
+  </tr>
+  <tr>
+    <td>クライアント要求 ID</td>
+    <td>2d064953-8436-4ee0-aa0c-65cb874f7929</td>
+  </tr>
+</table>
 
 クライアント アプリケーションが、アクセス許可を付与されていない操作を実行しようとした理由を調べる必要があります。
 
@@ -612,12 +915,53 @@ JavaScript クライアントを使用していてストレージ サービス�
 
 以下の表に、2 つのクライアント操作に関する、サーバー側のログから抜粋した内容を示します。**DeleteIfExists** の直後に、同じ BLOB コンテナー名を使用する **CreateIfNotExists** があります。どちらのクライアント操作も 2 つの要求をサーバーに送信することに注目してください (1 つ目がコンテナーの存在をチェックする **GetContainerProperties** 要求で、その次が **DeleteContainer** 要求または **CreateContainer** 要求です)。
 
-|------------------|------------------------|----------|------------------|-------------------------|
-| **Timestamp**    | **操作**               | **結果** | **コンテナー名** | **クライアント要求 ID** |
-| 05:10:13.7167225 | GetContainerProperties | 200      | mmcont           | c9f52c89-…              |
-| 05:10:13.8167325 | DeleteContainer        | 202      | mmcont           | c9f52c89-…              |
-| 05:10:13.8987407 | GetContainerProperties | 404      | mmcont           | bc881924-…              |
-| 05:10:14.2147723 | CreateContainer        | 409      | mmcont           | bc881924-…              |
+<table>
+  <tr>
+    <td>
+      <b>タイムスタンプ</b>
+    </td>
+    <td>
+      <b>操作</b>
+    </td>
+    <td>
+      <b>結果</b>
+    </td>
+    <td>
+      <b>コンテナー名</b>
+    </td>
+    <td>
+      <b>クライアント要求 ID</b>
+    </td>
+  </tr>
+  <tr>
+    <td>05:10:13.7167225</td>
+    <td>GetContainerProperties</td>
+    <td>200</td>
+    <td>mmcont</td>
+    <td>c9f52c89-…</td>
+  </tr>
+  <tr>
+    <td>05:10:13.8167325</td>
+    <td>DeleteContainer</td>
+    <td>202</td>
+    <td>mmcont</td>
+    <td>c9f52c89-…</td>
+  </tr>
+  <tr>
+    <td>05:10:13.8987407</td>
+    <td>GetContainerProperties</td>
+    <td>404</td>
+    <td>mmcont</td>
+    <td>bc881924-…</td>
+  </tr>
+  <tr>
+    <td>05:10:14.2147723</td>
+    <td>CreateContainer</td>
+    <td>409</td>
+    <td>mmcont</td>
+    <td>bc881924-…</td>
+  </tr>
+</table>
 
 クライアント アプリケーションのコードで、BLOB コンテナーを削除したすぐ後に、同じ名前を使用して再作成します。**CreateIfNotExists** メソッド (クライアント要求 ID bc881924-…) は最終的に HTTP 409 (競合) エラーで失敗します。クライアントが BLOB コンテナー、テーブル、またはキューを削除した後、その名前が再び使用できるようになるまでに少し時間がかかります。
 
@@ -805,8 +1149,7 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 
 この資料の作成時点では、Application Insights はプレビュー段階です。詳細については、MSDN の「[Application Insights for Visual Studio Online][Application Insights for Visual Studio Online]」を参照してください。
 
-<!--Anchors-->
-<!--Image references-->
+
 
   [はじめに]: #introduction
   [本書の構成]: #how-this-guide-is-organized

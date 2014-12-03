@@ -12,12 +12,10 @@
 
 クラウド サービスの詳細と Azure の Web サイトおよび仮想マシンとの違いについては、[「Azure の Web サイト、クラウド サービス、および仮想マシンの比較」][「Azure の Web サイト、クラウド サービス、および仮想マシンの比較」]を参照してください。
 
-<div class="dev-callout">
-
-**単純な Web サイトを構築する場合**
-実現するシナリオが単純な Web サイトのフロントエンドにのみ関係している場合は、[軽量の Azure の Web サイトを使用する][軽量の Azure の Web サイトを使用する]ことを検討してください。Web サイトの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。
-
+<div class="dev-callout"><strong>単純な Web サイトを構築する場合</strong>
+<p>実現するシナリオが単純な Web サイトのフロントエンドにのみ関係している場合は、<a href="/ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/">軽量の Azure の Web サイトを使用する]ことを検討してください。</a>Web サイトの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。</p>
 </div>
+<br/>
 
 このチュートリアルでは、Web ロールでホストされる単純な Web アプリケーションを作成します。コンピューティング
  エミュレーターを使用してアプリケーションをローカルでテストし、
@@ -39,7 +37,7 @@ PowerShell コマンド ライン ツールを使用してアプリケーショ�
 
 2.  C ドライブに新しい **node** ディレクトリを作成し、c:\\node ディレクトリに移動します。
 
-    !["mkdir c:\node" および "cd node" コマンドが表示されたコマンド プロンプト]["mkdir c:\node" および "cd node" コマンドが表示されたコマンド プロンプト]
+    !["mkdir c:\node" および "cd node" コマンドが表示されたコマンド プロンプト][mkdir]
 
 3.  次のコマンドレットを入力し、新しいソリューションを作成します。
 
@@ -133,12 +131,10 @@ Azure SDK によってインストールされる
 
         PS C:\node\helloworld\WebRole1> Import-AzurePublishSettingsFile [path to file]
 
-    <div class="dev-callout">
-
-    **注**
-    発行設定をインポートした後、ダウンロードした .publishSettings ファイルには他のユーザーがアカウントにアクセスするために使用できる情報が含まれているので、削除することを検討してください。
-
-    </div>
+	<div class="dev-callout">
+	<b>注</b>
+	<p>発行設定をインポートした後、ダウンロードした .publishSettings ファイルには他のユーザーがアカウントにアクセスするために使用できる情報が含まれているので、削除することを検討してください。</p>
+	</div>
 
 ### アプリケーションの発行
 
@@ -198,12 +194,10 @@ Azure SDK によってインストールされる
 
     ![Remove-AzureService コマンドの状態][Remove-AzureService コマンドの状態]
 
-    <div class="dev-callout">
-
-    **注**
-    サービスを削除しても、サービスが最初に発行されたときに作成されたストレージ アカウントは削除されず、使用したストレージに対して引き続き課金されます。ストレージ アカウントの削除の詳細については、「[Azure サブスクリプションからストレージ アカウントを削除する方法][Azure サブスクリプションからストレージ アカウントを削除する方法]」を参照してください。
-
-    </div>
+	<div class="dev-callout">
+	<strong>注</strong>
+	<p>サービスを削除しても、サービスが最初に発行されたときに作成されたストレージ アカウントは削除されず、使用したストレージに対して引き続き課金されます。ストレージ アカウントの削除の詳細については、「<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/hh531562.aspx">Azure サブスクリプションからストレージ アカウントを削除する方法」を参照してください</a>」。</p>
+</div>
 
   [「Azure の Web サイト、クラウド サービス、および仮想マシンの比較」]: http://azure.microsoft.com/ja-jp/documentation/articles/choose-web-site-cloud-service-vm/
   [軽量の Azure の Web サイトを使用する]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
@@ -219,4 +213,4 @@ Azure SDK によってインストールされる
   [1]: ./media/cloud-services-nodejs-develop-deploy-app/node21.png
   [Stop-AzureService コマンドの状態]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
   [Remove-AzureService コマンドの状態]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
-  [Azure サブスクリプションからストレージ アカウントを削除する方法]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh531562.aspx
+  [mkdir]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-6.png

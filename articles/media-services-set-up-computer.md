@@ -59,14 +59,14 @@ Media Services アカウントを設定するには、Azure の管理ポータ�
 
 多くの場合、サーバー コンテキストへの参照を保持するように **CloudMediaContext** 型のモジュール レベル変数を定義する際に役立ちます。詳細については、「[Media Services SDK による Media Services への接続][Media Services SDK による Media Services への接続]」を参照してください。
 
-このトピックのコード例では以降、\*\*\_context\*\* という変数を使用してサーバー コンテキストを参照します。
+このトピックのコード例では以降、\**context\** という変数を使用してサーバー コンテキストを参照します。
 
 ## 次のステップ
 
 これで、コンピューターをセットアップし、Media Services のプログラミングのための Visual Studio ソリューションを作成できました。次は、[暗号化されたアセットを作成してストレージにアップロードする方法][暗号化されたアセットを作成してストレージにアップロードする方法] に関するトピックに進みます。
-[メディア サービス アカウントの作成方法]: ../media-services-create-account/
-[暗号化されたアセットを作成してストレージにアップロードする方法]:../media-services-create-encrypted-asset-upload-storage/
 
+  [メディア サービス アカウントの作成方法]: ../media-services-create-account/
+  [暗号化されたアセットを作成してストレージにアップロードする方法]:../media-services-create-encrypted-asset-upload-storage/
   [メディア サービス アカウントの作成方法]: ../media-services-create-account/
   [windowsazure.mediaservices Nuget]: http://nuget.org/packages/windowsazure.mediaservices
   [Media Services SDK による Media Services への接続]: http://msdn.microsoft.com/ja-jp/library/azure/jj129571.aspx
