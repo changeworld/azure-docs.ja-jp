@@ -1,26 +1,26 @@
-<properties linkid="biztalk-troubleshoot-using-ops-logs" urlDisplayName="BizTalk Services: Troubleshoot using operation logs" pageTitle="BizTalk Services: Troubleshoot using ops logs | Azure" metaKeywords="" description="BizTalk Services: Troubleshoot using ops logs" metaCanonical="" services="" documentationCenter="" title="BizTalk Services: Troubleshoot using ops logs" authors="mandia"  solutions="" writer="nitinme" manager="dwrede" editor="cgronlun"  />
+﻿<properties urlDisplayName="BizTalk Services: Troubleshoot using operation logs" pageTitle="BizTalk サービス: 操作ログを使用したトラブルシューティング | Azure" metaKeywords="" description="BizTalk Services: Troubleshoot using ops logs" metaCanonical="" services="" documentationCenter="" title="BizTalk Services: Troubleshoot using ops logs" authors="mandia"  solutions="" writer="nitinme" manager="dwrede" editor="cgronlun"  />
 
 <tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/10/2014" ms.author="mandia" />
 
+
 # BizTalk サービス: 操作ログを使用したトラブルシューティング
 
-操作ログは、Azure 管理ポータルで使用できる管理サービス機能で、BizTalk サービスを含む Azure サービスで実行された操作の履歴ログを表示することができます。BizTalk サービス サブスクリプションにおける管理操作に関する履歴データを 180 日間分、確認できます。
+操作ログは、Azure の管理ポータルで使用できる管理サービス機能で、BizTalk サービスを含む Azure サービスで実行された操作の履歴ログを表示することができます。BizTalk サービス サブスクリプションにおける管理操作に関する履歴データを 180 日間分、確認できます。
 
 <div class="dev-callout"><b>注</b>
-<p>この機能で記録されるのは、BizTalk サービスに対する管理操作 (サービスの開始やバックアップなど) のログのみです。このような管理操作は、Azure 管理ポータルから実行されたか、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dn232347.aspx">BizTalk サービスの REST API</a> を使用して実行されたかを問わず、常に追跡されます。管理サービスを使用して追跡される操作の完全な一覧については、<a href="#bizops">Azure 管理サービスを使用して追跡される操作</a> を参照してください。</p>
-<p>この機能は、BizTalk サービスのランタイムに関連するアクティビティのログは記録しません (ブリッジが処理するメッセージなど)。このようなログを表示するには、BizTalk サービス ポータルの [追跡] ビューを使用する必要があります。詳細については、<a HREF="http://msdn.microsoft.com/library/windowsazure/hh949805.aspx">メッセージの追跡</a> を参照してください。</p>
+<p>この機能は、サービスの開始やバックアップなど、BizTalk サービスでの管理操作のログのみを記録します。このような管理操作は、Azure 管理ポータルから実行したか、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/dn232347.aspx">BizTalk サービスの REST API</a> を使用して実行したかを問わず、常に追跡されます。管理サービスを使用して追跡される操作の完全な一覧については、「<a href="#bizops">Azure 管理サービスを使用して追跡される操作</a>」を参照してください。</p>
+<p>この機能は、BizTalk サービスのランタイムに関連するアクティビティのログは記録しません (ブリッジが処理するメッセージなど)。このようなログを表示するには、BizTalk サービス ポータルの [追跡] ビューを使用する必要があります。詳細については、「<a HREF="http://msdn.microsoft.com/library/windowsazure/hh949805.aspx">Tracking Messages (メッセージの追跡)</a>」を参照してください。</p>
 </div>
 
-## <a name="viewlogs"></a>BizTalk サービスの操作ログの表示
+##<a name="viewlogs"></a>BizTalk Services の操作ログの表示
+1. Azure 管理ポータルで、[管理サービス] をクリックし、[操作ログ] タブをクリックします。
+2. さまざまなパラメーターに基づいてログをフィルター処理できます。パラメーターの例としては、サブスクリプション、日付の範囲、サービスの種類 (例: BizTalk サービス)、サービス名、操作の状態 (例: 成功、失敗) があります。
+3. フィルター処理された一覧を表示するには、チェックマークをクリックします。次の図は、testbiztalkservice に関連するアクティビティを示します。
+	![View operation logs][ViewLogs] 
+4. 特定の操作について詳細を表示するには、操作の行を選択して、ページの下部にある <b>[詳細]</b> をクリックします。
 
-1.  Azure 管理ポータルで、[管理サービス] をクリックし、[操作ログ] タブをクリックします。
-2.  さまざまなパラメーターに基づいてログをフィルター処理できます。パラメーターの例としては、サブスクリプション、日付の範囲、サービスの種類 (例: BizTalk サービス)、サービス名、操作の状態 (例: 成功、失敗) があります。
-3.  チェックマークをクリックすると、フィルター処理された一覧が表示されます。次の図では、testbiztalkservice に関連するアクティビティが表示されています。
-    ![操作ログを表示][操作ログを表示]
-4.  特定の操作に関する詳細を表示するには、その行を選択して、ページの一番下にある **[詳細]** をクリックします。
 
-## <a name="bizops"></a>Azure 管理サービスを使用して追跡される操作
-
+##<a name="bizops"></a>Azure 管理サービスを使用して追跡される操作
 Azure 管理サービスを使用して追跡される操作の一覧を次の表に示します。
 
 <table border="1" cellpadding="5">
@@ -86,25 +86,16 @@ Azure 管理サービスを使用して追跡される操作の一覧を次の�
 </tr>
 </table>
 
+
 ## 関連項目
+- [BizTalk サービスのバックアップに関するページ](http://go.microsoft.com/fwlink/p/?LinkID=325584)
+- [バックアップからの BizTalk サービスの復元に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=325582)
+- [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](http://go.microsoft.com/fwlink/p/?LinkID=302279)
+- [BizTalk サービス: Azure 管理ポータルを使用したプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)
+- [BizTalk サービス: プロビジョニングの状態のチャート](http://go.microsoft.com/fwlink/p/?LinkID=329870)
+- [BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)
+- [BizTalk サービス: 調整](http://go.microsoft.com/fwlink/p/?LinkID=302282)
+- [BizTalk サービス: 発行者名および発行者キー](http://go.microsoft.com/fwlink/p/?LinkID=303941)
+- [Azure BizTalk サービス SDK の使用開始に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 
--   [BizTalk サービスのバックアップに関するページ][BizTalk サービスのバックアップに関するページ]
--   [バックアップからの BizTalk サービスの復元に関するページ][バックアップからの BizTalk サービスの復元に関するページ]
--   [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート][BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート]
--   [BizTalk サービス: Azure 管理ポータルを使用したプロビジョニング][BizTalk サービス: Azure 管理ポータルを使用したプロビジョニング]
--   [BizTalk サービス: プロビジョニングの状態のチャート][BizTalk サービス: プロビジョニングの状態のチャート]
--   [BizTalk サービス: ダッシュボード、監視、および スケール タブ][BizTalk サービス: ダッシュボード、監視、および スケール タブ]
--   [BizTalk サービス: 調整][BizTalk サービス: 調整]
--   [BizTalk サービス: 発行者名および発行者キー][BizTalk サービス: 発行者名および発行者キー]
--   [Azure BizTalk サービス SDK の使用開始に関するページ][Azure BizTalk サービス SDK の使用開始に関するページ]
-
-  [操作ログを表示]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png
-  [BizTalk サービスのバックアップに関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=325584
-  [バックアップからの BizTalk サービスの復元に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=325582
-  [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート]: http://go.microsoft.com/fwlink/p/?LinkID=302279
-  [BizTalk サービス: Azure 管理ポータルを使用したプロビジョニング]: http://go.microsoft.com/fwlink/p/?LinkID=302280
-  [BizTalk サービス: プロビジョニングの状態のチャート]: http://go.microsoft.com/fwlink/p/?LinkID=329870
-  [BizTalk サービス: ダッシュボード、監視、および スケール タブ]: http://go.microsoft.com/fwlink/p/?LinkID=302281
-  [BizTalk サービス: 調整]: http://go.microsoft.com/fwlink/p/?LinkID=302282
-  [BizTalk サービス: 発行者名および発行者キー]: http://go.microsoft.com/fwlink/p/?LinkID=303941
-  [Azure BizTalk サービス SDK の使用開始に関するページ]: http://go.microsoft.com/fwlink/p/?LinkID=302335
+[ViewLogs]: ./media/biztalk-troubleshoot-using-ops-logs/Operation-Logs.png

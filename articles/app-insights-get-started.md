@@ -1,65 +1,53 @@
-<properties title="Application Insights" pageTitle="Application Insights" description="Analyze usage, availability and performance of your on-premises or Microsoft Azure web application with Application Insights." metaKeywords="analytics monitoring application insights" authors="awills"  />
+﻿<properties title="Application Insights" pageTitle="Application Insights - アプリケーションの状態と利用状況の監視を開始する" description="Analyze usage, availability and performance of your on-premises or Microsoft Azure web application with Application Insights." metaKeywords="analytics monitoring application insights" authors="awills"  manager="kamrani" />
 
-<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="awills" />
+<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="2014-09-24" ms.author="awills" />
 
-# Application Insights - 概要
+# Application Insights - アプリケーションの状態と利用状況の監視を開始する
 
 *Application Insights はプレビュー段階です。*
 
-Application Insights を使うと、ライブ アプリケーションの可用性、パフォーマンス、利用状況を監視できます (アプリケーションは Microsoft Azure アプリケーションである必要はありません)。構成は非常に簡単です。そして、結果をすぐに確認できます。
+Application Insights を使用すると、ライブ アプリケーションの以下の事柄について監視できます。
 
--   **可用性** - Web アプリケーションが利用可能であり応答性を維持していることを確認します。地球上のいろいろな場所から数分おきに URL がテストされ、問題がある場合は通知されます。
--   **パフォーマンス** - Web サービスのあらゆるパフォーマンスの問題または例外が診断されます。応答時間が要求数と共にどのように変化するか、CPU またはその他のリソースに過剰な負荷がかかっていないかどうかを確認できます。また、例外からスタック トレースを取得したり、ログ トレースを容易に検索したりできます。
--   **利用状況** - お客様のアプリケーションを使用しているユーザーを把握することで、開発作業を最も有用な部分にフォーカスできます。現在、Web アプリケーション、Windows ストア アプリケーション、Windows Phone アプリケーションを監視できます。
+* **可用性** - 世界中から数分ごとにご使用の URL についてテストします。
+* **パフォーマンス** - パフォーマンスに関する問題と例外を検出して診断します。
+* **利用状況** - ご使用のアプリケーションを使っているユーザーの実行内容を把握し、それらのユーザーにとってより良いアプリケーションとなるようにします。
 
-## はじめに
+構成は非常に簡単で、数分で結果を確認できます。現在、(サーバーまたは Azure 上の) ASP.NET Web アプリケーションをサポートしています。
 
-利用を開始するには、次の 2 つの方法があります。
 
--   [Application Insights を Visual Studio のプロジェクトに追加する][Application Insights を Visual Studio のプロジェクトに追加する]
+## 開始方法
 
-    Application Insights をプロジェクトに追加すると、利用状況、パフォーマンス、可用性を追跡し、診断ログを分析できます。データはデバッグ モードですぐに表示されます。プロジェクトをデプロイすることで、ライブ データを取得できます。
+任意の順序でこの表の左側に示すエントリ ポイントを組み合わせて開始します。適切なルートを選択します。ASP.NET Web アプリケーションを開発する場合は、Web プロジェクトに Application Insights を追加することによって開始できます。その他の機能は後で簡単に追加できます。
 
-    プロジェクトを更新または作成している場合は、このオプションを使用してください。
+[Microsoft Azure](http://azure.com) のアカウントが必要です (VSO バージョンを使用する場合を除く)。
 
-    [Application Insights をプロジェクトに追加して作業を開始する][Application Insights を Visual Studio のプロジェクトに追加する]
+<table >
+<tr valign="top"><th>必要な項目</th><th colspan="2">必要な操作</th><th>取得する項目</th></tr>
+<tr valign="top"><td>my ASP.NET アプリケーションのパフォーマンスと利用状況分析を取得する</td><td colspan="2"><a href="../app-insights-start-monitoring-app-health-usage/">Application Insights を Web プロジェクトに追加する</a></td><td>パフォーマンス メトリック: 読み込み数、応答時間など</td></tr>
+<tr valign="top"><td></td><td></td><td><a href="../app-insights-web-track-usage-custom-events-metrics/">サーバー コードからのイベントとメトリックを送信する</a></td><td>カスタム ビジネス分析</td></tr>
+<tr valign="top"><td></td><td></td><td><a href="../app-insights-search-diagnostic-logs/">トレースおよび例外の利用統計情報をサーバーから送信する、またはサード パーティのログ データをキャプチャする</td><td>サーバー アプリケーションの診断。ログ データを検索、フィルターする</a></td></tr>
+<tr valign="top"><td>自分の Web ページの利用状況を取得する (任意のプラットフォーム) </td><td colspan="2"><a href="../app-insights-web-track-usage/">AI スクリプトをユーザーの Web ページに挿入する</a></td><td>利用状況分析: ページ ビュー、再訪ユーザー、セッション数</td></tr>
+<tr valign="top"><td></td><td>&nbsp;&nbsp;</td><td><a href="../app-insights-web-track-usage-custom-events-metrics/">Web ページのスクリプトにイベントとメトリックの呼び出しを記述する</a></td><td>カスタムのユーザー エクスペリエンスの分析</td></tr>
+<tr valign="top"><td></td><td></td><td><a href="../app-insights-search-diagnostic-logs/">Web ページのスクリプトにトレースと診断の呼び出しを記述する</a></td><td>ログ データを検索、フィルターする</td></tr>
+<tr valign="top"><td>既に自分の Web サーバーで実行中の ASP.NET アプリケーションの問題を診断する</td><td colspan="2"><a href="../app-insights-monitor-performance-live-website-now/">ユーザーの Web サーバーに状態モニターをインストールする</a></td><td>依存関係の呼び出し期間と数、CPU、メモリ、およびネットワーク カウンター (読み込み数、応答時間)</td></tr>
+<tr valign="top"><td>Web ページの可用性を監視する</td><td colspan="2"><a href="../app-insights-monitor-web-app-availability/">Application Insights に Web テストを設定する</a></td><td>可用性モニターおよびアラート</td></tr>
+<tr valign="top"><td>Windows Phone アプリ、Windows ストア アプリ、または Java Web サイトのパフォーマンスおよび利用状況分析を取得する</td><td colspan="2"><a href="http://msdn.microsoft.com/library/dn481095.aspx">現在は、Application Insights の以前の VSO バージョンを使用する</a></td><td>利用状況とパフォーマンス分析<a href="http://msdn.microsoft.com/library/dn793604.aspx">Azure バージョンの機能は、徐々に構築されていきます。</a></td></tr>
+</table>
 
--   [ライブ Web サービスの問題を今すぐ診断する][ライブ Web サービスの問題を今すぐ診断する]
 
-    Insights エージェントを IIS サーバーにインストールすると、すぐにパフォーマンス データを確認できます。要求数、応答時間、リソースの負荷を監視し、例外トレースを取得できます。
+## <a name="video"></a>ビデオ
 
-    このオプションは、Web サーバーの状態を今すぐ確認する必要がある場合に使用します。この方法では、コードの再デプロイは行われません。ただし、サーバーおよび Microsoft Azure アカウントへの管理アクセス権が必要になります。
+####  はじめに
 
-    可用性の監視はいつでも追加できます。
+> [AZURE.VIDEO application-insights-introduction]
 
-    後で他のオプションを使って Application Insights をプロジェクトに追加して、診断ログを分析し、利用状況を追跡できます。
+#### 開始方法
 
-    [Application Insights を Web サーバーにインストールして作業を開始する][ライブ Web サービスの問題を今すぐ診断する]
+> [AZURE.VIDEO getting-started-with-application-insights]
 
-> [WACOM.NOTE] Visual Studio Online には [Application Insights の以前のバージョン][Application Insights の以前のバージョン]が登録されています。Application Insights は、Microsoft Azure の一部として新しく作り直されています。ここで扱っているのは、新しいバージョンです。
 
-![Example application monitor in Application Insights][Example application monitor in Application Insights]
 
-## 詳細情報
 
--   [Application Insights - 概要][Application Insights - 概要]
--   [アプリケーションの正常性と利用状況の監視][Application Insights を Visual Studio のプロジェクトに追加する]
--   [ライブ Web サーバーの監視を今すぐ始める][ライブ Web サービスの問題を今すぐ診断する]
--   [メトリックの探索][メトリックの探索]
--   [Application Insights での診断ログの検索][Application Insights での診断ログの検索]
--   [Web アプリケーションの可用性と応答性の監視][Web アプリケーションの可用性と応答性の監視]
--   [カスタム イベントおよびメトリックを使用した利用状況の追跡][カスタム イベントおよびメトリックを使用した利用状況の追跡]
--   [トラブルシューティングおよび Q & A - Microsoft Azure プレビューの Application Insights][トラブルシューティングおよび Q & A - Microsoft Azure プレビューの Application Insights]
+[AZURE.INCLUDE [app-insights-learn-more](../includes/app-insights-learn-more.md)]
 
-<!--Link references-->
 
-  [Application Insights を Visual Studio のプロジェクトに追加する]: ../app-insights-monitor-application-health-usage/
-  [ライブ Web サービスの問題を今すぐ診断する]: ../app-insights-monitor-performance-live-website-now/
-  [Application Insights の以前のバージョン]: http://msdn.microsoft.com/ja-jp/library/dn481095.aspx
-  [Example application monitor in Application Insights]: ./media/appinsights/appinsights-00-appblade.png
-  [Application Insights - 概要]: ../app-insights-get-started/
-  [メトリックの探索]: ../app-insights-explore-metrics/
-  [Application Insights での診断ログの検索]: ../app-insights-search-diagnostic-logs/
-  [Web アプリケーションの可用性と応答性の監視]: ../app-insights-monitor-web-app-availability/
-  [カスタム イベントおよびメトリックを使用した利用状況の追跡]: ../app-insights-web-track-usage-custom-events-metrics/
-  [トラブルシューティングおよび Q & A - Microsoft Azure プレビューの Application Insights]: ../app-insights-troubleshoot-faq/
