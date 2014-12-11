@@ -31,7 +31,7 @@ Azure の管理ポータルの [スケール] ページで、アプリケーシ�
 
 2.  **[スケール]** をクリックします。既定では、すべてのロールに対して自動的な規模の設定は無効になっていますが、アプリケーションで使用するインスタンスの数を手動で変更できます。
 
-    ![[スケール] ページ][]
+    ![スケール ページ][スケール ページ]
 
 3.  クラウド サービス内の各ロールには、使用するインスタンスの数を変更するスライダーがあります。ロール インスタンスを追加するには、垂直バーを右にドラッグします。インスタンスを削除するには、バーを左にドラッグします。
 
@@ -200,7 +200,7 @@ Azure の管理ポータルの [スケール] ページで、アプリケーシ�
   [リンク済みリソースの規模の設定]: #scalelink
   [アプリケーションのスケールのスケジュール]: #schedule
   [管理ポータル]: https://manage.windowsazure.com/
-  [[スケール] ページ]: ./media/cloud-services-how-to-scale/CloudServices_ManualScaleRoles.png
+  [スケール ページ]: ./media/cloud-services-how-to-scale/CloudServices_ManualScaleRoles.png
   [ロールの規模の設定]: ./media/cloud-services-how-to-scale/CloudServices_SliderRole.png
   [平均 CPU 使用率]: #averagecpu
   [キュー メッセージ]: #queuemessages

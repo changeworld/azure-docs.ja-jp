@@ -524,8 +524,8 @@ Azure の Web サイトには有効なセキュリティ証明書が備わって
 
 [Microsoft SQL Server 2012 Express ダウンロード センター][Microsoft SQL Server 2012 Express ダウンロード センター]から SSMS をインストールします。
 
--   [ENU\x64\SQLManagementStudio\_x64\_ENU.exe][ENU\x64\SQLManagementStudio\_x64\_ENU.exe] (64 ビット システム)
--   [ENU\x86\SQLManagementStudio\_x86\_ENU.exe][ENU\x86\SQLManagementStudio\_x86\_ENU.exe] (32 ビット システム)
+-   [ENU\x64\SQLManagementStudio\_x64\_ENU.exe](http://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x64/SQLManagementStudio_x64_ENU.exe) (64 ビット システム)
+-   [ENU\x86\SQLManagementStudio\_x86\_ENU.exe](http://download.microsoft.com/download/8/D/D/8DD7BDBA-CEF7-4D8E-8C16-D9F69527F909/ENU/x86/SQLManagementStudio_x86_ENU.exe) (32 ビット システム)
 
 お使いのシステムに適したバージョンを選択しないとインストールできません。その場合は、適切なバージョンを選択して、もう一度インストールしてください。
 

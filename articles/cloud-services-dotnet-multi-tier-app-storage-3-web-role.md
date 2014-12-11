@@ -59,7 +59,7 @@
 
 9.  **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[MVC]** テンプレートを選択します。**[Web API]** チェック ボックスをオンにし、**[認証の変更]** をクリックします。
 
-    ![[新しいプロジェクト] ダイアログ ボックス][]
+    ![新しいプロジェクト ダイアログ ボックス][新しいプロジェクト ダイアログ ボックス]
 
 10. **[認証の変更]** ダイアログ ボックスで、**[認証なし]** をクリックし、**[OK]** をクリックします。
 
@@ -1222,11 +1222,7 @@ ASP.NET Web API サービス メソッド:
 
 Azure Storage のテーブル、キュー、BLOB に関する参考情報については、[このシリーズの最終チュートリアル][このシリーズの最終チュートリアル]を参照してください。
 
-<div>
-
-[チュートリアル 4][次のチュートリアル]
-
-</div>
+<div><a href="/en-us/develop/net/tutorials/multi-tier-web-site/4-worker-role-a/" class="site-arrowboxcta download-cta">チュートリアル 4</a></div>
 
   [シリーズの最初のチュートリアル]: /ja-jp/develop/net/tutorials/multi-tier-web-site/1-overview/
   [Visual Studio ソリューションの作成]: #cloudproject
@@ -1244,7 +1240,7 @@ Azure Storage のテーブル、キュー、BLOB に関する参考情報につ�
   [New Azure Cloud Project dialog box]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-web-role/mtas-new-cloud-service-dialog.png
   [New Azure Cloud Project dialog box - renaming the web role]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-web-role/mtas-new-cloud-service-dialog-rename.png
   [New Azure Cloud Project dialog box - adding a worker role]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-web-role/mtas-new-cloud-service-add-worker-a.png
-  [[新しいプロジェクト] ダイアログ ボックス]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-web-role/mtas-new-mvc4-project.png
+  [新しいプロジェクト ダイアログ ボックス]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-web-role/mtas-new-mvc4-project.png
   [No authentication]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-web-role/noauth.png
   [完成したソリューション]: http://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
   [home page]: ./media/cloud-services-dotnet-multi-tier-app-storage-1-web-role/mtas-home-page-before-adding-controllers.png

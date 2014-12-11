@@ -98,7 +98,7 @@
     a. **[メトリックの追加]** をクリックすると、下図のような **[メトリックの選択]** ダイアログ ボックスが開きます。
     最初に利用可能なメトリックが展開され、利用可能なオプションが表示されます。メトリックごとに、一番上のオプションはすべてのロールの集計監視データを表示します。さらに、データを表示する個々のロールを選択することもできます。
 
-    ![メトリックの追加][メトリックの追加]
+    ![メトリックの追加][トリックの追加]
 
     b. 表示するメトリックを選択するには、以下を実行します。
 
@@ -108,13 +108,11 @@
     メトリック テーブルには最大 50 個のメトリックを表示できます。
 
     <div class="dev-callout">
+     <b>ヒント</b>
+     <p>詳細監視の場合、メトリック一覧に数十個のメトリックが表示されることがあります。スクロールバーを表示するには、ダイアログ ボックスの右側をポイントします。一覧を絞り込むには、検索アイコンをクリックして、下図の検索ボックスにテキストを入力します。</p>
+     </div>
 
-    **ヒント**
-    詳細監視の場合、メトリック一覧に数十個のメトリックが表示されることがあります。スクロールバーを表示するには、ダイアログ ボックスの右側をポイントします。一覧を絞り込むには、検索アイコンをクリックして、下図の検索ボックスにテキストを入力します。
-
-    </div>
-
-    ![[メトリックの追加] の検索][]
+    ![メトリックの追加 の検索][トリックの追加 の検索]
 
 3.  メトリックの選択が終了したら [OK] (チェックマーク) をクリックします。
 
@@ -193,8 +191,8 @@
   [方法: Receive Alert Notifications and Manage Alert Rules in Azure (Azure でアラート通知を受け取り、アラート ルールを管理する)]: http://go.microsoft.com/fwlink/?LinkId=309356
   [管理ポータル]: http://manage.windowsazure.com/
   [詳細表示]: ./media/cloud-services-how-to-monitor/CloudServices_DefaultVerboseDisplay.png
-  [メトリックの追加]: ./media/cloud-services-how-to-monitor/CloudServices_AddMetrics.png
-  [[メトリックの追加] の検索]: ./media/cloud-services-how-to-monitor/CloudServices_AddMetrics_Search.png
+  [トリックの追加]: ./media/cloud-services-how-to-monitor/CloudServices_AddMetrics.png
+  [メトリックの追加 の検索]: ./media/cloud-services-how-to-monitor/CloudServices_AddMetrics_Search.png
   [監視メトリック]: ./media/cloud-services-how-to-monitor/CloudServices_Monitor_UpdatedMetrics.png
   [相対または絶対]: ./media/cloud-services-how-to-monitor/CloudServices_Monitor_RelativeAbsolute.png
   [監視の表示期間]: ./media/cloud-services-how-to-monitor/CloudServices_Monitor_DisplayPeriod.png

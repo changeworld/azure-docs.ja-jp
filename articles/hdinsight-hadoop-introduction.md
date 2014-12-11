@@ -170,9 +170,9 @@ HDInsight の Hadoop を試す場合は、[HDInsight のドキュメント ペ�
 
 -   [Apache Hadoop][Apache Hadoop]: 大規模なデータ セットを複数のコンピューターで分散処理するためのフレームワークとなる Apache Hadoop ソフトウェア ライブラリについて説明します。
 
--   [HDFS][1]: Hadoop 分散ファイル システム (HDFS) は、Hadoop アプリケーションで使用する主要なストレージ システムで、そのアーキテクチャと設計について説明します。
+-   <a target="_blank" href="http://hadoop.apache.org/docs/r0.18.1/hdfs_design.html">HDFS</a>: Hadoop 分散ファイル システム (HDFS) は、Hadoop アプリケーションで使用する主要なストレージ システムで、そのアーキテクチャと設計について説明します。
 
--   [MapReduce][2]: 複数の計算ノードから成る大規模なクラスターを利用して、膨大なデータを迅速に並列処理する Hadoop アプリケーションを記述するためのプログラミング モデルとソフトウェア フレームワークについて説明します。
+-   <a target="_blank" href="http://mapreduce.org/">MapReduce</a>: 複数の計算ノードから成る大規模なクラスターを利用して、膨大なデータを迅速に並列処理する Hadoop アプリケーションを記述するためのプログラミング モデルとソフトウェア フレームワークについて説明します。
 
   [HDInsight の Hadoop エコシステムの概要:]: #overview
   [クラウドで Hadoop を使用するメリット:]: #advantage

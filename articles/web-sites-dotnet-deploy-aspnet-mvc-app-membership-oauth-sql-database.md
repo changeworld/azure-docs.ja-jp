@@ -113,7 +113,7 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 
 1.  **ソリューション エクスプローラー**の *Views\\Shared* フォルダーにある *Layout.cshtml* ファイルを開きます。
 
-    ![\_Layout.cshtml in Solution Explorer][\_Layout.cshtml in Solution Explorer]
+    ![\_Layout.cshtml in Solution Explorer][newapp004]
 
 2.  "My ASP.NET MVC Application" となっている箇所 (2 か所) を「Contact Manager」に書き換えます。
 3.  "Application name" を「CM Demo」に書き換えます。
@@ -302,7 +302,7 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
                 );
         }
 
-    このコードでは、連絡先情報を使用してデータベースを初期化 (初期データ投入) します。シード データベースの生成の詳細については、「[Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)][Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)]」を参照してください。
+    このコードでは、連絡先情報を使用してデータベースを初期化 (初期データ投入) します。シード データベースの生成の詳細については、「[Seeding and Debugging Entity Framework (EF) DBs (Entity Framework DB のシード化とデバッグ)](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)」を参照してください。
 
 7.  **[パッケージ マネージャー コンソール]** で、次のコマンドを入力します。
 
@@ -312,7 +312,7 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
     **update-database** によって、データベースを作成する最初の Migration が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます
 
-8.  Ctrl キーを押しながら F5 キーを押してアプリケーションを実行し、**CM Demo** リンクをクリックします (または、<http://localhost>:(port\#)/Cm に移動します)。
+8.  Ctrl キーを押しながら F5 キーを押してアプリケーションを実行し、**CM Demo** リンクをクリックします (または、http://localhost:(port\#)/Cm に移動します)。
 
     アプリケーションでは、登録されたデータが表示され、編集、詳細、削除のリンクが示されます。データの作成、編集、削除、表示を行うことができます。
 
@@ -388,16 +388,21 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
          }
 
 3.  新しいメソッドを **Seed** メソッドから呼び出します。
-
-         protected override void Seed(ContactManager.Models.ApplicationDbContext context) { AddUserAndRole(context); context.Contacts.AddOrUpdate(p => p.Name, // Code removed for brevity }
-
-    <span></span>
+	<pre>
+         protected override void Seed(ContactManager.Models.ApplicationDbContext context)
+        {
+            <mark>AddUserAndRole(context);</mark>
+            
+context.Contacts.AddOrUpdate(p => p.Name,
+                // Code removed for brevity
+        }
+	</pre>  
+<span></span>
     次のイメージは *Seed* メソッドへの変更を示します。
 
-    </p>
     ![code image][code image]
 
-このコードでは、*canEdit* という名前の新しいロールを作成し、新しいローカル ユーザー <*user1@contoso.com*> を作成して、<*user1@contoso.com>\* を *canEdit* ロールに追加します。詳細については、「[ASP.NET Identity resource page (ASP.NET Identity リソース ページ)][ASP.NET Identity resource page (ASP.NET Identity リソース ページ)]」を参照してください。
+このコードでは、*canEdit* という名前の新しいロールを作成し、新しいローカル ユーザー <*user1@contoso.com*> を作成して、<*user1@contoso.com>\* を *canEdit* ロールに追加します。詳細については、「[ASP.NET Identity resource page (ASP.NET Identity リソース ページ)](http://curah.microsoft.com/55636/aspnet-identity)」を参照してください。
 
 ## 一時的なコードを使用して新しいソーシャル ログイン ユーザーを canEdit ロールに追加する
 
@@ -408,9 +413,9 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
                 await UserManager.AddToRoleAsync(user.Id, "canEdit");
 
-このコードは、新しく登録したユーザーを "canEdit" ロールに追加します。これにより、データの変更 (編集) を伴うアクション メソッドへのアクセス権がユーザーに割り当てられます。以下の図は、変更後のコードを示しています。
+   このコードは、新しく登録したユーザーを "canEdit" ロールに追加します。これにより、データの変更 (編集) を伴うアクション メソッドへのアクセス権がユーザーに割り当てられます。以下の図は、変更後のコードを示しています。
 
-![code][code]
+   ![code][code]
 
 このチュートリアルの中で、アプリケーションを Azure に展開します。そこでのログオンには、Google などサード パーティの認証プロバイダーが使用されます。新しく登録されたアカウントは、*canEdit* ロールに追加されます。サイトの URL と Google ID さえあればだれでも登録し、データベースを更新することができます。そのような操作が第三者によって行われるのを防ぐためには、サイトを停止する必要があります。だれが *canEdit* ロールに追加されているかは、データベースを調べることによって確認できます。
 
@@ -424,20 +429,25 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 このセクションでは、[Authorize][Authorize]) 属性を適用してアクション メソッドへのアクセスを制限します。匿名ユーザーが表示できるのは、home コントローラーの **Index** アクション メソッドだけになります。登録ユーザーは、連絡先データ (Cm コントローラーの **[Index]** ページと **[Details]** ページ)、[About] ページ、[Contact] ページを表示することができます。*canEdit* ロールを与えられているユーザーのみがアクション メソッドを実行してデータを変更できます。
 
-1.  [Authorize][Authorize] フィルターと [RequireHttps][RequireHttps] フィルターをアプリケーションに追加します。[Authorize][Authorize] 属性と [RequireHttps][RequireHttps] 属性をコントローラーごとに追加する方法もありますが、セキュリティ上の理由から、通常はこれらをアプリケーション全体に適用します。アプリケーション全体に適用すれば、新しいコントローラーやアクション メソッドを追加したとき、それらが自動的に保護されます。ユーザー自身で適用する必要がありません。詳細については、「[Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性)][Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性)]」を参照してください。*App\_Start\\FilterConfig.cs* ファイルを開き、*RegisterGlobalFilters* メソッドを次のように書き換えます (2 つのフィルターを追加)。
+1.  [Authorize](http://msdn.microsoft.com/ja-jp/library/system.web.mvc.authorizeattribute.aspx) フィルターと [RequireHttps](http://msdn.microsoft.com/ja-jp/library/system.web.mvc.requirehttpsattribute.aspx) フィルターをアプリケーションに追加します。[Authorize](http://msdn.microsoft.com/ja-jp/library/system.web.mvc.authorizeattribute.aspx) 属性と [RequireHttps](http://msdn.microsoft.com/ja-jp/library/system.web.mvc.requirehttpsattribute.aspx) 属性をコントローラーごとに追加する方法もありますが、セキュリティ上の理由から、通常はこれらをアプリケーション全体に適用します。アプリケーション全体に適用すれば、新しいコントローラーやアクション メソッドを追加したとき、それらが自動的に保護されます。ユーザー自身で適用する必要がありません。詳細については、「[Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性)](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx)」を参照してください。*App\_Start\\FilterConfig.cs* ファイルを開き、*RegisterGlobalFilters* メソッドを次のように書き換えます (2 つのフィルターを追加)。
+		<pre>
+        public static void
+        RegisterGlobalFilters(GlobalFilterCollection filters)
+        {
+            filters.Add(new HandleErrorAttribute());
+            <mark>filters.Add(new System.Web.Mvc.AuthorizeAttribute());
+            filters.Add(new RequireHttpsAttribute());</mark>
+        }
+		</pre>
+<span></span>
 
-         public static void RegisterGlobalFilters(GlobalFilterCollection filters) { filters.Add(new HandleErrorAttribute()); filters.Add(new System.Web.Mvc.AuthorizeAttribute()); filters.Add(new RequireHttpsAttribute()); } 
-
-    <span></span>
-
-    </p>
     次のイメージは変更されたコードを示します。
 
     ![code image][4]
 
-    このコードで適用した [Authorize][Authorize] フィルターによって、匿名ユーザーは、アプリケーション内のメソッドに一切アクセスできなくなります。2 つのメソッドについては、[AllowAnonymous][Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性)] 属性を使用して承認要件を免除し、匿名ユーザーがログインしてホーム ページを表示できるようにします。[RequireHttps][RequireHttps] により、Web アプリケーションに対するすべてのアクセスは HTTPS に限定されます。
+    このコードで適用した [Authorize](http://msdn.microsoft.com/ja-jp/library/system.web.mvc.authorizeattribute.aspx) フィルターによって、匿名ユーザーは、アプリケーション内のメソッドに一切アクセスできなくなります。2 つのメソッドについては、[AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) 属性を使用して承認要件を免除し、匿名ユーザーがログインしてホーム ページを表示できるようにします。[RequireHttps](http://msdn.microsoft.com/ja-jp/library/system.web.mvc.requirehttpsattribute.aspx) により、Web アプリケーションに対するすべてのアクセスは HTTPS に限定されます。
 
-2.  [AllowAnonymous][Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性)] 属性を Home コントローラーの **Index** メソッドに追加します。[AllowAnonymous][Securing your ASP.NET MVC App and the new AllowAnonymous Attribute (ASP.NET MVC 4 アプリケーションの保護と新しい AllowAnonymous 属性)] 属性を使用すれば、特定のメソッドを認証不要として指定できます。HomeController からのイメージの抜粋を以下に示します。
+2.  [AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) 属性を Home コントローラーの **Index** メソッドに追加します。[AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) 属性を使用すれば、特定のメソッドを認証不要として指定できます。HomeController からのイメージの抜粋を以下に示します。
 
     ![code][5]
 
@@ -448,7 +458,7 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 ## プロジェクトに対して SSL を有効にする
 
-1.  SSL を有効にします。ソリューション エクスプローラーで **ContactManager** プロジェクトをクリックし、F4 キーを押します。プロパティ ダイアログ ボックスが表示されます。**[SSL Enabled]** を True に変更します。**[SSL URL]** をコピーします。以前に SSL Web サイトを作成したことがなければ、SSL URL は <https://localhost:44300/> になります。
+1.  SSL を有効にします。ソリューション エクスプローラーで **ContactManager** プロジェクトをクリックし、F4 キーを押します。プロパティ ダイアログ ボックスが表示されます。**[SSL Enabled]** を True に変更します。**[SSL URL]** をコピーします。以前に SSL Web サイトを作成したことがなければ、SSL URL は https://localhost:44300/ になります。
 
     ![enable SSL][enable SSL]
 
@@ -466,7 +476,7 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
  ![browser selector][browser selector]
 
-    You can select multiple browsers and have Visual Studio update each browser when you make changes. For more information see [Using Browser Link in Visual Studio 2013](http://www.asp.net/visual-studio/overview/2013/using-browser-link).
+    変更を加える場合、複数のブラウザーを選択して、Visual Studio が各ブラウザーを更新するようにできます。 詳細については、「Using Browser Link in Visual Studio 2013 (Visual Studio 2013 でのブラウザー リンクの使用]」(http://www.asp.net/visual-studio/overview/2013/using-browser-link).
 
 1.  Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。指示に従って、IIS Express が生成した自己署名証明書を信頼します。
 
@@ -679,7 +689,7 @@ ASP.NET MVC については、[ASP.NET MVC 5 の基本について執筆した�
 
 このチュートリアルとサンプル アプリケーションは、Tom Dykstra と Barry Dorrans (Twitter [@blowdart][@blowdart]) の協力の下、[Rick Anderson][Rick Anderson] (Twitter [@RickAndMSFT][@RickAndMSFT]) が執筆しました。
 
-役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。新しいトピックについては、「[Show Me How With Code (コードの使用方法)][Show Me How With Code (コードの使用方法)]」で要求および投票することもできます。
+役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。新しいトピックについては、「[Show Me How With Code (コードの使用方法)](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code)」で要求および投票することもできます。
 
 <!-- bookmarks -->
 <!-- images-->
@@ -774,3 +784,4 @@ ASP.NET MVC については、[ASP.NET MVC 5 の基本について執筆した�
   [@blowdart]: http://blogs.msdn.com/b/rickandy/
   [Rick Anderson]: https://twitter.com/RickAndMSFT
   [@RickAndMSFT]: https://twitter.com/blowdart
+  [newapp004]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/dntutmobile-createapp-004.png

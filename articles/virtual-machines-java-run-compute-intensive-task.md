@@ -76,7 +76,7 @@ Azure のサービス バス キューを使用するには、最初にサービ
 1.  [Azure 管理ポータル][Azure 管理ポータル]へのログオン
 2.  管理ポータルの左下のナビゲーション ウィンドウで、**[Service Bus、Access Control、Caching]** をクリックします。
 3.  管理ポータルの左上のナビゲーション ウィンドウで、**[Service Bus]** ノードをクリックしてから **[新規]** ボタンをクリックします。
-    ![[Service Bus] ノードのスクリーンショット][]
+    ![Service Bus ノードのスクリーンショット][svc_bus_node]
 4.  **[サービス名前空間の新規作成]** ダイアログで **[名前空間]** に名前空間の名前を入力し、固有の名前であることを確認するために **[利用可能かどうかを確認]** をクリックします。
 
     ![名前空間の新規作成のスクリーンショット][名前空間の新規作成のスクリーンショット]
@@ -519,3 +519,4 @@ Azure のサービス バス キューを使用するには、最初にサービ
   [プロパティ ウィンドウのスクリーンショット]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_06_PropertiesPane.jpg
   [既定のキー のスクリーンショット]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_07_DefaultKey.jpg
   [Azure SDK for Java]: http://www.windowsazure.com/ja-jp/develop/java/
+  [svc_bus_node]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_02_SvcBusNode.jpg
