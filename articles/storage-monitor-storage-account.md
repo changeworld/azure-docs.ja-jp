@@ -15,11 +15,11 @@
 
 ## 目次
 
--   [方法: ストレージ アカウントの監視の設定][方法: ストレージ アカウントの監視の設定]
+-   [方法: ストレージ アカウントの監視の設定](#configurestoragemonitoring)
 -   [方法: ダッシュボードの監視用のカスタマイズ][方法: ダッシュボードの監視用のカスタマイズ]
--   [方法: [監視] ページのカスタマイズ][]
+-   [方法: [監視] ページのカスタマイズ](#customizemonitorpage)
 -   [方法: メトリック テーブルへのメトリックの追加][方法: メトリック テーブルへのメトリックの追加]
--   [方法: [監視] ページのメトリック チャートのカスタマイズ][]
+-   [方法: [監視] ページのメトリック チャートのカスタマイズ](#customizemetricschart)
 -   [方法: ログの構成][方法: ログの構成]
 
 ## <span id="configurestoragemonitoring"></span></a>方法: ストレージ アカウントの監視の設定
@@ -62,7 +62,7 @@
 
 -   チャートにプロットされているメトリックを非表示にするには、メトリック ヘッダーにあるチェック ボックスをオフにします。
 
-    ![Monitoring\_nmore][Monitoring\_nmore]
+    ![Monitoring_nmore](./media/storage-monitor-storage-account/storage_Monitoring_nmore.png)
 
 1.  既定では、チャートには傾向が表示され、各メトリックの現在の値だけが表示されます (チャート上部にある **[相対]** オプション)。Y 軸を表示して絶対値を確認するには、**[絶対]** をクリックします。
 
@@ -86,12 +86,12 @@
 
     **[監視]** ページが開きます。既定で、メトリック テーブルには監視に使用できるメトリックのサブセットが表示されます。図は、3 つのサービスすべてに詳細監視を構成したストレージ アカウントで表示される既定の [監視] ページを示しています。**[メトリックの追加]** を使用して、使用できるすべてのメトリックから監視するメトリックを選択します。
 
-    ![Monitoring\_VerboseDisplay][Monitoring\_VerboseDisplay]
+    ![Monitoring_VerboseDisplay](./media/storage-monitor-storage-account/Storage_Monitoring_VerboseDisplay.png)
 
     <div class="dev-callout"> 
-<b>注</b> 
-<p>メトリックを選択するときはコストを考慮してください。監視の表示を更新すると、トランザクションと送信のコストがかかります。詳細については、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/hh360997.aspx">ストレージの分析と課金に関するページ</a>を参照してください。</p> 
-</div>
+    <b>注</b> 
+    <p>メトリックを選択するときはコストを考慮してください。監視の表示を更新すると、トランザクションと送信のコストがかかります。詳細については、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/hh360997.aspx">ストレージの分析と課金に関するページ</a>を参照してください。</p> 
+    </div>
 
 3.  **[メトリックの追加]** をクリックします。
 
@@ -143,7 +143,6 @@
 
 診断ログは、ストレージ アカウントの $logs という名前の BLOB コンテナーに保存されます。$logs コンテナーへのアクセスの詳細については、「[Storage Analytics Logging について][Storage Analytics Logging について]」を参照してください。
 
-  [方法: ストレージ アカウントの監視の設定]: #configurestoragemonitoring
   [方法: ダッシュボードの監視用のカスタマイズ]: #customizestoragemonitoring
   [方法: メトリック テーブルへのメトリックの追加]: #addmonitoringmetrics
   [方法: ログの構成]: #configurelogging
