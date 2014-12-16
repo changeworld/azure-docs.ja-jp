@@ -22,13 +22,13 @@
 -   [BLOB ストレージからのダウンロードを実行するビルド手順の作成方法][BLOB ストレージからのダウンロードを実行するビルド手順の作成方法]
 -   [BLOB サービスが使用するコンポーネント][BLOB サービスが使用するコンポーネント]
 
-## <a name="overview"></a><span class="short header">概要</span>Jenkins の概要
+<h2> <a name="overview"></a><span class="short header">概要</span>Jenkins の概要</h2>
 
 Jenkins では、開発者がコードの変更を簡単に統合し、ビルドを自動的に頻繁に生成することができ、開発者の生産性が向上するため、ソフトウェア プロジェクトの継続的な統合を実現できます。ビルドはバージョン管理され、ビルド アーティファクトをさまざまなリポジトリにアップロードできます。このトピックでは、Azure BLOB ストレージをビルド アーティファクトのリポジトリとして使用する方法について説明します。また、Azure BLOB ストレージから依存関係をダウンロードする方法も紹介します。
 
 Jenkins の詳細については、「[Meet Jenkins (Jenkins について)][Meet Jenkins (Jenkins について)]」を参照してください。
 
-## <a name="benefits"></a><span class="short header">メリット</span>BLOB サービスを使用するメリット
+<h2> <a name="benefits"></a><span class="short header">メリット</span>BLOB サービスを使用するメリット</h2>
 
 BLOB サービスを使用してアジャイル開発のビルド アーティファクトをホストするメリットには、次の点が挙げられます。
 
@@ -37,7 +37,7 @@ BLOB サービスを使用してアジャイル開発のビルド アーティ�
 -   顧客およびパートナーがビルド アーティファクトをダウンロードする際のパフォーマンスを改善。
 -   匿名アクセス、有効期限ベースの共有アクセス署名によるアクセス、プライベート アクセスなどから 1 つを選んでユーザー アクセス ポリシーを制御。
 
-## <a name="prerequisites"></a><span class="short header">前提条件</span>前提条件
+<h2> <a name="prerequisites"></a><span class="short header">前提条件</span>前提条件</h2>
 
 Jenkins CI ソリューションで BLOB サービスを使用するには、次のものが必要です。
 
@@ -60,11 +60,11 @@ Jenkins CI ソリューションで BLOB サービスを使用するには、次
 
 -   以降では、Jenkins CI のビルド アーティファクトで BLOB サービスをリポジトリとして使用するうえで必要な手順を、基本的な例を使って説明しています。Jenkins CI ソリューションにある程度習熟していることが望ましいものの、必須ではありません。
 
-## <a name="howtouse"></a><span class="short header">BLOB サービスの使用方法</span>Jenkins CI で BLOB サービスを使用する方法
+<h2> <a name="howtouse"></a><span class="short header">BLOB サービスの使用方法</span>Jenkins CI で BLOB サービスを使用する方法</h2>
 
 Jenkins で BLOB サービスを使用するには、Azure ストレージ プラグインをインストールし、そのプラグインを構成してストレージ アカウントを使用するようにしたうえで、ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションを作成する必要があります。以降のセクションでは、ここに挙げた手順について説明します。
 
-## <a name="howtoinstall"></a><span class="short header">インストール方法</span>Azure ストレージ プラグインのインストール方法
+<h2> <a name="howtoinstall"></a><span class="short header">インストール方法</span>Azure ストレージ プラグインのインストール方法</h2>
 
 1.  Jenkins ダッシュボードで、**[Manage Jenkins]** をクリックします。
 2.  **[Manage Jenkins]** ページで **[Manage Plugins]** をクリックします。
@@ -73,7 +73,7 @@ Jenkins で BLOB サービスを使用するには、Azure ストレージ プ�
 5.  [**Install without restart**] と [**Download now and install after restart**] のいずれかをクリックします。
 6.  Jenkins を再起動します。
 
-## <a name="howtoconfigure"></a><span class="short header">構成方法</span>Azure ストレージ プラグインを構成してストレージ アカウントを使用する方法
+<h2> <a name="howtoconfigure"></a><span class="short header">構成方法</span>Azure ストレージ プラグインを構成してストレージ アカウントを使用する方法</h2>
 
 1.  Jenkins ダッシュボードで、**[Manage Jenkins]** をクリックします。
 2.  **[Manage Jenkins]** ページで **[Configure System]** をクリックします。
@@ -86,7 +86,7 @@ Jenkins で BLOB サービスを使用するには、Azure ストレージ プ�
     5.  [省略可能] Jenkins CI で利用できるストレージ アカウントを追加する場合には、**[Add more Storage Accounts]** をクリックします。
     6.  **[Save]** をクリックして設定を保存します。
 
-## <a name="howtocreatepostbuild"></a><span class="short header">ビルド後のアクションの作成方法</span>ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションの作成方法
+<h2> <a name="howtocreatepostbuild"></a><span class="short header">ビルド後のアクションの作成方法</span>ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションの作成方法</h2>
 
 説明のため、ストレージ アカウントにファイルをアップロードするためのビルド後のアクションを追加する前に、複数のファイルを作成するジョブを作成する必要があります。
 
@@ -125,7 +125,7 @@ Jenkins で BLOB サービスを使用するには、Azure ストレージ プ�
 
 アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクションは、ジョブごとに 1 つのみ作成できます。**[List of Artifacts to upload]** でセミコロンを区切り記号として使用することで、アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクション 1 つに、(ワイルドカードを含む) 複数のファイルとファイル パスを指定できます。たとえば、Jenkins ビルドによってワークスペースの **build** フォルダーに JAR ファイルと TXT ファイルが生成され、これら両方のファイルを Azure BLOB ストレージにアップロードする場合、**[List of Artifacts to upload]** の値には「**build/\*.jar;build/\*.txt**」を使用します。また、2 重コロンの構文を使用すると、BLOB 名で使用するパスを指定できます。たとえば、JAR ファイルのアップロードに BLOB パス内の **binaries** を使用し、TXT ファイルのアップロードに BLOB パス内の **notices** を使用する場合、**[List of Artifacts to upload]** の値には「**build/\*.<jar::binaries;build/>\*.txt::notices**」を使用します。
 
-## <a name="howtocreatebuildstep"></a><span class="short header">ビルド手順の作成方法</span>BLOB ストレージからのダウンロードを実行するビルド手順の作成方法
+<h2> <a name="howtocreatebuildstep"></a><span class="short header">ビルド手順の作成方法</span>BLOB ストレージからのダウンロードを実行するビルド手順の作成方法</h2>
 
 次の手順では、BLOB ストレージから項目をダウンロードするビルド手順を構成する方法を示します。この手順は、Azure BLOB ストレージに保持している JAR ファイルなどの項目をビルドに含める場合などに便利です。
 
@@ -139,7 +139,7 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 
 目的の BLOB が正常にダウンロードされていることを確かめるには、ビルドを実行した後に、ビルド履歴のコンソール出力またはダウンロード先を確認します。
 
-## <a name="components"></a><span class="short header">BLOB サービス コンポーネント</span>BLOB サービスが使用するコンポーネント
+<h2> <a name="components"></a><span class="short header">BLOB サービス コンポーネント</span>BLOB サービスが使用するコンポーネント</h2>
 
 以下では、BLOB サービス コンポーネントの概要を説明します。
 
