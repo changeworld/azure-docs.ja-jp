@@ -1,34 +1,32 @@
-次の手順では、Windows ストアでアプリケーションを登録し、プッシュ通知を有効にするモバイル サービスを構成し、デバイス チャネルを通知ハブに登録するコードをアプリケーションに追加します。設定した資格情報を使用して、Visual Studio 2013 が Azure と Windows ストアに接続されます。
+﻿次の手順では、Windows ストアでアプリケーションを登録し、プッシュ通知を有効にするモバイル サービスを構成し、デバイス チャネルを通知ハブに登録するコードをアプリケーションに追加します。設定した資格情報を使用して、Visual Studio 2013 が Azure と Windows ストアに接続されます。 
 
-1.  Visual Studio 2013 で、ソリューション エクスプローラーを開き、Windows ストアのアプリケーション プロジェクトを右クリックして、**[追加]**、**[プッシュ通知]** の順にクリックします。
+1. Visual Studio 2013 で、ソリューション エクスプローラーを開き、Windows ストアのアプリケーション プロジェクトを右クリックして、**[追加]**、**[プッシュ通知]** の順にクリックします。 
 
-    ![Visual Studio 2013 でのプッシュ通知の追加][Visual Studio 2013 でのプッシュ通知の追加]
+	![Add Push Notification wizard in Visual Studio 2013](../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013.png)
 
-    これにより、プッシュ通知の追加ウィザードが開始されます。
+	これにより、プッシュ通知の追加ウィザードが開始されます。
 
-2.  **[次へ]** をクリックし、Windows ストア アカウントにサインインします。次に、**[新しいアプリケーション名の予約]** に名前を指定し、**[予約]** をクリックします。
+2. **[次へ]** をクリックし、Windows ストア アカウントにサインインします。次に、**[新しいアプリケーション名の予約]** に名前を指定し、**[予約]** をクリックします。
 
-    ![プッシュ通知の追加ウィザードでのアプリケーション名の選択][プッシュ通知の追加ウィザードでのアプリケーション名の選択]
+	![Select an app name in the Add Push Notification wizard](../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013-2.png) 
 
-    これで、新しいアプリケーションの登録が作成されます。
+	これで、新しいアプリケーションの登録が作成されます。
 
-3.  **[アプリケーション名]** の一覧で新しい登録をクリックし、**[次へ]** をクリックします。
+3. **[アプリケーション名]** の一覧で新しい登録をクリックし、**[次へ]** をクリックします。
 
-    ![mobile-add-push-notifications-vs2013-3][mobile-add-push-notifications-vs2013-3]
+	![mobile-add-push-notifications-vs2013-3](../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013-3.png)
 
-4.  **[サービスの選択]** ページでモバイル サービス名をクリックし、**[次へ]**、**[完了]** の順にクリックします。
+4. **[サービスの選択]** ページでモバイル サービス名をクリックし、**[次へ]**、**[完了]** の順にクリックします。 
 
-    モバイル サービスによって使用される通知ハブが、Windows Notification Services (WNS) の登録を使用して更新されます。これでモバイル サービスが、Azure の通知ハブを使用し、WNS と連携してアプリケーションに通知を送信できるようになりました。
+	モバイル サービスによって使用される通知ハブが、Windows Notification Services (WNS) の登録を使用して更新されます。これでモバイル サービスが、Azure の通知ハブを使用し、WNS と連携してアプリケーションに通知を送信できるようになりました。 
 
-    > [WACOM.NOTE]このチュートリアルでは、モバイル サービスのバックエンドから通知を送信する方法について説明しています。しかし同じ通知ハブの登録を使用して、任意のバックエンド サービスから通知を送信できます。詳細については、「[通知ハブの概要][通知ハブの概要]」を参照してください。
+	>[WACOM.NOTE]このチュートリアルでは、モバイル サービスのバックエンドから通知を送信する方法について説明しています。しかし同じ通知ハブの登録を使用して、任意のバックエンド サービスから通知を送信できます。詳細については、「[Notification Hubs の概要](http://msdn.microsoft.com/ja-jp/library/azure/jj927170.aspx)」を参照してください。
 
-5.  ウィザードを完了すると、Visual Studio で新しく **[プッシュ設定はほぼ完了です]** ページが開きます。このページでは、モバイル サービス プロジェクトで通知の送信を構成するための別の方法として、このチュートリアルとは異なる方法が詳しく説明されています。
+5. ウィザードを完了すると、Visual Studio で新しく **[プッシュ設定はほぼ完了です]** ページが開きます。このページでは、モバイル サービス プロジェクトで通知の送信を構成するための別の方法として、このチュートリアルとは異なる方法が詳しく説明されています。 
 
-    > [WACOM.NOTE] プッシュ通知の追加ウィザードによってユニバーサル Windows アプリケーション ソリューションに追加されたコードは、プラットフォーム固有です。このチュートリアルでは、後ほどモバイル サービスのクライアント コードを共有して、この重複を解消します。これにより、ユニバーサル アプリケーションのメンテナンスが容易になります。
+	>[WACOM.NOTE]プッシュ通知の追加ウィザードによってユニバーサル Windows アプリケーション ソリューションに追加されたコードは、プラットフォーム固有です。このチュートリアルでは、後ほどモバイル サービスのクライアント コードを共有して、この重複を解消します。これにより、ユニバーサル アプリケーションのメンテナンスが容易になります。  
 
-
-
-  [Visual Studio 2013 でのプッシュ通知の追加]: ../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013.png
-  [プッシュ通知の追加ウィザードでのアプリケーション名の選択]: ../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013-2.png
-  [mobile-add-push-notifications-vs2013-3]: ../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013-3.png
-  [通知ハブの概要]: http://msdn.microsoft.com/ja-jp/library/azure/jj927170.aspx
+<!-- URLs. -->
+[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/
+[データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-dotnet/
+[Import your publishsettings file in Visual Studio 2013 (Visual Studio 2013 での publishsettings ファイルのインポート)]: /ja-jp/documentation/articles/mobile-services-windows-how-to-import-publishsettings/

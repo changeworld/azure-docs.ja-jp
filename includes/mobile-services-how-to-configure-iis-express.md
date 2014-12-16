@@ -1,16 +1,19 @@
-1.  モバイル サービスが現在 IIS Express で実行されている場合は、そのモバイル サービスを停止してください。IIS Express トレイ アイコンを右クリックし、モバイル サービスに対応する **[stop]** をクリックします。
+﻿
+1. モバイル サービスが現在 IIS Express で実行されている場合は、そのモバイル サービスを停止してください。IIS Express トレイ アイコンを右クリックし、モバイル サービスに対応する **stop** をクリックします。
 
-    ![][0]
+    ![](./media/mobile-services-how-to-configure-iis-express/iis-express-tray-stop-site.png)
 
-2.  コマンド プロンプト ウィンドウで **ipconfig** コマンドを実行し、ワークステーションに対応する有効なローカル IP アドレスを参照します。
 
-    ![][1]
+2. コマンド プロンプト ウィンドウで **ipconfig** コマンドを実行し、ワークステーションに対応する有効なローカル IP アドレスを参照します。
 
-3.  Visual Studio で、IIS Express に対応する applicationhost.config ファイルを開きます。このファイルは、ユーザー プロファイル ディレクトリの次のサブディレクトリにあります。
+    ![](./media/mobile-services-how-to-configure-iis-express/ipconfig.png)
 
-        C:\UsersC:\Users\<your profile name>\Documents\IISExpress\config\applicationhost.configlt;your profile name>\Documents\IISExpress\config\applicationhost.config
 
-4.  サービスに対するリモート接続要求を許可するように、IIS Express を構成します。この作業を実行するには、applicationhost.config ファイルでモバイル サービスに対応する site 要素を見つけ、上でメモした IP アドレスを使用して、ポートに対応する新しい `binding` 要素を追加します。次に、applicationhost.config ファイルを保存します。
+3. Visual Studio で、IIS Express に対応する applicationhost.config ファイルを開きます。このファイルは、ユーザー プロファイル ディレクトリの次のサブディレクトリにあります。
+
+        C:\Users\<your profile name>\Documents\IISExpress\config\applicationhost.config
+
+4. サービスに対するリモート接続要求を許可するように、IIS Express を構成します。この作業を実行するには、applicationhost.config ファイルでモバイル サービスに対応する site 要素を見つけ、上でメモした IP アドレスを使用して、ポートに対応する新しい `binding` 要素を追加します。次に、applicationhost.config ファイルを保存します。 
 
     更新後の site 要素は次のようになります。
 
@@ -24,16 +27,14 @@
             </bindings>
         </site>
 
-5.  [Windows ファイアウォール] コンソールを開き、このポートへの接続を許可する新しいポート規則を作成します。Windows ファイアウォールで新しいポート規則を作成する方法の詳細については、「[ローカル コンピューターにポート規則を作成するには][ローカル コンピューターにポート規則を作成するには]」を参照してください。
+5. [Windows ファイアウォール] コンソールを開き、このポートへの接続を許可する新しいポート規則を作成します。Windows ファイアウォールで新しいポート規則を作成する方法の詳細については、「[ローカル コンピューターにポート規則を作成するには]」を参照してください。
 
-    > [WACOM.NOTE] テスト コンピューターがドメインに参加している場合は、ファイアウォールの例外がドメイン ポリシーによって制御されている可能性があります。この場合は、コンピューター上のポートに対して例外を適用するために、ドメイン管理者に問い合わせる必要があります。
+    >[WACOM.NOTE] テスト コンピューターがドメインに参加している場合は、ファイアウォールの例外がドメイン ポリシーによって制御されている可能性があります。この場合は、コンピューター上のポートに対して例外を適用するために、ドメイン管理者に問い合わせる必要があります。
 
-    ここまでで、モバイル サービスをホストする IIS Express と組み合わせてテストを実行するための構成が完了しました。
+ここまでで、モバイル サービスをホストする IIS Express と組み合わせてテストを実行するための構成が完了しました。 
 
-    > [WACOM.NOTE] ローカルでサービスのテストが完了した後、作成した Windows ファイアウォールの規則を削除する必要があります。
+    >[WACOM.NOTE] ローカルでサービスのテストが完了した後、作成した Windows ファイアウォールの規則を削除する必要があります。 
 
 
-
-  [0]: ./media/mobile-services-how-to-configure-iis-express/iis-express-tray-stop-site.png
-  [1]: ./media/mobile-services-how-to-configure-iis-express/ipconfig.png
-  [ローカル コンピューターにポート規則を作成するには]: http://go.microsoft.com/fwlink/?LinkId=392240
+<!-- URLs. -->
+[ローカル コンピューターにポート規則を作成するには]:  http://go.microsoft.com/fwlink/?LinkId=392240

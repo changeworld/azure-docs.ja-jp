@@ -1,73 +1,80 @@
-<properties title="How to create a custom template image for RemoteApp" pageTitle="How to create a custom template nimage for RemoteApp" description="Learn how to create a custom template image for RemoteApp. You can use this template with either a hybrid or cloud deployment." metaKeywords="" services="" solutions="" documentationCenter="" authors="elizapo" manager="kathyw" />
+﻿<properties title="How to create a custom template image for RemoteApp" pageTitle="RemoteApp のカスタム テンプレート イメージの作成方法" description="Learn how to create a custom template image for RemoteApp. You can use this template with either a hybrid or cloud deployment." metaKeywords="" services="" solutions="" documentationCenter="" authors="elizapo" manager="kathyw" />
 
-<tags ms.service="remoteapp" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/12/2014" ms.author="elizapo" ms.manager="kathyw" />
+<tags ms.service="remoteapp" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/22/2014" ms.author="elizapo" ms.manager="kathyw" />
 
-# RemoteApp のカスタム テンプレート イメージの作成方法
-
+#RemoteApp のカスタム テンプレート イメージの作成方法
 Azure RemoteApp では、ユーザーと共有するすべてのプログラムをホスティングするために Windows Server 2012 R2 のテンプレート イメージを使用します。カスタム RemoteApp テンプレート イメージを作成するには、既存のイメージを使うことも新しく作成することもできます。Azure RemoteApp で使用するためにアップロードできるイメージの要件は次のとおりです。
 
--   イメージのサイズは MB の倍数にする必要があります。正確な倍数ではないイメージをアップロードしようとすると、アップロードは失敗します。
--   イメージのサイズは 127 GB 未満でなければなりません。
--   VHD ファイルになければなりません (VHDX ファイルは現在サポートされていません)。
--   VHD は固定サイズにすることも、動的に拡大する容量可変にすることも可能です。固定サイズの VHD より Azure へのアップロードの所要時間が短いことから、容量可変の VHD が推奨されます。
--   ディスクはマスター ブート レコード (MBR) パーティション分割のスタイルを使用して初期化しなければなりません。GUID パーティション テーブル (GPT) パーティション分割のスタイルはサポートされていません。
--   VHD には Windows Server 2012 R2 の単一インストールが含まれていなければなりません。複数のボリュームを含むことはできますが、Windows がインストールされるのは 1 ボリュームのみです。
--   リモート デスクトップ セッション ホスト (RDSH) ロールとデスクトップ エクスペリエンスの機能がインストール済みでなければなりません。
--   暗号化ファイル システム (EFS) は無効にする必要があります。
--   イメージはパラメーター **/oobe /generalize /shutdown** を使用して SYSPREP を実施済みでなければなりません (**/mode:vm** パラメーターは使用しないでください)。
+
+- イメージのサイズは MB の倍数にする必要があります。正確な倍数ではないイメージをアップロードしようとすると、アップロードは失敗します。
+- イメージのサイズは 127 GB 未満にする必要があります。 
+- VHD ファイルになければなりません (VHDX ファイルは現在サポートされていません)。
+- VHD を第 2 世代仮想マシンにしないでください。
+- VHD は固定サイズにすることも、動的に拡大する容量可変にすることも可能です。固定サイズの VHD ファイルより Azure へのアップロードの所要時間が短いことから、容量可変の VHD が推奨されます。
+- ディスクはマスター ブート レコード (MBR) パーティション分割のスタイルを使用して初期化する必要があります。GUID パーティション テーブル (GPT) パーティション分割のスタイルはサポートされていません。 
+- VHD には Windows Server 2012 R2 の単一インストールが含まれている必要があります。複数のボリュームを含むことはできますが、Windows がインストールされるのは 1 ボリュームのみです。 
+- リモート デスクトップ セッション ホスト (RDSH) ロールとデスクトップ エクスペリエンスの機能がインストール済みでなければなりません。
+- リモート デスクトップ接続ブローカーの役割をインストールしないでください。
+- 暗号化ファイル システム (EFS) は無効にする必要があります。
+- イメージはパラメーター **/oobe /generalize /shutdown** を使用して SYSPREP を実施しておく必要があります (**/mode:vm** パラメーターは使用しないでください)。
+
 
 **開始する前に**
 
 サービスを作成する前に、以下の操作が必要です。
 
--   RemoteApp のプレビューにサインアップします。これは、[http://azure.microsoft.com/ja-jp/services/remoteapp/](http://azure.microsoft.com/ja-jp/services/remoteapp/)</a> で行うことができます。
--   RemoteApp サービス アカウントとして使用するためのユーザー アカウントを Active Directory に作成します。ドメインへのマシンの参加のみが実行可能になるように、このアカウントのアクセス許可を制限します。
--   オンプレミスのネットワークに関する情報を収集します。IP アドレスの情報と VPN デバイスの詳細情報が含まれます。
--   [Azure PowerShell][Azure PowerShell] モジュールをインストールします。
--   アクセス権を付与するユーザーとグループに関する情報を集めます。この情報とは、ユーザーまたはグループの Microsoft アカウントの情報または Active Directory の組織アカウントの情報です。
+- RemoteApp のプレビューにサインアップします。これは、[http://azure.microsoft.com/ja-jp/services/remoteapp/](http://azure.microsoft.com/ja-jp/services/remoteapp/) で行うことができます。
+- RemoteApp サービス アカウントとして使用するためのユーザー アカウントを Active Directory に作成します。ドメインへのマシンの参加のみが実行可能になるように、このアカウントのアクセス許可を制限します。
+- オンプレミスのネットワークに関する情報を収集します。IP アドレスの情報と VPN デバイスの詳細情報が含まれます。
+- [Azure PowerShell](http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/) モジュールをインストールします。
+- アクセス権を付与するユーザーとグループに関する情報を集めます。この情報とは、ユーザーまたはグループの Microsoft アカウントの情報または Active Directory の組織アカウントの情報です。
 
-## **テンプレート イメージの作成**
+
+
+## **テンプレート イメージを作成する**##
 
 新しいテンプレート イメージを一から作成するには、次の手順に従います。
 
-1.  Windows Server 2012 R2 DVD または ISO イメージを見つけます。
-2.  VHD ファイルを作成します。
-3.  Windows Server 2012 R2 をインストールします。
-4.  リモート デスクトップ セッション ホスト (RDSH) ロールとデスクトップ エクスペリエンスの機能をインストールします。
-5.  使用するアプリケーションで必要な追加の機能をインストールします。
-6.  アプリケーションをインストールし、構成します。
-7.  使用するアプリケーションで必要な追加の Windows 構成を実行します。
-8.  暗号化ファイル システム (EFS) を無効にします。
-9.  イメージを SYSPREP します。
+1.	Windows Server 2012 R2 DVD または ISO イメージを見つけます。
+2.	VHD ファイルを作成します。
+4.	Windows Server 2012 R2 をインストールします。
+5.	リモート デスクトップ セッション ホスト (RDSH) ロールとデスクトップ エクスペリエンスの機能をインストールします。
+6.	使用するアプリケーションで必要な追加の機能をインストールします。
+7.	アプリケーションをインストールし、構成します。
+8.	使用するアプリケーションで必要な追加の Windows 構成を実行します。
+9.	暗号化ファイル システム (EFS) を無効にします。
+9.	イメージを SYSPREP します。
 
 新しいイメージを作成するための詳しい手順は次のとおりです。
 
-1.  Windows Server 2012 R2 DVD または ISO イメージを見つけます。
-2.  ディスクの管理を使用して VHD ファイルを作成します。
+1.	Windows Server 2012 R2 DVD または ISO イメージを見つけます。 
+2.	ディスクの管理を使用して VHD ファイルを作成します。 
+	1.	ディスクの管理 (diskmgmt.msc) を起動します。 
+	2.	40 GB 以上のサイズに動的に拡大する VHD を作成します(Windows、使用するアプリケーション、カスタマイズで必要とされる容量を見積もってください。RDSH ロールとデスクトップ エクスペリエンスの機能がインストールされた Windows Server では約 10 GB の容量が必要になります)。
+		1.	**[アクション]、[VHD の作成]** の順にクリックします。
+		2.	場所、サイズ、VHD 形式を指定します。**[容量可変]** を選択後、**[OK]** をクリックします。
 
-    1.  ディスクの管理 (diskmgmt.msc) を起動します。
-    2.  40 GB 以上のサイズに動的に拡大する VHD を作成します (Windows、使用するアプリケーション、カスタマイズで必要とされる容量を見積もってください。RDSH ロールとデスクトップ エクスペリエンスの機能がインストールされた Windows Server では約 10 GB の容量が必要になります)。
+			実行には数秒かかります。VHD の作成完了時、ディスクの管理用コンソールにドライブ文字のない新しいディスクと、[初期化されていません] の状態が表示されます。
 
-        1.  **[アクション] \> [VHD の作成]** をクリックします。
-        2.  場所、サイズ、VHD 形式を指定します。**[容量可変]** を選択後、**[OK]** をクリックします。
+		- (未割り当て領域ではなく) ディスクを右クリックし、次に **[ディスクの初期化]** をクリックします。パーティション分割のスタイルとして **[MBR]** (マスター ブート レコード) を選択し、次に **[OK]** をクリックします。
+		- 次の手順で、新しいボリュームを作成します。未割り当て領域を右クリックし、次に **[新しいシンプル ボリューム]** をクリックします。ウィザードの既定をそのまま使用できますが、テンプレート イメージのアップロード時に問題が発生する可能性を避けるためにドライブ文字を必ず割り当てるようにしてください。
+		- ディスクを右クリックして、**[VHD の切断]** をクリックします。
 
-            実行には数秒かかります。VHD の作成完了時、ディスクの管理用コンソールにドライブ文字のない新しいディスクと、[初期化されていません] の状態が表示されます。
+			
 
-        -   (未割り当て領域ではなく) ディスクを右クリックし、次に **[ディスクの初期化]** をクリックします。パーティション分割のスタイルとして **[MBR]** (マスター ブート レコード) を選択し、次に **[OK]** をクリックします。
-        -   次の手順で、新しいボリュームを作成します。未割り当て領域を右クリックし、次に **[新しいシンプル ボリューム]** をクリックします。ウィザードの既定をそのまま使用できますが、テンプレート イメージのアップロード時に問題が発生する可能性を避けるためにドライブ文字を必ず割り当てるようにしてください。
-        -   ディスクを右クリックして、**[VHD の切断]** をクリックします。
+
 
 1. Windows Server 2012 R2 をインストールします。
 	1. 新しい仮想マシンを作成します。Hyper-V マネージャーまたはクライアント Hyper-V で仮想マシンの新規作成ウィザードを使用します。
 		1. [世代の指定] ページで、**[第 1 世代]** を選択します。
 		2. [仮想ハード ディスクの接続] ページで **[既存の仮想ハード ディスクを使用する]** を選択し、前の手順で作成した VHD を参照します。
-		3. [インストール オプション] ページで **[ブート CD/DVD\_ROM からオペレーティング システムをインストールする]** を選択し、次に Windows Server 2012 R2 のインストール メディアの格納場所を選択します。
-		4. Windows とアプリケーションのインストールに必要な他のオプションをウィザードで選択します。ウィザードを終了します。
+		2. [インストール オプション] ページで **[ブート CD/DVD_ROM からオペレーティング システムをインストールする]** を選択し、次に Windows Server 2012 R2 のインストール メディアの格納場所を選択します。
+		3. Windows とアプリケーションのインストールに必要な他のオプションをウィザードで選択します。ウィザードを終了します。
 	2.  ウィザード終了後、仮想マシンの設定を編集し、仮想プロセッサの数などの Windows やプログラムのインストールに必要な他の変更を実行してから、**[OK]** をクリックします。
 	4.  仮想マシンに接続し、Windows Server 2012 R2 をインストールします。
-1. リモート デスクトップ セッション ホスト (RDSH) ロールとデスクトップ エクスペリエンスの機能を次の手順でインストールします。
+1. リモート デスクトップ セッション ホスト (RDSH) ロールとデスクトップ エクスペリエンスの機能をインストールします。
 	1. サーバー マネージャーを起動します。
-	2. [ようこそ] 画面上または **[管理]** メニューの **[役割と機能の追加]** をクリックします。
+	2. [ようこそ] 画面または **[管理]** メニューの **[役割と機能の追加]** をクリックします。
 	3. [開始する前に] ページで **[次へ]** をクリックします。
 	4. **[役割ベースまたは機能ベースのインストール]** を選択し、**[次へ]** をクリックします。
 	5. 一覧からローカル コンピューターを選択し、**[次へ]** をクリックします。
@@ -82,30 +89,28 @@ Azure RemoteApp では、ユーザーと共有するすべてのプログラム�
 1.	.NET Framework 3.5 など、アプリケーションで必要な追加の機能をインストールします。機能をインストールするには、役割と機能の追加ウィザードを実行してください。
 7.	RemoteApp を使用して発行するプログラムとアプリケーションをインストールして構成します。
 
-    **重要:**Microsoft では、RemoteApp にイメージがアップロードされる前に、アプリケーションの互換性の問題が検出されるように、アプリケーションのインストール前に RDSH ロールをインストールすることをお勧めします。
+ 	**重要:** Microsoft では、RemoteApp にイメージがアップロードされる前に、アプリケーションの互換性の問題が検出されるように、アプリケーションのインストール前に RDSH ロールをインストールすることをお勧めします。
 
-8.	 使用するアプリケーションで必要な追加の Windows 構成を実行します。
+8.	使用するアプリケーションで必要な追加の Windows 構成を実行します。
 9.	暗号化ファイル システム (EFS) を無効にします。管理者特権のコマンド ウィンドウで、次のコマンドを実行してください。
 
-        Fsutil behavior set disableencryption 1
+		Fsutil behavior set disableencryption 1
 
-    別の方法としては、次の DWORD 値をレジストリに設定または追加できます。
+別の方法としては、次の DWORD 値をレジストリに設定または追加できます。 
 
-        HKLM\System\CurrentControlSet\Control\FileSystem\NtfsDisableEncryption = 1
-9.	Azure 仮想マシン内にイメージを作成している場合は、後で使用するアップロード スクリプトの動作をブロックする **\\%windir%\\Panther\\Unattend.xml** ファイルの名前を変更します。このファイルの名前を Unattend.old に変更して、デプロイを元に戻す必要が生じた場合に備えてファイルを温存しておいてください。
-10.	イメージを SYSPREP します。管理者特権のコマンド プロンプトで、次のコマンドを実行します。
+		HKLM\System\CurrentControlSet\Control\FileSystem\NtfsDisableEncryption = 1
+9.	Azure 仮想マシン内にイメージを作成している場合は、後で使用するアップロード スクリプトの動作をブロックする **\%windir%\Panther\Unattend.xml** ファイルの名前を変更します。このファイルの名前を Unattend.old に変更して、デプロイを元に戻す必要が生じた場合に備えてファイルを温存しておいてください。
+10.	イメージを SYSPREP します。管理者特権のコマンド プロンプトで、次のコマンドを実行します。 
 
-    **C:\\Windows\\System32\\sysprep\\sysprep.exe /generalize /oobe /shutdown**
+	**C:\Windows\System32\sysprep\sysprep.exe /generalize /oobe /shutdown**
+	
+	**注: **仮想マシンであっても SYSPREP コマンドに **/mode:vm** スイッチは使用しないでください。 
 
-    **注:** 仮想マシンであっても SYSPREP コマンドに **/mode:vm** スイッチは使用しないでください。
 
-## 次のステップ
-
+## 次のステップ##
 これでカスタム テンプレート イメージを作成し終えたので、次にこのイメージを RemoteApp デプロイにアップロードする必要があります。以下の記事の情報を利用して、デプロイを作成してください。
 
--   [RemoteApp のハイブリッド デプロイメントの作成方法][RemoteApp のハイブリッド デプロイメントの作成方法]
--   [RemoteApp のクラウドのデプロイメントの作成方法][RemoteApp のクラウドのデプロイメントの作成方法]
 
-  [Azure PowerShell]: http://azure.microsoft.com/ja-jp/documentation/articles/install-configure-powershell/
-  [RemoteApp のハイブリッド デプロイメントの作成方法]: http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-hybrid-deployment/
-  [RemoteApp のクラウドのデプロイメントの作成方法]: http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-cloud-deployment/
+- [RemoteApp のハイブリッド デプロイメントの作成方法](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-hybrid-deployment/)
+- [RemoteApp のクラウドのデプロイメントの作成方法](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-cloud-deployment/)
+

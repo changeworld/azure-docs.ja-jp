@@ -1,35 +1,30 @@
-アプリケーションを APNS に登録し、プロジェクトを構成した後で、モバイル サービスを APNS と統合するように構成する必要があります。
+﻿アプリケーションを APNS に登録し、プロジェクトを構成した後で、モバイル サービスを APNS と統合するように構成する必要があります。
 
-1.  Keychain Access で、新しい証明書を右クリックし、**[書き出す]** をクリックします。ファイルの名前を「QuickstartPusher」にして **[.p12]** 形式を選択し、**[保存]** をクリックします。
+1. Keychain Access の **[鍵]** または **[自分の証明書]** でクイック スタート アプリケーションを右クリックし、**[エクスポート]** をクリックします。ファイルの名前を QuickstartPusher にし、**.p12** 形式を選択して、**[保存]** をクリックします。
 
-    ![][0]
+   	![](./media/mobile-services-apns-configure-push/mobile-services-ios-push-step18.png)
 
-エクスポートした証明書のファイル名と場所を書き留めます。
+  エクスポートした証明書のファイル名と場所を書き留めます。
 
-> [WACOM.NOTE] このチュートリアルでは QuickstartPusher.p12 ファイルを作成します。ファイル名と場所は同じである必要はありません。
+>[WACOM.NOTE]このチュートリアルでは QuickstartPusher.p12 ファイルを作成します。ファイル名と場所は同じである必要はありません。
 
-1.  [Azure の管理ポータル][Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
+2. [Azure の管理ポータル]にログオンし、**[Mobile Services]** をクリックして、アプリケーションをクリックします。
 
-    ![][1]
+   	![](./media/mobile-services-apns-configure-push/mobile-services-selection.png)
 
-2.  **[プッシュ]** タブをクリックし、**[アップロード]** をクリックします。
+3. **[プッシュ]** タブをクリックし、**[アップロード]** をクリックします。
 
-    ![][2]
+   	![](./media/mobile-services-apns-configure-push/mobile-push-tab-ios.png)
 
-    [証明書のアップロード] ダイアログ ボックスが表示されます。
+	[証明書のアップロード] ダイアログ ボックスが表示されます。
 
-3.  **[ファイル]** をクリックし、エクスポートした証明書ファイル [QuickstartPusher.p12] を選択します。**[パスワード]** を入力し、正しい **[モード]** が選択されていることを確認して **[保存]** をクリックします。
+4. **[ファイル]** をクリックし、エクスポートした証明書ファイル QuickstartPusher.p12 を選択します。**[パスワード]** にパスワードを入力し、正しい **[モード]** (Dev/Sandbox または Prod/Production) が選択されていることを確認して **[保存]** をクリックします。
 
-    ![][3]
+   	![](./media/mobile-services-apns-configure-push/mobile-push-tab-ios-upload.png)
 
     > [WACOM.NOTE] このチュートリアルでは開発証明書を使用します。
 
 APNS と連携するようにモバイル サービスが構成されました。
 
-
-
-  [0]: ./media/mobile-services-apns-configure-push/mobile-services-ios-push-step18.png
-  [Azure の管理ポータル]: https://manage.windowsazure.com/
-  [1]: ./media/mobile-services-apns-configure-push/mobile-services-selection.png
-  [2]: ./media/mobile-services-apns-configure-push/mobile-push-tab-ios.png
-  [3]: ./media/mobile-services-apns-configure-push/mobile-push-tab-ios-upload.png
+<!-- URLs. -->
+[Azure 管理ポータル]: https://manage.windowsazure.com/

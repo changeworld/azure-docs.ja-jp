@@ -89,10 +89,8 @@ Azure サービスを管理するには、Azure SDK for Ruby が含まれる Azu
         7 gems installed
 
     <div class="dev-callout">
-
-    **注**
-    アクセス許可関連のエラーが発生した場合は、代わりに `sudo gem install azure` を使用します。
-
+    <strong>注</strong>
+    <p>アクセス許可関連のエラーが発生した場合は、代わりに <code>sudo gem install azure</code> を使用します。</p>
     </div>
 
 ### gem を要求する

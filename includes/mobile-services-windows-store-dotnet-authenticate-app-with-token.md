@@ -1,20 +1,21 @@
-前の例では、標準のサインインを示しました。標準のサインインでは、アプリケーションが開始するたびに、クライアントは ID プロバイダーとモバイル サービスの両方にアクセスする必要があります。この方法は非効率であるだけでなく、多くの顧客が同時にアプリケーションを開始すると、使用率に関連した問題が発生する場合があります。よって、Mobile Services から返される承認トークンをキャッシュし、最初にその承認トークンの使用を試してから、プロバイダー ベースのサインインを使用するほうが効果的です。
+﻿
+前の例では、標準のサインインを示しました。標準のサインインでは、アプリケーションが開始するたびに、クライアントは ID プロバイダーとモバイル サービスの両方にアクセスする必要があります。この方法は非効率であるだけでなく、多くの顧客が同時にアプリケーションを開始すると、使用率に関連した問題が発生する場合があります。そのため、Mobile Services から返される承認トークンをキャッシュし、最初にその承認トークンの使用を試してから、プロバイダー ベースのサインインを使用する方が効果的です。
 
-> [WACOM.NOTE] クライアントによって管理される認証、またはサービスによって管理される認証のどちらを使用する場合でも、Mobile Services が発行したトークンをキャッシュすることができます。このチュートリアルでは、サービスによって管理される認証を使用します。
+>[WACOM.NOTE]クライアントによって管理される認証とサービスによって管理される認証のどちらを使用する場合でも、Mobile Services が発行したトークンをキャッシュすることができます。このチュートリアルでは、サービスによって管理される認証を使用します。
 
-1.  MainPage.xaml.cs プロジェクト ファイルを開き、次の **using** ステートメントを追加します。
+1. MainPage.xaml.cs プロジェクト ファイルで、次の **using** ステートメントを追加します。
 
-        using System.Linq;      
-        using Windows.Security.Credentials;
+		using System.Linq;		
+		using Windows.Security.Credentials;
 
-2.  **AuthenticateAsync** メソッドを次のコードに置き換えます。
+2. **AuthenticateAsync** メソッドを次のコードに置き換えます。
 
         private async System.Threading.Tasks.Task AuthenticateAsync()
         {
             string message;
             // This sample uses the Facebook provider.
             var provider = "Facebook";
-
+              
             // Use the PasswordVault to securely store and access credentials.
             PasswordVault vault = new PasswordVault();
             PasswordCredential credential = null;
@@ -37,7 +38,7 @@
                     user = new MobileServiceUser(credential.UserName);
                     credential.RetrievePassword();
                     user.MobileServiceAuthenticationToken = credential.Password;
-
+                    
                     // Set the user from the stored credentials.
                     App.MobileService.CurrentUser = user;
 
@@ -82,12 +83,10 @@
             }
         }
 
-    この **AuthenticateAsync** バージョンで、アプリはモバイル サービスにアクセスするために、**PasswordVault** に格納された資格情報の使用を試みます。保存されたトークンの有効期限が切れていないことを確認するための単純なクエリが送信されます。401 が返されると、通常のプロバイダー ベースのサインインが試行されます。保存された資格情報がないときも通常のサインインが実行されます。
+	この **AuthenticateAsync** バージョンで、アプリはモバイル サービスにアクセスするために、**PasswordVault** に格納された資格情報の使用を試みます。保存されたトークンの有効期限が切れていないことを確認するための単純なクエリが送信されます。401 が返されると、通常のプロバイダー ベースのサインインが試行されます。保存された資格情報がないときも通常のサインインが実行されます。
 
-    > [WACOM.NOTE]このアプリケーションは、ログイン中に期限切れのトークンをテストしますが、認証後にアプリケーションを使用している際にトークンの期限切れが発生する場合があります。トークンの期限切れに関連する認証エラーを処理するためのソリューションについては、投稿「[Azure Mobile Services マネージ SDK での有効期限切れトークンのキャッシュと処理][Azure Mobile Services マネージ SDK での有効期限切れトークンのキャッシュと処理]」を参照してください。
+	>[WACOM.NOTE]このアプリケーションは、ログイン中に期限切れのトークンをテストしますが、認証後にアプリケーションを使用している際にトークンの期限切れが発生する場合があります。トークンの期限切れに関連する認証エラーを処理するためのソリューションについては、投稿「[Azure Mobile Services マネージ SDK での有効期限切れトークンのキャッシュと処理](http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx)」を参照してください。 
 
-3.  アプリケーションを 2 回再起動します。
+3. アプリケーションを 2 回再起動します。
 
-    最初の再起動では、プロバイダーによるサインインが再度必要になります。ただし、2 回目の再起動ではキャッシュされた資格情報が使用され、サインインは回避されます。
-
-  [Azure Mobile Services マネージ SDK での有効期限切れトークンのキャッシュと処理]: http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx
+	最初の再起動では、プロバイダーによるサインインが再度必要になります。ただし、2 回目の再起動ではキャッシュされた資格情報が使用され、サインインは回避されます。 

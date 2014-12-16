@@ -104,11 +104,11 @@
         [2013-03-12 19:11:31] INFO  ruby 1.9.3 (2012-04-20) [x86_64-linux]
         [2013-03-12 19:11:31] INFO  WEBrick::HTTPServer#start: pid=9789 port=3000
 
-2.  ブラウザーを開き、<http://localhost:3000/> に移動します。次のようなページが表示されます。
+2.  ブラウザーを開き、http://localhost:3000/ に移動します。次のようなページが表示されます。
 
     ![既定の rails ページ][既定の rails ページ]
 
-    これは静的な開始ページです。スキャフォールディング コマンドによって生成されたフォームを表示するには、<http://localhost:3000/posts> に移動します。次のようなページが表示されます。
+    これは静的な開始ページです。スキャフォールディング コマンドによって生成されたフォームを表示するには、http://localhost:3000/posts に移動します。次のようなページが表示されます。
 
     ![a page listing posts][a page listing posts]
 
@@ -145,7 +145,7 @@ Azure の仮想マシンを作成したら、次の手順を実行して、仮�
     <div class="dev-callout">
 
     <b>注</b>
-    <p>開発環境として Windows を使用している場合、SSH 機能には **PuTTY** などのユーティリティを使用できます。PuTTY は、[PuTTY のダウンロード ページ][PuTTY のダウンロード ページ]から入手できます。</p>
+    <p>開発環境として Windows を使用している場合、SSH 機能には <b>PuTTY</b> などのユーティリティを使用できます。PuTTY は、[PuTTY のダウンロード ページ][PuTTY のダウンロード ページ]から入手できます。</p>
 
     </div>
 
@@ -180,7 +180,7 @@ Azure の仮想マシンを作成したら、次の手順を実行して、仮�
 <div class="dev-callout">
 
 <b>注</b>
-<p>開発環境として Windows を使用している場合、scp 機能には **pscp** などのユーティリティを使用できます。pscp は、[PuTTY のダウンロード ページ][PuTTY のダウンロード ページ]から入手できます。</p>
+<p>開発環境として Windows を使用している場合、scp 機能には <b>pscp</b> などのユーティリティを使用できます。pscp は、<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY のダウンロード ページ</a>から入手できます。</p>
 
 </div>
 

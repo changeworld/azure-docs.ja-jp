@@ -68,7 +68,7 @@
         using Microsoft.WindowsAzure;
         using Microsoft.WindowsAzure.MediaServices.Client;
 
-7.  次のクラスレベル パス変数を追加します。\*\*\_supportFiles\*\* パスは、先ほどの手順で作成したフォルダーを指す必要があります。
+7.  次のクラスレベル パス変数を追加します。**_supportFiles** パスは、先ほどの手順で作成したフォルダーを指す必要があります。
 
         // Base support files path.  Update this field to point to the base path  
         // for the local support files folder that you create. 
@@ -114,10 +114,8 @@ Program.cs ファイルで、**Main** メソッド内の最初のアイテムと
     -   **AssetCreationOptions.StorageEncrypted**: ストレージ暗号化。Azure ストレージへのアップロードの前にクリア入力ファイルを暗号化します。
 
         <div class="dev-callout">
-
-        **注**
-        メディア サービスでは、Digital Rights Manager (DRM) のようにネットワーク経由ではなく、オンディスクのストレージ暗号化を提供します。
-
+        <strong>注</strong>
+        <p>メディア サービスでは、Digital Rights Manager (DRM) のようにネットワーク経由ではなく、オンディスクのストレージ暗号化を提供します。</p>
         </div>
 
 2.  アセットに関連付ける AssetFile インスタンスを作成します。
@@ -164,7 +162,7 @@ Program.cs ファイルで、**Main** メソッド内の最初のアイテムと
         return asset;
     }
 
-メソッドの呼び出しを Main メソッド内の \*\*\_context = new CloudMediaContext(\_accountName, \_accountKey);\*\* 行の後に追加します。
+メソッドの呼び出しを Main メソッド内の **\_context = new CloudMediaContext(_accountName, _accountKey);** 行の後に追加します。
 
     IAsset asset = CreateAssetAndUploadSingleFile(AssetCreationOptions.None, _singleInputFilePath)
 

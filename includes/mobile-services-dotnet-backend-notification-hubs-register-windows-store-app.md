@@ -1,67 +1,59 @@
-1.  アプリケーションをまだ登録していない場合は、Windows ストア アプリのデベロッパー センターで[アプリの提出のページ][アプリの提出のページ]に移動し、Microsoft アカウントでログインして、**[アプリの名前]** をクリックします。
+﻿
 
-    ![][0]
+1. アプリケーションをまだ登録していない場合は、Windows ストア アプリのデベロッパー センターで[アプリ送信のページ]に移動し、Microsoft アカウントでログインして、**[アプリ名]** をクリックします。
 
-2.  **[アプリ名]** にアプリケーションの名前を入力し、**[アプリの名前の予約]** をクリックして、**[保存]** をクリックします。
+   	![](./media/mobile-services-dotnet-backend-notification-hubs-register-windows-store-app/mobile-services-submit-win8-app.png)
 
-    ![][1]
+2. **[アプリ名]** にアプリケーションの名前を入力し、**[アプリ名の予約]** をクリックして、**[保存]** をクリックします。
 
-    これでアプリケーションの新しい Windows ストア登録が作成されます。
+   	![](./media/mobile-services-dotnet-backend-notification-hubs-register-windows-store-app/mobile-services-win8-app-name.png)
 
-3.  Visual Studio で、チュートリアル「**モバイル サービスの使用**」を実行したときに作成した Windows ストア アプリ プロジェクトを開きます。
+   	これでアプリケーションの新しい Windows ストア登録が作成されます。
 
-4.  ソリューション エクスプローラーでプロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。
+3. Visual Studio で、**Mobile Services の使用**に関するチュートリアルを実行したときに作成した Windows ストア アプリ プロジェクトを開きます。
 
-    ![][2]
+4. ソリューション エクスプローラーでプロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。 
 
-    **アプリケーションを Windows ストアと関連付ける**ウィザードが表示されます。
+  	![](./media/mobile-services-dotnet-backend-notification-hubs-register-windows-store-app/mobile-services-store-association.png)
 
-5.  ウィザードで **[サインイン]** をクリックし、Microsoft アカウントでログインします。
+**アプリケーションを Windows ストアと関連付ける**ウィザードが表示されます。
 
-6.  ステップ 2. で登録したアプリケーションを選択し、**[次へ]**、**[関連付け]** の順にクリックします。
+5. ウィザードで **[サインイン]** をクリックし、Microsoft アカウントでログインします。
 
-    ![][3]
+6. 手順 2. で登録したアプリケーションを選択し、**[次へ]**、**[関連付け]** の順にクリックします。
 
-    この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。
+   	![](./media/mobile-services-dotnet-backend-notification-hubs-register-windows-store-app/mobile-services-select-app-name.png)
 
-7.  (省略可能) 手順 4 ～ 6 を繰り返して、ユニバーサル Windows アプリの Windows Phone ストア プロジェクトも登録します。
+この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。    
 
-8.  新しいアプリケーションの Windows デベロッパー センター ページに戻り、**[サービス]** をクリックします。
+7. (省略可能) 手順 4 ～ 6 を繰り返して、ユニバーサル Windows アプリの Windows Phone ストア プロジェクトも登録します。
 
-    ![][4]
+8. 新しいアプリケーションに対応する Windows デベロッパー センター ページに戻り、**[サービス]** をクリックします。 
 
-9.  [サービス] ページで **[Azure Mobile Services]** の **[Live サービス サイト]** をクリックします。
+   	![](./media/mobile-services-dotnet-backend-notification-hubs-register-windows-store-app/mobile-services-win8-edit-app.png) 
 
-    ![][5]
+9. [サービス] ページで **[Azure Mobile Services]** の **[Live サービス サイト]** をクリックします。
 
-10. **[サービスの認証]** をクリックし、**[クライアント シークレット]** と **[パッケージ セキュリティ ID (SID)]** の値をメモしておきます。
+	![](./media/mobile-services-javascript-backend-register-windows-store-app/mobile-services-win8-edit2-app.png)
 
-    ![][6]
+10. **[サービスの認証]** をクリックし、**[クライアント シークレット]** と **[パッケージ セキュリティ ID (SID)]** の値をメモしておきます。 
+
+   	![](./media/mobile-services-dotnet-backend-notification-hubs-register-windows-store-app/mobile-services-win8-app-push-auth.png)
 
     <div class="dev-callout"><b>セキュリティに関する注意</b>
-<p>クライアント シークレットとパッケージ SID は、重要なセキュリティ資格情報です。これらの機密情報は、他のユーザーと共有したり、アプリケーションで配信したりしないでください。</p>
-</div>
+	<p>クライアント シークレットとパッケージ SID は、重要なセキュリティ資格情報です。これらの機密情報を、他のユーザーと共有することや、アプリケーションで配信することを避けてください。</p>
+    </div> 
 
-11. [Azure の管理ポータル][Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
+11. [Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
-    ![][7]
+   	![](./media/mobile-services-dotnet-backend-notification-hubs-register-windows-store-app/mobile-services-selection.png)
 
-12. **[プッシュ]** タブをクリックし、ステップ 4. で WNS から取得した **[クライアント シークレット]** と **[パッケージ SID]** の値を入力して、**[保存]** をクリックします。
+12. **[プッシュ]** タブをクリックし、手順 4. で WNS から取得した **[クライアント シークレット]** と **[パッケージ SID]** の値を入力して、**[保存]** をクリックします。	
 
-    ![][8]
+   	![](./media/mobile-services-dotnet-backend-notification-hubs-register-windows-store-app/mobile-push-tab.png)
 
-    > [WACOM.NOTE]ポータルの **[プッシュ]** タブで拡張プッシュ通知に対応する WNS の資格情報を設定した場合は、アプリに対して通知ハブを構成する目的で、それらの資格情報が Notification Hubs と共有されます。
+	>[WACOM.NOTE]ポータルの **[プッシュ]** タブで拡張プッシュ通知に対応する WNS の資格情報を設定した場合は、アプリに対して通知ハブを構成する目的で、それらの資格情報が Notification Hubs と共有されます。
 
-
-
-  [アプリの提出のページ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-  [0]: ./media/mobile-services-dotnet-backend-notification-hubs-register-windows-store-app/mobile-services-submit-win8-app.png
-  [1]: ./media/mobile-services-dotnet-backend-notification-hubs-register-windows-store-app/mobile-services-win8-app-name.png
-  [2]: ./media/mobile-services-dotnet-backend-notification-hubs-register-windows-store-app/mobile-services-store-association.png
-  [3]: ./media/mobile-services-dotnet-backend-notification-hubs-register-windows-store-app/mobile-services-select-app-name.png
-  [4]: ./media/mobile-services-dotnet-backend-notification-hubs-register-windows-store-app/mobile-services-win8-edit-app.png
-  [5]: ./media/mobile-services-javascript-backend-register-windows-store-app/mobile-services-win8-edit2-app.png
-  [6]: ./media/mobile-services-dotnet-backend-notification-hubs-register-windows-store-app/mobile-services-win8-app-push-auth.png
-  [Azure の管理ポータル]: https://manage.windowsazure.com/
-  [7]: ./media/mobile-services-dotnet-backend-notification-hubs-register-windows-store-app/mobile-services-selection.png
-  [8]: ./media/mobile-services-dotnet-backend-notification-hubs-register-windows-store-app/mobile-push-tab.png
+<!-- URLs. -->
+[アプリケーションの提出に関するページ: ]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[Azure 管理ポータル]: https://manage.windowsazure.com/

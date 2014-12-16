@@ -10,10 +10,8 @@ Web ロールで Azure Cloud Services としてホストされる Node.js アプ
 SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。
 
 <div class="dev-callout">
-
-注
-この記事で説明する手順は、Web ロールで Azure Cloud Services としてホストされる node アプリケーションにのみ適用されます。Websites については、「[Azure Websites の SSL 証明書の構成][Azure Websites の SSL 証明書の構成]」を参照してください。
-
+注</
+<p>この記事で説明する手順は、Web ロールで Azure Cloud Services としてホストされる node アプリケーションにのみ適用されます。Websites については、「<a href="../web-sites-configure-ssl-certificate/">Azure Websites の SSL 証明書の構成</a>」を参照してください。</p>
 </div>
 
 このタスクの手順は次のとおりです。
@@ -51,10 +49,8 @@ Node.js サービスを http サービスと同様に記述できます。Azure 
     ![][2]
 
     <div class="dev-callout">
-
-    **注**
-    以前に Azure サブスクリプションの発行設定をインポートしていない場合、発行しようとするとエラーが出力されます。サブスクリプションの発行設定のダウンロードとインポートについては、[Azure PowerShell for Node.js の使用方法][Azure PowerShell for Node.js の使用方法]に関するページを参照してください。
-
+    <b>注</b>
+    <p>以前に Azure サブスクリプションの発行設定をインポートしていない場合、発行しようとするとエラーが出力されます。サブスクリプションの発行設定のダウンロードとインポートについては、<a href="https://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings">Azure PowerShell for Node.js の使用方法</a>に関するページを参照してください。</p>
     </div>
 
 **Publish-AzureServiceProject** コマンドレットから返される**作成された Web サイトの URL** の値には、ホステッド アプリケーションの完全修飾ドメイン名が含まれます。この特定の完全修飾ドメイン名について SSL 証明書を取得し、Azure に展開する必要があります。
@@ -83,10 +79,8 @@ SSL 証明書を販売する会社から
 証明書を取得したら、開発用コンピューターの証明書ストアに証明書をインストールします。この証明書は、後の手順で行う構成の変更に基づくアプリケーションの展開パッケージの一部として取得され、Azure にアップロードされます。
 
 <div class="dev-callout">
-
-**注**
-このセクションの手順は、Windows 8 バージョンの証明書のインポート ウィザードに基づいています。以前のバージョンの Windows を使用している場合、ここで示されている手順はウィザードに表示される順序と一致しないことがあります。そのような場合は、証明書のインポート ウィザードを使用する前にこのセクション全体を通読して、実行する必要がある全体的なアクションを理解しておいてください。
-
+<strong>注</strong>
+<p>このセクションの手順は、Windows 8 バージョンの証明書のインポート ウィザードに基づいています。以前のバージョンの Windows を使用している場合、ここで示されている手順はウィザードに表示される順序と一致しないことがあります。そのような場合は、証明書のインポート ウィザードを使用する前にこのセクション全体を通読して、実行する必要がある全体的なアクションを理解しておいてください。</p>
 </div>
 
 SSL 証明書をインポートするには、次の手順を実行します。
@@ -99,7 +93,7 @@ SSL 証明書をインポートするには、次の手順を実行します。
 
 3.  **[秘密キーの保護]** 画面が表示されるまで、既定値を受け入れながらウィザードの手順を続行します。この画面で、証明書のパスワード (ある場合) を入力する必要があります。また、**[このキーをエクスポート可能にする]** も選択する必要があります。最後に、**[次へ]** をクリックします。
 
-    ![秘密キーの保護][秘密キーの保護]
+    ![秘密キーの保護][秘密キーの保]
 
 4.  証明書が正常にインストールされるまで、既定値を受け入れながらウィザードの手順を続行します。
 
@@ -176,13 +170,11 @@ HTTPS を使用して接続できます。
 
 2.  下へスクロールし、**[サイトの URL]** として表示されているリンクをクリックします。
 
-    ![サイトの URL][サイトの URL]
+    ![サイトの URL][イトの URL]
 
     <div class="dev-callout">
-
-    **注**
-    ポータルに表示されるサイトの URL で HTTPS が指定されていない場合は、ブラウザーで HTTP の代わりに HTTPS を使用して手動で URL を入力する必要があります。
-
+    <strong>注</strong>
+    <p>ポータルに表示されるサイトの URL で HTTPS が指定されていない場合は、ブラウザーで HTTP の代わりに HTTPS を使用して手動で URL を入力する必要があります。</p>
     </div>
 
 3.  新しいブラウザーが開いて、Web サイトが表示されます。
@@ -213,9 +205,9 @@ HTTPS を使用して接続できます。
   [2]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-03.png
   [Azure PowerShell for Node.js の使用方法]: https://www.windowsazure.com/ja-jp/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings
   [証明書ウィザード]: ./media/cloud-services-nodejs-configure-ssl-certificate/certificateimport.png
-  [秘密キーの保護]: ./media/cloud-services-nodejs-configure-ssl-certificate/exportable.png
+  [秘密キーの保]: ./media/cloud-services-nodejs-configure-ssl-certificate/exportable.png
   [サービスと証明書の関連付け]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg465718.aspx
-  [サイトの URL]: ./media/cloud-services-nodejs-configure-ssl-certificate/site-url.png
+  [イトの URL]: ./media/cloud-services-nodejs-configure-ssl-certificate/site-url.png
   [3]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-08.png
   [Azure ワーカー ロールで Node.js アプリケーションの SSL を構成する]: /ja-jp/develop/nodejs/common-tasks/enable-ssl-worker-role/
   [HTTPS エンドポイント上での SSL 証明書の構成方法]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff795779.aspx

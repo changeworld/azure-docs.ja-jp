@@ -72,10 +72,8 @@ PowerShell コマンド ライン ツールを使用してアプリケーショ�
     **Add-AzureNodeWebRole** コマンドレットにより、アプリケーション用の新しいディレクトリが作成され、基本的な Node.js アプリケーションのスキャフォールディングが生成されます。前の手順で作成した **ServiceConfiguration.Cloud.csfg**、**ServiceConfiguration.Local.csfg**、および **ServiceDefinition.csdef** ファイルも変更され、新しいロールの構成エントリが追加されます。
 
     <div class="dev-callout">
-
-    **注**
-    既定では、ロール名を指定しない場合、ロールが作成されます。名前は、**Add-AzureNodeWebRole** の最初のパラメーターとして指定できます。たとえば、`Add-AzureNodeWebRole MyRole` のように指定します。
-
+    <strong>注</strong>
+    <p>既定では、ロール名を指定しない場合、ロールが作成されます。名前は、<b>Add-AzureNodeWebRole</b> の最初のパラメーターとして指定できます。たとえば、`Add-AzureNodeWebRole MyRole` のように指定します。</p>
     </div>
 
 5.  次のコマンドを使用して、**WebRole1** ディレクトリに移動し、**server.js** ファイルをメモ帳で開きます。
@@ -201,7 +199,7 @@ Azure SDK によってインストールされる
 
   [「Azure の Web サイト、クラウド サービス、および仮想マシンの比較」]: http://azure.microsoft.com/ja-jp/documentation/articles/choose-web-site-cloud-service-vm/
   [軽量の Azure の Web サイトを使用する]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
-  [hello world ページを表示しているブラウザー ウィンドウこの URL は、ページが Azure でホストされていることを示します。]: https://wacomdpsstablestorage.blob.core.windows.net/articlesmedia/demo-ppe.windowsazure.com/ja-jp/documentation/articles/cloud-services-nodejs-develop-deploy-app/20140107035927/node21.png
+  [hello world ページを表示しているブラウザー ウィンドウこの URL は、ページが Azure でホストされていることを示します。]: https://wacomdpsstablestorage.blob.core.windows.net/articlesmedia/demo-ppe.windowsazure.com/en-us/documentation/articles/cloud-services-nodejs-develop-deploy-app/20140107035927/node21.png
   [Azure PowerShell アイコン]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-start.png
   [New-AzureService helloworld コマンドの結果]: ./media/cloud-services-nodejs-develop-deploy-app/node9.png
   [Overview of Creating a Hosted Service for Windows (Azure 対応のホステッド サービスの作成の概要)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj155995.aspx

@@ -1,4 +1,4 @@
-<properties linkid="develop-mobile-tutorials-get-started-sencha" urlDisplayName="Get Started" pageTitle="Get Started with Azure Mobile Services and Sencha" metaKeywords="" description="Follow this tutorial to get started developing with Mobile Services and the Sencha HTML5 mobile app framework. " metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="" documentationCenter="Mobile" title="Get started with Mobile Services and Sencha Touch" authors="sencha" solutions="" manager="" editor="" />
+﻿<properties urlDisplayName="Get Started" pageTitle="Azure Mobile Services および Sencha の使用" metaKeywords="" description="Follow this tutorial to get started developing with Mobile Services and the Sencha HTML5 mobile app framework. " metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="" documentationCenter="Mobile" title="Get started with Mobile Services and Sencha Touch" authors="sencha" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-sencha" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="sencha" />
 
@@ -8,182 +8,188 @@
 
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
-<p>このチュートリアルでは、Sencha Touch アプリケーションで Azure Mobile Services を活用する方法について説明します。管理ポータルで定義したモバイル サービスを活用し、Sencha Touch を使用する簡単な To Do List アプリケーションを作成します。このチュートリアルでは、JavaScript について適切な知識を持ち、Sencha Touch フレームワークに精通する熟達した Web アプリケーション開発者を対象として中間的な説明を行うことを意図しています。 </p>
-<p>右側のクリップを見ると、このチュートリアルと同じ手順をビデオで確認できます。このビデオでは、Arthur Kay が Azure Mobile Services バックエンドを使用して Sencha Touch アプリケーションをビルドする方法について説明します。</p>
+<p>このチュートリアルでは、Sencha Touch アプリケーションで Azure モバイル サービスを活用する方法について説明します。管理ポータルで定義したモバイル サービスを活用し、Sencha Touch を使用する簡単な To Do List アプリケーションを作成します。このチュートリアルでは、JavaScript について適切な知識を持ち、Sencha Touch フレームワークに精通する熟達した Web アプリケーション開発者を対象として中間的な説明を行うことを意図しています。 </p>
+<p>右側のクリップを見ると、このチュートリアルと同じ手順をビデオで確認できます。このビデオでは、Arthur Kay が Azure モバイル サービス バックエンドを使用して Sencha Touch アプリケーションをビルドする方法について説明します。</p>
 </div>
-
 <div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkId=392574" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/partner-sencha-mobile-services-get-started/mobile-sencha-get-started-180x120.png') !important;" href="http://go.microsoft.com/fwlink/?LinkId=392574" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">14:37:00</span></div>
-
 </div>
+
+
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
 ![][0]
 
-## 要件
 
--   [Sencha Touch][Sencha Touch] のダウンロードとインストール。
 
--   [Sencha Cmd Tool][Sencha Cmd Tool] のダウンロードとインストール。
+##要件
 
--   Java Runtime Environment (JRE) または Java Development Kit (Android アプリケーションを作成している場合)。
+- <a href="http://wwww.sencha.com/products/touch/download" target="_blank">Sencha Touch</a> のダウンロードとインストール。
 
-## <a name="create-new-service"> </a> 新しいモバイル サービスを作成する
+- <a href="http://www.sencha.com/products/sencha-cmd/download" target="_blank">Sencha Cmd Tool</a> のダウンロードとインストール。
+
+- Java Runtime Environment (JRE) または Java Development Kit (Android アプリケーションを作成している場合)。
+
+## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
 
 [WACOM.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
 
-## TodoItems テーブルの作成
+##TodoItems テーブルの作成
 
-モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、
-モバイル サービス用に新しいデータベース テーブルを作成できます。
+モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、モバイル サービス用に新しいデータベース テーブルを作成できます。
 
-1.  管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
+1. 管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
-2.  [クイック スタート] タブの **[プラットフォームの選択]** で **[HTML]** をクリックし、**[新しい HTML アプリを作成する]** を展開します。
+2. [クイック スタート] タブの **[プラットフォームの選択]** で **[HTML]** をクリックし、**[新しい HTML アプリを作成する]** を展開します。
 
-    ![Mobile quickstart html][Mobile quickstart html]
+    ![Mobile quickstart html](./media/partner-sencha-mobile-services-get-started/mobile-portal-quickstart-html.png)
 
     これにより、モバイル サービスに接続された HTML アプリを作成し、ホストするための簡単な 3 つの手順が表示されます。
 
-    ![Mobile quickstart html][1]
+    ![Mobile quickstart html](./media/partner-sencha-mobile-services-get-started/mobile-quickstart-steps-html.png)
 
-3.  **[TodoItems テーブルを作成する]** をクリックして、アプリケーション データを格納するテーブルを作成します。
+3. **[TodoItems テーブルを作成する]** をクリックして、アプリケーション データを格納するテーブルを作成します。
 
-    <div class="dev-callout"> 
-<b>注</b> 
-<p>管理ポータルから HTML アプリをダウンロードしないでください。その代わりに、次のセクションで Sencha Touch アプリケーションを手動で作成します。</p></div>
+	<div class="dev-callout"> 
+	<b>注</b> 
+	<p>管理ポータルから HTML アプリケーションをダウンロードしないでください。その代わりに、次のセクションで Sencha Touch アプリケーションを手動で作成します。</p></div> 
 
-4.  管理ポータルの **appKey** と **appUrl** をメモします。これらは、このチュートリアルの他のセクションで使用します。
 
-    ![app key][app key]
+1. 管理ポータルの **appKey** と **appUrl** をメモします。これらは、このチュートリアルの他のセクションで使用します。
 
-5.  **[構成]** タブで、**[クロス オリジン リソース共有 (CORS)]** の **[ホスト名からの要求を許可する]** に `localhost` が既に表示されていることを確認します。表示されていない場合は、**[ホスト名]** フィールドに「`localhost`」と入力して、**[保存]** をクリックします。
+    ![app key](./media/partner-sencha-mobile-services-get-started/mobile-app-key-portal.png)
 
-    ![Setup CORS for localhost][Setup CORS for localhost]
+1. **[構成]** タブで、**[クロス オリジン リソース共有 (CORS)]** の **[ホスト名からの要求を許可する]** に `localhost` が既に表示されていることを確認します。表示されていない場合は、**[ホスト名]** フィールドに「`localhost`」と入力し、**[保存]** をクリックします。
 
-## Touch アプリケーションの生成
+    ![Setup CORS for localhost](./media/partner-sencha-mobile-services-get-started/mobile-services-set-cors-localhost.png)
+
+##Touch アプリケーションの生成
 
 Sencha Touch テンプレート アプリケーションを生成することは、Sencha Cmd によって簡単に実行可能であり、アプリケーションを非常に迅速に動作させることができる優れた方法です。
 
 Touch フレームワークをインストールしたディレクトリから、次のコマンドを発行します。
 
-    $ sencha generate app Basic /path/to/application
+	$ sencha generate app Basic /path/to/application
 
-これによって、'Basic' という名前のアプリケーションを含むテンプレート Touch アプリケーションが生成されます。アプリケーションを起動するには、ブラウザーで単純に directory /path/to/application を指定します。これによって、標準の Touch サンプル アプリケーションが表示されます。
+これによって、'Basic' という名前のアプリケーションを含むテンプレート Touch アプリケーションが生成されます。アプリケーションを起動するには、ブラウザーで単純に /path/to/application ディレクトリを指定します。これによって、標準の Touch サンプル アプリケーションが表示されます。
 
-## Azure 用 Sencha Touch Extensions のインストール
+##Azure 用 Sencha Touch Extensions のインストール
 
 Azure 用の拡張機能は、手動または Sencha パッケージとしてインストールされます。いずれの方法を使用してもかまいません。
 
-### 手動のインストール
+###手動のインストール
 
-大半の Touch アプリケーションでは、クラスの外部ライブラリを追加する場合、単純にパッケージをダウンロードし、アプリケーション ディレクトリ内でパッケージを展開して、ライブラリの場所について Touch ローダーを構成します。
+大半の Touch アプリケーションでは、クラスの外部ライブラリを追加する場合、単純にパッケージをダウンロードし、アプリケーション ディレクトリ内でパッケージを展開して、ライブラリの場所について Touch ローダーを構成します。 
 
 次の手順に従って、アプリケーションに Azure 拡張機能を手動で追加できます。
 
-1.  [ここ][ここ]から Azure 拡張機能パッケージをダウンロードします (この領域にアクセスするために Sencha Forums ID を使用できます)。
+1. [ここ](https://market.sencha.com/extensions/sencha-touch-extensions-for-windows-azure)から Azure 拡張機能パッケージをダウンロードします。(この領域にアクセスするために Sencha Forums ID を使用できます)。
 
-2.  ダウンロード ディレクトリから最終的に配置および展開する場所に Azure 拡張機能パッケージをコピーします。
+2. ダウンロード ディレクトリから最終的に配置および展開する場所に Azure 拡張機能パッケージをコピーします。 
 
         $ cd /path/to/application
-        $ mv /download-location/azure.zip .
-        $ unzip azure.zip  
+	    $ mv /download-location/azure.zip .
+    	$ unzip azure.zip  
 
     これによって、パッケージ ソース、例、およびドキュメント全体を含む **azure** ディレクトリが作成されます。このソースは、**azure/src** ディレクトリに存在します。
 
-### Sencha パッケージとしてのインストール
+
+###Sencha パッケージとしてのインストール
 
 <div class="dev-callout"> 
-<b>注</b> 
-<p>この方法は、<code data-inline="1">sencha generate app</code> コマンドを使用してアプリケーションを生成している場合にのみ使用できます。</p></div>
+	<b>注</b> 
+	<p><code>sencha generate app</code> コマンドを使用してアプリケーションを生成している場合にのみ、この方法が使用できます。</p></div> 
 
-Sencha Cmd によって生成されるすべてのアプリケーションで、ルートに "パッケージ" フォルダーがあります。このフォルダーの場所は構成可能ですが、その場所にかかわらず packages フォルダーの役割は、アプリケーション (または Sencha ワークスペースを作成している場合は複数のアプリケーション) によって使用されるすべてのパッケージのストレージとして機能することです。
+Sencha Cmd によって生成されるすべてのアプリケーションは、ルートに "packages" フォルダーがあります。このフォルダーの場所は構成可能ですが、その場所にかかわらず packages フォルダーの役割は、アプリケーション (または Sencha ワークスペースを作成している場合は複数のアプリケーション) によって使用されるすべてのパッケージのストレージとして機能することです。
 
-Azure は Sencha Cmd "パッケージ" であるため、ソース コードは Sencha Cmd を使用して簡単にアプリケーションにインストールし、含めることができます(詳細については、[Sencha Cmd パッケージ][Sencha Cmd パッケージ] を参照してください)。
+Ext.Azure は Sencha Cmd "パッケージ" であるため、ソース コードは Sencha Cmd を使用して簡単にアプリケーションにインストールし、組み込むことができます。(詳細については、[Sencha Cmd パッケージ](http://docs.sencha.com/cmd/3.1.2/#!/guide/command_packages) を参照してください)。
 
 Sencha パッケージ リポジトリから Azure 拡張機能パッケージをダウンロードおよびインストールするには、**app.json** ファイルにパッケージ名を追加し、アプリケーションをビルドする必要があります。
 
-1.  app.json ファイルの requires セクションに Azure パッケージを追加します。
+1. app.json ファイルの requires セクションに Azure パッケージを追加します。
 
-        {
+	    {
             "name": "Basic",
-            "requires": [
-                "touch-azure"
-            ]
-        }
+	        "requires": [
+    	        "touch-azure"
+        	]
+    	}
+    
+2. パッケージを取得およびインストールするために **sencha cmd** を使用して、アプリケーションをリビルドします。
 
-2.  パッケージを取得およびインストールするために **sencha cmd** を使用して、アプリケーションをリビルドします。
-
-        $ sencha app build
+	    $ sencha app build
 
 ここで、**sencha app build** および **sencha app refresh** は共に、アプリケーション内にパッケージを統合するために必要な手順を実行します。通常、パッケージ要件の変更後に、"開発モード" のサポートに必要なメタデータを最新に維持するために、**sencha app refresh** を実行する必要があります。
 
-いずれのコマンドを実行しても、Sencha Cmd は "パッケージ" フォルダーにパッケージをダウンロードして展開します。これによって、ワークスペースに "packages/touch-azure" フォルダーが表示されます。
+いずれのコマンドを実行しても、Sencha Cmd は "packages" フォルダーにパッケージをダウンロードして展開します。これによって、ワークスペースに "packages/touch-azure" フォルダーが表示されます。
 
-## Azure を含めて構成する
+##Azure を含めて構成する
 
-**ファイル名**: app.js
+**ファイル名**: app.js 
 
 Azure 拡張機能がダウンロードされ、アプリケーション ディレクトリにインストールされたので、次の手順ではソース ファイルの検出元と要求先をアプリケーションに指示します。
 
-1.  Sencha ローダーでソース コードの場所を構成します。
-
+1. Sencha ローダーでソース コードの場所を構成します。
+ 
         Ext.Loader.setConfig({
-            enabled : true,
-            paths   : {
-                'Ext'       : 'touch/src',
-                'Ext.azure' : '/path-to/azure-for-touch/azure/src'
+       	    enabled : true,
+           	paths   : {
+               	'Ext'       : 'touch/src',
+               	'Ext.azure' : '/path-to/azure-for-touch/azure/src'
             }
         });
 
-2.  Azure クラス ファイルを要求します。
 
-        Ext.application({
+2. Azure クラス ファイルを要求します。
 
-            requires: [ 'Ext.azure.Azure' ],
+		Ext.application({
 
-            // ...
+			requires: [ 'Ext.azure.Azure' ],
 
-        });
+			// ...
 
-3.  Azure の構成
+		});
 
-    Azure パッケージは、アプリケーションの起動セクションで **Ext.Azure.init** メソッドを呼び出すことにより初期化されます。このメソッドでは、モバイル サービスの資格情報と、使用したいその他の資格情報および機能を含む構成オブジェクトを渡します。
 
-    構成オブジェクトは直接 init メソッドに渡すことができますが、**azure** という Sencha アプリケーション構成プロパティを作成し、そこに該当する情報すべてを格納することをお勧めします。次に、このプロパティ値を Ext. Azure.init メソッドに渡すことができます。
+3. Azure の構成
 
-    Azure でモバイル サービスを作成する場合 (「[Azure の概要][Azure の概要]」を参照してください)、アプリケーション キーおよび URL がサービスに割り当てられます。この情報は、サービスに接続できるように Azure パッケージに提供する必要があります。
+	Azure パッケージは、アプリケーションの起動セクションで **Ext.Azure.init** メソッドを呼び出すことにより初期化されます。このメソッドでは、モバイル サービスの資格情報と、使用したいその他の資格情報および機能を含む構成オブジェクトを渡します。
 
-    この例では、アプリケーション キーと URL のみを提供する非常に簡単な Azure の構成と初期化を示しています。
+	構成オブジェクトは直接 init メソッドに渡すことができますが、**azure** という Sencha アプリケーション構成プロパティを作成し、そこに該当する情報すべてを格納することをお勧めします。次に、このプロパティ値を Ext.Azure.init メソッドに渡すことができます。
 
-        Ext.application({
-            name: 'Basic',
+	Azure でモバイル サービスを作成する場合 (「[Getting Started with Ext.Azure (Ext.Azure の使用)](http://senchaazuredocs.azurewebsites.net/#!/guide/getting_started)」を参照してください)、アプリケーション キーおよび URL がサービスに割り当てられます。この情報は、サービスに接続できるように Azure パッケージに提供する必要があります。
 
-            requires: [ 'Ext.azure.Azure' ],
+	この例では、アプリケーション キーと URL のみを提供する非常に簡単な Azure の構成と初期化を示しています。
 
-            azure: {
-                appKey: 'myazureservice-access-key',
-                appUrl: 'myazure-service.azure-mobile.net'
-            },
+	    Ext.application({
+    	    name: 'Basic',
 
-            launch: function() {
+        	requires: [ 'Ext.azure.Azure' ],
 
-                // Call Azure initialization
+	        azure: {
+    	        appKey: 'myazureservice-access-key',
+        	    appUrl: 'myazure-service.azure-mobile.net'
+	        },
 
-                Ext.Azure.init(this.config.azure);
+    	    launch: function() {
 
-           }
-        });
+        	    // Call Azure initialization
 
-    Azure の構成オプションについては、Ext. Azure API のドキュメントを参照してください。
+            	Ext.Azure.init(this.config.azure);
+
+ 	       }
+    	});
+
+	Azure の構成オプションについては、Ext. Azure API のドキュメントを参照してください。
+
 
 ご利用ありがとうございます。これでアプリケーションは、モバイル サービスにアクセスできます。
 
-## ToDo アプリケーションのビルド
+##ToDo アプリケーションのビルド
 
 ここまで、Azure 拡張機能を含めるようにアプリケーションを構成し、モバイル サービス資格情報を指定したので、サービスに格納された ToDo リスト データを表示および編集するためにモバイル サービスを活用する Touch アプリケーションの作成に着手できます。
 
-### Azure データ プロキシの構成
+###Azure データ プロキシの構成
 
 **ファイル名:** app/model/TodoItem.js
 
@@ -195,41 +201,42 @@ Sencha Touch モデルでは、アプリケーションで使用するデータ 
 
 Azure プロキシは、Azure API によって想定される適切な CRUD 操作と共に、すべての HTTP ヘッダーを自動的に設定します (存在する場合は、認証資格情報が含まれます)。
 
-    Ext.define('Basic.model.TodoItem', {
-        extend : 'Ext.data.Model',
+	Ext.define('Basic.model.TodoItem', {
+    	extend : 'Ext.data.Model',
 
-        requires : [
-            'Ext.azure.Proxy'
-        ],
+	    requires : [
+    	    'Ext.azure.Proxy'
+    	],
 
-        config : {
-            idProperty : 'id',
-            useCache   : false,
+	    config : {
+    	    idProperty : 'id',
+        	useCache   : false,
 
-            fields     : [
-                {
-                    name : 'id',
-                    type : 'int'
-                },
-                {
-                    name : 'text',
-                    type : 'string'
-                },
-                {
-                    name : 'complete',
-                    type : 'boolean'
-                }
-            ],
+	        fields     : [
+    	        {
+        	        name : 'id',
+            	    type : 'int'
+            	},
+            	{
+                	name : 'text',
+                	type : 'string'
+            	},
+            	{
+	                name : 'complete',
+    	            type : 'boolean'
+        	    }
+	        ],
 
-            proxy : {
-                type               : 'azure',
-                tableName          : 'TodoItem',
-                enablePagingParams : true
-            }
-        }
-    });
+	        proxy : {
+    	        type               : 'azure',
+        	    tableName          : 'TodoItem',
+            	enablePagingParams : true
+        	}
+    	}
+	});
 
-### ToDo 項目の格納
+
+###ToDo 項目の格納 
 
 **ファイル名**: app/store/TodoItems.js
 
@@ -239,478 +246,461 @@ Sencha Touch ストアでは、さまざまな方法でレコードを表示す�
 
 また、ページ サイズ (8 レコード) を指定するなど、ストアに対するいくつかの追加構成オプションが用意されています。このストアのレコードの並べ替えは、Azure モバイル サービスによってリモートに行われます (並べ替えは、ストア自体でローカルには行われません)。
 
-    Ext.define('Basic.store.TodoItems', {
-        extend : 'Ext.data.Store',
+	Ext.define('Basic.store.TodoItems', {
+    	extend : 'Ext.data.Store',
 
-        requires : [
-            'Basic.model.TodoItem'
-        ],
+	    requires : [
+    	    'Basic.model.TodoItem'
+	    ],
 
-        config : {
-            model        : 'Basic.model.TodoItem',
-            pageSize     : 8,
-            remoteSort   : true,
-            remoteFilter : true
-        }
-    });
+	    config : {
+    	    model        : 'Basic.model.TodoItem',
+        	pageSize     : 8,
+	        remoteSort   : true,
+    	    remoteFilter : true
+    	}
+	});
 
-### ToDo 項目の表示および編集
+
+###ToDo 項目の表示および編集
 
 **ファイル名**: app/view/DataItem.js
 
-これで、各 ToDo 項目の構造を定義し、すべてのレコードを配置するためのストアを作成したので、アプリケーションのユーザーに対してこの情報をどのように表示するかについて考えます。通常は、**Views** を使用してユーザーに情報を表示します。任意の数の Touch コンポーネントの 1 つを個別にまたは他と組み合わせて表示できます。
+これで、各 ToDo 項目の構造を定義し、すべてのレコードを配置するためのストアを作成したので、アプリケーションのユーザーに対してこの情報をどのように表示するかについて考えます。通常は、**Views** を使用してユーザーに情報を表示します。任意の数の Touch コンポーネントの 1 つを個別にまたは他と組み合わせて表示できます。 
 
 次の表示は、各レコードの表示方法を定義する ListItem と、各項目を削除するためのアクションを格納するいくつかのボタンから構成されています。
 
-    Ext.define('Basic.view.DataItem', {
-        extend : 'Ext.dataview.component.ListItem',
-        xtype  : 'basic-dataitem',
+	Ext.define('Basic.view.DataItem', {
+    	extend : 'Ext.dataview.component.ListItem',
+    	xtype  : 'basic-dataitem',
 
-        requires : [
-            'Ext.Button',
-            'Ext.layout.HBox',
-            'Ext.field.Checkbox'
-        ],
+	    requires : [
+    	    'Ext.Button',
+        	'Ext.layout.HBox',
+        	'Ext.field.Checkbox'
+    	],
 
-        config : {
-            checkbox : {
-                docked     : 'left',
-                xtype      : 'checkboxfield',
-                width      : 50,
-                labelWidth : 0
-            },
+	    config : {
+    	    checkbox : {
+        	    docked     : 'left',
+            	xtype      : 'checkboxfield',
+            	width      : 50,
+            	labelWidth : 0
+        	},
 
-            text : {
-                flex : 1
-            },
+	        text : {
+    	        flex : 1
+        	},
 
-            button : {
-                docked   : 'right',
-                xtype    : 'button',
-                ui       : 'plain',
-                iconMask : true,
-                iconCls  : 'delete',
-                style    : 'color: red;'
-            },
+	        button : {
+    	        docked   : 'right',
+        	    xtype    : 'button',
+            	ui       : 'plain',
+	            iconMask : true,
+    	        iconCls  : 'delete',
+        	    style    : 'color: red;'
+        	},
 
-            dataMap : {
-                getText : {
-                    setHtml : 'text'
-                },
+	        dataMap : {
+    	        getText : {
+        	        setHtml : 'text'
+            	},
 
-                getCheckbox : {
-                    setChecked : 'complete'
-                }
-            },
+	            getCheckbox : {
+    	            setChecked : 'complete'
+        	    }
+        	},
 
-            layout : {
-                type : 'hbox',
-                align: 'stretch'
-            }
-        },
+	        layout : {
+    	        type : 'hbox',
+        	    align: 'stretch'
+        	}
+    	},
 
-        applyCheckbox : function(config) {
-            return Ext.factory(config, Ext.field.Checkbox, this.getCheckbox());
-        },
+	    applyCheckbox : function(config) {
+    	    return Ext.factory(config, Ext.field.Checkbox, this.getCheckbox());
+    	},
 
-        updateCheckbox : function (cmp) {
-            if (cmp) {
-                this.add(cmp);
-            }
-        },
+	    updateCheckbox : function (cmp) {
+    	    if (cmp) {
+        	    this.add(cmp);
+        	}
+    	},
 
-        applyButton : function(config) {
-            return Ext.factory(config, Ext.Button, this.getButton());
-        },
+	    applyButton : function(config) {
+    	    return Ext.factory(config, Ext.Button, this.getButton());
+    	},
 
-        updateButton : function (cmp) {
-            if (cmp) {
-                this.add(cmp);
-            }
-        }
+	    updateButton : function (cmp) {
+    	    if (cmp) {
+        	    this.add(cmp);
+        	}
+    	}
 
-    });
+	});
 
-### プライマリ ビューの作成
+
+###プライマリ ビューの作成
 
 **ファイル名**: app/view/Main.js
 
-ここまで、個々の ToDo リスト項目 (上) のレイアウトを定義したので、実際の項目のリスト、アプリケーションのタイトル、および新しいタスクを追加するためのボタンを定義する完全なユーザー インターフェイスでリストをラップします。
+ここまで、個々の ToDo リスト項目 (上) のレイアウトを定義したので、実際の項目のリスト、アプリケーションのタイトル、および新しいタスクを追加するためのボタンを定義する完全なユーザー インターフェイスでリストをラップします。 
 
-    Ext.define('Basic.view.Main', {
-        extend : 'Ext.dataview.List',
-        xtype  : 'main',
+	Ext.define('Basic.view.Main', {
+    	extend : 'Ext.dataview.List',
+    	xtype  : 'main',
 
-        requires : [
-            'Ext.TitleBar',
-            'Ext.dataview.List',
-            'Ext.data.Store',
-            'Ext.plugin.PullRefresh',
-            'Ext.plugin.ListPaging',
-            'Basic.view.DataItem'
-        ],
+	    requires : [
+    	    'Ext.TitleBar',
+        	'Ext.dataview.List',
+        	'Ext.data.Store',
+        	'Ext.plugin.PullRefresh',
+        	'Ext.plugin.ListPaging',
+        	'Basic.view.DataItem'
+    	],
 
-        config : {
-            store : 'TodoItems',
+	    config : {
+    	    store : 'TodoItems',
 
-            useSimpleItems : false,
-            defaultType    : 'basic-dataitem',
+        	useSimpleItems : false,
+        	defaultType    : 'basic-dataitem',
 
-            plugins : [
-                {
-                    xclass          : 'Ext.plugin.PullRefresh',
-                    pullRefreshText : 'Pull down to refresh!'
-                },
-                {
-                    xclass     : 'Ext.plugin.ListPaging',
-                    autoPaging : true
-                }
-            ],
+	        plugins : [
+    	        {
+        	        xclass          : 'Ext.plugin.PullRefresh',
+            	    pullRefreshText : 'Pull down to refresh!'
+            	},
+            	{
+                	xclass     : 'Ext.plugin.ListPaging',
+                	autoPaging : true
+            	}
+        	],
 
-            scrollable : {
-                direction     : 'vertical',
-                directionLock : true
-            },
+	        scrollable : {
+    	        direction     : 'vertical',
+        	    directionLock : true
+        	},
 
-            items : [
-                {
-                    docked : 'top',
-                    xtype  : 'titlebar',
-                    title  : 'Azure Mobile - Basic Data Example'
-                },
-                {
-                    xtype  : 'toolbar',
-                    docked : 'bottom',
-                    items  : [
-                        {
-                            xtype       : 'textfield',
-                            placeHolder : 'Enter new task',
-                            flex        : 1
-                        },
-                        {
-                            xtype  : 'button',
-                            action : 'add',
-                            text   : 'Add'
-                        }
-                    ]
-                }
-            ]
-        }
-    });
+	        items : [
+    	        {
+        	        docked : 'top',
+            	    xtype  : 'titlebar',
+                	title  : 'Azure Mobile - Basic Data Example'
+            	},
+            	{
+                	xtype  : 'toolbar',
+                	docked : 'bottom',
+                	items  : [
+                    	{
+                        	xtype       : 'textfield',
+                        	placeHolder : 'Enter new task',
+                        	flex        : 1
+                    	},
+                    	{
+                        	xtype  : 'button',
+                        	action : 'add',
+                        	text   : 'Add'
+                    	}
+                	]
+            	}
+        	]
+    	}
+	});
 
-### すべての共同作業
+###すべての共同作業
 
 **ファイル名**: app/controller/Main.js
 
-アプリケーションの最後の手順は、押されたボタン (削除、保存など) に応答し、こうしたすべての要求に対応するロジックを提供することです。Sencha Touch は、こうしたイベントをリッスンするコントローラーを活用し、それに応じて応答します。
+アプリケーションの最後の手順は、押されたボタン (削除、保存など) に応答し、こうしたすべての要求に対応するロジックを提供することです。Sencha Touch は、こうしたイベントをリッスンするコントローラーを活用し、それに従って応答します。
 
-    Ext.define('Basic.controller.Main', {
-        extend : 'Ext.app.Controller',
+	Ext.define('Basic.controller.Main', {
+    	extend : 'Ext.app.Controller',
 
-        config : {
-            refs : {
-                todoField : 'main toolbar textfield',
-                main      : 'main'
-            },
+	    config : {
+    	    refs : {
+        	    todoField : 'main toolbar textfield',
+            	main      : 'main'
+        	},
 
-            control : {
-                'button[action=add]'    : {
-                    tap : 'onAddItem'
-                },
-                'button[action=reload]' : {
-                    tap : 'onReload'
-                },
+	        control : {
+    	        'button[action=add]'    : {
+        	        tap : 'onAddItem'
+            	},
+            	'button[action=reload]' : {
+                	tap : 'onReload'
+            	},
 
-                main : {
-                    activate      : 'loadInitialData',
-                    itemdoubletap : 'onItemEdit'
-                },
+	            main : {
+    	            activate      : 'loadInitialData',
+        	        itemdoubletap : 'onItemEdit'
+            	},
 
-                'basic-dataitem checkboxfield' : {
-                    change : 'onItemCompleteTap'
-                },
+	            'basic-dataitem checkboxfield' : {
+    	            change : 'onItemCompleteTap'
+        	    },
 
-                'basic-dataitem button' : {
-                    tap : 'onItemDeleteTap'
-                }
-            }
-        },
+            	'basic-dataitem button' : {
+                	tap : 'onItemDeleteTap'
+            	}
+        	}
+    	},
 
-        loadInitialData : function () {
-            Ext.getStore('TodoItems').load();
-        },
+	    loadInitialData : function () {
+    	    Ext.getStore('TodoItems').load();
+    	},
 
-        onItemDeleteTap : function (button, e, eOpts) {
-            var store    = Ext.getStore('TodoItems'),
-                dataItem = button.up('dataitem'),
-                rec      = dataItem.getRecord();
+	    onItemDeleteTap : function (button, e, eOpts) {
+    	    var store    = Ext.getStore('TodoItems'),
+        	    dataItem = button.up('dataitem'),
+            	rec      = dataItem.getRecord();
 
-            rec.erase({
-                success: function (rec, operation) {
-                    store.remove(rec);
-                },
-                failure: function (rec, operation) {
-                    Ext.Msg.alert(
-                        'Error',
-                        Ext.util.Format.format('There was an error deleting this task.<br/><br/>    Status Code: {0}<br/>Status Text: {1}', 
-                        operation.error.status, 
-                        operation.error.statusText)
-                    );
-                }
-            });
-        },
+	        rec.erase({
+    	        success: function (rec, operation) {
+        	        store.remove(rec);
+            	},
+            	failure: function (rec, operation) {
+                	Ext.Msg.alert(
+                    	'Error',
+                    	Ext.util.Format.format('There was an error deleting this task.<br/><br/>	Status Code: {0}<br/>Status Text: {1}', 
+                    	operation.error.status, 
+                    	operation.error.statusText)
+                	);
+            	}
+        	});
+    	},
 
-        onItemCompleteTap : function (checkbox, newVal, oldVal, eOpts) {
-            var dataItem = checkbox.up('dataitem'),
-                rec      = dataItem.getRecord(),
-                recVal   = rec.get('complete');
+	    onItemCompleteTap : function (checkbox, newVal, oldVal, eOpts) {
+    	    var dataItem = checkbox.up('dataitem'),
+        	    rec      = dataItem.getRecord(),
+            	recVal   = rec.get('complete');
 
-            // this check is needed to prevent an issue where multiple creates get triggered from one create
-            if (newVal !== recVal) {
-                rec.set('complete', newVal);
-                rec.save({
-                    success: function (rec, operation) {
-                        rec.commit();
-                    },
-                    failure: function (rec, operation) {
-                        // since there was a failure doing the update on the server then silently reject the change
-                        rec.reject(true);
-                        Ext.Msg.alert(
-                            'Error',
-                            Ext.util.Format.format('There was an error updating this task.<br/><br/>Status Code: {0}<br/>Status Text: {1}', 
-                            operation.error.status, 
-                            operation.error.statusText)
-                        );
-                    }
-                });
-            }
-        },
+	        // this check is needed to prevent an issue where multiple creates get triggered from one create
+        	if (newVal !== recVal) {
+            	rec.set('complete', newVal);
+            	rec.save({
+                	success: function (rec, operation) {
+                    	rec.commit();
+                	},
+                	failure: function (rec, operation) {
+                    	// since there was a failure doing the update on the server then silently reject the change
+	                    rec.reject(true);
+    	                Ext.Msg.alert(
+        	                'Error',
+            	            Ext.util.Format.format('There was an error updating this task.<br/><br/>Status Code: {0}<br/>Status Text: {1}', 
+            	            operation.error.status, 
+            	            operation.error.statusText)
+	                    );
+    	            }
+        	    });
+        	}
+    	},
 
-        onItemEdit : function (list, index, target, record, e, eOpts) {
-            var rec = list.getSelection()[0];
+	    onItemEdit : function (list, index, target, record, e, eOpts) {
+    	    var rec = list.getSelection()[0];
 
-            Ext.Msg.prompt('Edit', 'Rename task',
-                function (buttonId, value) {
-                    if (buttonId === 'ok') {
-                        rec.set('text', value);
-                        rec.save({
-                            success: function (rec, operation) {
-                                rec.commit();
-                            },
-                            failure: function (rec, operation) {
-                                // since there was a failure doing the update on the server then reject the change
-                                rec.reject();
-                                Ext.Msg.alert(
-                                    'Error',
-                                    Ext.util.Format.format('There was an error updating this task.<br/><br/>Status Code: {0}<br/>Status Text: {1}', 
-                                    operation.error.status, 
-                                    operation.error.statusText)
-                                );
-                            }
-                        });
-                    }
-                },
-                null,
-                false,
-                record.get('text')
-            );
-        },
+        	Ext.Msg.prompt('Edit', 'Rename task',
+            	function (buttonId, value) {
+                	if (buttonId === 'ok') {
+                    	rec.set('text', value);
+                    	rec.save({
+                        	success: function (rec, operation) {
+                            	rec.commit();
+                        	},
+                        	failure: function (rec, operation) {
+                            	// since there was a failure doing the update on the server then reject the change
+                            	rec.reject();
+                            	Ext.Msg.alert(
+                                	'Error',
+                                	Ext.util.Format.format('There was an error updating this task.<br/><br/>Status Code: {0}<br/>Status Text: {1}', 
+                                	operation.error.status, 
+                                	operation.error.statusText)
+                            	);
+                        	}
+                    	});
+                	}
+            	},
+            	null,
+            	false,
+            	record.get('text')
+        	);
+    	},
 
-        onReload : function () {
-            Ext.getStore('TodoItems').load();
-        },
+	    onReload : function () {
+    	    Ext.getStore('TodoItems').load();
+    	},
 
-        onAddItem : function () {
-            var me = this,
-                rec,
-                store = Ext.getStore('TodoItems'),
-                field = me.getTodoField(),
-                value = field.getValue();
+	    onAddItem : function () {
+    	    var me = this,
+        	    rec,
+            	store = Ext.getStore('TodoItems'),
+            	field = me.getTodoField(),
+            	value = field.getValue();
 
-            if (value === '') {
-                Ext.Msg.alert('Error', 'Please enter Task name', Ext.emptyFn);
-            }
-            else {
-                rec = Ext.create('Basic.model.TodoItem', {
-                    complete : false,
-                    text     : value
-                });
-                //store.insert(0, rec); //insert at the top
-                //store.sync();
-                rec.save({
-                    success: function (rec, operation) {
-                        store.insert(0, rec); //insert at the top
-                        field.setValue('');
-                    },
-                    failure: function (rec, operation) {
-                        Ext.Msg.alert(
-                            'Error',
-                            Ext.util.Format.format('There was an error creating this task.<br/><br/>Status Code: {0}<br/>Status Text: {1}', 
-                            operation.error.status, 
-                            operation.error.statusText)
-                        );
-                    }
-                });
-            }
-        }
-    });
+	        if (value === '') {
+    	        Ext.Msg.alert('Error', 'Please enter Task name', Ext.emptyFn);
+        	}
+        	else {
+            	rec = Ext.create('Basic.model.TodoItem', {
+                	complete : false,
+                	text     : value
+            	});
+            	//store.insert(0, rec); //insert at the top
+            	//store.sync();
+            	rec.save({
+                	success: function (rec, operation) {
+                    	store.insert(0, rec); //insert at the top
+                    	field.setValue('');
+                	},
+                	failure: function (rec, operation) {
+                    	Ext.Msg.alert(
+                        	'Error',
+                        	Ext.util.Format.format('There was an error creating this task.<br/><br/>Status Code: {0}<br/>Status Text: {1}', 
+                        	operation.error.status, 
+                        	operation.error.statusText)
+                    	);
+                	}
+            	});
+        	}
+    	}
+	});
 
-### すべてをまとめた配置
+###すべてをまとめた配置
 
-**ファイル名**: app.js
+**ファイル名**: app.js 
 
 最後の手順は、メイン アプリケーション ファイルの編集を終了し、定義したモデル、ストア、ビュー、およびコントローラーに関する情報を提供することです。これらのリソースのソース ファイルは、アプリケーションに自動的に読み込まれます。最後に、プライマリ アプリケーション ビューである "Basic.main.View" を作成および表示する起動メソッドを呼び出します。
 
-    Ext.Loader.setConfig({
-        enabled : true,
-        paths   : {
-            'Ext'       : 'touch/src',
-            'Ext.azure' : 'packages/azure/src'
-        }
-    });
 
-    Ext.application({
-        name : 'Basic',
+	Ext.Loader.setConfig({
+    	enabled : true,
+    	paths   : {
+        	'Ext'       : 'touch/src',
+        	'Ext.azure' : 'packages/azure/src'
+    	}
+	});
 
-        requires : [
-            'Ext.MessageBox',
-            'Ext.azure.Azure'
-        ],
+	Ext.application({
+    	name : 'Basic',
 
-        views : [
-            'Main'
-        ],
+	    requires : [
+    	    'Ext.MessageBox',
+        	'Ext.azure.Azure'
+    	],
 
-        controllers : [
-            'Main'
-        ],
+	    views : [
+    	    'Main'
+    	],
 
-        stores : [
-            'TodoItems'
-        ],
+	    controllers : [
+    	    'Main'
+    	],
 
-        azure : {
-            appUrl : 'YOUR_APP_URL.azure-mobile.net',
-            appKey : 'YOUR_APP_KEY'
-        },
+	    stores : [
+    	    'TodoItems'
+    	],
 
-        icon : {
-            '57'  : 'resources/icons/Icon.png',
-            '72'  : 'resources/icons/Icon~ipad.png',
-            '114' : 'resources/icons/Icon@2x.png',
-            '144' : 'resources/icons/Icon~ipad@2x.png'
-        },
+	    azure : {
+    	    appUrl : 'YOUR_APP_URL.azure-mobile.net',
+        	appKey : 'YOUR_APP_KEY'
+    	},
 
-        isIconPrecomposed : true,
+	    icon : {
+    	    '57'  : 'resources/icons/Icon.png',
+        	'72'  : 'resources/icons/Icon~ipad.png',
+        	'114' : 'resources/icons/Icon@2x.png',
+        	'144' : 'resources/icons/Icon~ipad@2x.png'
+    	},
 
-        startupImage : {
-            '320x460'   : 'resources/startup/320x460.jpg',
-            '640x920'   : 'resources/startup/640x920.png',
-            '768x1004'  : 'resources/startup/768x1004.png',
-            '748x1024'  : 'resources/startup/748x1024.png',
-            '1536x2008' : 'resources/startup/1536x2008.png',
-            '1496x2048' : 'resources/startup/1496x2048.png'
-        },
+	    isIconPrecomposed : true,
 
-        launch : function () {
-            // Destroy the #appLoadingIndicator element
-            Ext.fly('appLoadingIndicator').destroy();
+	    startupImage : {
+    	    '320x460'   : 'resources/startup/320x460.jpg',
+        	'640x920'   : 'resources/startup/640x920.png',
+        	'768x1004'  : 'resources/startup/768x1004.png',
+        	'748x1024'  : 'resources/startup/748x1024.png',
+        	'1536x2008' : 'resources/startup/1536x2008.png',
+        	'1496x2048' : 'resources/startup/1496x2048.png'
+    	},
 
-            // Initialize Azure
-            Ext.Azure.init(this.config.azure);
+	    launch : function () {
+    	    // Destroy the #appLoadingIndicator element
+        	Ext.fly('appLoadingIndicator').destroy();
 
-            // Initialize the main view
-            Ext.Viewport.add(Ext.create('Basic.view.Main'));
-        },
+	        // Initialize Azure
+    	    Ext.Azure.init(this.config.azure);
 
-        onUpdated : function () {
-            Ext.Msg.confirm(
-                "Application Update",
-                "This application has just successfully been updated to the latest version. Reload now?",
-                function (buttonId) {
-                    if (buttonId === 'yes') {
-                        window.location.reload();
-                    }
-                }
-            );
-        }
-    });
+	        // Initialize the main view
+    	    Ext.Viewport.add(Ext.create('Basic.view.Main'));
+	    },
 
-### Sencha Touch アプリケーションのホストおよび実行
+	    onUpdated : function () {
+    	    Ext.Msg.confirm(
+        	    "Application Update",
+            	"This application has just successfully been updated to the latest version. Reload now?",
+	            function (buttonId) {
+    	            if (buttonId === 'yes') {
+        	            window.location.reload();
+            	    }
+            	}
+        	);
+   		}
+	});
+
+###Sencha Touch アプリケーションのホストおよび実行
 
 このチュートリアルの最後に、ローカル コンピューターの新しいアプリケーションをホストして実行します。
 
-1.  ターミナルで、展開されたアプリケーションの場所を参照します。
+  1. ターミナルで、展開されたアプリケーションの場所を参照します。
 
-2.  Sencha Cmd を使用し、次のコマンドを実行します。
+  2. Sencha Cmd を使用し、次のコマンドを実行します。
 
-    -   *sencha app refresh*: これで、すべてのアプリケーションの依存関係を Sencha Cmd に指示し、
-        必要なすべてのパッケージをダウンロードします (たとえば、[Sencha Touch Extensions for Azure][ここ] など)。
+    * *sencha app refresh*:これにより、Sencha Cmd にすべてのアプリケーションの依存関係を特定し、
+必要なパッケージ (たとえば、[Azure 用 Sencha Touch Extensions](https://market.sencha.com/extensions/sencha-touch-extensions-for-windows-azure)) をダウンロードするよう指示します。
 
-    -   *sencha web start*: これによって、アプリケーションをテストするためにローカル Web サーバーが起動されます。
+    * *sencha web start* :これによって、アプリケーションをテストするためにローカル Web サーバーが起動します。
 
-    ![sencha web start][sencha web start]
+    ![sencha web start](./media/partner-sencha-mobile-services-get-started/sencha-web-start.png)
 
-3.  アプリケーションを開始するために、ターミナルに示された URL を Web ブラウザーで開きます (たとえば、<http://localhost:1841> など)。
+  3. アプリケーションを開始するためにターミナルに示された URL を Web ブラウザーで開きます (たとえば、http://localhost:1841 など)。
 
-4.  アプリケーションで、意味のあるテキスト (たとえば、"チュートリアルの完了") を入力し、**[Add]** をクリックします。
+  4. アプリケーションで、意味のあるテキスト (たとえば、"チュートリアルの完了") を入力し、**[Add]** をクリックします。
 
-    ![new todo item][new todo item]
+    ![new todo item](./media/partner-sencha-mobile-services-get-started/new-todo-item.png)
 
     これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。
 
-5.  管理ポータルに戻り、**[データ]** タブ、TodoItems テーブルの順にクリックします。
+  5. 管理ポータルに戻り、**[データ]** タブ、TodoItems テーブルの順にクリックします。
 
-    ![Todo Items table][Todo Items table]
+    ![Todo Items table](./media/partner-sencha-mobile-services-get-started/mobile-data-tab.png)
 
     これで、アプリケーションによってテーブルに挿入されたデータを参照できます。
 
-    ![browse todo table][browse todo table]
+    ![browse todo table](./media/partner-sencha-mobile-services-get-started/mobile-data-browse.png)
 
-## 次のステップ
-
+##次のステップ
 ファースト ステップ ガイドはこれで完了です。Sencha によるモバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。
 
-その他のスタイル、および Sencha Touch で可能なその他の機能については、全サンプル アプリケーションを[ダウンロード][ダウンロード]してください。
+Sencha Touch のその他の機能については、追加のスタイルや機能を含む完了済みサンプル アプリケーションを[ダウンロード](https://github.com/arthurakay/sencha-touch-azure-example)してください。
 
 さらに、Azure 用 Sencha Touch Extensions の詳細について参照してください。
 
--   サンプル アプリケーションの[チュートリアル][チュートリアル]
--   [Sencha Forums][Sencha Forums] でサポートを得てください
--   [Sencha][Sencha] のドキュメントを参照してください
--   Azure Mobile Services での Sencha の使用: [(ビデオ)][(ビデオ)]
+  *  サンプル アプリケーションの[チュートリアル](http://docs.sencha.com/touch-azure/1.0.0/#!/guide/data_filters)
+  *  [Sencha Forums](http://www.sencha.com/forum) でサポートを得てください
+  *  [Sencha](http://docs.sencha.com/) のドキュメントを参照してください
+  * Azure Mobile Services での Sencha の使用:[(ビデオ)](http://channel9.msdn.com/Shows/Cloud+Cover/Episode-126-Using-Sencha-With-Windows-Azure-Mobile-Services)
 
-## その他のリソース
 
--   [Sencha Touch のダウンロード][Sencha Touch のダウンロード]
--   [Azure 用 Sencha Touch 拡張機能][ここ]
+##その他のリソース
 
-## まとめ
+  * [Sencha Touch のダウンロード](http://pages.sencha.com/touch-for-azure.html)
+  * [Azure 用 Sencha Touch 拡張機能](https://market.sencha.com/extensions/sencha-touch-extensions-for-windows-azure)
+ 
 
-ここで概要を示した例は、Azure パッケージ用 Sencha Touch 拡張機能で提供されており、例のディレクトリに基本データ例として格納されています。詳細なコメントおよび説明と共に、この拡張機能の他の機能をデモするいくつかの例も提供されています。
+##まとめ
 
-Sencha Touch のさらなる概要については、全[ガイド][ガイド] セットを参照してください。
+ここで概要を示した例は、Azure 用 Sencha Touch Extension パッケージで提供されており、examples ディレクトリに Basic Data の例として格納されています。詳細なコメントおよび説明と共に、この拡張機能の他の機能をデモするいくつかの例も提供されています。
+
+Sencha Touch の使用について、より詳細な情報は全[ガイド](http://docs.sencha.com/touch/#!/guide) セットを参照してください。
 
 <!-- images -->
-
-  [0]: ./media/partner-sencha-mobile-services-get-started/finished-app.png
-  [Sencha Touch]: http://wwww.sencha.com/products/touch/download
-  [Sencha Cmd Tool]: http://www.sencha.com/products/sencha-cmd/download
-  [Mobile quickstart html]: ./media/partner-sencha-mobile-services-get-started/mobile-portal-quickstart-html.png
-  [1]: ./media/partner-sencha-mobile-services-get-started/mobile-quickstart-steps-html.png
-  [app key]: ./media/partner-sencha-mobile-services-get-started/mobile-app-key-portal.png
-  [Setup CORS for localhost]: ./media/partner-sencha-mobile-services-get-started/mobile-services-set-cors-localhost.png
-  [ここ]: https://market.sencha.com/extensions/sencha-touch-extensions-for-windows-azure
-  [Sencha Cmd パッケージ]: http://docs.sencha.com/cmd/3.1.2/#!/guide/command_packages
-  [Azure の概要]: http://senchaazuredocs.azurewebsites.net/#!/guide/getting_started
-  [sencha web start]: ./media/partner-sencha-mobile-services-get-started/sencha-web-start.png
-  [new todo item]: ./media/partner-sencha-mobile-services-get-started/new-todo-item.png
-  [Todo Items table]: ./media/partner-sencha-mobile-services-get-started/mobile-data-tab.png
-  [browse todo table]: ./media/partner-sencha-mobile-services-get-started/mobile-data-browse.png
-  [ダウンロード]: https://github.com/arthurakay/sencha-touch-azure-example
-  [チュートリアル]: http://docs.sencha.com/touch-azure/1.0.0/#!/guide/data_filters
-  [Sencha Forums]: http://www.sencha.com/forum
-  [Sencha]: http://docs.sencha.com/
-  [(ビデオ)]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-126-Using-Sencha-With-Windows-Azure-Mobile-Services
-  [Sencha Touch のダウンロード]: http://pages.sencha.com/touch-for-azure.html
-  [ガイド]: http://docs.sencha.com/touch/#!/guide
+[0]: ./media/partner-sencha-mobile-services-get-started/finished-app.png

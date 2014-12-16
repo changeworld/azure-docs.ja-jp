@@ -46,7 +46,7 @@ socket.IO ベースのチャット アプリケーションをホストする手
      ディレクトリに移動します。このディレクトリの内容を、先ほど作成した
     **C:\\node\\chatapp\\WorkerRole1** ディレクトリにコピーします。
 
-    ![アーカイブから展開された examples\chat ディレクトリの内容を表示しているエクスプローラー][アーカイブから展開された examples\chat ディレクトリの内容を表示しているエクスプローラー]
+    ![アーカイブから展開された examples\chat ディレクトリの内容を表示しているエクスプローラー][chat-contents]
 
     上記のスクリーンショットの強調表示されている項目は、**examples\\chat** ディレクトリからコピーされたファイルです。
 
@@ -123,38 +123,30 @@ Azure エミュレーターでアプリケーションをテストします。
         PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch
 
     <div class="dev-callout">
-
-    **注**
-    必ず一意の名前を使用してください。一意でない場合は発行処理が失敗します。デプロイが完了すると、ブラウザーが開き、デプロイされたサービスに移動します。
-
-    指定したサブスクリプション名がインポートされた発行プロファイルに存在しないというエラーが出力された場合は、Azure にデプロイする前に、サブスクリプションの発行プロファイルをダウンロードしてインストールする必要があります。「[Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ][Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ]」の「**Azure へのアプリケーションのデプロイ**」を参照してください。
-
+    <strong>注</strong>
+    <p>必ず一意の名前を使用してください。一意でない場合は発行処理が失敗します。デプロイが完了すると、ブラウザーが開き、デプロイされたサービスに移動します。</p>
+    <p>指定したサブスクリプション名がインポートされた発行プロファイルに存在しないというエラーが出力された場合は、Azure にデプロイする前に、サブスクリプションの発行プロファイルをダウンロードしてインストールする必要があります。「<a href="https://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/getting-started/">Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ</a>」の「<b>Azure へのアプリケーションのデプロイ</b>」を参照してください。</p>
     </div>
 
     ![Azure でホストされるサービスを表示しているブラウザー ウィンドウ][Azure でホストされるサービスを表示しているブラウザー ウィンドウ]
 
     <div class="dev-callout">
-
-    **注**
-    指定したサブスクリプション名がインポートされた発行プロファイルに存在しないというエラーが出力された場合は、Azure にデプロイする前に、サブスクリプションの発行プロファイルをダウンロードしてインストールする必要があります。「[Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ][Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ]」の「**Azure へのアプリケーションのデプロイ**」を参照してください。
-
+    <strong>注</strong>
+    <p>指定したサブスクリプション名がインポートされた発行プロファイルに存在しないというエラーが出力された場合は、Azure にデプロイする前に、サブスクリプションの発行プロファイルをダウンロードしてインストールする必要があります。「<a href="https://www.windowsazure.com/en-us/develop/nodejs/tutorials/getting-started/">Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ</a>」の「<b>Azure へのアプリケーションのデプロイ</b>」を参照してください。</p>
     </div>
 
 これで、アプリケーションは Azure で実行されるようになり、
 Socket.IO を使用する複数のクライアント間でチャット メッセージを中継できます。
 
 <div class="dev-callout">
-
-**注**
-わかりやすくするために、このサンプルは同じインスタンスに接続したユーザー間でのチャットに制限されています。つまり、クラウド サービスによって 2 つのワーカー ロール インスタンスが作成された場合、ユーザーは同じワーカー ロール インスタンスに接続された他のユーザーとのみチャットすることができます。複数のロール インスタンスで機能するようにこのアプリケーションを拡張するには、サービス バスなどのテクノロジを使用して、インスタンス間で Socket.IO ストアの状態を共有します。たとえば、[Azure SDK for Node.js GitHub リポジトリ][Azure SDK for Node.js GitHub リポジトリ]にある Service Bus キューおよびトピックの使用例を参照してください。
-
+<strong>注</strong>
+<p>わかりやすくするために、このサンプルは同じインスタンスに接続したユーザー間でのチャットに制限されています。つまり、クラウド サービスによって 2 つのワーカー ロール インスタンスが作成された場合、ユーザーは同じワーカー ロール インスタンスに接続された他のユーザーとのみチャットすることができます。複数のロール インスタンスで機能するようにこのアプリケーションを拡張するには、サービス バスなどのテクノロジを使用して、インスタンス間で Socket.IO ストアの状態を共有します。たとえば、<a href="https://github.com/WindowsAzure/azure-sdk-for-node">Azure SDK for Node.js GitHub リポジトリ</a>にある Service Bus キューおよびトピックの使用例を参照してください。</p>
 </div>
 
 ## 次のステップ
 
 このチュートリアルでは、Azure Cloud Services でホストされる基本的なチャット アプリケーションを作成する方法を説明しました。Azure Websites でこのアプリケーションをホストする方法については、「[Azure Websites で Socket.IO を使用する Node.js チャット アプリケーションを構築する][Azure Websites で Socket.IO を使用する Node.js チャット アプリケーションを構築する]」を参照してください。
 
-  [Azure でホストされるサービスを表示しているブラウザー ウィンドウ]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-10.png
   [Azure PowerShell アイコン]: ./media/cloud-services-nodejs-chat-app-socketio/azure-powershell-start.png
   [new-azureservice および add-azurenodeworkerrole コマンドレットの出力]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-1.png
   [Socket.IO GitHub リポジトリ]: https://github.com/LearnBoost/socket.io/tree/0.9.14
@@ -164,3 +156,5 @@ Socket.IO を使用する複数のクライアント間でチャット メッセ
   [Node.js アプリケーションの構築と Azure のクラウド サービスへのデプロイ]: https://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/getting-started/
   [Azure SDK for Node.js GitHub リポジトリ]: https://github.com/WindowsAzure/azure-sdk-for-node
   [Azure Websites で Socket.IO を使用する Node.js チャット アプリケーションを構築する]: /ja-jp/develop/nodejs/tutorials/website-using-socketio/
+  [chat-contents]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-5.png
+  [Azure でホストされるサービスを表示しているブラウザー ウィンドウ]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-10.png

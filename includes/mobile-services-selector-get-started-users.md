@@ -1,12 +1,12 @@
-> [AZURE.SELECTOR-LIST (プラットフォーム | バックエンド)]
+﻿> [AZURE.SELECTOR-LIST (プラットフォーム | バックエンド)]
 - [(iOS | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users/)
 - [(iOS | JavaScript)](/ja-jp/documentation/articles/mobile-services-ios-get-started-users/)
-- [(Windows C# | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-universal-dotnet-get-started-users/)
-- [(Windows C# | Javascript)](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-universal-dotnet-get-started-users/)
-- [(Windows JavaScript | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/)
-- [(Windows JavaScript | Javascript)](/ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-users/)
+- [(Windows universal C# | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-universal-dotnet-get-started-users/)
+- [(Windows universal C# | Javascript)](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-universal-dotnet-get-started-users/)
+- [(Windows universal JavaScript | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/)
+- [(Windows universal JavaScript | Javascript)](/ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-users/)
 - [(Windows Phone | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-users/)
-- [(Windows Phone | Javascript)](/ja-jp/documentation/articles/mobile-services-windows-phone-get-started-users/)
+- [(Windows Phone | JavaScript)](/ja-jp/documentation/articles/mobile-services-windows-phone-get-started-users/)
 - [(Android | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-android-get-started-users/)
 - [(Android | JavaScript)](/ja-jp/documentation/articles/mobile-services-android-get-started-users/)
 - [(Xamarin iOS | .NET)](/ja-jp/documentation/articles/mobile-services-dotnet-backend-xamarin-ios-get-started-users/)
