@@ -605,7 +605,7 @@ Transact-SQL クエリとデータ定義言語を自在に操作できること�
 
 * [Migrating Databases to SQL Database (データベースの SQL データベースへの移行)](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee730904.aspx)
 * [Copying Databases in SQL Database (データベースの SQL データベースへのコピー)](http://msdn.microsoft.com/ja-jp/library/windowsazure/ff951624.aspx)
-* [Azure 仮想マシンへの SQL Server データベースの配置](http://msdn.microsoft.com/ja-jp/library/dn195938(v=sql.120)
+* [Azure 仮想マシンへの SQL Server データベースの配置](http://msdn.microsoft.com/ja-jp/library/dn195938(v=sql.120).aspx)
 
 
 

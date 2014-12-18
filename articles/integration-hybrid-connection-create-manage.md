@@ -103,7 +103,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 2. Download the Hybrid Connection Manager MSI file. 
 3. On the on-premises resource, install the Hybrid Connection Manager from the MSI file. 
 4. Using Windows PowerShell, type: 
-> Add-HybridConnection -ConnectionString â€œ*コピーした内部設置型接続文字列*â€ 
+> Add-HybridConnection -ConnectionString “*コピーした内部設置型接続文字列*” 
 --> 
 
 #### その他
