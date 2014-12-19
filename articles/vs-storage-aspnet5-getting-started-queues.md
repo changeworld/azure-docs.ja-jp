@@ -33,7 +33,7 @@ ASP.NET 5 プロジェクトでプログラムを使用してキューにアク�
 #####ストレージ接続文字列を取得する
 キューを使用した操作を行うには、キューを使用するストレージ アカウントの接続文字列を取得する必要があります。ストレージ アカウント情報を表すには、**CloudStorageAccount** 型を使用します。ASP.NET 5 プロジェクトを使用する場合、次のコードに示すように、構成オブジェクトの get メソッドを呼び出して Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得することができます。
 
-**メモ: **ASP.NET 5 で Azure Storage への呼び出しを実行する API は非同期です。詳細については、「[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)」を参照してください。次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
+**メモ:** ASP.NET 5 で Azure Storage への呼び出しを実行する API は非同期です。詳細については、「[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)」を参照してください。次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
 
 	CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
       config.Get("MicrosoftAzureStorage:<storageAccountName>_AzureStorageConnectionString"));
@@ -41,7 +41,7 @@ ASP.NET 5 プロジェクトでプログラムを使用してキューにアク�
 #####キューを作成する
 **CloudQueueClient** オブジェクトを使用すると、キューの参照オブジェクトを取得できます。次のコードでは、**CloudQueueClient** オブジェクトを作成します。このトピックのすべてのコードでは、Azure アプリケーションのサービス構成に格納されているストレージ接続文字列を使用します。**CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳細については、「[CloudStorageAccount メソッド](http://msdn.microsoft.com/ja-jp/library/microsoft.windowsazure.cloudstorageaccount_methods.aspx "CloudStorageAccount")」を参照してください。
 
-**メモ: **ASP.NET 5 で Azure Storage への呼び出しを実行する API は非同期です。詳細については、「[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)」を参照してください。次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
+**メモ:** ASP.NET 5 で Azure Storage への呼び出しを実行する API は非同期です。詳細については、「[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)」を参照してください。次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
 
 	// Create the queue client.
 	CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
@@ -54,7 +54,7 @@ ASP.NET 5 プロジェクトでプログラムを使用してキューにアク�
 	// If the queue isn't already there, then create it.
 	await queue.CreateIfNotExistsAsync();
 
-**メモ: ** このコードはすべて以下のセクションのコードの前に使用してください。
+**メモ:**  このコードはすべて以下のセクションのコードの前に使用してください。
 
 #####メッセージをキューに挿入する
 既存のキューにメッセージを挿入するには、最初に新しい **CloudQueueMessage** オブジェクトを作成します。次に、AddMessageAsync() メソッドを呼び出します。**CloudQueueMessage** オブジェクトは、文字列 (UTF-8 形式) またはバイト配列から作成できます。次のコードでは、キューが存在しない場合は作成し、メッセージ "Hello, World" を挿入します。

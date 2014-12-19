@@ -33,7 +33,7 @@ ASP.NET 5 プロジェクトでプログラムを使用してテーブルにア�
 #####ストレージ接続文字列を取得する
 テーブルを使用した操作を行うには、テーブルを使用するストレージ アカウントの接続文字列を取得する必要があります。ストレージ アカウント情報を表すには、**CloudStorageAccount** 型を使用します。ASP.NET vNext プロジェクトを使用する場合、次のコードに示すように、構成オブジェクトの get メソッドを呼び出して Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得することができます。
 
-**メモ: **ASP.NET 5 で Azure Storage への呼び出しを実行する API は非同期です。詳細については、「[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)」を参照してください。次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
+**メモ:** ASP.NET 5 で Azure Storage への呼び出しを実行する API は非同期です。詳細については、「[Async および Await を使用した非同期プログラミング](http://msdn.microsoft.com/library/hh191443.aspx)」を参照してください。次のコードでは、非同期のプログラミング方法を使用していることを前提としています。
 
 	CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
       config.Get("MicrosoftAzureStorage:<storageAccountName>_AzureStorageConnectionString"));
@@ -41,7 +41,7 @@ ASP.NET 5 プロジェクトでプログラムを使用してテーブルにア�
 #####テーブルの作成
 **CloudTableClient** オブジェクトを使用すると、テーブルとエンティティの参照オブジェクトを取得できます。次のコードは、**CloudTableClient** オブジェクトを作成し、これを使用して新しいテーブルを作成します。コードは "people" という名前のテーブルを参照しようとします。この名前のテーブルが見つからない場合は作成します。
 
-**メモ: ** このガイドのすべてのコードでは、作成するアプリケーションが Azure Cloud Service プロジェクトであること、Azure アプリケーションのサービス構成に格納されているストレージ接続文字列を使用することを前提としています。また、このコードはすべて、以下のセクションのコードの前に使用してください。
+**メモ:**  このガイドのすべてのコードでは、作成するアプリケーションが Azure Cloud Service プロジェクトであること、Azure アプリケーションのサービス構成に格納されているストレージ接続文字列を使用することを前提としています。また、このコードはすべて、以下のセクションのコードの前に使用してください。
 
 	// Create the table client.
 	CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
