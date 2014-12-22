@@ -1,18 +1,17 @@
-<properties title="Learn how to configure an Azure website that uses Traffic Manager to use a domain name registered with Moniker" pageTitle="Configure a Moniker domain name for an Azure website using Traffic Manager" metaKeywords="Windows Azure, Windows Azure Websites, Moniker, Traffic Manager" description="Learn how to configure an Azure website that uses Traffic Manager to use a domain name registered with Moniker" services="web-sites" documentationCenter="" authors="larryfr,jroth" />
+﻿<properties title="Learn how to configure an Azure website that uses Traffic Manager to use a domain name registered with Moniker" pageTitle="Traffic Manager を利用する Azure Web サイトの Moniker ドメイン名の構成" metakeywords="Windows Azure, Windows Azure Websites, Moniker, Traffic Manager" description="Learn how to configure an Azure website that uses Traffic Manager to use a domain name registered with Moniker" services="web-sites" documentationCenter="" authors="larryfr,jroth" manager="wpickett" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr,jroth" />
 
-# Traffic Manager を利用する Azure Website のカスタム ドメイン名の構成 (Moniker)
+#Traffic Manager を利用する Azure Website のカスタム ドメイン名の構成 (Moniker)
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/web-sites-custom-domain-name" title="カスタム ドメイン">カスタム ドメイン</a><a href="/ja-jp/documentation/articles/web-sites-godaddy-custom-domain-name" title="GoDaddy">GoDaddy</a><a href="/ja-jp/documentation/articles/web-sites-network-solutions-custom-domain-name" title="Network Solutions">Network Solutions</a><a href="/ja-jp/documentation/articles/web-sites-registerdotcom-custom-domain-name" title="Register.com">Register.com</a><a href="/ja-jp/documentation/articles/web-sites-enom-custom-domain-name" title="Enom">Enom</a><a href="/ja-jp/documentation/articles/web-sites-moniker-custom-domain-name" title="Moniker" class="current">Moniker</a><a href="/ja-jp/documentation/articles/web-sites-dotster-custom-domain-name" title="Dotster" class="current">Dotster</a><a href="/ja-jp/documentation/articles/web-sites-domaindiscover-custom-domain-name" title="DomainDiscover" class="current">DomainDiscover</a><a href="/ja-jp/documentation/articles/web-sites-directnic-custom-domain-name" title="Directnic" class="current">Directnic</a></div>
-
-<div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/web-sites-moniker-custom-domain-name/" title="Web サイト">Web サイト</a> | <a href="/ja-jp/documentation/articles/web-sites-moniker-traffic-manager-custom-domain-name/" title="Traffic Manager を利用する Web サイト" class="current">Traffic Manager を利用する Web サイト</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/web-sites-custom-domain-name" title="Custom Domain">カスタム ドメイン</a><a href="/ja-jp/documentation/articles/web-sites-godaddy-custom-domain-name" title="GoDaddy">GoDaddy</a><a href="/ja-jp/documentation/articles/web-sites-network-solutions-custom-domain-name" title="Network Solutions">Network Solutions</a><a href="/ja-jp/documentation/articles/web-sites-registerdotcom-custom-domain-name" title="Register.com">Register.com</a><a href="/ja-jp/documentation/articles/web-sites-enom-custom-domain-name" title="Enom">Enom</a><a href="/ja-jp/documentation/articles/web-sites-moniker-custom-domain-name" title="Moniker" class="current">Moniker</a><a href="/ja-jp/documentation/articles/web-sites-dotster-custom-domain-name" title="Dotster">Dotster</a><a href="/ja-jp/documentation/articles/web-sites-domaindiscover-custom-domain-name" title="DomainDiscover">DomainDiscover</a><a href="/ja-jp/documentation/articles/web-sites-directnic-custom-domain-name" title="Directnic">Directnic</a></div>
+<div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/web-sites-moniker-custom-domain-name/" title="Websites">Web サイト</a> | <a href="/ja-jp/documentation/articles/web-sites-moniker-traffic-manager-custom-domain-name/" title="Website using Traffic Manager" class="current">Traffic Manager を利用する Web サイト</a></div>
 
 [WACOM.INCLUDE [websites-cloud-services-css-guided-walkthrough](../includes/websites-cloud-services-css-guided-walkthrough.md)]
 
 [WACOM.INCLUDE [intro](../includes/custom-dns-web-site-intro-traffic-manager.md)]
 
-この記事では、[Moniker][1] から購入したカスタム ドメイン名を Azure Websites で使用する手順を示します。
+この記事では、[Moniker](https://moniker.com) から購入したカスタム ドメイン名を Azure Websites で使用する手順を示します。
 
 [WACOM.INCLUDE [tmwebsitefooter](../includes/custom-dns-web-site-traffic-manager-notes.md)]
 
@@ -20,67 +19,53 @@
 
 この記事の内容:
 
--   [DNS レコードについて][DNS レコードについて]
--   [Web サイトの標準モード用の構成][Web サイトの標準モード用の構成]
--   [カスタム ドメインの DNS レコードの追加][カスタム ドメインの DNS レコードの追加]
--   [Web サイトに対するトラフィック マネージャーの有効化][Web サイトに対するトラフィック マネージャーの有効化]
+-   [DNS レコードについて](#understanding-records)
+-   [Web サイトの標準モード用の構成](#bkmk_configsharedmode)
+-   [カスタム ドメインの DNS レコードの追加](#bkmk_configurecname)
+-   [Web サイトに対するトラフィック マネージャーの有効化](#enabledomain)
 
-## <a name="understanding-records"></a>DNS レコードについて
+<h2><a name="understanding-records"></a>DNS レコードについて</h2>
 
 [WACOM.INCLUDE [understandingdns](../includes/custom-dns-web-site-understanding-dns-traffic-manager.md)]
 
-## <a name="bkmk_configsharedmode"></a>Web サイトの標準モード用の構成
+<h2><a name="bkmk_configsharedmode"></a>Web サイトの標準モード用の構成</h2>
 
 [WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes-traffic-manager.md)]
 
-<a name="bkmk_configurecname"></a>
+<a name="bkmk_configurecname"></a><h2>カスタム ドメインの DNS レコードの追加</h2>
 
-## カスタム ドメインの DNS レコードの追加
+カスタム ドメインを Azure Web サイトに関連付けるには、Moniker のツールを使用して、新しいエントリをカスタム ドメインの DNS テーブルに追加する必要があります。次の手順を使用して Moniker.com の DNS ツールを見つけます。
 
-</p>
-カスタム ドメインを Azure Websites に関連付けるには、Moniker のツールを使用して、新しいエントリをカスタム ドメインの DNS テーブルに追加する必要があります。次の手順を使用して Moniker.com の DNS ツールを見つけます。
+1. Moniker.com のアカウントにログオンし、**[My Domains]**、**[Manage Templates]** の順に選択します。
 
-1.  Moniker.com のアカウントにログオンし、**[My Domains]**、**[Manage Templates]** の順に選択します。
+    ![My Domains page for Moniker](.\media\web-sites-moniker-custom-domain-name\Moniker_MyDomains.png)
 
-    ![Moniker の My Domains ページ][Moniker の My Domains ページ]
+2. **[Zone Template Management]** ページで、**[Create New Template]** を選択します。
 
-2.  **[Zone Template Management]** ページで、**[Create New Template]** を選択します。
+    ![Moniker Zone Template Management](.\media\web-sites-moniker-custom-domain-name\Moniker_ZoneManager.png)
 
-    ![Moniker の Zone Template Management ページ][Moniker の Zone Template Management ページ]
+3. **[Template Name]** に入力します。 
 
-3.  **[Template Name]** に入力します。
+5. **[Record Type]** を選択して DNS レコードを作成します。次に、**[Hostname]** と **[Address]** に入力します。 
 
-4.  **[Record Type]** を選択して DNS レコードを作成します。次に、**[Hostname]** と **[Address]** に入力します。
+    ![Moniker Create Zone Template](.\media\web-sites-moniker-custom-domain-name\Moniker_CreateZoneTemplate_TM.png)
 
-    ![Moniker の Create Zone Template ページ][Moniker の Create Zone Template ページ]
+    *  CNAME レコードを追加するときは、**[Hostname]** フィールドを、使用するサブドメインに設定する必要があります。たとえば **www** にします。**[Address]** フィールドを、Azure Website で利用する Traffic Manager プロファイルの **.trafficmanager.net** ドメイン名に設定する必要があります。たとえば、**contoso.trafficmanager.net** にします。
 
-    -   CNAME レコードを追加するときは、**[Hostname]** フィールドを、使用するサブドメインに設定する必要があります。たとえば **www** にします。**[Address]** フィールドを、Azure Website で利用する Traffic Manager プロファイルの **.trafficmanager.net** ドメイン名に設定する必要があります。たとえば **contoso.trafficmanager.net** にします。
+	    > [WACOM.NOTE] Traffic Manager を利用して負荷分散されている Web サイトにカスタム ドメイン名を関連付けるときは、CNAME レコードのみを使用する必要があります。
+	 
+7. **[Add]** をクリックしてエントリを追加します。
 
-        > [WACOM.NOTE] CNAME レコードを使用する必要があるのは、トラフィック マネージャーを利用して負荷分散されている Web サイトにカスタム ドメイン名を関連付けるときのみです。
+8. すべてのエントリを追加した後、**[Save]** をクリックします。
 
-5.  **[Add]** をクリックしてエントリを追加します。
+5. **[Domain Manager]** を選択してドメインの一覧に戻ります。
 
-6.  すべてのエントリを追加した後、**[Save]** をクリックします。
+6. ターゲット ドメインのチェック ボックスをオンにし、**[Manage Templates]** を再びクリックします。
 
-7.  **[Domain Manager]** を選択してドメインの一覧に戻ります。
+7. 前の手順で作成した新しいテンプレートを見つけます。次に、**[place selected domains (1) into this Template]** リンクをクリックします。
 
-8.  ターゲット ドメインのチェック ボックスをオンにし、**[Manage Templates]** を再びクリックします。
+    ![Moniker Create Zone Template](.\media\web-sites-moniker-custom-domain-name\Moniker_ZoneAssignment.png)
 
-9.  前の手順で作成した新しいテンプレートを見つけます。次に、**[place selected domains (1) into this Template]** リンクをクリックします。
+<h2><a name="enabledomain"></a>Traffic Manager Web サイトを有効にする</h2>
 
-    ![Moniker の Create Zone Template ページ][2]
-
-## <a name="enabledomain"></a>Web サイトに対するトラフィック マネージャーの有効化
-
-[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes-traffic-manager.md)]
-
-  [Moniker]: /ja-jp/documentation/articles/web-sites-moniker-custom-domain-name "Moniker"
-  [1]: https://moniker.com
-  [DNS レコードについて]: #understanding-records
-  [Web サイトの標準モード用の構成]: #bkmk_configsharedmode
-  [カスタム ドメインの DNS レコードの追加]: #bkmk_configurecname
-  [Web サイトに対するトラフィック マネージャーの有効化]: #enabledomain
-  [Moniker の My Domains ページ]: .\media\web-sites-moniker-custom-domain-name\Moniker_MyDomains.png
-  [Moniker の Zone Template Management ページ]: .\media\web-sites-moniker-custom-domain-name\Moniker_ZoneManager.png
-  [Moniker の Create Zone Template ページ]: .\media\web-sites-moniker-custom-domain-name\Moniker_CreateZoneTemplate_TM.png
-  [2]: .\media\web-sites-moniker-custom-domain-name\Moniker_ZoneAssignment.png
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-enable-on-traffic-manager.md)]

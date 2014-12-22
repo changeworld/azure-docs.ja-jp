@@ -1,127 +1,138 @@
-<properties title="Troubleshooting Azure Websites in Visual Studio" pageTitle="Troubleshooting Azure Websites in Visual Studio" metaKeywords="troubleshoot debug azure web site tracing logging" description="Learn how to troubleshoot an Azure Website by using remote debugging, tracing, and logging tools that are built in to Visual Studio 2013." metaCanonical="" services="web-sites" documentationCenter=".NET" authors="tdykstra" manager="wpickett" solutions="" />
+﻿<properties title="Troubleshooting Azure Websites in Visual Studio" pageTitle="Troubleshooting Azure Websites in Visual Studio" metaKeywords="troubleshoot debug azure web site tracing logging" description="Learn how to troubleshoot an Azure Website by using remote debugging, tracing, and logging tools that are built in to Visual Studio 2013." metaCanonical="" services="web-sites" documentationCenter=".NET" authors="tdykstra" manager="wpickett" solutions="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="tdykstra" />
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/13/2014" ms.author="tdykstra" />
 
-# Visual Studio での Azure Web サイトのトラブルシューティング
+# Troubleshooting Azure Websites in Visual Studio
 
-Web アプリケーションの開発やテストにおけるトラブルシューティングは、[デバッグ モード][デバッグ モード]または [IntelliTrace][IntelliTrace] を使用して実行できます。デバッグ モードは、IIS Express を使ってローカルで実行するか、Azure Web サイトを使ってリモートで実行することができます。ただし、運用環境でのみ発生するエラーについては、アプリケーション コードまたは Web サーバーによって作成されるログを参照してデバッグするのが最善の方法となります。このチュートリアルでは、Visual Studio のツールを活用し、Azure Web サイトで実行されているアプリケーションをデバッグ モードでリモートから実行するか、アプリケーションと Web サーバーのログを参照することによってデバッグする方法を説明します。
+This tutorial shows how to use Visual Studio tools that help debug an application while it runs in an Azure Website, by running in [debug mode](http://www.visualstudio.com/ja-jp/get-started/debug-your-app-vs.aspx) remotely or by viewing application logs and web server logs.
 
-学習内容:
+You'll learn:
 
--   Visual Studio から利用できる Azure のサイト管理機能。
--   Visual Studio のリモート ビューを使用して、リモート Web サイトにすぐに変更を加える方法。
--   Azure Web サイトでプロジェクトが実行されているときに、リモートからデバッグ モードを実行する方法。
--   アプリケーションのトレース ログを作成する方法と、ログが作成されている最中にそれらを確認する方法。
--   Web サーバーのログ (詳細なエラー メッセージ、失敗した要求トレースを含む) を確認する方法。
--   Azure のストレージ アカウントに診断ログを送り、そこでログを確認する方法。
+* Which Azure site management functions are available in Visual Studio.
+* How to use Visual Studio remote view to make quick changes in a remote website.
+* How to run debug mode remotely while a project is running in Azure.
+* How to create application trace logs and view them while the application is creating them.
+* How to view web server logs, including detailed error messages and failed request tracing.
+* How to send diagnostic logs to an Azure Storage account and view them there.
 
-### チュートリアル セグメント
+If you have Visual Studio Ultimate, you can also use [IntelliTrace](http://msdn.microsoft.com/library/vstudio/dd264915.aspx) for debugging. IntelliTrace is not covered in this tutorial.
 
-1.  [前提条件][前提条件]
-2.  [サイトの構成と管理][サイトの構成と管理]
-3.  [リモート ビュー][リモート ビュー]
-4.  [リモート デバッグ][リモート デバッグ]
-5.  [診断ログの概要][診断ログの概要]
-6.  [アプリケーションのトレース ログの作成と表示][アプリケーションのトレース ログの作成と表示]
-7.  [Web サーバーのログの表示][Web サーバーのログの表示]
-8.  [詳細なエラー メッセージ ログの表示][詳細なエラー メッセージ ログの表示]
-9.  [ファイル システムのログのダウンロード][ファイル システムのログのダウンロード]
-10. [ストレージ ログの表示][ストレージ ログの表示]
-11. [失敗した要求ログの表示][失敗した要求ログの表示]
-12. [次のステップ][次のステップ]
+### Tutorial segments
 
-## <a name="prerequisites"></a>前提条件
+- [Prerequisites](#prerequisites)
+- [Site configuration and management](#sitemanagement)
+- [Access website files in Server Explorer](#remoteview)
+- [Remote debugging](#remotedebug)
+	- Remote debugging websites
+	- Remote debugging WebJobs
+	- Notes about remote debugging 
+- [Diagnostic logs overview](#logsoverview)
+- [Create and view application trace logs](#apptracelogs)
+- [View web server logs](#webserverlogs)
+- [View detailed error message logs](#detailederrorlogs)
+- [Download file system logs](#downloadlogs)
+- [View storage logs](#storagelogs)
+- [View failed request logs](#failedrequestlogs)
+- [Next steps](#nextsteps)
 
-このチュートリアルでは、「[ASP.NET Web アプリケーションを Azure Web サイトに展開する][ASP.NET Web アプリケーションを Azure Web サイトに展開する]」で設定した開発環境、Web プロジェクト、および Azure Web サイトを使用します。このチュートリアルで示すコード サンプルは、C# MVC Web アプリケーションに対応していますが、トラブルシューティング手順は Visual Basic および Web フォームの各アプリケーションでも同じです。
+<h2><a name="prerequisites"></a>Prerequisites</h2>
 
-リモート デバッグを実行するには、Visual Studio 2013 または Visual Studio 2012 Update 4 が必要です。このチュートリアルで紹介するその他の機能については、Visual Studio 2013 Express for Web や Visual Studio 2012 Express for Web でも動作します。
+This tutorial works with the development environment, web project, and Azure Website that you set up in [Get started with Azure and ASP.NET][GetStarted]. For the WebJobs sections, you'll need the application that you create in [Get Started with the Azure WebJobs SDK][GetStartedWJ].
 
-ストリーミング ログ機能は、.NET Framework 4 以降を対象とするアプリケーションでのみ動作します。
+The code samples shown in this tutorial are for a C# MVC web application, but the troubleshooting procedures are the same for Visual Basic and Web Forms applications.
 
-## <a name="sitemanagement"></a>サイトの構成と管理
+Remote debugging requires Visual Studio 2013 or Visual Studio 2012 with Update 4. The remote debugging and **Server Explorer** features for WebJobs require [Visual Studio 2013 Update 4](http://go.microsoft.com/fwlink/?LinkID=510314) or later. The other features shown in the tutorial also work in Visual Studio 2013 Express for Web, and Visual Studio 2012 Express for Web. 
 
-Visual Studio は、管理ポータルで利用できるサイト管理機能や構成設定に一部アクセスできるようになっています。このセクションでは、その対象となる機能や設定について取り上げます。
+The streaming logs feature only works for applications that target .NET Framework 4 or later.
 
-1.  まだ Visual Studio から Azure にサインインしていない場合は、**サーバー エクスプローラー** の **[Azure に接続]** をクリックします。
+<h2><a name="sitemanagement"></a>Site configuration and management</h2>
 
-    または、アカウントへのアクセスを可能にする管理証明書をインストールします。管理証明書により、追加の Azure サービス (SQL Database サービスとモバイル サービス) に対するアクセス許可がサーバー エクスプローラーに付与されます。証明書をインストールする方針を選択した場合は、**サーバー エクスプローラー**で、**Azure** ノードを右クリックし、コンテキスト メニューの **[サブスクリプションの管理]** をクリックします。**[Azure サブスクリプションの管理]** ダイアログ ボックスで、**[証明書]** タブをクリックし、**[インポート]** をクリックします。操作手順に従い、Azure アカウント用のサブスクリプション ファイル (*.publishsettings* ファイル) をダウンロードしてインポートします。
+Visual Studio provides access to a subset of the site management functions and configuration settings available in the management portal. In this section you'll see what's available.
 
-    > [WACOM.NOTE]
-    > サブスクリプション ファイルをダウンロードする場合は、ソース コード ディレクトリの外にあるフォルダー (Downloads フォルダーなど) に保存し、インポートが完了したらそのファイルを削除します。悪意のあるユーザーがサブスクリプション ファイルへのアクセス許可を取得すると、Azure サービスを編集、作成、削除できるためです。
+1. If you aren't already signed in to Azure in Visual Studio, click the **Connect to Azure** button in **Server Explorer**.
 
-    Visual Studio から Azure リソースへの接続の詳細については、「[アカウント、サブスクリプション、管理ロールの管理][アカウント、サブスクリプション、管理ロールの管理]」を参照してください。
+	An alternative is to install a management certificate that enables access to your account. The management certificate gives **Server Explorer** access to additional Azure services (SQL Database and Mobile Services). If you choose to install a certificate, right-click the **Azure** node in **Server Explorer**, and then click **Manage Subscriptions** in the context menu. In the **Manage Azure Subscriptions** dialog box, click the **Certificates** tab, and then click **Import**. Follow the directions to download and then import a subscription file (also called a *.publishsettings* file) for your Azure account.
 
-2.  **サーバー エクスプローラー**で **[Azure]** を展開し、**[Web サイト]** を展開します。
+	> [WACOM.NOTE]
+	> If you download a subscription file, save it to a folder outside your source code directories (for example, in the Downloads folder), and then delete it once the import has completed. A malicious user who gains access to the subscription file can edit, create, and delete your Azure services.
 
-3.  「[ASP.NET Web アプリケーションを Azure Web サイトに展開する][ASP.NET Web アプリケーションを Azure Web サイトに展開する]」で作成した Web サイトのノードを右クリックし、**[設定の表示]** をクリックします。
+	For more information about connecting to Azure resources from Visual Studio, see [Manage Accounts, Subscriptions, and Administrative Roles](http://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert).
 
-    ![サーバー エクスプローラーの 設定の表示][サーバー エクスプローラーの 設定の表示]
+2. In **Server Explorer**, expand **Azure**, and then expand **Websites**.
 
-    **[Azure の Web サイト]** タブが表示され、Visual Studio から利用できるサイト管理タスクや構成タスクが確認できます。
+3. Right-click the node for the website that you created in [Getting started with Azure and ASP.NET][GetStarted], and then click **View Settings**.
 
-    ![Azure Web サイト ウィンドウ][Azure Web サイト ウィンドウ]
+	![View Settings in Server Explorer](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
 
-    このチュートリアルでは、ログとトレースのドロップダウンを使用します。また、リモート デバッグも使用し、さまざまな方法でこの機能を有効にします。
+	The **Azure Website** tab appears, and you can see there the site management and configuration tasks that are available in Visual Studio.
 
-    このウィンドウの [アプリケーション設定] ボックスと [接続文字列] ボックスについては、[Azure の Web サイト: アプリケーション文字列と接続文字列の動作に関するページ][Azure の Web サイト: アプリケーション文字列と接続文字列の動作に関するページ]を参照してください。
+	![Azure Website window](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configtab.png)
 
-    このウィンドウでは実行できないサイト管理タスクを行う場合は、**[すべての Web サイト設定]** をクリックすると、ブラウザー ウィンドウが開いて管理ポータルにアクセスできます。詳細については、「[Web サイトの構成方法][Web サイトの構成方法]」を参照してください。
+	In this tutorial you'll be using the logging and tracing drop-downs.	You'll also use remote debugging but you'll use a different method to enable it.
+   
+	For information about the App Settings and Connection Strings boxes in this window, see [Azure Web Sites: How Application Strings and Connection Strings Work](http://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx).
 
-## <a name="remoteview"></a>リモート ビュー
+	If you want to perform a site management task that can't be done in this window, you can click **Full Website Settings** to open a browser window to the management portal. For more information, see [How to Configure Web Sites](/ja-jp/manage/services/web-sites/how-to-configure-websites/#howtochangeconfig).
 
-通常は、Web.config ファイルで `customErrors` フラグを `On` または `RemoteOnly` に設定してサイトをデプロイします。これは、何か問題が発生したときに、役に立つエラー メッセージを表示しないことを意味します。表示されるエラーの多くは、次のようなページになります。
+<h2><a name="remoteview"></a>Access website files in Server Explorer</h2>
 
-**'/' アプリケーションのサーバー エラー:**
-![あまり役に立たないエラー ページ][あまり役に立たないエラー ページ]
+You typically deploy a site with the `customErrors` flag in the Web.config file set to `On` or `RemoteOnly`, which means you don't get a helpful error message when something goes wrong. For many errors all you get is a page like one of the following ones.
 
-**エラーが発生しました:**
-![あまり役に立たないエラー ページ][1]
+**Server Error in '/' Application:**
 
-**Web サイト側でページを表示できません**
-![あまり役に立たないエラー ページ][2]
+![Unhelpful error page](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png)
 
-多くの場合、エラーの原因を最も簡単に見つける方法は、詳細なエラー メッセージを有効にすることです。その結果、既に示した最初のスクリーンショットのように、対応方法が表示されます。ここでは、デプロイした Web.config ファイルの変更が必要です。プロジェクト内の *Web.config* ファイルを編集し、プロジェクトを再デプロイすること、または [Web.config の変換][Web.config の変換]を作成し、デバッグ ビルドをデプロイすることもできますが、より簡単な方法があります。*remote view* 機能を使用して、リモート サイトから**ソリューション エクスプローラー**でファイルを直接表示し、編集することができます。
+**An error occurred:**
 
-1.  **サーバー エクスプローラー**で **[Azure]**、**[Web サイト]**、デプロイしようとする Web サイトに対応するノードの順に展開します。
+![Unhelpful error page](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png)
 
-    Web サイトのコンテンツ ファイルとログ ファイルへのアクセス許可を付与するノードが表示されます。
+**The website cannot display the page**
 
-    <p><img src="./media/web-sites-dotnet-troubleshoot-visual-studio/fileandlogfiles.png" alt="[ファイル] と [ログ ファイル]" /></p>
+![Unhelpful error page](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png)
 
-2.  **[ファイル]** ノードを展開し、*[Web.config]* ファイルをダブルクリックします。
+Frequently the easiest way to find the cause of the error is to enable detailed error messages, which the first of the preceding screenshots explains how to do. That requires a change in the deployed Web.config file. You could edit the *Web.config* file in the project and redeploy the project, or create a [Web.config transform](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) and deploy a debug build, but there's a quicker way: in **Solution Explorer** you can directly view and edit files on the remote site by using the *remote view* feature.
 
-    <p><img src="./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png" alt="[Web.config] を開く" /></p>
+1. In **Server Explorer**, expand **Azure**, expand **Websites**, and expand the node for the website you're deploying to.
 
+	You see nodes that give you access to the website's content files and log files.
 
-    Visual Studio は、リモート サイトから Web.config ファイルを開き、タイトル バーではファイル名 の横に "リモート" と表示されています。
+	![File and log files](./media/web-sites-dotnet-troubleshoot-visual-studio/fileandlogfiles.png)
 
-3.  次の行を `system.web` 要素に追加します。
+2. Expand the **Files** node, and double-click the *Web.config* file.
 
-    `<customErrors mode="off"></customErrors>`
+	![Open Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
 
-    ![Web.config の編集][Web.config の編集]
+	Visual Studio opens the Web.config file from the remote site and shows [Remote] next to the file name in the title bar.
 
-4.  あまり役に立たないエラー メッセージを示しているブラウザーを最新の情報に更新すると、次の例のような詳細なエラー メッセージが表示されます。
+3. Add the following line to the `system.web` element:
 
-    ![詳細なエラー メッセージ][詳細なエラー メッセージ]
+	`<customErrors mode="off"></customErrors>`
 
-    (ここで示されているエラーは、赤く表示されている行を *Views\\Home\\Index.cshtml* に追加することによって作成したものです。)
+	![Edit Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
 
-Web.config ファイルを編集することは、Azure Web サイトにあるファイルの読み取りと編集を可能にして、トラブルシューティングを容易にする 1 つのシナリオの例にすぎません。
+4. Refresh the browser that is showing the unhelpful error message, and now you get a detailed error message, such as the following example:
 
-## <a name="remotedebug"></a>リモート デバッグ
+	![Detailed error messaeg](./media/web-sites-dotnet-troubleshoot-visual-studio/detailederror.png)
 
-詳細なエラー メッセージで十分な情報が表示されておらず、エラーをローカルで再現できない場合は、トラブルシューティングの別の方法として、リモートでデバッグ モードを実行することができます。ブレークポイントの設定、メモリの直接操作、コードのステップ実行、さらにコード パスの変更を実行できます。
+	(The error shown was created by adding the line shown in red to *Views\Home\Index.cshtml*.)
 
-リモート デバッグは、Visual Studio の各 Express Edition では機能しません。
+Editing the Web.config file is only one example of scenarios in which the ability to read and edit files on your Azure website make troubleshooting easier.
 
-このセクションでは、「[ASP.NET Web アプリケーションを Azure の Web サイトに展開する][ASP.NET Web アプリケーションを Azure Web サイトに展開する]」で作成したプロジェクトを使用してリモート デバッグを実行する方法を示します。
+<h2><a name="remotedebug"></a>Remote debugging</h2>
 
-1.  「[ASP.NET Web アプリケーションを Azure Web サイトに展開する][ASP.NET Web アプリケーションを Azure Web サイトに展開する]」で作成した Web プロジェクトを開きます。
+If the detailed error message doesn't provide enough information, and you can't re-create the error locally, another way to troubleshoot is to run in debug mode remotely. You can set breakpoints, manipulate memory directly, step through code, and even change the code path. 
 
-2.  *Controllers\\HomeController.cs* を開きます。
+Remote debugging does not work in Express editions of Visual Studio.
 
-3.  `About()` メソッドを削除し、その位置に次のコードを挿入します。
+### Remote debugging websites
+
+This section shows how to debug remotely using the project you create in [Getting started with Azure and ASP.NET][GetStarted].
+
+1. Open the web project that you created in [Getting started with Azure and ASP.NET][GetStarted].
+
+1. Open *Controllers\HomeController.cs*.
+
+2. Delete the `About()` method and insert the following code in its place.
 
         public ActionResult About()
         {
@@ -130,526 +141,605 @@ Web.config ファイルを編集することは、Azure Web サイトにある�
             return View();
         }
 
-4.  `ViewBag.Message` の行に[ブレークポイントを設定][デバッグ モード]します。
+2. [Set a breakpoint](http://www.visualstudio.com/ja-jp/get-started/debug-your-app-vs.aspx) on the `ViewBag.Message` line.
 
-5.  **ソリューション エクスプローラー**で目的のプロジェクトを右クリックし、**[発行]** をクリックします。
+1. In **Solution Explorer**, right-click the project, and click **Publish**.
 
-6.  **[プロファイル]** ボックスの一覧から、「[ASP.NET Web アプリケーションを Azure Web サイトに展開する][ASP.NET Web アプリケーションを Azure Web サイトに展開する]」で使用したものと同じプロファイルを選択します。
+2. In the **Profile** drop-down list, select the same profile that you used in [Getting started with Azure and ASP.NET][GetStarted].
 
-7.  **[設定]** タブをクリックして **[構成]** を **[デバッグ]** に変更し、**[発行]** をクリックします。
+3. Click the **Settings** tab, and change **Configuration** to **Debug**, and then click **Publish**.
 
-    ![デバッグ モードでの発行][デバッグ モードでの発行]
+	![Publish in debug mode](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
 
-8.  デプロイが完了し、ブラウザーが起動してサイトの Azure URL が表示されたら、ブラウザーを閉じます。
+4. After deployment finishes and your browser opens to the Azure URL of your site, close the browser.
 
-9.  Visual Studio 2013 の場合:**サーバー エクスプローラー** で **[Azure]**、**[Web サイト]** の順に展開し、Web サイトを右クリックして **デバッガーの接続** をクリックします。
+5. For Visual Studio 2013: In **Server Explorer** expand **Azure**, expand **Websites**, right-click your website, and click **Attach Debugger**. 
 
-    ![デバッガーの接続][デバッガーの接続]
+	![Attach debugger](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
 
-    ブラウザーが自動的に起動し、Azure で実行されているホーム ページが表示されます。デバッグに必要な設定を Azure がサーバーに対して行う間、20 秒ほどの待ち時間が生じることがあります。この待ち時間が生じるのは、Web サイトでのデバッグ モードの初回実行時に限られます。以後 48 時間は、デバッグを再度実行しても、待ち時間は生じません。
+	The browser automatically opens to your home page running in Azure. You might have to wait 20 seconds or so while Azure sets up the server for debugging. This delay only happens the first time you run in debug mode on a website. Subsequent times within the next 48 hours when you start debugging again there won't be a delay.
 
-10. Visual Studio 2012 Update 4 の場合:<span id="vs2012"></span></a>
+6. For Visual Studio 2012 with Update 4:<a id="vs2012"></a>
 
-    -   Azure の管理ポータルで、Web サイトの **[構成]** タブに移動し、下へスクロールして **[サイト診断]** セクションを表示します。
+	* In the Azure Management Portal, go to the **Configure** tab for your website, and then scroll down to the **Site Diagnostics** section.
 
-    -   **リモート デバッグ** を **[オン]** に設定し、**[リモート デバッグに使用する Visual Studio のバージョン]**を **[2012]** に設定します。
+	* Set **Remote Debugging** to **On**, and set **Remote Debugging Visual Studio Version** to **2012**.
 
-    ![管理ポータルでのリモート デバッグの設定][管理ポータルでのリモート デバッグの設定]
+	![Set remote debugging in management portal](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debuginportal.png)
+   
+	* In the Visual Studio **Debug** menu, click **Attach to Process**.
 
-    -   Visual Studio の **[デバッグ]** メニューで **[プロセスにアタッチ]** をクリックします。
+	* In the **Qualifier** box, enter the URL for your website, without the `http://` prefix. 
 
-    -   **[修飾子]** ボックスに Web サイトの URL を入力します。プレフィックス「`http://`」は付けずに入力してください。
+	* Select **Show processes from all users**.
 
-    -   **[すべてのユーザーからのプロセスを表示する]** を選択します。
+	* When you're prompted for credentials, enter the user name and password that has permissions to publish the website. To get these credentials, go to the Dashboard tab for your website in the management portal and click **Download the publish profile**. Open the file in a text editor, and you'll find the user name and password after the first occurrences of **userName=** and **userPWD=**. 
 
-    -   資格情報を求められたら、Web サイトを発行する権限のあるユーザー名とパスワードを入力します。資格情報を入手するには、管理ポータルで Web サイトの [ダッシュボード] タブに移動し、**[発行プロファイルのダウンロード]** をクリックします。そのファイルをテキスト エディターで開くと、1 つ目の **userName=** と **userPWD=** の後に、ユーザー名とパスワードが表示されます。
+	* When the processes appear in the **Available Processes** table, select **w3wp.exe**, and then click **Attach**.
 
-    -   **[選択可能なプロセス]** テーブルにプロセスが表示されたら、**[w3wp.exe]** を選択し、**[アタッチ]** をクリックします。
+	* Open a browser to your site URL.
 
-    -   ブラウザーを起動して、目的のサイトの URL に移動します。
+	You might have to wait 20 seconds or so while Azure sets up the server for debugging. This delay only happens the first time you run in debug mode on a website. Subsequent times within the next 48 hours when you start debugging again there won't be a delay.
 
-    デバッグに必要な設定を Azure がサーバーに対して行う間、20 秒ほどの待ち時間が生じることがあります。この待ち時間が生じるのは、Web サイトでのデバッグ モードの初回実行時に限られます。以後 48 時間は、デバッグを再度実行しても、待ち時間は生じません。
+6. Click **About** in the menu.
 
-11. メニューの **[About]** をクリックします。
+	Visual Studio stops on the breakpoint, and the code is running in Azure, not on your local computer.
 
-    Visual Studio がブレークポイントで停止します。コードが実行されている場所は、ローカル コンピューターではなく Azure 上です。
+7. Hover over the `currentTime` variable to see the time value.
 
-12. `currentTime` 変数にマウスを合わせて、時刻値を表示します。
+	![View variable in debug mode running in Azure](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
 
-    ![Azure で実行されているコード内の変数をデバッグ モードで表示][Azure で実行されているコード内の変数をデバッグ モードで表示]
+	The time you see is the Azure server time, which may be in a different time zone than your local computer.
 
-    表示される時刻は、Azure サーバーの時刻です。ローカル コンピューターとはタイム ゾーンが異なります。
+8. Enter a new value for the `currentTime` variable, such as "Now running in Azure".
 
-13. `currentTime` 変数に新しい値 (「Now running in Azure」など) を入力します。
+5. Press F5 to continue running.
 
-14. F5 キーを押して実行を継続します。
+	The About page running in Azure displays the new value that you entered into the currentTime variable.
 
-    Azure で実行中の [About] ページに、先ほど currentTime 変数に対して入力した新しい値が表示されます。
+	![About page with new value](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugchangeinwa.png)
 
-    <p><img src="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugchangeinwa.png" alt="[About] ページ (値の変更後)" /></p>
+### <a name="remotedebugwj"></a> Remote debugging WebJobs
 
-### リモート デバッグに関する注意
+This section shows how to debug remotely using the project and website you create in [Get Started with the Azure WebJobs SDK](../websites-dotnet-webjobs-sdk). The features shown on in this section are available only in Visual Studio 2013 with Update 4.
 
--   運用環境におけるデバッグ モードの実行はお勧めできません。運用環境のサイトが複数のサーバー インスタンスにスケール アウトされていなければ、デバッグのトラフィックは自分の Web サーバー インスタンスにのみ関連付けられます。しかし、Web サーバーのインスタンスが複数存在する場合、デバッガーのアタッチ先となるインスタンスは無作為に決定されるため、そのインスタンスにブラウザーの要求を確実に渡すことができません。また、運用環境にデバッグ ビルドを展開することも一般的ではありません。リリース ビルドに対してはコンパイラが最適化を行うため、ソース コードの状況を行レベルで把握することは不可能です。運用環境の問題をトラブルシューティングするのに最も適しているリソースは、アプリケーション トレースと Web サーバーのログです。
+1. Open the web project that you created in [Get Started with the Azure WebJobs SDK][GetStartedWJ].
 
--   リモート デバッグ時、ブレークポイントで長時間停止させることは避けてください。数分以上停止しているプロセスは、応答していないプロセスと見なされ、Azure によりシャットダウンされます。
+1. In the ContosoAdsWebJob project, open *Functions.cs*.
 
--   デバッグ中は、サーバーから Visual Studio にデータが送信されるため、帯域幅の使用料に影響が及ぶ可能性があります。帯域幅使用料については、[Azure 料金計算ツール][Azure 料金計算ツール]を参照してください。
+2. [Set a breakpoint](http://www.visualstudio.com/ja-jp/get-started/debug-your-app-vs.aspx) on the first statement in the `GnerateThumbnail` method.
 
--   *Web.config* ファイルの `compilation` 要素の `debug` 属性が true に設定されていることを確認します。デバッグ ビルド構成で発行するときは、true が既定値です。
+	![Set breakpoint](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
+
+1. In **Solution Explorer**, right-click the web project (not the WebJob project), and click **Publish**.
+
+2. In the **Profile** drop-down list, select the same profile that you used in [Get Started with the Azure WebJobs SDK](../websites-dotnet-webjobs-sdk).
+
+3. Click the **Settings** tab, and change **Configuration** to **Debug**, and then click **Publish**.
+
+	Visual Studio deploys the web and WebJob projects, and your browser opens to the Azure URL of your site.
+
+5. In **Server Explorer** expand **Azure** > **Websites** > your website > **WebJobs** > **Continuous**, and then right-click **ContosoAdsWebJob**.
+
+7. Click **Attach Debugger**. 
+
+	![Attach debugger](./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png)
+
+	The browser automatically opens to your home page running in Azure. You might have to wait 20 seconds or so while Azure sets up the server for debugging. This delay only happens the first time you run in debug mode on a website. The next time you attach the debugger there won't be a delay, if you do it within 48 hours.
+
+6. In the web browser that is opened to the Contoso Ads home page, create a new ad. 
+
+	Creating an ad causes a queue message to be created, which will be picked up by the WebJob and processed. When the WebJobs SDK calls the function to process the queue message, the code will hit your breakpoint.
+
+7. When the debugger breaks at your breakpoint, you can examine and change variable values while the program is running the cloud. In the following illustration the debugger shows the contents of the blobInfo object that was passed to the GenerateThumbnail method.
+
+	![blobInfo object in debugger](./media/web-sites-dotnet-troubleshoot-visual-studio/blobinfo.png)
+ 
+5. Press F5 to continue running.
+
+	The GenerateThumbnail method finishes creating the thumbnail.
+
+6. In the browser, refresh the Index page and you see the thumbnail.
+
+6. In Visual Studio, press SHIFT+F5 to stop debugging.
+
+7. In **Server Explorer**, right-click the ContosoAdsWebJob node and click **View Dashboard**.
+
+8. Sign in with your Azure credentials, and then click the WebJob name to go to the page for your WebJob. 
+
+	![Click ContosoAdsWebJob](./media/web-sites-dotnet-troubleshoot-visual-studio/clickcaw.png)
+
+	The Dashboard shows that the GenerateThumbnail function executed recently.
+
+	(The next time you click **View Dashboard**, you don't have to sign in, and the browser goes directly to the page for your WebJob.)
+
+9. Click the function name to see details about the function execution.
+
+	![Function details](./media/web-sites-dotnet-troubleshoot-visual-studio/funcdetails.png)
+
+If your function [wrote logs](../websites-dotnet-webjobs-sdk-storage-queues-how-to/#logs), you could click **ToggleOutput** to see them.
+
+### Notes about remote debugging
+
+* Running in debug mode in production is not recommended. If your production site is not scaled out to multiple server instances, debugging will prevent the web server from responding to other requests. If you do have multiple web server instances, when you attach to the debugger you'll get a random instance, and you have no way to ensure that subsequent browser requests will go to that instance. Also, you typically don't deploy a debug build to production, and compiler optimizations for release builds might make it impossible to show what is happening line by line in your source code. For troubleshooting production problems, your best resource is application tracing and web server logs.
+
+* Avoid long stops at breakpoints when remote debugging. Azure treats a process that is stopped for longer than a few minutes as an unresponsive process, and shuts it down.
+
+* While you're debugging, the server is sending data to Visual Studio, which could affect bandwidth charges. For information about bandwidth rates, see [Azure Pricing](/ja-jp/pricing/calculator/).
+
+* Make sure that the `debug` attribute of the `compilation` element in the *Web.config* file is set to true. It is set to true by default when you publish a debug build configuration.
 
         <system.web>
           <compilation debug="true" targetFramework="4.5" />
           <httpRuntime targetFramework="4.5" />
         </system.web>
 
--   デバッグ対象となるコードにデバッガーがステップ インしない場合、[マイ コードのみ] の設定を変更してみてください。詳細については、「[ステップ実行をマイ コードのみに制限する][ステップ実行をマイ コードのみに制限する]」を参照してください。
+* If you find that the debugger won't step into code that you want to debug, you might have to change the Just My Code setting.  For more information, see [Restrict stepping to Just My Code](http://msdn.microsoft.com/ja-jp/library/vstudio/y740d9d3.aspx#BKMK_Restrict_stepping_to_Just_My_Code).
 
--   リモート デバッグ機能を有効にしたときに、サーバー上でタイマーが開始され、48 時間後にこの機能が自動的に無効になります。この 48 時間の上限はセキュリティとパフォーマンス上の理由で設定されています。必要に応じて、この機能を何回でも簡単に有効に戻すことができます。積極的にデバッグを実行している場合以外は、この機能を無効にしたままにすることをお勧めします。
+* A timer starts on the server when you enable the remote debugging feature, and after 48 hours the feature is automatically turned off. This 48 hour limit is done for security and performance reasons. You can easily turn the feature back on as many times as you like. We recommend leaving it disabled when you are not actively debugging.
 
--   すべてのプロセスに手動でデバッガーを接続できます。Web サイト プロセス (w3wp.exe) をデバッグする以外に、[WebJobs][WebJobs] など、他のプロセスをデバッグすることもできます。Visual Studio のデバッグ モードの使い方の詳細については、MSDN のトピック「[Visual Studio でのデバッグ][Visual Studio でのデバッグ]」を参照してください。
+* You can manually attach the debugger to any process, not only the website process (w3wp.exe). For more information about how to use debug mode in Visual Studio, see [Debugging in Visual Studio](http://msdn.microsoft.com/ja-jp/library/vstudio/sc65sadd.aspx).
 
-## <a name="logsoverview"></a><span class="short-header">ログの概要</span>診断ログの概要
+<h2><a name="logsoverview"></a>Diagnostic logs overview</h2>
 
-Azure Web サイトで動作する ASP.NET アプリケーションでは、次の種類のログが作成されます。
+An ASP.NET application that runs in an Azure Website can create the following kinds of logs:
 
--   **アプリケーション トレース ログ**    
-    アプリケーションが [System.Diagnostics.Trace][System.Diagnostics.Trace] クラスのメソッドを呼び出すことによって作成されます。
--   **Web サーバーのログ**    
-    Web サーバーは、サイトに届くすべての HTTP 要求について、それぞれログ エントリを作成します。
--   **詳細なエラー メッセージ ログ**    
-    失敗した HTTP 要求 (ステータス コード 400 以上の要求) について、より詳しい情報を記した HTML ページが Web サーバーによって作成されます。
--   **失敗した要求トレース ログ**    
-    失敗した HTTP 要求についての詳しいトレース情報を記録した XML ファイルが Web サーバーによって作成されます。また、ブラウザーで XML の体裁を設定するための XSL ファイルも作成されます。
+* **Application tracing logs**<br/>
+  The application creates these logs by calling methods of the [System.Diagnostics.Trace](http://msdn.microsoft.com/ja-jp/library/system.diagnostics.trace.aspx) class.
+* **Web server logs**<br/>
+  The web server creates a log entry for every HTTP request to the site.
+* **Detailed error message logs**<br/>
+  The web server creates an HTML page with some additional information for failed HTTP requests (those that result in status code 400 or greater). 
+* **Failed request tracing logs**<br/>
+  The web server creates an XML file with detailed tracing information for failed HTTP requests. The web server also provides an XSL file to format the XML in a browser.
+  
+Logging affects site performance, so Azure gives you the ability to enable or disable each type of log as needed. For application logs, you can specify that only logs above a certain severity level should be written. When you create a new website, by default all logging is disabled.
 
-ログ出力はサイトのパフォーマンスに影響を及ぼすため、Azure では、ログの種類ごとにその有効と無効を切り替えることができるようになっています。アプリケーション ログについては、特定の重大度レベルを超えるログだけを記録するように指定できます。新しい Web サイトを作成した時点ではすべてのログが既定で無効になります。
+Logs are written to files in a *LogFiles* folder in the file system of your website and are accessible via FTP. Web server logs and application logs can also be written to an Azure Storage account. You can retain a greater volume of logs in a storage account than is possible in the file system. You're limited to a maximum of 100 megabytes of logs when you use the file system. (File system logs are only for short-term retention. Azure deletes old log files to make room for new ones after the limit is reached.)  
 
-ログは、Web サイトのファイル システムにある *LogFiles* フォルダー内のファイルに出力され、FTP 経由でアクセスできます。Web サーバーのログとアプリケーションのログは、Azure のストレージ アカウントに出力することもできます。ストレージ アカウントには、ファイル システムよりも大量のログを保持することができます。ファイル システムを使用した場合、保存できるログの上限は 100 MB です。(ファイル システムのログは、短期間のみ保持されます。上限に達すると、古いログ ファイルは削除され、新しいログ ファイルのための領域が確保されます。)
+<h2><a name="apptracelogs"></a>Create and view application trace logs</h2>
 
-## <a name="apptracelogs"></a><span class="short-header">アプリケーション ログ</span>アプリケーション トレース ログの作成と表示
+In this section you'll do the following tasks:
 
-このセクションでは、次のタスクを実行します。
+* Add tracing statements to the web project that you created in [Get started with Azure and ASP.NET][GetStarted].
+* View the logs when you run the project locally.
+* View the logs as they are generated by the application running in Azure. 
 
--   [][ASP.NET Web アプリケーションを Azure Web サイトに展開する]以前のチュートリアルで作成した Web プロジェクトにトレース ステートメントを追加します。
--   プロジェクトをローカル実行したときのログを確認します。
--   Azure で実行中のアプリケーションによって生成されたログを確認します。
+For information about how to create application logs in WebJobs, see [How to work with Azure queue storage using the WebJobs SDK - How to write logs](../websites-dotnet-webjobs-sdk-storage-queues-how-to/#logs). The following instructions for viewing logs and controlling how they're stored in Azure apply also to application logs created by WebJobs. 
 
-### アプリケーションへのトレース ステートメントの追加
+### Add tracing statements to the application
 
-1.  `System.Diagnostics` の `Trace` ステートメントと `using` ステートメントを追加するために、*Controllers\\HomeController.cs* ファイルを開いて、その内容を次のコードで置き換えます。
+1. Open *Controllers\HomeController.cs*, and replace the file contents with the following code in order to add `Trace` statements and a `using` statement for `System.Diagnostics`:
 
-        using System;
-        using System.Collections.Generic;
-        using System.Configuration;
-        using System.Diagnostics;
-        using System.Linq;
-        using System.Web;
-        using System.Web.Configuration;
-        using System.Web.Mvc;
-        namespace MyExample.Controllers
-        {
-            public class HomeController : Controller
-            {
-                public ActionResult Index()
-                {
-                    Trace.WriteLine("Entering Index method");
-                    ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-                    Trace.TraceInformation("Displaying the Index page at " + DateTime.Now.ToLongTimeString());
-                    Trace.WriteLine("Leaving Index method");
-                    return View();
-                }
+		using System;
+		using System.Collections.Generic;
+		using System.Configuration;
+		using System.Diagnostics;
+		using System.Linq;
+		using System.Web;
+		using System.Web.Configuration;
+		using System.Web.Mvc;
+		namespace MyExample.Controllers
+		{
+		    public class HomeController : Controller
+		    {
+		        public ActionResult Index()
+		        {
+		            Trace.WriteLine("Entering Index method");
+		            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+		            Trace.TraceInformation("Displaying the Index page at " + DateTime.Now.ToLongTimeString());
+		            Trace.WriteLine("Leaving Index method");
+		            return View();
+		        }
+		
+		        public ActionResult About()
+		        {
+		            Trace.WriteLine("Entering About method");
+		            ViewBag.Message = "Your app description page.";
+		            Trace.TraceWarning("Transient error on the About page at " + DateTime.Now.ToShortTimeString());
+		            Trace.WriteLine("Leaving About method");
+		            return View();
+		        }
+		
+		        public ActionResult Contact()
+		        {
+		            Trace.WriteLine("Entering Contact method");
+		            ViewBag.Message = "Your contact page.";
+		            Trace.TraceError("Fatal error on the Contact page at " + DateTime.Now.ToLongTimeString());
+		            Trace.WriteLine("Leaving Contact method");
+		            return View();
+		        }
+		    }
+		}
+		
+				
+### View the tracing output locally
 
-                public ActionResult About()
-                {
-                    Trace.WriteLine("Entering About method");
-                    ViewBag.Message = "Your app description page.";
-                    Trace.TraceWarning("Transient error on the About page at " + DateTime.Now.ToShortTimeString());
-                    Trace.WriteLine("Leaving About method");
-                    return View();
-                }
+3. Press F5 to run the application in debug mode.
 
-                public ActionResult Contact()
-                {
-                    Trace.WriteLine("Entering Contact method");
-                    ViewBag.Message = "Your contact page.";
-                    Trace.TraceError("Fatal error on the Contact page at " + DateTime.Now.ToLongTimeString());
-                    Trace.WriteLine("Leaving Contact method");
-                    return View();
-                }
-            }
-        }
+	The default trace listener writes all trace output to the **Output** window, along with other Debug output. The following illustration shows the output from the trace statements that you added to the `Index` method.
 
-### ローカルでのトレース出力の表示
+	![Tracing in Debug window](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugtracing.png)
 
-1.  F5 キーを押してデバッグ モードでアプリケーションを実行します。
+	The following steps show how to view trace output in a web page, without compiling in debug mode.
 
-    既定のトレース リスナーは、すべてのトレース出力を他のデバッグ出力と一緒に**出力**ウィンドウに書き込みます。次の図は、`Index` メソッドに追加したトレース ステートメントからの出力結果を示したものです。
+2. Open the application Web.config file (the one located in the project folder) and add a `<system.diagnostics>` element at the end of the file just before the closing `</configuration>` element:
 
-    <p><img src="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugtracing.png" alt="[デバッグ] ウィンドウでのトレース" /></p>
-
-
-    以降の手順では、コンパイルせずにデバッグ モードで、トレース出力を Web ページに表示する方法を紹介します。
-
-2.  プロジェクト フォルダーにあるアプリケーションの Web.config ファイルを開き、ファイル末尾の終了 `<system.diagnostics>` 要素の直前に `</configuration>` 要素を追加します。
-
-        <system.diagnostics>
-            <trace>
-              <listeners>
-                <add name="WebPageTraceListener"
+  		<system.diagnostics>
+		    <trace>
+		      <listeners>
+		        <add name="WebPageTraceListener"
                     type="System.Web.WebPageTraceListener, 
                     System.Web, 
                     Version=4.0.0.0, 
                     Culture=neutral,
                     PublicKeyToken=b03f5f7f11d50a3a" />
-              </listeners>
-            </trace>
-          </system.diagnostics>
+		      </listeners>
+		    </trace>
+		  </system.diagnostics>
 
-    `WebPageTraceListener` を使用すると、ブラウザーから `/trace.axd` にアクセスすることでトレース出力を表示できます。
+	The `WebPageTraceListener` lets you view trace output by browsing to `/trace.axd`.
 
-3.  Web.config ファイルの `<system.web>` に、次のような [trace 要素][trace 要素]を追加します。
+3. Add a <a href="http://msdn.microsoft.com/ja-jp/library/vstudio/6915t83k(v=vs.100).aspx">trace element</a> under `<system.web>` in the Web.config file, such as the following example:
 
-        <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
+		<trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
 
-4.  Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
+3. Press CTRL+F5 to run the application.
 
-5.  ブラウザー ウィンドウのアドレス バーで、URL に続けて「*trace.axd*」を入力し、Enter キーを押します (例: http://localhost:53370/trace.axd)。
+4. In the address bar of the browser window, add *trace.axd* to the URL, and then press Enter (the URL will be similar to http://localhost:53370/trace.axd).
 
-6.  **[アプリケーション トレース]** ページの **[詳細の表示]** をクリックします。
+5. On the **Application Trace** page, click **View Details** on the first line (not the BrowserLink line).
 
-    ![trace.axd][trace.axd]
+	![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
 
-    **[要求の詳細]** ページが表示され、`Index` メソッドに追加したトレース ステートメントからの出力が **[トレース情報]** セクションに表示されます。
+	The **Request Details** page appears, and in the **Trace Information** section you see the output from the trace statements that you added to the `Index` method.
 
-    ![trace.axd][3]
+	![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
 
-    既定では、`trace.axd` の使用はローカルに限られます。*Web.config* ファイルで `trace` 要素に `localOnly="false"` を追加すると、リモート サイトからも利用できるようになります。その例を次に示します。
+	By default, `trace.axd` is only available locally. If you wanted to make it available from a remote site, you could add `localOnly="false"` to the `trace` element in the *Web.config* file, as shown in the following example:
 
-        <trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
+		<trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
 
-    ただしセキュリティ上の理由から、運用サイトで `trace.axd` を有効にすることは、通常お勧めできません。もっと簡単に Azure Web サイトのトレース ログを確認する方法を以降のセクションで説明します。
+	However, enabling `trace.axd` in a production site is generally not recommended for security reasons, and in the following sections you'll see an easier way to read tracing logs in an Azure Website.
 
-### Azure でのトレース出力の確認
+### View the tracing output in Azure
 
-1.  **ソリューション エクスプローラー**で Web プロジェクトを右クリックし、**[発行]** をクリックします。
+1. In **Solution Explorer**, right-click the web project and click **Publish**.
 
-2.  **[Web の発行]** ダイアログ ボックスの **[発行]** をクリックします。
+2. In the **Publish Web** dialog box, click **Publish**.
 
-    更新したプロジェクトを発行すると、ブラウザー ウィンドウが起動して自分のホーム ページが表示されます (ただし、**[接続]** タブの **[宛先 URL]** をクリアした場合を除く)。
+	After Visual Studio publishes your update, it opens a browser window to your home page (assuming you didn't clear **Destination URL** on the **Connection** tab).
 
-3.  **サーバー エクスプローラー**で Web サイトを右クリックし、**[ストリーミング ログを出力ウィンドウで表示]** を選択します。
+3. In **Server Explorer**, right-click your website and select **View Streaming Logs**. 
 
-    ![コンテキスト メニューからストリーミング ログを表示][コンテキスト メニューからストリーミング ログを表示]
+	![View Streaming Logs in context menu](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png)
 
-    ログ ストリーミング サービスに接続されたことを示すメッセージが**出力**ウィンドウに表示されます。ログが出力されないまま 1 分が経過すると、その都度、1 行の通知が追加されます。
+	The **Output** window shows that you are connected to the log-streaming service, and adds a notification line each minute that goes by without a log to display.
 
-    ![コンテキスト メニューからストリーミング ログを表示][4]
+	![View Streaming Logs in context menu](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png)
 
-4.  アプリケーションのホーム ページが表示されているブラウザー ウィンドウで、**[Contact]** をクリックします。
+4. In the browser window that shows your application home page, click **Contact**.
 
-    数秒すると、`Contact` メソッドに追加したエラー レベルのトレースの出力が**出力**ウィンドウに表示されます。
+	Within a few seconds the output from the error-level trace you added to the `Contact` method appears in the **Output** window.
 
-    ![出力ウィンドウのエラー トレース][出力ウィンドウのエラー トレース]
+	![Error trace in Output window](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-errortrace.png)
 
-    Visual Studio にエラー レベルのトレースしか表示されていないのは、それが、ログ監視サービスを有効にしたときの既定の設定であるためです。先ほどサイトの設定ページを開いたときに目にしたように、新しい Azure Web サイトを作成したときは、すべてのログが既定で無効となります。
+	Visual Studio is only showing error-level traces because that is the default setting when you enable the log monitoring service. When you create a new Azure Website, all logging is disabled by default, as you saw when you opened the site settings page earlier:
 
-    ![アプリケーション ログ記録がオフ][アプリケーション ログ記録がオフ]
+	![Application Logging off](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-apploggingoff.png)
 
-    ただし、**[ストリーミング ログを出力ウィンドウで表示]** を選択すると、**[アプリケーション ログ記録 (ファイル システム)]** が自動的に **[エラー]** に変更されます。これは、エラー レベルのログが報告されることを意味します。すべてのトレース ログを表示するためには、この設定を **[詳細]** に変更する必要があります。"エラー" よりも低い重大度レベルを選択すると、その重大度を超えるログがすべて報告されます。つまり [詳細] を選択した場合は、"情報"、"警告"、"エラー" に該当するログが表示されます。
 
-5.  先ほどと同じように、**サーバー エクスプローラー**で Web サイトを右クリックし、**[設定の表示]** をクリックします。
+	However, when you selected **View Streaming Logs**, Visual Studio automatically changed **Application Logging(File System)** to **Error**, which means error-level logs get reported. In order to see all of your tracing logs, you can change this setting to **Verbose**. When you select a severity level lower than error, all logs for higher severity levels are also reported. So when you select verbose, you also see information, warning, and error logs.  
 
-6.  **[アプリケーション ログ記録 (ファイル システム)]** を **[詳細]** に変更し、**[保存]** をクリックします。
+4. In **Server Explorer**, right-click the website, and then click **View Settings** as you did earlier.
 
-    <p><img src="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-applogverbose.png" alt="トレース レベルを [詳細] に設定" /></p>
+5. Change **Application Logging (File System)** to **Verbose**, and then click **Save**.
+ 
+	![Setting trace level to Verbose](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-applogverbose.png)
 
-7.  **[Contact]** ページが表示されているブラウザー ウィンドウで、**[Home]**、**[About]**、**[Contact]** を順にクリックします。
+6. In the browser window that is now showing your **Contact** page, click **Home**, then click **About**, and then click **Contact**.
 
-    数秒すると、**出力**ウィンドウにすべてのトレース出力が表示されます。
+	Within a few seconds, the **Output** window shows all of your tracing output.
 
-    ![詳細レベルのトレース出力][詳細レベルのトレース出力]
+	![Verbose trace output](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-verbosetraces.png)
 
-    このセクションでは、ログの有効と無効の切り替えを Azure Web サイトの設定で行いました。トレース リスナーの有効と無効は、Web.config ファイルで設定することもできます。ただし、Web.config ファイルに変更を加えると、アプリケーション ドメインの再利用処理が実行されます。一方、Web サイトを介してログを有効にした場合は、そのようにはなりません。問題の再現に時間がかかる場合や、発生のタイミングが散発的である場合、アプリケーション ドメインの再利用処理で問題が "解消" し、再発までしばらく待たなければならなくなります。Azure で診断を有効にすると、そのようなことにはならず、すぐにエラー情報を収集することができます。
+	In this section you enabled and disabled logging by using Azure Website settings. You can also enable and disable trace listeners by modifying the Web.config file. However, modifying the Web.config file causes the app domain to recycle, while enabling logging via the website doesn't do that. If the problem takes a long time to reproduce, or is intermittent, recycling the app domain might "fix" it and force you to wait until it happens again. Enabling diagnostics in Azure doesn't do this, so you can start capturing error information immediately.
 
-### 出力ウィンドウの機能
+### Output window features
 
-**出力**ウィンドウの **[Azure ログ]** タブには、いくつかのボタンと 1 つのテキスト ボックスが表示されます。
+The **Azure Logs** tab of the **Output** Window has several buttons and a text box:
 
-![ログ タブのボタン][ログ タブのボタン]
+![Logs tab buttons](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png)
 
-それぞれの機能を次に示します。
+These perform the following functions:
 
--   **出力**ウィンドウをクリアする。
--   右端での折り返しを有効または無効にする。
--   ログの監視を開始または停止する。
--   監視するログを指定する。
--   ログをダウンロードする。
--   検索文字列または正規表現によるフィルターをログに適用する。
--   **出力**ウィンドウを閉じる。
+* Clear the **Output** window.
+* Enable or disable word wrap.
+* Start or stop monitoring logs.
+* Specify which logs to monitor.
+* Download logs.
+* Filter logs based on a search string or a regular expression.
+* Close the **Output** window.
 
-検索文字列または正規表現を入力した場合、ログ情報は、Visual Studio によってクライアント側でフィルタリングされます。つまり、フィルターの条件は、**出力**ウィンドウにログが表示された後に入力できます。フィルターの条件を変更するためにログを生成し直す必要はありません。
+If you enter a search string or regular expression, Visual Studio filters logging information at the client. That means you can enter the criteria after the logs are displayed in the **Output** window and you can change filtering criteria without having to regenerate the logs.
 
-## <a name="webserverlogs"></a><span class="short-header">Web サーバーのログ</span>Web サーバーのログの表示
+<h2><a name="webserverlogs"></a>View web server logs</h2>
 
-Web サーバーのログには、サイト上の HTTP アクティビティがすべて記録されます。それらの HTTP アクティビティを**出力**ウィンドウに表示するためには、サイトに対してその機能を有効にしたうえで、HTTP アクティビティを監視するための指定を Visual Studio に対して行う必要があります。
+Web server logs record all HTTP activity on the site. In order to see them in the **Output** window you have to enable them on the site and tell Visual Studio that you want to monitor them. 
 
-1.  **サーバー エクスプローラー**から開いた Azure Web サイトの **[構成]** タブで [Web サーバーのログ記録] を **[オン]** に変更し、**[保存]** をクリックします。
+1. In the **Azure Website Configuration** tab that you opened from **Server Explorer**, change Web Server Logging to **On**, and then click **Save**.
 
-    ![Web サーバーのログ記録を有効にする][Web サーバーのログ記録を有効にする]
+	![Enable web server logging](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-webserverloggingon.png)
 
-2.  **出力**ウィンドウの <b>監視する Azure ログの指定</b> をクリックします。
+2. In the **Output** Window, click the **Specify which Azure logs to monitor** button.
+	
+	![Specify which Azure logs to monitor](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-specifylogs.png)
 
-    ![監視する Azure ログの指定][監視する Azure ログの指定]
+3. In the **Azure Logging Options** dialog box, select **Web server logs**, and then click **OK**.
 
-3.  **[Azure ログ オプション]** ダイアログ ボックスの **[Web サーバーのログ]** を選択し、**[OK]** をクリックします。
+	![Monitor web server logs](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorwslogson.png)
 
-    ![Web サーバーのログを監視する][Web サーバーのログを監視する]
+4. In the browser window that shows the website, click **Home**, then click **About**, and then click **Contact**.
 
-4.  Web サイトを表示するブラウザー ウィンドウで、**[Home]**、**[About]**、**[Contact]** を順にクリックします。
+	The application logs generally appear first, followed by the web server logs. You might have to wait a while for the logs to appear. 
 
-    通常はアプリケーションのログが先に表示され、続けて Web サーバーのログが表示されます。ログが表示されるまでにしばらく時間がかかる場合があります。
+	![Web server logs in Output window](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-wslogs.png)
 
-    ![出力ウィンドウの Web サーバーのログ][出力ウィンドウの Web サーバーのログ]
 
-Visual Studio で Web サーバーのログを初めて有効にしたとき、既定では、Azure によってファイル システムにログが書き込まれます。代わりに管理ポータルを使用して、Web サーバーのログの書き込み先として、ストレージ アカウントの BLOB コンテナーを指定することもできます。詳細については、「[How to Configure Web Sites (Web サイトの構成方法)][Web サイトの構成方法]」の**サイトの診断**に関するセクションを参照してください。
+By default, when you first enable web server logs by using Visual Studio, Azure writes the logs to the file system. As an alternative, you can use the management portal to specify that web server logs should be written to a blob container in a storage account. For more information, see the **site diagnostics** section in [How to Configure Web Sites](/ja-jp/manage/services/web-sites/how-to-configure-websites/#howtochangeconfig). 
 
-Web サーバーのログを Azure のストレージ アカウントに記録するように管理ポータルで指定した後、Visual Studio でログ記録を無効にした場合、Visual Studio で再度ログ記録を有効にすると、ストレージ アカウントの設定が復元されます。
+If you use the management portal to enable web server logging to an Azure storage account, and then disable logging in Visual Studio, when you re-enable logging in Visual Studio your storage account settings are restored. 
 
-## <a name="detailederrorlogs"></a><span class="short-header">エラー ログ</span>詳細なエラー メッセージ ログの表示
+<h2><a name="detailederrorlogs"></a>View detailed error message logs</h2>
 
-詳細なエラー ログでは、エラー応答コード (400 以上) が返された HTTP 要求について、いくつかの詳しい情報が確認できます。それらの HTTP アクティビティを**出力**ウィンドウに表示するためには、サイトに対してその機能を有効にしたうえで、HTTP アクティビティを監視するための指定を Visual Studio に対して行う必要があります。
+Detailed error logs provide some additional information about HTTP requests that result in error response codes (400 or above). In order to see them in the **Output** window, you have to enable them on the site and tell Visual Studio that you want to monitor them.
 
-1.  **サーバー エクスプローラー**から開いた Azure Web サイトの **[構成]** タブで <b>詳細なエラー メッセージ</b> を **[オン]** に変更し、**[保存]** をクリックします。
+1. In the **Azure Website Configuration** tab that you opened from **Server Explorer**, change **Detailed Error Messages** to **On**, and then click **Save**.
 
-    ![詳細なエラー メッセージを有効にする][詳細なエラー メッセージを有効にする]
+	![Enable detailed error messages](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailedlogson.png)
 
-2.  **出力**ウィンドウの **監視する Azure ログの指定** をクリックします。
+2. In the **Output** Window, click the **Specify which Azure logs to monitor** button.
 
-3.  **[Azure ログ オプション]** ダイアログ ボックスの **[すべてのログ]** をクリックし、**[OK]** をクリックします。
+3. In the **Azure Logging Options** dialog box, click **All logs**, and then click **OK**.
 
-    ![すべてのログを監視する][すべてのログを監視する]
+	![Monitor all logs](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorall.png)
 
-4.  ブラウザー ウィンドウのアドレス バーで、404 エラーの原因となるような余分な文字を URL に追加し (例: `http://localhost:53370/Home/Contactx`)、Enter キーを押します。
+4. In the address bar of the browser window, add an extra character to the URL to cause a 404 error (for example, `http://localhost:53370/Home/Contactx`), and press Enter.
 
-    数秒後、Visual Studio の**出力**ウィンドウに詳細なエラー ログが表示されます。
+	After several seconds the detailed error log appears in the Visual Studio **Output** window.
 
-    ![出力ウィンドウの詳細なエラー ログ][出力ウィンドウの詳細なエラー ログ]
+	![Detailed error log in Output window](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailederrorlog.png)
 
-    Ctrl キーを押しながらリンクをクリックすると、次のような書式化されたログ出力がブラウザーに表示されます。
+	Control+click the link to see the log output formatted in a browser:
 
-    ![ブラウザー ウィンドウの詳細なエラー ログ][ブラウザー ウィンドウの詳細なエラー ログ]
+	![Detailed error log in browser window](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailederrorloginbrowser.png)
 
-## <a name="downloadlogs"></a><span class="short-header">ログのダウンロード</span>ファイル システムのログのダウンロード
+<h2><a name="downloadlogs"></a>Download file system logs</h2>
 
-**出力**ウィンドウで監視できるすべてのログは *.zip* ファイルとしてダウンロードすることもできます。
+Any logs that you can monitor in the **Output** window can also be downloaded as a *.zip* file. 
 
-1.  **出力**ウィンドウの **[ストリーミング ログのダウンロード]** をクリックします。
+1. In the **Output** window, click **Download Streaming Logs**.
 
-    ![ログ タブのボタン][5]
+	![Logs tab buttons](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png)
 
-    エクスプローラーが起動して *[ダウンロード]* フォルダーが開き、ダウンロード済みのファイルが選択状態で表示されます。
+	File Explorer opens to your *Downloads* folder with the downloaded file selected.
 
-    ![ダウンロードされたファイル][ダウンロードされたファイル]
+	![Downloaded file](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png)
 
-2.  この *.zip* ファイルを展開すると、次のフォルダー構造が確認できます。
+2. Extract the *.zip* file, and you see the following folder structure:
 
-    ![ダウンロードされたファイル][6]
+	![Downloaded file](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png)
 
-    -   アプリケーション トレース ログは、*LogFiles\\Application* フォルダーの *.txt* ファイルに記録されます。
-    -   Web サーバーのログは、*LogFiles\\http\\RawLogs* フォルダーの *.log* ファイルに記録されます。これらのファイルの閲覧と操作は、[Log Parser][Log Parser] などのツールを使って行うことができます。
-    -   詳細なエラー メッセージのログは、*LogFiles\\DetailedErrors* フォルダーの *.html* ファイルに記録されます。
+	* Application tracing logs are in *.txt* files in the *LogFiles\Application* folder.
+	* Web server logs are in *.log* files in the *LogFiles\http\RawLogs* folder. You can use a tool such as [Log Parser](http://www.microsoft.com/ja-jp/download/details.aspx?displaylang=en&id=24659) to view and manipulate these files.
+	* Detailed error message logs are in *.html* files in the *LogFiles\DetailedErrors* folder.
 
-    (*deployments* フォルダーは、ソース管理の発行によって作成されたファイルに使用されます。Visual Studio の発行に関連したファイルは保存されません。*Git* フォルダーは、ログ ファイル ストリーミング サービスやソース管理の発行に関連したトレースに使用されます。)
+	(The *deployments* folder is for files created by source control publishing; it doesn't have anything related to Visual Studio publishing. The *Git* folder is for traces related to source control publishing and the log file streaming service.)  
 
-## <a name="storagelogs"></a><span class="short-header">ストレージ ログ</span>ストレージ ログの表示
+<h2><a name="storagelogs"></a>View storage logs</h2>
 
-アプリケーション トレース ログを Azure のストレージ アカウントに送って、Visual Studio で表示することもできます。ストレージ アカウントを作成して管理ポータルでストレージ ログを有効にし、**[Azure の Web サイト]** ウィンドウの **[ログ]** タブでそれらを表示します。
+Application tracing logs can also be sent to an Azure storage account, and you can view them in Visual Studio. To do that you'll create a storage account, enable storage logs in the management portal, and view them in the **Logs** tab of the **Azure Website** window.
 
-次の 3 個の送信先のいずれかまたはすべてにログを送信することができます。
+You can send logs to any or all of three destinations:
 
--   ファイル システム。
--   ストレージ アカウント テーブル。
--   ストレージ アカウント BLOB。
+* The file system.
+* Storage account tables.
+* Storage account blobs.
 
-送信先ごとに異なる重要度レベルを指定することもできます。
+You can specify a different severity level for each destination. 
 
-テーブル形式を使用すると、ログの詳細をオンラインで簡単に表示でき、またストリーミングもサポートされています。テーブル内にあるログを照会することや、作成されている新しいログを表示することもできます。BLOB 形式を使用すると、ログをファイルにダウンロードし、HDInsight を使ってそれらのログを簡単に解析できるようになります。HDInsight は、BLOB ストレージを処理する方法を把握しているためです。詳細については、[データ ストレージ オプション (Azure を使用した実際のクラウド アプリケーションの作成) に関するページ][データ ストレージ オプション (Azure を使用した実際のクラウド アプリケーションの作成) に関するページ]の「**Hadoop and MapReduce**」を参照してください。
+Tables make it easy to view details of logs online, and they support streaming; you can query logs in tables and see new logs as they are being created. Blobs make it easy to download logs in files and to analyze them using HDInsight, because HDInsight knows how to work with blob storage. For more information, see **Hadoop and MapReduce** in [Data Storage Options (Building Real-World Cloud Apps with Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options).
 
-現在、ファイル システムのログは詳細レベルに設定されています。次の手順では、ストレージ アカウント テーブルに切り替える目的で情報レベルのログを設定する方法を説明します。情報レベルを指定した場合、`Trace.TraceInformation`、`Trace.TraceWarning`、`Trace.TraceError` の呼び出しで作成されたすべてのログが表示され、`Trace.WriteLine` で作成されたログは除外されます。
+You currently have file system logs set to verbose level; the following steps walk you through setting up information level logs to go to storage account tables. Information level means all logs created by calling `Trace.TraceInformation`, `Trace.TraceWarning`, and `Trace.TraceError` will be displayed, but not logs created by calling `Trace.WriteLine`.
 
-多くの場合、ストレージ アカウント形式はファイル システム形式と比較して、ログに対してより多くのストレージと、より長い期間にわたる保持を実現します。アプリケーション トレース ログをストレージに送る別の利点は、ファイル システムのログでは得ることのできない詳しい情報をそれぞれのログと共に入手できることです。
+Storage accounts offer more storage and longer-lasting retention for logs compared to the file system. Another advantage of sending application tracing logs to storage is that you get some additional information with each log that you don't get from file system logs.
 
-1.  **サーバー エクスプローラー**で Web サイトを右クリックし、**[管理ポータルで開く]** をクリックします。
+5. Right-click **Storage** under the Azure node, and then click **Create Storage Account**.
 
-2.  管理ポータルで **[ストレージ]** タブをクリックし、**ストレージ アカウントの作成** をクリックします。
+![Create Storage Account](./media/web-sites-dotnet-troubleshoot-visual-studio/createstor.png)
 
-    ![ストレージ アカウントの作成][ストレージ アカウントの作成]
+3. In the **Create Storage Account** dialog, enter a name for the storage account. 
 
-3.  ストレージ アカウントに使用する一意の URL を入力し、**ストレージ アカウントの作成** をクリックします。
+	The name must be must be unique (no other Azure storage account can have the same name). If the name you enter is already in use you'll get a chance to change it.
 
-    ![URL を入力する][URL を入力する]
+	The URL to access your storage account will be *{name}*.core.windows.net. 
 
-4.  Visual Studio の **[Azure の Web サイト]** ウィンドウで、**[ログ]** タブをクリックし、**[ログの構成]** をクリックします。
+5. Set the **Region or Affinity Group** drop-down list to the region closest to you.
 
-    ![ダウンロードされたファイル][7]
+	This setting specifies which Azure datacenter will host your storage account. For this tutorial your choice won't make a noticeable difference, but for a production site you want your web server and your storage account to be in the same region to minimize latency and data egress charges. The website (which you'll create later) should be as close as possible to the browsers accessing your site in order to minimize latency.
 
-    自分の Web サイトの管理ポータルの **[構成]** タブが開きます。この画面にアクセスするために、**[Web サイト]** タブをクリックして該当する Web サイトをクリックし、**[構成]** タブをクリックすることもできます。
+6. Set the **Replication** drop-down list to **Locally redundant**. 
 
-5.  管理ポータルの **[構成]** タブで、下へスクロールしてアプリケーションの診断セクションを表示し、**[アプリケーション ログ記録 (ストレージ)]** を **[オン]** に変更します。
+	When geo-replication is enabled for a storage account, the stored content is replicated to a secondary datacenter to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [How To Manage Storage Accounts](/ja-jp/documentation/articles/storage-manage-storage-account/).
 
-6.  **[ログ レベル]** を **[情報]** に変更します。
+5. Click **Create**. 
 
-7.  **テーブル ストレージの管理** をクリックします。
+	![New storage account](./media/web-sites-dotnet-troubleshoot-visual-studio/newstorage.png)	
 
-    <p><img src="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-stgsettingsmgmtportal.png" alt="[テーブル ストレージの管理] をクリックします。" /></p>
+1. In the Visual Studio **Azure Website** window, click the **Logs** tab, and then click **Configure Logging in Management Portal**.
 
+	![Configure logging](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configlogging.png)
 
-    ストレージ アカウントが複数ある場合は、**[アプリケーション診断用のテーブル ストレージの管理]** ボックスで目的のストレージ アカウントを選択できます。新しいテーブルを作成するか、既存のテーブルを使用することができます。
+	This opens the **Configure** tab in the management portal for your website. Another way to get here is to click the **Websites** tab, click your website, and then click the **Configure** tab.
 
-    ![テーブル ストレージの管理][テーブル ストレージの管理]
+2. In the management portal **Configure** tab, scroll down to the application diagnostics section, and then change **Application Logging (Table Storage)** to **On**.
 
-8.  **[アプリケーション診断用のテーブル ストレージの管理]** ボックスのチェック マークをクリックしてこのボックスを閉じます。
+3. Change **Logging Level** to **Information**.
 
-9.  管理ポータルの **[構成]** タブで、**[保存]** をクリックします。
+4. Click **Manage Table Storage**.
 
-10. アプリケーションの Web サイトを表示するブラウザー ウィンドウで、**[Home]**、**[About]**、**[Contact]** を順にクリックします。
+	![Click Manage TableStorage](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-stgsettingsmgmtportal.png)
 
-    これらの Web ページを閲覧することによって生成されたログ情報がストレージ アカウントに書き込まれます。
+	In the **Manage table storage for application diagnostics** box, you can choose your storage account if you have more than one. You can create a new table or use an existing one.
 
-11. Visual Studio の **[Azure の Web サイト]** ウィンドウの **[ログ]** タブで、**[診断の概要]** の下に表示される **[最新の情報に更新]** をクリックします。
+	![Manage table storage](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-choosestorageacct.png)
 
-    <p><img src="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-refreshstorage.png" alt="[最新の情報に更新] をクリックする" /></p>
+6. In the **Manage table storage for application diagnostics** box click the check mark to close the box.
 
+6. In the management portal **Configure** tab, click **Save**.
 
-    既定では、直近 15 分間のログが **[診断の概要]** セクションに表示されます。この時間を変更することで、表示するログの量を増やすことができます。
+7. In the browser window that displays the application website, click **Home**, then click **About**, and then click **Contact**.
 
-    ("テーブルが見つからない" という内容のエラーが表示された場合は、**[アプリケーション ログ記録 (ストレージ)]** を有効にした後と、**[保存]** をクリックした後に、トレース対象のページを参照したことを確認してください。)
+	The logging information produced by browsing these web pages will be written to the storage account.
 
-    ![ストレージ ログ][ストレージ ログ]
+8. In the **Logs** tab of the **Azure Website** window in Visual Studio, click **Refresh** under **Diagnostic Summary**.
 
-    この画面に **[プロセス ID]** と **[スレッド ID]** がログごとに表示されていることに注目してください。ファイル システムのログでは確認できない情報です。Azure のストレージ テーブルを直接参照することで、さらに別のフィールドを確認できます。
+	![Click Refresh](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-refreshstorage.png)
 
-12. **[すべてのアプリケーション ログの表示]** をクリックします。
+	The **Diagnostic Summary** section shows logs for the last 15 minutes by default. You can change the period to see more logs. 
 
-    Azure のストレージ テーブル ビューアーにトレース ログ テーブルが表示されます。
+	(If you get a "table not found" error, verify that you browsed to the pages that do the tracing after you enabled **Application Logging (Storage)** and after you clicked **Save**.)
 
-    ("シーケンスに要素が含まれていません" というエラーが表示された場合は、**サーバー エクスプローラー**を開き、**Azure** ノードで、自分のストレージ アカウントに該当するノードを展開し、**[テーブル]** を右クリックして **[最新の情報に更新]** をクリックします。)
+	![Storage logs](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-storagelogs.png)
 
-    ![サーバー エクスプローラーのトレース テーブル][サーバー エクスプローラーのトレース テーブル]
+	Notice that in this view you see **Process ID** and **Thread ID** for each log, which you don't get in the file system logs. You can see additional fields by viewing the Azure storage table directly.
 
-    ![テーブル形式で表示されたストレージ ログ][テーブル形式で表示されたストレージ ログ]
+8. Click **View all application logs**.
 
-    この画面には、他の画面では確認できないフィールドが表示されます。専用のクエリ ビルダー UI を使用してクエリを作成し、ログにフィルターを適用することもできます。詳細については、「[サーバー エクスプローラーを使用したストレージ リソースの参照][サーバー エクスプローラーを使用したストレージ リソースの参照]」の「テーブル リソースの操作」にある「エンティティのフィルター処理」を参照してください。
+	The trace log table appears in the Azure storage table viewer.
+   
+	(If you get a "sequence contains no elements" error, open **Server Explorer**, expand the node for your storage account under the **Azure** node, and then right-click **Tables** and click **Refresh**.)
 
-13. 単一行の詳細情報を表示するには、いずれかの行を右クリックし、**[編集]** をクリックします。
+	![Trace table in Server Explorer](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracetableinse.png)
 
-    ![サーバー エクスプローラーのトレース テーブル][8]
+	![Storage logs in table view](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracelogtableview.png)
 
-## <a name="failedrequestlogs"></a><span class="short-header">失敗した要求ログ</span>失敗した要求トレース ログの表示
+	This view shows additional fields you don't see in any other views. This view also enables you to filter logs by using special Query Builder UI for constructing a query. For more information, see Working with Table Resources - Filtering Entities in [Browsing Storage Resources with Server Explorer](http://msdn.microsoft.com/ja-jp/library/windowsazure/ff683677.aspx).
 
-失敗した要求トレース ログは、URL の書き換えや認証の問題など、IIS による HTTP 要求の処理を詳しく把握する必要がある状況で活用できます。
+7. To look at the details for a single row, double-click one of the rows.
 
-Azure Web サイトでは、同じ失敗した要求トレース機能が使用されています。この機能は、IIS 7.0 以降で利用できます。ただし、ログに記録するエラーを指定するための IIS 設定にアクセスする必要はありません。失敗した要求トレースを有効にすると、すべてのエラーがキャプチャされます。
+	![Trace table in Server Explorer](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracetablerow.png)
 
-失敗した要求トレースは Visual Studio を使用して有効にできますが、それらを Visual Studio で表示することはできません。これらのログは XML ファイル形式になっています。ストリーミング ログ サービスで監視されるのは、プレーンテキスト モードでの読み取りが可能と判断されたファイル (*.txt*、*.html*、*.log* の各ファイル) だけです。
+<h2><a name="failedrequestlogs"></a>View failed request tracing logs</h2>
 
-失敗した要求トレース ログは、ブラウザーから FTP で直接表示できるほか、FTP ツールを使ってローカル コンピューターにダウンロードした後、ローカルで表示することもできます。このセクションでは、ブラウザーで直接閲覧する方法を説明します。
+Failed request tracing logs are useful when you need to understand the details of how IIS is handling an HTTP request, in scenarios such as URL rewriting or authentication problems. 
 
-1.  **サーバー エクスプローラー**から開いた **[Azure の Web サイト]** ウィンドウの **[構成]** タブで、**[失敗した要求トレース]** を **[オン]** に変更し、**[保存]** をクリックします。
+Azure Websites use the same failed request tracing functionality that has been available with IIS 7.0 and later. You don't have access to the IIS settings that configure which errors get logged, however. When you enable failed request tracing, all errors are captured. 
 
-    ![失敗した要求トレースを有効にする][失敗した要求トレースを有効にする]
+You can enable failed request tracing by using Visual Studio, but you can't view them in Visual Studio. These logs are XML files. The streaming log service only monitors files that are deemed readable in plain text mode:  *.txt*, *.html*, and *.log* files.
 
-2.  Web サイトが表示されているブラウザー ウィンドウのアドレス バーで、余分な文字を URL に追加し、Enter キーを押して 404 エラーを発生させます。
+You can view failed request tracing logs in a browser directly via FTP or locally after using an FTP tool to download them to your local computer. In this section you'll view them in a browser directly.
 
-    これにより、失敗した要求トレース ログが作成されます。そのログを表示またはダウンロードする方法については、以降の手順で説明します。
+1. In the **Configuration** tab of the **Azure Website** window that you opened from **Server Explorer**, change **Failed Request Tracing** to **On**, and then click **Save**.
 
-3.  Visual Studio で、**[Azure の Web サイト]** ウィンドウの **[構成]** タブにある **[管理ポータルで開く]** をクリックします。
+	![Enable failed request tracing](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-failedrequeston.png)
 
-4.  管理ポータルの **[ダッシュボード]** をクリックし、**[概要]** セクションにある **[展開資格情報のリセット]** をクリックします。
+4. In the address bar of the browser window that shows the website, add an extra character to the URL and click Enter to cause a 404 error.
 
-    ![FTP の資格情報をリセットするためのリンク (ダッシュボード)][FTP の資格情報をリセットするためのリンク (ダッシュボード)]
+	This causes a failed request tracing log to be created, and the following steps show how to view or download the log.
 
-5.  新しいユーザー名とパスワードを入力します。
+2. In Visual Studio, in the **Configuration** tab of the **Azure Website** window, click **Open in Management Portal**.
 
-    ![新しい FTP ユーザー名とパスワード][新しい FTP ユーザー名とパスワード]
+3. In the management portal, click **Dashboard**, and then click **Reset your deployment credentials** in the **Quick Glance** section.
 
-6.  管理ポータルの **[ダッシュボード]** タブで F5 キーを押してページを最新の情報に更新し、下へスクロールして **[展開 / FTP ユーザー]** を表示します。ユーザー名に、プレフィックスとしてサイト名が付加されていることに注目してください。**ログインする際は、ここに表示されている完全なユーザー名とそのサイト名プレフィックスを使用する必要があります。**
+	![Reset FTP credentials link in Dashboard](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-resetftpcredentials.png)
 
-7.  新しいブラウザー ウィンドウで、**[FTP ホスト名]** (Web サイトの管理ポータル ページの **[ダッシュボード]** タブ) に表示されている URL に移動します。**[FTP ホスト名]** は、**[概要]** セクションの **[展開 / FTP ユーザー]** の近くに表示されます。
+4. Enter a new user name and password.
 
-8.  先ほど作成した FTP 資格情報を使用してログインします (ユーザー名のサイト名プレフィックスを含めること)。
+	![New FTP user name and password](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-enterftpcredentials.png)
 
-    サイトのルート フォルダーがブラウザーに表示されます。
+5. In the management portal **Dashboard** tab press F5 to refresh the page, and then scroll down to where you see **Deployment / FTP User**. Notice that the user name has the site name prefixed to it. **When you log in, you have to use this full user name with the site name prefixed to it as shown here.**
 
-9.  *LogFiles* フォルダーを開きます。
+5. In a new browser window, go to the URL that is shown under **FTP Host Name** in the **Dashboard** tab of the management portal page for your website. **FTP Host Name** is located near **Deployment / FTP User** in the **Quick Glance** section.
 
-    ![LogFiles フォルダーを開く][LogFiles フォルダーを開く]
+6. Log in using the FTP credentials that you created earlier (including the site name prefix for the user name).
 
-10. W3SVC に数値の付いた名前のフォルダーを開きます。
+	The browser shows the root folder of the site.
 
-    ![W3SVC フォルダーを開く][W3SVC フォルダーを開く]
+6. Open the *LogFiles* folder.
 
-    このフォルダーには、失敗した要求トレースを有効にした後で記録されたすべてのエラーの XML ファイルに加え、ブラウザーで XML の体裁を設定するための XSL ファイルが格納されています。
+	![Open LogFiles folder](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilesfolder.png)
 
-    ![W3SVC フォルダー][W3SVC フォルダー]
+7. Open the folder that is named W3SVC plus a numeric value.
 
-11. トレース情報を確認する失敗した要求の XML ファイルをクリックします。
+	![Open W3SVC folder](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-w3svcfolder.png)
 
-    次の図は、サンプル エラーのトレース情報を部分的に示したものです。
+	The folder contains XML files for any errors that have been logged after you enabled failed request tracing, and an XSL file that a browser can use to format the XML.
 
-    ![失敗した要求トレースをブラウザーで表示したところ][失敗した要求トレースをブラウザーで表示したところ]
+	![W3SVC folder](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-w3svcfoldercontents.png)
 
-## <a name="nextsteps"></a><span class="short-header">次のステップ</span>次のステップ
+8. Click the XML file for the failed request that you want to see tracing information for.
 
-Azure Web サイトで作成されたログは Visual Studio を使って簡単に参照できることが確認できました。Azure Web サイトのトラブルシューティングや、ASP.NET アプリケーションのトレース、Web サーバーのログの分析について、さらに理解を深めることができます。
+	The following illustration shows part of the tracing information for a sample error.
 
-### Azure Web サイトのトラブルシューティング
+	![Failed request tracing in browser](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-failedrequestinbrowser.png)
 
-Azure Web サイト (WAWS) のトラブルシューティングの詳細については、以下のリソースを参照してください。
 
--   [Azure でのトラブルシューティング][Azure でのトラブルシューティング]<br/>
-    WAWS について簡単に説明したセクションが含まれる入門者向けの基本的なホワイト ペーパーです。
--   [Web サイトのトラブルシューティング][Web サイトのトラブルシューティング]<br/>
-    WAWS を重点的に説明しています。
--   [診断ログの有効化: Azure の Web サイト][診断ログの有効化: Azure の Web サイト]<br/>
-    取り上げられている情報はこのチュートリアルとほぼ同じですが、Visual Studio を使わずに診断ログを入手する方法に重点が置かれています。
--   [Web サイトの監視方法][Web サイトの監視方法]<br/>
-     トラブルシューティングのドキュメントには記載されていない有益な情報を、「[configure diagnostics and download logs (診断の構成とログのダウンロード)][configure diagnostics and download logs (診断の構成とログのダウンロード)]」セクションで取り上げています。
--   [Investigating Memory Leaks in Azure Web Sites with Visual Studio 2013 (Visual Studio 2013 を使用した Azure の Web サイトでのメモリ リークの調査)][Investigating Memory Leaks in Azure Web Sites with Visual Studio 2013 (Visual Studio 2013 を使用した Azure の Web サイトでのメモリ リークの調査)]。マネージされるメモリの問題の分析に役立つ Visual Studio の機能に関する Microsoft ALM のブログ記事
--   [Windows Azure Websites online tools you should know about (知っておくべき Windows Azure Web サイトのオンライン ツール)][Windows Azure Websites online tools you should know about (知っておくべき Windows Azure Web サイトのオンライン ツール)]。Amit Apple によるブログの投稿です。
+<h2><a name="nextsteps"></a>Next Steps</h2>
 
-具体的なトラブルシューティングについての質問は、次のいずれかのフォーラムで投稿してください。
+You've seen how Visual Studio makes it easy to view logs created by an Azure Website. The following sections provide links to more resources on related topics:
 
--   [ASP.NET サイト上の Azure フォーラム][ASP.NET サイト上の Azure フォーラム]。
--   [MSDN 上の Azure フォーラム][MSDN 上の Azure フォーラム]。
--   [StackOverflow.com][StackOverflow.com]。
+* Azure Website troubleshooting
+* Debugging in Visual Studio 
+* Remote debugging in Azure
+* Tracing in ASP.NET applications
+* Analyzing web server logs
+* Analyzing failed request tracing logs
+* Debugging Cloud Services
 
-### Visual Studio でのデバッグ
+### Azure Website troubleshooting
 
-Visual Studio のデバッグ モードの使い方については、MSDN のトピック「[Visual Studio でのデバッグ][Visual Studio でのデバッグ]」と [Visual Studio 2010 でのデバッグのヒントに関するページ][Visual Studio 2010 でのデバッグのヒントに関するページ]を参照してください。
+For more information about troubleshooting Azure Websites (WAWS), see the following resources:
 
-Azure Web サイトのリモート デバッグの詳細については、以下のリソースを参照してください。
+* [How to Monitor Web Sites](/ja-jp/manage/services/web-sites/how-to-monitor-websites/)
+* [Investigating Memory Leaks in Azure Web Sites with Visual Studio 2013](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx). Microsoft ALM blog post about Visual Studio features for analyzing managed memory issues.
+* [Windows Azure Websites online tools you should know about](/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/). Blog post by Amit Apple.
 
--   [Introduction to Remote Debugging on Azure Web Sites (Azure の Web サイトにおけるリモート デバッグの概要)][Introduction to Remote Debugging on Azure Web Sites (Azure の Web サイトにおけるリモート デバッグの概要)].
--   [Introduction to Remote Debugging Azure Web Sites part 2 - Inside Remote debugging (Azure の Web サイトにおけるリモート デバッグの概要 2 - リモート デバッグの内部処理)][Introduction to Remote Debugging Azure Web Sites part 2 - Inside Remote debugging (Azure の Web サイトにおけるリモート デバッグの概要 2 - リモート デバッグの内部処理)]
--   [Introduction to Remote Debugging on Azure Web Sites part 3 - Multi-Instance environment and GIT (Azure の Web サイトにおけるリモート デバッグの概要 3 - マルチインスタンス環境と GIT)][Introduction to Remote Debugging on Azure Web Sites part 3 - Multi-Instance environment and GIT (Azure の Web サイトにおけるリモート デバッグの概要 3 - マルチインスタンス環境と GIT)]
+For help with a specific troubleshooting question, start a thread in one of the following forums:
 
-Web サイトで Azure Web API またはモバイル サービス バックエンドを使用し、デバッグを実行する必要がある場合は [Visual Studio での .NET バックエンドのデバッグに関するページ][Visual Studio での .NET バックエンドのデバッグに関するページ]を参照してください。
+* [The Azure forum on the ASP.NET site](http://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
+* [The Azure forum on MSDN](http://social.msdn.microsoft.com/Forums/windowsazure/).
+* [StackOverflow.com](http://www.stackoverflow.com).
 
-### ASP.NET アプリケーションでのトレース
+### Debugging in Visual Studio 
 
-ASP.NET トレースに関しては、最新かつ必要な情報をすべて網羅した解説がインターネットには存在しません。そのため、過去に作成された入門者向けの資料を参考にするのが最善の方法となります。MVC がまだ存在していなかったために Web フォームを想定して書かれていますが、具体的な問題については、最新のブログで情報を補うことができます。たとえば、以下のリソースが参考になります。
+For more information about how to use debug mode in Visual Studio, see the [Debugging in Visual Studio](http://msdn.microsoft.com/ja-jp/library/vstudio/sc65sadd.aspx) MSDN topic and [Debugging Tips with Visual Studio 2010](http://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
 
--   [監視と利用統計情報 (Azure での実際のクラウド アプリケーションのビルド) に関するページ][監視と利用統計情報 (Azure での実際のクラウド アプリケーションのビルド) に関するページ].<br/>
-    Azure クラウド アプリケーションをトレースするためのベスト プラクティスを掲載した E-Book の章。
--   [ASP.NET トレース][ASP.NET トレース]<br/>
-    最新とは言えませんが、基本的な事柄がわかりやすくまとめられています。
--   [トレース リスナー][トレース リスナー]<br/>
-    トレース リスナーについて書かれていますが、[WebPageTraceListener][WebPageTraceListener] には触れていません。
--   [ASP.NET トレースと System.Diagnostics トレースの統合][ASP.NET トレースと System.Diagnostics トレースの統合]<br/>
-    古い情報ですが、入門記事では扱っていないような詳しい情報が記載されています。
--   [ASP.NET MVC Razor ビューでのトレース][ASP.NET MVC Razor ビューでのトレース]<br/>
-    Razor ビューでのトレースに加え、MVC アプリケーションでハンドルされない例外をすべてログに記録するためのエラー フィルターの作成方法についても説明されています。Web フォーム アプリケーションで、ハンドルされない例外をすべてログに記録する方法については、MSDN の「[エラー ハンドラーの完全なコード例][エラー ハンドラーの完全なコード例]」で紹介されている Global.asax サンプルを参照してください。MVC または Web フォームで、特定の例外をログに記録すると共に、既定のフレームワークの処理はそのまま活かしておく必要がある場合、例外を捕捉してから再スローする方法を利用できます。その例を次に示します。
+### Remote debugging in Azure
+
+For more information about remote debugging for Azure Websites and WebJobs, see the following resources:
+
+* [Introduction to Remote Debugging on Azure Web Sites](/blog/2014/05/06/introduction-to-remote-debugging-on-azure-web-sites/).
+* [Introduction to Remote Debugging Azure Web Sites part 2 - Inside Remote debugging](/blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/)
+* [Introduction to Remote Debugging on Azure Web Sites part 3 - Multi-Instance environment and GIT](/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
+* [WebJobs Debugging (video)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
+
+If your website uses an Azure Web API or Mobile Services back-end and you need to debug that, see [Debugging .NET Backend in Visual Studio](http://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx).
+
+### Tracing in ASP.NET applications
+
+There are no thorough and up-to-date introductions to ASP.NET tracing available on the Internet. The best you can do is get started with old introductory materials written for Web Forms because MVC didn't exist yet, and supplement that with newer blog posts that focus on specific issues. Some good places to start are the following resources:
+
+* [Monitoring and Telemetry (Building Real-World Cloud Apps with Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).<br> 
+  E-book chapter with recommendations for tracing in Azure cloud applications.
+* [ASP.NET Tracing](http://msdn.microsoft.com/ja-jp/library/ms972204.aspx)<br/>
+  Old but still a good resource for a basic introduction to the subject.
+* [Trace Listeners](http://msdn.microsoft.com/ja-jp/library/4y5y10s7.aspx)<br/>
+  Information about trace listeners but doesn't mention the [WebPageTraceListener](http://msdn.microsoft.com/ja-jp/library/system.web.webpagetracelistener.aspx).
+* [Walkthrough: Integrating ASP.NET Tracing with System.Diagnostics Tracing](http://msdn.microsoft.com/ja-jp/library/b0ectfxd.aspx)<br/>
+  This too is old, but includes some additional information that the introductory article doesn't cover.
+* [Tracing in ASP.NET MVC Razor Views](http://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
+  Besides tracing in Razor views, the post also explains how to create an error filter in order to log all unhandled exceptions in an MVC application. For information about how to log all unhandled exceptions in a Web Forms application, see the Global.asax example in [Complete Example for Error Handlers](http://msdn.microsoft.com/ja-jp/library/bb397417.aspx) on MSDN. In either MVC or Web Forms, if you want to log certain exceptions but let the default framework handling take effect for them, you can catch and rethrow as in the following example:
 
         try
         {
@@ -661,127 +751,37 @@ ASP.NET トレースに関しては、最新かつ必要な情報をすべて網
             throw;
         } 
 
--   [Azure コマンド ラインからの診断トレース ログのストリーミングと Glimpse に関する情報][Azure コマンド ラインからの診断トレース ログのストリーミングと Glimpse に関する情報]
-    このチュートリアルで Visual Studio を使って行ったことをコマンド ラインで行う方法が解説されています。[Glimpse][Glimpse] は、ASP.NET アプリケーションをデバッグするためのツールです。
--   [Azure の Web サイトのログと診断の使用に関するページ - David Ebbo 作成][Azure の Web サイトのログと診断の使用に関するページ - David Ebbo 作成]、および [Azure の Web サイトからのログのストリーミングに関するページ - David Ebbo 作成][Azure の Web サイトからのログのストリーミングに関するページ - David Ebbo 作成]
-    Scott Hanselman と David Ebbo によるビデオ。
+* [Streaming Diagnostics Trace Logging from the Azure Command Line (plus Glimpse!)](http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
+  How to use the command line to do what this tutorial shows how to do in Visual Studio. [Glimpse](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) is a tool for debugging ASP.NET applications. 
+* [Using Azure Web Site Logging and Diagnostics - with David Ebbo](http://www.windowsazure.com/ja-jp/documentation/videos/azure-web-site-logging-and-diagnostics/) and [Streaming Logs from Azure Web Sites - with David Ebbo](http://www.windowsazure.com/ja-jp/documentation/videos/log-streaming-with-azure-web-sites/)<br>
+  Videos by Scott Hanselman and David Ebbo.
 
-エラーをログに記録する方法としては、独自のトレース コードを記述する以外にも、[ELMAH][ELMAH] のようなオープン ソースのログ記録フレームワークを使う方法があります。詳細については、[Scott Hanselman が ELMAH についてまとめたブログ記事][Scott Hanselman が ELMAH についてまとめたブログ記事]を参照してください。
+For error logging, an alternative to writing your own tracing code is to use an open-source logging framework such as [ELMAH](http://nuget.org/packages/elmah/). For more information, see [Scott Hanselman's blog posts about ELMAH](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx).
 
-Azure からストリーミング ログを取得する必要がある場合、必ずしも ASP.NET や System.Diagnostics トレースを使う必要はありません。Azure Web サイトのストリーミング ログ サービスは、*LogFiles* フォルダーに見つかったすべての *.txt* ファイル、*.html* ファイル、*.log* ファイルをストリーミングします。したがって、Web サイトのファイル システムに書き込む独自のログ記録システムを作成することもできます。必要なファイルが自動的にストリーミングされ、ダウンロードされます。必要な作業は、*d:\\home\\logfiles* フォルダーにファイルを作成するアプリケーション コードを記述するだけです。
+Also, note that you don't have to use ASP.NET or System.Diagnostics tracing if you want to get streaming logs from Azure. The Azure Website streaming log service will stream any *.txt*, *.html*, or *.log* file that it finds in the *LogFiles* folder. Therefore, you could create your own logging system that writes to the file system of the website, and your file will be automatically streamed and downloaded. All you have to do is write application code that creates files in the *d:\home\logfiles* folder. 
 
-### Web サーバーのログの分析
+### Analyzing web server logs
 
-Web サーバーのログの分析の詳細については、次のリソースを参照してください。
+For more information about analyzing web server logs, see the following resources:
 
--   [LogParser][LogParser]<br/>
-    Web サーバーのログ (*.log* ファイル) に記録されているデータを表示するためのツールです。
--   [Troubleshooting IIS Performance Issues or Application Errors using LogParser (IIS のパフォーマンスの問題やアプリケーション エラーを LogParser でトラブルシューティングする)][Troubleshooting IIS Performance Issues or Application Errors using LogParser (IIS のパフォーマンスの問題やアプリケーション エラーを LogParser でトラブルシューティングする)]<br/>
-    Web サーバーのログを分析する際に活用できる Log Parser ツールについて基本的な事柄が説明されています。
--   [LogParser の使用に関して Robert McMurray が執筆したブログ記事][LogParser の使用に関して Robert McMurray が執筆したブログ記事]
--   [IIS 7.0、IIS 7.5、IIS 8.0 における HTTP ステータス コード][IIS 7.0、IIS 7.5、IIS 8.0 における HTTP ステータス コード]
+* [LogParser](http://www.microsoft.com/ja-jp/download/details.aspx?id=24659)<br/>
+  A tool for viewing data in web server logs (*.log* files).
+* [Troubleshooting IIS Performance Issues or Application Errors using LogParser ](http://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
+  An introduction to the Log Parser tool that you can use to analyze web server logs.
+* [Blog posts by Robert McMurray on using LogParser](http://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
+* [The HTTP status code in IIS 7.0, IIS 7.5, and IIS 8.0](http://support.microsoft.com/kb/943891)
 
-### 失敗した要求トレース ログの分析
+### Analyzing failed request tracing logs
 
-失敗した要求トレース ログの活用方法については、Microsoft TechNet Web サイトの「[Using Failed Request Tracing (失敗した要求トレースの使用)][Using Failed Request Tracing (失敗した要求トレースの使用)]」セクションなどが参考になります。ただし、このドキュメントで扱う内容は、失敗した要求トレースを IIS で構成する作業が主体です。この作業を Azure Web サイトで行うことはできません。
+The Microsoft TechNet website includes a [Using Failed Request Tracing](http://www.iis.net/learn/troubleshoot/using-failed-request-tracing) section which may be helpful for understanding how to use these logs. However, this documentation focuses mainly on configuring failed request tracing in IIS, which you can't do in Azure Websites.
 
-### クラウド サービスのデバッグ
+### Debugging Cloud Services
 
-Web サイトではなく Azure クラウド サービスをデバッグする場合、[クラウド サービスのデバッグに関するページ][クラウド サービスのデバッグに関するページ]を参照してください。
+If you want to debug an Azure Cloud Service rather than a Website, see [Debugging Cloud Services](http://msdn.microsoft.com/ja-jp/library/windowsazure/ee405479.aspx).
 
-  [デバッグ モード]: http://www.visualstudio.com/ja-jp/get-started/debug-your-app-vs.aspx
-  [IntelliTrace]: http://msdn.microsoft.com/library/vstudio/dd264915.aspx
-  [前提条件]: #prerequisites
-  [サイトの構成と管理]: #sitemanagement
-  [リモート ビュー]: #remoteview
-  [リモート デバッグ]: #remotedebug
-  [診断ログの概要]: #logsoverview
-  [アプリケーションのトレース ログの作成と表示]: #apptracelogs
-  [Web サーバーのログの表示]: #webserverlogs
-  [詳細なエラー メッセージ ログの表示]: #detailederrorlogs
-  [ファイル システムのログのダウンロード]: #downloadlogs
-  [ストレージ ログの表示]: #storagelogs
-  [失敗した要求ログの表示]: #failedrequestlogs
-  [次のステップ]: #nextsteps
-  [ASP.NET Web アプリケーションを Azure Web サイトに展開する]: /ja-jp/develop/net/tutorials/get-started/
-  [アカウント、サブスクリプション、管理ロールの管理]: http://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert
-  [サーバー エクスプローラーの 設定の表示]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png
-  [Azure Web サイト ウィンドウ]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configtab.png
-  [Azure の Web サイト: アプリケーション文字列と接続文字列の動作に関するページ]: http://blogs.msdn.com/b/windowsazure/archive/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work.aspx
-  [Web サイトの構成方法]: /ja-jp/manage/services/web-sites/how-to-configure-websites/#howtochangeconfig
-  [あまり役に立たないエラー ページ]: ./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png
-  [1]: ./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png
-  [2]: ./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png
-  [Web.config の変換]: http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations
-  [Web.config の編集]: ./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png
-  [詳細なエラー メッセージ]: ./media/web-sites-dotnet-troubleshoot-visual-studio/detailederror.png
-  [デバッグ モードでの発行]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png
-  [デバッガーの接続]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png
-  [管理ポータルでのリモート デバッグの設定]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debuginportal.png
-  [Azure で実行されているコード内の変数をデバッグ モードで表示]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png
-  [Azure 料金計算ツール]: /ja-jp/pricing/calculator/
-  [ステップ実行をマイ コードのみに制限する]: http://msdn.microsoft.com/ja-jp/library/vstudio/y740d9d3.aspx#BKMK_Restrict_stepping_to_Just_My_Code
-  [WebJobs]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs
-  [Visual Studio でのデバッグ]: http://msdn.microsoft.com/ja-jp/library/vstudio/sc65sadd.aspx
-  [System.Diagnostics.Trace]: http://msdn.microsoft.com/ja-jp/library/system.diagnostics.trace.aspx
-  [trace 要素]: http://msdn.microsoft.com/ja-jp/library/vstudio/6915t83k(v=vs.100).aspx
-  [trace.axd]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png
-  [3]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png
-  [コンテキスト メニューからストリーミング ログを表示]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png
-  [4]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png
-  [出力ウィンドウのエラー トレース]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-errortrace.png
-  [アプリケーション ログ記録がオフ]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-apploggingoff.png
-  [詳細レベルのトレース出力]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-verbosetraces.png
-  [ログ タブのボタン]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png
-  [Web サーバーのログ記録を有効にする]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-webserverloggingon.png
-  [監視する Azure ログの指定]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-specifylogs.png
-  [Web サーバーのログを監視する]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorwslogson.png
-  [出力ウィンドウの Web サーバーのログ]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-wslogs.png
-  [詳細なエラー メッセージを有効にする]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailedlogson.png
-  [すべてのログを監視する]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorall.png
-  [出力ウィンドウの詳細なエラー ログ]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailederrorlog.png
-  [ブラウザー ウィンドウの詳細なエラー ログ]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-detailederrorloginbrowser.png
-  [5]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png
-  [ダウンロードされたファイル]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png
-  [6]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png
-  [Log Parser]: http://www.microsoft.com/ja-jp/download/details.aspx?displaylang=en&id=24659
-  [ストレージ アカウントの作成]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-createstorage.png
-  [URL を入力する]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-storageurl.png
-  [7]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-configlogging.png
-  [テーブル ストレージの管理]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-choosestorageacct.png
-  [ストレージ ログ]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-storagelogs.png
-  [サーバー エクスプローラーのトレース テーブル]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracetableinse.png
-  [テーブル形式で表示されたストレージ ログ]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracelogtableview.png
-  [サーバー エクスプローラーを使用したストレージ リソースの参照]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ff683677.aspx
-  [8]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracetablerow.png
-  [失敗した要求トレースを有効にする]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-failedrequeston.png
-  [新しい FTP ユーザー名とパスワード]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-enterftpcredentials.png
-  [LogFiles フォルダーを開く]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilesfolder.png
-  [W3SVC フォルダーを開く]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-w3svcfolder.png
-  [W3SVC フォルダー]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-w3svcfoldercontents.png
-  [失敗した要求トレースをブラウザーで表示したところ]: ./media/web-sites-dotnet-troubleshoot-visual-studio/tws-failedrequestinbrowser.png
-  [Azure でのトラブルシューティング]: /ja-jp/develop/net/best-practices/troubleshooting/
-  [Web サイトのトラブルシューティング]: /ja-jp/develop/net/best-practices/troubleshooting-web-sites/
-  [診断ログの有効化: Azure の Web サイト]: /ja-jp/develop/net/common-tasks/diagnostics-logging-and-instrumentation/
-  [Web サイトの監視方法]: /ja-jp/manage/services/web-sites/how-to-monitor-websites/
-  [ASP.NET サイト上の Azure フォーラム]: http://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET
-  [MSDN 上の Azure フォーラム]: http://social.msdn.microsoft.com/Forums/windowsazure/
-  [StackOverflow.com]: http://www.stackoverflow.com
-  [Visual Studio 2010 でのデバッグのヒントに関するページ]: http://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx
-  [Visual Studio での .NET バックエンドのデバッグに関するページ]: http://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx
-  [ASP.NET トレース]: http://msdn.microsoft.com/ja-jp/library/ms972204.aspx
-  [トレース リスナー]: http://msdn.microsoft.com/ja-jp/library/4y5y10s7.aspx
-  [WebPageTraceListener]: http://msdn.microsoft.com/ja-jp/library/system.web.webpagetracelistener.aspx
-  [ASP.NET トレースと System.Diagnostics トレースの統合]: http://msdn.microsoft.com/ja-jp/library/b0ectfxd.aspx
-  [ASP.NET MVC Razor ビューでのトレース]: http://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx
-  [エラー ハンドラーの完全なコード例]: http://msdn.microsoft.com/ja-jp/library/bb397417.aspx
-  [Azure コマンド ラインからの診断トレース ログのストリーミングと Glimpse に関する情報]: http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx
-  [Glimpse]: http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx
-  [Azure の Web サイトのログと診断の使用に関するページ - David Ebbo 作成]: http://www.windowsazure.com/ja-jp/documentation/videos/azure-web-site-logging-and-diagnostics/
-  [Azure の Web サイトからのログのストリーミングに関するページ - David Ebbo 作成]: http://www.windowsazure.com/ja-jp/documentation/videos/log-streaming-with-azure-web-sites/
-  [ELMAH]: http://nuget.org/packages/elmah/
-  [Scott Hanselman が ELMAH についてまとめたブログ記事]: http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx
-  [LogParser]: http://www.microsoft.com/ja-jp/download/details.aspx?id=24659
-  [LogParser の使用に関して Robert McMurray が執筆したブログ記事]: http://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/
-  [IIS 7.0、IIS 7.5、IIS 8.0 における HTTP ステータス コード]: http://support.microsoft.com/kb/943891
-  [クラウド サービスのデバッグに関するページ]: http://msdnstage.redmond.corp.microsoft.com/ja-jp/library/windowsazure/ee405479.aspx
+
+
+
+[GetStarted]: ../web-sites-dotnet-get-started/
+[GetStartedWJ]: ../websites-dotnet-webjobs-sdk/
+

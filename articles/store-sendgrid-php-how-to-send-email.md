@@ -1,36 +1,39 @@
-<properties title="How to use the SendGrid email service (PHP) - Azure" pageTitle="How to use the SendGrid email service (PHP) - Azure" metaKeywords="Azure SendGrid, Azure email service, Azure SendGrid PHP, Azure email PHP" description="Learn how send email with the SendGrid email service on Azure. Code samples written in PHP." documentationCenter="PHP" services="" manager="wpickett" editor="mollybos" authors="robmcm" scriptId="" videoId="" />
+﻿<properties title="How to use the SendGrid email service (PHP) - Azure" pageTitle="SendGrid 電子メール サービスの使用方法 (PHP) - Azure" metaKeywords="Azure SendGrid, Azure 電子メール サービス, Azure SendGrid PHP, Azure 電子メール PHP" description="Learn how send email with the SendGrid email service on Azure. Code samples written in PHP." documentationCenter="PHP" services="" manager="wpickett" editor="mollybos" authors="robmcm" scriptId="" videoId="" />
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="robmcm" />
+<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="10/30/2014" ms.author="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com" />
 
 # PHP から SendGrid 電子メール サービスを使用する方法
 
-このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。サンプルは PHP で記述されています。
-紹介するシナリオは、**電子メールの作成**、**電子メールの送信**、および**添付ファイルの追加**です。SendGrid と電子メールの送信の詳細については、「[次のステップ][次のステップ]」を参照してください。
+このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を説明します。サンプルは PHP で記述されています。
+紹介するシナリオは、**電子メールの作成**、**電子メールの送信**、および**添付ファイルの追加**です。SendGrid と電子メールの送信の詳細については、「[次のステップ][]」を参照してください。
 
 ## 目次
 
--   [SendGrid 電子メール サービスとは][SendGrid 電子メール サービスとは]
--   [SendGrid アカウントの作成][SendGrid アカウントの作成]
--   [PHP アプリケーションからの SendGrid の使用][PHP アプリケーションからの SendGrid の使用]
--   [方法: 電子メールを送信する][方法: 電子メールを送信する]
--   [方法: 添付ファイルを追加する][方法: 添付ファイルを追加する]
--   [方法: フィルターを使用してフッター、追跡、および分析を有効にする][方法: フィルターを使用してフッター、追跡、および分析を有効にする]
--   [次のステップ][次のステップ]
+-   [SendGrid 電子メール サービスとは][]
+-   [SendGrid アカウントの作成][]
+-   [PHP アプリケーションからの SendGrid の使用][]
+-   [方法: 電子メールを送信する][]
+-   [方法: 添付ファイルを追加する][]
+-   [方法: フィルターを使用してフッター、追跡、および分析を有効にする][]
+-   [次のステップ][]
 
 ## <a name="bkmk_WhatIsSendGrid"> </a>SendGrid 電子メール サービスとは
 
-SendGrid は、信頼性の高い[トランザクション電子メール配信][トランザクション電子メール配信]、拡張性、およびリアルタイム分析の機能を備えた
-[クラウドベース電子メール サービス][クラウドベース電子メール サービス]であり、柔軟な API を備えているためカスタム統合も容易です。
-SendGrid の一般的な使用シナリオを次に示します。
+SendGrid は、[クラウドベース電子メールサービス]であり、信頼性の高い
+[トランザクションメール配信]、拡張性、およびリアルタイム分析の機能を備え、柔軟な API 
+を備えているためカスタム統合も容易です。SendGrid の一般的な使用シナリオを次に
+示します。
 
 -   顧客に受信通知を自動送信する
--   顧客に広告メールを月 1 回送信するための配布リストを管理する
--   ブロックされた電子メールや顧客の応答性などを表す測定値をリアルタイムで収集する。
+-   顧客に広告メールを月 1 回送信するための
+    配布リストを管理する
+-   ブロックされた電子メールや顧客の応答性などを表すメトリックをリアルタイムで
+    収集する
 -   傾向を認識するために役立つレポートを生成する
 -   顧客の問い合わせを転送する
--   アプリケーションからの電子メール通知
+- アプリケーションからの電子メール通知
 
-詳細については、[][]<http://sendgrid.com></a> を参照してください。
+詳細については、[http://sendgrid.com][] を参照してください。
 
 ## <a name="bkmk_CreateSendGrid"> </a>SendGrid アカウントの作成
 
@@ -38,19 +41,28 @@ SendGrid の一般的な使用シナリオを次に示します。
 
 ## <a name="bkmk_UsingSendGridfromPHP"> </a>PHP アプリケーションからの SendGrid の使用
 
-Azure PHP アプリケーションで SendGrid を使用するために、特別な構成やコーディングは不要です。
-SendGrid はサービスであるため、内部設置型アプリケーションからとまったく同じ方法で、クラウド アプリケーションからアクセスできます。
+Azure の PHP アプリケーションで SendGrid を使用するために、
+特別な構成やコーディングは不要です。SendGrid はサービスであるため、
+内部設置型アプリケーションからとまったく同じ方法で、
+クラウド アプリケーションからアクセスできます。
 
 ## <a name="bkmk_HowToSendEmail"> </a>方法: 電子メールを送信する
 
-SMTP、または SendGrid の Web API を使用して電子メールを送信できます。
+SMTP、または SendGrid の Web API を使用して電子メールを
+送信できます。
 
 ### SMTP API
 
-SendGrid SMTP API を使用して電子メールを送信するには、*Swift Mailer* を使用します。Swift Mailer は、PHP アプリケーションから電子メールを送信するためのコンポーネントベースのライブラリです。
-*Swift Mailer* ライブラリは
-[][1]<http://swiftmailer.org/download></a> からダウンロードできます。
-このライブラリを使用して電子メールを送信するには、<span class="auto-style2">Swift\_SmtpTransport</span>、<span class="auto-style2">Swift\_Mailer</span>、および <span class="auto-style2">Swift\_Message</span> クラスのインスタンスを作成し、適切なプロパティを設定して、<span class="auto-style2">Swift\_Mailer::send</span> メソッドを呼び出します。
+SendGrid SMTP API を使用して電子メールを送信するには、
+*Swift Mailer* を使用します。Swift Mailer は、PHP アプリケーションから電子メールを送信するためのコンポーネントベースのライブラリです。*Swift Mailer* 
+ライブラリは 
+[http://swiftmailer.org/download][] からダウンロードできます。このライブラリを使用して
+電子メールを送信するには、
+<span class="auto-style2">Swift\_SmtpTransport</span>、
+<span class="auto-style2">Swift\_Mailer</span>、および 
+<span class="auto-style2">Swift\_Message</span> クラスのインスタンスを作成し、
+適切なプロパティを設定して、
+<span class="auto-style2">Swift\_Mailer::send</span> メソッドを呼び出します。
 
     <?php
      include_once "lib/swift_required.php";
@@ -116,11 +128,11 @@ SendGrid SMTP API を使用して電子メールを送信するには、*Swift M
 
 ### Web API
 
-PHP の [curl 関数][curl 関数]で SendGrid Web API を使用して電子メールを送信します。
+PHP の [curl 関数][]で SendGrid Web API を使用して電子メールを送信します。
 
     <?php
 
-     $url = 'http://sendgrid.com/';
+     $url = 'https://api.sendgrid.com/';
      $user = 'USERNAME';
      $pass = 'PASSWORD'; 
 
@@ -131,7 +143,7 @@ PHP の [curl 関数][curl 関数]で SendGrid Web API を使用して電子メ�
           'subject' => 'testing from curl',
           'html' => 'testing body',
           'text' => 'testing body',
-          'from' => 'anna@sendgrid.com',
+          'from' => 'anna@contoso.com',
        );
        
      $request = $url.'api/mail.send.json';
@@ -156,13 +168,16 @@ PHP の [curl 関数][curl 関数]で SendGrid Web API を使用して電子メ�
      // print everything out
      print_r($response);
 
-SendGrid の Web API は REST API とほとんど同じですが、実際は REST ベースの API ではありません。ほとんどの呼び出しで GET と POST の両方の動詞を区別しないで使用できるためです。
+SendGrid の Web API は REST API とほとんど同じですが、
+実際は REST ベースの API ではありません。ほとんどの呼び出しで GET と POST の両方の動詞を
+区別しないで使用できるためです。
 
 ## <a name="bkmk_HowToAddAttachment"> </a>方法: 添付ファイルを追加する
 
 ### SMTP API
 
-SMTP API を使用して添付ファイルを送信するには、この例のスクリプトに、Swift Mailer を使用して電子メールを送信するコード行を追加する必要があります。
+SMTP API を使用して添付ファイルを送信するには、この例のスクリプトに、
+Swift Mailer を使用して電子メールを送信するコード行を追加する必要があります。
 
     <?php
      include_once "lib/swift_required.php";
@@ -234,18 +249,22 @@ SMTP API を使用して添付ファイルを送信するには、この例の�
      $message->attach(Swift_Attachment::fromPath("path\to\file")->setFileName('file_name'));
 
 このコード行では、
-<span class="auto-style2">Swift\_Message</span> オブジェクトの attach メソッドを呼び出し、<span class="auto-style2">Swift\_Attachment</span> クラスの静的メソッド <span class="auto-style2">fromPath</span> を使用してファイルを取得してメッセージに添付しています。
+<span class="auto-style2">Swift\_Message</span> オブジェクトの attach メソッドを呼び出し、
+<span class="auto-style2">Swift\_Attachment</span> クラスの静的メソッド 
+<span class="auto-style2">fromPath</span> を使用してファイルを取得して
+メッセージに添付しています。
 
 ### Web API
 
-Web API を使用した添付ファイルの送信は、Web API を使用した電子メールの送信とほとんど同じです。
-ただし次の例では、パラメーターの配列に次の要素を格納する必要があることに注意してください。
+Web API を使用した添付ファイルの送信は、Web API を使用した電子メールの送信と
+ほとんど同じです。ただし次の例では、パラメーターの配列に
+次の要素を格納する必要があることに注意してください。
 
      'files['.$fileName.']' => '@'.$filePath.'/'.$fileName
 
     <?php
 
-     $url = 'http://sendgrid.com/';
+     $url = 'https://api.sendgrid.com/';
      $user = 'USERNAME';
      $pass = 'PASSWORD';
      
@@ -259,7 +278,7 @@ Web API を使用した添付ファイルの送信は、Web API を使用した�
          'subject' => 'test of file sends',
          'html' => '<p> the HTML </p>',
          'text' => 'the plain text',
-         'from' => 'anna@sendgrid.com',
+         'from' => 'anna@contoso.com',
          'files['.$fileName.']' => '@'.$filePath.'/'.$fileName
      );
      
@@ -289,11 +308,15 @@ Web API を使用した添付ファイルの送信は、Web API を使用した�
 
 ## <a name="bkmk_HowToUseFilters"> </a>方法: フィルターを使用してフッター、追跡、および分析を有効にする
 
-SendGrid では、"フィルター" を使用することでその他の電子メール機能も利用することができます。
-その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。
+SendGrid では、"フィルター" を使用することで追加の電子メール機能を
+使用することでその他の電子メール機能も利用することができます。
+その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、
+サブスクリプション追跡などの独自の機能を有効にすることができます。
 
-フィルターは、フィルターのプロパティを使用してメッセージに適用できます。各フィルターは、フィルター固有の設定を格納したハッシュで指定します。
-次の例では、フッター フィルターを有効にし、電子メール メッセージの下部に追加されるテキスト メッセージを指定しています。
+フィルターは、フィルターのプロパティを使用してメッセージに適用できます。各
+フィルターは、フィルター固有の設定を格納したハッシュで指定します。次の例では、
+フッター フィルターを有効にし、電子メール メッセージの下部に
+追加されるテキスト メッセージを指定しています。
 
     <?php
      /*
@@ -331,11 +354,11 @@ SendGrid では、"フィルター" を使用することでその他の電子�
      $subject = 'Example SendGrid Email';
      
      // Where is this message coming from. For example, this message can be from support@yourcompany.com, info@yourcompany.com
-     $from = array('someone@example.com' =&gt; 'Name Of Your Company');
+     $from = array('someone@example.com' => 'Name Of Your Company');
      
      // If you do not specify a sender list above, you can specifiy the user here. If 
      // a sender list IS specified above, this email address becomes irrelevant.
-     $to = array('john@contoso.com'=&gt;'Personal Name Of Recipient');
+     $to = array('john@contoso.com'=>'Personal Name Of Recipient');
      
      # Create the body of the message (a plain-text and an HTML version). 
      # text is your plain-text email 
@@ -384,8 +407,7 @@ SendGrid では、"フィルター" を使用することでその他の電子�
      
      // add SMTPAPI header to the message
      // *****IMPORTANT NOTE*****
-     // SendGrid's asJSON function escapes characters. If you are using Swift 
-     Mailer's
+     // SendGrid's asJSON function escapes characters. If you are using Swift Mailer's
      // PHP Mailer functions, the getTextHeader function will also escape characters.
      // This can cause the filter to be dropped.
      $headers = $message->getHeaders();
@@ -412,12 +434,13 @@ SendGrid では、"フィルター" を使用することでその他の電子�
      print_r($failures);
      }
 
-## <a name="bkmk_NextSteps"> </a> 次のステップ
+## <a name="bkmk_NextSteps"> </a>次のステップ
 
-これで、SendGrid 電子メール サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
+これで、SendGrid 電子メール サービスの基本を学習できました。
+さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 -   SendGrid ドキュメント: <https://sendgrid.com/docs>
--   Azure ユーザー向けの SendGrid 特別プラン: <http://sendgrid.com/azure.html>
+-   Azure ユーザー向けの SendGrid 特別プラン: <https://sendgrid.com/windowsazure.html>
 
   [次のステップ]: #bkmk_NextSteps
   [SendGrid 電子メール サービスとは]: #bkmk_WhatIsSendGrid
@@ -426,8 +449,12 @@ SendGrid では、"フィルター" を使用することでその他の電子�
   [方法: 電子メールを送信する]: #bkmk_HowToSendEmail
   [方法: 添付ファイルを追加する]: #bkmk_HowToAddAttachment
   [方法: フィルターを使用してフッター、追跡、および分析を有効にする]: #bkmk_HowToUseFilters
-  [トランザクション電子メール配信]: http://sendgrid.com/solutions
-  [クラウドベース電子メール サービス]: http://sendgrid.com/transactional-email
-  []: http://sendgrid.com
-  [1]: http://swiftmailer.org/download
-  [curl 関数]: http://php.net/curl
+  [方法: その他の SendGrid サービスを使用する]: #bkmk_HowToUseAdditionalSvcs
+  [https://sendgrid.com]: https://sendgrid.com
+  [https://sendgrid.com/transactional-email/pricing]: https://sendgrid.com/transactional-email/pricing
+  [特別プラン]: https://www.sendgrid.com/windowsazure.html
+  [Azure に対する PHP アプリケーションのパッケージ化と配置]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh674499(v=VS.103).aspx
+  [http://swiftmailer.org/download]: http://swiftmailer.org/download
+  [curl function (curl 関数)]: http://php.net/curl
+  [cloud-based email service]: https://sendgrid.com/email-solutions
+  [transactional email delivery]: https://sendgrid.com/transactional-email

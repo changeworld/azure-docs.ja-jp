@@ -1,18 +1,17 @@
-<properties title="Learn how to configure an Azure website that uses Traffic Manager to use a domain name registered with Network Solutions" pageTitle="Configure a Network Solutions domain name for an Azure website that uses Traffic Manager" metaKeywords="Azure, Azure Web Sites, domain name" description="" services="web-sites" documentationCenter="" authors="larryfr, jroth" />
+﻿<properties title="Learn how to configure an Azure website that uses Traffic Manager to use a domain name registered with Network Solutions" pageTitle="Traffic Manager を利用する Azure Webサイトの Network Solutions ドメイン名の構成" metakeywords="Azure, Azure Web サイト, ドメイン名" description="" services="web-sites" documentationCenter="" authors="larryfr, jroth" manager="wpickett" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr, jroth" />
 
-# Traffic Manager を利用する Azure Website のカスタム ドメイン名の構成 (Network Solutions)
+#Traffic Manager を利用する Azure Website のカスタム ドメイン名の構成 (Network Solutions)
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/web-sites-custom-domain-name" title="カスタム ドメイン">カスタム ドメイン</a><a href="/ja-jp/documentation/articles/web-sites-godaddy-custom-domain-name" title="GoDaddy">GoDaddy</a><a href="/ja-jp/documentation/articles/web-sites-network-solutions-custom-domain-name" title="Network Solutions" class="current">Network Solutions</a><a href="/ja-jp/documentation/articles/web-sites-registerdotcom-custom-domain-name" title="Register.com" class="current">Register.com</a><a href="/ja-jp/documentation/articles/web-sites-enom-custom-domain-name" title="Enom" class="current">Enom</a><a href="/ja-jp/documentation/articles/web-sites-moniker-custom-domain-name" title="Moniker" class="current">Moniker</a><a href="/ja-jp/documentation/articles/web-sites-dotster-custom-domain-name" title="Dotster" class="current">Dotster</a><a href="/ja-jp/documentation/articles/web-sites-domaindiscover-custom-domain-name" title="DomainDiscover" class="current">DomainDiscover</a><a href="/ja-jp/documentation/articles/web-sites-directnic-custom-domain-name" title="Directnic" class="current">Directnic</a></div>
-
-<div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/web-sites-network-solutions-custom-domain-name/" title="Web サイト">Web サイト</a> | <a href="/ja-jp/documentation/articles/web-sites-network-solutions-traffic-manager-custom-domain-name/" title="Traffic Manager を利用する Web サイト" class="current">Traffic Manager を利用する Web サイト</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/ja-jp/documentation/articles/web-sites-custom-domain-name" title="Custom Domain">カスタム ドメイン</a><a href="/ja-jp/documentation/articles/web-sites-godaddy-custom-domain-name" title="GoDaddy">GoDaddy</a><a href="/ja-jp/documentation/articles/web-sites-network-solutions-custom-domain-name" title="Network Solutions" class="current">Network Solutions</a><a href="/ja-jp/documentation/articles/web-sites-registerdotcom-custom-domain-name" title="Register.com">Register.com</a><a href="/ja-jp/documentation/articles/web-sites-enom-custom-domain-name" title="Enom">Enom</a><a href="/ja-jp/documentation/articles/web-sites-moniker-custom-domain-name" title="Moniker">Moniker</a><a href="/ja-jp/documentation/articles/web-sites-dotster-custom-domain-name" title="Dotster">Dotster</a><a href="/ja-jp/documentation/articles/web-sites-domaindiscover-custom-domain-name" title="DomainDiscover">DomainDiscover</a><a href="/ja-jp/documentation/articles/web-sites-directnic-custom-domain-name" title="Directnic">Directnic</a></div>
+<div class="dev-center-tutorial-subselector"><a href="/ja-jp/documentation/articles/web-sites-network-solutions-custom-domain-name/" title="Websites">Web サイト</a> | <a href="/ja-jp/documentation/articles/web-sites-network-solutions-traffic-manager-custom-domain-name/" title="Website using Traffic Manager" class="current">Traffic Manager を利用する Web サイト</a></div>
 
 [WACOM.INCLUDE [websites-cloud-services-css-guided-walkthrough](../includes/websites-cloud-services-css-guided-walkthrough.md)]
 
 [WACOM.INCLUDE [intro](../includes/custom-dns-web-site-intro-traffic-manager.md)]
 
-この記事では、[Network Solutions][1] から購入したカスタム ドメイン名を Azure Websites で使用する手順を示します。
+この記事では、[Network Solutions](https://www.networksolutions.com) から購入したカスタム ドメイン名を Azure Websites で使用する手順を示します。
 
 [WACOM.INCLUDE [tmwebsitefooter](../includes/custom-dns-web-site-traffic-manager-notes.md)]
 
@@ -20,59 +19,45 @@
 
 この記事の内容:
 
--   [DNS レコードについて][DNS レコードについて]
--   [Web サイトの標準モード用の構成][Web サイトの標準モード用の構成]
--   [カスタム ドメインの DNS レコードの追加][カスタム ドメインの DNS レコードの追加]
--   [Web サイトに対するトラフィック マネージャーの有効化][Web サイトに対するトラフィック マネージャーの有効化]
+-   [DNS レコードについて](#understanding-records)
+-   [Web サイトの標準モード用の構成](#bkmk_configsharedmode)
+-   [カスタム ドメインの DNS レコードの追加](#bkmk_configurecname)
+-   [Web サイトに対するトラフィック マネージャーの有効化](#enabledomain)
 
-## <a name="understanding-records"></a>DNS レコードについて
+<h2><a name="understanding-records"></a>DNS レコードについて</h2>
 
 [WACOM.INCLUDE [understandingdns](../includes/custom-dns-web-site-understanding-dns-traffic-manager.md)]
 
-## <a name="bkmk_configsharedmode"></a>Web サイトの標準モード用の構成
+<h2><a name="bkmk_configsharedmode"></a>Web サイトの標準モード用の構成</h2>
 
 [WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes-traffic-manager.md)]
 
-<a name="bkmk_configurecname"></a>
+<a name="bkmk_configurecname"></a><h2>カスタム ドメインの DNS レコードの追加</h2>
 
-## カスタム ドメインの DNS レコードの追加
+カスタム ドメインを Azure Web サイトに関連付けるには、Network Solutions のツールを使用して、新しいエントリをカスタム ドメインの DNS テーブルに追加する必要があります。次の手順を使用して DNS ツールを見つけて利用します。
 
-</p>
-カスタム ドメインを Azure Websites に関連付けるには、Network Solutions のツールを使用して、新しいエントリをカスタム ドメインの DNS テーブルに追加する必要があります。次の手順を使用して DNS ツールを見つけて利用します。
+1. networksolutions.com のアカウントにログオンし、右上にある **[My Account]** を選択します。
 
-1.  networksolutions.com のアカウントにログオンし、右上にある **[My Account]** を選択します。
+3. **[My Products and Services]** タブで **[Edit DNS]** を選択します。
 
-2.  **[My Products and Services]** タブで **[Edit DNS]** を選択します。
+	![edit dns page](./media/web-sites-custom-domain-name/ns-editdns.png)
 
-    ![Edit DNS ページ][Edit DNS ページ]
+2. **[Domain Names]** ページの **[Manage <ドメイン名>]** セクションで、**[Edit Advanced DNS Records]** を選択します。
 
-3.  **[Domain Names]** ページの **[Manage <yourdomainname>]** セクションで、**[Edit Advanced DNS Records]** を選択します。
+	![domain names page with edit advanced dns records highlighted](./media/web-sites-custom-domain-name/ns-editadvanced.png)
 
-    ![Domain Names ページで Edit Advanced DNS Records を選択したところ][Domain Names ページで Edit Advanced DNS Records を選択したところ]
+4. **[Update Advanced DNS]** ページには、レコード タイプごとのセクションがあり、各セクションの下には **[Edit]** ボタンがあります。CNAME レコードの場合、**[Host Alias (CNAME Records)]** セクションを使用します。
 
-4.  **[Update Advanced DNS]** ページには、レコード タイプごとのセクションがあり、各セクションの下には **[Edit]** ボタンがあります。CNAME レコードの場合、**[Host Alias (CNAME Records)]** セクションを使用します。
+	![update advanced dns page](./media/web-sites-custom-domain-name/ns-updatecnameadvanced.png)
 
-    ![Update Advanced DNS ページ][Update Advanced DNS ページ]
+5. **[Edit]** をクリックすると、既存のレコードの変更や新しいレコードの追加に使用できるフォームが表示されます。 
 
-5.  **[Edit]** をクリックすると、既存のレコードの変更や新しいレコードの追加に使用できるフォームが表示されます。
+ CNAME レコードを追加するときは、**[Alias]** フィールドを、使用するサブドメインに設定する必要があります。たとえば **www** にします。**[Other host]** フィールドの横にあるラジオ ボタンをクリックし、**[Other host]** を、Azure Website で利用する Traffic Manager プロファイルの **.trafficmanager.net** ドメイン名に設定する必要があります。たとえば **contoso.trafficmanager.net** にします。**[Refers to Host Name]** は **[Select]** のままにします。Azure Websites で使用する CNAME レコードを作成するとき、このフィールドは不要なためです。
+	
+	![cname form](./media/web-sites-custom-domain-name/ns-cnametm.png)
 
-    CNAME レコードを追加するときは、**[Alias]** フィールドを、使用するサブドメインに設定する必要があります。たとえば **www** にします。**[Other host]** フィールドの横にあるラジオ ボタンをクリックし、**[Other host]** を、Azure Website で利用する Traffic Manager プロファイルの **.trafficmanager.net** ドメイン名に設定する必要があります。たとえば **contoso.trafficmanager.net** にします。**[Refers to Host Name]** は **[Select]** のままにします。Azure Websites で使用する CNAME レコードを作成するとき、このフィールドは不要なためです。
+5. レコードの追加または変更が完了したら、**[Continue]** をクリックして変更を確認します。**[Save changes only]** を選択して変更を保存します。
 
-    ![CNAME フォーム][CNAME フォーム]
+<h2><a name="enabledomain"></a>Traffic Manager Web サイトを有効にする</h2>
 
-6.  レコードの追加または変更が完了したら、**[Continue]** をクリックして変更を確認します。**[Save changes only]** を選択して変更を保存します。
-
-## <a name="enabledomain"></a>Web サイトに対するトラフィック マネージャーの有効化
-
-[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes-traffic-manager.md)]
-
-  [Network Solutions]: /ja-jp/documentation/articles/web-sites-network-solutions-custom-domain-name "Network Solutions"
-  [1]: https://www.networksolutions.com
-  [DNS レコードについて]: #understanding-records
-  [Web サイトの標準モード用の構成]: #bkmk_configsharedmode
-  [カスタム ドメインの DNS レコードの追加]: #bkmk_configurecname
-  [Web サイトに対するトラフィック マネージャーの有効化]: #enabledomain
-  [Edit DNS ページ]: ./media/web-sites-custom-domain-name/ns-editdns.png
-  [Domain Names ページで Edit Advanced DNS Records を選択したところ]: ./media/web-sites-custom-domain-name/ns-editadvanced.png
-  [Update Advanced DNS ページ]: ./media/web-sites-custom-domain-name/ns-updatecnameadvanced.png
-  [CNAME フォーム]: ./media/web-sites-custom-domain-name/ns-cnametm.png
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-enable-on-traffic-manager.md)]

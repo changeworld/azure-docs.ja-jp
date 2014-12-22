@@ -1,85 +1,79 @@
-<properties linkid="develop-dotnet-website-from-gallery" urlDisplayName="Website from Gallery" pageTitle="Create an Orchard CMS website from the gallery in Azure" metaKeywords="Azure build website, manage website Azure" description="A tutorial that teaches you how to create a new website in Azure. Also learn how to launch and manage your site using the Management Portal." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Create an Orchard CMS website from the gallery in Azure" authors="cephalin" solutions="" manager="wpickett" editor="" />
+﻿<properties urlDisplayName="Website from Gallery" pageTitle="Azure でギャラリーから Orchard CMS Web サイトを作成する" metaKeywords="Azure 構築 Web サイト, Web サイトの管理 Azure" description="A tutorial that teaches you how to create a new website in Azure. Also learn how to launch and manage your site using the Management Portal." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Create an Orchard CMS website from the gallery in Azure" authors="tomfitz" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin" />
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="10/21/2014" ms.author="tomfitz" />
 
 # Azure でギャラリーから Orchard CMS Web サイトを作成する
 
-ギャラリーには、Microsoft、サード パーティ企業、およびオープン ソース ソフトウェア活動によって開発された多種多様な人気の Web アプリケーションが用意されています。ギャラリーから作成した Web アプリケーションは、[Azure の管理ポータル][Azure の管理ポータル]への接続に使用するブラウザー以外に、他のソフトウェアをインストールする必要はありません。ギャラリー内の Web アプリケーションの詳細については、「[Windows Web App Gallery][Windows Web App Gallery]」を参照してください。
+ギャラリーには、Microsoft、サード パーティ企業、およびオープン ソース ソフトウェア活動によって開発された多種多様な人気の Web アプリケーションが用意されています。ギャラリーから作成した Web アプリケーションは、[Azure の管理ポータル](http://manage.windowsazure.com)への接続に使用するブラウザー以外に、他のソフトウェアをインストールする必要はありません。ギャラリー内の Web アプリケーションの詳細については、「[Windows Web App Gallery](http://www.microsoft.com/web/gallery/categories.aspx)」を参照してください。
 
 このチュートリアルでは、次のことについて説明します。
 
--   ギャラリーから新しいサイトを作成する方法
+- ギャラリーから新しいサイトを作成する方法
 
--   管理ポータルからサイトを公開して管理する方法
+- 管理ポータルからサイトを公開して管理する方法
+ 
+既定のテンプレートを使用する Orchard CMS サイトを構築します。[Orchard](http://www.orchardproject.net/) はオープン ソースで .NET ベースの無料 CMS アプリケーションで、カスタマイズしたコンテンツ主導の Web サイトを作成できます。Orchard CMS には、[追加のモジュールとテーマをダウンロード](http://gallery.orchardproject.net/)してサイトをカスタマイズできる機能拡張フレームワークが付属しています。次の図に、これから作成する Orchard CMS サイトを示します。
 
-既定のテンプレートを使用する Orchard CMS サイトを構築します。[Orchard][Orchard] はオープン ソースで .NET ベースの無料 CMS アプリケーションで、カスタマイズしたコンテンツ主導の Web サイトを作成できます。Orchard CMS には、[追加のモジュールとテーマをダウンロード][追加のモジュールとテーマをダウンロード]してサイトをカスタマイズできる機能拡張フレームワークが付属しています。次の図に、これから作成する Orchard CMS サイトを示します。
-
-![Orchard ブログ][Orchard ブログ]
+![Orchard blog][13]
 
 [WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
-## ギャラリーから Orchard Web サイトを作成する
+<h2>ギャラリーから Orchard Web サイトを作成する</h2>
 
-1.  [Azure の管理ポータル][Azure の管理ポータル]にログインします。
+1. [Azure の管理ポータル](http://manage.windowsazure.com)にログインします。
 
-2.  ポータルの左下にある **[新規]** アイコンをクリックします。
+2. ポータルの左下にある **[新規]** アイコンをクリックします。
+	
+	![Create New][1]
 
-    ![Create New][Create New]
+3. **Web サイト** アイコンをクリックし、**[ギャラリーから]** をクリックします。
+	
+	![Create From Gallery][2]
 
-3.  **[Web サイト]** アイコンをクリックし、**[ギャラリーから]** をクリックします。
+4. 一覧から **[Orchard CMS]** アイコンを見つけてクリックし、矢印をクリックして続行します。
+	
+	![Orchard from list][3]
 
-    ![Create From Gallery][Create From Gallery]
+5. **[アプリケーションの構成]** ページで、すべてのフィールドの値を入力または選択します。
+	
+- 好みの URL 名を入力します。	
+- ユーザーに最も近いリージョンを選択します (これにより最大限のパフォーマンスが保証されます)。
 
-4.  一覧から **[Orchard CMS]** アイコンを見つけてクリックし、矢印をクリックして続行します。
+	![configure your app][4]
 
-    ![一覧から Orchard][一覧から Orchard]
+6. ボックスの右下にあるチェック マークをクリックして、新しい Orchard CMS Web サイトのデプロイを開始します。
 
-5.  **[アプリケーションの構成]** ページで、すべてのフィールドの値を入力または選択します。
+Azure によって構築操作とデプロイ操作が開始されます。Web サイトの構築とデプロイが実行されている間、操作の状態が Web サイト管理ポータルの下部に表示されます。すべての操作が実行された後、Web サイトが作成されたことを示すメッセージが表示されます。
 
--   好みの URL 名を入力します
--   ユーザーに最も近いリージョンを選択します (これにより最大限のパフォーマンスが保証されます)。
+<h2>Orchard サイトの起動と管理</h2>
 
-    ![configure your app][configure your app]
+1. **[Web サイト]** ページで新しいサイトの名前をクリックし、ポータルの下部にある **[参照]** をクリックして Web サイトの開始ページを開きます。
 
-1.  ボックスの右下にあるチェック マークをクリックして、新しい Orchard CMS Web サイトのデプロイを開始します。
+	![launch dashboard][5]
 
-Azure によって構築操作と展開操作が開始されます。Web サイトの構築とデプロイが実行されている間、操作の状態が Web サイト管理ポータルの下部に表示されます。すべての操作が実行された後、Web サイトが作成されたことを示すメッセージが表示されます。
+	![browse button][12]
 
-## Orchard サイトの起動と管理
+2. Orchard に必要となる構成情報を入力し、**[セットアップの終了]** をクリックして構成を完了し、Web サイトのホーム ページを開きます。
 
-1.  **[Web サイト]** ページで新しいサイトの名前をクリックし、ポータルの下部にある **[参照]** をクリックして Web サイトの開始ページを開きます。
+	![login to Orchard][7]
 
-    ![launch dashboard][launch dashboard]
+新しい Orchard サイトは次のスクリーンショットのようになります。  
 
-    ![参照 ボタン][参照 ボタン]
+	![your Orchard site][13]
 
-2.  Orchard に必要となる構成情報を入力し、**[セットアップの終了]** をクリックして構成を完了し、Web サイトのホーム ページを開きます。
+3. Orchard の詳細と新しいサイトの構成方法については、[Orchard Documentation](http://docs.orchardproject.net/) の記述に従ってください。
 
-    ![Orchard へのログイン][Orchard へのログイン]
+<h2>次のステップ</h2>
+* [Microsoft WebMatrix を使用して Web サイトを開発してデプロイする](/ja-jp/develop/net/tutorials/website-with-webmatrix/) -- WebMatrix で Azure Web サイトを編集する方法について説明します。 
+* [メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET MVC アプリケーションを Azure Web サイトにデプロイする](/ja-jp/develop/net/tutorials/web-site-with-sql-database/)-- Visual Studio から新しい Web サイトを作成する方法について説明します。
 
-    新しい Orchard サイトは次のスクリーンショットのようになります。
+[1]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-01.png
+[2]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-02.png
+[3]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-03.png
+[4]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-04.png
+[5]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-05.png
+[7]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-07.png
+[12]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-12.png
+[13]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-08.png
 
-    ![自分の Orchard サイト][Orchard ブログ]
 
-3.  Orchard の詳細と新しいサイトの構成方法については、[Orchard のドキュメント][Orchard のドキュメント]の記述に従ってください。
-
-## <span class="short-header">次のステップ</span>次のステップ
-
--   [Microsoft WebMatrix を使用して Web サイトを開発してデプロイする][Microsoft WebMatrix を使用して Web サイトを開発してデプロイする] -- WebMatrix で Azure Web サイトを編集する方法について説明します。
--   [メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC アプリケーションを Azure Web サイトにデプロイする][メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC アプリケーションを Azure Web サイトにデプロイする]-- Visual Studio から新しい Web サイトを作成する方法について説明します。
-
-  [Azure の管理ポータル]: http://manage.windowsazure.com
-  [Windows Web App Gallery]: http://www.microsoft.com/web/gallery/categories.aspx
-  [Orchard]: http://www.orchardproject.net/
-  [追加のモジュールとテーマをダウンロード]: http://gallery.orchardproject.net/
-  [Orchard ブログ]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-08.png
-  [Create New]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-01.png
-  [Create From Gallery]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-02.png
-  [一覧から Orchard]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-03.png
-  [configure your app]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-04.png
-  [launch dashboard]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-05.png
-  [参照 ボタン]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-12.png
-  [Orchard へのログイン]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-07.png
-  [Orchard のドキュメント]: http://docs.orchardproject.net/
-  [Microsoft WebMatrix を使用して Web サイトを開発してデプロイする]: /ja-jp/develop/net/tutorials/website-with-webmatrix/
-  [メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC アプリケーションを Azure Web サイトにデプロイする]: /ja-jp/develop/net/tutorials/web-site-with-sql-database/
