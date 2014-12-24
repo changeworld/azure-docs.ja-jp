@@ -376,4 +376,4 @@ Net# では、オプションで、共有の重みを持つ複数のバンドル
 -	ノードの合計数は、層の宣言済みディメンショナリティ [50, 5, 5] を使用して次のように計算できます。**MapCount** * **NodeCount**\[0] * **NodeCount**\[1] * **NodeCount**\[2] = 10 * 5 * 5 * 5
 -	ここで、**Sharing**[d] は、d == 0 の場合にのみ false であることから、カーネルの数は、**MapCount** * **NodeCount**\[0] = 10 * 5 = 50 になります。 
 
-[1]:./media/machine-learning-azure-ml-netsharp-reference-guide/formula_large.gifｓ
+[1]:./media/machine-learning-azure-ml-netsharp-reference-guide/formula_large.gif
