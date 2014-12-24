@@ -1,4 +1,4 @@
-﻿<properties title="Using Mobile Services with Cordova Projects" pageTitle="" metaKeywords="Azure, Cordova, Mobile Services" description="" services="mobile-services" documentationCenter="" authors="ghogen" />
+<properties title="Using Mobile Services with Cordova Projects" pageTitle="" metaKeywords="Azure, Cordova, Mobile Services" description="" services="mobile-services" documentationCenter="" authors="ghogen" />
 
 <tags ms.service="mobile-services" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/11/2014" ms.author="ghogen" />
 
@@ -12,29 +12,29 @@ Visual Studio 2015 Preview の Cordova プロジェクトで Azure Mobile Servic
 2. Index.html で、**MobileServices.Web-1.2.2.min.js** を参照している行を削除します。<br/>
 
 <PRE style="prettyprint">
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>MyCordovaApp>/title>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title&gt;MyCordovaApp&gt;/title&gt;
 
-    <!--MyCordovaApp references -->
-    <link href="css/index.css" rel="stylesheet" />
-</head>
-<body>
-    <p>Hello world!&lt/p>
+    &lt;!--MyCordovaApp references --&gt;
+    &lt;link href="css/index.css" rel="stylesheet" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Hello world!&lt/p&gt;
 
-    <!--Cordova reference, this is added to your app when it's build. -->
-    <script src="cordova.js"></script>
-    <script src="scripts/platformOverrides.js"></script>
+    &lt;!--Cordova reference, this is added to your app when it's build. --&gt;
+    &lt;script src="cordova.js"&gt;&lt;/script&gt;
+    &lt;script src="scripts/platformOverrides.js"&gt;&lt;/script&gt;
 
-    <script src="scripts/index.js"></script>
+    &lt;script src="scripts/index.js"&gt;&lt;/script&gt;
 
-    <!-- yourservicename references -->
-    <span style="background-color:yellow"><script src="//ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.2.min.js">&lt/script></span>
-    <script src="/services/mobileservices/settings/yourservicename.js"></script>
-</body>
-</html>
+    &lt;!-- yourservicename references --&gt;
+    <span style="background-color:yellow">&lt;script src="//ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.2.min.js"&gt;&lt/script&gt;</span>
+    &lt;script src="/services/mobileservices/settings/yourservicename.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </PRE>
 
 3. services\mobileServices\settings フォルダーにある {yourservicename}.js を開き、既存のスニペットを次に置き換えます。
