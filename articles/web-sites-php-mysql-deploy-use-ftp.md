@@ -1,18 +1,18 @@
-﻿<properties urlDisplayName="Web w/ MySQL + FTP" pageTitle="MySQL と FTP を使用した PHP Web サイト - Azure チュートリアル" metaKeywords="" description="A tutorial that demonstrates how to create a PHP website that stores data in MySQL and use FTP deployment to Azure." metaCanonical="" services="web-sites" documentationCenter="PHP" title="Create a PHP-MySQL Azure Website and Deploy Using FTP" authors="cephalin" solutions="" manager="wpickett" editor="" />
+﻿<properties urlDisplayName="Web w/ MySQL + FTP" pageTitle="MySQL と FTP を使用した PHP Web サイト - Azure チュートリアル" metaKeywords="" description="A tutorial that demonstrates how to create a PHP website that stores data in MySQL and use FTP deployment to Azure." metaCanonical="" services="web-sites" documentationCenter="PHP" title="Create a PHP-MySQL Azure Website and Deploy Using FTP" authors="tomfitz" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="cephalin" />
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="11/14/2014" ms.author="tomfitz" />
 
 
 #PHP-MySQL Azure Website を作成して FTP でデプロイする
 
-このチュートリアルでは、PHP-MySQL Azure Web サイトを作成する方法と、FTP を使用してそれをデプロイする方法について説明します。このチュートリアルは、コンピューターに [PHP][install-php]、[MySQL][install-mysql]、Web サーバー、および FTP クライアントがインストールされていることを前提としています。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web サイトが完成します。
+このチュートリアルでは、PHP-MySQL Azure Website を作成する方法と、FTP を使用してそれをデプロイする方法について説明します。このチュートリアルは、コンピューターに [PHP][install-php]、[MySQL][install-mysql]、Web サーバー、および FTP クライアントがインストールされていることを前提としています。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web サイトが完成します。
  
 学習内容:
 
-* Azure の管理ポータルを使用して Azure の Web サイトと MySQL データベースを作成する方法。Azure の Web サイトでは PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます。
+* Azure 管理ポータルを使用して Azure Website と MySQL データベースを作成する方法。Azure の Web サイトでは PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます。
 * FTP を使用して Azure にアプリケーションを発行する方法。
  
-このチュートリアルでは、登録用の単純な Web アプリケーション (Registration) を PHP で作成します。このアプリケーションは Azure の Web サイトでホストします。完成したアプリケーションのスクリーンショットは次のようになります。
+このチュートリアルでは、登録用の単純な Web アプリケーションを PHP で作成します。このアプリケーションは Azure の Web サイトでホストします。完成したアプリケーションのスクリーンショットは次のようになります。
 
 ![Azure PHP Web Site][running-app]
 
@@ -22,7 +22,7 @@
 
 Azure Website と MySQL データベースを作成するには、次の手順に従います。
 
-1. [Azure の管理ポータル][management-portal]にログインします。
+1. [Azure 管理ポータル][management-portal]にログインします。
 2. ポータルの左下にある **[+ 新規]** アイコンをクリックします。
 
 	![Create New Azure Web Site][new-website]
@@ -46,11 +46,11 @@ Azure Website と MySQL データベースを作成するには、次の手順�
 	![Open web site dashboard][go-to-dashboard]
 
 
-6. **クイック スタート** ページの下部で、**[デプロイ資格情報のリセット]** をクリックします。 
+6. **クイック スタート** ページの下部で、**[展開資格情報のリセット]** をクリックします。 
 
 	![Reset deployment credentials][reset-deployment-credentials]
 
-7. FTP 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。作成するユーザー名とパスワードはメモしておいてください。
+7. FTP 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。作成するユーザー名とパスワードはメモしておいてください
 
 	![Create publishing credentials][portal-git-username-password]
 
@@ -61,9 +61,9 @@ Registration アプリケーションは、名前と電子メール アドレス
 * **index.php**: 登録用のフォームと登録者情報が含まれたテーブルを表示します。
 * **createtable.php**: アプリケーション用の MySQL テーブルを作成します。このファイルは 1 度しか使用されません。
 
-アプリケーションを作成してローカルで実行するには、次の手順に従います。ここに示す手順は、ローカル コンピューターに PHP、MySQL、および Web サーバーがセットアップされており、[MySQL 関数 (PDO_MYSQL)][pdo-mysql] が有効になっていることを前提としています。
+アプリケーションを作成してローカルで実行するには、次の手順に従います。ここに示す手順は、ローカル コンピューターに PHP、MySQL、および Web サーバーがセットアップされており、[MySQL 用 PDO 拡張機能][pdo-mysql]が有効になっていることを前提としています。
 
-1. 'registration' という MySQL データベースを作成します。これには、MySQL コマンド プロンプトで次のコマンドを実行します。
+1. `registration` という MySQL データベースを作成します。これには、MySQL コマンド プロンプトで次のコマンドを実行します。
 
 		mysql> create database registration;
 
@@ -95,11 +95,11 @@ Registration アプリケーションは、名前と電子メール アドレス
 		?>
 
 	> [WACOM.NOTE] 
-	><code>$user</code> と <code>$pwd</code> の値は、ローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
+	> <code>$user</code> と <code>$pwd</code> の値は、ローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
 
 4. Web ブラウザーを開いて、[http://localhost/registration/createtable.php][localhost-createtable] にアクセスします。このコードは、データベースに `registration_tbl` テーブルを作成するために使用します。
 
-5. **index.php** ファイルをテキスト エディターまたは IDE で開いて、ページの基本的な HTML コードおよび CSS コードを追加します (PHP コードは後で追加します)。
+5. **index.php**
 
 		<html>
 		<head>
@@ -107,15 +107,15 @@ Registration アプリケーションは、名前と電子メール アドレス
 		<style type="text/css">
 			body { background-color: #fff; border-top: solid 10px #000;
 			    color: #333; font-size: .85em; margin: 20; padding: 20;
-			    font-family:"Segoe UI", Verdana, Helvetica, Sans-Serif;
+			    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
 			}
 			h1, h2, h3,{ color: #000; margin-bottom: 0; padding-bottom: 0; }
-			h1 { font-size:2em; }
-			h2 { font-size:1.75em; }
-			h3 { font-size:1.2em; }
-			table { margin-top:0.75em; }
-			th { font-size:1.2em; text-align:left; border:none; padding-left: 0; }
-			td { padding:0.25em 2em 0.25em 0em; border:0 none; }
+			h1 { font-size: 2em; }
+			h2 { font-size: 1.75em; }
+			h3 { font-size: 1.2em; }
+			table { margin-top: 0.75em; }
+			th { font-size: 1.2em; text-align: left; border: none; padding-left: 0; }
+			td { padding: 0.25em 2em 0.25em 0em; border: 0 none; }
 		</style>
 		</head>
 		<body>
@@ -132,15 +132,15 @@ Registration アプリケーションは、名前と電子メール アドレス
 		</body>
 		</html>
 
-6. PHP タグ内に、データベースに接続するための PHP コードを追加します。
+6. Within the PHP tags, add PHP code for connecting to the database.
 
 		// DB connection info
 		$host = "localhost";
 		$user = "user name";
 		$pwd = "password";
 		$db = "registration";
-					// データベースに接続する
-		try{
+		// Connect to database.
+		try {
 			$conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
 			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 		}
@@ -149,12 +149,12 @@ Registration アプリケーションは、名前と電子メール アドレス
 		}
 
 	> [WACOM.NOTE]
-	> ここでも、<code>$user</code> と <code>$pwd</code> の値は、ローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
+	> Again, you will need to update the values for <code>$user</code> and <code>$pwd</code> with your local MySQL user name and password.
 
-7. データベース接続コードの次に、登録情報をデータベースに挿入するためのコードを追加します。
+7. Following the database connection code, add code for inserting registration information into the database.
 
 		if(!empty($_POST)) {
-		try{
+		try {
 			$name = $_POST['name'];
 			$email = $_POST['email'];
 			$date = date("Y-m-d");
@@ -173,7 +173,7 @@ Registration アプリケーションは、名前と電子メール アドレス
 		echo "<h3>Your're registered!</h3>";
 		}
 
-8. 上のコードの次に、データベースからデータを取得するためのコードを追加します。
+8. Finally, following the code above, add code for retrieving data from the database.
 
 		$sql_select = "SELECT * FROM registration_tbl";
 		$stmt = $conn->query($sql_select);
@@ -189,40 +189,40 @@ Registration アプリケーションは、名前と電子メール アドレス
 				echo "<td>".$registrant['email']."</td>";
 				echo "<td>".$registrant['date']."</td></tr>";
 		    }
-			echo "</table>";
+		 	echo "</table>";
 		} else {
 			echo "<h3>No one is currently registered.</h3>";
 		}
 
-これで、[http://localhost/registration/index.php][localhost-index] にアクセスしてアプリケーションをテストできます。
+You can now browse to [http://localhost/registration/index.php][localhost-index] to test the application.
 
-##MySQL と FTP の接続情報の取得
+##Get MySQL and FTP connection information
 
-Azure Websites で実行されている MySQL データベースに接続するには、接続情報が必要になります。MySQL の接続情報を取得するには、次の手順に従います。
+To connect to the MySQL database that is running in Azure Websites, your will need the connection information. To get MySQL connection information, follow these steps:
 
-1. Web サイトのダッシュボードで、ページの右側にある **[接続文字列の表示]** リンクをクリックします。
+1. From your website's dashboard, click the **View connection strings** link on the right side of the page:
 
 	![Get database connection information][connection-string-info]
 	
-2. `Database`、`Data Source`、`User Id`、および `Password` の値をメモします。
+2. Make note of the values for `Database`, `Data Source`, `User Id`, and `Password`.
 
-3. Web サイトのダッシュボードで、ページの右下にある **[発行プロファイルのダウンロード]** リンクをクリックします。
+3. From your website's dashboard, click the **Download publish profile** link at the bottom right corner of the page:
 
 	![Download publish profile][download-publish-profile]
 
-4. XML エディターで `.publishsettings` ファイルを開きます。 
+4. Open the `.publishsettings` file in an XML editor. 
 
-3. 次のように `publishMethod="FTP"` が指定されている `<publishProfile >` 要素を確認します。
+3. Find the `<publishProfile >` element with `publishMethod="FTP"` that looks similar to this:
 
 		<publishProfile publishMethod="FTP" publishUrl="ftp://[mysite].azurewebsites.net/site/wwwroot" ftpPassiveMode="True" userName="[username]" userPWD="[password]" destinationAppUrl="http://[name].antdf0.antares-test.windows-int.net" 
 			...
 		</publishProfile>
 	
-`publishUrl` 属性、`userName` 属性、および `userPWD` 属性をメモします。
+Make note of the `publishUrl`, `userName`, and `userPWD` attributes.
 
-##アプリケーションの発行
+##Publish Your Application
 
-アプリケーションをローカルでテストした後、FTP を使用してそのアプリケーションを Azure Web サイトに発行できます。ただし、まずアプリケーション内のデータベース接続情報を更新する必要があります。先ほど (「**MySQL と FTP の接続情報の取得**」セクションで) 取得したデータベース接続情報を使用し、`createdatabase.php` ファイルと 'index.php' ファイルの**両方**で、次の情報を適切な値に置き換えます。
+After you have tested your application locally, you can publish it to your Azure Website using FTP. However, you first need to update the database connection information in the application. Using the database connection information you obtained earlier (in the **Get MySQL and FTP connection information** section), update the following information in **both** the `createdatabase.php` and `index.php` files with the appropriate values:
 
 	// DB connection info
 	$host = "value of Data Source";
@@ -230,19 +230,19 @@ Azure Websites で実行されている MySQL データベースに接続する�
 	$pwd = "value of Password";
 	$db = "value of Database";
 
-これで、FTP を使用してアプリケーションを発行する準備ができました。
+Now you are ready to publish your application using FTP.
 
-1. 好みの FTP クライアントを開きます。
+1. Open your FTP client of choice.
 
-2. 先ほどメモした `publishUrl` 属性の *ホスト名部分* を FTP クライアントに入力します。
+2. Enter the *host name portion* from the `publishUrl` attribute you noted above into your FTP client.
 
-3. 先ほどメモした `userName` 属性および `userPWD` 属性をそのまま FTP クライアントに入力します。
+3. Enter the `userName` and `userPWD` attributes you noted above unchanged into your FTP client.
 
-4. 接続を確立します。
+4. Establish a connection.
 
-接続した後、必要に応じて、ファイルをアップロードおよびダウンロードすることができます。ファイルのアップロード先は、必ずルート ディレクトリ (`/site/wwwroot`) にしてください。
+After you have connected you will be able to upload and download files as needed. Be sure that you are uploading files to the root directory, which is `/site/wwwroot`.
 
-`index.php` と `createtable.php` の両方をアップロードした後、**http://[サイト名].azurewebsites.net/createtable.php** に移動してアプリケーション用の MySQL テーブルを作成し、**http://[サイト名].azurewebsites.net/index.php** に移動してアプリケーションの使用を開始します。
+After uploading both `index.php` and `createtable.php`, browse to **http://[site name].azurewebsites.net/createtable.php** to create the MySQL table for the application, then browse to **http://[site name].azurewebsites.net/index.php** to begin using the application.
  
 
 [install-php]: http://www.php.net/manual/en/install.php
@@ -263,3 +263,5 @@ Azure Websites で実行されている MySQL データベースに接続する�
 [connection-string-info]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/connection_string_info.png
 [management-portal]: https://manage.windowsazure.com
 [download-publish-profile]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/download_publish_profile_2.png
+
+<!--HONumber=35_1-->

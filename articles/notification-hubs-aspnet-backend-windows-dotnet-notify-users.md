@@ -1,24 +1,25 @@
-﻿<properties title="Azure Notification Hubs Notify Users" pageTitle="Azure Notification Hubs によるユーザーへの通知" metaKeywords="Azure のプッシュ通知, Azure の通知ハブ" description="Learn how to send secure push notifications in Azure. Code samples written in C# using the .NET API." documentationCenter="Mobile" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="sethm" manager="dwrede" />
+﻿<properties title="Azure Notification Hubs Notify Users" pageTitle="Azure Notification Hubs によるユーザーへの通知" metaKeywords="Azure push notifications, Azure notification hubs" description="Learn how to send secure push notifications in Azure. Code samples written in C# using the .NET API." documentationCenter="" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="glenga" manager="dwrede" services="notification-hubs" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="sethm" />
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows" ms.devlang="dotnet" ms.topic="article" ms.date="11/22/2014" ms.author="glenga" />
 
 #Azure Notification Hubs によるユーザーへの通知
 
 <div class="dev-center-tutorial-selector sublanding"> 
-    	<a href="/ja-jp/documentation/articles/notification-hubs-windows-dotnet-notify-users/" title="Windows Universal" class="current">Windows ユニバーサル </a><a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-notify-users/" title="iOS">iOS</a>
+    	<a href="/ja-jp/documentation/articles/notification-hubs-windows-dotnet-notify-users/" title="Windows Universal" class="current">Windows ユニバーサル</a><a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-notify-users/" title="iOS">iOS</a>
 		<a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-notify-users/" title="Android">Android</a>
 </div>
 
-Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。ガイダンス トピック「 [アプリ バックエンドからの登録](http://msdn.microsoft.com/ja-jp/library/dn743807.aspx)」に示すように、ASP.NET WebAPI バックエンドを使用してクライアントを認証し、通知を生成します。このチュートリアルは、「**Notification Hubs の使用**」チュートリアルで作成した通知ハブが基になっています。
+Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。ガイダンス トピック「[アプリ バックエンドからの登録](http://msdn.microsoft.com/ja-jp/library/dn743807.aspx)」に示すように、ASP.NET WebAPI バックエンドを使用してクライアントを認証し、通知を生成します。このチュートリアルは、「**通知ハブの使用**」チュートリアルで作成した通知ハブが基になっています。
 
-また、「**安全なプッシュ**」チュートリアルの前提条件でもあります。この「**ユーザーへの通知**」チュートリアルの手順を完了した後は、**ユーザーへの通知**のコードを変更してプッシュ通知を安全に送信する方法を示した「**安全なプッシュ**」チュートリアルに進むことができます。 
+また、このチュートリアルは、「**Azure Notification Hubs の安全なプッシュ**」チュートリアルの前提条件でもあります。この「**ユーザーへの通知**」チュートリアルの手順を完了した後は、**ユーザーへの通知**のコードを変更してプッシュ通知を安全に送信する方法を示した「**安全なプッシュ**」チュートリアルに進むことができます。 
 
-> [AZURE.NOTE] このチュートリアルでは、「[Notification Hubs の使用 (Windows ストア)](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/)」での説明に従って通知が作成され、構成されていると想定しています。
-このチュートリアルでは Windows Phone 8.1 アプリケーションを作成するという点にも注意してください。同じコードを Windows ストア アプリケーションと Windows ユニバーサル アプリケーションに使用することができます。これらのアプリケーションはすべて、Windows (Windows Phone ではなく) の資格情報を使用する必要があります。
+> [AZURE.NOTE] このチュートリアルでは、「[通知ハブの使用 (Windows ストア)](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/)」の説明に従って通知ハブが作成され、構成されていることを前提にしています。
+> バックエンド サービスとして Mobile Services を使用している場合は、このチュートリアルの [Mobile Services バージョン](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-push-notifications-app-users/) を参照してください。
+>このチュートリアルでは、Windows Phone ストア 8.1 アプリケーションを作成する点にも注意してください。同じコードを Windows ストア アプリケーションと Windows ユニバーサル アプリケーションに使用することができます。これらのアプリケーションはすべて、Windows (Windows Phone ではなく) の資格情報を使用する必要があります。
 
 ## 通知ハブを作成し構成する
 
-このチュートリアルを開始する前に、アプリケーション名を予約してから、Azure Notification Hub を作成してそのアプリケーションに接続します。「[Getting Started with Notification Hubs (Windows Store) (Notification Hubs (Windows ストア) の使用)](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/)」で、特にセクション「[アプリケーションを Windows ストアに登録する](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/#register)」と「[通知ハブを構成する](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/#configure-hub)」の手順に従ってください。特に、ポータルで通知ハブの **[構成]** タブに、**[パッケージ SID]** と **[クライアント シークレット]** の値を入力してください。この構成手順は、セクション「[通知ハブを構成する](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/#configure-hub)」で説明しています。これは重要な手順です。ポータルの資格情報が、選択したアプリケーション名に指定した資格情報と一致しない場合、プッシュ通知は成功しません。
+このチュートリアルを開始する前に、アプリケーション名を予約してから、Azure Notification Hub を作成してそのアプリケーションに接続します。「[通知ハブの使用 (Windows ストア)](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/)」の特に、「[アプリケーションを Windows ストアに登録する](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/#register) 」および「[通知ハブを構成する](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/#configure-hub)」のセクションの手順に従います。特に、ポータルで通知ハブの **[構成]** タブに **[パッケージ SID]** と **[クライアント シークレット]** の値を入力してください。この構成手順は、セクション「[通知ハブを構成する](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/#configure-hub)」で説明しています。これは重要な手順です。ポータルの資格情報が、選択したアプリケーション名に指定した資格情報と一致しない場合、プッシュ通知は成功しません。
 
 [WACOM.INCLUDE [notification-hubs-aspnet-backend-notifyusers](../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -43,7 +44,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 	![][11]
 	
-	> [AZURE.NOTE] この手順で選択したアプリケーションの名前をメモしてください。この特定の予約されたアプリケーション名に対し、[Windows デベロッパー センター](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409)から取得した資格情報を使用して、ポータルの通知ハブを構成する必要があります。この構成手順は、「[通知ハブを構成する](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/#configure-hub)」で説明しています。これは重要な手順です。ポータルの資格情報が、選択したアプリケーション名に指定した資格情報と一致しない場合、プッシュ通知は成功しません。
+	> [AZURE.NOTE] この手順で選択したアプリケーションの名前をメモしてください。この特定の予約されたアプリケーション名に対し、 [Windows デベロッパー センター](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409) から取得した資格情報を使用して、ポータルの通知ハブを構成する必要があります。この構成手順は、「[通知ハブを構成する](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-get-started/#configure-hub)」で説明しています。これは重要な手順です。ポータルの資格情報が、選択したアプリケーション名に指定した資格情報と一致しない場合、プッシュ通知は成功しません。
 
 6. ソリューション エクスプローラーで **NotifyUserWindowsPhone (Windows Phone 8.1)** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
@@ -53,7 +54,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 
 9. 結果の一覧で、**[Microsoft HTTP Client Libraries]**、**[インストール]** の順にクリックします。インストールを完了します。
 
-10. NuGet **[検索]** ボックスに戻り、「**Json.net**」と入力します。**Json.NET** パッケージをインストールし、NuGet パッケージ マネージャー ウィンドウを閉じます。
+10. NuGet **[検索]** ボックスに戻り、「**Json.net**」と入力します。**Json.NET** パッケージをインストールし、NuGet パッケージ マネージャーのウィンドウを閉じます。
 
 11. ソリューション エクスプローラーで、**NotifyUserWindowsPhone (Windows Phone 8.1)** プロジェクトの **[MainPage.xaml]** をダブルクリックして、Visual Studio エディターで開きます。
 
@@ -90,9 +91,9 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
     	</Grid>
 
 
-13. ソリューション エクスプローラーで、**NotifyUserWindowsPhone (Windows Phone 8.1)** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。クラスに **RegisterClient.cs** という名前を付け、**[OK]** をクリックしてクラスを生成します。プッシュ通知を登録するために、このコンポーネントはアプリケーション バックエンドにアクセスするのに必要な REST 呼び出しを実装します。「[アプリ バックエンドからの登録](http://msdn.microsoft.com/ja-jp/library/dn743807.aspx)」で説明しているとおり、通知ハブによって作成された *registrationIds* もローカルに格納されます。**[Log in and register]** ボタンをクリックすると、ローカル ストレージに格納した認証トークンが使用されることに注意してください。
+13. ソリューション エクスプローラーで、**NotifyUserWindowsPhone (Windows Phone 8.1)** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。クラスに **RegisterClient.cs** という名前を付け、**[OK]** をクリックしてクラスを生成します。プッシュ通知を登録するために、このコンポーネントはアプリケーション バックエンドにアクセスするのに必要な REST 呼び出しを実装します。「[アプリ バックエンドからの登録](http://msdn.microsoft.com/ja-jp/library/dn743807.aspx)」で説明しているとおり、通知ハブによって作成された *registrationIds* もローカルに格納されます。**[ログインして登録]** をクリックすると、ローカル ストレージに格納した認証トークンが使用されることに注意してください。
 
-14. `RegisterClient` クラス定義内で、次のコードを追加します。必ず、`{backend endpoint}` を前のセクションで取得したバックエンド エンドポイントで置き換えます。
+14. `RegisterClient` クラス定義内で、次のコードを追加します。必ず、前のセクションで取得したバックエンド エンドポイントで `{backend endpoint}` を置き換えてください。
 
 		private string POST_URL = "{backend endpoint}/api/register";
 
@@ -183,7 +184,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 		
 16. MainPage.xaml.cs でボタンのコードを追加します。**Log in and register** に対するコールバックは、ローカル ストレージに基本認証トークン (これは認証スキームが使用する任意のトークンを表します) を格納し、`RegisterClient` を使用してバックエンドを呼び出します。**AppBackend** に対するコールバックは、バックエンドを呼び出し、このユーザーのすべてのデバイスに対してセキュリティで保護された通知をトリガーします。 
 
-	MainPage.xaml.cs で、`OnNavigatedTo()` メソッドの後に次のコードを追加します。必ず、`{backend endpoint}` を前のセクションで取得したバックエンド エンドポイントで置き換えます。
+	MainPage.xaml.cs で `OnNavigatedTo()` メソッドの後に次のコードを追加します。必ず、前のセクションで取得したバックエンド エンドポイントで `{backend endpoint}` を置き換えてください。
 
 		private async void PushClick(object sender, RoutedEventArgs e)
         {
@@ -220,7 +221,7 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
         }
 
 
-17. MainPage.xaml.cs ファイルの戦闘に、次の `using` ステートメントを追加します。
+17. MainPage.xaml.cs ファイルの先頭に次の `using` ステートメントを追加します。
 
 		using System.Net.Http;
 		using Windows.Storage;
@@ -244,3 +245,5 @@ Azure でプッシュ通知がサポートされたことで、マルチプラ�
 [11]: ./media/notification-hubs-aspnet-backend-windows-dotnet-notify-users/notification-hubs-secure-push11.png
 [12]: ./media/notification-hubs-aspnet-backend-windows-dotnet-notify-users/notification-hubs-secure-push12.png
 [13]: ./media/notification-hubs-aspnet-backend-windows-dotnet-notify-users/notification-hubs-secure-push13.png
+
+<!--HONumber=35_1-->

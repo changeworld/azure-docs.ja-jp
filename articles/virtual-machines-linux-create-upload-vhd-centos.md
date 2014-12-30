@@ -1,345 +1,350 @@
-<properties urlDisplayName="Upload a CentOS-based VHD" pageTitle="Azure 上での CentOS ベースの Linux VHD の作成とアップロード" metaKeywords="Azure VHD, uploading Linux VHD, CentOS" description="CentOS ベースの Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="CentOS ベースの Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード" authors="kathydav" solutions="" manager="timlt" editor="tysonn" />
+﻿<properties urlDisplayName="Upload a CentOS-based VHD" pageTitle="Azure 上での CentOS ベースの Linux VHD の作成とアップロード" metaKeywords="Azure VHD, uploading Linux VHD, CentOS" description="Learn to create and upload an Azure virtual hard disk (VHD) that contains a CentOS-based Linux operating system." metaCanonical="" services="virtual-machines" documentationCenter="" title="Creating and Uploading a Virtual Hard Disk that Contains a CentOS-based Linux Operating System" authors="szarkos" solutions="" manager="timlt" editor="tysonn" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="06/05/2014" ms.author="kathydav, szarkos" />
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="06/05/2014" ms.author="szarkos" />
 
 # Azure 用の CentOS ベースの仮想マシンの準備
 
--   [Azure 用の CentOS 6.x 仮想マシンの準備][Azure 用の CentOS 6.x 仮想マシンの準備]
--   [Azure 用の CentOS 7.0 以上の仮想マシンの準備][Azure 用の CentOS 7.0 以上の仮想マシンの準備]
+- [Azure 用の CentOS 6.x 仮想マシンの準備](#centos6)
+- [Azure 用の CentOS 7.0 以上の仮想マシンの準備](#centos7)
 
-## 前提条件
+##前提条件##
 
-この記事では、既に CentOS (または同様な派生版) Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。.vhd ファイルを作成するツールは、たとえば、Hyper-V などの仮想化ソリューションなど複数あります。その手順については、「[Hyper-V の役割のインストールと仮想マシンの構成][Hyper-V の役割のインストールと仮想マシンの構成]」を参照してください。
+この記事では、既に CentOS (または同様な派生版) Linux オペレーティング システムを仮想ハード ディスクにインストールしていることを前提にしています。vhd ファイルを作成するツールは、たとえば、Hyper-V などの仮想化ソリューションなど複数あります。その手順については、「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。 
+
 
 **CentOS のインストールに関する注記**
 
--   新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
+- 新しい VHDX 形式は、Azure ではサポートされていません。Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。
 
--   Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。必要な場合は、LVM または [RAID][RAID] をデータ ディスク上で使用できます。
+- Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。必要な場合は、LVM または [RAID ](../virtual-machines-linux-configure-raid) をデータ ディスク上で使用できます。
 
--   VM サイズが大きい場合は NUMA がサポートされません。2.6.37 未満のバージョンの Linux カーネルにバグがあるためです。この問題は、主にアップストリームの Red Hat 2.6.32 カーネルを使用するディストリビューションに影響を及ぼします。Azure Linux エージェント (waagent) を手動でインストールすると、Linux カーネルの GRUB 構成で NUMA が自動的に無効になります。このことに関する詳細については、次の手順を参照してください。
+- さらに大きいサイズの VM では NUMA はサポートされていません。2.6.37 以下のバージョンの Linux カーネルにバグがあるためです。この問題は、主に、アップストリームの Red Hat 2.6.32 カーネルを使用したディストリビューションに影響します。Azure Linux エージェント (waagent) を手動でインストールすると、Linux カーネルの GRUB 構成で NUMA が自動的に無効になります。このことに関する詳細については、次の手順を参照してください。
 
--   OS ディスクにスワップ パーティションを構成しないでください。Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。このことに関する詳細については、次の手順を参照してください。
+- OS ディスクにスワップ パーティションを構成しないでください。Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。このことに関する詳細については、次の手順を参照してください。
 
--   すべての VHD のサイズは 1 MB の倍数であることが必要です。
+- すべての VHD のサイズは 1 MB の倍数であることが必要です。
 
-## <span id="centos6"></span> </a>CentOS 6.x
 
-1.  Hyper-V マネージャーで仮想マシンを選択します。
+## <a id="centos6"> </a>CentOS 6.x ##
 
-2.  **[接続]** をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
+1. Hyper-V マネージャーで仮想マシンを選択します。
 
-3.  次のコマンドを実行して NetworkManager をアンインストールします。
+2. **[接続]** をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
 
-        # sudo rpm -e --nodeps NetworkManager
+3. 次のコマンドを実行して NetworkManager をアンインストールします。
 
-    **注:** パッケージがまだインストールされていない場合、このコマンドは失敗してエラー メッセージが表示されます。これは予期されることです。
+		# sudo rpm -e --nodeps NetworkManager
 
-4.  `/etc/sysconfig/` ディレクトリに **network** という名前でファイルを作成し、次のテキストを追加します。
+	**注: **パッケージがまだインストールされていない場合、このコマンドは失敗してエラー メッセージが表示されます。これは予期されることです。
 
-        NETWORKING=yes
-        HOSTNAME=localhost.localdomain
+4.	`/etc/sysconfig/` ディレクトリに **network** という名前でファイルを作成し、次のテキストを追加します。
 
-5.  `/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前でファイルを作成し、次のテキストを追加します。
+		NETWORKING=yes
+		HOSTNAME=localhost.localdomain
 
-        DEVICE=eth0
-        ONBOOT=yes
-        BOOTPROTO=dhcp
-        TYPE=Ethernet
-        USERCTL=no
-        PEERDNS=yes
-        IPV6INIT=no
+5.	`/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前のファイルを作成し、次のテキストを追加します。
 
-6.  udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。これらのルールは、Microsoft Azure または Hyper-V で仮想マシンを複製する際に問題の原因となります。
+		DEVICE=eth0
+		ONBOOT=yes
+		BOOTPROTO=dhcp
+		TYPE=Ethernet
+		USERCTL=no
+		PEERDNS=yes
+		IPV6INIT=no
 
-        # sudo mkdir -m 0700 /var/lib/waagent
-        # sudo mv /lib/udev/rules.d/75-persistent-net-generator.rules /var/lib/waagent/ 2>/dev/null
-        # sudo mv /etc/udev/rules.d/70-persistent-net.rules /var/lib/waagent/ 2>/dev/null
+6.	udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。これらのルールは、Microsoft Azure または Hyper-V で仮想マシンを複製する際に問題の原因となります。
 
-7.  次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
+		# sudo mkdir -m 0700 /var/lib/waagent
+		# sudo mv /lib/udev/rules.d/75-persistent-net-generator.rules /var/lib/waagent/ 2>/dev/null
+		# sudo mv /etc/udev/rules.d/70-persistent-net.rules /var/lib/waagent/ 2>/dev/null
 
-        # sudo chkconfig network on
+7. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
-8.  **CentOS 6.3 のみ**:Linux Integration Services 用ドライバーをインストールします
+		# sudo chkconfig network on
 
-    **重要: この手順は CentOS 6.3 以下にのみ有効です。**CentOS 6.4 以上では、Linux Integration Services は*カーネルに組み込み済み*です。
 
-    a) [Microsoft ダウンロード センター][Microsoft ダウンロード センター]から Linux Integration Services 用ドライバーが格納されている .iso ファイルを入手します。
+8. **CentOS 6.3 のみ**:Linux Integration Services 用ドライバーをインストールします
 
-    b) Hyper-V マネージャーの **[アクション]** ウィンドウで **[設定]** をクリックします。
+	**重要: この手順は CentOS 6.3 以下にのみ有効です。**CentOS 6.4 以上では、Linux Integration Services は*カーネルに組み込み済み*です。
 
-    ![Hyper-V の設定を開く][Hyper-V の設定を開く]
+	a) [Microsoft ダウンロード センター](http://www.microsoft.com/ja-jp/download/details.aspx?id=41554)から Linux Integration Services 用ドライバーが格納されている .iso ファイルを入手します。
 
-    c) **[ハードウェア]** ウィンドウで **[IDE コントローラー 1]** をクリックします。
+	b) Hyper-V マネージャーの **[アクション]** ウィンドウで **[設定]** をクリックします。
 
-    ![インストール メディアがセットされた DVD ドライブの追加][インストール メディアがセットされた DVD ドライブの追加]
+	![Open Hyper-V settings](./media/virtual-machines-linux-create-upload-vhd/settings.png)
 
-    d) **[IDE コントローラー]** ボックスで、**[DVD ドライブ]** をクリックし、**[追加]** をクリックします。
+	c) **[ハードウェア]** ウィンドウで **[IDE コントローラー 1]** をクリックします。
 
-    e) **[イメージ ファイル]** を選択し、**Linux IC v3.2.iso** を参照して、**[開く]** をクリックします。
+	![Add DVD drive with install media](./media/virtual-machines-linux-create-upload-vhd/installiso.png)
 
-    f) **[設定]** ページで **[OK]** をクリックします。
+	d) **[IDE コントローラー]** ボックスで、**[DVD ドライブ]** をクリックし、**[追加]** をクリックします。
 
-    g) **[接続]** をクリックすると、仮想マシンのウィンドウが開きます。
+	e) **[イメージ ファイル]** を選択し、**Linux IC v3.2.iso** を見つけて **[開く]** をクリックします。
 
-    h) コマンド プロンプト ウィンドウに次のコマンドを入力します。
+	f) **[設定]** ページで **[OK]** をクリックします。
 
-        # sudo mount /dev/cdrom /media
-        # sudo /media/install.sh
-        # sudo reboot
+	g) **[接続]** をクリックすると、仮想マシンのウィンドウが開きます。
 
-9.  次のコマンドを実行して python-pyasn1 パッケージをインストールします。
+	h)  コマンド プロンプト ウィンドウに次のコマンドを入力します。
 
-        # sudo yum install python-pyasn1
+		# sudo mount /dev/cdrom /media
+		# sudo /media/install.sh
+		# sudo reboot
+
+9. 次のコマンドを実行して python-pyasn1 パッケージをインストールします。
+
+		# sudo yum install python-pyasn1
 
 10. Azure データセンター内にホストされている OpenLogic のミラーを使用する場合は、/etc/yum.repos.d/CentOS-Base.repo ファイルを次のリポジトリに置き換えます。これにより、Azure Linux エージェント用のパッケージを含む **[openlogic]** リポジトリも追加されます。
 
-        [openlogic]
-        name=CentOS-$releasever - openlogic packages for $basearch
-        baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
-        enabled=1
-        gpgcheck=0
+		[openlogic]
+		name=CentOS-$releasever - openlogic packages for $basearch
+		baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
+		enabled=1
+		gpgcheck=0
+		
+		[base]
+		name=CentOS-$releasever - Base
+		baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
+		gpgcheck=1
+		gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+		
+		#released updates
+		[updates]
+		name=CentOS-$releasever - Updates
+		baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
+		gpgcheck=1
+		gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+		
+		#additional packages that may be useful
+		[extras]
+		name=CentOS-$releasever - Extras
+		baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
+		gpgcheck=1
+		gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+		
+		#additional packages that extend functionality of existing packages
+		[centosplus]
+		name=CentOS-$releasever - Plus
+		baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
+		gpgcheck=1
+		enabled=0
+		gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+		
+		#contrib - packages by Centos Users
+		[contrib]
+		name=CentOS-$releasever - Contrib
+		baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/contrib/$basearch/
+		gpgcheck=1
+		enabled=0
+		gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-        [base]
-        name=CentOS-$releasever - Base
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+	**注: **これ以降の説明では、少なくとも [openlogic] リポジトリを使用していることを前提とします。このリポジトリは、以下の Azure Linux エージェントのインストールに使用されます。
 
-        #released updates
-        [updates]
-        name=CentOS-$releasever - Updates
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-        #additional packages that may be useful
-        [extras]
-        name=CentOS-$releasever - Extras
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+11.	/etc/yum.conf ファイルに次の行を追加します。
 
-        #additional packages that extend functionality of existing packages
-        [centosplus]
-        name=CentOS-$releasever - Plus
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
-        gpgcheck=1
-        enabled=0
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+		http_caching=packages
 
-        #contrib - packages by Centos Users
-        [contrib]
-        name=CentOS-$releasever - Contrib
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/contrib/$basearch/
-        gpgcheck=1
-        enabled=0
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+	さらに、**CentOS 6.3 でのみ**、次の行を追加します。
 
-    **注:** これ以降の説明では、少なくとも [openlogic] リポジトリを使用していることを前提とします。このリポジトリは、以下の Azure Linux エージェントのインストールに使用されます。
-
-11. /etc/yum.conf ファイルに次の行を追加します。
-
-        http_caching=packages
-
-    さらに、**CentOS 6.3 でのみ**、次の行を追加します。
-
-        exclude=kernel*
+		exclude=kernel*
 
 12. "/etc/yum/pluginconf.d/fastestmirror.conf" ファイルの `[main]` で次のように入力して、yum モジュール "fastestmirror" を無効にします。
 
-        set enabled=0
+		set enabled=0
 
-13. 次のコマンドを実行して、現在の yum メタデータをクリアします。
+13.	次のコマンドを実行して、現在の yum メタデータをクリアします。
 
-        # yum clean all
+		# yum clean all
 
 14. **CentOS 6.3 のみ**、次のコマンドを使用してカーネルを更新します。
 
-        # sudo yum --disableexcludes=all install kernel
+		# sudo yum --disableexcludes=all install kernel
 
-15. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで "/boot/grub/menu.lst" を開き、既定のカーネルに次のパラメーターが含まれていることを確認します。
+15.	GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで "/boot/grub/menu.lst" を開き、既定のカーネルに次のパラメーターが含まれていることを確認します。
 
-        console=ttyS0 earlyprintk=ttyS0 rootdelay=300 numa=off
+		console=ttyS0 earlyprintk=ttyS0 rootdelay=300 numa=off
 
-    これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。これにより、CentOS 6 で使用されているカーネル バージョンのバグが原因で NUMA が無効になります。
+	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。これにより、CentOS 6 で使用されているカーネル バージョンのバグが原因で NUMA が無効になります。
 
-    上記のほかに、次のパラメーターを*削除*することをお勧めします。
+	そのほかにも、次のパラメーターを*削除*することをお勧めします。
 
-        rhgb quiet crashkernel=auto
+		rhgb quiet crashkernel=auto
 
-    クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。
+	クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。
 
-    必要に応じて `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
+	必要に応じて `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
 
-16. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常これが既定です。
+
+16.	SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常これが既定です。
 
 17. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
-        # sudo yum install WALinuxAgent
+		# sudo yum install WALinuxAgent
 
-    手順 2. で説明したように NetworkManager パッケージおよび NetworkManager-gnome パッケージがまだ削除されていない場合、WALinuxAgent パッケージをインストールすると、これらのパッケージが削除されることに注意してください。
+	手順 2. で説明したように NetworkManager パッケージおよび NetworkManager-gnome パッケージがまだ削除されていない場合、WALinuxAgent パッケージをインストールすると、これらのパッケージが削除されることに注意してください。
 
-18. OS ディスクにスワップ領域を作成しないでください。
+18.	OS ディスクにスワップ領域を作成しないでください。
 
-    Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは*一時*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは*一時*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
-        ResourceDisk.Format=y
-        ResourceDisk.Filesystem=ext4
-        ResourceDisk.MountPoint=/mnt/resource
-        ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+		ResourceDisk.Format=y
+		ResourceDisk.Filesystem=ext4
+		ResourceDisk.MountPoint=/mnt/resource
+		ResourceDisk.EnableSwap=y
+		ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-19. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
+19.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
-        # sudo waagent -force -deprovision
-        # export HISTSIZE=0
-        # logout
+		# sudo waagent -force -deprovision
+		# export HISTSIZE=0
+		# logout
 
-20. Hyper-V マネージャーで **[アクション] -\> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
+20. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-------------------------------------------------------------------------
 
-## <span id="centos7"></span> </a>CentOS 7.0 以上
+----------
+
+
+## <a id="centos7"> </a>CentOS 7.0+ ##
 
 **CentOS 7 (および同様な派生版) への変更**
 
 Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場合とほとんど同じですが、次のように、重要な違いがいくつかあります。
 
--   NetworkManager パッケージが、Azure Linux エージェントと競合しなくなりました。このパッケージは既定でインストールされます。このパッケージを削除しないことをお勧めします。
--   GRUB2 が、既定のブートローダーとして使用されるようになったため、カーネル パラメーターの編集手順が変更されました (以下を参照)。
--   XFS が既定のファイル システムになりました。必要に応じて、引き続き ext4 ファイル システムを使用できます。
+ - NetworkManager パッケージが、Azure Linux エージェントと競合しなくなりました。このパッケージは既定でインストールされます。このパッケージを削除しないことをお勧めします。
+ - GRUB2 が、既定のブートローダーとして使用されるようになったため、カーネル パラメーターの編集手順が変更されました (以下を参照)。
+ - XFS が既定のファイル システムになりました。必要に応じて、引き続き ext4 ファイル システムを使用できます。
+
 
 **構成の手順**
 
-1.  Hyper-V マネージャーで仮想マシンを選択します。
+1. Hyper-V マネージャーで仮想マシンを選択します。
 
-2.  **[接続]** をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
+2. **[接続]** をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
 
-3.  `/etc/sysconfig/` ディレクトリに **network** という名前でファイルを作成し、次のテキストを追加します。
+3.	`/etc/sysconfig/` ディレクトリに **network** という名前でファイルを作成し、次のテキストを追加します。
 
-        NETWORKING=yes
-        HOSTNAME=localhost.localdomain
+		NETWORKING=yes
+		HOSTNAME=localhost.localdomain
 
-4.  `/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前でファイルを作成し、次のテキストを追加します。
+4.	`/etc/sysconfig/network-scripts/` ディレクトリに **ifcfg-eth0** という名前のファイルを作成し、次のテキストを追加します。
 
-        DEVICE=eth0
-        ONBOOT=yes
-        BOOTPROTO=dhcp
-        TYPE=Ethernet
-        USERCTL=no
-        PEERDNS=yes
-        IPV6INIT=no
+		DEVICE=eth0
+		ONBOOT=yes
+		BOOTPROTO=dhcp
+		TYPE=Ethernet
+		USERCTL=no
+		PEERDNS=yes
+		IPV6INIT=no
 
-5.  udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。これらのルールは、Microsoft Azure または Hyper-V で仮想マシンを複製する際に問題の原因となります。
+5.	udev ルールを移動 (または削除) して、イーサネット インターフェイスの静的ルールが生成されないようにします。これらのルールは、Microsoft Azure または Hyper-V で仮想マシンを複製する際に問題の原因となります。
 
-        # sudo mkdir -m 0700 /var/lib/waagent
-        # sudo mv /lib/udev/rules.d/75-persistent-net-generator.rules /var/lib/waagent/ 2>/dev/null
-        # sudo mv /etc/udev/rules.d/70-persistent-net.rules /var/lib/waagent/ 2>/dev/null
+		# sudo mkdir -m 0700 /var/lib/waagent
+		# sudo mv /lib/udev/rules.d/75-persistent-net-generator.rules /var/lib/waagent/ 2>/dev/null
+		# sudo mv /etc/udev/rules.d/70-persistent-net.rules /var/lib/waagent/ 2>/dev/null
 
-6.  次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
+6. 次のコマンドを実行して、起動時にネットワーク サービスが開始されるようにします。
 
-        # sudo chkconfig network on
+		# sudo chkconfig network on
 
-7.  次のコマンドを実行して python-pyasn1 パッケージをインストールします。
+7. 次のコマンドを実行して python-pyasn1 パッケージをインストールします。
 
-        # sudo yum install python-pyasn1
+		# sudo yum install python-pyasn1
 
-8.  Azure データセンター内にホストされている OpenLogic のミラーを使用する場合は、/etc/yum.repos.d/CentOS-Base.repo ファイルを次のリポジトリに置き換えます。これにより、Azure Linux エージェント用のパッケージを含む **[openlogic]** リポジトリも追加されます。
+8. Azure データセンター内にホストされている OpenLogic のミラーを使用する場合は、/etc/yum.repos.d/CentOS-Base.repo ファイルを次のリポジトリに置き換えます。これにより、Azure Linux エージェント用のパッケージを含む **[openlogic]** リポジトリも追加されます。
 
-        [openlogic]
-        name=CentOS-$releasever - openlogic packages for $basearch
-        baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
-        enabled=1
-        gpgcheck=0
+		[openlogic]
+		name=CentOS-$releasever - openlogic packages for $basearch
+		baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
+		enabled=1
+		gpgcheck=0
+		
+		[base]
+		name=CentOS-$releasever - Base
+		baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
+		gpgcheck=1
+		gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+		
+		#released updates
+		[updates]
+		name=CentOS-$releasever - Updates
+		baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
+		gpgcheck=1
+		gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+		
+		#additional packages that may be useful
+		[extras]
+		name=CentOS-$releasever - Extras
+		baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
+		gpgcheck=1
+		gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+		
+		#additional packages that extend functionality of existing packages
+		[centosplus]
+		name=CentOS-$releasever - Plus
+		baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
+		gpgcheck=1
+		enabled=0
+		gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+		
+		#contrib - packages by Centos Users
+		[contrib]
+		name=CentOS-$releasever - Contrib
+		baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/contrib/$basearch/
+		gpgcheck=1
+		enabled=0
+		gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
-        [base]
-        name=CentOS-$releasever - Base
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
-        #released updates
-        [updates]
-        name=CentOS-$releasever - Updates
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+	**注: **これ以降の説明では、少なくとも [openlogic] リポジトリを使用していることを前提とします。このリポジトリは、以下の Azure Linux エージェントのインストールに使用されます。
 
-        #additional packages that may be useful
-        [extras]
-        name=CentOS-$releasever - Extras
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
-        gpgcheck=1
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+9.	次のコマンドを実行して、現在の yum メタデータをクリアし、更新をインストールします。
 
-        #additional packages that extend functionality of existing packages
-        [centosplus]
-        name=CentOS-$releasever - Plus
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/centosplus/$basearch/
-        gpgcheck=1
-        enabled=0
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+		# sudo yum clean all
+		# sudo yum -y update
 
-        #contrib - packages by Centos Users
-        [contrib]
-        name=CentOS-$releasever - Contrib
-        baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/contrib/$basearch/
-        gpgcheck=1
-        enabled=0
-        gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+10.	GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで "/etc/default/grub" を開き、次のように、`GRUB_CMDLINE_LINUX` パラメーターを編集します。
 
-    **注:** これ以降の説明では、少なくとも [openlogic] リポジトリを使用していることを前提とします。このリポジトリは、以下の Azure Linux エージェントのインストールに使用されます。
+		GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
 
-9.  次のコマンドを実行して、現在の yum メタデータをクリアし、更新をインストールします。
+	これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。そのほかにも、次のパラメーターを*削除*することをお勧めします。
 
-        # sudo yum clean all
-        # sudo yum -y update
+		rhgb quiet crashkernel=auto
 
-10. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。これを行うには、テキスト エディターで "/etc/default/grub" を開き、次のように、`GRUB_CMDLINE_LINUX` パラメーターを編集します。
+	クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。
 
-        GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
-
-    これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。上記のほかに、次のパラメーターを*削除*することをお勧めします。
-
-        rhgb quiet crashkernel=auto
-
-    クラウド環境では、すべてのログをシリアル ポートに送信するため、グラフィカル ブートおよびクワイエット ブートは役立ちません。
-
-    必要に応じて `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
+	必要に応じて `crashkernel` オプションは構成したままにすることができますが、このパラメーターにより、VM 内の使用可能なメモリ量が 128 MB 以上減少するため、比較的小さなサイズの VM では問題となる可能性がある点に注意してください。
 
 11. 上記のとおりに "/etc/default/grub" の編集を終了したら、次のコマンドを実行して GRUB 構成をリビルドします。
 
-        # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+		# sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-12. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常これが既定です。
+12.	SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。通常これが既定です。
 
 13. 次のコマンドを実行して Azure Linux エージェントをインストールします。
 
-        # sudo yum install WALinuxAgent
+		# sudo yum install WALinuxAgent
 
-14. OS ディスクにスワップ領域を作成しないでください。
+14.	OS ディスクにスワップ領域を作成しないでください。
 
-    Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは*一時*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
+	Azure Linux エージェントは、Azure でプロビジョニングされた後に VM に接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成します。ローカル リソース ディスクは*一時*ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。Azure Linux エージェントのインストール後に (前の手順を参照)、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
-        ResourceDisk.Format=y
-        ResourceDisk.Filesystem=ext4
-        ResourceDisk.MountPoint=/mnt/resource
-        ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+		ResourceDisk.Format=y
+		ResourceDisk.Filesystem=ext4
+		ResourceDisk.MountPoint=/mnt/resource
+		ResourceDisk.EnableSwap=y
+		ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-15. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
+15.	次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
-        # sudo waagent -force -deprovision
-        # export HISTSIZE=0
-        # logout
+		# sudo waagent -force -deprovision
+		# export HISTSIZE=0
+		# logout
 
-16. Hyper-V マネージャーで **[アクション] -\> [シャットダウン]** をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
+16. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順をクリックします。これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-  [Azure 用の CentOS 6.x 仮想マシンの準備]: #centos6
-  [Azure 用の CentOS 7.0 以上の仮想マシンの準備]: #centos7
-  [Hyper-V の役割のインストールと仮想マシンの構成]: http://technet.microsoft.com/library/hh846766.aspx
-  [RAID]: ../virtual-machines-linux-configure-raid
-  [Microsoft ダウンロード センター]: http://www.microsoft.com/ja-jp/download/details.aspx?id=41554
-  [Hyper-V の設定を開く]: ./media/virtual-machines-linux-create-upload-vhd/settings.png
-  [インストール メディアがセットされた DVD ドライブの追加]: ./media/virtual-machines-linux-create-upload-vhd/installiso.png
+
+
+<!--HONumber=35_1-->

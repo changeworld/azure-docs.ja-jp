@@ -1,6 +1,6 @@
 ﻿<properties urlDisplayName="Configuring Python with Azure Websites" pageTitle="Azure Websites での Python の構成" metaKeywords="" description="This tutorial describes options for authoring and configuring a basic Web server Gateway Interface (WSGI) compliant Python application on Azure Websites." metaCanonical="" services="web-sites" documentationCenter="Python" title="Configuring Python with Azure Websites" authors="huvalo" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo" />
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="08/01/2014" ms.author="huvalo" />
 
 
 
@@ -11,18 +11,18 @@
 
 > [WACOM.NOTE] Azure Websites ポータルで使用する Python のバージョンを選択するには、Web サイトの [構成] タブを開き、**[Python バージョン]** の設定を変更します。
 
-Azure Websites に Django フレームワークを構成する、より高度な例については、チュートリアルを参照してください 
-([http://www.windowsazure.com/ja-jp/develop/python/tutorials/web-sites-with-django](http://www.windowsazure.com/ja-jp/develop/python/tutorials/web-sites-with-django))。  
+Azure Websites に Django フレームワークを構成する、より高度な例については、チュートリアルを参照してください  
+([http://www.windowsazure.com/ja-jp/develop/python/tutorials/web-sites-with-django])(http://www.windowsazure.com/ja-jp/develop/python/tutorials/web-sites-with-django)。  
 
 ## WSGI サポート
 
-WSGI は、[PEP 3333](http://www.python.org/dev/peps/pep-3333/) で規定された Python の標準です。Web サーバーと Python 間のインターフェイスを定義します。各種の Web アプリケーションや Web フレームワークを Python を使って記述するためのインターフェイスが標準化されています。今日普及している Python Web フレームワークには WSGI が使用されています。Web フレームワークに必要な機能は Azure Websites に用意されています。また、カスタム ハンドラーを WSGI 仕様のガイドラインに準拠させれば、経験豊富なユーザーが Web フレームワークを独自に制作することも可能です。
+WSGI は、[PEP 3333]で規定された Python の標準です。(http://www.python.org/dev/peps/pep-3333/) Web サーバーと Python 間のインターフェイスを定義します。各種の Web アプリケーションや Web フレームワークを Python を使って記述するためのインターフェイスが標準化されています。今日普及している Python Web フレームワークには WSGI が使用されています。Web フレームワークに必要な機能は Azure Websites に用意されています。また、カスタム ハンドラーを WSGI 仕様のガイドラインに準拠させれば、経験豊富なユーザーが Web フレームワークを独自に制作することも可能です。
 
 ## Web サイトの作成
 
-このチュートリアルは、Azure サブスクリプションを既に所有しており、Azure の管理ポータルにアクセスできることを前提としています。Web サイトを作成する際の詳しいガイダンスについては、[http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-create-websites](http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-create-websites) を参照してください。
+このチュートリアルは、Azure サブスクリプションを既に所有しており、Azure 管理ポータルにアクセスできることを前提としています。Web サイトを作成するにあたっての詳しいガイダンスについては、[http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-create-websites] を参照してください(http://www.windowsazure.com/ja-jp/manage/services/web-sites/how-to-create-websites)。
  
-簡単に言えば、既存の Web サイトがない場合、Azure の管理ポータルから自分で作成することができます。[Web サイト] 機能を選択し、目的の Web サイトの URL を指定して、[簡易作成] オプションを使用します。
+簡単に言えば、既存の Web サイトがない場合、Azure 管理ポータルから自分で作成することができます。[Web サイト] 機能を選択し、目的の Web サイトの URL を指定して、[簡易作成] オプションを使用します。
 
 ![](./media/web-sites-python-configure/configure-python-create-website.png)
 
@@ -38,7 +38,7 @@ Git 発行の設定が完了すると、Git リポジトリが作成されて We
 
 基本的な Python アプリケーションを例として取り上げます。Azure Websites で Python サポートを活かすために最低限必要な作業がわかりやすいように、このアプリケーションには基本的な WSGI ハンドラーが備わっています。このスケルトン Python アプリケーションを土台にして、さまざまなソリューションを作成することができます。次の例の難易度を超えた、本格的な Web フレームワークを作成することも可能です。  
 
-以下に示したのは、基本的な WSGI ハンドラーのコードです。WSGI に準拠したアプリケーションの開始部分として [PEP 3333](http://www.python.org/dev/peps/pep-3333/) が推奨している仕様に沿っています。Web サイト ルートの ConfigurePython フォルダーに ConfigurePython.py という名前のファイルを作成し、この内容を保存しました。
+次に示しているのは、基本的な WSGI ハンドラーのコードです。[PEP 3333] 仕様において、(http://www.python.org/dev/peps/pep-3333/) WSGI に準拠したアプリケーションのスターティング ポイントとして推奨されているコードと似ています。Web サイト ルートの ConfigurePython フォルダーに ConfigurePython.py という名前のファイルを作成し、この内容を保存しました。
 
 	def application(environ, start_response):
 	    status = '200 OK'
@@ -57,17 +57,17 @@ Git 発行の設定が完了すると、Git リポジトリが作成されて We
 
 Azure Websites に対する Python アプリケーションの構成には 2 とおりの方法があります。
 
-<h3 id="option1">方法 1: ポータル</h3>
+<h3 id="option1">方法 1:ポータル</h3>
 
-1.1. ポータルの [構成] タブで FastCGI ハンドラーを登録します。
+1.1.ポータルの [構成] タブで FastCGI ハンドラーを登録します。
 この例では、Azure Websites に用意されている Python 用 FastCGI ハンドラーを使用しています。同じようにするには、スクリプト プロセッサと FastCGI ハンドラーの引数に次のパスを使用します。
 
-* Python スクリプト プロセッサのパス: D:\python27\python.exe
-* Python FastCGI ハンドラーのパス: D:\python27\scripts\wfastcgi.py
+* Python スクリプト プロセッサのパス:D:\python27\python.exe
+* Python FastCGI ハンドラーのパス:D:\python27\scripts\wfastcgi.py
 
 ![](./media/web-sites-python-configure/configure-python-handler-mapping.png)
 
-1.2. 同じくポータルの [構成] タブでアプリケーションの設定を構成します。
+1.2.同じくポータルの [構成] タブでアプリケーションの設定を構成します。
 アプリケーションの設定は環境変数に変換されます。Python アプリケーションで必要となる構成値には、この機構を使用できます。ここでは、基本的なアプリケーションの例として、次のように構成しました。
 
 * PYTHONPATH は、モジュールの検索先ディレクトリに関する情報を Python に伝えます。Azure Websites では、便宜的に D:\home\site\wwwroot が Web サイトのルートとして指定されます。 
@@ -78,17 +78,17 @@ Azure Websites に対する Python アプリケーションの構成には 2 と
 <h3 id="option2">方法 2: web.config</h3>
 もう 1 つは、Web サイトのルートにある web.config ファイルを使用して、この後説明する各種処理を実行する方法です。web.config を使用した方が、Web アプリケーションの移植性は高くなります。Web アプリケーションには、2 とおりのアプローチで要求をルーティングすることが可能です。1 つは、"*" というパスを処理するようにハンドラーを設定する方法です。この場合、IIS は、受信したすべての要求を Python 経由でルーティングします。もう 1 つは、パスを具体的に設定する方法です。この場合、Python は、設定されたパスだけを処理対象とし、URL の書き換えによって、あらかじめ決められたパスに各種 URL をリダイレクトします。実際にお勧めするのは、後者のアプローチです。要求のターゲットとして機能する空のハンドラー ファイル (この例では handler.fcgi) を Web サイト ルート配下に置くことで、より高いパフォーマンスが得られます。前者のシナリオでは、静的なコンテンツ (画像ファイル、スタイル シートなど) への要求を含め、すべての要求が Python を経由しなければならず、Web サーバーが静的ファイル用に備えているアクセス最適化の効果が活かされません。後者のアプローチを採用することで、静的コンテンツを効率的に返すことができ、Python の呼び出しを必要最小限に抑えることができます。
 
-2.1. PYTHONPATH 変数を指定する。 
+2.1.PYTHONPATH 変数を指定します。 
 > これは、アプリケーション コードの検索先を Python に伝える変数です。この場合も D:\home\site\wwwroot が Web サイトの絶対パスとして使用されます。
 
-2.2. WSGI\_HANDLER 変数を設定します。
+2.2.WSGI\_HANDLER 変数を設定します。
 > この値は、WSGI ハンドラーの呼び出しを Python に命令するために Azure Websites が使用します。この変数は Python の式を値として持ち、実行時に、呼び出し可能型を WSGI ハンドラーとして返します。 
 
-2.3. Python のハンドラーを追加します。
-> "handler.fcgi" というパスに対する要求が Python によって処理されることを、このハンドラーで Azure Websites に伝えます。独自の FastCGI ハンドラーや Python 開発スタックを採用する場合を除き、ハンドラーの構文は、以下の例に示した &lt;handlers&gt; タグ内の体裁を厳密に踏襲することが大切です。
+2.3.Python のハンドラーを追加します。
+> handler.fcgi というパスに対する要求が Python によって処理されることを、このハンドラーで Azure Websites に伝えます。独自の FastCGI ハンドラーや Python 開発スタックを採用する場合を除き、ハンドラーの構文は、次の例に示している &lt;handlers&gt; タグ内の体裁を厳密に踏襲することが大切です。
 
-2.4. handler.fcgi. の URL を書き換えます。
->  常時 handler.fcgi を要求することは、決して最善の方法とは言えません。Python ハンドラーによって処理されるファイルのパスを選ぶために、ここでは URL の書き換えを使用し、すべての URL が独自の Python ハンドラーによって処理されるようにしています。
+2.4.handler.fcgi. の URL を書き換えます。
+> 常時 handler.fcgi を要求することは、決して最善の方法とは言えません。Python ハンドラーによって処理されるファイルのパスを選ぶために、ここでは URL の書き換えを使用し、すべての URL が独自の Python ハンドラーによって処理されるようにしています。
 
 	<configuration>
   		<appSettings>
@@ -129,3 +129,5 @@ Web サイトにアクセスして正しく構成されたかをテストして�
 
 ![](./media/web-sites-python-configure/configure-python-result.png)
 
+
+<!--HONumber=35_1-->

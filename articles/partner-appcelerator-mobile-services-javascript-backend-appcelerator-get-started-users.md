@@ -1,22 +1,22 @@
 ﻿<properties pageTitle="認証の使用 (Appcelerator) | モバイル デベロッパー センター" metaKeywords="" description="Learn how to use Mobile Services to authenticate users of your iOS app through a variety of identity providers, including Google, Facebook, Twitter, and Microsoft." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with authentication in Mobile Services" authors="Appcelerator team;mahender" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-appcelerator" ms.devlang="multiple" ms.topic="article" ms.date="09/23/2014" ms.author="Appcelerator team;mahender" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-appcelerator" ms.devlang="multiple" ms.topic="article" ms.date="11/24/2014" ms.author="Appcelerator team;mahender" />
 
 # モバイル サービスでの認証の使用
 
 [WACOM.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
 
-このトピックでは、アプリケーションから Windows Azure のモバイル サービスのユーザーを認証する方法を示します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
+このトピックでは、アプリケーションから Windows Azure Mobile Services のユーザーを認証する方法を示します。このチュートリアルでは、モバイル サービスでサポートされている ID プロバイダーを使用して、クイック スタート プロジェクトに認証を追加します。モバイル サービスによって正常に認証および承認されると、ユーザー ID 値が表示されます。
 
 このチュートリアルでは、アプリケーションでの認証を有効にするための、次の基本的な手順について説明します。
 
-1.  [アプリケーションを認証に登録し、モバイル サービスを構成する]
+1.  [アプリケーションを認証に登録し、Mobile Services を構成する]
 2.  [テーブルのアクセス許可を、認証されたユーザーだけに制限する]
 3.  [アプリケーションに認証を追加する]
 
 このチュートリアルは、モバイル サービスのクイック スタートに基づいています。先にチュートリアル「[モバイル サービスの使用]」を完了している必要があります。
 
-このチュートリアルを完了するには、Appcelerator Titanium Studio 3.2.1 またはそれ以降、iOS 7.0 またはそれ以降、および Android 4.3 またはそれ以降が必要です。
+このチュートリアルを完了するには、Appcelerator Titanium Studio 3.2.1 またはそれ以降、iOS 7.0 またはそれ以降、さらに Android 4.3 またはそれ以降が必要です。
 
 ##<a name="register"></a>アプリケーションを認証に登録し、モバイル サービスを構成する
 
@@ -26,7 +26,7 @@
 
 [WACOM.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../includes/mobile-services-restrict-permissions-javascript-backend.md)]
 
-3.	Appcelerator Titanium Studio で、チュートリアル「[Mobile Services の使用]」を実行したときに作成したプロジェクトを開きます。
+3.	Appcelerator Titanium Studio で、チュートリアル「[モバイル サービスの使用]」を実行したときに作成したプロジェクトを開きます。
 
 4.	[実行] をクリックしてプロジェクトをビルドし、iPhone エミュレーターでアプリケーションを起動します。アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。
     
@@ -80,7 +80,7 @@
             }
         });
 
->[WACOM.NOTE] Google 以外の ID プロバイダーを使用している場合は、**authorizeClient** に渡される値を *microsoftaccount*、*facebook*、*twitter*、*windowsazureactivedirectory* のいずれかに変更します。
+>[WACOM.NOTE] Google 以外の ID プロバイダーを使用している場合は、**authorizeClient** に渡される値を *microsoftaccount*、*facebook*、*twitter*、*windowsazureactivedirectory* のいずれかにします。
 
 4.	[実行] をクリックして iPhone シミュレーターまたは Android エミュレーターでアプリケーションを開始し、[ログインするプロバイダー] オプションをクリックして ID プロバイダーでログオンします。
 
@@ -89,11 +89,13 @@
 
 <!-- Anchors. -->
 
-[アプリケーションを認証に登録し、モバイル サービスを構成する]: #register
+[アプリケーションを認証に登録し、Mobile Services を構成する]: #register
 [テーブルのアクセス許可を、認証されたユーザーだけに制限する]: #permissions
 [アプリケーションに認証を追加する]: #add-authentication
 
 <!-- Images. -->
 
 <!-- URLs. -->
-[モバイル サービスの使用]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started
+[Mobile Services の使用]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started
+
+<!--HONumber=35_1-->

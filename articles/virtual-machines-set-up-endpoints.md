@@ -1,6 +1,75 @@
-<properties linkid="manage-windows-howto-setup-endpoints" urlDisplayName="Set up endpoints" pageTitle="Set up endpoints on a virtual machine in Azure" metaKeywords="Azure config setup, configuring vm connection" description="Learn how to setup communication with a virtual machine in Azure." metaCanonical="" services="virtual-machines" documentationCenter="" title="" authors="timlt" solutions="" manager="timlt" editor="" />
+﻿<properties urlDisplayName="Set up endpoints" pageTitle="Azure 仮想マシンのエンドポイントのセットアップ" metaKeywords="Azure config setup, configuring vm connection" description="Learn how to setup communication with a virtual machine in Azure." metaCanonical="" services="virtual-machines" documentationCenter="" title="" authors="timlt" solutions="" manager="timlt" editor="" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="timlt" />
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/29/2014" ms.author="kathydav" />
 
-[WACOM.INCLUDE [howto-setup-endpoints](../includes/howto-setup-endpoints.md)]
+#仮想マシンに対してエンドポイントを設定する方法
 
+**メモ**:仮想マシンをホスト名によって直接接続する、またはクロスプレミス接続を設定する場合、「[Azure の仮想ネットワークの概要](http://go.microsoft.com/fwlink/p/?LinkID=294063)」を参照してください。
+
+同じクラウド サービスまたは仮想ネットワーク内であれば、Azure で作成したすべての仮想マシンが、プライベート ネットワーク チャネルを使用して他の仮想マシンと自動的に通信できます。ただし、インターネットまたは他の仮想ネットワークにあるリソースと通信するには、仮想マシンへの着信ネットワーク トラフィックを処理するエンドポイントが必要になります。 
+
+管理ポータルで仮想マシンを作成するとき、リモート デスクトップ、Windows PowerShell リモート処理、Secure Shell (SSH) などに関して、これらのエンドポイントを作成できます。仮想マシンを作成した後、必要に応じて、追加のエンドポイントを作成できます。また、エンドポイントのネットワーク アクセス制御リスト (ACL) 用にルールを構成し、パブリック ポートの着信トラフィックを管理することもできます。この記事では、これら両方の操作方法について説明します。
+
+各エンドポイントには、パブリック ポートとプライベート ポートがあります。
+
+- プライベート ポートは、エンドポイントでのトラフィックをリッスンするために、仮想マシンによって内部的に使用されます。
+
+- パブリック ポートは、外部リソースから仮想マシンと通信するときに、Azure ロード バランサーによって使用されます。エンドポイントを作成した後、ネットワーク アクセス制御リスト (ACL) を使用して、パブリック ポートでの着信トラフィックの分類と制御に役立つルールを定義できます。詳細については、「[ネットワーク アクセス制御リスト (ACL) について](http://go.microsoft.com/fwlink/p/?LinkId=303816)」を参照してください。
+
+これらのエンドポイントのポートとプロトコルの既定値は、管理ポータルを使用してエンドポイントを作成するときに提供されます。他のすべてのエンドポイントについては、エンドポイントの作成時にユーザーがポートとプロトコルを指定します。リソースをエンドポイントに接続するには、TCP または UDP プロトコルを使用します。TCP プロトコルには HTTP および HTTPS 通信が含まれます。  
+
+**重要**:ファイアウォールの構成は、リモート デスクトップと Secure Shell (SSH) に関連付けられているポートに対しては自動的に行われます。Windows PowerShell リモート処理についても、ほとんどの場合は自動的に行われます。他のすべてのエンドポイントに対して指定されているポートについては、ゲスト オペレーティング システムのファイアウォールは自動的には構成されません。エンドポイントを作成するときに、ファイアウォールに適切なポートを構成し、エンドポイントを経由してルーティングするトラフィックを許可する必要があります。
+
+###エンドポイントの作成###
+
+1. まだサインインしていない場合は、[Azure の管理ポータル](http://manage.windowsazure.com)にサインインします。
+
+2. **[仮想マシン]** をクリックし、構成する仮想マシンを選択します。
+
+3. **[エンドポイント]** をクリックします。[エンドポイント] ページに仮想マシンのすべてのエンドポイントが示されます。
+
+	![Endpoints](./media/virtual-machines-set-up-endpoints/endpointswindows.png)
+
+4.	**[追加]** をクリックします。
+
+	**[エンドポイントの追加]** ダイアログ ボックスが表示されます。エンドポイントの種類を選択します。新しい負荷分散セットを作成する場合、スタンドアロンを選択してセットの最初のエンドポイントを作成します。
+	
+5. **[名前]** ボックスに、エンドポイントの名前を入力します。
+
+6. [プロトコル] で **[TCP]** または **[UDP]** のどちらかを指定します。
+
+7. **[パブリック ポート]** と **[プライベート ポート]** の各ボックスに、使用するポート番号を入力します。このポート番号は別の番号でもかまいません。パブリック ポートは、Azure 外部からの通信の入り口であり、Azure ロード バランサーによって使用されます。仮想マシンのプライベート ポートとファイアウォール ルールを使って、アプリケーションに適した方法でトラフィックをリダイレクトすることができます。
+
+8. エンドポイントが負荷分散セットの最初のエンドポイントである場合、**[負荷分散セットの作成]** をクリックします。次に、**[負荷分散セットの構成]** ページで、名前、プロトコル、プローブの詳細を指定します。負荷分散セットでは、セットの状態を監視できるようにプローブが必要になります。詳細については、[仮想マシンの負荷分散に関するページ](http://www.windowsazure.com/ja-jp/manage/windows/common-tasks/how-to-load-balance-virtual-machines/)を参照してください。  
+
+9.	チェック マークをクリックしてエンドポイントを作成します。
+
+	これで、**[エンドポイント]** ページにエンドポイントが表示されます。
+
+	![Endpoint creation successful](./media/virtual-machines-set-up-endpoints/endpointwindowsnew.png)
+
+###エンドポイントの ACL の管理###
+
+エンドポイントの ACL を追加、変更、削除するには、次のステップに従います。
+
+**メモ**:エンドポイントが負荷分散セットの一部である場合、エンドポイントの ACL に対して行った変更はそのセット内のすべてのエンドポイントに適用されます。
+
+1. まだサインインしていない場合は、[Azure の管理ポータル](http://manage.windowsazure.com)にサインインしてください。
+
+2. **[仮想マシン]** をクリックし、構成する仮想マシンを選択します。
+
+3. **[エンドポイント]** をクリックします。[エンドポイント] ページに仮想マシンのすべてのエンドポイントが示されます。
+
+    ![ACL list](./media/virtual-machines-set-up-endpoints/EndpointsShowsDefaultEndpointsForVM.png)
+
+4. 一覧から適切なエンドポイントを選択します。 
+
+5. **[ACL の管理]** をクリックします。
+
+    **[ACL の詳細の指定]** ダイアログ ボックスが表示されます。
+
+    ![Specify ACL details](./media/virtual-machines-set-up-endpoints/EndpointACLdetails.png)
+
+6. 一覧の行を使用して、ACL のルールの追加、削除、編集を行います。[リモート サブネット] の値は、ルールで許可または拒否できる IP アドレス範囲に対応します。ルールの評価は、一覧の最初に示されているルールから開始され、最後に示されているルールで終了します。つまり、一覧には、制限の最も少ないルールから制限の最も多いルールの順に設定する必要があります。例と詳細については、「[ネットワーク アクセス制御リスト (ACL) について](http://go.microsoft.com/fwlink/p/?LinkId=303816)」を参照してください。
+
+<!--HONumber=35_1-->

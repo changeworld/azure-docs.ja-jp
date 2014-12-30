@@ -1,161 +1,163 @@
-<properties pageTitle="Get started with Mobile Services with PhoneGap | Mobile Dev Center" metaKeywords="" description="Follow this tutorial to get started using Azure Mobile Services for PhoneGap development for iOS, Android, and Windows Phone." metaCanonical="" services="mobile" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="" editor="" />
+﻿<properties pageTitle="PhoneGap での Mobile Services の使用 | モバイル デベロッパー センター" metaKeywords="" description="Follow this tutorial to get started using Azure Mobile Services for PhoneGap development for iOS, Android, and Windows Phone." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-phonegap" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="glenga" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-phonegap" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="glenga" />
 
 [WACOM.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
 
-# <a name="getting-started"> </a>Mobile Services の使用
+# <a name="getting-started"> </a>モバイル サービスの使用
 
-このチュートリアルでは、Azure のモバイル サービスを使用してアプリケーションにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な *To do list* アプリケーションの両方を作成します。
+このチュートリアルでは、Azure のモバイル サービスを使用してアプリケーションにクラウドベースのバックエンド サービスを追加する方法を示します。このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリ データを保存する簡単な _To do list_ アプリの両方を作成します。 
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 
-![][0]
+![][3]
 
 ### <a name="additional-requirements"></a>その他の要件
 
-このチュートリアルを完了するには、PhoneGap ツール (Windows Phone 8 プロジェクトの場合は v3.2 以降が必要です) が必要です。
+このチュートリアルを完了するには、PhoneGap ツール (Windows Phone 8 プロジェクトの場合は v3.2 以降が必要です) が必要です。 
 
 PhoneGap は、複数のプラットフォーム向けの開発をサポートします。PhoneGap ツール自体に加えて、対象としている各プラットフォーム用のツールをインストールする必要があります。
 
--   Windows Phone:[Visual Studio 2012 Express for Windows Phone][Visual Studio 2012 Express for Windows Phone] のインストール
--   iOS:[Xcode][Xcode] (v4.4 以上が必要) のインストール
--   Android:[Android Developer Tools][Android Developer Tools]
-     (Android 向けのモバイル サービス SDK は Android 2.2 以降のアプリケーションをサポートします。Android 4.2 以降がクイック スタート アプリケーションの実行に必要です。)
+- Windows Phone:[Visual Studio 2012 Express for Windows Phone] のインストール(https://go.microsoft.com/fwLink/p/?LinkID=268374)
+- iOS:[Xcode] (v4.4 以上が必要) のインストール
+- Android:[Android Developer Tools][Android SDK] のインストール
+	<br/>(Android 向けのモバイル サービス SDK は Android 2.2 以降用のアプリケーションをサポートします。Android 4.2 以降がクイック スタート アプリケーションの実行に必要です。)
 
-## <a name="create-new-service"> </a> 新しいモバイル サービスを作成する
+## <a name="create-new-service"> </a>新しいモバイル サービスを作成する
 
 [WACOM.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
 
-## <span class="short-header">新しいアプリケーションを作成する</span>新しい PhoneGap アプリケーションを作成する
+<h2>新しい PhoneGap アプリを作成する</h2>
 
-モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、新しいアプリケーションを作成するか、既存のアプリケーションを変更してモバイル サービスに接続することができます。
+モバイル サービスを作成したら、管理ポータルの簡単なクイック スタートに従って、新しいアプリケーションを作成するか、既存のアプリケーションを変更してモバイル サービスに接続することができます。 
 
 ここでは、モバイル サービスに接続された新しい PhoneGap アプリケーションを作成します。
 
-1.  管理ポータルで、**[モバイル サービス]** をクリックし、先ほど作成したモバイル サービスをクリックします。
+1.  管理ポータルで、**[Mobile Services]** をクリックし、先ほど作成したモバイル サービスをクリックします。
 
-2.  [クイック スタート] タブの **[プラットフォームの選択]** で **[PhoneGap]** を選択し、**[新しい PhoneGap アプリを作成する]** を展開します。
+2. [クイック スタート] タブの **[プラットフォームの選択]** で **[PhoneGap]** を選択し、**[新しい PhoneGap アプリケーションを作成する]** を展開します。
 
-    ![][1]
+   	![][0]
 
-    これにより、モバイル サービスに接続された PhoneGap アプリケーションを作成するための簡単な 3 つの手順が表示されます。
+   	これにより、モバイル サービスに接続された PhoneGap アプリケーションを作成するための簡単な 3 つの手順が表示されます。
 
-    ![][2]
+  	![][1]
 
-3.  まだインストールしていない場合は、PhoneGap および、プラットフォーム開発ツールの少なくとも 1 つ (Windows Phone、iOS、または Android) をダウンロードしてインストールします。
+3. まだインストールしていない場合は、PhoneGap および、プラットフォーム開発ツールの少なくとも 1 つ (Windows Phone、iOS、または Android) をダウンロードしてインストールします。
 
-4.  **[TodoItems テーブルを作成する]** をクリックして、アプリケーション データを格納するテーブルを作成します。
+4. **[TodoItems テーブルを作成する]** をクリックして、アプリケーション データを格納するテーブルを作成します。
 
-5.  **[アプリケーションをダウンロードして実行する]** の下の **[ダウンロード]** をクリックします。
+5. **[アプリケーションをダウンロードして実行する]** の下の **[ダウンロード]** をクリックします。 
 
-    これにより、モバイル サービスに接続されている *To do list* サンプル アプリケーションのプロジェクトが、モバイル サービス JavaScript SDK と共にダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
+	これにより、モバイル サービスに接続されている _To do list_ サンプル アプリケーションのプロジェクトが、Mobile Services JavaScript SDK と共にダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
 ## 新しい PhoneGap アプリケーションを実行する
 
-このチュートリアルの最後に、新しいアプリケーションをビルドして実行します。
+このチュートリアルの最後に、新しいアプリケーションをビルドして実行します。 
 
-1.  圧縮されたプロジェクト ファイルの保存場所を参照し、ファイルをコンピューター上に展開します。
+1.	圧縮されたプロジェクト ファイルの保存場所を参照し、ファイルをコンピューター上に展開します。 
 
-2.  各プラットフォームについてここに示す手順に従って、プロジェクトを開いて実行します。
+2.	各プラットフォームについてここに示す手順に従って、プロジェクトを開いて実行します。
 
-    -   **Windows Phone 8**
+	+ **Windows Phone 8**
 
-    1.  Windows Phone 8: Visual Studio 2012 Express for Windows Phone の **platforms\\wp8** フォルダーにある .sln ファイルを開きます。
+	1. Windows Phone 8:Visual Studio 2012 Express for Windows Phone の **platforms\wp8** フォルダーにある .sln ファイルを開きます。
+	
+	2. **F5** キーを押してプロジェクトをリビルドし、アプリケーションを開始します。
+	
+	  	![][2]
 
-    2.  **F5** キーを押してプロジェクトをリビルドし、アプリケーションを開始します。
+	+ **iOS**
 
-        ![][3]
+	1. Xcode の **platforms/ios** フォルダーのプロジェクトを開きます。
+	
+	2. **[実行]** をクリックしてプロジェクトをビルドし、このプロジェクトの既定である iPhone エミュレーターでアプリケーションを開始します。
+	
+	  	![][3]
 
-    -   **iOS**
+	+ **Android**
 
-    1.  Xcode の **platforms/ios** フォルダーのプロジェクトを開きます。
+		1. Eclipse で、**[File]**、**[Import]** の順にクリックし、**[Android]** を展開します。**[Existing Android Code into Workspace]** をクリックし、**[Next]** をクリックします。 
+		
+		2. **[Browse]** をクリックします。展開したプロジェクト ファイルの場所を参照し、**[OK]** をクリックします。TodoActivity プロジェクトのチェック ボックスがオンになっていることを確認し、**[Finish]** をクリックします。 <p>これにより、プロジェクト ファイルが現在のワークスペースにインポートされます。</p>
+		
+		3. **[Run]** メニューの **[Run]** をクリックして、Android エミュレーター内でプロジェクトを開始します。
+		
+			![][4]
+	
+		>[WACOM.NOTE]プロジェクトを Android エミュレーターで実行するには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager を使用します。
+			
+	
+3. 上で示したモバイル エミュレーターのいずれかでアプリケーションを起動した後、テキスト ボックスにテキストを入力し、**[Add]** をクリックします。
 
-    2.  **[実行]** をクリックしてプロジェクトをビルドし、このプロジェクトの既定である iPhone エミュレーターでアプリケーションを開始します。
+	これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは **TodoItem** テーブルに挿入されます。テーブルに格納された項目がモバイル サービスによって返され、データが一覧に表示されます。
 
-        ![][0]
+	<div class="dev-callout"><strong>重要</strong> <p>メイン プロジェクトが PhoneGap ツールで再ビルドされる場合、このプラットフォーム プロジェクトへの重要な変更が上書きされます。以下のセクションで説明されているように、代わりの方法として、変更はプロジェクトのルートの www ディレクトリで行います。</p></div>
 
-    -   **Android**
+4. 管理ポータルで、[ <strong>データ</strong> ] タブをクリックし、[ <strong>TodoItem</strong> ] テーブルをクリックします。
 
-        1.  Eclipse で、**[File]**、**[Import]** の順にクリックし、**[Android]** を展開します。**[Existing Android Code into Workspace]** をクリックし、**[Next]** をクリックします。
+	![](./media/mobile-services-javascript-backend-phonegap-get-started/mobile-data-tab.png)
 
-        2.  **[Browse]** をクリックします。展開したプロジェクト ファイルの場所を参照し、**[OK]** をクリックします。TodoActivity プロジェクトのチェック ボックスがオンになっていることを確認し、**[Finish]** をクリックします。
+	これで、アプリケーションによってテーブルに挿入されたデータを参照できます。
 
-            これにより、プロジェクト ファイルが現在のワークスペースにインポートされます。
-
-            </p>
-        3.  **[Run]** メニューの **[Run]** をクリックして、Android エミュレーター内でプロジェクトを開始します。
-
-            ![][4]
-
-        > [WACOM.NOTE] プロジェクトを Android エミュレーターで実行するには、Android Virtual Device (AVD) を 1 つ以上定義する必要があります。これらのデバイスを作成および管理するには、AVD Manager を使用します。
-
-3.  上で示したモバイル エミュレーターのいずれかでアプリケーションを起動した後、テキスト ボックスにテキストを入力し、**[追加]** をクリックします。
-
-    これで、Azure でホストされている新しいモバイル サービスに POST 要求が送信されます。要求のデータは **TodoItem** テーブルに挿入されます。テーブルに格納された項目がモバイル サービスによって返され、データが一覧に表示されます。
-
-    <div class="dev-callout"><strong>重要</strong> <p>メイン プロジェクトが PhoneGap ツールで再ビルドされる場合、このプラットフォーム プロジェクトへの重要な変更が上書きされます。以下のセクションで説明されているように、代わりの方法として、変更はプロジェクトのルートの www ディレクトリで行います。</p></div>
-
-4.  管理ポータルに戻り、**[データ]** タブ、**TodoItems** テーブルの順にクリックします。
-
-    ![][5]
-
-    これで、アプリケーションによってテーブルに挿入されたデータを参照できます。
-
-    ![][6]
+	![](./media/mobile-services-javascript-backend-phonegap-get-started/mobile-data-browse.png)
+	
 
 ## アプリケーションを更新して、各プラットフォーム用にプロジェクトを再ビルドする
 
-1.  ´www´ ディレクトリ (この場合は ´todolist/www´) のコード ファイルを変更します。
+1. ´www´ ディレクトリ (この場合は ´todolist/www´) のコード ファイルを変更します。
 
-2.  すべてのターゲット プラットフォームのツールがシステム パスでアクセスできることを確認します。
+2. すべてのターゲット プラットフォームのツールがシステム パスでアクセスできることを確認します。 
 
-3.  ルート プロジェクト ディレクトリでコマンド プロンプトを開き、次のプラットフォームに固有のコマンドのいずれかを実行します。
+2. ルート プロジェクト ディレクトリでコマンド プロンプトを開き、次のプラットフォームに固有のコマンドのいずれかを実行します。 
 
-    -   **Windows Phone**
+	+ **Windows Phone**
 
-        Visual Studio 開発者用コマンド プロンプトで次のコマンドを実行します。
+		Visual Studio 開発者用コマンド プロンプトで次のコマンドを実行します。
 
-            phonegap local build wp8
+    		phonegap local build wp8
 
-    -   **iOS**
-
-        ターミナルを開き、次のコマンドを実行します。
-
-            phonegap local build ios
-
-    -   **Android**
-
-        コマンド プロンプトまたはターミナル ウィンドウを開き、次のコマンドを実行します。
-
-            phonegap local build android
-
-4.  前のセクションで説明したように、適切な開発環境で各プロジェクトを開きます。
-
-> [WACOM.NOTE] モバイル サービスにアクセスして js/index.js ファイルにあるデータを照会および挿入するコードを確認できます。
-
-## <a name="next-steps"> </a> 次のステップ
-
-クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。
-
--   [データの使用][データの使用]
-    Mobile Services を使用してデータの格納およびクエリを実行する方法について説明します。
-
--   [認証の使用][認証の使用]
-    ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
-
+	+ **iOS**
  
+		ターミナルを開き、次のコマンドを実行します。
+
+    		phonegap local build ios
+
+	+ **Android**
+
+		コマンド プロンプトまたはターミナル ウィンドウを開き、次のコマンドを実行します。 
+
+		    phonegap local build android
 
 
-  [0]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-portal-quickstart-ios.png
-  [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
-  [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-  [Android Developer Tools]: https://go.microsoft.com/fwLink/p/?LinkID=280125
-  [1]: ./media/mobile-services-javascript-backend-phonegap-get-started/portal-screenshot1.png
-  [2]: ./media/mobile-services-javascript-backend-phonegap-get-started/portal-screenshot2.png
-  [3]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-portal-quickstart-wp8.png
-  [4]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-portal-quickstart-android.png
-  [5]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-data-tab.png
-  [6]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-data-browse.png
-  [データの使用]: /ja-jp/documentation/articles/mobile-services-html-get-started-data
-  [認証の使用]: /ja-jp/documentation/articles/mobile-services-html-get-started-users
+4. 前のセクションで説明したように、適切な開発環境で各プロジェクトを開きます。
+
+>[WACOM.NOTE]モバイル サービスにアクセスして js/index.js ファイルにあるデータを照会および挿入するコードを確認できます。
+
+## <a name="next-steps"> </a>次のステップ
+クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。 
+
+* [データの使用]
+  <br/>Mobile Services を使用してデータの格納およびクエリを実行する方法について説明します。
+
+* [認証の使用]
+  <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
+  
+<!-- Images. -->
+[0]: ./media/mobile-services-javascript-backend-phonegap-get-started/portal-screenshot1.png
+[1]: ./media/mobile-services-javascript-backend-phonegap-get-started/portal-screenshot2.png
+[2]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-portal-quickstart-wp8.png
+[3]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-portal-quickstart-ios.png
+[4]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-portal-quickstart-android.png
+
+<!-- URLs. -->
+[データの使用]: /ja-jp/documentation/articles/mobile-services-html-get-started-data
+[認証の使用]: /ja-jp/documentation/articles/mobile-services-html-get-started-users
+[プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/mobile-services-html-get-started-push
+[Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
+[管理ポータル]: https://manage.windowsazure.com/
+[Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
+[Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
+
+
+<!--HONumber=35_1-->

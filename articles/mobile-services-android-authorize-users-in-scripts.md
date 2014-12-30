@@ -6,14 +6,16 @@
 
 [WACOM.INCLUDE [mobile-services-selector-service-auth-users](../includes/mobile-services-selector-service-auth-users.md)]	
 
-このトピックでは、認証済みのユーザーをサーバー スクリプトで承認し、Azure Mobile Services のデータに Android アプリケーションからアクセスできるようにする方法を説明します。  このチュートリアルでは、認証済みのユーザーのユーザー ID に基づいてクエリをフィルター処理するスクリプトを Mobile Services に登録します。これによって、それぞれのユーザーが自分のデータのみを閲覧できる状態を実現できます。
+このトピックでは、認証済みのユーザーをサーバー スクリプトで承認し、Azure のモバイル サービスのデータに Android アプリケーションからアクセスできるようにする方法について説明します。このチュートリアルでは、認証済みのユーザーの ID に基づいてクエリにフィルター処理を実施するスクリプトをモバイル サービスに登録します。これによって、それぞれのユーザーが自分のデータのみを閲覧できる状態を実現できます。
 
-このチュートリアルは、モバイル サービスのクイック スタートと、1 つ前の[認証の使用]に関するチュートリアルの内容を前提としています。このため、このチュートリアルの前に、[認証の使用]に関するチュートリアルを完了している必要があります。  
+##前提条件
+
+[WACOM.INCLUDE [mobile-services-android-prerequisites](../includes/mobile-services-android-prerequisites.md)]  
 
 ## <a name="register-scripts"></a>スクリプトを登録する
 クイック スタート アプリケーションでは、データの読み取りおよび挿入を実行します。このため、TodoItem テーブルにそのような操作を実行するためのスクリプトを登録する必要があります。
 
-1. [Azure の管理ポータル]にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。 
+1. [Azure の管理ポータル]にログオンし、**[Mobile Services]** をクリックして、アプリケーションをクリックします。 
 
    	![][0]
 
@@ -35,7 +37,7 @@
     このスクリプトは、ユーザー ID の値 (認証済みのユーザーの ID) を TodoItem テーブルに挿入する前に、項目に追加するためのものです。 
 
     <div class="dev-callout"><b>注</b>
-	<p>挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマが有効になっていると、挿入スクリプトを最初に実行した時点でモバイル サービスによって <strong>TodoItem</strong> テーブルに <strong>[ユーザー ID]</strong> 列が自動で追加されます。動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションを Windows ストアに発行する前に無効にする必要があります。</p>
+	<p>挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマを有効にすると、初回実行時に、Mobile Services が自動的に <strong>userId</strong> 列を <strong>TodoItem</strong> テーブルに追加します。動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションを Windows ストアに発行する前に無効にする必要があります。</p>
     </div>
 
 
@@ -50,9 +52,9 @@
 
 ## アプリケーションをテストする
 
-1. Eclipse で、チュートリアル「[認証の使用]」を実行したときに変更したプロジェクトを開きます。
+1. Eclipse で、チュートリアル「[モバイル サービスでの認証の使用]」を実行したときに変更したプロジェクトを開きます。
 
-2. **[Run]** メニューの **[Run]** をクリックしてアプリケーションを再開し、選択した ID プロバイダーでサインインします。 
+2. **[実行]** メニューの **[実行]** をクリックしてアプリケーションを再開し、選択した ID プロバイダーでサインインします。 
 
    	このとき、前のチュートリアルで TodoItem テーブルに項目を挿入していても、項目が返されることはない点に注意してください。このようなことが起こるのは、その項目がユーザー ID 列のない状態で挿入されており、ユーザー ID の値が null になっているためです。
 
@@ -90,9 +92,11 @@
 <!-- URLs. -->
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=262293
 [マイ アプリ ダッシュボード]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-android
+[Mobile Services の使用]: /ja-jp/develop/mobile/tutorials/get-started-android
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-android
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-android
 [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-android
 
-[Azure 管理ポータル]: https://manage.windowsazure.com/
+[Azure の管理ポータル]: https://manage.windowsazure.com/
+
+<!--HONumber=35_1-->

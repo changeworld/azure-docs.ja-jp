@@ -1,6 +1,6 @@
 ﻿<properties pageTitle="プッシュ通知の使用 (Appcelerator) | モバイル デベロッパー センター" metaKeywords="" description="Learn how to use Azure Mobile Services to send push notifications to your Appcelerator app." metaCanonical="" services="" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="Appcelerator team;mahender" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-appcelerator" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="Appcelerator team;mahender" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-appcelerator" ms.devlang="multiple" ms.topic="article" ms.date="11/24/2014" ms.author="Appcelerator team;mahender" />
 
 # モバイル サービスでのプッシュ通知の使用 (従来のプッシュ)
 <div class="dev-center-tutorial-selector sublanding">
@@ -14,14 +14,14 @@
 	<a href="/ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push" title="Appcelerator" class="current">Appcelerator</a>
 </div>
 
-このトピックでは、Microsoft Azure Mobile Services を使用して、Appcelerator Titanium Studio で作成した iOS アプリケーションと Android アプリケーションの両方にプッシュ通知を送信する方法について説明します。このチュートリアルでは、Apple Push Notification Service (APNS) と Google Cloud Messaging を使用したプッシュ通知をクイック スタート プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
+このトピックでは、Windows Azure Mobile Services を使用して、Appcelerator Titanium Studio で作成した iOS アプリケーションと Android アプリケーションの両方にプッシュ通知を送信する方法について説明します。このチュートリアルでは、Apple Push Notification Service (APNS) と Google Cloud Messaging を使用したプッシュ通知をクイック スタート プロジェクトに追加します。完了すると、モバイル サービスは、レコードが挿入されるたびにプッシュ通知を送信します。
 
->[WACOM.NOTE] モバイル サービスは Azure Notification Hubs に統合され、テンプレート、複数のプラットフォーム、改良されたスケールなど、追加のプッシュ通知機能をサポートするようになりました。このトピックは、まだ Notification Hubs 統合を使用するようにアップグレードされていない、既存のモバイル サービスを対象とします。新しいモバイル サービスを作成すると、この統合機能は自動的に有効になります。可能であれば、Notification Hubs を使用するようにサービスをアップグレードすることをお勧めします。**Appcelerator で Notification Hubs のプッシュを利用するチュートリアルを近日提供予定です。**
+>[WACOM.NOTE] モバイル サービスは Azure 通知ハブに統合され、テンプレート、複数のプラットフォーム、改良されたスケールなど、追加のプッシュ通知機能をサポートするようになりました。このトピックは、まだ Notification Hubs 統合を使用するようにアップグレードされていない、既存のモバイル サービスを対象とします。新しいモバイル サービスを作成すると、この統合機能は自動的に有効になります。可能であれば、Notification Hubs を使用するようにサービスをアップグレードすることをお勧めします。**Appcelerator で Notification Hubs のプッシュを利用するチュートリアルを近日提供予定です。**
 
-1.	[証明書の署名要求を生成する]
+1.	[証明書の署名要求を作成する]
 2.	[アプリケーションを登録し、プッシュ通知を有効にする]
-3.	[アプリケーションのプロビジョニング プロファイルを作成する]
-4.	[Google Cloud Messaging を有効にする]
+3.	[アプリケーションのプロビジョニング ファイルを作成する]
+4.	[Google クラウド メッセージングを有効にする]
 5.  [Titanium 用の GCM モジュールを作成する]
 6.	[モバイル サービスを構成する]
 7.	[アプリケーションにプッシュ通知を追加する]
@@ -38,24 +38,24 @@
 
 > [WACOM.NOTE] プッシュ通知の構成要件により、プッシュ通知のデプロイとテストは、エミュレーターではなく iOS 対応デバイス (iPhone または iPad) で行う必要があります。
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」を完了している必要があります。
+このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[Mobile Services の使用]」を完了している必要があります。
 
-[WACOM.INCLUDE [Enable Apple Push Notifications](../includes/enable-apple-push-notifications.md)]
+[WACOM.INCLUDE [Apple Push Notifications を有効にする](../includes/enable-apple-push-notifications.md)]
 
 ## <a name="register-gcm"></a>Google Cloud Messaging を有効にする
 
->[WACOM.NOTE]この手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> にアクセスしてください。
+>[WACOM.NOTE]この手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。新しい Google アカウントを作成するには、「<a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">Google アカウントの作成」</a>を参照してください。
 
-[WACOM.INCLUDE [Enable GCM](../includes/mobile-services-enable-Google-cloud-messaging.md)]
+[WACOM.INCLUDE [GCM を有効にする](../includes/mobile-services-enable-Google-cloud-messaging.md)]
 
 
 ##  <a name="gcm-module"></a>Titanium 用の GCM モジュールを作成する
 
 ### モジュール作成のための Appcelerator Titanium Studio を準備する
 
-Android モジュールを作成する場合は、Appcelerator Titanium Studio 内に Java サポートをインストールする必要があります。インストールしていない場合は、Appcelerator の「[Installing the Java Development Tools (Java Development Tools のインストール)]」で手順を参照してください。
+Android モジュールを作成する場合は、Appcelerator Titanium Studio 内に Java サポートをインストールする必要があります。インストールしていない場合は、Appcelerator の「[Installing the Java Development Tools (Java Development Tools のインストール)]」で簡単な手順を参照してください。
 
-Android NDK をインストールする必要があります。[http://developer.android.com/sdk/ndk/index.html](http://developer.android.com/sdk/ndk/index.html) から該当する .zip ファイルをダウンロードし、ディスクの適切な場所に展開します。この場所を忘れないでください。 
+Android NDK をインストールする必要があります。該当する .zip ファイルを [http://developer.android.com/sdk/ndk/index.html](http://developer.android.com/sdk/ndk/index.html)  からダウンロードして、ディスク上のいずれかの場所で解凍してください。この場所を忘れないでください。 
 
 ### 新しいモジュールを作成する
 
@@ -67,11 +67,11 @@ Android NDK をインストールする必要があります。[http://developer
 
 3. 次のウィンドウで、プロジェクト設定のデータを入力します。 
 
-    * **プロジェクト名:** 例では "notificationhub" を使用しています (同じにもできます)。
+    * **Project name:** 例では、&quot;notificationhub&quot; を使用しています (同じにもできます)。
 
-    * **モジュール Id:** 例では、"com.winwire.notificationhub" を使用しています。これは、"application Id" と一致している必要があります。
+    * **Module Id:** 例では、&quot;com.winwire.notificationhub&quot; を使用しています。これは、"application Id" と一致している必要があります。
 
-    * **デプロイメント ターゲット:** 例では Android を選択しています。
+    * **Deployment Targets:** 例では Android を選択しています。
 
     > [WACOM.NOTE] ワークスペース名にはスペースを使用できません。スペースが含まれると、コンパイルした場合に問題が生じます。
 
@@ -83,7 +83,7 @@ Android NDK をインストールする必要があります。[http://developer
 
 5. 最後に、[Finish] をクリックします。
 
-6. timodule.xml ファイルを開きます。android タグに次の変更を追加します。
+6. timodule.xml ファイルを開きます。[android] タグで次の変更を追加します。
 
 
         <manifest package="com.winwire.notificationhub" android:versionCode="1" android:versionName="1.0">
@@ -129,9 +129,9 @@ Android NDK をインストールする必要があります。[http://developer
 
 > [WACOM.NOTE] [新規] オプションに [フォルダー] が表示されない場合、[その他] を選択して [全般] を展開し、次に [フォルダー] を選択します。
 
-8. ここで ".java" ファイル (gcm.zip) をダウンロードして、新しく作成したフォルダー (com.google.android.gcm) にコピーします。
+8. ここで &quot;.java&quot; ファイル (gcm.zip) をダウンロードして、新しく作成したフォルダー (com.google.android.gcm) にコピーします。
 
-9. モジュール ID として指定したフォルダーを探して展開します。フォルダーには、".java" ファイルの一覧が表示されます。これらのファイルから、プロジェクト名 + module.java のファイル (たとえば、プロジェクト名が notificationhub の場合、"NotificationhubModule.java" となります) を開き、先頭に以下のコード行を追加します。
+9. モジュール ID として指定したフォルダーを探して展開します。フォルダーには、".java" ファイルの一覧が表示されます。これらのファイルから、プロジェクト名 + module.java のファイル (たとえば、プロジェクト名が notificationhub の場合、&quot;NotificationhubModule.java&quot; となります) を開き、先頭に以下のコード行を追加します。
 
         private static NotificationhubModule _THIS;
         private KrollFunction successCallback;
@@ -202,7 +202,7 @@ Android NDK をインストールする必要があります。[http://developer
 
 12. ここで、module.zip をダウンロードし、モジュール ID の名前が付いたフォルダーにコピーします。
 
-> [WACOM.NOTE] 上のファイルでは、テキスト *com.winwire.notificationhub* のすべてのインスタンスをアプリケーションのパッケージ名 (モジュール ID) で置き換える必要があります。"NotificationhubModule" もプロジェクト名 + モジュール (たとえば、"NotificationhubModule") で置き換えます。
+> [WACOM.NOTE] 上のファイルでは、テキスト *com.winwire.notificationhub* のすべてのインスタンスをアプリケーションのパッケージ名 (モジュール Id) で置き換える必要があります。&quot;NotificationhubModule&quot; もプロジェクト名 + モジュール (つまり &quot;NotificationhubModule&quot) で置き換えます。
 
 ### モジュールを作成/パッケージ化する
 
@@ -211,11 +211,11 @@ Android NDK をインストールする必要があります。[http://developer
 ![][3]
 
 
-次に、すべてのプロジェクト、または特定のプロジェクトに対してモジュールをデプロイできます。これは、「[Using Titanium Modules (Titanium モジュールの使用)]」に記載されているインストールの規則に従いますが、まとめると次のようになります。
+次に、すべてのプロジェクト、または特定のプロジェクトに対してモジュールをデプロイできます。ここで「[Titanium モジュールの使用]」で説明されるインストールの規則に従って行います。まとめると次のようになります。
 
-- すべてのプロジェクトの場合: モジュールの .zip ファイルを Titanium SDK のインストール場所のルートにドロップします。
+- すべてのプロジェクトの場合: モジュールの .zip ファイルを Titanium SDK のインストール場所のルートにドロップします。 
 
-- 特定のプロジェクトの場合: モジュールの .zip ファイルをプロジェクトのルートにドロップします。
+- 特定のプロジェクトの場合: モジュールの .zip ファイルをプロジェクトのルートにドロップします。 
 
 
 ## <a name="configure"></a>プッシュ要求を送信するようにモバイル サービスを構成する
@@ -231,7 +231,7 @@ Android NDK をインストールする必要があります。[http://developer
 
 ## <a name="add-push"></a>アプリケーションにプッシュ通知を追加する
 
-1.	tiapp.xml で、[tiapp.xml] タブ (このタブは下部の [概要] タブの隣にあります) を選択して、`<android>` タグを見つけます。タグの下に次のコードを追加します。
+1.	tiapp.xml で、[tiapp.xml] タブ (このタブは [概要] タブの隣にあります) をクリックして `<android>` タグを見つけます。タグの下に次のコードを追加します。
 
         <modules>
             <module platform="android">ModuleId</module>
@@ -253,11 +253,11 @@ Android NDK をインストールする必要があります。[http://developer
     </tr>
     <td>Windows 7
     </td>
-    <td>C:\Users\username\AppData\Roaming (Titanium Studio 1.0.1 およびそれ以前の場合は C:\ProgramData\Titanium)
+    <td>C:\Users\username\AppData\Roaming (or C:\ProgramData\Titanium on Titanium Studio 1.0.1 and earlier)
     </td>
     </tr><td>Windows XP
     </td>
-    <td>C:\Documents と Settings\username\Application Data (Titanium Studio 1.0.1 およびそれ以前の場合は C:\Documents and Settings\All Users\Application Data\Titanium)
+    <td>C:\Documents and Settings\username\Application Data (or C:\Documents and Settings\All Users\Application Data\Titanium on Titanium Studio 1.0.1 and earlier)
     </td>
     </tr><td>Linux
     </td>
@@ -268,9 +268,9 @@ Android NDK をインストールする必要があります。[http://developer
     
     </table>
 
->[WACOM.NOTE]  Mac OS では、Library は非表示フォルダーです。表示するには、次のコマンドを実行してから、Finder を再起動します。`**defaults write com.apple.finder AppleShowAllFiles TRUE**`
+>[WACOM.NOTE]  Mac OS では、ライブラリは非表示フォルダーです。表示するには、次のコマンドを実行してから、Finder を再起動します。`**defaults write com.apple.finder AppleShowAllFiles TRUE**`
 
-3.	Appcelerator Titanium Studio で、index.js ファイルを開き、次のコードを下部に追加します。このコードは、プッシュ通知にデバイスを登録します。
+3.	Appcelerator Titanium Studio で、index.js ファイルを開き、次のコードを下部に追加します。このコードは、プッシュ通知用にデバイスを登録します。
 
             Alloy.Globals.tempRegId = '';
     	        if (OS_ANDROID) {
@@ -366,7 +366,7 @@ Android NDK をインストールする必要があります。[http://developer
     
     
 
-6.	次に、関数 **updateOrAddData** 内で次のコードを見つけます。
+6.	次に、関数 **updateOrAddData** 内で次の行を見つけます。
 
            var request = {
     	    'text' : alertTextField.getValue(),
@@ -399,9 +399,9 @@ Android NDK をインストールする必要があります。[http://developer
 
     TodoItem テーブルで挿入が発生したときに呼び出される関数が表示されます。
 
-3.	insert 関数を次のコードに置き換え、**[保存]** をクリックします。
+3.	insert 関数を次のコードに書き換え、**[保存]** をクリックします。
 
-**iOS の場合:**
+**iOS の場合:** 
 
         function insert(item, user, request) { 
             request.execute();
@@ -417,9 +417,9 @@ Android NDK をインストールする必要があります。[http://developer
             }, 2500);
         }
   
-   	> [WACOM.NOTE] このスクリプトでは、プッシュ通知を受け取るためにアプリケーションを閉じる時間が得られるよう、通知の送信を遅らせています。  
+   	> [WACOM.NOTE] このスクリプトでは、プッシュ通知を受け取るためにアプリケーションを閉じる時間を与えるために通知の送信を遅らせています。  
 
-**Android の場合:**
+**Android の場合:** 
 
           function insert(item, user, request) {
             request.execute({ 
@@ -439,7 +439,7 @@ Android NDK をインストールする必要があります。[http://developer
 
 
 
-これで、新しい挿入スクリプトが登録されます。このスクリプトは [Mobile Services の push オブジェクト]を使用して、挿入要求で指定されたデバイスにプッシュ通知 (挿入されたテキスト) を送信します。
+これで、新しい挿入スクリプトが生成されます。このスクリプトは [Mobile Services の push オブジェクト]を使用して、挿入要求で指定されたデバイスにプッシュ通知 (挿入されたテキスト) を送信します。
 
 
 <!-- Images. -->
@@ -452,19 +452,21 @@ Android NDK をインストールする必要があります。[http://developer
 [6]: ./media/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push/image066.png
 
 <!-- Anchors. -->
-[証明書の署名要求を生成する]: #certificates
-[アプリケーションを登録し、プッシュ通知を有効にする]: #register
-[アプリケーションのプロビジョニング プロファイルを作成する]: #profile
-[Google Cloud Messaging を有効にする]: #register-gcm
-[Titanium 用の GCM モジュールを作成する]: #gcm-module
-[モバイル サービスを構成する]: #configure
-[アプリケーションにプッシュ通知を追加する]: #add-push
+[証明書の署名要求を作成する]:  #certificates
+[アプリケーションを登録し、プッシュ通知を有効にする]:  #register
+[アプリケーションのプロビジョニング プロファイルを作成する]:  #profile
+[Google Cloud Messaging を有効にする]:  #register-gcm
+[Titanium 用の GCM モジュールを作成する]:  #gcm-module
+[モバイル サービスを構成する]:  #configure
+[アプリケーションにプッシュ通知を追加する]:  #add-push
 [プッシュ通知を送信するようにスクリプトを更新する]: #update-scripts
-[データを挿入して通知を受け取る]: #test
+[データを挿入して通知を受け取る]:  #test
 
 <!-- URLs. -->
-[モバイル サービスの使用]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started
-[Titanium Modules の使用]: http://docs.appcelerator.com/titanium/latest/#!/guide/Using_Titanium_Modules
-[Windows Azure の管理ポータル]: https://manage.windowsazure.com/
-[Mobile Services のプッシュ オブジェクト]: http://go.microsoft.com/fwlink/p/?linkid=272333&clcid=0x409
-[Java Development Tools のインストール]: http://docs.appcelerator.com/titanium/latest/#!/guide/Installing_the_Java_Development_Tools
+[Mobile Services の使用]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started
+[Titanium モジュールの使用]:  http://docs.appcelerator.com/titanium/latest/#!/guide/Using_Titanium_Modules
+[Windows Azure の管理ポータル]:  https://manage.windowsazure.com/
+[Mobile Services の push オブジェクト]:  http://go.microsoft.com/fwlink/p/?linkid=272333&clcid=0x409
+[Java 開発ツールのインストール]: http://docs.appcelerator.com/titanium/latest/#!/guide/Installing_the_Java_Development_Tools
+
+<!--HONumber=35_1-->

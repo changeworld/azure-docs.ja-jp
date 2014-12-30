@@ -1,157 +1,158 @@
-<properties linkid="manage-services-how-to-monitor-a-storage-account" urlDisplayName="How to monitor" pageTitle="How to monitor a storage account | Microsoft Azure" metaKeywords="Azure monitor storage accounts, storage account management portal, storage account dashboard, storage metrics table, storage metrics chart" description="Learn how to monitor a storage account in Azure by using the Management Portal." metaCanonical="" services="storage" documentationCenter="" title="How To Monitor a Storage Account" authors="tamram" solutions="" manager="mbaldwin" editor="cgronlun" />
+﻿<properties urlDisplayName="How to monitor" pageTitle="ストレージ アカウントの監視方法 | Microsoft Azure" metaKeywords="Azure monitor storage accounts, storage account management portal, storage account dashboard, storage metrics table, storage metrics chart" description="Learn how to monitor a storage account in Azure by using the Management Portal." metaCanonical="" services="storage" documentationCenter="" title="How To Monitor a Storage Account" authors="tamram" solutions="" manager="adinah" editor="cgronlun" />
 
-<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="tamram" />
+<tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/17/2014" ms.author="tamram" />
 
-# <span id="createstorageaccount"></span></a>ストレージ アカウントの監視方法
+# <a id="createstorageaccount"></a>Azure の監視ポータルでのストレージ アカウントの監視
 
-ストレージ アカウントは、Azure プレビュー管理ポータルで監視できます。ストレージ アカウントに関連付けられた各ストレージ サービス (BLOB、キュー、およびテーブル) について、監視レベル (最小または詳細) を選択し、適切なデータ保有ポリシーを指定できます。
+ストレージ アカウントは、Azure の管理ポータルで監視できます。ポータルから監視できるようにストレージ アカウントを構成すると、Azure Storage では [Storage Analytics](http://msdn.microsoft.com/ja-jp/library/azure/hh343270.aspx) を使用して、アカウントのメトリックを追跡し、要求データのログを記録します。 
 
-ストレージ アカウントの監視を構成するまで、監視データは収集されず、ダッシュボードおよび **[監視]** ページのメトリック チャートは空です。
+> [WACOM.NOTE] 管理ポータルで監視データを調査すると、追加のコストがかかります。詳細については、「 <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/hh360997.aspx">Storage Analytics と課金</a>」を参照してください。 
 
-<div class="dev-callout"> 
-<b>注</b> 
-<p>管理ポータルで監視データを調査すると、追加のコストがかかります。詳細については、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/hh360997.aspx">ストレージの分析と課金に関するページ</a>を参照してください。</p> 
-</div>
+> [WACOM.NOTE] Azure ファイル サービスは、現時点では Storage Analytics をサポートしていません。
 
-## 目次
+> [WACOM.NOTE] Storage Analytics および他のツールを使用して、Azure Storage 関連の問題の特定、診断、およびトラブルシューティングを行う方法の詳細については、「[Monitor, diagnose, and troubleshoot Microsoft Azure Storage (Microsoft Azure Storage の監視、診断、およびトラブルシューティング)](../storage-monitoring-diagnosing-troubleshooting/)」を参照してください。
 
--   [方法: ストレージ アカウントの監視の設定](#configurestoragemonitoring)
--   [方法: ダッシュボードの監視用のカスタマイズ][方法: ダッシュボードの監視用のカスタマイズ]
--   [方法: [監視] ページのカスタマイズ](#customizemonitorpage)
--   [方法: メトリック テーブルへのメトリックの追加][方法: メトリック テーブルへのメトリックの追加]
--   [方法: [監視] ページのメトリック チャートのカスタマイズ](#customizemetricschart)
--   [方法: ログの構成][方法: ログの構成]
 
-## <span id="configurestoragemonitoring"></span></a>方法: ストレージ アカウントの監視の設定
+##目次##
 
-1.  [管理ポータル][管理ポータル]で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
+* [方法: ストレージ アカウントの監視の設定](#configurestoragemonitoring)
+* [方法: ダッシュボードの監視用のカスタマイズ](#customizestoragemonitoring)
+* [方法: [監視] ページのカスタマイズ](#customizemonitorpage)
+* [方法: メトリック テーブルへのメトリックの追加](#addmonitoringmetrics)
+* [方法: [監視] ページのメトリック チャートのカスタマイズ](#customizemetricschart)
+* [方法: ログの構成](#configurelogging)
 
-2.  **[構成]** をクリックして、BLOB、テーブル、キューの各サービスの **[監視]** 設定まで下図のようにスクロールします。
 
-    ![MonitoringOptions][MonitoringOptions]
+<h2><a id="configurestoragemonitoring"></a>方法:ストレージ アカウントの監視の設定</h2>
 
-3.  **[監視]** で、各サービスの監視レベルおよびデータ保有ポリシーを設定します。
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
--   監視レベルを設定するには、以下のいずれかを選択します。
+2. **[構成]** をクリックして、BLOB、テーブル、キューの各サービスの **[監視]** 設定まで下図のようにスクロールします。
 
-    **[最小]** - 受信/送信、空き時間情報、遅延時間、成功のパーセンテージなどのメトリックを収集して、BLOB、テーブル、キューのサービスごとに集計します。
+	![MonitoringOptions](./media/storage-monitor-storage-account/Storage_MonitoringOptions.png)
 
-    **[詳細]** - 最小レベルのメトリックに加えて、Azure Storage サービス API のストレージ操作ごとに同じメトリックを収集します。詳細メトリックにより、アプリケーションの操作中に発生する問題を詳しく分析できます。
+3. **[監視]** で、各サービスの監視レベルおよびデータ保有ポリシーを設定します。
 
-    **[オフ]** - 監視しません。既存の監視データは、保有期間が経過するまで残ります。
+-  監視レベルを設定するには、以下のいずれかを選択します。
 
--   データ保有ポリシーを設定するには、**[保有期間 (日)]** ボックスに、データを保有する日数を 1 ～ 365 日の範囲で入力します。保有ポリシーを設定しない場合は、「0」(ゼロ) を入力します。保有ポリシーがない場合、監視データを削除する責任はユーザーが負います。古くて使用しない分析データがコストをかけずに自動的に削除されるように、アカウントのストレージ分析データをどの程度の期間保持するかに基づいて、データ保有ポリシーを設定することをお勧めします。
+      **[最小]** - 受信/送信、空き時間情報、遅延時間、成功のパーセンテージなどのメトリックを収集して、BLOB、テーブル、キューのサービスごとに集計します。
 
-1.  監視の構成が完了したら、**[保存]** をクリックします。
+      **[詳細]** - 最小レベルのメトリックに加えて、Azure Storage サービス API のストレージ操作ごとに同じメトリックを収集します。詳細メトリックにより、アプリケーションの操作中に発生する問題を詳しく分析できます。 
+
+      **[オフ]** - 監視しません。既存の監視データは、保有期間が経過するまで残ります。
+
+- データ保有ポリシーを設定するには、**[保有期間 (日)]** ボックスに、データを保有する日数を 1 ～ 365 日の範囲で入力します。保有ポリシーを設定しない場合は、「0」(ゼロ) を入力します。保有ポリシーがない場合、監視データを削除する責任はユーザーが負います。古くて使用しない分析データがコストをかけずに自動的に削除されるように、アカウントのストレージ分析データをどの程度の期間保持するかに基づいて、データ保有ポリシーを設定することをお勧めします。
+
+4. 監視の構成が完了したら、**[保存]** をクリックします。
 
 約 1 時間後に、ダッシュボードおよび **[監視]** ページに監視データが表示されるようになります。
 
-メトリックは、ストレージ アカウントの $MetricsTransactionsBlob、$MetricsTransactionsTable、$MetricsTransactionsQueue、$MetricsCapacityBlob という名前の 4 つのテーブルに保存されます。詳細については、「[Storage Analytics Metrics について][Storage Analytics Metrics について]」を参照してください。
+ストレージ アカウントの監視を構成するまで、監視データは収集されず、ダッシュボードおよび **[監視]** ページのメトリック チャートは空です。
 
 監視レベルと保有ポリシーを設定した後、管理ポータルで監視する利用可能なメトリック、およびメトリック チャートにプロットするメトリックを選択できます。監視レベルごとに既定のメトリック セットが表示されます。**[メトリックの追加]** を使用してメトリック一覧のメトリックを追加または削除できます。
 
-## <span id="customizestoragemonitoring"></span></a>方法: ダッシュボードの監視用のカスタマイズ
+メトリックは、ストレージ アカウントの $MetricsTransactionsBlob、$MetricsTransactionsTable、$MetricsTransactionsQueue、$MetricsCapacityBlob という名前の 4 つのテーブルに保存されます。詳細については、「[Storage Analytics Metrics について](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343258.aspx)」を参照してください。
+
+
+<h2><a id="customizestoragemonitoring"></a>方法:ダッシュボードの監視用のカスタマイズ</h2>
 
 ダッシュボードで、利用できる 9 個のメトリックから最大 6 個のメトリックを選択してメトリック チャートにプロットできます。サービスごとに (BLOB、テーブル、およびキュー)、空き時間情報、成功のパーセンテージ、および要求数合計のメトリックが利用できます。ダッシュボードで利用できるメトリックは、最少監視でも詳細監視でも同じです。
 
-1.  [管理ポータル][管理ポータル]で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
-2.  チャートにプロットされるメトリックを変更するには、以下のいずれかを実行します。
+2. チャートにプロットされるメトリックを変更するには、以下のいずれかを実行します。
 
--   新しいメトリックをチャートに追加するには、メトリックのヘッダー部にあるチェック ボックスをオンにします。幅の狭い画面では、***[残り n* 項目]** をクリックして、ヘッダー部に表示できないヘッダーにアクセスします。
+- 新しいメトリックをチャートに追加するには、メトリックのヘッダー部にあるチェック ボックスをオンにします。幅の狭い画面では、**[残り *n* 項目]** をクリックして、ヘッダー部に表示できないヘッダーにアクセスします。
 
--   チャートにプロットされているメトリックを非表示にするには、メトリック ヘッダーにあるチェック ボックスをオフにします。
+- チャートにプロットされているメトリックを非表示にするには、メトリック ヘッダーにあるチェック ボックスをオフにします。
 
-    ![Monitoring_nmore](./media/storage-monitor-storage-account/storage_Monitoring_nmore.png)
+	![Monitoring_nmore](./media/storage-monitor-storage-account/storage_Monitoring_nmore.png)
+  
+3. 既定では、チャートには傾向が表示され、各メトリックの現在の値だけが表示されます (チャート上部にある **[相対]** オプション)。Y 軸を表示して絶対値を確認するには、**[絶対]** をクリックします。
 
-1.  既定では、チャートには傾向が表示され、各メトリックの現在の値だけが表示されます (チャート上部にある **[相対]** オプション)。Y 軸を表示して絶対値を確認するには、**[絶対]** をクリックします。
+4. メトリック チャートに表示する期間を変更するには、チャートの上部で 6 時間、24 時間、または 7 日を選択します。
+     
 
-2.  メトリック チャートに表示する期間を変更するには、チャートの上部で 6 時間、24 時間、または 7 日を選択します。
+<h2><a id="customizemonitorpage"></a>方法:[監視] ページのカスタマイズ</h2>
 
-## <span id="customizemonitorpage"></span></a>方法: [監視] ページのカスタマイズ
+**[監視]** ページでは、ストレージ アカウントのメトリックをすべて表示できます。 
 
-**[監視]** ページでは、ストレージ アカウントのメトリックをすべて表示できます。
+- ストレージ アカウントが最小監視に構成されている場合は、受信/送信、空き時間情報、遅延時間、成功のパーセンテージなどのメトリックが BLOB、テーブル、キューの各サービスから集計されれます。
 
--   ストレージ アカウントが最小監視に構成されている場合は、受信/送信、空き時間情報、遅延時間、成功のパーセンテージなどのメトリックが BLOB、テーブル、キューの各サービスから集計されれます。
-
--   ストレージ アカウントが詳細監視に構成されている場合は、サービス単位の集計に加えて、もっときめ細かい個々のストレージ操作のメトリックも利用できます。
+- ストレージ アカウントが詳細監視に構成されている場合は、サービス単位の集計に加えて、もっときめ細かい個々のストレージ操作のメトリックも利用できます。
 
 以下の手順を使用して、**[監視]** ページに表示されるメトリック チャートとテーブルに表示するストレージ メトリックを選択します。この設定は、ストレージ アカウント監視データの収集、集計、および保存には影響しません。
 
-## <span id="addmonitoringmetrics"></span></a>方法: メトリック テーブルへのメトリックの追加
+<h2><a id="addmonitoringmetrics"></a>方法:メトリック テーブルへのメトリックの追加</h2>
 
-1.  [管理ポータル][管理ポータル]で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
-2.  **[監視]** をクリックします。
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
-    **[監視]** ページが開きます。既定で、メトリック テーブルには監視に使用できるメトリックのサブセットが表示されます。図は、3 つのサービスすべてに詳細監視を構成したストレージ アカウントで表示される既定の [監視] ページを示しています。**[メトリックの追加]** を使用して、使用できるすべてのメトリックから監視するメトリックを選択します。
+2. **[監視]** をクリックします。
 
-    ![Monitoring_VerboseDisplay](./media/storage-monitor-storage-account/Storage_Monitoring_VerboseDisplay.png)
+	**[監視]** ページが開きます。既定で、メトリック テーブルには監視に使用できるメトリックのサブセットが表示されます。図は、3 つのサービスすべてに詳細監視を構成したストレージ アカウントで表示される既定の [監視] ページを示しています。**[メトリックの追加]** を使用して、使用できるすべてのメトリックから監視するメトリックを選択します。
 
-    <div class="dev-callout"> 
-    <b>注</b> 
-    <p>メトリックを選択するときはコストを考慮してください。監視の表示を更新すると、トランザクションと送信のコストがかかります。詳細については、<a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/hh360997.aspx">ストレージの分析と課金に関するページ</a>を参照してください。</p> 
-    </div>
 
-3.  **[メトリックの追加]** をクリックします。
+	![Monitoring_VerboseDisplay](./media/storage-monitor-storage-account/Storage_Monitoring_VerboseDisplay.png)
 
-    最少監視で使用できる集計メトリックは一覧の上部に表示されています。チェック ボックスをオンにすると、そのメトリックがメトリック一覧に表示されます。
+	<div class="dev-callout"> 
+	<b>注</b> 
+	<p>メトリックを選択するときはコストを考慮してください。監視の表示を更新すると、トランザクションと送信のコストがかかります。詳細については、「 <a href="http://msdn.microsoft.com/ja-jp/library/windowsazure/hh360997.aspx">Storage Analytics と課金</a>」を参照してください。</p> 
+</div>
 
-    ![AddMetricsInitialDisplay][AddMetricsInitialDisplay]
+3. **[メトリックの追加]** をクリックします。 
 
-4.  ダイアログ ボックスの右側をポイントするとスクロール バーが表示され、ドラッグして追加のメトリックを表示できます。
+	最少監視で使用できる集計メトリックは一覧の上部に表示されています。チェック ボックスをオンにすると、そのメトリックがメトリック一覧に表示されます。 
 
-    ![AddMetricsScrollbar][AddMetricsScrollbar]
+	![AddMetricsInitialDisplay](./media/storage-monitor-storage-account/Storage_AddMetrics_InitialDisplay.png)
+ 
+4. ダイアログ ボックスの右側をポイントするとスクロール バーが表示され、ドラッグして追加のメトリックを表示できます。
 
-5.  メトリックの横にある下向き矢印をクリックして、メトリックの対象となる操作の一覧を展開します。管理ポータルのメトリック テーブルに表示する操作をそれぞれ選択します。
+	![AddMetricsScrollbar](./media/storage-monitor-storage-account/Storage_AddMetrics_Scrollbar.png)
 
-    下図では、承認エラーのパーセンテージ メトリックが展開されています。
 
-    ![ExpandCollapse][ExpandCollapse]
+5. メトリックの横にある下向き矢印をクリックして、メトリックの対象となる操作の一覧を展開します。管理ポータルのメトリック テーブルに表示する操作をそれぞれ選択します。
 
-6.  すべてのサービスについてメトリックを選択したら、[OK] (チェックマーク) をクリックして監視の構成を更新します。選択したメトリックがメトリック テーブルに追加されます。
+	下図では、承認エラーのパーセンテージ メトリックが展開されています。
 
-7.  テーブルからメトリックを削除するには、下図のようにメトリックをクリックして選択し、**[メトリックの削除]** をクリックします。
+	![ExpandCollapse](./media/storage-monitor-storage-account/Storage_AddMetrics_ExpandCollapse.png)
 
-    ![DeleteMetric][DeleteMetric]
 
-## <span id="customizemetricschart"></span></a>方法: [監視] ページのメトリック チャートのカスタマイズ
+6. すべてのサービスについてメトリックを選択したら、[OK] (チェックマーク) をクリックして監視の構成を更新します。選択したメトリックがメトリック テーブルに追加されます。
 
-1.  ストレージ アカウントの **[監視]** ページで、メトリック チャートにプロットするメトリックをメトリック テーブルで最大 6 個選択します。メトリックを選択するには、メトリックの左側にあるチェック ボックスをオンにします。チャートからメトリックを削除するには、チェック ボックスをオフにします。
+7. テーブルからメトリックを削除するには、下図のようにメトリックをクリックして選択し、**[メトリックの削除]** をクリックします。
 
-2.  チャートで相対値 (最終値だけ表示) と絶対値 (Y 軸を表示) を切り替えるには、チャートの上部で **[相対]** または **[絶対]** を選択します。
+	![DeleteMetric](./media/storage-monitor-storage-account/Storage_DeleteMetric.png)
 
-3.  メトリック チャートに表示する期間を変更するには、チャートの上部で **[6 時間]**、**[24 時間]**、または **[7 日]** をクリックします。
+<h2><a id="customizemetricschart"></a>方法:[監視] ページのメトリック チャートのカスタマイズ</h2>
 
-## <span id="configurelogging"></span></a>方法: ログの構成
+1. ストレージ アカウントの **[監視]** ページで、メトリック チャートにプロットするメトリックをメトリック テーブルで最大 6 個選択します。メトリックを選択するには、メトリックの左側にあるチェック ボックスをオンにします。チャートからメトリックを削除するには、チェック ボックスをオフにします。
+
+2. チャートで相対値 (最終値だけ表示) と絶対値 (Y 軸を表示) を切り替えるには、チャートの上部で **[相対]** または **[絶対]** をクリックします。
+
+3.	メトリック チャートに表示する期間を変更するには、チャートの上部で **[6 時間]**、**[24 時間]**、または **[7 日]** をクリックします。
+
+
+
+<h2><a id="configurelogging"></a>方法:ログの構成</h2>
 
 ストレージ アカウントで利用できるストレージ サービス (BLOB、テーブル、およびキュー) ごとに、読み取り要求、書き込み要求、および削除要求の診断ログを保存でき、サービスごとにデータ保有ポリシーを設定できます。
 
-1.  [管理ポータル][管理ポータル]で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
+1. [管理ポータル](https://manage.windowsazure.com/)で、**[ストレージ]** をクリックし、目的のストレージ アカウント名をクリックしてダッシュボードを開きます。
 
-2.  **[構成]** をクリックし、キーボードの下方向キーを使って、**[ログ]** までスクロールします (下図)。
+2. **[構成]** をクリックし、キーボードの下方向キーを使って、**[ログ]** までスクロールします (下図)。
 
-    ![Storagelogging][Storagelogging]
+	![Storagelogging](./media/storage-monitor-storage-account/Storage_LoggingOptions.png)
 
-3.  サービス (BLOB、テーブル、およびキュー) ごとに、次のように構成します。
+ 
+3. サービス (BLOB、テーブル、およびキュー) ごとに、次のように構成します。
 
-    -   ログを記録する要求の種類: 読み取り要求、書き込み要求、および削除要求。
+	- ログを記録する要求の種類:読み取り要求、書き込み要求、および削除要求。
 
-    -   ログ データを保持する日数。保有ポリシーを設定しない場合は、「0」(ゼロ) を入力します。保有ポリシーを設定しない場合、ログを削除する責任はユーザーが負います。
+	- ログ データを保持する日数。保有ポリシーを設定しない場合は、「0」(ゼロ) を入力します。保有ポリシーを設定しない場合、ログを削除する責任はユーザーが負います。
 
-4.  **[保存]** をクリックします。
+4. **[保存]** をクリックします。
 
-診断ログは、ストレージ アカウントの $logs という名前の BLOB コンテナーに保存されます。$logs コンテナーへのアクセスの詳細については、「[Storage Analytics Logging について][Storage Analytics Logging について]」を参照してください。
+診断ログは、ストレージ アカウントの $logs という名前の BLOB コンテナーに保存されます。$logs コンテナーへのアクセスの詳細については、「[Storage Analytics Logging について](http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343262.aspx)」を参照してください。
 
-  [方法: ダッシュボードの監視用のカスタマイズ]: #customizestoragemonitoring
-  [方法: メトリック テーブルへのメトリックの追加]: #addmonitoringmetrics
-  [方法: ログの構成]: #configurelogging
-  [管理ポータル]: https://manage.windowsazure.com/
-  [MonitoringOptions]: ./media/storage-monitor-storage-account/Storage_MonitoringOptions.png
-  [Storage Analytics Metrics について]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343258.aspx
-  [AddMetricsInitialDisplay]: ./media/storage-monitor-storage-account/Storage_AddMetrics_InitialDisplay.png
-  [AddMetricsScrollbar]: ./media/storage-monitor-storage-account/Storage_AddMetrics_Scrollbar.png
-  [ExpandCollapse]: ./media/storage-monitor-storage-account/Storage_AddMetrics_ExpandCollapse.png
-  [DeleteMetric]: ./media/storage-monitor-storage-account/Storage_DeleteMetric.png
-  [Storagelogging]: ./media/storage-monitor-storage-account/Storage_LoggingOptions.png
-  [Storage Analytics Logging について]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh343262.aspx
+<!--HONumber=35_1-->

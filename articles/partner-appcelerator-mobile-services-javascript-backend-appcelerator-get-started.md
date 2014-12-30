@@ -1,6 +1,6 @@
-﻿<properties pageTitle="Appcelerator Titanium 向け Azure Mobile Services の使用" metaKeywords="" description="Follow this tutorial to get started using Azure Mobile Services for Appcelerator development. " metaCanonical="" services="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="Appcelerator team;mahender" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="Appcelerator Titanium での Azure Mobile Services の使用" metaKeywords="" description="Follow this tutorial to get started using Azure Mobile Services for Appcelerator development. " metaCanonical="" services="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="Appcelerator team;mahender" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-appcelerator" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="Appcelerator team;mahender" />
+<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-appcelerator" ms.devlang="multiple" ms.topic="article" ms.date="11/24/2014" ms.author="Appcelerator team;mahender" />
 
 # <a name="getting-started"> </a>モバイル サービスの使用
 
@@ -8,7 +8,7 @@
 
 このチュートリアルでは、Appcelerator で構築したアプリケーションで Azure Mobile Services を活用する方法について説明します。
 
-このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリケーション データを保存する簡単な _To do list_ アプリケーションの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために JavaScript を使用します。
+このチュートリアルでは、新しいモバイル サービスと、新しいモバイル サービスにアプリ データを保存する簡単な _To do list_ アプリの両方を作成します。作成するモバイル サービスは、サーバー側ビジネス ロジックのために JavaScript を使用します。
 
 このチュートリアルを完了するには、[Appcelerator Titanium] が必要です。
 
@@ -22,23 +22,23 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
 
 ## 新しい Appcelerator アプリケーションを作成する
 
-1. Mobile Services ポータルで、モバイル サービスの **[データ]** タブをクリックします。
+1. Mobile Services のポータルで、使用するモバイル サービスの **[データ]** タブをクリックします。
 
 2. **[テーブルの追加]** をクリックし、**TodoItem** という名前の新しいテーブルを作成します。
 
-3. 新しい Appcelerator [Todolist アプリケーション] をダウンロードし、プロジェクトを解凍します。
+3. 新しい Appcelerator [Todolist アプリケーション]をダウンロードし、プロジェクトを解凍します。
 
-4. まだインストールしていない場合は、[Appcelerator Titanium Studio][Appcelerator Titanium]  と SDK v3.2.1 またはそれ以降をダウンロードしてインストールします。プロジェクトを実行するには、Xcode (v 5.0 +) と Android SDK (v 4.3+) の両方、または一方も必要になります。
+4. まだインストールしていない場合は、[Appcelerator Titanium Studio][Appcelerator Titanium] と SDK v3.2.1 以降をダウンロードしてインストールします。プロジェクトを実行するには、Xcode (v 5.0 +) と Android SDK (v 4.3+) の両方、または一方も必要になります。
 
 5. Mobile Services ポータルに戻り、**ダッシュボード**で **[キーの管理]** をクリックし、**アプリケーション キー**をコピーします。
 
-5. アプリケーションの index.js で、`<---App Name---->` と `<------------APP KEY------------>`  をモバイル サービスの値に置き換えます。
+5. アプリケーションの index.js で、`<---App Name---->` および `<------------APP KEY------------>` を、使用するモバイル サービスの値と置き換えます。
 
 ## 新しい Appcelerator アプリケーションを実行する ##
 
 このチュートリアルの最後に、新しいアプリケーションをビルドして実行します。
 
-1. Titanium studio を開き、**[File]、[Import]** の順に選択して、前にダウンロードしたプロジェクトをインポートします。
+1. Titanium Studio を開き、**[File]、[Import]** の順に移動して、前にダウンロードしたプロジェクトをインポートします。
 
     ![][0]
 
@@ -87,12 +87,12 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
 
 
 ## <a name="next-steps"> </a>次のステップ
-クイック スタートはこれで完了です。Mobile Services で重要になるこれ以外の作業については、以下のトピックを参照してください。 
+クイック スタートはこれで完了です。モバイル サービスで重要になるこれ以外の作業については、以下のトピックを参照してください。 
 
 * [認証の使用]
   <br/>ID プロバイダーを使用してアプリケーションのユーザーを認証する方法について説明します。
 
-* [プッシュ通知の使用]
+* [プッシュ通知の使用] 
   <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
 
@@ -115,3 +115,5 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
 [Appcelerator Titanium]: http://go.microsoft.com/fwlink/p/?LinkID=509987
 [認証の使用]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-users
 [プッシュ通知の使用]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push
+
+<!--HONumber=35_1-->

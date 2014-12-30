@@ -1,21 +1,21 @@
-﻿<properties urlDisplayName="How to use Notification Hubs with Java" pageTitle="Java で Notification Hubs を使用する方法" metaKeywords="" description="Learn how to use Azure Notification Hubs from a Java back-end." metaCanonical="" services="mobile-services,notification-hubs,push,java" documentationCenter="" title="How to use Notification Hubs with Java" authors="elioda" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="How to use Notification Hubs with Java" pageTitle="Java から Notification Hubs を使用する方法" metaKeywords="" description="Learn how to use Azure Notification Hubs from a Java back-end." metaCanonical="" services="mobile-services,notification-hubs,push,java" documentationCenter="" title="How to use Notification Hubs with Java" authors="piyushjo" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="java" ms.topic="article" ms.date="01/01/1900" ms.author="elioda" />
+<tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="java" ms.topic="article" ms.date="11/14/2014" ms.author="piyushjo" />
 
 # Java/PHP から Notification Hubs を使用する方法
 <div class="dev-center-tutorial-selector sublanding"> 
     	<a href="/ja-jp/documentation/articles/notification-hubs-java-backend-how-to/" title="Java" class="current">Java</a><a href="/ja-jp/documentation/articles/notification-hubs-php-backend-how-to/" title="PHP">PHP</a>
 </div>
 
-MSDN のトピック [Notification Hubs の REST API](http://msdn.microsoft.com/ja-jp/library/dn223264.aspx) の説明にあるように Notification Hub REST インターフェイスを使用して、Java/PHP/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。
+MSDN のトピック「[通知ハブの REST API]」の説明にあるように Notification Hub REST インターフェイスを使用して、Java/PHP/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます(http://msdn.microsoft.com/ja-jp/library/dn223264.aspx)。
 
 このトピックでは、次の方法について説明します。
 
 * Java で Notification Hubs 機能の REST クライアントを記述します。
-* 選択したモバイル プラットフォームの「[Notification Hubs の使用](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-ios-get-started/)」に従って、Java のバックエンド部分を実装します。
+* 選択したモバイル プラットフォームの「[通知ハブの使用](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-ios-get-started/) 」に従って、Java のバックエンド部分を実装します。
 
 ##<a name="client-interface"></a>クライアント インターフェイス
-メイン クライアント インターフェイスは、[.NET Notification Hubs の SDK](http://msdn.microsoft.com/ja-jp/library/jj933431.aspx) で利用可能なものと同じメソッドを提供します。これにより、このサイトで現在利用できる、およびインターネットのコミュニティによって随時追加されるすべてのチュートリアルとサンプルを直接変換できます。
+メイン クライアント インターフェイスは、[.NET Notification Hubs SDK](http://msdn.microsoft.com/ja-jp/library/jj933431.aspx) で利用可能なものと同じメソッドを提供します。これにより、このサイトで現在利用できる、およびインターネットのコミュニティによって随時追加されるすべてのチュートリアルとサンプルを直接変換できます。
 
 「[Java REST wrapper sample (Java REST ラッパー サンプル)]」で利用可能なすべてのコードを検索できます。
 
@@ -37,8 +37,8 @@ iOS ネイティブ通知を送信する場合:
 	hub.sendNotification(n);
 
 ##<a name="implementation"></a>実装
-まだ実施していない場合は、「[Notification Hubs の使用]」に従って最後のセクションまで進み、バックエンドを実装します。
-また、必要があれば「[Java REST wrapper sample (Java REST ラッパー サンプル)]」のコードを使用し、直接「[チュートリアルを完了する](#complete-tutorial)」セクションに進むこともできます。
+まだ実施していない場合は、「[通知ハブの使用]」に従って最後のセクションまで進み、バックエンドを実装します。
+また、必要があれば「[Java REST wrapper sample (Java REST ラッパー サンプル)]」のコードを使用し、直接「[チュートリアルを完了する](#complete-tutorial) 」セクションに進むこともできます。
 
 REST ラッパーすべての実装の詳細については、[MSDN の記事](http://msdn.microsoft.com/ja-jp/library/dn530746.aspx)を参照してください。このセクションでは、Notification Hubs REST エンドポイントにアクセスするために必要な主要手順の Java 実装について説明します。
 
@@ -91,7 +91,7 @@ REST ラッパーすべての実装の詳細については、[MSDN の記事](h
 
 ### セキュリティ トークンを作成する
 セキュリティ トークン作成についての詳細は、[ここ](http://msdn.microsoft.com/ja-jp/library/dn495627.aspx)で参照できます。
-現在の要求の URI、および接続文字列から抽出した資格情報に基づきトークンを作成するため、**NotificationHub** クラスに次のメソッドを追加する必要があります。
+現在の要求の URI および接続文字列から抽出した資格情報に基づいてトークンを作成するには、次のメソッドを **NotificationHub** クラスに追加する必要があります。
 
 	private String generateSasToken(URI uri) {
 		String targetUri;
@@ -237,9 +237,9 @@ REST ラッパーすべての実装の詳細については、[MSDN の記事](h
 
 このクラスは、ネイティブ通知本体のコンテナー、またはテンプレート通知の場合にはプロパティのセットと、形式 (ネイティブ プラットフォームまたはテンプレート) およびプラットフォーム固有のプロパティを含むヘッダーのセットです (Apple 有効期限プロパティや WNS ヘッダーなど)。また、一般的に使用する通知タイプを生成するのに便利なコンストラクターも定義します。
 
-利用可能なすべてのオプションについては、「[REST API のメソッド](http://msdn.microsoft.com/ja-jp/library/dn495827.aspx)」、および特定の通知プラットフォームの形式を参照してください。
+利用可能なすべてのオプションについては、[Notification Hubs REST API のドキュメント](http://msdn.microsoft.com/ja-jp/library/dn495827.aspx) および特定の通知プラットフォームの形式を参照してください。
 
-このクラスを利用して、**NotificationHub** クラス内に通知送信メソッドを作成できます。
+このクラスを利用して、**NotificationHub** クラス内に送信通知メソッドを作成できます。
 
 	public void sendNotification(Notification notification) {
 		sendNotification(notification, "");
@@ -301,14 +301,14 @@ REST ラッパーすべての実装の詳細については、[MSDN の記事](h
 ##<a name="complete-tutorial"></a>チュートリアルを完了する
 ここで、Java バックエンドから通知を送信して、使用についてのチュートリアルを完了できます。
 
-Notification Hubs クライアントを初期化します (「[Notification Hubs の使用]」の説明に従って接続文字列とハブ名を置き換えます)。
+Notification Hubs クライアントを初期化します (「[通知ハブの使用]」の説明に従って接続文字列とハブ名を置き換えます)。
 	NotificationHub hub = new NotificationHub("{connection string}", "{hubname}");
 
 次に、ターゲット モバイル プラットフォームに応じて送信コードを追加します。
 
 ### Windows ストアおよび Windows Phone 8.1 (非 Silverlight)
 
-	String toast = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello from Java!</text></binding></visual></toast>";
+
 	Notification n = Notification.createWindowsNotification(toast);
 	hub.sendNotification(n);
 
@@ -346,11 +346,13 @@ Java コードを実行すると、ターゲット デバイスに表示され�
 このトピックでは、Notification Hubs 用の単純な Java REST クライアントの作成方法を説明しました。次は、以下を実行できます。
 
 * [Java REST ラッパー サンプル]をすべてダウンロードします。サンプルには上記のコード、および登録管理のコードがすべて含まれています。
-* 引き続き、「[ニュース速報]」チュートリアルで Notification Hubs のタグ付け機能について学習してください。
-* 個別ユーザーへの通知のプッシュについては、「[ユーザーへの通知]」チュートリアルで学習してください。
+* 引き続き、「[ニュース速報チュートリアル]」で Notification Hubs のタグ付け機能について学習してください。
+* 個別ユーザーへの通知のプッシュについては、「[ユーザーへの通知チュートリアル]」で学習してください。
 
 
 
 
-[Java REST ラッパーのサンプル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-java
-[Notification Hubs の使用チュートリアル]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-ios-get-started/
+[Java REST wrapper sample (Java REST ラッパー サンプル)]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-java
+[通知ハブの使用]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-ios-get-started/
+
+<!--HONumber=35_1-->

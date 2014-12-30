@@ -1,7 +1,7 @@
-1.  Visual Studio の [ソリューション エクスプローラー] ウィンドウで、プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+﻿1. Visual Studio の [ソリューション エクスプローラー] ウィンドウで、プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-2.  NuGet パッケージ マネージャーで、**[オンライン]** および **[プレリリースを含める]** をクリックします。検索用語として「**Microsoft.IdentityModel.Clients.ActiveDirectory**」と入力します。**[インストール]** をクリックし、Active Directory 認証ライブラリ Nuget パッケージをインストールします。
+2. [NuGet パッケージの管理] で **[オンライン]** をクリックします。検索用語として「**Microsoft.IdentityModel.Clients.ActiveDirectory**」と入力します。**[インストール]** をクリックし、Active Directory 認証ライブラリ Nuget パッケージをインストールします。 
 
-  ![][0]
+   ![](./media/mobile-services-dotnet-adal-install-nuget/mobile-services-adal-nuget-package.png)
 
-  [0]: ./media/mobile-services-dotnet-adal-install-nuget/mobile-services-adal-nuget-package.png
+<!--HONumber=35_1-->

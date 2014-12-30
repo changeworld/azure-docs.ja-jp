@@ -1,4 +1,4 @@
-﻿<properties writer="ricksal" pageTitle="Android クライアントからのカスタム API 呼び出し | モバイル デベロッパー センター" metaKeywords="" description="Learn how to define a custom API and then call it from an Android app that uses Azure Mobile Services." metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="mobile-services" documentationCenter="Mobile" title="Call a custom API from the client" authors="ricksal,glenga" manager="dwrede" />
+﻿<properties writer="ricksal" pageTitle="Android クライアントからのカスタム API の呼び出し | モバイル デベロッパー センター" metaKeywords="" description="Learn how to define a custom API and then call it from an Android app that uses Azure Mobile Services." metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="mobile-services" documentationCenter="Mobile" title="Call a custom API from the client" authors="ricksal,glenga" manager="dwrede" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="10/16/2014" ms.author="ricksal,glenga" />
 
@@ -16,10 +16,13 @@
 2. [カスタム API を呼び出すようにアプリケーションを更新する]
 3. [アプリケーションをテストする] 
 
-このチュートリアルは、モバイル サービスのクイック スタートに基づいています。このチュートリアルを開始する前に、「[モバイル サービスの使用]」または「[データの使用]」を完了している必要があります。 
 
->[AZURE.NOTE] 完成したアプリケーションのソース コードは、<a href="https://github.com/RickSaling/mobile-services-samples/tree/futures/CallCustomApi/Android" target="_blank">ここ</a>で確認できます。
->
+>[AZURE.NOTE] アプリケーション全体のソース コードを参照するには、 <a href="https://github.com/RickSaling/mobile-services-samples/tree/futures/CallCustomApi/Android" target="_blank">ここ</a>をクリックしてください。
+
+##前提条件
+
+[WACOM.INCLUDE [mobile-services-android-prerequisites](../includes/mobile-services-android-prerequisites.md)]
+
 ## <a name="define-custom-api"></a>カスタム API を定義する
 
 [WACOM.INCLUDE [mobile-services-create-custom-api](../includes/mobile-services-create-custom-api.md)]
@@ -47,12 +50,14 @@
 [次のステップ]: #next-steps
 
 <!-- URLs. -->
-[モバイル サービス Android SDK]: http://go.microsoft.com/fwlink/p/?LinkID=280126
+[Mobile Services Android SDK]: http://go.microsoft.com/fwlink/p/?LinkID=280126
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [マイ アプリ ダッシュボード]: http://go.microsoft.com/fwlink/?LinkId=262039
-[モバイル サービスの使用]: /ja-jp/documentation/articles/mobile-services-android-get-started/
+[Mobile Services の使用]: /ja-jp/documentation/articles/mobile-services-android-get-started/
 [データの使用]: /ja-jp/documentation/articles/mobile-services-android-get-started-data/
 [認証の使用]: /ja-jp/documentation/articles/mobile-services-android-get-started-users/
 [プッシュ通知の使用]: /ja-jp/documentation/articles/mobile-services-android-get-started-push/
 
 [ソース管理へのサーバー スクリプトの保存]: /ja-jp/documentation/articles/mobile-services-store-scripts-source-control
+
+<!--HONumber=35_1-->

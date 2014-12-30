@@ -1,21 +1,21 @@
-﻿<properties urlDisplayName="REST service using Web API" pageTitle="Web API を使用した .NET REST サービス - Azure チュートリアル" metaKeywords="Azure チュートリアル Web サイト, ASP.NET API Web サイト, Azure VS" description="A tutorial that teaches you how to deploy an app that uses the ASP.NET Web API to an Azure website by using Visual Studio." metaCanonical="" services="web-sites" documentationCenter=".NET" title="REST service using ASP.NET Web API and SQL Database" authors="riande" solutions="" manager="wpickett" editor="" />
+﻿<properties urlDisplayName="REST service using Web API" pageTitle="Web API を使用する .NET REST サービス - Azure チュートリアル" metaKeywords="Azure tutorial web site, ASP.NET API web site, Azure VS" description="A tutorial that teaches you how to deploy an app that uses the ASP.NET Web API to an Azure website by using Visual Studio." metaCanonical="" services="web-sites" documentationCenter=".NET" title="REST service using ASP.NET Web API and SQL Database" authors="riande" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="06/06/2014" ms.author="riande" />
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/06/2014" ms.author="riande" />
 
 
 
 
 # ASP.NET Web API と SQL データベースを使用した REST サービス 
 
-***執筆: [Rick Anderson](https://twitter.com/RickAndMSFT) および Tom Dykstra。更新: 2014 年 3 月***
+***執筆 [Rick Anderson](https://twitter.com/RickAndMSFT) および Tom Dykstra***
 
-このチュートリアルでは、Visual Studio 2013 または Visual Studio 2013 for Web Express の Web の発行ウィザードを使用して、ASP.NET Web アプリケーションを Azure Web サイトにデプロイする方法を示します(Visual Studio 2012 を使用する場合は、[このチュートリアルの前のバージョン](/ja-jp/develop/net/tutorials/get-started-vs2012/)を参照)。
+このチュートリアルでは、Visual Studio 2013 または Visual Studio 2013 for Web Express の Web の発行ウィザードを使用して、ASP.NET Web アプリケーションを Azure の Web サイトにデプロイする方法を示します。 
 
 Azure アカウントは無料で開くことができます。また、まだ Visual Studio 2013 を持っていない場合は、SDK によって Visual Studio 2013 for Web Express が自動的にインストールされます。これで、Azure 向けの開発を完全に無料で始めることができます。
 
 このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルでは、クラウドで動作する単純な Web アプリケーションを作成します。
  
-学習内容: 
+学習内容:
 
 * Azure SDK をインストールして、Azure 向け開発用にコンピューターを準備する方法
 * Visual Studio の ASP.NET MVC 5 プロジェクトを作成して Azure の Web サイトに発行する方法
@@ -26,7 +26,7 @@ Azure アカウントは無料で開くことができます。また、まだ V
 ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity Framework を使用する、簡単な連絡先リスト Web アプリケーションをビルドします。次の図に、完成したアプリケーションを示します。
 
 ![screenshot of web site][intro001]
-このチュートリアルの内容: 
+このチュートリアルの内容:
 
 * [開発環境を設定する][setupdbenv]
 * [Azure 環境を設定する][setupwindowsazureenv]
@@ -50,11 +50,11 @@ ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity F
 
 次のステップでは、アプリケーションで使用する Azure Web サイトと SQL データベースを作成します。
 
-Azure Web サイトは、共有ホスティング環境で実行されます。つまり、他の Azure クライアントと共有する仮想マシン (VM) 上で実行されます。共有ホスティング環境は、低コストでクラウドの利用を開始できる方法です。後で Web トラフィックが増加したら、アプリケーションの規模を変更して専用 VM 上で実行するように設定してニーズを満たすことができます。もっと複雑なアーキテクチャが必要な場合は、Azure のクラウド サービスに移行できます。クラウド サービスは専用 VM 上で実行され、ユーザーのニーズに応じて構成できます。
+Azure の Web サイトは、共有ホスティング環境で実行されます。つまり、他の Azure クライアントと共有する仮想マシン (VM) 上で実行されます。共有ホスティング環境は、低コストでクラウドの利用を開始できる方法です。後で Web トラフィックが増加したら、アプリケーションの規模を変更して専用 VM 上で実行するように設定してニーズを満たすことができます。もっと複雑なアーキテクチャが必要な場合は、Azure のクラウド サービスに移行できます。クラウド サービスは専用 VM 上で実行され、ユーザーのニーズに応じて構成できます。
 
 SQL データベースは、SQL Server テクノロジに基づいて構築されたクラウドベースのリレーショナル データベース サービスです。SQL Server で動作するツールおよびアプリケーションは、SQL データベースでも動作します。
 
-1. [Azure の管理ポータル](https://manage.windowsazure.com)で、左側のタブにある **[Web サイト]** をクリックし、**[新規]** をクリックします。
+1. [Azure の管理ポータル](https://manage.windowsazure.com)で、**[Web サイト]** をクリックし、**[新規]** をクリックします。
 
 2. **[カスタム作成]** をクリックします。
 
@@ -62,7 +62,7 @@ SQL データベースは、SQL Server テクノロジに基づいて構築さ�
 
 	**新しい Web サイト - カスタム作成**ウィザードが開きます。 
 
-3. ウィザードの **[新しい Web サイトを作成する]** 手順で、アプリケーションの一意の URL として使用する文字列を **[URL]** ボックスに入力します。URL 全体は、ここで入力した内容に、テキスト ボックスの下に表示されるサフィックスを追加して構成されます。図には "contactmgr11" と表示されていますが、その URL は既に取得されている可能性が高いため、別の URL の選択が必要になります。
+3. ウィザードの  **[新しい Web サイト]** 手順で、アプリケーションの一意の URL として使用する文字列を**[URL]** ボックスに入力します。URL 全体は、ここで入力した内容に、テキスト ボックスの下に表示されるサフィックスを追加して構成されます。図には "contactmgr11" と表示されていますが、その URL は既に取得されている可能性が高いため、別の URL の選択が必要になります。
 
 1. **[リージョン]** ボックスの一覧で、現在の所在地に最も近いリージョンを選択します。
 
@@ -72,15 +72,15 @@ SQL データベースは、SQL Server テクノロジに基づいて構築さ�
 
 6. ボックスの下部にある右矢印をクリックします。
 
-ウィザードの **[データベースの設定]** 手順に進みます。
+	ウィザードの **[データベースの設定]** 手順に進みます。
 
 7. **[名前]** ボックスに「*ContactDB*」と入力します。
 
-8. **[サーバー]** ボックスで、**[新しい SQL Database サーバー]** を選択します。または、以前に SQL Server データベースを作成した場合は、ボックスの一覧からその SQL Server を選択できます。
+8. **[サーバー]** ボックスで、**[新しい SQL データベース サーバー]** を選択します。または、以前に SQL Server データベースを作成した場合は、ボックスの一覧からその SQL Server を選択できます。
 
 9. ボックスの下部にある右矢印をクリックします。
 
-10. 管理者の**ログイン名**と**パスワード**を入力します。**[新しい SQL データベース サーバー]** を選択した場合は、既存の名前とパスワードではなく、このデータベースへのアクセス時に使用する新しい名前とパスワードを入力してください。以前に作成した SQL Server を選択した場合は、その SQL Server の作成時に設定したパスワードを入力します。このチュートリアルでは、**[データベースの詳細設定を構成します]** チェック ボックスをオンにしません。**[詳細設定]** では、DB サイズ (既定値は 1 GB ですが 150 GB まで拡張可能) と照合順序を指定できます。
+10. 管理者の**ログイン名**と**パスワード**を入力します。**[新しい SQL データベース サーバー]** を選択した場合は、既存の名前とパスワードではなく、このデータベースへのアクセス時に使用する新しい名前とパスワードを入力してください。以前に作成した SQL Server を選択した場合は、その SQL Server の作成時に設定したパスワードを入力します。このチュートリアルでは、**詳細設定**のチェック ボックスをオンにしません。**詳細設定**では、DB サイズ (既定値は 1 GB ですが 150 GB まで拡張可能) と照合順序を指定できます。
 
 11. 終了したら、ダイアログ ボックスの下部にあるチェック マークをクリックします。
 
@@ -102,9 +102,9 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 
 1. Visual Studio 2013 を起動します。
 1. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
-3. **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]** を展開して **[Web]** を選択し、**[ASP.NET MVC 5 Web アプリケーション]** を選択します。既定の **[.NET Framework 4.5]** をそのまま使用します。アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
+3. **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]** を展開し、**[Web]**、**[ASP.NET MVC 5 Web アプリケーション]** を順に選択します。既定の**[.NET Framework 4.5]** をそのまま使用します。アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
 	![New Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr4.PNG)]
-1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[MVC]** テンプレートを選択し、**[Web API]** チェック ボックスをオンにして、**[認証の変更]** をクリックします。
+1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[MVC]** テンプレートを選択し、**[Web API]** ダイアログ ボックスで、**[認証の変更]** をクリックします。
 
 	![New ASP.NET Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt3.PNG)
 
@@ -112,9 +112,9 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 
 	![No Authentication](./media/web-sites-dotnet-get-started-vs2013/GS13noauth.png)
 
-	作成中のサンプル アプリケーションには、ユーザーのログインが必要な機能は実装されません。認証と承認の機能を実装する方法については、このチュートリアルの最後にある「[次のステップ](#nextsteps)」セクションを参照してください。 
+	作成中のサンプル アプリケーションには、ユーザーのログインが必要な機能は実装されません。認証と承認の機能を実装する方法については、このチュートリアルの最後にある「[次のステップ](#nextsteps) 」セクションを参照してください。 
 
-1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで **[OK]** をクリックします。
+1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで  **[OK]** をクリックします。
 
 	![New ASP.NET Project dialog box](./media/web-sites-dotnet-get-started-vs2013/GS13newaspnetprojdb.png)
 
@@ -147,7 +147,7 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 		        </div>
 		    </header>
 		    <div id="body">
-		        @RenderSection("featured", required:false)
+		        @RenderSection("featured", required: false)
 		        <section class="content-wrapper main-content clear-fix">
 		            @RenderBody()
 		        </section>
@@ -160,11 +160,11 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 		        </div>
 		    </footer>
 		    @Scripts.Render("~/bundles/jquery")
-		    @RenderSection("scripts", required:false)
+		    @RenderSection("scripts", required: false)
 		</body>
 		</html>
 			
-前に示しているマークアップにより、アプリケーション名が "My ASP.NET App" から "Contact Manager" に変更され、**Home**、**About**、**Contact** へのリンクが削除されます。
+前に示しているマークアップにより、アプリケーション名が "My ASP.NET App" から "Contact Manager" に変更され、**Home**、**About**、および **Contact** へのリンクが削除されます。
 
 ### ローカルでアプリケーションを実行する
 
@@ -172,7 +172,7 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 アプリケーションのホーム ページが既定のブラウザーに表示されます。
 	![To Do List home page](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr5.PNG)
 
-これで、Azure にデプロイするアプリケーションを作成するために必要な操作が完了しました。データベース機能は後で追加します。
+これで、Azure に展開するアプリケーションを作成するために必要な操作が完了しました。データベース機能は後で追加します。
 
 <h2><a name="bkmk_deploytowindowsazure1"></a>Azure にアプリケーションを展開する</h2>
 
@@ -208,17 +208,17 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
 
 	![Settings tab](./media/web-sites-dotnet-get-started-vs2013/GS13SettingsTab.png)
 
-	このタブでは、既定の設定をそのまま使用できます。リリース ビルド構成を展開しているため、展開先サーバーでファイルを削除したり、アプリケーションをプリコンパイルしたり、App_Data フォルダーでファイルを除外したりする必要はありません。Azure のライブ サイトでデバッグする場合は、デバッグ構成をリリースではなく展開する必要があります。このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。
+	このタブでは、既定の設定をそのまま使用できます。リリース ビルド構成を展開しているため、展開先サーバーでファイルを削除したり、アプリケーションをプリコンパイルしたり、App_Data フォルダーでファイルを除外したりする必要はありません。Azure のライブ サイトでデバッグする場合は、デバッグ構成をリリースではなく展開する必要があります。このチュートリアルの末尾にある「[次のステップ](#nextsteps) 」セクションを参照してください。
 
-12. **[プレビュー]** タブで、**[プレビューの開始]** をクリックします。
+12. **[プレビュー]** タブで、**[プレビュー開始]** をクリックします。
 
-このタブに、サーバーにコピーされるファイルの一覧が表示されます。プレビューの表示は、アプリケーションの発行に必要ではありませんが、知っておくと便利な機能です。この場合、表示されるファイルの一覧で操作を行う必要はありません。次に発行するときは、変更されたファイルだけがプレビュー一覧に示されます。
+	このタブに、サーバーにコピーされるファイルの一覧が表示されます。プレビューの表示は、アプリケーションの発行に必要ではありませんが、知っておくと便利な機能です。この場合、表示されるファイルの一覧で操作を行う必要はありません。次に発行するときは、変更されたファイルだけがプレビュー一覧に示されます。
 
 	![StartPreview button in the Preview tab][firsdeploy009]
 
-12. **[発行]** をクリックします。
+12. **[発行]**をクリックします。
 
-	Azure サーバーにファイルをコピーする処理が開始されます。**出力**ウィンドウでは、実行されたデプロイ操作が表示され、デプロイが問題なく完了したことが報告されます。
+	Azure サーバーにファイルをコピーする処理が開始されます。**[出力]** ウィンドウでは、実行されたデプロイメント操作が表示され、デプロイメントが問題なく完了したことが報告されます。
 
 14. 自動的に既定のブラウザーが開き、デプロイ先のサイトの URL にアクセスします。
 
@@ -266,7 +266,7 @@ Azure の Web サイトを作成しましたが、まだその中にコンテン
     		}
 		}
 
-**Contacts** クラスでは、各連絡先について保存するデータと、データベースが必要とする主キー (ContactID) を定義します。データ モデルの詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。
+**Contacts** クラスでは、各連絡先について保存するデータと、データベースが必要とする主キー (ContactID) を定義します。データ モデルの詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps) 」セクションを参照してください。
 
 ### アプリケーション ユーザーが連絡先を操作できる Web ページを作成する
 
@@ -274,9 +274,9 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
 <h2><a name="bkmk_addcontroller"></a>データのコントローラーとビューを追加する</h2>
 
-1. **ソリューション エクスプローラー**で、Controllers フォルダーを展開します。
+1. **ソリューション エクスプローラー** で、Controllers フォルダーを展開します。
 
-3. プロジェクトをビルドします **(Ctrl + Shift + B)**。(スキャフォールディング機能の使用前にプロジェクトをビルドする必要があります。) 
+3. プロジェクトをビルドします  **(Ctrl + Shift + B キー)**。(スキャフォールディング機能の使用前にプロジェクトをビルドする必要があります。) 
 
 4. Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。
 
@@ -286,19 +286,19 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
 
  ![Add controller](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rrAC.PNG)
 
-6. コントローラー名を **HomeController** に設定します。モデル クラスとして **[Contact]** を選択します。**[新しいデータ コンテキスト]** ボタンをクリックし、**[新しいデータ コンテキストの種類]** で既定の "ContactManager.Models.ContactManagerContext" をそのまま使用します。**[追加]** をクリックします。
+6. コントローラー名を **HomeController** に設定します。モデル クラスとして **[Contact]** を選択します。**[新しいデータ コンテキスト]** ボタンをクリックし、**[新しいデータ コンテキスト型]** で既定の "ContactManager.Models.ContactManagerContext" をそのまま使用します。**[追加]** をクリックします。
 
 	![Add Controller dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr9.PNG)
 
 	ダイアログ ボックスで、"HomeController という名前のファイルは既に存在します。ファイルを置き換えますか?" とたずねられます。**[はい]** をクリックします。新しいプロジェクトで作成した home コントローラーで上書きされます。連絡先リストに新しい home コントローラーが使用されるようになります。
 
-Visual Studio によって、**Contact** オブジェクトの CRUD データベース操作に対応したコントローラー メソッドとビューが作成されます。
+	Visual Studio によって、**Contact** オブジェクトの CRUD データベース操作に対応したコントローラー メソッドとビューが作成されます。
 
 ## Migrations の有効化、データベースの作成、サンプル データとデータ初期化子の追加 ##
 
 次の作業では、作成したデータ モデルに基づいてデータベースを作成するために、[Code First Migrations](http://curah.microsoft.com/55220) 機能を有効にします。
 
-1. **[ツール]** メニューで、**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。
+1. **[ツール]** メニューの**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。
 
 	![Package Manager Console in Tools menu][addcode008]
 
@@ -306,19 +306,19 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 		enable-migrations 
   
-	**enable-migrations** コマンドによって *Migrations* フォルダーが作成され、そのフォルダーに *Configuration.cs* ファイルが保存されます。このファイルを編集して Migrations を構成できます。 
+	**enable-migrations** コマンドによって *Migrations* フォルダーが作成され、そのフォルダーに *Configuration.cs* ファイルが保存されます。このファイルを編集して Migration を構成できます。 
 
 2. **[パッケージ マネージャー コンソール]** ウィンドウで、次のコマンドを入力します。
 
 		add-migration Initial
 
-	**add-migration Initial** コマンドによって、**&lt;date_stamp&gt;Initial** という名前のクラスが生成されて、データベースの作成に使用されます。最初のパラメーター (*Initial*) は任意であり、このファイルの名前の作成に使用されます。新しいクラス ファイルは**ソリューション エクスプローラー**で表示できます。
+	**add-migration Initial** コマンドによって、**&lt;date_stamp&gt;Initial** という名前のクラスが生成されて、データベースの作成に使用されます。最初のパラメーター ( *Initial* ) は任意であり、このファイルの名前の作成に使用されます。新しいクラス ファイルは**ソリューション エクスプローラー**で表示できます。
 
-	**Initial** クラスでは、**Up** メソッドを使用して Contacts テーブルを作成し、**Down** メソッドを使用してそのテーブルを削除します (前の状態に戻す際に使用します)。
+	**Initial** クラスでは、**Up** メソッドを使用して Contacts テーブルを作成し **Down** メソッドを使用してそのテーブルを削除します (前の状態に戻します)。
 
 3. *Migrations\Configuration.cs* ファイルを開きます。 
 
-4.  次の名前空間を追加します。 
+4. 次の名前空間を追加します。 
 
     	 using ContactManager.Models;
 
@@ -380,18 +380,18 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
                 );
         }
 
-このコードでは、連絡先情報を使用してデータベースを初期化します。Seed メソッドによるデータベースへのデータの登録の詳細については、[Entity Framework (EF) DB のデバッグに関するページ](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)を参照してください。
+	このコードでは、連絡先情報を使用してデータベースを初期化します。Seed メソッドによるデータベースへのデータの登録の詳細については、「[Seeding and Debugging Entity Framework (EF) DBs (Entity Framework (EF) DB のシード処理とデバッグ)](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)」を参照してください。
 
 
-1. **[パッケージ マネージャー コンソール]**で、次のコマンドを入力します。
+1. **[パッケージ マネージャー コンソール]** で、次のコマンドを入力します。
 
 		update-database
 
 	![Package Manager Console commands][addcode009]
 
-	**update-database** によって、データベースを作成する最初の移行が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます。
+	**update-database** によって、データベースを作成する最初の Migration が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます
 
-1. Ctrl + F5 キーを押して、アプリケーションを実行します。 
+1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。 
 
 アプリケーションでは、登録されたデータが表示され、編集、詳細、削除のリンクが示されます。
 
@@ -399,7 +399,7 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 <h2><a name="bkmk_addview"></a>ビューの編集</h2>
 
-1. *Views\Home\Index.cshtml* ファイルを開きます。次の手順では、生成されたマークアップを、[jQuery](http://jquery.com/) と [Knockout.js](http://knockoutjs.com/) を使用するコードに置き換えます。この新しいコードは、Web API と JSON を使用して連絡先リストを取得し、knockout.js を使用して UI に連絡先データをバインドします。詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。 
+1. *Views\Home\Index.cshtml* ファイルを開きます。次の手順では、生成されたマークアップを、[jQuery](http://jquery.com/)  と [Knockout.js](http://knockoutjs.com/) を使用するコードに置き換えます。この新しいコードは、Web API と JSON を使用して連絡先リストを取得し、knockout.js を使用して連絡先データを UI にバインドします。詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps) 」セクションを参照してください。 
 
 
 2. このファイルの内容を次のコードに置き換えます。
@@ -424,9 +424,9 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 		            }
 		            self.removeContact = function (contact) {
 		                $.ajax({
-		                    type:"DELETE",
-		                    url:contact.Self,
-		                    success:function () {
+		                    type: "DELETE",
+		                    url: contact.Self,
+		                    success: function () {
 		                        self.contacts.remove(contact);
 		                    }
 		                });
@@ -439,9 +439,9 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 		        ko.applyBindings(new ContactsViewModel());	
 		</script>
 		}
-		<ul id="contacts" data-bind="foreach:contacts">
+		<ul id="contacts" data-bind="foreach: contacts">
 		    <li class="ui-widget-content ui-corner-all">
-		        <h1 data-bind="text:Name" class="ui-widget-header"></h1>
+		        <h1 data-bind="text: Name" class="ui-widget-header"></h1>
 		        <div><span data-bind="text: $data.Address || 'Address?'"></span></div>
 		        <div>
 		            <span data-bind="text: $data.City || 'City?'"></span>,
@@ -455,7 +455,7 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 		        <p><a data-bind="attr: { href: Self }, click: $root.removeContact" class="removeContact ui-state-default ui-corner-all">Remove</a></p>
 		    </li>
 		</ul>
-		<form id="addContact" data-bind="submit:addContact">
+		<form id="addContact" data-bind="submit: addContact">
 		    <fieldset>
 		        <legend>Add New Contact</legend>
 		        <ol>
@@ -496,63 +496,63 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 	![Add style sheet in Content folder context menu][addcode005]
 
-4. **[新しい項目の追加]** ダイアログ ボックスで、右上の検索ボックスに「**スタイル**」と入力し、[**スタイル シート**] を選択します。
+4. **[新しい項目の追加]** ダイアログ ボックスで、右上の検索ボックスに「**スタイル**」と入力し、**[スタイル シート]** を選択します。
 	![Add New Item dialog box][rxStyle]
 
-5. ファイルに *Contacts.css* という名前を付け、**[追加]** をクリックします。このファイルの内容を次のコードに置き換えます。
+5. ファイルに Contacts.css という名前を付け、**[追加]** をクリックします。このファイルの内容を次のコードに置き換えます。
     
         .column {
-            float:left;
+            float: left;
             width: 50%;
             padding: 0;
-            margin:5px 0;
+            margin: 5px 0;
         }
         form ol {
-            list-style-type:none;
+            list-style-type: none;
             padding: 0;
             margin: 0;
         }
         form li {
-            padding:1px;
-            margin:3px;
+            padding: 1px;
+            margin: 3px;
         }
         form input[type="text"] {
             width: 100%;
         }
         #addContact {
-            width:300px;
-            float:left;
+            width: 300px;
+            float: left;
             width:30%;
         }
         #contacts {
-            list-style-type:none;
+            list-style-type: none;
             margin: 0;
             padding: 0;
             float:left;
             width: 70%;
         }
         #contacts li {
-            margin:3px 3px 3px 0;
-            padding:1px;
-            float:left;
-            width:300px;
-            text-align:center;
-            background-image:none;
+            margin: 3px 3px 3px 0;
+            padding: 1px;
+            float: left;
+            width: 300px;
+            text-align: center;
+            background-image: none;
             background-color: #F5F5F5;
         }
         #contacts li h1
         {
             padding: 0;
             margin: 0;
-            background-image:none;
-            background-color:Orange;
-            color:White;
-            font-family:Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+            background-image: none;
+            background-color: Orange;
+            color: White;
+            font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
         }
         .removeContact, .viewImage
         {
-            padding:3px;
-            text-decoration:none;
+            padding: 3px;
+            text-decoration: none;
         }
 
 	このスタイル シートは Contact Manager アプリケーションで使用されるレイアウト、色、スタイルに適用されます。
@@ -571,7 +571,7 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
                  bundles.Add(new StyleBundle("~/Content/css").Include(
                    "~/Content/bootstrap.css",
                    "~/Content/site.css"));
-変更後: 
+To:
 
         bundles.Add(new StyleBundle("~/Content/css").Include(
                    "~/Content/bootstrap.css",
@@ -586,7 +586,7 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 1. **ソリューション エクスプローラー**で、Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。 
 
-1. **[スキャフォールディングの追加]** ダイアログ ボックスで、「**Entity Framework を使用した、操作のある Web API 2 コントローラー**」と入力し、**[追加]** をクリックします。
+1. **[スキャフォールディングの追加]** ダイアログ ボックスで、「**Entity Framework を使用した、読み取り/書き込み操作のある Web API 2 コントローラー**」と入力し、**[追加]** をクリックします。
 
 	![Add API controller](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt1.PNG)
 
@@ -600,13 +600,13 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 	![Index page][intro001]
 
-2. 連絡先を入力し、**[Add]** をクリックします。アプリケーションはホーム ページに戻り、入力した連絡先が表示されます。
+2. 連絡先を入力し、**[追加]** をクリックします。アプリケーションはホーム ページに戻り、入力した連絡先が表示されます。
 
 	![Index page with to-do list items][addwebapi004]
 
 3. ブラウザーで **/api/contacts** を URL に追加します。
 
-追加後の URL は http://localhost:1234/api/contacts のようになります。追加した REST ベースの Web API によって、保存されている連絡先が返されます。Firefox と Chrome では、それらのデータが XML 形式で表示されます。
+	追加後の URL は http://localhost:1234/api/contacts のようになります。追加した REST ベースの Web API によって、保存されている連絡先が返されます。Firefox と Chrome では、それらのデータが XML 形式で表示されます。
 
 	![Index page with to-do list items][rxFFchrome]
 	
@@ -622,7 +622,7 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 	![Web API save dialog][addwebapi007]
 
-	**セキュリティ警告**: この時点で、アプリケーションは安全ではなく CSRF 攻撃に対して脆弱です。このチュートリアルの後半では、この脆弱性を排除します。詳細については、「[Preventing Cross-Site Request Forgery (CSRF) Attacks (クロスサイト リクエスト フォージェリ (CSRF) 攻撃の防止)][prevent-csrf-attacks]」を参照してください。
+	**セキュリティ警告**:この時点で、アプリケーションは安全ではなく CSRF 攻撃に対して脆弱です。このチュートリアルの後半では、この脆弱性を排除します。詳細については、「[Preventing Cross-Site Request Forgery (CSRF) Attacks (クロスサイト リクエスト フォージェリ (CSRF) 攻撃の防止)][prevent-csrf-attacks]」を参照してください。
 
 <h2><a name="xsrf"></a>XSRF 保護を追加する</h2>
 
@@ -630,11 +630,11 @@ Visual Studio によって、**Contact** オブジェクトの CRUD データベ
 
 XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング攻撃には攻撃対象とのやり取りが必要です。フィッシング攻撃では、悪意のある Web サイトがターゲット Web サイトを模擬し、攻撃対象は重要な情報を攻撃者に提供するようにだまされます。XSRF 攻撃では、多くの場合に攻撃対象とのやり取りは必要ありません。むしろ攻撃者が利用するのは、ブラウザーがすべての関連クッキーを模擬 Web サイトに自動的に送信することです。
 
-詳細については、[Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) (OWASP) の「[Cross-Site Request Forgery (CSRF) (クロスサイト リクエスト フォージェリ (CSRF))](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)」を参照してください。
+詳細については、[Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) (OWASP) のサイトおよび [XSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)に関するページを参照してください。
 
 1. **ソリューション エクスプローラー**で、**[ContactManager]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
 
-2. ファイルに "*ValidateHttpAntiForgeryTokenAttribute.cs*" という名前を付け、次のコードを追加します。
+2. ファイルに「*ValidateHttpAntiForgeryTokenAttribute.cs*」という名前を付け、次のコードを追加します。
 
         using System;
         using System.Collections.Generic;
@@ -647,7 +647,7 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
         using System.Web.Mvc;
         namespace ContactManager.Filters
         {
-            public class ValidateHttpAntiForgeryTokenAttribute :AuthorizationFilterAttribute
+            public class ValidateHttpAntiForgeryTokenAttribute : AuthorizationFilterAttribute
             {
                 public override void OnAuthorization(HttpActionContext actionContext)
                 {
@@ -704,17 +704,17 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
             }
         }
 
-1. 次の *using* ステートメントを contracts コントローラーに追加します。これにより **[ValidateHttpAntiForgeryToken]** 属性にアクセスできるようになります。
+1. 次の *using* ステートメントを contracts コントローラーに追加します。これにより **[[ValidateHttpAntiForgeryToken]]** 属性にアクセスできるようになります。
 
 	using ContactManager.Filters;
 
-1. **[ValidateHttpAntiForgeryToken]** 属性を **ContactsController** の Post メソッドに追加して、XSRF の脅威から保護します。そのコードを "PutContact"、"PostContact"、**DeleteContact** の各アクション メソッドに追加します。
+1. **[ValidateHttpAntiForgeryToken]** 属性を **ContactsController** の Post メソッドに追加して、XSRF の脅威から保護します。そのコードを "PutContact"、"PostContact"、および **DeleteContact** の各アクション メソッドに追加します。
 
 	[ValidateHttpAntiForgeryToken]
         public IHttpActionResult PutContact(int id, Contact contact)
         {
 
-1. *Views\Home\Index.cshtml* ファイルの *Scripts* セクションを更新して、XSRF トークンを取得するコードを含めます。
+1. Update the *Scripts* section of the *Views\Home\Index.cshtml* file to include code to get the XSRF tokens.
 
          @section Scripts {
             @Scripts.Render("~/bundles/knockout")
@@ -724,7 +724,7 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
                    {
                       string cookieToken, formToken;
                       AntiForgery.GetTokens(null, out cookieToken, out formToken);
-                      return cookieToken + ":"+ formToken;                
+                      return cookieToken + ":" + formToken;                
                    }
                 }
 
@@ -734,28 +734,28 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
                   self.addContact = function () {
 
                      $.ajax({
-                        type:"post",
-                        url:"api/contacts",
-                        data:$("#addContact").serialize(),
-                        dataType:"json",
-                        success:function (value) {
+                        type: "post",
+                        url: "api/contacts",
+                        data: $("#addContact").serialize(),
+                        dataType: "json",
+                        success: function (value) {
                            self.contacts.push(value);
                         },
                         headers: {
-                           'RequestVerificationToken':'@TokenHeaderValue()'
+                           'RequestVerificationToken': '@TokenHeaderValue()'
                         }
                      });
 
                   }
                   self.removeContact = function (contact) {
                      $.ajax({
-                        type:"DELETE",
-                        url:contact.Self,
-                        success:function () {
+                        type: "DELETE",
+                        url: contact.Self,
+                        success: function () {
                            self.contacts.remove(contact);
                         },
                         headers: {
-                           'RequestVerificationToken':'@TokenHeaderValue()'
+                           'RequestVerificationToken': '@TokenHeaderValue()'
                         }
 
                      });
@@ -788,14 +788,14 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
 
 1. **[次へ]** をクリックし、**[プレビュー]** をクリックします。Visual Studio で、追加または更新されるファイルの一覧が表示されます。
 
-8. **[発行]** をクリックします。
+8. **[発行]**をクリックします。
 展開が完了すると、ブラウザーでアプリケーションのホーム ページが開かれます。
 
 	![Index page with no contacts][intro001]
 
-	Visual Studio の発行プロセスにより、展開された *Web.config* ファイル内の接続文字列は SQL データベースを指すよう自動的に構成されました。また、Code First Migrations は、デプロイ後にアプリケーションが初めてデータベースに接続するときに、データベースを最新バージョンに自動的にアップグレードするよう構成されました。
+	Visual Studio の発行プロセスにより、デプロイされた *Web.config* ファイル内の接続文字列は SQL データベースを指すよう自動的に構成されました。また、Code First Migrations は、展開後にアプリケーションが初めてデータベースに接続するときに、データベースを最新バージョンに自動的にアップグレードするよう構成されました。
 
-この構成の結果、前の手順で作成した **Initial** クラスのコードが実行されて、Code First によってデータベースが作成されました。この処理は、デプロイ後にアプリケーションが初めてデータベースにアクセスしようとしたときに行われました。
+	この構成の結果、前の手順で作成した **Initial** クラスのコードが実行されて、Code First によってデータベースが作成されました。この処理は、展開後にアプリケーションが初めてデータベースにアクセスしようとしたときに行われました。
 
 9. アプリケーションをローカルで実行したときと同様に連絡先を入力して、データベースの展開が成功したことを確認します。
 
@@ -807,24 +807,24 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
 
 <h2><a name="nextsteps"></a>次のステップ</h2>
 
-実際のアプリケーションでは認証と権限承認が必要になるため、その目的でメンバーシップ データベースを使用します。「[メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC 5 アプリケーションを Azure の Web サイトにデプロイする](http://www.windowsazure.com/ja-jp/develop/net/tutorials/web-site-with-sql-database/)」は、このチュートリアルに基づいており、メンバーシップ データベースを使用する Web アプリケーションをデプロイする方法について説明しています。
+実際のアプリケーションでは認証と権限承認が必要になるため、その目的でメンバーシップ データベースを使用します。「[Deploy a Secure ASP.NET MVC application with OAuth, Membership and SQL Database (メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET MVC アプリケーションを Azure の Web サイトにデプロイする)](http://www.windowsazure.com/ja-jp/develop/net/tutorials/web-site-with-sql-database/) 」は、このチュートリアルに基づいており、メンバーシップ データベースを使用する Web アプリケーションをデプロイする方法について説明しています。
 
-Azure アプリケーションにデータを保存するには、Azure Storage を使用する方法もあります。Azure Storage には、非リレーショナル データを BLOB 形式とテーブル形式で保存できます。Web API、ASP.NET MVC、および Window Azure の詳細については、次の Web ページを参照してください。
+Azure アプリケーションにデータを保存するには、Azure ストレージを使用する方法もあります。Azure ストレージには、非リレーショナル データを BLOB 形式とテーブル形式で保存できます。Web API、ASP.NET MVC、および Window Azure の詳細については、次の Web ページを参照してください。
  
 
 * [MVC を使用した Entity Framework の概要に関するページ][EFCodeFirstMVCTutorial]
 * [ASP.NET MVC 5 の入門ページ](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
 * [ASP.NET Web API の入門ページ](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api)
-* [Debugging WAWS (WAWS のデバッグ)](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/)
+* [WAWS のデバッグ](http://www.windowsazure.com/ja-jp/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/)
 
-このチュートリアルとサンプル アプリケーションは、Tom Dykstra と Barry Dorrans (Twitter [@blowdart](http://blogs.msdn.com/b/rickandy/)) の協力の下、[Rick Anderson](https://twitter.com/RickAndMSFT) (Twitter [@RickAndMSFT](https://twitter.com/blowdart)) が執筆しました。 
+このチュートリアルとサンプル アプリケーションは、[Rick Anderson](http://blogs.msdn.com/b/rickandy/) (Twitter [@RickAndMSFT](https://twitter.com/RickAndMSFT)) が Tom Dykstra と Barry Dorrans (Twitter [@blowdart](https://twitter.com/blowdart)) の協力の下で執筆しました。 
 
 役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。特に、メンバーシップ データベースの構成と展開の自動化に関するご意見をお待ちしております。 
 
 <!-- bookmarks -->
 [OAuth プロバイダーを追加する]: #addOauth
 [メンバーシップ データベースにロールを追加する]:#mbrDB
-[データ展開スクリプトを作成する]:#ppd
+[データ デプロイメント スクリプトを作成する]:#ppd
 [メンバーシップ データベースを更新する]:#ppd2
 [setupdbenv]: #bkmk_setupdevenv
 [setupwindowsazureenv]: #bkmk_setupwindowsazure
@@ -879,12 +879,14 @@ Azure アプリケーションにデータを保存するには、Azure Storage 
 [addwebapi004]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-added-contact.png
 [addwebapi006]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-save-returned-contacts.png
 [addwebapi007]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/dntutmobile-webapi-contacts-in-notepad.png
-[XSRF 保護を追加する]: #xsrf
+[Add XSRF Protection]: #xsrf
 [WebPIAzureSdk20NetVS12]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/WebPIAzureSdk20NetVS12.png
-[XSRF 保護を追加する]: #xsrf
+[Add XSRF Protection]: #xsrf
 [ImportPublishSettings]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/ImportPublishSettings.png
 [ImportPublishProfile]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/ImportPublishProfile.png
 [PublishVSSolution]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/PublishVSSolution.png
 [ValidateConnection]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/ValidateConnection.png
 [WebPIAzureSdk20NetVS12]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/WebPIAzureSdk20NetVS12.png
 [prevent-csrf-attacks]: http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-(csrf)-attacks
+
+<!--HONumber=35_1-->

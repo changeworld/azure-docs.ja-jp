@@ -1,27 +1,30 @@
-﻿<properties urlDisplayName="Websites with Django" pageTitle="Django を使用した Python Web サイト - Azure チュートリアル" metaKeywords="Azure django, django Web サイト" description="A tutorial that introduces you to running a Python website on Azure." metaCanonical="" services="web-sites" documentationCenter="Python" title="Creating Websites with Django" authors="huvalo" solutions="" manager="wpickett" editor="" />
+﻿<properties urlDisplayName="Websites with Django" pageTitle="Django を使用した Python Web サイト - Azure チュートリアル" metaKeywords="Azure django, django website" description="A tutorial that introduces you to running a Python website on Azure." metaCanonical="" services="web-sites" documentationCenter="Python" title="Creating Websites with Django" authors="huvalo" solutions="" manager="wpickett" editor="" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="01/01/1900" ms.author="huvalo" />
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="08/01/2014" ms.author="huvalo" />
 
 
 
 
 # Django を使用した Web サイトの作成
 
-このチュートリアルでは、Azure Websites で Python を実行するための基本的な方法について説明します。Azure Web サイトでは、制限付きの無料のホスティングや迅速な展開を実行できます。また、Python も使用できるようになりました。アプリケーションの拡張に合わせて、有料のホスティングに切り替えることができます。また、他のすべての Azure サービスと統合することもできます。  
+このチュートリアルでは、Azure Web サイトで Python を実行するための基本的な方法について説明します。Azure Web サイトでは、制限付きの無料のホスティングや迅速な展開を実行できます。また、Python も使用できるようになりました。アプリケーションの拡張に合わせて、有料のホスティングに切り替えることができます。また、他のすべての Azure サービスと統合することもできます。  
 
-このチュートリアルでは、Django Web フレームワークを使用して構築されたアプリケーションをデプロイする方法について説明します。ここでは、アプリケーションを展開する手順や Django などの必要なライブラリについて紹介します。また、このアプリケーションやライブラリをすべて Git リポジトリに登録し、Web サイトに更新情報をすばやく簡単にプッシュできるようにします。最後に、Python アプリケーションが実行できるように、Azure で新たに作成したサイトを構成します。  
+このチュートリアルでは、Django Web フレームワークを使用して構築されたアプリケーションを展開する方法について説明します。ここでは、アプリケーションを展開する手順や Django などの必要なライブラリについて紹介します。また、このアプリケーションやライブラリをすべて Git リポジトリに登録し、Web サイトに更新情報をすばやく簡単にプッシュできるようにします。最後に、Python アプリケーションが実行できるように、Azure で新たに作成したサイトを構成します。  
 
-[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+> [WACOM.NOTE]
+> このチュートリアルを完了するには、Azure アカウントが必要です。 <a href="http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/">MSDN サブスクライバーの特典を有効にするか、</a> または <a href="http://azure.microsoft.com/ja-jp/pricing/free-trial/">無料評価版にサインアップすることができます</a>。
+> 
+> アカウントにサインアップする前に Azure Websites を試してみたい場合は、 <a href="https://trywebsites.azurewebsites.net/?language=python">https://trywebsites.azurewebsites.net</a> で、有効期限が短い ASP.NET スターター サイトを Azure Websites に無料で作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-このチュートリアルでは、Python 2.7 と Django 1.4 を使用します。ユーザーはこれらを独自に入手できますが、[http://www.windowsazure.com/ja-jp/develop/python/](http://www.windowsazure.com/ja-jp/develop/python/) にある Windows インストーラーのリンクを使用するとすばやく簡単にインストールできます。  
+このチュートリアルでは、Python 2.7 と Django 1.4 を使用します。ユーザーはこれらを独自に入手できますが、[http://www.windowsazure.com/ja-jp/develop/python/] にある Windows インストーラーのリンクを使用するとすばやく簡単にインストールできます(http://www.windowsazure.com/ja-jp/develop/python/)。  
 
-**メモ**:Azure Web サイトには Python (2.7.3 または 3.4.0) が用意されており、wfastcgi ハンドラーがプレインストールされています。ただし、Django などの Web フレームワークは用意されていません。必要であれば、別の Python インタープリターを使用することもできます。そのインタープリターを Git リポジトリに登録して、既にインストールされている Python 2.7 インタープリターではなく必要なインタープリターを使用するように Web サイトを構成するだけです。
+**メモ**: Azure Web サイトには Python (2.7.3 または 3.4.0) が用意されており、wfastcgi ハンドラーがプレインストールされています。ただし、Django などの Web フレームワークは用意されていません。必要であれば、別の Python インタープリターを使用することもできます。そのインタープリターを Git リポジトリに登録して、既にインストールされている Python 2.7 インタープリターではなく必要なインタープリターを使用するように Web サイトを構成するだけです。
 
-> [WACOM.NOTE]Azure Websites ポータルで使用する Python のバージョンを選択するには、Web サイトの [構成] タブを開き、**[Python バージョン]** の設定を変更します。
+> [WACOM.NOTE] Azure Websites のポータルで使用する Python のバージョンを選択できるようになりました。Web サイトの [構成] タブを開き、**[Python バージョン]** の設定を変更します。
 
-Azure にサイトをプッシュするためにデプロイメント オプションをインストールする必要もあります。さまざまな展開ツールがありますが、このチュートリアルでは Git を使用します。[msysgit](http://code.google.com/p/msysgit/) をお勧めします。 
+Azure にサイトをプッシュするために展開オプションをインストールする必要もあります。さまざまな展開ツールがありますが、このチュートリアルでは Git を使用します。[msysgit] をお勧めします(http://code.google.com/p/msysgit/)。 
 
-**メモ**:現在、TFS 発行は Python プロジェクトではサポートされていません。
+**メモ**: 現在、TFS 発行は Python プロジェクトではサポートされていません。
 
 Python、Django、Git をインストールすると、このチュートリアルを進めるうえで必要なものがすべて揃ったことになります。
 
@@ -31,11 +34,11 @@ Python、Django、Git をインストールすると、このチュートリア�
 
 ![](./media/web-sites-python-create-deploy-django-app/django-ws-003.png)
 
-サイトがすぐに設定されます。次に、Git を使って発行する際に必要となるサポートを追加するため、**[ソース管理からのデプロイの設定]** をクリックします。
+サイトがすぐに設定されます。次に、Git を使って発行する際に必要となるサポートを追加するため、**[ソース管理からの展開の設定]** をクリックします。
 
 ![](./media/web-sites-python-create-deploy-django-app/django-ws-004.png)
 
-**[デプロイの設定]** ダイアログで、下へスクロールして **[ローカル Git]** を選択します。右矢印をクリックして次へ進みます。
+**[展開の設定]** ダイアログで、下へスクロールして **[ローカル Git]** オプションを選択します。右矢印をクリックして次へ進みます。
 
 ![](./media/web-sites-python-create-deploy-django-app/django-ws-005.png)
 
@@ -65,16 +68,16 @@ Git 発行を設定した後で、リポジトリが作成中であることを�
 
 ![](./media/web-sites-python-create-deploy-django-app/django-ws-008.png)
  
- 次に、最初の Django アプリケーションを作成します。そのためには、コマンド ラインから任意の Django アプリケーションを作成する方法、または [Python Tools for Visual Studio](http://pytools.codeplex.com/) を使用してプロジェクトを作成する方法を利用できます。ここでは両方の方法について説明します。
+次に、最初の Django アプリケーションを作成します。そのためには、コマンド ラインから任意の Django アプリケーションを作成する方法、または [Python Tools for Visual Studio] (http://pytools.codeplex.com/) を使用してプロジェクトを作成する方法を利用できます。ここでは両方の方法について説明します。
 
-**方法 1: ** 
+**方法 1:** 
 コマンド ラインから新しいプロジェクトを作成するために、次のコマンドを実行します。このコマンドによって、Django アプリケーションが DjangoApplication フォルダーに作成されます。
 
 	 C:\Python27\python.exe -m django.bin.django-admin startproject DjangoApplication
 
 ![](./media/web-sites-python-create-deploy-django-app/django-ws-010.png)
 
-**方法 2: **  
+**方法 2:**  
 Python Tools for Visual Studio を使用して新しいサイトを作成することもできます。インストールされている Python Tools for Visual Studio で Visual Studio を開始し、**[ファイル]**、**[新しいプロジェクト]** の順に選択します。**[他の言語]** の下にある [Python] プロジェクトを表示し、**[Django Application]** を選択します。プロジェクトの名前に「**DjangoApplication**」と入力し、**[ソリューションのディレクトリを作成]** がオフになっていることを確認します。これにより、コマンド ラインから Django アプリケーションを作成する場合と同じディレクトリ構造が作成されます。この方法では、Visual Studio ソリューションとプロジェクト ファイルを使用した設定を行います。プロジェクト ファイルによって、テンプレート デバッグや Intellisense などのローカルな開発に役立つ機能を利用できます。
 
 ![](./media/web-sites-python-create-deploy-django-app/django-ws-011.png)
@@ -124,14 +127,16 @@ Django アプリケーションを設定する場合、3 つの環境変数を�
 
 ## 次のステップ
 
-この後で、既に利用しているツールを使用して Django アプリケーションを引き続き開発することができます。開発に [Python Tools for Visual Studio](http://pytools.codeplex.com/) を使用している場合、Visual Studio 内でソース管理の統合を利用するために、[VisualGit](http://code.google.com/p/visualgit/) のインストールが必要になることがあります。  
+この後で、既に利用しているツールを使用して Django アプリケーションを引き続き開発することができます。[Python Tools for Visual Studio] (http://pytools.codeplex.com/) を開発に使用している場合、[VisualGit] (http://code.google.com/p/visualgit/) をインストールすることによって、Visual Studio 内からソース管理を行うことができます。  
 
-アプリケーションで、Python や Django 以外の依存関係が必要になる場合があります。[http://www.windowsazure.com/ja-jp/develop/python/](http://www.windowsazure.com/ja-jp/develop/python/) から入手できるインストーラーを使用して Python をインストールした場合は、PIP が既にインストールされているので、これを使用して新しい依存関係をすばやく追加することができます。たとえば、自然言語ツールキットとその依存関係をすべてインストールするには、次のように入力します。
+アプリケーションで、Python や Django 以外の依存関係が必要になる場合があります。[http://www.windowsazure.com/ja-jp/develop/python/] にあるインストーラーを使用して Python をインストールした場合は、(http://www.windowsazure.com/ja-jp/develop/python/)既に PIP がインストールされています。PIP を使用して、新しい依存関係を簡単に追加できます。たとえば、自然言語ツールキットとその依存関係をすべてインストールするには、次のように入力します。
 
 	pip install nltk
 
 次に、C:\Python27\Lib\site-packages からローカルの site-packages ディレクトリにファイルをコピーして、site-packages ディレクトリを更新する必要があります。
 
-ファイルをコピーした後で、コマンド **git status** を実行して新たに追加されたファイルを表示し、**git add** の後で **git commit** を実行してリポジトリに変更をコミットします。最後に、**git push** を実行して、更新された Web サイトを Azure にデプロイできます。
+ファイルをコピーした後で、コマンド **git status** を実行して新たに追加されたファイルを表示し、**git add** の後で **git commit** を実行してリポジトリに変更をコミットします。最後に、**git push** を実行して、更新された Web サイトを Azure に展開できます。
 
 ここで、DjangoApplication ディレクトリに移動して、manage.py を一般的な方法に従って使用し、新しいアプリケーションを Django プロジェクトに追加することができます。  
+
+<!--HONumber=35_1-->

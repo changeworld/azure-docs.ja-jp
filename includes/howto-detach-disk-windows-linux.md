@@ -1,45 +1,51 @@
-<properties writer="kathydav" editor="tysonn" manager="timlt" />
+﻿<properties writer="kathydav" editor="tysonn" manager="timlt" />
 
-# データ ディスクを仮想マシンから切断する方法
 
--   [手順 1.ディスクの特定][手順 1.ディスクの特定]
--   [手順 2.データ ディスクの切断][手順 2.データ ディスクの切断]
 
-仮想マシンに接続されたデータ ディスクが不要になった場合、そのディスクは簡単に切断できます。そうすれば、ディスクは仮想マシンから削除されますが、ストレージからは削除されません。再びディスク上の既存のデータを使用する場合は、同じ仮想マシンや別の仮想マシンに再接続できます。
+#データ ディスクを仮想マシンから切断する方法 
 
-> [WACOM.NOTE] Azure の仮想マシンでは、オペレーティング システム ディスク、ローカル一時ディスク、オプションのデータ ディスクなど、さまざまな種類のディスクが使用されます。仮想マシンのデータを格納するうえで、データ ディスクはお勧めの手段です。ディスクの詳細については、「[Azure とは][Azure とは]」を参照してください。手順については、「[How to Attach a Data Disk to a Virtual Machine (データ ディスクを仮想マシンに追加する方法)][How to Attach a Data Disk to a Virtual Machine (データ ディスクを仮想マシンに追加する方法)]」を参照してください。
+- [手順 1: ディスクの特定](#finddisks)
+- [手順 2: データ ディスクの切断](#detachdisk)
 
-## <span id="finddisks"></span> </a>手順 1.ディスクの特定
+仮想マシンに接続されたデータ ディスクが不要になった場合、そのディスクは簡単に切断できます。そうすれば、ディスクは仮想マシンから削除されますが、ストレージからは削除されません。再びディスク上の既存のデータを使用する場合は、同じ仮想マシンや別の仮想マシンに再接続できます。  
 
-ディスクを切断する前に、ディスクの名前がわからない場合や、ディスクの名前を確認する必要がある場合は、次の手順に従ってください。
+> [WACOM.NOTE] Azure Virtual Machines では、オペレーティング システム ディスク、ローカル一時ディスク、オプションのデータ ディスクなど、さまざまな種類のディスクが使用されます。仮想マシンのデータを格納するうえで、データ ディスクはお勧めの手段です。ディスクの詳細については、「[Azure とは][]」を参照してください。手順については、「[データ ディスクを Windows 仮想マシンに接続する方法][attachdisk]」を参照してください。
+
+## <a id="finddisks"> </a>手順 1.ディスクの特定##
+
+
+ディスクを切断する前に、ディスクの名前がわからない場合や、ディスクの名前を確認する必要がある場合は、次の手順に従ってください。 
 
 > [WACOM.NOTE] ディスクには、接続時に名前が自動的に割り当てられます。この名前はクラウド サービス名、仮想マシン名、および番号で構成されます。
 
-1.  まだサインインしていない場合は、[Azure の管理ポータル][Azure の管理ポータル]にサインインします。
+1. まだサインインしていない場合は、[Azure の管理ポータル](http://manage.windowsazure.com)にサインインしてください。 
 
-2.  **[仮想マシン]** をクリックし、適切な仮想マシンを選択します。VM のダッシュボードが開きます。
+2. **[仮想マシン]** をクリックし、適切な仮想マシンを選択します。VM のダッシュボードが開きます。
 
-3.  **[ディスク]** の表に、接続されているすべてのディスクの名前と種類が列挙されます。たとえば、次の画面には、仮想マシンのほか、オペレーティング システム (OS) ディスクとデータ ディスクが 1 つずつ示されています。
+3. **[ディスク]** の表に、接続されているすべてのディスクの名前と種類が列挙されます。たとえば、次の画面には、仮想マシンのほか、オペレーティング システム (OS) ディスクとデータ ディスクが 1 つずつ示されています。
+		
+	![Find data disk](./media/howto-detach-disk-windows-linux/FindDataDisks.png)	
 
-    ![Find data disk][Find data disk]
 
-## <span id="detachdisk"></span> </a>手順 2.ディスクの切断
+## <a id="detachdisk"> </a>手順 2.ディスクの切断##
 
 ディスクの名前を特定したら、そのディスクを切断できます。
 
-1.  **[仮想マシン]** をクリックし、切断するデータ ディスクが接続されている仮想マシンを選択します。
-2.  コマンド バーの **[ディスクの切断]** をクリックします。
+1. **[仮想マシン]** をクリックし、切断するデータ ディスクが接続されている仮想マシンを選択します。
+2. コマンド バーの **[ディスクの切断]** をクリックします。
 
-3.  データ ディスクを選択し、チェック マークをクリックして切断します。
+2. データ ディスクを選択し、チェック マークをクリックして切断します。
 
-    ![Detach disk details][Detach disk details]
+
+	![Detach disk details](./media/howto-detach-disk-windows-linux/DetachDiskDetails.png)
 
 ディスクはストレージに残りますが、仮想マシンからは切断されています。
 
-  [手順 1.ディスクの特定]: #finddisks
-  [手順 2.データ ディスクの切断]: #detachdisk
-  [Azure とは]: http://go.microsoft.com/fwlink/p/?LinkId=263439
-  [How to Attach a Data Disk to a Virtual Machine (データ ディスクを仮想マシンに追加する方法)]: /ja-jp/manage/windows/how-to-guides/attach-a-disk/
-  [Azure の管理ポータル]: http://manage.windowsazure.com
-  [Find data disk]: ./media/howto-detach-disk-windows-linux/FindDataDisks.png
-  [Detach disk details]: ./media/howto-detach-disk-windows-linux/DetachDiskDetails.png
+
+
+[attachdisk]:/ja-jp/manage/windows/how-to-guides/attach-a-disk/
+
+[Azure とは]:http://go.microsoft.com/fwlink/p/?LinkId=263439
+
+
+<!--HONumber=35_1-->

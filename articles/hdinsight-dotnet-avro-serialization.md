@@ -1,76 +1,116 @@
-<properties urlDisplayName="HDInsight Microsoft .NET Library for Serialization with Avro" pageTitle="Microsoft .NET Library for Avro を使用したデータのシリアル化 | Azure" metaKeywords="" description="Azure HDInsight が Avro を使用してビッグ データをシリアル化する方法について説明します。" metaCanonical="" services="hdinsight" documentationCenter="" title="Microsoft .NET Library for Avro を使用したデータのシリアル化 " authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
+﻿<properties urlDisplayName="HDInsight Microsoft .NET Library for Serialization with Avro" pageTitle="Microsoft Avro ライブラリを使用したデータのシリアル化 | Azure" metaKeywords="" description="Learn how Azure HDInsight uses Avro to serialize big data." metaCanonical="" services="hdinsight" documentationCenter="" title="Serialize data with the Microsoft Avro Library " authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev" />
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/10/2014" ms.author="bradsev" />
 
-# Microsoft .NET Library for Avro を使用したデータのシリアル化
 
-## 概要
+# Microsoft Avro ライブラリを使用したデータのシリアル化
 
-このトピックでは、Microsoft .NET Library for Avro を使用して、オブジェクトとその他のデータ構造をストリームにシリアル化し、メモリ、データベース、またはファイルに格納する方法を示します。さらに、逆シリアル化を行って元のオブジェクトを回復する方法についても説明します。
+##概要
+このトピックでは、 <a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro ライブラリ</a> オブジェクトとその他のデータ構造をストリームにシリアル化し、メモリ、データベース、またはファイルに格納する方法を示します。さらに、逆シリアル化を行って元のオブジェクトを回復する方法についても説明します。 
 
-### Apache Avro
+## この記事の内容
 
-Microsoft .NET Library for Avro は、Apache Avro のデータ シリアル化システムを Microsoft.NET 環境向けに実装します。Apache Avro は、シリアル化のためのコンパクトなバイナリ データ交換形式を提供します。Apache Avro は、[JSON][JSON] を使用して、言語の相互運用性を保証する、言語に依存しないスキーマを定義します。ある言語でシリアル化されたデータは、別の言語で読むことができます。現在、C、C++、C\#、Java、PHP、Python、および Ruby がサポートされています。この形式の詳細については、[Apache Avro の仕様][Apache Avro の仕様]を参照してください。Microsoft .NET Library for Avro の現在のバージョンでは、この仕様のリモート プロシージャ コール (RPC) 部分はサポートされていません。
+- [Apache Avro](#apacheAvro)
+- [Hadoop のシナリオ](#hadoopScenario)
+- [Microsoft Avro ライブラリにおけるシリアル化](#serializationMAL) 
+- [Microsoft Avro ライブラリの前提条件](#prerequisites)
+- [Microsoft Avro ライブラリのインストール](#installation)
+- [Microsoft Avro ライブラリのソース コード](#sourceCode)
+- [Microsoft Avro ライブラリを使用したスキーマのコンパイル](#compiling)
+- [Microsoft Avro ライブラリのサンプルについて](#samples)
 
-Avro システムにおけるオブジェクトのシリアル化表現は、スキーマと実際の値の 2 つの部分で構成されます。Avro スキーマは、シリアル化されたデータの言語に依存しないデータ モデルを JSON 形式で記述します。Avro スキーマは、データのバイナリ表現と共存します。スキーマをバイナリ表現から切り離すことで、値ごとのオーバーヘッドなしにそれぞれのオブジェクトを書き込めるため、シリアル化が高速になり、表現を小さくできます。
 
-### Hadoop のシナリオ
+##<a name="apacheAvro"></a>Apache Avro
+次のコードは、既存のユーザーの電話番号を変更します。 <a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro ライブラリ</a> このライブラリは、Microsoft.NET 環境向けの Apache Avro データ シリアル化システムを実装します。Apache Avro は、シリアル化のためのコンパクトなバイナリ データ交換形式を提供します。Apache Avro は、 <a href="http://www.json.org" target="_blank">JSON</a> 言語の相互運用性を保証する、言語に依存しないスキーマを定義します。ある言語でシリアル化されたデータは、別の言語で読むことができます。現在、C、C++、C#、Java、PHP、Python、および Ruby がサポートされています。この形式の詳細については、 <a href="http://avro.apache.org/docs/current/spec.html" target="_blank">Apache Avro Specification を参照してください</a>。現在のバージョンの Microsoft Avro ライブラリでは、このシリアル化のリモート プロシージャ コール (RPC) の部分をサポートしていないことに注意してください。
 
-Apache Avro のシリアル化形式は、Azure HDInsight やその他の Apache Hadoop 環境で広く使用されています。Avro は、Hadoop MapReduce ジョブ内の複雑なデータ構造を表すのに便利です。Avro ファイルの形式は、分散型 MapReduce プログラミング モデルをサポートするように設計されています。分散を可能にする重要な機能として、ファイル内の任意のポイントを検索し、特定のブロックから読み取りを開始できるという意味で、ファイルが "分割可能" であることがあります。
+Avro システムにおけるオブジェクトのシリアル化表現は、スキーマと実際の値の 2 つの部分で構成されます。Avro スキーマは、シリアル化されたデータの言語に依存しないデータ モデルを JSON 形式で記述します。Avro スキーマは、データのバイナリ表現と共存します。スキーマをバイナリ表現から切り離すことで、値ごとのオーバーヘッドなしにそれぞれのオブジェクトを書き込めるため、シリアル化が高速になり、表現を小さくできます。 
 
-### Microsoft .NET Library for Avro におけるシリアル化
-
+##<a name="hadoopScenario"></a>Hadoop のシナリオ 
+Apache Avro のシリアル化形式は、Azure HDInsight やその他の Apache Hadoop 環境で広く使用されています。Avro は、Hadoop MapReduce ジョブ内の複雑なデータ構造を表すのに便利です。Avro ファイル (Avro オブジェクト コンテナー ファイル) の形式は、分散型 MapReduce プログラミング モデルをサポートするように設計されています。分散を可能にする重要な機能として、ファイル内の任意のポイントを検索し、特定のブロックから読み取りを開始できるという意味で、ファイルが "分割可能" であることがあります。 
+ 
+##<a name="serializationMAL"></a> Microsoft Avro ライブラリにおけるシリアル化
 .NET Library for Avro では、オブジェクトをシリアル化する方法として次の 2 つの方法をサポートしています。
 
--   **リフレクション**:型の JSON スキーマは、シリアル化する .NET 型のデータ コントラクト属性から自動的に作成されます。
--   **汎用レコード**: JSON スキーマは、シリアル化するデータのスキーマを記述する .NET 型がないときに [**AvroRecord**][**AvroRecord**] クラスによって表されるレコードに明示的に指定されます。
+- **リフレクション**: 型の JSON スキーマは、シリアル化する .NET 型のデータ コントラクト属性から自動的に作成されます。 
+- **汎用レコード**: JSON スキーマは、シリアル化するデータのスキーマを記述する .NET 型がないときに [**AvroRecord**] (http://msdn.microsoft.com/ja-jp/library/microsoft.hadoop.avro.avrorecord.aspx) クラスによって表されるレコードに明示的に指定されます。 
 
-ストリームのライターとリーダーの両方でデータ スキーマがわかっている場合は、データをスキーマなしで送信できます。しかし、そうでない場合は、Avro コンテナー ファイルを使用してスキーマを共有する必要があります。データ圧縮に使用するコーデックなどの他のパラメーターを指定することもできます。これらのシナリオについては、次のコード例で詳しく説明します。
+ストリームのライターとリーダーの両方でデータ スキーマがわかっている場合は、データをスキーマなしで送信できます。Avro オブジェクト コンテナー ファイルを使用する場合は、ファイル内にスキーマを保存する必要があります。データ圧縮に使用するコーデックなどの他のパラメーターを指定することもできます。これらのシナリオについては、次のコード例で詳しく説明します。
 
-### Microsoft .NET Library for Avro の前提条件
 
--   [Microsoft .NET Framework v4.0][Microsoft .NET Framework v4.0]
--   [Newtonsoft Json.NET][Newtonsoft Json.NET] (v5.0.5 以降)
+##<a name="prerequisites"></a> Microsoft Avro ライブラリの前提条件
+- <a href="http://www.microsoft.com/ja-jp/download/details.aspx?id=17851" target="_blank">Microsoft .NET Framework v4.0</a>
+- <a href="http://james.newtonking.com/json" target="_blank">Newtonsoft Json.NET </a> (v6.0.4 以降) 
 
-Newtonsoft.Json.dll 依存関係は、Microsoft .NET Library for Avro をインストールするときに自動的にダウンロードされます (インストール手順については、次のセクションで説明します)。
+Newtonsoft.Json.dll 依存関係は、Microsoft Avro ライブラリをインストールするときに自動的にダウンロードされます (インストール手順については、次のセクションで説明します)。
 
-### Microsoft .NET Library for Avro のインストール
+##<a name="installation"></a> Microsoft Avro ライブラリのインストール
+Microsoft Avro ライブラリは、NuGet パッケージとして配布されています。この NuGet パッケージは、次の手順を使用して Visual Studio からインストールできます。 
 
-Microsoft .NET Library for Avro は、NuGet パッケージとして配布されています。この NuGet パッケージは、次の手順を使用して Visual Studio からインストールできます。
+- **[プロジェクト]** タブの **[NuGet パッケージの管理]** を選択します。
+- **[オンライン検索]** ボックスを使用して "Microsoft.Hadoop.Avro" を検索します。
+- **[Microsoft Avro ライブラリ]** の横にある **[インストール]** をクリックします。 
 
--   **[プロジェクト]** タブの **[NuGet パッケージの管理]** を選択します。
--   **[オンライン検索]** ボックスを使用して "Microsoft.Hadoop.Avro" を検索します。
--   **[Microsoft .NET Library for Avro]** の横にある **[インストール]** をクリックします。
+Newtonsoft.Json.dll (6.0.4 以降) 依存関係も Microsoft Avro ライブラリと共に自動的にダウンロードされます。
 
-Newtonsoft.Json.dll (5.0.5 以降) 依存関係も Microsoft .NET Library for Avro と共に自動的にダウンロードされます。
+Microsoft Avro ライブラリの <a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">ホーム ページにアクセスして</a> 最新のリリース ノートを参照することもできます。
+ 
+##<a name="sourceCode"></a>Microsoft Avro ライブラリのソース コード
 
-## サンプルについて
+Microsoft Avro ライブラリのソース コードは、 <a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro ライブラリのホーム ページから</a>入手できます。
 
-このトピックで紹介する 5 つの例は、Microsoft .NET Library for Avro でサポートされているそれぞれ異なるシナリオに対応しています。
+##<a name="compiling"></a>Microsoft Avro ライブラリを使用したスキーマのコンパイル 
 
-最初の 2 つの例では、リフレクションと汎用レコードを使用してデータをメモリ ストリーム バッファーにシリアル化および逆シリアル化する方法を紹介します。これらの 2 つのケースのスキーマはアウト オブ バンドでリーダーとライターによって共有されると見なされるため、Avro コンテナー ファイルのデータでスキーマをシリアル化する必要はありません。
+Microsoft Avro ライブラリには、コード生成ユーティリティがあります。このユーティリティにより、あらかじめ定義した JSON スキーマに基づいて、C# のデータ型を自動的に作成できます。このコード生成ユーティリティは、バイナリの実行可能ファイルとして配布されませんが、次の手順に従って簡単に作成できます。
 
-3 つ目と 4 つ目の例では、リフレクションと汎用レコードを Avro オブジェクト コンテナー ファイルと共に使用してデータをメモリ ストリーム バッファーにシリアル化および逆シリアル化する方法を紹介します。データを Avro コンテナー ファイルに格納するときはスキーマを逆シリアル化のために共有する必要があるため、必ずスキーマが一緒に格納されます。
+1. 次のサイトから、HDInsight SDK ソース コードが含まれる zip ファイルをダウンロードします。 <a href="http://hadoopsdk.codeplex.com/SourceControl/latest" target="_blank">Microsoft .NET SDK For Hadoop</a>  (**ダウンロード**のアイコンをクリックします)
+2. .NET Framework 4.0 がインストールされたコンピューターのディレクトリに HDInsight SDK を展開し、インターネットに接続して、必要な依存関係の NuGet パッケージをダウンロードします。ここでは、ソース コードを C:\SDK に展開します。
+3. C:\SDK\src\Microsoft.Hadoop.Avro.Tools フォルダーに移動し、build.bat を実行します(このファイルにより、.NET Framework の 32 ビット配布の MS ビルドが呼び出されます。64 ビット版が必要な場合は、ファイル内のコメントに続く build.bat を編集します)。ビルドが完了したことを確認します(一部のシステムでは、MS ビルドにより警告が表示される場合がありますが、ビルドのエラーがなければユーティリティに影響することはありません)。
+4. コンパイル済みのユーティリティは、C:\SDK\Bin\Unsigned\Release\Microsoft.Hadoop.Avro.Tools にあります。
 
-最初の 4 つの例を含むサンプルは、[Azure コード サンプル][Azure コード サンプル] サイトからダウンロードできます。
 
-最後の 5 つ目の例では、オブジェクト コンテナー ファイルに対してカスタム圧縮コーデックを使用する方法を紹介します。この例を含むサンプルは、[Azure コード サンプル][1] サイトからダウンロードできます。
+コマンド ラインの構文を確認する場合は、コード生成ユーティリティがあるフォルダーで、次のコマンドを実行します。`Microsoft.Hadoop.Avro.Tools help /c:codegen`
 
-Microsoft .NET Library for Avro は、あらゆるストリームに対応するように設計されています。これらの例では、簡潔性と一貫性のために、ファイル ストリームやデータベースではなくメモリ ストリームを使用してデータを操作しています。運用環境では、実際のシナリオ要件、データ ソースとその量、パフォーマンス制約、その他の要因に応じて方法を選択してください。
+ユーティリティをテストするには、ソース コードと一緒に提供されている JSON のサンプル スキーマ ファイルから、C# クラスを生成します。次のコマンドを実行します。
 
--   [**リフレクションを使用したシリアル化**][**リフレクションを使用したシリアル化**]: シリアル化する型の JSON スキーマがデータ コントラクト属性から自動的に作成されます。
--   [**汎用レコードを使用したシリアル化**][**汎用レコードを使用したシリアル化**]: リフレクション用に使用できる .NET 型がないときにレコードに明示的に JSON スキーマを指定します。
--   [**オブジェクト コンテナー ファイルとリフレクションを使用したシリアル化**][**オブジェクト コンテナー ファイルとリフレクションを使用したシリアル化**]: JSON スキーマは、データと共に暗黙的にシリアル化され、Avro コンテナー ファイルを使用して共有されます。
--   [**オブジェクト コンテナー ファイルと汎用レコードを使用したシリアル化**][**オブジェクト コンテナー ファイルと汎用レコードを使用したシリアル化**]: JSON スキーマは、データと共に明示的にシリアル化され、Avro コンテナー ファイルを使用して共有されます。
--   [**オブジェクト コンテナー ファイルとカスタム圧縮コーデックを使用したシリアル化**][**オブジェクト コンテナー ファイルとカスタム圧縮コーデックを使用したシリアル化**]: JSON スキーマは、データと共にシリアル化され、Avro コンテナー ファイルと deflate データ圧縮コーデックのカスタマイズされた .NET 実装を使用して共有されます。
+	Microsoft.Hadoop.Avro.Tools codegen /i:C:\SDK\src\Microsoft.Hadoop.Avro.Tools\SampleJSON\SampleJSONSchema.avsc /o:
 
-## <a name="Scenario1"></a>リフレクションを使用したシリアル化
+このコマンドにより、SensorData.cs と Location.cs の 2 つの C# ファイルが生成されます。
 
-Microsoft .NET Library for Avro でリフレクションを使用して、型の JSON スキーマを、シリアル化する C\# オブジェクトのデータ コントラクト属性から自動的に作成できます。Microsoft .NET Library for Avro は、[**IAvroSeralizer<t>**][**IAvroSeralizer<t>**] を作成して、シリアル化するフィールドを識別します。
+コード生成ユーティリティで使用されるロジックを理解し、JSON スキーマを C# のデータ型に変換する方法については、C:\SDK\src\Microsoft.Hadoop.Avro.Tools\Doc にある GenerationVerification.feature ファイルを参照してください。
+
+前述したファイルに記述されているロジックを使用して、JSON スキーマから名前空間が抽出されます。スキーマから抽出された名前空間は、ユーティリティのコマンド ラインで /n パラメーターにより抽出される名前空間よりも優先されます。スキーマ内に含まれる名前空間をオーバーライドする場合は、必ず /nf パラメーターを使用してください。たとえば、SampleJSONSchema.avsc の名前空間をすべて my.own.nspace に変更する場合は、次のコマンドを実行します。
+
+    Microsoft.Hadoop.Avro.Tools codegen /i:C:\SDK\src\Microsoft.Hadoop.Avro.Tools\SampleJSON\SampleJSONSchema.avsc /o:. /nf:my.own.nspace
+
+##<a name="samples"></a>Microsoft Avro ライブラリのサンプルについて
+このトピックで紹介する 6 つの例は、Microsoft Avro ライブラリでサポートされている、それぞれ異なるシナリオに対応しています。Microsoft Avro ライブラリは、あらゆるストリームに対応するように設計されています。これらの例では、簡潔性と一貫性のために、ファイル ストリームやデータベースではなくメモリ ストリームを使用してデータを操作しています。運用環境では、実際のシナリオ要件、データ ソースとその量、パフォーマンス制約、その他の要因に応じて方法を選択してください。
+
+最初の 2 つの例では、リフレクションと汎用レコードを使用してデータをメモリ ストリーム バッファーにシリアル化および逆シリアル化する方法を紹介します。これらの 2 つのケースのスキーマは、アウト オブ バンドでリーダーとライターによって共有されると見なされます。 
+
+3 つ目と 4 つ目の例では、リフレクションと汎用レコードを Avro オブジェクト コンテナー ファイルを使用してデータをシリアル化および逆シリアル化する方法を紹介します。データを Avro コンテナー ファイルに格納するときはスキーマを逆シリアル化のために共有する必要があるため、必ずスキーマが一緒に格納されます。
+
+最初の 4 つの例を含むサンプルは、 <a href="http://code.msdn.microsoft.com/windowsazure/Serialize-data-with-the-86055923" target="_blank">Azure コード サンプル サイトから</a> ダウンロードできます。
+
+5 つ目の例では、Avro オブジェクト コンテナー ファイルに対してカスタム圧縮コーデックを使用する方法を紹介します。この例のコードを含むサンプルは、 <a href="http://code.msdn.microsoft.com/windowsazure/Serialize-data-with-the-67159111" target="_blank">Azure コード サンプル サイトから</a> ダウンロードできます。
+
+6 つ目の例では、Avro のシリアル化によりデータを Azure BLOB ストレージにアップロードし、その後 Hive と HDInsight (Hadoop) クラスターを使用して分析する方法を紹介します。この例のコードは、 <a href="https://code.msdn.microsoft.com/windowsazure/Using-Avro-to-upload-data-ae81b1e3" target="_blank">Azure コード サンプル サイトから</a> ダウンロードできます。
+
+このトピックで説明するこれら 6 つの例へのリンクを、次に示します。
+
+ * <a href="#Scenario1">**リフレクションを使用したシリアル化**</a>:シリアル化する型の JSON スキーマがデータ コントラクト属性から自動的に作成されます。
+ * <a href="#Scenario2">**汎用レコードを使用したシリアル化**</a>:リフレクション用に使用できる .NET 型がないときにレコードに明示的に JSON スキーマを指定します。
+ * <a href="#Scenario3">**オブジェクト コンテナー ファイルとリフレクションを使用したシリアル化**</a>:JSON スキーマは自動的に作成され、Avro オブジェクト コンテナー ファイルと共有されます。
+ * <a href="#Scenario4">**オブジェクト コンテナー ファイルと汎用レコードを使用したシリアル化**</a>:JSON スキーマはシリアル化の前に明示的に指定され、Avro オブジェクト コンテナー ファイルを使用するデータと共有されます。
+ * <a href="#Scenario5">**オブジェクト コンテナー ファイルとカスタム圧縮コーデックを使用したシリアル化**</a>:この例では、deflate データ圧縮コーデックのカスタマイズされた .NET 実装を使用して Avro オブジェクト コンテナー ファイルを作成する方法を紹介します。
+ * <a href="#Scenario6">**Avro を使用した Microsoft Azure HDInsight サービスのデータのアップロード**</a>:Avro のシリアル化による HDInsight サービスの操作方法を示します。この例を実行するには、有効な Azure サブスクリプションと、Microsoft Azure HDInsight クラスターへのアクセスが必要です。
+
+<h3> <a name="Scenario1"></a>サンプル 1:リフレクションを使用したシリアル化</h3>
+ 
+Microsoft Avro ライブラリでリフレクションを使用して、型の JSON スキーマを、シリアル化する C# オブジェクトのデータ コントラクト属性から自動的に作成できます。Microsoft Avro ライブラリにより [**IAvroSeralizer<T>**] が作成され、(http://msdn.microsoft.com/ja-jp/library/dn627341.aspx) シリアル化するフィールドが特定されます。
 
 この例では、オブジェクト (**Location** 構造体をメンバーとして含む **SensorData** クラス) をメモリ ストリームにシリアル化した後、このストリームを逆シリアル化します。次に、その結果を初期インスタンスと比較して、回復された **SensorData** オブジェクトが元のオブジェクトと同じかどうかを確認します。
 
-この例のスキーマはリーダーとライターによって共有されると見なされるため、Avro オブジェクト コンテナー形式は必要ありません。スキーマをデータと共にシリアル化する必要がある場合にリフレクションとオブジェクト コンテナー形式を使用してデータをメモリ バッファーにシリアル化および逆シリアル化する方法の例については、「[オブジェクト コンテナー ファイルとリフレクションを使用したシリアル化][**オブジェクト コンテナー ファイルとリフレクションを使用したシリアル化**]」を参照してください。
+この例のスキーマはリーダーとライターによって共有されると見なされるため、Avro オブジェクト コンテナー形式は必要ありません。スキーマをデータと共にシリアル化する必要がある場合にリフレクションとオブジェクト コンテナー形式を使用してデータをメモリ バッファーにシリアル化および逆シリアル化する方法の例については、 <a href="#Scenario3">「オブジェクト コンテナー ファイルとリフレクションを使用したシリアル化」を参照してください。</a>
 
     namespace Microsoft.Hadoop.Avro.Sample
     {
@@ -104,7 +144,7 @@ Microsoft .NET Library for Avro でリフレクションを使用して、型の
         }
 
         //This class contains all methods demonstrating
-        //the usage of Microsoft .NET Library for Avro
+        //the usage of Microsoft Avro Library
         public class AvroSample
         {
 
@@ -188,16 +228,18 @@ Microsoft .NET Library for Avro でリフレクションを使用して、型の
     // ----------------------------------------
     // Press any key to exit.
 
-## <a name="Scenario2"></a>汎用レコードを使用したシリアル化
 
-.NET クラスとデータ コントラクトを使用してデータを表現できないためにリフレクションを使用できない場合は、JSON スキーマを明示的に汎用レコードに指定できます。特定の C\# クラスに対しては、この方法は、一般に、リフレクションとシリアライザーを使用する方法よりも低速です。このような場合、データのスキーマは、コンパイル時までわからないため、動的にすることもできます。この動的シナリオの例としては、実行時に Avro 形式に変換されるまでそのスキーマがわからない、コンマ区切り値 (CSV) ファイルとして表現されるデータが該当します。
+<h3> <a name="Scenario2"></a>サンプル 2:汎用レコードを使用したシリアル化</h3>
 
-この例では、[**AvroRecord**][**AvroRecord**] を使用して明示的に JSON スキーマを指定する方法、データを設定する方法、データをシリアル化および逆シリアル化する方法を示します。次に、その結果を初期インスタンスと比較して、回復されたレコードが元のレコードと同じかどうかを確認します。
+.NET クラスとデータ コントラクトを使用してデータを表現できないためにリフレクションを使用できない場合は、JSON スキーマを明示的に汎用レコードに指定できます。この方法は、一般にリフレクションを使用する方法よりも低速です。このような場合、データのスキーマは、コンパイル時までわからないなど、動的になる場合もあります。この動的シナリオの例としては、実行時に Avro 形式に変換されるまでそのスキーマがわからない、コンマ区切り値 (CSV) ファイルとして表現されるデータが該当します。
 
-この例のスキーマはリーダーとライターによって共有されると見なされるため、Avro オブジェクト コンテナー形式は必要ありません。スキーマをシリアル化されたデータと共に含める必要がある場合に汎用レコードとオブジェクト コンテナー形式を使用してデータをメモリ バッファーにシリアル化および逆シリアル化する方法の例については、「[オブジェクト コンテナー ファイルと汎用レコードを使用したシリアル化][**オブジェクト コンテナー ファイルと汎用レコードを使用したシリアル化**]」を参照してください。
+この例では、[**AvroRecord**] を作成および使用して(http://msdn.microsoft.com/ja-jp/library/microsoft.hadoop.avro.avrorecord.aspx) 明示的に JSON スキーマを指定する方法、データを設定する方法、データをシリアル化および逆シリアル化する方法を示します。次に、その結果を初期インスタンスと比較して、回復されたレコードが元のレコードと同じかどうかを確認します。
 
-    namespace Microsoft.Hadoop.Avro.Sample
-    {
+この例のスキーマはリーダーとライターによって共有されると見なされるため、Avro オブジェクト コンテナー形式は必要ありません。たとえば、スキーマをシリアル化されたデータに含める必要がある場合に、汎用レコードとオブジェクト コンテナー形式を使用してデータをメモリ バッファーにシリアル化および逆シリアル化する方法の例については、 <a href="#Scenario4">「オブジェクト コンテナー ファイルと汎用レコードを使用したシリアル化」</a> の例を参照してください。
+
+
+	namespace Microsoft.Hadoop.Avro.Sample
+	{
     using System;
     using System.Collections.Generic;
     using System.IO;
@@ -207,7 +249,7 @@ Microsoft .NET Library for Avro でリフレクションを使用して、型の
     using Microsoft.Hadoop.Avro.Schema;
 
     //This class contains all methods demonstrating
-    //the usage of Microsoft .NET Library for Avro
+    //the usage of Microsoft Avro Library
     public class AvroSample
     {
 
@@ -298,7 +340,7 @@ Microsoft .NET Library for Avro でリフレクションを使用して、型の
             Console.Read();
         }
     }
-    }
+	}
     // The example is expected to display the following output: 
     // SERIALIZATION USING GENERIC RECORD
     //
@@ -310,13 +352,14 @@ Microsoft .NET Library for Avro でリフレクションを使用して、型の
     // ----------------------------------------
     // Press any key to exit.
 
-## <a name="Scenario3"></a>オブジェクト コンテナー ファイルを使用したシリアル化とリフレクションを使用したシリアル化
 
-この例は、リフレクションを使用してスキーマが暗黙的に指定される[最初の例][**リフレクションを使用したシリアル化**]のシナリオに似ていますが、ここでは逆シリアル化を行うリーダーがスキーマを認識していないと想定されている点が異なります。シリアル化される **SensorData** オブジェクトとその暗黙的に指定されたスキーマは、[**AvroContainer**][**AvroContainer**] クラスによって表されるオブジェクト コンテナー ファイルに格納されます。
+<h3> <a name="Scenario3"></a>サンプル 3:オブジェクト コンテナー ファイルを使用したシリアル化とリフレクションを使用したシリアル化</h3>
 
-この例では、データを [**SequentialWriter<sensordata>**][**SequentialWriter<sensordata>**] を使用してシリアル化し、[**SequentialReader<sensordata>**][**SequentialWriter<sensordata>**] を使用して逆シリアル化しています。次に、その結果を初期インスタンスと比較して、同一性を確認します。
+この例は、リフレクションを使用して <a href="#Scenario1"> スキーマが暗黙的に</a> 指定される最初の例のシナリオに似ていますが、ここでは逆シリアル化を行うリーダーがスキーマを認識していないと想定されている点が異なります。シリアル化される **SensorData** オブジェクトとその暗黙的に指定されたスキーマは、[**AvroContainer**] クラスによって表されるオブジェクト コンテナー ファイルに格納されます。(http://msdn.microsoft.com/ja-jp/library/microsoft.hadoop.avro.container.avrocontainer.aspx) クラスから派生していることに注意してください。 
 
-さらに、オブジェクト コンテナー ファイル内のデータを、.NET Framework 4.0 の既定の [**Deflate**][**Deflate**] 圧縮コーデックを使用して圧縮します。.NET Framework 4.5 で提供されるより優れた最新バージョンの [**Deflate**][2] 圧縮コーデックの使い方については、このトピックの[最後の例][**オブジェクト コンテナー ファイルとカスタム圧縮コーデックを使用したシリアル化**]を参照してください。
+この例では、データを [**SequentialWriter<SensorData>**] を使用してシリアル化し、(http://msdn.microsoft.com/ja-jp/library/dn627340.aspx) [**SequentialReader<SensorData>**] を使用して逆シリアル化しています(http://msdn.microsoft.com/ja-jp/library/dn627340.aspx)。次に、その結果を初期インスタンスと比較して、同一性を確認します。
+
+さらに、オブジェクト コンテナー ファイル内のデータを、.NET Framework 4.0 の既定の [**Deflate**][deflate-100] 圧縮コーデックを使用して圧縮します。.NET Framework 4.5 で <a href="#Scenario5"> 提供される</a> より優れた最新バージョンの [**Deflate**][deflate-110] 圧縮コーデックの使い方については、このトピックの 5 つ目の例を参照してください。
 
     namespace Microsoft.Hadoop.Avro.Sample
     {
@@ -350,7 +393,7 @@ Microsoft .NET Library for Avro でリフレクションを使用して、型の
         }
 
         //This class contains all methods demonstrating
-        //the usage of Microsoft .NET Library for Avro
+        //the usage of Microsoft Avro Library
         public class AvroSample
         {
 
@@ -548,14 +591,16 @@ Microsoft .NET Library for Avro でリフレクションを使用して、型の
     // For Pair 2 result of Data Set Identity Comparison is True
     // ----------------------------------------
     // Press any key to exit.
+  
 
-## <a name="Scenario4"></a>オブジェクト コンテナー ファイルを使用したシリアル化と汎用レコードを使用したシリアル化
+<h3> <a name="Scenario4"></a>サンプル 4:オブジェクト コンテナー ファイルを使用したシリアル化と汎用レコードを使用したシリアル化</h3>
 
-この例は、JSON を使用してスキーマが明示的に指定される [2 つ目の例][**汎用レコードを使用したシリアル化**]のシナリオに似ていますが、ここでは逆シリアル化を行うリーダーがスキーマを認識していないと想定されている点が異なります。
+この例は、JSON を使用して <a href="#Scenario2"> スキーマが暗黙的に指定される </a> 2 つ目の例のシナリオに似ていますが、ここでは逆シリアル化を行うリーダーがスキーマを認識していないと想定されている点が異なります。 
 
-明示的に定義された JSON スキーマを使用してテスト データ セットが [**AvroRecord**][**AvroRecord**] オブジェクトのリストに収集され、[**AvroContainer**][**AvroContainer**] クラスによって表されるオブジェクト コンテナー ファイルに格納されます。このコンテナー ファイルは、未圧縮のデータをメモリ ストリームにシリアル化してこれをファイルに保存するために使用されるライターを作成します。[**Codex.Null**][**Codex.Null**] パラメーターを使用して、リーダーを作成するときにこのデータを圧縮しないことを指定しています。
+明示的に定義された JSON スキーマを使用してテスト データ セットが [**AvroRecord**] (http://msdn.microsoft.com/ja-jp/library/microsoft.hadoop.avro.avrorecord.aspx) オブジェクトのリストに収集され、[**AvroContainer**] クラスによって表されるオブジェクト コンテナー ファイルに格納されます。(http://msdn.microsoft.com/ja-jp/library/microsoft.hadoop.avro.container.avrocontainer.aspx) クラスから派生していることに注意してください。このコンテナー ファイルは、未圧縮のデータをメモリ ストリームにシリアル化してこれをファイルに保存するために使用されるライターを作成します。[**Codex.Null**] パラメーターを使用して、(http://msdn.microsoft.com/ja-jp/library/microsoft.hadoop.avro.container.codec.null.aspx) リーダーを作成するときにこのデータを圧縮しないことを指定しています。 
 
 次に、ファイルからデータが読み取られ、オブジェクトのコレクションに逆シリアルされます。このコレクションを Avro レコードの初期リストと比較して、その同一性を確認しています。
+
 
     namespace Microsoft.Hadoop.Avro.Sample
     {
@@ -568,7 +613,7 @@ Microsoft .NET Library for Avro でリフレクションを使用して、型の
         using Microsoft.Hadoop.Avro.Schema;
 
         //This class contains all methods demonstrating
-        //the usage of Microsoft .NET Library for Avro
+        //the usage of Microsoft Avro Library
         public class AvroSample
         {
 
@@ -808,9 +853,15 @@ Microsoft .NET Library for Avro でリフレクションを使用して、型の
     // ----------------------------------------
     // Press any key to exit.
 
-## <a name="Scenario5"></a>オブジェクト コンテナー ファイルとカスタム圧縮コーデックを使用したシリアル化
 
-次の例では、Avro オブジェクト コンテナー ファイルに対してカスタム圧縮コーデックを使用する方法を紹介します。[Avro 仕様][Avro 仕様]では、(既定の **Null** と **Deflate** 以外に) オプションの圧縮コーデックを使用することもできます。この例には、(サポートされるオプションのコーデックとして [Avro 仕様][3]に明記されている) Snappy のような新しいコーデックは実装されていません。この例では、既定の .NET Framework 4.0 バージョンよりも [zlib][zlib] 圧縮ライブラリに基づくより優れた圧縮アルゴリズムを提供する [**Deflate**][2] コーデックの .NET Framework 4.5 実装の使用法を紹介します。
+
+
+<h3> <a name="Scenario5"></a>サンプル 5:オブジェクト コンテナー ファイルとカスタム圧縮コーデックを使用したシリアル化</h3>
+
+5 つ目の例では、Avro オブジェクト コンテナー ファイルに対してカスタム圧縮コーデックを使用する方法を紹介します。この例を含むサンプルは、[Azure コード サンプル] サイトから(http://code.msdn.microsoft.com/windowsazure/Serialize-data-with-the-67159111) ダウンロードできます。
+
+[Avro Specification] では、(http://avro.apache.org/docs/current/spec.html#Required+Codecs) (**Null** および **Deflate** の既定のほかにも) オプションの圧縮コーデックを使用できます。この例には、(サポートされるオプションのコーデックとして [Avro Specification] に明記されている) Snappy のような新しいコーデックは実装されていません(http://avro.apache.org/docs/current/spec.html#snappy)。この例では、既定の .NET Framework 4.0 バージョンよりも [zlib] 圧縮ライブラリに基づくより優れた圧縮アルゴリズムを提供する [**Deflate**][deflate-110] (http://zlib.net/) コーデックの .NET Framework 4.5 実装の使用法を紹介します。
+
 
     // 
     // This code needs to be compiled with the parameter Target Framework set as ".NET Framework 4.5"
@@ -1085,7 +1136,7 @@ Microsoft .NET Library for Avro でリフレクションを使用して、型の
 
         #region Sample Class with demonstration methods
         //This class contains methods demonstrating
-        //the usage of Microsoft .NET Library for Avro
+        //the usage of Microsoft Avro Library
         public class AvroSample
         {
 
@@ -1302,24 +1353,46 @@ Microsoft .NET Library for Avro でリフレクションを使用して、型の
     // ----------------------------------------
     // Press any key to exit.
 
-  [JSON]: http://www.json.org
-  [Apache Avro の仕様]: http://avro.apache.org/docs/current/spec.html
-  [**AvroRecord**]: http://msdn.microsoft.com/ja-jp/library/microsoft.hadoop.avro.avrorecord.aspx
-  [Microsoft .NET Framework v4.0]: http://www.microsoft.com/ja-jp/download/details.aspx?id=17851
-  [Newtonsoft Json.NET]: http://james.newtonking.com/json
-  [Azure コード サンプル]: http://code.msdn.microsoft.com/windowsazure/Serialize-data-with-the-86055923
-  [1]: http://code.msdn.microsoft.com/windowsazure/Serialize-data-with-the-67159111
-  [**リフレクションを使用したシリアル化**]: #Scenario1
-  [**汎用レコードを使用したシリアル化**]: #Scenario2
-  [**オブジェクト コンテナー ファイルとリフレクションを使用したシリアル化**]: #Scenario3
-  [**オブジェクト コンテナー ファイルと汎用レコードを使用したシリアル化**]: #Scenario4
-  [**オブジェクト コンテナー ファイルとカスタム圧縮コーデックを使用したシリアル化**]: #Scenario5
-  [**IAvroSeralizer<t>**]: http://msdn.microsoft.com/ja-jp/library/dn627341.aspx
-  [**AvroContainer**]: http://msdn.microsoft.com/ja-jp/library/microsoft.hadoop.avro.container.avrocontainer.aspx
-  [**SequentialWriter<sensordata>**]: http://msdn.microsoft.com/ja-jp/library/dn627340.aspx
-  [**Deflate**]: http://msdn.microsoft.com/ja-jp/library/system.io.compression.deflatestream(v=vs.100).aspx
-  [2]: http://msdn.microsoft.com/ja-jp/library/system.io.compression.deflatestream(v=vs.110).aspx
-  [**Codex.Null**]: http://msdn.microsoft.com/ja-jp/library/microsoft.hadoop.avro.container.codec.null.aspx
-  [Avro 仕様]: http://avro.apache.org/docs/current/spec.html#Required+Codecs
-  [3]: http://avro.apache.org/docs/current/spec.html#snappy
-  [zlib]: http://zlib.net/
+<h3> <a name="Scenario6"></a> 例 6:Avro を使用した Microsoft Azure HDInsight サービスのデータのアップロード</h3>
+
+6 つ目の例では、Microsoft Azure HDInsight サービスの操作に関連する、いくつかのプログラム方法を紹介します。この例を含むサンプルは、[Azure コード サンプル] サイトから(https://code.msdn.microsoft.com/windowsazure/Using-Avro-to-upload-data-ae81b1e3) ダウンロードできます。
+
+このサンプルでは、次の処理を実行します。
+
+* 既存の HDInsight サービス クラスターに接続する。
+* いくつかの CSV ファイルをシリアル化し、結果を Azure BLOB ストレージにアップロードする。CSV ファイルはサンプルと一緒に配布され、[Infochimps] から配信される、1970 ～ 2010 年の間の (http://www.infochimps.com/) AMEX Stock 履歴データから抽出されます。サンプルから CSV ファイルのデータを読み取り、レコードを **Stock** クラスのインスタンスに変換してから、リフレクションを使用してそれらをシリアル化します。Microsoft Avro ライブラリのコード生成ユーティリティを使用して、Stock 型の定義が JSON スキーマから作成されます。
+* **Stocks** という新規の外部テーブルが Hive に作成され、前の手順でアップロードしたデータとリンクされます。
+* Hive を使用して **Stocks** テーブルに関するクエリを実行します。
+
+さらにサンプルでは、主要な操作を実行する前後に、クリーンアップ手順を実行します。クリーンアップ中、関連する Azure BLOB のデータおよびフォルダーはすべて削除され、Hive テーブルが消去されます。クリーンアップ手順は、サンプルのコマンド ラインから呼び出すこともできます。 
+
+このサンプルの前提条件は次のとおりです。
+
+* 有効な Microsoft Azure サブスクリプションとその ID
+* サブスクリプションの管理証明書と対応する秘密キー。証明書は、サンプルを実行するコンピューターの、現在のユーザーの Private Storage にインストールする必要があります。
+* アクティブな HDInsight クラスター。
+* 前の前提条件で HDInsight クラスターにリンクされた Azure Storage アカウントと、対応するプライマリまたはセカンダリのアクセス キー。
+
+この前提条件の情報をすべてサンプル構成ファイルに入力してから、サンプルを実行する必要があります。その方法は次の 2 つです。
+
+* サンプルのルートディレクトリにある app.config ファイルを編集し、その後サンプルを作成する。または、 
+* 最初にサンプルを作成してから、ビルド ディレクトリの AvroHDISample.exe.config を編集する。 
+
+どちらの場合も、**<appSettings>** 設定セクションで編集を行います。ファイルのコメントに従ってください。
+次のコマンドを実行して、サンプルをコマンド ラインから実行します (サンプルを含む zip ファイルがは、基本的に C:\AvroHDISample に抽出されます。それ以外の場所を指定する場合は、該当するファイル パスを使用します)。
+
+    AvroHDISample run C:\AvroHDISample\Data
+
+クラスターをクリーンアップするには、次のコマンドを実行します。
+
+    AvroHDISample clean
+
+
+
+
+[deflate-100]: http://msdn.microsoft.com/ja-jp/library/system.io.compression.deflatestream(v=vs.100).aspx
+[deflate-110]: http://msdn.microsoft.com/ja-jp/library/system.io.compression.deflatestream(v=vs.110).aspx
+
+
+
+<!--HONumber=35_1-->

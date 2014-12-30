@@ -1,20 +1,17 @@
 ﻿<properties urlDisplayName="Monitor Hadoop clusters  in HDInsight using the Ambari API" pageTitle="Ambari API を使用した HDInsight の Hadoop クラスターの監視 | Azure" metaKeywords="" description="Use the Apache Ambari APIs for provisioning, managing, and monitoring Hadoop clusters. Ambari's intuitive operator tools and APIs hide the complexity of Hadoop." services="hdinsight" documentationCenter="" title="Monitor Hadoop clusters in HDInsight using the Ambari API" umbracoNaviHide="0" disqusComments="1" authors="jgao" editor="cgronlun" manager="paulettm" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/12/2014" ms.author="jgao" />
 
 # Ambari API を使用した HDInsight の Hadoop クラスターの監視
  
 Ambari API を使用して HDInsight クラスター Version 3.1 および 2.1 を監視する方法について説明します。
-
-**所要時間: ** 約 15 分
-
 
 ##この記事の内容
 
 - [Ambari とは](#whatisambari)
 - [前提条件](#prerequisites)
 - [ジャンプ スタート](#jumpstart)
-- [Ambari での API の監視](#monitor)
+- [Ambari 監視 API](#monitor)
 - [次のステップ](#nextsteps)
 
 
@@ -23,29 +20,29 @@ Ambari API を使用して HDInsight クラスター Version 3.1 および 2.1 �
 [Apache Ambari][ambari-home] は、Apache Hadoop クラスターのプロビジョニング、管理、および監視を目的としています。演算子ツールの直観的なコレクションおよび Hadoop の複雑さが見えないようにする信頼性の高い、一連の API が含まれており、クラスターの操作を単純化しています。API の詳細については、[Ambari API リファレンス][ambari-api-reference]を参照してください。
 
 
-HDInsight は現在、Ambari の監視機能のみをサポートしています。Ambari API v1.0 は HDInsight クラスター Version 2.1 および 3.0 によってサポートされています。この記事では、HDInsight クラスター Version 3.1 および 2.1 での Ambari API へのアクセスを取り上げます。  この 2 つの重要な相違点は、新しい機能 (ジョブ履歴サーバーなど) の導入により、一部のコンポーネントに変更が加えられた点です。
+HDInsight は現在、Ambari の監視機能のみをサポートしています。Ambari API v1.0 は HDInsight クラスター Version 2.1 および 3.0 によってサポートされています。この記事では、HDInsight クラスター Version 3.1 および 2.1 での Ambari API へのアクセスを取り上げます。この 2 つの重要な相違点は、新しい機能 (ジョブ履歴サーバーなど) の導入により、一部のコンポーネントに変更が加えられた点です。
 
 
 ##<a id="prerequisites"></a>前提条件
 
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **コンピューター**。Azure PowerShell がインストールされ構成されている必要があります。手順については、[Azure PowerShell のインストールおよび構成に関するページ][powershell-install] を参照してください。PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。「[Run Windows PowerShell scripts (Windows PowerShell スクリプトの実行)][powershell-script]」を参照してください。
+- **Azure PowerShell がインストールされ構成された**ワークステーション。手順については、「[Azure PowerShell のインストールおよび構成方法][powershell-install]」を参照してください。PowerShell スクリプトを実行するには、Azure PowerShell を管理者として実行し、実行ポリシーを *RemoteSigned* に設定する必要があります。「[Set-ExecutionPolicy コマンドレットの使用][powershell-script]」を参照してください。
 
-	[Curl][curl] は省略可能です。[ここ][ curl-download] からインストールできます。
+	[Curl][curl] は省略可能です。[ここ][curl-download]からダウンロードできます。
 
-	>[WACOM.NOTE] Windows で curl コマンドを使用する場合、オプション値には単一引用符の代わりに二重引用符を使用します。
+	>[WACOM.NOTE] Windows で curl コマンドを使用する場合、オプション値には一重引用符の代わりに二重引用符を使用します。
 
-- **Azure HDInsight クラスター**。クラスターのプロビジョニングの手順については、「[Get started using HDInsight (HDInsight で Hadoop 2.4 を使用する)][hdinsight-get-started]」または「[カスタム オプションを使用した HDInsight での Hadoop クラスターのプロビジョニング][hdinsight-provision]」を参照してください。このチュートリアルを読み進めるには、次のデータが必要です。
+- **Azure HDInsight クラスター**。クラスターのプロビジョニングの手順については、「[Azure HDInsight の概要][hdinsight-get-started]」または「[HDInsight クラスターのプロビジョニング][hdinsight-provision]」を参照してください。このチュートリアルを読み進めるには、次のデータが必要です。
 
 	<table border="1">
-	<tr><th>クラスターのプロパティ</th><th>PowerShell 変数名</th><th>値</th><th>説明</th></tr>
+	<tr><th>クラスター プロパティ</th><th>PowerShell 変数名</th><th>値</th><th>説明</th></tr>
 	<tr><td>HDInsight クラスター名</td><td>$clusterName</td><td></td><td>HDInsight クラスターの名前です。</td></tr>
-	<tr><td>クラスター ユーザー名</td><td>$clusterUsername</td><td></td><td>プロビジョニングで指定されたクラスタ ユーザー名です。</td></tr>
+	<tr><td>クラスター ユーザー名</td><td>$clusterUsername</td><td></td><td>プロビジョニングで指定されたクラスター ユーザー名です。</td></tr>
 	<tr><td>クラスター パスワード</td><td>$clusterPassword</td><td></td><td>クラスター ユーザー パスワードです。</td></tr>
 	</table>
 
-	> [WACOM.NOTE]テーブルに値を入力します。  こうすると、このチュートリアルを読み進める際に役立ちます。
+	> [WACOM.NOTE] テーブルに値を入力します。そうしておくと、このチュートリアルを読み進める際に役に立ちます。
 
 
 
@@ -55,7 +52,7 @@ HDInsight は現在、Ambari の監視機能のみをサポートしています
 
 **Azure PowerShell の使用**
 
-*3.1 クラスターで MapReduce jobtracker 情報を取得するための PowerShell スクリプトを以下に示します。*ここで重要な相違点は、(Map Reduce ではなく) YARN サービスから詳細をプルするようになった点です。
+*3.1 クラスター*で MapReduce jobtracker 情報を取得するための PowerShell スクリプトを以下に示します。ここで重要な相違点は、(Map Reduce ではなく) YARN サービスから詳細をプルするようになった点です。
 
 	$clusterName = "<HDInsightClusterName>"
 	$clusterUsername = "<HDInsightClusterUsername>"
@@ -71,7 +68,7 @@ HDInsight は現在、Ambari の監視機能のみをサポートしています
 	
 	$response.metrics.'yarn.queueMetrics'
 
-2.1 クラスターで MapReduce jobtracker 情報を取得するための PowerShell スクリプトを以下に示します。**
+*2.1 クラスター*で MapReduce jobtracker 情報を取得するための PowerShell スクリプトを以下に示します。
 
 	$clusterName = "<HDInsightClusterName>"
 	$clusterUsername = "<HDInsightClusterUsername>"
@@ -114,12 +111,12 @@ Curl を使用してクラスター情報を取得する例を以下に示しま
 	    "Hosts":{"cluster_name":"hdi0211v2.azurehdinsight.net",
 	             "host_name":"headnode0.{ClusterDNS}.azurehdinsight.net"}}]}
 
-2014 年 10 月 8 日リリースに関する注: 
-Ambari エンドポイントを使用する場合、"https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}"、*host_name* フィールドは現在、ホスト名ではなくノードの完全修飾ドメイン名 (FQDN) を返します。2014 年 10 月 8 日のリリースの前は、このサンプルは単純に "**headnode0**" を返しました。2014 年 10 月 8 日のリリースの後に、上の例に示すように FQDN である "**headnode0.{ClusterDNS}.azurehdinsight.net**" を取得するようになりました。この変更は、1 つの仮想ネットワーク (VNET) に HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。これは、HBase を Hadoop のバックエンド プラットフォームとして使用する場合などに発生します。
+2014 年 10 月 8 日のリリースの注意点: 
+Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}) を使用すると、*host_name* フィールドがホスト名そのものではなくノードの完全修飾ドメイン名 (FQDN) を返します。2014 年 10 月 8 日のリリースの前は、このサンプルは単純に "**headnode0**".を返しました。2014 年 10 月 8 日のリリースの後に、上の例に示すように FQDN である "**headnode0.{ClusterDNS}.azurehdinsight.net**" を取得するようになりました。この変更は、1 つの仮想ネットワーク (VNET) に HBase や Hadoop などの複数のクラスターの種類をデプロイできるシナリオの実現を容易にするために必須でした。このシナリオは、Hadoop のバックエンド プラットフォームとして HBase を使用する場合などが該当します。
 
 ##<a id="monitor"></a>Ambari での API の監視
 
-以下のテーブルに最も一般的な Ambari での API 呼び出しの監視の一部を示します。API の詳細については、[Ambari API リファレンス][ambari-api-reference]を参照してください。
+以下のテーブルに最も一般的な Ambari での API 呼び出しの監視の一部を示します。API の詳細については、「[Ambari API reference (Ambari API リファレンス)][ambari-api-reference]」を参照してください。
 
 <table border="1">
 <tr><th>API 呼び出しの監視</th><th>URI</th><th>説明</th></tr>
@@ -135,7 +132,7 @@ Ambari エンドポイントを使用する場合、"https://{clusterDns}.azureh
 <tr><td>ホスト コンポーネントの取得</td><td><tt>/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/hosts/&lt;HostName&gt;/host_components
 </tt></td><td>namenode、resourcemanager</td></tr>
 <tr><td>ホスト コンポーネント情報の取得</td><td><tt>/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/hosts/&lt;HostName&gt;/host_components/&lt;ComponentName&gt;
-</tt></td><td>HostRoles、component、host, metrics</td></tr>
+</tt></td><td>HostRoles、component、host、metrics</td></tr>
 <tr><td>構成の取得</td><td><tt>/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/configurations 
 </tt></td><td>構成の種類: core-site、hdfs-site、mapred-site、hive-site</td></tr>
 <tr><td>構成情報の取得</td><td><tt>/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.net/configurations?type=&lt;ConfigType&gt;&tag=&lt;VersionName&gt; 
@@ -151,7 +148,7 @@ Ambari エンドポイントを使用する場合、"https://{clusterDns}.azureh
 - [Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理][hdinsight-admin-powershell]
 - [クロスプラットフォーム コマンド ライン インターフェイスを使用した HDInsight での Hadoop クラスターの管理][hdinsight-admin-cli]
 - [HDInsight のドキュメント][hdinsight-documentation]
-- [HDInsight で Hadoop 2.4 を使用する][hdinsight-get-started]
+- [HDInsight の使用][hdinsight-get-started]
 
 
 
@@ -175,3 +172,5 @@ Ambari エンドポイントを使用する場合、"https://{clusterDns}.azureh
 
 [img-jobtracker-output]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png
 
+
+<!--HONumber=35_1-->
