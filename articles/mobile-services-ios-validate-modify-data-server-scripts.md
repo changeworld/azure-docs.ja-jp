@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Validate Data" pageTitle="サーバー スクリプトを使用したデータの検証および変更 (iOS) | モバイル デベロッパー センター" metaKeywords="" description="Learn how to validate and modify data sent using server scripts from your iOS app." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using server scripts" authors="krisragh" solutions="" manager="dwrede" editor="" />
+<properties urlDisplayName="Validate Data" pageTitle="サーバー スクリプトを使用したデータの検証および変更 (iOS) | モバイル デベロッパー センター" metaKeywords="" description="Learn how to validate and modify data sent using server scripts from your iOS app." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using server scripts" authors="krisragh" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="krisragh" />
 
@@ -16,23 +16,23 @@
 
 このチュートリアルは、前の[データの使用]に関するチュートリアルの手順およびサンプル アプリケーションを基に作成されています。このチュートリアルを開始する前に、[データの使用]に関するチュートリアルを完了している必要があります。  
 
-## <a name="string-length-validation"></a>Add validation
+## <a name="string-length-validation"></a>検証の追加
 
-It is always a good practice to validate the length of data that is submitted by users. First, you register a script that validates the length of string data sent to the mobile service and rejects strings that are too long, in this case longer than 10 characters.
+ユーザーにより送信されたデータの長さを検証することをお勧めします。最初に、モバイル サービスに送信された文字列データの長さを検証するスクリプトを登録し、長すぎる文字列 (この場合は 10 文字を超える) を拒否します。
 
-1. Log into the [Azure Management Portal], click **Mobile Services**, and then click your app.
+1. [Azure の管理ポータル][Azure 管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
 
    	![][0]
 
-2. Click the **Data** tab, then click the **TodoItem** table.
+2. **[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。
 
    	![][1]
 
-3. Click **Script**, then select the **Insert** operation.
+3. **[スクリプト]** をクリックし、**[挿入]** 操作を選択します。
 
    	![][2]
 
-4. Replace the existing script with the following function, and then click **Save**.
+4. 既存のスクリプトを次の関数に置き換え、**[保存]** をクリックします。
 
         function insert(item, user, request) {
             if (item.text.length > 10) {
@@ -42,27 +42,27 @@ It is always a good practice to validate the length of data that is submitted by
             }
         }
 
-    This script checks the length of the **text** property and sends an error response when the length exceeds 10 characters. Otherwise, the **execute** method is called to complete the insert.
+    このスクリプトは、**text** プロパティの長さをチェックし、長さが 10 文字を超えた場合にエラー応答を送信します。それ以外の場合、**execute** メソッドが呼び出されて挿入を完了します。
 
     <div class="dev-callout">
-	<b>Note</b>
-	<p>You can remove a registered script on the <strong>Script</strong> tab by clicking <strong>Clear</strong> and then <strong>Save</strong>.</p></div>
+	<b>注</b>
+	<p>登録したスクリプトを <strong>[スクリプト]</strong> タブで削除できます。<strong>[クリア]</strong> をクリックし、<strong>[保存]</strong> をクリックします。</p></div>
 
-## <a name="update-client-validation"></a>Update the client
+## <a name="update-client-validation"></a>クライアントの更新
 
-Now that the mobile service is validating data and sending error responses, you need to update your app to be able to handle error responses from validation.
+モバイル サービスはデータを検証してエラー応答を送信するため、検証からのエラー応答を処理できるようにアプリケーションを更新する必要があります。
 
-1. In Xcode, open the project that you modified when you completed the tutorial [Get started with data].
+1. Xcode で、[データの使用][データの使用]に関するチュートリアルを実行したときに変更したプロジェクトを開きます。
 
-2. Press the **Run** button (Command + R) to build the project and start the app, then type text longer than 10 characters in the textbox and click the  plus (**+**) icon.
+2. **[Run]** (Command + R キー) を押して、プロジェクトをビルドし、アプリケーションを開始します。次に、テキスト ボックスに 11 文字以上のテキストを入力し、プラス (**[+]**) アイコンをクリックします。
 
-   	Notice that the app raises an unhandled error as a result of the 400 response (Bad Request) returned by the mobile service.
+   	モバイル サービスから返された応答 400 (正しくない要求) の結果として、処理されないエラーが発生します。
 
-3. In the QSTodoService.m file, locate the following line of code in the **addItem** method:
+3. QSTodoService.m ファイルで、**addItem** メソッド内の次のコード行を見つけます。
 
         [self logErrorIfNotNil:error];
 
-   	After this line of code, replace the remainder of the completion block with the following code:
+   	このコード行の後ろの completion ブロックの残りの部分を、次のコードに置き換えます。
 
         BOOL goodRequest = !((error) && (error.code == MSErrorMessageErrorCode));
 
@@ -93,13 +93,13 @@ Now that the mobile service is validating data and sending error responses, you 
             }
         }
 
-   	This logs the error to the output window and displays it to the user.
+   	これにより、エラーが出力ウィンドウに記録され、ユーザーに表示されます。
 
-4. Rebuild and start the app.
+4. アプリケーションをリビルドして開始します。
 
    	![][4]
 
-  	Notice that error is handled and the error messaged is displayed to the user.
+  	エラーが処理され、エラー メッセージがユーザーに表示されることに注目してください。
 
 <!--## <a name="add-timestamp"></a>Add a timestamp
 
@@ -192,7 +192,7 @@ The Mobile Service client will ignore any data in a response that it cannot seri
 
 ## <a name="next-steps"> </a>次のステップ
 
-このチュートリアルが完了したため、データ シリーズの最終チュートリアルに進むことを検討してください。[ページングを使用したクエリの改善]。
+このチュートリアルが完了したため、データ シリーズの最終チュートリアルに進むことを検討してください。[ページングを使用したクエリの改善][ページングを使用したクエリの改善]。
 
 サーバー スクリプトは、ユーザーを認証するときに、およびプッシュ通知の送信のためにも使用されます。詳細については、次のチュートリアルを参照してください。
 
@@ -223,10 +223,9 @@ The Mobile Service client will ignore any data in a response that it cannot seri
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-ios
 [スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-ios
-[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-ios
+[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-ios
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-ios
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-ios
 [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-ios
 
-[管理ポータル]: https://manage.windowsazure.com/
 [Azure 管理ポータル]: https://manage.windowsazure.com/
