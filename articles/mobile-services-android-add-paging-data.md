@@ -4,7 +4,7 @@
 
 # ページングを使用したモバイル サービス クエリの改善
 
-€
+[WACOM.INCLUDE [mobile-services-selector-add-paging-data](../includes/mobile-services-selector-add-paging-data.md)]
 
 このトピックでは、ページングを使用して、Azure Mobile Services から Android アプリケーションに返されるデータの量を管理する方法について説明します。このチュートリアルでは、クライアントで **top** および **skip** クエリ メソッドを使用して、データの特定の "ページ" を要求します。
 
