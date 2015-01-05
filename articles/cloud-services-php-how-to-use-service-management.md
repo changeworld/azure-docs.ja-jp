@@ -561,4 +561,4 @@ Azure には、2 つの展開環境が用意されています。ステージン
 
 [Windows Azure サービスの構成スキーマ (.cscfg ファイル)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee758710.aspx
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

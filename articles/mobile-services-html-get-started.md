@@ -155,4 +155,4 @@
 [Mobile Services HTML/JavaScript の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-html-js-client
 [クロス オリジン リソース共有]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn155871.aspx
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

@@ -265,4 +265,4 @@ Visual Studio で新しいコンソール アプリケーションを作成し�
 [files-concepts]: ./media/storage-dotnet-how-to-use-files/files-concepts.png
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

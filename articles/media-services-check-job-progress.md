@@ -90,4 +90,4 @@ private static string JobIdAsFileName(string jobID)
 <h2>次のステップ</h2>
 これで、ジョブを作成して進行状況を追跡する方法を学習できました。次のステップはアセットを保護することです。詳細については、「[How to Protect an Asset with Azure Media Services (Azure メディア サービスでアセットを保護する方法)](http://go.microsoft.com/fwlink/?LinkID=301813&clcid=0x409)」を参照してください。
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

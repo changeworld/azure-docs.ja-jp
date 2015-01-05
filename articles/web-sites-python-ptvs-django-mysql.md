@@ -201,4 +201,4 @@ Python Tools for Visual Studio、Django、MySQL の詳細については、以�
 [Django のドキュメント]: https://www.djangoproject.com/
 [MySQL]: http://www.mysql.com/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

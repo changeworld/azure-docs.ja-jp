@@ -349,4 +349,4 @@ JMS を AMQP 1.0 とサービス バスで使用する場合は、次の制限�
 * [Service Bus AMQP: 開発者ガイド](http://msdn.microsoft.com/ja-jp/library/windowsazure/jj841071.aspx)
 * [How to Use Service Bus Queues (Service Bus キューの利用方法)](http://www.windowsazure.com/ja-jp/develop/net/how-to-guides/service-bus-queues/)
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

@@ -195,4 +195,4 @@ Next steps here....
 [Mac および Linux 用 Azure コマンド ライン ツールのインストール方法]: http://go.microsoft.com/fwlink/p/?LinkId=275795
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

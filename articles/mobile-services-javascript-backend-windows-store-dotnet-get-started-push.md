@@ -134,4 +134,4 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 [通知ハブを使用したニュース速報の送信]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
 [通知ハブを使用したローカライズ ニュース速報の送信]: /ja-jp/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

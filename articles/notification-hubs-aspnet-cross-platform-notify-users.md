@@ -99,4 +99,4 @@
 [テンプレート]: http://go.microsoft.com/fwlink/p/?LinkId=317339
 [方法: Windows Azure 通知ハブ (Windows ストア アプリ)]: http://msdn.microsoft.com/ja-jp/library/windowsazure/jj927172.aspx
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

@@ -87,4 +87,4 @@ Capptain がアプリに対して実行できる機能の詳細については�
 [Capptain]: http://www.capptain.com
 [Mobile Services 料金]: /ja-jp/pricing/details/mobile-services/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

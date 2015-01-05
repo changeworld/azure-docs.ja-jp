@@ -108,4 +108,4 @@ Azure PowerShell セッションを開き、次のコマンドを実行します
 [Azure VM の構成設定について]: http://msdn.microsoft.com/ja-jp/library/azure/dn763935.aspx
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

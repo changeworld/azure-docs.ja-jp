@@ -230,4 +230,4 @@ azure モジュールは、環境変数 **AZURE\_SERVICEBUS\_NAMESPACE** およ�
 -   [SqlFilter] に関する API リファレンス(http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx)
 -	GitHub の [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

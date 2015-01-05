@@ -104,4 +104,4 @@ SUSE Linux Enterprise Server on Azure は、クラウド コンピューティ�
 </table>
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

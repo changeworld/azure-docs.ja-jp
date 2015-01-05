@@ -75,4 +75,4 @@ HDInsight には次のサンプルが付属します。
 [hdinsight-use-pig]: ../hdinsight-use-pig/
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

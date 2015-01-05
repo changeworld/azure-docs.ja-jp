@@ -238,4 +238,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
   [キュー、トピック、およびサブスクリプション]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367516.aspx
   [Service Bus が仲介するメッセージングに関する .NET チュートリアル]: http://msdn.microsoft.com/ja-jp/library/windowsazure/hh367512.aspx
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

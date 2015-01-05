@@ -192,4 +192,4 @@ Microsoft Azure の Web サイトは、SQL Server、MySQL、HTTP Web APIs、Mobi
 [HCMInstallComplete]:./media/web-sites-hybrid-connection-get-started/D09HCMInstallComplete.png
 [HCStatusConnected]:./media/web-sites-hybrid-connection-get-started/D10HCStatusConnected.png
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

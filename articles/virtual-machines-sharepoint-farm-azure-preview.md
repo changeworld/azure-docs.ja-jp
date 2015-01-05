@@ -68,4 +68,4 @@ SharePoint Farm を使用して SharePoint ファームを作成するには、�
 SharePoint Server Farm は、Azure リソース マネージャーとスクリプトを使用して、SharePoint ファームのインフラストラクチャとサーバー構成を自動作成します。詳細については、「[リソース マネージャーでの Windows PowerShell の使用](http://azure.microsoft.com/ja-jp/documentation/articles/powershell-azure-resource-manager/)」を参照してください。
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

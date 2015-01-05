@@ -175,4 +175,4 @@ WordCountTopology サンプルはディレクトリに出力を書き込みま�
 [stormjavadocs]: https://storm.incubator.apache.org/apidocs/
 [azureportal]: https://manage.windowsazure.com/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

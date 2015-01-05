@@ -56,4 +56,4 @@ Azure ではこのテンプレートをイメージとして扱い、**[マイ �
 [データ ディスクを仮想マシンに接続する方法]: ../storage-windows-attach-disk/
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

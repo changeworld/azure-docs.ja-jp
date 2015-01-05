@@ -166,4 +166,4 @@ private static IJob ConvertMP4toSmooth(IAsset assetToConvert, string configFileP
 [ジョブの進行状況をチェックする]:http://go.microsoft.com/fwlink/?LinkId=301737
 [Azure Media Packager 用のタスクのプリセット]:http://msdn.microsoft.com/ja-jp/library/windowsazure/hh973635.aspx
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

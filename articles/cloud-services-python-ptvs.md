@@ -135,4 +135,4 @@ Web ロールまたは worker ロールから、Azure Storage、Service Bus な�
 [Python 2.7 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517190 
 [Python 3.4 (32 ビット)]: http://go.microsoft.com/fwlink/?LinkId=517191
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

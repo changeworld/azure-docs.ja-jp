@@ -61,4 +61,4 @@ Azure の仮想マシンが Ubuntu イメージの場合には、cloud-init を�
 [Microsoft Azure Cross-Platform Command-line Interface (Microsoft Azure クロスプラットフォーム コマンドライン インターフェイス)](https://github.com/Azure/azure-sdk-tools-xplat)
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

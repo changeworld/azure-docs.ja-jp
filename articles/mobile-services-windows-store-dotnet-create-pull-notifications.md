@@ -157,4 +157,4 @@
 [Mobile Services .NET の使用方法の概念リファレンス]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

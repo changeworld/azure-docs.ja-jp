@@ -269,4 +269,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [management-portal]: https://manage.windowsazure.com
 [sql-database-editions]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee621788.aspx
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

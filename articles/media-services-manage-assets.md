@@ -82,4 +82,4 @@ foreach (IAsset asset in _context.Assets)
 <h2>次のステップ</h2>
 これで、アセットの管理方法を学習できました。次は、「[How to: Deliver an Asset by Download (方法: ダウンロードによってアセットを配信する)](../media-services-deliver-asset-download/) 」に進みます。
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

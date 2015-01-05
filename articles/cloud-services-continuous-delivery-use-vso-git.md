@@ -250,4 +250,4 @@ Git を使用する場合は、通常、working 分岐で変更を行い、開�
 [47]: ./media/cloud-services-continuous-delivery-use-vso-git/SourceSettingsPage.PNG
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

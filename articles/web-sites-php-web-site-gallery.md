@@ -16,4 +16,4 @@
 - [その他の PHP チュートリアル](/ja-jp/develop/php/tutorials/) - PHP および Azure を使用して、その他の種類のアプリケーションを作成します。
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

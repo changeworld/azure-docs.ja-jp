@@ -161,4 +161,4 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 
 この記事で説明されている Azure キュー サービスと、「[Service Bus キューの使用方法](/ja-jp/develop/ruby/how-to-guides/service-bus-queues/) 」で説明されている Azure Service Bus キューの比較については、「[Azure キューと Service Bus キューの比較]」を参照してください。(http://msdn.microsoft.com/ja-jp/library/windowsazure/hh767287.aspx)
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

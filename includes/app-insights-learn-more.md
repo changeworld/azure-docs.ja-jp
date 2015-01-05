@@ -24,4 +24,4 @@
 [qna]: ../app-insights-troubleshoot-faq/
 [data]: ../app-insights-data-retention-privacy/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

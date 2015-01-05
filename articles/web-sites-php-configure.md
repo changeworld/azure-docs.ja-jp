@@ -110,4 +110,4 @@ Azure Websites では、既定の PHP ランタイムを使用する代わりに
 [Azure での Web サイトの作成、監視、および規模変更]: http://www.windowsazure.com/ja-jp/manage/services/web-sites/
 [Azure SDK for PHP をダウンロードする]: http://www.windowsazure.com/ja-jp/develop/php/common-tasks/download-php-sdk/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

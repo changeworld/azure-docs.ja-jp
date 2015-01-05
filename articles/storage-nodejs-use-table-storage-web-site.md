@@ -678,4 +678,4 @@ Azure でコマンド ライン ツールを使用する前に、自分のサブ
 
 [Node.js アプリケーションの作成と Azure の Web サイトへの展開]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

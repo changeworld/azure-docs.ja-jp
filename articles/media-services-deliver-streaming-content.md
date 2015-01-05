@@ -78,4 +78,4 @@ private static ILocator GetStreamingOriginLocator( string targetAssetID)
 <h2>次のステップ</h2>
 これまで、Azure Storage からのダウンロードとスムーズ ストリーミングの使用によるメディアの配信について説明しました。次のトピック「[方法: Apple HLS ストリーミング コンテンツを配信する](../media-services-deliver-http-live-streaming-content/) 」では、Apple HTTP ライブ ストリーミング (HLS) を使用したストリーミング コンテンツの配信について説明します。
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

@@ -73,4 +73,4 @@ static void DownloadProgress(object sender, DownloadProgressChangedEventArgs e)
 <h2>次のステップ</h2>
 このトピックでは、Azure ストレージからのアセットのダウンロードについて説明しました。アセットを配信する他の方法の情報については、「[方法: ストリーミング コンテンツを配信する](../media-services-deliver-streaming-content/) 」トピックを参照してください。
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

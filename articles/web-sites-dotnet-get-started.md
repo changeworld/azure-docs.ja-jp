@@ -303,4 +303,4 @@
 
 	Azure では、このチュートリアルで示したように Websites で、または Cloud Services や Virtual Machines で、Web アプリケーションを実行することができます。詳細については、「[Azure Execution Models (Azure 実行モデル)](/ja-jp/develop/net/fundamentals/compute/) 」および「[Azure Websites, Cloud Services, and VMs:When to use which? (Azure Websites、Azure Cloud Services、Azure Virtual Machines: いつ、どれを使用するか)](/ja-jp/manage/services/web-sites/choose-web-app-service/)」を参照してください。
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

@@ -280,4 +280,4 @@ HDInsight の Hadoop クラスターで HBase を使用して、ビッグ デー
 
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

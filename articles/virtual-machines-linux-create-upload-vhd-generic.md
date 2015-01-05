@@ -121,4 +121,4 @@ Red Hat Enterprise Linux Version **6.0-6.3** の変形を実行する場合は�
 
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

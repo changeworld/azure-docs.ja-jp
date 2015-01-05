@@ -122,4 +122,4 @@ static void  blobTransferClient_TransferProgressChanged(object sender, BlobTrans
 
 [方法: メディア プロセッサ インスタンスを取得する]: ../media-services-get-media-processor/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

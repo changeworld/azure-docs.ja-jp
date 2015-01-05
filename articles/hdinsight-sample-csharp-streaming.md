@@ -189,4 +189,4 @@ Azure PowerShell を使用して Azure HDInsight 上で他のサンプルを実�
 
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

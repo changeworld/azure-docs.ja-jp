@@ -172,4 +172,4 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
   [ms-open-tech]: http://msopentech.com
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

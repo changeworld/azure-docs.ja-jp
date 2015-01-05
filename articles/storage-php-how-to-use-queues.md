@@ -387,4 +387,4 @@ Azure キュー サービス クライアントをインスタンス化するに
 [Azure の管理ポータル]: http://manage.windowsazure.com/
 [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

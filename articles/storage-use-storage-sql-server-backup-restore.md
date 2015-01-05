@@ -73,4 +73,4 @@ SQL Server 資格情報を作成する手順の詳細については、「[Azure
 
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

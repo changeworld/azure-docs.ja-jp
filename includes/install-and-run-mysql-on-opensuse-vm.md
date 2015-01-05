@@ -83,4 +83,4 @@
 
 [Image9]: ./media/install-and-run-mysql-on-opensuse-vm/LinuxVmAddEndpointMySQL.png
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

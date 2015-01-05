@@ -143,4 +143,4 @@ iPhone、iPod、iPad などの iOS デバイス用に Microsoft で用意され�
 
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

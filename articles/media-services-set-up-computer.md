@@ -70,4 +70,4 @@ Media Services アカウントを設定するには、Azure の管理ポータ�
 [Media Services アカウントの作成方法]: ../media-services-create-account/
 [方法: 暗号化されたアセットを作成してストレージにアップロードする]: ../media-services-create-encrypted-asset-upload-storage/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

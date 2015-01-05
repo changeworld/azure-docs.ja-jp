@@ -445,4 +445,4 @@ Visual Studio で直接 Web サイトを構成することもできます。Azur
 [manage]: #manage
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

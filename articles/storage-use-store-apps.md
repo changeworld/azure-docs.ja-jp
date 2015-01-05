@@ -77,4 +77,4 @@ WCF Data Services NuGet パッケージを参照したら、ボタンの **Click
 [store-apps-storage-choose-library]: ./media/storage-use-store-apps/store-apps-storage-choose-library.png
 [store-apps-storage-package-manager]: ./media/storage-use-store-apps/store-apps-storage-package-manager.png
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

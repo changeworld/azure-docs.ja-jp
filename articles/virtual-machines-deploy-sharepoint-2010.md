@@ -523,4 +523,4 @@ SharePoint Server を Azure の仮想マシンに正常に展開するには、�
 </ul>
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

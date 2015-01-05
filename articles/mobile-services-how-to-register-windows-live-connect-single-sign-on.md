@@ -81,4 +81,4 @@ Live Connect を使用して認証をアプリケーションに統合する準�
 [JavaScript と HTML]: /ja-jp/develop/mobile/tutorials/get-started-with-users-js/
 [Azure の管理ポータル]: https://manage.windowsazure.com/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

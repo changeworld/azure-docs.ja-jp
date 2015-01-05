@@ -132,4 +132,4 @@ SLA は、"サポート ウィンドウ" の条件で定義されます。サポ
 
 [zookeeper]: http://zookeeper.apache.org/ 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

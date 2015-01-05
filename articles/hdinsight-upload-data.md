@@ -295,4 +295,4 @@ Sqoop の使用方法の詳細については、「[HDInsight の Hadoop での 
 [image-ase-blob]: ./media/hdinsight-upload-data/HDI.ASEBlob.png
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

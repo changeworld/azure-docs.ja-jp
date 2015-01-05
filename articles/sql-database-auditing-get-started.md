@@ -159,4 +159,4 @@ REST API については、 <a href="http://download.microsoft.com/download/D/8/
 [別の azure.microsoft.com ドキュメントのトピックへのリンク 3]: ../storage-whatis-account/
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

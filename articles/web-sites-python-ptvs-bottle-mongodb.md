@@ -221,4 +221,4 @@ Follow these links to learn more about Python Tools for Visual Studio, Bottle an
 [Web Projects]: http://pytools.codeplex.com/wikipage?title=Features%20Web%20Project
 [Cloud Service Projects]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

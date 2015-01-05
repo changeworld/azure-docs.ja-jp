@@ -8,4 +8,4 @@
 
 Windows Phone ストア 8.1 アプリ向けのクイックスタート プロジェクトはユニバーサル Windows プロジェクトの一部としてダウンロードして入手できます。詳細については、「[モバイル サービスの使用](/ja-jp/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started/)」を参照してください。 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

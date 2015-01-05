@@ -645,4 +645,4 @@ promise はいくつかの異なる方法で使用することができます。
 [Mobile Services テーブルの管理用コマンド]: http://www.windowsazure.com/ja-jp/manage/linux/other-resources/command-line-tools/#Mobile_Tables
 [OData system query options reference (OData システム クエリ オプション リファレンス)]: http://go.microsoft.com/fwlink/p/?LinkId=444502
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

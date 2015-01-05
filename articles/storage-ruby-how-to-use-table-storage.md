@@ -164,4 +164,4 @@ azure モジュールは、Azure のストレージ アカウントに接続す�
 * [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 * GitHub の [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

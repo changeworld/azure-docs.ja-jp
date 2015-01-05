@@ -116,4 +116,4 @@ Android 向けに構築する場合は、Android 4.3 またはそれ以降の SD
 [認証の使用]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-users
 [プッシュ通知の使用]: /ja-jp/documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started-push
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

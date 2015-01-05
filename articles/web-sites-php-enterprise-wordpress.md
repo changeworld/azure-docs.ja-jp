@@ -270,4 +270,4 @@ WordPress サイトを作成、移行した後は、以下の情報を参照し�
 [storesendgrid]: http://azure.microsoft.com/ja-jp/gallery/store/sendgrid/sendgrid-azure/
 [cdn]: http://azure.microsoft.com/ja-jp/documentation/articles/cdn-how-to-use/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

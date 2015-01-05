@@ -188,4 +188,4 @@ Azure の ASP.NET Web ロールで Twilio を使用した基本機能を示す�
 
 [azure_runtime_ref_dotnet]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.serviceruntime.aspx
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

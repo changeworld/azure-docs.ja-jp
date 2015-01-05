@@ -355,4 +355,4 @@ Java コードを実行すると、ターゲット デバイスに表示され�
 [Java REST wrapper sample (Java REST ラッパー サンプル)]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-java
 [通知ハブの使用]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-ios-get-started/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

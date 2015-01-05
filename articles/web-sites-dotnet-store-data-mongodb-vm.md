@@ -516,4 +516,4 @@ MongoDB の接続文字列の詳細については、[MongoDB の接続に関す
 [Azure の Web サイトを作成する]: #createwebsite
 [Git を使用して Web サイトに ASP.NET アプリケーションをデプロイする]: #deployapp
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

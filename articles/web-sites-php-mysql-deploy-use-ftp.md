@@ -264,4 +264,4 @@ After uploading both `index.php` and `createtable.php`, browse to **http://[site
 [management-portal]: https://manage.windowsazure.com
 [download-publish-profile]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/download_publish_profile_2.png
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

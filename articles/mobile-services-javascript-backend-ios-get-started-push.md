@@ -240,4 +240,4 @@ Mobile Services と通知ハブについては次のトピックを参照して�
 
 [Mobile Services Objective-C how-to conceptual reference (Mobile Services Objective-C の使用方法の概念的リファレンス)]: /ja-jp/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

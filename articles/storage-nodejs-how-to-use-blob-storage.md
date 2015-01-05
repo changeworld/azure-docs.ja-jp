@@ -391,4 +391,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [Azure のデータの格納とアクセス]: http://msdn.microsoft.com/ja-jp/library/windowsazure/gg433040.aspx
   [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

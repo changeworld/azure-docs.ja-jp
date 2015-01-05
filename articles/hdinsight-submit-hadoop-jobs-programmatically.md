@@ -709,4 +709,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
 [apache-hive]: http://hive.apache.org/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

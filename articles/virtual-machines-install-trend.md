@@ -72,4 +72,4 @@ Azure PowerShell セッションを開き、次のコマンドを実行します
 
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

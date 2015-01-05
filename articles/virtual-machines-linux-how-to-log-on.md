@@ -39,4 +39,4 @@ Linux オペレーティング システムを実行する仮想マシンへの�
 <!-- LINKS -->
 [How to Reset a Password or SSH for Linux Virtual Machines (Linux 仮想マシンでパスワードまたは SSH をリセットする方法)]: http://go.microsoft.com/fwlink/p/?LinkId=512138
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

@@ -284,4 +284,4 @@ Hive の使用法の詳細については、「[HDInsight での Hive の使用]
 
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

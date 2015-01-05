@@ -448,4 +448,4 @@ iPhone、iPod、iPad などの iOS デバイス用に Microsoft で用意され�
   [メディア サービス クライアント開発]: http://msdn.microsoft.com/ja-jp/library/windowsazure/dn223283.aspx
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

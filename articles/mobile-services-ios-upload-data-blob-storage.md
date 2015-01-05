@@ -9,4 +9,4 @@ TechEd 2014 で発表したとおり、開発エクスペリエンスを簡易�
 
 [iOS and Mobile Services and Windows Azure Storage (iOS と Mobile Services および Windows Azure Storage)]: http://chrisrisner.com/iOS-and-Mobile-Services-and-Windows-Azure-Storage
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

@@ -873,4 +873,4 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 [img-hdi-flightdelays-flow]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.Flow.png
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

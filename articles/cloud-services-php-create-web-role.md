@@ -219,4 +219,4 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 [方法: Import publish settings (方法: 発行の設定をインポートする)]: /ja-jp/develop/php/how-to-guides/powershell-cmdlets/#ImportPubSettings
 [方法: Deploy a cloud service to Azure (方法: Azure にクラウド サービスをデプロイする)]: /ja-jp/develop/php/how-to-guides/powershell-cmdlets/#Deploy
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

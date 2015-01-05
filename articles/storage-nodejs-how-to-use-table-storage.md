@@ -436,4 +436,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [ストレージを使用する Node.js Web アプリケーション]: /ja-jp/documentation/articles/storage-nodejs-use-table-storage-web-site/
   [Node.js アプリケーションの作成と Azure の Web サイトへの展開]: /ja-jp/documentation/articles/web-sites-nodejs-develop-deploy-mac/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

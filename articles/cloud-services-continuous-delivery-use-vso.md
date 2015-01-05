@@ -291,4 +291,4 @@ Visual Studio Online での単位テストの詳細については、「[ビル�
 [49]: ./media/cloud-services-continuous-delivery-use-vso/TestsFailed.PNG
 [50]: ./media/cloud-services-continuous-delivery-use-vso/TestsResultsFailed.PNG
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

@@ -199,4 +199,4 @@ Windows Phone 8.1 では、以前の Silverlight ベースの XAML を使用し�
 [Building universal Windows apps for all Windows devices (すべての Windows デバイスに対応するユニバーサル Windows アプリの構築)]: http://go.microsoft.com/fwlink/p/?LinkId=509905
 [Universal Windows app project for Azure Mobile Services using MVVM (MVVM を使用した Azure Mobile Services 用ユニバーサル Windows アプリ プロジェクト)]: http://code.msdn.microsoft.com/Universal-Windows-app-for-db3564de
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

@@ -469,4 +469,4 @@ Android NDK をインストールする必要があります。該当する .zip
 [Mobile Services の push オブジェクト]:  http://go.microsoft.com/fwlink/p/?linkid=272333&clcid=0x409
 [Java 開発ツールのインストール]: http://docs.appcelerator.com/titanium/latest/#!/guide/Installing_the_Java_Development_Tools
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

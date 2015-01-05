@@ -343,4 +343,4 @@
 [通知ハブを使用したニュース速報の送信]: /ja-jp/manage/services/notification-hubs/breaking-news-dotnet
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

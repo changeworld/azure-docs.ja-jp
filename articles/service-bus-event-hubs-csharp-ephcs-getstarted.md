@@ -81,4 +81,4 @@ Event Hubs は、毎秒数百万件の処理が可能な高度にスケーラブ
 [イベント プロセッサ ホスト]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [Event Hubs の概要]: http://msdn.microsoft.com/ja-jp/library/azure/dn836025.aspx
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

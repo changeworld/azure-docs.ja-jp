@@ -168,4 +168,4 @@ Node.js モジュールをモバイル サービスに追加するための推�
 [Node.js API ドキュメント:モジュール]: http://nodejs.org/api/modules.html
 [node-uuid]: https://npmjs.org/package/node-uuid
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

@@ -215,4 +215,4 @@ Azure 管理ポータルを使った Azure ストレージ アカウントの作
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "List and show clusters"
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

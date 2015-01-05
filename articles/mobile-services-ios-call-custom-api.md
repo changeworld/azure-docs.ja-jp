@@ -51,4 +51,4 @@
 [ソース管理へのサーバー スクリプトの保存]: /ja-jp/documentation/articles/mobile-services-store-scripts-source-control
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

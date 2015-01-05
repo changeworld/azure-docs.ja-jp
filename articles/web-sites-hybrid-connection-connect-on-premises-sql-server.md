@@ -434,4 +434,4 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 [HCTestSSMSTree]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F10HCTestSSMSTree.png
 [HCTestShowMemberDb]:./media/web-sites-hybrid-connection-connect-on-premises-sql-server/F11HCTestShowMemberDb.png
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

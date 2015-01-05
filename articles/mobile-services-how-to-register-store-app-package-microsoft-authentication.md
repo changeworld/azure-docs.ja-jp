@@ -24,4 +24,4 @@ Azure のモバイル サービスでは、クライアント主導とサーバ�
 [Get started with users C# (ユーザー C# の使用)]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet/
 [Get started with users JavaScript (ユーザー JavaScript の使用)]: /ja-jp/develop/mobile/tutorials/get-started-with-users-js/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

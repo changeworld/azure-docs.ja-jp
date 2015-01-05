@@ -204,4 +204,4 @@ Azure ストレージを導入するには、次のリソースを参照して�
 - [Python からテーブル ストレージを使用する方法](../storage-python-how-to-use-table-storage/)
 - [Python からキュー ストレージを使用する方法](../storage-python-how-to-use-queue-storage/)
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

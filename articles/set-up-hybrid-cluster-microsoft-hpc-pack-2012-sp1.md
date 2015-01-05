@@ -345,4 +345,4 @@ HPC Pack の **clusrun** コマンドを使用すると、1 つ以上のクラ�
 [stop_node4]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/stop_node4.png
 [view_instances2]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/view_instances2.png
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

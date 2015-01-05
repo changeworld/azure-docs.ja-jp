@@ -1337,4 +1337,4 @@ JSON との双方向のシリアル化をサポートするには、オブジェ
 
 [azure-portal]: https://manage.windowsazure.com/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

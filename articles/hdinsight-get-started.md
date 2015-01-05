@@ -288,4 +288,4 @@ Microsoft Excel 用 Power Query アドインを使用すると、HDInsight か�
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-get-started/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-get-started/HDI.GettingStarted.PowerQuery.ImportData2.png
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

@@ -141,4 +141,4 @@
 [ユーザーへの通知の送信]: /ja-jp/manage/services/notification-hubs/notify-users/
 [ユーザーへのクロスプラットフォーム通知の送信]: /ja-jp/manage/services/notification-hubs/notify-users-xplat-mobile-services/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

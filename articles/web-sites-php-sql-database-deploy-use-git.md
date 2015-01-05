@@ -287,4 +287,4 @@ Registration アプリケーションは、名前と電子メール アドレス
 [sql-database-editions]: http://msdn.microsoft.com/ja-jp/library/windowsazure/ee621788.aspx
 [where-is-code]: ./media/web-sites-php-sql-database-deploy-use-git/setupgit.png
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

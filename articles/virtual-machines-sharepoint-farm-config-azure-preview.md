@@ -106,4 +106,4 @@ SharePoint サーバー ファームは、事前構成された SharePoint Serve
 	-	SharePoint ファーム パスフレーズ:初期構成中に指定されます。
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

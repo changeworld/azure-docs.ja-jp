@@ -357,4 +357,4 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
   [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
  [WebMatrix を使用した Web サイト]: /ja-jp/documentation/articles/web-sites-nodejs-use-webmatrix/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

@@ -7,4 +7,4 @@
 
 [WACOM.INCLUDE [howto-connect-vm-cloud-service](../includes/howto-connect-vm-cloud-service.md)]
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

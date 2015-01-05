@@ -685,4 +685,4 @@ File download path:  C:\supportFiles\outputfiles\interview2_metadata.xml
 [次のステップ]:#next-steps
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

@@ -57,4 +57,4 @@ Azure は単一インスタンス構成の仮想マシンに対してのみ、�
 [仮想マシンの可用性管理]: ../virtual-machines-windows-tutorial/
 [計画済み、または計画外メンテナンスについて理解する]: ../virtual-machines-manage-availability/#Understand-planned-versus-unplanned-maintenance/ 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

@@ -9,4 +9,4 @@
 
 Mobile Services を既存の Windows ストア アプリに追加する手順については、「[既存のアプリケーションへの Mobile Services の追加](/ja-jp/documentation/articles/mobile-services-windows-store-dotnet-get-started-data/)」を参照してください。
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

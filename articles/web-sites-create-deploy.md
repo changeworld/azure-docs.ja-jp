@@ -52,4 +52,4 @@ Web サイトは、Azure の管理ポータルの **[削除]** アイコンを�
 
 詳細については、[Azure Websites のページ](/ja-jp/documentation/services/web-sites/)を参照してください。
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

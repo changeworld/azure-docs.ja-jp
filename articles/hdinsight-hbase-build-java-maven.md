@@ -568,4 +568,4 @@ __hdinsightclustername__ を、使用する HDInsight クラスターの名前�
 
 `-showErr` パラメーターを使用して、ジョブの実行中に生成された STDERR を表示します。
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

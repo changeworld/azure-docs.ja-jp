@@ -394,4 +394,4 @@ Microsoft Azure 上のロール内で実行されるアプリケーションで�
 [Azure Storage REST API]: http://msdn.microsoft.com/ja-jp/library/azure/gg433040.aspx
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

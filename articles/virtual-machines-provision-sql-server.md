@@ -389,4 +389,4 @@ Azure の仮想マシンで実行されている SQL Server のインスタン�
 [Image33]: ./media/virtual-machines-provision-sql-server/33Connect-SSMS.png
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

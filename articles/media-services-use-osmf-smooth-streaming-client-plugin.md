@@ -390,4 +390,4 @@ OSMF 用スムーズ ストリーミング動的プラグインには、[Strobe 
 
 全般的な OSMF 開発の詳細については、[OSMF 公式サイトの開発に関するページ](http://osmf.org/resources.html)を参照してください。
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

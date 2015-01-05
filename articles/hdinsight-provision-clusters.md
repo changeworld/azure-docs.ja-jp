@@ -645,4 +645,4 @@ SDK を使用して HDInsight クラスターをプロビジョニングする�
 
   [89e2276a]: /ja-jp/documentation/articles/hdinsight-use-sqoop/ "Use Sqoop with HDInsight"
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

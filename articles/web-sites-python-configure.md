@@ -130,4 +130,4 @@ Web サイトにアクセスして正しく構成されたかをテストして�
 ![](./media/web-sites-python-configure/configure-python-result.png)
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

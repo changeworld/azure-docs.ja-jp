@@ -74,4 +74,4 @@ Azure ではこのテンプレートをイメージとして扱い、**[マイ �
 [イメージのキャプチャの成功]: ./media/virtual-machines-capture-image-windows-server/CaptureSuccess.png
 [キャプチャしたイメージの使用]: ./media/virtual-machines-capture-image-windows-server/MyImagesWindows.png
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

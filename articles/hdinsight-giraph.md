@@ -204,4 +204,4 @@ HDInsight クラスターに接続するには、次の手順を実行します�
 [pig]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-pig/
 [hive]: http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-hive/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

@@ -28,4 +28,4 @@
 
 **ダウンロード:** <a href="http://go.microsoft.com/fwlink/p/?LinkId=330292" target="_blank">「Understanding NoSQL on Microsoft Azure (Microsoft Azure での NoSQL テクノロジについて)」の PDF ファイル</a>
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

@@ -16,4 +16,4 @@ Chris Risner のチュートリアル「[Accessing Resources Secured by Azure Ac
 <!-- URLs. -->
 [Accessing Resources Secured by Azure Active Directory with iOS and Android (iOS および Android で Azure Active Directory によってリソースに安全にアクセスする)]: http://chrisrisner.com/Accessing-Resources-Secured-by-Azure-Active-Directory-with-iOS-and-Android
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

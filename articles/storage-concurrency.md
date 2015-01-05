@@ -267,4 +267,4 @@ Azure Storage の詳細については、以下を参照してください。
 - Storage Architecture - [Windows Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency (Storage アーキテクチャ - Windows Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

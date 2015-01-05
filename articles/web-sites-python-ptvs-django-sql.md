@@ -212,4 +212,4 @@ Python Tools for Visual Studio、Django、SQL Database の詳細については�
 [Django のドキュメント]: https://www.djangoproject.com/
 [SQL データベース]: /ja-jp/documentation/services/sql-database/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

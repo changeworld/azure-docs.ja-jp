@@ -401,4 +401,4 @@ Visual Studio で、規則ファイルが出力フォルダーにコピーされ
   [Reducing TechNet and MSDN hosting costs and environmental impact with autoscaling on Azure (Azure のオートスケーリングによる TechNet と MSDN のホスティング コストと環境への影響の軽減)]: http://msdn.microsoft.com/ja-jp/library/jj838718(PandP.50).aspx
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

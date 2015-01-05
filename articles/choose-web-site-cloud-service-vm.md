@@ -357,4 +357,4 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
   [sqldatabase]: http://www.windowsazure.com/ja-jp/documentation/services/sql-database/
   [Storage]: http://www.windowsazure.com/ja-jp/documentation/services/storage/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

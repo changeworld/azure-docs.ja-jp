@@ -245,4 +245,4 @@ PHP コードを実行すると、ターゲット デバイスに表示される
 [PHP REST wrapper sample (PHP REST ラッパー サンプル)]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [通知ハブの使用]: http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-ios-get-started/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

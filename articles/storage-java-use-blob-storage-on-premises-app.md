@@ -371,4 +371,4 @@ Java IO クラス、および
   [ストレージ アカウントの管理方法]: http://www.windowsazure.com/ja-jp/manage/services/storage/how-to-manage-a-storage-account/
   [How to Use the Blob Storage Service from Java (Java から BLOB ストレージ サービスを使用する方法)]: http://www.windowsazure.com/ja-jp/develop/java/how-to-guides/blob-storage/
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

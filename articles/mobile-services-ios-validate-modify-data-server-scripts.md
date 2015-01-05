@@ -20,7 +20,7 @@
 
 ユーザーにより送信されたデータの長さを検証することをお勧めします。最初に、モバイル サービスに送信された文字列データの長さを検証するスクリプトを登録し、長すぎる文字列 (この場合は 10 文字を超える) を拒否します。
 
-1. [Azure の管理ポータル][Azure 管理ポータル]にログインし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。
+1. [Azure の管理ポータル]にログインし、**[Mobile Services]** をクリックして、アプリケーションをクリックします。
 
    	![][0]
 
@@ -28,7 +28,7 @@
 
    	![][1]
 
-3. **[スクリプト]** をクリックし、**[挿入]** 操作を選択します。
+3.  **[スクリプト]** をクリックし、**[挿入]** 操作を選択します。
 
    	![][2]
 
@@ -42,7 +42,7 @@
             }
         }
 
-    このスクリプトは、**text** プロパティの長さをチェックし、長さが 10 文字を超えた場合にエラー応答を送信します。それ以外の場合、**execute** メソッドが呼び出されて挿入を完了します。
+        このスクリプトは、**text** プロパティの長さを調べ、長さが 10 文字を超えた場合にエラー応答を送信します。それ以外の場合、**execute** メソッドが呼び出されて挿入を完了します。
 
     <div class="dev-callout">
 	<b>注</b>
@@ -52,17 +52,17 @@
 
 モバイル サービスはデータを検証してエラー応答を送信するため、検証からのエラー応答を処理できるようにアプリケーションを更新する必要があります。
 
-1. Xcode で、[データの使用][データの使用]に関するチュートリアルを実行したときに変更したプロジェクトを開きます。
+1. Xcode で、[データの使用]に関するチュートリアルを実行したときに変更したプロジェクトを開きます。
 
-2. **[Run]** (Command + R キー) を押して、プロジェクトをビルドし、アプリケーションを開始します。次に、テキスト ボックスに 11 文字以上のテキストを入力し、プラス (**[+]**) アイコンをクリックします。
+2. **[実行]** (Command + R キー) を押してプロジェクトをビルドし、アプリケーションを開始します。次に、テキスト ボックスに 11 文字以上のテキストを入力し、プラス (**[+]**) アイコンをクリックします。
 
    	モバイル サービスから返された応答 400 (正しくない要求) の結果として、処理されないエラーが発生します。
 
-3. QSTodoService.m ファイルで、**addItem** メソッド内の次のコード行を見つけます。
+3. QSTodoService.m ファイルの **addItem** メソッドで、次のコード行を見つけます。
 
         [self logErrorIfNotNil:error];
 
-   	このコード行の後ろの completion ブロックの残りの部分を、次のコードに置き換えます。
+   	このコード行の後ろで、完了ブロックの残りの部分を次のコードに置き換えます。
 
         BOOL goodRequest = !((error) && (error.code == MSErrorMessageErrorCode));
 
@@ -93,7 +93,7 @@
             }
         }
 
-   	これにより、エラーが出力ウィンドウに記録され、ユーザーに表示されます。
+   	これにより、出力ウィンドウにエラーが記録され、ユーザーに表示されます。
 
 4. アプリケーションをリビルドして開始します。
 
@@ -101,11 +101,11 @@
 
   	エラーが処理され、エラー メッセージがユーザーに表示されることに注目してください。
 
-<!--## <a name="add-timestamp"></a>Add a timestamp
+## <a name="add-timestamp"></a>タイムスタンプの追加
 
-The previous tasks validated an insert and either accepted or rejected it. Now, you will update inserted data by using a server script that adds a timestamp property to the object before it gets inserted.
+前のタスクでは、挿入を検証して、受け入れるか拒否しました。ここでは、オブジェクトへの挿入前にタイムスタンプ プロパティをそのオブジェクトに追加するサーバー スクリプトを使用して、挿入されたデータを更新します。
 
-1. In the **Scripts** tab in the [Management Portal], replace the current **Insert** script with the following function, and then click **Save**.
+1. [管理ポータル]の **[スクリプト]** タブで、現在の **[挿入]** スクリプトを次の関数で置き換え、**[保存]** をクリックします。
 
         function insert(item, user, request) {
             if (item.text.length > 10) {
@@ -116,27 +116,27 @@ The previous tasks validated an insert and either accepted or rejected it. Now, 
             }
         }
 
-    This function augments the previous insert script by adding a new **createdAt** timestamp property to the object before it gets inserted by the call to **request**.**execute**.
+    この関数は、前の挿入スクリプトを強化するものです。新しい **createdAt** タイムスタンプ プロパティを、**request**.**execute** の呼び出しによりオブジェクトの挿入前にそのオブジェクトに追加します。
 
-    <div class="dev-callout"><b>Note</b>
-	<p>Dynamic schema must be enabled the first time that this insert script runs. With dynamic schema enabled, Mobile Services automatically adds the <strong>createdAt</strong> column to the <strong>TodoItem</strong> table on the first execution. Dynamic schema is enabled by default for a new mobile service, and it should be disabled before the app is published.</p>
+    <div class="dev-callout"><b>注</b>
+	<p>挿入スクリプトを初めて実行するときには、動的スキーマを必ず有効にしてください。動的スキーマが有効になっていると、挿入スクリプトを最初に実行した時点でモバイル サービスによって<strong>createdAt</strong> テーブルに <strong>TodoItem</strong> 列が自動で追加されます。. 動的スキーマは、新しいモバイル サービスでは既定で有効になっているため、アプリケーションの公開前に無効にする必要があります。</p>
     </div>
 
-2. In Visual Studio, press the **F5** key to run the app, then type text (shorter than 10 characters) in **Insert a TodoItem** and click **Save**.
+2. Visual Studio で、F5 キーを押してアプリケーションを実行し、[Insert a TodoItem] に 10 文字未満のテキストを入力し、[Save] をクリックします。
 
-   	Notice that the new timestamp does not appear in the app UI.
+   	新しいタイムスタンプがアプリケーション UI に表示されないことを確認します。
 
-3. Back in the Management Portal, click the **Browse** tab in the **todoitem** table.
+3. 管理ポータルに戻り、todoitem テーブルの [参照] タブをクリックします。
 
-   	Notice that there is now a **createdAt** column, and the new inserted item has a timestamp value.
+   	**createdAt** 列が存在し、新しく挿入された項目にタイムスタンプ値があることがわかります。
 
-Next, you need to update the iOS app to display this new column.
+次に、この新しい列を表示するように iOS アプリケーションを更新する必要があります。
 
-## <a name="update-client-timestamp"></a>Update the client again
+## <a name="update-client-timestamp"></a>クライアントの再更新
 
-The Mobile Service client will ignore any data in a response that it cannot serialize into properties on the defined type. The final step is to update the client to display this new data.
+モバイル サービス クライアントは、定義された型のプロパティにシリアル化できない応答内のデータを無視します。最後の手順は、クライアントを更新してこの新しいデータを表示することです。
 
-1. In Visual Studio, open the file MainPage.xaml.cs, then replace the existing **TodoItem** class with the following definition:
+1. Visual Studio で、MainPage.xaml.cs ファイルを開き、既存の TodoItem クラスを次の定義に置き換えます。
 
 	    public class TodoItem
 	    {
@@ -152,23 +152,23 @@ The Mobile Service client will ignore any data in a response that it cannot seri
 	        public DateTime? CreatedAt { get; set; }
 	    }
 
-    This new class definition includes the new timestamp property, as a nullable DateTime type.
+    新しいクラス定義には、null 値を許容する DateTime 型として新しいタイムスタンプ プロパティが含まれます。
 
-    <div class="dev-callout"><b>Note</b>
-	<p>The <strong>DataMemberAttribute</strong> tells the client to map the new <strong>CreatedAt</strong> property in the app to the <strong>createdAt</strong> column defined in the TodoItem table, which has a different casing. By using this attribute, your app can have property names on objects that differ from column names in the SQL Database. Without this attribute, an error would occur because of the casing differences.</p>
+    <div class="dev-callout"><b>注</b>
+	<p><strong>DataMemberAttribute</strong> は、アプリケーション内の新しい <strong>CreatedAt</strong> プロパティを、TodoItem テーブルに定義された (大文字と小文字が異なる) <strong>createdAt</strong> 列にマップするように、クライアントに指示します。この属性を使用することにより、アプリケーションでは、SQL データベース内の列名と異なるプロパティ名をオブジェクトに対して使用することができます。この属性がなければ、大文字と小文字が異なるため、エラーが発生します。</p>
     </div>
 
-5. Add the following XAML element just below the **CheckBoxComplete** element in the MainPage.xaml file:
+2. MainPage.xaml ファイル内の [CheckBoxComplete] 要素のすぐ下に、次の XAML 要素を追加します。
 
         <TextBlock Name="WhenCreated" Text="{Binding CreatedAt}" VerticalAlignment="Center"/>
 
-   	これにより、新しい **CreatedAt** プロパティがテキスト ボックスに表示されます。
+   	これにより、新しい CreatedAt プロパティがテキスト ボックスに表示されます。
 
-6. **F5** キーを押してアプリケーションを実行します。
+3. F5 キーを押してアプリケーションを実行します。
 
    挿入スクリプトを更新した後で、タイムスタンプが挿入された項目にのみ表示されることに注目してください。
 
-7. 既存の **RefreshTodoItems** メソッドを次のコードに置き換えます。
+4. 既存の **RefreshTodoItems** メソッドを次のコードに置き換えます。
 
         private void RefreshTodoItems()
         {
@@ -184,15 +184,15 @@ The Mobile Service client will ignore any data in a response that it cannot seri
 
    	このメソッドは、クエリを更新し、タイムスタンプ値を保持しない項目をフィルターで除きます。
 
-8. **F5** キーを押してアプリケーションを実行します。
+5. F5 キーを押してアプリケーションを実行します。
 
    	タイムスタンプ値なしで作成されたすべての項目が UI から消去されていることに注目してください。
 
-これで、データの使用に関するチュートリアルは終了です。-->
+これで、データの使用に関するチュートリアルは終了です。
 
 ## <a name="next-steps"> </a>次のステップ
 
-このチュートリアルが完了したため、データ シリーズの最終チュートリアルに進むことを検討してください。[ページングを使用したクエリの改善][ページングを使用したクエリの改善]。
+このチュートリアルが完了したため、データ シリーズの最終チュートリアルに進むことを検討してください。[ページングを使用したクエリの改善]。
 
 サーバー スクリプトは、ユーザーを認証するときに、およびプッシュ通知の送信のためにも使用されます。詳細については、次のチュートリアルを参照してください。
 
@@ -223,9 +223,10 @@ The Mobile Service client will ignore any data in a response that it cannot seri
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/?LinkId=262293
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-ios
 [スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-ios
-[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-ios
+[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-ios
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-ios
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-ios
 [プッシュ通知の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-push-ios
 
+[管理ポータル]: https://manage.windowsazure.com/
 [Azure 管理ポータル]: https://manage.windowsazure.com/

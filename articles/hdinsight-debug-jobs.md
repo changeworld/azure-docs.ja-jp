@@ -264,4 +264,4 @@ Azure PowerShell または Azure ポータルでユーザーが遭遇する可�
 
 
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

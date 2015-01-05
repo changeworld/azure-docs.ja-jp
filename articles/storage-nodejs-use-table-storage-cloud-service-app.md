@@ -397,4 +397,4 @@ Azure では、消費されたサーバー時間の 1 時間単位の料金が W
   [Node.js Web アプリケーション]: http://www.windowsazure.com/ja-jp/develop/nodejs/tutorials/getting-started/
  
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->

@@ -19,4 +19,4 @@
 	
 3. Eclipse Package Explorer でプロジェクト ノードを右クリックし、**[Properties]** を右クリックして、左の列から **[Android]** を選択します。**[Project Build Target]** が **[targetSdkVersion]** と同じ SDK バージョンに設定されていることを確認します。
 
-<!--HONumber=35_1-->
+<!--HONumber=35.1-->
