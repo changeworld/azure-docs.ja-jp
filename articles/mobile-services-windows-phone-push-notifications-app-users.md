@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Push Notifications to Users (WP8)" pageTitle="ユーザーへのプッシュ通知 (Windows Phone) | モバイル デベロッパー センター" metaKeywords="deprecated" description="Learn how to use Mobile Services to push notifications to users of your Windows Phone app." metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Push notifications to users by using Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Push Notifications to Users (WP8)" pageTitle="ユーザーへのプッシュ通知 (Windows Phone) | モバイル デベロッパー センター" metaKeywords="deprecated" description="Mobile Services を使用して Windows Phone アプリのユーザーにプッシュ通知を送信する方法について説明します。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Push notifications to users by using Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="10/07/2014" ms.author="glenga" />
 

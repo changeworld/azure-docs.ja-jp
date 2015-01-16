@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Get started with notification hubs" pageTitle="Azure Notification Hubs の使用" metaKeywords="" description="Learn how to use Azure Notification Hubs to push notifications." metaCanonical="" services="notification-hubs" documentationCenter="Mobile" title="Getting Started with Notification Hubs" authors="glenga" solutions="" manager="dwrede" editor="dwrede" />
+﻿<properties urlDisplayName="Get started with notification hubs" pageTitle="Azure Notification Hubs の使用" metaKeywords="" description="Azure Notification Hubs を使用してプッシュ通知を行う方法について説明します。" metaCanonical="" services="notification-hubs" documentationCenter="Mobile" title="Getting Started with Notification Hubs" authors="glenga" solutions="" manager="dwrede" editor="dwrede" />
 
 <tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="glenga" />
 

@@ -1,4 +1,4 @@
-﻿<properties title="Publishing Azure ML Web Services to the Azure Marketplace" pageTitle="Azure Marketplace への Azure ML Web サービスの発行 | Azure" description="Publishing Azure ML Web Services to the Azure Marketplace" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties title="Publishing Azure ML Web Services to the Azure Marketplace" pageTitle="Azure Marketplace への Azure ML Web サービスの発行 | Azure" description="Azure Marketplace への Azure ML Web サービスの発行" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
 
 <tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/03/2014" ms.author="garye" />
 

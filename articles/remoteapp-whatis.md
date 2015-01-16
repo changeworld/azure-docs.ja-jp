@@ -1,4 +1,4 @@
-﻿<properties title="What is RemoteApp?" pageTitle="RemoteApp とは" description="Learn about Azure RemoteApp." metaKeywords="" services="" solutions="" documentationCenter="" authors="elizapo" manager="kathyw" />
+﻿<properties title="What is RemoteApp?" pageTitle="RemoteApp とは" description="Azure RemoteApp について説明します。" metaKeywords="" services="" solutions="" documentationCenter="" authors="elizapo" manager="kathyw" />
 
 <tags ms.service="remoteapp" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/05/2014" ms.author="elizapo" ms.manager="kathyw" />
 

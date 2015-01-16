@@ -1,4 +1,4 @@
-﻿<properties title="Manage your Search service on Microsoft Azure" pageTitle="Microsoft Azure で検索サービスを管理する" description="Manage your Search service on Microsoft Azure" metaKeywords="" services="" solutions="" documentationCenter="" authors="Heidist" manager="mblythe" videoId="" scriptId="" />
+﻿<properties title="Manage your Search service on Microsoft Azure" pageTitle="Microsoft Azure で検索サービスを管理する" description="Microsoft Azure で検索サービスを管理する" metaKeywords="" services="" solutions="" documentationCenter="" authors="Heidist" manager="mblythe" videoId="" scriptId="" />
 
 <tags ms.service="azure-search" ms.devlang="" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="" ms.date="09/23/2014" ms.author="heidist" />
 

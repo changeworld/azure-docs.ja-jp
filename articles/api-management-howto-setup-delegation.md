@@ -1,4 +1,4 @@
-﻿<properties pageTitle="ユーザーの登録と成果物のサブスクリプションを委任する方法" metaKeywords="" description="Learn how to delegate user registration and product subscription to a third party in Azure API Management." metaCanonical="" services="api-management" documentationCenter="API Management" title="How to delegate user registration and product subscription in Azure API Management" authors="antonba" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="ユーザーの登録と成果物のサブスクリプションを委任する方法" metaKeywords="" description="ユーザーの登録と製品のサブスクリプションを Azure API Management でサード パーティに委任する方法について説明します。" metaCanonical="" services="api-management" documentationCenter="API Management" title="How to delegate user registration and product subscription in Azure API Management" authors="antonba" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="api-management" ms.workload="mobile" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="antonba" />
 

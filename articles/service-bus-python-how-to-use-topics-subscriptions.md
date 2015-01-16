@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Service Bus Topics" pageTitle="Service Bus トピックの使用方法 (Pythona) - Azure" metaKeywords="Azure Service Bus トピックの使用, 発行サブスクライブ メッセージング Python" description="Learn how to use Service Bus topics and subscriptions in Azure. Code samples are written for Python applications." metaCanonical="" services="service-bus" documentationCenter="Python" title="How to Use Service Bus Topics/Subscriptions" authors="huvalo" solutions="" manager="wpickett" editor="" />
+﻿<properties urlDisplayName="Service Bus Topics" pageTitle="Service Bus トピックの使用方法 (Pythona) - Azure" metaKeywords="Azure Service Bus トピックの使用, 発行サブスクライブ メッセージング Python" description="Azure での Service Bus のトピックとサブスクリプションの使用方法について学習します。コード サンプルは Python アプリケーション向けに作成されています。" metaCanonical="" services="service-bus" documentationCenter="Python" title="How to Use Service Bus Topics/Subscriptions" authors="huvalo" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="09/19/2014" ms.author="huvalo" />
 

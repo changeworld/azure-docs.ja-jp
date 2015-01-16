@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="HDInsight Administration" pageTitle="HDInsight での Hadoop クラスターのプロビジョニング | Azure" metaKeywords="hdinsight, hdinsight administration, hdinsight administration azure" description="Learn how to provision clusters for Azure HDInsight using the management portal, PowerShell, or the command line." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="Provision Hadoop clusters in HDInsight" authors="jgao" />
+﻿<properties urlDisplayName="HDInsight Administration" pageTitle="HDInsight での Hadoop クラスターのプロビジョニング | Azure" metaKeywords="hdinsight, hdinsight administration, hdinsight administration azure" description="管理ポータル、PowerShell、コマンド ラインを使用して Azure HDInsight のクラスターをプロビジョニングする方法について説明します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="Provision Hadoop clusters in HDInsight" authors="jgao" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/14/2014" ms.author="jgao" />
 

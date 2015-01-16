@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Websites with Django" pageTitle="Django を使用した Python Web サイト - Azure チュートリアル" metaKeywords="Azure django, django website" description="A tutorial that introduces you to running a Python website on Azure." metaCanonical="" services="web-sites" documentationCenter="Python" title="Creating Websites with Django" authors="huvalo" solutions="" manager="wpickett" editor="" />
+﻿<properties urlDisplayName="Websites with Django" pageTitle="Django を使用した Python Web サイト - Azure チュートリアル" metaKeywords="Azure django, django website" description="Azure での Python Web サイトの実行について説明するチュートリアル。" metaCanonical="" services="web-sites" documentationCenter="Python" title="Creating Websites with Django" authors="huvalo" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="08/01/2014" ms.author="huvalo" />
 

@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Get Started" pageTitle="HDInsight の Hadoop を使用した HBase テーブルの設定および照会 | Azure" metaKeywords="" description="Get started using HBase with Hadoop in HDInsight. Learn how to create HBase tables and query them using Hive." metaCanonical="" services="hdinsight" documentationCenter="" title="Set up HBase clusters and query them using Hive on Hadoop in HDInsight" authors="bradsev" solutions="big-data" manager="paulettm" editor="cgronlun" />
+﻿<properties urlDisplayName="Get Started" pageTitle="HDInsight の Hadoop を使用した HBase テーブルの設定および照会 | Azure" metaKeywords="" description="HDInsight の Hadoop 環境での HBase の使用についてです。HBase テーブルを作成し、Hive を使用してそのデータを照会する方法について説明します。" metaCanonical="" services="hdinsight" documentationCenter="" title="Set up HBase clusters and query them using Hive on Hadoop in HDInsight" authors="bradsev" solutions="big-data" manager="paulettm" editor="cgronlun" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="12/9/2014" ms.author="bradsev" />
 

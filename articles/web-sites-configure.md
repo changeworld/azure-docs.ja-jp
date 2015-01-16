@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="How to configure" pageTitle="Web サイトの構成方法 - Azure サービス管理 " metaKeywords="Azure Websites, Azure Websites の構成, Azure SQL データベース, Azure MySQL" description="Learn how to configure websites in Azure, including how to configure a website to use a SQL Database or MySQL database." metaCanonical="" services="web-sites" documentationCenter="" title="How to Configure Websites" authors="mwasson" solutions="" manager="wpickett" editor="mollybos" />
+﻿<properties urlDisplayName="How to configure" pageTitle="Web サイトの構成方法 - Azure サービス管理 " metaKeywords="Azure Websites, Azure Websites の構成, Azure SQL データベース, Azure MySQL" description="SQL Database または MySQL データベースを使用するように Web サイトを構成する方法を含め、Azure で Web サイトを構成する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="How to Configure Websites" authors="mwasson" solutions="" manager="wpickett" editor="mollybos" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/18/2014" ms.author="mwasson" />
 

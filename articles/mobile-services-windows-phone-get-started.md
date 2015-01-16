@@ -1,4 +1,4 @@
-﻿<properties pageTitle="Windows Phone アプリ用 Azure Mobile Services の使用" metaKeywords="" description="Follow this tutorial to get started using Azure Mobile Services for Windows Phone development. " metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="Windows Phone アプリ用 Azure Mobile Services の使用" metaKeywords="" description="次のチュートリアルに従って、Windows Phone 開発用の Azure Mobile Services を使用します。 " metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="hero-article" ms.date="11/22/2014" ms.author="glenga" />
 

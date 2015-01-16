@@ -1,4 +1,4 @@
-﻿<properties title="Azure Notification Hubs Secure Push" pageTitle="Azure Notification Hubs の安全なプッシュ" metaKeywords="Azure のプッシュ通知, Azure の通知ハブ, 安全なプッシュ" description="Learn how to send secure push notifications to an iOS app from Azure. Code samples written in Objective-C and C#." documentationCenter="Mobile" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="yuaxu" manager="dwrede" />
+﻿<properties title="Azure Notification Hubs Secure Push" pageTitle="Azure Notification Hubs の安全なプッシュ" metaKeywords="Azure のプッシュ通知, Azure の通知ハブ, 安全なプッシュ" description="セキュリティで保護されたプッシュ通知を Azure から iOS アプリに送信する方法について説明します。コード サンプルは Objective-C と C# で記述されています。" documentationCenter="Mobile" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="yuaxu" manager="dwrede" />
 
 <tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="yuaxu" />
 

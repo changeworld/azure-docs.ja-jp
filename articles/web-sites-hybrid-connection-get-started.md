@@ -1,4 +1,4 @@
-﻿<properties title="Hybrid Connection: Connect an Azure Website to an On-Premises Resource" pageTitle="ハイブリッド接続Connect an Azure Website to an On-Premises Resource using Hybrid Connections (ハイブリッド接続を使用した Azure Web サイトの内部設置型リソースへの接続)" description="Create a connection between an Azure website and an on-premises resource that uses a static TCP port" metaKeywords="" services="web-sites" solutions="web" documentationCenter="" authors="cephalin" manager="wpickett" editor="mollybos" videoId="" scriptId="" />
+﻿<properties title="Hybrid Connection: Connect an Azure Website to an On-Premises Resource" pageTitle="ハイブリッド接続Connect an Azure Website to an On-Premises Resource using Hybrid Connections (ハイブリッド接続を使用した Azure Web サイトの内部設置型リソースへの接続)" description="静的 TCP ポートを使用する内部設置型リソースと Azure の Web サイトの間の接続を作成します。" metaKeywords="" services="web-sites" solutions="web" documentationCenter="" authors="cephalin" manager="wpickett" editor="mollybos" videoId="" scriptId="" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/24/2014" ms.author="cephalin" />
 

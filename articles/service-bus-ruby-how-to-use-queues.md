@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Service Bus Queues" pageTitle="Service Bus キューの使用方法 (Ruby) - Azure" metaKeywords="Azure Service Bus キュー, Azure キュー, Azure メッセージング, Azure キュー Ruby" description="Learn how to use Service Bus queues in Azure. Code samples written in Ruby." metaCanonical="" services="service-bus" documentationCenter="Ruby" title="How to Use Service Bus Queues" authors="guayan" solutions="" manager="wpickett" editor="" />
+﻿<properties urlDisplayName="Service Bus Queues" pageTitle="Service Bus キューの使用方法 (Ruby) - Azure" metaKeywords="Azure Service Bus キュー, Azure キュー, Azure メッセージング, Azure キュー Ruby" description="Azure での Service Bus キューの使用方法を学習します。コード サンプルは Ruby で記述されています。" metaCanonical="" services="service-bus" documentationCenter="Ruby" title="How to Use Service Bus Queues" authors="guayan" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="ruby" ms.topic="article" ms.date="01/01/1900" ms.author="guayan" />
 

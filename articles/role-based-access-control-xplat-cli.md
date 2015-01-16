@@ -1,4 +1,4 @@
-﻿<properties pageTitle="Azure クロス プラットフォーム コマンド ライン インターフェイスによる役割ベースのアクセス制御の管理" metaKeywords="ResourceManager, Azure クロスプラットフォーム コマンド ライン インターフェイス, azure cli, azure コマンド ライン, azure cli, RBAC" description="Managing role-based access control with cross-platform command-line interface" metaCanonical="" services="" documentationCenter="" title="Managing Role-Based Access Control with Cross-Platform Command-Line Interface" authors="guayan" solutions="" manager="terrylan" editor="mollybos" />
+﻿<properties pageTitle="Azure クロス プラットフォーム コマンド ライン インターフェイスによる役割ベースのアクセス制御の管理" metaKeywords="ResourceManager, Azure クロスプラットフォーム コマンド ライン インターフェイス, azure cli, azure コマンド ライン, azure cli, RBAC" description="クロスプラットフォームのコマンド ライン インターフェイスによる役割ベースのアクセス制御の管理" metaCanonical="" services="" documentationCenter="" title="Managing Role-Based Access Control with Cross-Platform Command-Line Interface" authors="guayan" solutions="" manager="terrylan" editor="mollybos" />
 
 <tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="command-line-interface" ms.devlang="na" ms.topic="article" ms.date="11/03/2014" ms.author="guayan" />
 

@@ -1,4 +1,4 @@
-﻿<properties pageTitle="Azure .NET SDK とは" metaKeywords="azure .net sdk" description="Learn what is included in the Azure .NET SDK." documentationCenter=".NET" title="What is the Azure SDK for .NET" authors="tdykstra" solutions="" manager="wpickett" editor="mollybos" />
+﻿<properties pageTitle="Azure .NET SDK とは" metaKeywords="azure .net sdk" description="Azure .NET SDK に含まれるものを紹介します。" documentationCenter=".NET" title="What is the Azure SDK for .NET" authors="tdykstra" solutions="" manager="wpickett" editor="mollybos" />
 
 <tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="tdykstra" />
 

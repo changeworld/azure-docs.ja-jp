@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Use Hadoop Oozie in HDInsight" pageTitle="HDInsight での Hadoop Oozie の使用 | Azure" metaKeywords="" description="Use Hadoop Oozie in HDInsight, a big data solution. Learn how to define an Oozie workflow, and submit an Oozie job." metaCanonical="" services="hdinsight" documentationCenter="" title="Use Hadop Oozie in HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
+﻿<properties urlDisplayName="Use Hadoop Oozie in HDInsight" pageTitle="HDInsight での Hadoop Oozie の使用 | Azure" metaKeywords="" description="ビッグ データ ソリューションとして HDInsight で Hadoop Oozie を使用します。Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。" metaCanonical="" services="hdinsight" documentationCenter="" title="Use Hadop Oozie in HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/12/2014" ms.author="jgao" />
 

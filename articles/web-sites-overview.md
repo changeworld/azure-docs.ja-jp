@@ -1,4 +1,4 @@
-﻿<properties umbracoNaviHide="0" pageTitle="Web サイトとは" metakeywords="Azure の Web サイト, Azure のデプロイ, Azure の構成の変更, Azure のデプロイの更新, Azure .NET のデプロイ, Azure .NET のデプロイ" description="Learn how to configure Websites in Azure to use a SQL or MySQL database, and learn how to configure diagnostics and download logs." urlDisplayName="How to Configure Websites" title="What are Websites" authors="cephalin" manager="wpickett" />
+﻿<properties umbracoNaviHide="0" pageTitle="Web サイトとは" metakeywords="Azure の Web サイト, Azure のデプロイ, Azure の構成の変更, Azure のデプロイの更新, Azure .NET のデプロイ, Azure .NET のデプロイ" description="SQL または MySQL データベースを使用するように Azure Websites を構成する方法と、診断を構成し、ログをダウンロードする方法について説明します。" urlDisplayName="How to Configure Websites" title="What are Websites" authors="cephalin" manager="wpickett" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/11/2014" ms.author="cephalin" />
 

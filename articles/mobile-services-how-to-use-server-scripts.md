@@ -1,4 +1,4 @@
-﻿<properties pageTitle="JavaScript バックエンド モバイル サービスを操作する" metaKeywords="server scripts, mobile devices, Azure, scheduler" description="Provides examples on how to define, register, and use server scripts in Azure Mobile Services." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Work with server scripts in Mobile Services" authors="ricksal" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="JavaScript バックエンド モバイル サービスを操作する" metaKeywords="server scripts, mobile devices, Azure, scheduler" description="Azure Mobile Services でサーバー スクリプトを定義、登録、使用する方法の例を提供します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Work with server scripts in Mobile Services" authors="ricksal" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="ricksal" />
 

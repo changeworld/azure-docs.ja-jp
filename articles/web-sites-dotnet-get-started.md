@@ -1,4 +1,4 @@
-﻿<properties pageTitle="ASP.NET に対応した Azure Websites の概要" metaKeywords="" description="This tutorial shows you how to create an ASP.NET web project in Visual Studio 2013 and deploy it to an Azure Website. In less than 15 minutes you'll have an app up and running in the cloud." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Get started with Azure Websites and ASP.NET" authors="tdykstra"  solutions="" manager="wpickett" editor="mollybos"  />
+﻿<properties pageTitle="ASP.NET に対応した Azure Websites の概要" metaKeywords="" description="このチュートリアルでは、Visual Studio 2013 で ASP.NET Web プロジェクトを作成し、それを Azure Web サイトにデプロイする方法について説明します。15 分以内に、クラウドでアプリケーションを稼働状態にできます。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Get started with Azure Websites and ASP.NET" authors="tdykstra"  solutions="" manager="wpickett" editor="mollybos"  />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="hero-article" ms.date="11/12/2014" ms.author="tdykstra" />
 

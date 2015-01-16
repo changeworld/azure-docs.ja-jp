@@ -1,4 +1,4 @@
-﻿<properties title="Use Pig and Hive with Azure Data Factory" pageTitle="Azure Data Factory で Pig と Hive を使用する" description="Learn how to process data by running Pig and Hive scripts on an Azure HDInsight cluster from an Azure data factory." metaKeywords=""  services="data-factory" solutions=""  documentationCenter="" authors="spelluru" manager="jhubbard" editor="monicar" />
+﻿<properties title="Use Pig and Hive with Azure Data Factory" pageTitle="Azure Data Factory で Pig と Hive を使用する" description="Azure データ ファクトリから Azure HDInsight クラスターで Pig および Hive スクリプトを実行してデータを処理する方法について説明します。" metaKeywords=""  services="data-factory" solutions=""  documentationCenter="" authors="spelluru" manager="jhubbard" editor="monicar" />
 
 <tags ms.service="data-factory" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="spelluru" />
 

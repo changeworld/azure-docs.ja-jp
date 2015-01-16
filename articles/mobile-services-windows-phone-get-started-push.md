@@ -1,4 +1,4 @@
-﻿<properties pageTitle="プッシュ通知 (従来のプッシュ) の使用 | モバイル デベロッパー センター" metaKeywords="" description="Learn how to use Azure Mobile Services to send push notifications to your Windows Phone app (legacy push)." metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services (legacy push)" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="プッシュ通知 (従来のプッシュ) の使用 | モバイル デベロッパー センター" metaKeywords="" description="Azure Mobile Services を使用して Windows Phone アプリにプッシュ通知を送信する方法について説明します (従来のプッシュ)。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services (legacy push)" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/25/2014" ms.author="glenga" />
 

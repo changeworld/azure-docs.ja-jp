@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Use Hadoo Sqoop in HDInsight" pageTitle="HDInsight での Hadoop Sqoop の使用 | Azure" metaKeywords="" description="Learn how to use Azure PowerShell from a workstation to run Sqoop import and export between an Hadoop cluster and an Azure SQL database." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="Use Hadoop Sqoop in HDInsight" authors="jgao" />
+﻿<properties urlDisplayName="Use Hadoo Sqoop in HDInsight" pageTitle="HDInsight での Hadoop Sqoop の使用 | Azure" metaKeywords="" description="コンピューターから Azure PowerShell を使用して、Hadoop クラスターと Azure SQL データベース間で Sqoop インポートとエクスポートを実行する方法について説明します。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="Use Hadoop Sqoop in HDInsight" authors="jgao" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/12/2014" ms.author="jgao" />
 

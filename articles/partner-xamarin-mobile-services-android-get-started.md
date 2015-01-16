@@ -1,4 +1,4 @@
-﻿<properties pageTitle="Xamarin.Android 用 Mobile Services の使用" metaKeywords="Azure Xamarin.Android アプリ, モバイル サービス XamarinAndroid, Azure Xamarin.Android の使用" writer="craigd" description="Learn how to use Azure Mobile Services with your Xamarin.Android app." metaCanonical="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="donnam" manager="dwrede" />
+﻿<properties pageTitle="Xamarin.Android 用 Mobile Services の使用" metaKeywords="Azure Xamarin.Android アプリ, モバイル サービス XamarinAndroid, Azure Xamarin.Android の使用" writer="craigd" description="Azure Mobile Services を Xamarin.Android アプリで使用する方法について説明します。" metaCanonical="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="donnam" manager="dwrede" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-android" ms.devlang="dotnet" ms.topic="hero-article" ms.date="11/11/2014" ms.author="donnam" />
 

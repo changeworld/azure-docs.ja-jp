@@ -1,4 +1,4 @@
-﻿<properties title="Azure Machine Learning API service operations" pageTitle="Machine Learning API サービスの操作 | Azure" description="Creating and managing Azure Machine Learning web services" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties title="Azure Machine Learning API service operations" pageTitle="Machine Learning API サービスの操作 | Azure" description="Azure Machine Learning Web サービスの作成と管理" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
 
 <tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/06/2014" ms.author="garye" />
 

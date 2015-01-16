@@ -1,4 +1,4 @@
-﻿<properties title="Learn how to configure an Azure website that uses Traffic Manager to use a domain name registered with Dotster" pageTitle="Traffic Manager を使用して Azure Web サイト用に Dotster ドメイン名を構成する" metaKeywords="Windows Azure, Windows Azure Web サイト, Dotster, Traffic Manager" description="Learn how to configure an Azure website that uses Traffic Manager to use a domain name registered with Dotster" services="web-sites" documentationCenter="" authors="larryfr,jroth" manager="wpickett" />
+﻿<properties title="Learn how to configure an Azure website that uses Traffic Manager to use a domain name registered with Dotster" pageTitle="Traffic Manager を使用して Azure Web サイト用に Dotster ドメイン名を構成する" metaKeywords="Windows Azure, Windows Azure Web サイト, Dotster, Traffic Manager" description="Traffic Manager を使用する Azure Web サイトを、Dotster に登録したドメイン名を使用するように構成する方法について説明します。" services="web-sites" documentationCenter="" authors="larryfr,jroth" manager="wpickett" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr,jroth" />
 

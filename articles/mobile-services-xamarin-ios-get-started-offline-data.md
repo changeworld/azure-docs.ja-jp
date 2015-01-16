@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Using Offline Data" pageTitle="Mobile Services でのオフライン データの使用 (Xamarin iOS) | モバイル デベロッパー センター" metaKeywords="" description="Learn how to use Azure Mobile Services to cache and sync offline data in your Xamarin iOS application" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Using offline data in Mobile Services" authors="donnam" editor="wesmc" manager="dwrede"/>
+﻿<properties urlDisplayName="Using Offline Data" pageTitle="Mobile Services でのオフライン データの使用 (Xamarin iOS) | モバイル デベロッパー センター" metaKeywords="" description="Azure Mobile Services を使用して、Xamarin iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Using offline data in Mobile Services" authors="donnam" editor="wesmc" manager="dwrede"/>
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="dotnet" ms.topic="article" ms.date="09/25/2014" ms.author="donnam" />
 

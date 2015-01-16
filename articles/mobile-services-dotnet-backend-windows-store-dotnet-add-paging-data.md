@@ -1,4 +1,4 @@
-﻿<properties pageTitle="ページングを使用したモバイル サービス クエリの改善 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="Learn how to use paging to manage the amount of data returned to your Windows Store app from Mobile Services." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Refine Mobile Services queries with paging" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="ページングを使用したモバイル サービス クエリの改善 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="ページングを使用して、Mobile Services から Windows ストア アプリに返されるデータの量を管理する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Refine Mobile Services queries with paging" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/25/2014" ms.author="glenga" />
 

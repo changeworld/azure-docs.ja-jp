@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="How to monitor" pageTitle="SQL データベースの監視方法 - Azure サービス管理" metaKeywords="" description="Learn how to monitor a SQL Database using the Azure Management Portal." metaCanonical="" services="sql-database" documentationCenter="" title="How to Monitor Logical Servers and Database Instances" authors="jeffreyg" solutions="" manager="jeffreyg" editor="" />
+﻿<properties urlDisplayName="How to monitor" pageTitle="SQL データベースの監視方法 - Azure サービス管理" metaKeywords="" description="Azure の管理ポータルを使用して SQL Database を監視する方法について説明します。" metaCanonical="" services="sql-database" documentationCenter="" title="How to Monitor Logical Servers and Database Instances" authors="jeffreyg" solutions="" manager="jeffreyg" editor="" />
 
 <tags ms.service="sql-database" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/31/2015" ms.author="jeffreyg" />
 

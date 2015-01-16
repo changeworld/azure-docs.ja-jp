@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Using Offline Data" pageTitle="Mobile Services でのオフライン データ同期の使用 (iOS) | モバイル デベロッパー センター" metaKeywords="" description="Learn how to use Azure Mobile Services to cache and sync offline data in your iOS application" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Using Offline data sync in Mobile Services" authors="krisragh" manager="dwrede" />
+﻿<properties urlDisplayName="Using Offline Data" pageTitle="Mobile Services でのオフライン データ同期の使用 (iOS) | モバイル デベロッパー センター" metaKeywords="" description="Azure Mobile Services を使用して、iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Using Offline data sync in Mobile Services" authors="krisragh" manager="dwrede" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="krisragh" />
 

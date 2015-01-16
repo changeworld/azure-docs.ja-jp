@@ -1,4 +1,4 @@
-﻿<properties title="Learn how to configure an Azure website to use a domain name registered with DomainDiscover - TierraNet" pageTitle="Azure の Web サイトの DomainDiscover ドメイン名の構成" metaKeywords="Azure, Azure の Web サイト, DomainDiscover, Tierra" description="Learn how to configure an Azure website to use a domain name registered with DomainDiscover - TierraNet" services="web-sites" documentationCenter="" authors="larryfr,jroth" manager="wpickett" />
+﻿<properties title="Learn how to configure an Azure website to use a domain name registered with DomainDiscover - TierraNet" pageTitle="Azure の Web サイトの DomainDiscover ドメイン名の構成" metaKeywords="Azure, Azure の Web サイト, DomainDiscover, Tierra" description="DomainDiscover - TierraNet に登録したドメイン名を使用するように Azure Web サイトを構成する方法について説明します。" services="web-sites" documentationCenter="" authors="larryfr,jroth" manager="wpickett" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr,jroth" />
 

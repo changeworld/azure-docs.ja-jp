@@ -1,4 +1,4 @@
-﻿<properties pageTitle="プッシュ通知の使用 (Windows ストア) |モバイル デベロッパー センター" metaKeywords="" description="Learn how to use Azure .Net Runtime Mobile Services and Notification Hubs to send push notifications to your Windows Store JavaScript app." metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="wesmc" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="プッシュ通知の使用 (Windows ストア) |モバイル デベロッパー センター" metaKeywords="" description="Azure .Net ランタイム Mobile Services と Notification Hubs を使用して Windows ストア JavaScript アプリにプッシュ通知を送信する方法について説明します。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="wesmc" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="09/27/2014" ms.author="wesmc" />
 

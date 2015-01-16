@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Get Started with Mobile Analytics" pageTitle="モバイル分析の使用 | モバイル デベロッパー センター" metaKeywords="" description="Get Started with Mobile Analytics." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Get Started with Mobile Analytics" authors="mahender" manager="dwrede"/>
+﻿<properties urlDisplayName="Get Started with Mobile Analytics" pageTitle="モバイル分析の使用 | モバイル デベロッパー センター" metaKeywords="" description="モバイル分析の使用" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Get Started with Mobile Analytics" authors="mahender" manager="dwrede"/>
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="10/10/2014" ms.author="mahender" />
 

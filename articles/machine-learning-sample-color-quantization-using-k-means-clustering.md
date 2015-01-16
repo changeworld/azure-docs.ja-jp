@@ -1,4 +1,4 @@
-﻿<properties title="Azure Machine Learning Sample: Color quantization using K-Means clustering" pageTitle="Machine Learning サンプル: K 平均法クラスタリングを使用した色彩量子化 | Azure" description="A sample Azure Machine Learning experiment that evaluates using different K-Means clustering values for quantizing a color image." metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun"  videoId="" scriptId="" />
+﻿<properties title="Azure Machine Learning Sample: Color quantization using K-Means clustering" pageTitle="Machine Learning サンプル: K 平均法クラスタリングを使用した色彩量子化 | Azure" description="カラー画像を量子化するためにさまざまな K 平均法クラスタリング値を使用して評価する Azure Machine Learning のサンプル実験。" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun"  videoId="" scriptId="" />
 
 <tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/23/2014" ms.author="garye" />
 

@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Localized Breaking News" pageTitle="Notification Hubs ローカライズ ニュース速報のチュートリアル (iOS 向け)" metaKeywords="" description="Learn how to use Azure Service Bus Notification Hubs to send localized breaking news notifications (iOS)." metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Use Notification Hubs to send localized breaking news to iOS devices" authors="yuaxu" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Localized Breaking News" pageTitle="Notification Hubs ローカライズ ニュース速報のチュートリアル (iOS 向け)" metaKeywords="" description="Azure Service Bus Notification Hubs を使用して、ローカライズしたニュース速報通知を送信する方法を説明します (iOS)。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Use Notification Hubs to send localized breaking news to iOS devices" authors="yuaxu" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="yuaxu" />
 # 通知ハブを使用した iOS デバイスへのローカライズ ニュース速報の送信

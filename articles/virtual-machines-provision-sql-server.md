@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Install SQL Server" pageTitle="Azure での SQL Server 仮想マシンのプロビジョニング " metaKeywords="Azure tutorial creating SQL Server, SQL Server vm, configuring SQL Server" description="A tutorial that teaches you how to create and configure a SQL Server virtual machine on Azure." metaCanonical="" services="virtual-machines" documentationCenter="" title="Provisioning a SQL Server Virtual Machine on Azure" authors="selcint" solutions="" manager="jhubbard" editor="tyson" />
+﻿<properties urlDisplayName="Install SQL Server" pageTitle="Azure での SQL Server 仮想マシンのプロビジョニング " metaKeywords="Azure tutorial creating SQL Server, SQL Server vm, configuring SQL Server" description="Azure で SQL Server 仮想マシンを作成して構成する方法を学習するチュートリアルです。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Provisioning a SQL Server Virtual Machine on Azure" authors="selcint" solutions="" manager="jhubbard" editor="tyson" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/30/2014" ms.author="" />
 

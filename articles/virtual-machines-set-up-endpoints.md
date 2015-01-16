@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Set up endpoints" pageTitle="Azure 仮想マシンのエンドポイントのセットアップ" metaKeywords="Azure config setup, configuring vm connection" description="Learn how to setup communication with a virtual machine in Azure." metaCanonical="" services="virtual-machines" documentationCenter="" title="" authors="timlt" solutions="" manager="timlt" editor="" />
+﻿<properties urlDisplayName="Set up endpoints" pageTitle="Azure 仮想マシンのエンドポイントのセットアップ" metaKeywords="Azure config setup, configuring vm connection" description="Azure 仮想マシンとの通信のセットアップ方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="" authors="timlt" solutions="" manager="timlt" editor="" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/29/2014" ms.author="kathydav" />
 

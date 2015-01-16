@@ -1,4 +1,4 @@
-﻿<properties title="Azure Notification Hubs Secure Push" pageTitle="Azure Notification Hubs の安全なプッシュ" metaKeywords="Azure のプッシュ通知, Azure の通知ハブ, Azure のメッセージング, 安全なプッシュ" description="Learn how to send secure push notifications in Azure. Code samples written in C# using the .NET API." documentationCenter="Mobile" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="sethm" manager="dwrede" />
+﻿<properties title="Azure Notification Hubs Secure Push" pageTitle="Azure Notification Hubs の安全なプッシュ" metaKeywords="Azure のプッシュ通知, Azure の通知ハブ, Azure のメッセージング, 安全なプッシュ" description="Azure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。コード サンプルは .NET API を使用して C# で記述されています。" documentationCenter="Mobile" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="sethm" manager="dwrede" />
 
 <tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="sethm" />
 

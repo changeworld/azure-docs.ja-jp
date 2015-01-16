@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Hadoop Samples in HDInsight" pageTitle="HDInsight での Hadoop MapReduce ワード カウント サンプルの実行 | Azure" metaKeywords="hdinsight, hdinsight sample, hadoop, mapreduce" description="Run a MapReduce word count example on an Hadoop cluster in HDInsight. The program, written in Java, counts word occurrences in a text file." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="The WordCount Hadoop sample in HDInsight" authors="bradsev" />
+﻿<properties urlDisplayName="Hadoop Samples in HDInsight" pageTitle="HDInsight での Hadoop MapReduce ワード カウント サンプルの実行 | Azure" metaKeywords="hdinsight, hdinsight sample, hadoop, mapreduce" description="HDInsight の Hadoop クラスターで MapReduce ワード カウント サンプルを実行します。Java で記述されたこのプログラムは、テキスト ファイル内の単語の出現回数をカウントします。" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" documentationCenter="" title="The WordCount Hadoop sample in HDInsight" authors="bradsev" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/10/2014" ms.author="bradsev" />
 

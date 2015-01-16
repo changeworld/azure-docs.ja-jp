@@ -1,4 +1,4 @@
-﻿<properties title="Sharding Overview" pageTitle="シャーディングの概要" description="Reasons for sharding: scale database resources to increase availability or performance." metaKeywords="sharding, scaling, elastic scale, Azure SQL Database" services="sql-database" documentationCenter="" manager="jhubbard" authors="sidneyh@microsoft.com"/>
+﻿<properties title="Sharding Overview" pageTitle="シャーディングの概要" description="シャーディングを利用する理由は、データベース リソースのスケールを変更して可用性またはパフォーマンスを引き上げることです。" metaKeywords="sharding, scaling, elastic scale, Azure SQL Database" services="sql-database" documentationCenter="" manager="jhubbard" authors="sidneyh@microsoft.com"/>
 
 <tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh" />
 #シャーディングの概要 

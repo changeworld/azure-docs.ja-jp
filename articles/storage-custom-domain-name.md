@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="custom dns storage" pageTitle="ストレージ アカウントの BLOB データのカスタム ドメイン名の構成 | Microsoft Azure" metaKeywords="" description="Learn how to configure a custom domain for accessing blob data in an Azure storage account." metaCanonical="" services="storage" documentationCenter="" title="Configure a custom domain name for blob data in a storage account" solutions="" authors="tamram" manager="adinah" />
+﻿<properties urlDisplayName="custom dns storage" pageTitle="ストレージ アカウントの BLOB データのカスタム ドメイン名の構成 | Microsoft Azure" metaKeywords="" description="Azure ストレージ アカウントの BLOB データにアクセスするためにカスタム ドメインを構成する方法について学習します。" metaCanonical="" services="storage" documentationCenter="" title="Configure a custom domain name for blob data in a storage account" solutions="" authors="tamram" manager="adinah" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="12/11/2014" ms.author="tamram" />
 

@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Define a custom API that supports pull notifications" pageTitle="プル通知をサポートするカスタム API を定義する - Azure Mobile Services" metaKeywords="" description="Learn how to Define a custom API that supports periodic notifications in Windows Store apps that use Azure Mobile Services." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Define a custom API that supports periodic notifications" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Define a custom API that supports pull notifications" pageTitle="プル通知をサポートするカスタム API を定義する - Azure Mobile Services" metaKeywords="" description="Azure Mobile Services を使用する Windows ストア アプリの定期的な通知をサポートするカスタム API の定義方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Define a custom API that supports periodic notifications" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="11/22/2014" ms.author="glenga" />
 # 定期的な通知をサポートするカスタム API を定義します。

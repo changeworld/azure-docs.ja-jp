@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Service Bus Queues" pageTitle="Service Bus キューの使用方法 (Java) - Azure" metaKeywords="Azure Service Bus キュー, Azure キュー, Azure メッセージング, Azure キュー Java" description="Learn how to use Service Bus queues in Azure. Code samples written in Java." metaCanonical="" services="service-bus" documentationCenter="Java" title="How to Use Service Bus Queues" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" videoId="" scriptId="" />
+﻿<properties urlDisplayName="Service Bus Queues" pageTitle="Service Bus キューの使用方法 (Java) - Azure" metaKeywords="Azure Service Bus キュー, Azure キュー, Azure メッセージング, Azure キュー Java" description="Azure での Service Bus キューの使用方法を学習します。コード サンプルは Java で記述されています。" metaCanonical="" services="service-bus" documentationCenter="Java" title="How to Use Service Bus Queues" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" videoId="" scriptId="" />
 
 <tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="09/25/2014" ms.author="robmcm" />
 

@@ -1,4 +1,4 @@
-﻿<properties pageTitle="サービス側の承認 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="Learn how to authorize users in the .NET backend of Azure Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="Service-side authorization of Mobile Services users" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="サービス側の承認 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="Azure Mobile Services の .NET バックエンドでユーザーを承認する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="Service-side authorization of Mobile Services users" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/29/2014" ms.author="glenga" />
 

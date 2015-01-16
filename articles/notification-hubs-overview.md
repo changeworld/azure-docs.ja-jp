@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Azure Notification Hubs" pageTitle="Azure Notification Hubs" metaKeywords="Azure のプッシュ通知, Azure の通知ハブ, Azure のメッセージング" description="Learn how to use push notifications in Azure. Code samples written in C# using the .NET API." metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Azure Notification Hubs" authors="sethm" manager="dwrede" />
+﻿<properties urlDisplayName="Azure Notification Hubs" pageTitle="Azure Notification Hubs" metaKeywords="Azure のプッシュ通知, Azure の通知ハブ, Azure のメッセージング" description="Azure でのプッシュ通知の使用方法について説明します。コード サンプルは .NET API を使用して C# で記述されています。" metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Azure Notification Hubs" authors="sethm" manager="dwrede" />
 
 <tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="09/24/2014" ms.author="sethm" />
 

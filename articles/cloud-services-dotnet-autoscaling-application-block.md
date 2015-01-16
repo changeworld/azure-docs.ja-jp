@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Autoscaling" pageTitle="オートスケーリング アプリケーション ブロックの使用 (.NET) - Azure" metaKeywords="Azure autoscaling, Azure autoscaling C#, Azure autoscaling .NET" description="Learn how to use the Autoscaling Application for Azure. Code samples are written in C# and use the .NET API." metaCanonical="" services="cloud-services" documentationCenter=".NET" title="How to Use the Autoscaling Application Block" authors="rasquill" solutions="" manager="timlt" editor="" />
+<properties urlDisplayName="Autoscaling" pageTitle="オートスケーリング アプリケーション ブロックの使用 (.NET) - Azure" metaKeywords="Azure autoscaling, Azure autoscaling C#, Azure autoscaling .NET" description="Azure でオートスケーリング アプリケーションを使用する方法について説明します。コード サンプルは C# で記述され、.NET API を利用しています。" metaCanonical="" services="cloud-services" documentationCenter=".NET" title="How to Use the Autoscaling Application Block" authors="rasquill" solutions="" manager="timlt" editor="" />
 
 <tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/14/2014" ms.author="rasquill" />
 
@@ -159,28 +159,25 @@ Visual Studio で、サービス モデル ファイルが出力フォルダー�
 -   **[subscriptionid]: **オートスケーリングを使うアプリケーションを含む Azure サブスクリプションの一意の ID。
 
     1.Azure の管理ポータルで、
-        **[クラウド サービス]** をクリックします。
+    **[クラウド サービス]** をクリックします。
 
     2.クラウド サービスの一覧で、オートスケーリングを使うアプリケーションをホストするサービスをクリックします。右側の [概要] ウィンドウに **[サブスクリプション ID]**が表示されます。
 
-        ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling05.png)
+   ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling05.png)
 
-  
-	-   **[[ホステッド サービス DNS プレフィックス]]: **オートスケーリングを使うホステッド サービスの DNS プレフィックス。
+   -**[[ホステッド サービス DNS プレフィックス]]: **オートスケーリングを使うホステッド サービスの DNS プレフィックス。
 
-    1.Azure の管理ポータルで、**[クラウド サービス]** をクリックします。 
+   1.Azure の管理ポータルで、**[クラウド サービス]** をクリックします。 
     2.クラウド サービスの一覧で、オートスケーリングを使うアプリケーションをホストするサービスを見つけます。クラウド サービスの名前は **DNS Prefix** です。
-
-        ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling06.png)
+   ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling06.png)
  
-	-   **[[ターゲット ロール名]]: **オートスケーリング規則のターゲットであるロールの名前。
+    -**[[ターゲット ロール名]]: **オートスケーリング規則のターゲットであるロールの名前。
 
     1.Azure の管理ポータルで、**[クラウド サービス]** をクリックします。
 
     2.クラウド サービスの一覧で、オートスケーリングを使うアプリケーションをホストするサービスをクリックし、**[インスタンス]** をクリックします。**[ロール]* 列にターゲット ロールの名前が表示されます。
 
-        ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling07.png)
-
+   ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling07.png)
 
 	-   **[[ストレージ アカウント名]]** および **[[ストレージ アカウント キー]]: **ターゲット Azure アプリケーションで使用している Azure ストレージ アカウントの名前。
 
@@ -190,16 +187,16 @@ Visual Studio で、サービス モデル ファイルが出力フォルダー�
 
     3.画面の下部の **[キーの管理]** ボタンをクリックしてプライマリ アクセス キーを取得します。
 
-        ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling08.png)
+   ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling08.png)
   
  
-	-   **[[管理証明書サムプリント]]: **ターゲット アプリケーションへのスケーリング要求をセキュリティで保護するためにブロックが使用する管理証明書の**サムプリント**。
+-   **[[管理証明書サムプリント]]: **ターゲット アプリケーションへのスケーリング要求をセキュリティで保護するためにブロックが使用する管理証明書の**サムプリント**。
 
     1.Azure の管理ポータルで、**[設定]** をクリックします。
 
     2.**[サムプリント]** 列に**サムプリント**が表示されます。
 
-        ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling09.png)
+    ![image](./media/cloud-services-dotnet-autoscaling-application-block/autoscaling09.png)
  
 
 サービス モデル ファイルの内容の詳細については、「[Storing Your Service Information Data (サービス情報データの格納)][]」を参照してください。
@@ -373,8 +370,7 @@ Visual Studio で、規則ファイルが出力フォルダーにコピーされ
 -   [How Sage Reduces Azure Hosting Costs Using Autoscaling (Sage がオートスケーリングを使って Azure のホスティング コストを削減した方法)][]
 -   [Reducing TechNet and MSDN hosting costs and environmental impact with autoscaling on Azure (Azure のオートスケーリングによる TechNet と MSDN のホスティング コストと環境への影響の軽減)][]
 
-  [Microsoft Enterprise Library 5.0 Integration Pack for Azure]: 
-    http://go.microsoft.com/fwlink/?LinkID=235134
+  [Microsoft Enterprise Library 5.0 Integration Pack for Azure]: http://go.microsoft.com/fwlink/?LinkID=235134
   [次のステップ]:  #NextSteps
   [オートスケーリング アプリケーション ブロックとは]:  #WhatIs
   [概念]:  #Concepts

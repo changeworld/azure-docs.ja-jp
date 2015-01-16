@@ -1,4 +1,4 @@
-﻿<properties pageTitle="Android アプリ用 Azure Mobile Services の使用" metaKeywords="Azure android application, mobile service android, getting started Azure android, azure droid, getting started droid windows" description="Follow this tutorial to get started using Azure Mobile Services for Android development." metaCanonical="" services="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="ricksal,glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="Android アプリ用 Azure Mobile Services の使用" metaKeywords="Azure android application, mobile service android, getting started Azure android, azure droid, getting started droid windows" description="次のチュートリアルに従って、Android 開発用の Azure Mobile Services を使用します。" metaCanonical="" services="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="ricksal,glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="hero-article" ms.date="10/16/2014" ms.author="ricksal,glenga" />
 

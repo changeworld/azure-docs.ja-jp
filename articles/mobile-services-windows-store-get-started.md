@@ -1,4 +1,4 @@
-﻿<properties pageTitle="Windows ストア アプリ用 Mobile Services の使用 | モバイル デベロッパー センター" metaKeywords="" description="Follow this tutorial to get started using Azure Mobile Services for Windows Store development in C# or JavaScript. " metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="Windows ストア アプリ用 Mobile Services の使用 | モバイル デベロッパー センター" metaKeywords="" description="このチュートリアルでは、C# または JavaScript で Windows ストア用の開発を行う場合に Azure Mobile Services を使用する方法を示します。 " metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="hero-article" ms.date="12/03/2014" ms.author="glenga" />
 

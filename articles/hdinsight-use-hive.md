@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Use Hadoop Hive in HDInsight" pageTitle="HDInsight での Hadoop Hive の使用 | Azure" metaKeywords="" description="Learn how to use Hive with HDInsight. You'll use a log file as input into an HDInsight table, and use HiveQL to query the data and report basic statistics." metaCanonical="" services="hdinsight" documentationCenter="" title="Use Hadoop Hive in HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties urlDisplayName="Use Hadoop Hive in HDInsight" pageTitle="HDInsight での Hadoop Hive の使用 | Azure" metaKeywords="" description="HDInsight で Hive を使用する方法について説明します。HDInsight テーブルへの入力としてログ ファイルを使用します。また、HiveQL を使用してデータを照会し、基本的な統計情報を取得します。" metaCanonical="" services="hdinsight" documentationCenter="" title="Use Hadoop Hive in HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/25/2014" ms.author="jgao" />
 

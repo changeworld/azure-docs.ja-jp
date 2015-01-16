@@ -1,4 +1,4 @@
-﻿<properties title="Frequently asked questions about DocumentDB" pageTitle="DocumentDB に関してよく寄せられる質問 | Azure" description="Answers to frequently asked questions about Azure DocumentDB nosql document database service. Learn about capacity and request units, and understand how to scale to your application needs." metaKeywords="NoSQL, DocumentDB,  database, document-orientated database, JSON, faq"   services="documentdb" solutions="data-management"   authors="spelluru" manager="jhubbard" editor="monicar" videoId="" scriptId="" />
+﻿<properties title="Frequently asked questions about DocumentDB" pageTitle="DocumentDB に関してよく寄せられる質問 | Azure" description="Azure DocumentDB nosql ドキュメント データベース サービスに関してよく寄せられる質問に対する回答を示します。容量と要求単位について説明し、アプリケーションのニーズに合わせてスケールを変更する方法を確認します。" metaKeywords="NoSQL, DocumentDB,  database, document-orientated database, JSON, faq"   services="documentdb" solutions="data-management"   authors="spelluru" manager="jhubbard" editor="monicar" videoId="" scriptId="" />
 
 <tags ms.service="documentdb" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/20/2014" ms.author="spelluru" />
 

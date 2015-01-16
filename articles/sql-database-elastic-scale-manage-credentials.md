@@ -1,4 +1,4 @@
-﻿<properties title="Managing Elastic Scale Credentials" pageTitle="Elastic Scale の資格情報の管理" description="How to set the right level of credentials, admin to read-only, for Elastic Scale apps." metaKeywords="Azure SQL Database, elastic scale, about user credentials in elastic scale" services="sql-database" documentationCenter="" manager="jhubbard" authors="sidneyh@microsoft.com"/>
+﻿<properties title="Managing Elastic Scale Credentials" pageTitle="Elastic Scale の資格情報の管理" description="Elastic Scale アプリの適切な資格情報のレベルを設定する方法 (管理者から読み取り専用)。" metaKeywords="Azure SQL Database, elastic scale, about user credentials in elastic scale" services="sql-database" documentationCenter="" manager="jhubbard" authors="sidneyh@microsoft.com"/>
 
 <tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh" />
 

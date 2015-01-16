@@ -1,4 +1,4 @@
-﻿<properties title="Create an Azure account" pageTitle="Azure アカウントの作成" description="Create an account" authors="wpickett" manager="wpickett" />
+﻿<properties title="Create an Azure account" pageTitle="Azure アカウントの作成" description="アカウントの作成" authors="wpickett" manager="wpickett" />
 
 <tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/11/2014" ms.author="wpickett" />
 

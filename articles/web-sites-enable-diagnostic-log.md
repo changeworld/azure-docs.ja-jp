@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Enable diagnostic logging" pageTitle="診断ログの有効化 - Azure Websites" metaKeywords="Azure 診断 Web サイト, Azure の管理ポータル診断, Azure の診断, Web サイト診断, Web サイト デバッグ" description="Learn how to enable diagnostic logging and add instrumentation to your application, as well as how to access the information logged by Azure." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Enable diagnostic logging for Azure Websites" authors="larryfr" solutions="" manager="wpickett" editor="" />
+﻿<properties urlDisplayName="Enable diagnostic logging" pageTitle="診断ログの有効化 - Azure Websites" metaKeywords="Azure 診断 Web サイト, Azure の管理ポータル診断, Azure の診断, Web サイト診断, Web サイト デバッグ" description="診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログ記録された情報にアクセスする方法を説明します。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Enable diagnostic logging for Azure Websites" authors="larryfr" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 

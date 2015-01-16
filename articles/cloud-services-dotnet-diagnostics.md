@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Diagnostics" pageTitle="診断の使用方法 (.NET) - Azure の機能ガイド" metaKeywords="Azure diagnostics monitoring,logs crash dumps C#" description="Learn how to use diagnostic data in Azure for debugging, measuring performance, monitoring, traffic analysis, and more." metaCanonical="" services="cloud-services" documentationCenter=".NET" title="Enabling Diagnostics in Azure" authors="raynew" solutions="" manager="johndaw" editor="" />
+﻿<properties urlDisplayName="Diagnostics" pageTitle="診断の使用方法 (.NET) - Azure の機能ガイド" metaKeywords="Azure diagnostics monitoring,logs crash dumps C#" description="Azure で、デバッグ、パフォーマンス測定、監視、トラフィック解析などに診断データを使用する方法を説明します。" metaCanonical="" services="cloud-services" documentationCenter=".NET" title="Enabling Diagnostics in Azure" authors="raynew" solutions="" manager="johndaw" editor="" />
 
 <tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="10/23/2014" ms.author="raynew" />
 

@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Use the Mobile Services .NET Backend" pageTitle="Mobile Services .NET バックエンドの使用 - Azure Mobile Services" metaKeywords="" description="Learn the details of the .NET Backend programming model for Azure Mobile Services, including how to work with table data, APIs, authentication, and scheduled jobs" metaCanonical="" services="" documentationCenter="Mobile" title="Use the Mobile Services .NET Backend" authors="mahender" solutions="" manager="dwrede" editor="mollybos" />
+﻿<properties urlDisplayName="Use the Mobile Services .NET Backend" pageTitle="Mobile Services .NET バックエンドの使用 - Azure Mobile Services" metaKeywords="" description="テーブル データ、API、認証、スケジュールされたジョブの操作方法を含め、Azure Mobile Services 向けの .NET バックエンド プログラミング モデルの詳細を示します。" metaCanonical="" services="" documentationCenter="Mobile" title="Use the Mobile Services .NET Backend" authors="mahender" solutions="" manager="dwrede" editor="mollybos" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/11/2014" ms.author="mahender" />
 # Mobile Services .NET バックエンドの使用

@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Get Started" pageTitle="Azure Mobile Services および Sencha の使用" metaKeywords="" description="Follow this tutorial to get started developing with Mobile Services and the Sencha HTML5 mobile app framework. " metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="" documentationCenter="Mobile" title="Get started with Mobile Services and Sencha Touch" authors="sencha" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Get Started" pageTitle="Azure Mobile Services および Sencha の使用" metaKeywords="" description="このチュートリアルでは、Mobile Services と Sencha HTML5 モバイル アプリ フレームワークを使用した開発について説明します。 " metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="" documentationCenter="Mobile" title="Get started with Mobile Services and Sencha Touch" authors="sencha" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-sencha" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="sencha" />
 

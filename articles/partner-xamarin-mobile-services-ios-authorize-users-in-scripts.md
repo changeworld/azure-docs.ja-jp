@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Authorize Users in Scripts (Xamarin.iOS)" pageTitle="スクリプトでのユーザーの承認 (Xamarin.iOS) - Azure Mobile Services" metaKeywords="ユーザーを承認する Azure, Xamarin.iOS スクリプト承認, モバイル サービスの承認" description="Learn how to authorize users with scripts in your Azure Mobile Services app for Xamarin.iOS." metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Use scripts to authorize users in Mobile Services" documentationCenter="Mobile" authors="donnam" manager="dwrede" />
+﻿<properties urlDisplayName="Authorize Users in Scripts (Xamarin.iOS)" pageTitle="スクリプトでのユーザーの承認 (Xamarin.iOS) - Azure Mobile Services" metaKeywords="ユーザーを承認する Azure, Xamarin.iOS スクリプト承認, モバイル サービスの承認" description="Xamarin.iOS 向け Azure Mobile Services アプリケーションでスクリプトを使用してユーザーを承認する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Use scripts to authorize users in Mobile Services" documentationCenter="Mobile" authors="donnam" manager="dwrede" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="dotnet" ms.topic="article" ms.date="11/11/2014" ms.author="donnam" />
 

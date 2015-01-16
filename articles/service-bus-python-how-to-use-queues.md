@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Service Bus Queues" pageTitle="Service Bus キューの使用方法 (Python) - Azure" metaKeywords="Azure Service Bus キュー, Azure キュー, Azure メッセージング, Azure キュー Python" description="Learn how to use Service Bus queues in Azure. Code samples written in Python." metaCanonical="" services="service-bus" documentationCenter="Python" title="How to Use Service Bus Queues" authors="huvalo" solutions="" manager="wpickett" editor="" />
+﻿<properties urlDisplayName="Service Bus Queues" pageTitle="Service Bus キューの使用方法 (Python) - Azure" metaKeywords="Azure Service Bus キュー, Azure キュー, Azure メッセージング, Azure キュー Python" description="Azure での Service Bus キューの使用方法を学習します。コード サンプルは Python で記述されています。" metaCanonical="" services="service-bus" documentationCenter="Python" title="How to Use Service Bus Queues" authors="huvalo" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="09/19/2014" ms.author="huvalo" />
 

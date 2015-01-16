@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Debug HDInsight Hadoop Errors" pageTitle="HDInsight での Hadoop のデバッグ:エラー メッセージ | Azure" metaKeywords="hdinsight, hdinsight service, hdinsight azure, debug, error messages, errors" description="Learn about the error messages you might receive when administering HDInsight using PowerShell, and steps you can take to recover." services="hdinsight" title="Debug Hadoop in HDInsight: Error messages" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" authors="bradsev" />
+﻿<properties urlDisplayName="Debug HDInsight Hadoop Errors" pageTitle="HDInsight での Hadoop のデバッグ:エラー メッセージ | Azure" metaKeywords="hdinsight, hdinsight service, hdinsight azure, debug, error messages, errors" description="PowerShell を使用して HDInsight を管理しているときに表示されることがあるエラー メッセージと、回復するために使用できる手順について説明します。" services="hdinsight" title="Debug Hadoop in HDInsight: Error messages" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" authors="bradsev" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/10/2014" ms.author="bradsev" />
 

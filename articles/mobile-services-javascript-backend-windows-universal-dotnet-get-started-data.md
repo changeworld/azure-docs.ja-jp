@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (Windows ユニバーサル) | モバイル デベロッパー センター" metaKeywords="" description="Learn how to get started using Mobile Services to leverage data in your universal Windows app." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (Windows ユニバーサル) | モバイル デベロッパー センター" metaKeywords="" description="Mobile Services を使用してユニバーサル Windows アプリでデータを活用する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/26/2014" ms.author="glenga" />
 

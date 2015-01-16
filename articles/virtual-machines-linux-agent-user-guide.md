@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Linux Agent guide" pageTitle="Azure Linux エージェント ユーザー ガイド" metaKeywords="" description="Learn how to install and configure Linux Agent (waagent) to manage your virtual machine's interaction with Azure Fabric Controller." metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure Linux Agent User Guide" authors="szarkos" solutions="" manager="timlt" editor="" />
+﻿<properties urlDisplayName="Linux Agent guide" pageTitle="Azure Linux エージェント ユーザー ガイド" metaKeywords="" description="Azure ファブリック コントローラーと仮想マシンとの相互動作を管理するために、Linux エージェント (waagent) をインストールして構成する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="" title="Azure Linux Agent User Guide" authors="szarkos" solutions="" manager="timlt" editor="" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="10/20/2014" ms.author="szarkos" />
 

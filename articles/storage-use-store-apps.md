@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Azure Storage in Windows Store apps" pageTitle="Windows ストア アプリでの Azure ストレージの使用 | Azure" metaKeywords="" description="Learn how to use Azure blobs, queues, and tables to store data for a Windows Store app." metaCanonical="" services="storage" documentationCenter="" title="How to use Azure Storage in Windows Store Apps" solutions="" authors="tamram" manager="adinah" editor="cgronlun" />
+﻿<properties urlDisplayName="Azure Storage in Windows Store apps" pageTitle="Windows ストア アプリでの Azure ストレージの使用 | Azure" metaKeywords="" description="Azure BLOB、キュー、テーブルを使用して Windows ストア アプリのデータを格納する方法を説明します。" metaCanonical="" services="storage" documentationCenter="" title="How to use Azure Storage in Windows Store Apps" solutions="" authors="tamram" manager="adinah" editor="cgronlun" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="11/11/2014" ms.author="tamram" />
 

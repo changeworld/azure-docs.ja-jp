@@ -1,4 +1,4 @@
-﻿<properties title="Azure Machine Learning Sample: Network intrusion detection" pageTitle="Machine Learning サンプル: ネットワーク不正侵入検出 | Azure" description="A sample Azure Machine Learning experiment that uses a classification model to determine which network activities are a part of network intrusion." metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun"  videoId="" scriptId="" />
+﻿<properties title="Azure Machine Learning Sample: Network intrusion detection" pageTitle="Machine Learning サンプル: ネットワーク不正侵入検出 | Azure" description="分類モデルを使用して、どのネットワーク アクティビティがネットワーク侵入の一部であるかを判断する Azure Machine Learning のサンプル実験。" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun"  videoId="" scriptId="" />
 
 <tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/23/2014" ms.author="garye" />
 

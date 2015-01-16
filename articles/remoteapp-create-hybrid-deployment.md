@@ -1,4 +1,4 @@
-﻿<properties title="How to create a hybrid deployment of RemoteApp" pageTitle="RemoteApp のハイブリッド デプロイメントの作成方法" description="Learn how to create a deployment of RemoteApp that connects to your internal network." metaKeywords="" services="" solutions="" documentationCenter="" authors="elizapo" manager="kathyw" />
+﻿<properties title="How to create a hybrid deployment of RemoteApp" pageTitle="RemoteApp のハイブリッド デプロイメントの作成方法" description="内部ネットワークに接続する RemoteApp のデプロイメントを作成する方法について説明します。" metaKeywords="" services="" solutions="" documentationCenter="" authors="elizapo" manager="kathyw" />
 
 <tags ms.service="remoteapp" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/12/2014" ms.author="elizapo" ms.manager="kathyw" />
 

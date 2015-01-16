@@ -1,4 +1,4 @@
-﻿<properties title="Normal Distribution Web Service Suite" pageTitle="正規分布の Web サービス スイート | Azure" description="Normal Distribution Web Service Suite" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="jaymathe" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties title="Normal Distribution Web Service Suite" pageTitle="正規分布の Web サービス スイート | Azure" description="正規分布の Web サービス スイート" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="jaymathe" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
 
 <tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/08/2014" ms.author="jaymathe" /> 
 

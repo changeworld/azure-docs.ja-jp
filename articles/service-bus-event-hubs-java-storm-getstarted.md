@@ -1,4 +1,4 @@
-﻿<properties pageTitle="Event Hubs の使用" metaKeywords="Azure Service Bus, イベント ハブ, Event Hubs の開始方法" description="Follow this tutorial to get started using Azure Event Hubs sending events with Java and receiving them in an Apache Storm cluster" metaCanonical="" services="" documentationCenter="" title="Get Started with Event Hubs" authors="elioda" solutions="" manager="timlt" editor="" />
+﻿<properties pageTitle="Event Hubs の使用" metaKeywords="Azure Service Bus, イベント ハブ, Event Hubs の開始方法" description="このチュートリアルでは、Java でイベントを送信する Azure Event Hubs を使用する方法と、Apache Storm クラスターでそれを受信する方法について説明します。" metaCanonical="" services="" documentationCenter="" title="Get Started with Event Hubs" authors="elioda" solutions="" manager="timlt" editor="" />
 
 <tags ms.service="service-bus" ms.workload="core" ms.tgt_pltfrm="java" ms.devlang="java" ms.topic="hero-article" ms.date="10/27/2014" ms.author="elioda" />
 

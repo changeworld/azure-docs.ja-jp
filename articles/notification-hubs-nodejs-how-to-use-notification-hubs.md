@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Notification Hubs" pageTitle="Notification Hubs - Node.js デベロッパー センター" metaKeywords="" description="Learn how to use Notification Hubs to send push notifications. Code samples are written for Node.js applications." metaCanonical="" services="service-bus" documentationCenter="nodejs" title="How to Use Notification Hubs" authors="larryfr" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Notification Hubs" pageTitle="Notification Hubs - Node.js デベロッパー センター" metaKeywords="" description="Notification Hubs を使用してプッシュ通知を送信する方法について説明します。コード サンプルは Node.js アプリケーション向けに作成されています。" metaCanonical="" services="service-bus" documentationCenter="nodejs" title="How to Use Notification Hubs" authors="larryfr" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 

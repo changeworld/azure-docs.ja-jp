@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Set Up Computer for Media Services" pageTitle="メディア サービス用にコンピューターをセットアップする方法 - Azure" metaKeywords="" description="Learn about the prerequisites for Media Services using the Media Services SDK for .NET. Also learn how to create a Visual Studio app." metaCanonical="" services="media-services" documentationCenter="" title="Setting up your computer for Media Services development" authors="juliako" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Set Up Computer for Media Services" pageTitle="メディア サービス用にコンピューターをセットアップする方法 - Azure" metaKeywords="" description="Media Services SDK for .NET を使用した Media Services の前提条件について説明します。Visual Studio アプリケーションを作成する方法についても説明します。" metaCanonical="" services="media-services" documentationCenter="" title="Setting up your computer for Media Services development" authors="juliako" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako" />
 

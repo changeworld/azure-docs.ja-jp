@@ -1,5 +1,5 @@
 ﻿
-<properties urlDisplayName="Notify iOS app users by using Web API" pageTitle="Web API を使用して現在のユーザーをプッシュ通知に登録 - Notification Hubs" metaKeywords="Azure の登録アプリケーション, Notification Hubs, Azure のプッシュ通知, プッシュ通知 iOS アプリケーション" description="Learn how to request push notification registration in an iOS app with Azure Notification Hubs when registeration is performed by ASP.NET Web API." metaCanonical="" services="notification-hubs" documentationCenter="" title="Register the current user for push notifications by using ASP.NET" authors="yuaxu" solutions="" manager="dwrede" editor="" />
+<properties urlDisplayName="Notify iOS app users by using Web API" pageTitle="Web API を使用して現在のユーザーをプッシュ通知に登録 - Notification Hubs" metaKeywords="Azure の登録アプリケーション, Notification Hubs, Azure のプッシュ通知, プッシュ通知 iOS アプリケーション" description="ASP.NET Web API により登録が実行されるときに、iOS アプリケーションで Azure Notification Hubs へのプッシュ通知登録を要求する方法について説明します。" metaCanonical="" services="notification-hubs" documentationCenter="" title="Register the current user for push notifications by using ASP.NET" authors="yuaxu" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="yuaxu" />
 # ASP.NET を使用した現在のユーザーのプッシュ通知への登録

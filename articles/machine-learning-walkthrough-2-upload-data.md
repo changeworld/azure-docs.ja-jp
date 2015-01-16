@@ -1,4 +1,4 @@
-﻿<properties title="Step 2: Upload existing data into an Azure Machine Learning experiment" pageTitle="手順 2.Machine Learning の実験にデータをアップロードする | Azure" description="Step 2: Upload existing public data into Azure Machine Learning Studio" metaKeywords="" services="machine-learning" solutions="big-data" documentationCenter="" authors="garye" videoId="" scriptId="" manager="paulettm" editor="cgronlun" />
+﻿<properties title="Step 2: Upload existing data into an Azure Machine Learning experiment" pageTitle="手順 2.Machine Learning の実験にデータをアップロードする | Azure" description="手順 2.Azure Machine Learning Studio に既存のパブリック データをアップロードする" metaKeywords="" services="machine-learning" solutions="big-data" documentationCenter="" authors="garye" videoId="" scriptId="" manager="paulettm" editor="cgronlun" />
 
 <tags ms.service="machine-learning" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/02/2014" ms.author="garye" />
 

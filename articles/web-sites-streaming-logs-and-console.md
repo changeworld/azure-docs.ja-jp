@@ -1,4 +1,4 @@
-﻿<properties pageTitle="ストリーミング ログとコンソール" description="Streaming logs and console overview" title="Streaming logs and console" authors="adamab" manager="wpickett" />
+﻿<properties pageTitle="ストリーミング ログとコンソール" description="ストリーミング ログとコンソールの概要" title="Streaming logs and console" authors="adamab" manager="wpickett" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="multiple" ms.topic="article" ms.date="01/01/1900" ms.author="adamab" />
 

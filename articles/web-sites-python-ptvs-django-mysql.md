@@ -1,4 +1,4 @@
-﻿<properties linkid="web-sites-python-ptvs-django-mysql" title="Django and MySQL on Azure with Python Tools 2.1 for Visual Studio" pageTitle="Azure における Django と MySQL (Python Tools 2.1 for Visual Studio の使用方法)" description="Learn how to use the Python Tools for Visual Studio to create a Django application that stores data in a MySQL database instance and can be deployed to a web site." metaKeywords="" services="" solutions="" documentationCenter="Python" authors="huvalo" videoId="" scriptId="" manager="wpickett" editor="" />
+﻿<properties linkid="web-sites-python-ptvs-django-mysql" title="Django and MySQL on Azure with Python Tools 2.1 for Visual Studio" pageTitle="Azure における Django と MySQL (Python Tools 2.1 for Visual Studio の使用方法)" description="Python Tools for Visual Studio を使って、MySQL データベース インスタンスにデータを保存する Django アプリケーションを作成し、それを Web サイトにデプロイする方法を学習します。" metaKeywords="" services="" solutions="" documentationCenter="Python" authors="huvalo" videoId="" scriptId="" manager="wpickett" editor="" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="python" ms.topic="article" ms.date="10/10/2014" ms.author="huvalo" />
 

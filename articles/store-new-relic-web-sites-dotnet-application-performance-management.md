@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="New Relic App Performance Management" pageTitle="Azure の New Relic によるアプリケーション パフォーマンス管理" metaKeywords="new relic Azure, performance azure" description="Learn how to use New Relic's performance monitoring on Azure." metaCanonical="" services="web-sites" documentationCenter=".NET" title="New Relic Application Performance Management on Azure Websites" authors="new relic" solutions="" manager="carolz" editor="" />
+﻿<properties urlDisplayName="New Relic App Performance Management" pageTitle="Azure の New Relic によるアプリケーション パフォーマンス管理" metaKeywords="new relic Azure, performance azure" description="Azure で New Relic のパフォーマンス監視を使用する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="New Relic Application Performance Management on Azure Websites" authors="new relic" solutions="" manager="carolz" editor="" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="11/25/2014" ms.author="stepsic" />
 

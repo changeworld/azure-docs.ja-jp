@@ -1,4 +1,4 @@
-﻿<properties title="Create an Azure Machine Learning workspace" pageTitle="Machine Learning ワークスペースの作成 | Azure" description="Create a workspace for Azure Machine Learning Studio" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
+﻿<properties title="Create an Azure Machine Learning workspace" pageTitle="Machine Learning ワークスペースの作成 | Azure" description="Azure Machine Learning Studio のワークスペースの作成" metaKeywords="" services="machine-learning" solutions="" documentationCenter="" authors="garye" manager="paulettm" editor="cgronlun" videoId="" scriptId="" />
 
 <tags ms.service="machine-learning" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/06/2014" ms.author="garye" />
 

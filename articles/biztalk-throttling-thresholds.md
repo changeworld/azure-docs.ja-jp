@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Throttling" pageTitle="BizTalk Services でのしきい値の調整 | Azure" metaKeywords="BizTalk Services, throttling, Azure" description="Learn about throttling thresholds and resulting runtime behaviors for BizTalk Services. Throttling is based on memory usage and number of simultaneous messages." metaCanonical="" services="biztalk-services" documentationCenter="" title="BizTalk Services: Throttling" authors="mandia" solutions="" manager="dwrede" editor="cgronlun" />
+﻿<properties urlDisplayName="Throttling" pageTitle="BizTalk Services でのしきい値の調整 | Azure" metaKeywords="BizTalk Services, throttling, Azure" description="調整のしきい値についてと、結果として生じる BizTalk Services のランタイムの動作について説明します。調整は、メモリ使用率および同時メッセージ数に基づいて行われます。" metaCanonical="" services="biztalk-services" documentationCenter="" title="BizTalk Services: Throttling" authors="mandia" solutions="" manager="dwrede" editor="cgronlun" />
 
 <tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/10/2014" ms.author="mandia" />
 

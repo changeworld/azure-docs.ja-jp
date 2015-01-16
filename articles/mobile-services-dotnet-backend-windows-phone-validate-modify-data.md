@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Validate and Modify Data" pageTitle=".Net バックエンドを使用したデータの検証および変更 (Windows Phone 8) | モバイル デベロッパー センター" metaKeywords="" description="Learn how to validate, modify, and augment data for your Windows Phone app with .Net backend Windows Azure Mobile Services." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using the .Net backend" authors="wesmc" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Validate and Modify Data" pageTitle=".Net バックエンドを使用したデータの検証および変更 (Windows Phone 8) | モバイル デベロッパー センター" metaKeywords="" description=".Net バックエンド Microsoft Azure Mobile Services を使用して Windows Phone アプリのデータを検証、変更、強化する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using the .Net backend" authors="wesmc" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc" />
 

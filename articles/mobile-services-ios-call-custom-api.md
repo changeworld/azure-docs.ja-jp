@@ -1,4 +1,4 @@
-﻿<properties pageTitle="iOS アプリケーションからのカスタム API の呼び出し | Mobile Services" metaKeywords="" description="Learn how to define a custom API and then call it from an iOS app that uses Azure Mobile Services." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Call a custom API from the client" authors="krisragh"  solutions="" writer="krisragh" manager="dwrede" editor=""  />
+﻿<properties pageTitle="iOS アプリケーションからのカスタム API の呼び出し | Mobile Services" metaKeywords="" description="カスタム API を定義し、Azure Mobile Services を使用する iOS アプリからそれを呼び出す方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Call a custom API from the client" authors="krisragh"  solutions="" writer="krisragh" manager="dwrede" editor=""  />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="krisragh" />
 

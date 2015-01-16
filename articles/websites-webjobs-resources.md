@@ -1,4 +1,4 @@
-﻿<properties pageTitle="Azure Web ジョブの推奨リソース" metaKeywords="Azure Web ジョブ, Azure Web ジョブ SDK, Azure ストレージ, Azure キュー, Azure テーブル, Azure Service Bus" description="Recommended resources for learning how to use Azure WebJobs and the Azure WebJobs SDK." metaCanonical="" services="web-sites,storage" documentationCenter=".NET" title="Azure WebJobs Recommended Resources" authors="tdykstra" solutions="" manager="wpickett" editor="jimbe" />
+﻿<properties pageTitle="Azure Web ジョブの推奨リソース" metaKeywords="Azure Web ジョブ, Azure Web ジョブ SDK, Azure ストレージ, Azure キュー, Azure テーブル, Azure Service Bus" description="Azure の Web ジョブと Azure Web ジョブ SDK を使用する方法を学習するための推奨リソース。" metaCanonical="" services="web-sites,storage" documentationCenter=".NET" title="Azure WebJobs Recommended Resources" authors="tdykstra" solutions="" manager="wpickett" editor="jimbe" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/27/2014" ms.author="tdykstra" />
 

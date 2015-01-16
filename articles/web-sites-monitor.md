@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="How to monitor" pageTitle="Web サイトの監視方法 - Azure サービス管理" metaKeywords="Azure monitoring web sites, Azure Management Portal Monitor, Azure monitoring" description="Learn how to monitor Azure websites by using the Monitor page in the Management Portal." metaCanonical="" services="web-sites" documentationCenter="" title="How to Monitor Websites" authors="cephalin" solutions="" manager="wpickett" editor="mollybos" />
+﻿<properties urlDisplayName="How to monitor" pageTitle="Web サイトの監視方法 - Azure サービス管理" metaKeywords="Azure monitoring web sites, Azure Management Portal Monitor, Azure monitoring" description="管理ポータルの [監視] ページを使用して Azure の Web サイトを監視する方法について説明します。" metaCanonical="" services="web-sites" documentationCenter="" title="How to Monitor Websites" authors="cephalin" solutions="" manager="wpickett" editor="mollybos" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/24/2014" ms.author="cephalin" />
 

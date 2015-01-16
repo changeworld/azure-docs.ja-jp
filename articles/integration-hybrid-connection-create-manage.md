@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Create and Manage Hybrid Connections - BizTalk Services" pageTitle="ハイブリッド接続の作成と管理 | Azure" metaKeywords="BizTalk Services, BizTalk, web sites, website, hybrid connections, Azure" description="Learn how to create a hybrid connection, manage the connection, and install the Hybrid Connection Manager." metaCanonical="" services="integration-services" documentationCenter="" title="Create and Manage Hybrid Connections" authors="mandia" solutions="" manager="dwrede" editor="cgronlun" />
+﻿<properties urlDisplayName="Create and Manage Hybrid Connections - BizTalk Services" pageTitle="ハイブリッド接続の作成と管理 | Azure" metaKeywords="BizTalk Services, BizTalk, web sites, website, hybrid connections, Azure" description="ハイブリッド接続の作成、接続の管理、Hybrid Connection Manager のインストールの方法について説明します。" metaCanonical="" services="integration-services" documentationCenter="" title="Create and Manage Hybrid Connections" authors="mandia" solutions="" manager="dwrede" editor="cgronlun" />
 
 <tags ms.service="biztalk-services" ms.workload="integration" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/10/2014" ms.author="mandia" />
 

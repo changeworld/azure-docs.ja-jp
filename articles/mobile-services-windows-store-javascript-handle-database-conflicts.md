@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Optimistic concurrency" pageTitle="オプティミスティック同時実行制御でデータベース書き込み競合を処理 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" writer="wesmc" description="Learn how to handle database write conflicts on both the server and in your Windows Store application." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Handling database write conflicts" authors="wesmc" manager="dwrede" />
+﻿<properties urlDisplayName="Optimistic concurrency" pageTitle="オプティミスティック同時実行制御でデータベース書き込み競合を処理 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" writer="wesmc" description="サーバーと Windows ストア アプリケーションの両方でデータベースへの書き込みの競合を処理する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Handling database write conflicts" authors="wesmc" manager="dwrede" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc" />
 

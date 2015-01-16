@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Website with WebMatrix" pageTitle="WebMatrix を使用した Node.js Web サイト - Azure チュートリアル" metaKeywords="" description="A tutorial that teaches you how to WebMatrix to develop and deploy a Node.js application to an Azure website." metaCanonical="" services="web-sites" documentationCenter="nodejs" title="Build and deploy a Node.js website to Azure using WebMatrix" authors="larryfr" solutions="" manager="wpickett" editor="mollybos" />
+﻿<properties urlDisplayName="Website with WebMatrix" pageTitle="WebMatrix を使用した Node.js Web サイト - Azure チュートリアル" metaKeywords="" description="WebMatrix を使用して Node.js アプリケーションを作成し、Azure の Web サイトにデプロイする方法を示すチュートリアル。" metaCanonical="" services="web-sites" documentationCenter="nodejs" title="Build and deploy a Node.js website to Azure using WebMatrix" authors="larryfr" solutions="" manager="wpickett" editor="mollybos" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 

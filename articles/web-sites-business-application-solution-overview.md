@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Create a Line-of-Business Application on Azure Websites" pageTitle="Azure Websites での基幹業務アプリケーションの作成" metaKeywords="Web Sites" description="This guide provides a technical overview of how to use Azure Websites to create intranet, line-of-business applications. This includes authentication strategies, service bus relay, and monitoring." umbracoNaviHide="0" disqusComments="1" editor="mollybos" manager="wpickett" title="Create a Line-of-Business Application on Azure Websites" authors="jroth" />
+﻿<properties urlDisplayName="Create a Line-of-Business Application on Azure Websites" pageTitle="Azure Websites での基幹業務アプリケーションの作成" metaKeywords="Web Sites" description="このガイドでは、Azure Websites を使用してイントラネットの基幹業務アプリケーションを作成する方法 (技術概要) について説明します。これには、認証方式、Service Bus リレー、監視も含まれます。" umbracoNaviHide="0" disqusComments="1" editor="mollybos" manager="wpickett" title="Create a Line-of-Business Application on Azure Websites" authors="jroth" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/01/2014" ms.author="jroth" />
 

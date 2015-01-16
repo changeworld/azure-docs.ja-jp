@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Continuous Delivery" pageTitle="Azure での TFS を使用したクラウド サービスの継続的な配信" metaKeywords="Azure continuous delivery, continuous delivery sample code, continuous delivery PowerShell" description="Learn how to set up continuous delivery for Azure cloud apps. Code samples for MSBuild command-line statements and PowerShell scripts." metaCanonical="" services="" documentationCenter="" title="Continuous Delivery for Cloud Services in Azure" authors="kempb" solutions="" manager="douge" editor="" />
+<properties urlDisplayName="Continuous Delivery" pageTitle="Azure での TFS を使用したクラウド サービスの継続的な配信" metaKeywords="Azure continuous delivery, continuous delivery sample code, continuous delivery PowerShell" description="Azure クラウド アプリケーションの継続的な配信を設定する方法について説明します。MSBuild コマンド ライン ステートメントおよび PowerShell スクリプトのコード サンプル。" metaCanonical="" services="" documentationCenter="" title="Continuous Delivery for Cloud Services in Azure" authors="kempb" solutions="" manager="douge" editor="" />
 
 <tags ms.service="cloud-services" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="12/3/2014" ms.author="kempb" />
 
@@ -162,7 +162,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
         Add-AzureCertificate -serviceName 'mytestcloudservice' -certToDeploy (get-item cert:\CurrentUser\MY\C33B6C432C25581601B84C80F86EC2809DC224E8
 
     または、Azure の管理ポータルを使用して、証明書ファイル PFX を秘密キーと共にエクスポートし、証明書を各ターゲット クラウド サービスにアップロードすることもできます。詳細については、
-    [http://msdn.microsoft.com/ja-jp/library/windowsazure/gg443832.aspx][] の記事を参照してください。
+    [http://msdn.microsoft.com/ja-jp/library/windowsazure/gg443832.aspx](http://msdn.microsoft.com/ja-jp/library/windowsazure/gg443832.aspx) の記事を参照してください。
 
     **デプロイのアップグレードと、デプロイの削除後に新しいデプロイを作成する操作**
 
@@ -249,7 +249,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 
         -   PublishScriptFilePath、[文字列] 型
 
-            ![][4]
+    ![][4]
 
     4.TFS 2012 以前を使用している場合は、新しいシーケンスの先頭に ConvertWorkspaceItem アクティビティを追加します。TFS 2013 以降を使用している場合は、新しいシーケンスの先頭に GetLocalPath アクティビティを追加します。ConvertWorkspaceItem に対して、プロパティを設定します (Direction=ServerToLocal、DisplayName='Convert publish script filename'、Input=' PublishScriptLocation'、Result='PublishScriptFilePath', Workspace='Workspace')。GetLocalPath アクティビティに対して、IncomingPath プロパティを 'PublishScriptLocation' に設定し、Result プロパティを 'PublishScriptFilePath' に設定します。このアクティビティは、TFS サーバーの場所 (該当する場合) からの発行スクリプトへのパスを標準ローカル ディスク パスに変換します。
 
@@ -571,7 +571,7 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
   [.NET Framework 4.5]: http://go.microsoft.com/fwlink/?LinkId=245484
   [.NET Framework 4.5.2]: http://go.microsoft.com/fwlink/?LinkId=521668
   [Azure Authoring Tools]: http://go.microsoft.com/fwlink/?LinkId=239600
-  [Azure ライブラリ]: http://go.microsoft.com/fwlink/?LinkId=257862
+  [Azure Libraries]: http://go.microsoft.com/fwlink/?LinkId=257862
   [Azure Tools for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=257862
   [MSBuild コマンド ライン リファレンス]: http://msdn.microsoft.com/ja-jp/library/ms164311(v=VS.90).aspx
   [1]: http://go.microsoft.com/fwlink/p/?LinkId=239966

@@ -1,4 +1,4 @@
-﻿<properties pageTitle=".NET バックエンド モバイル サービスを使用したプッシュ通知の使用" metaKeywords="" description="Learn how to use Azure Mobile Services and Notification Hubs to send push notifications to your universal Windows app." metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="glenga" solutions="mobile" manager="dwrede" editor="" />
+<properties pageTitle=".NET バックエンド モバイル サービスを使用したプッシュ通知の使用" metaKeywords="" description="Azure Mobile Services と Notification Hubs を使用してユニバーサル Windows アプリにプッシュ通知を送信する方法について説明します。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="glenga" solutions="mobile" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="09/27/2014" ms.author="glenga" />
 
@@ -28,10 +28,10 @@
 [WACOM.INCLUDE [mobile-services-create-new-push-vs2013](../includes/mobile-services-create-new-push-vs2013.md)]
 
 <ol start="6">
-<li><p><code>\services\mobileServices\scripts</code> プロジェクト フォルダーに移動し、生成された <<em>your_service_name</em>>.push.register.js スクリプト ファイルを共有 <code>\js</code> フォルダーにコピーしてから、Windows アプリ プロジェクトと WindowsPhone アプリ プロジェクトの両方からこのファイルを削除します。</p></li> 
+<li><p><code>\services\mobileServices\scripts</code> プロジェクト フォルダーに移動し、生成された  &lt;<em>your_service_name</em>&gt;.push.register.js スクリプト ファイルを共有 <code>\js</code> フォルダーにコピーしてから、Windows アプリ プロジェクトと WindowsPhone アプリ プロジェクトの両方からこのファイルを削除します。</p></li> 
 <li><p>このスクリプト ファイルを共有 <code>\js</code> プロジェクト フォルダーで開き、デバイスのチャネル URL を通知ハブに登録する <em>activated</em> イベント リスナーのコードを見つけ、<strong>done</strong> promise 関数を削除します。</p>
 <p>このチュートリアルでは、カスタム API が呼び出されたときではなく、新しい項目が挿入されたときに通知を送信します。</p></li>
-<li><p>Windows アプリ プロジェクトで、default.html ファイルを開き、スクリプト ファイル参照のパスを次のように共有 <code>\js</code> プロジェクト フォルダーに変更します。</p><pre><code><script src="/js/your_service_name.push.register.js"></script></code></pre></li>
+<li><p>Windows アプリ プロジェクトで、default.html ファイルを開き、スクリプト ファイル参照のパスを次のように共有 <code>\js</code> プロジェクト フォルダーに変更します。</p><pre><code>&lt;script src="/js/your_service_name.push.register.js"&gt;&lt;/script&gt;</code></pre></li>
 <li><p>WindowsPhone アプリ プロジェクトでこの手順を繰り返します。</p>
 <p>これで、両方のプロジェクトがプッシュ登録スクリプトの共有バージョンを使用することになります。</p></li>
 </ol>

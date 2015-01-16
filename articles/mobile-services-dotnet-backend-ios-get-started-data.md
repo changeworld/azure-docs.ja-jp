@@ -1,5 +1,5 @@
 ﻿
-<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (iOS) | モバイル デベロッパー センター" metaKeywords="Azure iOS data, Azure mobile services data, " description="Learn how to get started using Mobile Services to leverage data in your iOS app." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="krisragh" solutions="" manager="dwrede" editor="" />
+<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (iOS) | モバイル デベロッパー センター" metaKeywords="Azure iOS data, Azure mobile services data, " description="Mobile Services を使用して iOS アプリでデータを活用する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="krisragh" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="krisragh" />
 

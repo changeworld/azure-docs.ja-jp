@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="How to deploy" pageTitle="SQL データベースのデプロイ方法 - Azure" metaKeywords="" description="Learn how to deploy a SQL Server database to Azure. You will use the Deploy Database to SQL Database wizard to upload a sample database." metaCanonical="" services="sql-database" documentationCenter="" title="How to Deploy a Database to Azure" authors="jeffreyg" solutions="" manager="jeffreyg" editor="" />
+﻿<properties urlDisplayName="How to deploy" pageTitle="SQL データベースのデプロイ方法 - Azure" metaKeywords="" description="SQL Server データベースを Azure にデプロイする方法について説明します。データベースの SQL データベースへのデプロイ ウィザードを使用して、サンプル データベースをアップロードします。" metaCanonical="" services="sql-database" documentationCenter="" title="How to Deploy a Database to Azure" authors="jeffreyg" solutions="" manager="jeffreyg" editor="" />
 
 <tags ms.service="sql-database" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/30/2014" ms.author="jeffreyg" />
 

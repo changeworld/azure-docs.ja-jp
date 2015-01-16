@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Notify Users xplat aspnet" pageTitle="通知ハブによるユーザーへのクロスプラットフォーム通知の送信 (ASP.NET)" metaKeywords="" description="Learn how to use Notification Hubs templates to send, in a single request, a platform-agnostic notification that targets all platforms." metaCanonical="" services="notification-hubs" documentationCenter="" title="Send cross-platform notifications to users with Notification Hubs" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Notify Users xplat aspnet" pageTitle="通知ハブによるユーザーへのクロスプラットフォーム通知の送信 (ASP.NET)" metaKeywords="" description="通知ハブ テンプレートを使用して、すべてのプラットフォームをターゲットとするプラットフォームにとらわれない通知を 1 つの要求で送信する方法を説明します。" metaCanonical="" services="notification-hubs" documentationCenter="" title="Send cross-platform notifications to users with Notification Hubs" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="dotnet" ms.topic="article" ms.date="11/22/2014" ms.author="glenga" />
 # 通知ハブによるユーザーへのクロスプラットフォーム通知の送信

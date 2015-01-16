@@ -1,5 +1,4 @@
-﻿
-<properties urlDisplayName=".NET Client Library" pageTitle="Mobile Services .NET クライアント ライブラリの操作" metaKeywords="Azure Mobile Services、Mobile Services .NET クライアント、.NET クライアント" description="Learn how to use an .NET client for Azure Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="How to use a .NET client for Azure Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
+<properties urlDisplayName=".NET Client Library" pageTitle="Mobile Services .NET クライアント ライブラリの操作" metaKeywords="Azure Mobile Services、Mobile Services .NET クライアント、.NET クライアント" description="Azure Mobile Services 向け .NET クライアントを使用する方法について説明します。" metaCanonical="" services="" documentationCenter="Mobile" title="How to use a .NET client for Azure Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="10/10/2014" ms.author="glenga" />
 
@@ -15,7 +14,7 @@
 </div>
 
 
-このガイドでは、Windows ストア アプリと Windows Phone アプリで Azure Mobile Services 用の .NET クライアントを使用する一般的なシナリオを実行する方法を示します。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。モバイル サービスを初めて使用する場合は、まずモバイル サービスのクイック スタートに関するチュートリアル ([Windows ストアのクイック スタートのチュートリアル]/[Windows Phone のクイック スタートのチュートリアル]) と .NET でのデータの使用に関するチュートリアル ([Windows ストアのデータのチュートリアル]/[Windows Phone のデータのチュートリアル]) を完了することを検討してください。このクイック スタート チュートリアルでは、[モバイル サービス SDK] が必要です。ここでは、アカウントを構成し、初めてのモバイル サービスを作成します。
+このガイドでは、Windows ストア アプリと Windows Phone アプリで Azure Mobile Services 用の .NET クライアントを使用する一般的なシナリオを実行する方法を示します。紹介するシナリオは、データの照会、挿入、更新、および削除、ユーザーの認証、エラー処理などです。モバイル サービスを初めて使用する場合は、まずモバイル サービスのクイック スタートに関するチュートリアル ([Windows ストアのクイック スタート チュートリアル]/[Windows Phone のクイック スタート チュートリアル]) と .NET でのデータの使用に関するチュートリアル ([Windows ストアのデータ チュートリアル]/[Windows Phone のデータ チュートリアル]) を完了することを検討してください。このクイック スタート チュートリアルでは、[モバイル サービス SDK] が必要です。ここでは、アカウントを構成し、初めてのモバイル サービスを作成します。
 
 
 ## 目次

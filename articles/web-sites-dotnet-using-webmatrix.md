@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Website with WebMatrix" pageTitle="WebMatrix を使用した .NET Web サイト - Azure チュートリアル" metaKeywords="WebMatrix Azure, WebMatrix Azure, Azure Web サイト WebMatrix, Azure Web サイト WebMatrix, Web Matrix Azure, WebMatrix Azure" description="Learn how to develop and deploy an Azure website with WebMatrix." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Develop and deploy a website with Microsoft WebMatrix" authors="tomfitz" solutions="" manager="wpickett" editor="" />
+﻿<properties urlDisplayName="Website with WebMatrix" pageTitle="WebMatrix を使用した .NET Web サイト - Azure チュートリアル" metaKeywords="WebMatrix Azure, WebMatrix Azure, Azure Web サイト WebMatrix, Azure Web サイト WebMatrix, Web Matrix Azure, WebMatrix Azure" description="WebMatrix を使用して Azure の Web サイトを開発してデプロイする方法について説明します。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Develop and deploy a website with Microsoft WebMatrix" authors="tomfitz" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="10/27/2014" ms.author="tomfitz" />
 

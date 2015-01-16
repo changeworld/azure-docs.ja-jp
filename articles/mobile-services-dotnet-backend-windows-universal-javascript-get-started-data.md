@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="Learn how to get started using Mobile Services to leverage data in your Windows Store app." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="wesmc" solutions="" manager="dwrede" editor="" />
+<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="Mobile Services を使用して Windows ストア アプリでデータを活用する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="wesmc" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="javascript" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc" />
 
@@ -44,7 +44,7 @@
 	<p>このコードは、グローバル変数を使用して、アプリケーションの新しいモバイル サービスへのアクセスを提供します。クライアントは、新しいモバイル サービスの URI とアプリケーション キーを提供することによって作成されます。このスクリプトへの参照は default.html ファイルに追加されているため、この変数は、このページからも参照されるすべてのスクリプト ファイルで使用できます。</p>
 </li>
 <li><p>default.html プロジェクト ファイルを開き、新しい service.js スクリプト ファイルへの参照を見つけ、参照されたパスが次のようになっていることを確認します。</p>
-<pre><code><script src="/services/mobileServices/scripts/todolist.js"></script></code></pre>
+<pre><code>&lt;script src="/services/mobileServices/scripts/todolist.js"&gt;</script></code></pre>
 <p>現在、Visual Studio では、誤ったフォルダー名がパスに生成されるバグがあります。</p></li>
 <li><p>Windows Phone アプリ プロジェクトを右クリックし、<strong>[追加]</strong>、<strong>[接続済みサービス...]</strong> をクリックし、作成されたばかりのモバイル サービスを選択してから、<strong>[OK]</strong> をクリックします。 </p>
 <p>これと同じ新しいコード ファイルが Windows Phone ストア アプリ プロジェクトに追加されます。default.html ファイルに追加された参照パスも必ず修正してください。</p></li>

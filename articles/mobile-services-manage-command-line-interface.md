@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Command Line Administration" pageTitle="コマンド ラインでの Mobile Services の管理 - Azure チュートリアル" metaKeywords="" description="Learn how to create, deploy, and manage your Azure Mobile Service using command-line tools." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Automate mobile services with command-line tools" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Command Line Administration" pageTitle="コマンド ラインでの Mobile Services の管理 - Azure チュートリアル" metaKeywords="" description="コマンド ライン ツールを使用して Azure Mobile Services を作成、デプロイ、および管理する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Automate mobile services with command-line tools" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="glenga" />
 

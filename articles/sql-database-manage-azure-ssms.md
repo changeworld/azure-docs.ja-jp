@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="SQL Database Management" pageTitle="SSMS を使用した SQL データベースの管理 - Azure" metaKeywords="Azure SQL Server Management Studio SSMS " description="Learn how to use SQL Server Management Studio to manage SQL Database servers and databases." metaCanonical="" services="sql-database" documentationCenter=".NET" title="" authors="jeffreyg" solutions="" manager="jeffreyg" editor="tysonn" />
+﻿<properties urlDisplayName="SQL Database Management" pageTitle="SSMS を使用した SQL データベースの管理 - Azure" metaKeywords="Azure SQL Server Management Studio SSMS " description="SQL Server Management Studio を使用して SQL データベース サーバーおよびデータベースを管理する方法について説明します。" metaCanonical="" services="sql-database" documentationCenter=".NET" title="" authors="jeffreyg" solutions="" manager="jeffreyg" editor="tysonn" />
 
 <tags ms.service="sql-database" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/31/2015" ms.author="jeffreyg" />
 

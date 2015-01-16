@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Active Directory SSO Authentication with ADAL" pageTitle="Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証 (iOS) | モバイル デベロッパー センター" metaKeywords="" description="Learn how to authentication users for single sign-on with ADAL in your iOS application." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Authenticate your app with Active Directory Authentication Library Single Sign-On" authors="wesmc,mahender" manager="dwrede" />
+﻿<properties urlDisplayName="Active Directory SSO Authentication with ADAL" pageTitle="Active Directory 認証ライブラリのシングル サインオンによるアプリケーションの認証 (iOS) | モバイル デベロッパー センター" metaKeywords="" description="iOS アプリケーションで ADAL を使用してシングル サインオンのユーザーを認証する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Authenticate your app with Active Directory Authentication Library Single Sign-On" authors="wesmc,mahender" manager="dwrede" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="wesmc,mahender" />
 

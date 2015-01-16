@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Service Bus Topics" pageTitle="Service Bus トピック の使用方法 (.NET) - Azure" metaKeywords="Azure Service Bus トピックの使用, Azure 発行サブスクライブ メッセージング, Azure メッセージング トピックおよびサブスクリプション C# " description="Learn how to use Service Bus topics and subscriptions in Azure. Code samples are written for .NET applications. " metaCanonical="" services="service-bus" documentationCenter=".NET" title="How to Use Service Bus Topics/Subscriptions" authors="sethm" solutions="" manager="timlt" editor="mattshel" />
+﻿<properties urlDisplayName="Service Bus Topics" pageTitle="Service Bus トピック の使用方法 (.NET) - Azure" metaKeywords="Azure Service Bus トピックの使用, Azure 発行サブスクライブ メッセージング, Azure メッセージング トピックおよびサブスクリプション C# " description="Azure での Service Bus のトピックとサブスクリプションの使用方法について学習します。コード サンプルは .NET アプリケーション向けに作成されています。 " metaCanonical="" services="service-bus" documentationCenter=".NET" title="How to Use Service Bus Topics/Subscriptions" authors="sethm" solutions="" manager="timlt" editor="mattshel" />
 
 <tags ms.service="service-bus" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="sethm" />
 

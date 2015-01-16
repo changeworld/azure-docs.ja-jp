@@ -1,4 +1,4 @@
-﻿<properties title="How to create a custom template image for RemoteApp" pageTitle="RemoteApp のカスタム テンプレート イメージの作成方法" description="Learn how to create a custom template image for RemoteApp. You can use this template with either a hybrid or cloud deployment." metaKeywords="" services="" solutions="" documentationCenter="" authors="elizapo" manager="kathyw" />
+﻿<properties title="How to create a custom template image for RemoteApp" pageTitle="RemoteApp のカスタム テンプレート イメージの作成方法" description="RemoteApp のカスタム テンプレート イメージを作成する方法について説明します。このテンプレートは、ハイブリッド デプロイメントまたはクラウド デプロイメントで使用できます。" metaKeywords="" services="" solutions="" documentationCenter="" authors="elizapo" manager="kathyw" />
 
 <tags ms.service="remoteapp" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/22/2014" ms.author="elizapo" ms.manager="kathyw" />
 

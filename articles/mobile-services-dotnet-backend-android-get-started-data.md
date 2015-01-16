@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (Android) | モバイル デベロッパー センター" metaKeywords="" description="Learn how to get started using Mobile Services to leverage data in your Android app." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="ricksal" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (Android) | モバイル デベロッパー センター" metaKeywords="" description="Mobile Services を使用して Android アプリでデータを活用する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="ricksal" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="09/24/2014" ms.author="ricksal" />
 

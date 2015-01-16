@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Get started with realtime push using SignalR and Mobile Services" pageTitle="SignalR および Mobile Services を使用したリアルタイム プッシュの使用 | モバイル デベロッパー センター " metaKeywords="" description="Learn how to get started with realtime push using SignalR and Mobile Services." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Get started with realtime push using SignalR and Mobile Services" authors="mahender" manager="dwrede" />
+﻿<properties urlDisplayName="Get started with realtime push using SignalR and Mobile Services" pageTitle="SignalR および Mobile Services を使用したリアルタイム プッシュの使用 | モバイル デベロッパー センター " metaKeywords="" description="SignalR と Mobile Services を使用してリアルタイム プッシュを行う方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Get started with realtime push using SignalR and Mobile Services" authors="mahender" manager="dwrede" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="08/19/2014" ms.author="mahender" />
 

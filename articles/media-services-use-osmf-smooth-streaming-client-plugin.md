@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Smooth Streaming Plugin" pageTitle="Open Source Media Framework 用スムーズ ストリーミング プラグイン" metaKeywords="" description="Learn how to use the Azure Media Services Smooth Streaming plugin for the Adobe Open Source Media Framework." metaCanonical="" services="media-services" documentationCenter="" title="How to Use the Microsoft Smooth Streaming Plugin for the Adobe Open Source Media Framework" authors="juliako" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Smooth Streaming Plugin" pageTitle="Open Source Media Framework 用スムーズ ストリーミング プラグイン" metaKeywords="" description="Adobe Open Source Media Framework 用 Azure Media Services スムーズ ストリーミング プラグインを使用する方法について説明します。" metaCanonical="" services="media-services" documentationCenter="" title="How to Use the Microsoft Smooth Streaming Plugin for the Adobe Open Source Media Framework" authors="juliako" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako" />
 

@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Blob Storage with  Hadoop in HDInsight" pageTitle="Hadoop と互換性のある BLOB ストレージのビッグ データの照会 | Azure" metaKeywords="" description="HDInsight uses Hadoop-compatible Blob storage as the big data store for HDFS. Learn how to query from Blob storage, and store results of your analysis." metaCanonical="" services="storage,hdinsight" documentationCenter="" title="Query big data from Hadoop-compatible Blob storage for analysis in HDInsight" authors="jgao" solutions="" manager="paulettm" editor="mollybos" />
+﻿<properties urlDisplayName="Blob Storage with  Hadoop in HDInsight" pageTitle="Hadoop と互換性のある BLOB ストレージのビッグ データの照会 | Azure" metaKeywords="" description="HDInsight で、Hadoop と互換性のある BLOB ストレージを HDFS のビッグ データ ストアとして使用します。BLOB ストレージからクエリを実行し、分析結果を格納する方法について説明します。" metaCanonical="" services="storage,hdinsight" documentationCenter="" title="Query big data from Hadoop-compatible Blob storage for analysis in HDInsight" authors="jgao" solutions="" manager="paulettm" editor="mollybos" />
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/12/2014" ms.author="jgao" />
 

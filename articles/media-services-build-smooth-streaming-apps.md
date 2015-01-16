@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Smooth Streaming Windows Store App" pageTitle="スムーズ ストリーミング用の Windows ストア アプリケーション - Azure .NET チュートリアル" metaKeywords="" description="Learn how to use Azure Media Services to create a C# Windows Store application with a XML MediaElement control to playback Smooth Stream content." metaCanonical="" services="media-services" documentationCenter="" title="How to Build a Smooth Streaming Windows Store Application" authors="juliako" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Smooth Streaming Windows Store App" pageTitle="スムーズ ストリーミング用の Windows ストア アプリケーション - Azure .NET チュートリアル" metaKeywords="" description="Azure Media Services を使用して、スムーズ ストリーム コンテンツを再生するための XML MediaElement コントロールを備えた Windows ストア アプリケーションを C# で作成する方法について説明します。" metaCanonical="" services="media-services" documentationCenter="" title="How to Build a Smooth Streaming Windows Store Application" authors="juliako" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako" />
 

@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Get Started with Media Services" pageTitle="Media Services の使用 - Azure" metaKeywords="Azure media services" description="An introduction to using Media Services with Azure." metaCanonical="" services="media-services" documentationCenter="" title="Get started with Media Services" authors="juliako" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Get Started with Media Services" pageTitle="Media Services の使用 - Azure" metaKeywords="Azure media services" description="Azure で Media Services を使用する方法を紹介します。" metaCanonical="" services="media-services" documentationCenter="" title="Get started with Media Services" authors="juliako" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="10/30/2014" ms.author="juliako" />
 

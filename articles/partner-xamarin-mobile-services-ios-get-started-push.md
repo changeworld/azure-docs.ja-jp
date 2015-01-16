@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Get Started with Push Notifications" pageTitle="プッシュ通知 (Xamarin.iOS) - Mobile Services" metaKeywords="" description="Learn how to use push notifications in Xamarin.iOS apps with Azure Mobile Services." metaCanonical="" disqusComments="0" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="yuaxu" manager="dwrede" services="mobile-services"/>
+<properties urlDisplayName="Get Started with Push Notifications" pageTitle="プッシュ通知 (Xamarin.iOS) - Mobile Services" metaKeywords="" description="Azure Mobile Services を使用する Xamarin.iOS アプリでプッシュ通知を使用する方法について説明します。" metaCanonical="" disqusComments="0" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="yuaxu" manager="dwrede" services="mobile-services"/>
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-ios" ms.devlang="Java" ms.topic="article" ms.date="10/20/2014" ms.author="yuaxu" />
 
@@ -261,7 +261,18 @@ APNS と連携するようにモバイル サービスが構成されました�
 
 8. **TodoListViewController** で、**AppDelegeate** に格納されているデバイス トークンを取得し、これを追加される **TodoItem** に格納するように **OnAdd** アクションを変更します。
 
-€ 管理ポータル
+string deviceToken = ((AppDelegate)UIApplication.SharedApplication.Delegate).DeviceToken;
+
+        var newItem = new TodoItem() 
+        {
+            Text = itemText.Text, 
+            Complete = false,
+            DeviceToken = deviceToken
+        };
+
+これで、アプリケーションがプッシュ通知をサポートするように更新されました。
+
+## <a name="update-scripts"></a>管理ポータルで登録されている挿入スクリプトを更新する
 
 1. 管理ポータルで、**[データ]** タブをクリックし、**TodoItem** テーブルをクリックします。 
 

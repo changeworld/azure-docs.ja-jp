@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Tutorial: Create a Cross-Premises Virtual Network for Site-to-Site Connectivity" pageTitle="チュートリアル: サイト間接続用のクロスプレミス仮想ネットワークの作成 " metaKeywords="" description="Learn how to create an Azure Virtual Network with cross-premises connectivity in this tutorial." metaCanonical="" services="virtual-network" documentationCenter="" title="Create a Virtual Network for Site-to-Site Cross-Premises Connectivity" authors="cherylmc" solutions="" manager="adinah" editor="" />
+﻿<properties urlDisplayName="Tutorial: Create a Cross-Premises Virtual Network for Site-to-Site Connectivity" pageTitle="チュートリアル: サイト間接続用のクロスプレミス仮想ネットワークの作成 " metaKeywords="" description="このチュートリアルでは、クロスプレミス接続を使う Azure の仮想ネットワークを作成する方法について説明します。" metaCanonical="" services="virtual-network" documentationCenter="" title="Create a Virtual Network for Site-to-Site Cross-Premises Connectivity" authors="cherylmc" solutions="" manager="adinah" editor="" />
 
 <tags ms.service="virtual-network" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/23/2014" ms.author="cherylmc" />
 

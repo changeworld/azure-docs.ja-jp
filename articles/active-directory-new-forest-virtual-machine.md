@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Active Directory forest" pageTitle="Azure の仮想ネットワークでの Active Directory フォレストのインストール" metaKeywords="" description="A tutorial that explains how to create a new Active Directory forest on a virtual machine (VM) on an Azure Virtual Network." metaCanonical="" services="active-directory,virtual-network" documentationCenter="" title="Install a new Active Directory forest in Azure" authors="Justinha"  solutions="" writer="Justinha" manager="TerryLan" editor="LisaToft"  />
+﻿<properties urlDisplayName="Active Directory forest" pageTitle="Azure の仮想ネットワークでの Active Directory フォレストのインストール" metaKeywords="" description="Azure の仮想ネットワーク上の仮想マシン (VM) に新しい Active Directory フォレストを作成する手順について説明したチュートリアルです。" metaCanonical="" services="active-directory,virtual-network" documentationCenter="" title="Install a new Active Directory forest in Azure" authors="Justinha"  solutions="" writer="Justinha" manager="TerryLan" editor="LisaToft"  />
 
 <tags ms.service="active-directory" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/30/2014" ms.author="Justinha" />
 

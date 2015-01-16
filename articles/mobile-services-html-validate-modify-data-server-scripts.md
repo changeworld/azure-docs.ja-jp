@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Validate Data - HTML5" pageTitle="サーバー スクリプトを使用したデータの検証および変更 (HTML 5) | モバイル デベロッパー センター" metaKeywords="" description="Learn how to validate and modify data sent using server scripts from your HTML app." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using server scripts" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Validate Data - HTML5" pageTitle="サーバー スクリプトを使用したデータの検証および変更 (HTML 5) | モバイル デベロッパー センター" metaKeywords="" description="HTML アプリからサーバー スクリプトを使用して送信されたデータを検証および変更する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using server scripts" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-html" ms.devlang="javascript" ms.topic="article" ms.date="09/26/2014" ms.author="glenga" />
 

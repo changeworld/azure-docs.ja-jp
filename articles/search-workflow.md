@@ -1,4 +1,4 @@
-﻿<properties title="Search Service: workflow for developers" pageTitle="検索サービス: 開発者のためのワークフロー" description="Search Service: workflow for developers" metaKeywords="" services="" solutions="" documentationCenter="" authors="Heidist" manager="mblythe" videoId="" scriptId="" />
+﻿<properties title="Search Service: workflow for developers" pageTitle="検索サービス: 開発者のためのワークフロー" description="検索サービス: 開発者のためのワークフロー" metaKeywords="" services="" solutions="" documentationCenter="" authors="Heidist" manager="mblythe" videoId="" scriptId="" />
 
 <tags ms.service="azure-search" ms.devlang="" ms.workload="search" ms.topic="article"  ms.tgt_pltfrm="" ms.date="09/23/2014" ms.author="heidist" />
 

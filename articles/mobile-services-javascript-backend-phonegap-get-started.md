@@ -1,4 +1,4 @@
-﻿<properties pageTitle="PhoneGap での Mobile Services の使用 | モバイル デベロッパー センター" metaKeywords="" description="Follow this tutorial to get started using Azure Mobile Services for PhoneGap development for iOS, Android, and Windows Phone." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties pageTitle="PhoneGap での Mobile Services の使用 | モバイル デベロッパー センター" metaKeywords="" description="このチュートリアルでは、iOS、Android、Windows Phone 用に PhoneGap の開発を行う場合に Azure Mobile Services を使用する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-phonegap" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="glenga" />
 

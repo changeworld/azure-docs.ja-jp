@@ -1,4 +1,4 @@
-﻿<properties pageTitle="Mobile Services を使用したイメージの BLOB ストレージへのアップロード (Windows ストア) | モバイル サービス" metaKeywords="" description="Learn how to use Mobile Services to upload images to Azure Blob Storage and access the images from your Windows Store app." metaCanonical="" services="mobile-services,storage" documentationCenter="Mobile" title="Upload images to Azure Storage by using Mobile Services" authors="glenga" solutions="mobile" manager="dwrede" editor="" />
+﻿<properties pageTitle="Mobile Services を使用したイメージの BLOB ストレージへのアップロード (Windows ストア) | モバイル サービス" metaKeywords="" description="Mobile Services を使用して画像を Azure BLOB ストレージにアップロードし、その画像に Windows ストア アプリからアクセスする方法を説明します。" metaCanonical="" services="mobile-services,storage" documentationCenter="Mobile" title="Upload images to Azure Storage by using Mobile Services" authors="glenga" solutions="mobile" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/26/2014" ms.author="glenga" />
 

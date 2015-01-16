@@ -1,4 +1,4 @@
-﻿<properties pageTitle="Windows Phone アプリからのカスタム API の呼び出し - Mobile Services" metaKeywords="" description="Learn how to define a custom API and then call it from a Windows Phone app that use Windows Azure Mobile Services." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Call a custom API from the client" authors="glenga"  solutions="" writer="glenga" manager="dwrede" editor=""  />
+﻿<properties pageTitle="Windows Phone アプリからのカスタム API の呼び出し - Mobile Services" metaKeywords="" description="カスタム API を定義し、Windows Azure モバイル サービスを使用した Windows Phone アプリケーションから呼び出す方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Call a custom API from the client" authors="glenga"  solutions="" writer="glenga" manager="dwrede" editor=""  />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/26/2014" ms.author="glenga" />
 

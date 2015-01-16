@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Azure Import/Export Service" pageTitle="Import/Export を使用した BLOB ストレージへのデータの転送 | Microsoft Azure" metaKeywords="" description="Learn how to create import and export jobs in the Azure Management Portal to transfer data to blob storage." metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Using the Azure Import/Export Service to Transfer Data to Blob Storage" authors="tamram" manager="adinah" />
+﻿<properties urlDisplayName="Azure Import/Export Service" pageTitle="Import/Export を使用した BLOB ストレージへのデータの転送 | Microsoft Azure" metaKeywords="" description="Azure の管理ポータルでインポート ジョブおよびエクスポート ジョブを作成し、データを BLOB ストレージに転送する方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Using the Azure Import/Export Service to Transfer Data to Blob Storage" authors="tamram" manager="adinah" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/25/2014" ms.author="tamram" />
 

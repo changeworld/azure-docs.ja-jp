@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="How to create and configure an Azure SQL DB" pageTitle="Azure SQL Database を作成して構成する方法 - Azure チュートリアル" metaKeywords="Azure SQL Database の作成, Azure SQL Database の構成" description="How to create and configure an Azure SQL Database." metaCanonical="" services="sql-database" documentationCenter="" title="How to Create and Configure an Azure SQL Database" authors="sidneyh" solutions="" manager="jhubbard" editor="" />
+﻿<properties urlDisplayName="How to create and configure an Azure SQL DB" pageTitle="Azure SQL Database を作成して構成する方法 - Azure チュートリアル" metaKeywords="Azure SQL Database の作成, Azure SQL Database の構成" description="Azure SQL Database を作成して構成する方法。" metaCanonical="" services="sql-database" documentationCenter="" title="How to Create and Configure an Azure SQL Database" authors="sidneyh" solutions="" manager="jhubbard" editor="" />
 
 <tags ms.service="sql-database" ms.workload="data-management" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sidneyh" />
 

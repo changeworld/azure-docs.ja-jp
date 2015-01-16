@@ -1,4 +1,4 @@
-﻿<properties  pageTitle="スケジューラによるバックエンド タスクのスケジュール - モバイル サービス" metaKeywords="" description="Use the Windows Azure Mobile Services Scheduler to schedule jobs for your mobile app." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Schedule recurring jobs in Mobile Services" authors="glenga"  solutions="mobile" writer="" manager="dwrede" editor=""  />
+﻿<properties  pageTitle="スケジューラによるバックエンド タスクのスケジュール - モバイル サービス" metaKeywords="" description="Windows Azure モバイル サービス スケジューラを使用して、モバイル アプリケーション用のジョブをスケジュールします。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Schedule recurring jobs in Mobile Services" authors="glenga"  solutions="mobile" writer="" manager="dwrede" editor=""  />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="09/26/2014" ms.author="glenga" />
 

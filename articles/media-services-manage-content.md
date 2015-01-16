@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="How to manage media content" pageTitle="メディア コンテンツの管理方法 - Azure Media Services" metaKeywords="" description="Learn how to manage your media content in Azure Media Services." metaCanonical="" services="media-services" documentationCenter="" title="How to Manage Content in Media Services" authors="juliako" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="How to manage media content" pageTitle="メディア コンテンツの管理方法 - Azure Media Services" metaKeywords="" description="Azure Media Services でメディア コンテンツを管理する方法について説明します。" metaCanonical="" services="media-services" documentationCenter="" title="How to Manage Content in Media Services" authors="juliako" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako" />
 

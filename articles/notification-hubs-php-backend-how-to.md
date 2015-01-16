@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="How to use Notification Hubs with PHP" pageTitle="PHP で Notification Hubs を使用する方法" metaKeywords="" description="Learn how to use Azure Notification Hubs from a PHP back-end." metaCanonical="" services="mobile-services,notification-hubs,push,php" documentationCenter="" title="How to use Notification Hubs with PHP" authors="piyushjo" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="How to use Notification Hubs with PHP" pageTitle="PHP で Notification Hubs を使用する方法" metaKeywords="" description="PHP バックエンドから Azure Notification Hubs を使用する方法について説明します。" metaCanonical="" services="mobile-services,notification-hubs,push,php" documentationCenter="" title="How to use Notification Hubs with PHP" authors="piyushjo" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="php" ms.topic="article" ms.date="11/14/2014" ms.author="piyushjo" />
 

@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="How to monitor" pageTitle="Media Services アカウントの監視 - Azure" metaKeywords="" description="Describes how to configure monitoring for your Media Services account in Azure." metaCanonical="" services="media-services" documentationCenter="" title="How to Monitor a Media Services Account" authors="juliako" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="How to monitor" pageTitle="Media Services アカウントの監視 - Azure" metaKeywords="" description="Azure における Media Services アカウントの監視の構成方法について説明します。" metaCanonical="" services="media-services" documentationCenter="" title="How to Monitor a Media Services Account" authors="juliako" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="media-services" ms.workload="media" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/30/2014" ms.author="juliako" />
 

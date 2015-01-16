@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Table Service" pageTitle="テーブル ストレージの使用方法 (Java) | Microsoft Azure" metaKeywords="Azure table storage service, Azure table service Java, table storage Java" description="Learn how to use the table storage service in Azure. Code samples are written in Java code." metaCanonical="" services="storage" documentationCenter="Java" title="How to use the Table storage service from Java" authors="robmcm" solutions="" manager="wpickett" editor="" />
+﻿<properties urlDisplayName="Table Service" pageTitle="テーブル ストレージの使用方法 (Java) | Microsoft Azure" metaKeywords="Azure table storage service, Azure table service Java, table storage Java" description="Azure でテーブル ストレージ サービスを使用する方法について説明します。コード サンプルは Java で記述されています。" metaCanonical="" services="storage" documentationCenter="Java" title="How to use the Table storage service from Java" authors="robmcm" solutions="" manager="wpickett" editor="" />
 
 <tags ms.service="storage" ms.workload="storage" ms.tgt_pltfrm="na" ms.devlang="Java" ms.topic="article" ms.date="09/25/2014" ms.author="robmcm" />
 

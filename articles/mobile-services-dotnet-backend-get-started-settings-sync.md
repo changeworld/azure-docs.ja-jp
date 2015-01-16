@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Get started with cross-platform settings sync in Mobile Services" pageTitle="Mobile Services におけるクラスプラットフォームでの設定の同期の使用 | モバイル デベロッパー センター" metaKeywords="" description="Learn how to get started with cross-platform settings sync in Mobile Services." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Get started with cross-platform settings sync in Mobile Services" authors="mahender" manager="dwrede" />
+﻿<properties urlDisplayName="Get started with cross-platform settings sync in Mobile Services" pageTitle="Mobile Services におけるクラスプラットフォームでの設定の同期の使用 | モバイル デベロッパー センター" metaKeywords="" description="Mobile Services でクラスプラットフォームでの設定の同期を行う方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Get started with cross-platform settings sync in Mobile Services" authors="mahender" manager="dwrede" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="08/19/2014" ms.author="mahender" />
 

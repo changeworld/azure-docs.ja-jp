@@ -1,502 +1,1934 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg id="svg3863" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 626.41 1166.7" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xlink="http://www.w3.org/1999/xlink">
- <g id="layer1" transform="translate(-60.590358,-27.362145)">
-  <g id="g4809" transform="translate(55.498761,7.71726)">
-
-    <g id="g5699" transform="translate(1.79518,8.35014)">
-
-      <path id="path5701" fill-rule="evenodd" fill="#00bcf2" d="m254.73,83.63,0,30.345,104.04,0,0-30.345-104.04,0z"/>
-      <text id="text5703" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="96.236259" x="275.93869" font-family="Segoe UI" fill="#ffffff">Tell me about </text>
-      <text id="text5705" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="107.79639" x="284.16556" font-family="Segoe UI" fill="#ffffff">HDInsight</text>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-introduction/" target="_blank">
-        <path id="path5707" fill-rule="evenodd" fill="#a8d08d" d="m480.15,55.452,0,26.01,104.04,0,0-26.01-104.04,0z"/>
-        <text id="text5709" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="65.891151" x="491.30484" font-family="Segoe UI" fill="#000000">What is Hadoop on </text>
-        <text id="text5711" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="77.451279" x="509.14392" font-family="Segoe UI" fill="#000000">HDInsight</text>
-        <text id="text5713" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="77.451279" x="551.56323" font-family="Segoe UI" fill="#000000">?</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-overview/" target="_blank">
-        <path id="path5715" fill-rule="evenodd" fill="#a8d08d" d="m480.15,85.797,0,26.01,104.04,0,0-26.01-104.04,0z"/>
-        <text id="text5717" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="96.236259" x="495.29379" font-family="Segoe UI" fill="#000000">What is HBase on </text>
-        <text id="text5719" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="107.79639" x="509.14392" font-family="Segoe UI" fill="#000000">HDInsight</text>
-        <text id="text5721" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="107.79639" x="551.56323" font-family="Segoe UI" fill="#000000">?</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-use-blob-storage/" target="_blank">
-        <path id="path6263" fill-rule="evenodd" fill="#a8d08d" d="m480.15,116.14,0,26.01,104.04,0,0-26.01-104.04,0z"/>
-        <text id="text6265" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="126.58136" x="484.52689" font-family="Segoe UI" fill="#000000">How is the data stored </text>
-        <text id="text6267" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="138.14149" x="503.93207" font-family="Segoe UI" fill="#000000">in HDInsight</text>
-        <text id="text6269" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="138.14149" x="556.77509" font-family="Segoe UI" fill="#000000">?</text>
-      </a>
-
-      <path id="path5723" stroke-linejoin="round" d="m358.77,98.802,91.035,0,0-30.345,26.326,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5725" fill-rule="evenodd" fill="#5b9bd5" d="m480.15,68.457-5.3285,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3285l5.3285,2.6642z"/>
-      <path id="path5727" stroke-linejoin="round" d="m358.77,98.802,117.36,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5729" fill-rule="evenodd" fill="#5b9bd5" d="m480.15,98.802-5.3285,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3285l5.3285,2.6642z"/>
-      <path id="path5731" stroke-linejoin="round" d="m306.75,113.97,0,142.24" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5733" fill-rule="evenodd" fill="#5b9bd5" d="m306.75,260.28-2.6642-5.3736c1.6708,0.85797,3.6577,0.85797,5.3284,0l-2.6642,5.3736z"/>
-      <path id="path5735" stroke-linejoin="round" d="m306.75,193.09,21.991,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5737" fill-rule="evenodd" fill="#5b9bd5" d="m332.76,193.09-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3284l5.3284,2.6642z"/>
-
-      <path id="path5739" fill-rule="evenodd" fill="#00bcf2" d="m332.76,180.08,0,26.01,78.03,0,0-26.01-78.03,0z"/>
-      <text id="text5741" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="190.52283" x="337.27847" font-family="Segoe UI" fill="#ffffff">Go through the </text>
-      <text id="text5743" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="202.08296" x="353.14426" font-family="Segoe UI" fill="#ffffff">tutorials</text>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-get-started/" target="_blank">
-        <path id="path5745" fill-rule="evenodd" fill="#a8d08d" d="m480.15,164.91,0,26.01,104.04,0,0-26.01-104.04,0z"/>
-        <text id="text5747" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="175.35028" x="498.6239" font-family="Segoe UI" fill="#000000">Get started with </text>
-        <text id="text5749" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="186.91042" x="487.58871" font-family="Segoe UI" fill="#000000">Hadoop in HDInsight</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-get-started/" target="_blank">
-        <path id="path5751" fill-rule="evenodd" fill="#a8d08d" d="m480.15,195.26,0,26.01,104.04,0,0-26.01-104.04,0z"/>
-        <text id="text5753" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="205.69537" x="498.6239" font-family="Segoe UI" fill="#000000">Get started with </text>
-        <text id="text5755" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="217.25551" x="491.57764" font-family="Segoe UI" fill="#000000">HBase in HDInsight</text>
-      </a>
-
-      <path id="path5757" stroke-linejoin="round" d="m410.79,193.09,39.015,0,0-15.173,26.326,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5759" fill-rule="evenodd" fill="#5b9bd5" d="m480.15,177.92-5.3285,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3284l5.3285,2.6642z"/>
-      <path id="path5761" stroke-linejoin="round" d="m410.79,193.09,39.015,0,0,15.173,26.326,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5763" fill-rule="evenodd" fill="#5b9bd5" d="m480.15,208.26-5.3285,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3284l5.3285,2.6642z"/>
-
-      <path id="path5765" fill-rule="evenodd" fill="#00bcf2" d="m254.73,260.28,0,26.01,104.04,0,0-26.01-104.04,0z"/>
-      <text id="text5767" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="270.72061" x="260.08218" font-family="Segoe UI" fill="#ffffff">How do I provision a </text>
-      <text id="text5769" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="282.28073" x="289.87112" font-family="Segoe UI" fill="#ffffff">cluster</text>
-      <text id="text5771" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="282.28073" x="320.09348" font-family="Segoe UI" fill="#ffffff">?</text>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-provision-clusters/" target="_blank">
-        <path id="path5773" fill-rule="evenodd" fill="#a8d08d" d="m480.15,245.11,0,26.01,104.04,0,0-26.01-104.04,0z"/>
-        <text id="text5775" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="255.54805" x="490.81351" font-family="Segoe UI" fill="#000000">Provision a Hadoop </text>
-        <text id="text5777" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="267.10818" x="518.5257" font-family="Segoe UI" fill="#000000">cluster</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-provision-vnet/" target="_blank">
-        <path id="path5779" fill-rule="evenodd" fill="#a8d08d" d="m480.15,275.45,0,26.01,104.04,0,0-26.01-104.04,0z"/>
-        <text id="text5781" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="285.89316" x="492.07639" font-family="Segoe UI" fill="#000000">Provision an HBase </text>
-        <text id="text5783" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="297.45328" x="518.5257" font-family="Segoe UI" fill="#000000">cluster</text>
-      </a>
-
-      <path id="path5785" stroke-linejoin="round" d="m358.77,273.29,91.035,0,0-15.173,26.326,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5787" fill-rule="evenodd" fill="#5b9bd5" d="m480.15,258.11-5.3285,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3285l5.3285,2.6642z"/>
-      <path id="path5789" stroke-linejoin="round" d="m358.77,273.29,91.035,0,0,15.173,26.326,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5791" fill-rule="evenodd" fill="#5b9bd5" d="m480.15,288.46-5.3285,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3285l5.3285,2.6642z"/>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-get-started-emulator/" target="_blank">
-        <path id="path6047" fill-rule="evenodd" fill="#e2efd9" d="m460.64,355.65,0,47.685,143.06,0,0-47.685-143.06,0z"/>
-        <path id="path6049" stroke-linejoin="miter" d="m460.64,403.34,143.06,0,0-47.685-143.06,0,0,47.685z" stroke="#c8c8c8" stroke-linecap="square" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-        <text id="text6051" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="365.36835" x="470.10709" font-family="Segoe UI" fill="#000000">Looking to learn HDInsight in </text>
-        <text id="text6053" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="376.92844" x="481.28806" font-family="Segoe UI" fill="#000000">your own backyard</text>
-        <text id="text6055" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="376.92844" x="562.11871" font-family="Segoe UI" fill="#000000">? </text>
-        <text id="text6057" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="376.92844" x="569.07556" font-family="Segoe UI" fill="#000000">Try </text>
-        <text id="text6059" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="388.48856" x="469.93088" font-family="Segoe UI" fill="#000000">HDInsight Emulator</text>
-        <text id="text6061" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="388.48856" x="559.61389" font-family="Segoe UI" fill="#000000"> </text>
-        <text id="text6063" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="388.48856" x="562.25262" font-family="Segoe UI" fill="#000000">on your </text>
-        <text id="text6065" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="400.04871" x="511.93347" font-family="Segoe UI" fill="#000000">computer</text>
-      </a>
-
-      <path id="path5793" fill-rule="evenodd" fill="#00bcf2" d="m129.01,543.32,0,26.01,104.04,0,0-26.01-104.04,0z"/>
-      <text id="text5795" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="559.57703" x="153.64996" font-family="Segoe UI" fill="#ffffff">Upload data</text>
-
-      <path id="path5797" fill-rule="evenodd" fill="#00bcf2" d="m254.73,543.32,0,26.01,104.04,0,0-26.01-104.04,0z"/>
-      <text id="text5799" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="553.79706" x="269.52719" font-family="Segoe UI" fill="#ffffff">Develop and run </text>
-      <text id="text5801" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="565.35724" x="297.67252" font-family="Segoe UI" fill="#ffffff">jobs</text>
-
-      <path id="path5803" fill-rule="evenodd" fill="#00bcf2" d="m3.2964,543.32,0,26.01,104.04,0,0-26.01-104.04,0z"/>
-      <text id="text5805" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="559.57703" x="12.216671" font-family="Segoe UI" fill="#ffffff">Manage the cluster</text>
-
-      <path id="path5807" fill-rule="evenodd" fill="#00bcf2" d="m254.73,366.49,0,26.01,104.04,0,0-26.01-104.04,0z"/>
-      <text id="text5809" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="382.70837" x="278.5867" font-family="Segoe UI" fill="#ffffff">Run samples</text>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-get-started-emulator/" target="_blank">
-        <path id="path5811" fill-rule="evenodd" fill="#a8d08d" d="m148.52,577.37,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5813" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="592.16199" x="168.58781" font-family="Segoe UI" fill="#000000">Use Azure Blob </text>
-        <text id="text5815" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="603.72211" x="156.01907" font-family="Segoe UI" fill="#000000">storage for your data</text>
-      </a>
-
-      <path id="path5817" stroke-linejoin="round" d="m137.68,569.33,0,25.378,6.8186,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5819" fill-rule="evenodd" fill="#5b9bd5" d="m148.52,594.71-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3284l5.3284,2.6642z"/>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-upload-data/" target="_blank">
-        <path id="path5821" fill-rule="evenodd" fill="#a8d08d" d="m148.52,617.92,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5823" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="626.91418" x="167.45406" font-family="Segoe UI" fill="#000000">Upload data for </text>
-        <text id="text5825" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="638.4743" x="168.3055" font-family="Segoe UI" fill="#000000">Hadoop jobs in </text>
-        <text id="text5827" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="650.03442" x="179.67433" font-family="Segoe UI" fill="#000000">HDInsight</text>
-      </a>
-
-      <path id="path5829" stroke-linejoin="round" d="m137.68,569.33,0,65.928,6.8186,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5831" fill-rule="evenodd" fill="#5b9bd5" d="m148.52,635.26-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3284l5.3284,2.6642z"/>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-use-hive/" target="_blank">
-        <path id="path5833" fill-rule="evenodd" fill="#a8d08d" d="m276.4,576.92,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5835" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="597.50842" x="281.3363" font-family="Segoe UI" fill="#000000">Use Hive with Hadoop</text>
-      </a>
-
-      <path id="path5837" stroke-linejoin="round" d="m263.4,569.33,0,24.926,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5839" fill-rule="evenodd" fill="#5b9bd5" d="m276.4,594.26-5.3284,2.7094c0.85797-1.716,0.85797-3.6577,0-5.3736l5.3284,2.6642z"/>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-use-pig/" target="_blank">
-        <path id="path5841" fill-rule="evenodd" fill="#a8d08d" d="m276.4,618.78,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5843" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="639.34131" x="284.04807" font-family="Segoe UI" fill="#000000">Use Pig with Hadoop</text>
-      </a>
-
-      <path id="path5845" stroke-linejoin="round" d="m263.4,569.33,0,66.786,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5847" fill-rule="evenodd" fill="#5b9bd5" d="m276.4,636.12-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3285l5.3284,2.6642z"/>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-use-mapreduce/" target="_blank">
-        <path id="path5849" fill-rule="evenodd" fill="#a8d08d" d="m276.4,660.59,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5851" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="675.39429" x="302.39276" font-family="Segoe UI" fill="#000000">Use Hadoop </text>
-        <text id="text5853" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="686.95441" x="303.45325" font-family="Segoe UI" fill="#000000">MapReduce</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-python/" target="_blank">
-        <path id="path5855" fill-rule="evenodd" fill="#a8d08d" d="m276.4,702.45,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5857" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="717.22717" x="283.5845" font-family="Segoe UI" fill="#000000">Use Python with Hive </text>
-        <text id="text5859" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="728.78729" x="312.73395" font-family="Segoe UI" fill="#000000">and Pig</text>
-      </a>
-
-      <path id="path5861" stroke-linejoin="round" d="m263.4,569.33,0,108.6,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5863" fill-rule="evenodd" fill="#5b9bd5" d="m276.4,677.93-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3285l5.3284,2.6642z"/>
-      <path id="path5865" stroke-linejoin="round" d="m263.4,569.33,0,150.46,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5867" fill-rule="evenodd" fill="#5b9bd5" d="m276.4,719.79-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3284l5.3284,2.6642z"/>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-high-availability/" target="_blank">
-        <path id="path5869" fill-rule="evenodd" fill="#a8d08d" d="m22.804,740.79,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5871" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="749.81189" x="42.89304" font-family="Segoe UI" fill="#000000">Availability and </text>
-        <text id="text5873" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="761.37201" x="31.74514" font-family="Segoe UI" fill="#000000">reliability of Hadoop </text>
-        <text id="text5875" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="772.93213" x="59.137966" font-family="Segoe UI" fill="#000000">clusters</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-administer-use-management-portal/" target="_blank">
-        <path id="path5877" fill-rule="evenodd" fill="#a8d08d" d="m22.804,576.92,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5879" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="597.50842" x="41.127174" font-family="Segoe UI" fill="#000000">Using the Portal</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-administer-use-powershell/" target="_blank">
-        <path id="path5881" fill-rule="evenodd" fill="#a8d08d" d="m22.804,617.92,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5883" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="638.4743" x="38.436577" font-family="Segoe UI" fill="#000000">Using PowerShell</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-administer-use-command-line/" target="_blank">
-        <path id="path5885" fill-rule="evenodd" fill="#a8d08d" d="m22.804,658.88,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5887" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="679.44019" x="55.236347" font-family="Segoe UI" fill="#000000">Using CLI</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-monitor-use-ambari-api/" target="_blank">
-        <path id="path5889" fill-rule="evenodd" fill="#a8d08d" d="m22.804,699.83,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5891" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="720.40607" x="37.982544" font-family="Segoe UI" fill="#000000">Using Ambari API</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-use-oozie/" target="_blank">
-        <path id="path5893" fill-rule="evenodd" fill="#a8d08d" d="m276.4,786.08,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5895" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="800.89294" x="296.93405" font-family="Segoe UI" fill="#000000">Use Oozie with </text>
-        <text id="text5897" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="812.45306" x="311.58405" font-family="Segoe UI" fill="#000000">Hadoop</text>
-      </a>
-
-      <path id="path5899" stroke-linejoin="round" d="m11.966,569.33,0,188.8,6.8186,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5901" fill-rule="evenodd" fill="#5b9bd5" d="m22.804,758.13-5.3285,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3284l5.3285,2.6642z"/>
-      <path id="path5903" stroke-linejoin="round" d="m11.966,569.33,0,24.926,6.8186,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5905" fill-rule="evenodd" fill="#5b9bd5" d="m22.804,594.26-5.3285,2.7094c0.85797-1.716,0.85797-3.6577,0-5.3736l5.3285,2.6642z"/>
-      <path id="path5907" stroke-linejoin="round" d="m11.966,569.33,0,65.928,6.8186,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5909" fill-rule="evenodd" fill="#5b9bd5" d="m22.804,635.26-5.3285,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3284l5.3285,2.6642z"/>
-      <path id="path5911" stroke-linejoin="round" d="m11.966,569.33,0,106.89,6.8186,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5913" fill-rule="evenodd" fill="#5b9bd5" d="m22.804,676.22-5.3285,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3284l5.3285,2.6642z"/>
-      <path id="path5915" stroke-linejoin="round" d="m11.966,569.33,0,147.84,6.8186,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5917" fill-rule="evenodd" fill="#5b9bd5" d="m22.804,717.17-5.3285,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3284l5.3285,2.6642z"/>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-develop-deploy-java-mapreduce/" target="_blank">
-        <path id="path5919" fill-rule="evenodd" fill="#a8d08d" d="m276.4,868.9,0,47.685,104.04,0,0-47.685-104.04,0z"/>
-        <text id="text5921" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="884.414" x="300.97672" font-family="Segoe UI" fill="#000000">Develop Java </text>
-        <text id="text5923" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="895.97412" x="281.65118" font-family="Segoe UI" fill="#000000">MapReduce programs </text>
-        <text id="text5925" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="907.5343" x="304.26025" font-family="Segoe UI" fill="#000000">for Hadoop</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/" target="_blank">
-        <path id="path5927" fill-rule="evenodd" fill="#a8d08d" d="m276.4,923.31,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5929" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="938.09619" x="281.55963" font-family="Segoe UI" fill="#000000">Develop C</text>
-        <text id="text5931" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="938.09619" x="325.24844" font-family="Segoe UI" fill="#000000"># </text>
-        <text id="text5933" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="938.09619" x="333.57874" font-family="Segoe UI" fill="#000000">streaming </text>
-        <text id="text5935" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="949.65631" x="308.28409" font-family="Segoe UI" fill="#000000">programs</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-build-java-maven/" target="_blank">
-        <path id="path5937" fill-rule="evenodd" fill="#a8d08d" d="m276.4,964.72,0,47.685,104.04,0,0-47.685-104.04,0z"/>
-        <text id="text5939" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="974.43799" x="287.42767" font-family="Segoe UI" fill="#000000">Use Maven to build </text>
-        <text id="text5941" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="985.99811" x="283.2453" font-family="Segoe UI" fill="#000000">Java applications that </text>
-        <text id="text5943" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="997.55823" x="296.56918" font-family="Segoe UI" fill="#000000">use Hbase with </text>
-        <text id="text5945" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="1009.1184" x="311.58405" font-family="Segoe UI" fill="#000000">Hadoop</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-submit-hadoop-jobs-programmatically/" target="_blank">
-        <path id="path5947" fill-rule="evenodd" fill="#a8d08d" d="m276.4,744.27,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5949" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="764.83997" x="284.46399" font-family="Segoe UI" fill="#000000">Submit Hadoop Jobs</text>
-      </a>
-
-      <path id="path5951" stroke-linejoin="round" d="m263.4,569.33,0,371.32,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path5953" fill-rule="evenodd" fill="#5b9bd5" d="m276.4,940.65-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3285l5.3284,2.6642z"/>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-sample-pi-estimator/" target="_blank">
-        <path id="path5955" fill-rule="evenodd" fill="#a8d08d" d="m11.966,296.05,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5957" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="310.81949" x="30.052038" font-family="Segoe UI" fill="#000000">The Pi Estimator </text>
-        <text id="text5959" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="322.37936" x="49.170662" font-family="Segoe UI" fill="#000000">sample</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-sample-wordcount/" target="_blank">
-        <path id="path5961" fill-rule="evenodd" fill="#a8d08d" d="m11.966,339.4,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5963" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="354.16965" x="30.522476" font-family="Segoe UI" fill="#000000">The WordCount </text>
-        <text id="text5965" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="365.72949" x="49.170662" font-family="Segoe UI" fill="#000000">sample</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-sample-10gb-graysort/" target="_blank">
-        <path id="path5967" fill-rule="evenodd" fill="#a8d08d" d="m11.966,382.75,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5969" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="397.51978" x="22.805761" font-family="Segoe UI" fill="#000000">The </text>
-        <text id="text5971" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="397.51978" x="40.981388" font-family="Segoe UI" fill="#000000">10</text>
-        <text id="text5973" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="397.51978" x="51.367538" font-family="Segoe UI" fill="#000000">-</text>
-        <text id="text5975" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="397.51978" x="55.219944" font-family="Segoe UI" fill="#000000">GB Graysort</text>
-        <text id="text5977" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="409.0799" x="49.170662" font-family="Segoe UI" fill="#000000">sample</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-sample-csharp-streaming/" target="_blank">
-        <path id="path5979" fill-rule="evenodd" fill="#a8d08d" d="m11.966,426.1,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5981" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="440.8699" x="26.382994" font-family="Segoe UI" fill="#000000">The C</text>
-        <text id="text5983" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="440.8699" x="50.522972" font-family="Segoe UI" fill="#000000"># </text>
-        <text id="text5985" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="440.8699" x="58.853271" font-family="Segoe UI" fill="#000000">Streaming </text>
-        <text id="text5987" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="452.43005" x="49.170662" font-family="Segoe UI" fill="#000000">sample</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-mahout/" target="_blank">
-        <path id="path5989" fill-rule="evenodd" fill="#a8d08d" d="m402.12,576.92,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text5991" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="585.94824" x="420.85477" font-family="Segoe UI" fill="#000000">Generate movie </text>
-        <text id="text5993" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="597.50842" x="416.02155" font-family="Segoe UI" fill="#000000">recommendations </text>
-        <text id="text5995" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="609.06854" x="427.47531" font-family="Segoe UI" fill="#000000">with Mahout</text>
-      </a>
-
-      <path id="path5997" fill-rule="evenodd" fill="#00bcf2" d="m380.44,543.32,0,26.01,104.04,0,0-26.01-104.04,0z"/>
-      <text id="text5999" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="559.57703" x="386.4935" font-family="Segoe UI" fill="#ffffff">Real world scenarios</text>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-connect-excel-power-query/" target="_blank">
-        <path id="path6001" fill-rule="evenodd" fill="#a8d08d" d="m402.12,782.43,0,39.015,104.04,0,0-39.015-104.04,0z"/>
-        <text id="text6003" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="793.59552" x="419.19925" font-family="Segoe UI" fill="#000000">Connect Excel to </text>
-        <text id="text6005" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="805.15564" x="412.46097" font-family="Segoe UI" fill="#000000">Hadoop with Power </text>
-        <text id="text6007" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="816.71576" x="441.60089" font-family="Segoe UI" fill="#000000">Query</text>
-      </a>
-
-      <path id="path6009" stroke-linejoin="round" d="m389.11,569.33,0,232.6,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path6011" fill-rule="evenodd" fill="#5b9bd5" d="m402.12,801.93-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3284l5.3284,2.6642z"/>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-connect-excel-hive-ODBC-driver/" target="_blank">
-        <path id="path6013" fill-rule="evenodd" fill="#a8d08d" d="m402.12,827.49,0,47.685,104.04,0,0-47.685-104.04,0z"/>
-        <text id="text6015" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="837.23474" x="419.19925" font-family="Segoe UI" fill="#000000">Connect Excel to </text>
-        <text id="text6017" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="848.79486" x="426.97443" font-family="Segoe UI" fill="#000000">Hadoop with </text>
-        <text id="text6019" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="860.35498" x="408.74271" font-family="Segoe UI" fill="#000000">Microsoft HIVE ODBC </text>
-        <text id="text6021" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="871.9151" x="441.76334" font-family="Segoe UI" fill="#000000">Driver</text>
-      </a>
-
-      <path id="path6023" stroke-linejoin="round" d="m389.11,569.33,0,282,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path6025" fill-rule="evenodd" fill="#5b9bd5" d="m402.12,851.33-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3285l5.3284,2.6642z"/>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-giraph/" target="_blank">
-        <path id="path6027" fill-rule="evenodd" fill="#a8d08d" d="m402.12,618.55,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text6029" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="627.56445" x="423.59937" font-family="Segoe UI" fill="#000000">Perform graph </text>
-        <text id="text6031" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="639.12457" x="412.30515" font-family="Segoe UI" fill="#000000">analysis with Giraph </text>
-        <text id="text6033" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="650.68469" x="424.48148" font-family="Segoe UI" fill="#000000">using Hadoop</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-analyze-twitter-data/" target="_blank">
-        <path id="path6035" fill-rule="evenodd" fill="#a8d08d" d="m402.12,660.19,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text6037" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="674.96075" x="411.36691" font-family="Segoe UI" fill="#000000">Analyze Twitter data </text>
-        <text id="text6039" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="686.52087" x="424.48148" font-family="Segoe UI" fill="#000000">using Hadoop</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-analyze-flight-delay-data/" target="_blank">
-        <path id="path6041" fill-rule="evenodd" fill="#a8d08d" d="m402.12,741.65,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text6043" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="756.45905" x="413.02747" font-family="Segoe UI" fill="#000000">Analyze flight delay </text>
-        <text id="text6045" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="768.01917" x="413.79187" font-family="Segoe UI" fill="#000000">data using Hadoop</text>
-      </a>
-
-
-      <path id="path6067" fill-rule="evenodd" fill="#ed7d31" d="m185.37,98.802c0-13.186-10.657-23.843-23.843-23.843s-23.843,10.657-23.843,23.843c0,13.141,10.657,23.843,23.843,23.843s23.843-10.702,23.843-23.843"/>
-      <path id="path6069" stroke-linejoin="miter" d="m185.37,98.802c0-13.186-10.657-23.843-23.843-23.843s-23.843,10.657-23.843,23.843c0,13.141,10.657,23.843,23.843,23.843s23.843-10.702,23.843-23.843" stroke="#c8c8c8" stroke-linecap="square" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <text id="text6071" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="95.943512" x="150.91147" font-family="Segoe UI" fill="#feffff">Start</text>
-      <text id="text6073" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="107.50338" x="151.84044" font-family="Segoe UI" fill="#feffff">here</text>
-
-      <path id="path6075" stroke-linejoin="round" d="m185.37,98.802,65.341,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6077" fill-rule="evenodd" fill="#5b9bd5" d="m254.73,98.802-5.3285,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3285l5.3285,2.6642z"/>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-debug-jobs/" target="_blank">
-        <path id="path6079" fill-rule="evenodd" fill="#a8d08d" d="m276.4,1019.1,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text6081" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="1033.9" x="284.37247" font-family="Segoe UI" fill="#000000">Debug Hadoop Error </text>
-        <text id="text6083" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="1045.4601" x="307.98563" font-family="Segoe UI" fill="#000000">Messages</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-use-sqoop/" target="_blank">
-        <path id="path6085" fill-rule="evenodd" fill="#a8d08d" d="m276.4,1060.5,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text6087" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="1075.2994" x="296.56018" font-family="Segoe UI" fill="#000000">Move data to a </text>
-        <text id="text6089" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="1086.8595" x="284.03589" font-family="Segoe UI" fill="#000000">database with Sqoop</text>
-      </a>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-dotnet-avro-serialization/" target="_blank">
-        <path id="path6091" fill-rule="evenodd" fill="#a8d08d" d="m276.4,1101.9,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text6093" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="1116.6987" x="290.35321" font-family="Segoe UI" fill="#000000">Serialize data with </text>
-        <text id="text6095" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="1128.2589" x="284.88974" font-family="Segoe UI" fill="#000000">.</text>
-        <text id="text6097" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="1128.2589" x="286.97812" font-family="Segoe UI" fill="#000000">NET Library for Avro</text>
-      </a>
-
-      <a xlink:href="http://msdn.microsoft.com/library/azure/dn479185.aspx" target="_blank">
-        <path id="path6099" fill-rule="evenodd" fill="#a8d08d" d="m276.4,1143.3,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text6101" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="1152.318" x="297.50769" font-family="Segoe UI" fill="#000000">HDInsight SDK </text>
-        <text id="text6103" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="1163.8781" x="307.6774" font-family="Segoe UI" fill="#000000">Reference </text>
-        <text id="text6105" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="1175.4382" x="295.79315" font-family="Segoe UI" fill="#000000">Documentation</text>
-      </a>
-
-      <path id="path6107" stroke-linejoin="round" d="m263.4,569.33,0,467.1,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6109" fill-rule="evenodd" fill="#5b9bd5" d="m276.4,1036.4-5.3284,2.7094c0.85797-1.716,0.85797-3.6577,0-5.3736l5.3284,2.6642z"/>
-
-      <path id="path6111" stroke-linejoin="round" d="m263.4,569.33,0,549.91,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6113" fill-rule="evenodd" fill="#5b9bd5" d="m276.4,1119.2-5.3284,2.6643c0.85797-1.6708,0.85797-3.6577,0-5.3285l5.3284,2.6642z"/>
-
-      <path id="path6115" stroke-linejoin="round" d="m263.4,569.33,0,591.32,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6117" fill-rule="evenodd" fill="#5b9bd5" d="m276.4,1160.7-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3285l5.3284,2.6643z"/>
-
-      <path id="path6119" stroke-linejoin="round" d="m389.11,569.33,0,24.926,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6121" fill-rule="evenodd" fill="#5b9bd5" d="m402.12,594.26-5.3284,2.7094c0.85797-1.716,0.85797-3.6577,0-5.3736l5.3284,2.6642z"/>
-
-      <path id="path6123" stroke-linejoin="round" d="m389.11,569.33,0,66.561,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6125" fill-rule="evenodd" fill="#5b9bd5" d="m402.12,635.89-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3284l5.3284,2.6642z"/>
-
-      <path id="path6127" stroke-linejoin="round" d="m389.11,569.33,0,108.19,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6129" fill-rule="evenodd" fill="#5b9bd5" d="m402.12,677.53-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3285l5.3284,2.6642z"/>
-
-      <path id="path6131" stroke-linejoin="round" d="m389.11,569.33,0,189.66,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6133" fill-rule="evenodd" fill="#5b9bd5" d="m402.12,758.99-5.3284,2.7094c0.85797-1.7159,0.85797-3.6577,0-5.3736l5.3284,2.6642z"/>
-
-      <path id="path6135" stroke-linejoin="round" d="m254.73,379.49-112.71,0,0-66.109-21.946,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6137" fill-rule="evenodd" fill="#5b9bd5" d="m116.01,313.39,5.3285-2.6642c-0.81282,1.6708-0.81282,3.6577,0,5.3284l-5.3285-2.6642z"/>
-
-      <path id="path6139" stroke-linejoin="round" d="m254.73,379.49-112.71,0,0-22.759-21.946,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6141" fill-rule="evenodd" fill="#5b9bd5" d="m116.01,356.74,5.3285-2.6642c-0.81282,1.6708-0.81282,3.6577,0,5.3284l-5.3285-2.6642z"/>
-
-      <path id="path6143" stroke-linejoin="round" d="m254.73,379.49-112.71,0,0,20.591-21.946,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6145" fill-rule="evenodd" fill="#5b9bd5" d="m116.01,400.09,5.3285-2.6642c-0.81282,1.6708-0.81282,3.6577,0,5.3285l-5.3285-2.6642z"/>
-
-      <path id="path6147" stroke-linejoin="round" d="m254.73,379.49-112.71,0,0,63.941-21.946,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6149" fill-rule="evenodd" fill="#5b9bd5" d="m116.01,443.44,5.3285-2.6642c-0.81282,1.6708-0.81282,3.6577,0,5.3285l-5.3285-2.6642z"/>
-
-      <path id="path6151" stroke-linejoin="round" d="m306.75,286.29,0,76.134" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6153" fill-rule="evenodd" fill="#5b9bd5" d="m306.75,366.49-2.6642-5.3736c1.6708,0.85797,3.6577,0.85797,5.3284,0l-2.6642,5.3736z"/>
-
-      <path id="path6155" fill-rule="evenodd" fill="#00bcf2" d="m506.16,543.32,0,26.01,104.04,0,0-26.01-104.04,0z"/>
-      <text id="text6157" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="553.79706" x="519.66925" font-family="Segoe UI" fill="#ffffff">Stay current with </text>
-      <text id="text6159" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="565.35724" x="535.59644" font-family="Segoe UI" fill="#ffffff">HDInsight</text>
-     
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-component-versioning/" target="_blank">
-        <path id="path6161" fill-rule="evenodd" fill="#a8d08d" d="m525.67,578.91,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text6163" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="593.6792" x="547.44122" font-family="Segoe UI" fill="#000000">What</text>
-        <path id="path6165" fill="none" d="M570.06,593.68"/>
-        <path id="path6167" fill="none" d="M570.06,593.68"/>
-        <text id="text6169" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="593.6792" x="570.05743" font-family="Segoe UI" fill="#000000">·</text>
-        <text id="text6171" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="593.6792" x="572.26355" font-family="Segoe UI" fill="#000000">s New in </text>
-        <text id="text6173" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="605.23932" x="554.66156" font-family="Segoe UI" fill="#000000">HDInsight</text>
-        <text id="text6175" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="605.23932" x="597.08093" font-family="Segoe UI" fill="#000000">?</text>
-      </a>
-
-      <path id="path6177" stroke-linejoin="round" d="m514.83,569.33,0,26.913,6.8186,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6179" fill-rule="evenodd" fill="#5b9bd5" d="m525.67,596.25-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3284l5.3284,2.6642z"/>
- 
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-release-notes/" target="_blank">
-        <path id="path6181" fill-rule="evenodd" fill="#a8d08d" d="m525.67,619.41,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text6183" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="634.21167" x="540.60901" font-family="Segoe UI" fill="#000000">HDInsight release </text>
-        <text id="text6185" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="645.77179" x="566.28735" font-family="Segoe UI" fill="#000000">notes</text>
-      </a>
-        
-      <path id="path6187" stroke-linejoin="round" d="m514.83,569.33,0,67.419,6.8186,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6189" fill-rule="evenodd" fill="#5b9bd5" d="m525.67,636.75-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3285l5.3284,2.6642z"/>
-
-      <path id="path6191" stroke-linejoin="round" d="m306.75,392.5,0,124.63-251.43,0,0,22.172" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6193" fill-rule="evenodd" fill="#5b9bd5" d="m55.317,543.32-2.6642-5.3285c1.6708,0.85797,3.6577,0.85797,5.3285,0l-2.6642,5.3285z"/>
-
-      <path id="path6195" stroke-linejoin="round" d="m306.75,392.5,0,124.63-125.72,0,0,22.172" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6197" fill-rule="evenodd" fill="#5b9bd5" d="m181.03,543.32-2.6642-5.3285c1.6708,0.85797,3.6577,0.85797,5.3284,0l-2.6642,5.3285z"/>
-
-      <path id="path6199" stroke-linejoin="round" d="m306.75,392.5,0,124.63,125.72,0,0,22.172" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6201" fill-rule="evenodd" fill="#5b9bd5" d="m432.46,543.32-2.6642-5.3285c1.6708,0.85797,3.6577,0.85797,5.3284,0l-2.6642,5.3285z"/>
-
-      <path id="path6203" stroke-linejoin="round" d="m306.75,392.5,0,124.63,251.43,0,0,22.172" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6205" fill-rule="evenodd" fill="#5b9bd5" d="m558.18,543.32-2.6642-5.3285c1.6708,0.85797,3.6577,0.85797,5.3284,0l-2.6642,5.3285z"/>
-
-      <path id="path6207" stroke-linejoin="round" d="m306.75,392.5,0,146.8" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6209" fill-rule="evenodd" fill="#5b9bd5" d="m306.75,543.32-2.6642-5.3285c1.6708,0.85797,3.6577,0.85797,5.3284,0l-2.6642,5.3285z"/>
-
-      <path id="path6211" fill-rule="evenodd" fill="#FFF" d="m263.4,426.1,0,39.015,86.7,0,0-39.015-86.7,0z"/>
-      <text id="text6213" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="11.56004047px" font-style="normal" y="442.45929" x="269.9389" font-family="Segoe UI" fill="#003232">Ready to dive </text>
-      <text id="text6215" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="11.56004047px" font-style="normal" y="456.33139" x="299.42093" font-family="Segoe UI" fill="#003232">in</text>
-      <text id="text6217" style="text-anchor:start;text-align:start;" font-weight="bold" xml:space="preserve" font-size="11.56004047px" font-style="normal" y="456.33139" x="309.69965" font-family="Segoe UI" fill="#003232">?</text>
-
-      <path id="path6219" stroke-linejoin="round" d="m263.4,569.33,0,192.28,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6221" fill-rule="evenodd" fill="#5b9bd5" d="m276.4,761.61-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3284l5.3284,2.6642z"/>
-
-      <path id="path6223" stroke-linejoin="round" d="m263.4,569.33,0,234.09,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6225" fill-rule="evenodd" fill="#5b9bd5" d="m276.4,803.42-5.3284,2.7094c0.85797-1.7159,0.85797-3.6577,0-5.3736l5.3284,2.6642z"/>
-
-      <path id="path6227" stroke-linejoin="round" d="m263.4,569.33,0,323.41,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6229" fill-rule="evenodd" fill="#5b9bd5" d="m276.4,892.74-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3284l5.3284,2.6642z"/>
-
-      <path id="path6231" stroke-linejoin="round" d="m263.4,569.33,0,419.23,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6233" fill-rule="evenodd" fill="#5b9bd5" d="m276.4,988.56-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3284l5.3284,2.6642z"/>
-
-      <path id="path6235" stroke-linejoin="round" d="m263.4,569.33,0,508.51,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6237" fill-rule="evenodd" fill="#5b9bd5" d="m276.4,1077.8-5.3284,2.6642c0.85797-1.6707,0.85797-3.6576,0-5.3284l5.3284,2.6642z"/>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-analyze-twitter-sentiment/" target="_blank">
-        <path id="path6239" fill-rule="evenodd" fill="#a8d08d" d="m402.12,700.92,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text6241" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="709.92975" x="417.48206" font-family="Segoe UI" fill="#000000">Analyze real</text>
-        <text id="text6243" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="709.92975" x="468.69763" font-family="Segoe UI" fill="#000000">-</text>
-        <text id="text6245" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="709.92975" x="472.55005" font-family="Segoe UI" fill="#000000">time </text>
-        <text id="text6247" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="721.48987" x="407.09592" font-family="Segoe UI" fill="#000000">Twitter sentiment with </text>
-        <text id="text6249" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="733.04999" x="441.28815" font-family="Segoe UI" fill="#000000">HBase</text>
-      </a>
-        
-      <path id="path6251" stroke-linejoin="round" d="m389.11,569.33,0,148.93,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path6271" stroke-linejoin="round" d="m358.77,98.802,91.035,0,0,30.345,25.694,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-      <path id="path6273" fill-rule="evenodd" fill="#5b9bd5" d="m474.82,126.48,5.3285,2.6642-5.3285,2.6642,0-5.3284z"/>
-
-      <a xlink:href="http://azure.microsoft.com/en-us/documentation/articles/hdinsight-use-oozie-coordinator-time/" target="_blank">
-        <path id="path6275" fill-rule="evenodd" fill="#a8d08d" d="m276.4,827.49,0,34.68,104.04,0,0-34.68-104.04,0z"/>
-        <text id="text6277" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="836.51215" x="281.08707" font-family="Segoe UI" fill="#000000">Use Oozie coordinator </text>
-        <text id="text6279" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="848.07227" x="296.04715" font-family="Segoe UI" fill="#000000">with Hadoop in </text>
-        <text id="text6281" style="text-anchor:start;text-align:start;" font-weight="normal" xml:space="preserve" font-size="9.39253235px" font-style="normal" y="859.63245" x="307.55728" font-family="Segoe UI" fill="#000000">HDInsight</text>
-      </a>
-      
-      <path id="path6283" stroke-linejoin="round" d="m263.4,569.33,0,275.5,8.9861,0" stroke="#5b9bd5" stroke-linecap="round" stroke-dasharray="none" stroke-width="0.72250247px" fill="none"/>
-
-      <path id="path6285" fill-rule="evenodd" fill="#5b9bd5" d="m276.4,844.83-5.3284,2.6642c0.85797-1.6708,0.85797-3.6577,0-5.3285l5.3284,2.6642z"/>
-
-    </g>
-  </g>
- </g>
-</svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Generated by Microsoft Visio 11.0, SVG Export, v1.0 HDI.Content.Flow.svg svg3863 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="8.5in" height="11in" viewBox="0 0 612 792"
+		xml:space="preserve" color-interpolation-filters="sRGB" class="st22">
+	<v:documentProperties v:langID="1033">
+		<v:userDefs>
+			<v:ud v:nameU="msvConvertTheme"/>
+		</v:userDefs>
+	</v:documentProperties>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#00bcf2;stroke:none;stroke-linecap:butt;stroke-width:0.678838}
+		.st2 {fill:none;stroke:none;stroke-linecap:butt;stroke-width:0.75}
+		.st3 {fill:#ffffff;font-family:Meiryo;font-size:0.531326em;font-weight:bold}
+		.st4 {font-size:1em}
+		.st5 {fill:#a8d08d;stroke:none;stroke-linecap:butt;stroke-width:0.678838}
+		.st6 {fill:#000000;font-family:Meiryo;font-size:0.416656em}
+		.st7 {fill:none;stroke:none;stroke-width:1}
+		.st8 {fill:none}
+		.st9 {stroke:#5b9bd5;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.490462}
+		.st10 {fill:#5b9bd5;stroke:none;stroke-linecap:butt;stroke-width:0.678838}
+		.st11 {fill:#ffffff;font-family:Meiryo;font-size:0.499992em;font-weight:bold}
+		.st12 {fill:#000000;font-family:Meiryo;font-size:0.499992em}
+		.st13 {fill:#e2efd9;stroke:none;stroke-linecap:butt;stroke-width:0.678838}
+		.st14 {fill:none;stroke:#c8c8c8;stroke-width:0.490462}
+		.st15 {font-size:1em;font-weight:bold}
+		.st16 {fill:#000000;font-family:Meiryo;font-size:0.531326em}
+		.st17 {fill:#000000;font-family:Meiryo;font-size:0.458336em}
+		.st18 {fill:#ed7d31;stroke:none;stroke-linecap:butt;stroke-width:0.678838}
+		.st19 {fill:#feffff;font-family:Meiryo;font-size:0.531326em;font-weight:bold}
+		.st20 {fill:#ffffff;stroke:none;stroke-linecap:butt;stroke-width:0.678838}
+		.st21 {fill:#003232;font-family:Meiryo;font-size:0.653938em;font-weight:bold}
+		.st22 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<title>svg3863</title>
+		<v:pageProperties v:drawingScale="1" v:pageScale="1" v:drawingUnits="19" v:shadowOffsetX="9" v:shadowOffsetY="-9"/>
+		<v:layer v:name="Connector" v:index="0"/>
+		<g id="shape1-1" v:mID="1" v:groupContext="shape" transform="translate(264.067,-722.297)">
+			<title>path5701</title>
+			<path d="M0 771.4 L0 792 L70.63 792 L70.63 771.4 L0 771.4 Z" class="st1"/>
+		</g>
+		<g id="shape2-3" v:mID="2" v:groupContext="shape" transform="translate(270,-724.5)">
+			<title>text5703</title>
+			<desc>Tell me about HDInsight</desc>
+			<v:userDefs/>
+			<v:textBlock v:margins="rect(0,0,0,0)"/>
+			<v:textRect cx="29.5178" cy="784.774" width="59.05" height="14.4519"/>
+			<rect x="0" y="777.548" width="59.0355" height="14.4519" class="st2"/>
+			<text x="12.27" y="782.86" class="st3" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>HDInsight <tspan
+						x="16.77" dy="1.2em" class="st4">について</tspan></text>		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-overview/">
+			<g id="group3-7" transform="translate(417.091,-723.768)" v:mID="3" v:groupContext="group">
+				<title>Sheet.3</title>
+				<g id="shape4-8" v:mID="4" v:groupContext="shape">
+					<title>path5715</title>
+					<path d="M0 774.34 L0 792 L70.63 792 L70.63 774.34 L0 774.34 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-overview/">
+			<g id="group5-10" transform="translate(427.371,-724.5)" v:mID="5" v:groupContext="group">
+				<title>Sheet.5</title>
+				<g id="shape6-11" v:mID="6" v:groupContext="shape">
+					<title>text5717</title>
+					<desc>What is HBase on HDInsight ?</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="27.0645" cy="784.212" width="54.14" height="15.5769"/>
+					<rect x="0" y="776.423" width="54.129" height="15.5769" class="st2"/>
+					<text x="0.51" y="782.71" class="st6" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>HDInsight での HBase <tspan
+								x="10.74" dy="1.2em" class="st4">とは</tspan>何ですか?</text>				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-blob-storag">
+			<g id="group7-15" transform="translate(417.091,-703.171)" v:mID="7" v:groupContext="group">
+				<title>Sheet.7</title>
+				<g id="shape8-16" v:mID="8" v:groupContext="shape">
+					<title>path6263</title>
+					<path d="M0 774.34 L0 792 L70.63 792 L70.63 774.34 L0 774.34 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-blob-storage/">
+			<g id="group9-18" transform="translate(420.75,-704.25)" v:mID="9" v:groupContext="group">
+				<title>Sheet.9</title>
+				<g id="shape10-19" v:mID="10" v:groupContext="shape" transform="translate(-3.812,-0.0005)">
+					<title>text6265</title>
+					<desc>How is the data stored in HDInsight ?</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="35.219" cy="784.385" width="70.45" height="15.2275"/>
+					<rect x="0" y="776.773" width="70.438" height="15.2275" class="st2"/>
+					<text x="12.72" y="782.89" class="st6" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>データはどのように <tspan
+								x="0.87" dy="1.2em" class="st4">HDInsight </tspan>に格納されますか?</text>				</g>
+			</g>
+		</a>
+		<g id="group11-23" transform="translate(334.694,-732.597)" v:mID="11" v:groupContext="group">
+			<title>path5723</title>
+			<g id="shape12-24" v:mID="12" v:groupContext="shape">
+				<title>Sheet.12</title>
+				<path d="M0 792 L61.8 792 L61.8 771.4 L79.67 771.4 L0 792 Z" class="st7"/>
+			</g>
+			<g id="shape13-26" v:mID="13" v:groupContext="shape">
+				<title>Sheet.13</title>
+				<path d="M0 792 L61.8 792 L61.8 771.4 L79.67 771.4 L0 792 Z" class="st8"/>
+				<path d="M0 792 L61.8 792 L61.8 771.4 L79.67 771.4" class="st9"/>
+			</g>
+		</g>
+		<g id="shape14-29" v:mID="14" v:groupContext="shape" transform="translate(413.474,-751.388)">
+			<title>path5725</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="group15-31" transform="translate(334.694,-732.597)" v:mID="15" v:groupContext="group">
+			<title>path5727</title>
+			<g id="shape16-32" v:mID="16" v:groupContext="shape">
+				<title>Sheet.16</title>
+				<path d="M0 792 L79.67 792 L0 792 Z" class="st7"/>
+			</g>
+			<g id="shape17-34" v:mID="17" v:groupContext="shape">
+				<title>Sheet.17</title>
+				<path d="M0 792 L79.67 792 L0 792 Z" class="st8"/>
+				<path d="M0 792 L79.67 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape18-37" v:mID="18" v:groupContext="shape" transform="translate(413.474,-730.788)">
+			<title>path5729</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="group19-39" transform="translate(299.38,-625.742)" v:mID="19" v:groupContext="group">
+			<title>path5731</title>
+			<g id="shape20-40" v:mID="20" v:groupContext="shape">
+				<title>Sheet.20</title>
+				<path d="M0 695.44 L0 792 L0 695.44 Z" class="st7"/>
+			</g>
+			<g id="shape21-42" v:mID="21" v:groupContext="shape">
+				<title>Sheet.21</title>
+				<path d="M0 695.44 L0 792 L0 695.44 Z" class="st8"/>
+				<path d="M0 695.44 L0 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape22-45" v:mID="22" v:groupContext="shape" transform="translate(297.572,-622.979)">
+			<title>path5733</title>
+			<path d="M1.81 792 L0 788.35 C1.13 788.93 2.48 788.93 3.62 788.35 L1.81 792 Z" class="st10"/>
+		</g>
+		<g id="group23-47" transform="translate(299.38,-668.591)" v:mID="23" v:groupContext="group">
+			<title>path5735</title>
+			<g id="shape24-48" v:mID="24" v:groupContext="shape">
+				<title>Sheet.24</title>
+				<path d="M0 792 L14.93 792 L0 792 Z" class="st7"/>
+			</g>
+			<g id="shape25-50" v:mID="25" v:groupContext="shape">
+				<title>Sheet.25</title>
+				<path d="M0 792 L14.93 792 L0 792 Z" class="st8"/>
+				<path d="M0 792 L14.93 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape26-53" v:mID="26" v:groupContext="shape" transform="translate(313.42,-666.782)">
+			<title>path5737</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="shape27-55" v:mID="27" v:groupContext="shape" transform="translate(317.037,-659.766)">
+			<title>path5739</title>
+			<path d="M0 774.34 L0 792 L52.97 792 L52.97 774.34 L0 774.34 Z" class="st1"/>
+		</g>
+		<g id="shape28-57" v:mID="28" v:groupContext="shape" transform="translate(324,-661.5)">
+			<title>text5741</title>
+			<desc>Go through the tutorials</desc>
+			<v:userDefs/>
+			<v:textBlock v:margins="rect(0,0,0,0)"/>
+			<v:textRect cx="20.099" cy="785.25" width="40.21" height="13.5"/>
+			<rect x="0" y="778.5" width="40.198" height="13.5" class="st2"/>
+			<text x="2.1" y="783.45" class="st11" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>チュートリア<tspan x="8.1"
+						dy="1.2em" class="st4">ルを</tspan>開く</text>		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-get-started/">
+			<g id="group29-61" transform="translate(417.091,-670.064)" v:mID="29" v:groupContext="group">
+				<title>Sheet.29</title>
+				<g id="shape30-62" v:mID="30" v:groupContext="shape">
+					<title>path5745</title>
+					<path d="M0 774.34 L0 792 L70.63 792 L70.63 774.34 L0 774.34 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-get-started/">
+			<g id="group31-64" transform="translate(420.75,-670.5)" v:mID="31" v:groupContext="group">
+				<title>Sheet.31</title>
+				<g id="shape32-65" v:mID="32" v:groupContext="shape">
+					<title>text5747</title>
+					<desc>Get started with Hadoop in HDInsight</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="32.625" cy="784.064" width="65.25" height="15.8713"/>
+					<rect x="0" y="776.129" width="65.25" height="15.8713" class="st2"/>
+					<text x="11" y="782.26" class="st12" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>HDInsight での <tspan
+								x="11.42" dy="1.2em" class="st4">Hadoop </tspan>の使用</text>				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-get-started/">
+			<g id="group33-69" transform="translate(417.091,-649.461)" v:mID="33" v:groupContext="group">
+				<title>Sheet.33</title>
+				<g id="shape34-70" v:mID="34" v:groupContext="shape">
+					<title>path5751</title>
+					<path d="M0 774.34 L0 792 L70.63 792 L70.63 774.34 L0 774.34 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-get-started/">
+			<g id="group35-72" transform="translate(418.5,-650.25)" v:mID="35" v:groupContext="group">
+				<title>Sheet.35</title>
+				<g id="shape36-73" v:mID="36" v:groupContext="shape" transform="translate(2.25,0)">
+					<title>text5753</title>
+					<desc>Get started with HBase in HDInsight</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="31.5" cy="784.239" width="63" height="15.5219"/>
+					<rect x="0" y="776.478" width="63" height="15.5219" class="st2"/>
+					<text x="9.87" y="782.44" class="st12" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>HDInsight での <tspan
+								x="12.27" dy="1.2em" class="st4">HBase </tspan>の使用</text>				</g>
+			</g>
+		</a>
+		<g id="group37-77" transform="translate(370.007,-668.591)" v:mID="37" v:groupContext="group">
+			<title>path5757</title>
+			<g id="shape38-78" v:mID="38" v:groupContext="shape">
+				<title>Sheet.38</title>
+				<path d="M0 792 L26.48 792 L26.48 781.7 L44.36 781.7 L0 792 Z" class="st7"/>
+			</g>
+			<g id="shape39-80" v:mID="39" v:groupContext="shape">
+				<title>Sheet.39</title>
+				<path d="M0 792 L26.48 792 L26.48 781.7 L44.36 781.7 L0 792 Z" class="st8"/>
+				<path d="M0 792 L26.48 792 L26.48 781.7 L44.36 781.7" class="st9"/>
+			</g>
+		</g>
+		<g id="shape40-83" v:mID="40" v:groupContext="shape" transform="translate(413.474,-677.08)">
+			<title>path5759</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="group41-85" transform="translate(370.007,-658.291)" v:mID="41" v:groupContext="group">
+			<title>path5761</title>
+			<g id="shape42-86" v:mID="42" v:groupContext="shape">
+				<title>Sheet.42</title>
+				<path d="M0 781.7 L26.48 781.7 L26.48 792 L44.36 792 L0 781.7 Z" class="st7"/>
+			</g>
+			<g id="shape43-88" v:mID="43" v:groupContext="shape">
+				<title>Sheet.43</title>
+				<path d="M0 781.7 L26.48 781.7 L26.48 792 L44.36 792 L0 781.7 Z" class="st8"/>
+				<path d="M0 781.7 L26.48 781.7 L26.48 792 L44.36 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape44-91" v:mID="44" v:groupContext="shape" transform="translate(413.474,-656.484)">
+			<title>path5763</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="shape45-93" v:mID="45" v:groupContext="shape" transform="translate(264.067,-598.5)">
+			<title>path5765</title>
+			<path d="M0 767.52 L0 792 L70.63 792 L70.63 767.52 L0 767.52 Z" class="st1"/>
+		</g>
+		<g id="shape46-95" v:mID="46" v:groupContext="shape" transform="translate(268.85,-599.31)">
+			<title>text5767</title>
+			<desc>How do I provision a cluster ?</desc>
+			<v:userDefs/>
+			<v:textBlock v:margins="rect(0,0,0,0)"/>
+			<v:textRect cx="30.4" cy="781.56" width="60.81" height="20.88"/>
+			<rect x="0" y="771.12" width="60.8" height="20.88" class="st2"/>
+			<text x="0.4" y="776.16" class="st11" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>クラスターをプロビジ<tspan
+						x="0.4" dy="1.2em" class="st4">ョニングするには</tspan>、ど<tspan x="1.65" dy="1.2em" class="st4">うすればよいですか</tspan>?</text>		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-provision-clusters/">
+			<g id="group47-100" transform="translate(417.091,-615.621)" v:mID="47" v:groupContext="group">
+				<title>Sheet.47</title>
+				<g id="shape48-101" v:mID="48" v:groupContext="shape">
+					<title>path5773</title>
+					<path d="M0 774.34 L0 792 L70.63 792 L70.63 774.34 L0 774.34 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-provision-clusters/">
+			<g id="group49-103" transform="translate(418.5,-616.5)" v:mID="49" v:groupContext="group">
+				<title>Sheet.49</title>
+				<g id="shape50-104" v:mID="50" v:groupContext="shape" transform="translate(-2.25,0)">
+					<title>text5775</title>
+					<desc>Provision a Hadoop cluster</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="36" cy="784.285" width="72" height="15.43"/>
+					<rect x="0" y="776.57" width="72" height="15.43" class="st2"/>
+					<text x="26.68" y="782.79" class="st6" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Hadoop <tspan
+								x="1" dy="1.2em" class="st4">クラスターのプロビジョニング</tspan></text>				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-provision-vnet/">
+			<g id="group51-108" transform="translate(417.091,-595.025)" v:mID="51" v:groupContext="group">
+				<title>Sheet.51</title>
+				<g id="shape52-109" v:mID="52" v:groupContext="shape">
+					<title>path5779</title>
+					<path d="M0 774.34 L0 792 L70.63 792 L70.63 774.34 L0 774.34 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-provision-vnet/">
+			<g id="group53-111" transform="translate(421.843,-596.25)" v:mID="53" v:groupContext="group">
+				<title>Sheet.53</title>
+				<g id="shape54-112" v:mID="54" v:groupContext="shape" transform="translate(-4.75725,0)">
+					<title>text5781</title>
+					<desc>Provision an HBase cluster</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="35.1642" cy="784.46" width="70.34" height="15.0806"/>
+					<rect x="0" y="776.919" width="70.3285" height="15.0806" class="st2"/>
+					<text x="27.49" y="782.96" class="st6" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>HBase <tspan
+								x="0.16" dy="1.2em" class="st4">クラスターのプロビジョニング</tspan></text>				</g>
+			</g>
+		</a>
+		<g id="group55-116" transform="translate(334.694,-614.148)" v:mID="55" v:groupContext="group">
+			<title>path5785</title>
+			<g id="shape56-117" v:mID="56" v:groupContext="shape">
+				<title>Sheet.56</title>
+				<path d="M0 792 L61.8 792 L61.8 781.7 L79.67 781.7 L0 792 Z" class="st7"/>
+			</g>
+			<g id="shape57-119" v:mID="57" v:groupContext="shape">
+				<title>Sheet.57</title>
+				<path d="M0 792 L61.8 792 L61.8 781.7 L79.67 781.7 L0 792 Z" class="st8"/>
+				<path d="M0 792 L61.8 792 L61.8 781.7 L79.67 781.7" class="st9"/>
+			</g>
+		</g>
+		<g id="shape58-122" v:mID="58" v:groupContext="shape" transform="translate(413.474,-622.644)">
+			<title>path5787</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="group59-124" transform="translate(334.694,-603.848)" v:mID="59" v:groupContext="group">
+			<title>path5789</title>
+			<g id="shape60-125" v:mID="60" v:groupContext="shape">
+				<title>Sheet.60</title>
+				<path d="M0 781.7 L61.8 781.7 L61.8 792 L79.67 792 L0 781.7 Z" class="st7"/>
+			</g>
+			<g id="shape61-127" v:mID="61" v:groupContext="shape">
+				<title>Sheet.61</title>
+				<path d="M0 781.7 L61.8 781.7 L61.8 792 L79.67 792 L0 781.7 Z" class="st8"/>
+				<path d="M0 781.7 L61.8 781.7 L61.8 792 L79.67 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape62-130" v:mID="62" v:groupContext="shape" transform="translate(413.474,-602.041)">
+			<title>path5791</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-get-started-emulator/">
+			<g id="group63-132" transform="translate(403.847,-525.868)" v:mID="63" v:groupContext="group">
+				<title>Sheet.63</title>
+				<g id="shape64-133" v:mID="64" v:groupContext="shape">
+					<title>path6047</title>
+					<path d="M0 759.63 L0 792 L97.11 792 L97.11 759.63 L0 759.63 Z" class="st13"/>
+				</g>
+			</g>
+		</a>
+		<g id="shape65-135" v:mID="65" v:groupContext="shape" transform="translate(403.847,-525.865)">
+			<title>path6049</title>
+			<path d="M0 792 L97.11 792 L97.11 759.63 L0 759.63 L0 792 Z" class="st14"/>
+		</g>
+		<g id="shape66-137" v:mID="66" v:groupContext="shape" transform="translate(405,-526.5)">
+			<title>text6051</title>
+			<desc>Looking to learn HDInsight in your own backyard ? Try HDInsig...</desc>
+			<v:userDefs/>
+			<v:textBlock v:margins="rect(0,0,0,0)"/>
+			<v:textRect cx="48.3749" cy="776.56" width="96.76" height="30.88"/>
+			<rect x="0" y="761.12" width="96.75" height="30.88" class="st2"/>
+			<text x="36.2" y="769.06" class="st6" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>HDInsight <tspan
+						x="0.88" dy="1.2em" class="st4">の</tspan>使用法をいつもの環境で学習できます。<tspan x="3.17" dy="1.2em" class="st15">お</tspan><tspan
+						class="st15">使</tspan><tspan class="st15">いの</tspan><tspan class="st15" v:langID="11274"> </tspan>コンピューターで<tspan
+						class="st4" v:langID="11274"> </tspan><tspan class="st15">HDInsight </tspan><tspan x="7.55" dy="1.2em"
+						class="st15">エミュレーター</tspan><tspan class="st15" v:langID="11274"> </tspan>をお試しください。</text>		</g>
+		<g id="shape67-149" v:mID="67" v:groupContext="shape" transform="translate(471.034,-534.034)">
+			<title>text6061</title>
+			<rect x="0" y="784.349" width="6.37601" height="7.65121" class="st2"/>
+		</g>
+		<g id="shape68-151" v:mID="68" v:groupContext="shape" transform="translate(178.724,-413.185)">
+			<title>path5793</title>
+			<path d="M0 774.34 L0 792 L70.63 792 L70.63 774.34 L0 774.34 Z" class="st1"/>
+		</g>
+		<g id="shape69-153" v:mID="69" v:groupContext="shape" transform="translate(184.5,-417.892)">
+			<title>text5795</title>
+			<desc>Upload data</desc>
+			<v:userDefs/>
+			<v:textBlock v:margins="rect(0,0,0,0)"/>
+			<v:textRect cx="31.5001" cy="788.174" width="63.01" height="7.65121"/>
+			<rect x="0" y="784.349" width="63" height="7.65121" class="st2"/>
+			<text x="1.5" y="789.97" class="st11" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>データのアップロード</text>		</g>
+		<g id="shape70-156" v:mID="70" v:groupContext="shape" transform="translate(264.067,-413.185)">
+			<title>path5797</title>
+			<path d="M0 774.34 L0 792 L70.63 792 L70.63 774.34 L0 774.34 Z" class="st1"/>
+		</g>
+		<g id="shape71-158" v:mID="71" v:groupContext="shape" transform="translate(270,-414)">
+			<title>text5799</title>
+			<desc>Develop and run jobs</desc>
+			<v:userDefs/>
+			<v:textBlock v:margins="rect(0,0,0,0)"/>
+			<v:textRect cx="30.375" cy="784.266" width="60.75" height="15.4674"/>
+			<rect x="0" y="776.533" width="60.75" height="15.4674" class="st2"/>
+			<text x="3.38" y="786.07" class="st11" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>ジョブの開発と実行</text>		</g>
+		<g id="shape72-161" v:mID="72" v:groupContext="shape" transform="translate(93.3846,-413.185)">
+			<title>path5803</title>
+			<path d="M0 774.34 L0 792 L70.63 792 L70.63 774.34 L0 774.34 Z" class="st1"/>
+		</g>
+		<g id="shape73-163" v:mID="73" v:groupContext="shape" transform="translate(94.5,-414)">
+			<title>text5805</title>
+			<desc>Manage the cluster</desc>
+			<v:userDefs/>
+			<v:textBlock v:margins="rect(0,0,0,0)"/>
+			<v:textRect cx="34.765" cy="785.25" width="69.54" height="13.5"/>
+			<rect x="0" y="778.5" width="69.53" height="13.5" class="st2"/>
+			<text x="9.26" y="787.16" class="st3" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>クラスターの管理</text>		</g>
+		<g id="shape74-166" v:mID="74" v:groupContext="shape" transform="translate(264.067,-533.223)">
+			<title>path5807</title>
+			<path d="M0 774.34 L0 792 L70.63 792 L70.63 774.34 L0 774.34 Z" class="st1"/>
+		</g>
+		<g id="shape75-168" v:mID="75" v:groupContext="shape" transform="translate(272.881,-537.958)">
+			<title>text5809</title>
+			<desc>Run samples</desc>
+			<v:userDefs/>
+			<v:textBlock v:margins="rect(0,0,0,0)"/>
+			<v:textRect cx="26.3691" cy="788.174" width="52.75" height="7.65121"/>
+			<rect x="0" y="784.349" width="52.738" height="7.65121" class="st2"/>
+			<text x="4.05" y="790.09" class="st3" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>サンプルの実行</text>		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-get-started-emulator/">
+			<g id="group76-171" transform="translate(191.968,-384.185)" v:mID="76" v:groupContext="group">
+				<title>Sheet.76</title>
+				<g id="shape77-172" v:mID="77" v:groupContext="shape">
+					<title>path5811</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-get-started-emulator/">
+			<g id="group78-174" transform="translate(193.5,-387)" v:mID="78" v:groupContext="group">
+				<title>Sheet.78</title>
+				<g id="shape79-175" v:mID="79" v:groupContext="shape">
+					<title>text5813</title>
+					<desc>Use Azure Blob storage for your data</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="33.75" cy="783.788" width="67.5" height="16.4238"/>
+					<rect x="0" y="775.576" width="67.5" height="16.4238" class="st2"/>
+					<text x="3.34" y="781.99" class="st12" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>データに Azure BLOB <tspan
+								x="3.75" dy="1.2em" class="st4">ストレージを</tspan>使用する</text>				</g>
+			</g>
+		</a>
+		<g id="group80-179" transform="translate(184.609,-395.957)" v:mID="80" v:groupContext="group">
+			<title>path5817</title>
+			<g id="shape81-180" v:mID="81" v:groupContext="shape">
+				<title>Sheet.81</title>
+				<path d="M0 774.77 L0 792 L4.63 792 L0 774.77 Z" class="st7"/>
+			</g>
+			<g id="shape82-182" v:mID="82" v:groupContext="shape">
+				<title>Sheet.82</title>
+				<path d="M0 774.77 L0 792 L4.63 792 L0 774.77 Z" class="st8"/>
+				<path d="M0 774.77 L0 792 L4.63 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape83-185" v:mID="83" v:groupContext="shape" transform="translate(188.351,-394.147)">
+			<title>path5819</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-upload-data/">
+			<g id="group84-187" transform="translate(191.968,-356.658)" v:mID="84" v:groupContext="group">
+				<title>Sheet.84</title>
+				<g id="shape85-188" v:mID="85" v:groupContext="shape">
+					<title>path5821</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-upload-data/">
+			<g id="group86-190" transform="translate(198.071,-358.167)" v:mID="86" v:groupContext="group">
+				<title>Sheet.86</title>
+				<g id="shape87-191" v:mID="87" v:groupContext="shape" transform="translate(-4.571,0)">
+					<title>text5823</title>
+					<desc>Upload data for Hadoop jobs in HDInsight</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="34.875" cy="782.084" width="69.76" height="19.8327"/>
+					<rect x="0" y="772.167" width="69.75" height="19.8327" class="st2"/>
+					<text x="1.05" y="776.68" class="st12" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>HDInsight での Hadoop <tspan
+								x="1.88" dy="1.2em" class="st4">ジョブ</tspan>用データのアップ<tspan x="25.88" dy="1.2em" class="st4">ロード</tspan></text>				</g>
+			</g>
+		</a>
+		<g id="group88-196" transform="translate(184.609,-368.43)" v:mID="88" v:groupContext="group">
+			<title>path5829</title>
+			<g id="shape89-197" v:mID="89" v:groupContext="shape">
+				<title>Sheet.89</title>
+				<path d="M0 747.25 L0 792 L4.63 792 L0 747.25 Z" class="st7"/>
+			</g>
+			<g id="shape90-199" v:mID="90" v:groupContext="shape">
+				<title>Sheet.90</title>
+				<path d="M0 747.25 L0 792 L4.63 792 L0 747.25 Z" class="st8"/>
+				<path d="M0 747.25 L0 792 L4.63 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape91-202" v:mID="91" v:groupContext="shape" transform="translate(188.351,-366.62)">
+			<title>path5831</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-hive/">
+			<g id="group92-204" transform="translate(278.778,-384.49)" v:mID="92" v:groupContext="group">
+				<title>Sheet.92</title>
+				<g id="group93-205" v:mID="93" v:groupContext="group">
+					<title>Sheet.93</title>
+					<g id="shape94-206" v:mID="94" v:groupContext="shape">
+						<title>path5833</title>
+						<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+					</g>
+					<g id="shape95-208" v:mID="95" v:groupContext="shape" transform="translate(3.35095,-7.65288)">
+						<title>text5835</title>
+						<desc>Use Hive with Hadoop</desc>
+						<v:userDefs/>
+						<v:textBlock v:margins="rect(0,0,0,0)"/>
+						<v:textRect cx="33.3107" cy="788.174" width="66.63" height="7.65121"/>
+						<rect x="0" y="784.349" width="66.6214" height="7.65121" class="st2"/>
+						<text x="6.06" y="786.26" class="st16" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Hadoop での Hive <tspan
+									x="23.75" dy="1.2em" class="st4">の</tspan>使用</text>					</g>
+				</g>
+			</g>
+		</a>
+		<g id="group96-212" transform="translate(269.953,-396.264)" v:mID="96" v:groupContext="group">
+			<title>path5837</title>
+			<g id="shape97-213" v:mID="97" v:groupContext="shape">
+				<title>Sheet.97</title>
+				<path d="M0 775.08 L0 792 L6.1 792 L0 775.08 Z" class="st7"/>
+			</g>
+			<g id="shape98-215" v:mID="98" v:groupContext="shape">
+				<title>Sheet.98</title>
+				<path d="M0 775.08 L0 792 L6.1 792 L0 775.08 Z" class="st8"/>
+				<path d="M0 775.08 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape99-218" v:mID="99" v:groupContext="shape" transform="translate(275.161,-394.422)">
+			<title>path5839</title>
+			<path d="M3.62 790.16 L0 792 C0.58 790.84 0.58 789.52 0 788.35 L3.62 790.16 Z" class="st10"/>
+		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-pig/">
+			<g id="group100-220" transform="translate(278.778,-356.074)" v:mID="100" v:groupContext="group">
+				<title>Sheet.100</title>
+				<g id="group101-221" v:mID="101" v:groupContext="group">
+					<title>Sheet.101</title>
+					<g id="shape102-222" v:mID="102" v:groupContext="shape">
+						<title>path5841</title>
+						<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+					</g>
+					<g id="shape103-224" v:mID="103" v:groupContext="shape" transform="translate(3.8317,-7.67129)">
+						<title>text5843</title>
+						<desc>Use Pig with Hadoop</desc>
+						<v:userDefs/>
+						<v:textBlock v:margins="rect(0,0,0,0)"/>
+						<v:textRect cx="32.3903" cy="788.174" width="64.8" height="7.65121"/>
+						<rect x="0" y="784.349" width="64.7806" height="7.65121" class="st2"/>
+						<text x="7.32" y="786.26" class="st16" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Hadoop での Pig <tspan
+									x="22.83" dy="1.2em" class="st4">の</tspan>使用</text>					</g>
+				</g>
+			</g>
+		</a>
+		<g id="group104-228" transform="translate(269.953,-367.848)" v:mID="104" v:groupContext="group">
+			<title>path5845</title>
+			<g id="shape105-229" v:mID="105" v:groupContext="shape">
+				<title>Sheet.105</title>
+				<path d="M0 746.66 L0 792 L6.1 792 L0 746.66 Z" class="st7"/>
+			</g>
+			<g id="shape106-231" v:mID="106" v:groupContext="shape">
+				<title>Sheet.106</title>
+				<path d="M0 746.66 L0 792 L6.1 792 L0 746.66 Z" class="st8"/>
+				<path d="M0 746.66 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape107-234" v:mID="107" v:groupContext="shape" transform="translate(275.161,-366.036)">
+			<title>path5847</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-mapreduce/">
+			<g id="group108-236" transform="translate(278.778,-327.692)" v:mID="108" v:groupContext="group">
+				<title>Sheet.108</title>
+				<g id="shape109-237" v:mID="109" v:groupContext="shape">
+					<title>path5849</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-mapreduce/">
+			<g id="group110-239" transform="translate(295.586,-330.327)" v:mID="110" v:groupContext="group">
+				<title>Sheet.110</title>
+				<g id="shape111-240" v:mID="111" v:groupContext="shape" transform="translate(-12.086,0)">
+					<title>text5851</title>
+					<desc>Use Hadoop MapReduce</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="29.2499" cy="782.789" width="58.51" height="18.4226"/>
+					<rect x="0" y="773.577" width="58.5" height="18.4226" class="st2"/>
+					<text x="17.37" y="780.88" class="st16" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Hadoop <tspan
+								x="0.78" dy="1.2em" class="st4">MapReduce </tspan>の使用</text>				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-python/">
+			<g id="group112-244" transform="translate(278.778,-299.276)" v:mID="112" v:groupContext="group">
+				<title>Sheet.112</title>
+				<g id="shape113-245" v:mID="113" v:groupContext="shape">
+					<title>path5855</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-python/">
+			<g id="group114-247" transform="translate(283.655,-301.5)" v:mID="114" v:groupContext="group">
+				<title>Sheet.114</title>
+				<g id="shape115-248" v:mID="115" v:groupContext="shape">
+					<title>text5857</title>
+					<desc>Use Python with Hive and Pig</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="31.4226" cy="783.488" width="62.85" height="17.0248"/>
+					<rect x="0" y="774.975" width="62.8452" height="17.0248" class="st2"/>
+					<text x="0.77" y="781.58" class="st16" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Hive および Pig での <tspan
+								x="10.03" dy="1.2em" class="st4">Python </tspan>の使用</text>				</g>
+			</g>
+		</a>
+		<g id="group116-252" transform="translate(269.953,-339.463)" v:mID="116" v:groupContext="group">
+			<title>path5861</title>
+			<g id="shape117-253" v:mID="117" v:groupContext="shape">
+				<title>Sheet.117</title>
+				<path d="M0 718.28 L0 792 L6.1 792 L0 718.28 Z" class="st7"/>
+			</g>
+			<g id="shape118-255" v:mID="118" v:groupContext="shape">
+				<title>Sheet.118</title>
+				<path d="M0 718.28 L0 792 L6.1 792 L0 718.28 Z" class="st8"/>
+				<path d="M0 718.28 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape119-258" v:mID="119" v:groupContext="shape" transform="translate(275.161,-337.654)">
+			<title>path5863</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="group120-260" transform="translate(269.953,-311.047)" v:mID="120" v:groupContext="group">
+			<title>path5865</title>
+			<g id="shape121-261" v:mID="121" v:groupContext="shape">
+				<title>Sheet.121</title>
+				<path d="M0 689.86 L0 792 L6.1 792 L0 689.86 Z" class="st7"/>
+			</g>
+			<g id="shape122-263" v:mID="122" v:groupContext="shape">
+				<title>Sheet.122</title>
+				<path d="M0 689.86 L0 792 L6.1 792 L0 689.86 Z" class="st8"/>
+				<path d="M0 689.86 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape123-266" v:mID="123" v:groupContext="shape" transform="translate(275.161,-309.238)">
+			<title>path5867</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-high-availability/">
+			<g id="group124-268" transform="translate(106.627,-273.249)" v:mID="124" v:groupContext="group">
+				<title>Sheet.124</title>
+				<g id="shape125-269" v:mID="125" v:groupContext="shape">
+					<title>path5869</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-high-availability/">
+			<g id="group126-271" transform="translate(106.764,-275.095)" v:mID="126" v:groupContext="group">
+				<title>Sheet.126</title>
+				<g id="shape127-272" v:mID="127" v:groupContext="shape" transform="translate(11.361,0)">
+					<title>text5871</title>
+					<desc>Availability and reliability of Hadoop clusters</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="23.118" cy="782.172" width="46.24" height="19.6551"/>
+					<rect x="0" y="772.345" width="46.236" height="19.6551" class="st2"/>
+					<text x="11.94" y="776.77" class="st12" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Hadoop <tspan
+								x="2.12" dy="1.2em" class="st4">クラスターの</tspan>可<tspan x="5.12" dy="1.2em" class="st4">用性</tspan>と信頼性</text>				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-administer-use-management-portal/">
+			<g id="group128-277" transform="translate(106.627,-384.49)" v:mID="128" v:groupContext="group">
+				<title>Sheet.128</title>
+				<g id="group129-278" v:mID="129" v:groupContext="group">
+					<title>Sheet.129</title>
+					<g id="shape130-279" v:mID="130" v:groupContext="shape">
+						<title>path5877</title>
+						<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+					</g>
+					<g id="shape131-281" v:mID="131" v:groupContext="shape" transform="translate(12.5308,-7.65288)">
+						<title>text5879</title>
+						<desc>Using the Portal</desc>
+						<v:userDefs/>
+						<v:textBlock v:margins="rect(0,0,0,0)"/>
+						<v:textRect cx="23.7172" cy="788.174" width="47.45" height="7.65121"/>
+						<rect x="0" y="784.349" width="47.4344" height="7.65121" class="st2"/>
+						<text x="-0" y="790.09" class="st16" v:langID="1033"><v:paragraph/><v:tabList/>ポータルの使用</text>					</g>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-administer-use-powershell/">
+			<g id="group132-284" transform="translate(106.627,-356.658)" v:mID="132" v:groupContext="group">
+				<title>Sheet.132</title>
+				<g id="group133-285" v:mID="133" v:groupContext="group">
+					<title>Sheet.133</title>
+					<g id="shape134-286" v:mID="134" v:groupContext="shape">
+						<title>path5881</title>
+						<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+					</g>
+					<g id="shape135-288" v:mID="135" v:groupContext="shape" transform="translate(9.248,-7.67605)">
+						<title>text5883</title>
+						<desc>Using PowerShell</desc>
+						<v:userDefs/>
+						<v:textBlock v:margins="rect(0,0,0,0)"/>
+						<v:textRect cx="26.8806" cy="788.174" width="53.78" height="7.65121"/>
+						<rect x="0" y="784.349" width="53.761" height="7.65121" class="st2"/>
+						<text x="9.82" y="786.26" class="st16" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>PowerShell <tspan
+									x="17.32" dy="1.2em" class="st4">の</tspan>使用</text>					</g>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-administer-use-command-line/">
+			<g id="group136-292" transform="translate(106.627,-328.853)" v:mID="136" v:groupContext="group">
+				<title>Sheet.136</title>
+				<g id="group137-293" v:mID="137" v:groupContext="group">
+					<title>Sheet.137</title>
+					<g id="shape138-294" v:mID="138" v:groupContext="shape">
+						<title>path5885</title>
+						<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+					</g>
+					<g id="shape139-296" v:mID="139" v:groupContext="shape" transform="translate(6.98884,-8.6472)">
+						<title>text5887</title>
+						<desc>Using CLI</desc>
+						<v:userDefs/>
+						<v:textBlock v:margins="rect(0,0,0,0)"/>
+						<v:textRect cx="28.692" cy="788.174" width="57.39" height="7.65121"/>
+						<rect x="0" y="784.349" width="57.384" height="7.65121" class="st2"/>
+						<text x="12.84" y="790.09" class="st16" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>CLI の使用</text>					</g>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-monitor-use-ambari-api/">
+			<g id="group140-299" transform="translate(106.627,-301.054)" v:mID="140" v:groupContext="group">
+				<title>Sheet.140</title>
+				<g id="group141-300" v:mID="141" v:groupContext="group">
+					<title>Sheet.141</title>
+					<g id="shape142-301" v:mID="142" v:groupContext="shape">
+						<title>path5889</title>
+						<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+					</g>
+					<g id="shape143-303" v:mID="143" v:groupContext="shape" transform="translate(10.3038,-7.66127)">
+						<title>text5891</title>
+						<desc>Using Ambari API</desc>
+						<v:userDefs/>
+						<v:textBlock v:margins="rect(0,0,0,0)"/>
+						<v:textRect cx="27.0347" cy="788.174" width="54.08" height="7.65121"/>
+						<rect x="0" y="784.349" width="54.0692" height="7.65121" class="st2"/>
+						<text x="-0" y="789.97" class="st12" v:langID="1033"><v:paragraph/><v:tabList/>Ambari API の使用</text>					</g>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-oozie/">
+			<g id="group144-306" transform="translate(278.778,-242.504)" v:mID="144" v:groupContext="group">
+				<title>Sheet.144</title>
+				<g id="shape145-307" v:mID="145" v:groupContext="shape">
+					<title>path5893</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-oozie/">
+			<g id="group146-309" transform="translate(288,-246.771)" v:mID="146" v:groupContext="group">
+				<title>Sheet.146</title>
+				<g id="shape147-310" v:mID="147" v:groupContext="shape">
+					<title>text5895</title>
+					<desc>Use Oozie with Hadoop</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="26.8915" cy="784.885" width="53.79" height="14.2293"/>
+					<rect x="0" y="777.771" width="53.7831" height="14.2293" class="st2"/>
+					<text x="7.55" y="782.97" class="st16" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Hadoop での <tspan
+								x="7.66" dy="1.2em" class="st4">Oozie </tspan>の使用</text>				</g>
+			</g>
+		</a>
+		<g id="group148-314" transform="translate(99.2699,-285.02)" v:mID="148" v:groupContext="group">
+			<title>path5899</title>
+			<g id="shape149-315" v:mID="149" v:groupContext="shape">
+				<title>Sheet.149</title>
+				<path d="M0 663.84 L0 792 L4.63 792 L0 663.84 Z" class="st7"/>
+			</g>
+			<g id="shape150-317" v:mID="150" v:groupContext="shape">
+				<title>Sheet.150</title>
+				<path d="M0 663.84 L0 792 L4.63 792 L0 663.84 Z" class="st8"/>
+				<path d="M0 663.84 L0 792 L4.63 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape151-320" v:mID="151" v:groupContext="shape" transform="translate(103.01,-283.211)">
+			<title>path5901</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="group152-322" transform="translate(99.2699,-396.264)" v:mID="152" v:groupContext="group">
+			<title>path5903</title>
+			<g id="shape153-323" v:mID="153" v:groupContext="shape">
+				<title>Sheet.153</title>
+				<path d="M0 775.08 L0 792 L4.63 792 L0 775.08 Z" class="st7"/>
+			</g>
+			<g id="shape154-325" v:mID="154" v:groupContext="shape">
+				<title>Sheet.154</title>
+				<path d="M0 775.08 L0 792 L4.63 792 L0 775.08 Z" class="st8"/>
+				<path d="M0 775.08 L0 792 L4.63 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape155-328" v:mID="155" v:groupContext="shape" transform="translate(103.01,-394.422)">
+			<title>path5905</title>
+			<path d="M3.62 790.16 L0 792 C0.58 790.84 0.58 789.52 0 788.35 L3.62 790.16 Z" class="st10"/>
+		</g>
+		<g id="group156-330" transform="translate(99.2699,-368.43)" v:mID="156" v:groupContext="group">
+			<title>path5907</title>
+			<g id="shape157-331" v:mID="157" v:groupContext="shape">
+				<title>Sheet.157</title>
+				<path d="M0 747.25 L0 792 L4.63 792 L0 747.25 Z" class="st7"/>
+			</g>
+			<g id="shape158-333" v:mID="158" v:groupContext="shape">
+				<title>Sheet.158</title>
+				<path d="M0 747.25 L0 792 L4.63 792 L0 747.25 Z" class="st8"/>
+				<path d="M0 747.25 L0 792 L4.63 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape159-336" v:mID="159" v:groupContext="shape" transform="translate(103.01,-366.62)">
+			<title>path5909</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="group160-338" transform="translate(99.2699,-340.624)" v:mID="160" v:groupContext="group">
+			<title>path5911</title>
+			<g id="shape161-339" v:mID="161" v:groupContext="shape">
+				<title>Sheet.161</title>
+				<path d="M0 719.44 L0 792 L4.63 792 L0 719.44 Z" class="st7"/>
+			</g>
+			<g id="shape162-341" v:mID="162" v:groupContext="shape">
+				<title>Sheet.162</title>
+				<path d="M0 719.44 L0 792 L4.63 792 L0 719.44 Z" class="st8"/>
+				<path d="M0 719.44 L0 792 L4.63 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape163-344" v:mID="163" v:groupContext="shape" transform="translate(103.01,-338.815)">
+			<title>path5913</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="group164-346" transform="translate(99.2699,-312.825)" v:mID="164" v:groupContext="group">
+			<title>path5915</title>
+			<g id="shape165-347" v:mID="165" v:groupContext="shape">
+				<title>Sheet.165</title>
+				<path d="M0 691.64 L0 792 L4.63 792 L0 691.64 Z" class="st7"/>
+			</g>
+			<g id="shape166-349" v:mID="166" v:groupContext="shape">
+				<title>Sheet.166</title>
+				<path d="M0 691.64 L0 792 L4.63 792 L0 691.64 Z" class="st8"/>
+				<path d="M0 691.64 L0 792 L4.63 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape167-352" v:mID="167" v:groupContext="shape" transform="translate(103.01,-311.017)">
+			<title>path5917</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-develop-deploy-java-mapreduce/">
+			<g id="group168-354" transform="translate(278.778,-177.455)" v:mID="168" v:groupContext="group">
+				<title>Sheet.168</title>
+				<g id="shape169-355" v:mID="169" v:groupContext="shape">
+					<title>path5919</title>
+					<path d="M0 759.63 L0 792 L70.63 792 L70.63 759.63 L0 759.63 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-develop-deploy-java-mapreduce/">
+			<g id="group170-357" transform="translate(281.25,-180)" v:mID="170" v:groupContext="group">
+				<title>Sheet.170</title>
+				<g id="shape171-358" v:mID="171" v:groupContext="shape">
+					<title>text5921</title>
+					<desc>Develop Java MapReduce programs for Hadoop</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="32.625" cy="779.484" width="65.25" height="25.0321"/>
+					<rect x="0" y="766.968" width="65.25" height="25.0321" class="st2"/>
+					<text x="9.89" y="774.08" class="st12" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Hadoop 用 Java <tspan
+								x="15.86" dy="1.2em" class="st4">MapReduce </tspan><tspan x="8.63" dy="1.2em" class="st4">プログラムの</tspan>開発</text>				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/">
+			<g id="group172-363" transform="translate(278.778,-149.348)" v:mID="172" v:groupContext="group">
+				<title>Sheet.172</title>
+				<g id="shape173-364" v:mID="173" v:groupContext="shape">
+					<title>path5927</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/">
+			<g id="group174-366" transform="translate(281.25,-150.75)" v:mID="174" v:groupContext="group">
+				<title>Sheet.174</title>
+				<g id="shape175-367" v:mID="175" v:groupContext="shape">
+					<title>text5929</title>
+					<desc>Develop C# streaming programs</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="33.75" cy="781.424" width="67.5" height="21.1512"/>
+					<rect x="0" y="770.849" width="67.5" height="21.1512" class="st2"/>
+					<text x="7.3" y="779.62" class="st12" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>C# ストリーミング <tspan
+								x="9.75" dy="1.2em" class="st4">プログラムの</tspan>開発 </text>				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-build-java-maven/">
+			<g id="group176-371" transform="translate(278.778,-112.409)" v:mID="176" v:groupContext="group">
+				<title>Sheet.176</title>
+				<g id="shape177-372" v:mID="177" v:groupContext="shape">
+					<title>path5937</title>
+					<path d="M0 759.63 L0 792 L70.63 792 L70.63 759.63 L0 759.63 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-build-java-maven/">
+			<g id="group178-374" transform="translate(280.481,-117.224)" v:mID="178" v:groupContext="group">
+				<title>Sheet.178</title>
+				<g id="shape179-375" v:mID="179" v:groupContext="shape">
+					<title>text5939</title>
+					<desc>Use Maven to build Java applications that use Hbase with Hadoop</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="33.5721" cy="781.424" width="67.16" height="21.1512"/>
+					<rect x="0" y="770.849" width="67.1441" height="21.1512" class="st2"/>
+					<text x="8.14" y="772.42" class="st12" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Hadoop の HBase <tspan
+								x="11.04" dy="1.2em" class="st4">を</tspan>使用する Java <tspan x="6.57" dy="1.2em" class="st4">アプリケーションを</tspan> <tspan
+								x="14.04" dy="1.2em" class="st4">Maven </tspan>で構築</text>				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-submit-hadoop-jobs-programmatically/">
+			<g id="group180-381" transform="translate(278.778,-270.887)" v:mID="180" v:groupContext="group">
+				<title>Sheet.180</title>
+				<g id="group181-382" v:mID="181" v:groupContext="group">
+					<title>Sheet.181</title>
+					<g id="shape182-383" v:mID="182" v:groupContext="shape">
+						<title>path5947</title>
+						<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+					</g>
+					<g id="shape183-385" v:mID="183" v:groupContext="shape" transform="translate(5.47414,-7.66541)">
+						<title>text5949</title>
+						<desc>Submit Hadoop Jobs</desc>
+						<v:userDefs/>
+						<v:textBlock v:margins="rect(0,0,0,0)"/>
+						<v:textRect cx="31.1241" cy="788.174" width="62.26" height="7.65121"/>
+						<rect x="0" y="784.349" width="62.2482" height="7.65121" class="st2"/>
+						<text x="19.24" y="786.26" class="st16" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Hadoop <tspan
+									x="12" dy="1.2em" class="st4">ジョブの</tspan>送信</text>					</g>
+				</g>
+			</g>
+		</a>
+		<g id="group184-389" transform="translate(269.953,-161.119)" v:mID="184" v:groupContext="group">
+			<title>path5951</title>
+			<g id="shape185-390" v:mID="185" v:groupContext="shape">
+				<title>Sheet.185</title>
+				<path d="M0 539.93 L0 792 L6.1 792 L0 539.93 Z" class="st7"/>
+			</g>
+			<g id="shape186-392" v:mID="186" v:groupContext="shape">
+				<title>Sheet.186</title>
+				<path d="M0 539.93 L0 792 L6.1 792 L0 539.93 Z" class="st8"/>
+				<path d="M0 539.93 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape187-395" v:mID="187" v:groupContext="shape" transform="translate(275.161,-159.31)">
+			<title>path5953</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-sample-pi-estimator/">
+			<g id="group188-397" transform="translate(99.2699,-575.155)" v:mID="188" v:groupContext="group">
+				<title>Sheet.188</title>
+				<g id="shape189-398" v:mID="189" v:groupContext="shape">
+					<title>path5955</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-sample-pi-estimator/">
+			<g id="group190-400" transform="translate(107.524,-579.17)" v:mID="190" v:groupContext="group">
+				<title>Sheet.190</title>
+				<g id="shape191-401" v:mID="191" v:groupContext="shape">
+					<title>text5957</title>
+					<desc>The Pi Estimator sample</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="27.4763" cy="785.045" width="54.96" height="13.9097"/>
+					<rect x="0" y="778.09" width="54.9527" height="13.9097" class="st2"/>
+					<text x="4.56" y="786.96" class="st16" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Pi 推定サンプル</text>				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-sample-wordcount/">
+			<g id="group192-404" transform="translate(99.2699,-545.728)" v:mID="192" v:groupContext="group">
+				<title>Sheet.192</title>
+				<g id="shape193-405" v:mID="193" v:groupContext="shape">
+					<title>path5961</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-sample-wordcount/">
+			<g id="group194-407" transform="translate(108,-549)" v:mID="194" v:groupContext="group">
+				<title>Sheet.194</title>
+				<g id="shape195-408" v:mID="195" v:groupContext="shape">
+					<title>text5963</title>
+					<desc>The WordCount sample</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="25.8752" cy="784.009" width="51.76" height="15.982"/>
+					<rect x="0" y="776.018" width="51.7503" height="15.982" class="st2"/>
+					<text x="3.56" y="782.1" class="st16" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>ワードカウント <tspan
+								x="13.12" dy="1.2em" class="st4">サンプル</tspan></text>				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-sample-10gb-graysort/">
+			<g id="group196-412" transform="translate(99.2699,-516.3)" v:mID="196" v:groupContext="group">
+				<title>Sheet.196</title>
+				<g id="shape197-413" v:mID="197" v:groupContext="shape">
+					<title>path5967</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-sample-10gb-graysort/">
+			<g id="group198-415" transform="translate(105.75,-518.625)" v:mID="198" v:groupContext="group">
+				<title>Sheet.198</title>
+				<g id="shape199-416" v:mID="199" v:groupContext="shape">
+					<title>text5969</title>
+					<desc>The 10-GB Graysort sample</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="28.876" cy="783" width="57.77" height="18"/>
+					<rect x="0" y="774" width="57.752" height="18" class="st2"/>
+					<text x="4.55" y="781.09" class="st16" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>10 GB GraySort <tspan
+								x="16.12" dy="1.2em" class="st4">サンプル</tspan></text>				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-sample-csharp-streaming/">
+			<g id="group200-420" transform="translate(99.2699,-486.872)" v:mID="200" v:groupContext="group">
+				<title>Sheet.200</title>
+				<g id="shape201-421" v:mID="201" v:groupContext="shape">
+					<title>path5979</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-sample-csharp-streaming/">
+			<g id="group202-423" transform="translate(102.375,-488.25)" v:mID="202" v:groupContext="group">
+				<title>Sheet.202</title>
+				<g id="shape203-424" v:mID="203" v:groupContext="shape">
+					<title>text5981</title>
+					<desc>The C# Streaming sample</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="31.69" cy="781.875" width="63.39" height="20.25"/>
+					<rect x="0" y="771.75" width="63.38" height="20.25" class="st2"/>
+					<text x="3.59" y="779.96" class="st16" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>C# ストリーミング <tspan
+								x="18.94" dy="1.2em" class="st4">サンプル</tspan></text>				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-mahout/">
+			<g id="group204-428" transform="translate(364.121,-384.49)" v:mID="204" v:groupContext="group">
+				<title>Sheet.204</title>
+				<g id="shape205-429" v:mID="205" v:groupContext="shape">
+					<title>path5989</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-mahout/">
+			<g id="group206-431" transform="translate(364.5,-387)" v:mID="206" v:groupContext="group">
+				<title>Sheet.206</title>
+				<g id="shape207-432" v:mID="207" v:groupContext="shape" transform="translate(5.625,0)">
+					<title>text5991</title>
+					<desc>Generate movie recommendations with Mahout</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="29.25" cy="783" width="58.51" height="18"/>
+					<rect x="0" y="774" width="58.5" height="18" class="st2"/>
+					<text x="19.3" y="778.05" class="st17" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Mahout <tspan
+								x="1.75" dy="1.2em" class="st4">を</tspan>使用した映画のリコ<tspan x="1.75" dy="1.2em" class="st4">メンデーションの</tspan>生成</text>				</g>
+			</g>
+		</a>
+		<g id="shape208-437" v:mID="208" v:groupContext="shape" transform="translate(349.404,-413.185)">
+			<title>path5997</title>
+			<path d="M0 774.34 L0 792 L70.63 792 L70.63 774.34 L0 774.34 Z" class="st1"/>
+		</g>
+		<g id="shape209-439" v:mID="209" v:groupContext="shape" transform="translate(351,-418.5)">
+			<title>text5999</title>
+			<desc>Real world scenarios</desc>
+			<v:userDefs/>
+			<v:textBlock v:margins="rect(0,0,0,0)"/>
+			<v:textRect cx="33.7501" cy="788.478" width="67.51" height="7.043"/>
+			<rect x="0" y="784.957" width="67.5" height="7.043" class="st2"/>
+			<text x="11.75" y="786.68" class="st11" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>リアル ワールド <tspan
+						x="21.75" dy="1.2em" class="st4">シナリオ</tspan></text>		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-connect-excel-power-query/">
+			<g id="group210-443" transform="translate(364.121,-242.039)" v:mID="210" v:groupContext="group">
+				<title>Sheet.210</title>
+				<g id="shape211-444" v:mID="211" v:groupContext="shape">
+					<title>path6001</title>
+					<path d="M0 765.52 L0 792 L70.63 792 L70.63 765.52 L0 765.52 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-connect-excel-power-query/">
+			<g id="group212-446" transform="translate(365.625,-243)" v:mID="212" v:groupContext="group">
+				<title>Sheet.212</title>
+				<g id="shape213-447" v:mID="213" v:groupContext="shape">
+					<title>text6003</title>
+					<desc>Connect Excel to Hadoop with Power Query</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="33.75" cy="780.158" width="67.51" height="23.6831"/>
+					<rect x="0" y="768.317" width="67.5" height="23.6831" class="st2"/>
+					<text x="13.7" y="774.42" class="st16" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Power Query <tspan
+								x="1.26" dy="1.2em" class="st4">を</tspan>使用した Excel から <tspan x="8.03" dy="1.2em" class="st4">Hadoop </tspan>への接続</text>				</g>
+			</g>
+		</a>
+		<g id="group214-452" transform="translate(355.289,-255.287)" v:mID="214" v:groupContext="group">
+			<title>path6009</title>
+			<g id="shape215-453" v:mID="215" v:groupContext="shape">
+				<title>Sheet.215</title>
+				<path d="M0 634.1 L0 792 L6.1 792 L0 634.1 Z" class="st7"/>
+			</g>
+			<g id="shape216-455" v:mID="216" v:groupContext="shape">
+				<title>Sheet.216</title>
+				<path d="M0 634.1 L0 792 L6.1 792 L0 634.1 Z" class="st8"/>
+				<path d="M0 634.1 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape217-458" v:mID="217" v:groupContext="shape" transform="translate(360.504,-253.478)">
+			<title>path6011</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-connect-excel-hive-odbc-driver/">
+			<g id="group218-460" transform="translate(364.121,-205.565)" v:mID="218" v:groupContext="group">
+				<title>Sheet.218</title>
+				<g id="shape219-461" v:mID="219" v:groupContext="shape">
+					<title>path6013</title>
+					<path d="M0 759.63 L0 792 L70.63 792 L70.63 759.63 L0 759.63 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-connect-excel-hive-odbc-driver/">
+			<g id="group220-463" transform="translate(366.715,-208.441)" v:mID="220" v:groupContext="group">
+				<title>Sheet.220</title>
+				<g id="shape221-464" v:mID="221" v:groupContext="shape">
+					<title>text6015</title>
+					<desc>Connect Excel to Hadoop with Microsoft HIVE ODBC Driver</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="32.6425" cy="779.22" width="65.3" height="25.5592"/>
+					<rect x="0" y="766.441" width="65.285" height="25.5592" class="st2"/>
+					<text x="4.08" y="770.97" class="st17" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Microsoft HIVE ODBC <tspan
+								x="5.14" dy="1.2em" class="st4">ドライバーを</tspan>使用した <tspan x="8.12" dy="1.2em" class="st4">Excel </tspan>から Hadoop <tspan
+								x="21.64" dy="1.2em" class="st4">への</tspan>接続</text>				</g>
+			</g>
+		</a>
+		<g id="group222-470" transform="translate(355.289,-221.752)" v:mID="222" v:groupContext="group">
+			<title>path6023</title>
+			<g id="shape223-471" v:mID="223" v:groupContext="shape">
+				<title>Sheet.223</title>
+				<path d="M0 600.57 L0 792 L6.1 792 L0 600.57 Z" class="st7"/>
+			</g>
+			<g id="shape224-473" v:mID="224" v:groupContext="shape">
+				<title>Sheet.224</title>
+				<path d="M0 600.57 L0 792 L6.1 792 L0 600.57 Z" class="st8"/>
+				<path d="M0 600.57 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape225-476" v:mID="225" v:groupContext="shape" transform="translate(360.504,-219.944)">
+			<title>path6025</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="shape226-478" v:mID="226" v:groupContext="shape" transform="translate(364.121,-356.23)">
+			<title>path6027</title>
+			<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+		</g>
+		<g id="shape227-480" v:mID="227" v:groupContext="shape" transform="translate(365.625,-357.75)">
+			<title>text6029</title>
+			<desc>Perform graph analysis with Giraph using Hadoop</desc>
+			<v:userDefs/>
+			<v:textBlock v:margins="rect(0,0,0,0)"/>
+			<v:textRect cx="33.1875" cy="783" width="66.38" height="18"/>
+			<rect x="0" y="774" width="66.375" height="18" class="st2"/>
+			<text x="1.67" y="781.5" class="st6" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Hadoop を使用した Giraph <tspan
+						x="5.69" dy="1.2em" class="st4">によるグラフ</tspan>解析の実行</text>		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-analyze-twitter-data/">
+			<g id="group228-484" transform="translate(364.121,-327.963)" v:mID="228" v:groupContext="group">
+				<title>Sheet.228</title>
+				<g id="shape229-485" v:mID="229" v:groupContext="shape">
+					<title>path6035</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-analyze-twitter-data/">
+			<g id="group230-487" transform="translate(369.273,-333)" v:mID="230" v:groupContext="group">
+				<title>Sheet.230</title>
+				<g id="shape231-488" v:mID="231" v:groupContext="shape" transform="translate(-3.648,0)">
+					<title>text6037</title>
+					<desc>Analyze Twitter data using Hadoop</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="33.1874" cy="784.892" width="66.39" height="14.2169"/>
+					<rect x="0" y="777.783" width="66.3747" height="14.2169" class="st2"/>
+					<text x="5.99" y="783.09" class="st12" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Hadoop を使用した <tspan
+								x="3.76" dy="1.2em" class="st4">Twitter </tspan>データの分析</text>				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-analyze-flight-delay-data/">
+			<g id="group232-492" transform="translate(364.121,-272.665)" v:mID="232" v:groupContext="group">
+				<title>Sheet.232</title>
+				<g id="shape233-493" v:mID="233" v:groupContext="shape">
+					<title>path6041</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-analyze-flight-delay-data/">
+			<g id="group234-495" transform="translate(369.138,-274.5)" v:mID="234" v:groupContext="group">
+				<title>Sheet.234</title>
+				<g id="shape235-496" v:mID="235" v:groupContext="shape" transform="translate(0.987,-1.42835)">
+					<title>text6043</title>
+					<desc>Analyze flight delay data using Hadoop</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="28.6875" cy="783.304" width="57.39" height="17.3927"/>
+					<rect x="0" y="774.607" width="57.375" height="17.3927" class="st2"/>
+					<text x="17.51" y="777.9" class="st12" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Hadoop <tspan
+								x="1.69" dy="1.2em" class="st4">を</tspan>使用したフライト<tspan x="4.69" dy="1.2em" class="st4">遅延</tspan>データの分析</text>				</g>
+			</g>
+		</a>
+		<g id="shape236-501" v:mID="236" v:groupContext="shape" transform="translate(184.612,-716.411)">
+			<title>path6067</title>
+			<path d="M32.37 775.81 C32.37 766.86 25.14 759.63 16.19 759.63 C7.23 759.63 -0 766.86 0 775.81 C0 784.74 7.23 792 16.19
+						 792 C25.14 792 32.37 784.74 32.37 775.81 Z" class="st18"/>
+		</g>
+		<g id="shape237-503" v:mID="237" v:groupContext="shape" transform="translate(184.612,-716.411)">
+			<title>path6069</title>
+			<path d="M32.37 775.81 C32.37 766.86 25.14 759.63 16.19 759.63 C7.23 759.63 -0 766.86 0 775.81 C0 784.74 7.23 792 16.19
+						 792 C25.14 792 32.37 784.74 32.37 775.81 Z" class="st14"/>
+		</g>
+		<g id="shape238-505" v:mID="238" v:groupContext="shape" transform="translate(189,-723.925)">
+			<title>text6071</title>
+			<desc>Start here</desc>
+			<v:userDefs/>
+			<v:textBlock v:margins="rect(0,0,0,0)"/>
+			<v:textRect cx="11.8125" cy="783.55" width="23.64" height="16.9006"/>
+			<rect x="0" y="775.099" width="23.625" height="16.9006" class="st2"/>
+			<text x="2.25" y="781.64" class="st19" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>ここか<tspan x="2.25"
+						dy="1.2em" class="st4">ら</tspan>開始</text>		</g>
+		<g id="group239-509" transform="translate(216.983,-732.597)" v:mID="239" v:groupContext="group">
+			<title>path6075</title>
+			<g id="shape240-510" v:mID="240" v:groupContext="shape">
+				<title>Sheet.240</title>
+				<path d="M0 792 L44.36 792 L0 792 Z" class="st7"/>
+			</g>
+			<g id="shape241-512" v:mID="241" v:groupContext="shape">
+				<title>Sheet.241</title>
+				<path d="M0 792 L44.36 792 L0 792 Z" class="st8"/>
+				<path d="M0 792 L44.36 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape242-515" v:mID="242" v:groupContext="shape" transform="translate(260.45,-730.788)">
+			<title>path6077</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-debug-jobs/">
+			<g id="group243-517" transform="translate(278.778,-84.3217)" v:mID="243" v:groupContext="group">
+				<title>Sheet.243</title>
+				<g id="shape244-518" v:mID="244" v:groupContext="shape">
+					<title>path6079</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-debug-jobs/">
+			<g id="group245-520" transform="translate(284.19,-89.9996)" v:mID="245" v:groupContext="group">
+				<title>Sheet.245</title>
+				<g id="shape246-521" v:mID="246" v:groupContext="shape" transform="translate(-3.375,0)">
+					<title>text6081</title>
+					<desc>Debug Hadoop Error Messages</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="33.4051" cy="785.222" width="66.83" height="13.5554"/>
+					<rect x="0" y="778.445" width="66.81" height="13.5554" class="st2"/>
+					<text x="10.87" y="783.31" class="st16" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Hadoop エラー <tspan
+								x="1.53" dy="1.2em" class="st4">メッセージのデバッグ</tspan></text>				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-sqoop/">
+			<g id="group247-525" transform="translate(278.778,-56.2178)" v:mID="247" v:groupContext="group">
+				<title>Sheet.247</title>
+				<g id="shape248-526" v:mID="248" v:groupContext="shape">
+					<title>path6085</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-sqoop/">
+			<g id="group249-528" transform="translate(281.25,-60.7501)" v:mID="249" v:groupContext="group">
+				<title>Sheet.249</title>
+				<g id="shape250-529" v:mID="250" v:groupContext="shape">
+					<title>text6087</title>
+					<desc>Move data to a database with Sqoop</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="32.625" cy="784.649" width="65.25" height="14.7019"/>
+					<rect x="0" y="777.298" width="65.25" height="14.7019" class="st2"/>
+					<text x="23.51" y="779.25" class="st12" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Sqoop <tspan
+								x="2.63" dy="1.2em" class="st4">によるデータベースへ</tspan><tspan x="14.63" dy="1.2em" class="st4">のデータ</tspan>移動</text>				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-dotnet-avro-serialization/">
+			<g id="group251-534" transform="translate(278.778,-28.1139)" v:mID="251" v:groupContext="group">
+				<title>Sheet.251</title>
+				<g id="shape252-535" v:mID="252" v:groupContext="shape">
+					<title>path6091</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-dotnet-avro-serialization/">
+			<g id="group253-537" transform="translate(281.25,-32.5753)" v:mID="253" v:groupContext="group">
+				<title>Sheet.253</title>
+				<g id="shape254-538" v:mID="254" v:groupContext="shape" transform="translate(-1.125,1.12455)">
+					<title>text6093</title>
+					<desc>Serialize data with .NET Library for Avro</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="34.875" cy="784.075" width="69.75" height="15.8485"/>
+					<rect x="0" y="776.151" width="69.75" height="15.8485" class="st2"/>
+					<text x="3.83" y="778.68" class="st12" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>.NET Library for Avro <tspan
+								x="1.88" dy="1.2em" class="st4">を</tspan>使用したデータのシリ<tspan x="25.87" dy="1.2em" class="st4">アル</tspan>化  </text>				</g>
+			</g>
+		</a>
+		<a xlink:href="http://msdn.microsoft.com/library/azure/dn479185.aspx">
+			<g id="group255-543" transform="translate(278.778,-0.0100095)" v:mID="255" v:groupContext="group">
+				<title>Sheet.255</title>
+				<g id="shape256-544" v:mID="256" v:groupContext="shape">
+					<title>path6099</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://msdn.microsoft.com/library/azure/dn479185.aspx">
+			<g id="group257-546" transform="translate(279,-4.5)" v:mID="257" v:groupContext="group">
+				<title>Sheet.257</title>
+				<g id="shape258-547" v:mID="258" v:groupContext="shape">
+					<title>text6101</title>
+					<desc>HDInsight SDK Reference Documentation</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="35.9999" cy="785.25" width="72.01" height="13.5"/>
+					<rect x="0" y="778.5" width="72" height="13.5" class="st2"/>
+					<text x="14.24" y="779.85" class="st12" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>HDInsight SDK <tspan
+								x="18" dy="1.2em" class="st4">リファレンス</tspan> <tspan x="18" dy="1.2em" class="st4">ドキュメント</tspan></text>				</g>
+			</g>
+		</a>
+		<g id="group259-552" transform="translate(269.953,-96.0995)" v:mID="259" v:groupContext="group">
+			<title>path6107</title>
+			<g id="shape260-553" v:mID="260" v:groupContext="shape">
+				<title>Sheet.260</title>
+				<path d="M0 474.91 L0 792 L6.1 792 L0 474.91 Z" class="st7"/>
+			</g>
+			<g id="shape261-555" v:mID="261" v:groupContext="shape">
+				<title>Sheet.261</title>
+				<path d="M0 474.91 L0 792 L6.1 792 L0 474.91 Z" class="st8"/>
+				<path d="M0 474.91 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape262-558" v:mID="262" v:groupContext="shape" transform="translate(275.161,-94.2806)">
+			<title>path6109</title>
+			<path d="M3.62 790.16 L0 792 C0.58 790.84 0.58 789.52 0 788.35 L3.62 790.16 Z" class="st10"/>
+		</g>
+		<g id="group263-560" transform="translate(269.953,-39.8849)" v:mID="263" v:groupContext="group">
+			<title>path6111</title>
+			<g id="shape264-561" v:mID="264" v:groupContext="shape">
+				<title>Sheet.264</title>
+				<path d="M0 418.7 L0 792 L6.1 792 L0 418.7 Z" class="st7"/>
+			</g>
+			<g id="shape265-563" v:mID="265" v:groupContext="shape">
+				<title>Sheet.265</title>
+				<path d="M0 418.7 L0 792 L6.1 792 L0 418.7 Z" class="st8"/>
+				<path d="M0 418.7 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape266-566" v:mID="266" v:groupContext="shape" transform="translate(275.161,-38.1035)">
+			<title>path6113</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="group267-568" transform="translate(269.953,-11.7743)" v:mID="267" v:groupContext="group">
+			<title>path6115</title>
+			<g id="shape268-569" v:mID="268" v:groupContext="shape">
+				<title>Sheet.268</title>
+				<path d="M0 390.59 L0 792 L6.1 792 L0 390.59 Z" class="st7"/>
+			</g>
+			<g id="shape269-571" v:mID="269" v:groupContext="shape">
+				<title>Sheet.269</title>
+				<path d="M0 390.59 L0 792 L6.1 792 L0 390.59 Z" class="st8"/>
+				<path d="M0 390.59 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape270-574" v:mID="270" v:groupContext="shape" transform="translate(275.161,-9.93177)">
+			<title>path6117</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="group271-576" transform="translate(355.289,-396.264)" v:mID="271" v:groupContext="group">
+			<title>path6119</title>
+			<g id="shape272-577" v:mID="272" v:groupContext="shape">
+				<title>Sheet.272</title>
+				<path d="M0 775.08 L0 792 L6.1 792 L0 775.08 Z" class="st7"/>
+			</g>
+			<g id="shape273-579" v:mID="273" v:groupContext="shape">
+				<title>Sheet.273</title>
+				<path d="M0 775.08 L0 792 L6.1 792 L0 775.08 Z" class="st8"/>
+				<path d="M0 775.08 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape274-582" v:mID="274" v:groupContext="shape" transform="translate(360.504,-394.422)">
+			<title>path6121</title>
+			<path d="M3.62 790.16 L0 792 C0.58 790.84 0.58 789.52 0 788.35 L3.62 790.16 Z" class="st10"/>
+		</g>
+		<g id="group275-584" transform="translate(355.289,-368)" v:mID="275" v:groupContext="group">
+			<title>path6123</title>
+			<g id="shape276-585" v:mID="276" v:groupContext="shape">
+				<title>Sheet.276</title>
+				<path d="M0 746.82 L0 792 L6.1 792 L0 746.82 Z" class="st7"/>
+			</g>
+			<g id="shape277-587" v:mID="277" v:groupContext="shape">
+				<title>Sheet.277</title>
+				<path d="M0 746.82 L0 792 L6.1 792 L0 746.82 Z" class="st8"/>
+				<path d="M0 746.82 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape278-590" v:mID="278" v:groupContext="shape" transform="translate(360.504,-366.193)">
+			<title>path6125</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="group279-592" transform="translate(355.289,-339.741)" v:mID="279" v:groupContext="group">
+			<title>path6127</title>
+			<g id="shape280-593" v:mID="280" v:groupContext="shape">
+				<title>Sheet.280</title>
+				<path d="M0 718.56 L0 792 L6.1 792 L0 718.56 Z" class="st7"/>
+			</g>
+			<g id="shape281-595" v:mID="281" v:groupContext="shape">
+				<title>Sheet.281</title>
+				<path d="M0 718.56 L0 792 L6.1 792 L0 718.56 Z" class="st8"/>
+				<path d="M0 718.56 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape282-598" v:mID="282" v:groupContext="shape" transform="translate(360.504,-337.926)">
+			<title>path6129</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="group283-600" transform="translate(355.289,-284.436)" v:mID="283" v:groupContext="group">
+			<title>path6131</title>
+			<g id="shape284-601" v:mID="284" v:groupContext="shape">
+				<title>Sheet.284</title>
+				<path d="M0 663.25 L0 792 L6.1 792 L0 663.25 Z" class="st7"/>
+			</g>
+			<g id="shape285-603" v:mID="285" v:groupContext="shape">
+				<title>Sheet.285</title>
+				<path d="M0 663.25 L0 792 L6.1 792 L0 663.25 Z" class="st8"/>
+				<path d="M0 663.25 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape286-606" v:mID="286" v:groupContext="shape" transform="translate(360.504,-282.597)">
+			<title>path6133</title>
+			<path d="M3.62 790.16 L0 792 C0.58 790.84 0.58 789.52 0 788.35 L3.62 790.16 Z" class="st10"/>
+		</g>
+		<g id="group287-608" transform="translate(172.658,-542.055)" v:mID="287" v:groupContext="group">
+			<title>path6135</title>
+			<g id="shape288-609" v:mID="288" v:groupContext="shape">
+				<title>Sheet.288</title>
+				<path d="M91.41 792 L14.9 792 L14.9 747.12 L0 747.12 L91.41 792 Z" class="st7"/>
+			</g>
+			<g id="shape289-611" v:mID="289" v:groupContext="shape">
+				<title>Sheet.289</title>
+				<path d="M91.41 792 L14.9 792 L14.9 747.12 L0 747.12 L91.41 792 Z" class="st8"/>
+				<path d="M91.41 792 L14.9 792 L14.9 747.12 L0 747.12" class="st9"/>
+			</g>
+		</g>
+		<g id="shape290-614" v:mID="290" v:groupContext="shape" transform="translate(169.899,-585.118)">
+			<title>path6137</title>
+			<path d="M0 790.19 L3.62 788.38 C3.07 789.52 3.07 790.87 3.62 792 L0 790.19 Z" class="st10"/>
+		</g>
+		<g id="group291-616" transform="translate(172.658,-542.055)" v:mID="291" v:groupContext="group">
+			<title>path6139</title>
+			<g id="shape292-617" v:mID="292" v:groupContext="shape">
+				<title>Sheet.292</title>
+				<path d="M91.41 792 L14.9 792 L14.9 776.55 L0 776.55 L91.41 792 Z" class="st7"/>
+			</g>
+			<g id="shape293-619" v:mID="293" v:groupContext="shape">
+				<title>Sheet.293</title>
+				<path d="M91.41 792 L14.9 792 L14.9 776.55 L0 776.55 L91.41 792 Z" class="st8"/>
+				<path d="M91.41 792 L14.9 792 L14.9 776.55 L0 776.55" class="st9"/>
+			</g>
+		</g>
+		<g id="shape294-622" v:mID="294" v:groupContext="shape" transform="translate(169.899,-555.69)">
+			<title>path6141</title>
+			<path d="M0 790.19 L3.62 788.38 C3.07 789.52 3.07 790.87 3.62 792 L0 790.19 Z" class="st10"/>
+		</g>
+		<g id="group295-624" transform="translate(172.658,-528.077)" v:mID="295" v:groupContext="group">
+			<title>path6143</title>
+			<g id="shape296-625" v:mID="296" v:groupContext="shape">
+				<title>Sheet.296</title>
+				<path d="M91.41 778.02 L14.9 778.02 L14.9 792 L0 792 L91.41 778.02 Z" class="st7"/>
+			</g>
+			<g id="shape297-627" v:mID="297" v:groupContext="shape">
+				<title>Sheet.297</title>
+				<path d="M91.41 778.02 L14.9 778.02 L14.9 792 L0 792 L91.41 778.02 Z" class="st8"/>
+				<path d="M91.41 778.02 L14.9 778.02 L14.9 792 L0 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape298-630" v:mID="298" v:groupContext="shape" transform="translate(169.899,-526.262)">
+			<title>path6145</title>
+			<path d="M0 790.19 L3.62 788.38 C3.07 789.52 3.07 790.87 3.62 792 L0 790.19 Z" class="st10"/>
+		</g>
+		<g id="group299-632" transform="translate(172.658,-498.65)" v:mID="299" v:groupContext="group">
+			<title>path6147</title>
+			<g id="shape300-633" v:mID="300" v:groupContext="shape">
+				<title>Sheet.300</title>
+				<path d="M91.41 748.59 L14.9 748.59 L14.9 792 L0 792 L91.41 748.59 Z" class="st7"/>
+			</g>
+			<g id="shape301-635" v:mID="301" v:groupContext="shape">
+				<title>Sheet.301</title>
+				<path d="M91.41 748.59 L14.9 748.59 L14.9 792 L0 792 L91.41 748.59 Z" class="st8"/>
+				<path d="M91.41 748.59 L14.9 748.59 L14.9 792 L0 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape302-638" v:mID="302" v:groupContext="shape" transform="translate(169.899,-496.835)">
+			<title>path6149</title>
+			<path d="M0 790.19 L3.62 788.38 C3.07 789.52 3.07 790.87 3.62 792 L0 790.19 Z" class="st10"/>
+		</g>
+		<g id="group303-640" transform="translate(299.38,-553.64)" v:mID="303" v:groupContext="group">
+			<title>path6151</title>
+			<g id="shape304-641" v:mID="304" v:groupContext="shape">
+				<title>Sheet.304</title>
+				<path d="M0 740.32 L0 792 L0 740.32 Z" class="st7"/>
+			</g>
+			<g id="shape305-643" v:mID="305" v:groupContext="shape">
+				<title>Sheet.305</title>
+				<path d="M0 740.32 L0 792 L0 740.32 Z" class="st8"/>
+				<path d="M0 740.32 L0 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape306-646" v:mID="306" v:groupContext="shape" transform="translate(297.572,-550.88)">
+			<title>path6153</title>
+			<path d="M1.81 792 L0 788.35 C1.13 788.93 2.48 788.93 3.62 788.35 L1.81 792 Z" class="st10"/>
+		</g>
+		<g id="shape307-648" v:mID="307" v:groupContext="shape" transform="translate(434.747,-413.185)">
+			<title>path6155</title>
+			<path d="M0 774.34 L0 792 L70.63 792 L70.63 774.34 L0 774.34 Z" class="st1"/>
+		</g>
+		<g id="shape308-650" v:mID="308" v:groupContext="shape" transform="translate(441,-414)">
+			<title>text6157</title>
+			<desc>Stay current with HDInsight</desc>
+			<v:userDefs/>
+			<v:textBlock v:margins="rect(0,0,0,0)"/>
+			<v:textRect cx="29.25" cy="784.266" width="58.51" height="15.4674"/>
+			<rect x="0" y="776.533" width="58.5" height="15.4674" class="st2"/>
+			<text x="12" y="782.35" class="st3" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>HDInsight <tspan
+						x="13.31" dy="1.2em" class="st4">の</tspan>最新情報</text>		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/">
+			<g id="group309-654" transform="translate(447.992,-383.139)" v:mID="309" v:groupContext="group">
+				<title>Sheet.309</title>
+				<g id="shape310-655" v:mID="310" v:groupContext="shape">
+					<title>path6161</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-component-versioning/">
+			<g id="group311-657" transform="translate(450,-386.549)" v:mID="311" v:groupContext="group">
+				<title>Sheet.311</title>
+				<g id="shape312-658" v:mID="312" v:groupContext="shape">
+					<title>text6163</title>
+					<desc>What´s New in HDInsight?</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="33.75" cy="783.674" width="67.5" height="16.6512"/>
+					<rect x="0" y="775.349" width="67.5" height="16.6512" class="st2"/>
+					<text x="4.39" y="785.59" class="st16" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>HDInsight の新機能</text>				</g>
+			</g>
+		</a>
+		<g id="group315-661" transform="translate(440.633,-394.915)" v:mID="315" v:groupContext="group">
+			<title>path6177</title>
+			<g id="shape316-662" v:mID="316" v:groupContext="shape">
+				<title>Sheet.316</title>
+				<path d="M0 773.73 L0 792 L4.63 792 L0 773.73 Z" class="st7"/>
+			</g>
+			<g id="shape317-664" v:mID="317" v:groupContext="shape">
+				<title>Sheet.317</title>
+				<path d="M0 773.73 L0 792 L4.63 792 L0 773.73 Z" class="st8"/>
+				<path d="M0 773.73 L0 792 L4.63 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape318-667" v:mID="318" v:groupContext="shape" transform="translate(444.374,-393.102)">
+			<title>path6179</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-release-notes/">
+			<g id="group319-669" transform="translate(447.992,-355.646)" v:mID="319" v:groupContext="group">
+				<title>Sheet.319</title>
+				<g id="shape320-670" v:mID="320" v:groupContext="shape">
+					<title>path6181</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-release-notes/">
+			<g id="group321-672" transform="translate(458.133,-360)" v:mID="321" v:groupContext="group">
+				<title>Sheet.321</title>
+				<g id="shape322-673" v:mID="322" v:groupContext="shape">
+					<title>text6183</title>
+					<desc>HDInsight release notes</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="25.1837" cy="784.561" width="50.38" height="14.8789"/>
+					<rect x="0" y="777.121" width="50.3673" height="14.8789" class="st2"/>
+					<text x="9.66" y="782.65" class="st16" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>HDInsight <tspan
+								x="1.78" dy="1.2em" class="st4">リリース</tspan> ノート</text>				</g>
+			</g>
+		</a>
+		<g id="group323-677" transform="translate(440.633,-367.418)" v:mID="323" v:groupContext="group">
+			<title>path6187</title>
+			<g id="shape324-678" v:mID="324" v:groupContext="shape">
+				<title>Sheet.324</title>
+				<path d="M0 746.23 L0 792 L4.63 792 L0 746.23 Z" class="st7"/>
+			</g>
+			<g id="shape325-680" v:mID="325" v:groupContext="shape">
+				<title>Sheet.325</title>
+				<path d="M0 746.23 L0 792 L4.63 792 L0 746.23 Z" class="st8"/>
+				<path d="M0 746.23 L0 792 L4.63 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape326-683" v:mID="326" v:groupContext="shape" transform="translate(444.374,-365.609)">
+			<title>path6189</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="group327-685" transform="translate(128.7,-433.569)" v:mID="327" v:groupContext="group">
+			<title>path6191</title>
+			<g id="shape328-686" v:mID="328" v:groupContext="shape">
+				<title>Sheet.328</title>
+				<path d="M170.68 692.35 L170.68 776.95 L0 776.95 L0 792 L170.68 692.35 Z" class="st7"/>
+			</g>
+			<g id="shape329-688" v:mID="329" v:groupContext="shape">
+				<title>Sheet.329</title>
+				<path d="M170.68 692.35 L170.68 776.95 L0 776.95 L0 792 L170.68 692.35 Z" class="st8"/>
+				<path d="M170.68 692.35 L170.68 776.95 L0 776.95 L0 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape330-691" v:mID="330" v:groupContext="shape" transform="translate(126.89,-430.841)">
+			<title>path6193</title>
+			<path d="M1.81 792 L0 788.38 C1.13 788.97 2.48 788.97 3.62 788.38 L1.81 792 Z" class="st10"/>
+		</g>
+		<g id="group331-693" transform="translate(214.037,-433.569)" v:mID="331" v:groupContext="group">
+			<title>path6195</title>
+			<g id="shape332-694" v:mID="332" v:groupContext="shape">
+				<title>Sheet.332</title>
+				<path d="M85.34 692.35 L85.34 776.95 L0 776.95 L0 792 L85.34 692.35 Z" class="st7"/>
+			</g>
+			<g id="shape333-696" v:mID="333" v:groupContext="shape">
+				<title>Sheet.333</title>
+				<path d="M85.34 692.35 L85.34 776.95 L0 776.95 L0 792 L85.34 692.35 Z" class="st8"/>
+				<path d="M85.34 692.35 L85.34 776.95 L0 776.95 L0 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape334-699" v:mID="334" v:groupContext="shape" transform="translate(212.228,-430.841)">
+			<title>path6197</title>
+			<path d="M1.81 792 L0 788.38 C1.13 788.97 2.48 788.97 3.62 788.38 L1.81 792 Z" class="st10"/>
+		</g>
+		<g id="group335-701" transform="translate(299.38,-433.569)" v:mID="335" v:groupContext="group">
+			<title>path6199</title>
+			<g id="shape336-702" v:mID="336" v:groupContext="shape">
+				<title>Sheet.336</title>
+				<path d="M0 692.35 L0 776.95 L85.34 776.95 L85.34 792 L0 692.35 Z" class="st7"/>
+			</g>
+			<g id="shape337-704" v:mID="337" v:groupContext="shape">
+				<title>Sheet.337</title>
+				<path d="M0 692.35 L0 776.95 L85.34 776.95 L85.34 792 L0 692.35 Z" class="st8"/>
+				<path d="M0 692.35 L0 776.95 L85.34 776.95 L85.34 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape338-707" v:mID="338" v:groupContext="shape" transform="translate(382.909,-430.841)">
+			<title>path6201</title>
+			<path d="M1.81 792 L0 788.38 C1.13 788.97 2.48 788.97 3.62 788.38 L1.81 792 Z" class="st10"/>
+		</g>
+		<g id="group339-709" transform="translate(299.38,-433.569)" v:mID="339" v:groupContext="group">
+			<title>path6203</title>
+			<g id="shape340-710" v:mID="340" v:groupContext="shape">
+				<title>Sheet.340</title>
+				<path d="M0 692.35 L0 776.95 L170.68 776.95 L170.68 792 L0 692.35 Z" class="st7"/>
+			</g>
+			<g id="shape341-712" v:mID="341" v:groupContext="shape">
+				<title>Sheet.341</title>
+				<path d="M0 692.35 L0 776.95 L170.68 776.95 L170.68 792 L0 692.35 Z" class="st8"/>
+				<path d="M0 692.35 L0 776.95 L170.68 776.95 L170.68 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape342-715" v:mID="342" v:groupContext="shape" transform="translate(468.252,-430.841)">
+			<title>path6205</title>
+			<path d="M1.81 792 L0 788.38 C1.13 788.97 2.48 788.97 3.62 788.38 L1.81 792 Z" class="st10"/>
+		</g>
+		<g id="group343-717" transform="translate(299.38,-433.57)" v:mID="343" v:groupContext="group">
+			<title>path6207</title>
+			<g id="shape344-718" v:mID="344" v:groupContext="shape">
+				<title>Sheet.344</title>
+				<path d="M0 692.35 L0 792 L0 692.35 Z" class="st7"/>
+			</g>
+			<g id="shape345-720" v:mID="345" v:groupContext="shape">
+				<title>Sheet.345</title>
+				<path d="M0 692.35 L0 792 L0 692.35 Z" class="st8"/>
+				<path d="M0 692.35 L0 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape346-723" v:mID="346" v:groupContext="shape" transform="translate(297.572,-430.841)">
+			<title>path6209</title>
+			<path d="M1.81 792 L0 788.38 C1.13 788.97 2.48 788.97 3.62 788.38 L1.81 792 Z" class="st10"/>
+		</g>
+		<g id="shape347-725" v:mID="347" v:groupContext="shape" transform="translate(269.953,-483.93)">
+			<title>path6211</title>
+			<path d="M0 765.52 L0 792 L58.86 792 L58.86 765.52 L0 765.52 Z" class="st20"/>
+		</g>
+		<g id="shape348-727" v:mID="348" v:groupContext="shape" transform="translate(274.392,-488.25)">
+			<title>text6213</title>
+			<desc>Ready to dive in ?</desc>
+			<v:userDefs/>
+			<v:textBlock v:margins="rect(0,0,0,0)"/>
+			<v:textRect cx="25.3667" cy="782.939" width="50.75" height="18.1219"/>
+			<rect x="0" y="773.878" width="50.7334" height="18.1219" class="st2"/>
+			<text x="1.82" y="780.59" class="st21" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>準備はよろし<tspan x="7.39"
+						dy="1.2em" class="st4">いですか</tspan>?</text>		</g>
+		<g id="group349-731" transform="translate(269.953,-282.658)" v:mID="349" v:groupContext="group">
+			<title>path6219</title>
+			<g id="shape350-732" v:mID="350" v:groupContext="shape">
+				<title>Sheet.350</title>
+				<path d="M0 661.47 L0 792 L6.1 792 L0 661.47 Z" class="st7"/>
+			</g>
+			<g id="shape351-734" v:mID="351" v:groupContext="shape">
+				<title>Sheet.351</title>
+				<path d="M0 661.47 L0 792 L6.1 792 L0 661.47 Z" class="st8"/>
+				<path d="M0 661.47 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape352-737" v:mID="352" v:groupContext="shape" transform="translate(275.161,-280.849)">
+			<title>path6221</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="group353-739" transform="translate(269.953,-254.275)" v:mID="353" v:groupContext="group">
+			<title>path6223</title>
+			<g id="shape354-740" v:mID="354" v:groupContext="shape">
+				<title>Sheet.354</title>
+				<path d="M0 633.09 L0 792 L6.1 792 L0 633.09 Z" class="st7"/>
+			</g>
+			<g id="shape355-742" v:mID="355" v:groupContext="shape">
+				<title>Sheet.355</title>
+				<path d="M0 633.09 L0 792 L6.1 792 L0 633.09 Z" class="st8"/>
+				<path d="M0 633.09 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape356-745" v:mID="356" v:groupContext="shape" transform="translate(275.161,-252.436)">
+			<title>path6225</title>
+			<path d="M3.62 790.16 L0 792 C0.58 790.84 0.58 789.52 0 788.35 L3.62 790.16 Z" class="st10"/>
+		</g>
+		<g id="group357-747" transform="translate(269.953,-193.642)" v:mID="357" v:groupContext="group">
+			<title>path6227</title>
+			<g id="shape358-748" v:mID="358" v:groupContext="shape">
+				<title>Sheet.358</title>
+				<path d="M0 572.46 L0 792 L6.1 792 L0 572.46 Z" class="st7"/>
+			</g>
+			<g id="shape359-750" v:mID="359" v:groupContext="shape">
+				<title>Sheet.359</title>
+				<path d="M0 572.46 L0 792 L6.1 792 L0 572.46 Z" class="st8"/>
+				<path d="M0 572.46 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape360-753" v:mID="360" v:groupContext="shape" transform="translate(275.161,-191.833)">
+			<title>path6229</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="group361-755" transform="translate(269.953,-128.595)" v:mID="361" v:groupContext="group">
+			<title>path6231</title>
+			<g id="shape362-756" v:mID="362" v:groupContext="shape">
+				<title>Sheet.362</title>
+				<path d="M0 507.41 L0 792 L6.1 792 L0 507.41 Z" class="st7"/>
+			</g>
+			<g id="shape363-758" v:mID="363" v:groupContext="shape">
+				<title>Sheet.363</title>
+				<path d="M0 507.41 L0 792 L6.1 792 L0 507.41 Z" class="st8"/>
+				<path d="M0 507.41 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape364-761" v:mID="364" v:groupContext="shape" transform="translate(275.161,-126.787)">
+			<title>path6233</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<g id="group365-763" transform="translate(269.953,-67.9888)" v:mID="365" v:groupContext="group">
+			<title>path6235</title>
+			<g id="shape366-764" v:mID="366" v:groupContext="shape">
+				<title>Sheet.366</title>
+				<path d="M0 446.8 L0 792 L6.1 792 L0 446.8 Z" class="st7"/>
+			</g>
+			<g id="shape367-766" v:mID="367" v:groupContext="shape">
+				<title>Sheet.367</title>
+				<path d="M0 446.8 L0 792 L6.1 792 L0 446.8 Z" class="st8"/>
+				<path d="M0 446.8 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape368-769" v:mID="368" v:groupContext="shape" transform="translate(275.161,-66.2074)">
+			<title>path6237</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-analyze-twitter-sentiment/">
+			<g id="group369-771" transform="translate(364.121,-300.314)" v:mID="369" v:groupContext="group">
+				<title>Sheet.369</title>
+				<g id="shape370-772" v:mID="370" v:groupContext="shape">
+					<title>path6239</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-hbase-analyze-twitter-sentiment/">
+			<g id="group371-774" transform="translate(365.625,-300.375)" v:mID="371" v:groupContext="group">
+				<title>Sheet.371</title>
+				<g id="shape372-775" v:mID="372" v:groupContext="shape" transform="translate(4.5,0)">
+					<title>text6241</title>
+					<desc>Analyze real-time Twitter sentiment with HBase</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="28.6875" cy="780.75" width="57.38" height="22.5"/>
+					<rect x="0" y="769.5" width="57.375" height="22.5" class="st2"/>
+					<text x="4.02" y="775.35" class="st12" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>HBase で Twitter <tspan
+								x="1.69" dy="1.2em" class="st4">のセンチメントをリ</tspan><tspan x="1.69" dy="1.2em" class="st4">アルタイム</tspan>分析する</text>				</g>
+			</g>
+		</a>
+		<g id="group373-780" transform="translate(355.289,-312.085)" v:mID="373" v:groupContext="group">
+			<title>path6251</title>
+			<g id="shape374-781" v:mID="374" v:groupContext="shape">
+				<title>Sheet.374</title>
+				<path d="M0 690.9 L0 792 L6.1 792 L0 690.9 Z" class="st7"/>
+			</g>
+			<g id="shape375-783" v:mID="375" v:groupContext="shape">
+				<title>Sheet.375</title>
+				<path d="M0 690.9 L0 792 L6.1 792 L0 690.9 Z" class="st8"/>
+				<path d="M0 690.9 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="group376-786" transform="translate(334.694,-711.997)" v:mID="376" v:groupContext="group">
+			<title>path6271</title>
+			<g id="shape377-787" v:mID="377" v:groupContext="shape">
+				<title>Sheet.377</title>
+				<path d="M0 771.4 L61.8 771.4 L61.8 792 L79.24 792 L0 771.4 Z" class="st7"/>
+			</g>
+			<g id="shape378-789" v:mID="378" v:groupContext="shape">
+				<title>Sheet.378</title>
+				<path d="M0 771.4 L61.8 771.4 L61.8 792 L79.24 792 L0 771.4 Z" class="st8"/>
+				<path d="M0 771.4 L61.8 771.4 L61.8 792 L79.24 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape379-792" v:mID="379" v:groupContext="shape" transform="translate(413.473,-710.191)">
+			<title>path6273</title>
+			<path d="M0 788.38 L3.62 790.19 L0 792 L0 788.38 Z" class="st10"/>
+		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-oozie-coordinator-time/">
+			<g id="group380-794" transform="translate(278.778,-214.394)" v:mID="380" v:groupContext="group">
+				<title>Sheet.380</title>
+				<g id="shape381-795" v:mID="381" v:groupContext="shape">
+					<title>path6275</title>
+					<path d="M0 768.46 L0 792 L70.63 792 L70.63 768.46 L0 768.46 Z" class="st5"/>
+				</g>
+			</g>
+		</a>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-use-oozie-coordinator-time/">
+			<g id="group382-797" transform="translate(281.959,-214.7)" v:mID="382" v:groupContext="group">
+				<title>Sheet.382</title>
+				<g id="shape383-798" v:mID="383" v:groupContext="shape" transform="translate(-1.834,0)">
+					<title>text6277</title>
+					<desc>Use Oozie coordinator with Hadoop in HDInsight</desc>
+					<v:userDefs/>
+					<v:textBlock v:margins="rect(0,0,0,0)"/>
+					<v:textRect cx="33.7498" cy="781.225" width="67.51" height="21.5497"/>
+					<rect x="0" y="770.45" width="67.4996" height="21.5497" class="st2"/>
+					<text x="2.92" y="775.83" class="st12" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>HDInsight の Hadoop <tspan
+								x="18.65" dy="1.2em" class="st4">での</tspan> Oozie <tspan x="0.75" dy="1.2em" class="st4">コーディネーターの</tspan>使用</text>				</g>
+			</g>
+		</a>
+		<g id="group384-803" transform="translate(269.953,-226.165)" v:mID="384" v:groupContext="group">
+			<title>path6283</title>
+			<g id="shape385-804" v:mID="385" v:groupContext="shape">
+				<title>Sheet.385</title>
+				<path d="M0 604.98 L0 792 L6.1 792 L0 604.98 Z" class="st7"/>
+			</g>
+			<g id="shape386-806" v:mID="386" v:groupContext="shape">
+				<title>Sheet.386</title>
+				<path d="M0 604.98 L0 792 L6.1 792 L0 604.98 Z" class="st8"/>
+				<path d="M0 604.98 L0 792 L6.1 792" class="st9"/>
+			</g>
+		</g>
+		<g id="shape387-809" v:mID="387" v:groupContext="shape" transform="translate(275.161,-224.356)">
+			<title>path6285</title>
+			<path d="M3.62 790.19 L0 792 C0.58 790.87 0.58 789.52 0 788.38 L3.62 790.19 Z" class="st10"/>
+		</g>
+		<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-introduction/">
+			<g id="group388-811" transform="translate(417.091,-744.368)" v:mID="388" v:groupContext="group">
+				<title>Sheet.388</title>
+				<g id="group389-812" v:mID="389" v:groupContext="group">
+					<title>Sheet.389</title>
+					<a xlink:href="http://azure.microsoft.com/ja-jp/documentation/articles/hdinsight-introduction/">
+						<g id="group390-813" v:mID="390" v:groupContext="group">
+							<title>Sheet.390</title>
+							<g id="shape391-814" v:mID="391" v:groupContext="shape">
+								<title>path5707</title>
+								<path d="M0 774.34 L0 792 L70.63 792 L70.63 774.34 L0 774.34 Z" class="st5"/>
+							</g>
+						</g>
+					</a>
+					<g id="shape392-816" v:mID="392" v:groupContext="shape" transform="translate(7.57233,-0.381881)">
+						<title>text5709</title>
+						<desc>What is Hadoop on HDInsight ?</desc>
+						<v:userDefs/>
+						<v:textBlock v:margins="rect(0,0,0,0)"/>
+						<v:textRect cx="30.1059" cy="784.037" width="60.22" height="15.9263"/>
+						<rect x="0" y="776.074" width="60.2118" height="15.9263" class="st2"/>
+						<text x="1.92" y="782.54" class="st6" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>HDInsight での Hadoop <tspan
+									x="13.78" dy="1.2em" class="st4">とは</tspan>何ですか?</text>					</g>
+				</g>
+			</g>
+		</a>
+	</g>
+</svg>

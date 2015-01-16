@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Using Offline Data" pageTitle="Mobile Services でのオフライン データの使用 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="Learn how to use Azure Mobile Services to cache and sync offline data in your Windows Store application" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Using offline data sync in Mobile Services" authors="wesmc" manager="dwrede" />
+﻿<properties urlDisplayName="Using Offline Data" pageTitle="Mobile Services でのオフライン データの使用 (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="Azure Mobile Services を使用して、Windows ストア アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Using offline data sync in Mobile Services" authors="wesmc" manager="dwrede" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/25/2014" ms.author="wesmc" />
 

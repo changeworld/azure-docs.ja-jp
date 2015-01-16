@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Get Started with Push" pageTitle="プッシュの使用 (Android) | モバイル デベロッパー センター" metaKeywords="" description="Learn how to use Azure Mobile Services to send push notifications to your Android .Net app." metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="ricksal" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Get Started with Push" pageTitle="プッシュの使用 (Android) | モバイル デベロッパー センター" metaKeywords="" description="Azure Mobile Services を使用して Android .Net アプリにプッシュ通知を送信する方法について説明します。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="ricksal" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="09/26/2014" ms.author="ricksal" />
 

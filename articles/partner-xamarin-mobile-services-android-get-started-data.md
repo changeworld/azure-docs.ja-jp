@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (Xamarin.Android) - Azure Mobile Services" metaKeywords="Azure Xamarin.Android データ, Azure モバイル サービス データ" description="Learn how to store and access data from your Azure Mobile Services Xamarin.Android app." metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Get started with data in Mobile Services" documentationCenter="Mobile" authors="donnam" manager="dwrede" services="mobile-services" />
+﻿<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (Xamarin.Android) - Azure Mobile Services" metaKeywords="Azure Xamarin.Android データ, Azure モバイル サービス データ" description="Azure Mobile Services Xamarin.Android アプリからのデータを保存する方法、およびデータにアクセスする方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Get started with data in Mobile Services" documentationCenter="Mobile" authors="donnam" manager="dwrede" services="mobile-services" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-xamarin-android" ms.devlang="dotnet" ms.topic="article" ms.date="09/24/2014" ms.author="donnam" />
 

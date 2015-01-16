@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Accessing Azure Active Directory Graph Information" pageTitle="Azure Active Directory Graph 情報へのアクセス (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="Learn how to access Azure Active Directory information using the Graph API in your Windows Store application." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Accessing Azure Active Directory Graph Information" authors="wesmc" manager="dwrede" />
+﻿<properties urlDisplayName="Accessing Azure Active Directory Graph Information" pageTitle="Azure Active Directory Graph 情報へのアクセス (Windows ストア) | モバイル デベロッパー センター" metaKeywords="" description="Windows ストア アプリケーションで、Graph API を使用して Azure Active Directory の情報にアクセスする方法について説明します。" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Accessing Azure Active Directory Graph Information" authors="wesmc" manager="dwrede" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/29/2014" ms.author="wesmc" />
 
