@@ -1,20 +1,20 @@
 新しいモバイル サービスを作成するには、次のステップに従います。
 
-1.  [管理ポータル][管理ポータル]にログインします。
+1.  [管理ポータル]にログインします。
 
 2.  ナビゲーション ウィンドウの下部にある **[新規]** をクリックします。
 
-    ![][0]
+	![](./media/mobile-services-dotnet-backend-create-new-service/plus-new.png)
 
 3.  **[コンピューティング]**、**[モバイル サービス]** の順に展開し、**[作成]** をクリックします。
 
-    ![][1]
+	![](./media/mobile-services-dotnet-backend-create-new-service/mobile-create.png)
 
     **[新しいモバイル サービス]** ダイアログ ボックスが表示されます。
 
 4.  **[モバイル サービスの作成]** ページで、**[無料の 20 MB SQL データベースの作成]** を選択し、**[.NET]** ランタイムを選択してから、**[URL]** テキストボックスに新しいモバイル サービスのサブドメイン名を入力して、名前が確認されるまで待ちます。名前の確認が完了したら、右矢印ボタンをクリックして次のページに進みます。
 
-    ![][2]
+	![](./media/mobile-services-dotnet-backend-create-new-service/mobile-create-page1.png)
 
     **[データベースの設定の指定]** ページが表示されます。
 
@@ -24,7 +24,7 @@
 
 5.  **[名前]** ボックスに新しいデータベースの名前を入力し、**[ログイン名]** ボックスに、新しい SQL データベース サーバーの管理者ログイン名を入力します。パスワードを入力および確認入力し、チェック ボタンをクリックして処理を完了します。
 
-    ![][3]
+	![](./media/mobile-services-dotnet-backend-create-new-service/mobile-create-page2.png)
 
     <div class="dev-callout"> 
 <b>注</b> 
@@ -34,9 +34,6 @@
 これで、モバイル アプリケーションで使用できる新しいモバイル サービスが作成されました。
 
 
-
+<!-- URLs. -->
   [管理ポータル]: https://manage.windowsazure.com/
-  [0]: ./media/mobile-services-dotnet-backend-create-new-service/plus-new.png
-  [1]: ./media/mobile-services-dotnet-backend-create-new-service/mobile-create.png
-  [2]: ./media/mobile-services-dotnet-backend-create-new-service/mobile-create-page1.png
-  [3]: ./media/mobile-services-dotnet-backend-create-new-service/mobile-create-page2.png
+
