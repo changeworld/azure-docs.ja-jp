@@ -13,7 +13,7 @@
 ## <a name="register-scripts"></a>スクリプトを登録する
 クイック スタート アプリケーションでは、データの読み取りおよび挿入を実行します。このため、TodoItem テーブルにそのような操作を実行するためのスクリプトを登録する必要があります。
 
-1. [Azure の管理ポータル]にログオンし、**[Mobile Services]** をクリックして、アプリケーションをクリックします。 
+1. [Azure 管理ポータル] にログオンし、**[モバイル サービス]** をクリックして、アプリケーションをクリックします。 
 
    	![][0]
 
@@ -39,7 +39,7 @@
     </div>
 
 
-5. 手順 3. および 4. を繰り返し、既存の**読み取り**操作を以下の関数で置き換えます。
+5. 手順 3. および 4. を繰り返し、既存の **読み取り** 操作を以下の関数で置き換えます。
 
         function read(query, user, request) {
            query.where({ userId: user.userId });    
@@ -50,19 +50,19 @@
 
 ## アプリケーションをテストする
 
-1. Visual Studio 2012 Express for Windows 8 で、[認証の使用]に関するチュートリアルを実行したときに変更したプロジェクトを開きます。
+1. Visual Studio 2012 Express for Windows 8 で、[認証の使用] に関するチュートリアルを実行したときに変更したプロジェクトを開きます。
 
 2. F5 キーを押してアプリケーションを実行し、選択した ID プロバイダーでログオンします。 
 
    	このとき、前のチュートリアルで TodoItem テーブルに項目を挿入していても、項目が返されることはない点に注意してください。このようなことが起こるのは、その項目がユーザー ID 列のない状態で挿入されており、ユーザー ID の値が null になっているためです。
 
-3. そのアプリケーションで、**[Insert a TodoItem]** にテキストを入力し、**[Save]** をクリックします。
+3. そのアプリケーションで、**[Insert a TodoItem]** にテキストを入力し、**[保存]** をクリックします。
 
    	![][3]
 
    	この操作によって、モバイル サービスの TodoItem テーブルにテキストおよびユーザー ID が挿入されます。新しい項目に正しいユーザー ID が設定されたため、モバイル サービスでその項目が返され、2 番目の列に表示されるようになります。
 
-5. **管理ポータル**の [Todoitem][Azure Management Portal] テーブルに戻り、**[参照]** をクリックして、新しく追加された項目に対してユーザー ID の値が設定されたことを確認します。
+5. [管理ポータル][Azure Management Portal] の **todoitem** テーブルに戻り、**[参照]** をクリックして、新しく追加された項目に対してユーザー ID の値が設定されているかどうかを確認します。
 
 6. (省略可能) ログイン アカウントがほかにある場合には、ユーザーがそれぞれ自分のデータのみを閲覧できる状態になっていることを確認できます。これにはまず、アプリケーションを終了 (Alt + F4) して再度実行します。ログイン資格情報の入力を求めるダイアログが表示されたら別のログインを入力し、前のアカウントで入力した項目が表示されないことを確認してください。 
 
@@ -73,7 +73,7 @@
 * [データの使用]
   <br/>Mobile Services を使用してデータの格納およびクエリを実行する方法について説明します。
 
-* [プッシュ通知の使用] 
+* [プッシュ通知の使用]
   <br/>アプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
 * [モバイル サービスのサーバー スクリプト リファレンス]
@@ -92,7 +92,7 @@
 <!-- URLs. -->
 [Windows プッシュ通知および Live Connect]: http://go.microsoft.com/fwlink/p/?LinkID=257677
 [モバイル サービスのサーバー スクリプト リファレンス]: http://go.microsoft.com/fwlink/p/?LinkId=262293
-[マイ アプリ ダッシュボード]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[マイ アプリ ダッシュ ボード]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started/#create-new-service
 [データの使用]: /ja-jp/documentation/articles/mobile-services-windows-store-javascript-get-started-data/
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-js
@@ -100,3 +100,5 @@
 [JavaScript と HTML]: mobile-services-win8-javascript/
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
+
+<!--HONumber=35.2-->

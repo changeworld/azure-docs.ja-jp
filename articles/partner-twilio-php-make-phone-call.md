@@ -1,20 +1,18 @@
-﻿<properties title="How to make a phone call from Twilio (PHP) - Azure" pageTitle="Twilio から通話する方法 (PHP) - Azure" metaKeywords="Azure PHP Twilio, Azure Twilio, Azure 通話, Azure twilio, Azure SMS, Azure SMS, Azure 音声通話, azure 音声通話, Azure テキスト メッセージ, Azure テキスト メッセージ, PHP twilio Azure" description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。サンプルは PHP アプリケーション用です。" documentationCenter="PHP" services="" solutions="" videoId="" scriptId="" authors="MicrosoftHelp@twilio.com; robmcm" manager="twilio" editor="mollybos" />
+﻿<properties title="How to make a phone call from Twilio (PHP) - Azure" pageTitle="Twilio を使用して通話する方法 (Java) -  Azure" metaKeywords="Azure PHP Twilio,  Azure Twilio, Azure 電話, Azure twilio, Azure SMS, Azure SMS, Azure 音声通話, azure 音声通話, Azure テキスト メッセージ, Azure テキスト メッセージ, PHP twilio Azure" description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。サンプルは PHP アプリケーション用です。" documentationCenter="PHP" services="" solutions="" videoId="" scriptId="" authors="MicrosoftHelp@twilio.com; robmcm" manager="twilio" editor="mollybos" />
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="01/01/1900" ms.author="MicrosoftHelp@twilio.com; robmcm" />
+<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="PHP" ms.topic="article" ms.date="11/25/2014" ms.author="MicrosoftHelp@twilio.com; robmcm" />
 
 # Azure 上の PHP アプリケーションで Twilio を使用して通話する方法 
 
-次の例では、Azure でホストされる PHP Web ページから Twilio を使用して通話する方法を示しています。次のスクリーンショットに示すように、作成されたアプリケーションは通話に関する値の入力をユーザーに求めます。
+次の例では、Azure でホストされる PHP Web ページから Twilio を使用して通話する方法を示しています。次のスクリーン ショットに示すように、作成されたアプリケーションは通話に関する値の入力をユーザーに求めます。
 
 ![Azure Call Form Using Twilio and PHP][twilio_php]
 
 このトピックでコードを使用するためには次の操作を行う必要があります。
 
-1. Twilio アカウント認証トークンを取得します。Twilio を利用し始める前に、[http://www.twilio.com/pricing][twilio_pricing] で価格を検討します。試用アカウントには、[https://www.twilio.com/try-twilio][try_twilio] でサインアップできます。Twilio から提供される API については、[http://www.twilio.com/api][twilio_api] を参照してください。
-2. 電話番号を発信元 ID として Twilio で確認します。電話番号を確認する方法については、[https://www.twilio.com/user/account/phone-numbers/verified#][verify_phone] を参照してください。既存の番号を使用する代わりに、Twilio 電話番号を購入することができます。
-この例では、有効な電話番号を **callform.php** の **From** の値として使用します (後で説明)。
-3. PHP 用 Twilio ライブラリを入手します。このライブラリは GitHub ([https://github.com/twilio/twilio-php][twilio_php_github]) からダウンロードするか、PEAR パッケージとしてインストールすることができます。詳細については、[https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme] を参照してください。
-4. Azure SDK for PHP をインストールします。SDK の概要とそのインストール手順については、[Azure SDK for PHP の設定に関する記事][setup_php_sdk]を参照してください。
+1. Twilio アカウントと認証トークンを取得します。Twilio を利用し始める前に、[http://www.twilio.com/pricing][twilio_pricing] で価格を検討します。試用アカウントには、[https://www.twilio.com/try-twilio][try_twilio] でサインアップできます。Twilio から提供される API の詳細については、[http://www.twilio.com/api][twilio_api] を参照してください。
+2. PHP 用 Twilio ライブラリを入手します。このライブラリは GitHub ([https://github.com/twilio/twilio-php][twilio_php_github]) からダウンロードするか、PEAR パッケージとしてインストールすることができます。詳細については、[https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme] を参照してください。
+3. Azure SDK for PHP をインストールします。SDK の概要とそのインストール手順については、[Azure SDK for PHP の設定に関する記事][setup_php_sdk]を参照してください。
 
 ## 通話用の Web フォームの作成
 
@@ -51,7 +49,7 @@
 	</html>
 
 ## 通話用のコードの作成
-次のコードでは、**callform.html** によって表示されるフォームをユーザーが送信すると呼び出される、Web ページ (**makecall.php**) を作成する方法を示しています。次のコードによって通話メッセージが作成され、通話が生成されます (このコードで **$sid** と **$token** に設定しているプレースホルダー値は、Twilio アカウントと認証トークンに置き換えてください)。
+次のコードでは、**callform.html** によって表示されるフォームをユーザーが送信すると呼び出される、Web ページ (**makecall.php**) を作成する方法を示しています。次のコードによって通話メッセージが作成され、通話が生成されます(このコードで **$sid** と **$token** に設定しているプレースホルダー値は、Twilio アカウントと認証トークンに置き換えてください)。
 
     <html>
 	<head><title>Making call...</title></head>
@@ -96,9 +94,9 @@
 ## 次のステップ
 Azure 上の PHP で Twilio を使用した基本機能を示すために、このコードが用意されました。運用環境で Azure に展開する前に、エラー処理やその他の機能をさらに追加することができます。次に例を示します。
 
-*  Web フォームを使用する代わりに、Azure ストレージ BLOB または SQL データベースを使用して、電話番号と通話テキストを保存できます。PHP で Azure ストレージ BLOB を使用する方法の詳細については、[PHP アプリケーションでの Azure ストレージの使用に関するページ][howto_blob_storage_php]を参照してください。PHP での SQL データベースの使用については、[PHP アプリケーションでの SQL データベースの使用に関するページ][howto_sql_azure_php]を参照してください。
+* Web フォームを使用する代わりに、Azure ストレージ BLOB または SQL データベースを使用して、電話番号と通話テキストを保存できます。PHP で Azure ストレージ BLOB を使用する方法の詳細については、[PHP アプリケーションでの Azure ストレージの使用に関するページ][howto_blob_storage_php]を参照してください。PHP で SQL データベースを使用する方法の詳細については、[PHP アプリケーションでの SQL データベースの使用に関するページ][howto_sql_azure_php]を参照してください。
 * **makecall.php** コードで、Twilio から提供される URL ([http://twimlets.com/message][twimlet_message_url]) を使用して、通話の次の動作を Twilio に指示する TwiML (Twilio マークアップ言語) 応答が返されるようにします。たとえば、返される TwiML 応答に `<Say>` 動詞を含めて、通話受信者に対してテキストが読み上げられるようにできます。Twilio から提供される URL を使用する代わりに、独自のサービスを作成して Twilio の要求への応答を返すことができます。詳細については、「[PHP で音声および SMS 機能に Twilio を使用する方法][howto_twilio_voice_sms_php]」を参照してください。TwiML の詳細については、[http://www.twilio.com/docs/api/twiml][twiml] で確認できます。`<Say>` を始めとする Twilio 動詞の詳細については、[http://www.twilio.com/docs/api/twiml/say][twilio_say] で確認できます。
-* また、[https://www.twilio.com/docs/security][twilio_docs_security] の Twilio に関するセキュリティ ガイドラインを参照してください。
+* また、[https://www.twilio.com/docs/security][twilio_docs_security] の Twilio に関するセキュリティ ガイドラインも参照してください。
 
 Twilio の詳細については、[https://www.twilio.com/docs][twilio_docs] を参照してください。
 
@@ -130,3 +128,5 @@ Twilio の詳細については、[https://www.twilio.com/docs][twilio_docs] を
 [website-ftp]: https://www.windowsazure.com/ja-jp/develop/php/tutorials/website-w-mysql-and-ftp/
 [website-webmatrix]: https://www.windowsazure.com/ja-jp/develop/php/tutorials/website-w-mysql-and-webmatrix/
 [twilio_php_github]: https://github.com/twilio/twilio-php
+
+<!--HONumber=35.2-->

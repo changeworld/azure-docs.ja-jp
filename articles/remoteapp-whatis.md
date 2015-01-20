@@ -1,56 +1,63 @@
-﻿<properties title="What is RemoteApp?" pageTitle="RemoteApp とは" description="Azure RemoteApp について説明します。" metaKeywords="" services="" solutions="" documentationCenter="" authors="elizapo" manager="kathyw" />
+﻿<properties title="What is RemoteApp?" pageTitle="RemoteApp とは何ですか。" description="Azure RemoteApp について説明します。" metaKeywords="" services="" solutions="" documentationCenter="" authors="elizapo" manager="kathyw" />
 
-<tags ms.service="remoteapp" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="09/05/2014" ms.author="elizapo" ms.manager="kathyw" />
+<tags ms.service="remoteapp" ms.workload="tbd" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="12/12/2014" ms.author="elizapo" ms.manager="mbaldwin" />
 
 #Azure RemoteApp とは
+ 
+Azure RemoteApp は、Azure をサポートするリモート デスクトップ サービスによって内部設置型の Microsoft の RemoteApp プログラムの機能を提供します。Azure RemoteApp は、多くのさまざまなユーザーのデバイスのアプリケーションにセキュリティで保護されたリモート アクセスを提供します。
 
-Azure RemoteApp は、リモート デスクトップ サービスを基盤とし、内部設置型の Microsoft RemoteApp プログラムの機能を Azure で使用できます。Azure RemoteApp では、多様なユーザー デバイスからアプリケーションに対して、セキュリティで保護されたリモート アクセスを提供します。
+RemoteApp を Azure に移動すると、複雑な内部設置型の構成に煩わされることなく、ストレージ、スケーラビリティ、および Azure へのグローバルなアクセスが利用できます。Microsoft が Azure に提供する信頼性の保証されたメンテナンスにより、お客様はビジネスの使用に最適なアプリを作成するといった、より重要な問題に集中することができます。Azure RemoteApp のもう 1 つの利点は、アクセスのしやすさにあります - ユーザーは、Windows、iOS、Mac OS X、および Android デバイスから RemoteApp プログラムにアクセスできます。ユーザーは任意の環境でアプリを使用することができ、お客様は Azure 管理ポータルを使用してそれらのアプリを管理することができます。 
 
-RemoteApp を Azure に移行する場合に、複雑な内部設置型の構成について心配することなく、Azure のストレージ、スケーラビリティ、およびグローバルなアクセスという利点を活用できます。Microsoft が Azure の保守を実施するため、Azure の信頼性が確保され、お客様はビジネスにとって最適なアプリケーションを作成するなど、より重要な問題に焦点を当てる時間を手に入れることができます。Azure RemoteApp の別の利点は、アクセスのしやすさです。ユーザーは、Windows、iOS、Mac OS X、および Android デバイスから RemoteApp プログラムにアクセスできます。ユーザーは、希望する環境でアプリケーションを使用できる一方、管理者は Azure の管理ポータルを使用して、それらのアプリケーションを管理できます。 
+RemoteApp の詳細についてお読みになるか、または既に説明した「[今すぐ試す](http://azure.microsoft.com/ja-jp/services/remoteapp/)」を参照してください。
 
-RemoteApp の詳細については、以下を参照してください。既に説明に納得いただいた場合は、[今すぐお試し](http://azure.microsoft.com/ja-jp/services/remoteapp/)になれます。
+Azure の RemoteApp について質問はありますか。「[FAQ (よく寄せられる質問)](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-faq/)」を参照してください。
 
-Azure RemoteApp は、[Microsoft の仮想デスクトップ インフラストラクチャ](http://www.microsoft.com/ja-jp/server-cloud/products/virtual-desktop-infrastructure/explore.aspx)の一部です。
+Azure RemoteApp は [Microsoft 仮想デスクトップ インフラストラクチャ](http://www.microsoft.com/ja-jp/server-cloud/products/virtual-desktop-infrastructure/explore.aspx)の一部です。
 
-**新しい情報!** Azure RemoteApp について詳細を知りたいですか。または、実際に検証する準備ができていますか。毎週開催される[専門家にたずねるウェビナー](https://azureinfo.microsoft.com/US-Azure-WBNR-FY15-11Nov-AzureRemoteAppAskTheExperts-Registration-Page.html)に参加してください。
+**新規 !** Azure RemoteApp の詳細または RemoteApp の大規模な検証については、週単位の「[ask the experts webinar (エキスパートに質問するウェビナー)](https://azureinfo.microsoft.com/US-Azure-WBNR-FY15-11Nov-AzureRemoteAppAskTheExperts-Registration-Page.html)」を参照してください。
 
-##RemoteApp デプロイメント オプション
-RemoteApp のデプロイメントには、次の 2 種類の方法があります。
+##RemoteApp の展開オプション
+RemoteApp のコレクションには、次の 2 種類があります:
 
 
-- **クラウド デプロイメント**では、Azure クラウドがホストし、プログラムのすべてのデータがクラウドに格納されます。ユーザーは、Microsoft アカウントや Azure Active Directory と同期またはフェデレーションされた企業の資格情報でログインして、アプリケーションにアクセスできます。
-- **ハイブリッド デプロイメント**では、Azure クラウドがホストし、Azure クラウドにデータが格納されるだけでなく、ユーザーはローカル ネットワークに格納されたデータとリソースにもアクセスできます。ユーザーは、Azure Active Directory と同期またはフェデレーションされた企業の資格情報でログインして、アプリケーションにアクセスできます。
+- **クラウド コレクション**は、Azure クラウドにホストされ、プログラムのすべてのデータがクラウドに格納されます。ユーザーは、Microsoft アカウントまたは Azure Active Directory と同期また連携した企業資格情報でログインしてアプリにアクセスできます。
+- **ハイブリッド コレクション** では、Azure クラウドにホストされ、データはクラウドに格納されますが、ユーザーはローカル ネットワークに格納されたデータとリソースにアクセスすることもできます。ユーザーは、Azure Active Directory と同期また連携した企業資格情報でログインしてアプリにアクセスできます。
 
-###クラウド デプロイメント
+###クラウド コレクション
 
-[クラウドによる RemoteApp のデプロイメント](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-cloud-deployment/)では、スタンドアロン方式によりアプリケーションをクラウドでホストできます。クラウド デプロイメントは、ローカル ネットワークに接続するのではなく、Azure クラウド内にのみ存在します。
+[クラウド RemoteApp コレクション](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-cloud-deployment/)はクラウドのアプリケーションをホストするスタンドアロンの方法を提供します。クラウド コレクションは、ローカル ネットワークに接続するのではなく、Azure のクラウドにのみ存在します。
 
-RemoteApp のプレビューの一部として、Office 2013 アプリをプレインストールし、ユーザーと共有できる状態で提供します。利用可能なソフトウェアを活用すると、サービスをすばやくプロビジョニングできます。
+RemoteApp 評価版の一部として、Office 365 ProPlus または Office 2013 アプリをプレインストールしていますので、すぐにユーザーと共有できます。利用可能なソフトウェアを活用する場合は、サービスをすばやくプロビジョニングできます。
 
-Office 2013 アプリを搭載したクラウド デプロイメントを使用するその他の利点として、アプリケーションと (サービスが基盤とする) オペレーティング システムが定期的な更新を通じて常に最新の状態で維持され、Microsoft のマルウェア対策のエンドポイント保護により、継続的な防御が提供されることが挙げられます。エンド ユーザーは、アプリへのアクセスに Microsoft アカウントまたは企業の資格情報を使用します。管理者が注意しなければならないのは、どのユーザーが、どのアプリケーションにアクセスが必要であるかを把握することだけです。
+クラウド コレクションを Office アプリと使用する他の利点として、アプリとオペレーティング システム (サービスが組み込まれているシステム) は定期的な更新を通じて常に最新の状態に保たれ、Microsoft Anti-Malware Endpoint Protection は継続的な防衛を提供します。エンドユーザーは、Microsoft アカウントまたは企業の資格情報を使用してアプリにアクセスします。管理者として注意することは、誰がどのアプリケーションにアクセスしているのかを確認することだけです。
 
-また、クラウド デプロイメントを作成して、ユーザー向けのカスタム アプリケーションまたは一連のアプリケーションを共有することもできます。このことは、デプロイメントを作成するときに、(RemoteApp へのアプリケーションの発行方法を定義する) [カスタム テンプレート イメージを作成](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-custom-image/)し、(Office 2013 のイメージではなく) 作成したイメージを選択するだけで可能です。 
+またクラウド コレクションを作成してカスタム アプリケーションまたはユーザー用のアプリケーション セットを共有することができます。そのためには、コレクションを作成するときに、[カスタム テンプレート イメージの作成し](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-custom-image/) (アプリを RemoteApp に公開する方法)、そのイメージ (Office 2013 のイメージではなく) を選択する必要があります。 
 
-###ハイブリッド デプロイメント
-[ハイブリッドの RemoteApp デプロイメント](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-hybrid-deployment/)では、ローカル ネットワーク上でユーザーに一連のカスタム アプリケーションと、データやリソースへのアクセスを提供できます。クラウド デプロイメントで使用するカスタム イメージと違って、ハイブリッド デプロイメント用に作成するイメージは、ドメインに参加する環境でアプリケーションを実行し、ローカル ネットワークとデータへのフル アクセスを許可します。
+###ハイブリッド コレクション
+[ハイブリッド RemoteApp コレクション](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-hybrid-deployment/)では、ユーザーにカスタム アプリケーション のセットとローカル ネットワーク内のデータとリソースへのアクセスを提供することができます。クラウド コレクションと使用されるカスタム イメージとは異なり、ハイブリッド コレクションに作成するイメージは、ドメインに参加した環境でアプリを実行し、ローカル ネットワークとデータへのフル アクセスを付与します。
 
-Active Directory を Azure Active Directory に統合すると (ディレクトリ同期を使用)、ユーザーは企業の資格情報を使用して、アプリケーションおよびデータにアクセスできます。Active Directory の勤務先のアカウントを使用すると、企業のポリシーをクラウドに反映して、RemoteApp を通じて提供されるアプリを制御できます。
+Active Directory を Azure Active Directory と統合すると (DirSync を使用)、ユーザーは企業の資格情報を使用してアプリとデータにアクセスできるようになります。Active Directory で仕事用アカウントを使用する場合は、企業のポリシーをクラウドで使用して RemoteApp を通じて提供するアプリを管理することができます。
 
-RD セッションのホスト役割サービスを使用した Windows Server 2012 R2 でテンプレート イメージを作成する限りは、ユーザーに発行するアプリケーションにほとんど制限がありません。アプリケーションがそのテンプレート イメージの環境で正しく機能する場合、エンド ユーザーはそれらのアプリケーションに RemoteApp を通じてアクセスできます。 
+RD セッション ホストの役割サービスで Windows Server 2012 R2 にテンプレート イメージを構築する場合は、ユーザーに公開するアプリにいくつかの制限があります。アプリはが、そのテンプレート イメージの環境で正しく機能する場合は、エンドユーザーはそれらに RemoteApp を介してアクセスできます。 
 
-###デプロイメントの更新
-ハイブリッド デプロイメントとクラウド デプロイメントの主な違いの 1 つに、ソフトウェアの更新の処理方法があります。クラウド デプロイメントでプレインストールされている Office 2013 のイメージを使用している場合は、更新について心配する必要はありません。このサービスは自律的に維持され、継続的にアプリケーションとオペレーティング システムの両方に更新を展開します。
+###コレクションの更新
+ハイブリッド コレクションとクラウドのコレクション間の主な違いの 1 つは、ソフトウェア更新の処理方法です。プレインストールの Office 365 ProPlus または Office 2013 のイメージを使用するクラウド コレクションでは、更新プログラムについて心配する必要はありません。サービスはそれ自体が継続的に保守され、更新プログラムはアプリとオペレーティング システムの両方に適用されます。
 
-ハイブリッド デプロイメントと、カスタム テンプレート イメージを使用するクラウド デプロイメントの場合、イメージとアプリケーションの維持は管理者が担当します。ドメインに参加しているイメージの場合、Windows Update、グループ ポリシー、System Center などのツールを使用して更新を制御できます。
+カスタム テンプレート イメージを使用するクラウド コレクションとハイブリッド コレクションでは、イメージとアプリを保守する必要があります。ドメインに参加しているイメージでは、Windows Update、グループ ポリシー、または System Center などのツールを使用して更新プログラムを制御できます。
 
-カスタム テンプレート イメージを更新した後は、Azure のクラウドに新しいイメージをアップロードし、新しいイメージを使用するようデプロイメントを更新します (RemoteApp の [クイック スタート] ページまたはダッシュ ボードから実行できます)。
+カスタム テンプレート イメージの更新後に、Azure クラウドに新しいイメージをアップロードし、新しいイメージを使用するコレクションを更新します。([RemoteApp のクイック スタート] ページまたはダッシュ ボードから実行できます。)
 
 ##サポートされている RemoteApp クライアント
-Azure の RemoteApp のプレビュー リリースの一部として、Windows および Windows RT 用の新しい Microsoft RemoteApp クライアント アプリケーションと、iOS および Android 用の Microsoft リモート デスクトップ アプリケーションに更新プログラムをリリースしました。ユーザーは、モバイル デバイスまたはコンピューティング デバイスでこれらのアプリケーションを使用して、新しい RemoteApp プログラムにアクセスできます。
+Azure RemoteApp は、Windows および Windows RT の RemoteApp クライアント アプリケーションと Mac、iOS および Android 用の Microsoft のリモート デスクトップ アプリでサポートされています。ユーザーは、モバイル デバイスまたはコンピュータ デバイスでこれらのアプリを使用して、新しい RemoteApp プログラムにアクセスできます。
 
 ##次のステップ
-まずは、実際に使ってみてください。次の記事が、RemoteApp の使用に役立ちます。
+始めましょう。実際に使ってみるこれらの記事は RemoteApp を開始するために役立ちます:
 
 - [RemoteApp のカスタム テンプレート イメージの作成方法](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-custom-image/)
-- [RemoteApp のクラウドのデプロイメントの作成方法](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-cloud-deployment/)
-- [RemoteApp のハイブリッド デプロイメントの作成方法](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-hybrid-deployment/)
+- [RemoteApp のクラウド コレクションの作成方法](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-cloud-deployment/)
+- [RemoteApp のクラウド ハイブリッド コレクションの作成方法](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-create-hybrid-deployment/)
+- [How does licensing work in RemoteApp? (RemoteApp のライセンスはどのような仕組みになっていますか。)](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-licensing/)
+- [Best practices for using Azure RemoteApp (Azure RemoteApp を使用するためのベスト プラクティス)](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-bestpractices/)
+- [Azure RemoteApp よく寄せられる質問](http://azure.microsoft.com/ja-jp/documentation/articles/remoteapp-faq/)
+
+<!--HONumber=35.2-->

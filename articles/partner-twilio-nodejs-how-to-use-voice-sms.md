@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="Twilio Voice and SMS Service" pageTitle="Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="nodejs" title=" VoIP" authors="MicrosoftHelp@twilio.com" solutions="" manager="twilio" editor="" />
+﻿<properties urlDisplayName="Twilio Voice and SMS Service" pageTitle="Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用" metaKeywords=""  metaCanonical="" services="" documentationCenter="nodejs" title=" VoIP" authors="MicrosoftHelp@twilio.com" solutions="" manager="twilio" editor="" />
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="01/01/1900" ms.author="MicrosoftHelp@twilio.com" />
+<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="11/25/2014" ms.author="MicrosoftHelp@twilio.com" />
 
 
 # Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用
@@ -20,11 +20,11 @@
 <a id="whatis"/>
 ## Twilio とは
 
-Twilio は、開発者が簡単に音声通話の発着信処理、テキスト メッセージの送受信、およびブラウザー ベースでネイティブのモバイル アプリケーションへの VoIP 通話の埋め込みができるようにする、API プラットフォームです。ここでは、詳細について説明する前に、そのしくみを簡単に解説します。
+Twilio は、開発者が簡単に音声通話の発着信処理、テキスト メッセージの送受信、およびブラウザー ベースでネイティブのモバイル アプリケーションへの VoIP 通話の埋め込みができるようにする API プラットフォームです。ここでは、詳細について説明する前に、そのしくみを簡単に解説します。
 
 ### 通話とテキスト メッセージの受信
 
-Twilio を使用すると、開発者は[プログラム可能な電話番号を購入][purchase_phone]できます。この番号は、通話およびテキスト メッセージの送信と受信の両方に使用できます。Twilio 番号が受信通話またはテキストを受け取ると、Twilio は Web アプリケーションに HTTP POST または GET 要求を送信し、通話またはテキストの処理方法に関する命令を求めます。サーバーは Twilio の HTTP 要求に [TwiML][twiml] で応答します。これは、通話またはテキストの処理方法についての命令を含む XML タグの単純なセットです。TwiML の例は、すぐ後で示します。
+Twilio を使用すると、開発者は[プログラム可能な電話番号を購入][purchase_phone] できます。この番号は、通話およびテキスト メッセージの送信と受信の両方に使用できます。Twilio 番号が受信通話またはテキストを受け取ると、Twilio は Web アプリケーションに HTTP POST または GET 要求を送信し、通話またはテキストの処理方法に関する命令を求めます。サーバーは Twilio の HTTP 要求に [TwiML][twiml] で応答します。これは、通話またはテキストの処理方法についての命令を含む XML タグの単純なセットです。TwiML の例は、すぐ後で示します。
 
 ### 通話の発信とテキスト メッセージの送信
 
@@ -32,12 +32,12 @@ Twilio Web サービス API に対する HTTP 要求を作成することで、�
 
 ### UI コード (JavaScript、iOS、または Android) への VoIP 機能の埋め込み
 
-Twilio にはクライアント側 SDK が用意されており、デスクトップ Web ブラウザー、iOS アプリ、または Android アプリを VoIP 電話にすることができます。この記事では、主にブラウザーで VoIP 通話を使用する方法について説明します。ブラウザーで実行される Twilio JavaScript SDK のほかに、サーバー側アプリケーション (node.js アプリケーション) を使用して、JavaScript クライアントに "機能トークン" を発行する必要があります。node.js での VoIP の使用については、[Twilio 開発ブログ][voipnode]で詳細を読むことができます。
+Twilio にはクライアント側 SDK が用意されており、デスクトップ Web ブラウザー、iOS アプリ、または Android アプリを VoIP 電話にすることができます。この記事では、主にブラウザーで VoIP 通話を使用する方法について説明します。ブラウザーで実行される Twilio JavaScript SDK のほかに、サーバー側アプリケーション (node.js アプリケーション) を使用して、JavaScript クライアントに "機能トークン" を発行する必要があります。node.js での VoIP の使用については、[Twilio 開発ブログ][voipnode] で詳細を読むことができます。
 
 <a id="signup"/>
 ## Twilio へのサインアップ (Microsoft ディスカウント)
 
-Twilio サービスを使用する前に、まず[アカウントにサインアップ][signup]する必要があります。Microsoft Azure のお客様は、特別割引をご利用いただけます。[こちらからサインアップ][signup]してください。
+Twilio サービスを使用する前に、まず、[アカウントにサインアップ][signup] する必要があります。Microsoft Azure のお客様は特別割引をご利用いただけます。[こちらからサインアップ][signup] してください。
 
 <a id="azuresite"/>
 ## node.js Azure Web サイトの作成およびデプロイ
@@ -47,7 +47,7 @@ Twilio サービスを使用する前に、まず[アカウントにサインア
 * まだ Azure アカウントを持っていない場合は、サインアップする
 * Azure 管理コンソールを使用して新しい Web サイトを作成する
 * ソース管理サポートを追加する (git が使用されたことを想定)
-* シンプルな node.js Web アプリケーションと共にファイル `server.js` を作成する
+* シンプルな node.js Web アプリケーションと共にファイル `server.js`  を作成する
 * このシンプルなアプリケーションを Azure にデプロイする
 
 <a id="twiliomodule"/>
@@ -83,24 +83,24 @@ node.js Web サイトを選択し、[構成] リンクをクリックします�
     }
   }
 
-このコードは、一般的な [express Web フレームワーク][express]および EJS テンプレート エンジンと共に、twilio モジュールを依存関係として宣言します。これで設定はすべて終わりました。コードの記述を始めましょう。
+このコードは、一般的な [express Web フレームワーク][express] および EJS テンプレート エンジンと共に、twilio モジュールを依存関係として宣言します。これで設定はすべて終わりました。コードの記述を始めましょう。
 
 <a id="makecall"/>
 ## 発信通話の実行
 
 選択した番号に電話をかける単純なフォームを作成しましょう。server.js を開き、次のコードを入力します。"CHANGE_ME" と記述されている個所は、自分の Azure Web サイトの名前に置き換えてください。
 
-  // Module dependencies
-  var express = require('express'), 
+    // Module dependencies
+    var express = require('express'), 
       path = require('path'), 
       http = require('http'), 
       twilio = require('twilio');
 
-  // Create Express web application
-  var app = express();
+    // Create Express web application
+    var app = express();
 
-  // Express configuration
-  app.configure(function(){
+    // Express configuration
+    app.configure(function(){
       app.set('port', process.env.PORT || 3000);
       app.set('views', __dirname + '/views');
       app.set('view engine', 'ejs');
@@ -110,18 +110,18 @@ node.js Web サイトを選択し、[構成] リンクをクリックします�
       app.use(express.methodOverride());
       app.use(app.router);
       app.use(express.static(path.join(__dirname, 'public')));
-  });
-  app.configure('development', function(){
+    });
+    app.configure('development', function(){
       app.use(express.errorHandler());
-  });
+    });
 
-  // Render an HTML user interface for the application's home page
-  app.get('/', function(request, response) {
+    // Render an HTML user interface for the application's home page
+    app.get('/', function(request, response) {
       response.render('index');
-  });
+    });
 
-  // Handle the form POST to place a call
-  app.post('/call', function(request, response) {
+    // Handle the form POST to place a call
+    app.post('/call', function(request, response) {
       var client = twilio();
       client.makeCall({
           // make a call to this number
@@ -138,10 +138,10 @@ node.js Web サイトを選択し、[構成] リンクをクリックします�
           // Go back to the home page
           response.redirect('/');
       });
-  });
+    });
 
-  // Generate TwiML to handle an outbound call
-  app.post('/outbound_call', function(request, response) {
+    // Generate TwiML to handle an outbound call
+    app.post('/outbound_call', function(request, response) {
       var twiml = new twilio.TwimlResponse();
 
       // Say a message to the call's receiver 
@@ -151,41 +151,41 @@ node.js Web サイトを選択し、[構成] リンクをクリックします�
 
       response.set('Content-Type', 'text/xml');
       response.send(twiml.toString());
-  });
+    });
 
-  // Start server
-  http.createServer(app).listen(app.get('port'), function(){
-    console.log("Express server listening on port " + app.get('port'));
-  });
+    // Start server
+    http.createServer(app).listen(app.get('port'), function(){
+      console.log("Express server listening on port " + app.get('port'));
+    });
 
 次に、"views" という名前のディレクトリを作成します。このディレクトリ内に、次の内容を持つ "index.ejs" という名前のファイルを作成します。
 
-  <!DOCTYPE html>
-  <html>
-  <head>
+    <!DOCTYPE html>
+    <html>
+    <head>
       <title>Twilio Test</title>
       <style>
-      input { height:20px; width:300px; font-size:18px; margin:5px; padding:5px; }
+        input { height:20px; width:300px; font-size:18px; margin:5px; padding:5px; }
       </style>
-  </head>
-  <body>
+    </head>
+    <body>
       <h1>Twilio Test</h1>
       <form action="/call" method="POST">
           <input placeholder="Enter a phone number" name="number"/>
           <br/>
           <input type="submit" value="Call the number above"/>
       </form>
-  </body>
-  </html>
+    </body>
+    </html>
 
-ここで、Web サイトを Azure にデプロイし、ホームを開きます。自分の電話番号をテキスト フィールドに入力し、Twilio 番号からの通話を着信できるはずです。
+ここで、Web サイトを Azure に展開し、ホームを開きます。自分の電話番号をテキスト フィールドに入力し、Twilio 番号からの通話を着信できるはずです。
 
 <a id="sendmessage"/>
 ## SMS メッセージの送信
 
 ここでは、テキスト メッセージの送信ロジックを処理するユーザー インターフェイスとフォームをセットアップします。"server.js" を開いて、最後の "app.post" の呼び出しの後に次のコードを追加します。
 
-  app.post('/sms', function(request, response) {
+    app.post('/sms', function(request, response) {
       var client = twilio();
       client.sendSms({
           // send a text to this number
@@ -202,17 +202,17 @@ node.js Web サイトを選択し、[構成] リンクをクリックします�
           // Go back to the home page
           response.redirect('/');
       });
-  });
+    });
 
 "views/index.ejs" で、最初のフォームの下に、番号とテキスト メッセージを送信するためのもう 1 つのフォームを追加します。
 
-  <form action="/sms" method="POST">
+    <form action="/sms" method="POST">
       <input placeholder="Enter a phone number" name="number"/>
       <br/>
       <input placeholder="Enter a message to send" name="message"/>
       <br/>
       <input type="submit" value="Send text to the number above"/>
-  </form>
+    </form>
 
 アプリケーションを Azure に再デプロイします。今度は、そのフォームを送信し、テキスト メッセージを自分 (または親しい友人) に送ることができるはずです。
 
@@ -243,3 +243,5 @@ Azure で node.js と Twilio を活用してください。
 
 
 
+
+<!--HONumber=35.2-->

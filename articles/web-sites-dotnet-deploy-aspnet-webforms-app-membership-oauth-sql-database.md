@@ -1,4 +1,4 @@
-﻿<properties pageTitle="メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET Web フォーム アプリケーションを Azure の Web サイトにデプロイする" metaKeywords="Azure WebForms Hello World Tutorial, Azure Getting Started with WebForms Tutorial, Azure C# WebForms Hello World Tutorial, SQL Azure C# WebForms Tutorial" description="このチュートリアルでは、SQL Database と連動するセキュリティ保護された ASP.NET 4.5 Web フォームの Web アプリケーションを開発する方法と、このアプリケーションを Azure にデプロイする方法について説明します。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Deploy a secure ASP.NET 4.5 Web Forms app to an Azure Website" authors="erikre"  solutions="" manager="wpickett" editor="mollybos"  />
+﻿<properties pageTitle="メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET Web フォーム アプリケーションを Azure の Web サイトにデプロイする"metakeywords ="Azure WebForms Hello World チュートリアル, WebForms チュートリアル付き Azure 入門, Azure C# WebForms Hello World チュートリアル, SQL Azure C# WebForms チュートリアル" description="このチュートリアルでは、SQL Database と連動するセキュリティ保護された ASP.NET 4.5 Web フォームの Web アプリケーションを開発する方法と、このアプリケーションを Azure にデプロイする方法について説明します。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Deploy a secure ASP.NET 4.5 Web Forms app to an Azure Website" authors="erikre"  solutions="" manager="wpickett" editor="mollybos"  />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="dotnet" ms.topic="article" ms.date="09/25/2014" ms.author="erikre" />
 
@@ -6,7 +6,7 @@
 # メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET Web フォーム アプリケーションを Azure の Web サイトにデプロイする
 
 
-このチュートリアルでは、SQL Database と連動するセキュリティ保護された ASP.NET 4.5 Web フォームの Web アプリケーションを開発する方法と、このアプリケーションを Azure にデプロイする方法について説明します。 
+このチュートリアルでは、SQL データベースと連動するセキュリティ保護された ASP.NET 4.5 Web フォーム Web アプリケーションを開発する方法と、このアプリケーションを Azure にデプロイする方法について説明します。 
 
 >[WACOM.NOTE] 
 このチュートリアルの MVC バージョンを読むには、「[メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC 5 アプリケーションを Azure の Web サイトにデプロイする](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)」を参照してください。
@@ -15,7 +15,7 @@ Azure アカウントは無料で開くことができます。また、まだ V
 
 このチュートリアルは、Microsoft Azure を使用した経験がない読者を対象に作成されています。このチュートリアルを完了すると、クラウド データベースを使用する Web アプリケーションをクラウドで運用できるようになります。
 
-学習内容: 
+学習内容:
 
 - ASP.NET 4.5 Web フォーム プロジェクトを作成し、プロジェクトを Azure Web サイトに発行する方法
 - OAuth および ASP.NET メンバーシップを使用してアプリケーションを保護する方法
@@ -29,7 +29,7 @@ Azure アカウントは無料で開くことができます。また、まだ V
 ![Contacts - Edit Page](./media/web-sites-dotnet-web-forms-secure/SecureWebForms00.png)
 
 >[WACOM.NOTE] 
-このチュートリアルを完了するには、Azure アカウントが必要です。アカウントを持っていない場合は、<a href="/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">MSDN サブスクライバーの特典を有効にする</a>か、<a href="/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">無料評価版にサインアップ</a>してください。
+このチュートリアルを完了するには、Azure アカウントが必要です。アカウントをお持ちでない場合は、 <a href="/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">MSDN サブスクライバーの特典を有効にする、</a> または <a href="/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">無料評価版にサインアップしてください</a>。アカウントにサインアップする前に、Azure Web サイトの使用を開始する場合は、Azure Web サイト <a href="https://trywebsites.azurewebsites.net/">https://trywebsites.azurewebsites.net</a>で、無料で期間限定の ASP.NET スターター サイト を作成できます。クレジット カードは必要ありません。また、支払いも発生しません。
 
 このチュートリアルで取り上げる内容は次のとおりです。
 
@@ -48,13 +48,13 @@ Azure アカウントは無料で開くことができます。また、まだ V
 最初に、Visual Studio 2013 と Azure SDK for .NET をインストールして開発環境を設定します。
 
 1. まだインストールしていない場合は [Visual Studio 2013](http://go.microsoft.com/fwlink/?LinkId=306566) をインストールします。  
-2. [Azure SDK for Visual Studio 2013](http://go.microsoft.com/fwlink/?linkid=324322&clcid=0x409) をインストールします。このチュートリアルでは、Azure SDK for Visual Studio 2013 の前に Visual Studio 2013 をインストールする必要があります。
+2. [Azure SDK for Visual Studio 2013](http://go.microsoft.com/fwlink/?linkid=324322&clcid=0x409) をインストールします。このチュートリアルでは、Azure SDK for Visual Studio 2013 の前に Visual Studio 2013 をインストールする必要があります。  
 
 	>[WACOM.NOTE]  
-マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から 30 分以上) かかる場合があります。  
+	マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から 30 分以上) かかる場合があります。  
 
 3. インストール プログラムの実行または保存を求めるメッセージが表示されたら、**[実行]** をクリックします。
-4. **Web Platform Installer** ウィンドウで、**[インストール]** をクリックし、インストールの手順を進めます。  
+4. **Web Platform Installer** のウィンドウで、**[インストール]** をクリックし、インストールの手順を進めます。  
 	![Web Platform Installer](./media/web-sites-dotnet-web-forms-secure/Intro-SecureWebForms-01.png)  
 
 	>[WACOM.NOTE]  
@@ -63,7 +63,7 @@ Azure アカウントは無料で開くことができます。また、まだ V
 5. **Visual Studio Update 2** をインストールしていない場合は、**[Visual Studio 2013 Update 2](http://www.microsoft.com/download/details.aspx?id=42666)** 以降をダウンロードしてインストールします。  
 
 	>[WACOM.NOTE]  
-	Goggle OAuth 2.0 を使用する、および警告を表示させずに SSL をローカルで使用するには、Visual Studio 2013 Update 2 以降をインストールする必要があります。また、Web フォームのスキャフォールディングを使用するには Update 2 が必要です。  
+	Goggle OAuth 2.0 を使用するには、また、警告を表示させずに SSL をローカルで使用するには、Visual Studio 2013 Update 2 以降をインストールする必要があります。また、Web フォームのスキャフォールディングを使用するには Update 2 が必要です。  
 
 インストールが完了すると、開発に必要なツールがすべて揃います。
 
@@ -71,9 +71,9 @@ Azure アカウントは無料で開くことができます。また、まだ V
 このセクションでは、Azure Web サイトと SQL データベースを Azure 内に作成して、Azure 環境を設定します。
 
 ###Azure で Web サイトと SQL データベースを作成する 
-このチュートリアルでは、Azure の Web サイトが共有ホスティング環境で実行されます。つまり、Azure の Web サイトを実行する仮想マシン (VM) がその他の Azure の Web サイトと共有されています。共有ホスティング環境は、低コストでクラウドの利用を開始できる方法です。後で Web トラフィックが増加したら、アプリケーションの規模を変更して専用 VM 上で実行するように設定してニーズを満たすことができます。もっと複雑なアーキテクチャが必要な場合は、Azure のクラウド サービスに移行できます。クラウド サービスは専用 VM 上で実行され、ユーザーのニーズに応じて構成できます。 
+このチュートリアルでは、Azure Web サイトが共有ホスティング環境で実行されます。つまり、Azure Web サイトを実行する仮想マシン (VM) がその他の Azure Web サイトと共有されています。共有ホスティング環境は、低コストでクラウドの利用を開始できる方法です。後で Web トラフィックが増加したら、アプリケーションの規模を変更して専用 VM 上で実行するように設定してニーズを満たすことができます。もっと複雑なアーキテクチャが必要な場合は、Azure のクラウド サービスに移行できます。クラウド サービスは専用 VM 上で実行され、ユーザーのニーズに応じて構成できます。 
 
-Azure SQL Database は、SQL Server テクノロジに基づいて構築されたクラウドベースのリレーショナル データベース サービスです。SQL Server で動作するツールおよびアプリケーションは、SQL データベースでも動作します。
+Azure SQL データベースは、SQL Server テクノロジに基づいて構築されたクラウドベースのリレーショナル データベース サービスです。SQL Server で動作するツールおよびアプリケーションは、SQL データベースでも動作します。
 
 1. [Azure の管理ポータル](https://manage.windowsazure.com/)で、左側のタブにある **[Web サイト]** をクリックし、**[新規]** をクリックします。  
 	![Web Platform Installer](./media/web-sites-dotnet-web-forms-secure/Intro-SecureWebForms-02.png)
@@ -81,35 +81,35 @@ Azure SQL Database は、SQL Server テクノロジに基づいて構築され�
 	![Custom Create](./media/web-sites-dotnet-web-forms-secure/Intro-SecureWebForms-03.png)  
 	**新しい Web サイト - カスタム作成**ウィザードが開きます。  
 
-3. ウィザードの **[Web Site の作成]** 手順で、アプリケーションの一意の URL として使用する文字列を **[URL]** ボックスに入力します。ここに入力した文字列と、このテキスト ボックスの右側に表示されている文字列を組み合わせたものが実際の URL になります。この図に表示されている URL は既に取得されている可能性が高いため、**別の URL を選択する**必要があります。  
+3. ウィザードの **[Web サイトの作成]** 手順で、アプリケーションの一意の URL として使用する文字列を **[URL]** ボックスに入力します。ここに入力した文字列と、このテキスト ボックスの右側に表示されている文字列を組み合わせたものが実際の URL になります。この図に表示されている URL は既に取得されている可能性が高いため、**別の URL を選択する必要があります**。  
 	![Contacts - Create New Web Site](./media/web-sites-dotnet-web-forms-secure/Intro-SecureWebForms-04.png)  
-4. [Web ホスティング プラン] ボックスの一覧で、現在の所在地に最も近いリージョンを選択します。この設定によって、使用する VM が実行されるデータ センターが指定されます。
+4. [Web ホスティング プラン] ドロップダウン リストで、現在の所在地に最も近いリージョンを選択します。この設定によって、使用する VM が実行されるデータ センターが指定されます。
 5. **[データベース]** ボックスの一覧の **[無料の 20 MB SQL データベースの作成]** を選択します。
 6. **[DB 接続文字列名]** ボックスは、既定値の *DefaultConnection* をそのまま使用します。
 7. ボックスの下部にある矢印をクリックします。 
 ウィザードの **[データベースの設定の指定]** 手順に進みます。
 8. **[名前]** ボックスに「*`ContactDB`*」と入力します。  
 	![Database Settings](./media/web-sites-dotnet-web-forms-secure/Intro-SecureWebForms-05.png)  
-9. **[サーバー]** ボックスで、**[新しい SQL Database サーバー]** を選択します。
+9. **[サーバー]** ボックスで、**[新しい SQL データベース サーバー]** を選択します。
 または、以前に SQL Server データベースを作成した場合は、ボックスの一覧からその SQL Server を選択できます。
 10. **[リージョン]** は、作成した Web サイトと同じエリアに設定します。
 11. 管理者の**ログイン名**と**パスワード**を入力します。 
 **[新しい SQL データベース サーバー]** を選択した場合は、既存の名前とパスワードではなく、このデータベースへのアクセス時に使用する新しい名前とパスワードを入力してください。以前に作成した SQL Server を選択した場合は、その SQL Server の作成時に設定したパスワードを入力します。このチュートリアルでは、**[データベースの詳細設定を構成します]** チェック ボックスをオンにしません。
 12. 終了したら、ダイアログ ボックスの右下にあるチェック マークをクリックします。
 
-**Azure の管理ポータル**が **[Web サイト]** ページに戻り、**[状態]** 列にサイトが作成中であることが示されます。しばらくすると (通常は 1 分未満)、サイトの作成に成功したことが **[状態]** 列に示されます。左側にあるナビゲーション バーでは、アカウントで所有するサイト数が **[Web サイト]** アイコンの横に表示され、データベース数が **[SQL データベース]** アイコンの横に表示されます。
+**Azure 管理ポータル**が **[Web サイト]** ページに戻り、**[状態]** 列にサイトが作成中であることが示されます。しばらくすると (通常は 1 分未満)、サイトの作成に成功したことが **[状態]** 列に示されます。左側にあるナビゲーション バーでは、アカウントで所有するサイト数が **[Web サイト]** アイコンの横に表示され、データベース数が **[SQL データベース]** アイコンの横に表示されます。
 ##ASP.NET Web フォーム アプリケーションを作成する 
 Azure の Web サイトを作成しましたが、まだその中にコンテンツがありません。次のステップでは、Azure に発行する Visual Studio Web アプリケーションを作成します。
 ###プロジェクトを作成する 
 1. Visual Studio の **[ファイル]** メニューで **[新しいプロジェクト]** を選択します。  
 	![File Menu - New Project](./media/web-sites-dotnet-web-forms-secure/SecureWebForms01.png)  
 2. 左側で、**[テンプレート]**、**[Visual C#]**、**[Web]** テンプレート グループの順に選択します。 
-3. 中央の列で **[ASP.NET Web アプリケーション]** テンプレートを選択します。
-4. プロジェクトに「*ContactManager*」という名前を付けて、**[OK]** をクリックします。  
+3. 中央の列で **[ASP.NET Web アプリケーション]** を選択します。
+4. プロジェクトに「*ContactManager*」と名前を付けて、**[OK]** をクリックします。  
 	![New Project Dialog](./media/web-sites-dotnet-web-forms-secure/SecureWebForms02.png)  
 
 	>[WACOM.NOTE]  
-	 このチュートリアル シリーズでは、プロジェクトの名前を「**ContactManager**」としています。チュートリアル シリーズのさまざまな場面で提供されるコードを説明どおりに動作させるため、まったく同じ名前を使用することをお勧めします。  
+	このチュートリアル シリーズでは、プロジェクトの名前を「**ContactManager**」としています。チュートリアル シリーズのさまざまな場面で提供されるコードを説明どおりに動作させるため、まったく同じ名前を使用することをお勧めします。  
 
 5. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[Web フォーム]** テンプレートを選択します。**[クラウドでのホスト]** チェック ボックスをオフにして (オンになっている場合)、**[OK]** をクリックします。  
 	![New ASP.NET Project dialog box](./media/web-sites-dotnet-web-forms-secure/SecureWebForms03.png)  
@@ -123,102 +123,102 @@ ASP.NET Web フォームでは、マスター ページを使うことで、ア�
 3. 次に示すハイライトされているマークアップで変更するか、マークアップを追加して、マスター ページを更新します。
 
 <pre class="prettyprint">
-<%@ Master Language=&quot;C#&quot; AutoEventWireup=&quot;true&quot; CodeBehind=&quot;Site.master.cs&quot; Inherits=&quot;ContactManager.SiteMaster&quot; %>
+&lt;%@ Master Language=&quot;C#&quot; AutoEventWireup=&quot;true&quot; CodeBehind=&quot;Site.master.cs&quot; Inherits=&quot;ContactManager.SiteMaster&quot; %&gt;
 
-<!DOCTYPE html>
+&lt;!DOCTYPE html&gt;
 
-<html lang=&quot;en&quot;>
-<head runat=&quot;server&quot;>
-    <meta charset=&quot;utf-8&quot; />
-    <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; />
-    <title><%: Page.Title %> - <mark>Contact Manager</mark></title>
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head runat=&quot;server&quot;&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;&lt;%: Page.Title %&gt; - <mark>Contact Manager</mark>&lt;/title&gt;
 
-    <asp:PlaceHolder runat=&quot;server&quot;>
-        <%: Scripts.Render(&quot;~/bundles/modernizr&quot;) %>
-    </asp:PlaceHolder>
-    <webopt:bundlereference runat=&quot;server&quot; path=&quot;~/Content/css&quot; />
-    <link href=&quot;~/favicon.ico&quot; rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot; />
+    &lt;asp:PlaceHolder runat=&quot;server&quot;&gt;
+        &lt;%: Scripts.Render(&quot;~/bundles/modernizr&quot;) %&gt;
+    &lt;/asp:PlaceHolder&gt;
+    &lt;webopt:bundlereference runat=&quot;server&quot; path=&quot;~/Content/css&quot; /&gt;
+    &lt;link href=&quot;~/favicon.ico&quot; rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot; /&gt;
 
-</head>
-<body>
-    <form runat=&quot;server&quot;>
-        <asp:ScriptManager runat=&quot;server&quot;>
-            <Scripts>
-                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
-                <%--Framework Scripts--%>
-                <asp:ScriptReference Name=&quot;MsAjaxBundle&quot; />
-                <asp:ScriptReference Name=&quot;jquery&quot; />
-                <asp:ScriptReference Name=&quot;bootstrap&quot; />
-                <asp:ScriptReference Name=&quot;respond&quot; />
-                <asp:ScriptReference Name=&quot;WebForms.js&quot; Assembly=&quot;System.Web&quot; Path=&quot;~/Scripts/WebForms/WebForms.js&quot; />
-                <asp:ScriptReference Name=&quot;WebUIValidation.js&quot; Assembly=&quot;System.Web&quot; Path=&quot;~/Scripts/WebForms/WebUIValidation.js&quot; />
-                <asp:ScriptReference Name=&quot;MenuStandards.js&quot; Assembly=&quot;System.Web&quot; Path=&quot;~/Scripts/WebForms/MenuStandards.js&quot; />
-                <asp:ScriptReference Name=&quot;GridView.js&quot; Assembly=&quot;System.Web&quot; Path=&quot;~/Scripts/WebForms/GridView.js&quot; />
-                <asp:ScriptReference Name=&quot;DetailsView.js&quot; Assembly=&quot;System.Web&quot; Path=&quot;~/Scripts/WebForms/DetailsView.js&quot; />
-                <asp:ScriptReference Name=&quot;TreeView.js&quot; Assembly=&quot;System.Web&quot; Path=&quot;~/Scripts/WebForms/TreeView.js&quot; />
-                <asp:ScriptReference Name=&quot;WebParts.js&quot; Assembly=&quot;System.Web&quot; Path=&quot;~/Scripts/WebForms/WebParts.js&quot; />
-                <asp:ScriptReference Name=&quot;Focus.js&quot; Assembly=&quot;System.Web&quot; Path=&quot;~/Scripts/WebForms/Focus.js&quot; />
-                <asp:ScriptReference Name=&quot;WebFormsBundle&quot; />
-                <%--Site Scripts--%>
-            </Scripts>
-        </asp:ScriptManager>
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form runat=&quot;server&quot;&gt;
+        &lt;asp:ScriptManager runat=&quot;server&quot;&gt;
+            &lt;Scripts&gt;
+                &lt;%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%&gt;
+                &lt;%--Framework Scripts--%&gt;
+                &lt;asp:ScriptReference Name=&quot;MsAjaxBundle&quot; /&gt;
+                &lt;asp:ScriptReference Name=&quot;jquery&quot; /&gt;
+                &lt;asp:ScriptReference Name=&quot;bootstrap&quot; /&gt;
+                &lt;asp:ScriptReference Name=&quot;respond&quot; /&gt;
+                &lt;asp:ScriptReference Name=&quot;WebForms.js&quot; Assembly=&quot;System.Web&quot; Path=&quot;~/Scripts/WebForms/WebForms.js&quot; /&gt;
+                &lt;asp:ScriptReference Name=&quot;WebUIValidation.js&quot; Assembly=&quot;System.Web&quot; Path=&quot;~/Scripts/WebForms/WebUIValidation.js&quot; /&gt;
+                &lt;asp:ScriptReference Name=&quot;MenuStandards.js&quot; Assembly=&quot;System.Web&quot; Path=&quot;~/Scripts/WebForms/MenuStandards.js&quot; /&gt;
+                &lt;asp:ScriptReference Name=&quot;GridView.js&quot; Assembly=&quot;System.Web&quot; Path=&quot;~/Scripts/WebForms/GridView.js&quot; /&gt;
+                &lt;asp:ScriptReference Name=&quot;DetailsView.js&quot; Assembly=&quot;System.Web&quot; Path=&quot;~/Scripts/WebForms/DetailsView.js&quot; /&gt;
+                &lt;asp:ScriptReference Name=&quot;TreeView.js&quot; Assembly=&quot;System.Web&quot; Path=&quot;~/Scripts/WebForms/TreeView.js&quot; /&gt;
+                &lt;asp:ScriptReference Name=&quot;WebParts.js&quot; Assembly=&quot;System.Web&quot; Path=&quot;~/Scripts/WebForms/WebParts.js&quot; /&gt;
+                &lt;asp:ScriptReference Name=&quot;Focus.js&quot; Assembly=&quot;System.Web&quot; Path=&quot;~/Scripts/WebForms/Focus.js&quot; /&gt;
+                &lt;asp:ScriptReference Name=&quot;WebFormsBundle&quot; /&gt;
+                &lt;%--Site Scripts--%&gt;
+            &lt;/Scripts&gt;
+        &lt;/asp:ScriptManager&gt;
 
-        <div class=&quot;navbar navbar-inverse navbar-fixed-top&quot;>
-            <div class=&quot;container&quot;>
-                <div class=&quot;navbar-header&quot;>
-                    <button type=&quot;button&quot; class=&quot;navbar-toggle&quot; data-toggle=&quot;collapse&quot; data-target=&quot;.navbar-collapse&quot;>
-                        <span class=&quot;icon-bar&quot;></span>
-                        <span class=&quot;icon-bar&quot;></span>
-                        <span class=&quot;icon-bar&quot;></span>
-                    </button>
-                    <a class=&quot;navbar-brand&quot; runat=&quot;server&quot; <mark>id=&quot;ContactDemoLink&quot;</mark> href=&quot;~/<mark>Contacts/Default.aspx</mark>&quot;><mark>Contact Demo</mark></a>
-                </div>
-                <div class=&quot;navbar-collapse collapse&quot;>
-                    <ul class=&quot;nav navbar-nav&quot;>
-                        <li><a runat=&quot;server&quot; href=&quot;~/&quot;>Home</a></li>
-                        <li><a runat=&quot;server&quot; href=&quot;~/About&quot;>About</a></li>
-                        <li><a runat=&quot;server&quot; href=&quot;~/Contact&quot;>Contact</a></li>
-                    </ul>
-                    <asp:LoginView runat=&quot;server&quot; ViewStateMode=&quot;Disabled&quot;>
-                        <AnonymousTemplate>
-                            <ul class=&quot;nav navbar-nav navbar-right&quot;>
-                                <li><a runat=&quot;server&quot; href=&quot;~/Account/Register&quot;>Register</a></li>
-                                <li><a runat=&quot;server&quot; href=&quot;~/Account/Login&quot;>Log in</a></li>
-                            </ul>
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <ul class=&quot;nav navbar-nav navbar-right&quot;>
-                                <li><a runat=&quot;server&quot; href=&quot;~/Account/Manage&quot; title=&quot;Manage your account&quot;>Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                                <li>
-                                    <asp:LoginStatus runat=&quot;server&quot; LogoutAction=&quot;Redirect&quot; LogoutText=&quot;Log off&quot; LogoutPageUrl=&quot;~/&quot; OnLoggingOut=&quot;Unnamed_LoggingOut&quot; />
-                                </li>
-                            </ul>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
-                </div>
-            </div>
-        </div>
-        <div class=&quot;container body-content&quot;>
-            <asp:ContentPlaceHolder ID=&quot;MainContent&quot; runat=&quot;server&quot;>
-            </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - <mark>Contact Manager</mark></p>
-            </footer>
-        </div>
-    </form>
-</body>
-</html>
+        &lt;div class=&quot;navbar navbar-inverse navbar-fixed-top&quot;&gt;
+            &lt;div class=&quot;container&quot;&gt;
+                &lt;div class=&quot;navbar-header&quot;&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;navbar-toggle&quot; data-toggle=&quot;collapse&quot; data-target=&quot;.navbar-collapse&quot;&gt;
+                        &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+                        &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+                        &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+                    &lt;/button&gt;
+                    &lt;a class=&quot;navbar-brand&quot; runat=&quot;server&quot; <mark>id=&quot;ContactDemoLink&quot;</mark> href=&quot;~/<mark>Contacts/Default.aspx</mark>&quot;&gt;<mark>Contact Demo</mark>&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;navbar-collapse collapse&quot;&gt;
+                    &lt;ul class=&quot;nav navbar-nav&quot;&gt;
+                        &lt;li&gt;&lt;a runat=&quot;server&quot; href=&quot;~/&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a runat=&quot;server&quot; href=&quot;~/About&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a runat=&quot;server&quot; href=&quot;~/Contact&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;asp:LoginView runat=&quot;server&quot; ViewStateMode=&quot;Disabled&quot;&gt;
+                        &lt;AnonymousTemplate&gt;
+                            &lt;ul class=&quot;nav navbar-nav navbar-right&quot;&gt;
+                                &lt;li&gt;&lt;a runat=&quot;server&quot; href=&quot;~/Account/Register&quot;&gt;Register&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a runat=&quot;server&quot; href=&quot;~/Account/Login&quot;&gt;Log in&lt;/a&gt;&lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/AnonymousTemplate&gt;
+                        &lt;LoggedInTemplate&gt;
+                            &lt;ul class=&quot;nav navbar-nav navbar-right&quot;&gt;
+                                &lt;li&gt;&lt;a runat=&quot;server&quot; href=&quot;~/Account/Manage&quot; title=&quot;Manage your account&quot;&gt;Hello, &lt;%: Context.User.Identity.GetUserName()  %&gt; !&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;
+                                    &lt;asp:LoginStatus runat=&quot;server&quot; LogoutAction=&quot;Redirect&quot; LogoutText=&quot;Log off&quot; LogoutPageUrl=&quot;~/&quot; OnLoggingOut=&quot;Unnamed_LoggingOut&quot; /&gt;
+                                &lt;/li&gt;
+                            &lt;/ul&gt;
+                        &lt;/LoggedInTemplate&gt;
+                    &lt;/asp:LoginView&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;container body-content&quot;&gt;
+            &lt;asp:ContentPlaceHolder ID=&quot;MainContent&quot; runat=&quot;server&quot;&gt;
+            &lt;/asp:ContentPlaceHolder&gt;
+            &lt;hr /&gt;
+            &lt;footer&gt;
+                &lt;p&gt;&amp;copy; &lt;%: DateTime.Now.Year %&gt; - <mark>Contact Manager</mark>&lt;/p&gt;
+            &lt;/footer&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </pre>  
 
-このチュートリアルでは、Web フォームのスキャフォールディングを追加します (後述)。スキャフォールディングによって、上の [Contact Demo] リンクの参照先ページが作成されます。
+このチュートリアルでは、Web フォームのスキャフォールディングを追加します (後述)。スキャフォールディングによって、上記の "Contact Demo" リンクの参照先ページが作成されます。
 ###ローカルでアプリケーションを実行する 
-1. **ソリューション エクスプローラー**で [*Default.aspx*] ページを右クリックし、**[スタート ページに設定]** を選択します。 
-2. **CTRL + F5** キーを押してアプリケーションを実行します。  
+1. **ソリューション エクスプローラー**で *Default.aspx* ページを右クリックし、**[スタート ページに設定]** を選択します。 
+2. **Ctrl キーを押しながら F5 キーを押して**アプリケーションを実行します。  
 	アプリケーションの既定のページが、既定のブラウザー ウィンドウに表示されます。
 	![Contacts - Create New Web Site](./media/web-sites-dotnet-web-forms-secure/SecureWebForms04.png)  
 
-これで、Azure にデプロイするアプリケーションを作成するために必要な操作が完了しました。データベースの機能と、連絡先データを表示および編集するためのページは、後ほど追加します。
+これで、Azure に展開するアプリケーションを作成するために必要な操作が完了しました。データベースの機能と、連絡先データを表示および編集するためのページは、後ほど追加します。
 ###Azure にアプリケーションをデプロイする
 現在、アプリケーションを作成してローカルで実行しています。このアプリケーションを Azure にデプロイします。
 
@@ -226,17 +226,17 @@ ASP.NET Web フォームでは、マスター ページを使うことで、ア�
 	![Select Publish](./media/web-sites-dotnet-web-forms-secure/SecureWebForms05.png)  
 	**[Web の発行]** ダイアログ ボックスが表示されます。  
 
-2. **[Web の発行]** ダイアログ ボックスの **[プロファイル]** タブで、**[Azure Websites]** をクリックします。  
+2. **[Web の発行]** ダイアログ ボックスの **[プロファイル]** タブで、**[Windows Azure Web Sites]** をクリックします。  
 	![Publish Web dialog box](./media/web-sites-dotnet-web-forms-secure/SecureWebForms06.png)  
 3. まだサインインしていない場合、**[既存の Web サイトを選択]** ダイアログ ボックスの **[サインイン]** をクリックします。サインインしたら、このチュートリアルの最初に作成した Web サイトを選択します。**[OK]** をクリックして続行します。  
 	![Select Existing Web Site dialog box](./media/web-sites-dotnet-web-forms-secure/SecureWebForms07.png)  
 Visual Studio によって発行設定がダウンロードされます。
 4. **[Web の発行]** ダイアログ ボックスの **[発行]** をクリックします。  
 	![Publish Web dialog box](./media/web-sites-dotnet-web-forms-secure/SecureWebForms08.png)  
-Visual Studio の **[Web 発行アクティビティ]** ウィンドウに、発行の全体的な状態が表示されます。  
+Visual Studio の **[Web 発行アクティビティ]** ウィンドウに、発行の全体的なステータスが表示されます。  
 	![Web Publishing Activity](./media/web-sites-dotnet-web-forms-secure/SecureWebForms09.png)  
 
-現在、作成したアプリケーションはクラウドで実行されています。このアプリケーションを次に Visual Studio からデプロイするときは、変更したファイル (または新しいファイル) のみがデプロイされます。  
+これで、作成したアプリケーションはクラウドで実行されています。このアプリケーションを次に Visual Studio からデプロイするときは、変更したファイル (または新しいファイル) のみがデプロイされます。  
 	![App in Browser](./media/web-sites-dotnet-web-forms-secure/SecureWebForms10.png)  
 
 >[WACOM.NOTE] 
@@ -288,24 +288,24 @@ Visual Studio の **[Web 発行アクティビティ]** ウィンドウに、発
 1. Visual Studio のメニュー バーで **[ツール]**、**[拡張機能と更新プログラム]** の順に選択します。  
 	**[拡張機能と更新プログラム]** ダイアログ ボックスが表示されます。
 2. ダイアログ ボックスの左側のウィンドウで、**[オンライン]**、**[Visual Studio ギャラリー]**、**[ツール]**、**[スキャフォールディング]** の順に選択します。
-3. 'Web Forms Scaffolding' が一覧に表示されない場合は、ダイアログ ボックス右側の検索ボックスに「Web Forms Scaffolding」と入力します。  
-4. Forms Scaffolder がインストールされていない場合は、**[ダウンロード]** を選択して 'Web Forms Scaffolding' をインストールします。必要に応じて Visual Studio を再起動します。確認された場合は、プロジェクトへの変更を必ず保存してください。  
+3. 「Web Forms Scaffolding」が一覧に表示されない場合は、ダイアログ ボックス右側の検索ボックスに「Web Forms Scaffolding」と入力します。  
+4. Forms Scaffolder がインストールされていない場合は、**[ダウンロード]** を選択して Web Forms Scaffolding をインストールします。必要に応じて Visual Studio を再起動します。確認された場合は、プロジェクトへの変更を必ず保存してください。  
 	![Extensions and Updates dialog box](./media/web-sites-dotnet-web-forms-secure/ExtensionsAndUpdatesDB.png)  
-5. プロジェクトをビルドします **(Ctrl + Shift + B)**。  
-	スキャフォールディング機能の使用前にプロジェクトをビルドする必要があります。  
+5. プロジェクトをビルドします (**Ctrl + Shift + B**)。  
+	プロジェクトは、スキャフォールディング機能を使用する前にビルドする必要があります。  
 6. **ソリューション エクスプローラー**で*プロジェクト*を右クリックし、**[追加]**、**[新しいスキャフォールディング項目]** の順に選択します。  
 	**[スキャフォールディングの追加]** ダイアログ ボックスが表示されます。
-7. 左側のウィンドウで **[Web フォーム]** を選択し、中央のウィンドウで **[Entity Framework を使用している Web フォーム]** を選択します。**[追加]** をクリックします。  
+7. 左側のウィンドウで **[Web フォーム]** を選択し、中央のウィンドウで **[Entity Framework を使用している Web フォーム]** を選択して、**[追加]** をクリックします。  
 	![Add Scaffold dialog box](./media/web-sites-dotnet-web-forms-secure/SecureWebForms13a.png)  
 	**[Web フォーム ページの追加]** ダイアログ ボックスが表示されます。  
 
-8. **[Web フォーム ページの追加]** ダイアログ ボックスで、**[モデル クラス]** を `Contact (ContactManager.Models)` に設定します。`ApplicationDbContext (ContactManager.Models)` には、**[データ コンテキスト クラス]** を設定します。**[追加]** をクリックします。 
+8. **[Web フォーム ページの追加]** ダイアログ ボックスで、**[モデル クラス]** を `Contact (ContactManager.Models)` に設定します。**[データ コンテキスト クラス]** を `ApplicationDbContext (ContactManager.Models)` に設定します。**[追加]** をクリックします。 
 	![Add Web Forms Pages dialog box](./media/web-sites-dotnet-web-forms-secure/SecureWebForms13b.png)  
 
-Web Forms Scaffolder によって、*Default.aspx*、*Delete.aspx*、*Edit.aspx*、*Insert.aspx* の各ページを格納する新しいフォルダーが追加されます。また、*DynamicData* フォルダーも作成されます。このフォルダーには *EntityTemplates* フォルダーと *FieldTemplates* フォルダーが格納されています。`ApplicationDbContext` はメンバーシップ データベースと連絡先データの両方に使用されます。
+Web Forms Scaffolder によって、*Default.aspx*、*Delete.aspx*、*Edit.aspx*、*Insert.aspx* の各ページを格納する新しいフォルダーが作成されます。また、*DynamicData* フォルダーも作成されます。このフォルダーには *EntityTemplates* フォルダーと *FieldTemplates* フォルダーが格納されています。`ApplicationDbContext` はメンバーシップ データベースと連絡先データの両方に使用されます。
 
 ###データ モデルを使用できるようアプリケーションを構成する 
-次の作業では、作成したデータ モデルに基づいてデータベースを作成するための Code First Migrations 機能を有効にすると共に、サンプル データとデータ初期化子を追加します。  
+次の作業では、作成したデータ モデルに基づいてデータベースを作成するための Code First Migrations 機能を有効化すると共に、サンプル データとデータ初期化子を追加します。  
 
 1. **[ツール]** メニューの **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。  
 	![Add Web Forms Pages dialog box](./media/web-sites-dotnet-web-forms-secure/SecureWebForms13c.png)  
@@ -318,7 +318,7 @@ Web Forms Scaffolder によって、*Default.aspx*、*Delete.aspx*、*Edit.aspx*
 	<pre class="prettyprint">
 	add-migration Initial
 	</pre>  
-	`add-migration Initial` コマンドは、データベースを作成する *Migrations* フォルダーに <date_stamp>Initial という名前のファイルを生成します。最初のパラメーター (Initial) は任意です。このパラメーターは、このファイルの名前の作成に使用されます。新しいクラス ファイルは**ソリューション エクスプローラー**で表示できます。`Initial` クラスでは、`Up` メソッドを使用して `Contact` テーブルを作成し、`Down` メソッドを使用してそのテーブルを削除します (前の状態に戻します)。  
+	`add-migration Initial` コマンドは、データベースを作成する <date_stamp>Initial ファイルを *Migrations* フォルダーに生成します。最初のパラメーター (Initial) は任意です。このパラメーターは、このファイルの名前の作成に使用されます。新しいクラス ファイルは**ソリューション エクスプローラー**で表示できます。`Initial` クラスでは、`Up` メソッドを使用して `Contact` テーブルを作成し、`Down` メソッドを使用してそのテーブルを削除します (前の状態に戻します)。  
 4. *Migrations\Configuration.cs* ファイルを開きます。 
 5. 次の名前空間を追加します。  
 	<pre class="prettyprint">
@@ -387,16 +387,16 @@ Web Forms Scaffolder によって、*Default.aspx*、*Delete.aspx*、*Edit.aspx*
 	<pre class="prettyprint">
 	update-database
 	</pre>  
-`update-database` によって、データベースを作成する最初の移行が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます   
+`update-database` によって、データベースを作成する最初の Migration が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます  
 	![Package Manager Console](./media/web-sites-dotnet-web-forms-secure/SecureWebForms13d.png)  
 
 ###アプリケーションをローカルで実行してデータを表示する 
 次に、アプリケーションを実行して連絡先の表示を確認します。
 
 1. 最初にプロジェクトをビルドします (**Ctrl + Shift + B**)。  
-2. **Ctrl + F5** キーを押して、アプリケーションを実行します。  
-	ブラウザーが開き、[*Default.aspx*] ページが表示されます。
-3. ページ最上部の **[Contact Demo]** リンクを選択して [*Contact List*] ページを表示します。   
+2. **Ctrl キーを押しながら F5 キーを押して**アプリケーションを実行します。  
+	ブラウザーが開き、*Default.aspx* ページが表示されます。
+3. ページ最上部の **Contact Demo** リンクを選択して *Contact List* ページを表示します。  
 	![Contacts List Page](./media/web-sites-dotnet-web-forms-secure/SecureWebForms17.png)  
 
 ##プロジェクトに対して SSL を有効にする 
@@ -407,19 +407,20 @@ Secure Sockets Layer (SSL) は、Web サーバーと Web クライアント間�
 3. 後で使用するための **SSL URL** をコピーします。  
 	過去に SSL Web サイトを作成したことがなければ、SSL URL は `https://localhost:44300/` になります (下記参照)。
 	![Project Properties](./media/web-sites-dotnet-web-forms-secure/SecureWebForms18.png)  
-4. **ソリューション エクスプローラー**で **[Contact Manager]** プロジェクトを右クリックし、**[プロパティ]** をクリックします。
+4. **ソリューション エクスプローラー**で **Contact Manager** プロジェクトを右クリックし、**[プロパティ]** をクリックします。
 5. 左側のタブで **[Web]** をクリックします。
 6. 先ほど保存した **SSL URL** を使用するように **[Project Url]** を変更します。  
 	![Project Web Properties](./media/web-sites-dotnet-web-forms-secure/SecureWebForms19.png)  
-7. **CTRL + S** キーを押してページを保存します。
-8. **Ctrl + F5 ** キーを押して、アプリケーションを実行します。Visual Studio により、SSL の警告を回避するためのオプションが表示されます。  
+7. **CTRL + S キーを押して**ページを保存します。
+8. **Ctrl キーを押しながら F5 キーを押して**アプリケーションを実行します。  
+Visual Studio により、SSL の警告を回避するためのオプションが表示されます。  
 9. IIS Express SSL 証明書を信頼する場合は **[はい]** をクリックして続行します。  
 	![IIS Express SSL certificate details](./media/web-sites-dotnet-web-forms-secure/SecureWebForms20.png)  
-セキュリティ警告が表示されます。  
+	セキュリティ警告が表示されます。  
 
 10. **[はい]** をクリックしてローカルホストに証明書をインストールします。  
 	![Security Warning dialog box](./media/web-sites-dotnet-web-forms-secure/SecureWebForms21.png)  
-ブラウザー ウィンドウが表示されます。  
+	ブラウザー ウィンドウが表示されます。  
 
 ローカルで SSL を使用して Web アプリケーションを簡単にテストできるようになりました。
 
@@ -445,23 +446,23 @@ ASP.NET Web フォームは、メンバーシップと認証のオプション�
 	**Google Developers Console** が表示されます。
 	![Google Developers Console](./media/web-sites-dotnet-web-forms-secure/SecureWebForms21a.png)  
 
-4. **[Create Project]** をクリックして、プロジェクトの名前と ID を入力します (既定値を使用できます)。**同意のチェック ボックス**をオンにして、**[Create]** ボタンをクリックします。  
+4. **[Create Project]** ボタンをクリックして、プロジェクトの名前と ID を入力します (既定値を使用できます)。**同意のチェック ボックス**をオンにして、**[Create]** ボタンをクリックします。  
 	![Google - New Project](./media/web-sites-dotnet-web-forms-secure/SecureWebForms21b.png)  
 	新しいプロジェクトが数秒で作成され、新しいプロジェクトのページがブラウザーに表示されます。
 5. 左側のタブで **[APIs & auth]**、**[Credentials]** の順にクリックします。
 6. **[OAuth]** にある **[Create New Client ID]** をクリックします。  
-	**[Create Client ID]** ダイアログが表示されます。
+	**[Create Client ID]** ダイアログ ボックスが表示されます。
 	![Google - Create Client ID](./media/web-sites-dotnet-web-forms-secure/SecureWebForms21c.png)  
 7. **[Create Client ID]** ダイアログでは、アプリケーションの種類を既定の **[Web application]** のままにします。  
 8. **[Authorized JavaScript Origins]** には、このチュートリアルで既に使用した SSL URL (**https://localhost:44300/**) を設定します (その他の SSL プロジェクトを作成している場合を除く)。  
-この URL がアプリケーションのオリジンです。このサンプルではローカルホストのテスト URL を入力するだけですが、アカウントには複数の URL を入力できます (ローカルホストおよび本稼働用)。  
+	この URL がアプリケーションのオリジンです。このサンプルではローカルホストのテスト URL を入力するだけですが、アカウントには複数の URL を入力できます (ローカルホストおよび本稼働用)。  
 
 9. **[Authorized Redirect URI]** には次の値を設定します。  
 	<pre class="prettyprint">  
 	https://localhost:44300/signin-google  
 	</pre>  
-この値は、ASP.NET OAuth ユーザーが Google の OAuth サーバーとの通信に使用する URI です。必ず、先ほど使用した URL (**https://localhost:44300/**) を使用してください (その他の SSL プロジェクトを作成している場合を除く)。  
-10. **[Create Client ID]** をクリックします。
+	この値は、ASP.NET OAuth ユーザーが Google の OAuth サーバーとの通信に使用する URI です。必ず、先ほど使用した URL (**https://localhost:44300/**) を使用してください (その他の SSL プロジェクトを作成している場合を除く)。  
+10. **[Create Client ID]** ボタンをクリックします。
 11. Visual Studio で、*Startup.Auth.cs* ページの `UseGoogleAuthentication` メソッドを更新します。これは、**アプリケーション ID** と**アプリケーション シークレット**をコピーしてメソッドに貼り付けることで行います。次に示す**アプリケーション ID** と**アプリケーション シークレット**の値はサンプルであり、動作しません。  
 	<pre class="prettyprint">  
 	using System;
@@ -525,7 +526,7 @@ ASP.NET Web フォームは、メンバーシップと認証のオプション�
 	    }
 	}
 	</pre>  
-12. **CTRL + F5** キーを押してアプリケーションをビルドし、実行します。**[Log in]** リンクをクリックします。
+12. **Ctrl キーを押しながら F5 キーを押して**アプリケーションをビルドし、実行します。**[Log in]** リンクをクリックします。
 13. **[Use another service to log in]** の **[Google]** をクリックします。  
 	![Log in](./media/web-sites-dotnet-web-forms-secure/SecureWebForms21d.png)  
 14. 資格情報の入力が必要な場合、Google のサイトにリダイレクトされるので、リダイレクト先のサイトで資格情報を入力します。  
@@ -534,7 +535,7 @@ ASP.NET Web フォームは、メンバーシップと認証のオプション�
 	![Project Default Service Account](./media/web-sites-dotnet-web-forms-secure/SecureWebForms21f.png)  
 16. **[Accept]** をクリックします。クリックすると、リダイレクトによって **ContactManager** アプリケーションの **[Register]** ページに戻ります。このページで Google アカウントを登録することができます。
 	![Register with your Google Account](./media/web-sites-dotnet-web-forms-secure/SecureWebForms21g.png)  
-17. Gmail アカウントに使用するローカルの電子メール登録名を変更できますが、通常は既定の電子メール エイリアス (認証に使用したエイリアス) を変更しません。**[Log in]** をクリックします。
+17. Google アカウントに使用するローカルの電子メール登録名を変更できますが、通常は既定の電子メール エイリアス (認証に使用したエイリアス) を変更しません。**[Log in]** をクリックします。
 
 ##メンバーシップ API を使用してアクセスを制限する 
 ASP.NET アプリケーションの開発では、認証に ASP.NET Identity というメンバーシップ システムを使用できます。ASP.NET Identity によって、ユーザー固有のプロファイル データとアプリケーション データを簡単に統合できるだけでなく、アプリケーションのユーザー プロファイルに永続性を適用することができます。データは、SQL Server データベースやその他のデータ ストア (Azure Storage テーブルなどの *NoSQL* データ ストアを含む) に保存できます。
@@ -544,30 +545,30 @@ ASP.NET アプリケーションの開発では、認証に ASP.NET Identity と
 ###管理者を追加する 
 ASP.NET Identity を使用すると、管理者ロールの追加および管理者ロールへのユーザーの割り当てを、コードを使って実行できます。 
 
-1. **ソリューション エクスプローラー**で、*Migrations* フォルダーの *Configuration.cs* ファイルを開きます。
-2. 次の `using` ステートメントを `ContactManger.Migrations` 名前空間に追加します。  
+1. **ソリューション エクスプローラー**で、Migrations フォルダーの *Configuration.cs* ファイルを開きます。
+2. `ContactManger.Migrations` 名前空間内に、次の `using` ステートメントを追加します。  
 	<pre class="prettyprint">
 	using Microsoft.AspNet.Identity;
 	using Microsoft.AspNet.Identity.EntityFramework;
 	</pre>
-3. 次の `AddUserAndRole` メソッドを `Configuration` クラスに追加します。これは `Seed` メソッドの後に追加します。  
+3. `Seed` メソッドの後の`Configuration` クラスに、次の `AddUserAndRole` メソッドを追加します。  
 	<pre class="prettyprint">
         public void AddUserAndRole(ContactManager.Models.ApplicationDbContext context)
         {
             IdentityResult IdRoleResult;
             IdentityResult IdUserResult;
 
-            var roleStore = new RoleStore<IdentityRole>(context);
-            var roleMgr = new RoleManager<IdentityRole>(roleStore);
+            var roleStore = new RoleStore&lt;IdentityRole&gt;(context);
+            var roleMgr = new RoleManager&lt;IdentityRole&gt;(roleStore);
 
             if (!roleMgr.RoleExists(&quot;canEdit&quot;))
             {
                 IdRoleResult = roleMgr.Create(new IdentityRole { Name = &quot;canEdit&quot; });
             }
 
-            //var userStore = new UserStore<ApplicationUser>(context);
-            //var userMgr = new UserManager<ApplicationUser>(userStore);
-            var userMgr = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            //var userStore = new UserStore&lt;ApplicationUser&gt;(context);
+            //var userMgr = new UserManager&lt;ApplicationUser&gt;(userStore);
+            var userMgr = new UserManager&lt;ApplicationUser&gt;(new UserStore&lt;ApplicationUser&gt;(context));
 
             var appUser = new ApplicationUser
             {
@@ -583,7 +584,7 @@ ASP.NET Identity を使用すると、管理者ロールの追加および管理
             }
         }
 	</pre>
-4. `AddUserAndRole` メソッドの呼び出しを Seed メソッドの開始部分に追加します。以下には `Seed` メソッドの開始部分だけが表示されている点に注意してください。  
+4. `AddUserAndRole` メソッドの呼び出しを `Seed` メソッドの開始部分に追加します。以下には `Seed` メソッドの開始部分だけが表示されている点に注意してください。  
 	<pre class="prettyprint">
         protected override void Seed(ContactManager.Models.ApplicationDbContext context)
         {
@@ -593,109 +594,109 @@ ASP.NET Identity を使用すると、管理者ロールの追加および管理
 	<pre class="prettyprint">
 	Update-Database
 	</pre>
-	このコードによって `canEdit` という新しいロールが作成され、canEditUser@wideworldimporters.com の電子メールが割り当てられた新しいローカル ユーザーが作成されます。その後、canEditUser@wideworldimporters.com が `canEdit` ロールに追加されます。詳細については、「[ASP.NET Identity resource page (ASP.NET Identity リソース ページ)](http://www.asp.net/identity)」を参照してください。  
+	このコードによって `canEdit` という新しいロールが作成され、canEditUser@wideworldimporters.com の電子メールが割り当てられた新しいローカル ユーザーが作成されます。その後、コードによって canEditUser@wideworldimporters.com が `canEdit` ロールに追加されます。詳細については、「[ASP.NET Identity resource page (ASP.NET Identity リソース ページ)](http://www.asp.net/identity)」を参照してください。  
 
 ###管理者用フォルダーへのアクセスを制限する 
-現在、サンプル アプリケーション **ContactManager** では、匿名ユーザーとログイン ユーザーの両方が連絡先を表示できますが、このセクションを完了すると、連絡先を追加できるのは "canEdit" ロールが割り当てられたログイン ユーザーだけになります。
+現在、サンプル アプリケーション **ContactManager** では、匿名ユーザーとログイン ユーザーの両方が連絡先を表示できますが、このセクションを完了すると、連絡先を追加できるのは canEdit ロールが割り当てられたログイン ユーザーだけになります。
 
-"canEdit" ロールが割り当てられたユーザーだけがアクセスできる、*Admin* という名前のフォルダーを作成します。
+canEdit ロールが割り当てられたユーザーだけがアクセスできる、*Admin* という名前のフォルダーを作成します。
 
 1. **ソリューション エクスプローラー**で、*Contacts* フォルダーにサブフォルダーを追加し、新しいサブフォルダーに「*Admin*」という名前を付けます。
 2. 次に示すファイルを *Contacts* フォルダーから *Contacts/Admin* フォルダーに移動します。  
-	- *Delete.aspx * と * Delete.aspx.cs*
-	- *Edit.aspx * と * Edit.aspx.cs*
-	- *Insert.aspx * と * Insert.aspx.cs*
+	- *Delete.aspx *および* Delete.aspx.cs*
+	- *Edit.aspx *および* Edit.aspx.cs*
+	- *Insert.aspx *および* Insert.aspx.cs*
 3. *Contacts/Default.aspx* 内のリンク参照を更新します。これには、*Insert.aspx*、*Edit.aspx*、*Delete.aspx* にリンクしているページ参照の前に "Admin/" を追加します。  
 	<pre class="prettyprint">
-	<%@ Page Title=&quot;ContactsList&quot; Language=&quot;C#&quot; MasterPageFile=&quot;~/Site.Master&quot; CodeBehind=&quot;Default.aspx.cs&quot; Inherits=&quot;ContactManager.Contacts.Default&quot; ViewStateMode=&quot;Disabled&quot; %>
-	<%@ Register TagPrefix=&quot;FriendlyUrls&quot; Namespace=&quot;Microsoft.AspNet.FriendlyUrls&quot; %>
+	&lt;%@ Page Title=&quot;ContactsList&quot; Language=&quot;C#&quot; MasterPageFile=&quot;~/Site.Master&quot; CodeBehind=&quot;Default.aspx.cs&quot; Inherits=&quot;ContactManager.Contacts.Default&quot; ViewStateMode=&quot;Disabled&quot; %&gt;
+	&lt;%@ Register TagPrefix=&quot;FriendlyUrls&quot; Namespace=&quot;Microsoft.AspNet.FriendlyUrls&quot; %&gt;
 	
-	<asp:Content runat=&quot;server&quot; ContentPlaceHolderID=&quot;MainContent&quot;>
-	    <h2>Contacts List</h2>
-	    <p>
-	        <asp:HyperLink runat=&quot;server&quot; NavigateUrl=&quot;<mark>Admin/</mark>Insert.aspx&quot; Text=&quot;Create new&quot; />
-	    </p>
-	    <div>
-	        <asp:ListView runat=&quot;server&quot;
+	&lt;asp:Content runat=&quot;server&quot; ContentPlaceHolderID=&quot;MainContent&quot;&gt;
+	    &lt;h2&gt;Contacts List&lt;/h2&gt;
+	    &lt;p&gt;
+	        &lt;asp:HyperLink runat=&quot;server&quot; NavigateUrl=&quot;<mark>Admin/</mark>Insert.aspx&quot; Text=&quot;Create new&quot; /&gt;
+	    &lt;/p&gt;
+	    &lt;div&gt;
+	        &lt;asp:ListView runat=&quot;server&quot;
 	            DataKeyNames=&quot;ContactId&quot; ItemType=&quot;ContactManager.Models.Contacts&quot;
 	            AutoGenerateColumns=&quot;false&quot;
 	            AllowPaging=&quot;true&quot; AllowSorting=&quot;true&quot;
-	            SelectMethod=&quot;GetData&quot;>
-	            <EmptyDataTemplate>
+	            SelectMethod=&quot;GetData&quot;&gt;
+	            &lt;EmptyDataTemplate&gt;
 	                There are no entries found for Contacts
-	            </EmptyDataTemplate>
-	            <LayoutTemplate>
-	                <table class=&quot;table&quot;>
-	                    <thead>
-	                        <tr>
-	                            <th>Name</th>
-	                            <th>Address</th>
-	                            <th>City</th>
-	                            <th>State</th>
-	                            <th>Zip</th>
-	                            <th>Email</th>
-	                            <th>&nbsp;</th>
-	                        </tr>
-	                    </thead>
-	                    <tbody>
-	                        <tr runat=&quot;server&quot; id=&quot;itemPlaceholder&quot; />
-	                    </tbody>
-	                </table>
-	            </LayoutTemplate>
-	            <ItemTemplate>
-	                <tr>
-	                    <td>
-	                        <asp:DynamicControl runat=&quot;server&quot; DataField=&quot;Name&quot; ID=&quot;Name&quot; Mode=&quot;ReadOnly&quot; />
-	                    </td>
-	                    <td>
-	                        <asp:DynamicControl runat=&quot;server&quot; DataField=&quot;Address&quot; ID=&quot;Address&quot; Mode=&quot;ReadOnly&quot; />
-	                    </td>
-	                    <td>
-	                        <asp:DynamicControl runat=&quot;server&quot; DataField=&quot;City&quot; ID=&quot;City&quot; Mode=&quot;ReadOnly&quot; />
-	                    </td>
-	                    <td>
-	                        <asp:DynamicControl runat=&quot;server&quot; DataField=&quot;State&quot; ID=&quot;State&quot; Mode=&quot;ReadOnly&quot; />
-	                    </td>
-	                    <td>
-	                        <asp:DynamicControl runat=&quot;server&quot; DataField=&quot;Zip&quot; ID=&quot;Zip&quot; Mode=&quot;ReadOnly&quot; />
-	                    </td>
-	                    <td>
-	                        <asp:DynamicControl runat=&quot;server&quot; DataField=&quot;Email&quot; ID=&quot;Email&quot; Mode=&quot;ReadOnly&quot; />
-	                    </td>
-	                    <td>
-	                        <a href=&quot;<mark>Admin/</mark>Edit.aspx?ContactId=<%#: Item.ContactId%>&quot;>Edit</a> | 
-	                        <a href=&quot;<mark>Admin/</mark>Delete.aspx?ContactId=<%#: Item.ContactId%>&quot;>Delete</a>
-	                    </td>
-	                </tr>
-	            </ItemTemplate>
-	        </asp:ListView>
-	    </div>
-	</asp:Content>
+	            &lt;/EmptyDataTemplate&gt;
+	            &lt;LayoutTemplate&gt;
+	                &lt;table class=&quot;table&quot;&gt;
+	                    &lt;thead&gt;
+	                        &lt;tr&gt;
+	                            &lt;th&gt;Name&lt;/th&gt;
+	                            &lt;th&gt;Address&lt;/th&gt;
+	                            &lt;th&gt;City&lt;/th&gt;
+	                            &lt;th&gt;State&lt;/th&gt;
+	                            &lt;th&gt;Zip&lt;/th&gt;
+	                            &lt;th&gt;Email&lt;/th&gt;
+	                            &lt;th&gt;&amp;nbsp;&lt;/th&gt;
+	                        &lt;/tr&gt;
+	                    &lt;/thead&gt;
+	                    &lt;tbody&gt;
+	                        &lt;tr runat=&quot;server&quot; id=&quot;itemPlaceholder&quot; /&gt;
+	                    &lt;/tbody&gt;
+	                &lt;/table&gt;
+	            &lt;/LayoutTemplate&gt;
+	            &lt;ItemTemplate&gt;
+	                &lt;tr&gt;
+	                    &lt;td&gt;
+	                        &lt;asp:DynamicControl runat=&quot;server&quot; DataField=&quot;Name&quot; ID=&quot;Name&quot; Mode=&quot;ReadOnly&quot; /&gt;
+	                    &lt;/td&gt;
+	                    &lt;td&gt;
+	                        &lt;asp:DynamicControl runat=&quot;server&quot; DataField=&quot;Address&quot; ID=&quot;Address&quot; Mode=&quot;ReadOnly&quot; /&gt;
+	                    &lt;/td&gt;
+	                    &lt;td&gt;
+	                        &lt;asp:DynamicControl runat=&quot;server&quot; DataField=&quot;City&quot; ID=&quot;City&quot; Mode=&quot;ReadOnly&quot; /&gt;
+	                    &lt;/td&gt;
+	                    &lt;td&gt;
+	                        &lt;asp:DynamicControl runat=&quot;server&quot; DataField=&quot;State&quot; ID=&quot;State&quot; Mode=&quot;ReadOnly&quot; /&gt;
+	                    &lt;/td&gt;
+	                    &lt;td&gt;
+	                        &lt;asp:DynamicControl runat=&quot;server&quot; DataField=&quot;Zip&quot; ID=&quot;Zip&quot; Mode=&quot;ReadOnly&quot; /&gt;
+	                    &lt;/td&gt;
+	                    &lt;td&gt;
+	                        &lt;asp:DynamicControl runat=&quot;server&quot; DataField=&quot;Email&quot; ID=&quot;Email&quot; Mode=&quot;ReadOnly&quot; /&gt;
+	                    &lt;/td&gt;
+	                    &lt;td&gt;
+	                        &lt;a href=&quot;<mark>Admin/</mark>Edit.aspx?ContactId=&lt;%#: Item.ContactId%&gt;&quot;&gt;Edit&lt;/a&gt; | 
+	                        &lt;a href=&quot;<mark>Admin/</mark>Delete.aspx?ContactId=&lt;%#: Item.ContactId%&gt;&quot;&gt;Delete&lt;/a&gt;
+	                    &lt;/td&gt;
+	                &lt;/tr&gt;
+	            &lt;/ItemTemplate&gt;
+	        &lt;/asp:ListView&gt;
+	    &lt;/div&gt;
+	&lt;/asp:Content&gt;
 	</pre>
-4. 次の 3 つのファイルで 6 つ記述されている `Response.Redirect("Default.aspx")` コードを `Response.Redirect("~/Contacts/Default.aspx")` に更新します。  
+4. `Response.Redirect("Default.aspx")` コードの 6 つの参照を、次の 3 つのファイルの `Response.Redirect("~/Contacts/Default.aspx")` に変更します。  
 	- *Delete.aspx.cs*
 	- *Edit.aspx.cs*
 	- *Insert.aspx.cs*  
 
 	これで、データを表示および更新した際に、すべてのリンクが正常に動作するようになりました。
 5. *Admin* フォルダーへのアクセスを制限するには、**ソリューション エクスプローラー**で *Admin* フォルダーを右クリックして、**[新しい項目の追加]** を選択します。
-6. Visual C# Web テンプレートの一覧で、中央の一覧にある **[Web 構成ファイル]** を選択し、既定の名前 *Web.config* のままで **[追加]** を選択します。
+6. Visual C# Web テンプレートの一覧で、中央の一覧にある **[Web 構成ファイル]** を選択し、既定の名前「*Web.config*」のままで **[追加]** を選択します。
 7. *Web.config* ファイルの XML の内容を次の内容で置き換えます。
 	<pre class="prettyprint">
-	<?xml version=&quot;1.0&quot;?>
-	<configuration>
-	  <system.web>
-	    <authorization>
-	      <allow roles=&quot;canEdit&quot;/>
-	      <deny users=&quot;*&quot;/>
-	    </authorization>
-	  </system.web>
-	</configuration>
+	&lt;?xml version=&quot;1.0&quot;?&gt;
+	&lt;configuration&gt;
+	  &lt;system.web&gt;
+	    &lt;authorization&gt;
+	      &lt;allow roles=&quot;canEdit&quot;/&gt;
+	      &lt;deny users=&quot;*&quot;/&gt;
+	    &lt;/authorization&gt;
+	  &lt;/system.web&gt;
+	&lt;/configuration&gt;
 	</pre>
 8. *Web.config* ファイルを保存します。 
-	*Web.config* ファイルの指定によって、"canEdit" ロールが割り当てられたユーザー以外は *Admin* フォルダーに格納されたページにアクセスできくなりました。 
+	*Web.config* の指定によって、canEdit ロールが割り当てられたユーザー以外は *Admin* フォルダーに格納されたページにアクセスできなくなりました。 
 
-"canEdit" ロールが割り当てられていないユーザーがデータを変更しようとすると、[*Log in*] ページにリダイレクトされます。
+canEdit ロールが割り当てられていないユーザーがデータを変更しようとすると、[*Log in*] ページにリダイレクトされます。
 
 ##データベースが関連付けられたアプリケーションを Azure にデプロイする 
 Web アプリケーションが完成したら、Azure に発行することができます。
@@ -706,20 +707,20 @@ Web アプリケーションが完成したら、Azure に発行することが�
 	![Publish menu option](./media/web-sites-dotnet-web-forms-secure/SecureWebForms22.png)  
 	**[Web の発行]** ダイアログ ボックスが表示されます。  
 	![Publish Web dialog box](./media/web-sites-dotnet-web-forms-secure/SecureWebForms22a.png)  
-3. **[プロファイル]** タブで、発行先として **[Azure Websites]** をクリックします (選択されていない場合)。  
+3. **[プロファイル]** タブで発行先に **[Windows Azure Web Sites]** をクリックします (選択されていない場合)。  
 	![Publish Web dialog box](./media/web-sites-dotnet-web-forms-secure/SecureWebForms23.png)  
 4. **[サインイン]** をクリックします (サインインしていない場合)。
-5. **[既存の Web サイト]** ドロップダウン ボックスで、このチュートリアルで作成した Web サイトを選択し、**[OK]** をクリックします。  
+5. **[既存の Web サイト]** ドロップダウン ボックスで、このチュートリアルで作成した Web サイトを選択し、**[OK]** ボタンをクリックします。  
 	![Select Existing Web Site dialog box](./media/web-sites-dotnet-web-forms-secure/SecureWebForms25.png)  
 	プロファイルに対する変更の保存が確認された場合は、**[はい]** を選択します。
 6. **[設定]** タブをクリックします。  
 	![Select Existing Web Site dialog box](./media/web-sites-dotnet-web-forms-secure/SecureWebForms26.png)  
 7. **[構成]** ドロップダウン ボックスを **[デバッグ]** に設定します。
-8. **[ApplicationDbContext]** の横の **[下向き矢印]** アイコンをクリックして、**ContactDB** に設定します。
+8. **[ApplicationDbContext]** の**下向き矢印**アイコンをクリックして、**ContactDB** に設定します。
 9. **[Code First Migrations を実行]** チェック ボックスをオンにします。  
 
 	>[WACOM.NOTE]  
-	この例では、アプリケーションを最初に発行する際にのみこのチェック ボックスをオンにします。これによって、*Configuration.cs* ファイルの *Seed* メソッドが 1 回だけ呼び出されます。  
+	この例では、アプリケーションを最初に発行する際にのみ、このチェック ボックスをオンにします。これによって、*Configuration.cs* ファイルの *Seed* メソッドが 1 回だけ呼び出されます。  
 
 10. **[発行]** をクリックします。  
 	アプリケーションが Azure に発行されます。
@@ -735,17 +736,17 @@ Web アプリケーションが完成したら、Azure に発行することが�
 2. **[Contacts List]** ページで **[Create New]** を選択します。  
 	![Contacts listed in Browser](./media/web-sites-dotnet-web-forms-secure/SecureWebForms29.png)  
 	連絡先の変更が許可されたアカウントでログインしていない場合、**[Login]** ページにリダイレクトされます。  
-3. 次の電子メール アドレスとパスワードを入力して **[Log in]** をクリックします。  
-	**Email**:`canEditUser@wideworldimporters.com`  
-	**Password**:`Pa$$word1`  
+3. 次の電子メール アドレスとパスワードを入力して **[Log in]** ボタンをクリックします。  
+	**電子メール**:`canEditUser@wideworldimporters.com`  
+	**パスワード:**:`Pa$$word1`  
 	![Log in Page](./media/web-sites-dotnet-web-forms-secure/SecureWebForms28.png)  
 
-4. 各フィールドに新しいデータを入力して **[Insert]** をクリックします。  
+4. 各フィールドに新しいデータを入力して **[Insert]** ボタンをクリックします。  
 	![Add New Contact Page](./media/web-sites-dotnet-web-forms-secure/SecureWebForms30.png)  
 	新しいレコードが追加された *EditContactList.aspx* ページが表示されます。  
 	![Add New Contact Page](./media/web-sites-dotnet-web-forms-secure/SecureWebForms31.png)  
 
-5. **[ログオフ]** リンクを選択します。
+5. **[Log off]** リンクを選択します。
 
 ###アプリケーションを停止する 
 他のユーザーによるサンプル アプリケーションへの登録や、アプリケーションの使用を避けるには、Web サイトを停止します。
@@ -770,12 +771,12 @@ Web アプリケーションが完成したら、Azure に発行することが�
 	>[WACOM.NOTE]  
 	**[SQL データベース]** を展開できず、**ContactDB** を Visual Studio で表示できない場合は、手順に従って特定のファイアウォール ポート (またはポート範囲) を開放する必要があります。これには、[MVC チュートリアル](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)の最後に記載されている「**Azure のファイアウォール ルールを設定する**」の手順を実行します。または、アプリケーションをローカルでビルド、実行し (Visual Studio で **Ctrl キーを押しながら F5 キーを押す**)、データを追加して、ローカル データベースのデータを確認する方法もあります。  
 
-4. **[サーバーへの接続]** ダイアログ ボックスが表示された場合、このチュートリアルの冒頭で作成した**パスワード**を入力して **[接続]** をクリックします。  
+4. **[サーバーへの接続]** ダイアログ ボックスが表示された場合、このチュートリアルの冒頭で作成した**パスワード**を入力して **[接続]** ボタンをクリックします。  
 
 	>[WACOM.NOTE]  
-	パスワードを思い出せない場合は、ローカルのプロジェクト ファイルで見つけることができます。これには、**ソリューション エクスプローラー**で *Properties* フォルダー、*PublishProfiles* フォルダーの順に展開し、*contactmanager.pubxml* ファイルを開き (別の名前が付けられている可能性があります)、発行パスワードを検索します。
+	パスワードを思い出せない場合は、ローカルのプロジェクト ファイルから見つけることができます。これには、**ソリューション エクスプローラー**で *Properties* フォルダー、*PublishProfiles* フォルダーの順に展開し、*contactmanager.pubxml* ファイルを開き (別の名前が付けられている可能性があります)、発行パスワードを検索します。
 5. **[contactDB]** データベース、**[テーブル]** の順に展開します。
-6. **dbo.AspNetUsers** テーブルを右クリックし、**[データの表示]** を選択します。  
+6. **[dbo.AspNetUsers]** テーブルを右クリックし、**[データの表示]** を選択します。  
 	![View Data menu item](./media/web-sites-dotnet-web-forms-secure/SecureWebForms34.png)  
 	canEditUser@contoso.com ユーザーに関連付けられているデータが表示されます。  
 	![ContactManager window](./media/web-sites-dotnet-web-forms-secure/SecureWebForms35.png)  
@@ -787,17 +788,19 @@ Web アプリケーションが完成したら、Azure に発行することが�
 	![AspNetUserRoles data](./media/web-sites-dotnet-web-forms-secure/SecureWebForms36.png)  
 2. *RoleId* をコピーして空の (新しい) 行に貼り付けます。  
 	![AspNetUserRoles data](./media/web-sites-dotnet-web-forms-secure/SecureWebForms37.png)  
-3. **dbo.AspNetUsers** テーブルで、ロールを割り当てるユーザーを特定し、ユーザーの *Id* をコピーします。
-4. コピーした *Id* を、**AspNetUserRoles** テーブルの新しい行の **"UserId"** フィールドに追加します。  
+3. **dbo.AspNetUsers** テーブルで、ロールを割り当てるユーザーを特定し、ユーザーの *ID* をコピーします。
+4. コピーした *ID* を、**AspNetUserRoles** テーブルの新しい行の **[UserId]** フィールドに追加します。  
 
 >[WACOM.NOTE]  
 もっと簡単にユーザーとロールを管理できるように現在ツールを作成しています。  
 
 ##次のステップ
-ASP.NET Web フォームの詳細については、ASP.NET Web サイトの「[Learn About ASP.NET Web Forms (ASP.NET Web フォームについて学習する)[」や、](http://www.asp.net/web-forms)Microsoft Azure のチュートリアルとガイド](http://azure.microsoft.com/ja-jp/documentation/services/web-sites/#net)を参照してください。
+ASP.NET Web フォームの詳細については、ASP.NET Web サイトの「[Learn About ASP.NET Web Forms (ASP.NET Web フォームについて学習する)](http://www.asp.net/web-forms)」や、[Microsoft Azure のチュートリアルとガイド](http://azure.microsoft.com/ja-jp/documentation/services/web-sites/#net)を参照してください。
 
-このチュートリアルは、Rick Anderson (Twitter [@RickAndMSFT](https://twitter.com/RickAndMSFT)) が Tom Dykstra と Barry Dorrans (Twitter [@blowdart](https://twitter.com/blowdart)) の協力を得て執筆した MVC のチュートリアル「[メンバーシップ、OAuth、SQL Database を使用した安全な ASP.NET MVC 5 アプリケーションを Azure の Web Site に展開する](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)」の内容に基づいています。 
+このチュートリアルは、Rick Anderson (Twitter [@RickAndMSFT](https://twitter.com/RickAndMSFT)) が Tom Dykstra と Barry Dorrans ([@blowdart](https://twitter.com/blowdart)) の協力を得て執筆した「[メンバーシップ、OAuth、SQL データベースを使用した安全な ASP.NET MVC 5 アプリケーションを Azure の Web サイトにデプロイする](http://azure.microsoft.com/ja-jp/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)」の内容に基づいています。 
 
 役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。新しいトピックについては、「[Show Me How With Code (コードの使用方法)](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code)」で要求および投票することもできます。
 
 
+
+<!--HONumber=35.2-->

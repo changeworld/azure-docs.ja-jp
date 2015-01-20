@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="Blitline Image Processing Service" pageTitle="Blitline を使用した画像処理の方法 - Azure の機能ガイド " metaKeywords="" description="Azure アプリケーション内で Blitline サービスを使用して画像を処理する方法について説明します。" metaCanonical="" services="" documentationCenter=".NET" title="How to use Blitline with Azure and Azure Storage" authors="need to identify contact" solutions="" manager="need to identify contact" editor="" />
+﻿<properties urlDisplayName="Blitline Image Processing Service" pageTitle="画像処理のための Blitline の使用方法 - Azure の機能ガイド " metaKeywords="" description="Azure アプリケーション内で Blitline サービスを使用して画像を処理する方法について説明します。" metaCanonical="" services="" documentationCenter=".NET" title="How to use Blitline with Azure and Azure Storage" authors="jason@blitline.com" solutions="" manager="jason@blitline.com" editor="jason@blitline.com" />
 
-<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="pennij" />
+<tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="12/09/2014" ms.author="support@blitline.com" />
 
 
 
@@ -24,7 +24,7 @@
 
 Blitline は、自分で構築する場合と比べてわずかな価格でエンタープライズ レベルの画像処理が可能なクラウド ベースの画像処理サービスです。
 
-画像処理は何度も行われてきたのが事実であり、通常は Web サイトごとに最初から再構築されます。マイクロソフトでもこの作業を何度も行ってきたので理解しています。ある日、皆さんのためにマイクロソフトがこれを行うときであると判断しました。マイクロソフトでは、この作業をすばやく効率的に行うと同時に皆さんの負担を軽減する方法を認識しています。
+画像処理は何度にもわたって繰り返されている作業であり、通常は Web サイトごとに最初から作り直されます。マイクロソフトでもこの作業を何度も行ってきたので理解しています。ある日、皆さんのためにマイクロソフトがこれを行うときであると判断しました。私たちは、この作業をすばやく効率的に行う方法を把握しており、ユーザーの負担を軽減することができます。
 
 詳細については、[http://www.blitline.com](http://www.blitline.com) を参照してください。
 
@@ -32,7 +32,7 @@ Blitline は、自分で構築する場合と比べてわずかな価格でエ�
 
 Blitline がどのようなときに役立つかは、使い始める前に Blitline に当てはまらないことを知っておいた方が簡単に理解できます。
 
-- Blitline には、画像をアップロードする HTML ウィジェットはありません。Blitline で画像を使用するには、画像を公開するか、制限付きアクセス許可を取得する必要があります。
+- Blitline には、画像をアップロードする HTML ウィジェットはありません。画像は一般に公開するか、制限付きアクセス許可で Blitline からアクセスできるようにする必要があります。
 
 - Blitline には、Aviary.com のようなライブ画像処理機能がありません。
 
@@ -42,11 +42,11 @@ Blitline がどのようなときに役立つかは、使い始める前に Blit
 
 ## <a id="createaccount"></a>Blitline アカウントの作成
 
-[WACOM.INCLUDE [blitline-signup](../includes/blitline-signup.md)]
+[WACOM.INCLUDE [blitline サインアップ](../includes/blitline-signup.md)]
 
 ## <a id="createjob"></a>Blitline ジョブを作成する方法
 
-Blitline では、JSON を使用して画像で行う操作が定義されます。この JSON は、いくつかの簡単なフィールドで構成されています。
+Blitline では、JSON を使用して画像に対して実行する操作を定義します。この JSON は、いくつかの簡単なフィールドで構成されています。
 
 最も簡単な例は次のとおりです。
 
@@ -64,13 +64,13 @@ Blitline では、JSON を使用して画像で行う操作が定義されます
 
 アプリケーション ID は、Azure の **[接続文字列]** タブまたは **[管理]** タブに表示される ID です。これは、Blitline でのジョブの実行を可能にする秘密の識別子です。
 
-"save" パラメーターは、画像が処理された後に画像を配置する場所に関する情報を識別します。この簡単なケースでは定義されていません。場所が定義されていない場合、Blitline により独自のクラウドの場所にローカルで (かつ一時的に) 保存されます。Blitline を作成すると、Blitline により返された JSON からその場所を取得できるようになります。"image" 識別子は必須であり、保存されたこの特定の画像を識別するときに返されます。
+"save" パラメーターは、処理された画像を配置する場所に関する情報を識別します。この簡単なケースでは定義されていません。場所が定義されていない場合、Blitline により独自のクラウドの場所にローカルで (かつ一時的に) 保存されます。Blitline を作成すると、Blitline により返された JSON からその場所を取得できるようになります。"image" 識別子は必須であり、保存されたこの特定の画像を識別するときに返されます。
 
-ここでサポートされる*機能*の詳細については、次のページを参照してください。<http://www.blitline.com/docs/functions>
+ここでサポートされる *機能* の詳細については、次を参照してください。 <http://www.blitline.com/docs/functions>
 
-ジョブ オプションに関するドキュメントは、次の場所にあります。<http://www.blitline.com/docs/api>
+ジョブ オプションに関するドキュメントは、次の場所にあります。 <http://www.blitline.com/docs/api>
 
-JSON を取得した後、それを `http://api.blitline.com/jobs` に **POST** するだけです。
+JSON を取得した後は、それを `http://api.blitline.com/jobs` に **POST** するだけです。
 
 次のような内容の JSON が戻されます。
 
@@ -91,7 +91,7 @@ JSON を取得した後、それを `http://api.blitline.com/jobs` に **POST** 
 
 ## <a id="saveazure"></a>画像を Azure ストレージ アカウントに保存する方法
 
-Azure ストレージ アカウントを持っている場合は、処理された画像を Blitline から Azure コンテナーに簡単にプッシュすることができます。"azure_destination" を追加することで、Blitline がプッシュする場所とアクセス許可を定義します。
+Azure ストレージ アカウントを持っている場合は、処理された画像を Blitline から Azure コンテナーに簡単にプッシュすることができます。"azure_destination" を追加することで、Blitline からプッシュする場所とアクセス許可を定義します。
 
 たとえば次のようになります。
 
@@ -122,7 +122,7 @@ SAS には、送信先ファイルのファイル名を含む SAS URL 全体が�
     http://blitline.blob.core.windows.net/sample/image.jpg?sr=b&sv=2012-02-12&st=2013-04-12T03%3A18%3A30Z&se=2013-04-12T04%3A18%3A30Z&sp=w&sig=Bte2hkkbwTT2sqlkkKLop2asByrE0sIfeesOwj7jNA5o%3D
 
 
-Blitline の Azure ストレージ ドキュメントの最新版を[ここ](http://www.blitline.com/docs/azure_storage)から参照することもできます。
+Azure ストレージに関する Blitline のドキュメントの最新版を[ここ](http://www.blitline.com/docs/azure_storage)で参照することもできます。
 
 
 ## <a id="nextsteps"></a>次のステップ
@@ -142,3 +142,5 @@ Blitline の Azure ストレージ ドキュメントの最新版を[ここ](htt
   [Blitline ジョブを作成する方法]: #createjob
   [画像を Azure ストレージに保存する方法]: #saveazure
 
+
+<!--HONumber=35.2-->

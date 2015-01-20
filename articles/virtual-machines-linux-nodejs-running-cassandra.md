@@ -1,589 +1,722 @@
-<properties linkid="services-linux-cassandra-with-linux" urlDisplayName="Cassandra with Linux" pageTitle="Run Cassandra with Linux on Azure" metaKeywords="" description="Explains how to run a Cassandra cluster on Linux in Azure Virtual Machines." metaCanonical="" services="virtual-machines" documentationCenter="nodejs" title="Running Cassandra with Linux on Azure and Accessing it from Node.js" authors="hanuk" solutions="" manager="timlt" editor="" />
+﻿<properties urlDisplayName="Cassandra with Linux" pageTitle="Azure 上の Linux での Cassandra の実行" metaKeywords="" description="Azure の仮想マシンの Linux で Cassandra クラスターを実行する方法について説明します。" metaCanonical="" services="virtual-machines" documentationCenter="nodejs" title="Running Cassandra with Linux on Azure and Accessing it from Node.js" authors="hanuk" solutions="" manager="timlt" editor="" />
 
-<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="hanuk" />
+<tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="vm-linux" ms.devlang="na" ms.topic="article" ms.date="12/01/2014" ms.author="hanuk" />
 
-# <span></span></a>Azure 上の Linux で Cassandra を実行して Node.js からアクセスする
 
+
+
+
+<h1><a id = ""></a>Azure 上の Linux で Cassandra を実行して Node.js からアクセスする </h1>
 **執筆者:** Hanu Kommalapati
 
-## 目次
+## 目次 ##
 
--   [概要][概要]
--   [Cassandra のデプロイ方式][Cassandra のデプロイ方式]
--   [複合デプロイ][複合デプロイ]
--   [Azure の仮想マシンの展開][Azure の仮想マシンの展開]
--   [タスク 1: Linux クラスターのデプロイ][タスク 1: Linux クラスターのデプロイ]
--   [タスク 2: 各仮想マシンでの Cassandra のセットアップ][タスク 2: 各仮想マシンでの Cassandra のセットアップ]
--   [タスク 3: Node.js からの Cassandra クラスターへのアクセス][タスク 3: Node.js からの Cassandra クラスターへのアクセス]
--   [まとめ][まとめ]
+- [概要] []
+- [単一リージョン デプロイ] []
+- [単一リージョンの Cassandra クラスターをテスト] []
+- [複数リージョン デプロイ] []
+- [複数リージョンの Cassandra クラスターをテスト] []
+- [Node.js から Cassandra クラスターをテスト] []
+- [まとめ] []
 
-## <span id="overview"></span> </a>概要
+##<a id="overview"> </a>概要 ##
+Microsoft Azure は Microsoft のソフトウェアと Microsoft 以外のソフトウェアの両方を実行するオープン クラウド プラットフォームであり、実行するソフトウェアには、オペレーティング システム、アプリケーション サーバー、メッセージング ミドルウェアだけでなく、市販モデルおよびオープン ソース モデルの SQL および NoSQL のデータベースが含まれています。Azure などのパブリック クラウド上での回復力のあるサービスの構築には、アプリケーション サーバーとストレージ レイヤーの両方の慎重な計画と熟慮されたアーキテクチャが必要です。Cassandra の分散ストレージ アーキテクチャは、クラスターの障害へのフォールト トレランスを可能にする高可用性を備えたシステムの構築に役立ちます。Cassandra は cassandra.apache.org で Apache Software Foundation によって管理されているクラウド スケールのNoSQL のデータベースです。Cassandra は Java で記述されており、Windows プラットフォームと Linux プラットフォームの両方で稼働します。 
 
-Azure には、スキーマなしでビジネス オブジェクトを保存できる Azure テーブル ストレージによる NoSQL データベース サービスが用意されています。このサービスは、HTTP および REST をサポートする Node.js、.NET、Java などの言語から使用できます。ただし、ほかにも Cassandra や Couchbase のように、ステートレス クラウド モデルであるために Azure PaaS では実行できない人気の NoSQL データベースも存在します。Azure の仮想マシンでは、現在、このような NoSQL データベースをコードベースを変更することなく Azure 上で実行できます。この文章の目的は、仮想マシン上で Cassandra クラスターを実行し、それに Node.js からアクセスする方法を示すことです。実際の運用環境への Cassandra のデプロイについては取り上げません。運用環境では、マルチ データ センターの Cassandra クラスターおよび関連するバックアップ戦略と回復戦略に目を向ける必要があります。この演習では、Linux の Ubuntu バージョン 12.04 および Cassandra 1.0.10 を使用します。ただし、手順はどの Linux ディストリビューションに対しても応用できます。
+この記事では、Microsoft Azure の仮想マシンおよび仮想ネットワークを利用する単一または複数のデータ センター クラスターとしての Ubuntu への Cassandra のデプロイの説明に焦点を当てています。運用環境にワークロードを最適化するためのクラスター デプロイについては、必要なレプリケーション、データ一貫性、スループット、高可用性の要件をサポートする複数ディスク ノード構成、適切なリング トポロジ設計、データ モデリングが必要なので、この記事では取り扱いません。 
 
-## <span id="schematic"></span> </a>Cassandra のデプロイ方式
+基本的にはこの記事では、Docker、Chef、Puppet と比較して、インフラストラクチャのデプロイを大幅に簡略化可能な Cassandra クラスターの構築の関連事項を説明します。  
 
-Azure の仮想マシン機能では、[Cassandra][Cassandra] のような NoSQL データベースを、プライベート クラウド環境と同じように簡単に Microsoft パブリック クラウド上で実行できます。違うのは 1 つだけ、Azure の仮想マシン インフラストラクチャに特有の仮想ネットワーク構成だけです。この記事の執筆時点では、Cassandra は Azure 上の管理されたサービスとしては利用できません。そのため、この記事では、仮想マシン上で Cassandra クラスターをセットアップして、仮想マシン内部でホストされた別の Linux インスタンスからアクセスします。ここで示した node.js のコード断片は、PaaS でホストしている Web アプリケーションまたは Web サービスからも使用できます。Azure の中核的な強みの 1 つは、PaaS の世界と IaaS の世界で優れたところを共に活用する複合アプリケーション モデルが可能なことです。
+##<a id="depmodels"> </a>配置モデル ##
+Windows Azure のネットワークでは、ネットワークのセキュリティのきめ細かな設定を実現するためにアクセスを制限できる分離プライベート クラスターのデプロイが可能です。この記事は Cassandra のデプロイの基本を説明することを目的としているため、一貫性レベル、およびスループットに最適化したストレージ設計については焦点を当てません。仮想クラスターのネットワーク要件の一覧を次に示します。
 
-Cassandra アプリケーション環境で実現できるデプロイ モデルは 2 つあります。自立的仮想マシン デプロイと複合デプロイです。複合デプロイの場合、仮想マシンでホストされた Cassandra クラスターは、PaaS でホストされた Azure Web アプリケーション (または Web サービス) から Thrift インターフェイスを使用してロード バランサーを介して利用されます。各 Cassandra ノードは、キー スペース フォールト時に他のピア ノードに対する要求のプロキシになりますが、ロード バランサーがエントリ レベルの要求の負荷分散をこなします。また、ロード バランサーは、データ制御を強化するために、ファイアウォールで保護されたサンドボックスを作成します。
+- 外部システムは、Azure の内部からも外部からも Cassandra データベースにアクセスできない
+- Cassandra クラスターは Thrift トラフィックのロード バランサーの内側に配置する必要がある
+- クラスターの可用性を強化するためにデータ センターごとに 2 つのグループに Cassandra ノードをデプロイする 
+- アプリケーション サーバー ファームのみがデータベースに直接アクセスできるように、クラスターをロック ダウンする
+- パブリック ネットワーク エンドポイントを SSH のみにする
+- 各 Cassandra ノードには、固定の内部 IP アドレスが必要である
 
-## <span id="composite"></span> </a> 複合デプロイ
+Cassandra は、単一の Azure リージョンにデプロイすることも、ワークロードを分散するために複数のリージョンにデプロイすることもできます。複数リージョンの配置モデルは、エンド ユーザーから地理的により近い場所で、同一の Cassandra インフラストラクチャを介してサービスを提供するために利用されています。Cassandra 組み込みのノード レプリケーション機能は、複数のデータ センターからのマルチマスターの同期書き込みを処理し、アプリケーションに一貫性のあるデータのビューを提供します。複数リージョン デプロイは、Azure サービスの広範なシステム停止のリスクの軽減にも役立ちます。Cassandra の一貫性制御の自由度の高さとレプリケーション トポロジは、アプリケーションの多様な RPO ニーズに対応します。 
 
-複合展開の目的は、仮想マシンのインフラストラクチャ管理によるオーバーヘッドを減らすために仮想マシンの規模を極限まで抑えて、PaaS の使用効率を最大化することです。サーバー管理にはオーバーヘッドがあるため、市場投入までの時間、不明なソース コード、OS に対する低水準アクセスなどのさまざまな理由により簡単には修正できず、ステートフルな動作を必要とするコンポーネントだけを展開します。
 
-![複合デプロイ図][複合デプロイ図]
+###<a id="oneregion"> </a>単一リージョン デプロイ ###
+まず単一リージョン デプロイから学習し、その後、複数リージョン モデルを作成します。Azure の仮想ネットワークは、上記で説明したネットワーク セキュリティ要件を実現するための分離サブネットの作成に使用されます。ここでは、Ubuntu 14.04 LTS と Cassandra 2.08 を使用する場合の単一リージョン デプロイの作成のプロセスについて説明しますが、このプロセスは、Linux の他のバリエーションにも簡単に応用できます。単一リージョン デプロイのシステムの特徴を次に示します。  
 
-## <span id="deployment"></span> </a>Azure の仮想マシンの展開
+**高可用性:** 図 1 の Cassandra ノードは、高可用性を確保するためにノードが複数の障害ドメインの間で分散されるように 2 つの可用性セットにデプロイされています。各可用性セットが注釈として付与された VM は、2 つの障害ドメインにマップされます。Microsoft Azure では、予期しないダウンタイム (ハードウェアやソフトウェアの障害など) の管理に障害ドメインの概念を使用しており、アップグレード ドメインの概念は、スケジュール設定されたダウンタイム (ホスト OS またはゲスト OS への修正プログラムの適用またはアップグレード、アプリケーションのアップグレードなど) を管理するために使用されています。高可用性を実現する上での障害ドメインおよびアップグレード ドメインの役割については、「[Disaster Recovery and High Availability for Azure Applications (Azure アプリケーションの障害復旧と高可用性)](http://msdn.microsoft.com/ja-jp/library/dn251004.aspx)」を参照してください。
 
-![仮想マシンのデプロイ][仮想マシンのデプロイ]
+![Single region deployment](./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux1.png)
 
-前に示している図では、Thrift トラフィックを許すように構成されたロード バランサーの背後で、4 ノードの Cassandra クラスターが仮想マシン内に展開されています。Azure でホストする PaaS アプリケーションは、言語固有の Thrift ライブラリを使用してクラスターにアクセスします。Java、C#、Node.js、Python、C++ などの言語用のライブラリがあります。2 つ目の図に示されている自立的仮想マシン展開では、仮想マシンでホストされた別のクラウド サービス内部で実行されているアプリケーションによってデータが利用されます。
+図 1:単一リージョン デプロイ
 
-## <span id="task1"></span> </a>タスク 1: Linux クラスターのデプロイ
+この記事の執筆時において、Azure では、特定の障害ドメインへの VM のグループの明示的なマッピングを許可していません。したがって、図 1 に示す配置モデルを使用している場合でも、多くの場合、すべての仮想マシンが 4 つの障害ドメインではなく、2 つの障害ドメインにマップされています。 
 
-クラスター作成の一般的な流れは次のようになります。
+**負荷分散 Thrift トラフィック:** Web サーバー内の Thrift クライアント ライブラリは、内部ロード バランサーを介してクラスターに接続します。このため、Cassandra クラスターをホストするクラウド サービスのコンテキストで、"data" サブネット (図 1 を参照) に内部ロード バランサーを追加するプロセスが必要になります。内部ロード バランサーの定義後は、この定義されたロード バランサー名を持つ負荷分散セットの注釈を使用して、各ノードに、負荷分散エンドポイントを追加する必要があります。詳細については、「[Azure Internal Load Balancing (Azure 内部負荷分散)](http://msdn.microsoft.com/ja-jp/library/azure/dn690121.aspx)」を参照してください。
 
-![クラスター作成の流れ図][クラスター作成の流れ図]
+**クラスター シード:** 新しいノードは、クラスターのトポロジを検出するためにシード ノードと通信するため、シードには最も可用性の高いノードを選択することが重要です。単一障害点を回避するために、可用性セットごとに 1 つのノードをシード ノードとして指定します。
 
-**手順 1.SSH キー ペアの生成**
+**レプリケーション係数と一貫性レベル:** Cassandra に組み込まれた高い可用性とデータの持続性は、レプリケーション係数 (RF、クラスターに格納されている行ごとのコピーの数) と一貫性レベル (呼び出し元に結果を返すまでのレプリカの読み取り/書き込み数)で示されます。レプリケーション係数は、KEYSPACE (リレーショナル データベースに似ています) の作成時に指定され、一貫性レベルは CRUD クエリの発行時に指定されます。一貫性についての詳細とクォーラムの計算式については、Cassandra のマニュアルで、「[Configuring for Consistency (一貫性の設定)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/dml/dml_config_consistency_c.html)」を参照してください。
 
-Azure では、プロビジョニング時に PEM または DER でエンコードされた X509 公開キーが必要です。「[Azure 上の Linux における SSH の使用方法][Azure 上の Linux における SSH の使用方法]」の指示に従って公開キーと秘密キーのペアを生成します。Windows または Linux で SSH クライアントとして putty.exe を使用する場合は、puttygen.exe を使用して、PEM でエンコードした RSA 秘密キーを PPK 形式に変換する必要があります。この手順は、「[Generating SSH Key Pair for Linux VM Deployment on Windows Azure (Windows Azure 上の Linux VM デプロイ用の SSH キー ペアの生成)][Generating SSH Key Pair for Linux VM Deployment on Windows Azure (Windows Azure 上の Linux VM デプロイ用の SSH キー ペアの生成)]」を参照してください。
+Cassandra では、"一貫性" と "結果的な一貫性" の 2 種類のデータ一貫性モデルがサポートされています。レプリケーション係数と一貫性レベルで、書き込み操作が完了してすぐに一貫性が確保されるのか、結果的に一貫性が確保されるのかが決まります。たとえば、一貫性レベルに、QUORUM を指定すると、常に、データの一貫性が確保されます。一方、QUORUM を確保するために必要に応じて書き込まれるレプリカの数未満の一貫性レベル (例: ONE) を指定すると、データの一貫性は結果的に確保されます。 
 
-**手順 2.Ubuntu VM の作成**
+レプリケーション係数が 3 で、読み取り/書き込みの一貫性レベルが QUORUM (一貫性を保つため読み取りや書き込みを、2 ノードで行う) の上の図の 8 ノードのクラスターでは、理論上、最大で 1 レプリケーション グループにつき 1 ノードが失われた場合でも、アプリケーションが障害の影響を受ける前に対処できます。この場合、すべてのキースペースに対して、バランスの取れた読み取り/書き込み要求が行われることになります。デプロイしたクラスターで使用するパラメーターを次に示します。 
 
-最初の Ubuntu VM を作成するには、Azure プレビュー ポータルにログインして、**[新規]**、**[仮想マシン]**、**[ギャラリーから]**、**[Unbuntu Server 12.xx]** の順にクリックして、右矢印をクリックします。Linux VM の作成方法を説明したチュートリアルについては、「[Linux を実行する仮想マシンの作成][Linux を実行する仮想マシンの作成]」を参照してください。
-
-次に、[仮想マシンの構成] 画面で、次の情報を入力します。
-
-<table>
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">フィールド名</th>
-<th align="left">フィールド値</th>
-<th align="left">解説</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">仮想マシン名</td>
-<td align="left">hk-cas1</td>
-<td align="left">これは、仮想マシンのホスト名です。</td>
-</tr>
-<tr class="even">
-<td align="left">新しいユーザー名</td>
-<td align="left">localadmin</td>
-<td align="left">&quot;admin&quot; は Ubuntu 12.xx の予約ユーザー名です。</td>
-</tr>
-<tr class="odd">
-<td align="left">新しいパスワード</td>
-<td align="left"><em>強力なパスワード</em></td>
-<td align="left"></td>
-</tr>
-<tr class="even">
-<td align="left">パスワードの確認</td>
-<td align="left"><em>強力なパスワード</em></td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
-<td align="left">サイズ</td>
-<td align="left">Small</td>
-<td align="left">IO のニーズに応じて仮想マシンを選択します。</td>
-</tr>
-<tr class="even">
-<td align="left">認証に SSH キーを使用してセキュリティを確保する</td>
-<td align="left">チェック ボックスをオンにします</td>
-<td align="left">SSH キーによるセキュリティが必要な場合にオンにします。</td>
-</tr>
-<tr class="odd">
-<td align="left">証明書</td>
-<td align="left"><em>公開キー証明書のファイル名</em></td>
-<td align="left">OpenSSL などのツールを使って生成された DER または PEM でエンコードされた SSH 公開キー。</td>
-</tr>
-</tbody>
-</table>
-
-[VM モード] 画面で、次の情報を入力します。
-
-| フィールド名                                      | フィールド値                    | 解説                                                                                                        |
-|---------------------------------------------------|---------------------------------|-------------------------------------------------------------------------------------------------------------|
-| スタンドアロンの仮想マシン                        | ラジオ ボタンをクリックします。 | これは最初の仮想マシンの場合です。それ以後の仮想マシンでは、[既存の仮想マシンに接続する] をクリックします。 |
-| DNS 名                                            | *独自の名前*.cloudapp.net       | マシンとは独立したロード バランサー名を指定します。                                                         |
-| ストレージ アカウント                             | *既定のストレージ アカウント*   | 作成した既定のストレージ アカウントを使用します。                                                           |
-| リージョン/アフィニティ グループ/仮想ネットワーク | 米国西部                        | Cassandra クラスターにアクセスする Web アプリケーションのリージョンを選択します。                           |
-
-Cassandra クラスターに属するすべての仮想マシンについて、前に示している手順を繰り返します。この時点では、すべての仮想マシンが同じネットワークに属し、お互いに Ping を送信できます。Ping が機能しない場合は、仮想マシンのファイアウォールの構成 (iptables など) をチェックして、ICMP が許可されていることを確認します。ネットワーク接続のテストに成功したら、攻撃手段を減らすために ICMP は無効にしてください。
-
-**手順 3.負荷分散された Thrift エンドポイントの追加**
-
-手順 1. および手順 2. を終えると、各 VM には既に SSH エンドポイントが定義されています。ここで、パブリック ポートが 9160 で負荷分散された Thrift エンドポイントを追加します。手順は次のとおりです。
-
-a. 最初の VM の詳細ビューで、[エンドポイントの追加] をクリックします。
-
-b.[仮想マシンにエンドポイントを追加します] 画面で、[エンドポイントの追加] をクリックします。
-
-c. 右矢印をクリックします。
-
-d. [エンドポイントの詳細を指定します] 画面で、次の情報を入力します。
+単一リージョン Cassandra クラスター構成:
 
 <table>
-
 <tr>
 
-<th>
-フィールド名
+<th>クラスター パラメーター</th><th>値</th><th>解説</th></tr>
+<tr><td>ノード の数 (N) </td><td>8</td><td>クラスター内のノードの合計数</td></tr>
+<tr><td>レプリケーション係数 (RF)</td><td>	3 </td><td>	行のレプリカの数 </td></tr>
+<tr><td>一貫性レベル (書き込み)</td><td>	QUORUM [(RF/2) + 1 = 2][数式の結果の小数点以下の値は、切り捨てられます。] </td><td> 呼び出し元に応答が送信される前に、最大で 2 つのレプリカに書き込みます。3 番目のレプリカには、結果的に一貫性を確保する方式で書き込まれます。 </td></tr>
+<tr><td>一貫性レベル (読み取り)	</td><td>QUORUM [(RF/2) + 1 = 2][数式の結果の小数点以下の値は、切り捨てられます。]</td><td>	呼び出し元に応答を送信する前に、2 つのレプリカを読み取ります。</td></tr>
+<tr><td>レプリケーションの方法 </td><td>	NetworkTopologyStrategy [詳細については、Cassandra のマニュアルの「[Data Replication (データ レプリケーション)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html)」を参照してください。]</td><td>	デプロイ トポロジを把握し、すべてのレプリカが同じラックになることがないように、ノードにレプリカを配置します。</td></tr>
+<tr><td>スニッチ	</td><td>GossipingPropertyFileSnitch [詳細については、Cassandra マニュアルの「[Snitches (スニッチ)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html)]」を参照してください。</td><td>	NetworkTopologyStrategy を指定すると、スニッチの概念を使用してトポロジを把握します。GossipingPropertyFileSnitch を指定すると、各ノードのデータ センターとラックへのマッピングが、より適切に制御されます。この場合、クラスターはゴシップを使用して情報を伝達します。このため、PropertyFileSnitch と比べて、非常に簡単に動的 IP 設定を行うことができます。 </td></tr>
+</TABLE>
 
-</th>
+**Cassandra クラスターに関する Azure での考慮事項:** Microsoft Azure の仮想マシン機能では、ディスクの永続性を実現するために Azure Blob ストレージを使用してします。Azure ストレージは、高い耐久性を確保するために、各ディスクのレプリカを 3 つ保存します。つまり、Cassandra のテーブルに挿入されたデータの各行は、3 つのレプリカに格納されており、そのためレプリケーション係数 (RF) が 1 の場合でも、データの一貫性を確保するための処理が行われていることになります。レプリケーション係数が 1 の場合の主な問題は、1 つの Cassandra ノードのみで障害が発生した場合でも、アプリケーションにダウンタイムが発生することです。ただし、Azure ファブリック コントローラーによって認識される問題 (ハードウェア、システム ソフトウェアの障害など) によってノードがダウンした場合は、同じストレージ ドライブを使用して、代わりに新しいノードが準備されます。古いノードを置き換えるための新しいノードのプロビジョニングには、数分間かかる場合があります。同様に、ゲスト OS の変更、Cassandra のアップグレード、アプリケーションの変更といった計画済みのメンテナンス アクティビティ の場合も、Azure ファブリック コントローラーは、クラスター内のノードのローリング アップグレードを実行します。ローリング アップグレードの実行時にも、一度にいくつかのノードがダウンする場合があり、そのため、クラスターで、いくつかのパーティションのダウンタイムが短時間発生する可能性がありますの。ただし、Azure ストレージに冗長性が組み込まれているため、データが失われることはありません。
 
-<th>
-フィールド値
+Azure にデプロイされたシステムのうち高い可用性(例: 99.9 は、およそ 8.76 時間/年に相当します。詳細については、「[High Availability (高可用性)](http://en.wikipedia.org/wiki/High_availability)」を参照してください) を必要としないものに関しては、RF = 1、一貫性レベル = ONE で実行できます。高い可用性を必要とするアプリケーションでは、RF = 3 および一貫性レベル = QUORUM を指定すると、レプリカのうちの 1 つにあるノードのうちの 1 つのダウンタイムを許容します。従来型のデプロイ (例: 内部設置型) では、ディスク障害などでデータ損失が生じる可能性があるため、RF = 1 は使用できません。   
 
-</th>
+## 複数リージョン デプロイ ##
+上で述べたレプリケーションと一貫性モデルに対応した Cassandra のデータ センターを利用すると、外部ツールを使用することなく、複雑な設定なしで複数リージョン デプロイを実施できます。この点は、場合によっては、マルチ マスターの書き込みのデータベース ミラーリングのセットアップが非常に複雑な従来のリレーショナル データベースとは大きく異なります。複数リージョンにセットアップした Cassandra は、次のような使用シナリオで効果的です。 
 
-<th>
-解説
+**近接性ベースのデプロイ:** テナント ユーザーとリージョンの明確なマッピングを持つマルチ テナント アプリケーションでは、複数リージョン クラスターによる待機時間の短さがメリットになることもあります。たとえば、ある教育機関の学習管理システムでは、米国東部リージョンおよび米国西部リージョンに分散クラスターをデプロイし、各キャンパスでトランザクションと分析を利用できるようにしています。データの一貫性は読み取り時および書き込み時にはローカルで確保され、結果的には両方のリージョンにまたがる一貫性が確保されます。他にも、メディア配布、e コマースなど、特定の地理に集中するユーザー ベースにサービスを提供するありとあらゆる事例で、このデプロイ モデルを活用できます。
 
-</th>
+**高可用性:** 冗長性は、ソフトウェアとハードウェアの高可用性を実現するための鍵になります。詳細については、「Building Reliable Cloud Systems on Microsoft Azure (Microsoft Azure での信頼性のあるクラウド システムの構築)」を参照してください。Microsoft Azure で完全な冗長性を実現するための唯一の確実な方法は、複数のリージョンにクラスターをデプロイすることです。アプリケーションはアクティブ/アクティブ モードまたはアクティブ/パッシブ モードでデプロイすることができ、1 つのリージョンがダウンした場合でも、Azure Traffic Manager で、稼働中のリージョンにトラフィックをリダイレクトできます。単一リージョン デプロイで、可用性が 99.9 の場合、2 リージョン デプロイにすると、99.9999 の可用性を実現できます。この値は、数式 (1-(1-0.999) * (1-0.999))*100) に基づきます。詳細については、上記の文書を参照してください。
 
-</tr>
+**障害復旧:** 複数リージョン Cassandra クラスターは、適切に設計されている場合、データ センターの致命的な停止にも耐えられます。1 つのリージョンがダウンした場合、その他のリージョンにデプロイされたアプリケーションでエンドユーザーへのサービスの提供を開始できます。その他のビジネス継続性の実装と同様に、アプリケーションは、非同期パイプライン内にデータがあることによって生じるある程度のデータ損失を許容することが必要です。ただし、Cassandra は、従来のデータベースの復旧プロセスよりも、はるかに迅速に復旧を行います。図 2 には、各リージョンに 8 つのノードがある典型的な複数リージョンの配置モデルを示します。両方のリージョンは、左右対称の互いのミラー イメージになります。実際の設計は、ワークロードのタイプ (例: トランザクションまたは分析)、RPO、RTO、データの一貫性および可用性の要件によって異なります。
 
-<tr>
+![Multi region deployment](./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux2.png)
 
-<td>
-名前
+図 2:複数リージョンの Cassandra デプロイ
 
-</td>
+### ネットワーク統合 ###
+2 つのリージョンのプライベート ネットワークにデプロイされた仮想マシンのセットは、VPN トンネルを使用して、互いと通信します。VPN トンネルは、ネットワーク デプロイ プロセスでプロビジョニングされた 2 つのソフトウェア ゲートウェイを接続します。"web" サブネットおよび "data" サブネットに関しては、両方のリージョンに、ほぼ同じネットワーク アーキテクチャが使用されています。Azure のネットワークでは、必要な数だけサブネットを作成できます。ネットワーク セキュリティ上の必要に応じて ACL を適用してください。クラスターのトポロジの設計時には、データ センター間の通信の待機時間と、ネットワーク トラフィックの経済的影響を、考慮する必要があります。 
 
-<td>
-cassandra
+### 複数データ センター デプロイの場合のデータの一貫性 ###
+分散デプロイでは、クラスター トポロジのスループットと可用性への影響に注意する必要があります。RF および一貫性レベルは、クォーラムがデータ センターすべての可用性に依存しないように設定しなければなりません。 
+高い一貫性が必要なシステムの場合、LOCAL_QUORUM を一貫性レベル (読み取りと書き込み) に指定すると、データがリモート データ センターに非同期で複製される一方で、ローカルの読み取りと書き込みはローカル ノードのみで行われます。表 2 は、この記事で後ほど説明する複数リージョン クラスターの構成の詳細をまとめたものです。 
 
-</td>
-
-<td>
-重複しなければどのような名前でもかまいません。
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>
-プロトコル
-
-</td>
-
-<td>
-TCP
-
-</td>
-
-<td>
-</td>
-
-</tr>
-
-<tr>
-
-<td>
-パブリック ポート
-
-</td>
-
-<td>
-9160
-
-</td>
-
-<td>
-既定の Thrift ポートです。
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>
-プライベート ポート
-
-</td>
-
-<td>
-9160
-
-</td>
-
-<td>
-cassandra.yaml でこれを変更していない場合。
-
-</td>
-
-</tr>
-
-</table>
-前に示している設定を終えると、最初の VM では、cassandra エンドポイントの [負荷分散] が [いいえ] と表示されます。当面、これは無視してください。このエンドポイントを以降の VM に追加すると [はい] に変わります。
-
-e. 2 つ目の VM を選択し、前に示している手順を繰り返してエンドポイントを追加します。少しだけ違うのは、[既存のエンドポイントのトラフィックを負荷分散します] を選択し、ドロップダウン ボックスの一覧の [cassandra-960] を選択することです。この段階で、両方の VM にマッピングされたエンドポイントは、[負荷分散] の状態が [いいえ] から [はい] に変わります。
-
-クラスターの以降のノードについて、"e" の手順を繰り返します。
-
-これで VM の準備が完了しました。次は各 VM で Cassandra をセットアップします。Cassandra は多くの Linux ディストリビューションで標準パッケージではないため、手作業で展開します。
-
-[各 VM に対するソフトウェアのインストールは手作業で行います。ただし、この作業は、完全に機能する Cassandra VM をセットアップして、それを基本イメージとしてキャプチャし、この基本イメージから残りのインスタンスを作成することで、時間を短縮することができます。Linux イメージのキャプチャ方法については、「[Linux を実行する仮想マシンのイメージをキャプチャする方法]」を参照してください。]
-
-## <span id="task2"></span> </a>タスク 2: 各仮想マシンでの Cassandra のセットアップ
-
-**手順 1.前提条件のインストール**
-
-Cassandra には Java 仮想マシンが必要であり、そのため、Ubuntu を含む Debian 系 Linux では、次のコマンドを使用して最新の JRE をインストールする必要があります。
-
-    sudo add-apt-repository ppa:webupd8team/java
-    sudo apt-get update
-    sudo apt-get install oracle-java7-installer
-
-**手順 2.Cassandra のインストール**
-
-1.  SSH を使用して Linux (Ubuntu) VM インスタンスにログインします。
-
-2.  wget を使用して、ダウンロード ページ (<http://cassandra.apache.org/download/>)[<http://cassandra.apache.org/download/>] に記載されたミラーから Cassandra を ~/downloads ディレクトリに apache-cassandra-bin.tar.gz としてダウンロードします。処理がバージョンに左右されないように、ダウンロードしたファイルの名前にはバージョン番号を含めていないことに注意してください。
-
-3.  次のコマンドを実行して、tar ball を既定のログイン ディレクトリに展開します。
-
-        tar -zxvf downloads/apache-cassandra-bin.tar.gz
-
-    上のコマンドは、アーカイブを apache-cassandra-[version] ディレクトリに展開します。
-
-4.  ログとデータを保持する次の 2 つの既定ディレクトリを作成します。
-
-        $ sudo chown -R /var/lib/cassandra
-        $ sudo chown -R /var/log/cassandra
-
-5.  Cassandra を実行するユーザー ID に書き込みアクセス許可を付与します。
-
-        a.  sudo chown -R <user>:<group> /var/lib/cassandra
-        b.  sudo chown -R <user>:<group> /var/log/cassandra
-        To use current user context, replace the <user> and <group> with $USER and $GROUP
-
-6.  次のコマンドを使用して、apache-cassandra-[version]/bin ディレクトリから Cassandra を開始します。
-
-        $ ./cassandra
-
-このコマンドは、Cassandra ノードをバックグラウンド プロセスとして開始します。-cassandra "f" を使用すると、プロセスがフォアグラウンド モードで開始されます。
-
-ログに mx4j エラーが記録される場合があります。Cassandra は mx4j がなくても問題なく動作しますが、Cassandra のインストールを管理するには mx4j が必要です。次の手順に進む前に、Cassandra プロセスを終了してください。
-
-**手順 3.mx4j のインストール**
-
-    a)  Download mx4j: wget [http://sourceforge.net/projects/mx4j/files/MX4J%20Binary/3.0.2/mx4j-3.0.2.tar.gz/download](http://sourceforge.net/projects/mx4j/files/MX4J%20Binary/3.0.2/mx4j-3.0.2.tar.gz/download) -O mx4j.tar.gz
-    b)  tar -zxvf mx4j.tar.gz
-    c)  cp mx4j-23.0.2/lib/*.jar ~/apache-cassandra-<version>/lib
-    d)  rm -rf mx4j-23.0.2
-    e)  rm mx4j.tar.gz
-
-この段階で Cassandra プロセスを再起動します。
-
-**手順 4.インストールした Cassandra のテスト**
-
-Cassandra の bin ディレクトリから次のコマンドを実行して、thrift クライアントで接続します。
-
-    cassandra-cli -h localhost -p 9160
-
-**手順 5.Cassandra の外部接続の有効化**
-
-既定では、Cassandra はループバック アドレスをリッスンするようにセットアップされているだけです。したがって外部接続をするにはこれの変更が必須になります。
-
-conf/cassandra.yaml を編集して、**listen\_address** および **rpc\_address** をサーバーの IP アドレスまたはホスト名に変更し、現在のノードが外部のロード バランサーに加えて他のノードにも見えるようにします。
-
-クラスターのすべてのノードについて、手順 1. から手順 5. までを繰り返します。
-
-これで、個々の VM すべてに必要なソフトウェアが用意されたため、今度はシードを構成してノード間の通信を確立します。マルチノード クラスター構成の詳細については、[][]<http://wiki.apache.org/cassandra/MultinodeCluster></a> にある情報を参照してください。
-
-**手順 6.マルチノード クラスターのセットアップ**
-
-cassandra.yaml を編集して、すべての VM について次のプロパティを変更します。
-
-**a) cluster\_name**
-
-既定のクラスター名は "Test Cluster" に設定されています。これをアプリケーションを反映した名前に変更します。例:"AppStore"。インストール時にテスト用として既にクラスターを "Test Cluster" という名前で開始した場合は、クラスター名が一致しないというエラーになります。このエラーを修正するには、/var/lib/cassandra/data/system ディレクトリにあるファイルをすべて削除します。
-
-**b) seeds**
-
-ここで指定した IP アドレスは、新しいノードによってリング トポロジについて知るために使用されます。コンマ区切り形式で、最も信頼できるノードをシードとして設定します: "*host1*,*host2*"。設定例: "hk-ub1,hk-ub2"。
-
-この演習の主眼ではないため、シード サーバーによる既定のトークンをそのまま受け入れます。最適なトークン生成については、python スクリプト(
-[][1]<http://wiki.apache.org/cassandra/GettingStarted></a>) を参照してください。
-
-すべてのノードで Cassandra を再起動して、上記の変更を適用します。
-
-**手順 7.マルチノード クラスターのテスト**
-
-Cassandra の bin ディレクトリにインストールされた nodetool はクラスター操作に役立ちます。nodetool を使用してクラスターのセットアップを確認します。次のコマンドを実行します。
-
-    $ bin/nodetool -h <hostname> -p 7199 ring
-
-構成が正しい場合、下に示すような情報が表示されます (3 ノード クラスターの例)。
+**2 リージョンの Cassandra クラスター構成**
 
 <table>
-<colgroup>
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td align="left">Address</td>
-<td align="left">DC</td>
-<td align="left">Rack</td>
-<td align="left">ステータス</td>
-<td align="left">State</td>
-<td align="left">Load</td>
-<td align="left">Owns</td>
-<td align="left">Token</td>
-</tr>
-<tr class="even">
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left">149463697837832744402916220269706844972</td>
-</tr>
-<tr class="odd">
-<td align="left">10.26.196.68</td>
-<td align="left">datacenter1</td>
-<td align="left">rack1</td>
-<td align="left">Up</td>
-<td align="left">Normal</td>
-<td align="left">15.69 KB</td>
-<td align="left">25.98%</td>
-<td align="left">114445918355431753244435008039926455424</td>
-</tr>
-<tr class="even">
-<td align="left">10.26.198.81</td>
-<td align="left">datacenter1</td>
-<td align="left">rack1</td>
-<td align="left">Up</td>
-<td align="left">Normal</td>
-<td align="left">15.69 KB</td>
-<td align="left">53.44%</td>
-<td align="left">70239176883275351288292106998553981501</td>
-</tr>
-<tr class="odd">
-<td align="left">10.26.198.84</td>
-<td align="left">datacenter1</td>
-<td align="left">rack1</td>
-<td align="left">Up</td>
-<td align="left">Normal</td>
-<td align="left">18.35 KB</td>
-<td align="left">25.98%</td>
-<td align="left">149463697837832744402916220269706844972</td>
-</tr>
-</tbody>
+<tr><th>クラスター パラメーター </th><th>値	</th><th>解説 </th></tr>
+<tr><td>ノード の数 (N) </td><td>	8 + 8	</td><td> クラスター内のノードの合計数 </td></tr>
+<tr><td>レプリケーション係数 (RF)</td><td>	3 	</td><td>行のレプリカの数 </td></tr>
+<tr><td>一貫性レベル (書き込み)	</td><td>LOCAL_QUORUM [(sum(RF)/2) +1) = 4] [数式の結果の小数点以下の値は、切り捨てられます。]	</td><td>2 つのノードが、最初のデータ センターに同期的に書き込まれます。クォーラムに必要な追加の 2 つのノードは、2 番目のデータ センターに非同期的に書き込まれます。 </td></tr>
+<tr><td>一貫性レベル (読み取り)</td><td>	LOCAL_QUORUM [((RF/2) +1) = 2] [数式の結果の小数点以下の値は、切り捨てられます。]	</td><td>1 つのリージョンのみで、読み取り要求に対応します。応答がクライアントに送信される前に、2 つのノードが読み取られます。  </td></tr>
+<tr><td>レプリケーションの方法 </td><td>	NetworkTopologyStrategy [詳細については、Cassandra のマニュアルの「[Data Replication (データ レプリケーション)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html)」を参照してください。] </td><td>	デプロイ トポロジを把握し、すべてのレプリカが同じラックになることがないように、ノードにレプリカを配置します。  </td></tr>
+<tr><td>スニッチ</td><td> GossipingPropertyFileSnitch [詳細については、Cassandra マニュアルの「[Snitches (スニッチ)](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html)]」を参照してください。 </td><td>NetworkTopologyStrategy を指定すると、スニッチの概念を使用してトポロジを把握します。GossipingPropertyFileSnitch を指定すると、各ノードのデータ センターとラックへのマッピングが、より適切に制御されます。この場合、クラスターはゴシップを使用して情報を伝達します。このため、PropertyFileSnitch と比べて、非常に簡単に動的 IP 設定を行うことができます。 </td></tr> 
+</table> 
+
+##ソフトウェア構成##
+デプロイ時には、次のソフトウェア バージョンが使用されます。
+
+<table>
+<tr><th>ソフトウェア</th><th>ソース</th><th>バージョン</th></tr>
+<tr><td>JRE	</td><td>[JRE 8](http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html) </td><td>8U5</td></tr>
+<tr><td>JNA	</td><td>[JNA](https://github.com/twall/jna) </td><td> 3.2.7</td></tr>
+<tr><td>Cassandra</td><td>[Apache Cassandra 2.0.8](http://www.apache.org/dist/cassandra/2.0.8/apache-cassandra-2.0.8-bin.tar.gz)</td><td> 2.0.8</td></tr>
+<tr><td>Ubuntu	</td><td>[Microsoft Azure ポータル](http://azure.microsoft.com) </td><td>14.04 LTS</td></tr>
 </table>
 
-この段階で、クラスターは、「Linux クラスターの展開」タスクで作成したクラウド サービス URL (最初の VM の作成時に指定した DNS 名) を介して Thrift クライアントが使える状態になっています。
+JRE のダウンロードには、Oracle のライセンスの手動での承認が必要です。そのため、デプロイを簡略化するには、クラスターのデプロイの前段階として作成する Ubuntu テンプレート イメージに後でアップロードするために、必要なすべてのソフトウェアをあらかじめデスクトップにダウンロードしておく必要があります。 
 
-## <span id="task3"></span> </a>タスク 3: Node.js からの Cassandra クラスターへのアクセス
+上記のソフトウェアは、ローカル デスクトップ上のダウンロード ディレクトリ (Windows の %TEMP%/downloads や Linux や Mac の ~/downloads など) に、ダウンロードします。 
 
-先のタスクで説明した手順に従って Azure に Linux VM を 1 つ作成します。Cassandra クラスターにアクセスするクライアントとして使用するため、この VM はスタンドアロン VM にしてください。この VM から Cassandra クラスターに接続する前に、GitHub から Node.js、NPM および [cassandra-client][cassandra-client] をインストールします。
+### Ubuntu VM の作成###
+必要なソフトウェアを含む Ubuntu イメージを作成し、複数の Cassandra ノードのプロビジョニングに、イメージを再利用できるようにします。  
+####手順 1.SSH キー ペアの生成####
+Azure では、プロビジョニング時に PEM または DER でエンコードされた X509 公開キーが必要です。「Azure 上の Linux における SSH の使用方法」の指示に従って公開キーと秘密キーのペアを生成します。Windows または Linux で SSH クライアントとして putty.exe を使用する場合は、PEM でエンコードされた RSA 秘密キーを、puttygen.exe を使用して PPK 形式に変換する必要があります。手順については、上記の Web ページを参照してください。 
 
-**手順 1.Node.js と NPM のインストール**
+####手順 2.Ubuntu テンプレート VM の作成####
+テンプレート VM を作成するには、azure.microsoft.com ポータルにログインし、次の処理を行ってください。[新規]、[コンピューティング]、[仮想マシン]、[ギャラリーから]、[UBUNTU]、[Ubuntu Server 14.04 LTS] の順にクリックしてから、右矢印をクリックします。Linux VM の作成方法を説明したチュートリアルについては、「Linux を実行する仮想マシンの作成」を参照してください。
 
-a) 前提条件をインストールします。
+[仮想マシンの構成] 画面 1 で、次の情報を入力します。 
 
-    sudo apt-get install g++ libssl-dev apache2-utils make
+<table>
+<tr><th>フィールド名              </td><td>       フィールド値               </td><td>         解説                </td><tr>
+<tr><td>バージョンのリリース日    </td><td> ドロップダウンから日付を選択します。</td><td></td><tr>
+<tr><td>仮想マシン名    </td><td> cass-template	               </td><td> これは、仮想マシンのホスト名です。 </td><tr>
+<tr><td>階層	                 </td><td> 標準	                       </td><td> 既定値をそのまま使用します。              </td><tr>
+<tr><td>サイズ	                 </td><td> A1                              </td><td>IO ニーズに応じて VM を選択します。ここでは、既定値をそのまま使用します。 </td><tr>
+<tr><td> 新しいユーザー名	         </td><td> localadmin	                   </td><td> "admin" は Ubuntu 12.xx 以降の予約ユーザー名です。</td><tr>
+<tr><td> 認証	     </td><td> チェック ボックスをオンにします                 </td><td>SSH キーによるセキュリティが必要な場合にオンにします。 </td><tr>
+<tr><td> 証明書	         </td><td> 公開キー証明書のファイル名 </td><td> 先ほど生成した公開キーを使用します。</td><tr>
+<tr><td> 新しいパスワード	</td><td> 強力なパスワード </td><td> </td><tr>
+<tr><td> パスワードの確認	</td><td> 強力なパスワード </td><td></td><tr>
+</table>
 
-b) GitHub にあるソースをコンパイルしてインストールします。リポジトリをクローンする前に、git コア ランタイムをインストールする必要があります。
+[仮想マシンの構成] 画面 2 で、次の情報を入力します。 
 
-    sudo apt-get install git-core
+<table>
+<tr><th>フィールド名             </th><th> フィールド値	                   </th><th> 解説                                 </th></tr>
+<tr><td> クラウド サービス	</td><td> [新しいクラウド サービスの作成]	</td><td>クラウド サービスとは、仮想マシンのようなコンテナー コンピューティング リソースのことです。</td></tr>
+<tr><td> クラウド サービス DNS 名	</td><td>ubuntu-template.cloudapp.net	</td><td>マシンとは独立したロード バランサー名を指定します。</td></tr>
+<tr><td> リージョン/アフィニティ グループ/仮想ネットワーク </td><td>	米国西部	</td><td> Cassandra クラスターにアクセスする Web アプリケーションのリージョンを選択します。</td></tr>
+<tr><td>ストレージ アカウント </td><td>	既定値を使用します。	</td><td>既定のストレージ アカウント、または特定のリージョンに事前に作成したストレージ アカウントを使用します。</td></tr>
+<tr><td>可用性セット </td><td>	None </td><td>	空白のままにします。</td></tr>
+<tr><td>エンドポイント	</td><td>既定値を使用します。 </td><td>	既定の SSH 構成を使用します。 </td></tr>
+</table>
 
-c) Node リポジトリをクローンします。
+右矢印をクリックし、画面 3 の既定値を変更せずに、[チェック] ボタンをクリックし、VM のプロビジョニング プロセスを完了します。数分後には、"ubuntu-template" という名前の VM の状態が、[実行中] になります。 
 
-    git clone git://github.com/joyent/node.git
+###必要なソフトウェアのインストール###
+####手順 1.tarball のアップロード ####
+先ほどダウンロードしたソフトウェアを、scp または pscp を使って、次のコマンド形式で ~/downloads ディレクトリにコピーします。 
 
-d) このコマンドは "node" という名前のディレクトリを作成します。次のコマンドを実行して、node.js をコンパイルしてインストールします。
+#####pscp server-jre-8u5-linux-x64.tar.gz localadmin@hk-cas-template.cloudapp.net:/home/localadmin/downloads/server-jre-8u5-linux-x64.tar.gz #####
 
-    cd node
-    ./configure
-    make
-    sudo make install
+上記のコマンドを、JRE および Cassandra ビットにも繰り返します。 
 
-e) 次のコマンドを実行して、安定版バイナリから NPM をインストールします。
+####手順 2.ディレクトリ構造を準備し、アーカイブを抽出 ####
+VM にログインして、スーパー ユーザーとして次の bash スクリプトを使用して、ディレクトリ構造を作成し、ソフトウェアを抽出します。
 
-    curl http://npmjs.org/install.sh | sh
+	#!/bin/bash
+	CASS_INSTALL_DIR="/opt/cassandra"
+	JRE_INSTALL_DIR="/opt/java"
+	CASS_DATA_DIR="/var/lib/cassandra"
+	CASS_LOG_DIR="/var/log/cassandra"
+	DOWNLOADS_DIR="~/downloads"
+	JRE_TARBALL="server-jre-8u5-linux-x64.tar.gz"
+	CASS_TARBALL="apache-cassandra-2.0.8-bin.tar.gz"
+	SVC_USER="localadmin"
+	
+	RESET_ERROR=1
+	MKDIR_ERROR=2
+	
+	reset_installation ()
+	{
+	   rm -rf $CASS_INSTALL_DIR 2> /dev/null
+	   rm -rf $JRE_INSTALL_DIR 2> /dev/null
+	   rm -rf $CASS_DATA_DIR 2> /dev/null
+	   rm -rf $CASS_LOG_DIR 2> /dev/null
+	}
+	make_dir ()
+	{
+	   if [ -z "$1" ]
+	   then
+	      echo "make_dir: invalid directory name"
+	      exit $MKDIR_ERROR
+	   fi
+	   
+	   if [ -d "$1" ]
+	   then
+	      echo "make_dir: directory already exists"
+	      exit $MKDIR_ERROR
+	   fi
+	
+	   mkdir $1 2>/dev/null
+	   if [ $? != 0 ]
+	   then
+	      echo "directory creation failed"
+	      exit $MKDIR_ERROR
+	   fi
+	}
+	
+	unzip()
+	{
+	   if [ $# == 2 ]
+	   then
+	      tar xzf $1 -C $2
+	   else
+	      echo "archive error"
+	   fi
+	   
+	}
+	
+	if [ -n "$1" ]
+	then
+	   SVC_USER=$1
+	fi
+	
+	reset_installation 
+	make_dir $CASS_INSTALL_DIR
+	make_dir $JRE_INSTALL_DIR
+	make_dir $CASS_DATA_DIR
+	make_dir $CASS_LOG_DIR
+	
+	#unzip JRE and Cassandra 
+	unzip $HOME/downloads/$JRE_TARBALL $JRE_INSTALL_DIR
+	unzip $HOME/downloads/$CASS_TARBALL $CASS_INSTALL_DIR
+	
+	#Change the ownership to the service credentials
+	
+	chown -R $SVC_USER:$GROUP $CASS_DATA_DIR
+	chown -R $SVC_USER:$GROUP $CASS_LOG_DIR
+	echo "edit /etc/profile to add JRE to the PATH"
+	echo "installation is complete"
 
-**手順 2.cassandra-client パッケージのインストール**
 
-    npm cassandra-client 
+このスクリプトを vim ウィンドウに貼り付ける場合は、次のコマンドを使用して、必ずキャリッジ リターン ("\r") を削除してください。
 
-**手順 3.Cassandra ストレージの準備**
+	tr -d '\r' <infile.sh >outfile.sh
 
-Cassandra ストレージでは、KEYSPACE および COLUMNFAMILY という概念が使用されます。これはおおよそ RDBMS 用語の DATABASE 構造および TABLE 構造に相当します。KEYSAPCE は 1 組の COLUMNFAMILY 定義を含みます。各 COLUMNFAMILY は 1 組の行を含み、各行はいくつかの列を含みます (次の図を参照)。
+####手順 3.etc/profile の編集####
+末尾に、次のスクリプトを追加します。 
 
-![行と列][行と列]
+	JAVA_HOME=/opt/java/jdk1.8.0_05 
+	CASS_HOME= /opt/cassandra/apache-cassandra-2.0.8
+	PATH=$PATH:$HOME/bin:$JAVA_HOME/bin:$CASS_HOME/bin
+	export JAVA_HOME
+	export CASS_HOME
+	export PATH
 
-先に展開した Cassandra クラスターを使用して、このデータ構造を作成し照会することで、node.js アクセスの方法を示します。顧客データを保存するためにクラスターの基本的な準備を実行する単純な node.js スクリプトを作成します。スクリプトで示した技法は、node.js Web アプリケーションまたは Web サービスでも容易に利用できます。コード断片はしくみを示すことだけを目的としており、実際のソリューションで使用する場合、コードには改善の余地 (セキュリティ、ログ、拡張性など) が大いにあることに留意してください。
+####手順 4.実稼働システムへの JNA のインストール####
+次のコマンド シーケンスを使用します。 
+次のコマンドは、/usr/share.java ディレクトリに jna 3.2.7.jar と jna-platform-3.2.7.jar をインストールします。
+sudo apt-get install libjna-java 
 
-スクリプトのスコープで必要な変数を定義し、cassandra-client モジュールから PooledConnection をインクルードし、よく使用するキー スペース名およびキー スペース接続パラメーターを定義します。
+Cassandra のスタートアップ スクリプトがこれらの jar を見つけることができるように $CASS_HOME/lib ディレクトリにシンボリック リンクを作成します。
 
-    casdemo.js: 
-    var pooledCon = require('cassandra-client').PooledConnection;
-    var ksName = "custsupport_ks";
-    var ksConOptions = { hosts: ['<azure_svc_name>.cloudapp.net:9160'], 
-                         keyspace: ksName, use_bigints: false };
+	ln -s /usr/share/java/jna-3.2.7.jar $CASS_HOME/lib/jna.jar
 
-顧客データを保存する準備として、まず次のスクリプト例を使用して KEYSPACE を作成する必要があります。
+	ln -s /usr/share/java/jna-platrom-3.2.7.jar $CASS_HOME/lib/jna-platform.jar
 
-    casdemo.js: 
-    function createKeyspace(callback){
-       var cql = 'CREATE KEYSPACE ' + ksName + ' WITH 
-       strategy_class=SimpleStrategy AND strategy_options:replication_factor=1';
-       var sysConOptions = { hosts: ['<azure_svc_name>.cloudapp.net:9160'],  
-                             keyspace: 'system', use_bigints: false };
-       var con = new pooledCon(sysConOptions);
-       con.execute(cql,[],function(err) {
-       if (err) {
-         console.log("Failed to create Keyspace: " + ksName);
-         console.log(err);
-       }
-       else {
-         console.log("Created Keyspace: " + ksName);
-         callback(ksConOptions, populateCustomerData);
-       }
-       });
-       con.shutdown();
-    } 
+####手順 5.cassandra.yaml を構成####
+各 VM のcassandra.yaml を編集して、すべての仮想マシンで必要な構成を反映させます。[この調整は、実際のプロビジョニング時に行います]: 
 
-createKeysapce 関数は、引数としてコールバック関数をとります。これは、KEYSPACE が列ファミリ作成の前提条件であり、関数内で COLUMNFAMILY 作成関数を実行するためです。アプリケーションの KEYSPACE 定義のために "system" KEYSPACE に接続する必要があることに注意してください。コード断片では、クラスターとのやり取りのために [Cassandra Query Language (CQL)][Cassandra Query Language (CQL)] が一貫して使用されています。前に示しているスクリプトで作成した CQL にはパラメーター マーカーがないため、PooledConnection.execute() メソッドでは空のパラメーター コレクション ("[]") を使用しています。
+<table>
+<tr><th>フィールド名   </th><th> 値  </th><th>	解説 </th></tr>
+<tr><td>cluster_name </td><td>	CustomerService	</td><td> デプロイを反映した名前を使用します。</td></tr> 
+<tr><td>listen_address	</td><td>[空白のままにします。]	</td><td> 「localhost」を削除します。 </td></tr>
+<tr><td>rpc_addres   </td><td>[空白のままにします。]	</td><td> 「localhost」を削除します。 </td></tr>
+<tr><td>seeds	</td><td>"10.1.2.4, 10.1.2.6, 10.1.2.8"	</td><td>シードとして指定されているすべての IP アドレスのリスト。</td></tr>
+<tr><td>endpoint_snitch </td><td> org.apache.cassandra.locator.GossipingPropertyFileSnitch </td><td> VM のデータ センターとラックを推測するために NetworkTopologyStrategy で使用されます。</td></tr>
+</table>
 
-キー スペースが正常に作成されると、次に示している createColumnFamily() 関数が実行されて、必要な COLUMNFAMILY 定義が作成されます。
+####手順 6.VM イメージのキャプチャ####
+ホスト名 (hk ca template.cloudapp.net) と、先ほど作成した SSH 秘密キーを使用して、仮想マシンにログインします。コマンド ssh または putty.exe を使用してログインする詳しい手順については、「Azure 上の Linux における SSH の使用方法」を参照してください。 
 
-    casdemo.js: 
-    //Creates COLUMNFAMILY
-    function createColumnFamily(ksConOptions, callback){
-      var params = ['customers_cf','custid','varint','custname',
-                    'text','custaddress','text'];
-      var cql = 'CREATE COLUMNFAMILY ? (? ? PRIMARY KEY,? ?, ? ?)';
-    var con =  new pooledCon(ksConOptions);
-      con.execute(cql,params,function(err) {
-          if (err) {
-             console.log("Failed to create column family: " + params[0]);
-             console.log(err);
-          }
-          else {
-             console.log("Created column family: " + params[0]);
-             callback();
-          }
-      });
-      con.shutdown();
-    } 
+次の処理を順番に行い、イメージをキャプチャします。
+#####1.プロビジョニング解除#####
+コマンド "sudo waagent -deprovision+user" を使用して、仮想マシン インスタンス固有の情報を削除します。イメージのキャプチャ プロセスの詳細については、「[How to Capture a Linux Virtual Machine to Use as a Template (Linux 仮想マシンをキャプチャしてテンプレートとして使用する方法)](http://azure.microsoft.com/ja-jp/documentation/articles/virtual-machines-linux-capture-image/)」を参照してください。 
 
-パラメーター化された CQL テンプレートを params オブジェクトと組み合わせて、COLUMNFAMILY 作成用の有効な CQL を生成します。COLUMNFAMILY が正常に作成されると、指定されたコールバック、この場合は populateCustomerData() が非同期コール チェーンの一部として呼び出されます。
+#####2.VM のシャット ダウン#####
+仮想マシンが強調表示されていることを確認し、下部にあるコマンド バーから [シャットダウン] リンクをクリックします。
 
-    casdemo.js: 
-    //populate Data
-    function populateCustomerData() {
-       var params = ['John','Infinity Dr, TX', 1];
-       updateCustomer(ksConOptions,params);
+#####3.イメージのキャプチャ#####
+仮想マシンが強調表示されていることを確認し、下部にあるコマンド バーから [キャプチャ] リンクをクリックします。次の画面で、[イメージの名前] (例: hk-cas-2-08-ub-14-04-2014071)、イメージの説明を入力し、[チェック] マークをクリックして、キャプチャ プロセスを終了します。
 
-       params = ['Tom','Fermat Ln, WA', 2];
-       updateCustomer(ksConOptions,params);
-    }
+これは数秒で完了し、その後、イメージ ギャラリーの [マイ イメージ] セクションでイメージが利用できるようになります。ソース VM は、イメージが正常にキャプチャされた後に自動的に削除されます。 
 
-    //update will also insert the record if none exists
-    function updateCustomer(ksConOptions,params)
-    {
-      var cql = 'UPDATE customers_cf SET custname=?,custaddress=? where 
-                 custid=?';
-      var con = new pooledCon(ksConOptions);
-      con.execute(cql,params,function(err) {
-          if (err) console.log(err);
-          else console.log("Inserted customer : " + params[0]);
-      });
-      con.shutdown();
-    }
+##単一リージョン デプロイ プロセス##
+**手順 1.仮想ネットワークの作成**
+管理ポータルにログインし、次の表に記載の属性で仮想ネットワークを作成します。プロセスの詳細な手順については、「[管理ポータルでのクラウド専用仮想ネットワークの構成](http://msdn.microsoft.com/ja-jp/library/azure/dn631643.aspx)」を参照してください。      
 
-populateCustomerData() は、COLUMNFAMILY つまり customers\_cf に 2 行挿入します。Cassandra Query Language では、UPDATE 操作時にレコードが既に存在しない場合、レコードが挿入されるため、INSERT CQL ステートメントは冗長です。
+<table>
+<tr><th>VM の属性名</th><th>値</th><th>解説</th></tr>
+<tr><td>名前</td><td>vnet-cass-west-us</td><td></td></tr>	
+<tr><td>リージョン</td><td>米国西部</td><td></td></tr>	
+<tr><td>DNS サーバー	</td><td>None</td><td>DNS サーバーを使用していないため、無視します。</td></tr>
+<tr><td>ポイント対サイト VPN の構成</td><td>None</td><td> 無視します。</td></tr>
+<tr><td>サイト間 VPN の構成</td><td>None</td><td> 無視します。</td></tr>
+<tr><td>アドレス空間</td><td>10.1.0.0/16</td><td></td></tr>	
+<tr><td>開始 IP</td><td>10.1.0.0</td><td></td></tr>	
+<tr><td>CIDR </td><td>/16 (65531)</td><td></td></tr>
+</table>
 
-ここまでで、createKeyspace()、createColumnFamily()、populateCustomerData() と続くコールバック チェーンを作成しました。今度は、次のコード断片を使ってコードを実行します。
+次のサブネットを追加します。 
 
-    casdemo.js:
-    var pooledCon = require('cassandra-client').PooledConnection;
-    var ksName = "custsupport_ks";
-    var ksConOptions = { hosts: ['<azure_svc_name>.cloudapp.net:9160'], 
-                         keyspace: ksName, use_bigints: false };
+<table>
+<tr><th>名前</th><th>開始 IP</th><th>CIDR</th><th>解説</th></tr>
+<tr><td>web</td><td>10.1.1.0</td><td>/24 (251)</td><td>Web ファームのサブネット</td></tr>
+<tr><td>data</td><td>10.1.2.0</td><td>/24 (251)</td><td>データベース ノードのサブネット</td></tr>
+</table>
 
-    createKeyspace(createColumnFamily);
-    //rest of the not shown
+データと Web のサブネットは、ネットワーク セキュリティ グループを使用して保護できます。ただし、ネットワーク セキュリティ グループについては、この記事では取り扱っていません。  
 
-シェル プロンプトから次のコマンドを実行して、スクリプトを実行します。
+**手順 2.仮想マシンのプロビジョニング** 
+先ほど作成したイメージを使用して、クラウド サーバー "hk-c-svc-west" に次の仮想マシンを作成し、次に示すように、対応する各サブネットにバインドします。 
 
-    //the following command will create the KEYSPACE, COLUMNFAMILY and //inserts two customer records
-    $ node casdemo.js
+<table>
+<tr><th>コンピューター名    </th><th>サブネット	</th><th>IP アドレス	</th><th>可用性セット</th><th>DC/ラック</th><th>シード?</th></tr>
+<tr><td>hk-c1-west-us	</td><td>data	</td><td>10.1.2.4	</td><td>hk-c-aset-1	</td><td>dc =WESTUS rack =rack1 </td><td>あり</td></tr>
+<tr><td>hk-c2-west-us	</td><td>data	</td><td>10.1.2.5	</td><td>hk-c-aset-1	</td><td>dc =WESTUS rack =rack1	</td><td>いいえ </td></tr>
+<tr><td>hk-c3-west-us	</td><td>data	</td><td>10.1.2.6	</td><td>hk-c-aset-1	</td><td>dc =WESTUS rack =rack2	</td><td>あり</td></tr>
+<tr><td>hk-c4-west-us	</td><td>data	</td><td>10.1.2.7	</td><td>hk-c-aset-1	</td><td>dc =WESTUS rack =rack2	</td><td>いいえ </td></tr>
+<tr><td>hk-c5-west-us	</td><td>data	</td><td>10.1.2.8	</td><td>hk-c-aset-2	</td><td>dc =WESTUS rack =rack3	</td><td>あり</td></tr>
+<tr><td>hk-c6-west-us	</td><td>data	</td><td>10.1.2.9	</td><td>hk-c-aset-2	</td><td>dc =WESTUS rack =rack3	</td><td>いいえ </td></tr>
+<tr><td>hk-c7-west-us	</td><td>data	</td><td>10.1.2.10	</td><td>hk-c-aset-2	</td><td>dc =WESTUS rack =rack4	</td><td>あり</td></tr>
+<tr><td>hk-c8-west-us	</td><td>data	</td><td>10.1.2.11	</td><td>hk-c-aset-2	</td><td>dc =WESTUS rack =rack4	</td><td>いいえ </td></tr>
+<tr><td>hk-w1-west-us	</td><td>web	</td><td>10.1.1.4	</td><td>hk-w-aset-1	</td><td>                       </td><td>該当なし</td></tr>
+<tr><td>hk-w2-west-us	</td><td>web	</td><td>10.1.1.5	</td><td>hk-w-aset-1	</td><td>                       </td><td>該当なし</td></tr>
+</table>
 
-readCustomer() メソッドは Azure でホストされたクラスターにアクセスして、CQL クエリの実行後に取得した JSON 断片を表示します。
+上のリストの VM の作成には、次のプロセスが必要です。
 
-    casdemo.js: 
-    //read the two rows inserted above
-    function readCustomer(ksConOptions)
-    {
-      var cql = 'SELECT * FROM customers_cf WHERE custid IN (1,2)';
-      var con = new pooledCon(ksConOptions);
-      con.execute(cql,[],function(err,rows) {
-          if (err) 
-             console.log(err);
-          else 
-             for (var i=0; i<rows.length; i++)
-                console.log(JSON.stringify(rows[i]));
-        });
-       con.shutdown();
-    } 
+1.  特定のリージョンに、空のクラウド サービスを作成します。
+2.	先ほどキャプチャしたイメージから VM を作成し、先ほど作成した仮想ネットワークに接続します。すべての VM に、この手順を繰り返します。
+3.	クラウド サービスに内部ロード バランサーを追加し、"data" サブネットに追加します。
+4.	先ほど作成した各 VM に、先ほど作成した内部ロード バランサーに接続されている負荷分散セットを使用して Thrift トラフィックの負荷分散エンドポイントを追加します。
 
-下に示したように casdemo.js を変更して、上の関数を追加し、先に呼び出した createKeyspace() メソッドをコメントにして、上の関数を呼び出します。
+上記のプロセスは、Azure 管理ポータルを使用して実行できます。Windows マシン (Windows マシンにアクセスできない場合は、Azure 上の VM を使用) で、次の PowerShell スクリプトを使用して、8 台すべての VM を自動でプロビジョニングしてください。
 
-    casdemo.js: 
-    var pooledCon = require('cassandra-client').PooledConnection;
-    var ksName = "custsupport_ks";
-    var ksConOptions = { hosts: ['<azure_svc_name>.cloudapp.net:9160'], 
-                         keyspace: ksName, use_bigints: false };
+**リスト 1.仮想マシンをプロビジョニングするための PowerShell スクリプト**
+		
+		#Tested with Azure Powershell - November 2014	
+		#This powershell script deployes a number of VMs from an existing image inside an Azure region
+		#Import your Azure subscription into the current Powershell session before proceeding
+		#The process: 1. create Azure Storage account, 2. create virtual network, 3.create the VM template, 2. crate a list of VMs from the template
+		
+		#fundamental variables - change these to reflect your subscription
+		$country="us"; $region="west"; $vnetName = "your_vnet_name";$storageAccount="your_storage_account"
+		$numVMs=8;$prefix = "hk-cass";$ilbIP="your_ilb_ip"
+		$subscriptionName = "Azure_subscription_name"; 
+		$vmSize="ExtraSmall"; $imageName="your_linux_image_name"
+		$ilbName="ThriftInternalLB"; $thriftEndPoint="ThriftEndPoint"
+		
+		#generated variables
+		$serviceName = "$prefix-svc-$region-$country"; $azureRegion = "$region $country"
+		
+		$vmNames = @()
+		for ($i=0; $i -lt $numVMs; $i++)
+		{
+		   $vmNames+=("$prefix-vm"+($i+1) + "-$region-$country" );
+		}
+		
+		#select an Azure subscription already imported into Powershell session
+		Select-AzureSubscription -SubscriptionName $subscriptionName -Current
+		Set-AzureSubscription -SubscriptionName $subscriptionName -CurrentStorageAccountName $storageAccount
+		
+		#create an empty cloud service
+		New-AzureService -ServiceName $serviceName -Label "hkcass$region" -Location $azureRegion
+		Write-Host "Created $serviceName"
+		
+		$VMList= @()   # stores the list of azure vm configuration objects
+		#create the list of VMs
+		foreach($vmName in $vmNames)
+		{
+		   $VMList += New-AzureVMConfig -Name $vmName -InstanceSize ExtraSmall -ImageName $imageName |
+		   Add-AzureProvisioningConfig -Linux -LinuxUser "localadmin" -Password "Local123" |
+		   Set-AzureSubnet "data"
+		}
+		
+		New-AzureVM -ServiceName $serviceName -VNetName $vnetName -VMs $VMList
+		
+		#Create internal load balancer
+		Add-AzureInternalLoadBalancer -ServiceName $serviceName -InternalLoadBalancerName $ilbName -SubnetName "data" -StaticVNetIPAddress "$ilbIP"
+		Write-Host "Created $ilbName"
+		#Add add the thrift endpoint to the internal load balancer for all the VMs
+		foreach($vmName in $vmNames)
+		{
+		    Get-AzureVM -ServiceName $serviceName -Name $vmName |
+		        Add-AzureEndpoint -Name $thriftEndPoint -LBSetName "ThriftLBSet" -Protocol tcp -LocalPort 9160 -PublicPort 9160 -ProbePort 9160 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ilbName | 
+		        Update-AzureVM 
+		
+		    Write-Host "created $vmName"     
+		}
 
-    //createKeyspace(createColumnFamily);
-    readCustomer(ksConOptions)
-    //rest of the code below not shown
-        
+**手順 3.各 VM 上の Cassandra を構成**
 
-## <span id="conclusion"></span> </a>まとめ
+VM にログインし、次の処理を行います。 
 
-Azure の仮想マシン機能を利用すると、Linux (Microsoft パートナーの提供するイメージ) および Windows 仮想マシンを作成して、既存のサーバー製品およびアプリケーションを一切変更することなく移行できます。この記事で取り上げた Cassandra NoSQL データベース サーバーはその一例です。この記事でセットアップした Cassandra クラスターは、Azure でホストしているクラウド サービス、サード パーティのパブリック クラウドおよびプライベート クラウドで Windows OS 環境および Linux OS 環境の両方からアクセスできます。この記事では、クライアントとして node.js を使用しましたが、Cassandra は .NET や Java などの言語環境からもアクセスできます。
+* $CASS_HOME/conf/cassandra-rackdc.properties を編集して、データ センターとラックのプロパティを指定します。
+      
+       dc =EASTUS, rack =rack1
 
-  [概要]: #overview
-  [Cassandra のデプロイ方式]: #schematic
-  [複合デプロイ]: #composite
-  [Azure の仮想マシンの展開]: #deployment
-  [タスク 1: Linux クラスターのデプロイ]: #task1
-  [タスク 2: 各仮想マシンでの Cassandra のセットアップ]: #task2
-  [タスク 3: Node.js からの Cassandra クラスターへのアクセス]: #task3
-  [まとめ]: #conclusion
-  [Cassandra]: http://wiki.apache.org/cassandra/
-  [複合デプロイ図]: ./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux1.png
-  [仮想マシンのデプロイ]: ./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux2.png
-  [クラスター作成の流れ図]: ./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux4.png
-  [Azure 上の Linux における SSH の使用方法]: http://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/ssh-into-linux/
-  [Linux を実行する仮想マシンの作成]: http://www.windowsazure.com/ja-jp/manage/linux/tutorials/virtual-machine-from-gallery/
-  [Linux を実行する仮想マシンのイメージをキャプチャする方法]: https://www.windowsazure.com/ja-jp/manage/linux/how-to-guides/capture-an-image/
-  []: http://wiki.apache.org/cassandra/MultinodeCluster
-  [1]: http://wiki.apache.org/cassandra/GettingStarted
-  [cassandra-client]: https://github.com/racker/node-cassandra-client
-  [行と列]: ./media/virtual-machines-linux-nodejs-running-cassandra/cassandra-linux3.png
+* cassandra.yaml を編集して、シード ノードを次のように構成します。
+     
+       Seeds: "10.1.2.4,10.1.2.6,10.1.2.8,10.1.2.10"
+
+**手順 4.VM の起動とクラスターのテスト**
+
+いずれかのノード (例:hk-c1-west-us) にログインし、次のコマンドを実行してクラスターの状態を確認します。 
+       
+       nodetool -h 10.1.2.4 -p 7199 status 
+
+8 ノードのクラスターについて、以下のような情報が画面に表示されます。 
+
+<table>
+<tr><th>ステータス</th></th>Address	</th><th>Load	</th><th>Tokens	</th><th>Owns </th><th>Host ID	</th><th>Rack</th></tr>
+<tr><th>UN	</td><td>10.1.2.4 	</td><td>87.81 KB	</td><td>256	</td><td>38.0%	</td><td>Guid (removed)</td><td>rack1</td></tr>
+<tr><th>UN	</td><td>10.1.2.5 	</td><td>41.08 KB	</td><td>256	</td><td>68.9%	</td><td>Guid (removed)</td><td>rack1</td></tr>
+<tr><th>UN	</td><td>10.1.2.6 	</td><td>55.29 KB	</td><td>256	</td><td>68.8%	</td><td>Guid (removed)</td><td>rack2</td></tr>
+<tr><th>UN	</td><td>10.1.2.7 	</td><td>55.29 KB	</td><td>256	</td><td>68.8%	</td><td>Guid (removed)</td><td>rack2</td></tr>
+<tr><th>UN	</td><td>10.1.2.8 	</td><td>55.29 KB	</td><td>256	</td><td>68.8%	</td><td>Guid (removed)</td><td>rack3</td></tr>
+<tr><th>UN	</td><td>10.1.2.9 	</td><td>55.29 KB	</td><td>256	</td><td>68.8%	</td><td>Guid (removed)</td><td>rack3</td></tr>
+<tr><th>UN	</td><td>10.1.2.10 	</td><td>55.29 KB	</td><td>256	</td><td>68.8%	</td><td>Guid (removed)</td><td>rack4</td></tr>
+<tr><th>UN	</td><td>10.1.2.11 	</td><td>55.29 KB	</td><td>256	</td><td>68.8%	</td><td>Guid (removed)</td><td>rack4</td></tr>
+</table>
+
+##<a id="testone"> </a>単一リージョン クラスターのテスト##
+次の手順で、クラスターをテストします。
+
+1.    Powershell コマンドの Get-azureinternalloadbalancer コマンドレットを使用して、内部ロード バランサーの IP アドレス (例: 10.1.2.101) を取得します。コマンドの構文は、次のとおりです。Get-AzureLoadbalancer -ServiceName "hk-c-svc-west-us" [内部ロード バランサーの IP アドレスを含む詳細な情報を表示します。]
+2.	Putty または ssh を使用して、Web ファーム VM (例: hk-w1-west-us) にログインします。
+3.	$CASS_HOME/bin/cqlsh 10.1.2.101 9160 を実行します。 
+4.	次の CQL コマンドを使用して、クラスターが動作しているかどうか確認します。
+
+		CREATE KEYSPACE customers_ks WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 3 };	
+		USE customers_ks;
+		CREATE TABLE Customers(customer_id int PRIMARY KEY, firstname text, lastname text);
+		INSERT INTO Customers(customer_id, firstname, lastname) VALUES(1, 'John', 'Doe');
+		INSERT INTO Customers(customer_id, firstname, lastname) VALUES (2, 'Jane', 'Doe');
+		
+		SELECT * FROM Customers;
+
+次のような情報が画面に表示されます。
+
+<table>
+  <tr><th> customer_id </th><th> firstname </th><th> lastname </th></tr>
+  <tr><td> 1 </td><td> John </td><td> Doe </td></tr>
+  <tr><td> 2 </td><td> Jane </td><td> Doe </td></tr>
+</table>
+
+手順 4. で作成したキースペースで、replication_factor を 3 にして SimpleStrategy が 使用されることに注意してください。単一データ センター デプロイには SimpleStrategy の使用が、複数データ センター デプロイには NetworkTopologyStrategy の使用が推奨されています。replication_factor を 3 にすると、ノード障害へのフォールト トレランスを確保できます。 
+
+##<a id="tworegion"> </a>複数リージョン デプロイ プロセス##
+完了した 単一リージョン デプロイを利用して、同じ処理を繰り返し、2 番目のリージョンをインストールします。単一リージョン デプロイと複数リージョン デプロイの主な違いは、リージョン間通信のための VPN トンネルのセットアップです。ここでは、最初にネットワーク インストールを実行してから、VM をプロビジョニングし、Cassandra を構成します。 
+
+###手順 1.2 つ目のリージョンでの仮想ネットワークの作成###
+管理ポータルにログインし、次の表に記載の属性で仮想ネットワークを作成します。プロセスの詳細な手順については、「[管理ポータルでのクラウド専用仮想ネットワークの構成](http://msdn.microsoft.com/ja-jp/library/azure/dn631643.aspx)」を参照してください。      
+
+<table>
+<tr><th>属性名    </th><th>値	</th><th>解説</th></tr>
+<tr><td>名前	</td><td>vnet-cass-east-us</td><td></td></tr>	
+<tr><td>リージョン	</td><td>米国東部</td><td></td></tr>	
+<tr><td>DNS サーバー		</td><td></td><td>DNS サーバーを使用していないため、無視します。</td></tr>
+<tr><td>ポイント対サイト VPN の構成</td><td></td><td>		無視します。</td></tr>
+<tr><td>サイト間 VPN の構成</td><td></td><td>		無視します。</td></tr>
+<tr><td>アドレス空間	</td><td>10.2.0.0/16</td><td></td></tr>	
+<tr><td>開始 IP	</td><td>10.2.0.0	</td><td></td></tr>
+<tr><td>CIDR	</td><td>/16 (65531)</td><td></td></tr>
+</table>	
+
+次のサブネットを追加します。 
+<table>
+<tr><th>名前    </th><th>開始 IP	</th><th>CIDR	</th><th>解説</th></tr>
+<tr><td>web	</td><td>10.2.1.0	</td><td>/24 (251)	</td><td>Web ファームのサブネット</td></tr>
+<tr><td>data	</td><td>10.2.2.0	</td><td>/24 (251)	</td><td>データベース ノードのサブネット</td></tr>
+</table>
+
+
+###手順 2.ローカル ネットワーク の作成###
+Azure の仮想ネットワークのローカル ネットワークは、プライベート クラウドや別の Azure リージョンなどのリモート サイトにマップされるプロキシ アドレス空間です。このプロキシ アドレス空間は、ネットワークを正しいネットワーク送信先にルーティングするために、リモート ゲートウェイにバインドされます。VNET 間通信を確立する方法については、「[Configure a VNet to VNet Connection (VNet 間の接続の構成)](http://msdn.microsoft.com/ja-jp/library/azure/dn690122.aspx)」を参照してください。 
+
+次の情報に従って、ローカル ネットワークを 2 つ作成します。
+
+<table>
+<tr><th>ネットワーク名          </th><th>VPN ゲートウェイ アドレス	</th><th>アドレス空間	</th><th>解説</th></tr>
+<tr><td>hk-lnet-map-to-east-us</td><td>	23.1.1.1	</td><td>10.2.0.0/16	</td><td>ローカル ネットワークの作成時には、プレース ホルダー ゲートウェイ アドレスを指定します。実際のゲートウェイ アドレスは、ゲートウェイを作成した後にセットされます。アドレス空間が、それぞれのリモート VNET (ここでは、米国東部リージョンに作成された VNET) と完全に一致するかどうかを確認してください。</td></tr>
+<tr><td>hk-lnet-map-to-west-us	</td><td>23.2.2.2	</td><td>10.1.0.0/16	</td><td>ローカル ネットワークの作成時には、プレース ホルダー ゲートウェイ アドレスを指定します。実際のゲートウェイ アドレスは、ゲートウェイを作成した後にセットされます。アドレス空間が、それぞれのリモート VNET (ここでは、米国西部リージョンに作成された VNET) と完全に一致するかどうかを確認してください。</td></tr>
+</table>
+
+
+###手順 3."ローカル" ネットワークを、各 VNET にマップ###
+サービス管理ポータルから、各 VNET を選択し、[構成] をクリックして、[ローカル ネットワークに接続する] をチェックして、次の情報にしたがってローカル ネットワークを選択します。 
+
+<table>
+<tr><th>Virtual Network </th><th>ローカル ネットワーク</th></tr>
+<tr><td>hk-vnet-west-us	</td><td>hk-lnet-map-to-east-us</td></tr>
+<tr><td>hk-vnet-east-us	</td><td>hk-lnet-map-to-west-us</td></tr>
+</table>
+
+###手順 4.VNET1 と VNET2 にゲートウェイを作成###
+両方の仮想ネットワークのダッシュボードで、[ゲートウェイの作成] をクリックして、VPN ゲートウェイのプロビジョニング プロセスを開始します。数分後に、各仮想ネットワークのダッシュボードに、実際のゲートウェイ アドレスが表示されます。 
+###手順 5.それぞれのゲートウェイ アドレスで "ローカル" ネットワークを更新###
+両方のローカル ネットワークを編集して、プレースホルダー ゲートウェイ IP アドレスを先ほどプロビジョニングしたゲートウェイの実際の IP アドレスに置き換えます。次のマッピングを使用します。 
+
+<table>
+<tr><th>ローカル ネットワーク    </th><th>仮想ネットワーク ゲートウェイ</th></tr>
+<tr><td>hk-lnet-map-to-east-us </td><td>hk-vnet-west-us のゲートウェイ</td></tr>
+<tr><td>hk-lnet-map-to-west-us </td><td>hk-vnet-east-us のゲートウェイ</td></tr>
+</table>
+
+###手順 6.共有キーの更新###
+次のPowershell スクリプトを使用して、各 VPN ゲートウェイの IPSec キーを更新します。[両方のゲートウェイの安全キーを使用します]: 
+Set-AzureVNetGatewayKey -VNetName hk-vnet-east-us -LocalNetworkSiteName hk-lnet-map-to-west-us -SharedKey D9E76BKK
+Set-AzureVNetGatewayKey -VNetName hk-vnet-west-us -LocalNetworkSiteName hk-lnet-map-to-east-us -SharedKey D9E76BKK 
+
+###手順 6.VNET 間接続の確立###
+Azure サービス管理ポータルで、両方の仮想ネットワークの [ダッシュボード] メニューを使用して、ゲートウェイ間接続を確立します。下部のツールバーで、[接続] メニュー項目を使用します。数分後に、ダッシュボードに、接続の詳細情報がグラフィックで表示されます。
+
+###手順 7.リージョン 2 への仮想マシンの作成 ####
+リージョン 1 のデプロイで説明された手順と同じ方法で Ubuntu イメージを作成、または、イメージ VHD ファイルをリージョン 2 にある Azure ストレージ アカウントにコピーしてイメージを作成します。このイメージを使用して、新しいクラウド サービス hk-c-svc-east-us に、次のリストの仮想マシンを作成します。 
+
+<table>
+<tr></th>コンピューター名 </th><th>サブネット</th><th>IP アドレス</th><th>可用性セット</th><th>DC/ラック</th><th>シード?</th></tr>
+<tr><td>hk-c1-east-us	</td><td>data	</td><td>10.2.2.4	</td><td>hk-c-aset-1	</td><td>dc =EASTUS rack =rack1	</td><td>あり</td></tr>
+<tr><td>hk-c2-east-us	</td><td>data	</td><td>10.2.2.5	</td><td>hk-c-aset-1	</td><td>dc =EASTUS rack =rack1	</td><td>いいえ </td></tr>
+<tr><td>hk-c3-east-us	</td><td>data	</td><td>10.2.2.6	</td><td>hk-c-aset-1	</td><td>dc =EASTUS rack =rack2	</td><td>あり</td></tr>
+<tr><td>hk-c5-east-us	</td><td>data	</td><td>10.2.2.8	</td><td>hk-c-aset-2	</td><td>dc =EASTUS rack =rack3	</td><td>あり</td></tr>
+<tr><td>hk-c6-east-us	</td><td>data	</td><td>10.2.2.9	</td><td>hk-c-aset-2	</td><td>dc =EASTUS rack =rack3	</td><td>いいえ </td></tr>
+<tr><td>hk-c7-east-us  </td><td>data	</td><td>10.2.2.10	</td><td>hk-c-aset-2	</td><td>dc =EASTUS rack =rack4	</td><td>あり</td></tr>
+<tr><td>hk-c8-east-us	</td><td>data	</td><td>10.2.2.11	</td><td>hk-c-aset-2	</td><td>dc =EASTUS rack =rack4	</td><td>いいえ </td></tr>
+<tr><td>hk-w1-east-us	</td><td>web	</td><td>10.2.1.4	</td><td>hk-w-aset-1	</td><td>	該当なし</td><td>該当なし</td></tr>
+<tr><td>hk-w2-east-us	</td><td>web	</td><td>10.2.1.5	</td><td>hk-w-aset-1	</td><td>	該当なし</td><td>該当なし</td></tr>
+</table>
+
+リージョン 1 と同じ手順に従います。ただし、アドレス空間は 10.2.xxx.xxx を使用します。 
+###手順 8.各 VM で Cassandra を構成###
+VM にログインし、次の処理を行います。 
+
+1. $CASS_HOME/conf/cassandra-rackdc.properties を編集して、次の形式でデータ センターとラックのプロパティを指定します。
+    dc =EASTUS
+    rack =rack1
+2. cassandra.yaml を編集して、シード ノードを構成します。 
+    Seeds: "10.1.2.4,10.1.2.6,10.1.2.8,10.1.2.10,10.2.2.4,10.2.2.6,10.2.2.8,10.2.2.10"
+###手順 9.Cassandra の開始###
+各 VM にログインし、次のコマンドを実行して、バック グラウンドで Cassandra を開始します。
+$CASS_HOME/bin/cassandra
+
+##<a id="testtwo"> </a>複数リージョン クラスターのテスト##
+ここまでで Cassandra が、各 Azure リージョンに 8 ノードの計 16 ノードにデプロイされました。これらのノードは共通のクラスター名とシード ノード構成により、同じクラスター内に存在します。次のプロセスを使用して、クラスターをテストします。
+###手順 1.PowerShell を使用して両方のリージョンの内部ロード バランサーの IP アドレスを取得### 
+- Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-west-us"
+- Get-AzureInternalLoadbalancer -ServiceName "hk-c-svc-east-us"  
+
+    表示される IP アドレスに注意してください (例: 西部 - 10.1.2.101、東部 -  10.2.2.101)。
+
+###手順 2.hk-w1-west-us にログイン後に、西部リージョンで次の処理を実行###
+1.    $CASS_HOME/bin/cqlsh 10.1.2.101 9160 を実行します。 
+2.	次の CQL コマンドを実行します。
+
+		CREATE KEYSPACE customers_ks
+		WITH REPLICATION = { 'class' : 'NetworkToplogyStrategy', 'WESTUS' : 3, 'EASTUS' : 3};
+		USE customers_ks;
+		CREATE TABLE Customers(customer_id int PRIMARY KEY, firstname text, lastname text);
+		INSERT INTO Customers(customer_id, firstname, lastname) VALUES(1, 'John', 'Doe');
+		INSERT INTO Customers(customer_id, firstname, lastname) VALUES (2, 'Jane', 'Doe');
+		SELECT * FROM Customers;
+
+次のような情報が画面に表示されます。
+
+<table>
+<tr><th>customer_id </th><th>firstname</th><th>Lastname</th></tr>
+<tr><td>1</td><td>John</td><td>Doe</td></tr>
+<tr><td>2</td><td>Jane</td><td>Doe</td></tr>
+</table>
+
+###手順 3.hk-w1-west-us にログイン後に、東部リージョンで次の処理を実行 ###:###
+1.    $CASS_HOME/bin/cqlsh 10.2.2.101 9160 を実行します。 
+2.	次の CQL コマンドを実行します。
+
+		USE customers_ks;
+		CREATE TABLE Customers(customer_id int PRIMARY KEY, firstname text, lastname text);
+		INSERT INTO Customers(customer_id, firstname, lastname) VALUES(1, 'John', 'Doe');
+		INSERT INTO Customers(customer_id, firstname, lastname) VALUES (2, 'Jane', 'Doe');
+		SELECT * FROM Customers;
+
+西部リージョンで表示されたのと、同じ画面が表示されます。
+
+<table>
+<tr><th>customer_id </th><th>firstname</th><th>Lastname</th></tr>
+<tr><td>1</td><td>John</td><td>Doe</td></tr>
+<tr><td>2</td><td>Jane</td><td>Doe</td></tr>
+</table>
+
+追加の挿入をいくつか実行し、それらが、クラスターの west-us 部分にレプリケートされることを確認します。 
+
+##<a id="testnode"> </a>Node.js から Cassandra クラスターをテスト##
+先ほど "web" 階層に作成に作成した Linux VM のうちの 1 つを使用して、単純な Node.js スクリプトを実行し、先ほど挿入したデータを読み取ります。 
+
+**手順 1.Node.js とクライアントの Cassandra のインストール**
+
+1. Node.js と npm をインストールします。
+2. npm を使用して、ノード パッケージ "cassandra-client" をインストールします。
+3. 取得データの JSON 文字列を表示する次のスクリプトを、シェル プロンプトで実行します。 
+
+		var pooledCon = require('cassandra-client').PooledConnection;
+		var ksName = "custsupport_ks";
+		var cfName = "customers_cf";
+		var hostList = ['internal_loadbalancer_ip:9160'];
+		var ksConOptions = { hosts: hostList,
+		                     keyspace: ksName, use_bigints: false };
+		
+		function createKeyspace(callback){
+		   var cql = 'CREATE KEYSPACE ' + ksName + ' WITH strategy_class=SimpleStrategy AND strategy_options:replication_factor=1';
+		   var sysConOptions = { hosts: hostList,  
+		                         keyspace: 'system', use_bigints: false };
+		   var con = new pooledCon(sysConOptions);
+		   con.execute(cql,[],function(err) {
+		   if (err) {
+		     console.log("Failed to create Keyspace: " + ksName);
+		     console.log(err);
+		   }
+		   else {
+		     console.log("Created Keyspace: " + ksName);
+		     callback(ksConOptions, populateCustomerData);
+		   }
+		   });
+		   con.shutdown();
+		} 
+		
+		function createColumnFamily(ksConOptions, callback){
+		  var params = ['customers_cf','custid','varint','custname',
+		                'text','custaddress','text'];
+		  var cql = 'CREATE COLUMNFAMILY ? (? ? PRIMARY KEY,? ?, ? ?)';
+		var con =  new pooledCon(ksConOptions);
+		  con.execute(cql,params,function(err) {
+		      if (err) {
+		         console.log("Failed to create column family: " + params[0]);
+		         console.log(err);
+		      }
+		      else {
+		         console.log("Created column family: " + params[0]);
+		         callback();
+		      }
+		  });
+		  con.shutdown();
+		} 
+		
+		//populate Data
+		function populateCustomerData() {
+		   var params = ['John','Infinity Dr, TX', 1];
+		   updateCustomer(ksConOptions,params);
+		
+		   params = ['Tom','Fermat Ln, WA', 2];
+		   updateCustomer(ksConOptions,params);
+		}
+		
+		//update will also insert the record if none exists
+		function updateCustomer(ksConOptions,params)
+		{
+		  var cql = 'UPDATE customers_cf SET custname=?,custaddress=? where custid=?';
+		  var con = new pooledCon(ksConOptions);
+		  con.execute(cql,params,function(err) {
+		      if (err) console.log(err);
+		      else console.log("Inserted customer : " + params[0]);
+		  });
+		  con.shutdown();
+		}
+		
+		//read the two rows inserted above
+		function readCustomer(ksConOptions)
+		{
+		  var cql = 'SELECT * FROM customers_cf WHERE custid IN (1,2)';
+		  var con = new pooledCon(ksConOptions);
+		  con.execute(cql,[],function(err,rows) {
+		      if (err) 
+		         console.log(err);
+		      else 
+		         for (var i=0; i<rows.length; i++)
+		            console.log(JSON.stringify(rows[i]));
+		    });
+		   con.shutdown();
+		}
+		
+		//exectue the code
+		createKeyspace(createColumnFamily);
+		readCustomer(ksConOptions)
+
+
+##<a id="conclusion"> </a>まとめ##
+Microsoft Azure は、この演習でもわかるように、オープン ソース ソフトウェアと Microsoft のソフトウェアの両方を実行できる柔軟性の高いプラットフォームです。可用性の高い Cassandra クラスターは、クラスター ノードを複数の障害ドメインに分散させることで、単一のデータ センターにデプロイすることができます。また、災害に耐えられるシステムを実現するために、Cassandra クラスターを、複数の地理的に離れている Azure リージョンにまたがってデプロイできます。Azure と Cassandra を一緒に使用することで、今日のインターネット規模のサービスに必要な、拡張性と可用性が高く災害復旧が可能なクラウド サービスの構築が可能になります。  
+
+[概要]: #overview
+[単一リージョン デプロイ]: #oneregion
+[単一リージョンの Cassandra クラスターをテスト]: #testone
+[複数リージョン デプロイ]: #tworegion
+[複数リージョンの Cassandra クラスターをテスト]: #testtwo
+[Node.js から Cassandra クラスターをテスト]: #testnode
+[まとめ]: #conclusion
+
+##参照##
+- [http://cassandra.apache.org](http://cassandra.apache.org)
+- [http://www.datastax.com](http://www.datastax.com) 
+- [http://www.nodejs.org](http://www.nodejs.org) 
+
+
+<!--HONumber=35.2-->

@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (WP8) - Azure Mobile Services" metaKeywords="" description="Azure Mobile Services Windows Phone 8 アプリからのデータを使用する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties urlDisplayName="Get Started with Data" pageTitle="データの使用 (WP8) - Azure モバイル サービス" metaKeywords="" description="Azure Mobile Services Windows Phone 8 アプリからのデータを使用する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/19/2014" ms.author="glenga" />
 
@@ -10,7 +10,7 @@
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
 
-<p>このトピックでは、Azure Mobile Services を使用して Windows Phone 8 アプリケーションのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにログインして、アプリケーションの実行中にデータに加えられた変更を表示します。</p>
+<p>このトピックでは、Azure のモバイル サービスを使用して Windows Phone 8 アプリケーションのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにログインして、アプリケーションの実行中にデータに加えられた変更を表示します。</p>
 </div>
 <div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkID=298628" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-wp8-get-started-data-180x120.png') !important;" href="http://go.microsoft.com/fwlink/?LinkID=298628" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a> <span class="time">12:54</span></div>
 </div>
@@ -19,27 +19,27 @@
 
 1. [Windows Phone 8 アプリ プロジェクトのダウンロード]
 2. [モバイル サービスの作成]
-3. [ストレージのデータ テーブルの追加]
+3. [ストレージへのデータ テーブルの追加]
 4. [モバイル サービスを使用するためのアプリケーションの更新]
 5. [モバイル サービスに対するアプリケーションのテスト]
 
 このチュートリアルでは、Visual Studio 2012 Express for Windows Phone 8 および Windows 8 で実行する [Windows Phone 8 SDK] が必要になります。このチュートリアルを完了して、Windows Phone 8.1 アプリケーションを作成するには、Visual Studio 2013 Update 2 以降が必要です。
 
->[WACOM.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、<a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A756A2826&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-wp8%2F" target="_blank">Azure の無料評価版サイト</a>を参照してください。
+>[WACOM.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、「 <a href="http://www.windowsazure.com/ja-jp/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fja-jp%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-wp8%2F" target="_blank">Azure 無料評価版</a>」を参照してください。
 
-## <a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする
+##<a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする
 
-このチュートリアルは、Windows Phone Silverlight 8 アプリケーション プロジェクトである、デベロッパー サンプル コード集のサイトにある [GetStartedWithData][ アプリケーション]に基づいています。  
+このチュートリアルは、Windows Phone Silverlight 8 アプリケーション プロジェクトである [GetStartedWithData app アプリケーション][Developer Code Samples site] に基づいています。  
 
-1. GetStartedWithData サンプル アプリケーション プロジェクトを[デベロッパー サンプル コード集のサイト]からダウンロードします。 
+1. GetStartedWithData サンプル アプリケーション プロジェクトを [デベロッパー サンプル コード集のサイト] からダウンロードします。 
 
-	>[WACOM.NOTE]Windows Phone Silverlght 8.1 アプリケーションを作成するには、ダウンロードした Windows Phone Silverlight 8 アプリケーション プロジェクトの対象 OS を Windows Phone 8.1 に変更します。Windows Phone Store アプリケーションを作成するには、GetStartedWithData サンプル アプリケーション プロジェクトの [Windows Phone Store アプリケーション バージョン](http://go.microsoft.com/fwlink/p/?LinkId=397372)をダウンロードします。 
+	>[WACOM.NOTE]Windows Phone Silverlght 8.1 アプリケーションを作成するには、ダウンロードした Windows Phone Silverlight 8 アプリケーション プロジェクトの対象 OS を Windows Phone 8.1 に変更します。Windows Phone Store アプリケーションを作成するには、GetStartedWithData サンプル アプリケーション プロジェクトの [Windows Phone Store アプリケーション バージョン](http://go.microsoft.com/fwlink/p/?LinkId=397372) をダウンロードします。 
 
 2. Visual Studio で、ダウンロードしたプロジェクトを開き、MainPage.xaml.cs ファイルを確認します。
 
    	追加された **TodoItem** オブジェクトはメモリ内の **ObservableCollection<TodoItem>** に格納されます。
 
-3. **F5** キーを押してプロジェクトを再ビルドし、アプリケーションを開始します。
+3. **F5** キーを押してプロジェクトをリビルドし、アプリケーションを開始します。
 
 4. アプリケーションで、テキスト ボックスに任意のテキストを入力し、**[Save]** をクリックします。
 
@@ -61,7 +61,7 @@
 
 1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクト名を右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-2. 左側のウィンドウで、**[オンライン]** カテゴリを選択し、`WindowsAzure.MobileServices を探します。`Azure Mobile Services** パッケージで **[インストール]** をクリックし、使用許諾契約に同意します。**
+2. 左側のウィンドウで、**[オンライン]** カテゴリを選択し、WindowsAzure.MobileServices を探します。**Azure モバイル サービス** パッケージで **[インストール]** をクリックし、使用許諾契約に同意します。
 
   	![][7]
 
@@ -75,7 +75,7 @@
 
   	これらの値は、アプリケーション コードからモバイル サービスにアクセスするときに必要になります。
 
-5. Visual Studio で App.xaml.cs ファイルを開き、次の `using` ステートメントを追加またはコメント解除します。
+5. Visual Studio で App.xaml.cs ファイルを開き、次の using ステートメントを追加またはコメント解除します。
 
        	using Microsoft.WindowsAzure.MobileServices;
 
@@ -86,9 +86,9 @@
         //    "AppKey" 
         //); 
 
-  	これで、モバイル サービスにアクセスするために使用される **MobileServiceClient** の新しいインスタンスが作成されます。
+  	これで、モバイル サービスへのアクセスに使用される **MobileServiceClient** の新しいインスタンスが作成されます。
 
-6. MainPage.xaml.cs ファイルで、次の `using` ステートメントを追加またはコメント解除します。
+6. MainPage.xaml.cs ファイルで、次の using ステートメントを追加またはコメント解除します。
 
        	using Microsoft.WindowsAzure.MobileServices;
 		using Newtonsoft.Json;
@@ -142,24 +142,24 @@
 
    	これにより、新しい項目が挿入としてモバイル サービスに送信されます。
 
-3. [管理ポータル]で、**[Mobile Services]** をクリックし、対象のモバイル サービスをクリックします。
+3. [管理ポータル]で、**[モバイル サービス]** をクリックし、対象のモバイル サービスをクリックします。
 
 4. **[データ]** タブをクリックし、**[参照]** をクリックします。
 
    	![][9]
   
-   	**TodoItem** テーブルに、Mobile Services によって生成された ID 値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
+   	**TodoItem** テーブルに、モバイル サービスによって生成された ID 値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
 
-これで、Windows Phone 8 向けの**データの使用**に関するチュートリアルはおしまいです。
+これで、Windows Phone 8 向けの**データの使用**に関するチュートリアルは終了です。
 
 ## <a name="next-steps"> </a>次のステップ
 
 このチュートリアルでは、Windows Phone 8 アプリでモバイル サービスのデータを操作できるようにするための基本について説明しました。次は、このチュートリアルで作成した GetStartedWithData アプリケーションに基づく次のチュートリアルを行うことをお勧めします。
 
-* [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]
+* [スクリプトでデータ検証および変更]
   <br/>モバイル サービスでサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
-* [ページングを使用したモバイル サービス クエリの改善]
+* [ページングを使用したクエリの改善]
   <br/>クエリ内でページングを使用して、単一の要求で渡されるデータの量を制御する方法について説明します。
 
 データ シリーズを完了した後は、次に示すいずれかの Windows Phone 8 チュートリアルを行うことができます。
@@ -168,12 +168,12 @@
   <br/>アプリケーションのユーザーを認証する方法について説明します。
 
 * [プッシュ通知の使用]
-  <br/>Mobile Services を使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
+  <br/>モバイル サービスを使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
  
 <!-- Anchors. -->
 [Windows Phone 8 アプリ プロジェクトのダウンロード]: #download-app
 [モバイル サービスの作成]: #create-service
-[ストレージのデータ テーブルの追加]: #add-table
+[ストレージへのデータ テーブルの追加]: #add-table
 [モバイル サービスを使用するためのアプリケーションの更新]: #update-app
 [モバイル サービスに対するアプリケーションのテスト]: #test-app
 [次のステップ]:#next-steps
@@ -193,8 +193,8 @@
 
 
 <!-- URLs. -->
-[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-wp8
-[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-wp8
+[スクリプトでデータ検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-wp8
+[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-wp8
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-wp8
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-wp8
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-wp8
@@ -203,5 +203,7 @@
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [管理ポータル]: https://manage.windowsazure.com/
 [Windows Phone 8 SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268374
-[モバイル サービス SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268375
+[Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268375
 [デベロッパー サンプル コード集のサイト]:  http://go.microsoft.com/fwlink/p/?LinkId=271146
+
+<!--HONumber=35.2-->

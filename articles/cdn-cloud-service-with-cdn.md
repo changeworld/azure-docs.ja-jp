@@ -23,7 +23,7 @@
 -	[Visual Studio のスクリプトのデバッグ エクスペリエンスを維持しながらバンドルされたコンテンツおよび縮小されたコンテンツを配信する](#bundling)
 -	[Azure CDN がオフラインのときのスクリプトおよび CSS のフォールバックを構成する](#fallback) 
 
-## 学習内容 ##
+## ビルド内容 ##
 
 既定の ASP.NET MVC テンプレートを使用してクラウド サービス Web ロールをデプロイし、統合された Azure CDN からコンテンツ (たとえば、画像、コントローラー アクションの結果、既定の JavaScript ファイルおよび CSS ファイル) を配信するコードを追加します。さらに、CDN がオフラインになった場合に提供されるバンドルのフォールバック メカニズムを構成するコードを作成します。
 
@@ -36,10 +36,10 @@
 
 <div class="wa-note">
   <span class="wa-icon-bulb"></span>
-  <h5><a name="note"></a>このチュートリアルを完了するには、Azure アカウントが必要です。</h5>
+  <h5><a name="note"></a>You need an Azure account to complete this tutorial:</h5>
   <ul>
-    <li><a href="http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F">無料で Azure アカウントを開く</a>ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Websites など無料の Azure サービスをご利用になれます。</li>
-    <li><a href="http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F">MSDN サブスクライバーの特典を有効にする</a>こともできます - MSDN サブスクリプションにより、有料の Azure のサービスを使用できるクレジットが毎月与えられます。</li>
+    <li>You can <a href="http://azure.microsoft.com/ja-jp/pricing/free-trial/?WT.mc_id=A261C142F">open an Azure account for free</a> - You get credits you can use to try out paid Azure services, and even after they're used up you can keep the account and use free Azure services, such as Websites.</li>
+    <li>You can <a href="http://azure.microsoft.com/ja-jp/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F">activate MSDN subscriber benefits</a> - Your MSDN subscription gives you credits every month that you can use for paid Azure services.</li>
   <ul>
 </div>
 
@@ -52,11 +52,11 @@
 
 	![](media/cdn-cloud-service-with-cdn/cdn-cs-1-new-project.PNG)
 
-2. **[ASP.NET Web ロール]** を選択し、**[>]** ボタンをクリックします。[OK] をクリックします。
+2. **[ASP.NET Web ロール]** を選択して、**[>]** ボタンをクリックします。[OK] をクリックします。
 
 	![](media/cdn-cloud-service-with-cdn/cdn-cs-2-select-role.PNG)
 
-3. **MVC** を選択し、**[OK]** をクリックします。
+3. **[MVC]** を選択して、**[OK]** をクリックします。
 
 	![](media/cdn-cloud-service-with-cdn/cdn-cs-3-mvc-template.PNG)
 
@@ -81,12 +81,12 @@
 
 	![](media/cdn-cloud-service-with-cdn/cdn-cs-8-publish-finalize.png)
 
-	>[WACOM.NOTE] クラウド サービスの発行には時間がかかります。[すべてのロールの Web のデプロイを有効にする] オプションを使用すると、Web ロールに対する高速な (ただし一時的な) 更新を提供することでクラウド サービスのデバッグが高速化されます。このオプションの詳細については、「[Azure Tools を使用したクラウド サービスの発行](http://msdn.microsoft.com/ja-jp/library/ff683672.aspx)」を参照してください。
+	>[WACOM.NOTE] クラウド サービスの発行には時間がかかります。[すべてのロールの Web のデプロイを有効にする] オプションを使用すると、Web ロールに対する高速な (ただし一時的な) 更新を提供することでクラウド サービスのデバッグが高速化されます。このオプションの詳細については、「Azure Tools を使用したクラウド サービスの発行」を参照してください。(http://msdn.microsoft.com/ja-jp/library/ff683672.aspx).
 
 	**[Windows Azure のアクティビティ ログ]** に発行状態が **[完了]** と表示されたら、このクラウド サービスと統合される CDN エンドポイントを作成します。 
 
-1. CDN エンドポイントを作成するには、[Azure の管理ポータル](http://manage.windowsazure.com/)にログインします。 
-2. **[新規]**、**[アプリケーション サービス]**、**[CDN]**、**[簡易作成]** の順にクリックします。**http://*<サービス名>*.cloudapp.net/cdn/** を選択し、**[作成]** をクリックします。
+1. CDN エンドポイントを作成するには、[Azure 管理ポータル] (http://manage.windowsazure.com/) にログインします。 
+2. **[新規]** > **[アプリケーション サービス]** > **[CDN]** > **[簡易作成]** の順にクリックします。**[http://*&lt;サービス名>*.cloudapp.net/cdn/]** を選択し、**[作成]** をクリックします。
 
 	![](media/cdn-cloud-service-with-cdn/cdn-cs-10-createcdn.png)
 
@@ -110,24 +110,24 @@
 
 2. Visual Studio 2013 に戻り、**WebRole1** プロジェクトの **Web.config** を開き、次のコードを `<system.webServer>` タグに追加します。  
 	<pre class="prettyprint">
-	<system.webServer>
-	  <mark><rewrite>
-	    <rules>
-	      <rule name=&quot;RewriteIncomingCdnRequest&quot; stopProcessing=&quot;true&quot;>
-	        <match url=&quot;^cdn/(.*)$&quot;/>
-	        <action type=&quot;Rewrite&quot; url=&quot;{R:1}&quot;/>
-	      </rule>
-	    </rules>
-	  </rewrite></mark>
+	&lt;system.webServer&gt;
+	  <mark>&lt;rewrite&gt;
+	    &lt;rules&gt;
+	      &lt;rule name=&quot;RewriteIncomingCdnRequest&quot; stopProcessing=&quot;true&quot;&gt;
+	        &lt;match url=&quot;^cdn/(.*)$&quot;/&gt;
+	        &lt;action type=&quot;Rewrite&quot; url=&quot;{R:1}&quot;/&gt;
+	      &lt;/rule&gt;
+	    &lt;/rules&gt;
+	  &lt;/rewrite&gt;</mark>
       ...
-	</system.webServer>
+	&lt;/system.webServer&gt;
 	</pre>
 
 4. もう一度クラウド サービスを発行します。クラウド サービス プロジェクトを右クリックし、**[発行]** を選択します。
 
 	![](media/cdn-cloud-service-with-cdn/cdn-cs-4-publish-a.png)
 
-1. 発行状態が **[完了]** と表示されたら、ブラウザー ウィンドウを開き、**http://*<cdnName>*.vo.msecnd.net/Content/bootstrap.css** に移動します。この設定では、次の URL を使用します。
+1. 発行状態が **[完了]** と表示されたら、ブラウザー ウィンドウを開き、 **http://*&lt;cdnName>*.vo.msecnd.net/Content/bootstrap.css** に移動します。この設定では、次の URL を使用します。
 
 		http://az632148.vo.msecnd.net/Content/bootstrap.css
 
@@ -139,35 +139,35 @@
 
 		http://cephalinservice.cloudapp.net/Content/bootstrap.css
 
-	**http://*<cdnName>*.vo.msecnd.net/Content/bootstrap.css** に移動すると、発行された Web アプリケーションから bootstrap.css をダウンロードするよう求められます。 
+	**http://*&lt;cdnName>*.vo.msecnd.net/Content/bootstrap.css** に移動すると、発行された Web アプリケーションから bootstrap.css をダウンロードするよう求められます。 
 
 	![](media/cdn-cloud-service-with-cdn/cdn-1-browser-access.PNG)
 
-同様に、CDN エンドポイントから、**http://*<serviceName>*.cloudapp.net/** のパブリックにアクセスできる任意の URL にアクセスできます。次に例を示します。
+同様に、CDN エンドポイントから、**http://*&lt;serviceName>*.cloudapp.net/** のパブリックにアクセスできる任意の URL にアクセスできます。次に例を示します。
 
 -	/Script パスの .js ファイル
 -	/Content パスの任意のコンテンツ ファイル
 -	任意のコントローラー/アクション 
 -	CDN エンドポイントでクエリ文字列が有効になっている場合、クエリ文字列を含む任意の URL
 
-実際、上記の構成の場合、**http://*<cdnName>*.vo.msecnd.net/** からのクラウド サービス全体をホストできます。**http://az632148.vo.msecnd.net/** に移動すると、Home/Index からのアクション結果が得られます。
+実際、上記の構成の場合、**http://*&lt;cdnName>*.vo.msecnd.net/** からのクラウド サービス全体をホストできます。**http://az632148.vo.msecnd.net/** に移動すると、Home/Index からのアクション結果が得られます。
 
 ![](media/cdn-cloud-service-with-cdn/cdn-2-home-page.PNG)
 
 ただし、これが、Azure CDN を介してクラウド サービス全体を提供するのが常に適切なやり方 (または一般的に適切なやり方) であることにはなりません。いくつかの注意点があります。
 
 -	Azure CDN ではプライベートなコンテンツを配信できないため、この方法ではサイト全体をパブリックにする必要があります。
--	予定されたメンテナンスであろうとユーザー エラーであろうと、CDN エンドポイントが何かの理由でオフラインになると、顧客をオリジン URL **http://*<serviceName>*.cloudapp.net/** にリダイレクトできる場合を除き、クラウド サービス全体がオフラインになります。 
--	カスタムの Cache-Control 設定 (「[クラウド サービスの静的ファイルのキャッシュ オプションを構成する](#caching)」を参照してください) を使用した場合でも、CDN エンドポイントによって高度に動的なコンテンツのパフォーマンスが向上するわけではありません。上に示すように CDN エンドポイントからホーム ページを読み込もうとした場合、非常に単純な既定のホーム ページを初めて読み込むときに 5 秒以上かかります。このページに毎分更新する必要がある動的コンテンツが含まれていたとしたら、クライアント エクスペリエンスはどうなるでしょうか。動的コンテンツを CDN エンドポイントから配信するにはキャッシュの有効期限が短く設定されている必要があります。これは、CDN エンドポイントで頻繁にキャッシュ ミスが発生することになります。その結果、クラウド サービスのパフォーマンスが低下し、CDN の目的が果たせなくなります。
+-	予定されたメンテナンスであろうとユーザー エラーであろうと、CDN エンドポイントが何かの理由でオフラインになると、顧客をオリジン URL **http://*&lt;serviceName>*.cloudapp.net/** にリダイレクトできる場合を除き、クラウド サービス全体がオフラインになります。 
+-	カスタムの Cache-Control 設定 (「クラウド サービスの静的ファイルのキャッシュ オプションを構成する」(#caching)を参照してください) を使用した場合でも、CDN エンドポイントによって高度に動的なコンテンツのパフォーマンスが向上するわけではありません。上に示すように CDN エンドポイントからホーム ページを読み込もうとした場合、非常に単純な既定のホーム ページを初めて読み込むときに 5 秒以上かかります。このページに毎分更新する必要がある動的コンテンツが含まれていたとしたら、クライアント エクスペリエンスはどうなるでしょうか。動的コンテンツを CDN エンドポイントから配信するにはキャッシュの有効期限が短く設定されている必要があります。これは、CDN エンドポイントで頻繁にキャッシュ ミスが発生することになります。その結果、クラウド サービスのパフォーマンスが低下し、CDN の目的が果たせなくなります。
 
-また、クラウド サービスで Azure CDN から配信するコンテンツをケースバイケースで決定する方法もあります。CDN エンドポイントから個々のコンテンツ ファイルにアクセスする方法については既に説明しました。CDN エンドポイントを介して特定のコントローラー アクションを配信する方法については、「[Azure CDN を介してコントローラー アクションからコンテンツを配信する](#controller)」で説明します。
+また、クラウド サービスで Azure CDN から配信するコンテンツをケースバイケースで決定する方法もあります。CDN エンドポイントから個々のコンテンツ ファイルにアクセスする方法については既に説明しました。CDN エンドポイントを介して特定のコントローラー アクションを配信する方法については、「Azure CDN を介してコントローラー アクションからコンテンツを配信する」(#controller)で説明します。
 
 より制限の厳しい URL の書き換え規則を指定すると、CDN エンドポイントを介してアクセスできるコンテンツを制限できます。たとえば、URL の書き換えを *\Scripts* フォルダーに制限するには、上記の書き換え規則を次のように変更します。   
 <pre class="prettyprint">
-<rule name=&quot;RewriteIncomingCdnRequest&quot; stopProcessing=&quot;true&quot;>
-  <match url=&quot;^cdn/<mark>Scripts/</mark>(.*)$&quot;/>
-  <action type=&quot;Rewrite&quot; url=&quot;<mark>Scripts/</mark>{R:1}&quot;/>
-</rule>
+&lt;rule name=&quot;RewriteIncomingCdnRequest&quot; stopProcessing=&quot;true&quot;&gt;
+  &lt;match url=&quot;^cdn/<mark>Scripts/</mark>(.*)$&quot;/&gt;
+  &lt;action type=&quot;Rewrite&quot; url=&quot;<mark>Scripts/</mark>{R:1}&quot;/&gt;
+&lt;/rule&gt;
 </pre>
 
 <a name="caching"></a>
@@ -175,12 +175,12 @@
 
 Azure CDN 統合をクラウド サービスに組み込むと、CDN エンドポイントで静的コンテンツをどのようにキャッシュするかを指定できます。そのためには、Web ロール プロジェクト (たとえば、WebRole1) の *Web.config* を開き、`<staticContent>` 要素を `<system.webServer>` に追加します。次の XML では、3 日間で有効期限が切れるキャッシュを追加しています。  
 <pre class="prettyprint">
-<system.webServer>
-  <mark><staticContent>
-    <clientCache cacheControlMode=&quot;UseMaxAge&quot; cacheControlMaxAge=&quot;3.00:00:00&quot;/>
-  </staticContent></mark>
+&lt;system.webServer&gt;
+  <mark>&lt;staticContent&gt;
+    &lt;clientCache cacheControlMode=&quot;UseMaxAge&quot; cacheControlMaxAge=&quot;3.00:00:00&quot;/&gt;
+  &lt;/staticContent&gt;</mark>
   ...
-</system.webServer>
+&lt;/system.webServer&gt;
 </pre>
 
 この操作を実行すると、クラウド サービス内のすべての静的ファイルは、CDN キャッシュ内で同じ規則に従います。キャッシュ設定をより細かく制御するには、*Web.config* ファイルをフォルダーに追加し、そこに設定を追加します。たとえば、*Web.config* ファイルを *\Content* フォルダーに追加して、その内容を次の XML で置き換えます。
@@ -196,16 +196,16 @@ Azure CDN 統合をクラウド サービスに組み込むと、CDN エンド�
 
 この設定は、*\Content* フォルダーのすべての静的ファイルを 15 日間キャッシュすることを指定しています。
 
-`<clientCache>` 要素を構成する方法の詳細については、「[クライアント キャッシュ <clientCache>](http://www.iis.net/configreference/system.webserver/staticcontent/clientcache)」を参照してください。
+`<clientCache>` 要素を構成する方法の詳細については、「クライアント キャッシュ &lt;clientCache>」を参照してください (http://www.iis.net/configreference/system.webserver/staticcontent/clientcache)。
 
-「[Azure CDN を介してコントローラー アクションからコンテンツを配信する](#controller)」では、CDN キャッシュ内のコントローラー アクションの結果に対してキャッシュ設定を構成する方法についても説明します。
+「Azure CDN を介してコントローラー アクションからコンテンツを配信する」(#controller)では、CDN キャッシュ内のコントローラー アクションの結果に対してキャッシュ設定を構成する方法についても説明します。
 
 <a name="controller"></a>
 ## Azure CDN を介してコントローラー アクションからコンテンツを配信する ##
 
-クラウド サービス Web ロールを Azure CDN と統合すると、Azure CDN を介してコントローラー アクションからコンテンツを簡単に配信できます。(上に示した) Azure CDN を介して直接クラウド サービスを提供する方法のほか、[Maarten Balliauw](https://twitter.com/maartenballiauw) 氏は、「[Reducing latency on the web with the Windows Azure CDN (Windows Azure CDN による Web の遅延時間の短縮)](http://channel9.msdn.com/events/TechDays/Techdays-2014-the-Netherlands/Reducing-latency-on-the-web-with-the-Windows-Azure-CDN)」の中でおもしろい MemeGenerator コントローラーを使用した方法を紹介しています。ここではその方法を再現します。
+クラウド サービス Web ロールを Azure CDN と統合すると、Azure CDN を介してコントローラー アクションからコンテンツを簡単に配信できます。(上に示した) Azure CDN を介して直接クラウド サービスを提供する方法のほか、Maarten Balliauw 氏は、「Reducing latency on the web with the Windows Azure CDN (Windows Azure CDN による Web の遅延時間の短縮)」の中で興味深い MemeGenerator コントローラーを使用した方法を紹介しています (http://channel9.msdn.com/events/TechDays/Techdays-2014-the-Netherlands/Reducing-latency-on-the-web-with-the-Windows-Azure-CDN)。ここではその方法を再現します。
 
-クラウド サービスで次のような Chuck Norris の若いときの画像 ([Alan Light](http://www.flickr.com/photos/alan-light/218493788/) による撮影) に基づいてミームを生成するとします。
+クラウド サービスで次のような Chuck Norris の若いときの画像 (Alan Light による撮影 (http://www.flickr.com/photos/alan-light/218493788/)) に基づいてミームを生成するとします。
 
 ![](media/cdn-cloud-service-with-cdn/cdn-5-memegenerator.PNG)
 
@@ -229,7 +229,7 @@ Azure CDN 統合をクラウド サービスに組み込むと、CDN エンド�
 	{
 	    public class MemeGeneratorController : Controller
 	    {
-	        static readonly Dictionary<string, Tuple<string ,string&gt;> Memes = new Dictionary<string, Tuple<string, string&gt;>();
+	        static readonly Dictionary&lt;string, Tuple&lt;string ,string&gt;&gt; Memes = new Dictionary&lt;string, Tuple&lt;string, string&gt;&gt;();
 
 	        public ActionResult Index()
 	        {
@@ -242,17 +242,17 @@ Azure CDN 統合をクラウド サービスに組み込むと、CDN エンド�
 	            var identifier = Guid.NewGuid().ToString();
 	            if (!Memes.ContainsKey(identifier))
 	            {
-	                Memes.Add(identifier, new Tuple<string, string>(top, bottom));
+	                Memes.Add(identifier, new Tuple&lt;string, string&gt;(top, bottom));
 	            }
 	
-	            return Content(&quot;<a href=\&quot;&quot; + Url.Action(&quot;Show&quot;, new {id = identifier}) + &quot;\&quot;>here&#39;s your meme</a>&quot;);
+	            return Content(&quot;&lt;a href=\&quot;&quot; + Url.Action(&quot;Show&quot;, new {id = identifier}) + &quot;\&quot;&gt;here&#39;s your meme&lt;/a&gt;&quot;);
 	        }
 
 
 	        [OutputCache(VaryByParam = &quot;*&quot;, Duration = 1, Location = OutputCacheLocation.Downstream)]
 	        public ActionResult Show(string id)
 	        {
-	            Tuple<string, string> data = null;
+	            Tuple&lt;string, string&gt; data = null;
 	            if (!Memes.TryGetValue(id, out data))
 	            {
 	                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
@@ -264,7 +264,7 @@ Azure CDN 統合をクラウド サービスに組み込むと、CDN エンド�
 	            }
 	            else // Get content from Azure CDN
 	            {
-	                return Redirect(string.Format(&quot;http://<mark><yourCdnName></mark>.vo.msecnd.net/MemeGenerator/Generate?top={0}&bottom={1}&quot;, data.Item1, data.Item2));
+	                return Redirect(string.Format(&quot;http://<mark>&lt;yourCdnName&gt;</mark>.vo.msecnd.net/MemeGenerator/Generate?top={0}&amp;bottom={1}&quot;, data.Item1, data.Item2));
 	            }
 	        }
 
@@ -300,8 +300,8 @@ Azure CDN 統合をクラウド サービスに組み込むと、CDN エンド�
 	                size = g.MeasureString(text, font);
 	
 	                // It fits, back out
-	                if (size.Height < i.Height &&
-	                     size.Width < i.Width) { return font; }
+	                if (size.Height &lt; i.Height &amp;&amp;
+	                     size.Width &lt; i.Width) { return font; }
 	
 	                // Try a smaller font (90% of old size)
 	                Font oldFont = font;
@@ -340,7 +340,7 @@ Azure CDN 統合をクラウド サービスに組み込むと、CDN エンド�
 [OutputCache(VaryByParam = &quot;*&quot;, Duration = 1, Location = OutputCacheLocation.Downstream)]
 public ActionResult Show(string id)
 {
-    Tuple<string, string> data = null;
+    Tuple&lt;string, string&gt; data = null;
     if (!Memes.TryGetValue(id, out data))
     {
         return new HttpStatusCodeResult(HttpStatusCode.NotFound);
@@ -352,7 +352,7 @@ public ActionResult Show(string id)
     }
     else // Get content from Azure CDN
     {
-        return Redirect(string.Format(&quot;http://<mark><cdnName></mark>.vo.msecnd.net/MemeGenerator/Generate?top={0}&bottom={1}&quot;, data.Item1, data.Item2));
+        return Redirect(string.Format(&quot;http://<mark>&lt;cdnName&gt;</mark>.vo.msecnd.net/MemeGenerator/Generate?top={0}&amp;bottom={1}&quot;, data.Item1, data.Item2));
     }
 }
 </pre>
@@ -388,7 +388,7 @@ URL の書き換え規則が適用された後、CDN エンドポイントにキ
 -	CDN エンドポイントのに障害に対するフォールバック メカニズム
 -	最小限のコードの変更
 
-「**Azure CDN エンドポイントを Azure Websites と統合して、Azure CDN から Web ページの静的コンテンツを配信する**」で作成した [WebRole1](#deploy) プロジェクトで、*App_Start\BundleConfig.cs* を開き、`bundles.Add()` メソッドの呼び出しを確認します。
+「Azure CDN エンドポイントを Azure Web サイトと統合して、Azure CDN から Web ページの静的コンテンツを配信する」(#deploy)で作成した **WebRole1** プロジェクトで、*App_Start\BundleConfig.cs* を開き、`bundles.Add()` メソッドの呼び出しを確認します。
 
     public static void RegisterBundles(BundleCollection bundles)
     {
@@ -409,18 +409,18 @@ Azure Web ロールでこの Razor コードが実行されると、次のよう
 
     <script src="/Scripts/jquery-1.10.2.js"></script>
 
-これにより、JavaScript コードを開発環境でデバッグできる一方で、運用環境での同時クライアント接続数 (バンドル) を削減し、ファイルのダウンロード パフォーマンス (縮小) を高めることができます。これは、Azure CDN 統合によって得られる優れた機能です。加えて、レンダリングされたバンドルには自動生成されたバージョン文字列が既に含まれます。そこで、この機能を複製することで、NuGet を介して jQuery バージョンを更新するたびに、できる限り迅速にクライアント側にその更新が反映されるようにすることができます。
+これにより、JavaScript コードを開発環境でデバッグできる一方で、運用環境での同時クライアント接続数 (バンドル) を削減し、ファイルのダウンロード パフォーマンス (縮小) を高めることができます。これは、Azure CDN 統合によって得られる優れた機能です。加えて、レンダリングされたバンドルには自動生成されたバージョン文字列が既に含まれます。そこで、この機能を複製することで、NuGet を介して jQuery バージョンを更新するたびにできる限り迅速にクライアント側にその更新が反映されるようにすることができます。
 
 ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合するには、次の手順に従います。
 
-1. *App_Start\BundleConfig.cs* に戻り、CDN アドレスを指定する別の `Bundle コンストラクター`を使用するように [bundles.Add()](http://msdn.microsoft.com/ja-jp/library/jj646464.aspx) メソッドを変更します。そのためには、`RegisterBundles` メソッドの定義を次のコードで置き換えます。  
+1. *App_Start\BundleConfig.cs* に戻り、CDN アドレスを指定する別の [Bundle コンストラクター] (http://msdn.microsoft.com/ja-jp/library/jj646464.aspx) を使用するように `bundles.Add()` メソッドを変更します。そのためには、`RegisterBundles` メソッドの定義を次のコードで置き換えます。  
 	<pre class="prettyprint">
 	public static void RegisterBundles(BundleCollection bundles)
 	{
 	    <mark>bundles.UseCdn = true;
 	    var version = System.Reflection.Assembly.GetAssembly(typeof(Controllers.HomeController))
 	        .GetName().Version.ToString();
-	    var cdnUrl = &quot;http://<yourCDNName>.vo.msecnd.net/{0}?v=&quot; + version;</mark>
+	    var cdnUrl = &quot;http://&lt;yourCDNName&gt;.vo.msecnd.net/{0}?v=&quot; + version;</mark>
 	
 	    bundles.Add(new ScriptBundle(&quot;~/bundles/jquery&quot;<mark>, string.Format(cdnUrl, &quot;bundles/jquery&quot;)</mark>).Include(
 	                &quot;~/Scripts/jquery-{version}.js&quot;));
@@ -505,11 +505,11 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 <a name="fallback"></a>
 ## CDN URL のフォールバック メカニズム ##
 
-なんらかの理由で Azure CDN エンドポイントに障害が発生した場合に備えて、JavaScript または Bootstrap を読み込むためのフォールバック オプションとして、オリジン Web サーバーにアクセスできるようにしておくと便利です。CDN が利用できないために Web サイトの画像が失われることは深刻な事態ですが、スクリプトやスタイルシートで提供される重要なページ機能が失われることは、さらに深刻な事態です。
+何かの理由で Azure CDN エンドポイントに障害が発生した場合に備えて、JavaScript または Bootstrap を読み込むためのフォールバック オプションとしてオリジン Web サーバーにアクセスできるようにしておくと便利です。CDN が利用できないために Web サイトの画像が失われることは深刻な事態ですが、スクリプトやスタイルシートで提供される重要なページ機能が失われることは、さらに深刻な事態です。
 
-[Bundle](http://msdn.microsoft.com/ja-jp/library/system.web.optimization.bundle.aspx) クラスには、CDN 障害に対するフォールバック メカニズムを構成するための [CdnFallbackExpression](http://msdn.microsoft.com/ja-jp/library/system.web.optimization.bundle.cdnfallbackexpression.aspx) プロパティがあります。このプロパティを使用するには、次の手順に従います。
+[Bundle] (http://msdn.microsoft.com/ja-jp/library/system.web.optimization.bundle.aspx) クラスには、CDN 障害に対するフォールバック メカニズムを構成するための [CdnFallbackExpression] プロパティがあります (http://msdn.microsoft.com/ja-jp/library/system.web.optimization.bundle.cdnfallbackexpression.aspx) 。このプロパティを使用するには、次の手順に従います。
 
-1. Web ロール プロジェクトで、それぞれの *Bundle コンストラクター*に CDN URL を追加した [App_Start\BundleConfig.cs](http://msdn.microsoft.com/ja-jp/library/jj646464.aspx) を開き、次の強調表示された変更を加えて、既定のバンドルにフォールバック メカニズムを追加します。  
+1. Web ロール プロジェクトで、それぞれの [Bundle コンストラクター] (http://msdn.microsoft.com/ja-jp/library/jj646464.aspx) に CDN URL を追加した *App_Start\BundleConfig.cs* を開き、次の強調表示された変更を加えて、既定のバンドルにフォールバック メカニズムを追加します。  
 	<pre class="prettyprint">
 	public static void RegisterBundles(BundleCollection bundles)
 	{
@@ -550,11 +550,11 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 	-	`window.Modernizr` は modernizer-{version}.js に定義されています。
 	-	`$.fn.modal` は bootstrap.js に定義されています。
 	
-	`~/Cointent/css` バンドルには CdnFallbackExpression を設定していません。これは、期待される [<link>](https://aspnetoptimization.codeplex.com/workitem/104) タグではなくフォールバック CSS の `<script>` タグが挿入されるという `System.Web.Optimization` のバグが存在するためです。
+	`~/Cointent/css` バンドルには CdnFallbackExpression を設定していません。これは、期待される `<link>` タグではなくフォールバック CSS の `<script>` タグが挿入されるという [System.Web.Optimization のバグ] (https://aspnetoptimization.codeplex.com/workitem/104) が存在するためです。
 	
-	ただし、[Ember Consulting Group](https://github.com/EmberConsultingGroup/StyleBundleFallback) から優れた[スタイル バンドルのフォールバック](https://github.com/EmberConsultingGroup)が提供されています。 
+	ただし、Ember Consulting Group (https://github.com/EmberConsultingGroup) から優れた [スタイル バンドルのフォールバック] (https://github.com/EmberConsultingGroup/StyleBundleFallback) が提供されています。 
 
-2. CSS の対処法を使用するには、Web ロール プロジェクトの *App_Start* フォルダーに *StyleBundleExtensions.cs* という名前の新しい .cs ファイルを作成し、その内容を [GitHub に公開されているコード](https://github.com/EmberConsultingGroup/StyleBundleFallback/blob/master/Website/App_Start/StyleBundleExtensions.cs)で置き換えます。 
+2. この対処法を使用するには、Web ロール プロジェクトの *App_Start* フォルダーに *StyleBundleExtensions.cs* という名前の新しい .cs ファイルを作成し、その内容を [GitHub に公開されているコード] (https://github.com/EmberConsultingGroup/StyleBundleFallback/blob/master/Website/App_Start/StyleBundleExtensions.cs) で置き換えます。 
 
 4. *App_Start\StyleFundleExtensions.cs* で、名前空間の名前を Web ロールの名前 (**WebRole1** など) に変更します。 
 
@@ -614,8 +614,10 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
 	ただし、(すぐ上の行の) || 式の最初の部分は常に true を返すため、document.write() 関数が実行されることはありません。
 
 # 詳細 #
-- [Azure コンテンツ配信ネットワーク (CDN) の概要](http://msdn.microsoft.com/library/azure/ff919703.aspx)
+- [Azure コンテンツ配信ネットワーク (CDN) の概要] (http://msdn.microsoft.com/library/azure/ff919703.aspx)
 - [Web アプリケーションで Azure CDN からコンテンツを配信する](http://azure.microsoft.com/ja-jp/Documentation/Articles/cdn-serve-content-from-cdn-in-your-web-application/)
-- [Azure CDN と Azure Websites の統合](http://azure.microsoft.com/ja-jp/documentation/articles/cdn-websites-with-cdn/)
+- [Azure CDN と Azure Web サイトの統合](http://azure.microsoft.com/ja-jp/documentation/articles/cdn-websites-with-cdn/)
 - [Bundling and Minification (バンドルおよび縮小)](http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification)
 - [Azure 用 CDN の使用](http://azure.microsoft.com/ja-jp/documentation/articles/cdn-how-to-use/)
+
+<!--HONumber=35.2-->

@@ -1,17 +1,17 @@
-﻿<properties title="Azure Notification Hubs Secure Push" pageTitle="Azure Notification Hubs の安全なプッシュ" metaKeywords="Azure のプッシュ通知, Azure の通知ハブ, 安全なプッシュ" description="セキュリティで保護されたプッシュ通知を Azure から iOS アプリに送信する方法について説明します。コード サンプルは Objective-C と C# で記述されています。" documentationCenter="Mobile" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="yuaxu" manager="dwrede" />
+﻿<properties title="Azure Notification Hubs Secure Push" pageTitle="Azure Notification Hubs の安全なプッシュ" metaKeywords="Azureプッシュ通知, Azure 通知ハブ, 安全なプッシュ" description="セキュリティで保護されたプッシュ通知を Azure から iOS アプリに送信する方法について説明します。コード サンプルは Objective-C と C# で記述されています。" documentationCenter="Mobile" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="yuaxu" manager="dwrede" />
 
 <tags ms.service="notification-hubs" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="yuaxu" />
 
 #Azure Notification Hubs の安全なプッシュ
 
 <div class="dev-center-tutorial-selector sublanding">
-    	<a href="/ja-jp/documentation/articles/notification-hubs-windows-dotnet-secure-push/" title="Windows Universal">Windows ユニバーサル </a><a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/" title="iOS" class="current">iOS</a>
+    	<a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-secure-push/" title="Windows Universal">Windows Universal</a><a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/" title="iOS" class="current">iOS</a>
 		<a href="/ja-jp/documentation/articles/notification-hubs-aspnet-backend-android-secure-push/" title="Android">Android</a>
 </div>
 
 Microsoft Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。
 
-規制やセキュリティの制約により、アプリケーションでは、標準のプッシュ通知インフラストラクチャからは転送できないものを通知に含める必要がある場合もあります。このチュートリアルでは、クライアントのデバイスとアプリケーションのバックエンドとの間の安全で認証された接続を通して機密情報を送信することによって、同じエクスペリエンスを実現する方法について説明します。
+規制やセキュリティの制約により、アプリケーションでは、標準のプッシュ通知インフラストラクチャからは転送できないものを通知に含める必要がある場合があります。このチュートリアルでは、クライアントのデバイスとアプリケーションのバックエンドとの間の安全で認証された接続を通して機密情報を送信することによって、同じエクスペリエンスを実現する方法について説明します。
 
 大まかには、フローは次のようになります。
 
@@ -24,29 +24,29 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 前のフロー (およびこのチュートリアル) で重要なことは、ユーザーのログイン後、デバイスはローカル ストレージに認証トークンを格納すると想定していることです。これにより、デバイスはこのトークンを使用して通知の安全なペイロードを取得できるため、完全にシームレスなエクスペリエンスが保証されます。アプリケーションがデバイスに認証トークンを格納しない、またはそれらのトークンが期限切れの場合、デバイスのアプリケーションは、通知を受け取ったときにアプリケーションの起動を促す一般的な通知を表示する必要があります。その後、アプリケーションはユーザーを認証し、通知ペイロードを表示します。
 
-この安全なプッシュのチュートリアルでは、プッシュ通知を安全に送信する方法を説明します。このチュートリアルは「**ユーザーへの通知**」チュートリアルに基づいて記述されているため、先にそのチュートリアルの手順を終えてください。
+この安全なプッシュのチュートリアルでは、プッシュ通知を安全に送信する方法を説明します。このチュートリアルは **ユーザーへの通知** チュートリアルに基づいて記述されているため、先にそのチュートリアルでの手順を完了してください。
 
-> [AZURE.NOTE] このチュートリアルでは、「[Notification Hubs の使用 (iOS)](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-ios-get-started/)」での説明に従って通知が作成され、構成されていると想定しています。
+> [AZURE.NOTE] このチュートリアルでは、[通知ハブの使用 (iOS)](http://azure.microsoft.com/ja-jp/documentation/articles/notification-hubs-ios-get-started/) での説明に従って通知が作成され、構成されていると想定しています。
 
 [WACOM.INCLUDE [notification-hubs-aspnet-backend-securepush](../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## iOS プロジェクトを変更する
 
-通知の *id* だけを送信するようにアプリケーション バックエンドを変更したため、iOS アプリケーションがその通知を処理し、バックエンドをコールバックしてから安全なメッセージを取得して表示するように変更する必要があります。
+通知の*id* だけを送信するようにアプリケーション バックエンドを変更したため、iOS アプリケーションがその通知を処理し、バックエンドをコールバックしてから安全なメッセージを取得して表示するように変更する必要があります。
 
 そのためには、アプリケーション バックエンドから安全なコンテンツを取得するロジックを作成する必要があります。
 
-1. **AppDelegate.m** で、 バックエンドから送信された通知 ID を処理できるように、必ずアプリケーションをサイレント通知に登録します。**UIRemoteNotificationTypeNewsstandContentAvailability** オプションを didFinishLaunchingWithOptions 内に追加します。
+1. **AppDelegate.m** で、アプリケーションがサイレント通知に登録されていることを確認し、バックエンドから送信された通知 id を処理できるようにします。didFinishLaunchingWithOption に **UIRemoteNotificationTypeNewsstandContentAvailability** オプションを追加します。
 
 		[[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
 
-2. **AppDelegate.m** で、次の宣言を使用して implementation セクションを先頭に追加します。
+2. **AppDelegate.m** で、次の宣言を使用して実装セクションを先頭に追加します。
 
 		@interface AppDelegate ()
 		- (void) retrieveSecurePayloadWithId:(int)payloadId completion: (void(^)(NSString*, NSError*)) completion;
 		@end
 
-3. 次に、implementation セクションに次のコードを追加します。プレースホルダー `{back-end endpoint}` を前に取得したバックエンドのエンドポイントで置き換えます。
+3. 次に、次のコードを実装セクションに追加します。プレースホルダー `{back-end endpoint}` を前に取得したバックエンドのエンドポイントで置き換えます。
 
 		NSString *const GetNotificationEndpoint = @"{back-end endpoint}/api/notifications";
 
@@ -95,9 +95,9 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 	このメソッドは、共有設定に格納された資格情報によってアプリケーション バックエンドを呼び出して通知コンテンツを取得します。
 
-4. ここでは、受信通知を処理し、上記のメソッドを使用して表示するコンテンツを取得する必要があります。最初に、プッシュ通知を受信するときに iOS アプリケーションがバックグラウンドで実行されるようにします。**XCode** で、左側のパネルのアプリケーション プロジェクトを選択し、中央のウィンドウの **[Targets]** セクションでメインのアプリケーション ターゲットをクリックします。
+4. ここでは、受信通知を処理し、上記のメソッドを使用して表示するコンテンツを取得する必要があります。最初に、プッシュ通知を受信するときに iOS アプリケーションがバックグラウンドで実行されるようにします。**XCode** で、左側のパネルのアプリケーション プロジェクトを選択し、中央のウィンドウの **[ターゲット]** セクションでメイン アプリケーション ターゲットをクリックします。
 
-5. 次に、中央ウィンドウの上部で **[Capabilities]** タブをクリックし、**[Remote Notifications]** チェック ボックスをオンにします。
+5. 次に、中央ウィンドウの上部で **[機能]** タブをクリックし、**[リモート通知]** チェック ボックスをオンにします。
 
 	![][IOS1]
 
@@ -135,6 +135,8 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 2. iOS アプリケーションの UI で、ユーザー名とパスワードを入力します。文字列は任意ですが、値は同じである必要があります。
 
-3. iOS アプリケーションの UI で、**[Log in]** をクリックします。次に、**[プッシュを送信する]** をクリックします。通知センターに安全な通知が表示されます。
+3. iOS アプリケーションの UI で、**[ログイン]** をクリックします。次に、**[プッシュを送信する]** をクリックします。通知センターに安全な通知が表示されます。
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png
+
+<!--HONumber=35.2-->

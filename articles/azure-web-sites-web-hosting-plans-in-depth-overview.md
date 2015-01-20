@@ -1,10 +1,10 @@
 ﻿<properties title="Azure Websites Web Hosting Plans In-Depth Overview" pageTitle="詳解 Azure Websites の Web ホスティング プラン - Windows Azure 機能ガイド" description="Azure Websites の Web ホスティング プランのしくみと、それが管理エクスペリエンスにもたらすメリットについて説明します。" metaKeywords="Azure Web Sites, Azure Websites, WHP, Web Hosting Plan, Web Hosting Plans, Resource Groups" services="web-sites" solutions="web" documentationCenter="Infrastructure" authors="Byron Tardif and Yochay Kiryaty" videoId="" scriptId="" manager="wpickett" />
 
-<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="Byron Tardif and Yochay Kiryaty" />
+<tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="11/17/2014" ms.author="Byron Tardif and Yochay Kiryaty" />
 </br>
 #詳解 Azure Websites の Web ホスティング プラン#
 </br>
-Web ホスティング プラン (WHP) は、Web サイト間で共有できる一連の機能と容量を表します。  Web ホスティング プランでは、Azure Websites の価格レベルが 4 つ (無料、共有、基本、標準) サポートされ、価格レベルごとに利用できる機能と容量が異なります。  サブスクリプション、リソース グループ、地理的位置が同じサイト間では、Web ホスティング プランを共有できます。同じ Web ホスティング プランに属するすべてのサイトは、その Web ホスティング プラン階層で定義されているすべての機能を利用できます。特定の Web ホスティング プランに関連付けられているすべての Web サイトは、その Web ホスティング プランに定義されているリソース上で実行されます。たとえば、"S" サイズの 2 台の仮想マシンを使用するように Web ホスティング プランが構成されている場合、その Web ホスティング プランに関連付けられているすべてのサイトが、その 2 台の仮想マシンで実行されます。通常の Azure Websites と同様、サイトを実行する仮想マシンは完全に管理され、高い可用性が確保されます。
+Web ホスティング プラン (WHP) は、Web サイト間で共有できる一連の機能と容量を表します。Web ホスティング プランでは、Azure Websites の料金レベルが 4 つ (無料、共有、基本、標準) サポートされ、料金レベルごとに利用できる機能が異なります。サブスクリプション、リソース グループ、リージョンが同じサイト間では、Web ホスティング プランを共有できます。同じ Web ホスティング プランに属するすべてのサイトは、その Web ホスティング プラン階層で定義されているすべての機能を利用できます。特定の Web ホスティング プランに関連付けられているすべての Web サイトは、その Web ホスティング プランに定義されているリソース上で実行されます。たとえば、"S" サイズの 2 台の仮想マシンを使用するように Web ホスティング プランが構成されている場合、その Web ホスティング プランに関連付けられているすべてのサイトが、その 2 台の仮想マシンで実行されます。通常の Azure Websites と同様、サイトを実行する仮想マシンは完全に管理され、高い可用性が確保されます。
 </br>
 この記事では、Web ホスティング プランの階層とスケール、Web サイトを管理する中での働きなど、主な特徴を詳しく見ていきます。 
 </br>
@@ -12,7 +12,7 @@ Web ホスティング プラン (WHP) は、Web サイト間で共有できる�
 </br>
 1 つの Web サイトは、常時 1 つの Web ホスティング プランにのみ関連付けることができます。Web ホスティング プランは、リソース グループに関連付けられます。リソース グループは Azure 内の新しい概念であり、そのグループに含まれるすべてのリソースに対してライフサイクルの境界という機能を果たします。リソース グループを使用することによって、1 つのアプリケーションのすべての構成要素をまとめて管理することができます。 
 </br>
-1 つのリソース グループに複数の Web ホスティング プランを追加して、それぞれの Web ホスティング プランに異なる機能を持たせたうえで、サイトを関連付けることにより、それらのサイトは、ホスティング プランがそれぞれ備えている機能一式を利用することができます。  その関係を示したのが次の画像です。
+1 つのリソース グループに複数の Web ホスティング プランを追加して、それぞれの Web ホスティング プランに異なる機能を持たせたうえで、サイトを関連付けることにより、それらのサイトは、ホスティング プランがそれぞれ備えている機能一式を利用することができます。その関係を示したのが次の画像です。
 </br>
 </br>
 ![Resource Groups and Web Hosting Plans](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview01.png)
@@ -40,7 +40,7 @@ Web ホスティング プランは 1 つのリソース グループに複数�
 </br>
 ##Azure プレビュー ポータルの既存のリソース グループ##
 </br>
-既に Web サイトが Azure Websites に存在する場合、そのすべての Web サイトが Azure プレビュー ポータルに表示されます。左側のナビゲーション ウィンドウにある **[参照]** ボタンをクリックし、**[Web サイト]** をクリックすると、すべての Web サイトがフラットに一覧表示されます。
+既に Web サイトが Azure Web サイトに存在する場合、そのすべての Web サイトが Azure プレビュー ポータルに表示されます。左側のナビゲーション ウィンドウにある **[参照]** ボタンをクリックし、**[Web サイト]** をクリックすると、すべての Web サイトがフラットに一覧表示されます。
 </br>
 </br>
 ![See all your website as a flat list](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview03.png)
@@ -52,25 +52,25 @@ Web ホスティング プランは 1 つのリソース グループに複数�
 ![See all the resource groups that have been created](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview04.png)
 </br>
 </br>
-また、既に Web サイトがある各リージョンには、既定のリソース グループが自動的に生成されていることがわかります。Web サイトに関して自動的に生成されたリソース グループの名前は *Default-Web-<場所の名前>* になります。ここで、<場所の名前> は、Azure のリージョンを表します (例: *Default-Web-WestUS*)。各リソース グループには、そのグループのリージョンに既にあるサイトがすべて表示されます。完全版であれ、プレビュー版であれ、Azure ポータルで過去に作成したサイトと将来作成するサイトは、どちらのポータルでも利用できるようになります。 
+また、既に Web サイトがある各リージョンには、既定のリソース グループが自動的に生成されていることがわかります。Web サイトに関して自動的に生成されたリソース グループの名前は *Default-Web-<場所の名前>* になります。ここで、<場所の名前> は、Azure のリージョンを表します (例: Default-Web-WestUS)。各リソース グループには、そのグループのリージョンに既にあるサイトがすべて表示されます。完全版であれ、プレビュー版であれ、Azure ポータルで過去に作成したサイトと将来作成するサイトは、どちらのポータルでも利用できるようになります。 
 </br>
 Web サイトはすべて Web ホスティング プランに関連付ける必要があるため、Microsoft では、以下の規則に従い、各リージョンの既存のサイトに対する既定の Web ホスティング プランを作成しました。
 </br>
-* **無料**の Web サイトはすべて**既定**の Web ホスティング プランに関連付けられ、その価格レベルは**無料**に設定されます。 
+* **無料**の Web サイトはすべて**既定**の Web ホスティング プランに関連付けられ、その料金レベルは**無料**に設定されます。 
 </br>
-* **共有**の Web サイトはすべて**既定**の Web ホスティング プランに関連付けられ、その価格レベルは**共有**に設定されます。
+* **共有**の Web サイトはすべて**既定**の Web ホスティング プランに関連付けられ、その料金レベルは**共有**に設定されます。
 </br>
 * **標準**の Web サイトはすべて既定の Web ホスティング プランに関連付けられ、その価格レベルは**標準**に設定されます。 
 </br>
-この Web ホスティング プランの名前は **DefaultServerFarm** になります。従来の API をサポートする関係上、この名前が選ばれました。実際には **Web ホスティング プラン**を表していることを考えると、**ServerFarm** という名前はやや正確性に欠けますが、あくまでこれは Web ホスティング プランの名前です。実体ではないのでご注意ください。 
+この web ホスティング プランの名前は **DefaultServerFarm** になります。従来の API をサポートする関係上、この名前が選ばれました。実際には **Web ホスティング プラン**を表していることを考えると、**ServerFarm** という名前はやや正確性に欠けますが、あくまでこれは Web ホスティング プランの名前です。実体ではないのでご注意ください。 
 </br>
 ##Web ホスティング プランの FAQ##
 </br>
-**Q**: Web ホスティング プランの作成方法を教えてください。
+**質問**:Web ホスティング プランの作成方法を教えてください。
 </br>
-**A**: Web ホスティング プランはコンテナーであるため、空の Web ホスティング プランを作成することはできません。新しい Web ホスティング プランは、サイトの作成時に明示的に作成します。
+**回答**:Web ホスティング プランはコンテナーであるため、空の Web ホスティング プランを作成することはできません。新しい Web ホスティング プランは、サイトの作成時に明示的に作成します。
 </br>
-新しい **Azure プレビュー ポータル**の UI を使って作成するには、**[新規]** をクリックし、**[Web サイト]** を選択して、Web サイトの作成ブレードを表示します。以下の 1 つ目の画像には、左下に **[新規]** アイコンが表示されています。また、2 つ目の画像には、**[Web サイト]** 作成ブレード、**[Web ホスティング プラン]** ブレード、**[価格レベル]** ブレードが確認できます。
+新しい **Azure プレビュー ポータル**の UI を使って作成するには、**[新規]** をクリックし、**[Web サイト]** を選択して、Web サイトの作成ブレードを表示します。以下の最初の画像には、左下に **[新規]** アイコンが表示されています。また、2 番目の画像には、**[Web サイト]** 作成ブレード、**[Web ホスティング プラン]** ブレード、**[価格レベル]** ブレードが確認できます。
 </br>
 </br>
 ![Create a new website](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview05.png)
@@ -79,9 +79,9 @@ Web サイトはすべて Web ホスティング プランに関連付ける必�
 ![Website, Web Hosting Plan and pricing tier blades](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview06.png)
 </br>
 </br>
-この例では、**contosomarketing** という新しい Web サイトを作成し、**contoso** という新しい Web ホスティング プランに配置しています。この Web ホスティング プランに選択した料金レベルは "**S、標準**" です。Web ホスティング プランの価格レベルと、それぞれに用意されている機能、料金、スケール オプションの詳細については、「[Websites (Websites)](http://go.microsoft.com/?linkid=9845586)」を参照してください。 
+この例では、**contosomarketing** という新しい Web サイトを作成し、**contoso** という新しい Web ホスティング プランに配置しています。この Web ホスティング プランに選択した料金レベルは **"S、標準"** です。Web ホスティング プランの価格レベル、それぞれに用意されている機能、料金、スケール オプションの詳細については、「[Azure Websites の Web ホスティング プラン](http://go.microsoft.com/?linkid=9845586)」を参照してください。 
 </br>
-既にある Azure ポータルに Web ホスティング プランを作成することもできます。これは、**[Web ホスティング プラン]** ボックスの一覧の **[新しい Web ホスティング プランの作成]** を選択することによって、**簡易作成ウィザード**の中で行います。
+既にある Azure ポータルに Web ホスティング プランを作成することもできます。これは、**[Web ホスティング プラン]** ボックスの一覧の **[新しい Web ホスティング プランの作成]** を選択することによって、**簡易作成**ウィザードの中で行います。
 </br>
 </br>
 ![Create new web hosting plan in the existing portal](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview07.png)
@@ -89,9 +89,9 @@ Web サイトはすべて Web ホスティング プランに関連付ける必�
 </br>
 この例では、**northwind** という新しいサイトを作成し、Web ホスティング プランを新規作成するように選択しています。この操作を実行すると、Web サイト **northwind** を含んだ **default0** という新しい Web ホスティング プランが作成されます。この方法で作成されたすべての Web ホスティング プランは、この名前付け規則に従います。Web ホスティング プランの作成後に名前を変更することはできません。また、この方法で作成された Web ホスティング プランは、**無料**の価格レベルに作成されます。
 </br>
-**Q**: **Web ホスティング プラン**にサイトを割り当てる方法を教えてください。
+**質問**:**Web ホスティング プラン**にサイトを割り当てる方法を教えてください。
 </br>
-**A**: Web ホスティング プランへのサイトの割り当ては、サイトの作成プロセスの中で行います。この作業を新しい **Azure プレビュー ポータル**の UI で行うには、**[新規]** をクリックし、**[Web サイト]** を選択します。
+**回答**:Web ホスティング プランへのサイトの割り当ては、サイトの作成プロセスの中で行います。この作業を新しい **Azure プレビュー ポータル**の UI で行うには、**[新規]** をクリックし、**[Web サイト]** を選択します。
 </br>
 </br>
 ![Create a new website](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview08.png)
@@ -109,11 +109,11 @@ Web サイトはすべて Web ホスティング プランに関連付ける必�
 ![Select a hosting plan in the existing portal](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview10.png)
 </br>
 </br>
-**Q**: Web ホスティング プラン間でサイトを移動する方法を教えてください。
+**質問**:Web ホスティング プラン間でサイトを移動する方法を教えてください。
 </br>
-**A**: Web ホスティング プラン間でのサイトの移動は、Azure プレビュー ポータルで行うことができます。Web サイトは、同じリソース グループに属している同じ地理的リージョンの Web ホスティング プラン間で移動することができます。
+**回答**:Web ホスティング プラン間でのサイトの移動は、Azure プレビュー ポータルで行うことができます。Web サイトは、同じリソース グループに属している同じ地理的リージョンの Web ホスティング プラン間で移動することができます。
 </br>
-サイトを別のプランに移動するには、移動するサイトの Web サイト ブレードに移動します。  続けて、**[Web ホスティング プラン]** をクリックします。
+サイトを別のプランに移動するには、移動するサイトの Web サイト ブレードに移動します。続けて、**[Web ホスティング プラン]** をクリックします。
 </br>
 </br>
 ![Choose a new or existing web hosting plan](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview22.png)
@@ -124,9 +124,9 @@ Web サイトはすべて Web ホスティング プランに関連付ける必�
 Web ホスティング プランにそれぞれ価格レベルが割り当てられている点に注目してください。**無料**レベルの Web ホスティング プランから**標準**の Web ホスティング プランにサイトを移動すると、標準レベルのすべての機能とリソースを Web サイトで利用できるようになります。 
 </br>
 </br>
-**Q**: Web ホスティング プランを拡張する方法を教えてください。
+**質問**:Web ホスティング プランを拡張する方法を教えてください。
 </br>
-**A**: Web ホスティング プランは 2 とおりの方法で拡張できます。1 つは、Web ホスティング プランとそこに関連付けられているすべてのサイトをスケール アップする方法です。Web ホスティング プランの価格レベルを変更すると、その Web ホスティング プラン内のすべてのサイトに、その価格レベルで定義されている機能とリソースが適用されます。 
+**回答**:Web ホスティング プランは 2 とおりの方法で拡張できます。1 つは、Web ホスティング プランとそこに関連付けられているすべてのサイトをスケール アップする方法です。Web ホスティング プランの価格レベルを変更すると、その Web ホスティング プラン内のすべてのサイトに、その価格レベルで定義されている機能とリソースが適用されます。 
 </br>
 以下の画像には、**[Web ホスティング プラン]** ブレードと **[価格レベル]** ブレードが表示されています。**[Web ホスティング プラン]** ブレードの **[価格レベル]** の部分をクリックすると、**[価格レベル]** ブレードが展開表示され、Web ホスティング プランの価格レベルを変更することができます。
 </br>
@@ -148,9 +148,9 @@ Web ホスティング プラン内のインスタンス数を増やすことに
 ![Changing the instance count of a hosting plan in the existing portal](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview18.png)
 </br>
 </br>
-**Q**: Web ホスティング プランを削除する方法を教えてください。
+**質問**:Web ホスティング プランを削除する方法を教えてください。
 </br>
-**A**: Web ホスティング プランを削除するにはまず、そこに関連付けられている Web サイトをすべて削除する必要があります。Web ホスティング プランからすべての Web サイトを削除した後、[Web ホスティング プラン] ブレードから Web ホスティング プランを削除できます。
+**回答**:Web ホスティング プランを削除するにはまず、そこに関連付けられている Web サイトをすべて削除する必要があります。Web ホスティング プランからすべての Web サイトを削除した後、[Web ホスティング プラン] ブレードから Web ホスティング プランを削除できます。
 </br>
 </br>
 ![Deleting a web hosting plan](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview19.png)
@@ -158,9 +158,9 @@ Web ホスティング プラン内のインスタンス数を増やすことに
 </br>
 完全版の Azure ポータルでは、Web ホスティング プランに残った最後の Web サイトを削除すると、関連付けられている Web ホスティング プランが自動的に削除されます。
 </br>
-**Q**: Web ホスティング プランを監視する方法を教えてください。
+**質問**:Web ホスティング プランを監視する方法を教えてください。
 </br>
-**A**: Web ホスティング プランの監視には、[Web ホスティング プラン] ブレードの [監視] 領域を使用できます。
+**回答**:Web ホスティング プランの監視には、[Web ホスティング プラン] ブレードの [監視] 領域を使用できます。
 </br>
 </br>
 ![Monitoring a web hosting plan](./media/azure-web-sites-web-hosting-plans-in-depth-overview/azure-web-sites-web-hosting-plans-in-depth-overview20.png)
@@ -186,4 +186,6 @@ Web ホスティング プラン内のインスタンス数を増やすことに
 </br>
 ##まとめと結論##
 </br>
-Web ホスティング プランは、Web サイト間で共有できる一連の機能と容量を表します。  Web ホスティング プランを使用することで、一連のリソース (仮想マシン) に対するサイトの割り当てを柔軟に行えるようになり、Web サイトの目的に合わせて Azure リソースを割り当てて使用することができます。 
+Web ホスティング プランは、Web サイト間で共有できる一連の機能と容量を表します。Web ホスティング プランを使用することで、一連のリソース (仮想マシン) に対するサイトの割り当てを柔軟に行えるようになり、Web サイトの目的に合わせて Azure リソースを割り当てて使用することができます。
+
+<!--HONumber=35.2-->

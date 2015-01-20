@@ -1,4 +1,4 @@
-﻿<properties linkid="develop-mobile-tutorials-get-started-with-data-android" urlDisplayName="Get Started with Data - Android" pageTitle="データの使用 (Android) | モバイル デベロッパー センター" metaKeywords="Azure android data, Azure mobile services data, windows droid, windows android, microsoft droid, microsoft android" description="Mobile Services を使用して Android アプリでデータを活用する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="ricksal,glenga" solutions="" manager="dwrede" editor="" />
+﻿<properties linkid="develop-mobile-tutorials-get-started-with-data-android" urlDisplayName="Get Started with Data - Android" pageTitle="データの使用 (Android) |モバイル デベロッパー センター"metakeywords ="Azure android データ, Azure モバイル サービス データ, windows droid, windows android, microsoft droid, microsoft android" description="Mobile Services を使用して Android アプリでデータを活用する方法について説明します。" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="ricksal,glenga" solutions="" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="Mobile-Android" ms.devlang="Java" ms.topic="article" ms.date="10/16/2014" ms.author="ricksal,glenga" />
 
@@ -12,20 +12,20 @@
 <p>このトピックでは、Azure のモバイル サービスを使用して Android アプリのデータを活用する方法について説明します。このチュートリアルでは、メモリにデータを格納するアプリケーションをダウンロードした後、新しいモバイル サービスを作成してそれをアプリケーションに統合します。その後、Azure 管理ポータルにログインして、アプリケーションの実行中にデータに加えられた変更を表示します。</p>
 
 </div>
-<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Getting-Started-With-Data-Connecting-your-app-to-Windows-Azure-Mobile-Services" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-android-get-started-data-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Getting-Started-With-Data-Connecting-your-app-to-Windows-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a><span class="time">15:32:00</span></div>
+<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Getting-Started-With-Data-Connecting-your-app-to-Windows-Azure-Mobile-Services" target="_blank" class="label">チュートリアルを見る</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-android-get-started-data-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Getting-Started-With-Data-Connecting-your-app-to-Windows-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">ビデオを再生する</span></a><span class="time">15:32</span></div>
 </div>
 
 <div class="dev-callout"><b>注</b>
 <p>このチュートリアルの目的は、モバイル サービスが Android アプリのデータを Azure に格納および取得できるようにするしくみを説明することにあります。したがって、このトピックでは、モバイル サービスのクイック スタートで完了している手順の多くについても説明します。モバイル サービスを初めて使用する場合は、最初にチュートリアル「<a href="/ja-jp/develop/mobile/tutorials/get-started-android">モバイル サービスの使用</a>」を完了することをお勧めします。</p>
-<p>完成したアプリケーションのソース コードは、<a href="https://github.com/RickSaling/mobile-services-samples/tree/futures/GettingStartedWithData/Android/GetStartedWithData">ここ</a>で確認できます。
+<p>完成したアプリケーションのソース コードを確認するには、<a href="https://github.com/RickSaling/mobile-services-samples/tree/futures/GettingStartedWithData/Android/GetStartedWithData">こちち</a>をご覧ください。
 </p>
 </div>
 
 このチュートリアルでは、次の基本的な手順について説明します。
 
-1. [Android アプリ プロジェクトのダウンロード] 
+1. [Android アプリ プロジェクトのダウンロード]
 2. [モバイル サービスの作成]
-3. [ストレージのデータ テーブルの追加]
+3. [ストレージへのデータ テーブルの追加]
 4. [モバイル サービスを使用するためのアプリケーションの更新]
 5. [モバイル サービスに対するアプリケーションのテスト]
 
@@ -34,10 +34,10 @@
 このチュートリアルを実行するには、[モバイル サービス Android SDK]、Eclipse 統合開発環境 (IDE) と Android Developer Tools (ADT) プラグインを含む <a href="https://go.microsoft.com/fwLink/p/?LinkID=280125" target="_blank">Android SDK</a>、および Android 4.2 以降のバージョンが必要です。 
 
 <div class="dev-callout"><b>注</b>
-<p>このチュートリアルでは、Android SDK とモバイル サービス Android SDK の両方をインストールする手順について説明します。ダウンロードした GetStartedWithData プロジェクトを実行するには、Android 4.2 以降のバージョンが必要です。ただし、モバイル サービス SDK は、Android 2.2 以降で動作します。</p>
+<p>このチュートリアルでは、Android SDK とモバイル サービス Android SDK の両方をインストールする手順について説明します。ダウンロードした GetStartedWithData プロジェクトを実行するには、Android 4.2 以降のバージョンが必要です。ただし、Mobile Services SDK は、Android 2.2 以降で動作します。</p>
 </div>
 
->[AZURE.NOTE] このチュートリアルでは、Mobile Services SDK の最新バージョンを使用します。互換性を確保する目的で<a href="http://go.microsoft.com/fwlink/p/?LinkID=280126">ここ</a>から以前のバージョンを入手できますが、これらのチュートリアルに含まれているコードは以前のバージョンでは動作しません。
+>[AZURE.NOTE] このチュートリアルでは、Mobile Services SDK の最新バージョンを使用します。互換性を確保する目的で<a href="http://go.microsoft.com/fwlink/p/?LinkID=280126">ここ</a> から以前のバージョンを入手できますが、これらのチュートリアルに含まれているコードは以前のバージョンでは動作しません。
 
 <h2><a name="download-app"></a>GetStartedWithData プロジェクトをダウンロードする</h2>
 
@@ -47,7 +47,7 @@
 
 ###Android SDK バージョンの検証
 
-[WACOM.INCLUDE [SDK の確認](../includes/mobile-services-verify-android-sdk-version.md)]
+[WACOM.INCLUDE [Verify SDK](../includes/mobile-services-verify-android-sdk-version.md)]
 
 
 ###サンプル コードの確認と実行
@@ -71,7 +71,7 @@
 
 バック エンド ストレージのモバイル サービスを使用するようにアプリケーションを更新した後は、Android エミュレーターまたは Android フォンを使用して、モバイル サービスに対してアプリケーションをテストします。
 
-1. **[Run]** メニューの **[Run]** をクリックして、プロジェクトを開始します。
+1. **[実行]** メニューの **[実行]** をクリックして、プロジェクトを開始します。
 
 	これにより、モバイル サービスから項目を取得するクエリを、クライアント ライブラリを使用して送信するアプリケーションが Android SDK でビルドされ、実行されます。
 
@@ -85,34 +85,34 @@
 
    	![][9]
   
-   	**TodoItem** テーブルに、Mobile Services によって生成されたいくつかの値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。 
+   	**TodoItem** テーブルに、モバイル サービスによって生成されたいくつかの値を持つデータが含まれ、アプリケーションの TodoItem クラスに対応してその列が自動的にテーブルに追加されていることに注目してください。
 
-これで、Android 向けの**データの使用**に関するチュートリアルはおしまいです。
+これで、Android 向けの**データの使用**に関するチュートリアルは終了です。
 
-## <a name="next-steps"> </a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Android アプリでモバイル サービスのデータを操作できるようにするための基本について説明しました。 
 
 次は、このチュートリアルで作成した GetStartedWithData アプリケーションに基づく次のいずれかのチュートリアルを行うことをお勧めします。
 
-* [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]
+* [スクリプトを使用したデータの検証および変更]
   <br/>モバイル サービスでサーバー スクリプトを使用して、アプリケーションから送信されたデータを検証および変更する方法について説明します。
 
-* [ページングを使用したモバイル サービス クエリの改善]
+* [ページングを使用したクエリの改善]
   <br/>クエリ内でページングを使用して、単一の要求で渡されるデータの量を制御する方法について説明します。
 
 データ シリーズを完了した後は、次に示す、Android に関する他のチュートリアルを行うことをお勧めします。
 
-* [認証の使用] 
+* [認証の使用]
 	<br/>アプリケーションのユーザーを認証する方法について説明します。
 
-* [プッシュ通知の使用] 
-  <br/>Mobile Services を使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
+* [プッシュ通知の使用]
+  <br/>モバイル サービスを使用してアプリケーションにごく基本的なプッシュ通知を送信する方法について説明します。
 
 <!-- Anchors. -->
 [Android アプリ プロジェクトのダウンロード]: #download-app
 [モバイル サービスの作成]: #create-service
-[ストレージのデータ テーブルの追加]: #add-table
+[ストレージへのデータ テーブルの追加]: #add-table
 [モバイル サービスを使用するためのアプリケーションの更新]: #update-app
 [モバイル サービスに対するアプリケーションのテスト]: #test-app
 [次のステップ]:#next-steps
@@ -127,8 +127,8 @@
 
 
 <!-- URLs. -->
-[サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
-[ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-android
+[スクリプトを使用したデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
+[ページングを使用したクエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-android
 [モバイル サービスの使用]: /ja-jp/develop/mobile/tutorials/get-started-android
 [データの使用]: /ja-jp/develop/mobile/tutorials/get-started-with-data-android
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-android
@@ -139,3 +139,5 @@
 [モバイル サービス Android SDK]: http://aka.ms/Iajk6q
 [GitHub]:  http://go.microsoft.com/fwlink/p/?LinkID=282122
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
+
+<!--HONumber=35.2-->

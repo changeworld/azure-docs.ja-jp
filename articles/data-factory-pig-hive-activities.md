@@ -1,9 +1,14 @@
 ﻿<properties title="Use Pig and Hive with Azure Data Factory" pageTitle="Azure Data Factory で Pig と Hive を使用する" description="Azure データ ファクトリから Azure HDInsight クラスターで Pig および Hive スクリプトを実行してデータを処理する方法について説明します。" metaKeywords=""  services="data-factory" solutions=""  documentationCenter="" authors="spelluru" manager="jhubbard" editor="monicar" />
 
-<tags ms.service="data-factory" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="spelluru" />
+<tags ms.service="data-factory" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/13/2014" ms.author="spelluru" />
 
 # Data Factory で Pig と Hive を使用する
-Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。パイプラインは、一連のアクティビティで構成されます。各アクティビティは、  特定の処理操作を実行します。たとえば、コピー アクティビティは、ソース ストレージからターゲット ストレージにデータをコピーします。Hive/Pig 変換を備えた HDInsight アクティビティは Azure HDInsight クラスターを使用して Hive/Pig スクリプトでデータを処理します。HDInsight アクティビティは 1 つ以上の入力を消費し、1 つ以上の出力を生成することが可能です。 
+Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。 
+
+- **コピー アクティビティ**は、ソース ストレージからターゲット ストレージにデータをコピーします。 コピー アクティビテの詳細については、「[Data Factory を使用してデータをコピーする][data-factory-copy-activity]」を参照してください。 
+- **HDInsight アクティビティ**は、HDInsight クラスター上で Hive/Pig スクリプトまたは MapReduce プログラムを実行してデータを処理します。HDInsight アクティビティは、**Hive**、**Pig**、**MapReduce** の 3 つの変換をサポートします。HDInsight アクティビティは 1 つ以上の入力を消費し、1 つ以上の出力を生成することが可能です。
+ 
+HDInsight アクティビティの MapReduce 変換を使用して、Azure Data Factory パイプラインから HDInsight クラスター上の MapReduce スクリプトを実行する方法の詳細については、「[Data Factory から MapReduce を起動する][data-factory-map-reduce]」 を参照してください。この記事では、HDInsight アクティビティの Pig/Hive 変換を使用する方法について説明しています。
 
 ## この記事の内容
 
@@ -11,13 +16,13 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
 ------- | -----------
 [Pig JSON の使用例](#PigJSON) | このセクションでは Pig 変換を使用する HDInsight アクティビティを定義するための JSON スキーマについて説明します。 
 [Hive JSON の使用例](#HiveJSON) | このセクションでは Hive 変換を使用する HDInsight アクティビティを定義するための JSON スキーマについて説明します。 
-[Azure BLOB ストレージに格納されている Pig および Hive スクリプトを使用する](#ScriptInBlob) | Pig/Hive 変換を使用して HDInsight アクティビティから Azure Blob ストレージに格納されている Pig/Hive スクリプトを参照する方法を説明します。
-[パラメーター化された Pig および Hive クエリ](#ParameterizeQueries) | Pig および Hive スクリプト内で使われるパラメーターの値を、JSON 内の **extendedProperties** プロパティを使用することによって指定する方法を説明します。
-[Azure Data Factory で Hive を使用する](#Waltkthrough) | Hive を使ってデータ処理を行うパイプラインの作成手順を説明します。  
+[Azure BLOB ストレージに格納されている Pig および Hive スクリプトを使用する](#ScriptInBlob) | Pig/Hive 変換を使用して HDInsight アクティビティから Azure BLOB ストレージ内に格納された Pig/Hive スクリプトを参照する方法について説明します。
+[パラメーター化された Pig および Hive クエリs](#ParameterizeQueries) | Pig および Hive スクリプト内で使われるパラメーターの値を、JSON 内の **extendedProperties** プロパティを使用することによって指定する方法を説明します。
+[チュートリアル:Azure Data Factory で Hive を使用する](#Waltkthrough) | Hive を使用してデータを処理するパイプラインを作成するための詳細な手順を説明します。  
 
 
 
-パイプライン JSON 内で Pig または Hive アクティビティを定義する際は、**type** プロパティを **HDInsightActivity** に設定する必要があります。
+パイプライン JSON 内で Pig または Hive アクティビティを定義する際は、**type** プロパティを**HDInsightActivity** に設定する必要があります。
 
 ## <a name="PigJSON"></a> Pig JSON の使用例
 
@@ -41,9 +46,9 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
 
 **以下の点に注意してください。**
 	
-- アクティビティの **type** は **HDInsightActivity** に設定します。
-- **linkedServiceName** は **MyHDInsightLinkedService** に設定します。 
-- **transformation** の **type** は **Pig** に設定します。
+- アクティビティの **type** (種類) が **HDInsightActivity** に設定されています。
+- **linkedServiceName** (リンクされたサービス名) が **MyHDInsightLinkedService** に設定されています。
+- **transformation** (変換) の **type** (種類) が **Pig** に設定されています。
 - **script** プロパティに対して Pig スクリプトをインラインで指定するか、または Azure BLOB ストレージ内にスクリプト ファイルを格納し、**scriptPath** プロパティを使用してそのファイルを参照することができますが、詳細については、この記事の後半で説明します。 
 - **extendedProperties** を使用して Pig スクリプトのパラメーターを指定します。詳細については、この記事の後半で説明します。 
 
@@ -71,13 +76,13 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
 
 **以下の点に注意してください。**
 	
-- アクティビティの **type** は **HDInsightActivity** に設定します。
-- **linkedServiceName** は **MyHDInsightLinkedService** に設定します。 
-- **transformation** の **type** は **Hive** に設定します。
+- アクティビティの **type** (種類) が **HDInsightActivity** に設定されています。
+- **linkedServiceName** (リンクされたサービス名) が **MyHDInsightLinkedService** に設定されています。
+- **transformation** (変換) の **type** (種類) が **Hive** に設定されています。
 - **script** プロパティに対して Hive スクリプトをインラインで指定するか、または Azure BLOB ストレージ内にスクリプト ファイルを格納し、**scriptPath** プロパティを使用してそのファイルを参照することができますが、詳細については、この記事の後半で説明します。 
 - **extendedProperties** を使用して Hive スクリプトのパラメーターを指定します。詳細については、この記事の後半で説明します。 
 
-> [WACOM.NOTE] コマンドレット、JSON スキーマ、およびスキーマ内のプロパティの詳細については、「[Data Factory Developer Reference (Data Factory 開発者向けリファレンス)](http://go.microsoft.com/fwlink/?LinkId=516908)」を参照してください。 
+> [WACOM.NOTE] コマンドレット、JSON スキーマ、およびスキーマ内のプロパティの詳細については、「[Data Factry Developer Reference (Data Factory 開発者向けリファレンス)](http://go.microsoft.com/fwlink/?LinkId=516908)」を参照してください。 
 
 
 ## <a name="ScriptInBlob"></a>Azure BLOB ストレージに格納されている Pig および Hive スクリプトを使用する
@@ -131,7 +136,7 @@ HDInsight クラスターに関連付けられている Azure BLOB ストレー�
 ## <a name="ParameterizeQueries"></a>パラメーター化された Pig および Hive クエリ
 Data Factory の Pig および Hive アクティビティでは、**extendedProperties** を使用することで、Pig および Hive スクリプト内で使われるパラメーターの値が指定できます。ExtendedProperties セクションは、パラメーター名とパラメーター値で構成されています。
 
-**extendedProperties** を使用して Hive スクリプトのパラメーターを指定する方法については、以下の例を参照してください。パラメーター化された Hive  スクリプトを使用するには、次の手順に従います。
+**extendedProperties** を使用して Hive スクリプトのパラメーターを指定する方法については、以下の例を参照してください。パラメーター化された Hive スクリプトを使用するには、次の手順に従います。
 
 1.	**extendedProperties** 内でパラメーターを定義します。
 2.	インライン Hive スクリプト (または) BLOB ストレージに格納された Hive スクリプト ファイルの中で **${hiveconf:parameterName}** を使用してパラメーターを参照します。
@@ -169,7 +174,7 @@ Data Factory の Pig および Hive アクティビティでは、**extendedProp
 
 -  
 
-## <a name="Walkthrough"></a>Azure Data Factory で Hive を使用する
+## <a name="Walkthrough"></a>チュートリアル:Azure Data Factory で Hive を使用する
 ### 前提条件
 1. 「[Get started with Azure Data Factory (Azure Data Factory を使ってみる)][adfgetstarted]」の記事からチュートリアルを完了してください。
 2. 上記チュートリアルで作成した **emp.txt** ファイルを **hiveinput\emp.txt** として BLOB ストレージ内のコンテナーにアップロードします。この構文で emp.txt ファイルをアップロードすると、**hiveinput** フォルダーが **adftutorial** コンテナー内に自動で作成されます。 
@@ -218,11 +223,11 @@ Data Factory の Pig および Hive アクティビティでは、**extendedProp
  
 	**以下の点に注意してください。**
 	
-	- location の **type** は **AzureBlobLocation** に設定します。
-	- **linkedServiceName** は Azure ストレージ アカウントを定義する **MyBlobStore** に設定します。
-	- **folderPath** は入力データ用の BLOB コンテナー内のフォルダーを指定します。 
+	- location (場所) の **type** (種類) が **AzureBlobLocation** (Azure BLOB の場所) に設定されています。
+	- **linkedServiceName** が Azure ストレージ アカウントを定義する **MyBlobStore** に設定されています。
+	- **folderPath** は入力データ用の BLOB コンテナー内のフォルダーを指定します。
 	- **frequency=Day** および **interval=1** は、1 日単位でスライスが提供されることを意味します。
-	- **waitOnExternal** は、このデータが別のパイプラインによって生成されるのではなく、データ ファクトリの外部で生成されることを意味します。 
+	- **waitOnExternal** は、このデータが別のパイプラインによって生成されるのではなく、データ ファクトリの外部で生成されることを意味します。
 	
 
 	JSON プロパティの説明については、「[Data Factory Developer Reference (Data Factory 開発者向けリファレンス)][developer-reference]」を参照してください。  
@@ -276,7 +281,6 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
     		{
         		"type": "HDInsightOnDemandLinkedService",
 				"clusterSize": "4",
-        		"jobsContainer": "adftutorialjobscontainer",
         		"timeToLive": "00:05:00",
         		"linkedServiceName": "MyBlobStore"
     		}
@@ -372,12 +376,12 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
     	
 		Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName ADFTutorialDataFactory -StartDateTime 2014-09-27 -EndDateTime 2014-09-30 -Name ADFTutorialHivePipeline 
 
-	> [WACOM.NOTE] **StartDateTime** の値を現在の 3 日前の日付に置き換え、**EndDateTime** の値を現在の日付に置き換えます。StartDateTime と EndDateTime はいずれも UTC 時間で、[ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。次に例を示します。2014-10-14T16:32:41Z。 
+	> [WACOM.NOTE] **StartDateTime** の値を現在の 3 日前の日付に置き換え、**EndDateTime** の値を現在の日付に置き換えます。StartDateTime と EndDateTime はいずれも UTC 時間で、(http://en.wikipedia.org/wiki/ISO_8601)[ISO 形式]である必要があります。次に例を示します。2014-10-14T16:32:41Z。 
 	> **EndDateTime** を指定しない場合は、"**StartDateTime + 48 時間**" として計算されます。パイプラインを無期限に実行する場合は、**9/9/9999** を **EndDateTime** として指定します。
   	
 	出力テーブルは毎日生成されるようスケジュール設定されているので、3 つのスライスが生成されることになります。 
 
-4. 記事「[Get started with Data Factory (Data Factory を使ってみる)][adfgetstarted]」の「[Monitor datasets and pipeline (データセットとパイプラインの監視)][adfgetstartedmonitoring]」セクションを参照してください。   
+4. 記事「[Get started with Data Factory (Data Factory を使ってみる)][adfgetstartedmonitoring]」の「[Monitor datasets and pipeline (データセットとパイプラインの監視)][adfgetstarted]」セクションを参照してください。   
 
 ## 関連項目
 
@@ -386,11 +390,13 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 [Azure Data Factory の概要][data-factory-introduction] | この記事では、Azure Data Factory のサービス、コンセプト、利用価値、およびサポートするシナリオを紹介します。
 [Azure Data Factory を使ってみる][adf-getstarted] | この記事には、Azure BLOB から Azure SQL データベースにデータをコピーする Azure Data Factory サンプルの作成方法についての詳細なチュートリアルが記載されています。
 [パイプラインが内部設置型のデータを扱えるようにする][use-onpremises-datasources] | この記事には、内部設置型の SQL Server データベースから Azure BLOB にデータをコピーする方法を説明したチュートリアルが記載されています。
-[チュートリアル: Data Factory を使用してログ ファイルの移動と処理を行う][adf-tutorial] | この記事には、Azure Data Factory を使用してログ ファイルのデータを洞察へと変換する現実に近いシナリオの実行方法について、詳細なチュートリアルが記載されています。
-[Azure Data Factory パイプラインでカスタム アクティビティを使用する][use-custom-activities] | この記事には、カスタム アクティビティを作成してパイプラインで使用する詳細な手順のチュートリアルが記載されています。 
-[Data Factory のトラブルシューティング][troubleshoot] | この記事では、Azure Data Factory の問題のトラブルシューティングを行う方法について説明しています。  
+[チュートリアル:Data Factory を使用してログ ファイルの移動と処理を行う][adf-tutorial] | この記事には、Azure Data Factory を使用してログ ファイルのデータを洞察へと変換する現実に近いシナリオの実行方法について、詳細なチュートリアルが記載されています。
+[Azure Data Factory パイプラインでカスタム アクティビティを使用する][use-custom-activities] | この記事には、カスタム アクティビティを作成してパイプラインで使用する詳細な手順のチュートリアルが記載されています。
+[Data Factory のトラブルシューティング][troubleshoot] | この記事では、Azure Data Factory の問題のトラブルシューティングを行う方法について説明しています。
 [Azure Data Factory Developer Reference (Azure Data Factory 開発者向けリファレンス)][developer-reference] | この開発者向けリファレンスには、コマンドレット、JSON スクリプト、関数などを対象とした包括的なリファレンスが記載されています。 
 
+[data-factory-copy-activity]: ..//data-factory-copy-activity
+[data-factory-map-reduce]: ..//data-factory-map-reduce
 
 [adf-getstarted]: ../data-factory-get-started
 [use-onpremises-datasources]: ../data-factory-use-onpremises-datasources
@@ -410,3 +416,5 @@ Azure Data Factory サービスはオンデマンド クラスターの作成を
 
 [開発者向けリファレンス]: http://go.microsoft.com/fwlink/?LinkId=516908
 [Azure ポータル]: http://portal.azure.com
+
+<!--HONumber=35.2-->

@@ -1,6 +1,6 @@
-﻿<properties urlDisplayName="" pageTitle="リソース グループを使用した Azure リソースの管理" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Using Resource groups to manage your Azure resources" authors="Nafisa Bhojawala"  solutions="" writer="" manager="terrylan" editor=""  />
+﻿<properties urlDisplayName="" pageTitle="リソース グループを使用した Azure リソースの管理" metaKeywords=""  metaCanonical="" services="" documentationCenter="" title="Using Resource groups to manage your Azure resources" authors="Nafisa Bhojawala"  solutions="" writer="" manager="timlt" editor=""  />
 
-<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="Nafisa Bhojawala" />
+<tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="12/02/2014" ms.author="davidmu" />
 
 
 # リソース グループを使用した Azure リソースの管理
@@ -59,7 +59,7 @@
 
 ![](http://i.imgur.com/G79kayH.png)
 
-注: チーム プロジェクトを、他の Azure リソースと同じリソース グループ内に配置することはお勧めしません。チーム プロジェクト内で新しいアカウントとグループを作成し、その後に Web サイトを作成する場合は、サイト グループは既定で、最後に使用されたグループ (VSO グループ) に設定され、最終的にはランタイム/開発者向けリソースが同じグループ内に配置される結果になります。 
+注:チーム プロジェクトを、他の Azure リソースと同じリソース グループ内に配置することはお勧めしません。チーム プロジェクト内で新しいアカウントとグループを作成し、その後に Web サイトを作成する場合は、サイト グループは既定で、最後に使用されたグループ (VSO グループ) に設定され、最終的にはランタイム/開発者向けリソースが同じグループ内に配置される結果になります。 
 
 
 
@@ -70,3 +70,5 @@
 リソース グループでは、その中に含まれているすべてのリソースのライフサイクルを管理することができるため、リソース グループを削除すると、その中に含まれているすべてのリソースが削除されます。また、リソース グループ内にある個々のリソースを削除することもできます。リソース グループに対して他のリソースがリンクされている可能性があるため、リソース グループを削除する場合は注意を払う必要があります。リンクされているリソースは、リソース マップ内で確認できます。リソース グループを削除した結果、意図していない結果が生じることを防止するために、必要な手順を実行できます。 
 
 ![](http://i.imgur.com/ZTXoISb.png)
+
+<!--HONumber=35.2-->

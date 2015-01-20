@@ -1,6 +1,6 @@
 ﻿<properties title="Monitor and manage Azure Data Factory using Azure PowerShell" pageTitle="Azure PowerShell を使用した Azure Data Factory の監視と管理" description="Azure PowerShell を使用して、作成した Azure データ ファクトリを監視および管理する方法について説明します。" metaKeywords=""  services="data-factory" solutions=""  documentationCenter="" authors="spelluru" manager="jhubbard" editor="monicar" />
 
-<tags ms.service="data-factory" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="spelluru" />
+<tags ms.service="data-factory" ms.workload="data-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/13/2014" ms.author="spelluru" />
 
 # Azure PowerShell を使用した Azure Data Factory の監視と管理
 次の表は、Azure PowerShell を使用した Azure Data Factory の監視と管理に使用できるコマンドレットの一覧です。 
@@ -189,7 +189,7 @@ Get-AzureDataFactorySlice コマンドレットは、Azure Data Factory 内の�
 
 ## <a name="get-azuredatafactoryrun"></a> Get-AzureDataFactoryRun
 
-Get-AzureDataFactoryRun コマンドレットは、Azure Data Factory に含まれているテーブルのデータ スライスのすべての実行を取得します。  Azure Data Factory のテーブルは、時間軸のスライスで構成されます。スライスの幅は、スケジュール (毎時/毎日) によって決まります。この実行とは、スライスの処理単位です。再試行する場合や、エラー発生時にスライスを再実行する場合に、1 つのスライスを 1 回以上実行できます。スライスは、開始時刻によって識別されます。そのため、Get-AzureDataFactoryRun コマンドレットには、Get-AzureDataFactorySlice コマンドレットの結果から取得したスライスの開始時刻を渡す必要があります。
+Get-AzureDataFactoryRun コマンドレットは、Azure Data Factory 内のテーブルのデータ スライスに関するすべての実行を取得します。Azure Data Factory 内のテーブルは、時間軸のスライスで構成されます。スライスの幅は、スケジュール (毎時/毎日) によって決まります。この実行とは、スライスの処理単位です。再試行する場合や、エラー発生時にスライスを再実行する場合に、1 つのスライスを 1 回以上実行できます。スライスは、開始時刻によって識別されます。そのため、Get-AzureDataFactoryRun コマンドレットには、Get-AzureDataFactorySlice コマンドレットの結果から取得したスライスの開始時刻を渡す必要があります。
 
 たとえば、次のスライスの実行を取得するには、2015-04-02T20:00:00 を使用します。 
 
@@ -272,8 +272,8 @@ Get-AzureDataFactoryGateway コマンドレットは、Azure Data Factory 内の
 テーブルの各データ スライスは、さまざまな段階を経て実行されます。これらの段階は、認証ポリシーが指定されているかどうかによって若干異なります。
 
 
-- 検証ポリシーが  指定されていない場合: PendingExecution -> InProgress -> Ready
-- 検証ポリシーが指定されている場合: PendingExecution -> Pending Validation -> InProgress -> Ready
+- 認証ポリシーが指定されていない場合:PendingExecution -> InProgress -> Ready
+- 認証ポリシーが指定されている場合:PendingExecution -> Pending Validation -> InProgress -> Ready
 
 次の表には、表示される可能性のあるスライスのステータスの説明と、Set-AzureDataFactorySliceStatus を使用してステータスを設定できるかどうかを記載しています。
 
@@ -393,9 +393,9 @@ Resume-AzureDataFactoryPipeline コマンドレットは、Azure Data Factory �
 ------ | ---------------
 [Azure プレビュー ポータルを使用した Azure Data Factory の監視と管理][monitor-manage-using-portal] | この記事では、Azure プレビュー ポータルを使用して Azure Data Factory の監視と管理を実行する方法について説明しています。
 [パイプラインが内部設置型のデータを扱えるようにする][use-onpremises-datasources] | この記事には、内部設置型の SQL Server データベースから Azure BLOB にデータをコピーする方法を説明したチュートリアルが記載されています。
-[Data Factory で Pig と Hive を使用する][use-pig-and-hive-with-data-factory] | この記事には、HDInsight アクティビティを使用して hive/pig スクリプトを実行し、入力データを処理して出力データを生成する方法を説明したチュートリアルが記載されています。 
-[チュートリアル: Data Factory を使用してログ ファイルの移動と処理を行う][adf-tutorial] | この記事には、Azure Data Factory を使用してログ ファイルのデータを洞察へと変換する現実に近いシナリオの実行方法について、詳細なチュートリアルが記載されています。
-[Azure Data Factory パイプラインでカスタム アクティビティを使用する][use-custom-activities] | この記事には、カスタム アクティビティを作成してパイプラインで使用する詳細な手順のチュートリアルが記載されています。 
+[Data Factory で Pig と Hive を使用する][use-pig-and-hive-with-data-factory] | この記事には、HDInsight アクティビティを使用して hive/pig スクリプトを実行し、入力データを処理して出力データを生成する方法を説明したチュートリアルが記載されています。
+[チュートリアル:Data Factory を使用してログ ファイルの移動と処理を行う][adf-tutorial] | この記事には、Azure Data Factory を使用してログ ファイルのデータを洞察へと変換する現実に近いシナリオの実行方法について、詳細なチュートリアルが記載されています。
+[Azure Data Factory パイプラインでカスタム アクティビティを使用する][use-custom-activities] | この記事には、カスタム アクティビティを作成してパイプラインで使用する詳細な手順のチュートリアルが記載されています。
 [Data Factory のトラブルシューティング][troubleshoot] | この記事では、Azure Data Factory の問題のトラブルシューティングを行う方法について説明しています。
 [Azure Data Factory Developer Reference (Azure Data Factory 開発者向けリファレンス)][developer-reference] | この開発者向けリファレンスには、コマンドレット、JSON スクリプト、関数などを対象とした包括的なリファレンスが記載されています。 
 [Azure Data Factory Cmdlet Reference (Azure Data Factory コマンドレット リファレンス)][cmdlet-reference] | このリファレンスには、すべての **Data Factory コマンドレット**に関する詳細が記載されています。
@@ -409,3 +409,5 @@ Resume-AzureDataFactoryPipeline コマンドレットは、Azure Data Factory �
 [troubleshoot]: ../data-factory-troubleshoot
 [developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
+
+<!--HONumber=35.2-->

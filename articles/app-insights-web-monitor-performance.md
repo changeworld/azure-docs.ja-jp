@@ -1,6 +1,6 @@
 ﻿<properties title="Monitor your app's health and usage with Application Insights" pageTitle="Application Insights を使用したアプリケーションの状態と利用状況の監視" description="Application Insights の使用を開始します。内部設置型または Microsoft Azure アプリケーションの使用状況、可用性、パフォーマンスを分析します。" metaKeywords="analytics monitoring application insights" authors="awills"  manager="kamrani" />
 
-<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="2014-09-24" ms.author="awills" />
+<tags ms.service="application-insights" ms.workload="tbd" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="2014-11-21" ms.author="awills" />
  
 # Web アプリケーションのパフォーマンスを監視する
 
@@ -21,9 +21,9 @@ Application Insights が監視できるのは、オンプレミスのマシン�
 
 プロジェクトに Application Insights を追加していない場合 (つまり、ApplicationInsights.config がない場合)、以下のいずれかの方法で開始します。
 
-* [Visual Studio のアプリケーション プロジェクトに Application Insights を追加する][greenbrown] - 推奨されている方法です。パッシブなパフォーマンス モニターに加え、診断ログを挿入したり、利用状況を追跡したりできます。
+* [Visual Studio のアプリケーション プロジェクトに Application Insights を追加する][greenbrown] - 推奨。パッシブなパフォーマンス モニターに加え、診断ログを挿入したり、利用状況を追跡したりできます。
 * [ライブ Web サイトのパフォーマンスを監視する][redfield] - この場合、アプリケーション プロジェクトを更新したり、Web サイトを再デプロイしたりする必要はありません。
-* [Microsoft Azure の Web サイトの場合](../insights-how-to-customize-monitoring/)  、Web サイトの [監視] レンズで既にメトリックを確認できます。 
+* [Microsoft Azure Web サイトの場合は](../insights-how-to-customize-monitoring/)  メトリックは Web サイトの監視レンズで既に確認できます。 
 
 
 ## <a name="view"></a>レポートを表示する
@@ -55,11 +55,11 @@ Visual Studio で、受け取ったイベント数を確認できます。
 
 ![Click through to more data and select a time range](./media/appinsights/appinsights-48metrics.png)
 
-グラフをクリックし、表示するメトリックを選択します。
+グラフをクリックして表示するメトリックを選択するか、新しいグラフを追加してそのメトリックを選択します。
 
 ![Click a graph to choose metrics](./media/appinsights/appinsights-61perfchoices.png)
 
-利用可能なすべての選択項目を表示するには、> [AZURE.NOTE] **メトリックすべてのチェック ボックスをオフにしてください**。メトリックはグループに分けられ、グループ内のあるメンバーが選択されると、そのグループのメンバーのみが表示されます。
+> [AZURE.NOTE] 利用可能なすべての選択項目を表示するには、**メトリックすべてのチェック ボックスをオフ**にしてください。メトリックはグループに分けられ、グループ内のあるメンバーが選択されると、そのグループのメンバーのみが表示されます。
 
 
 ## <a name="metrics"></a>どのような意味がありますか?パフォーマンス タイルとレポート
@@ -67,7 +67,7 @@ Visual Studio で、受け取ったイベント数を確認できます。
 多様なパフォーマンス メトリックを取得できます。まず、アプリケーション ブレードに既定で表示されるメトリックから始めます。
 
 
-### 要求 
+### 要求
 
 指定の期間に受け取った HTTP 要求の数です。これを他のレポートにおける結果と比較して、負荷が変化するとアプリケーションの動作がどのように変わるかを確認します。
 
@@ -88,7 +88,7 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 ![](./media/appinsights/appinsights-42reqs.png)
 
 
-### 最も遅い要求 
+### 最も遅い要求
 
 ![](./media/appinsights/appinsights-44slowest.png)
 
@@ -105,15 +105,26 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 障害の代表的な例だけが、それぞれの検査用に保持されます。
 
-### その他のメトリック 
+### その他のメトリック
 
 表示できる他のメトリックを確認するには、グラフをクリックし、すべてのメトリックを選択解除してすべてのメトリック セットを表示します。(i) をクリックし、各メトリック定義を表示します。
 
 ![Deselect all metrics to see the whole set](./media/appinsights/appinsights-62allchoices.png)
 
 
-いずれかのメトリックを選択すると、同じグラフ上に表示できない他のメトリックは非表示になります。
+いずれかのメトリックを選択すると、同じグラフ上に表示できない他のメトリックは無効になります。
 
+## アラートの設定
+
+すべてのメトリックの異常な値を電子メールで通知するには、アラートを追加します。アカウント管理者または特定の電子メール アドレスのいずれかに電子メールを送信することを選択できます。
+
+![](./media/appinsights/appinsights-413setMetricAlert.png)
+
+その他のプロパティの前に、リソースを設定します。パフォーマンスまたは使用状況のメトリックにアラートを設定する場合、Web テスト リソースは選択しないでください。
+
+しきい値を入力するように求められたら、単位に注意してください。
+
+*[アラートの追加] ボタンが表示されません。*- 読み取り専用のアクセス権であることが考えられます。 
 
 ## <a name="diagnosis"></a>問題を診断する
 
@@ -121,11 +132,11 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 * [Web テスト][availability]を設定し、Web サイトが停止したり、間違って応答したり、応答速度が低下したりする場合にアラートを送信するようにします。 
 * 要求の数を他のメトリックと比較し、障害や応答速度の低下が負荷と関連しているかどうかを確認します。
-コード内に* [トレース ステートメントを挿入して、そうしたステートメントを検索する][diagnostic]ことにより、問題の特定に役立てます。
+* コード内に[トレース ステートメントを挿入して、そのステートメントを検索する][diagnostic]ことにより、問題を特定しやすくすることができます。
 
 ## <a name="next"></a>次のステップ
 
-[Web テスト][availability] - 世界中から定期的に、Web 要求をご使用のアプリケーションに送信します。
+[Web テスト][availability] - 世界中から定期的に、ご使用のアプリケーションに Web 要求を送信します。
 
 [診断トレースを収集して検索する][diagnostic] - トレース呼び出しを挿入し、結果を詳しく調べて問題を特定します。
 
@@ -139,3 +150,5 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 
 
+
+<!--HONumber=35.2-->

@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Debug Websites (Node)" pageTitle="Node.js での Azure Web サイトのデバッグ方法" metakeywords="Azure Web サイトのデバッグ, Azure のデバッグ, Azure Web サイトのトラブルシューティング, Azure Web サイト ノードのトラブルシューティング" description="Node.js の Azure の Web サイトのデバッグ方法を学習します。" metaCanonical="" services="web-sites" documentationCenter="nodejs" title="How to debug a Node.js application in Azure Websites" authors="larryfr" solutions="" manager="wpickett" editor="mollybos" />
+<properties urlDisplayName="Debug Websites (Node)" pageTitle="Node.js での Azure Web サイトのデバッグ方法" metaKeywords="debug website azure, debugging azure, troubleshooting azure web site, troubleshoot azure website node" description="Node.js の Azure の Web サイトのデバッグ方法を学習します。" metaCanonical="" services="web-sites" documentationCenter="nodejs" title="How to debug a Node.js application in Azure Websites" authors="larryfr" solutions="" manager="wpickett" editor="mollybos" />
 
 <tags ms.service="web-sites" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="09/17/2014" ms.author="larryfr" />
 
@@ -6,7 +6,7 @@
 
 
 
-#Azure Websites での Node.js アプリケーションのデバッグ方法
+#Azure Web サイトでの Node.js アプリケーションのデバッグ方法
 
 Azure では、組み込みの診断機能により、Azure Websites でホストされる Node.js アプリケーションのデバッグを容易に行うことができます。この記事では、stdout と stderr のログ記録を有効にし、エラー情報をブラウザーに表示する方法と、ログ ファイルをダウンロードして表示する方法について説明します。
 
@@ -14,7 +14,7 @@ Azure でホストされる Node.js アプリケーションの診断は、[IISN
 
 ##<a id="enablelogging"></a>ログの有効化
 
-Azure Websites は、既定では Git を使用して Web サイトをデプロイするときなど、デプロイに関する診断情報だけをキャプチャします。この情報は、デプロイ中に問題が発生した場合 (たとえば、**package.json** で参照されているモジュールのインストールが失敗した場合) や、カスタム デプロイ スクリプトを使用している場合に便利です。
+既定では、Azure の Web サイトは Git を使用して Web サイトをデプロイするときなど、デプロイに関する診断情報だけをキャプチャします。この情報は、展開中に問題が発生した場合 (たとえば、**package.json** で参照されているモジュールのインストールが失敗した場合) や、カスタムの展開スクリプトを使用している場合に便利です。
 
 stdout および stderr ストリームのログ記録を有効にするには、Node.js アプリケーションのルートに **IISNode.yml** ファイルを作成し、次のコードを追加する必要があります。
 
@@ -22,7 +22,7 @@ stdout および stderr ストリームのログ記録を有効にするには�
 
 これで、Node.js アプリケーションからの stderr と stdout のログ記録が有効になります。
 
-エラーが発生したときにわかりやすいエラーまたは開発者エラーがブラウザーに返されるかどうかを制御するために、**IISNode.yml** ファイルも使用できます。開発者エラーを有効にするには、**IISNode.yml** ファイルに次の行を追加します。
+エラーが発生したときにわかりやすいエラーと開発者エラーのいずれをブラウザーに返すか指定するために、**IISNode.yml** ファイルを使用することもできます。開発者エラーを有効にするには、**IISNode.yml** ファイルに次の行を追加します。
 
 	devErrorsEnabled: true
 
@@ -33,14 +33,14 @@ stdout および stderr ストリームのログ記録を有効にするには�
 <p>開発中に問題を診断する場合には devErrorsEnabled は便利ですが、運用環境でこれを有効にすると、開発エラーがエンド ユーザーに送信されることになります。</p>
 </div>
 
-**IISNode.yml** ファイルがまだアプリケーション内に存在しなかった場合は、更新されたアプリケーションを発行してから Web サイトを再起動する必要があります。以前に発行された既存の **IISNode.yml** ファイル内の設定を変更しただけの場合、再起動は必要ありません。
+**IISNode.yml** ファイルがアプリケーション内に存在しない場合は、更新されたアプリケーションの発行後に Web サイトを再起動する必要があります。以前に発行された既存の **IISNode.yml** ファイル内の設定を変更しただけの場合、再起動は必要ありません。
 
 <div class="dev-callout">
 <strong>注</strong>
-<p>Azure コマンド ライン ツールまたは Azure PowerShell コマンドレットを使用して Web サイトを作成した場合は、既定の <strong>IISNode.yml</strong> ファイルが自動的に作成されます。</p>
+<p>Azure コマンド ライン ツールまたは Azure PowerShell コマンドレットを使用して Web サイトを作成した場合は、既定の  <strong>IISNode.yml </strong> ファイルが自動的に作成されます。</p>
 </div>
 
-Web サイトを再起動するには、[Azure の管理ポータル]でサイトを選択し、**[再起動]** をクリックします。
+Web サイトを再起動するには、[Azure 管理ポータル] でサイトを選択し、**[再起動]** ボタンを選択します。
 
 ![restart button][restart-button]
 
@@ -50,7 +50,7 @@ Web サイトを再起動するには、[Azure の管理ポータル]でサイ�
 
 <div class="dev-callout">
 <strong>注</strong>
-<p>診断情報をキャプチャするために最もよく使用される IISNode.yml 構成オプションは loggingEnabled と devErrorsEnabled ですが、IISNode.yml はホスティング環境のさまざまなオプションを構成するためにも使用できます。すべての構成オプションの一覧については、<a href="https://github.com/tjanczuk/iisnode/blob/master/src/config/iisnode_schema.xml">iisnode_schema.xml ファイル</a>を参照してください。</p>
+<p>診断情報をキャプチャするために最もよく使用される IISNode.yml 構成オプションは loggingEnabled と devErrorsEnabled ですが、IISNode.yml はホスティング環境のさまざまなオプションを構成するためにも使用できます。すべての構成オプションの一覧については、 <a href="https://github.com/tjanczuk/iisnode/blob/master/src/config/iisnode_schema.xml">iisnode_schema.xml を参照してください。</a> ファイルを保存します。</p>
 </div>
 
 ##<a id="viewlogs"></a>ログへのアクセス
@@ -59,20 +59,20 @@ Web サイトを再起動するには、[Azure の管理ポータル]でサイ�
 
 	npm install azure-cli -g
 
-インストール後、ツールには "azure" コマンドを使用してアクセスできます。コマンド ライン ツールは、まず、Azure サブスクリプションを使用するように構成する必要があります。このタスクを実行する方法については、「**Azure コマンド ライン ツールの使用方法**」という記事の「[発行の設定をダウンロードおよびインポートする方法]」のセクションを参照してください。
+インストール後、ツールには "azure" コマンドを使用してアクセスできます。コマンド ライン ツールは、まず、Azure サブスクリプションを使用するように構成する必要があります。このタスクを実行する方法については、「[Azure コマンド ライン ツールの使用方法]」という記事の「**発行の設定をダウンロードおよびインポートする方法**」のセクションを参照してください。
 
 ###FTP
 
-FTP を通じて診断情報にアクセスするには、[Azure ポータル]にアクセスし、Web サイトを選択して、**[ダッシュボード]** を選択します。**[クイック リンク]** セクションの **[FTP 診断ログ]** および **[FTPS 診断ログ]** リンクから、FTP プロトコルを使用してログにアクセスできます。
+FTP を通じて診断情報にアクセスするには、[Azure ポータル] にアクセスし、Web サイトを選択して、**[ダッシュボード]** を選択します。**[クイック リンク]** セクションの **[FTP 診断ログ]** および **[FTPS 診断ログ]** リンクから、FTP プロトコルを使用してログにアクセスできます。
 
 <div class="dev-callout">
 <strong>注</strong>
-<p>FTP またはデプロイのためにユーザー名とパスワードを構成したことがない場合は、<strong>[クイック スタート]</strong> 管理ページで <strong>[デプロイ資格情報を設定する]</strong> を選択して構成できます。</p>
+<p>過去に、FTP またはデプロイ用にユーザー名とパスワードを構成したことがない場合は、 <strong>[クイック スタート] </strong> 管理ページで  <strong>[デプロイ資格情報を設定する] を選択して構成できます</strong>。</p>
 </div>
 
 ダッシュボードで返される FTP URL は、**LogFiles** ディレクトリのものです。このディレクトリには、次のサブディレクトリが含まれます。
 
-* [デプロイ方法] - Git のようなデプロイ方法を使用する場合は、同じ名前のディレクトリが作成され、デプロイに関連する情報が含められます。
+* [デプロイ方法] - Git のようなデプロイ方法を使用する場合は、同じ名前のディレクトリが作成され、ここにはデプロイに関する情報が含まれます。
 
 * nodejs - アプリケーションのすべてのインスタンスからキャプチャされた stdout および stderr 情報 (loggingEnabled が true の場合)。
 
@@ -88,7 +88,7 @@ FTP を通じて診断情報にアクセスするには、[Azure ポータル]�
 
 * LogFiles
 
-	* [デプロイ方法] - Git のようなデプロイ方法を使用する場合は、同じ名前のディレクトリが作成され、デプロイに関連する情報が含められます。
+	* [デプロイ方法] - Git のようなデプロイ方法を使用する場合は、同じ名前のディレクトリが作成され、ここにはデプロイに関する情報が含まれます。
 
 	* nodejs - アプリケーションのすべてのインスタンスからキャプチャされた stdout および stderr 情報 (loggingEnabled が true の場合)。
 
@@ -98,7 +98,7 @@ FTP を通じて診断情報にアクセスするには、[Azure ポータル]�
 
 	azure site log tail [sitename]
 
-これで、サーバーでログ イベントが発生するたびに更新される、ログ イベントのストリームが返されます。このストリームは、デプロイ情報のほかに、stdout および stderr 情報を返します (loggingEnabled が true の場合)。
+これで、サーバーでログ イベントが発生するたびに更新される、ログ イベントのストリームが返されます。このストリームは、展開情報のほかに、stdout および stderr 情報を返します (loggingEnabled が true の場合)。
 
 ##<a id="nextsteps"></a>次のステップ
 
@@ -110,9 +110,11 @@ Azure でのモジュールの操作については、「[Azure アプリケー�
 
 [IISNode]: https://github.com/tjanczuk/iisnode
 [IISNode Readme]: https://github.com/tjanczuk/iisnode#readme
-[Azure コマンド ライン ツールの使用方法]: /ja-jp/documentation/articles/xplat-cli/
-[Azure アプリケーションでの Node.js モジュールの使用]: /ja-jp/documentation/articles/nodejs-use-node-modules-azure-apps/
-[Azure アプリケーションでの Node.js のバージョンの指定]: /ja-jp/documentation/articles/nodejs-specify-node-version-azure-apps/
+[How to Use The Azure Command-Line Tools (Azure コマンド ライン ツールの使用方法)]: /ja-jp/documentation/articles/xplat-cli/
+[Using Node.js Modules with Azure Applications (Azure アプリケーションでの Node.js モジュールの使用)]: /ja-jp/documentation/articles/nodejs-use-node-modules-azure-apps/
+[Specifying a Node.js version in an Azure application (Azure アプリケーションでの Node.js のバージョンの指定)]: /ja-jp/documentation/articles/nodejs-specify-node-version-azure-apps/
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 
 [restart-button]: ./media/web-sites-nodejs-debug/restartbutton.png
+
+<!--HONumber=35.2-->

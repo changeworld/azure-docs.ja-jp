@@ -1,4 +1,4 @@
-﻿<properties pageTitle="認証されたユーザーへのプッシュ通知の送信" metaKeywords="push notifications, authentication, users, Notification Hubs, Mobile Services" description="特定の場所にプッシュ通知を送信する方法について説明します。 " metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with authentication in Mobile Services" authors="glenga" solutions="Mobile" manager="dwrede" editor="" />
+<properties pageTitle="認証されたユーザーへのプッシュ通知の送信" metaKeywords="push notifications, authentication, users, Notification Hubs, Mobile Services" description="特定の場所にプッシュ通知を送信する方法について説明します。 " metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with authentication in Mobile Services" authors="glenga" solutions="Mobile" manager="dwrede" editor="" />
 
 <tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/29/2014" ms.author="glenga" />
 
@@ -32,7 +32,7 @@
 
 ##<a name="update-app"></a>登録の前にログインするようにアプリケーションを更新する
 
-[WACOM.INCLUDE [mobile-services-windows-phone-push-notifications-app- md)] users](../includes/mobile-services-windows-phone-push-notifications-app-users.
+[WACOM.INCLUDE [mobile-services-windows-phone-push-notifications-app-users](../includes/mobile-services-windows-phone-push-notifications-app-users.md)]
 
 
 ##<a name="test"></a>アプリケーションをテストする
@@ -56,3 +56,5 @@
 
 [Azure 管理ポータル]: https://manage.windowsazure.com/
 [モバイル サービス .NET の使用方法の概念リファレンス]: /ja-jp/develop/mobile/how-to-guides/work-with-net-client-library
+
+<!--HONumber=35.2-->
