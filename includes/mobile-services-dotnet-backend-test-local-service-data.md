@@ -6,16 +6,13 @@
 
 3.  新しい todoitem のテキストを入力します。その後、**[保存]** をクリックします。これによって、IIS Express でローカルにホストされているモバイル サービスで作成されたデータベースに新しい todoItem が挿入されます。
 
-    ![][0]
+    ![](./media/mobile-services-dotnet-backend-test-local-service-data/new-local-todoitem.png)
 
 4.  項目のうちの 1 つのチェックボックスをオンにして、完了マークを付けます。
 
-    ![][1]
+    ![](./media/mobile-services-dotnet-backend-test-local-service-data/local-item-checked.png)
 
 5.  Visual Studio で、サーバー エクスプ ローラーを開き、データ接続を展開して、バックエンド サービスに作成されたデータベースの変更を表示できます。**MS\_TableConnectionString** の TodoItems テーブルを右クリックし、**[テーブル データの表示]** をクリックします。
 
-    ![][2]
+    ![](./media/mobile-services-dotnet-backend-test-local-service-data/vs-show-local-table-data.png)
 
-  [0]: ./media/mobile-services-dotnet-backend-test-local-service-data/new-local-todoitem.png
-  [1]: ./media/mobile-services-dotnet-backend-test-local-service-data/local-item-checked.png
-  [2]: ./media/mobile-services-dotnet-backend-test-local-service-data/vs-show-local-table-data.png
