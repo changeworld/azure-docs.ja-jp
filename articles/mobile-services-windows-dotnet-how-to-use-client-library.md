@@ -120,7 +120,7 @@ Mobile Services のテーブル データにアクセスするコードとその
 		   && todoItem.Text != null)
 	   .ToListAsync();
 
-このコードは、ほぼ次のように変換できます (前と同じ要求)。
+このコードは、ほぼ次のように変換できます (前と同じ要求) 。
 
 	SELECT *
 	FROM TodoItem
@@ -342,7 +342,7 @@ Mobile Services はオプティミスティック同時実行制御をサポー�
 	todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 
 
-次のコードは、書き込み競合が検出された場合にそれを解決する方法を示しています。解決をコミットするには、`UpdateAsync()` 呼び出しに正しい `__version` 値が含まれている必要があります。
+次のコードは、書き込み競合が検出された場合にそれを解決する方法を示しています。解決をコミットするには、 `UpdateAsync()` 呼び出しに正しい `__version` 値が含まれている必要があります。
 
 	private async void UpdateToDoItem(TodoItem item)
 	{
@@ -718,7 +718,9 @@ Windows Phone アプリの場合は、[ProtectedData] クラスを使用して�
 [認証の使用]: /ja-jp/develop/mobile/tutorials/get-started-with-users-dotnet
 [サーバー スクリプトを使用したモバイル サービスのデータの検証および変更]: /ja-jp/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
 [ページングを使用したモバイル サービス クエリの改善]: /ja-jp/develop/mobile/tutorials/add-paging-to-data-dotnet
+
 [スクリプトを使用したユーザーの承認]: /ja-jp/develop/mobile/tutorials/authorize-users-in-scripts-dotnet
+
 [LoginAsync メソッド]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclientextensions.loginasync.aspx
 [MobileServiceAuthenticationProvider]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider.aspx
 [MobileServiceUser]: http://msdn.microsoft.com/ja-jp/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.aspx
@@ -735,3 +737,4 @@ Windows Phone アプリの場合は、[ProtectedData] クラスを使用して�
 [Azure Mobile Services クライアント SDK のカスタム API]: http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx
 [クライアントからのカスタム API 呼び出し]: /ja-jp/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-call-custom-api/
 [InvokeApiAsync]: http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
+<!--HONumber=27-->
