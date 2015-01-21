@@ -43,9 +43,9 @@ The experiment uses the UCI Statlog (German Credit Card) dataset which can be fo
 
 	sed 's/ /,/g' german.data > german.csv
 
-まず、**メタデータ エディター**を使用して列名を追加し、データセットの既定の列名を、UCI のサイトでデータセットの説明から取得した意味のある名前に置き換えます。新しい列名は、**メタデータ エディター**の **[新しい列名]** 内にあり、コンマで区切られています。
+まず、**メタデータ エディター** を使用して列名を追加し、データセットの既定の列名を、UCI のサイトでデータセットの説明から取得した意味のある名前に置き換えます。新しい列名は、**メタデータ エディター** の **[新しい列名]** 内にあり、コンマで区切られています。
 
-次に、リスク予測モデルの開発に使用されるトレーニング セットとテスト セットを生成します。**[1 番目の出力行数の入力率]** を 0.5 に設定して**分割**モジュールを使用し、元のデータセットを同じサイズのトレーニング セットとテスト セットに分割します。
+次に、リスク予測モデルの開発に使用されるトレーニング セットとテスト セットを生成します。**[1 番目の出力行数の入力率]** を 0.5 に設定して**分割 ** モジュールを使用し、元のデータセットを同じサイズのトレーニング セットとテスト セットに分割します。
  
 高リスクのサンプルを低リスクに誤って分類したときのコストは、低リスクのサンプルを高リスクに誤って分類したときのコストの 5 倍大きいため、この費用関数を反映した新しいデータセットを生成します。新しいデータセットでは、高リスクのサンプルを 5 回レプリケートし、低リスクのサンプルはそのままの状態にします。同じサンプルがレーニングとテストのデータセットの両方に存在することを避けるため、このレプリケーションの前に、トレーニングとテストのデータセットの分割を実行します。 
 
@@ -57,20 +57,20 @@ The experiment uses the UCI Statlog (German Credit Card) dataset which can be fo
 	for (i in 1:5) data.set<-rbind(data.set,pos)
 	maml.mapOutputPort("data.set")
 
-実験では、モデルを生成するための 2 つのアプローチを比較します。元のデータセットに対するトレーニングと、レプリケートしたデータセットに対するトレーニングです。両方のアプローチで、問題の費用関数と連携するために、レプリケートしたテスト セットでテストします。分割とレプリケーションの最終的なワークフローは、下のようになります。このワークフローでは、**分割**モジュールの左側の出力内容がトレーニング セットで、右側の出力内容がテスト セットです。トレーニング セットはその後、**R スクリプトの実行**の有無の両方、つまりレプリケーションの有無の両方の場合に使用されます。
+実験では、モデルを生成するための 2 つのアプローチを比較します。元のデータセットに対するトレーニングと、レプリケートしたデータセットに対するトレーニングです。両方のアプローチで、問題の費用関数と連携するために、レプリケートしたテスト セットでテストします。分割とレプリケーションの最終的なワークフローは、下のようになります。このワークフローでは、**分割**モジュールの左側の出力内容がトレーニング セットで、右側の出力内容がテスト セットです。トレーニング セットはその後、**R スクリプトの実行** の有無の両方、つまりレプリケーションの有無の両方の場合に使用されます。
 
 ![Splitting training and test data][screen1]
  
 トレーニング セットのサンプルのレプリケーションの効果の確認だけでなく、2 つのアルゴリズムのパフォーマンスも比較します。そのアルゴリズムとは、サポート ベクター マシン (SVM) とブースト デシジョン ツリーです。次のように、実質的に 4 つのモデルを生成します。
 
-- SVM、元のデータでトレーニング済み
-- SVM、レプリケートしたデータでトレーニング済み
+- SVM、 元のデータでトレーニング済み
+- SVM、 レプリケートしたデータでトレーニング済み
 - ブースト デシジョン ツリー、元のデータでトレーニング済み
 - ブースト デシジョン ツリー、レプリケートしたデータでトレーニング済み
 
 ブースト デシジョン ツリーはあらゆる種類の特徴で問題なく使うことができます。ただし、SVM モジュールは線形分類器を生成するため、生成されたモデルでは、すべての特徴が同じスケールのときにテストの誤差が最良になります。すべての特徴を同じスケールに変換するために、**スケーリングによるデータ変換**モジュールと Tanh 変換を使用します。この変換によって、すべての数値特徴が [0,1] の範囲に変換されます。文字列特徴は SVM モジュールによってカテゴリ特徴に変換され、バイナリ 0/1 特徴に変換されます。このため文字列特徴を手動で変換する必要はありません。 
 
-**2 クラス サポート ベクター マシン** モジュールまたは **2 クラス ブースト デシジョン ツリー** モジュールを使用して学習アルゴリズムを初期化し、次に**モデルのトレーニング** モジュールを使用して実際のモデルを作成します。これらのモデルは**モデルのスコア付け**モジュールで使用され、テスト サンプルのモデルのスコアを作成します。これらのモジュールを結び付け、SVM とレプリケートしたトレーニング セットを使用するサンプル ワークフローは次のようになります。**モデルのトレーニング**はトレーニング セットに接続されますが、**モデルのスコア付け**はテスト セットに接続されます。
+**2クラス サポート ベクター マシン** モジュールまたは ** 2 クラス ブースト デシジョン ツリー** モジュールを使用して学習アルゴリズムを初期化し、次に **モデルのトレーニング** モジュールを使用して実際のモデルを作成します。これらのモデルは **モデルのスコア付け** モジュールで使用され、テスト サンプルのモデルのスコアを作成します。これらのモジュールを結び付け、SVM とレプリケートしたトレーニング セットを使用するサンプル ワークフローは次のようになります。**モデルのトレーニング**はトレーニング セットに接続されますが、**モデルのスコア付け**はテスト セットに接続されます。
 
 ![Training and scoring a model][screen2]
 
@@ -99,7 +99,7 @@ Notice that unlike the development experiment, in the training experiment we cho
 
 ##Scoring Experiment
 
-The purpose of the sample scoring experiment is to set up a REST API web service that will score test examples. The trained model in this experiment (â€œCredit Risk modelâ€) was created from the training experiment by right-clicking the Train Model module and selecting **Save as Trained Model**. In this scoring experiment we load test examples, normalize them, and perform scoring using this saved trained model. 
+The purpose of the sample scoring experiment is to set up a REST API web service that will score test examples. The trained model in this experiment (“Credit Risk model”) was created from the training experiment by right-clicking the Train Model module and selecting **Save as Trained Model**. In this scoring experiment we load test examples, normalize them, and perform scoring using this saved trained model. 
 
 After running this experiment and verifying that it generates the right scores we prepare to publish it as a web service by defining the service input and output. We define the web service input as the input port to the **Transform Data By Scaling** module by right-clicking the port and selecting **Set as Publish Input**. The web service output is set to the output of the **Score Model** module by right-clicking the output of **Score Model** and selecting **Set as Publish Output**. 
 
@@ -132,3 +132,4 @@ ML Studio には、この実験で使用される次のサンプル データセ
 [results]:./media/machine-learning-sample-credit-risk-prediction/results.jpg
 [screen3]:./media/machine-learning-sample-credit-risk-prediction/screen3.jpg
 [screen4]:./media/machine-learning-sample-credit-risk-prediction/screen4.jpg
+<!--HONumber=27-->
