@@ -18,9 +18,9 @@
 <!-- Removed until the Training and Scoring parts are fixed
 This example is divided into 3 sample experiments:
 
-- Development Experiment - for experimenting with different models
-- Training Experiment - to train the one chosen model
-- Scoring Experiment - to set up a web service using the trained model
+- Development Experiment – for experimenting with different models
+- Training Experiment – to train the one chosen model
+- Scoring Experiment – to set up a web service using the trained model
 -->
 
 <!-- Removed because we added a section at the bottom describing the dataset

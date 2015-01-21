@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Twilio Voice and SMS Service" pageTitle="Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用" metaKeywords=""  metaCanonical="" services="" documentationCenter="nodejs" title=" VoIP" authors="MicrosoftHelp@twilio.com" solutions="" manager="twilio" editor="" />
+﻿<properties urlDisplayName="Twilio Voice and SMS Service" pageTitle="Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="nodejs" title=" VoIP" authors="MicrosoftHelp@twilio.com" solutions="" manager="twilio" editor="" />
 
 <tags ms.service="multiple" ms.workload="na" ms.tgt_pltfrm="na" ms.devlang="nodejs" ms.topic="article" ms.date="11/25/2014" ms.author="MicrosoftHelp@twilio.com" />
 
