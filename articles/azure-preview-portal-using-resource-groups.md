@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="" pageTitle="リソース グループを使用した Azure リソースの管理" metaKeywords=""  metaCanonical="" services="" documentationCenter="" title="Using Resource groups to manage your Azure resources" authors="Nafisa Bhojawala"  solutions="" writer="" manager="timlt" editor=""  />
+﻿<properties urlDisplayName="" pageTitle="リソース グループを使用した Azure リソースの管理" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Using Resource groups to manage your Azure resources" authors="Nafisa Bhojawala"  solutions="" writer="" manager="timlt" editor=""  />
 
 <tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="12/02/2014" ms.author="davidmu" />
 

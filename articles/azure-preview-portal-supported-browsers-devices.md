@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="" pageTitle="サポートされているブラウザーとデバイス" metaKeywords=""  metaCanonical="" services="" documentationCenter="" title="Supported browsers and devices" authors="Justin Beckwith"  solutions="" writer="" manager="need to identify contact" editor=""  />
+﻿<properties urlDisplayName="" pageTitle="サポートされているブラウザーとデバイス" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="Supported browsers and devices" authors="Justin Beckwith"  solutions="" writer="" manager="need to identify contact" editor=""  />
 
 <tags ms.service="multiple" ms.workload="multiple" ms.tgt_pltfrm="ibiza" ms.devlang="na" ms.topic="article" ms.date="11/16/2014" ms.author="Justin Beckwith" />
 
