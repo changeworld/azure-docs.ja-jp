@@ -48,8 +48,7 @@ Azure ロード バランサーと可用性セットを結合することで、�
 ### 可用性セット内の仮想マシンが 1 つのみにならないようにする
 可用性セット内の仮想マシンが 1 つのみにならないようにしてくだい。この構成の仮想マシンは、SLA 保証の対象とはならず、Azure の計画されたメンテナンス イベント時にダウンタイムが発生します。さらに、可用性セット内に 1 つの VM を配備する場合、プラットフォーム メンテナンスの事前警告や通知は送付されません。この構成では、プラットフォーム メンテナンス時に事前警告なく 1 つの仮想マシンが再起動されます。
 
-[冗長性実現のために複数の仮想マシンを可用性セット内に構成する]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy 
-[各アプリケーション層に対して別々の可用性セットを構成する]: #configure-each-application-tier-into-separate-availability-sets 
+[冗長性実現のために複数の仮想マシンを可用性セット内に構成する]: #冗長性実現のために複数の仮想マシンを可用性セット内に構成する [各アプリケーション層に対して別々の可用性セットを構成する]: #configure-each-application-tier-into-separate-availability-sets 
 [ロード バランサーと可用性セットを結合する]: #combine-the-load-balancer-with-availability-sets 
 [可用性セット内の仮想マシンが 1 つのみにならないようにする]: #avoid-single-instance-virtual-machines-in-availability-sets 
 
