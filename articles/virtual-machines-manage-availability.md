@@ -1,4 +1,4 @@
-﻿<properties urlDisplayName="Manage Availability of VMs" pageTitle="仮想マシンの可用性管理 - Azure" metaKeywords="" description="複数の仮想マシンを使って Azure アプリケーションの高い可用性を確保する方法について説明します。 " metaCanonical="" services="virtual-machines" documentationCenter="" title="" authors="kenazk" solutions="" manager="timlt" editor="tysonn" />
+<properties urlDisplayName="Manage Availability of VMs" pageTitle="仮想マシンの可用性管理 - Azure" metaKeywords="" description="複数の仮想マシンを使って Azure アプリケーションの高い可用性を確保する方法について説明します。 " metaCanonical="" services="virtual-machines" documentationCenter="" title="" authors="kenazk" solutions="" manager="timlt" editor="tysonn" />
 
 <tags ms.service="virtual-machines" ms.workload="infrastructure-services" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="11/26/2014" ms.author="kenazk" />
 
