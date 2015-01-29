@@ -14,13 +14,11 @@
 ## ベスト プラクティスに基づいて高可用性のアプリケーションを設計する
 前述のようなイベントが 1 つ以上発生した場合にダウンタイムの影響を低減するため、下記のような高可用性のためのベスト プラクティスを仮想マシンに適用することをお勧めします。
 
-* [Configure multiple virtual machines in an Availability Set for redundancy] 
 * [冗長性実現のために複数の仮想マシンを可用性セット内に構成する] 
 * [各アプリケーション層に対して別々の可用性セットを構成する] 
 * [ロード バランサーと可用性セットを結合する] 
 * [可用性セット内の仮想マシンが 1 つのみにならないようにする] 
 
-### Configure multiple virtual machines in an Availability Set for redundancy 
 ### 冗長性実現のために複数の仮想マシンを可用性セット内に構成する 
 アプリケーションに冗長性をもたらすには、可用性セット内に 2 つ以上の仮想マシンをグループ化することをお勧めします。このような構成により、計画済み、または計画外メンテナンス イベント中に、少なくとも 1 つの仮想マシンが利用可能となり、99.95% の Azure SLA を満たします。サービス レベル アグリーメントの詳細については、「[サービス レベル アグリーメント](../../../support/legal/sla/)」の「クラウド サービス、仮想マシン、仮想ネットワーク」のセクションを参照してください。 
 
@@ -50,8 +48,7 @@ Azure ロード バランサーと可用性セットを結合することで、�
 ### 可用性セット内の仮想マシンが 1 つのみにならないようにする
 可用性セット内の仮想マシンが 1 つのみにならないようにしてくだい。この構成の仮想マシンは、SLA 保証の対象とはならず、Azure の計画されたメンテナンス イベント時にダウンタイムが発生します。さらに、可用性セット内に 1 つの VM を配備する場合、プラットフォーム メンテナンスの事前警告や通知は送付されません。この構成では、プラットフォーム メンテナンス時に事前警告なく 1 つの仮想マシンが再起動されます。
 
-[Configure multiple virtual machines in an Availability Set for redundancy]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy 
-[冗長性実現のために複数の仮想マシンを可用性セット内に構成する]: #冗長性実現のために複数の仮想マシンを可用性セット内に構成する
+[冗長性実現のために複数の仮想マシンを可用性セット内に構成する]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy 
 [各アプリケーション層に対して別々の可用性セットを構成する]: #configure-each-application-tier-into-separate-availability-sets 
 [ロード バランサーと可用性セットを結合する]: #combine-the-load-balancer-with-availability-sets 
 [可用性セット内の仮想マシンが 1 つのみにならないようにする]: #avoid-single-instance-virtual-machines-in-availability-sets 
